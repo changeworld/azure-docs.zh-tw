@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158905"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252652"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 儲存體的私用端點（預覽）
 
@@ -118,7 +118,7 @@ StorageAccountA 的 DNS 資源記錄（當由裝載私用端點的 VNet 中的�
 - [Azure 虛擬網路中的資源名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [私人端點的 DNS 設定](/azure/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>Pricing
 
 如需定價詳細資料，請參閱 [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link)。
 
@@ -136,4 +136,4 @@ Vnet 中具有現有私用端點的用戶端，在存取其他具有私人端點
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有私人端點之子網的網路安全性群組規則
 
-目前，您無法為具有私人端點的子網設定[網路安全性群組](../../virtual-network/security-overview.md)（NSG）規則。 此問題的有限因應措施是在來源子網上為私人端點執行存取規則，不過這種方法可能需要較高的管理負荷。
+目前，您無法為私人端點設定[網路安全性群組](../../virtual-network/security-overview.md)（NSG）規則和使用者定義的路由。 套用至裝載私用端點之子網的 NSG 規則會套用至私用端點。 此問題的有限因應措施是在來源子網上為私人端點執行存取規則，不過這種方法可能需要較高的管理負荷。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982153"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250216"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
 
@@ -68,7 +68,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 > [!NOTE]
 > 當您在本機電腦上執行微服務時，仍需要 Azure 中的 Cosmos DB 執行個體才能正常運作。
 
-若要在本機執行儲存體配接器微服務，請按一下 [偵錯] \> [開始偵錯]。
+若要在本機執行儲存體配接器微服務，請按一下 [偵錯]  **[開始偵錯]\>** 。
 
 Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出，包括 Web 服務健康情況檢查的 URL：<http://127.0.0.1:9022/v1/status>。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
 
@@ -174,7 +174,7 @@ Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出
 
 1. [從 GitHub 下載 Protobuf 編譯器](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如：
+1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如，
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出
 
 根據預設，新的裝置型號 JSON 和 JS 檔案不會複製到建置的解決方案。 您需要明確地包含在內。
 
-針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如：
+針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如，
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -217,7 +217,7 @@ Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出
 </None>
 ```
 
-若要在本機執行微服務，請按一下 [偵錯] \> [開始偵錯]。
+若要在本機執行微服務，請按一下 [偵錯]  **[開始偵錯]\>** 。
 
 Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出。
 
@@ -231,7 +231,7 @@ Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
@@ -247,9 +247,9 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 在本機電腦上開啟 Postman。
 
-1. 按一下 [檔案] \> [匯入]。 然後按一下 [選擇檔案]。
+1. 按一下 [檔案]  **[匯入]\>** 。 然後按一下 [選擇檔案]。
 
-1. 選取 [Azure IoT Device Simulation solution accelerator.postman\_collection] 和 [Azure IoT Device Simulation solution accelerator.postman\_environment]，然後按一下 [開啟]。
+1. 選取 [Azure IoT Device Simulation solution accelerator.postman**collection]\_** 和 [Azure IoT Device Simulation solution accelerator.postman**environment]\_** ，然後按一下 [開啟]。
 
 1. 將 **Azure IoT Device Simulation solution accelerator** 展開以檢視您可以傳送的要求。
 
@@ -267,7 +267,7 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 ### <a name="clean-up-resources"></a>清除資源
 
-您可以停止兩個在其 Visual Studio Code 執行個體中本機執行的微服務 ([偵錯] \> [停止偵錯])。
+您可以停止兩個在其 Visual Studio Code 執行個體中本機執行的微服務 ([偵錯]  **[停止偵錯]\>** )。
 
 如果您不再需要 IoT 中樞和 Cosmos DB 執行個體，請從 Azure 訂用帳戶中加以刪除，以避免產生任何不必要的費用。
 

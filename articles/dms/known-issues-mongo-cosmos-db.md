@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 6cdca78d09c9ca128119a58cb4feaf66bad111bd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165032"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256022"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>從 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB API 的已知問題/遷移限制
 
@@ -40,6 +40,8 @@ ms.locfileid: "78165032"
 | 儲存體帳戶連接字串遺漏 SAS 資訊，因此無法進行驗證。 | 在儲存體總管中的 blob 容器上建立 SAS，並使用 URL 搭配容器 SAS 資訊做為來源詳細資料連線字串。<br><br> |
 
 ## <a name="using-an-unsupported-version-of-the-database"></a>使用不支援的資料庫版本
+
+* **徵兆**：遷移失敗。
 
 | 原因         | 解決方案 |
 | ------------- | ------------- |

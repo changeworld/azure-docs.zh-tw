@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585980"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248854"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -48,7 +48,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 完成多重要素驗證的註冊之後，下列九個 Azure AD 系統管理員角色將需要在每次登入時執行額外的驗證：
 
 - 全域管理員
-- SharePoint 管理員
+- SharePoint 系統管理員
 - Exchange 系統管理員
 - 條件式存取系統管理員
 - 安全性系統管理員
@@ -69,7 +69,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure AD 支援各種驗證通訊協定，包括舊版驗證。 *舊版驗證*是指由下列各項所提出的驗證要求：
 
-- 不使用新式驗證的舊版 Office 用戶端（例如，Office 2010 用戶端）。
+- 不使用新式驗證的用戶端（例如，Office 2010 用戶端）。
 - 任何使用舊版郵件通訊協定（如 IMAP、SMTP 或 POP3）的用戶端。
 
 現今，大部分的登入嘗試都會來自舊版驗證。 舊版驗證不支援多重要素驗證。 即使您已在目錄上啟用多重要素驗證原則，攻擊者仍可使用較舊的通訊協定進行驗證，並略過多重要素驗證。 

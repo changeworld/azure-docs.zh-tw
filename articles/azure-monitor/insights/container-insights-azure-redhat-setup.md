@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190083"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250687"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集
 
@@ -113,7 +113,7 @@ ms.locfileid: "77190083"
 
     輸出看起來像下面這樣：
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -197,7 +197,7 @@ ms.locfileid: "77190083"
 
     輸出看起來像下面這樣：
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

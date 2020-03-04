@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 檔案共用搭配 Azure 儲存體 |Microsoft Docs
-description: 了解如何搭配 Windows 和 Windows Server 使用 Azure 檔案共用。
+title: 如何復原已刪除的儲存體帳戶
+description: 瞭解如何復原已刪除的儲存體帳戶
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -10,12 +10,12 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: e1e581134b4e3821659c43bb7f55003239594bd9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233788"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252639"
 ---
 # <a name="how-to-recover-a-deleted-storage-account"></a>如何復原已刪除的儲存體帳戶
 
@@ -25,8 +25,8 @@ Azure 儲存體透過自動化複本提供資料恢復功能，但不會防止�
 
 | |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|儲存體帳戶 Azure Resource Manager|yes|yes|yes|yes|
-|傳統儲存體帳戶|yes|yes|yes|yes|
+|儲存體帳戶 Azure Resource Manager|是|是|是|是|
+|傳統儲存體帳戶|是|是|是|是|
 
 收集下列資訊，並使用 Microsoft 支援服務提出支援要求：
 

@@ -3,12 +3,12 @@ title: 發佈至 Azure 事件方格 (預覽) 的 Durable Functions
 description: 了解如何針對 Durable Functions 設定自動 Azure 事件方格發佈。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ee60dadc90af5a9b941ba890bddb9b96de3f35d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562154"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249752"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>發佈至 Azure 事件方格 (預覽) 的 Durable Functions
 
@@ -22,7 +22,7 @@ ms.locfileid: "77562154"
 
 * **長時間執行的背景活動**：如果您使用 Durable Functions 進行長時間執行的背景活動，這項功能可協助您知道目前的狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在您的 Durable Functions 專案中安裝[DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 。
 * 安裝[Azure 儲存體模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows）或使用現有的 Azure 儲存體帳戶。
@@ -36,7 +36,7 @@ ms.locfileid: "77562154"
 
 使用 `az group create` 命令建立資源群組。 Azure 事件方格目前不支援所有區域。 如需有關支援哪些區域的詳細資訊，請參閱[Azure 事件方格總覽](../../event-grid/overview.md)。
 
-```bash
+```azurecli
 az group create --name eventResourceGroup --location westus2
 ```
 
@@ -44,7 +44,7 @@ az group create --name eventResourceGroup --location westus2
 
 事件方格主題會提供使用者定義的端點，作為您發佈事件的目的地。 以主題的唯一名稱取代 `<topic_name>`。 主題名稱必須是唯一的，因為它會變成 DNS 項目。
 
-```bash
+```azurecli
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
@@ -52,13 +52,13 @@ az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 
 取得主題的端點。 使用您所選的名稱取代 `<topic_name>`。
 
-```bash
+```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
 取得主題金鑰。 使用您所選的名稱取代 `<topic_name>`。
 
-```bash
+```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 

@@ -3,7 +3,7 @@ title: 在 Azure 中建立及上傳 CentOS 型 Linux VHD
 description: 了解如何建立及上傳包含 CentOS 型 Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
 ms.author: mimckitt
-ms.openlocfilehash: a5a6dd7e451d3204c8ab2bd2eae95db93c2f0837
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: dff90df255d6b7e050fad9a278666f81fade500c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750238"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246132"
 ---
-# <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>為 Azure 準備 CentOS 虛擬機器
+# <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 CentOS 型虛擬機器
 
 了解如何建立及上傳包含 CentOS 型 Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "75750238"
 
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。 如果您是使用 VirtualBox，即會在建立磁碟時選取 [固定大小] 而不是預設的動態配置。
-* 安裝 Linux 系統時，*建議*您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之 VM 的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 安裝 Linux 系統時，*建議*您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之 VM 的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 需要掛接 UDF 檔案系統的核心支援。 在 Azure 上第一次開機時，佈建組態會透過連接客體的 UDF 格式媒體傳遞至 Linux VM。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統讀取其組態並佈建 VM。
 * Linux Kernel 2.6.37 以下的版本不支援較大 VM 大小 Hyper-V 上的NUMA。 這個問題主要會影響使用上游 Red Hat 2.6.32 kernel 的較舊散發套件，RHEL 6.6 (kernel-2.6.32-504) 已加以修正。 執行的自訂核心是 2.6.37 以前版本的系統，或 2.6.32-504 以前以 RHEL 為基礎的核心必須在 grub.conf 的核心命令列上設定開機參數 `numa=off`。 如需詳細資訊，請參閱 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
@@ -42,7 +42,7 @@ ms.locfileid: "75750238"
 
 ## <a name="centos-6x"></a>CentOS 6.x
 
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 
@@ -238,7 +238,7 @@ ms.locfileid: "75750238"
 
 **組態步驟**
 
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 

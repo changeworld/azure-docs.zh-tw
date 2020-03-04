@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558816"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251314"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>文字分析認知服務的外部和社群內容
 
@@ -27,15 +27,19 @@ ms.locfileid: "68558816"
 
 + [使用 PowerShell 的文字分析關鍵片語認知服務 API (AutomationNext 部落格)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [R 快速提示：Microsoft 認知服務的文字分析 API (R 部落客)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R Quick tip: Microsoft Cognitive Services’ Text Analytics API (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/) (R 快速提示：Microsoft 認知服務的文字分析 API (R 部落客))
 
 + [Sentiment analysis in Logic App using SQL Server data (TechNet blog)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx) (邏輯應用程式中使用 SQL Server 資料的情感分析 (TechNet 部落格))
 
 + [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) (含 Dynamics 365 CRM Online 的情感分析 (MSDN 部落格)) 
 
-+ PowerBI 部落格：從 Facebook 訊息擷取關鍵片語：[第 1 部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第 2 部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI blog：從 Facebook 訊息解壓縮關鍵字組：[第1部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第2部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
-## <a name="videos"></a>影片
++ [使用 MS Flow 來識別 Yammer 群組中批註的情感（Microsoft tech 共同體）](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
+
+## <a name="videos"></a>Videos
 
 + [Logic App to detect sentiment and extract key phrases from your text](https://www.youtube.com/watch?v=jVN9NObAzgk) (邏輯應用程式偵測情感以及從文字擷取關鍵片語)
 
@@ -49,5 +53,5 @@ ms.locfileid: "68558816"
 
 ## <a name="see-also"></a>另請參閱
 
- [StackOverflow：Azure 文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow：Azure 認知服務](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)  (StackOverflow：Azure 文字分析 API)  
+ [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive) (StackOverflow：Azure 認知服務)

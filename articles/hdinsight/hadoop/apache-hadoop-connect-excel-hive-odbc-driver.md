@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435821"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251075"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驅動程式將 Excel 連線到 Azure HDInsight 中的 Apache Hadoop
 
@@ -48,7 +48,7 @@ Microsoft 的巨量資料解決方案會將 Microsoft 商業智慧 (BI) 元件�
 
 1. 輸入或選取下列值：
 
-   | 屬性 | 說明 |
+   | 屬性 | 描述 |
    | --- | --- |
    |  資料來源名稱 |為資料來源指定名稱 |
    |  主機 |輸入 `HDInsightClusterName.azurehdinsight.net`。 例如： `myHDICluster.azurehdinsight.net` 。 注意：只要用戶端 VM 對等互連到相同的虛擬網路，就會支援 `HDInsightClusterName-int.azurehdinsight.net`。 |
@@ -56,11 +56,11 @@ Microsoft 的巨量資料解決方案會將 Microsoft 商業智慧 (BI) 元件�
    |  資料庫 |使用**預設值**。 |
    |  機制 |選取 [Windows Azure HDInsight 服務] |
    |  使用者名稱 |輸入 HDInsight 叢集 HTTP 使用者的使用者名稱。 預設的使用者名稱為 **admin**。 |
-   |  密碼 |輸入 HDInsight 叢集使用者的密碼。 選取 [儲存密碼 (加密)] 核取方塊。|
+   |  Password |輸入 HDInsight 叢集使用者的密碼。 選取 [儲存密碼 (加密)] 核取方塊。|
 
 1. 選擇性：選取 [ **Advanced Options** ]  
 
-   | 參數 | 說明 |
+   | 參數 | 描述 |
    | --- | --- |
    |  使用原生查詢 |選取此選項時，ODBC 驅動程式不會嘗試將 TSQL 轉換為 HiveQL。 只有在100% 確定您正在提交純 HiveQL 語句時，才應使用它。 連接到 SQL Server 或 Azure SQL Database 時，您應將它保留為未勾選。 |
    |  每個區塊擷取的資料列 |在擷取大量記錄時，可能必須調整此參數，以確保最佳效能。 |
@@ -96,7 +96,7 @@ Microsoft 的巨量資料解決方案會將 Microsoft 商業智慧 (BI) 元件�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何使用 Microsoft Hive ODBC 驅動程式將 HDInsight 服務中的資料擷取至 Excel。 同樣地，您也可以將 HDInsight 服務中的資料擷取至 SQL Database。 也可以將資料上傳至 HDInsight 服務。 若要深入了解，請參閱：
+在本文中，您已了解如何使用 Microsoft Hive ODBC 驅動程式將 HDInsight 服務中的資料擷取至 Excel。 同樣地，您也可以將 HDInsight 服務中的資料擷取至 SQL Database。 也可以將資料上傳至 HDInsight 服務。 若要了解詳細資訊，請參閱：
 
 * [在 Azure HDInsight 中使用 Microsoft Power BI 將 Apache Hive 資料視覺化](apache-hadoop-connect-hive-power-bi.md)。
 * [在 Azure HDInsight 中使用 Power BI 將互動式查詢 Hive 資料視覺化](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4d7c094904529323b0665d14255d1eb76cb78bd3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891913"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250293"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從和複製到 SFTP 伺服器
 
@@ -55,11 +55,11 @@ ms.locfileid: "75891913"
 
 以下是針對 SFTP 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**Sftp**。 |是 |
+| 類型 | 類型屬性必須設定為：**Sftp**。 |是 |
 | 主機 | SFTP 伺服器的名稱或 IP 位址。 |是 |
-| 連接埠 | SFTP 伺服器所接聽的連接埠。<br/>允許的值為：整數，預設值為 **22**。 |否 |
+| port | SFTP 伺服器所接聽的連接埠。<br/>允許的值為：整數，預設值為 **22**。 |否 |
 | skipHostKeyValidation | 指定是否略過主機金鑰驗證。<br/>允許的值為：**true**、**false** (預設值)。  | 否 |
 | hostKeyFingerprint | 指定主機金鑰的指紋。 | 如果 "skipHostKeyValidation" 設定為 false，則為必要。  |
 | authenticationType | 指定驗證類型。<br/>允許的值︰**Basic** (基本)、**SshPublicKey**。 請參閱[使用基本驗證](#using-basic-authentication)和[使用 SSH 公開金鑰驗證](#using-ssh-public-key-authentication)章節，分別取得更多屬性和 JSON 範例。 |是 |
@@ -69,7 +69,7 @@ ms.locfileid: "75891913"
 
 若要使用基本驗證，請將 "authenticationType" 屬性設定為 **Basic**，然後除了上一節中介紹的 SFTP 連接器泛型屬性之外，再指定下列屬性︰
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
 | userName | 可存取 SFTP 伺服器的使用者。 |是 |
 | 密碼 | 使用者 (userName) 的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
@@ -106,7 +106,7 @@ ms.locfileid: "75891913"
 
 若要使用 SSH 公開金鑰驗證，請將 "authenticationType" 屬性設定為 **SshPublicKey**，然後除了上一節中介紹的 SFTP 連接器泛型屬性之外，再指定下列屬性︰
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
 | userName | 可存取 SFTP 伺服器的使用者 |是 |
 | privateKeyPath | 指定 Integration Runtime 可存取的私密金鑰檔案絕對路徑。 只有當 "connectVia" 中已指定「自我裝載」類型的 Integration Runtime 時才適用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
@@ -183,9 +183,9 @@ ms.locfileid: "75891913"
 
 下列屬性支援以格式為基礎之資料集的 `location` 設定下的 SFTP：
 
-| 屬性   | 說明                                                  | 必要項 |
+| 屬性   | 描述                                                  | 必要項 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Dataset 中 `location` 下的 type 屬性必須設定為**SftpLocation**。 | 是      |
+| 類型       | Dataset 中 `location` 下的 type 屬性必須設定為**SftpLocation**。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
 | fileName   | 指定 folderPath 下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
 
@@ -225,9 +225,9 @@ ms.locfileid: "75891913"
 
 在以格式為基礎的複製來源中，`storeSettings` 設定底下的 SFTP 支援下列屬性：
 
-| 屬性                 | 說明                                                  | 必要項                                      |
+| 屬性                 | 描述                                                  | 必要項                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為**SftpReadSettings**。 | 是                                           |
+| 類型                     | `storeSettings` 下的 type 屬性必須設定為**SftpReadSettings**。 | 是                                           |
 | 遞迴                | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值為 **true** (預設值) 和 **false**。 | 否                                            |
 | wildcardFolderPath       | 包含用來篩選源資料夾之萬用字元的資料夾路徑。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | wildcardFileName         | 在指定的 folderPath/wildcardFolderPath 下具有萬用字元的檔案名，用以篩選原始程式檔。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 如果未在 dataset 中指定 `fileName`，則為 [是] |
@@ -282,12 +282,16 @@ ms.locfileid: "75891913"
 
 以下是以格式為基礎之複製接收中 `storeSettings` 設定下的 SFTP 支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要項 |
+| 屬性                 | 描述                                                  | 必要項 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為**SftpWriteSettings**。 | 是      |
+| 類型                     | `storeSettings` 下的 type 屬性必須設定為**SftpWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設值)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
 | maxConcurrentConnections | 同時連接到資料存放區的連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否       |
+| useTempFileRename | 指出是否要上傳至暫存檔案並重新命名，或直接寫入目的檔案夾/檔案位置。 根據預設，ADF 會先寫入暫存檔案，然後在上傳完成時執行檔案重新命名，而不是1）如果您有其他進程寫入相同的檔案，請避免衝突寫入導致檔案損毀，以及2）確保檔案的原始版本存在於整個傳輸。 如果您的 SFTP 伺服器不支援重新命名作業，請停用此選項，並確定您不會對目標檔案進行並行寫入。 請參閱此表格下方的疑難排解秘訣。 | No。 預設值為 true。 |
 | operationTimeout | 對 SFTP 伺服器發出每個寫入要求之前的等候時間。預設值為60分鐘（01:00:00）。|否 |
+
+>[!TIP]
+>如果您在將資料寫入 SFTP 時遇到 "UserErrorSftpPathNotFound"、"UserErrorSftpPermissionDenied" 或 "SftpOperationFail" 的錯誤，而且您使用的 SFTP 使用者具有適當的許可權，請檢查您的 SFTP 伺服器是否支援檔案重新命名作業-如果不是，請停用 [以暫存檔案上傳] （`useTempFileRename`）選項，然後再試一次。 深入瞭解上述資料表中的這個屬性。 如果您使用自我裝載的 Integration Runtime 進行複製，請確定您使用4.6 版或更新版本。
 
 **範例︰**
 
@@ -354,15 +358,15 @@ ms.locfileid: "75891913"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**FileShare** |是 |
+| 類型 | 資料集的類型屬性必須設定為：**FileShare** |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選，允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際檔案名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
 | fileName |  在指定 "folderPath" 之下檔案的**名稱或萬用字元篩選**。 若未指定此屬性的值，資料集就會指向資料夾中的所有檔案。 <br/><br/>針對篩選，允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 |否 |
 | modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要從大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 Null，表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
 | modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要從大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 Null，表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
-| format | 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級為：**Optimal** 和 **Fastest**。 |否 |
+| 格式 | 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
+| 壓縮 | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級為：**Optimal** 和 **Fastest**。 |否 |
 
 >[!TIP]
 >若要複製資料夾下的所有檔案，請只指定 **folderPath**。<br>若要複製指定名稱的單一檔案，請以資料夾部分指定 **folderPath**，並以檔案名稱指定 **fileName**。<br>若要複製資料夾下的檔案子集，請以資料夾部分指定 **folderPath**，並以萬用字元篩選指定 **fileName**。
@@ -403,9 +407,9 @@ ms.locfileid: "75891913"
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**FileSystemSource** |是 |
+| 類型 | 複製活動來源的類型屬性必須設定為：**FileSystemSource** |是 |
 | 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 recursive 設定為 true，而接收器為檔案型存放區時，系統不會在接收器複製/建立空資料夾/子資料夾。<br/>允許的值為：**true** (預設值)、**false** | 否 |
 | maxConcurrentConnections | 連接到儲存體存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
 

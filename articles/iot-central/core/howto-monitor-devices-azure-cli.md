@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026779"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252341"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 監視裝置連線能力
 
@@ -33,16 +33,19 @@ ms.locfileid: "77026779"
 從您的命令列執行下列命令以安裝：
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-執行來檢查延伸模組的版本 
+執行下列程式，檢查延伸模組的版本：
+
 ```cmd/sh
 az --version
 ```
-您應該會看到0.8.1 版或更高版本的 azure-cli--ext 延伸模組。 如果不是，請執行
+
+您應該會看到 azure-iot 擴充功能是0.8.1 版或更高版本。 如果不是，請執行：
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>使用延伸模組

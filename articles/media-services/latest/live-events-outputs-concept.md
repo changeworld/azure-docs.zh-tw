@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e3937241724aab63f770ad56cbf96d2e1b45f00e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546039"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251364"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件和即時輸出
 
@@ -34,7 +34,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-event-types"></a>實況活動類型
 
-[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)可以是下列兩種類型的其中一種：傳遞或即時編碼。 在建立期間，會使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
+[即時事件](https://docs.microsoft.com/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 在建立期間，會使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
 
 * **LiveEventEncodingType。 None**：內部部署即時編碼器會傳送多位元率串流。 內嵌資料流程會通過即時事件，而不需要進行任何進一步的處理。 也稱為「傳遞」模式。
 * **LiveEventEncodingType**：內部部署即時編碼器會將單一位元速率串流傳送至即時事件，媒體服務會建立多位元率串流。 如果「貢獻摘要」是720p 或更高的解析度， **Default720p**預設值將會編碼一組6個解析/位元速率配對。

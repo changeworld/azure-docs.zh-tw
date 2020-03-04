@@ -3,12 +3,12 @@ title: 如何停止監視 Azure Kubernetes Service 叢集 | Microsoft Docs
 description: 本文說明如何停止使用容器的 Azure 監視器來監視 Azure AKS 叢集。
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: fb75379ba6c8109316f78288222039627bcb5902
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715957"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250751"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用容器的 Azure 監視器來監視 Azure Kubernetes Service (AKS)
 
@@ -139,7 +139,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 可能需要幾分鐘的時間才能完成設定變更。 完成後，系統會傳回類似下列包含結果的訊息：
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 
 可能需要幾分鐘的時間才能完成設定變更。 完成後，系統會傳回類似下列包含結果的訊息：
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 

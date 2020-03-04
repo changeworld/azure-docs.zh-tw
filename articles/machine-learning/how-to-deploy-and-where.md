@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193079"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250959"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ ms.locfileid: "78193079"
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>選擇計算目標
-
-您可以使用下列計算目標或計算資源來裝載您的 web 服務部署：
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>單一與多模型端點
 Azure ML 支援在單一端點後方部署單一或多個模型。
 
@@ -172,9 +166,9 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
 
 如需顯示如何在單一容器化端點後方使用多個模型的 E2E 範例，請參閱[此範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-deployment-artifacts"></a>準備部署成品
+## <a name="prepare-to-deploy"></a>準備部署
 
-若要部署模型，您需要下列各項：
+若要將模型部署為服務，您需要下列元件：
 
 * **專案腳本 & 原始程式碼**相依性。 此腳本會接受要求，使用模型來評分要求，並傳回結果。
 
@@ -187,11 +181,9 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
     >
     >   可能適用于您案例的替代方法是[批次預測](how-to-use-parallel-run-step.md)，這會在計分期間提供資料存放區的存取權。
 
-* **推斷環境**。 包含執行模型所需之已安裝封裝相依性的基底映射。
+* **推斷**設定。 推斷設定會指定將模型當做服務執行所需的環境設定、輸入腳本和其他元件。
 
-* 裝載已部署模型之計算目標的**部署**設定。 此設定會描述執行模型所需的記憶體和 CPU 需求等事項。
-
-這些專案會封裝成*推斷*設定和*部署*設定。 推斷設定會參考專案腳本和其他相依性。 當您使用 SDK 執行部署時，會以程式設計方式定義這些設定。 當您使用 CLI 時，您會在 JSON 檔案中定義它們。
+當您擁有必要的元件之後，您就可以分析將因部署模型而建立的服務，以瞭解其 CPU 和記憶體需求。
 
 ### <a id="script"></a>1. 定義您的輸入腳本和相依性
 
@@ -267,33 +259,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 * `pyspark`
 * 標準 Python 物件
 
-若要使用架構產生，請在您的 Conda 環境檔案中包含 `inference-schema` 套件。 如需此套件的詳細資訊，請參閱[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。
-
-##### <a name="example-dependencies-file"></a>範例相依性檔案
-
-下列 YAML 是用於推斷的 Conda 相依性檔案範例。 請注意，您必須以 pip 相依性的形式來表示版本 > = 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> 如果您的相依性可透過 Conda 和 pip （來自 PyPi）取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常會隨附預先建立的二進位檔，讓安裝更可靠。
->
-> 如需詳細資訊，請參閱[瞭解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
->
-> 若要檢查您的相依性是否可透過 Conda 取得，請使用 `conda search <package-name>` 命令，或使用位於[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)的封裝索引。
-
-如果您想要使用自動產生架構，您的輸入腳本必須匯入 `inference-schema` 的封裝。
-
-在 `input_sample` 和 `output_sample` 變數中定義輸入和輸出範例格式，其代表 web 服務的要求和回應格式。 在 `run()` 函式的 input 和 output 函數裝飾專案中使用這些範例。 下列 scikit-learn 學習範例會使用架構產生。
+若要使用架構產生，請在相依性檔案中包含 `inference-schema` 套件。 如需此套件的詳細資訊，請參閱[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 在 `input_sample` 和 `output_sample` 變數中定義輸入和輸出範例格式，其代表 web 服務的要求和回應格式。 在 `run()` 函式的 input 和 output 函數裝飾專案中使用這些範例。 下列 scikit-learn 學習範例會使用架構產生。
 
 ##### <a name="example-entry-script"></a>範例專案腳本
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. 定義推斷環境
+### <a name="2-define-your-inference-configuration"></a>2. 定義推斷設定
 
-推斷設定會描述如何設定模型來進行預測。 此設定不屬於您的輸入腳本。 它會參考您的輸入腳本，並用來尋找部署所需的所有資源。 稍後當您部署模型時，就會用到它。
+推斷設定說明如何設定包含模型的 web 服務。 它不是您輸入腳本的一部分。 它會參考您的輸入腳本，並用來尋找部署所需的所有資源。 稍後當您部署模型時，就會用到它。
 
-推斷設定會使用 Azure Machine Learning 環境來定義您的部署所需的軟體相依性。 環境可讓您建立、管理及重複使用定型和部署所需的軟體相依性。 下列範例示範如何從您的工作區載入環境，然後將它與推斷設定搭配使用：
+推斷設定會使用 Azure Machine Learning 環境來定義您的部署所需的軟體相依性。 環境可讓您建立、管理及重複使用定型和部署所需的軟體相依性。 您可以從自訂相依性檔案建立環境，或使用其中一個策劃 Azure Machine Learning 環境。 下列 YAML 是用於推斷的 Conda 相依性檔案範例。 請注意，您必須以 pip 相依性的形式來表示版本 > = 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。 如果您想要使用自動產生架構，您的輸入腳本也必須匯入 `inference-schema` 的封裝。
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> 如果您的相依性可透過 Conda 和 pip （來自 PyPi）取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常會隨附預先建立的二進位檔，讓安裝更可靠。
+>
+> 如需詳細資訊，請參閱[瞭解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
+>
+> 若要檢查您的相依性是否可透過 Conda 取得，請使用 `conda search <package-name>` 命令，或使用位於[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)的封裝索引。
+
+您可以使用相依性檔案來建立環境物件，並將它儲存到您的工作區，以供日後使用：
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+下列範例示範如何從您的工作區載入環境，然後將它與推斷設定搭配使用：
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-如需環境的詳細資訊，請參閱[建立和管理用於定型和部署的環境](how-to-use-environments.md)。
-
-您也可以直接指定相依性，而不使用環境。 下列範例示範如何建立推斷設定，以從 Conda 檔案載入軟體相依性：
 
 如需環境的詳細資訊，請參閱[建立和管理用於定型和部署的環境](how-to-use-environments.md)。
 
@@ -510,7 +504,7 @@ inference_config = InferenceConfig(entry_script="x/y/score.py",
 
 如需有關使用自訂 Docker 映射搭配推斷設定的詳細資訊，請參閱[如何使用自訂 docker 映射部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig 的 CLI 範例
+#### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig 的 CLI 範例
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 如需有關使用自訂 Docker 映射搭配推斷設定的詳細資訊，請參閱[如何使用自訂 docker 映射部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="3-define-your-deployment-configuration"></a>3. 定義您的部署設定
+### <a id="profilemodel"></a>3. 分析模型以判斷資源使用率
+
+在您註冊模型並備妥其部署所需的其他元件之後，您可以判斷所部署服務所需的 CPU 和記憶體。 分析會測試執行模型的服務，並傳回如 CPU 使用量、記憶體使用量和回應延遲的資訊。 它也會根據資源使用量提供 CPU 和記憶體的建議。
+
+若要分析您的模型，您需要：
+* 已註冊的模型。
+* 根據您的輸入腳本和推斷環境定義的推斷設定。
+* 單一資料行表格式資料集，其中每個資料列都包含代表範例要求資料的字串。
+
+> [!IMPORTANT]
+> 此時，我們只支援將預期其要求資料為字串的服務進行分析，例如：字串序列化 json、文字、字串序列化影像等。資料集的每個資料列內容（字串）都會放入 HTTP 要求的主體中，並傳送至封裝模型以進行評分的服務。
+
+以下是如何建立輸入資料集來分析服務的範例，其預期其傳入要求資料會包含序列化 json。 在此情況下，我們建立了一個以資料集為基礎的100實例，其具有相同的要求資料內容。 在真實世界的案例中，我們建議您使用包含各種輸入的較大型資料集，特別是當您的模型資源使用方式/行為與輸入相依時更是如此。
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+一旦您的資料集包含備妥範例要求資料，請建立推斷設定。 推斷設定是以 score.py 和環境定義為基礎。 下列範例示範如何建立推斷設定並執行分析：
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+下列命令示範如何使用 CLI 來分析模型：
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>部署至目標
+
+部署會使用推斷設定部署設定來部署模型。 無論計算目標為何，部署程式都很類似。 部署至 AKS 稍有不同，因為您必須提供 AKS 叢集的參考。
+
+### <a name="choose-a-compute-target"></a>選擇計算目標
+
+您可以使用下列計算目標或計算資源來裝載您的 web 服務部署：
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>定義您的部署設定
 
 在部署模型之前，您必須先定義部署設定。 *部署設定適用于將裝載 web 服務的計算目標。* 例如，當您在本機部署模型時，您必須指定服務接受要求的埠。 部署設定不屬於您的輸入腳本。 它是用來定義將裝載模型和專案腳本之計算目標的特性。
 
@@ -547,10 +627,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>部署至目標
-
-部署會使用推斷設定部署設定來部署模型。 無論計算目標為何，部署程式都很類似。 部署至 AKS 稍有不同，因為您必須提供 AKS 叢集的參考。
 
 ### <a name="securing-deployments-with-ssl"></a>使用 SSL 保護部署
 
@@ -1076,7 +1152,7 @@ docker kill mycontainer
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保護 Azure Machine Learning Web 服務](how-to-secure-web-service.md)
-* [使用部署為 web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
+* [使用部署為 Web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)
 

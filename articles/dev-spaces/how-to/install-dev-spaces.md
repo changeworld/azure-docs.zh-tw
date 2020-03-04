@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 瞭解如何在 AKS 叢集上安裝 Azure Dev Spaces 並安裝用戶端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770623"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251996"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>在 AKS 和用戶端工具上安裝 Azure Dev Spaces
 
@@ -25,15 +25,13 @@ ms.locfileid: "75770623"
 
 使用 `use-dev-spaces` 命令在 AKS 叢集上啟用 Dev Spaces，並遵循提示來進行。
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 上述命令會在*myResourceGroup*群組中的*myAKSCluster*叢集上啟用 Dev Spaces，並建立*預設*的開發人員空間。
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s

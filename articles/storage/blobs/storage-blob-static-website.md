@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906585"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252691"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
@@ -50,7 +50,7 @@ ms.locfileid: "76906585"
 
 使用者可以使用網站的公用 URL，從瀏覽器中查看網站內容。 您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 來尋找 URL。 請使用下表作為指南。
 
-|工具| 指導方針 |
+|工具| 指引 |
 |----|----|
 |**Azure 入口網站** | [使用 Azure 入口網站來尋找網站 URL](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [使用 Azure CLI 來尋找網站 URL](storage-blob-static-website-how-to.md#cli-find-url) |
@@ -92,11 +92,17 @@ ms.locfileid: "76906585"
 > [!TIP]
 > 請考慮將您的網域裝載在 Azure 上。 如需詳細資訊，請參閱[在 Azure DNS 中託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)。
 
-## <a name="pricing"></a>定價
+## <a name="adding-http-headers"></a>新增 HTTP 標頭
+
+沒有任何方法可以將標頭設定為靜態網站功能的一部分。 不過，您可以使用 Azure CDN 來新增標頭和附加（或覆寫）標頭值。 請參閱[AZURE CDN 的標準規則引擎參考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
+
+如果您想要使用標頭來控制快取，請參閱使用快取[規則控制 AZURE CDN](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)快取行為。
+
+## <a name="pricing"></a>Pricing
 
 您可以免費啟用靜態網站裝載。 您只需支付您的網站利用的 blob 儲存體和營運成本。 如需 Azure Blob 儲存體價格的詳細資訊，請參閱 [Azure Blob 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>計量
+## <a name="metrics"></a>度量
 
 您可以在靜態網站頁面上啟用計量。 啟用計量之後，[計量] 儀表板中會報告 **$web**容器中檔案的流量統計資料。
 

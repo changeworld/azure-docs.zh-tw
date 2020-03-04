@@ -6,14 +6,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 351ed146511409fb4c6cc49705c7051b89ea0212
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226488"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246469"
 ---
-# <a name="my-first-graphical-runbook"></a>我的第一個圖形化 runbook
+# <a name="my-first-graphical-runbook"></a>我的第一個圖形化 Runbook
 
 > [!div class="op_single_selector"]
 > * [圖形化](automation-first-runbook-graphical.md)
@@ -22,7 +22,7 @@ ms.locfileid: "78226488"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-本教學課程將逐步引導您在 Azure 自動化中建立[圖形化 runbook](automation-runbook-types.md#graphical-runbooks) 。 從測試和發佈的簡單 runbook 開始，同時瞭解如何追蹤 runbook 作業的狀態。 然後修改 runbook 以實際管理 Azure 資源，在此案例中是啟動 Azure 虛擬機器。 完成本教學課程，藉由新增 runbook 參數和條件式連結，讓 runbook 更穩固。
+本教學課程將逐步引導您在 Azure 自動化中建立 [圖形化 Runbook](automation-runbook-types.md#graphical-runbooks) 。 從測試和發佈的簡單 runbook 開始，同時瞭解如何追蹤 runbook 作業的狀態。 然後修改 runbook 以實際管理 Azure 資源，在此案例中是啟動 Azure 虛擬機器。 完成本教學課程，藉由新增 runbook 參數和條件式連結，讓 runbook 更穩固。
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。

@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508645"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262265"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>向 Azure Active Directory 進行驗證
 
@@ -27,13 +27,13 @@ ms.locfileid: "76508645"
 
 1. 從開啟 Azure Cloud Shell 開始。 然後[選取訂用](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0)帳戶：
 
-   ```azurecli-interactive
+   ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. 接下來，建立具有自訂子域的[認知服務資源](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)。 子功能變數名稱稱必須是全域唯一的，而且不能包含特殊字元，例如： "."、"！"、"，"。
 
-   ```azurecli-interactive
+   ```powershell-interactive
    New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
    ```
 
@@ -49,7 +49,7 @@ ms.locfileid: "76508645"
 
 1. 首先，讓我們來註冊[AAD 應用程式](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)。
 
-   ```azurecli-interactive
+   ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
 
    New-AzADApplication -DisplayName <APP_DISPLAY_NAME> -IdentifierUris <APP_URIS> -Password $SecureStringPassword
@@ -59,7 +59,7 @@ ms.locfileid: "76508645"
 
 2. 接下來，您必須建立 AAD 應用程式的[服務主體](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)。
 
-   ```azurecli-interactive
+   ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
    ```
 
@@ -80,13 +80,13 @@ ms.locfileid: "76508645"
 在此範例中，會使用密碼來驗證服務主體。 接著會使用提供的權杖來呼叫電腦視覺 API。
 
 1. 取得您的**TenantId**：
-   ```azurecli-interactive
+   ```powershell-interactive
    $context=Get-AzContext
    $context.Tenant.Id
    ```
 
 2. 取得權杖：
-   ```azurecli-interactive
+   ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
    $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, $secureSecretObject
@@ -94,7 +94,7 @@ ms.locfileid: "76508645"
    $token
    ```
 3. 呼叫電腦視覺 API：
-   ```azurecli-interactive
+   ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"
    $result = Invoke-RestMethod -Uri $url  -Method Get -Headers @{"Authorization"=$token.CreateAuthorizationHeader()} -Verbose
    $result | ConvertTo-Json

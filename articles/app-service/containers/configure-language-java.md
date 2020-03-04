@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b9db20da58f50c91da88c2f9f890623b741f10a
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 455ebcb28ea6cc8b43431f96a4bc3929a759c2d0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443868"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255886"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux JAVA 應用程式
 
@@ -641,6 +641,8 @@ OpenJDK 的 Azul Zulu Enterprise 組建是免費、多平台、可實際執行�
 ### <a name="deprecation-and-retirement"></a>取代和淘汰
 
 如果將淘汰支援的 Java 執行階段，則使用受影響執行階段的 Azure 開發人員將會在執行階段淘汰之前至少六個月收到淘汰通知。
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035463"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255682"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的常見必要條件
 
@@ -102,9 +102,9 @@ OpenShift 會使用使用者名稱與密碼或服務主體與 Azure 進行通訊
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 建立服務主體，並輸出 OpenShift 所需的認證。
 
-下列範例會建立服務主體，並將其參與者權限指派給名為 openshiftrg 的資源群組。
+下列範例會建立服務主體，並將其參與者許可權指派給名為*openshiftrg*的資源群組。
 
-首先，建立名為 openshiftrg 的資源群組：
+首先，建立名為*openshiftrg*的資源群組：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -158,7 +158,7 @@ az ad sp create-for-rbac --name openshiftsp \
 | routingcertfile  | 路由憑證檔案  |
 | routingkeyfile   | 路由金鑰檔案   |
 
-使用 Azure CLI 建立秘密。 以下是範例。
+使用 Azure CLI 建立秘密。 以下為範例。
 
 ```bash
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem

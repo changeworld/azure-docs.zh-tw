@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2172590a6f8424c315ad116eeb7f86476e0cfa70
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4d4e47808355833ff7ecfb66db13ee86dc4a6402
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228215"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251034"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -60,7 +60,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 
 | **地緣政治區域** | **Azure 區域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **US Gov 雲端** |US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 德克薩斯州、US Gov 維吉尼亞州、US DoD 中部、US DoD 東部  |芝加哥、達拉斯、紐約、鳳凰城、聖安東尼奧、西雅圖、矽谷、華盛頓特區 |
+| **US Gov 雲端** |US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 德克薩斯州、US Gov 維吉尼亞州、US DoD 中部、US DoD 東部  |亞特蘭大、芝加哥、達拉斯、紐約、Phoenix、San Antonio、西雅圖、矽谷、華盛頓特區 |
 | **中國東部** |中國東部、中國東部 2 |上海、上海 2 |
 | **中國北部** |中國北部、中國北部 2 |北京、北京 2 |
 | **德國** |德國中部、德國東部 |柏林、法蘭克福 |
@@ -176,7 +176,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |芝加哥、Phoenix、矽谷、華盛頓特區 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支援 |支援 |紐約、Phoenix、San Antonio、華盛頓特區 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支援 |支援 |芝加哥、達拉斯、紐約、西雅圖、矽谷、華盛頓特區 |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支援 |支援 |亞特蘭大、芝加哥、達拉斯、紐約、西雅圖、矽谷、華盛頓特區 |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支援 |支援 |芝加哥、矽谷、華盛頓特區 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支援 | 支援 | 芝加哥、達拉斯、San Antonio、西雅圖、華盛頓特區 |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |支援 |支援 |芝加哥、達拉斯、紐約、矽谷、華盛頓特區 |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ddf011724f72a8a5eaf4e6398c28b28fffa5bfac
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898760"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246997"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux 上的 Azure App Service 支援 SSH
 
@@ -52,7 +52,7 @@ az webapp create-remote-connection --subscription <subscription-id> --resource-g
 
 命令輸出會為您提供開啟 SSH 工作階段所需的資訊。
 
-```
+```output
 Port 21382 is open
 SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
@@ -60,20 +60,20 @@ Start your favorite client and connect to port 21382
 
 使用本機連接埠，以您所選的用戶端開啟包含您的容器的 SSH 工作階段。 下列範例會使用預設 [ssh](https://ss64.com/bash/ssh.html) 命令：
 
-```azurecli-interactive
+```bash
 ssh root@127.0.0.1 -p <port>
 ```
 
 在出現提示時，輸入 `yes` 繼續連線。 系統會接著提示您輸入密碼。 使用稍早所示的 `Docker!`。
 
-```
+```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 ```
 
 驗證後，您應會看到工作階段歡迎畫面。
 
-```
+```output
   _____
   /  _  \ __________ _________   ____
  /  /_\  \___   /  |  \_  __ \_/ __ \
@@ -89,7 +89,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 嘗試執行 [top](https://ss64.com/bash/top.html) 命令。 您應能夠在程序清單中看到您應用程式的程序。 在下列範例輸出中，它是具有 `PID 263` 的程序。
 
-```
+```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
 CPU:   3% usr   3% sys   0% nic  92% idle   0% io   0% irq   0% sirq
 Load average: 0.07 0.04 0.08 4/765 45738

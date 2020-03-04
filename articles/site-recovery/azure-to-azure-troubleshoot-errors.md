@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902562"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256052"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>針對 Azure 至 Azure VM 複寫錯誤進行疑難排解
 
@@ -80,7 +80,7 @@ ms.locfileid: "75902562"
 
 1. 如果找不到 Symantec 根 CA 憑證，請執行下列命令來下載檔案。 檢查是否有任何錯誤，並遵循建議的網路失敗動作。
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5 pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5 pem**
 
 1. 檢查巴爾的摩根 CA 憑證是否存在：
 
@@ -88,7 +88,7 @@ ms.locfileid: "75902562"
 
 1. 如果找不到巴爾的摩根 CA 憑證，請執行下列命令來下載憑證：
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root pem**
 
 1. 檢查 DigiCert_Global_Root_CA 憑證是否存在：
 
@@ -466,7 +466,7 @@ Linux GRUB 設定檔（/boot/grub/menu.lst "、/boot/grub/grub.cfg、/boot/grub2
 
 將每個裝置名稱取代為對應的 UUID：
 
-1. 執行命令**blkid** ***device name***來尋找裝置的 UUID。 例如：
+1. 執行命令**blkid** ***device name***來尋找裝置的 UUID。 例如，
 
     ```
     blkid /dev/sda1

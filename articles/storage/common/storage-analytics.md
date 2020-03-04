@@ -8,16 +8,16 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750516"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250888"
 ---
 # <a name="storage-analytics"></a>儲存體分析
 
-「Azure 儲存體分析」會執行記錄，並為儲存體帳戶提供衡量標準資料。 您可以使用此資料來追蹤要求、分析使用趨勢，以及診斷儲存體帳戶的問題。
+Azure 儲存體分析會執行記錄，並提供儲存體帳戶的度量資料。 您可以使用此資料來追蹤要求、分析使用量趨勢，以及診斷儲存體帳戶的問題。
 
 若要使用儲存體分析，您必須針對想要監視的每個服務個別啟用它。 您可以從 [ [Azure 入口網站](https://portal.azure.com)] 加以啟用。 如需詳細資訊，請參閱[在 Azure 入口網站中監視儲存體帳戶](storage-monitor-storage-account.md)。 您也可以利用程式設計方式，透過 REST API 或用戶端程式庫來啟用儲存體分析。 使用 [[設定 Blob 服務屬性](/rest/api/storageservices/set-blob-service-properties)]、[[設定佇列服務屬性](/rest/api/storageservices/set-queue-service-properties)]、[[設定資料表服務屬性](/rest/api/storageservices/set-table-service-properties)] 和 [配置[檔案服務屬性](/rest/api/storageservices/Get-File-Service-Properties)] 作業，為每個服務啟用儲存體分析。
 
@@ -42,7 +42,7 @@ ms.locfileid: "75750516"
 
 ### <a name="understanding-billable-requests"></a>了解計費要求
 
-對帳戶的儲存體服務所提出的每個要求，都會被歸類為計費或不計費。 儲存體分析會記錄對服務所做的每個個別要求，包括表示如何處理要求的狀態訊息。 同樣地，儲存體分析會儲存服務及該服務之 API 作業的度量，包括特定狀態訊息的百分比和計數。 這些功能可共同協助您分析計費要求、改善您的應用程式，以及診斷服務要求的問題。 如需計費的詳細資訊，請參閱 [了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
+對帳戶的儲存體服務所提出的每個要求，都會被歸類為計費或不計費。 儲存體分析會記錄對服務所做的每個個別要求，包括表示如何處理要求的狀態訊息。 同樣地，儲存體分析會儲存服務及該服務之 API 作業的度量，包括特定狀態訊息的百分比和計數。 這些功能可共同協助您分析計費要求、改善您的應用程式，以及診斷服務要求的問題。 如需計費的詳細資訊，請參閱 [了解 Azure 儲存體計費 - 頻寬、交易和容量](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
 
 檢視儲存體分析資料時，您可以使用 [儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 主題中的資料表，來判斷哪些要求需要計費。 然後，您可以將記錄和度量資料與狀態訊息進行比較，以查看您是否需為特定要求支付費用。 您也可以使用上述主題中的資料表，來調查儲存體服務或個別 API 作業的可用性。
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905711"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251853"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自動定型時間序列預測模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)物件會定義自動化機器學習工作所需的設定和資料。 類似于回歸問題，您可以定義標準訓練參數，例如工作類型、反復專案數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 下表說明每個參數和其使用方式。
 
-| Param | 說明 | 必要項 |
+| Param | 描述 | 必要項 |
 |-------|-------|-------|
 |`time_column_name`|用來指定輸入資料中用來建立時間序列並推斷其頻率的日期時間資料行。|✓|
 |`grain_column_names`|在輸入資料中定義個別數列群組的名稱。 如果未定義細微性，則會假設資料集為一個時間序列。||
@@ -178,13 +178,14 @@ best_run, fitted_model = local_run.get_output()
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>設定 DNN 啟用預測實驗
 
 > [!NOTE]
-> 自動化 Machine Learning 中預測的 DNN 支援目前處於預覽階段。
+> 自動化 Machine Learning 中預測的 DNN 支援處於預覽狀態，且不支援本機執行。
 
 為了利用 Dnn 進行預測，您必須將 AutoMLConfig 中的 `enable_dnn` 參數設定為 true。 
 
-若要使用 Dnn，我們建議搭配使用 AML 計算叢集與 GPU Sku，並使用至少兩個節點做為計算目標。 如需詳細資訊，請參閱[AML 計算檔](how-to-set-up-training-targets.md#amlcompute)。 如需包含 Gpu 之 VM 大小的詳細資訊，請參閱[GPU 優化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
+建議您使用 AML 計算叢集搭配 GPU Sku，並使用至少兩個節點做為計算目標。 若要讓 DNN 訓練有足夠的時間完成，建議您將實驗超時設定為至少幾個小時。
+如需有關 AML 計算和包含 GPU 之 VM 大小的詳細資訊，請參閱[AML 計算檔](how-to-set-up-training-targets.md#amlcompute)和[GPU 優化虛擬機器大小檔](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
 
-若要讓 DNN 訓練有足夠的時間完成，建議您將實驗時間設定為至少幾個小時。
+如需運用 Dnn 的詳細程式碼範例，請參閱[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
 ### <a name="view-feature-engineering-summary"></a>視圖功能工程摘要
 

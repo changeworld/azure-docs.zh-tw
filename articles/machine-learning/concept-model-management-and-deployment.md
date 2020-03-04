@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589363"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250869"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
@@ -71,6 +71,11 @@ Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性
 您無法刪除使用中部署的已註冊模型。
 如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#registermodel)的註冊模型一節。
 
+### <a name="profile-models"></a>設定檔模型
+
+Azure Machine Learning 可以協助您瞭解當您部署模型時，將會建立之服務的 CPU 和記憶體需求。 分析會測試執行模型的服務，並傳回如 CPU 使用量、記憶體使用量和回應延遲的資訊。 它也會根據資源使用量提供 CPU 和記憶體建議。
+如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#profilemodel)的分析一節。
+
 ### <a name="package-and-debug-models"></a>封裝和調試模型
 
 將模型部署到生產環境之前，它會封裝成 Docker 映射。 在大部分情況下，映射建立會在部署期間自動在背景中進行。 您可以手動指定映射。
@@ -78,10 +83,6 @@ Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性
 如果您在部署時遇到問題，您可以在本機開發環境上部署，以進行疑難排解和偵錯工具。
 
 如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#registermodel)和[疑難排解部署](how-to-troubleshoot-deployment.md)。
-
-### <a name="validate-and-profile-models"></a>驗證和分析模型
-
-Azure Machine Learning 可以流量分析來判斷部署模型時所要使用的理想 CPU 和記憶體設定。 模型驗證會在此程式中進行，並使用您為分析程式提供的資料。
 
 ### <a name="convert-and-optimize-models"></a>轉換和優化模型
 

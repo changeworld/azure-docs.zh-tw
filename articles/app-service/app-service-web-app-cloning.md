@@ -1,18 +1,16 @@
 ---
 title: 使用 PowerShell 複製應用程式
 description: 了解如何使用 PowerShell，將您的 App Service 應用程式複製到新的應用程式。 涵蓋各種複製案例，包括流量管理員整合。
-author: ahmedelnably
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967215"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255193"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 複製 Azure App Service App
 
@@ -75,7 +73,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 ## <a name="cloning-an-existing-app-slot"></a>複製現有的應用程式位置
 案例：您想要將應用程式的現有部署位置複製到新的應用程式或新的位置。 新的應用程式可以位於與原始應用程式位置相同的區域或不同區域中。
 
-若知道包含來源應用程式的資源群組名稱，您就能使用下列 PowerShell 命令，來取得繫結至 `source-app` 之來源應用程式位置的資訊 (在此例中名為 `source-appslot`)：
+若知道包含來源應用程式的資源群組名稱，您就能使用下列 PowerShell 命令，來取得繫結至 `source-appslot` 之來源應用程式位置的資訊 (在此例中名為 `source-app`)：
 
 ```powershell
 $srcappslot = Get-AzWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-app -Slot source-appslot

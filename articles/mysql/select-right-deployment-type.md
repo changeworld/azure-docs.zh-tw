@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935454"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255540"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中選擇正確的 MySQL 伺服器選項
 
@@ -33,7 +33,7 @@ ms.locfileid: "76935454"
 
 |            | 適用於 MySQL 的 Azure 資料庫 | Azure Vm 上的 MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
-| 服務等級協定 (SLA)                | 提供99.99% 可用性的 SLA| 同一個可用性設定組中有兩個或多個實例，最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM，99.9% 的可用性。<br/><br/>99.99% 搭配多個可用性設定組中的多個實例使用可用性區域。<br/><br/>請參閱[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
+| 服務等級協定（SLA）                | 提供99.99% 可用性的 SLA| 同一個可用性設定組中有兩個或多個實例，最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM，99.9% 的可用性。<br/><br/>99.99% 搭配多個可用性設定組中的多個實例使用可用性區域。<br/><br/>請參閱[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 作業系統修補        | 自動  | 由客戶管理 |
 | MySQL 修補     | 自動  | 由客戶管理 |
 | 高可用性 | 高可用性（HA）模型是根據發生節點層級中斷時的內建容錯移轉機制。 在這種情況下，服務會自動建立新的實例，並將儲存體附加至這個實例。 | 客戶架構設計、實施、測試及維護高可用性。 功能可能包括叢集、複寫等。|
@@ -49,7 +49,7 @@ ms.locfileid: "76935454"
 
 有數個因素會影響您的決定選擇 PaaS 或 IaaS 來裝載您的 MySQL 資料庫。
 
-### <a name="cost"></a>成本
+### <a name="cost"></a>Cost
 
 有限的資金通常是決定裝載資料庫最佳解決方案的主要考慮。 無論您是在已建立的公司中，只有極少現金或小組，且在嚴格的預算限制之下運作，都是如此。 本節說明 Azure 中適用于 Azure Vm 上適用於 MySQL 的 Azure 資料庫和 MySQL 的計費和授權基本概念。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76935454"
 * [虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-### <a name="administration"></a>系統管理
+### <a name="administration"></a>管理
 
 對於許多企業而言，轉換至雲端服務的決策，與卸載系統管理的複雜性有關，因為這是關於成本。 有了 IaaS 和 PaaS，Microsoft：
 
@@ -102,4 +102,4 @@ ms.locfileid: "76935454"
 ## <a name="next-steps"></a>後續步驟
 
 * 請參閱[適用於 MySQL 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/MySQL/)。
-* 從[建立您的第一部伺服器](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)開始。
+* 從[建立您的第一部伺服器](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)開始。

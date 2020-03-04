@@ -5,14 +5,14 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708303"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252069"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題
 
 本文說明 Azure Container Registry 的常見問題和已知問題。
 
@@ -28,11 +28,11 @@ ms.locfileid: "75708303"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>我可以使用 Resource Manager 範本建立 Azure Container Registry 嗎？
 
-可以。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
+是的。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中的映射是否有安全性弱點掃描？
 
-可以。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
+是的。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何? 使用 Azure Container Registry 設定 Kubernetes 嗎？
 
@@ -114,13 +114,13 @@ ACR 支援 Docker Registry HTTP API V2。 您可以在 `https://<your registry l
 
 如果您在 bash 上：
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 針對 Powershell：
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 您應該會看到 Azure 入口網站中的儲存體使用量已增加，或者您也可以使用 CLI 來查詢使用方式。
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 使用 Azure CLI 或入口網站刪除映射，並在幾分鐘內檢查更新過的使用方式。
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -186,9 +186,9 @@ az acr login -n MyRegistry
 使用任何最近的 docker 用戶端（18.03.0 版和更新版本）來啟用 TLS 1.2。 
 
 > [!IMPORTANT]
-> 從2020年1月13日開始，Azure Container Registry 將需要伺服器和應用程式的所有安全連線，才能使用 TLS 1.2。 TLS 1.0 和1.1 的支援將會淘汰。
+> 從 2020 年 1 月 13 日開始，Azure Container Registry 將要求所有安全連線來自伺服器和應用程式，才能使用 TLS 1.2。 將會淘汰 TLS 1.0 和1.1 的支援。
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry 是否支援內容信任？
+### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry 支援內容信任嗎？
 
 是，您可以在 Azure Container Registry 中使用受信任的映射，因為[Docker Notary](https://docs.docker.com/notary/getting_started/)已整合並可啟用。 如需詳細資訊，請參閱[Azure Container Registry 中的內容信任](container-registry-content-trust.md)。
 
@@ -216,12 +216,12 @@ ACR 支援提供不同許可權層級的[自訂角色](container-registry-roles.
   接著，您可以將 `AcrPull` 或 `AcrPush` 角色指派給使用者（下列範例會使用 `AcrPull`）：
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   或者，將角色指派給其應用程式識別碼所識別的服務主體：
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ ACR 支援提供不同許可權層級的[自訂角色](container-registry-roles.
   az acr repository list -n myRegistry
   ```
 
- 若要提取映射：
-    
-  ```azurecli
+* 若要提取映射：
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ ACR 支援提供不同許可權層級的[自訂角色](container-registry-roles.
  - 如果 `docker pull` 持續失敗，則 Docker daemon 可能發生問題。 藉由重新開機 Docker daemon，通常可以減輕問題。 
  - 如果您在重新開機 Docker daemon 之後繼續看到此問題，則問題可能是電腦的一些網路連線問題。 若要檢查電腦上的一般網路是否狀況良好，請執行下列命令來測試端點連線能力。 包含此連線檢查命令的最低 `az acr` 版本為2.2.9。 如果您使用的是較舊的版本，請升級您的 Azure CLI。
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - 在所有 Docker 用戶端操作上，您應該一律具有重試機制。
 
 ### <a name="docker-pull-is-slow"></a>Docker pull 的速度很慢
@@ -308,7 +309,7 @@ unauthorized: authentication required
 ```
 
 若要解決此錯誤：
-1. 將選項 `--signature-verification=false` 新增至 Docker daemon 設定檔 `/etc/sysconfig/docker`。 例如：
+1. 將選項 `--signature-verification=false` 新增至 Docker daemon 設定檔 `/etc/sysconfig/docker`。 例如，
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -360,10 +361,10 @@ sudo service docker restart
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>新的使用者權限在更新之後可能不會立即生效
 
-當您將新的許可權（新角色）授與服務主體時，變更可能不會立即生效。 可能有二個原因：
+當您將新的許可權（新角色）授與服務主體時，變更可能不會立即生效。 有兩個可能的原因：
 
 * Azure Active Directory 角色指派延遲。 一般來說，速度很快，但可能需要幾分鐘的時間，因為傳播延遲。
-* ACR token 伺服器上的許可權延遲。 這最多可能需要花費 10 分鐘。 若要減輕問題，您可以 `docker logout`，然後在1分鐘後再使用相同的使用者進行驗證：
+* ACR token 伺服器上的許可權延遲。 這可能需要10分鐘的時間。 若要減輕問題，您可以 `docker logout`，然後在1分鐘後再使用相同的使用者進行驗證：
 
   ```bash
   docker logout myregistry.azurecr.io
@@ -424,7 +425,7 @@ curl $redirect_url
 * 缺少網路連線能力
 * 防火牆
 * Ad 封鎖器
-* 定義磁碟區是否經過叢集處理
+* DNS 錯誤
 
 請洽詢您的網路系統管理員，或檢查您的網路設定和連線能力。 請嘗試使用您的 Azure CLI 執行 `az acr check-health -n yourRegistry`，以檢查您的環境是否能夠連線至容器登錄。 此外，您也可以在瀏覽器中嘗試 incognito 或私用會話，以避免任何過時的瀏覽器快取或 cookie。
 

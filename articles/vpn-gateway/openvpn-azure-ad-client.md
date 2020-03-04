@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134505"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251605"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 VPN 用戶端以進行 P2S OpenVPN 通訊協定連線： Azure AD 驗證
 
@@ -28,7 +28,7 @@ ms.locfileid: "77134505"
 
 ### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
 
-使用此[連結](https://go.microsoft.com/fwlink/?linkid=2117554)來下載 Azure VPN 用戶端。
+使用此[連結](https://go.microsoft.com/fwlink/?linkid=2117554)下載 Azure VPN Client。
 
 ### <a name="cert"></a>建立以憑證為基礎的用戶端設定檔
 
@@ -60,23 +60,23 @@ ms.locfileid: "77134505"
 
 1. 在頁面上，選取 [匯入]。
 
-    ![入口](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![匯入](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
-    ![入口](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![匯入](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定設定檔的名稱，然後選取 [儲存]。
 
-    ![入口](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![匯入](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 選取 [連線] 以連線至 VPN。
 
-    ![入口](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![匯入](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
-    ![入口](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![匯入](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>刪除用戶端設定檔
 
@@ -92,23 +92,23 @@ ms.locfileid: "77134505"
 
 1. 在頁面上，依序選取 [ **+** ] 和 [ **+ 新增**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填寫連接資訊。 如果您不確定這些值，請洽詢您的系統管理員。 填寫值之後，選取 [**儲存**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 選取 [連線] 以連線至 VPN。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 選取適當的認證，然後選取 [**繼續**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功連線後，圖示將會變成綠色，並顯示 [**已連線**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="autoconnect"></a>自動連接
 
@@ -116,19 +116,19 @@ ms.locfileid: "77134505"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **VPN 設定**]。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊上選取 **[是]** 。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 請確定您要設定的連線尚未連接，然後將設定檔反白顯示，並勾選 [**自動連接]** 核取方塊。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>診斷連線問題
 
@@ -168,9 +168,26 @@ ms.locfileid: "77134505"
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何? 將自訂 DNS 伺服器新增到 VPN 用戶端嗎？
+
+您可以修改下載的設定檔 XML 檔案，並將 **\<dnsservers >\<dnsserver > \</dnsserver >\</dnsservers >** 標記
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並將 **\<route >\<includeroutes >\<目的地 >\<mask > \</route >\</includeroutes >\</destination >\</mask >** 標記
+您可以修改下載的設定檔 XML 檔案，並將 **\<includeroutes >\<路由 >\<目的地 >\<mask > \</destination >\</mask >\</route >\</includeroutes >** 標記
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ ms.locfileid: "77134505"
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何? 封鎖（排除）來自 VPN 用戶端的路由嗎？
+
+您可以修改下載的設定檔 XML 檔案，並將 **\<excluderoutes >\<路由 >\<目的地 >\<mask > \</destination >\</mask >\</route >\</excluderoutes >** 標記
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

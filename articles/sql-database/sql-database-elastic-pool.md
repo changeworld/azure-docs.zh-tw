@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901163"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252692"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>彈性集區可協助您管理及調整多個 Azure SQL 資料庫
 
@@ -177,7 +177,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 在 Azure 入口網站中，您可以監視彈性集區與集區內資料庫的使用率。 也可以對彈性集區進行一些變更，並且一次提交所有的變更。 這些變更包括新增或移除資料庫、變更您的彈性集區設定，或變更您的資料庫設定。
 
-若要開始監視您的彈性集區，請在入口網站中尋找並開啟彈性集區。 您會先看到一個畫面，讓您瞭解彈性集區的狀態。 其中包括：
+若要開始監視您的彈性集區，請在入口網站中尋找並開啟彈性集區。 您會先看到一個畫面，讓您瞭解彈性集區的狀態。 這包括：
 
 - 監視圖表會顯示彈性集區的資源使用量
 - 彈性集區的最近警示和建議 (如果有的話)
@@ -222,6 +222,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 ## <a name="next-steps"></a>後續步驟
 
+- 如需定價資訊，請參閱[彈性集區定價](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
 - 若要調整彈性集區，請參閱[調整彈性集區](sql-database-elastic-pool-scale.md)和[調整彈性集區 - 範例程式碼](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - 若要觀賞影片，請參閱[有關 Azure SQL Database 彈性功能的 Microsoft Virtual Academy 視訊課程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。

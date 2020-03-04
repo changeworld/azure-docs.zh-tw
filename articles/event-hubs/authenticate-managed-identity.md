@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368522"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251520"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用在 Azure 虛擬機器（Vm）、函式應用程式、虛擬機器擴展集及其他服務中執行的應用程式 Azure AD 認證，來授權事件中樞資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -79,10 +79,13 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 4. 將此身分識別指派給命名空間層級或事件中樞層級的**事件中樞資料擁有**者角色。 
 5. 執行 web 應用程式，輸入命名空間名稱和事件中樞名稱、訊息，然後選取 [**傳送**]。 若要接收事件，請選取 [**接收**]。 
 
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[EventHubs （最新）](#tab/latest)
+#### <a name="azuremessagingeventhubs-latest"></a>[EventHubs （最新）](#tab/latest)
 您現在可以啟動 web 應用程式，並將瀏覽器指向範例 aspx 頁面。 您可以從[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)存放庫中的事件中樞資源，尋找用來傳送和接收資料的範例 web 應用程式。
 
-從[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)安裝最新的套件，然後使用**EventHubProducerClient**和使用**EventHubConsumerClient**來接收事件，開始將事件傳送至事件中樞。  
+從[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)安裝最新的套件，然後使用**EventHubProducerClient**和使用**EventHubConsumerClient**來接收事件，開始將事件傳送至事件中樞。 
+
+> [!NOTE]
+> 如需使用受控識別將事件發佈到事件中樞的 JAVA 範例，請參閱[GitHub 上的使用 Azure 身分識別範例發佈事件](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)。
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -127,7 +130,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[EventHubs （舊版）](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[EventHubs （舊版）](#tab/old)
 您現在可以啟動 web 應用程式，並將瀏覽器指向範例 aspx 頁面。 您可以從[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)存放庫中的事件中樞資源，尋找用來傳送和接收資料的範例 web 應用程式。
 
 從[NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)安裝最新套件，並使用 EventHubClient 開始傳送到事件中樞並接收資料，如下列程式碼所示： 
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 您可以使用 Apache Kafka 應用程式，將訊息傳送至使用受控識別 OAuth 的 Azure 事件中樞，並從中接收訊息。 請參閱 GitHub 上的下列範例：[適用于 Kafka 的事件中樞-使用受控識別 OAuth 來傳送和接收訊息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
 
 ## <a name="samples"></a>Samples
+- **EventHubs**範例
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
     這些範例會使用舊的**EventHubs**程式庫，但您可以使用最新的**EventHubs**程式庫輕鬆地將其更新為。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
-- [EventHubs 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     此範例已更新為使用最新的**EventHubs**程式庫。
 - [事件中樞 Kafka-使用受控識別 OAuth 來傳送和接收訊息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

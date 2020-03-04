@@ -3,12 +3,12 @@ title: SAP Hana 備份支援矩陣
 description: 在本文中，您將瞭解當您使用 Azure 備份來備份 Azure Vm 上的 SAP Hana 資料庫時，所支援的案例和限制。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 941ec71cec42a4a61b6b3e24712471c5df448112
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161579"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255986"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上 SAP Hana 資料庫 備份的支援矩陣
 
@@ -25,7 +25,7 @@ Azure 備份支援將 SAP Hana 資料庫備份至 Azure。 本文摘要說明當
 | **地區**                   | **GA**<br> **美洲**–美國中部、美國東部2、美國東部、美國中北部、美國中南部、美國西部2、美國中西部、美國西部、加拿大中部、加拿大東部、巴西南部 <br> **亞太地區**–澳大利亞中部、澳大利亞中部2、澳大利亞東部、澳大利亞東南部、日本東部、日本西部、韓國中部、南韓南部、東亞、東南亞、印度中部、印度南部、印度西部、中國東部、中國北部、中國東部2、中國北部2 <br> **歐洲**–西歐、北歐、法國中部、英國南部、英國西部、德國北部、德國中西部、瑞士北部、瑞士西部、中央瑞士北部 <br> **非洲/ME** -南非北部、南非西部、阿拉伯聯合大公國北部、阿拉伯聯合大公國中部  <BR>  **Azure Government 區域** | 法國南部、德國中部、德國東北部、US Gov 愛荷華州 |
 | **作業系統版本**            | SLES 12 SP2、SP3 或 SP4;SLES 15 （含 SP1）                              | RHEL                                                |
 | **HANA 版本**          | Hana 1.x 上的 SDC、HANA 2. x 上的 MDC < = SPS04 Rev 46       | -                                                            |
-| **HANA 部署**       | 單一 Azure VM 上的 SAP Hana-僅限相應增加               | 向外延展                                                    |
+| **HANA 部署**       | 在單一 Azure VM 上 SAP Hana-僅限相應增加。 <br><br> 針對高可用性部署，兩部不同電腦上的兩個節點都會被視為個別的節點，並具有不同的資料鏈。               | 向外延展 <br><br> 在高可用性部署中，備份不會自動容錯移轉至次要節點。 應分別針對每個節點來設定備份。                                           |
 | **HANA 實例**         | 單一 Azure VM 上的單一 SAP Hana 實例-僅相應增加 | 單一 VM 上的多個 SAP Hana 實例                  |
 | **HANA 資料庫類型**    | 2\.x 上的單一資料庫容器（SDC），2.x 上的多資料庫容器（MDC） | HANA 1.x 中的 MDC                                              |
 | **HANA 資料庫大小**     | 2 TB 完整備份大小，由 HANA 回報）                   |                                                              |

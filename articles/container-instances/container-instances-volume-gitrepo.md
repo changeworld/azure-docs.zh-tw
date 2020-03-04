@@ -3,12 +3,12 @@ title: 將 gitRepo 磁片區掛接至容器群組
 description: 了解如何掛接 gitRepo 磁碟區，以將 Git 存放庫複製到您的容器執行個體中
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533223"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252093"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 gitRepo 磁碟區
 
@@ -48,8 +48,11 @@ az container create \
 
 若要確認已掛接 gitRepo 磁片區，請使用[az container exec][az-container-exec]在容器中啟動 shell，並列出目錄：
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -60,7 +63,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>掛接 gitRepo 磁碟區：Resource Manager
 
-當您使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)部署容器執行個體時，若要掛接 gitRepo 磁碟區，請先在範本的容器群組 `properties` 區段中填入 `volumes` 陣列。 然後，針對您想要掛接 gitRepo 磁碟區所在容器群組中的每個容器，填入容器定義 `properties` 區段中的 `volumeMounts` 陣列。
+當您使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)部署容器執行個體時，若要掛接 gitRepo 磁碟區，請先在範本的容器群組 `volumes` 區段中填入 `properties` 陣列。 然後，針對您想要掛接 gitRepo 磁碟區所在容器群組中的每個容器，填入容器定義 `volumeMounts` 區段中的 `properties` 陣列。
 
 例如，下列 Resource Manager 範本會建立一個由單一容器組成的容器群組。 容器會複製由 *gitRepo* 磁碟區區塊所指定的兩個 GitHub 存放庫。 第二個磁碟區包含指定要複製到其中之目錄的其他屬性，和要複製之指定修訂的認可雜湊。
 
@@ -82,13 +85,13 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，私人 GitHub 存放庫的 Azure CLI `--gitrepo-url` 參數會類似下列項目 (其中 "gituser" 是 GitHub 使用者名稱，"abcdef1234fdsa4321abcdef" 是使用者的個人存取權杖)：
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 針對 Azure Repos Git 存放庫，指定任何使用者名稱 (您可以如同下列範例一樣使用 "azurereposuser") 與有效的 PAT 搭配使用：
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226534"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255988"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自動化中的圖形化編寫
 
@@ -25,7 +25,7 @@ Azure 自動化中的所有 runbook 都是 Windows PowerShell 工作流程。 �
 
 ## <a name="overview-of-graphical-editor"></a>圖形化編輯器概觀
 
-您可以藉由建立或編輯圖形化 runbook，在 Azure 入口網站中開啟圖形化編輯器。
+您可以透過建立或編輯圖形化 Runbook，在 Azure 入口網站中開啟圖形化編輯器。
 
 ![圖形化工作區](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
 
@@ -163,7 +163,7 @@ $DateTimeStart
 
 ### <a name="start-of-activity"></a>活動開始
 
-圖形化 runbook 會從沒有連入連結的任何活動開始。 通常只有一個活動會作為 runbook 的啟動活動。 如果有多個活動沒有連入連結，runbook 就會開始以平行方式執行。 每個活動完成時，會遵循連結以執行其他活動。
+圖形化 Runbook 會從沒有傳入連結的活動開始。 通常只有一個活動會作為 runbook 的啟動活動。 如果有多個活動沒有連入連結，runbook 就會開始以平行方式執行。 每個活動完成時，會遵循連結以執行其他活動。
 
 ### <a name="link-conditions"></a>連結條件
 
@@ -241,7 +241,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ### <a name="checkpoints"></a>檢查點
 
-您可以在圖形化 PowerShell 工作流程 Runbook 中設定[檢查點](automation-powershell-workflow.md#checkpoints)，方法是在任何活動上選取「檢查點 Runbook」。 這會導致在執行活動之後設定檢查點。
+您可以在圖形化 PowerShell 工作流程 runbook 中設定[檢查](automation-powershell-workflow.md#checkpoints)點，方法是在任何活動上選取 [**檢查點 runbook** ]。 這會導致在執行活動之後設定檢查點。
 
 ![檢查點](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
@@ -249,7 +249,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ## <a name="runbook-input-and-output"></a>Runbook 輸入和輸出
 
-### < 名稱-「runbook-輸入」 ></a>Runbook 輸入
+### Runbook 輸入<a name="runbook-input"></a>
 
 Runbook 需要使用者透過 Azure 入口網站或從另一個 runbook 啟動 runbook 時的輸入，如果目前的帳戶是用來做為子系。 例如，針對建立虛擬機器的 runbook，使用者可能需要在每次 runbook 啟動時，將這類資訊提供為虛擬機器的名稱和其他屬性。
 
@@ -407,15 +407,15 @@ Runbook 必須在其啟動時和每個檢查點之後進行驗證。 因此，�
 
 ![活動輸出](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
-## <a name="exporting-and-importing-a-graphical-runbook"></a>匯出和匯入圖形化 runbook
+## <a name="exporting-and-importing-a-graphical-runbook"></a>匯出和匯入圖形化 Runbook
 
-您只能匯出已發行的圖形化 runbook 版本。 如果尚未發行 runbook，則會停用 [**匯出**] 按鈕。 當您按一下 [**匯出**] 按鈕時，runbook 會下載至您的本機電腦。 檔案名與副檔名為 **.graphrunbook**的 runbook 名稱相符。
+您可以只匯出圖形化 Runbook 的已發行版本。 如果尚未發行 runbook，則會停用 [**匯出**] 按鈕。 當您按一下 [**匯出**] 按鈕時，runbook 會下載至您的本機電腦。 檔案名與副檔名為 **.graphrunbook**的 runbook 名稱相符。
 
-您可以在加入 Runbook 時選取 [匯入] 選項，藉以匯入圖形化或圖形化 PowerShell 工作流程 Runbook 檔案。 當您選取要匯入的檔案時，您可以保留相同的名稱，或提供一個新檔案。 [ **Runbook 類型**] 欄位會在評估選取的檔案之後，顯示 runbook 的類型。 如果您嘗試選取不正確的不同類型，圖形化編輯器會顯示一則訊息，指出有潛在的衝突，而且轉換期間可能會有語法錯誤。
+新增 runbook 時，您可以選取 [匯**入**] 選項來匯入圖形化或圖形化 PowerShell 工作流程 runbook 檔案。 當您選取要匯入的檔案時，您可以保留相同的名稱，或提供一個新檔案。 [ **Runbook 類型**] 欄位會在評估選取的檔案之後，顯示 runbook 的類型。 如果您嘗試選取不正確的不同類型，圖形化編輯器會顯示一則訊息，指出有潛在的衝突，而且轉換期間可能會有語法錯誤。
 
 ![匯入 Runbook](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
 
-## <a name="testing-a-graphical-runbook"></a>測試圖形化 runbook
+## <a name="testing-a-graphical-runbook"></a>測試圖形化 Runbook
 
 Azure 自動化中的每個圖形化 runbook 都有草稿版本和已發佈版本。 您只能執行已發行的版本，而只可以編輯草稿版本。 已發行版本不會受到草稿版本的任何變更影響。 當草稿版本準備好可供使用時，您會將它發佈，以草稿版本覆寫目前已發行的版本。
 
@@ -423,7 +423,7 @@ Azure 自動化中的每個圖形化 runbook 都有草稿版本和已發佈版�
 
 開啟您圖形化 runbook 的測試控制項，方法是開啟 runbook 進行編輯，然後按一下 [**測試窗格]** 。 測試控制項會提示輸入參數，您可以按一下 [**啟動**] 來啟動 runbook。
 
-## <a name="publishing-a-graphical-runbook"></a>發佈圖形化 runbook
+## <a name="publishing-a-graphical-runbook"></a>發行圖形化 Runbook
 
 開啟 runbook 進行編輯，然後按一下 [**發佈**]，以發佈圖形化 runbook。 Runbook 的可能狀態如下：
 

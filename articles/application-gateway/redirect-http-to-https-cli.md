@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: ff615507723b949105fc2b604d6bff869bdb33dc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108764"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246866"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
@@ -28,7 +28,7 @@ ms.locfileid: "74108764"
 > * 新增接聽程式和重新導向規則
 > * 建立包含預設後端集區的虛擬機器擴展集
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,13 +38,13 @@ ms.locfileid: "74108764"
 
 若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 對於此教學課程，您會使用 openssl 命令建立自我簽署的憑證和 pfx 檔案。
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 輸入對憑證有意義的值。 您可以接受預設值。
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 *az network vnet create* 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet[](/cli/azure/network/vnet) 的子網路。 然後您可以使用 *az network vnet subnet create* 新增名為 myBackendSubnet[](/cli/azure/network/vnet/subnet) 的子網路，後端伺服器需要該子網路。 使用 *az network public-ip create* 建立名為 myAGPublicIPAddress[](/cli/azure/network/public-ip) 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -159,7 +159,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>新增路由規則
 
-使用 *az network application-gateway rule create*，將名為 [rule2](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 且具備重新導向設定的路由規則新增至應用程式閘道。
+使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)，將名為 *rule2* 且具備重新導向設定的路由規則新增至應用程式閘道。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -208,7 +208,7 @@ az vmss extension set \
 
 若要取得應用程式閘道的公用 IP 位址，您可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 將公用 IP 位址複製並貼到您瀏覽器的網址列。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -224,7 +224,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立自我簽署憑證

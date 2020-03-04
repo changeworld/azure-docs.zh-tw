@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462168"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249735"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的[**Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)參考頁面。
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK for Python v 1.1.2 rc0
+
++ **Bug 修正和改善**
+  + **azureml-automl-核心**
+    + 已針對 automl ONNX 模型啟用批次模式推斷（只接受多個資料列）
+    + 改善資料集的頻率偵測、缺少資料或包含異常資料點
+    + 已新增移除不符合主要 frequrncy 之資料點的功能。
+  + **azureml-automl-執行時間**
+    + 已修正如果定型集中未出現的細微性出現在測試集中，則擲回錯誤的問題
+    + 已移除預測服務評分期間的 y_query 需求
+  + **azureml-contrib-mir**
+    + 在 MirWebservice 類別中新增功能，以取得存取權杖
+  + **azureml-核心**
+    + 已部署的 AzureML Webservices 現在會預設為 `INFO` 記錄。 這可以藉由在已部署的服務中設定 `AZUREML_LOG_LEVEL` 環境變數來加以控制。
+    + 修正反覆運算 `Dataset.get_all` 以傳回所有已向工作區註冊的資料集。
+    + 當傳遞不正確類型給資料集建立 Api 的 `path` 引數時，改善錯誤訊息。
+    + Python sdk 使用探索服務來使用「api」端點，而不是「管線」。
+    + 結算所有 SDK 呼叫中的新路由
+    + 將 ModelManagementService 呼叫的路由變更為新的整合結構
+      + 讓工作區更新方法可公開使用。
+      + 已在工作區更新方法中新增 image_build_compute 參數，以允許使用者更新映射組建的計算
+    +  已將取代訊息新增至舊的分析工作流程。 已修正分析 cpu 和記憶體限制
+  + **azureml-解讀**
+    + 更新 azureml-解讀以解讀-社區 0.6. *
+  + **azureml-mlflow**
+    + 將對主權雲端的支援新增至 azureml. mlflow
+  + **azureml-管線-步驟**
+    + 已將 `AutoMLStep` 移至 `azureml-pipeline-steps package`。 已取代 `azureml-train-automl-runtime`內的 `AutoMLStep`。
+  + **azureml-定型-automl-用戶端**
+    + 已修正可能會在遠端執行的版本不正確的情況下安裝特定套件的問題。
+  + **azureml-定型-automl-執行時間**
+    + 已修正遠端執行中頻率偵測的問題
+    + 已將 `AutoMLStep` 移至 `azureml-pipeline-steps package`。 已取代 `azureml-train-automl-runtime`內的 `AutoMLStep`。
+  + **azureml-定型-核心**
+    + 已將 `AutoMLStep` 移至 `azureml-pipeline-steps package`。 已取代 `azureml-train-automl-runtime`內的 `AutoMLStep`。
 
 ## <a name="2020-02-18"></a>2020-02-18
 

@@ -3,7 +3,7 @@ title: 針對不支援 TLS 1.2 的應用程式所造成的問題進行疑難排�
 description: 針對不支援 TLS 1.2 的應用程式所造成的問題進行疑難排解
 services: cloud-services
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: vashan
 editor: ''
 tags: top-support-issue
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 161c24b4e751eea9477e9d338722629daa97e193
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425029"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250446"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>針對不支援 TLS 1.2 的應用程式進行疑難排解
 本文說明如何啟用舊版的 TLS 通訊協定（TLS 1.0 和1.1），以及套用舊版的加密套件，以支援 Windows Server 2019 雲端服務 web 和背景工作角色上的其他通訊協定。 

@@ -3,8 +3,8 @@ title: 教學課程：透過 Azure CLI 將于 postgresql 遷移至適用於 Post
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何透過 CLI 使用 Azure 資料庫移轉服務，從內部部署于 postgresql 到適用於 PostgreSQL 的 Azure 資料庫進行線上遷移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470933"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255631"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教學課程：透過 Azure CLI，使用 DMS 將于 postgresql 遷移至 Azure DB for 于 postgresql online
 
@@ -38,7 +38,7 @@ ms.locfileid: "77470933"
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要：
 
@@ -108,7 +108,7 @@ ms.locfileid: "77470933"
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    例如：
+    例如，
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -182,7 +182,7 @@ ms.locfileid: "77470933"
        ```
        az extension list -otable
        ```
-       您應該會看見下列輸出：
+       您應該會看到下列輸出：
 
        ```
        ExtensionType    Name
@@ -230,7 +230,7 @@ ms.locfileid: "77470933"
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    例如：
+    例如，
 
     ```
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -476,7 +476,7 @@ ms.locfileid: "77470933"
     az dms project task cutover -h
     ```
 
-    例如：
+    例如，
 
     ```
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory

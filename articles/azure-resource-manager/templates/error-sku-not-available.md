@@ -3,12 +3,12 @@ title: SKU 無法使用錯誤
 description: 描述如何在使用 Azure Resource Manager 部署資源時，針對 [無法使用 SKU] 錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5d055540b4c0d8f2900d2ede6735662801be5974
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462287"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250651"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解決 SKU 無法使用的錯誤
 
@@ -16,7 +16,7 @@ ms.locfileid: "77462287"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>徵狀
+## <a name="symptom"></a>徵兆
 
 在部署資源 (通常是虛擬機器) 時，您可能會收到下列錯誤碼和錯誤訊息︰
 
@@ -70,7 +70,7 @@ az vm list-skus --location southcentralus --size Standard_F --output table
 
 此命令會傳回類似以下的結果：
 
-```azurecli
+```output
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
 ---------------  --------------  ----------------  -------  --------------  --------------
 virtualMachines  southcentralus  Standard_F1                ...             None

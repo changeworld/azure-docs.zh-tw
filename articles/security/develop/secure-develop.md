@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834972"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255651"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制項。 涵蓋 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，您可以用來開發更安全的應用程式。
@@ -99,7 +99,7 @@ Azure Marketplace 提供的[開發人員工具](https://azuremarketplace.microso
 
 如果您的應用程式允許檔案上[傳](https://www.owasp.org/index.php/Unrestricted_File_Upload)，請考慮您可以為此具風險活動採取的預防措施。 在許多攻擊中，第一個步驟是將一些惡意程式碼放入遭受攻擊的系統中。 使用檔案上傳可協助攻擊者達成此目的。 OWASP 提供驗證檔案的解決方案，以確保您要上傳的檔案是安全的。
 
-反惡意程式碼防護可協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可以安裝[Microsoft Antimalware](../fundamentals/antimalware.md)或 Microsoft 合作夥伴的端點保護解決方案（[Trend 微](https://www.trendmicro.com/azure/)、 [Symantec](https://www.symantec.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)和[Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)）。
+反惡意程式碼防護可協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可以安裝[Microsoft Antimalware](../fundamentals/antimalware.md)或 Microsoft 合作夥伴的端點保護解決方案（[Trend 微](https://www.trendmicro.com/azure/)、 [Broadcom](https://www.broadcom.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)和[Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)）。
 
 [Microsoft Antimalware](../fundamentals/antimalware.md)包括即時保護、排程掃描、惡意程式碼補救、簽章更新、引擎更新、範例報告和排除事件收集等功能。 您可以將 Microsoft Antimalware 和合作夥伴解決方案與 [Azure 資訊安全中心](../../security-center/security-center-partner-integration.md)整合，以方便部署和執行內建偵測 (警示與事件)。
 

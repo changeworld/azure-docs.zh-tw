@@ -3,7 +3,7 @@ title: 建立和上傳 Oracle Linux VHD
 description: 了解如何建立及上傳包含 Oracle Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 240333e55f23f2536d3cf14d2bb817e5776c8139
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747736"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251588"
 ---
-# <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>為 SQL Server 準備 Oracle Linux 虛擬機器
+# <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>準備用於 Azure 的 Oracle Linux 虛擬機器
 
 本文假設您已將 Oracle Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -40,17 +40,17 @@ ms.locfileid: "75747736"
 您必須在作業系統中完成特定組態步驟，虛擬機器才能在 Azure 中執行。
 
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
-2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
+2. 按一下 **[連接]** 開啟虛擬機器視窗。
 3. 執行下列命令以解除安裝 NetworkManager：
    
         # sudo rpm -e --nodeps NetworkManager
    
     **注意：** 如果尚未安裝封裝，此命令將會失敗，並出現錯誤訊息。 這是預期行為。
-4. 在 `/etc/sysconfig/` 目錄中，建立名為 **network** 且包含下列文字的檔案：
+4. 在 **目錄中，建立名為**network`/etc/sysconfig/` 且包含下列文字的檔案：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. 在 `/etc/sysconfig/network-scripts/` 目錄中，建立名為 **ifcfg-eth0** 且包含下列文字的檔案：
+5. 在 **目錄中，建立名為**ifcfg-eth0`/etc/sysconfig/network-scripts/` 且包含下列文字的檔案：
    
         DEVICE=eth0
         ONBOOT=yes
@@ -117,13 +117,13 @@ ms.locfileid: "75747736"
 
 **組態步驟**
 
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
-3. 在 `/etc/sysconfig/` 目錄中，建立名為 **network** 且包含下列文字的檔案：
+3. 在 **目錄中，建立名為**network`/etc/sysconfig/` 且包含下列文字的檔案：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. 在 `/etc/sysconfig/network-scripts/` 目錄中，建立名為 **ifcfg-eth0** 且包含下列文字的檔案：
+4. 在 **目錄中，建立名為**ifcfg-eth0`/etc/sysconfig/network-scripts/` 且包含下列文字的檔案：
    
         DEVICE=eth0
         ONBOOT=yes

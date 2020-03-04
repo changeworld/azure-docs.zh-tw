@@ -1,27 +1,29 @@
 ---
-title: 將成品新增到整合服務環境
+title: 將資源新增至整合服務環境
 description: 將邏輯應用程式、整合帳戶、自訂連接器和受控連接器新增至您的整合服務環境（ISE）
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191706"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250931"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將成品新增至您的整合服務環境（ISE）
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將資源新增至您的整合服務環境（ISE）
 
-在您建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)之後，請新增邏輯應用程式、整合帳戶和連接器等成品，使其可以存取您 Azure 虛擬網路中的資源。 例如，您在建立 ISE 之後變成可用的受控 ISE 連接器，並不會自動出現在邏輯應用程式設計工具中。 在您可以使用這些 ISE 連接器之前，您必須手動[新增這些連接器，並將它們部署到 ISE](#add-ise-connectors-environment) ，使其出現在邏輯應用程式設計工具中。
+在您建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)之後，請新增邏輯應用程式、整合帳戶和連接器等資源，讓它們可以存取您 Azure 虛擬網路中的資源。 例如，您在建立 ISE 之後變成可用的受控 ISE 連接器，並不會自動出現在邏輯應用程式設計工具中。 在您可以使用這些 ISE 連接器之前，您必須手動[新增這些連接器，並將它們部署到 ISE](#add-ise-connectors-environment) ，使其出現在邏輯應用程式設計工具中。
 
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 您建立用來執行邏輯應用程式的 ISE。 如果您沒有 ISE，請[先建立 ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
+* 若要建立、新增或更新部署至 ISE 的資源，您必須在該 ISE 上指派擁有者或參與者角色，或是您透過與 ISE 相關聯的 Azure 訂用帳戶或 Azure 資源群組來繼承許可權。 對於沒有擁有者、參與者或繼承許可權的人員，他們可以獲指派「整合服務環境參與者」角色或「整合服務環境開發人員」角色。 如需角色型存取控制（RBAC）的詳細資訊，請參閱[什麼是適用于 Azure 資源的角色型存取控制（rbac）](../role-based-access-control/overview.md)？
 
 <a name="create-logic-apps-environment"></a>
 
@@ -82,7 +84,7 @@ ms.locfileid: "77191706"
 
 1. [以一般方式將邏輯應用程式連結到您的整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
-1. 繼續將成品新增至您的整合帳戶，例如[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和[協定](../logic-apps/logic-apps-enterprise-integration-agreements.md)。
+1. 繼續將資源新增至您的整合帳戶，例如[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和[協定](../logic-apps/logic-apps-enterprise-integration-agreements.md)。
 
 1. 若要管理 ISE 中的整合帳戶，請參閱[管理您的整合服務環境](../logic-apps/ise-manage-integration-service-environment.md)。
 

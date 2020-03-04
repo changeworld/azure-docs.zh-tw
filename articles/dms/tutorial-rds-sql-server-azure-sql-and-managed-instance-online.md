@@ -3,8 +3,8 @@ title: 教學課程：將 RDS SQL Server 線上遷移至 SQL Database
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務，執行從 RDS SQL Server 到 Azure SQL Database 單一資料庫或受控實例的線上遷移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 52a6ee282e12f0ece5f16c1fa67c38f07f9d86e7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751281"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255513"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教學課程：使用 DMS 在線上將 RDS SQL Server 遷移至 Azure SQL Database 或 Azure SQL Database 受控實例
 您可以使用 Azure 資料庫移轉服務，以最短停機時間將資料庫從 RDS SQL Server 執行個體移轉至 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) 或 [Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2012 (或更新版本) RDS SQL Server 執行個體的 **Adventureworks2012** 資料庫移轉至 Azure SQL Database 或 Azure SQL Database 受控執行個體。
@@ -247,7 +247,7 @@ ms.locfileid: "75751281"
 
 4. 在設定下列 [進階線上移轉設定] 之後，選取 [儲存]。
 
-    | 設定 | 說明 |
+    | 設定 | 描述 |
     | ------------- | ------------- |
     | **要平行載入的資料表數目上限** | 指定 DMS 在移轉期間平行執行的資料表數目。 預設值為 5，但可將其設定為最佳值，以符合任何 POC 移轉的特定移轉需求。 |
     | **當來源資料表已截斷時** | 指定 DMS 是否會在移轉期間截斷目標資料表。 如果會在移轉過程中截斷一或多個資料表，則此設定很有幫助。 |

@@ -4,12 +4,12 @@ description: 有關 Service Fabric 的常見問題，包括功能、使用案例
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293516"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254893"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 的常見問題
 
@@ -22,13 +22,13 @@ ms.locfileid: "76293516"
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>如何復原 Service Fabric 叢集憑證？
 
-若要復原應用程式的任何升級，唯有發生健康情況失敗偵測，Service Fabric 叢集仲裁才會認可變更；認可後的變更只能向前復原。 如果您引進未受監視的中斷性憑證變更，若要復原叢集，您可能需要透過客戶支援服務提報工程師。  [Service Fabric 的應用程式升級](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)會套用[應用程式升級參數](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)，以及履行不需要停機升級承諾。  完成我們建議的應用程式升級監視模式後，是否能自動進展到更新網域，端視應用程式是否通過健康情況檢查，如果預設服務更新失敗，系統將進行自動復原。
+若要復原應用程式的任何升級，唯有發生健康情況失敗偵測，Service Fabric 叢集仲裁才會認可變更；認可後的變更只能向前復原。 如果您引進未受監視的中斷性憑證變更，若要復原叢集，您可能需要透過客戶支援服務提報工程師。  [Service Fabric 的應用程式升級](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)會套用[應用程式升級參數](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)，以及履行不需要停機升級承諾。  完成我們建議的應用程式升級監視模式後，是否能自動進展到更新網域，端視應用程式是否通過健康情況檢查，如果預設服務更新失敗，系統將進行自動復原。
  
 如果叢集的 Resource Manager 範本還在使用傳統憑證指紋屬性，建議您[將叢集從憑證指紋變更為通用名稱](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)，這樣才能運用現代化的秘密管理功能。
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>我能否建立跨多個 Azure 區域或自有資料中心的叢集？
 
-可以。 
+是的。 
 
 核心的 Service Fabric 叢集技術可用來結合在世界各地執行的機器，只要它們彼此間有網路連線即可。 不過，建置和執行這類叢集的程序很複雜。
 
@@ -84,7 +84,7 @@ ms.locfileid: "76293516"
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>我能否在晚上/週末關閉叢集以節省成本？
 
-一般而言不行。 Service Fabric 會將狀態儲存在本機的暫時磁碟上，這表示如果虛擬機器移至不同的主機，資料將不會隨之移動。 在一般作業中，因為新節點會透過其他節點保持在最新狀態，所以這不會是問題。 不過，如果您停止所有節點並在稍後重新啟動它們，則很有可能讓大部分的節點在新的主機上啟動，而使系統無法復原。
+一般來說，不行。 Service Fabric 會將狀態儲存在本機的暫時磁碟上，這表示如果虛擬機器移至不同的主機，資料將不會隨之移動。 在一般作業中，因為新節點會透過其他節點保持在最新狀態，所以這不會是問題。 不過，如果您停止所有節點並在稍後重新啟動它們，則很有可能讓大部分的節點在新的主機上啟動，而使系統無法復原。
 
 如果您要建立叢集以在部署應用程式之前測試應用程式，建議您在[持續整合/持續部署管線](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)中動態建立那些叢集。
 
@@ -94,10 +94,10 @@ ms.locfileid: "76293516"
 在我們努力改善體驗時，您的責任是升級。 您必須升級叢集的虛擬機器上的作業系統映像，一次一部 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何將叢集節點類型 (虛擬機器擴展集) 中已連結的資料磁碟加密？
-可以。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
+是的。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何在叢集節點類型 (虛擬機器擴展集) 中使用低優先順序的 VM？
-不會。 不支援低優先順序的 VM。 
+No。 不支援低優先順序的 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>當我在叢集中執行防毒程式時需要排除哪些目錄和處理序？
 

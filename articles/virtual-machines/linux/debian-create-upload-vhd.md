@@ -3,7 +3,7 @@ title: 在 Azure 中準備 Debian Linux VHD
 description: 了解如何建立 Debian VHD，以便部署於 Azure 中。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3cf6a4a98451a36826cadf84b9be8e3ea63efea7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750152"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251694"
 ---
-# <a name="prepare-a-debian-vhd-for-azure"></a>為 Azure 準備 Debian VHD
+# <a name="prepare-a-debian-vhd-for-azure"></a>準備適用於 Azure 的 Debian VHD
 ## <a name="prerequisites"></a>必要條件
 本節假設您已使用從 [Debian 網站](https://www.debian.org/distrib/) 下載的 .iso 檔案將 Debian Linux 作業系統安裝至虛擬硬碟。 可建立 .vhd 檔案的工具有多種，Hyper-V 只是其中一個範例。 如需 Hyper-V 的使用指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "75750152"
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>使用 Azure-Manage 建立 Debian VHD
-有一些工具可用來產生適用於 Azure 的 Debian VHD，例如 [Credativ](https://www.credativ.com/) 中的 [azure-manage](https://github.com/credativ/azure-manage) 指令碼。 若不想從頭建立映像，建議採用此方法。 例如，若要建立 Debian 8 VHD，請執行下列命令以下載 `azure-manage` 公用程式 (和相依性)，並執行 `azure_build_image` 指令碼︰
+有一些工具可用來產生適用於 Azure 的 Debian VHD，例如 [Credativ](https://github.com/credativ/azure-manage) 中的 [azure-manage](https://www.credativ.com/) 指令碼。 若不想從頭建立映像，建議採用此方法。 例如，若要建立 Debian 8 VHD，請執行下列命令以下載 `azure-manage` 公用程式 (和相依性)，並執行 `azure_build_image` 指令碼︰
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -48,9 +48,9 @@ ms.locfileid: "75750152"
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手動準備 Debian VHD
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
-3. 如果您使用 ISO 安裝作業系統，則在 `/etc/apt/source.list` 中註解排除與 "`deb cdrom`" 相關的任一行。
+3. 如果您使用 ISO 安裝作業系統，則在 `deb cdrom` 中註解排除與 "`/etc/apt/source.list`" 相關的任一行。
 
 4. 依照以下方法編輯 `/etc/default/grub` 檔案及修改 **GRUB_CMDLINE_LINUX** 參數，以納入用於 Azure 的其他核心參數。
    

@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206651"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254915"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -32,7 +32,7 @@ Azure 備份使用復原服務保存庫來協調和管理備份。 它也會使�
 --- | ---
 **訂用帳戶中的保存庫** | 一個訂用帳戶中最多可以有 500 個復原服務保存庫。
 **保存庫中的機器** | 單一保存庫中最多1000個 Azure Vm。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
-**保存庫儲存體中的資料來源** | 最大 54400 GB。 Azure VM 備份沒有限制。
+**資料來源** | 個別[資料來源](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined)的大小上限為 54400 GB。 此限制不適用於 Azure VM 備份。 您可以備份至保存庫的資料總量不會有任何限制。
 **備份至保存庫** | **Azure vm：** 一天一次。<br/><br/>**受 DPM/MABS 保護的機器：** 一天兩次。<br/><br/> **使用 MARS 代理程式直接備份的機器：** 一天三次。
 **保存庫之間的備份** | 在區域內備份。<br/><br/> 您在每個 Azure 區域中都必須有一個保存庫包含您想要備份的 VM。 您無法備份至不同的區域。
 **移動保存庫** | 您可以跨訂用帳戶或相同訂用帳戶中的資源群組之間[移動保存庫](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 不過，不支援跨區域移動保存庫。
@@ -138,7 +138,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 **設定** | **限制**
 --- | ---
 **每個受保護的實例（機器或工作負載）的最大復原點** | 9999
-**復原點的最大到期時間** | 沒有限制
+**復原點的最大到期時間** | 無限制
 **DPM/MABS 的備份頻率上限** | 每隔 15 分鐘 (SQL Server)<br/><br/> 針對其他工作負載一小時一次
 **備份至保存庫的頻率上限** | 內部**部署 Windows 機器或執行 MARS 的 Azure vm：** 每天三個<br/><br/> **DPM/MABS：** 每天兩個<br/><br/> **AZURE VM 備份：** 一天一次
 **復原點保留期** | 每日、每週、每月、每年
@@ -151,12 +151,10 @@ Azure 備份已新增跨區域還原功能，以加強資料可用性和復原�
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
+| Azure VM               | 是的。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
 | MARS 代理程式/內部部署 | 否                                                           | N/A               |
 | SQL/SAP HANA          | 否                                                           | N/A               |
 | AFS                    | 否                                                           | N/A               |
-
-
 
 ## <a name="next-steps"></a>後續步驟
 

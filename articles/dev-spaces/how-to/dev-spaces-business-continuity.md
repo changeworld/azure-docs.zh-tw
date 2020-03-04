@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: 瞭解如何使用 Azure Dev Spaces 和 Azure Kubernetes Services 來供應商務持續性，並為嚴重損壞修復做準備
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438510"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252392"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Space 的商務持續性和災害復原
 
@@ -41,7 +41,7 @@ Azure Dev Spaces 是 Azure Kubernetes Service (AKS) 的功能之一。 您應留
 
 您也可以在命令列上啟用 Dev Spaces：
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -57,7 +57,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 請使用下列 CLI 命令來選取不同的叢集：
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
@@ -77,11 +77,11 @@ azds space select -n <space name>
 
 如果您使用 Visual Studio，您可以透過下列步驟來切換現有專案所使用的叢集：
 
-1. 在 Visual Studio 中，開啟您的專案。
+1. 在 Visual Studio 中開啟專案。
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後按一下 [屬性]
 1. 在左側窗格中按一下 [偵錯]
 1. 在 [偵錯屬性] 頁面上按一下 [設定檔] 下拉式清單，然後選擇 [Azure Dev Spaces]。
-1. 按一下 [變更] 按鈕。
+1. 按一下 **[變更]** 按鈕。
 1. 在顯示的對話方塊中，選取您要使用的 AAS 叢集。 如有需要，請選擇不同的開發人員空間來使用，從 [空間] 下拉式清單中選取適當的選項，以建立新的開發人員空間。
 
 選取正確的叢集和空間後，您可以按 F5 在 Dev Spaces 中執行服務。

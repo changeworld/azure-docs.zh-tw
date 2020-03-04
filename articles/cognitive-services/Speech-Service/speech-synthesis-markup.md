@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228071"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254780"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -195,6 +195,7 @@ speechConfig!.setPropertyTo(
 
 目前，這些類神經語音支援說話的樣式調整：
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 變更會在句子層級套用，而樣式會因語音而有所不同。 如果樣式不受支援，服務將會以預設的中性說話樣式傳回語音。
@@ -220,6 +221,7 @@ speechConfig!.setPropertyTo(
 | | `type="chat"` | 以偶爾、寬鬆的語調說話 |
 | | `type="newscast"` | 表達類似于新聞廣播的正式音調 |
 | | `type="customerservice"` | 以易記且患者的方式說話，做為客戶服務 |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | 表達正面且滿意的表情 |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | 表達類似于新聞廣播的正式音調 |
 | | `type="sentiment"` | 傳達觸控訊息或故事 |
 

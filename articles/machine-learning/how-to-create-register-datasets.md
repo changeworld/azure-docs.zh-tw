@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649085"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255783"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -32,7 +32,7 @@ ms.locfileid: "77649085"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集，您需要：
 
@@ -57,7 +57,7 @@ ms.locfileid: "77649085"
 
 ## <a name="create-datasets"></a>建立資料集
 
-藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在現有的位置，所以不會產生額外的儲存成本。 您可以使用 Python SDK 或工作區登陸頁面（預覽）來建立 `TabularDataset` 和 `FileDataset` 資料集。
+藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在現有的位置，所以不會產生額外的儲存成本。 您可以使用 Python SDK 或 https://ml.azure.com來建立 `TabularDataset` 和 `FileDataset` 資料集。
 
 若要讓 Azure Machine Learning 可存取的資料，必須從[Azure 資料存放區](how-to-access-data.md)或公用 web url 中的路徑建立資料集。
 
@@ -73,8 +73,6 @@ ms.locfileid: "77649085"
 
 
 #### <a name="create-a-tabulardataset"></a>建立 TabularDataset
-
-您可以透過 SDK 或使用 Azure Machine Learning studio 來建立 TabularDatasets。 
 
 使用 `TabularDatasetFactory` 類別上的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)方法來讀取 .csv 或 tsv 格式的檔案，並建立未註冊的 TabularDataset。 如果您要讀取多個檔案，結果會匯總成一個表格式表示。 
 
@@ -96,10 +94,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-根據預設，當您建立 TabularDataset 時，會自動推斷資料行資料類型。 如果推斷的類型不符合您的預期，您可以使用下列程式碼來指定資料行類型。 如果您的存放裝置位於虛擬網路或防火牆後方，請在您的 `from_delimited_files()` 方法中包含 `validate=False` 和 `infer_column_types=False` 的參數。 這會略過初始驗證檢查，並確保您可以從這些安全檔案建立資料集。 您也可以[深入瞭解支援的資料類型](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+根據預設，當您建立 TabularDataset 時，會自動推斷資料行資料類型。 如果推斷的類型不符合您的預期，您可以使用下列程式碼來指定資料行類型。 參數 `infer_column_type` 僅適用于從分隔檔案建立的資料集。您也可以[深入瞭解支援的資料類型](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
 
-> [!NOTE] 
->參數 `infer_column_type` 僅適用于從分隔檔案建立的資料集。 
+> [!IMPORTANT] 
+> 如果您的存放裝置位於虛擬網路或防火牆後方，則只支援透過 SDK 建立資料集。 若要建立資料集，請務必在您的 `from_delimited_files()` 方法中包含 `validate=False` 和 `infer_column_types=False` 的參數。 這會略過初始驗證檢查，並確保您可以從這些安全檔案建立資料集。 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -112,11 +110,37 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|式|Pclass|名稱|性別|Age|SibSp|Parch|Ticket|費用|插槽|著手
+| |PassengerId|式|Pclass|名稱|性別|天數|SibSp|Parch|Ticket|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th 。|female|38.0|1|0|電腦17599|71.2833|C85|C
 2|3|True|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+
+
+若要從記憶體中的 pandas 資料框架建立資料集，請將資料寫入本機檔案（例如 csv），然後從該檔案建立資料集。 下列程式碼示範此工作流程。
+
+```python
+local_path = 'data/prepared.csv'
+dataframe.to_csv(local_path)
+upload the local file to a datastore on the cloud
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
+resource_group = 'xxxxxx'
+workspace_name = 'xxxxxxxxxxxxxxxx'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+# get the datastore to upload prepared data
+datastore = workspace.get_default_datastore()
+
+# upload the local file from src_dir to the target_path in datastore
+datastore.upload(src_dir='data', target_path='data')
+create a dataset referencing the cloud location
+dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+```
 
 使用 `TabularDatasetFactory` 類別上的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法來讀取 Azure SQL Database：
 

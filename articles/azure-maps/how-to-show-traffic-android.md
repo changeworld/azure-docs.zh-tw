@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 73f490ec069ff44929ca70f4ecf2ab3aca52934d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209346"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249505"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的流量資料
 
-「流量資料」和「事件資料」是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩個流量資料。 事件資料包含像是結構、後端和事故等專案的點和行式資料。 流量資料會顯示有關道路流量的計量。
+「流量資料」和「事件資料」是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩種類型的流量資料。 事件資料包含像是結構、後端和事故等專案的點和行式資料。 流量資料會顯示有關道路流量的計量。
 
 ## <a name="prerequisites"></a>必要條件
 
-在您可以顯示地圖上的流量之前，您必須先安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)並載入對應。
+您必須先[建立 Azure 帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才可以在地圖上顯示流量。 然後，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)並載入對應。
 
 ## <a name="incidents-traffic-data"></a>事件流量資料 
 
@@ -38,7 +38,7 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mapControl.getMapAsync(map - > {
         map.setTraffic(incidents(true));
-}
+    }
 }
 ```
 
@@ -63,8 +63,9 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```java
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> 
+    mapControl.getMapAsync(map -> {
         map.setTraffic(flow(TrafficFlow.RELATIVE)));
+    }
 }
 ```
 

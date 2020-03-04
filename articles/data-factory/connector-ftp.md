@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: cf7e5c6ac124945ce3e6cd05585a7997dfe34149
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892686"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252487"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 FTP 伺服器複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -40,6 +40,8 @@ ms.locfileid: "75892686"
 - 使用**基本**或**匿名**驗證複製檔案。
 - 依原樣複製檔案，或使用[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs.md)來剖析檔案。
 
+FTP 連接器支援以被動模式執行的 FTP 伺服器。 不支援主動模式。
+
 ## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -54,11 +56,11 @@ ms.locfileid: "75892686"
 
 以下是針對 FTP 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**FtpServer** | 是 |
+| 類型 | 類型屬性必須設定為：**FtpServer** | 是 |
 | 主機 | 指定 FTP 伺服器的名稱或 IP 位址。 | 是 |
-| 連接埠 | 指定 FTP 伺服器所接聽的連接埠<br/>允許的值為：整數，預設值為 **21**。 | 否 |
+| port | 指定 FTP 伺服器所接聽的連接埠<br/>允許的值為：整數，預設值為 **21**。 | 否 |
 | enableSsl | 指定是否使用透過 SSL/TLS 的 FTP 通道。<br/>允許的值為：**true** (預設值)、**false**。 | 否 |
 | enableServerCertificateValidation | 指定是否在使用透過 SSL/TLS 的 FTP 通道時啟用伺服器 SSL 憑證驗證。<br/>允許的值為：**true** (預設值)、**false**。 | 否 |
 | authenticationType | 指定驗證類型。<br/>允許的值為：**基本**、**匿名** | 是 |
@@ -126,9 +128,9 @@ ms.locfileid: "75892686"
 
 下列屬性支援以格式為基礎之資料集的 `location` 設定下的 FTP：
 
-| 屬性   | 說明                                                  | 必要項 |
+| 屬性   | 描述                                                  | 必要項 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Dataset 中 `location` 下的 type 屬性必須設定為**FtpServerLocation**。 | 是      |
+| 類型       | Dataset 中 `location` 下的 type 屬性必須設定為**FtpServerLocation**。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
 | fileName   | 指定 folderPath 下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
 
@@ -168,9 +170,9 @@ ms.locfileid: "75892686"
 
 在以格式為基礎的複製來源中，`storeSettings` 設定下的 FTP 支援下列屬性：
 
-| 屬性                 | 說明                                                  | 必要項                                      |
+| 屬性                 | 描述                                                  | 必要項                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為**FtpReadSettings**。 | 是                                           |
+| 類型                     | `storeSettings` 下的 type 屬性必須設定為**FtpReadSettings**。 | 是                                           |
 | 遞迴                | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值為 **true** (預設值) 和 **false**。 | 否                                            |
 | wildcardFolderPath       | 包含用來篩選源資料夾之萬用字元的資料夾路徑。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | wildcardFileName         | 在指定的 folderPath/wildcardFolderPath 下具有萬用字元的檔案名，用以篩選原始程式檔。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 如果未在 dataset 中指定 `fileName`，則為 [是] |
@@ -248,13 +250,13 @@ ms.locfileid: "75892686"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**FileShare** |是 |
+| 類型 | 資料集的類型屬性必須設定為：**FileShare** |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選，允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
 | fileName | 在指定 "folderPath" 之下檔案的**名稱或萬用字元篩選**。 若未指定此屬性的值，資料集就會指向資料夾中的所有檔案。 <br/><br/>針對篩選，允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>如果實際檔案名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 |否 |
-| format | 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級為：**Optimal** 和 **Fastest**。 |否 |
+| 格式 | 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
+| 壓縮 | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級為：**Optimal** 和 **Fastest**。 |否 |
 | useBinaryTransfer | 指定是否使用二進位傳輸模式。 值對二進位模式為真 (預設值)，對 ASCII 則為假。 |否 |
 
 >[!TIP]
@@ -293,9 +295,9 @@ ms.locfileid: "75892686"
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要項 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**FileSystemSource** |是 |
+| 類型 | 複製活動來源的類型屬性必須設定為：**FileSystemSource** |是 |
 | 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 recursive 設定為 true，而接收器為檔案型存放區時，系統不會在接收器複製/建立空資料夾/子資料夾。<br/>允許的值為：**true** (預設值)、**false** | 否 |
 | maxConcurrentConnections | 連接到儲存體存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
 

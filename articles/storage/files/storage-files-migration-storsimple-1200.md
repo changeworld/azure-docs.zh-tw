@@ -4,25 +4,19 @@ description: 瞭解如何將 StorSimple 1200 系列虛擬裝置遷移至 Azure �
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/14/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 815fda861748f1011eab22ef75fa7e933ca64c55
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209476"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252668"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 遷移至 Azure 檔案同步
 
-StorSimple 1200 系列是在內部部署資料中心執行的虛擬裝置。
-隨著在 31 2022 年12月宣佈 StorSimple 產品線的服務終止生命週期，此虛擬裝置所連線的雲端服務將會停止運作。
-
-有充足的時間可以從任何 StorSimple 裝置遷移。
-Azure 檔案同步是自然的後繼技術，具有比 StorSimple 供應專案更多的功能和彈性。
-
-本文提供成功遷移至 Azure 檔案同步所需的背景知識和遷移步驟。
+StorSimple 1200 系列是在內部部署資料中心執行的虛擬裝置。 您可以將此設備的資料移轉至 Azure 檔案同步環境。 本文提供成功遷移至 Azure 檔案同步所需的背景知識和遷移步驟。
 
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 

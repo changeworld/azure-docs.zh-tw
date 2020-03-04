@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 940f27612b26c5baace7a19d2212fa6d8899e6e5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ddd08f87fb7847a81b28b18c1dedc1c4f0a7a169
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834903"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246203"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 
@@ -32,3 +32,5 @@ ms.locfileid: "75834903"
 - 如需詳細資訊，請參閱[專用主機](dedicated-hosts.md)總覽。
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，它會使用區域和容錯網域來取得區域中的最大復原。
+
+- 您也可以使用[Azure 專用主機的保留實例](../prepay-dedicated-hosts-reserved-instances.md)來節省成本。

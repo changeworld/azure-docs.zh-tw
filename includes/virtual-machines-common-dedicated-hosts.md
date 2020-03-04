@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208182"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246221"
 ---
 ## <a name="limitations"></a>限制
 
@@ -89,7 +89,7 @@ ms.locfileid: "78208182"
 
 免費試用和 MSDN 訂用帳戶沒有 Azure 專用主機的配額。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>Pricing
 
 無論部署多少個 Vm，都會以專用主機為使用者付費。 在您的每月語句中，您會看到新的可計費資源類型為 [主機]。 專用主機上的 Vm 仍會顯示在您的語句中，但其價格會是0。
 
@@ -99,7 +99,7 @@ ms.locfileid: "78208182"
 
 如需詳細資訊，請參閱[Azure 專用主機定價](https://aka.ms/ADHPricing)。
 
-您也可以使用 [保留的 Azure 專用主機實例] （. 來節省成本。/articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
+您也可以使用[Azure 專用主機的保留實例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)來節省成本。
  
 ## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬體世代
 

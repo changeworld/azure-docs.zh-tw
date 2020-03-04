@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191158"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246539"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自動化中的子 Runbook
 
@@ -39,7 +39,7 @@ ms.locfileid: "78191158"
 
 發行順序是否重要？
 
-Runbook 的發行順序只對 PowerShell 工作流程和圖形化 PowerShell 工作流程 Runbook 有關係。
+Runbook 的發行順序只對 PowerShell 工作流程和圖形化 PowerShell 工作流程 runbook 很重要。
 
 當您的 runbook 使用內嵌執行呼叫圖形化或 PowerShell 工作流程子 runbook 時，它會使用 runbook 的名稱。 名稱的開頭必須是 **.\\** 以指定腳本位於本機目錄中。
 

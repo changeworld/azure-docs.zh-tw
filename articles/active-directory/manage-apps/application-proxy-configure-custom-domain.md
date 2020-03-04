@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185546"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248691"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 設定自訂網域
 
@@ -130,9 +130,9 @@ ms.locfileid: "77185546"
 
 只要萬用字元符合外部 URL，您就可以使用萬用字元憑證。 [萬用字元應用程式](application-proxy-wildcard.md)必須使用萬用字元憑證。 如果您想要使用憑證來同時存取子域，您必須在相同的憑證中新增子域萬用字元做為主體的替代名稱。 例如， *\** 的憑證\*將無法用於 *\*. apps.adventure-works.com* ，除非您新增*apps.adventure-works.com*做為主體的替代名稱。 
 
-如果您的用戶端裝置上已安裝憑證鏈，您可以使用自己的公開金鑰基礎結構（PKI）所發行的憑證。 Intune 可以將這些憑證部署至受管理的裝置。 對於不受管理的裝置，您必須手動安裝這些憑證。
+如果您的用戶端裝置上已安裝憑證鏈，您可以使用自己的公開金鑰基礎結構（PKI）所發行的憑證。 Intune 可以將這些憑證部署至受管理的裝置。 對於不受管理的裝置，您必須手動安裝這些憑證。 
 
-使用私人根 CA 並不是個好主意。 私人根 CA 也必須推送至用戶端電腦，這會帶來許多挑戰。 
+我們不建議使用私人根 CA，因為私人根 CA 也必須推送至用戶端電腦，這可能會造成許多挑戰。
 
 ### <a name="certificate-management"></a>憑證管理
 

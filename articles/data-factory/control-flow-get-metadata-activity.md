@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: 9985997ff4bef727676232705297379ccfc179c5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928571"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250265"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>取得 Azure Data Factory 中的中繼資料活動
 
@@ -31,9 +31,9 @@ ms.locfileid: "74928571"
 - 您可以使用條件運算式中的 [取得中繼資料] 活動的輸出來執行驗證。
 - 您可以透過 Do 直到迴圈，以在滿足條件時觸發管線。
 
-## <a name="capabilities"></a>容量
+## <a name="capabilities"></a>功能
 
-取得中繼資料活動會採用資料集做為輸入，並傳回中繼資料資訊做為輸出。 目前支援下列連接器和對應的可檢索中繼資料。 傳回的中繼資料大小上限為 1 MB。
+取得中繼資料活動會採用資料集做為輸入，並傳回中繼資料資訊做為輸出。 目前支援下列連接器和對應的可檢索中繼資料。 傳回的中繼資料大小上限為 2 MB。
 
 >[!NOTE]
 >如果您在自我裝載整合執行時間上執行 [取得中繼資料] 活動，3.6 或更新版本會支援最新的功能。
@@ -42,13 +42,13 @@ ms.locfileid: "74928571"
 
 **檔案儲存體**
 
-| 連接器/中繼資料 | itemName<br>(檔案/資料夾) | itemType<br>(檔案/資料夾) | size<br>(檔案) | created<br>(檔案/資料夾) | lastModified<br>(檔案/資料夾) |childItems<br>(資料夾) |contentMD5<br>(檔案) | structure<br/>(檔案) | columnCount<br>(檔案) | exists<br>(檔案/資料夾) |
+| 連接器/中繼資料 | itemName<br>(檔案/資料夾) | itemType<br>(檔案/資料夾) | size<br>(檔案) | created<br>(檔案/資料夾) | lastModified<br>(檔案/資料夾) |childItems<br>(資料夾) |contentMD5<br>(檔案) | 結構<br/>(檔案) | columnCount<br>(檔案) | exists<br>(檔案/資料夾) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Azure Blob 儲存體](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) \(部分機器翻譯\) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure 檔案](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [檔案系統](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -61,7 +61,7 @@ ms.locfileid: "74928571"
 
 **關係資料庫**
 
-| 連接器/中繼資料 | structure | columnCount | exists |
+| 連接器/中繼資料 | 結構 | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL Database 受控執行個體](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -81,7 +81,7 @@ ms.locfileid: "74928571"
 | lastModified | 檔案或資料夾的上次修改日期時間。 |
 | childItems | 指定資料夾中的子資料夾和檔案清單。 僅適用于資料夾。 傳回的值是每個子專案的名稱和類型清單。 |
 | contentMD5 | 檔案的 MD5。 僅適用于檔案。 |
-| structure | 檔案或關係資料庫資料表的資料結構。 傳回的值是資料行名稱和資料行類型的清單。 |
+| 結構 | 檔案或關係資料庫資料表的資料結構。 傳回的值是資料行名稱和資料行類型的清單。 |
 | columnCount | 檔案或關聯式資料表中的資料行數目。 |
 | exists| 檔案、資料夾或資料表是否存在。 請注意，如果在 [取得元資料欄位] 清單中指定了 `exists`，即使檔案、資料夾或資料表不存在，活動也不會失敗。 相反地，會在輸出中傳回 `exists: false`。 |
 
@@ -109,7 +109,7 @@ ms.locfileid: "74928571"
 }
 ```
 
-**Dataset**
+**資料集**
 
 ```json
 {

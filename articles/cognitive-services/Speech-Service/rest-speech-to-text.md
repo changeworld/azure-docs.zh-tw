@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168328"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255679"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -51,20 +51,21 @@ REST 要求的查詢字串中可能包括這些參數。
 
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要 |
-| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選用 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設值是 `masked`。 | 選用 |
+| `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要項 |
+| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選擇性 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為 `masked`，會以星號取代不雅內容，`removed`，這會移除結果中的所有不雅內容，或 `raw`，其中包含結果中的不雅內容。 預設值是 `masked`。 | 選擇性 |
+| `cid` | 使用[自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過 [**部署**] 頁面上找到的**端點識別碼**來使用自訂模型。 使用**端點識別碼**做為 `cid` 查詢字串參數的引數。 | 選擇性 |
 
 ## <a name="request-headers"></a>要求標頭
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|頁首| 描述 | 必要/選用 |
+|標頭| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
-| `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要 |
-| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選用 |
+| `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要項 |
+| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選擇性 |
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最佳做法是一律包含 `Accept`。 | 此為選用步驟，但建議執行。 |
 
@@ -72,10 +73,10 @@ REST 要求的查詢字串中可能包括這些參數。
 
 音訊是在 HTTP `POST` 要求的主體中傳送。 它必須是此表格中的格式之一：
 
-| [格式] | 轉碼器 | Bitrate | 採樣速率 |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 位元 | 16 kHz，單聲道 |
-| OGG | OPUS | 16 位元 | 16 kHz，單聲道 |
+| [格式] | 轉碼器 | Bitrate | 取樣率  |
+|--------|-------|---------|--------------|
+| WAV    | PCM   | 16 位元  | 16 kHz，單聲道 |
+| OGG    | OPUS  | 16 位元  | 16 kHz，單聲道 |
 
 >[!NOTE]
 >您可以透過語音服務中的 REST API 和 WebSocket 來支援上述格式。 [語音 SDK](speech-sdk.md)目前支援具有 PCM 編解碼器和[其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
@@ -100,50 +101,43 @@ Expect: 100-continue
 
 | HTTP 狀態碼 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 100 | Continue | 已接受初始要求。 繼續傳送其餘的資料。 (搭配區塊傳輸使用。) |
-| 200 | [確定] | 要求成功；回應主體是 JSON 物件。 |
-| 400 | 不正確的要求 | 未提供語言代碼，而不是支援的語言、不正確音訊檔案等。 |
-| 401 | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
-| 403 | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
+| `100` | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。 （搭配區區塊轉送使用） |
+| `200` | 確定 | 要求成功；回應主體是 JSON 物件。 |
+| `400` | 不正確的要求 | 未提供語言代碼，而不是支援的語言、不正確音訊檔案等。 |
+| `401` | Unauthorized | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
+| `403` | 已禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
 
 ## <a name="chunked-transfer"></a>區塊傳輸
 
 區塊傳輸（`Transfer-Encoding: chunked`）可協助減少辨識延遲。 它可讓語音服務在音訊檔案進行傳輸時開始處理。 REST API 不會提供部分或中間的結果。
 
-此程式碼範例說明如何以區塊傳送音訊。 只有第一個區塊應該包含音訊檔案的標頭。 `request` 是連線到適當 REST 端點的 HTTPWebRequest 物件。 `audioFile` 是音訊檔案在磁碟上的路徑。
+此程式碼範例說明如何以區塊傳送音訊。 只有第一個區塊應該包含音訊檔案的標頭。 `request` 是連接到適當 REST 端點的 `HttpWebRequest` 物件。 `audioFile` 是音訊檔案在磁碟上的路徑。
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

@@ -3,7 +3,7 @@ title: 在 Azure 中建立及上傳 SUSE Linux VHD
 description: 了解如何建立及上傳包含 SUSE Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: mimckitt
-ms.openlocfilehash: 5ff28e25bf3da33fcf85a77f850b3b8f5ac8bb6b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d64fc55159ddc3ce88397879958a63bf30808ad9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745823"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251580"
 ---
-# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>為 Azure 準備 SLES 或 openSUSE 虛擬機器
+# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
 
 
 本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
@@ -40,7 +40,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>準備 SUSE Linux Enterprise Server 11 SP4
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
-2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
+2. 按一下 **[連接]** 開啟虛擬機器視窗。
 3. 註冊您的 SUSE Linux Enterprise 系統，以允許下載更新並安裝封裝。
 4. 為系統更新最新的修補程式：
    
@@ -103,7 +103,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 ---
 ## <a name="prepare-opensuse-131"></a>準備執行 openSUSE 13.1+
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
-2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
+2. 按一下 **[連接]** 開啟虛擬機器視窗。
 3. 在 Shell 上執行命令 '`zypper lr`'。 如果此命令傳回的輸出與下列類似，則該儲存機制已如預期設定，不需進行調整 (請注意，版本號碼可能會不同)：
    
         # | Alias                 | Name                  | Enabled | Refresh

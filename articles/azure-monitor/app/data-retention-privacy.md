@@ -3,12 +3,12 @@ title: Azure Application Insights 中的資料保留和儲存 | Microsoft Docs
 description: 保留和隱私權原則聲明
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669653"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254865"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -170,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 依預設會使用 `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` 來保存資料。 存取此資料夾的權限僅限定於目前的使用者和系統管理員。 (請參閱此處的[實作](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts))。
 
 您可以在 `appInsights-node`Sender.ts`Sender.TEMPDIR_PREFIX` 中變更靜態變數 [ 的執行階段值，以覆寫資料夾前置詞 ](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)。
+
+### <a name="javascript-browser"></a>JavaScript （瀏覽器）
+
+[HTML5 會話儲存體](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用來保存資料。 會使用兩個不同的緩衝區： `AI_buffer` 和 `AI_sent_buffer`。 批次處理和等候傳送的遙測資料會儲存在 `AI_buffer`中。 剛傳送的遙測資料會放在 `AI_sent_buffer` 中，直到內嵌伺服器回應其已成功接收為止。 成功收到遙測時，就會從所有緩衝區中移除它。 在暫時性失敗（例如，使用者遺失網路連線）上，遙測會保留在 `AI_buffer` 中，直到成功接收到遙測，或讓伺服器回應遙測無效（例如，不正確的架構或太舊）。
+
+藉由將[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31)設定為 `false`，可以停用遙測緩衝區。 當會話儲存體關閉時，會改為使用本機陣列做為持續性儲存體。 由於 JavaScript SDK 會在用戶端裝置上執行，因此使用者可以透過其瀏覽器的開發人員工具存取此儲存位置。
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

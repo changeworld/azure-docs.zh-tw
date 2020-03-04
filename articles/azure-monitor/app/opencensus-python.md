@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7d27256f64e09a4d4ba3dbf1544eaec4715f6d88
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669908"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250760"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>設定 Python 應用程式的 Azure 監視器（預覽）
 
@@ -132,11 +132,20 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-4. 現在，當您執行 Python 腳本時，仍然應該提示您輸入值，但只會在 shell 中列印該值。 建立的 `SpanData` 將會傳送至 Azure 監視器。 您可以在 `dependencies`下找到發出的 span 資料。
+4. 現在，當您執行 Python 腳本時，仍然應該提示您輸入值，但只會在 shell 中列印該值。 建立的 `SpanData` 將會傳送至 Azure 監視器。 您可以在 `dependencies`下找到發出的 span 資料。 如需連出要求的詳細資訊，請參閱[OpenCensus Python 相依](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)性。
+如需連入要求的詳細資訊，請參閱 OpenCensus Python [requests](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)。
 
-5. 如需在 OpenCensus 中取樣的詳細資訊，請參閱[OpenCensus 中的取樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+#### <a name="sampling"></a>取樣
 
-6. 如需追蹤資料中遙測相互關聯的詳細資訊，請參閱 OpenCensus[遙測相互關聯](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+如需在 OpenCensus 中取樣的詳細資訊，請參閱[OpenCensus 中的取樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="trace-correlation"></a>追蹤相互關聯
+
+如需追蹤資料中遙測相互關聯的詳細資訊，請參閱 OpenCensus Python[遙測相互關聯](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+
+#### <a name="modify-telemetry"></a>修改遙測
+
+如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="metrics"></a>度量
 
@@ -240,6 +249,32 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     ```
 
 4. 匯出程式會以固定間隔將計量資料傳送至 Azure 監視器。 預設值為每15秒。 我們會追蹤單一計量，因此此計量資料（包含其內含的任何值和時間戳記）會每隔一段時間傳送。 您可以在 [`customMetrics`] 下找到資料。
+
+#### <a name="standard-metrics"></a>標準計量
+
+根據預設，計量匯出工具會將一組標準計量傳送至 Azure 監視器。 若要停用此功能，您可以將 `enable_standard_metrics` 旗標設定為計量匯出程式之函式中的 `False`。
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+以下是目前已傳送的標準計量清單：
+
+- 可用的記憶體（位元組）
+- CPU 處理器時間（百分比）
+- 傳入要求速率（每秒）
+- 連入要求平均執行時間（毫秒）
+- 傳出要求速率（每秒）
+- 進程 CPU 使用量（百分比）
+- 進程私用位元組（位元組）
+
+您應該能夠在 `performanceCounters`中看到這些計量。 傳入要求速率會在 `customMetrics`之下。
+#### <a name="modify-telemetry"></a>修改遙測
+
+如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="logs"></a>記錄檔
 
@@ -360,8 +395,17 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>取樣
 
-7. 如需如何使用追蹤內容資料來擴充記錄檔的詳細資訊，請參閱 OpenCensus Python[記錄整合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+如需在 OpenCensus 中取樣的詳細資訊，請參閱[OpenCensus 中的取樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="log-correlation"></a>記錄相互關聯
+
+如需如何使用追蹤內容資料來擴充記錄檔的詳細資訊，請參閱 OpenCensus Python[記錄整合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+
+#### <a name="modify-telemetry"></a>修改遙測
+
+如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ## <a name="view-your-data-with-queries"></a>使用查詢來查看您的資料
 

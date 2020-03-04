@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：帳戶與權限 | Microsoft Docs
+title: Azure AD Connect：帳戶與權限 | Microsoft 文件
 description: 本主題描述使用和建立的帳戶以及所需的權限。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960236"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248780"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶和權限
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶與權限
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>用於 Azure AD Connect 的帳戶
 
@@ -38,11 +38,11 @@ Azure AD Connect 會使用 3 個帳戶，以便將資訊從內部部署或 Windo
 
 - **Azure AD 連接器帳戶**：用來在 Azure AD 中寫入資訊
 
-除了這三個用來執行 Azure AD Connect 的帳戶，您另外還需要下列帳戶以便安裝 Azure AD Connect。  這些是：
+除了這三個用來執行 Azure AD Connect 的帳戶，您另外還需要下列帳戶以便安裝 Azure AD Connect。  它們是：
 
-- **本機系統管理員帳戶**：安裝 Azure AD Connect 且在機器上具有本機系統管理員權限的系統管理員。
+- **本機系統管理員帳戶**：安裝 Azure AD Connect 且在電腦上具有本機系統管理員權限的系統管理員。
 
-- **AD DS 企業系統管理員帳戶**：可視需要用來建立上述「AD DS 連接器帳戶」。
+- **AD DS 企業系統管理員帳戶**：選擇性地用來建立上述「AD DS 連接器帳戶」。
 
 - **Azure AD 全域系統管理員帳戶**：用來建立 Azure AD Connector 帳戶和設定 Azure AD。
 
@@ -55,13 +55,12 @@ Azure AD Connect 會使用 3 個帳戶，以便將資訊從內部部署或 Windo
 > [!NOTE]
 > 支援從 ESAE 系統管理樹系（也稱為「紅色樹系」）管理 Azure AD Connect 中使用的管理帳戶。
 > 專用的系統管理樹系可讓組織在比生產環境具有更強安全性控制的環境中裝載系統管理帳戶、工作站和群組。
-> 若要深入瞭解專用的系統管理樹系，請參閱[ESAE 系統管理樹系設計方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> 若要深入瞭解專用的系統管理樹系，請參閱[ESAE 系統管理樹系設計方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
 
 > [!NOTE]
-> 初始設定之後，不需要全域管理員角色，而且唯一需要的帳戶會是**目錄同步作業帳戶**角色帳戶。 這不會 necssarily 表示您只想要移除具有全域管理員角色的帳戶。 最好將角色變更為較不強大的角色，因為如果您需要重新執行嚮導，完全移除帳戶可能會導致問題。 藉由降低角色的許可權，如果您必須再次使用 Azure AD Connect wizard，您隨時可以重新提升許可權。 
+> 初始設定之後，不需要全域管理員角色，而且唯一需要的帳戶會是**目錄同步作業帳戶**角色帳戶。 這不一定表示您只想要移除具有全域管理員角色的帳戶。 最好將角色變更為較不強大的角色，因為如果您需要重新執行嚮導，完全移除帳戶可能會導致問題。 藉由降低角色的許可權，如果您必須再次使用 Azure AD Connect wizard，則一律可以重新提升許可權。 
 
-## <a name="installing-azure-ad-connect"></a>正在安裝 Azure AD Connect
+## <a name="installing-azure-ad-connect"></a>安裝 Azure AD Connect
 Azure AD Connect 安裝精靈提供兩個不同的路徑：
 
 * 在 [快速設定] 中，精靈需要更多權限，  以便在不需要建立使用者或設定權限的情況下，輕鬆設定您的組態。
@@ -86,7 +85,7 @@ AD DS 企業系統管理員帳戶可用來設定內部部署 Active Directory。
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS 連接器帳戶針對快速設定所需的權限
 AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立的，而且在由快速設定建立時，會具有下列權限：
 
-| 使用權限 | 用於 |
+| [權限] | 用於 |
 | --- | --- |
 | <li>複寫目錄變更</li><li>複寫目錄變更 (全部) |密碼雜湊同步處理 |
 | 讀取/寫入所有屬性 (使用者) |匯入和 Exchange 混合 |
@@ -101,11 +100,11 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 下表摘要列出快速安裝精靈頁面、所收集的認證，以及這些認證的用途。
 
-| 精靈頁面 | 收集的認證 | 所需的權限 | 用於 |
+| 精靈頁面 | 收集的認證 | 所需權限 | 使用對象 |
 | --- | --- | --- | --- |
 | N/A |執行安裝精靈的使用者 |本機伺服器的系統管理員 |<li>建立用來執行同步處理服務的 ADSync 服務帳戶。 |
-| 連線到 Azure AD |Azure AD 目錄認證 |Azure AD 中的全域管理員角色 |<li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立在 Azure AD 中用於持續同步處理作業的 Azure AD 連接器帳戶。</li> |
-| 連線到 AD DS |內部部署 Active Directory 認證 |Active Directory 中 Enterprise Admins (EA) 群組成員 |<li>在 Active Directory 中建立 AD DS 連接器帳戶並對其授與權限。 這個建立的帳戶是在同步處理期間用來讀取和寫入目錄資訊。</li> |
+| 連接到 Azure AD |Azure AD 目錄認證 |Azure AD 中的全域管理員角色 |<li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立在 Azure AD 中用於持續同步處理作業的 Azure AD 連接器帳戶。</li> |
+| 連接至 AD DS |內部部署 Active Directory 認證 |Active Directory 中 Enterprise Admins (EA) 群組成員 |<li>在 Active Directory 中建立 AD DS 連接器帳戶並對其授與權限。 這個建立的帳戶是在同步處理期間用來讀取和寫入目錄資訊。</li> |
 
 
 ## <a name="custom-installation-settings"></a>自訂安裝設定
@@ -118,15 +117,15 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 ![快速安裝](./media/reference-connect-accounts-permissions/customize.png)
 
-| 精靈頁面 | 收集的認證 | 所需的權限 | 用於 |
+| 精靈頁面 | 收集的認證 | 所需權限 | 使用對象 |
 | --- | --- | --- | --- |
 | N/A |執行安裝精靈的使用者 |<li>本機伺服器的系統管理員</li><li>如果使用完整的 SQL Server，使用者必須是 SQL 中的系統管理員 (SA)</li> |預設會建立用來作為同步引擎服務帳戶的本機帳戶。 只有在管理員未指定特定帳戶時才會建立帳戶。 |
 | 安裝同步處理服務，服務帳戶選項 |AD 或本機使用者帳戶認證 |使用者權限會由安裝精靈授與 |如果系統管理員指定帳戶，則此帳戶會做為同步處理服務帳戶。 |
-| 連線到 Azure AD |Azure AD 目錄認證 |Azure AD 中的全域管理員角色 |<li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立在 Azure AD 中用於持續同步處理作業的 Azure AD 連接器帳戶。</li> |
-| 連線您的目錄 |各個連線至 Azure AD 之樹系的內部部署 Active Directory 認證 |權限取決於所啟用的功能，並且可在建立 AD DS 連接器帳戶中找到 |這個帳戶是在同步處理期間用來讀取和寫入目錄資訊。 |
+| 連接到 Azure AD |Azure AD 目錄認證 |Azure AD 中的全域管理員角色 |<li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立在 Azure AD 中用於持續同步處理作業的 Azure AD 連接器帳戶。</li> |
+| 連接您的目錄 |各個連線至 Azure AD 之樹系的內部部署 Active Directory 認證 |權限取決於所啟用的功能，並且可在建立 AD DS 連接器帳戶中找到 |這個帳戶是在同步處理期間用來讀取和寫入目錄資訊。 |
 | AD FS 伺服器 |針對清單中的每部伺服器，當執行 wizard 的使用者登入認證不足而無法連線時，嚮導會收集認證 |網域系統管理員 |安裝和設定 AD FS 伺服器角色。 |
 | Web 應用程式 Proxy 伺服器 |針對清單中的每部伺服器，當執行 wizard 的使用者登入認證不足而無法連線時，嚮導會收集認證 |目標電腦上的本機系統管理員 |安裝和設定 WAP 伺服器角色。 |
-| Proxy 信任認證 |Federation Service 信任認證 (Proxy 用來註冊 FS 信任憑證的認證) |網域帳戶是 AD FS 伺服器的本機系統管理員 |FS-WAP 信任憑證的首次註冊。 |
+| Proxy 信任憑證 |Federation Service 信任認證 (Proxy 用來註冊 FS 信任憑證的認證) |網域帳戶是 AD FS 伺服器的本機系統管理員 |FS-WAP 信任憑證的首次註冊。 |
 | AD FS 服務帳戶頁面，「使用網域使用者帳戶選項」 |AD 使用者帳戶認證 |網域使用者 |系統會使用提供其認證的 Azure AD 使用者帳戶做為 AD FS 服務的登入帳戶。 |
 
 ### <a name="create-the-ad-ds-connector-account"></a>建立 AD DS 連接器帳戶
@@ -142,11 +141,11 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 您需要的權限取決於您啟用的選用功能。 如果您有多個網域，則必須對樹系中的所有網域授與權限。 如果您未啟用任何一項功能，預設的 **網域使用者** 權限就已足夠。
 
-| 功能 | Permissions |
+| 功能 | 權限 |
 | --- | --- |
 | ms-DS-ConsistencyGuid 功能 |ms-DS-ConsistencyGuid 屬性 (詳情記載於[設計概念 - 使用 ms-DS-ConsistencyGuid 來作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)) 的寫入權限。 | 
 | 密碼雜湊同步處理 |<li>複寫目錄變更</li>  <li>複寫目錄變更 (全部) |
-| Exchange 混合式部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人適用的屬性的寫入權限。 |
+| Exchange 混合部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人適用的屬性的寫入權限。 |
 | Exchange 郵件公用資料夾 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
 | 密碼回寫 |[開始使用密碼管理](../authentication/howto-sspr-writeback.md)中記載了使用者適用的屬性的寫入權限。 |
 | 裝置回寫 |[裝置回寫](how-to-connect-device-writeback.md)中所述的使用 PowerShell 指令碼授與權限。 |
@@ -159,11 +158,11 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 >從組建 1.1.484 開始，Azure AD Connect 出現一個迴歸錯誤 (bug)，導致需要有 sysadmin 權限才能升級 SQL 資料庫。  組建 1.1.647 中已更正這個錯誤。  如果想要升級至這個組建，您需要 sysadmin 權限。  Dbo 權限還不夠。  如果您嘗試升級 Azure AD Connect 但沒有 sysadmin 權限，升級會失敗，然後 Azure AD Connect 將無法再正常運作。  Microsoft 知道這個問題，正在設法解決。
 
 
-| 主體 | 所需的權限 | 用於 |
+| 主體 | 所需權限 | 用於 |
 | --- | --- | --- |
 | 執行安裝精靈的使用者 |本機伺服器的系統管理員 |更新二進位檔案。 |
 | 執行安裝精靈的使用者 |ADSyncAdmins 的成員 |對同步處理規則和其他組態進行變更。 |
-| 執行安裝精靈的使用者 |如果您使用完整 SQL Server：同步處理引擎資料庫的 DBO (或類似選項) |變更資料庫層級，例如更新含有新資料行的資料表。 |
+| 執行安裝精靈的使用者 |如果您使用同步處理引擎資料庫的完整 SQL Server: DBO (或類似選項) |變更資料庫層級，例如更新含有新資料行的資料表。 |
 
 ## <a name="more-about-the-created-accounts"></a>已建立帳戶的相關資訊
 ### <a name="ad-ds-connector-account"></a>AD DS 連接器帳戶
@@ -266,7 +265,7 @@ Azure AD 中有 20 個同步服務帳戶的限制。 若要取得 Azure AD 中�
 |下載 Azure AD Connect | [下載 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |使用快速設定進行安裝 | [快速安裝 Azure AD Connect](how-to-connect-install-express.md)|
 |使用自訂設定進行安裝 | [自訂 Azure AD Connect 安裝](./how-to-connect-install-custom.md)|
-|從 DirSync 升級 | [從 Azure AD Sync 工具 (DirSync) 升級](how-to-dirsync-upgrade-get-started.md)|
+|從 DirSync 升級 | [從 Azure AD 同步作業工具 (DirSync) 升級](how-to-dirsync-upgrade-get-started.md)|
 |安裝後 | [驗證安裝和指派授權](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>後續步驟

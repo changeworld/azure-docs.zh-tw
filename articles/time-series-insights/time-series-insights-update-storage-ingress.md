@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559839"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246193"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的資料儲存體和輸入
 
@@ -155,14 +155,14 @@ Azure 時間序列深入解析 Preview 目前有**每個分割區限制為 0.5 M
 * [事件中樞規模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中樞磁碟分割](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-### <a name="data-storage"></a>資料儲存體
+### <a name="data-storage"></a>資料儲存
 
 當您建立時間序列深入解析預覽的*隨用隨付*（PAYG） SKU 環境時，您會建立兩個 Azure 資源：
 
-* 可針對暖儲存體設定的 Azure 時間序列深入解析預覽環境。
+* Azure 時間序列深入解析的預覽環境，可針對暖資料儲存進行設定。
 * 適用于冷資料儲存的 Azure 儲存體一般用途 V1 blob 帳戶。
 
-您的暖存放區中的資料只能透過[時間序列查詢](./time-series-insights-update-tsq.md)和[Azure 時間序列深入解析預覽瀏覽器](./time-series-insights-update-explorer.md)來使用。 
+您的暖存放區中的資料只能透過[時間序列查詢](./time-series-insights-update-tsq.md)和[Azure 時間序列深入解析預覽瀏覽器](./time-series-insights-update-explorer.md)來使用。 您的暖存放區將會包含建立時間序列深入解析環境時，所選[保留期間](./time-series-insights-update-plan.md#the-preview-environment)內的最新資料。
 
 時間序列深入解析 Preview 會以[Parquet 檔案格式](#parquet-file-format-and-folder-structure)將您的冷存放區資料儲存至 Azure Blob 儲存體。 時間序列深入解析 Preview 會以獨佔方式管理此冷存放區資料，但可供您直接讀取為標準 Parquet 檔案。
 
@@ -186,12 +186,7 @@ Azure 時間序列深入解析預覽分割和索引資料，以獲得最佳查�
 
 當您建立 Azure 時間序列深入解析 Preview PAYG 環境時，系統會將 Azure 儲存體一般用途 V1 blob 帳戶建立為長期冷存放區。  
 
-Azure 時間序列深入解析 Preview 會在您的 Azure 儲存體帳戶中最多發佈兩個事件的複本。 初始複本的事件會依內嵌時間排序。 系統**一律會保留**該事件順序，讓其他服務可以存取您的事件，而不會排序問題。 
-
-> [!NOTE]
-> 您也可以使用 Spark、Hadoop 和其他熟悉的工具來處理原始的 Parquet 檔案。 
-
-時間序列深入解析 Preview 也會會重新分割 Parquet 檔案，以針對時間序列深入解析查詢進行優化。 此資料的重新分割複本也會一併儲存。 
+Azure 時間序列深入解析 Preview 會在您的 Azure 儲存體帳戶中最多保留兩個事件的複本。 一個複本會儲存依內嵌時間排序的事件，並一律允許以時間排序的順序存取事件。 經過一段時間後，時間序列深入解析 Preview 也會建立資料的重新分割複本，以針對高效能時間序列深入解析查詢進行優化。 
 
 在公開預覽期間，資料會無限期地儲存在您的 Azure 儲存體帳戶中。
 
@@ -199,15 +194,11 @@ Azure 時間序列深入解析 Preview 會在您的 Azure 儲存體帳戶中最�
 
 若要確保查詢效能和資料可用性，請勿編輯或刪除時間序列深入解析 Preview 所建立的任何 blob。
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>從時間序列深入解析預覽存取和匯出資料
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>存取時間序列深入解析預覽冷存放區資料 
 
-您可能想要存取在時間序列深入解析預覽瀏覽器中查看的資料，以便與其他服務搭配使用。 例如，您可以使用您的資料在 Power BI 中建立報表，或使用 Azure Machine Learning Studio 將機器學習模型定型。 或者，您可以使用您的資料在 Jupyter 筆記本中轉換、視覺化和模型化。
+除了從[時間序列深入解析 Preview explorer](./time-series-insights-update-explorer.md)和[時間序列查詢](./time-series-insights-update-tsq.md)存取您的資料，您可能也會想要直接從儲存在冷存放區中的 Parquet 檔案存取您的資料。 例如，您可以讀取、轉換和清理 Jupyter 筆記本中的資料，然後使用它來定型相同 Spark 工作流程中的 Azure Machine Learning 模型。
 
-您可以透過三種一般方式存取資料：
-
-* 透過時間序列深入解析預覽總管。 您可以從 [explorer] 將資料匯出成 CSV 檔案。 如需詳細資訊，請參閱[時間序列深入解析 Preview explorer](./time-series-insights-update-explorer.md)。
-* 使用取得事件查詢從時間序列深入解析預覽 API。 若要深入瞭解此 API，請參閱[時間序列查詢](./time-series-insights-update-tsq.md)。
-* 直接從 Azure 儲存體帳戶。 您需要您用來存取時間序列深入解析預覽資料的任何帳戶的讀取存取權。 如需詳細資訊，請參閱[管理儲存體帳戶資源的存取權](../storage/blobs/storage-manage-access-to-resources.md)。
+若要直接從您的 Azure 儲存體帳戶存取資料，您需要用來儲存時間序列深入解析預覽資料之帳戶的 [讀取] 存取權。 接著，您可以根據[Parquet 檔案格式](#parquet-file-format-and-folder-structure)一節中所述的 [`PT=Time`] 資料夾中的 Parquet 檔案建立時間，讀取選取的資料。  如需啟用儲存體帳戶之讀取權限的詳細資訊，請參閱[管理儲存體帳戶資源的存取權](../storage/blobs/storage-manage-access-to-resources.md)。
 
 #### <a name="data-deletion"></a>刪除資料
 
@@ -215,21 +206,21 @@ Azure 時間序列深入解析 Preview 會在您的 Azure 儲存體帳戶中最�
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet 檔案格式和資料夾結構
 
-Parquet 是開放原始碼的單欄式檔案格式，專為有效率的儲存和效能所設計。 基於這些理由，時間序列深入解析 Preview 會使用 Parquet。 它會依時間序列識別碼分割資料，以獲得大規模的查詢效能。  
+Parquet 是開放原始碼的單欄式檔案格式，專為有效率的儲存和效能所設計。 時間序列深入解析 Preview 會使用 Parquet 來大規模啟用以時間序列識別碼為基礎的查詢效能。  
 
 如需 Parquet 檔案類型的詳細資訊，請參閱[Parquet](https://parquet.apache.org/documentation/latest/)檔。
 
 時間序列深入解析預覽會儲存資料的複本，如下所示：
 
-* 第一個，初始複本是透過內嵌時間來分割，並大致地以抵達的順序儲存資料。 資料位於 `PT=Time` 資料夾中：
+* 第一個，初始複本是透過內嵌時間來分割，並大致地以抵達的順序儲存資料。 此資料位於 `PT=Time` 資料夾中：
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* 第二個是以時間序列識別碼群組分割複本，並位於 `PT=TsId` 資料夾中：
+* 第二個是以時間序列識別碼來分組重新分割複本，並位於 `PT=TsId` 資料夾中：
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-在這兩種情況下，時間值都會對應到 blob 建立時間。 [`PT=Time`] 資料夾中的資料會保留下來。 [`PT=TsId`] 資料夾中的資料將會針對一段時間的查詢優化，而且不會保持靜態。
+在這兩種情況下，Parquet 檔案的 time 屬性都會對應到 blob 建立時間。 在 [`PT=Time`] 資料夾中的資料在寫入檔案後不會有任何變更。 [`PT=TsId`] 資料夾中的資料將會針對一段時間的查詢優化，而且不是靜態的。
 
 > [!NOTE]
 > * `<YYYY>` 對應到四位數年份標記法。
@@ -239,10 +230,10 @@ Parquet 是開放原始碼的單欄式檔案格式，專為有效率的儲存和
 時間序列深入解析預覽事件會對應至 Parquet 檔案內容，如下所示：
 
 * 每個事件都會對應至單一資料列。
-* 每個資料列都包含**時間**戳資料行與事件時間戳記。 時間戳記屬性絕不會是 null。 如果事件來源中未指定時間戳記屬性，它會預設為**事件排入佇列的時間**。 時間戳記一律為 UTC 格式。
-* 每個資料列都包含建立時間序列深入解析環境時所定義的時間序列識別碼資料行。 屬性名稱包含 `_string` 尾碼。
+* 每個資料列都包含**時間**戳資料行與事件時間戳記。 時間戳記屬性絕不會是 null。 如果事件來源中未指定時間戳記屬性，它會預設為已加入**佇列的事件時間**。 儲存的時間戳記一律是 UTC 格式。
+* 每個資料列都包含建立時間序列深入解析環境時所定義的時間序列識別碼（TSID）資料行。 TSID 屬性名稱包含 `_string` 尾碼。
 * 以遙測資料傳送的所有其他屬性都會對應到以 `_string` （string）、`_bool` （布林）、`_datetime` （datetime）或 `_double` （double）為結尾的資料行名稱，視屬性類型而定。
-* 這個對應配置適用于檔案格式的第一版，其參考為**V = 1**。 隨著這項功能的演進，名稱可能會遞增。
+* 這個對應架構會套用至檔案格式的第一個版本，其參考為**V = 1** ，並儲存在相同名稱的基底資料夾中。 隨著這項功能的演進，此對應架構可能會變更，且參考名稱會遞增。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 配額錯誤
 description: 說明使用 Azure Resource Manager 部署資源時，如何解決資源配額錯誤。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659350"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250148"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解決資源配額的錯誤
 
@@ -16,7 +16,7 @@ ms.locfileid: "75659350"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>徵狀
+## <a name="symptom"></a>徵兆
 
 如果您部署的範本會建立超過 Azure 配額的資源，您會看到類似以下的部署錯誤：
 
@@ -52,7 +52,7 @@ az vm list-usage --location "South Central US"
 
 它會傳回：
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,

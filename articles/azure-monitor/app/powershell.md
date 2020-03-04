@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Azure Application Insights 自動化 | Microsoft Do
 description: 使用 Azure Resource Manager 範本，自動建立和管理 PowerShell 中的資源、警示和可用性測試。
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669789"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250773"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 資源
 
@@ -128,7 +128,7 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ Set-ApplicationInsightsRetention `
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-若要設定每日上限屬性，請使用相同的 Cmdlet。 例如，若要將上限設定為每日 300 GB， 
+若要設定每日上限屬性，請使用相同的 Cmdlet。 例如，若要將上限設定為每日 300 GB，
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+您也可以使用[ARMClient](https://github.com/projectkudu/ARMClient)來取得及設定每日上限參數。  若要取得目前的值，請使用：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>設定每日上限重設時間
+
+若要設定每日上限重設時間，您可以使用[ARMClient](https://github.com/projectkudu/ARMClient)。 以下是使用 `ARMClient`的範例，將重設時間設定為新的小時（在此範例中為 12:00 UTC）：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>設定定價方案 
 
-若要取得目前的定價方案，請使用[AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) Cmdlet： 
+若要取得目前的定價方案，請使用[AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) Cmdlet：
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,14 +364,31 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
+`priceCode` 定義如下：
+
 |priceCode|計劃|
 |---|---|
 |1|每 GB （先前名為基本方案）|
 |2|針對每個節點（先前命名為企業方案）|
 
+最後，您可以使用[ARMClient](https://github.com/projectkudu/ARMClient)來取得及設定定價方案和每日上限參數。  若要取得目前的值，請使用：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+而且您可以使用來設定所有參數：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+這會將每日上限設為 200 GB/天、將每日上限重設時間設定為 12:00 UTC、在達到上限時傳送電子郵件，以及符合警告層級，並將警告閾值設定為上限的90%。  
+
 ## <a name="add-a-metric-alert"></a>新增度量警示
 
-若要自動建立計量警示，請參閱計量[警示範本文章](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+若要自動建立計量警示，請參閱計量[警示範本一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>新增可用性測試

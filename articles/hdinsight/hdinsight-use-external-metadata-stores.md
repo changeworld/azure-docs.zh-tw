@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/02/2020
+ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327358"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251043"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
@@ -54,6 +54,8 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 * 您需要根據您選擇的效能層級支付中繼存放區 (Azure SQL DB) 的成本。
 
 * 您可以視需要相應增加中繼存放區。
+
+* 叢集和外部中繼存放區必須裝載在相同的區域中。
 
 ![HDInsight Hive 中繼資料存放區使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 

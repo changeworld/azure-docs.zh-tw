@@ -3,12 +3,12 @@ title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，瞭解如何移除相依性，然後刪除 Microsoft Azure 備份復原服務（MARS）保存庫。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ac9d0fd6411b512b319d02c94e86fa792243e0a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586456"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251424"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
@@ -149,7 +149,7 @@ ms.locfileid: "77586456"
 
     ![刪除線上存放裝置。](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
-#### <a name="method-2"></a>方法 2
+#### <a name="method-2"></a>Method 2
 
 開啟**MABS 管理**主控台。 在 [**選取資料保護方式**] 下，清除 [**我想要線上保護**] 核取方塊。
 
@@ -286,7 +286,7 @@ ms.locfileid: "77586456"
 
 - 若要停止保護並刪除備份資料
 
-    ```CLI
+    ```azurecli
     az backup protection disable --container-name
                              --item-name
                              [--delete-backup-data {false, true}]
@@ -301,7 +301,7 @@ ms.locfileid: "77586456"
 
 - 刪除現有的復原服務保存庫：
 
-    ```CLI
+    ```azurecli
     az backup vault delete [--force]
                        [--ids]
                        [--name]

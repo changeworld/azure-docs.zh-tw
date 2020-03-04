@@ -3,7 +3,7 @@ title: 建立及上傳 Red Hat Enterprise Linux VHD 以在 Azure 中使用
 description: 了解如何建立及上傳包含 Red Hat Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mimckitt
-ms.openlocfilehash: 75b06145ce5328f02cf384753745ef4866c63c64
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a8a0c64a4a68827c77ba54e7f64ecefd7d1ab8af
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155395"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251632"
 ---
-# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>為 Azure 準備 Red Hat 虛擬機器
+# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 Red Hat 型虛擬機器
 在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱[Azure 映射](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)產生器。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 Red Hat 型虛擬機器
@@ -41,7 +41,7 @@ ms.locfileid: "76155395"
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 6 虛擬機器
 
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 
 1. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 
@@ -136,7 +136,7 @@ ms.locfileid: "76155395"
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 7 虛擬機器
 
-1. 在 Hyper-V 管理員中，選取虛擬機器。
+1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
 
 1. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 
@@ -164,7 +164,7 @@ ms.locfileid: "76155395"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -345,7 +345,7 @@ ms.locfileid: "76155395"
 1. 將 qcow2 映像轉換成 VHD 格式。
 
 > [!NOTE]
-> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -418,7 +418,7 @@ ms.locfileid: "76155395"
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要進行此設定，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要進行此設定，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -496,7 +496,7 @@ ms.locfileid: "76155395"
 1. 將 qcow2 映像轉換成 VHD 格式。
 
 > [!NOTE]
-> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -568,7 +568,7 @@ ms.locfileid: "76155395"
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -625,7 +625,7 @@ ms.locfileid: "76155395"
 1. 關閉虛擬機器，然後將 VMDK 檔案轉換成 .vhd 檔案。
 
 > [!NOTE]
-> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 
@@ -676,7 +676,7 @@ ms.locfileid: "76155395"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -741,7 +741,7 @@ ms.locfileid: "76155395"
 1. 關閉虛擬機器，然後將 VMDK 檔案轉換成 VHD 格式。
 
 > [!NOTE]
-> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611 。
+> qemu-img >=2.2.1 的版本中已知有 Bug 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 建議使用 qemu-img 2.2.0 或更舊版本，或更新至 2.6 或更新版本。 參考： https://bugs.launchpad.net/qemu/+bug/1490611。
 >
 
 

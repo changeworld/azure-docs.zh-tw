@@ -2,13 +2,13 @@
 title: 將資源移到新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891362"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250174"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移到新的資源群組或訂用帳戶
 
@@ -24,7 +24,7 @@ ms.locfileid: "75891362"
 
 1. 您想要移動的資源必須支援移動作業。 如需哪些資源支援移動的清單，請參閱[資源的移動作業支援](move-support-resources.md)。
 
-1. 某些服務在移動資源時有特定的限制或需求。 如果您已移動下列任何服務，請在移動前檢查該指引。
+1. 某些服務在移動資源時有特定的限制或需求。 如果您要移動下列任何服務，請在移動前檢查該指引。
 
    * [應用程式服務移動指引](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services 移動指引](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
@@ -261,7 +261,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 * Microsoft.Compute
    * virtualMachines
-   * disks
+   * 磁碟
 * Microsoft.Network
   * networkInterfaces
   * publicIPAddresses

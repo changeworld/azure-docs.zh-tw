@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226523"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246266"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自動化圖形化 runbook 中的錯誤處理
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自動化之圖形化 Runbook 中的錯誤處理
 
 針對您的 Azure 自動化圖形化 runbook，要考慮的主要設計原則，是 runbook 在執行期間可能會遇到的問題的識別。 這些問題包括成功、預期的錯誤狀態，以及非預期的錯誤情況。
 
@@ -20,7 +20,7 @@ ms.locfileid: "78226523"
 
 您的圖形化 runbook 應該包含錯誤處理常式代碼，以處理執行問題。 若要驗證活動的輸出或處理錯誤，您可以使用 PowerShell 程式碼活動、在活動的輸出連結上定義條件式邏輯，或套用其他方法。
 
-Azure 自動化的圖形化 runbook 已透過包含錯誤處理的功能進行改良。 您現在可以將例外狀況變成非終止錯誤，並建立活動之間的錯誤連結。 改良的程式可讓您的 runbook 攔截錯誤，並管理已實現或非預期的狀況。 
+Azure 自動化的圖形化 Runbook 已納入錯誤處理功能。 您現在可以將例外狀況變成非終止錯誤，並建立活動之間的錯誤連結。 改良的程式可讓您的 runbook 攔截錯誤，並管理已實現或非預期的狀況。 
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
@@ -66,6 +66,6 @@ Runbook 中的每個活動都有一項設定，可將例外狀況變成非終止
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解圖形化 runbook 中的連結和連結類型，請參閱[Azure 自動化中的圖形化編寫](automation-graphical-authoring-intro.md#links-and-workflow)。
+* 若要深入了解圖形化 Runbook 中的連結和連結類型，請參閱 [Azure 自動化中的圖形化編寫](automation-graphical-authoring-intro.md#links-and-workflow)。
 
 * 若要深入瞭解 runbook 執行、監視 runbook 作業和其他技術詳細資料，請參閱[Azure 自動化中的 runbook 執行](automation-runbook-execution.md)。

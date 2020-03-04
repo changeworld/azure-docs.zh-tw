@@ -3,7 +3,7 @@ title: Azure 虛擬機器代理程式概觀
 description: Azure 虛擬機器代理程式概觀
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3d9c178201ab0c22ed4eab9cf65f7d48e59e1359
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264622"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246115"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虛擬機器代理程式概觀
 Microsoft Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全的輕量型處理程序，可管理虛擬機器 (VM) 與 Azure 網狀架構控制器的互動。 VM 代理程式已啟用主要角色並執行 Azure 虛擬機器擴充功能。 VM 擴充功能可啟用 VM 的部署後組態，例如安裝和設定軟體。 VM 擴充功能也會啟用復原功能，例如重設 VM 的系統管理密碼。 若沒有 Azure VM 代理程式，便無法執行 VM 擴充功能。

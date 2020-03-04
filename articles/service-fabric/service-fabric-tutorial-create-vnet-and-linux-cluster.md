@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465403"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251775"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -72,12 +72,12 @@ ms.locfileid: "75465403"
 
 [Azuredeploy.parameters.json」][parameters]參數檔案會宣告許多用來部署叢集和相關聯資源的值。 您可能需要為自己的部署修改某些參數：
 
-|參數|範例值|注意|
+|參數|範例值|注意事項|
 |---|---||
 |adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 |
 |adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。|
 |clusterName|mysfcluster123| 叢集的名稱。 |
-|location|southcentralus| 叢集的位置。 |
+|位置|southcentralus| 叢集的位置。 |
 |certificateThumbprint|| <p>如果建立自我簽署憑證或提供憑證檔案，則值應該空白。</p><p>若要使用先前上傳至金鑰保存庫的現有憑證，請填入憑證 SHA1 指紋值。 例如 "6190390162C988701DB5676EB81083EA608DCCF3"。 </p>|
 |certificateUrlValue|| <p>如果建立自我簽署憑證或提供憑證檔案，則值應該空白。</p><p>若要使用先前上傳至金鑰保存庫的現有憑證，請填入憑證 URL。 例如，"https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346"。</p>|
 |sourceVaultValue||<p>如果建立自我簽署憑證或提供憑證檔案，則值應該空白。</p><p>若要使用先前上傳至金鑰保存庫的現有憑證，請填入來源保存庫值。 例如 "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT"。</p>|
@@ -129,21 +129,25 @@ VaultName="linuxclusterkeyvault"
 VaultGroupName="linuxclusterkeyvaultgroup"
 CertPath="C:\MyCertificates"
 
-az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com --vault-name $VaultName --vault-resource-group $ResourceGroupName
+az sf cluster create --resource-group $ResourceGroupName --location $Location \
+   --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json \
+   --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password \
+   --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com \
+   --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>連線到安全的叢集
 
 使用 Service Fabric CLI 命令 `sfctl cluster select` 搭配您的金鑰來連線到叢集。  請注意，只能針對自我簽署憑證使用 **--no-verify** 選項。
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
 使用 `sfctl cluster health` 命令來檢查您連接的叢集是否狀況良好。
 
-```azurecli
+```console
 sfctl cluster health
 ```
 

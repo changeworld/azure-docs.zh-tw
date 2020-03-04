@@ -4,12 +4,12 @@ description: 了解 Azure Service Fabric Mesh 的常見問題和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461990"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252499"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh 的常見問題
 
@@ -27,7 +27,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>核心和 RAM 數目是否有配額限制？
 
-可以。 每個訂用帳戶的配額如下：
+是的。 每個訂用帳戶的配額如下：
 
 - 應用程式數目：5
 - 每個應用程式的核心數：12
@@ -44,10 +44,13 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 如果確實發生此情況，可以藉由在 Azure CLI 中執行 `az mesh app show` 命令，以驗證系統是否將它關閉。 請檢查是否傳回 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-例如： 
+例如， 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -104,7 +107,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 - 使用 Windows Fall Creators Update (1709版) 或更新版本作為基礎容器映像。
 - 如果服務名稱單獨無法使用，請嘗試完整名稱： ServiceName. ApplicationName。
-- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如：
+- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如，
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +123,7 @@ Azure Mesh 目前不支援跨應用程式的 DNS 解析。
 
 如需在 Windows 10 上執行 Service Fabric 開發叢集的其他已知 DNS 問題，請參閱：[偵錯工具 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知的 DNS 問題](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 
 在本機電腦上執行應用程式時，ServiceFabric 網路 NAT 可能會消失。 若要診斷是否發生此問題，請從命令提示字元執行以下命令：
 

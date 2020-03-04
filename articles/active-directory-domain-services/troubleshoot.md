@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612729"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249198"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見錯誤和疑難排解步驟
 
@@ -138,7 +138,7 @@ if ($sp -ne $null)
       * 您已部署或更新為[Azure AD Connect 的最新建議版本](https://www.microsoft.com/download/details.aspx?id=47594)。
       * 您已設定 Azure AD Connect 以[執行完整同步][hybrid-phs]處理。
       * 視目錄的大小而定，可能需要一些時間，使用者帳戶和認證雜湊才會在 Azure AD DS 中提供。 請先確定您的等待時間夠久，再嘗試對受控網域進行驗證。
-      * 如果在確認先前的步驟之後問題仍然存在，請嘗試重新開機*Microsoft Azure AD 同步處理服務*。 從您的[管理 VM][management-vm]開啟命令提示字元，然後執行下列命令：
+      * 如果在確認先前的步驟之後問題仍然存在，請嘗試重新開機*Microsoft Azure AD 同步處理服務*。 從您的 Azure AD Connect 伺服器，開啟命令提示字元，然後執行下列命令：
     
         ```console
         net stop 'Microsoft Azure AD Sync'

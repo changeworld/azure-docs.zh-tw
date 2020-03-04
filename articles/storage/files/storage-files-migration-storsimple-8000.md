@@ -4,25 +4,19 @@ description: 瞭解如何將 StorSimple 8100 或8600應用裝置遷移至 Azure 
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/20/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ec3f59c02f73f51ccb4fac21d6ba4cc746a1134e
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209437"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250956"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600遷移至 Azure 檔案同步
 
-StorSimple 8000 系列中有兩個不同的實體設備。 兩者之間唯一的差異是本機快取大小（磁碟空間）的數量。 此應用裝置會在內部部署資料中心內執行，並作為 Azure 中儲存之資料的快取。
-透過在 31 2022 年12月宣佈的 StorSimple 產品線服務終止生命週期結束，此設備所連接的雲端服務將會停止運作。
-
-有充足的時間可以從任何 StorSimple 裝置遷移。
-Azure 檔案同步是自然的後繼技術，具有比 StorSimple 供應專案更多的功能和彈性。
-
-本文提供必要的背景知識和遷移步驟，讓您的遷移成功 Azure 檔案同步。
+StorSimple 8000 系列代表兩個不同的 Sku，而且可以將其中一個 Sku 的資料移轉至 Azure 檔案同步環境。 本文涵蓋將這兩個設備遷移至 Azure 檔案同步，並提供必要的背景知識和遷移步驟，讓您的遷移成功 Azure 檔案同步。
 
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 

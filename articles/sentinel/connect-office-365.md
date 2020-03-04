@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588156"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252505"
 ---
 # <a name="connect-data-from-office-365-logs"></a>從 Office 365 記錄連接資料
 
@@ -30,12 +30,12 @@ ms.locfileid: "77588156"
 > [!IMPORTANT]
 > 如果您有 E3 授權，在可以透過 Office 365 管理活動 API 存取資料之前，必須先為您的 Office 365 組織啟用統一的審核記錄。 您可以藉由開啟 Office 365 audit 記錄來完成此動作。 如需指示，請參閱[開啟或關閉 Office 365 審核記錄搜尋](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)。 如需詳細資訊，請參閱[Office 365 管理活動 API 參考](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 您必須是租使用者的全域管理員或安全性系統管理員。
-- 如果您的租使用者沒有 Office 365 E3 或 Office 365 E5 授權，您必須使用下列其中一個程式，在您的租使用者上啟用統一的審核：
+- 您的租使用者必須啟用統一的審核。 具有 Office 365 E3 或 E5 授權的租使用者，預設會啟用統一的審核。 <br>如果您的租使用者沒有這些授權的其中一個，您必須使用下列其中一種方法，在您的租使用者上啟用統一的審核：
     - [使用 AdminAuditLogConfig Cmdlet](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps)並啟用參數 "UnifiedAuditLogIngestionEnabled"）。
-    - [或使用安全性 & 合規性中心 UI](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
+    - [使用安全性 & 合規性中心 UI](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
 
 ## <a name="connect-to-office-365"></a>連接至 Office 365
 

@@ -1,15 +1,14 @@
 ---
 title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
-tags: billing
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 1987d444c49bb5e53950c26c43c1607c8a87be6d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592406"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254326"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -311,7 +310,7 @@ ms.locfileid: "77592406"
 
 如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="storage-limits"></a>儲存體限制
+## <a name="storage-limits"></a>存放裝置限制
 
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]

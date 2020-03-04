@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833879"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251560"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 
@@ -29,3 +29,5 @@ ms.locfileid: "75833879"
 - 您可以使用[Azure PowerShell](dedicated-hosts-powershell.md)、[入口網站](dedicated-hosts-portal.md)和[Azure CLI](../linux/dedicated-hosts-cli.md)來部署專用主機。
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，它會使用區域和容錯網域來取得區域中的最大復原。
+
+- 您也可以使用[Azure 專用主機的保留實例](../prepay-dedicated-hosts-reserved-instances.md)來節省成本。

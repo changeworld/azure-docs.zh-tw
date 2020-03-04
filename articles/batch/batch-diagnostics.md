@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 70c53ea9a8fc64615a9a493efc42405631a3f06d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 68d5976a5a79dbde88b7f80b02b39793ffc86de9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025158"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254848"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用於診斷評估和監視的 Batch 計量、警示和記錄
 
@@ -49,7 +49,12 @@ ms.locfileid: "77025158"
 3. 選取一或多個計量。 如有需要，可使用 [訂閱]、[資源群組]、[資源類型]和 [資源] 下拉式清單，來選取其他資源計量。
     * 針對以計數為基礎的計量（例如「專用核心計數」或「低優先順序節點計數」），請使用「平均」匯總。 若為以事件為基礎的計量（例如「集區調整大小完成事件」），請使用「計數」匯總。
 
-    ![Batch 計量](media/batch-diagnostics/metrics-portal.png)
+> [!WARNING]
+> 請勿使用「總和」匯總，這會加總在圖表期間收到的所有資料點值
+> 
+> 
+
+    ![Batch metrics](media/batch-diagnostics/metrics-portal.png)
 
 若要以程式設計方式擷取計量，請使用 Azure 監視器 API。 例如，請參閱[使用 .NET 擷取 Azure 監視器計量](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。
 
@@ -71,7 +76,7 @@ ms.locfileid: "77025158"
 2. 在 [監視] 下方，按一下 [警示規則] > [新增計量警示]。
 3. 選取計量、警示條件 (例如計量在某個期間超過特定值)，以及一個或多個通知。
 
-您也可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 設定幾近即時的警示。 如需詳細資訊，請參閱[警示概觀](../azure-monitor/platform/alerts-overview.md)
+您也可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 設定幾近即時的警示。 如需詳細資訊，請參閱[警示總覽](../azure-monitor/platform/alerts-overview.md)。 若要在您的警示中包含作業、工作或集區特定資訊，請參閱[使用 Azure 監視器警示回應事件](../azure-monitor/learn/tutorial-response.md)中的搜尋查詢相關資訊
 
 ## <a name="batch-diagnostics"></a>Batch 診斷
 
@@ -105,7 +110,7 @@ ms.locfileid: "77025158"
 
     當您選取儲存體帳戶時，可選擇性地設定保留原則。 如果您未指定保留天數，資料的保留期限會是儲存體帳戶的存留期間。
 
-4. 按一下 [檔案]。
+4. Haga clic en **Guardar**.
 
     ![Batch 診斷](media/batch-diagnostics/diagnostics-portal.png)
 

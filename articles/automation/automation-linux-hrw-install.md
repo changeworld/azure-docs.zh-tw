@@ -3,14 +3,14 @@ title: Azure 自動化 Linux 混合式 Runbook 背景工作
 description: 本文提供有關安裝 Azure 自動化混合式 Runbook 背景工作角色的資訊，以便您在本機資料中心或雲端環境內的 Linux 電腦上執行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/28/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421927"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246298"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
 
@@ -27,7 +27,7 @@ ms.locfileid: "75421927"
 * Oracle Linux 5、6 和 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5、6 和 7 (x86/x64)
 * Debian GNU/Linux 6、7 和 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS 和 16.04 LTS (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和18.04 （x86/x64）
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>安裝 Linux 混合式 Runbook 背景工作角色

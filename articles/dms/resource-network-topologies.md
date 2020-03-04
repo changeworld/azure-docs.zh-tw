@@ -3,8 +3,8 @@ title: 適用于 SQL 受控實例遷移的網路拓撲
 titleSuffix: Azure Database Migration Service
 description: 瞭解使用 Azure 資料庫移轉服務 Azure SQL Database 受控實例遷移的來源和目標設定。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9a313ea798519273ce57961544ec5b37c4d9c5ca
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 48485b7ba0f846afa737454b092a6c1ee986b737
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749263"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254965"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的 Azure SQL DB 受控執行個體遷移的網路拓朴
 
@@ -77,20 +77,20 @@ ms.locfileid: "75749263"
 
 | **名稱**   | **連接埠** | **通訊協定** | **來源** | **目的地** | **動作** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | 任意      | 任意          | DMS 子網路 | 任意             | 允許      |
+| DMS_subnet | 任何      | 任何          | DMS 子網路 | 任何             | 允許      |
 
 ## <a name="outbound-security-rules"></a>輸出安全性規則
 
 | **名稱**                  | **連接埠**                                              | **通訊協定** | **來源** | **目的地**           | **動作** | **規則的原因**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 管理                | 443,9354                                              | TCP          | 任意        | 任意                       | 允許      | 透過服務匯流排和 Azure blob 儲存體的管理平面通訊。 <br/>(如果已啟用 Microsoft 對等互連，您可能不需要此規則。)                                                             |
-| 診斷程式               | 12000                                                 | TCP          | 任意        | 任意                       | 允許      | DMS 會使用此規則來收集診斷資訊，以便進行疑難排解。                                                                                                                      |
-| SQL 來源伺服器         | 1433 (或 SQL Server 正在接聽的 TCP IP 連接埠) | TCP          | 任意        | 內部部署位址空間 | 允許      | 來自 DMS 的 SQL Server 來源連線 <br/>(如果您擁有站對站連線，則可能需要此規則。)                                                                                       |
-| SQL Server 具名執行個體 | 1434                                                  | UDP          | 任意        | 內部部署位址空間 | 允許      | 來自 DMS 的 SQL Server 具名執行個體來源連線 <br/>(如果您擁有站對站連線，則可能需要此規則。)                                                                        |
-| SMB 共用                 | 445                                                   | TCP          | 任意        | 內部部署位址空間 | 允許      | 適用於 DMS 的 SMB 網路共用可儲存資料庫備份檔案，以便遷移到 Azure VM 上的 Azure SQL Database MI 和 SQL Server <br/>(如果您擁有站對站連線，則可能需要此規則)。 |
-| DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | 允許      |                                                                                                                                                                                                  |
+| 管理                | 443,9354                                              | TCP          | 任何        | 任何                       | 允許      | 透過服務匯流排和 Azure blob 儲存體的管理平面通訊。 <br/>(如果已啟用 Microsoft 對等互連，您可能不需要此規則。)                                                             |
+| 診斷               | 12000                                                 | TCP          | 任何        | 任何                       | 允許      | DMS 會使用此規則來收集診斷資訊，以便進行疑難排解。                                                                                                                      |
+| SQL 來源伺服器         | 1433 (或 SQL Server 正在接聽的 TCP IP 連接埠) | TCP          | 任何        | 內部部署位址空間 | 允許      | 來自 DMS 的 SQL Server 來源連線 <br/>(如果您擁有站對站連線，則可能需要此規則。)                                                                                       |
+| SQL Server 具名執行個體 | 1434                                                  | UDP          | 任何        | 內部部署位址空間 | 允許      | 來自 DMS 的 SQL Server 具名執行個體來源連線 <br/>(如果您擁有站對站連線，則可能需要此規則。)                                                                        |
+| SMB 共用                 | 445                                                   | TCP          | 任何        | 內部部署位址空間 | 允許      | 適用於 DMS 的 SMB 網路共用可儲存資料庫備份檔案，以便遷移到 Azure VM 上的 Azure SQL Database MI 和 SQL Server <br/>(如果您擁有站對站連線，則可能需要此規則)。 |
+| DMS_subnet                | 任何                                                   | 任何          | 任何        | DMS_Subnet                | 允許      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [將 SQL Server 遷移至 Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [使用 Azure 資料庫移轉服務的必要條件總覽](https://docs.microsoft.com/azure/dms/pre-reqs)

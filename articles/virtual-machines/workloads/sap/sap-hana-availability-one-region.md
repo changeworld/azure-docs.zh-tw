@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842677"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255468"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>單一 Azure 區域中的 SAP HANA 可用性
 本文說明單一 Azure 區域中的幾種可用性案例。 Azure 有許多分散在世界各地的區域。 如需 Azure 區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。 為了讓您能夠在單一 Azure 區域內的 VM 上部署 SAP HANA，Microsoft 提供了含一個 HANA 執行個體的單一 VM 部署。 如需提升可用性，您可以在 [Azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中部署含兩個 HANA 執行個體的兩個 VM，以便使用 HANA 系統複寫來獲得可用性。 
@@ -54,7 +54,7 @@ Azure VM 自動重新啟動 (又稱服務修復) 是在以下兩個層級上運�
 Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問題時會自動於狀態良好的 Azure 主機上重新啟動。 
 
 >[!IMPORTANT]
->Azure 服務修復並不會使客體作業系統處於核心異常狀態的 Linux Vm 重新啟動。 在常用的 Linux 發行版本中，預設設定不會自動重新啟動 Linux 核心處於異常狀態的 VM 或伺服器。 相反地，預設設定會讓作業系統維持在核心異常的狀態，以便連結核心偵錯來進行分析。 Azure 會接受該行為，不會自動重新啟動客體作業系統處於這類狀態的 VM。 我們假設這種情況極為罕見。 您也可以覆寫此預設行為，以啟用重新啟動 VM 的功能。 若要變更預設行為，在 /etc/sysctl.conf 中啟用 'kernel.panic' 參數。 設定此參數的時間大約是幾秒鐘。 常見的建議值約需要等候 20-30 秒，才會透過此參數觸發重新開機。 另請參閱 <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>。
+>Azure 服務修復並不會使客體作業系統處於核心異常狀態的 Linux Vm 重新啟動。 在常用的 Linux 發行版本中，預設設定不會自動重新啟動 Linux 核心處於異常狀態的 VM 或伺服器。 相反地，預設設定會讓作業系統維持在核心異常的狀態，以便連結核心偵錯來進行分析。 Azure 會接受該行為，不會自動重新啟動客體作業系統處於這類狀態的 VM。 我們假設這種情況極為罕見。 您也可以覆寫此預設行為，以啟用重新啟動 VM 的功能。 若要變更預設行為，在 /etc/sysctl.conf 中啟用 'kernel.panic' 參數。 設定此參數的時間大約是幾秒鐘。 常見的建議值約需要等候 20-30 秒，才會透過此參數觸發重新開機。 另請參閱<https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>。
 
 您在此案例中依賴的第二個功能，就是在重新啟動的 VM 上執行的 HANA 服務會在 VM 重新開機後自動啟動。 您可以透過不同 HANA 服務的監視程式服務來設定 [HANA 服務自動重新啟動](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)。
 
@@ -108,7 +108,7 @@ Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>具有自動容錯移轉的 SAP HANA 系統複寫
 
-在單一 Azure 區域內最常見的標準可用性設定中，兩個執行 SLES Linux 的 Azure VM 會定義容錯移轉叢集。 SLES Linux 叢集會以 [Pacemaker](http://www.linux-ha.org/wiki/Pacemaker) 架構為基礎，並搭配 [STONITH](http://www.linux-ha.org/wiki/STONITH) 裝置。 
+在單一 Azure 區域內最常見的標準可用性設定中，兩個執行 SLES Linux 的 Azure VM 會定義容錯移轉叢集。 SLES Linux 叢集會以 [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) 架構為基礎，並搭配 [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) 裝置。 
 
 如果從 SAP HANA 的角度來看，所使用的複寫模式已同步處理，且自動容錯移轉也已設定。 在第二個 VM 中，SAP HANA 執行個體會作為熱待命節點。 待命節點會接收與主要 SAP HANA 執行個體同步的變更記錄資料流。 HANA 主要節點上的應用程式認可交易後，主要 HANA 節點會等候向應用程式確認該認可，直到次要 SAP HANA 節點確認接收到認可記錄為止。 SAP HANA 提供兩種同步複寫模式。 如需詳細資料以及這兩種同步複寫模式差異的說明，請參閱 SAP 的[SAP HANA 系統複寫的複寫模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)一文。
 

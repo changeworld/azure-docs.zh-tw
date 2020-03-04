@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529570"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251017"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>安裝並使用適用于 Azure CLI 的 Azure IoT 擴充功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "75529570"
 
 ### <a name="step-2---install-iot-extension"></a>步驟 2-安裝 IoT 擴充功能
 
-[IoT 擴充功能讀我檔案](https://github.com/Azure/azure-iot-cli-extension)說明安裝此擴充功能的數種方式。 最簡單的方式就是執行 `az extension add --name azure-cli-iot-ext`。 安裝之後，您可以使用 `az extension list` 來驗證目前安裝的擴充功能，或使用 `az extension show --name azure-cli-iot-ext` 來查看有關 IoT 擴充功能的詳細資料。 若要移除此擴充功能，您可以使用 `az extension remove --name azure-cli-iot-ext`。
+[IoT 擴充功能讀我檔案](https://github.com/Azure/azure-iot-cli-extension)說明安裝此擴充功能的數種方式。 最簡單的方式就是執行 `az extension add --name azure-iot`。 安裝之後，您可以使用 `az extension list` 來驗證目前安裝的擴充功能，或使用 `az extension show --name azure-iot` 來查看有關 IoT 擴充功能的詳細資料。 若要移除此擴充功能，您可以使用 `az extension remove --name azure-iot`。
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>使用適用于 Azure CLI 的 Azure IoT 擴充功能
 
@@ -60,7 +60,7 @@ az login
 - Azure IoT 中樞。 有許多方法可將 IoT 中樞新增至您的 Azure 訂用帳戶，例如[使用 Azure CLI 建立 iot 中樞](../iot-hub/iot-hub-create-using-cli.md)。 您需要 IoT 中樞的連接字串，才能執行 Azure IoT 擴充功能命令。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
     > [!NOTE]
-    > 在公開預覽期間，IoT 隨插即用功能只能在**美國中部**、**歐洲北部**和**日本東部**區域中建立的 IoT 中樞上使用。
+    > 在公開預覽期間，IoT 隨插即用功能只能在**美國中部**、**北歐**和**日本東部**區域中建立的 IoT 中樞上使用。
 
 - 在 IoT 中樞註冊的裝置。 您可以使用下列 Azure CLI 命令來註冊裝置，請務必以您的值取代 `{YourIoTHubName}` 和 `{YourDeviceID}` 預留位置：
 

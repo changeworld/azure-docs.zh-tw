@@ -3,12 +3,12 @@ title: 如何停止監視您的 Azure Red Hat OpenShift 叢集 |Microsoft Docs
 description: 本文說明如何使用適用于容器的 Azure 監視器來停止監視您的 Azure Red Hat OpenShift 叢集。
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 97ca333f724dc4914dabda2912c4512a40520253
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977774"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250725"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>如何使用適用于容器的 Azure 監視器停止監視您的 Azure Red Hat OpenShift 叢集
 
@@ -104,7 +104,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 可能需要幾分鐘的時間才能完成設定變更。 完成後，系統會傳回類似下列包含結果的訊息：
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
@@ -122,7 +122,7 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 
 可能需要幾分鐘的時間才能完成設定變更。 完成後，系統會傳回類似下列包含結果的訊息：
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 

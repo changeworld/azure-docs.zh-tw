@@ -3,7 +3,7 @@ title: 從 GitHub 更新 Azure Linux 代理程式
 description: 了解如何更新 Azure 中 Linux VM 的 Azure Linux 代理程式
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 86ddda8537a4b61c5432072077c183ded2556624
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973142"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251712"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新虛擬機器上的 Azure Linux 代理程式
 
@@ -349,7 +349,7 @@ sudo systemctl restart walinuxagent.service
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 和 Oracle Linux 7
 
-針對 Oracle Linux，請確定已啟用 `Addons` 儲存機制。 視您的情況，編輯檔案 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，將此檔案中 **[ol6_addons]** 或 **[ol7_addons]** 底下的 `enabled=0` 一行變更為 `enabled=1`。
+針對 Oracle Linux，請確定已啟用 `Addons` 儲存機制。 視您的情況，編輯檔案 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，將此檔案中 `enabled=0`[ol6_addons]`enabled=1` 或 **[ol7_addons]** 底下的 **一行變更為**。
 
 接下來，若要安裝最新版的 Azure Linux 代理程式，請輸入：
 
@@ -381,7 +381,7 @@ gpgcheck=1
 enabled=1
 ```
 
-然後輸入：
+接著輸入：
 
 ```bash
 sudo yum update WALinuxAgent

@@ -3,8 +3,8 @@ title: 資料庫移轉案例狀態
 titleSuffix: Azure Database Migration Service
 description: 瞭解 Azure 資料庫移轉服務所支援的遷移案例狀態。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437680"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254922"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 資料庫移轉服務所支援的遷移案例狀態
 
@@ -45,17 +45,17 @@ Azure 資料庫移轉服務所支援的遷移案例狀態會隨著時間而不�
 
 下表顯示適用於離線移轉的「Azure 資料庫移轉服務」支援。
 
-| 確定目標  | 來源 | 支援 | 狀態 |
+| 目標  | 來源 | 支援 | 狀態 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | 正式上市 |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | 正式上市 |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL VM** | SQL Server | ✔ | 正式上市 |
+| **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
-| **Azure Cosmos DB** | MongoDB | ✔ | 正式上市 |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **適用於 MySQL 的 Azure DB** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **適用於 PostgreSQL 的 Azure DB** | PostgreSQL |  |
@@ -65,21 +65,21 @@ Azure 資料庫移轉服務所支援的遷移案例狀態會隨著時間而不�
 
 下表顯示適用於線上移轉的「Azure 資料庫移轉服務」支援。
 
-| 確定目標  | 來源 | 支援 | 狀態 |
+| 目標  | 來源 | 支援 | 狀態 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | 正式上市 |
-|   | RDS SQL | ✔ | 正式上市 |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | 正式上市 |
-|   | RDS SQL | ✔ | 正式上市 |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | 個人預覽版 |
 | **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Azure Cosmos DB** | MongoDB | ✔ | 正式上市 |
-| **適用於 MySQL 的 Azure DB** | MySQL | ✔ | 正式上市 |
-|   | RDS MySQL | ✔ | 正式上市 |
-| **適用於 PostgreSQL 的 Azure DB** | PostgreSQL | ✔ | 正式上市 |
-|   | RDS PostgreSQL | ✔ | 正式上市 |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
+| **適用於 MySQL 的 Azure DB** | MySQL | ✔ | GA |
+|   | RDS MySQL | ✔ | GA |
+| **適用於 PostgreSQL 的 Azure DB** | PostgreSQL | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | 公開預覽 |
 
 ## <a name="next-steps"></a>後續步驟

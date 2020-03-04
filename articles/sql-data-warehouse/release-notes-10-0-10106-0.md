@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 80382359bb1125b7e2eba3eed86409494c1e0726
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196190"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256009"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse 分析版本資訊
 
@@ -162,7 +162,7 @@ ms.locfileid: "78196190"
 
 ## <a name="more-information"></a>詳細資訊
 - [Blog-Azure Synapse 分析](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [客戶諮詢小組部落格](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [客戶諮詢小組部落格](https://docs.microsoft.com/archive/blogs/sqlcat/)
 - [客戶成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

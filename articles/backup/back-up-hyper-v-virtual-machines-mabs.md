@@ -3,12 +3,12 @@ title: 使用 MABS 備份 Hyper-v 虛擬機器
 description: 本文包含使用 Microsoft Azure 備份 Server （MABS）來備份和復原虛擬機器的程式。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586507"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255056"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Hyper-v 虛擬機器
 
@@ -171,7 +171,7 @@ MABS 會以 VSS 執行備份，如下所示。 此描述中的步驟會進行編
 
 1. 開啟 SQL Server Management Studio，並連接到裝載 MABS 資料庫的實例。
 
-2. 執行下列查詢： `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`。 此查詢會傳回**ScheduleID**。 請注意此識別碼，因為您將在下一個步驟中使用它。
+2. 執行下列查詢： `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`。 此查詢會傳回**ScheduleID**。 請注意此識別碼，因為您將在下一個步驟中使用它。
 
 3. 在 SQL Server Management Studio 中，展開  **SQL Server Agent**，然後展開 **作業**。 以滑鼠右鍵按一下您記下的**ScheduleID** ，然後選取 [**在步驟啟動作業**]。
 

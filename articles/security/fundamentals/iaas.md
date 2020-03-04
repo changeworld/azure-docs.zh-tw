@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749850"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255948"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作負載的安全性最佳作法
 本文說明適用於 VM 和作業系統的最佳做法。
@@ -67,8 +67,8 @@ ms.locfileid: "75749850"
 
 可用性設定組是一種可在 Azure 中使用的邏輯群組，用以確保其中所放置的 VM 資源在部署到 Azure 資料中心時會彼此隔離。 Azure 可確保您在可用性設定組中所放置的 VM，會橫跨多部實體伺服器、計算機架、儲存體單位和網路交換器來執行。 如果硬體或 Azure 軟體發生故障，只有 VM 的子集會受到影響，整體的應用程式則可供客戶繼續使用。 如果您想要建置可靠的雲端解決方案，可用性設定組是不可或缺的重要功能。
 
-## <a name="protect-against-malware"></a>防範惡意程式碼
-您應安裝反惡意程式碼軟體，以協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可安裝 [Microsoft Antimalware](antimalware.md) 或 Microsoft 合作夥伴的端點保護解決方案 ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/windows/comprehensive-security) 及 [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection))。
+## <a name="protect-against-malware"></a>抵禦惡意程式碼
+您應安裝反惡意程式碼軟體，以協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可以安裝[Microsoft Antimalware](antimalware.md)或 Microsoft 合作夥伴的端點保護解決方案（[Trend 微](https://help.deepsecurity.trendmicro.com/Welcome.html)、 [Broadcom](https://www.broadcom.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)和[System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)）。
 
 Microsoft Antimalware 包含下列功能：即時防護、排程掃描、惡意程式碼補救、簽章更新、引擎更新、範例報告和排除事件收集。 對於與您的生產環境分開裝載的環境，您可以使用反惡意程式碼擴充功能來協助保護 VM 和雲端服務。
 

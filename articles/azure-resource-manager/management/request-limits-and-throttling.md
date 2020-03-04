@@ -4,12 +4,12 @@ description: 描述如何在到達訂用帳戶限制時，對 Azure Resource Man
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659367"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251333"
 ---
 # <a name="throttling-resource-manager-requests"></a>對 Resource Manager 要求進行節流
 
@@ -25,13 +25,13 @@ ms.locfileid: "75659367"
 
 下表顯示每小時的預設節流限制。
 
-| 範圍 | Dynamics 365 | 限制 |
+| 範圍 | 作業 | 限制 |
 | ----- | ---------- | ------- |
-| 訂閱 | reads | 12000 |
-| 訂閱 | deletes | 15000 |
-| 訂閱 | writes | 1200 |
+| 訂用帳戶 | reads | 12000 |
+| 訂用帳戶 | deletes | 15000 |
+| 訂用帳戶 | 寫入 | 1200 |
 | 租用戶 | reads | 12000 |
-| 租用戶 | writes | 1200 |
+| 租用戶 | 寫入 | 1200 |
 
 這些限制會侷限在提出要求的安全性主體 (使用者或應用程式)，以及訂用帳戶識別碼或租用戶識別碼。 如果您的要求來自多個安全性主體，則訂用帳戶或租用戶之間的限制會大於每小時 12,000 個和 1,200 個。
 
@@ -54,7 +54,7 @@ Microsoft 網路資源提供者會套用下列節流限制：
 | 作業 | 限制 |
 | --------- | ----- |
 | 寫入/刪除（PUT） | 每5分鐘1000 |
-| 讀取 (GET) | 每5分鐘10000 |
+| 讀取（GET） | 每5分鐘10000 |
 
 ### <a name="compute-throttling"></a>計算節流
 
@@ -84,7 +84,7 @@ Microsoft 網路資源提供者會套用下列節流限制：
 
 您可以藉由檢查回應標頭來判斷剩餘的要求數。 讀取要求會針對剩餘的讀取要求數目，傳回標頭中的值。 寫入要求包括剩餘寫入要求數目的值。 下表描述可供檢查這些值的回應標頭︰
 
-| 回應標頭 | 說明 |
+| 回應標頭 | 描述 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |受訂用帳戶限制的剩餘讀取。 讀取作業會傳回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |受訂用帳戶限制的剩餘寫入。 寫入作業會傳回此值。 |
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 這會傳回許多值，包括下列值︰
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 這會傳回許多值，包括下列值︰
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'

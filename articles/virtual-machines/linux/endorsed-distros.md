@@ -1,9 +1,9 @@
 ---
-title: Azure 支援的 Linux 發行版本
+title: Azure 背書的散發套件
 description: 了解在 Azure 背書散發套件上的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的準則。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: mimckitt
-ms.openlocfilehash: 8f12224f6ea2b9b4cecce79809389419e0159217
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748051"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251649"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上背書的 Linux 散發套件
 合作夥伴會在 Azure Marketplace 中提供 Linux 映像。 我們與各個 Linux 社群合作，以便為經背書的發佈清單新增更多版本選項。 在此同時，針對 Marketplace 未提供的發佈，您一律可以將自己的 Linux 帶入，方法是遵循[建立和上傳包含 Linux 作業系統的虛擬硬碟](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)中的指導方針。
@@ -32,14 +32,14 @@ ms.locfileid: "75748051"
 Azure Linux 代理程式已預先安裝於 Azure Marketplace 映像上，而且通常可透過發佈的套件存放庫來取得。 您可以在 [GitHub](https://github.com/azure/walinuxagent)上找到原始程式碼。
 
 
-| 通路業 | 版本 | 驅動程式 | 代理程式 |
+| 散發 | 版本 | 驅動程式 | 代理程式 |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3 +、7.0 +、8.0 + |CentOS 6.3：[LIS 下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝：在 [repo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) 中，"WALinuxAgent" 的下方 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |在核心中 |原始程式碼：[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9 +、8.2 +、9、10 |在核心中 |套件：在「waagent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7 +、7.1 +、8.0 + |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|在核心中 |Package:<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
@@ -81,7 +81,7 @@ Credativ 是一家獨立的顧問暨服務公司，專長為使用免費的軟�
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle 的策略是為公用和私人雲端提供廣泛的解決方案組合。 策略可讓客戶在 Oracle 雲端和其他雲端中部署 Oracle 軟體時能有所選擇且更有彈性。 Oracle 與 Microsoft 的合作關係可保障客戶在 Microsoft 公用和私人雲端中部署 Oracle 軟體時，能安心使用 Oracle 提供的認證與支援。  Oracle 對 Oracle 公用與私人雲端解決方案的承諾與投資沒有改變。
+Oracle 的策略是為公用和私人雲端提供廣泛的解決方案組合。 策略可讓客戶在 Oracle 雲端和其他雲端中部署 Oracle 軟體時能有所選擇且更有彈性。 Oracle 與 Microsoft 的合作，讓客戶能夠在安心知道已經過認證和會受到 Oracle 支援的情況下，於 Microsoft 公用與私人雲端中部署 Oracle 軟體。  Oracle 對 Oracle 公用與私人雲端解決方案的承諾與投資沒有改變。
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)

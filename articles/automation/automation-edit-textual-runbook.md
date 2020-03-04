@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42ff98c8dc77ee421791c3e9f22b57a4518ae80b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500176"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246414"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自動化中編輯文字式 Runbook
 
@@ -37,7 +37,7 @@ Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發�
 2. 在 [程序自動化] 底下選取 [Runbook] 開啟 Runbook 清單。
 3. 選擇要編輯的 runbook，然後按一下 [**編輯**]。
 4. 編輯 Runbook。
-5. 當您完成編輯時，按一下 [儲存] 。
+5. 編輯完成時，按一下 [儲存]。
 6. 如果您想要發佈 runbook 的最新草稿版本，請按一下 [**發佈**]。
 
 ### <a name="insert-a-cmdlet-into-a-runbook"></a>將 Cmdlet 插入 runbook
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 變更 runbook 的內容
 
-下列範例命令顯示如何以指令碼檔案內容取代現有 Runbook 的內容。 這個範例程序與[使用 Windows PowerShell 從指令碼檔案匯入 Runbook](manage-runbooks.md#import-a-runbook) 的相同。
+下列範例命令可顯示如何以指令碼檔案的內容取代 Runbook 的現有內容。 這個範例程序與[使用 Windows PowerShell 從指令碼檔案匯入 Runbook](manage-runbooks.md#import-a-runbook) 的相同。
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

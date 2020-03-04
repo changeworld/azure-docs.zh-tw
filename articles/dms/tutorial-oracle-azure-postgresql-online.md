@@ -3,8 +3,8 @@ title: 教學課程：將 Oracle online 遷移至適用於 PostgreSQL 的 Azure 
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務，在線上將內部部署的或虛擬機器上的 Oracle 移轉至適用於 PostgreSQL 的 Azure 資料庫。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759904"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255571"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教學課程：使用 DMS 將 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫 online （預覽）
 
@@ -48,7 +48,7 @@ ms.locfileid: "76759904"
 若要完成本教學課程，您需要：
 
 * 下載並安裝 [Oracle 11g Release 2 (Standard Edition、Standard Edition One 或 Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)。
-* 從[這裡](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)下載 **HR** 資料庫範例。
+* 從**這裡**下載 [HR](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002) 資料庫範例。
 * [在 Windows 或 Linux 上下載並安裝 ora2pg](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)。
 * [在適用於 PostgreSQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * 連線至執行個體，並使用此[文件](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)中的指令建立資料庫。
@@ -174,7 +174,7 @@ ms.locfileid: "76759904"
 
 大多數客戶會花大量時間檢閱評估報告，並考慮自動和手動進行轉換所需的工作。
 
-若要設定及執行 ora2pg 以建立評估報告，請參閱[從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的**移轉前：評估**一節。 [這裡](https://ora2pg.darold.net/report.html)有 ora2pg 評估報告範例可供參考。
+若要設定及執行 ora2pg 以建立評估報告，請參閱**從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南**的[移轉前：評估](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)一節。 [這裡](https://ora2pg.darold.net/report.html)有 ora2pg 評估報告範例可供參考。
 
 ## <a name="export-the-oracle-schema"></a>匯出 Oracle 結構描述
 
@@ -186,13 +186,13 @@ ms.locfileid: "76759904"
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-例如：
+例如，
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-若要設定及執行 ora2pg 以轉換結構描述，請參閱[從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的**移轉：結構描述和資料**一節。
+若要設定及執行 ora2pg 以轉換結構描述，請參閱**從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南**的[移轉：結構描述和資料](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)一節。
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>在適用於 PostgreSQL 的 Azure 資料庫中設定結構描述
 
@@ -206,7 +206,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
 > [!IMPORTANT]
 > Azure 資料庫移轉服務只會建立資料表結構描述；不會建立其他資料庫物件，例如預存程序、套件、索引等等。
 
-也請務必在目標資料庫中放入外部索引鍵，以便能夠執行完整載入。 如需可用來放入外部索引鍵的指令碼，請參閱[此處](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)文章的**遷移結構描述範例**一節。 使用 Azure 資料庫移轉服務來執行完整載入和同步處理。
+也請務必在目標資料庫中放入外部索引鍵，以便能夠執行完整載入。 如需可用來放入外部索引鍵的指令碼，請參閱**此處**文章的[遷移結構描述範例](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)一節。 使用 Azure 資料庫移轉服務來執行完整載入和同步處理。
 
 ### <a name="when-the-postgresql-table-schema-already-exists"></a>當 PostgreSQL 資料表結構描述已存在時
 
@@ -231,7 +231,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
 > [!IMPORTANT]
 > Azure 資料庫移轉服務要求所有資料表都必須以相同方式建立，使用的方法可以是 Azure 資料庫移轉服務或 ora2pg 之類的工具，但不能同時使用兩者。
 
-若要開始進行：
+開始進行之前：
 
 1. 根據應用程式需求在目標資料庫中建立結構描述。 根據預設，PostgreSQL 資料表結構描述和資料行的名稱會採用小寫。 另一方面，Oracle 資料表結構描述和資料行則預設會採用全部大寫。
 2. 在 [選取結構描述] 步驟中，指定目標資料庫和目標結構描述。
@@ -239,15 +239,15 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
 
     如果 Oracle 來源中的結構描述名稱與適用於 PostgreSQL 的 Azure 資料庫中的結構描述名稱相符，則 Azure 資料庫移轉服務會「使用與目標相同的大小寫來建立資料表結構描述」。
 
-    例如：
+    例如，
 
     | 來源 Oracle 結構描述 | 目標 PostgreSQL Database.Schema | DMS 建立的 schema.table.column |
     | ------------- | ------------- | ------------- |
-    | 人力資源 | targetHR.public | public.countries.country_id |
-    | 人力資源 | targetHR.trgthr | trgthr.countries.country_id |
-    | 人力資源 | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
-    | 人力資源 | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
-    | 人力資源 | targetHR.Hr | *無法對應混合大小寫 |
+    | HR | targetHR.public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.Hr | *無法對應混合大小寫 |
 
     *若要在目標 PostgreSQL 中建立混合大小寫的結構描述和資料表名稱，請連絡 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)。 我們可以提供指令碼供您在目標 PostgreSQL 資料庫中設定混合大小寫的資料表結構描述。
 
@@ -322,7 +322,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
 
 ## <a name="upload-oracle-oci-driver"></a>上傳 Oracle OCI 驅動程式
 
-1. 選取 [儲存]，然後在 [安裝 OCI 驅動程式] 畫面上登入 Oracle 帳戶，並從[這裡](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下載驅動程式 **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 總和檢查碼：865082268)。
+1. 選取 [儲存]，然後在 [安裝 OCI 驅動程式] 畫面上登入 Oracle 帳戶，並從**這裡**下載驅動程式 [instantclient-basiclite-windows.x64-12.2.0.1.0.zip](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst) (37,128,586 Byte(s)) (SHA1 總和檢查碼：865082268)。
 2. 將驅動程式下載到共用資料夾。
 
    請確定該資料夾有與指定了最低唯讀存取權的使用者名稱共用。 Azure 資料庫移轉服務會藉由模擬您所指定的使用者名稱來存取並讀取共用，以將 OCI 驅動程式上傳至 Azure。

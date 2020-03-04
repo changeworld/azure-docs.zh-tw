@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務 LiveEvent 類型 | Microsoft Docs
-description: 在 Azure 媒體服務中，實況活動可以是下列兩種類型之一：即時編碼和傳遞。 本文顯示比較即時事件種類的詳細資料表。
+description: 在 Azure 媒體服務中，即時事件可以設定為*傳遞*或*即時編碼*。 本文顯示比較即時事件種類的詳細資料表。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543047"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244650"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
 
-在「Azure 媒體服務」中，[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)可以是以下兩種類型之一：即時編碼和傳遞。 
+在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 
+
+這篇文章會比較即時事件種類的功能。
 
 ## <a name="types-comparison"></a>類型比較 
 
@@ -49,7 +51,7 @@ ms.locfileid: "76543047"
 | 輸出影片的影片解析度上限|與輸入相同|標準-720p、Premium1080p-1080p|
 | 輸入影片的最大畫面播放速率|60框架/秒|Standard 或 Premium1080p-每秒30個畫面|
 | 輸入通訊協定|RTMP，分散式 MP4 (Smooth Streaming)|RTMP，分散式 MP4 (Smooth Streaming)|
-| 價格|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|
+| Price|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|
 | 最長執行時間| 24 小時 x 365 天，即時線性 | 24小時 x 365 天，即時線性（預覽）|
 | 能夠透過內嵌的 CEA 608/708 字幕資料傳遞|是|是|
 | 開啟即時轉譯的能力|是|是|

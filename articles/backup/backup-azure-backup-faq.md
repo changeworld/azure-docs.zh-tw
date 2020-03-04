@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450100"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255030"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -18,7 +18,7 @@ ms.locfileid: "75450100"
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>每個 Azure 訂用帳戶中可以建立的保存庫數目是否有任何限制？
 
-是。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
+是的。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>針對每個保存庫註冊的伺服器/電腦具有數目限制嗎？
 
@@ -39,15 +39,15 @@ ms.locfileid: "75450100"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>我是否可以在訂用帳戶之間移動保存庫？
 
-是。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
-否。 儲存在保存庫中的備份資料無法移至不同的保存庫。
+No。 儲存在保存庫中的備份資料無法移至不同的保存庫。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
-否。 復原服務保存庫只能在儲存任何備份之前，變更儲存體選項。
+No。 復原服務保存庫只能在儲存任何備份之前，變更儲存體選項。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>我是否可以針對備份到「復原服務保存庫」的 VM 執行「項目層級還原」(ILR)？
 
@@ -65,7 +65,7 @@ ms.locfileid: "75450100"
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>在備份排程方面是否有任何限制？
 
-是。
+是的。
 
 - 您一天最多可以備份 Windows Server 或 Windows 機器三次。 您可以將排程原則設定為每天或每週排程。
 - 您一天最多可以備份 DPM 兩次。 您可以將排程原則設定為每天、每週、每月及每年。
@@ -82,7 +82,7 @@ Windows 10 64 位元 | 企業版、專業版、家用版 | 機器應該執行最
 Windows 8.1 64 位元 | Enterprise、Pro | 機器應該執行最新的服務套件和更新。
 Windows 8 64 位元 | Enterprise、Pro | 機器應該執行最新的服務套件和更新。
 Windows 7 64 位元 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 機器應該執行最新的服務套件和更新。
-伺服器 | |
+Server | |
 Windows Server 2019 64 位元 | Standard、Datacenter、Essentials | 含最新的服務套件/更新。
 Windows Server 2016 64 位元 | Standard、Datacenter、Essentials | 含最新的服務套件/更新。
 Windows Server 2012 R2 64 位元 | Standard、Datacenter、Foundation | 含最新的服務套件/更新。
@@ -123,7 +123,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用「復原服務保存庫」來備份的資料量是否有限制？
 
-您可使用「復原服務保存庫」來備份的資料量並無任何限制。
+您可以使用復原服務保存庫來備份的總數據量沒有限制。 個別資料來源（不是 Azure Vm）的大小上限可以是 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>為何傳輸到「復原服務保存庫」的資料大小會小於所選取要備份的資料？
 
@@ -135,7 +135,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果我在備份作業開始後取消作業，是否會刪除已傳輸的備份資料？
 
-否。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
+No。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
 
 - Azure 備份會使用檢查點機制，在備份期間偶爾將檢查點加入至備份資料。
 - 因為備份資料中有檢查點，所以下一個備份程序才可驗證檔案的完整性。
@@ -155,20 +155,20 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>我是否可以針對備份排程和保留原則使用不同的時間？
 
-否。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
+No。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
 
 ![排程備份和保留](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果備份保留了很長一段時間，是否需要較多時間才能復原較舊的資料點？
 
-否。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
+No。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>若每個復原點就像一個完整的復原點，則其是否會影響可計費的備份儲存體總數？
 
 典型的長期保留復原點產品會將備份資料儲存為完整的復原點。
 
-- 完整的復原點是「效率不佳的」  儲存體，但可以更輕鬆且更快速地進行還原。
-- 增量複本「符合儲存體效益」  ，但需要您還原一連串的資料，而這會影響復原時間
+- 完整的復原點是「效率不佳的」 儲存體，但可以更輕鬆且更快速地進行還原。
+- 增量複本「符合儲存體效益」，但需要您還原一連串的資料，而這會影響復原時間
 
 Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原，並降低儲存體成本支出，可讓您魚與熊掌兼得。 這可確保有效率地使用您的輸入和輸出頻寬。 資料儲存體數量及復原資料所需的時間都會維持在最低。 深入了解[增量備份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)。
 
@@ -184,7 +184,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>還原資料時，我需要支付來自 Azure 的輸出流量嗎？
 
-否。 復原是免費的，不會向您收取輸出流量的費用。
+No。 復原是免費的，不會向您收取輸出流量的費用。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>變更我的備份原則時會發生什麼狀況？
 
@@ -197,11 +197,11 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>傳送至 Azure 的資料會經過加密嗎？
 
-是。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
+是的。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>位於 Azure 的備份資料也會經過加密嗎？
 
-是。 在 Azure 中的資料會進行靜態加密。
+是的。 在 Azure 中的資料會進行靜態加密。
 
 - 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。
 - 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。

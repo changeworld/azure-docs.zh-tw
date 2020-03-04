@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b24a08ee0367cc3dbb1c845854a0fbc91e0f1d2c
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227089"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254999"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -127,7 +127,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 | AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate` （建議）值表示 REST API 會使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer` 值表示 REST API 會使用用戶端 OAuth2 持有人權杖來限制存取。 |
 | AllowInsecureAuthInProduction| 否| 指出 `AuthenticationType` 是否可以設定為生產環境中的 `none` （ [TrustFrameworkPolicy](trustframeworkpolicy.md)的`DeploymentMode` 設定為 `Production`或未指定）。 可能的值： true 或 false （預設值）。 |
 | SendClaimsIn | 否 | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個所叫用的 HTTP 指令動詞如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
-| ClaimsFormat | 否 | 指定輸出宣告的格式。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸出宣告。 `Form` 值是以符號「&」的分隔索引碼值格式在要求本文中傳送的輸出宣告。 `Header` 值是在要求標題中傳送的輸出宣告。 `QueryString` 值是在要求查詢字串中傳送的輸出宣告。 |
+| ClaimsFormat | 否 | 目前未使用，可以忽略。 |
 | ClaimUsedForRequestPayload| 否 | 字串宣告的名稱，其中包含要傳送至 REST API 的承載。 |
 | DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值： `true`或 `false` （預設）。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回[錯誤訊息](#returning-error-message)一節。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |

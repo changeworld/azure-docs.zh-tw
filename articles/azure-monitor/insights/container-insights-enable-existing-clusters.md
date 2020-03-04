@@ -3,12 +3,12 @@ title: 監視已部署的 Azure Kubernetes Service （AKS）叢集 |Microsoft Do
 description: 瞭解如何針對已部署在訂用帳戶中的容器，使用 Azure 監視器來啟用 Azure Kubernetes Service （AKS）叢集的監視。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 57d492778828254da7a6899641ab9dbd19a40154
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977801"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250628"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用已部署 Azure Kubernetes Service （AKS）叢集的監視
 
@@ -33,9 +33,9 @@ ms.locfileid: "75977801"
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
 ```
 
-輸出看起來會像下面這樣：
+輸出看起來會向下面這樣：
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 
@@ -49,9 +49,9 @@ provisioningState       : Succeeded
     az account list --all -o table
     ```
 
-    輸出看起來會像下面這樣：
+    輸出看起來會向下面這樣：
 
-    ```azurecli
+    ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
@@ -67,7 +67,7 @@ provisioningState       : Succeeded
 
 3. 下列範例會以預設的 JSON 格式顯示訂用帳戶中的工作區清單。
 
-    ```
+    ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
@@ -79,9 +79,9 @@ provisioningState       : Succeeded
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
     ```
 
-    輸出看起來會像下面這樣：
+    輸出看起來會向下面這樣：
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -272,7 +272,7 @@ provisioningState       : Succeeded
 
        可能需要幾分鐘的時間才能完成設定變更。 完成之後，將會顯示如下訊息並包含結果：
 
-       ```powershell
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -286,7 +286,7 @@ provisioningState       : Succeeded
 
        可能需要幾分鐘的時間才能完成設定變更。 完成之後，將會顯示如下訊息並包含結果：
 
-       ```azurecli
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -306,7 +306,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 輸出應該像下面這樣，這表示它已正確部署：
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -320,7 +320,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 
 輸出應該像下面這樣，這表示它已正確部署：
 
-```
+```output
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
@@ -336,7 +336,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 輸出應該像下面這樣，這表示它已正確部署：  
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -352,7 +352,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 在幾分鐘之後，此命令就會完成，並以 JSON 格式傳回叢集的相關資訊。  此命令的結果應該會顯示監視附加元件設定檔，而且應該會類似下列命令輸出：
 
-```
+```output
 "addonProfiles": {
     "omsagent": {
       "config": {

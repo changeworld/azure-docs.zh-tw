@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863592"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252040"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge 技術規格
 
@@ -53,6 +53,14 @@ Data Box Edge 裝置具有具有高效能風扇的兩個 100-240 V 電源供應�
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>網路介面規格
+
+您 Data Box Edge 裝置有6個網路介面（PORT1-PORT6）。
+
+| 規格           | 描述                 |
+|-------------------------|----------------------------|
+|  網路介面    | 2 個 1 GbE 介面 - 1 個為管理用途 (使用者無法設定)，用於初始設定。 其他介面則可由使用者設定、可用於傳輸資料，且預設為 DHCP。 <br>2 個 25 GbE 介面 - 這些也能以 10 GbE 介面的形式運作。 這些資料介面可由使用者設定為 DHCP (預設) 或靜態。 <br> 2 個 25 GbE 介面 - 這些資料介面可由使用者設定為 DHCP (預設) 或靜態。                  |
+
 ## <a name="storage-specifications"></a>儲存體規格
 
 Data Box Edge 裝置有 9 X 2.5 "NVMe Ssd，每個都有 1.6 TB 的容量。 在這些 Ssd 中，1是作業系統磁片，另8則是資料磁片。 裝置的可用容量總計約為 12.5 TB。 下表包含裝置儲存體容量的詳細資料。
@@ -78,21 +86,21 @@ Data Box Edge 裝置有 9 X 2.5 "NVMe Ssd，每個都有 1.6 TB 的容量。 在
 |-------------------|---------------------|----------------|
 |    高度         |    44.45            |    1.75 "          |
 |    寬度          |    434.1           |    17.09 "          |
-|    長度          |    740.4           |    29.15 "          |
+|    Length          |    740.4           |    29.15 "          |
 
 下表列出出貨套件的尺寸（以毫米和英寸為單位）。
 
-|     Package     |     公釐     |     英吋     |
+|     套件     |     公釐     |     英吋     |
 |-------------------|---------------------|----------------|
 |    高度         |    311.2            |    12.25"          |
 |    寬度          |    642.8          |    25.31"          |
-|    長度          |   1,051.1          |    41.38"          |
+|    Length          |   1,051.1          |    41.38"          |
 
 ### <a name="enclosure-weight"></a>機箱重量
 
 裝置套件會權衡66磅。 和需要兩個人員來處理它。 裝置的權數視主機殼的設定而定。
 
-|     機箱                                 |     Weight          |
+|     機箱                                 |     加權          |
 |-----------------------------------------------|---------------------|
 |    總權數（包括封裝）       |    61磅。          |
 |    裝置的權數                       |    35磅。          |
@@ -105,7 +113,7 @@ Data Box Edge 裝置有 9 X 2.5 "NVMe Ssd，每個都有 1.6 TB 的容量。 在
 
 |     機箱         |     環境溫度範圍     |     環境相對濕度     |     最大露點     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    運作        |    10° C-35 ° C （50° F-86 ° F）         |    10%-80% 非冷凝。         |    29°C (84°F)            |
+|    操作        |    10° C-35 ° C （50° F-86 ° F）         |    10%-80% 非冷凝。         |    29°C (84°F)            |
 |    無法運作    |    -40 ° C 至65° C （-40 ° F-149 ° F）     |    5%-95% 非冷凝。          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>氣流、海拔高度、震盪、振動、方向、安全和 EMC

@@ -4,15 +4,15 @@ description: 使用相應放大來複寫 Azure Analysis Services 伺服器。然
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310181"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247998"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 擴充
 
@@ -74,19 +74,23 @@ ms.locfileid: "76310181"
 
 ## <a name="monitor-qpu-usage"></a>監視 QPU 使用量
 
-若要判斷您的伺服器是否需要擴充，請使用計量在 Azure 入口網站中監視您的伺服器。 如果您的 QPU 經常超出最大值，表示對應模型的查詢數目超出方案的 QPU 限制。 查詢執行緒集區佇列中的查詢數目超過可用 QPU 時，查詢集區作業佇列長度計量也會增加。 
+若要判斷是否需要伺服器的相應放大，請使用計量在 Azure 入口網站中[監視您的伺服器](analysis-services-monitor.md)。 如果您的 QPU 經常超出最大值，表示對應模型的查詢數目超出方案的 QPU 限制。 查詢執行緒集區佇列中的查詢數目超過可用 QPU 時，查詢集區作業佇列長度計量也會增加。 
 
 另一個要監看的良好度量是 ServerResourceType 的平均 QPU。 此度量會比較主伺服器與查詢集區的平均 QPU。 
 
 ![查詢相應放大計量](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>若要設定 QPU by ServerResourceType
+**若要設定 QPU by ServerResourceType**
+
 1. 在 [計量] 折線圖中，按一下 [**新增度量**]。 
 2. 在**資源** 中選取您的伺服器，然後在 計量**命名空間** 中選取  **Analysis Services 標準計量**，然後在 **度量** 中選取  **QPU**，然後在 **匯總** 中選取  **Avg** 
 3. 按一下 [套用**分割**]。 
 4. 在 [**值**] 中，選取 [ **ServerResourceType**]。  
 
-若要深入了解，請參閱[監視伺服器計量](analysis-services-monitor.md)。
+### <a name="detailed-diagnostic-logging"></a>詳細的診斷記錄
+
+使用 Azure 監視器記錄，以取得相應放大伺服器資源的詳細診斷。 使用記錄，您可以使用 Log Analytics 查詢，依伺服器和複本細分 QPU 和記憶體。 若要深入瞭解，請參閱[Analysis Services 診斷記錄](analysis-services-logging.md#example-queries)中的範例查詢。
+
 
 ## <a name="configure-scale-out"></a>設定擴充
 
@@ -94,7 +98,7 @@ ms.locfileid: "76310181"
 
 1. 在入口網站中，按一下 [**相應**放大]。使用滑杆來選取查詢複本伺服器的數目。 所選擇的複本數目不包括現有的伺服器。  
 
-2. 在 [Separate the processing server from the querying pool]\(區隔處理伺服器與查詢集區\) 中，選取 [是] 以將處理伺服器從查詢伺服器排除。 使用預設連接字串 (不含`:rw`) 的用戶端[連接](#connections)會重新導向至查詢集區中的複本。 
+2. 在 [Separate the processing server from the querying pool]\(區隔處理伺服器與查詢集區\) 中，選取 [是] 以將處理伺服器從查詢伺服器排除。 使用預設連接字串（不含 `:rw`）的用戶端[連接](#connections)會重新導向至查詢集區中的複本。 
 
    ![擴充滑桿](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -127,12 +131,12 @@ ms.locfileid: "76310181"
 傳回狀態碼：
 
 
-|程式碼  |說明  |
+|程式碼  |描述  |
 |---------|---------|
 |-1     |  無效       |
-|0     | 正在複寫        |
+|0     | Replicating        |
 |1     |  解除凍結       |
-|2     |   Completed       |
+|2     |   已完成       |
 |3     |   失敗      |
 |4     |    正在完成     |
 |||
@@ -152,7 +156,7 @@ ms.locfileid: "76310181"
 
 若要深入瞭解，請參閱[使用服務主體搭配 Az microsoft.analysisservices 模組](analysis-services-service-principal.md#azmodule)。
 
-## <a name="connections"></a>連線
+## <a name="connections"></a>連接
 
 在伺服器的 [概觀] 頁面中，有兩個伺服器名稱。 如果您還沒有為伺服器設定擴充，則這兩個伺服器名稱會以相同方式運作。 一旦設定了伺服器擴充，即必須根據連線類型指定適當的伺服器名稱。 
 
@@ -168,7 +172,7 @@ ms.locfileid: "76310181"
 
 ## <a name="troubleshoot"></a>疑難排解
 
-**問題︰** 使用者收到錯誤「找不到處於連線模式 'ReadOnly' 的伺服器 '\<伺服器名稱>' 執行個體。
+**問題︰** 使用者收到錯誤「找不到處於連線模式 'ReadOnly' 的伺服器 '**伺服器名稱>' 執行個體。\<**
 
 **解決方案：** **從 [查詢集**區] 選項選取 [個別處理伺服器] 時，使用預設連接字串（不含 `:rw`）的用戶端連接會重新導向至查詢集區複本。 如果查詢集區中的複本因為尚未完成同步處理而未上線，則重新導向的用戶端連線可能會失敗。 若要避免連線失敗，則在執行同步處理時，查詢集區中必須有至少兩部伺服器。 每部伺服器會個別同步，而其他伺服器則維持線上狀態。 如果您選擇在處理期間查詢集區中不要有處理中的伺服器，可以選擇從集區中移除該伺服器以供處理，然後在處理完成之後，但在同步處理之前，將它加回集區。 使用記憶體和 QPU 計量來監視同步處理狀態。
 

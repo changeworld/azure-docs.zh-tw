@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591603"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255007"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：規劃混合式 Azure Active Directory 聯結執行
 
@@ -30,7 +30,7 @@ ms.locfileid: "77591603"
 
 如果您有內部部署 Active Directory （AD）環境，而且想要將已加入 AD 網域的電腦加入 Azure AD，您可以執行混合式 Azure AD 聯結來完成這項作業。 本文提供在您的環境中實作混合式 Azure AD Join 的相關步驟。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉[Azure Active Directory 中的裝置身分識別管理簡介](../device-management-introduction.md)。
 
@@ -43,11 +43,11 @@ ms.locfileid: "77591603"
 
 |   |   |
 | --- | --- |
-| ![勾選][1] | 檢閱支援的裝置 |
-| ![勾選][1] | 檢閱您應該知道的事情 |
-| ![勾選][1] | 審查混合式 Azure AD 聯結的受控制驗證 |
-| ![勾選][1] | 根據您的身分識別基礎結構來選取您的案例 |
-| ![勾選][1] | 檢查混合式 Azure AD 聯結的內部部署 AD UPN 支援 |
+| ![檢查][1] | 檢閱支援的裝置 |
+| ![檢查][1] | 檢閱您應該知道的事情 |
+| ![檢查][1] | 審查混合式 Azure AD 聯結的受控制驗證 |
+| ![檢查][1] | 根據您的身分識別基礎結構來選取您的案例 |
+| ![檢查][1] | 檢查混合式 Azure AD 聯結的內部部署 AD UPN 支援 |
 
 ## <a name="review-supported-devices"></a>檢閱支援的裝置
 
@@ -73,12 +73,14 @@ ms.locfileid: "77591603"
 
 ## <a name="review-things-you-should-know"></a>檢閱您應該知道的事情
 
-### <a name="unsupported-scenarios"></a>不支援的情節
+### <a name="unsupported-scenarios"></a>不支援的案例
 - 如果您的環境包含將識別資料同步處理至多個 Azure AD 租使用者的單一 AD 樹系，則目前不支援混合式 Azure AD 聯結。
 
 - 執行網域控制站（DC）角色的 Windows Server 不支援混合式 Azure AD 聯結。
 
 - 使用認證漫遊或使用者設定檔漫遊或強制設定檔時，舊版 Windows 裝置不支援混合式 Azure AD 聯結。
+
+- Server Core OS 不支援任何類型的裝置註冊。
 
 ### <a name="os-imaging-considerations"></a>OS 映射考慮
 - 如果您依賴系統準備工具（Sysprep），而且您使用**Windows 前 10 1809**映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置混合式 Azure AD 聯結。
@@ -156,8 +158,8 @@ ms.locfileid: "77591603"
 | ----- | ----- | ----- | ----- |
 | 路由式 | 同盟 | 自 1703 版起 | 正式推出 |
 | 非可路由傳送 | 同盟 | 自 1803 版起 | 正式推出 |
-| 路由式 | 受控 | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
-| 非可路由傳送 | 受控 | 不支援 | |
+| 路由式 | Managed | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
+| 非可路由傳送 | Managed | 不支援 | |
 
 ## <a name="next-steps"></a>後續步驟
 

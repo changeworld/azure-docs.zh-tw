@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656308"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249109"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -67,35 +67,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端應用程式支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
 
-此設定適用於下列用戶端應用程式：
-
-- Microsoft Azure 資訊保護
-- Microsoft 預約
-- Microsoft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune 受控瀏覽器
-- Microsoft Invoicing
-- Microsoft Kaizala
-- Microsoft Launcher
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft 商務用 Skype
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Microsoft Yammer
+支援的應用程式可在[Microsoft Intune 受保護的應用程式](/intune/apps/apps-supported-intune-apps)一文中找到。
 
 **備註**
 
@@ -108,12 +80,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 在您的條件式存取原則中，您可以要求用戶端應用程式上有[Intune 應用程式保護原則](/intune/app-protection-policy)，才能存取所選的雲端應用程式。 
 
-此設定適用於下列用戶端應用程式：
-
-- Microsoft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Microsoft Planner
+支援的應用程式可在[Microsoft Intune 受保護的應用程式](/intune/apps/apps-supported-intune-apps)一文中找到。
 
 **備註**
 

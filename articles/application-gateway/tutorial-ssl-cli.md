@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3f98aabb9459e4895243eec7f3d759d5a2ee88c6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047313"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246620"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>使用 Azure CLI 建立包含 SSL 終止的應用程式閘道
 
@@ -29,7 +29,7 @@ ms.locfileid: "74047313"
 
 如果您想要的話，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成本程序。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -39,13 +39,13 @@ ms.locfileid: "74047313"
 
 若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在本文中，您會使用 openssl 命令建立自我簽署的憑證和 pfx 檔案。
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 輸入對憑證有意義的值。 您可以接受預設值。
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 *az network vnet create* 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet[](/cli/azure/network/vnet) 的子網路。 然後您可以使用 *az network vnet subnet create* 新增名為 myBackendSubnet[](/cli/azure/network/vnet/subnet) 的子網路，後端伺服器需要該子網路。 使用 *az network public-ip create* 建立名為 myAGPublicIPAddress[](/cli/azure/network/public-ip) 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \

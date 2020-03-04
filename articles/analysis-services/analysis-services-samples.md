@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572313"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247831"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 範例
 
@@ -26,6 +26,9 @@ GitHub 上的 [Analysis Services](https://github.com/Microsoft/Analysis-Services
 
 GitHub 上的 [Adventure Works Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) 是最常使用的範例表格式模型專案。 您可以下載 VS 專案或完整的範例表格式模型資料庫。
 
+## <a name="sample-database-on-azure"></a>Azure 上的範例資料庫
+
+Azure Synapse Analytics （SQL 資料倉儲）提供範例 AdventureWorksDW 資料庫，可包含在已布建的資源中。 若要深入瞭解，請參閱[快速入門：建立及查詢 Azure Synapse 分析 SQL 集](/azure/sql-data-warehouse/create-data-warehouse-portal)區。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上的範例資料庫
 

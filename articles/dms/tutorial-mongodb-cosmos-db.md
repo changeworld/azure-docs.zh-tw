@@ -3,8 +3,8 @@ title: 教學課程：將 MongoDB 離線遷移至適用于 MongoDB 的 Azure Cos
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務，從內部部署的 MongoDB 遷移至適用于 MongoDB 的 Azure Cosmos DB API。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: f90ece0f6aa95dd643cca65b42e284faba8e5be8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747008"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255583"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB API
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 MongoDB 遷移至 Azure Cosmos DB 的 Mongo 版 API
 
 您可以使用 Azure 資料庫移轉服務，在離線狀態下將資料庫從內部部署或雲端的 MongoDB 執行個體 (單次) 移轉至 Azure Cosmos DB 的 Mongo 版 API。
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 > [!div class="checklist"]
 >
 > * 建立 Azure 資料庫移轉服務的執行個體。
@@ -50,7 +50,7 @@ ms.locfileid: "75747008"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 請確定您的虛擬網路網路安全性群組（NSG）規則不會封鎖下列通訊埠：53、443、445、9354和10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 請確定您的虛擬網路網路安全性群組（NSG）規則不會封鎖下列通訊埠：53、443、445、9354 及 10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MongoDB 伺服器 (依預設會使用 TCP 連接埠 27017)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 

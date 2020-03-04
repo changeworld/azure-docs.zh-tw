@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468910"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252146"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何在部署至 Azure 容器實例時，提取儲存在 Azure container registry 中的容器映射。 設定登錄存取的建議方式是建立 Azure Active Directory 服務主體和密碼，並將登入認證儲存在 Azure 金鑰保存庫中。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 **Azure container registry**：您需要 azure container registry，以及至少一個登錄中的容器映射--以完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -114,8 +114,7 @@ az container create \
 
 `--dns-name-label` 值在 Azure 內必須是唯一的，上述命令才能將一個隨機數字附加至容器的 DNS 名稱標籤。 命令的輸出會顯示容器的完整網域名稱 (FQDN)，例如：
 
-```console
-$ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_LOGIN_SERVER/aci-helloworld:v1 --registry-login-server $ACR_LOGIN_SERVER --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
+```output
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
