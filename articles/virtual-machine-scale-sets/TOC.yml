@@ -247,6 +247,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: 作業系統自動升級
           href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 自動執行個體修復 (預覽)
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: 執行個體保護
           href: virtual-machine-scale-sets-instance-protection.md
         - name: 相應縮小原則

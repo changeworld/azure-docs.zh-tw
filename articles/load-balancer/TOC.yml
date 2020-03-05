@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: 快速入門
   items:
-    - name: 入口網站
+    - name: 建立 Load Balancer - 入口網站
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: 建立 Load Balancer - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: 建立 Load Balancer - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager 範本
+    - name: 建立 Load Balancer - 範本
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: 教學課程
   items:
     - name: VM 的負載平衡網際網路流量

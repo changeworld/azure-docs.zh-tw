@@ -208,6 +208,9 @@
         - name: 建立具有標籤的資料集
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: 使用 Azure Data Factory 進行資料擷取
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: 適用於資料擷取的 DevOps
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md
