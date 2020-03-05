@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199087"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299307"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教學課程：檢閱 Microsoft 合作夥伴合約發票
 
@@ -38,7 +38,7 @@ ms.locfileid: "77199087"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 在 https://portal.azure.com 登入 Azure 入口網站。
+- 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 

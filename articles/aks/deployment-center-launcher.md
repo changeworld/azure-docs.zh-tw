@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: eecb4dba39ff847515a4a312b7cb74698867c693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596074"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247898"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>適用於 Azure Kubernetes 的部署中心
 
@@ -39,7 +39,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
 1. 若要建立 AKS 叢集，請執行下列命令：
 
-    ```cmd
+    ```azurecli
     # Create a resource group in the South India location:
 
     az group create --name azooaks --location southindia

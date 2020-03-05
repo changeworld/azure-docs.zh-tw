@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976359"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184633"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 金鑰保存庫的可用性與備援
 
@@ -37,11 +38,11 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
   * 取得密碼
   * 列出金鑰
   * 取得金鑰 (的屬性)
-  * 加密
+  * Encrypt
   * 解密
   * 包裝
   * 解除包裝
-  * 驗證
+  * Verify
   * 簽署
   * Backup
 * 在容錯移轉進行容錯回復之後，所有要求類型 (包括讀取「和」  寫入要求) 都會可供使用。

@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: 公用 IP - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: 疑難排解
+      items:
+        - name: 針對虛擬網路對等互連問題進行疑難排解
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: 設定和驗證 VNet 或 VPN 連線
+          href: virtual-network-configure-vnet-connections.md
+        - name: 網路安全性群組
+          href: diagnose-network-traffic-filter-problem.md
+        - name: 路由
+          href: diagnose-network-routing-problem.md
+        - name: 輸送量測試
+          href: virtual-network-bandwidth-testing.md
+        - name: 測試 VM 網路延遲
+          href: virtual-network-test-latency.md
+        - name: 無法刪除虛擬網路
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: VM 至 VM 連線問題
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: 設定 PTR 以進行 SMTP Banner 檢查
+          href: create-ptr-for-smtp-service.md
+        - name: 為虛擬設備的檢查清單進行疑難排解
+          href: virtual-network-troubleshoot-nva.md
+        - name: 針對輸出 SMTP 連線能力進行疑難排解
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: 關於 IP 位址 168.63.129.16
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Azure VM 連線能力問題疑難排解
+          href: troubleshoot-vm-connectivity.md
     - name: 傳統部署
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: 參考

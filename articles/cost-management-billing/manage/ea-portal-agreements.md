@@ -3,16 +3,16 @@ title: Azure EA 合約和修訂文件
 description: 本文將說明 Azure EA 合約和修訂文件如何影響您使用 Azure EA 入口網站的方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 727f3cb25d2f95ec4db9f12080005d464b69d6ad
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272414"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301415"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 合約和修訂文件
 
@@ -25,10 +25,6 @@ ms.locfileid: "78272414"
 ## <a name="enrollment-provisioning-status"></a>註冊佈建狀態
 
 新預付金的開始日期是由區域營運中心開始進行處理的日期所定義。 由於透過 Azure EA 入口網站的預付金訂單是在 UTC 時區僅型處理，如果您的預付金採購單是在不同的區域進行處理，您可能會遇到一些延遲。 在 https://www.explore.ms 中，訂購單上的範圍開始日期會顯示預付金的開始日期。 範圍開始日期是 Azure EA 入口網站中開始顯示預付金的日期。
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>特殊價格和 Azure 承諾用量折扣增修條款
-
-如果您需要特殊價格和 Azure 承諾用量折扣 (AD) 的修訂文件，您必須與您的客戶服務小組討論。 Azure Ops 小組可以在業務支援部門處理修訂，以及向 Azure Ops 小組提出要求之後套用 ACD。 ACD 折扣僅適用於目前的月份。 任何先前月份的部分都會以回溯抵免加以補償。 
 
 ## <a name="support-offer-not-provisioned"></a>未佈建的支援供應項目
 

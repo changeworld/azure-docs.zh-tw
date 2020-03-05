@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303523"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入門：建立自訂警示
 
@@ -80,7 +80,6 @@ ms.locfileid: "76766453"
 ## <a name="alerts-available-for-customization"></a>可供自訂的警示
 
 適用於 IoT 的 Azure 資訊安全中心提供了大量警示，您可以根據本身的特定需求加以自訂。 請檢閱[可自訂的警示資料表](concept-customizable-security-alerts.md)，以了解警示嚴重性、資料來源、描述，以及您在收到每個警示時可參考的建議補救步驟。 
-|
 
 
 ## <a name="next-steps"></a>後續步驟

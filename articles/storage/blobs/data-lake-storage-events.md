@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303302"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教學課程：實作資料湖擷取模式以更新 Databricks 差異資料表
 
@@ -30,7 +30,7 @@ ms.locfileid: "71326998"
 
 我們會以反向順序建置此解決方案，從 Azure Databricks 工作區開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
@@ -42,7 +42,7 @@ ms.locfileid: "71326998"
 
   在執行該文章中的步驟時，您必須執行幾個特定動作。
 
-  :heavy_check_mark:在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給服務主體。
+  :heavy_check_mark:在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給服務主體。
 
   > [!IMPORTANT]
   > 請務必在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
@@ -243,7 +243,7 @@ ms.locfileid: "71326998"
 
 3. 為作業指定名稱，然後選擇 `upsert-order-data` 活頁簿。
 
-   ![建立作業](./media/data-lake-storage-events/create-spark-job.png "建立工作")
+   ![建立作業](./media/data-lake-storage-events/create-spark-job.png "建立作業")
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式
 
@@ -277,7 +277,7 @@ ms.locfileid: "71326998"
 
    |設定名稱 | 值 |
    |----|----|
-   |**DBX_INSTANCE**| Databricks 工作區的區域。 例如：`westus2.azuredatabricks.net`|
+   |**DBX_INSTANCE**| Databricks 工作區的區域。 例如： `westus2.azuredatabricks.net`|
    |**DBX_PAT**| 您先前產生的個人存取權杖。 |
    |**DBX_JOB_ID**|執行中作業的識別碼。 在此案例中，此值為 `1`。|
 7. 在函式應用程式的 [概觀] 頁面中，按一下 [新增函式]  按鈕。

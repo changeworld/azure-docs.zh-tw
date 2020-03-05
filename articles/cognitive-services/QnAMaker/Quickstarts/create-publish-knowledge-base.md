@@ -3,12 +3,12 @@ title: 快速入門：建立、訓練及發佈知識庫 - QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: quickstart
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108722"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299086"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -154,6 +154,5 @@ ms.locfileid: "77108722"
 
 * [ Markdown 格式](../reference-markdown-format.md)
 * QnA Maker [資料來源](../concepts/knowledge-base.md)。
-* [Bot 資源組態設定](../tutorials/create-qna-bot.md)。
 
 

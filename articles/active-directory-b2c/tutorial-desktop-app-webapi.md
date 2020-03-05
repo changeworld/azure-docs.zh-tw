@@ -2,20 +2,20 @@
 title: 教學課程：授與從桌面應用程式存取 Node.js Web API 的權限
 description: 關於如何使用 Active Directory B2C 來保護 Node.js Web API，以及如何從 .NET 傳統型應用程式加以呼叫的教學課程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849868"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183363"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 授與從傳統型應用程式存取 Node.js Web API 的權限
 
@@ -51,7 +51,7 @@ ms.locfileid: "76849868"
 
 在必要的教學課程中，您已註冊名為 *nativeapp1* 的原生用戶端應用程式。 下列步驟會使用您在上一節中為 *webapi1* 公開的 API 範圍來設定該原生應用程式註冊。 這可讓傳統型應用程式從 Azure AD B2C 取得存取權杖，Web API 可將它用於驗證和提供其資源的有限範圍存取權。 您稍後會在本教學課程中設定及執行傳統型應用程式和 Web API 程式碼範例。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 選取 [應用程式]  ，然後選取 [nativeapp1]  。
 1. 選取 [API 存取]  ，然後選取 [新增]  。
@@ -59,7 +59,7 @@ ms.locfileid: "76849868"
 1. 在 [選取範圍]  下拉式清單中，選取您先前定義的範圍。 例如 *demo.read* 和 *demo.write*。
 1. 選取 [確定]  。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 選取 [應用程式註冊 (預覽)]  ，然後選取應可存取 API 的原生用戶端應用程式。 例如，*nativeapp1*。
 1. 在 [管理]  之下選取 [API 權限]  。

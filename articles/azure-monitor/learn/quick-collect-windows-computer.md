@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659844"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure 監視器從混合式環境中的 Windows 電腦收集資料
 
@@ -88,7 +87,7 @@ ms.locfileid: "75398952"
 
 7. 在 [Azure Log Analytics]  頁面上，完成下列步驟：
 
-   1. 貼上您先前複製的 [工作區識別碼]  和 [工作區金鑰 (主要金鑰)]  。 如果電腦應該向 Azure Government 中的 Log Analytics 工作區回報，請在 [Azure 雲端]  清單中選取 [Azure 美國政府]  。  
+   1. 貼上您先前複製的 [工作區識別碼]  和 [工作區金鑰 (主要金鑰)]  。 如果電腦應該向 Azure Government 中的 Log Analytics 工作區回報，請在 [Azure 雲端]  清單中選取 [Azure US Gov]  。  
    2. 如果電腦需要透過 Proxy 伺服器與 Log Analytics 服務進行通訊，請選取 [進階]  ，然後提供 Proxy 伺服器的 URL 和連接埠號碼。 如果您的 Proxy 伺服器要求驗證，請輸入要向 Proxy 伺服器進行驗證的使用者名稱和密碼，然後選取 [下一步]  。  
 
 8. 新增組態設定之後，選取 [下一步]  ：

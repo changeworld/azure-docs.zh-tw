@@ -4,12 +4,12 @@ description: 了解如何使用 Jenkins Azure Functions 外掛程式部署至 Az
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470661"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250914"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>使用 Jenkins Azure Functions 外掛程式部署至 Azure Functions
 
@@ -31,19 +31,19 @@ ms.locfileid: "77470661"
 
 1. 建立資源群組，並以您的資源群組名稱取代 **&lt;resource_group>** 預留位置。
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. 建立 Azure 儲存體帳戶，並以適當的值取代預留位置。
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. 建立測試函式應用程式，並以適當的值取代預留位置。
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ ms.locfileid: "77470661"
 
 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除建立的資源：
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

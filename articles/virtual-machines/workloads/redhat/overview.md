@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133813"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920547"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上的 Red Hat 工作負載
 Red Hat 工作負載可透過 Azure 上的各種供應項目來獲得支援。 和 Red Hat 更新基礎結構 (RHUI) 一樣，Red Hat Enterprise Linux (RHEL) 映像位於 RHEL 工作負載的核心。
@@ -39,7 +39,7 @@ Azure 也提供 Red Hat Gold 映像。 對於已有 Red Hat 訂用帳戶且想�
 > 關於重複計費的注意事項：當使用者針對 RHEL 訂用帳戶支付兩次費用時，就會產生重複計費。 這種情況通常發生在客戶使用 subscription-manager 來連結 RHEL PAYG VM 上的權利時。 例如，若客戶使用 subscription-manager 來連結 RHEL PAYG 映像上 SAP 套件的權利，便會間接發生重複計費的情形，原因是其會針對 RHEL 支付兩次費用，一次是透過 PAYG 進階費用，一次則是透過其 SAP 訂用帳戶。 BYOS 映像的使用者則不會發生這種情況。
 
 ### <a name="generation-2-images"></a>第 2 代映像
-第 2 代 VM 會提供一些比第 1 代 VM 還要新的功能。 [第 2 代文件](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)中會有詳細資料。 與 RHEL 映像觀點的主要差異在於，第 2 代 VM 會使用 UEFI 而不是 BIOS 韌體介面，並且會在開機時使用 GUID 磁碟分割表格 (GPT) 而不是主開機記錄 (MBR)。 不只如此，這還可讓您使用大於 2 TB 的 OS 磁碟大小。 此外，[Mv2 系列 VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) 只會在第 2 代映像上執行。
+第 2 代 VM 會提供一些比第 1 代 VM 還要新的功能。 [第 2 代文件](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)中會有詳細資料。 與 RHEL 映像觀點的主要差異在於，第 2 代 VM 會使用 UEFI 而不是 BIOS 韌體介面，並且會在開機時使用 GUID 磁碟分割表格 (GPT) 而不是主開機記錄 (MBR)。 不只如此，這還可讓您使用大於 2 TB 的 OS 磁碟大小。 此外，[Mv2 系列 VM](../../mv2-series.md) 只會在第 2 代映像上執行。
 
 RHEL 第 2 代映像可在市集中取得。 當您使用 Azure CLI 列出所有映像時，請在映像 SKU 中尋找 "gen2"，並在 VM 部署程序中移至 [進階] 索引標籤以部署第 2 代 VM。
 

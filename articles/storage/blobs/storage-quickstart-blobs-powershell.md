@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892493"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664231"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入門：使用 PowerShell 上傳、下載及列出 Blob
 
@@ -22,7 +22,7 @@ ms.locfileid: "74892493"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>使用 AzCopy 進行資料轉送
 
-[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 公用程式是適用於 Azure 儲存體的高效能可編寫指令碼資料轉送的另一個選項。 請使用 AzCopy 在 Blob、檔案和表格儲存體之間傳輸資料。
+AzCopy 命令列公用程式可為 Azure 儲存體提供高效能、可編寫指令碼的資料傳輸。 您可以使用 AzCopy 將資料傳輸到 Blob 儲存體和 Azure 檔案儲存體，以及從 Blob 儲存體和 Azure 檔案儲存體傳出資料。 如需 AzCopy v10 (AzCopy 的最新版本) 的詳細資訊，請參閱[開始使用 AzCopy](../common/storage-use-azcopy-v10.md)。 若要了解如何搭配使用 AzCopy v10 與 Blob 儲存體，請參閱[使用 AzCopy 和 Blob 儲存體傳輸資料](../common/storage-use-azcopy-blobs.md)。
 
-這裡提供一個快速範例：從 PowerShell 視窗利用 AzCopy 命令將名為 *myfile.txt* 的檔案上傳至 *mystoragecontainer* 容器。
+下列範例會使用 AzCopy 將本機檔案上傳至 Blob。 請記得要以您自己的值取代範例值：
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>清除資源

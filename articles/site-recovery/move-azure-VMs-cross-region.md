@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092173"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303914"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>將 Azure VM 移至另一個 Azure 區域
 
@@ -32,7 +32,7 @@ ms.locfileid: "74092173"
 > [!IMPORTANT]
 > 本文說明何將 Azure VM「原封不動」  移到另一個區域。 如果您的目標是藉由將 VM 移至可用性區域來提高您的基礎結構可用性，請參閱[將 Azure VM 移至可用性區域](move-azure-vms-avset-azone.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 確定您要「移出」  VM 的來源 Azure 區域中有 Azure VM。
 - 確認您選擇的[來源區域與目標區域組合受到支援](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，然後小心地選擇目標區域。
@@ -70,7 +70,7 @@ ms.locfileid: "74092173"
    - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
    - [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   如需任何其他網路元件，請參閱 [Azure 網路文件](https://docs.microsoft.com/azure/#pivot=products&panel=network)。 
+   如需任何其他網路元件，請參閱 [Azure 網路文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。 
 
 4. 若要在執行移動前測試組態，請在目標區域中手動[建立非生產網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 測試安裝程式對生產環境的干擾最少，建議使用此方法。
     
@@ -112,7 +112,7 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 
    - **最近處理**：將 VM 容錯移轉到 Site Recovery 服務所處理的最新復原點。 隨即顯示時間戳記。 無須花費時間處理資料，所以這個選項會提供低復原時間目標 (RTO)。
    - **最新應用程式一致**：將所有 VM 容錯移轉到最新的應用程式一致復原點。 隨即顯示時間戳記。
-   - **自訂**：選取任何復原點。
+   - [自訂]  ：選取任何復原點。
 
 3. 選取您要移入 Azure VM 的目標 Azure 虛擬網路，以測試組態。
 

@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a80a1567c84ff3c2eda8ad22391aa862bb7d9d82
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963337"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915821"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具訓練及比較多個迴歸模型來預測汽車價格
 
@@ -62,7 +62,7 @@ ms.locfileid: "76963337"
 
 機器學習的問題不盡相同。 常見的機器學習工作包括分類、叢集、迴歸和推薦系統，這每一個都可能需要不同的演算法。 您選擇的演算法通常取決於使用案例的需求。 在您挑選演算法之後，您需要調整其參數來訓練更精確的模型。 接著，您必須根據精確度、理解度和效率等計量來評估所有模型。
 
-由於此管線的目標是要預測汽車價格，而且因為標籤資料行 (價格) 包含實數，所以迴歸模型是不錯的選擇。 考慮到特徵的數目相對較小 (小於 100)，而且這些不是稀疏特徵，所以決策界限可能是非線性的。
+由於此管線的目標是要預測汽車價格，而且因為標籤資料行 (價格) 包含實數，所以迴歸模型是不錯的選擇。
 
 為了比較不同演算法的成效，我們會使用兩個非線性演算法 (**促進式決策樹迴歸**和**決策樹迴歸**) 來建立模型。 這兩種演算法都有您可以變更的參數，但此範例會使用此管線的預設值。
 

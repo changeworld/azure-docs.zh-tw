@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690333"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920071"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教學課程：使用警示和動作群組監視 Spring 雲端資源
 
@@ -86,7 +86,7 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 1. 按一下 [完成]  。
 
-若要進一步了解可用於監視的條件，請參閱[使用者入口網站計量選項](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)。
+若要進一步了解可用於監視的條件，請參閱[使用者入口網站計量選項](spring-cloud-concept-metrics.md#user-metrics-options)。
 
  在 [動作]  下方，按一下 [選取動作群組]  。 從 [動作]  窗格中選取先前定義的 [動作群組]  。
 
@@ -109,7 +109,7 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
    ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>後續步驟
-* [使用者入口網站計量選項](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+* [使用者入口網站計量選項](spring-cloud-concept-metrics.md#user-metrics-options)
 * [在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [動作群組中的 SMS 警示行為](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [教學課程：搭配 Azure Spring Cloud 使用分散式追蹤](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

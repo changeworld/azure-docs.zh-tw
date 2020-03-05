@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587442"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274019"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
@@ -146,7 +146,7 @@ ms.locfileid: "77587442"
 
 1. 新增下列程式碼，以從 **Main** 方法執行 **GetStartedDemoAsync** 非同步工作。 **Main** 方法會攔截例外狀況並將它們寫入主控台。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
 1. 選取 F5 鍵執行您的應用程式。
 
@@ -160,7 +160,7 @@ ms.locfileid: "77587442"
 
 1. 將 `CreateDatabaseAsync` 方法複製並貼到 `GetStartedDemoAsync` 方法下方。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
     `CreateDatabaseAsync` 會以識別碼 `FamilyDatabase` 建立新資料庫 (如果該資料庫不存在)，此識別碼會指定於 `databaseId` 欄位中。
 
@@ -281,7 +281,7 @@ ms.locfileid: "77587442"
 
 1. 將 `CreateContainerAsync` 方法複製並貼到 `CreateDatabaseAsync` 方法下方。 `CreateContainerAsync` 會以識別碼 `FamilyContainer` 建立新容器 (如果該容器不存在)，其做法是使用由 `LastName` 屬性分割的 `containerId` 欄位中指定的識別碼。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
 1. 將程式碼複製並貼到 CosmosClient 具現化時的所在處底下，以呼叫您剛才新增的 **CreateContainer** 方法。
 
@@ -313,12 +313,12 @@ ms.locfileid: "77587442"
 
 1. 將 `Family`、`Parent`、`Child`、`Pet` 和 `Address` 類別複製並貼到 `Family.cs` 中。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
 1. 回到 *Program.cs*中，在 `CreateContainerAsync` 方法後面新增 `AddItemsToContainerAsync` 方法。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
     程式碼會先檢查，確認沒有使用相同識別碼的項目存在。 我們會插入兩個項目，一個給「Andersen 家族」  ，另一個給「Wakefield 家族」  。
@@ -348,7 +348,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 1. 在 `AddItemsToContainerAsync` 方法之後複製並貼上 `QueryItemsAsync` 方法。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
 
 1. 在 ``GetStartedDemoAsync`` 方法中新增對 ``QueryItemsAsync`` 的呼叫。
 
@@ -376,7 +376,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 1. 在 `QueryItemsAsync` 方法之後複製並貼上 `ReplaceFamilyItemAsync` 方法。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
 
 1. 在 `GetStartedDemoAsync` 方法中新增對 `ReplaceFamilyItemAsync` 的呼叫。
 
@@ -405,7 +405,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 1. 在 `ReplaceFamilyItemAsync` 方法之後複製並貼上 `DeleteFamilyItemAsync` 方法。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
 
 1. 在 `GetStartedDemoAsync` 方法中新增對 `DeleteFamilyItemAsync` 的呼叫。
 
@@ -435,11 +435,11 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 1. 在 `DeleteFamilyItemAsync` 方法之後複製並貼上 `DeleteDatabaseAndCleanupAsync` 方法。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 1. 在 ``GetStartedDemoAsync`` 方法中新增對 ``DeleteDatabaseAndCleanupAsync`` 的呼叫。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
 
 1. 選取 F5 鍵執行您的應用程式。
 

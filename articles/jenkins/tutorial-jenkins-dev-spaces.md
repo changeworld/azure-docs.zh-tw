@@ -3,12 +3,12 @@ title: 搭配使用適用於 Jenkins 的 Azure Dev Spaces 外掛程式和 Azure 
 description: 了解如何在持續整合管線中使用 Azure Dev Spaces 外掛程式。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619988"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250894"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教學課程：搭配使用適用於 Jenkins 的 Azure Dev Spaces 外掛程式和 Azure Kubenetes Service 
 
@@ -28,7 +28,7 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 一個 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 一個 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 * GitHub 帳戶。 如果您沒有 GitHub 帳戶，請在開始之前[建立免費帳戶](https://github.com/) \(英文\)。
 
@@ -53,26 +53,26 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 
 1. 建立資源群組。
 
-    ```bash
+    ```azurecli
     az group create --name MyResourceGroup --location westus2
     ```
 
 2. 建立 AKS 叢集。 在[支援 Dev Spaces 的區域](../dev-spaces/about.md#supported-regions-and-configurations) \(部分機器翻譯\) 建立 AKS 叢集。
 
-    ```bash
+    ```azurecli
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
 3. 設定 AKS 使用 Dev Spaces。
 
-    ```bash
+    ```azurecli
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
     此步驟會安裝 `azds` CLI 擴充功能。
 
 4. 建立容器登錄庫。
 
-    ```bash
+    ```azurecli
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
@@ -225,7 +225,7 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 
 3. 若要顯示您的 ACR 認證，請執行此命令：
 
-    ```bash
+    ```azurecli
     az acr credential show -n <yourRegistryName>
     ```
 
@@ -251,7 +251,7 @@ Azure Dev Spaces 可讓您測試並反覆開發在 Azure Kubernetes Service (AKS
 
 5. 設定 AKS 認證。 新增 Jenkins 中的「Kubernetes 設定 (kubeconfig)」  認證類型 (使用 [直接輸入] 選項)。 若要取得您 AKS 叢集的存取認證，請執行下列命令：
 
-    ```cmd
+    ```azurecli
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
@@ -403,7 +403,7 @@ stage('smoketest') {
 
 當您使用完範例應用程式之後，請刪除資源群組以清除 Azure 資源：
 
-```bash
+```azurecli
 az group delete -y --no-wait -n MyResourceGroup
 ```
 

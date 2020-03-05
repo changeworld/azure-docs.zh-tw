@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c0967c411aa10d046caee13441b046bf0f462442
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703298"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274333"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
@@ -76,37 +76,42 @@ ms.locfileid: "76703298"
 
 #### <a name="step-2-download-your-python-project"></a>步驟 2:下載您的 Python 專案
 
-[下載 Python 精靈專案](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [下載 Python 精靈專案](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>步驟 3：設定您的 Python 專案
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
-1. 瀏覽至子資料夾 **1-Call-MsGraph-WithSecret"** 。
-1. 編輯 **parameters.json**，並將欄位 `authority`、`client_id` 和 `secret` 的值取代為下列程式碼片段：
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [產生新的用戶端密碼]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>步驟 3：設定您的 Python 專案
+> 
+> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
+> 1. 瀏覽至子資料夾 **1-Call-MsGraph-WithSecret"** 。
+> 1. 編輯 **parameters.json**，並將欄位 `authority`、`client_id` 和 `secret` 的值取代為下列程式碼片段：
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    其中：
+>    - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
+>    - `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
+>    - `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
+>
+> > [!TIP]
+> > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。 若要產生新的金鑰，請移至 [憑證和祕密]  頁面。
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
-    
-    > [!div renderon="docs"]
-    >> 其中：
-    >> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
-    >> * `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
-    >> * `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>步驟 3：系統管理員同意
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。 若要產生新的金鑰，請移至 [憑證和祕密]  頁面。
-    
-#### <a name="step-4-admin-consent"></a>步驟 4：系統管理員同意
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>步驟 4：系統管理員同意
 
 如果您嘗試在此時執行應用程式，您將會收到「HTTP 403 - 禁止」  錯誤：`Insufficient privileges to complete the operation`。 之所以發生此錯誤，是因為任何「僅限應用程式權限」  都需要管理員同意：目錄的全域管理員必須對應用程式表示同意。 請根據您的角色選取下列其中一個選項：
 
@@ -133,7 +138,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
 >> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
 
-#### <a name="step-5-run-the-application"></a>步驟 5：執行應用程式
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>步驟 4：執行應用程式
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>步驟 5：執行應用程式
 
 您必須安裝此範例的相依性一次
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572380"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273687"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教學課程：設定伺服器管理員和使用者角色
 
@@ -27,7 +27,7 @@ ms.locfileid: "73572380"
 
 若要深入了解 Azure Analysis Services 中的使用者安全性，請參閱[驗證和使用者權限](../analysis-services-manage-users.md)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 訂用帳戶中的 Azure Active Directory。
 - 已在您的訂用帳戶中建立 [Azure Analysis Services 伺服器](../analysis-services-create-server.md)。
@@ -82,7 +82,7 @@ ms.locfileid: "73572380"
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>將使用者新增至模型資料庫管理員角色
 
-在此工作中，您會將使用者或群組帳戶新增至已存在於模型中的網際網路銷售管理員角色。 此角色具有 adventureworks 範例模型資料庫的完全控制 (管理員) 權限。 此工作會在為您建立的指令碼中使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL 命令。
+在此工作中，您會將使用者或群組帳戶新增至已存在於模型中的網際網路銷售管理員角色。 此角色具有 adventureworks 範例模型資料庫的完全控制 (管理員) 權限。 此工作會在為您建立的指令碼中使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
 
 1. 在 [物件總管]  中，展開 [資料庫]   > [adventureworks]   > [角色]  。 
 2. 以滑鼠右鍵按一下 [網際網路銷售管理員]  ，然後按一下 [編寫角色的指令碼為]   > [建立或取代為]   > [新增查詢編輯器視窗]  。
@@ -98,7 +98,7 @@ ms.locfileid: "73572380"
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>新增新的模型資料庫角色，並新增使用者或群組
 
-在此工作中，您會在 TMSL 指令碼中使用 [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) 命令建立新的網際網路銷售全域角色、指定該角色的*讀取*權限，並從您的 Azure AD 新增使用者或群組帳戶。
+在此工作中，您會在 TMSL 指令碼中使用 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令建立新的網際網路銷售全域角色、指定該角色的*讀取*權限，並從您的 Azure AD 新增使用者或群組帳戶。
 
 1. 在 [物件總管]  中，以滑鼠右鍵按一下 **adventureworks**，然後按一下 [新增查詢]   > [XMLA]  。 
 2. 將下列 TMSL 指令碼複製並貼到查詢編輯器中：

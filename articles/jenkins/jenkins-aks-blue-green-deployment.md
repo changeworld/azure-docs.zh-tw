@@ -4,12 +4,12 @@ description: 了解如何使用 Jenkins 和藍/綠部署模式來部署至 Azure
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, 藍/綠部署, 持續傳遞, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158548"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251484"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和藍/綠部署模式來部署至 Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 > * 手動設定 Kubernetes 叢集
 > * 建立及執行 Jenkins 作業
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - [GitHub 帳戶](https://github.com)：您需要 GitHub 帳戶來複製範例存放庫。
 - [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)：您可使用 Azure CLI 2.0 來建立 Kubernetes 叢集。
 - [Chocolatey](https://chocolatey.org)：用來安裝 kubectl 的套件管理員。
@@ -84,19 +84,19 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 1. 登入您的 Azure 帳戶。 輸入下列命令後，您會收到說明如何完成登入的指示。 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. 當您在上一個步驟中執行 `az login` 時，包含您所有 Azure 訂用帳戶的清單會隨即出現 (連同它們的訂用帳戶識別碼)。 在此步驟中，您可以設定預設 Azure 訂用帳戶。 以所需的 Azure 訂用帳戶識別碼取代 &lt;your-subscription-id> 預留位置。 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. 建立資源群組。 以新資源群組的名稱取代 &lt;your-resource-group-name> 預留位置，並以您的位置取代 &lt;your-location> 預留位置。 此 `az account list-locations` 命令會顯示所有 Azure 位置。 在 AKS 還是預覽版的期間，並非所有位置都可使用。 如果您目前輸入的位置無效，則錯誤訊息會列出可用的位置。
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>手動設定 Kubernetes 叢集 
 1. 將 Kubernetes 組態下載到您的設定檔資料夾。
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
     
     使用下列命令更新對應 IP 位址的 DNS 名稱：
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     重複 `todoapp-test-blue` 和 `todoapp-test-green` 的呼叫：
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 1. 執行 `az acr create` 命令以建立 Container Registry 的執行個體。 在下一節中，您可以接著使用 `login server` 作為 Docker 登錄 URL。
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. 執行 `az acr credential` 命令可顯示您的 Container Registry 認證。 請記下 Docker 登錄使用者名稱和密碼，因為您會在下一節中用到。
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -224,7 +224,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 1. 在您自己的存放庫中，移至 `/deploy/aks/` 並開啟 `Jenkinsfile`。
 
-2. 更新檔案，如下所示：
+2. 請更新檔案為下列內容：
 
     ```groovy
     def servicePrincipalId = '<your-service-principal>'
@@ -253,9 +253,9 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 1. 輸入指令碼路徑 `deploy/aks/Jenkinsfile`。
 
-## <a name="run-the-job"></a>執行工作
+## <a name="run-the-job"></a>執行作業
 
-1. 請確認您可以在本機環境中成功執行專案。 方式如下：[在本機電腦上執行專案](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. 請確認您可以在本機環境中成功執行專案。 方法：[在本機電腦上執行專案](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. 執行 Jenkins 作業。 第一次執行作業時，Jenkins 會將 Todo 應用程式部署到藍色環境，也就是預設非使用中環境。 
 
@@ -276,7 +276,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 當您不再需要您在本教學課程中建立的資源時，您可加以刪除。
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

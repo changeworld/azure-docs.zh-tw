@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906466"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269509"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob
 
@@ -409,4 +409,4 @@ console.log(`Container "${containerName}" is deleted`);
 
 > [!div class="nextstepaction"]
 > [適用於 JavaScript 的 Azure 儲存體 v10 SDK 存放庫](https://github.com/Azure/azure-storage-js)
-> [Azure 儲存體 JavaScript API 參考](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [Azure 儲存體 JavaScript API 參考](/javascript/api/overview/azure/storage-overview)

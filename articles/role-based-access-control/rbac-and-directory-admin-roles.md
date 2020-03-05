@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e8d82011fe4fdd40bb07c77411ad0e948ddad049
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138066"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916518"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 管理員角色
 
@@ -75,7 +75,7 @@ Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/manag
 | Azure RBAC 角色 | 權限 | 注意 |
 | --- | --- | --- |
 | [擁有者](built-in-roles.md#owner) | <ul><li>所有資源的完整存取權</li><li>委派其他資源的存取權</li></ul> | 服務管理員和共同管理員都會獲派訂用帳戶範圍的擁有者角色<br>適用於所有資源類型。 |
-| [參與者](built-in-roles.md#contributor) | <ul><li>建立和管理所有類型的 Azure 資源</li><li>無法授與其他資源的存取權</li></ul> | 適用於所有資源類型。 |
+| [參與者](built-in-roles.md#contributor) | <ul><li>建立和管理所有類型的 Azure 資源</li><li>在 Azure Active Directory 中建立新的租用戶</li><li>無法授與其他資源的存取權</li></ul> | 適用於所有資源類型。 |
 | [讀取者](built-in-roles.md#reader) | <ul><li>檢視 Azure 資源</li></ul> | 適用於所有資源類型。 |
 | [使用者存取系統管理員](built-in-roles.md#user-access-administrator) | <ul><li>管理 Azure 資源的使用者存取</li></ul> |  |
 
