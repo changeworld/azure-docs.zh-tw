@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008347"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273829"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中有風險的登入報告
 
@@ -52,15 +52,15 @@ Azure Active Directory (Azure AD) 會偵測使用者帳戶相關的可疑動作�
 
 所有 Azure AD 版本都會為您提供有風險的登入報告。 不過，報告細微性層級因版本而異： 
 
-- 在 [Azure Active Directory Free 和 Basic 版本] 中，您會取得有風險的登入清單。 
+- 在**Azure Active Directory Free 版本**中，您會取得有風險的登入清單。 
 
 - 此外， **Azure Active Directory Premium 1**版本也可讓您檢查已針對每個報告偵測到的一些基礎風險偵測。 
 
 - **Azure Active Directory Premium 2**版本提供有關所有基礎風險偵測的最詳細資訊，同時也可讓您設定安全性原則，以自動回應已設定的風險層級。
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD 免費和基本版本的有風險的登入報告
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD 免費版的具風險登入報告
 
-Azure AD 免費和基本版本會為您的使用者提供已偵測到的有風險登入清單。 每個記錄都包含下列屬性：
+Azure AD 免費版會為您的使用者提供已偵測到的具風險登入清單。 每個記錄都包含下列屬性：
 
 - **使用者** - 在登入作業期間所使用的使用者名稱。
 - **IP** - 用來連線至 Azure Active Directory 的裝置 IP 位址。

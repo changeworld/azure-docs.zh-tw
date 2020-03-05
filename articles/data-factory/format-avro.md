@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1717969aeb24a153f986c70ef60db1aac5c840fb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423774"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267780"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory 中的 Avro 格式
 
@@ -83,7 +83,11 @@ ms.locfileid: "77423774"
 
 ## <a name="data-type-support"></a>資料類型支援
 
-不支援 Avro[複雜資料類型](https://avro.apache.org/docs/current/spec.html#schema_complex)（記錄、列舉、陣列、對應、等位和固定）。
+### <a name="copy-activity"></a>複製活動
+在複製活動中不支援 Avro[複雜資料類型](https://avro.apache.org/docs/current/spec.html#schema_complex)（記錄、列舉、陣列、對應、等位和固定）。
+
+### <a name="data-flows"></a>資料流程
+在資料流程中使用 Avro 檔案時，您可以讀取和寫入複雜的資料類型，但請務必先從資料集清除實體架構。 在 [資料流程] 中，您可以設定邏輯投射並衍生複雜結構的資料行，然後將這些欄位自動對應到 Avro 檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

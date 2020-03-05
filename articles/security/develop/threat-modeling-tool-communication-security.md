@@ -1,5 +1,6 @@
 ---
-title: 通訊安全性 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool 的通訊安全性
+titleSuffix: Azure
 description: 降低威脅模型化工具所暴露的威脅
 services: security
 documentationcenter: na
@@ -15,22 +16,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b861c54cfffe409946a2b23de4c7ccf2cd85433a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839246"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269884"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全性架構︰通訊安全性 | 風險降低 
-| 產品/服務 | 文章 |
+| 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **Azure 事件中樞** | <ul><li>[使用 SSL/TLS 保護與事件中樞的通訊](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[檢查服務帳戶權限，並確認自訂服務或 ASP.NET 網頁採用 CRM 的安全性](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[將內部部署 SQL Server 連接至 Azure Data Factory 時使用資料管理閘道](#sqlserver-factory)</li></ul> |
 | **Identity Server** | <ul><li>[確定前往 Identity Server 的所有流量都是透過 HTTPS 連線](#identity-https)</li></ul> |
 | **Web 應用程式** | <ul><li>[驗證用來驗證 SSL、TLS 及 DTLS 連線的 X.509 憑證](#x509-ssltls)</li><li>[在 Azure App Service 中設定自訂網域的 SSL 憑證](#ssl-appservice)</li><li>[強制所有前往 Azure App Service 的流量透過 HTTPS 連線來進行](#appservice-https)</li><li>[啟用 HTTP Strict Transport Security (HSTS)](#http-hsts)</li></ul> |
-| **資料庫** | <ul><li>[啟用 SQL Server 連線加密和憑證驗證](#sqlserver-validation)</li><li>[強制加密與 SQL Server 的通訊](#encrypted-sqlserver)</li></ul> |
+| **Database** | <ul><li>[啟用 SQL Server 連線加密和憑證驗證](#sqlserver-validation)</li><li>[強制加密與 SQL Server 的通訊](#encrypted-sqlserver)</li></ul> |
 | **Azure 儲存體** | <ul><li>[確定對 Azure 儲存體的通訊是透過 HTTPS](#comm-storage)</li><li>[如果無法啟用 HTTPS，則在下載 Blob 之後驗證 MD5 雜湊](#md5-https)</li><li>[使用 SMB 3.0 相容用戶端來確保要傳輸到 Azure 檔案共用的資料會加密](#smb-shares)</li></ul> |
 | **行動用戶端** | <ul><li>[實作憑證釘選](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[啟用 HTTPS - 安全傳輸通道](#https-transport)</li><li>[WCF︰將訊息安全性保護層級設定為 EncryptAndSign](#message-protection)</li><li>[WCF︰使用最低權限帳戶來執行 WCF 服務](#least-account-wcf)</li></ul> |
@@ -44,7 +45,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 事件中樞 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [事件中樞驗證和安全性模型概觀](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -55,7 +56,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Dynamics CRM | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -88,7 +89,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -99,7 +100,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | EnvironmentType - Azure |
 | **參考**              | [針對 Azure App Service 中的 App 啟用 HTTPS](../../app-service/configure-ssl-bindings.md) |
@@ -110,7 +111,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | EnvironmentType - Azure |
 | **參考**              | [在 Azure App Service 上強制使用 HTTPS](../../app-service/configure-ssl-bindings.md#enforce-https) |
@@ -143,7 +144,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [OWASP HTTP Strict Transport Security 功能提要](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
@@ -154,7 +155,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure  |
 | **屬性**              | SQL 版本 - V12 |
 | **參考**              | [為 SQL Database 撰寫安全連接字串的最佳作法](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
@@ -165,10 +166,10 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | OnPrem |
 | **屬性**              | SQL 版本 - MsSQL2016、SQL 版本 - MsSQL2012、SQL 版本 - MsSQL2014 |
-| **參考**              | [啟用 Database Engine 的加密連線](https://msdn.microsoft.com/library/ms191192)  |
+| **參考**              | [啟用資料庫引擎的加密連接](https://msdn.microsoft.com/library/ms191192)  |
 | **步驟** | 啟用 SSL 加密可提高 SQL Server 執行個體和應用程式之間跨網路傳輸之資料的安全性。 |
 
 ## <a id="comm-storage"></a>確定對 Azure 儲存體的通訊是透過 HTTPS
@@ -187,7 +188,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - Blob |
 | **參考**              | [Windows Azure Blob MD5 概觀](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
@@ -198,7 +199,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 行動用戶端 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - 檔案 |
 | **參考**              | [Azure 檔案儲存體](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows 用戶端的 Azure 檔案儲存體 SMB 支援](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
@@ -209,7 +210,7 @@ ms.locfileid: "73839246"
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、Windows Phone |
 | **屬性**              | N/A  |
 | **參考**              | [憑證和公開金鑰釘選](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
@@ -286,7 +287,7 @@ namespace CertificatePinningExample
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | NET Framework 3 |
 | **屬性**              | N/A  |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
@@ -297,7 +298,7 @@ namespace CertificatePinningExample
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | N/A  |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
@@ -326,7 +327,7 @@ string GetData(int value);
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | N/A  |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
@@ -337,7 +338,7 @@ string GetData(int value);
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | MVC5、MVC6 |
 | **屬性**              | N/A  |
 | **參考**              | [在 Web API 控制器中強制執行 SSL](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
@@ -378,11 +379,11 @@ public class ValuesController : ApiController
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure Cache for Redis | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [Azure Redis SSL 支援](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **步驟** | Redis 伺服器不支援非預設 SSL，但是 Azure Cache for Redis 則支援。 如果您是連線至「Azure Redis 快取」，且您的用戶端支援 SSL (例如 StackExchange.Redis)，則應該使用 SSL。 預設會對新 Azure Cache for Redis 執行個體停用非 SSL 連接埠。 除非 Redis 用戶端仰賴 SSL 支援，否則請確保安全的預設值未遭變更。 |
+| **步驟** | Redis 伺服器不支援非預設 SSL，但是 Azure Cache for Redis 則支援。 如果您是連線至 Azure Cache for Redis，且您的用戶端支援 SSL (例如 StackExchange.Redis)，則應該使用 SSL。 預設會對新 Azure Cache for Redis 執行個體停用非 SSL 連接埠。 除非 Redis 用戶端仰賴 SSL 支援，否則請確保安全的預設值未遭變更。 |
 
 請注意，Redis 是設計成要供受信任環境內的受信任用戶端存取。 這表示，讓 Redis 執行個體直接面對網際網路通常不是什麼好主意，或者一般來說，讓它直接面對不受信任之用戶端可直接存取 Redis TCP 連接埠或 UNIX 通訊端的環境也不是好主意。 
 
@@ -391,7 +392,7 @@ public class ValuesController : ApiController
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 現場閘道 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -402,7 +403,7 @@ public class ValuesController : ApiController
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 雲端閘道 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [選擇您的通訊協定](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |

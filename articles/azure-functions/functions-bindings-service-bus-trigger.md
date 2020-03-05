@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493198"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273556"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排觸發程式
 
@@ -369,9 +369,6 @@ Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-
 |`To`|`string`|傳送位址。|
 |`Label`|`string`|應用程式特定的標籤。|
 |`CorrelationId`|`string`|相互關連識別碼。|
-
-> [!NOTE]
-> 目前，與已啟用會話的佇列和訂用帳戶搭配使用的服務匯流排觸發程式處於預覽狀態。 請追蹤[此專案](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)，以取得與此相關的任何進一步更新。 
 
 請參閱稍早在本文中使用這些屬性的[程式碼範例](#example)。
 

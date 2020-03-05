@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249803"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273641"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 輸入參數
 
@@ -148,19 +148,19 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
 * **Azure Resource Manager Cmdlet：** 您可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 )，啟動在資源群組中建立的自動化 runbook。
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Azure 傳統部署模型 Cmdlet：** 您可以使用 [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 啟動在預設資源群組中建立的自動化 Runbook。
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > 當您使用 PowerShell Cmdlet 啟動 runbook 時，會使用值**powershell**來建立預設參數*MicrosoftApplicationManagementStartedBy*。 您可以在 [作業詳細資料] 窗格中查看此參數。  
@@ -169,7 +169,7 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
 
 * **Azure Resource Manager 方法：** 您可以使用程式設計語言的 SDK 來啟動 runbook。 以下 C# 程式碼片段用於在您的自動化帳戶中啟動 Runbook。 您可以在我們的 [GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中檢視完整的程式碼。  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Azure 傳統部署模型方法：** 您可以使用程式設計語言的 SDK 來啟動 Runbook。 以下 C# 程式碼片段用於在您的自動化帳戶中啟動 Runbook。 您可以在我們的 [GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中檢視完整的程式碼。
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
        });
       return response.Job;
     }
-  ```
+   ```
 
-  若要啟動此方法，請建立字典來儲存 runbook 參數*VMName*和*resourceGroupName*及其值。 然後啟動 Runbook。 以下 C# 程式碼片段用於呼叫上面定義的方法。
+   若要啟動此方法，請建立字典來儲存 runbook 參數*VMName*和*resourceGroupName*及其值。 然後啟動 Runbook。 以下 C# 程式碼片段用於呼叫上面定義的方法。
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>使用 REST API 啟動 runbook 並指派參數
 
@@ -238,7 +238,7 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
 
 如果您想要啟動先前以*VMName*和*resourceGroupName*做為參數建立的**get-azurevmtextual** runbook，請使用下列 JSON 格式做為要求主體。
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 如果成功建立作業，則會傳回 HTTP 狀態碼 201。 如需回應標頭和回應主體的詳細資訊，請參閱[使用 REST API 建立 runbook 作業](/rest/api/automation/job/create)。
 
@@ -260,13 +260,13 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
 
 ### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>將排程連結至 Runbook，並指派參數
 
-您可以[將排程連結](automation-schedules.md)至您的 Runbook，以在特定時間啟動 Runbook。 您會在建立排程時指派輸入參數，且 Runbook 經由排程啟動時，會使用這些值。 必須提供所有必要參數值，才能儲存排程。
+您可以[將排程連結](automation-schedules.md)至您的 Runbook，以在特定時間啟動 Runbook。 您會在建立排程時指派輸入參數，且 Runbook 經由排程啟動時，會使用這些值。 在提供所有必要的參數值之前，您無法儲存排程。
 
 ![排程並指派參數](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
 ### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>建立 Runbook 的 Webhook，並指派參數
 
-您可以為您的 Runbook 建立 [Webhook](automation-webhooks.md) ，並設定 Runbook 輸入參數。 必須提供所有必要參數值，才能儲存 Webhook。
+您可以為您的 Runbook 建立 [Webhook](automation-webhooks.md) ，並設定 Runbook 輸入參數。 必須提供所有必要參數值，才能儲存 webhook。
 
 ![建立 Webhook 並指派參數](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
@@ -330,7 +330,7 @@ Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
     >[!NOTE]
     >針對 PowerShell runbook， **disconnect-azaccount**和**add-AzureRMAccount**是**disconnect-azaccount**的別名。 請注意，這些別名無法供圖形化 runbook 使用。 圖形化 runbook 只能使用**disconnect-azaccount**本身。
 
-2. 取得已儲存 JSON 檔案的內容，並將它轉換成字串。 `JsonPath` 是您儲存 JSON 檔案的路徑。
+1. 取得已儲存 JSON 檔案的內容，並將它轉換成字串。 `JsonPath` 是您儲存 JSON 檔案的路徑。
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
    ```
 
    請注意，您要將*參數*的值設定為包含 JSON 檔案值的 PowerShell 物件。
-1. 啟動 Runbook
+1. 啟動 runbook。
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

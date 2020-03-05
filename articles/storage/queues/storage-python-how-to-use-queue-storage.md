@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: b5382a6a1ea381d57a026e9d42190152e38f7696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7812b62e2de3181ae1a901241a977e37f855704b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209530"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268032"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何從 Python 使用 Azure 佇列儲存體 v 2。1
 
@@ -24,7 +24,7 @@ ms.locfileid: "74209530"
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 本文中的範例是以 Python 撰寫，並使用[Microsoft Azure Storage SDK for Python]。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
@@ -41,7 +41,7 @@ ms.locfileid: "74209530"
 若要透過 Python Package Index (PyPI) 安裝，請輸入：
 
 ```bash
-pip install azure-storage-blob==2.1.0
+pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]

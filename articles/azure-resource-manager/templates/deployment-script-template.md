@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: jgao
-ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616306"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272654"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
@@ -222,10 +222,16 @@ reference('<ResourceName>').output.text
 
 [jq](https://stedolan.github.io/jq/)是在上一個範例中使用。 它隨附容器映射。 請參閱[設定開發環境](#configure-development-environment)。
 
-## <a name="handle-non-terminating-errors"></a>處理非終止錯誤
+## <a name="develop-deployment-scripts"></a>開發部署腳本
+
+### <a name="handle-non-terminating-errors"></a>處理非終止錯誤
 
 您可以使用部署腳本中的[ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 )變數，控制 PowerShell 如何回應非終止錯誤。 部署腳本引擎不會設定/變更此值。  儘管您為 $ErrorActionPreference 設定的值，部署腳本會在腳本遇到錯誤時，將資源布建狀態設定為 [*失敗*]。
+
+### <a name="pass-secured-strings-to-deployment-script"></a>將安全的字串傳遞至部署腳本
+
+在您的容器執行個體中設定環境變數，可讓您提供由容器執行之應用程式或指令碼的動態設定。 部署腳本會以與 Azure 容器實例相同的方式來處理不安全且安全的環境變數。 如需詳細資訊，請參閱[在容器實例中設定環境變數](../../container-instances/container-instances-environment-variables.md#secure-values)。
 
 ## <a name="debug-deployment-scripts"></a>Debug 部署腳本
 

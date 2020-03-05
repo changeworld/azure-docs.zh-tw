@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266468"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207093"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 範例
 
@@ -23,11 +23,11 @@ ms.locfileid: "71266468"
 
 本文提供一般工作的範例指令碼。 針對每個範例，請使用適當的值來更新變數，然後執行命令。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure CLI。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 的步驟。
 
-* 選用：Bash。 本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  範例只需要略為修改，即可在 Windows 命令提示字元中使用。
+* 選擇性：Bash。 本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  範例只需要略為修改，即可在 Windows 命令提示字元中使用。
 
 ## <a name="az-login"></a>az login
 
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>建立搭配[磁碟加密](kafka/apache-kafka-byok.md)的 Kafka 叢集
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>建立搭配[磁碟加密](./disk-encryption.md)的 Kafka 叢集
 
 ```azurecli
 export clusterName=CLUSTERNAME

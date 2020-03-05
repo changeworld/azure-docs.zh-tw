@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/27/2020
-ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/03/2020
+ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846007"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271939"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模擷取、轉換和載入 (ETL)
 
@@ -67,7 +67,7 @@ Azure 儲存體也有一個用於 Blob 儲存體的 WebHDFS API 層。  HDInsigh
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake 儲存體
 
-Azure Data Lake Storage (ADLS) 是一個受管理的超大規模存放庫，適用於與 HDFS 相容的分析資料。  ADLS 使用一種類似於 HDFS 的設計典範，並在總容量及個別檔案大小方面提供無限的延展性。 ADLS 非常適合與大型檔案搭配運作，因為大型檔案可以跨多個節點儲存。  分割 ADLS 中的資料是在幕後執行的。  您可以取得大規模輸送量，以使用數千個並行執行程式來執行分析作業，有效率地讀取和寫入上百 TB 規模的資料。
+Azure Data Lake Storage (ADLS) 是一個受管理的超大規模存放庫，適用於與 HDFS 相容的分析資料。  ADLS 使用一種類似於 HDFS 的設計典範，並在總容量及個別檔案大小方面提供無限的延展性。 ADLS 非常適合與大型檔案搭配運作，因為大型檔案可以跨多個節點儲存。  分割 ADLS 中的資料是在幕後執行的。  您會獲得大規模輸送量，而可以使用數千個並行執行程式來執行分析作業，有效率地讀取和寫入數百 TB 的資料。
 
 通常會使用 Azure Data Factory、ADLS SDK、AdlCopy 服務、Apache DistCp 或 Apache Sqoop 將資料擷取至 ADLS。  要使用這當中的哪些服務大部分取決於資料的所在位置。  如果資料目前在現有的 Hadoop 叢集中，您可以使用 Apache DistCp、AdlCopy 服務或 Azure Data Factory。  如果資料在「Azure Blob 儲存體」中，則您可以使用 Azure Data Lake Storage .NET SDK、Azure PowerShell 或 Azure Data Factory。
 
@@ -87,7 +87,7 @@ Azure SQL DW 是一個儲存已清理且備妥之資料以供日後分析的絕�
 
 「Azure SQL 資料倉儲」(SQL DW) 是一個已針對分析工作負載最佳化的關聯式資料庫。  Azure SQL DW 會根據分割資料表調整規模。  資料表可以跨多個節點進行分割。  在建立 Azure SQL DW 節點時便會選取節點。  您可以在事後調整節點規模，但這是一個可能需要移動資料的作用中程序。 如需詳細資訊，請參閱[SQL 資料倉儲-管理計算](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
-### <a name="apache-hbase"></a>Apache HBase
+### <a name="apache-hbase"></a>Apache HBase (英文)
 
 Apache HBase 是 Azure HDInsight 中提供的索引鍵/值存放區。  Apache HBase 是開放原始碼的 NoSQL 資料庫，其建置於 Hadoop 上並模仿 Google BigTable。 HBase 可針對無結構描述資料庫中依資料行系列組織的大量非結構化及半結構化資料，提供效能隨機存取功能和極高的一致性。
 
@@ -129,7 +129,7 @@ Apache Flume 是一個分散式、可靠且可用的服務，可有效率地收�
 
 Apache Flume 不能與 Azure HDInsight 搭配使用。  內部部署 Hadoop 安裝可以使用 Flume，將資料傳送至 Azure 儲存體 Blob 或 Azure Data Lake Storage。  如需詳細資訊，請參閱[搭配 HDInsight 使用 Apache Flume](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/) \(英文\)。
 
-## <a name="transform"></a>轉型
+## <a name="transform"></a>轉換
 
 在資料存在於所選擇的位置中之後，您必須加以清理、結合或準備，才能用於特定使用模式。  Hive、Pig 及 Spark SQL 都是適用於該類工作的絕佳選擇。  這些都是 HDInsight 支援的。
 

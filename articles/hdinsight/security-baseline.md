@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589970"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271859"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 web 應用程式
 
-**指導**方針：無法使用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
+**指導**方針：不適用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -125,7 +125,7 @@ HDInsight 管理 IP 位址： https://docs.microsoft.com/azure/hdinsight/hdinsig
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 應用程式的流量
 
-**指導**方針：無法使用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
+**指導**方針：不適用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -331,7 +331,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -491,7 +491,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-use
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 資訊安全中心監視**：目前無法使用
 
-**責任**：客戶
+**責任**：共用
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密機密資訊待用
 
@@ -779,7 +779,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 如何手動安裝 Rapid7 代理程式：
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 如何手動安裝 Qualys 代理程式：
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 不允許的資源類型
 - 允許的資源類型
 
-使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。  請確定已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 請確定已核准環境中的所有 Azure 資源。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 如何使用 Azure Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - 不允許的資源類型
 - 允許的資源類型
 
+
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何拒絕具有 Azure 原則的特定資源類型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 **指引**：使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
 
-如何設定條件式存取以封鎖對 Azure Resource Manager 的存取：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何設定條件式存取以封鎖對 Azure Resource Manager 的存取： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
 
-**指導**方針：無法使用;這不適用於 Azure HDInsight 因為叢集的使用者（非系統管理員）不需要存取個別節點來執行作業。 叢集系統管理員具有所有叢集節點的根目錄存取權。
+**指導**方針：不適用;這不適用於 Azure HDInsight 因為叢集的使用者（非系統管理員）不需要存取個別節點來執行作業。 叢集系統管理員具有所有叢集節點的根目錄存取權。
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
 
-**指導**方針：無法使用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
+**指導**方針：不適用;基準測試適用于裝載 web 應用程式的 Azure 應用程式服務或計算資源。
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂的作業系統映射
 
-**指導**方針：無法使用;不適用 Azure HDInsight 的自訂映射。
+**指導**方針：不適用;不適用 Azure HDInsight 的自訂映射。
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **指導**方針：資訊安全中心指派警示的嚴重性，協助您排定參與每個警示的順序，如此一來，當資源遭到入侵時，您就可以立即開始使用。 嚴重性是根據資訊安全中心在尋找中的信心，或用於發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -1421,3 +1422,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1第 1 課：建�
 
 **責任**：共用
 
+## <a name="next-steps"></a>後續步驟
+
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

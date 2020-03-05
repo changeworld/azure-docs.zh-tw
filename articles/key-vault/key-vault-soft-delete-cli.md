@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976301"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197312"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -22,7 +23,7 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 - 可復原的 Key Vault 刪除支援
 - 支援可復原的金鑰保存庫物件刪除；金鑰、密碼和憑證
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure CLI - 如果您沒有為環境進行此設定，請參閱[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
@@ -32,9 +33,9 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 
 Key Vault 作業透過角色型存取控制 (RBAC) 權限來分別管理，如下所示：
 
-| 作業 | 說明 | 使用者權限 |
+| 作業 | 描述 | 使用者權限 |
 |:--|:--|:--|
-|列出|列出已刪除的金鑰保存庫。|Microsoft.KeyVault/deletedVaults/read|
+|清單|列出已刪除的金鑰保存庫。|Microsoft.KeyVault/deletedVaults/read|
 |復原|還原已刪除的金鑰保存庫。|Microsoft.KeyVault/vaults/write|
 |清除|永久移除已刪除的金鑰保存庫和其所有內容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
@@ -133,7 +134,7 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 就像金鑰保存庫，已刪除的金鑰、祕密或憑證仍會維持已刪除狀態長達 90 天，除非加以復原或清除。
 
-#### <a name="keys"></a>金鑰
+#### <a name="keys"></a>索引鍵
 
 若要復原虛刪除的金鑰：
 
@@ -150,7 +151,7 @@ az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-**復原**和**清除**動作在金鑰保存庫存取原則中有自己的相關聯權限。 若要讓使用者或服務主體能夠執行**復原**或**清除**動作，他們必須具有該金鑰或祕密的個別權限。 根據預設，當 'all' 捷徑用於授與所有權限時，**清除**不會新增到金鑰保存庫的存取原則。 您必須明確授與**清除**權限。 
+**復原**和**清除**動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 若要讓使用者或服務主體能夠執行**復原**或**清除**動作，他們必須具有該金鑰或祕密的個別權限。 根據預設，當 'all' 捷徑用於授與所有權限時，**清除**不會新增到金鑰保存庫的存取原則。 您必須明確授與**清除**權限。 
 
 #### <a name="set-a-key-vault-access-policy"></a>設定金鑰保存庫存取原則
 

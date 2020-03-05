@@ -1,18 +1,17 @@
 ---
 title: 開始使用 Azure 監視器中的記錄查詢 | Microsoft Docs
 description: 本文提供教學課程來說明如何在 Azure 監視器中開始撰寫記錄查詢。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670174"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>開始使用 Azure 監視器中的查詢
 

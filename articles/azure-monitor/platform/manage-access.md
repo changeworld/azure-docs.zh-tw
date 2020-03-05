@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672101"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272632"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -88,6 +88,7 @@ if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null
 else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+}
 ```
 
 ### <a name="using-a-resource-manager-template"></a>使用 Resource Manager 範本
@@ -103,7 +104,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |注意事項 |
+|動作 |所需的 Azure 權限 |注意 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -131,7 +132,7 @@ Azure 有兩個內建的 Log Analytics 工作區角色：
 
 Log Analytics 讀者角色包含下列 Azure 動作：
 
-| 類型    | [權限] | 描述 |
+| 類型    | 權限 | 描述 |
 | ------- | ---------- | ----------- |
 | 動作 | `*/read`   | 檢視所有 Azure 資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | 動作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 已淘汰，不需要將它們指派給使用者。 |
@@ -159,7 +160,7 @@ Log Analytics 讀者角色包含下列 Azure 動作：
 
 Log Analytics 參與者角色包含下列 Azure 動作：
 
-| [權限] | 描述 |
+| 權限 | 描述 |
 | ---------- | ----------- |
 | `*/read`     | 檢視所有資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | `Microsoft.Automation/automationAccounts/*` | 建立及設定 Azure 自動化帳戶的能力，包括新增和編輯 Runbook |
@@ -186,7 +187,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 當使用者使用資源內容存取來查詢工作區中的記錄時，他們會在資源上擁有下列許可權：
 
-| [權限] | 描述 |
+| 權限 | 描述 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>範例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能夠查看資源的所有記錄資料。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能夠設定診斷設定，以允許此資源的記錄檔。 |

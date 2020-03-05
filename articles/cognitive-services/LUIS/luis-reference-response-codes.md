@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945850"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270257"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常見的 API 回應碼及其意義
 
-[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087)和[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API 會傳回 HTTP 回應碼。 當回應訊息包含專屬於要求的資訊時，HTTP 回應狀態碼為一般。 
+[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087)和[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API 會傳回 HTTP 回應碼。 當回應訊息包含專屬於要求的資訊時，HTTP 回應狀態碼為一般。
 
 ## <a name="common-status-codes"></a>常見狀態碼
 下表針對[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087)和[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API 列出一些最常見的 HTTP 回應狀態碼：
@@ -29,11 +29,11 @@ ms.locfileid: "68945850"
 |:--|--|--|
 |400|撰寫、端點|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
 |400|撰寫、端點|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|
-|401|製作|使用端點訂用帳戶金鑰，而不是撰寫金鑰|
+|401|編寫|使用端點訂用帳戶金鑰，而不是撰寫金鑰|
 |401|撰寫、端點|無效、格式不正確或空的金鑰|
 |401|撰寫、端點| 金鑰不符合區域|
-|401|製作|您不是擁有者或共同作業者|
-|401|製作|無效的 API 呼叫順序|
+|401|編寫|您不是擁有者或共同作業者|
+|401|編寫|無效的 API 呼叫順序|
 |403|撰寫、端點|超過每月的金鑰總配額限制|
 |409|端點|應用程式仍在載入中|
 |410|端點|應用程式需要重新訓練並重新發行|

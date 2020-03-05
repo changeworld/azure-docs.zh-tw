@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器中的 Azure 轉送計量 (預覽) | Microsoft Docs
+title: Azure 轉送 Azure 監視器中的計量 |Microsoft Docs
 description: 本文提供有關如何使用 Azure 監視器來監視 Azure 轉送狀態的資訊。
 services: service-bus-relay
 documentationcenter: .NET
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514930"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273124"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure 監視器中的 Azure 轉送計量 (預覽)
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 轉送 Azure 監視器中的計量 
 Azure 轉送計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估轉送資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視 Azure 轉送的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
 
 「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../monitoring-and-diagnostics/monitoring-overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
@@ -41,7 +41,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ![][1]
 
-您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [Metrics (Peview)] \(計量 (預覽))。 
+您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 
 
 如需支援維度的計量，您必須使用所需的維度值來進行篩選。
 
@@ -58,32 +58,32 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="connection-metrics"></a>連接計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-| ListenerConnections-Success (預覽) | 指定時段內，接聽程式成功連接到 Azure 轉送的數目。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ListenerConnections-ClientError (預覽)|指定時段內，接聽程式連線發生的用戶端錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ListenerConnections-ServerError (預覽)|指定時段內，接聽程式連線發生的伺服器錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|SenderConnections-Success (預覽)|指定時段內，寄件者成功連線的數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|SenderConnections-ClientError (預覽)|指定時段內，寄件者連線發生的用戶端錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|SenderConnections-ServerError (預覽)|指定時段內，寄件者連線發生的伺服器錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ListenerConnections-TotalRequests (預覽)|指定時段內，接聽程式連線的總數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|SenderConnections-TotalRequests (預覽)|指定時段內，寄件者發出的連線要求。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveConnections (預覽)|指定時段內，作用中的連線數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveListeners (預覽)|指定時段內，作用中的接聽程式數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ListenerDisconnects (預覽)|指定時段內，中斷連線的接聽程式數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|SenderDisconnects (預覽)|指定時段內，中斷連線的寄件者數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+| ListenerConnections-Success  | 指定時段內，接聽程式成功連接到 Azure 轉送的數目。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ListenerConnections-ClientError |指定時段內，接聽程式連線發生的用戶端錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ListenerConnections-ServerError |指定時段內，接聽程式連線發生的伺服器錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|SenderConnections-Success |指定時段內，寄件者成功連線的數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|SenderConnections-ClientError |指定時段內，寄件者連線發生的用戶端錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|SenderConnections-ServerError |指定時段內，寄件者連線發生的伺服器錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ListenerConnections-TotalRequests |指定時段內，接聽程式連線的總數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|SenderConnections-TotalRequests |指定時段內，寄件者發出的連線要求。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveConnections |使用中的連接數目。 這個值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveListeners |使用中的接聽程式數目。 這個值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ListenerDisconnects |指定時段內，中斷連線的接聽程式數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|SenderDisconnects |指定時段內，中斷連線的寄件者數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>記憶體使用量計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|BytesTransferred (預覽)|在指定時段內，傳輸的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|BytesTransferred |在指定時段內，傳輸的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="metrics-dimensions"></a>計量維度
 
 Azure 轉送支援下列的 Azure 監視器計量維度。 將維度新增至計量為選擇性。 如果不新增維度，則會在命名空間層級指定計量。 
 
-|維度名稱|說明|
+|維度名稱|描述|
 | ------------------- | ----------------- |
 |EntityName| Azure 轉送支援命名空間下的訊息實體。|
 

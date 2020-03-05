@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8c29ebd675bb6af66203c13824dacbe9ea2421a2
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732790"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270743"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 DatetimeV2 預先建置實體
 
@@ -31,7 +31,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 
 `8am on may 2nd 2019`
 
-#### <a name="v3-responsetab1-1"></a>[V3 回應](#tab/1-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/1-1)
 
 ```json
 "entities": {
@@ -53,7 +53,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v3-verbose-responsetab1-2"></a>[V3 詳細回應](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/1-2)
 
 ```json
 
@@ -91,7 +91,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v2-responsetab1-3"></a>[V2 回應](#tab/1-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/1-3)
 
 ```json
 "entities": [
@@ -119,7 +119,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 |type|**string** - 其中一個 [datetimeV2 子類型](#subtypes-of-datetimev2)
 |startIndex|**int** - 實體開始的語句中的索引。|
 |endIndex|**int** - 實體結束的語句中的索引。|
-|resolution|有一、二或四個[解析值](#values-of-resolution)的 `values` 陣列。|
+|resolution|有一、二或四個`values`解析值[的 ](#values-of-resolution) 陣列。|
 |end|時間或日期範圍的結束值，使用的格式和 `value` 相同。 只有當 `type` 為 `daterange`、`timerange` 或 `datetimerange` 時才能使用|
 
 * * *
@@ -170,7 +170,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 * 當今天的日期為 2017 年 5 月 1 日時，LUIS 會提供 "2016-05-02" 與 "2017-05-02" 這兩個值。
 
 下列範例顯示「5 月 2 日」實體的解析。 此解析假設今天的日期介於 2017 年 5 月 2 日到 2018 年 5 月 1 日之間。
-`timex` 欄位中包含 `X` 的欄位，是語句中未明確指定的日期部分。
+`X` 欄位中包含 `timex` 的欄位，是語句中未明確指定的日期部分。
 
 ## <a name="date-resolution-example"></a>日期解析範例
 
@@ -179,7 +179,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 
 `May 2nd`
 
-#### <a name="v3-responsetab2-1"></a>[V3 回應](#tab/2-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/2-1)
 
 ```json
 "entities": {
@@ -204,7 +204,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v3-verbose-responsetab2-2"></a>[V3 詳細回應](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/2-2)
 
 ```json
 "entities": {
@@ -244,7 +244,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v2-responsetab2-3"></a>[V2 回應](#tab/2-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/2-3)
 
 ```json
   "entities": [
@@ -280,7 +280,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 
 `May 2nd to May 5th`
 
-#### <a name="v3-responsetab3-1"></a>[V3 回應](#tab/3-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/3-1)
 
 ```json
 
@@ -309,7 +309,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 ```
 
 
-#### <a name="v3-verbose-responsetab3-2"></a>[V3 詳細回應](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/3-2)
 
 ```json
 
@@ -352,7 +352,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v2-responsetab3-3"></a>[V2 回應](#tab/3-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/3-3)
 
 ```json
 "entities": [
@@ -384,7 +384,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 
 `Tuesday to Thursday`
 
-#### <a name="v3-responsetab4-1"></a>[V3 回應](#tab/4-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/4-1)
 
 ```json
 "entities": {
@@ -411,7 +411,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v3-verbose-responsetab4-2"></a>[V3 詳細回應](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/4-2)
 
 ```json
 "entities": {
@@ -453,7 +453,7 @@ DatetimeV2 是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text
 }
 ```
 
-#### <a name="v2-responsetab4-3"></a>[V2 回應](#tab/4-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/4-3)
 
 ```json
   "entities": [
@@ -492,7 +492,7 @@ API V2 的變更：
 
 `from 6pm to 7pm`
 
-#### <a name="v3-responsetab5-1"></a>[V3 回應](#tab/5-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/5-1)
 
 下列 JSON 會將 `verbose` 參數設定為 `false`：
 
@@ -517,7 +517,7 @@ API V2 的變更：
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab5-2"></a>[V3 詳細回應](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/5-2)
 
 下列 JSON 會將 `verbose` 參數設定為 `true`：
 
@@ -557,7 +557,7 @@ API V2 的變更：
     }
 }
 ```
-#### <a name="v2-responsetab5-3"></a>[V2 回應](#tab/5-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/5-3)
 
 ```json
   "entities": [
@@ -588,7 +588,7 @@ API V2 的變更：
 
 `8am`
 
-#### <a name="v3-responsetab6-1"></a>[V3 回應](#tab/6-1)
+#### <a name="v3-response"></a>[V3 回應](#tab/6-1)
 
 ```json
 "entities": {
@@ -609,7 +609,7 @@ API V2 的變更：
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab6-2"></a>[V3 詳細回應](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/6-2)
 
 ```json
 "entities": {
@@ -645,7 +645,7 @@ API V2 的變更：
     }
 }
 ```
-#### <a name="v2-responsetab6-3"></a>[V2 回應](#tab/6-3)
+#### <a name="v2-response"></a>[V2 回應](#tab/6-3)
 
 ```json
 "entities": [
@@ -673,7 +673,7 @@ API V2 的變更：
 
 `datetime` 預先建置的實體已過時 ，並由 **datetimeV2** 取代。
 
-若要在 LUIS 應用程式中以 `datetimeV2` 取代 `datetime`，請完成下列步驟：
+若要在 LUIS 應用程式中以 `datetime` 取代 `datetimeV2`，請完成下列步驟：
 
 1. 開啟 LUIS 網頁介面的 [實體] 窗格。
 2. 刪除 **datetime** 預先建置的實體。

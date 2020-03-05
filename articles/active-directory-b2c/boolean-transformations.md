@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189936"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268028"
 ---
 # <a name="boolean-claims-transformations"></a>布林值宣告轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "78189936"
 
 執行兩個布林值 inputClaim 的 And 運算，並使用運算的結果來設定 outputClaim。
 
-| 項目  | TransformationClaimType  | 資料型別  | 注意事項 |
+| Item  | TransformationClaimType  | 資料類型  | 注意 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 要評估的第一個 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 要評估的第二個 ClaimType。 |
@@ -61,7 +61,7 @@ ms.locfileid: "78189936"
 
 檢查兩個宣告的布林值相等，如果不相等，則會擲回例外狀況。
 
-| 項目 | TransformationClaimType  | 資料型別  | 注意事項 |
+| Item | TransformationClaimType  | 資料類型  | 注意 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要進行判斷的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
@@ -118,7 +118,7 @@ ms.locfileid: "78189936"
 
 檢查宣告的布林值是否等於 `true` 或 `false`，並傳回壓縮的結果。
 
-| 項目 | TransformationClaimType  | 資料型別  | 注意事項 |
+| Item | TransformationClaimType  | 資料類型  | 注意 |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | 要進行判斷的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
@@ -156,7 +156,7 @@ ms.locfileid: "78189936"
 
 執行布林值 inputClaim 的 Not 運算，並使用運算的結果來設定 outputClaim。
 
-| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要運算的宣告。 |
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType (True 或 False)。 |
@@ -184,7 +184,7 @@ ms.locfileid: "78189936"
 
 執行兩個布林值 inputClaim 的 Or 運算，並使用運算的結果來設定 outputClaim。
 
-| 項目 | TransformationClaimType | 資料型別 | 注意事項 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 要評估的第一個 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 要評估的第二個 ClaimType。 |

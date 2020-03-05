@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152120"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268717"
 ---
 # <a name="partition-and-sample-module"></a>資料分割和範例模組
 
@@ -154,9 +154,9 @@ ms.locfileid: "77152120"
 
 5. 如果您要使用多個資料分割，則必須加入資料分割的其他實例**和範例**模組來處理每個資料分割。
 
-    例如，假設先前將患者分割成使用年齡的四個折迭。 若要使用每個個別的折迭，您需要資料**分割和範例**模組的四個複本，而在每個中，您會選取不同的折迭，如下所示。 使用 [**指派**] 直接折迭輸出並不正確。  
+    例如，第二個數據列中的資料**分割和範例**模組已設定為**指派給**折迭，而第三個數據列中的模組設定為 [**挑選折**迭]。   
 
-    [![資料分割和範例](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![資料分割和取樣](./media/module/partition-and-sample.png)
 
 5. 執行管道。
 

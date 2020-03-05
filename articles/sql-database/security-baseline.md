@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589931"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273087"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>適用于 Azure SQL Database 的 Azure 安全性基準
 
@@ -122,12 +122,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統（IDS/IPS）
 
-**指導**方針：啟用 Azure SQL Database 的先進威脅防護（ATP）。  一旦有可疑活動、潛在弱點、SQL 插入式攻擊以及異常的資料庫存取和查詢模式發生時，使用者就會收到警示。 Advanced 威脅防護也會整合警示與 Azure 資訊安全中心。
+**指導**方針：為 Azure SQL Database 啟用先進的威脅防護（ATP）。  一旦有可疑活動、潛在弱點、SQL 插入式攻擊以及異常的資料庫存取和查詢模式發生時，使用者就會收到警示。 Advanced 威脅防護也會整合警示與 Azure 資訊安全中心。
 
-
-瞭解並使用適用于 Azure SQL Database 的先進威脅防護：
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+瞭解和使用適用于 Azure SQL Database 的先進威脅防護： https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure 資訊安全中心監視**：是
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則為您的 Azure SQL Database 伺服器實例定義和執行網路安全性設定。 您可以使用 "Microsoft .Sql" 命名空間來定義自訂原則定義，或使用針對 Azure SQL Database server 網路保護所設計的任何內建原則定義。 Azure SQL Database 伺服器適用的內建網路安全性原則範例如下：「SQL Server 應該使用虛擬網路服務端點」
+**指導**方針：使用 Azure 原則為您的 Azure SQL Database 伺服器實例定義和執行網路安全性設定。 您可以使用 "Microsoft .Sql" 命名空間來定義自訂原則定義，或使用針對 Azure SQL Database server 網路保護所設計的任何內建原則定義。 Azure SQL Database 伺服器適用的內建網路安全性原則範例如下：「SQL Server 應該使用虛擬網路服務端點」。
+ 
 
 使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure 資源管理範本、角色型存取控制（RBAC）和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂用帳戶和環境，並透過版本控制微調控制和管理。
 
+
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何建立 Azure 藍圖： https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。
 
+
+
 針對 Azure SQL Database 使用 Advanced 威脅防護來偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
-如何識別標示有風險活動 Azure AD 使用者： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-如何在 Azure 資訊安全中心中監視使用者的身分識別和存取活動： https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-審查先進的威脅防護和可能的警示： https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+如何識別標示有風險活動 Azure AD 使用者：
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+如何在 Azure 資訊安全中心中監視使用者的身分識別和存取活動：
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+審查先進的威脅防護和可能的警示：
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Azure 資訊安全中心監視**：是
@@ -473,6 +487,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
 **指導**方針：使用名為「位置」的條件式存取，只允許來自 IP 位址範圍或國家/地區特定邏輯群組的入口網站和 Azure 資源管理存取權。
+
 
 如何在 Azure 中設定命名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -774,7 +789,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Azure 資訊安全中心監視**：是
+**Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
@@ -796,11 +811,15 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括 Azure SQL Server 實例）。  請確定您的租使用者中有適當的（讀取）許可權，而且能夠列舉所有的 Azure 訂用帳戶以及您訂用帳戶內的資源。
 
+
 雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
+
 
 如何使用 Azure Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 如何查看您的 Azure 訂用帳戶： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 瞭解 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指引**：將標籤套用至 Azure 資源，讓中繼資料以邏輯方式將其組織成分類法。
 
-如何建立和使用標記： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+如何建立和使用標記：
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -822,11 +845,23 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指引**：使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產。 定期協調清查，並確保未經授權的資源會及時從訂用帳戶中刪除。
 
-如何建立額外的 Azure 訂用帳戶： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何建立管理群組： https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何建立和使用標記： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立額外的 Azure 訂用帳戶：
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+如何建立管理群組：
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+如何建立和使用標記：
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -894,6 +929,7 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 如何拒絕具有 Azure 原則的特定資源類型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
@@ -911,9 +947,7 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 **指引**：使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
 
-如何設定條件式存取以封鎖對 Azure Resource Manager 的存取：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何設定條件式存取以封鎖對 Azure Resource Manager 的存取： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1152,7 +1186,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure 資訊安全中心監視**：不適用
+**Azure 資訊安全中心監視**：是
 
 **責任**：共用
 
@@ -1204,7 +1238,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backup
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -1292,7 +1326,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 資訊安全中心監視**：是
+**Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
 
@@ -1314,3 +1348,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1第 1 課：建�
 
 **責任**：共用
 
+## <a name="next-steps"></a>後續步驟
+
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589879"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273552"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全性基準
 
@@ -59,7 +59,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -271,7 +271,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **指引**：在 windows 作業系統的情況下，在您的個別 batch-節點上使用 Windows Defender，或如果您使用 Linux，請提供您自己的反惡意程式碼解決方案。
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -466,7 +466,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-use
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -511,7 +511,7 @@ https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -524,7 +524,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **責任**：客戶
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：提供 Microsoft 在支援案例期間存取相關的客戶資料
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13： <div>在支援案例期間，為 Microsoft 提供相關客戶資料的存取權<br></div>
 
 **指導**方針：無法使用;Azure Batch 尚不支援客戶加密箱。 客戶加密箱支援的服務清單： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure 資訊安全中心監視**：是
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**：客戶
+**責任**：共用
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
 
@@ -654,7 +654,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure 資訊安全中心監視**：是
+**Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：共用
 
@@ -690,7 +690,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure 資訊安全中心監視**：是
+**Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：共用
 
@@ -704,7 +704,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -728,7 +728,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -751,7 +751,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **指引**： Microsoft 維護並更新基底 Azure Batch 集區節點映射。 請確定 Azure Batch 集區節點的作業系統在叢集存留期間仍然修補，這可能需要啟用自動更新、監視節點，或定期執行重新開機。
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：共用
 
@@ -788,7 +788,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 **指導**方針：使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路等）。 請確定您的租使用者中有適當的（讀取）許可權，而且能夠列舉所有的 Azure 訂用帳戶以及您訂用帳戶內的資源。
 
 
-雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
+雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager （ARM）資源。
 
 
 如何使用 Azure Graph 建立查詢：
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 不允許的資源類型
 - 允許的資源類型
 
+
 使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 請確定已核准環境中的所有 Azure 資源。
 
+
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何使用 Azure Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **指引**：使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
 
+
 - 不允許的資源類型
 - 允許的資源類型
 
-如何設定和管理 Azure 原則：
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何拒絕具有 Azure 原則的特定資源類型：
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+如何拒絕具有 Azure 原則的特定資源類型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **責任**：客戶
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11：限制使用者透過腳本與 Azure Resource Manager 互動的能力
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11： <div>限制使用者透過腳本與 Azure Resource Manager 互動的能力</div>
 
 **指引**：使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
 
-如何設定條件式存取以封鎖對 Azure Resource Manager 的存取：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何設定條件式存取以封鎖對 Azure Resource Manager 的存取： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -949,9 +949,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
 
-**指導**方針：無法使用，
-
-基準測試適用于在 Azure App Service 或 IaaS 實例上執行的 web 應用程式。
+**指導**方針：不適用，基準測試適用于在 Azure App Service 或 IaaS 實例上執行的 web 應用程式。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -966,10 +964,14 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 **指引**：在 "Microsoft. Batch" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Batch 帳戶和集區的設定。
 
 
-如何查看可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何查看可用的 Azure 原則別名：
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -991,7 +993,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 - Microsoft.Storage
 - Microsoft.Network
 
+
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 瞭解 Azure 原則效果： https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果您的 Azure Batch 帳戶、集區或相關資源使用自訂的 Azure 原則定義，請使用 Azure DevOps/存放庫來安全地儲存和管理您的程式碼。
+**指導**方針：如果您的 Azure Batch 帳戶、集區或相關資源使用自訂的 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-如何將程式碼儲存在 Azure DevOps： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos 檔： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+如何將程式碼儲存在 Azure DevOps：
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Azure Repos 檔：
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1024,9 +1034,14 @@ Azure Repos 檔： https://docs.microsoft.com/azure/devops/repos/index?view=azur
 **指導**方針：如果您的 Azure Batch 集區使用自訂映射，請使用角色型存取控制（RBAC），以確保只有授權的使用者可以存取映射。
 
 
-瞭解 Azure 中的 RBAC： https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+瞭解 Azure 中的 RBAC：
 
-如何在 Azure 中設定 RBAC： https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+如何在 Azure 中設定 RBAC：
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **指引**：在 "Microsoft. Batch" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Batch 實例的設定。 您也可以使用專為 Azure Batch 所建立的內建原則，或 Azure Batch 所使用的資源，例如：
 
-- 子網路應該與網路安全性群組建立關聯
-- 儲存體帳戶應使用虛擬網路服務端點
+- 子網應與網路安全性群組相關聯-儲存體帳戶應使用虛擬網路服務端點
 - 應啟用 Batch 帳戶中的診斷記錄
 
 如何查看可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -1187,7 +1201,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -1205,7 +1219,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
@@ -1218,7 +1232,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **責任**：共用
 
+## <a name="next-steps"></a>後續步驟
+
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

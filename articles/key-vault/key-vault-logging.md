@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000657"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195323"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -37,9 +38,9 @@ ms.locfileid: "71000657"
 
 如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](key-vault-overview.md) 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您必須具備下列項目：
+若要完成本教學課程，必須具備下列項目：
 
 * 所使用的現有金鑰保存庫。  
 * Azure PowerShell，最低版本為 1.0.0。 若要安裝 Azure PowerShell，並將它與 Azure 訂用帳戶建立關聯，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 如果您已安裝 Azure PowerShell 但不知道版本，請在 Azure PowerShell 主控台中輸入 `$PSVersionTable.PSVersion`。  
@@ -168,7 +169,7 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 
 因為您可以使用相同的儲存體帳戶收集多個資源的記錄，所以 Blob 名稱中的完整資源識別碼適合用來只存取或下載所需 Blob。 但在這麼做之前，我們要先討論如何下載所有 blob。
 
-建立資料夾來下載 Blob。 例如︰
+建立資料夾來下載 Blob。 例如：
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -188,7 +189,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 在執行第二個命令時，blob 名稱中的 **/** 分隔符號會在目的地資料夾下建立完整資料夾結構。 您將使用此結構來下載 Blob 並儲存為檔案。
 
-若要有所選擇地下載 blob，請使用萬用字元。 例如︰
+若要有所選擇地下載 blob，請使用萬用字元。 例如：
 
 * 如果您有多個金鑰保存庫，並且只想下載其中的 CONTOSOKEYVAULT3 金鑰保存庫的記錄：
 
@@ -248,7 +249,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 
 下表列出各個欄位的名稱和其描述：
 
-| 欄位名稱 | 說明 |
+| 欄位名稱 | 描述 |
 | --- | --- |
 | **time** |日期和時間 (UTC)。 |
 | **resourceId** |Azure Resource Manager 資源識別碼。 對於金鑰保存庫記錄來說，這一律是金鑰保存庫的資源識別碼。 |
@@ -264,7 +265,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 | **身分識別** |權杖中的身分識別，會在 REST API 要求中提供。 就像從 Azure PowerShell Cmdlet 產生的要求一樣，這通常是「使用者」、「服務主體」或「使用者+appId」的組合。 |
 | **properties** |根據作業 (**operationName**) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如，**KeyCreate** 或 **VaultGet**) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 "id")、保存庫 URI 或祕密 URI。 |
 
-**operationName** 欄位值的格式為 *ObjectVerb*。 例如︰
+**operationName** 欄位值的格式為 *ObjectVerb*。 例如：
 
 * 所有金鑰保存庫作業都有 `Vault<action>` 格式，例如 `VaultGet` 和 `VaultCreate`。
 * 所有金鑰作業都有 `Key<action>` 格式，例如 `KeySign` 和 `KeyList`。
@@ -308,7 +309,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 
 如需詳細資訊 (包括如何進行此設定)，請參閱 [Azure 監視器記錄中的 Azure Key Vault 解決方案](../azure-monitor/insights/azure-key-vault.md)。 如果您需要從 Azure 監視器記錄預覽版時期所提供的舊 Key Vault 解決方案 (其中您是先將記錄路由遞送至「Azure 儲存體」帳戶，然後將 Azure 監視器記錄設定成從該處讀取) 移轉，本文也包含相關指示。
 
-## <a id="next"></a>接續步驟
+## <a id="next"></a>後續步驟
 
 如需在 .NET Web 應用程式中使用 Azure Key Vault 的教學課程，請參閱[從 Web 應用程式使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
 

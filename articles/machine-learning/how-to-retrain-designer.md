@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921586"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268490"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具重新定型模型（預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ ms.locfileid: "77921586"
 
 1. 選取您想要執行的管線。
 
-1. 選取 [執行]。
+1. 選取 [提交]。
 
 1. 在 [設定] 對話方塊中，您可以指定新的輸入資料路徑值，以指向您的新資料集。
 
@@ -127,7 +127,9 @@ ms.locfileid: "77921586"
 
 ### <a name="submit-runs-with-code"></a>使用程式碼提交執行
 
-有多種方式可以根據您的開發環境，以程式設計方式存取 REST 端點。 您可以在管線的 [取用] 索引標籤中，找到示範如何以參數提交管線**執行的程式**代碼範例。
+您可以在 [總覽] 面板中找到已發佈管線的 REST 端點。 藉由呼叫端點，您可以重新定型已發行的管線。
+
+若要進行 REST 呼叫，您將需要 OAuth 2.0 持有人類型驗證標頭。 若要進一步了解如何設定對工作區進行驗證以及如何進行參數化 REST 呼叫，請參閱下列[教學課程章節](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure CLI 建立和 Azure Active Directory 啟�
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596601"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273762"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 整合 Azure Active Directory 與 Azure Kubernetes Service
 
@@ -27,9 +27,11 @@ Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD)
 
 您需要安裝並設定 Azure CLI 版本2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
+請移至[https://shell.azure.com](https://shell.azure.com) ，以在瀏覽器中開啟 Cloud Shell。
+
 為求一致，並協助執行本文中的命令，請為您想要的 AKS 叢集名稱建立一個變數。 下列範例會使用名稱*myakscluster*：
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 您會收到登入提示，您可以使用網頁瀏覽器來使用 Azure AD 認證來進行驗證。 成功驗證之後，`kubectl` 命令會顯示 AKS 叢集中的 pod，如下列範例輸出所示：
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 
 如果您在使用網頁瀏覽器成功登入後看到授權錯誤訊息，如下列範例輸出所示，請檢查下列可能的問題：
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

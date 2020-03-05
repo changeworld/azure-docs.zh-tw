@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014444"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273806"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>存取 Azure Active Directory 報告 API 的必要條件
 
@@ -78,7 +78,7 @@ ms.locfileid: "74014444"
 
     a. 在 [名稱] 文字方塊中，輸入 `Reporting API application`。
 
-    b.這是另一個 C# 主控台應用程式。 針對 [**支援的帳戶類型**]，選取 [**僅限此組織中的帳戶**]。
+    b. 針對 [**支援的帳戶類型**]，選取 [**僅限此組織中的帳戶**]。
 
     c. 在 [重新**導向 URL** ] [選取**Web** ] 文字方塊中，輸入 `https://localhost`。
 
@@ -181,7 +181,7 @@ ms.locfileid: "74014444"
 
     a. 在 [描述] 文字方塊中，輸入 `Reporting API`。
 
-    b.這是另一個 C# 主控台應用程式。 選取 [2 年後] 來作為 [到期]。
+    b. 選取 [2 年後] 來作為 [到期]。
 
     c. 按一下 [檔案]。
 
@@ -189,19 +189,16 @@ ms.locfileid: "74014444"
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>針對報告 API 中的錯誤進行疑難排解
 
-這一節列出當您使用 MS Graph API 存取活動報告時，可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
+本節列出當您使用 Microsoft Graph API 存取活動報告時，可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>存取 Microsoft Graph V2 端點時發生 500 HTTP 內部伺服器錯誤
 
-我們目前不支援 Microsoft Graph v2 端點 - 請務必使用 Microsoft Graph v1 端點來存取活動記錄。
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>錯誤：無法從 AD Graph 取得使用者角色
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>錯誤：無法從 Microsoft Graph 取得使用者角色
 
  使用 Graph Explorer UI 中的兩個登入按鈕來登入您的帳戶，以避免在嘗試使用 Graph Explorer 登入時收到錯誤。 
 
 ![Graph 總管](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>錯誤：無法從 AD Graph 進行進階授權檢查 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>錯誤：無法從 Microsoft Graph 進行 premium 授權檢查 
 
 如果您在嘗試使用 Graph 總管存取登入時，遇到這個錯誤訊息，請在您帳戶左側導覽列底下選擇 [修改權限]，然後選取 [Tasks.ReadWrite] 和 [Directory.Read.All]。 
 
@@ -218,12 +215,12 @@ ms.locfileid: "74014444"
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>錯誤：應用程式遺漏 AAD「讀取目錄資料」權限 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺漏 MS Graph API「讀取所有稽核記錄資料」權限
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺失 Microsoft API 「讀取所有的 audit 記錄資料」許可權
 
 依照必要條件中的步驟[存取 Azure Active Directory 報告 API](howto-configure-prerequisites-for-reporting-api.md) ，以確保您的應用程式是以正確的許可權集執行。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Active Directory 報告 API 搭配憑證來取得資料](tutorial-access-api-with-certificates.md)
-* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) \(英文\) 
-* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin) \(英文\)
+* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

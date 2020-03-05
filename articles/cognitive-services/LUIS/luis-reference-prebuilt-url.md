@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 12831ede2b9d9251f2e02fa396ee7d2fb2d61240
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499504"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270356"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 URL 預先建置實體
-URL 實體會擷取含有網域名稱或 IP 位址的 URL。 因為此實體已經定型，所以您不需要將包含 URL 的範例語句加入應用程式。 只有 `en-us` 文化特色才支援 URL 實體。 
+URL 實體會擷取含有網域名稱或 IP 位址的 URL。 因為此實體已經定型，所以您不需要將包含 URL 的範例語句加入應用程式。 只有 `en-us` 文化特色才支援 URL 實體。
 
 ## <a name="types-of-urls"></a>URL 類型
 URL 可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub 存放庫管理
@@ -30,7 +30,7 @@ URL 可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
-#### <a name="v3-responsetabv3"></a>[V3 回應](#tab/V3)
+#### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
 下列 JSON 會將 `verbose` 參數設定為 `false`：
 
@@ -41,7 +41,7 @@ URL 可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 詳細回應](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
 下列 JSON 會將 `verbose` 參數設定為 `true`：
 
@@ -67,7 +67,7 @@ URL 可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 回應](#tab/V2)
+#### <a name="v2-response"></a>[V2 回應](#tab/V2)
 
 下列範例顯示 https://www.luis.ai 的解決方式是人工智慧的絕佳認知服務範例
 
@@ -82,10 +82,10 @@ URL 可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 ]
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-了解 [ordinal](luis-reference-prebuilt-ordinal.md)、[number](luis-reference-prebuilt-number.md) 及 [temperature](luis-reference-prebuilt-temperature.md) 實體相關資訊。
+了解 [ordinal](luis-reference-prebuilt-ordinal.md)、[number](luis-reference-prebuilt-number.md) 和 [temperature](luis-reference-prebuilt-temperature.md) 實體相關資訊。

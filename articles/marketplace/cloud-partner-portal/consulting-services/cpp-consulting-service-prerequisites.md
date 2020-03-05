@@ -2,33 +2,31 @@
 title: Azure 和 Dynamics 365 諮詢服務供應專案必要條件 |Azure Marketplace
 description: Cloud Partner 入口網站中 Azure 或 Dynamics 365 諮詢服務供應專案的必要條件。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818126"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268270"
 ---
 # <a name="consulting-service-prerequisites"></a>諮詢服務必要條件
 
 在[Azure Marketplace 和 AppSource 諮詢服務](../../consulting-services.md)中，檢查此供應專案類型的描述和需求。  下列特定的諮詢服務類型有額外的需求：
 
-|     供應項目類型   |    需求   |
-|     ----------   |    -----------   |
-| Microsoft Azure | 合作夥伴必須擁有適用于[雲端平臺](https://partner.microsoft.com/membership/cloud-platform-competency)專長認證的銀級或金級認證。 |
-| Dynamics 365 for Customer Engagement | 合作夥伴必須擁有[雲端客戶關係管理專長認證](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)的銀級或金級認證。 |
-| Dynamics 365 for Finance & Operations | 合作夥伴必須擁有[企業資源規劃專長認證](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)的銀級或金級認證。 在過去12個月內，合作夥伴在雲端作業中也必須具有最低收益 $25000。 |
-| Dynamics 365 Business Central | 合作夥伴必須以雲端解決方案提供者 (CSP) 或列冊數位合作夥伴 (DPOR) 的身分來為至少一位客戶提供服務。 <br/> 如需如何成為 CSP 的相關資訊，請參閱[以 CSP 身分來開始](https://partner.microsoft.com/cloud-solution-provider/get-started)。 <br/> 如需 DPOR 需求，請參閱 [DPOR 概觀](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1)。 |
-|  Power BI  | 列於 Power BI 合作夥伴展示工具上。 如需詳細資訊，請參閱[解決方案合作夥伴準則](https://powerbi.microsoft.com/become-a-partner)。 |
-|  PowerApps       | 合作夥伴必須已在[合作夥伴解決方案展示工具](https://powerapps.microsoft.com/partner-showcase)上發佈過解決方案。 |
-|  |  |
-
+| 供應項目類型 | 需求 |
+|---------|---------|
+| Dynamics 365 銷售 <br> Dynamics 365 行銷 <br> Dynamics 365 客戶服務 <br> Dynamics 365 Field 服務 <br> Dynamics 365 人力資源 |   在[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中，必須是客戶參與選項的金級或銀級。    | 
+| Dynamics 365 財務 <br> Dynamics 365 供應鏈管理 <br> Dynamics 365 Commerce <br> Dynamics 365 人力資源 <br> Dynamics 365 專案服務自動化 |  在整合作業選項的[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中必須是金級或銀級。       |
+| Dynamics 365 Customer Insights | 至少必須具有5個量值和5個區段，才能成功地在生產環境中執行[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) 。 |
+| Dynamics 365 Business Central | 必須是[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證的黃金或銀級，而且必須是至少3個業務中心客戶的雲端解決方案提供者。 <br> <br> OR <br> <br> 必須已[在 AppSource 中發佈 Business Central 應用程式](https://appsource.microsoft.com/) |
+| Power BI | 必須列在[Power BI 合作夥伴展示](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)上。|
+|Power Apps | 必須符合[PowerApps 合作計畫](https://aka.ms/PowerAppsPartner)中的先進權益資格。 |
 
 ## <a name="next-steps"></a>後續步驟
 

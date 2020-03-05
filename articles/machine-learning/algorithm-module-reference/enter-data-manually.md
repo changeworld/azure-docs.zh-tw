@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917470"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268767"
 ---
 # <a name="enter-data-manually-module"></a>手動輸入資料模組
 
@@ -89,11 +89,9 @@ ms.locfileid: "77917470"
         |0.00016|0.004|0.999961|0.00784|1|  
         |0|0.004|0.999955|0.008615|1|  
   
-4.  在每個資料列後面按 ENTER 鍵，以開始新的一行。  
-  
-     **請務必在最後一個資料列之後按 ENTER 鍵。** 
+4.  在每個資料列後面按 ENTER 鍵，以開始新的一行。      
      
-     如果您按下 ENTER 多次來加入多個空的尾端資料列，則會移除最後一個空白資料列，但會將其他空白資料列視為遺漏值。  
+     如果您按下 ENTER 多次以加入多個空的尾端資料列，則會移除空的資料列。  
   
      如果您建立具有遺漏值的資料列，您隨時都可以將它們篩選出來。  
   

@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 traefik 輸入控制器，並使用該輸入控制器來設定 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 6cac50ea9caeea42b0a7522dbeb5039a8461dd2c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623170"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273161"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自訂 traefik 輸入控制器並設定 HTTPS
 
@@ -23,7 +23,7 @@ ms.locfileid: "77623170"
 * [已啟用 Azure Dev Spaces 的 Azure Kubernetes Service （AKS）][qs-cli]叢集。
 * 已安裝[kubectl][kubectl] 。
 * [已安裝 Helm 3][helm-installed]。
-* 在與您的 AKS 叢集相同的資源群組中，具有[DNS 區域][dns-zone]的[自訂網域][custom-domain]。
+* 具有[DNS 區域][dns-zone][的自訂網域][custom-domain]。 本文假設自訂網域和 DNS 區域位於與您的 AKS 叢集相同的資源群組中，但您可以在不同的資源群組中使用自訂網域和 DNS 區域。
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>設定自訂 traefik 輸入控制器
 

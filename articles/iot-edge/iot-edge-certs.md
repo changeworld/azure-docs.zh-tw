@@ -8,12 +8,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 58294c7afdf31ddd29611351d6442db1c4966157
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548742"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269040"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>瞭解 Azure IoT Edge 如何使用憑證
 
@@ -69,7 +69,7 @@ IoT Edge 中樞伺服器憑證是提供給分葉裝置和模組的實際憑證�
 
 * 若有任何以憑證為基礎的流程，在推出 IoT Edge 裝置的整個流程中，根 CA 憑證和所有的中繼 CA 憑證均應受到保護和監控。 IoT Edge 裝置製造商應要備有穩健的流程，以妥善儲存和使用中繼憑證。 此外，裝置 CA 憑證應盡可能留存在裝置的安全儲存體中，最好是硬體安全性模組。
 
-* IoT Edge 中樞伺服器憑證會由 IoT Edge 中樞向連線的用戶端裝置和模組顯示。 裝置 CA 憑證的一般名稱 (CN) **不得**與 IoT Edge 裝置上的 config.yaml 中將使用的「hostname」相同。 用戶端用來連線到 IoT Edge 的名稱 (例如，透過連接字串的 GatewayHostName 參數或 MQTT 中的 CONNECT 命令) **不可**與裝置 CA 憑證中使用的一般名稱相同。 這項限制是因為 IoT Edge 中樞會提供整個信任鏈結由用戶端驗證。 如果 IoT Edge 中樞伺服器憑證和裝置 CA 憑證兩者都有相同的 CN 憑證，則會進入驗證迴圈中，而導致憑證無效。
+* IoT Edge 中樞伺服器憑證會由 IoT Edge 中樞向連線的用戶端裝置和模組顯示。 裝置 CA 憑證的一般名稱 (CN) **不得**與 IoT Edge 裝置上的 config.yaml 中將使用的「hostname」相同。 用戶端用來連線到 IoT Edge 的名稱（例如，透過連接字串的 GatewayHostName 參數或 MQTT 中的 CONNECT 命令），**不能**與裝置 CA 憑證中使用的一般名稱相同。 這項限制是因為 IoT Edge 中樞會提供整個信任鏈結由用戶端驗證。 如果 IoT Edge 中樞伺服器憑證和裝置 CA 憑證兩者都有相同的 CN 憑證，則會進入驗證迴圈中，而導致憑證無效。
 
 * 因為 IoT Edge 安全性精靈會使用裝置 CA 憑證來產生最終 IoT Edge 憑證，因此裝置 CA 憑證必須是簽署憑證，也就是本身具有憑證簽署功能。 將「V3 Basic constraints CA:True」套用於裝置 CA 憑證後，基本上會自動設定必要的金鑰使用屬性。
 

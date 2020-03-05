@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228247"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271368"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
 
@@ -113,9 +113,9 @@ oc get route aqua-web -n aqua-security
 
 | 欄位          | 值         |
 | -------------- | ------------- |
-| Orchestrator   | OpenShift     |
+| 協調器   | OpenShift     |
 | ServiceAccount | 青色-帳戶  |
-| 專案        | 淺綠色-安全性 |
+| 隨附此逐步解說的專案        | 淺綠色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的產品特定步驟
 
@@ -137,6 +137,8 @@ oc new-project twistlock
 
 在步驟 2 `oc create -f twistlock_console.yaml` 期間，您會在建立命名空間時收到錯誤。
 您可以放心地忽略它，先前已使用 `oc new-project` 命令建立命名空間。
+
+針對儲存體類型使用 `azure-disk`。
 
 ### <a name="create-an-external-route-to-console"></a>建立主控台的外部路由
 

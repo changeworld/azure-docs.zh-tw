@@ -1,14 +1,14 @@
 ---
 title: 發佈區域 & 端點-LUIS
 description: Azure 入口網站中指定的區域與您將發佈 LUIS 應用程式的位置相同，而且會為此相同區域產生端點 URL。
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: 77fd901790582983d75735ac8b66d59c741ced9e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 097f3078b54b014dc646d144f3532e20236a9e4f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151933"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273415"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>撰寫和發佈區域及相關聯的金鑰
 
@@ -22,7 +22,7 @@ ms.locfileid: "77151933"
 |LUIS|撰寫區域|Azure 區功能變數名稱稱|
 |--|--|--|
 |[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|美式英文<br>非歐洲<br>非澳大利亞| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|澳洲| `australiaeast`|
+|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|澳大利亞| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|歐洲|`westeurope`|
 
 撰寫區域具有[配對的故障時區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。

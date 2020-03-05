@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522028"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269358"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>啟用無密碼安全性金鑰使用 Azure Active Directory 登入 Windows 10 裝置（預覽）
 
@@ -35,7 +35,7 @@ ms.locfileid: "77522028"
 | [結合的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md) | X | X |
 | 相容的[FIDO2 安全性金鑰](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN 需要 Windows 10 1809 版或更高版本 | X | X |
-| 已[加入 Azure AD 的裝置](../devices/concept-azure-ad-join.md)需要 Windows 10 1809 版或更高版本 | X |   |
+| 已[加入 Azure AD 的裝置](../devices/concept-azure-ad-join.md)需要 Windows 10 1903 版或更高版本 | X |   |
 | 已[加入混合式 Azure AD 的裝置](../devices/concept-azure-ad-join-hybrid.md)需要 Windows 10 Insider 組建18945或更高版本 |   | X |
 | 已完整修補的 Windows Server 2016/2019 網域控制站。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 或更新版本 |   | X |
@@ -43,7 +43,7 @@ ms.locfileid: "77522028"
 | 布建套件（選擇性） | X | X |
 | 群組原則（選擇性） |   | X |
 
-### <a name="unsupported-scenarios"></a>不支援的案例
+### <a name="unsupported-scenarios"></a>不支援的情節
 
 不支援下列案例：
 
@@ -54,6 +54,7 @@ ms.locfileid: "77522028"
 - 使用安全性金鑰登入伺服器。
 - 如果您在線上時未使用您的安全性金鑰來登入您的裝置，就無法使用它來離線登入或解除鎖定。
 - 使用包含多個 Azure AD 帳戶的安全性金鑰來登入或解除鎖定 Windows 10 裝置。 此案例會利用新增至安全性金鑰的最後一個帳戶。 [WebAuthN] 可讓使用者選擇他們想要使用的帳戶。
+- 解除鎖定執行 Windows 10 1809 版的裝置。 若要獲得最佳體驗，請使用 Windows 10 1903 版或更高版本。
 
 ## <a name="prepare-devices-for-preview"></a>準備裝置以供預覽
 

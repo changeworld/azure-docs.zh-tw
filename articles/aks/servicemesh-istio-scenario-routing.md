@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594097"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272996"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>透過 Istio 在 Azure Kubernetes Service (AKS) 中使用智慧型路由和 Canary 版本
 
@@ -68,25 +68,25 @@ cd aks-voting-app/scenarios/intelligent-routing-with-istio
 
 首先，在 AKS 叢集中為名為 `voting` 的範例 AKS 投票應用程式建立命名空間，如下所示：
 
-```azurecli
+```console
 kubectl create namespace voting
 ```
 
 為此命名空間加上 `istio-injection=enabled` 的標籤。 此標籤會指示 istio 在此命名空間內的所有 Pod 中自動插入 istio-proxy 作為側車。
 
-```azurecli
+```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
 現在，我們將建立 AKS 投票應用程式的元件。 在上一個步驟建立的 `voting` 命名空間中建立這些元件。
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
 下列範例輸出顯示所建立的資源：
 
-```console
+```output
 deployment.apps/voting-storage-1-0 created
 service/voting-storage created
 deployment.apps/voting-analytics-1-0 created
@@ -100,13 +100,13 @@ service/voting-app created
 
 若要查看已建立的 pod，請使用[kubectl get][kubectl-get] pod 命令，如下所示：
 
-```azurecli
+```console
 kubectl get pods -n voting --show-labels
 ```
 
 下列範例輸出顯示 `voting-app` pod 的三個實例，以及 `voting-analytics` 和 `voting-storage` pod 的單一實例。 每個 Pod 有兩個容器。 其中一個容器是元件，另一個則是 `istio-proxy`：
 
-```console
+```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
 voting-analytics-1-0-57c7fccb44-ng7dl   2/2       Running   0          39s   app=voting-analytics,pod-template-hash=57c7fccb44,version=1.0
 voting-app-1-0-956756fd-d5w7z           2/2       Running   0          39s   app=voting-app,pod-template-hash=956756fd,version=1.0
@@ -144,26 +144,26 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 
 使用 `kubectl apply` 命令來部署閘道和虛擬服務 yaml。 請記得指定這些資源部署所在的命名空間。
 
-```azurecli
+```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
 下列範例輸出顯示新的閘道和正在建立的虛擬服務：
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
 使用下列命令取得 Istio 輸入閘道的 IP 位址：
 
-```azurecli
+```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 下列範例輸出顯示輸入閘道的 IP 位址：
 
-```
+```output
 20.188.211.19
 ```
 
@@ -183,13 +183,13 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 讓我們部署 `voting-analytics` 元件的版本 `1.1`。 在 `voting` 命名空間中建立此元件：
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
 下列範例輸出顯示所建立的資源：
 
-```console
+```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
@@ -223,7 +223,7 @@ deployment.apps/voting-analytics-1-1 created
 
 下列範例輸出顯示在不同版本間切換網站時，所傳回網站的對應部分：
 
-```console
+```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -244,13 +244,13 @@ deployment.apps/voting-analytics-1-1 created
 * 原則 `peers.mtls.mode` 設定為 `STRICT`，以確保在 `voting` 命名空間內的服務之間強制執行相互 TLS。
 * 我們也會將 `trafficPolicy.tls.mode` 設定為所有目的地規則中 `ISTIO_MUTUAL`。 Istio 可提供具有增強式身分識別的服務，並使用 Istio 可明確管理的相互 TLS 和用戶端憑證保護服務之間的通訊。
 
-```azurecli
+```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
 下列範例輸出顯示要更新/建立的新原則、目的地規則和虛擬服務：
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app configured
 policy.authentication.istio.io/default created
 destinationrule.networking.istio.io/voting-app created
@@ -286,7 +286,7 @@ virtualservice.networking.istio.io/voting-storage created
 
 下列範例輸出顯示所傳回網站的對應部分：
 
-```console
+```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -322,7 +322,7 @@ istioctl authn tls-check <pod-name[.namespace]> [<service>]
 
 下列範例輸出顯示針對上述每個查詢強制執行相互 TLS。 輸出也會顯示強制執行相互 TLS 的原則和目的地規則：
 
-```console
+```output
 # mTLS configuration between istio ingress pods and the voting-app service
 HOST:PORT                                    STATUS     SERVER     CLIENT     AUTHN POLICY       DESTINATION RULE
 voting-app.voting.svc.cluster.local:8080     OK         mTLS       mTLS       default/voting     voting-app/voting
@@ -364,13 +364,13 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 首先，請更新 Istio 目的地規則和虛擬服務，以因應這些新元件的需求。 這些更新可確保您不會錯誤地將流量路由至新元件，且使用者不會獲得非預期的存取：
 
-```azurecli
+```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
 下列範例輸出顯示要更新的目的地規則和虛擬服務：
 
-```console
+```output
 destinationrule.networking.istio.io/voting-app configured
 virtualservice.networking.istio.io/voting-app configured
 destinationrule.networking.istio.io/voting-analytics configured
@@ -381,13 +381,13 @@ virtualservice.networking.istio.io/voting-storage configured
 
 接下來，讓我們為新版本 `2.0` 元件新增 Kubernetes 物件。 您也會更新 `voting-storage` 服務，使其包含適用于 MySQL 的 `3306` 埠：
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
 下列範例輸出顯示 Kubernetes 物件已成功更新或建立：
 
-```console
+```output
 service/voting-storage configured
 secret/voting-storage-secret created
 deployment.apps/voting-storage-2-0 created
@@ -398,7 +398,7 @@ deployment.apps/voting-app-2-0 created
 
 請等候所有版本 `2.0` pod 都在執行中。 使用[kubectl get][kubectl-get] pod 命令搭配 `-w` watch 參數，以監看 `voting` 命名空間中所有 pod 的變更：
 
-```azurecli
+```console
 kubectl get pods --namespace voting -w
 ```
 
@@ -428,13 +428,13 @@ kubectl get pods --namespace voting -w
 
 藉由刪除 `voting` 命名空間，您可以從 AKS 叢集移除我們在此案例中使用的 AKS 投票應用程式，如下所示：
 
-```azurecli
+```console
 kubectl delete namespace voting
 ```
 
 下列範例輸出顯示已從您的 AKS 叢集中移除 AKS 投票應用程式的所有元件。
 
-```console
+```output
 namespace "voting" deleted
 ```
 

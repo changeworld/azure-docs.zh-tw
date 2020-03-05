@@ -1,19 +1,18 @@
 ---
 title: 透過 Azure Application Insights 傳送警示 | Microsoft Docs
 description: 使用 Azure Application Insights 傳送警示以回應應用程式錯誤的教學課程。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398436"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656257"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 監視應用程式健康情況並傳送警示
 

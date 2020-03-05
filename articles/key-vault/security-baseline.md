@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9b767693691557f684bee59aa1764395dc42bffe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 03b2312b554743d83eff268876be1f20be595290
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590035"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267530"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用于 Key Vault 的 Azure 安全性基準
 
@@ -110,9 +110,7 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 **指引**：對於需要存取 Azure Key Vault 實例的資源，請使用 Azure Key Vault 的 Azure 服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，ApiManagement），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。
 
 
-Azure 服務標記總覽：
-
-https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Azure 服務標記總覽： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -309,13 +307,9 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 （Get-azresource-ResourceId [Keyvaultresourceid 值]）。屬性。 AccessPolicies
 
-向 Azure Active Directory 註冊應用程式：
+向 Azure Active Directory 註冊應用程式： https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
-
-保護對金鑰保存庫的存取：
-
-https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+保護對金鑰保存庫的存取： https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **Azure 資訊安全中心監視**：是
 
@@ -376,12 +370,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦（特殊許可權存取工作站）進行所有系統管理工作
 
-**指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入和設定 Key Vault 啟用的資源。
-
+**指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入和設定 Key Vault 啟用的資源。 
 
 特殊許可權存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 規劃以雲端為基礎的 Azure 多因素驗證部署： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -391,32 +385,20 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **指引**：使用 AZURE ACTIVE DIRECTORY （AAD） PRIVILEGED IDENTITY MANAGEMENT （PIM）來產生記錄，並在環境中發生可疑或不安全的活動時發出警示。 使用 AAD 風險偵測來根據有風險的使用者行為來查看警示和報告。 如需其他記錄，請將 Azure 資訊安全中心風險偵測警示傳送至 Azure 監視器，並使用動作群組來設定自訂警示/通知。
 
-
 啟用 [advanced 威脅防護（ATP）] 以進行 Azure Key Vault，以產生可疑活動的警示。
 
-
-部署 Azure AD Privileged Identity Management （PIM）：
-
-https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+部署 Azure AD Privileged Identity Management （PIM）： https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
 設定 Azure Key Vault 的先進威脅防護（預覽）： https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
+Azure Key Vault 的警示（預覽）： https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Azure Key Vault 的警示（預覽）：
+Azure Active Directory 風險偵測： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-
-Azure Active Directory 風險偵測：
-
-https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+在 Azure 入口網站中建立和管理動作群組： https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
-在 Azure 入口網站中建立和管理動作群組：
-
-https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
-
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
@@ -426,6 +408,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 Azure Active Directory 條件式存取中的位置條件為何？： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
+
 **Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
@@ -433,6 +416,8 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
 **指導**方針：使用 AZURE ACTIVE DIRECTORY （AAD）做為 Azure 資源（例如 Key Vault）的中央驗證和授權系統。 這可讓角色型存取控制（RBAC）管理敏感性資源。
+
+ 
 
 快速入門：在 Azure Active Directory 中建立新的租使用者： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -445,10 +430,14 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 **指導**方針：請參閱 AZURE ACTIVE DIRECTORY （AAD）記錄，以協助探索具有 Azure Key Vault 系統管理角色的過時帳戶。 此外，使用 AAD 存取審查來有效率地管理群組成員資格、存取可用來存取 Azure Key Vault 的企業應用程式，以及角色指派。 應定期檢查使用者存取，例如每隔90天，以確保只有適當的使用者可以繼續存取。
 
 
-Azure Active Directory 報表和監視檔： https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure Active Directory 報表和監視檔：
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-什麼是 Azure AD 的存取權評論？： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+什麼是 Azure AD 的存取權評論？：
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure 資訊安全中心監視**：是
 
@@ -460,7 +449,7 @@ Azure Active Directory 報表和監視檔： https://docs.microsoft.com/azure/ac
 
 整合 Azure AD 記錄與 Azure 監視器記錄檔： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-從舊的 Key Vault 解決方案進行遷移： https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution       
+從舊的 Key Vault 解決方案進行遷移： https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 **Azure 資訊安全中心監視**：是
 
@@ -468,17 +457,13 @@ Azure Active Directory 報表和監視檔： https://docs.microsoft.com/azure/ac
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
-**指導**方針：使用 Azure Active Directory 的身分識別保護和風險偵測功能，針對偵測到 Azure Key Vault 受保護資源相關的可疑動作設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行貴組織的安全性回應。
-
+**指導**方針：使用 Azure Active Directory 的身分識別保護和風險偵測功能，針對偵測到 Azure Key Vault 受保護資源相關的可疑動作設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行貴組織的安全性回應。 
 
 Azure Active Directory 入口網站中有風險的登入報告： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
 如何：設定和啟用風險原則： https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-
-如何上架 Azure Sentinel：
-
-https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何上架 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure 資訊安全中心監視**：是
 
@@ -501,10 +486,10 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護機密資訊的清查
 
-**指引**：使用標籤協助追蹤 Azure 資源，以儲存或處理已啟用 Azure Key Vault 資源的機密資訊。
-
+**指引**：使用標籤協助追蹤 Azure 資源，以儲存或處理已啟用 Azure Key Vault 資源的機密資訊。 
 
 使用標記來組織您的 Azure 資源： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -514,13 +499,12 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **指引**. 您可以使用設定為限制存取特定子網的虛擬網路服務端點，以保護 Azure Key Vault 的存取。
 
-
 防火牆規則生效之後，您只能在您的要求源自允許的子網或 IP 位址範圍時，執行 Azure Key Vault 資料平面作業。 這也適用于 Azure 入口網站中的 Azure Key Vault 存取。 雖然您可以從 Azure 入口網站流覽至金鑰保存庫，但如果您的用戶端電腦不在允許清單中，您可能無法列出金鑰、秘密或憑證。 這也會影響 Azure Key Vault 選擇器和其他 Azure 服務。 如果防火牆規則阻止您的用戶端電腦執行此動作，您可以看到金鑰保存庫清單，但不能列出金鑰。
-
 
 設定 Azure Key Vault 防火牆和虛擬網路： https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
 Azure Key Vault 的虛擬網路服務端點： https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -536,16 +520,17 @@ Azure Key Vault 的虛擬網路服務端點： https://docs.microsoft.com/azure/
 
 Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
+
 **Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
 
-**指導**方針：針對驗證、管理和資料平面存取 Azure Key Vault 的所有流量都會經過加密，並透過 HTTPS：埠443進行。 （不過，CRL 偶爾會有 HTTP [埠 80] 流量）。
-
+**指導**方針：針對驗證、管理和資料平面存取 Azure Key Vault 的所有流量都會經過加密，並透過 HTTPS：埠443進行。 （不過，CRL 偶爾會有 HTTP [埠 80] 流量）。 
 
 存取防火牆後方的 Azure Key Vault： https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -652,7 +637,7 @@ Azure 監視器中的 Azure Key Vault 分析解決方案： https://docs.microso
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure 資訊安全中心監視**：目前無法使用
+**Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
@@ -729,6 +714,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
@@ -768,6 +754,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 Azure 原則範例： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
@@ -782,7 +769,8 @@ Azure 原則範例： https://docs.microsoft.com/azure/governance/policy/samples
 
 ### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11：限制使用者透過腳本與 AzureResources Manager 互動的能力
 
-**指引**：使用 Azure 條件式存取來限制使用者與 Azure Resource Manager 的互動能力，方法是設定「Microsoft Azure 管理」應用程式的「封鎖存取」。 這可能會防止在高安全性環境（例如具有 Key Vault 設定的資源）中建立和變更資源。
+**指引**：使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與 AZURE RESOURCE MANAGER （ARM）互動的能力。 這可能會防止在高安全性環境（例如具有 Key Vault 設定的資源）中建立和變更資源。
+
 
 使用條件式存取來管理 Azure 管理的存取： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
@@ -814,17 +802,29 @@ Azure 原則範例： https://docs.microsoft.com/azure/governance/policy/samples
 
 **指引**：在 "KeyVault" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Key Vault 實例的設定。 您也可以使用內建的 Azure 原則定義來進行 Azure Key Vault，例如：
 
-- Key Vault 物件應該要可復原
-- 將 Key Vault 的診斷設定部署到 Log Analytics 工作區
-- 應啟用 Key Vault 中的診斷記錄
-- Key Vault 應該使用虛擬網路服務端點
-- 將 Key Vault 的診斷設定部署至事件中樞
+
+Key Vault 物件應該要可復原
+
+將 Key Vault 的診斷設定部署到 Log Analytics 工作區
+
+應啟用 Key Vault 中的診斷記錄
+
+Key Vault 應該使用虛擬網路服務端點
+
+將 Key Vault 的診斷設定部署至事件中樞
+
 
 使用來自 Azure 資訊安全中心的建議，做為您 Azure Key Vault 實例的安全設定基準。
 
-如何查看可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-教學課程：建立和管理原則以強制執行合規性： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何查看可用的 Azure 原則別名：
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+
+
+教學課程：建立和管理原則以強制執行合規性：
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 資訊安全中心監視**：是
 
@@ -867,7 +867,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果為已啟用 Azure Key Vault 的資源使用自訂 Azure 原則定義，請使用 Azure DevOps/存放庫安全地儲存和管理您的程式碼。
+**指導**方針：如果為已啟用 Azure Key Vault 的資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
 
 如何將程式碼儲存在 Azure DevOps： 
@@ -1050,6 +1050,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 如何啟用 Azure 備份： https://docs.microsoft.com/azure/backup
 
+
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
@@ -1103,6 +1104,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
 
 **指導**方針：確定已針對 Azure Key Vault 啟用虛刪除。 虛刪除可復原已刪除的金鑰保存庫和保存庫物件，例如金鑰、秘密和憑證。 
+
 
 如何使用 Azure Key Vault 的虛刪除： 
 
@@ -1199,7 +1201,7 @@ https://docs.microsoft.com/azure/security-center/continuous-export
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure 資訊安全中心監視**：不適用
+**Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
 
@@ -1213,7 +1215,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 資訊安全中心監視**：不適用
+**Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
 
@@ -1239,3 +1241,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **責任**：共用
 
+## <a name="next-steps"></a>後續步驟
+
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

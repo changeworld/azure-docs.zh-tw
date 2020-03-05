@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a269f93820a6029370490448f02038f5aa3eb3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464898"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273500"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 GeographyV2 預先建置實體
 預建 geographyV2 實體可偵測位置。 因為此實體已經定型，所以您不需要將包含 GeographyV2 的範例語句加入應用程式意圖。 英文[文化特性](luis-reference-prebuilt-entities.md)支援 GeographyV2 實體。
@@ -39,7 +39,7 @@ ms.locfileid: "73464898"
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-#### <a name="v3-responsetabv3"></a>[V3 回應](#tab/V3)
+#### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
 下列 JSON 會將 `verbose` 參數設定為 `false`：
 
@@ -72,7 +72,7 @@ ms.locfileid: "73464898"
 
 在前面的 JSON 中，`poi` 是**感興趣點**的縮寫。
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 詳細回應](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
 下列 JSON 會將 `verbose` 參數設定為 `true`：
 
@@ -161,7 +161,7 @@ ms.locfileid: "73464898"
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 回應](#tab/V2)
+#### <a name="v2-response"></a>[V2 回應](#tab/V2)
 
 下列範例示範如何解析 **builtin.geographyV2** 實體。
 
@@ -205,10 +205,10 @@ ms.locfileid: "73464898"
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[V3 預測端點](luis-migration-api-v3.md)。
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-了解 [email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) 及 [ordinal](luis-reference-prebuilt-ordinal.md) 實體相關資訊。 
+了解 [email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) 及 [ordinal](luis-reference-prebuilt-ordinal.md) 實體相關資訊。

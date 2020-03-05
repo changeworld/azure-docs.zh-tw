@@ -3,12 +3,12 @@ title: ASP.NET Core 應用程式的 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666253"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269204"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -30,14 +30,14 @@ ms.locfileid: "77666253"
 > [!NOTE]
 > 如果您搭配 Application Insights 使用 ASP.NET Core 3.0，請使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 這是支援 ASP.NET Core 3.0 的唯一版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此[ASP.NET Core 教學](https://docs.microsoft.com/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>啟用 Application Insights 伺服器端遙測（Visual Studio）
 
-1. 在 Visual Studio 中開啟專案。
+1. 在 Visual Studio 中，開啟您的專案。
 
     > [!TIP]
     > 如果您想要的話，可以設定專案的原始檔控制，以便追蹤 Application Insights 進行的所有變更。 若要啟用原始檔控制，**請選取 [** 檔案] > [**加入至原始檔控制**]。
@@ -103,7 +103,7 @@ ms.locfileid: "77666253"
 
     * `ApplicationInsights:InstrumentationKey`
 
-    例如，
+    例如：
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -158,6 +158,14 @@ ASP.NET Core 中的[效能計數器](https://azure.microsoft.com/documentation/a
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+或者，您也可以使用 `FullScript` 從 SDK v 2.14 開始提供 `ScriptBody`。 如果您需要控制 `<script>` 標籤以設定內容安全性原則，請使用此動作：
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 先前參考的 `.cshtml` 檔案名是來自預設的 MVC 應用程式範本。 最後，如果您想要正確啟用應用程式的用戶端監視，則 JavaScript 程式碼片段必須出現在您應用程式的每個頁面的 [`<head>`] 區段中。 您可以藉由將 JavaScript 程式碼片段新增至 `_Layout.cshtml`，來為此應用程式範本達成此目標。 
@@ -349,7 +357,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="does-application-insights-support-aspnet-core-30"></a>Application Insights 是否支援 ASP.NET Core 3.0？
 
-是的。 更新為 ASP.NET Core 2.8.0 或更高版本[的 APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 較舊版本的 SDK 不支援 ASP.NET Core 3.0。
+是。 更新為 ASP.NET Core 2.8.0 或更高版本[的 APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 較舊版本的 SDK 不支援 ASP.NET Core 3.0。
 
 此外，如果您在[這裡](#enable-application-insights-server-side-telemetry-visual-studio)使用 Visual Studio 的指示，請更新至最新版本的 Visual Studio 2019 （16.3.0）以上線。 舊版的 Visual Studio 不支援 ASP.NET Core 3.0 應用程式的自動上架。
 
@@ -402,7 +410,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-No。 [狀態監視器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[狀態監視器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前僅支援 ASP.NET 4.x。
+否。 [狀態監視器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[狀態監視器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前僅支援 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights 自動啟用我的 ASP.NET Core 2.0 應用程式嗎？
 
@@ -410,7 +418,7 @@ No。 [狀態監視器](https://docs.microsoft.com/azure/azure-monitor/app/monit
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行應用程式，是否支援所有功能？
 
-是的。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
+是。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
 
 * SDK 會收集 Linux 上的[事件計數器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因為只有 Windows 才支援[效能計數器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。 大部分的計量都相同。
 * 即使 `ServerTelemetryChannel` 預設為啟用，如果應用程式是在 Linux 或 MacOS 中執行，則通道不會自動建立本機儲存體資料夾，以在發生網路問題時暫時保存遙測。 由於這項限制，當發生暫時性網路或伺服器問題時，就會遺失遙測。 若要解決此問題，請設定通道的本機資料夾：
@@ -439,7 +447,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [讀取和貢獻程式碼](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 - 請參閱此外部逐步解說，以[使用 .Net Core 設定 Application Insights，並從頭 Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) 。
 - 請參閱此外部逐步解說，以[使用 .Net Core 設定 Application Insights，並從頭 Visual Studio Code](https://youtu.be/ygGt84GDync) 。

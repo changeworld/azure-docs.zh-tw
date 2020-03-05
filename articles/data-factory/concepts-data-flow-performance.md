@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587578"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273224"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 
@@ -59,6 +59,9 @@ ms.locfileid: "77587578"
 
 ![來源部分](media/data-flow/sourcepart3.png "來源部分")
 
+> [!NOTE]
+> 協助您選擇來源的資料分割數目的最佳指南，取決於您為 Azure Integration Runtime 所設定的核心數目，並將該數位乘以5。 因此，比方說，如果您要轉換 ADLS 資料夾中的一系列檔案，而您要使用32核心 Azure IR，則目標的資料分割數目為 32 x 5 = 160 個數據分割。
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>來源批次大小、輸入和隔離等級
 
 在來源轉換的 [**來源選項**] 底下，下列設定可能會影響效能：
@@ -100,7 +103,7 @@ ms.locfileid: "77587578"
 
 在每次轉換時，您都可以在 [優化] 索引標籤中設定要讓 data factory 使用的資料分割配置。最好先測試以檔案為基礎的接收，保留預設的分割和優化。
 
-* 對於較小的檔案，您可能會發現選取*單一分割*區的工作，有時可以比要求 Spark 分割小型檔案更好且快速。
+* 對於較小的檔案，您可能會發現選擇較少的磁碟分割，有時可以比要求 Spark 分割小型檔案更好且快速。
 * 如果您沒有來源資料的足夠資訊，請選擇 [*迴圈*配置資源分割]，並設定資料分割數目。
 * 如果您的資料行有可能是良好的雜湊索引鍵，請選擇 [*雜湊分割*]。
 

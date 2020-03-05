@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 02/28/2020
-ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160806"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273947"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>在 Azure Data Factory 中，將自我裝載 IR 設定為 Azure SSIS IR 的 proxy
 
@@ -167,6 +167,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 - 目前僅支援具有開放式資料庫連接（ODBC）、OLEDB 或一般檔案連接管理員、ODBC、OLEDB 或一般檔案來源的資料流程工作。 
 - 目前僅支援以*帳戶金鑰*、*共用存取簽章（SAS） URI*或*服務主體*驗證設定的 Azure Blob 儲存體連結服務。
+- 尚不支援 OLEDB 來源中的*ParameterMapping* 。 因應措施是*從變數使用 Sql 命令*做為*AccessMode* ，並使用*運算式*在 SQL 命令中插入變數/參數。 為了說明這一點，您可以在[Azure 儲存體總管](https://storageexplorer.com/)： *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* 上輸入下列 SAS URI，以尋找公用預覽容器的*SelfhostedIrProxy/限制*資料夾中的範例套件 *（ParameterMappingSample. .dtsx）* 。
 
 ## <a name="next-steps"></a>後續步驟
 

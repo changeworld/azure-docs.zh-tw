@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901484"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273706"
 ---
 # <a name="manage-database-roles-and-users"></a>管理資料庫角色和使用者
 
@@ -25,7 +25,7 @@ ms.locfileid: "76901484"
 *  **處理** - 使用者可以連線到資料庫並對其執行處理作業，以及分析模型資料庫的資料。
 *  **讀取** - 使用者可以使用用戶端應用程式來連接和分析模型資料庫的資料。
 
-建立表格式模型專案時，您可以使用 Visual Studio 中的角色管理員與 Analysis Services 專案，建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，您可以使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell Cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格式模型指令碼語言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）來新增或移除角色和使用者成員。
+建立表格式模型專案時，您可以使用 Visual Studio 中的角色管理員與 Analysis Services 專案，建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，您可以使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell Cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格式模型指令碼語言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）來新增或移除角色和使用者成員。
 
 **安全性群組**必須[啟用郵件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)，並將 `MailEnabled` 屬性設為 `True`。 以電子郵件地址指定群組時，請使用 `obj:groupid@tenantid`。
 
@@ -42,7 +42,7 @@ ms.locfileid: "76901484"
   
 4.  選取下列其中一個權限：  
   
-    |權限|說明|  
+    |權限|描述|  
     |----------------|-----------------|  
     |**None**|成員無法讀取或修改模型架構，也無法查詢資料。|  
     |**讀取**|成員可以查詢資料 (根據資料列篩選條件)，但無法修改模型結構描述。|  
@@ -71,7 +71,7 @@ ms.locfileid: "76901484"
 
 3. 選取權限。
 
-   |權限|說明|  
+   |權限|描述|  
    |----------------|-----------------|  
    |**完整控制權 (管理員)**|成員可以修改模型結構描述、程序，以及查詢所有資料。| 
    |**處理資料庫**|成員可以執行「處理」和「全部處理」作業。 無法修改模型結構描述，也無法查詢資料。|  
@@ -85,7 +85,7 @@ ms.locfileid: "76901484"
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 指令碼新增角色和使用者
 
-您可以在 SSMS 中 或使用 PowerShell，在 XMLA 視窗中執行 TMSL 指令碼。 使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) 物件。
+您可以在 SSMS 中 或使用 PowerShell，在 XMLA 視窗中執行 TMSL 指令碼。 使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) 物件。
 
 **TMSL 指令碼範例**
 
@@ -121,7 +121,7 @@ ms.locfileid: "76901484"
 
 [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 模組提供特定工作的資料庫管理 Cmdlet，以及可接受表格式模型指令碼語言 (TMSL) 查詢或指令碼的一般用途 Invoke-ASCmd Cmdlet。 下列 Cmdlet 用來管理資料庫角色和使用者。
   
-|Cmdlet|說明|
+|Cmdlet|描述|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|將成員新增到資料庫角色。| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|從資料庫角色移除成員。|   
@@ -137,9 +137,9 @@ ms.locfileid: "76901484"
   
 資料列篩選條件會套用至指定的資料列和相關資料列。 當資料表具有多個關聯性時，篩選會對作用中關聯性套用安全性。 資料列篩選條件會與針對相關資料表定義的其他資料列篩選條件產生交集，例如：  
   
-|表格|DAX 運算式|  
+|Table|DAX 運算式|  
 |-----------|--------------------|  
-|地區|=Region[Country]="USA"|  
+|區域|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |交易|=Transactions[Year]=2016|  
   
@@ -151,5 +151,5 @@ ms.locfileid: "76901484"
 
   [管理伺服器管理員](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
-  [表格式模型指令碼語言 (TMSL) 參考](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [表格式模型指令碼語言 (TMSL) 參考](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 

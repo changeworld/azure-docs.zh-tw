@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255988"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272976"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自動化中的圖形化編寫
 
@@ -41,7 +41,7 @@ Canvas 控制項可讓您設計 runbook。 您可以從程式庫控制項中的�
 
 | 區段 | 描述 |
 |:--- |:--- |
-| Cmdlet |可在 runbook 中使用的所有 Cmdlet。 Cmdlet 是依模組組織。 您已在自動化帳戶中安裝的所有模組都可供使用。 |
+| 指令程式 |可在 runbook 中使用的所有 Cmdlet。 Cmdlet 是依模組組織。 您已在自動化帳戶中安裝的所有模組都可供使用。 |
 | Runbook |您的自動化帳戶中的 runbook。 您可以將這些 runbook 新增至畫布，以作為子 runbook 使用。 只會顯示與所編輯的 runbook 屬於相同核心類型的 runbook。 針對圖形化 runbook，只會顯示以 PowerShell 為基礎的 runbook。 針對圖形化 PowerShell 工作流程 runbook，只會顯示以 PowerShell 工作流程為基礎的 runbook。 |
 | Assets |您的自動化帳戶中可用於 runbook 的[自動化資產](/previous-versions/azure/dn939988(v=azure.100))。 將資產新增至 runbook 會新增可取得所選資產的工作流程活動。 如果是變數資產，您可以選取是否要加入活動以取得變數或設定變數。 |
 | Runbook 控制項 |控制可在目前 runbook 中使用的活動。 連接點活動會接受多個輸入，並等待全部完成，然後再繼續工作流程。 程式碼活動會執行一或多行 PowerShell 或 PowerShell 工作流程程式碼，視圖形化 runbook 類型而定。 您可以對很難利用其他活動來達成的自訂程式碼或功能使用此活動。 |
@@ -243,7 +243,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 您可以在圖形化 PowerShell 工作流程 runbook 中設定[檢查](automation-powershell-workflow.md#checkpoints)點，方法是在任何活動上選取 [**檢查點 runbook** ]。 這會導致在執行活動之後設定檢查點。
 
-![檢查點](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 只有圖形化 PowerShell 工作流程 runbook 才會啟用檢查點，而圖形化 runbook 無法使用。 如果 runbook 使用 Azure Cmdlet，則應該遵循具有**disconnect-azaccount**活動的任何檢查點活動。 當 runbook 暫停，而且必須在不同的背景工作上從這個檢查點重新開機時，就會使用 connect 作業。
 
@@ -380,7 +380,7 @@ $h
 
 ## <a name="authenticating-to-azure-resources"></a>向 Azure 資源驗證
 
-管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](automation-create-runas-account.md)（也稱為服務主體）是自動化 runbook 用來存取訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以藉由將使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**連線資產新增至畫布，將此功能新增至圖形化 runbook。 您也可以新增[disconnect-azaccount](/powershell/module/az.profile/connect-azaccount) Cmdlet。 下列範例說明此案例。
+管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](automation-create-runas-account.md)（也稱為服務主體）是自動化 runbook 用來存取訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以藉由將使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**連線資產新增至畫布，將此功能新增至圖形化 runbook。 您也可以新增[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。 下列範例說明此案例。
 
 ![執行身分驗證活動](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

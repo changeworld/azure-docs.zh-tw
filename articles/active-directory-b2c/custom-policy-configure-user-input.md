@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 737f373fb71494492f633d3297463cbef797f3d6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2d279a2a368e606e036b24172eb94b667b3255db
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189543"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267958"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189543"
 
 在本文中，您會在 Azure Active Directory B2C （Azure AD B2C）中，將新使用者提供的專案（宣告）新增至您的註冊使用者旅程圖。  您可以將專案設定為下拉式清單，並定義它是否為必要專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成[開始使用自訂原則](custom-policy-get-started.md)一文中的步驟。 測試註冊或登入使用者旅程圖以註冊新的本機帳戶，再繼續進行。
 
@@ -264,7 +264,7 @@ ms.locfileid: "78189543"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄，以確定您使用的是包含 Azure AD 租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
-4. 選取 [識別體驗架構 (預覽)]。
+4. 選取 [識別體驗架構]。
 5. 選取 [上傳自訂原則]，然後上傳您所變更的兩個原則檔案。
 2. 選取您上傳的註冊或登入原則，按一下 [立即執行] 按鈕。
 3. 您應該可以使用電子郵件地址註冊。

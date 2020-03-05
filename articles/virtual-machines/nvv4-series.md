@@ -7,18 +7,17 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161851"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273851"
 ---
-# <a name="nvv4-series-preview"></a>NVv4 系列（預覽）
+# <a name="nvv4-series"></a>NVv4 系列 
 
 NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 Amd EPYC 7V12 （羅馬） cpu 提供技術支援。 在 NVv4 系列中，Azure 引進了具有部分 Gpu 的虛擬機器。 針對 GPU 加速圖形應用程式和虛擬桌面，從具有2個 GiB 畫面格緩衝區的 GPU 1/第8部，挑選正確大小的虛擬機器，並使用16個 GiB 框架緩衝區的完整 GPU。 NVv4 虛擬機器目前僅支援 Windows 客體作業系統。
 
-[於預覽期間註冊並存取這些機器](https://aka.ms/nvv4signup)。
 <br>
 
 進階儲存體：支援
@@ -42,11 +41,7 @@ NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/pro
 
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
-若要利用執行 Windows 的 Azure N 系列 Vm 的 GPU 功能，必須安裝 NVIDIA 或 AMD GPU 驅動程式。
-
-[NVIDIA GPU 驅動程式擴充](./extensions/hpccompute-gpu-windows.md)功能會在 Windows N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](./extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](/.extensions/overview.md)。
-
-如果您選擇手動安裝 NVIDIA GPU 驅動程式，請參閱適用于[Windows 的 N 系列 GPU 驅動程式設定](./windows/n-series-driver-setup.md)，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
+若要利用執行 Windows 之 Azure NVv4 系列 Vm 的 GPU 功能，必須安裝 AMD GPU 驅動程式。
 
 若要手動安裝 AMD GPU 驅動程式，請參閱適用于[Windows 的 N 系列 AMD GPU 驅動程式設定](./windows/n-series-amd-driver-setup.md)，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
 

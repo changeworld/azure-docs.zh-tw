@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 26bcd855dbe2ea85df9fb6aca74f8b52e8ce8e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152392"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268899"
 ---
 # <a name="create-python-model"></a>建立 Python 模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "77152392"
 
 本文將說明如何搭配簡單的管線使用**建立 Python 模型**。 以下是管線的圖表。
 
-![建立-python-模型](./media/module/aml-create-python-model.png)
+![建立-python-模型](./media/module/create-python-model.png)
 
 1.  按一下 [**建立 Python 模型**]，編輯腳本來執行您的模型化或資料管理處理常式。 您可以根據 Azure Machine Learning 環境中 Python 套件所包含的任何學習模組來建立模型的基礎。
 

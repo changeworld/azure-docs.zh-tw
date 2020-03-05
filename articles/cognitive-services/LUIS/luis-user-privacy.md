@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 061f019fe36e4d5495a41fc81e56d9673ad595fc
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953464"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273353"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在認知服務的 Language Understanding (LUIS) 中匯出和刪除客戶資料
 
-刪除客戶資料以確保隱私權和合規性。 
+刪除客戶資料以確保隱私權和合規性。
 
 ## <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
 Language Understanding Intelligent Service (LUIS) 可保存客戶內容以執行此服務，但 LUIS 使用者具有檢視、匯出和刪除其資料的完整控制權。 這可以透過 LUIS web[入口](luis-reference-regions.md)網站或[LUIS Authoring （也稱為程式設計） api](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)來完成。
@@ -58,7 +58,7 @@ LUIS 使用者有完整的控制權可在入口網站上查看資料，但必須
 * [澳大利亞](#australia)
 * [美國](#united-states)
 
-除了使用中的學習資料（如下所述）之外，LUIS 會遵循[區域服務的資料儲存做法](https://azuredatacentermap.azurewebsites.net/)。 
+除了使用中的學習資料（如下所述）之外，LUIS 會遵循[區域服務的資料儲存做法](https://azuredatacentermap.azurewebsites.net/)。
 
 ### <a name="europe"></a>歐洲
 
@@ -66,9 +66,9 @@ LUIS 使用者有完整的控制權可在入口網站上查看資料，但必須
 
 * 歐洲
 * 法國
-* 英國
+* United Kingdom
 
-部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的歐洲地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。 
+部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的歐洲地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 ### <a name="australia"></a>澳大利亞
 
@@ -76,7 +76,7 @@ LUIS 使用者有完整的控制權可在入口網站上查看資料，但必須
 
 * 澳大利亞
 
-部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的澳大利亞地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。 
+部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的澳大利亞地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 ### <a name="united-states"></a>美國
 
@@ -84,7 +84,7 @@ LUIS 使用者有完整的控制權可在入口網站上查看資料，但必須
 
 * 歐洲或澳大利亞撰寫區域不支援的 Azure 地理位置
 
-部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的美國地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。 
+部署到這些 Azure 地理位置時，來自應用程式使用者的端點所收到的語句將會儲存在 Azure 的美國地區，以供主動式學習之用。 您可以停用主動式學習，請參閱[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱[Delete 語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 
 ## <a name="next-steps"></a>後續步驟

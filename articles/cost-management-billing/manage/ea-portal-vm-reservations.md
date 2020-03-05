@@ -3,16 +3,16 @@ title: Azure EA VM 保留執行個體
 description: 本文將摘要說明 VM 保留執行個體的 Azure 保留如何協助您使用企業註冊來節省成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ac5c4ec91bf6c9df58fd4b40286f0be7efefa6ea
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560572"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272163"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
 

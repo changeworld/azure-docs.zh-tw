@@ -2,18 +2,19 @@
 title: Azure Marketplace 和 AppSource 諮詢服務
 description: 本文說明 Azure Marketplace 中最新諮詢服務供應項目的適用性準則和發佈需求。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191136"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268242"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace 和 AppSource 的諮詢服務
 Azure Marketplace 和 AppSource 中的諮詢服務會為 Microsoft 合作夥伴提供一個目標，希望以服務連結客戶，支援並擴大客戶對 Azure 的使用和商務目標。 
@@ -33,7 +34,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 |產品經驗      |Azure 管理入口網站|Dynamics 365、Office 365、Office 用戶端應用程式| 
 |其他      |透過 Azure Stack 的內部部署發行、適用于 Azure 的諮詢服務、適用于 azure 的受控服務|Dynamics 和 Power BI 的諮詢服務|
 
-以 Microsoft Dynamics 365 和 Power BI 為基礎的諮詢服務供應專案有資格在 Microsoft AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單指導方針](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
+以 Microsoft Dynamics 365、Power Apps 和 Power BI 為基礎的諮詢服務供應專案，都有資格在 Microsoft AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)。
 
 以 Microsoft Azure 為基礎的諮詢服務和受控服務供應專案，都有資格在 Azure Marketplace 上列出。 如需詳細資訊，請參閱[發佈 Azure 諮詢服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)和[發行受管理的服務供應](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)專案的相關文章以 Azure Marketplace。
 
@@ -61,24 +62,30 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 
 |主要產品 |資格需求 |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   具備銀級或金級[雲端客戶關係管理](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)專長認證。    | 
-|Dynamics 365 for Finance and Operations，Enterprise edition  |  具備銀級或金級[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證，且過去 12 個月的雲端作業收益達 $25,000 以上。       |
-|Dynamics 365 for Finance and Operations，Business edition  |  以[雲端服務提供者 (CSP)](https://partner.microsoft.com/cloud-solution-provider) 或[數位記錄合作夥伴 (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) 的身分為至少一位客戶提供服務      |
-|Power BI，Power BI 自訂視覺效果 | 符合[解決方案合作夥伴準則](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)。|
-|PowerApps | 具有[合作夥伴展示工具](https://appsource.microsoft.com/partners)解決方案
+| Dynamics 365 銷售 <br> Dynamics 365 行銷 <br> Dynamics 365 客戶服務 <br> Dynamics 365 Field 服務 <br> Dynamics 365 人力資源 |   在[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中，必須是客戶參與選項的金級或銀級。    | 
+| Dynamics 365 財務 <br> Dynamics 365 供應鏈管理 <br> Dynamics 365 Commerce <br> Dynamics 365 人力資源 <br> Dynamics 365 專案服務自動化 |  在整合作業選項的[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中必須是金級或銀級。       |
+| Dynamics 365 Customer Insights | 至少必須具有5個量值和5個區段，才能成功地在生產環境中執行[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) 。 |
+| Dynamics 365 Business Central | 必須是[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證的黃金或銀級，而且必須是至少3個業務中心客戶的雲端解決方案提供者。 <br> <br> OR <br> <br> 必須已[在 AppSource 中發佈 Business Central 應用程式](https://appsource.microsoft.com/) |
+| Power BI | 必須列在[Power BI 合作夥伴展示](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)上。|
+|Power Apps | 必須符合[PowerApps 合作計畫](https://aka.ms/PowerAppsPartner)中的先進權益資格。 |
+
+其他資源和支援：
+
+1. [Microsoft Cloud 支援人員](https://aka.ms/CEDnominate) <br> 雲端啟用桌面引導式體驗合作夥伴提名形式可協助提供雲端程式專家，以表達 MPN 的優勢，並作為專長認證達成的指導。  
+2. 如何 Power BI 展示中列出？ <br> 一開始先提交要列出的要求，請參閱[成為合作夥伴](https://powerbi.microsoft.com/become-a-partner/)。
 
 <b> 如需詳細資訊，請參閱[透過 Microsoft 合作夥伴網路了解專長認證](https://partner.microsoft.com/membership/competencies)。</b>
- 
 
-**SI 合作夥伴可以提交適用于下列18個國家/地區的諮詢服務供應專案**
+**SI 合作夥伴可以提交適用于下列21個國家/地區的諮詢服務供應專案**
 
-|合格國家/地區 |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|澳洲 |France  |     墨西哥          |西班牙       |
-|比利時   |Germany |     荷蘭     |瑞典       |
-|加拿大    |印度   |     紐西蘭     |英國  |
-|丹麥   |義大利   |     挪威          |美國 |
-|芬蘭   |Japan   |     波蘭          
+| 澳大利亞 | 比利時 | Canada | 丹麥 |
+| 芬蘭  | 法國 | 德國  | 印度   |
+| 義大利    | 日本  |  墨西哥  |  荷蘭  |
+|  紐西蘭  |  挪威  |  波蘭  | 南非 |
+|  西班牙  | 瑞典  | 瑞士  |  美國  |
+| United Kingdom  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何使用 Azure Marketplace 和 AppSource 註冊諮詢服務
@@ -151,7 +158,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 
 檢閱供應項目描述和供應項目摘要時，小組會套用下列準則：
 
-|供應項目類型  |必要項 |建議  |
+|供應項目類型  |必要 |建議  |
 |---------|---------|---------|
 |**評量**    |   包含多天或多週評量的詳細議程，並且清楚表達客戶可以預期有什麼交付成果      |    使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要     |
 |**簡報**    |   清楚表達客戶可以預期有什麼交付成果。 請記住，簡報必須親赴現場提供。 如果您提供虛擬服務，請選擇不同的供應項目類型    |  使用您的熱門搜尋引擎最佳化關鍵字來最佳化供應項目摘要       |

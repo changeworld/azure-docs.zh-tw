@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368842"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273112"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "77368842"
 - 將訊息傳送給特定工作階段主機上的作用中使用者。
 - 將使用者登出工作階段主機。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 Azure Active Directory 應用程式註冊和 Log Analytics 工作區，才能部署工具的 Azure Resource Manager 範本。 您或系統管理員需要這些許可權才能執行此動作：
 
@@ -128,10 +128,9 @@ ms.locfileid: "77368842"
 若要確認您的應用程式註冊具有 API 許可權：
 
 1. 開啟瀏覽器，並使用您的系統管理帳戶連接到[Azure 入口網站](https://portal.azure.com/)。
-2. 移至**應用程式註冊**並尋找您的 Azure AD App 註冊。
-
-      ![[API 許可權] 頁面。](media/api-permissions-page.png)
-
+2. 移至**Azure Active Directory**。
+3. 移至**應用程式註冊**並選取 [**所有應用程式**]。
+4. 使用您在[建立 Azure Active Directory 應用程式註冊](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)的步驟5中輸入的相同應用程式名稱，尋找您的 Azure AD 應用程式註冊。
 
 ### <a name="review-your-log-analytics-workspace"></a>檢查您的 Log Analytics 工作區
 

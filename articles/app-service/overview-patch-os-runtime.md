@@ -4,12 +4,12 @@ description: 瞭解 Azure App Service 如何更新 OS 和執行時間、應用�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846252"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273629"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service 中的 OS 和執行階段修補
 
@@ -51,11 +51,11 @@ Azure 會在兩個層級管理 OS 修補，分別是實體伺服器和執行 App
 
 ### <a name="new-patch-updates"></a>新的修補程式更新
 
-.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 新的 Python 修補程式版本可手動透過[網站延伸模組](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)與內建的 Python 安裝並存安裝。
+.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 新的 Python 修補程式版本可以透過與內建 Python 安裝並存的[網站延伸](https://azure.microsoft.com/blog/azure-web-sites-extensions/)模組來手動安裝。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要和次要版本
 
-有新增的主要或次要版本時，便會與現有版本並存安裝。 您可以手動將應用程式升級至新的版本。 如果您是在設定檔中 (例如 `web.config` 和 `package.json`) 設定執行階段版本，則必須以相同方法升級。 如果您使用 App Service 設定來設定執行階段版本，則可以在 [Azure 入口網站](https://portal.azure.com)中或藉由在 [Cloud Shell](../cloud-shell/overview.md) 中執行 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令來加以變更，如下列範例所示：
+有新增的主要或次要版本時，便會與現有版本並存安裝。 您可以手動將應用程式升級至新的版本。 如果您是在設定檔中 (例如 `web.config` 和 `package.json`) 設定執行階段版本，則必須以相同方法升級。 如果您使用 App Service 設定來設定執行階段版本，則可以在 [Azure 入口網站](https://portal.azure.com)中或藉由在 [Cloud Shell](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 中執行 [Azure CLI](../cloud-shell/overview.md) 命令來加以變更，如下列範例所示：
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -90,7 +90,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 >
 >
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 [信任中心：安全性](https://www.microsoft.com/en-us/trustcenter/security)  
 [Azure App Service 上的 64 位元 ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

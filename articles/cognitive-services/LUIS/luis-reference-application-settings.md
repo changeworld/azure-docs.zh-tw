@@ -8,33 +8,33 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961782"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270812"
 ---
 # <a name="application-settings"></a>應用程式設定
 
 這些應用程式設定會儲存在[匯出](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)的應用程式中，並使用 REST api 來[更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)。 變更您的應用程式版本設定會將您的應用程式訓練狀態重設為未訓練。
 
-|設定|預設值|注意事項|
+|設定|預設值|注意|
 |--|--|--|
-|NormalizePunctuation|true|移除標點符號。|
-|NormalizeDiacritics|true|移除變音符號。|
+|NormalizePunctuation|True|移除標點符號。|
+|NormalizeDiacritics|True|移除變音符號。|
 
-## <a name="diacritics-normalization"></a>變音符號正規化 
+## <a name="diacritics-normalization"></a>變音符號正規化
 
 在 `settings` 參數中，為您的 LUIS JSON 應用程式檔開啟變音符號的語句正規化。
 
 ```JSON
 "settings": [
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
 下列語句顯示如何正規化的變音符號正規化會影響語句：
@@ -46,7 +46,7 @@ ms.locfileid: "73961782"
 
 ### <a name="language-support-for-diacritics"></a>變音符號的語言支援
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>葡萄牙文(巴西) `pt-br` 變音符號
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>巴西葡萄牙文 `pt-br` 變音符號
 
 |變音符號設定為 false|變音符號設定為 true|
 |-|-|
@@ -61,7 +61,7 @@ ms.locfileid: "73961782"
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>荷蘭文 `nl-nl` 變音符號
@@ -77,7 +77,7 @@ ms.locfileid: "73961782"
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +91,24 @@ ms.locfileid: "73961782"
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>德文 `de-de` 變音符號
 
 |變音符號設定為 false|變音符號設定為 true|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>義大利文 `it-it` 變音符號
 
@@ -117,11 +117,11 @@ ms.locfileid: "73961782"
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,8 +133,8 @@ ms.locfileid: "73961782"
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
@@ -147,7 +147,7 @@ ms.locfileid: "73961782"
 ```JSON
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"}
-] 
+]
 ```
 
 下列語句顯示標點符號如何影響語句：
@@ -163,8 +163,8 @@ ms.locfileid: "73961782"
 
 |標點符號|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|

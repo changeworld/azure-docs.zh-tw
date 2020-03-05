@@ -3,12 +3,12 @@ title: 如何使用您的管理群組-Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751241"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267930"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -17,6 +17,12 @@ ms.locfileid: "75751241"
 無論具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。  若要深入了解管理群組，請參閱[使用 Azure 管理群組來組織資源](overview.md)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager 的使用者權杖和管理群組快取會持續30分鐘，才能強制重新整理。  執行任何動作（例如移動管理群組或訂用帳戶）之後，最多可能需要30分鐘的時間才會顯示。  
+>若要更快查看更新，您必須重新整理瀏覽器、登入和登出，或要求新的權杖，以更新您的權杖。  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>變更管理群組的名稱
 
@@ -125,7 +131,7 @@ az account management-group delete --name 'Contoso'
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中檢視
 
-您可以使用 AzManagementGroup 命令來取出所有群組。  如需管理群組取得 Powershell 命令的完整清單，請參閱[Az .resources](/powershell/module/az.resources/Get-AzManagementGroup)模組。  
+您可以使用 AzManagementGroup 命令來取出所有群組。  如需管理群組取得 PowerShell 命令的完整清單，請參閱[Az .resources](/powershell/module/az.resources/Get-AzManagementGroup)模組。  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -200,16 +206,16 @@ az account management-group show --name 'Contoso' -e -r
 
 如果您要執行移動動作，您需要： 
 
--  子訂用帳戶或管理群組的管理群組寫入和角色指派寫入權限。
-    - 內建角色範例**擁有**者
+-  子訂用帳戶或管理群組上的管理群組寫入和角色指派寫入權限。
+    - 內建角色範例**擁有者**
 - 目標父管理群組上的管理群組寫入權限。
     - 內建角色範例：**擁有**者、**參與者**、**管理群組參與者**
 - 現有父管理群組上的管理群組寫入權限。
     - 內建角色範例：**擁有**者、**參與者**、**管理群組參與者**
 
-**例外**狀況：如果目標或現有的父管理群組是根管理群組，則不適用許可權需求。 因為根管理群組是所有新管理群組和訂用帳戶的預設登陸點，所以您不需要它的許可權來移動專案。
+**例外**狀況：如果目標或現有的父管理群組是根管理群組，則不適用許可權需求。 因為根管理群組是所有新管理群組和訂用帳戶的預設登陸點，所以您不需要其權限即可移動項目。
 
-如果訂用帳戶上的「擁有者」角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以無法將它移至您是參與者的管理群組。 如果您直接指派給訂用帳戶的「擁有者」角色（而不是繼承自管理群組），您可以將它移至您是參與者的任何管理群組。 
+如果訂用帳戶上的擁有者角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以無法將其移至您是參與者的管理群組。 如果您直接指派給訂用帳戶的「擁有者」角色（而不是繼承自管理群組），您可以將它移至您是參與者的任何管理群組。 
 
 若要查看 Azure 入口網站中的許可權，請選取管理群組，然後選取 [ **IAM**]。 若要深入了解 RBAC 角色，請參閱[使用 RBAC 管理存取權與權限](../../role-based-access-control/overview.md)。
 

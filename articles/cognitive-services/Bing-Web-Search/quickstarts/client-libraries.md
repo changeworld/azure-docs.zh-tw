@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9fc2b5764cba2a95d80e76ef71ff5cc361de1d44
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 5848ada9e170313fbfdaa6e8f49cd89d44215467
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651979"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270911"
 ---
 # <a name="quickstart-use-a-bing-web-search-client-library"></a>快速入門：使用 Bing Web 搜尋用戶端程式庫
 
@@ -34,7 +34,7 @@ ms.locfileid: "77651979"
 
 ::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [Node.js quickstart](../includes/quickstarts/web-search-client-library-javascript.md)]
+[!INCLUDE [JavaScript quickstart](../includes/quickstarts/web-search-client-library-javascript.md)]
 
 ::: zone-end
 

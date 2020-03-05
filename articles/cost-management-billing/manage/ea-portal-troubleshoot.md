@@ -3,16 +3,16 @@ title: 針對 Azure EA 入口網站存取進行疑難排解
 description: 本文將說明 Azure EA 入口網站中可能發生的一些 Azure Enterprise 合約 (EA) 常見問題。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 486244e5d2ae3942005be3b5e2891f6316e945d6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3e488cab2705458cfce8517fcbe7c72ce8843596
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200756"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272274"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>針對 Azure EA 入口網站存取進行疑難排解
 

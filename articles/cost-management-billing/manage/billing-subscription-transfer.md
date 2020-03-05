@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188397"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245394"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -45,7 +45,7 @@ ms.locfileid: "77188397"
 
     > [!IMPORTANT]
     >
-    > 如果您選擇將訂用帳戶移至新帳戶的 Azure AD 租用戶，則會永久移除訂用帳戶中用以管理資源的所有[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 指派。 只有新帳戶中接受轉移要求的使用者，才有權利管理訂用帳戶中的資源。 如需詳細資訊，請參閱[將訂用帳戶轉移給另一個 Azure AD 租用戶中的使用者](../../cognitive-services/acoustics/known-issues.md)。 或者，您可以取消核取 Azure AD 租用戶要轉移帳單擁有權的 [訂用帳戶] 方塊，而不需將訂用帳戶移至新帳戶的租用戶。 如果您這麼做，將會維護用以管理 Azure 資源的現有 RBAC 權限。
+    > 如果您選擇將訂用帳戶移至新帳戶的 Azure AD 租用戶，則會永久移除訂用帳戶中用以管理資源的所有[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 指派。 只有新帳戶中接受轉移要求的使用者，才有權利管理訂用帳戶中的資源。 如需詳細資訊，請參閱[將訂用帳戶轉移給另一個 Azure AD 租用戶中的使用者](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。 或者，您可以取消核取 Azure AD 租用戶要轉移帳單擁有權的 [訂用帳戶] 方塊，而不需將訂用帳戶移至新帳戶的租用戶。 如果您這麼做，將會維護用以管理 Azure 資源的現有 RBAC 權限。
 
     ![傳送轉移頁面](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
