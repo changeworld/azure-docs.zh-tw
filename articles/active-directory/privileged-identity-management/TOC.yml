@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: 設定警示
           href: pim-resource-roles-configure-alerts.md
-        - name: 檢視活動和稽核記錄
+        - name: 檢視稽核記錄
           href: azure-pim-resource-rbac.md
         - name: 使用自訂角色
           href: pim-resource-roles-custom-role-policy.md

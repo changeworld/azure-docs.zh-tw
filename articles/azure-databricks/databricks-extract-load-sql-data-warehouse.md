@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024070"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301687"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教學課程：使用 Azure Databrick 擷取、轉換和載入資料
 
@@ -59,7 +59,7 @@ ms.locfileid: "77024070"
 
    在執行該文章中的步驟時，您必須執行幾個特定動作。
 
-   * 在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給 Data Lake Storage Gen2 帳戶範圍中的服務主體。 如果您將角色指派給父資源群組或訂用帳戶，在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
+   * 在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給 Data Lake Storage Gen2 帳戶範圍中的服務主體。 如果您將角色指派給父資源群組或訂用帳戶，在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
 
       如果您想要使用存取控制清單 (ACL) 將服務主體與特定檔案或目錄產生關聯，請參考 [Azure Data Lake Storage Gen2 中的存取控制](../storage/blobs/data-lake-storage-access-control.md)。
 
@@ -227,7 +227,7 @@ ms.locfileid: "77024070"
     ```
    您會看到如下列程式碼片段的輸出：
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ ms.locfileid: "77024070"
 
    您會取得如下列程式碼片段所示的輸出：
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ ms.locfileid: "77024070"
 
    您會取得如下列程式碼片段所示的輸出。
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+

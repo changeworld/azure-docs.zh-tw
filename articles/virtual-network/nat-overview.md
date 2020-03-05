@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589431"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669534"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什麼是虛擬網路 NAT (公開預覽版)？
 
@@ -39,7 +39,7 @@ ms.locfileid: "77589431"
 
 
 >[!NOTE] 
->虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)。
+>虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>僅限輸出的靜態 IP 位址
 
@@ -200,5 +200,5 @@ NAT 是透過標準支援管道來支援。
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。
-- [告訴我們接下來要在 UserVoice 中建置的項目](https://aka/natuservoice)。
+- [告訴我們接下來要在 UserVoice 中建置的項目](https://aka.ms/natuservoice)。
 - [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。

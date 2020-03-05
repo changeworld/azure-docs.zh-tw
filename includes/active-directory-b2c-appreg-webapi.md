@@ -1,22 +1,22 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: a286f8d401ec98a5069c07b1a82acdf4af2b8185
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: mimart
+ms.openlocfilehash: 9367719b1a1050ce8abf36804b3d0d0d58c7484b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641862"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183362"
 ---
 Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到用戶端應用程式保護而提供存取權杖的資源要求。
 
 若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[應用程式](#tab/applications/)
+#### <a name="applications"></a>[應用程式](#tab/applications/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
@@ -30,7 +30,7 @@ Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到
 1. 選取 [建立]  。
 1. 記錄 [應用程式識別碼]  ，以便在稍後的步驟中使用。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。

@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030039"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246846"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -52,7 +52,7 @@ Azure CLI 提供給您許多可從本機終端機使用的便利命令，以便�
 
 若要在 Azure CLI 中執行 Azure 命令，您必須先使用 `az login` 命令進行登入。 此命令會開啟瀏覽器來收集您的認證。
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ az login
 在包含範例程式碼的 *python-docs-hello-world* 資料夾中，執行下列 `az webapp up` 命令。 將 `<app-name>` 取代為全域唯一的應用程式名稱 (有效字元為 `a-z`、`0-9` 和 `-`  )。 同時將 `<location-name>` 取代為 Azure 區域，例如 **centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** 等等。 (您可藉由執行 [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令，擷取 Azure 帳戶的允許區域清單。)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ Python 範例程式碼目前使用內建映像在 App Service 中執行 Linux �
 
 在終端機視窗中，使用下列命令 (適用於您的作業系統) 安裝必要的相依性，然後啟動內建的開發伺服器。 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ return "Hello Azure!"
 
 使用下列 `az webapp up` 命令來重新部署應用程式，使用您第一次用來部署應用程式的相同命令，以您之前使用的相同名稱取代 `<app-name>` 和 `<location-name>`。 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 首先，在終端機中執行下列命令來開啟容器記錄功能，將 `<app-name>` 取代為您的應用程式名稱，並將 `<resource-group-name>`取代為您所用 `az webapp up` 命令的輸出中所顯示的資源群組名稱 (例如 "appsvc_rg_Linux_centralus")：
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 開啟容器記錄後，請執行下列命令來顯示記錄資料流：
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -221,7 +221,7 @@ App Service 功能表提供不同的頁面來設定您的應用程式。
 
 如果您未來不需要這些資源，請執行下列命令來刪除資源群組，並將 `<resource-group-name>` 取代為 `az webapp up` 命令輸出中所顯示的資源群組，例如 "appsvc_rg_Linux_centralus"。 此命令可能需要一分鐘才能完成。
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

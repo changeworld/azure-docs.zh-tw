@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure Kubernetes Service 中建立應用程式閘道�
 description: 教學課程說明如何使用 Azure Kubernetes Service 建立 Kubernetes 叢集並以應用程式閘道作為輸入控制器
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472259"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251768"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教學課程：在 Azure Kubernetes Service 中建立應用程式閘道輸入控制器
 
@@ -765,7 +765,7 @@ kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/maste
 
 使用適當的值來取代預留位置。 指定資源群組內的所有資源都將刪除。
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

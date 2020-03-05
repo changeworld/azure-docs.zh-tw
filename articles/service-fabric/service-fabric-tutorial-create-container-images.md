@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465429"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252792"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教學課程：在 Linux Service Fabric 叢集上建立容器映像
 
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 先執行 **az login** 命令來登入您的 Azure 帳戶。
 
-```bash
+```azurecli
 az login
 ```
 
 接下來，使用 **az account** 命令，選擇您的訂用帳戶來建立 Azure 容器登錄。 您必須輸入您 Azure 訂用帳戶的訂用帳戶識別碼來取代 <subscription_id>。
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ az account set --subscription <subscription_id>
 
 使用 **az group create** 命令來建立資源群組。 在此範例中，會在 westus  區域中建立名為 myResourceGroup  的資源群組。
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 使用 **az acr create** 命令來建立 Azure Container Registry。 使用您想要在訂用帳戶下建立的容器登錄名稱取代 \<acrName>。 此名稱必須是英數字元，而且是唯一的。
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 請登入您的 ACR 執行個體，再將映像推送到該執行個體。 使用 **az acr login** 命令來完成此作業。 在建立容器登錄時，為它提供唯一名稱。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 若要取得 loginServer 名稱，請執行下列命令：
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 這會輸出如下列結果的表格。 此結果將會用來標記您的 **azure-vote-front** 映像，然後才將映像推送到下一個步驟中的容器登錄。
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 輸出：
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ Docker push 命令需要數分鐘才能完成。
 
 若要傳回已推送至 Azure Container Registry 的映像清單，請使用 [az acr repository list](/cli/azure/acr/repository) 命令。 以 ACR 執行個體名稱更新命令。
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 輸出：
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

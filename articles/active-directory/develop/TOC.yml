@@ -101,146 +101,311 @@
       href: identity-platform-integration-checklist.md
     - name: 應用程式案例
       items:
-        - name: 登入對象
-          href: v2-supported-account-types.md
         - name: 單一頁面應用程式
           items:
-            - name: 概觀
-              href: scenario-spa-overview.md
-            - name: 應用程式註冊
-              href: scenario-spa-app-registration.md
-            - name: 程式碼設定
-              href: scenario-spa-app-configuration.md
-            - name: 登入和登出
-              href: scenario-spa-sign-in.md
-            - name: 取得 API 的權杖
-              href: scenario-spa-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-spa-call-api.md
-            - name: 移動至生產環境
-              href: scenario-spa-production.md
-        - name: 登入使用者的 Web 應用程式
+            - name: JavaScript
+              href: tutorial-v2-javascript-spa.md
+        - name: Web 應用程式
           items:
-            - name: 概觀
-              href: scenario-web-app-sign-user-overview.md
-            - name: 應用程式註冊
-              href: scenario-web-app-sign-user-app-registration.md
-            - name: 程式碼設定
-              href: scenario-web-app-sign-user-app-configuration.md
-            - name: 登入和登出
-              href: scenario-web-app-sign-user-sign-in.md
-            - name: 移動至生產環境
-              href: scenario-web-app-sign-user-production.md
-        - name: 呼叫 Web API 的 Web 應用程式
+            - name: ASP .NET
+              href: tutorial-v2-asp-webapp.md
+        - name: 行動和傳統型應用程式
           items:
-            - name: 概觀
-              href: scenario-web-app-call-api-overview.md
-            - name: 應用程式註冊
-              href: scenario-web-app-call-api-app-registration.md
-            - name: 程式碼設定
-              href: scenario-web-app-call-api-app-configuration.md
-            - name: 全域登出
-              href: scenario-web-app-call-api-sign-in.md
-            - name: 取得應用程式的權杖
-              href: scenario-web-app-call-api-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-web-app-call-api-call-api.md
-            - name: 移動至生產環境
-              href: scenario-web-app-call-api-production.md
-        - name: 受保護的 Web API
-          items:
-            - name: 概觀
-              href: scenario-protected-web-api-overview.md
-            - name: 應用程式註冊
-              href: scenario-protected-web-api-app-registration.md
-            - name: 程式碼設定
-              href: scenario-protected-web-api-app-configuration.md
-            - name: 範圍或應用程式角色驗證
-              href: scenario-protected-web-api-verification-scope-app-roles.md
-            - name: 移動至生產環境
-              href: scenario-protected-web-api-production.md
-        - name: 呼叫 Web API 的 Web API
-          items:
-            - name: 概觀
-              href: scenario-web-api-call-api-overview.md
-            - name: 應用程式註冊
-              href: scenario-web-api-call-api-app-registration.md
-            - name: 程式碼設定
-              href: scenario-web-api-call-api-app-configuration.md
-            - name: 取得權杖
-              href: scenario-web-api-call-api-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-web-api-call-api-call-api.md
-            - name: 移動至生產環境
-              href: scenario-web-api-call-api-production.md
-        - name: 呼叫 Web API 的傳統型應用程式
-          items:
-            - name: 概觀
-              href: scenario-desktop-overview.md
-            - name: 應用程式註冊
-              href: scenario-desktop-app-registration.md
-            - name: 程式碼設定
-              href: scenario-desktop-app-configuration.md
-            - name: 取得權杖
-              href: scenario-desktop-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-desktop-call-api.md
-            - name: 移動至生產環境
-              href: scenario-desktop-production.md
+            - name: Android
+              href: tutorial-v2-android.md
+            - name: iOS 和 macOS
+              href: tutorial-v2-ios.md
+            - name: 通用 Windows 平台
+              href: tutorial-v2-windows-uwp.md
+            - name: Windows 桌面型 .NET
+              href: tutorial-v2-windows-desktop.md
+            - name: 在 Android 應用程式中使用共用裝置模式
+              href: tutorial-v2-shared-device-mode.md
         - name: 精靈應用程式
           items:
-            - name: 概觀
-              href: scenario-daemon-overview.md
-            - name: 應用程式註冊
-              href: scenario-daemon-app-registration.md
-            - name: 程式碼設定
-              href: scenario-daemon-app-configuration.md
-            - name: 取得權杖
-              href: scenario-daemon-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-daemon-call-api.md
-            - name: 移動至生產環境
-              href: scenario-daemon-production.md
-        - name: 呼叫 Web API 的行動應用程式
+            - name: ASP.NET 精靈 Web 應用程式
+              href: tutorial-v2-aspnet-daemon-web-app.md
+    - name: 範例
+      href: sample-v2-code.md
+    - name: 概念
+      items:
+        - name: 驗證基本概念
+          href: authentication-scenarios.md
+        - name: 驗證流程和應用程式案例
+          href: authentication-flows-app-scenarios.md
+        - name: 身分識別平台最佳做法
+          href: identity-platform-integration-checklist.md
+        - name: 應用程式案例
+          items:
+            - name: 登入對象
+              href: v2-supported-account-types.md
+            - name: 單一頁面應用程式
+              items:
+                - name: 概觀
+                  href: scenario-spa-overview.md
+                - name: 應用程式註冊
+                  href: scenario-spa-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-spa-app-configuration.md
+                - name: 登入和登出
+                  href: scenario-spa-sign-in.md
+                - name: 取得 API 的權杖
+                  href: scenario-spa-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-spa-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-spa-production.md
+            - name: 登入使用者的 Web 應用程式
+              items:
+                - name: 概觀
+                  href: scenario-web-app-sign-user-overview.md
+                - name: 應用程式註冊
+                  href: scenario-web-app-sign-user-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-web-app-sign-user-app-configuration.md
+                - name: 登入和登出
+                  href: scenario-web-app-sign-user-sign-in.md
+                - name: 移動至生產環境
+                  href: scenario-web-app-sign-user-production.md
+            - name: 呼叫 Web API 的 Web 應用程式
+              items:
+                - name: 概觀
+                  href: scenario-web-app-call-api-overview.md
+                - name: 應用程式註冊
+                  href: scenario-web-app-call-api-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-web-app-call-api-app-configuration.md
+                - name: 全域登出
+                  href: scenario-web-app-call-api-sign-in.md
+                - name: 取得應用程式的權杖
+                  href: scenario-web-app-call-api-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-web-app-call-api-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-web-app-call-api-production.md
+            - name: 受保護的 Web API
+              items:
+                - name: 概觀
+                  href: scenario-protected-web-api-overview.md
+                - name: 應用程式註冊
+                  href: scenario-protected-web-api-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-protected-web-api-app-configuration.md
+                - name: 範圍或應用程式角色驗證
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
+                - name: 移動至生產環境
+                  href: scenario-protected-web-api-production.md
+            - name: 呼叫 Web API 的 Web API
+              items:
+                - name: 概觀
+                  href: scenario-web-api-call-api-overview.md
+                - name: 應用程式註冊
+                  href: scenario-web-api-call-api-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-web-api-call-api-app-configuration.md
+                - name: 取得權杖
+                  href: scenario-web-api-call-api-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-web-api-call-api-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-web-api-call-api-production.md
+            - name: 呼叫 Web API 的傳統型應用程式
+              items:
+                - name: 概觀
+                  href: scenario-desktop-overview.md
+                - name: 應用程式註冊
+                  href: scenario-desktop-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-desktop-app-configuration.md
+                - name: 取得權杖
+                  href: scenario-desktop-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-desktop-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-desktop-production.md
+            - name: 精靈應用程式
+              items:
+                - name: 概觀
+                  href: scenario-daemon-overview.md
+                - name: 應用程式註冊
+                  href: scenario-daemon-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-daemon-app-configuration.md
+                - name: 取得權杖
+                  href: scenario-daemon-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-daemon-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-daemon-production.md
+            - name: 呼叫 Web API 的行動應用程式
+              items:
+                - name: 概觀
+                  href: scenario-mobile-overview.md
+                - name: 應用程式註冊
+                  href: scenario-mobile-app-registration.md
+                - name: 程式碼設定
+                  href: scenario-mobile-app-configuration.md
+                - name: 行動平台特定設定
+                  items:
+                    - name: 適用於 Android 裝置的共用裝置模式
+                      href: shared-device-mode.md
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android 上的系統瀏覽器
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: 搭配 Xamarin iOS 和 Android 使用訊息代理程式
+                      displayName: Microsoft Authenticator Microsoft Intune
+                      href: msal-net-use-brokers-with-xamarin-apps.md
+                    - name: 通用 Windows 平台
+                      href: msal-net-uwp-considerations.md
+                - name: 取得應用程式的權杖
+                  href: scenario-mobile-acquire-token.md
+                - name: 呼叫 Web API
+                  href: scenario-mobile-call-api.md
+                - name: 移動至生產環境
+                  href: scenario-mobile-production.md
+        - name: Microsoft Authentication Library (MSAL)
           items:
             - name: 概觀
-              href: scenario-mobile-overview.md
-            - name: 應用程式註冊
-              href: scenario-mobile-app-registration.md
-            - name: 程式碼設定
-              href: scenario-mobile-app-configuration.md
-            - name: 行動平台特定設定
+              href: msal-overview.md
+            - name: 帳戶和租用戶設定檔 (Android)
+              href: accounts-overview.md
+            - name: 授權代理程式 (Android)
+              href: authorization-agents.md
+            - name: 訊息代理程式驗證 (Android)
+              href: brokered-auth.md
+            - name: 遷移
               items:
-                - name: 適用於 Android 裝置的共用裝置模式
-                  href: shared-device-mode.md
-                - name: Xamarin Android
-                  href: msal-net-xamarin-android-considerations.md
-                - name: Android 上的系統瀏覽器
-                  href: msal-net-system-browser-android-considerations.md
-                - name: Xamarin iOS
-                  href: msal-net-xamarin-ios-considerations.md
-                - name: 搭配 Xamarin iOS 和 Android 使用訊息代理程式
-                  displayName: Microsoft Authenticator Microsoft Intune
-                  href: msal-net-use-brokers-with-xamarin-apps.md
-                - name: 通用 Windows 平台
-                  href: msal-net-uwp-considerations.md
-            - name: 取得應用程式的權杖
-              href: scenario-mobile-acquire-token.md
-            - name: 呼叫 Web API
-              href: scenario-mobile-call-api.md
-            - name: 移動至生產環境
-              href: scenario-mobile-production.md
-    - name: Microsoft Authentication Library (MSAL)
-      items:
-        - name: 概觀
-          href: msal-overview.md
-        - name: 帳戶和租用戶設定檔 (Android)
-          href: accounts-overview.md
-        - name: 授權代理程式 (Android)
-          href: authorization-agents.md
-        - name: 訊息代理程式驗證 (Android)
-          href: brokered-auth.md
-        - name: 遷移
+                - name: 遷移至 MSAL.NET
+                  href: msal-net-migration.md
+                - name: 遷移至 MSAL.js
+                  href: msal-compare-msal-js-and-adal-js.md
+                - name: 遷移到 MSAL.Android
+                  href: migrate-android-adal-msal.md
+                - name: 遷移到 MSAL.iOS / MacOS
+                  href: migrate-objc-adal-msal.md
+                - name: 遷移到 MSAL Python
+                  href: migrate-python-adal-msal.md
+                - name: 遷移到適用於 Java 的 MSAL
+                  href: migrate-adal-msal-java.md
+                - name: 使用訊息代理程式將 Xamarin 應用程式遷移到 MSAL.NET
+                  href: msal-net-migration-ios-broker.md
+            - name: 支援的驗證流程
+              href: msal-authentication-flows.md
+            - name: 單一和多帳戶公用用戶端應用程式 (Android)
+              href: single-multi-account.md
+            - name: 取得和快取權杖
+              items:
+                - name: 取得和快取權杖
+                  href: msal-acquire-cache-tokens.md
+                - name: v1.0 應用程式的範圍
+                  href: msal-v1-app-scopes.md
+            - name: 用戶端應用程式
+              items:
+                - name: 用戶端應用程式
+                  href: msal-client-applications.md
+                - name: 應用程式設定
+                  href: msal-client-application-configuration.md
+                - name: 初始化應用程式 (.NET)
+                  href: msal-net-initializing-client-applications.md
+                - name: 用戶端判斷提示 (.NET)
+                  href: msal-net-client-assertions.md
+                - name: 初始化應用程式 (JS)
+                  href: msal-js-initializing-client-applications.md
+            - name: 處理錯誤和例外狀況
+              href: msal-handling-exceptions.md
+            - name: 記錄
+              href: msal-logging.md
+            - name: 單一登入
+              items:
+                - name: 使用 MSAL.js 進行單一登入
+                  href: msal-js-sso.md
+                - name: 使用 MSAL.js 進行單一登入 (適用於 iOS 和 macOS)
+                  items:
+                    - name: MSAL 應用程式間的 SSO
+                      href: single-sign-on-macos-ios.md
+                    - name: ADAL 與 MSAL 應用程式間的 SSO
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: 與 ADFS 整合
+              items:
+                - name: MSAL.NET 中的 ADFS 支援
+                  href: msal-net-adfs-support.md
+                - name: MSAL for Python 中的 ADFS 支援
+                  href: msal-python-adfs-support.md
+                - name: MSAL for JAVA 中的 ADFS 支援
+                  href: msal-java-adfs-support.md
+            - name: 與 Azure AD B2C 整合
+              items:
+                - name: Android
+                  href: msal-android-b2c.md
+                - name: JavaScript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
+                - name: iOS 和 macOS
+                  href: 'config-authority.md#b2c'
+            - name: 考量事項與已知問題
+              items:
+                - name: MSAL.NET
+                  items:
+                    - name: 網頁瀏覽器
+                      href: msal-net-web-browsers.md
+                - name: MSAL.js
+                  items:
+                    - name: 使用 IE 的考量事項
+                      href: msal-js-use-ie-browser.md
+                    - name: 已知問題 - IE 和 Microsoft Edge
+                      href: msal-js-known-issues-ie-edge-browsers.md
+                    - name: 已知問題 - Safari
+                      href: msal-js-known-issues-safari-browser.md
+                - name: 針對 SSL 問題進行疑難排解 (MSAL iOS/macOS)
+                  href: ssl-issues.md
+        - name: 驗證通訊協定
+          items:
+            - name: 應用程式類型和 OAuth2.0
+              href: v2-app-types.md
+            - name: OAuth 2.0 和 OpenID Connect 通訊協定
+              href: active-directory-v2-protocols.md
+            - name: OpenID Connect
+              href: v2-protocols-oidc.md
+            - name: OAuth 2.0 隱含授與流程
+              href: v2-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0 驗證碼授與
+              href: v2-oauth2-auth-code-flow.md
+            - name: OAuth 2.0 代理者流程
+              href: v2-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0 用戶端認證授與
+              href: v2-oauth2-client-creds-grant-flow.md
+            - name: OAuth 2.0 裝置程式碼流程
+              href: v2-oauth2-device-code.md
+            - name: OAuth 2.0 資源擁有者密碼認證授與
+              href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML 持有人宣告流程
+              href: v2-saml-bearer-assertion.md
+            - name: 簽署金鑰變換
+              href: active-directory-signing-key-rollover.md
+            - name: ID 權杖
+              href: id-tokens.md
+            - name: 存取權杖
+              href: access-tokens.md
+            - name: 憑證認證
+              href: active-directory-certificate-credentials.md
+        - name: 應用程式設定
+          items:
+            - name: 應用程式與服務主體
+              href: app-objects-and-service-principals.md
+            - name: 如何以及為何將應用程式新增到 Azure AD
+              href: active-directory-how-applications-are-added.md
+            - name: 重新導向 URI/回覆 URL 限制
+              href: reply-url.md
+            - name: 依支援的帳戶類型區分的驗證差異
+              href: supported-accounts-validation.md
+            - name: 單一租用戶與多租用戶應用程式
+              href: single-and-multi-tenant-apps.md
+        - name: 權限及同意
+          displayName: Scopes
           items:
             - name: 概觀
               href: msal-migration.md
@@ -264,11 +429,19 @@
           href: single-multi-account.md
         - name: 取得和快取權杖
           items:
-            - name: 取得和快取權杖
-              href: msal-acquire-cache-tokens.md
-            - name: v1.0 應用程式的範圍
-              href: msal-v1-app-scopes.md
-        - name: 用戶端應用程式
+            - name: 概觀
+              href: authentication-national-cloud.md
+            - name: 驗證
+              href: msal-national-cloud.md
+        - name: 自動使用者佈建 (SCIM)
+          items:
+            - name: 什麼是自動使用者佈建？
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: 建置和整合 SCIM 端點
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
+    - name: 操作指南
+      items:
+        - name: 驗證
           items:
             - name: 設定角色宣告
               href: active-directory-enterprise-app-role-management.md
@@ -284,54 +457,46 @@
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 應用程式設定
           items:
-            - name: 用戶端應用程式
-              href: msal-client-applications.md
-            - name: 應用程式設定
-              href: msal-client-application-configuration.md
-            - name: 初始化應用程式 (.NET)
-              href: msal-net-initializing-client-applications.md
-            - name: 用戶端判斷提示 (.NET)
-              href: msal-net-client-assertions.md
-            - name: 初始化應用程式 (JS)
-              href: msal-js-initializing-client-applications.md
-        - name: 處理錯誤和例外狀況
-          href: msal-handling-exceptions.md
-        - name: 記錄
-          href: msal-logging.md
-        - name: 單一登入
-          items:
-            - name: 使用 MSAL.js 進行單一登入
-              href: msal-js-sso.md
-            - name: 使用 MSAL.js 進行單一登入 (適用於 iOS 和 macOS)
+            - name: 新版 Azure 入口網站應用程式註冊訓練指南
+              href: app-registrations-training-guide-for-app-registrations-legacy-users.md
+            - name: 新版 Azure 入口網站應用程式註冊體驗
+              href: app-registration-portal-training-guide.md
+            - name: 將單一租用戶應用程式轉換為多租用戶應用程式
+              href: howto-convert-app-to-be-multi-tenant.md
+            - name: 建立服務主體
               items:
-                - name: MSAL 應用程式間的 SSO
-                  href: single-sign-on-macos-ios.md
-                - name: ADAL 與 MSAL 應用程式間的 SSO
-                  href: sso-between-adal-msal-apps-macos-ios.md
-        - name: 與 ADFS 整合
-          items:
-            - name: MSAL.NET 中的 ADFS 支援
-              href: msal-net-adfs-support.md
-            - name: MSAL for Python 中的 ADFS 支援
-              href: msal-python-adfs-support.md
-            - name: MSAL for JAVA 中的 ADFS 支援
-              href: msal-java-adfs-support.md
-        - name: 與 Azure AD B2C 整合
-          items:
-            - name: Android
-              href: msal-android-b2c.md
-            - name: JavaScript
-              href: msal-b2c-overview.md
-            - name: .NET
-              href: msal-net-aad-b2c-considerations.md
-            - name: iOS 和 macOS
-              href: 'config-authority.md#b2c'
-        - name: 考量事項與已知問題
+                - name: 使用 Azure PowerShell
+                  href: howto-authenticate-service-principal-powershell.md
+                - name: 使用 Azure 入口網站
+                  href: howto-create-service-principal-portal.md
+            - name: 將您的應用程式限制為僅供一組使用者存取
+              href: howto-restrict-your-app-to-a-set-of-users.md
+            - name: 在您的應用程式中新增應用程式角色
+              href: howto-add-app-roles-in-azure-ad-apps.md
+            - name: 商標方針
+              href: howto-add-branding-in-azure-ad-apps.md
+            - name: 設定發行者網域
+              href: howto-configure-publisher-domain.md
+            - name: 服務條款和隱私權聲明
+              href: howto-add-terms-of-service-privacy-statement.md
+        - name: 使用 Microsoft 驗證程式庫
           items:
             - name: MSAL.NET
               items:
-                - name: 網頁瀏覽器
-                  href: msal-net-web-browsers.md
+                - name: 從快取中取得權杖
+                  href: msal-net-acquire-token-silently.md
+                - name: 權杖快取序列化
+                  href: msal-net-token-cache-serialization.md
+                - name: 清除權杖快取
+                  href: msal-net-clear-token-cache.md
+                - name: 具現化公用用戶端應用程式
+                  href: msal-net-instantiate-public-client-config-options.md
+                - name: 使用選項具現化機密用戶端
+                  href: msal-net-instantiate-confidential-client-config-options.md
+                - name: 取得數項資源的同意
+                  href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: 提供您自己的 HttpClient
+                  href: msal-net-provide-httpclient.md
             - name: MSAL.js
               items:
                 - name: 使用 IE 的考量事項
@@ -443,21 +608,21 @@
           href: howto-convert-app-to-be-multi-tenant.md
         - name: 建立服務主體
           items:
-            - name: 使用 Azure PowerShell
-              href: howto-authenticate-service-principal-powershell.md
-            - name: 使用 Azure 入口網站
-              href: howto-create-service-principal-portal.md
-        - name: 將您的應用程式限制為僅供一組使用者存取
-          href: howto-restrict-your-app-to-a-set-of-users.md
-        - name: 在您的應用程式中新增應用程式角色
-          href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: 商標方針
-          href: howto-add-branding-in-azure-ad-apps.md
-        - name: 設定發行者網域
-          href: howto-configure-publisher-domain.md
-        - name: 服務條款和隱私權聲明
-          href: howto-add-terms-of-service-privacy-statement.md
-    - name: 使用 Microsoft 驗證程式庫
+            - name: 使用 Active Directory 連線服務
+              href: vs-active-directory-add-connected-service.md
+            - name: 開始進行 .NET MVC 專案
+              href: vs-active-directory-dotnet-getting-started.md
+            - name: 我的 .NET MVC 專案發生什麼情形？
+              href: vs-active-directory-dotnet-what-happened.md
+            - name: 開始進行 WebApI 專案
+              href: vs-active-directory-webapi-getting-started.md
+            - name: 我的 WebApI 專案發生什麼情形？
+              href: vs-active-directory-webapi-what-happened.md
+            - name: 診斷驗證期間的錯誤
+              href: vs-active-directory-error.md
+        - name: 使用 Microsoft Graph API
+          href: microsoft-graph-intro.md
+    - name: 參考
       items:
         - name: MSAL.NET
           items:
@@ -522,12 +687,13 @@
 - name: 參考
   items:
     - name: 驗證程式庫
-      displayName: MSAL
+      displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: 在 Microsoft Graph 中識別和存取 API
       href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
     - name: 應用程式資訊清單
       href: reference-app-manifest.md
+      displayName: app manifest
     - name: Android MSAL 組態檔
       href: msal-configuration.md
     - name: 驗證與授權錯誤碼
@@ -538,18 +704,16 @@
   items:
     - name: 詞彙
       href: developer-glossary.md
-    - name: 影片
-      href: identity-videos.md
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure AD 部落格
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft 身分識別平台開發人員部落格
-      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+      href: 'https://developer.microsoft.com/identity/blogs/'
     - name: 嘗試使用 Microsoft 登入
       href: 'https://azure.microsoft.com/develop/identity/signin/'
-    - name: 適用於 Azure 資源的受控識別
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: 取得說明
       displayName: 'support, help options'
       href: developer-support-help-options.md
+    - name: 適用於 Azure 資源的受控識別
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

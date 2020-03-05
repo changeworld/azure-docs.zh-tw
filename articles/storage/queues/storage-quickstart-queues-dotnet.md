@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 71a714124cecfc4f985d448371042c8aff092a11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463846"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197482"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -31,7 +31,7 @@ ms.locfileid: "75463846"
 * 刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](/dotnet/api/azure.storage.queues) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+[API 參考文件](/dotnet/api/azure.storage.queues) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Prerequisites
 

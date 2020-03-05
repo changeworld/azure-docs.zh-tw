@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 來管理 Azure 動態清查
 keywords: ansible, azure, devops, bash, cloudshell, 動態清查
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193594"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247863"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教學課程：使用 Ansible 設定 Azure 資源的動態清查
 
@@ -91,25 +91,25 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 使用 GNU `wget` 命令來取出 `azure_rm.py` 指令碼：
 
-    ```azurecli-interactive
+    ```python
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
 1. 使用 `chmod` 命令將存取權限變更為 `azure_rm.py` 指令碼。 下列命令會使用 `+x` 參數，以允許執行 (執行) 指定的檔案 (`azure_rm.py`)：
 
-    ```azurecli-interactive
+    ```python
     chmod +x azure_rm.py
     ```
 
 1. 使用 [ansible 命令](https://docs.ansible.com/ansible/2.4/ansible.html)連線到您的資源群組： 
 
-    ```azurecli-interactive
+    ```python
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
 1. 一旦連線後，您會看到類似下列輸出的結果：
 
-    ```Output
+    ```output
     ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -147,7 +147,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 執行上述命令時，您可能會收到下列錯誤：
 
-    ```Output
+    ```output
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
@@ -159,7 +159,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 執行劇本後，您會看到類似下列輸出的結果：
   
-    ```Output
+    ```output
     ansible-inventory-test-vm1_0324 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ansible-inventory-test-vm2_8971 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
@@ -170,7 +170,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 - 設定標記後，您必須「啟用」該標記。 啟用標記的方式之一，是透過 `export` 命令將標記匯出至環境變數 `AZURE_TAGS`：
 
-    ```azurecli-interactive
+    ```console
     export AZURE_TAGS=nginx
     ```
     
@@ -182,7 +182,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
     
     您現在只會看到一個虛擬機器 (標記符合匯出至 `AZURE_TAGS` 環境變數之值的虛擬機器)：
 
-    ```Output
+    ```output
        ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -194,7 +194,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 - 請執行命令 `ansible-inventory -i myazure_rm.yml --graph` 取得下列輸出：
 
-    ```Output
+    ```output
         @all:
           |--@tag_Ansible_nginx:
           |  |--ansible-inventory-test-vm1_9e2f
@@ -215,7 +215,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 建立名為 `nginx.yml` 的檔案：
 
-   ```azurecli-interactive
+   ```console
    code nginx.yml
    ```
 
@@ -255,7 +255,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 執行劇本後，您會看到類似下列結果的輸出：
 
-    ```Output
+    ```output
     PLAY [Install and start Nginx on an Azure virtual machine] 
 
     TASK [Gathering Facts] 
@@ -285,13 +285,13 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 在連線至 `ansible-inventory-test-vm1` 虛擬機器後，執行 [nginx-v](https://nginx.org/en/docs/switches.html) 命令以確認 Nginx 是否已安裝。
 
-    ```azurecli-interactive
+    ```console
     nginx -v
     ```
 
 1. 一旦您執行 `nginx -v` 命令後，會看到 Nginx 版本 (第二行)，指出已安裝 Nginx。
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm1:~$ nginx -v
 
     nginx version: nginx/1.10.3 (Ubuntu)
@@ -303,7 +303,7 @@ Ansible 提供名為 [azure_rm.py](https://github.com/ansible/ansible/blob/devel
 
 1. 為 `ansible-inventory-test-vm2` 虛擬機器執行上述步驟時會產生參考訊息，指出您可以取得 Nginx (表示您此時未安裝) 的位置：
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm2:~$ nginx -v
     The program 'nginx' can be found in the following packages:
     * nginx-core

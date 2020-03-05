@@ -12,8 +12,8 @@
       items:
         - name: Azure 入口網站
           href: create-cosmosdb-resources-portal.md
-        - name: Azure Resource Manager 範本
-          displayName: ARM
+        - name: ARM 範本
+          displayName: Resource Manager
           href: quick-create-template.md
         - name: .NET 應用程式 - V4 SDK
           href: create-sql-api-dotnet-v4.md

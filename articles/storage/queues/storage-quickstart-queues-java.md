@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 2bbd66257e1ccd81f1dac7d775b4dd6ccc39189a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358767"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199796"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -27,7 +27,7 @@ ms.locfileid: "75358767"
 * 接收和刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples)
+[API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Prerequisites
 

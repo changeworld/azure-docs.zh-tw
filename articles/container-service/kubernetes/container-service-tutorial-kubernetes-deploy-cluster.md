@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275447"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274013"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(已被取代) 在 Azure Container Service 中部署 Kubernetes 叢集
 
@@ -40,7 +40,7 @@ Kubernetes 會提供容器化應用程式的分散式平台。 透過 Azure Cont
 
 下列範例會在名為 `myResourceGroup` 的資源群組中，建立名為 `myK8sCluster` 的叢集。 我們已在[先前的教學課程](./container-service-tutorial-kubernetes-prepare-acr.md)中建立此資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
@@ -52,11 +52,11 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 若要從用戶端電腦連線到 Kubernetes 叢集，請使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) (Kubernetes 命令列用戶端)。 
 
-如果您是使用 Azure CloudShell，則已安裝 kubectl。 如果您想要在本機進行安裝，請使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
+如果您是使用 Azure Cloud Shell，則已安裝 kubectl。 如果您想要在本機進行安裝，請使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 如果執行環境是 Linux 或 macOS，則可能需要使用 sudo 來執行。 在 Windows 上，請確定您的殼層已經是以系統管理員身分執行。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes install-cli 
 ```
 
@@ -66,19 +66,19 @@ az acs kubernetes install-cli
 
 若要設定 kubectl 來連線到 Kubernetes 叢集，請執行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 若要確認與叢集的連線，請執行 [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 輸出：
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-98dc3136-0    Ready                      5m        v1.6.2
 k8s-agent-98dc3136-1    Ready                      5m        v1.6.2

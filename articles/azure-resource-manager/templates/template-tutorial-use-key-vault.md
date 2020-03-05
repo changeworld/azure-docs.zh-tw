@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470863"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250062"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>教學課程：在 Resource Manager 範本部署中整合 Azure Key Vault
 
@@ -42,7 +42,7 @@ ms.locfileid: "75470863"
 * Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
 * 為了提高安全性，請使用為 VM 系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     請確認所產生的密碼符合虛擬機器的密碼需求。 每個 Azure 服務都有特定的密碼需求。 有關 VM 密碼需求，請參閱[建立 VM 時的密碼需求為何？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。

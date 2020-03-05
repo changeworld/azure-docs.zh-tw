@@ -4,12 +4,12 @@ description: Azure 容器執行個體教學課程第 3 部分 (共 3 部分) - �
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d3cbf16feea299e320cf7e24092d00e93cb7cf5b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533354"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249961"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教學課程：將容器應用程式部署至 Azure 容器執行個體
 
@@ -66,13 +66,12 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 
 部署成功之後，請使用 [az container show][az-container-show] 命令來顯示容器的完整網域名稱 (FQDN)：
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-例如︰
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+例如：
+```output
 "aci-demo.eastus.azurecontainer.io"
 ```
 
@@ -88,8 +87,7 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 範例輸出︰
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"

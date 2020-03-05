@@ -1,14 +1,17 @@
 ---
 title: 將您的 Java 函式連線至 Azure 儲存體
 description: 了解如何使用佇列儲存體輸出繫結，將 HTTP 觸發的 Java 函式連線到 Azure 儲存體。
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198542"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272794"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>將您的 Java 函式連線至 Azure 儲存體
 
@@ -112,10 +115,19 @@ final HttpResponseMessage ret = new Function().run(req, msg, context);
 
 如同以往，使用下列命令在本機建置專案及啟動 Functions 執行階段：
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > 由於您已啟用 host.json 中的擴充功能套件組合，因此[儲存體繫結擴充功能](functions-bindings-storage-blob.md#add-to-your-functions-app)已在啟動期間下載並安裝，連同其他 Microsoft 繫結擴充功能。
@@ -138,9 +150,17 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 
 若要更新已發佈的應用程式，請再次執行下列命令：  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 同樣地，您可以使用 cURL 來測試已部署的函式。 如同以往，將 POST 要求本文中的 `AzureFunctions` 值傳遞至 URL，如下列範例所示：
 

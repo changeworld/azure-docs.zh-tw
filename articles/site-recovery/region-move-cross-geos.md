@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970490"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298525"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在 Azure Government 和公用區域之間移動 Azure VM 
 
@@ -100,7 +100,7 @@ ms.locfileid: "75970490"
     - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
     - [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    如需其他網路元件的資訊，請參閱網路[文件](https://docs.microsoft.com/azure/#pivot=products&panel=network)。 
+    如需其他網路元件的資訊，請參閱網路[文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
 
 4. 如果您想要先測試組態再執行對目標區域的最終完全移轉，請在目標區域中手動[建立非生產網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 這對生產環境的干擾最少，建議使用此方法。
 

@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671412"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247611"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "74671412"
 
 在 Cloud Shell 中，建立快速入門目錄並變更為此目錄。
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 下一步，執行下列命令，將範例應用程式存放庫複製到您的快速入門目錄。
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 執行上述命令時，會顯示類似下列範例的資訊：
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 瀏覽至您剛建立的 Web 應用程式。 以唯一的應用程式名稱取代 `<app_name>`。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ http://<app_name>.azurewebsites.net
 
 在 Cloud Shell 中瀏覽至應用程式的根目錄，然後為範例專案建立新的 ZIP 檔案。
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 使用 web 瀏覽器瀏覽至已部署的應用程式。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 

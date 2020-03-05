@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845479"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273179"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ ms.locfileid: "76845479"
 
 後續步驟則取決於您退回裝置的地點。 美國/加拿大、歐盟 (EU)、澳洲或亞洲國家/地區的指示會有所不同。
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[美國或加拿大](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[美國或加拿大](#tab/in-us-or-canada)
 
 如果在美國或加拿大退回裝置，請執行下列步驟。
 
@@ -67,7 +67,7 @@ ms.locfileid: "76845479"
     - 若未提供追蹤號碼，UPS 將在取貨期間要求您支付額外的費用。
     - 除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱磁碟。
 
-### <a name="in-europetabin-europe"></a>[歐洲](#tab/in-europe)
+### <a name="in-europe"></a>[歐洲](#tab/in-europe)
 
 如果在歐洲退回裝置，請執行下列步驟。
 
@@ -80,7 +80,7 @@ ms.locfileid: "76845479"
 4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)  。    
 3. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨)  以安排取貨。
 
-### <a name="in-australiatabin-australia"></a>[澳大利亞](#tab/in-australia)
+### <a name="in-australia"></a>[澳大利亞](#tab/in-australia)
 
 澳洲的 Azure 資料中心有額外的安全性通知。 所有送達的貨物都必須有預先通知。 在澳洲收取可執行下列步驟。
 
@@ -88,7 +88,7 @@ ms.locfileid: "76845479"
 3. 將標籤黏貼在箱子上。 
 4. 按此連結 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference 線上預約取貨服務。 
 
-### <a name="in-japantabin-japan"></a>[日本](#tab/in-japan)
+### <a name="in-japan"></a>[日本](#tab/in-japan)
 
 1. 在理貨單上寫下貴公司名稱和地址資訊，作為您的寄件者資訊。
 2. 使用下列電子郵件範本傳送電子郵件給 Quantium Solutions。
@@ -115,7 +115,7 @@ ms.locfileid: "76845479"
 - 電子郵件：Customerservice.JP@quantiumsolutions.com 
 - 電話：03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[南韓](#tab/in-korea)
+### <a name="in-korea"></a>[南韓](#tab/in-korea)
 
 1. 請務必附上退貨理貨單。
 2. 若要在附有理貨單時要求取貨：
@@ -130,7 +130,7 @@ ms.locfileid: "76845479"
     4. 如果您透過電話提出要求，則會收到口頭確認。
 
 
-### <a name="in-singaporetabin-singapore"></a>[新加坡](#tab/in-singapore)
+### <a name="in-singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 列印出貨標籤並黏貼在紙箱上。 如果標籤受損或遺失：
     - 移至 [概觀] > [下載出貨標籤]  ，並取得寄回的出貨標籤。
@@ -157,7 +157,7 @@ ms.locfileid: "76845479"
 
 3. 將貨交給快遞人員。
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[自我管理中](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[自我管理中](#tab/in-selfmanaged)
 
 如果您在日本、新加坡、韓國和西歐使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
 
@@ -175,8 +175,6 @@ ms.locfileid: "76845479"
 3. Azure 資料箱作業小組會與您合作，一起安排托運至 Azure 資料中心。
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>後續步驟
 

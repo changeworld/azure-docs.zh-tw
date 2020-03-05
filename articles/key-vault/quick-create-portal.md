@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a57370b7bf63ad73318ba13eff1b554aead7e186
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490410"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197754"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
 
@@ -34,7 +35,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 3. 從結果清單中，選擇 [Key Vault]  。
 4. 在 [金鑰保存庫] 區段上選擇 [建立]  。
 5. 在 [建立金鑰保存庫]  區段上提供下列資訊：
-    - **名稱**：唯一名稱是必要項。 在本快速入門中，我們使用 **Contoso-vault2**。 
+    - **Name**：唯一名稱是必要項。 在本快速入門中，我們使用 **Contoso-vault2**。 
     - 訂用帳戶  ：選擇訂用帳戶。
     - 在 [資源群組]  底下，選擇 [新建]  ，然後輸入資源群組名稱。
     - 在 [位置]  下拉式功能表中選擇位置。
@@ -58,7 +59,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 2. 按一下 [產生/匯入]  。
 3. 在 [建立祕密]  畫面上選擇下列值：
     - **上傳選項**：手動。
-    - **名稱**：ExamplePassword。
+    - **Name**：ExamplePassword。
     - **值**：hVFkk965BuUv
     - 將其他的值保留預設值。 按一下頁面底部的 [新增]  。
 

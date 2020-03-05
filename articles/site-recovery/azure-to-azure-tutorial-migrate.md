@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954110"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303931"
 ---
 # <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
 
@@ -34,7 +34,7 @@ ms.locfileid: "73954110"
 > [!NOTE]
 > 本教學課程顯示如何將 Azure VM 原封不動移到另一個區域。 如果需要將可用性設定組中的 VM 移到不同區域中固定區域的 VM，藉此改善可用性，請參閱[將 Azure VM 移到可用性區域教學課程](move-azure-vms-avset-azone.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 請確定 Azure VM 確實位在您要從中移動 Azure 區域中。
 - 確認您選擇的[來源區域 - 目標區域組合受到支援](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，並做出與目標區域有關的明智決策。
@@ -73,7 +73,7 @@ ms.locfileid: "73954110"
     - [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
     -  [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
-    - 如需任何其他網路元件，請參閱[網路文件](https://docs.microsoft.com/azure/#pivot=products&panel=network)。
+    - 如需任何其他網路元件，請參閱[網路文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
 
 
 
@@ -99,7 +99,7 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 
 1. 在下一個步驟中，選取想要移動的 VM，然後選取 [確定]  。
 1. 在 [設定]  中，選取 [災害復原]  。
-1. 在 [設定災害復原]   >  [目標區域]  中，選取您要複寫到哪一個目標區域。
+1. 在 [設定災害復原]   > [目標區域]  中，選取要作為複寫目的地的目標區域。
 1. 在本教學課程中，接受其他預設設定。
 1. 選取 [啟用複寫]  。 這個步驟會啟動一個作業來啟用 VM 的複寫。
 
@@ -120,7 +120,7 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 如果您已檢查過移動的 VM，而且需要變更容錯移轉復原點或想要回到先前的復原點，請在 [複寫的項目]  中，以滑鼠右鍵選取 VM > [變更復原點]  。 此步驟可讓您選擇指定不同復原點，並容錯移轉至該復原點。 
 
 
-## <a name="commit"></a>認可 
+## <a name="commit"></a>Commit 
 
 檢查過移動的 VM 並準備好認可變更後，請在 [複寫的項目]  中，以滑鼠右鍵選取 VM > [認可]  。 此步驟會完成移至目標區域的程序。 請等候認可作業完成。
 

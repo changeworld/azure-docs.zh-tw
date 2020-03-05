@@ -1,19 +1,15 @@
 ---
 title: 什麼是 Azure Application Insights？ | Microsoft Docs
 description: 即時 Web 應用程式的應用程式效能管理和使用量追蹤。  偵測、分級和診斷問題，了解人們如何使用您的應用程式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: overview
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 16ebde7d98fbbf95f6c83275ab986ed91c89d736
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: cfd5925c61d1edf1fe9477d3239ec77a4c3de326
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190217"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666287"
 ---
 # <a name="what-is-application-insights"></a>什麼是 Application Insights？
 Application Insights (一項 [Azure 監視器](../overview.md)功能) 是開發人員和 DevOps 專業人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時應用程式。 其會自動偵測效能異常，其中包括強大的分析工具可協助診斷問題，並了解使用者實際上如何運用您的應用程式。  它是設計來協助您持續改善效能和可用性。 它適用於各種不同平台上的應用程式，包括裝載在內部部署、混合式或任何公用雲端的 .NET、Node.js 和 Java EE。 它可與您的 DevOps 程序整合，並有各種開發工具的連接點。 透過與 Visual Studio App Center 整合，還可以從行動應用程式監視並分析遙測資料。

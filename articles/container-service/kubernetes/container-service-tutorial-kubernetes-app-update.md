@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275553"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274117"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(即將淘汰) 更新 Kubernetes 中的應用程式
 
@@ -53,7 +53,7 @@ vi azure-vote/azure-vote/config_file.cfg
 
 變更 `VOTE1VALUE` 和 `VOTE2VALUE` 的值，然後儲存檔案。
 
-```bash
+```plaintext
 # UI Configurations
 TITLE = 'Azure Voting App'
 VOTE1VALUE = 'Blue'
@@ -109,7 +109,7 @@ kubectl get pod
 
 輸出：
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-217588096-5w632    1/1       Running   0          10m
 azure-vote-front-233282510-b5pkz   1/1       Running   0          10m
@@ -120,25 +120,25 @@ azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 如果您沒有執行 azure-vote-front 映像的多個 Pod，請調整 `azure-vote-front` 部署。
 
 
-```azurecli-interactive
+```bash
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
 若要更新應用程式，請使用 [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) 命令。 以容器登錄的登入伺服器或主機名稱來更新 `<acrLoginServer>`。
 
-```azurecli-interactive
+```bash
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
 若要監視部署，請使用 [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令。 部署已更新的應用程式後，您的 pod 會終止並以新的容器映像重建。
 
-```azurecli-interactive
+```bash
 kubectl get pod
 ```
 
 輸出：
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2978095810-gq9g0   1/1       Running   0          5m
 azure-vote-front-1297194256-tpjlg   1/1       Running   0         1m
@@ -150,7 +150,7 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 取得 `azure-vote-front` 服務的外部 IP 位址。
 
-```azurecli-interactive
+```bash
 kubectl get service azure-vote-front
 ```
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a61bc852d3042d0bd8828bf89dce6ab6b760d092
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77459679"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272958"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -214,7 +214,7 @@ Microsoft Analysis Services 專案會以免費的可安裝 VSIX 套件來提供�
 
 ### <a name="object-model-and-scripting"></a>物件模型和編寫指令碼
 
-表格式模型可供快速進行開發，並可高度自訂。 表格式模型包含可說明模型物件的[表格式物件模型](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM)。 TOM 會經由 [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 命名空間透過[表格式模型指令碼語言 (TMSL)](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)和 AMO 資料定義語言以 JSON 公開。 
+表格式模型可供快速進行開發，並可高度自訂。 表格式模型包含可說明模型物件的[表格式物件模型](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM)。 TOM 會經由 [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 命名空間透過[表格式模型指令碼語言 (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)和 AMO 資料定義語言以 JSON 公開。 
 
 ## <a name="supports-the-latest-client-tools"></a>支援最新的用戶端工具
 
