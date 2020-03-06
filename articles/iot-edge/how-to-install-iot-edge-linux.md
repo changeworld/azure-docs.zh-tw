@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395705"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行時間
 
@@ -281,7 +281,7 @@ sudo iotedge list
 
 ## <a name="tips-and-troubleshooting"></a>秘訣與疑難排解
 
-您必須要有提高的權限才能執行 `iotedge` 命令。 安裝執行階段之後，請登出您的電腦並重新登入，以自動更新您的權限。 在那之前，請在任何 `iotedge` 命令前面使用 **sudo**。
+您必須要有提高的權限才能執行 `iotedge` 命令。 安裝執行階段之後，請登出您的電腦並重新登入，以自動更新您的權限。 在那之前，請在任何 **命令前面使用**sudo`iotedge`。
 
 在資源受限的裝置上，強烈建議將 OptimizeForPerformance 環境變數設定為 false，如[疑難排解指南](troubleshoot.md)中的指示所述。
 

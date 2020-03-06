@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378137"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -43,7 +43,7 @@ NPS 延伸模組會自動處理備援，因此您不需要特殊組態。
 
 VPN 伺服器會路由驗證要求，因此伺服器必須留意新的 Azure MFA 啟用 NPS 伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 NPS 擴充功能是為了搭配現有基礎結構來運作。 請確定您已備妥這些必要條件，然後再開始。
 
@@ -238,7 +238,7 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 如果您有未註冊 MFA 的使用者，您可以決定在其嘗試驗證時會有什麼結果。 使用登錄路徑 HKLM\Software\Microsoft\AzureMFA 中的登錄設定 *REQUIRE_USER_MATCH* 來控制功能的行為。 此設定具有單一組態選項︰
 
-| 索引鍵 | 值 | 預設 |
+| Key | 值 | 預設 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未設定 (相當於 TRUE) |
 
@@ -252,7 +252,7 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 下列腳本可在 TechNet 元件庫中取得，以在疑難排解 NPS 延伸模組時執行基本的健全狀況檢查步驟。
 
-[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
 
 ---
 
@@ -303,7 +303,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 1. 重新啟動 NPS 伺服器。
 2. 確認已如預期安裝用戶端憑證。
 3. 確認憑證已與 Azure AD 上的租用戶相關聯。
-4. 確認可以從執行延伸模組的伺服器存取 https://login.microsoftonline.com/ 。
+4. 確認可以從執行延伸模組的伺服器存取 https://login.microsoftonline.com/。
 
 ---
 
@@ -315,7 +315,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>為何我會在記錄中看到 HTTP 連線錯誤，且我的所有驗證都失敗？
 
-確認可以從執行 NPS 延伸模組的伺服器存取 https://adnotifications.windowsazure.com 。
+確認可以從執行 NPS 延伸模組的伺服器存取 https://adnotifications.windowsazure.com。
 
 ---
 

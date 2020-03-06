@@ -64,7 +64,7 @@ ms.locfileid: "74773102"
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 
-vCore 大小彈性可協助您在效能層級和區域內相應增加或相應減少，而不會失去保留容量優勢。 
+vCore 大小彈性可協助您在效能層級和區域內擴大或縮小，而不會失去保留容量優勢。 
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 連絡我們
 

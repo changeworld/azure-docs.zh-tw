@@ -1,5 +1,5 @@
 ---
-title: 相應增加 Azure DevTest Labs 基礎結構
+title: 擴大 Azure DevTest Labs 基礎結構
 description: 此文章提供相應增加 Azure DevTest Labs 基礎結構的指導方針。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -20,7 +20,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 01/03/2020
 ms.locfileid: "75644829"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>相應增加 Azure DevTest Labs 基礎結構
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>擴大 Azure DevTest Labs 基礎結構
 在企業級規模實作 DevTest Labs 之前，有數個重要決策點。 了解這些高層的決策點可協助組織未來設計決策。 不過，這些決策點應該不會妨礙組織開始概念證明。 初始相應增加計劃的前三個領域如下：
 
 - 網路和安全性

@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
 ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381948"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 

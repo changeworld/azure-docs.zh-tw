@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370878"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402737"
 ---
 # <a name="supported-data-format-details"></a>支援的資料格式詳細資料
 
@@ -391,39 +391,39 @@ ms.locfileid: "78370878"
 
 掃描標題列時，資料行名稱中的任何型別資訊都會被解壓縮，並用來轉換該欄中的儲存格。 以下是具有類型值的資料行名稱範例： "ColumnName （typeName）"。 支援下列不區分大小寫的類型名稱：
 
-**有理數**
+#### <a name="numbers"></a>數字
 
-    - edm。 int64
-    - int
-    - long
-    - edm. double
-    - FLOAT
-    - double
-    - number
+- edm。 int64
+- int
+- long
+- edm. double
+- FLOAT
+- double
+- number
 
-**型**
+#### <a name="booleans"></a>布林值
 
-    - edm。布林值
-    - bool
-    - boolean
+- edm。布林值
+- bool
+- boolean
 
-**時間**
+#### <a name="dates"></a>日期
 
-    - edm. datetime
-    - date
-    - Datetime
+- edm. datetime
+- date
+- Datetime
 
-**地理位置**
+#### <a name="geography"></a>[地理位置]
 
-    - edm. geography
-    - geography
+- edm. geography
+- geography
 
-**Strings**
+#### <a name="strings"></a>字串
 
-    - edm 字串
-    - varchar
-    - text
-    - case ' 字串
+- edm 字串
+- varchar
+- text
+- case ' 字串
 
 如果沒有可從標頭解壓縮的類型資訊，而且在讀取時啟用動態輸入選項，則會個別分析每個資料格，以判斷哪一個最適合做為轉換的資料類型。
 

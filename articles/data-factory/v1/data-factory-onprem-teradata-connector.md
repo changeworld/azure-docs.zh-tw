@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929043"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387428"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure Data Factory 從 Teradata 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74929043"
 > * [第 2 版 (目前的版本)](../connector-teradata.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Teradata 連接器](../connector-teradata.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Teradata 連接器](../connector-teradata.md)。
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 Teradata 資料庫移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
@@ -67,7 +67,7 @@ ms.locfileid: "74929043"
 | 伺服器 |Teradata 伺服器的名稱。 |是 |
 | authenticationType |用來連接到 Teradata 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
 | username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |否 |
-| password |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
 | gatewayName |Data Factory 服務應該用來連接到內部部署 Teradata 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
@@ -93,9 +93,9 @@ ms.locfileid: "74929043"
 
 1. [OnPremisesTeradata](#linked-service-properties)類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [RelationalTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此範例會每個小時將資料從 Teradata 資料庫中的查詢結果複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -286,43 +286,43 @@ ms.locfileid: "74929043"
 | --- | --- |
 | Char |String |
 | Clob |String |
-| 圖形 |String |
+| Graphic |String |
 | VarChar |String |
 | VarGraphic |String |
-| Blob |Byte[] |
+| blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
-| DOUBLE |DOUBLE |
+| Double |Double |
 | 整數 |Int32 |
-| Number |DOUBLE |
+| Number |Double |
 | SmallInt |Int16 |
-| 日期 |日期時間 |
-| 時間 |時間範圍 |
+| 日期 |Datetime |
+| 時間 |TimeSpan |
 | 時區的時間 |String |
-| Timestamp |日期時間 |
+| 時間戳記 |Datetime |
 | 時區的時間戳記 |DateTimeOffset |
-| 間隔日 |時間範圍 |
-| 間隔日至小時 |時間範圍 |
-| 間隔日至分鐘 |時間範圍 |
-| 間隔日至秒鐘 |時間範圍 |
-| 間隔小時 |時間範圍 |
-| 間隔小時至分鐘 |時間範圍 |
-| 間隔小時至秒鐘 |時間範圍 |
-| 間隔分鐘 |時間範圍 |
-| 間隔分鐘至秒鐘 |時間範圍 |
-| 間隔第二 |時間範圍 |
-| 間隔年 |String |
+| Interval Day |TimeSpan |
+| 間隔日至小時 |TimeSpan |
+| 間隔日至分鐘 |TimeSpan |
+| 間隔日至秒鐘 |TimeSpan |
+| Interval Hour |TimeSpan |
+| 間隔小時至分鐘 |TimeSpan |
+| 間隔小時至秒鐘 |TimeSpan |
+| Interval Minute |TimeSpan |
+| 間隔分鐘至秒鐘 |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |String |
 | 間隔年至月 |String |
-| 間隔月 |String |
+| Interval Month |String |
 | Period(Date) |String |
 | Period(Time) |String |
 | Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
 | Period(Timestamp With Time Zone) |String |
-| xml |String |
+| Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。

@@ -84,11 +84,11 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>如果我的應用程式需要更多的功能？
 
-可以隨時相應增加和相應減少您的 App Service 方案。 這與更改方案的定價層一樣簡單。 一開始，您可以選擇較低的定價層，當您之後需要更多 App Service 功能時，再相應增加。
+可以隨時相應增加和相應減少您的 App Service 方案。 這與更改方案的定價層一樣簡單。 一開始，您可以選擇較低的定價層，當您之後需要更多 App Service 功能時，再擴大。
 
-例如，您可以開始測試**免費** App Service 方案中的 Web 應用程式，無須支付任何費用。 當您想要將[自訂 DNS 名稱](app-service-web-tutorial-custom-domain.md) 加入 Web 應用程式時，只要將您的方案相應增加至**共用**層即可。 之後，當您想要[建立 SSL](configure-ssl-bindings.md)系結時，請將您的方案相應增加至**基本**層。 當您想要有[預備環境](deploy-staging-slots.md)時，相應增加至**標準**層。 當您需要更多核心、記憶體或儲存體時，可以在同一層中相應增加到較大的 VM 大小。
+例如，您可以開始測試**免費** App Service 方案中的 Web 應用程式，無須支付任何費用。 當您想要將[自訂 DNS 名稱](app-service-web-tutorial-custom-domain.md) 加入 Web 應用程式時，只要將您的方案相應增加至**共用**層即可。 之後，當您想要[建立 SSL](configure-ssl-bindings.md)系結時，請將您的方案相應增加至**基本**層。 當您想要有[預備環境](deploy-staging-slots.md)時，相應增加至**標準**層。 當您需要更多核心、記憶體或儲存體時，可以在同一層中擴大到較大的 VM 大小。
 
-反向的運作方式也是一樣。 當您覺得不再需要更高層的功能時，可以相應減少到較低層，這樣可以節省費用。
+反向的運作方式也是一樣。 當您覺得不再需要更高層的功能時，可以縮小到較低層，這樣可以節省費用。
 
 如需有關相應增加 App Service 方案的詳細資訊，請參閱[在 Azure 中相應增加應用程式](manage-scale-up.md)。
 

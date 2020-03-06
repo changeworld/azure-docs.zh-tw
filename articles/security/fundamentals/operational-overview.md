@@ -100,7 +100,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 
 您雲端應用程式中的效能問題可能會對企業產生影響。 透過多個互連的元件和頻繁的發行，隨時都可能導致效能降低。 此外，如果您正在開發應用程式，您的使用者通常會探索到您在測試時未發現的問題。 您應該立即知道這些問題，並應具備可用以診斷和修正問題的工具。
 
-[Azure 監視器](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)是用以監視 Azure 上執行之服務的基本工具。 它會提供關於服務輸送量及周遭環境之基礎結構等級的資料。 如果您在 Azure 中管理所有應用程式，並決定要相應增加或減少資源，Azure 監視器就是起點。
+[Azure 監視器](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)是用以監視 Azure 上執行之服務的基本工具。 它會提供關於服務輸送量及周遭環境之基礎結構等級的資料。 如果您在 Azure 中管理所有應用程式，並決定要擴大或縮小資源，Azure 監視器就是起點。
 
 您還可以使用監視資料來取得應用程式的深入見解。 這些知識可協助您提升應用程式效能或維護性，或是將原本需要手動介入的動作自動化。
 

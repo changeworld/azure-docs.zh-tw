@@ -33,7 +33,7 @@ ms.locfileid: "77560434"
 
 1. 在 [相應**增加**] 視窗中，您會看到叢集可用的 sku 清單。 例如，在下圖中，只有四個 Sku 可供使用。
 
-    ![相應增加](media/manage-cluster-vertical-scaling/scale-up.png)
+    ![擴大](media/manage-cluster-vertical-scaling/scale-up.png)
 
     Sku 已停用，因為它們是目前的 SKU，或在叢集所在的區域中無法使用。
 

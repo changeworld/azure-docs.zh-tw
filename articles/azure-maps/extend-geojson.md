@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368595"
 ---
 # <a name="extended-geojson-geometries"></a>擴充的 GeoJSON 幾何
 
@@ -39,7 +39,7 @@ Azure 地圖服務提供一份強大的 Api 清單，可供您在內和地理功
 
 使用 `GeoJSON Feature` 物件表示的 `Circle` geometry__必須__包含下列座標和屬性：
 
-- Center
+- 中心
 
     圓形的中心是使用 `GeoJSON Point` 物件來表示。
 

@@ -12,11 +12,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368025"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386048"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
@@ -57,7 +57,7 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 
 - **「隨用隨付方案」功能授權。** 您也可以取得其他功能授權，例如 Azure Active Directory 企業對消費者 (B2C)。 B2C 可協助您提供適用於消費者面向應用程式的身分識別和存取管理解決方案。 如需詳細資訊，請參閱 [Azure Active Directory B2C 文件](../../active-directory-b2c/index.yml)。
 
-如需如何將 Azure 訂用帳戶關聯至 Azure AD 的詳細資訊，請參閱[操作說明：將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)，以及如需如何將授權指派給使用者的詳細資訊，請參閱[操作說明：指派或移除 Azure Active Directory 授權](license-users-groups.md)。
+如需如何讓 Azure 訂用帳戶與 Azure AD 建立關聯的詳細資訊，請參閱[如何：關聯或新增 Azure 訂用帳戶到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)，如需如何將授權指派給使用者的詳細資訊，請參閱[做法：指派或移除 Azure Active Directory 授權](license-users-groups.md)。
 
 ## <a name="terminology"></a>詞彙
 

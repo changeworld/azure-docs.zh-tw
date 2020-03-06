@@ -80,7 +80,7 @@ Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管
 
 如果您需要的已安裝 Log Analytics 代理程式少於實際的節點數，或是您正透過新增更多 VM 來相應增加虛擬機器擴展集，則可透過調整 `msoms` 服務來達成。
 
-您可以移至 [Marathon] 或 [DC/OS UI Services]\(DC/OS UI 服務) 索引標籤來擴充節點數。
+您可以移至 [Marathon] 或 [DC/OS UI Services]\(DC/OS UI 服務) 索引標籤來擴充大節點數。
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 

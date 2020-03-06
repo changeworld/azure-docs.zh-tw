@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770470"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385396"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者 
 本主題說明如在「適用於 MySQL 的 Azure 資料庫」伺服器中建立使用者。

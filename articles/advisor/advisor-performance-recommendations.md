@@ -55,9 +55,9 @@ Advisor 會識別即將達到其延展性目標的儲存體帳戶所包含的虛
 
 Advisor 會識別不含最新[資料表統計資料](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)的資料表，以及建立或更新資料表統計資料的建議。 SQL 資料倉儲查詢最佳化工具會使用最新的統計資料，來估計基數或查詢結果中的資料列數目，以利其建立高品質的查詢計劃來取得更快速的效能。
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>藉由相應增加將 SQL 資料倉儲資料表的快取使用率最佳化，以提升查詢效能
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>藉由擴大將 SQL 資料倉儲資料表的快取使用率最佳化，以提升查詢效能
 
-Azure Advisor 會偵測您的 SQL 資料倉儲是否有快取使用百分比偏高、命中百分比偏低的情形。 這種情況表示快取收回率偏高，而可能會影響到您 SQL 資料倉儲的效能。 Advisor 會建議您相應增加 SQL 資料倉儲，以確保能配置足夠的快取容量供工作負載使用。
+Azure Advisor 會偵測您的 SQL 資料倉儲是否有快取使用百分比偏高、命中百分比偏低的情形。 這種情況表示快取收回率偏高，而可能會影響到您 SQL 資料倉儲的效能。 Advisor 會建議您擴大 SQL 資料倉儲，以確保能配置足夠的快取容量供工作負載使用。
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>將 SQL 資料倉儲資料表轉換為複寫資料表，以提升查詢效能
 

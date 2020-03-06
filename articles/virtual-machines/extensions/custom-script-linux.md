@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380973"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -110,19 +110,19 @@ Linux 的自訂指令碼擴充功能將在擴充功能支援的擴充功能 OS �
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 | 資料型別 | 
+| 名稱 | 值 / 範例 | 資料類型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| 類型 | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | 字串 |
+| type | CustomScript | 字串 |
 | typeHandlerVersion | 2.1 | int |
-| fileUris (例如) | https://github.com/MyProject/Archive/MyPythonScript.py | 陣列 |
-| commandToExecute (例如) | python MyPythonScript.py \<my-param1 > | string |
-| 指令碼 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| fileUris (例如) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute (例如) | python MyPythonScript.py \<my-param1 > | 字串 |
+| 指令碼 (script) | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字串 |
 | skipDos2Unix (範例) | false | boolean |
 | timestamp (範例) | 123456789 | 32 位元整數 |
-| storageAccountName (例如) | examplestorageacct | string |
-| storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (例如) | examplestorageacct | 字串 |
+| storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字串 |
 | Microsoft.managedidentity （例如） | {} 或 {"clientId"： "31b403aa-c364-4240-a7ff-d85fb6cd7232"} 或 {"objectId"： "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | json 物件 |
 
 ### <a name="property-value-details"></a>屬性值詳細資料

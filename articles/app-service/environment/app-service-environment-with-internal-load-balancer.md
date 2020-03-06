@@ -111,7 +111,7 @@ ILB ASE 可讓您的應用程式與網路隔離。 app 無法透過網際網路�
 ![][5]
 
 #### <a name="general-ilb-ase-management"></a>一般 ILB ASE 管理
-管理 ILB ASE 通常大部分與管理 ASE 相同。 您必須相應增加您的背景工作集區來裝載更多 ASP 執行個體，並相應增加您的前端伺服器，以處理增加的 HTTP/HTTPS 流量。 如需管理 ASE 設定的一般資訊，請參閱設定[App Service 環境][ASEConfig]。 
+管理 ILB ASE 通常大部分與管理 ASE 相同。 您必須擴大您的背景工作集區來裝載更多 ASP 執行個體，並擴大您的前端伺服器，以處理增加的 HTTP/HTTPS 流量。 如需管理 ASE 設定的一般資訊，請參閱設定[App Service 環境][ASEConfig]。 
 
 其他管理項目是憑證管理和 DNS 管理。 在建立 ILB ASE 之後，您必須取得並上傳針對 HTTPS 使用的憑證，並在它到期之前將它取代。 因為 Azure 擁有基底網域，所以可以使用外部 VIP 提供 ASE 的憑證。 因為 ILB ASE 所使用的子網域可以是任何項目，所以您必須提供您自己的 HTTPS 憑證。 
 

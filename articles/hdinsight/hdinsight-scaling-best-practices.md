@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389521"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -126,7 +126,7 @@ Microsoft 提供下列公用程式來調整叢集：
 yarn application -kill <application_id>
 ```
 
-例如，
+例如：
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

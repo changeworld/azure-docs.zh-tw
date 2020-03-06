@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
 ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382924"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引子 API
 
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [影片索引子概觀](video-indexer-overview.md)
 - [區域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

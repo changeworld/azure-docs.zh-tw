@@ -1,30 +1,29 @@
 ---
 title: 優化 Azure 監視器中的記錄查詢
 description: 在 Azure 監視器中優化記錄查詢的最佳作法。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/28/2019
+ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589840"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196649"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
-Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存及管理您的記錄和查詢。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
+Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至適當的 ADX 叢集，以儲存工作區資料。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
 
-大部分的技術都是直接在 Azure 資料總管上執行的查詢常見，而且 Azure 監視器記錄，不過這裡討論的是幾個獨特的 Azure 監視器記錄考慮。 如需更多 Azure 資料總管優化秘訣，請參閱[查詢最佳做法](/azure/kusto/query/best-practices)。
+大部分的技術都是直接在 Azure 資料總管和 Azure 監視器記錄檔上執行的查詢常見，不過這裡討論的是幾個獨特的 Azure 監視器記錄考慮。 如需更多 Azure 資料總管優化秘訣，請參閱[查詢最佳做法](/azure/kusto/query/best-practices)。
 
 優化的查詢將會：
 
 - 執行的速度更快，縮短查詢執行的整體持續時間。
 - 較小的可能會受到節流或拒絕。
 
-您應該特別注意用於週期性和暴增使用量的查詢，例如儀表板和 Power BI。 在這些情況下，無效查詢的影響相當重要。
+您應該特別注意用於週期性和暴增使用量的查詢，例如儀表板、警示、Logic Apps 和 Power BI。 在這些情況下，無效查詢的影響相當重要。
 
 ## <a name="query-performance-pane"></a>查詢效能窗格
 在 Log Analytics 中執行查詢之後，請按一下查詢結果上方的向下箭號，以查看 [查詢效能] 窗格，其中顯示查詢的數個效能指標的結果。 下一節將說明這些效能指標。
@@ -38,11 +37,11 @@ Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer
 
 - [CPU 總計](#total-cpu)：用來跨所有計算節點處理查詢的整體計算。 它代表用於計算、剖析和資料提取的時間。 
 
-- [用於已處理查詢的資料](#data-used-for-query-processing)：存取來處理查詢的整體資料。 受目標資料表的大小、使用的時間範圍、套用的篩選，以及所參考的資料行數目所影響。
+- [用於已處理查詢的資料](#data-used-for-processed-query)：存取來處理查詢的整體資料。 受目標資料表的大小、使用的時間範圍、套用的篩選，以及所參考的資料行數目所影響。
 
-- 已[處理之查詢的時間範圍](#time-range-of-the-data-processed)：最新和最舊的資料之間的間距，這是為了處理查詢而存取的。 受查詢明確時間範圍和套用的篩選所影響。 因為資料分割，可能會大於明確的時間範圍。
+- 已[處理之查詢的時間範圍](#time-span-of-the-processed-query)：最新和最舊的資料之間的間距，這是為了處理查詢而存取的。 受到針對查詢所指定之明確時間範圍的影響。
 
-- 已[處理資料的存留期](#age-of-the-oldest-data-used)：現在與被存取來處理查詢的最舊資料之間的差距。 它會高度影響資料提取的效率。
+- 已[處理資料的存留期](#age-of-processed-data)：現在與被存取來處理查詢的最舊資料之間的差距。 它會高度影響資料提取的效率。
 
 - [工作區數目](#number-of-workspaces)：在查詢處理期間，由於隱含或明確選取範圍而存取的工作區數目。
 
@@ -123,7 +122,7 @@ Perf
 by CounterPath
 ```
 
-需要大量計算的條件或擴充資料行可能也會影響 CPU 耗用量。 所有簡單的字串比較（例如[等號 = =](/azure/kusto/query/datatypes-string-operators)和[startswith](/azure/kusto/query/datatypes-string-operators) ）大約會影響相同的 CPU，而先進的文字比對會有更大的影響。 具體而言，has 運算子會更有效率地包含運算子。 由於字串處理技術的緣故，尋找長度超過四個字元的字串比短字串更有效率。
+需要大量計算的條件或擴充資料行可能也會影響 CPU 耗用量。 所有簡單的字串比較（例如[等號 = =](/azure/kusto/query/datatypes-string-operators)和[startswith](/azure/kusto/query/datatypes-string-operators) ）大約會影響相同的 CPU，而先進的文字比對會有更大的影響。 具體而言， [has 運算子會](/azure/kusto/query/datatypes-string-operators)更有效率地[包含](/azure/kusto/query/datatypes-string-operators)運算子。 由於字串處理技術的緣故，尋找長度超過四個字元的字串比短字串更有效率。
 
 例如，下列查詢會產生類似的結果，視電腦命名原則而定，而第二個則更有效率：
 
@@ -151,7 +150,7 @@ Heartbeat
 > 此指標只會顯示來自立即叢集的 CPU。 在多重區域查詢中，它只會代表其中一個區域。 在多工作區查詢中，它可能不會包含所有工作區。
 
 
-## <a name="data-used-for-query-processing"></a>用於查詢處理的資料
+## <a name="data-used-for-processed-query"></a>用於已處理查詢的資料
 
 查詢處理的關鍵因素是掃描並用於查詢處理的資料量。 Azure 資料總管使用積極的優化，相較于其他資料平臺，大幅減少資料量。 儘管如此，查詢中也有重要的因素會影響所使用的資料量。
 在 Azure 監視器記錄檔中，會使用**TimeGenerated**資料行做為資料的索引方式。 將**TimeGenerated**值限制為盡可能縮小範圍，可大幅限制必須處理的資料量，進而大幅改善查詢效能。
@@ -194,7 +193,7 @@ SecurityEvent
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
 
-因為 Azure 資料總管是單欄式資料存放區，所以每個資料行的抓取都與其他欄位無關。 直接抓取的資料行數目會影響整體資料量。 您應該只在輸出結果或[投影](/azure/kusto/query/projectoperator)特定資料行時， [](/azure/kusto/query/summarizeoperator)將所需的資料行包含在輸出中。 Azure 資料總管有數個優化功能可減少抓取的資料行數目。 如果它判斷不需要資料行（例如，在 [[摘要](/azure/kusto/query/summarizeoperator)] 命令中不會參考它），就不會將它取出。
+因為 Azure 資料總管是單欄式資料存放區，所以每個資料行的抓取都與其他欄位無關。 直接抓取的資料行數目會影響整體資料量。 您應該只在輸出[匯總](/azure/kusto/query/summarizeoperator)結果或[投影](/azure/kusto/query/projectoperator)特定資料行時，將所需的資料行包含在輸出中。 Azure 資料總管有數個優化功能可減少抓取的資料行數目。 如果它判斷不需要資料行（例如，在 [[摘要](/azure/kusto/query/summarizeoperator)] 命令中不會參考它），就不會將它取出。
 
 例如，第二個查詢可能會處理三倍以上的資料，因為它需要提取不是一欄，但有三個：
 
@@ -209,7 +208,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>已處理資料的時間範圍
+## <a name="time-span-of-the-processed-query"></a>已處理查詢的時間範圍
 
 Azure 監視器記錄中的所有記錄都會根據**TimeGenerated**資料行進行分割。 存取的資料分割數目與時間範圍直接相關。 縮短時間範圍是確保提示查詢執行的最有效率方式。
 
@@ -259,14 +258,43 @@ by Computer
 ) on Computer
 ```
 
+這項錯誤的另一個範例是在執行等位資料表的聯[集](/azure/kusto/query/unionoperator?pivots=azuremonitor)之後，進行時間範圍篩選。 執行聯集時，每個子查詢的範圍應為。 您可以使用[let](/azure/kusto/query/letstatement)語句來確保範圍的一致性。
+
+例如，下列查詢會掃描 [*心跳* *] 和*[效能] 資料表中的所有資料，而不只是過去1天：
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+此查詢應固定如下：
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
+```
+
 量測一定會大於指定的實際時間。 例如，如果查詢的篩選為7天，則系統可能會掃描7.5 或8.1 天。 這是因為系統會將資料分割成變數大小的區塊。 為了確保系統會掃描所有相關記錄，它會掃描可能涵蓋數小時甚至超過一天的整個分割區。
 
 在幾種情況下，系統無法提供精確的時間範圍測量。 在大部分的情況下，如果查詢的範圍少於一天或在多個工作區查詢中，就會發生這種情況。
 
-> [!NOTE]
+
+> [!IMPORTANT]
 > 此指標只會顯示立即叢集中所處理的資料。 在多重區域查詢中，它只會代表其中一個區域。 在多工作區查詢中，它可能不會包含所有工作區。
 
-## <a name="age-of-the-oldest-data-used"></a>使用的最舊資料的存留期
+## <a name="age-of-processed-data"></a>已處理資料的存留期
 Azure 資料總管使用數個儲存層：記憶體內部、本機 SSD 磁片和較慢的 Azure Blob。 較新的資料，較高的機率是以較小的延遲儲存在更具效能的層級，減少查詢持續時間和 CPU。 除了資料本身之外，系統也具有中繼資料的快取。 資料越舊，其中繼資料的快取機率就越低。
 
 雖然有些查詢需要使用舊資料，但在某些情況下，錯誤會使用舊資料。 當執行查詢時未在其中繼資料中提供時間範圍，而且並非所有資料表參考都包含**TimeGenerated**資料行的篩選準則時，就會發生這種情況。 在這些情況下，系統會掃描儲存在該資料表中的所有資料。 當資料保留時間很長時，它可以涵蓋較長的時間範圍，以及與資料保留週期一樣舊的資料。
@@ -305,7 +333,7 @@ Azure 資料總管使用數個儲存層：記憶體內部、本機 SSD 磁片和
 > 在某些多個工作區的情況下，CPU 和資料量測將不會正確，而且只會代表少數工作區的測量。
 
 ## <a name="parallelism"></a>平行處理原則
-Azure 監視器記錄會使用 Azure 資料總管的大型叢集來執行查詢。 這些叢集的規模不盡相同，可能會取得最多140個計算節點。 系統會根據工作區放置邏輯和容量，自動調整叢集規模。
+Azure 監視器記錄會使用 Azure 資料總管的大型叢集來執行查詢，而這些叢集的規模會有所不同，可能會取得多達數十個計算節點。 系統會根據工作區放置邏輯和容量，自動調整叢集規模。
 
 為了有效率地執行查詢，它會進行分割，並根據其處理所需的資料散發至計算節點。 在某些情況下，系統無法有效率地執行此動作。 這可能會導致查詢的長時間。 
 

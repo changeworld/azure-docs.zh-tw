@@ -20,12 +20,12 @@ ms.locfileid: "66814881"
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 入口網站進行調整
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽**容器服務**，然後按一下您想要修改的容器服務。
-2. 在 [容器服務]  刀鋒視窗中，按一下 [代理程式]  。
-3. 在 [VM 計數]  中，輸入所需的代理程式節點數目。
+2. 在 [容器服務] 刀鋒視窗中，按一下 [代理程式] 。
+3. 在 [VM 計數] 中，輸入所需的代理程式節點數目。
 
     ![在入口網站中調整集區](./media/container-service-scale/container-service-scale-portal.png)
 
-4. 若要儲存組態時，請按一下 [儲存]  。
+4. 若要儲存組態時，請按一下 [儲存] 。
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 進行調整
 

@@ -48,7 +48,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 > [!IMPORTANT] 
 > 如果您沒有看到 **P1V2**、**P2V2** 和 **P3V2** 選項，或是選項呈現灰色，則 **PremiumV2** 可能無法在包含 App Service 方案的基礎 App Service 部署中使用。 如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>將現有應用程式相應增加為 PremiumV2 層
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>將現有應用程式擴大為 PremiumV2 層
 
 在將現有應用程式相應增加為 **PremiumV2** 層之前，請確定 **PremiumV2** 可供使用。 如需資訊，請參閱 [PremiumV2 可用性](#availability)。 如果無法使用，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
@@ -70,11 +70,11 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 ### <a name="if-you-get-an-error"></a>如果您收到錯誤
 
-如果基礎 App Service 部署不支援 PremiumV2，則某些 App Service 方案會無法相應增加為 PremiumV2 層。  如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
+如果基礎 App Service 部署不支援 PremiumV2，則某些 App Service 方案會無法擴大為 PremiumV2 層。  如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>從不支援的資源群組與區域組合中相應增加
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>從不支援的資源群組與區域組合中擴大
 
 如果您的應用程式在無法使用 **PremiumV2** 的 App Service 部署中執行；或是，如果您的應用程式在目前不支援 **PremiumV2** 的區 域中執行，則您必須重新部署應用程式，才能利用 **PremiumV2** 的優勢。  您有兩個選擇：
 

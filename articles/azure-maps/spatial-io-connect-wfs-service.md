@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0f50fe51f9c1cdef3c3f07c91640f5b9b9616229
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370956"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402764"
 ---
 # <a name="connect-to-a-wfs-service"></a>連接到工作流程服務
 
@@ -91,7 +91,7 @@ Web 功能服務（工作流程）是一種 web 服務，用來查詢具有標�
 
 <br/>
 
-<iframe height='700' scrolling='no' title= '工作流程 service explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>工作流程服務瀏覽器</a>。
+<iframe height='700' style='width: 100%;' scrolling='no' title= '工作流程 service explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>工作流程服務瀏覽器</a>。
 </iframe>
 
 您也可以使用 proxy 服務，載入未啟用 CORs 的網域上所裝載的資源。 您會先定義一個變數來保存 proxy 服務 url，並為工作流程用戶端設定 `proxyService` 選項。 若要為使用者呈現 proxy 服務選項，請將使用者輸入新增至 UI。 當您按一下輸入時，載入服務 url。 下列程式碼片段示範如何使用 proxy 服務。

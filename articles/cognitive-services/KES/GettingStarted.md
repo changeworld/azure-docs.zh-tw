@@ -217,8 +217,8 @@ ms.locfileid: "59523319"
 
 * [http://localhost:8000/interpret?query=papers by susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
 * [http://localhost:8000/interpret?query=papers by susan t d&complete=1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
-* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
-* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
+* [http://localhost:8000/evaluate?expr=Composite(Author.Name== 'susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
+* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name== 'susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
 在 Azure 之外，[`kes.exe host_service`](CommandLine.md#host_service-command) 限制為最多 10,000 個物件的索引。 其他限制則包括每秒 10 個要求的 API 速率，以及在處理序自動終止之前，總共 1000 個要求。 若要略過這些限制，請從 [Azure 中的 Windows VM](../../../articles/virtual-machines/windows/quick-create-portal.md) 內執行命令，或使用 [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) 命令部署至 Azure 雲端服務。 如需詳細資訊，請參閱部署服務。
 

@@ -51,7 +51,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 在 GitHub 的 Azure DataScienceVM 存放庫中也可取得[可掛接 Azure 檔案服務共用的指令碼](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh)。 此指令碼會在參數檔案中指定的掛接點掛接 Azure 檔案服務共用。 此指令碼也會在初始使用者的主目錄中建立所掛接磁碟機的軟式連結。 Azure 檔案儲存體共用中的使用者特定筆記本目錄會與 `$HOME/notebooks/remote` 目錄進行軟連結，讓使用者可以存取、執行及儲存其 Jupyter 筆記本。 在虛擬機器上建立其他使用者，以將每個使用者的 Jupyter 工作區指向 Azure 檔案服務共用時，也可以使用相同的慣例。
 
-虛擬機器擴展集支援自動調整。 您可以設定建立其他實例的時機，以及何時要相應減少實例的相關規則。 例如，您可以相應減少為零個執行個體，以在完全不使用 VM 時節省雲端硬體使用成本。 虛擬機器擴展集的文件頁面會提供[自動調整](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的詳細步驟。
+虛擬機器擴展集支援自動調整。 您可以設定建立其他實例的時機，以及何時要相應減少實例的相關規則。 例如，您可以縮小為零個執行個體，以在完全不使用 VM 時節省雲端硬體使用成本。 虛擬機器擴展集的文件頁面會提供[自動調整](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的詳細步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

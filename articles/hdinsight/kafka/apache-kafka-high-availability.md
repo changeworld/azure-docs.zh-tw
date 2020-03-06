@@ -34,7 +34,7 @@ ms.locfileid: "75435298"
 
 * 建立新主題或磁碟分割時
 
-* 當您相應增加叢集時
+* 當您擴大叢集時
 
 ## <a name="replication-factor"></a>複寫因子
 

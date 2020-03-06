@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111425"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381807"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>篩選搜尋回應所包含的答案  
 
@@ -53,7 +53,7 @@ ms.locfileid: "74111425"
 
 您可以使用[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter)查詢參數（以逗號分隔的答案清單）來篩選 Bing 在回應中包含的答案類型（例如影像、影片和新聞）。 如果 Bing 找到相關內容，回應就會包含在回應中。 
 
-若要從回應中排除特定答案（例如影像），請在答案類型前面加上 `-` 字元。 例如︰
+若要從回應中排除特定答案（例如影像），請在答案類型前面加上 `-` 字元。 例如：
 
 ```
 &responseFilter=-images,-videos
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > 視查詢而定，如果您使用 `site:` 查詢運算子，不論 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 設定為何，回應都有可能包含成人內容。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才得以使用 `site:`。
 
-### <a name="freshness"></a>更新時間
+### <a name="freshness"></a>常
 
 若要將 web 回應結果限制在特定期間內 Bing 發現的網頁，請將 [[時效性](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness)查詢參數] 設定為下列其中一個不區分大小寫值：
 

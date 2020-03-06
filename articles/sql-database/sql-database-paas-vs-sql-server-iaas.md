@@ -37,7 +37,7 @@ ms.locfileid: "73821340"
 
 根據答案，您會有下列選項：
 
-- [**SQL 資料庫**](sql-database-technical-overview.md)：最適合想要使用最新穩定 SQL Server 功能，且在開發和行銷方面有時間限制的現代化雲端應用程式。 一個完全受控的 SQL 資料庫引擎，以最新穩定版的 SQL Server Enterprise 為基礎。 這是裝載在 Azure 雲端的關聯式資料庫即服務 (DBaaS)，其產業類別屬於「平台即服務 (PaaS)」。 SQL Database 有多個部署選項，而且每個部署選項都會建立在 Microsoft 所擁有、託管及維護的標準化硬體和軟體上。 使用 SQL Server，您可以使用需要大量設定的內建功能（內部部署或 Azure 虛擬機器中的功能）。 使用 SQL Database 時，您可以隨用隨付，並使用相應增加或相應放大選項以取得不需中斷的更強大功能。 SQL Database 有一些 SQL Server 無法使用的額外功能，例如內建的高可用性、智慧和管理。
+- [**SQL 資料庫**](sql-database-technical-overview.md)：最適合想要使用最新穩定 SQL Server 功能，且在開發和行銷方面有時間限制的現代化雲端應用程式。 一個完全受控的 SQL 資料庫引擎，以最新穩定版的 SQL Server Enterprise 為基礎。 這是裝載在 Azure 雲端的關聯式資料庫即服務 (DBaaS)，其產業類別屬於「平台即服務 (PaaS)」。 SQL Database 有多個部署選項，而且每個部署選項都會建立在 Microsoft 所擁有、託管及維護的標準化硬體和軟體上。 使用 SQL Server，您可以使用需要大量設定的內建功能（內部部署或 Azure 虛擬機器中的功能）。 使用 SQL Database 時，您可以隨用隨付，並使用擴大或擴增選項以取得不需中斷的更強大功能。 SQL Database 有一些 SQL Server 無法使用的額外功能，例如內建的高可用性、智慧和管理。
 
 
   資料庫提供下列部署選項：

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554833"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361083"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>將作用中且經過訓練的應用程式發佈至預備或生產端點
 
@@ -38,8 +38,8 @@ ms.locfileid: "74554833"
 
 在快顯視窗顯示時選取正確的位置： 
 
-* 預備環境
-* 生產環境 
+* 預備
+* Production 
 
 藉由使用這兩個發佈位置，可讓您在已發行的端點或相同版本的兩個不同端點上，使用應用程式的兩個不同版本。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "74554833"
 
 選取位置之後，請設定下列各內容的發佈設定：
 
-* 情緒分析
+* 情感分析
 * 拼寫更正-僅限 v2 預測端點
 * 語音預備 
 
@@ -69,7 +69,7 @@ ms.locfileid: "74554833"
 
 如果您需要端點 URL，請選取此連結。 您也可以在頂端功能表中選取 [**管理**]，然後選取左側功能表中的 [ **Azure 資源**]，以取得端點 url。 
 
-## <a name="sentiment-analysis"></a>情緒分析
+## <a name="sentiment-analysis"></a>情感分析
 
 <a name="enable-sentiment-analysis"></a>
 

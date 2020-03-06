@@ -50,7 +50,7 @@ ms.locfileid: "73823647"
 
 ## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>是否可以在分區集中針對個別的分區使用不同的 SQL Database 版本
 
-可以，分區是個別的資料庫，因此可以有一個分區是「高階」版，另一個是「標準」版。 此外，在分區存留期間，分區的版本可以多次相應增加或相應減少。
+可以，分區是個別的資料庫，因此可以有一個分區是「高階」版，另一個是「標準」版。 此外，在分區存留期間，分區的版本可以多次擴大或縮減。
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>分割合併工具是否會在分割或合併作業期間佈建 (或刪除) 資料庫
 

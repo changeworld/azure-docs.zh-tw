@@ -58,7 +58,7 @@ Microsoft Azure Cache for Redis 可在以下層級使用：
 
 每一個階層都有不同的功能和價格。 本指南稍後將探討這些功能，如需定價的詳細資訊，請參閱 [快取定價詳細資料](https://azure.microsoft.com/pricing/details/cache/)。
 
-移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 如需選擇合適的 Azure Cache for Redis 供應項目的詳細資訊，請參閱[應該使用哪個 Azure Cache for Redis 供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
+移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮減規模。 如需選擇合適的 Azure Cache for Redis 供應項目的詳細資訊，請參閱[應該使用哪個 Azure Cache for Redis 供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="create-a-cache"></a>建立快取
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

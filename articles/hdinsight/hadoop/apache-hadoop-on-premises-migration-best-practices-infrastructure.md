@@ -152,7 +152,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用叢集的相應增加和相應減少功能
 
-HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱
+HDInsight 具有彈性，可讓您選擇擴大和縮小叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱
 
 * [調整 HDInsight](../hdinsight-scaling-best-practices.md)叢集。
 * [調整叢集規模](../hdinsight-administer-use-portal-linux.md#scale-clusters)。

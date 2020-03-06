@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359113"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分區化多租用戶 SQL 資料庫的 SaaS 應用程式中管理結構描述
 
@@ -40,7 +40,7 @@ Azure SQL Database 的[彈性作業](elastic-jobs-overview.md) 功能可用來�
 > * 更新所有租用戶資料庫中的參考資料。
 > * 針對所有租用戶資料庫中的資料表建立索引。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 必須已部署 Wingtip Tickets 多租用戶資料庫應用程式：
     - 如需相關指示，請參閱第一個教學課程，其中會介紹 Wingtip Tickets SaaS 多租戶資料庫應用程式：<br />[部署及探索使用 Azure SQL Database 的分區化多租用戶應用程式](saas-multitenantdb-get-started-deploy.md)。
@@ -88,7 +88,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。
 
 1. 開啟 SSMS 並連線到租用戶伺服器：tenants1-dpt-*user&lt;.database.windows.net&gt;*
-1. 若要確認目前「尚未」包含 Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部)，請瀏覽至 tenants1-dpt-*user* *&lt; 伺服器上的 contosoconcerthall&gt;* 資料庫，並查詢 VenueTypes資料表。
+1. 若要確認目前**未**包含*Motorcycle 比賽*和*Swimming 俱樂部*，請流覽至*tenants1-tenants1-dpt user-&lt;使用者&gt;* 伺服器上的*contosoconcerthall*資料庫，然後查詢*VenueTypes*資料表。
 
 
 

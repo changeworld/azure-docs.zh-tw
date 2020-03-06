@@ -52,7 +52,7 @@ App Service 支援兩種認證類型，用於本機 Git 部署和 FTP/S 部署�
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>當我嘗試 FTP 我的檔案時，如何解決「FTP 錯誤 550 - 磁碟空間不足」？
 
-如果您看到此訊息，可能是因為您的 web 應用程式服務方案中的磁片配額不足。 您可能需要根據您的磁碟空間需求，相應增加至較高服務層級。 如需定價方案和資源限制的詳細資訊，請參閱 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/)。
+如果您看到此訊息，可能是因為您的 web 應用程式服務方案中的磁片配額不足。 您可能需要根據您的磁碟空間需求，擴大至較高服務層級。 如需定價方案和資源限制的詳細資訊，請參閱 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何為 App Service Web 應用程式設定持續部署？
 

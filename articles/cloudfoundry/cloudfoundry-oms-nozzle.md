@@ -212,12 +212,12 @@ cf apps
 
 您應該從至少兩個 Nozzle 執行個體開始。 Firehose 會將工作負載平均分配給所有 Nozzle 執行個體。
 若要確定 Nozzle 可以從 Firehose 跟上資料流量，請設定 **slowConsumerAlert** 的警示 (列在上一節「建立警示規則」中)。 在您收到警示之後，請遵循[緩慢 Nozzle 指引](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz)來判斷是否需要調整。
-若要相應增加 Nozzle，請使用 Apps Manager 或 CF CLI 來增加 Nozzle 的執行個體數目或記憶體/磁碟資源。
+若要擴大 Nozzle，請使用 Apps Manager 或 CF CLI 來增加 Nozzle 的執行個體數目或記憶體/磁碟資源。
 
 ### <a name="scale-the-loggregator"></a>調整 Loggregator
 
 Loggregator 能傳送 **LGR** 記錄訊息來指出記錄流程發生的問題。 您可以監控警示來判斷 Loggregator 是否需要相應增加。
-若要將 Loggregator 相應增加，可以增加 Doppler 緩衝區大小，或是在 CF 資訊清單中新增額外的 Doppler 伺服器執行個體。 如需詳細資訊，請參閱[調整 Loggregator 的指引](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)。
+若要將 Loggregator 擴大，可以增加 Doppler 緩衝區大小，或是在 CF 資訊清單中新增額外的 Doppler 伺服器執行個體。 如需詳細資訊，請參閱[調整 Loggregator 的指引](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)。
 
 ## <a name="update"></a>更新
 

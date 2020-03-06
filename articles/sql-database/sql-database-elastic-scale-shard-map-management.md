@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387783"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分區對應管理員相應放大資料庫
 
@@ -57,8 +57,8 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 | long |long |
 | guid |uuid |
 | byte[]  |byte[] |
-| datetime | timestamp |
-| timespan | duration|
+| Datetime | timestamp |
+| 時間範圍 | duration|
 | datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>清單和範圍分區對應
@@ -69,7 +69,7 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 
 **分區**包含 **Shardlet**，Shardlet 至分區的對應是由分區對應所維護。 **清單分區對應** 是個別索引鍵值 (識別 Shardlet) 與資料庫 (做為分區) 之間的關聯。  **清單對應** 十分明確，而且不同的索引鍵值可以對應到相同資料庫。 例如，索引鍵值 1 對應到 Database A，而索引鍵值 3 和 6 都會對應到 Database B。
 
-| 金鑰 | 分區位置 |
+| Key | 分區位置 |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -83,7 +83,7 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 
 例如， **[0, 100)** 包含所有大於或等於 0 且小於 100 的整數。 請注意，多個範圍可指向相同的資料庫，而且可支援不相連的範圍 (例如 [100, 200) 和 [400, 600) 都指向下列範例中的資料庫 C。)
 
-| 金鑰 | 分區位置 |
+| Key | 分區位置 |
 | --- | --- |
 | [1,50) |Database_A |
 | [50,100) |Database_B |
@@ -261,7 +261,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 ## <a name="adding-a-shard"></a>加入分區
 
-對於已經存在的分區對應，應用程式通常需要加入新的分區，以處理預期來自新的索引鍵或索引鍵範圍的資料。 例如，以租用戶識別碼分區化的應用程式，可能需要為新的租用戶佈建新的分區，或者，每月分區化的資料可能需要在每個新月份開始之前佈建新的分區。
+對於已經存在的分區對應，應用程式通常需要新增分區，以處理預期來自新的索引鍵或索引鍵範圍的資料。 例如，以租用戶識別碼分區化的應用程式，可能需要為新的租用戶佈建新的分區，或者，每月分區化的資料可能需要在每個新月份開始之前佈建新的分區。
 
 如果索引鍵值的新範圍尚不屬於現有的對應，而且不需要移動任何資料，則加入新的分區並將新的索引鍵或範圍與該分區產生關聯就很簡單。 如需有關加入新分區的詳細資訊，請參閱 [加入新的分區](sql-database-elastic-scale-add-a-shard.md)。
 

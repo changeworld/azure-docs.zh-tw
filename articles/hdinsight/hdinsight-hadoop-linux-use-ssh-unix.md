@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 31e85876d60ae6fcd8f3b29633506d698a323acb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386385"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 連線到 HDInsight (Apache Hadoop)
 
@@ -21,7 +21,7 @@ ms.locfileid: "78192943"
 
 下表包含使用 SSH 用戶端連接到 HDInsight 時所需的位址和埠資訊：
 
-| 地址 | Port | 連線到... |
+| 位址 | 連接埠 | 連線到... |
 | ----- | ----- | ----- |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | 主要前端節點 |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | 次要前端節點 |

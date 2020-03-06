@@ -65,7 +65,7 @@ ms.locfileid: "74230555"
 
 將現有函式程式碼取代為下列採用您所選語言的程式碼：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 使用下列程式碼來取代現有的 C# 函式：
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用下列程式碼來取代現有的 JavaScript 函式：
 
