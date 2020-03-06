@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988340"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359472"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -30,7 +30,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
 
-重要提醒是，您必須遵守使用影片索引子時的所有相關法律，而且不得使用影片索引子或任何其他 Azure 服務，以違反其他人的權利或可能會對其他人造成傷害的方式。 在將任何影片（包括任何生物特徵辨識資料）上傳到影片索引子服務以進行處理和儲存之前，您必須在影片的個人中擁有所有適當的許可權，包括所有適當的同意。 若要瞭解影片索引子中的合規性、隱私權和安全性，請閱讀 Microsoft[認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權責任和資料處理，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 其他隱私權資訊（包括資料保留、刪除/損毀）可在 OST 和[此處](../video-indexer/faq.md)取得。 藉由使用影片索引子，貴使用者同意遵守認知服務條款、OST、DPA 和隱私權聲明。
+重要提醒是，在使用影片索引子時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用影片索引子或任何其他 Azure 服務。 將任何影片 (包括任何生物特徵辨識資料) 上傳至影片索引子服務以進行處理和儲存之前，您必須擁有所有適當的權限，包括向影片中的個人徵得所有必要的同意。 若要了解影片索引子中的合規性、隱私權和安全性，請參閱 Microsoft [認知服務條款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 如需 Microsoft 的隱私權義務和您的資料處理方式，請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products) ("OST") 和 [資料處理增補](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 其他隱私權資訊 (包括資料保留、刪除/銷毀) 可在 OST 中和[這裡](../video-indexer/faq.md)取得。 一旦使用影片索引子，即表示您同意受到認知服務條款、OST、DPA 和隱私權聲明的規範。
 
 ## <a name="built-in-presets"></a>內建預設
 
@@ -67,7 +67,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="transcript"></a>文字記錄
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|行識別碼。|
 |text|文字記錄本身。|
@@ -105,7 +105,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="ocr"></a>ocr
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
 |text|OCR 文字。|
@@ -148,7 +148,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="faces"></a>臉部
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|臉部識別碼。|
 |NAME|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
@@ -193,7 +193,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="shots"></a>擷取畫面
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|擷取畫面識別碼。|
 |keyFrames|擷取畫面的主要畫面清單 (每個主要畫面都有一個識別碼和執行個體的時間範圍清單)。 主要畫面格執行個體中有縮圖識別碼欄位，其中包含主要畫面格的縮圖識別碼。|
@@ -250,7 +250,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="statistics"></a>統計資料
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -263,7 +263,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 人氣會依據其 sentimentType 欄位 (Positive/Neutral/Negative) 加以彙總。 例如：0-0.1、0.1-0.2。
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|人氣識別碼。|
 |averageScore |所有該人氣類型執行個體的總分平均值 - Positive/Neutral/Negative|
@@ -298,7 +298,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="labels"></a>標籤
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|標籤識別碼。|
 |NAME|標籤名稱 (例如，電腦、電視)。|
@@ -356,7 +356,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="keywords"></a>關鍵字
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
 |text|關鍵字。|
@@ -407,7 +407,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 
 經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在此情況下，`IsAdult` 屬性會包含人工審核的結果。
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |id|視覺內容仲裁識別碼。|
 |adultScore|成人分數 (由內容仲裁提供)。|

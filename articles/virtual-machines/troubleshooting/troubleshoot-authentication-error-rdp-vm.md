@@ -15,31 +15,31 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155621"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381661"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
 本文可協助您針對使用「遠端桌面通訊協定」(RDP) 連線來連線至 Azure 虛擬機器 (VM) 時發生的驗證錯誤進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您擷取一個顯示「歡迎」畫面並指出作業系統正在執行的 Azure VM 螢幕擷取畫面。 不過，當您嘗試使用「遠端桌面連線」來連線到該 VM 時，收到下列其中一個錯誤訊息。
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
-**發生驗證錯誤。無法連絡到本機安全性授權單位。**
+**發生驗證錯誤。無法連絡本地安全機構。**
 
 ### <a name="error-message-2"></a>錯誤訊息 2
 
-**您嘗試連線的遠端電腦需要網路層級驗證 (NLA)，但無法連絡您的 Windows 網域控制站以執行 NLA。如果您是遠端電腦上的系統管理員，可以使用 [系統內容] 對話方塊中 [遠端] 索引標籤上的選項停用 NLA。**
+**您嘗試連線的遠端電腦需要網路層級驗證（NLA），但無法連線到您的 Windows 網域控制站來執行 NLA。如果您是遠端電腦上的系統管理員，您可以使用 [系統內容] 對話方塊的 [遠端] 索引標籤上的選項來停用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>錯誤訊息 3 (一般連線錯誤)
 
-**這部電腦無法連線到遠端電腦。請再次嘗試連線。如果繼續發生問題，請連絡遠端電腦的擁有者或您的網路系統管理員。**
+**這部電腦無法連接到遠端電腦。再次嘗試連線，如果問題持續發生，請洽詢遠端電腦的擁有者或您的網路系統管理員。**
 
 ## <a name="cause"></a>原因
 

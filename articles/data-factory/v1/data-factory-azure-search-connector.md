@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387384"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74929988"
 > * [第 2 版 (目前的版本)](../connector-azure-search.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱第[2 版中的 Azure 認知搜尋連接器](../connector-azure-search.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱第[2 版中的 Azure 認知搜尋連接器](../connector-azure-search.md)。
 
 本文說明如何使用複製活動，將資料從支援的來源資料存放區推送至 Azure 認知搜尋索引。 支援的來源資料存放區會列於[支援的來源與接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格的 [來源] 欄中。 本文是根據 [資料移動活動](data-factory-data-movement-activities.md) 一文，該文呈現使用複製活動移動資料的一般概觀以及支援的資料存放區組合。
 
@@ -55,19 +55,19 @@ ms.locfileid: "74929988"
 
 下表提供 Azure 認知搜尋連結服務特有的 JSON 元素說明。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
-| 類型 | type 屬性必須設為：**AzureSearch**。 | 是 |
-| URL | 搜尋服務的 URL。 | 是 |
-| key | 搜尋服務的管理金鑰。 | 是 |
+| type | type 屬性必須設為：**AzureSearch**。 | 是 |
+| url | 搜尋服務的 URL。 | 是 |
+| 索引鍵 | 搜尋服務的管理金鑰。 | 是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
 如需定義資料集的區段和屬性完整清單，請參閱 [建立資料集](data-factory-create-datasets.md) 一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型。 不同類型資料集的 **typeProperties** 區段不同。 **AzureSearchIndex** 類型資料集的 typeProperties 區段有下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
-| 類型 | type 屬性必須設為 **AzureSearchIndex**。| 是 |
+| type | type 屬性必須設為 **AzureSearchIndex**。| 是 |
 | IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | 是 |
 
 
@@ -76,7 +76,7 @@ ms.locfileid: "74929988"
 
 對於「複製活動」，當接收的類型為 **AzureSearchIndexSink** 時，typeProperties 區段中會有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定若文件已經存在於索引中，是否要合併或取代。 請參閱 [WriteBehavior 屬性](#writebehavior-property)。| 合併 (預設值)<br/>上傳| 否 |
 | WriteBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料上傳至搜尋索引。 如需詳細資訊，請參閱 [WriteBatchSize 屬性](#writebatchsize-property)。 | 1 到 1000。 預設值為 1000。 | 否 |
@@ -102,7 +102,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 | String | Y |
 | Int32 | Y |
 | Int64 | Y |
-| DOUBLE | Y |
+| Double | Y |
 | Boolean | Y |
 | DataTimeOffset | Y |
 | 字串陣列 | N |
@@ -114,9 +114,9 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 1. [AzureSearch](#linked-service-properties) 類型的連結服務。
 2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)類型的連結服務。
-3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureSearchIndex](#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-4. 具有使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [SqlServerTable](data-factory-create-datasets.md) 類型的輸入[資料集](data-factory-sqlserver-connector.md#dataset-properties)。
+4. [AzureSearchIndex](data-factory-create-datasets.md) 類型的輸出[資料集](#dataset-properties)。
+4. 具有使用 [SqlSource](data-factory-create-pipelines.md) 和 [AzureSearchIndexSink](data-factory-sqlserver-connector.md#copy-activity-properties) 之複製活動的[管線](#copy-activity-properties)。
 
 此範例會每小時將時間序列資料從內部部署 SQL Server 資料庫複製到搜尋索引。 範例後面的各節將會說明此範例中使用的 JSON 屬性。
 
@@ -291,6 +291,6 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 若要了解影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法，請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)。
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+查看下列文章：
 
 * [複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，以取得使用「複製活動」來建立管線的逐步指示。

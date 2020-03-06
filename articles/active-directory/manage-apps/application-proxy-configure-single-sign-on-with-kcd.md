@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032569"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377743"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
 
@@ -34,16 +34,16 @@ ms.locfileid: "69032569"
 
 ![Microsoft AAD 驗證流程圖](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. 使用者輸入 URL, 以透過應用程式 Proxy 存取內部部署應用程式。
+1. 使用者輸入 URL，以透過應用程式 Proxy 存取內部部署應用程式。
 2. 「應用程式 Proxy」將要求重新導向至 Azure AD 驗證服務，以進行預先驗證。 此時，Azure AD 會套用任何適用的驗證和授權原則，例如多重要素驗證。 若使用者通過驗證，Azure AD 會建立權杖並將它傳送給使用者。
 3. 使用者將權杖傳遞給「應用程式 Proxy」。
-4. 應用程式 Proxy 會驗證權杖, 並從它抓取使用者主體名稱 (UPN), 然後連接器會透過雙重驗證的安全通道提取 UPN 和服務主體名稱 (SPN)。
-5. 連接器會對內部部署 AD 執行 Kerberos 限制委派 (KCD) 協商, 模擬使用者以取得應用程式的 Kerberos 權杖。
+4. 應用程式 Proxy 會驗證權杖，並從它抓取使用者主體名稱（UPN），然後連接器會透過雙重驗證的安全通道提取 UPN 和服務主體名稱（SPN）。
+5. 連接器會對內部部署 AD 執行 Kerberos 限制委派（KCD）協商，模擬使用者以取得應用程式的 Kerberos 權杖。
 6. Active Directory 會將應用程式的 Kerberos 權杖傳送至「連接器」。
 7. 「連接器」會使用從 AD 接收的 Kerberos 權杖，將原始要求傳送至應用程式伺服器。
 8. 應用程式會傳送回應至「連接器」，然後再傳回至「應用程式 Proxy」服務，最後再傳回給使用者。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始使用 IWA 應用程式的單一登入之前，請確定您的環境已完成下列設定和組態︰
 
 * 您的應用程式 (例如 SharePoint Web 應用程式) 已設為使用「整合式 Windows 驗證」。 如需詳細資訊，請參閱[啟用支援 Kerberos 驗證](https://technet.microsoft.com/library/dd759186.aspx)，或者若是使用 SharePoint，請參閱[為 SharePoint 2013 中的 Kerberos 驗證做規劃](https://technet.microsoft.com/library/ee806870.aspx)。
@@ -112,7 +112,7 @@ Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端�
 非 Windows 應用程式通常會使用使用者名稱或 SAM 帳戶名稱，而不是網域的電子郵件地址。 如果這種情況適用於您的應用程式，就必須設定指定的登入身分識別欄位，將您的雲端身分識別連線到您的應用程式身分識別。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的內部部署和雲端身分識別
-應用程式 Proxy 會假設使用者在雲端與內部部署中具有完全相同的身分識別。 但是在某些環境中, 由於公司原則或應用程式相依性的緣故, 組織可能必須使用替代識別碼來進行登入。 在這種情況下, 您仍然可以使用 KCD 進行單一登入。 為每個應用程式設定 [委派的身分識別登入]，以指定在執行單一登入時所應使用的身分識別。  
+應用程式 Proxy 會假設使用者在雲端與內部部署中具有完全相同的身分識別。 但是在某些環境中，由於公司原則或應用程式相依性的緣故，組織可能必須使用替代識別碼來進行登入。 在這種情況下，您仍然可以使用 KCD 進行單一登入。 為每個應用程式設定 [委派的身分識別登入]，以指定在執行單一登入時所應使用的身分識別。  
 
 此功能可讓具有不同內部部署與雲端身分識別的許多組織，可從雲端單一登入到內部部署應用程式，而不需要使用者輸入不同的使用者名稱與密碼。 這包括下列組織：
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378474"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
 
@@ -23,7 +23,7 @@ ms.locfileid: "76931574"
 
 此概念性文章詳述如何管理 Azure AD DS 受控網域，以及使用者帳戶的不同行為（視其建立方式而定）。
 
-## <a name="domain-management"></a>定義域管理
+## <a name="domain-management"></a>網域管理
 
 在 Azure AD DS 中，包含所有資源（例如使用者和群組、認證和原則）的網域控制站（Dc）是受控服務的一部分。 針對冗余，會建立兩個 Dc 做為 Azure AD DS 受控網域的一部分。 您無法登入這些 Dc 來執行管理工作。 相反地，您會建立已加入 Azure AD DS 受控網域的管理 VM，然後安裝一般的 AD DS 管理工具。 例如，您可以使用 Active Directory 管理中心或 Microsoft Management Console （MMC）嵌入式管理單元（如 DNS）或群組原則物件。
 
@@ -80,9 +80,9 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 
 | SKU 名稱   | 物件計數上限 | 備份頻率 | 輸出樹系信任的最大數目 |
 |------------|----------------------|------------------|----|
-| Standard   | 無限制            | 每7天     | 0  |
+| 標準   | 無限制            | 每7天     | 0  |
 | Enterprise | 無限制            | 每3天     | 5  |
-| 高階    | 無限制            | 每日            | 10 |
+| 高階    | 無限制            | 每天            | 10 |
 
 在這些 Azure AD DS Sku 之前，會使用以 Azure AD DS 受控網域中的物件數目（使用者和電腦帳戶）為基礎的計費模型。 根據受控網域中的物件數目，不再有可變的定價。
 

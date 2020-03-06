@@ -6,11 +6,11 @@ ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028256"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373222"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自動化執行身分帳戶
 
@@ -41,7 +41,7 @@ Azure 自動化中的執行身分帳戶可用來提供驗證，以使用 Azure C
 
 若要建立或更新執行身分帳戶，您必須擁有特定的權限和使用權限。 Azure Active Directory 中的應用程式系統管理員，以及訂用帳戶中的擁有者可以完成所有工作。 針對有劃分職責的情況，下表顯示工作、對等的 Cmdlet 及所需權限的清單：
 
-|Task|Cmdlet  |最低權限  |設定權限的位置|
+|工作|Cmdlet  |最低權限  |設定權限的位置|
 |---|---------|---------|---|
 |建立 Azure AD 應用程式|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | 應用程式開發人員角色<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[首頁] > [Azure Active Directory] > [應用程式註冊] |
 |將認證新增至應用程式。|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | 應用程式系統管理員或全域管理員<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[首頁] > [Azure Active Directory] > [應用程式註冊]|
@@ -370,7 +370,7 @@ Azure 自動化中的執行身分帳戶可用來提供驗證，以使用 Azure C
 
 - `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1` 腳本會建立每週排程，以更新執行身分帳戶憑證。
 - 此腳本會將**AutomationRunAsCredential** runbook 新增至您的自動化帳戶。
-  - 您也可以在 GitHub 上的腳本： [Update-AutomationRunAsCredential](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)中，查看 runbook 程式碼。
+  - 您也可以在 GitHub 上的腳本中查看 runbook 程式碼：[Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)。
   - 您也可以使用檔案中的 PowerShell 程式碼，視需要手動更新憑證。
 
 若要立即測試更新程式，請使用下列步驟：

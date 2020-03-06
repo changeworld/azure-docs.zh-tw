@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364435"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 來管理 Azure Cosmos DB SQL API 資源
 
@@ -22,7 +22,7 @@ ms.locfileid: "72882098"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>開始使用
+## <a name="getting-started"></a>使用者入門
 
 請遵循[如何安裝和設定 Azure PowerShell][powershell-install-configure] 的指示進行安裝，並在 PowerShell 中登入 Azure 帳戶。
 
@@ -323,7 +323,7 @@ Set-AzResource -ResourceType $resourceType `
 在下列範例中，我們假設目前的容錯移轉優先順序為：`West US 2 = 0`、`East US 2 = 1``South Central US = 2`。
 
 > [!CAUTION]
-> 變更 `failoverPriority=0` 的 `locationName` 會讓 Azure Cosmos 帳戶觸發手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
+> 變更 `locationName` 的 `failoverPriority=0` 會讓 Azure Cosmos 帳戶觸發手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -354,7 +354,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 在下列範例中，假設帳戶目前的容錯移轉優先順序為 `West US 2 = 0` 和 `East US 2 = 1`，並翻轉區域。
 
 > [!CAUTION]
-> 變更 `failoverPriority=0` 的 `locationName` 會讓 Azure Cosmos 帳戶觸發手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
+> 變更 `locationName` 的 `failoverPriority=0` 會讓 Azure Cosmos 帳戶觸發手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account

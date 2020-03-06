@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373476"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在具有應用程式閘道輸入控制器的 AKS 叢集中啟用多個命名空間支援
 
@@ -83,8 +83,8 @@ spec:
 
 儘管這兩個輸入資源會要求 `www.contoso.com` 的流量路由傳送至各自的 Kubernetes 命名空間，但只有一個後端可以服務流量。 AGIC 會針對其中一個資源，在「第一次提供」的基礎上建立設定。 如果同時建立兩個會輸入資源，則會優先使用字母中較早的一項。 在上述範例中，我們只能夠建立 `production` 輸入的設定。 將會使用下列資源來設定應用程式閘道：
 
-  - 接聽程式： `fl-www.contoso.com-80`
-  - 路由規則： `rr-www.contoso.com-80`
+  - 接聽程式： `fl- www.contoso.com-80`
+  - 路由規則： `rr- www.contoso.com-80`
   - 後端集區： `pool-production-contoso-web-service-80-bp-80`
   - HTTP 設定： `bp-production-contoso-web-service-80-80-websocket-ingress`
   - 健康情況探查： `pb-production-contoso-web-service-80-websocket-ingress`

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394258"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 存取控制清單 (ACL) 有兩種類型，**存取 ACL** 和**預設 ACL**。
 
-* **存取 ACL**：這些可控制對物件的存取權。 檔案和資料夾均有存取 ACL。
+* **存取 ACL**：這些控制物件的存取權。 檔案和資料夾均有存取 ACL。
 
-* **預設 ACL**：與資料夾相關聯的 ACL「範本」，用以決定該資料夾下所建立任何子項目的「存取 ACL」。 檔案沒有預設 ACL。
+* **預設 ACL**：與資料夾相關聯之 ACL 的「範本」，用以判斷再該資料夾下建立的任何子項目的存取 ACL。 檔案沒有預設 ACL。
 
 
 存取 ACL 和預設 ACL 有相同的結構。
@@ -41,19 +41,19 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 >
 >
 
-## <a name="permissions"></a>Permissions
+## <a name="permissions"></a>權限
 
-檔案系統物件的權限為 [讀取]  、[寫入]  和 [執行]  ，這些權限可以用於下表所示的檔案和資料夾：
+檔案系統物件的權限為 [讀取]、[寫入] 和 [執行]，這些權限可以用於下表所示的檔案和資料夾：
 
 |            |    檔案     |   資料夾 |
 |------------|-------------|----------|
-| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取]  和 [執行]  才能列出資料夾內容|
-| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入]  和 [執行]  才能在資料夾中建立子項目 |
+| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取] 和 [執行] 才能列出資料夾內容|
+| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入] 和 [執行] 才能在資料夾中建立子項目 |
 | **執行 (X)** | 不表示 Data Lake Storage Gen1 內容中的任何項目 | 需要周遊資料夾的子項目 |
 
 ### <a name="short-forms-for-permissions"></a>權限的簡短形式
 
-**RWX** 用來表示 [讀取 + 寫入 + 執行]  。 有更壓縮的數字形式存在，其中 [讀取 = 4]  、[寫入 = 2]  和 [執行 = 1]  ，其總和代表各種權限。 以下有一些範例。
+**RWX** 用來表示 [讀取 + 寫入 + 執行]。 有更壓縮的數字形式存在，其中 [讀取 = 4]、[寫入 = 2] 和 [執行 = 1]，其總和代表各種權限。 以下有一些範例。
 
 | 數值形式 | 簡短形式 |      意義     |
 |--------------|------------|------------------------|
@@ -71,15 +71,15 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 以下是一些常見的案例，可協助您了解在 Data Lake Storage Gen1 帳戶上執行某些作業所需的權限。
 
-| 運算 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 作業 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 讀取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 附加至 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| DELETE    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| 刪除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 建立    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| List      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| 清單      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| 清單      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| 清單      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 * 可以變更任何檔案或資料夾的權限。
 * 可以變更任何檔案或資料夾的擁有使用者或擁有群組。
 
-身為 Data Lake Storage Gen1 帳戶 [擁有者]  角色成員的所有使用者都會自動成為超級使用者。
+身為 Data Lake Storage Gen1 帳戶 [擁有者] 角色成員的所有使用者都會自動成為超級使用者。
 
 ### <a name="the-owning-user"></a>擁有使用者
 
@@ -118,7 +118,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 * 只要擁有使用者也是目標群組的成員，請變更所擁有檔案的擁有群組。
 
 > [!NOTE]
-> 擁有使用者「無法」  變更檔案或資料夾的擁有使用者。 只有超級使用者可以變更檔案或資料夾的擁有使用者。
+> 擁有使用者「無法」變更檔案或資料夾的擁有使用者。 只有超級使用者可以變更檔案或資料夾的擁有使用者。
 >
 >
 
@@ -133,7 +133,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 **指派新檔案或資料夾的擁有群組**
 
 * **案例 1**：根資料夾 "/"。 建立 Data Lake Storage Gen1 帳戶時，會建立這個資料夾。 在此情況下，擁有群組會設定為全部為零的 GUID。  這個值不允許任何存取。  將這類時間指派給群組以前，這是一個預留位置。
-* **案例 2** (每個其他案例)：建立新項目時，會從父資料夾複製擁有群組。
+* **案例 2** (其他所有案例)：建立新項目時，會從父資料夾複製擁有群組。
 
 **變更擁有群組**
 
@@ -142,7 +142,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 * 擁有使用者，如果擁有使用者也是目標群組的成員。
 
 > [!NOTE]
-> 擁有群組「無法」  變更檔案或資料夾的 ACL。
+> 擁有群組「無法」變更檔案或資料夾的 ACL。
 >
 > 若為在 2018 年 9 月或之前建立的帳戶，擁有群組已設定為在上述根資料夾案例 (**案例 1**) 中建立帳戶的使用者。  單一使用者帳戶不適用於透過擁有群組提供權限，因此此預設設定不會授與任何權限。 您可以將此權限指派給有效的使用者群組。
 
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值, 其中包含**擁有使用者**、**擁有群組**及**其他**的 RWX 值。
+建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含**擁有使用者**、**擁有群組**及**其他**的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是設定為007的常數值。 此值會轉譯成
 
@@ -250,12 +250,12 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-資料分割 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
+否。 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>若要以遞迴方式刪除資料夾與其內容，需要哪些權限？
 
-* 父資料夾必須具有 [寫入 + 執行]  權限。
-* 要刪除的資料夾及其中的每個資料夾，都需要 [讀取 + 寫入 + 執行]  權限。
+* 父資料夾必須具有 [寫入 + 執行] 權限。
+* 要刪除的資料夾及其中的每個資料夾，都需要 [讀取 + 寫入 + 執行] 權限。
 
 > [!NOTE]
 > 您不需要寫入權限即可刪除資料夾中的檔案。 此外，**決不**會刪除根資料夾 "/"。

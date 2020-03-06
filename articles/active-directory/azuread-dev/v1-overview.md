@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 638c265fda3c8b331415d54047180b3c0ee2174a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377919"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>適用于開發人員的 Azure Active Directory （v1.0）總覽
 
@@ -57,7 +57,7 @@ v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式�
 | [詞彙](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
 |  |  |
 
-## <a name="videos"></a>Videos
+## <a name="videos"></a>影片
 
 請參閱[Azure Active Directory 開發人員平臺](videos.md)影片，以協助您遷移至新的 Microsoft 身分識別平臺。
 

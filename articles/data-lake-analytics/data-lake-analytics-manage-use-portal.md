@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361302"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,16 +37,16 @@ ms.locfileid: "73839468"
    3. **資源群組**：在其中建立帳戶的 Azure 資源群組。 
    4. **位置**：Data Lake Analytics 帳戶的 Azure 資料中心。 
    5. **Data Lake Store**：Data Lake Analytics 帳戶所要使用的預設存放區。 Azure Data Lake Store 帳戶和 Data Lake Analytics 帳戶必須位於相同位置。
-4. 按一下 [建立]。 
+4. 按一下 **[建立]** 。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>刪除 Data Lake Analytics 帳戶
 
 在您刪除 Data Lake Analytics 帳戶前，請先刪除其預設 Data Lake Store 帳戶。
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
-2. 按一下 [刪除]。
+2. 按一下 **[刪除]** 。
 3. 輸入帳戶名稱。
-4. 按一下 [刪除]。
+4. 按一下 **[刪除]** 。
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -55,7 +55,7 @@ ms.locfileid: "73839468"
 
 Data Lake Analytics 支援下列資料來源：
 
-* 資料湖存放區
+* Data Lake Store
 * Azure 儲存體
 
 您可以使用 [資料總管] 來瀏覽資料來源和執行基本檔案管理作業。 
@@ -63,7 +63,7 @@ Data Lake Analytics 支援下列資料來源：
 ### <a name="add-a-data-source"></a>建立資料來源
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
-2. 按一下 [資料來源]。
+2. 按一下 **[資料來源]** 。
 3. 按一下 [ **新增資料來源**]。
     
    * 若要新增 Azure Data Lake Store 帳戶，您需要帳戶名稱及帳戶的存取權才可進行查詢。
