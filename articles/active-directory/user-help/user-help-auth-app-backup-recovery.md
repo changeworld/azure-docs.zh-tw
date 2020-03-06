@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Authenticator 應用程式 Azure AD 備份和復原帳戶
+title: 使用 Microsoft Authenticator 應用程式來備份和復原帳戶 Azure AD
 description: 瞭解如何使用 Microsoft Authenticator 應用程式來備份和復原備份的帳號憑證。
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063929"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297955"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式來備份和復原帳號憑證
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式來備份和復原帳號憑證
 
 **適用範圍：**
 
@@ -31,7 +31,7 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 每個備份儲存位置都需要有一個個人 Microsoft 帳戶，而 iOS 也會要求您擁有 iCloud 帳戶。 您可以將多個帳戶儲存在該單一位置。 例如，您可以擁有個人帳戶、工作或學校帳戶，以及個人、非 Microsoft 帳戶（例如 Facebook、Google 等等）。
 
 > [!IMPORTANT]
-> 只會儲存您的個人和協力廠商帳號憑證，包括您的使用者名稱和證明您身分識別所需的帳戶驗證碼。 我們不會儲存任何與您帳戶相關聯的其他資訊，包括電子郵件或檔案。 我們也不會以任何方式或與其他產品或服務關聯或共用您的帳戶。 最後，您的 IT 管理員將不會取得有關上述任何帳戶的任何資訊。
+> 只會儲存您的個人和協力廠商帳號憑證，包括您的使用者名稱和證明您身分識別所需的帳戶驗證碼。 我們不會儲存任何與您的帳戶相關聯的其他資訊，包括電子郵件或檔案。 我們也不會以任何方式或任何其他產品或服務，與您的帳戶建立關聯或共用。 最後，您的 IT 系統管理員將不會取得任何這些帳戶的相關資訊。
 
 ## <a name="back-up-your-account-credentials"></a>備份您的帳戶認證
 
@@ -75,29 +75,47 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 ## <a name="recover-additional-accounts-requiring-more-verification"></a>復原其他需要更多驗證的帳戶
 
-如果您搭配個人或公司或學校帳戶使用推播通知，將會出現畫面上警示，指出您必須先提供額外的驗證，才能復原您的資訊。 由於推播通知需要使用已繫結至特定裝置且永遠不會透過網路傳送的認證，所以您必須先證明您的身分識別，才能在裝置上建立認證。
+如果您搭配個人或公司或學校帳戶使用推播通知，將會出現畫面上警示，指出您必須先提供額外的驗證，才能復原您的資訊。 因為推播通知需要使用系結至特定裝置的認證，而且永遠不會透過網路傳送，所以您必須證明您的身分識別，才能在裝置上建立認證。
 
 對於個人 Microsoft 帳戶，您可輸入您的密碼以及替代電子郵件或電話號碼來證明您的身分識別。 針對公司或學校帳戶，您必須掃描帳戶提供者提供給您的 QR 代碼。
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>提供額外的個人帳戶驗證
 
-1. 在 Microsoft Authenticator 應用程式的 [帳戶] 畫面中，選取您要復原的帳戶旁的下拉式箭號。
+1. 在 Microsoft Authenticator 應用程式的 [**帳戶**] 畫面中，選取您要復原的帳戶。 在 Android 裝置上，選取您要復原之帳戶旁的箭號。
 
     ![Microsoft Authenticator 應用程式，其中顯示可用的帳戶及其相關聯的下拉式箭號](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. 選取 [登入進行復原]，輸入您的密碼，然後確認您的電子郵件地址或電話號碼作為額外的驗證。
+    在 iOS 裝置上，請按一下您想要復原的帳戶，以開啟該帳戶的全螢幕視圖。
 
-    ![Microsoft Authenticator 應用程式，可讓您輸入您的登入資訊](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![Microsoft Authenticator 應用程式，其中顯示可用的帳戶及其相關聯的下拉式箭號](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. 登入以復原帳戶。 在 Android 裝置上，選取 [登**入以復原**]。
+
+    ![Microsoft Authenticator 應用程式在 Android 上輸入您的登入資訊](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    在 iOS 裝置上，依序按一下您想要復原的帳戶磚，然後按一下 [登入和復原] 選項。 然後輸入您的密碼，然後確認您的電子郵件地址或電話號碼是否為額外的驗證。 unt。
+
+    ![Microsoft Authenticator 應用程式在 iOS 上輸入您的登入資訊](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>提供額外的公司或學校帳戶驗證
 
-1. 在 Microsoft Authenticator 應用程式的 [帳戶] 畫面中，選取您要復原的帳戶旁的下拉式箭號。
+1. 登入以復原帳戶。 在 Android 裝置上，選取 [登**入以復原**]。
 
-    ![Microsoft Authenticator 應用程式，其中顯示可用的帳戶及其相關聯的下拉式箭號](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Microsoft Authenticator 應用程式在 Android 上復原工作或學校帳戶](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. 選取 [掃描 QR 代碼進行復原]，然後掃描 QR 代碼。
+    在 iOS 裝置上，請按一下您想要復原的帳戶，以開啟該帳戶的全螢幕視圖。
 
-    ![Microsoft Authenticator 應用程式，可讓您掃描您的 QR 代碼](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![Microsoft Authenticator 應用程式在 iOS 上復原工作或學校帳戶](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. 您可以使用 QR 代碼來復原帳戶。 選取 [掃描 QR 代碼進行復原]，然後掃描 QR 代碼。
+
+    在 Android 上：
+
+    ![在 Android 上 Microsoft Authenticator 應用程式，可讓您掃描 QR 代碼](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    在 iOS 上：
+
+    ![在 iOS 上 Microsoft Authenticator 應用程式，可讓您掃描 QR 代碼](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >如需 QR 代碼的詳細資訊以及如何取得它，請參閱[開始使用 Microsoft Authenticator 應用程式](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[將安全性資訊設定為使用驗證器應用程式](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)（根據您的系統管理員是否已開啟安全性資訊）。
@@ -106,19 +124,19 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>針對備份和復原問題進行疑難排解
 
-您的備份無法使用的可能原因如下：
+您的備份可能無法使用的原因有好幾個
 
-- **變更作業系統。** 您的備份會儲存在適用于 iOS 的 iCloud 和適用于 Android 的 Microsoft 雲端存放裝置提供者中。 這表示如果您在 Android 和 iOS 裝置之間切換，則無法使用您的備份。 如果您進行切換，則必須在 Microsoft Authenticator 應用程式內手動重新建立您的帳戶。
+- **變更作業系統**：您的備份會儲存在適用于 IOS 的 iCloud 和適用于 Android 的 Microsoft 雲端存放裝置提供者中。 這表示如果您在 Android 和 iOS 裝置之間切換，則無法使用您的備份。 如果您進行切換，則必須在 Microsoft Authenticator 應用程式內手動重新建立您的帳戶。
 
-- **網路問題。** 如果您遇到網路相關問題，請確定您已連線到網路，並已正確登入您的帳戶。
+- **網路問題**：如果您遇到網路相關問題，請確定您已連線到網路，並已正確登入您的帳戶。
 
-- **帳戶問題。** 如果您遇到帳戶相關的問題，請確定您已正確登入您的帳戶。 在 iOS 中，這表示您必須使用與 iPhone 相同的 AppleID 帳戶登入 iCloud。
+- **帳戶問題**：如果您遇到帳戶相關的問題，請確定您已正確登入您的帳戶。 在 iOS 中，這表示您必須使用與 iPhone 相同的 AppleID 帳戶登入 iCloud。
 
-- **意外刪除。** 您可能已從先前的裝置或在管理雲端儲存體帳戶時刪除備份帳戶。 在此情況下，您必須在此應用程式內手動重新建立您的帳戶。
+- **意外刪除**：您可能會從先前的裝置刪除備份帳戶，或在管理您的雲端儲存體帳戶時將其刪除。 在此情況下，您必須在此應用程式內手動重新建立您的帳戶。
 
-- **現有的 Microsoft Authenticator 帳戶。** 如果您已經在 Microsoft Authenticator 應用程式中設定帳戶，則應用程式將無法復原您已備份的帳戶。 防止復原有助於確保過時資訊不會覆寫您的帳戶詳細資料。 在此情況下，您必須先從在 Microsoft Authenticator 應用程式中設定的現有帳戶移除任何現有的帳戶資訊，才可以復原您的備份。
+- **現有的 Microsoft Authenticator 帳戶**：如果您已經在 Microsoft Authenticator 應用程式中設定帳戶，應用程式將無法復原備份的帳戶。 防止復原有助於確保過時資訊不會覆寫您的帳戶詳細資料。 在此情況下，您必須先從在 Microsoft Authenticator 應用程式中設定的現有帳戶移除任何現有的帳戶資訊，才可以復原您的備份。
 
-- **備份已過期。** 如果您的備份資訊已過期，系統可能會要求您再次登入您的 Microsoft 復原帳戶，以重新整理資訊。 您的復原帳戶是您最初用來儲存備份的個人 Microsoft 帳戶。 如果需要登入，您會在功能表或動作列上看到一個紅色點。 選取紅點之後，系統會提示您再次登入以更新您的資訊。
+- **備份已過期**：如果您的備份資訊已過期，系統可能會要求您重新登入您的 Microsoft 復原帳戶，以重新整理資訊。 您的復原帳戶是您最初用來儲存備份的個人 Microsoft 帳戶。 如果需要登入，您會在功能表或動作列上看到一個紅點，或者您會看到一個驚嘆號，提示您登入以完成從備份還原。 選取圖示後，系統會提示您再次登入以更新您的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

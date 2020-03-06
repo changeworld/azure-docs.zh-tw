@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549031"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301670"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>使用 KEDA 在 Kubernetes 上 Azure Functions
 
@@ -20,7 +20,7 @@ Azure Functions 執行時間可讓您彈性地裝載所需的位置和方式。 
 
 Azure Functions 服務是由兩個主要元件所組成：執行時間和縮放控制器。  函式執行時間會執行並執行您的程式碼。  執行時間包含如何觸發、記錄和管理函數執行的邏輯。  Azure Functions 執行時間可以在*任何地方*執行。  另一個元件則是縮放控制器。  「縮放控制器」會監視以您的函式為目標的事件速率，並主動調整執行應用程式的實例數目。  若要深入了解，請參閱 [Azure Functions 規模調整和主控](functions-scale.md)。
 
-以 Kubernetes 為基礎的函式會在[Docker 容器](functions-create-function-linux-custom-image.md)中提供函式執行時間，並透過 KEDA 進行事件驅動的調整。  KEDA 可以相應減少為0個實例（沒有發生任何事件時），以及多達*n*個實例。 其運作方式是公開 Kubernetes 自動調整程式的自訂計量（水準 Pod 自動調整程式）。  將函式容器與 KEDA 搭配使用，可讓您在任何 Kubernetes 叢集中複寫無伺服器函式功能。  這些函式也可以使用[Azure Kubernetes Services （AKS）虛擬節點](../aks/virtual-nodes-cli.md)功能進行部署，以進行無伺服器基礎結構。
+以 Kubernetes 為基礎的函式會在[Docker 容器](functions-create-function-linux-custom-image.md)中提供函式執行時間，並透過 KEDA 進行事件驅動的調整。  KEDA 可以相應縮小為0個實例（沒有發生任何事件時），以及輸出到*n*個實例。 其運作方式是公開 Kubernetes 自動調整程式的自訂計量（水準 Pod 自動調整程式）。  將函式容器與 KEDA 搭配使用，可讓您在任何 Kubernetes 叢集中複寫無伺服器函式功能。  這些函式也可以使用[Azure Kubernetes Services （AKS）虛擬節點](../aks/virtual-nodes-cli.md)功能進行部署，以進行無伺服器基礎結構。
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>在 Kubernetes 中管理 KEDA 和函數
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383908"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>遷移所需的時間為何？
 
@@ -22,6 +22,14 @@ ms.locfileid: "77912560"
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>新客戶在 IaaS Vm （傳統）上的定義為何？
 
 在 Febrauary 2020 （已開始淘汰之前的一個月）的訂用帳戶中，沒有 IaaS Vm （傳統）的客戶會被視為新的客戶。 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虛擬機器（傳統）上現有客戶的定義為何？
+
+在2020年2月的訂用帳戶中，有作用中或已停止但已配置 IaaS Vm （傳統）的客戶，會被視為現有的客戶。 只有這些客戶才會到達2023年3月1日，以將其 Vm 從 Azure Service Manager 遷移至 Azure Resource Manager。 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>為什麼我會收到錯誤訊息，指出「NewClassicVMCreationNotAllowedForSubscription」？
+
+作為淘汰程式的一部分，IaaS VM （傳統）不再適用于新的客戶。 我們已將您識別為新客戶，因此您的作業未獲授權。 我們強烈建議使用[Azure 虛擬機器使用 ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 的 Azure Vm，請洽詢訂用帳戶允許清單的支援。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 

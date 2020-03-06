@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845734"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399110"
 ---
 # <a name="monitoring-azure-machine-learning"></a>監視 Azure Machine Learning
 
@@ -28,9 +28,9 @@ ms.locfileid: "76845734"
 > * [使用 MLflow 追蹤實驗](how-to-use-mlflow.md)
 > * [使用 TensorBoard 視覺化執行](how-to-monitor-tensorboard.md)
 
-## <a name="azure-monitor"></a>Azure Monitor
+## <a name="azure-monitor"></a>Azure 監視器
 
-Azure Machine Learning 使用 Azure 監視器來記錄監視資料，這是 Azure 中的完整堆疊監視服務。 Azure 監視器提供一組完整的功能來監視您的 Azure 資源。 它也可以監視其他雲端和內部部署中的資源。
+Azure Machine Learning 會使用 Azure 監視器來記錄監視資料，這是 Azure 中的完整堆疊監視服務。 Azure 監視器提供一組完整的功能來監視您的 Azure 資源。 它也可以監視其他雲端和內部部署中的資源。
 
 從[Azure 監視器總覽](/azure/azure-monitor/overview)一文開始，其中提供監視功能的總覽。 下列各節會藉由提供搭配 Azure Machine Learning 使用 Azure 監視器的細節，來建立這項資訊。
 
@@ -38,7 +38,7 @@ Azure Machine Learning 使用 Azure 監視器來記錄監視資料，這是 Azur
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>監視 Azure Machine Learning 的資料
 
-Azure Machine Learning 會收集與其他 Azure 資源相同的監視資料類型，如[從 Azure 資源監視資料](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 如需 Azure Machine Learning 所建立之記錄和計量的詳細參考，請參閱[Azure Machine Learning 監視資料參考](monitor-resource-reference.md)。
+Azure Machine Learning 會收集與其他 Azure 資源相同的監視資料類型，如[監視 Azure 資源中的資料](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)所說明。 如需 Azure Machine Learning 所建立之記錄和計量的詳細參考，請參閱[Azure Machine Learning 監視資料參考](monitor-resource-reference.md)。
 
 ## <a name="analyzing-metric-data"></a>分析度量資料
 
@@ -62,7 +62,7 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 下表列出 Azure Machine Learning 的一般和建議計量警示規則：
 
-| 警示類型 | 條件 | 說明 |
+| 警示類型 | 條件 | 描述 |
 |:---|:---|:---|
 | 模型部署失敗 | 匯總類型： Total、Operator：大於、臨界值：0 | 當一或多個模型部署失敗時 |
 | 配額使用量百分比 | 匯總類型：平均值，運算子：大於，臨界值：90| 當配額使用率百分比大於90% 時 |
@@ -85,7 +85,7 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 您可以為 Azure Machine Learning 設定下列記錄：
 
-| 類別 | 說明 |
+| 類別 | 描述 |
 |:---|:---|
 | AmlComputeClusterEvent | 來自 Azure Machine Learning 計算叢集的事件。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning 計算叢集中的節點事件。 |
@@ -100,7 +100,7 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 Azure 監視器記錄檔中的資料會儲存在資料表中，而且每個資料表都有一組專屬的唯一屬性。 Azure Machine Learning 會將資料儲存在下列資料表中：
 
-| 表格 | 說明 |
+| Table | 描述 |
 |:---|:---|
 | AmlComputeClusterEvent | 來自 Azure Machine Learning 計算叢集的事件。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning 計算叢集中的節點事件。 |

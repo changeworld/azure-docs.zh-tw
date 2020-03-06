@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453235"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296349"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>在您的行動應用程式中新增驗證和管理使用者身分識別
 
@@ -21,7 +21,7 @@ ms.locfileid: "75453235"
 使用下列服務，在您的行動應用程式中啟用使用者驗證。
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center 驗證](/appcenter/auth/)是以雲端為基礎的身分識別管理服務，可供開發人員用來驗證使用者和管理使用者身分識別。 App Center 驗證也會與 Visual Studio App Center 的其他部分整合。 開發人員可以使用使用者身分識別來查看其他服務中的[使用者資料](/appcenter/data/index)，甚至[將推播通知傳送給使用者，而不是個別的裝置](/appcenter/push/push-to-user#app-center-auth-set-identity)。 
+[App Center 驗證](/appcenter/auth/)是以雲端為基礎的身分識別管理服務，可供開發人員用來驗證使用者和管理使用者身分識別。 App Center 驗證也會與 Visual Studio App Center 的其他部分整合。 開發人員可以使用使用者身分識別來查看其他服務中的[使用者資料](/appcenter/data/index)，甚至[將推播通知傳送給使用者，而不是個別的裝置](/appcenter/push/push-to-user#setting-user-identity)。 
 
 **主要功能**
 - 由 Azure Active Directory B2C （Azure AD B2C）提供技術支援。 

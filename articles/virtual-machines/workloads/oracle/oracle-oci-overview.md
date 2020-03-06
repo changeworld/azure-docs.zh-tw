@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300548"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>整合 Microsoft Azure 和 Oracle 雲端基礎結構的 oracle 應用程式解決方案（預覽）
 
@@ -28,7 +28,7 @@ Microsoft 和 Oracle 合作提供低延遲、高輸送量的跨雲端連線能�
 使用此跨雲端連線，您可以分割多層式應用程式，以在 Oracle 雲端基礎結構（OCI）上執行您的資料庫層，以及 Microsoft Azure 上的應用程式和其他層級。 其體驗類似于在單一雲端中執行整個解決方案堆疊。 
 
 > [!IMPORTANT]
-> 這項跨雲端功能目前為預覽狀態，並[適用限制](#preview-limitations)。 若要建立 Azure 與 OCI 之間的低延遲連線，您的 Azure 訂用帳戶必須先啟用這項功能。 您必須完成這[份簡短問卷](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)，才能在預覽版中註冊。 當訂用帳戶註冊完成之後，您會收到電子郵件。 在收到確認電子郵件後才能使用此功能。 您也可以聯繫 Microsoft 代表，以供此預覽版啟用。 預覽功能的存取權受限於 Microsoft 自行決定的可用性和限制。 填寫問卷並不保證能夠存取。 此預覽版是在沒有服務等級協定的情況下提供，不應用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 Microsoft Azure 預覽的[補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> 這項跨雲端功能目前為預覽狀態，並[適用限制](#region-availability)。 若要建立 Azure 與 OCI 之間的低延遲連線，您的 Azure 訂用帳戶必須先啟用這項功能。 您必須完成這[份簡短問卷](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)，才能在預覽版中註冊。 當訂用帳戶註冊完成之後，您會收到電子郵件。 在收到確認電子郵件後才能使用此功能。 您也可以聯繫 Microsoft 代表，以供此預覽版啟用。 預覽功能的存取權受限於 Microsoft 自行決定的可用性和限制。 填寫問卷並不保證能夠存取。 此預覽版是在沒有服務等級協定的情況下提供，不應用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 Microsoft Azure 預覽的[補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 如果您想要完全在 Azure 基礎結構上部署 Oracle 解決方案，請參閱[Microsoft Azure 上的 ORACLE VM 映射和其部署](oracle-vm-solutions.md)。
 
@@ -48,11 +48,15 @@ Microsoft 和 Oracle 合作提供低延遲、高輸送量的跨雲端連線能�
 
 ![Azure OCI 解決方案總覽](media/oracle-oci-overview/crosscloud.png)
 
-## <a name="preview-limitations"></a>預覽限制
+## <a name="region-availability"></a>區域可用性 
 
-* 預覽中的跨雲端連線僅限於 Azure 美國東部（eastus）、英國南部（uksouth）和加拿大中部（canadacentral）區域，以及 OCI 阿什本（美國東部）、倫敦（英國南部）和多倫多（加拿大東南部）區域。 針對英國南部，請在部署進行中的延遲時間較低時，在 OCI 中使用可用性網域1（AD 1）。
+跨雲端連線能力僅限於下欄區域：
+* Azure 美國東部（eastus） & OCI 阿什本（美國東部）
+* Azure 英國南部（uksouth） & OCI 倫敦（英國南部）
+* Azure 加拿大中部（canadacentral） & OCI 多倫多（加拿大東南部）
+* Azure 西歐（westeurope） & OCI 阿姆斯特丹（荷蘭西北部）
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 企業客戶通常會選擇在多個雲端上 多樣化和部署工作負載，以因應各種商務和操作的原因。 若要 多樣化，客戶可以使用網際網路、IPSec VPN，或透過內部部署網路使用雲端提供者的直接連線解決方案，來與雲端網路互連。 將雲端網路互連，可能需要大量投資時間、金錢、設計、採購、安裝、測試和作業。 
 

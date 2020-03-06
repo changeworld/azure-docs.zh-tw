@@ -4,15 +4,15 @@ description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數修剪。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bcb62dc5b43e05fa96ce9bfb428d6fc9160edde9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349115"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304237"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM （Azure Cosmos DB）
  傳回移除開頭和尾端空白之後的字串運算式。  
@@ -45,6 +45,10 @@ SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM
 ```json
 [{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  
 ``` 
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

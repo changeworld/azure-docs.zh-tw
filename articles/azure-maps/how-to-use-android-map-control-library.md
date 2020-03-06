@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1858b221418e6cc59c6441e0653299710b5c7e72
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208639"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368680"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure 地圖服務 Android SDK 入門
 
 Azure 地圖服務 Android SDK 是適用于 Android 的向量地圖程式庫。 本文會引導您完成安裝 Azure 地圖服務 Android SDK 和載入對應的程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
 
@@ -127,10 +127,8 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     ```java
     package com.example.myapplication;
 
-    //For older versions use: import android.support.v7.app.AppCompatActivity;
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
-
-    import android.os.Bundle;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;

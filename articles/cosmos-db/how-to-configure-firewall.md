@@ -76,7 +76,7 @@ ms.locfileid: "78162939"
 
 ![這個螢幕擷取畫面顯示 Azure 入口網站中所顯示雲端服務的公用 IP 位址](./media/how-to-configure-firewall/public-ip-addresses.png)
 
-當您藉由新增角色執行個體來相應放大雲端服務時，那些新的執行個體將可自動存取 Azure Cosmos DB 帳戶，因為它們是相同雲端服務的一部分。
+當您藉由新增角色執行個體來擴增雲端服務時，那些新的執行個體將可自動存取 Azure Cosmos DB 帳戶，因為它們是相同雲端服務的一部分。
 
 ### <a name="requests-from-virtual-machines"></a>來自虛擬機器的要求
 

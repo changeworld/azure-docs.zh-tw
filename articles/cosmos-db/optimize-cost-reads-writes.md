@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bbdd1bedb7b9a9f00a0b65ccc4c108ba6fd2638c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754938"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398954"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>最佳化 Azure Cosmos DB 中的讀寫成本
 
@@ -30,14 +30,6 @@ Azure Cosmos DB 透過使用佈建的輸送量模型，在輸送量和延遲方�
 
 讀取 1 KB大小的項目需要花費一個 RU 的成本。 寫入 1 KB大小的項目需要花費五個 RU 的成本。 使用預設的工作階段[一致性層級](consistency-levels.md)時，讀取和寫入成本都適用。  RU 的考慮因素包括：項目大小、屬性計數、資料一致性、已建立索引的屬性，編製索引和查詢模式。
 
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>1 百萬次讀取和寫入的標準化成本
-
-佈建 1,000 RU/每秒會轉譯達 360 萬 RU/每小時，且該小時將會花費 0.08 美元 (美國和歐洲)。 針對 1 KB 項目，您可以使用此佈建的輸送量，每小時執行 360 萬次讀取或 72 萬次寫入 (此值會計算為：`3.6 million RU / 5`)。 標準化為 1 百萬次讀取和寫入，1 百萬次讀取的成本為 0.022 美元 (此值會計算為：美元 0.08/360 萬)，1 百萬次寫入的成本為 0.111 美元 (此值會計算為：美元 0.08/72 萬)。
-
-## <a name="number-of-regions-and-the-request-units-cost"></a>區域數目和要求單位成本
-
-不論與 Azure Cosmos 帳戶相關聯的區域數目為何，寫入的成本都保持不變。 換句話說，1 KB 寫入將花費五個 RU，而與該帳戶相關聯的區域數目無關。 在複寫、接受和處理每個區域的複寫流量方面花費了大量資源。 如需多重區域成本最佳化的詳細資訊，請參閱[最佳化多重區域 Cosmos 帳戶的成本](optimize-cost-regions.md)一文。
-
 ## <a name="optimize-the-cost-of-writes-and-reads"></a>最佳化寫入和讀取的成本
 
 當您執行寫入作業時，應該佈建足夠的容量以支援每秒所需的寫入數目。 您可以在執行寫入之前使用 SDK、入口網站，CLI 來增加佈建的輸送量，然後在寫入完成後減少輸送量。 寫入期間的輸送量是指定的資料所需的最小輸送量，加上插入工作負載所需的輸送量 (假設沒有其他工作負載正在執行)。 
@@ -51,7 +43,7 @@ Azure Cosmos DB 透過使用佈建的輸送量模型，在輸送量和延遲方�
 接下來，您可以利用下列文章繼續深入了解 Azure Cosmos DB 中有關成本最佳化的詳細資訊：
 
 * 深入了解[最佳化開發與測試](optimize-dev-test.md)
-* 深入了解 [Azure Cosmos DB 上的計費](understand-your-bill.md)
+* 深入了解 [Azure Cosmos DB 帳單](understand-your-bill.md)
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化查詢成本](optimize-cost-queries.md)

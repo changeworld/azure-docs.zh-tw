@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182186"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305032"
 ---
 ## <a name="rootcert"></a>建立自我簽署根憑證
 
@@ -28,6 +28,7 @@ ms.locfileid: "73182186"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. 如果您想要在建立此根憑證之後建立用戶端憑證，請讓 PowerShell 主控台保持開啟。
 
 ## <a name="clientcert"></a>產生用戶端憑證
 
@@ -37,7 +38,7 @@ ms.locfileid: "73182186"
 
 此範例會使用 New-SelfSignedCertificate Cmdlet 來產生有效期為一年的用戶端憑證。 如需其他的參數資訊 (例如針對用戶端憑證設定不同的到期值)，請參閱 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
-### <a name="example-1"></a>範例 1
+### <a name="example-1---powershell-console-session-still-open"></a>範例 1-PowerShell 主控台會話仍然開啟
 
 如果您在建立自我簽署根憑證後沒有關閉 PowerShell 主控台，請使用此範例。 此範例會從上一節的內容繼續，並使用宣告的 '$cert' 變數。 如果您在建立自我簽署根憑證之後關閉 PowerShell 主控台，或是在新的 PowerShell 主控台工作階段中建立其他用戶端憑證，請使用[範例 2](#ex2) 中的步驟。
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>範例 2
+### <a name="ex2"></a>範例 2-新的 PowerShell 主控台會話
 
 如果您要建立其他用戶端憑證，或者不是使用您用來建立自我簽署根憑證的相同 PowerShell 工作階段，請使用下列步驟︰
 

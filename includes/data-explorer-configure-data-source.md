@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305044"
 ---
 ## <a name="configure-the-data-source"></a>設定資料來源
 
@@ -29,7 +29,7 @@ ms.locfileid: "73581859"
 
 1. 若要建立服務主體，請依照 [Azure 入口網站文件](/azure/active-directory/develop/howto-create-service-principal-portal)中的指示。
 
-    1. 在[將應用程式指派給角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)的區段中，將**讀者**角色類型指派給您的 Azure 資料總管叢集。
+    1. 在[將應用程式指派給角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)的區段中，將**讀者**角色類型指派給您的 Azure 資料總管叢集。
 
     1. 在 [[取得登入的值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)] 區段中，複製 [步驟：**目錄識別碼**（租使用者識別碼）]、[**應用程式識別碼**] 和 [**密碼**] 中涵蓋的三個屬性值。
 
@@ -95,7 +95,7 @@ ms.locfileid: "73581859"
 
     ![在 Azure 入口網站中管理權限](media/data-explorer-configure-data-source/new-principals.png)
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
     ![在 Azure 入口網站中管理權限](media/data-explorer-configure-data-source/save-permission.png)
 

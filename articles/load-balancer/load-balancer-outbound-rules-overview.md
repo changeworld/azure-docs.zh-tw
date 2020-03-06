@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d35241850d60e82b79bba0384f60c40e3ecd6427
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304186"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer 輸出規則
 
@@ -206,7 +206,6 @@ disableOutboundSNAT 參數預設為 false，這表示負載平衡規則**確實*
 - 每個前端 IP 位址的可用暫時連接埠數目上限為 64,000。
 - 可設定輸出閒置逾時的範圍為 4 到 120 分鐘 (240 到 7200 秒)。
 - Load Balancer 不支援輸出 NAT 的 ICMP。
-- 入口網站無法用來設定或檢視輸出規則。  請改為使用範本、REST API、Az CLI 2.0 或 PowerShell。
 - 輸出規則只能套用至 NIC 的主要 IP 設定。  支援多個 Nic。
 
 ## <a name="next-steps"></a>後續步驟

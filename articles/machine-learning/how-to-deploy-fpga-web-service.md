@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538094"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402707"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什麼是可現場程式化閘道陣列（FPGA）和如何部署
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ FPGA 包含可程式化邏輯區塊的陣列，以及可重新設定互連的階
 
 ![Azure Machine Learning FPGA 比較的圖表](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|處理器||說明|
+|處理器||描述|
 |---|:-------:|------|
 |應用程式特定的積體電路|ASIC|自訂電路 (例如，Google 的 TensorFlow 處理器 (TPU)) 可提供最高效率。 它們無法隨著您需求的變更加以重新設定。|
 |現場可程式化閘陣列|FPGA|FPGA (例如 Azure 上所提供的那些陣列) 可提供接近 ASIC 的效能。 它們也會隨著時間而具有彈性且可重新設定，以實作新邏輯。|
@@ -88,7 +88,7 @@ Azure Fpga 會與 Azure Machine Learning 整合。 Microsoft 使用 FPGA 來評�
 您可以使用 Azure Machine Learning 硬體加速模型，在 Fpga 上將模型部署為 web 服務。 使用 Fpga 可提供超低延遲推斷，即使使用單一批次大小也一樣。 推斷（或模型計分）是已部署的模型用於預測的階段，最常見的是生產資料。
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。  如果您沒有，請在開始前建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -289,7 +289,7 @@ print("\nSuccessfully converted: ", converted_model.name, converted_model.url, c
       converted_model.id, converted_model.created_time, '\n')
 ```
 
-### <a name="create-docker-image"></a>建立 Docker 映像
+### <a name="create-docker-image"></a>建立 Docker 映射
 
 已轉換的模型和所有相依性都會新增至 Docker 映射。  然後可以部署並具現化此 Docker 映射。  支援的部署目標包括雲端中的 AKS 或邊緣裝置（例如[Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)）。  您也可以為已註冊的 Docker 映射新增標記和描述。
 
@@ -325,7 +325,7 @@ for i in Image.list(workspace=ws):
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")

@@ -39,6 +39,8 @@
   items:
     - name: 基本概念
       items:
+        - name: 應用程式閘道功能
+          href: features.md
         - name: 應用程式閘道如何運作
           href: how-application-gateway-works.md
         - name: 應用程式閘道元件
@@ -75,7 +77,7 @@
           href: application-gateway-probe-overview.md
         - name: 診斷記錄和後端健康情況
           href: application-gateway-diagnostics.md
-        - name: 度量
+        - name: 計量
           href: application-gateway-metrics.md
     - name: 應用程式服務 Webapp 和多租用戶支援
       href: application-gateway-web-app-overview.md
@@ -261,7 +263,7 @@
     - name: 社群範本
       displayName: ARM
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

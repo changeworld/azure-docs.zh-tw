@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834241"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399083"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -44,15 +44,15 @@ ms.locfileid: "76834241"
 1. 找出 `appRoles` 設定並新增所有的應用程式角色，以編輯應用程式資訊清單。
 
      > [!NOTE]
-     > 此資訊清單中的每個應用程式角色定義，在 `id` 屬性的資訊清單內容中都必須有不同的有效 GUID。    
-     > 
+     > 此資訊清單中的每個應用程式角色定義，在 `id` 屬性的資訊清單內容中都必須有不同的有效 GUID。
+     >
      > 每個應用程式角色定義的 `value` 屬性，都應該與應用程式中程式碼所使用的字串完全相符。 `value` 屬性不能包含空格。 如果有，當您儲存資訊清單時，將會收到錯誤。
-     
+
 1. 儲存資訊清單。
 
 ### <a name="examples"></a>範例
 
-下列範例顯示您可以指派給 `users` 的 `appRoles`。
+下列範例顯示您可以指派給 `appRoles` 的 `users`。
 
 > [!NOTE]
 >`id` 必須是唯一的 GUID。
@@ -108,7 +108,7 @@ ms.locfileid: "76834241"
      如果看不到您希望在此顯示的應用程式，請使用 [所有應用程式] 清單頂端的各種篩選條件來限制清單，或向下捲動清單以找出應用程式。
 
 1. 選取您想要在其中將使用者或安全性群組指派給角色的應用程式。
-1. 選取應用程式左側導覽功能表中的 [使用者和群組] 窗格。
+1. 在應用程式的左側導覽功能表中，選取 [**使用者和群組**] 窗格。
 1. 在 [使用者和群組] 清單頂端，選取 [新增使用者] 按鈕，以開啟 [新增指派] 窗格。
 1. 選取 [新增指派] 窗格中的 [使用者和群組] 選取器。
 
@@ -122,7 +122,7 @@ ms.locfileid: "76834241"
 
 ## <a name="more-information"></a>詳細資訊
 
-- [使用 Azure AD 應用程式角色在 Web 應用程式中授權 &amp; 角色宣告 (範例)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [使用應用程式角色 & 角色宣告將授權新增至 ASP.NET Core web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [在您的應用程式中使用安全性群組和應用程式角色 (影片)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

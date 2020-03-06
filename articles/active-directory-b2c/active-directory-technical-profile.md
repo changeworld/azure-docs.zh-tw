@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190257"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397833"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 
 **Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **handler** 屬性必須包含通訊協定處理常式組件的完整名稱 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
-所有 Azure AD 技術設定檔包含 **AAD-Common** 技術設定檔。 下列技術設定檔未指定通訊協定，因為已在 **AAD-Common** 技術設定檔中設定通訊協定：
-
+遵循[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)Azure AD 技術設定檔包含**AAD 通用**技術設定檔。 Azure AD 技術設定檔未指定通訊協定，因為已在**AAD 通用**技術設定檔中設定通訊協定：
+ 
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目錄中尋找社交帳戶。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 建立新的社交帳戶。
 - **AAD-UserReadUsingEmailAddress** - 在目錄中尋找本機帳戶。

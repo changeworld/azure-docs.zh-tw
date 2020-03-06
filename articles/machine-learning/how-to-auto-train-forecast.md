@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 93695b407762766b0bdd40c9d99a0bf4965f59a8
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328774"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自動定型時間序列預測模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "78251853"
 
 自動回歸整合式移動平均（ARIMA）是時間序列預測的熱門統計方法。 這項預測技術通常用於短期預測案例中，其中資料會顯示迴圈的辨識項，例如週期，這可能會造成無法預測，且難以建立模型或預測。 自動 ARIMA 會將您的資料轉換成固定資料，以接收一致且可靠的結果。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 * 本文假設您對設定自動化機器學習實驗的基本概念十分熟悉。 依照[教學](tutorial-auto-train-models.md)課程或[如何](how-to-configure-auto-train.md)操作來查看基本的自動化機器學習實驗設計模式。
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)物件會定義自動化機器學習工作所需的設定和資料。 類似于回歸問題，您可以定義標準訓練參數，例如工作類型、反復專案數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 下表說明每個參數和其使用方式。
 
-| Param | 描述 | 必要項 |
+| 參數&nbsp;名稱 | 描述 | 必要 |
 |-------|-------|-------|
 |`time_column_name`|用來指定輸入資料中用來建立時間序列並推斷其頻率的日期時間資料行。|✓|
 |`grain_column_names`|在輸入資料中定義個別數列群組的名稱。 如果未定義細微性，則會假設資料集為一個時間序列。||

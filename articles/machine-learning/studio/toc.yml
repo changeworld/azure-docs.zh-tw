@@ -8,19 +8,19 @@
       href: what-is-ml-studio.md
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: 教學課程
+- name: 快速入門
   items:
     - name: 建立您的第一個實驗
       displayName: quickstart
       href: create-experiment.md
-    - name: 建立預測解決方案
-      items:
-        - name: 1 - 建立實驗
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - 訓練及評估
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - 部署 Web 服務
-          href: tutorial-part3-credit-risk-deploy.md
+- name: 教學課程
+  items:
+    - name: 1：建立預測性實驗
+      href: tutorial-part1-credit-risk.md
+    - name: 2：訓練及評估解決方案
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3：部署 Web 服務
+      href: tutorial-part3-credit-risk-deploy.md
 - name: 範例
   items:
     - name: 可用的資料集
@@ -44,7 +44,7 @@
     - name: 模型管理
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 管理工作區
       items:
@@ -116,7 +116,7 @@
           href: deploy-a-machine-learning-web-service.md
         - name: 運作方式
           href: model-progression-experiment-to-web-service.md
-        - name: 準備部署
+        - name: 準備開始部署
           href: convert-training-experiment-to-scoring-experiment.md
         - name: 使用外部資料
           displayName: 'import, export'
@@ -181,7 +181,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
     - name: '自訂神經網路 (Net#)'
       href: azure-ml-netsharp-reference-guide.md

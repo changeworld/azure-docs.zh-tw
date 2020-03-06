@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190655"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301432"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -36,7 +36,7 @@ ms.locfileid: "77190655"
 
 Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺服器訊息區 (SMB) 和 REST。 在 .NET 中，`System.IO` 和 `WindowsAzure.Storage` Api 會將這些方法抽象化。
 
-API | 使用時機 | 注意事項
+API | 使用時機 | 注意
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 來讀取/寫入檔案</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 透過 SMB Azure 檔案儲存體執行的檔案 i/o，通常與任何網路檔案共用或本機儲存裝置的 i/o 相同。 如需 .NET 中一些功能的簡介（包括檔案 i/o），請參閱[主控台應用程式](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教學課程。
 [Microsoft. Azure 儲存檔案](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 您的應用程式： <ul><li>因為防火牆或 ISP 的條件約束，所以無法使用埠445上的 SMB 存取 Azure 檔案儲存體</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文示範如何使用 REST 來執行檔案 i/o 的 `Microsoft.Azure.Storage.File`，而不是 SMB 及檔案共用的管理。
@@ -492,7 +492,6 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="tooling-support-for-file-storage"></a>檔案儲存體的工具支援
 
 * [開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [使用 Azure CLI 搭配 Azure 儲存體](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>參考

@@ -1,14 +1,14 @@
 ---
 title: 支援的 Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Resource Manager 資源類型清單。
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.topic: reference
-ms.openlocfilehash: 3d6ba89cbf5c35c2a06a214029971341c4184b41
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 597e1c2f7e04a7861099763d809ac09978e09805
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227338"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399597"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -348,6 +348,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - microsoft 搜尋/searchservices
 - microsoft. security/自動化
 - microsoft. security/iotsecuritysolutions
+- securitydetonation/後母房間
 - microsoft. 匯流排/命名空間
 - servicefabric/叢集
 - servicefabric/containergroupsets

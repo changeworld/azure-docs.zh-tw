@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585844"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300063"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：為您的 Azure AD 應用程式提供選擇性宣告
 
@@ -122,7 +122,7 @@ ms.locfileid: "77585844"
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
 
 > [!IMPORTANT]
-> 存取權杖**一律**會使用資源的資訊清單（而非用戶端）產生。  因此，在要求中 `...scope=https://graph.microsoft.com/user.read...` 資源是 Graph。  因此，會使用圖形資訊清單（而不是用戶端的資訊清單）來建立存取權杖。  變更應用程式的資訊清單永遠不會導致圖形的權杖看起來不同。  若要驗證您的 `accessToken` 變更是否有效，請為您的應用程式要求權杖，而不是另一個應用程式。  
+> 存取權杖**一律**會使用資源的資訊清單（而非用戶端）產生。  因此，在要求中 `...scope=https://graph.microsoft.com/user.read...` 資源是 Microsoft Graph API。  因此，會使用 Microsoft Graph API 資訊清單（而不是用戶端的資訊清單）來建立存取權杖。  變更應用程式的資訊清單永遠不會導致 Microsoft Graph API 的權杖看起來不同。  若要驗證您的 `accessToken` 變更是否有效，請為您的應用程式要求權杖，而不是另一個應用程式。  
 
 您可以透過 UI 或應用程式資訊清單，為您的應用程式設定選擇性宣告。
 
@@ -349,7 +349,7 @@ ms.locfileid: "77585844"
 有多個選項可用來更新應用程式身分識別設定上的屬性，以啟用和設定選擇性宣告：
 -    您可以使用**權杖設定（預覽）** UI （請參閱下列範例）
 -    您可以使用**資訊清單**（請參閱下列範例）。 請先閱讀介紹資訊清單的[了解 Azure AD 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)文件。
--   您也可以撰寫使用[圖形 API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api)來更新您應用程式的應用程式。 圖形 API 參考指南中的[OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0)類型可協助您設定選擇性宣告。
+-   您也可以撰寫使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0)的應用程式來更新您的應用程式。 Microsoft Graph API 參考指南中的[OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0)類型可協助您設定選擇性宣告。
 
 **範例：** 在下列範例中，您將使用**權杖設定（預覽）** UI 和**資訊清單**，將選擇性宣告新增至適用于您應用程式的存取、識別碼和 SAML 權杖。 應用程式可以接收的每一種權杖類型都會新增不同的選擇性宣告：
 -    識別碼權杖現在將會在完整格式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) 中包含同盟使用者的 UPN。

@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299749"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 權杖參考
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 
 ## <a name="related-content"></a>相關內容
 
-* 若要深入了解透過 Azure AD Graph API 管理權杖存留期原則，請參閱 Azure AD Graph [原則作業](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)和[原則實體](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)。
+* 請參閱[原則資源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)，以深入瞭解如何使用 Microsoft Graph API 管理權杖存留期原則。
 * 如需透過 PowerShell Cmdlet 管理原則的詳細資訊和範例，包括範例，請參閱[在 Azure AD 中設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
 * 將[自訂和選擇性宣告](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)新增至應用程式的權杖。
 * 搭配使用 [SAML 與單一登入 (SSO)](single-sign-on-saml-protocol.md)。

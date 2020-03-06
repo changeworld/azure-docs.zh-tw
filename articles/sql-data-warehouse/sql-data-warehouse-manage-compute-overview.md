@@ -1,6 +1,6 @@
 ---
 title: 管理 SQL 集區的計算資源
-description: 瞭解 Azure Synapse 分析 SQL 集區中的效能相應放大功能。 藉由調整 DWU 來相應放大，或藉由暫停資料倉儲來降低成本。
+description: 瞭解 Azure Synapse 分析 SQL 集區中的效能相應放大功能。 藉由調整 DWU 來擴增，或藉由暫停資料倉儲來降低成本。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -67,7 +67,7 @@ ms.locfileid: "78197278"
 - 假設線性尺度，並判斷您需要增加或減少多少資料倉儲單位。 
 - 繼續進行調整，直到達到您業務需求的最佳效能為止。
 
-## <a name="when-to-scale-out"></a>相應放大時機
+## <a name="when-to-scale-out"></a>擴增時機
 
 相應放大資料倉儲單位會影響效能的下列層面：
 
@@ -75,10 +75,10 @@ ms.locfileid: "78197278"
 - 針對載入作業增加讀取器和寫入器的數目。
 - 並行查詢和並行存取插槽數目上限。
 
-相應放大資料倉儲單位時機的建議︰
+擴增資料倉儲單位時機的建議︰
 
-- 執行大量資料載入或轉換作業之前，相應放大進而讓資料更快速可供使用。
-- 在尖峰營業時間內，相應放大以適應大量的並行查詢。 
+- 執行大量資料載入或轉換作業之前，擴增進而讓資料更快速可供使用。
+- 在尖峰營業時間內，擴增以適應大量的並行查詢。 
 
 ## <a name="what-if-scaling-out-does-not-improve-performance"></a>如果相應放大並未改善效能，該怎麼辦？
 

@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359867"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329114"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上傳 Azure 服務管理憑證
 管理憑證可讓您使用 Azure 所提供的傳統部署模型進行驗證。 許多程式和工具 (例如 Visual Studio 或 Azure SDK) 會使用這些憑證，將各種 Azure 服務的設定與部署自動化。 
@@ -29,7 +29,7 @@ ms.locfileid: "68359867"
 
 您也可以使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 驗證用於自動化用途的用戶端程式碼。
 
-**注意：** 您必須是訂用帳戶的共同管理員, 才能執行 [管理憑證] 底下的任何作業。 [進一步了解](https://go.microsoft.com/fwlink/?linkid=849300)如何從新版 Azure 入口網站新增或移除共同管理員 
+**注意：** 您必須是訂用帳戶的共同管理員，才能在 [管理憑證] 下執行任何作業。 [進一步了解](https://go.microsoft.com/fwlink/?linkid=849300)如何從新版 Azure 入口網站新增或移除共同管理員 
 
 ## <a name="upload-a-management-certificate"></a>上傳管理憑證
 一旦建立管理憑證 (僅包含公開金鑰的 .cer 檔案) 之後，您就可以將其上傳到入口網站。 入口網站提供憑證時，具有符合的憑證 (私密金鑰) 的任何人都可以透過管理 API 連線，並存取相關聯訂用帳戶的資源。
@@ -44,7 +44,7 @@ ms.locfileid: "68359867"
 
     ![設定](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
-5. 按 [上傳]  按鈕。
+5. 按 [上傳] 按鈕。
 
     ![憑證頁面的 [上傳]](./media/azure-api-management-certs/certificates_page.png)
 6. 填寫對話方塊資訊，然後按下 [上傳]。
@@ -52,4 +52,4 @@ ms.locfileid: "68359867"
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>後續步驟
-既然您已經擁有與訂用帳戶建立關聯的管理憑證，您就能 (在本機安裝相符的憑證之後) 以程式設計方式連線到[傳統部署模型 REST API](/azure/#pivot=sdkstools)，並將同樣與該訂用帳戶建立關聯的各種 Azure 資源自動化。
+既然您已經擁有與訂用帳戶建立關聯的管理憑證，您就能 (在本機安裝相符的憑證之後) 以程式設計方式連線到[傳統部署模型 REST API](/azure/?pivot=sdkstools)，並將同樣與該訂用帳戶建立關聯的各種 Azure 資源自動化。

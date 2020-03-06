@@ -3,12 +3,12 @@ title: 與其他應用程式整合-QnA Maker
 description: QnA Maker 整合到用戶端應用程式（例如聊天機器人）以及其他自然語言處理服務（例如 Language Understanding （LUIS））。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846352"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300514"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>用戶端應用程式的設計知識庫
 
@@ -20,7 +20,7 @@ QnA Maker 與對話式用戶端應用程式（例如[Microsoft Bot Framework](ht
 
 ## <a name="create-a-bot-without-writing-any-code"></a>建立 bot 而不撰寫任何程式碼
 
-在您發佈知識庫之後，請選取 [**發佈**] 頁面中的 [**建立 bot** ] 按鈕來建立 bot。 使用[bot 教學](../tutorials/create-qna-bot.md)課程，以瞭解在您選取按鈕之後會發生什麼事。
+在您發佈知識庫之後，請選取 [**發佈**] 頁面中的 [**建立 bot** ] 按鈕來建立 bot。 使用[bot 教學](../Quickstarts/create-publish-knowledge-base.md)課程，以瞭解在您選取按鈕之後會發生什麼事。
 
 ## <a name="providing-multi-turn-conversations"></a>提供多回合交談
 

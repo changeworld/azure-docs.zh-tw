@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 建立 Load Balancer - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 建立 Load Balancer - 範本
+    - name: 建立 Load Balancer - ARM 範本
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: 教學課程

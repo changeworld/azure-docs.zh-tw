@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302877"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
@@ -56,7 +56,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-### <a name="encrypted"></a>加密 
+### <a name="encrypted"></a>已加密 
 
 如果您需要使用 CENC 加密來加密您的內容，請將您的原則設定為 ' Predefined_MultiDrmCencStreaming '。 Widevine 加密會套用至破折號串流，PlayReady 則會順暢地進行。 金鑰會根據所設定的 DRM 授權傳遞至播放用戶端。
 
@@ -90,7 +90,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 若要根據相關聯的資產名稱取得串流定位器，請使用下列作業：
 
-|語言|API|
+|Language|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams 資產清單-串流-定位器](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
@@ -98,12 +98,13 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>另請參閱
+## <a name="see-also"></a>另請參閱
 
 * [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
+* [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-[教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
+[如何建立串流定位器和組建 Url](create-streaming-locator-build-url.md)

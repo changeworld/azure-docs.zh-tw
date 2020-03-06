@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962113"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399021"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平臺應用程式驗證憑證認證
 
@@ -30,7 +30,7 @@ Microsoft 身分識別平臺可讓應用程式使用自己的認證進行驗證�
 ## <a name="assertion-format"></a>判斷提示格式
 Microsoft 身分識別平臺若要計算判斷提示，您可以使用您選擇的語言中的眾多[JSON Web 權杖](https://jwt.ms/)程式庫其中之一。 權杖所承載的資訊如下︰
 
-### <a name="header"></a>頁首
+### <a name="header"></a>標頭
 
 | 參數 |  備註 |
 | --- | --- |
@@ -55,7 +55,7 @@ Microsoft 身分識別平臺若要計算判斷提示，您可以使用您選擇�
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>已解碼的 JWT 判斷提示範例
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Microsoft 身分識別平臺若要計算判斷提示，您可以使用您選擇�
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>已編碼的 JWT 判斷提示範例
@@ -94,10 +93,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>上傳憑證檔案
 
 在用戶端應用程式的 Azure 應用程式註冊中：
-1. 選取 [憑證和秘密]。 
+1. 選取 [憑證和秘密]。
 2. 按一下 [上**傳憑證**]，然後選取要上傳的憑證檔案。
-3. 按一下 [新增]。
-  憑證上傳之後，即會顯示 [指紋]、[開始日期] 和 [到期] 值。 
+3. 按一下 [加入]。
+  憑證上傳之後，即會顯示 [指紋]、[開始日期] 和 [到期] 值。
 
 ### <a name="updating-the-application-manifest"></a>更新應用程式資訊清單
 
@@ -112,7 +111,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 1. 選取 [**資訊清單**] 以開啟應用程式資訊清單。
 2. 使用下列結構描述，將 *keyCredentials* 屬性取代為您新的憑證資訊。
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
        }
    ]
    ```
-3. 將編輯儲存至應用程式資訊清單，然後將資訊清單上傳至 Microsoft 身分識別平臺。 
+3. 將編輯儲存至應用程式資訊清單，然後將資訊清單上傳至 Microsoft 身分識別平臺。
 
    `keyCredentials` 屬性是多重值，因此您可以上傳多個憑證以進行更豐富的金鑰管理。
-   
+
 ## <a name="code-sample"></a>程式碼範例
 
 > [!NOTE]
-> 您必須使用憑證的雜湊，將 X5T 標頭轉換成基底64字串，以計算其值。 在中C#執行此動作的程式碼為： `System.Convert.ToBase64String(cert.GetCertHash());`
+> 您必須使用憑證的雜湊，將 X5T 標頭轉換成基底64字串，以計算其值。 在中C#執行此工作的程式碼 `System.Convert.ToBase64String(cert.GetCertHash());`。
 
-在具有憑證的[daemon 應用程式中向 Microsoft 身分識別平臺進行驗證](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)的程式碼範例會顯示應用程式如何使用自己的認證進行驗證。 此外也說明如何使用 `New-SelfSignedCertificate` PowerShell 命令[建立自我簽署憑證](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)。 您也可以利用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)來建立憑證、計算指紋，和執行其他作業。
+使用 Microsoft 身分識別平臺的程式碼範例[.Net Core daemon 主控台應用程式](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)會顯示應用程式如何使用自己的認證進行驗證。 此外也說明如何使用 [ PowerShell 命令](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)建立自我簽署憑證`New-SelfSignedCertificate`。 您也可以利用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)來建立憑證、計算指紋，和執行其他作業。

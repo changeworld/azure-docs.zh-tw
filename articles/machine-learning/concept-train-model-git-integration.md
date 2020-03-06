@@ -9,24 +9,39 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732173"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301653"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
 
-[Git](https://git-scm.com/)是受歡迎的版本控制系統，可讓您共用和共同作業您的專案。 提交定型作業以 Azure Machine Learning 時，如果定型檔案儲存在本機 git 儲存機制中，則會在定型過程中追蹤存放庫的相關資訊。
+[Git](https://git-scm.com/)是受歡迎的版本控制系統，可讓您在專案上共用和共同作業。 
+
+Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫-您可以將存放庫直接複製到共用工作區檔案系統上、在本機工作站上使用 Git，或從 CI/CD 管線使用 Git。
+
+提交作業以 Azure Machine Learning 時，如果原始程式檔儲存在本機 git 儲存機制中，則會在定型程式中追蹤存放庫的相關資訊。
 
 由於 Azure Machine Learning 會從本機 git 存放庫追蹤資訊，因此它不會系結至任何特定的中央儲存機制。 您的存放庫可以從 GitHub、GitLab、Bitbucket、Azure DevOps 或任何其他與 git 相容的服務複製。
 
-## <a name="how-does-git-integration-work"></a>Git 整合如何運作？
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>將 Git 儲存機制複製到您的工作區檔案系統
+Azure Machine Learning 為工作區中的所有使用者提供共用檔案系統。
+若要將 Git 存放庫複製到此檔案共用，建議您建立計算實例 & 開啟終端機。
+一旦終端機開啟，您就可以存取完整的 Git 用戶端，並可透過 Git CLI 體驗來複製和使用 Git。
+
+我們建議您將存放庫複製到您的使用者目錄，讓其他人不會直接在您的工作分支上進行衝突。
+
+您可以將任何可驗證的 Git 存放庫複製到（GitHub、Azure Repos、BitBucket 等等）。
+
+如需如何使用 Git CLI 的指南，請參閱[這裡。](https://guides.github.com/introduction/git-handbook/)
+
+## <a name="track-code-that-comes-from-git-repositories"></a>追蹤來自 Git 存放庫的程式碼
 
 當您從 Python SDK 或 Machine Learning CLI 提交定型回合時，定型模型所需的檔案會上傳至您的工作區。 如果您的開發環境可以使用 `git` 命令，上傳程式會使用它來檢查檔案是否儲存在 git 存放庫中。 若是如此，則您 git 存放庫中的資訊也會上傳做為定型執行的一部分。 這項資訊會儲存在定型回合的下列屬性中：
 
-| 屬性 | 用來取得值的 Git 命令 | 說明 |
+| 屬性 | 用來取得值的 Git 命令 | 描述 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |
@@ -53,7 +68,7 @@ ms.locfileid: "75732173"
 
 Git 資訊儲存在定型執行的屬性中。 您可以使用 Azure 入口網站、Python SDK 和 CLI 來查看此資訊。 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 1. 從  [Azure 入口網站](https://portal.azure.com)中，選取您的工作區。
 1. 選取 [__實驗__]，然後選取其中一個實驗。

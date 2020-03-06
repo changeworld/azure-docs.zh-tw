@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302860"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作夥伴客戶使用狀況屬性
 
@@ -87,7 +87,7 @@ Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤�
 
 ## <a name="use-the-resource-manager-apis"></a>使用 Resource Manager API
 
-在某些情況下，您可能會想要直接對 Resource Manager REST API 進行呼叫，以部署 Azure 服務。 [Azure 支援多個 SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) 以啟用此作業。 您可以使用其中一個 SDK，或直接呼叫 REST API 來部署資源。
+在某些情況下，您可能會想要直接對 Resource Manager REST API 進行呼叫，以部署 Azure 服務。 [Azure 支援多個 SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) 以啟用此作業。 您可以使用其中一個 SDK，或直接呼叫 REST API 來部署資源。
 
 如果您使用 Resource Manager 範本，應該依照稍早的指示標記您的解決方案。 如果您不是使用 Resource Manager 範本，並進行直接 API 呼叫，仍可標記您的部署以與 Azure 資源的使用量建立關聯。
 
@@ -187,7 +187,7 @@ Guid 必須註冊，才能啟用客戶使用狀況屬性。
 
 1. 若要註冊多個 GUID，請再次選取 [新增追蹤 GUID]。 頁面上會出現額外的方塊。
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]。
 
 
 ## <a name="verify-the-guid-deployment"></a>驗證 GUID 部署
@@ -231,7 +231,7 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>報告
+## <a name="report"></a>Report
 
 您可以在合作夥伴中心的 [分析] 儀表板中找到客戶使用狀況屬性的報表。 （[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)）。 若要查看報表，您必須使用合作夥伴中心認證來登入。 如果您遇到報告或登入的任何問題，請遵循取得支援一節中的指示，建立支援要求。
 

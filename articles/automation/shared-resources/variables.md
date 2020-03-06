@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303047"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自動化中的變數資產
 
@@ -33,9 +33,6 @@ ms.locfileid: "78273606"
 建立變數時，您可以 Azure 自動化做為安全資產來指定其加密和儲存體。 其他安全的資產包括認證、憑證和連線。 Azure 自動化會將這些資產加密，並使用為每個自動化帳戶產生的唯一金鑰加以儲存。 金鑰會儲存在系統管理的 Key Vault 中。 儲存安全資產之前，Azure 自動化會從 Key Vault 載入金鑰，然後使用它來加密資產。 
 
 Azure 自動化會安全地儲存每個加密的變數。 無法使用隨附在 Azure PowerShell 模組中的[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) Cmdlet 來抓取它的值。 取得加密值的唯一方法是在 runbook 或 DSC 設定中使用**get-automationvariable**活動。
-
->[!NOTE]
->如果您想要移除變數的加密，您必須刪除變數，並將它重新建立為未加密。
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，將模組更新為最新版本。
@@ -96,6 +93,9 @@ Azure 自動化會安全地儲存每個加密的變數。 無法使用隨附在 
 1. 從您的自動化帳戶，按一下 [資產] 圖格，然後在 [資產] 刀鋒視窗上選取 [變數]。
 2. 在 [變數] 圖格上，選取 [新增變數]。
 3. 完成 [**新增變數**] 分頁上的選項，然後按一下 [**建立**] 以儲存新的變數。
+
+>[!NOTE]
+>如果您想要移除變數的加密，您必須刪除變數，並將它重新建立為未加密。
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>使用 Windows PowerShell 建立新的變數
 

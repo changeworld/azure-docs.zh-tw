@@ -4,15 +4,15 @@ description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數，傳回以弧
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d175ba53a71998fc8e7812a1b761f9cd264c38a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871324"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299465"
 ---
 # <a name="degrees-azure-cosmos-db"></a>度數（Azure Cosmos DB）
  針對以弧度指定的角度，傳回對應的角度 (以度為單位)。  
@@ -45,6 +45,10 @@ SELECT DEGREES(PI()/2) AS degrees
 ```json
 [{"degrees": 90}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122613"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397275"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>透過 Azure 虛擬網路連線到 HDInsight 上的 Apache Kafka
 
@@ -38,7 +38,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
   4. 設定每個網路中 DNS 伺服器之間的轉送。
   5. 在虛擬網路的 HDInsight 叢集上建立 Kafka。
 
-     如需詳細資訊，請參閱[從內部部署網路連線到 Apache Kafka](#on-premises) 一節。 
+     如需詳細資訊，請參閱[從內部部署網路連線到 Apache Kafka](#on-premises) 一節。
 
 * 使用 VPN 閘道與 VPN 用戶端，將個別機器連線至虛擬網路。 若要啟用此設定，請執行下列工作：
 
@@ -242,7 +242,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
 
 Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶端。 這個設定不會使用 VPN 軟體用戶端，因為它無法為虛擬網路中的實體使用名稱解析。 針對此設定，使用下列步驟來設定 Kafka 以公告 IP 位址而不是網域名稱：
 
-1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net` 。 以`CLUSTERNAME` Kafka on HDInsight 叢集的名稱取代。
+1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net`。 以 Kafka on HDInsight 叢集的名稱取代 `CLUSTERNAME`。
 
     出現提示時，請使用叢集的 HTTPS 使用者名稱和密碼。 此時會顯示叢集的 Ambari Web UI。
 
@@ -254,7 +254,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
     ![Apache Ambari services 設定](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. 若要找出 __kafka-env__ 組態，請在右上角的 [Filter (篩選)] 欄位中輸入 `kafka-env`。
+4. 若要找出 __kafka-env__ 組態，請在右上角的 [Filter (篩選)]`kafka-env`__欄位中輸入__。
 
     ![Kafka 組態，找出 kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,7 +268,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 若要設定 Kafka 接聽的介面，請在右上角的 [Filter (篩選)] 欄位中輸入 `listeners`。
+6. 若要設定 Kafka 接聽的介面，請在右上角的 [Filter (篩選)]`listeners`__欄位中輸入__。
 
 7. 若要設定 Kafka 在所有網路介面上接聽，請將 [listeners (接聽程式)] 欄位的值變更為 `PLAINTEXT://0.0.0.0:9092`。
 
@@ -288,7 +288,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 ### <a name="connect-to-the-vpn-gateway"></a>連線到 VPN 閘道
 
-若要連線到 VPN 閘道，請使用[設定點對站連線](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文件的__連線到 Azure__ 一節。
+若要連線到 VPN 閘道，請使用__設定點對站連線__文件的[連線到 Azure](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) 一節。
 
 ## <a id="python-client"></a> 範例：Python 用戶端
 

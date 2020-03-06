@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299103"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>針對 Azure AD Domain Services 受控網域的網域聯結問題進行疑難排解
 
@@ -55,7 +55,7 @@ ms.locfileid: "77612800"
 
 1. 嘗試使用 UPN 格式來指定認證，例如 `dee@aaddscontoso.onmicrosoft.com`。 請確定已在 Azure AD 中正確設定此 UPN。
     * 如果您的租使用者中有多個使用者具有相同的 UPN 前置詞，或您的 UPN 前置詞太長，您帳戶的*SAMAccountName*可能會自動產生。 因此，您帳戶的*SAMAccountName*格式可能會與您在內部部署網域中預期或使用的格式不同。
-1. 嘗試使用屬於*AAD DC 系統管理員*群組的使用者帳號憑證，將 vm 加入 Azure AD DS 受控網域。
+1. 嘗試將認證用於屬於 Azure AD DS 受控網域的使用者帳戶，以將 Vm 加入受控網域。
 1. 請確定您已[啟用密碼同步][enable-password-sync]處理，並等候足夠的時間來完成初始密碼同步。
 
 ## <a name="next-steps"></a>後續步驟

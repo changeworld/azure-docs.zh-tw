@@ -1,5 +1,5 @@
 ---
-title: 轉換現有的資料庫以相應放大 | Microsoft Docs
+title: 轉換現有的資料庫以擴增 | Microsoft Docs
 description: 建立分區對應管理員來轉換分區化資料庫，以使用彈性資料庫工具
 services: sql-database
 ms.service: sql-database
@@ -18,7 +18,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421216"
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到相應放大的資料庫
+# <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到擴增的資料庫
 
 使用 Azure SQL Database 資料庫工具 (例如 [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md))，輕鬆地管理現有相應放大的分區化資料庫。 請先轉換現有的資料庫，才能使用[分區對應管理員](sql-database-elastic-scale-shard-map-management.md)。
 

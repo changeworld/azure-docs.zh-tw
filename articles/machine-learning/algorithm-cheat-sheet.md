@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767636"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328605"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的 Machine Learning 演算法功能提要
 
@@ -48,7 +48,7 @@ Azure Machine Learning 具有來自***分類***、***推薦系統*** ***、叢�
 
 在監督式學習中，每個資料點都會加上標籤，或與感興趣的類別或值相關聯。 分類標籤的範例就是將影像指派為「貓」或「狗」。 值標籤的範例則是與中古汽車相關聯的銷售價格。 監督式學習的目標是研究許多像是這些已加上標籤的範例，然後能夠做出有關未來資料點的預測。 例如，識別包含正確動物的新相片，或者針對其他中古汽車指派精確的銷售價格。 這是常見且實用的機器學習服務類型。
 
-### <a name="unsupervised-learning"></a>非監督式學習
+### <a name="unsupervised-learning"></a>不受監督學習
 
 在未監督的學習中，資料點沒有與其相關聯的標籤。 然而，未經指導的學習演算法的目標在於以某種方式組織資料或描述其結構。 不受監督學習會將資料分組到叢集，例如，做為平均值，或尋找不同的方式來查看複雜資料，使其更簡單。
 

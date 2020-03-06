@@ -4,15 +4,15 @@ description: 瞭解 Azure Cosmos DB 中的陣列配量 SQL 系統函數如何傳
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871783"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303319"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE （Azure Cosmos DB）
  傳回陣列運算式的一部分。
@@ -66,6 +66,10 @@ SELECT
            "s7": [] 
 }]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

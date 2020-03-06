@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8faf223a4871f6f109f9d133716989b1bcfdee08
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871171"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303183"
 ---
 # <a name="floor-azure-cosmos-db"></a>樓層（Azure Cosmos DB）
- 傳回小於或等於指定之數值運算式的最大整數。  
+ 傳回小於或等於指定數值運算式的最大整數。  
   
 ## <a name="syntax"></a>語法
   
@@ -44,7 +44,11 @@ SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3
   
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  
-```  
+```
+
+## <a name="remarks"></a>備註
+
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

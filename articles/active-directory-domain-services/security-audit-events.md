@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328641"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>範例查詢2
 
-在2020年2月3日上午9點，查看所有帳戶鎖定事件（*4740*） 2019年2月10日午夜，以日期和時間遞增排序：
+在2020年2月3日上午9點，查看所有帳戶鎖定事件（*4740*） 2020年2月10日午夜，以日期和時間遞增排序：
 
 ```Kusto
 AADDomainServicesAccountManagement

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331463"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一個圖形化 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246469"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-本教學課程將逐步引導您在 Azure 自動化中建立 [圖形化 Runbook](automation-runbook-types.md#graphical-runbooks) 。 從測試和發佈的簡單 runbook 開始，同時瞭解如何追蹤 runbook 作業的狀態。 然後修改 runbook 以實際管理 Azure 資源，在此案例中是啟動 Azure 虛擬機器。 完成本教學課程，藉由新增 runbook 參數和條件式連結，讓 runbook 更穩固。
+本教學課程將逐步引導您在 Azure 自動化中建立 [圖形化 Runbook](automation-runbook-types.md#graphical-runbooks) 。 從您可以測試和發佈的簡單 runbook 開始，同時瞭解如何追蹤 runbook 作業的狀態。 然後修改 runbook 以實際管理 Azure 資源，在此案例中是啟動 Azure 虛擬機器。 完成本教學課程，藉由新增 runbook 參數和條件式連結，讓 runbook 更穩固。
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
@@ -37,7 +37,7 @@ ms.locfileid: "78246469"
 
 ## <a name="step-1---create-runbook"></a>步驟 1 - 建立 Runbook
 
-從建立會輸出 "Hello World" 文字的簡單 runbook 開始。
+您會由建立一個可輸出文字 Hello World的簡單 Runbook 開始。
 
 1. 在 Azure 入口網站中，開啟您的自動化帳戶。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "78246469"
 
    作業狀態會以「已**排入佇列**」開始，表示作業正在等候雲端中的 runbook 背景工作可供使用。 當背景工作宣告作業時，狀態會變更為 [**正在啟動**]。 最後，當 runbook 實際開始執行時，狀態會變成 [**正在**執行]。
 
-1. 當 runbook 作業完成時，[測試] 頁面會顯示其輸出。 在此情況下，您會看到 Hello World。<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. 當 runbook 作業完成時，[測試] 窗格會顯示其輸出。 在此情況下，您會看到 Hello World。<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. 關閉 [測試] 窗格以返回畫布。
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>步驟 4 - 發佈和啟動 Runbook

@@ -10,18 +10,18 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388474"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新定型和部署傳統 Studio （傳統） web 服務
 
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型機器模型。 本文將說明如何重新訓練傳統 Studio （傳統） web 服務。 如需如何重新訓練新 Studio （傳統） web 服務的指南，請[參閱這篇操作說明文章。](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您進行過了重新定型實驗和預測性實驗。 [重新定型和部署機器學習模型](/azure/machine-learning/studio/retrain-machine-learning-model)一文有講解這些步驟。 不過，無需將您的機器學習模型部署為新 Web 服務，而是要將預測性實驗部署為傳統 Web 服務。
      
@@ -49,22 +49,9 @@ ms.locfileid: "73838683"
 1. 按一下 [新增]。
 1. 輸入新端點的名稱和描述。 選取記錄層級，以及是否啟用範例資料。 如需有關記錄的詳細資訊，請參閱 [為 Machine Learning Web 服務啟用記錄](web-services-logging.md)。
 
-## <a name="update-the-added-endpoints-trained-model"></a>更新已新增端點的定型模型
+## <a name="update-the-added-endpoints-trained-model"></a>更新新增端點的定型模型
 
 ### <a name="retrieve-patch-url"></a>擷取 PATCH URL
-
-### <a name="option-1-programmatically"></a>選項1：以程式設計方式
-
-若要以程式設計方式取得正確的 PATCH URL，請按照下列步驟：
-
-1. 執行 [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) 範例程式碼。
-1. 從 AddEndpoint 的輸出中找出「HelpLocation」 值並複製 URL。
-
-   ![addEndpoint 範例之輸出中的 HelpLocation。](./media/retrain-classic/addEndpoint-output.png)
-1. 將此 URL 貼到瀏覽器中，瀏覽到提供 Web 服務說明連結的頁面。
-1. 按一下 [更新資源] 連結以開啟修補說明頁面。
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>選項2：使用 Azure Machine Learning Web 服務入口網站
 
 請按照下列步驟，使用 Web 入口網站取得正確的 PATCH URL：
 
@@ -101,8 +88,8 @@ PATCH 說明頁面包含必須使用的 PATCH URL，並提供可用來呼叫它�
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }

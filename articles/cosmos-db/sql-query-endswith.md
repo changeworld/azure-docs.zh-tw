@@ -4,15 +4,15 @@ description: 瞭解 Azure Cosmos DB 中的 ENDSWITH SQL 系統函數，以傳回
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b3e692877faab8a8d507a44068d4cdfdc73a916
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 37c5a8b3c44c5ac46b837e4d851d22f85aeaf39c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873347"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299443"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH （Azure Cosmos DB）
  傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。  
@@ -48,6 +48,10 @@ SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2
 ```json
 [{"e1": false, "e2": true}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

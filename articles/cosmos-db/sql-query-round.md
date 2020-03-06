@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4bad140ea1c6b1c59c8f752bc5336bbd49952e16
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302112"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND （Azure Cosmos DB）
  傳回數值，四捨五入到最接近的整數值。  
@@ -36,10 +36,10 @@ ROUND(<numeric_expr>)
   
   執行的舍入運算會遵循從零開始舍入的點距離。 如果輸入是介於兩個整數之間的數值運算式，則結果會是離零最接近的整數值。  
   
-  |< numeric_expr >|圓角|
+  |< numeric_expr >|進位|
   |-|-|
   |-6.5000|-7|
-  |-0.5|-1|
+  |-0。5|-1|
   |0.5|1|
   |6.5000|7||
   
@@ -56,6 +56,10 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```json
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

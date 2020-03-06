@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399214"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -75,16 +75,16 @@ ms.locfileid: "77654708"
 
 - **虛擬網路設定**
     - **名稱**： VNet1
-    - **位址空間**： 10.11.0.0/16
+    - **位址空間**：10.1.0.0/16
     - **訂**用帳戶：選取您要使用的訂用帳戶。
     - **資源群組**︰TestRG1
     - **位置**：美國東部
     - **子網路**
         - **名稱**：前端
-        - **位址範圍**： 10.11.0.0/24
+        - **位址範圍**：10.1.0.0/24
     - **閘道子網路**：
         - **名稱**： *GatewaySubnet*是自動填入
-        - **位址範圍**： 10.11.255.0/27
+        - **位址範圍**： 10.1.255.0/27
 
 - **虛擬網路閘道設定**
     - **名稱**： VNet1GW
@@ -126,11 +126,6 @@ ms.locfileid: "77654708"
 
 ### <a name="to-create-a-virtual-network"></a>建立虛擬網路
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>新增其他位址空間和建立子網路
-建立 VNet 之後，您可以新增其他位址空間和建立子網路。
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>建立虛擬網路閘道
 此步驟將帶您建立 VNet 的虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。 如果您要練習建立此組態，請參閱[範例設定](#example-settings)。

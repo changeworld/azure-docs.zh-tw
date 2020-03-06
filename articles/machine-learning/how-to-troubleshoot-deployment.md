@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945805"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399677"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>針對 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例部署進行疑難排解
 
@@ -204,7 +204,7 @@ print(Model.get_model_path(model_name='my-best-model'))
 
 ## <a name="function-fails-runinput_data"></a>函式失敗：run(input_data)
 
-如果已成功部署服務，但此服務在您發佈資料到評分端點時發生損毀，您可以在 `run(input_data)` 函式中新增錯誤攔截陳述式，以傳回詳細的錯誤訊息。 例如：
+如果已成功部署服務，但此服務在您發佈資料到評分端點時發生損毀，您可以在 `run(input_data)` 函式中新增錯誤攔截陳述式，以傳回詳細的錯誤訊息。 例如:
 
 ```python
 def run(input_data):
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**附註**：從 `run(input_data)` 呼叫傳回錯誤訊息的方式應僅用於偵錯目的。 基於安全性理由，您不應該在生產環境中以這種方式傳回錯誤訊息。
+**注意**：從 `run(input_data)` 呼叫傳回錯誤訊息的方式應僅用於偵錯目的。 基於安全性理由，您不應該在生產環境中以這種方式傳回錯誤訊息。
+
+## <a name="http-status-code-502"></a>HTTP 狀態碼502
+
+502狀態碼表示服務已在 score.py 檔的 `run()` 方法中擲回例外狀況或損毀。 請使用本文中的資訊來對檔案進行 debug 錯。
 
 ## <a name="http-status-code-503"></a>HTTP 狀態碼503
 
@@ -261,6 +265,12 @@ Azure Kubernetes Service 部署支援自動調整，這可讓您新增複本以�
     > 如果您收到的要求尖峰超過新的最小複本可以處理的數目，您可能會再次收到503s。 例如，隨著服務的流量增加，您可能需要增加最小複本。
 
 如需有關設定 `autoscale_target_utilization`、`autoscale_max_replicas`和 `autoscale_min_replicas` 的詳細資訊，請參閱[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)模組參考。
+
+## <a name="http-status-code-504"></a>HTTP 狀態碼504
+
+504狀態碼表示要求已超時。預設的逾時值為 1 分鐘。
+
+您可以藉由修改 score.py 來移除不必要的呼叫，以增加超時時間或嘗試加快服務速度。 如果這些動作無法更正問題，請使用本文中的資訊來進行 score.py 檔案的 debug。 程式碼可能處於無回應狀態或無限迴圈。
 
 ## <a name="advanced-debugging"></a>進階偵錯
 
@@ -386,7 +396,7 @@ Azure Kubernetes Service 部署支援自動調整，這可讓您新增複本以�
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. 若要將 VS Code 附加至容器內的 PTVSD，請開啟 VS Code 並使用 F5 鍵或選取 [ __Debug__]。 出現提示時，選取 [ __Azure Machine Learning： Docker Debug__ ] 設定。 您也可以從側邊列選取 [debug] 圖示，從 [偵錯工具] 下拉式功能表中選取 [ __Azure Machine Learning： Docker debug__ ] 專案，然後使用綠色箭號來附加偵錯工具。
+1. 若要將 VS Code 附加至容器內的 PTVSD，請開啟 VS Code 並使用 F5 鍵或選取 [ __Debug__]。 出現提示時，選取 __Azure Machine Learning：Docker Debug__ 設定。 您也可以從側邊列選取 [debug] 圖示，__Azure Machine Learning：從 [Debug] 下拉式功能表__ 專案的 Docker Debug，然後使用綠色箭號來附加偵錯工具。
 
     ![[偵錯工具] 圖示、[開始偵錯工具] 按鈕和 [設定選取器]](./media/how-to-troubleshoot-deployment/start-debugging.png)
 
@@ -439,4 +449,4 @@ docker stop debug
 深入了解部署：
 
 * [部署方式及位置](how-to-deploy-and-where.md)
-* [教學課程：訓練 & 部署模型](tutorial-train-models-with-aml.md)
+* [教學課程：定型與部署模型](tutorial-train-models-with-aml.md)

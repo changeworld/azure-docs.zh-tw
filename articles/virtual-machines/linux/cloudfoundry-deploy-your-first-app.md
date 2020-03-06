@@ -132,7 +132,7 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>調整應用程式
 
-根據預設，`cf push` 只會建立應用程式的單一執行個體。 若要確保高可用性，並且啟用相應放大以獲得較高的輸送量，您通常要執行應用程式的多個執行個體。 您可以使用 `scale` 命令，輕鬆地相應放大已部署的應用程式：
+根據預設，`cf push` 只會建立應用程式的單一執行個體。 若要確保高可用性，並且啟用擴增以獲得較高的輸送量，您通常要執行應用程式的多個執行個體。 您可以使用 `scale` 命令，輕鬆地相應放大已部署的應用程式：
 
 ```bash
 cf scale -i 2 hello-spring-cloud

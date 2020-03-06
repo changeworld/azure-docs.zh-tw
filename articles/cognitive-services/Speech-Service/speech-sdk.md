@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: dapine
-ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331088"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
@@ -31,7 +31,7 @@ ms.locfileid: "77212511"
 
 ## <a name="get-the-sdk"></a>取得 SDK
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > 語音 SDK 支援 Windows 10 或更新版本。 **不支援**較早的 Windows 版本。
@@ -42,12 +42,12 @@ ms.locfileid: "77212511"
 
 * Java：您可以參考並使用我們的最新版「語音 SDK」Maven 套件，此版本只支援 Windows x64。 在您的 Maven 專案中，新增 `https://csspeechstorage.blob.core.windows.net/maven/` 作為額外的存放庫，並參考 `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` 作為相依性。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> 目前，我們只支援下列目標架構的 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9：
-> - 適用于開發的C++ x86、X64 和 ARM64
-> - 適用于 JAVA 的 x64 和 ARM64
+> 目前，我們只支援下列目標架構上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、Red Hat Enterprise Linux （RHEL）8和 CentOS 8：
+> - x86 （Debian/Ubuntu）、x64、ARM32 （Debian/Ubuntu）和 ARM64 （Debian/Ubuntu）以進行C++開發
+> - x64、ARM32 （Debian/Ubuntu）和適用于 JAVA 的 ARM64 （Debian/Ubuntu）
 > - 適用于 .NET Core 和 Python 的 x64
 
 執行下列 shell 命令，確定您已安裝必要的程式庫：
@@ -66,6 +66,16 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，請遵循[如何設定 OpenSSL For Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)的指示。
+
 * C#：您可以參考並使用語音 SDK NuGet 套件的最新版本。 若要參考 SDK，請在專案中新增下列套件參考：
 
   ```xml
@@ -76,7 +86,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 * C++：將 SDK 下載為 [.tar 套件](https://aka.ms/csspeech/linuxbinary)，然後將檔案解壓縮至您選擇的目錄。 下表顯示 SDK 資料夾結構：
 
-  |Path|描述|
+  |路徑|描述|
   |-|-|
   |`license.md`|授權|
   |`ThirdPartyNotices.md`|協力廠商通知|
@@ -86,7 +96,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   若要建立應用程式，請將所需的二進位檔 (和程式庫) 複製或移至您的開發環境。 視需要將它們包含在您的建置程序中。
 
-# <a name="androidtabandroid"></a>[Android](#tab/android)
+# <a name="android"></a>[Android](#tab/android)
 
 適用於 Android 的 Java SDK 會封裝成 [AAR (Android 程式庫)](https://developer.android.com/studio/projects/android-library) \(英文\)，其中包含必要的程式庫及所需的 Android 權限。 它會以 `https://csspeechstorage.blob.core.windows.net/maven/` 套件的形式裝載在位於 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 的 Maven 存放庫中。
 

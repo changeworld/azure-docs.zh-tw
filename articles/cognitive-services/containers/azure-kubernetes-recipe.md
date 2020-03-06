@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716883"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399178"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>將文字分析語言偵測容器部署至 Azure Kubernetes Service
 
 了解如何部署語言偵測容器。 此程序示範如何建立本機的 Docker 容器、將容器推送至私人容器登錄、在 Kubernetes 叢集中執行容器，並在網頁瀏覽器中進行測試。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。
 
@@ -80,8 +80,11 @@ ms.locfileid: "76716883"
 
     將結果儲存以取得 **loginServer** 屬性。 這將是託管容器的位址，稍後將用於 `language.yml` 檔案。
 
-    ```console
-    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```azurecli-interactive
+    az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```
+
+    ```output
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -126,7 +129,7 @@ ms.locfileid: "76716883"
 
     若要追蹤容器登錄庫的版本，請將標記加入版本格式，例如 `v1`。
 
-1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
+1. 將映像推送至容器登錄。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -136,8 +139,7 @@ ms.locfileid: "76716883"
 
     此程序完成時，結果應該如下所示：
 
-    ```console
-    > docker push pattyregistry.azurecr.io/language-frontend:v1
+    ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
     82ff52ee6c73: Pushed
     07599c047227: Pushed
@@ -150,7 +152,7 @@ ms.locfileid: "76716883"
 
 ## <a name="get-language-detection-docker-image"></a>取得語言偵測 Docker 映像
 
-1. 將最新版 Docker 映像提取到本機電腦。 這可能需要幾分鐘的時間。 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
+1. 將最新版 Docker 映像提取到本機電腦。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -162,7 +164,7 @@ ms.locfileid: "76716883"
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
+1. 將映像推送至容器登錄。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -180,8 +182,7 @@ ms.locfileid: "76716883"
 
     對於步驟 3 中的受託人參數 `appId` 儲存結果 `<appId>` 值。 對於下一個區段的 client-secret 參數 `password` 儲存 `<client-secret>`。
 
-    ```console
-    > az ad sp create-for-rbac --skip-assignment
+    ```output
     {
       "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "displayName": "azure-cli-2018-12-31-18-39-32",
@@ -199,8 +200,7 @@ ms.locfileid: "76716883"
 
     在下一個步驟中儲存範圍參數值的輸出 `<acrId>`。 如下所示：
 
-    ```console
-    > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
+    ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
@@ -222,8 +222,7 @@ ms.locfileid: "76716883"
 
     這個步驟可能需要幾分鐘的時間。 結果如下：
 
-    ```console
-    > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
+    ```output
     {
       "aadProfile": null,
       "addonProfiles": null,
@@ -300,8 +299,7 @@ ms.locfileid: "76716883"
 
     回應如下所示：
 
-    ```console
-    > kubectl get nodes
+    ```output
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-13756812-0   Ready     agent     6m        v1.9.11
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
@@ -337,8 +335,7 @@ ms.locfileid: "76716883"
 
     回應如下：
 
-    ```console
-    > kubectl apply -f language.yml
+    ```output
     service "language-frontend" created
     deployment.apps "language-frontend" created
     service "language" created
@@ -353,8 +350,7 @@ ms.locfileid: "76716883"
 kubectl get all
 ```
 
-```console
-> kubectl get all
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE
 pod/language-586849d8dc-7zvz5            1/1       Running   0          13h
 pod/language-frontend-68b9969969-bz9bg   1/1       Running   1          13h

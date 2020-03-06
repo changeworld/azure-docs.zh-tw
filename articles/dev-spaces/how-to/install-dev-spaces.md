@@ -1,24 +1,24 @@
 ---
-title: 在 AKS & 用戶端工具上安裝 Azure Dev Spaces
+title: 在 AKS 上啟用 Azure Dev Spaces & 安裝用戶端工具
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: 瞭解如何在 AKS 叢集上安裝 Azure Dev Spaces 並安裝用戶端工具。
+description: 瞭解如何在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302894"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>在 AKS 和用戶端工具上安裝 Azure Dev Spaces
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具
 
-本文說明在 AKS 叢集上安裝 Azure Dev Spaces 以及安裝用戶端工具的數種方式。
+本文說明在 AKS 叢集上啟用 Azure Dev Spaces 以及安裝用戶端工具的數種方式。
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>使用 CLI 安裝 Azure Dev Spaces
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>使用 CLI 啟用 Azure Dev Spaces
 
-在您可以使用 CLI 安裝 Dev Spaces 之前，您需要：
+在您可以使用 CLI 啟用 Dev Spaces 之前，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶][az-portal-create-account]。
 * [已安裝 Azure CLI][install-cli]。
 * [受支援區域][supported-regions]中的[AKS][create-aks-cli]叢集。
@@ -49,23 +49,23 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` 命令也會安裝 Azure Dev Spaces CLI。
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>使用 Azure 入口網站安裝 Azure Dev Spaces
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>使用 Azure 入口網站啟用 Azure Dev Spaces
 
-在您可以使用 Azure 入口網站安裝 Dev Spaces 之前，您需要：
+在您可以使用 Azure 入口網站啟用 Dev Spaces 之前，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶][az-portal-create-account]。
 * [受支援區域][supported-regions]中的[AKS][create-aks-portal]叢集。
 
-若要使用 Azure 入口網站安裝 Azure Dev Spaces：
+若要使用 Azure 入口網站啟用 Azure Dev Spaces：
 1. 登入 [Azure 入口網站][az-portal]。
 1. 流覽至您的 AKS 叢集。
-1. 按一下 [ *Dev Spaces*]。
+1. 選取 [ *Dev Spaces* ] 功能表項目。
 1. 將 [啟用 Dev Spaces] 變更為 [是]，然後按一下 [儲存]。
 
 ![在 Azure 入口網站中啟用 Dev Spaces](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-使用 Azure 入口網站安裝 Azure Dev Spaces，**並不會**安裝任何 Azure Dev Spaces 的用戶端工具。
+使用 Azure 入口網站啟用 Azure Dev Spaces，**並不會**安裝任何 Azure Dev Spaces 的用戶端工具。
 
-## <a name="install-the-client-side-tooling"></a>安裝用戶端工具
+## <a name="install-the-client-side-tools"></a>安裝用戶端工具
 
 您可以使用 Azure Dev Spaces 的用戶端工具，從您的本機電腦與 AKS 叢集上的開發人員空間進行互動。 有幾種方式可以安裝用戶端工具：
 

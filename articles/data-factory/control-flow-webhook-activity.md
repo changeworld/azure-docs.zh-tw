@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109995"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399995"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
 您可以使用 webhook 活動，透過您的自訂程式碼來控制管線的執行。 客戶可以使用 webhook 活動來呼叫端點，並傳遞回呼 URL。 管線執行會等候回呼被叫用，然後再繼續進行下一個活動。
@@ -116,6 +116,10 @@ timeout | 活動會等待&#39;callBackUri&#39;叫用的時間長度。 活動將
 Azure Data Factory 會將本文中的其他屬性 "callBackUri" 傳遞至 url 端點，而且會預期在指定的超時值之前叫用此 uri。 如果未叫用 uri，活動將會失敗，並出現狀態 ' TimedOut '。
 
 當自訂端點的呼叫失敗時，webhook 活動本身會失敗。 任何錯誤訊息都可以加入至回呼的主體，並用於後續的活動中。
+
+對於每個 REST API 呼叫，如果端點未在1分鐘內回應，則用戶端將會超時。這是標準的 HTTP 最佳作法。 若要修正此問題，您必須在此情況下執行202模式，其中端點會傳回202（已接受），而用戶端將會輪詢。
+
+要求中的1分鐘超時時間與活動超時不會有任何作用。 這會用來等候 callbackUri。
 
 回傳給回呼 URI 的主體應為有效的 JSON。 您必須將 Content-type 標頭設定為 `application/json`。
 

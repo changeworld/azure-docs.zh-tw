@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909035"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298644"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端布建的必要條件
 本文提供如何選擇及使用 Azure Active Directory （Azure AD）連接雲端布建作為身分識別解決方案的指引。
@@ -26,7 +26,7 @@ ms.locfileid: "76909035"
 ## <a name="cloud-provisioning-agent-requirements"></a>雲端布建代理程式需求
 您需要下列各項，才能使用 Azure AD Connect 雲端布建：
     
-- Azure AD 租使用者的全域系統管理員帳戶。
+- Azure AD 租使用者的全域系統管理員帳戶，不是來賓使用者。
 - 適用于使用 Windows 2012 R2 或更新版本之布建代理程式的內部部署伺服器。
 - 內部部署防火牆設定。
 
@@ -39,6 +39,10 @@ ms.locfileid: "76909035"
 
 1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或變得無法使用，您就可以管理租使用者的設定。 深入瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 完成此步驟對於確保您的租使用者不會遭到鎖定是不可或缺的。
 1. 將一或多個[自訂網域名稱](../active-directory-domains-add-azure-portal.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
+
+### <a name="in-your-directory-in-active-directory"></a>在您目錄中的 Active Directory
+
+執行[IdFix 工具](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)來準備目錄屬性以進行同步處理。
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 

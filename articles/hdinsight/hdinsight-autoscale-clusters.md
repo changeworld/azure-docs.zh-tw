@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616081"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399708"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
 > [!Important]
-> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。 
+> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。
 >
->互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。 
-
+> 互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。
 
 Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集中的背景工作節點數目。 目前無法調整叢集中的其他節點類型。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 自動調整會監視分析負載的資源需求，並相應增加或減少背景工作角色節點的數目。 這項功能不需額外付費。
 
@@ -59,23 +58,18 @@ Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集�
 
 系統每隔 60 秒就會檢查上述計量。 自動調整會根據這些計量來進行相應增加和相應減少決策。
 
-### <a name="load-based-cluster-scale-up"></a>以負載為基礎的叢集相應增加
+### <a name="load-based-scale-conditions"></a>以負載為基礎的調整規模條件
 
-當偵測到下列情況時，自動調整將會發出相應增加要求：
+當偵測到下列情況時，自動調整會發出級別要求：
 
-* 擱置中的 CPU 總計大於可用的 CPU 總計超過3分鐘。
-* 暫止的記憶體總計大於可用的記憶體總計超過3分鐘。
+|相應增加|向下調整|
+|---|---|
+|擱置中的 CPU 總計大於可用的 CPU 總計超過3分鐘。|擱置中的 CPU 總計小於可用的 CPU 總計超過 10 分鐘。|
+|暫止的記憶體總計大於可用的記憶體總計超過3分鐘。|擱置中的記憶體總計小於可用的記憶體總計超過 10 分鐘。|
 
-HDInsight 服務會計算需要多少個新的背景工作節點，以符合目前的 CPU 和記憶體需求，然後發出相應增加要求來新增所需的節點數目。
+針對相應增加，HDInsight 服務會計算需要多少個新的背景工作節點，以符合目前的 CPU 和記憶體需求，然後發出相應增加要求來新增所需的節點數目。
 
-### <a name="load-based-cluster-scale-down"></a>以負載為基礎的叢集相應減少
-
-當偵測到下列情況時，自動調整將會發出相應減少要求：
-
-* 擱置中的 CPU 總計小於可用的 CPU 總計超過 10 分鐘。
-* 擱置中的記憶體總計小於可用的記憶體總計超過 10 分鐘。
-
-根據每個節點的 AM 容器數目，以及目前的 CPU 和記憶體需求，自動調整會發出移除特定節點數目的要求。 服務也會根據目前的作業執行，偵測哪些節點是候選項目。 相應減少作業會先會 add-on 節點，然後將它們從叢集中移除。
+根據每個節點的 AM 容器數目以及目前的 CPU 和記憶體需求進行相應減少，自動調整會發出移除特定節點數目的要求。 服務也會根據目前的作業執行，偵測哪些節點是候選項目。 相應減少作業會先會 add-on 節點，然後將它們從叢集中移除。
 
 ## <a name="get-started"></a>開始使用
 
@@ -118,7 +112,7 @@ HDInsight 服務會計算需要多少個新的背景工作節點，以符合目�
 
 ![啟用背景工作節點以排程為基礎的自動調整節點大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-您的訂用帳戶擁有每個區域的容量配額。 您前端節點的核心總數與背景工作節點的最大數目結合之後，不能超過容量配額。 但是這個配額是軟性限制；您一律可以建立支援票證，輕鬆增加配額。
+您的訂用帳戶擁有每個區域的容量配額。 與背景工作節點數目上限結合的前端節點核心總數不能超過容量配額。 但是這個配額是軟性限制；您一律可以建立支援票證，輕鬆增加配額。
 
 > [!Note]  
 > 如果您超過總核心配額限制，將會收到錯誤訊息，指出「最大節點超過此區域中的可用核心數，請選擇另一個區域，或聯絡支援人員增加配額」。

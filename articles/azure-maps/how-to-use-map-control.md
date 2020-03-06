@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 535707191557142054e493d0216b713312f53953
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368646"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務地圖控制項
 
@@ -27,23 +27,23 @@ ms.locfileid: "77913935"
 
 2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項的其中一個：
 
-   1. 使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本，方法是將 URL 端點新增到檔案 `<head>` 元素中的樣式表和指令碼參考：
+    * 藉由在 HTML 檔案的 `<head>` 元素中新增 JavaScript 和樣式表單的參考，使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本：
 
-      ```HTML
-       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+        ```
 
-   1. 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
+    * 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
 
-      > **npm 安裝 azure-maps-控制項**
+        > **npm 安裝 azure-maps-控制項**
 
-   然後將參考新增到 Azure 地圖服務樣式表，並將指令碼來源參考新增到檔案的 `<head>` 元素：
+       然後將參考新增到 Azure 地圖服務樣式表，並將指令碼來源參考新增到檔案的 `<head>` 元素：
 
-      ```HTML
-       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+        ```
 
     > [!Note]
     > 您可以藉由新增下列程式碼，將 Typescript 定義匯入至您的應用程式：

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165341"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377913"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>操作說明：從 Azure 存取控制服務遷移
 
@@ -68,13 +68,13 @@ https://<mynamespace>.accesscontrol.windows.net
 ### <a name="download-and-install-acs-powershell"></a>下載並安裝 ACS PowerShell
 
 1. 移至 PowerShell 資源庫並下載 [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)。
-1. 藉由執行來安裝模組
+2. 藉由執行來安裝模組
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. 藉由執行來取得所有可能的命令
+3. 藉由執行來取得所有可能的命令
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ https://<mynamespace>.accesscontrol.windows.net
   
     您可能需要先執行 `Set-ExecutionPolicy -ExecutionPolicy Bypass`，才可以執行命令，而且成為這些訂用帳戶的管理員才能執行命令。
 
-1. 使用 **Get-AcsSubscription** Cmdlet 列出可用的 Azure 訂用帳戶。
-1. 使用 **Get-AcsNamespace** Cmdlet 列出您的 ACS 命名空間。
+2. 使用 **Get-AcsSubscription** Cmdlet 列出可用的 Azure 訂用帳戶。
+3. 使用 **Get-AcsNamespace** Cmdlet 列出您的 ACS 命名空間。
 
 ### <a name="check-which-applications-will-be-impacted"></a>檢查哪些應用程式會受影響
 
@@ -103,8 +103,8 @@ https://<mynamespace>.accesscontrol.windows.net
 
     例如，如果其中一個命名空間是 contoso-test，請移至 `https://contoso-test.accesscontrol.windows.net`
 
-1. 在 [信任關係] 之下，選取 [信賴憑證者應用程式] 以查看會受 ACS 淘汰影響的應用程式清單。
-1. 針對您擁有的任何其他 ACS 命名空間重複步驟 1-2。
+2. 在 [信任關係] 之下，選取 [信賴憑證者應用程式] 以查看會受 ACS 淘汰影響的應用程式清單。
+3. 針對您擁有的任何其他 ACS 命名空間重複步驟 1-2。
 
 ## <a name="retirement-schedule"></a>淘汰排程
 
@@ -127,7 +127,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 接受存取控制簽發之權杖的每項 Microsoft 雲端服務，現在支援至少一個其他驗證方式。 每項服務適合的驗證機制不盡相同。 建議您參閱每項服務的特定文件，了解官方指導。 為了方便起見，以下提供每一組文件：
 
-| 服務 | 指引 |
+| Service | 指引 |
 | ------- | -------- |
 | Azure 服務匯流排 | [移轉至共用存取簽章](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure 服務匯流排轉送 | [移轉至共用存取簽章](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -210,7 +210,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | 上傳自訂權杖簽署憑證 | 支援 | 支援 |
 | 在權杖中自訂宣告 |- 從識別提供者傳遞輸入宣告<br />- 從識別提供者取得宣告形式的存取權杖<br />- 根據輸入宣告值簽發輸出宣告<br />- 簽發具有常數值的輸出宣告 |- 無法從同盟識別提供者傳遞宣告<br />- 無法從識別提供者取得宣告形式的存取權杖<br />- 無法根據輸入宣告值簽發輸出宣告<br />- 可以簽發具有常數值的輸出宣告<br />- 可以根據同步至 Azure AD 的使用者屬性簽發輸出宣告 |
 | **自動化** | | |
-| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 | 使用 Microsoft Graph 和 Azure AD 圖形 API 則可支援 |
+| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 | 使用 Microsoft Graph API 支援 |
 
 如果您決定 Azure AD 是最適合您應用程式和服務的移轉方式，請瞭解以下兩種讓應用程式與 Azure AD 整合。
 
@@ -261,7 +261,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | 上傳自訂權杖簽署憑證 | 支援 | 支援透過自訂原則自訂簽署金鑰 (非憑證) |
 | 在權杖中自訂宣告 |- 從識別提供者傳遞輸入宣告<br />- 從識別提供者取得宣告形式的存取權杖<br />- 根據輸入宣告值簽發輸出宣告<br />- 簽發具有常數值的輸出宣告 |- 可以從識別提供者傳遞宣告；某些宣告需有自訂原則<br />- 無法從識別提供者取得宣告形式的存取權杖<br />- 可以透過自訂原則根據輸入宣告值簽發輸出宣告<br />- 可以透過自訂原則簽發具有常數值的輸出宣告 |
 | **自動化** | | |
-| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 |- 允許透過 Azure AD 圖形 API 建立使用者<br />- 無法以程式設計方式建立 B2C 租用戶、應用程式或原則 |
+| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 |-建立允許使用 Microsoft Graph API 的使用者<br />- 無法以程式設計方式建立 B2C 租用戶、應用程式或原則 |
 
 如果您決定 Azure AD B2C 是適合您應用程式和服務的移轉方式，請先了解下列資源的內容：
 
@@ -325,7 +325,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 | 用戶端驗證方法 |- 簡單密碼<br />- 已簽署的 SWT<br />- 來自同盟識別提供者的 SAML 權杖 |- 簡單密碼<br />- 已簽署的 JWT |
 | 權杖格式 |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | 僅限 JWT |
 | 權杖轉換 |- 新增自訂宣告<br />- 簡單的 if-then 宣告簽發邏輯 | 新增自訂宣告 | 
-| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 | 使用 Microsoft Graph 和 Azure AD 圖形 API 則可支援 |
+| 自動化設定和管理工作 | 使用存取控制管理服務則可支援 | 使用 Microsoft Graph API 支援 |
 
 如需有關實作伺服器對伺服器案例的指導，請參閱下列資源：
 

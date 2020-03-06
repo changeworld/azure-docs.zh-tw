@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure 入口網站 & SSMS 載入資料
-description: 教學課程使用 Azure 入口網站和 SQL Server Management Studio，將 WideWorldImportersDW 資料倉儲從全域 Azure blob 載入至 Azure Synapse Analytics Sql 集區。
+description: 教學課程使用 Azure 入口網站和 SQL Server Management Studio，將 WideWorldImportersDW 資料倉儲從全域 Azure blob 載入至 Azure Synapse Analytics SQL 集區。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304033"
 ---
-# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教學課程：將資料載入至 Azure Synapse 分析 Sql 集區
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教學課程：將資料載入至 Azure Synapse 分析 SQL 集區
 
 本教學課程會使用 PolyBase，將 WideWorldImportersDW 資料倉儲從 Azure Blob 儲存體載入至 Azure Synapse Analytics SQL 集區中的資料倉儲。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)：
 
@@ -45,7 +45,7 @@ ms.locfileid: "78193546"
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>在 SQL 集區中建立空白資料倉儲
 
-系統會使用一組定義的[計算資源](memory-concurrency-limits.md)來建立 Sql 集區。 SQL 集區會建立在[azure 資源群組](../azure-resource-manager/management/overview.md)和[azure sql 邏輯伺服器](../sql-database/sql-database-features.md)內。 
+使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立 SQL 集區。 SQL 集區會建立在[azure 資源群組](../azure-resource-manager/management/overview.md)和[azure sql 邏輯伺服器](../sql-database/sql-database-features.md)內。 
 
 請遵循下列步驟來建立空白 SQL 集區。 
 
@@ -100,7 +100,7 @@ Azure Synapse 分析服務會在伺服器層級建立防火牆，防止外部應
 1. 選取伺服器名稱。 
     伺服器名稱![](media/load-data-wideworldimportersdw/find-server-name.png) 
 
-1. 選取 [**顯示防火牆設定**]。 Sql 集區伺服器的 [**防火牆設定**] 頁面隨即開啟。 
+1. 選取 [**顯示防火牆設定**]。 SQL 集區伺服器的 [**防火牆設定**] 頁面隨即開啟。 
 
     ![伺服器設定](media/load-data-wideworldimportersdw/server-settings.png) 
 
@@ -125,7 +125,7 @@ Azure Synapse 分析服務會在伺服器層級建立防火牆，防止外部應
 
 本節使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 建立對 Azure SQL Server 的連線。
 
-1. 開啟 [SQL Server Management Studio]。
+1. 開啟 SQL Server Management Studio。
 
 2. 在 [連線至伺服器] 對話方塊中，輸入下列資訊：
 
@@ -135,11 +135,11 @@ Azure Synapse 分析服務會在伺服器層級建立防火牆，防止外部應
     | 伺服器名稱 | 完整伺服器名稱 | 例如， **sqlpoolservername.database.windows.net**是完整的伺服器名稱。 |
     | 驗證 | SQL Server 驗證 | SQL 驗證是本教學課程中設定的唯一驗證類型。 |
     | 登入 | 伺服器系統管理員帳戶 | 這是您在建立伺服器時指定的帳戶。 |
-    | Password | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
+    | 密碼 | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
 
     ![連線至伺服器](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. 按一下 [連接]。 [物件總管] 視窗會在 SSMS 中開啟。 
+4. 按一下 [ **連接**]。 [物件總管] 視窗會在 SSMS 中開啟。 
 
 5. 在 [物件總管] 中展開 [資料庫]。 然後展開 [系統資料庫] 和 [主要資料庫] 來檢視主要資料庫中的物件。  展開 [ **SampleDW** ] 以查看新資料庫中的物件。
 
@@ -190,7 +190,7 @@ Azure Synapse 分析服務會在伺服器層級建立防火牆，防止外部應
 
 2. 輸入完整伺服器名稱，以及輸入 **LoaderRC60** 作為登入。  輸入您 LoaderRC60 的密碼。
 
-3. 按一下 [連接]。
+3. 按一下 [ **連接**]。
 
 4. 您的連線就緒時，會在 [物件總管] 中看到兩個伺服器連線。 一個是以 ServerAdmin 連線，另一個是以 LoaderRC60 連線。
 

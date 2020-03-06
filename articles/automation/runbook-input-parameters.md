@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329080"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 輸入參數
 
@@ -270,7 +270,7 @@ Runbook 的啟動方式有許多種：透過 Azure 入口網站、使用 webhook
 
 ![建立 Webhook 並指派參數](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-當您使用 webhook 執行 runbook 時，會傳送預先定義的輸入參數 *[WebhookData](automation-webhooks.md#details-of-a-webhook)* ，以及您定義的輸入參數。 
+當您使用 webhook 執行 runbook 時，會傳送預先定義的輸入參數 *[WebhookData](automation-webhooks.md)* ，以及您定義的輸入參數。 
 
 ![WebhookData 參數](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

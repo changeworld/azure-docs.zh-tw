@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299409"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
 在本文中，我們會提供您在設計雲端應用程式時應考慮的安全性活動和控制項。 涵蓋在 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的需求和設計階段中，應考慮的安全性問題和概念的訓練資源。 其目標是要協助您定義活動和 Azure 服務，您可以用來設計更安全的應用程式。
@@ -38,7 +38,7 @@ ms.locfileid: "71000974"
 
   - [Azure 開發人員的快速入門手冊針對](../../guides/developer/azure-developer-guide.md)想要開始使用 Azure 平臺以滿足其開發需求的開發人員，提供基本資訊。
 
-  - [Sdk 和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools)說明 Azure 上可用的工具。
+  - [Sdk 和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools)說明 Azure 上可用的工具。
 
   - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/)提供開發共同作業工具。 這些工具組括高效能管線、免費的 Git 存放庫、可設定的看板面板，以及廣泛的自動化和雲端負載測試。
     [DevOps 資源中心](https://docs.microsoft.com/azure/devops/learn/)結合了我們的資源，以取得學習 DevOps 實務、Git 版本控制、agile 方法、我們如何在 Microsoft 中使用 DevOps，以及如何評估自己的 DevOps 進展。
@@ -66,7 +66,7 @@ ms.locfileid: "71000974"
 
   - 我的應用程式是否包含敏感性資料？
 
-  - 我的應用程式會收集或儲存要求我遵守業界標準和合規性計畫的資料，例如[聯邦金融機構檢查委員會（FFIEC）](../blueprints/ffiec-analytics-overview.md)或[支付卡產業資料安全標準（PCI DSS）](../blueprints/pcidss-analytics-overview.md)?
+  - 我的應用程式是否會收集或儲存要求我遵守業界標準和合規性計畫的資料，例如[聯邦金融機構檢查委員會（FFIEC）](../blueprints/ffiec-analytics-overview.md)或[支付卡產業資料安全標準（PCI DSS）](../blueprints/pcidss-analytics-overview.md)？
 
   - 我的應用程式會收集或包含機密個人或客戶資料，不論是自己或其他資訊，都可以用來識別、聯絡或尋找單一人員嗎？
 
@@ -126,10 +126,10 @@ OWASP 前10個可解決 web 應用程式的重大安全性風險。
 請確定您使用的是 framework 的最新版本，以及架構中可用的所有安全性功能。 Microsoft 為所有開發人員提供了一[組完整的開發工具](https://azure.microsoft.com/product-categories/developer-tools/)，以處理任何平臺或語言，以提供雲端應用程式。 您可以從各種[sdk](https://azure.microsoft.com/downloads/)中選擇，以您選擇的語言撰寫程式碼。
 您可以利用功能完整的整合式開發環境（Ide）和編輯器，具備先進的偵錯工具和內建的 Azure 支援。
 
-Microsoft 提供各種不同的[語言、架構和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all)，可讓您用來在 Azure 上開發應用程式。 例如，[適用于 .net 和 .Net Core 開發人員的 Azure](https://docs.microsoft.com/dotnet/azure/)。 針對我們所提供的每個語言和架構，您可以找到快速入門、教學課程和 API 參考，以協助您快速入門。
+Microsoft 提供各種不同的[語言、架構和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)，可讓您用來在 Azure 上開發應用程式。 例如，[適用于 .net 和 .Net Core 開發人員的 Azure](https://docs.microsoft.com/dotnet/azure/)。 針對我們所提供的每個語言和架構，您可以找到快速入門、教學課程和 API 參考，以協助您快速入門。
 
 Azure 提供您可用來裝載網站和 web 應用程式的各種服務。 這些服務可讓您以您慣用的語言進行開發，無論是 .NET、.NET Core、JAVA、Ruby、node.js、PHP 或 Python。
-[Azure App Service Web Apps](../../app-service/overview.md)（Web Apps）是其中一項服務。
+[Azure App Service Web Apps](../../app-service/overview.md) （Web Apps）是其中一項服務。
 
 Web Apps 將 Microsoft Azure 的威力新增至您的應用程式。 其中包括安全性、負載平衡、自動調整和自動化管理。 您也可以利用 Web Apps 中的 DevOps 功能，例如套件管理、預備環境、自訂網域、SSL/TLS 憑證，以及從 Azure DevOps、GitHub、Docker Hub 和其他來源進行持續部署。
 
@@ -149,16 +149,16 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 為了協助進行威脅模型化程式，我們設計了[SDL Threat Modeling Tool](threat-modeling-tool.md) ，並在非安全性專家的情況下加以考慮。 這項工具藉由提供如何建立和分析威脅模型的清楚指引，讓所有開發人員更容易進行威脅模型化。
 
-將應用程式設計模型化並列舉[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威脅（詐騙、篡改、否認、資訊洩漏、阻絕服務及提高許可權）-跨所有信任界限已證明有效的方式來攔截設計錯誤早于。 下表列出 STRIDE 威脅，並提供一些使用 Azure 所提供功能的範例緩和措施。 這些風險降低措施並非能在各個情況下運作。
+將應用程式設計模型化，並列舉[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威脅（詐騙、篡改、否認、資訊洩漏、阻絕服務及提高許可權）：在所有信任界限中，已證明有效的方法，可以及早攔截設計錯誤。 下表列出 STRIDE 威脅，並提供一些使用 Azure 所提供功能的範例緩和措施。 這些風險降低措施並非能在各個情況下運作。
 
 | Threat | 安全性屬性 | 潛在的 Azure 平臺緩和措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 詐騙               | 驗證        | [需要 HTTPS 連接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 竄改              | 完整性             | 驗證 SSL/TLS 憑證。 使用 SSL/TLS 的應用程式必須完整驗證其所連接實體的 x.509 憑證。 使用 Azure Key Vault 憑證來[管理 x509 憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)。 |
 | 否認性            | 不可否認性       | 啟用 Azure [監視和診斷](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
-| 資訊洩漏 | 機密性       | 加密[待用](../fundamentals/encryption-atrest.md)和 [傳輸中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)的敏感性資料。 |
+| 資訊洩漏 | 保密       | 加密待用和[傳輸中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)[的敏感](../fundamentals/encryption-atrest.md)資料。 |
 | 阻斷服務      | 可用性          | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 [Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md#next-steps)與應用程式設計最佳作法結合，可提供對抗 DDoS 攻擊的防線。|
-| 提高權限 | Authorization         | 使用 Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
+| 提高權限 | 授權         | 使用 Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>減少受攻擊面
 

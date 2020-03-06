@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734910"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302520"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 來設定 IoT 中樞檔案上傳
 
@@ -29,7 +29,7 @@ ms.locfileid: "60734910"
 
 * Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用 [`az iot hub create` 命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 IoT 中樞](iot-hub-create-through-portal.md)。
 
-* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 [Azure CLI - 管理儲存體帳戶](../storage/common/storage-azure-cli.md#manage-storage-accounts)來建立一個，或使用入口網站[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，可以使用 Azure CLI 來建立一個。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登入並設定 Azure 帳戶
 
@@ -57,7 +57,7 @@ ms.locfileid: "60734910"
 
 ## <a name="retrieve-your-storage-account-details"></a>擷取您的儲存體帳戶詳細資料
 
-下列步驟假設您使用 [Resource Manager]  部署模型，而非 [傳統]  部署模型，建立了儲存體帳戶。
+下列步驟假設您使用 [Resource Manager] 部署模型，而非 [傳統] 部署模型，建立了儲存體帳戶。
 
 若要從裝置設定檔案上傳，您需要 Azure 儲存體帳戶的連接字串。 儲存體帳戶必須與您的 IoT 中樞位於相同的訂用帳戶中。 您也需要儲存體帳戶中 blob 容器的名稱。 使用下列命令來擷取儲存體帳戶金鑰：
 

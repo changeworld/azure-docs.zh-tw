@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ab0d2b8d95b4cb5996dd93fa0bb24085c9de26d5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913645"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331531"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>透過建立音訊內容來改善合成
 
@@ -23,7 +23,7 @@ ms.locfileid: "77913645"
 
 音訊內容建立工具是以[語音合成標記語言（SSML）](speech-synthesis-markup.md)為基礎。 為了簡化自訂和微調，音訊內容的建立可讓您以視覺化方式即時檢查文字轉換語音的輸出。
 
-## <a name="how-does-it-work"></a>運作方式
+## <a name="how-does-it-work"></a>它的運作狀況如何？
 
 下圖顯示微調和匯出自訂的語音轉換文字輸出所需的步驟。 若要深入瞭解每個步驟，請使用下列連結。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77913645"
 
 請遵循下列步驟來建立語音資源，並將它與語音 Studio 連線。
 
-1. 請遵循這些指示來[註冊 Azure 帳戶](get-started.md#new-resource)，並[建立語音資源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 請確定您的定價層已設定為**S0**。 如果您使用其中一個類神經語音，請務必在[支援的區域](regions.md#standard-and-neural-voices)中建立您的資源。
+1. 請遵循這些指示來[註冊 Azure 帳戶](get-started.md#new-resource)，並[建立語音資源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)。 請確定您的定價層已設定為**S0**。 如果您使用其中一個類神經語音，請務必在[支援的區域](regions.md#standard-and-neural-voices)中建立您的資源。
 2. 登入[音訊內容建立](https://aka.ms/audiocontentcreation)。
 3. 選取現有的專案，或按一下 **[新建]。**
 4. 您可以隨時使用 [**設定**] 選項（位於頂端導覽）修改訂閱。
@@ -95,7 +95,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 選擇您調整音訊的輸出格式。 以下提供支援的格式清單和取樣率。
 3. 您可以在 [**匯出**工作] 索引標籤上，查看工作的狀態。如果工作失敗，請參閱詳細資訊頁面以取得完整的報表。
 4. 當工作完成時，您可以在 [**音訊媒體**櫃] 索引標籤上下載您的音訊。
-5. 按一下 [下載]。 現在您已準備好在應用程式或產品中使用您的自訂調整音訊。
+5. 按一下 [下載] 現在您已準備好在應用程式或產品中使用您的自訂調整音訊。
 
 ### <a name="supported-audio-formats"></a>支援的音訊格式
 

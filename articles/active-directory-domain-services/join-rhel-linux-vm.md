@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 1be9134ee217cb91461e89c9908b889a14ec0c3a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: d12dd0c79f2e9c1d2b0cc17956a0bb8d8fa35865
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613789"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299137"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 Red Hat Enterprise Linux 的虛擬機器加入 Azure AD Domain Services 受控網域
 
@@ -34,7 +34,7 @@ ms.locfileid: "77613789"
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
     * 如有需要，第一個教學課程會引導您[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
-* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員群組成員的使用者帳戶。
+* 屬於 Azure AD DS 受控網域之一部分的使用者帳戶。
 
 ## <a name="create-and-connect-to-a-rhel-linux-vm"></a>建立並連接到 RHEL Linux VM
 
@@ -108,15 +108,15 @@ sudo yum install adcli sssd authconfig krb5-workstation
     * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
     * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
-1. 現在使用 `kinit` 命令來初始化 Kerberos。 指定屬於*AAD DC 系統管理員*群組的使用者。 如有需要，請[將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 現在使用 `kinit` 命令來初始化 Kerberos。 指定屬於 Azure AD DS 受控網域之一部分的使用者。 如有需要，請[將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@aaddscontoso.com` 的帳戶來初始化 Kerberos。 輸入屬於*AAD DC 系統管理員*群組成員的您自己的使用者帳戶：
+    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名為 `contosoadmin@aaddscontoso.com` 的帳戶來初始化 Kerberos。 輸入屬於 Azure AD DS 受控網域之一部分的您自己的使用者帳戶：
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的*AAD DC 系統管理員*群組成員相同的使用者帳戶，例如 `contosoadmin@AADDSCONTOSO.COM`：
+1. 最後，使用 `realm join` 命令將電腦加入 Azure AD DS 受控網域。 使用與您在上一個 `kinit` 命令中指定的 Azure AD DS 受控網域之一部分相同的使用者帳戶，例如 `contosoadmin@AADDSCONTOSO.COM`：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -142,7 +142,7 @@ Successfully enrolled machine in realm
     * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
     * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
-1. 首先，使用 `adcli join` 命令加入網域，此命令也會建立 keytab 來驗證機器。 使用屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
+1. 首先，使用 `adcli join` 命令加入網域，此命令也會建立 keytab 來驗證機器。 使用屬於 Azure AD DS 受控網域之一部分的使用者帳戶。
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin

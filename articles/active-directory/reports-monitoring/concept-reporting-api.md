@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008365"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399322"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>開始使用 Azure Active Directory 報告 API
 
@@ -34,13 +34,13 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 
 如果您遇到問題，請參閱[如何取得 Azure Active Directory 支援](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要存取報告 API (不論是否需要使用者介入)，您需要：
 
 1. 指派角色 (安全性讀取者、安全性管理員或全域管理員)
 2. 註冊應用程式
-3. 授與權限
+3. 授與使用權限
 4. 收集組態設定
 
 如需詳細指示，請參閱[存取 Azure Active Directory 報告 API 的必要條件](howto-configure-prerequisites-for-reporting-api.md)。 
@@ -50,15 +50,12 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/beta/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/beta/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)和[登入 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)。
 
 此外，您可以使用身分[識別保護風險偵測 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) ，利用 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/graph-get-started.md)。 
-
-> [!NOTE]
->  **https:\/\/graph.windows.net\/\<tenant-name\>\/reports\/** 端點已淘汰。 請使用上面所述的新 API 端點，以程式設計方式存取活動和安全性報告。
   
-## <a name="apis-with-graph-explorer"></a>API 與 Graph 總管
+## <a name="apis-with-microsoft-graph-explorer"></a>具有 Microsoft Graph Explorer 的 Api
 
-您可以使用 [MSGraph 總管](https://developer.microsoft.com/graph/graph-explorer)來確認登入並稽核 API 資料。 請務必同時使用 Graph 總管 UI 中的兩個登入按鈕來登入帳戶，並如下所示地設定租用戶的 **AuditLog.Read.All** 和 **Directory.ReadAll** 權限。   
+您可以使用[Microsoft Graph explorer](https://developer.microsoft.com/graph/graph-explorer)來驗證您的登入和審核 API 資料。 請務必同時使用 Graph 總管 UI 中的兩個登入按鈕來登入帳戶，並如下所示地設定租用戶的 **AuditLog.Read.All** 和 **Directory.ReadAll** 權限。   
 
-![Graph 總管](./media/concept-reporting-api/graph-explorer.png)
+![圖表總管](./media/concept-reporting-api/graph-explorer.png)
 
 ![修改權限 UI](./media/concept-reporting-api/modify-permissions.png)
 

@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212506"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298083"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>將服務主體新增至伺服器管理員角色 
 
  若要將無人看管的 PowerShell 工作自動化，服務主體必須擁有受控 Analysis Services 伺服器的**伺服器管理員**權限。 本文說明如何將服務主體新增至 Azure AS 伺服器上的伺服器管理員角色。 您可以使用 SQL Server Management Studio 或 Resource Manager 範本來執行此動作。
- 
-> [!NOTE]
-> 對於使用 Azure PowerShell Cmdlet 的伺服器作業，服務主體也必須屬於[Azure 角色型存取控制（RBAC）](../role-based-access-control/overview.md)中資源的**擁有**者角色。 
 
 ## <a name="before-you-begin"></a>開始之前
 完成這項工作前，您必須在 Azure Active Directory 中註冊服務主體。
@@ -96,6 +93,24 @@ ms.locfileid: "77212506"
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>使用受控識別
+
+您也可以將受控識別新增至 Analysis Services Admins 清單。 例如，您可能有一個[邏輯應用程式具有系統指派的受控識別](../logic-apps/create-managed-service-identity.md)，而且想要授與管理 Analysis Services 伺服器的能力。
+
+在 Azure 入口網站和 Api 的大部分部分中，受控識別會使用其服務主體物件識別碼來識別。 不過，Analysis Services 需要使用其用戶端識別碼來識別。 若要取得服務主體的用戶端識別碼，您可以使用 Azure CLI：
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+或者，您可以使用 PowerShell：
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+接著，您可以使用此用戶端識別碼搭配租使用者識別碼，將受控識別新增至 Analysis Services Admins 清單中，如上所述。
 
 ## <a name="related-information"></a>相關資訊
 

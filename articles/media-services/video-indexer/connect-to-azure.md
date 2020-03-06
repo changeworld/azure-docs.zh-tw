@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838387"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328824"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -72,7 +72,7 @@ Azure AD 網域的使用者和成員。 當您將影片索引器帳戶連線到 
 
     ![將影片索引器連線到 Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. 從支援的位置選取 Azure 區域：美國西部 2、歐洲北部或東亞。
+4. 從支援的位置選取 Azure 區域：美國西部 2、北歐或東亞。
 5. 在 [Azure 媒體服務帳戶] 下，選擇其中一個選項：
 
     * 若要建立新的媒體服務帳戶，請選取 [建立新的資源群組]。 提供資源群組的名稱。
@@ -124,8 +124,8 @@ Azure AD 網域的使用者和成員。 當您將影片索引器帳戶連線到 
 4. 為了讓 Video Indexer 向媒體服務 API 進行驗證，則必須建立 AD 應用程式。 下列步驟會引導您完成[利用 Azure 入口網站開始使用 Azure AD 驗證](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 驗證程序：
 
     1. 在新的媒體服務帳戶中，選取 [API 存取]。
-    2. 選取[服務主體驗證方法](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。
-    3. 如[取得用戶端識別碼和用戶端祕密](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret)一節所述，取得用戶端識別碼和用戶端祕密。
+    2. 選取[服務主體驗證方法](../previous/media-services-portal-get-started-with-aad.md)。
+    3. 取得用戶端識別碼和用戶端祕密
 
         選取 [設定]->[金鑰]、新增 [描述]、按 [儲存] 之後，就會填入金鑰值。
 

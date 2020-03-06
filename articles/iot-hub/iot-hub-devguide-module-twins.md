@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807420"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303591"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
@@ -152,7 +152,7 @@ ms.locfileid: "74807420"
 
 * **依識別碼擷取模組對應項**。 此作業會傳回模組對應項文件，包括標籤，以及所需及報告的系統屬性。
 
-* **局部更新模組對應項**。 此作業可讓解決方案後端局部地更新模組對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `"otherNewValue"` 覆寫 `existingProperty` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
+* **局部更新模組對應項**。 此作業可讓解決方案後端局部地更新模組對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `existingProperty` 覆寫 `"otherNewValue"` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
 
     ```json
     {
@@ -176,7 +176,7 @@ ms.locfileid: "74807420"
 
   - 屬性
 
-    | Name | Value |
+    | 名稱 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  傳送通知的時間 |
@@ -236,11 +236,15 @@ ms.locfileid: "74807420"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* JSON 物件中的所有索引鍵是區分大小寫的 64 個位元組的 UTF-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
+* **金鑰**： JSON 物件中的所有金鑰都區分大小寫64個位元組的 utf-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
 
-* JSON 物件中的所有值可以屬於下列 JSON 類型︰布林值、數字、字串、物件。 不允許使用陣列。 整數的最大值是 4503599627370495 和整數的最小值是 -4503599627370496。
+* **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
 
-* 標籤、所需屬性和報告屬性中所有 JSON 物件的深度上限為 5。 例如，下列物件有效：
+    * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
+
+    * 字串值是以 UTF-8 編碼，而且長度上限為512個位元組。
+
+* **深度**：標記、所需和報告屬性中的所有 JSON 物件最多可以有5個深度。 例如，下列物件有效：
 
     ```json
     {
@@ -262,13 +266,21 @@ ms.locfileid: "74807420"
     }
     ```
 
-* 所有字串值的最大長度為 512 個位元組。
-
 ## <a name="module-twin-size"></a>模組對應項大小
 
-IoT 中樞會在 `tags`的值上強制執行 8 KB 大小限制，並在 `properties/desired` 和 `properties/reported`的值上使用 32 KB 大小限制。 這些總計是唯讀元素的專屬專案。
+IoT 中樞會在 `tags`的值上強制執行 8 KB 大小限制，並在 `properties/desired` 和 `properties/reported`的值上使用 32 KB 大小限制。 這些總計是專有的唯讀元素，例如 `$etag`、`$version`和 `$metadata/$lastUpdated`。
 
-大小的計算方式是計算所有字元的數量，並排除在字串常數之外的 UNICODE 控制字元 (區段 C0 和 C1) 和空格。
+對應項大小的計算方式如下：
+
+* 針對 JSON 檔中的每個屬性，IoT 中樞累積的計算，並加入屬性的索引鍵和值的長度。
+
+* 屬性索引鍵會被視為以 UTF8 編碼的字串。
+
+* 簡單的屬性值會視為 UTF8 編碼的字串、數值（8個位元組）或布林值（4個位元組）。
+
+* 以 UTF8 編碼的字串大小是藉由計算所有字元來計算，但不包括 UNICODE 控制字元（區段 C0 和 C1）。
+
+* 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
 
 IoT 中樞會拒絕 (並出現錯誤) 將會讓這些文件的大小增加到超過限制的所有作業。
 

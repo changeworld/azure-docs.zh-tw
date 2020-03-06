@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268242"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296146"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace 和 AppSource 的諮詢服務
 Azure Marketplace 和 AppSource 中的諮詢服務會為 Microsoft 合作夥伴提供一個目標，希望以服務連結客戶，支援並擴大客戶對 Azure 的使用和商務目標。 
@@ -39,7 +39,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 以 Microsoft Azure 為基礎的諮詢服務和受控服務供應專案，都有資格在 Azure Marketplace 上列出。 如需詳細資訊，請參閱[發佈 Azure 諮詢服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)和[發行受管理的服務供應](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)專案的相關文章以 Azure Marketplace。
 
 > [!Note]
-> Azure Marketplace 的諮詢服務應該利用**技術受眾導向的供應項目，著重於 *Azure 技術解決方案和服務*。 ** AppSource 中的諮詢服務應利用其專業面向的供應項目，針對要在 AppSource 上列出諮詢服務供應項目的 Dynamics 365、Power BI 或 PowerApps 提供高品質的解決方案
+> Azure Marketplace 的諮詢服務應該利用**技術受眾導向的供應項目，著重於 *Azure 技術解決方案和服務*。 \* * AppSource 中的諮詢服務應該利用專門提供給 Dynamics 365、Power BI 或 Power Apps 的品質解決方案的供應專案，以在 AppSource 上列出其諮詢服務供應專案
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ Azure Marketplace 和 AppSource 支援從 Microsoft 的系統整合者（SI）�
 | Dynamics 365 Customer Insights | 至少必須具有5個量值和5個區段，才能成功地在生產環境中執行[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) 。 |
 | Dynamics 365 Business Central | 必須是[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證的黃金或銀級，而且必須是至少3個業務中心客戶的雲端解決方案提供者。 <br> <br> OR <br> <br> 必須已[在 AppSource 中發佈 Business Central 應用程式](https://appsource.microsoft.com/) |
 | Power BI | 必須列在[Power BI 合作夥伴展示](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)上。|
-|Power Apps | 必須符合[PowerApps 合作計畫](https://aka.ms/PowerAppsPartner)中的先進權益資格。 |
+|Power Apps | 必須符合[Power Apps 合作關係計畫](https://aka.ms/PowerAppsPartner)中的先進權益資格。 |
 
 其他資源和支援：
 

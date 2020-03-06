@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245141"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393337"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：從 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,9 +35,9 @@ ms.locfileid: "78245141"
 > * 將模型部署為 Web 服務
 > * 使用 web 服務評分資料
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要在您的**本機環境**中使用本檔中的 CLI 命令，您需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> 您可能會收到關於「無法檢查 LocalWebservice 是否存在」的警告。 您可以放心地忽略此情況，因為您不會部署本機 web 服務。
+> 您可能會收到關於「無法檢查 LocalWebservice 是否存在」或「無法建立 Docker 用戶端」的警告。 您可以放心地忽略此情況，因為您不會部署本機 web 服務。
 
 此命令會使用您先前註冊的模型第1版，部署名為 `myservice`的新服務。
 

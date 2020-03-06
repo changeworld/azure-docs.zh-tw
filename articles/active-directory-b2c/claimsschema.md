@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189919"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397795"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -56,8 +56,11 @@ ms.locfileid: "78189919"
 | 遮罩 | 0:1 | 遮罩字元的選擇性字串，可在顯示宣告時套用。 例如，可將電話號碼 324-232-4343 的遮罩設定為 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 宣告類型的說明，有助於使用者了解其用途。 此值可進行[當地語系化](localization.md)。 |
 | UserInputType | 0:1 | 輸入控制項的類型，應該在使用者手動輸入宣告類型的宣告資料時提供給他們使用。 請參閱本頁面稍後所定義的使用者輸入類型。 |
+| AdminHelpText | 0:1 | 宣告類型的描述，可説明系統管理員瞭解其用途。 |
 | 限制 | 0:1 | 此宣告的值限制，例如規則運算式 (Regex) 或可接受的值清單。 此值可進行[當地語系化](localization.md)。 |
 PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的參考。 **PredicateValidationReference** 元素可讓您執行驗證程序來確定只會輸入正確格式的資料。 如需詳細資訊，請參閱[述詞](predicates.md)。 |
+
+
 
 ### <a name="datatype"></a>DataType
 

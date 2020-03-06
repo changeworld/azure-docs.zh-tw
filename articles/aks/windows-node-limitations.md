@@ -4,12 +4,12 @@ description: 瞭解在 Azure Kubernetes Service 中執行 Windows Server 節點�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615651"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298167"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中 Windows Server 節點集區和應用程式工作負載目前的限制（AKS）
 
@@ -69,7 +69,7 @@ AKS 中的 Windows Server 節點必須*升級*，才能取得最新的修補程�
 
 ## <a name="how-many-node-pools-can-i-create"></a>我可以建立多少個節點集區？
 
-AKS 叢集最多可以有八個（8）個節點集區。 在這些節點集區中，您最多可以有400個節點。 [節點集區限制][nodepool-limitations]。
+AKS 叢集最多可以有10個節點集區。 在這些節點集區中，您最多可以有1000個節點。 [節點集區限制][nodepool-limitations]。
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>我可以將 Windows 節點集區命名為什麼？
 

@@ -14,7 +14,7 @@ ms.locfileid: "75659894"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure App Service 中相應增加應用程式
 
-本文將說明如何在 Azure App Service 中相應增加應用程式的規模。 有兩個工作流程適合用來相應增加和相應放大規模，而本文說明相應增加工作流程。
+本文將說明如何在 Azure App Service 中相應增加應用程式的規模。 有兩個工作流程適合用來擴大和擴增規模，而本文說明擴大工作流程。
 
 * [相應增加](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)︰取得更多的 CPU、記憶體、磁碟空間和額外的功能，例如專用虛擬機器 (VM)、自訂網域和憑證、預備位置，以及自動調整等等。 您可以藉由變更應用程式所屬的 App Service 方案定價層來相應增加。
 * [相應放大](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)︰增加執行您的應用程式的 VM 執行個體數目。

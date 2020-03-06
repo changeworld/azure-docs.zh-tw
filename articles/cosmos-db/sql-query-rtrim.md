@@ -4,15 +4,15 @@ description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 RTRIM。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 511c085b465b8b70ae71c298054bcb535773837e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b740d14315f6d9ba2f1788c56d6b1fcd8945c83e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302078"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM （Azure Cosmos DB）
  傳回移除結尾空白之後的字串運算式。  
@@ -45,6 +45,10 @@ SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3
 ```json
 [{"r1": "   abc", "r2": "abc", "r3": "abc"}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303897"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime （Azure Cosmos DB）
  傳回目前 UTC （國際標準時間）的日期和時間（以 ISO 8601 字串為限）。
@@ -25,7 +25,7 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>傳回類型
   
-  傳回目前的 UTC 日期和時間 ISO 8601 字串值，格式為 `YYYY-MM-DDThh:mm:ss.sssZ`，其中：
+  以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 的格式傳回目前的 UTC 日期和時間 ISO 8601 字串值，其中：
   
   |||
   |-|-|
@@ -33,10 +33,10 @@ GetCurrentDateTime ()
   |MM|兩位數的月份（01 = 一月等等）|
   |DD|兩位數的月份日期（01到31）|
   |T|時間元素開頭的 signifier|
-  |hh|兩位數小時（00到23）|
+  |hh|兩位數的小時（00到23）|
   |mm|兩位數的分鐘數（00到59）|
   |ss|兩位數的秒數（00到59）|
-  |.sss|三位數的十進位數（秒）|
+  |. fffffff|七位數的小數秒數|
   |Z|UTC （國際標準時間）指示項||
   
   如需 ISO 8601 格式的詳細資訊，請參閱[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -46,6 +46,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime （）是不具決定性的函數。 
   
   傳回的結果是 UTC。
+
+  精確度是7位數，精確度為100毫微秒。
 
 ## <a name="examples"></a>範例
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

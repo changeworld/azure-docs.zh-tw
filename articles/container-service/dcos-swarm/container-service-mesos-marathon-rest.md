@@ -112,13 +112,13 @@ Nginx 伺服器的輸出大致如下：
 
 
 ## <a name="scale-your-containers"></a>調整容器的大小
-您也可以使用 Marathon API 來相應放大或相應縮小應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
+您也可以使用 Marathon API 來擴增或縮減應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
 
 ```json
 { "instances": 3 }
 ```
 
-從通道連線執行下列命令來相應放大應用程式。
+從通道連線執行下列命令來擴增應用程式。
 
 > [!NOTE]
 > URI 是 HTTP：\//localhost/marathon/v2/apps/，後面接著要調整之應用程式的識別碼。 如果您使用此處提供的 Nginx 範例，則 URI 會是 HTTP：\//localhost/marathon/v2/apps/nginx。
@@ -169,13 +169,13 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-您也可以使用 Marathon API 來相應放大或相應縮小應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
+您也可以使用 Marathon API 來擴增或縮減應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
 
 ```json
 { "instances": 3 }
 ```
 
-執行下列命令來相應放大應用程式：
+執行下列命令來擴增應用程式：
 
 > [!NOTE]
 > URI 是 HTTP：\//localhost/marathon/v2/apps/，後面接著要調整之應用程式的識別碼。 如果您使用這裡提供的 Nginx 範例，則 URI 會是 HTTP：\//localhost/marathon/v2/apps/nginx。

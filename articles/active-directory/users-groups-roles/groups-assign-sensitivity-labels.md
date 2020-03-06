@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656937"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329727"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中將敏感度標籤指派給 Office 365 群組（預覽）
 
-Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](https://sip.protection.office.com/homepage)發佈的敏感度標籤套用至 Office 365 群組。 敏感度標籤會套用至各種服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 此功能目前為公開預覽狀態。 如需 Office 365 應用程式支援的詳細資訊，請參閱[適用于敏感度標籤的 office 365 支援](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)。
+Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](https://sip.protection.office.com/homepage)發佈的敏感度標籤套用至 Office 365 群組。 敏感度標籤會套用至各種服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 此功能目前為公開預覽狀態。 如需 Office 365 應用程式支援的詳細資訊，請參閱[適用于敏感度標籤的 office 365 支援](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要設定此功能，您的 Azure AD 組織中至少必須有一個 active Azure Active Directory Premium P1 授權。

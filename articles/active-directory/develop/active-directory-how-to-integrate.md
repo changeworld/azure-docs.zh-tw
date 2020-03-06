@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300107"
 ---
 # <a name="integrating-with-azure-active-directory"></a>與 Azure Active Directory 整合
 
@@ -38,13 +38,13 @@ ms.locfileid: "77161217"
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>流覽使用者、管理使用者布建，以及控制應用程式的存取權
 
-**瀏覽以尋找目錄中的使用者。**  邀請他人或授與存取權限時，與其要求使用者輸入電子郵件位址，您可以使用 Graph API 來協助使用者搜尋及瀏覽以尋找組織中的其他人。 使用者可以使用常見的通訊錄樣式介面進行瀏覽，包括檢視組織階層的詳細資料。 深入了解[圖形 API](active-directory-graph-api.md)。
+**瀏覽以尋找目錄中的使用者。**  使用 Microsoft Graph API 可協助使用者在邀請其他人或授與存取權時，搜尋及流覽組織中的其他人員，而不需要他們輸入電子郵件地址。 使用者可以使用常見的通訊錄樣式介面進行瀏覽，包括檢視組織階層的詳細資料。 深入瞭解[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview)。
 
-**重複使用您的客戶已經在管理的 Active Directory 群組與通訊群組清單。**  Azure AD 包含您的客戶已經用於電子郵件通訊群組和管理存取的群組。 使用 Graph API，與其要求您的客戶在應用程式中建立和管理一組個別的群組，您可以重複使用這些群組。 群組資訊也可以透過登入權杖傳送至您的應用程式。 深入了解[圖形 API](active-directory-graph-api.md)。
+**重複使用您的客戶已經在管理的 Active Directory 群組與通訊群組清單。**  Azure AD 包含您的客戶已經用於電子郵件通訊群組和管理存取的群組。 使用 Microsoft Graph API 時，請重複使用這些群組，而不需要您的客戶在應用程式中建立和管理一組個別的群組。 群組資訊也可以透過登入權杖傳送至您的應用程式。 深入瞭解[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview)。
 
-**使用 Azure AD 來控制有權存取應用程式的人員。**  系統管理員和 Azure AD 中的應用程式擁有者可以將應用程式的存取權限指派給特定使用者和群組。 使用 Graph API，您可以讀取這份清單並用它來控制資源的佈建和取消佈建，以及應用程式內的存取。
+**使用 Azure AD 來控制有權存取應用程式的人員。**  系統管理員和 Azure AD 中的應用程式擁有者可以將應用程式的存取權限指派給特定使用者和群組。 您可以使用 Microsoft Graph API 來閱讀這份清單，並使用它來控制在您的應用程式內布建和取消布建資源和存取。
 
-**使用 Azure AD 進行角色型存取控制。**  系統管理員和應用程式擁有者可以將使用者和群組指派至您在 Azure AD 中註冊應用程式時所定義的角色。 角色資訊會透過登入權杖傳送至您的應用程式，並可使用 Graph API 進行讀取。 深入了解 [使用 Azure AD 進行授權](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
+**使用 Azure AD 進行角色型存取控制。**  系統管理員和應用程式擁有者可以將使用者和群組指派至您在 Azure AD 中註冊應用程式時所定義的角色。 角色資訊會以登入權杖傳送至您的應用程式，也可以使用 Microsoft Graph API 來讀取。 深入了解 [使用 Azure AD 進行授權](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>取得使用者設定檔、行事曆、電子郵件、連絡人、檔案等的存取權
 

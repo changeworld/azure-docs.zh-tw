@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756300"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399336"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
@@ -62,7 +62,7 @@ ms.locfileid: "72756300"
 
     ![選擇帳戶視窗來驗證您的身分識別](./media/pim-getting-started/pick-account.png)
 
-1. 如果需要更多資訊才能完成驗證，系統將會引導您完成相關程序。 如需詳細資訊，請參閱[取得雙步驟驗證的說明](https://go.microsoft.com/fwlink/p/?LinkId=708614)。
+1. 如果需要更多資訊才能完成驗證，系統將會引導您完成相關程序。 如需詳細資訊，請參閱[取得雙步驟驗證的說明](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
 
     ![如果您的組織需要詳細資訊，則需要更多資訊視窗](./media/pim-getting-started/more-information-required.png)
 

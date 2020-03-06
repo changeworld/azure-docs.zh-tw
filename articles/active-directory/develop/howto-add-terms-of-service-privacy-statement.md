@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300004"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
 
@@ -39,7 +39,7 @@ ms.locfileid: "76697331"
 
 在新增應用程式的服務條款和隱私權聲明文件連結前，請確定 URL 符合下列指導方針。
 
-| 指導方針     | 說明                           |
+| 指導方針     | 描述                           |
 |---------------|---------------------------------------|
 | [格式]        | 有效的 URL                             |
 | 有效的結構描述 | HTTP 和 HTTPS<br/>建議使用 HTTPS |
@@ -53,7 +53,7 @@ ms.locfileid: "76697331"
 
 * [透過 Azure 入口網站](#azure-portal)
 * [使用應用程式物件 JSON](#app-object-json)
-* [使用 MSGraph 搶鮮版 (Beta) REST API](#msgraph-beta-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>使用 Azure 入口網站
 請依照 Azure 入口網站中的步驟執行。
@@ -77,12 +77,12 @@ ms.locfileid: "76697331"
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>使用 MSGraph 搶鮮版 (Beta) REST API
+### <a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-若要以程式設計方式更新所有應用程式，您可以使用 MSGraph 搶鮮版 (Beta) REST API 來更新所有應用程式，讓其包含服務條款和隱私權聲明文件的連結。
+若要以程式設計方式更新您所有的應用程式，您可以使用 Microsoft Graph API 來更新所有應用程式，以包含服務條款和隱私權聲明檔的連結。
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * 請小心避免覆寫已指派給下列欄位的預先存在值：`supportUrl`、`marketingUrl` 和 `logoUrl`
-> * 當您使用 Azure AD 帳戶登入時，MSGraph 搶鮮版 (Beta) REST API 才能運作。 不支援 Microsoft 個人帳戶。
+> * Microsoft Graph API 僅適用于使用 Azure AD 帳戶登入時。 不支援 Microsoft 個人帳戶。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328994"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全性基準
 
@@ -628,7 +628,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 瞭解傳輸中 Azure 儲存體帳戶加密：
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure 資訊安全中心監視**：是
 

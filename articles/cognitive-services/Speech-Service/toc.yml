@@ -494,6 +494,13 @@
           href: speech-devices-sdk.md
         - name: 取得語音裝置 SDK
           href: get-speech-devices-sdk.md
+        - name: 版本資訊
+          href: devices-sdk-release-notes.md
+        - name: Roobo v1 詳細資料
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 詳細資料
+          href: speech-devices-sdk-roobo-v2.md
+        - name: 麥克風規格
     - name: 硬體
       items:
         - name: 麥克風陣列建議

@@ -1,6 +1,6 @@
 ---
 title: 將節點類型新增至 Azure Service Fabric 叢集
-description: 了解如何透過新增虛擬機器擴展集來相應放大 Service Fabric 叢集。
+description: 了解如何透過新增虛擬機器擴展集來擴增 Service Fabric 叢集。
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443

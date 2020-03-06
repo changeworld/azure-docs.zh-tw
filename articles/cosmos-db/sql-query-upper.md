@@ -4,15 +4,15 @@ description: 深入瞭解 SQL 系統函數上限 Azure Cosmos DB。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728883"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303965"
 ---
 # <a name="upper-azure-cosmos-db"></a>上限（Azure Cosmos DB）
  傳回將小寫字元資料轉換成大寫之後的字串運算式。  
@@ -47,6 +47,10 @@ SELECT UPPER("Abc") AS upper
 ```json
 [{"upper": "ABC"}]  
 ```
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

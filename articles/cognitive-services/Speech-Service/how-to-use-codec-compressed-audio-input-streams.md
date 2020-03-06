@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331105"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>搭配使用編解碼器壓縮的音訊輸入與語音 SDK
 
 語音 SDK 的**壓縮音訊輸入資料流程**API 提供了使用 PullStream 或 PushStream 將壓縮的音訊串流至語音服務的方式。
 
 > [!IMPORTANT]
-> 在 Linux （ubuntu 16.04、ubuntu 18.04 C++、 C#Debian 9）上，目前支援、和 JAVA 的串流處理壓縮輸入音訊。 [Android 中的 JAVA](how-to-use-codec-compressed-audio-input-streams-android.md)和 iOS 平臺的[目標-C](how-to-use-codec-compressed-audio-input-streams-ios.md)也支援此功能。
-> 需要1.7.0 或更高版本的語音 SDK。
+> 在 Linux （ubuntu 16.04、ubuntu 18.04 C++、 C#Debian 9、RHEL 8、CentOS 8）上，目前支援、和 JAVA 的串流處理壓縮輸入音訊。 [Android 中的 JAVA](how-to-use-codec-compressed-audio-input-streams-android.md)和 iOS 平臺的[目標-C](how-to-use-codec-compressed-audio-input-streams-ios.md)也支援此功能。
+> 需要1.7.0 或更新版本的語音 SDK （RHEL 8、CentOS 8 的1.10.0 或更高版本）。
 
 針對 wav/PCM，請參閱主線語音檔。  在 wav/PCM 以外，支援下列編解碼器壓縮的輸入格式：
 
@@ -40,6 +40,15 @@ ms.locfileid: "74805819"
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，請遵循[如何設定 OpenSSL For Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)的指示。
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>使用編解碼器壓縮音訊輸入的範例程式碼
 
@@ -66,5 +75,5 @@ var text = result.GetText();
 
 ## <a name="next-steps"></a>後續步驟
 
-- [取得語音試用訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)
+- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
 * [瞭解如何以 JAVA 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -16,7 +16,7 @@ ms.locfileid: "75442163"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 大量執行程式程式庫概觀
  
-Azure Cosmos DB 是一種快速且具有彈性的全域分散式資料庫服務，其彈性相應放大的設計可支援： 
+Azure Cosmos DB 是一種快速且具有彈性的全域分散式資料庫服務，其彈性擴增的設計可支援： 
 
 * 大型讀取和寫入輸送量 (每秒百萬個作業)。  
 * 儲存大量 (數百 TB 或更多) 且可預測延遲毫秒數的交易和作業資料。  

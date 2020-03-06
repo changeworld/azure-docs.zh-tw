@@ -16,17 +16,17 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298338"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>身分識別同步處理和重複屬性恢復功能
-「重複屬性恢復功能」是 Azure Active Directory 中的一項功能，可在執行 Microsoft 的其中一個同步處理工具時，用來消除 **UserPrincipalName** 和 **ProxyAddress** 衝突所造成的不便。
+重複屬性復原是 Azure Active Directory 中的一項功能，可在執行 Microsoft 的其中一個同步處理工具時，消除**UserPrincipalName**和 SMTP **ProxyAddress**衝突所造成的摩擦。
 
-在指定之 Azure Active Directory 租用戶的所有「使用者」  、「群組」  或「連絡人」  物件中，這兩個屬性通常必須是唯一的。
+在指定之 Azure Active Directory 租用戶的所有「使用者」、「群組」或「連絡人」物件中，這兩個屬性通常必須是唯一的。
 
 > [!NOTE]
 > 只有使用者可以擁有 UPN。
@@ -40,7 +40,10 @@ ms.locfileid: "60348760"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複屬性恢復功能的行為
 Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的物件，而是會「隔離」違反唯一性條件約束的重複屬性。 如果佈建時需要此屬性 (例如 UserPrincipalName)，則服務會指派預留位置值。 這些暫存值的格式為  
-「***\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >。 onmicrosoft.com***"。  
+_**\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft .com**_ 。
+
+屬性復原程式只會處理 UPN 和 SMTP **ProxyAddress**值。
+
 如果不需要此屬性 (例如 **ProxyAddress**)，Azure Active Directory 就會隔離衝突屬性，然後繼續建立或更新物件。
 
 隔離屬性時，衝突相關資訊會以舊版行為中使用的相同錯誤報告電子郵件傳送。 不過，此資訊只會出現在錯誤報告中一次，發生隔離時，將不會繼續記錄在未來的電子郵件中。 此外，此物件已成功匯出，所以同步用戶端不會記錄錯誤，而且不會在後續的同步週期中重試建立 / 更新作業。
@@ -66,7 +69,7 @@ Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的
 > 在為租用戶開啟該功能之前，您無法再使用 Set-MsolDirSyncFeature Cmdlet 來主動啟用重複屬性復原功能。 若要測試該功能，您需要建立新的 Azure Active Directory 租用戶。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>識別具有 DirSyncProvisioningErrors 的物件
-目前有兩種方法可以找出有這些錯誤，因為重複屬性衝突，Azure Active Directory PowerShell 的物件和[Microsoft 365 系統管理中心](https://admin.microsoft.com)。 未來計劃擴充其他以入口網站為基礎的報告。
+目前有兩種方法可以識別因重複屬性衝突而發生這些錯誤的物件，Azure Active Directory PowerShell 和[Microsoft 365 系統管理中心](https://admin.microsoft.com)。 未來計劃擴充其他以入口網站為基礎的報告。
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 對於本主題中的 PowerShell Cmdlet，下列項目為真︰
@@ -98,7 +101,7 @@ Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
-或
+Or
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
@@ -113,17 +116,17 @@ Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>以有限的數量或全部
-1. **MaxResults \<Int >** 可用來將查詢指定的數字值的限制。
+1. **MaxResults \<Int >** 可以用來將查詢限制為特定數目的值。
 2. **All** 可用於確保在有大量錯誤的情況下擷取所有的結果。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 系統管理中心
-您可以在 Microsoft 365 系統管理中心檢視目錄同步處理錯誤。 Microsoft 365 系統管理員中的報告中心只顯示**使用者**有這些錯誤的物件。 並不會顯示「群組」  和「連絡人」  之間的衝突相關資訊。
+您可以在 Microsoft 365 系統管理中心內查看目錄同步處理錯誤。 Microsoft 365 系統管理中心內的報表只會顯示有這些錯誤的**使用者**物件。 並不會顯示「群組」和「連絡人」之間的衝突相關資訊。
 
 ![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "作用中使用者")
 
-如需有關如何在 Microsoft 365 系統管理中心檢視目錄同步處理錯誤的指示，請參閱 <<c0> [ 找出 Office 365 中的目錄同步處理錯誤](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
+如需有關如何在 Microsoft 365 系統管理中心內查看目錄同步作業錯誤的指示，請參閱[在 Office 365 中識別目錄同步處理錯誤](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
 
 ### <a name="identity-synchronization-error-report"></a>身分識別同步處理錯誤報告
 當利用這個新行為處理具有重複屬性衝突的物件時，通知會包含在標準身分識別同步處理錯誤報告電子郵件中，而該電子郵件回傳送給租用戶的技術通知連絡人。 不過，此行為有一項重大變更。 在過去，重複屬性衝突的相關資訊會包含在每個後續的錯誤報告中，直到解決衝突為止。 利用這個新行為，給定衝突的錯誤通知只會出現一次 - 在衝突的屬性遭到隔離時。
@@ -134,39 +137,39 @@ ProxyAddress 衝突的電子郵件通知範例如下所示︰
 ## <a name="resolving-conflicts"></a>解決衝突
 這些錯誤的疑難排解策略和解決技巧不得與過去處理重複屬性錯誤的方式不同。 唯一的差別在於計時器工作將會掃掠服務端上的租用戶，以在衝突解決後，自動將有問題的屬性新增至適當的物件。
 
-下列文章概述各種疑難排解和解決策略︰[重複或無效的屬性使 Office 365 無法進行目錄同步處理](https://support.microsoft.com/kb/2647098)。
+下列文章概述各種疑難排解和解決策略︰ [重複或無效的屬性會防止在 Office 365 中進行目錄同步作業](https://support.microsoft.com/kb/2647098)。
 
 ## <a name="known-issues"></a>已知問題
-沒有任何已知問題會導致資料遺失或服務降級。 其中有幾個是美觀的問題，其他問題會導致擲回標準「恢復前」  重複屬性錯誤，而不是隔離衝突屬性，而別的問題會導致特定錯誤需要額外的手動修復。
+沒有任何已知問題會導致資料遺失或服務降級。 其中有幾個是美觀的問題，其他問題會導致擲回標準「恢復前」重複屬性錯誤，而不是隔離衝突屬性，而別的問題會導致特定錯誤需要額外的手動修復。
 
 **核心行為︰**
 
 1. 具有特定屬性組態的物件會繼續收到匯出錯誤，而不是將重複屬性隔離。  
-   例如:
+   例如：
    
-    a. 以 UPN 為 AD 中建立新的使用者**Joe\@contoso.com**和 ProxyAddress **smtp:Joe\@contoso.com**
+    a. 在 AD 中建立新的使用者，其 UPN 為**Joe\@contoso.com**和 ProxyAddress **smtp： joe\@contoso.com**
    
-    b. 此物件的屬性會與現有的群組，其中是 ProxyAddress 衝突**SMTP:Joe\@contoso.com**。
+    b. 此物件的屬性與現有的群組相衝突，其中 ProxyAddress 是**SMTP： Joe\@contoso.com**。
    
-    c. 匯出時，會擲回「ProxyAddress 衝突」  錯誤，而不是將衝突屬性隔離。 此作業會在每個後續的同步處理週期中重試，就如同在啟用恢復功能之前一樣。
+    c. 匯出時，會擲回「ProxyAddress 衝突」 錯誤，而不是將衝突屬性隔離。 此作業會在每個後續的同步處理週期中重試，就如同在啟用恢復功能之前一樣。
 2. 如果在內部部署上建立兩個具有相同 SMTP 位址的群組，則會在第一次嘗試時佈建失敗並發生標準的重複 **ProxyAddress** 錯誤。 不過，重複值會在下一個同步處理週期時被適當隔離。
 
 **Office 入口網站報告**：
 
 1. UPN 衝突集中兩個物件的詳細錯誤訊息是相同的。 這表示它們都已變更 / 隔離 UPN，當事實上只有其中一個變更了資料。
-2. UPN 衝突的詳細錯誤訊息會對已變更/隔離其 UPN 的使用者，顯示錯誤的 displayName。 例如:
+2. UPN 衝突的詳細錯誤訊息會對已變更/隔離其 UPN 的使用者，顯示錯誤的 displayName。 例如：
    
-    a. **使用者 A**會先與同步處理**UPN = User\@contoso.com**。
+    a. **使用者 A**會先與**UPN = user\@contoso.com**進行同步處理。
    
-    b. **使用者 B**嘗試進行同步處理使用的下一步 **UPN = User\@contoso.com**。
+    b. 下次嘗試使用**UPN = user\@contoso.com**來同步**使用者 B** 。
    
-    c. **User B** UPN 會變成**User1234\@contoso.onmicrosoft.com**並**使用者\@contoso.com**會新增至**DirSyncProvisioningErrors**.
+    c. **使用者 B**UPN 會變更為**User1234\@contoso.onmicrosoft.com** ，而**User\@contoso.com**會新增至**造成 dirsyncprovisioningerrors**。
    
-    d. 錯誤訊息**使用者 B**應該指出**使用者 A**已經**使用者\@contoso.com** UPN，但它會顯示為**User B**自己的 displayName。
+    d. **使用者 b**的錯誤訊息應該表示**使用者 A**已將**使用者\@contoso.com**為 UPN，但它會顯示**使用者 B 自己的**displayName。
 
 **身分識別同步處理錯誤報告**：
 
-「如何解決此問題的步驟」  的連結不正確：  
+「如何解決此問題的步驟」的連結不正確：  
     ![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "作用中使用者")  
 
 它應該指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。

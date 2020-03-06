@@ -8,81 +8,97 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/18/2020
-ms.openlocfilehash: 392c86d8ea24e59d388926d4df581305ea2b531d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/05/2020
+ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599297"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379573"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
-若要將您的 Azure 認知服務帳戶從一個區域移至另一個區域，您將建立匯出範本來移動您的訂用帳戶。 移動您的訂用帳戶之後，您將需要移動資料，並重新建立您的服務。
+目前不支援將搜尋服務移至另一個區域，因為沒有可協助您端對端工作的自動化或工具。
 
-在本文中，您將學會如何：
+在入口網站中，[**匯出範本**] 命令會產生服務的基本定義（[名稱]、[位置]、[層級]、[複本] 和 [分割區計數]），但不會辨識服務的內容，也不會包含索引鍵、角色或記錄。
+
+將搜尋從一個區域移至另一個區域時，建議您採用下列方法：
+
+1. 清查您現有的服務，以取得服務上物件的完整清單。 如果您已啟用記錄功能，您可能需要在未來進行比較時，建立及封存報表。
+
+1. 在新區域中建立服務，並從原始程式碼重新發佈任何現有的索引、索引子、資料來源、技能集和同義字對應。 服務名稱必須是唯一的，因此您無法重複使用現有的名稱。
+
+1. 啟用記錄功能，如果您使用它們，請重新建立安全性角色。
+
+1. 更新用戶端應用程式和測試套件，以使用新的服務名稱和 API 金鑰，並測試所有應用程式。
+
+1. 一旦新服務完全正常運作，請刪除舊的服務。
+
+<!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
+
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> * 匯出範本。
-> * 修改範本：新增目的地區域、搜尋和儲存體帳戶名稱。
-> * 部署範本以建立新的搜尋和儲存體帳戶。
-> * 在新區域中驗證您的服務狀態
-> * 清除來源區域中的資源。
+> * Export a template.
+> * Modify the template: adding the target region, search and storage account names.
+> * Deploy the template to create the new search and storage accounts.
+> * Verify your service status in the new region
+> * Clean up resources in the source region.
 
-## <a name="prerequisites"></a>Prerequisites
+## Prerequisites
 
-- 確定目的地區域中支援您的帳戶所使用的服務和功能。
+- Ensure that the services and features that your account uses are supported in the target region.
 
-- 針對預覽功能，請確定您的訂用帳戶已列入目的地區域的允許清單中。 如需預覽功能的詳細資訊，請參閱[知識存放區](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro)、累加[擴充](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)和[私用端點](https://docs.microsoft.com/azure/search/service-create-private-endpoint)。
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
 
-## <a name="assessment-and-planning"></a>評估與規劃
+## Assessment and planning
 
-當您將搜尋服務移至新區域時，您必須將[您的資料移至新的儲存體服務](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account)，然後重建您的索引、技能集和知識存放區。 您應該記錄目前的設定並複製 json 檔案，讓您更輕鬆且更快速地重建您的服務。
+When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
-## <a name="moving-your-search-services-resources"></a>移動搜尋服務的資源
+## Moving your search service's resources
 
-若要開始，您將會匯出 Resource Manager 範本，然後加以修改。
+To start you will export and then modify a Resource Manager template.
 
-### <a name="export-a-template"></a>匯出資料庫
+### Export a template
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. 移至您的資源群組頁面。
+2. Go to your Resource Group page.
 
 > [!div class="mx-imgBorder"]
-> ![資源群組 頁面範例](./media/search-move-resource/export-template-sample.png)
+> ![Resource Group page example](./media/search-move-resource/export-template-sample.png)
 
-3. 選取 [所有資源]。
+3. Select **All resources**.
 
-3. 在左側導覽功能表中，選取 [**匯出範本**]。
+3. In the left hand navigation menu select **Export template**.
 
-4. 在 [**匯出範本**] 頁面中選擇 [**下載**]。
+4. Choose **Download** in the **Export template** page.
 
-5. 找出您從入口網站下載的 .zip 檔案，並將該檔案解壓縮至您選擇的資料夾。
+5. Locate the .zip file that you downloaded from the portal, and unzip that file to a folder of your choice.
 
-Zip 檔案包含組成範本的 json 檔案，以及用來部署範本的腳本。
+The zip file contains the .json files that comprise the template and scripts to deploy the template.
 
-### <a name="modify-the-template"></a>修改範本
+### Modify the template
 
-您將會藉由變更搜尋和儲存體帳戶名稱和區域來修改範本。 這些名稱必須遵循每個服務和區域命名慣例的規則。 
+You will modify the template by changing the search and storage account names and regions. The names must follow the rules for each service and region naming conventions. 
 
-若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格的區功能變數名稱稱、**美國中部** = **centralus**。
+To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
-1. 在 Azure 入口網站中，選取 [建立資源]。
+1. In the Azure portal, select **Create a resource**.
 
-2. 在 [搜尋 Marketplace] 中，輸入**範本部署**，然後按 **ENTER**。
+2. In **Search the Marketplace**, type **template deployment**, and then press **ENTER**.
 
-3. 選取 [範本部署]。
+3. Select **Template deployment**.
 
-4. 選取 [建立]。
+4. Select **Create**.
 
-5. 選取 [在編輯器中組建您自己的範本]。
+5. Select **Build your own template in the editor**.
 
-6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載並解壓縮的**範本. json**檔案。
+6. Select **Load file**, and then follow the instructions to load the **template.json** file that you downloaded and unzipped in the previous section.
 
-7. 在**範本. json**檔案中，藉由設定搜尋和儲存體帳戶名稱的預設值來命名目標搜尋和儲存體帳戶。 
+7. In the **template.json** file, name the target search and storage accounts by setting the default value of the search and storage account names. 
 
-8. 將**範本. json**檔案中的**location**屬性編輯為您的搜尋和儲存體服務的目的地區域。 這個範例會將目的地區域設定為 `centralus`。
+8. Edit the **location** property in the **template.json** file to the target region for both your search and storage services. This example sets the target region to `centralus`.
 
 ```json
 },
@@ -113,35 +129,34 @@ Zip 檔案包含組成範本的 json 檔案，以及用來部署範本的腳本�
             },
 ```
 
-### <a name="deploy-the-template"></a>部署範本
+### Deploy the template
 
-1. 儲存**範本. json**檔案。
+1. Save the **template.json** file.
 
-2. 輸入或選取屬性值：
+2. Enter or select the property values:
 
-- **訂用帳戶**：選取 Azure 訂用帳戶。
+- **Subscription**: Select an Azure subscription.
 
-- **資源群組**：選取 [新建] 並指定資源群組名稱。
+- **Resource group**: Select **Create new** and give the resource group a name.
 
-- **位置**：選取 Azure 位置。
+- **Location**: Select an Azure location.
 
-3. 按一下 [**我同意上方所述的條款及條件**] 核取方塊，然後按一下 [**選取購買**] 按鈕。
+3. Click the **I agree to the terms and conditions stated above** checkbox, and then click the **Select Purchase** button.
 
-## <a name="verifying-your-services-status-in-new-region"></a>正在驗證您的服務在新區域中的狀態
+## Verifying your services' status in new region
 
-若要確認移動，請開啟新的資源群組，您的服務將會以新的區域列出。
+To verify the move, open the new resource group and your services will be listed with the new region.
 
-若要將您的資料從來源區域移至目的地區域，請參閱這篇文章將[您的資料移至新的儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account)的指導方針。
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
 
-## <a name="clean-up-resources-in-your-original-region"></a>清除原始區域中的資源
+## Clean up resources in your original region
 
-若要認可變更並完成移動您的服務帳戶，請刪除來源服務帳戶。
+To commit the changes and complete the move of your service account, delete the source service account.
 
-## <a name="next-steps"></a>後續步驟
+## Next steps
 
-[建立索引](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
 
-[建立技能集](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
 
-[建立知識存放區](https://docs.microsoft.com/azure/search/knowledge-store-create-portal)
-
+[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->

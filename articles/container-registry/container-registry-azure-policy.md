@@ -3,12 +3,12 @@ title: 使用 Azure 原則的相容性
 description: 指派 Azure 原則中的內建原則，以審查 Azure container registry 的相容性
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925666"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330731"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure 原則審查 Azure container registry 的相容性
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-然後執行[az policy state list](/cli/azure/policy/state#az-policy-assignment-list) ，針對特定原則識別碼下的所有資源傳回 JSON 格式的合規性狀態：
+然後執行[az policy state list](/cli/azure/policy/state#az-policy-state-list) ，針對特定原則識別碼下的所有資源傳回 JSON 格式的合規性狀態：
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-或執行[az policy state list](/cli/azure/policy/state#az-policy-assignment-list) ，以傳回特定登錄資源的 JSON 格式合規性狀態，例如*myregistry*：
+或執行[az policy state list](/cli/azure/policy/state#az-policy-state-list) ，以傳回特定登錄資源的 JSON 格式合規性狀態，例如*myregistry*：
 
 ```azurecli
 az policy state list \

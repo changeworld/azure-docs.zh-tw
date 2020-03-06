@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329455"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐騙偵測
 
@@ -31,7 +31,7 @@ ms.locfileid: "77064377"
 
 電信公司有大量的資料都是來電。 該公司想要即時偵測詐騙電話，以便通知客戶或針對特定號碼停止服務。 有一種 SIM 詐騙牽涉到同一身分識別大約在同一時間從不同地理位置撥來很多通電話。 若要偵測這種類型的詐騙，公司必須檢查傳入的電話記錄，並尋找特定的模式（在此案例中，對於在不同國家/地區中的相同時間所進行的呼叫）。 任何歸類到此類別的電話記錄會寫入儲存體，以進一步分析。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您會透過用戶端應用程式來產生範例通話中繼資料，以模擬通話資料。 該應用程式會產生一些很像是詐騙電話的記錄。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "77064377"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 按一下 [建立]。
+9. 按一下 **[建立]** 。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授權存取事件中樞並取得連接字串
 
@@ -94,11 +94,11 @@ ms.locfileid: "77064377"
     >[!NOTE]
     >請確定您正在使用事件中樞，而不是事件中樞命名空間。
 
-3.  新增名為 `sa-policy-manage-demo` 的原則，然後在 [宣告] 中，選取 [管理]。
+3.  新增名為 `asa-policy-manage-demo` 的原則，然後在 [宣告] 中，選取 [管理]。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  按一下 [建立]。
+4.  按一下 **[建立]** 。
 
 5.  部署原則之後，在共用存取原則清單中按一下此原則。
 
@@ -178,7 +178,7 @@ ms.locfileid: "77064377"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 按一下 [建立]。
+3. 按一下 **[建立]** 。
 
     即可建立作業，入口網站會顯示作業詳細資料。 但還沒有開始運作，您必須先設定作業，作業才能啟動。
 
@@ -203,7 +203,7 @@ ms.locfileid: "77064377"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 按一下 [建立]。
+4. 按一下 **[建立]** 。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>建立查詢來轉換即時資料
 
@@ -371,7 +371,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. Haga clic en **Guardar**. 
+5. 按一下 [檔案]。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>啟動串流分析作業

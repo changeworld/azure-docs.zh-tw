@@ -4,12 +4,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行�
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649614"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399470"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 
@@ -75,7 +75,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ![Azure Kubernetes Service (AKS) 叢集中的永續性磁碟區宣告](media/concepts-storage/persistent-volume-claims.png)
 
-永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 Pod 定義中，您會要求建立並將磁碟區附加至設計的掛接路徑
+永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中，您會要求建立磁片區，並將其附加至指定的掛接路徑。
 
 如需如何動態建立和使用磁片區的概念，請參閱[持續性磁片區宣告][aks-concepts-storage-pvcs]。
 

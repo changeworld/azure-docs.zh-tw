@@ -554,4 +554,4 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 - [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本教學課程提供逐步指示，說明如何建立您的 Azure SSIS IR。 它會使用 Azure SQL Database 來裝載 SSIS 目錄。 
 - [建立 AZURE SSIS IR](create-azure-ssis-integration-runtime.md)。 本文會針對教學課程進行擴充。 其中提供有關在虛擬網路中 Azure SQL Database 使用虛擬網路服務端點或受控實例來裝載 SSIS 目錄的指示。 說明如何將您的 Azure SSIS IR 加入虛擬網路。 
 - [監視 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). 本文說明如何取得您的 Azure SSIS IR 的相關資訊。 它會提供所傳回信息的狀態原因。 
-- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文說明如何停止、啟動或刪除您的 Azure SSIS IR。 此外也會說明如何藉由新增節點來相應放大 Azure-SSIS IR。
+- [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文說明如何停止、啟動或刪除您的 Azure SSIS IR。 此外也會說明如何藉由新增節點來擴增 Azure-SSIS IR。

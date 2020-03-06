@@ -162,6 +162,8 @@
               href: storage-blobs-latency.md
             - name: Azure 儲存體保留容量
               href: storage-blob-reserved-capacity.md
+            - name: 規劃和管理成本
+              href: ../common/storage-plan-manage-costs.md
         - name: 並行
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 搜尋並了解 Blob 資料
@@ -419,12 +421,6 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-        - name: 管理 Blob
-          items:
-            - name: Azure CLI
-              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure 傳統 CLI
-              href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 跨區域移動
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 疑難排解
@@ -636,8 +632,24 @@
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
-        - name: 儲存體帳戶
+        - name: 處理巨量資料
+          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 適用於 Hadoop 的 Azure Blob 檔案系統驅動程式
+          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure Blob 檔案系統 URI
+          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 關於階層命名空間
+          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 關於儲存體帳戶
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 最佳作法
+          href: data-lake-storage-best-practices.md
+        - name: 資料備援
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 資料轉送解決方案
+          href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 並行
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 安全性
           items:
             - name: 授權資料作業
@@ -652,23 +664,6 @@
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 使用 Azure 私人端點
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 資料備援
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 資料移轉
-          items:
-            - name: 比較資料轉送解決方案
-              href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 大型資料集、低網路頻寬
-                  href: ../common/storage-solution-large-dataset-low-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 大型資料集、中至高網路頻寬
-                  href: ../common/storage-solution-large-dataset-moderate-high-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 小型資料集、低至中網路頻寬
-                  href: ../common/storage-solution-small-dataset-low-moderate-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 定期資料轉送
-                  href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 並行
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 相容性
           items:
             - name: 多重通訊協定存取
@@ -679,15 +674,7 @@
               href: data-lake-storage-supported-azure-services.md
             - name: 支援的開放原始碼平台
               href: data-lake-storage-supported-open-source-platforms.md
-        - name: 處理巨量資料
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 適用於 Hadoop 的 Azure Blob 檔案系統驅動程式
-          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Blob 檔案系統 URI
-          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 關於階層命名空間
-          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 監視及疑難排解
+        - name: 監視與疑難排解
           items:
             - name: 監控、診斷及疑難排解
               href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -697,13 +684,19 @@
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 儲存體分析記錄
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 最佳作法
-          href: data-lake-storage-best-practices.md
     - name: 如何
       items:
-        - name: 為您的 Data Lake 建立儲存體帳戶
-          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 保護資料
+        - name: 建立
+          items:
+            - name: 建立一般用途 v2 儲存體帳戶
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 遷移
+          items:
+            - name: 從 Data Lake Storage Gen1 升級
+              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 遷移內部部署 HDFS 存放區
+              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 安全
           items:
             - name: 授與資料的存取權
               items:
@@ -767,19 +760,7 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 啟用傳輸層安全性
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 災害復原
-          items:
-            - name: 檢查上次同步時間屬性
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 初始化帳戶容錯移轉
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用儲存體模擬器
-          items:
-            - name: 使用 Azurite open-source 模擬器
-              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用 Azure 儲存體模擬器
-              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 管理目錄、檔案和 ACL
+        - name: 管理
           items:
             - name: .NET
               href: data-lake-storage-directory-file-acl-dotnet.md
@@ -795,19 +776,9 @@
               href: data-lake-storage-directory-file-acl-cli.md
             - name: 儲存體總管
               href: data-lake-storage-explorer.md
-        - name: 效能最佳化
-          items:
-            - name: 概觀
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 最佳化 HDInsight 上的 Spark
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 最佳化 HDInsight 上的 Hive
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 最佳化 HDInsight 上的 MapReduce
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 最佳化 HDInsight 上的 Storm
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 傳送資料
+            - name: Hadoop 檔案系統 CLI
+              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 傳送
           items:
             - name: AzCopy
               items:
@@ -821,14 +792,28 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 透過資料移動程式庫傳輸資料
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 移轉資料
+        - name: 最佳化
           items:
-            - name: 從 Data Lake Storage Gen1 升級
-              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 遷移內部部署 HDFS 存放區
-              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 搭配使用 Hadoop 檔案系統 CLI
-          href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 效能最佳化
+              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 最佳化 HDInsight 上的 Spark
+              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 最佳化 HDInsight 上的 Hive
+              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 最佳化 HDInsight 上的 MapReduce
+              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 最佳化 HDInsight 上的 Storm
+              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 復原
+          items:
+            - name: 檢查上次同步時間屬性
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 模擬
+          items:
+            - name: 使用 Azurite open-source 模擬器
+              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 使用 Azure 儲存體模擬器
+              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 參考
       items:
         - name: .NET

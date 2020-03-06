@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431968"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331480"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>使用 Azure 入口網站建立媒體服務帳戶
 
@@ -46,13 +46,9 @@ Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳
 本節中的步驟示範如何建立 AMS 帳戶。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下 [+新增] > [Web + 行動] > [媒體服務]。
-   
-    ![建立媒體服務](./media/media-services-create-account/media-services-new1.png)
+2. 按一下 [ **+ 建立資源**] > **媒體** > **媒體服務**。
 3. 在 [建立媒體服務帳戶] 中輸入必要的值。
-   
-    ![建立媒體服務](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. 在 [帳戶名稱]中，輸入新 AMS 帳戶的名稱。 媒體服務帳戶名稱為全部小寫且不含空格的字母或數字，且長度是 3 到 24 個字元。
    2. 在訂用帳戶中，從您可存取的不同 Azure 訂用帳戶中進行選取。
    3. 在 [資源群組]中，選取新的或現有資源。  資源群組是共用生命週期、權限及原則的資源集合。 [在此](../../azure-resource-manager/management/overview.md#resource-groups)深入了解。
@@ -71,7 +67,6 @@ Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳
 ## <a name="to-manage-your-ams-account"></a>管理 AMS 帳戶
 
 若要管理 AMS 帳戶 (例如，以程式設計方式連線至 AMS API、上傳影片、編碼資產、設定內容保護、監視作業進度)，請選取入口網站左側的 [設定]。 從 [設定] 中，導覽至其中一個可用的刀鋒視窗 (例如：[API 存取]、[資產]、[作業]、[內容保護])。
-
 
 ## <a name="next-steps"></a>後續步驟
 

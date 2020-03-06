@@ -6,14 +6,14 @@ ms.date: 05/09/2019
 ms.author: glenga
 ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
 ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/13/2020
 ms.locfileid: "77198338"
 ---
 | 資源 | [耗用量方案](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium 方案](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service 方案](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| 相應放大 | 事件驅動 | 事件驅動 | [手動/自動調整](../articles/app-service/manage-scale-up.md) | 
+| 擴增 | 事件驅動 | 事件驅動 | [手動/自動調整](../articles/app-service/manage-scale-up.md) | 
 | 實例數上限 | 200 | 100 | 10-20 |
 |預設[超時時間](../articles/azure-functions/functions-scale.md#timeout)（分鐘） |5 | 30 |30<sup>2</sup> |
 |最大[超時持續時間](../articles/azure-functions/functions-scale.md#timeout)（分鐘） |10 | 未系結<sup>8</sup> | 無界限<sup>3</sup> |

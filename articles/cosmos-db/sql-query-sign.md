@@ -4,15 +4,15 @@ description: 深入瞭解 SQL 系統函數登入 Azure Cosmos DB。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11a9d0ad0c68e1ef9728c0180f136d075776abb6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 84335acbee1e4166e5346f5c5cac6ef8dae11e99
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349490"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302061"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN （Azure Cosmos DB）
  傳回指定之數值運算式的正數 (+1)、零 (0) 或負數 (-1) 符號。  
@@ -45,6 +45,10 @@ SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS 
 ```json
 [{s1: -1, s2: -1, s3: 0, s4: 1, s5: 1}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

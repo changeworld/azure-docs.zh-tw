@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 11/05/2019
-ms.openlocfilehash: 06b890a9186ec38ce3f851c9f36b778ec7549f76
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/05/2020
+ms.openlocfilehash: 5e90416b23b057ad5079a551242895802ac641c9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580493"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399119"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何使用 Azure CLI 建立 Azure Machine Learning 工作區。 Azure CLI 提供用來管理 Azure 資源的命令。 CLI 的機器學習擴充功能會提供命令，以使用 Azure Machine Learning 資源。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -59,7 +59,7 @@ Azure Machine Learning 工作區會依賴下列 Azure 服務或實體：
 > [!IMPORTANT]
 > 如果您未指定現有的 Azure 服務，則會在建立工作區時自動建立一個。 您一定要指定資源群組。
 
-| 服務 | 用來指定現有實例的參數 |
+| Service | 用來指定現有實例的參數 |
 | ---- | ---- |
 | **Azure 資源群組** | `-g <resource-group-name>`
 | **Azure 儲存體帳戶** | `--storage-account <service-id>` |

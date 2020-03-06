@@ -20,7 +20,7 @@ ms.locfileid: "74873738"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database 彈性查詢概觀 (預覽)
 
-彈性查詢功能 (預覽) 可讓您在 Azure SQL Database 中執行跨多個資料庫的 Transact-SQL 查詢。 它可讓您執行跨資料庫查詢以存取遠端資料表，以及將 Microsoft 和第三方工具 (Excel、Power BI、Tableau 等) 連接到具有多個資料庫的資料層。 這項功能可讓您將查詢相應放大到 SQL Database 中的大型資料層，並將結果透過商務智慧 (BI) 報告視覺化。
+彈性查詢功能 (預覽) 可讓您在 Azure SQL Database 中執行跨多個資料庫的 Transact-SQL 查詢。 它可讓您執行跨資料庫查詢以存取遠端資料表，以及將 Microsoft 和第三方工具 (Excel、Power BI、Tableau 等) 連接到具有多個資料庫的資料層。 這項功能可讓您將查詢擴增到 SQL Database 中的大型資料層，並將結果透過商務智慧 (BI) 報告視覺化。
 
 ## <a name="why-use-elastic-queries"></a>為何要使用彈性查詢
 

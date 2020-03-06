@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 IS_STRING
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_STRING。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_STRING。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e105394765ccd8a495a0b44b0c29e0c4c0b9f59a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303761"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING （Azure Cosmos DB）
  傳回布林值，表示指定之運算式的類型為字串。  
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

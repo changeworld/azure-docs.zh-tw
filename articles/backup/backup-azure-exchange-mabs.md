@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份伺服器將 Exchange Server 備份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: dbd37bbb7418560a0426ed47d7869bf9d949d2e2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295839"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 備份伺服器將 Exchange Server 備份至 Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "77617560"
 
 若要在 Exchange Server 上安裝 MABS 保護代理程式，請遵循下列步驟：
 
-1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](h https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
+1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
 2. 按一下 MABS 系統管理員主控台中的 [管理] > [代理程式] > [安裝]，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱[安裝 MABS 保護代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
@@ -50,7 +50,7 @@ ms.locfileid: "77617560"
 6. 按 [下一步]。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] 選項。
 
-    選取此選項之後，將會在 MABS 上執行備份一致性檢查，以避免在 Exchange Server 上執行 **eseutil** 命令所產生的 I/O 流量。
+    選取此選項之後，將會在 MABS 上執行備份一致性檢查，以避免在 Exchange server 上執行**eseutil**命令所產生的 i/o 流量。
 
    > [!NOTE]
    > 若要使用此選項，您必須將 Ese.dll 和 Eseutil.exe 檔案複製到 MAB 伺服器上的 C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin 目錄。 否則會觸發下列錯誤：  
@@ -61,7 +61,7 @@ ms.locfileid: "77617560"
 9. 選取用於 [複製備份] 的資料庫，然後按 [下一步]。
 
    > [!NOTE]
-   > 如果您未對資料庫的至少一個 DAG 複本選取「完整備份」，則不會截斷記錄。
+   > 如果您未針對資料庫的至少一個 DAG 複本選取「完整備份」，則不會截斷記錄。
    >
    >
 10. 設定 [短期備份] 的目標，然後按 [下一步]。
@@ -76,7 +76,7 @@ ms.locfileid: "77617560"
     ![指定線上備份排程](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > 請注意，線上復原點是以快速完整復原點為基礎。 因此，您必須將線上復原點排程在針對快速完整復原點指定的時間之後。
+    > 請注意，線上復原點是以快速完整復原點為基礎。 因此，您必須在指定給快速完整復原點的時間之後，排程線上復原點。
     >
     >
 16. 設定 [Azure 備份] 的保留原則，然後按 [下一步]。

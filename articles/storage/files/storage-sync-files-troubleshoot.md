@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 9d8aeba65a566cc93d3344a532a4636d709c1084
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303659"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -221,12 +221,12 @@ Set-AzStorageSyncServerEndpoint `
 如果您建立雲端端點並使用包含資料的 Azure 檔案共用，便會發生此問題。 在 Azure 檔案共用中掃描變更的變更列舉作業必須先完成，才能在雲端與伺服器端點之間同步檔案。 完成此作業的所需時間，取決於 Azure 檔案共用中的命名空間大小。 在變更列舉作業完成後，伺服器端點健康情況應會隨即更新。
 
 ### <a id="broken-sync"></a>如何監視同步健康情況？
-# <a name="portaltabportal1"></a>[入口網站](#tab/portal1)
+# <a name="portal"></a>[入口網站](#tab/portal1)
 在每個同步群組內，您可以向下切入至其個別的伺服器端點，以查看上次完成的同步工作階段所處的狀態。 若 [健康情況] 資料行為綠色，且 [檔案無法同步] 的值為 0，表示同步運作正常。 若非如此，請查看下方的常見同步錯誤清單，並了解如何處理未同步的檔案。 
 
 ![Azure 入口網站的螢幕擷取畫面](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 移至伺服器的遙測記錄 (位於事件檢視器的 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 上)。 事件 9102 對應於已完成的同步工作階段；如需最新同步狀態，請尋找識別碼為 9102 的最新事件。 SyncDirection 會指出此工作階段是否已上傳或下載。 HResult 為 0，表示同步工作階段成功。 非零的 HResult 表示在同步期間發生錯誤；請查看下方的常見錯誤清單。 如果 PerItemErrorCount 大於 0，表示某些檔案或資料夾未正確同步。 HResult 為 0，但 PerItemErrorCount 大於 0，是有可能的。
 
 以下是成功上傳的範例。 為了方便說明，以下僅列出每個 9102 事件所包含的部分值。 
@@ -258,10 +258,10 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>如何監視目前同步工作階段的進度？
-# <a name="portaltabportal1"></a>[入口網站](#tab/portal1)
+# <a name="portal"></a>[入口網站](#tab/portal1)
 在您的同步群組中，移至有問題的伺服器端點，並查看 [同步活動] 區段以確認目前的同步工作階段中已上傳或下載的檔案計數。 請注意，此狀態大約會延遲 5 分鐘才顯示，因此如果同步工作階段較小而可在這段期間內完成，就可能不會報告在入口網站中。 
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 在伺服器的遙測記錄中查看最新的 9302 事件 (在 [事件檢視器] 中，移至 Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry)。 此事件表示目前同步工作階段的狀態。 TotalItemCount 代表要同步的檔案數目、AppliedItemCount 是目前已同步的檔案數目，而 PerItemErrorCount 則是無法同步的檔案數目 (請參閱下方的處置方式)。
 
 ```
@@ -276,14 +276,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>如何得知我的伺服器是否彼此保持同步？
-# <a name="portaltabportal1"></a>[入口網站](#tab/portal1)
+# <a name="portal"></a>[入口網站](#tab/portal1)
 針對給定同步群組中的每個伺服器，請確定：
 - 上傳和下載的「上次嘗試的同步」時間戳記都是最新的。
 - 上傳和下載的狀態都是綠色的。
 - [同步活動] 欄位中僅顯示少許或沒有待同步的檔案。
 - 上傳和下載的 [檔案無法同步] 欄位皆為 0。
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 查看已完成的同步工作階段，這在每個伺服器的遙測事件記錄中會以 9102 事件標示 (在 [事件檢視器] 中，移至 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`)。 
 
 1. 在任何給定的伺服器上，您都會想要確定最新的上傳和下載工作階段已順利完成。 若要這樣做，請確認上傳和下載的 HResult 和 PerItemErrorCount 皆為 0 (SyncDirection 欄位會指出給定的工作階段是上傳還是下載工作階段)。 請注意，若未看到最近完成的同步工作階段，有可能是同步工作階段正在進行中，這是您剛剛新增或修改大量資料之後的正常情況。
@@ -325,7 +325,7 @@ PerItemErrorCount: 1006.
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | 已略過檔案或目錄，但會在下一個同步會話期間同步處理。 如果在下載專案時回報此錯誤，則檔案或目錄名稱可能無效。 | 上傳檔案時若回報此錯誤，則不需要採取任何動作。 如果下載檔案時回報錯誤，請重新命名有問題的檔案或目錄。 如需詳細資訊，請參閱[處理不支援的字元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | 無法同步檔案或目錄的建立，因為該專案已存在於目的地中，而且同步處理並不知道該變更。 | 不需要任何動作。 在目的地上執行變更偵測並同步處理這個新專案之後，同步處理就會停止記錄這個錯誤。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 無法同步檔案，因為已達 Azure 檔案共用限制。 | 若要解決此問題，請參閱疑難排解指南中的[您已達到 Azure 檔案共用儲存體限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)一節。 |
-| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 檔案是由不支援的解決方案（例如 NTFS EFS）所加密。 | 將檔案解密，並使用支援的加密解決方案。 如需支援解決方案的清單，請參閱計劃指南中的[加密解決方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)一節。 |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 檔案是由不支援的解決方案（例如 NTFS EFS）所加密。 | 將檔案解密，並使用支援的加密解決方案。 如需支援解決方案的清單，請參閱計劃指南中的[加密解決方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption)一節。 |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | 檔案位於 [DFS-R 唯讀複寫] 資料夾。 | 檔案位於 [DFS-R 唯讀複寫] 資料夾。 Azure 檔案同步不支援 DFS-R 唯讀複寫資料夾上的伺服器端點。 如需詳細資訊，請參閱[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 檔案具有「刪除擱置」狀態。 | 不需要任何動作。 當所有開啟的檔案控制代碼都關閉之後，檔案就會被刪除。 |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | 無法同步檔案，因為已啟用儲存體帳戶上的防火牆和虛擬網路設定，而且伺服器無法存取儲存體帳戶。 | 遵循部署指南中的[設定防火牆和虛擬網路設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)一節所述的步驟，新增伺服器 IP 位址或虛擬網路。 |
@@ -872,7 +872,7 @@ PerItemErrorCount: 1006.
 | **錯誤字串** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
 | **需要補救** | 是 |
 
-發生此錯誤的原因是 Azure 檔案同步不支援 HTTP 重新導向（3xx 狀態碼）。 若要解決此問題，請停用 proxy 伺服器或網路裝置上的 HTTP 重新導向。
+由於 Azure 檔案同步不支援 HTTP 重新導向，因此發生此錯誤 (3xx 狀態碼)。 若要解決此問題，請停用 Proxy 伺服器或網路裝置上的 HTTP 重新導向。
 
 <a id="-2134364027"></a>**離線資料傳輸期間發生超時，但仍在進行中。**  
 
@@ -883,18 +883,18 @@ PerItemErrorCount: 1006.
 | **錯誤字串** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
 | **需要補救** | 否 |
 
-當資料內嵌作業超過時間時，就會發生此錯誤。 如果正在進行同步處理（AppliedItemCount 大於0），則可以忽略此錯誤。 請參閱[如何? 監視目前同步會話的進度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+當資料擷取作業逾時，就會發生此錯誤。 如果正在進行同步處理（AppliedItemCount 大於0），則可以忽略此錯誤。 請參閱[如何? 監視目前同步會話的進度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 ### <a name="common-troubleshooting-steps"></a>常用的疑難排解步驟
 <a id="troubleshoot-storage-account"></a>**確認儲存體帳戶確實存在。**  
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 瀏覽至儲存體同步服務中的同步群組。
 2. 選取同步群組內的雲端端點。
 3. 記下開啟的窗格中顯示的 Azure 檔案共用名稱。
 4. 選取連結的儲存體帳戶。 如果此連結失敗，表示參考的儲存體帳戶已移除。
     ![此螢幕擷取畫面顯示有連結通往儲存體帳戶的雲端端點詳細資料窗格。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -970,12 +970,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**確定 Azure 檔案共用確實存在。**  
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 按一下位於目錄左側的 [概觀]，以返回主要儲存體帳戶頁面。
 2. 選取 [檔案]，以檢視檔案共用清單。
 3. 確認雲端端點所參考的檔案共用出現在檔案共用清單中 (您應已先前的步驟 1 中記下這項資料)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -989,7 +989,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**確定 Azure 檔案同步具有儲存體帳戶的存取權。**  
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 按一下左側目錄的 [存取控制 (IAM)]。
 1. 按一下 [角色指派] 索引標籤，列出可存取儲存體帳戶的使用者和應用程式 (*服務主體*)。
 1. 確認 [混合式檔案同步服務] 連同 [讀取者及資料存取] 角色出現在清單中。 
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - 在 [角色] 欄位中，選取 [讀取者及資料存取]。
     - 在 [選取] 欄位中，輸入 [混合式檔案同步服務]，選取角色並按一下 [儲存]。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 
@@ -1090,27 +1090,27 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (十進位) | 錯誤字串 | 問題 | 補救 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 因為檔案正在使用中，所以無法進行層級。 | 不需要任何動作。 當檔案不再使用時，該檔案會進行分層。 |
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 因為檔案正在使用中，所以無法進行層級。 | 不需要任何動作。 檔案不再處於使用中狀態時即會進行分層處理。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 檔案無法進行階層處理，因為同步處理已排除此檔案。 | 不需要任何動作。 同步排除清單中的檔案無法分層。 |
-| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 檔案無法進行層級，因為在伺服器上找不到該檔案。 | 不需要任何動作。 如果錯誤持續發生，請檢查該檔案是否存在於伺服器上。 |
-| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | 檔案無法進行層級，因為它已在 Azure 檔案共用中刪除。 | 不需要任何動作。 當下一個下載同步會話執行時，應該在伺服器上刪除該檔案。 |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 檔案無法進行層級，因為在伺服器上找不到該檔案。 | 不需要任何動作。 如果錯誤持續發生，請檢查伺服器中是否有該檔案。 |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | 檔案無法進行層級，因為它已在 Azure 檔案共用中刪除。 | 不需要任何動作。 當下一個下載同步工作階段執行時，系統應該會刪除伺服器上的該檔案。 |
 | 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
 | 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 因為拒絕存取錯誤，所以檔案無法進行層級。 如果檔案位於 DFS-R 唯讀複寫資料夾，就會發生此錯誤。 | Azure 檔案同步不支援 DFS-R 唯讀複寫資料夾上的伺服器端點。 如需詳細資訊，請參閱[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
 | 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
-| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 檔案無法進行層級，因為檔案大小小於支援的大小。 | 如果代理程式版本小於9.0，支援的最低檔案大小為64kb。 如果代理程式版本是9.0 且較新，則支援的最低檔案大小是以檔案系統叢集大小（雙檔案系統叢集大小）為基礎。 例如，如果檔案系統叢集大小為 4 kb，則檔案大小下限為 8 kb。 |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 檔案無法進行層級，因為檔案大小小於支援的大小。 | 如果代理程式版本小於 9.0，支援的最低檔案大小為 64 KB。 如果代理程式版本是 9.0 或更新版本，則支援的最低檔案大小是以檔案系統叢集大小 (檔案系統叢集大小的兩倍) 為基礎。 例如，如果檔案系統叢集大小為 4 kb，則檔案大小下限為 8 kb。 |
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 因為 Azure 儲存體問題，所以無法將檔案分層。 | 如果錯誤持續發生，請開啟支援要求。 |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 檔案無法進行層級，因為它已在同一時間重新叫用。 | 不需要任何動作。 當召回完成且檔案不再使用時，此檔案會進行分層。 |
-| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步至 Azure 檔案共用後，就會進行分層處理。 |
 | 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 因為雲端階層處理篩選器驅動程式（microsoft.storagesync）並未執行，所以檔案無法進行層次處理。 | 若要解決此問題，請開啟提升許可權的命令提示字元，然後執行下列命令： `fltmc load storagesync`<br>如果執行 fltmc 命令時，microsoft.storagesync 篩選器驅動程式無法載入，請將 Azure 檔案同步代理程式卸載，重新開機伺服器，然後重新安裝 Azure 檔案同步代理程式。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為伺服器端點所在磁片區上的磁碟空間不足，所以無法將檔案分層。 | 若要解決此問題，請在伺服器端點所在的磁片區上釋放至少 100 MB 的磁碟空間。 |
-| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
-| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 檔案無法進行層級，因為它是不支援的重新分析點。 | 如果檔案是重復資料刪除重新分析點，請遵循[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步驟來啟用重復資料刪除支援。 不支援重復資料刪除以外的重新分析點的檔案，也不會進行分層。  |
-| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 一旦修改過的檔案已同步處理至 Azure 檔案共用，檔案就會進行分層。 |
-| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步處理至 Azure 檔案共用之後，就會進行層級。 |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步至 Azure 檔案共用後，就會進行分層處理。 |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 檔案無法進行層級，因為它是不支援的重新分析點。 | 如果檔案是重複資料刪除剖析點，請遵循[規劃指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步驟，以啟用重複資料刪除支援。 若檔案的重新剖析點不是資料刪除，則不受支援，也不會進行分層。  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 當已修改的檔案同步至 Azure 檔案共用後，就會進行分層處理。 |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 檔案無法進行階層處理，因為它尚未同步處理至 Azure 檔案共用。 | 不需要任何動作。 當檔案已同步至 Azure 檔案共用後，就會進行分層處理。 |
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 因為發生網路問題，所以檔案無法進行層級。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 一旦修改過的檔案已同步處理至 Azure 檔案共用，檔案就會進行分層。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 因為系統資源不足，所以無法將檔案分層。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式是耗盡系統資源。 |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 檔案無法進行層級，因為它已修改。 | 不需要任何動作。 當已修改的檔案同步至 Azure 檔案共用後，就會進行分層處理。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 因為系統資源不足，所以無法將檔案分層。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式耗用系統資源。 |
 
 
 
@@ -1133,13 +1133,13 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | 因為 i/o 超時，所以檔案無法重新叫用。 發生此問題的原因有好幾個：伺服器資源限制、網路連線不佳或 Azure 儲存體問題（例如，節流）。 | 不需要任何動作。 如果錯誤持續數小時，請開啟支援案例。 |
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | 因為發生網路問題，所以檔案無法重新叫用。  | 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | 因為已刪除伺服器端點，所以檔案無法重新叫用。 | 若要解決此問題，請參閱在[刪除伺服器端點之後，伺服器上的](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)階層式檔案無法存取。 |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 檔案因「拒絕存取」錯誤而無法重新叫用。 如果已啟用儲存體帳戶上的防火牆和虛擬網路設定，而且伺服器無法存取儲存體帳戶，就會發生此問題。 | 若要解決此問題，請遵循部署指南中[設定防火牆和虛擬網路設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)一節所述的步驟，新增伺服器 IP 位址或虛擬網路。 |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 檔案無法重新叫用，因為它無法在 Azure 檔案共用中存取。 | 若要解決此問題，請確認檔案存在於 Azure 檔案共用中。 如果檔案存在於 Azure 檔案共用中，請升級至最新的 Azure 檔案同步[代理程式版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 檔案因「拒絕存取」錯誤而無法重新叫用。 之所以發生此問題，是因為儲存體帳戶上的防火牆和虛擬網路設定已啟用，而伺服器無法存取儲存體帳戶。 | 若要解決此問題，請遵循部署指南中[設定防火牆和虛擬網路設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)一節所述的步驟，新增伺服器 IP 位址或虛擬網路。 |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 檔案無法重新叫用，因為它無法在 Azure 檔案共用中存取。 | 若要解決此問題，請確認 Azure 檔案共用中的確存在該檔案。 如果檔案存在於 Azure 檔案共用中，請升級至最新的 Azure 檔案同步[代理程式版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 因為儲存體帳戶的授權失敗，所以檔案無法重新叫用。 | 若要解決此問題，請確認[Azure 檔案同步具有儲存體帳戶的存取權](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | 檔案無法重新叫用，因為無法存取 Azure 檔案共用。 | 確認檔案共用存在且可供存取。 如果檔案共用已刪除並重新建立，請執行同步處理失敗中所述的步驟，[因為已刪除](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)並重新建立 Azure 檔案共用一節，以刪除並重新建立同步群組。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 檔案因系統資源不足而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式是耗盡系統資源。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 檔案因系統資源不足而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式耗用系統資源。 |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 檔案因 insuffcient 記憶體而無法重新叫用。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式造成記憶體不足的狀況。 |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為磁碟空間不足，所以無法重新叫用檔案。 | 若要解決此問題，請將檔案移至不同的磁片區、增加磁片區的大小，或使用 StorageSyncCloudTiering 指令程式來強制執行檔案，以釋放磁片區上的空間。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 因為磁碟空間不足，所以無法重新叫用檔案。 | 若要解決此問題，請將檔案移至不同的磁碟區、增加磁碟區的大小，或使用 Invoke-StorageSyncCloudTiering Cmdlet 強制將檔案分層，以釋出磁碟區的空間。 |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>刪除伺服器端點之後，伺服器上的階層式檔案無法存取
 如果未在刪除伺服器端點之前回收檔案，伺服器上的階層式檔案將會變成無法存取。
@@ -1158,7 +1158,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果不符合上述條件，您就無法還原存取，因為伺服器上的這些分層檔案現在是孤立狀態。 請依照下列指示來移除孤立的分層檔案。
 
-**注意事項**
+**注意**
 - 當伺服器上的階層式檔案無法存取時，如果您直接存取 Azure 檔案共用，則完整檔案應該仍然可以存取。
 - 若要防止未來的孤立分層檔案，請遵循刪除伺服器端點時[移除伺服器端點](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中記載的步驟。
 
@@ -1201,7 +1201,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path containing orphaned tiered files> -Verbose
 $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 ```
-**注意事項** 
+**注意** 
 - 在伺服器上修改的階層式檔案若未同步至 Azure 檔案共用，將會被刪除。
 - 將不會刪除可存取（不是孤立）的階層式檔案。
 - 非階層式檔案會保留在伺服器上。

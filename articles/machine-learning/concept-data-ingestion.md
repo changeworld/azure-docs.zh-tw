@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268554"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303115"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning 中的資料內嵌
 
@@ -71,4 +71,5 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 ## <a name="next-steps"></a>後續步驟
 
+* 瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線
 * 瞭解如何使用[Azure Pipelines](how-to-cicd-data-ingestion.md)來自動化和管理資料內嵌管線的開發週期。

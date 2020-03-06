@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398342"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 部署深度學習模型以進行推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "76122520"
 
 * 大致瞭解[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-## <a name="connect-to-your-workspace"></a>連線到您的工作區
+## <a name="connect-to-your-workspace"></a>連接到您的工作區
 
 若要連接到現有的工作區，請使用下列程式碼：
 
@@ -101,7 +101,7 @@ except ComputeTargetException:
 輸入腳本會接收提交至 web 服務的資料，將其傳遞至模型，並傳回評分結果。 下列腳本會在啟動時載入 Tensorflow 模型，然後使用模型來對資料進行計分。
 
 > [!TIP]
-> 這是模型特定的輸入指令碼。 例如，腳本必須知道要與您的模型、資料格式等搭配使用的架構。
+> 專案腳本是您的模型特有的。 例如，腳本必須知道要與您的模型、資料格式等搭配使用的架構。
 
 ```python
 import json

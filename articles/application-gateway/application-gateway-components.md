@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301347"
 ---
 # <a name="application-gateway-components"></a>應用程式閘道元件
 
@@ -32,7 +32,7 @@ V1 SKU 可設定為支援靜態或動態內部 IP 位址和動態公用 IP 位�
 
 與應用程式閘道相關聯的 DNS 名稱不會在閘道的生命週期內變更。 因此，您應該使用 CNAME 別名，並將它指向應用程式閘道的 DNS 位址。
 
-## <a name="listeners"></a>接聽程式
+## <a name="listeners"></a>Listeners
 
 接聽程式是檢查傳入連接要求的邏輯實體。 如果與要求相關聯的通訊協定、埠、主機名稱和 IP 位址符合與接聽程式設定相關聯的相同元素，接聽程式會接受要求。
 
@@ -53,7 +53,7 @@ V1 SKU 可設定為支援靜態或動態內部 IP 位址和動態公用 IP 位�
 >HTTP/2 通訊協定支援僅適用於連線到應用程式閘道接聽程式的用戶端。 對後端伺服器集區的通訊一律是透過 HTTP/1.1。 預設已停用 HTTP/2 支援。 您可以選擇啟用它。
 
 - 在接聽程式設定中指定 HTTP 和 HTTPS 通訊協定。
-- [Websocket 和 HTTP/2 通訊協定](overview.md#websocket-and-http2-traffic)的支援是以原生方式提供，而且預設會啟用[websocket 支援](application-gateway-websocket.md)。 使用者無法進行設定來選擇要啟用或停用 WebSocket 支援。 搭配 HTTP 和 HTTPS 接聽程式使用 Websocket。
+- [Websocket 和 HTTP/2 通訊協定](features.md#websocket-and-http2-traffic)的支援是以原生方式提供，而且預設會啟用[websocket 支援](application-gateway-websocket.md)。 使用者無法進行設定來選擇要啟用或停用 WebSocket 支援。 搭配 HTTP 和 HTTPS 接聽程式使用 Websocket。
 
 使用 HTTPS 接聽程式進行 SSL 終止。 HTTPS 接聽程式會將加密和解密工作卸載至您的應用程式閘道，因此您的 web 伺服器不會受到額外負荷的負擔。
 
@@ -115,9 +115,9 @@ HTTP 設定中使用的埠和通訊協定會決定應用程式閘道與後端伺
 
 此元件也用來：
 
-- 使用以[cookie 為基礎的會話親和性](overview.md#session-affinity)，判斷是否要將使用者會話保存在同一部伺服器上。
+- 使用以[cookie 為基礎的會話親和性](features.md#session-affinity)，判斷是否要將使用者會話保存在同一部伺服器上。
 
-- 使用連線[清空](overview.md#connection-draining)，以正常方式移除後端集區成員。
+- 使用連線[清空](features.md#connection-draining)，以正常方式移除後端集區成員。
 
 - 建立自訂探查的關聯以監視後端健全狀況、設定要求逾時間隔、覆寫要求中的主機名稱和路徑，並提供按一下即可輕鬆指定 App Service 後端的設定。
 

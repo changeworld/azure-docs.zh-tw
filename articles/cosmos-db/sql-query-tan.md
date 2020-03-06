@@ -4,15 +4,15 @@ description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 TAN。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 70636dbc00307ced8ad0cf84f41fe025c759997e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349153"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301976"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN （Azure Cosmos DB）
  在指定運算式中傳回指定角度的正切函式 (以弧度為單位)。  
@@ -45,6 +45,10 @@ SELECT TAN(PI()/2) AS tan
 ```json
 [{"tan": 16331239353195370 }]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

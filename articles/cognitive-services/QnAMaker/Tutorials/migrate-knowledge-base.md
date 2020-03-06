@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b441eb1e6531030a998fe628ae833b29a5d9fe5a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902042"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302554"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用匯出-匯入移轉知識庫
 
 遷移知識庫必須先從某個知識庫匯出，再匯入至另一個知識庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 開始之前，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 設定新的 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)
@@ -47,12 +47,8 @@ ms.locfileid: "76902042"
    > [![匯入知識庫](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
 1. 使用 [測試] 面板來 [測試] 新知識庫。 了解如何[測試知識庫](../How-To/test-knowledge-base.md)。
-1. [發佈] 知識庫。 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
-1. 在應用程式或 Bot 程式碼中使用此端點。 請參閱如何[建立 QnA Bot](../Tutorials/create-qna-bot.md)。
 
-    ![QnA Maker 值](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
-
-    此時，所有知識庫內容 (問題、解答和中繼資料，以及來源檔案名稱和 URL) 都會匯入新的知識庫。
+1. **發佈**知識庫並建立聊天機器人。 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 
 ## <a name="chat-logs-and-alterations"></a>聊天記錄和變動
 不會自動匯入不區分大小寫的變異形式 (同義字)。 您可以使用[V4 api](https://go.microsoft.com/fwlink/?linkid=2092179) ，在新的知識庫中移動變更。

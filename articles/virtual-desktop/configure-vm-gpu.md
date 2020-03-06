@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719750"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384817"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器（GPU）加速
 
@@ -82,7 +82,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 Additionaly，�
 若要確認遠端桌面使用的是 GPU 加速編碼：
 
 1. 使用 Windows 虛擬桌面用戶端連接到 VM 的桌面。
-2. 啟動事件檢視器並流覽至下列節點： [**應用程式和服務記錄**檔] > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreTS** > **操作**
+2. 啟動事件檢視器並流覽至下列節點： [**應用程式和服務記錄**檔] > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **操作**
 3. 若要判斷是否使用 GPU 加速編碼，請尋找事件識別碼170。 如果您看到「已啟用 AVC 硬體編碼器：1」，則會使用 GPU 編碼。
 4. 若要判斷是否使用 AVC 444 模式，請尋找事件識別碼162。 如果您看到「可用的 AVC：1個初始設定檔：2048」，則會使用 AVC 444。
 

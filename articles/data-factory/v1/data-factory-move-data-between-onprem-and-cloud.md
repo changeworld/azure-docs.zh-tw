@@ -90,7 +90,7 @@ ms.locfileid: "75982188"
     ![[建立閘道] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > 在本逐步解說中，您會建立只具有一個節點的邏輯閘道 (內部部署 Windows 機器)。 您可以將多個內部部署機器關聯到閘道以相應放大資料管理閘道。 您可以增加可在節點上同時執行的資料移動作業數目來進行相應增加。 這項功能也適用於具有單一節點的邏輯閘道。 如需得詳細資料，請參閱[在 Azure Data Factory 中調整資料管理閘道](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
+    > 在本逐步解說中，您會建立只具有一個節點的邏輯閘道 (內部部署 Windows 機器)。 您可以將多個內部部署機器關聯到閘道以擴增資料管理閘道。 您可以增加可在節點上同時執行的資料移動作業數目來進行相應增加。 這項功能也適用於具有單一節點的邏輯閘道。 如需得詳細資料，請參閱[在 Azure Data Factory 中調整資料管理閘道](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
 4. 在 [設定] 頁面中，按一下 [直接安裝在此電腦上]。 此動作會下載閘道的安裝套件、在電腦上安裝、設定和註冊閘道。  
 
    > [!NOTE]

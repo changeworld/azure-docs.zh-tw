@@ -3,12 +3,12 @@ title: 儲存 Helm 圖表
 description: 瞭解如何在 Azure Container Registry 中使用存放庫來儲存 Kubernetes 應用程式的 Helm 圖表
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524626"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398964"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>將 Helm 圖表推送並提取到 Azure container registry
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 成功推送之後，輸出類似于：
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 輸出會類似：
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 輸出（在此範例中為縮寫）顯示 `application/vnd.cncf.helm.config.v1+json`的 `configMediaType`：
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 未提供任何版本號碼時，會使用「最新」版本。 Helm 會傳回有關您圖表的詳細資訊，如下列壓縮輸出所示：
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 當安裝繼續進行時，請遵循命令輸出中的指示，以查看 WorPress 的 Url 和認證。 您也可以執行 `kubectl get pods` 命令，以查看透過 Helm 圖表部署的 Kubernetes 資源：
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 輸入 `ls` 以列出已下載的圖表，並記下檔案名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令並未指定特定的版本，因此擷取的是「最新」版本。 在下列範例輸出中，Wordpress 圖表是版本*8.1.0*：
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 幾分鐘後，Azure CLI 會報告您的圖表已儲存，如下列範例輸出所示：
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 這會列出在上一個步驟中推送的 Wordpress 圖表，如以下範例輸出所示：
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 未提供任何版本號碼時，會使用「最新」版本。 Helm 會傳回您圖表的相關詳細資訊，如以下扼要的範例輸出所示：
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ helm install mycontainerregistry/wordpress
 
 當安裝繼續進行時，請遵循命令輸出中的指示，以查看 WorPress 的 Url 和認證。 您也可以執行 `kubectl get pods` 命令，以查看透過 Helm 圖表部署的 Kubernetes 資源：
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

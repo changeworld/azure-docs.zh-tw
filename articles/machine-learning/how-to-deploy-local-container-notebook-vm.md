@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 28d176289a0b6cfe659f390feb441158c57f6533
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.date: 03/05/2020
+ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169945"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398160"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
@@ -29,7 +29,7 @@ ms.locfileid: "77169945"
 > [!TIP]
 > 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是_本機部署_。 在此情況下，「本機」電腦就是計算實例。 如需部署的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 執行的計算實例 Azure Machine Learning 工作區。 如需詳細資訊，請參閱[設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "77169945"
     * 筆記本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`。 
     * 計算實例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`。 
 
-    例如， 
+    例如： 
     * 筆記本 VM： `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * 計算實例： `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 

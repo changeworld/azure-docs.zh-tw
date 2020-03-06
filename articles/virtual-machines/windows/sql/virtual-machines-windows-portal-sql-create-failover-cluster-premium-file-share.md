@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303217"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虛擬機器上使用 premium 檔案共用設定 SQL Server 容錯移轉叢集實例
 
@@ -53,7 +53,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
 許多工作負載都有高載 IO，因此最好在長時間使用期間進行檢查，並記下最大 IOPS 和平均 IOPS。 Premium 檔案共用會根據共用大小來提供 IOPS。 高階檔案共用也提供免費的高載，可讓您將 IO 高載到最多三個小時的基準量。
 
-如需 premium 檔案共用效能的詳細資訊，請參閱檔案[共用效能層級](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers)。
+如需 premium 檔案共用效能的詳細資訊，請參閱檔案[共用效能層級](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers)。
 
 ### <a name="licensing-and-pricing"></a>授權和定價
 

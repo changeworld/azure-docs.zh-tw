@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331514"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>如何：在 iOS 上搭配使用編解碼器壓縮的音訊輸入與語音 SDK
 
 語音 SDK 的**壓縮音訊輸入資料流程**API 可讓您使用提取或推播串流，將壓縮的音訊串流至語音服務。
 
 > [!IMPORTANT]
-> 需要語音 SDK 版本1.7.0 或更高版本，才能在 iOS 上串流處理壓縮的音訊。 [ C++Linux （ubuntu 16.04、ubuntu C#18.04、Debian 9）上的、和 java](how-to-use-codec-compressed-audio-input-streams.md)也支援[Android 中](how-to-use-codec-compressed-audio-input-streams-android.md)的 java。
+> 需要語音 SDK 版本1.7.0 或更高版本，才能在 iOS 上串流處理壓縮的音訊。 [ C++Linux 上的C#、和 java （ubuntu 16.04、ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）](how-to-use-codec-compressed-audio-input-streams.md)和[Android 中的 java](how-to-use-codec-compressed-audio-input-streams-android.md)也支援此功能。
 
 針對 wav/PCM，請參閱主線語音檔。 在 wav/PCM 以外，支援下列編解碼器壓縮的輸入格式：
 
@@ -66,5 +66,5 @@ ms.locfileid: "74805853"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [取得語音試用訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)
+- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
 - [瞭解如何以 JAVA 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

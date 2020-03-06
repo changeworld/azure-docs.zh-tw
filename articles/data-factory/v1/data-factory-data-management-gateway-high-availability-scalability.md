@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Data Factory 中使用資料管理閘道的高可用性
-description: 本文說明如何藉由新增更多節點來相應放大資料管理閘道，以及藉由增加節點中可以並行執行的作業數來相應增加。
+description: 本文說明如何藉由新增更多節點來擴增資料管理閘道，以及藉由增加節點中可以並行執行的作業數來擴增。
 services: data-factory
 documentationcenter: ''
 author: nabhishek

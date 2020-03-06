@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 4f75adba27c8173f918fa1afbd44f307d50eb995
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9507428e63b337b3d8419a833d03d081d494c522
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330799"
 ---
 # <a name="ship-an-application"></a>交付應用程式
 
@@ -52,7 +52,7 @@ ms.locfileid: "76902016"
 
 ## <a name="linux"></a>Linux
 
-語音 SDK 目前支援 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 發行版本。
+語音 SDK 目前支援 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8 發行版本。
 對於原生應用程式，您需要提供語音 SDK 程式庫 `libMicrosoft.CognitiveServices.Speech.core.so`。
 確定您選取與您的應用程式相符的版本 (x86、x64)。 視 Linux 版本而定，您可能也需要包含下列相依性：
 
@@ -73,6 +73,16 @@ sudo apt-get install libssl1.0.0 libasound2
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，請遵循[如何設定 OpenSSL For Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)的指示。
 
 ## <a name="next-steps"></a>後續步驟
 

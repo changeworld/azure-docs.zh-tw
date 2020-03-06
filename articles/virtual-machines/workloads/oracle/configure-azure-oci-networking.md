@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302044"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 與 Oracle 雲端基礎結構之間的直接互連  
 
@@ -31,11 +31,11 @@ ms.locfileid: "71802218"
 
 ![跨雲端網路連線](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 若要建立 Azure 與 OCI 之間的連線，您必須擁有有效的 Azure 訂用帳戶和作用中的 OCI 租用。
 
-* 只有在 Azure ExpressRoute 對等互連位置與 OCI FastConnect 位於相同的對等互連位置時，才可以進行連線。 請參閱[預覽限制](oracle-oci-overview.md#preview-limitations)。
+* 只有在 Azure ExpressRoute 對等互連位置與 OCI FastConnect 位於相同的對等互連位置時，才可以進行連線。 請參閱[區域可用性](oracle-oci-overview.md#region-availability)。
 
 * 您的 Azure 訂用帳戶必須啟用此預覽功能。
 
@@ -63,7 +63,7 @@ ms.locfileid: "71802218"
     * 在 [**提供者服務金鑰**] 中，貼上 ExpressRoute 服務金鑰。
     * 在上一個步驟中使用第一個/30 私人 IP 位址空間劃分，以取得**主要 BGP Ip 位址**和**次要 bgp ip**位址的第二個/30 私人 ip 位址空間。
         * 將 Oracle BGP IP 位址（主要和次要）的第一個可用位址和第二個位址指派給客戶 BGP IP 位址（從 FastConnect 的觀點來看）。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址（Microsoft 會保留第一個 IP 位址）。
-    * 按一下頁面底部的 [新增]。
+    * 按一下 **[建立]** 。
 1. 使用路由表，完成透過動態路由閘道，將 FastConnect 連結至 Oracle 租使用者下的虛擬雲端網路。
 1. 流覽至 Azure，並確定 ExpressRoute 線路的**提供者狀態**已變更為 [已布**建**]，而且已布建 [ **Azure 私**用] 類型的對等互連。 這是下列步驟的必要條件。
 
@@ -85,7 +85,7 @@ Microsoft 已建立 Terraform 腳本，以啟用網路互連的自動化部署�
 
 您可以在此[GitHub 存放庫](https://aka.ms/azureociinterconnecttf)中找到 Terraform 腳本和用來部署連線的相關檔。
 
-## <a name="monitoring"></a>監控
+## <a name="monitoring"></a>監視
 
 在這兩個雲端上安裝代理程式，您可以利用 Azure[網路效能監控（NPM）](../../../expressroute/how-to-npm.md)來監視端對端網路的效能。 NPM 可協助您立即找出網路問題，並協助消除它們。
 

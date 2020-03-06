@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721110"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344023"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -28,6 +28,8 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
     | [自動化機器學習服務](#automated-machine-learning) | 自動化機器學習可讓您將**模型定型，而不需要大量的資料科學或程式設計知識**。 針對具有資料科學和程式設計背景的人員，它提供了一種方式，可透過自動化演算法選取和超參數微調來節省時間和資源。 使用自動化機器學習時，您不需要擔心定義執行設定。 |
     | [估算器](#estimators) | 估計工具類別**可讓您輕鬆地根據熱門的機器學習架構來定型模型**。 Scikit-learn 的估計工具類別包括 **：學習**、 **PyTorch**、 **TensorFlow**和**Chainer**。 另外還有一個泛型估計工具，可以搭配尚未擁有專用估計工具類別的架構來使用。 使用估算器時，您不需要擔心定義執行設定。 |
     | [機器學習管線](#machine-learning-pipeline) | 管線並不是不同的定型方法，而是**使用模組化、可重複使用的步驟來定義工作流程的一種方式**，其中包括訓練做為工作流程的一部分。 機器學習管線支援使用自動化機器學習、估算器和執行設定來定型模型。 由於管線並不是特別著重于定型，因此使用管線的原因會比其他定型方法更為不同。 一般而言，您可能會在下列情況使用管線：<br>* 您想要**排程**自動執行的程式，例如長時間執行的定型作業或資料準備。<br>* 使用跨異類計算資源和儲存位置協調的**多個步驟**。<br>* 在特定案例中使用管線作為**可重複**使用的範本，例如重新定型或批次評分。<br>* **追蹤和版本資料來源、輸入**和工作流程的輸出。<br>* 您的工作流程是**由不同的小組所實行，這些團隊會獨立處理特定步驟**。 然後，可以在管線中將步驟聯結在一起，以執行工作流程。 |
+
++ [適用于 Python 的 AZURE MACHINE LEARNING sdk](#r-sdk)： sdk 會使用 reticulate 套件來系結至 Azure Machine Learning 的 python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中執行的核心物件和方法。
 
 + **設計**工具： Azure Machine Learning 設計工具（預覽）可讓您輕鬆進入機器學習服務，以建立概念證明，或針對幾乎沒有程式碼撰寫經驗的使用者。 它可讓您使用拖放 web 型 UI 來定型模型。 您可以使用 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下訓練模型。
 
@@ -61,7 +63,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
 > [!TIP]
 > 除了 Python SDK，您也可以透過[Azure Machine Learning studio](https://ml.azure.com)使用自動化 ML。
 
-* [什麼是自動化機器學習服務？](concept-automated-ml.md)
+* [什麼是自動化機器學習？](concept-automated-ml.md)
 * [教學課程：使用自動化機器學習建立您的第一個分類模型](tutorial-first-experiment-automated-ml.md)
 * [教學課程：使用自動化機器學習來預測出租車車資](tutorial-auto-train-models.md)
 * [範例：自動化機器學習的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
@@ -88,6 +90,15 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
 * [範例：機器學習管線的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [範例：具有自動化機器學習的管線](https://aka.ms/pl-automl)
 * [範例：具有估算器的管線](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+R SDK 可讓您使用 R 語言搭配 Azure Machine Learning。 SDK 會使用 reticulate 套件來系結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中執行的核心物件和方法。
+
+如需詳細資訊，請參閱下列文章：
+
+* [教學課程：建立羅吉斯回歸模型](tutorial-1st-r-experiment.md)
+* [R 參考的 Azure Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 設計工具
 

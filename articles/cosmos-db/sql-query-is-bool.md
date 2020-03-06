@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 IS_BOOL
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_BOOL。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_BOOL。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cb928558483a703a554d3eb6eb049af544f72eb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349884"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303863"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL （Azure Cosmos DB）
  傳回布林值，表示指定之運算式的類型為布林值。  
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

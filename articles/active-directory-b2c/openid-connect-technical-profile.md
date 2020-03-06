@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184004"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399078"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OpenID Connect 技術設定檔
 
@@ -77,9 +77,11 @@ Azure Active Directory B2C （Azure AD B2C）提供[OpenID connect](https://open
 | 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 識別提供者的應用程式識別碼。 |
-| IdTokenAudience | 否 | id_token 的對象。 如果已指定，Azure AD B2C 會檢查權杖是否在識別提供者傳回的宣告中，以及是否等於指定的宣告。 |
-| METADATA | 是 | 根據 OpenID Connect Discovery 規格 (也就是已知的 openid 設定端點)，指向 JSON 設定文件的 URL。 |
-| ProviderName | 否 | 識別提供者的名稱。 |
+| IdTokenAudience | 否 | id_token 的對象。 如果指定，Azure AD B2C 會檢查身分識別提供者所傳回之權杖中的 `aud` 宣告是否等於 IdTokenAudience 中繼資料中指定的宣告。  |
+| METADATA | 是 | 指向 OpenID Connect 識別提供者設定檔的 URL，也稱為 OpenID 知名設定端點。 此 URL 可以包含 `{tenant}` 運算式，並以租使用者名稱取代。  |
+| authorization_endpoint | 否 | 指向 OpenID Connect 識別提供者設定授權端點的 URL。 Authorization_endpoint 中繼資料的值優先于 OpenID 知名設定端點中指定的 `authorization_endpoint`。 此 URL 可以包含 `{tenant}` 運算式，並以租使用者名稱取代。 |
+| 簽發者 | 否 | OpenID Connect 識別提供者的唯一識別碼。 簽發者中繼資料的值優先于 OpenID 知名設定端點中指定的 `issuer`。  如果指定，Azure AD B2C 會檢查識別提供者所傳回之權杖中的 `iss` 宣告是否等於簽發者中繼資料中指定的宣告。 |
+| ProviderName | 否 | 識別提供者的名稱。  |
 | response_types | 否 | 根據 OpenID Connect Core 1.0 規格的回應類型。 可能的值：`id_token`、`code` 或 `token`。 |
 | response_mode | 否 | 識別提供者用來將結果傳送回 Azure AD B2C 的方法。 可能的值：`query`、`form_post` (預設值) 或 `fragment`。 |
 | 範圍 | 否 | 根據 OpenID Connect Core 1.0 規格定義的要求範圍。 例如，`openid`、`profile` 和 `email`。 |

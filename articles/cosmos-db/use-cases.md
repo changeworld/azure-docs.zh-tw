@@ -86,7 +86,7 @@ Azure Cosmos DB 常用於 Web 與行動應用程式，而且適合用於建立�
 
 與第三方社交網路整合的應用程式必須回應這些網路不斷變更的結構描述。 由於在 Cosmos DB 中預設會自動為資料編製索引，因此資料隨時可供查詢。 因此，這些應用程式可以有彈性地根據其各自的需求擷取投影。
 
-許多社交應用程式是以全球的規模運作，而且可能出現無法預期的使用模式。 調整資料存放區的彈性十分重要，因為應用程式層會進行調整以符合使用需求。  您可以透過在 Cosmos DB 帳戶下新增其他資料分割區來相應放大。  此外，您也可以跨多個區域建立其他 Cosmos DB 帳戶。 如需了解 Cosmos DB 服務區域可用性，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
+許多社交應用程式是以全球的規模運作，而且可能出現無法預期的使用模式。 調整資料存放區的彈性十分重要，因為應用程式層會進行調整以符合使用需求。  您可以透過在 Cosmos DB 帳戶下新增其他資料分割區來擴增。  此外，您也可以跨多個區域建立其他 Cosmos DB 帳戶。 如需了解 Cosmos DB 服務區域可用性，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
 
 ![Azure Cosmos DB Web 應用程式參考架構](./media/use-cases/apps-with-global-reach.png)
 

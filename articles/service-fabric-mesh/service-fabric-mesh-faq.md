@@ -163,7 +163,7 @@ Visual Studio 工具僅支援使用 Windows Server 1709 和1803的基本 OS 版�
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>當我相應放大時，所有容器都受到影響，包括正在執行的容器
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>當我擴增時，所有容器都受到影響，包括正在執行的容器
 
 這是一個錯誤 (bug)，目前正在實作修正程式。
 

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370816"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions 的通知中樞輸出繫結
 
@@ -48,7 +48,7 @@ ms.locfileid: "74926320"
 
 ### <a name="c-script-template-example---out-parameter"></a>C# 指令碼範本範例 - out 參數
 
-這個範例會傳送在範本中包含 `message` 預留位置的[範本註冊](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+這個範例會傳送在範本中包含 [ 預留位置的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)範本註冊`message`通知。
 
 ```cs
 using System;
@@ -96,7 +96,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>C# 指令碼範本範例 - JSON
 
-這個範例會使用有效的 JSON 字串來傳送在範本中包含 `message` 預留位置的[範本註冊](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+這個範例會使用有效的 JSON 字串來傳送在範本中包含 [ 預留位置的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)範本註冊`message`通知。
 
 ```cs
 using System;
@@ -135,7 +135,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>F # 範本範例
 
-這個範例會傳送包含 `location` 和 `message` 的[範本註冊](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+這個範例會傳送包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`範本註冊`message`通知。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -144,7 +144,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>JavaScript 範本範例
 
-這個範例會傳送包含 `location` 和 `message` 的[範本註冊](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+這個範例會傳送包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`範本註冊`message`通知。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -254,8 +254,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 |**name** |n/a| 函式程式碼中用於通知中樞訊息的變數名稱。 |
 |**tagExpression** |**TagExpression** | 標籤運算式可讓您指定將通知傳遞到一組裝置，這些裝置已註冊要接收與標籤運算式相符的通知。  如需詳細資訊，請參閱 [路由與標籤運算式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
 |**hubName** | **HubName** | Azure 入口網站中通知中樞資源的名稱。 |
-|**連接** | **ConnectionStringSetting** | 包含「通知中樞」連接字串的應用程式設定名稱。  必須針對通知中樞將連接字串設為 DefaultFullSharedAccessSignature 值。 請參閱本文稍後的[連線字串設定](#connection-string-setup)。|
-|**platform** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 如果有關設定適用於 APNS 的通知中樞及在用戶端 App 中接收通知的詳細資訊，請參閱[使用 Azure 通知中樞將推播通知傳送至 iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
+|**connection** | **ConnectionStringSetting** | 包含「通知中樞」連接字串的應用程式設定名稱。  必須針對通知中樞將連接字串設為 DefaultFullSharedAccessSignature 值。 請參閱本文稍後的[連線字串設定](#connection-string-setup)。|
+|**平台** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 如果有關設定適用於 APNS 的通知中樞及在用戶端 App 中接收通知的詳細資訊，請參閱[使用 Azure 通知中樞將推播通知傳送至 iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

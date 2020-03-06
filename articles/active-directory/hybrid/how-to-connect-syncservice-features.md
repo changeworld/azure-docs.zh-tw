@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347530"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300531"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步處理服務功能
 
@@ -58,7 +58,7 @@ Azure AD connect 同步處理功能有兩個元件：
 | DirSyncFeature | 註解 |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect：啟用裝置回寫](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Azure AD Connect 同步：目錄擴充](how-to-connect-sync-feature-directory-extensions.md) |
+| DirectoryExtensions |[Azure AD Connect 同步處理：目錄擴充](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果屬性是另一個物件的複本，即會將該屬性隔離，而不會在匯出期間導致整個物件失敗。 |
 | 密碼雜湊同步處理 |[使用 Azure AD Connect 同步來實作密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md) \(英文\) |
 |傳遞驗證|[使用 Azure Active Directory 傳遞驗證來進行使用者登入](how-to-connect-pta.md)|
@@ -96,7 +96,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 如需詳細資訊，請參閱 [Office 365、Azure 或 Intune 中的使用者名稱不符合內部部署的 UPN 或替代登入識別碼](https://support.microsoft.com/kb/2523192)。
 
-啟用這項功能可讓同步處理引擎更新 userPrincipalName，內部變更，且您使用密碼雜湊同步處理或傳遞驗證時。 如果您使用同盟，則不支援這項功能。
+啟用這項功能可讓同步處理引擎在內部部署變更時更新 userPrincipalName，而且您會使用密碼雜湊同步處理或傳遞驗證。
 
 在新建立的 Azure AD 目錄中，預設會開啟這項功能。 您可以執行下列項目，查看是否已啟用此功能︰  
 

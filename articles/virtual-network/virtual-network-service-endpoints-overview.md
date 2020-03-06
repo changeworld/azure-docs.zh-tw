@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380123"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
@@ -88,7 +88,7 @@ ms.locfileid: "74378682"
 - 端點設定所在的虛擬網路可以位於與 Azure 服務資源相同或不同的訂用帳戶中。 如需設定端點和保護 Azure 服務所需權限的詳細資訊，請參閱[佈建](#provisioning)。
 - 對於支援的服務，您可以使用服務端點，將新的或現有資源放到虛擬網路保護。
 
-### <a name="considerations"></a>注意事項
+### <a name="considerations"></a>考量
 
 - 啟用服務端點之後，子網中虛擬機器的來源 IP 位址會切換。 來源 IP 位址會在與該子網中的服務進行通訊時，從使用公用 IPv4 位址切換為使用其私人 IPv4 位址。 在此切換期間，會關閉該服務的任何現有開放 TCP 連線。 在啟用或停用子網路服務的服務端點時，確定沒有任何重要工作正在執行中。 此外，確保在 IP 位址切換之後，您的應用程式可以自動連線到 Azure 服務。
 
@@ -139,7 +139,7 @@ ms.locfileid: "74378682"
 
 VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此篩選器只允許透過服務端點的特定 Azure 服務資源。 服務端點原則可針對流向 Azure 服務的虛擬網路流量提供更細微的存取控制。 如需詳細資訊，請參閱[虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
 
-## <a name="faqs"></a>常見問題集
+## <a name="faqs"></a>FAQ
 
 如需常見問題，請參閱[虛擬網路服務端點常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
 

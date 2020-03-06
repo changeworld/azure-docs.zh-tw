@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 IS_NUMBER
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_NUMBER。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_NUMBER。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 624f5c91a9d2a0eb4744d310120050d0d5ccef4e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303812"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER （Azure Cosmos DB）
  傳回布林值，表示指定之運算式的類型為數字。  
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

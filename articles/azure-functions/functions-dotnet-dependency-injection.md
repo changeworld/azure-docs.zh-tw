@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915702"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329011"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -131,6 +131,52 @@ Azure Functions 應用程式提供與 ASP.NET 相依性[插入](https://docs.mic
 > [!WARNING]
 > - 請勿將 `AddApplicationInsightsTelemetry()` 新增至服務集合，因為它會註冊與環境所提供之服務衝突的服務。
 > - 如果您使用內建的 Application Insights 功能，請勿註冊您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果您需要設定自己的 `TelemetryClient` 實例，請透過插入的 `TelemetryConfiguration` 建立一個，如 [[監視器 Azure Functions](./functions-monitoring.md#version-2x-and-later-2)] 所示。
+
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
+
+主機會將 `ILogger<T>` 和 `ILoggerFactory` 服務插入至函式。  不過，根據預設，這些新的記錄篩選器將會篩選掉函數記錄。  您將需要修改 `host.json` 檔案，以加入宣告其他篩選準則和類別。  下列範例將示範如何使用將由主機公開的記錄來新增 `ILogger<HttpTrigger>`。
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+以及新增記錄篩選的 `host.json` 檔案。
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
 
 ## <a name="function-app-provided-services"></a>函數應用程式提供的服務
 

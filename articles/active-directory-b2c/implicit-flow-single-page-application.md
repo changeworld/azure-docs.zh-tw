@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 37b59c2a23a8f00e8376be2ac4a7b35a6d58aa28
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187724"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398999"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隱含流程的單一頁面登入
 
@@ -243,12 +243,12 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ## <a name="next-steps"></a>後續步驟
 
-### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>程式碼範例：使用 Azure AD B2C 的 hello .js
+### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>程式碼範例：使用適用于 JavaScript 的 Microsoft 驗證程式庫 Azure AD B2C
 
-[以 Azure AD B2C （GitHub）上建于 node.js 的單一頁面應用程式][github-hello-js-example]
+[以 msal 建立的單一頁面應用程式（適用于 Azure AD B2C][github-msal-js-example] （GitHub））
 
-GitHub 上的此範例旨在協助您開始使用以[node.js][github-hello-js]建立的簡單 web 應用程式中的 Azure AD B2C，並使用快顯樣式驗證。
+此 GitHub 上的範例旨在協助您開始在使用[msal][github-msal-js]建立的簡單 web 應用程式中 Azure AD B2C，並使用快顯樣式驗證。
 
 <!-- Links - EXTERNAL -->
-[github-hello-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp
-[github-hello-js]: https://github.com/MrSwitch/hello.js
+[github-msal-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-msal-js]: https://github.com/AzureAD/microsoft-authentication-library-for-js

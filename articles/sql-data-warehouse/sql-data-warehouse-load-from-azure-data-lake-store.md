@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194575"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300582"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>從 Azure Data Lake Storage 載入 SQL 分析的資料
 本指南概述如何使用 PolyBase 外部資料表從 Azure Data Lake Storage 載入資料。 雖然您可以對儲存在 Data Lake Storage 中的資料執行臨機操作查詢，但建議您匯入資料以獲得最佳效能。 
@@ -46,6 +46,8 @@ ms.locfileid: "78194575"
 若要存取您的 Data Lake Storage 帳戶，您必須建立資料庫主要金鑰來加密您的認證密碼。 接著，您要建立資料庫範圍認證來儲存您的秘密。 使用服務主體（Azure 目錄應用程式使用者）進行驗證時，資料庫範圍認證會儲存 AAD 中設定的服務主體認證。 您也可以使用資料庫範圍認證來儲存 Gen2 的儲存體帳戶金鑰。
 
 若要使用服務主體連接到 Data Lake Storage，您必須**先**建立 Azure Active Directory 應用程式、建立存取金鑰，並將該應用程式的存取權授與 Data Lake Storage 帳戶。 如需指示，請參閱[使用 Active Directory 向 Azure Data Lake Storage 進行驗證](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+
+以擁有控制層級許可權的使用者登入您的 SQL 集區，並針對您的資料庫執行下列 SQL 語句：
 
 ```sql
 -- A: Create a Database Master Key.

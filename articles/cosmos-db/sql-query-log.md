@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302503"
 ---
 # <a name="log-azure-cosmos-db"></a>記錄（Azure Cosmos DB）
  傳回指定數值運算式的自然對數。  
@@ -39,7 +39,7 @@ LOG (<numeric_expr> [, <base>])
   
   依預設，LOG() 會傳回自然對數。 您可以使用選用基數參數，將對數基數變更為其他值。  
   
-  自然對數為基數 **e** 的對數，其中 **e** 為無理常數，大約等於 2.718281828。  
+  自然對數是基數 **e** 的對數，其中 **e** 是大約等於 2.718281828 的無理常數。  
   
   數字指數的自然對數則是該數值本身：LOG( EXP( n ) ) = n。 而數字的自然對數之指數為數字本身：EXP( LOG( n ) ) = n。  
   
@@ -68,6 +68,10 @@ SELECT EXP(LOG(10)) AS expLog
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

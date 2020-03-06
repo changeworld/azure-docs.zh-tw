@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 934e804b60312a32300c4b884ea8fd15e2195870
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256009"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302027"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse 分析版本資訊
 
@@ -38,6 +38,13 @@ ms.locfileid: "78256009"
 > ```
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="february-2020"></a>2020 年 2 月
+
+| 服務改進功能 | 詳細資料 |
+| --- | --- |
+|**資料庫相容性層級（預覽）**| 在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定 SQL 分析引擎版本的 Transact-sql 語言和查詢處理行為。 如需詳細資訊，請參閱[sys.databases database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?view=azure-sqldw-latest&branch=pr-en-us-13797)和[Alter database 範圍](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?view=sql-server-ver15)設定。|
+|**Sp_describe_undeclared_parameters**| 允許使用者查看 Transact-sql 批次中未宣告之參數的相關中繼資料。 如需詳細資訊，請參閱[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="january-2020"></a>2020 年 1 月
 

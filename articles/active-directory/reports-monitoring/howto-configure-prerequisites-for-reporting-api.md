@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273806"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399309"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>存取 Azure Active Directory 報告 API 的必要條件
 
-[Azure Active Directory (Azure AD) 報告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 透過一組以 REST 為基礎的 API 為您提供資料的程式設計方式存取。 您可以從程式設計語言和工具呼叫這些 Api。
+[Azure Active Directory (Azure AD) 報告 API](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) 透過一組以 REST 為基礎的 API 為您提供資料的程式設計方式存取。 您可以從程式設計語言和工具呼叫這些 Api。
 
 報告 API 會使用 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) 授權存取 Web API。
 
@@ -85,11 +85,11 @@ ms.locfileid: "78273806"
     d. 選取 [註冊]。 
 
 
-## <a name="grant-permissions"></a>授與權限 
+## <a name="grant-permissions"></a>授與使用權限 
 
 根據您想要存取的 API，您需要授與應用程式下列權限：  
 
-| API | 權限 |
+| API | [權限] |
 | --- | --- |
 | Windows Azure Active Directory | 讀取目錄資料 |
 | Microsoft Graph | 讀取所有稽核記錄資料 |
@@ -183,7 +183,7 @@ ms.locfileid: "78273806"
 
     b. 選取 [2 年後] 來作為 [到期]。
 
-    c. 按一下 [檔案]。
+    c. Haga clic en **Guardar**.
 
     d. 複製金鑰值。
 
@@ -191,19 +191,17 @@ ms.locfileid: "78273806"
 
 本節列出當您使用 Microsoft Graph API 存取活動報告時，可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>錯誤：無法從 Microsoft Graph 取得使用者角色
 
  使用 Graph Explorer UI 中的兩個登入按鈕來登入您的帳戶，以避免在嘗試使用 Graph Explorer 登入時收到錯誤。 
 
-![Graph 總管](./media/troubleshoot-graph-api/graph-explorer.png)
+![圖表總管](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>錯誤：無法從 Microsoft Graph 進行 premium 授權檢查 
 
 如果您在嘗試使用 Graph 總管存取登入時，遇到這個錯誤訊息，請在您帳戶左側導覽列底下選擇 [修改權限]，然後選取 [Tasks.ReadWrite] 和 [Directory.Read.All]。 
 
 ![修改權限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
-
 
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>錯誤：租使用者不是 B2C，或租使用者沒有 premium 授權
 
@@ -215,7 +213,7 @@ ms.locfileid: "78273806"
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>錯誤：應用程式遺漏 AAD「讀取目錄資料」權限 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺失 Microsoft API 「讀取所有的 audit 記錄資料」許可權
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺失 Microsoft Graph API 「讀取所有的 audit 記錄資料」許可權
 
 依照必要條件中的步驟[存取 Azure Active Directory 報告 API](howto-configure-prerequisites-for-reporting-api.md) ，以確保您的應用程式是以正確的許可權集執行。 
 

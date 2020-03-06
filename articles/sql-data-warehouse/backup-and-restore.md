@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199949"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296332"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure Synapse SQL 集區中的備份與還原
 
@@ -58,7 +58,7 @@ order by run_id desc
 2. 當 SQL 集區暫停時，不會執行快照。
 3. 還原點的存在時間是以從還原點開始所得到的絕對行事曆天數來測量，包括在 SQL 集區暫停時。
 4. 在任何時間點，只要這些還原點尚未到達7天的保留期限，SQL 集區保證能夠儲存最多42個使用者定義的還原點和42個自動還原點
-5. 如果建立快照集，則 SQL 集區會暫停超過7天，然後繼續執行，還原點可能會持續到42還原點總計（包括使用者定義和自動）
+5. 如果建立快照集，則 SQL 集區會暫停超過7天，然後繼續執行，還原點將會持續到42還原點總計為止（包括使用者定義和自動）
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>卸載 SQL 集區時的快照集保留
 

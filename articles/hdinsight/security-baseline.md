@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303268"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
 
@@ -659,7 +659,7 @@ https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overvi
 
 瞭解傳輸中 Azure 儲存體帳戶加密：
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure 資訊安全中心監視**：是
 

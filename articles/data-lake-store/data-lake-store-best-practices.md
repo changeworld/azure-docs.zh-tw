@@ -108,7 +108,7 @@ Azure Data Lake Storage Gen1 會移除位於 Blob 儲存體帳戶上的硬性 IO
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>使用 Distcp 在兩個位置之間移動資料
 
-Distcp 是分散式複製 (distributed copy) 的縮寫，是隨附於 Hadoop 的 Linux 命令列工具，可提供兩個位置之間的分散式資料移動。 兩個位置可以是 Data Lake Storage Gen1、HDFS、WASB 或 S3。 此工具會在 Hadoop 叢集 (例如，HDInsight) 上使用 MapReduce 作業，以在所有節點上相應放大。 Distcp 是公認移動巨量資料最快速的方式，且無須特殊的網路壓縮裝置。 Distcp 也可讓您選擇只更新兩個位置的差異，並可處理自動重試及計算的動態調整。 此方法用於複寫 Hive/Spark 資料表這類項目時就非常有效率，因為這些資料表的單一目錄中可能有許多大型檔案，但您只是要複製修改的資料。 基於這些理由，在巨量資料存放區之間複製資料時，最建議使用 Distcp 工具。
+Distcp 是分散式複製 (distributed copy) 的縮寫，是隨附於 Hadoop 的 Linux 命令列工具，可提供兩個位置之間的分散式資料移動。 兩個位置可以是 Data Lake Storage Gen1、HDFS、WASB 或 S3。 此工具會在 Hadoop 叢集 (例如，HDInsight) 上使用 MapReduce 作業，以在所有節點上擴增。 Distcp 是公認移動巨量資料最快速的方式，且無須特殊的網路壓縮裝置。 Distcp 也可讓您選擇只更新兩個位置的差異，並可處理自動重試及計算的動態調整。 此方法用於複寫 Hive/Spark 資料表這類項目時就非常有效率，因為這些資料表的單一目錄中可能有許多大型檔案，但您只是要複製修改的資料。 基於這些理由，在巨量資料存放區之間複製資料時，最建議使用 Distcp 工具。
 
 Apache Oozie 工作流程和 Linux Cron 作業可使用頻率或資料觸發程序來觸發複製作業。 對於需要大量複寫的工作，建議您特別為複製作業啟用個別的 HDInsight Hadoop 叢集，以便進行調整和縮放。 這可確保複製作業不會干擾重要的作業。 如果執行複寫的頻率夠頻繁，叢集甚至可能在每個作業間發生失敗。 如果容錯移轉到次要區域，請確定另一個叢集在次要區域中也是作用中的狀態，如此可在主要 Data Lake Storage Gen1 帳戶回復時，將新資料複寫回去。 如需使用 Distcp 的範例，請參閱[使用 Distcp 在 Azure 儲存體 Blob 與 Data Lake Storage Gen1 之間複製資料](data-lake-store-copy-data-wasb-distcp.md)。
 

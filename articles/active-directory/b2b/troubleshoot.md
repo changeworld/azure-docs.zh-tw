@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c7c0a4567da11b10b9a0571656103ef2f17c7da4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195516"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399051"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>針對 Azure Active Directory B2B 共同作業問題進行疑難排解
 
@@ -102,7 +102,6 @@ ms.locfileid: "77195516"
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美國政府租使用者中，我無法邀請 B2B 共同作業來賓使用者
 
 在 Azure 美國政府雲端中，目前只有在 Azure 美國政府雲端內的租使用者，以及同時支援 B2B 共同作業的租使用者之間，才支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端的一部分，或是尚未支援 B2B 共同作業，您將會收到錯誤。 如需詳細資訊和限制，請參閱[Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
-
 
 ## <a name="next-steps"></a>後續步驟
 

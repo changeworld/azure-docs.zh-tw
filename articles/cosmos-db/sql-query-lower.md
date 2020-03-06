@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302265"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER （Azure Cosmos DB）
  傳回將大寫字元資料轉換成小寫之後的字串運算式。  
@@ -48,6 +48,10 @@ SELECT LOWER("Abc") AS lower
 [{"lower": "abc"}]  
   
 ```  
+
+## <a name="remarks"></a>備註
+
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

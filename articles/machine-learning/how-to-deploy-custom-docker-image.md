@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/22/2019
-ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/05/2020
+ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086925"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396160"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Azure Machine Learning 提供預設的 Docker 基底映射，因此您不必擔�
 * 建立自訂基底映射：提供系統管理員和 DevOps 的資訊，以建立自訂映射，並使用 Azure CLI 和 Machine Learning CLI 設定 Azure Container Registry 的驗證。
 * 使用自訂基底映射部署模型：在從 Python SDK 或 ML CLI 部署定型的模型時，為數據科學家和 DevOps/ML 工程師提供有關使用自訂映射的資訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure Machine Learning workgroup。 如需詳細資訊，請參閱[建立工作區](how-to-manage-workspace.md)文章。
 * [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 的 CLI 擴充](reference-azure-machine-learning-cli.md)功能。
 * 可在網際網路上存取的[Azure Container Registry](/azure/container-registry)或其他 Docker Registry。
-* 本檔中的步驟假設您已熟悉建立和使用__推斷__設定物件做為模型部署的一部分。 如需詳細資訊，請參閱[部署位置和方式](how-to-deploy-and-where.md#prepare-deployment-artifacts)的「準備部署」一節。
+* 本檔中的步驟假設您已熟悉建立和使用__推斷__設定物件做為模型部署的一部分。 如需詳細資訊，請參閱[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的「準備部署」一節。
 
 ## <a name="create-a-custom-base-image"></a>建立自訂基底映射
 

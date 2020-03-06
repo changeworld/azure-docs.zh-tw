@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208554"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364389"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的金鑰設定 
 
@@ -94,7 +94,7 @@ UI 目前不支援此程式，而且布建程式是透過 REST API 來執行。
 > [!IMPORTANT]
 > 任何 API 要求都必須在要求標頭中包含持有人授權權杖。
 
-例如，
+例如：
 
 ```rst
 GET
@@ -283,6 +283,11 @@ Content-type: application/json
 
 如 Application Insights CMK 設定，請遵循此步驟的附錄內容。
 
+您必須在工作區和*叢集資源上*具有「寫入」許可權，才能執行這項作業，包括下列動作：
+
+- 在工作區中： Microsoft.operationalinsights/工作區/寫入
+- 在叢集資源中： Microsoft.operationalinsights/ *Cluster* /write
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-*ClusterDefinitionId*是上一個步驟回應中所提供的*clusterId*值。
 
 **回應**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -460,7 +464,7 @@ CMK 的輪替需要使用新的 Azure Key Vault 金鑰版本來明確更新*叢�
 
   **回應**
 
-  200 OK
+  200 確定
 
 
 ## <a name="appendix"></a>附錄
@@ -478,7 +482,6 @@ Log Analytics 和 Application Insights 使用相同的資料存放區平臺和�
 Application Insights CMK 的設定與本文中所述的程式完全相同，包括條件約束和疑難排解，但下列步驟除外：
 
 - 建立叢集*資源*
-
 - *建立元件與叢集資源的*關聯
 
 設定 Application Insights 的 CMK 時，請使用下列步驟，而不是上述所列的步驟。
@@ -534,6 +537,11 @@ Content-type: application/json
 > 複製並保留「原則識別碼」值，因為您在後續步驟中將會用到它。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用元件建立元件與*叢集資源的*關聯[-建立或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API
+
+您必須在*元件和叢集*資源上具有「寫入」許可權，才能執行這項作業，包括下列動作：
+
+- 在元件中： Microsoft Insights/component/write
+- 在叢集資源中： Microsoft.operationalinsights/ *Cluster* /write
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

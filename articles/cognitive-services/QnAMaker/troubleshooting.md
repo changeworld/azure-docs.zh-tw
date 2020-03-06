@@ -4,12 +4,12 @@ description: 有關 QnA Maker 服務的常見問題策劃清單，可協助您�
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296094"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -224,7 +224,7 @@ ms.locfileid: "78273391"
 <details>
 <summary><b>如何使用 QnA Maker 建立新的 bot？</b></summary>
 
-**答**：請遵循[此](./Tutorials/create-qna-bot.md)檔中的指示，使用 Azure Bot 服務建立您的 bot。
+**答**：請遵循[此](./Quickstarts/create-publish-knowledge-base.md)檔中的指示，使用 Azure Bot 服務建立您的 bot。
 
 </details>
 
@@ -255,7 +255,7 @@ ms.locfileid: "78273391"
 
 **答**：請遵循下列步驟，將 QnA Maker 服務內嵌為您網站中的網路聊天控制項：
 
-1. 依照[這裡](./Tutorials/create-qna-bot.md)的指示建立您的常見問題集 Bot。
+1. 依照[這裡](./Quickstarts/create-publish-knowledge-base.md)的指示建立您的常見問題集 Bot。
 2. 依照[這裡](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)的步驟啟用網路聊天
 
 </details>

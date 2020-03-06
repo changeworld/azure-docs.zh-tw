@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205971"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303251"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
@@ -34,9 +34,11 @@ Azure 資訊安全中心是適用于容器安全性的 Azure 原生解決方案�
 如需有關如何使用這些功能的指示，請參閱[監視容器的安全性](monitor-container-security.md)。
 
 ## <a name="vulnerability-management---scanning-container-images"></a>弱點管理-掃描容器映射
-若要監視 ARM 型 Azure Container Registry，請確定您是在資訊安全中心的標準層（請參閱[定價](/azure/security-center/security-center-pricing)）。 然後啟用選用的容器登錄套件組合。 推送新的映射時，資訊安全中心會使用領先業界的弱點掃描廠商 Qualys 掃描映射。
+若要監視 ARM 型 Azure Container Registry，請確定您是在資訊安全中心的標準層（請參閱[定價](/azure/security-center/security-center-pricing)）。 然後，啟用選擇性的容器登錄套件組合。 推送新的映射時，資訊安全中心會使用領先業界的弱點掃描廠商 Qualys 掃描映射。
 
 找到問題時（依 Qualys 或資訊安全中心），您會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心提供可採取動作的建議，以及嚴重性分類，以及如何修復問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)。
+
+資訊安全中心篩選並分類掃描器的發現結果。 當影像狀況良好時，資訊安全中心將其標示為。 資訊安全中心只會針對具有要解決之問題的映射產生安全性建議。 藉由只在發生問題時發出通知，資訊安全中心降低不必要資訊警示的可能性。
 
 ## <a name="environment-hardening"></a>強化環境
 
@@ -61,22 +63,24 @@ AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中
 
 如需有關這項功能可能會出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考資料表的[容器一節](recommendations-reference.md#recs-containers)。
 
-## <a name="run-time-protection---real-time-threat-protection"></a>執行時間保護-即時威脅防護
+## <a name="run-time-protection---real-time-threat-detection"></a>執行時間保護-即時威脅偵測
 
-資訊安全中心為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+資訊安全中心為您的容器化環境提供即時威脅偵測，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
-我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅防護](threat-protection.md#azure-containers)。
+我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅偵測](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
 
 
 ## <a name="container-security-faq"></a>容器安全性常見問題
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>哪些映射類型可以 Azure 資訊安全中心掃描？
-資訊安全中心會掃描以 Linux 作業系統為基礎的映射，以提供 shell 存取。 
+資訊安全中心會掃描以 Linux OS 為基礎的映射，以提供 shell 存取。 
 
-Qualys 掃描器不支援像是[Docker 待用](https://hub.docker.com/_/scratch/)映射的超級極簡映射，或只包含您應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
+Qualys 掃描器不支援極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含您應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>我們會如何掃描 Azure 資訊安全中心掃描影像？
-映射會從登錄中解壓縮。 然後，它會在隔離的沙箱中執行，並使用 Qualys 掃描器來解壓縮已知弱點的清單。
+### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 資訊安全中心掃描影像的方式為何？
+映射會從登錄提取。 然後，它會在隔離的沙箱中執行，並在其中解壓縮已知弱點清單的 Qualys 掃描器。
+
+資訊安全中心篩選並分類掃描器的發現結果。 當影像狀況良好時，資訊安全中心將其標示為。 資訊安全中心只會針對具有要解決之問題的映射產生安全性建議。 藉由只在發生問題時發出通知，資訊安全中心降低不必要資訊警示的可能性。
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure 資訊安全中心掃描影像的頻率為何？
 系統會在每次推送時觸發影像掃描。
