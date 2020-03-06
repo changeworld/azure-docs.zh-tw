@@ -12,11 +12,11 @@ author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391025"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ ms.locfileid: "77064745"
 
 ## <a name="default-roles"></a>預設角色
 
-Azure Machine Learning 工作區是一種 Azure 資源。 就像其他 Azure 資源一樣，建立新的 Azure Machine Learning 工作區時，它會隨附三個預設角色。 您可以將使用者新增至工作區，並將它們指派給這些內建角色的其中一個。
+Azure Machine Learning 工作區是一項 Azure 資源。 就像其他 Azure 資源一樣，新的 Azure Machine Learning 工作區建立時，會隨附三個預設角色。 您可以將使用者新增至工作區，並將它們指派給這些內建角色的其中一個。
 
 | 角色 | 存取層級 |
 | --- | --- |
-| **讀取者** | 工作區中的唯讀動作。 讀者可以列出及查看工作區中的資產，但無法建立或更新這些資產。 |
-| **參與者** | 在工作區中查看、建立、編輯或刪除（如果適用）資產。 例如，參與者可以建立實驗、建立或附加計算叢集、提交執行，以及部署 web 服務。 |
-| **擁有者** | 工作區的完整存取權，包括能夠在工作區中查看、建立、編輯或刪除（如果適用）資產。 此外，您可以變更角色指派。 |
+| **讀取者** | 工作區中的唯讀動作。 讀者可列出及檢視工作區中的資產，但無法建立或更新這些資產。 |
+| **參與者** | 在工作區中檢視、建立、編輯或刪除 (如果適用) 資產。 例如，參與者可以建立實驗、建立或連結計算叢集、提交執行，以及部署 Web 服務。 |
+| **擁有者** | 可完整存取工作區，包括能夠在工作區中檢視、建立、編輯或刪除 (如果適用) 資產。 此外，您可以變更角色指派。 |
 
 > [!IMPORTANT]
 > 角色存取的範圍可以設定為 Azure 中的多個層級。 例如，具有工作區之擁有者存取權的人，可能不會擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱[RBAC 的運作方式](/azure/role-based-access-control/overview#how-rbac-works)。
@@ -40,7 +40,7 @@ Azure Machine Learning 工作區是一種 Azure 資源。 就像其他 Azure 資
 
 ## <a name="manage-workspace-access"></a>管理工作區存取
 
-如果您是工作區的擁有者，您可以新增和移除工作區的角色。 您也可以將角色指派給使用者。 使用下列連結來探索如何管理存取權：
+如果您是工作區的擁有者，您可以新增和移除工作區的角色。 您也可以將角色指派給使用者。 請使用下列連結來探索如何管理存取：
 - [Azure 入口網站 UI](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379556"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔的索引
 
@@ -233,7 +233,7 @@ blob 索引子可以從下列文件格式擷取文字：
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要編製 blob 哪些部分的索引
 
-您可以使用 `dataToExtract` 組態參數來控制要編製 blob 哪些部分的索引。 它可以採用下列值：
+您可以使用 `dataToExtract` 組態參數來控制要編製 blob 哪些部分的索引。 它可以接受下列值：
 
 * `storageMetadata` - 指定只有[標準 blob 屬性和使用者指定的中繼資料](../storage/blobs/storage-properties-metadata.md)會編製索引。
 * `allMetadata` - 指定儲存體中繼資料和從 blob 內容擷取的[內容型別特定中繼資料](#ContentSpecificMetadata)會編製索引。
@@ -257,7 +257,7 @@ blob 索引子可以從下列文件格式擷取文字：
 | 屬性名稱 | 屬性值 | 說明 |
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |指示 blob 索引子以完全略過 blob。 不會嘗試擷取中繼資料或內容。 當特定 blob 一直失敗，並且中斷編製索引程序時，這非常有用。 |
-| AzureSearch_SkipContent |"true" |這是相當於[上方](#PartsOfBlobToIndex)所描述之範圍設定為特定 blob 的 `"dataToExtract" : "allMetadata"` 設定。 |
+| AzureSearch_SkipContent |"true" |這是相當於`"dataToExtract" : "allMetadata"`上方[所描述之範圍設定為特定 blob 的 ](#PartsOfBlobToIndex) 設定。 |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>處理錯誤
@@ -281,7 +281,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如：
+如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如，
 
     {
       ... other parts of indexer definition
@@ -294,13 +294,13 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 > [!NOTE]
 > 您不需要指定變更偵測原則 – 會自動為您啟用增量編制索引。
 
-若要支援刪除文件，請使用「虛刪除」方法。 如果您直接刪除 blob，對應的文件將不會在搜尋索引中移除。 相反地，請使用下列步驟：  
+若要支援刪除文件，請使用「虛刪除」方法。 如果您直接刪除 blob，對應的文件將不會在搜尋索引中移除。 請改用下列步驟：  
 
 1. 將自訂中繼資料屬性新增至 blob，以向 Azure 認知搜尋指出其以邏輯方式刪除
 2. 在資料來源上設定虛刪除偵測原則
 3. 索引子處理過 blob 後 (如索引子狀態 API 所示)，您就可以實際刪除 blob
 
-例如，如果 blob 有值為 `true` 的中繼資料屬性 `IsDeleted`，則下列原則會認為 blob 已刪除：
+例如，如果 blob 有值為 `IsDeleted` 的中繼資料屬性 `true`，則下列原則會認為 blob 已刪除：
 
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json

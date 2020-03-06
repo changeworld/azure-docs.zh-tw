@@ -4,11 +4,11 @@ description: 當資源不符合規範時，有許多可能的原因。 學習如
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385222"
 ---
 # <a name="determine-causes-of-non-compliance"></a>判斷不符合的原因
 
@@ -111,7 +111,7 @@ ms.locfileid: "75972831"
 
 您也可能沒有直接登入 VM 的存取權，但您必須回報 VM 不_符合規範_的原因。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 一開始請遵循上一節中的相同步驟，以查看原則相容性詳細資料。
 

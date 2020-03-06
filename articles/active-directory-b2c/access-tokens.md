@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184412"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365171"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中要求存取權杖
 
@@ -26,7 +26,7 @@ ms.locfileid: "78184412"
 > [!NOTE]
 > **Azure AD B2C 不支援 Web API 鏈結 (代理者)。** -許多架構都包含需要呼叫另一個下游 Web API 的 Web API，兩者都是由 Azure AD B2C 所保護。 在具有 Web API 後端的用戶端中，這種情況很常見，後者會接著呼叫另一個服務。 使用 OAuth 2.0 JWT 持有人認證授與可支援此鏈結的 Web API 案例，亦稱為「代理者流程」。 不過，Azure AD B2C 目前未實作代理者流程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
 - 如果您尚未這麼做，請[將 Web API 應用程式新增至您的 Azure Active Directory B2C 租使用者](add-web-application.md)。

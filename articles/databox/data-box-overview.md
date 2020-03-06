@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380313"
 ---
 # <a name="what-is-azure-data-box"></a>什麼是 Azure 資料箱？
 
@@ -56,7 +56,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 資料箱裝置在此版本中具有下列功能。
 
-| 規格                                          | 說明              |
+| 規格                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | < 50 磅。                |
 | 維度                                              | 裝置 - 寬度：309.0 公釐 高度：430.4 公釐 深度：502.0 公釐 |            

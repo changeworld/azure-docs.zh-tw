@@ -1,5 +1,5 @@
 ---
-title: 教學課程：將彈性集區新增至容錯移轉群組
+title: 教學課程：將彈性集區新增到容錯移轉群組
 description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，將 Azure SQL Database 彈性集區新增至容錯移轉群組。
 services: sql-database
 ms.service: sql-database
@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380026"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教學課程：將 Azure SQL Database 彈性集區新增至容錯移轉群組
 
@@ -43,7 +43,7 @@ ms.locfileid: "75552537"
 在此步驟中，您將建立彈性集區，並在其中新增您的單一資料庫。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站建立彈性集區。 
 
@@ -55,10 +55,10 @@ ms.locfileid: "75552537"
     ![選取彈性集區](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
 1. 使用下列值來設定您的彈性集區：
-   - **名稱**：為您的彈性集區提供唯一的名稱，例如 `myElasticPool`。 
-   - **訂**用帳戶：從下拉式選單選取您的訂用帳戶。
-   - **ResourceGroup**：從下拉式選單中，選取您在第1節中建立的資源群組 `myResourceGroup`。 
-   - **伺服器**：從下拉式選單選取您在第1節中建立的伺服器。  
+   - **名稱**：提供彈性集區的唯一名稱，例如 `myElasticPool`。 
+   - 訂用帳戶：從下拉式清單中選取訂用帳戶。
+   - **資源群組**：從下拉式選單中，選取您在第1節中建立的資源群組 `myResourceGroup`。 
+   - **伺服器**：從下拉式選單中，選取您在第1節中建立的伺服器。  
 
        ![為彈性集區建立新的伺服器](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "75552537"
 1. 選取 [**審查 + 建立**] 以審查您的彈性集區設定，然後選取 [**建立**] 以建立彈性集區。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 建立彈性集區和次要伺服器。 
 
    ```powershell-interactive
@@ -129,7 +129,7 @@ ms.locfileid: "75552537"
 在此步驟中，您將在現有的 Azure SQL server 與另一個區域中的新 Azure SQL server 之間建立[容錯移轉群組](sql-database-auto-failover-group.md)。 然後將彈性集區新增至容錯移轉群組。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站建立您的容錯移轉群組。 
 
@@ -147,9 +147,9 @@ ms.locfileid: "75552537"
     - **容錯移轉組名**：輸入唯一的容錯移轉組名，例如 `failovergrouptutorial`。 
     - **次要伺服器**：選取 [*設定必要設定*] 選項，然後選擇 [**建立新的伺服器**]。 或者，您也可以選擇已經存在的伺服器做為次要伺服器。 輸入新次要伺服器的下列值後，請選取 [**選取**]。 
         - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。 
-        - **伺服器管理員登**入：輸入 `azureuser`
+        - **伺服器管理員登入**：輸入 `azureuser`
         - **密碼**：輸入符合密碼需求的複雜密碼。
-        - **位置**：從下拉式選單中選擇位置，例如 [`East US`]。 這個位置不能與您的主伺服器位於相同的位置。
+        - **位置**：從下拉式清單中選擇位置，例如 `East US`。 這個位置不能與您的主伺服器位於相同的位置。
 
        > [!NOTE]
        > 伺服器登入和防火牆設定必須符合您的主伺服器。 
@@ -163,7 +163,7 @@ ms.locfileid: "75552537"
 1. 選取 [**選取**] 將您的彈性集區設定套用到容錯移轉群組，然後選取 [**建立**] 以建立容錯移轉群組。 將彈性集區新增至容錯移轉群組，將會自動啟動異地複寫程式。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 建立容錯移轉群組。 
 
@@ -252,7 +252,7 @@ ms.locfileid: "75552537"
 在此步驟中，您會將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站測試容錯移轉群組的容錯移轉。 
 
@@ -276,7 +276,7 @@ ms.locfileid: "75552537"
 1. 再次選取 [**容錯移轉**]，將容錯移轉群組容錯回復至原始設定。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 測試容錯移轉群組的容錯移轉。 
 
@@ -357,15 +357,15 @@ ms.locfileid: "75552537"
 藉由刪除資源群組來清除資源。 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的資源群組。
+1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。
 1. 選取 [**刪除資源群組**] 以刪除群組中的所有資源，以及資源群組本身。 
 1. 在文字方塊中輸入資源群組的名稱，`myResourceGroup`，然後選取 [**刪除**] 以刪除資源群組。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 清除您的資源。 
 
@@ -392,7 +392,7 @@ ms.locfileid: "75552537"
 
 ## <a name="full-script"></a>完整指令碼
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -414,7 +414,7 @@ ms.locfileid: "75552537"
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組 | 
 
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 沒有可供 Azure 入口網站使用的腳本。
 
 ---
@@ -432,4 +432,4 @@ ms.locfileid: "75552537"
 請前進到下一個關於如何使用 DMS 進行移轉的教學課程。
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 DMS 將 SQL Server 遷移至集區資料庫](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [教學課程：使用 DMS](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json) 將 SQL Server 遷移至集區資料庫

@@ -7,11 +7,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658722"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360155"
 ---
 # <a name="view-designer-conversion-examples"></a>View designer 轉換範例
 
@@ -21,7 +21,7 @@ ms.locfileid: "77658722"
 
 使用者可能必須將其查詢設定和訂用帳戶更新為他們自己的可存取資源
 
-## <a name="vertical"></a>垂直
+## <a name="vertical"></a>Vertical
 
 ```Json
 {

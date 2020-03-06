@@ -10,11 +10,11 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360911"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理對容器與 Blob 的匿名讀取權限。
 
@@ -24,7 +24,7 @@ ms.locfileid: "74892477"
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>授與容器和 Blob 的匿名使用者權限
 
-根據預設，容器和其中的任何 Blob 都只能由具有指定適當權限的使用者存取。 若要為匿名使用者授與容器及其 Blob 的讀取權限，您可以設定容器公開存取層級。 當您授與容器的公用存取權時，匿名使用者可以讀取可公開存取之容器內的 blob，而不需要授權要求。
+根據預設，容器和其中的任何 blob 只能由已獲得適當許可權的使用者進行存取。 若要為匿名使用者授與容器及其 blob 的讀取權限，您可以設定容器公用存取層級。 當您授與容器的公用存取權時，匿名使用者可以讀取可公開存取之容器內的 blob，而不需要授權要求。
 
 您可以為容器設定下列權限︰
 

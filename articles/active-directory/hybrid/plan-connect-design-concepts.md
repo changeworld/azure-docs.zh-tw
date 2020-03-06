@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：設計概念 | Microsoft Docs
+title: Azure AD Connect：設計概念 |Microsoft Docs
 description: 本主題詳細說明特定的實作設計領域
 services: active-directory
 documentationcenter: ''
@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376108"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：設計概念
 本文件旨在說明 Azure AD Connect 實作設計期間必須考量的領域。 本文件是特定領域的深入探討，而在其他文件中也會簡短描述這些概念。
@@ -122,7 +122,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 | 設定 | 描述 |
 | --- | --- |
 | 讓 Azure 為我管理來源錨點 | 如果您想要 Azure AD 為您挑選屬性，請選取此選項。 如果您選取此選項，Azure AD Connect 精靈會套用[快速安裝期間所使用的相同邏輯來選取 sourceAnchor 屬性](#express-installation)。 和快速安裝一樣，在自訂安裝完成之後，精靈會通知您它已挑選哪個屬性來作為 sourceAnchor 屬性。 |
-| 特定屬性 | 如果您希望指定現有的 AD 屬性作為 sourceAnchor 屬性，請選取此選項。 |
+| 特定的屬性 | 如果您希望指定現有的 AD 屬性作為 sourceAnchor 屬性，請選取此選項。 |
 
 ### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>如何啟用 ConsistencyGuid 功能 - 現有部署
 如果您的現有 Azure AD Connect 部署使用 objectGUID 作為「來源錨點」屬性，則可以改為將它切換成使用 ConsistencyGuid。
@@ -140,7 +140,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]。
 
-4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 選取 [下一步] 以繼續操作。
+4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按 **[下一步]** ，繼續進行。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -156,7 +156,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 ![啟用現有部署的 ConsistencyGuid - 錯誤](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 如果您確定其他現有的應用程式不會使用此屬性, 您可以使用指定的 **/SkipLdapSearch**參數重新開機 Azure AD Connect wizard 來隱藏錯誤。 若要這樣做，在命令提示字元中執行下列命令：
+ 如果您確定其他現有的應用程式不會使用此屬性，您可以使用指定的 **/SkipLdapSearch**參數重新開機 Azure AD Connect wizard 來隱藏錯誤。 若要這樣做，在命令提示字元中執行下列命令：
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -170,7 +170,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 ![第三方同盟設定](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>在現有部署中新增目錄
-假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果您確定現有的應用程式不會使用此屬性, 您可以重新開機 Azure AD Connect wizard 並依照上述指定的 **/SkipLdapSearch**參數來隱藏錯誤, 或者您必須聯絡支援人員以取得詳細資訊.
+假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果您確定現有的應用程式不會使用此屬性，您可以重新開機 Azure AD Connect wizard 並依照上述指定的 **/SkipLdapSearch**參數來隱藏錯誤，或者您必須聯絡支援人員以取得詳細資訊。
 
 ![在現有部署中新增目錄](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

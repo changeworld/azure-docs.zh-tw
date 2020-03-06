@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370556"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid 事件結構描述
 
@@ -83,16 +83,16 @@ ms.locfileid: "76512975"
 
 所有事件皆包含下列相同的最高層級資料：
 
-| 屬性 | 類型 | 說明 |
-| -------- | ---- | ----------- |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | object | 資源提供者特有的事件資料。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 屬性 | 類型 | 必要 | 描述 |
+| -------- | ---- | -------- | ----------- |
+| 主題 | 字串 | 否，但如果包含的話，必須完全符合事件方格主題 Azure Resource Manager 識別碼。 如果未包含，事件方格會戳記至事件。 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 是 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 是 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 是 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 是 | 事件的唯一識別碼。 |
+| data | 物件 (object) | 否 | 資源提供者特有的事件資料。 |
+| dataVersion | 字串 | 否，但會以空值加以戳記。 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 不需要，但如果包含的話，必須完全符合事件方格架構 `metadataVersion` （目前僅 `1`）。 如果未包含，事件方格會戳記至事件。 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 若要了解資料物件中的屬性，請參閱事件來源：
 

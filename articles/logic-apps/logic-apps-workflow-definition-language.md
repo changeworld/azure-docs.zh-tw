@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386000"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps 中工作流程定義語言的架構參考指南
 
@@ -35,7 +35,7 @@ ms.locfileid: "75428653"
 }
 ```
 
-| 屬性 | 必要項 | 說明 |
+| 屬性 | 必要 | 描述 |
 |-----------|----------|-------------|
 | `definition` | 是 | 工作流程定義的起始元素 |
 | `$schema` | 只有在外部參考工作流程定義時 | JSON 結構描述檔案的位置，該檔案說明工作流程定義語言版本，您可以在此找到此版本： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,13 +74,13 @@ ms.locfileid: "75428653"
 },
 ```
 
-| 屬性 | 必要項 | 類型 | 說明 |
+| 屬性 | 必要 | 類型 | 描述 |
 |-----------|----------|------|-------------|
-| <*parameter-name*> | 是 | String | 您想要定義之參數的名稱 |
+| <*參數名稱*> | 是 | String | 您想要定義之參數的名稱 |
 | <*參數類型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：對於所有密碼、金鑰和秘密，請使用 `securestring` 或 `secureobject` 類型，因為 `GET` 作業不會傳回這些類型。 如需保護參數的詳細資訊，請參閱[動作和輸入參數的安全性建議](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 參數的類型 |
-| <*default-parameter-value*> | 是 | 與 `type` 相同 | 當工作流程具現化時，若未指定任何值時，所要使用的預設參數值。 `defaultValue` 屬性是必要的，讓邏輯應用程式設計工具可以正確地顯示參數，但您可以指定空值。 |
+| <*預設-參數-值*> | 是 | 與 `type` 相同 | 當工作流程具現化時，若未指定任何值時，所要使用的預設參數值。 `defaultValue` 屬性是必要的，讓邏輯應用程式設計工具可以正確地顯示參數，但您可以指定空值。 |
 | <*陣列-具有允許的參數值*> | 否 | Array | 具有參數可接受值的陣列 |
-| <*parameter-description*> | 否 | JSON 物件 | 任何其他參數詳細資料，例如參數的描述 |
+| <*參數-描述*> | 否 | JSON 物件 | 任何其他參數詳細資料，例如參數的描述 |
 ||||
 
 接下來，為您的工作流程定義建立[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)、定義範本參數，以在部署時接受您想要的值，並適當地將已硬式編碼的值取代為範本或工作流程定義參數，並在個別的[參數](../azure-resource-manager/templates/parameter-files.md)檔案中儲存要用於部署的值。 如此一來，您就可以更輕鬆地透過參數檔案來變更這些值，而不需要更新和重新部署邏輯應用程式。 對於機密或必須受到保護的資訊，例如使用者名稱、密碼和秘密，您可以將這些值儲存在 Azure Key Vault 中，並讓您的參數檔案從您的金鑰保存庫中抓取這些值。 如需在範本和工作流程定義層級定義參數的詳細資訊和範例，請參閱[總覽：使用 Azure Resource Manager 範本自動部署邏輯應用程式](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
@@ -112,7 +112,7 @@ ms.locfileid: "75428653"
 }
 ```
 
-| 屬性 | 必要項 | 類型 | 說明 |
+| 屬性 | 必要 | 類型 | 描述 |
 |-----------|----------|------|-------------|
 | <*靜態結果定義名稱*> | 是 | String | 動作定義可以透過 `runtimeConfiguration.staticResult` 物件來參考的靜態結果定義名稱。 如需詳細資訊，請參閱[執行階段組態設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>您可以使用任何您想要的唯一名稱。 根據預設，這個唯一名稱會附加一個數位，視需要遞增。 |
 | <*的輸出-屬性和值-傳回*> | 是 | 不定 | 這些屬性的需求會根據不同的條件而有所不同。 例如，當 `status` `Succeeded`時，`outputs` 屬性會包含由動作以模擬輸出傳回的屬性和值。 如果 `status` 是 `Failed`，`outputs` 屬性會包含 `errors` 屬性，這是具有一或多個錯誤的陣列，`message` 具有錯誤資訊的物件。 |
@@ -275,7 +275,7 @@ HTTP 動作會傳回 `staticResults`內 `HTTP0` 定義中的輸出。 在此範�
 }
 ```
 
-| 屬性 | 必要項 | 類型 | 說明 |
+| 屬性 | 必要 | 類型 | 描述 |
 |-----------|----------|------|-------------|
 | <*key-name*> | 是 | String | 輸出傳回值的索引鍵名稱 |
 | <索引*鍵類型*> | 是 | int、float、string、securestring、bool、array、JSON 物件 | 輸出傳回值的類型 |
@@ -294,7 +294,7 @@ HTTP 動作會傳回 `staticResults`內 `HTTP0` 定義中的輸出。 在此範�
 |----------|------|
 | ' | 若要將字串常值作為輸入或使用於運算式和函式中，只用單引號圍住此字串，例如 `'<myString>'`。 請勿使用雙引號 ("")，這會與整個運算式的 JSON 格式設定發生衝突。 例如： <p>**是**：length('Hello') </br>**否**：length("Hello") <p>當您傳遞陣列或數字時，您不需要包圍標點符號。 例如： <p>**是**：length([1, 2, 3]) </br>**否**：length("[1, 2, 3]") |
 | [] | 若要參考陣列中特定位置 (索引) 的值，請使用方括號。 例如，若要取得陣列中的第二個項目： <p>`myArray[1]` |
-| 。 | 若要參考物件中的屬性，請使用點運算子。 例如，若要取得 `customer` JSON 物件的 `name` 屬性： <p>`"@parameters('customer').name"` |
+| 。 | 若要參考物件中的屬性，請使用點運算子。 例如，若要取得 `name` JSON 物件的 `customer` 屬性： <p>`"@parameters('customer').name"` |
 | ? | 若要在不會發生執行階段錯誤的情況下，參考物件中的 null 屬性，請使用問號運算子。 例如，若要處理來自觸發程序的 null 輸出，您可以使用此運算式︰ <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 

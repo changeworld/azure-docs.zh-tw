@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547042"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358670"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 執行階段和架構
 
@@ -88,20 +88,20 @@ IoT Edge 代理程式是另一個組成 Azure IoT Edge 執行階段的模組。 
 * **createOptions** –啟動模組的容器時，直接傳遞至 Moby 容器背景程式的字串。 在此屬性中新增選項，可讓您進行像是埠轉送或將磁片區掛接到模組容器的先進設定。  
 * **status**：IoT Edge 代理程式放置模組的狀態。 此值通常會設定為 [*執行中]，因為大多數*人都想要 IoT Edge 代理程式立即啟動裝置上的所有模組。 不過，您可以指定要停止之模組的初始狀態，並等候一段時間，以告知 IoT Edge 代理程式啟動模組。 IoT Edge 代理程式會在回報的屬性中，將每個模組的狀態報表回雲端。 所需屬性和回報的屬性之間的差異可能表示裝置異常。 支援的狀態如下：
 
-  * 正在下載
-  * 執行中
+  * 下載
+  * 正在執行
   * 狀況不良
   * 失敗
   * 已停止
 
-* **restartPolicy**：IoT Edge 代理程式重新啟動模組的方式。 可能值包括：
+* **restartPolicy**：IoT Edge 代理程式重新啟動模組的方式。 可能的值包括：
   
   * `never` – IoT Edge 代理程式永遠不會重新開機模組。
   * `on-failure`-如果模組損毀，IoT Edge 代理程式就會重新開機它。 如果模組完全關閉，IoT Edge 代理程式不會將它重新開機。
   * `on-unhealthy`-如果模組損毀或被視為狀況不良，IoT Edge 代理程式就會重新開機它。
   * `always`-如果模組損毀、被視為狀況不良，或以任何方式關閉，IoT Edge 代理程式就會重新開機它。
 
-* **imagePullPolicy** -IoT Edge 代理程式是否會嘗試自動提取模組的最新影像。 如果您未指定值，則預設值為*onCreate*。 可能值包括：
+* **imagePullPolicy** -IoT Edge 代理程式是否會嘗試自動提取模組的最新影像。 如果您未指定值，則預設值為*onCreate*。 可能的值包括：
 
   * `on-create`-啟動模組或根據新的部署資訊清單更新模組時，IoT Edge 代理程式會嘗試從容器登錄提取模組映射。
   * `never`-IoT Edge 代理程式永遠不會嘗試從容器登錄提取模組映射。 使用此設定時，您必須負責將模組映射放在裝置上，並管理任何映射更新。

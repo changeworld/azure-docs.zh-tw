@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372564"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
@@ -32,7 +32,7 @@ Azure 監視器記錄可提供跨雲端和內部部署資產的監視、警示�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -107,7 +107,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| type | OmsAgentForLinux |
+| 類型 | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
 | workspaceId (例如) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例如) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
@@ -201,7 +201,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="error-codes-and-their-meanings"></a>錯誤碼及其意義
 
-| 錯誤碼 | 意義 | 可能的動作 |
+| 錯誤 碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
 | 9 | 啟用提前呼叫 | [將 Azure Linux 代理程式更新](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)為最新的可用版本。 |
 | 10 | VM 已經連線到 Log Analytics 工作區 | 若要將 VM 連線到擴充功能結構描述中所指定的工作區，請在公用設定中將 stopOnMultipleConnections 設定為 false，或是移除此屬性。 針對此 VM 所連線的每個工作區都會向此 VM 計費一次。 |

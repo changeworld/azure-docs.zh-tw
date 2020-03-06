@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934737"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389935"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
 本文說明資料安全性與加密的最佳作法。
 
-最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變, 而本文會定期更新以反映這些變更。
+最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而本文會定期更新以反映這些變更。
 
 ## <a name="protect-data"></a>保護資料
 若要協助保護雲端上的資料，您必須考慮您的資料可能會發生的狀態，以及哪些控制項適用於該狀態。 Azure 資料安全性和加密的最佳做法與下列資料狀態相關：
 
-- 待用：這包括實體媒體 (磁碟或光碟) 上以靜態方式存在的所有資訊儲存物件、容器和類型。
-- 傳輸中：當資料在元件、位置或程式之間傳輸時，即為傳輸中。 範例會透過網路、跨服務匯流排 (從內部部署到雲端，反之亦然，包括諸如 ExpressRoute 的混合式連線)，或輸入/輸出過程期間傳輸。
+- 待用︰這包括實體媒體 (磁碟或光碟) 上以靜態方式存在的所有資訊儲存物件、容器和類型。
+- 傳輸中：當資料在元件、位置或程式之間傳輸時，就為傳輸中。 範例會透過網路、跨服務匯流排 (從內部部署到雲端，反之亦然，包括諸如 ExpressRoute 的混合式連線)，或輸入/輸出過程期間傳輸。
 
 ## <a name="choose-a-key-management-solution"></a>選擇金鑰管理解決方案
 
@@ -46,9 +46,9 @@ Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的�
 以下是使用金鑰保存庫的安全性最佳做法。
 
 **最佳做法**：在特定範圍對使用者、群組和應用程式授與存取權。   
-**詳細資料**：使用 RBAC 的預先定義角色。 例如，若要對使用者授與管理金鑰保存庫的權限，您會在特定範圍對此使用者指派預先定義的角色 [Key Vault 參與者](/azure/role-based-access-control/built-in-roles)。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以[定義您自己的角色](/azure/role-based-access-control/custom-roles)。
+**詳細資料**：使用 RBAC 的預先定義的角色。 例如，若要對使用者授與管理金鑰保存庫的權限，您會在特定範圍對此使用者指派預先定義的角色 [Key Vault 參與者](/azure/role-based-access-control/built-in-roles)。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以[定義您自己的角色](/azure/role-based-access-control/custom-roles)。
 
-**最佳做法**：控制使用者可以存取的內容。   
+**最佳做法**：控制哪些使用者具有存取權。   
 **詳細資料**：金鑰保存庫的存取權可透過兩個不同介面來控制︰管理平面和資料平面。 管理平面和資料平面的存取控制在運作上互不相關。
 
 使用 RBAC 控制使用者可以存取的內容。 例如，如果您想要對應用程式授與金鑰保存庫中金鑰的使用權限，您只需要使用金鑰保存庫存取原則對資料平面授與存取權限，此應用程式完全不需要管理平面的存取權。 相反地，如果您想要讓使用者能夠讀取保存庫屬性和標籤，但不讓他擁有金鑰、密碼或憑證的任何存取權，您可以使用 RBAC 對這位使用者授與「讀取」權限，但不需要授與資料平面的存取權。
@@ -105,7 +105,7 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 **詳細資料**：使用[站對站 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
 **最佳做法**：從內部部署的個別工作站安全存取 Azure 虛擬網路。   
-**詳細資料**：使用[點對站 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
+**詳細資料**：[使用點對站 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通過專用的高速 WAN 連結移動大型資料集。   
 **詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以透過使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
@@ -128,7 +128,7 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 建議您：
 
 - 為您的組織[部署 Azure 資訊保護](/azure/information-protection/deployment-roadmap)。
-- 套用可反映您的業務需求的標籤。 例如: 將名為「高度機密」的標籤套用於包含極機密資料的所有文件和電子郵件，以分類並保護此資料。 然後，只有授權的使用者可以存取此資料，並具有您指定的任何限制。
+- 套用可反映您的業務需求的標籤。 例如：將名為「高度機密」的標籤套用於包含極機密資料的所有文件和電子郵件，來分類並保護此資料。 然後，只有授權的使用者可以存取此資料，並具有您指定的任何限制。
 - 設定 [Azure RMS 的使用量記錄](/azure/information-protection/log-analyze-usage)，以便您可以監視您的組織使用保護服務的方式。
 
 [資料分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和檔案保護能力不佳的組織可能更容易受資料外洩或資料不當使用。 使用適當的檔案保護，您可以分析資料流程以深入了解您的業務、偵測風險行為並採取矯正措施、追蹤文件的存取等等。

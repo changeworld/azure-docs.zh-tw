@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
 ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381458"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 叢集
 
@@ -42,7 +42,7 @@ ms.locfileid: "76274896"
 - 建立安全性群組
 - 建立用來登入叢集的 Active Directory 使用者。
 
-## <a name="step-1-sign-in-to-azure"></a>步驟 1:登入 Azure
+## <a name="step-1-sign-in-to-azure"></a>步驟1：登入 Azure
 
 如果您在本機執行 Azure CLI，請開啟 Bash 命令殼層並執行 `az login` 來登入 Azure。
 
@@ -52,7 +52,7 @@ az login
 
  如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您要使用的訂用帳戶取代 `{subscription ID}`。
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步驟 2:建立 Azure Red Hat OpenShift 叢集
+## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步驟2：建立 Azure Red Hat OpenShift 叢集
 
 在 Bash 命令視窗中，設定下列變數：
 
@@ -123,7 +123,7 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 首先，取得**現有**記錄分析工作區的識別碼。 識別碼的格式會是：
 
-第 1 課：建立 Windows Azure 儲存體物件`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`。
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 如果您不知道現有記錄分析工作區所屬的記錄分析工作區名稱或資源群組，請移至[記錄分析工作區](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)，然後按一下您的記錄分析工作區。 記錄分析工作區頁面隨即出現，其中會列出工作區名稱及其所屬的資源群組。
 
@@ -180,17 +180,17 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
 叢集的登入 URL 將是 `https://` 加上尾隨的 `publicHostName` 值。  例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io` 。  您將在下一個步驟中以此 URI 作為應用程式註冊重新導向 URI 的一部分。
 
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>步驟 3：更新您的應用程式註冊重新導向 URI
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>步驟3：更新您的應用程式註冊重新導向 URI
 
 現在，您已取得叢集的登入 URL，接下來請設定應用程式註冊重新導向 URI：
 
 1. 開啟 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) 刀鋒視窗。
 2. 按一下您的應用程式註冊物件。
-3. 按一下 [新增重新導向 URI]  。
-4. 確定 [類型]  為 [Web]  ，並使用下列模式設定 [重新導向 URI]  ：`https://<public host name>/oauth2callback/Azure%20AD`。 例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. 按一下 [儲存] 
+3. 按一下 [新增重新導向 URI]。
+4. 確定 [類型] 為 [Web]，並使用下列模式設定 [重新導向 URI]：`https://<public host name>/oauth2callback/Azure%20AD`。 例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. 按一下 [儲存]
 
-## <a name="step-4-sign-in-to-the-openshift-console"></a>步驟 4：登入 OpenShift 主控台
+## <a name="step-4-sign-in-to-the-openshift-console"></a>步驟4：登入 OpenShift 主控台
 
 您現在即可登入新叢集的 OpenShift 主控台。 [OpenShift Web 主控台](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)可讓您以視覺化方式呈現、瀏覽及管理 OpenShift 專案的內容。
 
@@ -201,7 +201,7 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
 使用您在[建立新的 Azure Active Directory 使用者](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)的步驟 3 中建立的使用者名稱登入。
 
-[要求的權限]  對話方塊隨即出現。 按一下 [代表您的組織同意]  ，然後按一下 [接受]  。
+[要求的權限] 對話方塊隨即出現。 按一下 [代表您的組織同意]，然後按一下 [接受]。
 
 您現在已登入叢集主控台。
 
@@ -209,18 +209,18 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
  深入了解如何[使用 OpenShift 主控台](https://docs.openshift.com/aro/getting_started/developers_console.html)，以建立 [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) 文件中的映像。
 
-## <a name="step-5-install-the-openshift-cli"></a>步驟 5：安裝 OpenShift CLI
+## <a name="step-5-install-the-openshift-cli"></a>步驟5：安裝 OpenShift CLI
 
-[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (或 OC 工具  ) 會提供用於管理應用程式和較低層級公用程式的命令，以便與 OpenShift 叢集的各種元件互動。
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (或 OC 工具) 會提供用於管理應用程式和較低層級公用程式的命令，以便與 OpenShift 叢集的各種元件互動。
 
-在 OpenShift 主控台中，按一下右上角您登入名稱旁邊的問號，然後選取 [命令列工具]  。  請遵循 [最新版本]  連結來下載和安裝 Linux、 MacOS 或 Windows 支援的 oc CLI。
+在 OpenShift 主控台中，按一下右上角您登入名稱旁邊的問號，然後選取 [命令列工具]。  請遵循 [最新版本] 連結來下載和安裝 Linux、 MacOS 或 Windows 支援的 oc CLI。
 
 > [!NOTE]
-> 如果看不到右上角的問號圖示，請從左上角下拉式清單中選取 [服務目錄]  或 [應用程式主控台]  。
+> 如果看不到右上角的問號圖示，請從左上角下拉式清單中選取 [服務目錄] 或 [應用程式主控台]。
 >
 > 或者，您可以直接[下載 oc CLI](https://www.okd.io/download.html)。
 
-[命令列工具]  頁面提供 `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` 形式的命令。  按一下 [複製到剪貼簿]  按鈕來複製此命令。  在終端機視窗中，[設定您的路徑](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)以包含您本機安裝的 oc 工具。 然後使用您複製的 oc CLI 命令登入叢集。
+[命令列工具] 頁面提供 `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` 形式的命令。  按一下 [複製到剪貼簿] 按鈕來複製此命令。  在終端機視窗中，[設定您的路徑](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)以包含您本機安裝的 oc 工具。 然後使用您複製的 oc CLI 命令登入叢集。
 
 如果您無法使用上述步驟取得權杖值，請從 `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` 取得權杖值。
 

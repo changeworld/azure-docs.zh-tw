@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383258"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>適用於 Linux 的 NVIDIA GPU 驅動程式擴充功能
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 這個擴充功能可在 Linux N 系列虛擬機器上安裝 NVIDIA GPU 驅動程式。 視虛擬機器系列而定，擴充功能會安裝 CUDA 或 GRID 驅動程式。 若您使用此擴充功能安裝 NVIDIA 驅動程式，即表示您接受並同意 [NVIDIA End-User License Agreement](https://go.microsoft.com/fwlink/?linkid=874330) (NVIDIA 使用者授權合約) 的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
@@ -30,13 +30,13 @@ ms.locfileid: "74073735"
 https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)。
 也可使用擴充功能在 [Windows N 系列虛擬機器](hpccompute-gpu-windows.md)上安裝 NVIDIA GPU 驅動程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
 此擴充功能支援下列 OS 發行版，視特定 OS 版本的驅動程式支援而定。
 
-| 配送映像 | 版本 |
+| 散發 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux：Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
@@ -70,24 +70,24 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>屬性
 
-| 名稱 | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料型別 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
-| publisher | Microsoft.HpcCompute | 字串 |
-| 類型 | NvidiaGpuDriverLinux | 字串 |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.HpcCompute | string |
+| 類型 | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>設定
 
 所有設定都是選用的。 預設行為是如果驅動程式安裝未要求，則不更新核心，並會安裝最新支援的驅動程式和 CUDA 工具組 (若適用)。
 
-| 名稱 | 描述 | 預設值 | 有效值 | 資料類型 |
+| 名稱 | 描述 | 預設值 | 有效的值 | 資料型別 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | 即使驅動程式安裝不需要，也會更新核心 | false | true、false | 布林值 |
-| driverVersion | NV：GRID 驅動程式版本<br> NC/ND：CUDA 工具組版本。 系統會自動安裝所選 CUDA 的最新驅動程式。 | 最新 | 方格： "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA："10.0.130"、"9.2.88"、"9.1.85" | 字串 |
-| installCUDA | 安裝 CUDA 工具組。 只與 NC/ND 系列 VM 相關。 | true | true、false | 布林值 |
+| updateOS | 即使驅動程式安裝不需要，也會更新核心 | false | true、false | boolean |
+| driverVersion | NV：GRID 驅動程式版本<br> NC/ND：CUDA 工具組版本。 系統會自動安裝所選 CUDA 的最新驅動程式。 | 最新 | 方格： "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA："10.0.130"、"9.2.88"、"9.1.85" | string |
+| installCUDA | 安裝 CUDA 工具組。 只與 NC/ND 系列 VM 相關。 | true | true、false | boolean |
 
 
 ## <a name="deployment"></a>部署
@@ -175,7 +175,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="exit-codes"></a>結束代碼
 
-| 結束代碼 | 意義 | 可能的動作 |
+| 結束碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
 | 0 | 作業已順利完成 |
 | 1 | 擴充功能的使用方式不正確 | 檢查執行輸出記錄 |

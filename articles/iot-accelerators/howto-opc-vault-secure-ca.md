@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200078"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381124"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全地執行 OPC 保存庫憑證管理服務
 
@@ -34,7 +34,7 @@ OPC 保存庫微服務會定義下列角色：
 
 - **讀者**：根據預設，租使用者中所有已驗證的使用者都有讀取權限。 
   - 應用程式和憑證要求的讀取存取權。 可以列出及查詢應用程式和憑證要求。 此外，也可以使用讀取權限來存取裝置探索資訊和公用憑證。
-- **寫入器**：寫入者角色會指派給使用者，以新增特定工作的寫入權限。 
+- **寫入器**：將寫入者角色指派給使用者，以加入特定工作的寫入權限。 
   - 應用程式和憑證要求的讀取/寫入存取權。 可以註冊、更新及取消註冊應用程式。 可以建立憑證要求，並取得核准的私密金鑰和憑證。 也可以刪除私密金鑰。
 - **核准者**：核准者角色會指派給使用者，以核准或拒絕憑證要求。 角色不會包含任何其他角色。
   - 除了用來存取 OPC 保存庫微服務 API 的核准者角色之外，使用者也必須具有 Azure Key Vault 中的金鑰簽署許可權，才能簽署憑證。
@@ -110,10 +110,10 @@ OPC 保存庫微服務會定義下列角色：
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>預設 Azure OPC 保存庫微服務生產環境部署的清查 
 
 在 Azure 中：
-- **App Service 方案**：服務主機的 App service 方案。 預設值為 S1。
-- 適用于微服務的**App Service** ：OPC 保存庫服務主機。
-- 範例應用程式的**App Service** ：OPC 保存庫範例應用程式主機。
-- **Key Vault 標準**：以儲存 web 服務的秘密和 Azure Cosmos DB 金鑰。
+- **App Service 方案**：服務主機的 App Service 方案。 預設值為 S1。
+- 微服務的**App Service** ： OPC 保存庫服務主機。
+- 範例應用程式的**App Service** ： OPC 保存庫範例應用程式主機。
+- **Key Vault 標準**：用來儲存 web 服務的秘密和 Azure Cosmos DB 金鑰。
 - **Key Vault Premium**：裝載簽發者 CA 金鑰、簽署服務，以及保存庫設定和應用程式私密金鑰的儲存。
 - **Azure Cosmos DB**：應用程式和憑證要求的資料庫。 
 - **Application Insights**：（選擇性）適用于 web 服務和應用程式的監視解決方案。
@@ -122,7 +122,7 @@ OPC 保存庫微服務會定義下列角色：
 針對雲端服務，您應該記載所有用來部署服務的主機名稱、資源群組、資源名稱、訂用帳戶識別碼和租使用者識別碼。 
 
 在 Azure IoT Edge 或本機 IoT Edge 伺服器中：
-- **OPC 保存庫 IoT Edge 模組**：支援 factory 網路 OPC UA 全域探索伺服器。 
+- **OPC 保存庫 IoT Edge 模組**：支援 FACTORY 網路 OPC UA 全域探索伺服器。 
 
 針對 IoT Edge 裝置，必須記載主機名稱和 IP 位址。 
 
@@ -190,8 +190,8 @@ OPC 保存庫服務是一種線上 CA，會向訂閱者發出終端實體憑證�
 
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA 金鑰和憑證必須符合最低需求
 
-- **私密金鑰**：RSA 金鑰必須至少有2048位。 如果 CA 憑證到期日在2030之後，CA 金鑰必須是4096位或更大。
-- **存留期**：已上線且只發出訂閱者憑證之 Ca 的憑證有效期間上限不得超過6年。 對於這些 Ca，相關的私用簽章金鑰不得超過3年的時間來發行新的憑證。
+- **私密金鑰**： RSA 金鑰必須至少有2048位。 如果 CA 憑證到期日在2030之後，CA 金鑰必須是4096位或更大。
+- **存留**期：已上線且只發出訂閱者憑證之 ca 的憑證有效期間上限不得超過6年。 對於這些 Ca，相關的私用簽章金鑰不得超過3年的時間來發行新的憑證。
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>使用硬體安全模組來保護 CA 金鑰
 
@@ -208,7 +208,7 @@ Key Vault 使用的密碼編譯模組（HSM 或軟體）是否經過 FIPS 驗證
 - 憑證要求的處理和驗證方式（如果適用的話，也包括如何處理憑證更新和重設金鑰要求）。 
 - 發行的憑證如何散發給訂閱者。 
 
-Opc 保存庫微服務的工作區會在[opc 保存庫架構](overview-opc-vault-architecture.md)和[管理 OPC 保存庫憑證服務](howto-opc-vault-manage.md)中加以說明。 做法遵循「OPC 統一架構規格第12部分：探索與全域服務」。
+Opc 保存庫微服務的工作區會在[opc 保存庫架構](overview-opc-vault-architecture.md)和[管理 OPC 保存庫憑證服務](howto-opc-vault-manage.md)中加以說明。 做法遵循「OPC 統一架構規格第12部分：探索和全域服務」。
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>記載及維護憑證撤銷的標準操作 PKI 作法

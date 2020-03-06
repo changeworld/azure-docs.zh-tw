@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395399"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
@@ -85,7 +85,7 @@ ms.locfileid: "77663618"
 
 處理序群組會將與一般產品或服務相關聯的處理序組成處理序群組。  電腦節點展開時，會一併顯示獨立處理序和處理序群組。  如果對處理序群組內之處理序的輸入與輸出連線發生失敗，便會將整個處理序群組的連線顯示為失敗。
 
-## <a name="machine-groups"></a>電腦群組
+## <a name="machine-groups"></a>機器群組
 
 機器群組可顯示以一組伺服器為中心的對應，而不只是單一伺服器的對應。因此，您可以在單一對應中看到多層式應用程式或伺服器叢集的所有成員。
 
@@ -189,7 +189,7 @@ ms.locfileid: "77663618"
 
 ![伺服器連接埠群組](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>操作功能表
+## <a name="context-menu"></a>捷徑功能表
 
 按一下任何伺服器右上角的省略符號 (...)，會顯示該伺服器的內容功能表。
 

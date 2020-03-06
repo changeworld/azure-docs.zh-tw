@@ -15,14 +15,14 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155646"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395832"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>疑難排解在 Azure 中部署雲端服務時發生的配置失敗
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 當您部署執行個體至雲端服務或加入新的 Web 或背景工作角色執行個體時，Microsoft Azure 會配置計算資源。 執行這些作業時，即使尚未達到 Azure 訂用帳戶限制，也可能偶爾發生錯誤。 本文說明一些常見配置失敗的原因，並建議可能的補救方法。 規劃服務的部署時，本資訊可能也很有用。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -43,7 +43,7 @@ Azure 資料中心的伺服器分割成叢集。 在多個叢集中嘗試新的�
 
     "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
 
-### <a name="common-issues"></a>常見問題
+### <a name="common-issues"></a>常見的問題
 以下是造成配置要求釘選到單一叢集的常見配置案例。
 
 * 部署至預備位置 - 如果某個雲端服務在任一位置含有部署，則整個雲端服務都會釘選到特定的叢集。  這表示如果某個部署已存在生產位置，則新的預備部署只能配置在與生產位置相同的叢集中。 如果叢集逼近容量上限，則要求可能會失敗。

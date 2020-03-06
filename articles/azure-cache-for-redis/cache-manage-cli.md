@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372018"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 傳統 CLI 來建立及管理 Azure Redis 快取
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 > [!NOTE]
 > 如需最新的 Azure CLI 範例指令碼，請參閱 [Azure CLI Azure Redis 快取範例](cli-samples.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要使用 Azure 傳統 CLI 來建立及管理「Azure Redis 快取」執行個體，您必須完成下列步驟。
 
 * 您必須具有 Azure 帳號。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
@@ -33,14 +33,14 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 * 將您的 Azure CLI 安裝連結到個人 Azure 帳戶，或連結到公司或學校 Azure 帳戶，並使用 `azure login` 命令從傳統 CLI 登入。
 * 在執行下列任何命令之前，執行 `azure config mode arm` 命令以將傳統 CLI 切換至資源管理員模式。 如需詳細資訊，請參閱[使用 Azure 傳統 CLI 來管理 Azure 資源與資源群組](../xplat-cli-azure-resource-manager.md)。
 
-## <a name="azure-cache-for-redis-properties"></a>Azure Cache for Redis 屬性
+## <a name="azure-cache-for-redis-properties"></a>Azure Redis 快取屬性
 建立及更新「Azure Redis 快取」執行個體時會使用下列屬性。
 
 | 屬性 | Switch | 描述 |
 | --- | --- | --- |
 | 名稱 |-n, --name |「Azure Redis 快取」的名稱。 |
 | 資源群組 |-g, --resource-group |資源群組的名稱。 |
-| location |-l, --location |要建立快取的位置。 |
+| 位置 |-l, --location |要建立快取的位置。 |
 | size |-z, --size |「Azure Redis 快取」的大小。 有效的值：[C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis SKU。 應為其中一個：[Basic, Standard, Premium] |
 | EnableNonSslPort |-e, --enable-non-ssl-port |「Azure Redis 快取」的 EnableNonSslPort 屬性。 如果您想針對您的快取啟用非 SSL 連接埠，則加入此旗標 |
@@ -52,7 +52,7 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 | StaticIP |-p、--靜態 ip \<靜態 ip\> |當快取是裝載在 VNET 中，為快取在子網路中指定唯一 IP 位址。 如果未提供，則會從子網路中為您選擇一個。 |
 | 子網路 |t，--子網 \<子網\> |當快取是裝載在 VNET 中，指定要在其中部署快取的子網路。 |
 | VirtualNetwork |-v、--虛擬網路 \<虛擬網路\> |當快取裝載在 VNET 中時，會指定虛擬網路的確切 ARM 資源識別碼，以將「Azure Redis 快取」部署到其中。 範例格式：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| 訂閱 |-s, --subscription |訂用帳戶識別碼。 |
+| 訂用帳戶 |-s, --subscription |訂用帳戶識別碼。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>查看所有 Azure Redis 快取命令
 若要查看所有「Azure Redis 快取」命令及其參數，請使用 `azure rediscache -h` 命令。

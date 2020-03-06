@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
 ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390454"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -357,7 +357,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 
 ## <a name="vm-specific-updates"></a>VM 特定的更新
-某些修改可以套用至特定 VM，而無法套用至全域擴展集屬性。 目前唯一支援的虛擬機器特定更新是將資料磁碟連結至擴展集內的虛擬機器，或將資料磁碟與那些虛擬機器中斷連結。 這項功能現供預覽。 如需詳細資訊請，參閱[預覽文件](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) \(英文\)。
+某些修改可以套用至特定 VM，而無法套用至全域擴展集屬性。 目前唯一支援的虛擬機器特定更新是將資料磁碟連結至擴展集內的虛擬機器，或將資料磁碟與那些虛擬機器中斷連結。 這項功能處於預覽狀態。 如需詳細資訊請，參閱[預覽文件](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) \(英文\)。
 
 
 ## <a name="scenarios"></a>案例
