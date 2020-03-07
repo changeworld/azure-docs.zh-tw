@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386259"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>叢集資源管理員與 Service Fabric 叢集管理整合
 Service Fabric 叢集資源管理員不會促使 Service Fabric 升級，但有所關聯。 叢集資源管理員協助管理的第一種方法是追蹤所需的叢集狀態及其內部的服務。 當叢集資源管理員無法讓叢集處於所需的設定時，它會送出健全狀況報告。 例如，如果容量不足，叢集資源管理員會發出健康情況警告和錯誤，指出問題所在。 整合的另一方面必定與升級方式有關。 在升級期間，叢集資源管理員會稍微改變其行為。  
@@ -105,7 +105,7 @@ HealthEvents          :
 
 所有這些條件約束可能會讓您覺得：「嘿，對我的系統來說，預設網域條件約束是最重要的。 為了確保不會違反預設網域條件約束，我願意違反其他條件約束。」
 
-可以使用不同的優先順序等級來設定條件約束。 分別是：
+可以使用不同的優先順序等級來設定條件約束。 它們是：
 
    - 「硬性」(0)
    - 「彈性」(1)

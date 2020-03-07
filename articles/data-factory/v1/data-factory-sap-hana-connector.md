@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928266"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387322"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Hana 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74928266"
 > * [第 2 版 (目前的版本)](../connector-sap-hana.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 SAP HANA 連接器](../connector-sap-business-warehouse.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 SAP HANA 連接器](../connector-sap-business-warehouse.md)。
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 SAP HANA 移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
@@ -57,14 +57,14 @@ ms.locfileid: "74928266"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 SAP Hana 連結服務專屬 JSON 元素的描述。
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-伺服器 | SAP Hana 執行個體所在之伺服器的名稱。 如果您的伺服器使用自訂連接埠，指定 `server:port`。 | string | 是
+伺服器 | SAP Hana 執行個體所在之伺服器的名稱。 如果您的伺服器使用自訂連接埠，指定 `server:port`。 | 字串 | 是
 authenticationType | 驗證類型。 | 字串。 "Basic" 或 "Windows" | 是 
-username | 具有 SAP 伺服器存取權之使用者的名稱 | string | 是
-password | 使用者的密碼。 | string | 是
-gatewayName | Data Factory 服務應該用來連接到內部部署 SAP Hana 執行個體的閘道器名稱。 | string | 是
-encryptedCredential | 加密的認證字串。 | string | 否
+username | 具有 SAP 伺服器存取權之使用者的名稱 | 字串 | 是
+密碼 | 使用者的密碼。 | 字串 | 是
+gatewayName | Data Factory 服務應該用來連接到內部部署 SAP Hana 執行個體的閘道器名稱。 | 字串 | 是
+encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
@@ -79,9 +79,9 @@ encryptedCredential | 加密的認證字串。 | string | 否
 
 當複製活動中的來源類型為 **RelationalSource** (包括 SAP Hana) 時，typeProperties 區段中可使用下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| query | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | SQL 查詢。 | 是 |
+| 查詢 | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | SQL 查詢。 | 是 |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON 範例：將資料從 SAP HANA 複製到 Azure Blob
 下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 此範例示範如何將資料從內部部署 SAP Hana 複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動， **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所列的任何接收器。  
@@ -93,9 +93,9 @@ encryptedCredential | 加密的認證字串。 | string | 否
 
 1. [SapHana](#linked-service-properties) 類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [RelationalTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 範例會每隔一小時就把 SAP Hana 執行個體的資料複製到 Azure Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -286,8 +286,8 @@ SAP Hana 類型 | 以 .Net 為基礎的類型
 TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
-BIGINT | Int64
-REAL | Single
+bigint | Int64
+real | Single
 DOUBLE | Single
 DECIMAL | Decimal
 BOOLEAN | Byte
@@ -296,10 +296,10 @@ NVARCHAR | String
 CLOB | Byte[]
 ALPHANUM | String
 BLOB | Byte[]
-日期 | 日期時間
-TIME | 時間範圍
-時間戳記 | 日期時間
-SECONDDATE | 日期時間
+日期 | Datetime
+TIME | TimeSpan
+timestamp | Datetime
+SECONDDATE | Datetime
 
 ## <a name="known-limitations"></a>已知限制
 從 SAP HANA 複製資料時，有幾個已知的限制︰

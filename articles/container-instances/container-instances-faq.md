@@ -5,11 +5,11 @@ author: dkkapur
 ms.topic: article
 ms.date: 01/07/2020
 ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888017"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364990"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure 容器實例的相關常見問題
 
@@ -85,7 +85,7 @@ Azure 容器實例的目標是無伺服器容器隨選服務，因此我們希�
 
 您可以在您選擇的[Azure 虛擬網路中部署容器群組](container-instances-vnet.md)，並將私人 ip 委派給容器群組，以將 VNet 內的流量路由傳送到您的 azure 資源。 將容器群組部署至虛擬網路目前適用于 Azure 區域子集中的生產工作負載。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 ### <a name="when-does-the-meter-start-running"></a>計量開始執行的時間為何？
 

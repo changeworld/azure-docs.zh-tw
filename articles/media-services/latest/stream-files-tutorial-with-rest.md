@@ -13,13 +13,13 @@ ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
 ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514335"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359538"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教學課程：根據 URL 編碼遠端檔案和串流影片-REST
 
 Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽器和裝置上播放的格式。 例如，您可能會想要串流處理 Apple 的 HLS 或 MPEG DASH 格式的內容。 在進行串流處理之前，您應先編碼高品質數位媒體檔案。 如需編碼指引，請參閱[編碼概念](encoding-concept.md)。
 
@@ -48,7 +48,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在某些 AMS REST 教學課程中所示範的 REST API。 
 
-    我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方式為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
+    我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
 
 ## <a name="download-postman-files"></a>下載 Postman 檔案
 
@@ -65,11 +65,11 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 ### <a name="configure-the-environment"></a>建立環境 
 
 1. 開啟 **Postman** 應用程式。
-2. 選取畫面右側的 [管理環境]  選項。
+2. 選取畫面右側的 [管理環境] 選項。
 
     ![管理 env](./media/develop-with-postman/postman-import-env.png)
-4. 按一下 [管理環境]  對話方塊中的 [匯入]  。
-2. 瀏覽至您在複製 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 時下載的 `Azure Media Service v3 Environment.postman_environment.json` 檔案。
+4. 按一下 [管理環境] 對話方塊中的 [匯入]。
+2. 瀏覽至您在複製 `Azure Media Service v3 Environment.postman_environment.json` 時下載的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 檔案。
 6. 新增 **Azure Media Service v3 Environment** 環境。
 
     > [!Note]
@@ -83,8 +83,8 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
    
 ### <a name="configure-the-collection"></a>設定集合
 
-1. 按一下 [匯入]  來匯入集合檔案。
-1. 瀏覽至您在複製 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 時下載的 `Media Services v3.postman_collection.json` 檔案
+1. 按一下 [匯入] 來匯入集合檔案。
+1. 瀏覽至您在複製 `Media Services v3.postman_collection.json` 時下載的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 檔案
 3. 選擇 **Media Services v3.postman_collection.json** 檔案。
 
     ![匯入檔案](./media/develop-with-postman/postman-import-collection.png)
@@ -106,9 +106,9 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="get-azure-ad-token"></a>取得 Azure AD 權杖 
 
-1. 在 Postman 應用程式的左側視窗中，選取 [步驟 1:取得 AAD 驗證權杖]。
+1. 在 Postman 應用程式的左側視窗中，選取 [步驟1：取得 AAD 驗證權杖]。
 2. 然後，選取 [取得服務主體驗證的 Azure AD 權杖]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     此時會傳送下列 **POST** 作業。
 
@@ -116,7 +116,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. 傳回的回應會包含權杖，並將 "AccessToken" 環境變數設定為權杖值。 若要查看設定 "AccessToken" 的程式碼，請按一下 [測試]  索引標籤。 
+4. 傳回的回應會包含權杖，並將 "AccessToken" 環境變數設定為權杖值。 若要查看設定 "AccessToken" 的程式碼，請按一下 [測試] 索引標籤。 
 
     ![取得 AAD 權杖](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
@@ -130,7 +130,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [串流與即時]。
 2. 然後，選取 [啟動 StreamingEndpoint]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **POST** 作業：
 
@@ -153,7 +153,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [資產]。
 2. 然後，選取 [建立或更新資產]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **PUT** 作業：
 
@@ -184,7 +184,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [編碼和分析]。
 2. 然後，選取 [建立轉換]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **PUT** 作業。
 
@@ -219,7 +219,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [編碼和分析]。
 2. 然後，選取 [建立或更新作業]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **PUT** 作業。
 
@@ -271,7 +271,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [串流原則和定位器]。
 2. 然後，選取 [建立串流定位器 (乾淨狀態)]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **PUT** 作業。
 
@@ -299,7 +299,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 在 Postman 應用程式的左側視窗中，選取 [串流原則]。
 2. 然後，選取 [列出路徑]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     * 此時會傳送下列 **POST** 作業。
 
@@ -366,19 +366,19 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> 確定要作為串流來源的 [串流端點]  正在執行中。
+> 確定要作為串流來源的 [串流端點] 正在執行中。
 
 本文使用 Azure 媒體播放器測試串流。 
 
 1. 開啟瀏覽器並巡覽至 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL:]  方塊中，貼上您所建置的 URL。 
-3. 按一下 [更新播放程式]  。
+2. 在 [URL:] 方塊中，貼上您所建置的 URL。 
+3. 按一下 [更新播放程式]。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清除媒體服務帳戶中的資源
 
-一般而言，您應清除所有項目，只保留想要重複使用的物件 (您通常會重複使用 [轉換]  並且保存 [串流定位器]  等)。 如果您想要在實驗之後有乾淨的帳戶，您應刪除不打算重複使用的資源。  
+一般而言，您應清除所有項目，只保留想要重複使用的物件 (您通常會重複使用 [轉換] 並且保存 [串流定位器] 等)。 如果您想要在實驗之後有乾淨的帳戶，您應刪除不打算重複使用的資源。  
 
 若要刪除資源，請在您要刪除的任何資源下方選取 [刪除...] 作業。
 

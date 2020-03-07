@@ -14,28 +14,28 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073029"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383295"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>適用於 Windows 的 NVIDIA GPU 驅動程式擴充功能
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 此擴充功能可在 Windows N 系列虛擬機器上安裝 NVIDIA GPU 驅動程式。 視虛擬機器系列而定，擴充功能會安裝 CUDA 或 GRID 驅動程式。 若您使用此擴充功能安裝 NVIDIA 驅動程式，即表示您接受並同意 [NVIDIA End-User License Agreement](https://go.microsoft.com/fwlink/?linkid=874330) (NVIDIA 使用者授權合約) 的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
 如需手動安裝驅動程式和目前支援版本的指示，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)。
 在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上也有擴充功能可用來安裝 NVIDIA GPU 驅動程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
 此擴充功能支援下列作業系統：
 
-| 配送映像 | 版本 |
+| 散發 | 版本 |
 |---|---|
 | Windows 10 | 核心 |
 | Windows Server 2016 | 核心 |
@@ -69,13 +69,13 @@ ms.locfileid: "74073029"
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>屬性
 
-| 名稱 | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料型別 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
-| publisher | Microsoft.HpcCompute | 字串 |
-| 類型 | NvidiaGpuDriverWindows | 字串 |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.HpcCompute | string |
+| 類型 | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -159,7 +159,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="error-codes"></a>錯誤碼
 
-| 錯誤碼 | 意義 | 可能的動作 |
+| 錯誤 碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
 | 0 | 作業已順利完成 |
 | 1 | 作業成功。 需要重新開機。 |

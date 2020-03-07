@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539141"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358644"
 ---
 # <a name="add-and-manage-lab-users"></a>新增和管理實驗室使用者
 本文說明如何將使用者新增至實驗室、讓他們向實驗室註冊、控制他們可以使用 VM 的時數等等。 
@@ -101,7 +101,7 @@ ms.locfileid: "77539141"
 2. 在 [**使用者註冊**] 對話方塊上，選取 [**完成**]。 
 4. 將**註冊連結**傳送給學生，讓學生可以註冊類別。 
 
-## <a name="view-registered-users"></a>查看已註冊的使用者
+## <a name="view-registered-users"></a>檢視已註冊的使用者
 
 1. 瀏覽至 [Azure 實驗室服務網站](https://labs.azure.com)。 
 2. 選取 [登入]，然後輸入您的認證。 Azure 實驗室服務支援組織帳戶和 Microsoft 帳戶。

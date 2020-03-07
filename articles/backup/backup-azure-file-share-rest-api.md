@@ -4,11 +4,11 @@ description: 瞭解如何使用 REST API 來備份復原服務保存庫中的 Az
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444741"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393170"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>使用 Azure 備份透過 Rest API 備份 Azure 檔案共用
 

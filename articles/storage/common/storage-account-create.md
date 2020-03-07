@@ -10,11 +10,11 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197720"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397221"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -24,13 +24,13 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-None。
+無。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -67,7 +67,7 @@ Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網�
 
 # <a name="template"></a>[範本](#tab/template)
 
-None。
+無。
 
 ---
 
@@ -239,7 +239,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 流覽至[Azure 入口網站](https://portal.azure.com)中的儲存體帳戶。
-1. 按一下 [刪除]。
+1. 按一下 **[刪除]** 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

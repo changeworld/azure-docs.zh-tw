@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 PowerShell 新增來賓使用者 - Azure AD
+title: 快速入門：使用 PowerShell 新增來賓使用者-Azure AD
 description: 在此快速入門中，您將了解如何使用 PowerShell 向外部的 Azure AD B2B 共同作業使用者傳送邀請。
 services: active-directory
 ms.service: active-directory
@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273362"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377758"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入門：使用 PowerShell 新增來賓使用者
 
@@ -25,7 +25,7 @@ ms.locfileid: "74273362"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="install-the-latest-azureadpreview-module"></a>安裝最新的 AzureADPreview 模組
 請務必安裝最新版的 Azure AD PowerShell for Graph 模組 (AzureADPreview)。 
@@ -102,7 +102,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
-例如：`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
+例如： `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
 ## <a name="next-steps"></a>後續步驟

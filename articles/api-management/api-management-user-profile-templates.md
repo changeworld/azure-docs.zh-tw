@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176752"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374466"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的使用者設定檔範本
 「Azure API 管理」可讓您使用一組可設定開發人員入口網站頁面內容的範本，來自訂那些頁面的內容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
@@ -105,19 +105,19 @@ ms.locfileid: "73176752"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|Type|描述|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|目前使用者的名字。|  
-|`lastName`|string|目前使用者的姓氏。|  
-|`companyName`|string|目前使用者的公司名稱。|  
-|`addresserEmail`|string|目前使用者的電子郵件地址。|  
-|`developersUsageStatisticsLink`|string|相對 URL，可前往檢視目前使用者的分析。|  
+|`firstName`|字串|目前使用者的名字。|  
+|`lastName`|字串|目前使用者的姓氏。|  
+|`companyName`|字串|目前使用者的公司名稱。|  
+|`addresserEmail`|字串|目前使用者的電子郵件地址。|  
+|`developersUsageStatisticsLink`|字串|相對 URL，可前往檢視目前使用者的分析。|  
 |`subscriptions`|[訂用帳戶](api-management-template-data-model-reference.md#Subscription)實體的集合。|目前使用者的訂用帳戶。|  
 |`applications`|[應用程式](api-management-template-data-model-reference.md#Application)實體的集合。|目前使用者的應用程式。|  
-|`changePasswordUrl`|string|相對 URL，可前往變更目前使用者的密碼。|  
-|`changeNameOrEmailUrl`|string|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
-|`canChangePassword`|布林值|目前使用者是否可以變更其密碼。|  
-|`isSystemUser`|布林值|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
+|`changePasswordUrl`|字串|相對 URL，可前往變更目前使用者的密碼。|  
+|`changeNameOrEmailUrl`|字串|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
+|`canChangePassword`|boolean|目前使用者是否可以變更其密碼。|  
+|`isSystemUser`|boolean|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   
@@ -326,19 +326,19 @@ ms.locfileid: "73176752"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|Type|描述|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|目前使用者的名字。|  
-|`lastName`|string|目前使用者的姓氏。|  
-|`companyName`|string|目前使用者的公司名稱。|  
-|`addresserEmail`|string|目前使用者的電子郵件地址。|  
-|`developersUsageStatisticsLink`|string|相對 URL，可前往檢視目前使用者的分析。|  
+|`firstName`|字串|目前使用者的名字。|  
+|`lastName`|字串|目前使用者的姓氏。|  
+|`companyName`|字串|目前使用者的公司名稱。|  
+|`addresserEmail`|字串|目前使用者的電子郵件地址。|  
+|`developersUsageStatisticsLink`|字串|相對 URL，可前往檢視目前使用者的分析。|  
 |`subscriptions`|[訂用帳戶](api-management-template-data-model-reference.md#Subscription)實體的集合。|目前使用者的訂用帳戶。|  
 |`applications`|[應用程式](api-management-template-data-model-reference.md#Application)實體的集合。|目前使用者的應用程式。|  
-|`changePasswordUrl`|string|相對 URL，可前往變更目前使用者的密碼。|  
-|`changeNameOrEmailUrl`|string|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
-|`canChangePassword`|布林值|目前使用者是否可以變更其密碼。|  
-|`isSystemUser`|布林值|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
+|`changePasswordUrl`|字串|相對 URL，可前往變更目前使用者的密碼。|  
+|`changeNameOrEmailUrl`|字串|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
+|`canChangePassword`|boolean|目前使用者是否可以變更其密碼。|  
+|`isSystemUser`|boolean|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   
@@ -489,19 +489,19 @@ ms.locfileid: "73176752"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|Type|描述|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|目前使用者的名字。|  
-|`lastName`|string|目前使用者的姓氏。|  
-|`companyName`|string|目前使用者的公司名稱。|  
-|`addresserEmail`|string|目前使用者的電子郵件地址。|  
-|`developersUsageStatisticsLink`|string|相對 URL，可前往檢視目前使用者的分析。|  
+|`firstName`|字串|目前使用者的名字。|  
+|`lastName`|字串|目前使用者的姓氏。|  
+|`companyName`|字串|目前使用者的公司名稱。|  
+|`addresserEmail`|字串|目前使用者的電子郵件地址。|  
+|`developersUsageStatisticsLink`|字串|相對 URL，可前往檢視目前使用者的分析。|  
 |`subscriptions`|[訂用帳戶](api-management-template-data-model-reference.md#Subscription)實體的集合。|目前使用者的訂用帳戶。|  
 |`applications`|[應用程式](api-management-template-data-model-reference.md#Application)實體的集合。|目前使用者的應用程式。|  
-|`changePasswordUrl`|string|相對 URL，可前往變更目前使用者的密碼。|  
-|`changeNameOrEmailUrl`|string|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
-|`canChangePassword`|布林值|目前使用者是否可以變更其密碼。|  
-|`isSystemUser`|布林值|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
+|`changePasswordUrl`|字串|相對 URL，可前往變更目前使用者的密碼。|  
+|`changeNameOrEmailUrl`|字串|相對 URL，可前往變更目前使用者的名稱和電子郵件。|  
+|`canChangePassword`|boolean|目前使用者是否可以變更其密碼。|  
+|`isSystemUser`|boolean|目前使用者是否是其中一個內建[群組](api-management-key-concepts.md#groups)的成員。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   

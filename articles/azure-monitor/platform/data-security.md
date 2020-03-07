@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 0ac169060f7ba0e58aeb3e36e3af1629b6453fc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361854"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
 本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](../../security/fundamentals/trust-center.md)上的資訊。  
@@ -39,7 +39,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 
 ### <a name="platform-specific-guidance"></a>平台專屬的指引
 
-|平台/語言 | 支援 | 詳細資訊 |
+|平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
 | Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
@@ -73,7 +73,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 | 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 當您使用自訂欄位將事件寫入 Windows 事件記錄檔時，Log Analytics 會收集它們。 |
 | 中繼資料 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP 位址、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 效能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 狀態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+| State |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>實體安全性
 Log Analytics 服務是由 Microsoft 人員所管理，所有活動都有記錄並且可供稽核。 Log Analytics 會作為 Azure 服務操作，並符合所有 Azure 合規性與安全性需求。 您可以在 [Microsoft Azure 安全性概觀](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 頁上檢視 Azure 資產之實體安全性的詳細資料。 不再負責管理 Log Analytics 服務的人員，其用來確保區域安全的實體存取權限 (包括傳輸和終止) 將會在一個工作天內變更。 若要了解我們使用的全域實體基礎結構，請參閱 [Microsoft 資料中心](https://azure.microsoft.com/global-infrastructure/)。

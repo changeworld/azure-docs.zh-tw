@@ -10,11 +10,11 @@ ms.topic: reference
 ms.date: 11/18/2019
 ms.author: dapine
 ms.openlocfilehash: 0d8c7a36582c30975f3a408a2ea6e95d39e560ef
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390765"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 認知服務容器映射標籤
 
@@ -23,7 +23,7 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 > [!TIP]
 > 使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)時，請密切注意容器登錄、存放庫、容器映射名稱和對應標記的大小寫，因為它們會區分**大小**寫。
 
-## <a name="anomaly-detector"></a>Anomaly Detector
+## <a name="anomaly-detector"></a>異常偵測器
 
 您可以在 `containerpreview.azurecr.io` 容器登錄上找到[異常][ad-containers]偵測器容器映射。 它位於 `microsoft` 存放庫中，且名為 `cognitive-services-anomaly-detector`。 完整的容器映射名稱為，`containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector`。
 
@@ -35,7 +35,7 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 | `1.1.009301-amd64-preview` | |
 | `1.1.008500001-amd64-preview` | |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>電腦視覺
 
 [電腦視覺][cv-containers]容器映射可在 `containerpreview.azurecr.io` 容器登錄中找到。 它位於 `microsoft` 存放庫中，且名為 `cognitive-services-read`。 完整的容器映射名稱為，`containerpreview.azurecr.io/microsoft/cognitive-services-read`。
 
@@ -78,7 +78,7 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 | `1.1.008640001-amd64-preview` | |
 | `1.1.008510001-amd64-preview` | |
 
-## <a name="language-understanding-luis"></a>Language Understanding (LUIS)
+## <a name="language-understanding-luis"></a>語言理解 (LUIS)
 
 您可以在 `mcr.microsoft.com` 容器登錄整合中找到[LUIS][lu-containers]容器映射。 它位於 `azure-cognitive-services` 存放庫中，且名為 `luis`。 完整的容器映射名稱為，`mcr.microsoft.com/azure-cognitive-services/luis`。
 
