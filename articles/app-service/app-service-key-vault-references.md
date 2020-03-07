@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373818"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用 App Service 和 Azure Functions 的 Key Vault 參考
 
@@ -38,7 +38,7 @@ ms.locfileid: "75728747"
 Key Vault 參考格式為 `@Microsoft.KeyVault({referenceString})`，其中 `{referenceString}` 會由下列其中一個選項來取代：
 
 > [!div class="mx-tdBreakAll"]
-> | 參考字串                                                            | 說明                                                                                                                                                                                 |
+> | 參考字串                                                            | 描述                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 應該是 Key Vault 中祕密的完整資料平面 URI (包括版本在內)，例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 應該是您 Key Vault 資源的名稱。 **SecretName** 應該是目標祕密的名稱。 **SecretVersion** 應該是要使用的祕密版本。 |
@@ -187,7 +187,7 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用 App Service 的偵測器
 
 1. 在入口網站中，流覽至您的應用程式。
-2. 選取 [診斷並解決問題]。
+2. 選取 [**診斷並解決問題**]。
 3. 選擇 [**可用性和效能**]，然後選取 [ **Web 應用程式關閉]。**
 4. 尋找**Key Vault 應用程式設定 診斷**，然後按一下 **詳細資訊**。
 
@@ -196,6 +196,6 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 
 1. 在入口網站中，流覽至您的應用程式。
 2. 流覽至 [**平臺功能]。**
-3. 選取 [診斷並解決問題]。
+3. 選取 [**診斷並解決問題**]。
 4. 選擇 [**可用性和效能**]，然後選取 [**函數應用程式關閉] 或**[回報錯誤]。
 5. 按一下 [ **Key Vault 應用程式設定**] [診斷]。

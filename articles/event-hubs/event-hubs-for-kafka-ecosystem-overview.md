@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395448"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供的 Kafka 端點可讓您現有的 Kafka 型應用程式使用，作為執行您本身的 Kafka 叢集以外的另一項選擇。 事件中樞支援 [Apache Kafka 通訊協定 1.0 和更新版本](https://kafka.apache.org/documentation/)，並且可與您現有的 Kafka 應用程式搭配使用，包括 MirrorMaker。  
@@ -34,7 +34,7 @@ ms.locfileid: "77368517"
 | 主題 | 事件中樞 |
 | 資料分割 | 資料分割|
 | 取用者群組 | 取用者群組 |
-| 位移 | 位移|
+| Offset | Offset|
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>Kafka 與事件中樞的主要差異
 
@@ -71,7 +71,7 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-#### <a name="samples"></a>Samples 
+#### <a name="samples"></a>範例 
 如需**教學**課程，並提供逐步指示來建立已啟用 Kafka 的事件中樞，並使用 SAS 或 OAuth 存取它，請參閱[快速入門：使用 Kafka 通訊協定事件中樞串流處理的資料](event-hubs-quickstart-kafka-enabled-event-hubs.md)。
 
 如需示範如何搭配 Kafka 使用 OAuth 與事件中樞的更多**範例**，請參閱[GitHub 上的範例](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。

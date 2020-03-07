@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438817"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385344"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -49,7 +49,7 @@ ms.locfileid: "75438817"
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 的必要條件
 在逐步解說中，您會將 Azure Batch 當作計算資源使用來執行自訂 .NET 活動。 **Azure Batch** 是一項平台服務，可用於在雲端有效地執行大規模的平行和高效能運算 (HPC) 應用程式。 Azure Batch 可排程要在**一組受控虛擬機器**上執行的計算密集型工作，而且可以調整計算資源以符合工作的需求。 如需 Azure Batch 服務的詳細總覽，請參閱[Azure Batch 基本概念][batch-technical-overview]一文。
 
-在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 步驟如下：
+在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下為其步驟：
 
 1. 使用 **Azure 入口網站** 建立 [Azure Batch 帳戶](https://portal.azure.com)。 如需相關指示，請參閱[建立和管理 Azure Batch 帳戶一][batch-create-account]文。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
@@ -105,7 +105,7 @@ public IDictionary<string, string> Execute(
      <li>從右邊的專案類型清單中選取 [類別庫]<b></b>。 在 Visual Studio 中，選擇 [<b>類別庫（.NET Framework）</b> ] </li>
      <li>針對 [名稱]<b></b> 輸入 <b>MyDotNetActivity</b>。</li>
      <li>在 [位置]<b></b> 選取 <b>C:\ADFGetStarted</b>。</li>
-     <li>按一下 [確定] <b></b> 以建立專案。</li>
+     <li>按一下 [確定]<b></b> 建立專案。</li>
    </ol>
 
 2. 按一下 [**工具**]，指向 [**NuGet 封裝管理員**]，然後按一下 [**封裝管理員主控台**]。
@@ -440,7 +440,7 @@ test custom activity Microsoft test custom activity Microsoft
 2. 在命令列上按一下 [新增資料儲存區]，然後選擇 [Azure 儲存體]。 在編輯器中，您應該會看到用來建立 Azure 儲存體連結服務的 JSON 指令碼。
 
     ![新增資料存放區 - Azure 儲存體](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. 以您的 Azure 儲存體帳戶名稱取代`<accountname>`，並以 Azure 儲存體帳戶的存取金鑰取代`<accountkey>`。 若要瞭解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+3. 以您的 Azure 儲存體帳戶名稱取代`<accountname>`，並以 Azure 儲存體帳戶的存取金鑰取代`<accountkey>`。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 
     ![Azure 儲存體類型的連結服務](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. 按一下命令列的 [部署] ，部署連結服務。
