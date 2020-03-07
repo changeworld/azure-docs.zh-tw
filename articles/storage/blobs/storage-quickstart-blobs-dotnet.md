@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 09002a8c0999dc137ca3386ca7392a566d323e8a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b8ddeda2c435a52efd14f06acb3c1a8bb94bc45e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196054"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381843"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12
 
@@ -114,7 +114,7 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 下圖顯示資源之間的關係。
 
-![Blob 儲存體架構圖](./media/storage-blob-introduction/blob1.png)
+![Blob 儲存體架構圖](./media/storage-blobs-introduction/blob1.png)
 
 使用下列 .NET 類別與這些資源互動：
 

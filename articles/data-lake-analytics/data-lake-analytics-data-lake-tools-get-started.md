@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315780"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391832"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用適用於 Visual Studio 的 Data Lake 工具來開發 U-SQL 指令碼
 
@@ -35,7 +35,7 @@ Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake
 >    - [適用于 Visual Studio 2017 和2019](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [針對 Visual Studio 2013 和 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Visual Studio**：支援 Express 以外的所有版本。
 
@@ -55,11 +55,11 @@ Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake
 
 1. 開啟 Visual Studio。
 
-1. 選取 [ **View**  > **伺服器總管**] 來開啟**伺服器總管**。
+1. 選取 [ **View** > **伺服器總管**] 來開啟**伺服器總管**。
 
 1. 以滑鼠右鍵按一下 [ **Azure**]，然後選取 **[連線至 Microsoft Azure 訂**用帳戶]。 在 [登**入您的帳戶**] 中，遵循指示。
 
-1. 在 **伺服器總管**中，選取  **Azure**  >  **Data Lake Analytics**。 您會看到 Data Lake Analytics 帳戶的清單。
+1. 在 **伺服器總管**中，選取  **Azure** >  **Data Lake Analytics**。 您會看到 Data Lake Analytics 帳戶的清單。
 
 ## <a name="write-your-first-u-sql-script"></a>撰寫第一個 U-SQL 指令碼
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>提交資料湖分析作業
 
-1. 在 Visual Studio 中，選取 [檔案]  >  [新增]  >  [專案]。
+1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。
 
 1. 選取 [ **U-SQL] 專案**類型，然後選取 **[下一步]** 。 在 [**設定您的新專案**] 中，選取 [**建立**]。
 
@@ -112,7 +112,7 @@ OUTPUT @a
 
 ## <a name="check-job-status"></a>檢查作業狀態
 
-1. 在 **伺服器總管**中，選取  **Azure**  >  **Data Lake Analytics**。
+1. 在 **伺服器總管**中，選取  **Azure** >  **Data Lake Analytics**。
 
 1. 展開 Data Lake Analytics 帳戶名稱。
 

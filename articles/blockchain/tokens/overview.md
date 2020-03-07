@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387168"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360727"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>什麼是 Azure 區塊鏈服務權杖？
 
@@ -19,13 +19,13 @@ Azure Blockchain Tokens 是一項平台即服務 (PaaS)，可在 Azure 中進行
 
 使用 Azure Blockchain Tokens，您可以利用預先建立的權杖範本，為您的區塊鏈解決方案建立標準化權杖。 您也可以使用此服務來撰寫自己的權杖範本。 建立後，請使用 Azure Blockchain Tokens 來連線和發行區塊鏈上的權杖。 發行後，您就可以管理跨多個區塊鏈網路的權杖。
 
-## <a name="templates"></a>範本
+## <a name="templates"></a>樣板
 
 使用 Azure Blockchain Tokens 來選取預先建立的權杖範本，或建立自己的權杖範本。 Azure Blockchain Tokens 支援權杖範本可組合性，可讓您根據支援的行為建立自己的權杖範本。 權杖範本可用於大部分的區塊鏈解決方案，因為其會對應至最常使用的權杖。 您可以從範本著手，加以個人化，並為您的解決方案部署權杖。
 
 如需 Azure Blockchain Tokens 範本的詳細資訊，請參閱 [Azure Blockchain Tokens 範本](templates.md)。
 
-## <a name="management"></a>管理性
+## <a name="management"></a>管理
 
 Azure Blockchain Tokens 提供 Azure 入口網站管理和 API，以連線到現有的區塊鏈網路。 目前，您可以連線到 [Azure 區塊鏈服務](../service/overview.md)或另一個 Ethereum 系列區塊鏈。
 

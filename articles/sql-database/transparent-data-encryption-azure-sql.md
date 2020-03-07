@@ -13,11 +13,11 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
 ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194847"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360069"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>SQL Database 和 Azure Synapse 的透明資料加密
 
@@ -118,7 +118,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 
 使用在主要資料庫中作為系統管理員或 **dbmanager** 角色成員的登入，連線至資料庫。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 可加密或解密資料庫 |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |傳回資料庫及其相關資料庫加密金鑰的加密狀態相關資訊 |
@@ -133,7 +133,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 若要透過 REST API 設定透明資料加密，您必須以 Azure 擁有者、參與者或 SQL 安全性管理員的身分連線。
 針對 Azure SQL Database 和 Azure Synapse 使用下列命令集：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[建立或更新伺服器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|將 Azure Active Directory 身分識別新增至 SQL Server 執行個體 (用以授與 Key Vault 的存取權)|
 |[建立或更新伺服器金鑰](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|將 Key Vault 金鑰新增至 SQL Server 執行個體|

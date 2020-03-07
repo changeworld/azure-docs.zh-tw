@@ -4,11 +4,11 @@ description: 如何解譯計量瀏覽器上的圖表，以及如何自訂計量�
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670163"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368242"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中探索度量
 [Application Insights][start]中的計量是從您的應用程式在遙測中傳送的測量值和事件計數。 它們幫助您偵測效能問題，並觀察使用應用程式方式的趨勢。 標準度量的範圍很廣泛，而您也可以建立自己的自訂度量和事件。
@@ -189,7 +189,7 @@ ms.locfileid: "77670163"
 * 如果您依據計量上未定義的屬性將圖表分組，則圖表上不會有任何資料。 請嘗試清除 [分組依據]，或選擇不同的群組屬性。
 * 效能資料 (CPU、IO 速率等等) 適用於 Java Web 服務、Windows 傳統型應用程式、[IIS Web 應用程式和服務 (若您安裝狀態監視器)](../../azure-monitor/app/monitor-performance-live-website-now.md) 和 [Azure 雲端服務](../../azure-monitor/app/app-insights-overview.md)。 它不適用於 Azure 網站。
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716301"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361087"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖和實體從語句文字解壓縮資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
@@ -19,11 +19,11 @@ LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷�
 ## <a name="data-location-and-key-usage"></a>資料位置和金鑰使用方式
 LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTPS 要求** (POST 或 GET) 除了包含一些額外的設定 (例如預備或生產環境) 之外，也包含語句。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 預測端點要求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 預測端點要求](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 預測端點要求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 預測端點要求](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 ## <a name="data-from-intents"></a>來自意圖的資料
 主要資料是最高分的**意圖名稱**。 端點回應為：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 如果您的聊天機器人或 LUIS 呼叫應用程式根據一個以上的意圖分數進行決策，則會傳回所有意圖的分數。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 設定 querystring 參數，`verbose=true`。 端點回應為：
 
@@ -105,7 +105,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 設定 querystring 參數，`show-all-intents=true`。 端點回應為：
 
@@ -142,7 +142,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 如果您新增預先建置的定義域，則意圖名稱除了會指出意圖之外，也會指出該定義域，例如 `Utilties` 或 `Communication`：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 ```JSON
 {
@@ -210,7 +210,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 所有實體都會在端點回應的**實體**陣列中傳回：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 如果沒有 querystring 參數，請 `verbose=true`：
 
@@ -556,7 +556,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 角色是實體的內容相關差異。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 機構名稱是 `Location`，有兩個角色，`Origin` 和 `Destination`。
 
@@ -589,7 +589,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 在 V3 中，**角色名稱**是物件的主要名稱。
 
@@ -709,7 +709,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 關鍵片語擷取實體會傳回語句中[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)所提供的關鍵片語。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
@@ -822,7 +822,7 @@ LUIS 會傳回在語句中探索到的所有實體。 因此，您的 Chatbot �
 
 LUIS 端點可以在不同的實體中探索相同的資料。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ LUIS 端點可以在不同的實體中探索相同的資料。
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 不 `verbose=true` 做為 querystring 參數。
 
@@ -1135,7 +1135,7 @@ With `verbose=true` 做為 querystring 參數。
 
 如果查詢為 `when is the best time to go to red rock?`，且應用程式在多個清單中有 `red` 一字，LUIS 就會辨識所有實體，並在 JSON 端點回應中傳回實體陣列：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ With `verbose=true` 做為 querystring 參數。
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 在查詢字串中沒有 `verbose=true`：
 

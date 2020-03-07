@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379061"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審查、工作流程和工作
 
@@ -66,7 +66,7 @@ ms.locfileid: "73744419"
 
 請參閱[審查工具指南](./review-tool-user-guide/workflows.md)，以開始建立和使用工作流程，或參閱[REST API 指南](./try-review-api-workflow.md)，以瞭解如何以程式設計方式執行此操作。
 
-## <a name="jobs"></a>作業
+## <a name="jobs"></a>工作
 
 審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 作業會使用內容仲裁影像審核 API 或文字仲裁 API 來掃描您的內容，然後針對指定的工作流程進行檢查。 根據工作流程結果，它不一定會在[審核工具](./review-tool-user-guide/human-in-the-loop.md)中建立內容的審查。 雖然評論和工作流程都可以使用其各自的 Api 來建立和設定，但作業 API 可讓您取得整個程式的詳細報告（可以傳送至指定的回呼端點）。
 

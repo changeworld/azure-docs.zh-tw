@@ -4,11 +4,11 @@ description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure �
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363697"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份總覽
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888663"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376150"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 無縫單一登入：快速入門
 
@@ -124,7 +124,7 @@ ms.locfileid: "75888663"
 
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用**預設網域原則**。
-3. 流覽至 [**使用者**設定] > **原則** > **系統管理範本** > **Windows 元件** > [ **internet]** 控制台 > [**安全性] 頁面**。 然後選取 [指派網站到區域清單]。
+3. 流覽至 [**使用者**設定] > **原則** > **系統管理範本** > **Windows 元件** > [ **internet]** 控制台 > [**安全性] 頁面**。 >  然後選取 [指派網站到區域清單]。
     ![單一登入](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 啟用原則，然後在對話方塊中輸入下列值：
    - **值名稱**：轉送 Kerberos 票證的 Azure AD URL。

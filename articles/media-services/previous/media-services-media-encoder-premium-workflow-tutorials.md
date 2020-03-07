@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016719"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392955"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>進階媒體編碼器 Premium 工作流程教學課程
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文件包含的逐步解說可示範如何使用**工作流程設計工具**自訂工作流程。 您可以在[這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)尋找實際的工作流程檔案。  
 
 ## <a name="toc"></a>目錄
-本文涵蓋下列主題：
+涵蓋下列主題：
 
 * [將 MXF 編碼為單一位元速率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [開始新的工作流程](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
@@ -145,7 +145,7 @@ ms.locfileid: "69016719"
 
 *未連接的 AAC 編碼器*
 
-現在有不相容性：AAC 編碼器只有單一未壓縮音訊輸入接點，而媒體檔案輸入可能會有兩個不同的未壓縮音訊串流可用：一個用於左聲道，一個用於右聲道。 (如果您正在處理環繞音效，則是 6 聲道。)因此，不可能直接將音訊從 [媒體檔案輸入] 來源連接至 AAC 音訊編碼器。 AAC 元件預期稱為「交錯」的音訊串流：具有左右聲道並彼此交錯的單一串流。 一旦我們從來源媒體檔案知道哪一個音訊曲目在來源中的哪個位置後，可以使用正確指派的左右喇叭位置來產生這類的交錯音訊串流。
+現在有不相容性：AAC 編碼器只有單一未壓縮音訊輸入接點，而媒體檔案輸入可能會有兩個不同的未壓縮音訊串流可用：一個用於左聲道，一個用於右聲道。 （如果您正在處理環繞音效，這就是六個頻道）。因此，您無法直接將音訊從媒體檔案輸入來源連線到 AAC 音訊編碼器。 AAC 元件預期稱為「交錯」的音訊串流：具有左右聲道並彼此交錯的單一串流。 一旦我們從來源媒體檔案知道哪一個音訊曲目在來源中的哪個位置後，可以使用正確指派的左右喇叭位置來產生這類的交錯音訊串流。
 
 首先，使用者需要從需要的來源音訊聲道產生交錯的串流。 音訊串流交錯器元件會為我們處理。 將它加入至工作流程，並從 [媒體檔案輸入] 將音訊輸出連接到它。
 
@@ -513,7 +513,7 @@ ms.locfileid: "69016719"
 *要加入修剪的目標開始工作流程*
 
 ### <a id="time_based_trim_use_stream_trimmer"></a>使用串流修剪器
-串流修剪器元件可讓您根據計時資訊 (秒、分等等)，修剪輸入串流的開頭和結尾。修剪器不支援以畫面格為基礎的修剪。
+Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪輸入資料流程基底的開始和結束。修剪器不支援以畫面格為基礎的修剪。
 
 ![串流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -599,9 +599,9 @@ ms.locfileid: "69016719"
 
 *Hello World 記錄輸出*
 
-我們呼叫記錄方法所在的節點物件，是指我們目前的「節點」或是我們正在編寫指令碼的元件。 每個元件因此具備可透過系統索引標籤輸出記錄資料的能力。在此情況下，我們會輸出字串常值 "Hello World"。 在此處需要了解的是這可以證明是非常重要的偵錯工具，讓您深入了解指令碼實際上做些什麼。
+我們呼叫記錄方法所在的節點物件，是指我們目前的「節點」或是我們正在編寫指令碼的元件。 每個元件都可以透過 [系統] 索引標籤來輸出記錄資料。在此情況下，我們會輸出字串常值 "hello world"。 在此處需要了解的是這可以證明是非常重要的偵錯工具，讓您深入了解指令碼實際上做些什麼。
 
-從我們的指令碼環境內，我們也可以存取其他元件的屬性。 試試這個：
+從我們的指令碼環境內，我們也可以存取其他元件的屬性。 試試看：
 
 ```java
     //inspect current node:
@@ -693,8 +693,8 @@ ms.locfileid: "69016719"
 
 首先，我們必須決定我們需要修剪影片的哪一個點到哪一個點。 為了讓它方便工作流程較不具技術性的使用者，請將兩個屬性發佈至圖形的根目錄。 若要這樣做，請以滑鼠右鍵按一下設計工具介面並選取 [新增屬性]：
 
-* 第一個屬性：下列型別的 "ClippingTimeStart"："TIMECODE"
-* 第二個屬性：下列型別的 "ClippingTimeEnd"："TIMECODE"
+* 第一個屬性："ClippingTimeStart"，類型："TIMECODE"
+* 第二個屬性："ClippingTimeEnd"，類型："TIMECODE"
 
 ![加入屬性對話方塊的剪輯開始時間](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -761,7 +761,7 @@ ms.locfileid: "69016719"
 
 *記錄產生的剪輯清單*
 
-執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這表示只有在您第一次設定 in 和 out 時, 才會造成 xml 轉換, 而所有其他時間, 我們的 guard 子句 (if (`clipListXML.indexOf("<trim>") == -1`)) 會防止工作流程在已經有一個 trim 元素時加入另一個 trim 專案。
+執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這表示，只有在您第一次設定 in 和 out 時，才會造成 xml 轉換，而所有其他時間，我們的 guard 子句（if （`clipListXML.indexOf("<trim>") == -1`））將會防止工作流程在已經有一個 trim 元素時加入另一個 trim 專案。
 
 為了讓工作流程方便在本機測試，我們最好加入一些管理程式碼，其會檢查是否已經存在修剪元素。 如果是的話，我們可以在繼續之前，將 XML 修改為新的值來將它移除。 不要使用純文字字串操作，透過實際的 XML 物件模型剖析執行此動作可能更安全。
 
@@ -946,7 +946,7 @@ ms.locfileid: "69016719"
 
 [透過 Azure 媒體服務編碼的隨選內容](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-[Media Encoder Premium Workflow 格式和轉碼器](media-services-premium-workflow-encoder-formats.md)
+[媒體編碼器高階工作流程格式和轉碼器](media-services-premium-workflow-encoder-formats.md)
 
 [範例工作流程檔案](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 

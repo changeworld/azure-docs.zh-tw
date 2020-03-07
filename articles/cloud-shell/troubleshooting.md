@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120223"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394314"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -118,7 +118,7 @@ Cloud Shell 支援下列最新版的瀏覽器：
 - Apple Safari
   - 不支援 Safari 私密瀏覽模式。
 
-### <a name="copy-and-paste"></a>複製並貼上
+### <a name="copy-and-paste"></a>複製和貼上
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
@@ -168,7 +168,7 @@ Azure Cloud Shell 會謹慎處理您的個人資料，Azure Cloud Shell 服務�
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Export
+### <a name="export"></a>匯出
 若要匯出 Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

@@ -4,11 +4,11 @@ description: 瞭解如何分組、錯開、分頁和平行查詢，以避免要�
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436069"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388605"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph 中的節流要求指引
 
@@ -185,7 +185,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>頁數
+## <a name="pagination"></a>分頁
 
 因為 Azure Resource Graph 在單一查詢回應中最多傳回1000個專案，所以您可能需要將查詢[分頁](./work-with-data.md#paging-results)，以取得您要尋找的完整資料集。 不過，某些 Azure Resource Graph 的用戶端處理分頁的方式與其他不同。
 

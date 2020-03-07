@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003120"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397092"
 ---
 # <a name="configure-apache-spark-settings"></a>設定 Apache Spark 設定
 
@@ -149,5 +149,5 @@ YARN 會控制每個 Spark 節點上所有容器所使用的記憶體最大總�
 * [可以與 HDInsight 搭配使用的 Apache Hadoop 元件和版本？](../hdinsight-component-versioning.md)
 * [在 HDInsight 上管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)
 * [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Apache Spark 設定](https://spark.apache.org/docs/latest/configuration.html)
+* [Apache Spark 設定](https://spark.apache.org/docs/latest/configuration.html) \(英文\)
 * [在 Apache Hadoop YARN 上執行 Apache Spark](https://spark.apache.org/docs/latest/running-on-yarn.html)
