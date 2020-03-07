@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965736"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366704"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 8000 系列雲端設備是 Microsoft Azure StorSimple 解決方案提供的另一項功能。 StorSimple 雲端設備會在 Microsoft Azure 虛擬網路中的虛擬機器上執行，您可以使用它將主機上的資料進行備份和複製。
 
@@ -42,7 +42,7 @@ StorSimple 8000 系列雲端設備是 Microsoft Azure StorSimple 解決方案提
 
 StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1100) 和進階 8020 (於 Update 2 引進)。 下表顯示兩個模型的比較。
 
-| 裝置模型 | 8010<sup>1</sup> | 8020 |
+| 裝置型號 | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 核心、7 GB 記憶體)| Standard_DS3 (4 核心、14 GB 記憶體)|
@@ -50,9 +50,9 @@ StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1
 | **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
 | **工作負載指引** |從備份的檔案的項目層級擷取 |雲端開發和測試案例 <br></br>低延遲和更高的效能工作負載<br></br>災害復原的次要裝置 |
 
-<sup>1</sup> *前身為 1100*。
+<sup>1</sup> *先前稱為 1100*。
 
-<sup>2</sup> *8010 和 8020 會將 Azure 標準儲存體使用於雲端層。差異僅存在於裝置內的本機層*。
+<sup>2</sup> *8010 和8020都會針對雲端層使用 Azure 標準儲存體。差異僅存在於裝置內的本機層*。
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>雲端設備與實體裝置的差異
 
@@ -64,7 +64,7 @@ StorSimple 雲端設備是純軟體的 StorSimple 版本，在 Microsoft Azure �
 
 |  | 實體裝置 | 雲端設備 |
 | --- | --- | --- |
-| **Location** |位於資料中心。 |在 Azure 中執行。 |
+| **位置** |位於資料中心。 |在 Azure 中執行。 |
 | **網路介面** |有六個網路介面：DATA 0 到 DATA 5。 |只有一個網路介面：DATA 0。 |
 | **註冊** |在初始設定步驟期間註冊。 |註冊是個別的工作。 |
 | **服務資料加密金鑰** |在實體裝置上重新產生金鑰，然後以新的金鑰更新雲端設備。 |無法從雲端設備重新產生。 |
@@ -110,7 +110,7 @@ StorSimple 雲端設備是純軟體的 StorSimple 版本，在 Microsoft Azure �
 
 執行下列步驟來建立 StorSimple 雲端設備。
 
-### <a name="step-1-create-a-cloud-appliance"></a>步驟 1:建立雲端設備
+### <a name="step-1-create-a-cloud-appliance"></a>步驟 1：建立雲端設備
 
 執行下列步驟來建立 StorSimple 雲端設備。
 
@@ -118,7 +118,7 @@ StorSimple 雲端設備是純軟體的 StorSimple 版本，在 Microsoft Azure �
 
 如果此步驟中的雲端設備建立失敗，您可能沒有網際網路的連線能力。 如需詳細資訊，請在建立雲端設備時，移至[針對網際網路連線失敗進行疑難排解](#troubleshoot-internet-connectivity-errors)。
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>步驟 2:設定和註冊雲端設備
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>步驟 2：設定和註冊雲端設備
 
 開始此程序之前，請確定您擁有服務資料加密金鑰的副本。 當您向 StorSimple 裝置管理員服務註冊您的第一個 StorSimple 實體裝置時，會建立服務資料加密金鑰。 系統會指示您將它儲存在安全的位置。 如果您沒有服務資料加密金鑰的複本，就必須連絡 Microsoft 支援服務以尋求協助。
 
@@ -162,13 +162,13 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 下列雙步驟程序描述如何從遠端連線到您的雲端設備。
 
-### <a name="step-1-configure-remote-management"></a>步驟 1:設定遠端管理
+### <a name="step-1-configure-remote-management"></a>步驟 1：設定遠端管理
 
 執行下列步驟來設定 StorSimple 雲端設備的遠端管理。
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>步驟 2:遠端存取雲端設備
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>步驟 2：遠端存取雲端設備
 
 將雲端設備上的遠端管理啟用後，使用 Windows PowerShell 遠端，從相同虛擬網路內部的另一個虛擬機器連線到該設備。 例如，您可以從已設定且用來連線至 iSCSI 的主機 VM 進行連線。 在大部分的部署中，您要開啟公用端點，才能存取可用來存取雲端設備的主機 VM。
 

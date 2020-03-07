@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 07ed22879180d8126711eba9af0a2cac5b7b2953
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381638"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 為 HDInsight 叢集建立 Apache Spark 應用程式
 
-使用 Azure Toolkit for [Eclipse](https://www.eclipse.org/) 中的 HDInsight 工具來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 [Apache Spark](https://spark.apache.org/) 應用程式，並直接從 Eclipse IDE 將它們提交到 Azure HDInsight Spark 叢集。 您能以數種不同的方式使用 HDInsight 工具外掛程式：
+使用 Azure Toolkit for [Eclipse](https://www.eclipse.org/) 中的 HDInsight 工具來開發以 [Scala](https://spark.apache.org/) 撰寫的 [Apache Spark](https://www.scala-lang.org/) 應用程式，並直接從 Eclipse IDE 將它們提交到 Azure HDInsight Spark 叢集。 您能以數種不同的方式使用 HDInsight 工具外掛程式：
 
 * 在 HDInsight Spark 叢集上開發並提交 Scala Spark 應用程式。
 * 存取您的 Azure HDInsight Spark 叢集資源。
 * 在本機開發並執行 Scala Spark 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76936492"
     * Azure Toolkit for Eclipse \<版本 >。
     * Scala IDE \<版本 >。
 
-## <a name="sign-in-to-your-azure-subscription"></a>登入您的 Azure 訂用帳戶
+## <a name="sign-in-to-your-azure-subscription"></a>登入您的 Azure 訂用帳戶：
 
 1. 啟動 Eclipse IDE。
 
@@ -327,7 +327,7 @@ ms.locfileid: "76936492"
 
 ![當叢集忙碌 yarn 時，eclipse 取得錯誤](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "當叢集忙碌 yarn 時，eclipse 取得錯誤")
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

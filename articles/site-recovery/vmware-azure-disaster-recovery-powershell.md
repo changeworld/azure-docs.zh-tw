@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391722"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 設定 VMware VM 至 Azure 的災害復原
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext Cmdlet 設定保存庫內容。 設定後，會在所選保存庫的內容中執行 PowerShell 工作階段中的後續 Azure Site Recovery 作業。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模組（Az. Azurerm.recoveryservices 模組）為大部分的 Cmdlet 提供容易使用的別名。 模組中的 Cmdlet 會採用\<作業的形式， ***AzRecoveryServicesAsr**\<物件 >* ，並具有對等的別名，其採用\<作業 > *-**ASR**\<物件 >* 的格式。 您可以取代 Cmdlet 別名以方便使用。
+> Azure Site Recovery PowerShell 模組（Az. Azurerm.recoveryservices 模組）為大部分的 Cmdlet 提供容易使用的別名。 模組中的 Cmdlet 會採用\<作業的形式， *>**AzRecoveryServicesAsr**\<物件 >* ，並具有對等的別名，其採用\<作業 > *-**ASR**\<物件 >* 的格式。 您可以取代 Cmdlet 別名以方便使用。
 
 在下列範例中，來自 $vault 變數的保存庫詳細資料用於指定 PowerShell 工作階段的保存庫內容。
 
@@ -118,7 +118,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-除了 ASRVaultCoNtext 指令程式以外，您也可以使用 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如：
+除了 ASRVaultCoNtext 指令程式以外，您也可以使用 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如，
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -351,7 +351,7 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 現在使用此表格中指定的設定複寫下列虛擬機器
 
 
-|虛擬機器  |處理序伺服器        |儲存體帳戶              |記錄檔儲存體帳戶  |原則           |行動服務安裝的帳戶|目標資源群組  | 目標虛擬網路  |目標子網路  |
+|虛擬機器  |處理序伺服器        |儲存體帳戶              |記錄檔儲存體帳戶  |Policy(Windows Intune 說明：原則)           |行動服務安裝的帳戶|目標資源群組  | 目標虛擬網路  |目標子網路  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   

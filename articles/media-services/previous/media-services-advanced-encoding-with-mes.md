@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61230183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385438"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本主題說明如何自訂媒體編碼器標準預設。 [透過使用自訂預設的媒體編碼器標準進行編碼](media-services-custom-mes-presets-with-dotnet.md)主題說明如何使用 .NET 來建立編碼工作，以及執行此工作的作業。 一旦您自訂預設之後，請將自訂預設提供給編碼工作。 
 
 如果使用 XML 預設值，請務必維持元素的順序，如下列 XML 範例所示 (例如，KeyFrameInterval 應在 SceneChangeDetection 之前)。
 
 > [!NOTE] 
-> 許多進階的媒體服務 v2 功能，媒體編碼器標準是目前不在 v3 中使用。 如需詳細資訊，請參閱 <<c0> [ 功能落差](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)。
+> 在 v3 中目前無法使用媒體編碼器標準的許多 advanced 媒體服務 v2 功能。 如需詳細資訊，請參閱[功能差距](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="support-for-relative-sizes"></a>支援相對大小
 
@@ -53,7 +53,7 @@ ms.locfileid: "61230183"
 >
 >
 
-如需結構描述的資訊，請參閱 [這個](media-services-mes-schema.md) 主題。
+如需結構描述的資訊，請參閱 [這個主題](media-services-mes-schema.md) 。
 
 請務必閱讀 [考量](#considerations) 一節。
 
@@ -237,14 +237,14 @@ ms.locfileid: "61230183"
 * 為 Start/Step/Range 使用明確的時間戳記會假設輸入來源至少為 1 分鐘的長度。
 * 具有 Start、Step 和 Range 字串屬性的 Jpg/Png/BmpImage 項目 - 這些可以解譯為：
 
-  * 畫面格數目 (如果是非負整數)，例如 "Start":"120"，
-  * 相對於持續時間 (如果以 % 尾碼表示)，例如 "Start":"15%"，或
+  * 畫面格數目 (如果是非負整數)，例如 "Start": "120"、
+  * 相對於持續時間 (如果以 % 尾碼表示)，例如 "Start": "15%"，或
   * 時間戳記 (如果以 HH:MM:SS... 格式表示)，例如 "Start" : "00:01:00"
 
     您可以隨意混合使用標記法。
 
     此外， Start 也支援特殊的巨集 (即 {Best})，它會嘗試判斷第一個「 有趣 」的內容畫面。附註：(Start 設為 {Best} 時，會忽略 Step 與 Range)
-  * 預設：Start:{Best}
+  * 預設值：Start:{Best}
 * 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，MES 會比對 JpgVideo 與 JpgFormat，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
 ## <a id="trim_video"></a>修剪視訊 (裁剪)
@@ -493,7 +493,7 @@ ms.locfileid: "61230183"
 
 Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援下列格式：png、jpg、gif 及 bmp。 下面定義的預設值為視訊疊加層的基本範例。
 
-除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」  檔案。
+除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」 檔案。
 
 如果您使用 .NET，請將下列兩個函式加入到[此](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)主題中定義的 .NET 範例。 **UploadMediaFilesFromFolder** 函式會上傳資料夾中的檔案 (例如，BigBuckBunny.mp4 和 Image001.png)，並將 mp4 檔案設定為資產中的主要檔案。 **EncodeWithOverlay** 函式會使用傳遞給它的自訂預設值檔案 (例如後續的預設值) 建立編碼工作。
 
@@ -722,7 +722,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
 ## <a id="deinterlacing"></a>停用自動去交錯
 如果客戶想要將交錯內容自動去交錯，就不需要採取任何動作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
 
-您可以關閉自動去交錯。 但不建議您這樣做。
+您可以關閉自動去交錯。 不建議使用此選項。
 
 ### <a name="json-preset"></a>JSON 預設值
     "Sources": [
@@ -748,7 +748,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
 
 
 ## <a id="audio_only"></a>純音訊預設值
-本節示範兩個純音訊的 MES 預設值：AAC 音訊與 AAC 好品質音訊。
+本節示範兩個純音訊的 MES 預設值︰AAC 音訊和 AAC 好品質音訊。
 
 ### <a name="aac-audio"></a>AAC 音訊
     {

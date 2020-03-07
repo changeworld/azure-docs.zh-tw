@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60815133"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385645"
 ---
 # <a name="command-line-interface"></a>命令列介面
 
@@ -30,7 +30,7 @@ ms.locfileid: "60815133"
 
 <a name="build_index-command"></a>
 
-## <a name="buildindex-command"></a>build_index 命令
+## <a name="build_index-command"></a>build_index 命令
 
 針對要編製索引的物件，**Build_index** 命令可從該物件的結構描述定義檔和資料檔案中建置二進位索引檔案。  產生的索引檔案可用來評估結構化查詢運算式，或用來產生自然語言查詢，以與已編譯的文法檔案搭配使用。
 
@@ -55,7 +55,7 @@ ms.locfileid: "60815133"
 
 <a name="build_grammar-command"></a>
 
-## <a name="buildgrammar-command"></a>build_grammar 命令
+## <a name="build_grammar-command"></a>build_grammar 命令
 
 **Build_grammar** 命令會將 XML 中指定的文法編譯為二進位文法檔案。  產生的文法檔案可用來搭配索引檔案使用，以產生自然語言查詢的解譯。
 
@@ -70,7 +70,7 @@ ms.locfileid: "60815133"
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>host_service 命令
+## <a name="host_service-command"></a>host_service 命令
 
 **host_service** 命令會將 KES 服務的執行個體裝載在本機電腦上。
 
@@ -82,13 +82,13 @@ ms.locfileid: "60815133"
 | `<indexFile>`   | 輸入二進位索引路徑           |
 | `--port <port>` | 本機連接埠號碼。  預設值：8000 |
 
-您可以使用本機檔案路徑或 Azure blob 的 URL 路徑來指定這些檔案。  Web 服務會裝載於 http://localhost:&lt ;port&gt; /。  請參閱 [Web API](WebAPI.md) 以取得支援的作業清單。
+您可以使用本機檔案路徑或 Azure blob 的 URL 路徑來指定這些檔案。  Web 服務會裝載於 http://localhost:&lt;port&gt;/。  請參閱 [Web API](WebAPI.md) 以取得支援的作業清單。
 
 在 Azure 環境之外，本機裝載的服務會有以下限制：索引檔案大小上限為 1 MB、每秒 10 個要求，以及總計 1000 個呼叫。  若要克服這些限制，請在 Azure VM 內執行 **host_service**，或使用 **deploy_service** 部署到 Azure 雲端服務。
 
 <a name="deploy_service-command"/>
 
-## <a name="deployservice-command"></a>deploy_service 命令
+## <a name="deploy_service-command"></a>deploy_service 命令
 
 **deploy_service** 命令會將 KES 服務的執行個體部署至 Azure 雲端服務。
 
@@ -108,7 +108,7 @@ ms.locfileid: "60815133"
 
 <a name="describe_index-command"/>
 
-## <a name="describeindex-command"></a>describe_index 命令
+## <a name="describe_index-command"></a>describe_index 命令
 
 **describe_index** 命令會輸出索引檔案的相關資訊，包括結構描述和描述。
 
@@ -122,7 +122,7 @@ ms.locfileid: "60815133"
 
 <a name="describe_grammar-command"/>
 
-## <a name="describegrammar-command"></a>describe_grammar 命令
+## <a name="describe_grammar-command"></a>describe_grammar 命令
 
 **describe_grammar** 命令會輸出用來建置二進位文法的原始文法規格。
 

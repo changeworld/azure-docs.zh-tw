@@ -14,19 +14,19 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
 ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383314"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>適用於 Windows 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 Azure 磁碟加密會利用 BitLocker 在執行 Windows 的 Azure 虛擬機器上提供完整的磁碟加密。  此解決方案與 Azure Key Vault 整合，可讓您管理金鑰保存庫訂用帳戶中的磁碟加密金鑰與祕密。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如需必要條件的完整清單，請參閱[適用于 Linux vm 的 Azure 磁碟加密](../linux/disk-encryption-overview.md)，特別是下列各節：
 
@@ -136,20 +136,20 @@ Windows AzureDiskEncryption 擴充功能有兩個架構：2.2 版，這是較新
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
+| apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | 字串 |
-| 類型 | AzureDiskEncryptionForLinux | 字串 |
+| type | AzureDiskEncryptionForLinux | 字串 |
 | typeHandlerVersion | 1.1、2。2 | 字串 |
 | （1.1 架構）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （1.1 架構）AADClientSecret | password | 字串 |
+| （1.1 架構）AADClientSecret | 密碼 | 字串 |
 | （1.1 架構）AADClientCertificate | thumbprint | 字串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
 | KeyEncryptionKeyURL | url | 字串 |
 | KeyVaultURL | url | 字串 |
-| (選擇性) Passphrase | password | 字串 | 
-| SequenceVersion | uniqueidentifier | 字串 |
+| (選擇性) Passphrase | 密碼 | 字串 | 
+| SequenceVersion | UNIQUEIDENTIFIER | 字串 |
 | VolumeType | 作業系統、資料、全部 | 字串 |
 
 ## <a name="template-deployment"></a>範本部署

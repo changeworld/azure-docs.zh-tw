@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888028"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364992"
 ---
 # <a name="what-is-azure-container-instances"></a>什麼是 Azure Container Instances？
 
@@ -28,7 +28,7 @@ Azure Container Instances 可讓您利用 IP 位址和完整網域名稱 (FQDN)�
 Azure Container Instances 也會提供互動式殼層，讓您可以在執行中的容器內執行命令，進而協助應用程式的開發和疑難排解。 存取會透過 HTTPS 進行，並使用 TLS 來保護用戶端連線。
 
 > [!IMPORTANT]
-> 從 2020 年 1 月 13 日開始，Azure Container Instances 將要求所有來自伺服器和應用程式的安全連線都使用 TLS 1.2。 TLS 1.0 和 1.1 的支援將會淘汰。
+> 從 2020 年 1 月 13 日開始，Azure Container Instances 將要求所有來自伺服器和應用程式的安全連線都使用 TLS 1.2。 將會淘汰 TLS 1.0 和1.1 的支援。
 
 ## <a name="hypervisor-level-security"></a>Hypervisor 等級安全性
 

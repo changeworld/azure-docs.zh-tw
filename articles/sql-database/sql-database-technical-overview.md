@@ -13,11 +13,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820736"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360076"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什麼是 Azure SQL Database 服務？
 
@@ -117,7 +117,7 @@ Azure 可用性區域會嘗試防止在單一區域內建立單一資料中心�
 
 事實上，Azure 的服務等級協定[（SLA）](https://azure.microsoft.com/support/legal/sla/)是由 Microsoft 管理的全球資料中心網路所提供，可協助讓您的應用程式執行24/7。 Azure 平臺可完全管理每個資料庫，並保證不會遺失資料，也不會有高百分比的資料可用性。 Azure 會自動處理修補、備份、複寫、失敗偵測，基礎潛在硬體、軟體或網路失敗、部署錯誤修正、容錯移轉、資料庫升級和其他維護工作。 隔離計算和儲存圖層可達成標準可用性。 藉由整合單一節點上的計算和儲存以取得效能，然後執行類似于 Always On 可用性群組的技術，即可達成高階可用性。 如需 Azure SQL Database 高可用性功能的完整討論，請參閱 [SQL Database 可用性](sql-database-high-availability.md)。 
 
-此外，SQL Database 提供內建的[商務持續性和全球擴充性](sql-database-business-continuity.md)功能。 其中包含：
+此外，SQL Database 提供內建的[商務持續性和全球擴充性](sql-database-business-continuity.md)功能。 其中包括：
 
 - [自動備份](sql-database-automated-backups.md)：
 
@@ -221,7 +221,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、JAVA、node.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制何時發生修補停機？
 
-不會。 如果您在應用程式中[採用重試邏輯](sql-database-develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱[在 Azure SQL Database 中規劃 Azure 維護事件](sql-database-planned-maintenance.md)。
+No。 如果您在應用程式中[採用重試邏輯](sql-database-develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱[在 Azure SQL Database 中規劃 Azure 維護事件](sql-database-planned-maintenance.md)。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure Hybrid Benefit 問題
 
@@ -242,7 +242,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、JAVA、node.
 
 SQL Database 客戶具有與 SQL Server Azure Hybrid Benefit 相關聯的下列許可權：
 
-|授權情形|Azure Hybrid Benefit 的 SQL Server 可讓您獲得哪些協助？|
+|授權使用量|Azure Hybrid Benefit 的 SQL Server 可讓您獲得哪些協助？|
 |---|---|
 |具有 SA 的 SQL Server Enterprise Edition 核心客戶|<li>可以根據一般用途或業務關鍵 SKU 來支付基本費率</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 4 個核心</li><br><li>1 個內部部署核心 = 業務關鍵 SKU 中的 1 個核心</li>|
 |具有 SA 的 SQL Server Standard Edition 核心客戶|<li>只能針對一般用途 SKU 支付基本費率</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 1 個核心</li>|

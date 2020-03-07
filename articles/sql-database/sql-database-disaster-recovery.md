@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826578"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359145"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>還原 Azure SQL Database 或容錯移轉到次要資料庫
 

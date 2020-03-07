@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361841"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
 
@@ -169,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>處理程序
+#### <a name="process"></a>Process
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -300,7 +300,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>處理程序
+#### <a name="process"></a>Process
 
 在下列範例中，追蹤連入訊息的方式類似於追蹤連入 HTTP 要求的方式：
 

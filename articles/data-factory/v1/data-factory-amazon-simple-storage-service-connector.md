@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924847"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387664"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74924847"
 > * [第 2 版 (目前的版本)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Amazon S3 連接器](../connector-amazon-simple-storage-service.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Amazon S3 連接器](../connector-amazon-simple-storage-service.md)。
 
 本文說明如何使用 Azure Data Factory 中的複製活動，從 Amazon Simple Storage Service (S3) 移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74924847"
 2. 建立**資料集**，代表複製作業的輸入和輸出資料。
 3. 建立**管線**，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。
 
-使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來從 Amazon S3 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Amazon S3 複製到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) 一節。
+使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義這些資料處理站實體。 如需相關範例，其中含有用來從 Amazon S3 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Amazon S3 複製到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) 一節。
 
 > [!NOTE]
 > 如需有關針對複製活動支援的檔案和壓縮格式的詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md)。
@@ -62,9 +62,9 @@ ms.locfileid: "74924847"
 ## <a name="linked-service-properties"></a>連結服務屬性
 已連結的服務會將資料存放區連結到 Data Factory。 您需建立 **AwsAccessKey** 類型的已連結服務，以將 Amazon S3 資料存放區連結到 Data Factory。 下表提供 Amazon S3 (AwsAccessKey) 已連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| accessKeyID |密碼存取金鑰的識別碼。 |string |是 |
+| accessKeyID |密碼存取金鑰的識別碼。 |字串 |是 |
 | secretAccessKey |密碼存取金鑰本身。 |加密的密碼字串 |是 |
 
 >[!NOTE]
@@ -87,14 +87,14 @@ ms.locfileid: "74924847"
 ```
 
 ## <a name="dataset-properties"></a>資料集屬性
-若要指定資料集以代表 Azure Blob 儲存體中的輸入資料，請將資料集的類型屬性設定成 **AmazonS3**。 請將資料集的 **linkedServiceName** 屬性設定成 Amazon S3 已連結服務的名稱。 如需可供定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)。 
+若要指定資料集以代表 Azure Blob 儲存體中的輸入資料，請將資料集的類型屬性設定成 **AmazonS3**。 請將資料集的 **linkedServiceName** 屬性設定成 Amazon S3 已連結服務的名稱。 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)。 
 
 所有資料集類型 (例如 SQL 資料庫、Azure Blob 及 Azure 資料表) 的結構、可用性及原則等區段都相似。 每個類型之資料集的 **typeProperties** 區段都不同，可提供資料存放區中資料位置的相關資訊。 **AmazonS3** 類型之資料集 (包括 Amazon S3 資料集) 的 **typeProperties** 區段具有下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | bucketName |S3 貯體名稱。 |String |是 |
-| key |S3 物件索引鍵。 |String |否 |
+| 索引鍵 |S3 物件索引鍵。 |String |否 |
 | prefix |S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有當索引鍵空白時才適用。 |String |否 |
 | version |如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 |String |否 |
 | format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)小節。 <br><br> 如果您想要在檔案型存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 | |否 |
@@ -172,7 +172,7 @@ ms.locfileid: "74924847"
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需可用來定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。 活動的 **typeProperties** 區段中可用的屬性會隨著每個活動類型而有所不同。 就複製活動而言，屬性會根據來源和接收器的類型而有所不同。 當複製活動中的來源類型為 **FileSystemSource** (其中包括 Azure S3) 時，**typeProperties** 區段中會有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | 遞迴 |指定是否要以遞迴方式列出目錄下的 S3 物件。 |true/false |否 |
 
@@ -183,9 +183,9 @@ ms.locfileid: "74924847"
 
 * [AwsAccessKey](#linked-service-properties)類型的連結服務。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-* [AmazonS3](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-* 具有使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+* [AmazonS3](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+* [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+* 具有使用 [FileSystemSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此範例會每小時將資料從 Amazon S3 複製到 Azure Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -247,7 +247,7 @@ ms.locfileid: "74924847"
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob 輸出資料集
 
-資料會每小時寫入至新的 Blob (頻率：小時，間隔：1)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑。 此資料夾路徑會使用開始時間的年、月、日和小時部分。
+資料會每小時寫入至新的 Blob (頻率：小時，間隔：1)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑。 資料夾路徑會使用開始時間的年、月、日和小時部分。
 
 ```json
 {
@@ -360,7 +360,7 @@ ms.locfileid: "74924847"
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+查看下列文章：
 
 * 若要了解影響 Data Factory 中資料移動 (複製活動) 效能的關鍵因素，以及各種最佳化的方法，請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)。
 
