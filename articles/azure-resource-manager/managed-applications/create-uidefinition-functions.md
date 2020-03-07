@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650652"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380853"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函式
 本節包含 CreateUiDefinition 所有支援的函式的簽章。
@@ -48,7 +48,7 @@ ms.locfileid: "75650652"
 ### <a name="steps"></a>steps
 傳回在指定步驟中定義之元素的輸出值。 若要取得 Basics 步驟中元素的輸出值，請改用 `basics()`。
 
-下列範例會傳回名為 `foo` 之步驟中，名為 `bar` 之元素的輸出︰
+下列範例會傳回名為 `bar` 之步驟中，名為 `foo` 之元素的輸出︰
 
 ```json
 "[steps('foo').bar]"
@@ -431,7 +431,7 @@ ms.locfileid: "75650652"
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>與
+### <a name="and"></a>和
 如果所有參數都評估為 `true`，則傳回 `true`。 此函式只支援布林值類型的兩個或多個參數。
 
 下列範例會傳回 `true`：
@@ -462,7 +462,7 @@ ms.locfileid: "75650652"
 ```
 
 ### <a name="not"></a>否
-如果參數評估為 `false`，則傳回 `true`。 此函式只支援布林值類型的參數。
+如果參數評估為 `true`，則傳回 `false`。 此函式只支援布林值類型的參數。
 
 下列範例會傳回 `true`：
 
@@ -518,7 +518,7 @@ ms.locfileid: "75650652"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>字串
 將參數轉換成字串。 此函式支援所有 JSON 資料類型的參數。
 
 下列範例會傳回 `"1"`：
@@ -687,7 +687,7 @@ ms.locfileid: "75650652"
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>分
+### <a name="min"></a>Min
 傳回兩個數字中較小的數字。
 
 下列範例會傳回 `1`：

@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365786"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列軟體、高可用性和網路需求
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "68963331"
 
 下列軟體需求適用於存取 StorSimple 裝置的儲存體用戶端。
 
-| 受支援的作業系統 | 必要版本 | 其他需求/注意事項 |
+| 支援的作業系統 | 必要版本 | 其他需求/注意事項 |
 | --- | --- | --- |
 | Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI 磁碟區僅支援在下列 Windows 磁碟類型上使用：<ul><li>基本磁碟上的簡單磁碟區</li><li>動態磁碟上的簡單及鏡像磁碟區</li></ul>僅支援作業系統中原生提供的軟體 iSCSI 啟動器。 不支援硬體 iSCSI 啟動器。<br></br>如果您使用 StorSimple iSCSI 磁碟區，則支援 Windows Server 2012 和 2016 精簡佈建及 ODX 功能。<br><br>StorSimple 可以建立精簡佈建和完整佈建的磁碟區。 它無法建立部分佈建的磁碟區。<br><br>重新格式化精簡佈建的磁碟區可能需要很長的時間。 建議刪除磁碟區，然後建立新的磁碟區，而不是重新格式化。 不過，如果您仍然偏好重新格式化磁碟區︰<ul><li>先執行下列命令再重新格式化，以避免空間回收延遲︰ <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成後，使用下列命令來重新啟用空間回收︰<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>將 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述的 Windows Server 2012 Hotfix 套用到您的 Windows Server 電腦。</li></ul></li></ul></ul> 如果您要設定 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，請移至[選用元件的軟體需求](#software-requirements-for-optional-components)。 |
 | VMware ESX |5.5 和 6.0 |受 VMware vSphere 支援為 iSCSI 用戶端。 StorSimple 裝置上的 VMWare vSphere 支援 VAAI 區塊功能。 |
@@ -63,16 +63,16 @@ ms.locfileid: "68963331"
 
 您的 StorSimple 裝置是鎖定的裝置。 不過，您的防火牆中必須開啟連接埠，以允許 iSCSI、雲端和管理流量。 下表列出必須在防火牆中開啟的連接埠。 在這個資料表中，*in* 或 *inbound* 指的是輸入用戶端要求存取裝置的方向。 *Out* 或 *outbound* 指的是 StorSimple 裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
 
-| 連接埠號碼 <sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要項 | 注意 |
+| 連接埠號碼 <sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要項 | 注意事項 |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |輸出 |WAN |否 |<ul><li>輸出連接埠用於網際網路存取以擷取更新。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |輸出 |WAN |是 |<ul><li>輸出連接埠用來存取雲端中的資料。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li><li>在這兩個控制器上也使用此連接埠進行記憶體回收。</li></ul> |
-| UDP 53 (DNS) |輸出 |WAN |在某些情況下，請參閱附註。 |只有當您使用網際網路 DNS 伺服器時，才需要此連接埠。 |
-| UDP 123 (NTP) |輸出 |WAN |在某些情況下，請參閱附註。 |只有當您使用網際網路 NTP 伺服器時，才需要此連接埠。 |
-| TCP 9354 |輸出 |WAN |是 |StorSimple 裝置使用輸出連接埠與 StorSimple 裝置管理員服務通訊。 |
-| 3260 (iSCSI) |入 |LAN |否 |此連接埠用來透過 iSCSI 存取資料。 |
-| 5985 |入 |LAN |否 |輸入連接埠由 StorSimple Snapshot Manager 用來與 StorSimple 裝置通訊。<br>當您透過 HTTPS 從遠端連線到 Windows PowerShell for StorSimple，也會使用此連接埠。 |
-| 5986 |入 |LAN |否 |當您透過 HTTPS 從遠端連線到 Windows PowerShell for StorSimple，便會使用此連接埠。 |
+| TCP 80 (HTTP)<sup>3</sup> |外 |WAN |否 |<ul><li>輸出連接埠用於網際網路存取以擷取更新。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |外 |WAN |是 |<ul><li>輸出連接埠用來存取雲端中的資料。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li><li>在這兩個控制器上也使用此連接埠進行記憶體回收。</li></ul> |
+| UDP 53 (DNS) |外 |WAN |在某些情況下，請參閱附註。 |只有當您使用網際網路 DNS 伺服器時，才需要此連接埠。 |
+| UDP 123 (NTP) |外 |WAN |在某些情況下，請參閱附註。 |只有當您使用網際網路 NTP 伺服器時，才需要此連接埠。 |
+| TCP 9354 |外 |WAN |是 |StorSimple 裝置使用輸出連接埠與 StorSimple 裝置管理員服務通訊。 |
+| 3260 (iSCSI) |在 |LAN |否 |此連接埠用來透過 iSCSI 存取資料。 |
+| 5985 |在 |LAN |否 |輸入連接埠由 StorSimple Snapshot Manager 用來與 StorSimple 裝置通訊。<br>當您透過 HTTPS 從遠端連線到 Windows PowerShell for StorSimple，也會使用此連接埠。 |
+| 5986 |在 |LAN |否 |當您透過 HTTPS 從遠端連線到 Windows PowerShell for StorSimple，便會使用此連接埠。 |
 
 <sup>1</sup> 公用網際網路上沒有必須開啟的輸入連接埠。
 
@@ -104,7 +104,7 @@ ms.locfileid: "68963331"
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 儲存體帳戶和監視 |啟用雲端功能的網路介面 |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update 伺服器<br> |僅限控制站的固定 IP |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |僅限控制站的固定 IP |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支援套件 |啟用雲端功能的網路介面 |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支援封裝 |啟用雲端功能的網路介面 |
 
 #### <a name="url-patterns-for-azure-government-portal"></a>Azure Government 入口網站的 URL 模式
 
@@ -116,7 +116,7 @@ ms.locfileid: "68963331"
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 儲存體帳戶和監視 |啟用雲端功能的網路介面 |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update 伺服器<br> |僅限控制站的固定 IP |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |僅限控制站的固定 IP |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支援套件 |啟用雲端功能的網路介面 |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支援封裝 |啟用雲端功能的網路介面 |
 
 ### <a name="routing-metric"></a>路由度量
 
@@ -129,7 +129,7 @@ ms.locfileid: "68963331"
 * 一組預先決定的值已指派給網路介面。
 * 當網路介面已啟用雲端或已停用雲端功能，但是已設定閘道器時，請考量以下所示的範例資料表，其中包含指派給各種網路介面的值。 請注意，此處指派的值僅為範例值。
 
-    | 網路介面 | 已啟用雲端 | 已停用雲端且具有閘道器 |
+    | Linux | 已啟用雲端 | 已停用雲端且具有閘道器 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -157,7 +157,7 @@ ms.locfileid: "68963331"
 * 有 VIP 失敗時，您的 StorSimple 裝置上也會引發警示。 如需詳細資訊，請移至 [警示快速參考](storsimple-8000-manage-alerts.md)。
 * 根據重試，iSCSI 將會優先於雲端。
   
-    參考下列範例：StorSimple 裝置已啟用兩個網路介面, Data 0 和 Data 1。 Data 0 已啟用雲端功能，而 Data 1 已啟用雲端和 iSCSI 功能。 此裝置上沒有其他網路介面啟用雲端或 iSCSI。
+    請考慮下列範例：StorSimple 裝置已啟用兩個網路介面，Data 0 和 Data 1。 Data 0 已啟用雲端功能，而 Data 1 已啟用雲端和 iSCSI 功能。 此裝置上沒有其他網路介面啟用雲端或 iSCSI。
   
     如果 Data 1 失敗，假設它是最後一個 iSCSI 網路介面，這會導致控制器容錯移轉至其他控制器上的 Data 1。
 
@@ -168,7 +168,7 @@ ms.locfileid: "68963331"
 * 請確定您的 StorSimple 裝置有專用的 40 Mbps 頻寬 (或以上) 隨時可用。 此頻寬不應與其他應用程式共用 (或應該透過使用 QoS 原則保證配置)。
 * 請確定隨時都可以使用網路連線到網際網路。 裝置的零星或不可靠網際網路連線 (包含毫無網際網路連線能力) 將導致不受支援的組態。
 * 藉由在裝置上擁有專用的網路介面以存取 iSCSI 和雲端，可以隔離 iSCSI 和雲端流量。 如需詳細資訊，請參閱如何在您的 StorSimple 裝置上 [修改網路介面](storsimple-8000-modify-device-config.md#modify-network-interfaces) 。
-* 請勿針對網路介面使用連結彙總控制通訊協定 (LACP) 組態。 這個組態不受支援。
+* 請勿針對網路介面使用連結彙總控制通訊協定 (LACP) 組態。 這是不支援的組態。
 
 ## <a name="high-availability-requirements-for-storsimple"></a>StorSimple 的高可用性需求
 

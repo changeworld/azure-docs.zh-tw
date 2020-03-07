@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
 ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393667"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>選擇適合您解決方案的 IoT 中樞層
 
@@ -51,7 +51,7 @@ Azure IoT 中樞提供基本和標準兩個層級，兩者所支援的功能數�
 
 IoT 中樞也會提供免費層供您測試和評估。 其具有標準層的所有功能，但允許的傳訊量有限。 您無法從免費層升級至基本或標準層。
 
-## <a name="partitions"></a>分割數
+## <a name="partitions"></a>資料分割
 
 Azure IoT 中樞包含 [Azure 事件中樞](../event-hubs/event-hubs-features.md)的多個核心元件，包括[分割區](../event-hubs/event-hubs-features.md#partitions)。 IoT 中樞的事件資料流通常會填入由各種不同 IoT 裝置報告的內送遙測資料。 事件資料流的分割可用來減少同時讀取和寫入事件資料流時所發生的爭用。
 

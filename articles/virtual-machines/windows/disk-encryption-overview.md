@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435744"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383446"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>適用于 Windows Vm 的 Azure 磁碟加密 
 
@@ -36,7 +36,7 @@ Windows Vm 有[各種大小的](sizes-general.md)提供。 [基本、A 系列 vm
 
 Azure 磁碟加密也適用于具有 premium 儲存體的 Vm。
 
-### <a name="supported-operating-systems"></a>受支援的作業系統
+### <a name="supported-operating-systems"></a>支援的作業系統
 
 - Windows 用戶端： Windows 8 和更新版本。
 - Windows Server： Windows Server 2008 R2 和更新版本。  
@@ -69,12 +69,12 @@ Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁片加密金鑰和
 
 如需詳細資訊，請參閱[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。
 
-## <a name="terminology"></a>術語
+## <a name="terminology"></a>詞彙
 下表定義 Azure 磁片加密檔中所使用的一些常見詞彙：
 
-| 術語 | 定義 |
+| 詞彙 | 定義 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是一個密碼編譯金鑰管理服務，以「美國聯邦資訊處理標準」(FIPS) 已驗證的硬體安全性模組為基礎。 這些標準可協助您保護密碼編譯金鑰和敏感性祕密。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |
+| Azure 金鑰保存庫 | Key Vault 是一個密碼編譯金鑰管理服務，以「美國聯邦資訊處理標準」(FIPS) 已驗證的硬體安全性模組為基礎。 這些標準可協助您保護密碼編譯金鑰和敏感性祕密。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 已針對從命令列管理 Azure 資源進行最佳化。|
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx)是業界認可的 windows 磁片區加密技術，可用來在 Windows vm 上啟用磁片加密。 |
 | 金鑰加密金鑰（KEK） | 您可以用來保護或包裝秘密的非對稱金鑰（RSA 2048）。 您可以提供硬體安全性模組 (HSM) 保護的金鑰或軟體保護的金鑰。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |

@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022336"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377963"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>針對我的應用程式入口網站的問題進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "77022336"
 
 如果您在登入**我的應用程式**入口網站時遇到問題，您可以嘗試下列動作：
 
-- 請確定您使用的是正確的 URL。 它應該是 https://myapps.microsoft.com 或您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
+- 請確定您使用的是正確的 URL。 它應該是 https://myapps.microsoft.com 或您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
 
 - 請確定您的密碼正確且未過期。 如需詳細資訊，請參閱[重設您的工作或學校密碼](active-directory-passwords-update-your-own-password.md)。
 

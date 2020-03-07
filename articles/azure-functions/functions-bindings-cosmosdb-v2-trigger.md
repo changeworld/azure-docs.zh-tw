@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388576"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x 的 Azure Cosmos DB 觸發程式
 
@@ -240,7 +240,7 @@ Python 不支援屬性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 觸發程序需要第二個集合，用來在分割區上儲存「租用」。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
 

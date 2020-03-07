@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394144"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中建立規則的 Webhook 動作
 
@@ -39,7 +39,7 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 
 現在當觸發規則時，您會在 RequestBin 中看到新的要求。
 
-## <a name="payload"></a>Payload
+## <a name="payload"></a>裝載
 
 觸發規則時，會向包含 json 承載的回呼 URL 發出 HTTP POST 要求，其中含有遙測、裝置、規則和應用程式詳細資料。 承載看起來可能如下所示：
 
@@ -78,7 +78,7 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 }
 ```
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 目前並無法以程式設計方式透過 API 來訂閱/取消訂閱這些 Webhook。
 

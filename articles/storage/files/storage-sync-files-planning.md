@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598250"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361886"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 [Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 
@@ -184,7 +184,7 @@ Azure 檔案同步的 [一般用途的檔案伺服器] 部署選項支援 Window
 **Windows Server 2012 R2**  
 Azure 檔案同步不支援在 Windows Server 2012 R2 的相同磁片區上進行重復資料刪除和雲端階層處理。 如果已在磁片區上啟用重復資料刪除，則必須停用雲端階層處理。 
 
-**注意事項**
+**注意**
 - 如果在安裝 Azure 檔案同步代理程式之前已安裝重復資料刪除，則需要重新開機，以支援相同磁片區上的重復資料刪除和雲端階層處理。
 - 如果在啟用雲端階層處理之後，磁片區上啟用重復資料刪除功能，初始重復資料刪除優化工作將會優化尚未階層式磁片區上的檔案，而且會對雲端階層處理產生下列影響：
     - [可用空間] 原則會根據磁片區上的可用空間，使用熱度圖繼續將檔案分層。

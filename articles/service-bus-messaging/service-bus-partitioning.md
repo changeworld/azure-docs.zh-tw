@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aschhab
 ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392366"
 ---
 # <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
@@ -41,13 +41,13 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會建立實體的16個複本（16個數據分割），每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 您可以查看分割的佇列或主題的最大大小，方法是查看該實體的 [**總覽**] 分頁中[Azure 入口網站][Azure portal]的專案。
 
-### <a name="premium"></a>高階
+### <a name="premium"></a>Premium
 
 在進階層命名空間中，不支援資料分割實體。 然而，您仍然可以建立 1、2、3、4、5、10、20、40 或 80 GB 大小的服務匯流排佇列與主題 (預設值為 1 GB)。 您可以查看佇列或主題的大小，方法是在該實體的 [**總覽**] 分頁中查看[Azure 入口網站][Azure portal]的專案。
 
 ### <a name="create-a-partitioned-entity"></a>建立分割實體
 
-有多種方式可以建立分割的佇列或主題。 當您從應用程式建立佇列或主題時，您可以分別將 [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] 或 [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] 屬性設為 **true** 來啟用佇列或主題的分割。 這些屬性必須在建立佇列或主題時設定，並且僅適用於較舊的 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 程式庫中。 如先前所述，在現有的佇列或主題上無法變更這些屬性。 例如，
+有多種方式可以建立分割的佇列或主題。 當您從應用程式建立佇列或主題時，您可以分別將 [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] 或 [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] 屬性設為 **true** 來啟用佇列或主題的分割。 這些屬性必須在建立佇列或主題時設定，並且僅適用於較舊的 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 程式庫中。 如先前所述，在現有的佇列或主題上無法變更這些屬性。 例如：
 
 ```csharp
 // Create partitioned topic
@@ -87,7 +87,7 @@ ns.CreateTopic(td);
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>進階主題：搭配交易使用分割的實體
 
-傳送做為交易一部分的訊息必須指定資料分割索引鍵。 索引鍵可以是下列屬性的其中一個：[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 或 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 傳送做為相同交易一部分的所有訊息必須指定相同的分割索引鍵。 如果您嘗試在交易內傳送沒有分割索引鍵的訊息，服務匯流排會傳回無效作業例外狀況。 如果您嘗試在相同交易內傳送多個具有不同分割索引鍵的訊息，服務匯流排會傳回無效作業例外狀況。 例如，
+傳送做為交易一部分的訊息必須指定資料分割索引鍵。 索引鍵可以是下列屬性的其中一個：[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 或 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 傳送做為相同交易一部分的所有訊息必須指定相同的分割索引鍵。 如果您嘗試在交易內傳送沒有分割索引鍵的訊息，服務匯流排會傳回無效作業例外狀況。 如果您嘗試在相同交易內傳送多個具有不同分割索引鍵的訊息，服務匯流排會傳回無效作業例外狀況。 例如：
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -107,7 +107,7 @@ committableTransaction.Commit();
 
 若要將交易訊息傳送至工作階段感知的主題或佇列，該訊息必須設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性。 如果也指定 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，它必須與 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性相同。 如果兩者不同，服務匯流排會傳回無效作業例外狀況。
 
-不同於一般 (非分割) 的佇列或主題，無法使用單一交易將多則訊息傳送到不同的工作階段。 如果嘗試這樣做，服務匯流排會傳回無效作業例外狀況。 例如，
+不同於一般 (非分割) 的佇列或主題，無法使用單一交易將多則訊息傳送到不同的工作階段。 如果嘗試這樣做，服務匯流排會傳回無效作業例外狀況。 例如：
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();

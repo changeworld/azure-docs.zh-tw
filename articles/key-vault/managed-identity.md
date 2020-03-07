@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199830"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395942"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供受控識別的 Key Vault 驗證
 
@@ -26,7 +26,7 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要完成本指南，您必須擁有下列資源。 
 
@@ -50,7 +50,7 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 1. 選取 [受控身分識別]。 
 
-1. 在 [系統指派] 索引標籤內，將 [狀態] 切換為 [開啟]。 Haga clic en **Guardar**. 
+1. 在 [系統指派] 索引標籤內，將 [狀態] 切換為 [開啟]。 按一下 [檔案]。 
 
     ![](./media/managed-identity-system-assigned.png)
 

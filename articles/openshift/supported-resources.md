@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274910"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381440"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift 資源
 
 本主題列出 Microsoft Azure Red Hat OpenShift 服務支援的 Azure 區域和虛擬機器大小。
 
-## <a name="azure-regions"></a>Azure 地區
+## <a name="azure-regions"></a>Azure 區域
 
 如需您可以部署 Azure Red Hat OpenShift 叢集的最新區域清單，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)。
 

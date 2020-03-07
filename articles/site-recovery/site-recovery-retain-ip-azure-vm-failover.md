@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396891"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在容錯轉移期間保留 IP 位址
 
@@ -32,7 +32,7 @@ ms.locfileid: "74083683"
 
 公司 A 的所有應用程式都在 Azure 中執行。
 
-### <a name="before-failover"></a>容錯移轉之前
+### <a name="before-failover"></a>容錯移轉前
 
 這是容錯移轉之前的架構。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74083683"
 
 ![完整容錯移轉之前 Azure 中的資源](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
-### <a name="after-failover"></a>容錯移轉之後
+### <a name="after-failover"></a>容錯移轉後
 
 如果發生來源區域性中斷，則公司 A 可以將其所有資源容錯移轉至目標區域。
 
@@ -80,7 +80,7 @@ ms.locfileid: "74083683"
 
 在此範例中，公司 A 將來源區域中的應用程式放置在專用 VNet 中，並在這些 VNet 之間建立連線能力。 透過此設計，他們可以執行隔離的應用程式容錯移轉，並在目標網路中保留來源私人 IP 位址。
 
-### <a name="before-failover"></a>容錯移轉之前
+### <a name="before-failover"></a>容錯移轉前
 
 在容錯移轉之前，架構如下所示：
 
@@ -104,7 +104,7 @@ ms.locfileid: "74083683"
 
     ![應用程式容錯移轉之前 Azure 中的資源](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
-### <a name="after-failover"></a>容錯移轉之後
+### <a name="after-failover"></a>容錯移轉後
 
 如果發生影響單一應用程式的中斷情況或問題 (在我們的範例中為 **Source VNet 2)，公司 A 可以復原受影響的應用程式，如下所示：
 
@@ -123,7 +123,7 @@ ms.locfileid: "74083683"
 
 在此案例中，**公司 B** 執行混合式業務，有一部分的應用程式基礎架構是在 Azure 上執行，其餘則是在內部部署中執行。 
 
-### <a name="before-failover"></a>容錯移轉之前
+### <a name="before-failover"></a>容錯移轉前
 
 以下是網路架構在容錯移轉前的外觀。
 
@@ -142,7 +142,7 @@ ms.locfileid: "74083683"
 
 ![容錯移轉前的內部部署對 Azure 連線能力](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
-### <a name="after-failover"></a>容錯移轉之後
+### <a name="after-failover"></a>容錯移轉後
 
 
 如果發生來源區域性中斷，則公司 B 可以將其所有資源容錯移轉至目標區域。
