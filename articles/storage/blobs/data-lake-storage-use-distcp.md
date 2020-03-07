@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543663"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388180"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料
 
@@ -41,7 +41,7 @@ HDInsight 叢集隨附 DistCp 公用程式，可用來將不同來源的資料�
 
     輸出應會提供容器中的內容清單。
 
-3. 同樣地，請確認您是否可以從叢集存取已啟用階層命名空間的儲存體帳戶。 執行下列命令：
+3. 同樣地，請確認您是否可以從叢集存取已啟用階層命名空間的儲存體帳戶。 執行以下命令：
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
@@ -71,9 +71,9 @@ HDInsight 叢集隨附 DistCp 公用程式，可用來將不同來源的資料�
 
 以下是一些您可以使用的指引。
 
-* **步驟 1：決定可供「預設」YARN 應用程式佇列使用的記憶體總計** - 第一個步驟是決定可供「預設」YARN 應用程式佇列使用的記憶體。 您可以在與叢集相關聯的 Ambari 入口網站中取得這項資訊。 瀏覽至 YARN，檢視 [設定] 索引標籤以查看可供「預設」應用程式佇列使用的 YARN 記憶體。 這是您 DistCp 作業 (也就是實際的 MapReduce 作業) 可用的記憶體總計。
+* **步驟1：判斷可供「預設」 YARN 應用程式佇列使用的記憶體總計**-第一個步驟是判斷可供「預設」 YARN 應用程式佇列使用的記憶體。 您可以在與叢集相關聯的 Ambari 入口網站中取得這項資訊。 瀏覽至 YARN，檢視 [設定] 索引標籤以查看可供「預設」應用程式佇列使用的 YARN 記憶體。 這是您 DistCp 作業 (也就是實際的 MapReduce 作業) 可用的記憶體總計。
 
-* **步驟 2：計算對應程式數目** - **m** 的值等於 YARN 記憶體總計除以 YARN 容器大小的商數。 Ambari 入口網站中也提供 YARN 容器大小的資訊。 瀏覽至 YARN，檢視 [設定] 索引標籤。YARN 容器大小會顯示在此視窗中。 計算對應程式數目 (**m**) 的方程式是
+* **步驟 2︰計算對應程式數目** - **m** 的值等於 YARN 記憶體總計除以 YARN 容器大小的商數。 Ambari 入口網站中也提供 YARN 容器大小的資訊。 流覽至 YARN，並查看 [[]] 索引標籤。YARN 容器大小會顯示在此視窗中。 計算對應程式數目 (**m**) 的方程式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -85,7 +85,7 @@ HDInsight 叢集隨附 DistCp 公用程式，可用來將不同來源的資料�
 
         YARN memory = 4 * 96GB = 384GB
 
-* **對應程式數目**︰您可以從 Ambari 入口網站判斷 D14 叢集節點的 YARN 容器大小是 3,072 MB。 因此，對應程式數目為︰
+* **對應程式數目**：從 Ambari 入口網站，您可以判斷 D14 叢集節點的 YARN 容器大小為 3072 MB。 因此，對應程式數目為︰
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

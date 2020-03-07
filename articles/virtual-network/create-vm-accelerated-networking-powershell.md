@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
 ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083708"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363485"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 建立具有加速網路的 Windows 虛擬機器
 
@@ -40,7 +40,7 @@ ms.locfileid: "74083708"
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
-### <a name="supported-operating-systems"></a>受支援的作業系統
+### <a name="supported-operating-systems"></a>支援的作業系統
 您可以從 Azure 資源庫直接使用下列發行版本：
 * **Windows Server 2016 Datacenter** 
 * **Windows Server 2012 R2 Datacenter**

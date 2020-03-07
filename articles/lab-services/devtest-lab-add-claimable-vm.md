@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390959"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中建立和管理可認領 VM
-您可以從[自訂映像](devtest-lab-add-vm.md)、*公式*或 [Marketplace 映像](devtest-lab-create-template.md)等「基底」[](devtest-lab-manage-formulas.md)，使用和[新增標準 VM](devtest-lab-configure-marketplace-images.md) 相似的方法將可宣告 VM 新增至實驗室。 本教學課程會逐步引導您使用 Azure 入口網站，新增可認領 VM 至 DevTest Labs 中的實驗室，並為使用者示範認領與取消認領 VM 的流程。
+您可以從[自訂映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)等「基底」，使用和[新增標準 VM](devtest-lab-add-vm.md) 相似的方法將可宣告 VM 新增至實驗室。 本教學課程會逐步引導您使用 Azure 入口網站，新增可認領 VM 至 DevTest Labs 中的實驗室，並為使用者示範認領與取消認領 VM 的流程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>將可宣告 VM 新增至 Azure DevTest Labs 中實驗室的步驟
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -42,7 +42,7 @@ ms.locfileid: "74383962"
         您可以也先將祕密儲存在金鑰保存庫中，然後在實驗室中建立 VM 時使用此祕密。 如需詳細資訊，請參閱[在金鑰保存庫中儲存祕密](devtest-lab-store-secrets-in-key-vault.md)。 若要使用儲存在金鑰保存庫中的密碼，請選取 [使用儲存的祕密]，並指定與祕密 (密碼) 對應的金鑰值。
     4. 在 [更多選項] 區段中，選取 [變更大小]。 選取其中一個預先定義的項目，以指定要建立之 VM 的處理器核心、RAM 大小及硬碟大小。
     5. 選取 [新增或移除成品]。 選取並設定您想要新增到基底映像中的成品。
-    **附註：** 如果您對 DevTest Labs 或設定構件並不熟悉，請參閱[將現有的構件加入至 VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) 一節，完成該節之後再返回此處。
+    **注意：** 如果您對 DevTest Labs 或設定構件並不熟悉，請參閱[將現有的構件加入至 VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) 一節，完成該節之後再返回此處。
 2. 切換至頂端的 [進階設定] 索引標籤，然後執行下列動作：
     1. 若要變更 VM 所在的虛擬網路，請選取 [變更 VNet]。
     2. 若要變更子網路，請選取 [變更子網路]。

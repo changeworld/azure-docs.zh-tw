@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879009"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361285"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 處理巨量資料需求
 
@@ -33,7 +33,7 @@ ms.locfileid: "60879009"
 ## <a name="ingest-data-into-data-lake-storage-gen1"></a>將資料內嵌到 Data Lake Storage Gen1
 此節強調不同的資料來源，以及將資料內嵌到 Data Lake Storage Gen1 帳戶的各種方式。
 
-![將資料內嵌到 Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/ingest-data.png "將資料內嵌到 Data Lake Storage Gen1")
+![將資料內嵌至 Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/ingest-data.png "將資料內嵌到 Data Lake Storage Gen1")
 
 ### <a name="ad-hoc-data"></a>臨機操作資料
 代表用來建立巨量資料應用程式原型的較小型資料集。 內嵌臨機操作資料的方式會因資料來源不同而有所差異。
@@ -44,7 +44,7 @@ ms.locfileid: "60879009"
 | Azure 儲存體 Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 叢集上執行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>串流資料
-代表可能由應用程式、裝置、感應器等各種來源產生的資料。這些資料可透過多種工具內嵌到 Data Lake Storage Gen1。 這些工具通常能以個別事件為基礎即時擷取及處理資料，然後再以批次將事件寫入 Data Lake Storage Gen1，以供進一步處理。
+這表示可由各種來源（例如應用程式、裝置、感應器等）產生的資料。這項資料可由各種不同的工具內嵌到 Data Lake Storage Gen1。 這些工具通常能以個別事件為基礎即時擷取及處理資料，然後再以批次將事件寫入 Data Lake Storage Gen1，以供進一步處理。
 
 以下是您可以使用的工具︰
 
@@ -111,7 +111,7 @@ ms.locfileid: "60879009"
 * 將資料移動到其他儲存機制，以便與現有的資料處理管線連結。 例如，您可能會想要將資料從 Data Lake Storage Gen1 移動到 Azure SQL Database 或內部部署 SQL Server。
 * 在建置應用程式原型時，將資料下載到本機電腦，以便在 IDE 環境中處理。
 
-![從 Data Lake Storage Gen1 輸出資料](./media/data-lake-store-data-scenarios/egress-data.png "從 Data Lake Storage Gen1 輸出資料")
+![來自 Data Lake Storage Gen1 的輸出資料](./media/data-lake-store-data-scenarios/egress-data.png "來自 Data Lake Storage Gen1 的輸出資料")
 
 在這些案例中，您可以使用下列任何選項。
 
@@ -128,7 +128,7 @@ ms.locfileid: "60879009"
 ## <a name="visualize-data-in-data-lake-storage-gen1"></a>視覺化 Data Lake Storage Gen1 中的資料
 您可以混合使用多種服務，利用視覺化的方式呈現儲存在 Data Lake Storage Gen1 中的資料。
 
-![視覺化 Data Lake Storage Gen1 中的資料](./media/data-lake-store-data-scenarios/visualize-data.png "視覺化 Data Lake Storage Gen1 中的資料")
+![在 Data Lake Storage Gen1 中將資料視覺化](./media/data-lake-store-data-scenarios/visualize-data.png "視覺化 Data Lake Storage Gen1 中的資料")
 
 * 您可以從使用 [Azure Data Factory 將資料從 Data Lake Storage Gen1 移到 Azure SQL 資料倉儲](../data-factory/copy-activity-overview.md)開始
 * 之後，您可以 [將 Power BI 與 Azure SQL 資料倉儲整合](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) ，以視覺化方式呈現資料。

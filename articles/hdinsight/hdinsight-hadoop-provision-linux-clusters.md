@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
 ms.openlocfilehash: b4922326b92efa88552eb100488a29fc53e1f914
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198970"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386470"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集
 
@@ -30,7 +30,7 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 
 下表顯示可用來設定 HDInsight 叢集的不同方法。
 
-| 叢集建立方法 | 網頁瀏覽器 | 命令列 | REST API | SDK |
+| 叢集建立方法 | Web 瀏覽器 | 命令列 | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure 入口網站](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
@@ -187,7 +187,7 @@ Ambari 是用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 此設定僅適用于叢集類型 Kafka。 如需詳細資訊，請參閱[使用 REST proxy](./kafka/rest-proxy.md)。
 
-### <a name="identity"></a>相同比較
+### <a name="identity"></a>身分識別
 
 如需詳細資訊，請參閱[Azure HDInsight 中的受控](./hdinsight-managed-identities.md)識別。
 

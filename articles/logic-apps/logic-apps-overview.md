@@ -8,11 +8,11 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
 ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358984"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概觀 - 什麼是 Azure Logic Apps？
 
@@ -70,7 +70,7 @@ Logic Apps、Functions 和 Event Grid 都是由 Microsoft Azure 完全管理，�
 
 企業和組織可使用業界標準，但不同的訊息通訊協定和格式 (例如 EDIFACT、AS2 和 X12)，以電子方式彼此通訊。 您可以使用[企業整合套件 (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) 中的功能來建立邏輯應用程式，以將合作夥伴使用的訊息格式轉換成貴組織的系統可解譯和處理的格式。 Logic Apps 會利用加密與數位簽章，順暢且安全地處理這些交換。
 
-從您目前的系統與服務著手，並以您自己的步調逐漸成長。 當您準備就緒時，Logic Apps 和 EIP 會提供下列功能等，協助您實作及相應增加至更多成熟的整合案例：
+從您目前的系統與服務著手，並以您自己的步調逐漸成長。 當您準備就緒時，Logic Apps 和 EIP 會提供下列功能等，協助您實作及擴大至更多成熟的整合案例：
 
 * 打造下列產品與服務：
 
@@ -87,7 +87,7 @@ Logic Apps、Functions 和 Event Grid 都是由 Microsoft Azure 完全管理，�
 
 * 使用[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)集中儲存和管理這些 B2B 成品等：
 
-  * [合作夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)
+  * [夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)
   * [合約](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
   * [XML 轉換對應](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [XML 驗證結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)

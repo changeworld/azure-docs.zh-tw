@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454413"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374242"
 ---
 # <a name="access-and-customize-developer-portal"></a>存取和自訂開發人員入口網站
 
 開發人員入口網站是一個自動產生、可完全自訂的網站，其中包含您 Api 的檔。 API 取用者可以在此探索您的 Api、瞭解如何使用它們，以及要求存取權。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 存取開發人員入口網站的受控版本
@@ -36,7 +36,7 @@ ms.locfileid: "74454413"
 
 ![API 管理開發人員入口網站-管理員模式](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱匯[入和發佈](import-and-publish.md)
@@ -91,7 +91,7 @@ ms.locfileid: "74454413"
 在您將入口網站提供給訪客使用之前，您應該將自動產生的內容個人化。 建議的變更包括 [首頁] 的版面配置、樣式和內容。
 
 > [!NOTE]
-> 基於整合考慮，下列頁面無法在不同的 URL 下移除或移動： `/404`、`/500`、`/captcha`、`/change-password`、`/config.json`、`/confirm/invitation`、`/confirm-v2/identities/basic/signup`、`/confirm-v2/password`、`/internal-status-0123456789abcdef`、`/publish`、`/signin`、`/signin-sso``/signup`。
+> 基於整合考慮，下列頁面無法在不同的 URL 下移除或移動： `/404`、`/500`、`/captcha`、`/change-password`、`/config.json`、`/confirm/invitation`、`/confirm-v2/identities/basic/signup`、`/confirm-v2/password`、`/internal-status-0123456789abcdef`、`/publish`、`/signin`、`/signin-sso`、`/signup`。
 
 ### <a name="home-page"></a>首頁
 
@@ -101,7 +101,7 @@ ms.locfileid: "74454413"
 
 以您自己的影像取代導覽列中自動產生的標誌。
 
-### <a name="styling"></a>樣式
+### <a name="styling"></a>設定樣式
 
 雖然您不需要調整任何樣式，但您可以考慮調整特定元素。 例如，變更主要色彩以符合品牌的色彩。
 

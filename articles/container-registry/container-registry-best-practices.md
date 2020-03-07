@@ -4,11 +4,11 @@ description: 了解如何依照這些最佳做法來有效地使用 Azure Contai
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362344"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry 的最佳做法
 

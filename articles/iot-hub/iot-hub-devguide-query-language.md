@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344123"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
 
@@ -447,23 +447,23 @@ GROUP BY <group_by_element>
 
 支援下列運算子：
 
-| 家庭 | 操作員 |
+| 系列 | 操作員 |
 | --- | --- |
 | 算術 |+, -, *, /, % |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>函式
+### <a name="functions"></a>Functions
 
 查詢對應項和作業時唯一支援的函式為：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 傳回布林值，表示屬性是否已經指派值 (包含 `null`)。 |
 
 在路由條件中，支援下列比對函式：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | ABS(x) | 傳回指定之數值運算式的絕對 (正) 值。 |
 | EXP(x) | 傳回指定之數值運算式 (e^x) 的指數值。 |
@@ -476,7 +476,7 @@ GROUP BY <group_by_element>
 
 在路由條件中，支援下列類型檢查和轉換函式：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | AS_NUMBER | 將輸入字串轉換為數字。 如果輸入是一個數字則為 `noop`；如果字串不是數字則為 `Undefined`。|
 | IS_ARRAY | 傳回布林值，表示指定之運算式的類型為陣列。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 在路由條件中，支援下列字串函式：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 傳回字串，該字串是串連兩個或多個字串值的結果。 |
 | LENGTH(x) | 傳回指定字串運算式的字元數目。|

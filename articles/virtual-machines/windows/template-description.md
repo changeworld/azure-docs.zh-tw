@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838898"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360107"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
@@ -182,7 +182,7 @@ ms.locfileid: "73838898"
 
 當您部署範例範本時，您要輸入每個 VM 上系統管理員帳戶的名稱和密碼值，以及要建立的 VM 數目。 您可以選擇指定使用範本管理之不同檔案中的參數值，或當系統提示時提供值。
 
-[變數](../../resource-group-authoring-templates.md)方便您在範本中設定始終能夠重複使用的值，或者會隨著時間而改變的值。 此變數章節用於範例中︰
+[變數](../../resource-group-authoring-templates.md)方便您設定範本中整個重複使用或會隨著時間而改變的值。 此變數章節用於範例中︰
 
 ```
 "variables": { 
@@ -252,7 +252,7 @@ ms.locfileid: "73838898"
 } ]
 ```
 
-## <a name="dependencies"></a>相依項目
+## <a name="dependencies"></a>相依性
 
 大部分的資源相依於其他資源才能正確地運作。 虛擬機器必須與虛擬網路相關聯，且需要網路介面才能執行它。 [ependsOn](../../resource-group-define-dependencies.md) 項目用來確定網路介面在 VM 建立之前已備妥可供使用：
 
@@ -281,7 +281,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 定義虛擬機器資源時，會使用數個設定檔項目。 某些是必要的而有些則是選擇性。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必要的，但 diagnosticsProfile 為選擇性。 這些設定檔會定義設定，例如︰
    
-- [大小](sizes.md)
+- [size](sizes.md)
 - [名稱](/azure/architecture/best-practices/resource-naming)和認證
 - 磁碟和[作業系統設定](cli-ps-findimage.md)
 - [網路介面](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
@@ -315,7 +315,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 },
 ```
 
-作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
+作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]  ，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
 
 ```
 "osDisk": { 
@@ -374,7 +374,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 ],
 ```
 
-## <a name="extensions"></a>擴充功能
+## <a name="extensions"></a>延伸模組
 
 雖然[擴充功能](extensions-features.md)是不同的資源，它們會緊密繫結至 VM。 擴充功能可新增為 VM 的子資源或不同的資源。 範例會示範要新增至 VM 的[診斷擴充功能](extensions-diagnostics-template.md)：
 
@@ -454,7 +454,7 @@ Start.ps1 指令碼可以完成許多組態工作。 例如，範例中新增至
 
 ![取得部署資訊](./media/template-description/virtual-machines-deployment-info.png)
     
-使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../resource-group-template-deploy.md)。 模式可以設定為 [完成] 或 [累加]。 預設值是執行累加式更新。 使用 [完成] 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成] 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
+使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../resource-group-template-deploy.md)。 模式可以設定為 [完成]  或 [累加]  。 預設值是執行累加式更新。 使用 [完成]  模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成]  時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

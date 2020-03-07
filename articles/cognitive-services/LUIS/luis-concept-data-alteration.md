@@ -4,11 +4,11 @@ description: 了解如何在於 Language Understanding (LUIS) 中進行預測之
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148261"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361085"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
 LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預先建立之[datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
@@ -35,7 +35,7 @@ LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校�
 
 當 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 偵測到錯誤時，系統會將原始語句和校正後語句及預測一起從端點傳回。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽�
 ### <a name="daylight-savings-example"></a>日光節約範例
 如果您需要讓傳回的預先建置 datetimeV2 針對日光節約時間進行調整，則應該針對`timezoneOffset`端點[查詢，使用 ](https://go.microsoft.com/fwlink/?linkid=2092356) 查詢字串參數搭配以分鐘為單位的 +/- 值。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 預測端點要求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 預測端點要求](#tab/V2)
 
 增加 60 分鐘：
 
@@ -95,7 +95,7 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the l
 
 https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 預測端點要求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 預測端點要求](#tab/V3)
 
 增加 60 分鐘：
 

@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361414"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
 > [!NOTE]
-> 本文適用於 Azure Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[計算連結服務](../compute-linked-services.md)。
+> 本文適用於 Azure Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[計算連結服務](../compute-linked-services.md)。
 
 本文說明您可用來處理或轉換資料的計算環境。 本文還提供在設定連結服務以將這些計算環境連結至 Azure Data Factory 時，Data Factory 所支援之不同設定 (隨選與自備) 的詳細資料。
 
@@ -81,10 +81,10 @@ Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDIn
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 隨選連結服務
 Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選 HDInsight 叢集來處理資料。 叢集建立所在的區域，就是與叢集相關聯之儲存體帳戶所在的區域。 請使用 JSON **linkedServiceName** 屬性來建立叢集。
 
-請注意下列有關隨選 HDInsight 連結服務的重點：
+請注意下列有關隨選 HDInsight 連結服務的重點  ：
 
 * Azure 訂用帳戶中不會出現隨選 HDInsight 叢集。 Data Factory 服務會代您管理隨選 HDInsight 叢集。
-* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料] 窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
+* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料]  窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
 * 您只需要就 HDInsight 叢集啟動並執行作業的時間來付費。
 
 > [!IMPORTANT]
@@ -112,19 +112,19 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 > [!IMPORTANT]
-> HDInsight 叢集會在您於 JSON *linkedServiceName* 屬性中指定的 Azure Blob 儲存體內建立「預設容器」。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
+> HDInsight 叢集會在您於 JSON **linkedServiceName** 屬性中指定的 Azure Blob 儲存體內建立「預設容器」  。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
 >
 > 隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<your Data Factory name>-<linked service name>-<date and time>`。 您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com/) 之類的工具來刪除 Blob 儲存體中的容器。
 >
 > 
 
 ### <a name="properties"></a>屬性
-| 屬性                     | 說明                              | 必要 |
+| 屬性                     | 描述                              | 必要 |
 | ---------------------------- | ---------------------------------------- | -------- |
-| 類型                         | 將 type 屬性設定為 **HDInsightOnDemand**。 | 是      |
+| type                         | 將 type 屬性設定為 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 叢集中背景工作角色和資料節點的數目。 除了您為此屬性指定的背景工作節點數目外，所建立的 HDInsight 叢集還會有 2 個前端節點。 節點的大小為 Standard_D3，具有 4 個核心。 4 個背景工作節點的叢集會使用 24 個核心 (4\*4 = 16 個核心用於背景工作節點，加上 2\*4 = 8 個核心用於前端節點)。 如需 Standard_D3 層的詳細資料，請參閱[在 HDInsight 中建立以 Linux 為基礎的 Hadoop 叢集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
 | timeToLive                   | 隨選 HDInsight 叢集允許的閒置時間。 指定當活動執行完成時，如果叢集中沒有其他作用中的作業，隨選 HDInsight 叢集要保持運作多久。<br /><br />例如，如果活動執行花費 6 分鐘，而 **timeToLive** 設為 5 分鐘，叢集會在花費 6 分鐘處理活動執行之後保持運作 5 分鐘。 如果 6 分鐘期間內有另一個活動執行需要執行，則會由同一個叢集來處理。<br /><br />建立隨選 HDInsight 叢集的作業成本很高 (因為可能需要一些時間)。 請視需要使用此設定，藉由重複使用隨選 HDInsight 叢集來提升資料處理站的效能。<br /><br />如果您將 **timeToLive** 值設定為 **0**，則系統會在活動執行完成後立即刪除叢集。 不過，如果您設定較高的值，叢集可能會有不必要的閒置而導致成本提高。 請務必根據您的需要設定適當的值。<br /><br />如果 **timeToLive** 值有適當設定，多個管線便可以共用隨選 HDInsight 叢集的執行個體。 | 是      |
-| 版本                      | HDInsight 叢集的版本。 如需允許的 HDInsight 版本，請參閱[支援的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，則會使用[最新的 HDI 預設版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
+| version                      | HDInsight 叢集的版本。 如需允許的 HDInsight 版本，請參閱[支援的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，則會使用[最新的 HDI 預設版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
 | linkedServiceName            | 隨選叢集用於儲存及處理資料的 Azure 儲存體連結服務。 HDInsight 叢集會和這個儲存體帳戶建立在相同的區域。<p>您目前無法建立以 Azure Data Lake Store 作為儲存體的隨選 HDInsight 叢集。 如果您想要在 Data Lake Store 中儲存 HDInsight 處理的結果資料，請使用複製活動將 Blob 儲存體的資料複製到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 指定 HDInsight 連結服務的其他儲存體帳戶。 Data Factory 會代您註冊儲存體帳戶。 這些儲存體帳戶必須和 HDInsight 叢集位於同一個區域。 HDInsight 叢集建立所在的區域，和 **linkedServiceName** 屬性所指定之儲存體帳戶所在的區域相同。 | 否       |
 | osType                       | 作業系統的類型。 允許的值為 **Linux** 和 **Windows**。 如果未指定此值，則會使用 **Linux**。  <br /><br />強烈建議您使用以 Linux 為基礎的 HDInsight 叢集。 Windows 上 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
@@ -142,7 +142,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ### <a name="advanced-properties"></a>進階屬性
 如需隨選 HDInsight 叢集的細微設定，請指定下列屬性：
 
-| 屬性               | 說明                              | 必要 |
+| 屬性               | 描述                              | 必要 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 指定要用來建立 HDInsight 叢集的核心設定參數 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 指定 HDInsight 叢集的 HBase 組態參數 (hbase-site.xml)。 | 否       |
@@ -195,7 +195,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ### <a name="node-sizes"></a>節點大小
 若要指定前端、資料和 ZooKeeper 節點的大小，請使用下列屬性： 
 
-| 屬性          | 說明                              | 必要 |
+| 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 設定前端節點的大小。 預設值為 **Standard_D3**。 如需詳細資料，請參閱[指定節點大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 設定資料節點的大小。 預設值為 **Standard_D3**。 | 否       |
@@ -255,15 +255,15 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 ### <a name="properties"></a>屬性
-| 屬性          | 說明                              | 必要 |
+| 屬性          | 描述                              | 必要 |
 | ----------------- | ---------------------------------------- | -------- |
-| 類型              | 將 type 屬性設定為 **HDInsight**。 | 是      |
+| type              | 將 type 屬性設定為 **HDInsight**。 | 是      |
 | clusterUri        | HDInsight 叢集的 URI。        | 是      |
 | username          | 要用來連線到現有 HDInsight 叢集的使用者帳戶名稱。 | 是      |
-| password          | 使用者帳戶的密碼。   | 是      |
+| 密碼          | 使用者帳戶的密碼。   | 是      |
 | linkedServiceName | 參照 HDInsight 叢集所使用之 Blob 儲存體的儲存體連結服務名稱。 <p>您目前無法針對此屬性指定 Data Lake Store 連結服務。 如果 HDInsight 叢集可存取 Data Lake Store，您可以透過 Hive 或 Pig 指令碼存取 Data Lake Store 中的資料。 </p> | 是      |
 
-## <a name="azure-batch-linked-service"></a>Azure Batch 連結服務
+## <a name="azure-batch-linked-service"></a>Azure Batch 已連結的服務
 您可以建立 Batch 連結服務，以向資料處理站註冊虛擬機器 (VM) 的 Batch 集區。 您可以使用 Batch 或 HDInsight 來執行 Microsoft .NET 自訂活動。
 
 如果您不熟悉如何使用 Batch 服務：
@@ -303,9 +303,9 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 ### <a name="properties"></a>屬性
-| 屬性          | 說明                              | 必要 |
+| 屬性          | 描述                              | 必要 |
 | ----------------- | ---------------------------------------- | -------- |
-| 類型              | 將 type 屬性設定為 **AzureBatch**。 | 是      |
+| type              | 將 type 屬性設定為 **AzureBatch**。 | 是      |
 | accountName       | Batch 帳戶的名稱。         | 是      |
 | accessKey         | Batch 帳戶的存取金鑰。  | 是      |
 | poolName          | VM 集區的名稱。    | 是      |
@@ -330,7 +330,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 ### <a name="properties"></a>屬性
-| 屬性   | 說明                              | 必要 |
+| 屬性   | 描述                              | 必要 |
 | ---------- | ---------------------------------------- | -------- |
 | 類型       | 將 type 屬性設定為 **AzureML**。 | 是      |
 | mlEndpoint | 批次評分 URL。                   | 是      |
@@ -341,9 +341,9 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 下表說明 JSON 定義中所使用的一般屬性：
 
-| 屬性                 | 說明                              | 必要                                 |
+| 屬性                 | 描述                              | 必要                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| 類型                 | 將 type 屬性設定為 **AzureDataLakeAnalytics**。 | 是                                      |
+| type                 | 將 type 屬性設定為 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Data Lake Analytics 帳戶名稱。  | 是                                      |
 | dataLakeAnalyticsUri | Data Lake Analytics URI。           | 否                                       |
 | subscriptionId       | Azure 訂用帳戶識別碼。                    | 否<br /><br />(如果未指定，便會使用資料處理站的訂用帳戶。) |
@@ -360,11 +360,11 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 指定下列屬性以使用服務主體驗證：
 
-| 屬性                | 說明                              | 必要 |
+| 屬性                | 描述                              | 必要 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 應用程式的用戶端識別碼。     | 是      |
 | servicePrincipalKey | 應用程式的金鑰。           | 是      |
-| 租用戶              | 應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 若要獲得此資訊，請將滑鼠游標暫留在 Azure 入口網站右上角。 | 是      |
+| tenant              | 應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 若要獲得此資訊，請將滑鼠游標暫留在 Azure 入口網站右上角。 | 是      |
 
 **範例：服務主體驗證**
 ```json
@@ -388,12 +388,12 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 #### <a name="user-credential-authentication"></a>使用者認證驗證
 若為 Data Lake Analytics 的使用者認證驗證，請指定下列屬性：
 
-| 屬性          | 說明                              | 必要 |
+| 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
-| 授權 | 在 Data Factory 編輯器中，選取 [授權] 按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
-| sessionId     | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用 Data Factory 編輯器時便會自動產生此設定。 | 是      |
+| 授權 | 在 Data Factory 編輯器中，選取 [授權]  按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
+| sessionID     | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用 Data Factory 編輯器時便會自動產生此設定。 | 是      |
 
-**範例：使用者認證授權**
+**範例：使用者認證驗證**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -412,7 +412,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 #### <a name="token-expiration"></a>權杖到期
-您選取 [授權] 按鈕所產生的授權碼會在一定時間後到期。 
+您選取 [授權]  按鈕所產生的授權碼會在一定時間後到期。 
 
 當驗證權杖到期時，您可能會看見下列錯誤訊息： 
 
@@ -422,10 +422,10 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 使用者類型                                | 到期時間                            |
 | :--------------------------------------- | :--------------------------------------- |
-| 「不受」Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
-| 「受」Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
+| 「不受」  Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
+| 「受」  Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
 
-若要避免或解決此錯誤，請在權杖到期時選取 [授權] 按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId 和 authorization 屬性的值：
+若要避免或解決此錯誤，請在權杖到期時選取 [授權]  按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId  和 authorization  屬性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
