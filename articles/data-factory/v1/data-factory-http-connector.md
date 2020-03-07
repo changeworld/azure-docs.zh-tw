@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924171"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387559"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 HTTP 來源的資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "74924171"
 > * [第 2 版 (目前的版本)](../connector-http.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Azure Data Factory 服務，請參閱[第 2 版中的 HTTP 連接器](../connector-http.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Azure Data Factory 服務，請參閱[第 2 版中的 HTTP 連接器](../connector-http.md)。
 
 
 本文概述如何使用 Azure Data Factory 中的複製活動，將內部部署或雲端 HTTP 端點中的資料移動到支援的接收資料存放區。 本文的建置是根據[使用複製活動來移動資料](data-factory-data-movement-activities.md)，該文會提供使用複製活動來移動資料的一般概觀。 本文也會列出複製活動所支援作為來源和接收的資料存放區。
@@ -34,7 +34,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 ## <a name="supported-scenarios-and-authentication-types"></a>支援的案例和驗證類型
 
-您可以使用這個 HTTP 連接器，藉由使用 HTTP **GET**或 **POST** 方法，從雲端和內部部署 HTTP/S 端點擷取資料。 支援下列驗證類型︰**匿名** **基本**、**摘要**、**Windows**和 **ClientCertificate**。 請注意此連接器和 [Web 資料表連接器](data-factory-web-table-connector.md)的差異。 Web 資料表連接器可從 HTML 網頁擷取資料表內容。
+您可以使用這個 HTTP 連接器，藉由使用 HTTP *GET*或 **POST** 方法，從雲端和內部部署 HTTP/S 端點擷取資料。 支援下列驗證類型︰**匿名** **基本**、**摘要**、**Windows**和 **ClientCertificate**。 請注意此連接器和 [Web 資料表連接器](data-factory-web-table-connector.md)的差異。 Web 資料表連接器可從 HTML 網頁擷取資料表內容。
 
 從內部部署 HTTP 端點複製資料時，您必須在內部部署環境或 Azure VM 中安裝資料管理閘道。 若要了解資料管理閘道和如何設定閘道的逐步指示，請參閱[在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -68,7 +68,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 | 屬性 | 描述 | 必要項 |
 | --- | --- | --- |
 | userName | 用來存取 HTTP 端點的使用者名稱。 | 是 |
-| password | 使用者 (**username**) 的密碼。 | 是 |
+| 密碼 | 使用者 (**username**) 的密碼。 | 是 |
 
 **範例︰使用基本、摘要或 Windows 驗證**
 
@@ -97,7 +97,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 | --- | --- | --- |
 | embeddedCertData | PFX 檔案二進位資料的 Base64 編碼內容。 | 指定 **embeddedCertData** 或 **certThumbprint** |
 | certThumbprint | 憑證指紋已安裝在您閘道器電腦的憑證存放區上。 當您從內部部署 HTTP 來源複製資料時才適用。 | 指定 **embeddedCertData** 或 **certThumbprint** |
-| password | 與憑證相關聯的密碼。 | 否 |
+| 密碼 | 與憑證相關聯的密碼。 | 否 |
 
 如果您使用 **certThumbprint** 進行驗證且憑證已安裝在本機電腦的個人存放區中，請授與讀取權限給閘道服務︰
 
@@ -164,8 +164,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 | requestMethod | HTTP 方法。 允許的值為 **GET** 和 **POST**。 | 否 <br />(預設值為 **GET**) |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的主體。 | 否 |
-| format | 如果您想要「從 HTTP 端點依現狀擷取資料」而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
-| compression | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 如果您想要「從 HTTP 端點依現狀擷取資料」而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| 壓縮 | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 **範例︰使用 GET (預設值) 方法**
 
@@ -238,8 +238,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 *   一個 [HTTP](#linked-service-properties) 類型的連結服務。
 *   [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-*   [Http](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-*   [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
+*   [Http](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+*   [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
 *   [管線](data-factory-create-pipelines.md)，其擁有的複製活動會使用 [HttpSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 範例會每隔一小時就把 HTTP 來源的資料複製到 Azure Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。

@@ -4,11 +4,11 @@ description: QnA Maker 知識庫是由一組問答集（QnA）集以及與每個
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843340"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389164"
 ---
 # <a name="importing-from-data-sources"></a>從資料來源匯入
 
@@ -28,7 +28,7 @@ ms.locfileid: "76843340"
 
 匯入知識庫後，將會取代現有知識庫的內容。 匯入需要包含問題和答案的結構化 `.tsv` 檔案。 此資訊可協助 QnA Maker 將問答集分組，並將其屬性設定為特定的資料來源。
 
-| 問題  | 答案  | 來源| 中繼資料（1個索引鍵：1個值） |
+| 問題  | Answer  | 來源| 中繼資料（1個索引鍵：1個值） |
 |-----------|---------|----|---------------------|
 | 問題 1 | 解答 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 問題 2 | 解答 2 | 編輯|    `Key:Value`       |
@@ -63,7 +63,7 @@ ms.locfileid: "76843340"
 > [!div class="nextstepaction"]
 > [知識庫的開發生命週期](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 使用 QnA Maker 的[Markdown 參考](../reference-markdown-format.md)，協助您設定答案的格式。
 

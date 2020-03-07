@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045815"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388755"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教學課程：以手動方式在 Azure SQL Server VM 上設定可用性群組
 
@@ -32,13 +32,13 @@ ms.locfileid: "76045815"
 
 ![可用性群組](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您對「SQL Server Always On 可用性群組」有基本的了解。 如需詳細資訊，請參閱 [AlwaysOn 可用性群組概觀 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
 下表列出開始本教學課程之前，您必須完成的必要條件：
 
-|  |需求 |說明 |
+|  |需求 |描述 |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 兩部 SQL Server | - 在 Azure 可用性設定組中 <br/> - 在單一網域中 <br/> - 已安裝「容錯移轉叢集」功能 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | 叢集見證的檔案共用 |  
@@ -72,7 +72,7 @@ ms.locfileid: "76045815"
    ![建立叢集](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. 在「建立叢集精靈」中，以下表中的設定逐步完成每個頁面來建立單節點叢集：
 
-   | 頁 | 設定 |
+   | 頁面 | 設定 |
    | --- | --- |
    | 開始之前 |使用預設值 |
    | 選取伺服器 |在 [輸入伺服器名稱] 中輸入第一部 SQL Server 名稱，然後按一下 [新增]。 |
@@ -355,7 +355,7 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
    ![容錯移轉叢集管理員中的 AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. 按一下頁面底部的 [新增]。
+1. 按一下 **[建立]** 。
 1. 設定負載平衡器的下列參數。
 
    | 設定 | 欄位 |
@@ -402,9 +402,9 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
 1. 依照下列方式設定接聽程式健康情況探查：
 
-   | 設定 | 說明 | 範例
+   | 設定 | 描述 | 範例
    | --- | --- |---
-   | **名稱** | 文字 | SQLAlwaysOnEndPointProbe |
+   | **名稱** | Text | SQLAlwaysOnEndPointProbe |
    | **通訊協定** | 選擇 [TCP] | TCP |
    | **通訊埠** | 任何未使用的連接埠 | 59999 |
    | **間隔**  | 探查嘗試間隔的時間長度 (秒) |5 |
@@ -418,9 +418,9 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
 1. 依照下列方式接聽程式負載平衡規則。
 
-   | 設定 | 說明 | 範例
+   | 設定 | 描述 | 範例
    | --- | --- |---
-   | **名稱** | 文字 | SQLAlwaysOnEndPointListener |
+   | **名稱** | Text | SQLAlwaysOnEndPointListener |
    | **前端 IP 位址** | 選擇一個位址 |使用您建立負載平衡器時所建立的位址。 |
    | **通訊協定** | 選擇 [TCP] |TCP |
    | **通訊埠** | 使用可用性群組接聽程式的連接埠 | 1433 |
@@ -445,9 +445,9 @@ WSFC IP 位址也必須位於負載平衡器上。
 
 1. 依照下列所述設定 WSFC 叢集核心 IP 位址健康情況探查：
 
-   | 設定 | 說明 | 範例
+   | 設定 | 描述 | 範例
    | --- | --- |---
-   | **名稱** | 文字 | WSFCEndPointProbe |
+   | **名稱** | Text | WSFCEndPointProbe |
    | **通訊協定** | 選擇 [TCP] | TCP |
    | **通訊埠** | 任何未使用的連接埠 | 58888 |
    | **間隔**  | 探查嘗試間隔的時間長度 (秒) |5 |
@@ -459,9 +459,9 @@ WSFC IP 位址也必須位於負載平衡器上。
 
 1. 依照下列所述設定叢集核心 IP 位址負載平衡規則。
 
-   | 設定 | 說明 | 範例
+   | 設定 | 描述 | 範例
    | --- | --- |---
-   | **名稱** | 文字 | WSFCEndPoint |
+   | **名稱** | Text | WSFCEndPoint |
    | **前端 IP 位址** | 選擇一個位址 |使用您在設定 WSFC IP 位址時所建立的位址。 這與接聽程式 IP 位址不同 |
    | **通訊協定** | 選擇 [TCP] |TCP |
    | **通訊埠** | 使用叢集 IP 位址的連接埠。 這個可用的連接埠不用於接聽程式探查連接埠。 | 58888 |

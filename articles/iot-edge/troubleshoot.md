@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772239"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387162"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常見問題和解決方案
 
@@ -373,7 +373,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 
 雖然 IoT Edge 提供增強的設定來保護 Azure IoT Edge 執行階段和已部署的模組，但它仍然倚賴基礎的機器和網路設定。 因此，請務必確定已設定適當的網路和防火牆規則，以提供安全的邊緣對雲端通訊。 當裝載 Azure IoT Edge 執行時間的基礎伺服器設定防火牆規則時，可以使用下表做為指導方針：
 
-|通訊協定|Port|傳入|傳出|指導方針|
+|通訊協定|連接埠|傳入|傳出|指引|
 |--|--|--|--|--|
 |MQTT|8883|已封鎖 (預設值)|已封鎖 (預設值)|<ul> <li>使用 MQTT 作為通訊協定時，請將「傳出」(輸出) 設定為「開放」。<li>IoT Edge 不支援適用於 MQTT 的 1883。 <li>應該將傳入 (輸入) 連線封鎖。</ul>|
 |AMQP|5671|已封鎖 (預設值)|開放 (預設值)|<ul> <li>IoT Edge 的預設通訊協定。 <li> 如果未設定 Azure IoT Edge 使用其他支援的通訊協定，或 AMQP 是所需的通訊協定，則必須設定為「開放」。<li>IoT Edge 不支援適用於 AMQP 的 5672。<li>當 Azure IoT Edge 使用不同的 IoT Hub 已支援通訊協定時，請封鎖此連接埠。<li>應該將傳入 (輸入) 連線封鎖。</ul></ul>|
@@ -403,7 +403,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 
 將 `daemon.json` 放在您平臺的正確位置：
 
-| 平台 | 位置 |
+| 平台 | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | 具有 Windows 容器的 windows 主機 | `C:\ProgramData\iotedge-moby\config` |

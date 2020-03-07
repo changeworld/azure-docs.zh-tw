@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382580"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure Front 服務中 HTTP 標頭的通訊協定支援
 本文概述 Front 門板服務支援的通訊協定，以及部分的呼叫路徑（請參閱影像）。 下列各節提供 Front 開門服務所支援之 HTTP 標頭的詳細資訊。

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393532"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用適用於 SysRq 和 NMI 呼叫的序列主控台
 
@@ -51,7 +51,7 @@ echo "1" >/proc/sys/kernel/sysrq
 ### <a name="command-keys"></a>命令鍵
 來自上述的 SysRq 系統管理指南：
 
-|Command| 函式
+|命令| 函數
 | ------| ----------- |
 |``b``  |   將立即重新啟動系統，並且不會同步或取消掛接磁碟。
 |``c``  |   將執行 NULL 指標取值 (Dereference) 引起的系統損壞。 如有設定，將會採用損毀傾印 (crashdump)。

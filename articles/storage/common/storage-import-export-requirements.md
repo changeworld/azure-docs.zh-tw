@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360928"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 匯入/匯出系統需求
 
@@ -57,7 +57,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 以下是使用 Azure 匯入/匯出服務時支援的儲存類型清單。
 
 
-|工作 (Job)  |儲存體服務 |支援的  |不支援  |
+|工作 (Job)  |儲存體服務 |支援  |不支援  |
 |---------|---------|---------|---------|
 |匯入     |  Azure Blob 儲存體 <br><br> Azure 檔案儲存體       | 支援區塊 Blob 與分頁 Blob <br><br> 支援檔案服務          |
 |匯出     |   Azure Blob 儲存體       | 支援區塊 Blob、分頁 Blob 及附加 Blob         | 不支援 Azure 檔案服務
@@ -72,7 +72,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 以下是支援與匯入/匯出服務搭配使用的儲存類型清單。
 
 
-|磁碟類型  |大小  |支援的 |
+|磁碟類型  |大小  |支援 |
 |---------|---------|---------|
 |SSD    |   2.5 吋      |SATA III          |
 |HDD     |  2.5 吋<br>3.5 吋       |SATA II、SATA III         |

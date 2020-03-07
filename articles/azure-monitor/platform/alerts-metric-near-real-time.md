@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9585e74170d21ad899224462b6e41e7e9bb75727
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e4dfc33756a287b6d2f6e41edded3332ca85241d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664809"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363402"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -60,6 +60,8 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 |Microsoft.KeyVault/vaults| 否 |否 |[保存庫](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows |N/A | 否 |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces|是| 否 | [機器學習服務](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.NetApp/netAppAccounts/capacityPools |是| 否 | [Azure NetApp 容量集區](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft NetApp/netAppAccounts/capacityPools/磁片區 |是| 否 | [Azure NetApp 磁片區](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways|N/A| 否 |  |
 |Microsoft.Network/dnsZones | N/A| 否 | [DNS 區域](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | N/A | 否 |[快速路由線路](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
@@ -81,6 +83,8 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 |Microsoft.Storage/storageAccounts/services | 是| 否 | [Blob 服務](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[檔案服務](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[佇列服務](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)及[資料表服務](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs |N/A| 否 | [串流分析](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |VMWareCloudSimple/virtualMachines |是|否 |[CloudSimple 虛擬機器](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
+|Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [App Service 環境多角色集區](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [App Service 環境背景工作集區](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | 是 | 否 | [App Service 方案](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | 是 | 否 | [App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) 與[函式](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [App Service 位置](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|

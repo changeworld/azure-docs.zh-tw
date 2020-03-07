@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482409"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385200"
 ---
 # <a name="manage-farms"></a>管理農場
 
@@ -25,7 +25,7 @@ ms.locfileid: "75482409"
 
     以下是範例影像：
 
-    ![專案伺服器陣列的節拍](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. 選取 [**建立伺服器**陣列]，並提供**名稱**、**裁剪**和**位址**。
@@ -35,12 +35,12 @@ ms.locfileid: "75482409"
 
 1. **地圖上的標記**：使用地圖控制項工具來繪製和標示伺服器陣列的界限。 為了標記界限，![Project 伺服器陣列的](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) 並標示出確切的界限。
 
-    ![專案伺服器陣列的節拍](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **貼上 GeoJson 程式碼**： GeoJson 是使用 JAVASCRIPT 物件標記法（JSON）來編碼地理資料結構的格式。 此選項會顯示一個文字方塊，您可以在其中輸入 GeoJSON 字串來標示伺服器陣列界限。 您也可以從 GeoJSON.io 建立 GeoJSON 程式碼。
 使用工具提示來協助填入資訊。
 
-    ![專案伺服器陣列的節拍](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  選取 [**提交**] 以建立伺服器陣列。 新的伺服器陣列隨即建立，並顯示在 [**伺服器**陣列] 頁面中。
 
@@ -60,7 +60,7 @@ ms.locfileid: "75482409"
 1.  選取要查看和編輯服務器陣列的伺服器陣列。
 2.  選取 [**編輯服務器**陣列] 以編輯服務器陣列資訊。 在 [**伺服器陣列詳細資料**] 視窗中，您可以編輯**名稱**、**裁剪**、**位址**和定義**伺服器陣列界限**欄位。
 
-    ![專案伺服器陣列的節拍](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
+    ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
 3. 選取 [**提交**] 以儲存編輯的詳細資料。
 
@@ -71,7 +71,7 @@ ms.locfileid: "75482409"
 1.  從清單中選取伺服器陣列，以刪除伺服器陣列詳細資料。
 2.  選取 [**刪除伺服器**陣列] 以刪除伺服器陣列。
 
-    ![專案伺服器陣列的節拍](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > 當您刪除伺服器陣列時，與伺服器陣列相關聯的裝置和對應不會被刪除。 與裝置和對應相關聯的任何伺服器陣列資訊都不相關。 您可以繼續從 FarmBeats 服務查看裝置、遙測和對應。

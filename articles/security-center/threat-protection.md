@@ -1,5 +1,5 @@
 ---
-title: Azure 資訊安全中心中的威脅防護
+title: Azure 資訊安全中心內的威脅防護
 description: 本主題描述受 Azure 資訊安全中心威脅防護功能保護的資源
 services: security-center
 documentationcenter: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
 ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921635"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373091"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心中的威脅防護
+# <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
 此頁面簡要說明標準定價層上的使用者 Azure 資訊安全中心所顯示的安全性警示來源。
 
