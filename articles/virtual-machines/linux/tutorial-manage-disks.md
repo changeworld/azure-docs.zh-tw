@@ -17,11 +17,11 @@ ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
 ms.openlocfilehash: dc987fa1a3476b81b198726350d56333b53c795f
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385005"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 管理 Azure 磁碟
 
@@ -41,9 +41,9 @@ Azure 虛擬機器 (VM) 使用磁碟來儲存作業系統、應用程式和資�
 
 建立 Azure 虛擬機器後，有兩個磁碟會自動連結到虛擬機器。
 
-**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可以高達 2 TB。 OS 磁碟預設會標示為 /dev/sda  。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 因為此組態，OS 磁碟**不得**用於應用程式或資料。 請對應用程式和資料使用資料磁碟，本教學課程稍後會詳細說明。
+**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可以高達 2 TB。 OS 磁碟預設會標示為 /dev/sda。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 因為此組態，OS 磁碟**不得**用於應用程式或資料。 請對應用程式和資料使用資料磁碟，本教學課程稍後會詳細說明。
 
-**暫存磁碟** - 暫存磁碟會使用與 VM 位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 VM 大小。 暫存磁碟會標示為 /dev/sdb  ，其掛接點為 /mnt  。
+**暫存磁碟** - 暫存磁碟會使用與 VM 位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 VM 大小。 暫存磁碟會標示為 /dev/sdb，其掛接點為 /mnt。
 
 ## <a name="azure-data-disks"></a>Azure 資料磁碟
 
@@ -70,7 +70,7 @@ Azure 提供兩種類型的磁碟，分別是標準和進階。
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。
 
-若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]  。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-and-attach-disks"></a>建立和連結磁碟
 
@@ -84,7 +84,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 命令來建立 VM。 下列範例會建立名為 myVM  的 VM，新增名為 azureuser  的使用者帳戶，並產生 SSH 金鑰 (如果沒有這些金鑰的話)。 `--datadisk-sizes-gb` 引數用來指定應該建立一個額外的磁碟並連結至虛擬機器。 若要建立並連結多個磁碟，請使用以空格分隔的磁碟大小值清單。 在下列範例中，會建立具有兩個資料磁碟 (均為 128 GB) 的 VM。 因為磁碟大小是 128 GB，所以這些磁碟都會設為 P10，其可提供每個磁碟最高 500 IOPS。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 命令來建立 VM。 下列範例會建立名為 myVM 的 VM，新增名為 azureuser 的使用者帳戶，並產生 SSH 金鑰 (如果沒有這些金鑰的話)。 `--datadisk-sizes-gb` 引數用來指定應該建立一個額外的磁碟並連結至虛擬機器。 若要建立並連結多個磁碟，請使用以空格分隔的磁碟大小值清單。 在下列範例中，會建立具有兩個資料磁碟 (均為 128 GB) 的 VM。 因為磁碟大小是 128 GB，所以這些磁碟都會設為 P10，其可提供每個磁碟最高 500 IOPS。
 
 ```azurecli-interactive
 az vm create \
@@ -139,13 +139,13 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-現在可以透過 datadrive  掛接點存取磁碟，而執行 `df -h` 命令可驗證此掛接點。
+現在可以透過 datadrive 掛接點存取磁碟，而執行 `df -h` 命令可驗證此掛接點。
 
 ```bash
 df -h
 ```
 
-輸出會顯示掛接在 /datadrive  上的新磁碟機。
+輸出會顯示掛接在 /datadrive 上的新磁碟機。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -154,7 +154,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
-為了確保磁碟機會在重新開機之後重新掛接，必須將磁碟機新增至 /etc/fstab  檔案。 若要這麼做，請使用 `blkid` 公用程式取得磁碟的 UUID。
+為了確保磁碟機會在重新開機之後重新掛接，必須將磁碟機新增至 /etc/fstab 檔案。 若要這麼做，請使用 `blkid` 公用程式取得磁碟的 UUID。
 
 ```bash
 sudo -i blkid
@@ -166,7 +166,7 @@ sudo -i blkid
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-將類似以下的一行新增至 /etc/fstab  檔案。
+將類似以下的一行新增至 /etc/fstab 檔案。
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
@@ -238,7 +238,7 @@ az vm create \
 
 所有資料磁碟都必須重新連結至虛擬機器。
 
-首先使用 [az disk list](/cli/azure/disk#az-disk-list) 命令尋找資料磁碟名稱。 此範例會將磁碟名稱放入名為 datadisk  的變數，該變數使用於下一個步驟。
+首先使用 [az disk list](/cli/azure/disk#az-disk-list) 命令尋找資料磁碟名稱。 此範例會將磁碟名稱放入名為 datadisk 的變數，該變數使用於下一個步驟。
 
 ```azurecli-interactive
 datadisk=$(az disk list \

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372198"
 ---
 # <a name="configure-storage"></a>設定儲存體
 
@@ -49,7 +49,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
 
 1. 按一下左側的 [Core Filer] \(核心檔案管理工具\) > [Manage Core Filers] \(管理核心檔案管理工具\)。
 
-1. 按一下頁面底部的 [新增]。
+1. 按一下 **[建立]** 。
 
    ![新增核心檔案管理工具頁面的螢幕擷取畫面，其中游標置於 [建立] 按鈕上](media/avere-vfxt-add-core-filer-start.png)
 
@@ -130,7 +130,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
    | Credential name (認證名稱) | 任何描述性的名稱 |
    | 服務類型 | （選取 Azure 儲存體存取金鑰） |
    | 租用戶 | 儲存體帳戶名稱 |
-   | 訂閱 | 訂用帳戶識別碼 |
+   | 訂用帳戶 | 訂用帳戶識別碼 |
    | Storage Access Key (儲存體存取金鑰) | Azure 儲存體帳戶金鑰 (在上一個步驟中所複製) |
 
    按一下 [提交]。

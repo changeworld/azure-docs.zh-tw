@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379197"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用受控識別來驗證 Azure Data Lake Storage Gen1 的串流分析
 
@@ -178,7 +178,7 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
 ## <a name="limitations"></a>限制
 此功能不支援下列各項：
 
-1. **多租使用者存取**：針對指定的串流分析作業所建立的服務主體將位於建立作業的 Azure Active Directory 租使用者上，且不能用於位於不同 Azure Active Directory 上的資源。出租. 因此，您只能在與您的 Azure 串流分析作業相同 Azure Active Directory 租使用者內的 ADLS Gen 1 資源上使用 MSI。 
+1. **多租使用者存取**：針對指定的串流分析作業所建立的服務主體將位於建立作業的 Azure Active Directory 租使用者上，且不能用於位於不同 Azure Active Directory 租使用者上的資源。 因此，您只能在與您的 Azure 串流分析作業相同 Azure Active Directory 租使用者內的 ADLS Gen 1 資源上使用 MSI。 
 
 2. **[使用者指派](../active-directory/managed-identities-azure-resources/overview.md)** 的身分識別：不受支援。 這表示使用者不能輸入自己的服務主體，以供其串流分析作業使用。 服務主體是由 Azure 串流分析所產生。
 

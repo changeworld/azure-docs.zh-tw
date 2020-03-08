@@ -1,5 +1,5 @@
 ---
-title: 自訂 Azure AD 租使用者應用程式宣告（Powershell）
+title: 自訂 Azure AD 租使用者應用程式宣告（PowerShell）
 titleSuffix: Microsoft identity platform
 description: 此頁面說明 Azure Active Directory 宣告對應。
 services: active-directory
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375810"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>操作說明：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -44,7 +44,7 @@ ms.locfileid: "76699065"
 
 有些宣告集界定了自己在權杖中的使用方式和使用時機。
 
-| 宣告集 | 說明 |
+| 宣告集 | 描述 |
 |---|---|
 | 核心宣告集 | 無論原則為何，都存在於每個權杖中。 這些宣告也都將被視為受限制的宣告，無法予以修改。 |
 | 基本宣告集 | 包含會根據預設向權杖發出的宣告 (除了核心宣告集以外)。 您可以使用宣告對應原則，省略或修改基本宣告。 |
@@ -59,7 +59,7 @@ ms.locfileid: "76699065"
 | access_token |
 | account_type |
 | acr |
-| actor |
+| actor (執行者) |
 | actortoken |
 | aio |
 | altsecid |
@@ -71,7 +71,7 @@ ms.locfileid: "76699065"
 | appctxsender |
 | appid |
 | appidacr |
-| assertion |
+| Assertion - 判斷提示 |
 | at_hash |
 | aud |
 | auth_data |
@@ -159,7 +159,7 @@ ms.locfileid: "76699065"
 | resource |
 | 角色 (role) |
 | 角色 |
-| scope |
+| 範圍 |
 | scp |
 | sid |
 | 簽章 |
@@ -284,47 +284,47 @@ ms.locfileid: "76699065"
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每個來源的有效識別碼值
 
-| 來源 | ID | 說明 |
+| 來源 | ID | 描述 |
 |-----|-----|-----|
-| User | surname | 姓氏 |
-| User | givenname | 名字 |
-| User | displayname | 顯示名稱 |
-| User | objectid | ObjectID |
-| User | mail | 電子郵件地址 |
-| User | userprincipalname | 使用者主體名稱 |
-| User | department|department|
-| User | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
-| User | netbiosname| NetBios 名稱 |
-| User | dnsdomainname | DNS 網域名稱 |
-| User | onpremisesecurityidentifier | 內部部署安全識別碼 |
-| User | companyname| 組織名稱 |
-| User | streetaddress | 街道地址 |
-| User | postalcode | 郵遞區號 |
-| User | preferredlanguange | 慣用語言 |
-| User | onpremisesuserprincipalname | 內部部署 UPN |
-| User | mailNickname | 郵件暱稱 |
-| User | extensionattribute1 | 擴充屬性 1 |
-| User | extensionattribute2 | 擴充屬性 2 |
-| User | extensionattribute3 | 擴充屬性 3 |
-| User | extensionattribute4 | 擴充屬性 4 |
-| User | extensionattribute5 | 擴充屬性 5 |
-| User | extensionattribute6 | 擴充屬性 6 |
-| User | extensionattribute7 | 擴充屬性 7 |
-| User | extensionattribute8 | 擴充屬性 8 |
-| User | extensionattribute9 | 擴充屬性 9 |
-| User | extensionattribute10 | 擴充屬性 10 |
-| User | extensionattribute11 | 擴充屬性 11 |
-| User | extensionattribute12 | 擴充屬性 12 |
-| User | extensionattribute13 | 擴充屬性 13 |
-| User | extensionattribute14 | 擴充屬性 14 |
-| User | extensionattribute15 | 擴充屬性 15 |
-| User | othermail | 其他郵件 |
-| User | country | 國家/地區 |
-| User | city | 城市 |
-| User | state | 狀態 |
-| User | jobtitle | 職稱 |
-| User | employeeid | 員工識別碼 |
-| User | facsimiletelephonenumber | 傳真電話號碼 |
+| 使用者 | surname | 姓氏 |
+| 使用者 | givenname | 名稱 |
+| 使用者 | displayname | 顯示名稱 |
+| 使用者 | objectid | ObjectID |
+| 使用者 | 郵件 | 電子郵件地址 |
+| 使用者 | userprincipalname | 使用者主體名稱 |
+| 使用者 | department|department|
+| 使用者 | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
+| 使用者 | netbiosname| NetBios 名稱 |
+| 使用者 | dnsdomainname | DNS 網域名稱 |
+| 使用者 | onpremisesecurityidentifier | 內部部署安全識別碼 |
+| 使用者 | companyname| 組織名稱 |
+| 使用者 | streetaddress | 街道地址 |
+| 使用者 | postalcode | 郵遞區號 |
+| 使用者 | preferredlanguange | 慣用語言 |
+| 使用者 | onpremisesuserprincipalname | 內部部署 UPN |
+| 使用者 | mailnickname | 郵件暱稱 |
+| 使用者 | extensionattribute1 | 擴充屬性 1 |
+| 使用者 | extensionattribute2 | 擴充屬性 2 |
+| 使用者 | extensionattribute3 | 擴充屬性 3 |
+| 使用者 | extensionattribute4 | 擴充屬性 4 |
+| 使用者 | extensionattribute5 | 擴充屬性 5 |
+| 使用者 | extensionattribute6 | 擴充屬性 6 |
+| 使用者 | extensionattribute7 | 擴充屬性 7 |
+| 使用者 | extensionattribute8 | 擴充屬性 8 |
+| 使用者 | extensionattribute9 | 擴充屬性 9 |
+| 使用者 | extensionattribute10 | 擴充屬性 10 |
+| 使用者 | extensionattribute11 | 擴充屬性 11 |
+| 使用者 | extensionattribute12 | 擴充屬性 12 |
+| 使用者 | extensionattribute13 | 擴充屬性 13 |
+| 使用者 | extensionattribute14 | 擴充屬性 14 |
+| 使用者 | extensionattribute15 | 擴充屬性 15 |
+| 使用者 | othermail | 其他郵件 |
+| 使用者 | country | Country |
+| 使用者 | 城市 | 城市 |
+| 使用者 | state | 狀態 |
+| 使用者 | jobtitle | 職稱 |
+| 使用者 | employeeid | 員工 ID |
+| 使用者 | facsimiletelephonenumber | 傳真電話號碼 |
 | application, resource, audience | displayname | 顯示名稱 |
 | application, resource, audience | objected | ObjectID |
 | application, resource, audience | tags | 服務主體標籤 |
@@ -358,10 +358,10 @@ ms.locfileid: "76699065"
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：轉換方法和預期的輸入和輸出
 
-|TransformationMethod|預期的輸入|預期的輸出|說明|
+|TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
 |Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
+|ExtractMailPrefix|郵件|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
 
 **InputClaims：** 使用 InputClaims 元素可從宣告結構描述項目將資料傳遞至轉換。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -384,27 +384,27 @@ ms.locfileid: "76699065"
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允許作為 SAML NameID 資料來源的屬性
 
-|來源|ID|說明|
+|來源|ID|描述|
 |-----|-----|-----|
-| User | mail|電子郵件地址|
-| User | userprincipalname|使用者主體名稱|
-| User | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
-| User | employeeid|員工識別碼|
-| User | extensionattribute1 | 擴充屬性 1 |
-| User | extensionattribute2 | 擴充屬性 2 |
-| User | extensionattribute3 | 擴充屬性 3 |
-| User | extensionattribute4 | 擴充屬性 4 |
-| User | extensionattribute5 | 擴充屬性 5 |
-| User | extensionattribute6 | 擴充屬性 6 |
-| User | extensionattribute7 | 擴充屬性 7 |
-| User | extensionattribute8 | 擴充屬性 8 |
-| User | extensionattribute9 | 擴充屬性 9 |
-| User | extensionattribute10 | 擴充屬性 10 |
-| User | extensionattribute11 | 擴充屬性 11 |
-| User | extensionattribute12 | 擴充屬性 12 |
-| User | extensionattribute13 | 擴充屬性 13 |
-| User | extensionattribute14 | 擴充屬性 14 |
-| User | extensionattribute15 | 擴充屬性 15 |
+| 使用者 | 郵件|電子郵件地址|
+| 使用者 | userprincipalname|使用者主體名稱|
+| 使用者 | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
+| 使用者 | employeeid|員工 ID|
+| 使用者 | extensionattribute1 | 擴充屬性 1 |
+| 使用者 | extensionattribute2 | 擴充屬性 2 |
+| 使用者 | extensionattribute3 | 擴充屬性 3 |
+| 使用者 | extensionattribute4 | 擴充屬性 4 |
+| 使用者 | extensionattribute5 | 擴充屬性 5 |
+| 使用者 | extensionattribute6 | 擴充屬性 6 |
+| 使用者 | extensionattribute7 | 擴充屬性 7 |
+| 使用者 | extensionattribute8 | 擴充屬性 8 |
+| 使用者 | extensionattribute9 | 擴充屬性 9 |
+| 使用者 | extensionattribute10 | 擴充屬性 10 |
+| 使用者 | extensionattribute11 | 擴充屬性 11 |
+| 使用者 | extensionattribute12 | 擴充屬性 12 |
+| 使用者 | extensionattribute13 | 擴充屬性 13 |
+| 使用者 | extensionattribute14 | 擴充屬性 14 |
+| 使用者 | extensionattribute15 | 擴充屬性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允許 SAML NameID 使用的轉換方法
 
@@ -415,7 +415,7 @@ ms.locfileid: "76699065"
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
 
-您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure Powershell Cmdlet `new-azureadapplicationkeycredential` 來為您的應用程式物件建立對稱金鑰認證。 如需此 Azure Powershell Cmdlet 的詳細資訊，請按一下[這裡](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet `new-azureadapplicationkeycredential`，為您的應用程式物件建立對稱金鑰認證。 如需此 Azure PowerShell Cmdlet 的詳細資訊，請參閱[AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
 已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其[OpenID connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，藉以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 元資料檔案格式： 
 
@@ -469,7 +469,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
-   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph](/graph/traverse-the-graph)。 或者，在 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -493,7 +493,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph](/graph/traverse-the-graph)。 或者，在 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -517,13 +517,13 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph](/graph/traverse-the-graph)。 或者，在 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰ 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 若要瞭解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對企業應用程式自訂 saml 權杖中發出的宣告](active-directory-saml-claims-customization.md)

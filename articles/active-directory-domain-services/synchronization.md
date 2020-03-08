@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612928"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378525"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD Domain Services 受控網域中同步處理物件和認證
 
@@ -38,7 +38,7 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 
 下表列出一些常見的屬性，以及它們如何同步處理至 Azure AD DS。
 
-| Azure AD DS 中的屬性 | 來源 | 注意 |
+| Azure AD DS 中的屬性 | 來源 | 注意事項 |
 |:--- |:--- |:--- |
 | UPN | Azure AD 租使用者中的使用者*UPN*屬性 | Azure AD 租使用者的 UPN 屬性會依相同方式同步處理，以 Azure AD DS。 最可靠的登入 Azure AD DS 受控網域的方式是使用 UPN。 |
 | SAMAccountName | Azure AD 租使用者中的使用者*mailNickname*屬性或自動產生 | *SAMAccountName*屬性是源自 Azure AD 租使用者中的*mailNickname*屬性。 如果有多個使用者帳戶具有相同的*mailNickname*屬性，則會自動產生*SAMAccountName* 。 如果使用者的*mailNickname*或*UPN*前置詞超過20個字元，則會自動產生*samaccountname*以符合*samaccountname*屬性的20個字元限制。 |
@@ -58,14 +58,14 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 | Azure AD 中的使用者屬性 | Azure AD DS 中的使用者屬性 |
 |:--- |:--- |
 | accountEnabled |userAccountControl (設定或清除 ACCOUNT_DISABLED 位元) |
-| city |l |
+| 城市 |l |
 | country |co |
 | department |department |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |
-| mail |mail |
+| 郵件 |郵件 |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName （有時可能會自動產生） |
 | mobile |mobile |
@@ -89,7 +89,7 @@ Azure Active Directory Domain Services （AD DS）受控網域中的物件和認
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName （有時可能會自動產生） |
-| mail |mail |
+| 郵件 |郵件 |
 | mailNickname |msDS-AzureADMailNickname |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |

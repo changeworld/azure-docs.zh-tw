@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887235"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389808"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 叢集的容量規劃
 
@@ -118,7 +118,7 @@ Azure 儲存體有某些[容量限制](../azure-resource-manager/management/azur
 1. 選取 **[下一步]：方案 > >** 。
 1. 在 [**詳細資料**] 頁面上，輸入問題的描述、選取問題的嚴重性、您偏好的連絡人方法，以及其他必要的欄位。
 1. 選取 **[下一步]： [檢查 + 建立 > >]** 。
-1. 在 [**審查 + 建立**] 索引標籤上，選取 [**建立**]。
+1. 在 [檢閱 + 建立] 索引標籤中，選取 [建立]。
 
 > [!NOTE]  
 > 如果需要在私人區域中新增 HDInsight 核心配額，請[提交允許清單要求](https://aka.ms/canaryintwhitelist)。

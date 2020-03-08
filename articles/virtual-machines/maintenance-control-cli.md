@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252190"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382728"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>預覽：使用維護控制和 Azure CLI 控制更新
 

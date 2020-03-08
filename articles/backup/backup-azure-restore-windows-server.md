@@ -5,11 +5,11 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450018"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396803"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure Resource Manager 部署模型將檔案還原至 Windows
 
@@ -40,7 +40,7 @@ ms.locfileid: "75450018"
 
     ![Azure 備份的螢幕擷取畫面，已反白顯示復原資料](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 在 [開始使用] 頁面中，若要將資料還原至同一台伺服器或電腦，請選取 [這台伺服器 (`<server name>`)] > [下一步]。
+3. 在 [開始使用] 頁面中，若要將資料還原至同一台伺服器或電腦，請選取 [這台伺服器 ( **)]`<server name>`**  > [下一步]。
 
     ![復原資料精靈 [開始使用] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228288"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391105"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ ms.locfileid: "78228288"
 | **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標記相依于**儲存體**和**AzureActiveDirectory**標記。 | 輸出 | 否 | 是 |
 | **AzureBotService** | Azure Bot 服務。 | 輸出 | 否 | 否 |
 | **AzureCloud** | 所有[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
-| **AzureCognitiveSearch** | Azure 認知搜尋。 <br/><br/>這個標記或此標籤所涵蓋的 IP 位址可用來授與索引子安全存取資料來源。 如需詳細資訊，請參閱[索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 | 輸入 | 否 | 否 |
+| **AzureCognitiveSearch** | Azure 認知搜尋。 <br/><br/>這個標記或此標籤所涵蓋的 IP 位址可用來授與索引子安全存取資料來源。 如需詳細資訊，請參閱[索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 <br/><br/> *注意*：搜尋服務的 ip 不會包含在此服務標籤的 ip 範圍清單中，而且**也必須新增**至資料來源的 ip 防火牆。 | 輸入 | 否 | 否 |
 | **AzureConnectors** | 適用于探查/後端連線的 Azure Logic Apps 連接器。 | 輸入 | 是 | 是 |
 | **AzureContainerRegistry** | Azure Container Registry。 | 輸出 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 輸出 | 是 | 是 |

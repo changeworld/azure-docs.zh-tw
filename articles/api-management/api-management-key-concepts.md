@@ -14,11 +14,11 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073425"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374410"
 ---
 # <a name="about-api-management"></a>關於 API 管理
 
@@ -60,7 +60,7 @@ API 管理 (APIM) 可用來為現有的後端服務建立一致的現代化 API 
   * 建立帳戶，並訂閱以取得 API 金鑰。
   * 存取他們的使用量分析資料。
 
-如需詳細資訊，請參閱[雲端式 API 管理：充分利用 API](https://j.mp/ms-apim-whitepaper) \(英文\) PDF 白皮書。 這份 CITO Research 發表的簡介白皮書涵蓋： 
+如需詳細資訊，請參閱 [雲端式 API 管理：如何運用 API 的威力](https://j.mp/ms-apim-whitepaper) PDF 白皮書 (英文)。 這份 CITO Research 發表的簡介白皮書涵蓋： 
  
  * 常見的 API 需求與挑戰
  * 解構 API 並呈現其外貌
@@ -71,17 +71,17 @@ API 管理 (APIM) 可用來為現有的後端服務建立一致的現代化 API 
  * 比較使用雲端與內部部署解決方案
  * Azure API 管理
  
-## <a name="apis"> </a>API 和作業
+## <a name="apis"> </a>Api 和作業
 API 是 API 管理服務執行個體的基礎。 每個 API 都代表可供開發人員使用的一組作業。 每個 API 都包含會實作 API 之後端服務的參考，而其作業會與後端服務實作的作業相對應。 API 管理中的作業可設定度相當高，並可控制 URL 對應、查詢和路徑參數、要求和回應內容，以及作業回應快取。 費率限制、配額和 IP 限制原則亦可在 API 或個別作業層級實作。
 
 如需詳細資訊，請參閱[如何建立 API][How to create APIs] 和[如何將作業新增至 API][How to add operations to an API]。
 
-## <a name="products"> </a> 產品
-產品是將 API 呈現給開發人員的方式。 在 API 管理中的產品包含一或多個 API，並且設定了標題、說明與使用規定。 產品可以是 [開放]  或 [受保護]  。 受保護產品必須先擁有訂用帳戶才能使用，開放產品則可以使用而不需訂用帳戶。 當產品可供開發人員使用時，即可將產品發佈。 發佈產品之後，開發人員即可檢視產品 (以及受保護產品訂閱時)。 訂用帳戶核准是在產品層級設定，可能需要管理員核准，或是可自動核准。
+## <a name="products"></a>產品
+產品是將 API 呈現給開發人員的方式。 在 API 管理中的產品包含一或多個 API，並且設定了標題、說明與使用規定。 產品可以是 [開放] 或 [受保護]。 受保護產品必須先擁有訂用帳戶才能使用，開放產品則可以使用而不需訂用帳戶。 當產品可供開發人員使用時，即可將產品發佈。 發佈產品之後，開發人員即可檢視產品 (以及受保護產品訂閱時)。 訂用帳戶核准是在產品層級設定，可能需要管理員核准，或是可自動核准。
 
 群組的作用是管理產品對於開發人員的可見度。 產品會將可見度授與群組，而開發人員可檢視並訂閱其所屬群組可見的產品。 
 
-## <a name="groups"> </a> 群組
+## <a name="groups"></a>群組
 群組的作用是管理產品對於開發人員的可見度。 API 管理具有下列不可變的系統群組：
 
 * **管理員** - Azure 訂用帳戶管理員是此群組的成員。 管理員可管理 API 管理服務執行個體、建立開發人員所使用的 API、作業和產品。
@@ -92,14 +92,14 @@ API 是 API 管理服務執行個體的基礎。 每個 API 都代表可供開�
 
 如需詳細資訊，請參閱[如何建立和使用群組][How to create and use groups]。
 
-## <a name="developers"> </a> 開發人員
+## <a name="developers"></a>開發人員
 開發人員代表 API 管理服務執行個體中的使用者帳戶。 開發人員可由管理員建立或邀請加入，也可以透過 [開發人員入口網站][Developer portal]註冊。 每個開發人員都是一或多個群組的成員，而且可訂閱對那些群組授與可見度的產品。
 
 當開發人員訂閱產品時，將可獲得產品的主要和次要金鑰。 在對產品的 API 進行呼叫時會使用該金鑰。
 
 如需詳細資訊，請參閱[如何建立或邀請開發人員][How to create or invite developers]和[如何將群組與開發人員建立關聯][How to associate groups with developers]。
 
-## <a name="policies"> </a> 原則
+## <a name="policies"></a>原則
 原則是 API 管理的強大功能，可讓 Azure 入口網站透過設定來變更 API 的行為。 原則是陳述式的集合，會因 API 的要求或回應循序執行。 常見陳述式包括從 XML 對 JSON 的格式轉換，以及可限制來自開發人員的傳入呼叫數量的呼叫費率限制，而且還有許多原則可供使用。
 
 如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程](/azure/api-management/api-management-advanced-policies#choose)和[設定變數](/azure/api-management/api-management-advanced-policies#set-variable)原則。 如需詳細資訊，請參閱[進階原則](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)和[原則運算式](/azure/api-management/api-management-policy-expressions)。
@@ -108,7 +108,7 @@ API 是 API 管理服務執行個體的基礎。 每個 API 都代表可供開�
 如需 API 管理原則的完整清單，請參閱 [原則參考文件][Policy reference]。 如需使用和設定原則的詳細資訊，請參閱 [API 管理原則][API Management policies]。 如需建立產品並加上費率限制和配額原則的教學課程，請參閱 [如何建立和設定進階產品設定][How create and configure advanced product settings]。
 
 
-## <a name="developer-portal"> </a> 開發人員入口網站
+## <a name="developer-portal"></a>開發人員入口網站
 開發人員入口網站是開發人員可了解您的 API、檢視和呼叫作業，以及訂閱產品的地方。 潛在客戶可以造訪開發人員入口網站、檢視 API 和作業，以及註冊。 開發人員入口網站的 URL 位於 Azure 入口網站中 API 管理服務執行個體的儀表板上。
 
 透過加入自訂內容、自訂樣式和加入自己的品牌，即可自訂開發人員入口網站的外觀及操作。

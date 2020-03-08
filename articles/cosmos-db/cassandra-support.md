@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397353"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -49,18 +49,18 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 * date  
 * decimal  
 * double  
-* FLOAT  
+* float  
 * 冰雪奇緣  
 * inet  
 * int  
 * list  
 * set  
-* SMALLINT  
-* text  
+* smallint  
+* 文字  
 * time  
 * timestamp  
 * timeuuid  
-* TINYINT  
+* tinyint  
 * Tuple  
 * uuid  
 * varchar  
@@ -73,7 +73,7 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 
 Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
-* Token  
+* 權杖  
 * 彙總函式
   * min、max、avg、count
 * Blob 轉換函式 
@@ -96,7 +96,7 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
 ## <a name="cassandra-api-limits"></a>Cassandra API 限制
 
-Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 就像所有其他 API 一樣，每個分割區索引鍵的資料不能超過 20 GB。
+Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 在所有其他 Api 中，每個分割區索引鍵的資料不能超過 20 GB。
 
 ## <a name="tools"></a>工具 
 
@@ -147,11 +147,11 @@ Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
-* Insert 
+* INSERT 
 * SELECT 
 * UPDATE 
 * BATCH - 只支援未記錄的命令 
-* 刪除
+* DELETE
 
 透過 CQL v4 相容 SDK 執行的所有 CRUD 作業，將傳回有關錯誤及已取用的要求單位等額外資訊。 DELETE 和 UPDATE 命令應使用納入考慮的資源管理來處理，確保會以最有效率的方式使用佈建的輸送量。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78186738"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668404"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -101,7 +101,7 @@ ms.locfileid: "78186738"
 | SubjectNamingInfo | 0:1 | 控制權杖中主體名稱的產生，其中主體名稱與宣告分開指定。 例如，OAuth 或 SAML。  |
 | IncludeInSso | 0:1 |  此技術設定檔的使用是否應該套用會話的單一登入（SSO）行為，或改為要求明確的互動。 此元素僅適用于驗證技術設定檔中使用的 SelfAsserted 設定檔。 可能的值：`true` (預設) 或 `false`。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | 技術設定檔的識別碼，您打算將所有輸入和輸出宣告加入此技術設定檔。 必須在相同原則檔中定義參考的技術設定檔。 |
-| IncludeTechnicalProfile |0:1 | 技術設定檔的識別碼，您打算將所有資料加入此技術設定檔。 參考的技術設定檔必須存在於相同的原則檔中。 |
+| IncludeTechnicalProfile |0:1 | 技術設定檔的識別碼，您打算將所有資料加入此技術設定檔。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | 用於工作階段管理的不同技術設定檔。 |
 |EnabledForUserJourneys| 0:1 |控制是否可在使用者旅程圖中執行技術設定檔。  |
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: HT
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196649"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269053"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至適當的 ADX 叢集，以儲存工作區資料。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
@@ -63,7 +63,7 @@ Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer
 
 這些函式會耗用 CPU，與它們所處理的資料列數目成正比。 最有效率的優化是在查詢初期加入 where 條件，以便在執行大量 CPU 的函式之前，盡可能篩選出最多的記錄。
 
-例如，下列查詢會產生完全相同的結果，但第二個則是最有效率的，[因為在剖析之前的條件會]()排除許多記錄：
+例如，下列查詢會產生完全相同的結果，但第二個則是最有效率的，[因為在剖析之前的條件會](/azure/kusto/query/whereoperator)排除許多記錄：
 
 ```Kusto
 //less efficient

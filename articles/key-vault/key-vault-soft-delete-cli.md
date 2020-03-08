@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392385"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -23,7 +23,7 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 - 可復原的 Key Vault 刪除支援
 - 支援可復原的金鑰保存庫物件刪除；金鑰、密碼和憑證
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure CLI - 如果您沒有為環境進行此設定，請參閱[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
@@ -36,7 +36,7 @@ Key Vault 作業透過角色型存取控制 (RBAC) 權限來分別管理，如�
 | 作業 | 描述 | 使用者權限 |
 |:--|:--|:--|
 |清單|列出已刪除的金鑰保存庫。|Microsoft.KeyVault/deletedVaults/read|
-|復原|還原已刪除的金鑰保存庫。|Microsoft.KeyVault/vaults/write|
+|Recover|還原已刪除的金鑰保存庫。|Microsoft.KeyVault/vaults/write|
 |清除|永久移除已刪除的金鑰保存庫和其所有內容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 如需權限和存取控制的詳細資訊，請參閱[保護您的金鑰保存庫](key-vault-secure-your-key-vault.md)。
@@ -96,9 +96,9 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- 「識別碼」  可以用來在復原或清除時識別資源。 
-- 「資源識別碼」  是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
-- 如果不採取任何動作，「排定清除日期」  就是永久刪除保存庫的時間。 用來計算「排定清除日期」  的預設保留期間為 90 天。
+- 「識別碼」可以用來在復原或清除時識別資源。 
+- 「資源識別碼」是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
+- 如果不採取任何動作，「排定清除日期」就是永久刪除保存庫的時間。 用來計算「排定清除日期」的預設保留期間為 90 天。
 
 ## <a name="recovering-a-key-vault"></a>復原金鑰保存庫
 
@@ -220,10 +220,10 @@ az keyvault purge --location westus --name ContosoVault
 
 ### <a name="scheduled-purge"></a>排定的清除
 
-列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」  指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
+列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
 
 >[!IMPORTANT]
->已清除的保存庫物件，由其「排定清除日期」  欄位觸發，會永久刪除。 它無法復原！
+>已清除的保存庫物件，由其「排定清除日期」欄位觸發，會永久刪除。 它無法復原！
 
 ## <a name="enabling-purge-protection"></a>啟用清除保護
 

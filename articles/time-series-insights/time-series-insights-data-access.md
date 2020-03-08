@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894813"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359995"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授與環境的資料存取權
 
@@ -28,7 +28,7 @@ ms.locfileid: "75894813"
 ## <a name="sign-in-to-time-series-insights"></a>登入以時間序列深入解析
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 找到您的時間序列深入解析環境。 在 [搜尋] 方塊中，輸入 `Time Series`。 選取搜尋結果中的 [時間序列環境]。
+1. 找到您的時間序列深入解析環境。 在 [搜尋]`Time Series`**方塊中，輸入**。 選取搜尋結果中的 [時間序列環境]。
 1. 從清單中選取 Time Series Insights 環境。
 
 ## <a name="grant-data-access"></a>授與資料存取

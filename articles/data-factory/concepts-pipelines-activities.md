@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280744"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386691"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管道及活動
 
@@ -24,7 +24,7 @@ ms.locfileid: "74280744"
 
 本文協助您了解 Azure Data Factory 中的管線和活動，並使用這些項目來為您的資料移動和資料處理案例建構端對端的資料導向工作流程。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 資料處理站可以有一或多個管線。 管線是一起執行某個工作的活動所組成的邏輯群組。 例如，管線可能包含一組內嵌和清除記錄資料的活動，然後啟動對應資料流程來分析記錄資料。 管線可讓您以集合而不是個別的方式來管理活動。 您會部署和排程管線，而不是獨立的活動。
 
 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到「Azure Blob 儲存體」。 然後，使用「資料流程」活動或 Databricks 筆記本活動來處理資料，並將其從 blob 儲存體轉換成 Azure Synapse 分析集區，並在其中建立商業智慧報表解決方案。
@@ -57,7 +57,7 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning 活動︰批次執行和更新資源](transform-data-using-machine-learning.md) | Azure VM
 [預存程序](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 資料倉儲或 SQL Server
-[U-SQL](transform-data-using-data-lake-analytics.md) | Azure 資料湖分析
+[U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自訂活動](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 [Databricks Jar 活動](transform-data-databricks-jar.md) | Azure Databricks
@@ -73,15 +73,15 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 [附加變數](control-flow-append-variable-activity.md) | 將值新增至現有的陣列變數。
 [執行管線](control-flow-execute-pipeline-activity.md) | 「執行管道」活動可讓 Data Factory 管道叫用另一個管道。
 [Filter](control-flow-filter-activity.md) | 將篩選運算式套用至輸入陣列
-[針對每個](control-flow-for-each-activity.md) | ForEach 活動可定義管道中重複的控制流程。 這個活動用來反覆查詢集合，並在迴圈中執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
-[取得中繼資料](control-flow-get-metadata-activity.md) | GetMetadata 活動可用來擷取 Azure Data Factory 中任何資料的中繼資料。
-[If 條件活動](control-flow-if-condition-activity.md) | 「If 條件」可用於根據評估為 true 或 false 的條件來分支。 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。
-[查閱活動](control-flow-lookup-activity.md) | 查閱活動可用來讀取或查閱任何外部來源的記錄/表格名稱/值。 此輸出可進一步供後續的活動參考。
+[針對每個](control-flow-for-each-activity.md) | ForEach 活動可定義管道中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
+[取得中繼資料](control-flow-get-metadata-activity.md) | GetMetadata 活動可用來取出 Azure Data Factory 中任何資料的中繼資料。
+[If Condition 活動](control-flow-if-condition-activity.md) | 「If 條件」可用於根據評估為 true 或 false 的條件來分支。 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。
+[查閱活動](control-flow-lookup-activity.md) | 「查閱活動」可用來讀取或查閱任何外部來源的記錄/資料表名稱/值。 此輸出可供後續活動進一步參考。
 [設定變數](control-flow-set-variable-activity.md) | 設定現有變數的值。
 [Until 活動](control-flow-until-activity.md) | 實作 Do-Until 迴圈，類似於程式設計語言中的 Do-Until 迴圈結構。 它會以迴圈的方式執行一系列活動，直到與該活動相關聯的條件評估為 true 為止。 您可以在 Data Factory 中針對 until 活動指定逾時的值。
 [驗證活動](control-flow-validation-activity.md) | 確保管線只有在參考資料集存在、符合指定的準則，或已達到超時時，才會繼續執行。
 [Wait 活動](control-flow-wait-activity.md) | 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。
-[Web 活動](control-flow-web-activity.md) | 使用 Web 活動可以從 Data Factory 管線呼叫自訂的 REST 端點。 您可以傳遞資料集和連結服務，以供活動使用和存取。
+[Web 活動](control-flow-web-activity.md) | 使用 Web 活動可以從 Data Factory 管線呼叫自訂的 REST 端點。 您可以傳遞資料集和連結服務，以供活動取用和存取。
 [Webhook 活動](control-flow-webhook-activity.md) | 使用 webhook 活動，呼叫端點並傳遞回呼 URL。 管線執行會等候回呼被叫用，然後再繼續進行下一個活動。
 
 ## <a name="pipeline-json"></a>管線 JSON
@@ -105,14 +105,14 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 }
 ```
 
-標記 | 描述 | 在系統提示您進行確認時，輸入 | 必要
+Tag | 描述 | 類型 | 必要項
 --- | ----------- | ---- | --------
-名稱 | 管線的名稱。 指定代表管線所執行之動作的名稱。 <br/><ul><li>字元數目上限︰140</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\”</li></ul> | 字串 | yes
-Description | 指定說明管線用途的文字。 | 字串 | 否
-活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需活動 JSON 元素的詳細資料，請參閱[活動 JSON](#activity-json) 一節。 | 陣列 | yes
-參數 | **parameters** 區段可以在管道內定義一或多個參數，讓管道變得更有彈性而可重複使用。 | 列出 | 否
-並行 | 管線可以擁有的並存執行數目上限。 根據預設，沒有最大值。 若達到並行限制，則其他管線執行會排入佇列，直到先前的工作完成為止 | 數字 | 否 
-備註 | 與管線相關聯的標記清單 | 陣列 | 否
+名稱 | 管線的名稱。 指定代表管線所執行之動作的名稱。 <br/><ul><li>字元數目上限︰140</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\”</li></ul> | String | 是
+description | 指定說明管線用途的文字。 | String | 否
+活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需活動 JSON 元素的詳細資料，請參閱[活動 JSON](#activity-json) 一節。 | Array | 是
+參數 | **parameters** 區段可以在管道內定義一或多個參數，讓管道變得更有彈性而可重複使用。 | 清單 | 否
+並行 | 管線可以擁有的並存執行數目上限。 根據預設，沒有最大值。 若達到並行限制，則其他管線執行會排入佇列，直到先前的工作完成為止 | Number | 否 
+註釋 | 與管線相關聯的標記清單 | Array | 否
 
 ## <a name="activity-json"></a>活動 JSON
 [ **活動** ] 區段內可以有一或多個已定義的活動。 主要有兩種類型的活動：執行和控制活動。
@@ -140,14 +140,14 @@ Description | 指定說明管線用途的文字。 | 字串 | 否
 
 下表說明活動 JSON 定義內的屬性：
 
-標記 | 描述 | 必要
+Tag | 描述 | 必要項
 --- | ----------- | ---------
-名稱 | 活動的名稱。 指定代表活動所執行之動作的名稱。 <br/><ul><li>字元數目上限︰55</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\” | yes</li></ul>
-Description | 說明活動用途的文字 | yes
-類型 | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | yes
+名稱 | 活動的名稱。 指定代表活動所執行之動作的名稱。 <br/><ul><li>字元數目上限︰55</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\” | 是</li></ul>
+description | 說明活動用途的文字 | 是
+類型 | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | 是
 linkedServiceName | 活動所使用的連結服務名稱。<br/><br/>活動可能會要求您指定可連結至所需計算環境的連結服務。 | 對於 HDInsight 活動、Azure Machine Learning 批次計分活動和預存程序活動而言為必要。 <br/><br/>否：所有其他
 typeProperties | typeProperties 區段中的屬性視每一種活動而定。 若要查看活動的類型屬性，請按一下先前小節中的活動連結。 | 否
-原則 | 會影響活動之執行階段行為的原則。 這個屬性包含逾時和重試行為。 如果未指定，則會使用預設值。 如需詳細資訊，請參閱[活動原則](#activity-policy)一節。 | 否
+policy (原則) | 會影響活動之執行階段行為的原則。 這個屬性包含逾時和重試行為。 如果未指定，則會使用預設值。 如需詳細資訊，請參閱[活動原則](#activity-policy)一節。 | 否
 dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何相依於先前活動。 如需詳細資訊，請參閱[活動相依性](#activity-dependency) | 否
 
 ### <a name="activity-policy"></a>活動原則
@@ -181,12 +181,12 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 }
 ```
 
-JSON 名稱 | 描述 | 允許的值 | 必要
+JSON 名稱 | 描述 | 允許的值 | 必要項
 --------- | ----------- | -------------- | --------
-timeout | 指定活動執行的逾時。 | Timespan | 號 預設逾時為 7 天。
-retry | 重試次數上限 | 整數， | 號 預設值為 0
-retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數， | 號 預設值為30秒
-secureOutput | 設定為 true 時，活動的輸出會被視為安全，且不會記錄到監視。 | 布林值 | 號 預設值為 false。
+timeout | 指定活動執行的逾時。 | Timespan | No。 預設逾時為 7 天。
+retry | 重試次數上限 | 整數 | No。 預設值為 0
+retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數 | No。 預設值為30秒
+secureOutput | 設定為 true 時，活動的輸出會被視為安全，且不會記錄到監視。 | Boolean | No。 預設值為 false。
 
 ### <a name="control-activity"></a>控制活動
 控制活動具有下列最上層結構：
@@ -205,11 +205,11 @@ secureOutput | 設定為 true 時，活動的輸出會被視為安全，且不�
 }
 ```
 
-標記 | 描述 | 必要
+Tag | 描述 | 必要項
 --- | ----------- | --------
-名稱 | 活動的名稱。 指定代表活動所執行之動作的名稱。<br/><ul><li>字元數目上限︰55</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\” | yes</li><ul>
-Description | 說明活動用途的文字 | yes
-類型 | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | yes
+名稱 | 活動的名稱。 指定代表活動所執行之動作的名稱。<br/><ul><li>字元數目上限︰55</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\” | 是</li><ul>
+description | 說明活動用途的文字 | 是
+類型 | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | 是
 typeProperties | typeProperties 區段中的屬性視每一種活動而定。 若要查看活動的類型屬性，請按一下先前小節中的活動連結。 | 否
 dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何相依於先前活動。 如需詳細資訊，請參閱[活動相依性](#activity-dependency)。 | 否
 

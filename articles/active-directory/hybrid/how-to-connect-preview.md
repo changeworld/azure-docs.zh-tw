@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347799"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376014"
 ---
 # <a name="more-details-about-features-in-preview"></a>有關預覽中之功能的其他詳細資料
 本主題描述如何使用預覽中目前的功能。
 
 ## <a name="group-writeback"></a>群組回寫
-選用功能中的群組回寫選項可讓您將「Office 365 群組」  回寫至已安裝 Exchange 的樹系。 這是一律在雲端中控制的群組。 如果您有 Exchange 內部部署，則可以將這些群組回寫到內部部署，讓具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。
+選用功能中的群組回寫選項可讓您將「Office 365 群組」回寫至已安裝 Exchange 的樹系。 這是一律在雲端中控制的群組。 如果您有 Exchange 內部部署，則可以將這些群組回寫到內部部署，讓具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。
 
 如需有關 Office 365 群組及其使用方式的詳細資訊，可在 [這裡](https://aka.ms/O365g)找到。
 
