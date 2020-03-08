@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7ce56237631b858347a99c310751d4f2c1506e10
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
-ms.translationtype: HT
+ms.openlocfilehash: a19eb19c3a25d3856d5cf333bd64be888f65a6e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108229"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893078"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教學課程：搭配 IoT 中樞來設定及使用計量和診斷記錄
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教學課程：使用 IoT 中樞來設定及使用計量和診斷記錄
 
 如果您有在生產環境中執行 IoT 中樞解決方案，建議您設定某些計量並啟用診斷記錄。 之後若發生問題，您就可以查看資料來協助您診斷問題，並加快修正速度。 在本文中，您會了解如何啟用診斷記錄，以及如何檢查記錄來找出錯誤。 您也會設定某些要監看的計量，以及會在計量達到特定界限時引發的警示。 例如，您可以讓系統在所傳送的遙測訊息數目超過特定界限時，或是在所使用的訊息數目接近 IoT 中樞每日允許的訊息配額時，傳送電子郵件給您。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "77108229"
 # This is the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity. 
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that don't have to be globally unique.
 # The resources that have to have unique names are named in the script below
@@ -118,7 +118,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->在建立裝置身分識別時，您可能會收到下列錯誤：無法針對 IoT 中樞 ContosoTestHub 的原則 iothubowner 找到其金鑰  。 若要修正這個錯誤，請更新 Azure CLI IoT 擴充功能，然後再次執行指令碼中的最後兩個命令。 
+>建立裝置身分識別時，您可能會收到下列錯誤： *IoT 中樞 ContosoTestHub 的原則 iothubowner 找不到任何金鑰*。 若要修正這個錯誤，請更新 Azure CLI IoT 擴充功能，然後再次執行指令碼中的最後兩個命令。 
 >
 >以下是用來更新擴充功能的命令。 請在 Cloud Shell 執行個體中執行此命令。
 >
@@ -130,32 +130,32 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 當您建立新的 IoT 中樞時，[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)預設會停用。 在本節中，請啟用中樞的診斷記錄。
 
-1. 首先，如果您還未進入您在入口網站中的中樞，請按一下 [資源群組]  ，然後按一下資源群組 Contoso-Resources。 從所顯示的資源清單中選取中樞。 
+1. 首先，如果您還未進入您在入口網站中的中樞，請按一下 [資源群組]，然後按一下資源群組 Contoso-Resources。 從所顯示的資源清單中選取中樞。 
 
-2. 在 IoT 中樞刀鋒視窗中找到 [監視]  區段。 按一下 [診斷設定]  。 
+2. 在 IoT 中樞刀鋒視窗中找到 [監視] 區段。 按一下 [診斷設定]。 
 
    ![螢幕擷取畫面，顯示 IoT 中樞刀鋒視窗的診斷設定部分。](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. 確定訂用帳戶和資源群組是否正確。 在 [資源類型]  底下，取消核取 [全選]  ，然後尋找並核取 [IoT 中樞]  。 (這麼做會讓 [全選]  旁邊再出出現核取記號，予以忽略即可)。在 [資源]  底下，選取中樞名稱。 畫面應該會如下圖所示： 
+3. 確定訂用帳戶和資源群組是否正確。 在 [資源類型] 底下，取消核取 [全選]，然後尋找並核取 [IoT 中樞]。 （它會勾選 [*全選*] 旁的核取記號，而只會忽略它）。在 [**資源**] 下，選取中樞名稱。 畫面應該會如下圖所示： 
 
    ![螢幕擷取畫面，顯示 IoT 中樞刀鋒視窗的診斷設定部分。](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
-4. 現在，按一下 [開啟診斷]  。 隨即會顯示 [診斷設定] 窗格。 將診斷記錄設定的名稱指定為「diags-hub」。
+4. 現在，按一下 [開啟診斷]。 隨即會顯示 [診斷設定] 窗格。 將診斷記錄設定的名稱指定為「diags-hub」。
 
-5. 勾選 [封存至儲存體帳戶]  。 
+5. 勾選 [封存至儲存體帳戶]。 
 
    ![螢幕擷取畫面，顯示設定診斷來封存至儲存體帳戶。](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
 
-    按一下 [設定]  以查看 [選取儲存體帳戶]  畫面，選取正確的帳戶 (contosostoragemon  )，然後按一下 [確定]  返回 [診斷設定] 窗格。 
+    按一下 [設定] 以查看 [選取儲存體帳戶] 畫面，選取正確的帳戶 (contosostoragemon)，然後按一下 [確定] 返回 [診斷設定] 窗格。 
 
    ![螢幕擷取畫面，顯示設定診斷記錄來封存至儲存體帳戶。](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
 
-6. 在 [記錄]  底下，核取 [連線]  和 [裝置遙測]  ，並將每個遙測的 [保留期 (天)]  設定為 7 天。 診斷設定畫面現在應該會如下圖所示：
+6. 在 [記錄] 底下，核取 [連線] 和 [裝置遙測]，並將每個遙測的 [保留期 (天)] 設定為 7 天。 診斷設定畫面現在應該會如下圖所示：
 
    ![螢幕擷取畫面，顯示最後的診斷記錄設定。](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
 
-7. 按一下 [儲存]  來儲存這些設定。 關閉 [診斷設定] 窗格。
+7. 按一下 [儲存] 來儲存這些設定。 關閉 [診斷設定] 窗格。
 
 之後，當您查看診斷記錄時，就能夠看到裝置的連接和中斷連線記錄。 
 
@@ -163,106 +163,106 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 現在，請設定一些計量以監看傳送至中樞的訊息。 
 
-1. 在 IoT 中樞的 [設定] 窗格中，按一下 [監視]  區段中的 [計量]  選項。
+1. 在 IoT 中樞的 [設定] 窗格中，按一下 [監視] 區段中的 [計量] 選項。
 
-2. 在畫面頂端，按一下 [過去 24 小時 (自動)]  。 在出現的下拉式清單中，選取 [過去 4 小時]  作為 [時間範圍]  ，並將 [時間細微性]  設定為 [1 分鐘]  (當地時間)。 按一下 [套用]  來儲存這些設定。 
+2. 在畫面頂端，按一下 [過去 24 小時 (自動)]。 在出現的下拉式清單中，選取 [過去 4 小時] 作為 [時間範圍]，並將 [時間細微性] 設定為 [1 分鐘] (當地時間)。 按一下 [套用] 來儲存這些設定。 
 
    ![螢幕擷取畫面，顯示計量時間設定。](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
-3. 系統中預設會有一個計量項目。 讓資源群組保留預設值，並保留計量命名空間。 在 [計量]  下拉式清單中，選取 [已傳送的遙測訊息]  。 將 [彙總]  設定為 [總和]  。
+3. 系統中預設會有一個計量項目。 讓資源群組保留預設值，並保留計量命名空間。 在 [計量] 下拉式清單中，選取 [已傳送的遙測訊息]。 將 [彙總] 設定為 [總和]。
 
    ![螢幕擷取畫面，顯示為已傳送的遙測訊息新增計量。](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. 現在，按一下 [新增計量]  以在圖表中新增其他計量。 選取您的資源群組 (**ContosoTestHub**)。 在 [計量]  底下，選取 [已使用的訊息總數]  。 在 [彙總]  中選取 [平均]  。 
+4. 現在，按一下 [新增計量] 以在圖表中新增其他計量。 選取您的資源群組 (**ContosoTestHub**)。 在 [計量] 底下，選取 [已使用的訊息總數]。 在 [彙總] 中選取 [平均]。 
 
-   現在，您的畫面中會顯示已最小化的 [已傳送的遙測訊息]  計量，以及用於 [已使用的訊息總數]  的新計量。
+   現在，您的畫面中會顯示已最小化的 [已傳送的遙測訊息] 計量，以及用於 [已使用的訊息總數] 的新計量。
 
    ![螢幕擷取畫面，顯示為已傳送的遙測訊息新增計量。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
-   按一下 [釘選到儀表板]  。 此選項會將計量釘選到 Azure 入口網站的儀表板，以便您可以再次存取。 如果未將其釘選到儀表板，則不會保留您的設定。
+   按一下 [釘選到儀表板]。 此選項會將計量釘選到 Azure 入口網站的儀表板，以便您可以再次存取。 如果未將其釘選到儀表板，則不會保留您的設定。
 
 ## <a name="set-up-alerts"></a>設定警示
 
-移至入口網站中的中樞。 按一下 [資源群組]  ，選取 [ContosoResources]  ，然後選取 IoT 中樞 [ContosoTestHub]  。 
+移至入口網站中的中樞。 按一下 [資源群組]，選取 [ContosoResources]，然後選取 IoT 中樞 [ContosoTestHub]。 
 
 IoT 中樞尚未遷移至 [Azure 監視器中的計量](/azure/azure-monitor/platform/data-collection#metrics)；您必須使用[傳統警示](/azure/azure-monitor/platform/alerts-classic.overview)。
 
-1. 在 [監視]  底下，按一下 [警示]  ；這會顯示主要的 [警示] 畫面。 
+1. 在 [監視] 底下，按一下 [警示]；這會顯示主要的 [警示] 畫面。 
 
    ![螢幕擷取畫面，顯示如何尋找傳統警示。](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
 
-2. 若要從這裡移至傳統警示，請按一下 [檢視傳統警示]  。 
+2. 若要從這裡移至傳統警示，請按一下 [檢視傳統警示]。 
 
     ![螢幕擷取畫面，顯示傳統警示畫面。](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
 
     填寫欄位： 
 
-    訂用帳戶  ：讓此欄位設定為您目前的訂用帳戶。
+    **訂**用帳戶：將此欄位設定為目前的訂用帳戶。
 
-    **來源**：將此欄位設定為 [計量]  。
+    **來源**：將此欄位設定為 [*計量*]。
 
-    **資源群組**：將此欄位設定為您目前的資源群組 ContosoResources  。 
+    **資源群組**：將此欄位設定為您目前的資源群組*ContosoResources*。 
 
     **資源類型**：將此欄位設定為 IoT 中樞。 
 
-    **資源**：選取您的 IoT 中樞 ContosoTestHub  。
+    **資源**：選取您的 IoT 中樞*ContosoTestHub*。
 
-3. 按一下 [新增計量警示 (傳統)]  來設定新警示。
+3. 按一下 [新增計量警示 (傳統)] 來設定新警示。
 
     填寫欄位：
 
-    **Name**：提供警示規則的名稱，例如 telemetry-messages  。
+    **名稱**：提供警示規則的 [名稱]，例如 [*遙測訊息*]。
 
-    **描述**：提供描述的警示，例如「傳送了 1000 則遙測訊息時發出警示」  。 
+    **描述**：提供警示的描述，例如*當已傳送1000遙測訊息時發出警示*。 
 
-    **來源**：將此欄位設定為 [計量]  。
+    **來源**：將此設定為 [*計量*]。
 
-    [訂用帳戶]  、[資源群組]  和 [資源]  應該設定為您在 [檢視傳統警示]  畫面所選取的值。 
+    [訂用帳戶]、[資源群組] 和 [資源] 應該設定為您在 [檢視傳統警示] 畫面所選取的值。 
 
-    將 [計量]  設定為 [已傳送的遙測訊息]  。
+    將 [計量] 設定為 [已傳送的遙測訊息]。
 
     ![螢幕擷取畫面，顯示為已傳送的遙測訊息設定傳統警示。](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
 
 4. 在圖表之後，設定下列欄位：
 
-   **條件**：設定為 [大於]  。
+   **條件**：設定為*大於*。
 
-   **閾值**：設為 1000。
+   **閾值**：設定為1000。
 
-   **期間**：設定為 [過去 5 分鐘]  。
+   **Period**：*在過去5分鐘*內設定為。
 
-   **通知電子郵件收件者**：在此輸入您的電子郵件地址。 
+   **通知電子郵件**收件者：在此輸入您的電子郵件地址。 
 
    ![螢幕擷取畫面，顯示警示畫面下半部。](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
-   按一下 [確定]  以儲存警示。 
+   按一下 [確定] 以儲存警示。 
 
-5. 現在，為 [已使用的訊息總數]  設定另一個警示。 如果您想要在所使用的訊息數目接近 IoT 中樞的配額時傳送警示，以便得知中樞很快就會開始拒絕訊息，此計量會很有用。
+5. 現在，為 [已使用的訊息總數] 設定另一個警示。 如果您想要在所使用的訊息數目接近 IoT 中樞的配額時傳送警示，以便得知中樞很快就會開始拒絕訊息，此計量會很有用。
 
-   在 [檢視傳統警示]  畫面上，按一下 [新增計量警示 (傳統)]  ，然後在 [新增規則]  窗格上填入這些欄位。
+   在 [檢視傳統警示] 畫面上，按一下 [新增計量警示 (傳統)]，然後在 [新增規則] 窗格上填入這些欄位。
 
-   **Name**：提供警示規則的名稱，例如 number-of-messages-used  。
+   **名稱**：提供警示規則的 [名稱]，例如 [已*使用的訊息數*]。
 
-   **描述**：提供描述的警示，例如「在接近配額時發出警示」  。
+   **描述**：提供警示的描述，例如*在接近配額時發出警示*。
 
-   **來源**：將此欄位設定為 [計量]  。
+   **來源**：將此欄位設定為 [*計量*]。
 
-    [訂用帳戶]  、[資源群組]  和 [資源]  應該設定為您在 [檢視傳統警示]  畫面所選取的值。 
+    [訂用帳戶]、[資源群組] 和 [資源] 應該設定為您在 [檢視傳統警示] 畫面所選取的值。 
 
-    將 [計量]  設定為 [已使用的訊息總數]  。
+    將 [計量] 設定為 [已使用的訊息總數]。
 
 6. 在圖表底下，填寫下列欄位：
 
-   **條件**：設定為 [大於]  。
+   **條件**：設定為*大於*。
 
-   **閾值**：設為 1000。
+   **閾值**：設定為1000。
 
-   **期間**：將此欄位設定為 [過去 5 分鐘]  。 
+   **Period**：將此欄位設定為在*過去5分鐘內*。 
 
-   **通知電子郵件收件者**：在此輸入您的電子郵件地址。 
+   **通知電子郵件**收件者：在此輸入您的電子郵件地址。 
 
-   按一下 [確定]  以儲存規則。 
+   按一下 [確定] 以儲存規則。 
 
 5. 現在，您應該會看到 [傳統警示] 窗格中有兩個警示： 
 
@@ -300,15 +300,15 @@ await Task.Delay(10);
 
 ### <a name="see-the-metrics-in-the-portal"></a>在入口網站中查看計量
 
-從 [儀表板] 開啟您的計量。 將時間值變更為 [過去 30 分鐘]  ，時間細微性則設定為 [1 分鐘]  。 此計量會在圖表上顯示已傳送的遙測訊息和已使用的訊息總數，圖表底部會顯示最新的數量。
+從 [儀表板] 開啟您的計量。 將時間值變更為 [過去 30 分鐘]，時間細微性則設定為 [1 分鐘]。 此計量會在圖表上顯示已傳送的遙測訊息和已使用的訊息總數，圖表底部會顯示最新的數量。
 
    ![顯示計量的螢幕擷取畫面。](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
 ### <a name="see-the-alerts"></a>查看警示
 
-返回警示。 按一下 [資源群組]  ，選取 [ContosoResources]  ，然後選取中樞 [ContosoTestHub]  。 在針對中樞所顯示的 [屬性] 頁面中，選取 [警示]  ，然後選取 [檢視傳統警示]  。 
+返回警示。 按一下 [資源群組]，選取 [ContosoResources]，然後選取中樞 [ContosoTestHub]。 在針對中樞所顯示的 [屬性] 頁面中，選取 [警示]，然後選取 [檢視傳統警示]。 
 
-當已傳送的訊息數目超過限制時，您就會開始收到電子郵件警示。 若要查看是否還有任何作用中的警示，請移至您的中樞，並選取 [警示]  。 裡面會顯示作用中的警示，以及是否有任何警告。 
+當已傳送的訊息數目超過限制時，您就會開始收到電子郵件警示。 若要查看是否還有任何作用中的警示，請移至您的中樞，並選取 [警示]。 裡面會顯示作用中的警示，以及是否有任何警告。 
 
    ![螢幕擷取畫面，顯示已引發警示。](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
 
@@ -318,11 +318,11 @@ await Task.Delay(10);
 
 ### <a name="see-the-diagnostic-logs"></a>查看診斷記錄
 
-請將診斷記錄設定為要匯出至 Blob 儲存體。 移至您的資源群組，然後選取您的儲存體帳戶 contosostoragemon  。 選取 Blob，然後開啟容器 insights-logs-connections  。 向下切入，直到您到達目前的日期，然後選取最新的檔案。 
+請將診斷記錄設定為要匯出至 Blob 儲存體。 移至您的資源群組，然後選取您的儲存體帳戶 contosostoragemon。 選取 Blob，然後開啟容器 insights-logs-connections。 向下切入，直到您到達目前的日期，然後選取最新的檔案。 
 
    ![螢幕擷取畫面，向下切入至儲存體容器以查看診斷記錄。](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
 
-按一下 [下載]  來下載記錄並加以開啟。 您會看到裝置傳送訊息至中樞時的連線與中斷連線記錄。 範例如下：
+按一下 [下載] 來下載記錄並加以開啟。 您會看到裝置傳送訊息至中樞時的連線與中斷連線記錄。 範例如下：
 
 ``` json
 { 
@@ -363,7 +363,7 @@ await Task.Delay(10);
 
 ## <a name="clean-up-resources"></a>清除資源 
 
-若要將您已針對本教學課程所建立的所有資源移除，請刪除資源群組。 此動作會同時刪除群組內含的所有資源。 在本例中，此動作會移除 IoT 中樞、儲存體帳戶和資源群組本身。 如果您已將計量釘選到儀表板，則必須對每個計量右上角的三個點按一下，然後選取 [移除]  ，來手動移除這些計量。
+若要將您已針對本教學課程所建立的所有資源移除，請刪除資源群組。 此動作會同時刪除群組內含的所有資源。 在本例中，此動作會移除 IoT 中樞、儲存體帳戶和資源群組本身。 如果您已將計量釘選到儀表板，則必須對每個計量右上角的三個點按一下，然後選取 [移除]，來手動移除這些計量。
 
 若要移除資源群組，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383463"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925549"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教學課程：在 Windows 虛擬桌面中建立租使用者
 
@@ -72,7 +72,7 @@ ms.locfileid: "78383463"
 
 若要指派 TenantCreator 應用程式角色：
 
-1. 移至  [Azure 入口網站](https://portal.azure.com) 以管理 TenantCreator 應用程式角色。 搜尋並選取 [企業應用程式]。 如果您正在處理多個 Azure Active Directory 租用戶，最佳做法是開啟私人瀏覽器工作階段，然後將 URL 複製並貼入位址列中。
+1. 請移至[Azure 入口網站](https://portal.azure.com)來管理 TenantCreator 應用程式角色。 搜尋並選取 [企業應用程式]。 如果您正在處理多個 Azure Active Directory 租用戶，最佳做法是開啟私人瀏覽器工作階段，然後將 URL 複製並貼入位址列中。
 
    ![在 Azure 入口網站中搜尋企業應用程式的螢幕擷取畫面](media/azure-portal-enterprise-applications.png)
 2. 在 [企業應用程式] 中，搜尋 [Windows 虛擬桌面]。 您會看到您在上一節中同意的兩個應用程式。 在這兩個應用程式中，選取 [Windows 虛擬桌面]。
