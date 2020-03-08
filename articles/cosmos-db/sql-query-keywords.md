@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250302"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898777"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
 本文詳細說明可用於 Azure Cosmos DB SQL 查詢中的關鍵字。
@@ -108,7 +108,7 @@ FROM f
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>在
+## <a name="in"></a>IN
 
 使用 IN 關鍵字來檢查指定的值是否符合清單中的任何值。 例如，下列查詢會傳回 `id` `WakefieldFamily` 或 `AndersenFamily`的所有家族專案。
 
@@ -126,9 +126,11 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 支援[反覆運算 JSON 陣列](sql-query-object-array.md#Iteration)，並透過從來源的 in 關鍵字新增結構。 
+SQL API 支援[反覆運算 JSON 陣列](sql-query-object-array.md#Iteration)，並透過從來源的 in 關鍵字新增結構。
 
-## <a name="top"></a>回到頁首
+如果您在 `IN` 篩選準則中包含分割區索引鍵，您的查詢將會自動篩選成隻有相關的磁碟分割。
+
+## <a name="top"></a>頂端
 
 TOP 關鍵字會以未定義的順序傳回查詢結果的第一個 `N` 數目。 最佳做法是搭配 ORDER BY 子句使用 TOP，將結果限制為排序值的前 `N` 數目。 結合這兩個子句是可預測的唯一方式，指出最常影響的資料列。
 

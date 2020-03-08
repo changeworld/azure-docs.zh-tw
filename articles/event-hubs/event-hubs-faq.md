@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393661"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -66,7 +66,7 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 您可以搭配使用下列通訊協定與 Azure 服務匯流排來傳送和接收訊息：
 
 - 進階訊息佇列通訊協定 (AMQP)
-- http
+- HTTP
 - Apache Kafka
 
 請參閱下表，以瞭解您需要開啟的輸出埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
@@ -78,7 +78,7 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 | Kafka | 9093 | 請參閱[使用來自 Kafka 應用程式的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
 
 ### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要列入允許清單的 IP 位址為何？
-若要針對您的連線尋找適當的 IP 位址給允許清單，請遵循下列步驟：
+若要針對您的連線尋找適當的 IP 位址給白名單，請遵循下列步驟：
 
 1. 從命令提示字元執行下列命令： 
 
@@ -184,7 +184,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何建立事件中樞專用叢集？
 您可以藉由提交[加大配額支援要求](https://portal.azure.com/#create/Microsoft.Support)或連絡[事件中樞小組](mailto:askeventhubs@microsoft.com)，來建立事件中樞專用叢集。 通常需要大約兩週的時間，才能部署該叢集並將控制權移交給您以供使用。 這個程式是暫時性的，直到透過 Azure 入口網站或 Azure Resource Manager 範本提供完整的自助服務為止，這大約需要兩個小時才能部署叢集。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 ### <a name="how-many-partitions-do-i-need"></a>我需要多少個分割區？
 資料分割數目是在建立時指定，值必須介於 2 到 32 之間。 資料分割計數不可變更，因此在設定分割區計數時，您應該考慮長期調整。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 如需資料分割的詳細資訊，[請參閱資料](event-hubs-features.md#partitions)分割。
@@ -207,7 +207,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>事件中樞儲存空間大小如何計算及收費？
 
-儲存在所有事件中樞內之事件，包括事件標頭的所有內部負荷或磁碟儲存結構的所有內部負荷，是以全天為單位來測量。 一天結束時會計算尖峰儲存體大小。 每日儲存額度會根據當天選取的輸送量單位數下限來計算 (每一個輸送量單位提供的額度為 84 GB)。 如果總大小超過計算出來的每日儲存額度，我們會採用 Azure Blob 儲存體費率來計算超出的儲存空間 (依照**本地備援儲存體**費率)。
+儲存在所有事件中樞內之事件，包括事件標頭的所有內部負荷或磁碟儲存結構的所有內部負荷，是以全天為單位來測量。 我們會在一天結束時計算儲存空間大小峰值。 每日儲存額度的計算乃以當天選定之輸送量單位的最小數目為基準 (每個輸送量單位提供 84 GB 的額度)。 如果總大小超過計算出來的每日儲存額度，我們會採用 Azure Blob 儲存體費率來計算超出的儲存空間 (依照**本地備援儲存體**費率)。
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中樞輸入事件的計算方式為何？
 
@@ -217,7 +217,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>代理連線費用適用於事件中樞嗎？
 
-只有在使用 AMQP 通訊協定時才需要支付連線費用。 不論有多少傳送端系統或裝置，使用 HTTP 傳送事件都不需要連線費用。 如果您打算使用 AMQP (例如，為了實現更有效率的事件串流，或針對 IoT 命令和控制案例啟用雙向通訊)，請參閱[事件中樞定價資訊](https://azure.microsoft.com/pricing/details/event-hubs/)分頁，以取得關於每個服務層級中包含多少個連線的詳細資訊。
+只有在使用 AMQP 通訊協定時才需要支付連線費用。 不論傳送系統或裝置的數目多寡，使用 HTTP 來傳送事件不需要支付連線費用。 如果您打算使用 AMQP (例如，為了實現更有效率的事件串流，或針對 IoT 命令和控制案例啟用雙向通訊)，請參閱[事件中樞定價資訊](https://azure.microsoft.com/pricing/details/event-hubs/)分頁，以取得關於每個服務層級中包含多少個連線的詳細資訊。
 
 ### <a name="how-is-event-hubs-capture-billed"></a>事件中樞擷取如何計費？
 

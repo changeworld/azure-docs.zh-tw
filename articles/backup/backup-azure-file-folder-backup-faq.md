@@ -3,12 +3,12 @@ title: 備份檔案和資料夾-常見的問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425063"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673101"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>備份檔案和資料夾的相關常見問題
 
@@ -149,7 +149,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有方法可以調整用於備份的頻寬量？
 
-是，您可以使用 MARS 代理程式中的 [**變更屬性**] 選項來調整頻寬和時間。 [詳細資訊](backup-configure-vault.md#enable-network-throttling)。
+是，您可以使用 MARS 代理程式中的 [**變更屬性**] 選項來調整頻寬和時間。 [詳細資訊](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
 ## <a name="restore"></a>{1}還原{2}
 

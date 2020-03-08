@@ -2,17 +2,23 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228117"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924880"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
-您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在訂用帳戶層級建立資源。 您可以使用訂用帳戶層級部署來採取對該層級有意義的動作，例如建立資源群組，或指派[角色型存取控制](../../role-based-access-control/overview.md)。
+您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在下列位置建立資源：
+
+* 訂用帳戶層級（本文涵蓋）
+* [管理群組層級](deploy-to-management-group.md)
+* [租使用者層級](deploy-to-tenant.md)
+
+您可以使用訂用帳戶層級部署來採取對該層級有意義的動作，例如建立資源群組，或指派[角色型存取控制](../../role-based-access-control/overview.md)。
 
 若要在訂用帳戶層級部署範本，請使用 Azure CLI、PowerShell 或 REST API。 Azure 入口網站不支援在訂用帳戶層級進行部署。
 
@@ -21,7 +27,7 @@ ms.locfileid: "78228117"
 您可以在訂用帳戶層級部署下列資源類型：
 
 * [對應](/azure/templates/microsoft.consumption/budgets)
-* [部署](/azure/templates/microsoft.resources/deployments)
+* [部署](/azure/templates/microsoft.resources/deployments)-適用于部署至資源群組的嵌套範本。
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -30,7 +36,7 @@ ms.locfileid: "78228117"
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
-### <a name="schema"></a>Schema
+### <a name="schema"></a>結構描述
 
 您用於訂用帳戶層級部署的架構與資源群組部署的架構不同。
 
@@ -88,12 +94,12 @@ New-AzSubscriptionDeployment `
 
 * [不](template-functions-resource.md#resourcegroup)支援 **resourceGroup()** 函式。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 您可以使用它針對用於訂用帳戶層級部署的資源取得資源識別碼。 請勿提供資源群組參數的值。
+* 使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函數來取得在訂用帳戶層級部署之資源的資源識別碼。
 
   例如，若要取得原則定義的資源識別碼，請使用：
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   傳回的資源識別碼具有下列格式：
@@ -101,8 +107,6 @@ New-AzSubscriptionDeployment `
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  或者，使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函數來取得訂用帳戶層級資源的資源識別碼。
 
 ## <a name="create-resource-groups"></a>建立資源群組
 

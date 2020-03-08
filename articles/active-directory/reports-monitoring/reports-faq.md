@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 報告常見問題集 | Microsoft Docs
-description: 關於 Azure Active Directory 報告的常見問題集。
+description: 關於 Azure Active Directory 報表的常見問題。
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -16,18 +16,18 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007685"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668559"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>關於 Azure Active Directory 報告的常見問題集
 
 本文會回答有關 Azure Active Directory (Azure AD) 報告的常見問題。 如需詳細資訊，請參閱 [Azure Active Directory 報告](overview-reports.md)。 
 
-## <a name="getting-started"></a>快速入門 
+## <a name="getting-started"></a>開始使用 
 
 **問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 Api，以程式設計方式將 Azure AD 審核和整合的應用程式使用方式報告提取到我們的報告系統中。我該切換到什麼？**
 
@@ -37,7 +37,7 @@ ms.locfileid: "74007685"
 
 **問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 Api，以程式設計方式將 Azure AD 的安全性報告（例如洩漏的認證或從匿名 IP 位址登入等特定類型的偵測）提取到我們的報告系統中。我該切換到什麼？**
 
-**答：** 您可以使用身分 [識別保護風險偵測 API](../identity-protection/graph-get-started.md) ，透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您以更大的彈性來查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化成一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過，[新 API 會使用 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，這是 O365 或 Azure AD 這類 API 的 Microsoft 標準格式。 因此該要求工作可以擴充您目前的 MS Graph 投資，或協助您開始轉換至新的標準平台。
+**答：** 您可以使用身分 [識別保護風險偵測 API](../identity-protection/graph-get-started.md) ，透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您以更大的彈性來查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化成一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過，[新 API 會使用 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，這是 O365 或 Azure AD 這類 API 的 Microsoft 標準格式。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換到這個新的標準平臺。
 
 ---
 
@@ -73,7 +73,7 @@ ms.locfileid: "74007685"
 
 **答：** 下表列出活動記錄的資料保留期間。 如需詳細資訊，請參閱 [Azure AD 報告的資料保留原則](reference-reports-data-retention.md)。
 
-| 報告                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Report                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | N/A           | 30 天             | 30 天             |

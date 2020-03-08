@@ -1,6 +1,6 @@
 ---
-title: 疑難排解密碼保護-Azure Active Directory
-description: 瞭解 Azure AD 的密碼保護一般疑難排解
+title: 針對內部部署 Azure AD 密碼保護進行疑難排解
+description: 瞭解如何針對內部部署 Active Directory Domain Services 環境 Azure AD 密碼保護進行疑難排解
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847655"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671752"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密碼保護的疑難排解
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>疑難排解：內部部署 Azure AD 密碼保護
 
 部署 Azure AD 密碼保護之後，可能需要進行疑難排解。 本文將深入說明以協助您了解一些常見的疑難排解步驟。
 
@@ -82,9 +82,9 @@ Azure AD 密碼保護對於 Microsoft 金鑰發佈服務所提供的加密和解
 
 1. 您的 DC 代理程式無法下載原則，或無法解密現有的原則。 請檢查上述主題中的可能原因。
 
-1. 密碼原則強制模式仍會設為 [稽核]。 如果此設定作用中，請將它重新設定為使用 Azure AD 密碼保護入口網站來強制執行。 請參閱[啟用密碼保護](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
+1. 密碼原則強制模式仍會設為 [稽核]。 如果此設定作用中，請將它重新設定為使用 Azure AD 密碼保護入口網站來強制執行。 如需詳細資訊，請參閱作業[模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
-1. 密碼原則已停用。 如果此設定有效，請使用 Azure AD 密碼保護入口網站，將它重新設定為 [啟用]。 請參閱[啟用密碼保護](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
+1. 密碼原則已停用。 如果此設定有效，請使用 Azure AD 密碼保護入口網站，將它重新設定為 [啟用]。 如需詳細資訊，請參閱作業[模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 1. 您尚未在網域中的所有網域控制站上安裝 DC 代理程式軟體。 在此情況下，很容易確保遠端 Windows 用戶端在密碼變更作業期間以特定網域控制站為目標。 如果您認為已成功將 DC 代理程式軟體安裝在特定 DC 上，您可以藉由仔細檢查 DC 代理程式管理事件記錄檔來確認：不論結果為何，至少會有一個事件記錄密碼的結果驗證. 如果變更密碼的使用者沒有任何事件，則密碼變更可能是由不同的網域控制站處理。
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Azure AD 的密碼保護 Proxy 軟體在任何版本中都沒有時間限制。 Microsoft 仍然建議在發行時，將 DC 和 proxy 代理程式升級至最新版本。 `Get-AzureADPasswordProtectionProxy` Cmdlet 可用來尋找需要升級的 Proxy 代理程式，類似于上述 DC 代理程式的範例。
 
-如需特定升級程式的詳細資訊，請參閱[升級 DC 代理程式](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升級 Proxy 代理程式](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)。
+如需特定升級程式的詳細資訊，請參閱[升級 DC 代理程式](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升級 Proxy 服務](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)。
 
 ## <a name="emergency-remediation"></a>緊急補救
 
 如果發生 DC 代理程式服務造成問題的情況，可以立即將 DC 代理程式服務關閉。 DC 代理程式密碼篩選 dll 仍會嘗試呼叫非執行中服務，且會記錄警告事件 (10012、10013)，但在這段期間傳入的所有密碼都會被接受。 隨後如有需要，也可以透過 Windows 服務控制管理員，在啟動類型設為 [已停用] 的情況下設定 DC 代理程式服務。
 
-另一個補救措施是在 Azure AD 密碼保護入口網站中，將啟用模式設為 [否]。 下載更新的原則之後，每個 DC 代理程式服務都將進入靜止模式，在此模式中會依原樣接受所有密碼。 如需詳細資訊，請參閱[強制模式](howto-password-ban-bad-on-premises-operations.md#enforce-mode)。
+另一個補救措施是在 Azure AD 密碼保護入口網站中，將啟用模式設為 [否]。 下載更新的原則之後，每個 DC 代理程式服務都將進入靜止模式，在此模式中會依原樣接受所有密碼。 如需詳細資訊，請參閱作業[模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 ## <a name="removal"></a>移除
 

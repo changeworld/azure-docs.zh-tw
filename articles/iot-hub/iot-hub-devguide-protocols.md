@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669275"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
 
@@ -29,7 +29,7 @@ ms.locfileid: "60626174"
 
 下表針對您選擇的通訊協定提供概略的建議︰
 
-| Protocol | 應選擇此通訊協定的情況 |
+| 通訊協定 | 應選擇此通訊協定的情況 |
 | --- | --- |
 | MQTT <br> 透過 WebSocket 的 MQTT |可在不需要透過相同 TLS 連線來連線到多個裝置 (各有自己的每一裝置認證) 的裝置上使用。 |
 | AMQP <br> 透過 WebSocket 的 AMQP |在欄位和雲端閘道上使用，以利用跨裝置進行多工的連線。 |
@@ -48,13 +48,13 @@ ms.locfileid: "60626174"
 * **承載大小**。 MQTT 和 AMQP 是二進位通訊協定，這使得其承載比 HTTPS 更精簡。
 
 > [!WARNING]
-> 使用 HTTPS 時，每個裝置應該每隔 25 分鐘 (或更久) 輪詢一次雲端到裝置訊息。 不過，在開發期間，可以接受比每隔 25 分鐘更頻繁的輪詢頻率。
+> 使用 HTTPS 時，每個裝置應該每隔25分鐘輪詢一次雲端到裝置訊息。 在開發期間，每個裝置可以視需要更頻繁地進行輪詢。
 
 ## <a name="port-numbers"></a>連接埠號碼
 
 裝置可以在 Azure 中使用各種通訊協定來與 IoT 中樞通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| Protocol | Port |
+| 通訊協定 | 連接埠 |
 | --- | --- |
 | MQTT |8883 |
 | 透過 WebSocket 的 MQTT |443 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917351"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893049"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 
@@ -91,13 +91,13 @@ ms.locfileid: "77917351"
 否。 您沒有許可權可以使用遠端桌面連線到受控網域的網域控制站。 *AAD DC 系統管理員*群組的成員可以使用 ad 系統管理工具（例如 Active Directory 系統管理中心（ADAC）或 AD PowerShell）來管理受控網域。 這些工具會使用已加入受控網域之 Windows Server 上的*遠端伺服器管理工具*功能來安裝。 如需詳細資訊，請參閱[建立管理 VM 以設定和管理 Azure AD Domain Services 受控網域](tutorial-create-management-vm.md)。
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已啟用 Azure AD Domain Services。 我應該使用哪一個使用者帳戶來將電腦加入此網域？
-系統管理群組*AAD DC 系統管理員*的成員可以加入網域的電腦。 此外，此群組的成員會被授與已加入網域之電腦的遠端桌面存取權限。
+屬於 Azure AD DS 受控網域之一部分的任何使用者帳戶都可以加入 VM。 *AAD DC 系統管理員*群組的成員會被授與遠端桌面存取已加入受控網域的電腦。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我有 Azure AD Domain Services 所提供的受控網域的網域系統管理員權限嗎？
 否。 您不會被授與受控網域的系統管理許可權。 *網域系統管理員*和*企業系統管理員*許可權無法供您在網域內使用。 在內部部署 Active Directory 中，網域系統管理員或企業系統管理員群組的成員，也不會被授與受控網域的網域/企業系統管理員許可權。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>我可以在受控網域上使用 LDAP 或其他 AD 系統管理工具來修改群組成員資格嗎？
-否。 在 Azure AD Domain Services 服務的網域上，無法修改群組成員資格。 這同樣適用於使用者屬性。 您可以在 Azure AD 或內部部署網域上變更群組成員資格或使用者屬性。 變更會自動同步處理到 Azure AD Domain Services。
+無法修改從 Azure Active Directory 同步到 Azure AD Domain Services 的使用者和群組，因為其原始來源是 Azure Active Directory 的。 可能會修改源自于受控網域的任何使用者或群組。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>我對 Azure AD 目錄所做的變更要多久才會反映在我的受控網域中？
 您在 Azure AD 目錄中使用 Azure AD UI 或 PowerShell 所做的變更，會自動同步處理至您的受控網域。 這個同步處理程序會在背景執行。 這個同步處理沒有定義的時段，無法完成所有物件變更。

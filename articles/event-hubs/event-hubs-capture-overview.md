@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460070"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925879"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件
 Azure 事件中樞可讓您在[Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)中事件中樞，或您選擇的[Azure Data Lake Storage Gen 1 或 gen 2](https://azure.microsoft.com/services/data-lake-store/)帳戶中，自動捕捉串流資料，並增加了指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
@@ -94,10 +94,11 @@ https://github.com/yorek/apache-drill-azure-blob
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 
-[Apache Spark][Apache Spark]是「適用于大規模資料處理的整合分析引擎」。 它支援不同的語言 (包括 SQL)，而且可以輕鬆地存取 Azure Blob 儲存體。 有兩個選項可以在 Azure 中執行 Apache Spark，兩者都提供 Azure Blob 儲存體的輕鬆存取：
+[Apache Spark][Apache Spark]是「適用于大規模資料處理的整合分析引擎」。 它支援不同的語言 (包括 SQL)，而且可以輕鬆地存取 Azure Blob 儲存體。 有幾個選項可讓您在 Azure 中執行 Apache Spark，而且每個都能輕鬆存取 Azure Blob 儲存體：
 
 - [HDInsight： Azure 儲存體中的位址檔案][HDInsight: Address files in Azure storage]
 - [Azure Databricks： Azure Blob 儲存體][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>使用 Avro Tools
 

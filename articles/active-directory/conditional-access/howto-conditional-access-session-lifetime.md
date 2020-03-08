@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195057"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671899"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證會話管理
 
@@ -37,7 +37,7 @@ ms.locfileid: "77195057"
 
 使用者登入頻率的 Azure Active Directory （Azure AD）預設設定是90天的滾動視窗。 要求使用者提供認證通常似乎是很好的作法，但它可以 backfire：已定型來輸入認證的使用者，而不想要在無意中將其提供給惡意的認證提示。
 
-這聽起來可能會令使用者不會要求重新登入，事實上，違反 IT 原則會撤銷會話。 某些範例包括（但不限於）密碼變更、incompliant 裝置或帳戶停用。 您也可以[使用 PowerShell 來明確撤銷使用者的會話](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 預設設定會變成「不詢問使用者在其會話的安全性狀態未變更時提供認證」。
+這聽起來可能會令使用者不會要求重新登入，事實上，違反 IT 原則會撤銷會話。 某些範例包括（但不限於）密碼變更、incompliant 裝置或帳戶停用。 您也可以[使用 PowerShell 來明確撤銷使用者的會話](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 預設設定會變成「不詢問使用者在其會話的安全性狀態未變更時提供認證」。
 
 登入頻率設定適用于已根據標準來執行 OAUTH2 或 OIDC 通訊協定的應用程式。 大部分適用于 Windows、Mac 和行動裝置的 Microsoft 原生應用程式，包括下列 web 應用程式都符合設定。
 
@@ -72,7 +72,7 @@ ms.locfileid: "77195057"
 
 持續性瀏覽器會話可讓使用者在關閉並重新開啟其瀏覽器視窗之後，保持登入狀態。
 
-瀏覽器會話持續性的 Azure AD 預設值，可讓個人裝置上的使用者選擇是否要藉由顯示「保持登入」來保存會話。 驗證成功後出現提示。 如果在 AD FS 中使用[AD FS 單一登入設定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+瀏覽器會話持續性的 Azure AD 預設值，可讓個人裝置上的使用者選擇是否要藉由顯示「保持登入」來保存會話。 驗證成功後出現提示。 如果在 AD FS 中使用[AD FS 單一登入設定](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 )文章中的指引來設定瀏覽器持續性，我們將會遵循該原則並保存 Azure AD 會話。 您也可以設定您的租使用者中的使用者是否會看到「保持登入？」 使用[自訂您的 Azure AD 登入頁面](../fundamentals/customize-branding.md)一文中的指導方針，在 Azure 入口網站的 [公司商標] 窗格中變更適當的設定來提示。
 
 ## <a name="configuring-authentication-session-controls"></a>設定驗證會話控制項

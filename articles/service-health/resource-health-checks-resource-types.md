@@ -3,12 +3,12 @@ title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717063"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925102"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -28,7 +28,7 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>Batch 帳戶是否已啟動且正在執行？</li><li>已超過此 batch 帳戶的集區配額嗎？</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |執行的檢查|
 |---|
 |<ul><li>所有快取節點是否已啟動且執行中？</li><li>可以從資料中心內觸達快取嗎？</li><li>快取是否已觸達連線數目上限？</li><li> 快取是否已用盡其可用的記憶體？ </li><li>快取是否發生大量頁面錯誤？</li><li>快取是否負載過重？</li></ul>|
@@ -41,7 +41,7 @@ ms.locfileid: "76717063"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |執行的檢查|
 |---|
-|<ul><li>主機伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li></ul>|
+|<ul><li>主機伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體是否降級並預測是否很快就會失敗？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |執行的檢查|
@@ -51,9 +51,9 @@ ms.locfileid: "76717063"
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |執行的檢查|
 |---|
-|<ul><li>裝載此虛擬機器的伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li></ul>|
+|<ul><li>裝載此虛擬機器的伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體是否降級並預測是否很快就會失敗？</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Datafactory/factory
+## <a name="microsoftdatafactoryfactories"></a>datafactory/factory
 |執行的檢查|
 |---|
 |<ul><li>是否有管線執行失敗？</li><li>裝載 Data Factory 狀況良好的叢集嗎？</li></ul>|
@@ -69,7 +69,7 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>使用者將資料上傳至 Data Lake Store 時是否遇到問題？</li><li>使用者從 Data Lake Store 下載資料時是否遇到問題？</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/服務
+## <a name="microsoftdatamigrationservices"></a>microsoft.datamigration/服務
 |執行的檢查|
 |---|
 |<ul><li>資料庫移轉服務無法布建嗎？</li><li>資料庫移轉服務是否因無活動或使用者要求而停止？</li></ul>|
@@ -104,12 +104,12 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>是否有因 Azure Cosmos DB 服務無法使用而不提供的任何資料庫或集合要求？</li><li>是否有因 Azure Cosmos DB 服務無法使用而不提供的任何文件要求？</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft. eventhub/命名空間
+## <a name="microsofteventhubnamespaces"></a>microsoft. eventhub/命名空間
 |執行的檢查|
 |---|
 |<ul><li>事件中樞命名空間是否遇到使用者產生的錯誤？</li><li>目前正在升級的事件中樞命名空間嗎？</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>Microsoft hdinsight/叢集
+## <a name="microsofthdinsightclusters"></a>microsoft hdinsight/叢集
 |執行的檢查|
 |---|
 |<ul><li>HDInsight 叢集上是否有可用的核心服務？</li><li>HDInsight 叢集是否可以存取待用 BYOK 加密的金鑰？</li></ul>|
@@ -129,7 +129,7 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>媒體服務是否已啟動且正在執行？</li></ul>|
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft 網路/applicationgateways
+## <a name="microsoftnetworkapplicationgateways"></a>microsoft 網路/applicationgateways
 |執行的檢查|
 |---|
 |<ul><li>應用程式閘道效能是否降低？</li><li>應用程式閘道可用嗎？</li></ul>|
@@ -139,12 +139,12 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>VPN 通道是否已連線？</li><li>連線中有設定衝突嗎？</li><li>是否正確設定預先共用的金鑰？</li><li>是否可連線到 VPN 內部部署裝置？</li><li>IPSec/IKE 安全性原則中是否有不相符之處？</li><li>S2S VPN 連線是否正確佈建，還是處於失敗狀態？</li><li>VNET 對 VNET 連線是否正確佈建，還是處於失敗狀態？</li></ul>|
 
-## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft 網路/expressroutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>microsoft 網路/expressroutecircuits
 |執行的檢查|
 |---|
 |<ul><li>ExpressRoute 線路狀況良好嗎？</li></ul>|
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft 網路/frontdoors
+## <a name="microsoftnetworkfrontdoors"></a>microsoft 網路/frontdoors
 |執行的檢查|
 |---|
 |<ul><li>Front 門板後端是否回應健康狀態探查的錯誤？</li><li>設定變更延遲嗎？</li></ul>|
@@ -164,7 +164,7 @@ ms.locfileid: "76717063"
 |---|
 |<ul><li>可以在命名空間上執行註冊、安裝或傳送等執行階段作業嗎？</li></ul>|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/工作區
+## <a name="microsoftoperationalinsightsworkspaces"></a>microsoft.operationalinsights/工作區
 |執行的檢查|
 |---|
 |<ul><li>工作區有索引延遲嗎？</li></ul>|

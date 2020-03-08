@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582631"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668987"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -97,7 +97,7 @@ MARS 伺服器需要存取這些 URL：
 頻寬控制 | 支援。 在 MARS 代理程式中，使用 [**變更屬性**] 來調整頻寬。
 網路節流 | 不適用於執行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的備份電腦。
 
-## <a name="support-for-direct-backups"></a>直接備份的支援
+## <a name="supported-operating-systems"></a>支援的作業系統
 
 >[!NOTE]
 > MARS 代理程式不支援 Windows Server Core Sku。
@@ -114,7 +114,6 @@ MARS 伺服器需要存取這些 URL：
 Windows 10 (企業版、專業版、家用版) | 是 | 否 |  檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8.1 (企業版、專業版)| 是 |否 | 檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8 (企業版、專業版) | 是 | 否 | 檢查對應的伺服器版本是否有軟體/模組需求
-Windows 7 (Ultimate、企業版、專業版、家用進階版/基本版、入門版) | 是 | 否 | 檢查對應的伺服器版本是否有軟體/模組需求
 Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.EXE）
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 （Standard、Workgroup） | 是 | 否 
 Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 
 如需詳細資訊，請參閱[支援的 MABS 和 DPM 作業系統](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
+
+### <a name="operating-systems-at-end-of-support"></a>支援終止的作業系統
+
+下列作業系統已結束支援，因此強烈建議您升級作業系統以繼續保持受保護狀態。
+
+如果現有的承諾無法升級作業系統，請考慮將 Windows 伺服器遷移至 Azure Vm，並利用 Azure VM 備份繼續保持受保護狀態。 如需有關遷移 Windows server 的詳細資訊，請流覽這裡的「[遷移」頁面](https://azure.microsoft.com/migration/windows-server/)。
+
+針對您無法升級作業系統或遷移至 Azure 的內部部署或託管環境，請為機器啟動擴充安全性更新，以繼續保持受保護並受支援。 請注意，只有特定版本才符合擴充安全性更新的資格。 若要深入瞭解，請流覽[常見問題頁面](https://www.microsoft.com/cloud-platform/extended-security-updates)。
+
+| **作業系統**                                       | **檔案/資料夾** | **系統狀態** | **軟體/模組需求**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 （旗艦版、企業版、專業版、家用 Premium/Basic、Starter） | 是               | 否                 | 檢查對應的伺服器版本是否有軟體/模組需求 |
+| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.EXE） |
+| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.EXE） <br>  -Virtual Server 2005 基底 + KB KB948515 |
 
 ## <a name="backup-limits"></a>備份限制
 

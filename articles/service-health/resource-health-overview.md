@@ -3,12 +3,12 @@ title: Azure 資源健康狀態概觀
 description: Azure 資源健康狀態的概觀
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356802"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925213"
 ---
 # <a name="resource-health-overview"></a>資源健康狀態總覽
  
@@ -38,7 +38,7 @@ Azure 資源健康狀態可協助您診斷並取得影響 Azure 資源的服務�
 
 #### <a name="platform-events"></a>平台事件
 
-平台事件是由 Azure 基礎結構的多個元件觸發。 其中包括已排程的動作 (例如計劃性維護) 和非預期的事件 (例如非計劃性主機重新開機)。
+平台事件是由 Azure 基礎結構的多個元件觸發。 其中包括排程的動作（例如，規劃的維護）和非預期的事件（例如，在指定的時間範圍之後預測為失敗的未計畫主機重新開機或降級主機硬體）。
 
 資源健康狀態提供有關事件和復原程式的其他詳細資料。 即使您沒有有效的支援合約，它也可讓您與 Microsoft 支援服務聯繫。
 
