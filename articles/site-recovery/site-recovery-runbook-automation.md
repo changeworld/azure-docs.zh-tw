@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173487"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390476"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>將 Azure 自動化 Runbook 新增至復原方案
 
@@ -43,7 +43,7 @@ ms.locfileid: "72173487"
 
 當腳本執行時，它會將復原方案內容插入至 runbook。 內容包含資料表中摘要說明的變數。
 
-| **變數名稱** | **描述** |
+| **變數名稱** | **說明** |
 | --- | --- |
 | RecoveryPlanName |復原方案名稱。 用在以名稱為基礎的動作中。 |
 | FailoverType |指定是測試或生產容錯移轉。 

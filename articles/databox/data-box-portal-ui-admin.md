@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77911809"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380325"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 入口網站來管理資料箱磁碟
 
@@ -51,7 +51,7 @@ ms.locfileid: "77911809"
 
     ![複製訂單 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 **[建立]** 。    
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]。    
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
@@ -67,11 +67,11 @@ ms.locfileid: "77911809"
 
     ![搜尋資料箱磁碟訂單](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
 
-2. 按一下您想要刪除的訂單，並移至 [概觀]。 從命令列中，按一下 [刪除]。
+2. 按一下您想要刪除的訂單，並移至 [概觀]。 從命令列按一下 [刪除]。
 
     ![刪除資料箱磁碟訂單 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
+3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 [刪除]。
 
      ![刪除資料箱磁碟訂單 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -126,9 +126,9 @@ ms.locfileid: "77911809"
 |已分派     | 訂單已出貨。 您應該會在 1-2 天內收到訂單。        |
 |已傳遞     | 訂單已傳遞到訂單中指定的地址。        |
 |已取貨     |您的退貨已取貨。 <br> 一旦 Azure 資料中心收到出貨時，資料會自動上傳至 Azure。         |
-|已收到     | Azure 資料中心已收到您的磁碟。 複製資料即將開始。        |
+|已接收     | Azure 資料中心已收到您的磁碟。 複製資料即將開始。        |
 |已複製資料     |資料複製進行中。<br> 等候資料複製完成。         |
-|Completed       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
+|已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
 |已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀] 中提供的路徑，檢閱上傳的錯誤記錄。 如需詳細資訊，請移至[下載上傳錯誤記錄](data-box-disk-troubleshoot-upload.md#download-logs)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。     |
 

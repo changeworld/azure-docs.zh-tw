@@ -11,13 +11,13 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373686"
 ---
-# <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 儲存體中管理並行處理
+# <a name="managing-concurrency-in-microsoft-azure-storage"></a>管理 Microsoft Azure 儲存體中的並行存取
 
 新式以網際網路為基礎的應用程式通常會有多個使用者同時查看和更新資料。 這使得應用程式開發人員不得不認真思考如何為其使用者提供可預測的使用經驗，尤其是有多個使用者可更新相同資料的案例。 開發人員通常會考量三個主要的資料並行存取策略：  
 
@@ -195,7 +195,7 @@ catch (StorageException ex)
 * 設定容器 ACL
 * 租用容器  
 
-如需詳細資訊，請參閱：  
+如需詳細資訊，請參閱  
 
 * [指定 Blob 服務作業的條件式標頭](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [租用容器](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -256,7 +256,7 @@ customer.ETag = "*";
 
 一般而言，使用資料表的開發人員在開發可擴充的應用程式時，應該會採用開放式並行存取。 如果需要封閉式鎖定，開發人員在存取資料表時可採用的方法之一，是為每個資料表指派一個指定 Blob，在且在操作資料表之前嘗試租用 Blob。 要使用此方法，應用程式必須確定所有資料存取路徑都在操作資料表之前取得租用。 您也應注意，最短租用時間為 15 秒，您應謹慎考量這一點以維持擴充性。  
 
-如需詳細資訊，請參閱：  
+如需詳細資訊，請參閱  
 
 * [實體上的作業](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,7 +266,7 @@ customer.ETag = "*";
 
 佇列服務並不支援開放式或封閉式並行存取，因此，用戶端在處理擷取自佇列的訊息時，應確定訊息是以冪等方式進行處理的。 「最後寫入為準」策略可用於更新作業，例如 SetQueueServiceProperties、SetQueueMetaData、SetQueueACL 和 UpdateMessage。  
 
-如需詳細資訊，請參閱：  
+如需詳細資訊，請參閱  
 
 * [佇列服務 REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [取得訊息](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -277,7 +277,7 @@ customer.ETag = "*";
 
 SMB 用戶端在開啟檔案以進行刪除時，會將檔案標示為「擱置刪除」，直到所有對該檔案的其他 SMB 用戶端開啟控制代碼關閉為止。 在檔案標示為「擱置刪除」時，任何對該檔案的 REST 作業都將傳回狀態碼 409 (衝突) 和錯誤碼 SMBDeletePending。 此時並不會傳回狀態碼 404 (找不到)，因為 SMB 用戶端有可能在關閉檔案之前移除擱置刪除旗標。 換句話說，狀態碼 404 (找不到) 只有可能在檔案已移除時出現。 請注意，處於 SMB 擱置刪除狀態的檔案不會包含在「列出檔案」結果中。 另請注意，「REST 刪除檔案」和「REST 刪除目錄」作業會以不可分割的方式認可，因此不會導致擱置刪除狀態。  
 
-如需詳細資訊，請參閱：  
+如需詳細資訊，請參閱  
 
 * [管理檔案鎖定](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

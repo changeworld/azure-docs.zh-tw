@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395636"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 來驗證和授權應用程式，以存取 Azure 服務匯流排實體
 Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排實體（佇列、主題、訂用帳戶或篩選器）的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 當安全性主體（使用者、群組或應用程式）嘗試存取服務匯流排實體時，要求必須獲得授權。 有了 Azure AD，對資源的存取是兩個步驟的程式。 
 
- 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是`https://servicebus.azure.net`。
+ 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是 `https://servicebus.azure.net`。
  1. 接下來，權杖會當做要求的一部分傳遞給服務匯流排服務，以授權存取指定的資源。
 
 驗證步驟要求應用程式要求在執行時間包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對服務匯流排服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 服務匯流排資源的存取權](service-bus-managed-service-identity.md)。 
@@ -40,8 +40,8 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制 (RBAC)」模型來加以保護。 Azure 提供下列內建的 RBAC 角色，以授權存取服務匯流排命名空間：
 
 - [Azure 服務匯流排資料擁有](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)者：啟用服務匯流排命名空間及其實體（佇列、主題、訂用帳戶和篩選器）的資料存取
-- [Azure 服務匯流排資料寄件者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)：使用此角色可將存取權授與服務匯流排命名空間和其實體。
-- [Azure 服務匯流排資料接收器](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)：使用此角色可將接收存取權授與服務匯流排命名空間和其實體。 
+- [Azure 服務匯流排資料](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)傳送者：使用此角色可授與服務匯流排命名空間及其實體的傳送存取權。
+- [Azure 服務匯流排資料接收器](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)：使用此角色可授與服務匯流排命名空間及其實體的接收存取權。 
 
 ## <a name="resource-scope"></a>資源範圍 
 將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
@@ -49,9 +49,9 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 下列清單說明您可以將存取範圍限定為服務匯流排資源的層級，從最窄的範圍開始：
 
 - **佇列**、**主題**或**訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援在訂用帳戶層級將使用者/群組/受控識別指派給服務匯流排 RBAC 角色。 
-- **服務匯流排命名空間**：角色指派會跨越命名空間下的整個服務匯流排拓撲，以及與其相關聯的取用者群組。
-- **资源组**：角色指派會套用至資源群組下的所有服務匯流排資源。
-- 訂用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有服務匯流排資源。
+- **服務匯流排命名空間**：角色指派會跨越命名空間下服務匯流排的整個拓撲，以及與其相關聯的取用者群組。
+- **資源群組**：角色指派會套用至資源群組下的所有服務匯流排資源。
+- **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有服務匯流排資源。
 
 > [!NOTE]
 > 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 > [!NOTE]
 > 下面所述的步驟會將角色指派給您的服務匯流排命名空間。 您可以遵循相同的步驟，將角色指派給其他支援的範圍（資源群組、訂用帳戶等）。
 
-1. 在  [Azure 入口網站](https://portal.azure.com/)中，流覽至您的服務匯流排命名空間。 選取左側功能表上的 **[存取控制（IAM）** ]，以顯示命名空間的存取控制設定。 如果您需要建立服務匯流排命名空間，請遵循這篇文章中的指示：[建立服務匯流排訊息處理命名空間](service-bus-create-namespace-portal.md)。
+1. 在  [Azure 入口網站](https://portal.azure.com/)中，流覽至您的服務匯流排命名空間。 選取左側功能表上的 **[存取控制（IAM）** ]，以顯示命名空間的存取控制設定。 如果您需要建立服務匯流排命名空間，請遵循這篇文章中的指示：[建立服務匯流排訊息命名空間](service-bus-create-namespace-portal.md)。
 
     ![選取左側功能表上的 [存取控制]](./media/authenticate-application/select-access-control-menu.png)
 1. 選取 [角色指派] 索引標籤，以查看角色指派的清單。 選取工具列上的 [**新增**] 按鈕，然後選取 [**新增角色指派**]。 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 ## <a name="authenticate-from-an-application"></a>從應用程式進行驗證
 搭配服務匯流排使用 Azure AD 的主要優點是您的認證不再需要儲存在您的程式碼中。 相反地，您可以向 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 服務匯流排的要求。
 
-下列各節說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 如需 Microsoft 身分識別平臺2.0 的詳細資訊, 請參閱[microsoft 身分識別平臺 (v2.0) 總覽](../active-directory/develop/v2-overview.md)。
+下列各節說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱[microsoft 身分識別平臺（v2.0）總覽](../active-directory/develop/v2-overview.md)。
 
 如需 OAuth 2.0 程式碼授與流程的概觀，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -101,7 +101,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 ![註冊應用程式](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
-> 如果您將應用程式註冊為原生應用程式，您可以為重新導向 URI 指定任何有效的 URI。 對於原生應用程式, 這個值不一定是真正的 URL。 對於 web 應用程式, 重新導向 URI 必須是有效的 URI, 因為它會指定提供權杖的 URL。
+> 如果您將應用程式註冊為原生應用程式，您可以為重新導向 URI 指定任何有效的 URI。 對於原生應用程式，這個值不一定是真正的 URL。 對於 web 應用程式，重新導向 URI 必須是有效的 URI，因為它會指定提供權杖的 URL。
 
 註冊應用程式之後，您會在 [**設定**] 底下看到**應用程式（用戶端）識別碼**：
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 > 記下**TenantId**和**ApplicationId**。 您將需要這些值才能執行應用程式。
 
 ### <a name="create-a-client-secret"></a>建立用戶端密碼   
-應用程式需要用戶端密碼, 才能在要求權杖時證明其身分識別。 若要新增用戶端密碼，請遵循下列步驟。
+應用程式需要用戶端密碼，才能在要求權杖時證明其身分識別。 若要新增用戶端密碼，請遵循下列步驟。
 
 1. 如果您還沒有在頁面上，請流覽至您在 Azure 入口網站中的應用程式註冊。
 1. 選取左側功能表上的 [**憑證 & 密碼**]。
@@ -133,7 +133,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 ### <a name="client-libraries-for-token-acquisition"></a>取得權杖的用戶端程式庫  
 註冊應用程式並授與在 Azure 服務匯流排中傳送/接收資料的許可權之後，您就可以將程式碼新增至應用程式，以驗證安全性主體並取得 OAuth 2.0 權杖。 若要驗證並取得權杖，您可以使用其中一個 Microsoft 身分[識別平臺驗證程式庫](../active-directory/develop/reference-v2-libraries.md)，或另一個支援 OpenID 或 connect 1.0 的開放原始碼程式庫。 然後，您的應用程式就可以使用存取權杖來授權對 Azure 服務匯流排的要求。
 
-如需支援取得權杖的案例清單, 請參閱適用于 .NET GitHub 存放庫的[Microsoft 驗證程式庫 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)的[案例](https://aka.ms/msal-net-scenarios)一節。
+如需支援取得權杖的案例清單，請參閱適用于 .NET GitHub 存放庫的[Microsoft 驗證程式庫（MSAL）](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)的[案例](https://aka.ms/msal-net-scenarios)一節。
 
 ## <a name="sample-on-github"></a>GitHub 上的範例
 請參閱 GitHub 上的下列範例：[服務匯流排的角色基底存取控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
@@ -144,11 +144,11 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 
 在執行此範例之前，請先編輯**app.config**檔案，並根據您的案例設定下列值：
 
-- `tenantId`:設定為 **TenantId** 值。
-- `clientId`:設定為 **ApplicationId** 值。
-- `clientSecret`:如果您想要使用用戶端密碼來登入，請在 Azure AD 中建立該密碼。 另外，請使用 Web 應用程式或 API 而非使用原生應用程式。 還有，請將應用程式新增到您先前所建立之命名空間中的 [存取控制 (IAM)] 底下。
-- `serviceBusNamespaceFQDN`:設定為新建立之服務匯流排命名空間的完整 DNS 名稱；例如 `example.servicebus.windows.net`。
-- `queueName`:設定為您所建立之佇列的名稱。
+- `tenantId`：設定為 **TenantId** 值。
+- `clientId`：設定為 **ApplicationId** 值。
+- `clientSecret`：如果您要使用用戶端密碼來登入，請在 Azure AD 中建立該用戶端密碼。 另外，請使用 Web 應用程式或 API 而非使用原生應用程式。 還有，請將應用程式新增到您先前所建立之命名空間中的 [存取控制 (IAM)] 底下。
+- `serviceBusNamespaceFQDN`：設定為新建立之服務匯流排命名空間的完整 DNS 名稱；例如 `example.servicebus.windows.net`。
+- `queueName`：設定為您所建立之佇列的名稱。
 - 您在前面步驟的應用程式中所指定的重新導向 URI。
 
 當您執行主控台應用程式時，系統會提示您選取案例。 輸入 **[互動式使用者登**入]，然後按 enter 鍵。 應用程式隨即會顯示登入視窗，要求您同意存取服務匯流排，然後使用該服務並利用登入身分識別來執行傳送/接收案例。

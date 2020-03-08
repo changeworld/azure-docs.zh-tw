@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372162"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>針對 Azure Cache for Redis 伺服器端問題進行疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "75433360"
 - [Redis 伺服器上的記憶體壓力](#memory-pressure-on-redis-server)
 - [高 CPU 使用率或伺服器負載](#high-cpu-usage-or-server-load)
 - [長時間執行的命令](#long-running-commands)
-- [伺服器端頻寬限制](#server-side-bandwidth-limitation)
+- [伺服器端的頻寬限制](#server-side-bandwidth-limitation)
 
 > [!NOTE]
 > 本指南中的數個疑難排解步驟包含如何執行 Redis 命令和監視各種效能度量的指示。 如需詳細資訊和指示，請參閱 [其他資訊](#additional-information) 一節中的文章。

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766084"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376047"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
 本主題列出 Azure AD Connect 同步處理所同步處理的屬性。  
@@ -38,8 +38,8 @@ ms.locfileid: "74766084"
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 專業增強版
-| 屬性名稱 | User | 註解 |
+## <a name="office-365-proplus"></a>Office 365 ProPlus
+| 屬性名稱 | 使用者 | 註解 |
 | --- |:---:| --- |
 | accountEnabled |X |定義是否啟用帳戶。 |
 | cn |X | |
@@ -52,7 +52,7 @@ ms.locfileid: "74766084"
 | userPrincipalName |X |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | assistant |X |X | | |
@@ -64,7 +64,7 @@ ms.locfileid: "74766084"
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| 說明 | | |X | |
+| description | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -86,14 +86,14 @@ ms.locfileid: "74766084"
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | homePhone |X |X | | |
-| info |X |X |X |群組目前未使用這個屬性。 |
-| Initials |X |X | | |
+| 資訊 |X |X |X |群組目前未使用這個屬性。 |
+| 縮寫 |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
-| member | | |X | |
+| 成員 | | |X | |
 | mobile |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
@@ -175,7 +175,7 @@ ms.locfileid: "74766084"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | authOrig |X |X |X | |
@@ -185,7 +185,7 @@ ms.locfileid: "74766084"
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| 說明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -208,15 +208,15 @@ ms.locfileid: "74766084"
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | homePhone |X |X | | |
-| info |X |X |X | |
+| 資訊 |X |X |X | |
 | Initials |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail |X |X |X | |
-| mailNickname |X |X |X | |
+| 郵件 |X |X |X | |
+| mailnickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
-| member | | |X | |
+| 成員 | | |X | |
 | middleName |X |X | | |
 | mobile |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
@@ -257,7 +257,7 @@ ms.locfileid: "74766084"
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>小組與商務用 Skype Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -265,18 +265,18 @@ ms.locfileid: "74766084"
 | co |X |X | | |
 | company |X |X | | |
 | department |X |X | | |
-| 說明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
 | homePhone |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail |X |X |X | |
+| 郵件 |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
-| member | | |X | |
+| 成員 | | |X | |
 | mobile |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
 | msRTCSIP-ApplicationOptions |X | | | |
@@ -305,13 +305,13 @@ ms.locfileid: "74766084"
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X |一般名稱或別名。 最常見的前置詞是 [mail] 值。 |
 | displayName |X |X |X |字串，表示通常會顯示為易記名稱 (名字姓氏) 的名稱。 |
-| mail |X |X |X |電子郵件地址。 |
-| member | | |X | |
+| 郵件 |X |X |X |電子郵件地址。 |
+| 成員 | | |X | |
 | objectSID |X | |X |機械屬性。 AD 使用者識別碼，可用來維持 Azure AD 和 AD 之間的同步處理。 |
 | proxyAddresses |X |X |X |機械屬性。 由 Azure AD 所使用。 包含使用者的所有次要電子郵件地址。 |
 | pwdLastSet |X | | |機械屬性。 用來得知何時要讓已經發行的權杖失效。 |
@@ -320,16 +320,16 @@ ms.locfileid: "74766084"
 | userPrincipalName |X | | |這個 UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="intune"></a>Intune
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
 | cn |X | |X | |
-| 說明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
-| mail |X |X |X | |
-| mailNickname |X |X |X | |
-| member | | |X | |
+| 郵件 |X |X |X | |
+| mailnickname |X |X |X | |
+| 成員 | | |X | |
 | objectSID |X | |X |機械屬性。 AD 使用者識別碼，可用來維持 Azure AD 和 AD 之間的同步處理。 |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |機械屬性。 用來得知何時要讓已經發行的權杖失效。 供密碼雜湊同步處理、傳遞驗證和同盟使用。 |
@@ -338,7 +338,7 @@ ms.locfileid: "74766084"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -346,14 +346,14 @@ ms.locfileid: "74766084"
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| 說明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
 | managedBy | | |X | |
 | manager |X |X | | |
-| member | | |X | |
+| 成員 | | |X | |
 | mobile |X |X | | |
 | objectSID |X | |X |機械屬性。 AD 使用者識別碼，可用來維持 Azure AD 和 AD 之間的同步處理。 |
 | physicalDeliveryOfficeName |X |X | | |
@@ -377,17 +377,17 @@ ms.locfileid: "74766084"
 
 此群組是一組屬性，是未使用 Azure AD 目錄來支援 Office 365、Dynamics 或 Intune 時所能使用的屬性。 它包含一小組的核心屬性。
 
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X | |
 | displayName |X |X |X | |
 | employeeID |X |  |  | |
 | givenName |X |X | | |
-| mail |X | |X | |
+| 郵件 |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
-| member | | |X | |
+| 成員 | | |X | |
 | objectSID |X | | |機械屬性。 AD 使用者識別碼，可用來維持 Azure AD 和 AD 之間的同步處理。 |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |機械屬性。 用來得知何時要讓已經發行的權杖失效。 供密碼雜湊同步處理、傳遞驗證和同盟使用。 |
@@ -413,7 +413,7 @@ ms.locfileid: "74766084"
 
 下列「使用者」 屬性是您已選取的其他應用程式以外的屬性。  
 
-| 屬性名稱 | User | 註解 |
+| 屬性名稱 | 使用者 | 註解 |
 | --- |:---:| --- |
 | domainFQDN |X |也稱為 dnsDomainName。 例如 contoso.com。 |
 | domainNetBios |X |也稱為 netBiosName。 例如 CONTOSO。 |
@@ -422,7 +422,7 @@ ms.locfileid: "74766084"
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合回寫
 當您選擇啟用「Exchange 混合」時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
 
-| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | 使用者 | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |衍生自 Azure AD 中的 cloudAnchor。 這個屬性是 Exchange 2016 和 Windows Server 2016 AD 中的新屬性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |線上封存：可讓客戶封存郵件。 |
@@ -440,7 +440,7 @@ ms.locfileid: "74766084"
 | 屬性名稱 | 公用資料夾 | 註解 |
 | --- | :---:| --- |
 | displayName | X |  |
-| mail | X |  |
+| 郵件 | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |
@@ -466,7 +466,7 @@ ms.locfileid: "74766084"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>注意事項
 * 使用「替代識別碼」時，內部部署屬性 userPrincipalName 會與 Azure AD 屬性 onPremisesUserPrincipalName 進行同步處理。 「替代識別碼」屬性 (例如 mail) 會與 Azure AD 屬性 userPrincipalName 進行同步處理。
 * 在上面的清單中，物件類型 **User** 也適用於物件類型 **iNetOrgPerson**。
 

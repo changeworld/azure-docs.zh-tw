@@ -4,11 +4,11 @@ description: 描述可用於 Azure 藍圖定義和指派中藍圖成品的函式
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386244"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函數
 
@@ -18,12 +18,12 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 - [成品](#artifacts)
 - [concat](#concat)
-- [參數](#parameters)
+- [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [訂用帳戶](#subscription)
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>成品
 
 `artifacts(artifactName)`
 
@@ -34,7 +34,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要項 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | artifactName |是 |string |藍圖成品的名稱。 |
 
@@ -106,14 +106,14 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 從_myTemplateArtifact_範例中取出資料的一些範例包括：
 
-| 運算是 | Type | Value |
+| 運算式 | 類型 | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | 陣列 | \[「第一」、「第二」\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[「第一」、「第二」\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | 頭 |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | 「我的字串值」 |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty"： "my value"，"anotherProperty"： true} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | 「我的價值」 |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | 是 |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 
@@ -123,7 +123,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要項 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |string |串連的第一個值。 |
 | 其他引數 |否 |string |串連的順序中的其他值 |
@@ -148,7 +148,7 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要項 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |string |要傳回的參數名稱。 |
 
@@ -269,7 +269,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要項 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |是 |string |要傳回之資源群組成品的預留位置名稱。 |
 
@@ -323,7 +323,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 }
 ```
 
-## <a name="subscription"></a>訂用帳戶
+## <a name="subscription"></a>訂閱中
 
 `subscription()`
 

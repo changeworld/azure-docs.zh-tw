@@ -4,11 +4,11 @@ description: 在本文中，您將瞭解管理和監視在 Azure 虛擬機器上
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390575"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382468"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -63,7 +63,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 1. 在保存庫功能表中，按一下 [備份項目]。
 2. 在 [**備份專案**] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [**立即備份**]。
-3. 在 [**立即備份**] 中，使用行事曆控制項選取復原點應保留的最後一天。 然後按一下 [確定]。
+3. 在 [**立即備份**] 中，使用行事曆控制項選取復原點應保留的最後一天。 然後按一下 **[確定]** 。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 視資料庫的大小而定，建立初始備份可能需要一段時間。
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在已啟用 Azure 備份的資料庫上執行 SAP Hana native client 備份
@@ -113,18 +113,18 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 >
 > 增量備份原則無法用於 SAP Hana 資料庫。 這些資料庫目前不支援增量備份。
 
-### <a name="stop-protection-for-an-sap-hana-database"></a>停止保護 SAP Hana 資料庫
+### <a name="stop-protection-for-an-sap-hana-database"></a>停止 SAP Hana 資料庫的保護
 
-您可以用幾種方式停止保護 SAP Hana 資料庫：
+您可以用幾種方式來停止保護 SAP Hana 資料庫：
 
 * 停止所有未來的備份作業並刪除所有復原點。
-* 停止所有未來的備份工作，並將復原點保留不變。
+* 停止所有未來的備份作業但保留復原點不變。
 
 如果您選擇保留復原點，請記住下列詳細資料：
 
-* 所有復原點永遠保持不變，所有剪除都應該在停止保護時停止，並保留資料。
+* 所有復原點會永遠保持不變，而停止保護但保留資料時，所有清除作業都應該停止。
 * 系統會向您收取受保護實例和已耗用儲存體的費用。 如需詳細資訊，請參閱[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
-* 如果您刪除資料來源而不停止備份，新的備份將會失敗。
+* 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。
 
 若要停止保護資料庫：
 

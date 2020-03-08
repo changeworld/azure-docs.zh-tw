@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443729"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391221"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -92,7 +92,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 - 容器（檔案系統）
 - 儲存體帳戶
 - 資源群組
-- 訂閱
+- 訂用帳戶
 
 若要瞭解如何驗證和指派角色，請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -271,7 +271,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要取得連結，請執行此命令：
 
-| 作業系統  | Command |
+| 作業系統  | 命令 |
 |--------|-----------|
 | **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
@@ -281,7 +281,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 此 URL 會出現在此命令的輸出中。 接著，您的腳本就可以使用該 URL 來下載 AzCopy。
 
-| 作業系統  | Command |
+| 作業系統  | 命令 |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

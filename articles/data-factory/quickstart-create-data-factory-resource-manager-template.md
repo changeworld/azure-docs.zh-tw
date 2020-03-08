@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386677"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本建立 Azure Data Factory
 
@@ -395,7 +395,7 @@ DeploymentDebugLogLevel :
     RuntimeState      : Stopped
     ```
     
-    請注意，觸發程序的執行階段狀態為 [已停止]  。
+    請注意，觸發程序的執行階段狀態為 [已停止]。
 5. **啟動觸發程序**。 觸發程序會在整點執行範本中定義的管線。 也就是，如果您在下午 2:25 執行此命令，則觸發程序會在下午 3 點第一次執行管線。 然後，它會每小時執行管線，直到您為觸發程序指定的結束時間為止。
 
     ```powershell
@@ -428,25 +428,25 @@ DeploymentDebugLogLevel :
 
 ## <a name="monitor-the-pipeline"></a>監視管線
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [所有服務]  ，以 **data fa** 等關鍵字進行搜尋，然後選取 [資料處理站]  。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [所有服務]，以 **data fa** 等關鍵字進行搜尋，然後選取 [資料處理站]。
 
-2. 在 [資料管理站]  頁面中，按一下您建立的資料管理站。 如有需要，以您的資料管理站名稱篩選清單。
+2. 在 [資料管理站] 頁面中，按一下您建立的資料管理站。 如有需要，以您的資料管理站名稱篩選清單。
 
-3. 在 [Data Factory] 頁面中，按一下 [撰寫和監視]  圖格。
+3. 在 [Data Factory] 頁面中，按一下 [撰寫和監視] 圖格。
 
-4. 在 [立即開始]  頁面中，選取 [監視]  索引標籤。![監視管線執行](media/doc-common-process/get-started-page-monitor-button.png)
+4. 在 [**現在就開始**吧] 頁面中，選取 [**監視]** 索引標籤。 ![監視管線執行](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
-    > 您只會在整點看到管線執行 (例如：4 AM、5 AM、6 AM 等)。 按一下工具列上的 [重新整理]  ，以在時間達到下一個小時時重新整理清單。
+    > 您只會在整點看到管線執行 (例如：4 AM、5 AM、6 AM 等)。 按一下工具列上的 [重新整理]，以在時間達到下一個小時時重新整理清單。
 
-5. 按一下 [動作]  資料行中的 [檢視活動執行]  連結。
+5. 按一下 [動作] 資料行中的 [檢視活動執行] 連結。
 
     ![管線動作連結](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. 您會看到與管線執行相關聯的活動執行。 在本快速入門中，管線只有一個以下類型的活動：複製。 因此，您會看到該活動的執行。
+6. 您會看到與管線執行相關聯的活動執行。 本快速入門中，管線只有一個以下類型的活動：複製。 因此，您會看到該活動的執行。
 
     ![活動執行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. 按一下 [動作] 資料行底下的 [輸出]  連結。 您會在 [輸出]  視窗中看到複製作業的輸出。 按一下最大化按鈕，以查看完整的輸出。 您可以關閉最大化的輸出視窗，或將它關閉。
+7. 按一下 [動作] 資料行底下的 [輸出] 連結。 您會在 [輸出] 視窗中看到複製作業的輸出。 按一下最大化按鈕，以查看完整的輸出。 您可以關閉最大化的輸出視窗，或將它關閉。
 
 8. 一旦您看到成功/失敗執行，請停止觸發程序。 觸發程序會一小時執行一次管線。 管線會將相同的檔案從每次執行的輸入資料夾複製到輸出資料夾。 若要停止觸發程序，請在 PowerShell 視窗中執行下列命令。
     

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397156"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>使用每一租用戶一個資料庫的模式，透過 Azure SQL Database 管理 SaaS 應用程式中的結構描述
  
@@ -77,7 +77,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。 
 
 1. 開啟 SSMS 並連線到租用戶伺服器：tenants1-dpt-*user&lt;.database.windows.net&gt;*
-1. 若要確認目前「尚未」包含 Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部)，請瀏覽至 tenants1-dpt-_user_ *&lt; 伺服器上的 contosoconcerthall&gt;* 資料庫，並查詢 VenueTypes資料表。
+1. 若要確認目前**未**包含*Motorcycle 比賽*和*Swimming 俱樂部*，請流覽至*tenants1-tenants1-dpt user-&lt;使用者&gt;* 伺服器上的_contosoconcerthall_資料庫，然後查詢*VenueTypes*資料表。
 
 現在讓我們建立作業以更新所有租用戶資料庫中的 *VenueTypes* 資料表，以新增場地類型。
 
@@ -95,7 +95,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
 * **sp\_add\_jobstep** 會建立作業步驟，包含更新參考 VenueTypes 資料表的 T-SQL 命令文字。
 * 指令碼中的其餘檢視會顯示物件是否存在，以及監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標資料庫上完成的時間。
 
-當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-*user* *&lt; 伺服器上的 contosoconcerthall&gt;* 資料庫，並查詢 VenueTypes 資料表。  確認現在*已存在* Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部)。
+當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-*user* *&lt; 伺服器上的 contosoconcerthall&gt;* 資料庫，並查詢 VenueTypes 資料表。  請檢查*Motorcycle 的比賽*和*Swimming 俱樂部*現在**是否**存在。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>建立作業以管理參考資料表索引
