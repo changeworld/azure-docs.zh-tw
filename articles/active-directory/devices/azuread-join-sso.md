@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773314"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672710"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作
 
@@ -42,13 +42,13 @@ ms.locfileid: "76773314"
 在嘗試對使用者的內部部署環境中要求 Kerberos 的資源進行存取時，裝置會：
 
 1. 將內部網域資訊和使用者認證傳送給找到的 DC，以對使用者進行驗證。
-1. 接收 Kerberos 的[票證授權票證 (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets)，這會用來存取已加入 AD 的資源。 如果嘗試取得 AAD connect 網域的 TGT 失敗（相關的 DCLocator timeout 可能會造成延遲），則會嘗試認證管理員專案，或使用者可能會收到驗證快顯視窗，要求目標資源的認證。
+1. 接收 Kerberos 的[票證授權票證 (TGT)](/windows/desktop/secauthn/ticket-granting-tickets)，這會用來存取已加入 AD 的資源。 如果嘗試取得 AAD connect 網域的 TGT 失敗（相關的 DCLocator timeout 可能會造成延遲），則會嘗試認證管理員專案，或使用者可能會收到驗證快顯視窗，要求目標資源的認證。
 
 只要應用程式已設定 **Windows 整合式驗證**，當使用者嘗試存取這些應用程式時，就可順利地取得 SSO。
 
-Windows Hello 企業版需要其他設定，才能從已加入 Azure AD 的裝置中啟用內部部署 SSO。 如需詳細資訊，請參閱[使用 Windows Hello 企業版為加入 Azure AD 的裝置設定內部部署單一登入](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
+Windows Hello 企業版需要其他設定，才能從已加入 Azure AD 的裝置中啟用內部部署 SSO。 如需詳細資訊，請參閱[使用 Windows Hello 企業版為加入 Azure AD 的裝置設定內部部署單一登入](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 
-## <a name="what-you-get"></a>您的權益
+## <a name="what-you-get"></a>得到什麼結果
 
 藉由 SSO，您可以在加入 Azure AD 的裝置上執行下列作業： 
 

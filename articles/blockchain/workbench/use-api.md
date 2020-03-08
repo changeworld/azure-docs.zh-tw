@@ -1,27 +1,19 @@
 ---
 title: 使用 Azure Blockchain Workbench REST Api
 description: 如何使用 Azure Blockchain Workbench 預覽 REST API 的案例
-ms.date: 10/14/2019
+ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324193"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672740"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure Blockchain Workbench 預覽 REST API
 
-Azure Blockchain Workbench Preview REST API 讓開發人員和資訊工作者能夠建立區塊鏈應用程式的豐富整合。 本文會引導您瞭解 Workbench REST API 的數種重要方法。 例如，假設開發人員想要建立自訂的區塊鏈用戶端。 此區塊鏈用戶端可讓已登入的使用者檢視其指派的區塊鏈應用程式並與其互動。 用戶端可讓使用者檢視合約執行個體，並對智慧合約採取動作。 用戶端在已登入使用者的內容中使用 Workbench REST API，以執行下列動作：
-
-* 列出應用程式
-* 列出應用程式的工作流程
-* 列出工作流程的智慧合約執行個體
-* 列出合約的可用動作
-* 為合約執行動作
-
-可以[從 GitHub 下載](https://github.com/Azure-Samples/blockchain)案例中使用的區塊鏈應用程式範例。
+Azure Blockchain Workbench Preview REST API 讓開發人員和資訊工作者能夠建立區塊鏈應用程式的豐富整合。 本文重點說明如何使用工作臺 REST API 的幾個案例。 例如，假設您想要建立自訂區塊鏈用戶端，讓已登入的使用者能夠查看其指派的區塊鏈應用程式並與其互動。 用戶端可以使用 Blockchain Workbench API 來查看合約實例，並對智慧合約採取動作。
 
 ## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API 端點
 
@@ -36,21 +28,125 @@ Blockchain Workbench Api 是透過部署的端點來存取。 若要取得部署
 
     ![App service API 端點 URL](media/use-api/app-service-api.png)
 
+## <a name="authentication"></a>驗證
+
+Blockchain Workbench REST API 的要求會使用 Azure Active Directory （Azure AD）來保護。
+
+若要向 REST Api 提出已驗證的要求，用戶端程式代碼必須先使用有效的認證進行驗證，然後才能呼叫 API。 驗證會在各種動作專案之間進行協調，Azure AD，並為您的用戶端提供[存取權杖](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token)，做為驗證的證明。 然後，權杖會在 REST API 要求的 HTTP 授權標頭中傳送。 若要深入瞭解 Azure AD 驗證，請參閱[適用于開發人員的 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+
+如需如何驗證的範例，請參閱[REST API 範例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples)。
+
+## <a name="using-postman"></a>使用 Postman
+
+如果您想要測試或試驗工作臺 Api，您可以使用[Postman](https://www.postman.com)對您的部署進行 API 呼叫。 從 GitHub[下載工作臺 API 要求的範例 Postman 集合](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman)。 如需驗證和使用範例 API 要求的詳細資訊，請參閱讀我檔案。
+
+## <a name="create-an-application"></a>建立應用程式
+
+您會使用兩個 API 呼叫來建立 Blockchain Workbench 應用程式。 只有身為工作臺系統管理員的使用者才能執行此方法。
+
+使用[應用程式 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost)來上傳應用程式的 JSON 檔案，並取得應用程式識別碼。
+
+### <a name="applications-post-request"></a>應用程式 POST 要求
+
+使用**appFile**參數，將設定檔傳送為要求主體的一部分。
+
+``` http
+POST /api/v1/applications
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-samples/HelloWorld.json"
+Content-Type: application/json
+```
+
+### <a name="applications-post-response"></a>應用程式張貼回應
+
+已建立的應用程式識別碼會在回應中傳回。 當您呼叫下一個 API 時，您需要應用程式識別碼，將設定檔與程式碼檔案產生關聯。
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+1
+```
+
+### <a name="contract-code-post-request"></a>合約程式碼 POST 要求
+
+藉由傳遞應用程式識別碼來上傳應用程式的密度程式碼檔案，以使用[應用程式合約代碼 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) 。 裝載可以是單一的密度檔案或包含密度檔案的 zip 壓縮檔案。
+
+取代下列值：
+
+| 參數 | 值 |
+|-----------|-------|
+| ApplicationId | 從應用程式 POST API 傳回值。 |
+| {ledgerId} | 總帳的索引。 此值通常是1。 您也可以檢查[總帳資料表](data-sql-management-studio.md)的值。 |
+
+``` http
+POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
+```
+
+### <a name="contract-code-post-response"></a>合約代碼後置回應
+
+如果成功，回應會包含[ContractCode 資料表](data-sql-management-studio.md)中建立的合約程式碼識別碼。
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+2
+```
+
+## <a name="assign-roles-to-users"></a>將角色指派給使用者
+
+藉由傳遞應用程式識別碼、使用者識別碼和應用程式角色識別碼，在指定的區塊鏈應用程式中建立使用者對角色的對應，以使用[應用程式角色指派 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) 。 只有身為工作臺系統管理員的使用者才能執行此方法。
+
+### <a name="role-assignments-post-request"></a>角色指派張貼要求
+
+取代下列值：
+
+| 參數 | 值 |
+|-----------|-------|
+| ApplicationId | 從應用程式 POST API 傳回值。 |
+| UserId | [使用者資料表](data-sql-management-studio.md)中的使用者識別碼值。 |
+| {applicationRoleId} | 應用程式角色識別碼值，與[ApplicationRole 資料表](data-sql-management-studio.md)中的應用程式識別碼相關聯。 |
+
+``` http
+POST /api/v1/applications/{applicationId}/roleAssignments
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "userId": {userId},
+  "applicationRoleId": {applicationRoleId}
+}
+```
+
+### <a name="role-assignments-post-response"></a>角色指派張貼回應
+
+如果成功，回應會包含來自[RoleAssignment 資料表](data-sql-management-studio.md)的已建立角色指派識別碼。
+
+``` http
+HTTP/1.1 200
+1
+```
+
 ## <a name="list-applications"></a>列出應用程式
 
-一旦使用者登入區塊鏈用戶端，第一個工作就是擷取為該使用者所有的 Blockchain Workbench 應用程式。 在此案例中，使用者可以存取兩個應用程式：
+使用[應用程式取得 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)來抓取使用者的所有 Blockchain Workbench 應用程式。 在此範例中，已登入的使用者可存取兩個應用程式：
 
-1. [資產轉送](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2. [冷藏運輸](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [資產轉送](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [冷藏運輸](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-使用[應用程式 GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)：
+### <a name="applications-get-request"></a>應用程式取得要求
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-回應會列出使用者在 Blockchain Workbench 中可以存取的所有區塊鏈應用程式。 Blockchain Workbench 管理員可取得所有區塊鏈應用程式。 非 Workbench 管理員可取得擁有該區塊鏈至少一個相關聯應用程式角色或相關聯智慧合約執行個體角色的所有區塊鏈。
+### <a name="applications-get-response"></a>應用程式取得回應
+
+回應會列出使用者在 Blockchain Workbench 中可以存取的所有區塊鏈應用程式。 Blockchain Workbench 管理員可取得所有區塊鏈應用程式。 非工作臺系統管理員會取得具有至少一個相關聯應用程式角色或相關聯智慧合約實例角色的所有區塊鏈應用程式。
 
 ``` http
 HTTP/1.1 200 OK
@@ -84,16 +180,18 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>列出應用程式的工作流程
 
-當使用者選取適用的區塊鏈應用程式 (例如**資產轉送**) 之後，區塊鏈用戶端就會擷取特定區塊鏈應用程式的所有工作流程。 接著使用者會先選取適用的工作流程，系統才會對使用者顯示該工作流程的所有智慧合約執行個體。 每個區塊鏈應用程式都有一或多個工作流程，每個工作流程都會有零個執行個體或有智慧合約執行個體。 如果區塊鏈用戶端應用程式只有一個工作流程，則建議略過可讓使用者選取適用工作流程的使用者體驗流程。 在此案例中，**資產轉送**只會有一個工作流程，也稱做**資產轉送**。
+使用[應用程式工作流程取得 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) ，列出使用者在 Blockchain Workbench 中可存取之指定區塊鏈應用程式的所有工作流程。 每個區塊鏈應用程式都有一或多個工作流程，每個工作流程都會有零個執行個體或有智慧合約執行個體。 如果區塊鏈用戶端應用程式只有一個工作流程，則建議略過可讓使用者選取適用工作流程的使用者體驗流程。
 
-使用[應用程式工作流程 GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget)：
+### <a name="application-workflows-request"></a>應用程式工作流程要求
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-回應會列出使用者在 Blockchain Workbench 中可以存取的指定區塊鏈應用程式的所有工作流程。 Blockchain Workbench 管理員可取得所有區塊鏈工作流程。 非 Workbench 管理員可取得擁有該工作流程至少一個相關聯應用程式角色或與智慧合約執行個體角色相關聯的所有工作流程。
+### <a name="application-workflows-response"></a>應用程式工作流程回應
+
+Blockchain Workbench 管理員可取得所有區塊鏈工作流程。 非 Workbench 管理員可取得擁有該工作流程至少一個相關聯應用程式角色或與智慧合約執行個體角色相關聯的所有工作流程。
 
 ``` http
 HTTP/1.1 200 OK
@@ -114,18 +212,72 @@ Content-type: application/json
 }
 ```
 
+## <a name="create-a-contract-instance"></a>建立合約實例
+
+使用[合約 V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost)為工作流程建立新的智慧合約實例。 使用者只有在使用者與應用程式角色相關聯時，才能夠建立新的智慧合約實例，這可以起始工作流程的智慧合約實例。
+
+> [!NOTE]
+> 在此範例中，會使用 API 的第2版。 第2版合約 Api 為相關聯的 ProvisioningStatus 欄位提供更多的資料細微性。
+
+### <a name="contracts-post-request"></a>合約 POST 要求
+
+取代下列值：
+
+| 參數 | 值 |
+|-----------|-------|
+| #a7 | 工作流程識別碼值是來自[工作流程資料表](data-sql-management-studio.md)的合約 ConstructorID。 |
+| {contractCodeId} | 來自[ContractCode 資料表](data-sql-management-studio.md)的合約代碼識別碼值。 將您想要建立之合約實例的應用程式識別碼和總帳識別碼相互關聯。 |
+| ConnectionId | [連接資料表](data-sql-management-studio.md)中的連接識別碼值。 |
+
+針對要求主體，使用下列資訊來設定值：
+
+| 參數 | 值 |
+|-----------|-------|
+| workflowFunctionID | [WorkflowFunction 資料表](data-sql-management-studio.md)中的識別碼。 |
+| workflowActionParameters | 傳遞給此函式之參數的名稱值配對。 針對每個參數，使用[WorkflowFunctionParameter](data-sql-management-studio.md)資料表中的 workflowFunctionParameterID 值。 |
+
+``` http
+POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "workflowFunctionID": 2,
+  "workflowActionParameters": [
+    {
+      "name": "message",
+      "value": "Hello, world!",
+      "workflowFunctionParameterId": 3
+    }
+  ]
+}
+```
+
+### <a name="contracts-post-response"></a>合約張貼回應
+
+如果成功，角色指派 API 會從[ContractActionParameter 資料表](data-sql-management-studio.md)傳回 ContractActionID。
+
+``` http
+HTTP/1.1 200 OK
+4
+```
+
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>列出工作流程的智慧合約執行個體
 
-使用者選取適用的工作流程後，在此個案中為**資產轉送**，區塊鏈用戶端將會收到指定工作流程的所有智慧合約執行個體。 您可以使用此資訊來顯示工作流程的所有智慧合約執行個體。 或者，您可以讓使用者深入了解任何已顯示的智慧合約執行個體。 在此範例中，請將使用者視為想要與其中一個智慧合約執行個體互動，以採取動作。
+使用[合約取得 API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget)來顯示工作流程的所有智慧合約實例。 或者，您可以讓使用者深入了解任何已顯示的智慧合約執行個體。
 
-使用[合約 GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget)：
+### <a name="contracts-request"></a>合約要求
+
+在此範例中，請將使用者視為想要與其中一個智慧合約執行個體互動，以採取動作。
 
 ``` http
 GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-回應會列出指定工作流程的所有智慧合約執行個體。 Workbench 管理員可取得所有智慧合約執行個體。 非 Workbench 管理員可取得擁有該智慧合約執行個體至少一個相關聯應用程式角色或與智慧合約執行個體角色相關聯的所有智慧合約執行個體。
+### <a name="contracts-response"></a>合約回應
+
+回應會列出指定工作流程的所有智慧合約實例。 Workbench 管理員可取得所有智慧合約執行個體。 非 Workbench 管理員可取得擁有該智慧合約執行個體至少一個相關聯應用程式角色或與智慧合約執行個體角色相關聯的所有智慧合約執行個體。
 
 ``` http
 HTTP/1.1 200 OK
@@ -215,19 +367,25 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>列出合約的可用動作
 
-一旦使用者決定深入了解某個合約之後，區塊鏈用戶端接著就會根據合約狀態顯示可用的使用者動作。 在此範例中，使用者正在查看其所建立新智慧合約的所有可用動作：
+使用[合約動作取得 API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) ，以在指定合約狀態時顯示可用的使用者動作。 
 
-* 修改：允許使用者資產的描述和價格。
-* 終止：允許使用者結束資產的合約。
+### <a name="contract-action-request"></a>合約動作要求
 
-使用[合約動作 GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget)：
+在此範例中，使用者正在查看其所建立之新智慧合約的所有可用動作。
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-回應會根據所指定智慧合約執行個體的目前狀態列出使用者可採取的所有動作。 如果使用者具有相關聯的應用程式角色，或與所指定智慧合約目前狀態的智慧合約執行個體角色的相關聯，則使用者會得到所有適用的動作。
+### <a name="contract-action-response"></a>合約動作回應
+
+回應會根據所指定智慧合約執行個體的目前狀態列出使用者可採取的所有動作。
+
+* 修改：允許使用者資產的描述和價格。
+* 終止：允許使用者結束資產的合約。
+
+如果使用者具有相關聯的應用程式角色，或與所指定智慧合約目前狀態的智慧合約執行個體角色的相關聯，則使用者會得到所有適用的動作。
 
 ``` http
 HTTP/1.1 200 OK
@@ -282,12 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>為合約執行動作
 
-接著使用者可決定為指定的智慧合約執行個體採取動作. 在此情況下，假定情節為使用者想要將資產的描述與價格修改為下列動作：
+使用[合約動作 POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost)對指定的智慧合約實例採取動作。
 
-* 描述：「我的已更新汽車」
-* 價格：54321
+### <a name="contract-action-post-request"></a>合約動作張貼要求
 
-使用[合約動作 POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost)：
+在此情況下，請考慮使用者想要修改資產的描述和價格的案例。
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -307,7 +464,11 @@ actionInformation: {
 }
 ```
 
-使用者只能夠根據所指定智慧合約執行個體目前狀態，以及使用者相關聯的應用程式角色或智慧合約執行個體角色，來執行動作。 如果 post 成功，會傳回 HTTP 200 OK 回應，但無回應本文。
+使用者只能夠根據所指定智慧合約執行個體目前狀態，以及使用者相關聯的應用程式角色或智慧合約執行個體角色，來執行動作。
+
+### <a name="contract-action-post-response"></a>合約動作張貼回應
+
+如果 post 成功，會傳回 HTTP 200 OK 回應，但無回應本文。
 
 ``` http
 HTTP/1.1 200 OK
@@ -316,5 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [Azure Blockchain Workbench REST API 參考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) (英文)
+如需 Blockchain Workbench Api 的參考資訊，請參閱[Azure Blockchain Workbench REST API 參考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)。

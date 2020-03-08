@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812736"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851461"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>將 Azure 資料總管部署至您的虛擬網路（預覽）
 
@@ -48,7 +48,7 @@ Azure 資料總管支援將叢集部署至您虛擬網路（VNet）中的子網�
 
 IP 位址總數：
 
-| 使用 | 位址數目 |
+| 用法 | 位址數目 |
 | --- | --- |
 | 引擎服務 | 每個實例1個 |
 | 資料管理服務 | 2 |
@@ -75,16 +75,16 @@ IP 位址總數：
 
 #### <a name="inbound-nsg-configuration"></a>輸入 NSG 設定
 
-| **使用**   | **From**   | **To**   | **通訊協定**   |
+| **使用**   | **From**   | **若要**   | **通訊協定**   |
 | --- | --- | --- | --- |
-| 管理性  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子網：443  | TCP  |
-| 狀況監控  | [ADX 健全狀況監視位址](#health-monitoring-addresses)  | ADX 子網：443  | TCP  |
-| ADX 內部通訊  | ADX 子網：所有埠  | ADX 子網：所有埠  | 所有  |
+| 管理  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子網：443  | TCP  |
+| 健康情況監視  | [ADX 健全狀況監視位址](#health-monitoring-addresses)  | ADX 子網：443  | TCP  |
+| ADX 內部通訊  | ADX 子網：所有埠  | ADX 子網：所有埠  | 全部  |
 | 允許 Azure 負載平衡器輸入（健康情況探查）  | AzureLoadBalancer  | ADX 子網：80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>輸出 NSG 設定
 
-| **使用**   | **From**   | **To**   | **通訊協定**   |
+| **使用**   | **From**   | **若要**   | **通訊協定**   |
 | --- | --- | --- | --- |
 | Azure 儲存體的相依性  | ADX 子網  | 儲存體：443  | TCP  |
 | Azure Data Lake 的相依性  | ADX 子網  | AzureDataLake：443  | TCP  |
@@ -93,14 +93,14 @@ IP 位址總數：
 | Azure 監視器設定下載  | ADX 子網  | [Azure 監視器設定端點位址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
 | Active Directory （如果適用） | ADX 子網 | AzureActiveDirectory：443 | TCP |
 | 憑證授權單位 | ADX 子網 | 網際網路：80 | TCP |
-| 內部通訊  | ADX 子網  | ADX 子網：所有埠  | 所有  |
+| 內部通訊  | ADX 子網  | ADX 子網：所有埠  | 全部  |
 | `sql\_request` 和 `http\_request` 外掛程式所使用的埠  | ADX 子網  | 網際網路：自訂  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相關的 IP 位址
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>Azure 資料總管管理 IP 位址
 
-| 地區 | 位址 |
+| 區域 | 位址 |
 | --- | --- |
 | 澳大利亞中部 | 20.37.26.134 |
 | 澳大利亞 Central2 | 20.39.99.177 |
@@ -139,7 +139,7 @@ IP 位址總數：
 
 #### <a name="health-monitoring-addresses"></a>健全狀況監視位址
 
-| 地區 | 位址 |
+| 區域 | 位址 |
 | --- | --- |
 | 澳大利亞中部 | 191.239.64.128 |
 | 澳大利亞中部 2 | 191.239.64.128 |
@@ -174,11 +174,11 @@ IP 位址總數：
 | 西歐 | 23.97.212.5 |
 | 印度西部 | 23.99.5.162 |
 | 美國西部 | 23.99.5.162 |
-| 美國西部 2 | 23.99.5.162 | 
+| 美國西部 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure 監視器設定端點位址
 
-| 地區 | 位址 |
+| 區域 | 位址 |
 | --- | --- |
 | 澳大利亞中部 | 52.148.86.165 |
 | 澳大利亞中部 2 | 52.148.86.165 |
@@ -192,7 +192,7 @@ IP 位址總數：
 | 美國中部 EUAP | 13.90.43.231 |
 | 東亞 | 13.75.117.221 |
 | 美國東部 | 13.90.43.231 |
-| 美國東部2 | 13.68.89.19 | 
+| 美國東部2 | 13.68.89.19 |    
 | 美國東部 2 EUAP | 13.68.89.19 |
 | 法國中部 | 52.174.4.112 |
 | 法國南部 | 52.174.4.112 |
@@ -253,13 +253,159 @@ crl3.digicert.com:80
 
 例如，針對**美國西部**區域，必須定義下列 udr：
 
-| Name | 位址首碼 | 下一個躍點 |
+| 名稱 | 位址首碼 | 下一個躍點 |
 | --- | --- | --- |
-| ADX_Management | 13.64.38.225/32 | Internet |
-| ADX_Monitoring | 23.99.5.162/32 | Internet |
+| ADX_Management | 13.64.38.225/32 | 網際網路 |
+| ADX_Monitoring | 23.99.5.162/32 | 網際網路 |
 
 ## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本將 Azure 資料總管叢集部署至您的 VNet
 
 若要將 Azure 資料總管叢集部署至您的虛擬網路，請使用將[azure 資料總管叢集部署至您的 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure Resource Manager 範本。
 
 此範本會建立叢集、虛擬網路、子網、網路安全性群組和公用 IP 位址。
+
+## <a name="troubleshooting"></a>疑難排解
+
+在本節中，您將瞭解如何針對部署到[虛擬網路](/azure/virtual-network/virtual-networks-overview)的叢集，針對連線、操作和叢集建立問題進行疑難排解。
+
+### <a name="access-issues"></a>存取問題
+
+如果您在使用公用（cluster.region.kusto.windows.net）或私用（private-cluster.region.kusto.windows.net）端點存取叢集時發生問題，而且懷疑它與虛擬網路設定相關，請執行下列步驟來針對問題進行疑難排解。
+
+#### <a name="check-tcp-connectivity"></a>檢查 TCP 連線能力
+
+第一個步驟包括使用 Windows 或 Linux OS 檢查 TCP 連線能力。
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. 將[TCping](https://www.elifulkerson.com/projects/tcping.php)下載到連接到叢集的電腦。
+   2. 使用下列命令，從來源機器 Ping 目的地：
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. 在連接到叢集的電腦上安裝*netcat*
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. 使用下列命令，從來源機器 Ping 目的地：
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+如果測試不成功，請繼續進行下列步驟。 如果測試成功，問題不是因為 TCP 連線問題所造成。 請移至[操作問題](#cluster-creation-and-operations-issues)以進一步進行疑難排解。
+
+#### <a name="check-the-network-security-group-nsg"></a>檢查網路安全性群組（NSG）
+
+   檢查連接到叢集子網的[網路安全性群組](/azure/virtual-network/security-overview)（NSG）是否有輸入規則，允許從用戶端電腦的 IP 存取埠443。
+
+#### <a name="check-route-table"></a>檢查路由表
+
+   如果叢集的子網已將強制通道設定設為防火牆（子網具有包含預設路由 ' 0.0.0.0/0 ' 的[路由表](/azure/virtual-network/virtual-networks-udr-overview)），請確定電腦 IP 位址具有[下一個躍點類型](/azure/virtual-network/virtual-networks-udr-overview)為 VirtualNetwork/Internet 的路由。 這是避免非對稱式路由問題的必要條件。
+
+### <a name="ingestion-issues"></a>內嵌問題
+
+如果您遇到內嵌問題，而且懷疑它與虛擬網路設定相關，請執行下列步驟。
+
+#### <a name="check-ingestion-health"></a>檢查內嵌健全狀況
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>檢查資料來源資源的安全性規則
+
+如果計量指出沒有從資料來源處理的事件（已*處理*的事件（事件/IoT 中樞）計量），請確定資料來源資源（事件中樞或儲存體）允許從防火牆規則或服務端點中的叢集子網存取。
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>檢查叢集子網上設定的安全性規則
+
+請確定叢集的子網已正確設定 NSG、UDR 和防火牆規則。 此外，也請測試所有相依端點的網路連線能力。 
+
+### <a name="cluster-creation-and-operations-issues"></a>叢集建立和作業問題
+
+如果您遇到叢集建立或操作問題，而且懷疑它與虛擬網路設定相關，請遵循下列步驟來針對問題進行疑難排解。
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>使用 REST API 診斷虛擬網路
+
+[ARMClient](https://chocolatey.org/packages/ARMClient)是用來使用 PowerShell 來呼叫 REST API。 
+
+1. 使用 ARMClient 登入
+
+   ```powerShell
+   armclient login
+   ```
+
+1. 叫用診斷作業
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. 檢查回應
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. 等候操作完成
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   等到 [*狀態*] 屬性顯示為 [*已完成*]，然後 [*屬性*] 欄位應該會顯示：
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+如果 [*結果*] 屬性顯示空的結果，表示所有的網路測試都已通過，而且沒有任何連線中斷。 如果它顯示錯誤，如下所示：輸出相依性 *' {dependencyName}： {埠} ' 可能不滿足（輸出）* ，叢集無法連線到依存的服務端點。 繼續進行下列步驟來進行疑難排解。
+
+#### <a name="check-network-security-group-nsg"></a>檢查網路安全性群組（NSG）
+
+請根據[VNet 部署](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)的相依性中的指示，確定已正確設定[網路安全性群組](/azure/virtual-network/security-overview)
+
+#### <a name="check-route-table"></a>檢查路由表
+
+如果叢集的子網已將強制通道設定為防火牆（具有包含預設路由 ' 0.0.0.0/0 ' 之[路由表](/azure/virtual-network/virtual-networks-udr-overview)的子網），請確定[管理 ip 位址](#azure-data-explorer-management-ip-addresses)和[健全狀況監視 ip 位址](#health-monitoring-addresses)具有[下一個躍點類型](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools)為*網際網路*的路由，且[來源位址首碼](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route)為「*管理-ip/32* 」和「*健全狀況監視-ip/32*」。 這是避免非對稱式路由問題的必要條件。
+
+#### <a name="check-firewall-rules"></a>檢查防火牆規則
+
+如果您強制將通道子網輸出流量傳送到防火牆，請確定防火牆設定中允許所有相依性 FQDN （例如， *blob.core.windows.net*），如[使用防火牆保護輸出流量](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)中所述。

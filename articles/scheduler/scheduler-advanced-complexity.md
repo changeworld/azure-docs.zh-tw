@@ -1,30 +1,31 @@
 ---
-title: 建置進階的作業排程和週期 - Azure 排程器
+title: 組建先進的作業排程和週期
 description: 了解如何在 Azure 排程器中建立作業的進階排程和週期
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300972"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898592"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 排程器中建置作業的進階排程和週期
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 在 [Azure 排程器](../scheduler/scheduler-intro.md)作業內，排程為決定排程器服務何時及如何執行作業的核心。 您可以使用排程器，為作業設定多個單次和週期性排程。 單次排程只會在指定的時間執行一次，而且基本上是僅執行一次的週期性排程。 週期性排程會以指定的頻率來執行。 由於這種彈性，您可以將排程器用於各種商務案例，例如：
 
-* **定期清理資料**：建立每日作業，以刪除所有超過三個月的推文。
+* **定期清除資料**：建立每日作業，以刪除所有超過三個月的推文。
 
 * **封存資料**：建立每月作業，將發票歷程記錄推送到備份服務。
 
@@ -167,7 +168,7 @@ ms.locfileid: "71300972"
 | **monthlyOccurrences** |決定將在當月哪幾天執行工作。 只能搭配 monthly 頻率指定。 |**monthlyOccurrences** 物件的陣列：<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** 是作業在當週的第幾天執行。 例如， *{Sunday}* 是當月的每個星期日。 必要。<br /><br />**occurrence** 是當月期間的第幾天發生。 例如， *{Sunday, -1}* 是當月的最後一個星期日。 選擇性。 |
 | **monthDays** |作業將在當月的哪一日執行。 只能搭配 monthly 頻率指定。 |包含下列值的陣列：<br />- <= -1 且 >= -31 的任何值<br />- >= 1 且 <= 31 的任何值|
 
-## <a name="examples-recurrence-schedules"></a>例如：週期排程
+## <a name="examples-recurrence-schedules"></a>範例：週期排程
 
 下列範例顯示各種循環排程。 該範例著重於 schedule 物件和其子元素。
 
@@ -207,8 +208,9 @@ ms.locfileid: "71300972"
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |在月份中最後一個星期五每隔 15 分鐘執行一次。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |在每個月第三個星期三的上午 5:15、上午 5:45、下午 5:15 及下午 5:45 執行。 |
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
 * [Azure 排程器概念、術語及實體階層](scheduler-concepts-terms.md)
+* [Azure 排程器 REST API 參考](/rest/api/scheduler)
+* [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
 * [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)

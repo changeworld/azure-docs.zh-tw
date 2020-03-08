@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512414"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672687"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -34,13 +34,13 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 |   |   |
 |---|---|
-|![勾選][1]|檢閱您的案例|
-|![勾選][1]|檢閱您的身分識別基礎結構|
-|![勾選][1]|存取您的裝置管理|
-|![勾選][1]|了解應用程式和資源的考量|
-|![勾選][1]|了解您的佈建選項|
-|![勾選][1]|設定企業狀態漫遊|
-|![勾選][1]|設定條件式存取|
+|![檢查][1]|檢閱您的案例|
+|![檢查][1]|檢閱您的身分識別基礎結構|
+|![檢查][1]|存取您的裝置管理|
+|![檢查][1]|了解應用程式和資源的考量|
+|![檢查][1]|了解您的佈建選項|
+|![檢查][1]|設定企業狀態漫遊|
+|![檢查][1]|設定條件式存取|
 
 ## <a name="review-your-scenarios"></a>檢閱您的案例 
 
@@ -59,7 +59,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 ### <a name="managed-environment"></a>受控環境
 
-受控環境可使用無縫單一登入透過[密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)或[傳遞驗證](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)進行部署。
+受控環境可使用無縫單一登入透過[密碼雜湊同步](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)或[傳遞驗證](/azure/active-directory/hybrid/how-to-connect-pta-quick-start)進行部署。
 
 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
@@ -78,7 +78,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 如果您的識別提供者不支援這些通訊協定，則 Azure AD Join 無法原生運作。 
 
 >[!NOTE]
-> 目前，Azure AD join 不適用於以[外部驗證提供者設定的 AD FS 2019 做為主要驗證方法](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD join 預設為密碼驗證做為主要方法，這會導致在此案例中發生驗證失敗
+> 目前，Azure AD join 不適用於以[外部驗證提供者設定的 AD FS 2019 做為主要驗證方法](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD join 預設為密碼驗證做為主要方法，這會導致在此案例中發生驗證失敗
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智慧卡和憑證型驗證
@@ -91,7 +91,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 如果您將使用者建立於：
 
-- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) 將其同步至 Azure AD。 
+- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) 將其同步至 Azure AD。 
 - **Azure AD**，則不需另行設定。
 
 內部部署 UPN 與 Azure AD UPN 不同，加入 Azure AD 的裝置上並不支援它。 如果您使用內部部署 UPN，您應規劃改為使用它們在 Azure AD 中的主要 UPN。
@@ -127,9 +127,9 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 - 已加入Azure AD 的裝置或使用者是否需要不支援的原則？
 - 不支援的原則是否適用於雲端驅動的部署中？
 
-如果您的 MDM 解決方案無法透過 Azure AD 應用程式資源庫來啟用，您可以依照 [Azure Active Directory 與 MDM 的整合](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)中所列的程序新增該解決方案。 
+如果您的 MDM 解決方案無法透過 Azure AD 應用程式資源庫來啟用，您可以依照 [Azure Active Directory 與 MDM 的整合](/windows/client-management/mdm/azure-active-directory-integration-with-mdm)中所列的程序新增該解決方案。 
 
-透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 如需有關 Windows 10 裝置共同管理的詳細資訊，請參閱[什麼是共同管理？](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview)。 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
+透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 如需有關 Windows 10 裝置共同管理的詳細資訊，請參閱[什麼是共同管理？](/configmgr/core/clients/manage/co-management-overview)。 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
 
 **建議：** 針對已加入 Azure AD 的裝置，請考慮使用僅限 MDM 的管理。
 
@@ -141,7 +141,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 ### <a name="cloud-based-applications"></a>雲端式應用程式
 
-如果應用程式已新增至 Azure AD 應用程式資源庫，使用者將可透過已加入 Azure AD 的裝置進行 SSO。 不需要進行其他組態設定。 使用者可在Microsoft Edge 和 Chrome 瀏覽器上進行 SSO。 若要使用 Chrome，您必須部署 [Windows 10 帳戶延伸模組](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
+如果應用程式已新增至 Azure AD 應用程式資源庫，使用者將可透過已加入 Azure AD 的裝置進行 SSO。 無需進行其他設定。 使用者可在Microsoft Edge 和 Chrome 瀏覽器上進行 SSO。 若要使用 Chrome，您必須部署 [Windows 10 帳戶延伸模組](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
 
 所有 Win32 應用程式只要：
 
@@ -155,7 +155,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 - 啟用 Windows 整合式驗證 
 - 為使用者提供無提示的 SSO 體驗。 
 
-如果您使用 AD FS，請參閱[驗證及管理使用 AD FS 的單一登入](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100))。 
+如果您使用 AD FS，請參閱[驗證及管理使用 AD FS 的單一登入](/previous-versions/azure/azure-services/jj151809(v%3dazure.100))。 
 
 **建議：** 考慮裝載於雲端 (例如 Azure) 並且與 Azure AD 整合，以提供更理想的體驗。
 
@@ -163,7 +163,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 如果裝置可存取網域控制站，則使用者可從已加入 Azure AD 的裝置進行 SSO。 
 
-**建議：** 部署 [Azure AD App Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)，以啟用這些應用程式的安全存取。
+**建議：** 部署 [Azure AD App Proxy](/azure/active-directory/manage-apps/application-proxy)，以啟用這些應用程式的安全存取。
 
 ### <a name="on-premises-network-shares"></a>內部部署網路共用
 
@@ -171,7 +171,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 ### <a name="printers"></a>印表機
 
-針對印表機，您必須部署[混合式雲端列印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)，以在已加入 Azure AD 的裝置上探索印表機。 
+針對印表機，您必須部署[混合式雲端列印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)，以在已加入 Azure AD 的裝置上探索印表機。 
 
 雖然在僅限雲端的環境中無法自動探索印表機，您的使用者仍可使用印表機的 UNC 路徑直接加以新增。 
 
@@ -183,15 +183,15 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 ### <a name="remote-desktop-services"></a>遠端桌面服務
 
-若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
+若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](/windows/client-management/connect-to-remote-aadj-pc)
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
 
 您可以使用下列方法來佈建 Azure AD Join：
 
-- **OOBE/設定中的自助模式** - 在自助模式中，使用者可在使用 Windows 全新體驗 (OOBE) 期間或從 [Windows 設定] 中進行 Azure AD Join 程序。 如需詳細資訊，請參閱[了解如何將您的工作裝置加入組織的網路](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)。 
-- **Windows Autopilot** - Windows Autopilot 可讓您預先設定裝置，以提升在 OOBE 中執行 Azure AD Join 的體驗。 如需詳細資訊，請參閱 [Windows Autopilot 概觀](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)。 
-- **大量註冊** - 大量註冊可讓系統管理員使用大量佈建工具設定裝置，以驅動 Azure AD Join。 如需詳細資訊，請參閱 [Windows 裝置的大量註冊](https://docs.microsoft.com/intune/windows-bulk-enroll)。
+- **OOBE/設定中的自助模式** - 在自助模式中，使用者可在使用 Windows 全新體驗 (OOBE) 期間或從 [Windows 設定] 中進行 Azure AD Join 程序。 如需詳細資訊，請參閱[了解如何將您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)。 
+- **Windows Autopilot** - Windows Autopilot 可讓您預先設定裝置，以提升在 OOBE 中執行 Azure AD Join 的體驗。 如需詳細資訊，請參閱 [Windows Autopilot 概觀](/windows/deployment/windows-autopilot/windows-10-autopilot)。 
+- **大量註冊** - 大量註冊可讓系統管理員使用大量佈建工具設定裝置，以驅動 Azure AD Join。 如需詳細資訊，請參閱 [Windows 裝置的大量註冊](/intune/windows-bulk-enroll)。
  
 以下是這三種方法的比較 
  
@@ -296,7 +296,7 @@ MAM 不適用於 Azure AD Join。
 
 > [!div class="nextstepaction"]
 > [在初次執行期間向 Azure AD 加入新的 Windows 10 裝置](azuread-joined-devices-frx.md)
-> [將您的工作裝置加入組織的網路](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [將您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

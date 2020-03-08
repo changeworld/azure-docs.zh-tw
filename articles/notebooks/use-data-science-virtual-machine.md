@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646989"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898408"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 資料科學虛擬機器
 
@@ -38,6 +38,9 @@ ms.locfileid: "75646989"
 
 當您選取 DSVM 執行個體時，Azure Notebooks 可能會提示您輸入您在建立 VM 時使用的特定機器認證。
 
+> [!Important]
+> 使用者名稱必須是小寫，才能搭配 JupyterHub 使用。
+
 如果不符合任何條件，您仍然可以連接到 DSVM。 在下拉式清單中，選取 [**直接計算**] 選項，它會提示您輸入名稱（要顯示在清單中）、VM 的 IP 位址和埠（通常是8000、JupyterHub 接聽的預設埠），以及 vm 認證：
 
 ![收集 [直接計算] 選項伺服器資訊的提示](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ DSVM 版本的19.06.15 或更新版本支援檔案系統存取。 若要檢查�
 
 1. 在  [Azure 入口網站](https://portal.azure.com)上，流覽至您的虛擬機器。
 1. 在左邊界的 [**支援與疑難排解**] 底下，選取 [**重設密碼**]。
-1. 輸入新的使用者名稱和密碼，然後選取 [**更新**]。 （現有的使用者名稱不會受到影響）。
+1. 輸入新的使用者**名稱**。 使用者名稱必須是小寫，才能搭配 JupyterHub 使用。 輸入密碼。 然後選取 [**更新**]。 （現有的使用者名稱不會受到影響）。
 1. 針對任何其他使用者重複上一個步驟。
 
 ## <a name="next-steps"></a>後續步驟

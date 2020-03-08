@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200090"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672055"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
 
@@ -134,7 +134,7 @@ $NodeDeallocationOption = taskcompletion;
 | $SucceededTasks |已成功完成的工作數目。 |
 | $FailedTasks |失敗的工作數目。 |
 | $CurrentDedicatedNodes |目前的專用計算節點數目。 |
-| $CurrentLowPriorityNodes |低優先順序計算節點的目前數目，包括任何已被優先佔用的節點。 |
+| $CurrentLowPriorityNodes |低優先順序計算節點的目前數目，包括已被佔用的任何節點。 |
 | $PreemptedNodeCount | 優先佔用狀態的集區中之節點數目。 |
 
 > [!TIP]

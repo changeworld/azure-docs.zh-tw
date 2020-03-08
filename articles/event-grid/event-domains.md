@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511377"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898873"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用於管理事件方格主題的事件網域
 
@@ -31,7 +31,7 @@ ms.locfileid: "76511377"
 
 ### <a name="example-use-case"></a>使用案例範例
 
-說明事件網域最容易的方式是使用範例。 假設您經營 Contoso Construction Machinery，您在那裡製造牽引機、挖掘設備及其他重型機械。 在業務營運的過程中，您會為客戶推送有關設備維護、系統健康情況、合約更新等即時資訊。 此資訊全都會傳送到各種端點，包括您的應用程式、客戶端點，以及客戶已設定的其他基礎結構。
+說明事件網域最容易的方式是使用範例。 假設您執行的是 Contoso 結構機械，您可以在其中製造 tractors、深入探討設備和其他繁重的機械。 在業務營運的過程中，您會為客戶推送有關設備維護、系統健康情況、合約更新等即時資訊。 此資訊全都會傳送到各種端點，包括您的應用程式、客戶端點，以及客戶已設定的其他基礎結構。
 
 事件網域可讓您為 Contoso Construction Machinery 建立模型以作為單一事件實體。 您的每位客戶都會表示為網域內的一個主題。 驗證和授權都會使用 Azure Active Directory 來處理。 每位客戶都可訂閱他們的主題，並將他們的事件傳遞給他們。 透過事件網域的受控存取，確保他們只能存取自己的主題。
 
@@ -43,13 +43,13 @@ ms.locfileid: "76511377"
 
 使用網域，您就能透過 Azure 角色型存取控制 (RBAC) 來微調對每個主題的授權和驗證控制。 您可以使用這些角色，將應用程式中的每個租用戶限制為只有您想要為其授與存取權的主題。
 
-事件網域中 RBAC 的運作方式，與[受控存取控制](security-authentication.md#management-access-control)在事件方格和 Azure 其餘部分中運作的方式相同。 使用 RBAC，在事件網域中建立和強制執行自訂角色定義。
+事件網域中 RBAC 的運作方式，與[受控存取控制](security-authorization.md)在事件方格和 Azure 其餘部分中運作的方式相同。 使用 RBAC，在事件網域中建立和強制執行自訂角色定義。
 
 ### <a name="built-in-roles"></a>內建角色
 
 事件方格具有兩個內建角色定義，可使 RBAC 更容易與事件網域搭配運作。 這些角色為 **EventGrid EventSubscription 參與者 (預覽)** 和 **EventGrid EventSubscription 讀者 (預覽)** 。 您可以將這些角色指派給需要訂閱您事件網域中之主題的使用者。 您可以將角色指派的範圍限定為使用者必須訂閱的主題。
 
-如需這些角色的詳細資訊，請參閱[適用於事件方格的內建角色](security-authentication.md#built-in-roles)。
+如需這些角色的詳細資訊，請參閱[適用於事件方格的內建角色](security-authorization.md#built-in-roles)。
 
 ## <a name="subscribing-to-topics"></a>訂閱主題
 
@@ -101,13 +101,13 @@ ms.locfileid: "76511377"
 
 - 100000每個事件網域的主題 
 - 每個 Azure 訂用帳戶100個事件網域 
-- 事件網域內每個主題 500 個事件訂閱
+- 事件網域中每個主題的500事件訂閱
 - 50網域範圍訂閱 
 - 5000每秒事件的內嵌速率（在網域中）
 
 如果這些限制不符合您的需要，請開啟支援票證或傳送電子郵件給[askgrid@microsoft.com](mailto:askgrid@microsoft.com)，以觸及產品小組。 
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>Pricing
 事件網域會使用事件方格中所有其他功能所使用的相同[作業定價](https://azure.microsoft.com/pricing/details/event-grid/)。
 
 作業在事件網域中的運作方式，與它們在自訂主題中所做的一樣。 每個對事件網域的事件輸入都是一項作業，而每次對於事件的傳遞嘗試都是一項作業。

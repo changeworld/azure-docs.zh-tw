@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888788"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672248"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>針對混合式 Azure Active Directory 已加入裝置進行疑難排解 
 
@@ -256,7 +256,7 @@ WamDefaultAuthority: organizations
 
 ![失敗記錄事件](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
-##### <a name="configuration-errors"></a>組態錯誤
+##### <a name="configuration-errors"></a>設定錯誤
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** （0xcaa90017/-894894057）
    - 原因：驗證通訊協定不是 WS-TRUST。
@@ -356,7 +356,7 @@ WamDefaultAuthority: organizations
    - 解決方式：在發生此錯誤的裝置上停用 TPM。 Windows 1809 會自動偵測 TPM 失敗，並在不使用 TPM 的情況下完成混合式 Azure AD 聯結。
 - **NTE_AUTHENTICATION_IGNORED** （0x80090031/-2146893775）
    - 原因： TPM 已鎖定。
-   - 解決方式：暫時性錯誤。 等候 cooldown 期限。 請在一段時間後嘗試聯結。 如需詳細資訊，請參閱[TPM 基本](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)概念一文
+   - 解決方式：暫時性錯誤。 等候 cooldown 期限。 請在一段時間後嘗試聯結。 如需詳細資訊，請參閱[TPM 基本](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)概念一文
 
 ##### <a name="network-errors"></a>網路錯誤
 
@@ -372,13 +372,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>聯合聯結伺服器錯誤
 
-| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解析度 |
+| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方案 |
 | --- | --- | --- | --- |
-| DirectoryError | 您的要求暫時受到節流。 請在300秒後再試一次。 | 預期的錯誤。 可能是因為快速地連續建立多個註冊要求。 | 在 cooldown 期間之後重試聯結 |
+| DirectoryError | 您的要求會暫時受到節流。 請在300秒後再試一次。 | 預期的錯誤。 可能是因為快速地連續建立多個註冊要求。 | 在 cooldown 期間之後重試聯結 |
 
 ##### <a name="sync-join-server-errors"></a>同步聯結伺服器錯誤
 
-| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解析度 |
+| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方案 |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002：找不到租使用者 <UUID>。 如果沒有作用中的租使用者訂用帳戶，可能會發生此錯誤。 請洽詢您的訂用帳戶管理員。 | SCP 物件中的租使用者識別碼不正確 | 請確定已使用正確的 Azure AD 租使用者識別碼和作用中的訂用帳戶來設定 SCP 物件，並出現在租使用者中。 |
 | DirectoryError | 找不到指定之識別碼的裝置物件。 | 同步聯結的預期錯誤。 裝置物件尚未從 AD 同步至 Azure AD | 等待 Azure AD Connect 同步完成，並在同步完成後的下一次聯結嘗試解決問題 |
@@ -386,7 +386,7 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步驟5：收集記錄和連絡人 Microsoft 支援服務
 
-在此取得公用腳本： [https://1drv.ms/u/s ！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+在此取得公用腳本： [https://1drv.ms/u/s！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
 1. 開啟系統管理命令提示字元，然後執行 `start_ngc_tracing_public.cmd`。
 2. 執行重現問題的步驟。

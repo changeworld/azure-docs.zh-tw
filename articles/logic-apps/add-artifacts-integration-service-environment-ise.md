@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250931"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899187"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將資源新增至您的整合服務環境（ISE）
 
@@ -51,7 +51,7 @@ ms.locfileid: "78250931"
 
 1. 繼續[以一般方式建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-   如需觸發程式和動作的工作方式，以及當您使用 ISE 與全域 Logic Apps 服務時的標記方式差異，請參閱[ISE 總覽中的隔離與全域](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
+   如需觸發程式和動作的工作方式，以及當您使用 ISE 與多租使用者 Logic Apps 服務時的標記方式差異，請參閱[ISE 總覽中的隔離與多租](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)使用者。
 
 1. 若要管理 ISE 中的邏輯應用程式和 API 連線，請參閱[管理您的整合服務環境](../logic-apps/ise-manage-integration-service-environment.md)。
 

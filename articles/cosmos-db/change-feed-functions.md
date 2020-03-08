@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604990"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851362"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>具有 Azure Cosmos DB 和 Azure Functions 的無伺服器事件架構
 
@@ -37,7 +37,7 @@ Azure Functions 提供最簡單的方式來連接到[變更](change-feed.md)摘�
 在所有 Azure Functions IDE 和 CLI 整合中，現在都支援使用 Cosmos DB 的 Azure Functions 觸發程式來建立 Azure 函數：
 
 * Visual Studio 使用者的[Visual Studio 延伸](../azure-functions/functions-develop-vs.md)模組。
-* Visual Studio Code 使用者的[Visual Studio 核心延伸](/azure/javascript/tutorial-vscode-serverless-node-01)模組。
+* Visual Studio Code 使用者的[Visual Studio Code 延伸](/azure/javascript/tutorial-vscode-serverless-node-01)模組。
 * 最後，是[核心 CLI 工具](../azure-functions/functions-run-local.md#create-func)，適用于跨平臺的 IDE 中立體驗。
 
 ## <a name="run-your-trigger-locally"></a>在本機執行您的觸發程式

@@ -3,36 +3,53 @@ title: 如何跨區域移動您的服務資源
 titleSuffix: Azure Cognitive Search
 description: 本文將說明如何在 Azure 雲端中，將您的 Azure 認知搜尋資源從一個區域移至另一個區域。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/05/2020
-ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/06/2020
+ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379573"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850681"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
-目前不支援將搜尋服務移至另一個區域，因為沒有可協助您端對端工作的自動化或工具。
+有時候，客戶會詢問如何將現有的搜尋服務移至另一個區域。 目前沒有任何內建機制或工具可協助您進行這項工作。 它仍然是手動程式，在本文的下面所述。
 
-在入口網站中，[**匯出範本**] 命令會產生服務的基本定義（[名稱]、[位置]、[層級]、[複本] 和 [分割區計數]），但不會辨識服務的內容，也不會包含索引鍵、角色或記錄。
+> [!NOTE]
+> 在 Azure 入口網站中，所有服務都有一個 [**匯出範本**] 命令。 在 Azure 認知搜尋的案例中，此命令會產生服務的基本定義（名稱、位置、層級、複本和分割區計數），但不會辨識服務的內容，也不會包含金鑰、角色或記錄。 雖然此命令存在，但我們不建議您使用它來移動搜尋服務。
 
-將搜尋從一個區域移至另一個區域時，建議您採用下列方法：
+## <a name="steps-for-moving-a-service"></a>移動服務的步驟
 
-1. 清查您現有的服務，以取得服務上物件的完整清單。 如果您已啟用記錄功能，您可能需要在未來進行比較時，建立及封存報表。
+如果您需要將搜尋服務移至不同的區域，您的方法看起來應該會類似下列步驟：
 
-1. 在新區域中建立服務，並從原始程式碼重新發佈任何現有的索引、索引子、資料來源、技能集和同義字對應。 服務名稱必須是唯一的，因此您無法重複使用現有的名稱。
+1. 識別相關服務，以瞭解重新放置服務的完整影響。 您可能會使用 Azure 儲存體來記錄、知識存放區或做為外部資料源。 您可能使用認知服務 AI 擴充。 存取其他區域中的服務是很常見的，但會產生額外的頻寬費用。 如果您使用 AI 擴充，認知服務和 Azure 認知搜尋必須位於相同區域中。
+
+1. 清查您現有的服務，以取得服務上物件的完整清單。 如果您啟用記錄功能，請建立並封存歷程記錄所需的任何報表。
+
+1. 檢查新區域中的定價和可用性，以確保 Azure 認知搜尋的可用性，以及您可能想要在相同區域中建立的任何相關服務。 檢查是否有功能同位。 某些預覽功能的可用性有限。
+
+1. 在新區域中建立服務，並從原始程式碼重新發佈任何現有的索引、索引子、資料來源、技能集、知識存放區和同義字對應。 服務名稱必須是唯一的，因此您無法重複使用現有的名稱。
+
+1. 重載索引和知識存放區（如果適用的話）。 您將使用應用程式程式碼將 JSON 資料推送至索引，或重新執行索引子以從外部來源提取檔。 
 
 1. 啟用記錄功能，如果您使用它們，請重新建立安全性角色。
 
 1. 更新用戶端應用程式和測試套件，以使用新的服務名稱和 API 金鑰，並測試所有應用程式。
 
-1. 一旦新服務完全正常運作，請刪除舊的服務。
+1. 一旦新的服務經過完整測試和運作，請刪除舊的服務。
+
+## <a name="next-steps"></a>後續步驟
+
++ [選擇層級](search-sku-tier.md)
++ [建立搜尋服務](search-create-service-portal.md)
++ [載入搜尋檔](search-what-is-data-import.md)
++ [啟用記錄](search-monitor-logs.md)
+
 
 <!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
 

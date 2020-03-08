@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913475"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671982"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子錯誤和警告進行疑難排解
 
@@ -35,7 +35,7 @@ ms.locfileid: "77913475"
 | 屬性 | 描述 | 範例 |
 | --- | --- | --- |
 | 索引鍵 | 受錯誤或警告影響之檔的檔識別碼。 | HTTPs：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| NAME | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構所產生： [category]。[子類別]。[resourceType]。ResourceName | DocumentExtraction azureblob. myBlobContainerName 擴充. WebApiSkill. mySkillName. SearchIndex. OutputFieldMapping。 myOutputFieldNameKnowledgeStore. Table. myTableName |
+| 名稱 | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構所產生： [category]。[子類別]。[resourceType]。ResourceName | DocumentExtraction azureblob. myBlobContainerName 擴充. WebApiSkill. mySkillName. SearchIndex. OutputFieldMapping。 myOutputFieldNameKnowledgeStore. Table. myTableName |
 | message | 錯誤或警告的高層級描述。 | 因為 Web Api 要求失敗，所以無法執行技能。 |
 | 詳細資料 | 可能有助於診斷問題的任何其他詳細資料，例如執行自訂技能失敗時的 WebApi 回應。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 來源，Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` 。堆疊追蹤的其餘部分 。 |
 | documentationLink | 相關檔的連結，其中包含用來偵測及解決問題的詳細資訊。 此連結通常會指向此頁面上的下列其中一節。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -48,7 +48,7 @@ ms.locfileid: "77913475"
 
 | 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
-| 跨不同檔的欄位類型不一致 | 值的類型與資料行類型不相符。 無法將 `'{47.6,-122.1}'` 儲存在 [作者] 資料行中。  預期的類型為 JArray。 | 請確定每個欄位的類型在不同的檔中都相同。 例如，如果第一個檔 `'startTime'` 欄位是日期時間，而第二個檔是字串，則會遇到此錯誤。 |
+| 跨不同檔的欄位類型不一致 | "類型的值與資料行類型不相符。 無法將 `'{47.6,-122.1}'` 儲存在 [作者] 資料行中。  預期的類型為 JArray。」  「將資料類型 Nvarchar 轉換成 float 時發生錯誤」。  「將 Nvarchar 值 ' 12 個月 ' 轉換成資料類型 int 時，轉換失敗」。  「轉換運算式到資料類型 int 時發生算術溢位錯誤。」 | 請確定每個欄位的類型在不同的檔中都相同。 例如，如果第一個檔 `'startTime'` 欄位是日期時間，而第二個檔是字串，則會遇到此錯誤。 |
 | 來自資料來源之基礎服務的錯誤 | （從 Cosmos DB） `{"Errors":["Request rate is large"]}` | 檢查您的儲存體實例，以確保其狀況良好。 您可能需要調整您的縮放/分割。 |
 | 暫時性問題 | 從伺服器接收結果時發生傳輸層級錯誤。 （提供者： TCP 提供者，錯誤： 0-遠端主機已強制關閉現有的連接 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
 
@@ -83,8 +83,8 @@ ms.locfileid: "77913475"
 
 | 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
-| 暫時性連線問題 | 發生暫時性錯誤。 請稍後再試一次。 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
-| 潛在的產品 bug | 發生意外錯誤。 | 這表示不明的失敗類別，可能表示有產品錯誤。 請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)以取得協助。 |
+| 暫時性連線問題 | 發生暫時性錯誤。 請稍後再試。 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
+| 潛在的產品 bug | 發生未預期的錯誤。 | 這表示不明的失敗類別，可能表示有產品錯誤。 請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)以取得協助。 |
 | 技能在執行期間發生錯誤 | （來自合併技能）有一或多個位移值無效，無法剖析。 專案已插入至文字結尾 | 請使用錯誤訊息中的資訊來修正問題。 這種失敗會需要採取動作來解決。 |
 
 <a name="could-not-execute-skill-because-the-web-api-request-failed"/>
@@ -322,7 +322,7 @@ ms.locfileid: "77913475"
 
 在剖析之前，[索引子剖析模式](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters)必須知道文字的編碼方式。 編碼文字的兩個最常見方式是 UTF-16 和 UTF-8。 UTF-8 是可變長度的編碼，其中的每個字元長度介於1個位元組和4個位元組之間。 UTF-16 是固定長度的編碼，其中每個字元的長度為2個位元組。 UTF-16 有兩個不同的變體：「大 endian」和「小 endian」。 文字編碼取決於「位順序標記」，這是文字之前的一系列位元組。
 
-| 編碼 | 位元組順序標記 |
+| Encoding | 位元組順序標記 |
 | --- | --- |
 | UTF-16 Big Endian | 0xFE 0xFF |
 | UTF-16 小 Endian | 0xFF 0xFE |

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950267"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898154"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 資料目錄中支援的資料來源
 
@@ -26,10 +26,10 @@ ms.locfileid: "68950267"
        <td><b>手動輸入</b></td>
        <td><b>註冊工具</b></td>
        <td><b>開啟工具</b></td>
-       <td><b>注意事項</b></td>
+       <td><b>注意</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區目錄 (僅限 Gen 1)</td>
+      <td>Azure Data Lake 存放區目錄（僅限 Gen 1）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "68950267"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區檔案 (僅限 Gen 1)</td>
+      <td>Azure Data Lake 存放區檔案（僅限 Gen 1）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ ms.locfileid: "68950267"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 和更新版本。</td>
     </tr>
     <tr>
       <td>Oracle 資料庫檢視</td>
@@ -132,7 +132,7 @@ ms.locfileid: "68950267"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 和更新版本。</td>
     </tr>
     <tr>
       <td>其他 (一般資產)</td>
@@ -195,7 +195,7 @@ ms.locfileid: "68950267"
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>[瀏覽器]</td>
+      <td>瀏覽器</td>
       <td>僅限原生模式伺服器。 不支援 SharePoint 模式。 僅限 SQL Server 2008 和更新版本</td>
     </tr>
     <tr>
@@ -457,7 +457,7 @@ ms.locfileid: "68950267"
     <tr>
       <td>Azure Data Lake Store</td>
       <td>容器</td>
-      <td>Data Lake</td>
+      <td>資料湖</td>
       <td>
         
             Protocol: webhdfs

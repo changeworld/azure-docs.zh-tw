@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 03/05/2020
 ms.author: alzam
-ms.openlocfilehash: b9627862002a70dc84b0e268128c53a97df0ebe8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f4092f651a3058c8a2e738c81d9db7e296386bfa
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472293"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402887"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 P2S OpenVPN 通訊協定連接的 Azure Active Directory 租使用者
 
@@ -22,9 +22,10 @@ ms.locfileid: "77472293"
 > Azure AD 驗證僅支援 OpenVPN® 通訊協定連線。
 >
 
-## <a name="tenant"></a>1. 建立 Azure AD 租使用者
 
-使用[建立新的租](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)使用者文章中的步驟，建立 Azure AD 租使用者：
+## <a name="tenant"></a>1. 確認 Azure AD 租使用者
+
+請確認您有 Azure AD 的租使用者。 如果您沒有 Azure AD 租使用者，您可以使用[建立新的租](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)使用者一文中的步驟來建立一個：
 
 * 組織名稱
 * 初始功能變數名稱
@@ -35,7 +36,7 @@ ms.locfileid: "77472293"
 
 ## <a name="users"></a>2. 建立 Azure AD 租使用者使用者
 
-接下來，建立兩個使用者帳戶。 建立一個全域系統管理員帳戶和一個主要使用者帳戶。 主要使用者帳戶會當做您的主要內嵌帳戶（服務帳戶）使用。 當您建立 Azure AD 租使用者使用者帳戶時，您會針對您想要建立的使用者類型調整目錄角色。
+Azure AD 租使用者需要下列帳戶：全域管理員帳戶和主要使用者帳戶。 主要使用者帳戶會當做您的主要內嵌帳戶（服務帳戶）使用。 當您建立 Azure AD 租使用者使用者帳戶時，您會針對您想要建立的使用者類型調整目錄角色。
 
 使用[本文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步驟，為您的 Azure AD 租使用者建立至少兩個使用者。 請務必變更**目錄角色**以建立帳戶類型：
 

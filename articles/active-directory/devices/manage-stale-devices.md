@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538809"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672311"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -53,11 +53,11 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 您有兩個選項可擷取活動時間戳記值：
 
-- Azure 入口網站[裝置頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的**活動**資料行
+- Azure 入口網站**裝置頁面**上的[活動](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)資料行
 
     ![活動時間戳記](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet
+- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet
 
     ![活動時間戳記](./media/manage-stale-devices/02.png)
 
@@ -129,11 +129,11 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 典型的執行階段包含下列步驟：
 
-1. 使用 [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) Cmdlet來連線到 Azure Active Directory
+1. 使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) Cmdlet來連線到 Azure Active Directory
 1. 取得裝置清單
-1. 使用 [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) Cmdlet 停用裝置。 
+1. 使用 [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) Cmdlet 停用裝置。 
 1. 須等到您選擇的寬限期 (無論多久) 結束，才能刪除裝置。
-1. 使用 [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) Cmdlet 移除裝置。
+1. 使用 [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) Cmdlet 移除裝置。
 
 ### <a name="get-the-list-of-devices"></a>取得裝置清單
 

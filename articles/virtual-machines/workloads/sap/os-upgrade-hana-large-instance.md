@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616465"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675619"
 ---
 # <a name="operating-system-upgrade"></a>作業系統升級
 本文件會詳述 Hana 大型執行個體作業系統升級的詳細資訊。
@@ -58,11 +58,11 @@ ms.locfileid: "77616465"
   為了擁有適當的網路效能和系統穩定性，建議您確定已依照下列相容性表格中的說明，安裝作業系統特定的適當版本的 eNIC 和 fNIC 驅動程式。 伺服器會傳遞給具有相容版本的客戶。 請注意，在某些情況下，OS/核心修補期間，可以將驅動程式回復為預設的驅動程式版本。 請確定適當的驅動程式版本正在執行 post OS/核心修補作業。
        
       
-  |  作業系統廠商    |  OS 套件版本     |  eNIC 驅動程式  |  fNIC 驅動程式 |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7.2               |   2.3.0.39    |   1.6.0.34   |
+  |  作業系統廠商    |  OS 套件版本     |  韌體版本  |  eNIC 驅動程式 |  fNIC 驅動程式 | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7.2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>驅動程式升級和清除舊的 rpm 套件的命令

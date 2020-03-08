@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的彙總函式
 description: 瞭解 SQL 彙總函式語法、Azure Cosmos DB 支援的彙總函式類型。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871834"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897834"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的彙總函式
 
@@ -24,7 +24,7 @@ ms.locfileid: "74871834"
     FROM Families f
 ```
 
-結果為：
+結果如下：
 
 ```json
     [{
@@ -39,7 +39,7 @@ ms.locfileid: "74871834"
     FROM Families f
 ```
 
-結果為：
+結果如下：
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ ms.locfileid: "74871834"
     WHERE f.address.state = "WA"
 ```
 
-結果為：
+結果如下：
 
 ```json
     [ 1 ]
@@ -63,13 +63,13 @@ ms.locfileid: "74871834"
 
 SQL API 支援下列彙總函式。 SUM 和 AVG 會對數值進行運算，而 COUNT、MIN 和 MAX 會在數位、字串、布林值和 null 上運作。
 
-| 函式 | 描述 |
+| 函數 | 描述 |
 |-------|-------------|
 | COUNT | 以運算式傳回項目的數目。 |
 | SUM   | 以運算式傳回所有值的總和。 |
-| 最小值   | 以運算式傳回最小值。 |
-| 最大值   | 以運算式傳回最大值。 |
-| 平均   | 以運算式傳回值的平均。 |
+| MIN   | 傳回運算式中的最小值。 |
+| MAX   | 傳回運算式中的最大值。 |
+| AVG   | 以運算式傳回值的平均。 |
 
 您也可以匯總陣列反復專案的結果。
 

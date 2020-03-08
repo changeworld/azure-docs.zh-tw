@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161869"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851509"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
@@ -36,29 +36,34 @@ ms.locfileid: "78161869"
   > [!NOTE]
   > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
+  當您指定要改用[的常數區塊大小時](#change-chunk-size)，可以覆寫此彈性行為。 此大小的範圍可從 5 MB 到 50 MB。 例如，假設您有 45 MB 的檔案，以及可支援該檔案大小但沒有延遲的網路。 調適型區塊會產生數個呼叫，而不會呼叫一次。 若要減少呼叫次數，您可以嘗試設定 50 MB 的區塊大小。 在不同的案例中，如果您的邏輯應用程式計時，例如使用 15 MB 的區塊，您可以嘗試將大小縮減為 5 MB。
+
   區塊大小與連接相關聯，這表示您可以針對支援區塊化的動作使用相同的連接，然後針對不支援區塊化的動作執行。 在此情況下，不支援區塊化之動作的區塊大小範圍為 5 MB 到 50 MB。 下表顯示支援區塊化的 SFTP SSH 動作：
 
-  | 動作 | 區塊化支援 |
-  |--------|------------------|
-  | **複製檔案** | 否 |
-  | **建立檔案** | 是 |
-  | **建立資料夾** | 不適用 |
-  | **刪除檔案** | 不適用 |
-  | **將封存檔案解壓縮到資料夾** | 不適用 |
-  | **取得檔案內容** | 是 |
-  | **使用路徑來取得檔案內容** | 是 |
-  | **取得檔案中繼資料** | 不適用 |
-  | **使用路徑來取得檔案中繼資料** | 不適用 |
-  | **列出資料夾中的檔案** | 不適用 |
-  | **重新命名檔案** | 不適用 |
-  | **更新檔案** | 否 |
-  |||
+  | 動作 | 區塊化支援 | 覆寫區塊大小支援 |
+  |--------|------------------|-----------------------------|
+  | **複製檔案** | 否 | 不適用 |
+  | **建立檔案** | 是 | 是 |
+  | **建立資料夾** | 不適用 | 不適用 |
+  | **刪除檔案** | 不適用 | 不適用 |
+  | **將封存檔案解壓縮到資料夾** | 不適用 | 不適用 |
+  | **取得檔案內容** | 是 | 是 |
+  | **使用路徑來取得檔案內容** | 是 | 是 |
+  | **取得檔案中繼資料** | 不適用 | 不適用 |
+  | **使用路徑來取得檔案中繼資料** | 不適用 | 不適用 |
+  | **列出資料夾中的檔案** | 不適用 | 不適用 |
+  | **重新命名檔案** | 不適用 | 不適用 |
+  | **更新檔案** | 否 | 不適用 |
+  ||||
 
-* SFTP-SSH 觸發程式不支援區塊化。 當要求檔案內容時，觸發程式只會選取 15 MB 或更小的檔案。 若要取得大於 15 MB 的檔案，請改為遵循此模式：
+  > [!NOTE]
+  > 若要上傳大型檔案，您需要 SFTP 伺服器上根資料夾的 [讀取] 和 [寫入] 許可權。
 
-  * 使用會傳回檔案屬性的 SFTP-SSH 觸發程式，例如**新增或修改檔案時（僅限屬性）** 。
+* SFTP-SSH 觸發程式不支援訊息區塊化。 當要求檔案內容時，觸發程式只會選取 15 MB 或更小的檔案。 若要取得大於 15 MB 的檔案，請改為遵循此模式：
 
-  * 遵循具有 SFTP-SSH**取得檔案內容**動作的觸發程式，它會讀取完整的檔案，並隱含地使用訊息區塊化。
+  1. 使用僅傳回檔案屬性的 SFTP-SSH 觸發程式，例如**新增或修改檔案時（僅限屬性）** 。
+
+  1. 遵循具有 SFTP-SSH**取得檔案內容**動作的觸發程式，它會讀取完整的檔案，並隱含地使用訊息區塊化。
 
 <a name="comparison"></a>
 
@@ -74,7 +79,7 @@ ms.locfileid: "78161869"
 
 * 可將連線快取至 SFTP 伺服器*最多 1 小時*，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -125,7 +130,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   例如：
+   例如，
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -153,13 +158,13 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 針對空白邏輯應用程式，請在搜尋方塊中輸入 "sftp ssh" 作為篩選條件。 在觸發程序清單底下，選取您想要的觸發程序。
+1. 針對空白邏輯應用程式，請在 [搜尋] 方塊中，輸入 `sftp ssh` 作為篩選準則。 在觸發程序清單底下，選取您想要的觸發程序。
 
    -或-
 
-   若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]。 在搜尋方塊中，輸入 "sftp ssh" 作為篩選條件。 在動作清單底下，選取您想要的動作。
+   針對現有的邏輯應用程式，在您想要新增動作的最後一個步驟底下，選取 [**新增步驟**]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（ **+** ），然後選取 [**新增動作**]。
 
 1. 為您的連線提供必要的詳細資料。
 
@@ -177,9 +182,25 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
    1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」金鑰貼到 [SSH 私密金鑰] 屬性中，此屬性支援多行。  ***請確定您會貼上***金鑰。 ***請勿手動輸入或編輯此金鑰***。
 
-1. 當您完成輸入連線詳細資料之後，請選擇 [建立]。
+1. 當您完成輸入連線詳細資料時，請選取 [**建立**]。
 
 1. 現在請為您選取的觸發程序或動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>覆寫區塊大小
+
+若要覆寫區塊化使用的預設調適型行為，您可以指定從 5 MB 到 50 MB 的常數區塊大小。
+
+1. 在動作的右上角，選取省略號按鈕（ **...** ），然後選取 [**設定**]。
+
+   ![開啟 SFTP-SSH 設定](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. 在 [**內容傳輸**] 的 [**區塊大小**] 屬性中，輸入從 `5` 到 `50`的整數值，例如： 
+
+   ![請指定要改用的區塊大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. 完成之後，選取 [完成]。
 
 ## <a name="examples"></a>範例
 

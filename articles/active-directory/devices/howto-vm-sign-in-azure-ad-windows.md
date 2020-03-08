@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016029"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672597"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
@@ -33,14 +33,14 @@ ms.locfileid: "77016029"
 - 不再需要管理本機系統管理員帳戶。
 - Azure RBAC 可讓您根據需求授與 Vm 適當的存取權，並在不再需要時將其移除。
 - 在允許存取 VM 之前，Azure AD 條件式存取可以強制執行額外的需求，例如： 
-   - 多因素驗證
+   - Multi-Factor Authentication
    - 登入風險檢查
 - 將屬於您 VDI 部署的 Azure Windows Vm 的 Azure AD 聯結自動化並加以調整。
 
 > [!NOTE]
-> 一旦您啟用此功能，您在 Azure 中的 Windows Vm 將會 Azure AD 聯結。 您不能將它加入其他網域（例如內部部署 AD 或 Azure AD DS）。 如果您需要這樣做，您必須卸載擴充功能，將 VM 從您的 Azure AD 租使用者中斷連線。
+> 一旦您啟用此功能，您在 Azure 中的 Windows Vm 將會 Azure AD 聯結。 您不能將它加入其他網域，例如內部部署 AD 或 Azure AD DS。 如果您需要這樣做，您必須卸載擴充功能，將 VM 從您的 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 發行版本
 
@@ -103,10 +103,10 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 在您的瀏覽器中開啟 Cloud Shell。
 在[Azure 入口網站](https://portal.azure.com)右上角的功能表上，選取 [Cloud Shell] 按鈕。
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.31 版或更新版本。 執行 az --version 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)一文。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.31 版或更新版本。 執行 az --version 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)一文。
 
-1. 使用 [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) 來建立資源群組。 
-1. 在支援的區域中使用支援的散發套件，透過[az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create)建立 VM。 
+1. 使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 
+1. 在支援的區域中使用支援的散發套件，透過[az vm create](/cli/azure/vm#az-vm-create)建立 VM。 
 1. 安裝 Azure AD 登入 VM 擴充功能。 
 
 下列範例會將名為 myVM 的 VM （其使用 Win2019Datacenter）部署至 southcentralus 區域中名為 myResourceGroup 的資源群組。 在下列範例中，您可以視需要提供自己的資源群組和 VM 名稱。
@@ -128,7 +128,7 @@ az vm create \
 
 建立虛擬機器和支援資源需要幾分鐘的時間。
 
-最後，安裝 Azure AD 登入 VM 擴充功能，以啟用 Windows VM 的 Azure AD 登入。 VM 擴充功能是小型的應用程式，可在「Azure 虛擬機器」上提供部署後設定及自動化工作。 使用[az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 資源群組中名為 MYVM 的 vm 上安裝 AADLoginForWindows 擴充功能：
+最後，安裝 Azure AD 登入 VM 擴充功能，以啟用 Windows VM 的 Azure AD 登入。 VM 擴充功能是小型的應用程式，可在「Azure 虛擬機器」上提供部署後設定及自動化工作。 使用[az vm extension](/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 資源群組中名為 MYVM 的 vm 上安裝 AADLoginForWindows 擴充功能：
 
 > [!NOTE]
 > 您可以在現有的 Windows Server 2019 或 Windows 10 1809 和更新版本的 VM 上安裝 AADLoginForWindows 擴充功能，以啟用 Azure AD 驗證。 AZ CLI 的範例如下所示。
@@ -152,7 +152,6 @@ az vm extension set \
 
 > [!NOTE]
 > 若要允許使用者透過 RDP 登入 VM，您必須指派「虛擬機器系統管理員登入」或「虛擬機器使用者登入」角色。 具有指派給 VM 之「擁有者」或「參與者」角色的 Azure 使用者，不會自動擁有透過 RDP 登入 VM 的許可權。 這是為了在控制虛擬機器的一組人員與可以存取虛擬機器的人員之間，提供了已審核的分隔。
-
 有多種方式可讓您設定 VM 的角色指派：
 
 - 使用 Azure AD 入口網站體驗
@@ -175,9 +174,9 @@ az vm extension set \
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>使用 Azure Cloud Shell 體驗
 
-下列範例會使用[az 角色指派 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) ，將虛擬機器系統管理員登入角色指派給您目前 Azure 使用者的 VM。 您使用中 Azure 帳戶的使用者名稱是[透過 az account show](https://docs.microsoft.com/cli/azure/account#az-account-show)取得，而範圍則設定為上一個步驟中使用[az vm show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)所建立的 VM。 範圍也可指派於資源群組或訂用帳戶層級上，並套用一般 RBAC 繼承權限。 如需詳細資訊，請參閱[角色型存取控制](../../virtual-machines/linux/login-using-aad.md)。
+下列範例會使用[az 角色指派 create](/cli/azure/role/assignment#az-role-assignment-create) ，將虛擬機器系統管理員登入角色指派給您目前 Azure 使用者的 VM。 您使用中 Azure 帳戶的使用者名稱是[透過 az account show](/cli/azure/account#az-account-show)取得，而範圍則設定為上一個步驟中使用[az vm show](/cli/azure/vm#az-vm-show)所建立的 VM。 範圍也可指派於資源群組或訂用帳戶層級上，並套用一般 RBAC 繼承權限。 如需詳細資訊，請參閱[角色型存取控制](../../virtual-machines/linux/login-using-aad.md)。
 
-```AzureCLI
+```   zureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -188,14 +187,14 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> 如果您的 AAD 網域和登入使用者名稱網域不相符，您必須使用 `--assignee-object-id`來指定使用者帳戶的物件識別碼，而不只是 `--assignee`的使用者名稱。 您可以使用 [az ad user list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
+> 如果您的 AAD 網域和登入使用者名稱網域不相符，您必須使用 `--assignee-object-id`來指定使用者帳戶的物件識別碼，而不只是 `--assignee`的使用者名稱。 您可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
 
 如需有關如何使用 RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱下列文章：
 
-- [使用 RBAC 和 Azure CLI 來管理 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [使用 RBAC 和 Azure PowerShell 來管理 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
-
+- [使用 RBAC 和 Azure CLI 來管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-cli)
+- [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-portal)
+- [使用 RBAC 和 Azure PowerShell 來管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-powershell)。
+'
 ## <a name="using-conditional-access"></a>使用條件式存取
 
 您可以先強制執行條件式存取原則（例如多重要素驗證或使用者登入風險檢查），再授權存取 Azure 中啟用 Azure AD 登入的 Windows Vm。 若要套用條件式存取原則，您必須從 [雲端應用程式] 或 [動作] 指派選項中選取 [Azure Windows VM 登入] 應用程式，然後使用 [登入風險] 作為條件，並（或）要求多重要素驗證做為 [授與存取控制]。 
@@ -228,13 +227,12 @@ az role assignment create \
 
 AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯結程式。 如果 VM 擴充功能無法正確安裝，請執行下列步驟。
 
-1. 使用本機系統管理員帳戶以 RDP 連線至 VM，並檢查底下的 CommandExecution  
+1. 使用本機系統管理員帳戶以 RDP 連線至 VM，並檢查底下的 CommandExecuti'n  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > 如果在初始失敗後重新開機延伸模組，則會將含有部署錯誤的記錄儲存為 CommandExecution_YYYYMMDDHHMMSSSSS .log。 
-
+   > 如果在初始失敗後重新開機延伸模組，則會將含有部署錯誤的記錄儲存為 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
 1. 在 VM 上開啟命令提示字元，並針對在 Azure 主機上執行的 Instance Metadata Service （IMDS）端點，確認這些查詢會傳回：
 
    | 要執行的命令 | 預期的輸出 |
@@ -338,7 +336,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 ![您的認證無法使用](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-請確認您用來起始遠端桌面連線的 Windows 10 電腦，是 Azure AD 已加入，或是已加入您 VM 加入之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別一](https://docs.microsoft.com/azure/active-directory/devices/overview)文。
+請確認您用來起始遠端桌面連線的 Windows 10 電腦，是 Azure AD 已加入，或是已加入您 VM 加入之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
 > Windows 10 20H1 會新增 Azure AD 已註冊電腦的支援，以起始對您 VM 的遠端桌面連線。 加入 Windows 測試人員計畫以試用並探索 Windows 10 的新功能。
@@ -355,7 +353,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 如果您已設定需要多重要素驗證（MFA）的條件式存取原則，才能存取資源，則您需要確定 Windows 10 電腦起始 VM 的遠端桌面連線使用強式登入驗證方法，例如 Windows Hello。 如果您未針對遠端桌面連線使用增強式驗證方法，就會看到先前的錯誤。
 
-如果您尚未部署 Windows Hello 企業版，而且目前無法使用，則您可以設定條件式存取原則，從需要 MFA 的雲端應用程式清單中排除「Azure Windows VM 登入」應用程式，以排除 MFA 需求。 若要深入瞭解 Windows Hello 企業版，請參閱[Windows Hello 企業版總覽](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
+如果您尚未部署 Windows Hello 企業版，而且目前無法使用，則您可以設定條件式存取原則，從需要 MFA 的雲端應用程式清單中排除「Azure Windows VM 登入」應用程式，以排除 MFA 需求。 若要深入瞭解 Windows Hello 企業版，請參閱[Windows Hello 企業版總覽](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 
 > [!NOTE]
 > Windows 10 已針對數個版本支援使用 RDP 的 windows Hello 企業版 PIN 驗證，但在 Windows 10 1809 版中已新增使用 RDP 的生物特徵辨識驗證支援。 在 RDP 期間使用 Windows Hello 企業版驗證僅適用于使用憑證信任模型的部署，而且目前無法用於金鑰信任模型。
@@ -365,4 +363,4 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 請在[Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上，分享您對這項預覽功能的意見反應，或報告問題。
 
 ## <a name="next-steps"></a>後續步驟
-如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+如需 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

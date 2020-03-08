@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962047"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894544"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>案例：呼叫 web Api 的 Daemon 應用程式
 
@@ -42,7 +42,7 @@ ms.locfileid: "76962047"
 - 執行批次作業的桌面應用程式（例如 Windows 上的 Windows 服務或 Linux 上的 daemon 進程），或在背景執行的作業系統服務
 - 需要操作目錄，而不是特定使用者的 Web Api
 
-另一個常見的情況是，非 daemon 應用程式會使用用戶端認證：即使是代表使用者採取行動，他們還是必須基於技術的考慮，存取自己的身分識別 Web API 或資源。 例如，存取 Azure Key Vault 中的密碼或快取的 Azure SQL 資料庫。
+另一個常見的情況是，非 daemon 應用程式會使用用戶端認證：即使是代表使用者採取行動，他們還是必須以自己的身分識別來存取 Web API 或資源，以因應技術因素。 例如，存取 Azure Key Vault 中的密碼或快取的 Azure SQL 資料庫。
 
 針對自己的身分識別取得權杖的應用程式：
 

@@ -1,25 +1,26 @@
 ---
-title: 高可用性和可靠性 - Azure 排程器
+title: 高可用性與穩定性
 description: 了解 Azure 排程器中的高可用性和可靠性
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979293"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898552"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 排程器的高可用性和可靠性
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 Azure 排程器可為作業同時提供[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)和可靠性。 如需詳細資訊，請參閱[排程器 SLA](https://azure.microsoft.com/support/legal/sla/scheduler)。
 
@@ -29,7 +30,7 @@ Azure 排程器高度可用，並且會使用異地備援服務部署和地理�
 
 ### <a name="geo-redundant-service-deployment"></a>地理區域備援服務部署
 
-[Azure 目前所支援的每個地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)幾乎都可在 Azure 入口網站中提供 Azure 排程器。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
+Azure 排程器可在[現今 azure 支援的幾乎每個地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)中使用。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
 
 ### <a name="geo-regional-job-replication"></a>地理區域工作複寫
 
@@ -70,9 +71,9 @@ Azure 排程器可讓您設定重試原則。 如果作業失敗，則根據預�
 
 若要了解如何設定替代端點，請參閱 [errorAction](scheduler-concepts-terms.md#error-action)。
 
-## <a name="see-also"></a>請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
 * [概念、術語及實體階層](scheduler-concepts-terms.md)
-* [建置複雜的排程和進階週期](scheduler-advanced-complexity.md)
+* [Azure 排程器 REST API 參考](/rest/api/scheduler)
+* [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
 * [限制、配額、預設值及錯誤碼](scheduler-limits-defaults-errors.md)

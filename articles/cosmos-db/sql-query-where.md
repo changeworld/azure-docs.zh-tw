@@ -4,14 +4,14 @@ description: 瞭解適用于 Azure Cosmos DB 的 SQL WHERE 子句
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982224"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898759"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    表示要計算之值的運算式。 如需詳細資訊，請參閱純量[運算式](sql-query-scalar-expressions.md)。  
   
-
 ## <a name="remarks"></a>備註
   
-  為了傳回文件，指定為篩選條件的運算式必須評估為 True。 只有在布林值為 True 的情況下才會滿足條件，任何其他值：未定義、Null、False、數字、陣列或物件都不會滿足條件。 
+  為了傳回文件，指定為篩選條件的運算式必須評估為 True。 只有布林值 `true` 會滿足條件，任何其他值：未定義、null、false、數位、陣列或物件將無法滿足條件。
+
+  如果您在 `WHERE` 子句中包含分割區索引鍵做為相等篩選準則的一部分，則您的查詢將會自動篩選為只有相關的分割區。
 
 ## <a name="examples"></a>範例
 

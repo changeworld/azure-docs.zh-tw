@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 158b3b34bf433c1da0d1c4bdc851fd99e5bd54d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620859"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671964"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖舊版驗證 Azure AD   
 
-為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure Active Directory (Azure AD) 支援多種驗證通訊協定，包括舊式驗證。 不過，舊式通訊協定並不支援多重要素驗證 (MFA)。 在許多環境中，MFA 都是防止身分識別遭竊的常用工具。 
+為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure Active Directory (Azure AD) 支援多種驗證通訊協定，包括舊式驗證。 不過，舊版通訊協定不支援多重要素驗證（MFA）。 在許多環境中，MFA 都是防止身分識別遭竊的常用工具。 
 
 如果您的環境已準備好封鎖舊版驗證以改善租使用者的保護，您可以使用條件式存取來達成此目標。 本文說明如何設定條件式存取原則，以封鎖您租使用者的舊版驗證。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉以下各項： 
 
@@ -54,7 +54,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 - 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
 - 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
-- Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
 - Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
 - IMAP4-供 IMAP 電子郵件客戶程式使用。
 - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
@@ -137,4 +137,4 @@ Azure 有一項安全性功能，可防止您建立這類原則，因為此設�
 ## <a name="next-steps"></a>後續步驟
 
 - 如果您還不熟悉如何設定條件式存取原則，請參閱[使用 Azure Active Directory 條件式存取來要求特定應用程式的 MFA](app-based-mfa.md) ，以取得範例。
-- 如需新式驗證支援的詳細資訊，請參閱[office 2013 和 office 2016 用戶端應用程式的新式驗證運作方式](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- 如需新式驗證支援的詳細資訊，請參閱[office 2013 和 office 2016 用戶端應用程式的新式驗證運作方式](/office365/enterprise/modern-auth-for-office-2013-and-2016) 

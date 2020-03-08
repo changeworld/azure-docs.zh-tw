@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468432"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671822"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中規劃條件式存取部署
 
@@ -163,13 +163,13 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 |原則 |狀況 |預期的結果 | 結果 |
 |---|---|---|---|
-|[不在公司時要求 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者在信任的位置/公司登入應用程式|不會提示使用者進行 MFA| |
-|[不在公司時要求 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者不是在信任的位置/公司登入應用程式|提示使用者進行 MFA 且成功登入| |
-|[要求 MFA (適用於管理員)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全域管理員登入應用程式|提示管理員進行 MFA| |
-|[有風險的登入](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|使用者使用 [Tor 瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)登入應用程式|提示管理員進行 MFA| |
-|[裝置管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|已授權的使用者嘗試從已授權的裝置登入|授與存取權| |
-|[裝置管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|已授權的使用者嘗試從未經授權的裝置登入|封鎖存取權| |
-|[具風險使用者的密碼變更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|已授權的使用者嘗試以被盜用的認證登入 (高風險登入)|根據您的原則，系統會提示使用者變更密碼或封鎖存取| |
+|[不在公司時要求 MFA](/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者在信任的位置/公司登入應用程式|不會提示使用者進行 MFA| |
+|[不在公司時要求 MFA](/azure/active-directory/conditional-access/untrusted-networks)|已授權的使用者不是在信任的位置/公司登入應用程式|提示使用者進行 MFA 且成功登入| |
+|[要求 MFA (適用於管理員)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全域管理員登入應用程式|提示管理員進行 MFA| |
+|[有風險的登入](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|使用者使用 [Tor 瀏覽器](/azure/active-directory/active-directory-identityprotection-playbook)登入應用程式|提示管理員進行 MFA| |
+|[裝置管理](/azure/active-directory/conditional-access/require-managed-devices)|已授權的使用者嘗試從已授權的裝置登入|授與存取權| |
+|[裝置管理](/azure/active-directory/conditional-access/require-managed-devices)|已授權的使用者嘗試從未經授權的裝置登入|封鎖存取權| |
+|[具風險使用者的密碼變更](/azure/active-directory/identity-protection/howto-user-risk-policy)|已授權的使用者嘗試以被盜用的認證登入 (高風險登入)|根據您的原則，系統會提示使用者變更密碼或封鎖存取| |
 
 ### <a name="configure-the-policy"></a>設定原則
 

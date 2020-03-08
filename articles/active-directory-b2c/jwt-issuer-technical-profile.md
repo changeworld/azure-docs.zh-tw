@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187469"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671794"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 JWT 權杖簽發者的技術設定檔
 
@@ -56,6 +56,7 @@ Azure Active Directory B2C （Azure AD B2C）會在處理每個驗證流程時�
 | allow_infinite_rolling_refresh_token | 否 | 如果設定為 `true`，則重新整理權杖滑動時間範圍存留期永不過期。 |
 | IssuanceClaimPattern | 否 | 控制簽發者 (iss) 宣告。 下列其中一個值：<ul><li>AuthorityAndTenantGuid-iss 宣告包含您的功能變數名稱，例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`，以及您的租使用者識別碼 HTTPs：\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - iss 宣告包含您的網域名稱，例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`、您的租用戶識別碼，以及您的信賴憑證者原則名稱。 HTTPs：\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> 預設值： AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | 否 | 控制 `acr` 宣告值。<ul><li>無 - Azure AD B2C 不會發出 acr 宣告</li><li>PolicyId - `acr` 宣告包含原則名稱</li></ul>用來設定此值的選項為 TFP (信任架構原則) 和 ACR (驗證內容參考)。 建議將此值設定為 TFP；若要設定此值，請確定有 `<Item>` 的 `Key="AuthenticationContextReferenceClaimPattern"` 存在，且值為 `None`。 在您的信賴憑證者原則新增 `<OutputClaims>` 項目，並新增下列元素：`<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`。 同時請確定您的原則包含宣告類型 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| 否 | 在 `/token` 端點的重新整理[存取權杖](authorization-code-flow.md#4-refresh-the-token)POST 要求期間，應執行之使用者旅程圖的識別碼。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

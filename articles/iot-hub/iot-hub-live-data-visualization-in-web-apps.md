@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767954"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675325"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 web 應用程式中將 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -35,7 +35,7 @@ ms.locfileid: "76767954"
 * 開啟網頁以查看 IoT 中樞的即時溫度和濕度資料
 * 選擇性使用 Azure CLI 在 Azure App Service 中裝載您的 web 應用程式
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 * 完成[Raspberry Pi 線上](iot-hub-raspberry-pi-web-simulator-get-started.md)模擬器教學課程或其中一個裝置教學課程;例如，[使用 Node.js Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 其中涵蓋下列需求：
 
@@ -52,7 +52,7 @@ ms.locfileid: "76767954"
 執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>將取用者群組新增至 IoT 中樞

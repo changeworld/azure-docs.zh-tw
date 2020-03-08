@@ -1,19 +1,19 @@
 ---
 title: 取得合作夥伴中心的商業 Marketplace 入口網站支援
 description: 瞭解合作夥伴中心的支援選項，包括如何提出支援要求。
-author: ChJenk
+author: qianw211
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/07/2020
+ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827892"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898215"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心的商業 Marketplace 方案支援
 
@@ -29,67 +29,55 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 
 1. 在頁面右側的上方功能表中，選取 [**支援**] 圖示。 
  
-   ![支援圖示](./media/commercial-marketplace-support.png)
-
-1. [說明**及支援**] 窗格將會出現在頁面的右側。 合作夥伴中心內的每個程式都會有一個下拉式清單，供您註冊您的帳戶。 選取 [**商業 Marketplace** ] 下拉式功能表。 
+1. [說明**及支援**] 窗格將會出現在頁面的右側。 
  
    ![支援下拉式功能表](./media/commercial-marketplace-support-pane.png)
+
+    或移至**首頁**窗格，然後選取 [說明**及支援**]。
+
+   ![首頁的說明及支援](./media/homepage-help-support.png)
 
 1. 選取 **[檔](../index.md)** 以查看問題和資源的完整解答。 
 
 1. 選取 [ **[Marketplace 合作夥伴社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ]，利用其他 Microsoft 發行者的知識來回答您的問題。 
 
-1. 選取 [ **[其他協助](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** ] 以開啟**新的支援要求**票證。 
+1. 選取 [ **[其他協助](https://aka.ms/marketplacepublishersupport)** ] 以開啟**新的支援要求**票證。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何開啟支援票證
 
-在合作夥伴中心的 [商業 Marketplace 支援] 功能表中選取 [**其他**說明]，會將您導向 [商務用 Microsoft 支援服務] 頁面。 您會看到數個下拉式功能表。 系統會為您自動填入前幾個下拉式功能表。 如需 Marketplace 支援，請將產品系列識別為**雲端和線上服務**、產品作為**marketplace 發行者**，並將產品版本視為**marketplace 發行**。 請勿變更這些預先填入的下拉式功能表選取專案。 
+現在您已經準備好在 [說明**及支援**] 畫面上開啟支援票證。
 
-- **選取最能描述問題的類別**：選擇最符合您問題或問題的類別。 選取類別將會顯示額外的下拉式功能表，要求您選取最能描述問題的問題。
+![說明及支援](./media/help-and-support.png)
 
-- **選取最能描述問題的問題**：從列出的選項中選擇最符合您問題的問題。 根據您的問題而定，可能會出現一個新的區段，指出「以下是一些可能有説明的資訊」，其中包含與問題相關的連結。 選取 [**下一步]** 按鈕之前，請先檢查這些連結，以查看您的問題或問題是否已解決。
+>[!Note]
+>如果您已登入合作夥伴中心，您會獲得更佳的支援體驗。
 
-選取 [**下一步]** 按鈕，系統會將您導向至 [**問題詳細資料**] 頁面。 
+**選項1：** 輸入關鍵字，例如： Marketplace、Azure 應用程式、SaaS 供應專案、帳戶管理、潛在客戶管理、部署問題、支出等等。
 
-#### <a name="tell-us-more-about-your-issue"></a>請詳述您的問題
+**選項2：** 流覽主題-> 選取**類別**= 商業 marketplace-> 依序選取適當的**主題**和 [**副標題**]。
 
-在 [**問題詳細資料**] 區段中，說明您所需的協助。
+找到您選擇的主題之後，請選取 [**審查解決方案**]。
 
-- 選取您的國家/地區。
-- 選取您想要接收支援的語言。
-- 輸入您問題的標題（從3到200個字元）。  
-- 輸入問題的簡短描述（最多2000個字元）。
-- 選取 [下一步]。
+![後續步驟](./media/next-step.png)
 
-#### <a name="select-a-support-plan"></a>選取支援方案
+下列選項將會變成可用：
 
-**支援方案**區段中不需要任何資訊。 選取 [下一步]。 
+* 若要選取不同的主題，請在 [選取的**問題**] 底下選取不同的主題連結。
+* 請檢查此問題的描述（如果有的話）。  這是在**建議步驟**上方顯示的文字。
+* 請參閱**建議的步驟**（如果有的話）。
+* 請參閱**建議的檔**（如果有的話）。
 
-#### <a name="select-the-severity-of-your-issue"></a>選取問題的嚴重性
+![建議的解決方案](./media/recommended-solutions.png)
 
-[**嚴重性**] 區段中不需要任何資訊。 選取 [下一步]。 
+如果您在 [**建議的解決方案**] 中找不到解答，請按一下 [**提供問題詳細資料**]。  填寫表單和所有必要的欄位，以協助加速解決程式。  然後按一下 [**提交**]。
 
-#### <a name="who-should-we-contact"></a>誰應該聯絡
-
-在 [**連絡人資訊**] 區段中，確定您的主要連絡人名稱、電話號碼和電子郵件正確無誤。 
-- 如果您看到任何不正確的專案，請更新此資訊
-- 如有需要，您可以將公司中的其他連絡人新增至此支援要求
-- 選取 [**下一步**]
-
-#### <a name="review-and-submit-your-support-request"></a>審查並提交您的支援要求
-
-請參閱**審查**一節中的支援要求資訊。 
-- 如果所有資訊都正確無誤，請選取 [**提交**]。 
-- 如果需要更新任何資訊，請選取 [需要更新] 區段旁的 [**變更**] 按鈕。
+>[!Note]
+>如果您尚未登入合作夥伴中心，而此主題需要驗證，您將會要求您登入，才能繼續進行。  若為公用主題，則不需要驗證。
 
 ## <a name="track-your-existing-support-requests"></a>追蹤您現有的支援要求 
 
-若要追蹤您的支援要求，請造訪[商業 Marketplace 支援頁面](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。 
-
-在上方的藍色功能表列上，于 [商務用支援] 旁，選取 [**支援要求**] 連結。 
-
-在**Microsoft 專業支援**一節中，複習所有開啟和關閉的支援要求。 
+若要查看所有開啟和關閉的票證，請前往左側導覽列上的 [**商業 Marketplace** ]，然後選取 [**支援**]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [更新商用 Marketplace 中的現有供應專案](./update-existing-offer.md)
+- [更新商業市集中的現有供應項目](./update-existing-offer.md)

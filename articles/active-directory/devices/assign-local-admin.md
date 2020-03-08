@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379669"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672735"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
@@ -68,8 +68,8 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 根據預設，Azure AD 會將執行 Azure AD Join 的使用者新增至裝置的系統管理員群組。 如果您想要防止一般使用者成為本機系統管理員，您會有下列選項：
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot 可讓您選擇防止執行加入的主要使用者成為本機系統管理員。 您可以藉由[建立 Autopilot 設定檔](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)來完成這項作業。
-- [大量註冊](https://docs.microsoft.com/intune/windows-bulk-enroll) - 在大量註冊的內容中執行的 Azure AD Join，會在自動建立的使用者內容中執行。 在裝置加入後登入的使用者不會新增至系統管理員群組。   
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot 可讓您選擇防止執行加入的主要使用者成為本機系統管理員。 您可以藉由[建立 Autopilot 設定檔](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)來完成這項作業。
+- [大量註冊](/intune/windows-bulk-enroll) - 在大量註冊的內容中執行的 Azure AD Join，會在自動建立的使用者內容中執行。 在裝置加入後登入的使用者不會新增至系統管理員群組。   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>手動提高使用者在裝置上的權限 
 
@@ -82,7 +82,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 - 如果您的租用戶使用者是從內部部署 Active Directory 同步處理的，請使用 `net localgroup administrators /add "Contoso\username"`。
 - 如果您的租用戶使用者是在 Azure AD 中建立的，請使用 `net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>注意事項 
+## <a name="considerations"></a>考量 
 
 您無法將群組指派給裝置管理員角色，而只能指派個別使用者。
 

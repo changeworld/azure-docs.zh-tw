@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512086"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672410"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>混合式 Azure AD 聯結的受控驗證
 
@@ -82,13 +82,13 @@ ms.locfileid: "76512086"
 如果您使用 AD FS，您必須先將 GPO 連結到您的 AD FS 伺服器，使用上述指示設定用戶端 SCP。 SCP 物件會定義裝置物件的授權來源。 它可以是內部部署或 Azure AD。 當用戶端 SCP 設定為 AD FS 時，裝置物件的來源會建立為 Azure AD。
 
 > [!NOTE]
-> 如果您無法在 AD FS 伺服器上設定用戶端 SCP，裝置身分識別的來源會被視為內部部署。 ADFS 接著會在 ADFS 裝置註冊的屬性 "MaximumInactiveDays" 中定義約定期間之後，開始從內部部署目錄中刪除裝置物件。 您可以使用[set-adfsdeviceregistration Cmdlet](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)來尋找 ADFS 裝置註冊物件。
+> 如果您無法在 AD FS 伺服器上設定用戶端 SCP，裝置身分識別的來源會被視為內部部署。 ADFS 接著會在 ADFS 裝置註冊的屬性 "MaximumInactiveDays" 中定義約定期間之後，開始從內部部署目錄中刪除裝置物件。 您可以使用[set-adfsdeviceregistration Cmdlet](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)來尋找 ADFS 裝置註冊物件。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>在舊版 Windows 裝置上控制混合式 Azure AD 聯結的驗證
 
 若要註冊舊版 Windows 裝置，組織必須安裝可在 Microsoft 下載中心取得的[適用於非 Windows 10 電腦的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-您可以使用軟體發佈系統（例如 [Microsoft 端點 Configuration Manager](https://docs.microsoft.com/configmgr/)）來部署封裝。 此套件支援使用 quiet 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
+您可以使用軟體發佈系統 (例如  [Microsoft Endpoint Configuration Manager](/configmgr/)) 來部署此套件。 此套件支援使用 quiet 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
 
 安裝程式會在系統上建立排定的工作，此工作是在使用者內容中執行。 此工作會在使用者登入 Windows 時觸發。 此工作會在向 Azure AD 進行驗證後，透過使用者認證以無訊息方式向 Azure AD 加入裝置。
 

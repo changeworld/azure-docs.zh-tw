@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381984"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893323"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立串流分析作業
 
@@ -28,7 +28,7 @@ ms.locfileid: "78381984"
 
 * 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.24 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-cli-iot-ext` 來安裝 IoT 擴充功能。
+* Azure PowerShell 不支援某些 IoT 中樞動作，而且必須使用 Azure CLI 版本2.0.70 或更新版本，以及適用于 Azure CLI 的 IoT 擴充功能來完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -303,7 +303,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. 以您在上一節中儲存的整個 Azure IoT 中樞裝置連接字串取代行 15 中的預留位置。
 
-3. 按一下 **[執行]** 。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
+3. 按一下 [執行]。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
 
     ![Raspberry Pi Azure IoT 線上模擬器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

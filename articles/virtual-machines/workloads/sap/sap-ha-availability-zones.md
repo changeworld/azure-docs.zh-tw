@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291493"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675614"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)是 Azure 提供的高可用性功能之一。 使用可用性區域可改善 Azure 上的 SAP 工作負載整體的可用性。 已功能已在部分 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)推出。 未來將可在更多區域提供此功能。
@@ -118,6 +118,9 @@ SAP 應用程式層會部署在單一 Azure [可用性設定組](https://docs.mi
 - 第三個區域是用來在您建置 [SUSE Linux pacemaker 叢集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)或額外應用程式執行個體的情況下裝載 SBD 裝置。
 - 若要達到重要商務程式的執行時間一致性，您可以嘗試使用 SAP 批次伺服器群組、SAP 登入群組或 RFC 群組，將特定批次作業和使用者導向至與作用中 DBMS 實例相同區域中的應用程式實例。 不過，在發生區域容錯移轉的情況下，您必須手動將這些群組移至在 VM 上執行的執行個體 (其位於與作用中 DB VM 相同的區域中)。  
 - 您可以在每個區域中部署休眠對話方塊執行個體。 如此，當您的部分應用程式執行個體所使用的區域服務中斷時，就能立即恢復先前的資源容量。
+
+> [!IMPORTANT]
+> 在此主動/主動案例中，頻寬的額外費用會由 Microsoft 從04/01/2020 宣佈。 請參閱檔[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 SAP 應用層與 SAP DBMS 層之間的資料傳輸相當耗費資源。 因此，主動/主動案例可能會對成本有相當的貢獻。 請繼續查看這篇文章以取得確切的成本 
 
 
 ## <a name="activepassive-deployment"></a>主動/被動部署

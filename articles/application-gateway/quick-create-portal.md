@@ -6,30 +6,39 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3ce726b858dc31f42a07d56c11330544df3861f1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359233"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668405"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure 入口網站
 
-本快速入門會示範如何使用 Azure 入門網站，建立應用程式閘道。  建立應用程式閘道之後，您要加以測試，確定它可正常運作。 您會使用 Azure 應用程式閘道，將接聽程式指派給連接埠、建立規則，以及將資源新增至後端集區，來將應用程式網路流量導向至特定資源。 為了簡單起見，本文使用簡單的設定，包括公用前端 IP、在此應用程式閘道上裝載單一網站的基本接聽程式、用於後端集區的兩部虛擬機器，以及基本的要求路由規則。
+在本快速入門中，您會使用 Azure 入口網站來建立應用程式閘道。 然後進行測試以確定它能正常運作。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+應用程式閘道會將應用程式 web 流量導向至後端集區中的特定資源。 您可以將接聽程式指派給埠、建立規則，以及將資源新增至後端集區。 為了簡單起見，本文使用簡單的安裝程式搭配公用前端 IP、基本接聽程式，以在應用程式閘道上裝載單一網站、基本要求路由規則，以及後端集區中的兩部虛擬機器。
 
+您也可以使用[Azure PowerShell](quick-create-powershell.md)或[Azure CLI](quick-create-cli.md)來完成本快速入門。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
+
+您將使用 [**建立應用程式閘道**] 頁面上的索引標籤來建立應用程式閘道。
 
 1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。 [新增] 視窗隨即出現。
 
@@ -126,7 +135,7 @@ ms.locfileid: "78359233"
 
 ## <a name="add-backend-targets"></a>新增後端目標
 
-在此範例中，您會使用虛擬機器作為目標後端。 您可以使用現有的虛擬機器，或建立新的虛擬機器。 您會建立兩個虛擬機器，供 Azure 作為應用程式閘道的後端伺服器。
+在此範例中，您會使用虛擬機器作為目標後端。 您可以使用現有的虛擬機器，或建立新的虛擬機器。 您將建立兩部虛擬機器作為應用程式閘道的後端伺服器。
 
 若要這麼做，您將：
 
@@ -143,7 +152,7 @@ ms.locfileid: "78359233"
     - **資源群組**：選取 [ **myResourceGroupAG** ] 作為 [資源組名]。
     - **虛擬機器名稱**：輸入*myVM*作為虛擬機器的名稱。
     - **Username**：輸入*azureuser*作為系統管理員使用者名稱。
-    - **密碼**：輸入*Azure123456！* 作為系統管理員密碼。
+    - **密碼**：輸入密碼。
 4. 接受其他預設值，然後選取 **[下一步：磁片]** 。  
 5. 接受 [**磁片**] 索引標籤預設值，然後選取 **[下一步：網路**]。
 6. 在 [網路] 索引標籤上，確認已選取 [myVNet] 作為[虛擬網路]，且 [子網路] 設為 [myBackendSubnet]。 接受其他預設值，然後選取 **[下一步：管理]** 。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
@@ -155,7 +164,7 @@ ms.locfileid: "78359233"
 
 在此範例中，您在虛擬機器上安裝 IIS，只為了驗證 Azure 已成功建立應用程式閘道。
 
-1. 開啟 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 若要這樣做，請從 Azure 入口網站的頂端導覽列中選取 [Cloud Shell]，然後從下拉式清單中選取 [PowerShell]。 
+1. 開啟 Azure PowerShell。 從 Azure 入口網站的上方導覽列中選取 [ **Cloud Shell** ]，然後從下拉式清單中選取 [ **PowerShell** ]。 
 
     ![安裝自訂延伸模組](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -199,13 +208,15 @@ ms.locfileid: "78359233"
 
 1. 在 [概觀] 頁面上尋找應用程式閘道的公用 IP 位址。![記錄應用程式閘道公用 IP 位址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) 或者，您可以選取 [所有資源]，並在搜尋方塊中輸入 *myAGPublicIPAddress*，然後在搜尋結果中加以選取。 Azure 會在 [概觀] 頁面上顯示公用 IP 位址。
 2. 將公用 IP 位址複製並貼到您瀏覽器的網址列。
-3. 檢查回應。 有效的回應會確認應用程式閘道已成功建立，並可與後端順利連線。![測試應用程式閘道](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+3. 檢查回應。 有效的回應會確認應用程式閘道已成功建立，並可與後端順利連線。
+
+   ![測試應用程式閘道](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要先前為應用程式閘道建立的資源時，請移除資源群組。 藉由移除資源群組，您也可以移除應用程式閘道及其所有相關資源。 
+當您不再需要使用應用程式閘道建立的資源時，請刪除資源群組。 當您刪除資源群組時，您也會移除應用程式閘道和所有相關資源。
 
-若要移除資源群組：
+若要刪除資源群組：
 
 1. 在 Azure 入口網站功能表中，選取 [資源群組]，或搜尋並選取 [資源群組]。
 2. 在 [資源群組] 頁面上，在清單中搜尋 **myResourceGroupAG** 並加以選取。

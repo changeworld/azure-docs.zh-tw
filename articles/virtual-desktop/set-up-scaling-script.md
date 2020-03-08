@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367244"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894509"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機規模
 
@@ -37,7 +37,7 @@ ms.locfileid: "77367244"
 >[!NOTE]
 >*SessionThresholdPerCPU*不會限制 VM 上的會話數目。 此參數只會決定何時需要啟動新的 Vm，以對連線進行負載平衡。 若要限制會話數目，您必須遵循 RdsHostPool 的指示，以適當地[設定](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) *MaxSessionLimit*參數。
 
-在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，腳本會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出之後，腳本將會關閉 VM。
+在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，此作業將會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出後，此作業將會關閉 VM。
 
 如果您將*LimitSecondsToForceLogOffUser*參數設定為零，此作業將會允許指定群組原則中的會話設定，處理登出使用者會話。 若要查看這些群組原則，請移至 **電腦**設定 > **原則** > **系統管理範本** > **Windows 元件** > 終端機**服務** > **終端機伺服器** > **會話時間限制**。 如果工作階段主機 VM 上有任何使用中會話，此作業會讓工作階段主機 VM 繼續執行。 如果沒有作用中的會話，此作業將會關閉工作階段主機 VM。
 
@@ -51,7 +51,7 @@ ms.locfileid: "77367244"
 >[!NOTE]
 >調整工具可控制要調整之主機集區的負載平衡模式。 它會將其設定為尖峰和離峰時段的廣度優先負載平衡。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始設定調整工具之前，請確定您已備妥下列專案：
 

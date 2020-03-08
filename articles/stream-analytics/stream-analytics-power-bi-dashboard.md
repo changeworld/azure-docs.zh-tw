@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431638"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851160"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
@@ -28,7 +28,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 開始之前，請確定您具有下列項目：
 
 * 一個 Azure 帳戶。
-* Power BI 的帳戶。 您可以使用公司帳戶或學校帳戶。
+* Power BI Pro 的帳戶。 您可以使用公司帳戶或學校帳戶。
 * [即時詐騙偵測](stream-analytics-real-time-fraud-detection.md)教學課程的完整版本。 本教學課程包含可產生虛構電話中繼資料的應用程式。 在本教學課程中，您將會建立事件中樞，並將串流通話資料傳送到事件中樞。 您將會撰寫查詢來偵測詐騙電話 (相同號碼在同一時間從不同位置的來電)。 
 
 
@@ -56,7 +56,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 4. 當您選取 [授權] 時，快顯視窗隨即開啟，而系統會要求您提供認證來驗證您的 Power BI 帳戶。 一旦授權成功，請 [儲存] 設定。
 
-8. 按一下頁面底部的 [新增]。
+8. 按一下 [建立]。
 
 系統會使用下列設定來建立資料集：
 
@@ -77,7 +77,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 3. 輸入下列查詢。 此查詢類似於您在詐騙偵測教學課程中建立的自我聯結查詢。 差別在於此查詢會將結果傳送至您所建立的新輸出 (`CallStream-PowerBI`)。 
 
     >[!NOTE]
-    >如果您在詐騙偵測教學課程中不是將輸入命名為 `CallStream`，請在查詢的 **FROM** 和 **JOIN** 子句中，用您的名稱取代 `CallStream`。
+    >如果您在詐騙偵測教學課程中不是將輸入命名為 `CallStream`，請在查詢的 `CallStream`FROM**和**JOIN**子句中，用您的名稱取代**。
 
    ```SQL
    /* Our criteria for fraud:
@@ -99,7 +99,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 按一下 [檔案]。
+4. Haga clic en **Guardar**.
 
 
 ## <a name="test-the-query"></a>測試查詢
@@ -137,7 +137,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
     ![Power BI 中的串流資料集位置](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. 在工作區中，按一下 [+&nbsp;建立]。
+2. 在工作區中，按一下 [ **+建立]&nbsp;** 。
 
     ![Power BI 工作區中的 [建立] 按鈕](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
@@ -163,7 +163,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
     ![新磚的標題和副標題](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. 按一下 [套用]。
+9. 按一下 **[套用]** 。
 
     您現在有一個詐騙計數器了！
 
@@ -190,7 +190,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 本教學課程示範如何為一個資料集只建立幾種視覺效果。 Power BI 可協助您為組織建立其他客戶商業智慧型工具。 關於其他構想，請參閱下列資源：
 
 * 如需其他 Power BI 儀表板範例，請觀賞 [開始使用 Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) 視訊。
-* 如需有關設定串流分析作業輸出至 Power BI 及使用 Power BI 群組的詳細資訊，請檢閱[串流分析輸出](stream-analytics-define-outputs.md)一文的 [Power BI](stream-analytics-define-outputs.md#power-bi) 小節。 
+* 如需有關設定串流分析作業輸出至 Power BI 及使用 Power BI 群組的詳細資訊，請檢閱[串流分析輸出](stream-analytics-define-outputs.md#power-bi)一文的 [Power BI](stream-analytics-define-outputs.md) 小節。 
 * 如需 Power BI 一般用法的相關資訊，請參閱 [Power BI 中的儀表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 
 
@@ -201,7 +201,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 ![以秒為單位計算要提供給視窗之值的方程式](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-例如：
+例如，
 
 * 您有 1 千個以一秒間隔傳送資料的裝置。
 * 您使用的 Power BI Pro SKU 支援每小時 100 萬個資料列。

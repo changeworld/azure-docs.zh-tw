@@ -4,12 +4,12 @@ description: 針對安裝、註冊「Azure 備份伺服器」以及備份和還�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617581"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673121"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>針對 Azure 備份伺服器進行疑難排解
 
@@ -50,7 +50,7 @@ ms.locfileid: "77617581"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| {1}還原{2} | **錯誤碼**： CBPServerRegisteredVaultDontMatchWithCurrent/Vault 認證錯誤：100110 <br/> <br/>**錯誤訊息**：原始和外部 DPM 服務器必須註冊到相同的保存庫 | **原因**：當您嘗試使用外部 DPM 復原選項，從源伺服器將檔案還原至替代伺服器時，如果要復原的伺服器和備份資料的源伺服器沒有與相同的復原服務保存庫相關聯，就會發生此問題。<br/> <br/>因應措施若要解決此問題，請確定原始和替代的伺服器都已註冊到相同的保存庫。|
+| 還原 | **錯誤碼**： CBPServerRegisteredVaultDontMatchWithCurrent/Vault 認證錯誤：100110 <br/> <br/>**錯誤訊息**：原始和外部 DPM 服務器必須註冊到相同的保存庫 | **原因**：當您嘗試使用外部 DPM 復原選項，從源伺服器將檔案還原至替代伺服器時，如果要復原的伺服器和備份資料的源伺服器沒有與相同的復原服務保存庫相關聯，就會發生此問題。<br/> <br/>因應措施若要解決此問題，請確定原始和替代的伺服器都已註冊到相同的保存庫。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的線上復原點建立作業失敗
 
@@ -76,7 +76,7 @@ ms.locfileid: "77617581"
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
 | 將代理程式推送至受保護的伺服器 | 為伺服器指定的認證無效。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br> 如[這篇文章](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)所指定，嘗試手動將保護代理程式安裝在生產伺服器上。|
-| Azure 備份代理程式無法連線到 Azure 備份服務 (ID：100050) | Azure 備份代理程式無法連線到 Azure 備份服務。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br>1. 從提高許可權的提示字元中執行下列命令： **psexec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**。 這會開啟 Internet Explorer 視窗。 <br/> 2. 移至 [**工具**] > [**網際網路選項**] **[ > 連線**] > [ **LAN 設定**]。 <br/> 3. 將設定變更為使用 proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<br/> 4. 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url](backup-configure-vault.md#verify-internet-access)和[IP 位址](backup-configure-vault.md#verify-internet-access)。|
+| Azure 備份代理程式無法連線到 Azure 備份服務 (ID：100050) | Azure 備份代理程式無法連線到 Azure 備份服務。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br>1. 從提高許可權的提示字元中執行下列命令： **psexec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**。 這會開啟 Internet Explorer 視窗。 <br/> 2. 移至 [**工具**] > [**網際網路選項**] **[ > 連線**] > [ **LAN 設定**]。 <br/> 3. 將設定變更為使用 proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<br/> 4. 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url](install-mars-agent.md#verify-internet-access)和[IP 位址](install-mars-agent.md#verify-internet-access)。|
 | Azure 備份代理程式安裝失敗 | Microsoft Azure 復原服務安裝失敗。 「Microsoft Azure 復原服務」安裝作業對系統所做的所有變更都已復原。 (ID：4024) | 手動安裝「Azure 代理程式」。
 
 ## <a name="configuring-protection-group"></a>設定保護群組
@@ -86,7 +86,7 @@ ms.locfileid: "77617581"
 | 設定保護群組 | DPM 無法列舉受保護電腦 (受保護的電腦名稱) 上的應用程式元件。 | 在相關資料來源/元件層級的設定保護群組 UI 畫面上，選取 [重新整理]。 |
 | 設定保護群組 | 無法設定保護 | 如果受保護的伺服器是 SQL Server，請確認是否已將 sysadmin 角色權限提供給受保護電腦上的系統帳戶 (NTAuthority\System)，如[這篇文章](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757977(v=sc.12))所述。
 | 設定保護群組 | 此保護群組在儲存體集區中的可用空間不足。 | 新增至儲存體集區的磁碟[不應包含分割區](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))。 刪除磁碟上的任何現有磁碟區。 然後將它們新增至儲存體集區。|
-| 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的作業失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。 | **原因：**<br/>在三種情況下會發生此錯誤：已啟用安全性設定時、嘗試將保留範圍縮減至低於先前指定的最小值時，以及使用不支援的版本時。 (不支援的版本係指低於「Microsoft Azure 備份伺服器」2.0.9052 版和「Azure 備份伺服器」更新 1 的版本)。 <br/>**建議的動作：**<br/> 若要繼續進行原則相關的更新，請將保留期設定成大於所指定的最短保留期。 (最短保留期就每日而言是 7 天、就每週而言是 4 週、就每月而言是 3 個月，或就每年而言則是 1 年)。 <br><br>(選擇性) 另一個慣用的方法是更新備份代理程式和「Azure 備份伺服器」，以利用所有安全性更新。 |
+| 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的作業失敗。 請在一段時間之後重試此作業。 若問題持續發生，請連絡 Microsoft 支援。 | **原因：**<br/>在三種情況下會發生此錯誤：已啟用安全性設定時、嘗試將保留範圍縮減至低於先前指定的最小值時，以及使用不支援的版本時。 (不支援的版本係指低於「Microsoft Azure 備份伺服器」2.0.9052 版和「Azure 備份伺服器」更新 1 的版本)。 <br/>**建議的動作：**<br/> 若要繼續進行原則相關的更新，請將保留期設定成大於所指定的最短保留期。 (最短保留期就每日而言是 7 天、就每週而言是 4 週、就每月而言是 3 個月，或就每年而言則是 1 年)。 <br><br>(選擇性) 另一個慣用的方法是更新備份代理程式和「Azure 備份伺服器」，以利用所有安全性更新。 |
 
 ## <a name="backup"></a>Backup
 
@@ -109,7 +109,7 @@ ms.locfileid: "77617581"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 使用 Office 365 帳戶來設定電子郵件通知 |錯誤 ID：2013| **原因：**<br> 嘗試使用 Office 365 帳戶 <br>**建議的動作：**<ol><li> 所要確保的第一件事就是在 Exchange 上已設定 DPM 伺服器的「允許接收連接器上的匿名轉送」。 如需如何進行此設定的詳細資訊，請參閱[允許接收連接器上的匿名轉送](https://docs.microsoft.com/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果您無法使用內部 SMTP 轉送，而需要使用 Office 365 伺服器來進行設定，您可以將 IIS 設定為轉送。 將 DPM 服務器設定為[使用 IIS 將 SMTP 轉送至 O365](https://docs.microsoft.com/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)）。<br><br>  請務必使用使用者\@domain.com 格式，而*不*是 domain\user<br><br><li>將 DPM 指向為使用本機伺服器名稱作為 SMTP 伺服器、連接埠 587。 然後將它指向應作為電子郵件來源的使用者電子郵件。<li> DPM SMTP 設定頁面上的使用者名稱和密碼應該用於 DPM 所在網域的網域帳戶。 </li><br> 變更 SMTP 伺服器位址時，請對新設定進行變更、關閉 [設定] 方塊，然後重新開啟它來確定它反映新的值。  只是變更和測試不一定會讓新設定生效，因此以這種方式測試是最佳做法。<br><br>在進行此程序的期間，您可以隨時關閉 DPM 主控台並編輯下列登錄機碼來清除這些設定W：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 刪除 SMTPPassword 和 SMTPUserName 機碼**。 您可以在再次啟動它時，將它們加回到 UI 中。
+| 使用 Office 365 帳戶來設定電子郵件通知 |錯誤 ID：2013| **原因：**<br> 嘗試使用 Office 365 帳戶 <br>**建議的動作：**<ol><li> 要確定的第一件事是在 Exchange 上設定 DPM 服務器的「允許接收連接器上的匿名轉送」。 如需如何進行此設定的詳細資訊，請參閱[允許接收連接器上的匿名轉送](https://docs.microsoft.com/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果您無法使用內部 SMTP 轉送，而需要使用 Office 365 伺服器來進行設定，您可以將 IIS 設定為轉送。 將 DPM 服務器設定為[使用 IIS 將 SMTP 轉送至 O365](https://docs.microsoft.com/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)）。<br><br>  請務必使用使用者\@domain.com 格式，而*不*是 domain\user<br><br><li>將 DPM 指向為使用本機伺服器名稱作為 SMTP 伺服器、連接埠 587。 然後將它指向應作為電子郵件來源的使用者電子郵件。<li> DPM SMTP 設定頁面上的使用者名稱和密碼應該用於 DPM 所在網域的網域帳戶。 </li><br> 變更 SMTP 伺服器位址時，請對新設定進行變更、關閉 [設定] 方塊，然後重新開啟它來確定它反映新的值。  只是變更和測試不一定會讓新設定生效，因此以這種方式測試是最佳做法。<br><br>在進行此程序的期間，您可以隨時關閉 DPM 主控台並編輯下列登錄機碼來清除這些設定W：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 刪除 SMTPPassword 和 SMTPUserName 機碼**。 您可以在再次啟動它時，將它們加回到 UI 中。
 
 ## <a name="common-issues"></a>常見問題
 

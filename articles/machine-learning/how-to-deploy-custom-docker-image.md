@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396160"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851269"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Azure Machine Learning 提供預設的 Docker 基底映射，因此您不必擔�
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > 在此範例中，`:v1` 的標記會套用至影像。 如果未提供標記，則會套用 `:latest` 的標記。
+
     在建立程式期間，會將資訊串流處理回命令列。 如果組建成功，您會收到類似下列文字的訊息：
 
     ```text
@@ -170,6 +173,10 @@ Azure Machine Learning 提供預設的 Docker 基底映射，因此您不必擔�
 若要使用自訂映射，您需要下列資訊：
 
 * __映射名稱__。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` 是 Microsoft 所提供的基本 Docker 映射的路徑。
+
+    > [!IMPORTANT]
+    > 針對您已建立的自訂映射，請務必包含與映射搭配使用的任何標記。 例如，如果您的映射是使用特定標記所建立，例如 `:v1`。 如果您在建立映射時未使用特定標記，則會套用 `:latest` 的標記。
+
 * 如果映射位於__私人存放庫__中，您需要下列資訊：
 
     * 登錄__位址__。 例如： `myregistry.azureecr.io` 。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194461"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672357"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>針對 Azure Active Directory 中的企業狀態漫遊設定進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "77194461"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)處理一文。
+> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>疑難排解的預備步驟 
 
@@ -111,7 +111,7 @@ ms.locfileid: "77194461"
 爲防止資料外洩，使用 [Windows 資訊保護 (英文)](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) 保護的資料不會透過使用 Windows 10 年度更新版之裝置的企業狀態漫遊來進行同步處理。
 
 **建議的動作**  
-None。 未來的 Windows 更新可能會解決這個問題。
+無。 未來的 Windows 更新可能會解決這個問題。
 
 ---
 
@@ -120,7 +120,7 @@ None。 未來的 Windows 更新可能會解決這個問題。
 已加入網域的裝置將不會同步處理日期、時間及地區：自動時間設定。 使用自動時間可能會複寫其他日期、時間及地區設定，並導致那些設定不會同步處理。 
 
 **建議的動作**  
-None。 
+無。 
 
 ---
 
@@ -138,7 +138,7 @@ None。
 如果您嘗試使用智慧卡或虛擬智慧卡來登入您的 Windows 裝置，設定同步處理將會停止運作。     
 
 **建議的動作**  
-None。 未來的 Windows 更新可能會解決這個問題。
+無。 未來的 Windows 更新可能會解決這個問題。
 
 ---
 

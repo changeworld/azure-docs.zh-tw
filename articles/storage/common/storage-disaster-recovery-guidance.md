@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905522"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894535"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>嚴重損壞修復和帳戶容錯移轉（預覽）
 
@@ -114,22 +114,17 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 ## <a name="about-the-preview"></a>關於預覽
 
-帳戶容錯移轉適用于使用 GRS 或 RA-GRS 搭配 Azure Resource Manager 部署的所有客戶。 支援一般用途 v1、一般用途 v2 及 Blob 儲存體帳戶類型。 帳戶容錯移轉目前已在以下區域推出：
-
-- 東亞
-- 東南亞
-- 澳大利亞東部
-- 澳大利亞東南部
-- 美國中部
-- 美國東部 2
-- 美國中西部
-- 美國西部 2
+帳戶容錯移轉適用于使用 GRS 或 RA-GRS 搭配 Azure Resource Manager 部署的所有客戶。 支援一般用途 v1、一般用途 v2 及 Blob 儲存體帳戶類型。 帳戶容錯移轉目前適用于所有公用區域。 帳戶容錯移轉目前無法在主權/全國雲端中使用。
 
 預覽僅適用於非生產環境。 生產環境的服務等級協定 (SLA) 目前無法使用。
 
 ### <a name="additional-considerations"></a>其他考量
 
 檢閱本節中所述的其他考量，以了解在預覽期間強制執行容錯移轉可能會對應用程式和服務產生哪些影響。
+
+#### <a name="storage-account-containing-archived-blobs"></a>包含已封存 blob 的儲存體帳戶
+
+包含封存 blob 的儲存體帳戶支援帳戶容錯移轉。 容錯移轉完成後，若要將帳戶轉換回 GRS 或 RA-GRS，必須先將所有 archieved blob 解除凍結至線上層。
 
 #### <a name="storage-resource-provider"></a>儲存體資源提供者
 
@@ -162,8 +157,8 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 
 預覽版本的帳戶容錯移轉不支援下列功能和服務：
 
-- Azure 檔案同步不支援儲存體帳戶容錯移轉。 不應該容錯移轉包含在 Azure 檔案同步中作為雲端端點使用之 Azure 檔案共用的儲存體帳戶。 這麼做將導致同步停止運作，且可能會在新分層的檔案中產生未預期的資料遺失。  
-- 無法容錯移轉包含封存 Blob 的儲存體帳戶。 請在您不打算進行容錯移轉的個別儲存體帳戶中維護封存 Blob。
+- Azure 檔案同步不支援儲存體帳戶容錯移轉。 不應該容錯移轉包含在 Azure 檔案同步中作為雲端端點使用之 Azure 檔案共用的儲存體帳戶。 這麼做將導致同步停止運作，且可能會在新分層的檔案中產生未預期的資料遺失。
+- 目前不支援 ADLS Gen2 儲存體帳戶（已啟用階層命名空間的帳戶）。
 - 無法容錯移轉包含進階區塊 Blob 的儲存體帳戶。 支援進階區塊 Blob 的儲存體帳戶目前不支援異地備援。
 - 包含已啟用任何 WORM 不存在[原則](../blobs/storage-blob-immutable-storage.md)之容器的儲存體帳戶，無法進行故障切換。 已解除鎖定/鎖定以時間為基礎的保留或合法保存原則會防止容錯移轉，以維持合規性。
 - 在容錯移轉完成之後，下列功能可能會在原始啟用時停止運作：[事件訂閱](../blobs/storage-blob-event-overview.md)、[變更](../blobs/storage-blob-change-feed.md)摘要、[生命週期原則](../blobs/storage-lifecycle-management-concepts.md)和[儲存體分析記錄](storage-analytics-logging.md)。
@@ -180,7 +175,7 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 
 在區域因嚴重災害而遺失的極端情況下，Microsoft 可能會起始區域容錯移轉。 在此情況下，您不需要採取任何動作。 在 Microsoft 管理的容錯移轉完成之前，您將無法取得儲存體帳戶的寫入權限。 如果您的儲存體帳戶已針對 RA-GRS 進行設定，您的應用程式仍可從次要區域進行讀取。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [起始帳戶容錯移轉 (預覽)](storage-initiate-account-failover.md)
 - [使用 RA-GRS 設計高可用性應用程式](storage-designing-ha-apps-with-ragrs.md)

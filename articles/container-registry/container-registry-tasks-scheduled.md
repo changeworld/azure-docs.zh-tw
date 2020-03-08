@@ -3,12 +3,12 @@ title: 教學課程-排程 ACR 工作
 description: 在本教學課程中，您將瞭解如何藉由設定一或多個計時器觸發程式，以定義的排程執行 Azure Container Registry 工作。
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617449"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402873"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>依定義的排程執行 ACR 工作
 
@@ -56,8 +56,11 @@ az acr task create \
 
 執行[az acr task show][az-acr-task-show]命令，以查看計時器觸發程式是否已設定。 根據預設，基底映射更新觸發程式也會啟用。
 
-```console
-$ az acr task show --name mytask --registry registry --output table
+```azurecli
+az acr task show --name mytask --registry registry --output table
+```
+
+```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
@@ -71,7 +74,7 @@ az acr task run --name mytask --registry myregistry
 
 如果容器執行成功，輸出會類似下列內容：
 
-```console
+```output
 Queued a run with ID: cf2a
 Waiting for an agent...
 2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
@@ -92,7 +95,7 @@ az acr task list-runs --name mytask --registry myregistry --output table
 
 當計時器成功時，輸出會如下所示：
 
-```console
+```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  -------- ----------  ---------  ---------  --------------------  ----------
 [...]
@@ -201,7 +204,7 @@ ACR 工作使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫來解�
 
 若要移除您在本教學課程系列中建立的所有資源，包括容器登錄或登錄、容器實例、金鑰保存庫和服務主體，請發出下列命令：
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```

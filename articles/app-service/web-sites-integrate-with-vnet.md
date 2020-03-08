@@ -7,43 +7,19 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 76139716fe11536faa0ff792185ba1643801c641
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 89aa78e0d26598eacf436ca88cc6c5549f91d2fc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648983"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673217"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 本檔說明 Azure App Service 虛擬網路整合功能，以及如何使用[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)中的應用程式進行設定。 [Azure 虛擬網路][VNETOverview]（vnet）可讓您將許多 Azure 資源放在非網際網路可路由網路中。  
 
-Azure App Service 有兩種變化。 
+Azure App Service 有兩種變化。
 
-1. 支援全系列價格方案 (除隔離式方案以外) 的多租用戶系統
-2. App Service 環境（ASE），它會部署到您的 VNet 並支援隔離的定價方案應用程式
-
-本檔會逐步解說 VNet 整合功能，以供在多租使用者 App Service 中使用。 如果您的應用程式在[App Service 環境][ASEintro]中，則它已在 vnet 中，不需要使用 vnet 整合功能來觸達相同 vnet 中的資源。 如需所有 App Service 網路功能的詳細資訊，請參閱[App Service 網路功能](networking-features.md)
-
-VNet 整合可讓您的 web 應用程式存取虛擬網路中的資源，但不會從 VNet 授與 web 應用程式的輸入私用存取權。 私人網站存取是指讓您的應用程式只能透過私人網路 (例如從 Azure 虛擬網路中) 存取。 VNet 整合僅適用于從您的應用程式對 VNet 進行輸出呼叫。 當搭配相同區域中的 Vnet 和其他區域中的 Vnet 使用時，VNet 整合功能的行為會有所不同。 VNet 整合功能有兩種變化。
-
-1. 區域 VNet 整合-連線至相同區域中的 Resource Manager Vnet 時，您必須在要整合的 VNet 中具有專用的子網。 
-2. 閘道所需的 VNet 整合-連線到位於相同區域的其他區域或傳統 VNet 的 Vnet 時，您需要在目標 VNet 中布建虛擬網路閘道。
-
-VNet 整合功能：
-
-* 需要標準、Premium、PremiumV2 或彈性 Premium 定價方案 
-* 支援 TCP 和 UDP
-* 使用 App Service 應用程式和函數應用程式
-
-VNet 整合不支援的事項包括：
-
-* 掛接磁碟機
-* AD 整合 
-* NetBios
-
-閘道所需的 VNet 整合只提供存取目標 VNet 中的資源，或使用對等互連或 Vpn 連線到目標 VNet 的網路。 閘道所需的 VNet 整合無法存取 ExpressRoute 連線可用的資源，或與服務端點搭配運作。 
-
-不論使用的版本為何，VNet 整合都會讓您的 web 應用程式存取虛擬網路中的資源，但不會授與從虛擬網路對 web 應用程式的輸入私用存取權。 私人網站存取是指讓您的應用程式只能透過私人網路 (例如從 Azure 虛擬網路中) 存取。 VNet 整合僅適用于從您的應用程式對 VNet 進行輸出呼叫。 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>啟用 VNet 整合 
 
@@ -71,69 +47,7 @@ VNet 整合不支援的事項包括：
 
 ## <a name="regional-vnet-integration"></a>區域 VNet 整合
 
-使用區域 VNet 整合可讓您的應用程式存取：
-
-* VNet 中與您整合的相同區域中的資源 
-* Vnet 中的資源對等互連至位於相同區域的 VNet
-* 服務端點保護的服務
-* 跨 ExpressRoute 連線的資源
-* 您所連線之 VNet 中的資源
-* 跨對等互連連接的資源，包括 ExpressRoute 連線
-* 私人端點 
-
-搭配相同區域中的 Vnet 使用 VNet 整合時，您可以使用下列 Azure 網路功能：
-
-* 網路安全性群組（Nsg）-您可以使用放在整合子網上的網路安全性群組來封鎖輸出流量。 輸入規則不適用，因為您無法使用 VNet 整合來提供 web 應用程式的輸入存取。
-* 路由表（Udr）-您可以將路由表放在整合子網上，以在您想要的地方傳送輸出流量。 
-
-根據預設，您的應用程式只會將 RFC1918 流量路由傳送至您的 VNet。 如果您想要將所有輸出流量路由傳送至 VNet，請將應用程式設定 WEBSITE_VNET_ROUTE_ALL 套用至您的應用程式。 若要設定應用程式設定：
-
-1. 在您的應用程式入口網站中，移至 [設定] UI。 選取**新的應用程式設定**
-1. 在 [名稱] 欄位中輸入**WEBSITE_VNET_ROUTE_ALL** ，然後在 [值] 欄位中鍵入**1**
-
-   ![提供應用程式設定][4]
-
-1. 選取 [確定]
-1. 選取 [儲存]。
-
-如果您將所有輸出流量路由傳送至 VNet，則會受限於套用至您的整合子網的 Nsg 和 Udr。 當您將所有輸出流量路由傳送至 VNet 時，您的輸出位址仍會是應用程式屬性中所列的輸出位址，除非您提供路由來傳送其他位置的流量。 
-
-在相同的區域中使用 VNet 與 Vnet 的整合有一些限制：
-
-* 您無法跨全球對等互連連線連線到資源
-* 此功能僅適用于支援 PremiumV2 App Service 方案的較新 App Service 縮放單位。
-* 整合子網只能由一個 App Service 方案使用
-* App Service 環境中的隔離式方案應用程式無法使用此功能
-* 此功能需要在 Resource Manager VNet 中有一個/27 的未使用子網，且其32位址或更大
-* 應用程式和 VNet 必須位於相同的區域
-* 您無法刪除具有整合式應用程式的 VNet。 請先移除整合，再刪除 VNet。 
-* 您只能將與 web 應用程式相同的訂用帳戶中的 Vnet 整合
-* 根據 App Service 方案，您只能有一個區域 VNet 整合。 相同 App Service 方案中的多個應用程式可以使用相同的 VNet。 
-* 當有使用區域 VNet 整合的應用程式時，您無法變更應用程式或 App Service 方案的訂用帳戶
-
-一個位址用於一個 App Service 方案執行個體。 如果您將應用程式調整為五個實例，則會使用五個位址。 因為子網大小在指派之後無法變更，所以您必須使用夠大的子網，以容納您的應用程式可能會達到的任何規模。 包含64位址的/26 是建議的大小。 包含64位址的/26 將可配合具有30個實例的 Premium App Service 方案。 當您相應增加或減少 App Service 方案時，您需要一小段時間才會有兩個位址。 
-
-如果您想要讓應用程式在另一個 App Service 計畫連接到另一個 App Service 方案中已由應用程式連線的 VNet，您必須選取與既有的 VNet 整合所使用的子網不同的子網。  
-
-適用于 Linux 的功能處於預覽狀態。 這項功能的 Linux 形式僅支援呼叫 RFC 1918 位址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）。
-
-### <a name="web-app-for-containers"></a>適用於容器的 Web 應用程式
-
-如果您使用 Linux 上的 App Service 搭配內建映射，區域 VNet 整合就能運作，而不需要進行其他變更。 如果您使用用於容器的 Web App，您需要修改 docker 映射，才能使用 VNet 整合。 在您的 docker 映射中，使用埠環境變數作為主要 web 伺服器的接聽埠，而不是使用硬式編碼的埠號碼。 埠環境變數會在容器啟動時，由 App Service 平臺自動設定。 如果您使用 SSH，則在使用區域 VNet 整合時，SSH 背景程式必須設定為接聽 SSH_PORT 環境變數所指定的埠號碼。  Linux 上不支援閘道所需的 VNet 整合。 
-
-### <a name="service-endpoints"></a>服務端點
-
-區域 VNet 整合可讓您使用服務端點。  若要將服務端點與您的應用程式搭配使用，請使用區域 VNet 整合來連線到選取的 VNet，然後在您用於整合的子網上設定服務端點。 
-
-### <a name="network-security-groups"></a>網路安全性群組
-
-網路安全性群組可讓您封鎖 VNet 中資源的輸入和輸出流量。 使用區域 VNet 整合的 web 應用程式可以使用[網路安全性群組][VNETnsg]來封鎖對 VNet 或網際網路中資源的輸出流量。 若要封鎖公用位址的流量，您必須將應用程式設定 WEBSITE_VNET_ROUTE_ALL 設為1。 NSG 中的輸入規則並不適用于您的應用程式，因為 VNet 整合只會影響來自您應用程式的輸出流量。 若要控制 web 應用程式的輸入流量，請使用「存取限制」功能。 無論套用至您的整合子網的任何路由為何，套用至您的整合子網的 NSG 都會生效。 如果 WEBSITE_VNET_ROUTE_ALL 設定為1，而且您沒有任何路由影響到您的整合子網上的公用位址流量，則您的所有輸出流量仍會受限於指派給您的整合子網的 Nsg。 如果未設定 WEBSITE_VNET_ROUTE_ALL，Nsg 只會套用至 RFC1918 流量。
-
-### <a name="routes"></a>路由
-
-路由表可讓您將來自您應用程式的輸出流量路由傳送到您想要的任何位置。 根據預設，路由表只會影響您的 RFC1918 目的地流量。  如果您將 WEBSITE_VNET_ROUTE_ALL 設定為1，則所有的輸出呼叫都會受到影響。 在您的整合子網上設定的路由，不會影響對輸入應用程式要求的回復。 一般目的地可以包含防火牆裝置或閘道。 如果您想要路由傳送內部部署的所有輸出流量，您可以使用路由表將所有輸出流量傳送到您的 ExpressRoute 閘道。 如果您將流量路由傳送至閘道，請務必設定外部網路中的路由，以傳送任何回復。
-
-邊界閘道協定（BGP）路由也會影響您的應用程式流量。 如果您有來自類似 ExpressRoute 閘道的 BGP 路由，您的應用程式輸出流量會受到影響。 根據預設，BGP 路由只會影響您的 RFC1918 目的地流量。 如果 WEBSITE_VNET_ROUTE_ALL 設定為1，則您的 BGP 路由可能會影響所有輸出流量。 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ### <a name="how-regional-vnet-integration-works"></a>區域 VNet 整合的運作方式
 
@@ -230,74 +144,10 @@ ASP VNet 整合 UI 會顯示 ASP 中的應用程式所使用的所有 VNet 整�
 * VPN 閘道成本-點對站 VPN 需要 VNet 閘道的成本。 詳細資料位於[VPN 閘道定價][VNETPricing]頁面。
 
 ## <a name="troubleshooting"></a>疑難排解
-儘管功能易於設定，這不表示您的體驗不會遇到問題。 如果您在存取所需端點時遇到問題，有一些公用程式，您可以用來從應用程式主控台測試連線功能。 有兩個您可以使用的主控台。 一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式觸達 Kudu 主控台，請移至 [工具] -> [Kudu]。 您也可以連線到位於 [sitename]. azurewebsites. net 的 Kudo 主控台。 網站載入後，請移至 調試主控台 索引標籤。若要進入 Azure 入口網站裝載的主控台，請從您的應用程式移至 工具-> 主控台。 
 
-#### <a name="tools"></a>工具
-由於安全性限制，工具**ping**、 **nslookup**和**tracert**無法透過主控台來處理。 為了填滿 void，已加入兩個不同的工具。 為了測試 DNS 功能，已加入名為 nameresolver.exe的工具。 語法為：
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-    nameresolver.exe hostname [optional: DNS Server]
-
-您可以使用 **nameresolver** 來檢查應用程式依賴的主機名稱。 如此一來您可以測試是否有任何項目未正確設定，而無法與 DNS 搭配，或可能對 DNS 伺服器沒有存取權。 您可以查看您的應用程式將在主控台中使用的 DNS 伺服器，方法是查看環境變數 WEBSITE_DNS_SERVER 並 WEBSITE_DNS_ALT_SERVER。
-
-下一個工具可讓您測試主機是否可與 TCP 連線，以及連接埠組合。 此工具稱為 **tcpping**，語法如下：
-
-    tcpping.exe hostname [optional: port]
-
-**tcpping** 公用程式會讓您知道是否可以連接特定主機和連接埠。 只有在下列情況才會顯示成功：有一個應用程式監聽主機和連接埠組合，並且有網路從您的應用程式存取到指定的主機和連接埠。
-
-#### <a name="debugging-access-to-vnet-hosted-resources"></a>偵錯 VNet 裝載資源的存取
-有一些事物，可以阻止您的應用程式觸達特定的主機和連接埠。 大部分的情況下，會是下列三個情況的其中一種︰
-
-* **路線中有防火牆。** 如果路線中有防火牆，則將會達到 TCP 逾時。 此案例中 TCP 逾時值就是 21 秒。 使用 **tcpping** 工具來測試連線能力。 TCP 逾時可能是因為許多項目越過防火牆並啟動。 
-* **DNS 無法存取。** DNS 逾時值為三秒 (每部 DNS 伺服器)。 如果您有兩部 DNS 伺服器，逾時為 6 秒。 使用 nameresolver 來檢查 DNS 是否運作。 請記住，您不能使用 nslookup，因為它不會使用您的 VNet 設定使用的 DNS。 如果無法存取，您可能會有防火牆或 NSG 封鎖對 DNS 的存取，或可能已關閉。
-
-如果這些專案不會回答您的問題，請先查看如下所示的內容： 
-
-**區域 VNet 整合**
-* 您的目的地為非 RFC1918 位址，而且您沒有 WEBSITE_VNET_ROUTE_ALL 設為1
-* 是否有 NSG 封鎖來自您整合子網的輸出
-* 如果跨 ExpressRoute 或 VPN 進行，您的內部部署閘道是否已設定為將流量備份至 Azure？ 如果您可以觸達 VNet 中的端點，但不能連線到內部部署，請檢查您的路由。
-* 您有足夠的許可權可設定整合子網上的委派嗎？ 在區域 VNet 整合設定期間，您的整合子網將會委派給 Microsoft Web。 VNet 整合 UI 會自動將子網委派給 Microsoft Web。 如果您的帳戶沒有足夠的網路許可權來設定委派，您將需要可在整合子網上設定屬性以委派子網的人員。 若要手動委派整合子網，請移至 Azure 虛擬網路子網 UI，並設定適用于 Microsoft Web 的委派。 
-
-**閘道所需的 VNet 整合**
-* RFC 1918 範圍中的點對站位址範圍（10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255）？
-* 閘道是否顯示為正在入口網站中啟動？ 如果您的閘道已關閉，請重新啟動。
-* 憑證是否顯示為同步，或您是否懷疑網路設定已變更？  如果您的憑證未同步，或您懷疑 VNet 設定已變更，但未與您的 Asp 同步，則點擊 [同步網路]。
-* 如果跨 VPN 進行，內部部署閘道是否已設定為將流量備份至 Azure？ 如果您可以觸達 VNet 中的端點，但不能連線到內部部署，請檢查您的路由。
-* 您嘗試使用同時支援點對站和 ExpressRoute 的共存閘道嗎？ VNet 整合不支援共存閘道 
-
-調試網路問題是一項挑戰，因為您無法看到封鎖存取特定主機：埠組合的原因。 部分原因包括：
-
-* 您已在主機上啟動防火牆，防止從點對站 IP 範圍存取應用程式連接埠。 跨子網路通常需要公用存取權。
-* 目標主機已關閉
-* 應用程式已關閉
-* IP 或主機名稱錯誤
-* 應用程式不是接聽您預期的連接埠。 您可以在端點主機上使用 "netstat -aon"，將處理序識別碼與接聽連接埠進行比對。 
-* 您配置網路安全性群組的方式，讓這些群組防止從點對站 IP 範圍存取應用程式主機和連接埠
-
-請記住，您不知道應用程式會實際使用的位址。 它可以是整合子網或點對站位址範圍中的任何位址，因此您需要允許來自整個位址範圍的存取。 
-
-其他偵錯步驟包括：
-
-* 連線至 VNet 中的 VM，並嘗試從該處連接資源 host:port。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection**。 語法為：
-
-      test-netconnection hostname [optional: -Port]
-
-* 在 VM 上啟動應用程式，並使用**tcpping**從您的應用程式中的主控台測試該主機和埠的存取權
-
-#### <a name="on-premises-resources"></a>內部部署資源 ####
-
-如果您的應用程式無法連接內部部署資源，則請檢查您是否可以從 VNet 連接資源。 使用 **test-netconnection** PowerShell 命令來檢查是否有 TCP 存取權。 如果您的 VM 無法連線到您的內部部署資源，您的 VPN 或 ExpressRoute 連線可能未正確設定。
-
-如果 VNet 裝載的 VM 可以連接您的內部部署系統，但您的應用程式無法連接此系統，則很可能是下列其中一個原因：
-
-* 您的路由未設定您的子網或內部部署閘道中的點對站位址範圍
-* 網路安全性群組將封鎖點對站 IP 範圍的存取
-* 內部部署防火牆將封鎖來自點對站 IP 範圍的流量
-* 您正嘗試使用區域 VNet 整合功能來觸及非 RFC 1918 位址
-
-
-## <a name="automation"></a>自動化
+## <a name="automation"></a>Automation
 
 有適用于區域 VNet 整合的 CLI 支援。 若要存取下列命令，請[安裝 Azure CLI][installCLI]。 
 
@@ -328,7 +178,6 @@ ASP VNet 整合 UI 會顯示 ASP 中的應用程式所使用的所有 VNet 整�
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
 [2]: ./media/web-sites-integrate-with-vnet/vnetint-addvnet.png
 [3]: ./media/web-sites-integrate-with-vnet/vnetint-classic.png
-[4]: ./media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 [5]: ./media/web-sites-integrate-with-vnet/vnetint-regionalworks.png
 [6]: ./media/web-sites-integrate-with-vnet/vnetint-gwworks.png
 
@@ -340,7 +189,6 @@ ASP VNet 整合 UI 會顯示 ASP 中的應用程式所使用的所有 VNet 整�
 [VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
 [DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
 [V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
-[ASEintro]: environment/intro.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
@@ -348,6 +196,5 @@ ASP VNet 整合 UI 會顯示 ASP 中的應用程式所使用的所有 VNet 整�
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/

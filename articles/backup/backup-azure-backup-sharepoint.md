@@ -4,12 +4,12 @@ description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azur
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673275"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
@@ -27,7 +27,7 @@ DPM 的 Azure 備份支援下列案例：
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
@@ -69,12 +69,12 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
 
 1. 在 WFE 伺服器上，在命令提示字元中移至 [DPM 安裝位置]\bin\
 2. 輸入 ConfigureSharePoint -EnableSharePointProtection
-3. 輸入伺服器陣列系統管理員認證。 這個帳戶應該是 WFE 伺服器上本機 Administrator 群組的成員。 如果伺服器陣列系統管理員不是本機系統管理員，請授與 WFE 伺服器上的下列權限：
+3. 輸入伺服器陣列系統管理員認證。 此帳戶應該是 WFE 伺服器上本機系統管理員群組的成員。 如果伺服器陣列系統管理員不是本機管理員，請在 WFE 伺服器上授與下列許可權：
    * 授與 DPM 資料夾的 WSS_Admin_WPG 群組完整控制權 (%Program Files%\Microsoft Data Protection Manager\DPM)。
    * 將 DPM 登錄機碼的讀取權授與 WSS_Admin_WPG 群組 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager)。
 
 > [!NOTE]
-> 每當 SharePoint 伺服器陣列系統管理員認證變更時，就必須重新執行 ConfigureSharePoint.exe。
+> 每當 SharePoint 伺服器陣列系統管理員認證有變更時，您就必須重新執行 Configuresharepoint.exe。
 >
 >
 
@@ -133,7 +133,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > DPM 允許您在每天不同時間以 Azure 為目標執行兩次備份。 Azure 備份也可以利用 [Azure 備份網路節流](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)來控制尖峰和離峰時間用於備份的 WAN 頻寬。
+    > DPM 允許您在每天不同時間以 Azure 為目標執行兩次備份。 Azure 備份也可以使用[Azure 備份網路節流](backup-windows-with-mars-agent.md#enable-network-throttling)，控制尖峰和離峰時間可用於備份的 WAN 頻寬數量。
     >
     >
 11. 依選取的備份排程，請在 [ **指定線上保留原則** ] 頁面上，選取每日、每週、每月和每年備份點的保留原則。
@@ -195,7 +195,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. 選取 [指定復原選項]，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步]。
 
-    ![修復選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
+    ![復原選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
     > [!NOTE]
     > 您可以選擇調節網路頻寬使用量。 這會對生產時段的生產伺服器產生最小的影響。
@@ -232,7 +232,7 @@ DPM 會以 LocalSystem 帳戶身分執行。 若要備份 SQL Server 資料庫�
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功]。 按一下 [關閉]。
+    完成編目後，狀態會變更為 [成功]。 按一下 **關閉**。
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. 按一下 DPM [復原] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原]。

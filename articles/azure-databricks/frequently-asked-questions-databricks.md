@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971505"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671569"
 ---
-# <a name="frequently-asked-questions-about-azure-databricks"></a>關於 Azure Databricks 的常見問題集
+# <a name="frequently-asked-questions-about-azure-databricks"></a>關於 Azure Databricks 的常見問題
 
 本文列出關於 Azure Databricks 的最常見問題。 其中也會列出您在使用 Databricks 時可能遇到的一些常見問題。 如需詳細資訊，請參閱[何謂 Azure Databricks](what-is-azure-databricks.md)。 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>可以使用 Azure Key Vault 來儲存金鑰/祕密以使用於 Azure Databricks 嗎？
-可以。 您可以使用 Azure Key Vault 來儲存金鑰/祕密，以便搭配 Azure Databricks 使用。 如需詳細資訊，請參閱 [Azure Key Vault 支援的範圍](/azure/databricks/security/secrets/secret-scopes)。
+是的。 您可以使用 Azure Key Vault 來儲存金鑰/祕密，以便搭配 Azure Databricks 使用。 如需詳細資訊，請參閱 [Azure Key Vault 支援的範圍](/azure/databricks/security/secrets/secret-scopes)。
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>我可以將 Azure 虛擬網路與 Databricks 搭配使用嗎？
-可以。 您可以將 Azure 虛擬網路 (VNET) 與 Azure Databricks 搭配使用。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
+是的。 您可以將 Azure 虛擬網路 (VNET) 與 Azure Databricks 搭配使用。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>如何? 從筆記本存取 Azure Data Lake Storage 嗎？ 
 
@@ -40,11 +40,11 @@ ms.locfileid: "75971505"
 
 以下是您使用 Databricks 時可能遇到的一些問題。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題︰此訂用帳戶未註冊為使用命名空間 'Microsoft.Databricks'
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題：此訂用帳戶未註冊為使用命名空間 ' Databricks '
 
 #### <a name="error-message"></a>錯誤訊息
 
-「此訂用帳戶未註冊為可以使用命名空間 'Microsoft.Databricks'。 請參閱 https://aka.ms/rps-not-found 以了解如何註冊訂用帳戶。 (錯誤碼：MissingSubscriptionRegistration)」
+「此訂用帳戶未註冊為使用命名空間 ' Databricks '。 請參閱 https://aka.ms/rps-not-found 以了解如何註冊訂用帳戶。 (錯誤碼：MissingSubscriptionRegistration)」
 
 #### <a name="solution"></a>解決方案
 
@@ -88,11 +88,20 @@ ms.locfileid: "75971505"
 
 #### <a name="error-message"></a>錯誤訊息
 
-「雲端提供者啟動失敗：設定叢集時發生雲端提供者錯誤。 如需詳細資訊，請參閱 Databricks 指南。 Azure 錯誤碼：PublicIPCountLimitReached。 Azure 錯誤訊息：無法為此區域的此訂用帳戶建立超過 60 個以上的公用 IP 位址。」
+「雲端提供者啟動失敗：設定叢集時發生雲端提供者錯誤。 如需詳細資訊，請參閱 Databricks 指南。 Azure 錯誤碼：PublicIPCountLimitReached。 Azure 錯誤訊息：無法為此區域中的這個訂用帳戶建立超過10個公用 IP 位址。」
+
+#### <a name="background"></a>背景
+
+Databricks 叢集會在每個節點（包括驅動程式節點）上使用一個公用 IP 位址。 Azure 訂用帳戶在每個區域都有[公用 IP 位址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果叢集建立和相應增加作業會導致該區域中配置給該訂用帳戶的公用 IP 位址數目超過限制，則可能會失敗。 此限制也包含配置給非 Databricks 使用的公用 IP 位址，例如自訂使用者定義的 Vm。
+
+一般而言，叢集只會在作用中時使用公用 IP 位址。 不過，即使在其他叢集終止之後，`PublicIPCountLimitReached` 錯誤仍可能會在短時間內繼續發生。 這是因為在終止叢集時，Databricks 會暫時快取 Azure 資源。 資源快取是根據設計，因為它可大幅降低叢集啟動的延遲，以及在許多常見案例中自動調整。
 
 #### <a name="solution"></a>解決方案
 
-Databricks 叢集會在每個節點上使用一個公用 IP 位址。 如果您的訂用帳戶已經使用其所有公用 IP，您應該[要求增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 選擇 [配額] 作為 [問題類型]，並選擇 [網路：ARM] 作為 [配額類型]。 在 [詳細資料] 中，申請提高公用 IP 位址配額。 例如，如果您目前的限制是 60，而您想要建立具有 100 個節點的叢集，請申請將限制提高到 160。
+如果您的訂用帳戶已達到給定區域的公用 IP 位址限制，則您應該執行下列其中一項或其他動作。
+
+- 在不同的 Databricks 工作區中建立新的叢集。 另一個工作區必須位於尚未到達訂用帳戶的公用 IP 位址限制的區域中。
+- [要求增加您的公用 IP 位址限制](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 選擇 [配額] 作為 [問題類型]，並選擇 [網路：ARM] 作為 [配額類型]。 在 [詳細資料] 中，申請提高公用 IP 位址配額。 例如，如果您目前的限制是 60，而您想要建立具有 100 個節點的叢集，請申請將限制提高到 160。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>問題：設定叢集時發生第二種類型的雲端提供者啟動失敗 (MissingSubscriptionRegistration)
 
@@ -123,4 +132,3 @@ Azure Databricks 會與 Azure Active Directory 整合。 您可藉由指定 Azur
 
 - [快速入門：開始使用 Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [何謂 Azure Databricks？](what-is-azure-databricks.md)
-

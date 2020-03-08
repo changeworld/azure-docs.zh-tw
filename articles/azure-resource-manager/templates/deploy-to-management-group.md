@@ -2,23 +2,29 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228104"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894882"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
-您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在管理群組層級建立資源。 您可以使用管理群組層級部署來採取對該層級有意義的動作，例如指派[角色型存取控制](../../role-based-access-control/overview.md)或套用[原則](../../governance/policy/overview.md)。
+您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在下列位置建立資源：
+
+* [訂用帳戶層級](deploy-to-subscription.md)
+* 管理群組層級（本文涵蓋）
+* [租使用者層級](deploy-to-tenant.md)
+
+您可以使用管理群組層級部署來採取對該層級有意義的動作，例如指派[角色型存取控制](../../role-based-access-control/overview.md)或套用[原則](../../governance/policy/overview.md)。
 
 ## <a name="supported-resources"></a>支援的資源
 
 您可以在管理群組層級部署下列資源類型：
 
-* [部署](/azure/templates/microsoft.resources/deployments)
+* [部署](/azure/templates/microsoft.resources/deployments)-適用于部署至訂用帳戶或資源群組的嵌套範本。
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

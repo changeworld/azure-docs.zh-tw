@@ -3,12 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397047"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673245"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -77,4 +77,4 @@ ms.locfileid: "78397047"
 使用下列文章進行：</br>
 [備份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [備份 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)</br>
-[備份 Windows Server](backup-configure-vault.md)
+[備份 Windows Server](backup-windows-with-mars-agent.md)

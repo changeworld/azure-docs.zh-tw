@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 01/30/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc48daed4f20af7c275d651820cf9b17a8e24d41
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938321"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669112"
 ---
 >[!NOTE]
 >我們正努力新增其他區域。 我們會將新增的區域加到此清單中。
@@ -41,7 +41,7 @@ ms.locfileid: "76938321"
 
 **亞太地區**
 * 澳大利亞中部 2
-* 澳洲東部
+* 澳大利亞東部
 * 澳大利亞東南部
 * 東亞
 * 日本東部
@@ -54,3 +54,11 @@ ms.locfileid: "76938321"
 **中東與非洲**
 * 南非北部
 * 阿拉伯聯合大公國中部
+
+**Azure Government**
+* US DoD 中部
+* US DoD 東部
+* US Gov 亞利桑那州
+* US Gov 愛荷華州
+* US Gov 德克薩斯州
+* US Gov 維吉尼亞州

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851391"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>疑難排解停機期間啟動/停止 VM 解決方案
 
@@ -203,7 +203,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 若要檢查您的執行身分帳戶是否已正確設定，請移至 Azure 入口網站中的 [自動化帳戶]，然後在 [帳戶設定] 下選取 [執行身分帳戶]。 這裡您會看到執行身分帳戶的狀態，如果執行身分帳戶設定不正確或已過期，狀態將會顯示。
 
-如果您的執行身分帳戶[設定錯誤](../manage-runas-account.md#misconfiguration)，則應刪除並重新建立執行身分帳戶。
+如果您的執行身分帳戶設定不正確，您應該刪除並重新建立您的執行身分帳戶。 請參閱[管理 Azure 自動化執行身分帳戶](../manage-runas-account.md)。
 
 如果執行身分帳戶的憑證已過期，請遵循[自我簽署憑證](../manage-runas-account.md#cert-renewal)中所列的步驟來更新憑證。
 

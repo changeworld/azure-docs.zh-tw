@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967519"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673584"
 ---
 # <a name="azure-media-player-overview"></a>Azure 媒體播放器概觀
 
@@ -26,8 +26,6 @@ Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器�
 
 > [!NOTE]
 > Widevine 加密內容需要 HTTPS 播放。
-
-[開始免費試用](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>使用 Azure 媒體播放器示範頁面
 
@@ -53,7 +51,7 @@ Azure 媒體播放器很容易設定。 只需要一些時間從媒體服務帳�
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟
 

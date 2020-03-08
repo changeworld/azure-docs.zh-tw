@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: c189ad1a6b6ebc13b71ca547176af27a43a78a7d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640566"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673447"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>使用適用於 Azure CLI 的 IoT 擴充功能來管理 Azure IoT 中樞裝置
 
@@ -23,7 +23,9 @@ ms.locfileid: "68640566"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[適用于 Azure CLI 的 IoT 延伸](https://github.com/Azure/azure-iot-cli-extension)模組是新的開放原始碼 IoT 擴充功能, 可新增至[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)的功能。 Azure CLI 包含與 Azure Resource Manager 和管理端點互動的命令。 例如，您可以使用 Azure CLI 來建立 Azure VM 或 IoT 中樞。 CLI 擴充功能可讓 Azure 服務強化 Azure CLI，讓您能存取其他服務專屬的功能。 IoT 擴充可讓 IoT 開發人員命令列存取所有的 IoT 中樞、IoT Edge 和 IoT 中樞裝置佈建服務功能。
+[適用于 Azure CLI 的 iot 擴充](https://github.com/Azure/azure-iot-cli-extension)功能是開放原始碼的 iot 延伸模組，可新增至[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)的功能。 Azure CLI 包含與 Azure Resource Manager 和管理端點互動的命令。 例如，您可以使用 Azure CLI 來建立 Azure VM 或 IoT 中樞。 CLI 擴充功能可讓 Azure 服務強化 Azure CLI，讓您能存取其他服務專屬的功能。 IoT 擴充可讓 IoT 開發人員命令列存取所有的 IoT 中樞、IoT Edge 和 IoT 中樞裝置佈建服務功能。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,7 +35,7 @@ ms.locfileid: "68640566"
 | 對應項的所需屬性    | 讓裝置進入特定狀態，例如將 LED 設定為綠色，或將遙測傳送間隔設定為 30 分鐘。         |
 | 對應項的報告屬性   | 取得裝置的報告狀態。 例如，裝置會回報 LED 現在正閃爍不停。                                    |
 | 對應項標記                  | 在雲端儲存裝置特定的中繼資料。 例如，販賣機的部署位置。                         |
-| 裝置對應項查詢        | 查詢所有裝置 twins, 以使用任意條件來抓取那些 twins, 例如識別可供使用的裝置。 |
+| 裝置對應項查詢        | 查詢所有裝置 twins，以使用任意條件來抓取那些 twins，例如識別可供使用的裝置。 |
 
 如需差異的詳細說明和使用這些選項的相關指引，請參閱[裝置對雲端通訊指引](iot-hub-devguide-d2c-guidance.md)和[雲端對裝置通訊指引](iot-hub-devguide-c2d-guidance.md)。
 
@@ -47,9 +49,9 @@ ms.locfileid: "68640566"
 
 搭配各種管理選項執行 Azure CLI 和適用於 Azure CLI 的 IoT 擴充功能。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
-* 完成[Raspberry Pi 線上](iot-hub-raspberry-pi-web-simulator-get-started.md)模擬器教學課程或其中一個裝置教學課程;例如,[使用 Node.js Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 這些專案涵蓋下列需求:
+* 完成[Raspberry Pi 線上](iot-hub-raspberry-pi-web-simulator-get-started.md)模擬器教學課程或其中一個裝置教學課程;例如，[使用 Node.js Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 這些專案涵蓋下列需求：
 
   - 有效的 Azure 訂用帳戶。
   - 位於您訂用帳戶中的 Azure IoT 中樞。
@@ -59,12 +61,11 @@ ms.locfileid: "68640566"
 
 * [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)
 
-<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
+* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az –version` 進行驗證。
 
-* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 您的 Azure CLI 版本至少必須是 2.0.24 或更新版本。 使用 `az –version` 進行驗證。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-* 安裝 IoT 擴充功能。 最簡單的方式就是執行 `az extension add --name azure-cli-iot-ext`。 [IoT 擴充功能讀我檔案](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)說明安裝此擴充功能的數種方式。
+* 安裝 IoT 擴充功能。 最簡單的方式就是執行 `az extension add --name azure-iot`。 [IoT 擴充功能讀我檔案](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)說明安裝此擴充功能的數種方式。
 
 ## <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 
@@ -102,7 +103,7 @@ az iot hub device-twin update -n <your hub name> \
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-其中一個對應項報告屬性為 $metadata。 $lastUpdated, 它會顯示裝置應用程式上次更新其報告屬性集的時間。
+其中一個對應項報告屬性為 $metadata。 $lastUpdated，它會顯示裝置應用程式上次更新其報告屬性集的時間。
 
 ## <a name="device-twin-tags"></a>裝置對應項標記
 

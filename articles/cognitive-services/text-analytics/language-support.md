@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206169"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899502"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文字分析 API 支援的語言和區域
 
@@ -47,7 +47,7 @@ ms.locfileid: "77206169"
 > [!NOTE]
 > 如需命名實體辨識（NER） v3 公開預覽的詳細語言支援，請參閱[命名實體類型](named-entity-types.md)。
 
-| Language              | 語言代碼 | 情感 | 主要片語 | 具名實體辨識 | 實體連結 |       注意        |
+| 語言              | 語言代碼 | 情感 | 主要片語 | 具名實體辨識 | 實體連結 |       注意事項        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | 阿拉伯文                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | 捷克文                 |     `cs`      |           |             |           ✔ \*           |                |                    |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668665"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -102,7 +102,7 @@ Azure 儲存體總管 1.10. x 無法用於查看診斷記錄。 若要查看記�
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>在 Azure 入口網站中儲存體總管
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure 入口網站中的儲存體總管
 
 尚不支援 Acl。
 
@@ -111,6 +111,14 @@ Azure 儲存體總管 1.10. x 無法用於查看診斷記錄。 若要查看記�
 ## <a name="thirdpartyapplications"></a>協力廠商應用程式
 
 使用 REST Api 來工作的協力廠商應用程式，如果您將其與呼叫 Blob Api 的 Data Lake Storage Gen2 應用程式搭配使用，將會繼續工作。
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>存取控制清單（ACL）和匿名讀取權限
+
+如果已授與容器的[匿名讀取權限](storage-manage-access-to-resources.md)，則 acl 不會影響該容器或該容器中的檔案。
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure 儲存體 Blob （WASB）驅動程式
+
+目前，與使用 WASB 驅動程式相關聯的幾個問題，以及具有階層式命名空間的帳戶。 我們建議您在工作負載中使用[Azure Blob 檔案系統（ABFS）](data-lake-storage-abfs-driver.md)驅動程式。 
 
 
 

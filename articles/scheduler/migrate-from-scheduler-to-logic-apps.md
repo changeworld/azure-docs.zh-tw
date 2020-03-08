@@ -6,20 +6,22 @@ ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, estfan
 ms.topic: article
-ms.date: 09/23/2019
-ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.date: 02/29/2020
+ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912004"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899126"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>將 Azure 排程器作業移轉至 Azure Logic Apps
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請遵循這篇文章，儘快移至 Azure Logic Apps。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請遵循這篇文章，儘快遷移至 Azure Logic Apps。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 本文說明如何使用 Azure Logic Apps 而非 Azure 排程器來建立自動化工作流程，藉以排程單次和週期性作業。 當您使用 Logic Apps 建立排程作業時，您會獲得下列權益：
 
@@ -45,19 +47,19 @@ ms.locfileid: "75912004"
 
 ## <a name="schedule-one-time-jobs"></a>排程單次作業
 
-您可以只建立單一邏輯應用程式來執行多個單次作業。 
+您可以只建立單一邏輯應用程式來執行多個單次作業。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，於邏輯應用程式設計工具中建立空白的邏輯應用程式。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，於邏輯應用程式設計工具中建立空白的邏輯應用程式。
 
    若要了解基本步驟，請遵循[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜尋方塊中，輸入「當 http 要求」作為篩選條件。 從觸發程序清單中，選取此觸發程序：**收到 HTTP 要求時** 
+1. 在 [搜尋] 方塊中，輸入 `when a http request` 以尋找要求觸發程式。 從觸發程序清單中，選取此觸發程序：**收到 HTTP 要求時**
 
    ![新增「要求」觸發程序](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
-1. 針對要求觸發程序，您可以選擇性地提供 JSON 結構描述，協助邏輯應用程式設計工具了解來自傳入要求的輸入結構，並讓您稍後可在工作流程中更輕鬆地選取輸出。
+1. 針對要求觸發程式，您可以選擇性地提供 JSON 架構，以協助邏輯應用程式設計工具瞭解撥入電話中所包含的輸入的結構，並讓您更輕鬆地在工作流程中選取這些輸出。
 
-   若要指定結構描述，請在 [要求本文 JSON 結構描述] 方塊中輸入結構描述，例如： 
+   在 [**要求本文 JSON 架構**] 方塊中，輸入架構，例如：
 
    ![要求結構描述](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
@@ -69,23 +71,30 @@ ms.locfileid: "75912004"
 
       ![範例承載](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. 在觸發程式底下，選取 **[下一步]** 。 
+      ```json
+      {
+         "runat": "2012-08-04T00:00Z",
+         "endpoint": "https://www.bing.com"
+      }
+      ```
 
-1. 在搜尋方塊中，輸入「延遲直到」作為篩選條件。 在動作清單下方，選取此動作：**延遲直到**
+1. 在觸發程式底下，選取 **[下一步]** 。
+
+1. 在搜尋方塊中，輸入 `delay until` 作為篩選條件。 在動作清單下方，選取此動作：**延遲直到**
 
    此動作會暫停您的邏輯應用程式工作流程，直到指定的日期和時間為止。
 
    ![新增「延遲直到」動作](./media/migrate-from-scheduler-to-logic-apps/delay-until.png)
 
-1. 輸入您想要啟動邏輯應用程式工作流程的時間戳記。 
+1. 輸入您想要啟動邏輯應用程式工作流程的時間戳記。
 
-   當您按一下 [時間戳記] 方塊內部時，即會出現動態內容清單，讓您可以選擇性地選取觸發程序的輸出。
+   當您按一下 [**時間戳記]** 方塊內部時，動態內容清單隨即出現，讓您可以選擇性地選取觸發程式的輸出。
 
    ![提供「延遲直到」詳細資料](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. 從[數百個現成可用的連接器](../connectors/apis-list.md)中選取，以新增您想要執行的任何其他動作。 
+1. 從[數百個現成可用的連接器](../connectors/apis-list.md)中選取，以新增您想要執行的任何其他動作。
 
-   例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作： 
+   例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作：
 
    ![HTTP 動作](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
@@ -93,20 +102,19 @@ ms.locfileid: "75912004"
 
    ![儲存您的邏輯應用程式](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
-   當您第一次儲存邏輯應用程式時，邏輯應用程式要求觸發程序的端點 URL 會出現在 [HTTP POST URL] 方塊中。 
-   當您想要呼叫邏輯應用程式，並將輸入傳送至您的邏輯應用程式進行處理時，請使用此 URL 作為呼叫目的地。
+   當您第一次儲存邏輯應用程式時，邏輯應用程式要求觸發程序的端點 URL 會出現在 [HTTP POST URL] 方塊中。 當您想要呼叫邏輯應用程式，並將輸入傳送至您的邏輯應用程式進行處理時，請使用此 URL 作為呼叫目的地。
 
    ![儲存要求觸發程序端點 URL](./media/migrate-from-scheduler-to-logic-apps/request-endpoint-url.png)
 
-1. 複製並儲存此端點 URL，讓您稍後可以傳送手動要求來觸發邏輯應用程式。 
+1. 複製並儲存此端點 URL，讓您稍後可以傳送手動要求來觸發邏輯應用程式。
 
 ## <a name="start-a-one-time-job"></a>啟動單次作業
 
-若要手動執行或觸發單次作業，請針對邏輯應用程式的要求觸發程序傳送對端點 URL 的呼叫。 在此呼叫中，指定要傳送的輸入或承載，而您可能已在稍早藉由指定結構描述來說明此項。 
+若要手動執行或觸發單次作業，請針對邏輯應用程式的要求觸發程序傳送對端點 URL 的呼叫。 在此呼叫中，指定要傳送的輸入或承載，而您可能已在稍早藉由指定結構描述來說明此項。
 
 例如，您可以使用 Postman 應用程式，利用與此範例類似的設定來建立 POST 要求，然後選取 [**傳送**] 來提出要求。
 
-| 要求方法 | URL | body | headers |
+| 要求方法 | URL | body | 標頭 |
 |----------------|-----|------|---------|
 | **POST** | <*endpoint-URL*> | **未經處理** <p>**JSON(application/json)** <p>在 [**原始**] 方塊中，輸入您想要在要求中傳送的承載。 <p>**附註**：此設定會自動設定 **Headers** \(標頭\) 值。 | **索引鍵**：Content-Type <br>**值**：application/json |
 |||||
@@ -127,13 +135,13 @@ ms.locfileid: "75912004"
 
 在 Logic Apps 中，每個單次作業都會當成單一邏輯應用程式回合執行個體來執行。 若要取消單次作業，您可以在邏輯應用程式 REST API 中使用[工作流程回合 - 取消](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel) \(英文\)。 當您將呼叫傳送給觸發程序時，請提供[工作流程回合識別碼](#workflow-run-id)。
 
-## <a name="schedule-recurring-jobs"></a>排程週期性工作
+## <a name="schedule-recurring-jobs"></a>排程週期性作業
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，於邏輯應用程式設計工具中建立空白的邏輯應用程式。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，於邏輯應用程式設計工具中建立空白的邏輯應用程式。
 
    若要了解基本步驟，請遵循[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜尋方塊中，輸入 "recurrence" 作為篩選條件。 從觸發程序清單中，選取此觸發程序：**週期性** 
+1. 在搜尋方塊中，輸入 "recurrence" 作為篩選條件。 從觸發程序清單中，選取此觸發程序：**週期性**
 
    ![新增「週期性」觸發程序](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -145,7 +153,7 @@ ms.locfileid: "75912004"
 
 1. 從[數百個現成可用](../connectors/apis-list.md)的中選取，以新增您想要的其他動作。 在觸發程式底下，選取 **[下一步]** 。 尋找並選取您想要的動作。
 
-   例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作： 
+   例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作：
 
    ![HTTP 動作](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
@@ -173,7 +181,7 @@ ms.locfileid: "75912004"
 
 在 Azure 排程器中，如果預設動作無法執行，您可以執行替代的動作來解決錯誤狀況。 在 Azure Logic Apps 中，您也可以執行相同的工作。
 
-1. 在邏輯應用程式設計工具中，于您要處理的動作上方，將指標移至步驟之間的箭號，然後選取 [**新增平行分支**]。 
+1. 在邏輯應用程式設計工具中，于您要處理的動作上方，將指標移至步驟之間的箭號，然後選取 [**新增平行分支**]。
 
    ![新增平行分支](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -204,13 +212,13 @@ ms.locfileid: "75912004"
 **答**：所有排程器工作集合和作業都會停止執行，而且會從系統中刪除。
 
 **問**：我是否需要先備份或執行任何其他工作，然後才能將排程器作業移轉至 Logic Apps？ <br>
-**答**：最佳做法是一律備份您的工作。 請先檢查您所建立的邏輯應用程式均如預期般執行，然後再刪除或停用排程器作業。 
+**答**：最佳做法是一律備份您的工作。 請先檢查您所建立的邏輯應用程式均如預期般執行，然後再刪除或停用排程器作業。
 
 **問**：是否有工具可協助我將作業從排程器移轉至 Logic Apps？ <br>
 **答**：每個排程器作業都是唯一的，因此沒有一體適用的工具。 不過，根據您的需求，您可以[編輯此腳本，將 Azure 排程器作業遷移至 Azure Logic Apps](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)。
 
 **問**：哪裡可以取得移轉排程器作業的支援？ <br>
-**答**：以下是一些取得支援的方式： 
+**答**：以下是一些取得支援的方式：
 
 **Azure 入口網站**
 
@@ -237,4 +245,3 @@ ms.locfileid: "75912004"
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Logic Apps 建立定期執行的工作和工作流程](../connectors/connectors-native-recurrence.md)
-* [教學課程：使用以排程為基礎的邏輯應用程式來檢查流量](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

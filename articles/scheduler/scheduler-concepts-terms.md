@@ -1,26 +1,27 @@
 ---
-title: 概念、字詞和實體 - Azure 排程器 | Microsoft Docs
+title: 概念、術語與實體
 description: 了解 Azure 排程器中的概念、術語及實體階層，包括工作和工作集合。
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300960"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898580"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 排程器中的概念、術語及實體
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 ## <a name="entity-hierarchy"></a>實體階層
 
@@ -70,14 +71,14 @@ Azure 排程器支援多個作業類型：
 * 服務匯流排佇列作業，適用於使用服務匯流排佇列的工作負載
 * 服務匯流排主題佇列作業，適用於使用服務匯流排主題的工作負載
 
-## <a name="job-definition"></a>作業定義
+## <a name="job-definition"></a>工作定義
 
 概括來說，排程器作業包含下列基本部分：
 
 * 要在工作計時器啟動時執行的動作
-* 選擇性：執行作業的時間
-* 選擇性：重複作業的時機和頻率
-* 選擇性：主要動作失敗時所執行的錯誤動作
+* 選用：執行作業的時間
+* 選用：重複作業的時機和頻率
+* 選用：主要動作失敗時要執行的錯誤動作
 
 作業也包含系統提供的資料，例如已排定的下一次作業執行時間。 作業的程式碼定義是採用 JavaScript 物件標記法 (JSON) 格式的物件，其中包含以下元素：
 
@@ -147,7 +148,7 @@ Azure 排程器支援多個作業類型：
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>動作
 
 排程器作業會根據指定的排程來執行主要**動作**。 排程器支援 HTTP、儲存體佇列、服務匯流排佇列和服務匯流排主題動作。 如果主要**動作**失敗，排程器可以執行次要的 [**errorAction**](#erroraction) 來處理錯誤。 **action** 物件會描述以下元素：
 
@@ -245,15 +246,15 @@ Azure 排程器支援多個作業類型：
 },
 ```
 
-| 屬性 | 必要項 | Value | 描述 | 
+| 屬性 | 必要項 | 值 | 描述 | 
 |----------|----------|-------|-------------| 
 | **frequency** | 在使用 **recurrence** 時是必要的 | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 發生次數之間的時間單位 | 
 | **interval** | 否 | 1 到 1000 (含) | 正整數，根據 **frequency** 來決定每次發生作業的間隔時間單位數 | 
-| **schedule** | 否 | 視情況而異 | 更複雜且進階的排程詳細資料。 請參考 **hours**、**minutes**、**weekDays**、**months** 和 **monthDays** | 
+| **schedule** | 否 | 非固定 | 更複雜且進階的排程詳細資料。 請參考 **hours**、**minutes**、**weekDays**、**months** 和 **monthDays** | 
 | **hours** | 否 | 1 到 24 | 包含小時標記的陣列，表示要執行作業的時間 | 
 | **minutes** | 否 | 0到59 | 包含分鐘標記的陣列，表示要執行作業的時間 | 
 | **months** | 否 | 1 到 12 | 包含月份的陣列，表示要執行作業的時間 | 
-| **monthDays** | 否 | 視情況而異 | 包含月份中某幾天的陣列，表示要執行作業的時間 | 
+| **monthDays** | 否 | 非固定 | 包含月份中某幾天的陣列，表示要執行作業的時間 | 
 | **weekDays** | 否 | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | 包含一週中某幾天的陣列，表示要執行作業的時間 | 
 | **計數** | 否 | <無> | 循環次數。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
 | **endTime** | 否 | <無> | 停止循環的日期和時間。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
@@ -275,7 +276,7 @@ Azure 排程器支援多個作業類型：
 },
 ```
 
-| 屬性 | 必要項 | Value | 描述 | 
+| 屬性 | 必要項 | 值 | 描述 | 
 |----------|----------|-------|-------------| 
 | **retryType** | 是 | **固定**、**無** | 決定要指定重試原則 (**固定**) 或不要指定重試原則 (**無**)。 | 
 | **retryInterval** | 否 | PT30S | 指定重試嘗試之間的間隔和頻率，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)。 最小值為 15 秒，而最大值為 18 個月。 | 
@@ -297,7 +298,7 @@ Azure 排程器支援多個作業類型：
 
 <a name="status"></a>
 
-## <a name="status"></a>狀態
+## <a name="status"></a>status
 
 作業啟動之後，排程器透過 **status** 物件傳回作業狀態的相關資訊，該物件只能由排程器控制。 不過，您可以在 **job** 物件中找到 **status** 物件。 以下是作業狀態包含的資訊：
 
@@ -307,7 +308,7 @@ Azure 排程器支援多個作業類型：
 * 失敗次數 (如果有的話)
 * 錯誤次數 (如果有的話)
 
-例如:
+例如，
 
 ```json
 "status": {
@@ -319,11 +320,9 @@ Azure 排程器支援多個作業類型：
 }
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
-* [概念、術語及實體階層](scheduler-concepts-terms.md)
 * [建置複雜的排程和進階週期](scheduler-advanced-complexity.md)
-* [限制、配額、預設值及錯誤碼](scheduler-limits-defaults-errors.md)
 * [Azure 排程器 REST API 參考](/rest/api/scheduler)
 * [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
+* [限制、配額、預設值及錯誤碼](scheduler-limits-defaults-errors.md)

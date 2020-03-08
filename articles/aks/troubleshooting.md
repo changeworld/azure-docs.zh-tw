@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390261"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892763"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -384,7 +384,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12.0-1.12。1 | 0755 |
 | 1.12.2 和更新版本 | 0777 |
 
-如果使用 Kuberetes version 1.8.5 版或更高版本的叢集，並使用儲存類別動態建立持續性磁片區，則可以在儲存類別物件上指定掛接選項。 下列範例會設定 0777：
+如果使用 Kubernetes version 1.8.5 版或更高版本的叢集，並使用儲存類別動態建立持續性磁片區，則可以在儲存類別物件上指定掛接選項。 下列範例會設定 0777：
 
 ```yaml
 kind: StorageClass
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 此錯誤的原因是上游叢集自動調整程式競爭情況，其中叢集自動調整程式的值會與實際上在叢集中的不同。 若要離開此狀態，只需要停用再重新啟用叢集[自動調整程式][cluster-autoscaler]。
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>緩慢的磁片附件，GetAzureDiskLun 需要10到15分鐘的時間，而且您會收到錯誤訊息
+
+在**1.15.0 之前**的 Kubernetes 版本中，您可能會收到錯誤，例如「**錯誤 WaitForAttach 找不到磁片的 Lun**」。  解決此問題的因應措施是等候大約15分鐘，然後重試。
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

@@ -3,12 +3,12 @@ title: 使用 Azure 資料箱的離線備份
 description: 瞭解如何使用 Azure 資料箱，從 MARS 代理程式離線將大型初始備份資料植入復原服務保存庫。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196275"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672958"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱 Azure 備份離線備份
 
@@ -124,7 +124,7 @@ Azure PowerShell 也可以使用 msi 檔案來安裝。 若要移除它，請使
 
 1. 請務必卸載任何先前安裝的 MARS 代理程式。
 1. 從[這個網站](https://aka.ms/azurebackup_agent)下載最新的 MARS 代理程式。
-1. 執行*marsagentinstaller.exe*，並*只*執行將[代理程式安裝](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
+1. 執行*marsagentinstaller.exe*，並*只*執行將[代理程式安裝](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
 
    > [!NOTE]
    > 復原服務保存庫必須與 Azure 資料箱作業位於相同的訂用帳戶中。
@@ -307,7 +307,7 @@ Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建�
     >[!NOTE]
     > 若要取得 Azure 使用者識別碼，請執行下列其中一項動作：
     >
-    >* 從 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` 命令。
+    >* 從 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
     > * 移至登錄路徑*Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows server\ Azure Backup\DbgSettings\OnlineBackup* ，其名稱為*CurrentUserId*。
 
 6. 以滑鼠右鍵按一下上一個步驟中新增的字串，然後選取 [**修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 **[確定]** 。

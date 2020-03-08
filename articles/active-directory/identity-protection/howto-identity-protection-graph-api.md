@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b9bae1bd901325efdefeaa4db53df2d6b42b44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275896"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671629"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph
 
 Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API 的寄居地。 有四個 Api 會公開有風險的使用者和登入的相關資訊。第一個 API **riskDetection**可讓您查詢 Microsoft Graph，以取得使用者和登入連結的風險偵測和相關資訊的清單。 第二個 API **riskyUsers** 可讓您查詢 Microsoft Graph 中，Identity Protection 偵測為風險之使用者的相關資訊。 第三個 API **signIn** 可讓您查詢 Microsoft Graph 中，具有與風險狀態、詳細資料以及層級相關特定屬性之 Azure AD 登入的相關資訊。 第四個 API **identityRiskEvents**可讓您查詢 Microsoft Graph，以取得[風險](../reports-monitoring/concept-risk-events.md)偵測清單和相關資訊。 IdentityRiskEvents API 將于2020年1月10日淘汰;我們建議您改用**riskDetections** API。 本文可讓您開始連接到 Microsoft Graph 並查詢這些 Api。 如需深入的簡介、完整文件以及 Graph 總管的存取權，請參閱 [Microsoft Graph 網站](https://graph.microsoft.io/)或這些 API 的特定參考文件：
 
-* [riskDetection API](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-* [IDENTITYRISKEVENTS API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) *將于2020年1月10日淘汰*
+* [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-beta)
+* [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [signIn API](/graph/api/resources/signin?view=graph-rest-beta)
+* [IDENTITYRISKEVENTS API](/graph/api/resources/identityriskevent?view=graph-rest-beta) *將于2020年1月10日淘汰*
 
 ## <a name="connect-to-microsoft-graph"></a>連線至 Microsoft Graph
 
@@ -74,7 +74,7 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 
    1. 在 [登入 URL] 文字方塊中，輸入 `http://localhost`。
 
-   1. 按一下頁面底部的 [新增]。
+   1. 按一下 [建立]。
 1. 若要開啟 [設定] 頁面，請在應用程式清單中，按一下新建立的應用程式註冊。 
 1. 複製 [應用程式識別碼]。
 
@@ -124,7 +124,7 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 
    1. 在 [**金鑰描述**] 文字方塊中，輸入描述（例如， *Azure AD 風險偵測*）。
    1. 在 [持續時間] 中選取 [1 年]。
-   1. 按一下 [檔案]。
+   1. Haga clic en **Guardar**.
    1. 複製金鑰值，然後將它貼到安全的位置。   
    
    > [!NOTE]
@@ -224,7 +224,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 恭喜，您剛剛完成了對 Microsoft Graph 的第一次呼叫！  
 現在您可以查詢身分識別風險偵測，並在您看到 [適合] 時使用資料。
 
-若要深入了解 Microsoft Graph 以及如何使用 Graph API 來建置應用程式，請查看[說明文件](https://docs.microsoft.com/graph/overview)，而在 [Microsoft Graph 網站](https://developer.microsoft.com/graph)上還能找到更多資訊。 
+若要深入了解 Microsoft Graph 以及如何使用 Graph API 來建置應用程式，請查看[說明文件](/graph/overview)，而在 [Microsoft Graph 網站](https://developer.microsoft.com/graph)上還能找到更多資訊。 
 
 如需相關資訊，請參閱：
 

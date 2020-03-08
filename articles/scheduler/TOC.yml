@@ -6,15 +6,15 @@
       href: scheduler-intro.md
 - name: 開始使用
   items:
-    - name: 建立及管理作業 - 入口網站
-      href: scheduler-get-started-portal.md
+    - name: 建立及管理排程 - Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: 從排程器遷移到 Logic Apps
       href: migrate-from-scheduler-to-logic-apps.md
 - name: 概念
   items:
     - name: 概念、術語與實體
       href: scheduler-concepts-terms.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 規劃和設計
       items:
@@ -52,7 +52,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
     - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/scheduler/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

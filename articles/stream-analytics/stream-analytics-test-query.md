@@ -6,20 +6,20 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369859"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898394"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>使用樣本資料測試 Azure 串流分析作業
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在入口網站中測試 Azure 串流分析作業
 
-在 Azure 串流分析中，您可以測試查詢，而不需要啟動或停止您的作業。 您可以針對來自輸入接收的傳入資料，或從 Azure 入口網站上的本機檔案上傳的範例資料來測試查詢。 您也可以從本機範例資料或[Visual Studio](stream-analytics-live-data-local-testing.md)和[Visual Studio Code](visual-studio-code-local-run-live-input.md)中的即時資料，在本機測試查詢。
+在 Azure 串流分析中，您可以測試查詢，而不需要啟動或停止您的作業。 您可以針對串流來源的傳入資料測試查詢，或從 Azure 入口網站上的本機檔案上傳範例資料。 您也可以從本機範例資料或[Visual Studio](stream-analytics-live-data-local-testing.md)和[Visual Studio Code](visual-studio-code-local-run-live-input.md)中的即時資料，在本機測試查詢。
 
-## <a name="sample-incoming-data-from-input"></a>輸入的範例傳入資料
+## <a name="automatically-sample-incoming-data-from-input"></a>自動從輸入取樣傳入資料
 
 Azure 串流分析會自動從您的串流輸入提取事件。 您可以針對預設範例執行查詢，或設定範例的特定時間範圍。
 
@@ -81,7 +81,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以針對�
 
    ![Azure 串流分析上傳範例檔案](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. 上傳您的本機檔案來測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 [確定]。
+5. 上傳您的本機檔案來測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 **[確定]** 。
 
    ![Azure 串流分析上傳範例檔案](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
@@ -98,6 +98,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以針對�
 10. 確認瀏覽器中顯示的結果之後，您就可以**開始**工作。
 
 ## <a name="next-steps"></a>後續步驟
+* [使用串流分析建立 IoT 解決方案](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics)：本教學課程將引導您建立端對端解決方案，其中包含的資料產生器會模擬收費亭中的流量。
 
 * [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 

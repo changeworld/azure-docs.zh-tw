@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252069"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403225"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題
 
@@ -28,11 +28,11 @@ ms.locfileid: "78252069"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>我可以使用 Resource Manager 範本建立 Azure Container Registry 嗎？
 
-是的。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
+是。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中的映射是否有安全性弱點掃描？
 
-是的。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
+是。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何? 使用 Azure Container Registry 設定 Kubernetes 嗎？
 
@@ -241,7 +241,7 @@ ACR 支援提供不同許可權層級的[自訂角色](container-registry-roles.
 
 * 若要提取映射：
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 例如，Fedora 28 伺服器具有下列 docker daemon 選項：
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 `--signature-verification=false` 遺失，`docker pull` 會失敗並出現類似以下的錯誤：
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 若要解決此錯誤：
-1. 將選項 `--signature-verification=false` 新增至 Docker daemon 設定檔 `/etc/sysconfig/docker`。 例如，
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+1. 將選項 `--signature-verification=false` 新增至 Docker daemon 設定檔 `/etc/sysconfig/docker`。 例如：
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. 執行下列命令來重新開機 Docker daemon 服務：
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 您可以藉由執行 `man dockerd`來找到 `--signature-verification` 的詳細資料。
 
@@ -438,7 +435,7 @@ curl $redirect_url
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何? 在 Windows 上收集 HTTP 追蹤？
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 - 在 fiddler 中啟用解密 HTTPs： <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - 啟用 Docker 以透過 Docker ui 使用 proxy： <https://docs.docker.com/docker-for-windows/#proxies>
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 如果您將本機源資料夾傳遞至 `az acr build` 命令，預設會從上傳的封裝中排除 `.git` 資料夾。 您可以使用下列設定來建立 `.dockerignore` 檔案。 它會指示命令還原已上傳套件中 `.git` 下的所有檔案。 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 此設定也適用于 `az acr run` 命令。
 

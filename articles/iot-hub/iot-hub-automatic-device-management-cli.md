@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429296"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669447"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 自動進行 IoT 裝置和模組管理
 
@@ -36,8 +36,12 @@ Azure IoT 中樞中的自動裝置管理，可將管理大型裝置機群的許�
 ## <a name="cli-prerequisites"></a>CLI 先決條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。 
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須是 2.0.24 或更新版本。 使用 `az –-version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。 
-* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
+
+* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az –-version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。 
+
+* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-cli) \(英文\)。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>執行 twins
 
@@ -102,7 +106,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大型裝置機群的許�
 }
 ```
 
-模組的計量查詢也類似于裝置的查詢，但您選取 `devices.modules`的 `moduleId`。 例如： 
+模組的計量查詢也類似于裝置的查詢，但您選取 `devices.modules`的 `moduleId`。 例如， 
 
 ```json
 {

@@ -1,25 +1,26 @@
 ---
-title: 方案與計費 - Azure 排程器
+title: 方案和計費
 description: 了解 Azure 排程器的方案與計費
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300859"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898482"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Azure 排程器的方案與計費
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 ## <a name="job-collection-plans"></a>作業集合方案
 
@@ -27,12 +28,12 @@ ms.locfileid: "71300859"
 
 | 作業集合方案 | 每項集合作業數上限 | 週期上限 | 每個訂用帳戶的作業集合數上限 | 限制 | 
 |:--- |:--- |:--- |:--- |:--- |
-| **標準** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 100 個標準作業集合。 | 存取排程器的完整功能集 | 
+| **Standard** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 100 個標準作業集合。 | 存取排程器的完整功能集 | 
 | **P10 Premium** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 10,000 個 P10 的進階作業集合。 如需更多集合數，請<a href="mailto:wapteams@microsoft.com">與我們連絡</a>。 | 存取排程器的完整功能集 |
 | **P20 Premium** | 每個集合 1000 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 5,000 個 P20 的進階作業集合。 如需更多集合數，請<a href="mailto:wapteams@microsoft.com">與我們連絡</a>。 | 存取排程器的完整功能集 |
 |||||| 
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>Pricing
 
 如需定價詳細資料，請參閱[排程器定價](https://azure.microsoft.com/pricing/details/scheduler/)。
 
@@ -80,8 +81,7 @@ P20 進階作業集合提供與 P10 進階作業集合相同的功能，但也�
 
   排程器服務會根據標準或進階的作用中作業集合數目，加以計費。
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
 * [Azure 排程器概念、術語及實體階層](scheduler-concepts-terms.md)
 * [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)

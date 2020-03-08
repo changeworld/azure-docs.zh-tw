@@ -1,25 +1,26 @@
 ---
-title: 連出驗證 - Azure 排程器
+title: 輸出驗證
 description: 了解如何針對 Azure 排程器設定或移除連出驗證
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300853"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898501"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 排程器的連出驗證
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 Azure 排程器作業可能必須呼叫要求驗證的服務，例如其他 Azure 服務、Salesforce.com、Facebook 與安全自訂網站。 被呼叫的服務可以決定排程器作業是否能存取要求的資源。 
 
@@ -158,7 +159,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>基本
+## <a name="basic"></a>Basic
 
 ### <a name="request-body---basic"></a>要求主體 - 基本
 
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
 * [Azure 排程器概念、術語及實體階層](scheduler-concepts-terms.md)
 * [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)
-* [Azure 排程器 REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure 排程器 REST API 參考](/rest/api/scheduler)
 * [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)

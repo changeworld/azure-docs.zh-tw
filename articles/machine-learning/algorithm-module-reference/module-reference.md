@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920088"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673381"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的演算法 & 模組參考（預覽）
 
@@ -57,7 +57,7 @@ ms.locfileid: "77920088"
 | R 語言 | 撰寫程式碼並將它內嵌在模組中，以將 R 與您的管線整合。 | [執行 R 腳本](execute-r-script.md) |
 | 文字分析 | 提供專門用來處理結構化和非結構化文字的計算工具。 | [從文字解壓縮 N 語法特徵](extract-n-gram-features-from-text.md) <br/> [功能雜湊](feature-hashing.md) <br/> [前置處理文字](preprocess-text.md) |
 | 建議 | 建立建議模型。 | [評估推薦](evaluate-recommender.md) <br/> [評分 SVD 推薦](score-svd-recommender.md) <br/> [訓練 SVD 推薦](train-SVD-recommender.md) |
-| 異常偵測 | 建立異常偵測模型。 | [以 PCA 為基礎的異常偵測](pca-based-anomaly-detection.md) <br/> [定型異常偵測模型](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>錯誤訊息
 

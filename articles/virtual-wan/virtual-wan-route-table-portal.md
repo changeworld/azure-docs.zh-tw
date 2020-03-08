@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612355"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402941"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>建立 Nva 的虛擬 WAN 中樞路由表： Azure 入口網站
 
-本文說明如何透過網路虛擬裝置（NVA），將流量從連線至虛擬 WAN 中樞的分支（內部部署網站）引導到輪輻 Vnet。
+本文說明如何透過網路虛擬裝置（NVA），將流量從連線至虛擬 WAN 中樞的分支（內部部署網站）轉移到輪輻虛擬網路（VNet）。
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -29,15 +29,16 @@ ms.locfileid: "75612355"
 
     * 必須將私人 IP 位址指派給 NVA 網路介面。
 
-    * NVA 不會部署在虛擬中樞內。 它必須部署在不同的 VNet。
+    * NVA 不會部署在虛擬中樞內。 它必須部署在不同的虛擬網路中。
 
-    *  NVA VNet 可能會有一或多個連線到它的虛擬網路。 在本文中，我們將 NVA VNet 稱為「間接輪輻 VNet」。 這些 Vnet 可以使用 VNet 對等互連連線到 NVA VNet。 Vnet 對等互連連結是由上圖中的黑色箭號（vnet 1、Vnet 2 和 NVA Vnet）所描述。
-*  您已建立2個 Vnet。 它們將用來做為輪輻 Vnet。
+    *  NVA 虛擬網路可能會有一或多個連線到它的虛擬網路。 在本文中，我們將 NVA 虛擬網路稱為「間接輪輻 VNet」。 這些虛擬網路可以使用 VNet 對等互連連線到 NVA VNet。 Vnet 對等互連連結是由上圖中的黑色箭號（vnet 1、VNet 2 和 NVA VNet）所描述。
+*  您已建立兩個虛擬網路。 它們將用來做為輪輻 Vnet。
 
-    * 在此練習中，VNet 輪輻位址空間為： VNet1： 10.0.2.0/24 和 VNet2： 10.0.3.0/24。 如果您需要如何建立 VNet 的資訊，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。
+    * VNet 輪輻位址空間包括： VNet1： 10.0.2.0/24 和 VNet2： 10.0.3.0/24。 如果您需要如何建立虛擬網路的資訊，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。
 
     * 確定任何 Vnet 中都沒有虛擬網路閘道。
-    * 針對此設定，這些 Vnet 不需要閘道子網。
+
+    * Vnet 不需要閘道子網。
 
 ## <a name="signin"></a>1. 登入
 
@@ -45,7 +46,7 @@ ms.locfileid: "75612355"
 
 ## <a name="vwan"></a>2. 建立虛擬 WAN
 
-建立虛擬 WAN。 基於此練習的目的，您可以使用下列值：
+建立虛擬 WAN。 使用下列範例值：
 
 * **虛擬 WAN 名稱：** myVirtualWAN
 * **資源群組：** testRG
@@ -55,7 +56,7 @@ ms.locfileid: "75612355"
 
 ## <a name="hub"></a>3. 建立中樞
 
-建立中樞。 基於此練習的目的，您可以使用下列值：
+建立中樞。 使用下列範例值：
 
 * **位置：** 美國西部
 * **名稱：** westushub
@@ -65,7 +66,7 @@ ms.locfileid: "75612355"
 
 ## <a name="route"></a>4. 建立和套用中樞路由表
 
-使用中樞路由表來更新中樞。 基於此練習的目的，您可以使用下列值：
+使用中樞路由表來更新中樞。 使用下列範例值：
 
 * **輪輻 VNet 位址空間：** （VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
 * **DMZ NVA 網路介面私人 IP 位址：** 10.0.4。5
@@ -79,17 +80,17 @@ ms.locfileid: "75612355"
 
 ## <a name="connections"></a>5. 建立 VNet 連線
 
-從每個間接輪輻 VNet （VNet1 和 VNet2）建立 Vnet 連線到中樞。 這些 Vnet 連線是由上圖中的藍色箭號所描述。 然後，從 NVA VNet 建立 Vnet 連線至中樞（圖中的黑色箭號）。 
+建立從每個間接輪輻 VNet （VNet1 和 VNet2）到中樞的虛擬網路連線。 這些虛擬網路連線是由上圖中的藍色箭號所描述。 然後，從 NVA VNet 建立 VNet 連線至中樞（圖中的黑色箭號）。
 
  在此步驟中，您可以使用下列值：
 
-| VNet 名稱| 連接名稱|
+| 虛擬網路名稱| 連接名稱|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-針對您想要連線的每個 VNet，重複執行下列程式。
+針對您想要連線的每個虛擬網路，重複執行下列程式。
 
 1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
 2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。

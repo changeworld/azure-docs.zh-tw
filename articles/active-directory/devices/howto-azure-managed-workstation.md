@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561940"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672611"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>部署安全且受 Azure 管理的工作站
 
@@ -29,7 +29,7 @@ ms.locfileid: "74561940"
 > [!NOTE]
 > 視需要套用任何設定檔。 您可以在 Microsoft Intune 中指派，以移至另一個設定檔。
 
-| 設定檔 | 低 | 增強 | 高 | 特製化 | 施加 | 隔離式 |
+| 設定檔 | 低 | 增強 | 高 | Specialized | 施加 | 外掛式 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Azure AD 中的使用者 | 是 | 是 | 是 | 是 | 是 | 是 |
 | Intune 管理 | 是 | 是 | 是 | 是 | 是 | 是 |
@@ -57,14 +57,14 @@ ms.locfileid: "74561940"
 
 Azure Active Directory （Azure AD）可管理您系統管理員工作站的使用者、群組和裝置。 使用[系統管理員帳戶](../users-groups-roles/directory-assign-admin-roles.md)啟用身分識別服務和功能。
 
-當您建立安全的工作站系統管理員帳戶時，會向目前的工作站公開該帳戶。 請確定您使用已知的安全裝置來執行此初始設定和所有全域設定。 若要降低第一次體驗的攻擊風險，請考慮遵循[指導方針來防止惡意程式碼感染](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection)。
+當您建立安全的工作站系統管理員帳戶時，會向目前的工作站公開該帳戶。 請確定您使用已知的安全裝置來執行此初始設定和所有全域設定。 若要降低第一次體驗的攻擊風險，請考慮遵循[指導方針來防止惡意程式碼感染](/windows/security/threat-protection/intelligence/prevent-malware-infection)。
 
 至少需要您的系統管理員才能進行多重要素驗證。 如需指導方針，請參閱[部署雲端式 MFA](../authentication/howto-mfa-getstarted.md) 。
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD 使用者和群組
 
 1. 從 [Azure 入口網站] 中，流覽至 [ **Azure Active Directory** > **使用者**] > [**新使用者**]。
-1. 遵循[建立使用者教學](https://docs.microsoft.com/Intune/quickstart-create-user)課程中的步驟，建立您的裝置系統管理員。
+1. 遵循[建立使用者教學](/Intune/quickstart-create-user)課程中的步驟，建立您的裝置系統管理員。
 1. 輸入：
 
    * **名稱**-安全工作站系統管理員
@@ -127,7 +127,7 @@ Azure Active Directory （Azure AD）可管理您系統管理員工作站的使�
 1. 將 [ **MDM 使用者範圍**] 設定變更為 [**全部**]。
 1. 選取 [儲存]。
 
-這些步驟可讓您使用 Intune 管理任何裝置。 如需詳細資訊，請參閱[Intune 快速入門：設定 Windows 10 裝置的自動註冊](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment)。 在未來的步驟中，您會建立 Intune 設定和合規性原則。
+這些步驟可讓您使用 Intune 管理任何裝置。 如需詳細資訊，請參閱[Intune 快速入門：設定 Windows 10 裝置的自動註冊](/Intune/quickstart-setup-auto-enrollment)。 在未來的步驟中，您會建立 Intune 設定和合規性原則。
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD 條件式存取
 
@@ -137,7 +137,7 @@ Azure AD 條件式存取可協助將特殊許可權的系統管理工作限制�
 
 ### <a name="configure-enrollment-status"></a>設定註冊狀態
 
-請務必確定您的安全工作站是受信任的全新裝置。 在購買新裝置時，您可以堅持將其設定為[Windows 10 專業版（S 模式](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode)），以在供應鏈管理期間限制暴露于弱點。 當您從供應商收到裝置之後，您可以使用 Autopilot 從 S 模式進行變更。 下列指引提供套用轉換程式的詳細資料。
+請務必確定您的安全工作站是受信任的全新裝置。 在購買新裝置時，您可以堅持將其設定為[Windows 10 專業版（S 模式](/Windows/deployment/Windows-10-pro-in-s-mode)），以在供應鏈管理期間限制暴露于弱點。 當您從供應商收到裝置之後，您可以使用 Autopilot 從 S 模式進行變更。 下列指引提供套用轉換程式的詳細資料。
 
 為確保裝置在使用前已完全設定，Intune 提供了一種方法來**封鎖裝置使用，直到安裝所有應用程式和設定檔為止**。
 
@@ -162,7 +162,7 @@ Azure AD 條件式存取可協助將特殊許可權的系統管理工作限制�
 
 1. 選取 [下一步]。
 
-   * 針對 [**部署模式]** ，選擇 [**自我部署（預覽）** ]。 具有此設定檔的裝置會與註冊裝置的使用者相關聯。 需要使用者認證才能註冊裝置。 請務必注意，在**自我部署**模式中部署裝置，可讓您在共用模型中部署膝上型電腦。 第一次將裝置指派給使用者之前，將不會進行任何使用者指派。 因此，在使用者指派完成之前，將不會啟用任何使用者原則（例如 BitLocker）。 如需如何登入受保護裝置的詳細資訊，請參閱[選取的設定檔](https://docs.microsoft.com/intune/device-profile-assign)。
+   * 針對 [**部署模式]** ，選擇 [**自我部署（預覽）** ]。 具有此設定檔的裝置會與註冊裝置的使用者相關聯。 需要使用者認證才能註冊裝置。 請務必注意，在**自我部署**模式中部署裝置，可讓您在共用模型中部署膝上型電腦。 第一次將裝置指派給使用者之前，將不會進行任何使用者指派。 因此，在使用者指派完成之前，將不會啟用任何使用者原則（例如 BitLocker）。 如需如何登入受保護裝置的詳細資訊，請參閱[選取的設定檔](/intune/device-profile-assign)。
    * [**加入 Azure AD 做為**] 方塊應該會顯示**Azure AD 已加入**，且呈現灰色。
    * 選取您的語言（地區）、[使用者帳戶類型] [**標準**]。 
 
@@ -175,7 +175,7 @@ Azure AD 條件式存取可協助將特殊許可權的系統管理工作限制�
 1. 選取 [下一步]。
 1. 選取 [建立] 以建立設定檔。 現在可以將 Autopilot 部署設定檔指派給裝置。
 
-Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使用者體驗。 在我們的部署範例中，我們會說明一種模型，其中會大量部署受保護的裝置，並可供共用，但第一次使用時，會將裝置指派給使用者。 如需詳細資訊，請參閱[Intune Autopilot 裝置註冊](https://docs.microsoft.com/intune/device-enrollment)。
+Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使用者體驗。 在我們的部署範例中，我們會說明一種模型，其中會大量部署受保護的裝置，並可供共用，但第一次使用時，會將裝置指派給使用者。 如需詳細資訊，請參閱[Intune Autopilot 裝置註冊](/intune/device-enrollment)。
 
 ### <a name="configure-windows-update"></a>設定 Windows Update
 
@@ -203,7 +203,7 @@ Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使�
 1. 選取 [建立]。
 1. 在 [**指派**] 索引標籤上，新增**安全的工作站**群組。
 
-如需 Windows Update 原則的詳細資訊，請參閱[原則 CSP-更新](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update)。
+如需 Windows Update 原則的詳細資訊，請參閱[原則 CSP-更新](/windows/client-management/mdm/policy-csp-update)。
 
 ### <a name="windows-defender-atp-intune-integration"></a>Windows Defender ATP Intune 整合
 
@@ -223,18 +223,18 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 1. 將 **[將 windows 裝置版本10.0.15063 和更新版本連接到 Windows DEFENDER ATP]** 設定為 [**開啟**]。
 1. 選取 [儲存]。
 
-如需詳細資訊，請參閱[Windows Defender Advanced 威脅防護](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。
+如需詳細資訊，請參閱[Windows Defender Advanced 威脅防護](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。
 
 ### <a name="finish-workstation-profile-hardening"></a>完成工作站設定檔強化
 
 若要成功完成解決方案的強化，請下載並執行適當的腳本。 尋找您所需**設定檔層級**的下載連結：
 
-| 設定檔 | 下載位置 | 檔案名稱 |
+| 設定檔 | 下載位置 | 檔名 |
 | --- | --- | --- |
 | 低安全性 | N/A | N/A |
-| 增強的安全性 | https://aka.ms/securedworkstationgit | 增強-工作站-Windows10-（1809） ps1 |
+| 加強的安全性 | https://aka.ms/securedworkstationgit | 增強-工作站-Windows10-（1809） ps1 |
 | 高安全性 | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-（1809） ps1 |
-| 特製化 | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 （1803） SecurityBaseline. ps1 |
+| Specialized | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 （1803） SecurityBaseline. ps1 |
 | 特殊化合規性 * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC Windows10 （1803） ps1 |
 | 施加 | https://aka.ms/securedworkstationgit | 安全-工作站-Windows10-（1809）-SecurityBaseline. ps1 |
 
@@ -245,13 +245,13 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 * 您可以在這裡找到腳本所建立的 Intune 裝置設定設定檔： **Azure 入口網站** > **Microsoft Intune** > **裝置**設定 > **配置**檔。
 * 您可以在這裡找到腳本所建立的 Intune 裝置合規性原則： **Azure 入口網站** > **Microsoft Intune** > **裝置合規性** > **原則**。
 
-若要查看腳本所做的變更，您可以匯出設定檔。 如此一來，您可以依照[SECCON 檔](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)中的說明，判斷可能需要的額外強化。
+若要查看腳本所做的變更，您可以匯出設定檔。 如此一來，您可以依照[SECCON 檔](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)中的說明，判斷可能需要的額外強化。
 
 從[DeviceConfiguration GiuHub 存放庫](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration)執行 Intune 資料匯出腳本 `DeviceConfiguration_Export.ps1`，以匯出所有目前的 intune 設定檔。
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>其他設定和強化以考慮
 
-依照此處的指導方針，您已部署安全的工作站。 不過，您也應該考慮其他控制項。 例如：
+依照此處的指導方針，您已部署安全的工作站。 不過，您也應該考慮其他控制項。 例如，
 
 * 限制存取其他瀏覽器
 * 允許輸出 HTTP
@@ -260,7 +260,7 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>設定防火牆設定服務提供者（CSP）中的規則
 
-您可以視需要對您的允許和封鎖端點進行輸入和輸出規則的管理進行其他變更。 當您繼續強化安全工作站時，您可以放寬拒絕所有輸入和輸出流量的限制。 您可以新增允許的輸出網站，以包含一般和信任的網站。 如需詳細資訊，請參閱[防火牆設定服務](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp)。
+您可以視需要對您的允許和封鎖端點進行輸入和輸出規則的管理進行其他變更。 當您繼續強化安全工作站時，您可以放寬拒絕所有輸入和輸出流量的限制。 您可以新增允許的輸出網站，以包含一般和信任的網站。 如需詳細資訊，請參閱[防火牆設定服務](/Windows/client-management/mdm/firewall-csp)。
 
 限制的 URL 流量管理包括：
 
@@ -290,7 +290,7 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 1. 在**Azure 入口網站**流覽至**Microsoft Intune** > **用戶端應用程式** > **應用**程式 > **新增**。
 1. 在 [**應用程式類型**] 底下，選擇 [**企業**營運]。
 1. 在 [**應用程式套件**檔案] 底下，從解壓縮的位置選取 `GoogleChromeStandaloneEnterprise64.msi` 檔案，然後選取 **[確定]** 。
-1. 在 [**應用程式資訊**] 底下，提供描述和發行者。 選取 [確定]。
+1. 在 [**應用程式資訊**] 底下，提供描述和發行者。 選取 **[確定]** 。
 1. 選取 [新增]。
 1. **在 [指派**] 索引標籤上，選取 [**指派類型**] 下的 [已**註冊裝置可用**]
 1. 在 [**包含的群組**] 底下，新增安全的**工作站**群組。
@@ -302,7 +302,7 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 
 在安全模式中，應用程式安裝僅限於 Intune 公司入口網站。 不過，安裝入口網站需要 Microsoft Store 的存取權。 在您的受保護解決方案中，您可以透過離線模式讓所有裝置都能使用公司入口網站。
 
-受 Intune 管理的[公司入口網站](https://docs.microsoft.com/Intune/store-apps-company-portal-app)複本可讓您依需求存取額外的工具，以向下推送至受保護工作站的使用者。
+受 Intune 管理的[公司入口網站](/Intune/store-apps-company-portal-app)複本可讓您依需求存取額外的工具，以向下推送至受保護工作站的使用者。
 
 您可能需要安裝 Windows 32 位應用程式或部署需要特殊準備的其他應用程式。 在這種情況下， [Microsoft win32 內容準備工具](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)可以提供立即可用的 `.intunewin` 格式檔案進行安裝。
 
@@ -341,7 +341,7 @@ Microsoft 腳本中心的[SetDesktopBackground](https://gallery.technet.microsof
 1. 提供腳本的**名稱**，並指定**腳本位置**。
 1. 選取 [設定]。
    1. 將 **[使用登入的認證執行此腳本**] 設定為 **[是]** 。
-   1. 選取 [確定]。
+   1. 選取 **[確定]** 。
 1. 選取 [建立]。
 1. 選取 [**指派**] > **選取 [群組**]。
    1. 將安全性群組安全的**工作站**新增。
@@ -371,11 +371,11 @@ Microsoft 腳本中心的[SetDesktopBackground](https://gallery.technet.microsof
 
 ## <a name="assign-devices"></a>指派裝置
 
-若要指派裝置和使用者，您必須將[選取的設定檔](https://docs.microsoft.com/intune/device-profile-assign)對應到您的安全性群組。 所有需要服務許可權的新使用者也必須新增到安全性群組。
+若要指派裝置和使用者，您必須將[選取的設定檔](/intune/device-profile-assign)對應到您的安全性群組。 所有需要服務許可權的新使用者也必須新增到安全性群組。
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>使用 Sentinel 和 Windows Defender ATP 來監視及回應安全性事件
 
-若要監視安全的工作站部署，可以藉由啟用 [Sentinel] 並利用[威脅和弱點管理](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt)來完成，指引不會提供完整的威脅搜尋，但可提供良好的方式來監視及回應潛在的安全性事件。
+若要監視安全的工作站部署，可以藉由啟用 [Sentinel] 並利用[威脅和弱點管理](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt)來完成，指引不會提供完整的威脅搜尋，但可提供良好的方式來監視及回應潛在的安全性事件。
 
 我們會使用**Azure Sentinel**來執行下列動作： 
 
@@ -412,7 +412,7 @@ Sentinel 監視需要設定您的資料來源（例如 Azure AD 的連接器）�
 * 在調查期間使用儀表板來識別機器層級的弱點
 * 向外推送補救至 Intune
 
-設定您的[DEFENDER ATP 儀表板](https://securitycenter.windows.com/machines)。 使用[威脅 & 弱點管理儀表板總覽](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)中的指引。
+設定您的[DEFENDER ATP 儀表板](https://securitycenter.windows.com/machines)。 使用[威脅 & 弱點管理儀表板總覽](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)中的指引。
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>使用 Microsoft Monitoring Agent 監視應用程式活動（MMA）
 從特製化的工作站開始，應用程式保險箱會啟用以監視工作站上的應用程式活動。 若要將監視整合到 Log Analytics 工作區中，必須遵循 MMA 代理程式和設定。 
@@ -428,7 +428,7 @@ Sentinel 監視需要設定您的資料來源（例如 Azure AD 的連接器）�
 1. 提供腳本的**名稱**，並指定**腳本位置**。
 1. 選取 [設定]。
    1. 將 **[使用登入的認證執行此腳本**] 設定為 **[是]** 。
-   1. 選取 [確定]。
+   1. 選取 **[確定]** 。
 1. 選取 [建立]。
 1. 選取 [**指派**] > **選取 [群組**]。
    1. 將安全性群組安全的**工作站**新增。
@@ -449,18 +449,18 @@ Sentinel 監視需要設定您的資料來源（例如 Azure AD 的連接器）�
 
 ## <a name="monitoring"></a>監視
 
-* 瞭解如何[使用 Azure Sentinel 偵測威脅](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)
-* [使用 Azure Sentinel 調查事件](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases)
-* [在 Azure Sentinel 中設定自動威脅回應](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook)
-* 瞭解如何審查您的[曝光分數](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)
-* 審查[安全性建議](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)
-* 管理安全性[補救](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation)
-* 管理[端點偵測和回應](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
-* 使用[Intune 設定檔監視](https://docs.microsoft.com/intune/device-profile-monitor)來監視設定檔。
+* 瞭解如何[使用 Azure Sentinel 偵測威脅](/azure/sentinel/tutorial-detect-threats)
+* [使用 Azure Sentinel 調查事件](/azure/sentinel/tutorial-investigate-cases)
+* [在 Azure Sentinel 中設定自動威脅回應](/azure/sentinel/tutorial-respond-threats-playbook)
+* 瞭解如何審查您的[曝光分數](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)
+* 審查[安全性建議](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)
+* 管理安全性[補救](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation)
+* 管理[端點偵測和回應](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+* 使用[Intune 設定檔監視](/intune/device-profile-monitor)來監視設定檔。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Microsoft Intune](https://docs.microsoft.com/intune/index)。
+* 深入瞭解[Microsoft Intune](/intune/index)。
 * 瞭解[Azure AD](../index.yml)。
-* 使用[Microsoft Defender Advanced 威脅防護](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* 探索[Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+* 使用[Microsoft Defender Advanced 威脅防護](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+* 探索[Azure Sentinel](/azure/sentinel/)

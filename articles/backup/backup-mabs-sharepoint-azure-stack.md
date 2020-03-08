@@ -3,12 +3,12 @@ title: 備份 Azure Stack 上的 SharePoint 伺服器陣列
 description: 使用 Azure 備份伺服器來備份和還原 Azure Stack 上的 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583209"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673018"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>備份 Azure Stack 上的 SharePoint 伺服器陣列
 
@@ -26,7 +26,7 @@ MABS 的 Azure 備份支援下列案例：
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定您已[安裝並備妥 Azure 備份伺服器](backup-mabs-install-azure-stack.md)來保護工作負載。
 
@@ -59,12 +59,12 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
 
 1. 在 WFE 伺服器上，在命令提示字元中移至 [MABS 安裝位置]\bin\
 2. 輸入 ConfigureSharePoint -EnableSharePointProtection
-3. 輸入伺服器陣列系統管理員認證。 這個帳戶應該是 WFE 伺服器上本機 Administrator 群組的成員。 如果伺服器陣列管理員不是本機系統管理員，請在 WFE 伺服器上授與下列許可權：
+3. 輸入伺服器陣列系統管理員認證。 此帳戶應該是 WFE 伺服器上本機系統管理員群組的成員。 如果伺服器陣列管理員不是本機系統管理員，請在 WFE 伺服器上授與下列許可權：
    * 授與 WSS_Admin_WPG 群組 DPM 資料夾 (%Program Files%\Microsoft Azure Backup\DPM) 的完整控制權。
    * 將 DPM 登錄機碼的讀取權授與 WSS_Admin_WPG 群組 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager)。
 
 > [!NOTE]
-> 每當 SharePoint 伺服器陣列系統管理員認證變更時，就必須重新執行 ConfigureSharePoint.exe。
+> 每當 SharePoint 伺服器陣列系統管理員認證有變更時，您就必須重新執行 Configuresharepoint.exe。
 >
 >
 
@@ -123,7 +123,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS 可以從當時可用的最新磁碟備份點開始，為 Azure 最多提供兩個每日備份。 Azure 備份也可以利用 [Azure 備份網路節流](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)來控制尖峰和離峰時間用於備份的 WAN 頻寬。
+    > MABS 可以從當時可用的最新磁碟備份點開始，為 Azure 最多提供兩個每日備份。 Azure 備份也可以利用 [Azure 備份網路節流](backup-windows-with-mars-agent.md#enable-network-throttling)來控制尖峰和離峰時間用於備份的 WAN 頻寬。
     >
     >
 11. 依選取的備份排程，請在 [ **指定線上保留原則** ] 頁面上，選取每日、每週、每月和每年備份點的保留原則。
@@ -185,7 +185,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. 選取 [指定復原選項]，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步]。
 
-    ![修復選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
+    ![復原選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
     > [!NOTE]
     > 您可以選擇調節網路頻寬使用量。 這會對生產時段的生產伺服器產生最小的影響。
@@ -222,7 +222,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功]。 按一下 [關閉]。
+    完成編目後，狀態會變更為 [成功]。 按一下 **關閉**。
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. 按一下 MABS [復原] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原]。
@@ -230,7 +230,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此時，依照本文前述的復原步驟，從磁碟復原 SharePoint 內容資料庫。
 
-## <a name="faqs"></a>常見問題集
+## <a name="faqs"></a>FAQ
 
 問：如果使用 SQL AlwaysOn (使用磁碟上保護) 設定 SharePoint，我是否能將 SharePoint 項目復原到原始位置？<br>
 答：可以，項目可以復原到原始的 SharePoint 網站。

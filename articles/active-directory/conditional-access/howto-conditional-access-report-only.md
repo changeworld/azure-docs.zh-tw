@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186077"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671865"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>在僅限報表模式中設定條件式存取原則（預覽）
 
@@ -48,8 +48,8 @@ View report-只會產生 Azure AD 登入記錄檔。
 
 若要使用新的條件式存取深入解析活頁簿來查看條件式存取原則的匯總影響，您必須將 Azure 監視器與 Azure AD 整合，並匯出登入記錄。 設定此整合的步驟有兩個： 
 
-1. [註冊 Azure 監視器訂用帳戶，並建立工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
-1. [將登入記錄從 Azure AD 匯出至 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
+1. [註冊 Azure 監視器訂用帳戶，並建立工作區](/azure/azure-monitor/learn/quick-create-workspace)。
+1. [將登入記錄從 Azure AD 匯出至 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
 
 Azure 監視器定價的詳細資訊可在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)上找到。 若要估計成本、設定每日上限或自訂資料保留期限，請參閱[使用 Azure 監視器記錄來管理使用量和成本](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)一文。
 

@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449672"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671999"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 轉譯
 
@@ -32,7 +32,7 @@ ms.locfileid: "75449672"
 
 試用 Azure Batch 轉譯的最佳方式，是直接使用 Batch Explorer 應用程式，或從用戶端應用程式外掛程式叫用該應用程式；這對於不是開發人員和 Azure 專家的使用者而言，也是最簡單的方式。
 
-## <a name="using-batch-explorer"></a>使用 Batch 總管
+## <a name="using-batch-explorer"></a>使用 Batch Explorer
 
 如需使用 Batch Explorer 執行轉譯的逐步教學課程，請參閱 [Blender 教學課程](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)。
 
@@ -48,17 +48,18 @@ Batch Explorer 可搭配使用完整的範本集，讓您能夠針對各種不�
 
 所有存在於 Marketplace 轉譯 VM 映像上的應用程式都有適當的範本可供使用。  每個應用程式都有多個範本，包括適用於 CPU 和 GPU 集區、Windows 和 Linux 集區的集區範本，而作業範本則包含全畫幅或並排顯示 Blender 轉譯和 V-Ray 分散式轉譯。 提供的範本集將隨著時間而擴充，以因應其他 Batch 功能的需求，例如集區自動調整。
 
-您也可以從頭開始或藉由修改提供的範本來產生自訂範本。 在 Batch Explorer 的 [資源庫] 區段中選取 [本機範本] 項目，即可使用自訂範本。
+您也可以從頭開始或藉由修改提供的範本來產生自訂範本。 在 Batch Explorer 的 [資源庫] 區段中選取 [本機範本] 專案，即可使用自訂範本。
 
 ### <a name="file-system-and-data-movement"></a>檔案系統和資料移動
 
-Batch Explorer 中的 [資料] 區段可用來在本機檔案系統與 Azure 儲存體帳戶之間複製檔案。
+Batch Explorer 中的 [資料] 區段可讓您在本機檔案系統和 Azure 儲存體帳戶之間複製檔案。
 
 ## <a name="client-application-plug-ins"></a>用戶端應用程式外掛程式
 
 某些用戶端應用程式有適用的外掛程式。  這些外掛程式可直接從應用程式建立集區和作業，或叫用 Batch Explorer。
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

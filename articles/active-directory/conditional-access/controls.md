@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671835"
 ---
 # <a name="custom-controls-preview"></a>自訂控制項 (預覽)
 
-自訂控制項是 Azure Active Directory Premium P1 版本的一項功能。 使用自訂控制項時，系統會將使用者重新導向到相容的服務，以滿足 Azure Active Directory 之外的進一步需求。 為了滿足此控制項，系統會將使用者的瀏覽器重新導向至外部服務，執行任何必要的驗證或確認活動，再將瀏覽器重新導向回到 Azure Active Directory。 Azure Active Directory 會驗證回應，如果使用者已成功驗證或驗證，使用者會繼續在條件式存取流程中執行。
+自訂控制項是 Azure Active Directory Premium P1 版本的一項功能。 使用自訂控制項時，系統會將使用者重新導向到相容的服務，以滿足 Azure Active Directory 之外的進一步需求。 為了滿足此控制項，會將使用者的瀏覽器重新導向至外部服務、執行任何必要的驗證或驗證活動，然後重新導向回到 Azure Active Directory。 Azure Active Directory 會驗證回應，如果使用者已成功驗證或驗證，使用者會繼續在條件式存取流程中執行。
 
 這些控制項允許使用特定外部或自訂服務作為條件式存取控制，並且通常會擴充條件式存取的功能。
 
@@ -45,15 +45,15 @@ ms.locfileid: "77620719"
 
 自訂控制項無法搭配身分識別保護的自動化使用，需要多重要素驗證，或在特殊許可權身分識別管理員（PIM）中提升角色。
 
-複製 JSON 資料並貼到相關文字方塊中。 除非您明確地了解您要進行的變更，否則請勿變更 JSON。 進行變更可能會讓提供者與 Microsoft 之間的連線中斷，進而可能將您的帳戶鎖定，讓您和您的使用者無法使用。
+複製 JSON 資料並貼到相關文字方塊中。 除非您明確瞭解您所進行的變更，否則請勿對 JSON 進行任何變更。 進行變更可能會讓提供者與 Microsoft 之間的連線中斷，進而可能將您的帳戶鎖定，讓您和您的使用者無法使用。
 
 建立自訂控制項的選項位於 [**條件式存取**] 頁面的 [**管理**] 區段中。
 
-![控制](./media/controls/82.png)
+![控制項](./media/controls/82.png)
 
 按一下 [新增自訂控制項] 隨即會開啟刀鋒視窗，裡面有文字方塊可供輸入控制項的 JSON 資料。  
 
-![控制](./media/controls/81.png)
+![控制項](./media/controls/81.png)
 
 ## <a name="deleting-custom-controls"></a>刪除自訂控制項
 
@@ -67,22 +67,10 @@ ms.locfileid: "77620719"
 
 若要編輯自訂控制項，您必須先刪除目前的控制項，然後使用更新後的資訊建立新的控制項。
 
-## <a name="session-controls"></a>工作階段控制項
-
-工作階段控制項可讓您限制雲端應用程式內的體驗。 工作階段控制項是由雲端應用程式強制執行，並依賴 Azure AD 對應用程式提供有關工作階段的其他資訊。
-
-![控制](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>使用應用程式強制執行限制
-
-您可以使用這個控制項，要求 Azure AD 將裝置資訊傳遞至所選的雲端應用程式。 裝置資訊可讓雲端應用程式知道連線是否從符合規範或已加入網域的裝置起始。 此控制項僅支援 SharePoint Online 和 Exchange Online 作為選取的雲端應用程式。 選取後，雲端應用程式會使用裝置資訊來提供使用者有限或完整的體驗 (視裝置狀態而定)。
-
-若要深入了解，請參閱：
-
-- [啟用 SharePoint Online 的有限存取](https://aka.ms/spolimitedaccessdocs)
-- [啟用 Exchange Online 的有限存取](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您想要知道如何設定條件式存取原則，請參閱[利用 Azure Active Directory 條件式存取來取得特定應用程式的 MFA](app-based-mfa.md)。
-- 如果您已準備好設定您環境的條件式存取原則，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+
+- [僅限報表模式](concept-conditional-access-report-only.md)
+
+- [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917770"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672640"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要的重新整理權杖？
 
@@ -33,7 +33,7 @@ ms.locfileid: "77917770"
 * **Azure AD CloudAP 外掛程式**： CloudAP 架構上建立的 Azure AD 特定外掛程式，可在 Windows 登入期間使用 Azure AD 來驗證使用者認證。
 * **AZURE AD WAM 外掛程式**： WAM 架構上建立的 Azure AD 特定外掛程式，可讓 SSO 應用程式依賴 Azure AD 進行驗證。
 * **Dsreg**： Windows 10 上的 Azure AD 特定元件，可處理所有裝置狀態的裝置註冊程式。
-* **信賴平臺模組**（tpm）： TPM 是內建于裝置的硬體元件，可為使用者和裝置密碼提供硬體型安全性功能。 如需更多詳細資料，請參閱可[信賴平臺模組技術總覽](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview)一文。
+* **信賴平臺模組**（tpm）： TPM 是內建于裝置的硬體元件，可為使用者和裝置密碼提供硬體型安全性功能。 如需更多詳細資料，請參閱可[信賴平臺模組技術總覽](/windows/security/information-protection/tpm/trusted-platform-module-overview)一文。
 
 ## <a name="what-does-the-prt-contain"></a>PRT 包含哪些內容？
 
@@ -48,7 +48,7 @@ PRT 是從 Azure AD 傳送的不透明 blob，其內容對任何用戶端元件�
 
 ## <a name="how-is-a-prt-issued"></a>PRT 如何發行？
 
-裝置註冊是 Azure AD 中以裝置為基礎之驗證的必要條件。 只有在已註冊的裝置上，才會將 PRT 發給使用者。 如需裝置註冊的更深入詳細資料，請參閱[Windows Hello 企業版和裝置註冊](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)一文。 在裝置註冊期間，dsreg 元件會產生兩組密碼編譯金鑰組：
+裝置註冊是 Azure AD 中以裝置為基礎之驗證的必要條件。 只有在已註冊的裝置上，才會將 PRT 發給使用者。 如需裝置註冊的更深入詳細資料，請參閱[Windows Hello 企業版和裝置註冊](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)一文。 在裝置註冊期間，dsreg 元件會產生兩組密碼編譯金鑰組：
 
 * 裝置金鑰（dkpub/dkpriv）
 * 傳輸金鑰（tkpub/tkpriv）
@@ -152,7 +152,7 @@ Windows 10 會針對每個認證維護一個 PRTs 的資料分割清單。 因�
 | C | 如果使用者是受管理的，CloudAP 會從 Azure AD 取得 nonce。 如果使用者是同盟的，CloudAP 外掛程式會向同盟提供者要求 SAML 權杖與使用者的認證。 一旦收到 SAML 權杖，就會向 Azure AD 要求 nonce。 |
 | D | CloudAP 外掛程式會使用使用者的認證、nonce 和 broker 範圍來建立驗證要求，並使用裝置金鑰（dkpriv）簽署要求，並將它傳送至 Azure AD。 在聯合環境中，CloudAP 外掛程式會使用同盟提供者所傳回的 SAML 權杖，而不是使用者的認證。 |
 | E | Azure AD 會驗證使用者認證、nonce 和裝置簽章，確認裝置在租使用者中是有效的，併發出加密的 PRT。 除了 PRT 之外，Azure AD 也會發出對稱金鑰，稱為 Azure AD 使用傳輸金鑰（tkpub）加密的工作階段金鑰。 此外，工作階段金鑰也會內嵌在 PRT 中。 此工作階段金鑰會作為 PRT 後續要求的擁有權證明（PoP）金鑰。 |
-| F | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 要求 TPM 使用傳輸金鑰（tkpriv）來解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
+| 華氏 (F) | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 要求 TPM 使用傳輸金鑰（tkpriv）來解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
 
 ### <a name="prt-renewal-in-subsequent-logons"></a>後續登入中的 PRT 更新
 
@@ -165,7 +165,7 @@ Windows 10 會針對每個認證維護一個 PRTs 的資料分割清單。 因�
 | C | CloudAP 外掛程式會起始領域探索要求，以識別使用者的身分識別提供者。 如果使用者的租使用者已設定同盟提供者，Azure AD 會傳回同盟提供者的中繼資料交換端點（MEX）端點。 如果不是，Azure AD 會傳回管理的使用者，表示使用者可以使用 Azure AD 進行驗證。 |
 | D | 如果使用者是同盟的，CloudAP 外掛程式會向同盟提供者要求 SAML 權杖與使用者的認證。 一旦收到 SAML 權杖，就會向 Azure AD 要求 nonce。 如果使用者是受管理的，CloudAP 會直接從 Azure AD 取得 nonce。 |
 | E | CloudAP 外掛程式會使用使用者的認證、nonce 和現有的 PRT 來建立驗證要求，並使用工作階段金鑰來簽署要求，並將它傳送至 Azure AD。 在聯合環境中，CloudAP 外掛程式會使用同盟提供者所傳回的 SAML 權杖，而不是使用者的認證。 |
-| F | Azure AD 會藉由與內嵌在 PRT 中的工作階段金鑰進行比較來驗證工作階段金鑰簽章、驗證 nonce，並確認裝置在租使用者中是有效的，併發出新的 PRT。 如先前所見，PRT 會再次伴隨著由傳輸金鑰（tkpub）加密的工作階段金鑰。 |
+| 華氏 (F) | Azure AD 會藉由與內嵌在 PRT 中的工作階段金鑰進行比較來驗證工作階段金鑰簽章、驗證 nonce，並確認裝置在租使用者中是有效的，併發出新的 PRT。 如先前所見，PRT 會再次伴隨著由傳輸金鑰（tkpub）加密的工作階段金鑰。 |
 | G | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 會要求 TPM 使用傳輸金鑰（tkpriv）來解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
 
 ### <a name="prt-usage-during-app-token-requests"></a>應用程式權杖要求期間的 PRT 使用方式
@@ -191,7 +191,7 @@ Windows 10 會針對每個認證維護一個 PRTs 的資料分割清單。 因�
 | C | Native client 主機會驗證 Url 是否屬於 Microsoft 身分識別提供者（Microsoft 帳戶或 Azure AD）、解壓縮從 URL 傳送的 nonce，以及呼叫 CloudAP 外掛程式以取得 PRT cookie。 |
 | D | CloudAP 外掛程式會建立 PRT cookie，並使用 TPM 系結工作階段金鑰登入，並將其傳回給 native client 主機。 由於 cookie 是由工作階段金鑰所簽署，因此無法被篡改。 |
 | E | Native client 主機會將此 PRT cookie 傳回給瀏覽器，其會將它包含在要求標頭中，稱為 x-ms-RefreshTokenCredential 和 Azure AD 的要求權杖。 |
-| F | Azure AD 會驗證 PRT cookie 上的工作階段金鑰簽章、驗證 nonce、驗證該裝置在租使用者中是否有效，併發出網頁的識別碼權杖和瀏覽器的加密會話 cookie。 |
+| 華氏 (F) | Azure AD 會驗證 PRT cookie 上的工作階段金鑰簽章、驗證 nonce、驗證該裝置在租使用者中是否有效，併發出網頁的識別碼權杖和瀏覽器的加密會話 cookie。 |
 
 ## <a name="next-steps"></a>後續步驟
 

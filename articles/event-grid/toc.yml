@@ -96,8 +96,12 @@
   items:
     - name: Event Grid 概念
       href: concepts.md
-    - name: 安全性和驗證
-      href: security-authentication.md
+    - name: 安全性
+      items:
+        - name: 驗證
+          href: security-authentication.md
+        - name: 授權
+          href: security-authorization.md
     - name: 傳遞和重試
       href: delivery-and-retry.md
     - name: 事件篩選器

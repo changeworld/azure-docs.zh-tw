@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671895"
 ---
 # <a name="conditional-access-session"></a>條件式存取：會話
 
@@ -30,12 +30,12 @@ ms.locfileid: "77192138"
 
 如需應用程式強制執行限制的使用和設定詳細資訊，請參閱下列文章：
 
-- [啟用 SharePoint Online 的有限存取](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [啟用 SharePoint Online 的有限存取](/sharepoint/control-access-from-unmanaged-devices)
 - [啟用 Exchange Online 的有限存取](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>條件式存取應用程式控制
 
-條件式存取應用程式控制使用反向 proxy 架構，並與 Azure AD 條件式存取進行唯一整合。 Azure AD 條件式存取可讓您根據特定條件，在組織的應用程式上強制執行存取控制。 條件會定義要套用條件式存取原則的物件（使用者或使用者群組）和內容（哪些雲端應用程式）和位置（哪些位置和網路）。 判斷條件之後，您可以將使用者路由傳送至[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) ，您可以透過套用存取和會話控制項，使用條件式存取應用程式控制來保護資料。
+條件式存取應用程式控制使用反向 proxy 架構，並與 Azure AD 條件式存取進行唯一整合。 Azure AD 條件式存取可讓您根據特定條件，對貴組織的應用程式強制執行存取控制。 條件會定義要套用條件式存取原則的對象 (使用者或使用者群組)、項目 (哪些雲端應用程式) 和位置 (哪些位置和網路)。 判斷條件之後，您可以將使用者路由傳送至[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) ，您可以透過套用存取和會話控制項，使用條件式存取應用程式控制來保護資料。
 
 條件式存取應用程式控制可以根據存取和會話原則，即時監視和控制使用者應用程式存取和會話。 在 Cloud App Security 入口網站中使用存取和會話原則，以進一步精簡篩選並設定要對使用者採取的動作。 使用存取和會話原則，您可以：
 
@@ -46,7 +46,7 @@ ms.locfileid: "77192138"
 - 封鎖存取：您可以根據數個風險因素，以細微的方式封鎖特定應用程式和使用者的存取。 例如，如果使用用戶端憑證作為裝置管理的形式，您可以封鎖它們。
 - 封鎖自訂活動：有些應用程式具有具有風險的獨特案例，例如，在應用程式（如 Microsoft 小組或寬限）中傳送具有機密內容的訊息。 在這種情況下，您可以掃描郵件中的機密內容，並即時加以封鎖。
 
-如需詳細資訊，請參閱[部署精選應用程式的條件式存取應用程式控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)一文。
+如需詳細資訊，請參閱[部署精選應用程式的條件式存取應用程式控制](/cloud-app-security/proxy-deployment-aad)一文。
 
 ## <a name="sign-in-frequency-preview"></a>登入頻率（預覽）
 

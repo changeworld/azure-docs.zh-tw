@@ -3,12 +3,12 @@ title: 服務健康狀態概觀 | Microsoft Docs
 description: 目前和未來的 Azure 服務問題和維修如何影響 Azure 應用程式的個人化資訊。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654013"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898446"
 ---
 # <a name="service-health-overview"></a>服務健康狀態總覽
 
@@ -16,11 +16,12 @@ ms.locfileid: "77654013"
 
 ## <a name="service-health-events"></a>服務健康情況事件
 
-服務健康情況會追蹤三種可能影響資源的健康情況事件：
+服務健康狀態會追蹤可能會影響您資源的四種健康情況事件：
 
 1. **服務的問題** - 立即影響 Azure 服務的問題。 
 2. **規劃的維護** - 未來可能影響服務可用性的後續維修。  
 3. **健康情況摘要報告** - 需要注意的 Azure 服務變更。 範例包括取代 Azure 功能，或超過使用量配額。
+4. 資訊安全摘要報告 **（預覽）** -可能會影響 Azure 服務可用性的安全性相關通知。
 
 > [!NOTE]
 > 若要查看服務健康狀態事件，使用者必須被[授與](../role-based-access-control/role-assignments-portal.md)訂用帳戶的「讀者」角色。
@@ -43,7 +44,7 @@ ms.locfileid: "77654013"
 
 ## <a name="get-links-and-downloadable-explanations"></a>取得連結和可下載的說明 
 
-您可以取得問題的連結，以便在您的問題管理系統中使用。 您可以下載 PDF，有時可以下載 CSV 檔案，以便與無法存取 Azure 入口網站的使用者共用。   
+您可以取得問題的連結，以便在您的問題管理系統中使用。 您可以下載 PDF 和有時 CSV 檔案，與沒有 Azure 入口網站存取權的人員共用。   
 
 ![管理服務問題 - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)
 

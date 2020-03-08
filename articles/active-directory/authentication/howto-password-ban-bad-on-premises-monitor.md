@@ -1,6 +1,6 @@
 ---
-title: 密碼保護監視和記錄-Azure Active Directory
-description: 了解 Azure AD 密碼保護的監視和記錄
+title: 監視內部部署 Azure AD 密碼保護
+description: 瞭解如何監視和查看內部部署 Active Directory Domain Services 環境 Azure AD 密碼保護的記錄
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847706"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671648"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD 密碼保護的監視和記錄
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視及審查內部部署 Azure AD 密碼保護環境的記錄
 
 部署 Azure AD 密碼保護之後，監視和報告即為必要工作。 本文將深入探討以協助您了解各種監視技術，包括每個服務要將資訊記錄於何處，以及如何報告 Azure AD 密碼保護的使用情形。
 
@@ -65,7 +65,7 @@ DC 代理程式的系統管理記錄是有關軟體如何運作之資訊的主�
 
 |   |密碼變更 |密碼設定|
 | --- | :---: | :---: |
-|通過 |10014 |10015|
+|成功 |10014 |10015|
 |失敗 (由於客戶密碼原則)| 10016、30002| 10017、30003|
 |失敗 (由於 Microsoft 密碼原則)| 10016、30004| 10017、30005|
 |失敗 (由於 Microsoft 和客戶密碼原則的組合)| 10016、30026| 10017、30027|

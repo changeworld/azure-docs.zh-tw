@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374242"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893212"
 ---
 # <a name="access-and-customize-developer-portal"></a>存取和自訂開發人員入口網站
 
@@ -36,7 +36,7 @@ ms.locfileid: "78374242"
 
 ![API 管理開發人員入口網站-管理員模式](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱匯[入和發佈](import-and-publish.md)
@@ -125,6 +125,10 @@ ms.locfileid: "78374242"
 ## <a name="visit-the-published-portal"></a>造訪已發佈的入口網站
 
 發佈入口網站後，您可以在與系統管理面板相同的 URL 上存取它，例如 `https://contoso-api.developer.azure-api.net`。 以獨立的瀏覽器會話（incognito/私用瀏覽模式）來觀看，做為外部訪客。
+
+## <a name="apply-the-cors-policy-on-apis"></a>對 Api 套用 CORS 原則
+
+您需要在您的 Api 上啟用 CORS （跨原始資源分享），讓您入口網站的訪客透過內建的互動式主控台測試 Api。 如需詳細資訊，請參閱[這篇檔](api-management-howto-developer-portal.md#cors)。
 
 ## <a name="next-steps"></a>後續步驟
 

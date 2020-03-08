@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668538"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程： Azure Active Directory 單一登入（SSO）與 Amazon Web Services 整合（AWS）
 
@@ -34,7 +34,7 @@ ms.locfileid: "78378423"
 
 ![Azure AD 和 AWS 關聯性的圖表](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-您可以為多個執行個體設定多個識別碼。 例如：
+您可以為多個執行個體設定多個識別碼。 例如，
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -53,7 +53,7 @@ ms.locfileid: "78378423"
 > [!Note]
 > 請確定您只使用資源庫應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -130,7 +130,7 @@ ms.locfileid: "78378423"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下 **[建立]** 。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -337,7 +337,10 @@ ms.locfileid: "78378423"
     ![醒目提示 [開啟] 的 [設定] 區段螢幕擷取畫面](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> 佈建服務只會將角色從 AWS 匯入至 Azure AD。 此服務不會將使用者和群組從 Azure AD 佈建回 AWS。
+> 布建服務只會將角色從 AWS 匯入至 Azure AD。 服務不會將 Azure AD 的使用者和群組布建至 AWS。
+
+> [!NOTE]
+> 儲存布建認證之後，您必須等候初始同步週期執行。 同步處理通常需要大約40分鐘的時間才能完成。 您可以在 [**目前狀態**] 下方的 [布建 **] 頁面底部**看到狀態。
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>建立 Amazon Web Services (AWS) 測試使用者
 

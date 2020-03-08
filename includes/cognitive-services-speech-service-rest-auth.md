@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168331"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668946"
 ---
 ## <a name="authentication"></a>驗證
 
@@ -20,9 +20,9 @@ ms.locfileid: "77168331"
 | Ocp-Apim-Subscription-Key | 是 | 否 |
 | 授權：持有人 | 是 | 是 |
 
-當使用 `Ocp-Apim-Subscription-Key` 標頭，只需要提供您的訂用帳戶金鑰。 例如：
+當使用 `Ocp-Apim-Subscription-Key` 標頭，只需要提供您的訂用帳戶金鑰。 例如，
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ ms.locfileid: "77168331"
 
 `issueToken` 端點的格式如下：
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ Content-Length: 0
 
 這個範例是簡單的 PowerShell 指令碼，用來取得存取權杖。 使用您的語音服務訂用帳戶金鑰來取代 `YOUR_SUBSCRIPTION_KEY`。 請務必使用符合您訂用帳戶區域的正確端點。 此範例目前設為「美國西部」。
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL 是 Linux (以及適用於 Linux 的 Windows 子系統) 中可用的命令列工具。 此 cURL 命令說明如何取得存取權杖。 使用您的語音服務訂用帳戶金鑰來取代 `YOUR_SUBSCRIPTION_KEY`。 請務必使用符合您訂用帳戶區域的正確端點。 此範例目前設為「美國西部」。
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 此 C# 類別說明了如何取得存取權杖。 在您具現化類別時，請傳遞您的語音服務訂用帳戶金鑰。 如果您的訂用帳戶不在美國西部區域，請變更 `FetchTokenUri` 的值以符合您訂用帳戶的區域。
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =
