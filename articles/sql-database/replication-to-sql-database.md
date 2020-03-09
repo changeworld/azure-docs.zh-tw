@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359888"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>複寫至 SQL Database 單一資料庫與集區資料庫
 
@@ -28,7 +28,7 @@ ms.locfileid: "74997270"
 - Azure SQL 資料庫必須是 SQL Server 發行者的發送訂閱者。  
 - 散發資料庫和複寫代理程式不能置於 Azure SQL 資料庫上。  
 - 支援快照集和單向異動複寫。 不支援點對點異動複寫和合併式複寫。
-- 複寫可在 Azure SQL Database 受控執行個體的公開預覽版上使用。 受控執行個體可以裝載發行者、散發者和訂閱者資料庫。 如需詳細資訊，請參閱[使用 SQL Database 受控執行個體進行複寫](replication-with-sql-database-managed-instance.md)。
+- Azure SQL Database 受控執行個體上的複寫功能現供公開預覽。 受控執行個體可以裝載發行者、散發者和訂閱者資料庫。 如需詳細資訊，請參閱[使用 SQL Database 受控執行個體進行複寫](replication-with-sql-database-managed-instance.md)。
 
 ## <a name="versions"></a>版本  
 
@@ -54,7 +54,7 @@ ms.locfileid: "74997270"
 - SQL Server 上的單一發行集可同時支援 Azure SQL Database 和 SQL Server (內部部署和 Azure 虛擬機器中的 SQL Server) 訂閱者。  
 - 複寫管理、監視和疑難排解都必須從內部部署 SQL Server 執行。  
 - 僅支援對 Azure SQL Database 的發送訂閱。  
-- 在 SQL Database 的 **sp_addsubscription** 中僅支援 `@subscriber_type = 0`。  
+- 在 SQL Database 的 `@subscriber_type = 0`sp_addsubscription**中僅支援**。  
 - Azure SQL Database 不支援雙向、即時、可更新或點對點複寫。
 
 ## <a name="replication-architecture"></a>複寫架構  

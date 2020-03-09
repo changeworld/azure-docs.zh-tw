@@ -17,7 +17,7 @@ ms.locfileid: "74022000"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
 
-本文將協助您透過 ExpressRoute 私人對等互連，在執行 Windows 的 Azure VM 與內部部署 Windows 主機之間建立傳輸模式的 IPsec 通道。 本文中的步驟會使用群組原則物件建立此組態。 雖然不使用組織單位 (OU) 和群組原則物件 (GPO) 也可以建立此組態，但 OU 和 GPO 的搭配使用將有助於簡化您對安全性原則的控制，並且可讓您快速相應增加。 本文中的步驟假設您已有 Active Directory 組態，且您熟悉 OU 和 GPO 的使用方式。
+本文將協助您透過 ExpressRoute 私人對等互連，在執行 Windows 的 Azure VM 與內部部署 Windows 主機之間建立傳輸模式的 IPsec 通道。 本文中的步驟會使用群組原則物件建立此組態。 雖然不使用組織單位 (OU) 和群組原則物件 (GPO) 也可以建立此組態，但 OU 和 GPO 的搭配使用將有助於簡化您對安全性原則的控制，並且可讓您快速擴大。 本文中的步驟假設您已有 Active Directory 組態，且您熟悉 OU 和 GPO 的使用方式。
 
 ## <a name="about-this-configuration"></a>關於此組態
 
@@ -161,7 +161,7 @@ ms.locfileid: "74022000"
 2. 在 [名稱] 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後按一下 [新增]。
 
    [![25]][25]
-3. 在 [IP 篩選描述和鏡像屬性] 頁面上，選取 [鏡像]。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [確定](英文)。
+3. 在 [IP 篩選描述和鏡像屬性] 頁面上，選取 [鏡像]。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [確定]\(英文)。
 
    [![26]][26]
 4. 在 [IP 流量來源] 頁面上，從 [來源位址：] 下拉式清單中選擇 [特定的 IP 位址或子網路]。 

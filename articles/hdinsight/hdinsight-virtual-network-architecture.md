@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744742"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389814"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虛擬網路架構
 
@@ -22,7 +22,7 @@ ms.locfileid: "75744742"
 
 Azure HDInsight 叢集具有不同類型的虛擬機器或節點。 每種節點類型在系統的作業中扮演著角色。 下表摘要說明這些節點類型及其在叢集中的角色。
 
-| 類型 | 說明 |
+| 類型 | 描述 |
 | --- | --- |
 | 前端節點 |  對於除了 Apache Storm 以外的所有叢集類型，前端節點會主控管理分散式應用程式執行的進程。 前端節點也是您可以透過 SSH 連線並執行應用程式的節點，然後協調以在叢集資源上執行。 所有叢集類型的前端節點數目固定為兩個。 |
 | ZooKeeper 節點 | Zookeeper 會在執行資料處理的節點之間協調工作。 它也會對前端節點進行前導選擇，並追蹤哪個前端節點正在執行特定的主要服務。 ZooKeeper 節點的數目固定為三。 |
@@ -54,18 +54,18 @@ Azure HDInsight 叢集具有不同類型的虛擬機器或節點。 每種節點
 
 | 資源類型 | 有數位 | 詳細資料 |
 | --- | --- | --- |
-|前端節點 | 二 |    |
-|Zookeeper 節點 | 三 | |
-|背景工作節點 | 二 | 此數目會根據叢集設定和調整而有所不同。 Apache Kafka 需要至少三個背景工作角色節點。  |
-|閘道節點 | 二 | 閘道節點是在 Azure 上建立的 Azure 虛擬機器，但在您的訂用帳戶中看不到。 如果您需要重新開機這些節點，請聯絡支援人員。 |
+|前端節點 | two |    |
+|Zookeeper 節點 | three | |
+|背景工作節點 | two | 此數目會根據叢集設定和調整而有所不同。 Apache Kafka 需要至少三個背景工作角色節點。  |
+|閘道節點 | two | 閘道節點是在 Azure 上建立的 Azure 虛擬機器，但在您的訂用帳戶中看不到。 如果您需要重新開機這些節點，請聯絡支援人員。 |
 
 下列網路資源會自動建立在與 HDInsight 搭配使用的虛擬網路內：
 
 | 網路資源 | 有數位 | 詳細資料 |
 | --- | --- | --- |
-|負載平衡器 | 三 | |
+|負載平衡器 | three | |
 |網路介面 | 份 | 這個值是以一般叢集為基礎，其中每個節點都有自己的網路介面。 這九個介面適用于這兩個前端節點、三個 zookeeper 節點、兩個背景工作節點，以及上表中所述的兩個閘道節點。 |
-|公用 IP 位址 | 二 |    |
+|公用 IP 位址 | two |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>連接到 HDInsight 的端點
 

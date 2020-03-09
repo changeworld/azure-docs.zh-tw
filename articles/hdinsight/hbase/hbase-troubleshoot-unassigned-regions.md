@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887133"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395192"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中區域伺服器的問題
 
@@ -34,7 +34,7 @@ multiple regions being unassigned or holes in the chain of regions
 
 漏洞可能是離線區域的結果。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 修正指派。 請遵循下列步驟，讓未指派的區域恢復正常狀態：
 
@@ -66,7 +66,7 @@ multiple regions being unassigned or holes in the chain of regions
 
 1. 檢查 `wals.out` 檔案。 如果有太多分割目錄（從 *-分割開始），區域伺服器可能會因為這些目錄而失敗。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 1. 從 Ambari 入口網站停止 HBase。
 
