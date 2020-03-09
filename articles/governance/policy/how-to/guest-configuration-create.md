@@ -4,11 +4,11 @@ description: 瞭解如何使用 Azure PowerShell 為 Windows 或 Linux Vm 建立
 ms.date: 12/16/2019
 ms.topic: how-to
 ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387266"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何建立來賓設定原則
 
@@ -171,7 +171,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 - **名稱**：來賓設定封裝名稱。
 - 設定 **：已**編譯的 DSC 設定檔完整路徑。
-- **路徑**：輸出檔案夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立封裝。
+- **路徑**：輸出檔案夾路徑。 這個參數是選擇性的。 如果未指定，則會在目前的目錄中建立封裝。
 - **ChefProfilePath**： InSpec 設定檔的完整路徑。 只有在建立內容以 audit Linux 時，才支援此參數。
 
 完成的封裝必須儲存在受管理的虛擬機器可存取的位置。 範例包括 GitHub 存放庫、Azure 儲存機制或 Azure 儲存體。 如果您不想讓套件公開，您可以在 URL 中包含[SAS 權杖](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。

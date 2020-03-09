@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199002"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386390"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點
 
@@ -81,7 +81,7 @@ ms.locfileid: "77199002"
     |---|---|
     |訂用帳戶|選取用來建立叢集的 Azure 訂用帳戶。|
     |資源群組|選取用於現有 HDInsight 叢集的資源群組。|
-    |位置|選取現有 HDInsight 叢集的位置。|
+    |Location|選取現有 HDInsight 叢集的位置。|
     |叢集名稱|輸入現有 HDInsight 叢集的名稱。|
 
 1. 核取 **[我同意上方所述的條款及條件**]，然後選取 [**購買**] 以建立邊緣節點。
@@ -105,7 +105,7 @@ ms.locfileid: "77199002"
     |---|---|
     |訂用帳戶|選取用來建立叢集的 Azure 訂用帳戶。|
     |資源群組|建立用於叢集的新資源群組。|
-    |位置|選取資源群組的位置。|
+    |Location|選取資源群組的位置。|
     |叢集名稱|輸入要建立之新叢集的名稱。|
     |叢集登入使用者名稱|輸入 Hadoop HTTP 使用者名稱。  預設名稱為 **admin**。|
     |叢集登入密碼|輸入 Hadoop HTTP 使用者密碼。|
