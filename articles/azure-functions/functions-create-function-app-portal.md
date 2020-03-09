@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230776"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370314"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>從 Azure 入口網站建立函數應用程式
 
@@ -33,7 +33,7 @@ Azure Functions 有三種不同的服務方案：取用方案、Premium 方案�
 
 <a name="storage-account-requirements"></a>
 
-## <a name="storage-account-requirements"></a>儲存體帳戶需求
+## <a name="storage-account-requirements"></a>儲存體帳戶的需求
 
 建立函數應用程式時，您必須建立或連結至支援 Blob、佇列和資料表儲存體的一般用途 Azure 儲存體帳戶。 Azure Functions 會在內部使用「Azure 儲存體」來進行作業，例如管理觸發程序和記錄函式執行。 有些儲存體帳戶並不支援佇列和表格，例如僅限 Blob 的儲存體帳戶、Azure 進階儲存體和搭配 ZRS 複寫的一般用途儲存體帳戶。 建立函數應用程式時，[儲存體帳戶] 刀鋒視窗中會過濾掉這些帳戶。
 

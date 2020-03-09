@@ -6,17 +6,17 @@ ms.topic: conceptual
 description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 traefik 輸入控制器，並使用該輸入控制器來設定 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 ms.openlocfilehash: 6cac50ea9caeea42b0a7522dbeb5039a8461dd2c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273161"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389649"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自訂 traefik 輸入控制器並設定 HTTPS
 
 本文說明如何將 Azure Dev Spaces 設定為使用自訂 traefik 輸入控制器。 本文也會說明如何將該自訂輸入控制器設定為使用 HTTPS。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶][azure-account-create]。
 * [已安裝 Azure CLI][az-cli]。
@@ -260,13 +260,13 @@ gateway:
 helm upgrade bikesharing . --namespace dev --atomic
 ```
 
-流覽至*dev/azureuser1*子空間中的範例應用程式，並注意您會重新導向至使用 HTTPS。 另請注意，頁面會載入，但瀏覽器會顯示一些錯誤。 開啟瀏覽器主控台會顯示與嘗試載入 HTTP 資源的 HTTPS 頁面相關的錯誤。 例如：
+流覽至*dev/azureuser1*子空間中的範例應用程式，並注意您會重新導向至使用 HTTPS。 另請注意，頁面會載入，但瀏覽器會顯示一些錯誤。 開啟瀏覽器主控台會顯示與嘗試載入 HTTP 資源的 HTTPS 頁面相關的錯誤。 例如，
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-若要修正此錯誤，請將[BikeSharingWeb/azds][azds-yaml]更新為使用*kubernetes.io/ingress.class*的*traefik* ，並將您的自訂網域用於 *$ （hostSuffix）* 。 例如：
+若要修正此錯誤，請將[BikeSharingWeb/azds][azds-yaml]更新為使用*kubernetes.io/ingress.class*的*traefik* ，並將您的自訂網域用於 *$ （hostSuffix）* 。 例如，
 
 ```yaml
 ...

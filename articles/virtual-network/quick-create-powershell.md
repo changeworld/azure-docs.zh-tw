@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392062"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入門：使用 PowerShell 建立虛擬網路
 
@@ -59,7 +59,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>新增子網路
 
-Azure 會將資源部署至虛擬網路內的子網路，因此您必須建立子網路。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 建立名為 *default* 的子網路設定：
+Azure 會將資源部署至虛擬網路內的子網路，因此您必須建立子網路。 使用 *Add-AzVirtualNetworkSubnetConfig* 建立名為 [default](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 的子網路設定：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -140,22 +140,22 @@ Get-AzPublicIpAddress `
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-1. 如果出現提示，請選取 [連接]  。
+1. 如果出現提示，請選取 [連接]。
 
 1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
     > [!NOTE]
-    > 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
+    > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 **[確定]** 。
 
-1. 您可能會收到憑證警告。 如果如此，請選取 [是]  或 [繼續]  。
+1. 您可能會收到憑證警告。 如果如此，請選取 [是] 或 [繼續]。
 
 ## <a name="communicate-between-vms"></a>虛擬機器之間的通訊
 
 1. 在 *myVm1* 的遠端桌面中，開啟 PowerShell。
 
-1. 輸入 `ping myVm2` 。
+1. 輸入 `ping myVm2`。
 
     您會得到類似此內容：
 

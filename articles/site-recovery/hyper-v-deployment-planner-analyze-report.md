@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385117"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署規劃工具報告
 本文討論 Azure Site Recovery 部署規劃工具針對 Hyper-V 到 Azure 的案例產生的 Excel 報告所包含的工作表。
@@ -179,7 +179,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「相容的 VM�
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱。 此資料行也會列出連結至 VM 的磁碟 (VHD)。 名稱包含此工具在分析期間探索到 VM 時其所在位置的 Hyper-V 主機名稱。
 
-**VM 相容性**：值為 [是] 和 [是 **]** \*。 [是]\* 表示 VM 適用於[進階 SSD](../virtual-machines/windows/disks-types.md) 的情況。 相較於對應到磁碟的大小，這裡剖析的高變換或 IOPS 磁碟適合較大的進階磁碟大小。 儲存體帳戶會根據磁碟大小，決定磁碟要對應至的進階儲存體大小類型： 
+**VM 相容性**：值為 **[是]** 和 **[是**]\*。 [是]\* 表示 VM 適用於[進階 SSD](../virtual-machines/windows/disks-types.md) 的情況。 相較於對應到磁碟的大小，這裡剖析的高變換或 IOPS 磁碟適合較大的進階磁碟大小。 儲存體帳戶會根據磁碟大小，決定磁碟要對應至的進階儲存體大小類型： 
 * <128 GB 為 P10。
 * 128 GB 至 256 GB 為 P15。
 * 256 GB 至 512 GB 為 P20。
@@ -187,7 +187,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「相容的 VM�
 * 1,025 GB 至 2,048 GB 為 P40。
 * 2,049 GB 至 4,095 GB 為 P50。
 
-比方說，如果磁碟的工作負載特性讓它放在 P20 或 P30 類別中，但大小會將它對應到較低的進階儲存體磁碟類型，此工具會將該 VM 標示為 [是]\*。 此工具也建議您變更來源磁碟大小，以符合建議的進階儲存體磁碟類型，或變更容錯移轉後的目標磁碟類型。
+比方說，如果磁碟的工作負載特性讓它放在 P20 或 P30 類別中，但大小會將它對應到較低的進階儲存體磁碟類型，此工具會將該 VM 標示為 **[是**]\*。 此工具也建議您變更來源磁碟大小，以符合建議的進階儲存體磁碟類型，或變更容錯移轉後的目標磁碟類型。
 
 **儲存體類型**：標準或進階。
 

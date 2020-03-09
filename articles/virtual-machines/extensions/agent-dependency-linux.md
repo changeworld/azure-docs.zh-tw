@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383229"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Azure 監視器相依性虛擬機器擴充功能
 
 適用於 VM 的 Azure 監視器對應功能會從 Microsoft Dependency Agent 取得其資料。 適用于 Linux 的 Azure VM 相依性代理程式虛擬機器擴充功能已由 Microsoft 發佈及支援。 擴充功能會在 Azure 虛擬機器上安裝 Dependency agent。 本檔詳述適用于 Linux 的 Azure VM 相依性代理程式虛擬機器擴充功能所支援的平臺、設定和部署選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
