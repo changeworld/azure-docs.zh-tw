@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372296"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>針對共用資源的錯誤進行疑難排解
 
@@ -31,9 +31,9 @@ ms.locfileid: "75769858"
 
 匯入 PowerShell 模組是一種複雜的多步驟程序。 此程序可能會發生模組未正確匯入的問題。 如果發生這種情況，您所匯入的模組可能會卡在暫時性的狀態。 若要深入了解此程序，請參閱[匯入 PowerShell 模組](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
-若要解決此問題，您必須使用 [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) Cmdlet 移除卡在**匯入**狀態的模組。 您可以稍後再重試匯入模組。
+若要解決此問題，您必須使用 **Remove-AzureRmAutomationModule** Cmdlet 移除卡在[匯入](/powershell/module/azurerm.automation/remove-azurermautomationmodule)狀態的模組。 您可以稍後再重試匯入模組。
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 有一個已知問題，就是在資源群組中的自動化帳戶中更新 AzureRM 模組，其數值名稱開頭為0。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 若要在您的自動化帳戶中更新 Azure 模組，它必須位於具有英數位元名稱的資源群組中。 數位名稱開頭為0的資源群組目前無法更新 AzureRM 模組。
 
@@ -72,7 +72,7 @@ Azure modules are being updated
 * 模組在資料夾中遺失其相依性。
 * 您使用 `New-AzureRmAutomationModule` Cmdlet 來上傳模組，但您尚未提供完整的儲存路徑，或是尚未使用可公開存取的 URL 來載入模組。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 下列任何一個解決方案都可以修正此問題：
 
@@ -90,7 +90,7 @@ Azure modules are being updated
 
 使用 `Update-AzureModule.ps1` 指令碼時，用來判斷要同時更新多少個模組的預設設定為 10。 同時更新太多模組時，更新程序很容易發生錯誤。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 同一個自動化帳戶中需要所有 AzureRM 模組的情況並不常見。 建議僅匯入您需要的 AzureRM 模組。
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 您沒有建立或更新執行身分帳戶所需的權限，或資源已在資源群組層級鎖定。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 若要建立或更新執行身分帳戶，您必須具備執行身分帳戶所用資源的適當權限。 若要深入了解建立或更新執行身分帳戶所需的權限，請參閱[執行身分帳戶權限](../manage-runas-account.md#permissions)。
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 此錯誤很可能是因為[執行身分帳戶](../manage-runas-account.md)設定不正確所造成。
 
-#### <a name="resolution"></a>解析度
+#### <a name="resolution"></a>解決方案
 
 請確定已正確設定您的[執行身分帳戶](../manage-runas-account.md)。 正確設定之後，請確定您的 runbook 中有適當的程式碼可向 Azure 進行驗證。 下列範例顯示使用執行身分帳戶在 runbook 中向 Azure 進行驗證的程式碼片段。
 

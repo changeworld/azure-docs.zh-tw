@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389697"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 叢集上的 Jupyter Notebook 核心
 
@@ -26,9 +26,9 @@ HDInsight Spark 叢集提供的核心，可讓您用於 [Apache Spark](https://s
 
 在本文中，您將了解使用這些核心的方式及優點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱 [在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
+HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>在 Spark HDInsight 上建立 Jupyter Notebook
 
@@ -65,11 +65,11 @@ HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱 [在 Azure HDIn
 
     您可以直接在您的應用程式中使用現有的內容。
 
-- **Cell magic**。 PySpark 核心提供一些預先定義的 "magic"，這是您可以使用 `%%` 呼叫的特殊命令 (例如 `%%MAGIC` `<args>`)。 magic 命令必須是程式碼儲存格中的第一個字，而且允許多行的內容。 magic 這個字應該是儲存格中的第一個字。 在 magic 前面加入任何項目，甚至是註解，將會造成錯誤。     如需 magic 的詳細資訊，請參閱 [這裡](https://ipython.readthedocs.org/en/stable/interactive/magics.html)。
+- **Cell magic**。 PySpark 核心提供一些預先定義的 "magic"，這是您可以使用 `%%` 呼叫的特殊命令（例如 `%%MAGIC` `<args>`）。 magic 命令必須是程式碼儲存格中的第一個字，而且允許多行的內容。 magic 這個字應該是儲存格中的第一個字。 在 magic 前面加入任何項目，甚至是註解，將會造成錯誤。     如需 magic 的詳細資訊，請參閱 [這裡](https://ipython.readthedocs.org/en/stable/interactive/magics.html)。
 
     下表列出透過核心而提供的不同 magic。
 
-   | Magic | 範例 | 說明 |
+   | Magic | 範例 | 描述 |
    | --- | --- | --- |
    | help |`%%help` |產生所有可用 magic 的表格，其中包含範例與說明 |
    | info |`%%info` |輸出目前 Livy 端點的工作階段資訊 |
@@ -89,15 +89,15 @@ HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱 [在 Azure HDIn
 
 `%%sql` magic 支援不同的參數，可用來控制您執行查詢時收到的輸出類型。 下表列出輸出。
 
-| 參數 | 範例 | 說明 |
+| 參數 | 範例 | 描述 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此參數，在 %%local Python 內容中保存查詢的結果，以做為 [Pandas](https://pandas.pydata.org/) 資料框架。 資料框架變數的名稱是您指定的變數名稱。 |
-| -q |`-q` |使用此項關閉儲存格的視覺效果。 如果您不想要 autovisualize 資料格的內容，而只想要將它當做資料框架來捕捉，請使用 `-q -o <VARIABLE>`。 如果您想要關閉視覺化功能而不擷取結果 (例如，執行 SQL 查詢的 `CREATE TABLE` 陳述式)，請使用 `-q` 但不要指定 `-o` 引數。 |
-| -m |`-m <METHOD>` |其中 **METHOD** 是 **take** 或 **sample** (預設值是 **take**)。 如果方法是 **take**，核心會從 MAXROWS 指定的結果資料集頂端挑選項目 (如此表稍後所述)。 如果方法是 **sample**，核心會根據 `-r` 參數隨機取樣資料集的項目，如此表稍後所述。 |
+| -Q |`-q` |使用此項關閉儲存格的視覺效果。 如果您不想要 autovisualize 資料格的內容，而只想要將它當做資料框架來捕捉，請使用 `-q -o <VARIABLE>`。 如果您想要關閉視覺化功能而不擷取結果 (例如，執行 SQL 查詢的 `CREATE TABLE` 陳述式)，請使用 `-q` 但不要指定 `-o` 引數。 |
+| -M |`-m <METHOD>` |其中 **METHOD** 是 **take** 或 **sample** (預設值是 **take**)。 如果方法是 **take**，核心會從 MAXROWS 指定的結果資料集頂端挑選項目 (如此表稍後所述)。 如果方法是 **sample**，核心會根據 `-r` 參數隨機取樣資料集的項目，如此表稍後所述。 |
 | -r |`-r <FRACTION>` |這裡的 **FRACTION** 是介於 0.0 到 1.0 之間的浮點數。 如果 SQL 查詢的範例方法是 `sample`，則核心會為您從結果集隨機取樣指定比例的項目。 例如，如果您使用 `-m sample -r 0.01` 引數執行 SQL 查詢，則會隨機取樣 1% 的結果資料列。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** 是整數值。 核心會將輸出資料列的數目限制為 **MAXROWS**。 如果**MAXROWS**是負數（例如 **-1**），則結果集中的資料列數目不會受到限制。 |
 
-**範例：**
+**範例︰**
 
     %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
@@ -142,14 +142,14 @@ Google Chrome 上只支援 Spark HDInsight 叢集上的 Jupyter Notebook。
 
 ### <a name="scenarios"></a>案例
 
-- [Apache Spark 和 BI：在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](apache-spark-use-bi-tools.md)
+- [Apache Spark 和 BI：在 HDInsight 中搭配 BI 工具使用 Spark 執行互動式資料分析](apache-spark-use-bi-tools.md)
 - [Apache Spark 和機器學習服務：使用 HDInsight 中的 Spark，使用 HVAC 資料來分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)
 - [Apache Spark 和機器學習服務：在 HDInsight 中使用 Spark 預測食品檢查結果](apache-spark-machine-learning-mllib-ipython.md)
 - [在 HDInsight 中使用 Apache Spark 進行網站記錄分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>建立及執行應用程式
 
-- [使用 Scala 來建立獨立的應用程式](apache-spark-create-standalone-application.md)
+- [使用 Scala 建立獨立應用程式](apache-spark-create-standalone-application.md)
 - [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和擴充功能

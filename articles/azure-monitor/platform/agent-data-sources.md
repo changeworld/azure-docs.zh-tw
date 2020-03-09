@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393577"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure 監視器中的代理程式資料來源
 Azure 監視器從代理程式收集的資料由您設定的資料來源設定。  系統會將來自代理程式的資料連同一組記錄儲存成[記錄資料](data-platform-logs.md)。  每個資料來源都會建立特定類型的記錄，每種類型各有自己的一組屬性。
