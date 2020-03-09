@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357788"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -57,7 +57,7 @@ Durable Functions 會以透明的方式使用事件來源。 實際上，協調�
 
 長期工作架構的事件來源行為會與您撰寫的協調器函式程式碼緊密結合。 假設您有一個活動鏈結協調器函式，如下列協調器函式所示：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -216,7 +216,7 @@ public static async Task Synchronize(
 
 如[協調器函式程式碼條件約束](durable-functions-code-constraints.md)所述，系統不允許協調器函式進行 I/O。 此限制的一般因應措施是將任何需要在活動函式中進行 I/O 的程式碼包裝起來。 與外部系統互動的協調流程經常使用活動函式來進行 HTTP 呼叫，並將結果傳回協調流程。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 為了簡化這種常見模式，協調器函式可以使用 `CallHttpAsync` 方法，直接叫用 HTTP API。
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,7 +265,7 @@ module.exports = df.orchestrator(function*(context) {
 
 您不可能直接將多個參數傳遞至活動函式。 建議傳入物件陣列或複合物件。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
 
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>協調器
 

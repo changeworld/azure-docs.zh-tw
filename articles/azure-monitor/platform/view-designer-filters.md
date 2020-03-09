@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器 views 中的篩選 |Microsoft Docs
 description: '[Azure 監視器] 視圖中的篩選可讓使用者依特定屬性的值篩選視圖中的資料，而不需要修改視圖本身。  本文說明如何使用篩選，以及如何在自訂檢視中新增篩選。'
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931974"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658569"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure 監視器 views 中的篩選
 [ [Azure 監視器] 視圖](view-designer.md)中的**篩選**可讓使用者依特定屬性的值篩選視圖中的資料，而不需要修改視圖本身。  例如，您可以允許檢視的使用者篩選檢視，只顯示來自某個特定電腦或一組電腦的資料。  您可以在單一檢視上建立多個篩選，以允許使用者依多個屬性進行篩選。  本文說明如何使用篩選，以及如何在自訂檢視中新增篩選。

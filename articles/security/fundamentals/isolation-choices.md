@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756155"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359069"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 Azure 可讓您在共用實體基礎結構上執行應用程式和虛擬機器（Vm）。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。
@@ -35,7 +35,7 @@ Azure 可讓您在共用實體基礎結構上執行應用程式和虛擬機器�
 每個 Azure AD 目錄都不同，並與其他 Azure AD 目錄分開。 就像公司辦公大樓是您組織特有的安全資產，Azure AD 目錄也是設計成僅供您組織使用的安全資產。 Azure AD 架構會隔離客戶資料與身分識別資訊，避免兩者混淆。 這表示某個 Azure AD 目錄的使用者和系統管理員無法意外或惡意存取另一個目錄中的資料。
 
 ### <a name="azure-tenancy"></a>Azure 租用
-Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中唯一的[租用戶](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租用戶層級隔離是使用 Azure Active Directory 及其所提供的[角色型控制](../../role-based-access-control/overview.md)來達成。 每個 Azure 訂用帳戶都會與一個 Azure Active Directory (AD) 目錄相關聯。
+Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [Azure Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md) 中唯一的[租用戶](../../active-directory/fundamentals/active-directory-whatis.md)。 Microsoft Azure 中的租用戶層級隔離是使用 Azure Active Directory 及其所提供的[角色型控制](../../role-based-access-control/overview.md)來達成。 每個 Azure 訂用帳戶都會與一個 Azure Active Directory (AD) 目錄相關聯。
 
 該目錄中的使用者、群組和應用程式可以管理 Azure 訂用帳戶中的資源。 您可以使用 Azure 入口網站、Azure 命令列工具或 Azure 管理 API 來指派這些存取權限。 Azure AD 租用戶邏輯上是使用安全性界限來隔離，如此一來就沒有任何客戶可以存取或危害共同的租用戶 (不論是惡意或意外)。 Azure AD 是在已隔離網路區段上隔離之「裸機」伺服器上執行的，其中主機層級的封包篩選和 Windows 防火牆會封鎖來路不明的連接和流量。
 

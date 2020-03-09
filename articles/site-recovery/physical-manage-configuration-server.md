@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084605"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367080"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>管理實體伺服器災害復原的組態伺服器
 
@@ -20,7 +20,7 @@ ms.locfileid: "74084605"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 下表摘要說明部署內部部署組態伺服器機器的必要條件。
 
@@ -67,11 +67,11 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 
     - 如果您想要使用電腦上目前設定的 Proxy 來連線，請選取 [使用 Proxy 伺服器連線至 Azure Site Recovery]。
     - 如果您想要讓提供者直接連接，請選取 [不使用 Proxy 伺服器直接連線到 Azure Site Recovery]。
-    - 如果現有的 Proxy 需要驗證，或是您想要讓提供者使用自訂 Proxy 來連線，請選取 [以自訂 Proxy 設定連線]，並指定位址、連接埠和認證。
+    - 如果現有的 Proxy 需要驗證，或是您想要讓 Provider 使用自訂 Proxy 來連線，請選取 [以自訂 Proxy 設定連線]，並指定位址、連接埠和認證。
      ![防火牆](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. 在 [必要條件檢查] 中，安裝程式會執行檢查來確定可以執行安裝。 如果出現有關「通用時間同步處理檢查」的警告，請確認系統時鐘上的時間 ([日期和時間] 設定) 與時區相同。
 
-    ![先決條件](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Prerequisites](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. 在 [MySQL 組態] 中，建立認證來登入已安裝的 MySQL 伺服器執行個體。
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -106,9 +106,9 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>參數
 
-|參數名稱| 在系統提示您進行確認時，輸入 | 描述| 值|
+|參數名稱| 類型 | 描述| 值|
 |-|-|-|-|
 | /ServerMode|必要|指定應該同時安裝組態和處理序伺服器，還是只安裝處理序伺服器|CS<br>PS|
 |/InstallLocation|必要|安裝元件的資料夾| 電腦上的任何資料夾|
@@ -158,7 +158,7 @@ ProxyPassword="Password"
    ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. 提供新的 Proxy 詳細資料，然後按一下 [註冊] 按鈕。
 6. 開啟系統管理 PowerShell 命令視窗。
-7. 執行下列命令：
+7. 執行以下命令：
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -217,7 +217,7 @@ ProxyPassword="Password"
 
 ## <a name="upgrade-a-configuration-server"></a>升級組態伺服器
 
-您執行更新彙總來更新設定伺服器。 更新最多可以套用到 N-4 版本。 例如︰
+執行更新彙總來更新組態伺服器。 更新最多可以套用到 N-4 版本。 例如：
 
 - 如果您執行 9.7、9.8、9.9 或 9.10 - 您可以直接升級至 9.11。
 - 如果您執行 9.6 或更早版本，而且需要升級至 9.11 版，您必須先升級到 9.7 版， 才能升級到 9.11。
@@ -257,7 +257,7 @@ ProxyPassword="Password"
    * Microsoft Azure 復原服務代理程式
    * Microsoft Azure Site Recovery Mobility Service/主要目標伺服器
    * Microsoft Azure Site Recovery Provider
-   * Microsoft Azure Site Recovery 組態伺服器/處理序伺服器
+   * Microsoft Azure Site Recovery 設定伺服器/處理序伺服器
    * Microsoft Azure Site Recovery 設定伺服器相依性
    * MySQL Server 5.5
 4. 從系統管理命令提示字元中，執行下列命令。

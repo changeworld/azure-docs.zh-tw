@@ -4,11 +4,11 @@ description: 深入瞭解 Azure Migrate 中的 VMware 評估支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361836"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -88,7 +88,7 @@ ESXi 主機 | **僅針對[應用程式探索](https://docs.microsoft.com/azure/m
 
 ## <a name="agentless-dependency-visualization"></a>無代理程式的相依性視覺效果
 
-此選項目前為預先審查狀態。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
+這個選項目前為預覽狀態。 [詳細資訊](how-to-create-group-machine-dependencies-agentless.md)。 下表摘要說明需求。
 
 **需求** | **詳細資料**
 --- | ---

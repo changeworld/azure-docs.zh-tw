@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Log Analytics 中檢視及分析資料 | Microsoft Docs
 description: Log Analytics 記錄搜尋至 Azure 監視器記錄查詢體驗的使用者協助。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670129"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>從 Log Analytics 記錄搜尋轉換至 Azure 監視器記錄
 最近以新的體驗取代了 Log Analytics 中的記錄搜尋，以便分析 Azure 監視器記錄。 [記錄搜尋] 頁面目前仍可在 Azure 入口網站中透過 **Log Analytics 工作區** 中的 [記錄 (傳統)] 功能表項目存取，但是該頁面將於 2019 年 2 月 15 日移除。 本文說明兩種體驗之間的差異以協助您從記錄搜尋轉換。 

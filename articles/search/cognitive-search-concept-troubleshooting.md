@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113838"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391256"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充秘訣
 
@@ -108,5 +108,5 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 + [教學課程：瞭解 AI 擴充 REST Api](cognitive-search-tutorial-blob.md)
 + [指定資料來源認證](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
-+ [如何定義技能集](cognitive-search-defining-skillset.md)
++ [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [如何將擴充的欄位對應至索引](cognitive-search-output-field-mapping.md)
