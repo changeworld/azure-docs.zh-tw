@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
 ms.openlocfilehash: 4732304384b8c221ae7c8d99da7f714613ad9050
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396499"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -166,7 +166,7 @@ curl -X POST \
 
 裝置會藉由在 `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` 位址上建立接收連結來接收直接方法要求。
 
-AMQP 訊息會送達代表方法要求的接收連結。 它包含下列區段：
+AMQP 訊息會送達代表方法要求的接收連結。 其中包含以下各節：
 
 * 相互關聯識別碼屬性，內含應該與對應方法回應一起傳回的要求識別碼。
 

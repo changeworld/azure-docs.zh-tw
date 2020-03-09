@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375666"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
 
@@ -46,22 +46,22 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| 參數 |  | 說明 |
+| 參數 |  | 描述 |
 | --- | --- | --- |
-| ID | 必要項 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
-| 版本 | 必要項 | 此參數應該設定為 **2.0**。 |
-| IssueInstant | 必要項 | 這是具有 UTC 值和 [來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
+| ID | 必要 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
+| 版本 | 必要 | 此參數應該設定為 **2.0**。 |
+| IssueInstant | 必要 | 這是具有 UTC 值和 [來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
 | AssertionConsumerServiceUrl | 選用 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
 | ForceAuthn | 選用 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
 | IsPassive | 選用 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
 
 其他所有 `AuthnRequest` 屬性 (例如 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex 和 ProviderName) 會 **遭到忽略**。
 
-Azure AD 也會忽略 `AuthnRequest` 中的 `Conditions` 元素。
+Azure AD 也會忽略 `Conditions` 中的 `AuthnRequest` 元素。
 
 ### <a name="issuer"></a>簽發者
 
-`AuthnRequest` 中的 `Issuer` 元素必須完全符合 Azure AD 中雲端服務的其中一個 **ServicePrincipalNames**。 一般而言，這會設定為應用程式註冊期間指定的 **應用程式識別碼 URI** 。
+`Issuer` 中的 `AuthnRequest` 元素必須完全符合 Azure AD 中雲端服務的其中一個 **ServicePrincipalNames**。 一般而言，這會設定為應用程式註冊期間指定的 **應用程式識別碼 URI** 。
 
 包含 `Issuer` 元素的 SAML 摘錄看起來會像下列範例︰
 
@@ -97,10 +97,10 @@ Azure AD 會忽略 `AllowCreate` 屬性。
 如果提供，請勿包含 `ProxyCount` 屬性、`IDPListOption` 或 `RequesterID` 元素，因為它們不受支援。
 
 ### <a name="signature"></a>簽章
-請勿在 `AuthnRequest` 元素中包含 `Signature` 元素，因為 Azure AD 不支援簽署的驗證要求。
+請勿在 `Signature` 元素中包含 `AuthnRequest` 元素，因為 Azure AD 不支援簽署的驗證要求。
 
-### <a name="subject"></a>主旨
-Azure AD 會忽略 `AuthnRequest` 元素中的 `Subject` 元素。
+### <a name="subject"></a>主體
+Azure AD 會忽略 `Subject` 元素中的 `AuthnRequest` 元素。
 
 ## <a name="response"></a>回應
 當要求的登入成功完成時，Azure AD 會將回應張貼至雲端服務。 登入嘗試成功的回應看起來會像下列範例︰
@@ -150,10 +150,10 @@ Azure AD 會忽略 `AuthnRequest` 元素中的 `Subject` 元素。
 
 ### <a name="response"></a>回應
 
-`Response` 元素包含授權要求的結果。 Azure AD 會設定 `Response` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會設定下列屬性︰
+`Response` 元素包含授權要求的結果。 Azure AD 會設定 `ID` 元素中的 `Version`、`IssueInstant` 和 `Response` 值。 它也會設定下列屬性︰
 
 * `Destination`︰當登入順利完成時，這會設定為服務提供者 (雲端服務) 的 `RedirectUri`。
-* `InResponseTo`︰這會設定為起始回應的 `AuthnRequest` 元素的 `ID` 屬性。
+* `InResponseTo`︰這會設定為起始回應的 `ID` 元素的 `AuthnRequest` 屬性。
 
 ### <a name="issuer"></a>簽發者
 
@@ -210,11 +210,11 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>主旨
+#### <a name="subject"></a>主體
 
 這會指定判斷提示中陳述式主旨的主體。 它包含 `NameID` 元素，其代表已驗證的使用者。 `NameID` 值為目標識別碼，其只會導向身為權杖對象的服務提供者。 它是持續性的 - 可撤銷，但絕對不會重新指派。 它也是不透明的，因為它不會揭露使用者的相關資訊，也不能當做屬性查詢的識別碼。
 
-`SubjectConfirmation` 元素的 `Method` 屬性一律會設定為 `urn:oasis:names:tc:SAML:2.0:cm:bearer`。
+`Method` 元素的 `SubjectConfirmation` 屬性一律會設定為 `urn:oasis:names:tc:SAML:2.0:cm:bearer`。
 
 ```
 <Subject>
@@ -239,12 +239,12 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
 
 `NotBefore` 和 `NotOnOrAfter` 屬性會指定判斷提示的有效間隔期間。
 
-* `NotBefore` 屬性值等於或稍微晚於 (不到一秒) `Assertion` 元素的 `IssueInstant` 屬性值。 Azure AD 不會考慮本身與雲端服務 (服務提供者) 之間的任何時間差，而且不會對此時間加上任何緩衝。
+* `NotBefore` 屬性值等於或稍微晚於 (不到一秒) `IssueInstant` 元素的 `Assertion` 屬性值。 Azure AD 不會考慮本身與雲端服務 (服務提供者) 之間的任何時間差，而且不會對此時間加上任何緩衝。
 * `NotOnOrAfter` 屬性值比 `NotBefore` 屬性值晚 70 分鐘。
 
-#### <a name="audience"></a>觀眾
+#### <a name="audience"></a>適用對象
 
-這包含可識別適用對象的 URI。 Azure AD 會將這個元素的值設定為起始登入的 `AuthnRequest` 的 `Issuer` 元素值。 若要評估 `Audience` 值，請使用應用程式註冊期間指定的 `App ID URI` 值。
+這包含可識別適用對象的 URI。 Azure AD 會將這個元素的值設定為起始登入的 `Issuer` 的 `AuthnRequest` 元素值。 若要評估 `Audience` 值，請使用應用程式註冊期間指定的 `App ID URI` 值。
 
 ```
 <AudienceRestriction>
@@ -252,7 +252,7 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
 </AudienceRestriction>
 ```
 
-和 `Issuer` 值一樣，`Audience` 值必須完全符合代表 Azure AD 中雲端服務的其中一個服務主體名稱。 不過，如果 `Issuer` 元素值不是 URI 值，回應中的 `Audience` 值是前面加上 `spn:` 的 `Issuer` 值。
+和 `Issuer` 值一樣，`Audience` 值必須完全符合代表 Azure AD 中雲端服務的其中一個服務主體名稱。 不過，如果 `Issuer` 元素值不是 URI 值，回應中的 `Audience` 值是前面加上 `Issuer` 的 `spn:` 值。
 
 #### <a name="attributestatement"></a>AttributeStatement
 

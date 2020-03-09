@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444494"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395979"
 ---
 # <a name="what-are-mapping-data-flows"></a>什麼是對應資料流程？
 
@@ -33,17 +33,17 @@ ms.locfileid: "75444494"
 
 資料流程畫布分成三個部分：頂端列、圖形和設定面板。 
 
-![畫布](media/data-flow/canvas1.png "畫布")
+![畫布](media/data-flow/canvas1.png "Canvas")
 
-### <a name="graph"></a>圖表
+### <a name="graph"></a>圖形
 
 圖形會顯示轉換資料流程。 它會顯示來源資料流入一或多個接收時的歷程。 若要新增來源，請選取 [新增**來源**]。 若要加入新的轉換，請選取現有轉換右下方的加號。
 
-![畫布](media/data-flow/canvas2.png "畫布")
+![畫布](media/data-flow/canvas2.png "Canvas")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 整合執行時間資料流程屬性
 
-![[調試] 按鈕](media/data-flow/debugbutton.png "偵錯按鈕")
+![[調試] 按鈕](media/data-flow/debugbutton.png "[調試] 按鈕")
 
 當您開始使用 ADF 中的資料流程時，您會想要針對瀏覽器 UI 頂端的資料流程開啟 "Debug" 參數。 這將會啟動 Azure Databricks 叢集，以用於互動式的偵錯工具、資料預覽和管線的偵錯工具執行。 您可以選擇自訂的[Azure Integration Runtime](concepts-integration-runtime.md)來設定使用的叢集大小。 在您上次進行資料預覽或上次執行的「偵測管線」之後，debug 會話將維持運作狀態最多60分鐘。
 
@@ -121,7 +121,7 @@ Azure Data Factory 會產生資料行雜湊以產生統一的分割區，使具�
 
 建立運算式，為分割資料行內的值提供固定範圍。 若要避免分割區扭曲，您應該先充分瞭解您的資料，再使用此選項。 您為運算式輸入的值將會用來做為資料分割函數的一部分。 您可以設定實體分割區的數目。
 
-##### <a name="key"></a>索引鍵
+##### <a name="key"></a>Key
 
 如果您對資料的基數有充分的瞭解，則索引鍵分割可能是很好的策略。 索引鍵資料分割將會針對資料行中的每個唯一值建立分割區。 您無法設定分割區數目，因為此數目會以資料中的唯一值為基礎。
 
@@ -129,7 +129,7 @@ Azure Data Factory 會產生資料行雜湊以產生統一的分割區，使具�
 
 [**檢查**] 索引標籤可讓您查看要轉換之資料流程的中繼資料。 您可以看到資料行計數、變更的資料行、加入的資料行、資料類型、資料行順序和資料行參考。 [**檢查**] 是您的中繼資料的唯讀視圖。 您不需要啟用 [偵測] 模式，即可在 [**檢查**] 窗格中查看中繼資料。
 
-![Inspect](media/data-flow/inspect1.png "檢查")
+![檢驗](media/data-flow/inspect1.png "檢查")
 
 當您透過轉換來變更資料的圖形時，您會在 [**檢查**] 窗格中看到中繼資料變更流程。 如果您的來源轉換中沒有已定義的架構，則中繼資料將不會顯示在 [**檢查**] 窗格中。 缺乏中繼資料在架構漂移案例中很常見。
 

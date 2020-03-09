@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155141"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378096"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>規劃以雲端為基礎的 Azure 多因素驗證部署
 
@@ -24,11 +24,11 @@ ms.locfileid: "76155141"
 
 [Azure 多重要素驗證（MFA）](concept-mfa-howitworks.md)可協助保護資料和應用程式的存取。 它使用第二種形式的驗證來提供一層額外的安全性。 組織可以使用[條件式存取](../conditional-access/overview.md)，讓解決方案符合他們的特定需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始部署 Azure 多重要素驗證之前，必須考慮一些必要專案。
 
-| 案例 | 必要條件 |
+| 狀況 | 必要條件 |
 | --- | --- |
 | 具有新式驗證的**僅限雲端**身分識別環境 | **無額外的先決條件工作** |
 | **混合**式身分識別案例 | 已部署[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ，且使用者身分識別會與內部部署 Active Directory Domain Services 進行同步處理，或與 Azure Active Directory 進行同盟。 |
@@ -85,7 +85,7 @@ Azure Active Directory Identity Protection 偵測到的部分風險偵測會即�
 ### <a name="configuring-a-named-location"></a>設定命名位置
 
 1. 在 Azure 入口網站中開啟**Azure Active Directory**
-2. 選取**安全性**
+2. 選取 [安全性]
 3. 在 [**管理**] 下，選擇 [**命名位置**]
 4. 選取**新位置**
 5. 在 [**名稱**] 欄位中，提供有意義的名稱
@@ -221,7 +221,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ### <a name="create-conditional-access-policy"></a>建立條件式存取原則
 
 1. 使用全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **安全性** > **條件式存取**。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
    ![建立條件式存取原則，為試驗群組中的 Azure 入口網站使用者啟用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. 為原則提供有意義的名稱。
@@ -240,7 +240,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
     * 按一下 [選取]。
 1. 略過 [工作階段] 區段。
 1. 將 [啟用原則] 切換為 [開啟]。
-1. 按一下頁面底部的 [新增]。
+1. 按一下 **[建立]** 。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>規劃與內部部署系統的整合
 
@@ -277,7 +277,7 @@ NPS 擴充功能可作為 RADIUS 與雲端式 Azure MFA 之間的介面卡，以
 
 選擇當未向 MFA 註冊的使用者嘗試進行驗證時，會發生什麼事。 使用登錄路徑 `HKLM\Software\Microsoft\AzureMFA` 中的登錄設定 `REQUIRE_USER_MATCH` 來控制功能行為。 此設定具有單一設定選項。
 
-| 索引鍵 | 值 | 預設 |
+| Key | 值 | 預設 |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE/FALSE | 未設定 (相當於 TRUE) |
 
@@ -288,7 +288,7 @@ NPS 擴充功能可作為 RADIUS 與雲端式 Azure MFA 之間的介面卡，以
 | 機碼不存在 | 未註冊 | MFA 挑戰不成功 |
 | 設定為 True/未設定的值 | 未註冊 | MFA 挑戰不成功 |
 | 金鑰設為 False | 未註冊 | 沒有 MFA 的驗證 |
-| 金鑰設為 False 或 True | 已註冊 | 必須使用 MFA 進行驗證 |
+| 金鑰設為 False 或 True | 過 | 必須使用 MFA 進行驗證 |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>與 Active Directory 同盟服務整合
 
@@ -347,7 +347,7 @@ Azure MFA 的報告
 
 Azure 多因素驗證透過 Azure 入口網站提供報告：
 
-| 報告 | 位置 | 說明 |
+| Report | Location | 描述 |
 | --- | --- | --- |
 | 使用方式和詐騙警示 | Azure AD > 登入 | 提供整體使用量、使用者摘要和使用者詳細資料的相關資訊；以及在指定的日期範圍期間所提交的詐騙警示歷程記錄。 |
 

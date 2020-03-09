@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380949"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中新增擁有者和使用者
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -41,18 +41,18 @@ Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../ro
 | --- | --- | --- | --- |
 | **實驗室工作** | | | |
 | 將使用者新增至實驗室 |否 |是 |否 |
-| 更新成本設定 |否 |yes |是 |
+| 更新成本設定 |否 |是 |是 |
 | **VM 的基本工作** | | | |
-| 新增和移除自訂映像 |否 |yes |是 |
+| 新增和移除自訂映像 |否 |是 |是 |
 | 新增、更新和刪除公式 |是 |是 |是 |
-| 將 Azure Marketplace 映像加入允許清單 |否 |yes |是 |
+| 將 Azure Marketplace 映像加入允許清單 |否 |是 |是 |
 | **VM 工作** | | | |
 | 建立 VM |是 |是 |是 |
 | 啟動、停止和刪除 VM |僅限使用者所建立的 VM |是 |是 |
-| 更新 VM 原則 |否 |yes |是 |
+| 更新 VM 原則 |否 |是 |是 |
 | 在 VM 中新增/移除資料磁碟 |僅限使用者所建立的 VM |是 |是 |
 | **構件工作** | | | |
-| 新增和移除構件儲存機制 |否 |yes |是 |
+| 新增和移除構件儲存機制 |否 |是 |是 |
 | 套用構件 |是 |是 |是 |
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../ro
 1. 在 [新增權限] 視窗中，執行下列動作： 
     1. 選取角色 (例如：DevTest Labs 使用者)。 [可在每個角色執行的動作](#actions-that-can-be-performed-in-each-role) 一節列出使用者可在擁有者、DevTest 使用者和參與者角色中執行的各種動作。
     2. 選取要新增至角色的使用者。 
-    3. 選取 [ **儲存**]。 
+    3. 選取 [儲存]。 
 11. 當您返回 [使用者] 刀鋒視窗時，該使用者已新增。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 將外部使用者新增至實驗室

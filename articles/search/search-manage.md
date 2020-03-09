@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379595"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 入口網站中的 Azure 認知搜尋服務管理
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Azure 認知搜尋不會透過入口網站或程式設計介面來公開個別�
 
 若不使用索引子，您可以使用應用程式程式碼將物件和資料平行推送到不同的搜尋服務。 如需詳細資訊，請參閱[Azure 認知搜尋中的效能和優化](search-performance-optimization.md)。
 
-## <a name="backup-and-restore"></a>備份及還原
+## <a name="backup-and-restore"></a>備份與還原
 
 因為 Azure 認知搜尋並非主要的資料儲存體解決方案，所以我們不提供自助備份和還原的正式機制。 不過，您可以使用此[Azure 認知搜尋 .net 範例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存放庫中的**索引備份-還原**範例程式碼，將您的索引定義和快照集備份至一系列 JSON 檔案，然後視需要使用這些檔案來還原索引。 此工具也可以在服務層之間移動索引。
 
@@ -83,7 +83,7 @@ Azure 認知搜尋不會透過入口網站或程式設計介面來公開個別�
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>向上或向下擴充
+## <a name="scale-up-or-down"></a>擴大或縮小規模
 每個搜尋服務都會以一個複本和一個資料分割的最小值開始執行。 如果您註冊的[層提供專用資源](search-limits-quotas-capacity.md)，請按一下服務儀表板中的 [級別] 圖格來調整資源使用量。
 
 當您透過任何資源加入處理能力時，服務即會自動使用這些資源。 您無須再執行其他動作，但在新資源產生作用前，會有些許的延遲。 佈建其他資源需要 15 分鐘或更久的時間。

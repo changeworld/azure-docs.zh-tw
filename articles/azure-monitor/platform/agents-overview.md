@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361834"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -32,8 +32,8 @@ ms.locfileid: "77668514"
 | | 診斷<br>延伸模組（WAD） | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|
 | 支援的環境 | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| 代理程式需求  | 無 | 無 | 需要 Log Analytics 代理程式 |
-| 收集的資料 | 事件記錄檔<br>ETW 事件<br>效能<br>以檔案為基礎的記錄檔<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄檔<br>效能<IIS logs><br>以檔案為基礎的記錄檔<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
+| 代理程式需求  | None | None | 需要 Log Analytics 代理程式 |
+| 收集的資料 | 事件記錄<br>ETW 事件<br>效能<br>以檔案為基礎的記錄檔<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>以檔案為基礎的記錄檔<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
 | 資料傳送至 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 
@@ -42,8 +42,8 @@ ms.locfileid: "77668514"
 | | 診斷<br>延伸模組（LAD） | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
 | 支援的環境 | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| 代理程式需求  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
-| 收集的資料 | Syslog<br>效能 | 效能 | Syslog<br>效能| 進程詳細資料和相依性<br>網路連接計量 |
+| 代理程式需求  | None | None | None | 需要 Log Analytics 代理程式 |
+| 收集的資料 | syslog<br>效能 | 效能 | syslog<br>效能| 進程詳細資料和相依性<br>網路連接計量 |
 | 資料傳送至 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理程式

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365783"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 來連接和管理 StorSimple 裝置
 ## <a name="overview"></a>概觀
@@ -31,10 +31,10 @@ ms.locfileid: "75931735"
 
 視您的 [檢視] 選項而定，[結果] 窗格會顯示每個裝置的下列相關資訊。 (如需設定檢視的詳細資訊，請移至 [檢視功能表](storsimple-use-snapshot-manager.md#view-menu)。
 
-| 結果資料行 | 說明 |
+| 結果資料行 | 描述 |
 |:--- |:--- |
 | 名稱 |Azure 傳統入口網站中設定的裝置名稱 |
-| 型號 |裝置的型號 |
+| 模型 |裝置的型號 |
 | 版本 |裝置上安裝的軟體版本 |
 | 狀態 |裝置是否可用 |
 | 上次同步處理 |上次同步處理裝置的日期和時間時 |

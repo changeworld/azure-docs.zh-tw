@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930431"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372318"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自動化中的模組
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 在 Azure 入口網站中，流覽至您的自動化帳戶，然後選取 **共用資源** 底下的 **模組**。 按一下 [ **+ 新增模組**]。 選取包含模組的 **.zip**檔案，然後按一下 **[確定]** 開始匯入處理常式。
 
@@ -50,7 +50,7 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 
 來自 PowerShell 資源庫的模組可以直接從[PowerShell 資源庫](https://www.powershellgallery.com)或從您的自動化帳戶匯入。
 
-若要從 PowerShell 資源庫匯入模組，請移至 https://www.powershellgallery.com ，然後搜尋您要匯入的模組。 按一下 [**安裝選項**] 底下 [ **Azure 自動化**] 索引標籤上的 [**部署] Azure 自動化**。 此動作會開啟 Azure 入口網站。 在 [匯**入**] 頁面上選取您的自動化帳戶，然後按一下 **[確定]** 。
+若要從 PowerShell 資源庫匯入模組，請移至 https://www.powershellgallery.com，然後搜尋您要匯入的模組。 按一下 [**安裝選項**] 底下 [ **Azure 自動化**] 索引標籤上的 [**部署] Azure 自動化**。 此動作會開啟 Azure 入口網站。 在 [匯**入**] 頁面上選取您的自動化帳戶，然後按一下 **[確定]** 。
 
 ![PowerShell 資源庫匯入模組](../media/modules/powershell-gallery.png)
 
@@ -62,7 +62,7 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 
 如果您有模組的問題，或需要復原到舊版的模組，您可以從您的自動化帳戶中將它刪除。 當您建立自動化帳戶時，無法刪除已匯入之[預設模組](#default-modules)的原始版本。 如果您想要刪除的模組是已安裝其中一個[預設模組](#default-modules)的較新版本，則會回復為隨您的自動化帳戶一起安裝的版本。 否則，將會移除您從自動化帳戶中刪除的任何模組。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 在 Azure 入口網站中，流覽至您的自動化帳戶，然後選取 **共用資源** 底下的 **模組**。 選取您要移除的模組。 在 [**模組**] 頁面上，選取 [**刪除**]。 如果此模組是其中一個[預設模組](#default-modules)，則會回復為建立自動化帳戶時所存在的版本。
 
@@ -82,7 +82,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 >這些內部 Cmdlet 適用于 Windows 混合式 Runbook 背景工作角色，無法在 Linux 混合式 Runbook 背景工作角色上使用。 針對直接在電腦上執行的 runbook 或針對您的環境中的資源，使用對應的[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0)或[Az 模組](../az-modules.md)。 
 >
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |

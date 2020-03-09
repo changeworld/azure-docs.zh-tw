@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381435"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>建立 Azure Red Hat OpenShift 的 Azure AD 租使用者
 
@@ -28,7 +28,7 @@ Microsoft Azure Red Hat OpenShift 需要一個[Azure Active Directory （Azure A
 3. 提供**組織名稱**。
 4. 提供**初始功能變數名稱**。 這會附加*onmicrosoft.com* 。 您可以在這裡重複使用 [*組織名稱*] 的值。
 5. 選擇將建立租使用者的國家或地區。
-6. 按一下頁面底部的 [新增]。
+6. 按一下 **[建立]** 。
 7. 建立 Azure AD 租使用者之後，請選取 [**按一下這裡以管理您的新目錄**] 連結。 您的新租使用者名稱應該會顯示在 Azure 入口網站的右上方：  
 
     ![入口網站的螢幕擷取畫面，其中顯示右上方的租使用者名稱][tenantcallout]  

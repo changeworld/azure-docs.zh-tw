@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360690"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
+# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建立 Cassandra 應用程式
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -33,7 +33,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
 
 此外，您需要： 
-* 如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+* 如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 * 安裝 [Git](https://www.git-scm.com/) 來複製範例。
 
 <a id="create-account"></a>
@@ -68,7 +68,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
-此為選用步驟。 如果您有興趣了解程式碼如何建立資料庫資源，您可以檢閱下列程式碼片段。 此程式碼片段全都取自安裝在 `C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample` 資料夾中的 `Program.cs` 檔案。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。
+此步驟是選用的。 如果您有興趣了解程式碼如何建立資料庫資源，您可以檢閱下列程式碼片段。 此程式碼片段全都取自安裝在 `Program.cs` 資料夾中的 `C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample` 檔案。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。
 
 * 連線到 Cassandra 叢集端點以初始化工作階段。 Azure Cosmos DB 上的 Cassandra API 僅支援 TLSv1.2。 
 
@@ -116,9 +116,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 連接字串資訊可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [連接字串]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [連接字串]。
 
-    使用 ![[複製] 按鈕](./media/create-cassandra-dotnet/copy.png) 位於螢幕右側的按鈕來複製 [使用者名稱] 值。
+    請使用 ![[複製] 按鈕](./media/create-cassandra-dotnet/copy.png) 位於螢幕右側的按鈕來複製 [使用者名稱] 值。
 
     ![在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰](./media/create-cassandra-dotnet/keys.png)
 
@@ -146,20 +146,20 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     
 ## <a name="run-the-net-app"></a>執行 .NET 應用程式
 
-1. 在 Visual Studio 中，選取 [工具]   >  [NuGet 套件管理員]   >  [套件管理員主控台]  。
+1. 在 Visual Studio 中，選取 [工具] >  [NuGet 套件管理員] >  [套件管理員主控台]。
 
 2. 在命令提示字元中，使用下列命令來安裝 .NET 驅動程式的 NuGet 套件。 
 
     ```cmd
     Install-Package CassandraCSharpDriver
     ```
-3. 按 CTRL + F5 來執行應用程式。 您的應用程式會顯示在主控台視窗中。 
+3. 按 CTRL + F5 執行應用程式。 您的應用程式會顯示在主控台視窗中。 
 
     ![檢視並確認輸出](./media/create-cassandra-dotnet/output.png)
 
     按 CTRL + C 來停止執行程式，並關閉主控台視窗。 
     
-4. 在 Azure 入口網站中，開啟 [資料總管]  以查詢、修改及使用這個新資料。
+4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。
 
     ![在資料總管中檢視資料](./media/create-cassandra-dotnet/data-explorer.png)
 

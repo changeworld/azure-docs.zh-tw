@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174490"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376719"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看存取套件的要求
 
 在 Azure AD 權利管理 中，您可以看到誰已要求存取套件、其原則和狀態。 本文說明如何查看存取封裝的要求。
 
-## <a name="view-requests"></a>View 要求
+## <a name="view-requests"></a>檢視要求
 
 **先決條件角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
 

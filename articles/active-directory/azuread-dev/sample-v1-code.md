@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164392"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377692"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 程式碼範例 (v1.0 端點)
 
@@ -54,7 +54,7 @@ ms.locfileid: "77164392"
 
 下列範例會說明簽署使用者的 Web 應用程式。 在這些應用程式之中，有些也會代表已登入的使用者呼叫 Microsoft Graph 或您自己的 Web API。
 
- 平台 | 僅登入使用者 | 呼叫 Microsoft Graph 或 AAD Graph| 呼叫其他 ASP.NET 或 ASP.NET Core 2.0 Web API
+ 平台 | 僅登入使用者 | 呼叫 Microsoft Graph | 呼叫其他 ASP.NET 或 ASP.NET Core 2.0 Web API
  -------- | ------------------- | --------------------- | -------------------------
 ![此圖顯示 ASP.NET 標誌](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![此圖顯示 ASP.NET 標誌](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
@@ -74,7 +74,7 @@ ms.locfileid: "77164392"
 
 下列範例說明以使用者名稱存取 Microsoft Graph 或 Web API 的公用用戶端應用程式（deskto/pmobile 應用程式）。 視裝置及平台而定，應用程式可以使用不同的方式 (流程/授與) 將使用者登入：
 
-- 交流
+- 以互動方式
 - 無訊息模式（在 Windows 上使用整合式 Windows 驗證，或使用者名稱/密碼）
 - 將互動式登入委派給另一個裝置（裝置上使用的裝置程式碼流程不提供 web 控制項）
 
@@ -125,10 +125,6 @@ ASP.NET Web 應用程式  | ![此圖顯示 .NET 標誌](media/sample-v2-code/log
 
 ## <a name="see-also"></a>另請參閱
 
-[Azure Active Directory 開發人員指南](v1-overview.md)
-
-[Azure Active Directory 驗證程式庫](active-directory-authentication-libraries.md)
-
-[Azure AD 圖形 API 的概念和參考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD Graph API 協助程式程式庫](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory 開發人員指南](v1-overview.md)
+- [Azure Active Directory 驗證程式庫](active-directory-authentication-libraries.md)
+- [Microsoft Graph API 概念和參考](https://docs.microsoft.com/graph/use-the-api)

@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
 ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359950"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整單一資料庫資源
 
 本文說明如何在布建的計算層級調整 Azure SQL Database 的計算和儲存體資源。 或者，[無伺服器計算層](sql-database-serverless.md)會為使用的計算提供計算自動調整和每秒計費。
 
-一開始挑選虛擬核心或 Dtu 數之後, 您可以根據使用[Azure 入口網站](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[transact-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) 的實際經驗, 以動態方式相應增加或相應減少單一資料庫。
+一開始挑選虛擬核心或 Dtu 數之後，您可以根據使用[Azure 入口網站](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、 [transact-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、 [Azure CLI](/cli/azure/sql/db#az-sql-db-update)或[REST API](https://docs.microsoft.com/rest/api/sql/databases/update)的實際經驗，以動態方式相應增加或相應減少單一資料庫。
 
 下列影片示範如何動態變更服務層級與計算大小，以提高單一資料庫的可用 DTU。
 
@@ -46,11 +46,11 @@ ms.locfileid: "77023135"
 > [!IMPORTANT]
 > 在工作流程中的任何步驟期間，都不會遺失任何資料。 請確定您已在服務層級變更時，使用 Azure SQL Database 的應用程式和元件中，執行了一些[重試邏輯](sql-database-connectivity-issues.md)。
 
-## <a name="latency"></a>延遲 
+## <a name="latency"></a>Latency 
 
 變更服務層級或重新調整單一資料庫或彈性集區之計算大小的預估延遲會參數化，如下所示：
 
-|服務層級|基本單一資料庫、</br>標準（S0-S1）|基本彈性集區，</br>標準（S2-S12）、 </br>超大規模資料庫 </br>一般用途單一資料庫或彈性集區|Premium 或 Business Critical 單一資料庫或彈性集區|
+|服務層|基本單一資料庫、</br>標準（S0-S1）|基本彈性集區，</br>標準（S2-S12）、 </br>超大規模資料庫 </br>一般用途單一資料庫或彈性集區|Premium 或 Business Critical 單一資料庫或彈性集區|
 |:---|:---|:---|:---|
 |**基本單一資料庫，</br> 標準（S0-S1）**|&bull; &nbsp;與所用空間無關的固定時間延遲</br>&bull; &nbsp;通常不到5分鐘|&bull; 與由於資料複製而使用的資料庫空間成正比 &nbsp;延遲</br>&bull; &nbsp;通常是每 GB 使用的空間少於1分鐘|&bull; 與由於資料複製而使用的資料庫空間成正比 &nbsp;延遲</br>&bull; &nbsp;通常是每 GB 使用的空間少於1分鐘|
 |**基本彈性集區、</br>標準（S2-S12）、</br>超大規模資料庫、</br>一般用途單一資料庫或彈性集區**|&bull; 與由於資料複製而使用的資料庫空間成正比 &nbsp;延遲</br>&bull; &nbsp;通常是每 GB 使用的空間少於1分鐘|&bull; &nbsp;與所用空間無關的固定時間延遲</br>&bull; &nbsp;通常不到5分鐘|&bull; 與由於資料複製而使用的資料庫空間成正比 &nbsp;延遲</br>&bull; &nbsp;通常是每 GB 使用的空間少於1分鐘|
@@ -63,7 +63,7 @@ ms.locfileid: "77023135"
 
 服務層級變更或計算重新調整作業可以取消。
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure 入口網站
 
 在 [資料庫總覽] 分頁中，流覽至 [**通知**]，然後按一下表示有進行中操作的磚：
 
@@ -129,7 +129,7 @@ else {
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>當大小上限大於 1 TB 時的 P11 和 P15 條件約束
 
-所有區域目前均可使用進階層中超過 1 TB 的儲存體，但下列地區除外：中國東部、中國北部、德國中部、德國東北部、美國中西部、美國 DoD 地區和美國政府中部。 在其他區域內，進階層中的儲存空間上限為 1 TB。 下列考量與限制適用於大小上限大於 1 TB 的 P11 和 P15 資料庫：
+所有區域目前均可使用進階層中超過 1 TB 的儲存體，但下列地區除外：中國東部、中國北部、德國中部、德國東北部、美國中西部、美國 DoD 地區和美國政府中部。 在這些區域中，進階層中的儲存空間上限為 1 TB。 下列考量與限制適用於大小上限大於 1 TB 的 P11 和 P15 資料庫：
 
 - 如果 P11 或 P15 資料庫的大小上限已設定為大於 1 TB 的值，則只能還原或複製到 P11 或 P15 資料庫。  之後，您可以將資料庫重新調整至不同的計算大小，但前提是在重新調整作業時所配置的空間量，並不會超過新計算大小的大小上限。
 - 若是作用中異地複寫案例：
