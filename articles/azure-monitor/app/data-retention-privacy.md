@@ -4,11 +4,11 @@ description: 保留和隱私權原則聲明
 ms.topic: conceptual
 ms.date: 09/29/2019
 ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368034"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -94,7 +94,7 @@ Microsoft 只會使用這項資料，以將服務提供給您。
 * 建立新的 Application Insights 時，您可以選取位置。 請[在這裡](https://azure.microsoft.com/global-infrastructure/services/?products=all)深入瞭解每個區域的 Application Insights 可用性。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>這是否表示我的應用程式必須裝載在美國、歐洲或東南亞？
-* No。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
+* 否。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
 
 ## <a name="how-secure-is-my-data"></a>我的資料有多安全？
 Application Insights 是一項 Azure 服務。 如需安全性原則的相關說明，請參閱[ Azure 安全性、隱私權及法規遵循白皮書](https://go.microsoft.com/fwlink/?linkid=392408)。
@@ -200,7 +200,7 @@ AzureLogHandler(
 
 ### <a name="platformlanguage-specific-guidance"></a>平台/語言的特定指引
 
-|平台/語言 | 支援 | 詳細資訊 |
+|平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 | Azure App Service  | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)。  |
 | Azure 函式應用程式 | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)。 |
@@ -247,15 +247,15 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 | 您的動作 | 收集的資料類別 (請參閱下一個資料表) |
 | --- | --- |
-| [將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] |ServerContext<br/>推斷<br/>效能計數器<br/>要求<br/>**例外狀況**<br/>工作階段<br/>使用者 |
+| [將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] |ServerContext<br/>推斷<br/>效能計數器<br/>Requests<br/>**例外狀況**<br/>工作階段<br/>users |
 | [在 IIS 上安裝狀態監視器][redfield] |相依性<br/>ServerContext<br/>推斷<br/>效能計數器 |
-| [將 Application Insights SDK 新增至 JAVA web 應用程式][java] |ServerContext<br/>推斷<br/>要求<br/>工作階段<br/>使用者 |
+| [將 Application Insights SDK 新增至 JAVA web 應用程式][java] |ServerContext<br/>推斷<br/>要求<br/>工作階段<br/>users |
 | [將 JavaScript SDK 新增至網頁][client] |ClientContext <br/>推斷<br/>頁面<br/>ClientPerf<br/>Ajax |
 | [定義預設屬性][apiproperties] |**屬性** |
 | [呼叫 TrackMetric][api] |數字值<br/>**屬性** |
 | [通話軌 *][api] |事件名稱<br/>**屬性** |
 | [呼叫 TrackException][api] |**例外狀況**<br/>堆疊傾印<br/>**屬性** |
-| SDK 無法收集資料。 例如， <br/> - 無法存取效能計數器<br/> - 遙測初始設定式中發生例外狀況 |SDK 診斷 |
+| SDK 無法收集資料。 例如： <br/> - 無法存取效能計數器<br/> - 遙測初始設定式中發生例外狀況 |SDK 診斷 |
 
 如需[其他平臺的 sdk][platforms]，請參閱其檔。
 
@@ -274,7 +274,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 | PageViews |URL 和頁面名稱或螢幕名稱 |
 | 用戶端效能 |URL/頁面名稱、瀏覽器載入時間 |
 | Ajax |從網頁向伺服器發出的 HTTP 呼叫 |
-| 要求 |URL、持續時間、回應碼 |
+| Requests |URL、持續時間、回應碼 |
 | 相依性 |Type （SQL，HTTP，...），連接字串，或 URI，同步/非同步，持續時間，成功，SQL 語句（含狀態監視器） |
 | **例外狀況** |類型、**訊息**、呼叫堆疊、原始程式檔、行號、`thread id` |
 | 損毀 |`Process id`、`parent process id`、`crash thread id`;應用程式修補，`id`，組建; 例外狀況類型、位址、原因;模糊符號和暫存器、二進位開始和結束位址、二進位檔名稱和路徑、cpu 類型 |

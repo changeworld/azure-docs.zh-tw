@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208707"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926854"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -33,7 +33,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和/Groups 端點。 它�
 
 SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://tools.ietf.org/html/rfc7643)， [7644](https://tools.ietf.org/html/rfc7644)）中定義之管理的標準使用者物件架構和 rest api，可讓身分識別提供者和應用程式更輕鬆地彼此整合。 建立 SCIM 端點的應用程式開發人員可以與任何 SCIM 相容的用戶端整合，而不需要執行自訂工作。
 
-自動布建至應用程式時，必須建立 SCIM 端點，並將其與相容的 Azure AD SCIM 進行整合。 請執行下列步驟，以開始將使用者和群組布建到您的應用程式。 
+自動布建至應用程式需要建立 SCIM 端點，並將其與 Azure AD SCIM 用戶端整合。 請執行下列步驟，以開始將使用者和群組布建到您的應用程式。 
     
   * **[步驟1：設計您的使用者和群組架構。](#step-1-design-your-user-and-group-schema)** 識別您的應用程式所需的物件和屬性，並判斷它們如何對應至 Azure AD SCIM 執行所支援的使用者和群組架構。
 
@@ -60,9 +60,9 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|姓名 lastName|lastName|
-|workMail|電子郵件 [類型 eq "work"]。值|郵件|
+|workMail|電子郵件 [類型 eq "work"]。值|Mail|
 |manager|manager|manager|
-|tag (標記)|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
+|tag|urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtension：標記|extensionAttribute1|
 |status|作用中|isSoftDeleted （計算的值未儲存在使用者上）|
 
 上述定義的架構會使用下列 Json 承載來表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 "id"、"externalId" 和 "meta" 屬性。
@@ -106,7 +106,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| 郵件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -124,16 +124,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)， [7643](https://to
 | Azure Active Directory 群組 | urn： ietf： params： scim：架構： core：2.0： Group |
 | --- | --- |
 | displayName |displayName |
-| 郵件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |displayName |
-| 成員 |成員 |
+| members |members |
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
 SCIM RFC 中定義了數個端點。 您可以從/User 端點開始著手，然後從該處展開。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 當您使用自訂屬性時，或您的架構經常變更時，/Schemas 端點會很有説明。 它可讓用戶端自動取得最新的架構。 /Bulk 端點在支援群組時特別有用。 下表描述 SCIM 標準中定義的各種端點。 
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表4：判斷您想要開發的端點
-|端點|描述|
+|端點|DESCRIPTION|
 |--|--|
 |/User|在使用者物件上執行 CRUD 作業。|
 |/Group|對群組物件執行 CRUD 作業。|
@@ -752,7 +752,7 @@ TLS 1.2 加密套件最小橫條：
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟3：建立 SCIM 端點
 
-既然您已經 desidned 您的架構，並瞭解 Azure AD 的 SCIM 執行，就可以開始開發您的 SCIM 端點。 您可以依賴 SCIM commuinty 所發佈的許多開放原始碼 SCIM 程式庫，而不是從頭開始並完全建立完整的執行。  
+既然您已經設計好架構並瞭解 Azure AD SCIM 的執行，就可以開始開發您的 SCIM 端點。 您可以依賴 SCIM commuinty 所發佈的許多開放原始碼 SCIM 程式庫，而不是從頭開始並完全建立完整的執行。  
 Azure AD 布建小組發佈的開放原始碼 .NET Core[參考程式碼](https://aka.ms/SCIMReferenceCode)，就是一種可讓您開始進行開發的資源。 建立 SCIM 端點之後，您會想要測試它。您可以使用在參考程式碼中提供的[postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上述](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的範例要求/回應來執行。  
 
 注意：參考程式碼的目的是要協助您開始建立 SCIM 端點，並以「原樣」提供。 我們歡迎您參與社區的貢獻，協助建立和維護程式碼。 

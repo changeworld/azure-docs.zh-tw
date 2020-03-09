@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表和可用的 Kusto 資料類型、運算子和函數，Azure Resource Graph。
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851208"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927488"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -28,8 +28,12 @@ Resource Graph 會針對它所儲存的資料，提供有關 Resource Manager �
 |---|---|
 |資源 |未在查詢中定義的預設資料表。 大部分的 Resource Manager 資源類型和屬性都在這裡。 |
 |ResourceContainers |包含訂用帳戶（預覽版--`Microsoft.Resources/subscriptions`）和資源群組（`Microsoft.Resources/subscriptions/resourcegroups`）資源類型和資料。 |
+|AdvisorResources |包含與 `Microsoft.Advisor`_相關_的資源。 |
 |AlertsManagementResources |包含與 `Microsoft.AlertsManagement`_相關_的資源。 |
+|MaintenanceResources |包含與 `Microsoft.Maintenance`_相關_的資源。 |
 |SecurityResources |包含與 `Microsoft.Security`_相關_的資源。 |
+
+如需包含資源類型的完整清單，請參閱[參考：支援的資料表和資源類型](../reference/supported-tables-resources.md)。
 
 > [!NOTE]
 > [_資源_] 是預設資料表。 查詢_Resources_資料表時，除非使用 `join` 或 `union`，否則不需要提供資料表名稱。 不過，建議的做法是在查詢中一律包含初始資料表。
@@ -67,7 +71,7 @@ Resource Graph 支援所有的 KQL[資料類型](/azure/kusto/query/scalar-data-
 
 |KQL |Resource Graph 範例查詢 |注意 |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[金鑰保存庫計數](../samples/starter.md#count-keyvaults) | |
+|[計數](/azure/kusto/query/countoperator) |[金鑰保存庫計數](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[顯示特定別名的相異值](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[依作業系統類型計算的虛擬機器計數](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[金鑰保存庫與訂用帳戶名稱](../samples/advanced.md#join) |支援的聯結類別： [innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、 [inner](/azure/kusto/query/joinoperator#inner-join)、 [leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 單一查詢中的限制為 3 `join`。 不允許自訂聯結策略（例如廣播聯結）。 可以在單一資料表內，或在_Resources_和_ResourceContainers_資料表之間使用。 |
@@ -84,7 +88,7 @@ Resource Graph 支援所有的 KQL[資料類型](/azure/kusto/query/scalar-data-
 |[union](/azure/kusto/query/unionoperator) |[將兩個查詢的結果合併成單一結果](../samples/advanced.md#unionresults) |允許單一資料表： _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\]_資料表_。 單一查詢中的限制為 3 `union` 的腿。 不允許 `union` 支線資料表的模糊解析度。 可以在單一資料表內，或在_Resources_和_ResourceContainers_資料表之間使用。 |
 |[where](/azure/kusto/query/whereoperator) |[顯示包含儲存體的資源](../samples/starter.md#show-storage) | |
 
-## <a name="escape-characters"></a>逸出字元
+## <a name="escape-characters"></a>Escape 字元
 
 某些屬性名稱（例如包含 `.` 或 `$`的內容）必須在查詢中包裝或換行，否則屬性名稱會不正確地轉譯，而且不會提供預期的結果。
 

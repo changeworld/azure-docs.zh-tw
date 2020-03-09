@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184443"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932994"
 ---
 # <a name="localization"></a>當地語系化
 
@@ -39,9 +39,9 @@ ms.locfileid: "78184443"
 
 **Localization** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 已啟用 | 否 | 可能的值：`true` 或 `false`。 |
+| 啟用 | 否 | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含下列 XML 元素
 
@@ -54,7 +54,7 @@ ms.locfileid: "78184443"
 
 **SupportedLanguages** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用來做為當地語系化資源的預設語言。 |
 | MergeBehavior | 否 | 列舉值，這些值是與具有相同識別碼之父代原則中存在的 ClaimType 合併的值。 在覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定應該在父代原則中指定的集合結尾後，附加上存在的資料集合。 `Prepend` 值指定應該在父代原則中指定的集合之前，新增存在的資料集合。 `ReplaceAll` 值指定應該忽略父代原則中定義的資料集合，而改用目前原則中定義的資料。 |
@@ -71,7 +71,7 @@ ms.locfileid: "78184443"
 
 **LocalizedResources** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用來唯一識別當地語系化資源的識別碼。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "78184443"
 
 **LocalizedCollection** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 參考原則檔中的 ClaimType 元素或使用者介面元素。 |
 | ElementId | 是 | 此字串包含對 ClaimsSchema 區段中已定義的宣告類型，如果 **ElementType** 設為 ClaimType，則會使用該字串。 |
@@ -104,11 +104,11 @@ ms.locfileid: "78184443"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| 項目 | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
+| Item | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
 
 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Text | 是 | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
 | 值 | 是 | 與選取此選項相關聯的字串宣告值。 |
@@ -144,9 +144,9 @@ ms.locfileid: "78184443"
 
 **LocalizedString** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 參考原則中的宣告類型元素或使用者介面元素。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或  。 `ClaimType` 值用於將其中一個宣告屬性當地語系化，如 StringId 中所指定。 `UxElement` 值用於將其中一個使用者介面元素當地語系化，如 StringId 中所指定。 `ErrorMessage` 值用於將其中一個系統錯誤訊息當地語系化，如 StringId 中所指定。 `Predicate` 值用於將其中一個 [Predicate](predicates.md) 錯誤訊息當地語系化，如 StringId 中所指定。 `InputValidation` 值用於將其中一個 [PredicateValidation](predicates.md) 群組錯誤訊息當地語系化，如 StringId 中所指定。 |
+| ElementType | 是 | 參考原則中的宣告類型元素或使用者介面元素。 可能的值： `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`或 `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 值用於將其中一個宣告屬性當地語系化，如 StringId 中所指定。 `UxElement` 值用於將其中一個使用者介面元素當地語系化，如 StringId 中所指定。 `ErrorMessage` 值用於將其中一個系統錯誤訊息當地語系化，如 StringId 中所指定。 `Predicate` 值用於將其中一個 [Predicate](predicates.md) 錯誤訊息當地語系化，如 StringId 中所指定。 `InputValidation` 值用於將其中一個 [PredicateValidation](predicates.md) 群組錯誤訊息當地語系化，如 StringId 中所指定。 `GetLocalizedStringsTransformationClaimType` 值是用來將當地語系化的字串複製到宣告中。 如需詳細資訊，請參閱[GetLocalizedStringsTransformation 宣告轉換](string-transformations.md#getlocalizedstringstransformation)  | 
 | ElementId | 是 | 如果 **ElementType** 設為 `ClaimType``Predicate` 或 `InputValidation`，則此元素會包含對 ClaimsSchema 區段中已定義之宣告類型的參考。 |
 | StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 [ 識別碼的完整清單，請參閱](localization-string-ids.md)當地語系化字串識別碼`UxElement`。|
 

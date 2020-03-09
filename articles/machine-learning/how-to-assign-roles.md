@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 11/06/2019
+ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391025"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932596"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -116,7 +116,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 
-### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>問： 在 Azure Machine Learning 服務中執行各種動作所需的許可權為何？
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure Machine Learning 服務中執行各種動作所需的許可權為何？
 
 下表是 Azure Machine Learning 活動的摘要，以及在最少範圍執行它們所需的許可權。 舉例來說，如果您可以使用工作區範圍（第4欄）來執行活動，則具有該許可權的所有更高範圍也會自動生效。 此資料表中的所有路徑都是 `Microsoft.MachineLearningServices/`的**相對路徑**。
 
@@ -129,7 +129,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 資料平面活動（例如提交執行、存取資料、部署模型或發行管線） | 不需要 | 不需要 | 允許的擁有者、參與者或自訂角色： `workspaces/*/write` <br/> 請注意，您也需要已向工作區註冊的資料存放區，才能讓 MSI 存取您儲存體帳戶中的資料。 |
 
 
-### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>問： 如何? 列出我的訂用帳戶中的所有自訂角色嗎？
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. 如何? 列出我的訂用帳戶中的所有自訂角色嗎？
 
 在 Azure CLI 中，執行下列命令。
 
@@ -137,7 +137,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
 
-### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>問： 如何? 在我的訂用帳戶中尋找角色的角色定義嗎？
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. 如何? 在我的訂用帳戶中尋找角色的角色定義嗎？
 
 在 Azure CLI 中，執行下列命令。 請注意，`<role-name>` 應該使用上述命令所傳回的相同格式。
 
@@ -145,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 az role definition list -n <role-name> --subscription <sub-id>
 ```
 
-### <a name="q-how-do-i-update-a-role-definition"></a>問： 如何? 更新角色定義？
+### <a name="q-how-do-i-update-a-role-definition"></a>Q. 如何? 更新角色定義？
 
 在 Azure CLI 中，執行下列命令。
 
@@ -157,13 +157,13 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 > [!NOTE]
 > 角色更新可能需要15分鐘到1小時的時間，才能套用到該範圍內的所有角色指派。
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>問： 我可以定義防止更新工作區版本的角色嗎？ 
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. 我可以定義防止更新工作區版本的角色嗎？ 
 
 是，您可以定義防止更新工作區版本的角色。 因為工作區更新是在工作區物件上進行的修補呼叫，所以您可以將下列動作放在 JSON 定義的 `"NotActions"` 陣列中： 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 
-### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>問： 在工作區中執行配額作業需要哪些許可權？ 
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. 在工作區中執行配額作業需要哪些許可權？ 
 
 您需要訂用帳戶層級許可權，才能在工作區中執行任何與配額相關的作業。 這表示只有在訂用帳戶範圍具有寫入權限時，才會為受控計算資源設定訂用帳戶層級配額或工作區層級配額。 
 

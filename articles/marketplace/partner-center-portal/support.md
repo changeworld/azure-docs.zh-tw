@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898215"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927545"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心的商業 Marketplace 方案支援
 
@@ -27,9 +27,9 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 
 1. 使用您的工作帳戶登入[合作夥伴中心的商業 Marketplace 方案](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。 （如果您尚未這麼做，就必須[建立合作夥伴中心帳戶](./create-account.md)）。
 
-1. 在頁面右側的上方功能表中，選取 [**支援**] 圖示。 
+2. 在頁面右側的上方功能表中，選取 [**支援**] 圖示。 
  
-1. [說明**及支援**] 窗格將會出現在頁面的右側。 
+3. [說明**及支援**] 窗格將會出現在頁面的右側。 
  
    ![支援下拉式功能表](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 
    ![首頁的說明及支援](./media/homepage-help-support.png)
 
-1. 選取 **[檔](../index.md)** 以查看問題和資源的完整解答。 
+4. 選取 **[檔](../index.yml)** 以查看問題和資源的完整解答。 
 
-1. 選取 [ **[Marketplace 合作夥伴社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ]，利用其他 Microsoft 發行者的知識來回答您的問題。 
+5. 選取 [ **[Marketplace 合作夥伴社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ]，利用其他 Microsoft 發行者的知識來回答您的問題。 
 
-1. 選取 [ **[其他協助](https://aka.ms/marketplacepublishersupport)** ] 以開啟**新的支援要求**票證。  
+6. 選取 [ **[其他協助](https://aka.ms/marketplacepublishersupport)** ] 以開啟**新的支援要求**票證。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何開啟支援票證
 

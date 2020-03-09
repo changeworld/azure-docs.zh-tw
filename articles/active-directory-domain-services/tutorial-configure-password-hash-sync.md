@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
-ms.translationtype: HT
+ms.openlocfilehash: 93e5ee9b46fb3387b70dd5092f72efcaa8a2bc19
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612576"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669391"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教學課程：在混合式環境的 Azure Active Directory Domain Services 中啟用密碼同步處理
 
@@ -59,16 +59,16 @@ Azure AD Connect 可以設定成會同步處理 Azure AD DS 所需的 NTLM 或 K
 
 現在，Azure AD Connect 已安裝並設定為與 Azure AD 同步處理，接下來請設定 NTLM 和 Kerberos 的舊版密碼雜湊同步。 PowerShell 指令碼可用來設定必要的設定，然後開始對 Azure AD 進行完整的密碼同步處理。 當 Azure AD Connect 密碼雜湊同步處理程序完成後，使用者將可透過使用舊版 NTLM 或 Kerberos 密碼雜湊的 Azure AD DS 來登入應用程式。
 
-1. 在已安裝 Azure AD Connect 的電腦上，從 [開始] 功能表開啟 [Azure AD Connect] > [同步處理服務]  。
-1. 選取 [連接器]  索引標籤。此時會列出用來在內部部署 AD DS 環境與 Azure AD 之間建立同步處理的連線資訊。
+1. 在已安裝 Azure AD Connect 的電腦上，從 [開始] 功能表開啟 [Azure AD Connect] > [同步處理服務]。
+1. 選取 [**連接器**] 索引標籤。會列出用來建立內部部署 AD DS 環境與 Azure AD 之間同步處理的連接資訊。
 
-    [類型]  會顯示為 [Windows Azure Active Directory (Microsoft)]  (用於 Azure AD 連接器) 或 [Active Directory Domain Services]  (用於內部部署 AD DS 連接器)。 請記下連接器名稱，以便在下一個步驟的 PowerShell 指令碼中使用。
+    [類型] 會顯示為 [Windows Azure Active Directory (Microsoft)] (用於 Azure AD 連接器) 或 [Active Directory Domain Services] (用於內部部署 AD DS 連接器)。 請記下連接器名稱，以便在下一個步驟的 PowerShell 指令碼中使用。
 
     ![在 Sync Service Manager 中列出連接器名稱](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
     在此範例螢幕擷取畫面中，會使用下列連接器：
 
-    * Azure AD 連接器的名稱為「aaddscontoso.onmicrosoft.com - AAD」 
+    * Azure AD 連接器名為*aaddscontoso.onmicrosoft.com-AAD*
     * 內部部署 AD DS 連接器的名稱為 *onprem.contoso.com*
 
 1. 將下列 PowerShell 指令碼複製並貼到已安裝 Azure AD Connect 的電腦。 指令碼會觸發包含舊版密碼雜湊的完整密碼同步作業。 使用上一個步驟中的連接器名稱來更新 `$azureadConnector` 和 `$adConnector` 變數。
@@ -79,6 +79,8 @@ Azure AD Connect 可以設定成會同步處理 Azure AD DS 所需的 NTLM 或 K
     # Define the Azure AD Connect connector names and import the required PowerShell module
     $azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"
     $adConnector = "<CASE SENSITIVE AD DS CONNECTOR NAME>"
+    
+    Import-Module "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1"
     Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
 
     # Create a new ForceFullPasswordSync configuration parameter object then

@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391473"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -181,7 +181,7 @@ Azure 應用程式方案有兩種：受控應用程式和解決方案範本。
 
 提供供應專案的較長描述（最多256個字元）。 此描述可用於 marketplace 搜尋結果。
 
-### <a name="description"></a>說明
+### <a name="description"></a>描述
 
 提供供應專案的較長描述（最多3000個字元）。 在 marketplace 清單總覽中，客戶會看到這項描述。 包含您供應專案的價值主張、主要優點、類別及/或產業關聯、應用程式內購買機會，以及任何必要的公開。 
 
@@ -208,7 +208,7 @@ Azure 應用程式方案有兩種：受控應用程式和解決方案範本。
 
 輸入您組織隱私權原則的 URL。 貴使用者必須負責確保您的應用程式符合隱私權法律和法規，以及提供有效的隱私權原則。
 
-#### <a name="useful-links"></a>有用連結
+#### <a name="useful-links"></a>實用的連結
 
 提供解決方案的選擇性補充線上檔。  按一下 [ **+ 新增連結**] 來新增其他有用的連結。
 
@@ -317,7 +317,7 @@ Azure Government 服務會處理受特定政府法規和需求的資料，例如
 
 提供軟體方案的簡短摘要。  最多可包含100個字元。
 
-### <a name="description"></a>說明
+### <a name="description"></a>描述
 
 此描述可讓您瞭解此軟體方案的獨特之處，以及與您的供應專案內其他軟體方案有何差異。 最多可包含2000個字元。
 
@@ -352,7 +352,7 @@ Azure Government 服務會處理受特定政府法規和需求的資料，例如
 
 如果您已經在美國美元（USD）中設定方案的價格，並新增另一個市場位置，新市場的價格將會根據目前的匯率計算。 在發佈之前，請務必先檢查每個市場的價格。 儲存變更之後，您可以使用 [匯出價格（.xlsx）] 連結來檢查定價。
 
-### <a name="pricing"></a>定價
+### <a name="pricing"></a>價格
 
 提供此方案的每月價格。  此價格是除了此解決方案所部署的資源所產生的任何 Azure 基礎結構或隨用隨付軟體成本。
 

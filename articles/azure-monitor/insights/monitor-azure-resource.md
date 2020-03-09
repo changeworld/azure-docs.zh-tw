@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385580"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您的重要應用程式和商務程式依賴 Azure 資源時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以及您可以如何使用 Azure 監視器的功能來分析此資料併發出警示。
@@ -129,7 +129,7 @@ Azure 監視器記錄會合並來自多個服務和其他資料來源的記錄�
 - 如需如何在 Azure 監視器記錄中結構化資源記錄資料的說明，請參閱[收集模式](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode)。
 - 請參閱每個 Azure 服務的檔，以取得其在 Azure 監視器記錄中之資料表的詳細資料。
 
-![記錄檔](media/monitor-azure-resource/logs.png)
+![記錄](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>從命令列監視
 您可以從命令列存取從資源收集的監視資料，或使用[Azure PowerShell](/powershell/azure/)或[Azure 命令列介面](/cli/azure/)包含在腳本中。 

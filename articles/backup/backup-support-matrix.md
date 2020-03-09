@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363699"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932607"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -84,7 +84,7 @@ Azure 備份使用復原服務保存庫來協調和管理備份。 它也會使�
 
 ## <a name="daylight-saving-time-support"></a>日光節約時間支援
 
-針對 Azure VM 備份，Azure 備份不支援日光節約時間的自動時鐘調整。 請視需要手動修改備份原則。
+針對 Azure VM 備份，Azure 備份不支援日光節約時間的自動時鐘調整。 它不會向前或向後移動備份的小時。 若要確保備份會在所需的時間執行，請視需要手動修改備份原則。
 
 ## <a name="disk-deduplication-support"></a>磁碟重複資料刪除支援
 
@@ -138,7 +138,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 **設定** | **限制**
 --- | ---
 **每個受保護的實例（機器或工作負載）的最大復原點** | 9999
-**復原點的最大到期時間** | 無限制
+**復原點的最大到期時間** | 沒有限制
 **DPM/MABS 的備份頻率上限** | 每隔 15 分鐘 (SQL Server)<br/><br/> 針對其他工作負載一小時一次
 **備份至保存庫的頻率上限** | 內部**部署 Windows 機器或執行 MARS 的 Azure vm：** 每天三個<br/><br/> **DPM/MABS：** 每天兩個<br/><br/> **AZURE VM 備份：** 一天一次
 **復原點保留期** | 每日、每週、每月、每年
@@ -151,7 +151,7 @@ Azure 備份已新增跨區域還原功能，以加強資料可用性和復原�
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是的。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
+| Azure VM               | 是。 已加密的 Vm 和低於 4 TB 磁片的 Vm 支援公開有限預覽 | 美國中西部   |
 | MARS 代理程式/內部部署 | 否                                                           | N/A               |
 | SQL/SAP HANA          | 否                                                           | N/A               |
 | AFS                    | 否                                                           | N/A               |

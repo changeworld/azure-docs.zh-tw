@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668987"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932676"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -158,7 +158,7 @@ Windows 7| 1700 GB
 
 **型別** | **支援**
 --- | ---
-已加密| 支援。
+加密的<sup>*</sup>| 支援。
 Compressed | 支援。
 疏鬆 | 支援。
 已壓縮和疏鬆 |支援。
@@ -169,6 +169,8 @@ Compressed | 支援。
 疏鬆資料流| 不支援。 略.
 OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
 已啟用 DFS 複寫的資料夾 | 不支援。
+
+\* 確定 MARS 代理程式可存取所需的憑證，以存取加密的檔案。 將略過無法存取的檔案。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支援備份的磁片磁碟機或磁片區
 

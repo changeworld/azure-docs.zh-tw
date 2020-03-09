@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389808"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932628"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 叢集的容量規劃
 
@@ -56,7 +56,7 @@ Azure 儲存體有某些[容量限制](../azure-resource-manager/management/azur
 * 當您想要建立資料時，您已上傳至可供叢集使用的 blob 容器。
 * 當您基於安全性的原因或要簡化系統管理而需要將儲存體的不同部分進行隔離。
 
-針對 48 節點叢集，建議使用 4 到 8 個儲存體帳戶。 雖然可能已經有足夠的儲存體總計，每個儲存體帳戶都會提供額外的網路頻寬供計算節點使用。 當您有多個儲存體帳戶時，請對每個儲存體帳戶使用隨機名稱，不含前置詞。 隨機命名的目的在於減少儲存體瓶頸 (節流) 或所有帳戶發生一般模式失敗的機會。 為提升效能，每個儲存體帳戶僅使用一個容器。
+為提升效能，每個儲存體帳戶僅使用一個容器。
 
 ## <a name="choose-a-cluster-type"></a>選擇叢集類型
 
@@ -76,7 +76,7 @@ Azure 儲存體有某些[容量限制](../azure-resource-manager/management/azur
 
 根據您的叢集類型，增加背景工作節點數可新增額外的計算容量 (例如更多核心)，但也可以新增至整個叢集所需的記憶體總數，以支援記憶體內正在進行處理的資料儲存體。 如同 VM 大小和類型的選擇，通常會使用模擬的工作負載或 Canary 查詢，以實證方式達到選取正確的叢集縮放比例。
 
-您可以擴增叢集以符合尖峰負載需求，然後當不再需要這些額外的節點時，將其縮減。 自動調整[功能](hdinsight-autoscale-clusters.md)可讓您根據預先決定的計量和時間，自動擴充您的叢集。 如需手動調整叢集的詳細資訊，請參閱[調整 HDInsight 叢集規模](hdinsight-scaling-best-practices.md)。
+您可以相應放大叢集以符合尖峰負載需求，然後當不再需要這些額外的節點時，將其相應縮小。 自動調整[功能](hdinsight-autoscale-clusters.md)可讓您根據預先決定的計量和時間，自動擴充您的叢集。 如需手動調整叢集的詳細資訊，請參閱[調整 HDInsight 叢集規模](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>叢集生命週期
 
@@ -92,7 +92,7 @@ Azure 儲存體有某些[容量限制](../azure-resource-manager/management/azur
 
 ## <a name="quotas"></a>配額
 
-決定您的目標叢集 VM 大小、縮放比例和類型之後，請檢查您訂用帳戶的目前配額容量限制。 當您觸達配額限制時，可能無法部署新的叢集，或新增更多背景工作節點來將現有的叢集擴增。 唯一的配額限制是 CPU 核心配額，其存在於每個訂用帳戶區域層級。 例如，您的訂用帳戶在美國東部區域可能有 30 個核心限制。 
+決定您的目標叢集 VM 大小、縮放比例和類型之後，請檢查您訂用帳戶的目前配額容量限制。 當您觸達配額限制時，可能無法部署新的叢集，或新增更多背景工作節點來將現有的叢集相應放大。 唯一的配額限制是 CPU 核心配額，其存在於每個訂用帳戶區域層級。 例如，您的訂用帳戶在美國東部區域可能有 30 個核心限制。 
 
 若要檢查可用的核心，請執行下列步驟：
 

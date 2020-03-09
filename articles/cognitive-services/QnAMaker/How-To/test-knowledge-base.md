@@ -1,22 +1,14 @@
 ---
 title: 如何測試知識庫 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流程而言，是相當重要的部分。 您可以透過增強的交談介面測試知識庫，也能以之進行編輯。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091758"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927267"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中測試您的知識庫
 
@@ -61,11 +53,11 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 
 ### <a name="add-a-new-answer"></a>加入新答案
 
-如果任何符合的現有答案不正確，或答案不存在於知識庫 (在資料庫中找不到任何合適的相符項目)，您可以加入新的答案。 
+如果任何符合的現有答案不正確，或答案不存在於知識庫 (在資料庫中找不到任何合適的相符項目)，您可以加入新的答案。
 
-在 [解答] 清單的底部，使用文字方塊來輸入新的答案，然後按 enter 加以新增。 
+在 [解答] 清單的底部，使用文字方塊來輸入新的答案，然後按 enter 加以新增。
 
-選取 [Save and train]\(儲存並訓練\) 保留此答案。 新的問答組現在已加入至您的知識庫。 
+選取 [Save and train]\(儲存並訓練\) 保留此答案。 新的問答組現在已加入至您的知識庫。
 
 > [!NOTE]
 > 只有在您按下 [Save and train]\(儲存並訓練\) 按鈕時，才會儲存對於知識庫進行的所有編輯。
@@ -83,12 +75,14 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 * 判斷一組問題的最高答案和分數
 * 驗證問題集合的預期解答
 
-批次測試是以批次測試控管提供。 此工具可做為下載的[壓縮可執行檔](https://aka.ms/qnamakerbatchtestingtool)，或作為[ C#原始碼](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)。 
+如需逐步指示，請參閱批次測試[教學](../Quickstarts/batch-testing.md)課程。
+
+批次測試是以批次測試控管提供。 此工具可做為下載的[壓縮可執行檔](https://aka.ms/qnamakerbatchtestingtool)，或作為[ C#原始碼](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)。
 
 [此工具的參考檔](../reference-tsv-format-batch-testing.md)包括：
 
 * 工具的命令列範例
-* TSV 輸入和 outfile 檔案的格式 
+* TSV 輸入和 outfile 檔案的格式
 
 ## <a name="next-steps"></a>後續步驟
 

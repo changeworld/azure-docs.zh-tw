@@ -4,11 +4,11 @@ description: 說明支援資源管理員、其結構描述及可用 API 版本�
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372212"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -29,7 +29,7 @@ ms.locfileid: "75478587"
 
 如需將資源提供者對應至 Azure 服務的清單，請參閱[azure 服務的資源提供者](azure-services-resource-providers.md)。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 若要查看所有資源提供者，以及您訂用帳戶的登錄狀態：
 

@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189645"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933013"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -43,7 +43,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 | 我的應用程式預期 SAML 判斷提示會完成驗證。 | **Azure AD B2C 作為身分識別提供者（IdP）**<br />Azure AD B2C 會作為應用程式的 SAML IdP。 | 本文。 |
 | 我的使用者必須使用與 SAML 相容的身分識別提供者（例如 ADFS、Salesforce 或 Shibboleth）進行單一登入。  | **Azure AD B2C 會作為服務提供者（SP）**<br />當連接到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您的應用程式與 SAML 識別提供者之間的同盟 proxy。  | <ul><li>[使用自訂原則，設定以 ADFS 作為 SAML IdP 的登入](identity-provider-adfs2016-custom.md)</li><li>[使用自訂原則來設定使用 Salesforce SAML 提供者進行登入](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成在 Azure AD B2C 中[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您需要從文章中討論的自訂原則入門套件中的*SocialAndLocalAccounts*自訂原則。
 * 安全性聲明標記語言（SAML）通訊協定的基本瞭解。
@@ -113,7 +113,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 ### <a name="21-create-the-saml-token-issuer"></a>2.1 建立 SAML 權杖簽發者
 
-現在，為您的租使用者新增功能以發行 SAML 權杖。
+現在，使用[saml 權杖簽發者](saml-issuer-technical-profile.md)和[saml 會話提供者](custom-policy-reference-sso.md#samlssosessionprovider)的技術設定檔，為您的租使用者新增功能來發行 SAML 權杖。
 
 開啟自訂原則入門套件中的 `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** 。
 
@@ -324,7 +324,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 此選擇性屬性代表信賴憑證者中繼資料中的 `Logout` URL （`SingleLogoutService` URL），而此的 `BindingType` 假設為 `Http-Redirect`。
 
-在使用 SAML 測試應用程式的本教學課程中，請將 `logoutUrl` 設定為 `https://samltestapp2.azurewebsites.net/logout`：
+針對使用 SAML 測試應用程式的本教學課程，請將 `logoutUrl` 設定為 `https://samltestapp2.azurewebsites.net/logout`：
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

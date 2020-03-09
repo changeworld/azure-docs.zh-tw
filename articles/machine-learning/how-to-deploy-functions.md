@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-ms.date: 11/22/2019
-ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/06/2020
+ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471936"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927448"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署到 Azure Functions （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,10 +148,10 @@ print(blob.location)
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此範例中，會使用_Linux Premium_定價層（`--sku EP1`）。
+    在此範例中，會使用_Linux 基本_定價層（`--sku B1`）。
 
     > [!IMPORTANT]
     > Azure Machine Learning 所建立的映射會使用 Linux，因此您必須使用 `--is-linux` 參數。
@@ -159,13 +159,13 @@ print(blob.location)
 1. 建立要用於 web 作業儲存體的儲存體帳戶，並取得其連接字串。 以您要使用的名稱取代 `<webjobStorage>`。
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. 若要建立函數應用程式，請使用下列命令。 以您要使用的名稱取代 `<app-name>`。 以先前傳回 `package.location` 中的值取代 `<acrinstance>` 和 `<imagename>`。 將 Replace `<webjobStorage>` 取代為上一個步驟中的儲存體帳戶名稱：
+1. 若要建立函數應用程式，請使用下列命令。 以您要使用的名稱取代 `<app-name>`。 以先前傳回 `package.location` 中的值取代 `<acrinstance>` 和 `<imagename>`。 將 `<webjobStorage>` 取代為上一個步驟中的儲存體帳戶名稱：
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -179,7 +179,7 @@ print(blob.location)
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli-interactive
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     記錄此連接字串，以提供給函式應用程式。 我們稍後會在要求 `<triggerConnectionString>` 時使用
@@ -205,7 +205,7 @@ print(blob.location)
     ```
     儲存傳回的值，將在下一個步驟中用來做為 `imagetag`。
 
-1. 若要為函數應用程式提供存取容器登錄所需的認證，請使用下列命令。 以您要使用的名稱取代 `<app-name>`。 以上一個步驟中 AZ CLI call 的值取代 `<acrinstance>` 和 `<imagetag>`。 以先前抓取的 ACR 登入資訊取代 `<username>` 和 `<password>`：
+1. 若要為函數應用程式提供存取容器登錄所需的認證，請使用下列命令。 以函數應用程式的名稱取代 `<app-name>`。 以上一個步驟中 AZ CLI call 的值取代 `<acrinstance>` 和 `<imagetag>`。 以先前抓取的 ACR 登入資訊取代 `<username>` 和 `<password>`：
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -246,6 +246,52 @@ print(blob.location)
 
 > [!IMPORTANT]
 > 可能需要幾分鐘的時間，才會載入映射。 您可以使用 Azure 入口網站來監視進度。
+
+## <a name="test-the-deployment"></a>測試部署
+
+載入映射並提供應用程式之後，請使用下列步驟來觸發應用程式：
+
+1. 建立文字檔，其中包含 score.py 檔案所預期的資料。 下列範例會使用需要10個數字陣列的 score.py：
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > 資料的格式取決於您的 score.py 和模型所預期的內容。
+
+2. 使用下列命令，將此檔案上傳至稍早建立的觸發儲存體 blob 中的輸入容器。 將 `<file>` 取代為包含資料的檔案名。 將 `<triggerConnectionString>` 取代為稍早傳回的連接字串。 在此範例中，`input` 是稍早建立的輸入容器名稱。 如果您使用不同的名稱，請取代此值：
+
+    ```azurecli-interactive
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    此命令的輸出類似下列 JSON：
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. 若要查看函式所產生的輸出，請使用下列命令來列出所產生的輸出檔。 將 `<triggerConnectionString>` 取代為稍早傳回的連接字串。 在此範例中，`output` 是稍早建立的輸出容器名稱。 如果您使用不同的名稱，請取代此值：
+
+    ```azurecli-interactive
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    此命令的輸出類似于 `sample_input_out.json`。
+
+4. 若要下載檔案並檢查內容，請使用下列命令。 將 `<file>` 取代為上一個命令所傳回的檔案名。 將 `<triggerConnectionString>` 取代為先前傳回的連接字串： 
+
+    ```azurecli-interactive
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    命令完成後，請開啟檔案。 它包含模型所傳回的資料。
+
+如需使用 blob 觸發程式的詳細資訊，請參閱[建立由 Azure blob 儲存體所觸發](/azure/azure-functions/functions-create-storage-blob-triggered-function)的函式一文。
 
 ## <a name="next-steps"></a>後續步驟
 

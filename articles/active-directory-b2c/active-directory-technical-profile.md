@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397833"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932971"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -58,13 +58,13 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 
 ## <a name="input-claims"></a>輸入宣告
 
-下列技術設定檔包含社交和本機帳戶的 **InputClaims**：
+InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建立一個新的。 在所有 Azure AD 技術設定檔的輸入宣告集合中，必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
 
-- 社交帳戶技術設定檔 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserWriteUsingAlternativeSecurityId** 包含 **AlternativeSecurityId** 宣告。 此宣告包含社交帳戶使用者識別碼。
-- 本機帳戶技術設定檔 **AAD-UserReadUsingEmailAddress** 和 **AAD-UserWriteUsingLogonEmail** 包含 **email** 宣告。 此宣告包含本機帳戶的登入名稱。
-- 統一 (本機和社交) 技術設定檔 **AAD-UserReadUsingObjectId** **AAD-UserWritePasswordUsingObjectId**、**AAD-UserWriteProfileUsingObjectId**，以及 **AAD-UserWritePhoneNumberUsingObjectId** 包含 **objectId** 宣告。 帳戶的唯一識別碼。
+若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是在 Azure AD 目錄中唯一識別帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **signInNames. emailAddress**、signInNames、 **userName**或**alternativeSecurityId**。 
 
-**InputClaimsTransformations** 元素可能含有 **InputClaimsTransformation** 的集合，用於修改輸入宣告或產生新的輸入宣告。
+若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **signInNames. emailAddress**或**signInNames. userName**。 針對同盟帳戶： **alternativeSecurityId**。
+
+InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
 
 ## <a name="output-claims"></a>輸出宣告
 
@@ -253,7 +253,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
