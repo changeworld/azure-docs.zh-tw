@@ -193,10 +193,8 @@
           items:
             - name: 文字轉換語音 REST API
               href: rest-text-to-speech.md
-        - name: 電話組使用方式
-          items:
-            - name: 語音 API (SAPI) 電話組使用方式
-              href: sapi-phoneset-usage.md
+        - name: SSML 注音集合
+          href: speech-ssml-phonetic-sets.md
     - name: 資源
       items:
         - name: 文字轉換語音常見問題集
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: 取得語音裝置 SDK
           href: get-speech-devices-sdk.md
-        - name: 版本資訊
-          href: devices-sdk-release-notes.md
-        - name: Roobo v1 詳細資料
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 詳細資料
-          href: speech-devices-sdk-roobo-v2.md
-        - name: 麥克風規格
     - name: 硬體
       items:
         - name: 麥克風陣列建議
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 套件
+        - name: Roobo v1 詳細資料
           href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 詳細資料
+          href: speech-devices-sdk-roobo-v2.md
     - name: 快速入門
       items:
         - name: 使用語音裝置 SDK

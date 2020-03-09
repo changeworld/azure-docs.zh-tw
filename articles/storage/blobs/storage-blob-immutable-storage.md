@@ -10,11 +10,11 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365329"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變的儲存體儲存業務關鍵的 blob 資料
 
@@ -42,7 +42,7 @@ Azure Blob 儲存體的固定儲存體可讓使用者以 WORM （一次寫入，
 
 - **所有 Blob 層都支援：** WORM 原則與 Azure Blob 儲存層無關，而且會套用至所有層：經常性存取層、非經常性存取層和封存存取層。 使用者可以將資料轉換到其工作負載的成本最佳化層中，同時維護資料不變性。
 
-- **容器層級組態**：使用者可以在容器層級設定以時間為基礎的保留原則和合法保存標記。 使用簡單的容器層級設定，使用者可以建立及鎖定以時間為基礎的保留原則、延長保留間隔、設定和清除法務保存等等。 這些原則會套用到現有和新容器中的所有 Blob。
+- **容器層級組態**：使用者可以在容器層級設定以時間為基礎的保留原則和合法保存標記。 藉由使用簡單的容器層級設定，使用者可以建立及鎖定以時間為基礎的保留原則、延長保留間隔、設定和清除合法保存等。 這些原則會套用到現有和新容器中的所有 Blob。
 
 - **審核記錄支援**：每個容器都包含一個原則 Audit 記錄檔。 它會針對鎖定的以時間為基礎的保留原則，最多顯示7個以時間為基礎的保留命令，並包含使用者識別碼、命令類型、時間戳記及保留間隔。 針對合法保存，此記錄包含使用者識別碼、命令類型、時間戳記及合法保存標記。 此記錄會保留在原則的存留期間，符合 SEC 17a-4 （f）法規指導方針。 [ [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)檔] 會顯示所有控制平面活動的更完整記錄;啟用[Azure 診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)時，會保留並顯示資料平面作業。 基於法規需求或其他目的，使用者有責任持續不斷地儲存那些記錄。
 
@@ -110,17 +110,17 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 ## <a name="scenarios"></a>案例
 下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱[Azure Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)檔。
 
-|案例  |Blob 狀態  |已拒絕 Blob 作業  |容器和帳戶保護
+|狀況  |Blob 狀態  |已拒絕 Blob 作業  |容器和帳戶保護
 |---------|---------|---------|---------|
 |Blob 上的有效保留間隔尚未過期及/或已設定合法保存     |固定：防刪與防寫保護         | 放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、刪除容器、刪除 blob、設定 Blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、累加複製 Blob、附加區塊<sup>2</sup>         |容器刪除被拒;拒絕刪除儲存體帳戶         |
 |Blob 上的有效保留間隔已過期，且未設定合法保存    |僅限防寫保護 (允許刪除作業)         |放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、設定 blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、增量複製 Blob、附加區塊<sup>2</sup>         |如果受保護容器中至少有1個 blob，則會拒絕容器刪除;只有*鎖定*的以時間為基礎的原則，才會拒絕刪除儲存體帳戶         |
-|未套用任何 WORM 原則（沒有以時間為基礎的保留，而且沒有合法的保存標記）     |可變動         |無         |無         |
+|未套用任何 WORM 原則（沒有以時間為基礎的保留，而且沒有合法的保存標記）     |可變動         |None         |None         |
 
 <sup>1</sup> blob 服務允許這些作業一次建立新的 blob。 不允許不可變容器中現有 blob 路徑上的所有後續覆寫作業。
 
 <sup>2</sup>只有啟用 `allowProtectedAppendWrites` 屬性的以時間為基礎的保留原則才允許附加區塊。 如需詳細資訊，請參閱[允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes)一節。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 使用這項功能不需額外付費。 固定資料的定價方式與可變數據相同。 如需 Azure Blob 儲存體的定價詳細資料，請參閱[Azure 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -128,7 +128,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您可以提供 WORM 合規性的檔嗎？**
 
-可以。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門從事記錄管理和資訊治理，Cohasset 關聯，以評估不可變的 Blob 儲存體，以及其是否符合特定的需求金融服務產業。 Cohasset 已驗證不變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，會符合 CFTC 規則1.31 （c）-（d）、FINRA 規則4511和 SEC 規則17a-4 的相關儲存需求。 Microsoft 以這組規則為目標，因為它們代表針對金融機構的記錄保留範圍內最具規範性的指導方針。 Cohasset 報告可在[Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得。 若要向 Microsoft 要求關於 WORM 不符合規範的證明，請洽詢 Azure 支援。
+是。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門從事記錄管理和資訊治理，Cohasset 關聯，以評估不可變的 Blob 儲存體，以及其是否符合特定的需求金融服務產業。 Cohasset 已驗證不變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，會符合 CFTC 規則1.31 （c）-（d）、FINRA 規則4511和 SEC 規則17a-4 的相關儲存需求。 Microsoft 以這組規則為目標，因為它們代表針對金融機構的記錄保留範圍內最具規範性的指導方針。 Cohasset 報告可在[Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得。 若要向 Microsoft 要求關於 WORM 不符合規範的證明，請洽詢 Azure 支援。
 
 **此功能是否只適用于區塊 blob 和附加 blob，或分頁 blob？**
 
@@ -168,7 +168,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您是否提供試用此功能的試用版或寬限期？**
 
-可以。 第一次建立以時間為基礎的保留原則時，它會處於「未*鎖定*」狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 這個鎖定的原則會防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
+是。 第一次建立以時間為基礎的保留原則時，它會處於「未*鎖定*」狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 這個鎖定的原則會防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
 
 **我可以搭配不可變的 blob 原則使用虛刪除嗎？**
 

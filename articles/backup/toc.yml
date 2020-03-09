@@ -142,10 +142,16 @@
       items:
         - name: 概觀
           href: backup-azure-about-mars.md
+        - name: 安裝或升級
+          items:
+            - name: 安裝 MARS 代理程式
+              href: install-mars-agent.md
+            - name: 升級 MARS 代理程式
+              href: upgrade-mars-agent.md
         - name: Backup
           items:
             - name: 備份 Windows Server 檔案和資料夾
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: 備份 Windows Server 系統狀態
               href: backup-azure-system-state.md
         - name: 還原

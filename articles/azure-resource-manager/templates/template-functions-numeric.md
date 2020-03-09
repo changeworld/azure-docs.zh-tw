@@ -4,11 +4,11 @@ description: 描述 Azure Resource Manager 範本中用來使用數值的函式�
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207229"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380631"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的數值函式
 

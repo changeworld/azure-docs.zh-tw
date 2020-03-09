@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380739"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示-參考指南
 
@@ -243,7 +243,7 @@ ms.locfileid: "77661954"
 |警示|描述|意圖（[深入瞭解](#intentions)）|
 |----|----|:----:|
 |**預覽-偵測到叢集的角色系結-系統管理員角色**|Kubernetes audit 記錄分析偵測到叢集管理員角色的新系結，因而導致系統管理員許可權。 不必要地提供系統管理員許可權可能會導致叢集中的許可權擴大問題。|持續性|
-|**預覽-偵測到公開的 Kubernetes 儀表板**|Kubernetes audit 記錄分析偵測到 LoadBalancer 服務發現 Kubernetes 儀表板的曝光。 公開的儀表板允許未經驗證的叢集管理存取，並造成安全性威脅。|持續性|
+|**預覽-偵測到公開的 Kubernetes 儀表板**|Kubernetes audit 記錄分析偵測到 LoadBalancer 服務發現 Kubernetes 儀表板的曝光。 公開的儀表板允許未經驗證的叢集管理存取，並造成安全性威脅。|初始存取|
 |**預覽-偵測到新的高許可權角色**|Kubernetes audit 記錄分析偵測到具有高許可權的新角色。 具有高許可權的角色系結，可讓使用者/群組在叢集中具有更高的許可權。 不必要地提供較高的許可權，可能會導致叢集中的許可權擴大問題。|持續性|
 |**預覽-偵測到 kube-系統命名空間中的新容器**|Kubernetes audit 記錄分析偵測到 kube 系統命名空間中的新容器，不在通常于此命名空間中執行的容器。 Kube 系統命名空間不應包含使用者資源。 攻擊者可以使用此命名空間來隱藏惡意元件。|持續性|
 |**預覽-偵測到數位貨幣挖掘容器**|Kubernetes audit 記錄分析偵測到具有與數位貨幣挖掘工具相關聯之影像的容器。|執行|
@@ -263,7 +263,7 @@ ms.locfileid: "77661954"
 |**SSH 伺服器正在容器內執行**|電腦記錄表示 SSH 伺服器正在 Docker 容器內執行。 雖然這種行為是刻意的，但通常會指出容器的設定不正確或遭到入侵。|執行|
 |**偵測到具有 miner 映射的容器**|機器記錄指出執行的 Docker 容器，是與數位貨幣挖掘建立關聯的映射。 這種行為可能表示您的資源被濫用。|執行|
 |**Kubernetes API 的可疑要求**|機器記錄表示對 Kubernetes API 提出了可疑的要求。 要求是從 Kubernetes 節點（可能是從節點中執行的其中一個容器）傳送。 雖然此行為可能是刻意的，但可能表示節點正在執行遭入侵的容器。|執行|
-|**對 Kubernetes 儀表板的可疑要求**|電腦記錄表示已對 Kubernetes 儀表板提出可疑的要求。 要求是從 Kubernetes 節點（可能是從節點中執行的其中一個容器）傳送。 雖然此行為可能是刻意的，但可能表示節點正在執行遭入侵的容器。|-|
+|**對 Kubernetes 儀表板的可疑要求**|電腦記錄表示已對 Kubernetes 儀表板提出可疑的要求。 要求是從 Kubernetes 節點（可能是從節點中執行的其中一個容器）傳送。 雖然此行為可能是刻意的，但可能表示節點正在執行遭入侵的容器。|橫向移動|
 ||||
 
 
@@ -395,7 +395,7 @@ ms.locfileid: "77661954"
 
 描述從偵察網路攻擊至資料外泄之進度的一系列步驟，通常稱為「終止鏈」。 
 
-資訊安全中心支援的終止鏈意圖是根據[MITRE ATT &AMP; CK™架構](https://attack.mitre.org/matrices/enterprise)，並在下表中說明。
+資訊安全中心支援的終止鏈意圖是根據[MITRE ATT &AMP; CK&trade; 架構](https://attack.mitre.org/matrices/enterprise)，並在下表中說明。
 
 |Intent|描述|
 |------|-------|

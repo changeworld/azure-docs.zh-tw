@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD 密碼保護
       items:
-        - name: 內部部署整合
-          items:
-            - name: 部署 Azure AD 密碼保護
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: 設定 Azure AD 密碼保護
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: 監視 Azure AD 密碼保護
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: 對 Azure AD 密碼保護進行疑難排解
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: 常見問題集
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: 內部部署代理程式版本記錄
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: 規劃和部署內部部署
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: 啟用及設定內部部署
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: 監視內部部署
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: 針對內部部署進行疑難排解
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: 內部部署常見問題集
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: 內部部署代理程式版本記錄
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD 智慧鎖定
       href: howto-password-smart-lockout.md
     - name: 無密碼

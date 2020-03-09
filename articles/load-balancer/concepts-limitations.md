@@ -30,7 +30,7 @@ Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 
     - **[公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)**
     - **[私人 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)**
 
-* **後端集**區：虛擬機器擴展集中的虛擬機器或實例群組，將會為傳入要求提供服務。 若要以符合成本效益的方式進行擴充，以滿足大量的傳入流量運算，計算指導方針通常會建議您在後端集區中新增更多執行個體。 當您相應增加或減少執行個體時，Load Balancer 會立即透過自動重新設定功能來自行重新設定。 從後端集區新增或移除 VM 會重新設定 Load Balancer，而不需要進行其他作業。 後端集區的範圍是虛擬網路中的任何虛擬機器。 後端集區最多可以有 1000 個後端執行個體或 IP 組態。
+* **後端集**區：虛擬機器擴展集中的虛擬機器或實例群組，將會為傳入要求提供服務。 若要以符合成本效益的方式進行擴充，以滿足大量的傳入流量運算，計算指導方針通常會建議您在後端集區中新增更多執行個體。 當您擴大或縮小執行個體時，Load Balancer 會立即透過自動重新設定功能來自行重新設定。 從後端集區新增或移除 VM 會重新設定 Load Balancer，而不需要進行其他作業。 後端集區的範圍是虛擬網路中的任何虛擬機器。 後端集區最多可以有 1000 個後端執行個體或 IP 組態。
 範圍有限的基本 Load Balancer (可用性設定組) 只能相應增加到300 個 IP 組態。 如需限制詳細資訊，請參閱[負載平衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。 在考量如何設計您的後端集區時，您可以將最少量的個別後端集區資源作為設計原則，以進一步最佳化執行管理作業所需的時間。 在資料平面的效能或規模方面沒有任何差異。
 * **健康情況探查**： **[健全狀況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** 可用來判斷後端集區中實例的健康情況。 您可以為健康情況探查定義狀況不良臨界值。 當探查無法回應時，Load Balancer 會停止傳送新的連線至狀況不良的執行個體。 探查失敗不會影響現有的連線。 
     

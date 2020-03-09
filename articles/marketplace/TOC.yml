@@ -1,5 +1,5 @@
 - name: Azure Marketplace 和 AppSource 文件
-  href: index.md
+  href: index.yml
   items:
     - name: Azure Marketplace 和 AppSource 藍圖
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: 陳列供應項目的最佳做法
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: 類別
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: 如何取得精選項目
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace 內容驗證

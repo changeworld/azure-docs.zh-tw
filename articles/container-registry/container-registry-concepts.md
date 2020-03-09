@@ -3,12 +3,12 @@ title: 關於存放庫 & 映射
 description: 介紹 Azure container registry、存放庫和容器映射的重要概念。
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455283"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668467"
 ---
 # <a name="about-registries-repositories-and-images"></a>關於登錄、存放庫和映射
 
@@ -24,9 +24,7 @@ ms.locfileid: "74455283"
 
 Azure container registry 中的成品位址包含下列元素。 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **loginUrl** -登錄主機的完整名稱。 Azure container registry 中的登錄主機格式為*myregistry*. azurecr.io （全部小寫）。 使用 Docker 或其他用戶端工具將成品提取或推送至 Azure container registry 時，您必須指定 loginUrl。 
 * 以逗號分隔的相關映射或成品邏輯**群組-例如**，針對工作組或應用程式
@@ -36,9 +34,7 @@ Azure container registry 中的成品位址包含下列元素。
 
 例如，Azure container registry 中映射的完整名稱可能如下所示：
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 如需這些元素的詳細資訊，請參閱下列各節。
 
@@ -46,27 +42,24 @@ myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
 
 容器登錄會管理*存放庫*、容器映射的集合或具有相同名稱但不同標記的其他成品。 例如，下列三個映像位於 "acr-helloworld" 存放庫中：
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *acr-helloworld：最新*
+- *acr-helloworld： v1*
+- *acr-helloworld： v2*
 
 存放庫名稱也可以包含[命名空間](container-registry-best-practices.md#repository-namespaces)。 命名空間可讓您使用正斜線分隔的存放庫名稱來將影像分組，例如：
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *marketing/campaign10-18/web： v2*
+- *marketing/campaign10-18/api： v3*
+- *marketing/campaign10-18/電子郵件-寄件者： v2*
+- *產品-退貨/web 提交：20180604*
+- *產品-傳回/舊版-整合者：20180715*
 
-## <a name="image"></a>映像
+## <a name="image"></a>影像
 
 登錄中的容器映射或其他成品會與一或多個標記相關聯、具有一或多個圖層，而且是由資訊清單所識別。 瞭解這些元件彼此之間的關聯性，可協助您有效地管理您的登錄。
 
-### <a name="tag"></a>標記
+### <a name="tag"></a>Tag
 
 影像或其他成品的*標記*會指定其版本。 存放庫內的單一成品可以指派一或多個標記，也可能是「未標記」。 也就是說，您可以刪除影像中的所有標記，而影像的資料（其層級）會保留在登錄中。
 
@@ -74,7 +67,7 @@ product-returns/legacy-integrator:20180715
 
 您要如何將容器映射標記為開發或部署它們的指引。 例如，建議使用穩定標記來維護您的基底映射，以及用來部署映射的唯一標記。 如需詳細資訊，請參閱[標記和版本設定容器映射的建議](container-registry-image-tag-version.md)。
 
-### <a name="layer"></a>層次
+### <a name="layer"></a>階層
 
 容器映射是由一或多個*圖層*所組成，每個都對應到定義影像的 Dockerfile 中的一條線。 登錄中的映像會共用常見層次，以提高儲存效率。 例如，不同存放庫中的數個映像可能會共用相同的 Alpine Linux 基底層次，但是該層次只有一個複本會儲存在登錄中。
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 例如，列出 "acr-helloworld" 存放庫的資訊清單：
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,9 +124,7 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 例如，從 "acr-helloworld" 存放庫提取映射，依資訊清單摘要：
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > 如果您重複推送具有相同標記且已修改的映像，可以建立孤立映像 (也就是已取消標記的映像)，但仍會耗用您登錄中的空間。 當您依照標記列出或檢視映像時，已取消標記的映像不會顯示在 Azure CLI 或 Azure 入口網站中。 不過，其層次仍然存在，而且會耗用您登錄中的空間。 刪除未標記的映射會在資訊清單是唯一的（或最後一個）指向特定層時釋放登錄空間。 如需釋放未標記映射所使用之空間的詳細資訊，請參閱[在 Azure Container Registry 中刪除容器映射](container-registry-delete.md)。

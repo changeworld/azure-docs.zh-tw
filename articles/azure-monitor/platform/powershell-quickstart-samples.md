@@ -230,13 +230,13 @@ Web 應用程式、VM、雲端服務或虛擬機器擴展集之類的資源只�
 
 下列範例將示範如何使用 CPU 使用率計量，為 Windows 作業系統的虛擬機器擴展集建立自動調整設定。
 
-首先，建立相應放大的規則，讓執行個體計數增加。
+首先，建立擴增的規則，讓執行個體計數增加。
 
 ```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-接著，建立相應縮小的規則，讓執行個體計數減少。
+接著，建立縮減的規則，讓執行個體計數減少。
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1

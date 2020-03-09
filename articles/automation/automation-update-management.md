@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919700"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372909"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解決方案
 
@@ -27,9 +27,9 @@ ms.locfileid: "77919700"
 > [!NOTE]
 > 更新管理解決方案需要將 Log Analytics 工作區連結至您的自動化帳戶。 如需所支援區域的確切清單，請參閱[Azure 工作區](./how-to/region-mappings.md)對應。 區域對應並不會影響從您的自動化帳戶在不同的區域中管理 Vm 的能力。
 
-Azure [Resource Manager 範本](automation-update-management-deploy-template.md)可讓您將更新管理解決方案部署至訂用帳戶中新的或現有的自動化帳戶和 Log Analytics 工作區。
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Azure [Resource Manager 範本](automation-update-management-deploy-template.md)可讓您將更新管理解決方案部署至訂用帳戶中新的或現有的自動化帳戶和 Log Analytics 工作區。
 
 ## <a name="solution-overview"></a>解決方案概觀
 
@@ -248,10 +248,15 @@ sudo yum -q --security check-update
 
 若要開始更新系統，您必須啟用更新管理解決方案。 以下是將解決方案上架的建議和支援方法：
 
-* [從虛擬機器](automation-onboard-solutions-from-vm.md)
-* [從瀏覽多部電腦](automation-onboard-solutions-from-browse.md)
-* [從自動化帳戶](automation-onboard-solutions-from-automation-account.md)
-* [使用 Azure 自動化 Runbook](automation-onboard-solutions.md)
+- [從虛擬機器](automation-onboard-solutions-from-vm.md)
+
+- [從瀏覽多部電腦](automation-onboard-solutions-from-browse.md)
+
+- [從自動化帳戶](automation-onboard-solutions-from-automation-account.md)
+
+- [使用 Azure 自動化 Runbook](automation-onboard-solutions.md)
+
+- [使用 Azure Resource Manager 範本](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>後續步驟
 

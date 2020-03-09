@@ -17,11 +17,11 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363487"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路的 Linux 虛擬機器
 
@@ -35,12 +35,12 @@ ms.locfileid: "74793314"
 
 加速網路的優點只適用於已啟用此功能的 VM。 為了獲得最佳結果，最好在至少兩部連線到相同 Azure 虛擬網路 (VNet) 的虛擬機器上啟用此功能。 當透過 VNet 通訊或連線內部部署時，此功能對整體延遲的影響可以降到最低。
 
-## <a name="benefits"></a>優勢
+## <a name="benefits"></a>優點
 * **較低的延遲 / 較高的每秒封包數目 (pps)：** 從資料路徑移除虛擬交換器會減少主機中封包在處理原則時所花的時間，並增加 VM 內可處理的封包數目。
 * **減少抖動︰** 虛擬交換器處理視需要套用的原則數量和正在進行處理的 CPU 工作負載而定。 將原則強制執行卸載到硬體透過將封包直接傳遞到 VM、移除主機到 VM 的通訊，以及所有軟體插斷和環境切換，而減少變化。
 * **降低 CPU 使用率︰** 略過主機中的虛擬交換器可減少處理網路流量的 CPU 使用率。
 
-## <a name="supported-operating-systems"></a>受支援的作業系統
+## <a name="supported-operating-systems"></a>支援的作業系統
 您可以從 Azure 資源庫直接使用下列發行版本： 
 * **Ubuntu 14.04 與 linux-azure 核心**
 * **Ubuntu 16.04 或更新版本** 
@@ -65,7 +65,7 @@ ms.locfileid: "74793314"
 ### <a name="custom-images"></a>自訂映像
 如果您使用自訂映射，而且您的映射支援加速網路，請確定有必要的驅動程式可搭配 Azure 上的 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。
 
-### <a name="regions"></a>地區
+### <a name="regions"></a>區域
 適用於所有公用 Azure 區域和 Azure 政府雲端。
 
 <!-- ### Network interface creation 
@@ -192,7 +192,7 @@ az vm create \
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>確認加速網路已確實啟用
 
-使用下列命令來對 VM 建立 SSH 工作階段。 使用指派至您建立之虛擬機器的公用 IP 位址來取代 `<your-public-ip-address>`，如果您在建立 VM 時，為 `--admin-username` 使用不同的值，則請取代 *azureuser*。
+使用下列命令來對 VM 建立 SSH 工作階段。 使用指派至您建立之虛擬機器的公用 IP 位址來取代 `<your-public-ip-address>`，如果您在建立 VM 時，為 *使用不同的值，則請取代*azureuser`--admin-username`。
 
 ```bash
 ssh azureuser@<your-public-ip-address>

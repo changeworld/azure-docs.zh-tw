@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396084"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中樞 SDK
 
 有兩種類別的軟體開發套件 (SDK) 可與「IoT 中樞」搭配使用：
 
-* **IoT 中樞裝置 SDK** 可讓您使用裝置用戶端或模組用戶端，來建置要在 IoT 裝置上執行的應用程式。 這些應用程式會將遙測傳送至您的 IoT 中樞，並選擇性地接收來自 IoT 中樞的訊息、作業、方法或對應項更新。  您也可以使用模組用戶端來撰寫適用於 [Azure IoT Edge 執行階段](../iot-edge/about-iot-edge.md)的[模組](../iot-edge/iot-edge-modules.md)。
+* **IoT 中樞裝置 SDK** 可讓您使用裝置用戶端或模組用戶端，來建置要在 IoT 裝置上執行的應用程式。 這些應用程式會將遙測傳送至您的 IoT 中樞，並選擇性地接收來自 IoT 中樞的訊息、作業、方法或對應項更新。  您也可以使用模組用戶端來撰寫適用於 [Azure IoT Edge 執行階段](../iot-edge/iot-edge-modules.md)的[模組](../iot-edge/about-iot-edge.md)。
 
 * **IoT 中樞服務 SDK** 可讓您建置後端應用程式來管理 IoT 中樞，並選擇性地傳送訊息、排程作業、叫用直接方法，或是將所需的屬性更新傳送到您的 IoT 裝置或模組。
 

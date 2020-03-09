@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: 顯示從甲地到乙地的指示
               href: map-route.md
+        - name: 空間 IO 模組
+          items:
+            - name: 使用空間 IO 模組
+              href: how-to-use-spatial-io-module.md
+            - name: 新增簡單的資料圖層
+              href: spatial-io-add-simple-data-layer.md
+            - name: 讀取和寫入空間資料
+              href: spatial-io-read-write-spatial-data.md
+            - name: 新增 OGC 地圖圖層
+              href: spatial-io-add-ogc-map-layer.md
+            - name: 連接到 WFS 服務
+              href: spatial-io-connect-wfs-service.md
+            - name: 利用核心作業
+              href: spatial-io-core-operations.md
+            - name: 支援的資料格式詳細資料
+              href: spatial-io-supported-data-format-details.md
         - name: Web SDK 支援的瀏覽器
           href: supported-browsers.md
     - name: 使用 Android SDK 進行開發

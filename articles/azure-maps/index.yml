@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 地圖服務文件
-summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
+summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
 metadata:
   title: Azure 地圖服務文件 | Microsoft Docs
   description: 了解 Azure 地圖服務以及如何使用它來為 Web 或行動應用程式提供地理空間服務。
@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: de21e0efb6725433fe16b15665fafd9226c74f61
-  ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+  ms.openlocfilehash: cab367254df3f83903eeee110f0a435b97ea8eba
+  ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/02/2020
-  ms.locfileid: "78208762"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78368612"
 landingContent:
 - title: 關於 Azure 地圖服務
   linkLists:
@@ -74,6 +74,22 @@ landingContent:
       url: tutorial-route-location.md
     - text: 建立存放區定位器
       url: tutorial-create-store-locator.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用空間 IO 模組
+      url: how-to-use-spatial-io-module.md
+    - text: 新增簡單的資料圖層
+      url: spatial-io-add-simple-data-layer.md
+    - text: 讀取和寫入空間資料
+      url: spatial-io-read-write-spatial-data.md
+    - text: 新增 OGC 地圖圖層
+      url: spatial-io-add-ogc-map-layer.md
+    - text: 連接到 WFS 服務
+      url: spatial-io-connect-wfs-service.md
+    - text: 利用核心作業
+      url: spatial-io-core-operations.md
+    - text: 支援的資料格式詳細資料
+      url: spatial-io-supported-data-format-details.md
   - linkListType: reference
     links:
     - text: 地圖控制項
@@ -82,6 +98,8 @@ landingContent:
       url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
     - text: 服務模組
       url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+    - text: 空間 IO 模組
+      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
 - title: 使用 Android SDK 進行開發
   linkLists:
   - linkListType: how-to-guide

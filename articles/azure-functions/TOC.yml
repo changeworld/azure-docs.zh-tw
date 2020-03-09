@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: 使用 TensorFlow 進行機器學習
       href: functions-machine-learning-tensorflow.md
+    - name: 透過 PyTorch 進行影像分類
+      href: machine-learning-pytorch.md
     - name: 建立自訂 Linux 映像
       href: functions-create-function-linux-custom-image.md
     - name: IoT Edge 裝置上的 Azure Functions

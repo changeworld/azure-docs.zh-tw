@@ -371,7 +371,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 如果您使用 Azure 平台映像，您可以修改 imageReference (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 >[!NOTE]
-> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、相應放大及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
+> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、擴增及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
 
 如果您使用自訂映像，您可以更新 imageReference 識別碼 (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 

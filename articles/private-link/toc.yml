@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: 私下連線至 Cosmos DB 帳戶
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: 私下連線至 Web 應用程式
+      href: create-private-endpoint-webapp-portal.md
     - name: 停用私人端點的網路原則
       href: disable-private-endpoint-network-policy.md
     - name: 停用 Private Link 服務的網路原則
