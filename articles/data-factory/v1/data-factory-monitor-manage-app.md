@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666933"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384795"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用監視及管理應用程式，以監視和管理 Azure Data Factory 管線
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "73666933"
 >
 
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[監視和管理 Data Factory 管線](../monitor-visually.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[監視和管理 Data Factory 管線](../monitor-visually.md)。
 
 本文說明如何使用監視及管理應用程式來監視、管理與偵錯您的 Data Factory 管線。 您可以藉由觀賞下列影片開始使用應用程式：
 
@@ -159,7 +159,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 <table>
 <tr>
-    <th align="left">狀態</th><th align="left">子狀態</th><th align="left">說明</th>
+    <th align="left">狀態</th><th align="left">子狀態</th><th align="left">描述</th>
 </tr>
 <tr>
     <td rowspan="8">等候</td><td>ScheduleTime</td><td>活動時段執行的時間還沒到。</td>
@@ -177,7 +177,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>ActivityResume</td><td>活動已暫停，除非活動繼續，否則無法執行活動時段。</td>
 </tr>
 <tr>
-<td>Retry</td><td>正在重試活動執行。</td>
+<td>重試</td><td>正在重試活動執行。</td>
 </tr>
 <tr>
 <td>驗證</td><td>驗證尚未啟動。</td>
@@ -193,10 +193,10 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>系統正在處理該活動時段。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
 </tr>
 <tr>
-<td>Canceled</td><td>使用者動作已取消活動時段。</td>
+<td>已取消</td><td>使用者動作已取消活動時段。</td>
 </tr>
 <tr>
 <td>驗證</td><td>驗證失敗。</td>
@@ -207,7 +207,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>就緒</td><td>-</td><td>活動時段已可供使用。</td>
 </tr>
 <tr>
-<td>Skipped</td><td>-</td><td>活動時段未處理。</td>
+<td>已略過</td><td>-</td><td>活動時段未處理。</td>
 </tr>
 <tr>
 <td>None</td><td>-</td><td>曾經以不同的狀態存在，但目前已重設的活動時段。</td>
@@ -222,10 +222,10 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 ### <a name="refresh-activity-windows"></a>重新整理活動時段
 詳細資料並不會自動重新整理，因此您必須使用命令列上的 [重新整理] 按鈕 (第二個按鈕) 來手動重新整理活動時段清單。  
 
-### <a name="properties-window"></a>[屬性] 視窗
+### <a name="properties-window"></a>屬性視窗
 [屬性] 視窗在監視及管理應用程式最右側的窗格中。
 
-![[屬性] 視窗](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![屬性視窗](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 它會顯示您在 [資源總管] \(樹狀檢視)、[圖表檢視] 或 [活動時段清單] 中所選取項目的屬性。
 
@@ -270,7 +270,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 ![活動時段清單的資料行功能表](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-您可以執行下列動作：
+您可以執行下列工作：
 
 * 以遞增順序排序。
 * 以遞減順序排序。

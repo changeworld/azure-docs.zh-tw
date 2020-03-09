@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389189"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用叢集描述 Service Fabric 叢集 Resource Manager
 Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述叢集的機制：
@@ -478,7 +478,7 @@ Service Fabric 將資源表示為*計量*。 度量是您想要向 Service Fabri
 
 就像放置條件約束和節點屬性一樣，Service Fabric 叢集 Resource Manager 無法瞭解計量名稱的意義。 計量名稱只是字串。 最好是將單位宣告為計量名稱的一部分，這是您在可能不明確時所建立的度量。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a>Capacity
 如果您關閉所有資源*平衡*，Service Fabric 叢集 Resource Manager 仍會確保沒有任何節點超出其容量。 除非叢集已滿或工作負載大於任何節點，否則管理容量溢位是可能的。 容量是叢集 Resource Manager 用來瞭解節點具有多少資源的另一個*條件約束*。 另外也會追蹤整個叢集的剩餘容量。 
 
 服務層級的容量和耗用量均以度量來表示。 例如，計量可能是 "ClientConnections"，而節點的 "ClientConnections" 容量可能是32768。 其他節點可能會有其他限制。 在該節點上執行的服務可能表示其目前正在使用32256的計量 "ClientConnections"。

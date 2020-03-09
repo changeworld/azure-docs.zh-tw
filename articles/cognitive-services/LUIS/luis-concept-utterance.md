@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396936"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
 
@@ -55,10 +55,10 @@ ms.locfileid: "74280802"
 
 |範例語句|
 |--|
-|how do I get a computer?|
-|Where do I get a computer?|
-|I want to get a computer, how do I go about it?|
-|When can I have a computer?| 
+|如何取得電腦？|
+|何處取得電腦？|
+|我想要取得電腦，如何著手呢？|
+|我何時可擁有電腦？| 
 
 這裡的核心詞彙「電腦」並不會有任何不同。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可以智慧地從內容推斷同義字，但當您建立定型的語句時，一定會改變它們。
 
@@ -116,7 +116,7 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 如果標點符號在您的用戶端應用程式中沒有特定意義，請考慮以正規化標點符號來[忽略標點符號](#utterance-normalization)。 
 
-### <a name="ignoring-words-and-punctuation"></a>忽略字組和標點符號
+### <a name="ignoring-words-and-punctuation"></a>忽略單字和標點符號
 
 如果您想要忽略模式中的特定單字或標點符號，請搭配使用[模式](luis-concept-patterns.md#pattern-syntax)與_略_過方括弧的語法，`[]`。 
 
@@ -132,7 +132,7 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 在將模型定型、發佈及接收[端點](luis-glossary.md#endpoint)查詢之後，請[檢閱 LUIS 所建議的語句](luis-how-to-review-endpoint-utterances.md)。 LUIS 會選取對意圖或實體而言分數低的端點語句。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 檢閱[最佳做法](luis-concept-best-practices.md)，並將其套用為一般撰寫週期的一部分。
 
