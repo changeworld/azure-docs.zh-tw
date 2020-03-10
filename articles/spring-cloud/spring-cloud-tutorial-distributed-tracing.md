@@ -6,22 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277495"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273201"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>搭配使用分散式追蹤與 Azure Spring Cloud
 
-透過 Azure Spring Cloud 中的分散式追蹤工具，您可以輕鬆地針對複雜問題進行偵錯和監視。 Azure Spring Cloud 會整合 [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 這項整合可讓您從 Azure 入口網站獲得強大的分散式追蹤功能。
+透過 Azure Spring Cloud 中的分散式追蹤工具，您可以輕鬆地針對複雜問題進行偵錯和監視。 Azure Spring Cloud 可整合 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 這項整合可讓您從 Azure 入口網站獲得強大的分散式追蹤功能。
 
 在本文中，您將了解如何：
 
 > [!div class="checklist"]
 > * 在 Azure 入口網站中啟用分散式追蹤。
-> * 將 Azure Spring Cloud Sleuth 新增至您的應用程式。
+> * 將 Spring Cloud Sleuth 新增至您的應用程式。
 > * 檢視微服務應用程式的相依性對應。
 > * 搭配不同的篩選搜尋追蹤資料。
 
@@ -39,7 +39,7 @@ ms.locfileid: "76277495"
 
    完成此變更後，Zipkin 傳送者便能傳送至 Web。
 
-1. 如果您已遵循我們[針對準備 Azure Spring Cloud 應用程式的指南](spring-cloud-tutorial-prepare-app-deployment.md)，則請略過此步驟。 否則，請移至您的本機開發環境，並編輯您的 pom.xml 檔案以包含下列 Azure Spring Cloud Sleuth 相依性：
+1. 如果您已遵循我們[針對準備 Azure Spring Cloud 應用程式的指南](spring-cloud-tutorial-prepare-app-deployment.md)，則請略過此步驟。 否則，請移至您的本機開發環境，並編輯您的 pom.xml 檔案，以包含下列 Spring Cloud Sleuth 相依性：
 
     ```xml
     <dependencyManagement>

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589465"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304118"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 閘道資源設計虛擬網路 (公開預覽版)
 
@@ -34,7 +34,7 @@ NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛�
 
 
 >[!NOTE] 
->虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](nat-overview.md#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)。
+>虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](nat-overview.md#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="how-to-deploy-nat"></a>如何部署 NAT
 
@@ -349,21 +349,25 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[虛擬網路 NAT](nat-overview.md)。
-- 驗證 NAT 閘道的教學課程
-  * [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)，
-  * [PowerShell](tutorial-create-validate-nat-gateway-cli.md)，
-  * [入口網站](tutorial-create-validate-nat-gateway-cli.md)
-- 部署 NAT 閘道資源的快速入門
-  * [Azure CLI](./quickstart-create-nat-gateway-cli.md)，
-  * [PowerShell](./quickstart-create-nat-gateway-powershell.md)，
-  * [入口網站](./quickstart-create-nat-gateway-portal.md)。
-- 深入了解[可用性區域](../availability-zones/az-overview.md)。
-- 深入了解[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md)。
-- 深入了解[可用性區域和標準負載平衡器](../load-balancer/load-balancer-standard-availability-zones.md)。
-- 深入了解 NAT 閘道資源 API
-  * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)，
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)，
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)。
-- [告訴我們接下來要在 UserVoice 中建置的項目](https://aka/natuservoice)。
-- [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
+* 了解[虛擬網路 NAT](nat-overview.md)。
+* 了解 [NAT 閘道資源的計量和警示](nat-metrics.md)。
+* 了解[針對 NAT 閘道資源進行疑難排解](troubleshoot-nat.md)。
+* [告訴我們接下來要在 UserVoice 中建置的項目](https://aka.ms/natuservoice)。
+* [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
+* 驗證 NAT 閘道的教學課程
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)，
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)，
+  - [入口網站](tutorial-create-validate-nat-gateway-cli.md)
+* 部署 NAT 閘道資源的快速入門
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)，
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)，
+  - [入口網站](./quickstart-create-nat-gateway-portal.md)。
+* 了解 NAT 閘道資源 API
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)，
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)，
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)。
+* 了解[可用性區域](../availability-zones/az-overview.md)。
+* 了解[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md)。
+* 了解[可用性區域和標準負載平衡器](../load-balancer/load-balancer-standard-availability-zones.md)。
+
+

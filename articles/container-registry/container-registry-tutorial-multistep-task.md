@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何設定「Azure Container 
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f5342e51af870b1e5f8651ea2d28894233ed8e62
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7d84770f1b945ff47cb4e9118d9c342e67118722
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456065"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249912"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教學課程：於認可原始程式碼時在雲端執行多步驟容器工作流程
 
@@ -69,7 +69,9 @@ steps:
 
 首先，請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須手動取代命令範例中出現的每個值。
 
-```azurecli-interactive
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -217,13 +219,13 @@ Run ID: cf19 was successful after 18s
 
 首先，請確定您位於[存放庫][sample-repo]的本機複本所在的目錄中：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 接著，執行下列命令以建立新檔案，然後將其認可並推送至 GitHub 上的存放庫分支：
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -280,7 +282,7 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 ## <a name="create-a-multi-registry-multi-step-task"></a>建立多登錄的多步驟工作
 
-根據預設，ACR 工作具有從登錄 (工作執行之處) 推送或提取映像的權限。 您可以執行以一個或多個登錄 (除了執行登錄以外) 為目標的多步驟工作。 例如，您可能需要在一個登錄中建置映像，並將具有不同標記的映像儲存在生產系統可存取的的第二個登錄。 此範例會示範如何建立這類工作，並提供另一個登錄的認證。
+根據預設，ACR 工作具有從登錄 (工作執行之處) 推送或提取映像的權限。 您可以執行以一個或多個登錄 (除了執行登錄以外) 為目標的多步驟工作。 例如，您可能需要在一個登錄中建置映像，並將具有不同標記的映像儲存在生產系統可存取的第二個登錄。 此範例會示範如何建立這類工作，並提供另一個登錄的認證。
 
 如果您還沒有第二個登錄，請為此範例建立一個。 如果您需要登錄，請參閱[上一個教學課程](container-registry-tutorial-quick-task.md)或[快速入門：使用 Azure CLI 建立容器登錄](container-registry-get-started-azure-cli.md)。
 

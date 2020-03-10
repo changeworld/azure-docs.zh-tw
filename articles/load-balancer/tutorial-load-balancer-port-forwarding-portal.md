@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6dda01543a6a7f447adefcc6cc3cfa3ea5da5492
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048854"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249871"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教學課程：使用入口網站在 Azure Load Balancer 中設定連接埠轉送
 
@@ -68,19 +68,20 @@ ms.locfileid: "74048854"
 
 建立一個虛擬網路以及兩部虛擬機器，並將 VM 新增至負載平衡器的後端集區。 
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-1. 在入口網站的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
-   
-1. 在 [建立虛擬網路]  窗格中，輸入或選取下列值：
-   
-   - **名稱**：輸入 MyVNet  。
-   - **資源群組**：下拉 [選取現有的]  ，然後選取 [MyResourceGroupLB]  。 
-   - [子網路]   > [名稱]  ：輸入 MyBackendSubnet  。
-   
-1. 選取 [建立]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-   ![建立虛擬網路](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLB (選取現有的資源群組) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西歐      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>建立 VM 並將其新增至負載平衡器後端集區
 
@@ -146,10 +147,10 @@ ms.locfileid: "74048854"
    - **來源**：選取 [服務標記]  。  
    - **來源服務標記**：選取 [網際網路]  。 
    - **目的地連接埠範圍**：輸入 80  。
-   - **通訊協定**：選取 **TCP**。 
+   - **通訊協定**：選取 [TCP]  。 
    - **動作**：選取 [允許]  。  
    - **優先順序**：輸入 100  。 
-   - **名稱**：輸入 MyHTTPRule  。 
+   - **Name**：輸入 MyHTTPRule  。 
    - **描述**：輸入「允許 HTTP」  。 
    
 1. 選取 [新增]  。 
@@ -188,7 +189,7 @@ ms.locfileid: "74048854"
    
 1. 在 [新增健康情況探查]  頁面上，輸入或選取下列值：
    
-   - **名稱**：輸入 MyHealthProbe  。
+   - **Name**：輸入 MyHealthProbe  。
    - **通訊協定**：下拉並選取 [HTTP]  。 
    - **連接埠**：輸入 80  。 
    - **路徑**：接受 /  作為預設 URI。 您可以使用任何其他 URI 來取代此值。 
@@ -211,7 +212,7 @@ ms.locfileid: "74048854"
    
 1. 在 [新增負載平衡規則]  頁面上，輸入或選取下列值：
    
-   - **名稱**：輸入 MyLoadBalancerRule  。
+   - **Name**：輸入 MyLoadBalancerRule  。
    - **通訊協定**：選取 [TCP]  。
    - **連接埠**：輸入 80  。
    - **後端連接埠**：輸入 80  。
@@ -232,7 +233,7 @@ ms.locfileid: "74048854"
    
 1. 在 [新增輸入 NAT 規則]  頁面上，輸入或選取下列值：
    
-   - **名稱**：輸入 MyNATRuleVM1  。
+   - **Name**：輸入 MyNATRuleVM1  。
    - **連接埠**：輸入 4221  。
    - **目標虛擬機器**：從下拉式清單選取 [MyVM1]  。
    - **網路 IP 設定**：從下拉式選單中選取 [ipconfig1]  。

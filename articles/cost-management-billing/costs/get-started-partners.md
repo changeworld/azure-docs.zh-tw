@@ -4,17 +4,17 @@ description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117599"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245457"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -140,18 +140,14 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 成本可見性原則啟用時，所有具有訂用帳戶使用量的服務，都會顯示以隨用隨付費率計算的成本。 保留使用量的實際和攤提成本會將費用顯示為零。 購買和權利不會與特定訂用帳戶相關聯。 因此，購買不會顯示在訂用帳戶範圍中。
 
-若要檢視客戶租用戶的成本，請開啟 [成本管理 + 計費]  ，然後選取相關的 Microsoft 合作夥伴合約計費帳戶。
 
-![選取計費帳戶](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>檢視客戶成本
 
-在 [帳單]  底下選取 [Azure 訂用帳戶]  ，然後選取客戶。
-
-![選取 Azure 訂用帳戶客戶](./media/get-started-partners/subscriptions-select-customer.png)
-
-選取 [成本分析]  並開始檢閱成本。
-成本分析、預算和警示可按隨用隨付費率的成本，在訂用帳戶和資源群組 RBAC 範圍中使用。
+若要檢視客戶租用戶的成本，請開啟 [成本管理 + 計費]  。 選取 [成本分析]  ，然後將範圍變更為客戶租用戶訂用帳戶，以開始審查成本。
 
 ![以客戶的身分檢視成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+成本分析、預算和警示可按隨用隨付費率的成本，在訂用帳戶和資源群組 RBAC 範圍中使用。
 
 在 RBAC 範圍中，保留執行個體的攤提檢視和實際成本會將費用顯示為零。 保留執行個體成本只會顯示在進行購買的計費範圍中。
 

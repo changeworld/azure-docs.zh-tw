@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d250377e15b957c10322dbba9ca587dd58944ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298610"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中撰寫屬性對應的運算式
 在設定雲端佈建時，運算式對應將是您可以指定的屬性對應類型之一。 
@@ -30,16 +30,16 @@ ms.locfileid: "74794974"
 
 * 整個運算式必須以函式定義，由函式名稱後面接著以括號括住的引數組成： <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 您可以在函式內互相巢狀函式。 例如︰ <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 您可以將三種不同類型的引數傳入函式：
   
   1. 屬性，必須以方括弧括住。 例如：[attributeName]
-  2. 字串常數，必須以雙引號括住。 例如︰"United States"
-  3. 其他函式。 例如︰FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如︰"Company name:\\"Contoso\\""
+  2. 字串常數，必須以雙引號括住。 例如："United States"
+  3. 其他函式。 例如：FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如："Company name:\\"Contoso\\""
 
 ## <a name="list-of-functions"></a>函數的清單
-| 函數的清單 | 說明 |
+| 函數的清單 | 描述 |
 |-----|----|
 |[Append](#append)|取出 source 字串值並在結尾附加尾碼。|
 |[BitAnd](#bitand)|BitAnd 函式會在值中設定指定的位元。|
@@ -70,27 +70,27 @@ ms.locfileid: "74794974"
 |[Replace](#replace) |取代字串內的值。 | 
 |[SelectUniqueValue](#selectuniquevalue)|至少需要兩個引數，也就是使用運算式定義的唯一值產生規則。 此函式會評估每個規則，接著檢查所產生的值在目標應用程式/目錄中的唯一性。| 
 |[SingleAppRoleAssignment](#singleapproleassignment)|從針對特定應用程式指派給使用者的所有 appRoleAssignment 清單中傳回單一 appRoleAssignment。| 
-|[Split](#split)|使用指定的分隔符號字元將字串分割成多重值陣列。|
+|[分割](#split)|使用指定的分隔符號字元將字串分割成多重值陣列。|
 |[StringFromSID](#stringfromsid)|StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字串。| 
 |[StripSpaces](#stripspaces) |移除 source 字串中的所有空格 (" ") 字元。| 
-|[Switch](#switch)|當 **source** 值符合某個 **key** 時，傳回該 **key** 的 **value**。 | 
+|[開關](#switch)|當 **source** 值符合某個 **key** 時，傳回該 **key** 的 **value**。 | 
 |[ToLower](#tolower)|採用 *source* 字串值，並使用所指定的文化特性 (Culture) 規則將其轉換成小寫。| 
 |[ToUpper](#toupper)|採用 *source* 字串值，並使用所指定的文化特性 (Culture) 規則將其轉換成大寫。|
 |[Trim](#trim)|Trim 函式會從字串移除開頭和結尾的空白字元。|
 |[Word](#word)|Word 函式會根據描述要使用之分隔符號及要傳回之字數的參數，傳回字串內含的單字。|
 
 ---
-### <a name="append"></a>Append
+### <a name="append"></a>附加
 **函式：**<br> Append(source, suffix)
 
 **說明：**<br> 取出 source 字串值並在結尾附加尾碼。
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
-   | **suffix** |必要 |字串 |您想要附加至 source 值結尾的字串。 |
+   | **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+   | **suffix** |必要 |String |您想要附加至 source 值結尾的字串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -110,7 +110,7 @@ BitAnd 函式會在值中設定指定的位元。
 
 換句話說，除非這兩個參數的對應位元都是 1，否則在所有情況下都會傳回 0。
 
-**範例：**  
+**範例︰**  
  
  `BitAnd(&HF, &HF7)`</br>
  傳回 7，因為十六進位 "F" AND "F7" 會評估為此值。
@@ -127,7 +127,7 @@ CBool 函式會根據評估的運算式傳回布林值
 **備註：**  
 如果運算式評估為非零值，CBool 就會傳回 True，否則會傳回 False。
 
-**範例：**  
+**範例︰**  
 `CBool([attrib1] = [attrib2])`  
 
 如果這兩個屬性的值相同，即會傳回 True。
@@ -159,7 +159,7 @@ ConvertToBase64 函式會將字串轉換為 Unicode Base64 字串。
 **語法：**  
 `str ConvertToBase64(str source)`
 
-**範例：**  
+**範例︰**  
 `ConvertToBase64("Hello world!")`  
 傳回 "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -174,7 +174,7 @@ ConvertToUTF8Hex 函式會將字串轉換為 UTF8 十六進位編碼值。
 **備註：**  
 Azure Active Directory 會使用此函式的輸出格式做為 DN 屬性格式。
 
-**範例：**  
+**範例︰**  
 `ConvertToUTF8Hex("Hello world!")`  
 傳回 48656C6C6F20776F726C6421
 
@@ -198,7 +198,7 @@ CStr 函式會轉換為字串資料類型。
 
 * 值：可以是數值、參考屬性或布林值。
 
-**範例：**  
+**範例︰**  
 `CStr([dn])`  
 可能傳回 "cn=Joe,dc=contoso,dc=com"
 
@@ -210,7 +210,7 @@ DateFromNum 函式會將 AD 日期格式的值轉換為 DateTime 類型。
 **語法：**  
 `dt DateFromNum(num value)`
 
-**範例：**  
+**範例︰**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 傳回代表 2012-01-01 23:00:00 的 DateTime
@@ -226,19 +226,19 @@ DNComponent 函式會從左邊傳回指定 DN 元件的值。
 * dn：要解譯的參考屬性
 * ComponentNumber：DN 中要傳回的元件
 
-**範例：**  
+**範例︰**  
 `DNComponent(CRef([dn]),1)`  
 如果 dn 為 "cn=Joe,ou=…"，就會傳回 Joe
 
 ---
-### <a name="error"></a>Error
+### <a name="error"></a>錯誤
 **說明：**  
 Error 函式是用來傳回自訂錯誤。
 
 **語法：**  
 `void Error(str ErrorMessage)`
 
-**範例：**  
+**範例︰**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 如果 accountName 屬性不存在，即會擲回有關物件的錯誤。
 
@@ -250,11 +250,11 @@ Error 函式是用來傳回自訂錯誤。
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
-   | **inputFormat** |必要 |字串 |source 值的預期格式。 如需支援的格式，請參閱[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-   | **outputFormat** |必要 |字串 |輸出日期的格式。 |
+   | **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+   | **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+   | **outputFormat** |必要 |String |輸出日期的格式。 |
 
 ---
 ### <a name="guid"></a>Guid
@@ -276,7 +276,7 @@ IIF 函式會根據指定的條件傳回其中一組可能值。
 * valueIfTrue：條件評估為 True 時所傳回的值。
 * valueIfFalse：條件評估為 False 時所傳回的值。
 
-**範例：**  
+**範例︰**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  如果使用者是實習生，就會傳回開頭加上 "t-" 的使用者別名，否則會依原樣傳回使用者的別名。
 
@@ -299,7 +299,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 **備註：**  
 會傳回找到子字串的位置，如果找不到，則傳回 0。
 
-**範例：**  
+**範例︰**  
 `InStr("The quick brown fox","quick")`  
 評估為 5
 
@@ -317,7 +317,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 **備註：**  
 針對屬性，Null 表示該屬性不存在。
 
-**範例：**  
+**範例︰**  
 `IsNull([displayName])`  
 如果屬性不存在於 CS 或 MV 中，即會傳回 True。
 
@@ -333,7 +333,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 針對屬性，如果屬性不存在，或存在但為空字串，即會評估為 True。  
 此函式的相反函式名稱為 IsPresent。
 
-**範例：**  
+**範例︰**  
 `IsNullOrEmpty([displayName])`  
 如果屬性不存在於 CS 或 MV 中或為空字串，即會傳回 True。
 
@@ -348,7 +348,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 **備註：**  
 這個函式的相反函式名稱為 IsNullOrEmpty。
 
-**範例：**  
+**範例︰**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -367,7 +367,7 @@ Item 函式可以與 Contains 函式搭配使用，因為後者會將索引傳�
 
 如果索引超出範圍，即會擲回錯誤。
 
-**範例：**  
+**範例︰**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 會傳回主要電子郵件地址。
 
@@ -392,10 +392,10 @@ Item 函式可以與 Contains 函式搭配使用，因為後者會將索引傳�
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **separator** |必要 |字串 |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
-   | **source1  … sourceN** |必要，變動次數 |字串 |要聯結在一起的字串值。 |
+   | **separator** |必要 |String |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
+   | **source1  … sourceN** |必要，變動次數 |String |要聯結在一起的字串值。 |
 
 ---
 ### <a name="left"></a>Left
@@ -417,7 +417,7 @@ Left 函式會從字串左邊傳回指定的字元數。
 
 如果 string 包含的字元數比 numChars 中指定的數目少，即會傳回與 string 完全相同的字串 (也就是，包含參數 1 中的所有字元)。
 
-**範例：**  
+**範例︰**  
 `Left("John Doe", 3)`  
 傳回 `Joh`。
 
@@ -429,9 +429,9 @@ Left 函式會從字串左邊傳回指定的字元數。
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |通常為屬性的名稱。 |
+   | **來源** |必要 |String |通常為屬性的名稱。 |
    | **start** |必要 |integer |子字串在 **source** 字串中起始位置的索引。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
    | **length** |必要 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
@@ -443,21 +443,21 @@ Left 函式會從字串左邊傳回指定的字元數。
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 | 通常是名字或姓氏屬性。 |
+   | **來源** |必要 |String | 通常是名字或姓氏屬性。 |
 
 ---
-### <a name="not"></a>否
+### <a name="not"></a>Not
 **函式：**<br> Not(source)
 
 **說明：**<br> 翻轉 **source** 的布林值。 如果 **source** 值為 "*True*"，則傳回 "*False*"。 反之則傳回 "*True*"。
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |Boolean String |預期的 **source** 值為 "True" 或 "False"。 |
+   | **來源** |必要 |Boolean String |預期的 **source** 值為 "True" 或 "False"。 |
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
@@ -467,7 +467,7 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
 **語法：**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**範例：**  
+**範例︰**  
 `RemoveDuplicates([proxyAddresses])`  
 傳回處理過的 proxyAddress 屬性，其中已移除所有重複的值。
 
@@ -497,15 +497,15 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |通常為 **source** 物件的屬性名稱。 |
-   | **oldValue** |選用 |字串 |在 **source** 或 **template** 中要被取代的值。 |
-   | **regexPattern** |選用 |字串 |在 **source**中要被取代的值的規則運算式模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
-   | **regexGroupName** |選用 |字串 |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
-   | **replacementValue** |選用 |字串 |要取代舊值的新值。 |
-   | **replacementAttributeName** |選用 |字串 |要用於取代值的屬性名稱 |
-   | **template** |選用 |字串 |提供 **template** 值時，我們會尋找範本內的 **oldValue**，並將其取代為 **source** 值。 |
+   | **來源** |必要 |String |通常為 **source** 物件的屬性名稱。 |
+   | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
+   | **regexPattern** |選用 |String |在 **source**中要被取代的值的規則運算式模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
+   | **regexGroupName** |選用 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
+   | **replacementValue** |選用 |String |要取代舊值的新值。 |
+   | **replacementAttributeName** |選用 |String |要用於取代值的屬性名稱 |
+   | **template** |選用 |String |提供 **template** 值時，我們會尋找範本內的 **oldValue**，並將其取代為 **source** 值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -522,9 +522,9 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |字串 | 要評估的唯一值產生規則清單。 |
+   | **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |String | 要評估的唯一值產生規則清單。 |
 
 
 ---
@@ -535,9 +535,9 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
 
 **參數：**<br> 
 
-  | 名稱 | 必要 / 重複 | 型別 | 注意 |
+  | 名稱 | 必要 / 重複 | 類型 | 注意 |
   |--- | --- | --- | --- |
-  | **[appRoleAssignments]** |必要 |字串 |**[appRoleAssignments]** 物件。 |
+  | **[appRoleAssignments]** |必要 |String |**[appRoleAssignments]** 物件。 |
 
 ---
 ### <a name="split"></a>Split
@@ -547,10 +547,10 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |**source** 值。 |
-   | **delimiter** |必要 |字串 |指定將用來分割字串的字元 (範例：",") |
+   | **來源** |必要 |String |**source** 值。 |
+   | **delimiter** |必要 |String |指定將用來分割字串的字元 (範例：",") |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
@@ -568,9 +568,9 @@ StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |**source** 值。 |
+   | **來源** |必要 |String |**source** 值。 |
 
 ---
 ### <a name="switch"></a>Switch
@@ -580,12 +580,12 @@ StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |**Source** 值。 |
-   | **defaultValue** |選用 |字串 |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
-   | **key** |必要 |字串 |要與 **source** 值比較的 **key**。 |
-   | **value** |必要 |字串 |符合 key 的 **source** 的取代值。 |
+   | **來源** |必要 |String |要檢查的**來源**值。 |
+   | **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
+   | **key** |必要 |String |要與 **source** 值比較的 **key**。 |
+   | **value** |必要 |String |符合 key 的 **source** 的取代值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,10 +595,10 @@ StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字
 
 **參數：**<br> 
 
-   | 名稱 | 必要 / 重複 | 型別 | 注意 |
+   | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **source** |必要 |字串 |通常為 source 物件的屬性名稱 |
-   | **culture** |選用 |字串 |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+   | **來源** |必要 |String |通常為 source 物件的屬性名稱 |
+   | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 
@@ -609,10 +609,10 @@ StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字
 
 **參數：**<br> 
 
-  | 名稱 | 必要 / 重複 | 型別 | 注意 |
+  | 名稱 | 必要 / 重複 | 類型 | 注意 |
   | --- | --- | --- | --- |
-  | **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
-  | **culture** |選用 |字串 |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+  | **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
+  | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 
@@ -623,7 +623,7 @@ Trim 函式會從字串移除開頭和結尾的空白字元。
 **語法：**  
 `str Trim(str value)`  
 
-**範例：**  
+**範例︰**  
 `Trim(" Test ")`  
 傳回 "test"。
 
@@ -650,7 +650,7 @@ string 內以 delimiters 其中一個字元來分隔之字元的每個字串，�
 
 如果 string 所含的字數少於 number 個字，或者 string 不包含任何 delimeters 所識別的單字，就會傳回空字串。
 
-**範例：**  
+**範例︰**  
 `Word("The quick brown fox",3," ")`  
 傳回 "brown"
 

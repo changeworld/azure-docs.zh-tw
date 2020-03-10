@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 873db6315841b585aa0ba6bcb843bfe05567836f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987708"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299256"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒體服務 v3 概觀
 
@@ -34,13 +34,13 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 > 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+
+重要提醒是，在使用 Azure 媒體服務時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用「媒體服務」或任何 Azure 服務。
+
+將任何影片/影像上傳至「媒體服務」之前，您必須擁有使用該影片/影像的所有適當權限，包括依據法律要求須徵得影片/影像中的個人 (如果有的話) 所有必要的同意，方可在「媒體服務」和 Azure 中使用、處理和儲存其資料。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 使用「媒體服務」和 Azure 來處理及儲存任何受到特殊法律要求約束的資料之前，您必須確定已符合您可能適用的任何此類法律要求。
+
+若要了解「媒體服務」中的合規性、隱私權和安全性，請造訪 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留準則 (包括如何刪除您的資料)，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") 和[資料處理增補](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 一旦使用「媒體服務」，即表示您同意受到 OST、DPA 和隱私權聲明的規範。
  
-重要提醒是，在使用 Azure 媒體服務時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用 Azure 媒體服務或任何其他 Azure 服務。 
-
-將任何影片/影像 (包括任何生物特徵辨識資料) 上傳至媒體服務以進行處理和儲存之前，您必須 (1) 擁有影片/影像的所有適當權限；(2) 向影片中的個人徵得所有必要的同意，允許在媒體服務中使用和儲存其生物特徵辨識資料。 
-
-如需了解合規性、隱私權，以及 Microsoft 如何保護您在 Azure 媒體服務中的資料，請造訪 Azure [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務和您的資料處理方式，請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products) ("OST") 和 [資料處理增補](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 客戶資料保留和刪除的相關資訊可在 DPA 中取得。 一旦使用 Azure 媒體服務，即表示您同意受到 OST、DPA 和隱私權聲明的規範。
-
 ## <a name="what-can-i-do-with-media-services"></a>我可以如何運用媒體服務？
 
 媒體服務可讓您在雲端建置各種不同的媒體工作流程。 您可以使用媒體服務執行的一些範例包括：
@@ -51,8 +51,8 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 * 分析錄製的視訊或音訊內容。 例如，為了達到更高的客戶滿意度，組織可以擷取語音轉換文字，並建置搜尋索引和儀表板。 接著便可以從一般客訴、客訴來源及其他相關資料中獲取情報。
 * 建立訂閱影片服務，並在客戶需要限制對著作權所有作品的存取及使用時，串流受 DRM 保護的內容。
 * 傳遞離線內容，以在飛機、火車和汽車上播放。 當客戶預期會從網路中斷連線時，他們可能需要將內容下載到手機或平板電腦上播放。
-* 使用 Azure 媒體服務和 [Azure 認知服務 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 的語音文字轉換、翻譯成多語言等功能，實作教育電子化學習影片平台。
-* 搭配使用 Azure 媒體服務與 [Azure 認知服務 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 在影片加入標題和字幕，以服務更廣大的觀眾 (例如聽障人士或想要以其他語言閱讀的人)。
+* 使用 Azure 媒體服務和 [Azure 認知服務 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 的語音文字轉換、翻譯成多語言等功能，實作教育電子化學習影片平台。
+* 搭配使用 Azure 媒體服務與 [Azure 認知服務 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 在影片加入標題和字幕，以服務更廣大的觀眾 (例如聽障人士或想要以其他語言閱讀的人)。
 * 啟用 Azure CDN 以達成大規模調整，進而妥善處理瞬間高負載 (例如，在產品上市活動開始時)。
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何開始使用 v3？ 
@@ -106,4 +106,3 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 ## <a name="next-steps"></a>後續步驟
 
 [了解基本概念](concepts-overview.md)
-

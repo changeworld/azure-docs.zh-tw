@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277840"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273384"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(即將淘汰) Azure Container Service DC/OS 叢集中容器的負載平衡
 
@@ -43,9 +43,11 @@ ms.locfileid: "76277840"
 
 Marathon Load Balancer 會根據您所部署的容器以動態方式重新設定本身。 它也比較容易從遺失容器或代理程式中復原 - 如果發生這種情況，Apache Mesos 會重新啟動別處的容器且 marathon-lb 會調整。
 
+移至 [https://shell.azure.com](https://shell.azure.com)，並在您的瀏覽器中開啟 Cloud Shell。
+
 執行下列命令，在公用代理程式叢集上安裝 marathon 負載平衡器。
 
-```azurecli-interactive
+```console
 dcos package install marathon-lb
 ```
 
@@ -97,7 +99,7 @@ az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].f
 
 請使用 DC/OS CLI 來執行應用程式。 Marathon 依預設會將應用程式部署至私人叢集。 這表示上述部署只能透過您的負載平衡器進行存取，此舉通常是所需的行為。
 
-```azurecli-interactive
+```console
 dcos marathon app add hello-web.json
 ```
 

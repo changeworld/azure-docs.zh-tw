@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963357"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915906"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>利用 Azure Machine Learning 設計工具建立分類器及使用特徵選取來預測收入
 
@@ -25,7 +25,7 @@ ms.locfileid: "76963357"
 
 了解如何使用設計工具 (預覽) 來建立機器學習分類器，而不需要撰寫任何一行程式碼。 此範例會訓練**二元促進式決策樹**來預測成人普查收入 (>= 50K 或 <= 50K)。
 
-因為問題是回應「哪一個？」 這稱為分類問題。 不過，您可以套用相同的基本程序來處理任何類型的機器學習問題，例如迴歸、分類或叢集等類型。
+因為問題會回答「哪一個？」，這稱為分類問題。 不過，您可以套用相同的基本程序來處理任何類型的機器學習問題，例如迴歸、分類或叢集等類型。
 
 以下是此範例的最終管線圖表：
 
@@ -51,7 +51,7 @@ ms.locfileid: "76963357"
 
 1. 將成人普查收入二元資料集模組拖曳至管線畫布。
 1. 新增**分割資料**模組，以建立訓練和測試集。 將第一個輸出資料集中的資料列比例設為 0.7。 此設定會指定將 70% 的資料輸出到模組的左側連接埠，並將其餘資料輸出至右側連接埠。 我們會使用左側的資料集進行訓練，而將右側資料用於測試。
-1. 新增**篩選型特徵選取**模組來依據 PearsonCorreclation 選取 5 個特徵。 
+1. 新增**篩選型特徵選取**模組來依據 PearsonCorrelation 選取 5 個特徵。 
 1. 新增**二元促進式決策樹**模組來初始化促進式決策樹分類器。
 1. 新增**訓練模型**模組。 將上一個步驟中的分類器連結到**訓練模型**的左側輸入連接埠。 將篩選型特徵選取模組中的已篩選資料集連結為訓練資料集。  **訓練模型**會訓練分類器。
 1. 新增「選取資料行轉換」和「套用轉換」模組，以將相同的轉換 (篩選型特徵選取) 套用至測試資料集。

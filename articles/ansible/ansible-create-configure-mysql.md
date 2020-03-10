@@ -4,12 +4,12 @@ description: 深入了解如何使用 Ansible 來建立及設定適用於 MySQL 
 keywords: ansible, azure, devops, bash, 劇本, mysql, 資料庫
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603121"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247877"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>教學課程：使用 Ansible 在適用於 MySQL 的 Azure 資料庫中設定資料庫
 
@@ -157,9 +157,13 @@ ansible-playbook mysql_firewall.yml
 
 本節中，您會使用 Azure Cloud Shell 連線至您先前建立的伺服器。
 
-1. 在下列程式碼中選取 [試試看]  按鈕：
+1. 選取下列圖示以開啟 shell.azure.com。
 
-    ```azurecli-interactive
+   [![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+1. 輸入下列程式碼：
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ ansible-playbook mysql_firewall.yml
     
     若一切順利運作，您會在輸出中看到如下的結果：
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

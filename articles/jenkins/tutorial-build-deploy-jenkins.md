@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何透過 Visual Studio Team
 keywords: jenkins, azure, devops, 虛擬機器, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606375"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192603"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教學課程：使用 Jenkins 和 Azure DevOps Services 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -96,9 +96,9 @@ ms.locfileid: "77606375"
 5. 選取 [Trigger release in TFS/Team Services] (觸發 TFS/Team Services 中的發行)  。 輸入 Azure DevOps Services 組織的 URI，例如 **https://{your-organization-name}.visualstudio.com**。
 6. 輸入**專案**名稱。
 7. 選擇發行管線的名稱。 (請稍後在 Azure DevOps Services 中建立此發行管線。)
-8. 選擇認證以連接到 Azure DevOps Services 或 Team Foundation Server 環境：
+8. 選擇認證以連接到 Azure DevOps Services 或 Azure DevOps Server 環境：
    - 如果您是使用 Azure DevOps Services，請將 [使用者名稱]  保留空白。 
-   - 如果您是使用 Team Foundation Server 的內部部署版本，請輸入使用者名稱和密碼。    
+   - 如果您使用 Azure DevOps Server 的內部部署版本，請輸入使用者名稱和密碼。    
    ![設定 Jenkins 建置後動作](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. 儲存 Jenkins 專案。
 

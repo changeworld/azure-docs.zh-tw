@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827308"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251319"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
-文字分析 API 是一種雲端式服務，可針對原始的文字提供進階的自然語言處理，同時包含四種主要功能：情感分析、關鍵片語擷取、語言偵測和實體辨識。
+文字分析 API 是一種雲端式服務，可針對原始的文字提供進階的自然語言處理，同時包含四種主要功能：情感分析、關鍵片語擷取、語言偵測和具名實體辨識。
 
 此 API 屬於 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。
 
@@ -51,7 +51,7 @@ ms.locfileid: "73827308"
 
 2. [編寫要求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含 JSON 格式的原始非結構化文字，作為您的資料。
 
-3. 將要求發佈至註冊期間所建立的端點，並附上所需的資源：情感分析、關鍵片語擷取、語言偵測或實體識別。
+3. 將要求發佈至註冊期間所建立的端點，並附上所需的資源：情感分析、關鍵片語擷取、語言偵測或具名實體辨識。
 
 4. 將回應串流處理或儲存至本機。 視要求之不同，結果可能是情感分數、擷取的關鍵片語集合或語言代碼。
 

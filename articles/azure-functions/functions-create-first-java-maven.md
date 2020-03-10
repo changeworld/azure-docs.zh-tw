@@ -1,20 +1,22 @@
 ---
-title: 使用 Java 和 Maven 將函式發佈至 Azure
-description: 使用 Java 和 Maven 建立 HTTP 觸發函式並將其發佈至 Azure。
-author: rloutlaw
+title: 使用 Java 和 Maven/Gradle 將函式發佈至 Azure
+description: 使用 Java 和 Maven 或 Gradle 建立 HTTP 觸發的函式，並將其發佈至 Azure。
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208841"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272723"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>快速入門：使用 Java 和 Maven 建立函式並將其發佈至 Azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>快速入門：使用 Java 和 Maven/Gradle 建立函式並將其發佈至 Azure
 
-本文說明如何使用 Maven 命令列工具來建置 Java 函式並將其發佈至 Azure Functions。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。
+本文說明如何使用 Maven/Gradle 命令列工具建置 Java 函式，並將其發佈至 Azure Functions。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ ms.locfileid: "77208841"
 若要使用 Java 開發函式，您必須安裝下列項目：
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版
-- [Apache Maven](https://maven.apache.org) 3.0 版或更新版本
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 版或更新版本
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org) 3.0 版或更新版本
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/) 4.10 版和更新版本
+::: zone-end 
 
 您也需要作用中的 Azure 訂用帳戶。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ ms.locfileid: "77208841"
 > [!IMPORTANT]
 > JAVA_HOME 環境變數必須設定為 JDK 的安裝位置，才能完成本快速入門。
 
-## <a name="generate-a-new-functions-project"></a>產生新的 Functions 專案
+## <a name="prepare-a-functions-project"></a>準備 Functions 專案
 
+::: zone pivot="java-build-tools-maven" 
 在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Functions 專案。
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> 如果您使用的是 Powershell，請記得在參數兩側加上 ""。
+
+> [!NOTE]
 > 如果您遇到執行命令的問題，請查看使用哪個 `maven-archetype-plugin` 版本。 因為您在不含 `.pom` 檔案的空目錄中執行命令，如果您從舊版升級 Maven，則可能會嘗試使用來自 `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` 的舊版外掛程式。 若是如此，請嘗試刪除 `maven-archetype-plugin` 目錄，然後重新執行命令。
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven 會要求您提供在部署時完成產生專案所需的值。 當系統提示時，提供下列值：
 
@@ -79,7 +73,35 @@ Maven 會要求您提供在部署時完成產生專案所需的值。 當系統�
 
 輸入 `Y` 或按 Enter 進行確認。
 
-Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 
+Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 執行下列命令，將目錄切換至已建立的專案資料夾。
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+使用下列命令複製範例專案：
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+開啟 `build.gradle`，並將下節中的 `appName` 變更為唯一名稱，以避免在部署至 Azure 時發生網域名稱衝突。 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 在文字編輯器中，從 *src/main/java* 路徑開啟新的 Function.java 檔案，並檢閱所產生的程式碼。 此程式碼是一個 [HTTP 觸發](functions-bindings-http-webhook.md)函式，可回應要求的本文。 
 
@@ -88,17 +110,25 @@ Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
-執行下列命令，可將目錄變更為新建立的專案資料夾，然後建立並執行函式專案：
+執行下列命令，以建置並執行函式專案：
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
 
 當您在本機執行專案時，您會在 Azure Functions Core Tools 中看到如下所示的輸出：
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -112,11 +142,11 @@ Http Functions:
 
 在新的終端視窗中使用 cURL 從命令列觸發函式：
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 在本機執行時不需要[函式金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。 在終端機中使用 `Ctrl+C` 可停止函式程式碼。
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > 如果您的帳戶可以存取多個訂用帳戶，請使用 [az account set](/cli/azure/account#az-account-set) 來設定此工作階段的預設訂用帳戶。 
 
-使用下列 Maven 命令，將您的專案部署至新的函式應用程式。 
+使用下列命令，將您的專案部署至新的函式應用程式。 
 
-```azurecli
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-此 `azure-functions:deploy` Maven 目標會在 Azure 中建立下列資源：
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+這會在 Azure 中建立下列資源：
 
 + 資源群組。 以您提供的 _resourceGroup_ 命名。
 + 儲存體帳戶。 Functions 所需。 此名稱會根據儲存體帳戶名稱需求隨機產生。
@@ -175,13 +214,13 @@ mvn azure-functions:deploy
 
 若要使用 `cURL` 驗證在 Azure 上執行的函式應用程式，請將下列範例中的 URL 取代為您從入口網站複製的 URL。
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 這會在要求本文中使用 `AzureFunctions`，將 POST 要求傳送至函式端點。 您會看見下列回應。
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

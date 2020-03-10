@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 81d69f2274abf075be2f97b0edc67af2eea62327
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b7c4bac7523cdec36beac64e2cd204588b0935fb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614491"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155483"
 ---
 <a name="HOLTop"></a>
 
@@ -32,8 +32,9 @@ ms.locfileid: "77614491"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
+    * 您可以使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 
@@ -44,6 +45,20 @@ ms.locfileid: "77614491"
 #### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 以滑鼠右鍵按一下 [方案總管]  中的解決方案，然後選取 [管理 NuGet 套件]  ，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]  、核取 [包含發行前版本]  ，然後搜尋 `Azure.AI.TextAnalytics`。 選取版本 `1.0.0-preview.2`，然後 **安裝**。 您也可以使用[套件管理員主控台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) 上找到該檔案，其中包含本快速入門中的程式碼範例。 
+
+#### <a name="version-21"></a>[2.1 版](#tab/version-2)
+
+以滑鼠右鍵按一下 [方案總管]  中的解決方案，然後選取 [管理 NuGet 套件]  ，以安裝用戶端程式庫。 在開啟的封裝管理員中，選取 [瀏覽]  並搜尋 `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`。 在其上按一下，然後按一下 [安裝]  。 您也可以使用[套件管理員主控台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs) 上找到該檔案，其中包含本快速入門中的程式碼範例。 
+
+---
+
+#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 開啟 *program.cs* 檔案並新增下列 `using` 指示詞：
 
@@ -82,8 +97,6 @@ static void Main(string[] args)
 ```
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
-
-以滑鼠右鍵按一下 [方案總管]  中的解決方案，然後選取 [管理 NuGet 套件]  ，以安裝用戶端程式庫。 在開啟的封裝管理員中，選取 [瀏覽]  並搜尋 `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`。 在其上按一下，然後按一下 [安裝]  。 您也可以使用[套件管理員主控台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 開啟 *program.cs* 檔案並新增下列 `using` 指示詞：
 

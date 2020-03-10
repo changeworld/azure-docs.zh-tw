@@ -5,12 +5,12 @@ author: zr-msft
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595598"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273027"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 與 Azure 受控服務整合
 
@@ -29,39 +29,43 @@ Open Service Broker for Azure (OSBA) 可以與 [Kubernetes 服務類別目錄][k
 
 ## <a name="install-service-catalog"></a>安裝服務類別目錄
 
-第一步是在 Kubernetes 叢集中，使用 Helm 圖表安裝服務類別目錄。 使用下列方式升級叢集中的 Tiller (Helm 伺服器) 安裝：
+第一步是在 Kubernetes 叢集中，使用 Helm 圖表安裝服務類別目錄。
 
-```azurecli-interactive
+移至 [https://shell.azure.com](https://shell.azure.com)，並在您的瀏覽器中開啟 Cloud Shell。
+
+使用下列方式升級叢集中的 Tiller (Helm 伺服器) 安裝：
+
+```console
 helm init --upgrade
 ```
 
 現在，將服務類別目錄圖表新增至 Helm 存放庫：
 
-```azurecli-interactive
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 最後，安裝包含 Helm 圖表的服務類別目錄。 如果您的叢集已啟用 RBAC，請執行此命令。
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 如果您的叢集未啟用 RBAC，請執行此命令。
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 執行 Helm 圖表之後，請確認 `servicecatalog` 出現在下列命令的輸出中：
 
-```azurecli-interactive
+```console
 kubectl get apiservice
 ```
 
 例如，您應該會看到如下的輸出 (這裡顯示截斷的結果)：
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -76,7 +80,7 @@ v1beta1.storage.k8s.io               10
 
 從新增 Open Service Broker for Azure Helm 存放庫開始：
 
-```azurecli-interactive
+```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
@@ -88,7 +92,7 @@ az ad sp create-for-rbac
 
 輸出應該類似下面這樣。 請記下 `appId`、`password` 和 `tenant` 值，您在下一個步驟中將會用到這些值。
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -100,7 +104,7 @@ az ad sp create-for-rbac
 
 使用上述的值設定下列環境變數：
 
-```azurecli-interactive
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -114,7 +118,7 @@ az account show --query id --output tsv
 
 再次使用上述的值設定下列環境變數：
 
-```azurecli-interactive
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -132,20 +136,20 @@ helm install azure/open-service-broker-azure --name osba --namespace osba \
 
 執行下列命令以安裝 Service Catalog CLI 二進位檔：
 
-```azurecli-interactive
+```console
 curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
 ```
 
 現在，列出已安裝的 Service Broker:
 
-```azurecli-interactive
+```console
 ./svcat get brokers
 ```
 
 您應該會看到類似以下的輸出：
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -153,13 +157,13 @@ chmod +x ./svcat
 
 接下來，列出可用的服務類別。 所顯示的服務類別就是可用的 Azure 受控服務，您可以透過 Open Service Broker for Azure 佈建這些服務。
 
-```azurecli-interactive
+```console
 ./svcat get classes
 ```
 
 最後，列出所有可用的服務方案。 服務方案是 Azure 受控服務的服務層級。 例如，適用於 MySQL 的 Azure 資料庫計劃的範圍是從包含 50 個資料庫交易單位 (DTU) 之基本層的 `basic50` 到包含 800 個 DTU 之標準層的 `standard800`。
 
-```azurecli-interactive
+```console
 ./svcat get plans
 ```
 
@@ -167,20 +171,20 @@ chmod +x ./svcat
 
 在此步驟中，您要使用 Helm 為 WordPress 安裝已更新的 Helm 圖表。 此圖表會佈建一個 WordPress 可以使用的外部適用於 MySQL 的 Azure 資料庫執行個體。 此程序需要數分鐘的時間。
 
-```azurecli-interactive
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 若要確認安裝已佈建正確的資源，請列出已安裝的服務執行個體和繫結：
 
-```azurecli-interactive
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 列出已安裝的密碼：
 
-```azurecli-interactive
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

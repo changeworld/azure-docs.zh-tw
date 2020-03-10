@@ -11,20 +11,19 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 2710263aa099618d57f763edd199673ae04b53ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 34f0fb57b4432a8153f2cbaa8cb60edbb9a6f494
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160470"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271075"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
 在本快速入門中，您將了解如何整合 Python Web 應用程式與 Microsoft 身分識別平台。 您的應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
 
-完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
+完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -92,45 +91,56 @@ ms.locfileid: "77160470"
 > > ![已設定](media/quickstart-v2-aspnet-webapp/green-check.png) 您的應用程式已設定了這個屬性
 
 #### <a name="step-2-download-your-project"></a>步驟 2:下載您的專案
+> [!div renderon="docs"]
+> [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-[下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
-
-#### <a name="step-3-configure-the-application"></a>步驟 3：設定應用程式
-
-1. 將 ZIP 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
-1. 如果您使用整合式開發環境，請在您慣用的 IDE 中開啟範例 (選用)。
-1. 開啟 **app_config.py** 檔案，其位於根資料夾並取代為下列程式碼片段：
-
-```python
-CLIENT_ID = "Enter_the_Application_Id_here"
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-```
+> [!div class="sxs-lookup" renderon="portal"]
+> 下載專案，並將 zip 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-the-application"></a>步驟 3：設定應用程式
+> 
+> 1. 將 ZIP 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
+> 1. 如果您使用整合式開發環境，請在您慣用的 IDE 中開啟範例 (選用)。
+> 1. 開啟 **app_config.py** 檔案，其位於根資料夾並取代為下列程式碼片段：
+> 
+> ```python
+> CLIENT_ID = "Enter_the_Application_Id_here"
+> CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+> AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+> ```
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
 > - `Enter_the_Client_Secret_Here` - 您在 [憑證與祕密]  中為您所註冊的應用程式建立的 [用戶端密碼]  。
 > - `Enter_the_Tenant_Name_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
 
-#### <a name="step-4-run-the-code-sample"></a>步驟 4：執行程式碼範例
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>步驟 3：執行程式碼範例
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>步驟 4：執行程式碼範例
 
 1. 您需要使用 pip 安裝 MSAL Python 程式庫、Flask 架構、Flask-Session，以進行伺服器端工作階段管理和要求，如下所示：
 
-   ```Shell
-   pip install -r requirements.txt
-   ```
+    ```Shell
+    pip install -r requirements.txt
+    ```
 
 2. 從殼層或命令列執行 app.py：
 
-   ```Shell
-   python app.py
-   ```
+    ```Shell
+    python app.py
+    ```
    > [!IMPORTANT]
    > 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[這些指示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials) \(部分機器翻譯\)。
 
 ## <a name="more-information"></a>詳細資訊
+
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ### <a name="getting-msal"></a>取得 MSAL
 MSAL 是用來登入使用者並要求權杖的程式庫，該權杖可用來存取受 Microsoft 身分識別平台保護的 API。

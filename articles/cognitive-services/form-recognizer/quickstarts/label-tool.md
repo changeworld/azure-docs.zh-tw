@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485347"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205812"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -35,12 +35,19 @@ ms.locfileid: "77485347"
 ## <a name="set-up-the-sample-labeling-tool"></a>設定範例標籤工具
 
 您將使用 Docker 引擎來執行範例標籤工具。 請依照下列步驟來設定 Docker 容器。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。
-1. 首先，在主機電腦上安裝 Docker。 主機電腦可以是您的本機電腦 ([Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/))。 或者，您可以使用 Azure 中的 Docker 主控服務，例如[部署至 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances/index)或 Kubernetes 叢集。 主機電腦必須符合下列硬體需求：
+1. 首先，在主機電腦上安裝 Docker。 本指南將說明如何使用本機電腦作為主機。 如果您想要在 Azure 中使用 Docker 主機服務，請參閱[部署範例標籤工具](../deploy-label-tool.md)操作指南。 
+
+   主機電腦必須符合下列硬體需求：
 
     | 容器 | 最小值 | 建議|
     |:--|:--|:--|
     |範例標籤工具|2 核心、4 GB 記憶體|4 核心，8 GB 記憶體|
-    
+
+   遵循您作業系統的適當指示，在電腦上安裝 Docker： 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/)。
+
 1. 使用 `docker pull` 命令取得範例標籤工具容器。
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ ms.locfileid: "77485347"
 
 ### <a name="apply-labels-to-text"></a>將標籤套用至文字
 
-接下來，您將建立標籤，並將其套用至要讓模型辨識的文字元素。
+接下來，您將建立標記 (標籤)，並將其套用至要讓模型辨識的文字元素。
 
-1. 首先，使用標籤編輯器窗格建立您要識別的標記 (標籤)。
+1. 首先，使用標記編輯器窗格建立您要識別的標記。
+  1. 按一下 **+** 以建立新標記。
+  1. 輸入標記名稱。
+  1. 按 Enter 以儲存標記。
 1. 在主要編輯器中，按一下並拖曳以從反白顯示的文字元素中選取一或多個單字。
+1. 按一下您要套用的標記，或按對應的鍵盤按鍵。 數字鍵會指派為前 10 個標記的快速鍵。 您可以使用標籤編輯器窗格中的向上和向下箭號圖示來重新排序標籤。
+    > [!Tip]
+    > 當您要標記表單時，請記住下列秘訣。
+    > * 您只能對每個選取的文字元素套用一個標記。
+    > * 每個標記只能在每頁套用一次。 如果某個值在相同表單上出現多次，請為每個執行個體建立不同的標記。 例如："invoice# 1"、"invoice# 2" 等等。
+    > * 標記不能跨越頁面。
+    > * 標示出現在表單上的值；請勿嘗試將值分割成具有兩個不同標記的兩個部分。 例如，位址欄位應該以單一標記標示，即使其橫跨多行也一樣。
+    > * 請勿在標記的欄位中包含索引鍵，&mdash; 只能包含值。
+    > * 系統應會自動偵測資料表資料，而且將會在最終輸出 JSON 檔案中提供。 不過，如果模型無法偵測所有資料表資料，您也可以手動標記這些欄位。 以不同的標籤標記資料表中的每個資料格。 如果您的表單具有不同資料列數目的資料表，請務必標記至少一個具有最大可能資料表的表單。
 
-    > [!NOTE]
-    > 您目前無法選取跨多個頁面的文字。
-1. 按一下您要套用的標籤，或按對應的鍵盤按鍵。 每個選取的文字元素只能套用一個標籤，且每個頁面只能將每個標籤套用一次。
-
-    > [!TIP]
-    > 數字鍵會指派為前十個標籤的快速鍵。 您可以使用標籤編輯器窗格中的向上和向下箭號圖示來重新排序標籤。
 
 依照上述步驟為您的五個表單加上標籤，然後繼續進行下一個步驟。
 

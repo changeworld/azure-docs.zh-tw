@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086198"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913813"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>從 Google Maps 遷移 Web 服務
 
@@ -24,21 +24,24 @@ Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間
 
 | Google Maps 服務 API | Azure 地圖服務的服務 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [路由](https://docs.microsoft.com/rest/api/maps/route)                               |
-| 距離矩陣         | [路線矩陣](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| 地理編碼               | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 地點搜尋           | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 地點自動完成      | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 靜態地圖              | [轉譯](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| 時區               | [時區](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| 方向              | [路由](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| 距離矩陣         | [路線矩陣](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| 地理編碼               | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 地點搜尋           | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 地點自動完成      | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 緊貼道路            | 請參閱[計算路線和方向](#calculate-routes-and-directions)一節。            |
+| 速度限制            | 請參閱[對座標進行反向地理編碼](#reverse-geocode-a-coordinate)一節。                  |
+| 靜態地圖              | [轉譯](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| 時區               | [時區](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 Azure 地圖服務目前無法使用下列服務 API：
 
 - Elevation
 - 地理位置
-- 地點詳細資料和地點的相片。 電話號碼和網站 URL 則可於 Azure 地圖服務的搜尋 API 中取得。
+- 地點詳細資料和相片 - 電話號碼和網站 URL 可於 Azure 地圖服務的搜尋 API 中取得。
 - 地圖 URL
-- 道路。 速限資料可透過 Azure 地圖服務中的路線和反向地理編碼 API 來取得。
+- 最接近的道路 - 這可使用 Web SDK 達到 (如[這裡](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)所示)，但目前並未以服務的形式提供。
 - 靜態街道檢視
 
 Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
@@ -163,7 +166,7 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 | `rankby`                    | *N/A*                               |
 | `type`                      | `categorySet –` 請參閱[支援的搜尋類別](supported-search-categories.md)文件。   |
 
-## <a name="calculate-routes-and-directions"></a>計算路線和方線
+## <a name="calculate-routes-and-directions"></a>計算路線和方向
 
 使用 Azure 地圖服務來計算路線和方向。 Azure 地圖服務有許多與 Google Maps 路線服務相同的功能，例如：
 
@@ -176,8 +179,8 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 
 Azure 地圖服務路線服務會提供下列 API 來計算路線：
 
-- [**計算路線**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點或使用許多路線選項時，請使用 POST 要求。 這是因為使用 POST 可確保 URL 要求不會變得太長，而造成問題。
-- [**批次路線**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料都會在伺服器上平行處理。 當處理完成時，您便可以下載一組完整的結果。
+- [**計算路線**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點，或使用許多路線選項來確保 URL 要求不會太長而造成問題時，建議您使用 POST 要求。 Azure 地圖服務中的 POST 路線方向可選擇接受數千個[支援點](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)，並使用這些支援點來重建其間的邏輯路線路徑 (緊貼道路)。 
+- [**批次路線**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
 - [**行動服務**](https://docs.microsoft.com/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。

@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立倉儲 - Azure Powershell
-description: 快速使用 Azure PowerShell 建立 SQL Database 邏輯伺服器、伺服器層級防火牆規則及資料倉儲。
+title: 快速入門：建立資料倉儲 (PowerShell)
+description: 使用 Azure PowerShell 快速建立 Azure Synapse Analytics 資料倉儲邏輯伺服器與伺服器層級防火牆規則。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461517"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199983"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>快速入門：如何使用 Azure PowerShell 建立和查詢 Azure SQL 資料倉儲
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立和查詢資料倉儲
 
-快速使用 Azure PowerShell 建立 Azure SQL 資料倉儲。
+使用 Azure PowerShell 佈建 SQL 集區，以建立 Azure Synapse Analytics 資料倉儲。
+
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!NOTE]
-> 建立 SQL 資料倉儲可能會導致新的可計費服務。  如需詳細資訊，請參閱 [SQL 資料倉儲價格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 建立倉儲可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
@@ -78,6 +80,7 @@ $databasename = "mySampleDataWarehosue"
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>建立邏輯伺服器
 
 使用 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) 命令建立 [Azure SQL 邏輯伺服器](../sql-database/sql-database-logical-servers.md)。 邏輯伺服器包含一組當作群組管理的資料庫。 下列範例會使用名為 `ServerAdmin` 的系統管理員使用者與密碼 `ChangeYourAdminPassword1` 在資源群組中建立隨機命名的伺服器。 視需要取代這些預先定義的值。
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database 和 SQL 資料倉儲透過連接埠 1433 進行通訊。 如果您嘗試從公司網路連線，您網路的防火牆可能不允許透過連接埠 1433 的連出流量。 如果是這樣，除非 IT 部門開放連接埠 1433，否則您將無法連線到您的 Azure SQL 伺服器。
+> SQL 端點會透過連接埠 1433 進行通訊。 如果您嘗試從公司網路連線，您網路的防火牆可能不允許透過連接埠 1433 的連出流量。 如果是這樣，除非 IT 部門開放連接埠 1433，否則您將無法連線到您的 Azure SQL 伺服器。
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 必要參數如下：
 
 * **RequestedServiceObjectiveName**：您要求的[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)數量。 增加此數量會增加計算成本。 如需支援值的清單，請參閱[記憶體和並行存取限制](memory-concurrency-limits.md)。
-* **DatabaseName**：您要建立之 SQL 資料倉儲的名稱。
+* **DatabaseName**：您要建立之資料倉儲的名稱。
 * **ServerName**：您用來建立的伺服器名稱。
 * **ResourceGroupName**：您使用的資源群組。 若要尋找訂用帳戶中可用的資源，請使用 Get-AzureResource。
-* **版本**：必須是 "DataWarehouse"，才能建立 SQL 資料倉儲。
+* **版本**：必須是 "DataWarehouse"，才能建立資料倉儲。
 
 選擇性參數如下：
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立資料倉儲、建立防火牆規則、連線到您的資料倉儲，並執行了一些查詢。 若要深入了解 Azure SQL 資料倉儲，請繼續進行載入資料的教學課程。
+您現在已建立資料倉儲、建立防火牆規則、連線到您的資料倉儲，並執行了一些查詢。 若要深入了解，請繼續進行載入資料的教學課程。
 > [!div class="nextstepaction"]
->[將資料載入 SQL 資料倉儲](load-data-from-azure-blob-storage-using-polybase.md)
+>[將資料載入至資料倉儲](load-data-from-azure-blob-storage-using-polybase.md)

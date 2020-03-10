@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687198"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656019"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>教學課程：在 Spring Boot 應用程式中使用功能旗標
 
@@ -29,7 +29,7 @@ Spring Boot Core 功能管理程式庫可讓您在 Spring Boot 應用程式中�
 
 [將功能旗標新增至 Spring Boot 應用程式的快速入門](./quickstart-feature-flag-spring-boot.md)會示範數種方法，讓您了解如何在 Spring Boot 應用程式中新增功能旗標。 本教學課程會詳細說明這些方法。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您將學會如何：
 
 > [!div class="checklist"]
 > * 在應用程式的重要部分新增功能旗標來控制功能的可用性。
@@ -51,11 +51,23 @@ public HelloController(FeatureManager featureManager) {
 
 若要將 Spring Boot 應用程式連線至應用程式組態，最簡單的方式是透過組態提供者：
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,32 +81,31 @@ public HelloController(FeatureManager featureManager) {
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 依照慣例，我們會將此 YML 文件的 `feature-management` 區段用於功能旗標設定。 上述範例顯示了三個功能旗標，及其在 `EnabledFor` 屬性中定義的篩選條件：
 
-* `FeatureA` 為「開啟」  。
-* `FeatureB` 為「關閉」  。
-* `FeatureC` 會使用 `Parameters` 屬性指定名為 `Percentage` 的篩選條件。 `Percentage` 是可設定的篩選條件。 在此範例中，`Percentage` 會指定 `FeatureC` 旗標有 50% 的機率會「開啟」  。
+* `feature-a` 為「開啟」  。
+* `feature-b` 為「關閉」  。
+* `feature-c` 會使用 `parameters` 屬性指定名為 `Percentage` 的篩選條件。 `Percentage` 是可設定的篩選條件。 在此範例中，`Percentage` 會指定 `feature-c` 旗標有 50% 的機率會「開啟」  。
 
 ## <a name="feature-flag-checks"></a>功能旗標檢查
 
-功能管理的基本模式是先檢查功能旗標是否設定為「開啟」  。 如果是，則功能管理員會功能所包含的動作。 例如︰
+功能管理的基本模式是先檢查功能旗標是否設定為「開啟」  。 如果是，則功能管理員會功能所包含的動作。 例如：
 
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>控制器動作
 
-在 MVC 控制器中，您可以使用 `@FeatureGate` 屬性來控制是否要啟用特定動作。 下列 `Index` 動作必須在 `FeatureA`「開啟」  時才能執行：
+在 MVC 控制器中，您可以使用 `@FeatureGate` 屬性來控制是否要啟用特定動作。 下列 `Index` 動作必須在 `feature-a`「開啟」  時才能執行：
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ public String index(Model model) {
 
 ## <a name="mvc-filters"></a>MVC 篩選條件
 
-您可以將 MVC 篩選條件設定為根據功能旗標的狀態來啟用。 下列程式碼會新增名為 `FeatureFlagFilter` 的 MVC 篩選條件。 只有在 `FeatureA` 已啟用時，才會在 MVC 管線內觸發此篩選條件。
+您可以將 MVC 篩選條件設定為根據功能旗標的狀態來啟用。 下列程式碼會新增名為 `FeatureFlagFilter` 的 MVC 篩選條件。 只有在 `feature-a` 已啟用時，才會在 MVC 管線內觸發此篩選條件。
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>路由
 
-您可以使用功能旗標來重新導向路由。 下列程式碼會將已啟用 `FeatureA` 的使用者重新導向：
+您可以使用功能旗標來重新導向路由。 下列程式碼會將已啟用 `feature-a` 的使用者重新導向：
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

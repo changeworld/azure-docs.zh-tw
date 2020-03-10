@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 PowerShell 來升�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 280e25834d015d89ab7cbba2a2b2b0f36dcf19fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457840"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252742"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中升級 Service Fabric 叢集的執行階段
 
@@ -42,7 +42,7 @@ ms.locfileid: "75457840"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * 設定 Windows 開發環境。 安裝 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 開發**、**ASP.NET 和 Web 開發**以及 **.NET Core 跨平台開發**工作負載。  然後設定 [.NET 開發環境](service-fabric-get-started.md)。
 
@@ -108,7 +108,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
                              -StoreLocation CurrentUser -StoreName My
 ```
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
@@ -150,7 +150,7 @@ MaxPercentUpgradeDomainDeltaUnhealthyNodes : 0
 ApplicationHealthPolicyMap                 : {}
 ```
 
-```azurecli
+```console
 sfctl cluster upgrade-status
 
 {

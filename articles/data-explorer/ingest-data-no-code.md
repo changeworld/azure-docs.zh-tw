@@ -1,5 +1,5 @@
 ---
-title: 教學課程：在未使用程式碼的情況下擷取監視資料 - Azure 資料總管
+title: 教學課程：在未使用程式碼的情況下在 Azure 資料總管中擷取監視資料
 description: 在本教學課程中，您將了解如何將監視資料擷取至 Azure 資料總管 (完全不需使用程式碼)，然後查詢該資料。
 author: orspod
 ms.author: orspodek
@@ -7,18 +7,18 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986201"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198043"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教學課程：在 Azure 資料總管中擷取和查詢監視資料 
 
 本教學課程將教導您如何直接將診斷和活動記錄中的資料內嵌至 Azure 資料總管叢集，而不需撰寫程式碼。 透過這個簡單的擷取方法，您可以快速開始查詢 Azure 資料總管，以進行資料分析。
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 在 Azure 資料總管資料庫中建立資料表和擷取對應。
@@ -43,7 +43,7 @@ ms.locfileid: "76986201"
 
 Azure 診斷計量和記錄與活動記錄是由 Azure 服務發出的記錄，以提供與該服務的作業有關的資料。 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
 #### <a name="example"></a>範例
 
 診斷計量會以 1 分鐘的時間粒紋進行彙總。 以下是 Azure 資料總管計量事件結構描述在查詢持續時間內的範例：
@@ -77,7 +77,7 @@ Azure 診斷計量和記錄與活動記錄是由 Azure 服務發出的記錄，�
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
 #### <a name="example"></a>範例
 
 以下是 Azure 資料總管[診斷擷取記錄](using-diagnostic-logs.md#diagnostic-logs-schema)的範例：
@@ -133,7 +133,7 @@ Azure 診斷計量和記錄與活動記錄是由 Azure 服務發出的記錄，�
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 #### <a name="example"></a>範例
 
 Azure 活動記錄為訂用帳戶層級的記錄，可針對在訂用帳戶中資源上所執行的作業提供深入解析。 以下是用來檢查存取的活動記錄事件範例：
@@ -210,7 +210,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 
 使用 Azure 資料總管 Web UI，在 Azure 資料總管資料庫中建立目標資料表。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>建立診斷計量的資料表
 
 1. 在 *TestDatabase* 資料庫中建立名為 *DiagnosticMetrics* 的資料表，用以儲存診斷計量記錄。 請使用下列 `.create table` 控制命令：
@@ -235,7 +235,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>建立診斷記錄的資料表 
 
 1. 在 *TestDatabase* 資料庫中建立名為 *DiagnosticLogs* 的資料表，用以儲存診斷記錄的記錄。 請使用下列 `.create table` 控制命令：
@@ -258,7 +258,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>建立活動記錄的資料表 
 
 1. 在 *TestDatabase* 資料庫中建立名為 *ActivityLogs* 的資料表，用以接收活動記錄的記錄。 若要建立資料表，請執行下列 Azure 資料總管查詢：
@@ -284,7 +284,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 
  由於資料格式為 `json`，因此需要資料對應。 `json` 對應會將每個 json 路徑對應至資料表資料行名稱。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>將診斷計量和記錄對應至資料表
 
 若要將診斷計量和記錄資料對應至資料表，請使用下列查詢：
@@ -293,7 +293,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>將活動記錄對應至資料表
 
 若要將活動記錄資料對應至資料表，請使用下列查詢：
@@ -305,7 +305,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>建立計量和記錄資料的更新原則
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>建立診斷計量的資料更新原則
 
 1. 建立可展開診斷計量記錄集合的[函式](/azure/kusto/management/functions)，讓集合中的每個值能夠取得不同的資料列。 使用 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 運算子：
@@ -333,7 +333,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>建立診斷記錄的資料更新原則
 
 1. 建立可展開診斷記錄之記錄集合的[函式](/azure/kusto/management/functions)，讓集合中的每個值能夠取得不同的資料列。 您將在 Azure 資料總管叢集上啟用擷取記錄，並使用[擷取記錄結構描述](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)。 您將建立一個用於成功和失敗擷取的資料表，而某些欄位將是空的，以供成功的擷取使用 (例如 ErrorCode)。 使用 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 運算子：
@@ -366,7 +366,7 @@ Azure 監視器記錄的結構不是表格式的。 您將操作資料，並將�
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>建立活動記錄的資料更新原則
 
 1. 建立可展開活動記錄之記錄集合的[函式](/azure/kusto/management/functions)，讓集合中的每個值都能收到不同的資料列。 使用 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 運算子：
@@ -411,7 +411,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
 1. 在表單中填寫以下資訊。 對於下表中未列出的任何設定，請使用預設值。
 
-    **設定** | **建議的值** | **描述**
+    **設定** | **建議的值** | **說明**
     |---|---|---|
     | **訂用帳戶** | *您的訂用帳戶* | 選取您要用於事件中樞的 Azure 訂用帳戶。|
     | **資源群組** | *test-resource-group* | 建立新的資源群組。 |
@@ -425,7 +425,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
 現在，您必須將診斷計量和記錄與活動記錄連線至事件中樞。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>將診斷計量和記錄連線至您的事件中樞
 
 選取要從中匯入計量的資源。 有數個資源類型支援匯出診斷資料的作業，包括事件中樞命名空間、Azure Key Vault、Azure IoT 中樞和 Azure 資料總管叢集。 在本教學課程中，我們將使用 Azure 資料總管叢集作為資源，我們會檢閱查詢效能計量和擷取結果記錄。
@@ -452,7 +452,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
 1. 選取 [儲存]  。
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>將活動記錄連線到事件中樞
 
 1. 在 Azure 入口網站的左側功能表中，選取 [活動記錄]  。
@@ -501,7 +501,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
     ![事件中樞資料連線](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診斷計量/診斷記錄](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. 在 [資料連線]  視窗中使用下列設定：
 
@@ -528,7 +528,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
 1. 選取 [建立]  。  
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 
 1. 在 [資料連線]  視窗中使用下列設定：
 
@@ -560,7 +560,7 @@ Azure 診斷設定能夠將計量和記錄匯出至儲存體帳戶或事件中�
 
 您現在已有具備資料流程的管線。 根據預設，透過叢集擷取需要 5 分鐘的時間，因此請等待幾分鐘讓資料完成傳送，再開始查詢。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診斷計量](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>查詢診斷計量資料表
 
 下列查詢會從 Azure 資料總管中的診斷計量記錄分析查詢持續時間資料：
@@ -579,7 +579,7 @@ DiagnosticMetrics
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診斷記錄](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>查詢診斷記錄資料表
 
 此管線會透過事件中樞產生擷取。 您將檢閱這些擷取的結果。
@@ -599,7 +599,7 @@ DiagnosticLogs
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[活動記錄](#tab/activity-logs)
+# <a name="activity-logs"></a>[活動記錄](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>查詢活動記錄資料表
 
 下列查詢會分析 Azure 資料總管活動記錄中的資料：

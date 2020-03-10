@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122018"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300480"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入門：使用 Azure Cache for Redis 搭配 Node.js
 
 在本快速入門中，您會將 Azure Cache for Redis 納入 Node.js 應用程式中，以便存取可從 Azure 內任何應用程式存取的安全、專用快取。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [node_redis](https://github.com/mranney/node_redis)，您可以使用命令 `npm install redis` 進行安裝。 
@@ -55,7 +55,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 ## <a name="create-a-new-nodejs-app"></a>建立新的 Node.js 應用程式
 
-建立名為 redistest.js  的新指令檔。
+建立名為 redistest.js  的新指令檔。 使用命令 `npm install redis bluebird` 安裝必要的套件。
 
 在檔案中新增下列 JavaScript 範例。 此程式碼示範如何使用快取主機名稱和金鑰環境變數來連線至 Azure Cache for Redis 執行個體。 此程式碼也會將字串值儲存到快取中，以及擷取其中的字串值。 `PING` 和 `CLIENT LIST` 命令也會執行。 如需更多搭配使用 Redis 與 [node_redis](https://github.com/mranney/node_redis) 用戶端的範例，請參閱 [https://redis.js.org/](https://redis.js.org/)。
 
@@ -63,6 +63,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 

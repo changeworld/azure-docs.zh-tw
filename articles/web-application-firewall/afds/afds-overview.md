@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934714"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915634"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 應用程式防火牆
 
@@ -77,7 +77,7 @@ WAF 原則可包含兩種類型的安全性規則 - 自訂規則 (由客戶撰�
 
 ### <a name="azure-managed-rule-sets"></a>Azure 管理的規則集
 
-Azure 管理的規則集可讓您以簡單的方式部署防護，以抵禦一組常見的安全性威脅。 由於這類規則集是由 Azure 所管理，因此會視需要更新規則，以防止新的攻擊簽章。 在公開預覽版本中，Azure 管理的預設規則集包含可抵禦下列威脅類別的規則：
+Azure 管理的規則集可讓您以簡單的方式部署防護，以抵禦一組常見的安全性威脅。 由於這類規則集是由 Azure 所管理，因此會視需要更新規則，以防止新的攻擊簽章。 Azure 管理的預設規則集包含可防範下列威脅類別的規則：
 
 - 跨網站指令碼處理
 - Java 攻擊
@@ -91,6 +91,8 @@ Azure 管理的規則集可讓您以簡單的方式部署防護，以抵禦一�
 
 當新的攻擊簽章新增至規則集時，預設規則集的版本號碼將會遞增。
 在 WAF 原則的偵測模式中，預設規則集會預設為啟用。 您可以停用或啟用預設規則集內的個別規則，以符合您的應用程式需求。 您也可以設定每個規則的特定動作 (允許/封鎖/重新導向/記錄)。
+
+有時您可能需要在 WAF 評估中略過特定要求屬性。 常見範例是用於驗證的 Active Directory 插入式權杖。 您可以設定受控規則、規則群組或整個規則集的排除清單。  
 
 預設動作是「封鎖」。 此外，如果您想要略過預設規則集中的任何預設規則，也可以在相同的 WAF 原則中設定自訂規則。
 

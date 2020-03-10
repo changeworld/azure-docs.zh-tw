@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 47d526ea410bc449c91ae4fb10913850c447f1b3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582634"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268183"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>教學課程：透過媒體服務進行即時串流
 
@@ -39,7 +39,7 @@ ms.locfileid: "73582634"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要有下列項目，才能完成教學課程：
 
@@ -47,7 +47,7 @@ ms.locfileid: "73582634"
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
 - 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](access-api-cli-how-to.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 - 用來廣播事件的相機或裝置 (例如筆記型電腦)。
-- 內部部署即時編碼器，它會將相機中的訊號轉換成資料流，再傳送至媒體服務即時串流服務。 資料流的格式必須是 **RTMP** 或 **Smooth Streaming**。
+- 內部部署即時編碼器，其會將相機中的訊號轉換成資料流，再傳送至媒體服務即時串流服務；請參閱[建議的內部部署即時編碼器](recommended-on-premises-live-encoders.md)。 資料流的格式必須是 **RTMP** 或 **Smooth Streaming**。
 
 > [!TIP]
 > 請務必先檢閱[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)，再繼續操作。 

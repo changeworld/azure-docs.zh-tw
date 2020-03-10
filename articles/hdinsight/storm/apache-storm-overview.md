@@ -2,19 +2,18 @@
 title: 什麼是 Apache Storm - Azure HDInsight
 description: Apache Storm 可讓您即時處理資料流。 Azure HDInsight 可讓您在 Azure 雲端上輕鬆建立 Storm 叢集。 使用 Visual Studio，您可以使用 C# 建立 Storm 解決方案，然後再部署到 HDInsight Storm 叢集。
 author: hrasheed-msft
-ms.reviewer: jasonh
-keywords: apache storm 使用案例,storm 叢集,什麼是 apache storm
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: overview
-ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: overview
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 03/02/2020
+ms.openlocfilehash: 24981c10985cd353fcd476f416e89c94ad6b6cc6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460002"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271906"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什麼是 Apache Storm on Azure HDInsight？
 
@@ -34,13 +33,9 @@ Storm on HDInsight 提供下列功能︰
 
     * 支援 Trident Java 介面。 您可以建立 Storm 拓撲，以支援一次性處理訊息、交易式資料存放區持續性和一組常用的串流分析作業。
 
-* **動態調整**：您可以新增或移除背景工作節點，而不影響執行 Storm 拓撲。
+* **動態調整**：您可以新增或移除背景工作節點，而不影響執行 Storm 拓撲。 您必須停用並重新執行拓撲，才能利用透過調整作業新增的節點。
 
-    * 您必須停用並重新執行拓撲，才能利用透過調整作業新增的節點。
-
-* **使用多項 Azure 服務建立串流管線**：HDInsight 上的 Storm 會與其他 Azure 服務整合，例如事件中樞、SQL Database、Azure 儲存體及 Azure Data Lake Storage。
-
-    如需與 Azure 服務整合的解決方案範例，請參閱[使用 Apache Storm on HDInsight 處理事件中樞的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
+* **使用多項 Azure 服務建立串流管線**：HDInsight 上的 Storm 會與其他 Azure 服務整合，例如事件中樞、SQL Database、Azure 儲存體及 Azure Data Lake Storage。 如需與 Azure 服務整合的解決方案範例，請參閱[使用 Apache Storm on HDInsight 處理事件中樞的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
 如需使用 Apache Storm 作為即時分析解決方案的公司清單，請參閱[使用 Apache Storm 的公司](https://storm.apache.org/Powered-By.html)。
 
@@ -72,19 +67,12 @@ Apache Storm 叢集的預設組態只有一個 Nimbus 節點。 Storm on HDInsig
 
 ## <a name="ease-of-use"></a>容易使用
 
-* __安全殼層 (SSH) 連線__：您可以使用 SSH 透過網際網路存取 Storm 叢集的前端節點。 您可以使用 SSH，直接在叢集上執行命令。
-
-  如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-* __Web 連線__：所有 HDInsight 叢集都會提供 Ambari Web UI。 您可以使用 Ambari Web UI，輕鬆地監視、設定及管理叢集上的服務。 Storm 叢集也會提供 Storm UI。 您可以使用 Storm UI，從瀏覽器監視及管理執行中的 Storm 拓撲。
-
-  如需詳細資訊，請參閱[使用 Apache Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Apache Storm UI 進行監視和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)文件。
-
-* __Azure PowerShell 和 Azure 傳統 CLI__：PowerShell 和傳統 CLI 兩者都提供您可以從用戶端系統使用的命令列公用程式，以便搭配 HDInsight 和其他 Azure 服務運作。
-
-* __Visual Studio 整合__：Azure Data Lake Tools for Visual Studio 包含可供使用 SCP.NET 架構建立 C# Storm 拓撲的專案範本。 Data Lake Tools 也提供一些工具，以利用 Storm on HDInsight 來部署、監視和管理解決方案。
-
-  如需詳細資訊，請參閱[使用 HDInsight Tools for Visual Studio 開發 C# Storm 拓撲](apache-storm-develop-csharp-visual-studio-topology.md)。
+|使用 |描述 |
+|---|---|
+|安全殼層 (SSH) 連線|您可以使用 SSH 透過網際網路存取 Storm 叢集的前端節點。 您可以使用 SSH，直接在叢集上執行命令。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。|
+|Web 連線|所有 HDInsight 叢集都會提供 Ambari Web UI。 您可以使用 Ambari Web UI，輕鬆地監視、設定及管理叢集上的服務。 Storm 叢集也會提供 Storm UI。 您可以使用 Storm UI，從瀏覽器監視及管理執行中的 Storm 拓撲。 如需詳細資訊，請參閱[使用 Apache Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Apache Storm UI 進行監視和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)文件。|
+|Azure PowerShell 和 Azure CLI|PowerShell 和 Azure CLI 兩者都提供您可以從用戶端系統使用的命令列公用程式，以便搭配 HDInsight 和其他 Azure 服務運作。|
+|整合 Visual Studio|Azure Data Lake Tools for Visual Studio 包含可供使用 SCP.NET 架構建立 C# Storm 拓撲的專案範本。 Data Lake Tools 也提供一些工具，以利用 Storm on HDInsight 來部署、監視和管理解決方案。 如需詳細資訊，請參閱[使用 HDInsight Tools for Visual Studio 開發 C# Storm 拓撲](apache-storm-develop-csharp-visual-studio-topology.md)。|
 
 ## <a name="integration-with-other-azure-services"></a>與其他 Azure 服務整合
 
@@ -100,9 +88,7 @@ Apache Storm 叢集的預設組態只有一個 Nimbus 節點。 Storm on HDInsig
 
 ## <a name="support"></a>支援
 
-Storm on HDInsight 隨附完整的企業級連續支援。 Storm on HDInsight 也有 99.9% 的 SLA。 這表示 Microsoft 保證 Storm 叢集至少 99.9% 的時間具有外部連線能力。
-
-如需詳細資訊，請參閱 [Azure 文章](https://azure.microsoft.com/support/options/)。
+Storm on HDInsight 隨附完整的企業級連續支援。 Storm on HDInsight 也有 99.9% 的 SLA。 這表示 Microsoft 保證 Storm 叢集至少 99.9% 的時間具有外部連線能力。 如需詳細資訊，請參閱 [Azure 文章](https://azure.microsoft.com/support/options/)。
 
 ## <a name="apache-storm-use-cases"></a>Apache Storm 使用案例
 
@@ -120,9 +106,7 @@ Storm on HDInsight 隨附完整的企業級連續支援。 Storm on HDInsight �
 
 ## <a name="development"></a>部署
 
-.NET 開發人員可以使用 Data Lake Tools for Visual Studio，以 C# 語言設計和實作拓撲。 您也可以建立使用 Java 和 C# 元件的混合式拓撲。
-
-如需詳細資訊，請參閱 [使用 Visual Studio 開發 Apache Storm on HDInsight 的 C# 拓撲](apache-storm-develop-csharp-visual-studio-topology.md)。
+.NET 開發人員可以使用 Data Lake Tools for Visual Studio，以 C# 語言設計和實作拓撲。 您也可以建立使用 Java 和 C# 元件的混合式拓撲。 如需詳細資訊，請參閱 [使用 Visual Studio 開發 Apache Storm on HDInsight 的 C# 拓撲](apache-storm-develop-csharp-visual-studio-topology.md)。
 
 您也可以使用所選的 IDE 來開發 Java 解決方案。 如需詳細資訊，請參閱[開發 Apache Storm on HDInsight 的 Java 拓撲](apache-storm-develop-java-topology.md)。
 
@@ -132,9 +116,7 @@ Python 也可以用於開發 Storm 元件。 如需詳細資訊，請參閱[使�
 
 ### <a name="guaranteed-message-processing"></a>保證處理訊息
 
-Apache Storm 可以提供不同程度的訊息處理保證。 例如，基本的 Storm 應用程式可以保證至少處理一次，而 [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 可以保證只處理一次。
-
-如需詳細資訊，請參閱 apache.org 上的 [保證處理資料](https://storm.apache.org/about/guarantees-data-processing.html) (英文)。
+Apache Storm 可以提供不同程度的訊息處理保證。 例如，基本的 Storm 應用程式可以保證至少處理一次，而 [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 可以保證只處理一次。 如需詳細資訊，請參閱 apache.org 上的 [保證處理資料](https://storm.apache.org/about/guarantees-data-processing.html) (英文)。
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 

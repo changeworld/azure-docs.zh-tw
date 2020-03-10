@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure Container Re
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456061"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252104"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
@@ -32,7 +32,7 @@ ms.locfileid: "74456061"
 
 如果您想要在本機使用 Azure CLI，必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="github-account"></a>GitHub 帳戶
 
@@ -52,13 +52,13 @@ ms.locfileid: "74456061"
 
 使用 `git` 複製存放庫，並將 **\<your-github-username\>** 取代為您的 GitHub 使用者名稱：
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 進入包含原始程式碼的目錄：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ cd acr-build-helloworld-node
 
 為了方便執行範例命令，在這一系列的教學課程中，將會使用殼層環境變數。 請執行下列命令以設定 `ACR_NAME` 變數。 請將 **\<registry-name\>** 取代為新容器登錄的唯一名稱。 登錄名稱在 Azure 內必須是唯一的，只能包含小寫字母和 5-50 個英數字元。 您在本教學課程中建立的其他資源將以此名稱為基礎，因此，您只需要修改第一個變數，即此變數。
 
-```azurecli-interactive
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -216,8 +218,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`：服務主體識別碼，用來作為容器登錄**使用者名稱**。
-* `$ACR_NAME-pull-pwd`：服務主體密碼，用來作為容器登錄**密碼**。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄**使用者名稱**。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄**密碼**。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 

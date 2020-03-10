@@ -1,20 +1,19 @@
 ---
-title: 什麼是 Apache Hadoop 技術堆疊？ - Azure HDInsight
+title: 什麼是 Apache Hadoop 和 MapReduce - Azure HDInsight
 description: 簡介 HDInsight 以及 Apache Hadoop 技術堆疊和元件。
-keywords: azure hadoop, hadoop azure, hadoop 簡介, hadoop 簡介, hadoop 技術堆疊, hadoop 簡介, hadoop 簡介, 什麼是 hadoop 叢集, 什麼是 hadoop 叢集, 什麼是 hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088191"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244878"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什麼是 Apache HDInsight 中的 Apache Hadoop？
 
@@ -24,7 +23,7 @@ Azure HDInsight 是雲端中供企業使用的完全受控、全方位的開放�
 
 若要查看 HDInsight 上可用的 Hadoop 技術堆疊元件，請參閱 [HDInsight 可用的元件和版本](../hdinsight-component-versioning.md)。 若要深入了解 HDInsight 中的 Hadoop，請參閱 [HDInsight 的 Azure 功能頁面](https://azure.microsoft.com/services/hdinsight/)。
 
-## <a id="whatis"></a>什麼是 MapReduce
+## <a name="what-is-mapreduce"></a>什麼是 MapReduce
 
 Apache Hadoop MapReduce 是一種可撰寫工作來處理大量資料的軟體架構。 輸入的資料會分割成獨立的區塊。 每個區塊會在叢集的節點之間平行處理。 MapReduce 工作由兩項功能組成：
 
@@ -32,7 +31,7 @@ Apache Hadoop MapReduce 是一種可撰寫工作來處理大量資料的軟體�
 
 * **減壓器**：取用對應程式發出的 Tuple 並執行摘要作業，從對應程式資料建立較小的組合結果
 
-下圖說明了基本字數統計 MapReduce 工作範例：   
+下圖說明了基本字數統計 MapReduce 工作範例：
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,7 +50,7 @@ Hadoop 串流會透過 STDIN 與 STDOUT 與對應工具和歸納工具進行通�
 
     [key]/t[value]
 
-如需詳細資訊，請參閱 [Hadoop 資料流](https://hadoop.apache.org/docs/r1.2.1/streaming.html)(英文)。
+如需詳細資訊，請參閱 [Hadoop 資料流](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)(英文)。
 
 如需搭配 HDInsight 使用 Hadoop 資料流的範例，請參閱下列文件：
 

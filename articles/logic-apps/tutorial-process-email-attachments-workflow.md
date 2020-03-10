@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/20/2019
-ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/27/2020
+ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969112"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662647"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教學課程：使用 Azure Logic Apps、Azure Functions 和 Azure 儲存體，將工作自動化以處理電子郵件
 
@@ -89,7 +89,7 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
 1. 建立電子郵件附件的 Blob 儲存體容器。
 
-   1. 在您的儲存體帳戶功能表上，選取 [概觀]  。 在 [服務]  下，選取 [容器]  。
+   1. 在您的儲存體帳戶功能表上，選取 [概觀]  。 在 [概觀] 窗格上，選取 [容器]  。
 
       ![新增 Blob 儲存體容器](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
@@ -223,24 +223,24 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
 ## <a name="create-your-logic-app"></a>建立邏輯應用程式
 
-1. 從 Azure 首頁的搜尋方塊中，尋找並選取 [邏輯應用程式]  。
+1. 在 Azure 頂層搜尋方塊中輸入 `logic apps`，然後選取 [Logic Apps]  。
 
    ![尋找並選取「邏輯應用程式」](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. 在 [邏輯應用程式]  頁面上，選取 [新增]  。
+1. 在 [邏輯應用程式]  窗格上，選取 [新增]  。
 
-   ![新增邏輯應用程式](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![新增邏輯應用程式](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. 在 [建立邏輯應用程式]  底下，提供有關邏輯應用程式的詳細資訊，如下所示。 在完成作業後，選取 [建立]  。
+1. 在 [邏輯應用程式]  窗格上，提供邏輯應用程式的詳細資訊，如下所示。 在完成作業後，選取 [檢閱 + 建立]  。
 
    ![提供邏輯應用程式資訊](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | 設定 | 值 | 描述 |
    | ------- | ----- | ----------- |
-   | **名稱** | LA-ProcessAttachment | 邏輯應用程式的名稱 |
    | **訂用帳戶** | <your-Azure-subscription-name  > | 您先前使用的相同 Azure 訂用帳戶 |
    | **資源群組** | LA-Tutorial-RG | 您先前使用的相同 Azure 資源群組 |
-   | **位置** | 美國西部 | 您先前使用的相同區域 |
+   | **邏輯應用程式名稱** | LA-ProcessAttachment | 邏輯應用程式的名稱 |
+   | **選取位置** | 美國西部 | 您先前使用的相同區域 |
    | **Log Analytics** | 關閉 | 在本教學課程中，請選取 [關閉]  設定。 |
    ||||
 
@@ -667,7 +667,15 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
 如果不再需要此範例，請刪除包含邏輯應用程式的資源群組和相關資源。
 
-1. 在 Azure 主功能表上，選取 [資源群組]  。 從資源群組清單中，選取此教學課程的資源群組。 在 [概觀]  窗格上，選取 [刪除資源群組]  。
+1. 在頂層的 Azure 搜尋方塊中輸入 `resources groups`，然後選取 [資源群組]  。
+
+   ![尋找並選取「資源群組」](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+
+1. 從 [資源群組]  清單中，選取本教學課程的資源群組。 
+
+   ![尋找教學課程的資源群組](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+
+1. 在 [概觀]  窗格上，選取 [刪除資源群組]  。
 
    ![刪除邏輯應用程式資源群組](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

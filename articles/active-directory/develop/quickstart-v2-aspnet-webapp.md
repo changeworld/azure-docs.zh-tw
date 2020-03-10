@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 503cfb1e299c4e96e4e87107ce25af273848ca8f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: eae26df61af203f9c3d09606ef96b5506f2e8701
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160622"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249112"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
-
-在本快速入門中，您會讓 ASP.NET Web 應用程式從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
-
+在本快速入門中，您將利用程式碼範例了解 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。  (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
 > 有兩個選項可用來啟動快速入門應用程式：
@@ -64,26 +60,33 @@ ms.locfileid: "77160622"
 
 #### <a name="step-2-download-your-project"></a>步驟 2:下載您的專案
 
-[下載 Visual Studio 2019 解決方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+> [!div renderon="docs"]
+> [下載 Visual Studio 2019 解決方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> [!div renderon="portal"]
+> 使用 Visual Studio 2019 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案。 
+
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>步驟 3：執行 Visual Studio 專案
 
 1. 將 ZIP 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
 1. 在 Visual Studio 中開啟解決方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. 根據 Visual Studio 版本而定，您可能需要在專案 `AppModelv2-WebApp-OpenIDConnect-DotNet` 上按一下滑鼠右鍵並選取 [還原 NuGet 套件] 
 1. 開啟套件管理員 (檢視 -> 其他視窗 -> 套件管理員主控台) 並執行 `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
-1. 編輯 **Web.config**，並將 `ClientId` 和 `Tenant` 參數取代為：
-
-    ```xml
-    <add key="ClientId" value="Enter_the_Application_Id_here" />
-    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
-    ```
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > 本快速入門支援 Enter_the_Supported_Account_Info_Here。 
 
 > [!div renderon="docs"]
-> 其中：
+> 5. 編輯 **Web.config**，並將 `ClientId` 和 `Tenant` 參數取代為：
+>    ```xml
+>    <add key="ClientId" value="Enter_the_Application_Id_here" />
+>    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
+>    ```
+>    其中：
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
 > - `Enter_the_Tenant_Info_Here` - 是下列選項之一：
 >   - 如果您的應用程式支援 [僅限我的組織]  ，請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.onmicrosoft.com)
@@ -94,9 +97,16 @@ ms.locfileid: "77160622"
 > > - 若要尋找 [應用程式識別碼]  、[目錄 (租用戶) 識別碼]  和 [支援的帳戶類型]  ，請移至 [概觀]  頁面
 > > - 確定 **Web.config** 中的 `redirectUri` 值對應至針對 AzureAD 中的應用程式註冊所定義的**重新導向 URI** (如果不是，請瀏覽至應用程式註冊的 [驗證]  功能表，並更新 [重新導向 URI]  以使兩者相符)
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
+
 ## <a name="more-information"></a>詳細資訊
 
 本節會概述登入使用者所需的程式碼。 本概觀有助於了解程式碼的運作方式、主要引數，以及如何將登入新增至現有的 ASP.NET 應用程式。
+
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN 中介軟體 NuGet 套件
 

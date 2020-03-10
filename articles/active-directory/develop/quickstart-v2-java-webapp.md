@@ -11,27 +11,24 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611995"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249090"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
 在本快速入門中，您將了解如何整合 Java Web 應用程式與 Microsoft 身分識別平台。 您的應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
 
-完成本快速入門後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-java-webapp/java-quickstart.svg)
+完成本快速入門後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要執行此範例，您將需要：
 
 - [Java 開發套件 (JDK)](https://openjdk.java.net/) 8 或更新版本，以及 [Maven](https://maven.apache.org/)。
-- Azure Active Directory (Azure AD) 租用戶。 如需有關如何取得 Azure AD 租用戶的詳細資訊，請參閱[如何取得 Azure AD 租用戶](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
@@ -73,7 +70,7 @@ ms.locfileid: "77611995"
 >
 > 若要讓本快速入門中的程式碼範例能正常運作，您需要：
 >
-> 1. 將回覆 URL 新增為 `https://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/me`。
+> 1. 將回覆 URL 新增為 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。
 > 1. 建立用戶端密碼。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這些變更]()
@@ -82,46 +79,65 @@ ms.locfileid: "77611995"
 > > ![已設定](media/quickstart-v2-aspnet-webapp/green-check.png) 您的應用程式已設定了這些屬性。
 
 #### <a name="step-2-download-the-code-sample"></a>步驟 2:下載程式碼範例
+> [!div renderon="docs"]
+> [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
- [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> 下載專案，並將 zip 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
+> 
+> 若要搭配使用 https 與 localhost，請填入 server.ssl.key 屬性。 若要產生自我簽署憑證，請使用 keytool 公用程式 (隨附於 JRE)。
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   將產生的金鑰儲存區檔案放在「資源」資料夾中。
+   
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例]()
 
-#### <a name="step-3-configure-the-code-sample"></a>步驟 3：設定程式碼範例
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-the-code-sample"></a>步驟 3：設定程式碼範例
+> 1. 將 ZIP 檔案解壓縮至本機資料夾。
+> 1. 如果您使用整合式開發環境，請在您慣用的 IDE 中開啟範例 (選用)。
+> 1. 開啟位於 src/main/resources/ 資料夾中的 application.properties 檔案，並將 *aad.clientId*、*aad.authority* 和 *aad.secretKey* 欄位的值分別取代為 [應用程式識別碼]  、[租用戶識別碼]  和 [用戶端密碼]  的值，如下所示：
+>
+>    ```file
+>    aad.clientId=Enter_the_Application_Id_here
+>    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
+>    aad.secretKey=Enter_the_Client_Secret_Here
+>    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.msGraphEndpointHost="https://graph.microsoft.com/"
+>    ```
+> 其中：
+>
+> - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
+> - `Enter_the_Client_Secret_Here` - 是您在 [憑證與祕密]  中為您所註冊的應用程式建立的 [用戶端密碼]  。
+> - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
+> 1. 若要搭配使用 https 與 localhost，請填入 server.ssl.key 屬性。 若要產生自我簽署憑證，請使用 keytool 公用程式 (隨附於 JRE)。
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   將產生的金鑰儲存區檔案放在「資源」資料夾中。
 
- 1. 將 ZIP 檔案解壓縮至本機資料夾。
- 1. 如果您使用整合式開發環境，請在您慣用的 IDE 中開啟範例 (選用)。
- 1. 開啟位於 src/main/resources/ 資料夾中的 application.properties 檔案，並將 *aad.clientId*、*aad.authority* 和 *aad.secretKey* 欄位的值分別取代為 [應用程式識別碼]  、[租用戶識別碼]  和 [用戶端密碼]  的值，如下所示：
 
-    ```file
-    aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
-    aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
-    aad.msGraphEndpointHost="https://graph.microsoft.com/"
-    ```
-
-    > [!div renderon="docs"]
-    > 其中：
-    >
-    > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
-    > - `Enter_the_Client_Secret_Here` - 是您在 [憑證與祕密]  中為您所註冊的應用程式建立的 [用戶端密碼]  。
-    > - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
-
- 1. 若要搭配使用 https 與 localhost，請填入 server.ssl.key 屬性。 若要產生自我簽署憑證，請使用 keytool 公用程式 (隨附於 JRE)。
-
-   ```
-   Example:
-   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
-
-   server.ssl.key-store-type=PKCS12  
-   server.ssl.key-store=classpath:keystore.p12  
-   server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert
-   ```
-
-   將產生的金鑰儲存區檔案放在「資源」資料夾中。
-
-#### <a name="step-4-run-the-code-sample"></a>步驟 4：執行程式碼範例
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>步驟 3：執行程式碼範例
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>步驟 4：執行程式碼範例
 
 若要執行專案，您可以：
 
@@ -137,10 +153,15 @@ ms.locfileid: "77611995"
     - 登出  ：從應用程式登出目前的使用者，並將他們重新導向至首頁。
     - *顯示使用者資訊*：取得 Microsoft Graph 的權杖，並使用包含該權杖的要求呼叫 Microsoft Graph，這會傳回與已登入的使用者有關的基本資訊。
 
+
+   
 > [!IMPORTANT]
 > 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[適用於應用程式驗證的憑證認證](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)。
 
 ## <a name="more-information"></a>詳細資訊
+
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
 ### <a name="getting-msal"></a>取得 MSAL
 

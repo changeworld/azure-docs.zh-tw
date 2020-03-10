@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922266"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913849"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -47,6 +47,28 @@ az webapp list-runtimes --linux | grep PYTHON
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
+
+## <a name="customize-build-automation"></a>自訂組建自動化
+
+如果您使用 Git 或 zip 套件並開啟組建自動化來部署應用程式，App Service 組建自動化將會依下列順序逐步執行：
+
+1. 執行自訂指令碼 (如果 `PRE_BUILD_SCRIPT_PATH` 已指定)。
+1. 執行 `pip install -r requirements.txt`。
+1. 如果在存放庫的根目錄位於 *manage.py* 中，請執行 *manage.py collectstatic*。 但若 `DISABLE_COLLECTSTATIC` 設定為 `true`，則可略過此步驟。
+1. 執行自訂指令碼 (如果 `POST_BUILD_SCRIPT_PATH` 已指定)。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 是預設為空值的環境變數。 若要執行建置前命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建置後命令，請定義 `POST_BUILD_COMMAND`。 若要停用在建置 Django 應用程式時執行 collectstatic 的功能，請設定 `DISABLE_COLLECTSTATIC=true`。
+
+下列範例會將兩個變數指定給一系列的命令 (以逗號分隔)。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+若要了解其他可自訂組建自動化的環境變數，請參閱 [Oryx 設定](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+若要深入了解 App Service 如何在 Linux 中執行和建置 Python 應用程式，請參閱 [Oryx 文件：如何偵測和建置 Python 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)。
 
 ## <a name="container-characteristics"></a>容器的特性
 

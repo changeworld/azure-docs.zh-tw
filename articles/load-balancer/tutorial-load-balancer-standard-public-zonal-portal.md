@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225159"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251900"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過 Standard Load Balancer 來平衡可用性區域內的 VM 負載
 
@@ -63,18 +63,24 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
     |可用性區域| 選取 [1]  。    |
 3. 在 [檢閱 + 建立]  索引標籤中，按一下 [建立]  。   
 
-   ## <a name="create-backend-servers"></a>建立後端伺服器
+## <a name="create-backend-servers"></a>建立後端伺服器
 
 在本節中，您會建立虛擬網路。 您也會針對要新增至負載平衡器後端集區的地區，在相同區域 (也就是區域 1) 中建立兩部虛擬機器。 然後在虛擬機器上安裝 IIS，協助測試區域備援負載平衡器。 如果有一個 VM 失敗，則相同區域中 VM 的健康狀態探查會失敗。 相同區域內的其他 VM 會繼續提供流量。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。  針對虛擬網路輸入下列值：
-    - [myVnet]  作為虛擬網路的名稱。
-    - [myResourceGroupZLB]  作為現有資源群組的名稱。
-    - [myBackendSubnet]  作為子網路名稱。
-2. 選取 [建立]  以建立虛擬網路。
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-    ![建立虛擬網路](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
+
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupZLB (選取現有的資源群組) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西歐      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 

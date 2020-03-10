@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 34d9af03b42df4a2806e82bb1e1fa376f099ae4c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120460"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271070"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
-在此快速入門中，您將了解如何撰寫可登入個人、公司與學校帳戶、取得存取權杖以及呼叫 Microsoft Graph API 的 Windows Desktop .NET (WPF) 應用程式。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+在此快速入門中，您將了解如何撰寫可登入個人、公司與學校帳戶、取得存取權杖以及呼叫 Microsoft Graph API 的 Windows Desktop .NET (WPF) 應用程式。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
@@ -63,23 +61,33 @@ ms.locfileid: "77120460"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步驟 2:下載您的 Visual Studio 專案
 
-[下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([Github 上的 [檢視專案]](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/) \(英文\))
+> [!div renderon="docs"]
+> [下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
-1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中開啟專案。
-1. 編輯 **App.Xaml.cs**，並將欄位 `ClientId` 和 `Tenant` 的值取代為下列程式碼：
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。 
 
-    ```csharp
-    private static string ClientId = "Enter_the_Application_Id_here";
-    private static string Tenant = "Enter_the_Tenant_Info_Here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中開啟專案。
+> 1. 編輯 **App.Xaml.cs**，並將欄位 `ClientId` 和 `Tenant` 的值取代為下列程式碼：
+>
+>    ```csharp
+>    private static string ClientId = "Enter_the_Application_Id_here";
+>    private static string Tenant = "Enter_the_Tenant_Info_Here";
+>    ```
+> 
 > 其中：
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
 > - `Enter_the_Tenant_Info_Here` - 會設為下列其中一個選項：
@@ -92,8 +100,10 @@ ms.locfileid: "77120460"
 
 ## <a name="more-information"></a>詳細資訊
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
+### <a name="msalnet"></a>MSAL.NET
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 這個程式庫是用來登入使用者並要求權杖，該權杖會用來存取受 Microsoft 身分識別平台保護的 API。 您可以在 Visual Studio 的 [套件管理員主控台]  中，透過執行下列命令來安裝 MSAL：
 
 ```powershell

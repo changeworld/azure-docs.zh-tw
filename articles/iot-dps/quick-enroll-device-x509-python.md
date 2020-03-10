@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6f4457397f358d893a5735cc7401394adda8d62b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed51fb7589247b1a52930931ed297d4292b07ea6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605512"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921125"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入門：使用 Python 向裝置佈建服務註冊 X.509 裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "77605512"
 - [Git](https://git-scm.com/download/)。
 
 > [!IMPORTANT]
-> 本文僅適用於已淘汰的 V1 Python SDK。 尚未在 V2 中提供適用於 Iot 中樞裝置佈建服務的裝置和服務用戶端。 小組目前正努力將 V2 帶至功能同位。
+> 本文僅適用於已淘汰的 V1 Python SDK。 適用於 IoT 中樞裝置佈建服務的裝置和服務用戶端尚未在 V2 中提供。 小組目前正努力將 V2 帶至功能同位。
 
 ## <a name="prepare-test-certificates"></a>準備測試憑證
 

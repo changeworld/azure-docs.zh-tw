@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2019
+ms.date: 02/27/2020
 ms.author: b-juche
-ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522876"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163959"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>什麼是 Azure NetApp Files 的儲存體階層
 
 在 Azure NetApp Files 中建立磁碟區之前，您必須先購買及設定佈建容量的集區。  若要設定容量集區，您必須具有 NetApp 帳戶。 了解儲存體階層有助於設定和管理您的 Azure NetApp Files 資源。
+
+> [!IMPORTANT] 
+> Azure NetApp Files 目前不支援訂用帳戶之間的資源移轉。
 
 ## <a name="azure_netapp_files_account"></a>NetApp 帳戶
 

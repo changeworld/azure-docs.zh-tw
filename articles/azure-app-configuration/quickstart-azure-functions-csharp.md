@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310051"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207059"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -42,11 +42,7 @@ ms.locfileid: "76310051"
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽]  索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。 如果您找不到它們，請選取 [包括發行前版本]  核取方塊。
-
-    ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
-    ```
+1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽]  索引標籤上，搜尋 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 套件並新增至您的專案。 如果您找不到該套件，請選取 [包含發行前版本]  核取方塊。
 
 2. 開啟 *Function1.cs*，並新增 .NET Core 組態和應用程式組態設定提供者的命名空間。
 
@@ -54,6 +50,7 @@ ms.locfileid: "76310051"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
+
 3. 新增名為 `Configuration`的 `static` 屬性，以建立 `IConfiguration` 的單一執行個體。 然後，藉由呼叫 `AddAzureAppConfiguration()` 來新增 `static` 建構函式，以連線至應用程式組態。 這會在應用程式啟動時載入組態一次。 稍後將會使用相同的組態執行個體進行所有 Functions 呼叫。
 
     ```csharp
@@ -66,6 +63,7 @@ ms.locfileid: "76310051"
         Configuration = builder.Build();
     }
     ```
+
 4. 更新 `Run` 方法，以讀取組態中的值。
 
     ```csharp
@@ -76,7 +74,7 @@ ms.locfileid: "76310051"
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
-            
+
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
@@ -90,14 +88,18 @@ ms.locfileid: "76310051"
     ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
+
     如果您使用 Windows PowerShell，請執行下列命令：
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
+
     如果您使用 macOS 或 Linux，請執行下列命令：
 
+    ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. 按 F5 測試您的函式。 如果出現提示，請接受 Visual Studio 所發出要下載及安裝 **Azure Functions Core (CLI)** 工具的要求。 您可能也需要啟用防火牆例外狀況，工具才能處理 HTTP 要求。
 

@@ -4,16 +4,16 @@ description: 在本教學課程中，您將了解如何在 Azure Cloud Shell 中
 keywords: ansible、azure、devops、bash、cloudshell、腳本、bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 2a938179cf2e07a61749042db32ef9e1c9d843ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193645"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247881"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>快速入門：在 Azure Cloud Shell 中透過 Bash 執行 Ansible 劇本
 
-Azure Cloud Shell 是可經由瀏覽器存取的互動式殼層，應用在 Azure 資源管理上。 Cloud Shell 可讓您使用 Bash 或 Powershell 命令列。 在本文中，您可以在 Azure Cloud Shell 中使用 Bash 執行 Ansible 劇本。
+Azure Cloud Shell 是可經由瀏覽器存取的互動式殼層，應用在 Azure 資源管理上。 Cloud Shell 可讓您使用 Bash 或 PowerShell 命令列。 在本文中，您可以在 Azure Cloud Shell 中使用 Bash 執行 Ansible 劇本。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,7 +35,7 @@ az account list
 
 使用您的 Azure 訂用帳戶識別碼設定 `AZURE_SUBSCRIPTION_ID`，如下所示：
 
-```azurecli-interactive
+```console
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 

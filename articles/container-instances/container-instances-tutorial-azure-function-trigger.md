@@ -4,12 +4,12 @@ description: 建立 HTTP 觸發的無伺服器 PowerShell 函式來自動建立 
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533379"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196530"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教學課程：使用 HTTP 觸發的 Azure 函式來建立容器群組
 
@@ -28,9 +28,9 @@ ms.locfileid: "74533379"
 > [!IMPORTANT]
 > 適用於 Azure Functions 的 PowerShell 目前為預覽版。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-請參閱[在 Azure 中建立您的第一個 PowerShell 函式](../azure-functions/functions-create-first-function-powershell.md#prerequisites)，以了解在您作業系統上安裝及使用 Visual Studio Code 與 Azure Functions 的必要條件。
+請參閱[在 Azure 中建立您的第一個函式](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment)，以了解在您作業系統上安裝及使用 Visual Studio Code 與 Azure Functions 的必要條件。
 
 本文中的部分步驟會使用 Azure CLI。 您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成這些步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 

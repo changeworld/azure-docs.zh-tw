@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766444"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655747"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -21,9 +21,9 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-- 受支援的 [Java 開發套件 JDK](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
-- [Apache Maven](https://maven.apache.org/download.cgi) 3.0 版或更新版本。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* 受支援的 [Java 開發套件 JDK](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
+* [Apache Maven](https://maven.apache.org/download.cgi) 3.0 版或更新版本。
 
 ## <a name="create-an-app-configuration-instance"></a>建立應用程式組態執行個體
 
@@ -42,14 +42,14 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 1. 瀏覽至 <https://start.spring.io/>。
 
-2. 指定下列選項：
+1. 指定下列選項：
 
-   - 使用 **Java** 產生 **Maven** 專案。
-   - 指定 **Spring Boot** 版本，應等於或大於 2.0。
-   - 指定應用程式的**群組**和**成品**名稱。  本文使用 `com.example` 和 `demo`。
-   - 新增 **Spring Web** 相依性。
+   * 使用 **Java** 產生 **Maven** 專案。
+   * 指定 **Spring Boot** 版本，應等於或大於 2.0。
+   * 指定應用程式的**群組**和**成品**名稱。  本文使用 `com.example` 和 `demo`。
+   * 新增 **Spring Web** 相依性。
 
-3. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至您的本機電腦。
+1. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至您的本機電腦。
 
 ## <a name="add-feature-management"></a>新增功能管理
 
@@ -57,20 +57,41 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 1. 在文字編輯器中開啟 pom.xml  檔案，並將下列內容新增至 `<dependencies>` 的清單：
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
         }
     }
     ```
+
 1. 在應用程式的 package 目錄中建立名為 MessageProperties.java  的新 Java 檔案。
 
     ```java
@@ -131,7 +153,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     }
     ```
 
-1. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。 
+1. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。
 
     ```java
     package com.example.demo;
@@ -220,36 +242,36 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
     ```
 
-6. 在 `static` 下建立名為 CSS 的新資料夾，並在其中建立名為 *main.css* 的新 CSS 檔案。
+1. 在 `static` 下建立名為 CSS 的新資料夾，並在其中建立名為 *main.css* 的新 CSS 檔案。
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
@@ -284,6 +306,6 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](https://go.microsoft.com/fwlink/?linkid=2074664)用它來管理 Spring Boot Web 應用程式中的功能。
 
-- 深入了解[功能管理](./concept-feature-management.md)。
-- [管理功能旗標](./manage-feature-flags.md)。
-- [在 Spring Boot Core 應用程式中使用功能旗標](./use-feature-flags-spring-boot.md)。
+* 深入了解[功能管理](./concept-feature-management.md)。
+* [管理功能旗標](./manage-feature-flags.md)。
+* [在 Spring Boot Core 應用程式中使用功能旗標](./use-feature-flags-spring-boot.md)。

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028889"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252568"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立私人端點
 
@@ -28,26 +28,22 @@ ms.locfileid: "76028889"
 ## <a name="create-a-vm"></a>建立 VM
 在本節中，您將建立虛擬網路和子網路，以裝載用來存取 Private Link 資源 (在此範例中為 Azure 中的 SQL 伺服器) 的 VM。
 
-### <a name="create-the-virtual-network"></a>建立虛擬網路
-
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
 在本節中，您將建立虛擬網路和子網路，以裝載用來存取 Private Link 資源的 VM。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
-1. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 MyVirtualNetwork  。 |
-    | 位址空間 | 輸入 *10.1.0.0/16*。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取 [新建]  ，輸入 *myResourceGroup*，然後選取 [確定]  。 |
-    | Location | 選取 [WestCentralUS]  。|
-    | 子網路 - 名稱 | 輸入 mySubnet  。 |
-    | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
-    |||
-1. 將其他項目保留為預設值，然後選取 [建立]  。
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | 美國中西部    |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>建立虛擬機器
 

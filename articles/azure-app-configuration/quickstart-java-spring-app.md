@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750306"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919357"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Java Spring 應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "75750306"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   >  [+ 建立]  來新增下列索引鍵/值組：
+1. 選取 [組態總管]   >  [+ 建立]  來新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
@@ -45,30 +45,42 @@ ms.locfileid: "75750306"
 
 1. 瀏覽至 <https://start.spring.io/>。
 
-2. 指定下列選項：
+1. 指定下列選項：
 
-   * 使用 **Java** 產生 **Maven** 專案。
-   * 指定 **Spring Boot** 版本，應等於或大於 2.0。
-   * 指定應用程式的**群組**和**成品**名稱。
-   * 新增 **Spring Web** 相依性。
+   - 使用 **Java** 產生 **Maven** 專案。
+   - 指定 **Spring Boot** 版本，應等於或大於 2.0。
+   - 指定應用程式的**群組**和**成品**名稱。
+   - 新增 **Spring Web** 相依性。
 
-3. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至本機電腦上的路徑。
+1. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至本機電腦上的路徑。
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
 1. 當您在本機系統上擷取檔案之後，就可以開始編輯簡單的 Spring Boot 應用程式。 在應用程式的根目錄中尋找 pom.xml  檔案。
 
-2. 在文字編輯器中開啟 pom.xml  檔案，並將 Spring Cloud Azure 設定 Starter 新增至 `<dependencies>` 的清單中：
+1. 在文字編輯器中開啟 pom.xml  檔案，並將 Spring Cloud Azure 設定 Starter 新增至 `<dependencies>` 的清單中：
+
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. 在應用程式的 package 目錄中建立名為 MessageProperties.java  的新 Java 檔案。 加入下列幾行：
+    **Spring Cloud 1.2.x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. 在應用程式的 package 目錄中建立名為 MessageProperties.java  的新 Java 檔案。 加入下列幾行：
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ ms.locfileid: "75750306"
     }
     ```
 
-4. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。 加入下列幾行：
+1. 在應用程式的 package 目錄中建立名為 HelloController.java  的新 Java 檔案。 加入下列幾行：
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ ms.locfileid: "75750306"
     }
     ```
 
-5. 開啟主要的應用程式 Java 檔案，並新增 `@EnableConfigurationProperties` 來啟用這項功能。
+1. 開啟主要的應用程式 Java 檔案，並新增 `@EnableConfigurationProperties` 來啟用這項功能。
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,10 +138,28 @@ ms.locfileid: "75750306"
     }
     ```
 
-6. 在應用程式的資源目錄下建立名為 `bootstrap.properties` 的新檔案，然後將下列幾行新增至該檔案。 將範例值取代為應用程式組態存放區的適當屬性。
+1. 在應用程式的資源目錄下建立名為 `bootstrap.properties` 的新檔案，然後將下列幾行新增至該檔案。 將範例值取代為應用程式組態存放區的適當屬性。
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    ```
+
+1. 設定名為 **APP_CONFIGURATION_CONNECTION_STRING** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    如果您使用 Windows PowerShell，請執行下列命令：
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    如果您使用 macOS 或 Linux，請執行下列命令：
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>於本機建置並執行應用程式

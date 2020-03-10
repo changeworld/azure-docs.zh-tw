@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/24/2020
-ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 9e220c7a7813f89eacab5137362e39153d2b334a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623482"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207178"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：在 Azure HDInsight 中使用 Azure 入口網站建立 Apache Kafka 叢集
 
@@ -78,7 +78,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
     選取 [安全性 + 網路]  索引標籤。
 
-1. 針對本快速入門，請保留預設的安全性設定。 若要深入了解企業安全性套件，請造訪[使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何在 Apache Kafka 磁碟加密上使用自己的金鑰，請造訪[在 Azure HDInsight 上攜帶您自己的 Apache Kafka 金鑰](apache-kafka-byok.md)
+1. 針對本快速入門，請保留預設的安全性設定。 若要深入了解企業安全性套件，請造訪[使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何使用您自己的金鑰進行 Apache Kafka 磁碟加密，請造訪[客戶管理的金鑰磁碟加密](../disk-encryption.md)
 
    如果您想要將叢集連線到虛擬網路，請從 [虛擬網路]  下拉式清單中選取虛擬網路。
 

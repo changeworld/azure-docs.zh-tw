@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208297"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913696"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>從 Google 地圖遷移至 Azure 地圖服務
 
@@ -39,10 +39,13 @@ Azure 地圖服務提供強大的地理空間功能供所有產業的開發人�
 | Elevation                   | 已規劃                                |
 | 地理編碼 (順向/反向) | ✓                                      |
 | 地理位置                 | N/A                                    |
+| 最近的道路               | ✓                                      |
 | 地點搜尋               | ✓                                      |
 | 地點詳細資料              | N/A –可用的網站和電話號碼 |
 | 地點相片               | N/A                                    |
 | 地點自動完成          | ✓                                      |
+| 緊貼道路                | ✓                                      |
+| 速度限制                | ✓                                      |
 | 靜態地圖                 | ✓                                      |
 | 靜態街道檢視          | N/A                                    |
 | 時區                   | ✓                                      |
@@ -87,7 +90,9 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 - 開發人員論壇：[https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
 - 影片：[https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - 部落格：[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- 技術部落格：[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure 地圖服務意見反應 (UserVoice)：[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Azure 地圖服務 Jupyter Notebook][https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook ]
 
 ## <a name="migration-support"></a>移轉支援
 

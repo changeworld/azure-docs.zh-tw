@@ -13,18 +13,16 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f7e2380bff7d6d3e6fafd1b3d44b65de972e57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e42be651de6fc70f5fe075a1bc1bee8010b886d7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703383"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274339"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
-在本快速入門中，您將了解如何撰寫 .NET Core 應用程式，以使用應用程式本身的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中[使用者的清單](https://docs.microsoft.com/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+在本快速入門中，您將了解如何撰寫 .NET Core 應用程式，以使用應用程式本身的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中[使用者的清單](https://docs.microsoft.com/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -74,37 +72,44 @@ ms.locfileid: "76703383"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步驟 2:下載您的 Visual Studio 專案
 
-[下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+> [!div renderon="docs"]
+> [下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中開啟解決方案 - **1-Call-MSGraph\daemon-console.sln** (選擇性)。
-1. 編輯 **appsettings.json**，並將欄位 `ClientId`、`Tenant` 和 `ClientSecret` 的值取代為下列值：
-
-    ```json
-    "Tenant": "Enter_the_Tenant_Id_Here",
-    "ClientId": "Enter_the_Application_Id_Here",
-    "ClientSecret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [產生新的用戶端密碼]()
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
-    
-    > [!div renderon="docs"]
-    >> 其中：
-    >> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
-    >> * `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
-    >> * `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> 
+> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中開啟解決方案 - **1-Call-MSGraph\daemon-console.sln** (選擇性)。
+> 1. 編輯 **appsettings.json**，並將欄位 `ClientId`、`Tenant` 和 `ClientSecret` 的值取代為下列值：
+> 
+>    ```json
+>    "Tenant": "Enter_the_Tenant_Id_Here",
+>    "ClientId": "Enter_the_Application_Id_Here",
+>    "ClientSecret": "Enter_the_Client_Secret_Here"
+>    ```
+>   其中：
+>   - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
+>   - `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
+>   - `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。 若要產生新的金鑰，請移至 [憑證和祕密]  頁面。
-    
-#### <a name="step-4-admin-consent"></a>步驟 4：系統管理員同意
+> [!div renderon="docs"]
+> > [!TIP]
+> > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。 若要產生新的金鑰，請移至 [憑證和祕密]  頁面。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>步驟 3：系統管理員同意
+
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>步驟 4：系統管理員同意
 
 如果您嘗試在此時執行應用程式，您將會收到「HTTP 403 - 禁止」  錯誤：`Insufficient privileges to complete the operation`。 這是因為任何「僅限應用程式權限」  都需要管理員同意，也就是目錄的全域管理員必須對應用程式表示同意。 請根據您的角色選取下列其中一個選項：
 
@@ -134,7 +139,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!NOTE]
 > 使用上述 URL 對應用程式授與同意之後，您可能會看到錯誤「AADSTS50011：  未針對應用程式註冊任何回覆地址」。 之所以發生此錯誤，是因為此應用程式和 URL 沒有重新導向 URI - 請忽略此錯誤。
 
-#### <a name="step-5-run-the-application"></a>步驟 5：執行應用程式
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>步驟 4：執行應用程式
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>步驟 5：執行應用程式
 
 如果您是使用 Visual Studio，請按 **F5** 來執行應用程式，否則請透過命令提示字元或主控台執行應用程式：
 
@@ -152,6 +161,9 @@ dotnet run
 > 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需有關如何使用憑證的詳細資訊，請從 GitHub 存放庫中參閱此範例的[這些指示](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates)。
 
 ## <a name="more-information"></a>詳細資訊
+
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 

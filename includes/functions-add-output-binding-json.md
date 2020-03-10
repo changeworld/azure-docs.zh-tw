@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: b118da6b751bc7a1e29ceef10c91dc5e9e3659c2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 8530f4469a0c25f3c32e652e2b0752c51c28ff3f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474278"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191001"
 ---
 繫結屬性是直接定義在 function.json 檔案中。 根據繫結類型，可能需要額外的屬性。 [佇列輸出組態](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration)會說明 Azure 儲存體佇列繫結所需的欄位。 擴充可讓您輕鬆地將繫結加入至 function.json 檔案。 
 
@@ -23,35 +23,6 @@ ms.locfileid: "77474278"
 | **要接收訊息的佇列** | `outqueue` | 作為繫結寫入目標的佇列名稱。 當 *queueName* 不存在，繫結會在第一次使用時加以建立。 |
 | **"local.setting.json" 選取設定** | `AzureWebJobsStorage` | 包含儲存體帳戶連接字串之應用程式設定的名稱。 `AzureWebJobsStorage` 設定會包含您以函式應用程式建立之儲存體帳戶的連接字串。 |
 
-繫結會被加入至您 function.json 檔案的 `bindings` 陣列；其現在看起來應該如下列範例所示：
+繫結會新增至 function.json 中的 `bindings` 陣列，此時應該會顯示如下：
 
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="18-24":::

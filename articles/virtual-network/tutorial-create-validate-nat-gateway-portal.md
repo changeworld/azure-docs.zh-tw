@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587000"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250812"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教學課程：使用 Azure 入口網站建立 NAT 閘道並測試 NAT 服務
 
@@ -36,27 +36,24 @@ ms.locfileid: "77587000"
 
 我們會在接下來的步驟中引導您完成完整測試環境的設定，以及測試本身的執行。 我們將從來源開始，其會使用我們在後續步驟中建立的 NAT 閘道資源。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
 在您部署 VM 並可使用 NAT 閘道之前，我們必須先建立資源群組和虛擬網路。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  ，或在 Marketplace 搜尋中搜尋 [虛擬網路]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-2. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | 美國東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 **myVNetsource**。 |
-    | 位址空間 | 輸入 192.168.0.0/16  。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取新建 - **myResourceGroupNAT**。 |
-    | Location | 選取 [美國東部 2]  。|
-    | 子網路 - 名稱 | 輸入 **mySubnetsource**。 |
-    | 子網路 - 位址範圍 | 輸入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 保留其餘的預設值，然後選取 [建立]  。
-
-### <a name="create-source-virtual-machine"></a>建立來源虛擬機器
+## <a name="create-source-virtual-machine"></a>建立來源虛擬機器
 
 我們現在會建立 VM 以使用 NAT 服務。 此 VM 具有公用 IP，可作為執行個體層級的公用 IP，讓您能夠存取 VM。 NAT 服務可感知流量方向，並將取代您子網路中的預設網際網路目的地。 VM 的公用 IP 位址不會用於輸出連線。
 
@@ -161,25 +158,25 @@ ms.locfileid: "77587000"
 
 我們現在會針對 NAT 服務所轉譯的輸出流量建立目的地，以便您進行測試。
 
-### <a name="configure-virtual-network-for-destination"></a>設定目的地的虛擬網路
+
+## <a name="virtual-network-and-parameters-for-destination"></a>目的地的虛擬網路和參數
 
 在您為目的地部署 VM 之前，我們必須先建立目的地虛擬機器可駐留的虛擬網路。 以下是與來源 VM 相同的步驟 (有些小變動)，用以公開目的地端點。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-2. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | 美國東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 **myVNetdestination**。 |
-    | 位址空間 | 輸入 192.168.0.0/16  。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取新建 - **myResourceGroupNAT**。 |
-    | Location | 選取 [美國東部 2]  。|
-    | 子網路 - 名稱 | 輸入 **mySubnetdestination**。 |
-    | 子網路 - 位址範圍 | 輸入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>建立目的地虛擬機器
+## <a name="create-destination-virtual-machine"></a>建立目的地虛擬機器
 
 1. 在入口網站的左上方，選取 [建立資源]   > [計算]   > [Ubuntu Server 18.04 LTS]  ，或在 Marketplace 搜尋中搜尋 [Ubuntu Server 18.04 LTS]  。
 

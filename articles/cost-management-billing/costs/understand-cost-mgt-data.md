@@ -4,23 +4,25 @@ description: 本文將協助您深入了解 Azure 成本管理所包含的資料
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560604"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245380"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
 本文將協助您深入了解 Azure 成本管理所包含的 Azure 成本和使用量資料。 也會說明處理、收集、顯示和關閉資料的頻率。 您須按月支付使用 Azure 的費用。 雖然計費週期是以月為期間，週期的開始和結束日期會因訂用帳戶類型而有所不同。 「成本管理」接收使用量資料的頻率會隨著不同的因素而改變。 這類因素包括處理資料所需的時間，以及 Azure 服務向計費系統發出使用量資料的頻率。
 
 Azure 成本管理涵蓋所有使用量和購買，包括保留和 Enterprise 合約 (EA) 帳戶的第三方供應項目。 採用隨用隨付費率的 Microsoft 客戶合約帳戶和個別訂用帳戶僅包含來自 Azure 和 Marketplace 服務的使用量。 不包含支援和其他成本。 產生發票之前的成本皆為估計值，不會計入點數。
+
+如果您有新的訂用帳戶，就無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
 ## <a name="supported-microsoft-azure-offers"></a>支援的 Microsoft Azure 供應項目
 

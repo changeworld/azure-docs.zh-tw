@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183331"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248288"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教學課程：使用 Linux VM 系統指派的受控識別來存取 Azure Cosmos DB 
 
@@ -37,7 +37,7 @@ ms.locfileid: "74183331"
 > * 取得存取權杖，並使用它來呼叫 Azure Resource Manager
 > * 從 Azure Resource Manager 取得存取金鑰以進行 Cosmos DB 呼叫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -67,14 +67,14 @@ ms.locfileid: "74183331"
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>擷取 Linux VM 系統所指派受控識別的 `principalID`
 
-在下一節中，若要從 Resource Manager 存取 Cosmos DB 帳戶存取金鑰，您必須擷取 Linux VM 系統所指派受控識別的 `principalID`。  請務必以您自己的值取代 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` (VM 所在的資源群組) 和 `<VM NAME>`。
+在下一節中，若要從 Resource Manager 存取 Cosmos DB 帳戶存取金鑰，您必須擷取 Linux VM 系統所指派受控識別的 `principalID`。  請務必將 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` (VM 所在的資源群組) 和 `<VM NAME>` 參數值取代為您自己的值。
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
 回應包含系統所指派受控識別的詳細資料 (請記下 principalID，下一節會用到)：
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -96,7 +96,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 回應會包含已建立的角色指派之詳細資料：
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -159,13 +159,13 @@ CURL 回應會提供金鑰清單。  例如，如果您收到唯讀金鑰：
 
 現在，您已有 Cosmos DB 帳戶的存取金鑰，您可以將其傳至 Cosmos DB SDK，並進行呼叫以存取帳戶。  如需快速範例，您可以將存取金鑰傳至 Azure CLI。  您可以透過 Azure 入口網站，從 Cosmos DB 帳戶刀鋒視窗上的 [概觀]  索引標籤取得 `<COSMOS DB CONNECTION URL>`。  請將 `<ACCESS KEY>` 取代為您先前取得的值：
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 此 CLI 命令會傳回集合的詳細資料：
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

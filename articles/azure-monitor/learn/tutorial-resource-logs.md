@@ -1,18 +1,17 @@
 ---
 title: 從 Azure 資源收集資源記錄，並使用 Azure 監視器進行分析
 description: 將資源記錄從 Azure 資源收集到 Log Analytics 工作區以透過記錄查詢進行分析的診斷設定教學課程。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532611"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269198"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教學課程：從 Azure 資源收集資源記錄並加以分析
 
@@ -47,7 +46,7 @@ Azure 監視器中的 Log Analytics 工作區會從各種來源收集記錄資�
    - 訂用帳戶  ：選取要儲存工作區的訂用帳戶。 此訂用帳戶不必是受監視資源所在的訂用帳戶。
    - **資源群組**：選取現有的資源群組，或按一下 [新建]  來建立新群組。 此資源群組不必是受監視資源所在的資源群組。
    - **位置**：選取 Azure 區域或建立一個新的位置。 此位置不必是受監視資源所在的位置。
-   - **定價層**：選取可以將資料保留 7 天的「免費」  層。 您可以在之後變更此定價層。 按一下 [Log Analytics 定價]  連結，以深入了解不同的定價層。
+   - **定價層**：選取 [隨用隨付]  作為定價層。 您可以在之後變更此定價層。 按一下 [Log Analytics 定價]  連結，以深入了解不同的定價層。
 
     ![新增工作區](media/tutorial-resource-logs/new-workspace.png)
 

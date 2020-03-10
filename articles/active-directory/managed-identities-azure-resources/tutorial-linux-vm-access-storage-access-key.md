@@ -1,5 +1,5 @@
 ---
-title: 教學課程`:` 使用受控識別來存取 Azure 儲存體 - Linux - Azure AD
+title: 教學課程`:` 使用受控識別透過存取金鑰存取 Azure 儲存體 - Linux - Azure AD
 description: 本教學課程會逐步引導您使用 Linux VM 系統指派的受控識別，以存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183428"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273826"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教學課程：使用 Linux VM 系統指派的受控識別，透過存取金鑰來存取 Azure 儲存體
 
@@ -32,7 +32,7 @@ ms.locfileid: "74183428"
 > * 在資源管理員中將您的 VM 存取權授與儲存體帳戶存取金鑰 
 > * 使用 VM 的身分識別取得存取權杖，並將其用於從資源管理員擷取儲存體存取金鑰  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "74183428"
 2. 按一下左側面板中的 [存取控制 (IAM)]  連結。  
 3. 按一下頁面頂端的 [+ 新增角色指派]  ，以新增虛擬機器的新角色指派。
 4. 在頁面右側中，將 [角色]  設定為 [儲存體帳戶金鑰操作員服務角色]。 
-5. 在下一個下拉式清單中，將 [存取權指派給]  設定為資源 [虛擬機器]。  
+5. 在下一個下拉式清單中，將 [存取權指派對象為]  設定為資源 [虛擬機器]。  
 6. 接下來，請確保 [訂用帳戶]  下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組]  設定為 [所有資源群組]。  
 7. 最後，在 [選取]  的下拉式清單中，選擇您的 Linux 虛擬機器，然後按一下 [儲存]  。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "74183428"
     
 ## <a name="get-storage-account-access-keys-from-azure-resource-manager-to-make-storage-calls"></a>從 Azure Resource Manager 取得儲存體帳戶存取金鑰以進行儲存體呼叫  
 
-現在會利用在上一節中擷取的存取權杖，使用 CURL 來呼叫資源管理員，以擷取儲存體存取金鑰。 一旦有了儲存體存取金鑰，我們便可呼叫儲存體進行上傳/下載作業。 別忘了以您自己的值取代 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<STORAGE ACCOUNT NAME>` 參數的值。 將 `<ACCESS TOKEN>` 值取代為您先前擷取的存取權杖：
+現在會利用在上一節中擷取的存取權杖，使用 CURL 來呼叫資源管理員，以擷取儲存體存取金鑰。 一旦有了儲存體存取金鑰，我們便可呼叫儲存體進行上傳/下載作業。 別忘了以您自己的值取代 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<STORAGE ACCOUNT NAME>` 參數的值。 將 `<ACCESS TOKEN>` 值取代為您先前擷取的存取權杖。
 
 ```bash 
 curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 --request POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 

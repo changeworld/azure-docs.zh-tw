@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 17d86f25de6eecee535d6f812f4ef0b078a4b6db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752494"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656002"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>教學課程：在 Java Spring 應用程式中使用 Key Vault 參考
 
@@ -43,9 +43,9 @@ ms.locfileid: "75752494"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始此教學課程之前，請先安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* 受支援的 [Java 開發套件 (JDK)](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
+* [Apache Maven](https://maven.apache.org/download.cgi) 3.0 版或更新版本。
 
 ## <a name="create-a-vault"></a>建立保存庫
 
@@ -56,10 +56,10 @@ ms.locfileid: "75752494"
 1. 從結果清單，選取左側的 [金鑰保存庫]  。
 1. 在 [金鑰保存庫]  中，選取 [新增]  。
 1. 在 [建立金鑰保存庫]  的右側，提供下列資訊：
-    - 選取 [訂用帳戶]  以選擇訂用帳戶。
-    - 在 [資源群組]  中，選取 [新建]  ，然後輸入資源群組名稱。
-    - 在 [金鑰保存庫名稱]  中，需要唯一的名稱。 針對此教學課程，請輸入 **Contoso-vault2**。
-    - 在 [區域]  下拉式清單中，選擇一個位置。
+    * 選取 [訂用帳戶]  以選擇訂用帳戶。
+    * 在 [資源群組]  中，選取 [新建]  ，然後輸入資源群組名稱。
+    * 在 [金鑰保存庫名稱]  中，需要唯一的名稱。 針對此教學課程，請輸入 **Contoso-vault2**。
+    * 在 [區域]  下拉式清單中，選擇一個位置。
 1. 將其他 [建立金鑰保存庫]  選項維持為預設值。
 1. 選取 [建立]  。
 
@@ -74,9 +74,9 @@ ms.locfileid: "75752494"
 1. 從 Key Vault 屬性頁面，選取 [祕密]  。
 1. 選取 [產生/匯入]  。
 1. 在 [建立祕密]  窗格中，輸入下列值：
-    - **上傳選項**：輸入**手動**。
-    - **Name**：輸入**訊息**。
-    - **值**：輸入 **Hello from Key Vault**。
+    * **上傳選項**：輸入**手動**。
+    * **Name**：輸入**訊息**。
+    * **值**：輸入 **Hello from Key Vault**。
 1. 保留其他 [建立祕密]  屬性的預設值。
 1. 選取 [建立]  。
 
@@ -87,10 +87,10 @@ ms.locfileid: "75752494"
 1. 選取 [組態總管]  。
 
 1. 選取 [+ 建立]   > [金鑰保存庫參考]  ，然後指定下列值：
-    - **金鑰**：選取 [/application/config.keyvaultmessage] 
-    - **標籤**︰將此值保留空白。
-    - **訂用帳戶**、**資源群組**與**金鑰保存庫**：輸入與您在上一節所建立金鑰保存庫中的值相對應的值。
-    - **祕密**：選取您在上一節中所建立、名為 **Message** 的祕密。
+    * **金鑰**：選取 [/application/config.keyvaultmessage] 
+    * **標籤**︰將此值保留空白。
+    * **訂用帳戶**、**資源群組**與**金鑰保存庫**：輸入與您在上一節所建立金鑰保存庫中的值相對應的值。
+    * **祕密**：選取您在上一節中所建立、名為 **Message** 的祕密。
 
 ## <a name="connect-to-key-vault"></a>連線到 Key Vault
 
@@ -119,8 +119,15 @@ ms.locfileid: "75752494"
 
 1. 執行下列命令，讓服務主體存取您的金鑰保存庫：
 
+    ```console
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+
+1. 執行下列命令以取得您的物件識別碼，然後將其新增至應用程式組態。
+
+    ```console
+    az ad sp show --id <clientId-of-your-service-principal>
+    az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
 1. 使用上一個步驟中顯示的服務主體值，建立下列環境變數：
@@ -130,7 +137,7 @@ ms.locfileid: "75752494"
     * **AZURE_TENANT_ID**：*tenantId*
 
 > [!NOTE]
-> 這些 Key Vault 認證只會在您的應用程式中使用。 您的應用程式會使用這些認證直接驗證 Key Vault。 它們永遠不會傳遞至應用程式組態服務。
+> 這些 Key Vault 認證只會在您的應用程式中使用。  您的應用程式會使用這些認證直接向 Key Vault 驗證，而不會涉及應用程式組態服務。  Key Vault 會為您的應用程式和應用程式組態服務提供驗證，而不需共用或公開金鑰。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新您的程式碼以使用 Key Vault 參考
 
@@ -157,17 +164,73 @@ ms.locfileid: "75752494"
     }
     ```
 
+1. 建立名為 *AzureCredentials.java* 的新檔案並新增下列程式碼。
+
+    ```java
+    package com.example;
+
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.identity.EnvironmentCredentialBuilder;
+    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+
+    public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
+
+        @Override
+        public TokenCredential getKeyVaultCredential(String uri) {
+            return getCredential();
+        }
+
+        @Override
+        public TokenCredential getAppConfigCredential(String uri) {
+            return getCredential();
+        }
+
+        private TokenCredential getCredential() {
+            return new EnvironmentCredentialBuilder().build();
+        }
+
+    }
+    ```
+
+1. 建立名為 *AppConfiguration.java*的新檔案。 以下新增下列程式碼。
+
+    ```java
+    package com.example;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class AppConfiguration {
+
+        @Bean
+        public AzureCredentials azureCredentials() {
+            return new AzureCredentials();
+        }
+    }
+    ```
+
+1. 在資源的 META-INF 目錄中建立名為 *spring.factories* 的新檔案並新增。
+
+    ```factories
+    org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+    com.example.AppConfiguration
+    ```
+
 1. 使用 Maven 建置 Spring Boot 應用程式並加以執行；例如：
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
+
 1. 在您的應用程式執行之後，使用 *curl* 來測試您的應用程式；例如：
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
+
     您會看到您在應用程式組態存放區中輸入的訊息。 您也會看到已在 Key Vault 中輸入的訊息。
 
 ## <a name="clean-up-resources"></a>清除資源

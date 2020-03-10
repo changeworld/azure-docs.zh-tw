@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 11/4/2019
 ms.author: brendm
-ms.openlocfilehash: 87b7ac1e9de2087de6e0b9d72fb445ca515a2e32
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4426044b3608be0ded378f4f56cbec6bc1948d75
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277140"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273266"
 ---
 # <a name="what-is-azure-spring-cloud"></a>什麼是 Azure Spring Cloud？
 
@@ -47,7 +47,7 @@ Azure Spring Cloud 可讓您在 Azure Spring Cloud 儀表板中輕鬆地調整�
 
 ### <a name="monitor-your-application-using-distributed-tracing-and-azure-app-insights"></a>使用分散式追蹤和 Azure App Insights 來監視您的應用程式
 
-Spring Cloud 的分散式追蹤工具可讓開發人員對其應用程式中微服務之間的複雜相互關聯進行偵錯及監視。  透過將 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) \(英文\) 與 Azure 的 [Application Insights](../azure-monitor/insights/insights-overview.md) 整合，Azure 便能直接從 Azure 入口網站提供強大的分散式追蹤功能。  若要深入了解，請完成此[教學課程](spring-cloud-tutorial-distributed-tracing.md)。
+Spring Cloud 的分散式追蹤工具可讓開發人員對其應用程式中的微服務之間的複雜相互關聯進行偵錯及監視。  透過將 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) \(英文\) 與 Azure 的 [Application Insights](../azure-monitor/insights/insights-overview.md) 整合，Azure 便能直接從 Azure 入口網站提供強大的分散式追蹤功能。  若要深入了解，請完成此[教學課程](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

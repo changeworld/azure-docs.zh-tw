@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020755"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916569"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -71,6 +71,14 @@ Microsoft 會自動升級代理程式。 對於 IT 小組而言，這會減輕�
 **問：我使用雲端佈建進行使用者的佈建。我已刪除組態。為何我仍在 Azure AD 中看到已同步的舊物件？** 
 
 當您刪除組態時，雲端佈建並不會清除 Azure AD 中已同步的物件。 若要確保不會有舊物件，請將組態的範圍變更為空的群組或組織單位。 佈建執行並清除物件後，請停用並刪除組態。 
+
+**問：Exchange 混合不受支援是什麼意思？**
+
+Exchange 混合部署功能允許在內部部署和 Office 365 中並存 Exchange 信箱。 Azure AD Connect 會將一組特定的屬性從 Azure AD 同步處理回內部部署目錄。  雲端佈建代理程式目前不會將這些屬性同步處理回您的內部部署目錄，因此不支援使用該代理程式來取代 Azure AD Connect。
+
+**問：我是否可在 Windows Server Core 上安裝雲端佈建代理程式？**
+
+否，不支援在 Server Core 上安裝代理程式。
 
 ## <a name="next-steps"></a>後續步驟 
 

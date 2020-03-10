@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 11/21/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.custom: azure-synapse
+ms.openlocfilehash: bd3ad98116b18a77a77e8f6f327689d0ebb7dd21
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304765"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200510"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入門：使用 T-SQL 設定工作負載隔離
 
@@ -25,13 +25,13 @@ ms.locfileid: "74304765"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!NOTE]
-> 建立 SQL 資料倉儲可能會導致新的可計費服務。  如需詳細資訊，請參閱 [SQL 資料倉儲價格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中建立 SQL 分析執行個體，可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 >
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
  
-本快速入門假設您已擁有 SQL 資料倉儲，也具有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
+本快速入門假設您已有 Azure Synapse 中的 SQL 分析執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -109,7 +109,7 @@ DROP USER [ELTLogin]
 
 您需對資料倉儲單位和資料倉儲中儲存的資料付費。 這些計算和儲存體資源會分開計費。
 
-- 如果您需要將資料保留在儲存體中，可以在您不使用資料倉儲時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
+- 如果您需要將資料保留在儲存體中，可以在您不使用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
 - 如果您需要移除未來的費用，可以將資料倉儲刪除。
 
 遵循下列步驟清除資源。
@@ -129,4 +129,4 @@ DROP USER [ELTLogin]
 ## <a name="next-steps"></a>後續步驟
 
 - 您現在已經建立了工作負載群組。 以 ELTLogin 身分執行一些查詢來查看其運作。 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以檢視查詢和所指派的工作負載群組。
-- 如需有關 Azure SQL 資料倉儲工作負載管理的詳細資訊，請參閱[工作負載管理](sql-data-warehouse-workload-management.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。
+- 如需關於 SQL 分析工作負載管理的詳細資訊，請參閱[工作負載管理](sql-data-warehouse-workload-management.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。

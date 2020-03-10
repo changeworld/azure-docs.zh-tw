@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276940"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161715"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 Android 應用程式的逐步指示
 
 本教學課程將說明如何建立可整合 ARCore 功能與 Azure Spatial Anchors 的新 Android 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列項目︰
 
@@ -123,13 +123,13 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>連結本機 Azure Spatial Anchor
 
-請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 Azure Spatial Anchors 1.3.0 版目標。 雖然如此，參考任何最新版的 Azure Spatial Anchors 應該也是可行的。
+請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 Azure Spatial Anchors 2.2.0 版為目標。 雖然如此，參考任何最新版的 Azure Spatial Anchors 應該也是可行的。 您可以在[這裡](https://github.com/Azure/azure-spatial-anchors-samples/releases)找到版本資訊。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

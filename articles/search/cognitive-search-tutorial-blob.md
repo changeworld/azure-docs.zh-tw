@@ -1,34 +1,43 @@
 ---
-title: 教學課程：從 JSON Blob 擷取文字和結構
+title: 教學課程：使用 REST 和 AI 處理 Azure Blob
 titleSuffix: Azure Cognitive Search
-description: 逐步解說使用 Postman 和 Azure 搜尋服務 REST API 對 JSON Blob 內容進行文字擷取和自然語言處理的範例。
+description: 逐步解說使用 Postman 和 Azure 搜尋服務 REST API 對 Blob 儲存體中的內容進行文字擷取和自然語言處理的範例。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113669"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190717"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>教學課程：使用 REST API 在 Azure 中從 JSON Blob 擷取文字和結構 (Azure 認知搜尋)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 REST 和 AI 從 Azure Blob 產生可搜尋的內容
 
-如果您在 Azure Blob 儲存體中有非結構化的文字或影像，[AI 擴充管線](cognitive-search-concept-intro.md)可協助您擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 雖然管線可以處理影像檔案 (JPG、PNG、TIFF)，但本教學課程著重於文字內容，並且會套用語言偵測和文字分析來建立可用於查詢、Facet 和篩選的新欄位和資訊。
+如果您在 Azure Blob 儲存體中有非結構化的文字或影像，您可以利用 [AI 擴充管線](cognitive-search-concept-intro.md)來擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 雖然管線可以處理影像，但此 REST 教學課程將著重於文字，套用語言偵測和自然語言處理，以建立可讓您在查詢、Facet 和篩選器中運用的新欄位。
+
+本教學課程將使用 Postman 和[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 執行下列工作：
 
 > [!div class="checklist"]
-> * 我們將從 Azure Blob 儲存體中的完整文件 (非結構化文字) 開始，例如 PDF、MD、DOCX 和 PPTX。
+> * 我們將從 Azure Blob 儲存體中的完整文件 (非結構化文字) 開始，例如 PDF、HTML、DOCX 和 PPTX。
 > * 定義管線來擷取文字、偵測語言、辨識實體及偵測關鍵片語。
 > * 定義用來儲存輸出的索引 (原始內容加上管線產生的名稱/值組)。
 > * 執行管線以開始轉換和分析，以及建立和載入索引。
 > * 使用全文檢索搜尋和豐富的查詢語法來探索結果。
 
-您將需要數個服務來完成此逐步解說，以及使用 [Postman 傳統型應用程式](https://www.getpostman.com/)或另一個 Web 測試工具來進行 REST API 呼叫。 
-
 如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="prerequisites"></a>Prerequisites
+
++ [Azure 儲存體](https://azure.microsoft.com/services/storage/)
++ [Postman 桌面應用程式](https://www.getpostman.com/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+
+> [!Note]
+> 您可以使用免費服務來進行本教學課程。 免費的搜尋服務會有限制，您只能使用三個索引、三個索引子和三個資料來源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
 ## <a name="download-files"></a>下載檔案
 
@@ -38,7 +47,9 @@ ms.locfileid: "74113669"
 
 ## <a name="1---create-services"></a>1 - 建立服務
 
-本逐步解說會使用 Azure 認知搜尋進行索引編製和查詢、將認知服務用於 AI 擴充，以及使用 Azure Blob 儲存體來提供資料。 為具備鄰近性和管理方面的優勢，如果可能，請在相同的區域和資源群組中建立這三項服務。 實際上，您的 Azure 儲存體帳戶可以位在任何區域中。
+本教學課程會使用 Azure 認知搜尋進行索引編製和查詢、在後端將認知服務用於 AI 擴充，以及使用 Azure Blob 儲存體來提供資料。 本教學課程在認知服務上使用的資源會保持在每個索引子每日 20 筆交易的免費配置以內，因此您需要建立的服務只有搜尋和儲存體。
+
+為具備鄰近性和管理方面的優勢，如果可能，請將這兩項服務建立在相同的區域和資源群組中。 實際上，您的 Azure 儲存體帳戶可以位在任何區域中。
 
 ### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
@@ -102,9 +113,9 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 2. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
+   一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
 
 在傳送至您服務的每個要求的標頭中都需要有 api-key。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
 
@@ -122,7 +133,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 在 Azure 認知搜尋中，AI 處理會在編製索引 (或資料擷取) 期間進行。 逐步解說的這個部分會建立四個物件：資料來源、索引定義、技能集、索引子。 
 
-### <a name="step-1-create-a-data-source"></a>步驟 1：建立資料來源
+### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
 
 [資料來源物件](https://docs.microsoft.com/rest/api/searchservice/create-data-source)會對包含檔案的 Blob 容器提供連接字串。
 
@@ -152,7 +163,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 如果發生 403 或 404 錯誤，請檢查要求建構：`api-version=2019-05-06` 位於端點上，`api-key` 應位於標頭中的 `Content-Type` 後面，且其值必須是適用於搜尋服務的值。 您可以透過線上 JSON 驗證程式執行 JSON 文件，以確定語法正確無誤。 
 
-### <a name="step-2-create-a-skillset"></a>步驟 2：建立技能集
+### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
 [技能集物件](https://docs.microsoft.com/rest/api/searchservice/create-skillset)是一組套用至內容的擴充步驟。 
 
@@ -164,7 +175,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 1. 在要求**本文**中，複製下列 JSON 定義。 此技能集包含下列內建技能。
 
-   | 技能                 | 說明    |
+   | 技能                 | 描述    |
    |-----------------------|----------------|
    | [實體辨識](cognitive-search-skill-entity-recognition.md) | 從 Blob 容器中的內容擷取人員、組織及位置名稱。 |
    | [語言偵測](cognitive-search-skill-language-detection.md) | 偵測內容的語言。 |
@@ -475,29 +486,25 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
    cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
    ```
 
-這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。
+這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。 如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。
 
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>重設並重新執行
 
-在管線開發的早期實驗階段中若要設計反覆項目，最實用的方法是從 Azure 認知搜尋中刪除物件，並讓您的程式碼加以重建。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+在開發的早期實驗階段中若要設計反覆項目，最實用的方法是從 Azure 認知搜尋中刪除物件，並讓您的程式碼加以重建。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
 
-若要使用新的定義為您的文件重新編製索引：
+您可以使用入口網站來刪除索引、索引子、資料來源和技能集。 當您刪除索引子時，您可以選擇性地同時刪除索引、技能集和資料來源。
 
-1. 刪除索引子、索引和技能集。
-2. 修改物件。
-3. 在您的服務上重新建立以執行管線。 
+![刪除搜尋物件](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "刪除入口網站中的搜尋物件")
 
-您可以使用入口網站來刪除索引、索引子和技能集，或使用 **DELETE** 並提供 URL 給每個物件。 下列命令會刪除索引子。
+或者，使用 **DELETE** 並提供每個物件的 URL。 下列命令會刪除索引子。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 成功刪除時會傳回狀態碼 204。
-
-當您的程式碼成熟時，您可以精簡重建策略。 如需詳細資訊，請參閱[如何重建索引](search-howto-reindex.md)。
 
 ## <a name="takeaways"></a>重要心得
 
@@ -509,11 +516,13 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 認知搜尋服務和 Azure Blob 服務的資源群組。 如果您將這兩項服務放在相同群組中，此時刪除資源群組，將會永久刪除其中的所有內容，包括服務與您為此教學課程建立的任何已儲存內容。 在入口網站中，資源群組名稱位在每個服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-以自訂技能自訂或擴充管線。 建立自訂技能並將其新增至技能集，以便讓您自行撰寫的文字或影像分析上線。 
+現在您已熟悉 AI 擴充管線中的所有物件，接下來我們將進一步了解技能集定義和個別技能。
 
 > [!div class="nextstepaction"]
-> [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
+> [如何建立技能集](cognitive-search-defining-skillset.md)

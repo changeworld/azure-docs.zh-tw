@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273506"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274180"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(已淘汰) 部署適用於 Linux 容器的 Kubernetes 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "76273506"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-本快速入門中會使用 Azure CLI 來部署 Kubernetes 叢集。 接著，在叢集上部署和執行多容器應用程式，其中包含 Web 前端和 Redis 執行個體。 完成後，即可透過網際網路來存取應用程式。 
+在本快速入門中，會使用 Azure CLI 來部署 Kubernetes 叢集。 接著，在叢集上部署和執行多容器應用程式，其中包含 Web 前端和 Redis 執行個體。 完成後，即可透過網際網路來存取應用程式。 
 
 本文件中使用的範例應用程式是以 Python 撰寫。 這裡詳述的概念和步驟可用來將任何容器映像部署到 Kubernetes 叢集中。 [GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git) 在 上可取得此專案相關的程式碼、Dockerfile 和預先建立之 Kubernetes 資訊清單檔案。
 
@@ -41,7 +41,7 @@ ms.locfileid: "76273506"
 
 下列範例會在 westeurope  位置建立名為 myResourceGroup  的資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroup --location westeurope
 
 使用 [az acs create](/cli/azure/acs#az-acs-create) 命令，在 Azure Container Service 中建立 Kubernetes 叢集。 下列範例會建立名為 *myK8sCluster* 的叢集，其中包含一個 Linux 主要節點和三個 Linux 代理程式節點。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
 ```
 
@@ -76,23 +76,23 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 若要管理 Kubernetes 叢集，請使用 Kubernetes 命令列用戶端：[kubectl](https://kubernetes.io/docs/user-guide/kubectl/)。 
 
-如果您是使用 Azure CloudShell，則已安裝 kubectl。 如果您想要在本機進行安裝，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
+如果您是使用 Azure Cloud Shell，則已安裝 kubectl。 如果您想要在本機進行安裝，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 若要設定 kubectl 來連線到 Kubernetes 叢集，請執行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。 此步驟會下載憑證並設定 Kubernetes CLI 以供使用。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
 若要驗證針對您叢集的連線，請使用 [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令來傳回叢集節點的清單。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 輸出：
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-14ad53a1-0    Ready                      10m       v1.6.6
 k8s-agent-14ad53a1-1    Ready                      10m       v1.6.6
@@ -169,13 +169,13 @@ spec:
 
 使用 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) 命令來執行應用程式。
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote.yml
 ```
 
 輸出：
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -188,13 +188,13 @@ service "azure-vote-front" created
 
 若要監視進度，請使用 [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令搭配 `--watch` 引數。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 一開始，*azure-vote-front* 服務的 **EXTERNAL-IP** 會顯示為 *pending*。 當 EXTERNAL-IP 位址從 *pending* 變成一個「IP 位址」  之後，請使用 `CTRL-C` 來停止 kubectl 監看式流程。 
   
-```bash
+```output
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ```
@@ -206,7 +206,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ## <a name="delete-cluster"></a>刪除叢集
 若不再需要叢集，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令來移除資源群組、容器服務和所有相關資源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 

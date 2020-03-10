@@ -1,30 +1,29 @@
 ---
 title: 使用 Azure Application Insights 監視 ASP.NET Web 應用程式 | Microsoft Docs
 description: 提供指示說明如何快速設定 ASP.NET Web 應用程式，以透過 Application Insights 來監視
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900480"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661698"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>開始監視 ASP.NET Web 應用程式
 
-利用 Azure Application Insights，您可以輕鬆監視 Web 應用程式的可用性、效能和使用情形。  還可讓您快速識別並診斷應用程式的錯誤，不必等使用者回報。  使用從 Application Insights 收集有關您的應用程式效能和效率的相關資訊，您可以進行謹慎的選擇來維護和改善您的應用程式。
+Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、效能和使用情形。  還可讓您快速識別並診斷應用程式的錯誤，不必等使用者回報。  使用從 Application Insights 收集有關您的應用程式效能和效率的相關資訊，您可以進行謹慎的選擇來維護和改善您的應用程式。
 
 本快速入門示範如何將 Application Insights 新增至現有的 ASP.NET Web 應用程式，並開始分析即時統計資料，而這只是您可用來分析應用程式的多種方法的其中一個。 如果您沒有 ASP.NET Web 應用程式，您可以遵循[建立 ASP.NET Web 應用程式快速入門](../../app-service/app-service-web-get-started-dotnet-framework.md)來建立。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本快速入門：
 
-- 使用下列工作負載[安裝 Visual Studio 2019](https://www.visualstudio.com/downloads/)：
+- 使用下列工作負載安裝 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 開發
     - Azure 開發
 

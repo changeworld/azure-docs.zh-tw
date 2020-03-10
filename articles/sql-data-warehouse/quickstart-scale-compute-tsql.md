@@ -1,6 +1,6 @@
 ---
-title: '快速入門：調整計算 - T-SQL '
-description: 使用 T-SQL 和 SQL Server Management Studio (SSMS) 調整 Azure SQL 資料倉儲中的計算。 相應放大計算以提升效能，或將計算調整回來以節省成本。
+title: 在 Azure Synapse Analytics 中調整計算 - T-SQL
+description: 使用 T-SQL 和 SQL Server Management Studio (SSMS) 調整 Azure Synapse Analytics 中的計算。 相應放大計算以提升效能，或將計算調整回來以節省成本。
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685952"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200382"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>快速入門：使用 T-SQL 調整 Azure SQL 資料倉儲中的計算
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>快速入門：使用 T-SQL 在 Azure Synapse Analytics 中調整計算
 
-使用 T-SQL 和 SQL Server Management Studio (SSMS) 調整 Azure SQL 資料倉儲中的計算。 [相應放大計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。 
+使用 T-SQL 和 SQL Server Management Studio (SSMS) 調整 Azure Synapse Analytics (先前為 SQL DW) 中的計算。 [相應放大計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "73685952"
  
 ## <a name="create-a-data-warehouse"></a>建立資料倉儲
 
-使用[快速入門：建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。 完成快速入門以確定您擁有防火牆規則，並可從 SQL Server Management Studio 內連線到資料倉儲。
+使用[快速入門：建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。 完成快速入門以確定您擁有防火牆規則，並可從 SQL Server Management Studio 內連線至資料倉儲。
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以伺服器系統管理員身分連線到伺服器
 
@@ -38,31 +38,31 @@ ms.locfileid: "73685952"
 
 1. 開啟 SQL Server Management Studio。
 
-2. 在 [連接到伺服器]  對話方塊中，輸入下列資訊：
+2. 在 [連線至伺服器]  對話方塊中，輸入下列資訊：
 
-   | 設定       | 建議的值 | 說明 | 
+   | 設定       | 建議的值 | 描述 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | 伺服器類型 | 資料庫引擎 | 這是必要值 |
-   | 伺服器名稱 | 完整伺服器名稱 | 範例如下：**mynewserver-20171113.database.windows.net**。 |
-   | Authentication | SQL Server 驗證 | SQL 驗證是本教學課程中設定的唯一驗證類型。 |
-   | 登入 | 伺服器管理帳戶 | 您在建立伺服器時所指定的帳戶。 |
-   | 密碼 | 伺服器管理帳戶的密碼 | 這是您在建立伺服器時所指定的密碼。 |
+   | 伺服器名稱 | 完整伺服器名稱 | 範例如下：**mySampleDataWarehouseservername.database.windows.net**。 |
+   | 驗證 | SQL Server 驗證 | SQL 驗證是本教學課程中設定的唯一驗證類型。 |
+   | 登入 | 伺服器系統管理員帳戶 | 您在建立伺服器時所指定的帳戶。 |
+   | 密碼 | 伺服器系統管理員帳戶的密碼 | 您在建立伺服器時所指定的密碼。 |
 
-    ![連接到伺服器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![連線至伺服器](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. 按一下 [ **連接**]。 [物件總管] 視窗隨即在 SSMS 中開啟。 
+3. 按一下 [ **連接**]。 [物件總管] 視窗會在 SSMS 中開啟。
 
-5. 在 [物件總管] 中，展開 [資料庫]  。 然後展開 [mySampleDatabase]  可檢視新資料庫中的物件。
+4. 在 [物件總管] 中展開 [資料庫]  。 然後，展開 [mySampleDataWarehouse]  ，以檢視新資料庫中的物件。
 
-    ![資料庫物件](media/create-data-warehouse-portal/connected.png) 
+    ![資料庫物件](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>檢視服務目標
 服務目標設定包含資料倉儲的資料倉儲單位數目。 
 
 若要檢視資料倉儲目前的資料倉儲單位：
 
-1. 在 **mynewserver-20171113.database.windows.net** 的連線下，展開 [系統資料庫]  。
-2. 以滑鼠右鍵按一下 [主要]  ，然後選取 [新增查詢]  。 新的查詢視窗隨即開啟。
+1. 在 **mySampleDataWarehouseservername.database.windows.net** 的連線下，展開 [系統資料庫]  。
+2. 以滑鼠右鍵按一下 [主要]  ，然後選取 [新增查詢]  。 隨即開啟 [新增查詢] 視窗。
 3. 執行下列查詢，以從 sys.database_service_objectives 動態管理檢視中選取。 
 
     ```sql
@@ -80,11 +80,10 @@ ms.locfileid: "73685952"
 
 4. 下列結果顯示 **mySampleDataWarehouse** 具有 DW400 的服務目標。 
 
-    ![檢視目前的 DWU](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![iew-current-dwu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>調整計算
-在 SQL 資料倉儲中，您可以藉由調整資料倉儲單位來增加或減少計算資源。 [建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
+在 Azure Synapse 中，您可以藉由調整資料倉儲單位來增加或減少計算資源。 [建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
 
 若要變更資料倉儲單位：
 
@@ -93,8 +92,7 @@ ms.locfileid: "73685952"
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>監視級別變更要求
@@ -113,7 +111,7 @@ ms.locfileid: "73685952"
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ ms.locfileid: "73685952"
 
 ## <a name="check-operation-status"></a>檢查作業狀態
 
-若要傳回針對 SQL 資料倉儲所進行之各種管理作業的相關資訊，請對 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV 執行下列查詢。 例如，它會傳回作業和作業狀態 (IN_PROGRESS 或 COMPLETED)。
+若要傳回對 Azure Synapse 進行之各種管理作業的相關資訊，請對 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV 執行下列查詢。 例如，它會傳回作業和作業狀態 (IN_PROGRESS 或 COMPLETED)。
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>後續步驟
-您現已了解如何調整資料倉儲的計算。 若要深入了解 Azure SQL 資料倉儲，請繼續進行載入資料的教學課程。
+您現已了解如何調整資料倉儲的計算。 若要深入了解 Azure Synapse，請繼續進行載入資料的教學課程。
 
 > [!div class="nextstepaction"]
->[將資料載入 SQL 資料倉儲](load-data-from-azure-blob-storage-using-polybase.md)
+>[將資料載入至 Azure Synapse Analytics](load-data-from-azure-blob-storage-using-polybase.md)

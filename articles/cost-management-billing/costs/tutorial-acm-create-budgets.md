@@ -4,17 +4,17 @@ description: 此教學課程可協助規劃和說明您取用之 Azure 服務的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/23/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582378"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251235"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -40,7 +40,9 @@ ms.locfileid: "77582378"
 
 不同的 Azure 帳戶類型均支援預算。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
 
- 針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。
+如果您有新的訂用帳戶，就無法立即建立預算或使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
+
+針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。
 
 使用者和群組針對預算的每個訂用帳戶支援下列 Azure 權限或範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
@@ -52,7 +54,7 @@ ms.locfileid: "77582378"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 登入 Azure 入口網站： https://portal.azure.com 。
+- 在 https://portal.azure.com 登入 Azure 入口網站。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 入口網站中建立預算
 

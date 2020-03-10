@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225188"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249859"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站針對網際網路至 VM 的流量進行負載平衡
 
@@ -29,7 +29,7 @@ ms.locfileid: "74225188"
 
 > [!div class="checklist"]
 > * 建立 Azure Load Balancer
-> * 建立 Load Balancer 資源
+> * 建立負載平衡器資源
 > * 建立虛擬機器並安裝 IIS 伺服器
 > * 檢視作用中的 Load Balancer
 > * 從 Load Balancer 中新增和移除 VM
@@ -87,7 +87,7 @@ ms.locfileid: "74225188"
     | ------- | ----- |
     | 名稱 | 輸入 *myHealthProbe*。 |
     | 通訊協定 | 選取 [HTTP]  。 |
-    | Port | 輸入 *80*。|
+    | 連接埠 | 輸入 *80*。|
     | 間隔 | 輸入 *15* 作為探查嘗試之間的 [間隔]  秒數。 |
     | 狀況不良臨界值 | 選取 [2]  作為 [狀況不良閾值]  的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
     
@@ -95,7 +95,7 @@ ms.locfileid: "74225188"
 
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
-負載平衡器規則用來定義如何將流量分散至 VM。 您可定義連入流量的前端 IP 組態及後端 IP 集區來接收流量，以及所需的來源和目的地連接埠。 建立 Load Balancer 規則 *myLoadBalancerRuleWeb*，用來接聽前端 *FrontendLoadBalancer* 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 *myBackEndPool* (也是使用連接埠 80)。
+負載平衡器規則用來定義如何將流量分散至 VM。 您可定義連入流量的前端 IP 組態及後端 IP 集區來接收流量，以及所需的來源和目的地連接埠。 建立負載平衡器規則 *myLoadBalancerRuleWeb*，用來接聽前端 *FrontendLoadBalancer* 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 *myBackEndPool* (也是使用連接埠 80)。
 
 1. 選取左側功能表中的 [所有服務]  、選取 [所有資源]  ，然後從資源清單中按一下 [myLoadBalancer]  。
 2. 在 [設定]  之下，按一下 [負載平衡規則]  ，然後按一下 [新增]  。
@@ -105,7 +105,7 @@ ms.locfileid: "74225188"
     | ------- | ----- |
     | 名稱 | 輸入 *myHTTPRule*。 |
     | 通訊協定 | 選取 [TCP]  。 |
-    | Port | 輸入 *80*。|
+    | 連接埠 | 輸入 *80*。|
     | 後端連接埠 | 輸入 *80*。 |
     | 後端集區 | 選取 [myBackendPool]  。|
     | 健全狀況探查 | 選取 [myHealthProbe]  。 |
@@ -116,26 +116,24 @@ ms.locfileid: "74225188"
 
 在本節中，您會建立一個虛擬網路、針對 Load Balancer 的後端集區建立三部虛擬機器，然後在虛擬機器上安裝 IIS 以協助測試 Load Balancer。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
-2. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 *myVNet*。 |
-    | 位址空間 | 輸入 *10.1.0.0/16*。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取現有的資源 - *myResourceGroupSLB*。 |
-    | 位置 | 選取 [西歐]  。|
-    | 子網路 - 名稱 | 輸入 *myBackendSubnet*。 |
-    | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
-    
-3. 保留其餘的預設值，然後選取 [建立]  。
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB (選取現有的資源群組) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西歐      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-Standard Load Balancer 只支援在後端集區中具有標準 IP 位址的 VM。 在本節中，您將使用三個不同區域 (區域 1  、區域 2  及區域 3  ) 中的標準公用 IP 位址來建立三部 VM (*myVM1*、*myVM2* 及 *myVM3*)，這些區域已新增至稍早建立的 Standard Load Balancer 後端集區。
+標準負載平衡器只支援在後端集區中具有標準 IP 位址的 VM。 在本節中，您將使用三個不同區域 (區域 1  、區域 2  及區域 3  ) 中的標準公用 IP 位址來建立三部 VM (*myVM1*、*myVM2* 及 *myVM3*)，這些區域已新增至稍早建立的 Standard Load Balancer 後端集區。
 
 1. 在入口網站的左上方，選取 [建立資源]   >  **[計算]**  > [Windows Server 2016 Datacenter]  。 
    
@@ -150,7 +148,7 @@ Standard Load Balancer 只支援在後端集區中具有標準 IP 位址的 VM�
    
    - 請確定已選取下列項目：
        - **虛擬網路**：**MyVNet**
-       - **子網路**：**myBackendSubnet**
+       - **子網路**：**MyBackendSubnet**
        - [公用 IP]  > 選取 [新建]  ，然後在 [建立公用 IP 位址]  視窗中，針對 [SKU]  選取 [標準]  ，並針對 [可用性區域]  選取 [區域備援] 
       
    - 若要在 [網路安全性群組]  之下建立新的網路安全性群組 (NSG，一種防火牆類型)，請選取 [進階]  。 
@@ -168,7 +166,7 @@ Standard Load Balancer 只支援在後端集區中具有標準 IP 位址的 VM�
 
 ### <a name="create-network-security-group-rule"></a>建立網路安全性群組規則
 
-在本節中，您會建立安全性群組規則，以允許使用 HTTP 的輸入連線。
+在本節中，您會建立網路安全性群組規則，以允許使用 HTTP 的輸入連線。
 
 1. 選取左側功能表中的 [所有服務]  、選取 [所有資源]  ，然後從資源清單中按一下 [myNetworkSecurityGroup]  ，其位於 **myResourceGroupSLB** 資源群組中。
 2. 在 [設定]  底下，按一下 [輸入安全性規則]  ，然後按一下 [新增]  。
@@ -207,7 +205,7 @@ Standard Load Balancer 只支援在後端集區中具有標準 IP 位址的 VM�
 6. 使用 myVM1  關閉 RDP 工作階段。
 7. 重複步驟 1 到 6，在 myVM2  和 myVM3  上安裝 IIS 和更新的 iisstart.htm 檔案。
 
-## <a name="test-the-load-balancer"></a>測試 Load Balancer
+## <a name="test-the-load-balancer"></a>測試負載平衡器
 1. 在 [概觀]  畫面上尋找負載平衡器的公用 IP 位址。 選取左側功能表中的 [所有服務]  、選取 [所有資源]  ，然後按一下 [myPublicIP]  。
 
 2. 將公用 IP 位址複製並貼到您瀏覽器的網址列。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。

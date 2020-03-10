@@ -1,22 +1,22 @@
 ---
 title: Azure HDInsight 中的企業安全性概觀
 description: 了解各種方法以確保 Azure HDInsight 中的企業安全性。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122120"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267711"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
-Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，大部分解決方案均未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能，並協助您避免對不想要的功能付費。 這也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
+Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，這些解決方案大多未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能，並協助您避免對不想要的功能付費。 這也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
 
 本文依照四個傳統安全性要素來劃分安全性解決方案，藉以探討安全性解決方案：周邊安全性、驗證、授權和加密。
 
@@ -36,7 +36,7 @@ Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據
 
 HDInsight 的[企業安全性套件](apache-domain-joined-architecture.md)提供 Active Directory 型驗證、多使用者支援和角色型存取控制。 透過使用 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) 即可達成 Active Directory 整合。 利用這些功能，您可以建立已加入受控 Active Directory 網域的 HDInsight 叢集。 接著，您可以設定企業員工清單，指出可驗證及登入叢集的員工。
 
-企業員工可以藉由這項設定，便能使用其網域認證來登入叢集節點。 他們也可以使用其網域認證向其他已核准的端點 (例如 Apache Ambari 檢視、ODBC、JDBC、PowerShell 和 REST API) 進行驗證，以與叢集進行互動。 
+企業員工可以藉由這項設定，便能使用其網域認證來登入叢集節點。 他們也可以使用其網域認證向其他已核准的端點 (例如 Apache Ambari 檢視、ODBC、JDBC、PowerShell 和 REST API) 進行驗證，以與叢集進行互動。
 
 ### <a name="authorization"></a>授權
 
@@ -50,9 +50,9 @@ Hadoop 系統管理員可以設定角色型存取控制 (RBAC)，以使用 Apach
 
 若要追蹤資源的未經授權存取或意外存取，就必須針對叢集資源和資料的所有存取進行稽核。 防止未經授權的使用者存取 HDInsight 叢集資源並保護資料是非常重要的。
 
-系統管理員可以檢視和報告所有對於 HDInsight 叢集資源和資料的存取。 針對在 Apache Ranger 支援的端點中所建立的存取控制原則，系統管理員也可以檢視和報告存取控制原則的所有變更。 
+系統管理員可以檢視和報告所有對於 HDInsight 叢集資源和資料的存取。 針對在 Apache Ranger 支援的端點中所建立的存取控制原則，系統管理員也可以檢視和報告存取控制原則的所有變更。
 
-若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，請啟用 [Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)並檢視可提供稽核記錄的資料表。
+若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，請啟用 [Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)，並檢視提供稽核記錄的資料表。
 
 ### <a name="encryption"></a>加密
 

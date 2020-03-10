@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.custom: hdinsightactive,mvc
+ms.date: 03/02/2020
+ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327280"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251960"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教學課程：在 HDInsight 中使用 Power BI 來分析 Apache Spark 資料
 
@@ -25,13 +25,13 @@ ms.locfileid: "74327280"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[教學課程：在 Azure HDInsight 中的 Apache Spark 叢集上載入資料和執行查詢](./apache-spark-load-data-run-query.md)一文。
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
-* 選用：[Power BI 試用訂用帳戶](https://app.powerbi.com/signupredirect?pbi_source=web)。
+* 選擇性：[Power BI 試用訂用帳戶](https://app.powerbi.com/signupredirect?pbi_source=web)。
 
 ## <a name="verify-the-data"></a>驗證資料
 
@@ -128,47 +128,47 @@ Power BI 服務可讓您跨組織共用報表和儀表板。 在本節中，您�
 
 1. 開啟 Power BI Desktop。
 
-1. 在 [首頁]  索引標籤上，按一下 [發佈]  。
+1. 在 [首頁]  索引標籤上，選取 [發佈]  。
 
-    ![從 Power BI Desktop 發佈](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "從 Power BI Desktop 發佈")
+    ![從 Power BI Desktop 發佈](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "從 Power BI Desktop 發行")
 
-1. 選取要發佈您的資料集和報告的目標工作區，然後按一下 [選取]  。 在下列映像中，已選取預設值 [我的工作區]  。
+1. 選取要發佈資料集和報表的目標工作區，然後選取 [選取]  。 在下列映像中，已選取預設值 [我的工作區]  。
 
-    ![選取要作為資料集和報告發佈目標的工作區](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "選取要作為資料集和報告發佈目標的工作區") 
+    ![選取要作為資料集和報告發佈目標的工作區](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "選取要作為資料集和報告發佈目標的工作區")
 
-1. 成功發佈之後，按一下 [在 Power BI 中開啟 'BuildingTemperature.pbix']  。
+1. 在成功發佈後，選取 [在 Power BI 中開啟 'BuildingTemperature.pbix']  。
 
-    ![發佈成功，按一下以輸入認證](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "發佈成功，按一下以輸入認證") 
+    ![發佈成功，按一下以輸入認證](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "發佈成功，按一下以輸入認證")
 
-1. 在 Power BI 服務中，按一下 [輸入認證]  。
+1. 在 Power BI 服務中，選取 [輸入認證]  。
 
     ![在 Power BI 服務中輸入認證](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "在 Power BI 服務中輸入認證")
 
-1. 按一下 [編輯認證]  。
+1. 選取 [編輯認證]  。
 
     ![在 Power BI 服務中編輯認證](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "在 Power BI 服務中編輯認證")
 
-1. 輸入 HDInsight 登入帳戶資訊，然後按一下 [登入]  。 預設帳戶名稱為 *admin*。
+1. 輸入 HDInsight 登入帳戶資訊，然後選取 [登入]  。 預設帳戶名稱為 *admin*。
 
     ![登入 Spark 叢集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登入 Spark 叢集")
 
-1. 在左側窗格中，移至 [工作區]   > [我的工作區]   > [報表]  ，然後按一下 [BuildingTemperature]  。
+1. 在左側窗格中，移至 [工作區]   > [我的工作區]   > [報表]  ，然後選取 [BuildingTemperature]  。
 
     ![在左窗格的 [報告] 底下列出的報告](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "在左窗格的 [報告] 底下列出的報告")
 
     您也應該會看到 [BuildingTemperature]  列於左側窗格中 [資料集]  底下。
 
-    現在您在 Power BI Desktop 中建立的視覺效果已可於 Power BI 服務中使用。 
+    現在您在 Power BI Desktop 中建立的視覺效果已可於 Power BI 服務中使用。
 
-1. 將游標暫留在視覺效果上，然後按一下右上角的釘選圖示。
+1. 將游標暫留在視覺效果上，然後選取右上角的釘選圖示。
 
     ![Power BI 服務中的報告](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI 服務中的報告")
 
-1. 選取 [新的儀表板]，輸入名稱 `Building temperature`，然後按一下 [釘選]  。
+1. 選取 [新的儀表板]，輸入名稱 `Building temperature`，然後選取 [釘選]  。
 
     ![釘選到新的儀表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "釘選到新的儀表板")
 
-1. 在報告中，按一下 [移至儀表板]  。
+1. 在報表中，選取 [移至儀表板]  。
 
 您的視覺效果已釘選至儀表板 - 您可以將其他視覺效果新增至報告，並將其釘選至相同的儀表板。 如需關於報告與儀表板的詳細資訊，請參閱 [Power BI 中的報告](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)和 [Power BI 中的儀表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 

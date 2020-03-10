@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: aahi
-ms.openlocfilehash: 785840ad0b678337f513a700d37f0ba94671964e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: ffa493c5bed152eea58d29bbf56215af7ebce5b1
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651981"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208237"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 Python 應用程式。 在本快速入門中，您將了解如何傳送要求、接收 JSON 回應，以及篩選和剖析結果。
 
-要立即查看程式碼嗎？ GitHub 中提供[適用於 JavaScript 的 Bing 搜尋用戶端程式庫](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search)的範例。
+要立即查看程式碼嗎？ GitHub 中提供[適用於 Python 的 Bing 搜尋用戶端程式庫](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search)的範例。
 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -169,7 +169,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 1. 將 `YOUR_ENDPOINT` 取代為您在入口網站中的端點 URL。
 
-1. 執行程式。 例如：`python your_program.py`。
+1. 執行程式。 例如： `python your_program.py` 。
 
 ## <a name="define-functions-and-filter-results"></a>定義函式和篩選結果
 

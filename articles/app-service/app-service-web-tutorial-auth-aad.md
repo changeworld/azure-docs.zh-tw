@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561748"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226307"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權
 
@@ -237,7 +237,7 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>為前端應用程式啟用驗證和授權
 
-請遵循前端應用程式的相同步驟，但略過最後一個步驟。 您的前端應用程式不需要用戶端識別碼。
+請遵循後端應用程式的相同步驟，但略過最後一個步驟。 您的前端應用程式不需要用戶端識別碼。
 
 如果您想要，瀏覽至 `http://<front-end-app-name>.azurewebsites.net`。 它此時應會將您導向至安全的登入頁面。 登入之後，您仍無法從後端應用程式存取資料，因為您還需要完成三項動作：
 

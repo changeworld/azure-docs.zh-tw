@@ -4,16 +4,16 @@ description: 提供 Azure Data Lake Storage Gen2 概觀
 author: normesta
 ms.service: storage
 ms.topic: overview
-ms.date: 10/11/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580437"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920989"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 簡介
 
@@ -41,7 +41,7 @@ Data Lake Storage Gen2 的基礎部分是新增至 Blob 儲存體的[階層命�
 
 -   **POSIX 權限的超集合**：Data Lake Gen2 的安全性模型可支援 ACL 和 POSIX 權限，以及一些 Data Lake Storage Gen2 特有的額外細微性。 這些設定可透過儲存體總管或 Hive 和 Spark 這類架構來配置。
 
--   **符合成本效益**：Data Lake Storage Gen2 提供低成本儲存體容量和異動功能。 隨著資料在整個生命週期中進行轉換，計費率會有所更改，透過 [Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)等內建功能將成本降到最低。
+-   **成本效益**：Data Lake Storage Gen2 提供低成本儲存體容量和異動功能。 隨著資料在整個生命週期中進行轉換，計費率會有所更改，透過 [Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)等內建功能將成本降到最低。
 
 -   **最佳化的驅動程式**：ABFS 驅動程式已針對巨量資料分析完成[特別最佳化](data-lake-storage-abfs-driver.md)。 相應的 REST API 透過端點 `dfs.core.windows.net` 呈現。
 
@@ -66,30 +66,23 @@ Data Lake Storage Gen2 是巨量資料分析的額外功能，建置在 Azure Bl
 | Blobs – 一般用途物件儲存體 | 容器              | 虛擬目錄 (僅限 SDK – 不提供不可部分完成操作) | Blob           |
 | Azure Data Lake Storage Gen2 – 分析儲存體          | 容器            | 目錄                                                           | 檔案           |
 
+## <a name="supported-blob-storage-features"></a>支援的 Blob 儲存體功能
+
+Blob 儲存體功能 (例如 [診斷記錄](../common/storage-analytics-logging.md)、 [存取層](storage-blob-storage-tiers.md)和  [Blob 儲存體生命週期管理原則](storage-lifecycle-management-concepts.md)) 現已可與具有階層式命名空間的帳戶搭配運作。 因此，您可以在 Blob 儲存體帳戶上啟用階層式命名空間，而不會失去這些功能的存取權。 
+
+如需支援的 Blob 儲存體功能清單，請參閱 [Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md)。
+
+## <a name="supported-azure-service-integrations"></a>支援的 Azure 服務整合
+
+Data Lake Storage gen2 支援數個 Azure 服務，可用於內嵌資料、執行分析，以及建立視覺表示法。 如需支援的 Azure 服務清單，請參閱[支援 Azure Data Lake Storage Gen2 的 Azure 服務](data-lake-storage-supported-azure-services.md)。
+
 ## <a name="supported-open-source-platforms"></a>支援的開放原始碼平台
 
-數個開放原始碼平台支援 Data Lake Storage Gen2。 這些平台會顯示在下表中。
+數個開放原始碼平台支援 Data Lake Storage Gen2。 如需完整清單，請參閱[支援 Azure Data Lake Storage Gen2 的開放原始碼平台](data-lake-storage-supported-open-source-platforms.md)。
 
-> [!NOTE]
-> 僅支援此資料表中顯示的版本。
+## <a name="see-also"></a>另請參閱
 
-| 平台 |  支援的版本 | 相關資訊 |
-| --- | --- | --- |
-| [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6+ | [可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Apache Hadoop 版本封存](https://hadoop.apache.org/release.html) |
-| [Cloudera](https://www.cloudera.com/) | 6.1+ | [Cloudera Enterprise 6.x 版本資訊](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Databricks Runtime 版本](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [設定雲端資料存取](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) \(英文\) |
-
-## <a name="supported-azure-services"></a>支援的 Azure 服務
-
-Data Lake Storage gen2 支援數個 Azure 服務，可用於內嵌資料、執行分析，以及建立視覺表示法。 如需支援的 Azure 服務清單，請參閱[整合 Azure Data Lake Storage 與 Azure 服務](data-lake-storage-integrate-with-azure-services.md)。
-
-## <a name="next-steps"></a>後續步驟
-
-下列文章說明 Data Lake Storage Gen2 的一些主要概念，並詳述如何儲存、存取與管理資料，以及取得資料見解：
-
-- [階層式命名空間](data-lake-storage-namespace.md)
-- [建立儲存體帳戶](data-lake-storage-quickstart-create-account.md)
+- [Azure Data Lake Storage Gen2 的已知問題](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage 上的多重通訊協定存取](data-lake-storage-multi-protocol-access.md)
-- [整合 Azure Data Lake Storage 與 Azure 服務](data-lake-storage-integrate-with-azure-services.md)
+
+

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 40846de9ee8eec3225a05e3c2c68c3ad5af02042
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201011"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251129"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 
@@ -39,6 +39,8 @@ ms.locfileid: "77201011"
 針對 Azure 儲存體帳戶：
 - 需要寫入權限，才能變更設定的儲存體帳戶，無論匯出的權限為何。
 - 您的 Azure 儲存體帳戶必須針對 Blob 或檔案儲存體進行設定。
+
+如果您有新的訂用帳戶，就無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com/)。

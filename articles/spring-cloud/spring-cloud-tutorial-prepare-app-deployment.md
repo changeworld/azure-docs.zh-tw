@@ -6,16 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: af3611e4c4d1f5d8ca52b3ceb80d79dcfd7d2061
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190746"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200017"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
 本快速入門會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
+
+其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
+* [使用 Azure 入口網站啟動應用程式](spring-cloud-quickstart-launch-app-portal.md)
+* [使用 Azure CLI 啟動應用程式](spring-cloud-quickstart-launch-app-cli.md)
+
+本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 
 ## <a name="java-runtime-version"></a>Java 執行階段版本
 
@@ -25,16 +31,18 @@ Azure Spring Cloud 支援 Java 8 和 Java 11。 裝載環境會包含適用於 A
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot 和 Spring Cloud 版本
 
-Azure Spring Cloud 僅支援 Spring Boot 應用程式。 其支援 Spring Boot 2.1 版和 2.2 版。 下表列出支援的 Spring Boot 和 Spring Cloud 組合：
+若要準備現有的 Spring Boot 應用程式部署至 Azure Spring Cloud，請在應用程式 POM 檔案中納入 Spring Boot 和 Spring Cloud 相依性，如下列各節所示。
+
+Azure Spring Cloud 僅支援 Spring Boot 應用程式 (Spring Boot 2.1 版或 2.2 版)。 下表列出支援的 Spring Boot 和 Spring Cloud 組合：
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.RELEASE
 
-根據您的 Spring Boot 版本，確認 pom.xml 檔案具有正確的 Spring Boot 和 Spring Cloud 相依性。
-
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 2.1 版的相依性
+
+針對 Spring Boot 2.1 版，請將下列相依性新增至應用程式 POM 檔案。
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -60,6 +68,8 @@ Spring Boot 版本 | Spring Cloud 版本
 
 ### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot 2.2 版的相依性
 
+針對 Spring Boot 2.2 版，請將下列相依性新增至應用程式 POM 檔案。
+
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
@@ -84,7 +94,7 @@ Spring Boot 版本 | Spring Cloud 版本
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 用戶端相依性
 
-Azure Spring Cloud 會為您裝載和管理 Spring Cloud 元件。 這類元件包含 Spring Cloud Service Registry 和 Spring Cloud Config Server。 在您的相依性中包含 Azure Spring Cloud 用戶端程式庫，以允許和您 Azure Spring Cloud 服務執行個體之間的通訊。
+Azure Spring Cloud 會裝載和管理 Spring Cloud 元件。 這些元件包含 Spring Cloud Service Registry 和 Spring Cloud Config Server。 在您的相依性中包含 Azure Spring Cloud 用戶端程式庫，以允許和您 Azure Spring Cloud 服務執行個體之間的通訊。
 
 下表列出適用於應用程式且使用 Spring Boot 和 Spring Cloud 的正確 Azure Spring Cloud 版本。
 
@@ -97,6 +107,8 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud 2.1 版的相依性
 
+針對 Spring Boot 2.1 版，請將下列相依性新增至應用程式 POM 檔案。
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -106,6 +118,8 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 ```
 
 ### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud 2.2 版的相依性
+
+針對 Spring Boot 2.2 版，請將下列相依性新增至應用程式 POM 檔案。
 
 ```xml
 <dependency>
@@ -117,7 +131,33 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 
 ## <a name="other-required-dependencies"></a>其他必要的相依性
 
-若要啟用 Azure Spring Cloud 的內建功能，您的應用程式必須包含下列相依性。 如果有包含，便能確保您的應用程式能針對每個元件正確自我設定。  
+若要啟用 Azure Spring Cloud 的內建功能，您的應用程式必須包含下列相依性。 如果有包含，便能確保您的應用程式能針對每個元件正確自我設定。
+
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 註釋
+
+將下列註釋新增至應用程式原始程式碼。
+```java
+@EnableDiscoveryClient
+```
+例如，請查看先前範例中的 piggymetrics 應用程式：
+```java
+package com.piggymetrics.gateway;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableZuulProxy
+
+public class GatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
+}
+```
 
 ### <a name="service-registry-dependency"></a>Service Registry 相依性
 
@@ -175,6 +215,13 @@ Service Registry 伺服器的端點會自動搭配您的應用程式插入為環
 ```
 
  您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 請閱讀[關於分散式追蹤的教學課程](spring-cloud-tutorial-distributed-tracing.md)，以了解如何搭配使用 Application Insights 與 Azure Spring Cloud。
+
+## <a name="see-also"></a>另請參閱
+* [分析應用程式記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [設定您的 Config Server](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
+* [搭配使用分散式追蹤與 Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Spring 快速入門指南](https://spring.io/quickstart)
+* [Spring Boot 文件](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>後續步驟
 

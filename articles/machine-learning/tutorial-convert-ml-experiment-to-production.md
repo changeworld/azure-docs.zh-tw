@@ -7,20 +7,21 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 7f5e24261fd5d006004a51186e22f6bfe1b8ab32
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301840"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教學課程：將 ML 實驗性程式碼轉換為實際執行程式碼
 
-機器學習專案需要實驗，其中的假設會透過敏捷式工具 (例如 Jupyter Notebook) 使用實際資料集進行測試。 模型準備好用於生產後，應該將模型程式碼放入實際執行程式碼存放庫。 在某些情況下，必須將模型程式碼轉換成 Python 指令碼，才能放入實際執行程式碼存放庫。 本教學課程涵蓋如何將實驗程式碼匯出至 Python 指令碼的建議方法。  
+機器學習專案需要實驗，其中的假設會透過敏捷式工具 (例如 Jupyter Notebook) 使用實際資料集進行測試。 模型準備好用於生產後，應該將模型程式碼放入實際執行程式碼存放庫。 在某些情況下，必須將模型程式碼轉換成 Python 指令碼，才能放入實際執行程式碼存放庫。 本教學課程涵蓋如何將實驗程式碼匯出至 Python 指令碼的建議方法。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 清除非必要的程式碼
 > * 將 Jupyter Notebook 程式碼重構為函式
 > * 建立相關工作的 Python 指令碼
@@ -41,7 +42,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
- 
+
 X, y = load_diabetes(return_X_y=True)
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -64,13 +65,15 @@ joblib.dump(value=reg, filename=model_name)
 ## <a name="refactor-code-into-functions"></a>將程式碼重構為函式
 
 第二，Jupyter 程式碼必須重構為函式。 將程式碼重構為函式可簡化單元測試，並使程式碼更容易維護。 在本節中，您將會重構：
+
 - 糖尿病脊迴歸訓練 Notebook (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - 糖尿病脊迴歸評分 Notebook (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>將糖尿病脊迴歸訓練 Notebook 重構為函式
+
 在 `experimentation/Diabetes Ridge Regression Training.ipynb` 中，完成下列步驟：
 
-1. 建立名為 `train_model` 的函式，此函式會採用 `data` 和 `alpha` 參數並傳回模型。 
+1. 建立名為 `train_model` 的函式，此函式會採用 `data` 和 `alpha` 參數並傳回模型。
 1. 將「在訓練集上定型模型」和「在驗證集上驗證模型」標題下的程式碼複製到 `train_model` 函式中。
 
 `train_model` 函式應如下列程式碼所示：
@@ -106,7 +109,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -147,7 +150,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -163,6 +166,7 @@ main()
 ```
 
 ### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>將糖尿病脊迴歸評分 Notebook 重構為函式
+
 在 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 中，完成下列步驟：
 
 1. 建立稱為 `init` 的新函式，此函式不會採用任何參數，也不會傳回任何內容。
@@ -212,6 +216,7 @@ request_header = {}
 prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
+
 先前的程式碼會設定 `raw_data` 和 `request_header`變數、呼叫具有 `raw_data` 和 `request_header` 的 `run` 函式，然後列印預測。
 
 重構之後，`experimentation/Diabetes Ridge Regression Scoring.ipynb` 應如下列程式碼所示 (不含 Markdown)：
@@ -242,11 +247,14 @@ print("Test result: ", prediction)
 ```
 
 ## <a name="combine-related-functions-in-python-files"></a>合併 Python 檔案中的相關函式
+
 第三，必須將相關函式合併到 Python 檔案中，以便更妥善地協助重複使用程式碼。 在本節中，您將會為下列 Notebook 建立 Python 檔案：
+
 - 糖尿病脊迴歸訓練 Notebook (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - 糖尿病脊迴歸評分 Notebook (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>建立糖尿病脊迴歸訓練 Notebook 的 Python 檔案
+
 在命令提示字元中執行下列陳述式，以將 Notebook 轉換成可執行的指令碼，其會使用 nbconvert 套件和 `experimentation/Diabetes Ridge Regression Training.ipynb` 的路徑：
 
 ```
@@ -274,7 +282,7 @@ def train_model(data, alpha):
 def main():
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -292,6 +300,7 @@ main()
 在 MLOpsPython 存放庫的 `diabetes_regression/training` 目錄中找到的 `train.py` 檔案可支援命令列引數 (也就是 `build_id`、`model_name` 和 `alpha`)。 您可將命令列引數的支援新增至 `train.py` 檔案，以支援動態模型名稱和 `alpha` 值，但程式碼不一定要執行成功。
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>建立糖尿病脊迴歸評分 Notebook 的 Python 檔案
+
 在命令提示字元中執行下列陳述式，以將 Notebook 轉換成可執行的指令碼，其會使用 nbconvert 套件和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 的路徑：
 
 ```
@@ -344,11 +353,13 @@ def init():
 ```
 
 ## <a name="create-unit-tests-for-each-python-file"></a>建立每個 Python 檔案的單元測試
+
 第四，必須為每個 Python 檔案建立單元測試，讓程式碼更強固且更容易維護。 在本節中，您將為 `train.py` 中的其中一個函式建立單元測試。
 
-`train.py` 包含兩個函式：`train_model` 和 `main`。 每個函式都需要單元測試，但在本教學課程中，我們只會使用 Pytest 架構來為 `train_model` 函式建立單一單元測試。  Pytest 不是唯一的 Python 單元測試架構，但是最常使用的架構之一。 如需詳細資訊，請瀏覽 [Pytest](https://pytest.org)。
+`train.py` 包含兩個函式：`train_model` 和 `main`。 每個函式都需要單元測試，但在本教學課程中，我們只會使用 Pytest 架構來為 `train_model` 函式建立單一單元測試。 Pytest 不是唯一的 Python 單元測試架構，但是最常使用的架構之一。 如需詳細資訊，請瀏覽 [Pytest](https://pytest.org)。
 
 單元測試通常包含三個主要動作：
+
 - 排列物件 - 建立和設定必要的物件
 - 對物件採取動作
 - 判斷提示預期的結果
@@ -379,29 +390,40 @@ class TestTrain:
 ```
 
 ## <a name="use-your-own-model-with-mlopspython-code-template"></a>使用您自己的模型搭配 MLOpsPython 程式碼範本
-如果您已遵循本指南中的步驟操作，您會有一組指令碼，其與 MLOpsPython 存放庫中可用的定型/評分/測試指令碼相互關聯。  根據以上所述的結構，下列步驟將逐步解說針對您自己的機器學習專案使用這些檔案所需的動作：  
 
-1.  遵循使用者入門指南
-2.  取代訓練程式碼
-3.  取代評分程式碼
-4.  更新評估程式碼
+如果您已遵循本指南中的步驟操作，您會有一組指令碼，其與 MLOpsPython 存放庫中可用的定型/評分/測試指令碼相互關聯。  根據以上所述的結構，下列步驟將逐步解說針對您自己的機器學習專案使用這些檔案所需的動作：
+
+1. 遵循 MLOpsPython [使用者入門](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)指南
+2. 遵循 MLOpsPython [啟動程序指示](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)，以建立您的專案起點
+3. 取代訓練程式碼
+4. 取代評分程式碼
+5. 更新評估程式碼
 
 ### <a name="follow-the-getting-started-guide"></a>遵循使用者入門指南
-必須遵循快速入門手冊，支援的基礎結構和管線才能執行 MLOpsPython。  我們建議在放入自己的程式碼之前，先依現狀部署 MLOpsPython 程式碼，以確保結構和管線運作正常。  讓自己熟悉存放庫的程式碼結構也很有用。
+必須遵循[使用者入門](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)指南，支援的基礎結構和管線才能執行 MLOpsPython。
+
+### <a name="follow-the-bootstrap-instructions"></a>遵循啟動程序指示
+
+[MLOpsPython 存放庫中的啟動程序](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)指南可協助您快速準備專案的存放庫。
+
+**注意：** 由於啟動程序指令碼會將 diabetes_regression 資料夾重新命名為您所選擇的專案名稱，因此在涉及路徑時，我們會將您的專案稱為 `[project name]`。
 
 ### <a name="replace-training-code"></a>取代訓練程式碼
-必須取代用來定型模型的程式碼，並移除或取代對應的單元測試，讓解決方案能搭配您自己的程式碼運作。  請特別遵循下列步驟：
 
-1. 取代 `diabetes_regression\training\train.py`。 此指令碼會在本機或 Azure ML 計算上定型您的模型。
-1. 移除或取代在 `tests/unit/code_test.py` 中找到的訓練單元測試
+必須取代用來定型模型的程式碼，並移除或取代對應的單元測試，讓解決方案能搭配您自己的程式碼運作。 請特別遵循下列步驟：
+
+1. 取代 `[project name]/training/train.py`。 此指令碼會在本機或 Azure ML 計算上定型您的模型。
+1. 移除或取代在 `[project name]/training/test_train.py` 中找到的訓練單元測試
 
 ### <a name="replace-score-code"></a>取代評分程式碼
-為了讓模型提供即時推斷功能，必須取代評分代碼。 MLOpsPython 範本會使用評分程式碼來部署模型，以對 ACI、AKS 或 Web 應用程式進行即時評分。  如果您想要保留評分，請取代 `diabetes_regression/scoring/score.py`。
+
+為了讓模型提供即時推斷功能，必須取代評分代碼。 MLOpsPython 範本會使用評分程式碼來部署模型，以對 ACI、AKS 或 Web 應用程式進行即時評分。 如果您想要保留評分，請取代 `[project name]/scoring/score.py`。
 
 ### <a name="update-evaluation-code"></a>更新評估程式碼
-MLOpsPython 範本會使用 evaluate_model 指令碼，以根據均方差來比較新定型模型和目前生產模型的效能。 如果新定型模型的效能優於目前的生產模型，則管線會繼續進行。 否則，管線就會停止。 若要繼續評估，請以您想要的計量取代 `diabetes_regression/evaluate/evaluate_model.py` 中的所有 `mse` 執行個體。 
 
-若要清除評估，請將 `.pipelines\diabetes_regression-variables` 中的 DevOps 管線變數 `RUN_EVALUATION` 設定為 `false`。
+MLOpsPython 範本會使用 evaluate_model 指令碼，以根據均方差來比較新定型模型和目前生產模型的效能。 如果新定型模型的效能優於目前的生產模型，則管線會繼續進行。 否則會取消管線。 若要繼續評估，請以您想要的計量取代 `[project name]/evaluate/evaluate_model.py` 中的所有 `mse` 執行個體。
+
+若要清除評估，請將 `.pipelines/[project name]-variables-template.yml` 中的 DevOps 管線變數 `RUN_EVALUATION` 設定為 `false`。
 
 ## <a name="next-steps"></a>後續步驟
 

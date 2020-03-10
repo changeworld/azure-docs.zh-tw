@@ -1,6 +1,6 @@
 ---
 title: 原始檔控制整合
-description: SQL 資料倉儲搭配原生原始檔控制整合與 Azure Repos (Git 和 GitHub) 後的企業級資料庫 DevOps 體驗。
+description: 適用於 SQL 集區的企業級資料庫 DevOps 體驗，並搭配使用 Azure Repos (Git 和 GitHub) 的原生原始檔控制整合。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720022"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198200"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 資料倉儲的原始檔控制整合
+# <a name="source-control-integration-for-sql-pool"></a>SQL 集區的原始檔控制整合
 
-本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是使用 SQL 資料倉儲建立持續整合和部署管線的第一個步驟。 
+本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是在 Azure Synapse Analytics 中為 SQL 集區資源建置持續整合和部署管線的第一個步驟。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -49,7 +49,7 @@ ms.locfileid: "76720022"
 
    ![建立新專案](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "建立新專案")  
 
-2. 以滑鼠右鍵按一下空白的 sqlproject，並將資料倉儲匯入資料庫專案
+2. 以滑鼠右鍵按一下空白的 sqlproject，並將資料倉儲匯入資料庫專案中
 
    ![匯入專案](media/sql-data-warehouse-source-control-integration/6-import-new-project.png "匯入專案")  
 
@@ -81,4 +81,4 @@ ms.locfileid: "76720022"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure SQL 資料倉儲的開發](sql-data-warehouse-overview-develop.md)
+- [SQL 集區的開發](sql-data-warehouse-overview-develop.md)

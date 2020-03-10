@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768449"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300992"
 ---
 ## <a name="prepare-your-web-app"></a>準備您的 Web 應用程式
 
-若要將自訂 SSL 憑證 (第三方憑證或 App Service 憑證) 繫結至 Web 應用程式，[App Service 方案](https://azure.microsoft.com/pricing/details/app-service/)必須為**基本**、**標準**、**進階**或**隔離**層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
+若要為您的 App Service 應用程式建立自訂安全性繫結或啟用用戶端憑證，您的[App Service 方案](https://azure.microsoft.com/pricing/details/app-service/)必須使用**基本**、**標準**、**進階**或**隔離**層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 

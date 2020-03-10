@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992327"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919663"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>快速入門：使用適用於 Ruby 的文字分析用戶端程式庫
 
@@ -39,12 +39,11 @@ ms.locfileid: "76992327"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Ruby](https://www.ruby-lang.org/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
+    * 您可以使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-text-analytics-azure-resource"></a>建立文字分析 Azure 資源 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>建立新的 Ruby 應用程式
 

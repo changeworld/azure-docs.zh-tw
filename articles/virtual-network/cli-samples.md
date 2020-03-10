@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: ff1017c8a6bc3c2806da6ea2a53b931aaf28644f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ce10cf37b61b0269e6c8f2279b8814d9dc4a4f9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092104"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271211"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>虛擬網路的 Azure CLI 範例
 
@@ -34,3 +34,4 @@ ms.locfileid: "74092104"
 | [篩選輸入和輸出 VM 網路流量](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | 建立具有前端和後端子網路的虛擬網路。 傳輸至前端子網路的輸入網路流量限制為 HTTP、HTTPS 和 SSH。 不允許從後端子網路傳輸至網際網路的輸出流量。 |
 |[設定具有 Basic Load Balancer 的 IPv4 + IPv6 雙重堆疊虛擬網路](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|部署包含兩個 VM 和一個具備 IPv4 與 IPv6 公用 IP 位址的 Azure Basic Load Balancer 的雙重堆疊 (IPv4 + IPv6) 虛擬網路。 |
 |[設定具有 Standard Load Balancer 的 IPv4 + IPv6 雙重堆疊虛擬網路](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|部署包含兩個 VM 和一個具備 IPv4 與 IPv6 公用 IP 位址的 Azure Standard Load Balancer 的雙重堆疊 (IPv4 + IPv6) 虛擬網路。 |
+|[教學課程：建立和測試 NAT 閘道 - Azure CLI](../virtual-network/tutorial-create-validate-nat-gateway-cli.md)|使用來源和目的地虛擬機器建立及驗證 NAT 閘道。 |

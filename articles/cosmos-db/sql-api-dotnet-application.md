@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587459"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274082"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 
@@ -171,6 +171,38 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 完成這些步驟後，請將 Visual Studio 中的所有 cshtml  文件關閉，您稍後會回頭使用這些檢視。
 
+### <a name="initialize-services"></a>宣告並初始化服務
+
+首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDBService` 的類別和名為 `ICosmosDBService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
+
+1. 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Services*。
+
+1. 以滑鼠右鍵按一下 [Services]  資料夾，選取 [新增]   > [類別]  。 將新的類別命名為 *CosmosDBService*，然後選取 [新增]  。
+
+1. 以下列程式碼取代 *CosmosDBService.cs* 的內容：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
+
+1. 以滑鼠右鍵按一下 [Services]  資料夾，選取 [新增]   > [類別]  。 將新的類別命名為 *ICosmosDBService*，然後選取 [新增]  。
+
+1. 將下列程式碼新增至 *ICosmosDBService* 類別：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
+
+1. 開啟解決方案中的 *Startup.cs* 檔案，並將 `ConfigureServices` 方法取代為：
+
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+
+    此步驟中的程式碼會根據組態將用戶端初始化為 Singleton 執行個體，以透過 [ASP.NET Core 中的相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)來插入。
+
+1. 在相同的檔案中，新增以下方法 **InitializeCosmosClientInstanceAsync**，以讀取組態並初始化用戶端。
+
+   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+
+1. 在專案的 *appsettings.json* 檔案中定義設定，如下列程式碼片段所示：
+
+   :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
+
 ### <a name="add-a-controller"></a>新增控制器
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Controllers]  資料夾，選取 [新增]   > [控制器]  。
@@ -189,62 +221,15 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 我們也會在方法參數上使用 **Bind** 屬性，以協助防範 over-posting 攻擊。 如需詳細資訊，請參閱[教學課程：使用 ASP.NET MVC 中的 Entity Framework 來實作 CRUD 功能][Basic CRUD Operations in ASP.NET MVC]。
 
-## <a name="connect-to-cosmosdb"></a>步驟 5：連線至 Azure Cosmos DB
-
-我們已經建立了標準的 MVC 項目，現在可以開始新增程式碼以便連線至 Azure Cosmos DB 並執行 CRUD 作業。
-
-### <a name="perform-crud-operations"></a>對資料執行 CRUD 作業
-
-首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDBService` 的類別和名為 `ICosmosDBService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
-
-1. 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Services*。
-
-1. 以滑鼠右鍵按一下 [Services]  資料夾，選取 [新增]   > [類別]  。 將新的類別命名為 *CosmosDBService*，然後選取 [新增]  。
-
-1. 以下列程式碼取代 *CosmosDBService.cs* 的內容：
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
-
-1. 重複先前兩個步驟，但這次請使用名稱 *ICosmosDBService*，並使用下列程式碼：
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
-
-1. 在 **ConfigureServices** 處理常式中，新增以下這一行：
-
-    ```csharp
-    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
-    ```
-
-    先前步驟中的程式碼會接收 `CosmosClient` 作為建構函式的一部分。 在 ASP.NET Core 管線之後，我們需要移至專案的 *Startup.cs* 檔案。 此步驟中的程式碼會根據組態將用戶端初始化為 Singleton 執行個體，以透過 [ASP.NET Core 中的相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)來插入。
-
-1. 在相同的檔案中，新增以下方法 **InitializeCosmosClientInstanceAsync**，以讀取組態並初始化用戶端。
-
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
-
-1. 在專案的 *appsettings.json* 檔案中定義組態。 開啟該檔案並新增名為 **CosmosDb** 的區段：
-
-   ```csharp
-     "CosmosDb": {
-        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
-        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
-        "DatabaseName": "Tasks",
-        "ContainerName": "Items"
-      }
-   ```
-
-如果您執行應用程式，ASP.NET Core 的管線會具現化 **CosmosDbService**，並將單一執行個體當作 Singleton 維護。 當 **ItemController** 處理用戶端要求時，它會接收此單一執行個體，並可將它用於 CRUD 作業。
-
-如果建置並立即執行此專案，您現在應該會看到如下的內容：
-
-![本資料庫教學課程所建立待辦事項清單 Web 應用程式的螢幕擷取畫面](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
-
-## <a name="run-the-application"></a>步驟 6：在本機執行應用程式
+## <a name="run-the-application"></a>步驟 5：在本機執行應用程式
 
 若要在本機電腦測試應用程式，請使用下列步驟：
 
-1. 在 Visual Studio 中選取 F5，即可在偵錯模式下建置應用程式。 這樣應該可以建置應用程式，並啟動含有先前所看過之空白方格頁面的瀏覽器：
+1. 在 Visual Studio 中按 F5，即可在偵錯模式下建置應用程式。 這樣應該可以建置應用程式，並啟動含有先前所看過之空白方格頁面的瀏覽器：
 
    ![本教學課程所建立待辦事項清單 Web 應用程式的螢幕擷取畫面](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+   
+   如果應用程式改為在開啟後進入首頁，請將 `/Item` 附加至 URL。
 
 1. 選取 [新建]  連結，並在 [名稱]  和 [描述]  欄位中新增值。 讓 [已完成]  核取方塊保持未選取狀態。 如果您選取它，則應用程式會新增已完成狀態的項目。 此項目不再出現於初始清單。
 
@@ -260,7 +245,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 完成測試應用程式後，選取 Ctrl + F5 停止偵錯應用程式。 您現在可以開始進行部署。
 
-## <a name="deploy-the-application-to-azure"></a>步驟 7：部署應用程式
+## <a name="deploy-the-application-to-azure"></a>步驟 6：部署應用程式
 
 您已經擁有可在 Azure Cosmos DB 正常運作的完整應用程式，我們現在要將此 Web 應用程式部署至 Azure App Service。  
 

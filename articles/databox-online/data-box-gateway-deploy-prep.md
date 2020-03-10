@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438650"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303200"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教學課程：準備部署 Azure Data Box Gateway
 
@@ -94,7 +94,7 @@ ms.locfileid: "75438650"
     - 或者，位於以下 RUL 的 Azure Government 入口網站：[https://portal.azure.us](https://portal.azure.us)。 如需詳細資訊，請移至[使用入口網站連線到 Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
 2. 在左窗格中，選取 [+ 建立資源]  。 搜尋 **Data Box Edge / Data Box Gateway**。 選取 Data Box Edge / Data Box Gateway。 選取 [建立]  。
-3. 挑選您要用於 Data Box Gateway 裝置的訂用帳戶。 選取您要部署 Data Box Gateway 資源的區域。 此版本適用於美國東部、東南亞和西歐等區域。 請選擇與您要部署裝置的地理區域最接近的位置。 在 [Data Box Gateway]  選項中，選取 [建立]  。
+3. 挑選您要用於 Data Box Gateway 裝置的訂用帳戶。 選取您要部署 Data Box Gateway 資源的區域。 如需 Azure Stack Edge 適用區域的完整清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 請選擇與您要部署裝置的地理區域最接近的位置。 在 [Data Box Gateway]  選項中，選取 [建立]  。
 
     ![搜尋資料箱閘道服務](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "75438650"
     |設定  |值  |
     |---------|---------|
     |名稱   | 可識別資源的易記名稱。<br>此名稱介於 2 到 50 個字元之間，並且可包含字母、數字和連字號。<br> 名稱必須以字母或數字為開頭或結尾。        |   
-    |區域     |此版本適用於在美國東部、東南亞和西歐等區域部署您的資源。 針對 Azure Government，列在 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)中的所有政府區域都適用。 <br> 請選擇與您要部署裝置的地理區域最接近的位置。|
+    |區域     |如需 Azure Stack Edge 適用區域的完整清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 針對 Azure Government，列在 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)中的所有政府區域都適用。 <br> 請選擇與您要部署裝置的地理區域最接近的位置。|
     
     ![建立資料箱閘道資源](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

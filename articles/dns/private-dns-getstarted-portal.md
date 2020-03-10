@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939375"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244955"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 私人 DNS 區域
 
@@ -48,7 +48,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
 1. 在 [建立私人 DNS 區域]  頁面上，輸入或選取下列值：
 
-   - **資源群組**：選取 [新建]  ，輸入*MyAzureResourceGroup*，然後選取 [確定]  。 資源群組名稱在 Azure 訂用帳戶中必須是唯一的。 
+   - **資源群組**：選取 [新建]  ，輸入*MyAzureResourceGroup*，然後選取 [確定]  。 資源群組名稱在 Azure 訂用帳戶中必須是唯一的。
    -  **Name**：針對此範例，輸入 private.contoso.com  。
 1. 針對 [資源群組位置]  ，選取 [美國中西部]  。
 
@@ -58,13 +58,21 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
 建立區域可能需要幾分鐘的時間。
 
-## <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-1. 在入口網站頁面左上方，依序選取 [建立資源]  、[網路]  以及 [虛擬網路]  。
-2. 在 [名稱]  中，輸入 **myAzureVNet**。
-3. 針對 [資源群組]  ，選取 **MyAzureResourceGroup**。
-4. 針對 [位置]  選取 [美國中西部]  。
-5. 接受其他預設值，然後選取 [建立]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
+
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | MyAzureResourceGroup (選取現有的資源群組) |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | 美國中西部      |
+| **\<IPv4-address-space>**   | 10.2.0.0\16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0\24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>連結虛擬網路
 
@@ -88,9 +96,8 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 1. 針對 [資源群組]，選取 **MyAzureResourceGroup**。
 1. 輸入 **myVM01** 作為虛擬機器的名稱。
 1. 針對 [區域]  選取 [美國中西部]  。
-1. 輸入 **azureadmin** 作為系統管理員使用者名稱。
-2. 輸入 **Azure12345678** 作為密碼，並且確認密碼。
-
+1. 輸入管理員使用者的名稱。
+2. 輸入密碼並確認密碼。
 5. 針對 [公用輸入連接埠]  選取 [允許選取的連接埠]  ，然後針對 [選取輸入連接埠]  選取 [RDP (3389)]  。
 10. 接受頁面的其他預設值，然後按 **[下一步：磁碟 >]** 。
 11. 接受 [磁碟]  頁面上的其他預設值，然後按 **[下一步：網路 >]** 。

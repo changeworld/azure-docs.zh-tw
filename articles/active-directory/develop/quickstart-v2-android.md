@@ -11,23 +11,22 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: a184b035e3296f82ecdacf74a99ea7148d99bd49
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084538"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271103"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入門：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
-此快速入門將使用程式碼範例示範 Android 應用程式如何使用 Microsoft 身分識別平台來登入個人、公司或學校帳戶，然後取得存取權杖並呼叫 Microsoft Graph API。
+此快速入門將使用程式碼範例示範 Android 應用程式如何使用 Microsoft 身分識別平台來登入個人、公司或學校帳戶，然後取得存取權杖並呼叫 Microsoft Graph API。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
-應用程式必須以 Azure Active Directory 中的應用程式物件表示，好讓 Microsoft 身分識別平台可以與您的應用程式共用權杖。
+應用程式必須以 Azure Active Directory 中的應用程式物件表示，讓 Microsoft 身分識別平台能夠為您的應用程式提供權杖。
 
 > [!div renderon="docs"]
 > 為了方便起見，`AndroidManifest.xml` 檔案中的程式碼範例會隨附預先設定的預設 `redirect_uri`，因此您不需要先註冊自己的應用程式物件。 `redirect_uri` 中有某些部分是以您應用程式的簽署金鑰為基礎。 範例專案會使用簽署金鑰預先設定，讓提供的 `redirect_uri` 可以使用。 若要深入了解如何註冊應用程式物件，並將其與您的應用程式整合，請參閱[從 Android 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-android.md) 教學課程。
 
-![範例應用程式的螢幕擷取畫面](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **先決條件**
@@ -44,73 +43,14 @@ ms.locfileid: "77084538"
 > > ![已設定](media/quickstart-v2-android/green-check.png) 您的應用程式已設定了這些屬性
 >
 > ### <a name="step-2-download-the-project"></a>步驟 2:下載專案 
-> * [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Android Studio 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
-> ### <a name="step-3-configure-your-project"></a>步驟 3：設定您的專案
-> 1. 將專案解壓縮並在 Android Studio 中開啟。
-> 2. 在 **app** > **src** > **main** > **res** > **raw** 中，開啟 **auth_config_multiple_account.json**，並將其取代為下列程式碼：
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. 在 **app** > **src** > **main** > **res** > **raw** 中，開啟 **auth_config_single_account.json**，並將其取代為下列程式碼：
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. 在 **app** > **src** > **main**中，開啟 **AndroidManifest.xml**。
-> 5. 在 **manifest\application** 節點中，以下列內容取代 **activity android:name="com.microsoft.identity.client.BrowserTabActivity"** 節點：    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. 執行應用程式！   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。 
 > 範例應用程式會在 [單一帳戶模式]  畫面上啟動。 依預設會提供預設範圍 **user.read**，這是在 Microsoft Graph API 呼叫期間讀取您自己的設定檔資料時所使用的範圍。 依預設會提供 Microsoft Graph API 呼叫的 URL。 您可以視需要變更這兩項設定。
 >
 > ![顯示單一和多個帳戶使用量的 MSAL 範例應用程式](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -126,7 +66,7 @@ ms.locfileid: "77084538"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入門支援 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>步驟 1:取得範例應用程式
@@ -151,6 +91,8 @@ ms.locfileid: "77084538"
 > 在多重帳戶模式中，您可以重複相同的步驟。  此外，您也可以移除已登入的帳戶，這也會移除該帳戶的快取權杖。
 
 ## <a name="how-the-sample-works"></a>此範例的運作方式
+![範例應用程式的螢幕擷取畫面](media/quickstart-v2-android/android-intro.svg)
+
 
 程式碼會組織成片段，說明如何撰寫單一和多重帳戶 MSAL 應用程式。 程式碼檔案的組織方式如下：
 
@@ -171,7 +113,7 @@ ms.locfileid: "77084538"
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 這個程式庫是用來登入使用者並要求權杖，該權杖會用來存取受 Microsoft 身分識別平台保護的 API。 當您在 [Gradle Scripts]   > [build.gradle (Module: app)]  中的 [相依性]  底下新增以下內容時，Gradle 3.0+ 就會安裝該程式庫：
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 您可以在 build.gradle (Module: app) 的範例專案中看到此內容：
@@ -179,7 +121,7 @@ implementation 'com.microsoft.identity.client:msal:1.0.0'
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```

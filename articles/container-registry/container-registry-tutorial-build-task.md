@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何設定「Azure Container 
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6882cb683e0bd8b76bb1207e628e43f24c7b5987
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840777"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252124"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教學課程：於認可原始程式碼時在雲端自動執行容器映像建置
 
@@ -42,7 +42,9 @@ ms.locfileid: "74840777"
 
 首先，請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須手動取代命令範例中出現的每個值。
 
-```azurecli-interactive
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -208,13 +210,13 @@ Run ID: da2 was successful after 27s
 
 首先，請確定您位於[存放庫][sample-repo]的本機複本所在的目錄中：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 接著，執行下列命令以建立新檔案，然後將其認可並推送至 GitHub 上的存放庫分支：
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"

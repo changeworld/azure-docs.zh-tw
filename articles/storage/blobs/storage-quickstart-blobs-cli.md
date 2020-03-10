@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650908"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298129"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -28,6 +28,8 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+## <a name="install-the-azure-cli-locally"></a>在本機安裝 Azure CLI
+
 如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.46 版或更新版本。 執行 `az --version` 來判斷您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 如果您要在本機執行 Azure CLI，則必須登入並進行驗證。 如果您要使用 Azure Cloud Shell，則不需要執行此步驟。 若要登入 Azure CLI，請在瀏覽器視窗中執行 `az login` 並進行驗證：
@@ -36,11 +38,13 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 az login
 ```
 
+如需關於使用 Azure CLI 進行驗證的詳細資訊，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)。
+
 ## <a name="authorize-access-to-blob-storage"></a>授與 Blob 儲存體的存取權
 
 您可以使用 Azure AD 認證或使用儲存體帳戶存取金鑰，來授權從 Azure CLI 存取 Blob 儲存體。 建議您使用 Azure AD 認證。 本文說明如何使用 Azure AD 來授權 Blob 儲存體作業。
 
-針對 Blob 儲存體的資料作業 Azure CLI 命令可支援 `--auth-mode` 參數，這可讓您指定如何授權指定的作業。 將 `--auth-mode` 參數設定為 `login`，以使用 Azure AD 認證進行授權。 如需詳細資訊，請參閱 [使用 Azure AD 認證來執行 Azure CLI 命令以存取 Blob 或佇列資料](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+針對 Blob 儲存體的資料作業 Azure CLI 命令可支援 `--auth-mode` 參數，這可讓您指定如何授權指定的作業。 將 `--auth-mode` 參數設定為 `login`，以使用 Azure AD 認證進行授權。 如需詳細資訊，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 只有 Blob 儲存體資料作業可支援 `--auth-mode` 參數。 管理作業 (例如建立資源群組或儲存體帳戶) 會自動使用 Azure AD 認證來進行授權。
 
@@ -149,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不再需要資源群組中的任何資源 (包括在本快速入門中所建立的儲存體帳戶)，請使用 [az group delete](/cli/azure/group) 命令刪除資源群組。 請記得以您自己的值取代角括號中的預留位置值：
+如果您想要刪除您在本快速入門中建立的資源 (括儲存體帳戶)，請使用 [az group delete](/cli/azure/group) 命令刪除資源群組。 請記得以您自己的值取代角括號中的預留位置值：
 
 ```azurecli
 az group delete \

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure API 管理中匯入和發佈您的第一個 API | Microsoft Docs
-description: 了解如何使用 API 管理來匯入和發佈您的第一個 API。
+title: 在 Azure API 管理中匯入和發佈您的第一個 API
+description: 了解如何將 OpenAPI 規格 API 匯入至 Azure API 管理，並在 Azure 入口網站中測試您的 API。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,34 +11,33 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 02/27/2020
 ms.author: apimpm
-ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108533"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163472"
 ---
 # <a name="import-and-publish-your-first-api"></a>匯入和發佈您的第一個 API 
 
-本教學課程示範如何匯入位於 https://conferenceapi.azurewebsites.net?format=json 的「OpenAPI 規格」後端 API。 這個後端 API 是由 Microsoft 所提供且裝載於 Azure 上。 
+本教學課程說明如何以 JSON 格式將 OpenAPI 規格後端 API 匯入至 Azure API 管理。 Microsoft 會提供後端 API，並將其裝載在 Azure 上 ([https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json))。
 
-一旦將此後端 API 匯入至 API 管理 (APIM)，APIM API 就會變成適用於此後端 API 的外觀。 當您匯入此後端 API 時，來源 API 和 APIM API 會完全相同。 APIM 可讓您根據需求自訂外觀，而不需碰觸到後端 API。 如需詳細資訊，請參閱[轉換及保護您的 API](transform-api.md)。 
+當您將後端 API 匯入至 API 管理後，API 管理 API 就會成為後端 API 的外觀。 您可以依需求在 API 管理中自訂外觀，而無須存取後端 API。 如需詳細資訊，請參閱[轉換及保護您的 API](transform-api.md)。 
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 匯入第一個 API
+> * 將 API 匯入至 API 管理
 > * 在 Azure 入口網站中測試 API
-> * 在開發人員入口網站中測試 API
 
-![新增 API](./media/api-management-get-started/created-api.png)
+![新增 API](./media/api-management-import-and-publish/created-api.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-+ 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
+- 了解 [Azure API 管理術語](api-management-terminology.md)。
+- [建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -46,47 +45,44 @@ ms.locfileid: "74108533"
 
 本節示範如何匯入和發佈 OpenAPI 規格後端 API。
  
-1. 選取 [API 管理]  下方的 [API]  。
-2. 從清單中選取 [OpenAPI 規格]  ，然後在快顯視窗中按一下 [完整]  。
+1. 在 API 管理執行個體的左側導覽中，從 [API 管理]  區段中選取 [API]  。
+1. 選取 [OpenAPI]  磚，然後在快顯畫面上選取 [完整]  。
+1. 在 [從 OpenAPI 規格建立]  畫面上，使用下表中的值建立您的 API。
+   
+   表單上的欄位旁若有紅色星號，表示此為必要欄位。 您可以在建立期間或稍後前往 [設定]  索引標籤設定 API 值。 
+   
+   ![建立 API](./media/api-management-import-and-publish/create-api.png)
+   
+   |設定|值|描述|
+   |-------|-----|-----------|
+   |**OpenAPI 規格**|*https:\//conferenceapi.azurewebsites.net?format=json*|實作 API 的服務。 API 管理則將要求轉送至此位址。|
+   |**顯示名稱**|在您輸入先前的服務 URL 後，API 管理會根據 JSON 填入此欄位。|名稱會顯示於開發人員入口網站中。|
+   |**名稱**|在您輸入先前的服務 URL 後，API 管理會根據 JSON 填入此欄位。|API 的唯一名稱。|
+   |**說明**|在您輸入先前的服務 URL 後，API 管理會根據 JSON 填入此欄位。|API 的選擇性描述。|
+   |**URL 配置**|**HTTPS**|可使用哪些通訊協定來存取 API。|
+   |**API URL 尾碼**|*conference*|尾碼會附加至 API 管理服務的基底 URL。 API 管理會依尾碼來區分 API，因此，特定發行者的每個 API 都必須有唯一的尾碼。|
+   |**產品**|**無限制**|一或多個 API 的關聯。 每個 API 管理執行個體會隨附兩個範例產品：[入門]  和 [無限制]  。 您可以將 API 與產品 (在此範例中為 [無限制]  ) 產生關聯，以發佈 API。<br/>您可以將數個 API 納入產品中，並透過開發人員入口網站將其提供給開發人員。 若要將此 API 新增至另一個產品，請輸入或選取產品名稱。 重複此步驟，將 API 新增至多個產品。 您稍後也可以從 [設定]  頁面，將 API 新增至產品。<br/>為了取得 API 的存取權，開發人員必須先訂閱產品。 當他們訂閱時，就能取得適用於該產品中任何 API 適用的訂用帳戶金鑰。 <br/>如果您建立了 APIM 執行個體，您就已經是系統管理員，因此您已訂閱執行個體中的每個產品。|
+   |**Tags** (標籤)| |標籤可用來組織用於搜尋、分組或篩選的 API。|
+   |**要為此 API 設定版本嗎?**|選取或取消選取|如需版本設定的詳細資訊，請參閱[發佈多個 API 版本](api-management-get-started-publish-versions.md)。|
+   
+   > [!NOTE]
+   > 若要發佈 API，您必須將它與產品產生關連。 您可以從 [設定]  頁面執行此作業。
+   
+1. 選取 [建立]  。
 
-    ![建立 API](./media/api-management-get-started/create-api.png)
-
-    您可以在建立期間或稍後前往 [設定]  索引標籤來設定 API 值。欄位旁的紅色星號表示此為必要欄位。
-
-    請使用下表中的值建立您的第一個 API。
-
-    | 設定                   | 值                                              | 說明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    |---------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **OpenAPI 規格** | https://conferenceapi.azurewebsites.net?format=json | 參考實作 API 的服務。 API 管理則將要求轉送至此位址。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-    | **顯示名稱**          | *Demo Conference API*                              | 如果您在輸入服務 URL 之後按下 Tab，APIM 將根據 json 中的內容填寫此欄位。 <br/>此名稱會顯示於開發人員入口網站中。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **名稱**                  | *demo-conference-api*                              | 為 API 提供唯一的名稱。 <br/>如果您在輸入服務 URL 之後按下 Tab，APIM 將根據 json 中的內容填寫此欄位。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **說明**           | 提供 API 的選擇性描述。        | 如果您在輸入服務 URL 之後按下 Tab，APIM 將根據 json 中的內容填寫此欄位。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-    | **URL 配置**            | *HTTPS*                                            | 決定可使用哪些通訊協定來存取 API。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | **API URL 尾碼**        | *conference*                                       | 這個尾碼會附加到 API 管理服務的基底 URL。 API 管理依尾碼來區分 API，因此，特定發行者的每一個 API 必須有唯一的尾碼。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **產品**              | *無限制*                                        | 產品是一或多個 API 的關聯。 您可以將數個 API 納入產品中，並透過開發人員入口網站將它們提供給開發人員。 <br/>透過將 API 關聯至某個產品來發佈 API (在此範例中為 [無限制]  )。 若要將這個新的 API 新增至產品，請輸入產品名稱 (您也可以稍後從 [設定]  頁面進行此作業)。 可以重複此步驟多次來將 API 加入多個產品。<br/>為了取得 API 的存取權，開發人員必須先訂閱產品。 當他們訂閱時，就能取得適用於該產品中任何 API 的中訂用帳戶金鑰。 <br/> 如果您建立了 APIM 執行個體，表示您已經是系統管理員，因此已訂閱每一個產品。<br/> 依預設，每個 API 管理執行個體會隨附兩個範例產品：[入門]  和 [無限制]  。 |
-    | **標記**                  |                                                    | 用來組織 API 的標記。 標記可用於搜尋、分組或篩選。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **要為此 API 設定版本嗎?**     |                                                    | 如需版本設定的詳細資訊，請參閱[發佈多個 API 版本](api-management-get-started-publish-versions.md)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-    >[!NOTE]
-    > 若要發佈 API，您必須將它與產品產生關連。 您可以從 [設定]  頁面執行此作業。
-
-3. 選取 [建立]  。
-
-> [!TIP]
-> 如果您在匯入自己的 API 定義時發生問題，請[查看已知問題和限制的清單](api-management-api-import-restrictions.md)。
+如果您在匯入 API 定義時發生問題，請參閱[已知問題和限制的清單](api-management-api-import-restrictions.md)。
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 入口網站中測試新的 API
 
-![測試 API 對應](./media/api-management-get-started/01-import-first-api-01.png)
+您可以直接從 Azure 入口網站呼叫 API 作業，此處可讓您以便利的方式檢視和測試作業。
 
-您可以從 Azure 入口網站直接呼叫作業，以便檢視和測試 API 的作業。
-
-1. 選取您在上一個步驟中建立的 API (從 [API]  索引標籤)。
-2. 按 [測試]  索引標籤。
-3. 按一下 [GetSpeakers]  。 此頁面會顯示查詢參數的欄位 (在此案例中沒有此欄位) 和標頭。 其中一個標頭是 "Ocp-Apim-Subscription-Key"，它適用於與此 API 相關聯之產品的訂用帳戶金鑰。 系統會自動填入金鑰。
-4. 按 [傳送]  。
-
-    後端會回應 **200 確定**與部分資料。
+1. 在 API 管理執行個體的左側導覽中，從 [API 管理]  區段中選取 [API]  ，然後選取 [示範會議 API]  。
+1. 選取 [測試]  索引標籤，然後選取 [Getspeakers]  。 此頁面會顯示 [查詢參數]  和 [標頭]  (如果有的話)。 針對與此 API 相關聯的訂用帳戶金鑰，會自動填入 **Ocp-Apim-Subscription-Key**。
+1. 選取 [傳送]  。
+   
+   ![測試 API 對應](./media/api-management-import-and-publish/01-import-first-api-01.png)
+   
+   後端會回應 **200 確定**與部分資料。
 
 ## <a name="next-steps"> </a>後續步驟
 
@@ -96,7 +92,7 @@ ms.locfileid: "74108533"
 > * 匯入第一個 API
 > * 在 Azure 入口網站中測試 API
 
-前進到下一個教學課程：
+繼續進行下一個教學課程，以了解如何建立和發佈產品：
 
 > [!div class="nextstepaction"]
 > [建立和發佈產品](api-management-howto-add-products.md)

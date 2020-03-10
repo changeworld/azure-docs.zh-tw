@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: dd8f8e415f2e83b6f08aa00953e42daecead7652
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9f4c5e8d491bcff420e354657ff7302a22cd7583
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77372229"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155518"
 ---
 <a name="HOLTop"></a>
 
@@ -33,8 +33,9 @@ ms.locfileid: "77372229"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Node.js](https://nodejs.org/)。
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
+    * 您可以使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 

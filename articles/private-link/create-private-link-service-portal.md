@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191090"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252554"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Private Link 服務
 
@@ -29,21 +29,22 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 首先，建立虛擬網路。 接下來，建立要搭配 Private Link 服務使用的內部負載平衡器。
 
-### <a name="create-the-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
 在本節中，您會建立虛擬網路。 您也會建立子網路，裝載可存取 Private Link 服務的負載平衡器。
 
-1. 在入口網站的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-1. 在 [建立虛擬網路]  窗格中，輸入或選取下列值：
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 美國東部 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-   - **Name**：輸入 **myVNet**。
-   - **資源群組**：選取 [新建]  ，然後輸入 myResourceGroupLB  ，然後選取 [確定]  。
-   - [子網路]   > [名稱]  ：輸入 **myBackendSubnet**。
-
-1. 選取 [建立]  。
-
-   ![建立虛擬網路](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>建立標準負載平衡器
 

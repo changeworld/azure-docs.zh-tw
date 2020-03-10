@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588734"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246021"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 NAT 閘道
 
@@ -32,27 +32,24 @@ ms.locfileid: "77588734"
 
 登入 [Azure 入口網站](https://portal.azure.com)。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-在您部署 VM 並可使用 NAT 閘道之前，我們必須先建立資源群組和虛擬網路。  
+在您部署 VM 並可使用 NAT 閘道之前，我們必須先建立資源群組和虛擬網路。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  ，或在 Marketplace 搜尋中搜尋 [虛擬網路]  。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-2. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 美國東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 **myVNet**。 |
-    | 位址空間 | 輸入 192.168.0.0/16  。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取新建 - **myResourceGroupNAT**。 |
-    | Location | 選取 [美國東部 2]  。|
-    | 子網路 - 名稱 | 輸入 mySubnet  。 |
-    | 子網路 - 位址範圍 | 輸入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 保留其餘的預設值，然後選取 [建立]  。
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>建立 VM 以使用 NAT 閘道
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>建立 VM 以使用 NAT 閘道
 
 我們現在會建立 VM 以使用 NAT 服務。 此 VM 具有公用 IP，可作為執行個體層級的公用 IP，讓您能夠存取 VM。 NAT 服務可感知流量方向，並將取代您子網路中的預設網際網路目的地。 VM 的公用 IP 位址不會用於輸出連線。
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710719"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190767"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教學課程：在 Azure Functions 中使用 Python 和 TensorFlow 來套用機器學習模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "76710719"
 瀏覽至start  資料夾，並執行下列命令以建立並啟用名為 `.venv` 的虛擬環境。 請務必使用受 Azure Functions 支援的 Python 3.7。
 
 
-# <a name="bashtabbash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ source .venv/bin/activate
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ py -m venv .venv
     func new --name classify --template "HTTP trigger"
     ```
 
-    此命令會建立符合函式名稱的資料夾，即 classify  。 該資料夾中有兩個檔案： *\_\_init\_\_.py* 包含函式程式碼，而 *function.json* 則說明函式的觸發程序及其輸入和輸出繫結。 如需這些檔案內容的詳細資訊，請參閱[在 Azure 中建立 HTTP 觸發的 Python 函式 - 檢查檔案內容](functions-create-first-function-python.md#optional-examine-the-file-contents)。
+    此命令會建立符合函式名稱的資料夾，即 classify  。 該資料夾中有兩個檔案： *\_\_init\_\_.py* 包含函式程式碼，而 *function.json* 則說明函式的觸發程序及其輸入和輸出繫結。 如需這些檔案內容的詳細資訊，請參閱 Python 快速入門中的[檢查檔案內容](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents)。
 
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
@@ -158,19 +158,19 @@ py -m venv .venv
 
 1. 在 start  資料夾中執行下列命令，將模型檔案複製到 classify  資料夾中。 請務必在命令中包含 `\*`。 
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ py -m venv .venv
 
 1. 在 start  資料夾中執行下列命令，將含有協助程式碼的檔案複製到 classify  資料夾中：
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ py -m venv .venv
 
 1. 使用 Python 啟動 HTTP 伺服器：
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

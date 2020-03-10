@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604887"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920615"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入門：使用 Python 佈建服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "77604887"
 - 簽署金鑰。 使用[建立和佈建模擬裝置](quick-create-simulated-device.md)中的步驟，或使用 SDK 提供的簽署金鑰，如下所述。
 
 > [!IMPORTANT]
-> 本文僅適用於已淘汰的 V1 Python SDK。 尚未在 V2 中提供適用於 Iot 中樞裝置佈建服務的裝置和服務用戶端。 小組目前正努力將 V2 帶至功能同位。
+> 本文僅適用於已淘汰的 V1 Python SDK。 適用於 IoT 中樞裝置佈建服務的裝置和服務用戶端尚未在 V2 中提供。 小組目前正努力將 V2 帶至功能同位。
 
 <a id="prepareenvironment"></a>
 

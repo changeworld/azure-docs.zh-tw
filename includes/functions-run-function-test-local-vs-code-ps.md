@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964067"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191000"
 ---
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
-Azure Functions Core Tools 與 Visual Studio Code 整合，可讓您在本機執行和偵錯 Azure Functions 專案。  
+Azure Functions Core Tools 與 Visual Studio Code 整合，可讓您在本機執行和偵錯 Azure Functions 專案。 如需如何在 Visual Studio Code 中進行偵錯的詳細資訊，請參閱[在本機進行 PowerShell Azure Functions 偵錯](../articles/azure-functions/functions-debug-powershell-local.md)。 
 
-1. 若要偵錯您的函式，請在您連結偵錯工具之前，先將呼叫插入函式程式碼中的 [`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) Cmdlet，然後按 F5 來啟動函式應用程式專案並連結偵錯工具。 Core Tools 的輸出會顯示在**終端機**面板中。
+1. 按 F5 鍵以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
 
 1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
 
@@ -38,9 +38,6 @@ Azure Functions Core Tools 與 Visual Studio Code 整合，可讓您在本機執
 
     ![終端機面板中的函式執行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. 若要停止偵錯，請按 Ctrl + C 來停止 Core Tools。
+1. 完成時，請按 **Ctrl + C** 來停止 Core Tools。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
-
-> [!NOTE]
-> 請記得先移除對 `Wait-Debugger` 的任何呼叫，再將函式發佈至 Azure。 

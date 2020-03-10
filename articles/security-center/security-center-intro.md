@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604062"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918752"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -39,7 +39,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 -   **加強安全性狀態**：資訊安全中心會評估您的環境，並讓您了解資源的狀態，以及資源是否安全無虞。
 
--   **抵禦威脅**：資訊安全中心會評估您的工作負載，並提出威脅預防建議和威脅偵測警示。
+-   **抵禦威脅**：資訊安全中心會評估您的工作負載，並提出威脅預防建議和安全性警示。
 
 -   **更快保障安全**：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
 
@@ -51,7 +51,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 此外，在 Windows 和 Linux 伺服器上安裝 Microsoft Monitoring Agent，資訊安全中心即可保護雲端中或內部部署上的非 Azure 伺服器和虛擬機器。 Azure 虛擬機器會自動佈建在資訊安全中心。
 
-從代理程式和從 Azure 收集的事件會在安全性分析引擎中相互關聯，為您提供量身打造應該遵循來確保工作負載安全的建議 (強化工作) 以及威脅偵測警示。 您應該儘速調查這類警示，確保您的工作負載並未遭受惡意攻擊。
+從代理程式和從 Azure 收集的事件會在安全性分析引擎中相互關聯，為您提供可據以確保工作負載安全的個人化建議 (強化工作)，以及安全性警示。 您應該儘速調查這類警示，確保您的工作負載並未遭受惡意攻擊。
 
 當您啟用資訊安全中心時，內建到資訊安全中心的安全性原則會反映在 Azure 原則中，並作為資訊安全中心類別下的內建方案。 內建方案會自動指派給所有註冊資訊安全中心的訂用帳戶 (免費或標準層)。 內建方案僅包含稽核原則。 如需有關 Azure 原則中資訊安全中心原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
 
@@ -107,9 +107,9 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 ![資訊安全中心攻擊的建議](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>進階威脅防護
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>與 Microsoft Defender 進階威脅防護整合
 
-使用資訊安全中心，您可以取得原生整合的現成 Windows Defender 進階威脅防護。 這表示不需要任何設定，Windows 虛擬機器與伺服器已與資訊安全中心的建議與評量功能完全整合。 也為 Linux 虛擬機器和伺服器提供現成的進階威脅偵測。
+資訊安全中心可與 Microsoft Defender 進階威脅防護進行自動原生整合。 這表示不需要任何設定，您的 Windows 和 Linux 機器即可與資訊安全中心的建議與評量功能完全整合。
 
 此外，資訊安全中心可讓您在伺服器環境自動化執行應用程式控制原則。 資訊安全中心的自適性應用程式控制會在所有 Windows 伺服器啟用端對端應用程式允許清單。 建立規則和檢查違規全都會自動完成，您不需要動手。
 
@@ -129,7 +129,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>保護 IoT 和混合式雲端工作負載
 
-Azure Security Center for IoT (物聯網) 透過在邊緣、內部、在 Azure 及其他雲端中執行的工作負載，提供統一的可見性和控制、調適型威脅防護，以及智慧型威脅偵測和回應，以簡化混合式工作負載保護。 如需詳細資訊，請參閱[適用於 IoT 的 Azure 資訊安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
+適用於 IoT (物聯網) 的 Azure 資訊安全中心可藉由在邊緣、內部、在 Azure 及其他雲端中執行的工作負載，提供統一的可見性和控制、調適型威脅防護，以及智慧型威脅防護和回應，以簡化混合式工作負載保護。 如需詳細資訊，請參閱[適用於 IoT 的 Azure 資訊安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
 
 ## <a name="get-secure-faster"></a>更快保障安全
 
@@ -146,6 +146,5 @@ Azure Security Center for IoT (物聯網) 透過在邊緣、內部、在 Azure �
 ## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用資訊安全中心，您需要 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/free/)。
-- 資訊安全中心的定價層已經由 Azure 訂用帳戶啟用。 若要利用進階安全性管理和威脅偵測功能，您必須升級為標準定價層。 標準層可以免費試用。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
-- 如果您準備好要立即啟用資訊安全中心標準，[快速入門：將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)將引導您逐步完成相關步驟。
-
+- 您的 Azure 訂用帳戶已啟用資訊安全中心的定價層。 若要利用進階安全性管理和威脅防護功能，您必須升級為標準定價層。 標準層可以免費試用 30 天。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+- 如果您已準備好要立即啟用資訊安全中心標準，[快速入門：將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)將引導您逐步完成相關步驟。

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061636"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204730"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache Kafka 原則 (預覽)
 
@@ -203,4 +203,4 @@ ms.locfileid: "77061636"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [將您自己的金鑰攜帶至 Apache Kafka](../kafka/apache-kafka-byok.md)
+> [客戶管理的金鑰磁碟加密](../disk-encryption.md)

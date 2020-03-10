@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298814"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -31,7 +31,7 @@ ms.locfileid: "77442117"
 3. 請確定試驗範圍中的物件已填入 ms-ds-consistencyGUID，使雲端佈建可確實比對物件。 
 
    > [!NOTE]
-   > 根據預設，Azure AD Connect 同步不會為群組物件填入 ms-ds-consistencyGUID  。 請遵循[此部落格文章](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/)中所述的步驟，為群組物件填入 ms-ds-consistencyGUID  。
+   > 根據預設，Azure AD Connect 同步不會為群組物件填入 ms-ds-consistencyGUID  。
 
 4. 這是進階案例。 請確實遵循本教學課程中記載的步驟。
 
@@ -119,7 +119,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>安裝 Azure AD Connect 佈建代理程式
 1. 以企業系統管理員權限登入您將使用的伺服器。  如果您使用[基本 AD 和 Azure 環境](tutorial-basic-ad-azure.md)教學課程，則會是 CP1。
-2. [在此](https://go.microsoft.com/fwlink/?linkid=2109037)下載 Azure AD Connect 雲端佈建代理程式。
+2. 使用[這裡](how-to-install.md#install-the-agent)所列的步驟，下載 Azure AD Connect 雲端佈建代理程式。
 3. 執行 Azure AD Connect 雲端佈建 (AADConnectProvisioningAgent.Installer)
 3. 在啟動顯示畫面上**接受**授權條款，然後按一下 [安裝]  。</br>
 ![歡迎使用畫面](media/how-to-install/install1.png)</br>

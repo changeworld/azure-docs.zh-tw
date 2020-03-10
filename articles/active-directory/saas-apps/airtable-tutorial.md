@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c8e254b2ceb040b487de1cfaac6e4d8670d8b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e0830d470d359b12c23a6cd0430075c94c7a06a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430954"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205087"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Airtable 整合
 
@@ -31,7 +30,7 @@ ms.locfileid: "75430954"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Airtable。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -46,6 +45,7 @@ ms.locfileid: "75430954"
 
 * Airtable 支援由 **SP 和 IDP** 起始的 SSO
 * Airtable 支援 **Just In Time** 使用者佈建
+* 設定 Airtable 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -93,6 +93,17 @@ ms.locfileid: "75430954"
     在 [登入 URL]  文字方塊中，輸入 URL：`https://airtable.com/sso/login`
 
 1. 按一下 [檔案]  。
+
+1. Airtable 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述屬性外，Airtable 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+
+    | 名稱 | 來源屬性|
+    | ------------ | --------- |
+    | urn:oid:2.5.4.4 | user.surname |
+    | urn:oid:2.5.4.42 | user.givenname |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -150,8 +161,8 @@ ms.locfileid: "75430954"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [搭配 Azure AD 試用 Airtable](https://aad.portal.azure.com/)

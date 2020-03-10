@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 5fe82dbce2069b0ae1a88599d020f4ba6b116027
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595285"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273784"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -34,9 +34,11 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 若要存取 AKS 節點，您可以使用 SSH 金鑰組進行連線。 使用 `ssh-keygen` 命令來產生 SSH 公開和私密金鑰檔案。 根據預設，這些檔案會建立在 *~/.ssh* 目錄中。 如果指定位置中存在相同名稱的 SSH 金鑰組，則系統會覆寫那些檔案。
 
+移至 [https://shell.azure.com](https://shell.azure.com)，並在您的瀏覽器中開啟 Cloud Shell。
+
 下列命令會使用 RSA 加密建立 SSH 金鑰組，位元長度為 2048：
 
-```azurecli-interactive
+```console
 ssh-keygen -t rsa -b 2048
 ```
 
@@ -109,13 +111,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 若要驗證針對您叢集的連線，請使用 [kubectl get][kubectl-get] 命令來傳回叢集節點的清單。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 下列輸出範例會顯示上一個步驟中建立的節點。 請確定所有節點的狀態皆為 *Ready*：
 
-```
+```output
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-agentpool-41324942-0   Ready    agent   6m44s   v1.12.6
 aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
@@ -218,13 +220,13 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令來部署應用程式並指定 YAML 資訊清單的名稱：
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 下列範例輸出會顯示已成功建立的部署和服務：
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -237,20 +239,20 @@ service "azure-vote-front" created
 
 若要監視進度，請使用 [kubectl get service][kubectl-get] 命令搭配 `--watch` 引數。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 一開始，*azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending*。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 當 *EXTERNAL-IP* 位址從 *pending* 變成實際的公用 IP 位址時，請使用 `CTRL-C` 停止 `kubectl` 監看式流程。 下列範例輸出會顯示已指派給服務的有效公用 IP 位址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

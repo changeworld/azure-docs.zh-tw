@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639032"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251803"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -38,7 +38,7 @@ ms.locfileid: "75639032"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要考量和方針
@@ -93,7 +93,7 @@ ms.locfileid: "75639032"
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -799,7 +799,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -845,7 +845,7 @@ Foreach($node in $nodes)
 
 從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的[範例範本][template]來部署叢集，則叢集中會有三個節點類型。  
 
-第二個節點類型中的 VM 大小設定於 *vmNodeType1Size* 參數中。  將 *vmNodeType1Size* 參數值從 Standard_D2_V2 變更為 [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series)，這讓每個 VM 執行個體的資源都能加倍。
+第二個節點類型中的 VM 大小設定於 *vmNodeType1Size* 參數中。  將 *vmNodeType1Size* 參數值從 Standard_D2_V2 變更為 [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)，這讓每個 VM 執行個體的資源都能加倍。
 
 適用於所有三個節點類型的 VM SKU 設定於 *vmImageSku* 參數中。  同樣地，應該謹慎處理變更節點類型的 VM SKU，不建議針對主要節點類型進行變更。
 
@@ -856,7 +856,7 @@ Foreach($node in $nodes)
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425341"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226355"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入門：在 Windows 上的 Azure App Service 中建立 Java 應用程式
 
@@ -119,9 +119,20 @@ mvn package azure-webapp:deploy
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>後續步驟
+> [!div class="nextstepaction"]
+> [使用 Java 連線至 Azure SQL 資料庫](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [使用 Java 連線至適用於 MySQL 的 Azure DB](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+
+> [!div class="nextstepaction"]
+> [使用 Java 連線至適用於 PostgreSQL 的 Azure DB](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
 > [適用於 Java 開發人員的 Azure 資源](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [對應自訂網域](app-service-web-tutorial-custom-domain.md)
+
+> [!div class="nextstepaction"]
+> [深入了解 Azure 的 Maven 外掛程式](https://github.com/microsoft/azure-maven-plugins)

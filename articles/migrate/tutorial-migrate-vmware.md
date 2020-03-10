@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的無代理程�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304203"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>將 VMware VM 遷移至 Azure (無代理程式)
 
@@ -248,7 +248,7 @@ Azure Migrate 需要稍微變更 VM，以確保 VM 可以遷移至 Azure。
 
 ## <a name="complete-the-migration"></a>完成移轉
 
-1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]  。 這會停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。
+1. 在移轉完成後，以滑鼠右鍵按一下 VM > [停止複寫]  。 這會停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。
 2. 在已遷移的機器上安裝 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理程式。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。
 4. 在現在於 Azure 中執行的已移轉應用程式上，執行最終的應用程式和移轉接受度測試。

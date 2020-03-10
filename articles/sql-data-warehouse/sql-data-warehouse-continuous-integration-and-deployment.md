@@ -1,25 +1,26 @@
 ---
 title: 持續整合及部署
-description: 適用於 SQL 資料倉儲的企業級資料庫 DevOps 體驗，並搭配使用 Azure Pipelines 進行持續整合及部署的內建支援。
+description: 適用於資料倉儲的企業級資料庫 DevOps 體驗，搭配使用 Azure Pipelines 進行持續整合及部署的內建支援。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712995"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195935"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>適用於 Azure SQL 資料倉儲的持續整合和部署
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>資料倉儲的持續整合和部署
 
-此簡易教學課程會概述如何將您的 SQL Server Data tools (SSDT) 資料庫專案與 Azure DevOps 整合，並運用 Azure Pipelines 來設定持續整合及部署。 本教學課程是使用 SQL 資料倉儲建立持續整合和部署管線的第二個步驟。 
+此簡易教學課程會概述如何將您的 SQL Server Data tools (SSDT) 資料庫專案與 Azure DevOps 整合，並運用 Azure Pipelines 來設定持續整合及部署。 本教學課程是為資料倉儲建置持續整合和部署管線的第二個步驟。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -61,7 +62,7 @@ ms.locfileid: "76712995"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 探索 [Azure SQL 資料倉儲架構](massively-parallel-processing-mpp-architecture.md)
-- 快速[建立 SQL 資料倉儲](create-data-warehouse-portal.md)
+- 探索 [SQL 分析 MPP 架構](massively-parallel-processing-mpp-architecture.md)
+- 快速[建立 SQL 集區](create-data-warehouse-portal.md)
 - [載入範例資料](sql-data-warehouse-load-sample-databases.md)
 - 探索[影片](/azure/sql-data-warehouse/sql-data-warehouse-videos)
