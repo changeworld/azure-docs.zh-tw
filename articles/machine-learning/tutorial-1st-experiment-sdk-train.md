@@ -11,17 +11,17 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355108"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本教學課程是**兩部分教學課程系列的第二部分**。 在上一個教學課程中，您已[建立工作區並選擇了開發環境](tutorial-1st-experiment-sdk-setup.md)。 在本教學課程中，您將了解 Azure Machine Learning 中的基本設計模式，並根據糖尿病資料集來定型簡單的 Scikit-learn 模型。 完成本教學課程之後，您將具備 SDK 的實際知識，進而開發更複雜的實驗和工作流程。
+本教學課程是**兩部分教學課程系列的第二部分**。 在上一個教學課程中，您已[建立工作區並選擇了開發環境](tutorial-1st-experiment-sdk-setup.md)。 在本教學課程中，您將了解 Azure Machine Learning 中的基本設計模式，並根據糖尿病資料集來定型簡單的 Scikit-learn 模型。 完成本教學課程之後，您將具備 SDK 的實際知識，進而擴大到更複雜的實驗和工作流程。
 
 在本教學課程中，您會了解下列工作：
 

@@ -4,11 +4,11 @@ description: 在本快速入門中，您將依照步驟為 Azure CLI 啟用 Reso
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304130"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360245"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Resource Graph 查詢
 
@@ -16,7 +16,7 @@ ms.locfileid: "74304130"
 
 在此程序結束時，延伸模組將新增到您選擇的 Azure CLI 安裝中，並執行您的第一個 Resource Graph 查詢。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74304130"
    > [!NOTE]
    > 當此查詢範例未提供排序修飾詞，例如 `order by`，多次執行此查詢可能會為每個要求產生不同的資源集。
 
-1. 將查詢更新為 `order by` **名稱**屬性：
+1. 將查詢更新為 `order by`**名稱**屬性：
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
