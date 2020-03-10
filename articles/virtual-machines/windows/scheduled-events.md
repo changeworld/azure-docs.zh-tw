@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920655"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944479"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
 
@@ -45,11 +45,11 @@ ms.locfileid: "77920655"
 
 排程的事件會提供下列使用案例中的事件：
 - [平臺起始的維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新開機、即時移轉或保留主機的記憶體更新）
-- 降低的硬體
+- 虛擬機器在降級的[主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行，預測即將失敗
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
 - [找出 VM](spot-vms.md)和[點擴展集](../../virtual-machine-scale-sets/use-spot.md)實例收回
 
-## <a name="the-basics"></a>基本概念  
+## <a name="the-basics"></a>基本知識  
 
 如果您是使用可由 VM 內存取的 REST 端點來執行虛擬機器，Azure 中繼資料服務會公開這類相關資訊。 這項資訊是透過無法路由傳送的 IP 取得，因此不會在 VM 之外公開。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77920655"
 ### <a name="version-and-region-availability"></a>版本和區域可用性
 排程的事件服務已進行版本設定。 版本是必要項目，且目前版本為 `2019-01-01`。
 
-| 版本 | 版本類型 | 區域 | 版本資訊 | 
+| 版本 | 發行類型 | 區域 | 版本資訊 | 
 | - | - | - | - |
 | 2019-01-01 | 正式運作 | 全部 | <li> 已新增對虛擬機器擴展集「終止」的支援 |
 | 2017-11-01 | 正式運作 | 全部 | <li> 已新增對點 VM 收回事件 ' Preempt ' 的支援<br> | 
@@ -85,7 +85,7 @@ ms.locfileid: "77920655"
 
 ## <a name="using-the-api"></a>使用 API
 
-### <a name="headers"></a>headers
+### <a name="headers"></a>標頭
 查詢中繼資料服務時，您必須提供 `Metadata:true` 標頭以免不小心重新導向要求。 所有排程的事件都需要 `Metadata:true` 標頭。 要求中未包含標頭會導致中繼資料服務不正確的要求回應。
 
 ### <a name="query-for-events"></a>查詢事件
@@ -118,7 +118,7 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 ### <a name="event-properties"></a>事件屬性
 |屬性  |  描述 |
 | - | - |
-| EventId | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| 事件識別碼 | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`：虛擬機器已排程暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或開啟的檔案。 <li>`Reboot`：虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`︰虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`：正在刪除點虛擬機器（暫時磁片會遺失）。 <li> `Terminate`：已排程要刪除虛擬機器。 |
 | ResourceType | 受此事件影響的資源類型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
@@ -131,10 +131,13 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 |EventType  | 最短時間通知 |
 | - | - |
 | 凍結| 15 分鐘 |
-| 重新啟動 | 15 分鐘 |
+| Reboot | 15 分鐘 |
 | 重新部署 | 10 分鐘 |
 | Preempt | 30 秒 |
 | Terminate | [可](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)設定的使用者：5到15分鐘 |
+
+> [!NOTE] 
+> 在某些情況下，Azure 會因為硬體降級而預測主機失敗，並會嘗試藉由排程遷移來減輕服務中斷的影響。 受影響的虛擬機器將會收到具有 `NotBefore` 的排程事件，這通常是未來幾天的時間。 實際的時間會依預測的失敗風險評估而有所不同。 Azure 會在可能的情況下，儘量提供7天的事先通知，但實際的時間會有所不同，如果預測是硬體故障即將的機率很高，可能會較小。 若要將服務的風險降到最低，以免系統起始遷移之前發生硬體故障，建議您儘快自動重新部署虛擬機器。
 
 ### <a name="event-scope"></a>事件範圍     
 排程的事件會傳送到：

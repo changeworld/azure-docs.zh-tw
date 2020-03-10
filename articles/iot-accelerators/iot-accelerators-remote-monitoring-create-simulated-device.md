@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250260"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943061"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>建立及測試新模擬裝置
 
@@ -82,7 +82,7 @@ ms.locfileid: "78250260"
 
 * Visual Studio Code。 您可以[下載適用於 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
 * .NET Core。 您可以下載[適用於 Mac、Linux 和 Windows 的 .NET Code](https://www.microsoft.com/net/download)。
-* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman。 您可以下載[適用於 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署至 Azure 訂用帳戶的 IoT 中樞](../../articles/iot-hub/iot-hub-create-through-portal.md)。 您需要 IoT 中樞的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
 * Cosmos DB 資料庫，其必須使用 SQL API，並已針對[強式一致性](../../articles/cosmos-db/how-to-manage-database-account.md)進行設定。 您需要 Cosmos DB 資料庫的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。

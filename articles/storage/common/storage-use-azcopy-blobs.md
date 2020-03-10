@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526717"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933577"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
 
@@ -73,7 +73,8 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 您也可以在檔案路徑或檔案名中的任何位置使用萬用字元符號（*）上傳檔案。 例如： `'C:\myDirectory\*.txt'`，或 `C:\my*\*.txt`。
 
 > [!NOTE]
-> 根據預設，AzCopy 會將資料上傳至區塊 blob。 若要將檔案上傳為附加 Blob 或分頁 Blob，請使用旗標 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+> 根據預設，AzCopy 會將資料上傳為區塊 blob。 若要將檔案上傳成附加 Blob 或分頁 Blob，請使用旗標 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+> AzCopy 依預設會上傳您的資料，以繼承帳戶存取層。 若要將檔案上傳到特定[存取層](../blobs/storage-blob-storage-tiers.md)，請使用旗標 `--block-blob-tier=[Hot|Cool|Archive]`。
 
 ### <a name="upload-a-directory"></a>上傳目錄
 

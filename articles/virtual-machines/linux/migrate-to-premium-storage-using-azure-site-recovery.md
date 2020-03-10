@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 將您的 Linux Vm 遷移至 Azure 進階儲存體
 description: 使用 Site Recovery 將您現有的虛擬機器移轉到 Azure 進階儲存體。 「進階儲存體」可針對在「Azure 虛擬機器」上執行且需要大量 I/O 的工作負載，提供高效能、低延遲的磁碟支援。
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035835"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944837"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 移轉到進階儲存體
 
@@ -60,12 +57,12 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 以下是適用於此移轉案例的 Azure 需求：
 
-* Azure 訂閱。
+* Azure 訂用帳戶。
 * 用來儲存所複寫資料的 Azure 進階儲存體帳戶。
 * 在容錯移轉時建立 VM 時，VM 將連接的 Azure 虛擬網路。 Azure 虛擬網路所在的區域必須與 Site Recovery 執行的區域相同。
 * 用來儲存複寫記錄的 Azure 標準儲存體帳戶。 這可以是和所要移轉之 VM 磁碟相同的儲存體帳戶。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 了解上一節的相關移轉案例元件。
 * 了解 [Site Recovery 中的容錯移轉](../../site-recovery/site-recovery-failover.md)中的容錯移轉，以規劃停機時間。
@@ -161,7 +158,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
    4. 在步驟 3 中，依 IP 位址新增受保護的 VM。 (您可能需要內部 IP 位址才能找到這些 VM。)
    5. 在步驟 4 中，選取您先前在處理序伺服器上設定的帳戶來設定屬性。
    6. 在步驟 5 中，選擇您先前在「步驟 5：設定複寫設定」中建立的複寫原則。
-   7. 選取 [確定]。
+   7. 選取 **[確定]** 。
 
    > [!NOTE]
    > Azure VM 在取消配置後再重新啟動時，不一定會取得相同的 IP 位址。 如果組態伺服器/處理序伺服器或受保護 Azure VM 的 IP 位址變更，此案例中的複寫作業可能不會正確運作。

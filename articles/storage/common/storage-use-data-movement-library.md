@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508997"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942914"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>透過資料移動程式庫傳輸資料
 
@@ -42,9 +42,9 @@ Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式�
 1. 瀏覽 [.NET Core 安裝指南](https://www.microsoft.com/net/core)以安裝 .NET Core。 選取環境時，請選擇命令列選項。
 2. 從命令列為專案建立目錄。 瀏覽到此目錄中，然後輸入 `dotnet new console -o <sample-project-name>` 以建立 C# 主控台專案。
 3. 在 Visual Studio Code 中開啟此目錄。 您可以透過在 Windows 中於命令列輸入 `code .` 來快速完成此步驟。
-4. 從 Visual Studio Code Marketplace 安裝 [C# 擴充 (英文)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新啟動 Visual Studio Code。
+4. 從 Visual Studio Code Marketplace 安裝 [C# 擴充 (英文)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 重新啟動 Visual Studio Code。
 5. 這時，您應該會看到兩個提示。 其中一個是新增「建置和偵錯的必要資產。」 按一下 [是]。 另一個提示是還原無法解析的相依性。 按一下 [還原]。
-6. 修改 `.vscode` 下的 `launch.json` 以將外部終端機作為主控台。 這項設定應讀取為 `"console": "externalTerminal"`
+6. 修改 `launch.json` 下的 `.vscode` 以將外部終端機作為主控台。 這項設定應讀取為 `"console": "externalTerminal"`
 7. Visual Studio Code 可讓您偵錯 .NET Core 應用程式。 按 `F5` 以執行應用程式，並確定您的設定運作正常。 您應該會看到「Hello World!」 印出到主控台。
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>將資料手機連結庫新增至您的專案

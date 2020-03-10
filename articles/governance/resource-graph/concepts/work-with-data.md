@@ -4,11 +4,11 @@ description: 瞭解如何在使用 Azure Resource Graph 時，取得、格式化
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304012"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388612"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -60,7 +60,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>分頁結果
 
-當您需要將結果集分割成較小的記錄集以進行處理，或因為結果集會超過允許的_1000_傳回記錄值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** 會提供值來表示已將結果集分解：**resultTruncated** 和 **$skipToken**。
+當您需要將結果集分割成較小的記錄集以進行處理，或因為結果集會超過允許的_1000_傳回記錄值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse**會提供值，以指出結果集已被分解： **resultTruncated**和 **$skipToken**。
 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
 
 當 **resultTruncated** 為 **true** 時，即會在回應中設定 **$skipToken** 屬性。 此值會與相同的查詢和訂用帳戶值搭配使用，以取得下一組符合查詢的記錄。

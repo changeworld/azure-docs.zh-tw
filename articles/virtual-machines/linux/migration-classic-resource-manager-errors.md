@@ -1,25 +1,19 @@
 ---
 title: 從傳統到 Azure Resource Manager 移轉的常見錯誤
 description: 本文收錄將 IaaS 資源從 Azure 服務管理移轉至 Azure Resource Manager 堆疊的常見錯誤和緩和措施。
-services: virtual-machines-linux
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5bc03a1b-eb1c-438c-83d9-f0e9d61f1b6a
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 7dc60e6514d4f17ae7fe61bfbc043dc1f650b1d4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ffeef74179874a0f477ba857ca519ebc67fded64
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914835"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944712"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>從傳統到 Azure Resource Manager 移轉的常見錯誤
 

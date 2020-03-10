@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 尋找一些關於 Azure Dev Spaces 常見問題的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 526e8a247241bd3ea0e61b6cd3b025cd473b29aa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255719"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942510"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>關於 Azure Dev Spaces 的常見問題
 
@@ -19,6 +19,10 @@ ms.locfileid: "78255719"
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 區域目前提供 Azure Dev Spaces？
 
 如需可用區域的完整清單，請參閱[支援的區域][supported-regions]。
+
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>我可以將 AKS 叢集與 Azure Dev Spaces 遷移至另一個區域嗎？
+
+是，如果您想要將 AKS 叢集與 Azure Dev Spaces 移至另一個[支援的區域][supported-regions]，建議您在其他區域中建立新的叢集，然後安裝和設定 Azure Dev Spaces，並將您的資源和應用程式部署到新的叢集。 如需有關遷移 AKS 的詳細資訊，請參閱[遷移至 Azure Kubernetes Service （AKS）][aks-migration]。
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>我可以搭配現有的 Dockerfile 或 Helm 圖表使用 Azure Dev Spaces 嗎？
 
@@ -77,6 +81,7 @@ ms.locfileid: "78255719"
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-migration]: ../aks/aks-migration.md
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works

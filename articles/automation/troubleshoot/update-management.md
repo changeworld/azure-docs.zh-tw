@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227464"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944189"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>針對更新管理問題進行疑難排解
 
@@ -219,14 +219,17 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 適用時，請使用[動態群組](../automation-update-management-groups.md)進行更新部署。 此外：
 
-* 確認電腦仍然存在且可連線。 如果不存在，請編輯您的部署，並移除電腦。
+* 確認電腦仍然存在且可連線。 
+* 如果電腦不存在，請編輯您的部署，並移除電腦。
 * 請參閱[網路規劃](../automation-update-management.md#ports)一節，以取得更新管理所需的埠和地址清單，然後確認您的電腦符合這些需求。
-* 在 Log Analytics 中執行下列查詢，以找出環境中 `SourceComputerId` 已變更的機器。 尋找具有相同 `Computer` 值但不同 `SourceComputerId` 值的電腦。 
+* 使用「混合式 Runbook 背景工作代理程式」疑難排解員驗證與混合式 Runbook 背景工作角色的連線。 若要深入了解疑難排解員，請參閱[針對更新代理程式問題進行疑難排解](update-agent-issues.md)。
+* 在 Log Analytics 中執行下列查詢，以找出環境中 `SourceComputerId` 已變更的電腦。 尋找具有相同 `Computer` 值但不同 `SourceComputerId` 值的電腦。
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   在您找到受影響的機器之後，請編輯以這些機器為目標的更新部署，然後移除並重新加入它們，讓 `SourceComputerId` 反映正確的值。
+
+* 在您找到受影響的機器之後，請編輯以這些機器為目標的更新部署，然後移除並重新加入它們，讓 `SourceComputerId` 反映正確的值。
 
 ## <a name="updates-nodeployment"></a>案例：已安裝不含部署的更新
 

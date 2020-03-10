@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: efe8c1a2726054c54934926f652e338797d4efa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776543"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945476"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>使用 GitHub 動作中的 Key Vault 來驗證 Azure 春季雲端
 金鑰保存庫是儲存金鑰的安全位置。 企業使用者需要將 CI/CD 環境的認證儲存在他們所控制的範圍內。 要在金鑰保存庫中取得認證的金鑰應限制為資源範圍。  它只能存取金鑰保存庫範圍，而不是整個 Azure 範圍。 就像是只能開啟一個強式箱的索引鍵，而不是可以開啟大樓所有大門的主要金鑰。 這是使用另一個金鑰來取得金鑰的方法，這在 CICD 工作流程中很有用。 
@@ -32,7 +32,6 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -69,7 +68,6 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"

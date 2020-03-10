@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378252"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 正在尋找部署 Azure Active Directory （Azure AD）功能的端對端指引嗎？ Azure AD 部署計畫會引導您瞭解成功部署常見 Azure AD 功能所需的商業價值、規劃考慮和操作程式。

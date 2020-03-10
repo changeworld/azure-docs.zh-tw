@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754536"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942977"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 認知搜尋中知識存放區的投影
 
@@ -211,3 +211,8 @@ Azure 認知搜尋可讓您透過內建的認知技能和自訂技能來擴充�
 
 > [!div class="nextstepaction"]
 > [在 REST 中建立知識存放區](knowledge-store-create-rest.md)。
+
+如需涵蓋切割、內嵌成形和關聯性等先進預測概念的教學課程，請從[在知識存放區中定義投影](knowledge-store-projections-examples.md)開始
+
+> [!div class="nextstepaction"]
+> [定義知識存放區中的投影](knowledge-store-projections-examples.md)

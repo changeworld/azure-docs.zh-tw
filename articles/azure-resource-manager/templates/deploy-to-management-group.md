@@ -2,23 +2,17 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894882"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942756"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
-您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在下列位置建立資源：
-
-* [訂用帳戶層級](deploy-to-subscription.md)
-* 管理群組層級（本文涵蓋）
-* [租使用者層級](deploy-to-tenant.md)
-
-您可以使用管理群組層級部署來採取對該層級有意義的動作，例如指派[角色型存取控制](../../role-based-access-control/overview.md)或套用[原則](../../governance/policy/overview.md)。
+當您的組織成熟時，您可能需要為管理群組定義和指派[原則](../../governance/policy/overview.md)或[角色型存取控制](../../role-based-access-control/overview.md)。 您可以使用管理群組層級範本，以宣告方式套用原則，並在管理群組層級指派角色。
 
 ## <a name="supported-resources"></a>支援的資源
 
@@ -41,10 +35,10 @@ ms.locfileid: "78894882"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-針對參數檔案，請使用：
+所有部署範圍的參數檔案架構都相同。 針對參數檔案，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>部署命令
@@ -169,5 +163,4 @@ New-AzManagementGroupDeployment `
 
 * 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
-* 如需在範本中可用函式的清單，請參閱 [範本函式](template-functions.md)。
+* 您也可以部署訂用帳戶[層](deploy-to-subscription.md)級和[租使用者層級](deploy-to-tenant.md)的範本。

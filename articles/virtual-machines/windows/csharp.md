@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: bb0962991701dc780e50fec60982083b20d4ab0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358372"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944504"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>在 Azure 中使用 C# 建立並管理 Windows VM #
 
@@ -70,7 +70,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。

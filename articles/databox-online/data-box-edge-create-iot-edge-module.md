@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315825"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942544"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>開發C# IoT Edge 模組以在 Data Box Edge 上移動檔案
 
@@ -21,7 +21,7 @@ ms.locfileid: "71315825"
 
 您可以搭配 Data Box Edge 使用 Azure IoT Edge 模組，在已將資料移至 Azure 時進行轉換。 本文所使用的模組會實作邏輯，在您的 Data Box Edge 裝置上，將檔案從本機共用複製到雲端共用。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立容器登錄來儲存和管理模組 (Docker 映像)。
@@ -52,8 +52,8 @@ ms.locfileid: "71315825"
 
 - 下列開發資源：
 
-    - [Visual Studio Code](https://code.visualstudio.com/)。
-    - [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+    - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
+    - [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
     - [Visual Studio Code 的 Azure IoT Edge 擴充功能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 您可能必須建立帳戶，才能下載並安裝軟體。
@@ -62,7 +62,7 @@ ms.locfileid: "71315825"
 
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像。 雲端中所提供的兩個熱門 Docker 登錄服務為 Azure Container Registry 和 Docker Hub。 本文使用 Container Registry。
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 選取 [建立資源] > [容器] > [Container Registry]。 按一下 [建立]。
 3. 提供：
 
@@ -92,8 +92,8 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 建立您可以使用自己的程式碼自訂的 C# 解決方案範本。
 
 1. 在 Visual Studio Code 中，選取 [檢視] > [命令選擇區] 以開啟 VS Code 命令選擇區。
-2. 在 [命令選擇區] 中，輸入並執行命令 **Azure:Sign in**，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
-3. 在命令選擇區中，輸入並執行命令 **Azure IoT Edge:** [新增 IoT Edge 解決方案]。 在命令選擇區中提供下列資訊，以建立解決方案：
+2. 請在命令選擇區中，輸入並執行命令 **Azure: Sign in**，然後依照指示登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
+3. 在 [命令選擇區] 中，輸入並執行命令 **Azure IoT Edge: New IoT Edge solution**。 在命令選擇區中提供下列資訊，以建立解決方案：
 
     1. 選取要用來建立解決方案的資料夾。
     2. 為解決方案提供名稱，或是接受預設值 **EdgeSolution**。
@@ -270,7 +270,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
     您可能會看到下列可略過的警告：
 
-    *Program.cs(77,44): 警告 CS1998:這個非同步方法缺少 'await' 運算子，因此將以同步方式執行。* 請考慮使用 'await' 運算子等候未封鎖的應用程式開發介面呼叫，或使用 'await Task.Run(...)' 在背景執行緒上執行 CPU-bound 工作。
+    *Program .cs （77，44）： warning CS1998：這個非同步方法缺少 ' await ' 運算子，並會同步執行。請考慮使用 ' await ' 運算子來等候非封鎖式 API 呼叫，或 ' await Task. Run （...） ' 以在背景執行緒上執行 CPU 系結工作。*
 
 4. 您可以在 VS Code 整合式終端機中檢視完整容器映像位址。 系統會根據 module.json 檔案中的資訊，使用 `<repository>:<version>-<platform>` 格式來建置映像位址。 在本文中，它應該看起來像 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 

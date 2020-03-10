@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: c88b060104a4c17e3edad2e23cfb23a54661b969
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d99c5ae91b80b9b6b9af08001b3a7c57bc7ca8f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033803"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944520"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>利用 C# 和 Resource Manager 範本來部署 Azure 虛擬機器
 
@@ -198,7 +198,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。
@@ -331,5 +331,5 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如果部署有問題，下一個步驟就是查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解 (英文)](../../resource-manager-common-deployment-errors.md)。
+* 如果部署有問題，下一個步驟就是查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](../../resource-manager-common-deployment-errors.md)。
 * 檢閱[使用 C# 來部署 Azure 虛擬機器](csharp.md)，以了解如何部署虛擬機器及支援它的資源。

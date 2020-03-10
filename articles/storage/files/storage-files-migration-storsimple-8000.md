@@ -4,30 +4,26 @@ description: 瞭解如何將 StorSimple 8100 或8600應用裝置遷移至 Azure 
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330305"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943594"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600遷移至 Azure 檔案同步
 
-StorSimple 8000 系列是由8100或8600實體、內部部署設備和其雲端服務元件所代表。 您可以將這兩個設備的資料移轉至 Azure 檔案同步環境。 本文提供成功遷移至 Azure 檔案同步所需的背景知識和遷移步驟。
+StorSimple 8000 系列以8100或8600實體、內部部署設備和其雲端服務元件表示。 您可以將這兩個設備的資料移轉至 Azure 檔案同步環境。 Azure 檔案同步是 StorSimple 應用裝置可以遷移到的預設和策略性長期 Azure 服務。
 
-## <a name="storsimple"></a>StorSimple
+StorSimple 8000 系列將于12月 2022[日結束](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series)。 請務必儘快開始規劃您的遷移。 本文提供成功遷移至 Azure 檔案同步所需的背景知識和遷移步驟。 
 
-StorSimple 是已終止的 Microsoft 產品。 本產品和其雲端服務的延伸支援將于 31 2022 年12月到期。 請務必立即開始規劃從 StorSimple 進行遷移。
-
-Azure 檔案同步是 StorSimple 應用裝置可以遷移到的預設和策略性長期 Azure 服務。
+## <a name="azure-file-sync"></a>Azure 檔案同步
 
 > [!IMPORTANT]
 > Microsoft 致力於協助客戶進行遷移。 針對自訂的遷移計畫，以電子郵件 AzureFilesMigration@microsoft .com，並在遷移期間提供協助。
-
-## <a name="azure-file-sync"></a>Azure 檔案同步
 
 Azure 檔案同步是以兩個主要元件為基礎的 Microsoft 雲端服務：
 
@@ -247,10 +243,10 @@ Azure 檔案同步可用來將檔案從掛接的 iSCSI StorSimple 磁片區移�
 > [!IMPORTANT]
 > 若要這麼做，必須先在伺服器上設定登錄機碼，然後才能設定 Azure 檔案同步。
 
-1. 在 VM 的系統磁片磁碟機上建立新的目錄。 Azure 檔案同步資訊必須保存在該處，而不是在掛接的磁片區複製上。 例如： `“C:\syncmetadata”`
+1. 在 VM 的系統磁片磁碟機上建立新的目錄。 Azure 檔案同步資訊必須保存在該處，而不是在掛接的磁片區複製上。 例如： `"C:\syncmetadata"`
 2. 開啟 regedit，並找出下列登錄區： `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. 建立 String 類型的新索引鍵，名為： ***MetadataRootPath***
-4. 設定您在系統磁碟區上建立之目錄的完整路徑，例如： `C:\syncmetadata”`
+4. 設定您在系統磁碟區上建立之目錄的完整路徑，例如： `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>在 Azure VM 上設定 Azure 檔案同步
 

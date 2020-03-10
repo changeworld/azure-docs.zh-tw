@@ -1,36 +1,26 @@
 ---
-title: 在 Azure 中移動 Linux VM
-description: 在 Resource Manager 部署模型中將 Linux VM 移至另一個 Azure 訂用帳戶或資源群組。
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用 Azure CLI 在中移動 VM
+description: 使用 Azure CLI 將 VM 移至另一個 Azure 訂用帳戶或資源群組。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979031"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944595"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>將 Linux VM 移至另一個訂用帳戶或資源群組
-本文將逐步引導您了解如何在資源群組或訂用帳戶之間移動 Linux 虛擬機器 (VM)。 如果您在個人訂用帳戶中建立了 VM，而現在想要將它移至您的公司訂用帳戶以繼續工作，在訂用帳戶之間移動 VM 會很方便。
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>將 VM 移至另一個訂用帳戶或資源群組
+本文會逐步引導您瞭解如何在資源群組或訂用帳戶之間移動虛擬機器（VM）。 如果您在個人訂用帳戶中建立了 VM，而現在想要將它移至您的公司訂用帳戶以繼續工作，在訂用帳戶之間移動 VM 會很方便。
 
 > [!IMPORTANT]
->您無法在此時移動 Azure 受控磁碟。
->
 >移動過程中會建立新的資源識別碼。 在移動 VM 之後，您必須更新工具和指令碼以使用新的資源識別碼。
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>使用 Azure CLI 移動 VM
 

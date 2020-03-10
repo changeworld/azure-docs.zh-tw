@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727112"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942961"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database 安全性功能    
 Azure SQL Database 在 Azure 中提供關聯式資料庫服務。 為了保護客戶資料，並提供強大的安全性功能，以滿足提供客戶對於關聯式資料庫服務的期待，SQL Database 有一套自己的安全性功能。 這些功能都是根據從 Azure 繼承的控制項為基礎而建置。
@@ -75,7 +75,7 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 ### <a name="types-of-rules-on-firewalls"></a>防火牆上的規則類型
 規則定義為：
 
-{安全性回應中心 (Src) IP、Src 連接埠，目的地 IP、目的地連接埠、目的地通訊協定，輸入/輸出、具狀態/無狀態、具狀態流程逾時}。
+{Src IP、Src 埠、目的地 IP、目的地埠、目的地通訊協定、傳入/傳出、具狀態/無狀態、具狀態流程超時}。
 
 同步閒置字元 (SYN) 封包只有在任何一個規則允許時，才可以輸入或輸出。 針對 TCP，Azure 會使用無狀態規則，原則是只允許所有非 SYN 封包輸入或輸出 VM。 安全性前提是任何主機堆疊具有彈性，如果它先前沒有見過 SYN 封包，則略過非 SYN。 TCP 通訊協定本身具狀態，與無狀態 SYN 型規則搭配，以達成具狀態實作的整體行為。
 
@@ -97,12 +97,10 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 
 - [Azure 設備、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
-- [Azure 資訊系統元件和界限](infrastructure-components.md)
+- [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)
 - [Azure 客戶資料保護](protection-customer-data.md)
-
-

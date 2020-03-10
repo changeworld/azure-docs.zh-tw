@@ -1,25 +1,18 @@
 ---
 title: 使用 Azure Active Directory 認證登入 Linux VM
 description: 瞭解如何建立和設定 Linux VM，以使用 Azure Active Directory authentication 進行登入。
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544611"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944802"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -48,7 +41,7 @@ ms.locfileid: "76544611"
 
 以下是目前在這項功能的預覽期間支援的 Linux 發行版：
 
-| 通路業 | 版本 |
+| 散發 | 版本 |
 | --- | --- |
 | CentOS | CentOS 6、CentOS 7 |
 | Debian | Debian 9 |
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-在 VM 上成功安裝延伸模組後，就會顯示 [*成功*] 的*provisioningState* 。
+在 VM 上成功安裝延伸模組後，就會顯示 [*成功*] 的*provisioningState* 。 VM 需要執行中的 VM 代理程式才能安裝延伸模組。 如需詳細資訊，請參閱[VM 代理程式總覽](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 

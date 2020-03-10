@@ -3,12 +3,12 @@ title: '& 資源群組部署跨訂用帳戶的資源'
 description: 示範如何在部署期間將目標放在多個 Azure 訂用帳戶和資源群組。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250612"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944041"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>將 Azure 資源部署至多個訂用帳戶和資源群組
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment `
 
 前述範例的輸出為：
 
-```powershell
+```output
  Name             Type                       Value
  ===============  =========================  ==========
  parentRG         String                     Parent resource group is parentGroup

@@ -2,13 +2,13 @@
 title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 99f7fc7db79785f99b96e6076607e434e43e605f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.date: 03/09/2020
+ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927314"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939285"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見的問題
 
@@ -58,13 +58,13 @@ Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。
 - **VMWARE VM**：[效能資料](migrate-appliance.md#collected-performance-data-vmware)和[元](migrate-appliance.md#collected-metadata-vmware)資料
 - **HYPER-V VM**：[效能資料](migrate-appliance.md#collected-performance-data-hyper-v)和[元](migrate-appliance.md#collected-metadata-hyper-v)資料
 
-## <a name="how-is-data-stored"></a>儲存資料的方式
+## <a name="how-is-data-stored"></a>如何儲存資料？
 
 Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 專案所在的 Azure 位置。
 
 以下是資料儲存方式的詳細資訊：
 
-- 資料會安全地儲存在 Microsoft 訂用帳戶中，並在您刪除 Azure Migrate 專案時予以刪除。
+- 收集的資料會安全地儲存在 Microsoft 訂用帳戶的 CosmosDB 中。 當您刪除 Azure Migrate 專案時，就會刪除資料。 儲存體是由 Azure Migrate 處理。 您無法特別針對收集的資料選擇儲存體帳戶。
 - 如果您使用相依性[視覺效果](concepts-dependency-visualization.md)，所收集的資料會儲存在美國 Azure Log Analytics 工作區中建立的 azure 訂用帳戶中。 當您刪除訂用帳戶中的 Log Analytics 工作區時，會刪除資料。
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>連續分析期間會上傳多少資料？
@@ -88,9 +88,13 @@ Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 
 3. 設備會收集關於 Vm （核心、記憶體、磁片、Nic）的設定資料，以及每個 VM 在過去一個月的效能歷程記錄。
 4. 收集的中繼資料會傳送至 Azure Migrate：伺服器評估工具（透過網際網路透過 HTTPS）以進行評量。
 
-## <a name="can-i-connect-the-appliance-to-multiple-instances-of-vcenter-server"></a>我可以將應用裝置連接到多個 vCenter Server 實例嗎？
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
 
-否。 設備與 vCenter Server 之間會有一對一的對應。 若要探索多個 vCenter Server 實例上的 Vm，您必須部署多個應用裝置。
+No。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要探索多個 vCenter Server 實例上的 Vm，您必須部署多個應用裝置。 
+
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
+一個專案可以附加多個設備。 不過，應用裝置只能與一個專案相關聯。 
+
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
 
@@ -110,11 +114,11 @@ Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
 
-否。 目前不支援此選項。 
+No。 目前不支援此選項。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
 
-否。 若要探索 VMware Vm，您必須有 vCenter Server。
+No。 若要探索 VMware Vm，您必須有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備嗎？
 
@@ -124,7 +128,7 @@ Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 
 
 ## <a name="can-i-check-agent-health"></a>可以檢查代理程式健康情況嗎？
 
-是。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [**代理程式健康**情況] 頁面。 在這裡，您可以檢查 Azure 與設備上的探索與評估代理程式之間的線上狀態。
+是的。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [**代理程式健康**情況] 頁面。 在這裡，您可以檢查 Azure 與設備上的探索與評估代理程式之間的線上狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

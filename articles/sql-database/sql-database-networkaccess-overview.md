@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251901"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945386"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database 和資料倉儲網路存取控制
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251901"
 > [!IMPORTANT]
 > 本文「不」適用於 **Azure SQL Database 受控執行個體**。 如需網路設定的詳細資訊，請參閱[連接到受控執行個體](sql-database-managed-instance-connect-app.md)。
 
-當您[從 Azure 入口網站](sql-database-single-database-get-started.md)建立新的 Azure SQL Server 時，其結果會是*yourservername.database.windows.net*格式的公用端點。 根據設計，公用端點的所有存取都會遭到拒絕。 接著，您可以使用下列網路存取控制，選擇性地允許透過公用端點存取 SQl 資料庫
-- 允許 Azure 服務：-當設定為 ON 時，Azure 界限內的其他資源（例如 Azure 虛擬機器）可以存取 SQL Database
+當您從[Azure 入口網站](sql-database-single-database-get-started.md)建立新的 Azure SQL Server 時，其結果會是*yourservername.database.windows.net*格式的公用端點。
 
-- IP 防火牆規則：-使用此功能可明確允許來自特定 IP 位址的連線，例如從內部部署機器。
+您可以使用下列網路存取控制，選擇性地允許透過公用端點存取 SQl 資料庫：
+- 允許 Azure 服務：當設定為 ON 時，Azure 界限內的其他資源（例如 Azure 虛擬機器）可以存取 SQL Database
 
-- 虛擬網路防火牆規則：-使用此功能可允許來自 Azure 界限內特定虛擬網路的流量
+- IP 防火牆規則：使用此功能明確允許來自特定 IP 位址的連線，例如從內部部署機器
 
+您也可以透過下列方式，允許從[虛擬網路](../virtual-network/virtual-networks-overview.md)對 SQL Database 的私用存取：
+- 虛擬網路防火牆規則：使用此功能可允許來自 Azure 界限內特定虛擬網路的流量
+
+- 私人連結：使用此功能可在特定虛擬網路內建立 Azure SQL Server 的私用端點
+
+
+
+如需這些存取控制的高階說明及其用途，請參閱下列影片：
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>允許 Azure 服務 
 [從 Azure 入口網站](sql-database-single-database-get-started.md)建立新的 Azure SQL Server 期間，會將此設定保留為未核取狀態。
 
- ![新伺服器建立的螢幕擷取畫面][1]
+
 
 您也可以在建立 Azure SQL Server 之後，透過 [防火牆] 窗格變更此設定，如下所示。
   
@@ -129,6 +138,9 @@ Azure SQL Server 防火牆可讓您指定接受通訊的 IP 位址範圍，以 S
 > [!NOTE]
 > 子網路上還不能有 SQL Database。 如果 Azure SQL Database 伺服器是虛擬網路中某個子網路的節點，則虛擬網路內的所有節點都可以與 SQL Database 通訊。 在此情況下，VM 可以與 SQL Database 通訊，而不需要任何虛擬網路規則或 IP 規則。
 
+## <a name="private-link"></a>私人連結 
+私人連結可讓您透過**私人端點**連接到 Azure SQL Server。 私人端點是特定[虛擬網路](../virtual-network/virtual-networks-overview.md)和子網內的私人 IP 位址。
+
 ## <a name="next-steps"></a>後續步驟
 
 - 如需建立伺服器層級 IP 防火牆規則的快速入門，請參閱[建立 AZURE SQL 資料庫](sql-database-single-database-get-started.md)。
@@ -146,3 +158,4 @@ Azure SQL Server 防火牆可讓您指定接受通訊的 IP 位址範圍，以 S
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

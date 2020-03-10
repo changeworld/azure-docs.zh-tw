@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441964"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943668"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>知識存放區投影：如何塑造和匯出擴充
 
@@ -671,7 +671,13 @@ Power BI 依賴這些產生的索引鍵來探索資料表中的關聯性。 如�
 
 本文中的範例會示範如何建立投影的一般模式。 既然您已充分瞭解這些概念，您就可以更妥善地建立特定案例的預測。
 
-當您反復查看知識存放區定義時，請考慮累加擴充作為下一個步驟。 增量擴充是以快取為基礎，可讓您重複使用任何不會受到技能集修改影響的擴充。 這對於包含 OCR 和影像分析的管線特別有用。
+當您探索新功能時，請考慮累加擴充做為下一個步驟。 增量擴充是以快取為基礎，可讓您重複使用任何不會受到技能集修改影響的擴充。 這對於包含 OCR 和影像分析的管線特別有用。
 
 > [!div class="nextstepaction"]
 > [增量擴充和快取簡介](cognitive-search-incremental-indexing-conceptual.md)
+
+如需有關投影的總覽，請深入瞭解群組和切割等功能，以及如何[在技能集中定義它們](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [知識存放區中的投影](knowledge-store-projection-overview.md)
+

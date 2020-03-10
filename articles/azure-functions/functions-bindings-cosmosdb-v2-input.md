@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fe04d491525b8119ca21ff1118a2ea460cc0795
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606603"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943414"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Functions 2.x 的 Azure Cosmos DB 輸入系結
 
@@ -1437,12 +1437,13 @@ Python 不支援屬性。
 |**collectionName** |**CollectionName** | 包含文件的集合名稱。 |
 |**id**    | **Id** | 要擷取之文件的識別碼。 此屬性支援[繫結運算式](./functions-bindings-expressions-patterns.md)。 請勿同時設定 [`id`] 和 [ **sqlQuery** ] 屬性。 如果您未設定其中一個，就會擷取整個集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用來擷取多份文件的 Azure Cosmos DB SQL 查詢。 屬性會支援執行階段繫結，如此範例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 請勿同時設定 `id` 和 `sqlQuery` 屬性。 如果您未設定其中一個，就會擷取整個集合。|
-|**connectionStringSetting**     |**ConnectionStringSetting**|包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |
+|**connectionStringSetting**     |**ConnectionStringSetting**|包含 Azure Cosmos DB 連接字串的應用程式設定名稱。 |
 |**partitionKey**|**PartitionKey**|指定分割區索引鍵值進行查閱。 可能包含繫結參數。 這是在資料[分割](../cosmos-db/partition-data.md#logical-partitions)的集合中查閱的必要項。|
+|**preferredLocations**| **PreferredLocations**| 選擇性定義 Azure Cosmos DB 服務中異地複寫資料庫帳戶的慣用位置（區域）。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 # <a name="c"></a>[C#](#tab/csharp)
 

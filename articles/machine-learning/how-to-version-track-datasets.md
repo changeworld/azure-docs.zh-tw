@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834784"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939248"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>版本和追蹤實驗中的資料集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+您也可以在上註冊新版本的資料集 
 
 ### <a name="retrieve-a-dataset-by-name"></a>依名稱取得資料集
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 您可以使用資料集做為每個 Machine Learning 管線步驟的輸入和輸出。 當您重新執行管線時，每個管線步驟的輸出都會註冊為新的資料集版本。
 
-由於 Machine Learning 管線會在每次管線重新執行時，將每個步驟的輸出填入新的資料夾，因此可重現已建立版本的輸出資料集。
+由於 Machine Learning 管線會在每次管線重新執行時，將每個步驟的輸出填入新的資料夾，因此可重現已建立版本的輸出資料集。 深入瞭解[管線中的資料集](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-您也可以使用[Azure Machine Learning studio](https://ml.azure.com/)，從實驗中尋找 `input_datasets`。 
+您也可以使用 https://ml.azure.com/，從實驗中尋找 `input_datasets`。 
 
 下圖顯示在 Azure Machine Learning studio 上尋找實驗之輸入資料集的位置。 在此範例中，請移至您的**實驗**窗格，然後開啟特定實驗執行的 **屬性** 索引標籤，`keras-mnist`。
 
@@ -183,7 +184,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-註冊之後，您可以使用 Python 或[Azure Machine Learning studio](https://ml.azure.com/)查看已向資料集註冊的模型清單。 下列視圖來自 [**資產**] 底下的 [**資料集**] 窗格。 選取資料集，然後選取 [**模型**] 索引標籤，以取得已向資料集註冊的模型清單。 
+註冊之後，您可以使用 Python 查看已向資料集註冊的模型清單，或移至 https://ml.azure.com/。
+
+下列視圖來自 [**資產**] 底下的 [**資料集**] 窗格。 選取資料集，然後選取 [**模型**] 索引標籤，以取得已向資料集註冊的模型清單。 
 
 ![輸入資料集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

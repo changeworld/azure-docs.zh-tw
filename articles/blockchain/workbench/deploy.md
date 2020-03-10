@@ -4,12 +4,12 @@ description: 如何部署 Azure Blockchain Workbench 預覽
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189229"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943192"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>部署 Azure Blockchain Workbench 預覽
 
@@ -135,7 +135,7 @@ Blockchain Workbench 部署完成後，新的資源群組即會包含您的 Bloc
 
     ![應用程式服務基本資訊](media/deploy/app-service.png)
 
-若要將自訂網域名稱與 Blockchain Workbench 產生關聯，請參閱[在使用流量管理員的 Azure App Service 中設定 Web 應用程式的自訂網域名稱](../../app-service/web-sites-traffic-manager-custom-domain-name.md)。
+若要將自訂網域名稱與 Blockchain Workbench 產生關聯，請參閱[在使用流量管理員的 Azure App Service 中設定 Web 應用程式的自訂網域名稱](../../app-service/configure-domain-traffic-manager.md)。
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD 設定指令碼
 

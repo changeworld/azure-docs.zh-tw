@@ -2,13 +2,13 @@
 title: 範本中的使用者定義函數
 description: 描述如何定義及使用 Azure Resource Manager 範本中的使用者定義函數。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 58b9ba7b162736329cf775e2be5a47bfcae0a4ca
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122469"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943210"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager 範本中的使用者定義函數
 
@@ -18,7 +18,7 @@ ms.locfileid: "76122469"
 
 ## <a name="define-the-function"></a>定義函數
 
-您的函式需要命名空間值，以避免範本函式發生命名衝突。 下列範例說明可傳回儲存體帳戶名稱的函式：
+您的函式需要命名空間值，以避免範本函式發生命名衝突。 下列範例顯示傳回唯一名稱的函式：
 
 ```json
 "functions": [
@@ -44,23 +44,53 @@ ms.locfileid: "76122469"
 
 ## <a name="use-the-function"></a>使用函數
 
-下列範例顯示如何呼叫您的函式。
+下列範例會顯示包含使用者定義函數的範本。 它會使用該函數來取得儲存體帳戶的唯一名稱。 範本具有名為**storageNamePrefix**的參數，它會將它當做參數傳遞給函式。
 
 ```json
-"resources": [
+{
+ "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+   "storageNamePrefix": {
+     "type": "string",
+     "maxLength": 11
+   }
+ },
+ "functions": [
   {
-    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
-    "apiVersion": "2016-01-01",
-    "type": "Microsoft.Storage/storageAccounts",
-    "location": "South Central US",
-    "tags": {},
-    "sku": {
-      "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {}
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
   }
-]
+],
+ "resources": [
+   {
+     "type": "Microsoft.Storage/storageAccounts",
+     "apiVersion": "2019-04-01",
+     "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+     "location": "South Central US",
+     "sku": {
+       "name": "Standard_LRS"
+     },
+     "kind": "StorageV2",
+     "properties": {
+       "supportsHttpsTrafficOnly": true
+     }
+   }
+ ]
+}
 ```
 
 ## <a name="limitations"></a>限制

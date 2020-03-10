@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981112"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893008"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒體服務編碼影片和音訊
 
 媒體服務中的「編碼」一詞適用于將包含數位影片和/或音訊的檔案從一種標準格式轉換成另一種格式的程式，目的是（a）減少檔案大小，並（或）（b）產生與各種裝置和應用程式相容的格式。 這個進程也稱為「影片壓縮」或轉碼。 如需概念的進一步討論，請參閱[資料壓縮](https://en.wikipedia.org/wiki/Data_compression)和[什麼是編碼和轉碼？](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) 。
 
 影片通常會藉由[漸進式下載](https://en.wikipedia.org/wiki/Progressive_download)或透過自動調整[位元速率串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，傳遞至裝置和應用程式。
+
+> [!IMPORTANT]
+> 媒體服務不會針對已取消或錯誤的作業計費。 例如，已達到50% 進度且已取消的作業不會以工作分鐘的50% 來計費。 您只需支付完成作業的費用。
 
 * 若要透過漸進式下載進行傳遞，您可以使用 Azure 媒體服務將數位媒體檔案（夾層）轉換[成有案](https://en.wikipedia.org/wiki/MPEG-4_Part_14)的檔案，其中包含使用[h.264 編解碼器](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)編碼的影片，以及使用[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編解碼器編碼的音訊。 此「檔案」檔案會寫入至儲存體帳戶中的資產。 您可以使用 Azure 儲存體 Api 或 Sdk （例如[儲存體 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）直接下載檔案。 如果您已在儲存體中建立具有特定容器名稱的輸出資產，請使用該位置。 否則，您可以使用媒體服務來[列出資產容器 url](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
 * 若要以彈性位元速率串流準備傳遞內容，必須在多個位元速率（高至低）編碼夾層檔案。 為確保品質正常轉換，影片的解析度會因為位元速率降低而降低。 這會導致所謂的編碼階梯–一份解析度和位元速率的資料表（請參閱[自動產生的彈性位元速率階梯](autogen-bitrate-ladder.md)）。 您可以使用媒體服務，在多個位元速率對夾層檔案進行編碼。 在這種情況下，您會取得一組已寫入儲存體帳戶資產的「檔」檔案和相關聯的串流設定檔案。 然後，您可以使用媒體服務中的[動態封裝](dynamic-packaging-overview.md)功能，透過像是[mpeg-4](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP)和[HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)等串流通訊協定來傳遞影片。 這會要求您建立[串流定位器](streaming-locators-concept.md)，並建立對應于支援之通訊協定的串流 url，然後可以根據其功能將裝置/應用程式交給他們。
@@ -135,6 +138,12 @@ ms.locfileid: "75981112"
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中調整編碼
 
 若要調整媒體處理，請參閱[使用 CLI 進行調整](media-reserved-units-cli-how-to.md)。
+
+## <a name="billing"></a>計費
+
+媒體服務不會針對已取消或錯誤的作業計費。 例如，已達到50% 進度且已取消的作業不會以工作分鐘的50% 來計費。 您只需支付完成作業的費用。
+
+如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 

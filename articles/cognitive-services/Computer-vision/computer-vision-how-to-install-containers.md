@@ -12,11 +12,11 @@ ms.date: 11/21/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394108"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 

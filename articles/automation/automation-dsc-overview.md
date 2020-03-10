@@ -11,11 +11,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372302"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概觀
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522081"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942866"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>啟用無密碼安全性金鑰使用 Azure Active Directory 登入內部部署資源（預覽）
 
@@ -50,6 +50,7 @@ Azure Active Directory （AD）可以針對一或多個 Active Directory 網域�
 
 - 裝置必須執行 Windows 10 Insider 組建18945或更新版本。
 - 您必須具有[Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)的版本1.4.32.0 或更新版本。
+  - 如需可用 Azure AD 混合式驗證選項的詳細資訊，請參閱[為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../../security/fundamentals/choose-ad-authn.md)，並[選取要用於 Azure AD Connect 的安裝類型](../hybrid/how-to-connect-install-select-installation.md)。
 - 您的 Windows Server 網域控制站必須安裝下列修補程式：
     - 若為 Windows Server 2016- https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
     - 若為 Windows Server 2019- https://support.microsoft.com/help/4534321/windows-10-update-kb4534321

@@ -1,14 +1,14 @@
 ---
 title: 在 Azure Migrate 中設定相依性視覺效果
-description: 說明如何在 Azure Migrate Server 評估中設定相依性視覺效果。
+description: 本文說明如何在 Azure Migrate Server 評估中設定相依性視覺效果。
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916280"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78940950"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -70,7 +70,7 @@ ms.locfileid: "77916280"
 在 Windows 電腦上安裝代理程式：
 
 1. 按兩下下載的代理程式。
-2. 在 [歡迎] 頁面中按 [下一步]。 在 [授權條款] 頁面上，按一下 [我同意] 以接受授權。
+2. 在 [歡迎] 頁面上，按 [下一步]。 在 [授權條款] 頁面上，按一下 [我同意] 以接受授權。
 3. 在 [目的地資料夾] 中，保留或修改預設的安裝資料夾 > [下一步]。
 4. 在 [代理程式安裝選項] 中，選取 [Azure Log Analytics] > [下一步]。
 5. 按一下 [新增] 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步]。
@@ -85,7 +85,7 @@ ms.locfileid: "77916280"
 若要在 Linux 電腦上安裝 MMA：
 
 1. 使用 scp/sftp 將適當的套件組合 (x86 或 x64) 傳輸到 Linux 電腦。
-2. 使用 --安裝引數安裝套件組合。
+2. 使用 --install 引數安裝配套。
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 

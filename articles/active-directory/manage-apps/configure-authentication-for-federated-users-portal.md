@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367872"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943433"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
@@ -150,7 +150,7 @@ ms.locfileid: "77367872"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 
@@ -258,7 +258,7 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>步驟 2：從應用程式服務主體移除原則指派  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>步驟 3：列出已被指派原則的服務主體，檢查移除是否成功 

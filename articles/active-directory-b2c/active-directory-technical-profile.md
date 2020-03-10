@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932971"
+ms.locfileid: "78944219"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -56,7 +56,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>輸入宣告
+## <a name="inputclaims"></a>InputClaims
 
 InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建立一個新的。 在所有 Azure AD 技術設定檔的輸入宣告集合中，必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
 
@@ -66,7 +66,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
 
-## <a name="output-claims"></a>輸出宣告
+## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含 Azure AD 技術設定檔傳回的宣告清單。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。 只要設定了 `DefaultValue` 屬性，也可以加入 Azure Active Directory 未傳回的宣告。
 
@@ -253,7 +253,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要項 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |

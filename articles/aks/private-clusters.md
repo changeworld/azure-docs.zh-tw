@@ -4,12 +4,12 @@ description: 瞭解如何建立私用 Azure Kubernetes Service （AKS）叢集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649502"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944208"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
 
@@ -23,7 +23,7 @@ ms.locfileid: "77649502"
 > * [AKS 支援原則](support-policies.md)
 > * [Azure 支援常見問題集](faq.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure CLI 版2.0.77 或更新版本，以及 Azure CLI AKS Preview 延伸模組版本0.4.18
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>建立私用 AKS 叢集
 
+### <a name="create-a-resource-group"></a>建立資源群組
+
+建立資源群組，或為您的 AKS 叢集使用現有的資源群組。
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>預設基本網路 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ az aks create \
 > [!NOTE]
 > 如果 Docker 橋接器位址 CIDR （172.17.0.1/16）與子網 CIDR 衝突，請適當地變更 Docker 橋接器位址。
 
-## <a name="connect-to-the-private-cluster"></a>連接到私人叢集
+## <a name="options-for-connecting-to-the-private-cluster"></a>用來連接到私人叢集的選項
 
-API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路中建立 Azure 虛擬機器（VM），並連接到 API 伺服器。 若要這樣做，請執行下列動作：
+API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必須使用可存取 AKS 叢集之 Azure 虛擬網路（VNet）的 VM。 有數個選項可讓您建立與私人叢集的網路連線。
 
-1. 取得認證以連接到叢集。
+* 在與 AKS 叢集相同的 Azure 虛擬網路（VNet）中建立 VM。
+* 在不同的網路中使用 VM，並設定[虛擬網路對等互連][virtual-network-peering]。  如需此選項的詳細資訊，請參閱下一節。
+* 使用[Express Route 或 VPN][express-route-or-VPN]連線。
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+在與 AKS 叢集相同的 VNET 中建立 VM 是最簡單的選項。  Express Route 和 Vpn 增加了成本，而且需要額外的網路複雜性。  虛擬網路對等互連會要求您規劃網路 CIDR 範圍，以確保沒有重迭的範圍。
 
-1. 執行下列任一步驟：
-   * 在與 AKS 叢集相同的虛擬網路中建立 VM。  
-   * 請在不同的虛擬網路中建立 VM，並將此虛擬網路與 AKS 叢集虛擬網路對等互連。
+## <a name="virtual-network-peering"></a>虛擬網路對等互連
 
-     如果您在不同的虛擬網路中建立 VM，請設定此虛擬網路與私人 DNS 區域之間的連結。 若要這樣做：
+如前所述，VNet 對等互連是存取私人叢集的一種方式。 若要使用 VNet 對等互連，您需要設定虛擬網路與私人 DNS 區域之間的連結。
     
-     a. 移至 Azure 入口網站中的 MC_ * 資源群組。  
-     b. 選取私人 DNS 區域。   
-     c. 在左窗格中，選取 [**虛擬網路**] 連結。  
-     d. 建立新的連結，將 VM 的虛擬網路新增至私人 DNS 區域。 需要幾分鐘的時間，DNS 區域連結才會變成可用。  
-     e. 回到 Azure 入口網站中的 MC_ * 資源群組。  
-     f. 在右窗格中，選取 [虛擬網路]。 虛擬網路名稱的格式為*aks-vnet-\** 。  
-     g. 在左窗格中，選取 [**對等互連**]。  
-     h. 選取 [**新增**]，新增 VM 的虛擬網路，然後建立對等互連。  
-     i. 移至您擁有 VM 的虛擬網路，選取 [**對等互連**]，選取 [AKS] 虛擬網路，然後建立對等互連。 如果 AKS 虛擬網路上的位址範圍和 VM 的虛擬網路衝突，對等互連會失敗。 如需詳細資訊，請參閱[虛擬網路對等互連][virtual-network-peering]。
-
-1. 透過安全殼層（SSH）存取 VM。
-1. 安裝 Kubectl 工具，然後執行 Kubectl 命令。
-
+1. 移至 Azure 入口網站中的 MC_ * 資源群組。  
+2. 選取私人 DNS 區域。   
+3. 在左窗格中，選取 [**虛擬網路**] 連結。  
+4. 建立新的連結，將 VM 的虛擬網路新增至私人 DNS 區域。 需要幾分鐘的時間，DNS 區域連結才會變成可用。  
+5. 回到 Azure 入口網站中的 MC_ * 資源群組。  
+6. 在右窗格中，選取 [虛擬網路]。 虛擬網路名稱的格式為*aks-vnet-\** 。  
+7. 在左窗格中，選取 [**對等互連**]。  
+8. 選取 [**新增**]，新增 VM 的虛擬網路，然後建立對等互連。  
+9. 移至您擁有 VM 的虛擬網路，選取 [**對等互連**]，選取 [AKS] 虛擬網路，然後建立對等互連。 如果 AKS 虛擬網路上的位址範圍和 VM 的虛擬網路衝突，對等互連會失敗。 如需詳細資訊，請參閱[虛擬網路對等互連][virtual-network-peering]。
 
 ## <a name="dependencies"></a>相依性  
 * 僅標準 Azure Load Balancer 支援私用連結服務。 不支援基本 Azure Load Balancer。  
@@ -179,6 +181,8 @@ API 伺服器端點沒有公用 IP 位址。 因此，您必須在虛擬網路�
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

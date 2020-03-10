@@ -6,14 +6,14 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: eb1bde6bb58e3e5299311636f8222e2fc181ec5d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 61fdc2a4694405d4f56600b2d2b71e9e37232a7a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673309"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943254"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application-preview"></a>設定 Python 應用程式的 Azure 監視器（預覽）
+# <a name="set-up-azure-monitor-for-your-python-application"></a>設定 Python 應用程式的 Azure 監視器
 
 Azure 監視器透過與[OpenCensus](https://opencensus.io)的整合，支援 Python 應用程式的分散式追蹤、度量集合和記錄。 本文將逐步引導您完成設定 Python 的 OpenCensus，以及將您的監視資料傳送至 Azure 監視器的程式。
 

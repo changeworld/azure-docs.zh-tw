@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443851"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944080"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
 
@@ -30,7 +30,7 @@ ms.locfileid: "77443851"
 
 **設定執行階段堆疊時，在 [啟動檔案] 區段應該使用哪些值？**
 
-| Stack           | 預期的值                                                                         |
+| 堆疊           | 預期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | 用來啟動 JAR 應用程式的命令（例如，`java -jar /home/site/wwwroot/app.jar --server.port=80`） |
 | Tomcat          | 執行任何必要設定的腳本位置（例如，`/home/site/deployments/tools/startup_script.sh`）          |
@@ -40,7 +40,7 @@ ms.locfileid: "77443851"
 
 這些命令或腳本會在內建的 Docker 容器啟動後，但在您的應用程式程式碼啟動之前執行。
 
-## <a name="management"></a>管理性
+## <a name="management"></a>管理
 
 **當我按下 Azure 入口網站中的 [重新啟動] 按鈕時，會發生什麼事？**
 
@@ -66,7 +66,7 @@ ms.locfileid: "77443851"
 
 **是否支援預備環境？**
 
-是。
+是的。
 
 **我可以使用 *WebDeploy/MSDeploy* 來部署我的 Web 應用程式嗎？**
 
@@ -100,7 +100,7 @@ const io = require('socket.io')(server,{
 
 **是否支援未編譯的 .NET Core 應用程式？**
 
-是。
+是的。
 
 **您是否支援以 Composer 做為 PHP 應用程式的相依性管理程式？**
 
@@ -180,6 +180,10 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 我們會以標準 Azure App Service 定價，向您收取應用程式執行時數的費用。
 
 ## <a name="other-questions"></a>其他問題
+
+**「要求的功能在資源群組中無法使用」是什麼意思？**
+
+當您使用 Azure Resource Manager （ARM）建立 web 應用程式時，可能會看到此訊息。 根據目前的限制，針對相同的資源群組，您無法在相同的區域中混用 Windows 和 Linux 應用程式。
 
 **應用程式設定名稱所支援的字元為何？**
 

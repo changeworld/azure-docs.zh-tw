@@ -3,12 +3,12 @@ title: Azure Migrate Server 遷移常見問題
 description: 取得有關使用 Azure Migrate 伺服器遷移來遷移電腦的常見問題的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927525"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939197"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見的問題
 
@@ -53,11 +53,11 @@ ms.locfileid: "78927525"
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>我可以對 Azure Gen 2 進行無代理程式的 UEFI Vm 遷移嗎？
 
-否。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
+No。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>我可以在遷移時將 Vm 釘選到 Azure 可用性區域嗎？
 
-否。 Azure 可用性區域不支援 Azure Migrate 遷移。
+No。 Azure 可用性區域不支援 Azure Migrate 遷移。
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Azure Migrate 在複寫期間使用哪種傳輸通訊協定？
 
@@ -69,11 +69,24 @@ Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 SSL 加密。
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>客戶可以將其 Vm 遷移至非受控磁片嗎？
 
-否。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
+No。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>我可以使用無代理程式遷移一次複寫多少部 Vm？
 
 目前，您可以同時遷移每個 vCenter Server 實例的 100 Vm。 以10個 Vm 的批次進行遷移。
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>何時將機器遷移為實體伺服器？
+
+在許多情況下，將機器視為實體伺服器進行遷移，都有其效用：
+
+- 當您要遷移內部部署實體伺服器時。
+- 如果您要遷移由像是 Xen、KVM 等平臺虛擬化的 Vm。
+- 若要遷移 Hyper-v 或 VMware Vm，如果基於某些原因而無法使用[hyper-v](tutorial-migrate-hyper-v.md)或[vmware](server-migrate-overview.md)遷移的標準遷移程式。 例如，如果您不是執行 VMware vCenter，而且只使用 ESXi 主機。
+- 將目前正在私人雲端中執行的 Vm 遷移至 Azure
+- 如果您想要將在公用雲端中執行的 Vm （例如 Amazon Web Services （AWS）或 Google Cloud Platform （GCP））遷移至 Azure。
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>我需要 VMware vCenter 才能遷移 VMware Vm 嗎？
+若要使用 VMware 代理程式型或無代理程式遷移來[遷移 Vmware vm](server-migrate-overview.md) ，ESXi vm 所在的主機必須由 vCenter Server 管理。 如果您沒有 vCenter Server，可以藉由將 VMware Vm 作為實體伺服器遷移來進行遷移。 [詳細資訊](migrate-support-matrix-physical-migration.md)。
  
 ## <a name="next-steps"></a>後續步驟
 

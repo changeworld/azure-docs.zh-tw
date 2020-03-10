@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303268"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943956"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
 
@@ -91,7 +91,7 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指引**：針對連結至用來保護您 Azure HDInsight 叢集之子網的 NSG，啟用網路安全性群組（NSG） flog 記錄。 將 NSG 流量記錄錄製到 Azure 儲存體帳戶以產生流量記錄。 如果需要調查異常活動，請啟用 Azure 網路監看員封包捕獲。
+**指引**：針對連結至用來保護您 Azure HDInsight 叢集之子網的 NSG，啟用網路安全性群組（NSG）流量記錄。 將 NSG 流量記錄錄製到 Azure 儲存體帳戶以產生流量記錄。 如果需要調查異常活動，請啟用 Azure 網路監看員封包捕獲。
 
 
 如何啟用 NSG 流量記錄：
@@ -364,7 +364,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **責任**：客戶
 
-## <a name="identity-and-access-control"></a>身分識別與存取控制
+## <a name="identity-and-access-control"></a>識別和存取控制
 
 *如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 

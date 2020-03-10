@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374794"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 

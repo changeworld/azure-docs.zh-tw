@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649273"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942940"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
 
@@ -105,7 +105,7 @@ ms.locfileid: "77649273"
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何從 HTTP 回應移除標題？
 
-若要從 HTTP 回應移除標題，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要移除 HTTP 回應中的標頭，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service 是否符合 PCI 標準 3.0 和 3.1 的規範？
 
@@ -183,7 +183,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 ### <a name="f12-console-output"></a>F12 主控台輸出
 
 1. 選取 [主控台] 索引標籤。
-2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果沒有選取索引標籤，當您將資料指標移開該索引標籤時，索引標籤圖示是灰色或黑色。
+2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選取索引標籤，則當您將游標移離該索引標籤時，索引標籤圖示會是灰色或黑色。
 3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]。
 4. 在檔案中貼上複製的文字，然後儲存檔案。
 
@@ -212,7 +212,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 有時候，建立 App Service Environment 會失敗。 在此情況下，您會在活動記錄中看到下列錯誤：
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 若要解決此問題，請確定下列條件均不成立：
@@ -248,7 +248,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何針對使用流量管理員的 App Service Web 應用程式設定自訂網域名稱？
 
-若要深入了解如何搭配使用自訂網域名稱與 App Service 應用程式 (使用 Azure 流量管理員)，以進行負載平衡，請參閱[設定具有流量管理員之 Azure Web 應用程式的自訂網域名稱](web-sites-traffic-manager-custom-domain-name.md)。
+若要深入了解如何搭配使用自訂網域名稱與 App Service 應用程式 (使用 Azure 流量管理員)，以進行負載平衡，請參閱[設定具有流量管理員之 Azure Web 應用程式的自訂網域名稱](configure-domain-traffic-manager.md)。
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>我的 App Service 憑證標示為詐騙。 如何解決這個問題？
 
@@ -256,7 +256,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 在 App Service 憑證購買的網域驗證期間，您可能會看到下列訊息：
 
-「您的憑證已標示為可能詐騙。 要求目前正在進行檢閱。 如果憑證在 24 小時內無法成為可使用，請連絡 Azure 支援」。
+「您的憑證已標示為可能的詐欺。 要求目前正在進行檢閱。 如果憑證在 24 小時內無法成為可使用，請連絡 Azure 支援」。
 
 此訊息表示，這個詐騙驗證程序可能需要 24 小時才能完成。 在此期間，您將會持續看到訊息。
 
@@ -282,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何將預設 *.azurewebsites.net 網域重新導向至我的 Azure Web 應用程式的自訂網域？
 
-當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename.azurewebsites.net 網域會指派至您的網站。 如果您將自訂主機名稱新增至您的網站，且不想讓使用者能夠存取您的預設 *.azurewebsites.net 網域，您可以重新導向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename.azurewebsites.net 網域會指派至您的網站。 如果您將自訂主機名稱新增至您的網站，而不想讓使用者能夠存取您的預設 *. azurewebsites.net 網域，您可以重新導向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何判斷安裝在 App Service 中的是哪一個版本的 .NET？
 

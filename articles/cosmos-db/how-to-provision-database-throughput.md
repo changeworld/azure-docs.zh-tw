@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6b7ceca196831484e8f49482b8a18ac8648cac6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585470"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933764"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中佈建資料庫的輸送量
 
-本文說明如何在 Azure Cosmos DB 中佈建資料庫的輸送量。 您可以佈建單一[容器](how-to-provision-container-throughput.md)的輸送量，或是為資料庫佈建，並在其容器之間共用輸送量。 若要了解何時應使用容器層級和資料庫層級輸送量，請參閱[在容器和資料庫上佈建輸送量的使用案例](set-throughput.md)一文。 您可以使用 Azure 入口網站或 Azure Cosmos DB SDK 來佈建資料庫層級的輸送量。
+本文說明如何在 Azure Cosmos DB 中佈建資料庫的輸送量。 您可以佈建單一[容器](how-to-provision-container-throughput.md)的輸送量，或是為資料庫佈建，並在其容器之間共用輸送量。 若要瞭解使用容器層級和資料庫層級輸送量的時機，請參閱在[容器和資料庫上布建輸送量的使用案例](set-throughput.md)一文。 您可以使用 Azure 入口網站或 Azure Cosmos DB SDK 來佈建資料庫層級的輸送量。
 
 ## <a name="provision-throughput-using-azure-portal"></a>使用 Azure 入口網站佈建輸送量
 
@@ -30,7 +30,7 @@ ms.locfileid: "77585470"
    * 輸入資料庫識別碼。
    * 選取 [佈建輸送量]。
    * 輸入輸送量 (例如 1000 RU)。
-   * 選取 [確定]。
+   * 選取 **[確定]** 。
 
     ![[新增資料庫] 對話方塊的螢幕擷取畫面](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
@@ -65,7 +65,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs" id="DatabaseCreateWithThroughput":::
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 類似的命令可以透過任何 CQL 相容的驅動程式執行。 

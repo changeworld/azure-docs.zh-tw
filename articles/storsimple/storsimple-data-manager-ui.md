@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273973"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933747"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>在 Azure 入口網站中管理 StorSimple 資料管理員服務
 
@@ -48,7 +48,7 @@ ms.locfileid: "76273973"
     
    5. 若要在儀表板上取得此服務的連結，請選取 [釘選到儀表板]。
     
-   6. 按一下頁面底部的 [新增]。
+   6. 按一下 [建立]。
 
       ![建立 StorSimple 資料管理員服務 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "76273973"
 
    3. 在 [篩選] 子區段中，以 \MyRootDirectory\Data格式輸入感興趣資料所在的根目錄。 系統不支援 \C:\Data 之類的磁碟機代號。 您也可以在這裡新增任何檔案篩選。
 
-   4. 資料轉換服務會處理透過快照推送至 Azure 的資料。 執行此作業時，您可以選擇在每次執行此作業 (以處理最新資料) 時進行備份，或使用雲端中存在的最新備份 (如果您要處理一些封存資料)。
+   4. 資料轉換服務僅適用于推送至 Azure 之資料的最新快照集。
 
    5. 按一下 [確定]。
 
@@ -150,6 +150,11 @@ ms.locfileid: "76273973"
 4. 若要監視此作業，請移至 StorSimple 資料管理員中的 [作業]。 除了在 [作業] 刀鋒視窗中監視，您也可以聆聽儲存體佇列，每次有檔案從 StorSimple 移至儲存體帳戶時就會加入訊息。
 
     ![啟動作業執行 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>作業完成後查看記錄
+
+完成作業之後，您可以查看作業的狀態。 作業狀態可以是 [**成功**]、[**部分成功**] 和 [**失敗**]。 您可以查看已成功複製的檔案清單，以及無法複製的檔案。 這些清單可用於您目標儲存體帳戶中名為 **"joblogs"** 的容器。 在此容器中，您可以尋找名稱與您的作業定義相同的資料夾。 在此情況下，將會為每個包含您清單的工作執行建立一個資料夾。 此資料夾的名稱將會是作業的 GUID，您可以從 [作業詳細資料] 頁面取得。 或者，在大多數情況下，您會在 [作業] 頁面中看到複製記錄的連結。
+您會在此資料夾中看到2組 csv 檔案。 以**copiedfilelist**開頭的所有檔案都會包含成功複製檔案的清單。 以**failedfilelist**開頭的所有檔案都包含無法複製的檔案，以及錯誤訊息。
 
 
 ## <a name="next-steps"></a>後續步驟

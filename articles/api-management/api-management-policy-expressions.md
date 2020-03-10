@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845285"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374308"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理原則運算式
-本文討論7中的C#原則運算式語法。 每個運算式皆可存取以隱含方式提供的[內容](api-management-policy-expressions.md#ContextVariables)變數，以及允許的 .NET Framework 類型[子集](api-management-policy-expressions.md#CLRTypes)。
+本文討論7中的C#原則運算式語法。 每個運算式具有存取權以隱含方式提供[內容](api-management-policy-expressions.md#ContextVariables)變數並允許[子集](api-management-policy-expressions.md#CLRTypes)的.NET Framework 型別。
 
-詳細資訊：
+其他資訊：
 
 - 了解如何提供內容資訊給您的後端服務。 使用[設定查詢字串參數](api-management-transformation-policies.md#SetQueryStringParameter)和[設定 HTTP 標頭](api-management-transformation-policies.md#SetHTTPheader)原則來提供此資訊。
 - 了解如何使用[驗證 JWT](api-management-access-restriction-policies.md#ValidateJWT) 原則來根據權杖宣告預先授與作業的存取權。
@@ -76,137 +76,137 @@ ms.locfileid: "76845285"
 
 |類型|支援的成員|
 |--------------|-----------------------|
-|Newtonsoft。格式化|所有|
+|Newtonsoft。格式化|全部|
 |Newtonsoft. Json. Jsonconvert.deserializeobject|SerializeObject、DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|所有|
-|Newtonsoft.Json.Linq.JArray|所有|
-|Newtonsoft.Json.Linq.JConstructor|所有|
-|Newtonsoft.Json.Linq.JContainer|所有|
-|Newtonsoft.Json.Linq.JObject|所有|
-|Newtonsoft.Json.Linq.JProperty|所有|
-|Newtonsoft.Json.Linq.JRaw|所有|
-|Newtonsoft.Json.Linq.JToken|所有|
-|Newtonsoft.Json.Linq.JTokenType|所有|
-|Newtonsoft.Json.Linq.JValue|所有|
-|System.Array|所有|
-|System.bitconverter|所有|
-|System.Boolean|所有|
-|System.Byte|所有|
-|System.Char|所有|
-|< TKey，TValue > 的 Generic 字典|所有|
-|HashSet\<T >|所有|
-|\<T > 的 system.object|所有|
-|< TKey，TValue > 的一般 IDictionary|所有|
-|\<T > 的 system.object|所有|
-|\<T > 的 system.object|所有|
-|System.object\<T >|所有|
-|Ireadonlycollection t>\<T >|所有|
-|..Ireadonlydictionary<string < TKey，TValue >|所有|
-|Iset<t>\<T >|所有|
-|KeyValuePair < TKey，TValue >|所有|
-|\<T > 的清單|所有|
-|\<T > 的 system.object|所有|
-|\<T > 的 system.object|所有|
-|System.Convert|所有|
+|Newtonsoft.Json.Linq.Extensions|全部|
+|Newtonsoft.Json.Linq.JArray|全部|
+|Newtonsoft.Json.Linq.JConstructor|全部|
+|Newtonsoft.Json.Linq.JContainer|全部|
+|Newtonsoft.Json.Linq.JObject|全部|
+|Newtonsoft.Json.Linq.JProperty|全部|
+|Newtonsoft.Json.Linq.JRaw|全部|
+|Newtonsoft.Json.Linq.JToken|全部|
+|Newtonsoft.Json.Linq.JTokenType|全部|
+|Newtonsoft.Json.Linq.JValue|全部|
+|System.Array|全部|
+|System.BitConverter|全部|
+|System.Boolean|全部|
+|System.Byte|全部|
+|System.Char|全部|
+|System.Collections.Generic.Dictionary<TKey，TValue>|全部|
+|HashSet\<T >|全部|
+|\<T > 的 system.object|全部|
+|< TKey，TValue > 的一般 IDictionary|全部|
+|\<T > 的 system.object|全部|
+|\<T > 的 system.object|全部|
+|System.object\<T >|全部|
+|Ireadonlycollection t>\<T >|全部|
+|..Ireadonlydictionary<string < TKey，TValue >|全部|
+|Iset<t>\<T >|全部|
+|KeyValuePair < TKey，TValue >|全部|
+|\<T > 的清單|全部|
+|\<T > 的 system.object|全部|
+|\<T > 的 system.object|全部|
+|System.Convert|全部|
 |System.DateTime|（函式）、Add、AddDays、Time.addhours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、int32.maxvalue、毫秒、Minute、MinValue、Month、Now、Parse、Second、減法、刻度、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
-|System.DateTimeOffset|所有|
-|System.Decimal|所有|
-|System.Double|所有|
-|Exception|所有|
-|System.Guid|所有|
-|System.Int16|所有|
-|System.Int32|所有|
-|System.Int64|所有|
-|System.io.stringreader>|所有|
-|StringWriter|所有|
-|System.object|所有|
-|System.Math|所有|
-|System.MidpointRounding|所有|
-|System.Net.WebUtility|所有|
-|System。 Nullable|所有|
-|System.Random|所有|
-|System.SByte|所有|
-|Asymmetricalgorithm 之。|所有|
-|CipherMode。|所有|
-|System.Security.Cryptography.HashAlgorithm|所有|
-|HashAlgorithmName。|所有|
-|System.Security.Cryptography.HMAC|所有|
-|System.Security.Cryptography.HMACMD5|所有|
-|System.Security.Cryptography.HMACSHA1|所有|
-|System.Security.Cryptography.HMACSHA256|所有|
-|HMACSHA384。|所有|
-|HMACSHA512。|所有|
-|System.Security.Cryptography.KeyedHashAlgorithm|所有|
-|System.Security.Cryptography.MD5|所有|
-|System.web. 安全密碼編譯. Oid|所有|
-|PaddingMode。|所有|
-|System.Security.Cryptography.RNGCryptoServiceProvider|所有|
-|系統安全密碼編譯. RSA|所有|
-|RSAEncryptionPadding。|所有|
-|RSASignaturePadding。|所有|
-|System.Security.Cryptography.SHA1|所有|
-|System.Security.Cryptography.SHA1Managed|所有|
-|System.Security.Cryptography.SHA256|所有|
-|System.Security.Cryptography.SHA256Managed|所有|
-|System.Security.Cryptography.SHA384|所有|
-|System.Security.Cryptography.SHA384Managed|所有|
-|System.Security.Cryptography.SHA512|所有|
-|System.Security.Cryptography.SHA512Managed|所有|
-|System.security.cryptography.symmetricalgorithm。|所有|
-|System.security.cryptography.x509certificates.x509certificate2. PublicKey。|所有|
-|System.security.cryptography.x509certificates.x509certificate2. RSACertificateExtensions。|所有|
+|System.DateTimeOffset|全部|
+|System.Decimal|全部|
+|System.Double|全部|
+|System.Exception|全部|
+|System.Guid|全部|
+|System.Int16|全部|
+|System.Int32|全部|
+|System.Int64|全部|
+|System.io.stringreader>|全部|
+|StringWriter|全部|
+|System.object|全部|
+|System.Math|全部|
+|System.MidpointRounding|全部|
+|System.Net.WebUtility|全部|
+|System.Nullable|全部|
+|System.Random|全部|
+|System.SByte|全部|
+|Asymmetricalgorithm 之。|全部|
+|CipherMode。|全部|
+|System.Security.Cryptography.HashAlgorithm|全部|
+|HashAlgorithmName。|全部|
+|System.Security.Cryptography.HMAC|全部|
+|System.Security.Cryptography.HMACMD5|全部|
+|System.Security.Cryptography.HMACSHA1|全部|
+|System.Security.Cryptography.HMACSHA256|全部|
+|HMACSHA384。|全部|
+|HMACSHA512。|全部|
+|System.Security.Cryptography.KeyedHashAlgorithm|全部|
+|System.Security.Cryptography.MD5|全部|
+|System.web. 安全密碼編譯. Oid|全部|
+|PaddingMode。|全部|
+|System.Security.Cryptography.RNGCryptoServiceProvider|全部|
+|系統安全密碼編譯. RSA|全部|
+|RSAEncryptionPadding。|全部|
+|RSASignaturePadding。|全部|
+|System.Security.Cryptography.SHA1|全部|
+|System.Security.Cryptography.SHA1Managed|全部|
+|System.Security.Cryptography.SHA256|全部|
+|System.Security.Cryptography.SHA256Managed|全部|
+|System.Security.Cryptography.SHA384|全部|
+|System.Security.Cryptography.SHA384Managed|全部|
+|System.Security.Cryptography.SHA512|全部|
+|System.Security.Cryptography.SHA512Managed|全部|
+|System.security.cryptography.symmetricalgorithm。|全部|
+|System.security.cryptography.x509certificates.x509certificate2. PublicKey。|全部|
+|System.security.cryptography.x509certificates.x509certificate2. RSACertificateExtensions。|全部|
 |System.security.cryptography.x509certificates.x509certificate2. System.security.cryptography.x509certificates.x500distinguishedname。|名稱|
-|System.security.cryptography.x509certificates.x509certificate2. X509Certificate。|所有|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|所有|
-|System.security.cryptography.x509certificates.x509certificate2. X509ContentType。|所有|
-|System.security.cryptography.x509certificates.x509certificate2. X509NameType。|所有|
-|System.Single|所有|
-|System.String|所有|
-|StringComparer|所有|
-|StringComparison|所有|
-|System.StringSplitOptions|所有|
-|System.Text.Encoding|所有|
+|System.security.cryptography.x509certificates.x509certificate2. X509Certificate。|全部|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
+|System.security.cryptography.x509certificates.x509certificate2. X509ContentType。|全部|
+|System.security.cryptography.x509certificates.x509certificate2. X509NameType。|全部|
+|System.Single|全部|
+|System.String|全部|
+|System.StringComparer|全部|
+|System.StringComparison|全部|
+|System.StringSplitOptions|全部|
+|System.Text.Encoding|全部|
 |System.Text.RegularExpressions.Capture|索引、長度、值|
 |System.Text.RegularExpressions.CaptureCollection|計數、項目|
 |System.Text.RegularExpressions.Group|擷取、成功|
 |System.Text.RegularExpressions.GroupCollection|計數、項目|
 |System.Text.RegularExpressions.Match|空白、群組、結果|
 |System.Text.RegularExpressions.Regex|（函式）、IsMatch、比對、Match、Replace、Unescape、Split|
-|System.Text.RegularExpressions.RegexOptions|所有|
-|System.object|所有|
-|System.TimeSpan|所有|
-|系統時區|所有|
-|TimeZoneInfo. AdjustmentRule|所有|
-|TimeZoneInfo. TransitionTime|所有|
-|System.TimeZoneInfo|所有|
-|System.Tuple|所有|
-|System.UInt16|所有|
-|System.UInt32|所有|
-|System.UInt64|所有|
-|System.Uri|所有|
-|UriPartial|所有|
-|System.Xml.Linq.Extensions|所有|
-|System.Xml.Linq.XAttribute|所有|
-|System.Xml.Linq.XCData|所有|
-|System.Xml.Linq.XComment|所有|
-|System.Xml.Linq.XContainer|所有|
-|System.Xml.Linq.XDeclaration|所有|
+|System.Text.RegularExpressions.RegexOptions|全部|
+|System.Text.StringBuilder|全部|
+|System.TimeSpan|全部|
+|System.TimeZone|全部|
+|TimeZoneInfo. AdjustmentRule|全部|
+|TimeZoneInfo. TransitionTime|全部|
+|System.TimeZoneInfo|全部|
+|System.Tuple|全部|
+|System.UInt16|全部|
+|System.UInt32|全部|
+|System.UInt64|全部|
+|System.Uri|全部|
+|System.UriPartial|全部|
+|System.Xml.Linq.Extensions|全部|
+|System.Xml.Linq.XAttribute|全部|
+|System.Xml.Linq.XCData|全部|
+|System.Xml.Linq.XComment|全部|
+|System.Xml.Linq.XContainer|全部|
+|System.Xml.Linq.XDeclaration|全部|
 |System.Xml.Linq.XDocument|全部，但不包括： Load|
-|System.Xml.Linq.XDocumentType|所有|
-|System.Xml.Linq.XElement|所有|
-|System.Xml.Linq.XName|所有|
-|System.Xml.Linq.XNamespace|所有|
-|System.Xml.Linq.XNode|所有|
-|System.Xml.Linq.XNodeDocumentOrderComparer|所有|
-|System.Xml.Linq.XNodeEqualityComparer|所有|
-|System.Xml.Linq.XObject|所有|
-|System.Xml.Linq.XProcessingInstruction|所有|
-|System.Xml.Linq.XText|所有|
-|System.Xml.XmlNodeType|所有|
+|System.Xml.Linq.XDocumentType|全部|
+|System.Xml.Linq.XElement|全部|
+|System.Xml.Linq.XName|全部|
+|System.Xml.Linq.XNamespace|全部|
+|System.Xml.Linq.XNode|全部|
+|System.Xml.Linq.XNodeDocumentOrderComparer|全部|
+|System.Xml.Linq.XNodeEqualityComparer|全部|
+|System.Xml.Linq.XObject|全部|
+|System.Xml.Linq.XProcessingInstruction|全部|
+|System.Xml.Linq.XText|全部|
+|System.Xml.XmlNodeType|全部|
 
 ## <a name="ContextVariables"></a>內容變數
-名為 `context` 的變數可在每個原則[運算式](api-management-policy-expressions.md#Syntax)中隱含地使用。 其成員會提供與 `\request` 相關的資訊。 所有 `context` 成員都是唯讀的。
+變數，名為`context`隱含地使用每個原則[運算式](api-management-policy-expressions.md#Syntax)。 其成員會提供與 `\request` 相關的資訊。 所有 `context` 成員都是唯讀的。
 
 |內容變數|允許的方法、屬性和參數值|
 |----------------------|-------------------------------------------------------|

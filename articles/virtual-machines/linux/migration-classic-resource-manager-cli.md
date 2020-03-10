@@ -1,25 +1,19 @@
 ---
 title: 使用 Azure CLI 將 Vm 遷移至 Resource Manager
 description: 這篇文章提供使用 Azure CLI 進行平台支援之資源移轉 (從傳統移轉至 Azure Resource Manager) 的逐步解說
-services: virtual-machines-linux
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 5fbbaffea6b50e65e7e54992d1801945abb80b33
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914818"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945345"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager
 

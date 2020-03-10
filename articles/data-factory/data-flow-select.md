@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930236"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934172"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>對應資料流程選取轉換
 
@@ -55,6 +55,11 @@ ms.locfileid: "74930236"
 當您選擇以規則為基礎的對應時，您會指示 ADF 評估相符的運算式，以符合傳入模式規則並定義外寄功能變數名稱。 您可以新增欄位和以規則為基礎之對應的任意組合。 然後，ADF 會根據來源的傳入中繼資料，在執行時間產生功能變數名稱。 您可以在 debug 和使用 [資料預覽] 窗格期間, 查看所產生欄位的名稱。
 
 如需模式比對的詳細資訊，請[參閱資料行模式檔](concepts-data-flow-column-pattern.md)。
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>使用以規則為基礎的對應來參數化選取轉換
+您可以使用以規則為基礎的對應，將 [選取轉換] 中的欄位對應參數化。 使用關鍵字 ```name``` 來根據參數檢查傳入的資料行名稱。 例如，如果您有一個稱為的資料流程參數 ```mycolumn``` 您可以建立單一的 Select 轉換規則，一律以這種方式將任何您設定 ```mycolumn``` 的資料行名稱對應到功能變數名稱：
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>後續步驟
 * 使用 [選取] 來重新命名、重新排列和建立別名資料行之後，請使用 [[接收] 轉換](data-flow-sink.md)，將您的資料放入資料存放區中。

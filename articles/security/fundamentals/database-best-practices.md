@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927995"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943652"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 資料庫安全性最佳做法
 本文說明資料庫安全性的最佳作法。
 
-最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變, 而本文會定期更新以反映這些變更。
+最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而本文會定期更新以反映這些變更。
 
 ## <a name="secure-databases"></a>保護資料庫
 安全性是管理資料庫的最重要考量，而且向來是 [Azure SQL Database](../../sql-database/index.yml) 的優先考量。 您的資料庫可嚴加保護，有助於符合大多數法規或安全性需求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心網站](https://azure.microsoft.com/support/trust-center/services/)提供目前的安全性合規性認證清單。 您也可以法規要求作為基礎，選擇將資料庫放在特定的 Azure 資料中心。
@@ -120,7 +120,7 @@ Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Datab
 如需其他保護資料的方式，請考慮：
 
 - [儲存格層級加密](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) ，可利用不同的加密金鑰來加密特定的資料行或甚至是資料儲存格。
-- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 可讓用戶端在用戶端應用程式中將敏感性資料加密，且永遠不會對資料庫引擎 (SQL Database 或 SQL Server) 顯示加密金鑰。 因此，Always Encrypted 可將資料擁有者 (和可檢視者) 及資料管理者 (但無法存取資料) 分隔開來。
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 可讓用戶端在用戶端應用程式中將敏感性資料加密，且永遠不會對資料庫引擎 (SQL Database 或 SQL Server) 顯示加密金鑰。 如此一來，「永遠加密」在資料擁有者 (且可以檢視資料) 和資料管理者 (但應該不具備存取權) 之間做出區隔。
 - [資料列層級安全性](/sql/relational-databases/security/row-level-security)讓客戶能夠根據執行查詢的使用者特性，以控制對資料庫資料表中的資料列存取權。 (範例特性是群組成員資格和執行內容)。
 
 不使用資料庫層級加密的組織可能更容易受到攻擊，進而危害 SQL Database 中的資料。
@@ -146,17 +146,17 @@ Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Datab
 - 可在潛在威脅發生時隨即偵測出並予以回應，讓您可以快速地回應與補救。
 
 **最佳做法**：探索、分類資料庫中的敏感性資料並加上標籤。   
-**詳細資料**：可啟用 Azure SQL Database 中的[資料探索與分類](/azure/sql-database/sql-database-data-discovery-and-classification)，以將 SQL 資料庫中的資料分類。 您可以監視 Azure 儀表板中敏感性資料的存取或下載報表。
+**詳細資料**：可啟用 Azure SQL 資料庫中的[資料探索與分類](/azure/sql-database/sql-database-data-discovery-and-classification)，將 SQL 資料庫中的資料分類。 您可以監視 Azure 儀表板中敏感性資料的存取或下載報表。
 
 **最佳做法**：追蹤資料庫弱點，讓您可以主動改進資料庫安全性。   
-**詳細資料**：使用 Azure SQL Database [弱點評定](/azure/sql-database/sql-vulnerability-assessment)服務，掃描是否有潛在的資料庫弱點。 此服務採用的規則知識庫會對安全性弱點加上旗標，並顯示偏離最佳做法的情況，例如設定錯誤、權限過高以及敏感性資料未受保護。
+**詳細資料**：使用 Azure SQL Database [漏洞評量](/azure/sql-database/sql-vulnerability-assessment)服務，掃描是否有潛在的資料庫弱點。 此服務採用的規則知識庫會對安全性弱點加上旗標，並顯示偏離最佳做法的情況，例如設定錯誤、權限過高以及敏感性資料未受保護。
 
 規則是以 Microsoft 的最佳做法為基礎，並著重於顯示資料庫和其珍貴資料的最大安全性問題風險。 它們涵蓋了資料庫層級的問題以及伺服器層級的安全性問題，例如伺服器防火牆設定和伺服器層級權限。 這些規則也代表管理機關的許多要求以符合其合規性標準。
 
-**最佳做法**：啟用威脅偵測。  
-**詳細資料**：啟用 Azure SQL Database [威脅偵測](/azure/sql-database/sql-database-threat-detection)，以取得有關如何調查與降低威脅的安全性警示和建議。 您會收到可疑活動、潛在弱點、SQL 插入式攻擊以及異常資料庫存取和查詢模式的警示。
+**最佳做法**：啟用威脅偵測功能。  
+**詳細資料**：啟用 Azure SQL Database[威脅偵測](/azure/sql-database/sql-database-threat-detection)以取得有關如何調查與降低威脅的安全性警示和建議。 您會收到可疑活動、潛在弱點、SQL 插入式攻擊以及異常資料庫存取和查詢模式的警示。
 
-[進階威脅防護](/azure/sql-database/sql-advanced-threat-protection)是進階 SQL 安全性功能的整合套件。 其中包含先前所述的服務：資料探索與分類、弱點評定和威脅偵測。 此套件可讓您從單一點位置啟用及管理前述功能。
+[進階威脅防護](/azure/sql-database/sql-advanced-threat-protection)是進階 SQL 安全性功能的整合套件。 其中包含先前所述的服務：資料探索與分類、漏洞評量及威脅偵測。 此套件可讓您從單一點位置啟用及管理前述功能。
 
 啟用這些功能，可協助您：
 
@@ -166,10 +166,6 @@ Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Datab
 - 偵測並回應潛在威脅。
 
 此外，威脅偵測整合警示與 Azure 資訊安全中心，可以集中檢視所有 Azure 資源的安全性狀態。
-
-## <a name="enable-feature-restrictions"></a>啟用功能限制
-
-您的資料庫中所包含的資料, 可以使用利用資料庫錯誤和查詢執行時間的攻擊媒介, 向攻擊者公開。 Azure SQL Database 提供一些功能限制機制來保護您的資料庫。 若要深入瞭解, 請參閱[SQL Database 功能限制](/azure/sql-database/sql-database-feature-restrictions)。
 
 ## <a name="next-steps"></a>後續步驟
 如需更多安全性最佳做法，請參閱 [Azure 安全性最佳做法與模式](best-practices-and-patterns.md)，以便在使用 Azure 設計、部署和管理雲端解決方案時使用。

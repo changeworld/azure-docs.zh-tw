@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425352"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942883"
 ---
 # <a name="combined-security-information-registration-preview"></a>結合的安全性資訊註冊（預覽）
 
@@ -49,15 +49,16 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 |   | 註冊 | 變更 | 刪除 |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | 是（最多5個） | 否 | 是 |
+| Microsoft 驗證器 | 是（最多5個） | 否 | 是 |
 | 其他驗證器應用程式 | 是（最多5個） | 否 | 是 |
 | 硬體權杖 | 否 | 否 | 是 |
 | 電話 | 是 | 是 | 是 |
 | 備用手機 | 是 | 是 | 是 |
-| 辦公室電話 | 否 | 否 | 否 |
+| 公司電話 | 否 | 否 | 否 |
 | 電子郵件 | 是 | 是 | 是 |
 | 安全性問題 | 是 | 否 | 是 |
 | 應用程式密碼 | 是 | 否 | 是 |
+| FIDO2 安全性金鑰<br />*僅從 [[安全性資訊](https://mysignins.microsoft.com/security-info)] 頁面管理模式*| 是 | 是 | 是 |
 
 > [!NOTE]
 > 應用程式密碼僅適用于已強制執行多重要素驗證的使用者。 應用程式密碼無法供透過條件式存取原則啟用多重要素驗證的使用者使用。
@@ -95,7 +96,7 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 強制執行註冊時，會顯示使用者最少需要符合多重要素驗證和 SSPR 原則的最小數目，從大部分到最不安全。
 
-例如：
+例如，
 
 - 已啟用 SSPR 的使用者。 SSPR 原則需要兩個重設的方法，且已啟用行動裝置應用程式代碼、電子郵件和電話。
    - 這位使用者必須註冊兩種方法。

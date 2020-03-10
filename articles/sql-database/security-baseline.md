@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca8d0daf5b6d9bbad0d8fa24b4b150c5e6cd6b73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300905"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943644"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>適用于 Azure SQL Database 的 Azure 安全性基準
 
@@ -360,7 +360,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 **責任**：不適用
 
-## <a name="identity-and-access-control"></a>身分識別與存取控制
+## <a name="identity-and-access-control"></a>識別和存取控制
 
 *如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
@@ -812,10 +812,10 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 **指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括 Azure SQL Server 實例）。  請確定您的租使用者中有適當的（讀取）許可權，而且能夠列舉所有的 Azure 訂用帳戶以及您訂用帳戶內的資源。
 
 
-雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
+雖然可透過 Azure Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
 
-如何使用 Azure Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Resource Graph： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal 建立查詢
 
 
 如何查看您的 Azure 訂用帳戶： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
@@ -886,7 +886,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Resource Graph： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal 建立查詢
 
 **Azure 資訊安全中心監視**：不適用
 
