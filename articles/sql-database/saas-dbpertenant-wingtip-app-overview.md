@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 46cdcd5f768278dbc729f48e450c68a63be604be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822170"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359141"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>搭配 SQL Database 使用每一租用戶一個資料庫模式的多租用戶 SaaS 應用程式簡介
 
@@ -39,7 +39,7 @@ Wingtip SaaS 應用程式會使用每一租用戶一個資料庫的模型。 它
 部署應用程式之後，請瀏覽下列以初始部署為基礎的教學課程。 這些教學課程會探索常見的 SaaS 模式，這些模式會利用 SQL Database、「Azure SQL 資料倉儲」及其他 Azure 服務的內建功能。 教學課程包括 PowerShell 指令碼及詳細的說明。 這些說明可讓您更容易了解及在您應用程式中實作相同的 SaaS 管理模式。
 
 
-| 教學課程 | 說明 |
+| 教學課程 | 描述 |
 |:--|:--|
 | [SQL Database 多租用戶 SaaS 應用程式範例的指引和祕訣](saas-tenancy-wingtip-app-guidance-tips.md) | 下載並執行 PowerShell 指令碼，以準備應用程式的組件。 |
 |[部署及探索 Wingtip SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)|  使用您的 Azure 訂用帳戶來部署及探索 Wingtip SaaS 應用程式。 |

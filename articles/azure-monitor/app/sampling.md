@@ -6,11 +6,11 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361853"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -37,7 +37,7 @@ ms.locfileid: "77671489"
 | Azure Functions | [是（預設為開啟）](#configuring-adaptive-sampling-for-azure-functions) | 否 | 只有在沒有其他取樣生效時 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 只有在沒有其他取樣生效時 |
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 只有在沒有其他取樣生效時 |
-| 所有其他 | 否 | 否 | [是](#ingestion-sampling) |
+| All others | 否 | 否 | [是](#ingestion-sampling) |
 
 > [!NOTE]
 > 本頁面大部分的資訊適用于目前版本的 Application Insights Sdk。 如需舊版 Sdk 的詳細資訊，[請參閱下面的一節](#older-sdk-versions)。
@@ -506,7 +506,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *可以多次取樣遙測嗎？*
 
-* No。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 同時也適用于內嵌取樣，這不會對已在 SDK 本身取樣的專案套用取樣。
+* 否。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 同時也適用于內嵌取樣，這不會對已在 SDK 本身取樣的專案套用取樣。
 
 *為什麼不取樣簡單的「收集每個遙測類型百分之 X」？*
 

@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ms.openlocfilehash: ca223de2bc0b26e4968d400ea418761a399dacae
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364593"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>使用 R Azure SQL Database Machine Learning 服務（預覽）
 
@@ -38,11 +38,11 @@ ms.locfileid: "74462348"
 
 ### <a name="r-packages"></a>R 套件
 
-最常見的開放原始碼 R 套件會預先安裝在 Machine Learning 服務中。 下列來自 Microsoft 的 R 套件也包含在內：
+最常見的開放原始碼 R 套件會預先安裝在 Machine Learning 服務中。 此外，也包含下列來自 Microsoft 的 R 套件：
 
 | R 封裝 | 描述|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open 是 Microsoft 提供的增強版 R。 這是適用于統計分析和資料科學的完整開放原始碼平臺。 以 R 為基礎並百分之百與 R 相容，而且包含提升效能與重現性的額外功能。 |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open 是 Microsoft 提供的增強版 R。 其為一個適用於統計分析與資料科學的完整開放原始碼平台， 並以 R 為基礎而且與其 100% 相容，且包含可提升效能和重現性的額外功能。 |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR 是擴充 R 的主要程式庫，此程式庫的函式最廣泛受到使用。 在這些程式庫中，可以找到資料轉換和操作、統計摘要、視覺效果，以及多種形式的模型與分析。 此外，這些程式庫中的函式會自動將工作負載發散到可用的核心進行平行處理，且能夠在計算引擎協調與管理的資料區塊上運作。 |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML 新增機器學習演算法，可用來建立文字分析、影像分析和情緒分析的自訂模型。 |
 

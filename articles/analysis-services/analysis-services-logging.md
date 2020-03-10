@@ -8,11 +8,11 @@ ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375136"
 ---
 # <a name="setup-diagnostic-logging"></a>設定診斷記錄
 
@@ -53,9 +53,9 @@ ms.locfileid: "78248058"
 |查詢處理     |   直接查詢開始      |
 |查詢處理     |  直接查詢結束       |
 
-### <a name="service"></a>Service
+### <a name="service"></a>服務
 
-|作業名稱  |發生時間  |
+|作業名稱  |發生條件  |
 |---------|---------|
 |ResumeServer     |    恢復伺服器     |
 |SuspendServer    |   暫停伺服器      |
@@ -88,7 +88,7 @@ ms.locfileid: "78248058"
     * **服務**。 選取此選項可記錄服務層級事件。 如果您要封存至儲存體帳戶，可以為診斷記錄選取保留期限。 保留期限過後，就會自動刪除記錄。
     * **計量**。 選取此選項可儲存[計量](analysis-services-monitor.md#server-metrics)中的詳細資料。 如果您要封存至儲存體帳戶，可以為診斷記錄選取保留期限。 保留期限過後，就會自動刪除記錄。
 
-3. Haga clic en **Guardar**.
+3. 按一下 [檔案]。
 
     如果您收到錯誤，指出「無法更新 \<工作區名稱> 的診斷。 訂用帳戶 \<訂用帳戶識別碼> 未註冊為使用 microsoft.insights」， 請遵循[針對 Azure 診斷進行疑難排解](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)的指示註冊帳戶，然後重試此程序。
 
@@ -215,7 +215,7 @@ window
 
 在本快速教學課程中，您可以在與 Analysis Service 伺服器相同的訂用帳戶和資源群組中，建立儲存體帳戶。 接著，您可以使用 Set-azdiagnosticsetting 來開啟診斷記錄，並將輸出傳送至新的儲存體帳戶。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程，您必須具備下列資源：
 
 * 現有的 Azure Analysis Services 伺服器。 如需建立伺服器資源的指示，請參閱 [在 Azure 入口網站中建立伺服器](analysis-services-create-server.md)，或[使用 PowerShell 建立 Azure Analysis Services 伺服器](analysis-services-create-powershell.md)。
@@ -228,7 +228,7 @@ window
 Connect-AzAccount
 ```
 
-在快顯瀏覽器視窗中，輸入您的 Azure 帳戶使用者名稱和密碼。 Azure PowerShell 會取得與此帳戶相關聯的所有訂用帳戶，並依預設使用第一個訂用帳戶。
+在快顯瀏覽器視窗中，輸入您的 Azure 帳戶使用者名稱與密碼。 Azure PowerShell 會取得與此帳戶相關聯的所有訂用帳戶，並依預設使用第一個訂用帳戶。
 
 如果您有多個訂用帳戶，您可能必須指定用來建立 Azure 金鑰保存庫的那一個特定訂用帳戶。 輸入下列命令以查看您帳戶的訂用帳戶：
 

@@ -4,11 +4,11 @@ description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669670"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368306"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
@@ -99,10 +99,10 @@ ms.locfileid: "77669670"
 
 以下是您可以使用搜尋運算式：
 
-| 查詢範例 | 效果 |
+| 範例查詢 | 效果 |
 | --- | --- |
 | `apple` |在日期範圍中尋找欄位含有 "apple" 這個字的所有事件 |
-| `apple AND banana` <br/>`apple banana` |尋找同時含有這兩個字的事件。 請使用大寫 "AND"，而不是 "and"。 <br/>簡短形式。 |
+| `apple AND banana` <br/>`apple banana` |尋找同時含有這兩個字的事件。 請使用大寫 "AND"，而不是 "and"。 <br/>簡短格式。 |
 | `apple OR banana` |尋找含有任一單字的事件。 請使用 "OR"，而不是 "or"。 |
 | `apple NOT banana` |尋找含有一個字但不含另一個字的事件。 |
 

@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997032"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375709"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 應用程式 Proxy 連接器
 
@@ -160,7 +160,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-## <a name="under-the-hood"></a>幕後
+## <a name="under-the-hood"></a>背後原理
 
 連接器是以 Windows Server Web 應用程式 Proxy 為基礎，因此有大部分相同的管理工具，包括 Windows 事件記錄
 

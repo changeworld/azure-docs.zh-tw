@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290924"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376352"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步：再次執行安裝精靈
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步處理︰第二次執行安裝精靈
 第一次執行 Azure AD Connect 安裝精靈時，它會逐步引導您設定安裝。 如果您再次執行安裝精靈，它則會提供維護選項。
 
 >[!IMPORTANT]
@@ -32,7 +32,7 @@ ms.locfileid: "71290924"
 
 您可以在 [開始] 功能表中找到名為 **Azure AD Connect**的安裝精靈。
 
-![[開始] 功能表](./media/how-to-connect-installation-wizard/startmenu.png)
+![開始功能表](./media/how-to-connect-installation-wizard/startmenu.png)
 
 當您啟動安裝精靈時，您會看到具有下列選項的頁面︰
 
@@ -94,5 +94,5 @@ ms.locfileid: "71290924"
 
 **概觀主題**
 
-* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

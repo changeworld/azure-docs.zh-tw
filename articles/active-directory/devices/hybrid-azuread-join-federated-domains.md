@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672287"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教學課程：設定適用於同盟網域的混合式 Azure Active Directory Join
 
@@ -40,7 +40,7 @@ ms.locfileid: "76512125"
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務]   > [端點]  下方查看已啟用的端點。
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務] > [端點] 下方查看已啟用的端點。
 
 在本教學課程中，您會了解如何為使用 AD FS 的同盟環境中已加入 Active Directory 網域的電腦裝置設定混合式 Azure AD Join。
 
@@ -52,7 +52,7 @@ ms.locfileid: "76512125"
 > * 確認註冊
 > * 疑難排解
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已熟悉以下文章：
 
@@ -83,7 +83,7 @@ ms.locfileid: "76512125"
 
 從 Windows 10 1803 開始，如果使用 AD FS 的同盟網域的即時生效混合式 Azure AD Join 失敗，我們將依賴 Azure AD Connect 來同步 Azure AD 中後續要用來為混合式 Azure AD Join 完成裝置註冊的電腦物件。 確認 Azure AD Connect 已將您要加入混合式 Azure AD 之裝置的電腦物件同步處理至 Azure AD。 如果電腦物件屬於特定組織單位 (OU)，則您也必須在 Azure AD Connect 中設定 OU 進行同步處理。 若要深入了解如何使用 Azure AD Connect 同步處理電腦物件，請參閱[使用 Azure AD Connect 設定篩選](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
 
-如果組織需要透過輸出 Proxy 存取網際網路，Microsoft 建議[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 如果您在設定和管理 WPAD 方面遇到問題，請參閱[針對自動偵測進行疑難排解](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))。 
+如果組織需要透過輸出 Proxy 存取網際網路，Microsoft 建議[實作 Web Proxy 自動探索 (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 如果您在設定和管理 WPAD 方面遇到問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。 
 
 如果您未使用 WPAD 且想要在電腦上設定 Proxy 設定，您可以從 Windows 10 1709 開始執行操作。 如需詳細資訊，請參閱[使用群組原則物件 (GPO) 設定 WinHTTP 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) \(英文\)。
 
@@ -104,47 +104,47 @@ ms.locfileid: "76512125"
 
 **若要使用 Azure AD Connect 設定混合式 Azure AD Join**：
 
-1. 啟動 Azure AD Connect，然後選取 [設定]  。
+1. 啟動 Azure AD Connect，然後選取 [設定]。
 
    ![歡迎使用](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. 在 [其他工作]  頁面上選取 [設定裝置選項]  ，然後選取 [下一步]  。
+1. 在 [其他工作] 頁面上選取 [設定裝置選項]，然後選取 [下一步]。
 
    ![其他工作](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. 在 [概觀]  頁面上，選取 [下一步]  。
+1. 在 [概觀] 頁面上，選取 [下一步]。
 
-   ![概觀](./media/hybrid-azuread-join-federated-domains/13.png)
+   ![總覽](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. 在 [連線到 Azure AD]  頁面上，輸入 Azure AD 租用戶的全域管理員認證，然後選取 [下一步]  。
+1. 在 [連線到 Azure AD] 頁面上，輸入 Azure AD 租用戶的全域管理員認證，然後選取 [下一步]。
 
    ![連接至 Azure AD](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. 在 [裝置選項]  頁面上選取 [設定混合式 Azure AD Join]  ，然後選取 [下一步]  。
+1. 在 [裝置選項] 頁面上選取 [設定混合式 Azure AD Join]，然後選取 [下一步]。
 
    ![裝置選項](./media/hybrid-azuread-join-federated-domains/15.png)
 
-1. 在 [SCP]  頁面上執行下列步驟，然後選取 [下一步]  ：
+1. 在 [SCP] 頁面上執行下列步驟，然後選取 [下一步]：
 
    ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. 選取樹系。
    1. 選取驗證服務。 除非您的組織獨有 Windows 10 用戶端，而且您已設定電腦/裝置同步或您的組織使用無縫 SSO，否則您必須選取 **AD FS 伺服器**。
-   1. 選取 [新增]  ，並輸入企業系統管理員認證。
+   1. 選取 [新增]，並輸入企業系統管理員認證。
 
-1. 在 [裝置作業系統]  頁面上，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]  。
+1. 在 [裝置作業系統] 頁面上，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]。
 
    ![裝置作業系統](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. 在 [同盟組態]  頁面上輸入 AD FS 系統管理員的認證，然後選取 [下一步]  。
+1. 在 [同盟組態] 頁面上輸入 AD FS 系統管理員的認證，然後選取 [下一步]。
 
    ![同盟組態](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. 在 [準備設定]  頁面上，選取 [設定]  。
+1. 在 [準備設定] 頁面上，選取 [設定]。
 
    ![準備設定](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. 在 [設定完成]  頁面上，選取 [結束]  。
+1. 在 [設定完成] 頁面上，選取 [結束]。
 
    ![組態完成](./media/hybrid-azuread-join-federated-domains/20.png)
 
@@ -166,13 +166,13 @@ ms.locfileid: "76512125"
 - 組織的 STS (適用於同盟網域)
 - `https://autologon.microsoftazuread-sso.com` (適用於無縫 SSO)
 
-您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]  。
+您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]。
 
 ### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>為舊版 Windows 電腦安裝 Microsoft Workplace Join
 
 若要註冊舊版 Windows 裝置，組織必須安裝[適用於非 Windows 10 電腦的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。 適用於非 Windows 10 電腦的 Microsoft Workplace Join 可在 Microsoft 下載中心取得。
 
-您可以使用軟體發佈系統 (例如  [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
+您可以使用軟體發佈系統 (例如  [Microsoft Endpoint Configuration Manager](/configmgr/)) 來部署此套件。 此套件支援使用 `quiet` 參數的標準無訊息安裝選項。 組態管理員的目前分支會提供勝過舊版的好處，例如能夠追蹤已完成的註冊。
 
 安裝程式會在系統上建立排定的工作，此工作是在使用者內容中執行。 此工作會在使用者登入 Windows 時觸發。 此工作會在使用 Azure AD 進行驗證之後，利用使用者認證以無訊息方式向 Azure AD 加入裝置。
 
@@ -183,15 +183,15 @@ ms.locfileid: "76512125"
 使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
 
 - 必須要有**裝置識別碼**與 Windows 用戶端上的識別碼相符的物件存在。
-- **DeviceTrustType** 的值必須是 [已加入網域]  。 此設定相當於 Azure AD 入口網站中 [裝置]  下的 [已加入混合式 Azure AD]  狀態。
-- 在條件式存取中使用的裝置，[Enabled]  的值必須是 [True]  ，而 [DeviceTrustLevel]  必須是 [Managed]  。
+- **DeviceTrustType** 的值必須是 [已加入網域]。 此設定相當於 Azure AD 入口網站中 [裝置] 下的 [已加入混合式 Azure AD] 狀態。
+- 在條件式存取中使用的裝置，[Enabled] 的值必須是 [True]，而 [DeviceTrustLevel] 必須是 [Managed]。
 
 **若要查看服務詳細資料**：
 
 1. 以系統管理員身分開啟 Windows PowerShell。
 1. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。  
 1. 輸入 `get-msoldevice -deviceId <deviceId>`。
-1. 確認 [已啟用]  設為 [True]  。
+1. 確認 [已啟用] 設為 [True]。
 
 ## <a name="troubleshoot-your-implementation"></a>對您的實作進行疑難排解
 

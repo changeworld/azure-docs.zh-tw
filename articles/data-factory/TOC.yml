@@ -491,6 +491,8 @@
           href: data-flow-exists.md
         - name: Filter
           href: data-flow-filter.md
+        - name: 扁平化
+          href: data-flow-flatten.md
         - name: Join
           href: data-flow-join.md
         - name: 查閱
@@ -515,8 +517,6 @@
           href: data-flow-unpivot.md
         - name: 時間範圍
           href: data-flow-window.md
-        - name: 扁平化
-          href: data-flow-flatten.md
     - name: 參數化
       items:
         - name: 將已連結的服務參數化

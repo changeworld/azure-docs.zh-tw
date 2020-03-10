@@ -16,18 +16,18 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377416"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
 本指南將示範 JavaScript 單頁應用程式 (SPA) 如何執行下列動作：
 - 登入個人帳戶及公司和學校帳戶 
 - 取得存取權杖
-- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點  中存取權杖的 API
+- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
@@ -50,7 +50,7 @@ ms.locfileid: "77159875"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library for JavaScript 預覽|
 
 > [!NOTE]
-> Msal.js  的目標是「Microsoft 身分識別平台」端點，其可讓個人帳戶、學校及公司帳戶登入和取得權杖。 Microsoft 身分識別平台端點有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
+> Msal.js 的目標是「Microsoft 身分識別平台」端點，其可讓個人帳戶、學校及公司帳戶登入和取得權杖。 Microsoft 身分識別平台端點有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
 > 若要了解 v1.0 與 v2.0 端點之間的差異，請參閱[端點比較指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->
@@ -75,20 +75,20 @@ ms.locfileid: "77159875"
 
 ## <a name="create-your-project"></a>建立專案
 
-> ### <a name="option-1-nodejs-or-other-web-servers"></a>選項 1：Node.js 或其他網頁伺服器
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>選項1： node.js 或其他 web 伺服器
 > 請確定您已安裝 [Node.js](https://nodejs.org/en/download/)，然後建立資料夾來裝載您的應用程式。
 >
 > ### <a name="option-2-visual-studio"></a>選項 2：Visual Studio
 > 如果您使用 Visual Studio 並且建立新專案，請遵循下列步驟：
-> 1. 在 Visual Studio 中，選取 [檔案]   >  [新增]   >  [專案]  。
-> 1. 在 [Visual C#\Web]  底下，選取 [ASP.NET Web 應用程式 (.NET Framework)]  。
-> 1. 輸入應用程式的名稱，然後選取 [確定]  。
-> 1. 在 [新增 ASP.NET Web 應用程式]  底下，選取 [空白]  。
+> 1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。
+> 1. 在 [Visual C#\Web] 底下，選取 [ASP.NET Web 應用程式 (.NET Framework)]。
+> 1. 輸入應用程式的名稱，然後選取 [確定]。
+> 1. 在 [新增 ASP.NET Web 應用程式] 底下，選取 [空白]。
 
 ## <a name="create-the-spa-ui"></a>建立 SPA UI
-1. 為您的 JavaScript SPA 建立 *index.html* 檔案。 如果您使用 Visual Studio，請選取專案 (專案根資料夾)。 以滑鼠右鍵按一下並選取 [新增]   > [新增項目]   > [HTML 頁面]  ，並將檔案命名為 index.html  。
+1. 為您的 JavaScript SPA 建立 *index.html* 檔案。 如果您使用 Visual Studio，請選取專案 (專案根資料夾)。 以滑鼠右鍵按一下並選取 [新增] > [新增項目] > [HTML 頁面]，並將檔案命名為 index.html。
 
-1. 在 index.html  檔案中，新增下列程式碼：
+1. 在 index.html 檔案中，新增下列程式碼：
 
    ```html
    <!DOCTYPE html>
@@ -260,19 +260,19 @@ ms.locfileid: "77159875"
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細資訊
 
-在使用者第一次選取 [登入]  按鈕之後，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 這個方法會開啟「Microsoft 身分識別平台端點」  的快顯視窗，以提示及驗證使用者的認證。 成功登入之後，使用者會重新導回到原本的 index.html  頁面。 系統會收到權杖 (由 `msal.js` 進行處理)，並快取權杖中包含的資訊。 此權杖也稱為「ID 權杖」  且包含使用者的基本資訊，例如使用者顯示名稱。 如果您打算將此權杖所提供的任何資料用於任何目的，您必須確定後端伺服器已驗證此權杖，以保證權杖是發給您應用程式的有效使用者。
+在使用者第一次選取 [登入] 按鈕之後，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 這個方法會開啟「Microsoft 身分識別平台端點」的快顯視窗，以提示及驗證使用者的認證。 成功登入之後，使用者會重新導回到原本的 index.html 頁面。 系統會收到權杖 (由 `msal.js` 進行處理)，並快取權杖中包含的資訊。 此權杖也稱為「ID 權杖」且包含使用者的基本資訊，例如使用者顯示名稱。 如果您打算將此權杖所提供的任何資料用於任何目的，您必須確定後端伺服器已驗證此權杖，以保證權杖是發給您應用程式的有效使用者。
 
-本指南所產生的 SPA 會呼叫 `acquireTokenSilent` 和/或 `acquireTokenPopup`，以取得用來查詢 Microsoft Graph API 中使用者設定檔資訊的「存取權杖」  。 如果您需要可驗證 ID 權杖的範例，請參閱 GitHub 中的[這個](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 範例")範例應用程式。 此範例使用 ASP.NET Web API 進行權杖驗證。
+本指南所產生的 SPA 會呼叫 `acquireTokenSilent` 和/或 `acquireTokenPopup`，以取得用來查詢 Microsoft Graph API 中使用者設定檔資訊的「存取權杖」。 如果您需要可驗證 ID 權杖的範例，請參閱 GitHub 中的[這個](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 範例")範例應用程式。 此範例使用 ASP.NET Web API 進行權杖驗證。
 
 #### <a name="getting-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent  以取得權杖。 但是，您有可能必須強制使用者與 Microsoft 身分識別平台端點互動。 範例包括：
+初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent 以取得權杖。 但是，您有可能必須強制使用者與 Microsoft 身分識別平台端點互動。 範例包括：
 
 - 使用者需要重新輸入其認證，因為密碼已過期。
 - 您的應用程式要求資源存取權，而您需要使用者同意。
 - 需要雙因素驗證。
 
-呼叫 acquireTokenPopup  開啟快顯視窗 (或呼叫 acquireTokenRedirect  將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
+呼叫 acquireTokenPopup 開啟快顯視窗 (或呼叫 acquireTokenRedirect 將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
 
 #### <a name="getting-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
@@ -306,7 +306,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>針對受保護 API 進行 REST 呼叫的相關詳細資訊
 
-在使用此指南建立的範例應用程式中，使用 `callMSGraph()` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該要求會將內容傳回給呼叫端。 此方法會在「HTTP 授權標頭」  中加入取得的權杖。 對於本指南建立的範例應用程式，資源為 Microsoft Graph API 的 me  端點，其會顯示使用者的設定檔資訊。
+在使用此指南建立的範例應用程式中，使用 `callMSGraph()` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該要求會將內容傳回給呼叫端。 此方法會在「HTTP 授權標頭」中加入取得的權杖。 對於本指南建立的範例應用程式，資源為 Microsoft Graph API 的 me 端點，其會顯示使用者的設定檔資訊。
 
 <!--end-collapse-->
 
@@ -329,40 +329,40 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
 1. 移至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. [註冊應用程式]  頁面出現時，輸入您應用程式的名稱。
-1. 在 [支援的帳戶類型]  底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  。
-1. 在 [重新導向 URI]  區段中，從下拉式清單中選取 [Web]  平台，然後根據您的網頁伺服器，將值設定為應用程式的 URL。
+1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
+1. 在 [重新導向 URI] 區段中，從下拉式清單中選取 [Web] 平台，然後根據您的網頁伺服器，將值設定為應用程式的 URL。
 
    若要了解如何設定及取得適用於 Node.js 和 Visual Studio 的重新導向 URL，請參閱下列「設定適用於 Node.js 的重新導向 URL」一節，以及[設定適用於 Visual Studio 的重新導向 URL](#set-a-redirect-url-for-visual-studio)。
 
-1. 選取 [註冊]  。
-1. 在應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
-1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]  。
-1. 在 [進階設定]  的 [隱含授與]  底下，選取 [識別碼權杖]  和 [存取權杖]  核取方塊。 因為此應用程式必須將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
-1. 選取 [儲存]  。
+1. 選取 [註冊]。
+1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
+1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
+1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 因為此應用程式必須將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
+1. 選取 [儲存]。
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>設定 Node.js 的重新導向 URL
-> 對於 Node.js，您可以在 server.js  檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 30662，但您可以使用任何其他可用的連接埠。
+> 對於 Node.js，您可以在 server.js 檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 30662，但您可以使用任何其他可用的連接埠。
 >
-> 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊]  窗格，並且執行下列其中一項作業：
+> 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊] 窗格，並且執行下列其中一項作業：
 >
-> - 將 `http://localhost:30662/`  設定為 [重新導向 URL]  。
-> - 如果您使用自訂 TCP 連接埠，請使用 `http://localhost:<port>/`  (其中 \<port>  是自訂 TCP 連接埠號碼)。
+> - 將 *`http://localhost:30662/`* 設定為 [重新導向 URL]。
+> - 如果您使用自訂 TCP 連接埠，請使用 *`http://localhost:<port>/`* (其中 *port>\<* 是自訂 TCP 連接埠號碼)。
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>設定 Visual Studio 的重新導向 URL
 > 若要取得適用於 Visual Studio 的重新導向 URL，請遵循下列步驟：
 > 1. 在 [方案總管] 中選取專案。
 >
->    [屬性]  視窗隨即開啟。 如果未開啟，請按下 F4。
+>    [屬性] 視窗隨即開啟。 如果未開啟，請按下 F4。
 >
 >    ![[JavaScriptSPA 專案屬性] 視窗](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
 >
-> 1. 複製 [URL]  值。
-> 1. 切換回 [應用程式註冊]  窗格，並貼上複製的值作為 [重新導向 URL]  。
+> 1. 複製 [URL] 值。
+> 1. 切換回 [應用程式註冊] 窗格，並貼上複製的值作為 [重新導向 URL]。
 
 #### <a name="configure-your-javascript-spa"></a>設定您的 JavaScript SPA
 
-1. 在於專案設定期間建立的 index.html  檔案中，新增應用程式註冊資訊。 在檔案頂端的 `<script></script>` 標記內，新增下列程式碼：
+1. 在於專案設定期間建立的 index.html 檔案中，新增應用程式註冊資訊。 在檔案頂端的 `<script></script>` 標記內，新增下列程式碼：
 
     ```javascript
     var msalConfig = {
@@ -380,9 +380,9 @@ function callMSGraph(theUrl, accessToken, callback) {
     其中：
     - *\<Enter_the_Application_Id_here>* 是您所註冊應用程式的**應用程式 (用戶端) 識別碼**。
     - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
-       - 如果您的應用程式支援 [此組織目錄中的帳戶]  ，請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如，contoso.microsoft.com  )。
-       - 如果您的應用程式支援 [任何組織目錄中的帳戶]  ，請將此值取代為 [組織]  。
-       - 如果您的應用程式支援 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  ，請將此值取代為 [通用]  。 若要將支援範圍限制為 [僅限個人 Microsoft 帳戶]  ，請將此值取代為 [取用者]  。
+       - 如果您的應用程式支援 [此組織目錄中的帳戶]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如，contoso.microsoft.com)。
+       - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 [組織]。
+       - 如果您的應用程式支援 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]，請將此值取代為 [通用]。 若要將支援範圍限制為 [僅限個人 Microsoft 帳戶]，請將此值取代為 [取用者]。
 
 ## <a name="test-your-code"></a>測試您的程式碼
 
@@ -398,15 +398,15 @@ function callMSGraph(theUrl, accessToken, callback) {
     npm install
     node server.js
     ```
-1. 在您的瀏覽器中，輸入 **http://\<span>\</span>localhost:30662** or **http://\<span>\</span>localhost:{port}** ，其中 port  是您的網頁伺服器正在接聽的連接埠。 您應該會看到 index.html  檔案和 [登入]  按鈕。
+1. 在您的瀏覽器中，輸入 **http://\<span>\</span>localhost:30662** or **http://\<span>\</span>localhost:{port}** ，其中 port 是您的網頁伺服器正在接聽的連接埠。 您應該會看到 index.html 檔案和 [登入] 按鈕。
 
 ### <a name="test-with-visual-studio"></a>使用 Visual Studio 進行測試
 
-如果您使用 Visual Studio，請選取專案解決方案並且按 F5 來執行專案。 瀏覽器會開啟至 http://<span></span>localhost:{port} 位置，而且您應該會看到 [登入]  按鈕。
+如果您使用 Visual Studio，請選取專案解決方案並且按 F5 來執行專案。 瀏覽器會開啟至 http://<span></span>localhost:{port} 位置，而且您應該會看到 [登入] 按鈕。
 
 ## <a name="test-your-application"></a>測試您的應用程式
 
-在瀏覽器載入您的 index.html  檔案之後，請選取 [登入]  。 系統會提示您使用 Microsoft 身分識別平台端點登入：
+在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
 
 ![JavaScript SPA 帳戶登入視窗](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -425,14 +425,14 @@ function callMSGraph(theUrl, accessToken, callback) {
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 
-Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Calendars.Read  範圍才能列出使用者的行事曆。
+Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Calendars.Read 範圍才能列出使用者的行事曆。
 
-為了在應用程式內容中存取使用者的行事曆，請將 Calendars.Read  委派權限新增至應用程式註冊資訊。 接著，將 Calendars.Read  範圍新增至 `acquireTokenSilent` 呼叫。
+為了在應用程式內容中存取使用者的行事曆，請將 Calendars.Read 委派權限新增至應用程式註冊資訊。 接著，將 Calendars.Read 範圍新增至 `acquireTokenSilent` 呼叫。
 
 >[!NOTE]
 >系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
-如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId  作為範圍以取得權杖。
+如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId 作為範圍以取得權杖。
 
 <!--end-collapse-->
 

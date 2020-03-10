@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361848"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器（預覽）
 
@@ -68,7 +68,7 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 | 參數 | 描述 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
-| -s | 執行無訊息安裝，不會出現任何使用者提示。 |
+| -S | 執行無訊息安裝，不會出現任何使用者提示。 |
 | --check | 檢查權限和作業系統，但不會安裝代理程式。 |
 
 例如，若要使用 `-help` 參數執行安裝程式，請輸入**installdependencyagent-linux64.bin (** 。
@@ -79,7 +79,7 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案 | 位置 |
+| 檔案 | Location |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |

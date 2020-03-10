@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379361"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理程式和 IoT Edge 中樞模組對應項的屬性
 
@@ -31,7 +31,7 @@ IoT Edge 代理程式和 IoT Edge 中樞是構成 IoT Edge 執行階段的兩個
 
 IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝置與 IoT 中樞上執行之 IoT Edge 代理程式之間的通訊。 在單一裝置或規模部署時，在特定裝置上套用部署資訊清單時，會設定預期屬性。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必須為「1.0」 | 是 |
 | runtime.type | 必須為「docker」 | 是 |
@@ -74,13 +74,13 @@ IoT Edge 代理程式報告屬性包含三個主要部分資訊：
 
 下表不包含從預期屬性複製的資訊。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整數代表 IoT Edge 代理程式處理之所需屬性的最後版本。 |
 | lastDesiredStatus.code | 此狀態碼會參考 IoT Edge 代理程式看到的最後所需屬性。 允許的值：`200` 成功、`400` 無效的設定、`412` 無效的結構描述版本、`417` 預期屬性是空的、`500` 失敗 |
 | lastDesiredStatus.description | 狀態的文字描述 |
-| deviceHealth | 如果所有模組的執行階段狀態為 `running`、`stopped` 時，則為 `healthy`，否則為 `unhealthy` |
-| configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 設定之所有模組的執行階段狀態為 `running` 或 `stopped` 時，則為 `healthy`，否則為 `unhealthy` |
+| deviceHealth | 如果所有模組的執行階段狀態為 `healthy`、`running` 時，則為 `stopped`，否則為 `unhealthy` |
+| configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 設定之所有模組的執行階段狀態為 `healthy` 或 `running` 時，則為 `stopped`，否則為 `unhealthy` |
 | runtime.platform.OS | 報告裝置上執行的作業系統 |
 | runtime.platform.architecture | 報告裝置上的 CPU 架構 |
 | systemModules.edgeAgent.runtimeStatus | IoT Edge 代理程式的報告狀態：{"running" \| "unhealthy"} |
@@ -104,7 +104,7 @@ IoT Edge 代理程式報告屬性包含三個主要部分資訊：
 
 IoT Edge 中樞的模組對應項稱為 `$edgeHub`，並且會協調裝置與 IoT 中樞上執行之 IoT Edge 中樞之間的通訊。 在單一裝置或規模部署時，在特定裝置上套用部署資訊清單時，會設定預期屬性。
 
-| 屬性 | 說明 | 部署資訊清單中的必要項目 |
+| 屬性 | 描述 | 部署資訊清單中的必要項目 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必須為「1.0」 | 是 |
 | routes.{routeName} | 字串，表示 IoT Edge 中樞路由。 如需詳細資訊，請參閱宣告[路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但為空白。 |
@@ -112,7 +112,7 @@ IoT Edge 中樞的模組對應項稱為 `$edgeHub`，並且會協調裝置與 Io
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub 的報告屬性
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整數代表 IoT Edge 中樞處理之所需屬性的最後版本。 |
 | lastDesiredStatus.code | 狀態碼，參考 IoT Edge 中樞所看到的最後所需屬性。 允許的值：`200` 成功、`400` 無效的設定、`500` 失敗 |

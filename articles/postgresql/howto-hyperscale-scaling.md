@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453045"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363399"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>調整超大規模資料庫（Citus）伺服器群組
 
@@ -36,7 +36,7 @@ ms.locfileid: "75453045"
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-函數會重新平衡其引數中名為之資料表的[共置群組](concepts-hyperscale-colocation.md)中的所有資料表。`rebalance_table_shards` 因此，您不需要針對每個分散式資料表呼叫函數，只要在每個共置群組的代表性資料表上呼叫它即可。
+`rebalance_table_shards` 函數會重新平衡其引數中名為之資料表的[共置](concepts-hyperscale-colocation.md)群組中的所有資料表。 因此，您不需要針對每個分散式資料表呼叫函數，只要在每個共置群組的代表性資料表上呼叫它即可。
 
 ## <a name="increase-vcores"></a>增加虛擬核心
 

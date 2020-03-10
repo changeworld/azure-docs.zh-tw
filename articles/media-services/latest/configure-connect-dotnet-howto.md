@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899897"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359491"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
 
 本文說明如何使用服務主體登入方法來連接到 Azure 媒體服務 v3 .NET SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱
 - 安裝您想要用於 .NET 開發的工具。 本文中的步驟示範如何使用[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，請[參閱C#使用](https://code.visualstudio.com/docs/languages/csharp)。 或者，您可以使用不同的程式碼編輯器。
@@ -40,7 +40,7 @@ ms.locfileid: "74899897"
 
 本主題中的範例應用程式是以 `netcoreapp2.0`為目標。 程式碼會使用「非同步 main」，從C# 7.1 開始提供。 如需詳細資訊，請參閱此[blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) 。
 
-## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
+## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 套件
 
 1. 在 Visual Studio 中，選取 [**工具**] > **nuget 套件管理員** > [ **nuget 管理員主控台**]。
 2. 在 [**套件管理員主控台**] 視窗中，使用 `Install-Package` 命令來新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [使用媒體服務建立篩選 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [搭配使用 Azure Functions v2 與媒體服務 v3 的進階影片隨選範例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 如需更多程式碼範例，請參閱[.NET SDK 範例](https://github.com/Azure-Samples/media-services-v3-dotnet)存放庫。

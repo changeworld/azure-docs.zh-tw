@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422591"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376681"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
@@ -65,7 +65,7 @@ ms.locfileid: "75422591"
 
 委派之後，行銷部門可能會有類似下表的角色。
 
-| User | 工作角色 | Azure AD 角色 | 權利管理角色 |
+| User | 作業角色 | Azure AD 角色 | 權利管理角色 |
 | --- | --- | --- | --- |
 | Hana | IT 管理員 | 全域管理員或使用者管理員 |  |
 | Mamta | 行銷經理 | User | 目錄建立者和目錄擁有者 |
@@ -76,7 +76,7 @@ ms.locfileid: "75422591"
 
 權利管理具有下列專屬於權利管理的角色。
 
-| 權利管理角色 | 說明 |
+| 權利管理角色 | 描述 |
 | --- | --- |
 | 目錄建立者 | 建立和管理目錄。 通常是不是全域管理員的 IT 系統管理員，或是資源集合的資源擁有者。 建立類別目錄的人員會自動成為目錄的第一個目錄擁有者，而且可以新增其他目錄擁有者。 目錄建立者無法管理或查看其未擁有的類別目錄，也無法將其本身未擁有的資源新增至目錄。 如果目錄建立者需要管理另一個類別目錄，或新增其未擁有的資源，他們可以要求成為該目錄或資源的共同擁有者。 |
 | 目錄擁有者 | 編輯和管理現有的目錄。 通常是 IT 系統管理員或資源擁有者，或是目錄擁有者已指定的使用者。 |
@@ -84,10 +84,10 @@ ms.locfileid: "75422591"
 
 此外，指定的核准者和存取套件的要求者也具有許可權，但它們並不是角色。
 
-| Right | 說明 |
+| Right | 描述 |
 | --- | --- |
 | 核准者 | 由原則授權以核准或拒絕存取封裝的要求，但無法變更存取套件定義。 |
-| Requestor | 由存取封裝的原則授權，以要求該存取封裝。 |
+| 申請者 | 由存取封裝的原則授權，以要求該存取封裝。 |
 
 下表列出權利管理角色可以執行的工作。
 

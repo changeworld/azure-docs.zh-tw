@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895823"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366874"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 動態加密和金鑰傳遞服務
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ ms.locfileid: "74895823"
 
 下圖示範上述的工作流程。 這裡的權杖用於驗證。
 
-![以 AES-128 保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![利用 AES 128 保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 本文的其餘部分會提供說明、程式碼範例，以及示範如何達成上述工作之主題的連結。
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364548"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure 串流分析輸出至 Azure Cosmos DB  
 Azure 串流分析可以將 JSON 輸出的目標設為[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ，針對非結構化 JSON 資料啟用資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。
@@ -105,10 +105,10 @@ Azure Cosmos DB 輸出的輸送量與1.0 和1.1 相同。 我們*強烈建議*�
 
 ![Azure Cosmos DB 輸出資料流程的資訊欄位](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|欄位           | 說明|
+|欄位           | 描述|
 |-------------   | -------------|
 |輸出別名    | 在您的串流分析查詢中參照此輸出的別名。|
-|訂閱    | Azure 訂用帳戶。|
+|訂用帳戶    | Azure 訂用帳戶。|
 |帳戶識別碼      | Azure Cosmos DB 帳戶的名稱或端點 URI。|
 |帳戶金鑰     | Azure Cosmos DB 帳戶的共用存取金鑰。|
 |資料庫        | Azure Cosmos DB 資料庫名稱。|

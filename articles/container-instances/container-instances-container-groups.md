@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364993"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances 中的容器群組
 
@@ -64,7 +64,7 @@ Azure 容器實例會藉由新增群組中實例的[資源要求][resource-reque
 
 * 如需容器群組中的資源**上限**，請參閱部署區域中 Azure 容器實例的[資源可用性][region-availability]。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 容器群組可以共用對外 IP 位址、該 IP 位址上的一或多個埠，以及具有完整功能變數名稱（FQDN）的 DNS 標籤。 若要讓外部用戶端能夠連線到該群組內的容器，您必須從該容器公開該 IP 位址上的連接埠。 因為群組中的容器會共用埠命名空間，所以不支援埠對應。 刪除容器群組時，將會釋放容器群組的 IP 位址和 FQDN。 
 
@@ -82,7 +82,7 @@ Azure 容器實例會藉由新增群組中實例的[資源要求][resource-reque
 
 您可以將這些磁碟區對應到群組之個別容器內的特定路徑。 
 
-## <a name="common-scenarios"></a>一般狀況
+## <a name="common-scenarios"></a>常見的案例
 
 如果您想要將單一功能性工作分割成少量的容器映像，多個容器的群組會很實用。 然後，這些映像就可以由不同小組傳遞，且具有個別的資源需求。
 

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516679"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365579"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>部署 StorSimple Virtual Array 的 StorSimple 裝置管理員服務
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -73,7 +73,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 1. 移至 [所有資源]。 搜尋您的 StorSimple 裝置管理員服務。 選取您想要刪除的服務。
    
     ![選取要刪除的服務](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. 移至服務儀表板，確保沒有裝置連接至此服務。 如果沒有裝置向此服務註冊，您也會看到相關的橫幅訊息。 按一下 [刪除]。
+2. 移至服務儀表板，確保沒有裝置連接至此服務。 如果沒有裝置向此服務註冊，您也會看到相關的橫幅訊息。 按一下 **[刪除]** 。
    
     ![刪除服務](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
@@ -94,7 +94,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 執行下列步驟以取得服務註冊金鑰。
 
 #### <a name="to-get-the-service-registration-key"></a>若要取得服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]中，移至 [管理] **&gt;** [金鑰]。
+1. 在**StorSimple Device Manager**  分頁中，移至 **管理 &gt;** **金鑰**。
    
    ![[金鑰] 刀鋒視窗](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. [金鑰] 刀鋒視窗中會顯示服務註冊金鑰。 使用複製圖示來複製註冊金鑰。 
@@ -107,7 +107,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 執行下列步驟以重新產生服務註冊金鑰。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]中，移至 [管理] **&gt;** [金鑰]。
+1. 在**StorSimple Device Manager**  分頁中，移至 **管理 &gt;** **金鑰**。
    
    ![[金鑰] 刀鋒視窗](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. 在 [金鑰] 刀鋒視窗中，按一下 [重新產生]。

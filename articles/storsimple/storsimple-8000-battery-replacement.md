@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365785"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的備份電池模組
 
@@ -39,7 +39,7 @@ StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安
    
     **圖 1** 顯示 PCM 和控制器模組的主要裝置背面
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -52,7 +52,7 @@ StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安
    
     **圖 2** 顯示監視指示器 LED 的 PCM 背面
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    |:--- |:--- |
    | 1 |AC 電源故障 |
    | 2 |風扇故障 |

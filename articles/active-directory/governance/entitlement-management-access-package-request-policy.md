@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897609"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376601"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的要求和核准設定
 
@@ -35,7 +35,7 @@ ms.locfileid: "76897609"
 
 ![存取套件中的多個原則](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| 案例 | 原則數目 |
+| 狀況 | 原則數目 |
 | --- | --- |
 | 我希望目錄中的所有使用者都擁有相同的存取套件要求和核准設定 | 一個 |
 | 我希望特定連線組織中的所有使用者都能夠要求存取套件 | 一個 |

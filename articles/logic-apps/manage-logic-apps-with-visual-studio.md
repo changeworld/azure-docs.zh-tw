@@ -8,11 +8,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
 ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982543"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386563"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理邏輯應用程式
 
@@ -63,7 +63,7 @@ ms.locfileid: "75982543"
 
 1. 開啟 Visual Studio。 在 [檢視] 功能表上選取 [Cloud Explorer]。
 
-1. 在 Cloud Explorer 中，選取 [**帳戶管理**]。 選取與您的邏輯應用程式相關聯的 Azure 訂用帳戶，然後選取 [套用 **]。** 例如：
+1. 在 Cloud Explorer 中，選取 [**帳戶管理**]。 選取與您的邏輯應用程式相關聯的 Azure 訂用帳戶，然後選取 [套用 **]。** 例如:
 
    ![選取 [帳戶管理]](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "75982543"
 
    * **資源群組**：在您的 Azure 訂用帳戶底下，Cloud Explorer 會顯示與該訂用帳戶相關聯的所有資源群組。 展開包含邏輯應用程式的資源群組，然後選取您的邏輯應用程式。
 
-   * **資源類型**：在您的 Azure 訂用帳戶底下，展開 [邏輯應用程式]。 在 Cloud Explorer 顯示與您訂用帳戶相關聯的所有已部署邏輯應用程式後，選取您的邏輯應用程式。
+   * **資源類型**：在您的 Azure 訂用帳戶中，展開 [Logic Apps]。 在 Cloud Explorer 顯示與您訂用帳戶相關聯的所有已部署邏輯應用程式後，選取您的邏輯應用程式。
 
 <a name="open-designer"></a>
 
@@ -123,7 +123,7 @@ ms.locfileid: "75982543"
 
 1. 在 Visual Studio 中，開啟包含邏輯應用程式的 Azure 資源群組專案。
 
-1. 在方案總管中，開啟 [ **< 邏輯-應用程式名稱] > json**檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
+1. 在方案總管中，開啟 [ **< 邏輯-應用程式名稱] > json**檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 (鍵盤：Ctrl + L)
 
    ![使用邏輯應用程式設計工具開啟邏輯應用程式的 json 檔案](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "75982543"
    ![屬性視窗-「整合帳戶」屬性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-integration-account.png)
 
    > [!TIP]
-   > 如果屬性視窗尚未開啟，請從 [ **View** ] 功能表中選取 [**屬性視窗]** 。 （鍵盤：按 F4）
+   > 如果屬性視窗尚未開啟，請從 [ **View** ] 功能表中選取 [**屬性視窗]** 。 (鍵盤：按 F4）
 
 1. 開啟**整合帳戶**屬性清單，然後選取您想要連結到邏輯應用程式的整合帳戶，例如：
 
@@ -143,7 +143,7 @@ ms.locfileid: "75982543"
 
 1. 當您完成時，請記得儲存您的 Visual Studio 解決方案。
 
-當您在 Visual Studio 中設定**整合帳戶**屬性，並將邏輯應用程式儲存為 Azure Resource Manager 範本時，該範本也會包含所選整合帳戶的參數宣告。 如需範本參數和邏輯應用程式的詳細資訊，請參閱[總覽：自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
+當您在 Visual Studio 中設定**整合帳戶**屬性，並將邏輯應用程式儲存為 Azure Resource Manager 範本時，該範本也會包含所選整合帳戶的參數宣告。 如需範本參數和邏輯應用程式的詳細資訊，請參閱 [總覽：自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
 
 <a name="change-location"></a>
 
@@ -158,7 +158,7 @@ ms.locfileid: "75982543"
 
 1. 在 Visual Studio 中，開啟包含邏輯應用程式的 Azure 資源群組專案。
 
-1. 在方案總管中，開啟 `<logic-app-name>.json` 檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
+1. 在方案總管中，開啟 `<logic-app-name>.json` 檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 (鍵盤：Ctrl + L)
 
    ![使用邏輯應用程式設計工具開啟邏輯應用程式的 json 檔案](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "75982543"
    ![屬性視窗-「選擇位置類型」 & 「位置」屬性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-location.png)
 
    > [!TIP]
-   > 如果屬性視窗尚未開啟，請從 [ **View** ] 功能表中選取 [**屬性視窗]** 。 （鍵盤：按 F4）
+   > 如果屬性視窗尚未開啟，請從 [ **View** ] 功能表中選取 [**屬性視窗]** 。 (鍵盤：按 F4）
 
 1. 若要變更位置類型，請開啟 [**選擇位置類型**] 屬性清單，然後選取您想要的位置類型。
 
@@ -190,7 +190,7 @@ ms.locfileid: "75982543"
 
 1. 當您完成時，請記得儲存您的 Visual Studio 解決方案。
 
-當您在 Visual Studio 中變更位置類型或位置，並將邏輯應用程式儲存為 Azure Resource Manager 範本時，該範本也會包含該位置類型和位置的參數宣告。 如需範本參數和邏輯應用程式的詳細資訊，請參閱[總覽：自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
+當您在 Visual Studio 中變更位置類型或位置，並將邏輯應用程式儲存為 Azure Resource Manager 範本時，該範本也會包含該位置類型和位置的參數宣告。 如需範本參數和邏輯應用程式的詳細資訊，請參閱 [總覽：自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
 
 <a name="refresh"></a>
 
@@ -226,7 +226,7 @@ ms.locfileid: "75982543"
 
    ![開啟邏輯應用程式的執行歷程記錄](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. 若要檢閱特定執行的詳細資料，請對該執行按兩下。 例如：
+1. 若要檢閱特定執行的詳細資料，請對該執行按兩下。 例如:
 
    ![查看特定執行的相關資訊](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

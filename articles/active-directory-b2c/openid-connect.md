@@ -12,11 +12,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183987"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378724"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入
 
@@ -45,14 +45,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 參數 | 必要項 | 描述 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
 | client_id | 是 | [Azure 入口網站](https://portal.azure.com/)指派給應用程式的應用程式識別碼。 |
 | nonce | 是 | 包含在要求中的值（由應用程式所產生），以宣告形式包含在產生的識別碼權杖中。 然後，應用程式可以驗證此值，以減輕權杖重新執行攻擊。 此值通常是隨機的唯一字串，可用以識別要求的來源。 |
 | response_type | 是 | 必須包含 OpenID Connect 的識別碼權杖。 如果您的 web 應用程式也需要權杖來呼叫 Web API，您可以使用 `code+id_token`。 |
-| 範圍 | 是 | 範圍的空格分隔清單。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 `offline_access` 範圍對於 web 應用程式而言是選擇性的。 這表示您的應用程式將需要重新整理*權杖*，才能延伸資源的存取權。 |
+| scope | 是 | 範圍的空格分隔清單。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 `offline_access` 範圍對於 web 應用程式而言是選擇性的。 這表示您的應用程式將需要重新整理*權杖*，才能延伸資源的存取權。 |
 | prompt | 否 | 需要的使用者互動類型。 此時唯一有效的值是 `login`，可強制使用者針對該要求輸入其認證。 |
 | redirect_uri | 否 | 應用程式的 `redirect_uri` 參數，您的應用程式可以在其中傳送及接收驗證回應。 它必須完全符合您在 Azure 入口網站中註冊的其中一個 `redirect_uri` 參數，不同之處在于它必須以 URL 編碼。 |
 | response_mode | 否 | 用來將產生的授權碼傳回給應用程式的方法。 它可以是 `query`、`form_post` 或 `fragment`。  如需最佳安全性，建議使用 `form_post` 回應模式。 |
@@ -88,7 +88,7 @@ error=access_denied
 
 | 參數 | 描述 |
 | --------- | ----------- |
-| 錯誤 | 可以用來分類所發生錯誤類型的程式碼。 |
+| error | 可以用來分類所發生錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的特定錯誤訊息。 |
 | state | 如果要求中包含 `state` 參數，回應中就應該出現相同的值。 應用程式應確認要求和回應中的 `state` 值是否相同。 |
 
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 參數 | 必要項 | 描述 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 用來取得授權碼的使用者流程。 您無法在此要求中使用不同的使用者流程。 將此參數新增至查詢字串，而不是 POST 主體。 |
@@ -153,7 +153,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | 代碼 | 是 | 您在使用者流程開頭取得的授權碼。 |
 | grant_type | 是 | 授與的類型，針對授權碼流程來說，必須是 `authorization_code` 。 |
 | redirect_uri | 是 | 應用程式的 `redirect_uri` 參數，您會在此處收到授權碼。 |
-| 範圍 | 否 | 範圍的空格分隔清單。 `openid` 範圍指示使用 id_tokens 參數形式的權限，以登入使用者及取得使用者相關資料。 它可以用來取得應用程式本身後端 Web API 的權杖，這是由與用戶端相同的應用程式識別碼所表示。 `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能延伸資源的存取權。 |
+| scope | 否 | 範圍的空格分隔清單。 `openid` 範圍指示使用 id_tokens 參數形式的權限，以登入使用者及取得使用者相關資料。 它可以用來取得應用程式本身後端 Web API 的權杖，這是由與用戶端相同的應用程式識別碼所表示。 `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能延伸資源的存取權。 |
 
 成功的權杖回應看起來如下：
 
@@ -173,7 +173,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | not_before | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 |
 | token_type | 權杖類型值。 `Bearer` 是唯一支援的類型。 |
 | access_token | 您所要求已簽署的 JWT 權杖。 |
-| 範圍 | 權杖有效的範圍。 |
+| scope | 權杖有效的範圍。 |
 | expires_in | 存取權杖的有效時間長度 (以秒為單位)。 |
 | refresh_token | OAuth 2.0 重新整理權杖。 應用程式可以使用此權杖來取得目前權杖過期後的其他權杖。 重新整理權杖可用於長期保留資源的存取權。 `offline_access` 的範圍必須同時用於授權和權杖要求中，才能接收重新整理權杖。 |
 
@@ -188,7 +188,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 參數 | 描述 |
 | --------- | ----------- |
-| 錯誤 | 可以用來分類發生的錯誤類型的程式碼。 |
+| error | 可以用來分類發生的錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的訊息。 |
 
 ## <a name="use-the-token"></a>使用權杖
@@ -213,7 +213,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 參數 | 必要項 | 描述 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 用來取得原始重新整理權杖的使用者流程。 您無法在此要求中使用不同的使用者流程。 將此參數新增至查詢字串，而不是 POST 主體。 |
@@ -222,7 +222,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | grant_type | 是 | 授與的類型，必須是授權碼流程中這個部分的重新整理權杖。 |
 | refresh_token | 是 | 在流程的第二個部分中取得的原始重新整理權杖。 必須同時在授權和權杖要求中使用 `offline_access` 範圍，才能接收重新整理權杖。 |
 | redirect_uri | 否 | 應用程式的 `redirect_uri` 參數，您會在此處收到授權碼。 |
-| 範圍 | 否 | 範圍的空格分隔清單。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 它可用來將權杖傳送到您應用程式本身的後端 Web API，這是由與用戶端相同的應用程式識別碼來表示。 `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能延伸資源的存取權。 |
+| scope | 否 | 範圍的空格分隔清單。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 它可用來將權杖傳送到您應用程式本身的後端 Web API，這是由與用戶端相同的應用程式識別碼來表示。 `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能延伸資源的存取權。 |
 
 成功的權杖回應看起來如下：
 
@@ -242,7 +242,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | not_before | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 |
 | token_type | 權杖類型值。 `Bearer` 是唯一支援的類型。 |
 | access_token | 要求的已簽署 JWT 權杖。 |
-| 範圍 | 權杖有效的範圍。 |
+| scope | 權杖有效的範圍。 |
 | expires_in | 存取權杖的有效時間長度 (以秒為單位)。 |
 | refresh_token | OAuth 2.0 重新整理權杖。 應用程式可以使用此權杖來取得目前權杖過期後的其他權杖。 重新整理權杖可用於長期保留資源的存取權。 |
 
@@ -257,7 +257,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | 參數 | 描述 |
 | --------- | ----------- |
-| 錯誤 | 可以用來分類發生的錯誤類型的程式碼。 |
+| error | 可以用來分類發生的錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的訊息。 |
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
@@ -270,7 +270,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| 參數 | 必要項 | 描述 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 您想要用來將使用者登出應用程式的使用者流程。 |

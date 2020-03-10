@@ -4,11 +4,11 @@ description: 了解如何使用靜態連線用戶端來避免 Azure Functions �
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226490"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370457"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 

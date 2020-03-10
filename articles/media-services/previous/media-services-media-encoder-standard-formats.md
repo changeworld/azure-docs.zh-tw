@@ -15,13 +15,13 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895937"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366837"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>媒體編碼器標準格式和轉碼器
+# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和轉碼器
 
 > [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
@@ -30,7 +30,7 @@ ms.locfileid: "74895937"
 本文件包含您可以在 Media Encoder Standard 中使用的常見匯入和匯出檔案格式清單。
 
 ## <a name="input-containerfile-formats"></a>輸入容器/檔案格式
-| 檔案格式 (副檔名) | 支援的 |
+| 檔案格式 (副檔名) | 支援 |
 | --- | --- |
 | FLV (使用 H.264 和 AAC 轉碼器) (.flv) |是 |
 | MXF    (.mxf) |是 |
@@ -59,7 +59,7 @@ Media Encoder Standard 支援在輸入容器中帶有下列音訊格式：
 * MXF、GXF 及 QuickTime 檔案，其中該音訊當做個別的 PCM 曲目攜帶，但可從檔案中繼資料推算通道對應 (立體聲或 5.1)
 
 ## <a name="input-video-codecs"></a>輸入視訊轉碼器
-| 輸入視訊轉碼器 | 支援的 |
+| 輸入視訊轉碼器 | 支援 |
 | --- | --- |
 | AVC 8 位元/10 位元，高達 4:2:2，包括 AVCIntra |8 位元 4:2:0 和 4:2:2 |
 | Avid DNxHD (使用 MXF) |是 |
@@ -82,7 +82,7 @@ Media Encoder Standard 支援在輸入容器中帶有下列音訊格式：
 | HEVC/H.265| 主要和主要 10 (&#42;) 設定檔<br/>主要 10 設定檔支援適用的是 8 位元 4:2:0 的內容。 |
 
 ## <a name="input-audio-codecs"></a>輸入音訊轉碼器
-| 輸入音訊轉碼器 | 支援的 |
+| 輸入音訊轉碼器 | 支援 |
 | --- | --- |
 | AAC (AAC-LC、AAC-HE 和 AAC-HEv2；高達 5.1) |是 |
 | MPEG Layer 2 |是 |
@@ -112,7 +112,7 @@ Media Encoder Standard 支援在輸入容器中帶有下列音訊格式：
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 [透過 Azure Media Services 編碼的隨選內容](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 進行編碼](media-services-dotnet-encode-with-media-encoder-standard.md)

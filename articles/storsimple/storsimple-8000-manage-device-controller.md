@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894833"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366702"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 裝置控制器
 
@@ -117,7 +117,7 @@ ms.locfileid: "75894833"
    
     `Reset-HcsFactoryDefault`
    
-    若要改為重設單一控制站，請使用 [Reset-HcsFactoryDefault`-scope` Cmdlet 搭配 ](https://technet.microsoft.com/library/dn688132.aspx) 參數。)
+    若要改為重設單一控制站，請使用 [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) Cmdlet 搭配 `-scope` 參數。)
    
     系統會重新啟動多次。 重設成功完成時，系統將會通知您。 根據系統模型，8100 裝置可能需要 45-60 分鐘來完成此程序，而 8600 需要 60-90 分鐘。
    

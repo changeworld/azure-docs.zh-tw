@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516805"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365598"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple Virtual Array - 透過 Azure 入口網站設定為 iSCSI 伺服器
 
@@ -77,7 +77,7 @@ ms.locfileid: "68516805"
 5. DNS 伺服器是必要的，因為在裝置嘗試與雲端儲存體服務提供者通訊時，或是在根據名稱來解析已設定為檔案伺服器的裝置時，就需要使用 DNS 伺服器。 在 [網路設定] 頁面的 [DNS 伺服器] 下方：
    
    1. 系統會自動設定主要及次要 DNS 伺服器。 如果您選擇設定靜態 IP 位址，就可以指定 DNS 伺服器。 為了達到高可用性，我們建議您設定主要及次要 DNS 伺服器。
-   2. 按一下 **[套用]** 。 這將會套用並驗證網路設定。
+   2. 按一下 [套用]。 這將會套用並驗證網路設定。
 6. 在 [裝置設定] 頁面上：
    
    1. 為裝置指派唯一的 [名稱] 。 這個名稱可以有 1 至 15 個字元，且可以包含字母、數字和連字號。
@@ -90,20 +90,20 @@ ms.locfileid: "68516805"
       > 如果將您的 iSCSI 加入網域，請確定您的虛擬陣列位於它自己的 Microsoft Azure Active Directory 組織單位 (OU) 中，且沒有套用群組原則物件 (GPO)。
       > 
       > 
-   4. 此時畫面會出現對話方塊。 請以指定格式輸入網域認證。 按一下核取圖示 ![核取圖示](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)》一文中的指示來佈建虛擬裝置，並與該虛擬裝置連線。 系統將會驗證該網域認證。 如果認證不正確，畫面會出現錯誤訊息。
+   4. 此時畫面會出現對話方塊。 請以指定格式輸入網域認證。 按一下核取圖示 ![核取圖示](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 系統將會驗證該網域認證。 如果認證不正確，畫面會出現錯誤訊息。
       
        ![認證](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. 按一下 **[套用]** 。 這將會套用並驗證裝置設定。
+   5. 按一下 [套用]。 這將會套用並驗證裝置設定。
 7. (可省略) 設定 Web Proxy 伺服器。 雖然 Web Proxy 設定是選用的，但請注意，如果您使用 Web Proxy，就只能在此處設定它。
    
     ![設定 Web Proxy](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
     在 [Web Proxy] 頁面上：
    
-   1. 提供此格式的**Web proxy URL** :  *\/HTTP:/host-IP 位址*或*FQDN: 埠號碼*。 請注意，此處不支援 HTTPS URL。
+   1. 提供此格式的**Web PROXY URL** ： *HTTP：\//Host-IP 位址*或*FQDN：埠號碼*。 請注意，此處不支援 HTTPS URL。
    2. 將 [驗證] 指定為 [基本] 或 [無]。
    3. 如果您要使用驗證功能，您也必須提供 [使用者名稱] 和 [密碼]。
-   4. 按一下 **[套用]** 。 這將會驗證並套用您設定的 Web Proxy 設定。
+   4. 按一下 [套用]。 這將會驗證並套用您設定的 Web Proxy 設定。
 8. (可省略) 設定裝置的時間設定，例如時區，以及主要和次要 NTP 伺服器。 NTP 伺服器是必要的，因為您的裝置必須讓時間同步，才能與您的雲端服務提供者進行驗證。
    
     ![時間設定](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
@@ -113,19 +113,19 @@ ms.locfileid: "68516805"
    1. 根據裝置部署的地理位置，從下拉式清單中選取 [時區] 。 裝置的預設時區是太平洋標準時間。 裝置將針對所有排程的操作使用這個時區。
    2. 指定裝置的 [主要 NTP 伺服器] ，或是接受預設值 time.windows.com。 請確定您的網路允許 NTP 流量從您的資料中心通過網際網路。
    3. (選擇性) 指定裝置的 [次要 NTP 伺服器] 。
-   4. 按一下 [Apply (套用)]。 這將會驗證並套用您設定的時間設定。
+   4. 按一下 [套用]。 這將會驗證並套用您設定的時間設定。
 9. 設定裝置的雲端設定。 在此步驟中，您將會完成本機裝置設定，然後向您的 StorSimple 裝置管理員服務註冊裝置。
    
    1. 輸入**服務註冊金鑰**，這是您在**步驟 2：取得服務註冊金鑰** (於[部署 StorSimple Virtual Array - 準備入口網站](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)中) 取得的「服務註冊金鑰」。
    2. 如果這不是您向此服務註冊的第一個裝置，您必須提供 **服務資料加密金鑰**。 這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。 如需詳細資訊，請參閱使用本機 Web UI 來 [取得服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
    3. 按一下 [註冊]。 這將讓裝置重新啟動。 您可能需要等待 2 至 3 分鐘，裝置才會註冊成功。 裝置重新啟動之後，您將會看到登入頁面。
       
-      ![登錄裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+      ![註冊裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. 返回 Azure 入口網站。
 11. 瀏覽至服務的 [裝置] 刀鋒視窗。 如果您有大量資源，請依序按一下 [所有資源]、您的服務名稱 (如有必要，請搜尋) 及 [裝置]。
 12. 在 [裝置] 刀鋒視窗上，查閱狀態來確認裝置已成功連接至服務。 裝置狀態應該是 [準備好進行設定]。
     
-    ![登錄裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![註冊裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>步驟 2:將裝置設定為 iSCSI 伺服器
 
@@ -162,7 +162,7 @@ ms.locfileid: "68516805"
 2. 在 [新增磁碟區] 刀鋒視窗中，執行下列動作：
    
    * 在 [磁碟區名稱] 欄位中，輸入磁碟區的唯一名稱。 該名稱必須為包含 3 至 127 個字元的字串。
-   * 在 [類型] 下拉式清單中，指定要建立 [階層式] 還是 [固定在本機] 磁碟區。 對於需要本機保證、低延遲及更高效能的工作負載，請選取 [固定在本機的磁碟區]。 針對所有其他資料，請選取 [階層式磁碟區]**磁碟區**。
+   * 在 [類型] 下拉式清單中，指定要建立 [階層式] 還是 [固定在本機] 磁碟區。 對於需要本機保證、低延遲及更高效能的工作負載，請選取 [**固定在本機**的**磁片**區]。 針對所有其他資料，請選取 [**分層**式**磁片**區]。
    * 在 [容量] 欄位中，指定磁碟區大小。 階層式磁碟區必須介於 500 GB 和 5 TB 之間，而固定在本機的磁碟區必須介於 50 GB 和 500 GB 之間。
      
      固定在本機的磁碟區會密集佈建，且會確保磁碟區中的主要資料會保留在裝置上，不會溢出到雲端。
@@ -197,7 +197,7 @@ ms.locfileid: "68516805"
 4. 在 [iSCSI 啟動器屬性] 視窗的 [目標] 索引標籤上，找到 [探索到的目標]。 (每個磁碟區都會是探索到的目標。)裝置狀態應會顯示為 [非使用中]。
    
     ![探索到的目標](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
-5. 選取目標裝置，然後按一下 [連接]。 連接裝置之後，狀態應會變更為 [已連接]。 (如需使用 Microsoft iSCSI 啟動器的詳細資訊, 請參閱[安裝和設定 Microsoft Iscsi 啟動器][1]。
+5. 選取目標裝置，然後按一下 [連接]。 連接裝置之後，狀態應會變更為 [已連接]。 （如需使用 Microsoft iSCSI 啟動器的詳細資訊，請參閱[安裝和設定 Microsoft Iscsi 啟動器][1]。
    
     ![選取目標裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
 6. 在 Windows 主機上按 Windows 標誌鍵 + X，然後按一下 [執行]。
@@ -217,7 +217,7 @@ ms.locfileid: "68516805"
 12. 指派一個磁碟機代號給磁碟區，然後按 [下一步]。
     
     ![新增磁碟區精靈 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. 輸入要格式化磁碟區所需的參數。 **Windows Server 只支援 NTFS。** 將配置單位大小設定為 64K。 並提供您磁碟區的標籤。 建議的最佳做法是這個名稱與您在 StorSimple Virtual Array 上提供的磁碟區名稱相同。 按一下 [下一步]。
+13. 輸入要格式化磁碟區所需的參數。 **Windows Server 只支援 NTFS。** 將配置單位大小設定為 64K。 並提供您磁碟區的標籤。 建議的最佳做法是這個名稱與您在 StorSimple Virtual Array 上提供的磁碟區名稱相同。 按 [下一步]。
     
     ![新增磁碟區精靈 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. 查看您磁碟區的各個值，然後按一下 [完成]。

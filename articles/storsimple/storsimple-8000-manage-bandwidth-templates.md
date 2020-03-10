@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366699"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 頻寬範本
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 頻寬範本可讓您設定多個日期時間排程的網路頻寬使用量，以將 StorSimple 裝置的資料分層至雲端。
 
@@ -38,7 +38,7 @@ ms.locfileid: "60699450"
 
 ## <a name="the-bandwidth-templates-blade"></a>[頻寬範本] 刀鋒視窗
 
-[頻寬範本]  刀鋒視窗會以表格格式顯示服務的所有頻寬範本，內含下列資訊：
+[頻寬範本] 刀鋒視窗會以表格格式顯示服務的所有頻寬範本，內含下列資訊：
 
 * **名稱** – 在建立頻寬範本時，指派給頻寬範本的唯一名稱。
 * **排程** – 包含在給定頻寬範本中的排程數目。
@@ -55,20 +55,20 @@ ms.locfileid: "60699450"
 
 #### <a name="to-add-a-bandwidth-template"></a>新增頻寬範本
 
-1. 移至 StorSimple 裝置管理員服務，按一下 [頻寬範本]  ，然後按一下 [+ 新增頻寬範本]  。
+1. 移至 StorSimple 裝置管理員服務，按一下 [頻寬範本]，然後按一下 [+ 新增頻寬範本]。
 
     ![按一下 [+ 新增頻寬範本]](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
-2. 在 [新增頻寬範本]  刀鋒視窗中，執行下列步驟：
+2. 在 [新增頻寬範本] 刀鋒視窗中，執行下列步驟：
    
     1. 為頻寬範本指定唯一的名稱。
     2. 定義頻寬排程。 建立排程：
    
         1. 從下拉式清單中，選擇排程要設定為該週的哪幾個**日期**。 您可以選取多天。        
         
-        2. 輸入 [開始時間]  ，格式為 _hh:mm_。 這就是排程開始的時間。
+        2. 輸入 [開始時間]，格式為 _hh:mm_。 這就是排程開始的時間。
 
-        3. 輸入 [結束時間]  ，格式為 _hh:mm_。 這就是排程結束的時間。
+        3. 輸入 [結束時間]，格式為 _hh:mm_。 這就是排程結束的時間。
       
            > [!NOTE]
            > 不允許重疊的排程。 如果開始和結束時間會產生重疊排程，您會看到錯誤訊息。
@@ -79,7 +79,7 @@ ms.locfileid: "60699450"
          
             重複上述步驟，為範本定義排程，直到完成為止。
 
-        5. 按一下 [新增]  ，開始建立頻寬範本。 建立的範本會加入頻寬範本的清單。
+        5. 按一下 [新增]，開始建立頻寬範本。 建立的範本會加入頻寬範本的清單。
       
 
 ## <a name="edit-a-bandwidth-template"></a>編輯頻寬範本
@@ -88,9 +88,9 @@ ms.locfileid: "60699450"
 
 ### <a name="to-edit-a-bandwidth-template"></a>編輯頻寬範本
 
-1. 移至 StorSimple 裝置管理員服務，然後按一下 [頻寬範本]  。
-2. 在頻寬範本清單中，選取您想要刪除的範本。 以滑鼠右鍵按一下，然後從內容功能表中選取 [刪除]  。
-3. 系統提示您進行確認時，按一下 [確定]  。 如此即會刪除頻寬範本。 
+1. 移至 StorSimple 裝置管理員服務，然後按一下 [頻寬範本]。
+2. 在頻寬範本清單中，選取您想要刪除的範本。 以滑鼠右鍵按一下，然後從內容功能表中選取 [刪除]。
+3. 系統提示您進行確認時，按一下 [確定]。 如此即會刪除頻寬範本。 
 4. 頻寬範本清單會一併更新以反映刪除。
 
 > [!NOTE]
@@ -102,9 +102,9 @@ ms.locfileid: "60699450"
 
 #### <a name="to-delete-a-bandwidth-template"></a>刪除頻寬範本
 
-1. 移至 StorSimple 裝置管理員服務，然後按一下 [頻寬範本]  。
+1. 移至 StorSimple 裝置管理員服務，然後按一下 [頻寬範本]。
 2. 在頻寬範本清單中，選取您想要刪除的範本。 以滑鼠右鍵按一下，然後從操作功能表中選取 [刪除]。
-3. 系統提示您進行確認時，按一下 [確定]  。 如此即會刪除頻寬範本。
+3. 系統提示您進行確認時，按一下 [確定]。 如此即會刪除頻寬範本。
 4. 頻寬範本清單會一併更新以反映刪除。
 
 如果有任何磁碟區正在使用範本，您就無法將它刪除。 您會看到錯誤訊息，指出此範本正在使用中。 錯誤訊息對話方塊會隨即出現，建議您移除範本的所有參考。

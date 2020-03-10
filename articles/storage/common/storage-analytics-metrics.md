@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514788"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360964"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 儲存體分析計量（傳統）
 
@@ -39,7 +39,7 @@ ms.locfileid: "72514788"
 > [!NOTE]
 >  容量度量目前僅適用於 Blob 服務。
 
- 系統每日都會針對儲存體帳戶的 Blob 服務記錄容量資料，並寫入兩個資料表實體。 其中一個實體會提供使用者資料的統計資料，而另一個實體則會提供有關儲存體分析所使用之 `$logs` Blob 容器的統計資料。 *$MetricsCapacityBlob*資料表包含下列統計資料：  
+ 系統每日都會針對儲存體帳戶的 Blob 服務記錄容量資料，並寫入兩個資料表實體。 其中一個實體會提供使用者資料的統計資料，而另一個實體則會提供有關儲存體分析所使用之 `$logs` Blob 容器的統計資料。 *$MetricsCapacityBlob* 資料表包含下列統計資料：  
 
 - **Capacity**：儲存體帳戶之 Blob 服務所使用的儲存體數量 (以位元組為單位)。  
 - **ContainerCount**：儲存體帳戶之 Blob 服務中的 Blob 容器數目。  
@@ -49,9 +49,9 @@ ms.locfileid: "72514788"
 
 ## <a name="how-metrics-are-stored"></a>度量的儲存方式  
 
- 對於每個儲存體服務的所有度量資料均儲存於為該服務所保留的三個資料表中：一個資料表用於交易資訊、一個資料表用於每分鐘交易資訊，而另一個資料表則用於容量資訊。 交易和每分鐘交易資訊都是由要求和回應資料所組成，而容量資訊是由儲存體使用量資料所組成。 您可以在依照下表所述命名的資料表中，存取儲存體帳戶之 Blob 服務的小時度量、分鐘計量和容量。  
+ 對於每個儲存體服務的所有度量資料均儲存於為該服務所保留的三個資料表中：一個資料表用於交易資訊、一個資料表用於每分鐘交易資訊，而另一個資料表則用於容量資訊。 交易和每分鐘交易資訊都是由要求和回應資料所組成，而容量資訊是由儲存體使用量資料所組成。 您可以從下表所述的具名資料表存取儲存體帳戶的 Blob 服務其每小時度量、每分鐘度量和容量資料。  
 
-|計量層級|資料表名稱|支援的版本|  
+|度量層級|資料表名稱|支援版本|  
 |-------------------|-----------------|----------------------------|  
 |每小時度量，主要位置|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|僅適用於 2013-08-15 之前的版本。 儘管目前仍支援這些名稱，但還是建議您改用下列資料表。|  
 |每小時度量，主要位置|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|所有版本。 檔案服務計量的支援僅適用于2015-04-05 版和更新版本。|  
@@ -75,7 +75,7 @@ ms.locfileid: "72514788"
 [Azure 入口網站](https://portal.azure.com)目前無法讓您在儲存體帳戶中設定每分鐘計量功能，您必須使用 PowerShell 或以程式設計方式啟用每分鐘計量功能。
 
 ## <a name="enable-storage-metrics-using-powershell"></a>使用 PowerShell 啟用儲存體計量  
-您可以使用本機電腦上的 PowerShell 來設定儲存體帳戶中的儲存體計量，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceMetricsProperty**來取得目前的設定，以及 Cmdlet **AzStorageServiceMetricsProperty**以變更目前的設定。  
+您可以在本機電腦上使用 PowerShell 來設定儲存體帳戶中的儲存體計量，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceMetricsProperty**來取得目前的設定，並**設定 Cmdlet AzStorageServiceMetricsProperty**來變更目前的設定。  
 
 控制儲存體度量的 Cmdlet 會使用下列參數：  
 
@@ -112,9 +112,9 @@ Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context
 如需如何設定 Azure PowerShell Cmdlet 以使用您的 Azure 訂用帳戶，以及如何選取要使用的預設儲存體帳戶的相關資訊，請參閱： [如何安裝和設定 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
 
 ## <a name="enable-storage-metrics-programmatically"></a>以程式設計方式啟用儲存體計量  
-除了使用 Azure 入口網站或 Azure PowerShell Cmdlet 來控制儲存體度量之外，您也可以使用其中一個 Azure 儲存體 Api。 例如，如果您使用 .NET 語言，您可以使用儲存體用戶端程式庫。  
+除了使用 Azure 入口網站或 Azure PowerShell Cmdlet 來控制儲存體度量之外，您也可以使用其中一個 Azure 儲存體 Api。 例如，若您使用 .NET 語言，則可使用儲存體用戶端程式庫。  
 
-類別**CloudBlobClient**、 **CloudQueueClient**、 **CloudTableClient**和**CloudFileClient**都有一些 **方法，例如 SetServiceProperties 和 SetServicePropertiesAsync，ServiceProperties**物件做為參數。 您可以使用**ServiceProperties**物件來設定儲存體計量。 例如，下列C#程式碼片段顯示如何變更每小時佇列計量的計量層級和保留天數：  
+類別**CloudBlobClient**、 **CloudQueueClient**、 **CloudTableClient**和**CloudFileClient**都具有**SetServiceProperties**和**SetServicePropertiesAsync**之類的方法，其採用**ServiceProperties**物件做為參數。 您可以使用 **ServiceProperties** 物件來設定「儲存體度量」。 例如，下列 C# 程式碼片段顯示如何變更每小時佇列度量的度量層級和保留期間：  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -145,28 +145,28 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ||||  
 |-|-|-|  
-|**計量**|**資料表名稱**|**注意事項**|  
-|每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在2013-08-15 之前的版本中，這些資料表稱為：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 從2015-04-05 版開始，檔案服務的計量可供使用。|  
+|**計量**|**資料表名稱**|**注意**|  
+|每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日前的版本中，這些資料表也稱為：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 從2015-04-05 版開始，檔案服務的計量可供使用。|  
 |每分鐘度量|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以程式設計方式啟用。<br /><br /> 從2015-04-05 版開始，檔案服務的計量可供使用。|  
-|Capacity|$MetricsCapacityBlob|僅 Blob 服務。|  
+|Capacity|$MetricsCapacityBlob|僅限 Blob 服務。|  
 
 您可以在 [儲存體分析度量資料表結構描述](/rest/api/storageservices/storage-analytics-metrics-table-schema)上找到這些資料表之結構描述的完整詳細資料。 下列資料列範例只會顯示可用的資料行子集，但可說明儲存體度量儲存這些度量資訊之方式的一些重要功能：  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
-|20140522T1100|user;All|2014-05-22T11：01： 16.7650250 Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|user;QueryEntities|2014-05-22T11：01： 16.7640250 Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11：01： 16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11：01： 16.7650250 Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 在這個每分鐘度量資料範例中，資料分割索引鍵會在每分鐘解析中使用時間。 資料列索引鍵會識別資料列中儲存的資訊類型，而這是由兩部分的資訊 (存取類型及要求類型) 所組成：  
 
--   存取類型為 [**使用者**] 或 [**系統**]，其中**user**指的是儲存體服務的所有使用者要求，而 [**系統**] 則是指儲存體分析提出的要求。  
+-   存取類型不是 **user** 就是 **system**，其中 **user** 是指對儲存體服務的所有使用者要求，而 **system** 是指「儲存體分析」所提出的要求。  
 
--   要求類型為 [**全部**]，在此情況下為摘要行，或識別特定的 API，例如**QueryEntity**或**UpdateEntity**。  
+-   要求類型為 **all** (此時是一個摘要資料行)，或可是別特定 API (例如 **QueryEntity** 或 **UpdateEntity**)。  
 
-上述範例資料顯示一分鐘內的所有記錄（從11：上午 10:00 PST 開始），因此**QueryEntities**要求數目加上**QueryEntity**要求的數目加上最多七個**UpdateEntity**要求數，也就是[**使用者：全部**] 資料列上顯示的總計。 同樣地，您可以藉由計算（（143.8 * 5） + 3 + 9）/7，衍生**使用者： All**資料列上的平均端對端延遲104.4286。  
+以上範例資料顯示單一分鐘的所有記錄 (從上午 11:00 開始)，所以 **QueryEntities** 要求數目加上 **QueryEntity** 要求數目加上 **UpdateEntity** 要求數目等於 7，這就是 **user:All** 資料列上顯示的總計。 同樣地，您可以計算 ((143.8 * 5) + 3 + 9)/7，在 **user:All** 資料列上導出平均端對端延遲 104.4286。  
 
 ## <a name="metrics-alerts"></a>計量警示
 您應該考慮在[Azure 入口網站](https://portal.azure.com)中設定警示，如此您將會自動收到儲存體服務行為的重要變更通知。 若使用儲存體總管工具來下載此計量資料 (以使用分隔字元分隔的形式)，您可以使用 Microsoft Excel 來分析資料。 如需可用的儲存體總管工具清單，請參閱 [Azure 儲存體用戶端工具](/azure/storage/storage-explorers)。 您可以在 [**警示（傳統）** ] 分頁中設定警示，此功能可在 [儲存體帳戶] 功能表中的 [**監視（傳統）** ] 下存取。

@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361850"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理和維護適用於 Windows 和 Linux 的 Log Analytics 代理程式
 
@@ -89,7 +89,7 @@ ms.locfileid: "77668684"
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [控制台]。
+2. 開啟 [ **控制台**]。
 
 3. 選取 [Microsoft Monitoring Agent]，然後按一下 [Azure Log Analytics] 索引標籤。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77668684"
 
 5. 若要新增工作區，請按一下 [新增]，然後在 [新增 Log Analytics 工作區] 對話方塊中，貼上工作區識別碼和工作區索引鍵 (主索引鍵)。 如果電腦應該向 Azure Government 雲端中的 Log Analytics 工作區報告，請從 Azure 雲端下拉式清單中選取 [Azure US Government]。
 
-6. 按一下 **[確定]** 儲存變更。
+6. 按一下 [確定] 以儲存變更。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 移除工作區
 
@@ -172,7 +172,7 @@ $mma.ReloadConfiguration()
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [控制台]。
+2. 開啟 [ **控制台**]。
 
 3. 選取 [Microsoft Monitoring Agent]，然後按一下 [Proxy 設定] 索引標籤。
 
@@ -231,7 +231,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 #### <a name="uninstall-from-control-panel"></a>從控制台解除安裝
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 在 **[控制台]** 中，按一下 **[程式和功能]** 。
+2. 在 [控制台] 中按一下 [程式和功能]。
 
 3. 在 [程式和功能] 中，依序按一下 [Microsoft Monitoring Agent]、[解除安裝] 和 [是]。
 
@@ -261,7 +261,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 開啟 [控制台]。
+2. 開啟 [ **控制台**]。
 
 3. 按一下 [Microsoft Monitoring Agent]，然後按一下 [Operations Manager] 索引標籤。
 

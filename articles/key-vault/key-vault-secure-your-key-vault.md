@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: eac3850cfa0684bd1751cf7b88b4ff8e92667293
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197431"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373803"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -127,9 +127,9 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 | 角色 | 管理平面權限 | 資料平面權限 |
 | --- | --- | --- |
 | 安全性小組 | Key Vault 參與者 | 金鑰︰備份、建立、刪除、取得、匯入、列出、還原<br>祕密：所有作業 |
-| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此許可權可讓已部署的 vm 從金鑰保存庫提取秘密。 | 無 |
-| 稽核員 | 無 | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此許可權可讓審計員檢查未在記錄中發出之金鑰和密碼的屬性（標記、啟用日期、到期日）。 |
-| 應用程式 | 無 | 金鑰︰簽署<br>密碼︰取得 |
+| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此許可權可讓已部署的 vm 從金鑰保存庫提取秘密。 | None |
+| 稽核員 | None | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此許可權可讓審計員檢查未在記錄中發出之金鑰和密碼的屬性（標記、啟用日期、到期日）。 |
+| Application | None | 金鑰︰簽署<br>密碼︰取得 |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 VM (或 Azure App Service 的 Web Apps 功能)，開發人員和操作員需要這些資源類型的 `Contributor` 存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。
 

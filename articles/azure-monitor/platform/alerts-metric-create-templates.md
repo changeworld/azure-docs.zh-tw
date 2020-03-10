@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368004"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -565,7 +565,7 @@ az group deployment create \
 
 新版計量警示支援多維度計量警示以及支援多項準則。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
 
-在包含多個準則的警示規則中使用維度時，請注意下列條件約束：
+在包含多個準則的警示規則中使用維度時，請注意下列限制：
 - 在每個條件中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 做為維度值。
 - 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對所有這些計量（在相關的使用準則來中）明確設定已設定的維度值。
