@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: 容錯移轉串流案例
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: 取用
       items:
         - name: 使用現有播放器來播放媒體
