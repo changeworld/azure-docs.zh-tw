@@ -1,24 +1,28 @@
 ---
-title: Azure 排程器文件 - 教學課程和 API 參考 | Microsoft Docs
-description: 了解如何使用排程器來排程及叫用作業，例如週期性應用程式動作和例行維護。 教學課程、API 參考等等。
+title: Azure 排程器文件
+description: 在雲端中建立、排程及執行自動化作業，例如週期性應用程式動作和例行維護。
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610329"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898613"
 ---
 # <a name="scheduler-documentation"></a>排程器文件
 
-了解如何使用排程器在雲端中排程及自動叫用週期性作業。 教學課程、API 參考和其他文件會示範如何排程及監視作業，例如週期性應用程式動作和例行維護。
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[移轉到 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
+
+了解在雲端建立、排程、執行、管理及更新自動化週期性作業的相關資訊。 教學課程、API 參考和其他文件會示範如何排程及監視作業，例如週期性應用程式動作和例行維護。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -40,6 +44,24 @@ ms.locfileid: "68610329"
         </a>
     </li>
     <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>從 Azure 排程器移轉至 Azure Logic Apps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=scheduler">
         <div class="cardSize">
             <div class="cardPadding">
@@ -51,24 +73,6 @@ ms.locfileid: "68610329"
                     </div>
                     <div class="cardText">
                         <h3>Azure 排程器影片庫</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>開始使用 Azure 排程器</h3>
                     </div>
                 </div>
             </div>

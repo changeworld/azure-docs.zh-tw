@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: '使用 C#'
-          href: image-search-sdk-quickstart.md
-        - name: 使用 Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: image-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: image-sdk-java-quickstart.md
+        - name: Bing 影像搜尋用戶端程式庫
+          href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 建置映像搜尋 Web 應用程式
@@ -44,7 +38,7 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 取得影像深入解析
       href: image-insights.md
@@ -95,7 +89,7 @@
   items:
     - name: 常見問題集
       href: bing-image-search-resource-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'

@@ -33,7 +33,7 @@
       items:
         - name: .NET Core with SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET with SQL DB
+        - name: 具有 SQL DB 的 .NET Framework
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP with MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -87,8 +87,6 @@
           href: networking-features.md
         - name: 具有服務端點的應用程式閘道
           href: networking/app-gateway-with-service-endpoints.md
-        - name: 私人端點
-          href: networking/private-endpoint.md
     - name: 輸入和輸出 IP
       href: overview-inbound-outbound-ips.md
     - name: 虛擬網路整合

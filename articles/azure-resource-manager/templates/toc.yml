@@ -145,10 +145,6 @@
             - name: 輸出
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: 訂用帳戶層級資源
-          href: deploy-to-subscription.md
-        - name: 管理群組層級資源
-          href: deploy-to-management-group.md
     - name: 使用撰寫工具
       items:
         - name: VS 程式碼
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: 使用 SAS 權杖保護範本
           href: secure-template-with-sas-token.md
-        - name: 部署至多個資源群組或訂用帳戶
+    - name: 限域部署
+      items:
+        - name: 訂用帳戶
+          href: deploy-to-subscription.md
+        - name: 管理群組
+          href: deploy-to-management-group.md
+        - name: 租用戶
+          href: deploy-to-tenant.md
+        - name: 多個資源群組或訂用帳戶
           href: cross-resource-group-deployment.md
     - name: 提供參數
       items:

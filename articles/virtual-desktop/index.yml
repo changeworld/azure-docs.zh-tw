@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Windows 虛擬桌面文件
+summary: 將虛擬桌面體驗和遠端應用程式傳遞至任何裝置。 結合 Microsoft 365 和 Azure 以提供使用者唯一的多重工作階段 Windows 10 體驗，並享有卓越的規模與更好的 IT 成本效益。
 metadata:
-  title: Windows 虛擬桌面文件 | Microsoft Docs
+  title: Windows 虛擬桌面文件
   description: 適用於 Azure 的 Windows 虛擬桌面是在雲端虛擬化的多使用者 Windows 10 企業版體驗。
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 將虛擬桌面體驗和遠端應用程式傳遞至任何裝置。 結合 Microsoft 365 和 Azure 以提供使用者唯一的多重工作階段 Windows 10 體驗，並享有卓越的規模與更好的 IT 成本效益。
-sections:
-  - title: 概觀
-    items:
-      - type: paragraph
-        text: 深入了解 Windows 虛擬桌面及其使用方式。 教學課程、操作說明、參考內容以及其他資訊，示範如何設定主機集區和租用戶，並將角色指派給 Windows 虛擬桌面環境的使用者。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">什麼是 Windows 虛擬桌面？</a>
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何安裝和設定 Windows 虛擬桌面，以及如何在準備就緒時連線到用戶端。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">在 Windows 虛擬桌面中建立租用戶</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">透過 Azure Marketplace 建立主機集區</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">管理 Windows 虛擬桌面的應用程式群組</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">使用 PowerShell 建立服務主體和角色指派</a>
-  - title: 參考
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898661"
+landingContent:
+- title: 關於 Windows 虛擬桌面
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Windows 虛擬桌面？
+      url: overview.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 Windows 虛擬桌面中建立租用戶
+      url: tenant-setup-azure-active-directory.md
+    - text: 透過 Azure Marketplace 建立主機集區
+      url: create-host-pools-azure-marketplace.md
+    - text: 管理 Windows 虛擬桌面的應用程式群組
+      url: manage-app-groups.md
+    - text: 使用 PowerShell 建立服務主體和角色指派
+      url: create-service-principal-role-powershell.md
+- title: 連線至 Windows 虛擬桌面
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows 桌面用戶端
+      url: connect-windows-7-and-10.md
+    - text: Web 用戶端
+      url: connect-web.md
+    - text: Android 用戶端
+      url: connect-android.md
+    - text: macOS 用戶端
+      url: connect-macos.md
+    - text: iOS 用戶端
+      url: connect-ios.md
