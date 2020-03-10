@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658366"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394071"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
 活頁簿與大量資料來源相容。 本文將逐步引導您瞭解目前可用於 Azure 監視器活頁簿的資料來源。
 
-## <a name="logs"></a>記錄檔
+## <a name="logs"></a>記錄
 
 活頁簿允許從下列來源查詢記錄：
 

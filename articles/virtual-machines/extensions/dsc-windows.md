@@ -14,19 +14,19 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073794"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383239"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 延伸模組
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 Microsoft 已發佈並支援適用於 Windows 的 PowerShell DSC 擴充功能。 此擴充功能會在 Azure VM 上，上傳並套用 PowerShell DSC 設定。 DSC 擴充功能會呼叫 PowerShell DSC，以便在 VM 上套用所收到的 DSC 設定。 本文件詳述適用於 Windows 的 DSC 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -99,9 +99,9 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
-| apiVersion | 2018-10-01 | 日期 |
+| apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | 字串 |
-| 類型 | DSC | 字串 |
+| type | DSC | 字串 |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>設定屬性值

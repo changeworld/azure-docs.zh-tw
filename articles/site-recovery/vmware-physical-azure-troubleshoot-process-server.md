@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395033"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對進程伺服器進行疑難排解
 
@@ -36,8 +36,8 @@ ms.locfileid: "70813422"
 --- |---
 **使用量** | 請確定設定伺服器/獨立進程伺服器僅用於預期的用途。 不要在電腦上執行其他任何動作。
 **IP 位址** | 請確定進程伺服器具有靜態 IPv4 位址，而且未設定 NAT。
-**控制記憶體/CPU 使用量** |將 CPU 和記憶體使用量保持在 70% 之下。
-**確保可用空間** | 可用空間指的是進程伺服器上的快取磁碟空間。 複寫資料會先儲存在快取中，然後再上傳至 Azure。<br/><br/> 將可用空間保持在 25% 以上。 如果低於 20%，則複寫會針對與進程伺服器相關聯的複寫機器進行節流。
+**控制記憶體/CPU 使用量** |將 CPU 和記憶體使用量保持在70% 之下。
+**確保可用空間** | 可用空間指的是進程伺服器上的快取磁碟空間。 複寫資料會先儲存在快取中，然後再上傳至 Azure。<br/><br/> 將可用空間保持在25% 以上。 如果低於20%，則複寫會針對與進程伺服器相關聯的複寫機器進行節流。
 
 ## <a name="check-process-server-health"></a>檢查進程伺服器健全狀況
 
@@ -45,27 +45,27 @@ ms.locfileid: "70813422"
 
 ![針對進程伺服器健全狀況進行疑難排解](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>步驟 1:針對進程伺服器健全狀況警示進行疑難排解
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>步驟1：針對進程伺服器健全狀況警示進行疑難排解
 
 進程伺服器會產生一些健康情況警示。 下表摘要說明這些警示和建議的動作。
 
 **警示類型** | **錯誤** | **疑難排解**
 --- | --- | --- 
-![狀況良好][green] | None  | 進程伺服器已連線且狀況良好。
-![警告][yellow] | 指定的服務不在執行中。 | 1.檢查服務是否正在執行。<br/> 2.如果服務如預期般執行，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
-![警告][yellow]  | 過去15分鐘內的 CPU 使用率 > 80%。 | 1.請勿新增電腦。<br/>2.檢查使用進程伺服器的 Vm 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
-![重大][red] |  過去15分鐘內的 CPU 使用率 > 95%。 | 1.請勿新增電腦。<br/>2.檢查使用進程伺服器的 Vm 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
-![警告][yellow] | 過去15分鐘內記憶體使用量 > 80%。 |  1.請勿新增電腦。<br/>2.檢查使用進程伺服器的 Vm 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵循與警告相關聯的任何指示。<br/> 4.如果問題持續發生，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
-![重大][red] | 過去15分鐘內記憶體使用量 > 95%。 | 1.請勿新增電腦，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/> 2.遵循與警告相關聯的任何指示。<br/> 3. 4. 如果問題持續發生，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫問題的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
-![警告][yellow] | 過去15分鐘內快取資料夾可用空間 < 30%。 | 1.請勿新增電腦，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>2.檢查使用進程伺服器的 Vm 數目是否符合[方針](site-recovery-plan-capacity-vmware.md#capacity-considerations)。<br/> 3.請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
-![重大][red] |  過去15分鐘內 < 25% 的可用空間 | 1.請依照此問題的警告相關指示進行。<br/> 2. 3。 請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 3.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
-![重大][red] | 進程伺服器不會有15分鐘或更久的任何心跳。 Tmansvs 服務未與設定伺服器通訊。 | 1）檢查進程伺服器是否已啟動且正在執行。<br/> 2.檢查 tmassvc 是否正在進程伺服器上執行。<br/> 3.請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
+![Healthy][green] | None  | 進程伺服器已連線且狀況良好。
+![警告][yellow] | 指定的服務不在執行中。 | 1. 檢查服務是否正在執行。<br/> 2. 如果服務如預期般執行，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
+![警告][yellow]  | 過去15分鐘內的 CPU 使用率 > 80%。 | 1. 不要加入新電腦。<br/>2. 檢查使用進程伺服器的 Vm 數目與[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)相符，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3. 依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
+![重大][red] |  過去15分鐘內的 CPU 使用率 > 95%。 | 1. 不要加入新電腦。<br/>2. 檢查使用進程伺服器的 Vm 數目與[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)相符，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3. 依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 4. 如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![警告][yellow] | 過去15分鐘內記憶體使用量 > 80%。 |  1. 不要加入新電腦。<br/>2. 檢查使用進程伺服器的 Vm 數目與[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)相符，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3. 遵循與警告相關聯的任何指示。<br/> 4. 如果問題持續發生，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
+![重大][red] | 過去15分鐘內記憶體使用量 > 95%。 | 1. 不要加入新的電腦，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/> 2. 遵循與警告相關聯的任何指示。<br/> 3. 4。 如果問題持續發生，請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 4. 如果問題持續發生，請執行 VMware/實體伺服器複寫問題的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![警告][yellow] | 過去15分鐘內快取資料夾可用空間 < 30%。 | 1. 不要加入新的電腦，並考慮設定[額外的進程伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>2. 檢查使用進程伺服器的 Vm 數目符合[方針](site-recovery-plan-capacity-vmware.md#capacity-considerations)。<br/> 3. 依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
+![重大][red] |  過去15分鐘內 < 25% 的可用空間 | 1. 遵循與此問題相關之警告的指示。<br/> 2. 3。 請依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。<br/> 3. 如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![重大][red] | 進程伺服器不會有15分鐘或更久的任何心跳。 Tmansvs 服務未與設定伺服器通訊。 | 1）檢查進程伺服器是否已啟動且正在執行。<br/> 2. 檢查 tmassvc 是否正在進程伺服器上執行。<br/> 3. 依照下列指示進行連線[和複寫問題的疑難排解](#check-connectivity-and-replication)。
 
 
 ![資料表索引鍵](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>步驟 2:檢查處理伺服器服務
+## <a name="step-2-check-process-server-services"></a>步驟2：檢查進程伺服器服務
 
 下表摘要說明應該在進程伺服器上執行的服務。 服務有些許差異，視進程伺服器的部署方式而定。 
 
@@ -78,14 +78,14 @@ ms.locfileid: "70813422"
 **部署在 Azure 中以進行容錯回復的進程伺服器** | Scaleout-processserverProcessServerMonitor;cxprocessserverInMage PushInstall;記錄上傳服務（LogUpload）
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>步驟 3：檢查進程伺服器的心跳
+## <a name="step-3-check-the-process-server-heartbeat"></a>步驟3：檢查進程伺服器的心跳
 
 如果進程伺服器沒有任何心跳（錯誤碼806），請執行下列動作：
 
 1. 確認進程伺服器 VM 已啟動且正在執行。
 2. 請檢查這些記錄檔中的錯誤。
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *.Log c\programdata\asr\home\svsystems\ monitor_protection*.log
 
 ## <a name="check-connectivity-and-replication"></a>檢查連線能力和複寫
 
@@ -94,15 +94,15 @@ ms.locfileid: "70813422"
 ![針對連線能力和複寫進行疑難排解](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-## <a name="step-4-verify-time-sync-on-source-machine"></a>步驟 4：確認來源電腦上的時間同步
+## <a name="step-4-verify-time-sync-on-source-machine"></a>步驟4：確認來源電腦上的時間同步
 
-請確定複寫電腦的系統日期/時間已同步。[深入了解](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+請確定複寫電腦的系統日期/時間已同步。[深入瞭解](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
 
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>步驟 5：檢查來源電腦上的防毒軟體
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>步驟5：檢查來源電腦上的防毒軟體
 
 檢查複寫電腦上的防毒軟體是否 Site Recovery 封鎖。 如果您需要從防毒程式中排除 Site Recovery，請參閱[這篇文章](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)。
 
-## <a name="step-6-check-connectivity-from-source-machine"></a>步驟 6：檢查來源電腦的連線能力
+## <a name="step-6-check-connectivity-from-source-machine"></a>步驟6：檢查來源電腦的連線能力
 
 
 1. 如有需要，請在來源電腦上安裝[Telnet 用戶端](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)。 請勿使用 Ping。
@@ -119,7 +119,7 @@ ms.locfileid: "70813422"
 **從不** | 您無法連接 | 請確定進程伺服器上允許輸入埠9443。 例如，如果您有周邊網路或遮蔽式子網路。 再次檢查連線能力。
 **部分成功** | 您可以連接，但來源電腦會報告無法連線到進程伺服器。 | 繼續進行下一個疑難排解程式。
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>步驟 7：針對無法連線的進程伺服器進行疑難排解
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>步驟7：針對無法連線的進程伺服器進行疑難排解
 
 如果無法從來源電腦連線到進程伺服器，將會顯示錯誤78186。 如果未解決，此問題會導致應用程式一致和當機時保持一致復原點未如預期般產生。
 
@@ -130,7 +130,7 @@ ms.locfileid: "70813422"
 
 如果 telnet 成功，但來源電腦報告無法連線到進程伺服器，請檢查您是否可以連線到進程伺服器的 IP 位址。
 
-1. 在網頁瀏覽器中，嘗試連線到 IP 位址 HTTPs：//< PS_IP >： < PS_Data_Port >/。
+1. 在網頁瀏覽器中，嘗試連接到 IP 位址 HTTPs：//< PS_IP >： < PS_Data_Port >/。
 2. 如果這種檢查顯示 HTTPS 憑證錯誤，這是正常的。 如果您忽略此錯誤，您應該會看到 400-不正確的要求。 這表示伺服器無法服務瀏覽器要求，而且標準 HTTPS 連接正常。
 3. 如果此檢查無法正常執行，請記下瀏覽器錯誤訊息。 例如，407錯誤會指出 proxy 驗證的問題。
 
@@ -138,7 +138,7 @@ ms.locfileid: "70813422"
 
 此外，您也可以執行 cxpsclient 工具來檢查端對端連接。
 
-1. 執行此工具，如下所示：
+1. 按照下列步驟執行此工具：
 
     ```
     <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
@@ -146,7 +146,7 @@ ms.locfileid: "70813422"
 
 2. 在進程伺服器上，檢查下列資料夾中產生的記錄檔：
 
-    C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err  C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+    C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
 
 
 
@@ -162,7 +162,7 @@ ms.locfileid: "70813422"
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>步驟 8：檢查進程伺服器是否正在推送資料
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>步驟8：檢查進程伺服器是否正在推送資料
 
 檢查進程伺服器是否主動將資料推送至 Azure。
 
@@ -174,7 +174,7 @@ ms.locfileid: "70813422"
 
   如果 cbengine.exe 未傳送大量資料，請完成下列各節中的步驟。
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>步驟 9：檢查與 Azure blob 儲存體的進程伺服器連接
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>步驟9：檢查與 Azure blob 儲存體的進程伺服器連接
 
 1. 在 資源監視器中，選取  **cbengine.exe**。
 2. 在 [ **TCP**連線] 底下，檢查是否有從進程伺服器到 Azure 儲存體的連線能力。
@@ -211,7 +211,7 @@ ms.locfileid: "70813422"
 5. 在進程伺服器的命令列中，使用 Telnet 來 ping 您的 Azure 公用 IP 位址。
 6. 如果您無法連接，請遵循下一個程式。
 
-## <a name="step-11-check-process-server-firewall-settings"></a>步驟 11：檢查處理伺服器防火牆設定。 
+## <a name="step-11-check-process-server-firewall-settings"></a>步驟11：檢查處理伺服器防火牆設定。 
 
 檢查進程伺服器上以 IP 位址為基礎的防火牆是否封鎖存取。
 
@@ -228,18 +228,18 @@ ms.locfileid: "70813422"
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>步驟 12：確認進程伺服器 proxy 設定 
+## <a name="step-12-verify-process-server-proxy-settings"></a>步驟12：驗證進程伺服器 proxy 設定 
 
-1. 如果您使用 Proxy 伺服器，請確定 DNS 伺服器可解析 Proxy 伺服器名稱。 檢查您在登錄機碼**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure 網站 Recovery\ProxySettings**中設定伺服器時所提供的值。
+1. 如果您使用 Proxy 伺服器，請確定 DNS 伺服器可解析 Proxy 伺服器名稱。 檢查您在登錄機碼中設定伺服器時所提供的值**HKEY_LOCAL_MACHINE \Software\microsoft\azure Site Recovery\ProxySettings**。
 2. 請確定 Azure Site Recovery 代理程式會使用相同的設定來傳送資料。
 
     a）搜尋**Microsoft Azure 備份**。
 
-    b）開啟**Microsoft Azure 備份**，然後選取 [**動作** > ] [**變更屬性**]。
+    b）開啟**Microsoft Azure 備份**，然後選取 **動作** > **變更屬性**。
 
     c）在 [ **proxy**設定] 索引標籤上，proxy 位址應該與登錄設定中顯示的 proxy 位址相同。 如果不同，請將它變更為相同的位址。
 
-## <a name="step-13-check-bandwidth"></a>步驟 13：檢查頻寬
+## <a name="step-13-check-bandwidth"></a>步驟13：檢查頻寬
 
 增加進程伺服器與 Azure 之間的頻寬，然後檢查是否仍然發生問題。
 

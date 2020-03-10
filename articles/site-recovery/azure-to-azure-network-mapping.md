@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954146"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396907"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>為 VNet 設定網路對應和 IP 位址
 
 本文說明如何彼此對應位於不同 Azure 區域之 Azure 虛擬網路 (VNet) 的兩個執行個體，以及如何設定網路之間的 IP 位址。 [網路對應] 會根據啟用複寫時的來源網路，提供目標網路選擇的預設行為。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在網路對應之前，您應該在來源和目標 Azure 區域中擁有 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
 

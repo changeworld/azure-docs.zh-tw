@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374463"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理的頁面控制項
 Azure API 管理提供下列可在開發人員入口網站範本中使用的控制項。  
@@ -52,7 +52,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![應用&#45;程式動作控制](./media/api-management-page-controls/APIM-app-actions-control.png "APIM 應用程式動作控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -74,7 +74,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![基本&#45;登入控制](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM 基本-登錄控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <basic-SignIn></basic-SignIn>  
@@ -93,7 +93,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![分頁控制項](./media/api-management-page-controls/APIM-paging-control.png "APIM 分頁控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <paging-control></paging-control>  
@@ -116,7 +116,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![提供者控制項](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供者控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <providers></providers>  
@@ -135,7 +135,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![搜尋控制項](./media/api-management-page-controls/APIM-search-control.png "APIM 搜尋控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <search-control></search-control>  
@@ -156,7 +156,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![註冊&#45;控制項](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 註冊控制")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <sign-up></sign-up>  
@@ -175,7 +175,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![訂閱&#45;按鈕控制項](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM 訂閱按鈕控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <subscribe-button></subscribe-button>  
@@ -194,7 +194,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
  ![訂&#45;用帳戶取消控制](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM 訂用帳戶-取消控制項")  
   
-### <a name="usage"></a>用量  
+### <a name="usage"></a>使用量  
   
 ```xml  
 <subscription-cancel params="{ subscriptionId: '{{subscription.id}}', cancelUrl: '{{subscription.cancelUrl}}' }">  

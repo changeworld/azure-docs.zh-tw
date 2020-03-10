@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900810"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378301"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>依據 Azure Active Directory 中的群組成員資格將授權指派給使用者
 
@@ -99,7 +99,7 @@ ms.locfileid: "74900810"
 
 - [什麼是 Azure Active Directory 中以群組為基礎的授權？](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
 - [識別及解決 Azure Active Directory 中群組的授權問題](licensing-groups-resolve-problems.md)
-- [如何將個別的已授權使用者移轉成 Azure Active Directory 中的群組型授權 (英文)](licensing-groups-migrate-users.md)
+- [如何將個別授權使用者移轉至 Azure Active Directory 中以群組為基礎的授權](licensing-groups-migrate-users.md)
 - [如何使用 Azure Active Directory 中的群組型授權在產品授權之間移轉使用者](licensing-groups-change-licenses.md)
 - [Azure Active Directory 群組型授權其他案例 (英文)](../active-directory-licensing-group-advanced.md)
 - [Azure Active Directory 群組型授權的 PowerShell 範例](licensing-ps-examples.md)

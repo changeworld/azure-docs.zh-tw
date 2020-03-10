@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464586"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391419"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 主控模型
 本文提供 Azure Service Fabric 所提供之應用程式主控模型的概觀，並說明**共用處理序**與**專屬處理序**模型之間的差異。 本文說明已部署之應用程式在 Service Fabric 節點上看起來的樣子，以及服務的複本 (或執行個體) 與服務主機處理序之間的關聯性。
@@ -92,7 +92,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 如您所見，Service Fabric 啟用了兩份新的 'MyServicePackage' (針對來自分割區 **P6** 和 **P7** 的每個複本各啟用一份)。 Service Fabric 將每個複本放在其專用的一份 CodePackage 中。 當您使用「專屬處理序」模型時，就指定的「應用程式」而言，一個「節點」上可以有多份作用中的指定 ServicePackage。 在上述範例中**fabric:/App1** 有三份作用中的 'MyServicePackage'。 這每一份作用中的 'MyServicePackage' 都有關聯的 **ServicePackageActivationId**。 此識別碼可識別「應用程式」**fabric:/App1** 中的該複本。
 
-當您只對應用程式使用共用處理序模型時，一個節點上只能有一份作用中的 ServicePackage。 這個 ServicePackage 啟用的 **ServicePackageActivationId** 為空字串。 例如，**fabric:/App2** 便是這種情況。
+當您只對應用程式使用共用處理序模型時，一個節點上只能有一份作用中的 ServicePackage。 這個 ServicePackage 啟用的 *ServicePackageActivationId* 為空字串。 例如，**fabric:/App2** 便是這種情況。
 
 > [!NOTE]
 >- 共用處理序主控模型會與等於 **SharedProcess** 的 **ServicePackageActivationMode** 對應。 這是預設的主控模型，在建立服務時不須指定 **ServicePackageActivationMode**。

@@ -10,16 +10,16 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 921ea148c12a23ece47688a26743e1195caf52f4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003784"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391759"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)支援在上傳至 Azure 儲存體之前，將用戶端應用程式中的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與 [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/) 整合，以進行儲存體帳戶金鑰管理。
 
 如需引導您進行使用用戶端加密和 Azure 金鑰保存庫來加密 Blob 的逐步教學課程，請參閱 [在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)。
@@ -61,7 +61,7 @@ ms.locfileid: "71003784"
 > 
 > 
 
-下載加密的 blob 牽涉到使用**DownloadTo** / **BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載加密的 blob 牽涉到使用**DownloadTo**/**BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
 
 在加密的 blob 中下載任意範圍（**DownloadRange**方法）牽涉到調整使用者所提供的範圍，以取得少量額外的資料，可用來成功解密所要求的範圍。
 
@@ -93,7 +93,7 @@ ms.locfileid: "71003784"
 
 請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串儲存在服務上作為二進位屬性，且解密後會轉換回字串。
 
-針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [EncryptProperty] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 (例如，如果 X，則加密屬性 A，否則加密屬性 A 和 B。)請注意，讀取或查詢實體時不需要提供這項資訊。
+針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [EncryptProperty] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 在批次作業中，批次作業中的所有資料列上會使用相同的 KEK，因為用戶端程式庫只允許每個批次作業有一個選項物件 (也就是一個原則/KEK)。 不過，用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -105,7 +105,7 @@ ms.locfileid: "71003784"
 > 
 > 若要執行查詢作業，您必須指定一個能夠解析結果集中的所有金鑰的金鑰解析程式。 如果查詢結果中包含的實體無法解析成提供者，用戶端程式庫會擲回錯誤。 針對執行伺服器端投影的任何查詢，用戶端程式庫會依預設將特殊加密中繼資料屬性 (_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2) 加入選取的資料行。
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+## <a name="azure-key-vault"></a>Azure 金鑰保存庫
 Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用 Azure 金鑰保存庫時，使用者可以使用受硬體安全模組 (HSM) 保護的金鑰來加密金鑰和密碼 (例如驗證金鑰、儲存體帳戶金鑰、資料加密金鑰、.PFX 檔案和密碼)。 如需詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../../key-vault/key-vault-overview.md)。
 
 儲存體用戶端程式庫會使用金鑰保存庫核心程式庫，以提供整個 Azure 的通用架構來管理金鑰。 使用者也享有使用金鑰保存庫延伸模組程式庫的額外好處。 延伸模組程式庫提供實用的功能，包括簡單又完善的對稱/RSA 本機和雲端金鑰提供者，以及彙總和快取。
@@ -125,7 +125,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 
 有關金鑰保存庫使用方式的詳細資訊位於 [加密程式碼範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 只有 .NET 的儲存體用戶端程式庫才支援加密。 Windows Phone 和 Windows 執行階段目前不支援加密。
 
 > [!IMPORTANT]
@@ -242,7 +242,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 請注意，加密您的儲存體資料會造成額外的效能負擔。 必須產生內容金鑰和 IV，內容本身必須經過加密，而且其他中繼資料必須格式化並上傳。 這個額外負荷會因所加密的資料數量而有所不同。 我們建議客戶一定要在開發期間測試其應用程式的效能。
 
 ## <a name="next-steps"></a>後續步驟
-* [教學課程：在 Microsoft Azure 儲存體中使用 Azure Key Vault 加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [教學課程：在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * 下載 [適用於 .NET NuGet 封裝的 Azure 儲存體用戶端程式庫](https://www.nuget.org/packages/WindowsAzure.Storage)
 * 下載 Azure 金鑰保存庫 NuGet 的 [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/) 和 [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) 封裝  
 * 請瀏覽 [Azure 金鑰保存庫文件](../../key-vault/key-vault-overview.md)

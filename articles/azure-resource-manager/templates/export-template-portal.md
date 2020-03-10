@@ -4,11 +4,11 @@ description: 使用 Azure 入口網站從您的訂用帳戶中的資源匯出 Az
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384960"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>單一和多重資源匯出至 Azure 入口網站中的範本
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386503"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory 中的管道執行和觸發程序
 > [!div class="op_single_selector" title1="選取您要使用的 Data Factory 服務版本："]
@@ -230,13 +230,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-overview"></a>結構描述概觀
 下表提供與觸發程序之週期和排程相關的主要結構描述元素概觀：
 
-| JSON 屬性 | 說明 |
+| JSON 屬性 | 描述 |
 |:--- |:--- |
 | **startTime** | 日期時間值。 在基本排程中，**startTime** 屬性的值會套用至第一個發生項目。 在複雜的排程中，觸發程序會在到了指定的 **startTime** 值才啟動。 |
 | **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 <!-- This property is optional. --> |
 | **timeZone** | 時區。 目前僅支援 UTC 時區。 |
 | **recurrence** | 指定觸發程序之週期規則的 recurrence 物件。 recurrence 物件支援 **frequency**、**interval**、**endTime**、**count** 及 **schedule** 元素。 定義 recurrence 物件時，必須一併定義 **frequency** 元素。 其他 recurrence 物件元素則為選用元素。 |
-| **頻率** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
+| **frequency** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
 | **interval** | 代表 **frequency** 值之間隔的整數值。 **frequency** 值可決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "week"，觸發程序就會每隔三週重複執行一次。 |
 | **schedule** | 觸發程序的週期排程。 具有指定之 **frequency** 值的觸發程序會根據週期排程來改變其週期。 **schedule** 屬性會根據分鐘、小時、星期幾、月日及週數來修改週期。
 
@@ -279,10 +279,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | JSON 屬性 | 類型 | 必要 | 預設值 | 有效值 | 範例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | 字串 | 是 | None | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | 物件 | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **recurrence** | 物件 (object) | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | 否 | 1 | 1 到 1000 | `"interval":10` |
 | **endTime** | 字串 | 是 | None | 代表未來時間的日期時間值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | 物件 | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | 物件 (object) | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 屬性
 下表說明 **startTime** 屬性如何控制觸發程序執行：
@@ -309,7 +309,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 下表詳細說明 **schedule** 元素：
 
-| JSON 元素 | 說明 | 有效值 |
+| JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
 | **minutes** | 一小時內觸發程序執行的分鐘數。 |- 整數<br />- 一連串整數|
 | **hours** | 一天內觸發程序執行的小時數。 |- 整數<br />- 一連串整數|
@@ -333,7 +333,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 這些範例會假設 **interval** 值為 1，且 **frequency** 值根據排程定義是正確的。 例如，您不能既將 **frequency** 值設定為 "day"，又在 **schedule** 物件中包含 **monthDays** 修改。 上一節中的表格說明這些限制。
 
-| 範例 | 說明 |
+| 範例 | 描述 |
 |:--- |:--- |
 | `{"hours":[5]}` | 在每天的上午 5:00 執行。 |
 | `{"minutes":[15], "hours":[5]}` | 在每天的上午 5:15 執行。 |

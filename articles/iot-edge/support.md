@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395673"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -56,7 +56,7 @@ Azure IoT Edge 會在大部分可執行容器的作業系統上執行;不過，�
 ![主機 OS 符合來賓 OS](./media/support/edge-on-device.png)
 </center>
 
-### <a name="tier-1"></a>定價層 1
+### <a name="tier-1"></a>第 1 層
 
 下表所列的系統受到 Microsoft 的支援，其為正式推出或處於公開預覽狀態，並已在每個新版本中進行測試。 
 
@@ -72,7 +72,7 @@ Azure IoT Edge 會在大部分可執行容器的作業系統上執行;不過，�
 
 以上所列的 Windows 作業系統是在 Windows 上執行 Windows 容器的裝置需求，這是唯一支援的生產環境設定。 適用于 Windows 的 Azure IoT Edge 安裝套件允許在 Windows 上使用 Linux 容器;不過，此設定僅供開發和測試之用。 如需詳細資訊，請參閱[在 Windows 上使用 IoT Edge 執行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
 
-### <a name="tier-2"></a>定價層 2
+### <a name="tier-2"></a>第 2 層
 
 下表所列的系統會視為與 Azure IoT Edge 相容，但不是由 Microsoft 主動進行測試或維護。
 

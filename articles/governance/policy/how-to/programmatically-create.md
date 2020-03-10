@@ -4,11 +4,11 @@ description: 本文會逐步引導您以程式設計方式建立和管理具有 
 ms.date: 01/31/2019
 ms.topic: how-to
 ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386789"
 ---
 # <a name="programmatically-create-policies"></a>以程式設計方式建立原則
 
@@ -16,7 +16,7 @@ ms.locfileid: "75982475"
 
 如需合規性相關資訊，請參閱[取得合規性資料](get-compliance-data.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您已符合下列必要條件：
 
@@ -87,7 +87,7 @@ ms.locfileid: "75982475"
 
    以您想要的資源群組名稱取代 _ContosoRG_。
 
-   `New-AzPolicyAssignment` 上的**範圍**參數適用于管理群組、訂用帳戶、資源群組或單一資源。 此參數會使用 `Get-AzResourceGroup` 上 **ResourceId** 屬性傳回的完整資源路徑。 以下是每個容器的 **Scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。
+   `New-AzPolicyAssignment` 上的**範圍**參數適用于管理群組、訂用帳戶、資源群組或單一資源。 此參數會使用 **上**ResourceId`Get-AzResourceGroup` 屬性傳回的完整資源路徑。 以下是每個容器的 **Scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。
    `{rType}` 會取代為資源的**資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -216,7 +216,7 @@ ms.locfileid: "75982475"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 上的 **--scope**參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **--scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的**資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
+   **上的**--scope`az policy assignment create`參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **--scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的**資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 資源群組 - `/subscriptions/{subID}/resourceGroups/{rgName}`

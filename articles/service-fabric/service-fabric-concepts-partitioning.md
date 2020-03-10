@@ -4,16 +4,16 @@ description: 描述如何分割 Service Fabric 具狀態服務。 資料分割�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434070"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390214"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>分割 Service Fabric 可靠服務
 這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上也提供本文中使用的原始碼。
 
-## <a name="partitioning"></a>分割
+## <a name="partitioning"></a>資料分割
 分割不是 Service Fabric 所獨有。 事實上，它是建置可調整服務的核心模式。 廣義上，我們可以將分割視為將狀態 (資料) 和計算分成較小的可存取單位來改善延展性和效能。 一種知名的資料分割形式是[資料分割][wikipartition]，也稱為分區化。
 
 ### <a name="partition-service-fabric-stateless-services"></a>分割 Service Fabric 無狀態服務
@@ -307,7 +307,7 @@ Service Fabric 有三個資料分割配置可選擇：
     ```
     
     請記得，在此範例中，我們使用 26 個資料分割，每個資料分割有一個資料分割索引鍵。
-    接下來，我們使用 `servicePartitionResolver` 物件的 `ResolveAsync` 方法，取得此索引鍵的服務資料分割 `partition`。 `servicePartitionResolver` 定義為
+    接下來，我們使用 `partition` 物件的 `ResolveAsync` 方法，取得此索引鍵的服務資料分割 `servicePartitionResolver`。 `servicePartitionResolver` 定義為
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();

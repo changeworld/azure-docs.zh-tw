@@ -12,11 +12,11 @@ ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5527d58f140074279d6b9feac13803f29eb0bda5
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255781"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396204"
 ---
 # <a name="access-data-in-azure-storage-services"></a>存取 Azure 儲存體服務中的資料
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "78255781"
 
 您可以從[這些 Azure 儲存體解決方案](#matrix)建立資料存放區。 針對不支援的儲存體解決方案，以及在機器學習實驗期間儲存資料輸出成本，建議您[將資料移](#move)至支援的 Azure 儲存體解決方案。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 您需要：
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "78255781"
 Azure&nbsp;SQL&nbsp;資料庫| SQL 驗證 <br>服務主體| ✓ | ✓ | ✓ |✓
 Azure&nbsp;于 postgresql | SQL 驗證| ✓ | ✓ | ✓ |✓
 適用于&nbsp;MySQL 的 Azure&nbsp;資料庫&nbsp; | SQL 驗證|  | ✓ | ✓ |✓
-Databricks&nbsp;檔案&nbsp;系統| 無驗證 | | ✓ * * | ✓ * * |✓ * * 
+Databricks&nbsp;檔案&nbsp;系統| 不需要驗證 | | ✓ * * | ✓ * * |✓ * * 
 
 *只有管線[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)支援 MySQL。 <br> \** 只有管線[DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)支援 Databricks
 

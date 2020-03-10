@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665659"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395755"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -76,7 +76,7 @@ ms.locfileid: "77665659"
 
 支援下列警示狀態：
 
-| 狀態 | 描述 |
+| State | 描述 |
 |:---|:---|
 | 新增 | 已偵測到此問題，而且尚未進行審核。 |
 | 已認可 | 系統管理員已檢閱警示，且已開始處理。 |
@@ -170,7 +170,7 @@ ms.locfileid: "77665659"
 | 區段 | 描述 |
 |:---|:---|
 | 摘要 | 顯示警示的內容和其他重要資訊。 |
-| 歷程記錄 | 列出警示採取的每個動作，以及對警示所做的任何變更。 目前僅限於狀態變更。 |
+| 記錄 | 列出警示採取的每個動作，以及對警示所做的任何變更。 目前僅限於狀態變更。 |
 | 診斷 | 包含警示之智慧群組的相關資訊。 「警示計數」是指智慧群組中包含的警示數目。 包含在過去30天內建立的相同智慧群組中的其他警示，而不論警示清單頁面中的時間篩選準則為何。 選取警示以檢視其詳細資料。 |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警示實例的角色型存取控制（RBAC）

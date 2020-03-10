@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382646"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -34,7 +34,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 > [!TIP]
 > 當您從 Amazon Redshift 中複製大量資料時，若想獲得最佳效能，請考慮透過 Amazon Simple Storage Service (Amazon S3) 使用內建的 Redshift **UNLOAD**。 如需詳細資料，請參閱[使用 UNLOAD 複製 Amazon Redshift 中的資料](#use-unload-to-copy-data-from-amazon-redshift)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 如果您要將資料移到內部部署的資料存放區，請在內部部署的電腦上安裝[資料管理閘道](data-factory-data-management-gateway.md)。 使用內部部署機器的 IP 位址，授與 Amazon Redshift 叢集閘道的存取權。 如需相關指示，請參閱[授權存取叢集](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 若要將資料移動到 Azure 資料存放區，請參閱[計算 Microsoft Azure 資料中心所使用的 IP 位址和 SQL 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
@@ -59,7 +59,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 下表提供 Amazon Redshift 服務連結服務專屬之 JSON 元素的描述。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **type** |屬性必須設為 **AmazonRedshift**。 |是 |
 | **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
@@ -74,7 +74,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 每個類型之資料集的 **typeProperties** 區段都不同，可提供存放區中資料位置的相關資訊。 **RelationalTable** 資料集類型的 **typeProperties** 區段 (包含 Amazon Redshift 資料集) 具有下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **tableName** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
 
@@ -84,7 +84,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 對於複製活動，當來源類型為 **AmazonRedshiftSource** 時，**typeProperties** 區段中可使用下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **query** | 使用自訂查詢來讀取資料。 |否 (如果已指定資料集的 **tableName** 屬性) |
 | **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | 否 |
@@ -93,7 +93,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 您也可以將 **RelationalSource** 類型 (包括 Amazon Redshift) 與下列 **typeProperties** 區段中的屬性搭配使用。 請注意，此來源類型不支援 Redshift **UNLOAD** 命令。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **query** |使用自訂查詢來讀取資料。 | 否 (如果已指定資料集的 **tableName** 屬性) |
 
@@ -144,9 +144,9 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 
 * [AmazonRedshift](#linked-service-properties) 類型的連結服務
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-* [RelationalTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)
-* 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 屬性之複製活動的[管線](data-factory-create-pipelines.md)
+* [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)
+* [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)
+* 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 屬性之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 此範例會每個小時將資料從 Amazon Redshift 中的查詢結果複製到 Blob。 實體定義後面的各節會說明範例中使用的 JSON 屬性。
 
@@ -333,13 +333,13 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | INTEGER |Int32 |
 | bigint |Int64 |
 | DECIMAL |Decimal |
-| real |單一 |
+| real |Single |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| 日期 |日期時間 |
-| timestamp |日期時間 |
+| 日期 |Datetime |
+| timestamp |Datetime |
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行

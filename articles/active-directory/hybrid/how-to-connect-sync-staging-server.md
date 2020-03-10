@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376207"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暫存伺服器和災害復原
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：預備伺服器和嚴重損壞修復
 利用預備模式中的伺服器，您可以在啟用伺服器之前變更組態並預覽變更。 它也可以讓您執行完整的匯入和完整的同步處理，以在生產環境中進行這些變更之前，確認所有變更皆如預期。
 
 ## <a name="staging-mode"></a>預備模式
@@ -42,7 +42,7 @@ ms.locfileid: "69900065"
 
 您仍然可以使用 Synchronization Service Manager 來強制執行匯出。
 
-預備模式中的伺服器會繼續接收來自 Active Directory 和 Azure AD 的變更, 並可在發生失敗時, 快速接管另一部伺服器的責任。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
+預備模式中的伺服器會繼續接收來自 Active Directory 和 Azure AD 的變更，並可在發生失敗時，快速接管另一部伺服器的責任。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
 
 對於具備較舊同步處理技術知識的人員，預備模式是不同的，因為伺服器有它自己的 SQL 資料庫。 此架構可讓預備模式伺服器位於不同的資料中心。
 
@@ -73,8 +73,8 @@ ms.locfileid: "69900065"
 
 #### <a name="verify"></a>Verify
 1. 啟動 CMD 命令提示字元並移至 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. 請執行：`csexport "Name of Connector" %temp%\export.xml /f:x` 您可以在「同步處理服務」中找到「連接器」的名稱。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
-3. 請執行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 您在 %temp% 中有名稱為 export.csv、可在 Microsoft Excel 中檢查的檔案。 此檔案包含即將匯出的所有變更。
+2. 執行：`csexport "Name of Connector" %temp%\export.xml /f:x` 連接器名稱可以在同步處理服務中找到。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
+3. 執行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 您在 %temp% 中有名稱為 export.csv 的檔案，可在 Microsoft Excel 中加以檢查。 此檔案包含即將匯出的所有變更。
 4. 對資料或組態進行必要的變更並再次執行這些步驟 (匯入和同步處理和驗證)，直到要匯出的變更皆如預期進行。
 
 **了解 export.csv 檔案** 此檔案的大部分都簡單易懂。 要了解內容所需的一些縮寫：
@@ -92,7 +92,7 @@ ms.locfileid: "69900065"
 2. 在**預備模式**的伺服器上執行安裝精靈並停用**預備模式**。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
-## <a name="disaster-recovery"></a>嚴重損壞修復
+## <a name="disaster-recovery"></a>災害復原
 實作設計的一部分是規劃您在失去同步處理伺服器的災害中應如何應對。 有不同的模型可供使用，要使用哪一個模組取決於許多因素，包括：
 
 * 您在 Azure AD 的停機期間無法變更物件的容錯能力如何？
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>後續步驟
 **概觀主題**  
 
-* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)  
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)  

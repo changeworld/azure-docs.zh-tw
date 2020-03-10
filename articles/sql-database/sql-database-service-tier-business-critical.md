@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818235"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380083"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>業務關鍵層 - Azure SQL Database
 
@@ -53,7 +53,7 @@ SQL 資料庫引擎程序和基礎 mdf/ldf 檔案都放在具有本機連接 SSD
 -   修改資料的長時間執行交易。 開啟較長時間的交易，可防止截斷記錄檔大小和[虛擬記錄檔（VLF）](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)的數目。 在容錯移轉之後，大量的 VLF 可能會減緩資料庫復原的速度。
 -   具有報表和分析查詢的工作負載，可重新導向至免費的次要唯讀複本。
 - 更高的復原能力和更快速的損毀修復。 在系統失敗的情況下，將會停用主要實例上的資料庫，而且其中一個次要複本會立即成為新的讀寫主資料庫，準備好處理查詢。 資料庫引擎不需要分析和重做記錄檔中的交易，而且會載入記憶體緩衝區中的所有資料。
-- 先進的資料損毀保護-業務關鍵層會針對商務持續性目的，利用幕後的資料庫複本，因此服務也會利用自動修復頁面，這與 SQL Server 資料庫所使用的技術相同[鏡像和可用性群組](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)。 當複本因為資料完整性問題而無法讀取頁面時，將會從另一個複本抓取頁面的全新複本，取代無法讀取的頁面，而不會遺失資料或客戶停機時間。 如果資料庫具有異地次要複本，這項功能適用于一般用途層。
+- 先進的資料損毀保護-業務關鍵層會針對商務持續性目的，利用幕後的資料庫複本，因此服務也會利用自動修復頁面，這是用於 SQL Server 資料庫[鏡像和可用性群組](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)的相同技術。 當複本因為資料完整性問題而無法讀取頁面時，將會從另一個複本抓取頁面的全新複本，取代無法讀取的頁面，而不會遺失資料或客戶停機時間。 如果資料庫具有異地次要複本，這項功能適用于一般用途層。
 - 相較于一般用途層的99.99%，多重 AZ 設定中的高可用性-商務關鍵層保證99.995% 的可用性。
 - 以異地複寫設定的快速異地復原-商務關鍵層，其保證的復原點目標（RPO）為5秒，而30秒的復原時間目標（RTO）為100% 的已部署時數。
 

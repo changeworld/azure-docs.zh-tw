@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395245"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>設定 Azure 區塊鏈 Service 交易節點
 
@@ -37,14 +37,14 @@ ms.locfileid: "74326312"
 
     | 設定 | 描述 |
     |---------|-------------|
-    | 名稱 | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如， `newnode-myblockchainmember.blockchain.azure.com`。 節點名稱一旦建立之後就無法變更。 |
+    | 名稱 | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱一旦建立之後就無法變更。 |
     | 密碼 | 設定強式密碼。 使用密碼來存取具有基本驗證的交易節點端點。
 
 1. 選取 [建立]。
 
     佈建一個新的交易節點大約需要 10 分鐘。 額外的交易節點會產生成本。 如需成本的詳細資訊，請參閱[Azure 定價](https://aka.ms/ABSPricing)。
 
-## <a name="endpoints"></a>Endpoints
+## <a name="endpoints"></a>端點
 
 交易節點具有唯一的 DNS 名稱和公用端點。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74326312"
 
 1. 在 Azure 入口網站中，流覽至您的其中一個 Azure 區塊鏈服務成員交易節點，然後選取**總覽**。
 
-    ![Endpoints](./media/configure-transaction-nodes/endpoints.png)
+    ![端點](./media/configure-transaction-nodes/endpoints.png)
 
 交易節點端點是安全的，而且需要驗證。 您可以使用 Azure AD 驗證、HTTPS 基本驗證，以及透過 HTTPS 的存取金鑰或透過 SSL 的 Websocket，連接到交易端點。
 
@@ -71,7 +71,7 @@ Azure 區塊鏈 Service 交易節點端點支援 Azure Active Directory （Azure
     |---------|-------------|
     | 角色 | 選取 [**擁有**者]、[**參與者**] 或 [**讀取**者]。
     | 存取權指派對象 | 選取 [ **Azure AD 使用者、群組或服務主體**]。
-    | 選取 [封裝設定] | 搜尋您想要新增的使用者、群組或服務主體。
+    | Select | 搜尋您想要新增的使用者、群組或服務主體。
 
 1. 選取 [**儲存**] 以新增角色指派。
 

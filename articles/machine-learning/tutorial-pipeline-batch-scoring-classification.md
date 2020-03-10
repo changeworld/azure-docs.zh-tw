@@ -1,5 +1,5 @@
 ---
-title: 教學課程：批次評分的 ML 管線
+title: 教學課程：適用于批次評分的 ML 管線
 titleSuffix: Azure Machine Learning
 description: 在本教學課程中，建立機器學習管線，用以在 Azure Machine Learning 中的影像分類模型上執行批次評分。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您可將心力放在專業知識和機器學習上，而不是基礎結構和自動化。
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: HT
+ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78354921"
 ---
-# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建立批次評分的 Azure Machine Learning 管線
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -32,17 +32,18 @@ ms.locfileid: "77116460"
 > * 建立資料物件以擷取和輸出資料
 > * 您的工作區中下載、準備和註冊模型
 > * 佈建計算目標和建立評分指令碼
+> * 使用 `ParallelRunStep` 類別進行非同步批次評分
 > * 建置、執行和發佈管線
 > * 啟用管線的 REST 端點
 
-如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請完成[設定教學課程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  筆記本。
+* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 筆記本。
 
-如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` 以取得必要套件。
+如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` 以取得必要套件。
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>設定工作區和建立資料存放區
 
@@ -74,36 +75,34 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-data-objects"></a>建立資料物件
 
-當您建置管線時，`DataReference` 物件會從工作區資料存放區中讀取資料。 `PipelineData` 物件會在管線步驟之間傳輸中繼資料。
+在建置管線時，系統會使用 `Dataset` 物件從工作區的資料存放區讀取資料，並使用 `PipelineData` 物件在管線步驟之間傳輸中繼資料。
 
 > [!Important]
 > 本教學課程中的批次評分範例只會使用一個管線步驟。 在具有多個步驟的使用案例中，一般的流程會包含下列步驟：
 >
-> 1. 使用 `DataReference` 物件作為*輸入*以擷取原始資料、執行一些轉換，然後*輸出*`PipelineData` 物件。
+> 1. 使用 `Dataset` 物件作為*輸入*以擷取原始資料、執行一些轉換，然後*輸出*`PipelineData` 物件。
 >
 > 2. 使用上一個步驟中的 `PipelineData` *輸出物件*作為*輸入物件*。 請在後續步驟中重複執行前述步驟。
 
-在此案例中，您會針對輸入影像和分類標籤 (y-測試值) 建立對應至資料存放區目錄的 `DataReference` 物件。 您也會為批次評分輸出資料建立 `PipelineData` 物件。
+在此案例中，您會針對輸入影像和分類標籤 (y-測試值) 建立對應至資料存放區目錄的 `Dataset` 物件。 您也會為批次評分輸出資料建立 `PipelineData` 物件。
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
-input_images = DataReference(datastore=batchscore_blob, 
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download"
-                            )
-
-label_dir = DataReference(datastore=batchscore_blob, 
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download"                          
-                         )
-
+input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
+```
+
+接下來，將資料集註冊到工作區。
+
+```python
+
+input_images = input_images.register(workspace = ws, name = "input_images")
+label_ds = label_ds.register(workspace = ws, name = "label_ds")
 ```
 
 ## <a name="download-and-register-the-model"></a>下載並註冊模型
@@ -164,15 +163,12 @@ except ComputeTargetException:
 
 若要進行評分，請建立名為 `batch_scoring.py` 的批次評分指令碼，然後將其寫入至目前的目錄。 此指令碼會取得輸入影像、套用分類模型，然後將預測輸出至結果檔案。
 
-`batch_scoring.py` 指令碼會採用下列參數，並從您稍後在本教學課程中建立的管線步驟傳遞過來：
+`batch_scoring.py` 腳本會採用下列參數，從您稍後建立的 `ParallelRunStep` 傳遞：
 
-- `--model_name`:所用模型的名稱。
-- `--label_dir`:保存 `labels.txt` 檔案的目錄。
-- `--dataset_path`:包含輸入影像的目錄。
-- `--output_dir`:指令碼執行資料的模型之後，`results-label.txt` 檔案的輸出目錄。
-- `--batch_size`:用來執行模型的批次大小。
+- `--model_name`：所使用之模型的名稱。
+- `--labels_name`：保存 `labels.txt` 檔案的 `Dataset` 名稱。
 
-管線基礎結構會使用 `ArgumentParser` 類別將參數傳遞至管線步驟。 例如，在下列程式碼中，會對第一個引數 `--model_name` 指定屬性識別碼 `model_name`。 在 `main()` 函式中，會使用 `Model.get_model_path(args.model_name)` 來存取此屬性。
+管線基礎結構會使用 `ArgumentParser` 類別將參數傳遞至管線步驟。 例如，在下列程式碼中，會對第一個引數 `--model_name` 指定屬性識別碼 `model_name`。 在 `init()` 函式中，會使用 `Model.get_model_path(args.model_name)` 來存取此屬性。
 
 
 ```python
@@ -187,110 +183,77 @@ from math import ceil
 import numpy as np
 import shutil
 from tensorflow.contrib.slim.python.slim.nets import inception_v3
+
+from azureml.core import Run
 from azureml.core.model import Model
+from azureml.core.dataset import Dataset
 
 slim = tf.contrib.slim
-
-parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
-parser.add_argument('--model_name', dest="model_name", required=True)
-parser.add_argument('--label_dir', dest="label_dir", required=True)
-parser.add_argument('--dataset_path', dest="dataset_path", required=True)
-parser.add_argument('--output_dir', dest="output_dir", required=True)
-parser.add_argument('--batch_size', dest="batch_size", type=int, required=True)
-
-args = parser.parse_args()
 
 image_size = 299
 num_channel = 3
 
-# create output directory if it does not exist
-os.makedirs(args.output_dir, exist_ok=True)
 
-
-def get_class_label_dict(label_file):
+def get_class_label_dict():
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
+    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
 
 
-class DataIterator:
-    def __init__(self, data_dir):
-        self.file_paths = []
-        image_list = os.listdir(data_dir)
-        self.file_paths = [data_dir + '/' + file_name.rstrip() for file_name in image_list]
-        self.labels = [1 for file_name in self.file_paths]
+def init():
+    global g_tf_sess, probabilities, label_dict, input_images
 
-    @property
-    def size(self):
-        return len(self.labels)
+    parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
+    parser.add_argument('--model_name', dest="model_name", required=True)
+    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    args, _ = parser.parse_known_args()
 
-    def input_pipeline(self, batch_size):
-        images_tensor = tf.convert_to_tensor(self.file_paths, dtype=tf.string)
-        labels_tensor = tf.convert_to_tensor(self.labels, dtype=tf.int64)
-        input_queue = tf.train.slice_input_producer([images_tensor, labels_tensor], shuffle=False)
-        labels = input_queue[1]
-        images_content = tf.read_file(input_queue[0])
+    workspace = Run.get_context(allow_offline=False).experiment.workspace
+    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
+    label_ds.download(target_path='.', overwrite=True)
 
-        image_reader = tf.image.decode_jpeg(images_content, channels=num_channel, name="jpeg_reader")
-        float_caster = tf.cast(image_reader, tf.float32)
-        new_size = tf.constant([image_size, image_size], dtype=tf.int32)
-        images = tf.image.resize_images(float_caster, new_size)
-        images = tf.divide(tf.subtract(images, [0]), [255])
-
-        image_batch, label_batch = tf.train.batch([images, labels], batch_size=batch_size, capacity=5 * batch_size)
-        return image_batch
-
-
-def main(_):
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
+    label_dict = get_class_label_dict()
     classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
-    count = 0
 
-    # get model from model registry
+    with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
+        input_images = tf.placeholder(tf.float32, [1, image_size, image_size, num_channel])
+        logits, _ = inception_v3.inception_v3(input_images,
+                                              num_classes=classes_num,
+                                              is_training=False)
+        probabilities = tf.argmax(logits, 1)
+
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    g_tf_sess = tf.Session(config=config)
+    g_tf_sess.run(tf.global_variables_initializer())
+    g_tf_sess.run(tf.local_variables_initializer())
+
     model_path = Model.get_model_path(args.model_name)
+    saver = tf.train.Saver()
+    saver.restore(g_tf_sess, model_path)
 
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                  num_classes=classes_num,
-                                                  is_training=False)
-            probabilities = tf.argmax(logits, 1)
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
-        with open(out_filename, "w") as result_file:
-            i = 0
-            while count < total_size and not coord.should_stop():
-                test_images_batch = sess.run(test_images)
-                file_names_batch = test_feeder.file_paths[i * args.batch_size:
-                                                          min(test_feeder.size, (i + 1) * args.batch_size)]
-                results = sess.run(probabilities, feed_dict={input_images: test_images_batch})
-                new_add = min(args.batch_size, total_size - count)
-                count += new_add
-                i += 1
-                for j in range(new_add):
-                    result_file.write(os.path.basename(file_names_batch[j]) + ": " + label_dict[results[j]] + "\n")
-                result_file.flush()
-            coord.request_stop()
-            coord.join(threads)
+def file_to_tensor(file_path):
+    image_string = tf.read_file(file_path)
+    image = tf.image.decode_image(image_string, channels=3)
 
-        shutil.copy(out_filename, "./outputs/")
+    image.set_shape([None, None, None])
+    image = tf.image.resize_images(image, [image_size, image_size])
+    image = tf.divide(tf.subtract(image, [0]), [255])
+    image.set_shape([image_size, image_size, num_channel])
+    return image
 
-if __name__ == "__main__":
-    tf.app.run()
 
+def run(mini_batch):
+    result_list = []
+    for file_path in mini_batch:
+        test_image = file_to_tensor(file_path)
+        out = g_tf_sess.run(test_image)
+        result = g_tf_sess.run(probabilities, feed_dict={input_images: [out]})
+        result_list.append(os.path.basename(file_path) + ": " + label_dict[result[0]])
+    return result_list
 ```
 
 > [!TIP]
@@ -298,30 +261,37 @@ if __name__ == "__main__":
 
 ## <a name="build-and-run-the-pipeline"></a>建置並執行管線
 
-在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會從 SDK 安裝 `azureml-defaults` 以供背景程序使用。 使用相依性建立 `RunConfiguration` 物件。 此外，請指定 Docker 和 Docker-GPU 支援。
+在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會安裝背景程式的 `azureml-defaults`。 使用相依性建立 `RunConfiguration` 物件。 此外，請指定 Docker 和 Docker-GPU 支援。
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
 cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
-
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+env = Environment(name="parallelenv")
+env.python.conda_dependencies = cd
+env.docker.base_image = DEFAULT_GPU_IMAGE
 ```
 
-### <a name="parameterize-the-pipeline"></a>將管線設為參數
+### <a name="create-the-configuration-to-wrap-the-script"></a>建立用來包裝腳本的設定
 
-請定義管線的自訂參數以控制批次大小。 透過 REST 端點發佈並公開管線之後，任何已設定的參數也都會公開。 當您透過 HTTP 要求重新執行管線時，您可以在 JSON 承載中指定自訂參數。
-
-建立 `PipelineParameter` 物件以啟用此行為，並定義名稱和預設值。
+使用指令碼、環境設定和參數來建立管線步驟。 指定您已附加至工作區的計算目標。
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
+from azureml.contrib.pipeline.steps import ParallelRunConfig
+
+parallel_run_config = ParallelRunConfig(
+    environment=env,
+    entry_script="batch_scoring.py",
+    source_directory=".",
+    output_action="append_row",
+    mini_batch_size="20",
+    error_threshold=1,
+    compute_target=compute_target,
+    process_count_per_node=2,
+    node_count=1
+)
 ```
 
 ### <a name="create-the-pipeline-step"></a>建立管線步驟
@@ -333,25 +303,22 @@ batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 * 輸入和輸出資料，以及任何自訂參數
 * 在步驟進行期間，所要執行指令碼或 SDK 邏輯的參考
 
-有多個類別會繼承自父代類別 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) 類別，透過自訂的 Python 指令碼來定義步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數*同時*定義在 `arguments` 陣列中，*以及*分別定義在 `input` 或 `output` 參數中。 
+有多個類別會繼承自父代類別 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 `ParallelRunStep` 類別來定義使用自訂 Python 腳本的步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數*同時*定義在 `arguments` 陣列中，*以及*分別定義在 `input` 或 `output` 參數中。 
 
 在有多個步驟的案例中，`outputs` 陣列中的物件參考將可以作為後續管線步驟的*輸入*。
 
 ```python
-from azureml.pipeline.steps import PythonScriptStep
+from azureml.contrib.pipeline.steps import ParallelRunStep
 
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_scoring.py",
-    arguments=["--dataset_path", input_images, 
-               "--model_name", "inception",
-               "--label_dir", label_dir, 
-               "--output_dir", output_dir, 
-               "--batch_size", batch_size_param],
-    compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config
+batch_score_step = ParallelRunStep(
+    name="parallel-step-test",
+    inputs=[input_images.as_named_input("input_images")],
+    output=output_dir,
+    models=[model],
+    arguments=["--model_name", "inception",
+               "--labels_name", "label_ds"],
+    parallel_run_config=parallel_run_config,
+    allow_reuse=False
 )
 ```
 
@@ -371,7 +338,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_parameters={"param_batch_size": 20})
+pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -382,87 +349,20 @@ pipeline_run.wait_for_completion(show_output=True)
 ```python
 import pandas as pd
 
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
+batch_run = next(pipeline_run.get_children())
+batch_output = batch_run.get_output_data("scores")
+batch_output.download(local_path="inception_results")
 
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
+for root, dirs, files in os.walk("inception_results"):
+    for file in files:
+        if file.endswith("parallel_run_step.txt"):
+            result_file = os.path.join(root, file)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
 df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
 df.head(10)
 ```
-
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>檔案名稱</th>
-      <th>預測</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>ILSVRC2012_val_00000102.JPEG</td>
-      <td>Rhodesian Ridgeback</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>ILSVRC2012_val_00000103.JPEG</td>
-      <td>tripod</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>ILSVRC2012_val_00000104.JPEG</td>
-      <td>typewriter keyboard</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>ILSVRC2012_val_00000105.JPEG</td>
-      <td>silky terrier</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>ILSVRC2012_val_00000106.JPEG</td>
-      <td>Windsor tie</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>ILSVRC2012_val_00000107.JPEG</td>
-      <td>harvestman</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>ILSVRC2012_val_00000108.JPEG</td>
-      <td>violin</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>ILSVRC2012_val_00000109.JPEG</td>
-      <td>loudspeaker</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>ILSVRC2012_val_00000110.JPEG</td>
-      <td>apron</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>ILSVRC2012_val_00000111.JPEG</td>
-      <td>American lobster</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>從 REST 端點發佈和執行
 
@@ -477,7 +377,7 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-若要從 REST 端點執行管線，您必須要有 OAuth2 Bearer-type 驗證標頭。 下列範例會使用互動式驗證來進行說明，但對於大部分需要自動化驗證或無周邊驗證的生產案例，請使用[此筆記本中所述](https://aka.ms/pl-restep-auth)的服務主體驗證。
+若要從 REST 端點執行管線，您必須要有 OAuth2 Bearer-type 驗證標頭。 下列範例會使用互動式驗證（用於說明），但對於需要自動或無周邊驗證的大部分生產案例，請使用服務主體驗證，如[這篇文章中所述](how-to-setup-authentication.md)。
 
 若要使用服務主體驗證，必須在 *Azure Active Directory* 建立中*應用程式註冊*。 首先，您必須產生用戶端密碼，然後將您的服務主體*角色存取權*授與機器學習工作區。 請使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 類別管理您的驗證流程。 
 
@@ -531,12 +431,12 @@ RunDetails(published_pipeline_run).show()
 
 如果您不打算使用您建立的資源，請刪除它們，以免產生任何費用：
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
 1. 在資源群組清單中，選取您所建立的資源群組。
-1. 選取 [刪除資源群組]  。
-1. 輸入資源群組名稱。 然後，選取 [刪除]  。
+1. 選取 [刪除資源群組]。
+1. 輸入資源群組名稱。 然後，選取 [刪除]。
 
-您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]  。
+您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

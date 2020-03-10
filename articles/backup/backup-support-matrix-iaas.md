@@ -3,12 +3,12 @@ title: Azure VM 備份的支援矩陣
 description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602211"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669161"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -66,7 +66,7 @@ ms.locfileid: "77602211"
 **案例** | **OS 支援**
 --- | ---
 使用 Azure VM 代理程式擴充功能進行備份 | -Windows 10 用戶端（僅限64位） <br/><br/>-Windows Server 2019 （Datacenter/Datacenter Core/Standard） <br/><br/> -Windows Server 2016 （Datacenter/Datacenter Core/Standard） <br/><br/> -Windows Server 2012 R2 （Datacenter/Standard） <br/><br/> -Windows Server 2008 R2 （RTM 和 SP1 標準）  <br/><br/> -Windows Server 2008 （僅限64位）
-使用 MARS 代理程式進行備份 | [支援的](backup-support-matrix-mars-agent.md#support-for-direct-backups)作業系統。
+使用 MARS 代理程式進行備份 | [支援的](backup-support-matrix-mars-agent.md#supported-operating-systems)作業系統。
 使用 DPM/MABS 備份 | 使用 [MABS](backup-mabs-protection-matrix.md) 和 [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) 進行備份時支援的作業系統。
 
 Azure 備份不支援 32 位元作業系統。
@@ -165,7 +165,7 @@ Azure VM 資料磁碟 | 備份具有16個或更少資料磁片的 VM。<BR> 若�
 資料磁碟大小 | 針對 VM 中的所有磁片，個別磁片大小最高可達 32 TB，最大為 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD 進階 SSD。
 受控磁碟 | 支援。
-加密磁碟 | 支援。<br/><br/> 您可以備份使用 Azure 磁碟加密啟用的 Azure Vm （不論是否有 Azure AD 應用程式）。<br/><br/> 加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整個 VM。<br/><br/> 您可以對已受到 Azure 備份保護的 VM 啟用加密。
+加密磁碟 | 支援。<br/><br/> 您可以備份使用 Azure 磁碟加密啟用的 Azure Vm （不論是否有 Azure AD 應用程式）。<br/><br/> 加密的 Vm 無法在檔案/資料夾層級復原。 您必須復原整個 VM。<br/><br/> 您可以對已受到 Azure 備份保護的 VM 啟用加密。
 已啟用寫入加速器的磁碟 | 不支援。<br/><br/> Azure 備份會在備份期間自動排除已啟用寫入加速器的磁片。 因為它們不會備份，所以您將無法從 VM 的復原點還原這些磁片。
 備份 & 還原重復資料刪除的 Vm/磁片 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure 備份不會跨復原服務保存庫中的 Vm 刪除重複 <br/> <br/>  -如果還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫不了解格式。 不過，您將能夠成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。

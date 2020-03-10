@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367746"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390774"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 下表說明每個語音容器的資源的最低和建議配置。
 
-# <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 語音轉文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
-# <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 自訂語音轉換文字 | 2核心，2 GB 記憶體 | 4核心，4 GB 記憶體 |
 
-# <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
+# <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
 | 文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
-# <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 適用于語音的容器映射可在下列 Container Registry 中使用。
 
-# <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 | 容器 | Repository |
 |-----------|------------|
 | 語音轉文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
 | 容器 | Repository |
 |-----------|------------|
 | 自訂語音轉換文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
+# <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
 | 容器 | Repository |
 |-----------|------------|
 | 文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 | 容器 | Repository |
 |-----------|------------|
@@ -140,7 +140,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="docker-pull-for-the-speech-containers"></a>適用于語音容器的 Docker pull
 
-# <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>適用于語音轉換文字容器的 Docker pull
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 如需**語音轉換文字**容器的所有支援地區設定，請參閱[語音轉換文字影像標記](../containers/container-image-tags.md#speech-to-text)。
 
-# <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>自訂語音轉換文字容器的 Docker pull
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > 自訂語音容器的 `locale` 和 `voice` 是由容器所內嵌的自訂模型所決定。
 
-# <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
+# <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文字轉換語音容器的 Docker pull
 
@@ -214,7 +214,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 > [!IMPORTANT]
 > 當您建立*標準的文字轉換語音*HTTP POST 時，[語音合成標記語言（SSML）](speech-synthesis-markup.md)訊息需要具有 `name` 屬性的 `voice` 元素。 值是對應的容器地區設定和語音，也稱為「[簡短名稱](language-support.md#standard-voices)」。 例如，`latest` 標記的語音名稱會是 `en-US-JessaRUS`。
 
-# <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>自訂文字轉換語音容器的 Docker pull
 
@@ -240,7 +240,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得 `{Endpoint_URI}` 和 `{API_Key}` 值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 也可以使用 `docker run` 命令的其他[範例](speech-container-configuration.md#example-docker-run-commands)。
 
-# <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 若要執行*語音轉換文字*容器，請執行下列 `docker run` 命令。
 
@@ -259,7 +259,7 @@ ApiKey={API_KEY}
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-# <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
 *自訂語音轉換文字*容器會依賴自訂語音模型。 自訂模型必須已經使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)進行[定型](how-to-custom-speech-train-model.md)。
 
@@ -311,7 +311,7 @@ ApiKey={API_KEY}
 * 如果先前已下載自訂模型，則會忽略 `ModelId`。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-# <a name="text-to-speechtabtts"></a>[文字轉換語音](#tab/tts)
+# <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
 若要執行*文字轉換語音*容器，請執行下列 `docker run` 命令。
 
@@ -330,7 +330,7 @@ ApiKey={API_KEY}
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-# <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 *自訂文字轉換語音*容器會依賴自訂語音模型。 自訂模型必須已經使用[自訂語音入口網站](https://aka.ms/custom-voice-portal)進行[定型](how-to-custom-voice-create-voice.md)。 需要自訂語音**模型識別碼**才能執行容器。 您可以在自訂語音入口網站的 [**訓練**] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 [**定型**] 頁面，然後選取模型。
 <br>

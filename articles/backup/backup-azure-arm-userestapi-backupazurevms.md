@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450169"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395578"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -41,7 +41,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |204 沒有內容     |         |  確定，但不會傳回任何內容      |
 |202 已接受     |         |     已接受    |
@@ -104,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-1"></a>回應
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
+|200 確定     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [確定] |
 
 #### <a name="example-responses-1"></a>範例回應
 
@@ -149,7 +149,7 @@ X-Powered-By: ASP.NET
 > [!TIP]
 > *GET* 回應中針對「頁面」的值數字僅限於 200。 使用 'nextLink' 欄位來取得下一組回應的 URL。
 
-回應包含所有未受保護的 Azure VM 清單，每個 `{value}` 均包含 Azure 復原服務設定備份所需的所有資訊。 若要設定備份，請注意 `{properties}` 區段中的 `{name}` 欄位與 `{virtualMachineId}` 欄位。 從這些欄位值建構兩個變數，如下所述。
+回應包含所有未受保護的 Azure VM 清單，每個 `{value}` 均包含 Azure 復原服務設定備份所需的所有資訊。 若要設定備份，請注意 `{name}` 區段中的 `{virtualMachineId}` 欄位與 `{properties}` 欄位。 從這些欄位值建構兩個變數，如下所述。
 
 - containerName = "iaasvmcontainer;"+`{name}`
 - protectedItemName = "vm;"+ `{name}`
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 若要建立受保護的項目，以下是要求本文的元件。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem 資源屬性         |
 
@@ -200,7 +200,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-`{sourceResourceId}` 是上述來自[清單可保護項目之回應](#example-responses-1)的 `{virtualMachineId}`。
+`{sourceResourceId}` 是上述來自`{virtualMachineId}`清單可保護項目之回應[的 ](#example-responses-1)。
 
 #### <a name="responses"></a>回應
 
@@ -208,9 +208,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
+|200 確定     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [確定]       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses"></a>範例回應
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 屬性         |
 
@@ -319,7 +319,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -439,7 +439,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 204 (NoContent)。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 已接受     |         |     已接受    |

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395704"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安裝 Azure IoT Edge 執行階段
 
@@ -33,7 +33,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 如需最新 IoT Edge 版本中所包含內容的詳細資訊，請參閱[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用此區段可以檢閱 Windows 裝置是否可支援 IoT Edge，以及在安裝之前為容器引擎做好準備。
 
@@ -144,7 +144,7 @@ PowerShell 指令碼會下載並安裝 Azure IoT Edge 安全性精靈。 接著�
 
 如需最新的 IoT Edge 安裝檔案和舊版，請參閱[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-若要使用離線元件安裝，請使用 `-OfflineInstallationPath` 參數做為 IoTEdge 命令的一部分，並提供檔案目錄的絕對路徑。 例如：
+若要使用離線元件安裝，請使用 `-OfflineInstallationPath` 參數做為 IoTEdge 命令的一部分，並提供檔案目錄的絕對路徑。 例如，
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -250,8 +250,8 @@ IoTEdge 命令會使用您的裝置連接字串和操作詳細資料來設定 Io
 
 | 參數 | 接受的值 | 註解 |
 | --------- | --------------- | -------- |
-| **手動** | 無 | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置連接字串以手動佈建裝置 |
-| **Dps** | 無 | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置佈建服務 (DPS) 的範圍識別碼，以及透過 DPS 佈建的裝置註冊識別碼。  |
+| **手動** | None | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置連接字串以手動佈建裝置 |
+| **Dps** | None | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置佈建服務 (DPS) 的範圍識別碼，以及透過 DPS 佈建的裝置註冊識別碼。  |
 | **DeviceConnectionString** | 此連接字串來自 IoT 中樞註冊的 IoT Edge 裝置，以單引號括住 | 此為手動安裝的**必要項目**。 如果您未提供指令碼參數中的連接字串，在安裝期間會提示您輸入一個連接字串。 |
 | **ScopeId** | 此範圍識別碼來自與您 IoT 中樞相關聯之裝置佈建服務的執行個體。 | 此為 DPS 安裝的**必要項目**。 如果您未提供指令碼參數中的範圍識別碼，在安裝期間會提示您輸入範圍識別碼。 |
 | **RegistrationId** | 由您裝置產生的註冊識別碼 | 如果使用 TPM 或對稱金鑰證明，則為 DPS 安裝的**必要**項。 |

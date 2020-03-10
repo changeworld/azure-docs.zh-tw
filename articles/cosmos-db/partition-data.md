@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371596"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料分割和水平調整
 
-本文說明 Azure Cosmos DB 中的實體和邏輯分割區。 它也會討論調整和分割的最佳做法。 
+本文說明 Azure Cosmos DB 中的實體和邏輯分割區。 其也會討論調整和分割的最佳做法。 
 
 ## <a name="logical-partitions"></a>邏輯分割區
 
-邏輯分割區是由具有相同分割區索引鍵的一組專案所組成。 例如，在所有專案都包含 `City` 屬性的容器中，您可以使用 `City` 做為容器的分割區索引鍵。 具有 `City` 之特定值的專案群組，例如 `London`、`Paris` 和 `NYC`，會形成不同的邏輯分割區。 刪除基礎資料時，您不必擔心刪除資料分割。
+邏輯分割區是由具有相同分割區索引鍵的一組專案所組成。 例如，在所有專案都包含 `City` 屬性的容器中，您可以使用 `City` 做為容器的分割區索引鍵。 具有 `City`之特定值的專案群組，例如 `London`、`Paris`和 `NYC`，會形成不同的邏輯分割區。 刪除基礎資料時，您不必擔心刪除資料分割。
 
 在 Azure Cosmos DB 中，容器是延展性的基本單位。 新增至容器的資料，以及您在容器上布建的輸送量，會自動（水準）分割在一組邏輯分割區上。 資料和輸送量會根據您為 Azure Cosmos 容器指定的分割區索引鍵進行分割。 如需詳細資訊，請參閱[建立 Azure Cosmos 容器](how-to-create-container.md)。
 

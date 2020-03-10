@@ -16,16 +16,16 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365674"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple Virtual Array：在 Hyper-V 中佈建
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "68516802"
 在您開始前，請確定：
 
 * 您已完成 [準備入口網站以使用 StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步驟。
-* 您已經從 Azure 入口網站下載適用於 Hyper-V 的虛擬陣列映像。 如需詳細資訊，請參閱**步驟 3：下載虛擬陣列映像** (在[準備入口網站以使用 StorSimple Virtual Array 指南](storsimple-virtual-array-deploy1-portal-prep.md)中)。
+* 您已經從 Azure 入口網站下載適用於 Hyper-V 的虛擬陣列映像。 如需詳細資訊，請參閱**準備入口網站以使用 StorSimple Virtual Array 指南**的[步驟 3︰下載虛擬陣列映像](storsimple-virtual-array-deploy1-portal-prep.md)。
 
   > [!IMPORTANT]
   > StorSimple Virtual Array 上執行的軟體只能搭配 Storsimple 裝置管理員服務來使用。
@@ -70,7 +70,7 @@ ms.locfileid: "68516802"
 
 我們會在下列各節解釋這些步驟。
 
-## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>步驟 1:確定主機系統符合最低的虛擬陣列需求
+## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>步驟 1：確定主機系統符合最低的虛擬陣列需求
 若要建立虛擬陣列，您需要︰
 
 * 安裝在 Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 SP1 上的 Hyper-V 角色。
@@ -83,21 +83,21 @@ ms.locfileid: "68516802"
 * 一個網路介面。
 * 供系統資料使用的 500 GB 虛擬磁碟。
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>步驟 2:在 Hypervisor 中佈建虛擬陣列
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>步驟 2：在 Hypervisor 中佈建虛擬陣列
 請執行下列步驟，以便在您的 Hypervisor 中佈建裝置。
 
 #### <a name="to-provision-a-virtual-array"></a>若要佈建虛擬陣列
 1. 在 Windows Server 主機上，將虛擬陣列映像複製到本機磁碟機。 您已透過 Azure 入口網站下載此映像 (VHD 或 VHDX)。 請記下您複製映像的位置，因為稍後會在程序中使用此映像。
-2. 開啟 [伺服器管理員]。 按一下右上角的 [工具]，然後選取 [Hyper-V 管理員]。
+2. 開啟 **[伺服器管理員]** 。 按一下右上角的 [工具]，然後選取 [Hyper-V 管理員]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
    如果您執行的是 Windows Server 2008 R2，請開啟「Hyper-V 管理員」。 在 [伺服器管理員] 中，按一下 [角色] > [Hyper-V] > [Hyper-V 管理員]。
-3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增]  >  [虛擬機器]。
+3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增] >  [虛擬機器]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在「新增虛擬機器精靈」的 [開始之前] 頁面上，按一下 [下一步]。
-5. 在 [指定名稱和位置] 頁面上，提供虛擬陣列的 [名稱]。 按一下 [下一步]。
+5. 在 [指定名稱和位置] 頁面上，提供虛擬陣列的 [名稱]。 按 [下一步]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. 在 [指定世代] 頁面上，選擇裝置映像類型，然後按一下 [下一步]。 如果您使用的是 Windows Server 2008 R2，則不會出現此頁面。
@@ -134,16 +134,16 @@ ms.locfileid: "68516802"
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 在「新增虛擬硬碟精靈」的 [開始之前] 頁面上，按一下 [下一步]。
-16. 在 [選擇磁碟格式] 頁面上，接受 [VHDX] 格式預設選項。 按一下 [下一步]。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
+16. 在 [選擇磁碟格式] 頁面上，接受 [VHDX] 格式預設選項。 按 [下一步]。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在 [選擇磁碟類型] 頁面上，將虛擬硬碟類型設定為 [動態擴充] \(建議選項)。 [固定大小] 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異] 選項。 按一下 [下一步]。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充] 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]。
+17. 在 [選擇磁碟類型] 頁面上，將虛擬硬碟類型設定為 [動態擴充] \(建議選項)。 [固定大小] 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異] 選項。 按 [下一步]。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充] 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在 [指定名稱和位置] 頁面上，提供資料磁碟的「名稱」和「位置」(您可以瀏覽至該位置)。 按一下 [下一步]。
+18. 在 [指定名稱和位置] 頁面上，提供資料磁碟的「名稱」和「位置」(您可以瀏覽至該位置)。 按 [下一步]。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在「設定磁碟」頁面上，選取 [建立新的空白虛擬硬碟] 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需有關要佈建之磁碟大小的詳細資訊，請檢閱[最佳作法文件](storsimple-ova-best-practices.md)中的＜調整大小＞一節。 按一下 [下一步]。
+19. 在「設定磁碟」頁面上，選取 [建立新的空白虛擬硬碟] 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需有關要佈建之磁碟大小的詳細資訊，請檢閱[最佳作法文件](storsimple-ova-best-practices.md)中的＜調整大小＞一節。 按 [下一步]。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在 [摘要] 頁面上，檢閱虛擬資料磁碟的詳細資料，如果您對這些資料感到滿意，請按一下 [完成] 來建立磁碟。 精靈會關閉，虛擬硬碟會新增至您的電腦。
@@ -208,7 +208,7 @@ ms.locfileid: "68516802"
        >
        >
 
-如果裝置不符合最低設定需求，橫幅文字中會出現下列錯誤 (如下所示)。 請修改裝置設定，讓電腦有足夠的資源符合最低需求。 然後您就可以將裝置重新啟動，並連線到該裝置。 請參閱以下步驟 1 中的最低設定需求：確定主機系統符合最低的虛擬陣列需求。
+如果裝置不符合最低設定需求，橫幅文字中會出現下列錯誤 (如下所示)。 請修改裝置設定，讓電腦有足夠的資源符合最低需求。 然後您就可以將裝置重新啟動，並連線到該裝置。 請參閱步驟1：確認主機系統符合最低的虛擬陣列需求中的最低設定需求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 

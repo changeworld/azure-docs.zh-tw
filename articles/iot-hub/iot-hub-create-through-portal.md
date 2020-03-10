@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169599"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396603"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 入口網站建立 IoT 中樞
 
@@ -86,7 +86,7 @@ ms.locfileid: "76169599"
 
 針對 [資料來源]，選取 [裝置遙測訊息]。 
 
-接下來，新增路由查詢。 在此範例中，具有值等於 `critical` 且名稱為 `level` 之應用程式屬性的訊息將路由傳送到儲存體帳戶。
+接下來，新增路由查詢。 在此範例中，具有值等於 `level` 且名稱為 `critical` 之應用程式屬性的訊息將路由傳送到儲存體帳戶。
 
 ![顯示儲存新路由規則的螢幕擷取畫面](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 

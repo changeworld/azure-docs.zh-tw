@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: HT
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966272"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671887"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -26,7 +26,7 @@ ms.locfileid: "74966272"
 
 ![概念性的條件式訊號加上決策，然後強制執行](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-最簡單的條件式存取原則就是 if-then 陳述式，如果使用者想要存取資源，那麼他們就必須完成動作。 範例：薪資管理員想要存取薪資應用程式，而且必須執行多重要素驗證才能進行存取。
+最簡單的條件式存取原則就是 if-then 陳述式，如果使用者想要存取資源，那麼他們就必須完成動作。 範例：「薪資管理員」想要存取「薪資」應用程式，而且必須執行「多重要素驗證」才能存取它。
 
 系統管理員面臨兩個主要目標：
 
@@ -92,7 +92,7 @@ ms.locfileid: "74966272"
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-擁有 [Microsoft 365 商務版授權](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。 
+擁有 [Microsoft 365 商務版授權](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -102,6 +102,6 @@ ms.locfileid: "74966272"
 
 [了解 Identity Protection](../identity-protection/overview-v2.md)
 
-[了解 Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[了解 Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[了解 Microsoft Intune](https://docs.microsoft.com/intune/index)
+[了解 Microsoft Intune](/intune/index)

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621901"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396047"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火牆規則處理邏輯
 您可以在 Azure 防火牆上設定 NAT 規則、網路規則和應用程式規則。 規則的處理依據是規則類型。 

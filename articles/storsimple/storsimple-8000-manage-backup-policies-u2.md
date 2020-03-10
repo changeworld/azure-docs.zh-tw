@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60819185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394586"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 入口網站中，使用 StorSimple 裝置管理員服務來管理備份原則
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-本教學課程說明如何使用 StorSimple 裝置管理員服務的 [備份原則]  刀鋒視窗來控制 StorSimple 磁碟區的備份程序和備份保留。 它也會說明如何完成手動備份。
+本教學課程說明如何使用 StorSimple 裝置管理員服務的 [備份原則] 刀鋒視窗來控制 StorSimple 磁碟區的備份程序和備份保留。 它也會說明如何完成手動備份。
 
 在您備份磁碟區時，您可以選擇建立本機快照或雲端快照。 如果您正在備份固定在本機的磁碟區，我們建議您指定雲端快照。 拍下大量的固定在本機的磁碟區的本機快照，再加上具大量變換的資料集，將會導致本機空間很快就不足的情況。 如果您選擇建立本機快照，我們建議您拍下較少量的每日快照來備份最新的狀態，加以保留一天後再予以刪除。
 
@@ -34,7 +34,7 @@ ms.locfileid: "60819185"
 
 ## <a name="the-backup-policy-blade"></a>[備份原則] 刀鋒視窗
 
-您的 StorSimple 裝置的 [備份原則]  刀鋒視窗可讓您管理備份原則並排程本機和雲端快照。 備份原則用來設定磁碟區集合的備份排程和備份保留。 備份原則可讓您同時建立多個磁碟區的快照。 這表示備份原則所建立的備份將會是與當機時一致的複本。
+您的 StorSimple 裝置的 [備份原則] 刀鋒視窗可讓您管理備份原則並排程本機和雲端快照。 備份原則用來設定磁碟區集合的備份排程和備份保留。 備份原則可讓您同時建立多個磁碟區的快照。 這表示備份原則所建立的備份將會是與當機時一致的複本。
 
 備份原則表格式清單也可讓您依下列一個或多個欄位，篩選現有的備份原則：
 

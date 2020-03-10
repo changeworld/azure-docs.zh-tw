@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387663"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,14 +25,14 @@ ms.locfileid: "74929058"
 > * [第 2 版 (目前的版本)](../connector-postgresql.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 PostgreSQL 連接器](../connector-postgresql.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 PostgreSQL 連接器](../connector-postgresql.md)。
 
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 PostgreSQL 資料庫移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
 您可以將資料從內部部署的 PostgreSQL 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 Data Factory 目前支援將資料從 PostgreSQL 資料庫移到其他資料存放區，而不支援將資料從其他資料存放區移到 PostgreSQL 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 PostgreSQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文來了解資料管理閘道和設定閘道的逐步指示。
 
@@ -70,15 +70,15 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 PostgreSQL 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| 類型 |類型屬性必須設為： **OnPremisesPostgreSql** |是 |
+| type |類型屬性必須設為： **OnPremisesPostgreSql** |是 |
 | 伺服器 |PostgreSQL 伺服器的名稱。 |是 |
-| 資料庫 |PostgreSQL 資料庫的名稱。 |是 |
+| [資料庫] |PostgreSQL 資料庫的名稱。 |是 |
 | 結構描述 |在資料庫中的結構描述名稱。 結構描述名稱會區分大小寫。 |否 |
 | authenticationType |用來連接到 PostgreSQL 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
 | username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |否 |
-| password |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
 | gatewayName |Data Factory 服務應該用來連接到內部部署 PostgreSQL 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
@@ -86,7 +86,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 **RelationalTable** 資料集類型的 typeProperties 區段 (包含 PostgreSQL 資料集) 具有下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | tableName |PostgreSQL 資料庫執行個體中連結服務所參照的資料表名稱。 tableName 會區分大小寫。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -97,14 +97,14 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 當來源的類型為 **RelationalSource** (包括 PostgreSQL) 時，typeProperties 區段中會有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| query |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢中以 `""` (雙引號) 括住它們。
 
-**範例：**
+**範例︰**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -118,9 +118,9 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](data-factory-onprem-postgresql-connector.md#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](data-factory-onprem-postgresql-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此範例會每個小時將資料從 PostgreSQL 資料庫中的查詢結果複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -304,12 +304,12 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 | PostgreSQL 資料庫類型 | PostgresSQL 別名 | .NET Framework 類型 |
 | --- | --- | --- |
-| abstime | |DateTime |
-| bigint |int8 |Int64 |
+| abstime | |Datetime |
+| BIGINT |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[]、String |
 | 位元不同 [ (n) ] |varbit |Byte[]、String |
-| 布林值 |bool |Boolean |
+| boolean |bool |Boolean |
 | 方塊 | |Byte[]、String |
 | bytea | |Byte[]、String |
 | character [(n)] |char [(n)] |String |
@@ -317,9 +317,9 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | cid | |String |
 | cidr | |String |
 | 圓形 | |Byte[]、String |
-| date | |DateTime |
+| date | |Datetime |
 | daterange | |String |
-| 雙精度 |float8 |DOUBLE |
+| 雙精度 |float8 |Double |
 | inet | |Byte[]、String |
 | intarry | |String |
 | int4range | |String |
@@ -340,7 +340,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | 點 | |Byte[]、String |
 | 多邊形 | |Byte[]、String |
 | real |float4 |Single |
-| smallint |int2 |Int16 |
+| SMALLINT |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
 | text | |String |

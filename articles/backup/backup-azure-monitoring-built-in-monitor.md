@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172868"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392827"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 

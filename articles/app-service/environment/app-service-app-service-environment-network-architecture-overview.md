@@ -8,13 +8,13 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687354"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374146"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>App Service Environment 的網路架構概觀
+# <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境的網路架構概觀
 App Service 環境一律會在[虛擬網路][virtualnetwork]的子網內建立-在 App Service 環境中執行的應用程式可以與位於相同虛擬網路拓撲內的私人端點通訊。  因為客戶可能會鎖定其虛擬網路基礎結構的組件，所以請務必了解與 App Service 環境發生的網路通訊流程類型。
 
 ## <a name="general-network-flow"></a>一般網路流程

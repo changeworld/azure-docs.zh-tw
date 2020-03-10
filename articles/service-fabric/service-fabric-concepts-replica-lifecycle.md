@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614599"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391392"
 ---
 # <a name="replicas-and-instances"></a>複本和執行個體 
 本文概述具狀態服務之複本及無狀態服務之執行個體的生命週期。
@@ -37,7 +37,7 @@ ms.locfileid: "75614599"
 在已卸除狀態中，執行個體不會於節點上執行。 此時，Service Fabric 會維護此執行個體相關的中繼資料 (最終也會刪除)。
 
 > [!NOTE]
-> 使用 `Remove-ServiceFabricReplica` 中的 **ForceRemove** 選項，便可能由任何狀態轉換為已卸除狀態。
+> 使用 **中的**ForceRemove`Remove-ServiceFabricReplica` 選項，便可能由任何狀態轉換為已卸除狀態。
 >
 
 ## <a name="replicas-of-stateful-services"></a>具狀態服務的複本
@@ -101,7 +101,7 @@ Service Fabric 會視需要開啟關閉的複本，例如在節點上完成升�
 >
 
 > [!NOTE]
-> 使用 `Remove-ServiceFabricReplica` 中的 **ForceRemove** 選項，便可能由任何狀態轉換為已卸除狀態。
+> 使用 **中的**ForceRemove`Remove-ServiceFabricReplica` 選項，便可能由任何狀態轉換為已卸除狀態。
 >
 
 ## <a name="replica-role"></a>複本角色 

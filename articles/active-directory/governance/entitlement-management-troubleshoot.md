@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376716"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -37,17 +37,17 @@ ms.locfileid: "75422484"
 
 * 應用程式的角色是由應用程式本身定義，並在 Azure AD 中進行管理。 如果應用程式沒有任何資源角色，權利管理會將使用者指派給**預設存取**角色。
 
-    請注意，Azure 入口網站可能也會顯示無法選取為應用程式之服務的服務主體。  特別是， **Exchange online**和**SharePoint online**是服務，而不是在目錄中具有資源角色的應用程式，因此不能包含在存取套件中。  相反地，請使用以群組為基礎的授權，為需要存取這些服務的使用者建立適當的授權。
+    請注意，Azure 入口網站可能也會顯示無法選取為應用程式之服務的服務主體。  特別是， **Exchange online**和**SharePoint online**是服務，而不是在目錄中具有資源角色的應用程式，因此不能包含在存取套件中。  相反地，請使用群組型授權，為需要存取這些服務的使用者建立適當的授權。
 
-* 若要讓群組成為存取套件中的資源，必須能夠在 Azure AD 中進行修改。  源自內部部署 Active Directory 的群組無法指派為資源，因為無法在 Azure AD 中變更其擁有者或成員屬性。   源自 Exchange Online 的群組，因為通訊群組無法在 Azure AD 中修改。 
+* 若要讓群組成為存取套件中的資源，該群組必須能夠在 Azure AD 中進行修改。  源自內部部署 Active Directory 的群組無法指派為資源，因為無法在 Azure AD 中變更其擁有者或成員屬性。   源自 Exchange Online 的群組，是因為也無法在 Azure AD 中修改通訊群組。 
 
-* SharePoint Online 文件庫和個別檔無法新增為資源。  相反地，請建立[Azure AD 安全性群組](../fundamentals/active-directory-groups-create-azure-portal.md)、在存取套件中包含該群組和網站角色，然後在 SharePoint Online 中使用該群組來控制文件庫或檔的存取權。
+* SharePoint Online 文件庫和個別文件無法新增為資源。  相反地，請建立[Azure AD 安全性群組](../fundamentals/active-directory-groups-create-azure-portal.md)、在存取套件中包含該群組和網站角色，然後在 SharePoint Online 中使用該群組來控制文件庫或檔的存取權。
 
-* 如果有已指派給您要使用存取套件管理之資源的使用者，請確定已將使用者指派給具有適當原則的存取套件。 例如，您可能想要在存取套件中包含群組中已經有使用者的群組。 如果群組中的使用者需要繼續存取，他們必須擁有存取套件的適當原則，才能讓他們無法存取群組。 您可以要求使用者要求包含該資源的存取套件，或直接將它們指派給存取套件，藉此指派存取封裝。 如需詳細資訊，請參閱[變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)。
+* 如果已將使用者指派給您想透過存取套件管理的資源，請確定已將使用者指派給具有適當原則的存取套件。 例如，您可以在存取套件中納入群組中已經有使用者的群組。 如果群組中的使用者需要繼續保有存取權，則必須擁有適當的存取套件原則，才能繼續存取群組。 您可以要求使用者要求包含該資源的存取套件，或直接將其指派給存取套件，以指派存取套件。 如需詳細資訊，請參閱[變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)。
 
-* 當您移除小組成員時，也會從 Office 365 群組中將其移除。 從小組的交談功能移除可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+* 移除小組成員時，也會從 Office 365 群組中將其移除。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
-* 請確定您的目錄未設定為多地理位置。 權利管理目前不支援 SharePoint Online 的多地理位置。 SharePoint Online 網站必須位於預設地理位置，才能與權利管理進行控管。 如需詳細資訊，請參閱[OneDrive 和 SharePoint Online 中的多地理位置功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
+* 請確定您的目錄未設定為多地理位置。 權利管理目前不支援 SharePoint Online 的多地理位置。 SharePoint Online 網站必須位於預設地理位置，才能與權利管理一同控管。 如需詳細資訊，請參閱[OneDrive 和 SharePoint Online 中的多地理位置功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
 ## <a name="external-users"></a>外部使用者
 
@@ -55,19 +55,19 @@ ms.locfileid: "75422484"
 
 * 如果外部使用者無法要求存取封裝或無法存取資源，請務必檢查[外部使用者的設定](entitlement-management-external-users.md#settings-for-external-users)。
 
-* 如果新的外部使用者先前尚未登入您的目錄，則會收到包含 SharePoint Online 網站的存取套件，其存取套件會顯示為未完全傳遞，直到其帳戶布建于 SharePoint Online 為止。 如需共用設定的詳細資訊，請參閱[審查 SharePoint Online 外部共用設定](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
+* 如果新的外部使用者先前尚未登入您的目錄，但收到包含 SharePoint Online 網站的存取套件，則這些外部使用者的存取套件會顯示為在 SharePoint Online 中佈建帳戶之前不會完整傳遞的訊息。 如需共用設定的詳細資訊，請參閱[審查 SharePoint Online 外部共用設定](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
-## <a name="requests"></a>要求
+## <a name="requests"></a>Requests
 
 * 當使用者想要要求存取套件的存取權時，請確定他們使用的是存取套件的**我的存取權入口網站連結**。 如需詳細資訊，請參閱[共用連結以要求存取封裝](entitlement-management-access-package-settings.md)。
 
-* 如果您在瀏覽器設為 [私用] 或 [incognito] 模式的情況下開啟我的存取權入口網站，這可能會與登入行為衝突。 當您造訪我的存取權入口網站時，建議您不要在瀏覽器中使用 [私人] 或 [incognito] 模式。
+* 如果您在設為私人或無痕模式的瀏覽器中開啟「我的存取權」入口網站，可能會與登入行為相互衝突。 造訪「我的存取權」入口網站時，建議您不要使用設為私人或無痕模式的瀏覽器。
 
-* 當不在您目錄中的使用者登入我的存取權入口網站以要求存取套件時，請務必使用其組織帳戶進行驗證。 組織帳戶可以是資原始目錄中的帳戶，或包含在存取封裝其中一個原則中的目錄。 如果使用者的帳戶不是組織帳戶，或其驗證所在的目錄未包含在原則中，則使用者將看不到存取套件。 如需詳細資訊，請參閱[要求存取封裝的存取權](entitlement-management-request-access.md)。
+* 當不在您目錄中的使用者登入「我的存取權」入口網站並要求存取套件時，請務必使用其組織帳戶進行驗證。 組織帳戶可以是資源目錄中的帳戶，或包含在存取套件其中一個原則中的目錄。 如果使用者的帳戶不是組織帳戶，或驗證所在的目錄未包含在原則中，則使用者將看不到存取套件。 如需詳細資訊，請參閱[要求存取封裝的存取權](entitlement-management-request-access.md)。
 
-* 如果使用者遭到封鎖而無法登入資原始目錄，他們將無法在我的存取權入口網站中要求存取權。 在使用者可以要求存取之前，您必須先從使用者的設定檔中移除登入區塊。 若要移除登入區塊，請在 Azure 入口網站中，按一下  **Azure Active Directory**，按一下 **使用者**，按一下使用者，然後按一下 **設定檔**。 編輯 [**設定**] 區段，並將 [**封鎖登入**] 變更為 [**否**]。 如需詳細資訊，請參閱[使用 Azure Active Directory 新增或更新使用者的設定檔資訊](../fundamentals/active-directory-users-profile-azure-portal.md)。  您也可以檢查使用者是否因身分[識別保護原則](../identity-protection/howto-unblock-user.md)而遭到封鎖。
+* 如果使用者遭到封鎖而無法登入資源目錄，則無法在「我的存取權」入口網站中要求存取權。 您必須先從使用者的設定檔中移除登入區塊，才能要求存取權。 若要移除登入區塊，請在 Azure 入口網站中，按一下  **Azure Active Directory**，按一下 **使用者**，按一下使用者，然後按一下 **設定檔**。 編輯 [**設定**] 區段，並將 [**封鎖登入**] 變更為 [**否**]。 如需詳細資訊，請參閱[使用 Azure Active Directory 新增或更新使用者的設定檔資訊](../fundamentals/active-directory-users-profile-azure-portal.md)。  您也可以檢查使用者是否因身分[識別保護原則](../identity-protection/howto-unblock-user.md)而遭到封鎖。
 
-* 在我的存取權入口網站中，如果使用者同時是要求者和核准者，他們將不會在 [**核准**] 頁面上看到其存取套件的要求。 這是刻意的行為，使用者無法核准自己的要求。 確定他們要求的存取套件已在原則上設定其他核准者。 如需詳細資訊，請參閱[變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)。
+* 在我的存取權入口網站中，如果使用者同時是要求者和核准者，他們將不會在 [**核准**] 頁面上看到其存取套件的要求。 這是刻意的行為，因為使用者無法核准自己的要求。 請確定使用者要求的存取套件已在原則上設定其他核准者。 如需詳細資訊，請參閱[變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)。
 
 ### <a name="view-a-requests-delivery-errors"></a>查看要求的傳遞錯誤
 
@@ -129,7 +129,7 @@ ms.locfileid: "75422484"
 
 * 套用多個原則時，自動選取的原則或向要求者顯示的原則會以下列優先權邏輯為基礎：
 
-    | 原則優先順序 | 範圍 |
+    | 原則優先順序 | 影響範圍 |
     | --- | --- |
     | P1 | 您目錄中的特定使用者和群組，或特定的已連線組織 |
     | P2 | 目錄中的所有成員（不包括來賓） |

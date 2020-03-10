@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665862"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394950"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](../../azure-monitor/platform/itsmc-overview.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "77665862"
 
 下列各節提供有關如何將 System Center Service Manager 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
@@ -97,7 +97,7 @@ ms.locfileid: "77665862"
 
 - Azure 訂用帳戶詳細資料
 - 資源群組名稱
-- 位置
+- Location
 - Service Manager 伺服器詳細資料 (伺服器名稱、網域、使用者名稱和密碼)
 - Web 應用程式的網站名稱前置詞
 - 服務匯流排命名空間。
@@ -159,7 +159,7 @@ ms.locfileid: "77665862"
 
 3. 使用您的 Azure 認證登入，然後選取您在其中建立混合式連線的訂用帳戶。
 
-4. Haga clic en **Guardar**.
+4. 按一下 [檔案]。
 
 混合式連線已成功連線。
 
@@ -176,7 +176,7 @@ ms.locfileid: "77665862"
 
 下列各節提供有關如何將 ServiceNow 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 請確保已符合下列必要條件︰
 - 已安裝 ITSMC。 更多資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支援的版本：紐約、馬德里、倫敦、Kingston、雅加達、伊斯坦布爾、赫爾辛基、Geneva。
@@ -282,7 +282,7 @@ ms.locfileid: "77665862"
 下列各節提供有關如何將 Provance 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
@@ -335,7 +335,7 @@ ms.locfileid: "77665862"
 
 下列各節提供有關如何將 Cherwell 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 

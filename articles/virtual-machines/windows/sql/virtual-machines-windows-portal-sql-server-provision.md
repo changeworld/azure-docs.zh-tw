@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389031"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 入口網站中佈建 Windows SQL Server 虛擬機器
 
@@ -64,7 +64,7 @@ ms.locfileid: "75350896"
 * 在 [**專案詳細資料**] 底下，確認已選取正確的訂用帳戶。 
 *  在 [**資源群組**] 區段中，從清單中選取現有的資源群組，或選擇 [**建立新**的] 以建立新的資源群組。 資源群組是 Azure (虛擬機器、儲存體帳戶、虛擬網路等) 中相關資源的集合。 
 
-    ![訂閱](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+    ![訂用帳戶](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
   > 如果您只是測試或了解 Azure 中的 SQL Server 部署，使用新的資源群組很有幫助。 完成測試之後，請刪除資源群組以自動刪除此 VM 以及與該資源群組相關聯的所有資源。 如需有關資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../../azure-resource-manager/management/overview.md)。
@@ -106,7 +106,7 @@ ms.locfileid: "75350896"
 ![SQL VM 磁片設定](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 
 在 [**網路**功能] 索引標籤上，設定您的網路功能選項。 
 

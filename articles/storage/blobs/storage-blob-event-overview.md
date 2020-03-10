@@ -9,11 +9,11 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
 ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835958"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387180"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -29,14 +29,14 @@ Blob 儲存體會將事件傳送至事件方格，透過豐富的重試原則和
 
 |如果您想要使用此工具：    |請參閱這篇文章： |
 |--|-|
-|Azure Portal    |[快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure 入口網站    |[快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[快速入門：使用 PowerShell 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 如果您的帳戶具有階層式命名空間，本教學課程將說明如何在 Azure Databricks：[教學課程：使用 Azure Data Lake Storage Gen2 事件來更新 Databricks Delta 資料表](data-lake-storage-events.md)中，將事件方格訂用帳戶、Azure 函式和[作業](https://docs.azuredatabricks.net/user-guide/jobs.html)連接在一起。
 
 >[!NOTE]
-> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）** 和**BlobStorage**支援事件整合。 **儲存體（genral 用途 v1）** 不*支援與*事件方格整合。
+> 只有種類為 [StorageV2 (一般用途 v2)] 和 [BlobStorage] 的儲存體帳戶支援事件整合。 **儲存體 (一般用途 v1)** 不支援與事件方格整合。
 
 ## <a name="the-event-model"></a>事件模型
 

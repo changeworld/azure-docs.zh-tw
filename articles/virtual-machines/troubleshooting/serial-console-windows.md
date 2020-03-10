@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451245"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381686"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用于 Windows 的 Azure 序列主控台
 
@@ -32,7 +32,7 @@ Azure 入口網站中的序列主控台可讓您存取 Windows 虛擬機器（Vm
 > 序列主控台已在全球 Azure 區域正式推出，且在 Azure Government 中為公開預覽。 Azure 中國雲端尚未提供此功能。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您的 VM 或虛擬機器擴展集實例必須使用資源管理部署模型。 不支援傳統部署。
 
@@ -170,7 +170,7 @@ Windows Server 2019 或更新版本已支援適用於 Linux 的 Windows 子系�
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>存取序列主控台的常見案例
 
-案例          | 序列主控台中的動作
+狀況          | 序列主控台中的動作
 :------------------|:-----------------------------------------
 不正確的防火牆規則 | 存取序列主控台，然後修正 Windows 防火牆規則。
 檔案系統損毀/檢查 | 存取序列主控台，然後復原檔案系統。
@@ -199,7 +199,7 @@ A. 在 https://aka.ms/serialconsolefeedback 建立 GitHub 問題來提供意見�
 
 **問：序列主控台是否支援複製/貼上？**
 
-A. 可以。 請使用 **Ctrl**+**Shift**+**C** 與 **Ctrl**+**Shift**+**V** 來針對終端機進行複製及貼上。
+A. 是。 請使用 **Ctrl**+**Shift**+**C** 與 **Ctrl**+**Shift**+**V** 來針對終端機進行複製及貼上。
 
 **問：誰可以針對我的訂用帳戶啟用或停用序列主控台？**
 

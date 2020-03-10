@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391062"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -31,9 +31,9 @@ Azure 訂用帳戶與 Azure Active Directory （Azure AD）之間具有信任關
 您的所有使用者都有單一的*主*目錄可供驗證。 您的使用者也可以是其他目錄中的來賓。 您可以同時為 Azure AD 中的每個使用者使用主目錄與來賓目錄。
 
 > [!Important]
-> 當您將訂用帳戶與不同的目錄建立關聯時，具有使用[角色型存取控制（RBAC）](../../role-based-access-control/role-assignments-portal.md)指派之角色的使用者會失去其存取權。 傳統訂用帳戶管理員（包括服務管理員和共同管理員）也會失去存取權。
+> 當您將訂用帳戶與不同的目錄建立關聯時，具有使用[角色型存取控制（RBAC）](../../role-based-access-control/role-assignments-portal.md)指派之角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
 >
-> 當訂用帳戶與不同的目錄建立關聯時，也會從訂用帳戶移除原則指派。
+> 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
 >
 > 將您的 Azure Kubernetes Service （AKS）叢集移至不同的訂用帳戶，或將叢集擁有的訂用帳戶移至新的租使用者，會導致叢集因為遺失角色指派和服務主體的許可權而失去功能。 如需 AKS 的詳細資訊，請參閱[Azure Kubernetes Service （AKS）](https://docs.microsoft.com/azure/aks/)。
 

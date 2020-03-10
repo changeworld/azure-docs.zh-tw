@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176880"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374399"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 範本
 
@@ -27,7 +27,7 @@ ms.locfileid: "73176880"
 本節的範本可讓您自訂開發人員入口網站中 API 頁面的內容。  
   
 -   [API 清單](#APIList)  
--   [作業](#Product)  
+-   [運算](#Product)  
 -   [程式碼範例](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
@@ -89,7 +89,7 @@ ms.locfileid: "73176880"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|Type|描述|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體的集合。|目前使用者可看見的 API。|  
   
@@ -344,14 +344,14 @@ ms.locfileid: "73176880"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|Type|描述|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|string|目前 API 的識別碼。|  
-|`apiName`|string|API 的名稱。|  
-|`apiDescription`|string|API 的描述。|  
+|`apiId`|字串|目前 API 的識別碼。|  
+|`apiName`|字串|API 的名稱。|  
+|`apiDescription`|字串|API 的描述。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體。|目前的 API。|  
-|`operation`|[作業](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
-|`sampleUrl`|string|目前作業的 URL。|  
+|`operation`|[運算](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
+|`sampleUrl`|字串|目前作業的 URL。|  
 |`operationMenu`|[作業功能表](api-management-template-data-model-reference.md#Menu)|此 API 的作業功能表。|  
 |`consoleUrl`|URI|[試用] 按鈕的 URI。|  
 |`samples`|[程式碼範例](api-management-template-data-model-reference.md#Sample)實體的集合。|目前作業的程式碼範例。|  

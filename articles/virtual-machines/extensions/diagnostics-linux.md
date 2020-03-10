@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199609"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381174"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -49,7 +49,7 @@ Linux 診斷擴充功能可協助使用者監視在 Microsoft Azure 上執行的
 
 可下載組態只是範例，可修改以符合您的需求。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新。
 * **Azure CLI**。 在您的電腦上[設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 環境。
@@ -195,8 +195,8 @@ sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細
 
 元素 | 值
 ------- | -----
-名稱 | 用來在擴充功能組態中的其他位置參考此接收的字串。
-類型 | 正在定義的接收類型。 決定此類型執行個體中的其他值 (若有的話)。
+NAME | 用來在擴充功能組態中的其他位置參考此接收的字串。
+type | 正在定義的接收類型。 決定此類型執行個體中的其他值 (若有的話)。
 
 3\.0 版的 Linux 診斷擴充功能支援兩種接收類型：EventHub 與 JsonBlob。
 
@@ -213,7 +213,7 @@ sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細
 ]
 ```
 
-"sasURL" 項目包含完整的 URL，包括 SAS 權杖，適用於應將資料發佈至的事件中樞。 LAD 需要 SAS 命名可啟用 Send 宣告的原則。 範例：
+"sasURL" 項目包含完整的 URL，包括 SAS 權杖，適用於應將資料發佈至的事件中樞。 LAD 需要 SAS 命名可啟用 Send 宣告的原則。 例如：
 
 * 建立名為 `contosohub` 的事件中樞命名空間
 * 在名為 `syslogmsgs` 的命名空間建立事件中樞
@@ -283,7 +283,7 @@ mdsdHttpProxy | (選擇性) 與[受保護的設定](#protected-settings)相同�
 eventVolume | (選擇性) 控制在儲存體資料表中建立的分割區數目。 必須是 `"Large"`、`"Medium"` 或 `"Small"` 的其中之一。 若未指定，則預設值為 `"Medium"`。
 sampleRateInSeconds | (選擇性) 原始 (未彙總) 計量集合之間的預設間隔。 支援的最小採樣速率為 15 秒。 若未指定，則預設值為 `15`。
 
-#### <a name="metrics"></a>計量
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -331,20 +331,20 @@ scheduledTransferPeriod | 系統會計算彙總計量的頻率並傳輸至 Azure
 
 * 平均值
 * minimum
-* 最大值
+* maximum
 * 上次收集的值
 * 用於計算彙總的原始樣本計數
 
 元素 | 值
 ------- | -----
-接收器 | (選擇性) 以逗號分隔的接收名稱清單，LAD 會將彙總的計量結果傳送至此清單。 系統會將所有彙總的計量發佈至每個列出的接收。 請參閱 [sinksConfig](#sinksconfig)。 範例： `"EHsink1, myjsonsink"`.
-類型 | 識別計量的實際提供者。
+sinks | (選擇性) 以逗號分隔的接收名稱清單，LAD 會將彙總的計量結果傳送至此清單。 系統會將所有彙總的計量發佈至每個列出的接收。 請參閱 [sinksConfig](#sinksconfig)。 範例： `"EHsink1, myjsonsink"`.
+type | 識別計量的實際提供者。
 class | 與 "counter" 一起使用，可識別提供者命名空間內的特定計量。
 counter | 與 "class" 一起使用，可識別提供者命名空間內的特定計量。
 counterSpecifier | 可識別 Azure 計量命名空間內的特定計量。
 condition (條件) | (選擇性) 選取會套用計量之物件的特定執行個體，或選取該物件所有執行個體的彙總。 如需詳細資訊，請參閱 `builtin` 計量定義。
 sampleRate | IS 8601 間隔，可設定收集此計量原始樣本的速率。 如果未設定，則會由 [sampleRateInSeconds](#ladcfg) 的值設定收集間隔。 支援的最短採樣速率為 15 秒 (PT15S)。
-單位 | 應為以下字串之一："Count"、"Bytes"、"Seconds"、"Percent"、"CountPerSecond"、"BytesPerSecond"、"Millisecond"。 定義計量的單位。 收集資料的取用者預期收集的資料值符合這個單位。 LAD 會忽略此欄位。
+unit | 應為以下字串之一："Count"、"Bytes"、"Seconds"、"Percent"、"CountPerSecond"、"BytesPerSecond"、"Millisecond"。 定義計量的單位。 收集資料的取用者預期收集的資料值符合這個單位。 LAD 會忽略此欄位。
 displayName | 在 Azure 計量中要附加至此資料的標籤 (採用相關聯地區設定所指定的語言)。 LAD 會忽略此欄位。
 
 counterSpecifier 是任意的識別碼。 如 Azure 入口網站的圖表與警示功能等計量的使用者，會使用 counterSpecifier 作為識別計量或計量執行個體的「鑰匙」。 對於 `builtin` 計量，建議您使用開頭為 `/builtin/` 的 counterSpecifier 值。 如果您正在收集計量的特定執行個體，建議您將執行個體的識別碼附加至 counterSpecifier 值。 以下是一些範例：
@@ -383,7 +383,7 @@ syslogEventConfiguration 集合對每個感興趣的 Syslog 設備都會一個�
 
 元素 | 值
 ------- | -----
-接收器 | 系統會將個別記錄事件發佈至的接收名稱清單，以逗號分隔。 符合 syslogEventConfiguration 中限制的所有記錄事件會發佈至每個所列的接收。 範例："EHforsyslog"
+sinks | 系統會將個別記錄事件發佈至的接收名稱清單，以逗號分隔。 符合 syslogEventConfiguration 中限制的所有記錄事件會發佈至每個所列的接收。 範例："EHforsyslog"
 facilityName | Syslog 設備名稱 (例如 "LOG\_USER" 或 "LOG\_LOCAL0")。 請參閱 [Syslog 手冊頁](http://man7.org/linux/man-pages/man3/syslog.3.html)中的「設備」(英文) 一節，以取得完整清單。
 minSeverity | Syslog 嚴重性層級 (例如 "LOG\_ERR" 或 "LOG\_INFO")。 請參閱 [Syslog 手冊頁](http://man7.org/linux/man-pages/man3/syslog.3.html)中的「層級」(英文) 一節，以取得完整清單。 擴充功能會擷取傳送到在指定層級或以上的設備。
 
@@ -412,11 +412,11 @@ minSeverity | Syslog 嚴重性層級 (例如 "LOG\_ERR" 或 "LOG\_INFO")。 請�
 
 元素 | 值
 ------- | -----
-namespace | (選擇性) 應執行查詢的 OMI 命名空間。 如果未指定，則預設值為 "root/scx"，此值由[系統中心跨平台提供者](https://github.com/Microsoft/SCXcore) (英文) 實作。
-query | 欲執行的 OMI 查詢。
-table | (選擇性) 所指定儲存體帳戶中的 Azure 儲存體資料表 (請參閱[受保護的設定](#protected-settings))。
+命名空間 | (選擇性) 應執行查詢的 OMI 命名空間。 如果未指定，則預設值為 "root/scx"，此值由[系統中心跨平台提供者](https://github.com/Microsoft/SCXcore) (英文) 實作。
+查詢 | 欲執行的 OMI 查詢。
+資料表 | (選擇性) 所指定儲存體帳戶中的 Azure 儲存體資料表 (請參閱[受保護的設定](#protected-settings))。
 frequency | (選擇性) 執行查詢之間的秒數。 預設值為 300 秒 (5 分鐘)；最小值為 15 秒。
-接收器 | (選擇性) 原始樣本計量結果應發佈至的額外接收名稱，以逗號分隔。 擴充功能或 Azure 計量不會計算這些原始樣本的彙總。
+sinks | (選擇性) 原始樣本計量結果應發佈至的額外接收名稱，以逗號分隔。 擴充功能或 Azure 計量不會計算這些原始樣本的彙總。
 
 必須指定 "table" 或 "sinks"，或兩者。
 
@@ -437,8 +437,8 @@ frequency | (選擇性) 執行查詢之間的秒數。 預設值為 300 秒 (5 �
 元素 | 值
 ------- | -----
 檔案 | 欲監看與擷取的記錄檔完整路徑名稱。 路徑名稱必須命名單一檔案，不能命名目錄或包含萬用字元。
-table | (選擇性) 所指定儲存體帳戶中的 Azure 儲存體資料表 (如受保護組態中指定)，檔案「尾端」的新行會寫入至此資料表。
-接收器 | (選擇性) 將記錄行傳送至的額外接收名稱清單，以逗號分隔。
+資料表 | (選擇性) 所指定儲存體帳戶中的 Azure 儲存體資料表 (如受保護組態中指定)，檔案「尾端」的新行會寫入至此資料表。
+sinks | (選擇性) 將記錄行傳送至的額外接收名稱清單，以逗號分隔。
 
 必須指定 "table" 或 "sinks"，或兩者。
 

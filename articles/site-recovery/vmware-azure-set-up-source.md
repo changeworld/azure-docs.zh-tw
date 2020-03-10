@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391730"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>設定從 VMware 複寫到 Azure 的來源環境
 
 本文說明如何設定您的來源內部部署環境，將 VMware 虛擬機器複寫到 Azure。 本文包含選取複寫案例、將內部部署機器設定為 Site Recovery 設定伺服器，以及自動探索內部部署 Vm 的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經：
 

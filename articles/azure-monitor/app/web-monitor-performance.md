@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384151"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -46,7 +46,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 ## <a name="metrics"></a>這具有哪些意義？ 效能磚和報告
 您可以取用多種效能計量。 我們從預設顯示在應用程式分頁中的度量開始討論。
 
-### <a name="requests"></a>要求
+### <a name="requests"></a>Requests
 在指定期間內接收到的 HTTP 要求數量。 將此度量與其他報告中的結果比較，可了解應用程式在各種負載下的行為。
 
 HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。

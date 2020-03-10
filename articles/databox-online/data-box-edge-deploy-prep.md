@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438675"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384724"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>教學課程：準備部署 Azure Data Box Edge  
 
@@ -66,7 +66,7 @@ ms.locfileid: "75438675"
 在您部署實體裝置之前，請確定：
 
 - 您已檢閱出貨套件內含的安全資訊。
-- 您在資料中心的標準 19 吋機架中有 1U 插槽可用來以機架掛接裝置。
+- 您在資料中心的標準19機架中，有一個可供機架掛接裝置的1U 插槽。
 - 您有平穩的工作表面可供安全地放置裝置。
 - 您要安裝裝置的場地具有來自獨立來源或含不斷電供應系統 (UPS) 之機架式配電單元 (PDU) 的標準 AC 電源。
 - 您可以拆裝實體裝置。
@@ -94,47 +94,47 @@ ms.locfileid: "75438675"
     - 位於以下 RUL 的 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
     - 或者，位於以下 RUL 的 Azure Government 入口網站：[https://portal.azure.us](https://portal.azure.us)。 如需詳細資訊，請移至[使用入口網站連線到 Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
-2. 在左窗格中，選取 [+ 建立資源]  。 搜尋 **Data Box Edge / Data Box Gateway**。 選取 [Data Box Edge / Data Box Gateway]  。 選取 [建立]  。
-3. 挑選要用於 Data Box Edge 裝置的訂用帳戶。 選取要部署 Data Box Edge 資源的區域。 此版本適用於美國東部、東南亞和西歐等區域。 
+2. 在左窗格中，選取 [+ 建立資源]。 搜尋 **Data Box Edge / Data Box Gateway**。 選取 [Data Box Edge / Data Box Gateway]。 選取 [建立]。
+3. 挑選要用於 Data Box Edge 裝置的訂用帳戶。 選取要部署 Data Box Edge 資源的區域。 如需 Azure Stack Edge 資源可供使用的所有區域清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
 
-    請選擇與您要部署裝置的地理區域最接近的位置。 該區域只儲存裝置管理的中繼資料。 實際資料可儲存在任何儲存體帳戶中。 
+    請選擇與您要部署裝置的地理區域最接近的位置。 該區域只儲存裝置管理的中繼資料。 實際資料可儲存在任何儲存體帳戶中。
     
-    在 [Data Box Edge]  選項中，選取 [建立]  。
+    在 [Data Box Edge] 選項中，選取 [建立]。
 
     ![搜尋 Data Box Edge 服務](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
-3. 在 [基本概念]  索引標籤上，輸入或選取下列 [專案詳細資料]  。
+3. 在 [基本概念] 索引標籤上，輸入或選取下列 [專案詳細資料]。
     
     |設定  |值  |
     |---------|---------|
     |訂用帳戶    |這會根據您稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
     |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。     |
 
-4. 輸入或選取下列 [執行個體詳細資料]  。
+4. 輸入或選取下列 [執行個體詳細資料]。
 
     |設定  |值  |
     |---------|---------|
     |名稱   | 可識別資源的易記名稱。<br>此名稱介於 2 到 50 個字元之間，並且可包含字母、數字和連字號。<br> 名稱必須以字母或數字為開頭或結尾。        |
-    |區域     |此版本適用於在美國東部、東南亞和西歐等區域部署您的資源。 如果使用 Azure Government，如 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)所示的所有政府區域都適用。<br> 請選擇與您要部署裝置的地理區域最接近的位置。|
+    |區域     |如需 Azure Stack Edge 資源可供使用的所有區域清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure Government，如 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)所示的所有政府區域都適用。<br> 請選擇與您要部署裝置的地理區域最接近的位置。|
 
     ![專案和執行個體詳細資料](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 
-5. 完成時，選取 下一步:**交貨地址**。
+5. 選取 **[下一步：寄送位址]** 。
 
-    - 如果您已經有一個裝置，請選取 [我有 Data Box Edge 裝置]  的下拉式方塊。
+    - 如果您已經有一個裝置，請選取 [我有 Data Box Edge 裝置] 的下拉式方塊。
     - 如果這是您所訂購的新裝置，請輸入連絡人姓名、公司、裝置交貨地址和連絡資訊。
 
     ![新裝置的交貨地址](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. 完成時，選取 [下一步:  檢閱 + 建立]。
+6. 選取 **[下一步]： [檢查 + 建立]** 。
 
-7. 在 [檢閱 + 建立]  索引標籤上，檢閱 [定價詳細資料]  、[使用規定]  ，以及您的資源詳細資料。 選取 [我已檢閱隱私權條款]  的下拉式方塊。
+7. 在 [檢閱 + 建立] 索引標籤上，檢閱 [定價詳細資料]、[使用規定]，以及您的資源詳細資料。 選取 [我已檢閱隱私權條款] 的下拉式方塊。
 
     ![檢閱 Data Box Edge 資源詳細資料和隱私權條款](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. 選取 [建立]  。
+8. 選取 [建立]。
 
-建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
+建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]。
 
 ![移至 Data Box Edge 資源](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
 
@@ -146,11 +146,11 @@ ms.locfileid: "75438675"
 
 在 Data Box Edge 資源已啟動並執行之後，您將必須取得啟用金鑰。 此金鑰可用來啟動 Data Box Edge 裝置，並將其與資源連線。 您現在可以在 Azure 入口網站中取得此金鑰。
 
-1. 選取您建立的資源。 選取[概觀]  ，然後選取 [裝置設定]  。
+1. 選取您建立的資源。 選取[概觀]，然後選取 [裝置設定]。
 
     ![選取 [裝置設定]](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. 在 [啟用]  圖格上，選取 [產生金鑰]  以建立啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
+2. 在 [啟用] 圖格上，選取 [產生金鑰] 以建立啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
 
     ![取得啟用金鑰](media/data-box-edge-deploy-prep/get-activation-key.png)
 

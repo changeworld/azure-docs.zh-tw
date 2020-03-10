@@ -1,5 +1,5 @@
 ---
-title: 快速入門：尋找空閒會議室 - Azure Digital Twins | Microsoft Docs
+title: 快速入門：尋找可用的會議室-Azure 數位 Twins |Microsoft Docs
 description: 在本快速入門中，您會執行兩個 .NET Core 應用程式範例，將模擬的動作和二氧化碳遙測資料傳送至 Azure Digital Twins 中的空間。 我們的目標是要在計算雲端中的處理能力後，從管理 API 尋找有新鮮空氣的空閒會議室。
 ms.author: alinast
 author: alinamstanciu
@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
 ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895542"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382214"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入門：使用 Azure Digital Twins 尋找空閒會議室
 
@@ -101,7 +101,7 @@ Azure Digital Twins 服務可讓您重新建立實體環境的數位影像。 �
 1. 開啟新的命令提示字元。 移至您在 `digital-twins-samples-csharp-master` 資料夾中下載的專案。
 1. 執行 `cd device-connectivity`。
 1. 執行 `dotnet restore`。
-1. 編輯 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) 以使用先前的 `ConnectionString` 來更新 DeviceConnectionString  。 儲存更新的檔案。
+1. 編輯 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) 以使用先前的  **來更新 DeviceConnectionString**`ConnectionString`。 儲存更新的檔案。
 1. 執行 `dotnet run` 來開始傳送感應器資料。 資料會傳送至 Digital Twins，如下圖所示。
 
      [![裝置連線能力](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
@@ -125,7 +125,7 @@ Azure Digital Twins 服務可讓您重新建立實體環境的數位影像。 �
 
      [![取得有新鮮空氣的空閒空間](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png#lightbox)
 
-若要了解本快速入門所發生的情況以及已呼叫的 API，請使用 `digital-twins-samples-csharp` 中找到的程式碼工作區專案來開啟 [Visual Studio Code](https://code.visualstudio.com/Download)。 使用下列命令：
+若要了解本快速入門所發生的情況以及已呼叫的 API，請使用 [ 中找到的程式碼工作區專案來開啟 ](https://code.visualstudio.com/Download)Visual Studio Code`digital-twins-samples-csharp`。 使用下列命令：
 
 ```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
@@ -154,7 +154,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要繼續進行教學課程，請勿清除在此快速入門中建立的資源。 如果您不打算繼續，請刪除本快速入門建立的所有資源。
 
 1. 刪除下載存放庫範例時所建立的資料夾。
-1. 從 [Azure 入口網站](https://portal.azure.com)左側的功能表中，選取 [所有資源]  。 然後，選取 Digital Twins 資源。 在 [所有資源]  窗格的頂端，選取 [刪除]  。
+1. 從 [Azure 入口網站](https://portal.azure.com)左側的功能表中，選取 [所有資源]。 然後，選取 Digital Twins 資源。 在 [所有資源] 窗格的頂端，選取 [刪除]。
 
     > [!TIP]
     > 如果您先前在刪除 Digital Twins 執行個體時遇到問題，已推出的服務更新中具有修正程式。 請重試刪除執行個體。

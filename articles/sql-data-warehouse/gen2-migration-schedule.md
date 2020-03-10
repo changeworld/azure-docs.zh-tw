@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 00180c1791e765240f3f8feac188b9250162408e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199898"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380798"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>將您的 SQL 集區升級至 Gen2
 
@@ -78,7 +78,7 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 
 **問： Gen2 成本與 Gen1 相同嗎？**
 
-- 答：可以。
+- 答： 會。
 
 **問：升級會如何影響我的自動化腳本？**
 
@@ -106,7 +106,7 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 - 答：如果您在 Gen1 上執行 DW600 或 DW1200，建議您分別使用 DW500c 或 DW1000c，因為 Gen2 提供比 Gen1 更多的記憶體、資源和更高的效能。
 
 **問：我可以停用異地備份嗎？**
-- 答：不需要。 異地備份是一項企業功能，可在區域變成無法使用時，保留您的 SQL 集區可用性。 如果您有進一步考量，請開啟[支援要求](sql-data-warehouse-get-started-create-support-ticket.md)。
+- 答：否。 異地備份是一項企業功能，可在區域變成無法使用時，保留您的 SQL 集區可用性。 如果您有進一步考量，請開啟[支援要求](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 **問： Gen1 與 Gen2 之間的 T-sql 語法有何差異？**
 
@@ -114,11 +114,11 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 
 **問： Gen2 是否支援維護時段？**
 
-- 答：可以。
+- 答： 會。
 
 **問：我的區域升級後是否能夠建立新的 Gen1 實例？**
 
-- 答：不需要。 在區域升級之後，新 Gen1 執行個體的建立將會停用。
+- 答：否。 在區域升級之後，新 Gen1 執行個體的建立將會停用。
 
 ## <a name="next-steps"></a>後續步驟
 

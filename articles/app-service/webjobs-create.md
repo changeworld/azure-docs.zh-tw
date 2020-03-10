@@ -1,5 +1,5 @@
 ---
-title: 使用 WebJobs 執行背景工作
+title: 使用 Webjob 執行背景工作
 description: 瞭解如何在 Azure App Service 中使用 Webjob 執行背景工作。 選擇各種不同的腳本格式，並使用 CRON 運算式來執行。
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -9,11 +9,11 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684200"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374162"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure App Service 中使用 Webjob 執行背景工作
 
@@ -79,7 +79,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名稱** | myContinuousWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。 |
    | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **類型** | 連續 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **型別** | 連續 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
    | **調整** | 多重執行個體 | 僅適用於連續 WebJob。 決定程式或指令碼是在所有執行個體上執行，或是只在一個執行個體上執行。 在多個執行個體上執行的選項不適用於免費或共用[定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
 
 4. 按一下 [確定]。
@@ -117,7 +117,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名稱** | myTriggeredWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。|
    | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **類型** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **型別** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
    | **觸發程序** | 手動 | |
 
 4. 按一下 [確定]。
@@ -155,7 +155,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名稱** | myScheduledWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。 |
    | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **類型** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **型別** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
    | **觸發程序** | 已排程 | 若要讓排程可靠地運作，請啟用 [永遠開啟] 功能。 [永遠開啟] 僅適用於基本、標準和進階定價層。|
    | **CRON 運算式** | 0 0/20 * * * * | [CRON 運算式](#ncrontab-expressions)將於下一節中說明。 |
 

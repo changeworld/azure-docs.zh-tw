@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376166"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -109,7 +109,7 @@ Azure AD Connect Health 的[角色型存取控制 (RBAC)](../../role-based-acces
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支援下列內建角色：
 
-| 角色 | 使用權限 |
+| 角色 | 權限 |
 | --- | --- |
 | 擁有者 |擁有者可以在 Azure AD Connect Health 內「管理存取」(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」(例如檢視警示)，以及「變更設定」(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
 | 參與者 |參與者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」(例如檢視警示)，以及「變更設定」(例如電子郵件通知)。 |

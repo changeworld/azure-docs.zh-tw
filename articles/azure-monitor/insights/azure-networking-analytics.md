@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
 ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360807"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -212,7 +212,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 3. 更新任何已儲存的查詢、儀表板或警示，以使用新的資料類型
    + 類型是 AzureDiagnostics。 您可以使用 ResourceType 來篩選 Azure 網路記錄。
 
-     | 不要： | 請使用： |
+     | 不要這樣撰寫： | 使用︰ |
      | --- | --- |
      | NetworkApplicationgateways &#124; 其中 OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayAccess" |
      | NetworkApplicationgateways &#124; 其中 OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayPerformance" |

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
 ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251446"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395799"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或 Resource Manager 範本啟用適用於 VM 的 Azure 監視器（預覽）
 
@@ -168,7 +168,7 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
-輸出看起來像下面這樣：
+輸出結果類似下面：
 
 ```output
 provisioningState       : Succeeded

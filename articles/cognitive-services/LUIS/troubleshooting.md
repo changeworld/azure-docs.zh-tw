@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393723"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding 常見問題集 (FAQ)
 
@@ -68,7 +68,7 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何移轉 LUIS 應用程式的擁有權？
 若要將 LUIS 應用程式傳送至不同的 Azure 訂用帳戶，請匯出 LUIS 應用程式，並使用新的帳戶匯入它。 在呼叫 LUIS 應用程式的用戶端應用程式中，更新 LUIS 應用程式識別碼。 新應用程式可能會傳回與原始應用程式略為不同的 LUIS 分數。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>預建實體會在範例語句中加上標籤，而不是我的自訂實體。 如何? 修正此問題嗎？ 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>預建實體會在範例語句中加上標籤，而不是我的自訂實體。 如何修正這個問題？ 
 
 在 LUIS 入口網站中，您可以針對您想要解壓縮的確切實體，為文字加上標籤。 如果 LUIS 入口網站未顯示正確的實體預測，您可能需要新增更多語句，並在文字內標記實體，或加入描述項（例如功能）。 
 
@@ -86,7 +86,7 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>Endpoint
+## <a name="endpoint"></a>端點
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到 HTTP 403 錯誤狀態碼。 如何修正問題？
 
@@ -241,7 +241,7 @@ LUIS 應用程式預設會記錄使用者的語句。 若要下載使用者傳�
 
 ### <a name="can-i-delete-data-from-luis"></a>可以從 LUIS 刪除資料嗎？
 
-* 您一律可以刪除用於訓練 LUIS 的範例語句。 如果您從 LUIS 應用程式中刪除範例語句，該語句就會自 LUIS Web 服務中移除而無法供匯出。
+* 您一律可以刪除用於訓練 LUIS 的範例語句。 若您從 LUIS 應用程式刪除範例語句，則會從 LUIS Web 服務中予以移除，而且無法用於匯出。
 * 您可以在 [Review endpoint utterances] \(檢閱端點語句\) 頁面中，從 LUIS 所建議的使用者語句清單中刪除語句。 從此清單中刪除語句可防止系統建議這些語句，但並不會從記錄中刪除它們。
 * 如果您刪除帳戶，系統就會刪除所有應用程式及其範例語句和記錄。 資料會在伺服器上保留 60 天後再永久刪除。
 

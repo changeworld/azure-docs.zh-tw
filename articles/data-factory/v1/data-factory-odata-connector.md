@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387454"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74931874"
 > * [第 2 版 (目前的版本)](../connector-odata.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 OData 連接器](../connector-odata.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 OData 連接器](../connector-odata.md)。
 
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 OData 來源移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
@@ -60,13 +60,13 @@ ms.locfileid: "74931874"
 ## <a name="linked-service-properties"></a>已連結的服務屬性
 下表提供 OData 連結服務專屬 JSON 元素的說明。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| 類型 |類型屬性必須設為： **OData** |是 |
-| URL |OData 服務的 URL。 |是 |
+| type |類型屬性必須設為： **OData** |是 |
+| url |OData 服務的 URL。 |是 |
 | authenticationType |用來連線到 OData 來源的驗證類型。 <br/><br/> 若為雲端 OData，可能的值為 Anonymous、Basic 和 OAuth (請注意，Azure Data Factory 目前僅支援 Azure Active Directory 架構的 OAuth)。 <br/><br/> 若為內部部署 OData，可能的值為 Anonymous、Basic 和 Windows。 |是 |
 | username |如果您要使用 Basic 驗證，請指定使用者名稱。 |是 (只在您使用基本驗證時) |
-| password |指定您為使用者名稱所指定之使用者帳戶的密碼。 |是 (只在您使用基本驗證時) |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |是 (只在您使用基本驗證時) |
 | authorizedCredential |如果您使用 OAuth，按一下 Data Factory 複製精靈或編輯器中的 [授權] 按鈕，然後輸入您的認證，接著將會自動產生這個屬性的值。 |是 (只有在您使用 OAuth 驗證時) |
 | gatewayName |Data Factory 服務應該用來連接到內部部署 OData 服務的閘道器名稱。 只有當您要從內部部署 OData 來源複製資料時，才指定。 |否 |
 
@@ -145,7 +145,7 @@ ms.locfileid: "74931874"
 
 每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **ODataResource** (包含 OData 資料集) 類型資料集的 typeProperties 區段有下列屬性
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | path |OData 資源的路徑 |否 |
 
@@ -156,9 +156,9 @@ ms.locfileid: "74931874"
 
 如果來源類型為 **RelationalSource** (包含 OData)，則 typeProperties 區段可使用下列屬性：
 
-| 屬性 | 描述 | 範例 | 必要項 |
+| 屬性 | 描述 | 範例 | 必要 |
 | --- | --- | --- | --- |
-| query |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |否 |
+| 查詢 |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |否 |
 
 ## <a name="type-mapping-for-odata"></a>OData 的類型對應
 如 [資料移動活動](data-factory-data-movement-activities.md) 一文所述，複製活動會藉由下列含有兩個步驟的方法，執行從來源類型轉換成接收類型的自動類型轉換。
@@ -173,17 +173,17 @@ ms.locfileid: "74931874"
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |日期時間 |
+| Edm.DateTime |Datetime |
 | Edm.Decimal |Decimal |
-| Edm.Double |DOUBLE |
+| Edm.Double |Double |
 | Edm.Single |Single |
-| Edm.Guid |GUID |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
 | Edm.String |String |
-| Edm.Time |時間範圍 |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
@@ -194,9 +194,9 @@ ms.locfileid: "74931874"
 
 1. [OData](#linked-service-properties)類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [ODataResource](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [ODataResource](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 範例會每隔一小時依照 OData 來源，把查詢來的資料複製到 Azure Blob 中。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 

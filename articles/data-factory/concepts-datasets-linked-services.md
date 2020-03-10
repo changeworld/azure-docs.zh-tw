@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381767"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory 中的資料集
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -67,10 +67,10 @@ Data Factory 中的資料集是以下列 JSON 格式定義：
 ```
 下表描述上述 JSON 的屬性：
 
-屬性 | 描述 | 必要項 |
+屬性 | 描述 | 必要 |
 -------- | ----------- | -------- |
-名稱 | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
-類型 | 資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
+NAME | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
+type | 資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
 structure | 資料集的結構描述。 如需詳細資訊，請參閱[資料集架構](#dataset-structure-or-schema)。 | 否 |
 typeProperties | 每個類型 (例如：Azure Blob、Azure SQL 資料表) 的類型屬性都不同。 如需有關支援的類型及其屬性的詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
 
@@ -112,10 +112,10 @@ typeProperties | 每個類型 (例如：Azure Blob、Azure SQL 資料表) 的類
 
 下表描述上述 JSON 的屬性：
 
-屬性 | 描述 | 必要項 |
+屬性 | 描述 | 必要 |
 -------- | ----------- | -------- |
-名稱 | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
-類型 | 資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
+NAME | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
+type | 資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
 結構描述 | 資料集的結構描述。 如需詳細資訊，請參閱[資料流程相容資料集](#dataset-type)。 | 否 |
 typeProperties | 每個類型 (例如：Azure Blob、Azure SQL 資料表) 的類型屬性都不同。 如需有關支援的類型及其屬性的詳細資料，請參閱[資料集類型](#dataset-type)。 | 是 |
 
@@ -178,10 +178,10 @@ typeProperties | 每個類型 (例如：Azure Blob、Azure SQL 資料表) 的類
 
 structure 中的每個資料行都包含下列屬性︰
 
-屬性 | 描述 | 必要項
+屬性 | 描述 | 必要
 -------- | ----------- | --------
-名稱 | 資料行的名稱。 | 是
-類型 | 資料行的資料類型。 Data Factory 支援將下列過渡期資料類型當作允許的值：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 及 Timespan** | 否
+NAME | 資料行的名稱。 | 是
+type | 資料行的資料類型。 Data Factory 支援將下列過渡期資料類型當作允許的值：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 及 Timespan** | 否
 culture | 當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要使用的 .NET 型文化特性。 預設值為 `en-us`。 | 否
 format | 當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要使用的格式字串。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 | 否
 
@@ -199,7 +199,7 @@ format | 當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要
 ]
 ```
 
-### <a name="guidance"></a>指導方針
+### <a name="guidance"></a>指引
 
 下列指引可協助您了解何時要包括 structure 資訊，以及在 **structure** 區段中要包含哪些資訊。 從[結構描述和類型對應](copy-activity-schema-and-type-mapping.md)深入了解資料處理站如何將來源資料對應至接收，以及何時該指定結構資訊。
 

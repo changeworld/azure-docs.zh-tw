@@ -3,12 +3,12 @@ title: 從 Azure VM 備份復原檔案和資料夾
 description: 在本文中，您將瞭解如何從 Azure 虛擬機器復原點復原檔案和資料夾。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363704"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -65,7 +65,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
 #### <a name="for-windows"></a>若為 Windows
 
-當您執行可執行檔時，作業系統會掛接新磁碟區並指派磁碟機代號。 您可以使用 Windows 檔案總管或檔案總管來瀏覽這些磁碟機。 指派給磁片區的磁碟機號可能與原始虛擬機器的字母不同。 不過，會保留磁片區名稱。 例如，如果原始虛擬機器上的磁碟區是 "Data Disk (E:`\`)"，則可以在本機電腦上將該磁碟區連結為 "Data Disk ('任何磁碟機代號':`\`)"。 流覽腳本輸出中提及的所有磁片區，直到找到您的檔案或資料夾。  
+當您執行可執行檔時，作業系統會掛接新磁碟區並指派磁碟機代號。 您可以使用 Windows 檔案總管或檔案總管來瀏覽這些磁碟機。 指派給磁片區的磁碟機號可能與原始虛擬機器的字母不同。 不過，會保留磁片區名稱。 例如，如果原始虛擬機器上的磁片區是「資料磁片（E：`\`）」，則可以在本機電腦上將該磁片區附加為「資料磁片」（「任何字母」：`\`）。 流覽腳本輸出中提及的所有磁片區，直到找到您的檔案或資料夾。  
 
    ![[檔案復原] 功能表](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -125,7 +125,7 @@ pvs <volume name as shown above in the script output>
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 若要將邏輯磁片區掛接至您選擇的路徑：
@@ -161,7 +161,7 @@ mount [RAID Disk Path] [/mountpath]
 
 下表顯示伺服器和電腦作業系統之間的相容性。 復原檔案時，無法將檔案還原至之前或之後的作業系統版本。 例如，您無法將 Windows Server 2016 虛擬機器的檔案還原至 Windows Server 2012 或 Windows 8 電腦。 您可以將 VM 的檔案還原至相同的伺服器作業系統，或相容的用戶端作業系統。
 
-|伺服器 OS | 相容的用戶端作業系統  |
+|伺服器作業系統 | 相容的用戶端作業系統  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
@@ -192,8 +192,8 @@ mount [RAID Disk Path] [/mountpath]
 
 |元件 | 版本  |
 | --------------- | ---- |
-| 反斜線 | 4 和更新版本 |
-| python | 2.6.6 和更新版本  |
+| Bash | 4 和更新版本 |
+| Python | 2.6.6 和更新版本  |
 | TLS | 應支援 1.2  |
 
 ## <a name="access-requirements"></a>存取需求
@@ -202,10 +202,10 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 復原服務 URL (geo-name 是指復原服務保存庫所在的區域)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (適用於 Azure 公用地區)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> （適用于 Azure 中國世紀）
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (適用於 Azure US Government)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (適用於 Azure 德國)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (適用於 Azure 公用地區)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` （適用于 Azure 中國世紀）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (適用於 Azure US Government)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (適用於 Azure 德國)
 - 輸出埠53（DNS）、443、3260
 
 > [!NOTE]
@@ -257,7 +257,7 @@ mount [RAID Disk Path] [/mountpath]
 | ------------------------ | -------------- | ------------------ |
 | Exe 輸出：*連接到目標時發生例外*狀況 | 腳本無法存取復原點    | 檢查機器是否滿足先前的[存取需求](#access-requirements)。 |  
 | Exe 輸出︰目標已透過 iSCSI 工作階段登入。 | 指令碼已在相同電腦上執行，並已附加磁碟機 | 復原點磁碟區已連接。 它們可能未使用原始 VM 的相同磁碟機代號裝載。 流覽檔案瀏覽器中所有可用的磁片區，以尋找您的檔案。 |
-| Exe 輸出：*此腳本無效，因為磁片已透過入口網站/超過12小時限制卸載。從入口網站下載新的腳本。* |    已從入口網站卸載磁片或超過12小時的限制 | 此特定 exe 目前無效，無法執行。 如果您想要存取該恢復時間點的檔案，請造訪入口網站以取得新的 exe。|
+| Exe 輸出：*此腳本無效，因為磁片已透過入口網站/超過12小時限制卸載。從入口網站下載新的腳本。* |    已從入口網站卸載磁片或超過12小時的限制 | 這個特定的 exe 現在無效，無法執行。 如果您想要存取該恢復時間點的檔案，請造訪入口網站以取得新的 exe。|
 | 在執行 exe 的電腦上：按一下 [卸載] 按鈕之後，不會卸載新的磁片區 | 機器上的 iSCSI 啟動器沒有回應/重新整理其與目標的連接，以及維護快取。 |  按一下 [卸載] 後，請稍候幾分鐘。 如果未卸載新的磁片區，請流覽所有磁片區。 流覽所有磁片區會強制啟動器重新整理連線，而且會卸載磁片區，並顯示無法使用磁片的錯誤訊息。|
 | Exe 輸出：腳本已順利執行，但腳本輸出上並未顯示「附加的新磁片區」 |    這是暫時性的錯誤    | 磁片區已經連接。 開啟檔案總管以瀏覽。 如果您每次都使用同一部電腦來執行腳本，請考慮重新開機電腦，且清單應該會顯示在後續的 exe 執行中。 |
 | Linux 特定︰無法檢視所需的磁碟區 | 執行指令碼所在電腦的作業系統可能無法辨識受保護 VM 的底層檔案系統 | 檢查復原點是否為損毀一致或檔案一致。 如果檔案一致，請在作業系統可識別受保護 VM 檔案系統的另一部電腦上執行腳本。 |
@@ -295,7 +295,7 @@ mount [RAID Disk Path] [/mountpath]
 
 我們會使用相互 CHAP 驗證機制，讓每個元件彼此驗證。 這表示很難讓假的啟動器連接到 iSCSI 目標，並讓假的目標連接到執行腳本的電腦。
 
-復原服務與電腦之間的資料流程會藉由透過 TCP 建立安全的 SSL 通道來保護（執行腳本的電腦[應支援 TLS 1.2](#system-requirements) ）。
+復原服務與電腦之間的資料流程會透過 TCP 建立安全的 TLS 通道來保護（執行腳本的電腦[應支援 tls 1.2](#system-requirements) ）。
 
 所有存在於父系/備份 VM 中的檔案存取控制清單（ACL）也會保留在掛接的檔案系統中。
 

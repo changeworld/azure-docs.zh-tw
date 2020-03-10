@@ -14,19 +14,19 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
 ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073799"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383333"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>適用於 Linux 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 Azure 磁碟加密會使用 Linux 中的 dm-crypt 子系統在[選取的 Azure Linux 發行版本](https://aka.ms/adelinux)上提供完整的磁碟加密。  此解決方案會與 Azure Key Vault 整合，以管理磁碟加密金鑰和祕密。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如需必要條件的完整清單，請參閱[適用于 Linux vm 的 Azure 磁碟加密](../linux/disk-encryption-overview.md)，特別是下列各節：
 
@@ -134,20 +134,20 @@ Azure 磁碟加密有兩個架構： v1.1，這是較新的建議架構，不會
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
+| apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | 字串 |
-| 類型 | AzureDiskEncryptionForLinux | 字串 |
+| type | AzureDiskEncryptionForLinux | 字串 |
 | typeHandlerVersion | 0.1、1。1 | int |
 | (0.1 schema)AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 schema)AADClientSecret | password | 字串 |
+| (0.1 schema)AADClientSecret | 密碼 | 字串 |
 | (0.1 schema)AADClientCertificate | thumbprint | 字串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
 | KeyEncryptionKeyURL | url | 字串 |
 | 選擇性KeyVaultURL | url | 字串 |
-| 複雜密碼 | password | 字串 | 
-| SequenceVersion | uniqueidentifier | 字串 |
+| 複雜密碼 | 密碼 | 字串 | 
+| SequenceVersion | UNIQUEIDENTIFIER | 字串 |
 | VolumeType | 作業系統、資料、全部 | 字串 |
 
 ## <a name="template-deployment"></a>範本部署

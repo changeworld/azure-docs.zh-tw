@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387525"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure Data Factory 從 MySQL 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,14 +25,14 @@ ms.locfileid: "74928098"
 > * [第 2 版 (目前的版本)](../connector-mysql.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 MySQL 連接器](../connector-mysql.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 MySQL 連接器](../connector-mysql.md)。
 
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 MySQL 資料庫移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
 您可以將資料從內部部署的 MySQL 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 Data Factory 目前只支援將資料從 MySQL 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 MySQL 資料存放區。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文來了解資料管理閘道和設定閘道的逐步指示。
 
 即使 MySQL 資料庫裝載於 Azure IaaS 虛擬機器 (VM) 中，也必須要有閘道。 您可以將閘道安裝在與資料存放區相同或相異的 VM 上，只要閘道可以連線到資料庫即可。
@@ -65,15 +65,15 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 MySQL 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| 類型 |類型屬性必須設為： **OnPremisesMySql** |是 |
+| type |類型屬性必須設為： **OnPremisesMySql** |是 |
 | 伺服器 |MySQL 伺服器的名稱。 |是 |
-| 資料庫 |MySQL 資料庫的名稱。 |是 |
+| [資料庫] |MySQL 資料庫的名稱。 |是 |
 | 結構描述 |在資料庫中的結構描述名稱。 |否 |
 | authenticationType |用來連接到 MySQL 資料庫的驗證類型。 可能的值為：`Basic`。 |是 |
 | userName |指定要連線到 MySQL 資料庫的使用者名稱。 |是 |
-| password |指定您所指定使用者帳戶的密碼。 |是 |
+| 密碼 |指定您所指定使用者帳戶的密碼。 |是 |
 | gatewayName |Data Factory 服務應該用來連接到內部部署 MySQL 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
@@ -81,7 +81,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **RelationalTable** 資料集類型的 typeProperties 區段 (包含 MySQL 資料集) 具有下列屬性
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | tableName |MySQL 資料庫執行個體中連結服務所參照的資料表名稱。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -92,9 +92,9 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 當複製活動中的來源類型為 **RelationalSource** (包括 MySQL) 時，typeProperties 區段中會有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| query |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：select * from MyTable。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：select * from MyTable。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON 範例：將資料從 MySQL 複製到 Azure Blob
@@ -107,9 +107,9 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 1. [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties)類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](data-factory-onprem-mysql-connector.md#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](data-factory-onprem-mysql-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此範例會每個小時將資料從 MySQL 資料庫中的查詢結果複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -301,18 +301,18 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 | MySQL 資料庫類型 | .NET Framework 類型 |
 | --- | --- |
 | 不帶正負號的 bigint |Decimal |
-| bigint |Int64 |
+| BIGINT |Int64 |
 | bit |Decimal |
 | blob |Byte[] |
 | bool |Boolean |
 | char |String |
-| date |DateTime |
-| Datetime |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
 | decimal |Decimal |
-| 雙精度 |DOUBLE |
-| 兩倍 |DOUBLE |
+| 雙精度 |Double |
+| double |Double |
 | 列舉 |String |
-| float |Single |
+| FLOAT |Single |
 | 不帶正負號的 int |Int64 |
 | int |Int32 |
 | 不帶正負號的整數 |Int64 |
@@ -325,20 +325,20 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 | 不帶正負號的 mediumint |Int64 |
 | mediumint |Int32 |
 | mediumtext |String |
-| numeric |Decimal |
-| real |DOUBLE |
+| NUMERIC |Decimal |
+| real |Double |
 | set |String |
 | 不帶正負號的 smallint |Int32 |
-| smallint |Int16 |
+| SMALLINT |Int16 |
 | text |String |
-| time |時間範圍 |
-| timestamp |DateTime |
+| time |TimeSpan |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | 不帶正負號的 tinyint |Int16 |
-| tinyint |Int16 |
+| TINYINT |Int16 |
 | tinytext |String |
 | varchar |String |
-| 年 |Int |
+| year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。

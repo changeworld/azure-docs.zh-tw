@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/07/2020
 ms.author: barclayn
 ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389932"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 資料靜態加密
 

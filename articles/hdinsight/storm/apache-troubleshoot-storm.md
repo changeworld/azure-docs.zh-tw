@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896010"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395198"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Storm 進行疑難排解
 
-了解在 [Apache Ambari](https://ambari.apache.org/) 中使用 [Apache Storm](https://storm.apache.org/) 承載時最常發生的問題及其解決方法。
+了解在 [Apache Ambari](https://storm.apache.org/) 中使用 [Apache Storm](https://ambari.apache.org/) 承載時最常發生的問題及其解決方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在叢集上存取 Storm UI？
 
@@ -104,7 +104,7 @@ lib 資料夾的 .jar 檔案包含匯出/匯入作業的實作。 bash 資料夾
 * 閘道節點
 * 前端節點
 * ZooKeeper 節點
-* 背景工作角色節點
+* 背景工作節點
 
 ### <a name="gateway-nodes"></a>閘道節點
 
@@ -124,7 +124,7 @@ HDInsight 隨附一個三節點的 ZooKeeper 仲裁。 仲裁大小是固定的�
 
 叢集中的 Storm 服務已設定為自動使用 ZooKeeper 仲裁。
 
-### <a name="worker-nodes"></a>背景工作角色節點
+### <a name="worker-nodes"></a>背景工作節點
 
 Storm 背景工作節點執行下列服務：
 * 監督員

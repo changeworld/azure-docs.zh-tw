@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385073"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing 新聞搜尋 API 支援的語言和區域
 
@@ -31,15 +31,15 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |奧地利|德文|de-AT|
 |瑞士|德文|de-CH|
 |德國|德文|de-DE|
 |澳大利亞|英文|en-AU|
-|加拿大|英文|en-CA|
-|英國|英文|en-GB|
+|Canada|英文|en-CA|
+|United Kingdom|英文|en-GB|
 |印尼|英文|en-ID|
 |愛爾蘭|英文|en-IE|
 |印度|英文|en-IN|
@@ -47,7 +47,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |紐西蘭|英文|en-NZ|
 |菲律賓共和國|英文|en-PH|
 |新加坡|英文|en-SG|
-|美國|英文|en-US|
+|美國|英文|zh-TW|
 |英文|一般|en-WW|
 |英文|一般|en-XA|
 |南非|英文|en-ZA|
@@ -59,7 +59,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |西班牙文|一般|es-XL|
 |芬蘭|芬蘭文|fi-FI|  
 |法國|法文|fr-BE|
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |比利時|荷蘭文|nl-BE|
 |瑞士|法文|fr-CH|
 |法國|法文|fr-FR|  
@@ -80,19 +80,19 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |德國|德文|de-DE|
 |澳大利亞|英文|en-AU|
-|英國|英文|en-GB|
-|美國|英文|en-US|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
 |英文|一般|en-WW|
 |智利|西班牙文|es-CL|
 |墨西哥|西班牙文|es-MX|
 |美國|西班牙文|es-US|
 |芬蘭|芬蘭文|fi-FI|  
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |法國|法文|fr-FR|  
 |義大利|義大利文|it-IT|
 |巴西|葡萄牙文|pt-BR|
@@ -103,16 +103,16 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |德國|德文|de-DE|
 |澳大利亞|英文|en-AU|
-|英國|英文|en-GB|
-|美國|英文|en-US|
-|加拿大|英文|en-CA|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
+|Canada|英文|en-CA|
 |印度|英文|en-IN|
 |法國|法文|fr-FR|
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |巴西|葡萄牙文|pt-BR|
 |中華人民共和國|中文|zh-CN|
 
@@ -129,7 +129,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |奧地利|AT|  
 |比利時|BE|  
 |巴西|BR|  
-|加拿大|CA|  
+|Canada|CA|  
 |智利|CL|  
 |丹麥|DK|  
 |芬蘭|FI|  
@@ -137,7 +137,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |德國|DE|  
 |香港特別行政區|HK|  
 |印度|IN|  
-|印尼|id|  
+|印尼|ID|  
 |義大利|IT|  
 |日本|JP|  
 |南韓|KR|  
@@ -158,7 +158,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |瑞士|CH|  
 |台灣|TW|  
 |土耳其|TR|  
-|英國|GB|  
+|United Kingdom|GB|  
 |美國|US|
 
 ## <a name="next-steps"></a>後續步驟

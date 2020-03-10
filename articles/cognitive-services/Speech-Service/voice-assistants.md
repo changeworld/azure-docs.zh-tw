@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394819"
 ---
 # <a name="about-voice-assistants"></a>關於語音助理
 
@@ -31,7 +31,7 @@ ms.locfileid: "74812916"
 
 建立語音助理的第一個步驟是決定應執行的動作。 語音服務提供多個互補的解決方案來製作您的助理互動。 無論您是否想要有 Bot Framework 的[Direct Line 語音](direct-line-speech.md)通道所提供的彈性和多功能性，或簡單的[自訂命令（預覽）](custom-commands.md) ，都可以選擇適當的工具，讓您開始使用。
 
-| 如果您想要... | 然後考慮 。 | 例如 。 |
+| 若要... | 然後考慮 。 | 例如 。 |
 |-------------------|------------------|----------------|
 |具有強大技能整合和完全部署控制的開放式交談 | Bot Framework 的[Direct Line 語音](direct-line-speech.md)頻道 | <ul><li>「我需要前往西雅圖」</li><li>「我可以訂購哪種比薩餅？」</li></ul>
 |透過簡化的撰寫和裝載來進行命令與控制或工作導向的交談 | [自訂命令（預覽）](custom-commands.md) | <ul><li>「開啟額外負荷燈」</li><li>「讓它成為5度的暖」</ul>
@@ -46,7 +46,7 @@ ms.locfileid: "74812916"
 
 無論您選擇[Direct Line 語音](direct-line-speech.md)或[自訂命令（預覽）](custom-commands.md)來建立助理互動，都可以使用一組豐富的自訂功能，針對您的品牌、產品和特性自訂您的小幫手。
 
-| 類別 | 功能 |
+| 類別 | 特性 |
 |----------|----------|
 |[Custom 關鍵字](speech-devices-sdk-create-kws.md) | 使用者可以使用自訂關鍵字（例如 "嗨 Contoso"）來開始與助理交談。 應用程式會使用語音 SDK 中的自訂關鍵字引擎來執行這項工作，您可以使用[這裡產生](speech-devices-sdk-create-kws.md)的自訂關鍵字來設定。 語音助理可以使用服務端關鍵字驗證來改善關鍵字啟用的精確度（與裝置本身的比較）。
 |[語音轉換文字](speech-to-text.md) | 語音助理會使用語音服務中的語音轉換文字[，](speech-to-text.md)將即時音訊轉換成已辨識的文字。 這項文字已轉譯，可供您的小幫手和用戶端應用程式使用。
@@ -56,11 +56,11 @@ ms.locfileid: "74812916"
 
 我們提供的快速入門是為了讓您在10分鐘內執行程式碼而設計的。 此表格包含依語言組織的語音助理快速入門清單。
 
-| 快速入門 | 平台 | API 參考 |
+| 快速入門 | 平台 | API 參考資料 |
 |------------|----------|---------------|
-| C#，UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#，UWP | Windows | [瀏覽](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [瀏覽](https://aka.ms/csspeech/javaref) |
+| Java | Android | [瀏覽](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>範例程式碼
 

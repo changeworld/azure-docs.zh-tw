@@ -15,11 +15,11 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201623"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388777"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>在 Azure 中使用 SQL VM 資源提供者註冊 SQL Server 虛擬機器
 
@@ -35,14 +35,14 @@ ms.locfileid: "77201623"
 
 - **簡化的授權管理**：向 SQL VM 資源提供者註冊會簡化 SQL Server 授權管理，並可讓您使用[AZURE 入口網站](virtual-machines-windows-sql-manage-portal.md)、Az CLI 或 PowerShell，快速識別已啟用 Azure Hybrid Benefit 的 SQL Server vm： 
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -57,7 +57,7 @@ ms.locfileid: "77201623"
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="在 Azure 上自行安裝 SQL Server 時，從 SQL VM 資源提供者獲益-Microsoft Channel 9 影片"></iframe>
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要向資源提供者註冊您的 SQL Server VM，您將需要： 
 
@@ -106,14 +106,14 @@ ms.locfileid: "77201623"
 
 使用 Az CLI 或 PowerShell，將您的 SQL VM 資源提供者註冊到您的 Azure 訂用帳戶。 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -132,7 +132,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 容錯移轉叢集實例和多重實例部署只能以輕量模式向 SQL VM 資源提供者註冊。 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 使用 Az CLI 在輕量模式中註冊 SQL Server VM： 
 
@@ -142,7 +142,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
   ```
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 使用 PowerShell 在輕量模式中註冊 SQL Server VM：  
 
@@ -183,7 +183,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 若要在 Windows Server 2008 實例上註冊您的 SQL Server 2008 或 2008 R2 實例，請使用下列 Az CLI 或 PowerShell 程式碼片段： 
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 使用 Az CLI 在 NoAgent 模式中註冊您的 SQL Server 2008 VM： 
 
@@ -202,7 +202,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
    --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 使用 PowerShell 在 NoAgent 模式中註冊 SQL Server 2008 VM： 
 
@@ -258,7 +258,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="command-line"></a>命令列
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 執行下列 Az CLI 程式碼片段：
 
@@ -267,7 +267,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 執行下列 PowerShell 程式碼片段：
 
@@ -297,14 +297,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 使用 Az CLI 或 PowerShell 來確認目前 SQL Server 的 VM 註冊狀態。 如果註冊成功，`ProvisioningState` 將會顯示 `Succeeded`。 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="az-cli"></a>[AZ CLI](#tab/bash)
 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -345,7 +345,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="command-line"></a>命令列
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 若要使用 Azure CLI 從資源提供者取消註冊您的 SQL Server 虛擬機器，請使用[az SQL vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete)命令。 這會移除 SQL Server 虛擬機器*資源*，但不會刪除虛擬機器。 
 
 
@@ -356,7 +356,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要使用 Azure CLI 從資源提供者取消註冊您的 SQL Server 虛擬機器，請使用[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 這會移除 SQL Server 虛擬機器*資源*，但不會刪除虛擬機器。 
 
 ```powershell-interactive
@@ -376,11 +376,11 @@ SQL VM 資源提供者僅支援：
 
 **我應該在 Azure Marketplace 中註冊從 SQL Server 映射布建的 SQL Server VM 嗎？**
 
-No。 Microsoft 會從 Azure Marketplace 中的 SQL Server 映射自動註冊布建的 Vm。 只有在*未*從 Azure Marketplace 中的 SQL Server 映射布建 VM，而且 SQL Server 已自行安裝時，才需要向 SQL VM 資源提供者註冊。
+否。 Microsoft 會從 Azure Marketplace 中的 SQL Server 映射自動註冊布建的 Vm。 只有在*未*從 Azure Marketplace 中的 SQL Server 映射布建 VM，而且 SQL Server 已自行安裝時，才需要向 SQL VM 資源提供者註冊。
 
 **SQL VM 資源提供者是否適用於所有客戶？** 
 
-是的。 客戶應該向 SQL VM 資源提供者註冊其 SQL Server 的 Vm （如果未使用 Azure Marketplace 的 SQL Server 映射），而改為自行安裝的 SQL Server，或其是否有自訂的 VHD。 所有訂閱類型（直接、Enterprise 合約和雲端解決方案提供者）所擁有的 Vm 可以向 SQL VM 資源提供者註冊。
+是。 客戶應該向 SQL VM 資源提供者註冊其 SQL Server 的 Vm （如果未使用 Azure Marketplace 的 SQL Server 映射），而改為自行安裝的 SQL Server，或其是否有自訂的 VHD。 所有訂閱類型（直接、Enterprise 合約和雲端解決方案提供者）所擁有的 Vm 可以向 SQL VM 資源提供者註冊。
 
 **如果我的 SQL Server VM 已安裝 SQL Server IaaS 延伸模組，我應該向 SQL VM 資源提供者註冊嗎？**
 
@@ -402,7 +402,7 @@ No。 Microsoft 會從 Azure Marketplace 中的 SQL Server 映射自動註冊布
 
 **向 SQL VM 資源提供者註冊會在我的 VM 上安裝代理程式嗎？**
 
-No。 向 SQL VM 資源提供者註冊，只會建立新的中繼資料資源。 它不會在 VM 上安裝代理程式。
+否。 向 SQL VM 資源提供者註冊，只會建立新的中繼資料資源。 它不會在 VM 上安裝代理程式。
 
 只有在啟用完整的管理能力時，才需要 SQL Server IaaS 延伸模組。 將管理性模式從輕量升級為 full 會安裝 SQL Server IaaS 延伸模組，並將 SQL Server 重新開機。
 
@@ -418,44 +418,44 @@ No。 向 SQL VM 資源提供者註冊，只會建立新的中繼資料資源。
 
 **我可以向 SQL VM 資源提供者註冊，而不需要指定 SQL Server 授權類型嗎？**
 
-No。 當您向 SQL VM 資源提供者註冊時，SQL Server 授權類型不是選擇性的屬性。 在所有管理性模式（無代理程式、輕量和完整）中向 SQL VM 資源提供者註冊時，您必須將 SQL Server 授權類型設定為隨用隨付或 Azure Hybrid Benefit。
+否。 當您向 SQL VM 資源提供者註冊時，SQL Server 授權類型不是選擇性的屬性。 在所有管理性模式（無代理程式、輕量和完整）中向 SQL VM 資源提供者註冊時，您必須將 SQL Server 授權類型設定為隨用隨付或 Azure Hybrid Benefit。
 
 **我可以將 SQL Server IaaS 擴充功能從無代理程式模式升級為完整模式嗎？**
 
-No。 無代理程式模式無法使用 [完整] 或 [輕量] 升級管理模式。 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級至完整管理模式。 
+否。 無代理程式模式無法使用 [完整] 或 [輕量] 升級管理模式。 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級至完整管理模式。 
 
 **是否可以將 SQL Server IaaS 延伸模組從輕量模式升級至完整模式？**
 
-是的。 透過 PowerShell 或 Azure 入口網站，可支援從輕型升級至完整的管理性模式。 需要重新開機 SQL Server 服務。
+是。 透過 PowerShell 或 Azure 入口網站，可支援從輕型升級至完整的管理性模式。 需要重新開機 SQL Server 服務。
 
 **我可以將 SQL Server IaaS 擴充功能從完整模式降級為無代理程式或輕量管理模式嗎？**
 
-No。 不支援降級 SQL Server IaaS 擴充功能管理模式。 管理模式無法從完整模式降級為輕量或無代理程式模式，而且無法從輕量模式降級為無代理程式模式。 
+否。 不支援降級 SQL Server IaaS 擴充功能管理模式。 管理模式無法從完整模式降級為輕量或無代理程式模式，而且無法從輕量模式降級為無代理程式模式。 
 
 若要從完整的管理性中變更管理性模式，請卸載 SQL Server*資源*，然後在不同的管理模式中再次向 SQL vm 資源提供者重新註冊 SQL Server VM，以從 SQL Server 資源提供者[取消](#unregister-vm-from-rp)登錄 SQL Server 的虛擬機器。
 
 **我可以從 Azure 入口網站向 SQL VM 資源提供者註冊嗎？**
 
-No。 Azure 入口網站中無法使用 SQL VM 資源提供者註冊。 只有 Azure CLI 或 PowerShell 才支援向 SQL VM 資源提供者註冊。 
+否。 Azure 入口網站中無法使用 SQL VM 資源提供者註冊。 只有 Azure CLI 或 PowerShell 才支援向 SQL VM 資源提供者註冊。 
 
 **在安裝 SQL Server 之前，我可以向 SQL VM 資源提供者註冊 VM 嗎？**
 
-No。 VM 至少應該要有一個 SQL Server （資料庫引擎）實例，才能成功向 SQL VM 資源提供者註冊。 如果 VM 上沒有 SQL Server 實例，新的 Microsoft.sqlvirtualmachine 資源會處於失敗狀態。
+否。 VM 至少應該要有一個 SQL Server （資料庫引擎）實例，才能成功向 SQL VM 資源提供者註冊。 如果 VM 上沒有 SQL Server 實例，新的 Microsoft.sqlvirtualmachine 資源會處於失敗狀態。
 
 **如果有多個 SQL Server 實例，可以向 SQL VM 資源提供者註冊 VM 嗎？**
 
-是的。 SQL VM 資源提供者只會註冊一個 SQL Server （資料庫引擎）實例。 SQL VM 資源提供者會在多個實例的情況下，註冊預設的 SQL Server 實例。 如果沒有預設實例，則只支援在輕量模式下註冊。 若要從輕量升級到完整的管理性模式，預設 SQL Server 實例應該存在，或 VM 應該只有一個名為 SQL Server 實例。
+是。 SQL VM 資源提供者只會註冊一個 SQL Server （資料庫引擎）實例。 SQL VM 資源提供者會在多個實例的情況下，註冊預設的 SQL Server 實例。 如果沒有預設實例，則只支援在輕量模式下註冊。 若要從輕量升級到完整的管理性模式，預設 SQL Server 實例應該存在，或 VM 應該只有一個名為 SQL Server 實例。
 
 **我可以向 SQL VM 資源提供者註冊 SQL Server 容錯移轉叢集實例嗎？**
 
-是的。 在輕量模式中，可以向 SQL VM 資源提供者註冊 Azure VM 上的 SQL Server 容錯移轉叢集實例。 不過，SQL Server 容錯移轉叢集實例無法升級至完整的管理性模式。
+是。 在輕量模式中，可以向 SQL VM 資源提供者註冊 Azure VM 上的 SQL Server 容錯移轉叢集實例。 不過，SQL Server 容錯移轉叢集實例無法升級至完整的管理性模式。
 
 **如果已設定 Always On 可用性群組，可以向 SQL VM 資源提供者註冊我的 VM 嗎？**
 
-是的。 如果您要參與 Always On 可用性群組設定，則在 Azure VM 上使用 SQL VM 資源提供者註冊 SQL Server 實例沒有任何限制。
+是。 如果您要參與 Always On 可用性群組設定，則在 Azure VM 上使用 SQL VM 資源提供者註冊 SQL Server 實例沒有任何限制。
 
 **向 SQL VM 資源提供者註冊的成本為何，或升級為完整的管理性模式？**
-None。 向 SQL VM 資源提供者註冊，或使用三種管理模式中的任何一種，都不會產生任何費用。 使用資源提供者管理您的 SQL Server VM 完全免費。 
+無。 向 SQL VM 資源提供者註冊，或使用三種管理模式中的任何一種，都不會產生任何費用。 使用資源提供者管理您的 SQL Server VM 完全免費。 
 
 **使用不同的管理模式會對效能有何影響？**
 使用*NoAgent*和*輕量*管理模式時，不會有任何影響。 使用安裝在作業系統上的兩個服務的*完整*管理模式時，會產生最小的影響。 這些可以透過 [工作管理員] 監視，並在內建的 Windows 服務主控台中看到。 

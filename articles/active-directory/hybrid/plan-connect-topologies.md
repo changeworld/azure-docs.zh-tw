@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275222"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376119"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
 本文說明使用 Azure AD Connect 同步處理做為重要整合解決方案的各種內部部署和 Azure Active Directory (Azure AD) 拓撲。 本文包含受支援和不受支援的組態。
@@ -42,7 +42,7 @@ ms.locfileid: "70275222"
 
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 任何這些組態或動作都可能導致 Azure AD Connect 同步處理發生不一致或不支援的狀態。如此一來，Microsoft 無法提供這類部署的技術支援人員。
+> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 這些設定或動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
@@ -197,4 +197,4 @@ Azure AD 租用戶在設計上是隔離的。 下列工作不受支援：
 
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
-深入了解[整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+深入了解[將內部部署身分識別與 Azure Active Directory 整合](whatis-hybrid-identity.md)。

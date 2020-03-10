@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: d17859d84846fd4223b8d80ff8156c7b11e57de5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 013ebc2a1343c8eab3d477023e36660c93fa6da5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373731"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： Azure 入口網站
 
@@ -35,13 +35,13 @@ ms.locfileid: "75894940"
 您可以使用下列值來建立測試環境，或參考這些值來進一步了解本文中的範例：
 
 * **VNet 名稱︰** VNet1
-* **位址空間：** 192.168.0.0/16<br>在此範例中，我們只使用一個位址空間。 您可以針對 VNet 使用一個以上的位址空間。
+* **位址空間：** 10.1.0.0/16<br>在此範例中，我們只使用一個位址空間。 您可以針對 VNet 使用一個以上的位址空間。
 * **子網路名稱：** FrontEnd
-* **子網路位址範圍：** 192.168.1.0/24
+* **子網位址範圍：** 10.1.0.0/24
 * **訂用帳戶：** 如果您有一個以上的訂用帳戶，請確認您使用正確的訂用帳戶。
-* **資源群組：** TestRG
+* **資源群組︰** TestRG1
 * **位置：** 美國東部
-* **GatewaySubnet：** 192.168.200.0/24<br>
+* **GatewaySubnet：** 10.1.255.0/27<br>
 * **虛擬網路閘道名稱：** VNet1GW
 * **閘道類型：** VPN
 * **VPN 類型：** 路由式
@@ -52,19 +52,19 @@ ms.locfileid: "75894940"
 ## <a name="createvnet"></a>1. 建立虛擬網路
 
 在開始之前，請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
-[!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
+[!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="creategw"></a>2. 建立虛擬網路閘道
 
 此步驟將帶您建立 VNet 的虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。
 
-[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
-
-[!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
-
 >[!NOTE]
 >基本閘道 SKU 不支援 IKEv2 或 RADIUS 驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用基本 SKU。
 >
+
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
+
+[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="generatecert"></a>3. 產生憑證
 
@@ -82,31 +82,30 @@ ms.locfileid: "75894940"
 
 用戶端位址集區是您指定的私人 IP 位址範圍。 透過點對站 VPN 連線的用戶端會動態收到這個範圍內的 IP 位址。 使用不會重疊的私人 IP 位址範圍搭配您從其連線的內部部署位置，或搭配您要連線至的 VNet。 如果您設定多個通訊協定，而且 SSTP 是其中一個通訊協定，則設定的位址集區會平均分割成已設定的通訊協定。
 
-1. 一旦建立虛擬網路閘道，請瀏覽至虛擬網路閘道頁面的 [設定] 區段。 在 [設定] 區段中，按一下 [點對站組態]。
+1. 一旦建立虛擬網路閘道，請瀏覽至虛擬網路閘道頁面的 [設定] 區段。 在 [**設定**] 區段中，選取 [**點對站**設定]。 選取 [**立即設定**] 以開啟 [設定] 頁面。
 
-   ![點對站頁面](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
-2. 按一下 [立即設定] 以開啟 [組態] 頁面。
+   ![點對站頁面](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-configure.png "點對站設定現在")
+2. 在 [**點對站**設定] 頁面上，您可以設定各種不同的設定。 如果您在此頁面上看不到 [通道類型] 或 [驗證類型]，則您的閘道會使用基本 SKU。 基本 SKU 不支援 IKEv2 或 RADIUS 驗證。 如果您想要使用這些設定，您必須使用不同的閘道 SKU 來刪除並重新建立閘道。
 
-   ![立即設定](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. 在 [點對站] 組態頁面上的 [位址集區] 方塊中，新增您要使用的私人 IP 位址範圍。 VPN 用戶端會動態收到您指定範圍內的 IP 位址。 主動/被動的最小子網路遮罩為29位，主動/主動設定則為28位。 按一下 [儲存] 來驗證和儲存設定。
-
-   ![用戶端位址集區](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
-
-   >[!NOTE]
-   >如果您在入口網站的這個頁面上沒看到 [通道] 類型或 [驗證] 類型，則您的閘道是使用基本 SKU。 基本 SKU 不支援 IKEv2 或 RADIUS 驗證。
-   >
+   [![點對站設定頁面](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-address.png "指定位址集區")](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-expanded.png#lightbox)
+3. 在 [**位址集區**] 方塊中，新增您想要使用的私人 IP 位址範圍。 VPN 用戶端會動態收到您指定範圍內的 IP 位址。 主動/被動的最小子網路遮罩為29位，主動/主動設定則為28位。
+4. 移至下一節以設定通道類型。
 
 ## <a name="tunneltype"></a>5. 設定通道類型
 
-您可以選取通道類型。 通道選項為 OpenVPN、SSTP 和 IKEv2。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
+您可以選取通道類型。 通道選項為 OpenVPN、SSTP 和 IKEv2。
 
-![通道類型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+* Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。
+* Windows 用戶端會先嘗試 IKEv2，如果沒有連線，它們就會回到 SSTP。
+* 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
+
+![通道類型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel.png "指定通道類型")
 
 ## <a name="authenticationtype"></a>6. 設定驗證類型
 
-選取 [Azure 憑證]。
+針對 [**驗證類型**]，選取 [ **Azure 憑證**]。
 
-  ![通道類型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![驗證類型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "指定驗證類型")
 
 ## <a name="uploadfile"></a>7. 上傳根憑證公開憑證資料
 
@@ -116,13 +115,13 @@ ms.locfileid: "75894940"
 2. 請確定您以 Base-64 編碼 X.509 (.cer) 檔案形式匯出根憑證。 您需要以這種格式匯出憑證，以便可以使用文字編輯器開啟憑證。
 3. 使用文字編輯器 (例如「記事本」) 開啟憑證。 複製憑證資料時，請確定您是以連續一行的形式複製文字，而不含歸位字元或換行字元。 您可能必須將文字編輯器中的檢視修改成 [顯示符號] 或 [顯示所有字元]，才能看到歸位字元和換行字元。 請只以連續一行的形式複製下列區段：
 
-   ![憑證資料](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
-4. 將憑證資料貼到 [公開憑證資料] 欄位中。 提供憑證「名稱」，然後按一下 [儲存]。 您最多可新增 20 個受信任的根憑證。
+   ![憑證資料](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png "複製根憑證資料")
+4. 將憑證資料貼到 [公開憑證資料] 欄位中。 將憑證**命名**為，然後選取 [**儲存**]。 您最多可新增 20 個受信任的根憑證。
 
-   ![憑證上傳](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
-5. 按一下頁面頂端的 [儲存]，以儲存所有的組態設定。
+   ![貼上憑證資料](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png "貼上憑證資料")
+5. 選取頁面頂端的 [**儲存**]，以儲存所有設定。
 
-   ![儲存](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![儲存設定](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png "儲存設定")
 
 ## <a name="installclientcert"></a>8. 安裝匯出的用戶端憑證
 
@@ -145,14 +144,14 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 >
 >
 
-1. 若要連接至您的 VNet，在用戶端電腦上瀏覽到 VPN 連線，然後找出所建立的 VPN 連線。 其名稱會與虛擬網路相同。 按一下 [ **連接**]。 可能會出現與使用憑證有關的快顯訊息。 按一下 [繼續] 以使用較高的權限。
+1. 若要連接至您的 VNet，在用戶端電腦上瀏覽到 VPN 連線，然後找出所建立的 VPN 連線。 其名稱會與虛擬網路相同。 選取 [連接]。 可能會出現與使用憑證有關的快顯訊息。 選取 [**繼續**] 以使用較高的許可權。
 
-2. 在 [連線] 狀態頁面上，按一下 [連線] 以便開始連線。 如果出現 [選取憑證] 畫面，請確認顯示的用戶端憑證是要用來連接的憑證。 如果沒有，請使用下拉箭頭來選取正確的憑證，然後按一下 [確定]。
+2. 在 [連線] 狀態頁面上，選取 [連線] 以便開始連線。 如果出現 [選取憑證] 畫面，請確認顯示的用戶端憑證是要用來連接的憑證。 如果不是，請使用下拉箭號來選取正確的憑證，然後選取 **[確定]** 。
 
-   ![VPN 用戶端連線至 Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![VPN 用戶端連接到 Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "連線")
 3. 已建立您的連線。
 
-   ![連線已建立](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![已建立連接](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png "已建立連接")
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>針對 Windows P2S 連線進行疑難排解
 
@@ -160,11 +159,11 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>從 Mac VPN 用戶端連線
 
-從 [網路] 對話方塊，找出您要使用的用戶端設定檔，指定 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) 中的設定，然後按一下 [連線]。
+從 [網路] 對話方塊中，找出您想要使用的用戶端設定檔，指定[vpnsettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)中的設定，然後選取 [連線 **]** 。
 
 如需詳細指示，請參閱[安裝 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
 
-  ![Mac 連線](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
+  ![Mac 連接](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png "連線")
 
 ## <a name="verify"></a>驗證您的連線
 
@@ -204,7 +203,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 1. 若要移除受信任的根憑證，瀏覽至虛擬網路閘道的 [點對站組態] 頁面。
 2. 在頁面的 [根憑證] 區段中，找出您想要移除的憑證。
-3. 按一下憑證旁邊的省略符號，然後按一下 [移除]。
+3. 選取憑證旁的省略號，然後選取 [移除]。
 
 ## <a name="revokeclient"></a>撤銷用戶端憑證
 

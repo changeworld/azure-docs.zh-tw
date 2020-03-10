@@ -14,20 +14,20 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
 ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698011"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377189"
 ---
-# <a name="national-clouds"></a>國家/地區雲端
+# <a name="national-clouds"></a>國家雲端
 
 國家雲端是實體獨立的 Azure 實例。 這些 Azure 區域的設計目的，是要確保符合地理界限內的資料落地、主權及合規性需求。
 
 包含全域雲端，Azure Active Directory （Azure AD）會部署在下列國家/地區雲端中：  
 
-- Azure 政府機構
-- Azure 德國
+- Azure Government
+- Azure Germany
 - Azure China 21Vianet
 
 國家/地區雲端是唯一的，也是 Azure global 的不同環境。 針對這些環境開發應用程式時，請務必留意主要差異。 差異包括註冊應用程式、取得權杖，以及設定端點。

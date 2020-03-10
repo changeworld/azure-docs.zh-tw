@@ -8,17 +8,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906976"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396517"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
 本文說明 IoT 中樞的配額，並提供資訊來協助您瞭解節流的運作方式。
 
-## <a name="quotas-and-throttling"></a>配額及節流
+## <a name="quotas-and-throttling"></a>配額和節流
 
 每個 Azure 訂用帳戶最多可以有 50 個 IoT 中樞，以及最多 1 個可用中樞。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76906976"
 
 層級也會決定「IoT 中樞」在所有作業上強制執行的節流限制。
 
-### <a name="iot-plug-and-play"></a>IoT Plug and Play
+### <a name="iot-plug-and-play"></a>IoT 隨插即用
 
 在公開預覽期間，IoT 隨插即用裝置會針對每個介面傳送個別的訊息，這可能會增加計入訊息配額的訊息數目。
 
@@ -115,7 +115,7 @@ IoT 中樞會強制執行其他操作限制：
 
 在任何指定的時間，您都可以藉由[增加 IoT 中樞內布建的單位數](iot-hub-upgrade.md)來增加配額或節流限制。
 
-## <a name="latency"></a>延遲
+## <a name="latency"></a>Latency
 
 IoT 中樞會努力地為所有作業提供低延遲的服務。 不過，由於網路狀況和其他無法預測的因素，它無法保證特定的延遲。 設計您的解決方案時，您應該：
 

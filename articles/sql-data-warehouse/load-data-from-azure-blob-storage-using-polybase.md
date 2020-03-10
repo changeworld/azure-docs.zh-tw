@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 5e7a4eff57841fdcf3bab87eda4e9771d9742bc5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190363"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386763"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
 
@@ -140,7 +140,7 @@ ms.locfileid: "78190363"
 
 本節使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 建立對 Azure SQL Server 的連線。
 
-1. 開啟 [SQL Server Management Studio]。
+1. 開啟 SQL Server Management Studio。
 
 2. 在 [連線至伺服器] 對話方塊中，輸入下列資訊：
 
@@ -150,7 +150,7 @@ ms.locfileid: "78190363"
     | 伺服器名稱    | 完整伺服器名稱            | 名稱應該類似這樣︰**mynewserver-20180430.database.windows.net**。 |
     | 驗證 | SQL Server 驗證                  | 在本教學課程中，我們只設定了 SQL 驗證這個驗證類型。 |
     | 登入          | 伺服器系統管理員帳戶                   | 這是您在建立伺服器時指定的帳戶。 |
-    | Password       | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
+    | 密碼       | 伺服器系統管理員帳戶的密碼 | 這是您在建立伺服器時指定的密碼。 |
 
     ![連線至伺服器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
@@ -561,7 +561,7 @@ ms.locfileid: "78190363"
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>使用受控識別進行驗證以進行載入（選擇性）
 使用 PolyBase 載入並透過受控識別進行驗證是最安全的機制，可讓您利用虛擬網路服務端點與 Azure 儲存體。 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 1.  使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
 2.  如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
 3.  您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 如需詳細資訊請參閱此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。

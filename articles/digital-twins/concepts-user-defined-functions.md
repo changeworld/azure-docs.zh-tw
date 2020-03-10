@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861093"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382289"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>資料處理與各項使用者定義功能
 
@@ -42,7 +42,7 @@ Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比�
 
 - datatype **Temperature** 的所有感應器是由逸出字串值 `\"Temperature\"` 表示
 - 在其連接埠中具有 `01`
-- 所屬裝置具有設為逸出字串值 `\"Contoso\"` 的擴充屬性索引鍵 **Manufacturer**
+- 所屬裝置具有設為逸出字串值 **的擴充屬性索引鍵**Manufacturer`\"Contoso\"`
 - 它們屬於逸出字串 `\"Venue\"` 所指定之類型的空格
 - 這是父**SpaceId**的子系 `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
@@ -97,7 +97,7 @@ Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比�
 
 使用者定義函式是可在隔離之 Azure Digital Twins 環境內執行的自訂函式。 使用者定義函式可存取所接收到的原始感應器遙測訊息。 使用者定義函式也可存取空間圖形和發送器服務。 在圖形內註冊使用者定義函式之後，就必須建立比對器 (詳細說明請見[上方](#matchers))，以指定何時要執行 UDF。 例如，當 Azure Digital Twins 從指定的感應器接收新的遙測資料時，相符的使用者定義函式可計算過去數個感應器讀數的移動平均值。
 
-可使用 JavaScript 寫入使用者定義函式。 協助程式方法可在使用者定義的執行環境中用來與圖形互動。 開發人員可對感應器遙測訊息執行自訂程式碼片段。 例如：
+可使用 JavaScript 寫入使用者定義函式。 協助程式方法可在使用者定義的執行環境中用來與圖形互動。 開發人員可對感應器遙測訊息執行自訂程式碼片段。 範例包括：
 
 - 設定直接在圖形中讀取感應器物件的感應器。
 - 根據圖形中的空間內不同的感應器讀數來執行動作。

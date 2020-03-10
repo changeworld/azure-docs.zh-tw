@@ -4,11 +4,11 @@ description: 設定命令列，以在部署 Azure 容器實例時覆寫容器映
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365154"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器實例中設定命令列，以覆寫預設的命令列操作
 
@@ -42,7 +42,7 @@ ms.locfileid: "74533415"
 
 * [az container create][az-container-create]命令：使用 `--command-line` 參數傳遞字串。 範例： `--command-line "python myscript.py arg1 arg2"`）。
 
-* [新增-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell Cmdlet：傳遞具有 `-Command` 參數的字串。 範例：`-Command "echo hello"`.
+* [新增-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell Cmdlet：傳遞具有 `-Command` 參數的字串。 範例： `-Command "echo hello"`.
 
 * Azure 入口網站：在容器設定的 [**命令覆寫**] 屬性中，提供以逗號分隔的字串清單，不含引號。 範例： `python, myscript.py, arg1, arg2`）。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "74533415"
 
 ### <a name="examples"></a>範例
 
-|    |  Azure CLI   | 入口網站 | 範本 | 
+|    |  Azure CLI   | 入口網站 | [範本] | 
 | ---- | ---- | --- | --- |
 | 單一命令 | `--command-line "python myscript.py arg1 arg2"` | **命令覆寫**： `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | 多個命令 | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令覆寫**： `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |

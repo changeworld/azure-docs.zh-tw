@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: 描述在 Azure Kubernetes Services 中執行 Azure Dev Spaces 的網路需求
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，CNI，kubenet，SDN，網路
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389662"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>在不同的網路拓撲中設定 Azure Dev Spaces 的網路功能
 
@@ -28,7 +28,7 @@ Azure Dev Spaces 具有輸入*和*輸出網路流量，以及*僅*輸入流量�
 
 Azure Dev Spaces 需要下列 Fqdn 的輸入和輸出流量：
 
-| FQDN                       | Port       | 使用      |
+| FQDN                       | 連接埠       | 使用      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS：443 | 提取 docker 映射以進行 Azure Dev Spaces |
 | gcr.io                     | HTTPS：443 | 提取 helm 映射以進行 Azure Dev Spaces |

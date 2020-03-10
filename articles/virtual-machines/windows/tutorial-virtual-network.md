@@ -16,11 +16,11 @@ ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064750"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393199"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 來建立及管理 Windows 虛擬機器的 Azure 虛擬網路
 
@@ -57,20 +57,20 @@ Azure 虛擬網路可以讓虛擬機器、網際網路與其他 Azure 服務 (�
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 
 ## <a name="create-subnet"></a>建立子網路 
 
 在本教學課程中，會建立一個具有兩個子網路的虛擬網路。 一個是裝載 Web 應用程式的前端子網路，一個是裝載資料庫伺服器的後端子網路。
 
-建立虛擬網路之前，請先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 建立資源群組。 下列範例會在 EastUS  位置建立名為 myRGNetwork  的資源群組。
+建立虛擬網路之前，請先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 建立資源群組。 下列範例會在 EastUS 位置建立名為 myRGNetwork 的資源群組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 建立一個名為 *myFrontendSubnet* 的子網路設定：
+使用 *New-AzVirtualNetworkSubnetConfig* 建立一個名為 [myFrontendSubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 的子網路設定：
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -88,7 +88,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>建立虛擬網路
 
-使用 *myFrontendSubnet* 和 *myBackendSubnet* 搭配 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)，建立名為 *myVNet* 的 VNET：
+使用 *myFrontendSubnet* 和 *myBackendSubnet* 搭配 *New-AzVirtualNetwork*，建立名為 [myVNet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 的 VNET：
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -107,7 +107,7 @@ $vnet = New-AzVirtualNetwork `
 
 配置方法可以設定為靜態，這可確保即使在已取消配置的狀態下，依然將 IP 位址指派給 VM。 如果您使用靜態 IP 位址，則無法指定 IP 位址本身， 而是從可用位址集區配置一個給它。
 
-使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 建立一個名為 *myPublicIPAddress* 的公用 IP 位址：
+使用 *New-AzPublicIpAddress* 建立一個名為 [myPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 的公用 IP 位址：
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -168,7 +168,7 @@ NSG 規則定義允許或拒絕流量的網路連接埠。 規則可以包含來
 
 ### <a name="create-network-security-groups"></a>建立網路安全性群組
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立一個名為 *myFrontendNSGRule* 的輸入規則，以允許 *myFrontendVM* 上的傳入網路流量：
+使用 *New-AzNetworkSecurityRuleConfig* 建立一個名為 *myFrontendNSGRule* 的輸入規則，以允許 [myFrontendVM](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 上的傳入網路流量：
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -183,7 +183,7 @@ $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-您可以為後端子網路建立 NSG，以僅允許從 myFrontendVM  傳送內部流量給 myBackendVM  。 下列範例會建立一個名為 *myBackendNSGRule* 的 NSG 規則：
+您可以為後端子網路建立 NSG，以僅允許從 myFrontendVM 傳送內部流量給 myBackendVM。 下列範例會建立一個名為 *myBackendNSGRule* 的 NSG 規則：
 
 ```azurepowershell-interactive
 $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
@@ -198,7 +198,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 新增一個名為 *myFrontendNSG* 的網路安全性群組：
+使用 *New-AzNetworkSecurityGroup* 新增一個名為 [myFrontendNSG](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 的網路安全性群組：
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `
@@ -243,7 +243,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 在本教學課程中，建立後端 VM 的最簡單方式是使用 SQL Server 映像。 本教學課程只會建立具有資料庫伺服器的 VM，而不會提供有關存取該資料庫的資訊。
 
-建立 myBackendNic  ：
+建立 myBackendNic：
 
 ```azurepowershell-interactive
 $backendNic = New-AzNetworkInterface `

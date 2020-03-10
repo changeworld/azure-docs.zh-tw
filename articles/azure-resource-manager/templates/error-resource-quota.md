@@ -3,12 +3,12 @@ title: 配額錯誤
 description: 說明使用 Azure Resource Manager 部署資源時，如何解決資源配額錯誤。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250148"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945654"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解決資源配額的錯誤
 
@@ -16,7 +16,7 @@ ms.locfileid: "78250148"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>徵兆
+## <a name="symptom"></a>徵狀
 
 如果您部署的範本會建立超過 Azure 配額的資源，您會看到類似以下的部署錯誤：
 
@@ -76,7 +76,7 @@ Get-AzVMUsage -Location "South Central US"
 
 它會傳回：
 
-```powershell
+```output
 Name                             Current Value Limit  Unit
 ----                             ------------- -----  ----
 Availability Sets                            0  2000 Count
@@ -84,7 +84,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要要求增加配額，請移至入口網站並提出支援問題。 請在支援問題中，要求提高您要部署的區域的配額。
 
@@ -95,7 +95,7 @@ Virtual Machines                             0 10000 Count
 
 1. 選取 **訂用帳戶** 。
 
-   ![訂閱](./media/error-resource-quota/subscriptions.png)
+   ![訂用帳戶](./media/error-resource-quota/subscriptions.png)
 
 2. 選取需要增加配額的訂用帳戶。
 

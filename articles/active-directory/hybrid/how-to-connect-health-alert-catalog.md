@@ -16,11 +16,11 @@ ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74966b60cc058837ed8b211961e2bb8a9a2e70f8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897237"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375948"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警示目錄 
 
@@ -30,13 +30,13 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 
 ## <a name="general-alerts"></a>一般警示
 
-| 警示名稱 | 說明 | 補救 |
+| 警示名稱 | 描述 | 補救 |
 | --- | --- | ----- |
 | 健全狀況服務的資料並非最新 | 有一或多部伺服器上執行的健康情況代理程式未與健康情況服務連線，因此健康情況服務未收到此伺服器的最新資料。 健康情況服務上次處理的資料已是 2 小時前的資料。 | 請確認健康情況代理程式能夠連出到所需的服務端點。 [閱讀更多資訊](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect (同步) 的警示
 
-| 警示名稱 | 說明 | 補救 |
+| 警示名稱 | 描述 | 補救 |
 | --- | --- | ----- |
 | Azure AD Connect Sync 服務不在執行中 | Microsoft Azure AD 同步 Windows 服務不在執行中或無法啟動。 因此，物件與無法與 Azure Active Directory 同步。 | 啟動 Microsoft Azure Active Directory 同步服務</b> <ol> <li>依序按一下 [啟動]<b></b>、[執行]<b></b>，輸入 <b>Services.msc</b>，然後按一下 [確定]<b></b>。</li> <li>找到 <b>Microsoft Azure AD 同步服務</b>，然後檢查服務是否已啟動。 如果服務未啟動，請在服務上按一下滑鼠右鍵，然後按一下 [啟動]<b></b>。 | 
 | 從 Azure Active Directory 匯入失敗 | 從 Azure Active Directory 連接器匯入的作業失敗。 |  請調查匯入作業的事件記錄檔錯誤，以取得進一步的詳細資料。  |
@@ -51,7 +51,7 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 | 匯出至 Azure Active Directory 已停止。 已達意外刪除臨界值 | 匯出至 Azure Active Directory 的作業失敗。 要刪除的物件數目超過設定的臨界值。 因此未匯出任何物件。 | <li> 標示要刪除的物件數目大於設定的臨界值。 請確定這是想要的結果。</li> <li> 若要繼續匯出，請執行下列步驟： <ol type="a"> <li>執行 Disable-ADSyncExportDeletionThreshold 以停用臨界值</li> <li>啟動 Synchronization Service Manager</li> <li>在 Azure Active Directory 類型的連接器上執行匯出</li> <li>成功匯出物件之後，執行 Enable-ADSyncExportDeletionThreshold 來啟用臨界值</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory 同盟服務的警示
-| 警示名稱 | 說明 | 補救 |
+| 警示名稱 | 描述 | 補救 |
 | --- | --- | ----- |
 |測試驗證要求 (綜合交易) 無法取得權杖 | 從這部伺服器起始的測試驗證要求 (綜合交易) 在 5 次重試後仍無法取得權杖。 這可能是因為暫時性的網路問題、AD DS 網域控制站可用性或未正確設定 AD FS 伺服器所造成。  因此，Federation Service 所處理的驗證要求可能會失敗。 代理程式會使用本機電腦帳戶內容從 Federation Service 取得權杖。 | 請確定已採取下列步驟，驗證伺服器的健全狀況。<ol><li>請驗證伺服器陣列中的這部 AD FS 伺服器或其他 AD FS 伺服器，沒有任何其他未解決的警示。</li><li>以測試使用者身分從 AD FS 登入頁面 (https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx) 登入，藉以驗證此情況不是暫時性失敗。</li><li>請移至<a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> ，然後選擇 [office 365] 索引標籤。執行「Office 365 單一登入測試」。</li><li>從這部伺服器上的命令提示字元執行下列命令，藉以驗證是否能從這部伺服器解析您的 AD FS 服務名稱。 nslookup your_adfs_server_name</li></ol><p>如果無法解析該服務名稱，請參閱常見問題集一節以取得指示，說明如何使用此伺服器的 IP 位址，新增 AD FS 服務的 HOST 檔案項目。 如此即能讓此伺服器上執行的綜合交易模組申請權杖</p> | 
 | Proxy 伺服器無法連線至同盟伺服器 | 這部 AD FS Proxy 伺服器無法連絡 AD FS 服務。 因此，這部伺服器所處理的驗證要求將會失敗。 | 執行下列步驟，以驗證這部伺服器和 AD FS 服務之間的連線。 <ol><li> 確認已正確設定這部伺服器和 AD FS 服務之間的防火牆。 </li><li> 確認 AD FS 服務名稱的 DNS 解析，正確地指向位於公司網路內的 AD FS 服務。 您可以透過在周邊網路服務此伺服器的 DNS 伺服器，或透過 AD FS 服務名稱之 HOSTS 檔案中的項目，來完成此作業。 </li><li> 藉由開啟此伺服器上的瀏覽器並存取同盟中繼資料端點（位於 `https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml`），來驗證網路連線能力。 </li> | 
@@ -78,7 +78,7 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Active Directory Domain Services 的警示
 
-| 警示名稱 | 說明 | 補救 |
+| 警示名稱 | 描述 | 補救 |
 | --- | --- | ----- |
 | 無法透過 LDAP Ping 連線到網域控制站 | 無法透過 LDAP Ping 連線網域控制站。 這可能是因為網路問題或電腦問題所致。 因此 LDAP Ping 將會失敗。 |  <li>檢查相關警示的警示清單，例如：網域控制站未公告。 </li><li>請確認受影響的網域控制站有足夠的磁碟空間。 若磁碟空間不足，DC 將停止自行公告為 LDAP 伺服器。 </li><li> 嘗試尋找 PDC：在受影響的網域控制站上執行 <br> <i>netdom query fsmo </i> </br> 。 <li> 請確認實體網路已正確設定/連接。 </li> |
 | 發生 Active Directory 複寫錯誤 | 此網域控制站發生複寫問題，前往複寫狀態儀表板即可看到。 設定不正確或其他相關問題，都可能引發複寫錯誤。 未處理的複寫錯誤可能會導致資料不一致。 | 請參閱受影響的來源與目的地 DC 之名稱的其他詳細資料。 巡覽至複寫狀態儀表板，並查看受影響 DC 的現有錯誤。 按一下該錯誤即可開啟刀鋒視窗，取得如何修復特定錯誤的更多詳細資料。| 

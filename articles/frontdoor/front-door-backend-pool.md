@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229023"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382090"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door Service 中的後端和後端集區
 本文說明如何將您的應用程式部署對應至 Azure Front 門板服務的相關概念。 它也會說明應用程式後端前後的 Front 門板設定中的不同詞彙。
@@ -67,7 +67,7 @@ Front 前端服務中的後端集區是指接收其應用程式類似流量的�
 ### <a name="health-probes"></a>健康狀態探查
 Front 門板服務會將定期 HTTP/HTTPS 探查要求傳送至您所設定的每個後端。 探查要求會判斷每個後端的鄰近性和健康狀態，以對您的終端使用者要求進行負載平衡。 後端集區的健康情況探查設定會定義我們如何輪詢應用程式後端的健康狀態。 下列設定適用于負載平衡設定：
 
-- **路徑**。 針對後端集區中的所有後端，用於探查要求的 URL。 例如，如果您的其中一個後端是 contoso-westus.azurewebsites.net，且路徑設定為/probe/test.aspx，則 Front 門板服務環境（假設通訊協定設定為 HTTP）會將健康情況探查要求傳送至 HTTP\://contoso-westus.azurewebsites.net/probe/test.aspx。
+- **Path**。 針對後端集區中的所有後端，用於探查要求的 URL。 例如，如果您的其中一個後端是 contoso-westus.azurewebsites.net，且路徑設定為/probe/test.aspx，則 Front 門板服務環境（假設通訊協定設定為 HTTP）會將健康情況探查要求傳送至 HTTP\://contoso-westus.azurewebsites.net/probe/test.aspx。
 
 - **通訊協定**。 定義是否要使用 HTTP 或 HTTPS 通訊協定，將健康情況探查要求從 Front 門板服務傳送至您的後端。
 

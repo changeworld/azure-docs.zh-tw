@@ -7,11 +7,11 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665267"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384511"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>瞭解遷移工具的運作方式
 
@@ -146,7 +146,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | AuthorizationError | 維度為 "ResponseType" = "AuthorizationError" 的交易度量 | |
 | AverageE2ELatency | SuccessE2ELatency | |
 | AverageServerLatency | SuccessServerLatency | |
-| 容量 | BlobCapacity | 請使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
+| Capacity | BlobCapacity | 請使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
 | ClientOtherError | 維度為 "ResponseType" = "ClientOtherError" 的交易度量  | |
 | ClientTimeoutError | 維度為 "ResponseType" = "ClientTimeOutError" 的交易度量 | |
 | ContainerCount | ContainerCount | 請使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
@@ -161,7 +161,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | SASSuccess | 維度為 "ResponseType" = "Success" 和 "Authentication" = "SAS" 的交易度量 | |
 | ServerOtherError | 維度為 "ResponseType" = "ServerOtherError" 的交易度量 | |
 | ServerTimeOutError | 維度為 "ResponseType" = "ServerTimeOutError" 的交易度量  | |
-| 成功 | 維度為 "ResponseType" = "Success" 的交易度量 | |
+| Success | 維度為 "ResponseType" = "Success" 的交易度量 | |
 | TotalBillableRequests| 交易 | |
 | TotalEgress | 輸出 | |
 | TotalIngress | 輸入 | |

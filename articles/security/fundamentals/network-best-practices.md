@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392028"
 ---
 # <a name="azure-best-practices-for-network-security"></a>適用于網路安全性的 Azure 最佳作法
 本文討論 Azure 最佳作法的集合，以加強您的網路安全性。 這些最佳作法衍生自我們的 Azure 網路經驗和客戶的經驗。
@@ -131,7 +131,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 在混合式 IT 案例中，通常會有某種類型的跨單位連線能力。 跨單位連線可讓公司將其內部部署網路連線到 Azure 虛擬網路。 可用的跨單位連線解決方案有兩個︰
 
 * [站對站 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 可靠且完備的技術，但連線是透過網際網路來建立。 頻寬限制為最多 1.25 Gbps。 在某些情況下，站對站 VPN 是理想的選項。
-* **Azure ExpressRoute**。 我們建議您針對跨單位連線使用[ExpressRoute](../../expressroute/expressroute-introduction.md) 。 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Office 365 和 Dynamics 365）的連接。 ExpressRoute 是內部部署位置或 Microsoft Exchange 主機服務提供者之間專用的 WAN 連結。 因為這是一個電信連線，所以您的資料不會透過網際網路傳輸，因此不會暴露在網際網路通訊的潛在風險中。
+* **Azure ExpressRoute**。 我們建議您針對跨單位連線改用 [ExpressRoute](../../expressroute/expressroute-introduction.md)。 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Office 365 和 Dynamics 365）的連接。 ExpressRoute 是內部部署位置或 Microsoft Exchange 主機服務提供者之間專用的 WAN 連結。 因為這是一個電信連線，所以您的資料不會透過網際網路傳輸，因此不會暴露在網際網路通訊的潛在風險中。
 
 ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠性和網路流量可見度。 您必須識別在現有（內部部署）網路中終止 ExpressRoute 的位置。 您可以：
 

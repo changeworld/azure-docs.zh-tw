@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392090"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>建立和安裝適用於原生 Azure 憑證驗證 P2S 組態的 VPN 用戶端組態檔
 
-VPN 用戶端組態檔包含在 ZIP 檔案內。 這些組態檔會提供原生 Windows、Mac IKEv2 VPN 或 Linux 用戶端所需的設定，以透過使用原生 Azure 憑證驗證的點對站連線來連線至 VNet。
+VPN 用戶端組態檔包含在 ZIP 檔案內。 設定檔會提供原生 Windows、Mac IKEv2 VPN 或 Linux 用戶端所需的設定，以透過使用原生 Azure 憑證驗證的點對站連線來連線到虛擬網路。
 
-用戶端組態檔是 VNet 所使用之 VPN 組態特有的檔案。 如果您在產生 VPN 用戶端組態檔後對「點對站 VPN 組態」進行任何變更 (例如 VPN 通訊協定類型或驗證類型)，請務必為使用者裝置產生新的 VPN 用戶端組態檔。 
+用戶端設定檔是虛擬網路的 VPN 設定特有的檔案。 如果您在產生 VPN 用戶端組態檔後對「點對站 VPN 組態」進行任何變更 (例如 VPN 通訊協定類型或驗證類型)，請務必為使用者裝置產生新的 VPN 用戶端組態檔。 
 
 * 如需點對站連線的詳細資訊，請參閱[關於點對站 VPN](point-to-site-about.md)。
 * 如需 OpenVPN 相關指示，請參閱[設定 P2S 的 OpenVPN](vpn-gateway-howto-openvpn.md) 和[設定 OpenVPN 用戶端](vpn-gateway-howto-openvpn-clients.md)。
@@ -41,6 +41,8 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 這些組態檔會提供原生 
 
 1. 在 Azure 入口網站中，瀏覽至您想要連線之虛擬網路的虛擬網路閘道。
 2. 在虛擬網路閘道頁面上，按一下 [點對站組態]。
+
+   ![下載用戶端入口網站](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. 在 [點對站台組態] 頁面頂端，按一下 [下載 VPN 用戶端]。 產生用戶端組態套件需耗費幾分鐘的時間。
 4. 您的瀏覽器指出用戶端組態 zip 檔可用。 它會命名為您閘道的相同名稱。 解壓縮檔案以檢視資料夾。
 
@@ -90,7 +92,7 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 這些組態檔會提供原生 
     >
   
 2. 確認您已安裝用戶端憑證，且該憑證由您進行 P2S 設定時上傳到 Azure 的根憑證簽發。 此用戶端憑證與您在上個步驟中安裝的 VPNServerRoot 不同， 此為必要憑證，驗證時需提供。 如需有關產生憑證的詳細資訊，請參閱[產生憑證](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)。 如需有關如何安裝用戶端憑證的資訊，請參閱[安裝用戶端憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
-3. 開啟 [網路喜好設定] 底下的 [網路] 對話方塊，然後按一下 [+] 建立適用於 Azure VNet P2S 連線的新 VPN 用戶端連線設定檔。
+3. 開啟 [**網路喜好**設定] 底下的 [**網路**] 對話方塊，然後按一下 [ **+** ] 建立新的 VPN 用戶端連線設定檔，以進行與 Azure 虛擬網路的 P2S 連線。
 
    [介面] 值是 [VPN]，[VPN 類型] 值則是 [IKEv2]。 在 [服務名稱] 欄位中指定設定檔名稱，然後按一下 [建立] 以建立 VPN 用戶端連線設定檔。
 
@@ -111,11 +113,11 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 這些組態檔會提供原生 
    ![憑證 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. [選擇身分識別] 會顯示一份憑證清單供您選擇。 選取適當憑證，然後按一下 [繼續]。
 
-   ![識別](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![身分識別](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在 [地區設定識別碼] 欄位中指定憑證名稱 (來自步驟 6)。 在此範例中，名稱是 "ikev2Client.com"。 然後，按一下 [套用] 按鈕以儲存變更。
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
-9. 在 [網路] 對話方塊中按一下 [套用] 以儲存所有變更。 然後，按一下 [連線] 以啟動 Azure VNet 的 P2S 連線。
+9. 在 [網路] 對話方塊中按一下 [套用] 以儲存所有變更。 然後，按一下 **[連線]** 來啟動與 Azure 虛擬網路的 P2S 連線。
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 

@@ -9,29 +9,29 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443157"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380209"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
-本教學課程說明如何使用本機 Web UI 連接主機電腦並從中複製資料。
+本教學課程說明如何使用本機 Web UI 來連線至主機電腦並從中複製資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 連線至資料箱
 > * 將資料複製到資料箱
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
 1. 您已完成[教學課程：設定 Azure 資料箱](data-box-deploy-set-up.md)。
-2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]  。
+2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]。
 3. 您有一部主機電腦，其中包含要複製到資料箱的資料。 您的主機電腦必須符合下列條件：
     - 執行[支援的作業系統](data-box-system-requirements.md)。
     - 連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10-GbE 連線，可以使用 1-GbE 資料連結，但是複製速度將會受到影響。 
@@ -55,11 +55,11 @@ ms.locfileid: "67443157"
 
 如果您使用 Linux 主機電腦，請執行下列步驟設定資料箱，以允許 NFS 用戶端的存取。
 
-1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製]  頁面。 在 [NFS 設定]  下方，按一下 [NFS 用戶端存取]  。 
+1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
     ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]  。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]  。
+2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
     ![設定 NFS 用戶端存取 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "67443157"
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 
 ## <a name="copy-data-to-data-box"></a>將資料複製到資料箱
 
@@ -87,7 +87,7 @@ ms.locfileid: "67443157"
 -  複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。 
 - 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
 - 建議您不要同時使用 SMB 與 NFS，或將相同的資料複製到 Azure 上的相同最終目的地。 在這種情況下，無法判斷最後的結果。
-- **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+- **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 - 如果從 NFS 共用內嵌區分大小寫的目錄和檔案名稱至資料箱上的 NFS： 
     - 在名稱中會保留大小寫。
     - 檔案不區分大小寫。
@@ -148,7 +148,7 @@ ms.locfileid: "67443157"
 在本教學課程中，您已了解 Azure 資料箱的相關主題，像是：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 連線至資料箱
 > * 將資料複製到資料箱
 

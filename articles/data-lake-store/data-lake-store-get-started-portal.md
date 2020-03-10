@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438751"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385681"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ ms.locfileid: "75438751"
 
 瞭解如何使用 Azure 入口網站建立 Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資訊，請參閱[Azure Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前，您必須具備下列項目：
 
@@ -56,7 +56,7 @@ ms.locfileid: "75438751"
 
         如需詳細資訊，請參閱[在 Data Lake Storage Gen1 中加密資料](./data-lake-store-encryption.md)。
 
-4. 按一下頁面底部的 [新增]。 如果您選擇將帳戶釘選到儀表板，您會回到儀表板，並且可以看到 Data Lake Storage Gen1 帳戶的佈建進度。 一旦佈建 Data Lake Storage Gen1 帳戶，帳戶刀鋒視窗就會出現。
+4. 按一下 **[建立]** 。 如果您選擇將帳戶釘選到儀表板，您會回到儀表板，並且可以看到 Data Lake Storage Gen1 帳戶的佈建進度。 一旦佈建 Data Lake Storage Gen1 帳戶，帳戶刀鋒視窗就會出現。
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>指派 Azure Key Vault 的權限
 
@@ -113,11 +113,11 @@ ms.locfileid: "75438751"
 
 ![資料的屬性](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "資料上的屬性")
 
-## <a name="secure-your-data"></a>保護資料
+## <a name="secure-your-data"></a>保護您的資料
 
 您可以在您的 Data Lake Storage Gen1 帳戶中，使用 Azure Active Directory 和存取控制 (ACL) 保護儲存的資料。 如需如何執行此工作的指示，請參閱 [在 Data Lake Storage Gen1 中保護資料](data-lake-store-secure-data.md)。
 
-## <a name="delete-your-account"></a>建立您的帳戶
+## <a name="delete-your-account"></a>刪除您的帳戶
 
 若要刪除 Data Lake Storage Gen1 帳戶，請從 [Data Lake Storage Gen1] 刀鋒視窗按一下 [刪除]。 為了確認此動作，將提示您輸入您要刪除的帳戶名稱。 輸入帳戶的名稱，然後按一下 [刪除]。
 

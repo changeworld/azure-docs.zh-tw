@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443266"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382929"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 實驗室服務中的實驗室帳戶 
 在 Azure 實驗室服務中，實驗室帳戶是適用于受控實驗室類型的容器，例如教室實驗室。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 本文說明如何建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
@@ -33,7 +33,7 @@ ms.locfileid: "77443266"
 3. 在 [**實驗室帳戶**] 頁面上，選取工具列上的 [**新增**] 或頁面上的 [**建立實驗室帳戶**]。 
 
     ![在 [實驗室帳戶] 頁面上選取 [新增]](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. 在 [**建立實驗室帳戶**] 頁面的 [**基本**] 索引標籤上，執行下列動作： 
+4. 在 [建立實驗室帳戶] 頁面的 [基本資訊] 索引標籤上，執行下列動作： 
     1. 針對 [實驗室帳戶名稱] 輸入名稱。 
     2. 選取您要在其中建立實驗室帳戶的 **Azure 訂用帳戶**。
     3. 針對 [資源群組]，選取 [新建]，並為資源群組輸入名稱。

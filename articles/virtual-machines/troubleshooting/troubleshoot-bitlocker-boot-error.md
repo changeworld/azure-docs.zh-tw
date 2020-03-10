@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749678"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382674"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
 
@@ -40,14 +40,14 @@ ms.locfileid: "73749678"
 
 如果 VM 無法找到 BitLocker 復原金鑰 (BEK) 檔案來將已加密的磁碟解密，就可能發生此問題。
 
-## <a name="solution"></a>方案
+## <a name="solution"></a>解決方法
 
 若要解決此問題，請先將 VM 停止並解除配置，再加以重新啟動。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
 
 如果此方法未解決問題，請遵循下列步驟來手動還原 BEK 檔案：
 
 1. 擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2. [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步驟7中執行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令, 必須在復原 VM 中啟用**BitLocker 磁碟機加密**功能。
+2. [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步驟7中執行[manage-bde 命令，](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)必須在復原 VM 中啟用**BitLocker 磁碟機加密**功能。
 
     當您連結至受控磁碟時，可能會收到「包含加密設定，因此無法作為資料磁碟」的錯誤訊息。 在此情況下，請執行下列程式碼以重新試著連結磁碟：
 

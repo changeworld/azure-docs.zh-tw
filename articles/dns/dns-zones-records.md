@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392605"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 區域和記錄的概觀
 
@@ -107,7 +107,7 @@ DNS 記錄中的多個字串，不應與 TXT 記錄集中的多個 TXT 記錄相
 
 ## <a name="tags-and-metadata"></a>標記和中繼資料
 
-### <a name="tags"></a>標籤
+### <a name="tags"></a>Tags
 
 標記是名稱-值組的清單，由 Azure Resource Manager 用來標示資源。  Azure Resource Manager 會使用標記來啟用 Azure 帳單篩選過的檢視，也可讓您設定標記需要的原則。 如需標記的詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -129,7 +129,7 @@ Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 和 
 
 | 頁首 | 行為 |
 | --- | --- |
-| 無 |PUT 一定成功 (沒有 Etag 檢查) |
+| None |PUT 一定成功 (沒有 Etag 檢查) |
 | If-match \<etag > |唯有當資源存在且 Etag 符合時，PUT 才會成功 |
 | If-match * |唯有當資源存在時，PUT 才會成功 |
 | If-none-match * |唯有當資源不存在時，PUT 才會成功 |

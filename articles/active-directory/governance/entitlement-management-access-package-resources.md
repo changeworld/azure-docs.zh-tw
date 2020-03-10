@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174654"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376478"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的資源角色
 
@@ -93,7 +93,7 @@ ms.locfileid: "73174654"
     |  |  |
     | --- | --- |
     | 安全性 | 用來授與資源的存取權。 |
-    | 通路業 | 用來傳送通知給一群人。 |
+    | 散發 | 用來傳送通知給一群人。 |
     | O365 | 未啟用小組的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
     | 小組 | 已啟用小組的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
 
@@ -178,7 +178,7 @@ ms.locfileid: "73174654"
 
 在 [權利管理] 中，Azure AD 會一天多次處理存取套件中指派和資源的大量變更。 因此，如果您進行指派或變更存取套件的資源角色，可能需要24小時的時間才能在 Azure AD 中進行該變更，加上將這些變更傳播到其他 Microsoft Online Services 或已連線 SaaS 應用程式所需的時間量今日. 如果您的變更只會影響幾個物件，則變更在 Azure AD 中可能只需要幾分鐘的時間，之後其他 Azure AD 元件就會偵測到該變更並更新 SaaS 應用程式。 如果您的變更會影響數以千計的物件，變更將會花費較長的時間。 例如，如果您有一個具有2個應用程式和100使用者指派的存取套件，而且您決定將 SharePoint 網站角色加入至存取封裝，則在所有使用者都屬於該 SharePoint 網站角色的一部分之前，可能會有延遲。 您可以透過 Azure AD 的 audit 記錄檔、Azure AD 布建記錄檔和 SharePoint 網站 audit 記錄來監視進度。
 
-當您移除小組成員時，也會從 Office 365 群組中將其移除。 從小組的交談功能移除可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+移除小組成員時，也會從 Office 365 群組中將其移除。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
 ## <a name="next-steps"></a>後續步驟
 

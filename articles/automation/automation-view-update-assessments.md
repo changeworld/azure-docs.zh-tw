@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310079"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373016"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>查看 Azure 更新管理更新評量
 
@@ -26,7 +26,7 @@ ms.locfileid: "76310079"
 
 選取 [缺少的更新] 以檢視機器缺少的更新清單。 會列出每個更新，而且您可以選取更新。 系統會顯示需要更新的機器數目、作業系統詳細資料和連結以取得詳細資訊。 [**記錄搜尋**] 窗格也會顯示更多有關更新的詳細資料。
 
-![遺失更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+![缺少更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
 ## <a name="update-classifications"></a>更新分類
 
@@ -34,7 +34,7 @@ ms.locfileid: "76310079"
 
 ### <a name="windows"></a>Windows
 
-|分類  |說明  |
+|分類  |描述  |
 |---------|---------|
 |重大更新     | 特定問題的更新，負責處理與安全性無關的重大錯誤。        |
 |安全性更新     | 特定產品的安全性相關更新。        |
@@ -47,7 +47,7 @@ ms.locfileid: "76310079"
 
 ### <a name="linux-2"></a>Linux
 
-|分類  |說明  |
+|分類  |描述  |
 |---------|---------|
 |重大更新和安全性更新     | 特定問題或特定產品的安全性相關問題的更新，         |
 |其他更新     | 本質上不重要或不是安全性更新的所有其他更新。        |

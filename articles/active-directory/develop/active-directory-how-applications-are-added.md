@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375659"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -30,7 +30,7 @@ ms.locfileid: "76698811"
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>什麼是應用程式物件，其來自何處？
 
-您可以在 Azure 入口網站中透過[應用程式註冊](https://aka.ms/appregistrations)體驗來管理[應用程式物件](app-objects-and-service-principals.md#application-object)。 應用程式物件會向 Azure AD 描述應用程式，而且您可以將其視為應用程式的定義，其可讓服務了解如何根據其設定對應用程式核發權杖。 應用程式物件只存在於其主目錄中，即使其為在其他目錄中支援服務主體的多租用戶應用程式也是如此。 應用程式物件可能包含下列任何項目 (以及此處未提及的其他資訊)：
+您可以在 Azure 入口網站中透過[應用程式註冊](app-objects-and-service-principals.md#application-object)體驗來管理[應用程式物件](https://aka.ms/appregistrations)。 應用程式物件會向 Azure AD 描述應用程式，而且您可以將其視為應用程式的定義，其可讓服務了解如何根據其設定對應用程式核發權杖。 應用程式物件只存在於其主目錄中，即使其為在其他目錄中支援服務主體的多租用戶應用程式也是如此。 應用程式物件可能包含下列任何項目 (以及此處未提及的其他資訊)：
 
 * 名稱、標誌和發行者
 * 重新導向 URI
@@ -52,7 +52,7 @@ ms.locfileid: "76698811"
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>什麼是服務主體，其來自何處？
 
-您可以在 Azure 入口網站中透過[企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)體驗來管理[服務主體](app-objects-and-service-principals.md#service-principal-object)。 服務主體可控管連線至 Azure AD 的應用程式，您可以將其視為目錄中應用程式的執行個體。 任何給定的應用程式最多可以有一個應用程式物件 (註冊於「主」目錄)，以及一或多個服務主體物件 (代表應用程式作用所在每個目錄中應用程式的執行個體)。 
+您可以在 Azure 入口網站中透過[企業應用程式](app-objects-and-service-principals.md#service-principal-object)體驗來管理[服務主體](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)。 服務主體可控管連線至 Azure AD 的應用程式，您可以將其視為目錄中應用程式的執行個體。 任何給定的應用程式最多可以有一個應用程式物件 (註冊於「主」目錄)，以及一或多個服務主體物件 (代表應用程式作用所在每個目錄中應用程式的執行個體)。 
 
 服務主體可包含：
 
@@ -77,7 +77,7 @@ ms.locfileid: "76698811"
 * 當系統管理員從應用程式庫新增應用程式時 (這也會建立基礎應用程式物件)
 * 新增應用程式來使用 [Azure AD 應用程式 Proxy](/azure/active-directory/manage-apps/application-proxy)
 * 連接應用程式以便啟用 SAML 單一登入或密碼單一登入 (SSO)
-* 以程式設計方式透過 Azure AD Graph API 或 PowerShell 來建立
+* 以程式設計方式透過 Microsoft Graph API 或 PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>應用程式物件和服務主體彼此之間如何建立關聯性？
 
@@ -100,13 +100,13 @@ ms.locfileid: "76698811"
 
 ### <a name="notes-and-exceptions"></a>附註及例外狀況
 
-* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 Azure AD Graph API 需要應用程式物件才能建立服務主體。
+* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 Microsoft Graph API 需要應用程式物件，才能建立服務主體。
 * 並非所有上述資訊目前都處於以程式設計方式公開的狀態。 以下功能僅適用於 UI：
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
-* 如需服務主體與應用程式物件的詳細資訊，請參閱 Azure AD Graph REST API 參考文件：
-  * [應用程式](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Service Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* 如需有關服務主體和應用程式物件的詳細資訊，請參閱 Microsoft Graph API 參考檔：
+  * [應用程式](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Service Principal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>應用程式為何要與 Azure AD 整合？
 

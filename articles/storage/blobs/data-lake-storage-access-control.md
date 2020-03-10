@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381944"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
@@ -274,7 +274,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不會。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -286,7 +286,7 @@ def set_default_acls_for_new_child(parent, child):
 
 - 呼叫端具有「超級使用者」權限，
 
-或
+Or
 
 - 父目錄必須具有 [寫入 + 執行] 權限。
 - 要刪除的目錄及其中的每個目錄，都需要 [讀取 + 寫入 + 執行] 權限。
@@ -302,7 +302,7 @@ def set_default_acls_for_new_child(parent, child):
 
 擁有群組是從新檔案或目錄建立所在父目錄的擁有群組複製而來的。
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>我是檔案的擁有使用者，但沒有我需要的 RWX 權限。 我該怎麼做？
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>我是檔案的擁有使用者，但沒有我需要的 RWX 權限。 該怎麼辦？
 
 擁有使用者可以變更檔案的權限，以取得本身所需的任何 RWX 權限。
 
@@ -340,6 +340,6 @@ ACL 則不會繼承。 但預設 ACL 可以用來為父目錄下建立的子目�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen2 概觀](../blobs/data-lake-storage-introduction.md)

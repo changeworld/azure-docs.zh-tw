@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280905"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393900"
 ---
 # <a name="machine-learned-features"></a>機器學習的功能 
 
@@ -86,7 +86,7 @@ ms.locfileid: "74280905"
 
 例如，如果偵測到街道位址實體（A），則尋找街道位址（A）會為出貨位址實體（B）的預測增加權數。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 了解[最佳做法](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>後續步驟

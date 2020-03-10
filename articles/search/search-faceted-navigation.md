@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190648"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390343"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中執行多面向導覽
 
@@ -395,7 +395,7 @@ Azure 認知搜尋作業入口網站示範包含本文所參考的範例。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>進一步了解
+## <a name="learn-more"></a>深入了解
 觀看[Azure 認知搜尋深入探討](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25 時有示範如何實作多面向。
 
 如需多面向導覽設計原則的深入見解，推薦您下列連結：

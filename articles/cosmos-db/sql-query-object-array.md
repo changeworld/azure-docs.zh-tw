@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386980"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用陣列和物件
 
@@ -26,7 +26,7 @@ Azure Cosmos DB SQL API 的主要功能是陣列和物件建立。
     FROM Families f
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -61,7 +61,7 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
     FROM Families.children
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -97,7 +97,7 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
     FROM c IN Families.children
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -130,7 +130,7 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
     WHERE c.grade = 8
 ```
 
-結果為：
+結果如下：
 
 ```json
     [{
@@ -145,7 +145,7 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
     FROM child IN Families.children
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -157,6 +157,6 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [聯結](sql-query-join.md)

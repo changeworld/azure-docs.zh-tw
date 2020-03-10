@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385379"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 設定應用程式的 SSL
 
-安全通訊端層 (SSL) 加密是保護網際網路上傳送的資料最常用的方法。 此常見工作討論如何指定 Web 角色的 HTTPS 端點，以及如何上傳 SSL 憑證來保護應用程式。
+安全通訊端層 (SSL) 加密是最常用來保護在網際網路上傳送之資料的方法。 此常見工作會討論如何為 Web 角色指定 HTTPS 端點，以及如何上傳 SSL 憑證來保護應用程式的安全。
 
 > [!NOTE]
 > 此工作的程序適用於 Azure 雲端服務，若為應用程式服務，請參閱 [此處](../app-service/configure-ssl-bindings.md)。
@@ -76,7 +76,7 @@ ms.locfileid: "75386760"
 
    權限 (`permissionLevel` 屬性) 可設為下列其中一個值：
 
-   | 權限值 | 說明 |
+   | 權限值 | 描述 |
    | --- | --- |
    | limitedOrElevated |**(預設值)** 所有角色處理序都可以存取私密金鑰。 |
    | elevated |只有較高權限的處理序可以存取私密金鑰。 |

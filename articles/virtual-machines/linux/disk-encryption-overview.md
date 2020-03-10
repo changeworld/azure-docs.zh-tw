@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396845"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密 
 
@@ -37,7 +37,7 @@ Linux Vm 有[各種大小的](sizes.md)提供。 在[基本、A 系列 vm](https
 
 | 虛擬機器 | 最小記憶體需求 |
 |--|--|
-| 僅加密資料磁片區時的 Linux Vm| 2GB |
+| 僅加密資料磁片區時的 Linux Vm| 2 GB |
 | 當加密資料和作業系統磁片區時，以及根（/）檔案系統使用量為4GB 或更少的位置時，Linux Vm | 8 GB |
 | 當加密資料和作業系統磁片區，以及根（/）檔案系統使用量大於4GB 時，Linux Vm | 根檔案系統使用方式 * 2。 例如，16 GB 的根檔案系統使用量至少需要32GB 的 RAM |
 
@@ -115,7 +115,7 @@ Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁片加密金鑰和
 
 | 詞彙 | 定義 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是一個密碼編譯金鑰管理服務，以「美國聯邦資訊處理標準」(FIPS) 已驗證的硬體安全性模組為基礎。 這些標準可協助您保護密碼編譯金鑰和敏感性祕密。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |
+| Azure 金鑰保存庫 | Key Vault 是一個密碼編譯金鑰管理服務，以「美國聯邦資訊處理標準」(FIPS) 已驗證的硬體安全性模組為基礎。 這些標準可協助您保護密碼編譯金鑰和敏感性祕密。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 已針對從命令列管理 Azure 資源進行最佳化。|
 | DM-Crypt |[DM Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt)是以 linux 為基礎的透明磁片加密子系統，用來在 linux vm 上啟用磁片加密。 |
 | 金鑰加密金鑰（KEK） | 您可以用來保護或包裝秘密的非對稱金鑰（RSA 2048）。 您可以提供硬體安全性模組 (HSM) 保護的金鑰或軟體保護的金鑰。 如需詳細資訊，請參閱[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)檔，以及[建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。 |

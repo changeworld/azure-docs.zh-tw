@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe38b434c4e54b375b22d76c573d3bbe88b0e16
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be6a6e9231b13c47d1421543464c720f6283b5f9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376172"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 傳遞驗證：快速入門
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
    - 如果您的防火牆或 Proxy 允許建立 DNS 允許清單，便可將對 **\*.msappproxy.net** 與 **\*.servicebus.windows.net** 的連線加入允許清單。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 您的驗證代理程式必須存取 **login.windows.net** 與 **login.microsoftonline.com**才能進行初始註冊， 因此也請針對這些 URL 開啟您的防火牆。
-   - 針對憑證驗證，請解除封鎖下列 Url： **mscrl.microsoft.com:80**、 **crl.microsoft.com:80**、 **ocsp.msocsp.com:80**和**www\.microsoft.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
+   - 為了驗證憑證，請解除封鎖以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
 
 ## <a name="step-2-enable-the-feature"></a>步驟 2︰啟用功能
 
@@ -131,7 +131,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 ![Azure Active Directory 管理中心：下載代理程式窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 請在安裝「驗證代理程式」_之前_，先檢閱並接受「驗證代理程式」的[服務條款](https://aka.ms/authagenteula) \(英文\)。
+>您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 _在安裝之前_，請先審查並接受驗證代理程式的[服務條款](https://aka.ms/authagenteula)。
 
 部署獨立「驗證代理程式」的方式有兩種：
 
@@ -148,7 +148,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
 3. 移至 **C:\Program Files\Microsoft Azure AD Connect 驗證代理程式**，然後使用您建立的 `$cred` 物件來執行下列指令碼：
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
 >如果在虛擬機器上安裝驗證代理程式，您就無法複製虛擬機器來設定另一個驗證代理程式。 不**支援**這個方法。
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法取得的不良執行者。 藉由在內部部署 Active Directory 的 Azure AD 和（或）適當的鎖定設定中設定智慧型鎖定設定，攻擊可以先篩選掉，然後才會進入 Active Directory。 請[閱讀本文](../authentication/howto-password-smart-lockout.md)，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
 
 ## <a name="next-steps"></a>後續步驟
-- [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\)：從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
+- [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：了解如何在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解傳遞驗證支援的情節和不支援的情節。
 - [技術深入探討](how-to-connect-pta-how-it-works.md)：了解傳遞驗證功能的運作方式。

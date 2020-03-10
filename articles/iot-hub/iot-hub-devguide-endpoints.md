@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382199"
 ---
 # <a name="reference---iot-hub-endpoints"></a>參考 - IoT 中樞端點
 
@@ -84,10 +84,10 @@ IoT 中樞目前支援下列 Azure 服務做為額外的端點︰
 
 您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的健全狀況狀態。 我們建議使用與路由訊息延遲相關的[IoT 中樞計量](iot-hub-metrics.md)，在端點健康狀態為 [無作用] 或 [狀況不良] 時識別和偵測錯誤，因為當端點處於其中一種狀態時，我們預期會有更高的延遲。
 
-|健康情況狀態|說明|
+|健康情況狀態|描述|
 |---|---|
 |healthy|端點會如預期般接受訊息。|
-|Isapi|端點不會如預期般接受訊息，IoT 中樞會重試將資料傳送到此端點。 當 IoT 中樞已建立最終一致的健全狀況狀態時，狀態不良的端點就會更新為狀況良好。|
+|isapi|端點不會如預期般接受訊息，IoT 中樞會重試將資料傳送到此端點。 當 IoT 中樞已建立最終一致的健全狀況狀態時，狀態不良的端點就會更新為狀況良好。|
 |未知|IoT 中樞尚未與端點建立連接。 未將任何訊息傳遞至此端點或從中拒絕。|
 |損|在 IoT 中樞重試傳送 retrial 期間的訊息之後，端點不接受訊息。|
 

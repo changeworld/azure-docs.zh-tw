@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247238"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394757"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自訂媒體編碼器標準預設  
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文章說明如何透過使用自訂預設的媒體編碼器標準 (MES) 執行進階編碼。 本文章使用 .NET 建立編碼工作與執行此工作的作業。  
 
 本文章說明如何採取 [H264 多重位元速率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 預設值來自訂預設，並減少圖層數目。 [自訂媒體編碼器標準預設](media-services-advanced-encoding-with-mes.md)文章示範可用於執行進階編碼工作的自訂預設。
 
 > [!NOTE]
-> 自訂本文中所述的預設設定不能用在[媒體服務 V3](https://docs.microsoft.com/azure/media-services/latest/)轉換或 CLI 命令。 請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)如需詳細資訊。
+> 本文中所述的自訂預設值無法用於[媒體服務 V3](https://docs.microsoft.com/azure/media-services/latest/)轉換或 CLI 命令。 如需詳細資訊，請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)。
 
 ## <a id="customizing_presets"></a> 自訂 MES 預設值
 
@@ -266,7 +266,7 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>另請參閱
 
-- [如何使用 CLI，使用自訂的轉換進行編碼](../latest/custom-preset-cli-howto.md)
+- [如何使用 CLI 以自訂轉換進行編碼](../latest/custom-preset-cli-howto.md)
 - [使用媒體服務 v3 編碼](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

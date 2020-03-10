@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278836"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381884"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 裝置管理員服務來管理磁碟區 (Update 3 或更新版本)
 
@@ -112,7 +112,7 @@ StorSimple 磁碟區可以是：
       
        如果您在 8100 裝置上佈建 8.5 TB (允許的大小上限) 且固定在本機的磁碟區，則您會用盡裝置上所有可用的本機空間。 從那時起，您就無法建立任何分層磁碟區，因為裝置上已沒有任何本機空間，可用來裝載分層磁碟區的工作集。 現有的分層磁碟區也會影響可用的空間。 例如，如果您的 8100 裝置已經有大約 106 TB 的分層磁碟區，則固定在本機的磁碟區僅只有 4 TB 的可用空間。
 
-    6. 在 [已連線的主機] 欄位中，按一下箭號。 在 [已連線的主機] 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]，並提供 Windows 主機的 [iSCSI 限定名稱]\(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下頁面底部的 [新增]。 使用指定的設定來建立磁碟區。
+    6. 在 [已連線的主機] 欄位中，按一下箭號。 在 [已連線的主機] 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]，並提供 Windows 主機的 [iSCSI 限定名稱]\(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下 **[建立]** 。 使用指定的設定來建立磁碟區。
 
         ![按一下 [建立專案]。](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 

@@ -1,16 +1,16 @@
 ---
-title: 使用系統健康狀態報表進行疑難排解
+title: 使用系統健康情況報表進行疑難排解
 description: 描述針對 Azure Service Fabric 元件及其使用量所傳送的健康狀態報告，以便對叢集或應用程式問題進行疑難排解
 author: oanapl
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370370"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364952"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系統健康狀態報告進行疑難排解
 Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系統健康情況報告。 [健康狀態資料存放區](service-fabric-health-introduction.md#health-store) 會根據系統報告來建立和刪除實體。 它也會將這些實體組織為階層以擷取實體的互動。
@@ -139,7 +139,7 @@ HealthEvents          :
 ## <a name="application-system-health-reports"></a>應用程式系統健康狀態報告
 System.CM(代表叢集管理員服務) 是管理應用程式相關資訊的授權單位。
 
-### <a name="state"></a>狀態
+### <a name="state"></a>State
 已建立或更新應用程式時，System.CM 會回報為 OK。 刪除應用程式時，它會通知健康狀態資料存放區，以便從存放區將它移除。
 
 * **SourceId**：System.CM
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>服務系統健康狀態報告
 System.FM(代表容錯移轉管理員服務) 是管理服務相關資訊的授權單位。
 
-### <a name="state"></a>狀態
+### <a name="state"></a>State
 已建立服務時，System.FM 會回報為 OK。 已刪除服務時，它會從健康狀態資料存放區刪除實體。
 
 * **SourceId**：System.FM
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>分割區系統健康狀態報告
 System.FM(代表容錯移轉管理員服務) 是管理服務分割區相關資訊的授權單位。
 
-### <a name="state"></a>狀態
+### <a name="state"></a>State
 已建立分割區且其狀況良好時，System.FM 會回報為 OK。 刪除分割區時，它會從健康狀態資料存放區刪除實體。
 
 如果分割區低於最小複本計數，它會回報錯誤。 如果分割區高於最小複本計數，但低於目標複本計數，則會回報警告。 如果分割區處於仲裁遺失狀態，System.FM 會回報錯誤。
@@ -391,7 +391,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>複本系統健康狀態報告
 **System.RA**(代表重新設定代理程式元件) 是複本狀態的授權單位。
 
-### <a name="state"></a>狀態
+### <a name="state"></a>State
 System.RA 會在複本建立後回報 OK。
 
 * **SourceId**：System.RA

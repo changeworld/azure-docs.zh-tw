@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396058"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 
@@ -24,7 +24,7 @@ ms.locfileid: "75453811"
 * 您可以授與後端應用程式，以存取您的佈建服務的不同權限。
 * 它用來確認權限的驗證程序和權杖。
 
-### <a name="when-to-use"></a>When to use
+### <a name="when-to-use"></a>使用時機
 
 您必須具有適當權限才能存取任何佈建服務端點。 例如，後端應用程式必須包含權杖，其中包含安全性認證，以及傳送到服務的每個訊息。
 
@@ -75,7 +75,7 @@ SharedAccessSignature sr =
 
 以下是預期的值：
 
-| 值 | 說明 |
+| 值 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |

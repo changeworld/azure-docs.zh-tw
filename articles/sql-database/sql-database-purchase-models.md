@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192382"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945735"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 購買模型之間做選擇
 
@@ -86,6 +86,11 @@ VCore 為基礎的購買模型可讓您獨立選擇計算和儲存體資源、�
 - 標準層中的每個 100 Dtu 在一般用途服務層級中至少需要1個 vCore。
 - 進階層中的每個 125 Dtu 在業務關鍵服務層中至少需要1個 vCore。
 
+> [!NOTE]
+> VCore 調整大小指導方針的 DTU 是近似的，並提供以協助進行目標資料庫服務目標的初始估計。 目標資料庫的最佳設定與工作負載相關。 
+> 
+> 達到最佳的價格/效能比率可能需要利用 vCore 模型的彈性來調整虛擬核心數目、[硬體世代](sql-database-service-tiers-vcore.md#hardware-generations)、[服務](sql-database-service-tiers-vcore.md#service-tiers)和[計算](sql-database-service-tiers-vcore.md#compute-tiers)層，以及微調其他資料庫設定參數，例如平行處理原則[的最大程度](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
+
 ## <a name="dtu-based-purchasing-model"></a>以 DTU 為基礎的購買模型
 
 資料庫交易單位（DTU）代表 CPU、記憶體、讀取和寫入的混合量值。 以 DTU 為基礎的購買模型會提供一組預先設定好的計算資源組合和所包含的儲存體，以期達成不同的應用程式效能等級。 如果您偏好預先設定的配套和每月固定款項的簡單性，以 DTU 為基礎的模型可能更適合您的需求。
@@ -102,7 +107,7 @@ VCore 為基礎的購買模型可讓您獨立選擇計算和儲存體資源、�
 
 ![週框方塊](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL 資料庫所配置的相對資源。 例如，
+Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL 資料庫所配置的相對資源。 例如：
 
 - 藉由增加資料庫的計算大小來使 Dtu 加倍，等於讓該資料庫可用的資源集合加倍。
 - 具有 1750 Dtu 的高階服務層級 P11 資料庫，比具有5個 Dtu 的基本服務層資料庫，提供350x 更多 DTU 計算能力。  
@@ -161,7 +166,7 @@ Dtu 最適合用於瞭解針對不同計算大小和服務層級的 Azure SQL �
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>我是否需要讓應用程式離線，才能從以 DTU 為基礎的服務層級轉換成以 vCore 為基礎的服務層級？
 
-No。 您不需要讓應用程式離線。 新的服務層級提供簡單的線上轉換方法，類似于將資料庫從標準升級至高階服務層的現有程式，還有另一種方式。 您可以使用 [Azure 入口網站]、[PowerShell]、[Azure CLI]、[T-sql] 或 REST API 來開始這項轉換。 請參閱[管理單一資料庫](sql-database-single-database-scale.md)和[管理彈性集區](sql-database-elastic-pool.md)。
+否。 您不需要讓應用程式離線。 新的服務層級提供簡單的線上轉換方法，類似于將資料庫從標準升級至高階服務層的現有程式，還有另一種方式。 您可以使用 [Azure 入口網站]、[PowerShell]、[Azure CLI]、[T-sql] 或 REST API 來開始這項轉換。 請參閱[管理單一資料庫](sql-database-single-database-scale.md)和[管理彈性集區](sql-database-elastic-pool.md)。
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>是否可以將資料庫從 vCore 為基礎的購買模型中的服務層級，轉換為以 DTU 為基礎的購買模型中的服務層級？
 

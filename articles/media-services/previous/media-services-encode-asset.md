@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392929"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的總覽 
 
@@ -37,7 +37,7 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 媒體服務支援本文中所描述的下列隨選編碼器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [媒體編碼器高階工作流程](media-services-encode-asset.md#media-encoder-premium-workflow)
+* [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 本文概略敘述隨選媒體編碼器，並提供文章連結以提供更詳細資訊。 本主題也提供各種編碼器的比較。
 
@@ -68,7 +68,7 @@ Media Encoder Standard 使用 [這裡](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>建立疊加層
 如需相關資訊，請參閱 [如何使用媒體編碼器標準建立覆疊](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 [媒體服務部落格](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>媒體編碼器高階工作流程

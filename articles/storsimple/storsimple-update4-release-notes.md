@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698648"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394567"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊說明 StorSimple 8000 系列 Update 4 的新功能，並識別未決的重要問題。 當中也包含此版本中隨附之 StorSimple 軟體更新的清單。 
 
@@ -73,7 +73,7 @@ Update 4 包含以下重要的改良功能和錯誤修正。
 | 3 |支援封裝 |在舊版中，支援套件方面有問題，造成 System.OutOfMemory 例外狀況或其他錯誤，導致建立支套件失敗。 此版本已經修正這些錯誤。 |是 |是 |
 | 4 |監視 |在舊版中，本機固定磁碟區的監視圖表有問題，顯示的耗用量是以 EB 為單位。 此版本已經解決這個錯誤。 |是 |是 |
 | 5 |移轉 |在舊版中，從 5000-7000 系列移轉至 8000 系列裝置的可靠性有幾個問題。 此版本已經解決這些問題。 |是 |是 |
-| 6 |Update |在舊版中，如果發生更新失敗，控制器會進入復原模式，造成使用者無法繼續更新，並且需要連絡 Microsoft 支援服務。 <br> 這個行為在此版本中已變更。 如果使用者在兩個控制器執行相同版本 (Update 4) 之後發生更新失敗，控制器不會進入復原模式。 如果使用者遇到此失敗，我們建議他們先稍候一陣子，再重試更新。 重試應該能成功。 如果重試失敗，他們便應該連絡 Microsoft 支援服務。 |是 |是 |
+| 6 |更新 |在舊版中，如果發生更新失敗，控制器會進入復原模式，造成使用者無法繼續更新，並且需要連絡 Microsoft 支援服務。 <br> 這個行為在此版本中已變更。 如果使用者在兩個控制器執行相同版本 (Update 4) 之後發生更新失敗，控制器不會進入復原模式。 如果使用者遇到此失敗，我們建議他們先稍候一陣子，再重試更新。 重試應該能成功。 如果重試失敗，他們便應該連絡 Microsoft 支援服務。 |是 |是 |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Update 4 中舊版的已知問題

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662343"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385324"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure 監視器中的自訂計量
 
@@ -152,17 +152,21 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 在將自訂計量發出之前，並不需要在 Azure 監視器中預先定義。 發佈的每個計量資料點都包含命名空間、名稱與維度資訊。 所以首次將自訂計量發出至 Azure 監視器時，就會自動建立計量定義。 您隨後可以在會透過計量定義發出計量的任何資源上，探索此計量定義。
 
 > [!NOTE]  
-> Azure 監視器尚不支援定義自訂計量的「單位」。
+> Azure 監視器尚不支援定義自訂計量的**單位**。
 
 ## <a name="using-custom-metrics"></a>使用自訂計量
 將自訂計量提交至 Azure 監視器之後，您就可以透過 Azure 入口網站進行瀏覽，以及透過 Azure 監視器 REST API 進行查詢。 您也可以對其建立警示，讓您在符合特定條件時收到通知。
+
+> [!NOTE]
+> 您必須是「讀取者」或「參與者」角色，才能查看自訂計量。
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>透過 Azure 入口網站瀏覽自訂計量
-1.  移至 [Azure 入口網站](https://portal.azure.com)。
-2.  選取 [監視] 窗格。
-3.  選取 [計量]。
-4.  選取您已對其發出自訂計量的資源。
-5.  選取自訂計量的計量命名空間。
-6.  選取自訂計量。
+1.    移至 [Azure 入口網站](https://portal.azure.com)。
+2.    選取 [監視] 窗格。
+3.    選取 [計量]。
+4.    選取您已對其發出自訂計量的資源。
+5.    選取自訂計量的計量命名空間。
+6.    選取自訂計量。
 
 ## <a name="supported-regions"></a>支援區域
 在公開預覽期間，發佈自訂計量的功能只能在 Azure 區域的子集中使用。 此限制表示只能針對其中一個支援區域的資源發佈計量。 下表列出支援自訂計量的 Azure 區域集合。 其中也會列出這些區域中資源計量應發佈至的對應端點：

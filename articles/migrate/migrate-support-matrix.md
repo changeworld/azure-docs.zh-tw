@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
 ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361832"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
@@ -52,7 +52,7 @@ Azure Migrate 伺服器移轉 | NA | 遷移[VMware vm](tutorial-migrate-vmware.m
 
 **支援** | **詳細資料**
 --- | ---
-訂閱 | 您可以在訂用帳戶中有多個 Azure Migrate 專案。
+訂用帳戶 | 您可以在訂用帳戶中有多個 Azure Migrate 專案。
 Azure 權限 | 您需要訂用帳戶中的「參與者」或「擁有者」許可權，才能建立 Azure Migrate 專案。
 VMware VM  | 在單一專案中評估最多35000個 VMware Vm。
 Hyper-V VM | 在單一專案中評估最多35000個 Hyper-v Vm。
@@ -75,17 +75,17 @@ Hyper-V VM | 在單一專案中評估最多35000個 Hyper-v Vm。
 
 **地理位置** | **中繼資料儲存位置**
 --- | ---
-Azure 政府機構 | US Gov 維吉尼亞州
+Azure Government | US Gov 維吉尼亞州
 亞太地區 | 東亞或東南亞
-澳洲 | 澳大利亞東部或澳大利亞東南部
+澳大利亞 | 澳大利亞東部或澳大利亞東南部
 巴西 | 巴西南部
-加拿大 | 加拿大中部或加拿大東部
+Canada | 加拿大中部或加拿大東部
 歐洲 | 北歐或西歐
 法國 | 法國中部
 印度 | 印度中部或印度南部
 日本 |  日本東部或日本西部
 南韓 | 韓國中部或南韓南部
-英國 | 英國南部或英國西部
+United Kingdom | 英國南部或英國西部
 美國 | 美國中部或美國西部2
 
 
@@ -108,7 +108,7 @@ Azure 政府機構 | US Gov 維吉尼亞州
 
 Azure Migrate 服務有兩個版本：
 
-- **目前版本**：使用此版本，您可以建立新的 Azure Migrate 專案、探索內部部署評估，以及協調評量與遷移。 [深入了解](whats-new.md#release-version-july-2019)。
+- **目前版本**：使用此版本，您可以建立新的 Azure Migrate 專案、探索內部部署評估，以及協調評量與遷移。 [詳細資訊](whats-new.md#release-version-july-2019)。
 - **先前版本**：針對使用舊版 Azure Migrate 的客戶（僅支援內部部署 VMware vm 的評估），您現在應該使用目前的版本。 在先前的版本中，您無法建立新的 Azure Migrate 專案或執行新的探索。
 
 ## <a name="next-steps"></a>後續步驟

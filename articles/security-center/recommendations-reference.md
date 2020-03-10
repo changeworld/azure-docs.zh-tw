@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
 ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604705"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380729"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議-參考指南
 
@@ -53,7 +53,7 @@ ms.locfileid: "77604705"
 |----|----|----|----|----|
 |**以角色為基礎的存取控制應該用來限制 Kubernetes 服務叢集的存取權**|若要提供使用者可執行之動作的細微篩選，請使用角色型存取控制（RBAC）來管理 Kubernetes 服務叢集中的許可權，並設定相關的授權原則。 如需詳細資訊，請參閱[Azure 角色型存取控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>（相關原則： [預覽]：以角色為基礎的存取控制（RBAC）應在 Kubernetes 服務上使用）|中|N|計算資源（容器）|
 |**Kubernetes 服務應升級為最新的 Kubernetes 版本**|將 Azure Kubernetes Service 叢集升級為最新的 Kubernetes 版本，以從最新的弱點修補程式中獲益。 如需有關特定 Kubernetes 弱點的詳細資訊，請參閱[Kubernetes cve](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>（相關原則： [預覽]： Kubernetes 服務應該升級為不容易受攻擊的 Kubernetes 版本）|高|N|計算資源（容器）|
-|**您應該定義 Pod 安全性原則，藉由移除不必要的應用程式許可權來減少攻擊向量（預覽）**|定義 Pod 安全性原則，藉由移除不必要的應用程式許可權來減少攻擊向量。 建議您設定 pod 安全性原則，讓 pod 只能存取允許其存取的資源。<br>（相關原則： [預覽]： Pod 安全性原則應定義于 Kubernetes 服務上）|中|N|計算資源（容器）|
+|**您應該定義 Pod 安全性原則，藉由移除不必要的應用程式許可權來減少攻擊向量（預覽）**|移除不必要的應用程式權限來定義 Pod 安全性原則，以減少攻擊媒介。 建議您設定 pod 安全性原則，讓 pod 只能存取允許其存取的資源。<br>（相關原則： [預覽]： Pod 安全性原則應定義于 Kubernetes 服務上）|中|N|計算資源（容器）|
 |**Kubernetes 服務管理 API 的存取權應該僅授權特定的 IP 範圍來限制**|僅將 API 存取權授與特定範圍中的 IP 位址，以限制 Kubernetes 服務管理 API 的存取權。 建議您設定授權的 IP 範圍，讓只有來自允許的網路的應用程式可以存取叢集。<br>（相關原則： [預覽]：已授權的 IP 範圍應定義于 Kubernetes 服務上）|高|N|計算資源（容器）|
 |**Azure Container Registry 映射中的弱點應予以補救（由 Qualys 提供技術支援）**|容器映射弱點評估會掃描您的登錄是否有每個已推送容器映射的安全性弱點，並公開每個映射的詳細結果。 解決這些弱點可以大幅改善容器的安全性狀態，並保護它們免于遭受攻擊。<br>（沒有相關的原則）|高|N|計算資源（容器）|
 ||||||

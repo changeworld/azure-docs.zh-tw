@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132648"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945885"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 應用程式上使用 Microsoft Authenticator 或 Intune 公司入口網站
 
@@ -75,12 +75,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     }
     
     else if (!AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url))
-    {               
-         return false;                
+    {                
+         return false;                  
     }
     
     return true;     
-}           
+}            
 ```
 
 每次啟動應用程式時，就會叫用這個方法。 它是用來處理來自訊息代理程式之回應的機會，並完成 MSAL.NET 所啟動的驗證流程。
@@ -96,20 +96,20 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 然後將參考傳入您將使用的物件視窗。
 
     在 `App.cs` 中：
-    
+
     ```csharp
        public static object RootViewController { get; set; }
     ```
-    
+
     在 `AppDelegate.cs` 中：
-    
+
     ```csharp
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    
+
     在 `AcquireToken` 呼叫中：
-    
+
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
@@ -143,11 +143,12 @@ MSAL.NET 使用 Url 叫用訊息代理程式，然後將 broker 回應傳回給�
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步驟6：將 broker 識別碼新增至 LSApplicationQueriesSchemes 區段
+
 MSAL 會使用 `–canOpenURL:` 來檢查訊息代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。 
 
 將 `msauthv2` 新增至 `Info.plist` 檔案的 `LSApplicationQueriesSchemes` 區段，如下列範例所示：
 
-```XML 
+```XML
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -156,16 +157,19 @@ MSAL 會使用 `–canOpenURL:` 來檢查訊息代理程式是否已安裝在裝
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>步驟7：在應用程式入口網站中註冊重新導向 URI
+
 當您使用訊息代理程式時，重新導向 URI 會有額外的需求。 重新導向 URI 的格式_必須_如下：
+
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
 
-以下是範例： 
+以下是範例：
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
+
 請注意，重新導向 URI 會符合您在 `Info.plist` 檔案中包含的 `CFBundleURLSchemes` 名稱。
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>步驟8：確認重新導向 URI 已向您的應用程式註冊
@@ -198,9 +202,108 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ## <a name="brokered-authentication-for-android"></a>適用于 Android 的代理驗證
 
-MSAL.NET 僅支援 Xamarin iOS 平臺。 它尚不支援 Xamarin. Android 平臺的代理程式。
+### <a name="step-1-enable-broker-support"></a>步驟1：啟用訊息代理程式支援
 
-MSAL Android 原生程式庫已支援代理驗證。 如需詳細資訊，請參閱[Android 中的代理驗證](brokered-auth.md)。
+代理程式支援是以每個 PublicClientApplication 為基礎來啟用。 此功能預設為停用。 透過 `PublicClientApplicationBuilder`建立 `IPublicClientApplication` 時，請使用 `WithBroker()` 參數（預設設定為 true）。
+
+```CSharp
+var app = PublicClientApplicationBuilder
+                .Create(ClientId)
+                .WithBroker()
+                .WithRedirectUri(redirectUriOnAndroid) //(see step 4 below)
+                .Build();
+```
+
+### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>步驟2：更新 AppDelegate 以處理回呼
+
+當 MSAL.NET 呼叫 broker 時，訊息代理程式會接著使用 OnActivityResult （）方法回呼您的應用程式。 由於 MSAL 會等待來自訊息代理程式的回應，因此您的應用程式需要將結果路由傳送至 MSAL.NET。
+藉由覆寫 OnActivityResult （）方法（如下所示），將結果路由傳送至 `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)`，即可達成此目的
+
+```CSharp
+protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+{
+   base.OnActivityResult(requestCode, resultCode, data);
+   AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+}
+```
+
+每次啟動 broker 應用程式時都會叫用這個方法，並且用來做為處理 broker 回應的機會，並完成 MSAL.NET 所啟動的驗證程式。
+
+### <a name="step-3-set-an-activity"></a>步驟3：設定活動
+
+若要讓代理驗證能夠正常執行，您必須設定活動，讓 MSAL 可以傳送和接收來自訊息代理程式的回應。
+
+若要這樣做，您必須將活動（通常是 MainActivity）提供給 `WithParentActivityOrWindow(object parent)` 做為父物件。 
+
+**例如：**
+
+在取得權杖呼叫中：
+
+```CSharp
+result = await app.AcquireTokenInteractive(scopes)
+             .WithParentActivityOrWindow((Activity)context))
+             .ExecuteAsync();
+```
+
+### <a name="step-4-register-your-redirecturi-in-the-application-portal"></a>步驟4：在應用程式入口網站中註冊您的 RedirectUri
+
+MSAL 使用 Url 叫用訊息代理程式，然後返回您的應用程式。 若要完成該往返行程，您需要為您的應用程式註冊 URL 配置。 此重新導向 URI 必須在 Azure AD 應用程式註冊入口網站上註冊，以作為應用程式的有效重新導向 URI。
+
+
+您的應用程式所需的重新導向 URI 取決於用來簽署 APK 的憑證。
+
+```
+Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
+```
+
+URI 的最後部分 `hgbUYHVBYUTvuvT&Y6tr554365466=`，是 APK 簽署的簽章，以 base64 編碼。
+不過，在使用 Visual Studio 的應用程式開發階段期間，如果您要在不使用特定憑證來簽署 apk 的情況下，對程式碼進行錯用，Visual Studio 會為您簽署 apk，以供您進行調試，並為 APK 提供唯一的簽章其建立所在的機器。 因此，每次您在不同的電腦上建立應用程式時，您都必須更新應用程式代碼中的重新導向 URI 和 Azure 入口網站中的應用程式註冊，才能使用 MSAL 進行驗證。 
+
+在偵錯工具中，您可能會遇到 MSAL 例外狀況（或記錄訊息），指出所提供的重新導向 URI 不正確。 **這個例外狀況也會提供**您在目前正在進行偵錯工具的電腦上使用的重新導向 URI。 您可以使用此重新導向 URI 繼續開發時間。
+
+當您準備好要完成程式碼之後，請務必更新程式碼中的重新導向 URI，以及在 Azure 入口網站中的應用程式註冊，以使用您將用來簽署 APK 的憑證簽章。
+
+實際上，這表示您必須為小組的每個成員註冊重新導向 URI，再加上 APK 之生產簽署版本的重新導向 URI。
+
+您也可以自行計算此簽章，類似于 MSAL 的運作方式： 
+
+```CSharp
+   private string GetRedirectUriForBroker()
+   {
+      string packageName = Application.Context.PackageName;
+      string signatureDigest = this.GetCurrentSignatureForPackage(packageName);
+      if (!string.IsNullOrEmpty(signatureDigest))
+      {
+            return string.Format(CultureInfo.InvariantCulture, "{0}://{1}/{2}", RedirectUriScheme,
+               packageName.ToLowerInvariant(), signatureDigest);
+      }
+
+      return string.Empty;
+   }
+
+   private string GetCurrentSignatureForPackage(string packageName)
+   {
+            PackageInfo info = Application.Context.PackageManager.GetPackageInfo(packageName,
+               PackageInfoFlags.Signatures);
+            if (info != null && info.Signatures != null && info.Signatures.Count > 0)
+            {
+               // First available signature. Applications can be signed with multiple signatures.
+               // The order of Signatures is not guaranteed.
+               Signature signature = info.Signatures[0];
+               MessageDigest md = MessageDigest.GetInstance("SHA");
+               md.Update(signature.ToByteArray());
+               return Convert.ToBase64String(md.Digest(), Base64FormattingOptions.None);
+               // Server side needs to register all other tags. ADAL will
+               // send one of them.
+            }
+   }
+```
+
+您也可以選擇使用 keytool 搭配下列命令取得封裝的簽章：
+
+對於 Windows：`keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+
+針對 Mac： `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
 
 ## <a name="next-steps"></a>後續步驟
 

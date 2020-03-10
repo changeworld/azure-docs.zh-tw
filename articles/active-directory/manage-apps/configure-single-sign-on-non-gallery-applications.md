@@ -13,11 +13,11 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375868"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>為非資源庫應用程式設定 SAML 型單一登入
 
@@ -53,8 +53,8 @@ ms.locfileid: "77159058"
     | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
     |:--|:--|:--|:--|
     | **識別碼（實體識別碼）** | 某些應用程式需要 | 某些應用程式需要 | 唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL： ' HTTPs://<subdomain>. contoso.com ' *。您可以在應用程式所傳送的**AuthnRequest** （SAML 要求）中找到此值做為**Issuer**元素。* |
-    | **回覆 URL** | 必要項 | 必要項 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用 [其他回復 URL] 欄位來指定多個回復 Url。 例如，您可能需要多個子域的其他回復 Url。 或者，基於測試目的，您可以一次指定多個回復 Url （本機主機和公用 Url）。 |
-    | **登入 URL** | 必要項 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用此 URL 從 Office 365 和 Azure AD「存取面板」中啟動應用程式。 當空白時，Azure AD 會在使用者從 Office 365、Azure AD 存取面板或 Azure AD SSO URL 啟動應用程式時，執行 IdP 起始的登入。|
+    | **回覆 URL** | 必要 | 必要 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用 [其他回復 URL] 欄位來指定多個回復 Url。 例如，您可能需要多個子域的其他回復 Url。 或者，基於測試目的，您可以一次指定多個回復 Url （本機主機和公用 Url）。 |
+    | **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用此 URL 從 Office 365 和 Azure AD「存取面板」中啟動應用程式。 當空白時，Azure AD 會在使用者從 Office 365、Azure AD 存取面板或 Azure AD SSO URL 啟動應用程式時，執行 IdP 起始的登入。|
     | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
     | **登出 URL** | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
 

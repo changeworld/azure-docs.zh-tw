@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395648"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 資料表儲存體資料表設計指南：可擴充且高效能的資料表
 
@@ -43,7 +43,7 @@ ms.locfileid: "76771525"
 <th></th>
 </tr>
 <tr>
-<td>Dynamics 365</td>
+<td>Marketing</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -51,7 +51,7 @@ ms.locfileid: "76771525"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -63,7 +63,7 @@ ms.locfileid: "76771525"
 </table>
 </tr>
 <tr>
-<td>Dynamics 365</td>
+<td>Marketing</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
@@ -71,7 +71,7 @@ ms.locfileid: "76771525"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -83,7 +83,7 @@ ms.locfileid: "76771525"
 </table>
 </tr>
 <tr>
-<td>Dynamics 365</td>
+<td>Marketing</td>
 <td>department</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -93,14 +93,14 @@ ms.locfileid: "76771525"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Dynamics 365</td>
+<td>Marketing</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>銷售專線</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -108,7 +108,7 @@ ms.locfileid: "76771525"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -129,7 +129,7 @@ ms.locfileid: "76771525"
 
 資料表是由一或多個資料分割所組成，而您所做的許多設計決策都將圍繞于選擇適當的 `PartitionKey`，並 `RowKey` 優化您的解決方案。 解決方案只能包含一個資料表，其中包含組織成資料分割的所有實體，但是方案通常會有多個資料表。 資料表可協助您以邏輯方式組織您的實體，並協助您使用存取控制清單來管理資料的存取權。 您可以使用單一儲存體作業來卸載整個資料表。  
 
-### <a name="table-partitions"></a>表格分割區
+### <a name="table-partitions"></a>資料表的資料分割
 帳戶名稱、資料表名稱和 `PartitionKey` 會一起識別儲存體服務中的資料分割，其中資料表儲存體會儲存實體。 此外，分割區是實體的定址配置的一部分，可定義交易的範圍（請參閱本文稍後的「[實體群組交易](#entity-group-transactions)」一節），並形成資料表儲存體如何調整的基礎。 如需資料表資料分割的詳細資訊，請參閱[資料表儲存體的效能和擴充性檢查清單](../storage/tables/storage-performance-checklist.md)。  
 
 在資料表儲存體中，個別節點會服務一或多個完整的資料分割，而服務會以動態方式跨節點平衡資料分割來進行調整。 如果節點處於負載中，資料表儲存體可以將該節點所服務的分割區範圍分割到不同的節點。 當流量 contosoconcerthall 時，表格儲存體可以將資料分割範圍從無訊息節點合併回單一節點。  
@@ -193,7 +193,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>您選擇的 `PartitionKey` 和 `RowKey` 如何影響查詢效能
 下列範例假設資料表儲存體會使用下列結構來儲存員工實體（大部分的範例會省略 `Timestamp` 屬性）：  
 
-| 資料行名稱 | Data type |
+| 資料行名稱 | 資料類型 |
 | --- | --- |
 | `PartitionKey` （部門名稱） |String |
 | `RowKey` （員工識別碼） |String |
@@ -422,7 +422,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 
 如果您也想要根據另一個屬性的值（例如電子郵件地址）尋找 employee 實體，您必須使用較不有效率的資料分割掃描來尋找相符專案。 這是因為資料表儲存體不提供次要索引。 此外，沒有任何選項可要求以與 `RowKey` 訂單不同的順序排序的員工清單。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 若要解決缺少次要索引的情況，您可以儲存每個實體的多個複本，每個複本使用不同的 `RowKey` 值。 如果您儲存具有下列結構的實體，您可以根據電子郵件地址或員工識別碼有效率地抓取員工實體。 `RowKey`、`empid_`和 `email_` 的前置詞值，可讓您使用一系列的電子郵件地址或員工識別碼來查詢單一員工或某個範圍的員工。  
 
 ![顯示員工實體具有不同 RowKey 值的圖形][7]
@@ -482,7 +482,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 
 您預期這些實體會有大量的交易，而且想要將資料表儲存體速率限制用戶端的風險降到最低。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 若要解決缺少次要索引的情況，您可以儲存每個實體的多個複本，每個複本都使用不同的 `PartitionKey` 和 `RowKey` 值。 如果您儲存具有下列結構的實體，您可以根據電子郵件地址或員工識別碼有效率地抓取員工實體。 `PartitionKey`、`empid_`和 `email_` 的前置詞值可讓您識別想要用於查詢的索引。  
 
 ![圖形：顯示具有主要索引的員工實體，以及具有次要索引的員工實體][10]
@@ -540,7 +540,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 * 儲存在資料表儲存體中的實體，以及檔案系統中的檔案。  
 * 儲存在資料表儲存體中，但使用 Azure 認知搜尋進行索引的實體。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 藉由使用 Azure 佇列，您可以實作解決方案，提供跨兩個或多個資料分割或儲存系統的最終一致性。
 
 為了說明這種方法，假設您已需要能夠封存先前的員工實體。 先前的員工實體很少查詢，而且應該從任何處理目前員工的活動中排除。 若要執行這項需求，您可以將**目前**資料表中的作用中員工和**封存資料表中的前**一個員工儲存在一起。 封存員工需要您刪除**目前**資料表中的實體，並將實體新增至**封存資料表。**
@@ -591,7 +591,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 如果您也想要能夠根據另一個非唯一屬性的值（例如 [姓氏]）來抓取員工實體清單，則必須使用較不有效率的資料分割掃描。 此掃描會尋找相符專案，而不是直接使用索引來查閱它們。 這是因為資料表儲存體不提供次要索引。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 若要以前面的實體結構啟用 [依姓氏查閱]，您必須維護員工識別碼的清單。 如果您想要使用特定的姓氏來抓取 employee 實體，例如「表名稱」，您必須先找出具有 [] 姓氏的員工的員工識別碼清單，然後再抓取那些員工實體。 有三個主要選項可儲存員工識別碼的清單：  
 
 * 使用 Blob 儲存體。  
@@ -662,7 +662,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 ![部門實體和員工實體的圖形][16]
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 不要將資料儲存在兩個不同的實體中，而是將資料反正規化，並將管理員詳細資料的複本保存在部門實體中。 例如：  
 
 ![反正規化和合併部門實體的圖形][17]
@@ -701,7 +701,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 使用此方法時，您可能會決定複製新實體中的某些資訊（例如名字和姓氏），讓您使用單一要求來抓取您的資料。 不過，您無法維持強式一致性，因為您無法使用 EGT 來以原子方式更新這兩個實體。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 使用具有下列結構的實體，在原始資料表中儲存新的實體類型：  
 
 ![具有複合索引鍵之 employee 實體的圖形][20]
@@ -738,7 +738,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 常見的需求是要能夠取出最近建立的實體，例如員工提交的最近 10 筆費用請款。 資料表查詢支援 `$top` 查詢作業，以從集合中傳回前*n*個實體。 沒有對等的查詢作業可傳回集合中的最後*n*個實體。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 使用自然以反向的日期/時間順序排序的 `RowKey` 來儲存實體，因此最新的專案一律是資料表中的第一個。  
 
 比方說，若要能夠擷取某員工最近提交的十筆費用請款，您可以使用衍生自目前日期/時間的反向刻度值。 下列C#程式碼範例示範一種方法，為從最新到最舊的 `RowKey`，建立適當的「反向刻度」值：  
@@ -780,7 +780,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 這種方法可避免資料分割熱點，因為應用程式可以在個別的資料分割中插入和刪除每個使用者的登入實體。 不過，如果您有大量實體，這種方法可能會相當耗費成本且耗時。 首先，您需要執行資料表掃描以識別要刪除的所有實體，然後您必須刪除每個舊的實體。 您可以藉由將多個刪除要求批次處理到 EGT 中，以減少刪除舊實體所需的伺服器往返次數。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 為每天的登入嘗試使用個別的資料表。 當您要插入實體時，可以使用上述實體設計來避免作用區。 刪除舊實體現在只是每天刪除一個資料表（單一儲存體作業）的問題，而不是每天尋找及刪除上百個或數千個個別登入實體。  
 
 #### <a name="issues-and-considerations"></a>問題和考量
@@ -810,7 +810,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 採用這種設計，您可以輕鬆地找出並更新實體，以在應用程式需要更新訊息計數值時更新每個員工。 不過，若要擷取資訊以繪製過去 24 小時內的活動圖，您必須擷取 24 個實體。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 使用下列設計，搭配個別的屬性來儲存每小時的訊息計數：  
 
 ![顯示具有分隔屬性之訊息統計資料實體的圖形][23]
@@ -839,7 +839,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 個別實體可以有252個以上的屬性（不包括必要的系統屬性），而且無法儲存總共超過 1 MB 的資料。 在關係資料庫中，您通常會藉由加入新的資料表，並在兩者之間強制執行一對一的關聯性，來解決資料列大小的任何限制。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 藉由使用資料表儲存體，您可以儲存多個實體來代表具有超過252個屬性的單一大型商務物件。 例如，如果您想要儲存每位員工在過去365天傳送的 IM 訊息數目，您可以使用下列設計來使用具有不同架構的兩個實體：  
 
 ![圖形：顯示具有 Rowkey 01 的訊息統計資料實體與 Rowkey 02 的訊息統計資料實體][24]
@@ -866,7 +866,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 個別實體無法儲存總計超過 1 MB 的資料。 如果其中一個或多個屬性儲存的值導致實體的總大小超過此值，您就無法將整個實體儲存在資料表儲存體中。  
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 如果您的實體大小超過 1 MB，因為一個或多個屬性包含大量資料，您可以將資料儲存在 Blob 儲存體中，然後將該 blob 的位址儲存在實體的屬性中。 例如，您可以將員工的相片儲存在 Blob 儲存體中，並在 employee 實體的 `Photo` 屬性中儲存相片的連結：  
 
 ![顯示員工實體的圖形，其中包含指向 Blob 儲存體的相片字串][25]
@@ -896,7 +896,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 ![Employee 實體的圖形][26]
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 下列替代實體結構可避免任何特定資料分割上的熱點，因為應用程式會記錄事件：  
 
 ![顯示員工實體的圖形，其中包含年、月、日、小時和事件識別碼的 RowKey 複利][27]
@@ -935,7 +935,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 不過，此架構的問題在於，若要取得特定時間範圍內的所有記錄檔訊息，您必須搜尋資料表中的每個資料分割。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 上一節強調了嘗試使用表格儲存體來儲存記錄專案的問題，並建議兩個不滿意的設計。 其中一個解決方案會導致最忙碌的資料分割，並具有效能不佳的寫入記錄訊息的風險。 另一個解決方案導致查詢效能不佳，因為需要掃描資料表中的每個資料分割，以取得特定時間範圍的記錄訊息。 Blob 儲存體為此類案例提供更好的解決方案，而這就是 Azure 儲存體分析如何儲存它所收集的記錄資料。  
 
 本節概述儲存體分析如何將記錄資料儲存在 Blob 儲存體中，以這種方式來儲存您通常依範圍查詢的資料。  
@@ -1138,7 +1138,7 @@ foreach (var e in entities)
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -1158,7 +1158,7 @@ foreach (var e in entities)
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -1195,7 +1195,7 @@ foreach (var e in entities)
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -1231,7 +1231,7 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -1253,7 +1253,7 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -1294,7 +1294,7 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>

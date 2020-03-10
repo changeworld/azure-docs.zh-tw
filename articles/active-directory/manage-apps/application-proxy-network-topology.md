@@ -17,11 +17,11 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375754"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考量
 
@@ -168,7 +168,7 @@ ms.locfileid: "74275475"
 
 ![圖表顯示美國、連接器和歐盟應用程式中的使用者和 proxy](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-您也可以考慮在此情況下使用另一個變體。 如果組織中的大部分使用者不在美國，則可能您的網路也會延伸至美國。 將連接器放在美國，並使用歐盟國家應用程式的專用內部企業網路。 如此一來，躍點 2 和躍點 3 便已最佳化。
+您也可以考慮在此情況下使用另一個變體。 如果組織中的大部分使用者不在美國，則可能您的網路也會延伸至美國。 將連接器放在美國，並使用歐盟國家/地區應用程式的專用內部企業網路。 如此一來，躍點 2 和躍點 3 便已最佳化。
 
 ![圖表顯示美國、EU 中的應用程式中的使用者、proxy 和連接器](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: rogarana
 ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361880"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>針對 Azure 檔案共用啟用透過 SMB 進行 Active Directory 驗證
 
@@ -34,7 +34,7 @@ ms.locfileid: "78256067"
 
 用來存取 Azure 檔案共用的 AD 身分識別必須同步至 Azure AD，才能透過標準[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)模型來強制執行共用層級檔案許可權。 在從現有檔案伺服器上執行的檔案/目錄上， [Windows 樣式的 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN)將會保留並強制執行。 這項功能可與您的企業 AD 網域基礎結構緊密整合。 當您使用 Azure 檔案共用來取代內部部署檔案伺服器時，現有的使用者可以透過單一登入體驗，從其目前的用戶端存取 Azure 檔案共用，而不需要變更使用中的認證。  
  
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 為 Azure 檔案共用啟用 AD 驗證之前，請確定您已完成下列必要條件： 
 

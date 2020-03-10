@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380923"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -304,7 +304,7 @@ foreach($labVM in $labVMs)
 - 所有機器都必須具備的合規性或法規條件 (例如安全性原則)。
 - 使用自訂映射應該不會被視為輕量。 它們會帶來額外的複雜性，因為您現在必須管理這些基礎基底映射的 VHD 檔案。 您也需要使用軟體更新來定期修補那些基本映像。 這些更新包括新的作業系統 (OS) 更新，以及軟體套件本身所需的任何更新或設定變更。
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>構件
 
 ### <a name="what-are-artifacts"></a>何謂構件？
 構件是可用來在 VM 中部署最新版本或開發工具的可自訂項目。 在建立 VM 時，請將構件連結至 VM。 VM 佈建好之後，構件就會部署並設定 VM。 在我們的[公用 GitHub 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中可取得各種預先存在的構件。 您也可以[撰寫您自己的構件](devtest-lab-artifact-author.md)。
@@ -343,9 +343,9 @@ foreach($labVM in $labVMs)
 - [透過 Azure DevOps Services 在現有 DevTest Labs 實驗室中部署新的 VM](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [使用 Azure DevOps Services 發行管理來持續部署至 DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-如需其他的持續整合 (CI)/持續傳遞 (CD) 工具鏈，可藉由使用 [Azure PowerShell Cmdlet](../azure-resource-manager/templates/deploy-powershell.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 部署 [Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/) 來實現相同的案例。 您也可以使用[適用於 DevTest Labs 的 REST API](https://aka.ms/dtlrestapis) 來與您的工具鏈整合。
+如需其他的持續整合 (CI)/持續傳遞 (CD) 工具鏈，可藉由使用 [Azure PowerShell Cmdlet](https://azure.microsoft.com/resources/templates/) 和 [.NET SDK](../azure-resource-manager/templates/deploy-powershell.md) 部署 [Azure Resource Manager 範本](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 來實現相同的案例。 您也可以使用[適用於 DevTest Labs 的 REST API](https://aka.ms/dtlrestapis) 來與您的工具鏈整合。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何時應該針對 DevTest Labs 環境建立新的虛擬網路，而何時該使用現有的虛擬網路？
 如果您的 Vm 需要與現有的基礎結構互動，請考慮在 DevTest Labs 環境內使用現有的虛擬網路。 如果您使用 ExpressRoute，您可能會想要將 Vnet/子網的數量降到最低，這樣您就不會分割指派給訂用帳戶中使用的 IP 位址空間。
@@ -365,7 +365,7 @@ foreach($labVM in $labVMs)
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>如何確保開發和測試虛擬機器無法連線到公用網際網路？ 是否有任何可用來設定網路設定的建議模式？
 
-可以。 有兩個需要考慮的層面：輸入和輸出流量。
+是。 有兩個需要考慮的層面：輸入和輸出流量。
 
 - **輸入流量**–如果虛擬機器沒有公用 IP 位址，則網際網路無法連線。 常見的方法是確保已設定訂用帳戶層級原則，讓任何使用者都無法建立公用 IP 位址。
 - **輸出流量**–如果您想要防止虛擬機器直接存取公用網際網路，並強制流量通過公司防火牆，您可以使用強制路由，透過 express ROUTE 或 VPN 將流量路由傳送到內部部署。

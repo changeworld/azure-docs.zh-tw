@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370815"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
 
@@ -20,7 +20,7 @@ ms.locfileid: "77202134"
 
 ## <a name="example"></a>範例
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 下列範例是使用一個 Blob 觸發程序和兩個輸出 Blob 繫結的 [C# 函式](functions-dotnet-class-library.md)。 此函式是藉由在 *sample-images* 容器中建立映像 Blob 而觸發。 它會建立映像 Blob 的小型及中型複本。
 
@@ -73,7 +73,7 @@ public class ResizeImages
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -171,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -224,7 +224,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 本區段包含下列範例：
 
@@ -295,7 +295,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 ## <a name="attributes-and-annotations"></a>屬性和注釋
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)。
 
@@ -323,19 +323,19 @@ public static void Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
 
 C#腳本不支援屬性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支援屬性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 `@BlobOutput` 屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將 `dataType` 設定為 `binary`。 如需詳細資訊，請參閱[輸出範例](#example)。
 
@@ -360,21 +360,21 @@ Python 不支援屬性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
-
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 在 JavaScript 中，使用 `context.bindings.<name from function.json>` 存取 Blob 資料。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 您可以將函式參數宣告為下列類型，以將其寫出至 blob 儲存體：
 
@@ -383,7 +383,7 @@ Python 不支援屬性。
 
 如需詳細資訊，請參閱[輸出範例](#example)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 `@BlobOutput` 屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將 `dataType` 設定為 `binary`。 如需詳細資訊，請參閱[輸出範例](#example)。
 
@@ -393,7 +393,7 @@ Python 不支援屬性。
 
 | 繫結 |  參考 |
 |---|---|
-| blob | [Blob 錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| Blob | [Blob 錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Bob、資料表、佇列 |  [儲存體錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Bob、資料表、佇列 |  [疑難排解](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

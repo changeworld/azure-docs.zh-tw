@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364953"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 將叢集視覺化
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
 
 Service Fabric Explorer (SFX) 是開放原始碼工具，可檢查及管理 Azure Service Fabric 叢集。 Service Fabric Explorer 是適用於 Windows、macOS 和 Linux 的桌面應用程式。
 
@@ -39,7 +39,7 @@ Service Fabric Explorer (SFX) 是開放原始碼工具，可檢查及管理 Azur
 
 Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點。 若要在網頁瀏覽器中啟動 SFX，請從任何瀏覽器流覽至叢集的 HTTP 管理端點，例如 HTTPs：\//clusterFQDN：19080。
 
-針對開發人員工作站設定，您可以瀏覽至 https://localhost:19080/Explorer ，在本機叢集上啟動 Service Fabric Explorer。 請參閱此文章以[準備您的開發環境](service-fabric-get-started.md)。
+針對開發人員工作站設定，您可以瀏覽至 https://localhost:19080/Explorer，在本機叢集上啟動 Service Fabric Explorer。 請參閱此文章以[準備您的開發環境](service-fabric-get-started.md)。
 
 > [!NOTE]
 > 如果您的叢集受到自我簽署憑證保護，您就會從網頁瀏覽器收到「此網站不安全」的錯誤訊息。 在大多數新式網頁瀏覽器中，您可以藉由覆寫警告來直接繼續進行操作。 在生產環境中，應該使用通用名稱和憑證授權單位簽發的憑證來保護您的叢集。 
@@ -49,7 +49,7 @@ Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點�
 ## <a name="connect-to-a-service-fabric-cluster"></a>連線至 Service Fabric 叢集
 若要連線至 Service Fabric 叢集，您需要叢集管理端點 (FQDN/IP) 和 HTTP 管理端點連接埠 (預設為 19080)。 例如，HTTPs\://mysfcluster.westus.cloudapp.azure.com:19080。 使用 [連線至 localhost] 核取方塊，連線至工作站上的本機叢集。
 
-### <a name="connect-to-a-secure-cluster"></a>連線以保護叢集
+### <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 您可以為使用憑證或使用 Azure Active Directory (AAD) 來控制用戶端對您 Service Fabric 叢集的存取。
 
 如果您嘗試連線到安全的叢集，則視叢集的設定而定，您將需要出示用戶端憑證或使用 AAD 登入。
@@ -119,7 +119,7 @@ EventStore 是平台所提供的功能，可提供可在 Service Fabric Explorer
 
 ![Service Fabric 總管叢集對應][sfx-imagestore]
 
-## <a name="backup-and-restore"></a>備份及還原
+## <a name="backup-and-restore"></a>備份與還原
 Service Fabric Explorer 提供與[備份和還原](./service-fabric-reliable-services-backup-restore.md)互動的能力。 若要查看 SFX 中的備份和還原功能，必須啟用 [advanced] 模式。
 
 ![啟用 advanced 模式][0]

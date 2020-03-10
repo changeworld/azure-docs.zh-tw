@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029964"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363903"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
 
@@ -21,7 +21,7 @@ ms.locfileid: "76029964"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -115,7 +115,7 @@ ms.locfileid: "76029964"
 ## <a name="step-2-create-an-import-job"></a>步驟 2：建立匯入作業
 
 在 Azure 入口網站中執行下列步驟，以建立匯入作業。
-1. 登入 https://portal.azure.com/ 。
+1. 登入 https://portal.azure.com/。
 2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]。
 
     ![移至匯入/匯出](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -130,7 +130,7 @@ ms.locfileid: "76029964"
     - 輸入匯入作業的描述性名稱。 當作業正在進行中和一旦完成後，使用此名稱來追蹤您的作業。
         -  此名稱只能包含小寫英文字母、數字、連字號和底線。
         -  名稱必須以字母開頭，並且不能包含空格。
-    - 選取訂用帳戶。
+    - 選取一個訂用帳戶。
     - 選取資源群組。
 
         ![建立匯入作業 - 步驟 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)

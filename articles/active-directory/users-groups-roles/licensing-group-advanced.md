@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376970"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題
 
@@ -224,7 +224,7 @@ ms.locfileid: "74025954"
 若要深入了解透過群組型授權來管理授權的其他案例，請參閱：
 
 * [什麼是 Azure Active Directory 中以群組為基礎的授權？](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [將授權指派給 Azure Active Directory 中的群組 (英文)](licensing-groups-assign.md)
+* [將授權指派給 Azure Active Directory 中的群組](licensing-groups-assign.md)
 * [識別及解決 Azure Active Directory 中群組的授權問題](licensing-groups-resolve-problems.md)
 * [如何將個別授權使用者移轉至 Azure Active Directory 中以群組為基礎的授權](licensing-groups-migrate-users.md)
 * [如何使用 Azure Active Directory 中的群組型授權在產品授權之間移轉使用者](../users-groups-roles/licensing-groups-change-licenses.md)

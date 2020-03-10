@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361884"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>針對 Linux 中的 Azure 檔案服務問題進行疑難排解
 
@@ -44,7 +44,7 @@ ms.locfileid: "76544934"
 - 您嘗試從 Azure VM 連線到 Azure 檔案共用，而該 VM 與儲存體帳戶位於不同的區域。
 - 如果儲存體帳戶上已啟用 [需要安全傳輸]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則 Azure 檔案服務僅允許使用 SMB 3.0 加密的連線。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請使用[適用於 Linux 上 Azure 檔案服務掛接錯誤的疑難排解工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)。 這項工具可以：
 
@@ -88,7 +88,7 @@ ms.locfileid: "76544934"
 
 單一檔案的開啟控制代碼配額為 2,000 個。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控點以減少同時開啟的控點數，然後再次嘗試操作。
 
@@ -124,7 +124,7 @@ ms.locfileid: "76544934"
 
 部分 Linux 散發套件尚未支援 SMB 3.0 中的加密功能。 如果使用者嘗試使用 SMB 3.0 來掛接 Azure 檔案，可能會因缺少功能而收到「115」錯誤訊息。 目前僅有使用 Ubuntu 16.04 或更新版本時才支援 SMB 3.0 與完整加密。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可從內部部署或不同 Azure 區域的 Azure 檔案共用進行掛接。 某些 Linux 散發套件可能已 backport 從4.11 核心變更為其維護的舊版 Linux 核心。 若要協助判斷您的 Linux 版本是否支援使用加密的 SMB 3.0，請參閱搭配[使用 Azure 檔案儲存體與 Linux](storage-how-to-use-files-linux.md)。 
 
@@ -134,7 +134,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>當您嘗試存取或刪除 Azure 檔案共用時發生錯誤「沒有存取權」  
 當您嘗試存取或刪除入口網站中的 Azure 檔案共用時，可能會收到下列錯誤：
 
-無存取權  
+不允許存取  
 錯誤碼：403 
 
 ### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因1：已在儲存體帳戶上啟用虛擬網路或防火牆規則
@@ -155,7 +155,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ### <a name="cause"></a>原因
 如果檔案或目錄有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -224,7 +224,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp -p -f**。 �
 **ls：無法存取 '&lt;path&gt;'：輸入/輸出錯誤**
 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 將 Linux 核心升級為下列已修正此問題的版本：
 
 - 4.4.87+
@@ -240,7 +240,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp -p -f**。 �
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 Linux CIFS 用戶端不支援透過 SMB 2 或 SMB 3 通訊協定，建立 Windows 樣式的符號連結。 Linux 用戶端目前支援另一種符號連結樣式，稱為 [Minshall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (Mishall + 法文符號連結)，可用於建立和遵循作業。 需要符號連結的客戶可以使用 "mfsymlinks" 掛接選項。 我們建議您使用 "mfsymlinks"，因為它也是 Mac 使用的格式。
 
 若要使用符號連結，請將下列內容新增至 CIFS 掛接命令結尾：
@@ -271,7 +271,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 -   使用預設的「軟」掛接選項時，造成無法重新建立 TCP 連線以連線到伺服器的網路通訊失敗
 -   未出現在較舊核心中的最近重新連線修正
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 此 Linux 核心中的重新連線問題已隨下列變更修正：
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659402"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373294"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -33,7 +33,7 @@ ms.locfileid: "77659402"
 
 如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器通訊的詳細資訊和步驟，請參閱[使用 Log analytics 閘道將電腦連線至 Azure 監視器](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請檢閱下列需求。
 
@@ -133,7 +133,7 @@ ms.locfileid: "77659402"
 
 設定與 Log Analytics 工作區的整合之後，只會建立與 Log Analytics 的連線，並不會從向管理群組回報的代理程式收集任何資料。 在您設定哪些特定代理程式管理的電腦收集記錄資料以進行 Azure 監視器之前，不會發生這種情況。 您可以個別選取電腦物件，也可以選取包含 Windows 電腦物件的群組。 您無法選取包含另一個類別之執行個體 (例如邏輯磁碟或 SQL 資料庫) 的群組。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 開啟 Operations Manager 主控台，然後選取 [ **管理** ] 工作區。
 1. 展開 Operations Management Suite 節點，然後按一下 [連接]。
 1. 按一下窗格右側之 [執行] 標題下方的 [加入電腦/群組] 連結。
 1. 在 [電腦搜尋] 對話方塊中，您可以搜尋 Operations Manager 監視的電腦或群組。 選取電腦或群組，包括要上架到 Azure 監視器的 Operations Manager 管理伺服器，按一下 **新增**，然後按一下**確定**。
@@ -144,17 +144,17 @@ ms.locfileid: "77659402"
 
 如果內部 proxy 伺服器位於管理群組和 Azure 監視器之間，請執行下列步驟。 這些設定是從管理群組進行集中管理，並且散發至包含在範圍內的代理程式管理系統，以收集 Azure 監視器的記錄資料。  特定解決方案略過管理伺服器並將資料直接傳送給服務時，這十分有幫助。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 開啟 Operations Manager 主控台，然後選取 [ **管理** ] 工作區。
 1. 展開 Operations Management Suite，然後按一下 [連接]。
 1. 在 [OMS 連線] 檢視中，按一下 [設定 Proxy 伺服器]。
 1. 在 [Operations Management Suite 精靈：Proxy 伺服器] 頁面上，選取 [使用 Proxy 伺服器來存取 Operations Management Suite]，然後輸入具有連接埠號碼的 URL (例如， http://corpproxy:80 )，然後按一下 [完成]。
 
 如果您的 proxy 伺服器需要驗證，請執行下列步驟，設定需要傳播到管理群組中 Azure 監視器之受管理電腦的認證和設定。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
-1. 在 [RunAs 設定] 下，選取 [設定檔]。
+1. 開啟 Operations Manager 主控台，然後選取 [ **管理** ] 工作區。
+1. 在 [RunAs 組態] 底下，選取 [設定檔]。
 1. 開啟 [ **System Center Advisor 執行身份設定檔 Proxy** ] 設定檔。
-1. 在 [執行身分設定檔精靈] 中，按一下 [加入]，以使用執行身分帳戶。 您可以建立[執行身分帳戶](https://technet.microsoft.com/library/hh321655.aspx)，或使用現有的帳戶。 此帳戶必須有足夠的權限，才能通過 Proxy 伺服器。
+1. 在 [執行身分設定檔精靈] 中，按一下 [加入] 使用執行身分帳戶。 您可以建立[執行身分帳戶](https://technet.microsoft.com/library/hh321655.aspx)，或使用現有的帳戶。 此帳戶必須有足夠的權限，才能通過 Proxy 伺服器。
 1. 若要設定帳戶來管理，請選擇 [選取的類別、群組或物件]，按一下 [選取…] 然後按一下 [群組…] 開啟 [群組搜尋] 方塊。
 1. 搜尋，然後選取 [Microsoft System Center Advisor 監控伺服器群組]。 選取群組之後，按一下 [確定] 關閉 [群組搜尋] 方塊。
 1. 按一下 [確定] 以關閉 [新增執行身分帳戶] 方塊。
@@ -206,7 +206,7 @@ ms.locfileid: "77659402"
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>從 Operations 主控台確認整合
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 開啟 Operations Manager 主控台，然後選取 [ **管理** ] 工作區。
 1. 選取 [管理組件]，並在 [尋找:] 文字方塊中輸入 **Advisor** 或 **Intelligence**。
 1. 根據您已啟用的解決方案，您會看到搜尋結果中列出對應的管理組件。  例如，如果您已啟用警示管理解決方案，則 [Microsoft System Center Advisor 警示管理] 管理組件會在清單中。
 1. 從 [監視] 檢視中，瀏覽至 [Operations Management Suite\健全狀況狀態] 檢視。  在 [管理伺服器狀態] 窗格下選取管理伺服器，然後在 [詳細資料檢視] 窗格中，確認 [驗證服務 URI] 屬性的值符合 Log Analytics 工作區識別碼。
@@ -247,7 +247,7 @@ ms.locfileid: "77659402"
     > 在偵測到已連線的管理群組有 14 天沒有任何活動之後，[移除] 連結才能使用。  
     >
 
-1. 將出現視窗，要求您確認想要繼續移除。  按一下 [是] 繼續進行。
+1. 將出現視窗，要求您確認想要繼續移除。  按一下 **[是]** 以繼續。
 
 若要刪除兩個連接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor 連接器，請將以下 PowerShell 指令碼儲存至您的電腦，並使用下列範例來執行：
 

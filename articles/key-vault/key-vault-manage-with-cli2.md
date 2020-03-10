@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387232"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 來管理 Key Vault 
 
@@ -120,7 +120,7 @@ az provider register -n Microsoft.KeyVault
 
 使用 `az keyvault create` 命令來建立金鑰保存庫。 這個指令碼包含三個必要參數：資源群組名稱、金鑰保存庫名稱和地理位置。
 
-若要在位於 [東亞]  位置的 **ContosoResourceGroup** 資源群組中，建立名稱為 **ContosoKeyVault** 的新保存庫，請輸入： 
+若要在位於 [東亞] 位置的 **ContosoResourceGroup** 資源群組中，建立名稱為 **ContosoKeyVault** 的新保存庫，請輸入： 
 
 ```azurecli
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 此命令的輸出會顯示您所建立的金鑰保存庫屬性。 兩個最重要屬性是：
 
-* **名稱**：在此範例中，名稱是 ContosoKeyVault。 您將在其他 Key Vault 命令中使用此名稱。
-* **vaultUri**：在此範例中，URI 是 https://contosokeyvault.vault.azure.net 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
+* **name**：在此範例中，名稱是 ContosoKeyVault。 您將在其他 Key Vault 命令中使用此名稱。
+* **vaultUri**：在此範例中，URI 是 https://contosokeyvault.vault.azure.net。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 您的 Azure 帳戶現已取得在此金鑰保存庫上執行任何作業的授權。 而且，沒有其他人已獲授權。
 
@@ -223,19 +223,19 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 啟用金鑰保存庫的進階的原則。
 
- 針對部署啟用 Key Vault：允許虛擬機器從保存庫擷取儲存為祕密的憑證。
+ 啟用 Key Vault 以供部署：允許虛擬機器從保存庫擷取儲存為祕密的憑證。
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-針對磁碟加密啟用 Key Vault：使用保存庫進行 Azure 磁碟加密時為必要。
+啟用 Key Vault 以供磁碟加密：使用保存庫進行 Azure 磁碟加密時所需。
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-針對範本部署啟用 Key Vault：允許 Resource Manager 從保存庫擷取秘密。
+啟用 Key Vault 以供範本部署：允許 Resource Manager 從保存庫擷取祕密。
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"

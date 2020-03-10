@@ -11,11 +11,11 @@ ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183562"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389918"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中建立使用者流程
 
@@ -32,7 +32,7 @@ ms.locfileid: "78183562"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [註冊應用程式](tutorial-register-applications.md) (屬於您想要建立的使用者流程的一部分)。
 

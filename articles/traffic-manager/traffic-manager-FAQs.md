@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938806"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945864"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理員常見問題集 (FAQ)
 
@@ -43,7 +43,7 @@ ms.locfileid: "76938806"
 
 因此，進一步的調查應該將焦點放在應用程式上。
 
-從用戶端的瀏覽器傳送的 HTTP 主機標頭是最常見的問題來源。 請確定應用程式已設定為接受您使用之網域名稱的正確主機標頭。 關於使用 Azure App Service 的端點，請參閱[在使用流量管理員的 Azure App Service 中設定 Web 應用程式的自訂網域名稱](../app-service/web-sites-traffic-manager-custom-domain-name.md)。
+從用戶端的瀏覽器傳送的 HTTP 主機標頭是最常見的問題來源。 請確定應用程式已設定為接受您使用之網域名稱的正確主機標頭。 關於使用 Azure App Service 的端點，請參閱[在使用流量管理員的 Azure App Service 中設定 Web 應用程式的自訂網域名稱](../app-service/configure-domain-traffic-manager.md)。
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>使用「流量管理員」對效能有什麼影響？
 
@@ -59,7 +59,7 @@ ms.locfileid: "76938806"
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>我可以使用具有「naked」功能變數名稱的流量管理員嗎？
 
-可以。 若要瞭解如何建立功能變數名稱頂點的別名記錄以參考 Azure 流量管理員設定檔，請參閱[使用流量管理員設定別名記錄以支援頂點功能變數名稱](../dns/tutorial-alias-tm.md)。
+是。 若要瞭解如何建立功能變數名稱頂點的別名記錄以參考 Azure 流量管理員設定檔，請參閱[使用流量管理員設定別名記錄以支援頂點功能變數名稱](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？ 
 
@@ -104,9 +104,9 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>它保證流量管理員可以在每個案例中正確判斷使用者確切的地理位置嗎？
 
-否，基於下列因素，流量管理員不能保證我們從 DNS 查詢的來源 IP 位址推斷的地理區域將會一律對應到使用者的位置：
+否，流量管理員無法保證從 DNS 查詢的來源 IP 位址推斷而來的地理區域，一律會對應到使用者的位置，原因如下：
 
-- 首先，如先前的常見問題集所述，我們看到的來源 IP 位址是代表使用者執行查閱的 DNS 解析程式的 IP 位址。 儘管 DNS 解析程式的地理位置是使用者地理位置的良好 Proxy，但是，根據 DNS 解析程式服務的使用量和客戶選擇使用的特定 DNS 解析程式服務而定，它也可以不一樣。 例如，位於馬來西亞的客戶可以在他們裝置的設定中指定使用 DNS 解析程式服務，此服務可能會挑選其位於新加坡的 DNS 伺服器來處理該使用者/裝置的查詢解析。 在此情況下，流量管理員只會看到解析程式對應到新加坡位置的 IP 位址。 此外，請參閱此頁面上先前有關用戶端子網路位址支援的常見問題集。
+- 首先，如先前的常見問題集所述，我們看到的來源 IP 位址是代表使用者執行查閱的 DNS 解析程式的 IP 位址。 儘管 DNS 解析程式的地理位置是使用者地理位置的良好 Proxy，但是，根據 DNS 解析程式服務的使用量和客戶選擇使用的特定 DNS 解析程式服務而定，它也可以不一樣。 例如，位於馬來西亞的客戶可以在其裝置的設定中指定，使用 DNS 解析程式服務，其 DNS 伺服器可能會被挑選，以處理該使用者/裝置的查詢解析度。 在這種情況下，流量管理員只能看到解析程式的 IP 位址對應到新加坡位置。 此外，請參閱此頁面上先前有關用戶端子網路位址支援的常見問題集。
 
 - 其次，流量管理員會使用內部對應來進行 IP 位址到地理區域的轉譯。 雖然此對應已通過驗證並持續更新以提供其精確度並負責網際網路的進化本質，但仍會產生我們的資料無法確切代表所有 IP 位址之地理位址的可能性。
 
@@ -124,7 +124,7 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>為什麼強烈建議客戶建立巢狀設定檔，而不是在啟用地理路由的設定檔下新增端點？
 
-在使用地理路由方法的設定檔內，一個區域只能指派給一個端點。 如果該端點不是已連結子設定檔的巢狀類型，萬一該端點變成狀況不良，流量管理員會繼續將流量傳送給它，因為選擇不傳送任何流量也沒有比較好。 即使指派的區域位於指派給狀況不良端點的區域「上層」，「流量管理員」也不會容錯移轉至另一個端點 (例如，如果端點的西班牙區域狀況不良，我們將不會容錯移轉至另一個已被指派歐洲地區的端點)。 這是為了確保流量管理員會顧及客戶在其設定檔中已設定的地理界限。 若要在端點變成狀況不良時能夠容錯移轉至另一個端點，建議將地理區域指派給內有多個端點的巢狀設定檔，而不是指派給個別的端點。 如此一來，如果巢狀子設定檔中的端點失敗，流量就可以容錯移轉至相同巢狀子設定檔內的另一個端點。
+在使用地理路由方法的設定檔內，一個區域只能指派給一個端點。 如果該端點不是已連結子設定檔的巢狀型別，而該端點變成狀況不良，流量管理員會繼續將流量傳送給它，因為沒有傳送任何流量的替代方式並不會有任何改善。 流量管理員不會容錯移轉至另一個端點，即使指派的區域是指派給狀況不良之端點的區域的「父系」（例如，如果端點的西班牙區域狀況不良，我們也不會容錯移轉至另一個端點，已將歐洲地區指派給它。 這是為了確保流量管理員會顧及客戶在其設定檔中已設定的地理界限。 若要在端點變成狀況不良時能夠容錯移轉至另一個端點，建議將地理區域指派給內有多個端點的巢狀設定檔，而不是指派給個別的端點。 如此一來，如果巢狀子設定檔中的端點失敗，流量就可以容錯移轉至相同巢狀子設定檔內的另一個端點。
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>支援此路由類型的 API 版本有任何限制嗎？
 
@@ -145,9 +145,9 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 有兩種方式可以指定要與端點建立關聯的 IP 位址。 首先，您可以使用具有開始和結束位址的四點十進制八進位標記法來指定範圍 (例如 1.2.3.4-5.6.7.8 或 3.4.5.6-3.4.5.6)。 其次，您可以使用 CIDR 標記法來指定範圍 (例如 1.2.3.0/24)。 您可以指定多個範圍，而且可以在範圍集合中使用這兩種標記法類型。 適用一些限制。
 
--   您不能有重疊的位址範圍，因為每個 IP 都只需要對應至單一端點
--   開始位址不能超過結束位址
--   如果是 CIDR 標記法，則 ‘/’ 前面的 IP 位址應該是範圍的開始位址 (例如，1.2.3.0/24 有效，但 1.2.3.4.4/24 無效)
+-    您不能有重疊的位址範圍，因為每個 IP 都只需要對應至單一端點
+-    開始位址不能超過結束位址
+-    在 CIDR 標記法的案例中，'/' 之前的 IP 位址應該是該範圍的起始位址（例如，1.2.3.0/24 有效，但 1.2.3.4.4/24 無效）
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>使用「子網路」路由時，如何指定後援端點？
 
@@ -155,14 +155,14 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>如果「子網路」路由類型設定檔中已停用端點，則會發生什麼事？
 
-在具有「子網路」路由的設定檔中，如果您已停用端點，則流量管理員的行為就像該端點和其子網路對應不存在一樣。 如果收到的查詢與其 IP 位址對應相符，並停用端點，則流量管理員會傳回後援端點 (沒有對應的端點)；或者，如果這類端點不存在，則會傳回 NXDOMAIN 回應。
+在具有「子網路」路由的設定檔中，如果您已停用端點，則流量管理員的行為就像該端點和其子網路對應不存在一樣。 如果收到的查詢與其 IP 位址對應相符，而且端點已停用，流量管理員會傳回一個不含對應的回溯端點，或如果這類端點不存在，則會傳回 NXDOMAIN 回應。
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>流量管理員 MultiValue 流量路由方法
 
 ### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>MultiValue 路由派上用場的使用案例有哪些？
 
 MultiValue 路由會在單一查詢回應中傳回多個狀況良好的端點。 此方式的主要優點在於，如果端點狀況不良，則用戶端有更多的選項可重試，而不需要提出另一個 DNS 呼叫 (這可能會從上游快取傳回相同的值)。 這適用於想要盡可能縮短停機時間的可用性敏感性應用程式。
-MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載」至 IPv4 和 IPv6 位址，而且您想要讓呼叫者從初始端點連線時選擇這兩個選項。
+多重值路由方法的另一個用法是，如果端點同時為 IPv4 和 IPv6 位址的「雙主目錄」，而且您想要讓呼叫者在起始端點連線時選擇這兩個選項。
 
 ### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>使用 MultiValue 路由時，會傳回多少個端點？
 
@@ -172,7 +172,7 @@ MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載
 
 我們無法保證每個查詢都會傳回同一組端點。 這也會受到下列事實的影響：有些端點未包含在回應時可能會狀況不良
 
-## <a name="real-user-measurements"></a>真實使用者度量單位
+## <a name="real-user-measurements"></a>實際使用者度量
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>使用「實際使用者度量」有哪些優點？
 
@@ -242,11 +242,11 @@ MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>測量「實際使用者度量」的網頁是否必須使用「流量管理員」來進行路由？
 
-否，它不需要使用「流量管理員」。 「流量管理員」的路由端與「實際使用者度量」部分是分開運作的，雖然最好是將它們都放在相同的 Web 屬性中，但不一定要這麼做。
+否，不需要使用流量管理員。 流量管理員的路由端會與實際的使用者度量部分分開運作，雖然在相同的 web 屬性中都有很大的想法，但不需要這麼做。
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>我是否必須在 Azure 區域裝載任何服務，才能搭配使用「實際使用者度量」？
 
-否，您不需要在 Azure 上裝載任何伺服器端元件，實際使用者度量就能運作。 度量 JavaScript 所下載的單一像素影像，以及在不同 Azure 區域中執行它的服務，是由 Azure 所裝載並管理的。 
+否，您不需要在 Azure 上裝載任何伺服器端元件，即可讓實際的使用者度量工作。 度量 JavaScript 所下載的單一像素影像，以及在不同 Azure 區域中執行它的服務，是由 Azure 所裝載並管理的。 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>使用「實際使用者度量」時，我的 Azure 頻寬使用量是否會增加？
 
@@ -271,7 +271,7 @@ MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載
 
 ### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>「流量檢視」與透過 Azure 監視器提供的「流量管理員」計量有何不同？
 
-「Azure 監視器」可用來了解設定檔及其端點所收到流量的彙總層級。 它也可以顯示端點的健康情況檢查結果，來讓您追蹤端點的健康狀態。 當您不僅要了解這些，還必須了解使用者連線到 Azure 的區域層級體驗時，便可以使用「流量檢視」來達到該目的。
+「Azure 監視器」可用來了解設定檔及其端點所收到流量的彙總層級。 它也可以顯示端點的健康情況檢查結果，來讓您追蹤端點的健康狀態。 當您需要超越這些範圍，並瞭解您的使用者在區域層級連線到 Azure 的體驗時，可以使用「流量視圖」來達成此目的。
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>「流量檢視」是否使用「EDNS 用戶端子網路」資訊？
 
@@ -283,7 +283,7 @@ MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載
 
 ### <a name="how-does-traffic-view-handle-external-endpoints"></a>「流量檢視」如何處理外部端點？
 
-當您在「流量管理員」設定檔中使用裝載在 Azure 區域外的外部端點時，可以選擇讓它對應到作為其延遲特性之 Proxy 的 Azure 區域 (事實上，如果您使用效能路由方法，就必須這麼做)。 如果它擁有這個 Azure 區域對應，當建立「流量檢視」輸出時，就會使用該 Azure 區域的延遲計量。 如果未指定任何 Azure 區域，這些外部端點的資料中就不會有任何延遲資訊。
+當您在「流量管理員」設定檔中使用裝載在 Azure 區域外的外部端點時，可以選擇讓它對應到作為其延遲特性之 Proxy 的 Azure 區域 (事實上，如果您使用效能路由方法，就必須這麼做)。 如果它有此 Azure 區域對應，則在建立流量視圖輸出時，將會使用該 Azure 區域的延遲計量。 如果未指定任何 Azure 區域，這些外部端點的資料中就不會有任何延遲資訊。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>我是否必須為訂用帳戶中的每個設定檔啟用「流量檢視」？
 
@@ -310,7 +310,7 @@ MultiValue 路由方法的另一種用法是，如果端點同時「雙重裝載
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>我可以使用流量管理員來設定雲端服務「預備」位置嗎？
 
-可以。 雲端服務「預備」位置可在流量管理員中設定為外部端點。 健康情況檢查仍然以 Azure 端點費率計費。
+是。 雲端服務「預備」位置可在流量管理員中設定為外部端點。 健康情況檢查仍然以 Azure 端點費率計費。
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>流量管理員是否支援 IPv6 端點？
 
@@ -351,7 +351,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="can-i-monitor-https-endpoints"></a>我可以監視 HTTPS 端點嗎？
 
-可以。 流量管理員支援透過 HTTPS 探查。 在監視組態中將 **HTTPS** 設定為通訊協定。
+是。 流量管理員支援透過 HTTPS 探查。 在監視組態中將 **HTTPS** 設定為通訊協定。
 
 流量管理員無法提供任何憑證驗證，包括：
 
@@ -376,31 +376,31 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 否，流量管理員不允許您在設定檔內混用端點定址類型，但設定檔具有 MultiValue 路由類型且可以混用 IPv4 和 IPv6 定址類型的情況除外
 
-### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>傳入查詢的記錄類型和與端點定址類型建立關聯的記錄類型不同時，會發生什麼事？
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>當傳入查詢的記錄類型不同于與端點的定址類型相關聯的記錄類型時，會發生什麼事？
 
 收到設定檔的查詢時，流量管理員會先尋找需要根據指定路由方法和端點健康狀態所傳回的端點。 它接著會在根據下表傳回回應之前，查看傳入查詢中所要求的記錄類型以及與端點建立關聯的記錄類型。
 
 針對任何具有 MultiValue 以外之路由方法的設定檔：
 
-|傳入查詢要求|    端點類型|  提供的回應|
+|傳入查詢要求|     端點類型|     提供的回應|
 |--|--|--|
-|ANY |  A/AAAA/CNAME |  目標端點| 
-|A |    A/CNAME | 目標端點|
-|A |    AAAA |  NODATA |
-|AAAA | AAAA/CNAME |  目標端點|
-|AAAA | A | NODATA |
-|CNAME |    CNAME | 目標端點|
-|CNAME  |A/AAAA | NODATA |
+|ANY |    A/AAAA/CNAME |    目標端點| 
+|A |    A/CNAME |    目標端點|
+|A |    AAAA |    NODATA |
+|AAAA |    AAAA/CNAME |    目標端點|
+|AAAA |    A |    NODATA |
+|CNAME |    CNAME |    目標端點|
+|CNAME     |A/AAAA |    NODATA |
 |
 
 針對路由方法設定為 MultiValue 的設定檔：
 
-|傳入查詢要求|    端點類型 | 提供的回應|
+|傳入查詢要求|     端點類型 |    提供的回應|
 |--|--|--|
-|ANY |  混用 A 和 AAAA | 目標端點|
-|A |    混用 A 和 AAAA | 僅限 A 類型的目標端點|
-|AAAA   |混用 A 和 AAAA|     僅限 AAAA 類型的目標端點|
-|CNAME |    混用 A 和 AAAA | NODATA |
+|ANY |    混用 A 和 AAAA |    目標端點|
+|A |    混用 A 和 AAAA |    僅限 A 類型的目標端點|
+|AAAA    |混用 A 和 AAAA|     僅限 AAAA 類型的目標端點|
+|CNAME |    混用 A 和 AAAA |    NODATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>我可以在巢狀設定檔中使用具有 IPv4/IPv6 定址端點的設定檔嗎？
 
@@ -412,7 +412,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>即使我的應用程式不支援 HTTP 或 HTTPS 也可以使用流量管理員嗎？
 
-可以。 您可以指定 TCP 作為監視通訊協定，流量管理員可以起始 TCP 連線，並且等待端點的回應。 如果端點在逾時期間內以建立連線的回應來回覆連線要求，則該端點會標示為狀況良好。
+是。 您可以指定 TCP 作為監視通訊協定，流量管理員可以起始 TCP 連線，並且等待端點的回應。 如果端點在逾時期間內以建立連線的回應來回覆連線要求，則該端點會標示為狀況良好。
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 監視時需要端點的哪些特定回應？
 
@@ -439,7 +439,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 ### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>如何將 HTTP 標頭指派給我端點的流量管理員健康狀態檢查？
 
 流量管理員可讓您在對您端點起始的 HTTP(S) 健康狀態檢查中指定自訂標頭。 如果您想要指定自訂標頭，則可以在設定檔層級 (適用於所有端點) 或在端點層級指定。 如果在兩個層級定義標頭，則在端點層級指定的標頭將會覆寫設定檔層級標頭。
-此狀況的一個常見使用案例是指定主機標頭，以將流量管理員要求正確地路由至裝載於多租用戶環境的端點。 另一種使用案例是識別來自端點 HTTP(S) 要求記錄的流量管理員要求
+此狀況的一個常見使用案例是指定主機標頭，以將流量管理員要求正確地路由至裝載於多租用戶環境的端點。 另一個使用案例是識別來自端點 HTTP （S）要求記錄的流量管理員要求
 
 ### <a name="what-host-header-do-endpoint-health-checks-use"></a>端點健全狀況檢查使用哪一個主機標頭？
 
@@ -472,7 +472,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>在同一個「流量管理員」設定檔中，是否可以將其他端點類型與巢狀子設定檔混合使用？
 
-可以。 對於在設定檔內如何結合不同類型的端點，並沒有任何限制。
+是。 對於在設定檔內如何結合不同類型的端點，並沒有任何限制。
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>巢狀設定檔如何套用計費模型？
 
@@ -487,7 +487,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>巢狀設定檔是否會對效能造成影響？
 
-不會。 使用巢狀設定檔不會影響效能。
+否。 使用巢狀設定檔不會影響效能。
 
 在處理每個 DNS 查詢時，流量管理員名稱伺服器會周遊設定檔階層內部。 父設定檔的 DNS 查詢可能會收到從子設定檔傳回端點的 DNS 回應。 不論您使用單一設定檔或巢狀設定檔，都只會使用單一 CNAME 記錄。 不需要為階層中的每個設定檔建立 CNAME 記錄。
 
@@ -505,7 +505,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 | CheckingEndpoints。 至少有一個子設定檔端點是 'CheckingEndpoint'。 沒有端點是「線上」或「已降級」。 |同上。 | |
 | 非使用中。 所有子設定檔端點不是「已停用」就是「已停止」，或者此設定檔沒有任何端點 |已停止 | |
 
-## <a name="next-steps"></a>接下來的步驟：
+## <a name="next-steps"></a>後續步驟：
 
 - 深入了解「流量管理員」的 [端點監視和自動容錯移轉](../traffic-manager/traffic-manager-monitoring.md)。
 - 深入了解「流量管理員」的 [流量路由方法](../traffic-manager/traffic-manager-routing-methods.md)。

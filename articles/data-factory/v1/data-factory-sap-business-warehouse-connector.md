@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929215"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387684"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74929215"
 > * [第 2 版 (目前的版本)](../connector-sap-business-warehouse.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 SAP Business Warehouse 連接器](../connector-sap-business-warehouse.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 SAP Business Warehouse 連接器](../connector-sap-business-warehouse.md)。
 
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 SAP Business Warehouse (BW) 移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
@@ -61,15 +61,15 @@ ms.locfileid: "74929215"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 SAP Business Warehouse (BW) 連結服務專屬 JSON 元素的描述。
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | string | 是
+伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | 字串 | 是
 systemNumber | SAP BW 系統的系統編號。 | 以字串表示的二位數十進位數字。 | 是
 clientId | SAP W 系統中用戶端的用戶端識別碼。 | 以字串表示的三位數十進位數字。 | 是
-username | 具有 SAP 伺服器存取權之使用者的名稱 | string | 是
-password | 使用者的密碼。 | string | 是
-gatewayName | 資料處理站服務應該用來連線至內部部署 SAP BW 執行個體的閘道器名稱。 | string | 是
-encryptedCredential | 加密的認證字串。 | string | 否
+username | 具有 SAP 伺服器存取權之使用者的名稱 | 字串 | 是
+密碼 | 使用者的密碼。 | 字串 | 是
+gatewayName | 資料處理站服務應該用來連線至內部部署 SAP BW 執行個體的閘道器名稱。 | 字串 | 是
+encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
@@ -84,9 +84,9 @@ encryptedCredential | 加密的認證字串。 | string | 否
 
 當複製活動中的來源類型為 **RelationalSource** 時 (包括 SAP BW)，typeProperties 區段中會有下列屬性可用：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| query | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | MDX 查詢。 | 是 |
+| 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | MDX 查詢。 | 是 |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 範例：將資料從 SAP Business Warehouse 複製到 Azure Blob
@@ -99,9 +99,9 @@ encryptedCredential | 加密的認證字串。 | string | 否
 
 1. [SapBw](#linked-service-properties) 類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [RelationalTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-5. 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+5. 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 範例會每小時將資料從 SAP Business Warehouse 執行個體複製到 Azure Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -296,7 +296,7 @@ CLNT | String
 CURR | Decimal
 CUKY | String
 DEC | Decimal
-FLTP | DOUBLE
+FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
@@ -314,7 +314,7 @@ NUMC | String
 TIMS | String
 
 > [!NOTE]
-> 若要將來自來源資料集的資料行與來自接收資料集的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
+> 若要將來源資料集中的資料行對應至接收資料集中的資料行，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行

@@ -4,11 +4,11 @@ description: 瞭解如何針對已部署在訂用帳戶中的容器，使用 Azu
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250628"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395363"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用已部署 Azure Kubernetes Service （AKS）叢集的監視
 
@@ -33,7 +33,7 @@ ms.locfileid: "78250628"
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
 ```
 
-輸出看起來會向下面這樣：
+輸出看起來會像下面這樣：
 
 ```output
 provisioningState       : Succeeded
@@ -49,7 +49,7 @@ provisioningState       : Succeeded
     az account list --all -o table
     ```
 
-    輸出看起來會向下面這樣：
+    輸出看起來會像下面這樣：
 
     ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -79,7 +79,7 @@ provisioningState       : Succeeded
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
     ```
 
-    輸出看起來會向下面這樣：
+    輸出看起來會像下面這樣：
 
     ```output
     provisioningState       : Succeeded

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185852"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672301"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 裝置管理常見問題集
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185852"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>問：我最近註冊了裝置。 為什麼在 Azure 入口網站中我的使用者資訊底下看不到該裝置？ 或者，為什麼裝置擁有者會針對混合式 Azure Active Directory （Azure AD）加入的裝置標示為 N/A？
 
 **答：** 已加入混合式 Azure AD 的 Windows 10 裝置不會顯示在 [**使用者裝置**] 底下。
-請使用 Azure 入口網站中的 [所有裝置] 檢視。 您也可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet。
+請使用 Azure 入口網站中的 [所有裝置] 檢視。 您也可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet。
 
 只有下列裝置會列在 [使用者裝置] 底下：
 
@@ -62,14 +62,14 @@ ms.locfileid: "77185852"
 - 使用者從我的應用程式入口網站停用裝置。 
 - 系統管理員（或使用者）在 Azure 入口網站中或使用 PowerShell 來刪除或停用裝置
 - 僅混合式 Azure AD 聯結：系統管理員移除超出同步範圍的 [裝置] OU，導致從 Azure AD 刪除裝置
-- 升級 Azure AD 連接到 1.4. x 版。 [瞭解 Azure AD Connect 1.4. x 和裝置消失](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)。
+- 升級 Azure AD 連接到 1.4. x 版。 [瞭解 Azure AD Connect 1.4. x 和裝置消失](/azure/active-directory/hybrid/reference-connect-device-disappearance)。
 
 
 請參閱下文以瞭解如何修正這些動作。
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>問：我已在 Azure 入口網站中停用或刪除我的裝置，或使用 Windows PowerShell。 但是裝置上的本機狀態會顯示為 [已註冊]。 我該怎麼做？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>問：我已在 Azure 入口網站中停用或刪除我的裝置，或使用 Windows PowerShell。 但是裝置上的本機狀態會顯示為 [已註冊]。 我該怎麼辦？
 
 **答：** 這項作業是依設計進行。 在此情況下，裝置無法存取雲端中的資源。 系統管理員可以針對過時、遺失或遭竊的裝置執行此動作，以防止未經授權的存取。 如果不小心執行此動作，您必須重新啟用或重新註冊裝置，如下所述
 
@@ -128,7 +128,7 @@ ms.locfileid: "77185852"
 **答：** 從 Azure AD 裝置標記為停用的時間起，最多需要一小時才能套用撤銷。
 
 >[!NOTE] 
->針對已註冊的裝置，建議您將裝置抹除，以確保使用者無法存取資源。 如需詳細資訊，請參閱[什麼是裝置註冊？](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
+>針對已註冊的裝置，建議您將裝置抹除，以確保使用者無法存取資源。 如需詳細資訊，請參閱[什麼是裝置註冊？](/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
 
 ---
 
@@ -180,13 +180,13 @@ ms.locfileid: "77185852"
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>問：我的使用者無法從已加入 Azure AD 的裝置搜尋印表機。 如何從這些裝置啟用列印？
 
-**答：** 若要為已加入 Azure AD 的裝置部署印表機，請參閱[使用預先驗證來部署 Windows Server 混合式雲端列印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 您需要有內部部署的 Windows Server，才能部署混合式雲端列印。 目前尚無法使用雲端式列印服務。 
+**答：** 若要為已加入 Azure AD 的裝置部署印表機，請參閱[使用預先驗證來部署 Windows Server 混合式雲端列印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 您需要有內部部署的 Windows Server，才能部署混合式雲端列印。 目前尚無法使用雲端式列印服務。 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>問：如何? 連接到遠端 Azure AD 加入的裝置嗎？
 
-**答：** 請參閱[連接到已加入遠端 Azure Active Directory 的電腦](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
+**答：** 請參閱[連接到已加入遠端 Azure Active Directory 的電腦](/windows/client-management/connect-to-remote-aadj-pc)。
 
 ---
 
@@ -220,7 +220,7 @@ ms.locfileid: "77185852"
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>問：為什麼我會看到*糟糕 。發生錯誤！* 當我嘗試 Azure AD 加入我的電腦 時，會出現對話方塊嗎？
 
-**答：** 當您使用 Intune 設定 Azure Active Directory 註冊時，就會發生此錯誤。 請確定嘗試加入 Azure AD 的使用者已獲指派正確的 Intune 授權。 如需詳細資訊，請參閱[設定 Windows 裝置的註冊](https://docs.microsoft.com/intune/windows-enroll)。  
+**答：** 當您使用 Intune 設定 Azure Active Directory 註冊時，就會發生此錯誤。 請確定嘗試加入 Azure AD 的使用者已獲指派正確的 Intune 授權。 如需詳細資訊，請參閱[設定 Windows 裝置的註冊](/intune/windows-enroll)。  
 
 ---
 
@@ -307,7 +307,7 @@ ms.locfileid: "77185852"
 
 **答：** 請執行下列步驟：
 
-1.  [建立裝置相容性原則](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [建立裝置相容性原則](/intune/compliance-policy-create-mac-os)
 1.  [定義 macOS 裝置的條件式存取原則](../active-directory-conditional-access-azure-portal.md) 
 
 **備註：**

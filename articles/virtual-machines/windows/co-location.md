@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: b61a84f2b284177b7443be00efeea65e7eb8aaef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374822"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>共同尋找資源以改善延遲
 
 在 Azure 中部署您的應用程式時，將實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 
 
 
-## <a name="proximity-placement-groups"></a>鄰近放置群組 
+## <a name="proximity-placement-groups"></a>鄰近位置群組 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 

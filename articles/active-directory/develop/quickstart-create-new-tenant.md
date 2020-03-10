@@ -13,14 +13,14 @@ ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 74747e1bc5247e2a95a180b7361eafe8ca795bc2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: ffd47d886a9d74c637f4f7ff634b3fd4c4a77574
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390760"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
+# <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租使用者
 
 Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 365 環境與身分識別為目標的應用程式。 若要開始使用 Microsoft 身分識別平台，您將須存取一個環境 (也稱為 Azure AD 租用戶)，在該環境中註冊及管理應用程式、存取 Microsoft 365 的資料，以及部署自訂條件式存取與租用戶限制。
 
@@ -51,7 +51,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 > [!TIP]
 > 如果您要尋找租用戶識別碼，您可以︰
 > * 將滑鼠停留在您的帳戶名稱上，以取得目錄/租用戶識別碼，或
-> * 在 Azure 入口網站中依序選取 [Azure Active Directory] > [屬性] > [目錄識別碼] 
+> * 在 Azure 入口網站中依序選取 [Azure Active Directory] > [屬性] > [目錄識別碼]
 
 如果您目前沒有與帳戶相關聯的租用戶，則會在您的帳戶名稱下方看到一個 GUID，且您在依照下一節的步驟執行之前，將無法執行註冊應用程式之類的動作。
 
@@ -74,4 +74,4 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 * 嘗試程式碼撰寫快速入門，並開始驗證使用者。 
 * 如需更多深入的程式碼範例，請參閱文件的**教學課程**一節。
-* 想要將您的應用程式部署至雲端嗎？ 請參閱[將容器部署至 Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)。 
+* 想要將您的應用程式部署至雲端嗎？ 請參閱[將容器部署至 Azure](https://docs.microsoft.com/azure/index?pivot=products&panel=containers)。

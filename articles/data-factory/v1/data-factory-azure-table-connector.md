@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918721"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387409"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure 資料表來回移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -25,7 +25,7 @@ ms.locfileid: "74918721"
 > * [第 2 版 (目前的版本)](../connector-azure-table-storage.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Azure 表格儲存體連接器](../connector-azure-table-storage.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Azure 表格儲存體連接器](../connector-azure-table-storage.md)。
 
 本文說明如何使用 Azure Data Factory 中的「複製活動」，將資料移進/移出「Azure 資料表儲存體」。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。 
 
@@ -60,9 +60,9 @@ ms.locfileid: "74918721"
 
 每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 **AzureTable** 類型資料集的 **typeProperties** 區段有下列屬性。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| tableName |Azure 資料表資料庫執行個體中連結服務所參照的資料表名稱。 |可以。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| tableName |Azure 資料表資料庫執行個體中連結服務所參照的資料表名稱。 |是。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 
 ### <a name="schema-by-data-factory"></a>Data factory 的結構描述
 針對無結構描述的資料存放區 (如 Azure 資料表)，Data Factory 服務會以下列一種方式推斷結構描述：
@@ -79,9 +79,9 @@ ms.locfileid: "74918721"
 
 **AzureTableSource** 在 typeProperties 區段中支援下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |不會。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |否。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 | azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |TRUE<br/>FALSE |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 範例
@@ -99,14 +99,14 @@ azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}
 
 **AzureTableSink** 在 typeProperties 區段中支援下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |可供接收器使用的預設資料分割索引鍵值。 |字串值。 |否 |
 | azureTablePartitionKeyName |指定其值用來作為分割區索引鍵的資料行名稱。 如果未指定，則會使用 AzureTableDefaultPartitionKeyValue 做為資料分割索引鍵。 |資料行名稱。 |否 |
 | azureTableRowKeyName |指定其值用來作為資料列索引鍵的資料行名稱。 如果未指定，則會針對每個資料列使用 GUID。 |資料行名稱。 |否 |
 | azureTableInsertType |將資料插入 Azure 資料表的模式。<br/><br/>此屬性可控制針對輸出資料表中具有相符分割區和資料列索引鍵的現有資料列，是要取代還是合併其值。 <br/><br/>若要了解這些設定 (合併和取代) 的運作方式，請參閱[插入或合併實體](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或取代實體](https://msdn.microsoft.com/library/azure/hh452242.aspx)主題。 <br/><br> 此設定是在資料列層級套用，而不是在資料表層級套用，而且兩個選項都不會刪除存在於輸出資料表中但不存在於輸入中的資料列。 |合併 (預設值)<br/>取代 |否 |
 | writeBatchSize |在達到 WriteBatchSize 或 writeBatchTimeout 時將資料插入 Azure 資料表中。 |整數 (資料列數目) |否 (預設值：10000) |
-| writeBatchTimeout |在達到 WriteBatchSize 或 writeBatchTimeout 時將資料插入 Azure 資料表中 |timespan<br/><br/>範例：“00:20:00” (20 分鐘) |否 (預設為儲存體用戶端預設逾時值 90 秒) |
+| writeBatchTimeout |在達到 WriteBatchSize 或 writeBatchTimeout 時將資料插入 Azure 資料表中 |時間範圍<br/><br/>範例：“00:20:00” (20 分鐘) |否 (預設為儲存體用戶端預設逾時值 90 秒) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 您必須先使用轉譯器 JSON 屬性將來源資料行對應至目的地資料行，才能使用目的地資料行作為 azureTablePartitionKeyName。
@@ -136,9 +136,9 @@ DivisionID 被指定為分割區索引鍵。
 下列範例顯示︰
 
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 類型的連結服務 (同時用於資料表和 Blob)。
-2. [AzureTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-4. 具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+2. [AzureTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
+3. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+4. 具有使用 AzureTableSource 和 [BlobSink](data-factory-create-pipelines.md) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此範例會每小時將 Azure 資料表中屬於預設資料分割的資料複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -303,9 +303,9 @@ Azure Data Factory 支援兩種類型的 Azure 儲存體連結服務：**AzureSt
 下列範例顯示︰
 
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 類型的連結服務 (同時用於資料表和 Blob)
-2. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-3. [AzureTable](#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
-4. 具有使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [AzureTableSink](#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
+2. [AzureBlob](data-factory-create-datasets.md) 類型的輸入[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
+3. [AzureTable](data-factory-create-datasets.md) 類型的輸出[資料集](#dataset-properties)。
+4. 具有使用 [BlobSource](data-factory-create-pipelines.md) 和 [AzureTableSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](#copy-activity-properties)。
 
 此範例會每小時將時間序列資料從 Azure Blob 複製到 Azure 資料表。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -478,9 +478,9 @@ Azure Data Factory 支援兩種類型的 Azure 儲存體連結服務：**AzureSt
 | --- | --- | --- |
 | Edm.Binary |byte[] |上限為 64 KB 的位元組陣列。 |
 | Edm.Boolean |bool |布林值。 |
-| Edm.DateTime |日期時間 |以國際標準時間 (UTC) 表示的 64 位元值。 支援的 DateTime 範圍從西元 1601 年 1 月 1 日午夜 12:00 開始 (C.E.), UTC. 此範圍結束於 9999 年 12 月 31 日。 |
-| Edm.Double |兩倍 |64 位元的浮點值。 |
-| Edm.Guid |GUID |128 位元的全域唯一識別碼。 |
+| Edm.DateTime |Datetime |以國際標準時間 (UTC) 表示的 64 位元值。 支援的 DateTime 範圍從西元 1601 年 1 月 1 日午夜 12:00 開始 (C.E.), UTC. 此範圍結束於 9999 年 12 月 31 日。 |
+| Edm.Double |double |64 位元的浮點值。 |
+| Edm.Guid |Guid |128 位元的全域唯一識別碼。 |
 | Edm.Int32 |Int32 |32 位元的整數。 |
 | Edm.Int64 |Int64 |64 位元的整數。 |
 | Edm.String |String |UTF 16 編碼值。 字串值最大可達 64 KB。 |
@@ -534,10 +534,10 @@ Azure Data Factory 支援兩種類型的 Azure 儲存體連結服務：**AzureSt
 
 **Azure 資料表結構描述：**
 
-| 資料行名稱 | Type |
+| 資料行名稱 | 類型 |
 | --- | --- |
 | userid |Edm.Int64 |
-| 名稱 |Edm.String |
+| NAME |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 接著，依下列方式定義「Azure 資料表」資料集。 您不需要指定含有類型資訊的「結構」區段，因為類型資訊已在基礎資料存放區中指定。
@@ -562,7 +562,7 @@ Azure Data Factory 支援兩種類型的 Azure 儲存體連結服務：**AzureSt
 在此情況下，Data Factory 會自動進行類型轉換，包括將資料從 Blob 移到「Azure 資料表」時，含有自訂日期時間格式 (使用 "fr-fr" 文化特性) 的 Datetime 欄位。
 
 > [!NOTE]
-> 若要將來自來源資料集的資料行與來自接收資料集的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
+> 若要將來源資料集中的資料行對應至接收資料集中的資料行，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 若要了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法，請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)。

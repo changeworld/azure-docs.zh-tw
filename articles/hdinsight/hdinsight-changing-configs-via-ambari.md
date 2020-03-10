@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386937"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 將 HDInsight 叢集設定最佳化
 
@@ -123,7 +123,7 @@ Hadoop 會嘗試將單一檔案分割 (*對應*) 為多個檔案，並且平行�
 
 在一個或多個階段中執行 Hive 查詢。 如果可以平行執行獨立階段，即可提升查詢效能。
 
-1. 若要啟用平行查詢執行，請瀏覽至 Hive [設定] 索引標籤，並搜尋 `hive.exec.parallel` 屬性。 預設值為 False。 將值變更為 true，然後按下 **Enter** 儲存值。
+1. 若要啟用平行查詢執行，請瀏覽至 Hive [設定] 索引標籤，並搜尋 `hive.exec.parallel` 屬性。 預設值為 false。 將值變更為 true，然後按下 **Enter** 儲存值。
 
 1. 若要限制平行執行的作業數目，請修改 `hive.exec.parallel.thread.number` 屬性。 預設值為 8。
 
@@ -135,7 +135,7 @@ Hive 會逐列處理資料。 向量化會指示 Hive 處理 1,024 列的資料�
 
 1. 若要啟用向量化查詢執行，請瀏覽至 Hive [設定] 索引標籤，並搜尋 `hive.vectorized.execution.enabled` 參數。 Hive 0.13.0 或更新版本的預設值為 true。
 
-1. 若要對於查詢的歸納器端啟用向量化執行，將 `hive.vectorized.execution.reduce.enabled` 參數設定為 true。 預設值為 False。
+1. 若要對於查詢的歸納器端啟用向量化執行，將 `hive.vectorized.execution.reduce.enabled` 參數設定為 true。 預設值為 false。
 
     ![Apache Hive 向量化執行](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -175,16 +175,16 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 可用的壓縮類型包括：
 
-| 格式 | 工具 | 演算法 | 檔案副檔名 | 可分割？ |
+| [格式] | 工具 | 演算法 | 檔案副檔名 | 可分割？ |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | 否 |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | yes |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
 | LZO | Lzop | LZO | .lzo | 是，如果已編製索引 |
 | Snappy | N/A | Snappy | Snappy | 否 |
 
 一般而言，可分割的壓縮方法相當重要，否則只會建立極少量的對應程式。 如果輸入資料為文字，`bzip2` 是最佳選擇。 若為˙ ORC 格式，Snappy 是最快的壓縮選項。
 
-1. 若要啟用中繼壓縮，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.exec.compress.intermediate` 參數設定為 true。 預設值為 False。
+1. 若要啟用中繼壓縮，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.exec.compress.intermediate` 參數設定為 true。 預設值為 false。
 
     ![Hive exec 壓縮中繼](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
@@ -197,7 +197,7 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
     a. 流覽至**hive** > 配置 > **Advanced** > **自訂 hive-site**。
 
-    b.這是另一個 C# 主控台應用程式。 選取 [自訂 hive 網站] 窗格底部的 [**新增屬性 ...** ]。
+    b. 選取 [自訂 hive 網站] 窗格底部的 [**新增屬性 ...** ]。
 
     c. 在 [新增屬性] 視窗中，輸入 `mapred.map.output.compression.codec` 做為索引鍵，並輸入 `org.apache.hadoop.io.compress.SnappyCodec` 做為值。
 
@@ -214,7 +214,7 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 最終 Hive 輸出也可壓縮。
 
-1. 若要壓縮最終 Hive 輸出，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.exec.compress.output` 參數設定為 true。 預設值為 False。
+1. 若要壓縮最終 Hive 輸出，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.exec.compress.output` 參數設定為 true。 預設值為 false。
 
 1. 若要選擇輸出壓縮轉碼器，請將 `mapred.output.compression.codec` 自訂屬性新增至 [自訂 Hive 網站] 窗格，如上一節的步驟 3 中所述。
 
@@ -226,7 +226,7 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 對於有大量輸入的長時間執行 MapReduce 工作，不應該開啟推測性執行。
 
-* 若要啟用推測性執行，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.mapred.reduce.tasks.speculative.execution` 參數設定為 true。 預設值為 False。
+* 若要啟用推測性執行，請瀏覽至 Hive [設定] 索引標籤，然後將 `hive.mapred.reduce.tasks.speculative.execution` 參數設定為 true。 預設值為 false。
 
     ![Hive mapred 會減少推測性執行執行](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -311,7 +311,7 @@ Hive 的預設聯結類型是*隨機聯結*。 在 Hive 中，特殊對應程式
 
 和 Hive 類似，本機模式可用來加速資料量相對較小的作業。
 
-1. 若要啟用本機模式，請將 `pig.auto.local.enabled` 設定為 **true**。 預設值為 False。
+1. 若要啟用本機模式，請將 `pig.auto.local.enabled` 設定為 **true**。 預設值為 false。
 
 1. 輸入資料大小比 `pig.auto.local.input.maxbytes` 屬性值小的作業會被視為小型作業。 預設值為 1 GB。
 
@@ -335,13 +335,13 @@ Pig 會將 UDF 需要的 JAR 檔案複製到分散式快取，以供工作節點
 
 Pig 會在作業執行期間產生暫存檔。 壓縮暫存檔會提升在磁碟中讀取或寫入檔案的效能。 下列設定可用來壓縮暫存檔。
 
-* `pig.tmpfilecompression`：若為 true，啟用暫存檔壓縮。 預設值為 False。
+* `pig.tmpfilecompression`：若為 true，啟用暫存檔壓縮。 預設值為 false。
 
 * `pig.tmpfilecompression.codec`：壓縮轉碼器用來壓縮暫存檔。 為了降低 CPU 使用率，建議的壓縮轉碼器是 [LZO](https://www.oberhumer.com/opensource/lzo/) 和 Snappy。
 
 ### <a name="enable-split-combining"></a>啟用分割合併
 
-啟用時，小型檔案會合併，以減少對應工作。 對於包含大量小型檔案的作業，這可提升效率。 若要啟用，請將 `pig.noSplitCombination` 設定為 true。 預設值為 False。
+啟用時，小型檔案會合併，以減少對應工作。 對於包含大量小型檔案的作業，這可提升效率。 若要啟用，請將 `pig.noSplitCombination` 設定為 true。 預設值為 false。
 
 ### <a name="tune-mappers"></a>微調對應程式
 

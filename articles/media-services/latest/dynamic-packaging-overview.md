@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719665"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359513"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -93,7 +93,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 
 ## <a name="live-streaming-workflow"></a>即時串流工作流程
 
-即時事件可以是下列兩種類型之一：即時通行或即時編碼。 
+即時事件可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 
 
 以下是適用於動態封裝搭配即時串流的常見工作流程：
 
@@ -240,7 +240,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>資訊清單中的追蹤命名
 
-如果在 .ism 檔案中指定了曲目名稱，則媒體服務會在 `AdaptationSet`內新增 `Label` 元素，以指定特定曲目的質地資訊。輸出 DASH 資訊清單的範例：
+如果在. ism 檔案中指定了音訊播放軌名稱，媒體服務會在 `AdaptationSet` 內加入 `Label` 專案，以指定特定音訊播放軌的 textural 資訊。輸出虛線資訊清單的範例：
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -262,7 +262,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 #### <a name="smooth-streaming-manifest"></a>Smooth Streaming 資訊清單
 
-如果您要播放 Smooth Streaming 資料流，則資訊清單會包含該曲目的 `Accessibility` 和 `Role` 屬性值。例如，`StreamIndex` 元素中會新增 `Role="alternate" Accessibility="description"`，以表示它是音訊描述。
+如果您要播放 Smooth Streaming 資料流程，資訊清單會在 `Accessibility` 中包含值，並在該音訊曲目 `Role` 屬性。例如，`Role="alternate" Accessibility="description"` 會加入 `StreamIndex` 元素中，以表示它是音訊描述。
 
 #### <a name="dash-manifest"></a>DASH 資訊清單
 
@@ -287,7 +287,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="dynamic-encryption"></a>動態加密
 
-您可以使用「動態加密」  來搭配 AES-128 或下列三個主流數位版權管理 (DRM) 系統之一，以動態方式加密您的即時或隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，傳遞 AES 金鑰和 DRM 授權給授權用戶端。 如需詳細資訊，請參閱[動態加密](content-protection-overview.md)。
+您可以使用*動態加密*，以 AES-128 或下列三個主要數位版權管理（DRM）系統中的任何一種來動態加密您的即時或隨選內容： Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，傳遞 AES 金鑰和 DRM 授權給授權用戶端。 如需詳細資訊，請參閱[動態加密](content-protection-overview.md)。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
