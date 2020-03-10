@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613579"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946415"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD Domain Services 受控網域中的群組原則
 
@@ -42,7 +42,11 @@ Azure Active Directory Domain Services （Azure AD DS）中使用者和電腦物
 * 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員群組成員的使用者帳戶。
 
 > [!NOTE]
-> 因為無法[存取 AZURE AD DS 中的網域控制站](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)，所以您無法在受控網域中建立並使用群組原則系統管理範本的中央存放區。 [Sysvol 不會包含在內部部署 Azure AD Connect 同步](synchronization.md#what-isnt-synchronized-to-azure-ad-ds)處理中，因此您也無法建立內部部署中央存放區，並透過 Azure AD 將其同步至 Azure AD DS。
+> 您可以藉由將新的範本複製到管理工作站來使用群組原則系統管理範本。 將*admx*檔案複製到 `%SYSTEMROOT%\PolicyDefinitions`，並將地區設定特定的*adml*檔案複製到 `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`，其中 `Language-CountryRegion` 符合*adml*檔案的語言和區域。
+>
+> 例如，將*adml*檔案的英文版本複製到 [`\en-us`] 資料夾中。
+>
+> 或者，您也可以將群組原則系統管理樣板集中存放在屬於 Azure AD DS 受控網域的網域控制站上。 如需詳細資訊，請參閱[如何在 Windows 中建立和管理群組原則系統管理範本的中央存放區](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)。
 
 ## <a name="install-group-policy-management-tools"></a>安裝群組原則管理工具
 

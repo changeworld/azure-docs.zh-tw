@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520741"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945840"
 ---
 增量快照集（預覽）是受控磁片的時間點備份，在這種情況下，只會包含自上一個快照集之後的所有變更。 當您嘗試下載或使用增量快照集時，會使用完整的 VHD。 這項適用于受控磁片快照集的新功能可能會讓它們更符合成本效益，因為您不再需要將整個磁片與每個個別的快照集一起儲存，除非您選擇。 就像一般快照集一樣，您可以使用增量快照集來建立完整的受控磁片，或建立一般的快照集。
 
@@ -25,8 +25,7 @@ ms.locfileid: "77520741"
 
 目前僅支援下欄區域：
 
-- 可在美國中西部、加拿大東部加拿大中部區域中以 GA 供應專案形式提供。
-- 可在美國東部、美國東部2、美國中部、北歐、南部東亞區域提供公開預覽。
+- 可在美國中西部、美國東部、美國東部2、美國中部、加拿大東部、加拿大中部、北歐、南部東亞區域中正式推出。
 
 ## <a name="restrictions"></a>限制
 - 在您變更磁片大小（僅限預覽期間）時，目前無法建立增量快照集。

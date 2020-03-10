@@ -1,5 +1,5 @@
 ---
-title: 從 DTU 遷移至 vCore
+title: 從 DTU 遷移至虛擬核心
 description: 從 DTU 模型遷移到 vCore 模型。 遷移至 vCore 類似于 standard 和 premium 層之間的升級或降級。
 services: sql-database
 ms.service: sql-database
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811264"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945406"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>從以 DTU 為基礎的模型遷移到 vCore 為基礎的模型
 
@@ -36,16 +36,16 @@ ms.locfileid: "73811264"
 |目前的服務層級|目標服務層級|遷移類型|使用者動作|
 |---|---|---|---|
 |標準|一般用途|橫向|可依任何順序遷移，但必須確保適當的虛擬核心大小調整*|
-|高級|業務關鍵|橫向|可依任何順序遷移，但必須確保適當的虛擬核心大小調整*|
+|高階|業務關鍵|橫向|可依任何順序遷移，但必須確保適當的虛擬核心大小調整*|
 |標準|業務關鍵|升級|必須先遷移次要|
 |業務關鍵|標準|降級|必須先遷移主要|
-|高級|一般用途|降級|必須先遷移主要|
-|一般用途|高級|升級|必須先遷移次要|
+|高階|一般用途|降級|必須先遷移主要|
+|一般用途|高階|升級|必須先遷移次要|
 |業務關鍵|一般用途|降級|必須先遷移主要|
 |一般用途|業務關鍵|升級|必須先遷移次要|
 ||||
 
-\*，標準層中的每 100 Dtu 至少需要 1 vCore，而進階層中的每個 125 Dtu 至少需要 1 vCore。
+\* 做為經驗法則，標準層中的每個 100 Dtu 至少需要 1 vCore，而進階層中的每個 125 Dtu 至少需要 1 vCore。 如需詳細資訊，請參閱[以虛擬核心為基礎的購買模型](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>遷移容錯移轉群組
 
@@ -55,7 +55,7 @@ ms.locfileid: "73811264"
 
 您只能使用與主資料庫相同的服務層級，來建立異地複寫次要資料庫（地理位置）。 對於記錄產生率較高的資料庫，我們建議使用與主要複本相同的計算大小來建立異地次要資料庫。
 
-如果您要在彈性集區中為單一主資料庫建立異地次要資料庫，請確定集區的 `maxVCore` 設定符合主資料庫的計算大小。 如果您要為另一個彈性集區中的主要複本建立異地次要資料庫，建議您讓集區具有相同的 `maxVCore` 設定。
+如果您要在彈性集區中為單一主資料庫建立異地次要資料庫，請確定集區的 [`maxVCore`] 設定符合主資料庫的計算大小。 如果您要為另一個彈性集區中的主要複本建立異地次要資料庫，我們建議集區具有相同的 `maxVCore` 設定。
 
 ## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>使用資料庫複製，將以 DTU 為基礎的資料庫轉換成以 vCore 為基礎的資料庫
 

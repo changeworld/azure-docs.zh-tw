@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138158"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942285"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具（預覽）
 
@@ -56,6 +56,8 @@ ms.locfileid: "77138158"
 
 如需如何使用匯入資料模組的詳細資訊，請參閱匯[入資料參考頁面](algorithm-module-reference/import-data.md)。
 
+[!NOTE]
+> 如果資料有許多資料行，您可能會在匯入資料模組中遇到「因為大小限制而導致驗證失敗」。 這是因為資料行會在編碼後排除 maxmium 模組參數長度。 在此情況下，建議您[在資料集 UI 中註冊資料集](how-to-create-register-datasets.md#use-the-ui)，這可以避免發生錯誤。  
 
 ## <a name="supported-sources"></a>支援的來源
 
@@ -80,7 +82,7 @@ ms.locfileid: "77138158"
 * 整數
 * Decimal
 * Boolean
-* Date
+* 日期
 
 設計工具會使用內部資料類型，在模組之間傳遞資料。 您可以使用 [[轉換成資料集](algorithm-module-reference/convert-to-dataset.md)] 模組，將您的資料明確轉換成資料表格式。 接受內部格式以外之格式的任何模組，將會以無訊息模式轉換資料，然後再將其傳遞至下一個模組。
 

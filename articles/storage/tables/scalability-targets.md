@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/09/2020
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 484596b4eb4908ca84d018267d605acc41a8ccea
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b6455733e4955bd1fb5b27e3551e41e5f711df21
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749486"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943538"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>資料表儲存體的擴充性和效能目標
 
@@ -24,7 +24,7 @@ ms.locfileid: "75749486"
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [資料表儲存體的效能和擴充性檢查清單](storage-performance-checklist.md)
 - [標準儲存體帳戶的擴充性目標](../common/scalability-targets-standard-account.md)

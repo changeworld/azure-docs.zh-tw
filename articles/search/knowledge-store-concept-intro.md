@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988629"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942988"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區簡介
 
@@ -77,7 +77,7 @@ ms.locfileid: "76988629"
 
 不過，您可以建立多組 `table`-`object`-`file` 投影，如果您想要不同的資料關聯性，您可能會這麼做。 在集合中，資料是相關的，假設這些關聯性存在而且可以偵測。 如果您建立其他集合，則每個群組中的檔絕對不會相關。 使用多個投射群組的範例可能是，如果您想要將相同的資料投射到與您的線上系統搭配使用，而且需要以特定方式表示，則您也會想要在表示的資料科學管線中，使用相同的資料來進行預測完全.
 
-## <a name="requirements"></a>要求 
+## <a name="requirements"></a>需求 
 
 需要[Azure 儲存體](https://docs.microsoft.com/azure/storage/)。 它提供實體存放裝置。 您可以使用 Blob 儲存體、資料表儲存體或兩者。 Blob 儲存體用於完整擴充的檔，通常是在輸出到下游進程時。 資料表儲存體適用于擴充檔的配量，通常用於分析和報告。
 
@@ -147,3 +147,13 @@ REST API 版本 `2019-05-06-Preview` 會透過技能集上的其他定義來提�
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 建立知識存放區](knowledge-store-create-rest.md)
+
+若要深入瞭解預測，以及如何[在技能集中定義這些](knowledge-store-projection-overview.md)功能
+
+> [!div class="nextstepaction"]
+> [知識存放區中的投影](knowledge-store-projection-overview.md)
+
+如需涵蓋切割、內嵌成形和關聯性等先進預測概念的教學課程，請從[在知識存放區中定義投影](knowledge-store-projections-examples.md)開始
+
+> [!div class="nextstepaction"]
+> [定義知識存放區中的投影](knowledge-store-projections-examples.md)

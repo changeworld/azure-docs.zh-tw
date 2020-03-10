@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591518"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933801"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
 本文說明如何執行下列工作：
@@ -102,6 +102,13 @@ ms.locfileid: "77591518"
 
 > [!NOTE]
 > 當教授啟動 VM 並聯機到它時，學生配額不會受到影響。 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>將虛擬機器的清單匯出至 CSV 檔案
+
+1. 切換至 [**虛擬機器集**區] 索引標籤。
+2. 選取工具列上的 [ **...** ] （省略號），然後選取 [**匯出 CSV**]。 
+
+    ![匯出虛擬機器清單](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>後續步驟
 若要瞭解您（身為實驗室擁有者）可以設定的其他學生使用選項，請參閱下列文章：[設定學生使用](how-to-configure-student-usage.md)方式。

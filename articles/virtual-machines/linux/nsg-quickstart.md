@@ -1,27 +1,22 @@
 ---
-title: 使用 Azure CLI 開啟 Linux VM 的埠
-description: 了解如何使用 Azure Resource Manager 部署模型和 Azure CLI 對 Linux VM 開啟連接埠 / 建立端點
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用 Azure CLI 開啟 VM 的埠
+description: 瞭解如何使用 Azure CLI 開啟埠/建立 VM 的端點。
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354039"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944551"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 針對 Linux VM 開啟連接埠和端點
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>針對具有 Azure CLI 的 VM 開啟埠和端點
 
 您可以透過在子網路或 VM 網路介面上建立網路篩選，對 Azure 中的虛擬機器 (VM) 開啟連接埠或建立端點。 您可將控制輸入和輸出流量的這些篩選器放在可接收流量的資源所附加的網路安全性群組上。 讓我們使用連接埠 80 上的 Web 流量的常見範例。 這篇文章說明如何使用 Azure CLI 來開啟連接埠至 VM。 
 

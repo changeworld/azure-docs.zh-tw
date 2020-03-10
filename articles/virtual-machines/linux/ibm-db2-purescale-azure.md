@@ -1,25 +1,21 @@
 ---
 title: Azure 上的 IBM DB2 pureScale
 description: 在此文章中，我們會顯示用於在 Azure 上執行 IBM DB2 pureScale 環境的架構。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
 manager: edprice
 editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 4012048100bbed2229c45434ee4a27dfe9b952e7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530065"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945060"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -96,7 +92,7 @@ DB2 pureScale 使用共用所有項目架構，其中資料可供所有叢集節
 
 大型的 DB2 pureScale 叢集會需要 200 TB 以上的進階共用儲存體 (具有 100,000 的 IOPS)。 DB2 pureScale 支援您可在 Azure 上使用的 iSCSI 區塊介面。 ISCSI 介面需要共用儲存體叢集，您可以使用 S2D 或其他工具來執行此叢集。 此類型的解決方案會在 Azure 中建立虛擬儲存區域網路 (vSAN) 裝置。 DB2 pureScale 會使用 vSAN 來安裝用來在虛擬機器之間共用資料的叢集檔案系統。
 
-### <a name="networking-considerations"></a>網路功能考量
+### <a name="networking-considerations"></a>網路考量
 
 IBM 會針對 DB2 pureScale 叢集中的所有成員建議 InfiniBand 網路功能。 DB2 pureScale 也會為 CF 使用遠端直接記憶體存取 (RDMA) (若可用)。
 

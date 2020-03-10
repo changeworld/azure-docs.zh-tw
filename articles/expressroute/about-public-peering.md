@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483085"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361555"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>建立和管理 ExpressRoute 公用對等互連
 
@@ -111,7 +111,7 @@ ms.locfileid: "75483085"
    * 次要連結的 /30 子網路。 這必須是有效的公用 IPv4 首碼。
    * 供建立此對等的有效 VLAN ID。 請確定線路有沒有其他對等使用相同的 VLAN ID。
    * 對等的 AS 編號。 您可以使用 2 位元組和 4 位元組 AS 編號。
-   * 選擇性：
+   * 選用：
    * MD5 雜湊 (如果選擇使用)。
 
    執行下列範例來為線路設定 Azure 公用對等互連

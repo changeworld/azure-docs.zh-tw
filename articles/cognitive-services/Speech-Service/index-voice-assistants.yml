@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: 語音助理檔
+title: 語音助理文件
 summary: 語音助理使用語音服務，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。
 metadata:
   title: 語音助理檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
-  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/29/2020
-  ms.locfileid: "78196904"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943335"
 landingContent:
 - title: 開始使用
   linkLists:
@@ -35,6 +35,16 @@ landingContent:
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: 語音助理常見問題集
       url: faq-voice-assistants.md
+- title: Custom 關鍵字
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Custom 關鍵字
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: 自訂關鍵字命名指導方針
+      url: speech-devices-sdk-kws-guidelines.md
 - title: 自訂命令
   linkLists:
   - linkListType: quickstart

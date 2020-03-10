@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276495"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942860"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租使用者限制來管理 SaaS 雲端應用程式的存取權
 
@@ -60,7 +60,7 @@ ms.locfileid: "74276495"
 
 下列設定是透過您的 proxy 基礎結構啟用租使用者限制所需的設定。 本指導方針是通用的，因此如需了解特定的實作步驟，您應該參考您 Proxy 廠商的文件。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>必要條件
 
 - Proxy 必須要能夠執行 SSL 攔截、HTTP 標頭插入，以及使用 FQDN/URL 來篩選目的地。
 
@@ -93,7 +93,7 @@ ms.locfileid: "74276495"
 
 範例使用者位於 Contoso 網路上，但正在嘗試存取 Fabrikam 的共用 SaaS 應用程式執行個體 (例如 Outlook Online)。 如果 Fabrikam 是 Contoso 實例的非允許租使用者，則使用者會看到「拒絕存取」訊息，這表示您嘗試存取的資源屬於您的 IT 部門未核准的組織。
 
-### <a name="admin-experience"></a>管理員體驗
+### <a name="admin-experience"></a>系統管理員體驗
 
 雖然租使用者限制的設定是在公司 proxy 基礎結構上進行，但是系統管理員可以直接存取 Azure 入口網站中的租使用者限制報告。 若要查看報告：
 
@@ -105,12 +105,15 @@ ms.locfileid: "74276495"
 
 指定為受限制存取內容的租使用者的系統管理員可以使用此報告來查看因為租使用者限制原則而封鎖的登入，包括所使用的身分識別和目標目錄識別碼。 如果設定限制的租用戶為登入的使用者租用戶或資源租用戶，則會包含登入。
 
+> [!NOTE]
+> 當位在受限制存取內容租使用者以外的租使用者登入時，此報表可能會包含有限的資訊，例如目標目錄識別碼。 在此情況下，會遮罩使用者可識別的資訊，例如名稱和使用者主體名稱，以保護其他租使用者中的使用者資料。
+
 與 Azure 入口網站中的其他報告相同，您可以使用篩選來指定報告的範圍。 您可以根據特定時間間隔、使用者、應用程式、用戶端或狀態進行篩選。 如果您選取 [資料**行**] 按鈕，則可以選擇使用下欄欄位的任意組合來顯示資料：
 
 - **使用者**
 - **應用程式**
 - **狀態**
-- **Date**
+- **日期**
 - **日期（utc）** （其中 utc 是國際標準時間）
 - **MFA 驗證方法**（多重要素驗證方法）
 - **MFA 驗證詳細資料**（多重要素驗證詳細資料）
@@ -118,7 +121,7 @@ ms.locfileid: "74276495"
 - **IP 位址**
 - **用戶端**
 - **使用者名稱**
-- <bpt id="p1">**</bpt>Location<ept id="p1">**</ept>
+- **位置**
 - **目標租使用者識別碼**
 
 ## <a name="office-365-support"></a>Office 365 支援
@@ -166,7 +169,7 @@ Fiddler 是一個免費的 Web 偵錯 Proxy，可用來擷取和修改 HTTP/HTTP
       }
       ```
 
-      如果您需要允許多個租用戶，請使用逗號來分隔租用戶名稱。 例如︰
+      如果您需要允許多個租用戶，請使用逗號來分隔租用戶名稱。 例如，
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

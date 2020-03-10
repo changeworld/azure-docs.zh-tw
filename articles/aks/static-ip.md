@@ -3,13 +3,13 @@ title: 搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態 IP �
 description: 了解如何搭配 Azure Kubernetes Service (AKS) 負載平衡器來建立和使用靜態 IP 位址。
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593592"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943572"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態公用 IP 位址和 DNS 標籤
 
@@ -62,12 +62,12 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用靜態 IP 位址建立服務
 
-建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如：
+建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如，
 
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -99,7 +99,7 @@ kubectl apply -f load-balancer-service.yaml
 
 如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
 
-接著，Azure 會自動將預設子網（`<location>.cloudapp.azure.com` 例如 [位置] 為您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如：
+接著，Azure 會自動將預設子網（`<location>.cloudapp.azure.com` 例如 [位置] 為您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如，
 
 ```yaml
 apiVersion: v1

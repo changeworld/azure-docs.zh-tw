@@ -2,23 +2,17 @@
 title: 將資源部署到租使用者
 description: 說明如何在 Azure Resource Manager 範本的租使用者範圍中部署資源。
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: d63697f3c140b5ad374607f1ecb00dad20e697de
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.openlocfilehash: aa72116c3e6e98293b28b2d4413fd1dafb1372d9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899135"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942747"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租使用者層級建立資源
 
-您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在下列位置建立資源：
-
-* [訂用帳戶層級](deploy-to-subscription.md)
-* [管理群組層級](deploy-to-management-group.md)
-* 租使用者層級（本文涵蓋）
-
-您可以使用租使用者層級部署來採取對該層級有意義的動作，例如指派[角色型存取控制](../../role-based-access-control/overview.md)或套用[原則](../../governance/policy/overview.md)。
+當您的組織成熟時，您可能需要在 Azure AD 租使用者之間定義和指派[原則](../../governance/policy/overview.md)或[角色型存取控制](../../role-based-access-control/overview.md)。 您可以使用租使用者層級範本，以宣告方式套用原則，並在全域層級指派角色。
 
 ## <a name="supported-resources"></a>支援的資源
 
@@ -41,10 +35,10 @@ ms.locfileid: "78899135"
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-針對參數檔案，請使用：
+所有部署範圍的參數檔案架構都相同。 針對參數檔案，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="required-access"></a>必要的存取權
@@ -181,5 +175,4 @@ New-AzTenantDeployment `
 ## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
-* 如需在範本中可用函式的清單，請參閱 [範本函式](template-functions.md)。
+* 您也可以在訂用帳戶[層](deploy-to-subscription.md)級或[管理群組層級](deploy-to-management-group.md)部署範本。
