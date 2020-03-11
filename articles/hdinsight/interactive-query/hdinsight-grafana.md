@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552212"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082858"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中存取 Grafana
 
 [Grafana](https://grafana.com/) \(英文\) 是廣受使用的開放原始碼圖形和儀表板產生器。 Grafana 的功能非常豐富；不僅可讓使用者建立可自訂和可共用的儀表板，也提供樣板化/指令碼式儀表板、LDAP 整合、多種資料來源等功能。
 
-目前，在 Azure HDInsight 中，HBase、Kafka 和互動式查詢叢集類型都支援 Grafana。 對於已啟用企業安全性套件的叢集，則不支援此功能。
+目前，在 Azure HDInsight 中，Spark、HBase、Kafka 和互動式查詢叢集類型都支援 Grafana。 對於已啟用企業安全性套件的叢集，則不支援此功能。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="create-an-apache-hadoop-cluster"></a>建立 Apache Hadoop 叢集
 
-請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。 針對 [叢集**類型**]，選取 [ **Kafka**]、[ **HBase**] 或 [**互動式查詢**]。
+請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。 針對叢集**類型**，選取 [ **Spark**]、[ **Kafka**]、[ **HBase**] 或 [**互動式查詢**]。
 
 ## <a name="access-the-grafana-dashboard"></a>存取 Grafana 儀表板
 

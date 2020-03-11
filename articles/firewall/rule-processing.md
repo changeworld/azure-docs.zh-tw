@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396047"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082587"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火牆規則處理邏輯
 您可以在 Azure 防火牆上設定 NAT 規則、網路規則和應用程式規則。 規則的處理依據是規則類型。 
@@ -24,7 +24,7 @@ ms.locfileid: "78396047"
 
 ### <a name="network-rules-and-applications-rules"></a>網路規則和應用程式規則
 
-如果您設定網路規則和應用程式規則，則會在應用程式規則之前依優先順序套用網路規則。 之後規則就會終止。 因此，如果在網路規則中找到相符的項，則不會處理其他規則。  如果沒有符合的網路規則，而且如果通訊協定為 HTTP、HTTPS 或 MSSQL，則應用程式規則會依照優先順序來評估封包。 如果仍然找不到相符的結果，則會針對[基礎結構規則集合](infrastructure-fqdns.md)評估封包。 如果仍然沒有相符項目，則封包預設會遭到拒絕。
+如果您設定網路規則和應用程式規則，則會在應用程式規則之前依優先順序套用網路規則。 之後規則就會終止。 因此，如果在網路規則中找到相符的項，則不會處理其他規則。  如果沒有符合的網路規則，而且如果通訊協定為 HTTP、HTTPS 或 MSSQL，則封包接著會以優先順序來評估應用程式規則。 如果仍然找不到相符的結果，則會針對[基礎結構規則集合](infrastructure-fqdns.md)評估封包。 如果仍然沒有相符項目，則封包預設會遭到拒絕。
 
 ## <a name="inbound"></a>輸入
 
@@ -90,6 +90,10 @@ SSH 流量遭到拒絕，因為較高優先順序的*拒絕*網路規則集合�
 **結果**
 
 SSH 連線會遭到拒絕，因為較高優先權的網路規則集合會封鎖它。 規則處理此時就會停止。
+
+## <a name="rule-changes"></a>規則變更
+
+如果您將規則變更為拒絕先前允許的流量，則會捨棄任何相關的現有會話。
 
 ## <a name="next-steps"></a>後續步驟
 

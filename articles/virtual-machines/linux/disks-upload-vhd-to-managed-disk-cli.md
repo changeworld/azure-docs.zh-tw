@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure CLI 將 vhd 上傳至 Azure
+title: 使用 Azure CLI 上傳 VHD
 description: 瞭解如何使用 Azure CLI，透過直接上傳，將 vhd 上傳至 Azure 受控磁片，以及跨區域複製受控磁片。
-services: virtual-machines-linux,storage
+services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
 ms.date: 09/20/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457601"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970333"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 將 vhd 上傳至 Azure
 
@@ -24,7 +23,7 @@ ms.locfileid: "74457601"
 
 目前，標準 HDD、標準 SSD 和 premium SSD 受控磁片支援直接上傳。 Ultra Ssd 尚不支援此程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure CLI](/cli/azure/install-azure-cli)。

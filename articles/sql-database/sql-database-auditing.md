@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365330"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082367"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>開始使用 SQL Database 稽核
 
@@ -255,12 +255,6 @@ Azure [SQL Database](sql-database-technical-overview.md)和[azure Synapse 分析
 - Azure SQL Database 的審核已針對可用性 & 效能進行優化。 在非常高的活動期間，Azure SQL Database 允許作業繼續執行，而不會記錄某些已審核的事件。
 
 - 如需在儲存體帳戶上設定不可變的審核，請參閱[允許受保護的附加 blob 寫入](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。 請注意，用於審核的容器名稱是**sqldbauditlogs**。
-
-    > [!IMPORTANT]
-    > [以時間為基礎的保留] 下的 [允許受保護的附加 blob 寫入] 設定目前可供使用，只有下欄區域才會顯示：
-    > - 美國東部
-    > - 美國中南部
-    > - 美國西部 2
 
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL Server 和資料庫審核

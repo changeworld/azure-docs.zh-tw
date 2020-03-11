@@ -2,17 +2,18 @@
 title: 在隔離的網路上 Azure 磁碟加密
 description: 本文提供適用于 Linux Vm 的 Microsoft Azure 磁片加密的疑難排解秘訣。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e91f4f1d1a16bec9d2da0365b185319aac8892be
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207715"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970668"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>在隔離的網路上 Azure 磁碟加密
 

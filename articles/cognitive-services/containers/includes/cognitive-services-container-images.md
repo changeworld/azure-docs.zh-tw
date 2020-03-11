@@ -6,14 +6,14 @@ manager: nitinme
 description: 兩個數據表代表所有認知服務供應專案的容器登錄、存放庫和映射名稱。
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 7c229ea306d89f85fb37a68fc84e3e4f6770e5ad
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 55a3bb5f894d3ab753cfec64687abc9c7cae53cb
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866958"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082310"
 ---
 ### <a name="container-repositories-and-images"></a>容器存放庫和映射
 
@@ -39,7 +39,7 @@ Microsoft Container Registry （MCR）會 syndicates 所有公開可用的 "unga
 
 | 服務 | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
-| [異常偵測器](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
+| [異常偵測器](../../anomaly-detector/anomaly-detector-container-howto.md) | 異常偵測器 | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [臉部](../../face/face-how-to-install-containers.md) | 臉部 | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [表單辨識器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | 表單辨識器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |

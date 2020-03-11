@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561743"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079907"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -277,7 +277,11 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
 如果他們是使用 Chrome，系統將會提示他們安裝 [Windows 10 Accounts 擴充功能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) \(英文\)。
 
-### <a name="join-an-android-device"></a>加入 Android 裝置
+### <a name="register-an-ios-device"></a>註冊 iOS 裝置
+
+如果使用者使用 iOS 裝置，系統會提示他們安裝[Microsoft Authenticator 應用程式](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)。
+
+### <a name="register-an-android-device"></a>註冊 Android 裝置
 
 如果使用者使用 Android 裝置，系統會提示他們安裝[Microsoft Authenticator 應用程式](https://play.google.com/store/apps/details?id=com.azure.authenticator)。
 

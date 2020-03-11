@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614701"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969024"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>設定加密憑證，並在 Linux 叢集上將祕密加密
 本文書名如何設定加密憑證，並在 Linux 叢集上將祕密加密。 若為 Windows 叢集，請參閱[設定加密憑證和在 windows 叢集上將秘密加密][secret-management-windows-specific-link]。
@@ -36,7 +36,7 @@ ms.locfileid: "75614701"
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 產生的 Base-64 編碼字串輸入至 encrypted.txt 同時包含密碼的加密文字，以及用來對其加密的憑證相關資訊。 您可以使用 OpenSSL 解密來驗證其有效性。

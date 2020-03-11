@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114217"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969818"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -32,7 +32,7 @@ ms.locfileid: "77114217"
 ## <a name="known-issues"></a>已知問題
 
 > [!NOTE]
-> 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或其中一個支援的 SDK。
+> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作（例如，轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
 
 如需詳細資訊，請參閱[從媒體服務 v2 移至 v3 的移轉指導](migrate-from-v2-to-v3.md#known-issues)。
  
@@ -51,11 +51,11 @@ ms.locfileid: "77114217"
 
 已新增*來源的 CDN 支援-協助預先提取*標頭用於即時和影片隨選串流;適用于具有 Akamai CDN 直接合約的客戶。 原始-協助 CDN 預先提取功能牽涉到 Akamai CDN 與 Azure 媒體服務來源之間的下列 HTTP 標頭交換：
 
-|HTTP 標頭|值|傳送者|接收器|目的|
+|HTTP 標頭|值|傳送者|接收者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-來源-協助-預先啟用 | 1（預設值）或0 |CDN|起源|表示 CDN 已啟用預先提取|
-|CDN-來源-協助-預先提取路徑| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|起源|CDN|提供 CDN 的預先提取路徑|
-|CDN-來源-協助預先提取-要求|1（預先提取要求）或0（一般要求）|CDN|起源|若要指出來自 CDN 的要求是預先提取|
+|CDN-來源-協助-預先啟用 | 1（預設值）或0 |CDN|來源|表示 CDN 已啟用預先提取|
+|CDN-來源-協助-預先提取路徑| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|來源|CDN|提供 CDN 的預先提取路徑|
+|CDN-來源-協助預先提取-要求|1（預先提取要求）或0（一般要求）|CDN|來源|若要指出來自 CDN 的要求是預先提取|
 
 若要查看作用中的部分標頭交換，您可以嘗試下列步驟：
 

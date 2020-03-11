@@ -1,19 +1,19 @@
 ---
 title: 修改 Azure 虛擬機器擴展集
 description: 深入了解如何使用 REST API、Azure PowerShell 及 Azure CLI，修改和更新 Azure 虛擬機器擴展集
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390454"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081907"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -311,7 +311,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 >[!NOTE]
 > Service Fabric 叢集只能使用「自動」模式，但處理更新的方式不同。 如需詳細資訊，請參閱[Service Fabric 應用程式升級](../service-fabric/service-fabric-application-upgrade.md)。
 
-有一種全域擴展集屬性修改並不遵守升級原則。 對於擴展集作業系統設定檔 (例如系統管理員使用者名稱和密碼) 的變更，只能在 API 版本 2017-12-01 或更新版本中進行。 這些變更只會套用至變更擴展集模型之後建立的 VM。 若要將現有的 VM 更新至最新狀態，您必須為每個現有的 VM 執行「重新安裝映像」作業。 您可以透過下列方式執行這個重新安裝映像作業：
+有一種全域擴展集屬性修改並不遵守升級原則。 擴展集 OS 和資料磁片設定檔的變更（例如系統管理員使用者名稱和密碼）只能在 API *2017-12-01*版或更新版本中變更。 這些變更只會套用至變更擴展集模型之後建立的 VM。 若要將現有的 VM 更新至最新狀態，您必須為每個現有的 VM 執行「重新安裝映像」作業。 您可以透過下列方式執行這個重新安裝映像作業：
 
 - REST API 執行 [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage)，如下所示：
 
@@ -371,7 +371,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 如果您使用 Azure 平台映像，您可以修改 imageReference (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 >[!NOTE]
-> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、擴增及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
+> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、相應放大及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
 
 如果您使用自訂映像，您可以更新 imageReference 識別碼 (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 

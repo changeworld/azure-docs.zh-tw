@@ -1,25 +1,18 @@
 ---
-title: 使用 Docker 電腦在 Azure 中建立 Linux 主機
+title: 使用 Docker 電腦建立 Linux 主機
 description: 說明如何使用 Docker 電腦在 Azure 中建立 Docker 主機。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
 ms.service: virtual-machines-linux
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6b7f26d4554cc5ab1450ac3a8cf927b2338f8ea2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036255"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968809"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker 電腦在 Azure 中建立主機
 這篇文章說明如何使用 [Docker 電腦](https://docs.docker.com/machine/)在 Azure 中建立主機。 `docker-machine` 命令會在 Azure 中建立 Linux 虛擬機器 (VM)，然後安裝 Docker。 接著，您可以使用相同本機工具和工作流程，在 Azure 中管理您的 Docker 主機。 若要在 Windows 10 中使用 docker-machine，您必須使用 Linux bash。

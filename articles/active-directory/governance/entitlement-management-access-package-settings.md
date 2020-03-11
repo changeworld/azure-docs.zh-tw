@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d32bf26def6832f51b4e09c697bca885162dc2
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ea90032b1f0cfe598ffdb3d35448a996f3111036
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174411"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968751"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的共用連結以要求存取套件
 
@@ -41,7 +41,7 @@ ms.locfileid: "73174411"
 
     ![存取套件概觀 - 我的存取權入口網站的連結](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    將整個我的存取權入口網站連結傳送給內部商業夥伴時，請務必將它複製。 這可確保合作夥伴可以存取您目錄的入口網站來提出要求。 連結的開頭為 `myaccess`，包含目錄提示，並以存取套件識別碼結尾。
+    將整個我的存取權入口網站連結傳送給內部商業夥伴時，請務必將它複製。 這可確保合作夥伴可以存取您目錄的入口網站來提出要求。 此連結會以 `myaccess`開頭，包括目錄提示，並以存取套件識別碼結尾。  （針對美國政府，我的存取權入口網站連結中的網域將會 `myaccess.microsoft.us`）。
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

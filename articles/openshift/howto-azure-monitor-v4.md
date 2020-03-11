@@ -6,21 +6,24 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899161"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082841"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Red Hat OpenShift 4.3 的 Azure 監視器整合
 
-> [!IMPORTANT]
-> Azure Red Hat OpenShift 4.3 提供預覽。 預覽功能是自助服務，並依原樣提供，並會在服務等級協定（SLA）和有限擔保中予以排除。 因此，這些功能不適用於生產用途。 
+> [!IMPORTANT] 
+> 請注意，Azure Red Hat OpenShift 4.3 目前僅適用于美國東部的個人預覽版。 私人預覽接受僅限邀請。 請務必先註冊您的訂用帳戶，再嘗試啟用此功能： [Azure Red Hat OpenShift 私人預覽註冊](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> 預覽功能是自助服務，並依原樣提供，並會在服務等級協定（SLA）和有限擔保中予以排除。 因此，這些功能不適用於生產用途。
 
 本文說明如何針對裝載于-內部部署或任何雲端環境中的 OpenShift 4.3 叢集，啟用容器 Azure 監視器的私人預覽。 相同的指示也適用于啟用 Azure Red Hat OpenShift （ARO）4.3 叢集的監視。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Helm 3](https://helm.sh/docs/intro/install/)
@@ -51,7 +54,7 @@ curl -LO  https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs
 bash onboarding_azuremonitor_for_containers.sh <azureSubscriptionId> <azureRegionforLogAnalyticsWorkspace> <clusterName> <kubeconfigContextNameOftheCluster>
 ```
 
-例如，
+例如：
 
 ```bash
  bash onboarding_azuremonitor_for_containers.sh 27ac26cf-a9f0-4908-b300-9a4e9a0fb205 eastus myocp42 admin 

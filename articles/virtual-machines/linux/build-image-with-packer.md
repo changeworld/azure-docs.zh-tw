@@ -1,26 +1,18 @@
 ---
-title: 如何使用 Packer 建立 Linux Azure VM 映射
+title: 使用 Packer 建立 Linux Azure VM 映射
 description: 了解如何在 Azure 中使用 Packer 建立 Linux 虛擬機器的映像
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 338541661b335e3d96a267f01590173f8ce8ee89
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036954"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969279"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何在 Azure 中使用 Packer 來建立 Linux 虛擬機器映像
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Linux 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的散發套件和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/)，在 Azure 中定義並建置自訂映像。
@@ -77,7 +69,7 @@ az account show --query "{ subscription_id: id }"
 | client_id                         | `az ad sp` 建立命令所產生之輸出的第一行 - appId |
 | client_secret                     | `az ad sp` 建立命令所產生之輸出的第二行 - password |
 | tenant_id                         | `az ad sp` 建立命令所產生之輸出的第三行 - tenant |
-| subscription_id                   | `az account show` 命令所產生的輸出 |
+| *subscription_id*                   | `az account show` 命令所產生的輸出 |
 | managed_image_resource_group_name | 您在第一個步驟中建立的資源群組名稱 |
 | managed_image_name                | 所建立之受控磁碟映像的名稱 |
 

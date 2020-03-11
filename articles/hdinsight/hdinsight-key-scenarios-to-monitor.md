@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770878"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082875"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>監視 Azure HDInsight 中的叢集效能
 
@@ -27,13 +27,13 @@ ms.locfileid: "75770878"
 
 若要取得叢集節點和其載入的高階查看，請登入[Ambari WEB UI](hdinsight-hadoop-manage-ambari.md)，然後選取 [**主機**] 索引標籤。您的主機會依照其完整功能變數名稱列出。 每個主機的操作狀態是依彩色的健康情況指示器來顯示：
 
-| 色彩 | 說明 |
+| Color | 描述 |
 | --- | --- |
 | 紅色 | 主機上至少有一個主要元件已關閉。 暫留以查看列出受影響元件的工具提示。 |
-| Orange | 主機上至少有一個次要元件已關閉。 暫留以查看列出受影響元件的工具提示。 |
+| 橙色 | 主機上至少有一個次要元件已關閉。 暫留以查看列出受影響元件的工具提示。 |
 | 黃色 | Ambari 伺服器未從主機收到超過3分鐘的信號。 |
 | 綠色 | 一般執行狀態。 |
- 
+
 您也會看到資料行顯示每個主機的核心數及 RAM 數量，以及磁碟使用量和負載平均。
 
 ![Apache Ambari 主機索引標籤總覽](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ YARN 會將 JobTracker、資源管理及作業排程/監視的兩個責任分割
 
 Resource Manager 是純排程器，且會單獨仲裁所有競爭應用程式之間的可用資源。 Resource Manager 可確保所有資源一律在使用中、最佳化各種常數，例如 SLA、容量保證等等。 ApplicationMaster 會交涉 Resource Manager 的資源，並使用 NodeManager(s) 來執行及監視容器和其資源耗用量。
 
-當多個租使用者共用大型叢集時，就會對叢集的資源進行競爭。 CapacityScheduler 是隨插即用的排程器，可藉由將要求排入佇列來協助資源共用。 CapacityScheduler 也支援階層式佇列，以確保在允許其他應用程式的佇列使用可用資源之前，在組織的子佇列之間共用資源。
+當多個租使用者共用大型叢集時，就會對叢集的資源進行競爭。 CapacityScheduler 是隨插即用的排程器，可藉由將要求排入佇列來協助資源共用。 CapacityScheduler 也支援*階層式佇列*，以確保組織的子佇列之間會共用資源，而其他應用程式的佇列則可使用免費資源。
 
 YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有可用的資源。 若要檢視您佇列的相關資訊，請登入 Ambari Web UI，然後從頂端功能表中選取 [YARN 佇列管理員]。
 
@@ -81,6 +81,46 @@ YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有
 * [HDInsight 和 Azure Data Lake Storage 上的 Apache Hive 效能微調方針](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight 和 Azure Data Lake Storage 上的 MapReduce 效能微調方針](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [HDInsight 和 Azure Data Lake Storage 上的 Apache Storm 效能微調方針](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>針對緩慢的節點效能進行疑難排解
+
+在某些情況下，sluggishness 可能會因為叢集上的磁碟空間不足而發生。 請使用下列步驟進行調查：
+
+1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)連接到每個節點。
+
+1. 執行下列其中一個命令來檢查磁片使用量：
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. 檢查輸出，並檢查 `mnt` 資料夾或其他資料夾中是否有任何大型檔案。 一般來說，`usercache`和 `appcache` （mnt/resource/hadoop/yarn/local/usercache/hive/appcache/）資料夾包含大型檔案。
+
+1. 如果有大型檔案，可能是目前的工作造成檔案成長，或先前的工作已失敗。 若要檢查此行為是否由目前的作業所造成，請執行下列命令：
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. 如果此命令指出特定的作業，您可以選擇使用類似下列的命令來終止作業：
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    以應用程式識別碼取代 `application_id`。 如果沒有指定特定的工作，請移至下一個步驟。
+
+1. 在上述命令完成之後，或如果沒有指定特定的工作，請執行類似下列的命令來刪除您所識別的大型檔案：
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+如需有關磁碟空間問題的詳細資訊，請參閱[磁碟空間不足](./hadoop/hdinsight-troubleshoot-out-disk-space.md)。
+
+> [!NOTE]  
+> 如果您有想要保留的大型檔案，但卻造成磁碟空間不足的問題，您必須相應增加您的 HDInsight 叢集，並重新啟動您的服務。 完成此程式並等候幾分鐘後，您會注意到儲存體已釋出，而且會還原節點的一般效能。
 
 ## <a name="next-steps"></a>後續步驟
 

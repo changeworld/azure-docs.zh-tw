@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387180"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082197"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -33,7 +33,10 @@ Blob 儲存體會將事件傳送至事件方格，透過豐富的重試原則和
 |PowerShell    |[快速入門：使用 PowerShell 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-如果您的帳戶具有階層式命名空間，本教學課程將說明如何在 Azure Databricks：[教學課程：使用 Azure Data Lake Storage Gen2 事件來更新 Databricks Delta 資料表](data-lake-storage-events.md)中，將事件方格訂用帳戶、Azure 函式和[作業](https://docs.azuredatabricks.net/user-guide/jobs.html)連接在一起。
+若要查看使用 Azure 函式回應 Blob 儲存體事件的深入範例，請參閱下列文章：
+
+- [教學課程：使用 Azure Data Lake Storage Gen2 事件來更新 Databricks Delta 資料表](data-lake-storage-events.md)。
+- [教學課程：使用事件方格自動調整上傳的影像大小](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
 > 只有種類為 [StorageV2 (一般用途 v2)] 和 [BlobStorage] 的儲存體帳戶支援事件整合。 **儲存體 (一般用途 v1)** 不支援與事件方格整合。
@@ -93,7 +96,8 @@ Blob 儲存體事件的主體使用格式：
 > [!div class="checklist"]
 > * 由於可設定多個訂用帳戶以將事件路由至相同的事件處理常式，因此重要的是，不要假設事件來自於特定來源，而要檢查訊息主題以確定其來自預期的儲存體帳戶。
 > * 同樣地，檢查 eventType 也是必須進行的步驟之一，而且不要假設您收到的所有事件都是您預期的類型。
-> * 由於訊息可能會在延遲一段時間後以錯誤順序送達，請使用 [etag] 欄位以了解您的物件資訊是否仍是最新狀態。  使用 [排序器] 欄位以了解任何特定物件上的事件順序。
+> * 當訊息在一些延遲之後就會到達，請使用 etag 欄位來瞭解物件的相關資訊是否仍為最新狀態。 若要瞭解如何使用 etag 欄位，請參閱[管理 Blob 儲存體中的並行](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)存取。 
+> * 當訊息無法按順序抵達時，請使用 sequencer 欄位來瞭解任何特定物件上事件的順序。 Sequencer 欄位是一個字串值，代表任何特定 blob 名稱的事件邏輯順序。 您可以使用標準字串比較來瞭解相同 blob 名稱上兩個事件的相對順序。
 > * 請使用 [blobType] 欄位以了解 Blob 允許何種類型的作業，以及您應該使用何種類型的用戶端程式庫來存取 Blob。 有效值為 `BlockBlob` 或 `PageBlob`。 
 > * 請使用帶有 `CloudBlockBlob` 和 `CloudAppendBlob` 建構函式的 [url] 欄位存取 Blob。
 > * 請忽略您不了解的欄位。 此做法將有助於保持未來可能新增功能的彈性。

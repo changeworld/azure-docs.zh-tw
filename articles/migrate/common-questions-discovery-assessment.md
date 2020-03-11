@@ -3,12 +3,12 @@ title: 探索、評估和相依性分析常見問題
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932773"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082554"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 
@@ -68,6 +68,12 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 例如，如果您將 [效能持續時間] 設為 [一天]，並將 [百分位數] 值設定為第95個百分位數，Azure Migrate 會以遞增的順序排序收集器過去一天所傳送的15分鐘取樣點。 它會挑選第95個百分位數值作為有效使用率。
 
 使用第95個百分位數值可確保忽略極端值。 如果您的 Azure Migrate 使用第99個百分位數，可能會包含極端值。 若要挑選期間的尖峰使用量，但不遺漏任何極端值，請將 Azure Migrate 設定為使用第99個百分位數。
+
+## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>以匯入為基礎的評量與以探索來源作為設備的評估有何不同？
+
+以匯入為基礎的評量是使用 CSV 檔案匯入 Azure Migrate 的機器所建立的評量。 只有四個欄位是必要的匯入：伺服器名稱、核心、記憶體和作業系統。 以下是一些要注意的事項： 
+ - 在開機類型參數上以匯入為基礎的評量中，準備就緒準則較不嚴格。 如果未提供開機類型，系統會假設電腦具有 BIOS 開機類型，且機器未標示為有條件地**備**妥。 在使用探索來源做為設備的評量中，如果遺失開機類型，就會將準備就緒標示為有**條件地備**妥。 這項在就緒計算方面的差異在於，使用者在進行以匯入為基礎的評估時，可能不會在早期的遷移計畫階段中擁有電腦上的所有資訊。 
+ - 以效能為基礎的匯入評估會使用使用者所提供的使用率值來進行適當大小的計算。 由於 [使用率] 值是由使用者提供，因此在評估屬性中會停用 [**效能歷程記錄**] 和 [**百分位數使用量**] 選項。 在使用探索來源作為設備的評量中，會從設備所收集的效能資料中挑選所選的百分位數值。
 
 ## <a name="what-is-dependency-visualization"></a>什麼是相依性視覺效果？
 

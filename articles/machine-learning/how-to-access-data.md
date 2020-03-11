@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: keli19
-author: likebupt
+ms.author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5527d58f140074279d6b9feac13803f29eb0bda5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 36d622bf2873b7e629a0f6abeecded33e32898f5
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396204"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082589"
 ---
 # <a name="access-data-in-azure-storage-services"></a>存取 Azure 儲存體服務中的資料
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "78396204"
 
 ## <a name="prerequisites"></a>Prerequisites
 您需要：
-- Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+- Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 - 具有[azure blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或[azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的 azure 儲存體帳戶。
 

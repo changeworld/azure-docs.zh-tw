@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298372"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080071"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>作法：需要應用程式保護原則和核准的用戶端應用程式，以使用條件式存取來存取雲端應用程式
 
@@ -30,6 +30,9 @@ ms.locfileid: "78298372"
 在條件式存取中，這些用戶端應用程式已知會受到應用程式保護原則的保護。 應用程式保護原則的詳細資訊可在[應用程式保護原則總覽](/intune/apps/app-protection-policy)一文中找到。
 
 如需合格用戶端應用程式的清單，請參閱[應用程式保護原則需求](concept-conditional-access-grant.md)。
+
+> [!NOTE]
+>    在原則中使用或子句，讓使用者能夠利用支援「**需要應用程式保護原則**」或「**需要核准的用戶端應用程式**授與控制」的應用程式。 如需哪些應用程式支援「**需要應用程式保護原則**」授與控制的詳細資訊，請參閱[應用程式保護原則需求](concept-conditional-access-grant.md)。
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>案例1： Office 365 應用程式需要具有應用程式保護原則的已核准應用程式
 
@@ -56,7 +59,7 @@ ms.locfileid: "78298372"
 1. 在 [**存取控制** > **授**與] 底下，選取下列選項：
    - **需要核准的用戶端應用程式**
    - **需要應用程式保護原則（預覽）**
-   - **需要所有選取的控制項**
+   - [需要其中一個選取的控制項]
 1. 確認您的設定，並將 [**啟用原則**] 設為 [**開啟**]。
 1. 選取 [**建立**] 以建立並啟用您的原則。
 
@@ -75,7 +78,7 @@ ms.locfileid: "78298372"
    1. **用戶端應用程式（預覽）** ：
       1. 將 **[設定] 設為** **[是]** 。
       1. 選取 [行動裝置**應用程式和桌面用戶端**] 和 [ **Exchange ActiveSync 用戶端**]。
-1. 在 **[** **存取控制** > 授與] 底下，選取 **[授與存取權**，**需要核准的用戶端應用程式**]，**然後選取**
+1. 在**存取控制** > 授與 底下，選取**授與存取權**，**需要應用程式保護原則**，然後選取 **選取**
 1. 確認您的設定，並將 [**啟用原則**] 設為 [**開啟**]。
 1. 選取 [**建立**] 以建立並啟用您的原則。
 
@@ -108,7 +111,7 @@ ms.locfileid: "78298372"
 1. 在 [**存取控制** > **授**與] 底下，選取下列選項：
    - **需要核准的用戶端應用程式**
    - **需要應用程式保護原則（預覽）**
-   - **需要所有選取的控制項**
+   - [需要其中一個選取的控制項]
 1. 確認您的設定，並將 [**啟用原則**] 設為 [**開啟**]。
 1. 選取 [**建立**] 以建立並啟用您的原則。
 
@@ -125,7 +128,7 @@ ms.locfileid: "78298372"
    1. **用戶端應用程式（預覽）** ：
       1. 將 **[設定] 設為** **[是]** 。
       1. 選取 [行動裝置**應用程式和桌面用戶端**] 和 [ **Exchange ActiveSync 用戶端**]。
-1. 在 **[** **存取控制** > 授與] 底下，選取 **[授與存取權**，**需要核准的用戶端應用程式**]，**然後選取**
+1. 在**存取控制** > 授與 底下，選取**授與存取權**，**需要應用程式保護原則**，然後選取 **選取**
 1. 確認您的設定，並將 [**啟用原則**] 設為 [**開啟**]。
 1. 選取 [**建立**] 以建立並啟用您的原則。
 

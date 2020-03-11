@@ -1,30 +1,19 @@
 ---
-title: 使用 Azure CLI 在 Azure 中捕捉 Linux VM 的映射
+title: 使用 Azure CLI 來捕捉 Linux VM 的映射
 description: 使用 Azure CLI 擷取要用於大量部署的 Azure VM 映像。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78675695"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968247"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的映像
-
-<!-- generalize, image - extended version of the tutorial-->
 
 若要建立虛擬機器 (VM) 的多個複本以在 Azure 中使用，請擷取 VM 或 OS VHD 的映像。 若要建立用於部署的映像，您必須移除個人帳戶資訊。 在下列步驟中，您將取消佈建現有的 VM、將它解除配置，然後建立映像。 您可以使用此映像，在您訂用帳戶的任何資源群組中建立 VM。
 

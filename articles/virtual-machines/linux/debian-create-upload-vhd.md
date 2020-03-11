@@ -1,28 +1,20 @@
 ---
-title: 在 Azure 中準備 Debian Linux VHD
-description: 了解如何建立 Debian VHD，以便部署於 Azure 中。
-services: virtual-machines-linux
-documentationcenter: ''
+title: 準備 Debian Linux VHD
+description: 瞭解如何在 Azure 中建立 VM 部署的 Debian VHD 映射。
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f17759fb65cec1609298d34b29829e895526e080
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251694"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970259"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>準備適用於 Azure 的 Debian VHD
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本節假設您已使用從 [Debian 網站](https://www.debian.org/distrib/) 下載的 .iso 檔案將 Debian Linux 作業系統安裝至虛擬硬碟。 可建立 .vhd 檔案的工具有多種，Hyper-V 只是其中一個範例。 如需 Hyper-V 的使用指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="installation-notes"></a>安裝注意事項
@@ -48,7 +40,7 @@ ms.locfileid: "78251694"
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手動準備 Debian VHD
-1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
+1. 在 Hyper-V 管理員中，選取虛擬機器。
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 3. 如果您使用 ISO 安裝作業系統，則在 `deb cdrom` 中註解排除與 "`/etc/apt/source.list`" 相關的任一行。
 

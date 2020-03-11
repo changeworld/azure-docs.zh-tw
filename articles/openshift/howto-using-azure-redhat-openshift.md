@@ -7,19 +7,22 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 81f8edb42be1f73692062d36440890ef5a1e7c9a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899304"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082824"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>建立、存取和管理 Azure Red Hat OpenShift 4.3 叢集
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift （ARO）4.3 提供預覽。 預覽功能是自助服務，並依原樣提供，並會在服務等級協定（SLA）和有限擔保中予以排除。 因此，這些功能不適用於生產用途。
+> 請注意，Azure Red Hat OpenShift 4.3 目前僅適用于美國東部的個人預覽版。 私人預覽接受僅限邀請。 請務必先註冊您的訂用帳戶，再嘗試啟用此功能： [Azure Red Hat OpenShift 私人預覽註冊](https://aka.ms/aro-preview-register)
 
-## <a name="prerequisites"></a>必要條件
+> [!NOTE]
+> 預覽功能是自助服務，並依原樣提供，並會在服務等級協定（SLA）和有限擔保中予以排除。 因此，這些功能不適用於生產用途。
+
+## <a name="prerequisites"></a>Prerequisites
 
 建立 Azure Red Hat OpenShift 4.3 叢集時，您需要下列各項：
 

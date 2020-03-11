@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7018100c830f22c3ed5e924b5096911b1f8135cb
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942321"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081823"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,8 +130,8 @@ automl_config = AutoMLConfig(task = "classification")
 ## <a name="compute-to-run-experiment"></a>要執行實驗的計算
 
 接下來，請決定要在何處訓練模型。 自動化機器學習訓練實驗可在下列計算選項上執行：
-*   您的本機電腦，例如本機桌上型電腦或膝上型電腦 – 通常適用於資料集並不大，且您尚在探索階段時。
-*   雲端中的遠端機器 – [Azure Machine Learning 受控計算](concept-compute-target.md#amlcompute)是一項受控服務，能夠在 Azure 虛擬機器叢集上定型機器學習模型。
+*    您的本機電腦，例如本機桌上型電腦或膝上型電腦 – 通常適用於資料集並不大，且您尚在探索階段時。
+*    雲端中的遠端機器 – [Azure Machine Learning 受控計算](concept-compute-target.md#amlcompute)是一項受控服務，能夠在 Azure 虛擬機器叢集上定型機器學習模型。
 
     如需具有本機和遠端計算目標的筆記本範例，請參閱此[GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
 
@@ -147,7 +147,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 部分範例包括：
 
-1.  使用 AUC 加權作為主要計量的分類實驗，其實驗超時分鐘數設定為30分鐘，2個交叉驗證折迭。
+1.    使用 AUC 加權作為主要計量的分類實驗，其實驗超時分鐘數設定為30分鐘，2個交叉驗證折迭。
 
     ```python
     automl_classifier=AutoMLConfig(
@@ -159,7 +159,7 @@ automl_config = AutoMLConfig(task = "classification")
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  以下是回歸實驗的範例，其設定為在60分鐘後結束，並具有五個驗證交叉折迭。
+2.    以下是回歸實驗的範例，其設定為在60分鐘後結束，並具有五個驗證交叉折迭。
 
     ```python
     automl_regressor = AutoMLConfig(
@@ -357,7 +357,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 1： `get_engineered_feature_names()` 傳回工程功能名稱的清單。
 
-  用法：
+  Usage :
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -373,7 +373,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 2： `get_featurization_summary()` 會傳回所有輸入功能的特徵化摘要。
 
-  用法：
+  Usage :
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

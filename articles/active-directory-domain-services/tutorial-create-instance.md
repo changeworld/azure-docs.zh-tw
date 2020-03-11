@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378491"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082342"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立和設定 Azure Active Directory Domain Services 實例
 
@@ -31,7 +31,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -136,7 +136,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 1. 受控網域的 [概觀] 索引標籤會顯示一些**必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
 
-    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是 10.1.0.4 和 10.1.0.5。 您稍後可以在 [屬性] 索引標籤上找到這些 IP 位址。
+    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是*10.0.1.4*和*10.0.1.5*。 您稍後可以在 [屬性] 索引標籤上找到這些 IP 位址。
 
     ![使用 Azure AD Domain Services IP 位址來設定虛擬網路的 DNS 設定](./media/tutorial-create-instance/configure-dns.png)
 

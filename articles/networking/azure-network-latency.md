@@ -5,14 +5,14 @@ services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/10/2020
 ms.author: kumud
-ms.openlocfilehash: dc2cb6545093e8ab70d18014a5fd9d0e7d36f8b7
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3469daa8b81b20d5d0052a23ce3236fc4fde75de
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122377"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082928"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure 網路來回行程延遲統計資料
 
@@ -22,9 +22,9 @@ Azure 會使用內部監視工具，以及[ThousandEyes](https://thousandeyes.co
 
 延遲測量是從全球 Azure 雲端區域中裝載的 ThousandEyes 代理程式收集而來，在1分鐘的間隔內持續傳送網路探查。 每月延遲統計資料是從每月收集的樣本平均值衍生而來。
 
-## <a name="january-2020-round-trip-latency-figures"></a>2020年1月的來回行程延遲圖形
+## <a name="february-2020-round-trip-latency-figures"></a>2020年2月的來回行程延遲圖形
 
-以下顯示過去31天內 Azure 區域之間的每月平均來回行程時間（從2020年1月31日結束）。 下列測量值是由[ThousandEyes](https://thousandeyes.com)提供技術支援。
+以下顯示過去29天內 Azure 區域之間的每月平均來回行程時間（從2020年2月29日結束）。 下列測量值是由[ThousandEyes](https://thousandeyes.com)提供技術支援。
 
 [![Azure 區域間延遲統計資料](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

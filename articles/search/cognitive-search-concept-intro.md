@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a4dd3247a9931de3ae2c699bdf7800407695c86
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586745"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080208"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 簡介
 
@@ -21,7 +21,7 @@ AI 擴充是 Azure 認知搜尋服務索引的功能，可用來從影像、Blob
 
 + **自然語言處理**技術，包括[實體辨識](cognitive-search-skill-entity-recognition.md)、[語言偵測](cognitive-search-skill-language-detection.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、文字操作、[情感偵測](cognitive-search-skill-sentiment.md)和 [PII 偵測](cognitive-search-skill-pii-detection.md)。 透過這些技術，非結構化的文字將能取得新的型態，並對應為索引中可搜尋且可篩選的欄位。
 
-+ **影像處理**技術，包括[光學字元辨識 (OCR)](cognitive-search-skill-ocr.md) 和[視覺特徵](cognitive-search-skill-image-analysis.md)的識別，例如臉部偵測、影像轉譯、影像辨識 (名人和地標)，或是色彩或影像方向之類的屬性。 您可以為影像內容建立可使用 Azure 認知搜尋服務的各種查詢功能來搜尋的文字表示法。
++ **影像處理**技能包括[光學字元辨識（OCR）](cognitive-search-skill-ocr.md)和[視覺功能](cognitive-search-skill-image-analysis.md)的識別，例如臉部偵測、影像轉譯、影像辨識（著名的人和地標）或影像方向等屬性。 您可以為影像內容建立可使用 Azure 認知搜尋服務的各種查詢功能來搜尋的文字表示法。
 
 ![擴充管線圖表](./media/cognitive-search-intro/cogsearch-architecture.png "擴充管線概觀")
 
@@ -131,7 +131,7 @@ Azure 認知搜尋中的認知技能是以認知服務 API 中預先定型的機
 + [教學課程 (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [範例：建立 AI 擴充（C#）的自訂技能](cognitive-search-create-custom-skill-example.md)
 
-基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要多次執行課程，請刪除並重新建立索引子，將計數器重設為零。
+基於學習目的，我們會建議使用免費服務，但可用的交易數目限制為每天 20 份文件。 若要多次執行課程，請刪除並重新建立索引子，以將計數器重設為零。
 
 **步驟3：檢查 API**
 

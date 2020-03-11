@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983544"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969624"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 串流分析預覽功能
 
@@ -33,13 +33,6 @@ ms.locfileid: "76983544"
 
 在雲端或 IoT Edge 上建立串流分析模組的開發人員可以撰寫或重複C#使用自訂函式，並透過[使用者定義函數](stream-analytics-edge-csharp-udf-methods.md)直接在查詢中叫用這些函數。
 
-### <a name="managed-identity-authentication-with-power-bi"></a>使用 Power BI 的受控識別驗證
-
-Azure 串流分析針對動態儀表板管理體驗，以 Power BI 提供受控識別型驗證的完整支援。
-
-### <a name="anomaly-detection"></a>異常偵測
-
-Azure 串流分析「機器學習模型」除了雙向、緩慢正面和緩慢的負面趨勢偵測之外，還支援*尖峰*和*dip*偵測。 如需詳細資訊，請流覽[Azure 串流分析中的異常偵測](stream-analytics-machine-learning-anomaly-detection.md)。
 
 ### <a name="debug-query-steps-in-visual-studio"></a>Visual Studio 中的 Debug 查詢步驟
 

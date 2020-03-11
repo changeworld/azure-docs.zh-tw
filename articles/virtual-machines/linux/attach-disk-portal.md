@@ -1,33 +1,25 @@
 ---
 title: 將資料磁片連結至 Linux VM
 description: 使用入口網站將新的或現有的資料磁碟附加至 Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851667"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969360"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用入口網站將資料磁碟附加至 Linux VM 
-本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以 [在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以[在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 將磁碟附加至 VM 之前，請檢閱下列提示︰
 
-* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 連接磁碟之後，您必須[連線到 Linux VM 才能掛接新的磁碟](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
@@ -102,7 +94,7 @@ dmesg | grep SCSI
 > [!NOTE]
 > 建議您使用可供您的散發版本使用的最新 fdisk 或 parted 版本。
 
-使用 `fdisk` 分割磁碟。 如果磁碟大小為 2 Tebi 位元組 (TiB) 或以上，則您必須使用 GPT 磁碟分割，您可以使用 `parted` 來執行 GPT 磁碟分割。 如果磁碟大小低於 2 TiB，您就能使用 MBR 或 GPT 磁碟分割。 將它設為磁碟分割 1 上的主要磁碟，並接受其他預設值。 下列範例會在 /dev/sdc 上啟動 `fdisk` 程序：
+使用 `fdisk` 分割磁碟。 如果磁碟大小為 2 Tebi 位元組 (TiB) 或以上，則您必須使用 GPT 磁碟分割，您可以使用 `parted` 來執行 GPT 磁碟分割。 如果磁碟大小低於 2 TiB，您就能使用 MBR 或 GPT 磁碟分割。 將它設為磁碟分割 1 上的主要磁碟，並接受其他預設值。 下列範例會在 /dev/sdc`fdisk`*上啟動* 程序：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -243,7 +235,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 有兩種方式可在 Linux VM 中啟用 TRIM 支援。 像往常一樣，請參閱您的散發套件以了解建議的方法︰
 
-* 在 /etc/fstab 中使用 `discard` 掛接選項，例如：
+* 在 /etc/fstab`discard`*中使用* 掛接選項，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

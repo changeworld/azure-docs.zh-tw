@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 530a8848eceecb1a15d14ce1fef2aa58a3ef5908
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394108"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081932"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 
@@ -26,11 +26,11 @@ ms.locfileid: "78394108"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用容器之前，您必須符合下列必要條件：
 
-|必要項|目的|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
@@ -154,71 +154,26 @@ ApiKey={API_KEY}
       "unit": "pixel",
       "lines": [
         {
-          "boundingBox": [
-            56,
-            39,
-            317,
-            50,
-            313,
-            134,
-            53,
-            123
-          ],
+          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
           "text": "Tabs VS",
           "words": [
             {
-              "boundingBox": [
-                90,
-                43,
-                243,
-                53,
-                243,
-                123,
-                94,
-                125
-              ],
+              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
               "text": "Tabs",
               "confidence": "Low"
             },
             {
-              "boundingBox": [
-                259,
-                55,
-                313,
-                62,
-                313,
-                122,
-                259,
-                123
-              ],
+              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
               "text": "VS"
             }
           ]
         },
         {
-          "boundingBox": [
-            221,
-            148,
-            417,
-            146,
-            417,
-            206,
-            227,
-            218
-          ],
+          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
           "text": "Spaces",
           "words": [
             {
-              "boundingBox": [
-                230,
-                148,
-                416,
-                141,
-                419,
-                211,
-                232,
-                218
-              ],
+              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
               "text": "Spaces"
             }
           ]

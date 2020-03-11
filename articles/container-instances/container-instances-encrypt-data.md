@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544312"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080355"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
@@ -41,6 +41,10 @@ ACI 中的資料會使用256位 AES 加密來加密和解密。 它會針對所�
 
 第一個步驟是確保您的[azure 租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者具有指派給 Azure 容器實例服務許可權的服務主體。 
 
+> [!IMPORTANT]
+> 若要執行下列命令並成功建立服務主體，請確認您有權在您的租使用者中建立服務主體。
+>
+
 下列 CLI 命令會在您的 Azure 環境中設定 ACI SP：
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 執行此命令的輸出應該會顯示已使用 "displayName"： "Azure 容器實例服務" 設定的服務主體。
+
+如果您無法成功建立服務主體：
+* 確認您有權在您的租使用者中執行此動作
+* 檢查您的租使用者中是否已有服務主體可部署至 ACI。 若要這麼做，您可以執行 `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` 並改用該服務主體。
 
 ### <a name="create-a-key-vault-resource"></a>建立金鑰保存庫資源
 

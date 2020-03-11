@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207025"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080143"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>將受 HSM 保護金鑰匯入 Key Vault (預覽)
 
@@ -58,9 +58,11 @@ ms.locfileid: "78207025"
 
 ## <a name="supported-hsms"></a>支援的 Hsm
 
-|HSM 廠商名稱|支援的 HSM 模型|詳細資訊|
-|---|---|---|
-|Thales|SafeNet Luna HSM 7 系列含固件版本7.3 或更新版本| [SafeNet Luna BYOK 工具和檔](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|廠商名稱|廠商類型|支援的 HSM 模型|詳細資訊|
+|---|---|---|---|
+|Thales|製造商|SafeNet Luna HSM 7 系列含固件版本7.3 或更新版本| [SafeNet Luna BYOK 工具和檔](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix|HSM 即服務|自我保護金鑰管理服務（SDKMS）|[將 SDKMS 金鑰匯出至 BYOK 的雲端提供者-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+
 
 > [!NOTE]
 > 若要從 Hsm 的 nCipher nShield 系列匯入受 HSM 保護的金鑰，請使用[舊版 BYOK](hsm-protected-keys-legacy.md)程式。

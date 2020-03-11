@@ -1,5 +1,6 @@
 ---
 title: PowerShell：Azure HDInsight 叢集搭配 Azure Data Lake Storage Gen1 作為附加儲存體 | Microsoft Docs
+description: 瞭解如何使用 Azure PowerShell 設定以 Azure Data Lake Storage Gen1 作為額外儲存體的 HDInsight 叢集。
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: twooley
@@ -11,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161403"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970131"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 建立搭配 Azure Data Lake Storage Gen1 (作為附加儲存體) 的 HDInsight 叢集
 
@@ -49,7 +50,7 @@ ms.locfileid: "66161403"
 * 建立具有針對 Data Lake Storage Gen1 之驗證的 HDInsight 叢集
 * 在叢集上執行測試工作
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +138,7 @@ ms.locfileid: "66161403"
 
 進行本節中的步驟之前，請確定您已安裝 [Windows SDK](https://dev.windows.com/en-us/downloads)。 您也必須建立一個目錄 (例如 **C:\mycertdir**)，以在其中建立憑證。
 
-1. 在 PowerShell 視窗中，瀏覽至您安裝 Windows SDK 的位置 (通常是 `C:\Program Files (x86)\Windows Kits\10\bin\x86`)，並使用 [MakeCert][makecert] 公用程式來建立自我簽署的憑證和私密金鑰。 使用下列命令。
+1. 從 PowerShell 視窗中，流覽至您安裝 Windows SDK 的位置（通常是 `C:\Program Files (x86)\Windows Kits\10\bin\x86`，然後使用[MakeCert][makecert]公用程式來建立自我簽署的憑證和私密金鑰。 使用下列命令。
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -145,7 +146,7 @@ ms.locfileid: "66161403"
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令。
+2. 使用[Pvk2Pfx][pvk2pfx]公用程式，將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令。
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 

@@ -1,30 +1,22 @@
 ---
 title: 準備要與雲端 init 搭配使用的 Azure VM 映射
 description: 如何準備現有的 Azure 虛擬機器映像，以便使用 cloud-init 進行部署
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 73df3a12ebea3b94563d02eda8f1211401d1ae3f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036739"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969184"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>準備現有的 Linux Azure 虛擬機器映像以搭配 cloud-init 使用
-本文會示範如何讓現有的 Azure 虛擬機器準備好進行重新部署，並且可使用 cloud-init。 所產生的映像可用來部署新的虛擬機器或虛擬機器擴展集 - 之後這兩者都可進一步使用 cloud-init 在部署期間進行自訂。  一旦 Azure 佈建資源之後，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
+本文會示範如何讓現有的 Azure 虛擬機器準備好進行重新部署，並且可使用 cloud-init。 所產生的映像可用來部署新的虛擬機器或虛擬機器擴展集 - 之後這兩者都可進一步使用 cloud-init 在部署期間進行自訂。  一旦 Azure 佈建資源，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本文件會假設您已經有正在執行的 Azure 虛擬機器，且執行著支援版本的 Linux 作業系統。 您已設定符合您需求的電腦、已安裝所有必要模組、已處理所有所需更新並且已經過測試，確定其符合您的需求。 
 
 ## <a name="preparing-rhel-76--centos-76"></a>準備 RHEL 7.6/CentOS 7。6

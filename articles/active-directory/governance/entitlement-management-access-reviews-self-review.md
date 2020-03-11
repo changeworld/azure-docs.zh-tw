@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608809"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967764"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的存取套件的自我審查
 
@@ -37,7 +37,7 @@ Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint �
 
 1. 按一下 [**審查存取**] 連結。
 
-1. 如果您未收到電子郵件，您也可以直接前往 https://myaccess.microsoft.com 來尋找您的擱置中存取權審查。
+1. 如果您未收到電子郵件，您也可以直接前往 https://myaccess.microsoft.com 來尋找您的擱置中存取權審查。  （針對美國政府，請改用 `https://myaccess.microsoft.us`）。
 
 1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
 

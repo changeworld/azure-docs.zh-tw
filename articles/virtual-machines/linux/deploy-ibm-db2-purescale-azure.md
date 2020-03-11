@@ -1,25 +1,17 @@
 ---
 title: 在 Azure 上部署 IBM DB2 pureScale
 description: 了解如何部署最近用來將企業從其 IBM DB2 環境 (在 z/OS 上執行) 遷移到 Azure 上的 IBM DB2 pureScale 的範例架構。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291544"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968903"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -85,7 +77,7 @@ GitHub 存放庫包括 DB2server.rsp 回應檔 (.rsp)，此檔案可讓您產生
 | 選擇產品          |                                              | DB2 版本 11.1.3.3。 具有 DB2 pureScale 的伺服器版本                                              |
 | 組態             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 選取安裝類型                 | 一般                                                                                               |
-|                           | 我同意 IBM 條款                     | 已選取                                                                                               |
+|                           | 我同意 IBM 條款                     | 已檢查                                                                                               |
 | 執行個體擁有者            | 例如現有使用者、使用者名稱        | DB2sdin1                                                                                              |
 | 受限使用者               | 現有使用者、使用者名稱                     | DB2sdfe1                                                                                              |
 | 叢集檔案系統       | 共用磁碟磁碟分割裝置路徑            | /dev/dm-2                                                                                             |

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bad957a70079a5513f103968066e2ff6a436cd77
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/09/2020
+ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754153"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080406"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
@@ -24,7 +24,7 @@ ms.locfileid: "75754153"
 
 在 Azure Machine Learning 中，您可以在所管理的不同類型計算資源上將模型定型。 計算目標可以是本機電腦或雲端中的資源。
 
-您可以藉由新增額外的計算目標（例如 Azure Machine Learning 計算（AmlCompute），輕鬆地相應增加或相應放大您的機器學習實驗。 AmlCompute 是受控計算基礎結構，可讓您輕鬆建立單一或多重節點的計算。
+您可以藉由新增額外的計算目標（例如 Azure Machine Learning 計算（AmlCompute），輕鬆地相應增加或相應放大您的機器學習實驗。 AmlCompute 是一種受控的計算基礎結構，可讓您輕鬆建立單一或多重節點計算。
 
 在本文中，您將瞭解如何使用自動化 ML 搭配 AmlCompute 來建立模型。
 

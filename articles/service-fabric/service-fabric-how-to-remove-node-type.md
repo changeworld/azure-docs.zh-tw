@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661971"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969413"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>如何移除 Service Fabric 節點類型
 此文章說明如何透過將現有的節點類型從叢集移除，來調整 Azure Service Fabric 叢集的規模。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以透過移除節點類型 (虛擬機器擴展集) 與其所有節點，來水平調整叢集規模。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -31,7 +31,7 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
 
 當移除銅級的節點類型時，該節點類型中的所有節點會立即停機。 Service Fabric 不會攔截任何銅級節點擴展集更新，因此所有的 VM 會立即停機。 如果您有具狀態的任何項目在這些節點上，資料會遺失。 現在，即使您是無狀態的，Service Fabric 中的所有節點都會參與通道，因此整個鄰近的資料都會遺失，這可能會造成叢集本身不穩定。
 
-## <a name="remove-a-non-primary-node-type"></a>移除非主要節點類型
+## <a name="remove-a-node-type"></a>移除節點類型
 
 1. 開始進行此程式之前，請先處理此必要條件。
 
@@ -122,7 +122,7 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     - 找出用於部署的 Azure Resource Manager 範本。
     - 在 [Service Fabric] 區段中，尋找與節點類型相關的區段。
     - 移除對應于節點類型的區段。
-    - 針對銀級和更高的耐久性叢集，請在範本中更新叢集資源，並設定健康原則以忽略 fabric：/系統應用程式健全狀況，方法是新增如下所示的 `applicationDeltaHealthPolicies`。 下列原則應忽略現有的錯誤，但不允許新的健全狀況錯誤。 
+    - 僅適用于銀級和更高的耐久性叢集，請更新範本中的叢集資源，並將健康原則設定為忽略 fabric：/系統應用程式健康狀態，方法是在 叢集資源 `properties` 下新增 `applicationDeltaHealthPolicies`，如下所示。 下列原則應忽略現有的錯誤，但不允許新的健全狀況錯誤。 
  
  
      ```json
@@ -158,7 +158,7 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     },
     ```
 
-    部署已修改的 Azure Resource Manager 範本。 \* * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下 `forceRestart` 會被忽略。 
+    - 部署已修改的 Azure Resource Manager 範本。 \* * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下 `forceRestart` 會被忽略。 
     參數 `upgradeReplicaSetCheckTimeout` 指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。
     參數 `upgradeTimeout` 的值可以縮短為6小時，但應使用最大安全12小時。
 

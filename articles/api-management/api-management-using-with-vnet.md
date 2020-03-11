@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374962"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968361"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -113,16 +113,16 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 | * / 80, 443                  | 輸入            | TCP                | INTERNET / VIRTUAL_NETWORK            | 與 API 管理的用戶端通訊                      | 外部             |
 | * / 3443                     | 輸入            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 入口網站和 PowerShell 的管理端點         | 外部和內部  |
 | * / 80, 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | **與 Azure 儲存體的相依性**                             | 外部和內部  |
-| * / 80, 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory (如果適用)                   | 外部和內部  |
+| * / 80, 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) （若適用）                   | 外部和內部  |
 | * / 1433                     | 輸出           | TCP                | VIRTUAL_NETWORK / SQL                 | **存取 Azure SQL 端點**                           | 外部和內部  |
-| */5671、5672、443          | 輸出           | TCP                | VIRTUAL_NETWORK / EventHub            | 「記錄到事件中樞」原則和監視代理程式的相依性 | 外部和內部  |
-| * / 445                      | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | 與「適用於 GIT 的 Azure 檔案共用」的相依性                      | 外部和內部  |
+| */5671、5672、443          | 輸出           | TCP                | VIRTUAL_NETWORK / EventHub            | [記錄至事件中樞原則](api-management-howto-log-event-hubs.md)和監視代理程式的相依性 | 外部和內部  |
+| * / 445                      | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | 適用于[GIT](api-management-configuration-repository-git.md)的 Azure 檔案共用相依性                      | 外部和內部  |
 | * / 1886                     | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 將健康情況狀態發佈至 [資源健康狀態] 時所需          | 外部和內部  |
-| * / 443                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 發佈診斷記錄和計量                        | 外部和內部  |
+| * / 443                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 發佈[診斷記錄和計量](api-management-howto-use-azure-monitor.md)                       | 外部和內部  |
 | * / 25                       | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 連線到 SMTP 轉送以便傳送電子郵件                    | 外部和內部  |
 | * / 587                      | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 連線到 SMTP 轉送以便傳送電子郵件                    | 外部和內部  |
 | * / 25028                    | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 連線到 SMTP 轉送以便傳送電子郵件                    | 外部和內部  |
-| * / 6381 - 6383              | 輸入和輸出 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 針對 RoleInstances 之間的 Redis 執行個體存取 Azure 快取          | 外部和內部  |
+| * / 6381 - 6383              | 輸入和輸出 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 存取電腦間[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)原則的 Redis 服務         | 外部和內部  |
 | * / \*                        | 輸入            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基礎結構負載平衡器                          | 外部和內部  |
 
 >[!IMPORTANT]
@@ -136,9 +136,12 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure 公用      | <ul><li>gcs.prod.monitoring.core.windows.net （**新增**）</li><li>prod.warmpath.msftcloudes.com （**即將淘汰**）</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 公用      | <ul><li>gcs.prod.monitoring.core.windows.net （**新增**）</li><li>prod.warmpath.msftcloudes.com （**即將淘汰**）</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-black.prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-black.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-red.prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-red.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+
+>[!IMPORTANT]
+> 上述叢集的變更與 dns 區域**nsatc.net** 。 **MICROSOFTMETRICS.COM**大多是 dns 變更。 叢集的 IP 位址不會變更。
 
 + **Smtp 轉送**： smtp 轉送的輸出網路連線能力，它會在主機 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com` 和 `ies.global.microsoft.com` 底下解析
 

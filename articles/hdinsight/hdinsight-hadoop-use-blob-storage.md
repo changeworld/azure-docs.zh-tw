@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192620"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037252"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
@@ -25,11 +25,11 @@ Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預�
 > [!IMPORTANT]  
 > 儲存體帳戶種類**BlobStorage**只能用來作為 HDInsight 叢集的次要儲存體。
 
-| 儲存體帳戶種類 | 支援的服務 | 支援的效能層級 | 支援的存取層 |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (一般用途 v2)  | blob     | 標準                    | 經常性、非經常性、封存\*   |
-| 儲存體（一般用途 v1）   | blob     | 標準                    | N/A                    |
-| BlobStorage                    | blob     | 標準                    | 經常性、非經常性、封存\*   |
+| 儲存體帳戶種類 | 支援的服務 | 支援的效能層級 |不支援的效能層級| 支援的存取層 |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (一般用途 v2)  | Blob     | 標準                    |Premium| 經常性、非經常性、封存\*   |
+| 儲存體（一般用途 v1）   | Blob     | 標準                    |Premium| N/A                    |
+| BlobStorage                    | Blob     | 標準                    |Premium| 經常性、非經常性、封存\*   |
 
 不建議您使用預設的 Blob 容器來儲存商務資料。 最好在每次使用後刪除預設的 Blob 容器，以減少儲存成本。 預設容器包含應用程式與系統記錄。 請務必先擷取記錄再刪除容器。
 

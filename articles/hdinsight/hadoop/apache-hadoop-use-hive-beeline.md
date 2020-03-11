@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663740"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037549"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
 
@@ -54,6 +54,12 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 ```
 
 以網域上具備叢集存取權限的帳戶名稱取代 `<username>`。 將 `<AAD-DOMAIN>` 取代為叢集所加入 Azure Active Directory （AAD）的名稱。 請使用大寫字串作為 `<AAD-DOMAIN>` 值，否則找不到認證。 如有需要，請檢查 `/etc/krb5.conf` 的領域名稱。
+
+若要從 Ambari 尋找 JDBC URL：
+
+1. 從網頁瀏覽器流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 `CLUSTERNAME` 是叢集的名稱。 確定 HiveServer2 正在執行。
+
+1. 使用 [剪貼簿] 複製 HiveServer2 JDBC URL。
 
 ---
 
@@ -193,7 +199,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     這些語句會執行下列動作：
 
-    |帳單明細 |描述 |
+    |引數 |描述 |
     |---|---|
     |DROP TABLE|如果資料表存在，則會予以刪除。|
     |建立外部資料表|在 Hive 中建立**外部**資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。|
@@ -256,7 +262,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     這些語句會執行下列動作：
 
-    |帳單明細 |描述 |
+    |引數 |描述 |
     |---|---|
     |CREATE TABLE （如果不存在）|如果資料表尚不存在，則會建立它。 因為未使用**EXTERNAL**關鍵字，所以這個語句會建立內部資料表。 內部資料表儲存在 Hive 資料倉儲中，並完全由 Hive 管理。|
     |儲存為 ORC|以最佳化資料列單欄式 (Optimized Row Columnar, ORC) 格式儲存資料。 ORC 格式是高度最佳化且有效率的 Hive 資料儲存格式。|

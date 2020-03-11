@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661289"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080303"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -247,7 +247,7 @@ Azure NetApp Files 提供可用於/hana/shared、/hana/data 和/hana/log 磁片�
 > [!IMPORTANT]
 > **不**支援在 Azure NetApp Files 上執行的 NFS v3 通訊協定用於/hana/data 和/hana/log。 從功能的觀點來看，/hana/data 和/hana/log 磁片區的使用 NFS 4.1 是強制的。 而對於/hana/shared 磁片區，可以從功能的觀點來使用 NFS v3 或 NFS 4.1 通訊協定。
 
-### <a name="important-considerations"></a>重要的考量
+### <a name="important-considerations"></a>重要考量︰
 考慮 SAP Netweaver 和 SAP Hana 的 Azure NetApp Files 時，請注意下列重要考慮：
 
 - 最小容量集區為 4 TiB。  
@@ -279,6 +279,9 @@ Azure NetApp volume 的輸送量是磁片區大小和服務層級的功能，如
 每1個磁片區配額 TiB 的[Azure NetApp Files 輸送量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)為：
 - 進階儲存體層-64 MiB/秒  
 - Ultra 儲存層-128 MiB/秒  
+
+> [!IMPORTANT]
+> 與您在單一 NFS 磁片區上部署的容量（輸送量）不同之處在于，在虛擬機器中，取用者會以 1.2-1.4 GB/秒的頻寬來高原。 這必須與及供應專案的基礎結構和 NFS 周圍相關的 Linux 會話限制有關。 [適用于 Azure NetApp Files 的效能基準測試結果](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks)一文中所述的效能和輸送量數位是針對具有多個用戶端 vm 的一個共用 NFS 磁片區進行執行，因此有多個會話。 這種情況與我們在 SAP 中測量的案例不同。 我們會在其中測量單一 VM 與 NFS 磁片區的輸送量。 裝載于及上。
 
 為了符合資料和記錄的 SAP 最低輸送量需求，以及根據 `/hana/shared`的指導方針，建議的大小如下所示：
 

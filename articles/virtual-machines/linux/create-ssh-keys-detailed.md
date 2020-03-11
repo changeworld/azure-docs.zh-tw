@@ -1,25 +1,17 @@
 ---
-title: 詳細步驟-適用于 Azure Linux Vm 的 SSH 金鑰組
+title: 建立 SSH 金鑰組的詳細步驟
 description: 了解在 Azure 中建立和管理 Linux VM 的 SSH 公開和私密金鑰組的詳細步驟。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929719"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969544"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰 
 您可以利用安全殼層 (SSH) 金鑰組，在 Azure 上建立依預設使用 SSH 金鑰進行驗證的 Linux 虛擬機器，而免除登入密碼的需求。 使用 Azure 入口網站、Azure CLI、Resource Manager 範本或其他工具建立的 VM，可以將 SSH 公開金鑰納入部署中，以設定 SSH 連線的 SSH 金鑰驗證。 
@@ -184,7 +176,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 eval "$(ssh-agent -s)"
 ```
 
-現在使用 `ssh-add` 命令將私密金鑰加入至 `ssh-agent`。
+現在使用 `ssh-agent` 命令將私密金鑰加入至 `ssh-add`。
 
 ```bash
 ssh-add ~/.ssh/id_rsa
@@ -217,7 +209,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>設定範例
+### <a name="example-configuration"></a>範例設定
 
 為您的主機 VM 新增適當的組態設定。
 

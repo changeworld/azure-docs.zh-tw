@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7265cd0e2d292a2d8cc7273d2746348629ec4a06
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390774"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082411"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -28,8 +28,8 @@ ms.locfileid: "78390774"
 
 | 函式 | 特性 | 最新 |
 |--|--|--|
-| 語音轉文字 | 使用中繼結果，將連續即時語音或批次音訊錄音可將成文字。 | 2.0.0 |
-| 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.0.0 |
+| 語音轉文字 | 使用中繼結果，將連續即時語音或批次音訊錄音可將成文字。 | 2.1.1 |
+| 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.1.1 |
 | 文字轉換語音 | 使用純文字輸入或語音合成標記語言（SSML），將文字轉換成自然發音的語音。 | 1.3.0 |
 | 自訂文字轉換語音 | 使用自[定義語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，以純文字輸入或語音合成標記語言（SSML）將文字轉換成自然發音的語音。 | 1.3.0 |
 
@@ -164,7 +164,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 下列標記是格式的範例：
 
 ```
-2.0.0-amd64-en-us-preview
+2.1.1-amd64-en-us-preview
 ```
 
 如需**語音轉換文字**容器的所有支援地區設定，請參閱[語音轉換文字影像標記](../containers/container-image-tags.md#speech-to-text)。

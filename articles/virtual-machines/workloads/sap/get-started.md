@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674496"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080320"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -110,7 +110,8 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。 變�
 
 
 ## <a name="change-log"></a>變更記錄檔
-
+- 03/10/2020：[SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的變更，以澄清及的真正現有輸送量限制
+- 03/09/2020：[Azure vm 上的 Sap NetWeaver 的高可用性變更在 sap 應用程式的 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)、azure 上的[sap SUSE Linux Enterprise Server NetWeaver 的高可用性、適用于 sap 應用程式的 azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)、SUSE Linux Enterprise Server 上[的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)azure vm 上的高可用性、在 azure 上的 azure vm 上[設定 SUSE Linux Enterprise Server Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)、高可用性、在[SUSE Linux Enterprise Server 上使用 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)、 [high](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)適用于 azure vm 上 SAP Hana 的 SAP NetWeaver 的 SUSE Linux Enterprise Server 和[高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)的 azure vm 上的可用性，以資源代理程式 azure-lb 更新叢集資源 
 - 03/05/2020：Azure 中 azure 區域和 Azure 虛擬機器的結構變更和內容變更[虛擬機器規劃和 SAP NetWeaver 的執行](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - 03/03/2020：在[SLES 上的 Azure vm 上使用 SAP NW 的高可用性變更，搭配及 FOR SAP applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)變更為更有效率的及磁片區版面配置
 - 03/01/2020：已改編[Azure 虛擬機器上 SAP Hana 的備份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)，以納入 Azure 備份服務。 減少和壓縮檔案[層級 SAP Hana Azure 備份](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)中的內容，並刪除第三份檔，處理透過磁片快照集的備份。 Azure 虛擬機器上 SAP Hana 的備份指南中會處理內容 

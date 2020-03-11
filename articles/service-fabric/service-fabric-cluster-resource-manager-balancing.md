@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452093"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081687"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>平衡 Service Fabric 叢集
 「Service Fabric 叢集資源管理員」支援動態負載變更、因應節點或服務的新增或移除。 它也會自動修正條件約束違規，以及主動重新平衡叢集。 但是這些動作執行的頻率，以及觸發它們的項目是什麼？
@@ -205,6 +205,7 @@ ClusterManifest.xml
 * 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入了解計量及其設定方式，請查看[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 * 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 如需有關移動成本的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)
 * 叢集資源管理員有數個為減緩叢集的流失而可以設定的節流。 這些節流通常不是必要的，但若有需要，您可以參閱 [這裡](service-fabric-cluster-resource-manager-advanced-throttling.md)
+* 叢集 Resource Manager 可以辨識和處理子叢集（有時候當您使用放置條件約束和平衡時，會發生這種情況）。 若要瞭解子叢集會如何影響平衡，以及如何處理它，請參閱[這裡](service-fabric-cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
