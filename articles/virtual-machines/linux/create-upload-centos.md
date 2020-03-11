@@ -1,22 +1,17 @@
 ---
-title: 在 Azure 中建立及上傳 CentOS 型 Linux VHD
+title: 建立並上傳以 CentOS 為基礎的 Linux VHD
 description: 了解如何建立及上傳包含 CentOS 型 Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
 ms.author: mimckitt
-ms.openlocfilehash: dff90df255d6b7e050fad9a278666f81fade500c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 84dfb3a24d3b3440cb929fa6c7e7f70983051a72
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246132"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969501"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 CentOS 型虛擬機器
 
@@ -26,7 +21,7 @@ ms.locfileid: "78246132"
 * [準備適用於 Azure 的 CentOS 7.0+ 虛擬機器](#centos-70)
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已將 CentOS (或類似的衍生物件) Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -42,7 +37,7 @@ ms.locfileid: "78246132"
 
 ## <a name="centos-6x"></a>CentOS 6.x
 
-1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
+1. 在 Hyper-V 管理員中，選取虛擬機器。
 
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 
@@ -238,7 +233,7 @@ ms.locfileid: "78246132"
 
 **組態步驟**
 
-1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
+1. 在 Hyper-V 管理員中，選取虛擬機器。
 
 2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
 

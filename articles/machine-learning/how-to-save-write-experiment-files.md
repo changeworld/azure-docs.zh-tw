@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 197e93946a52303f312912e4ebd2487f8c1360b2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/10/2020
+ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536729"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078416"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>儲存和寫入 Azure Machine Learning 實驗檔案的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "75536729"
 
 您必須先確定該計算目標可以使用必要的檔案，例如您的程式碼需要執行的相依性檔案和資料檔案，才能在計算目標或本機電腦上起始實驗。
 
-Azure Machine Learning 會藉由將整個腳本資料夾複製到目標計算內容來執行定型腳本，然後再建立快照集。 而實驗快照集的儲存空間限制為 300 MB 及 (或) 2000 個檔案。
+Azure Machine Learning 會藉由將整個腳本資料夾複製到目標計算內容來執行定型腳本，然後再建立快照集。 實驗快照集的儲存體限制為 300 MB 及/或2000個檔案。
 
 基於這個理由，我們建議：
 

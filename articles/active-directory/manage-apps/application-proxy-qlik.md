@@ -14,17 +14,17 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263501"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037003"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>應用程式 Proxy 和 Qlik Sense 
 Azure Active Directory 應用程式 Proxy 和 Qlik Sense 已搭配運作，可確保您能夠輕鬆使用「應用程式 Proxy」來為 Qlik Sense 部署提供遠端存取。  
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 本案例的其餘部分假設您已完成下列操作：
  
 - 已設定 [Qlik Sense](https://community.qlik.com/docs/DOC-19822)。 
@@ -52,7 +52,8 @@ Azure Active Directory 應用程式 Proxy 和 Qlik Sense 已搭配運作，可�
 ### <a name="application-2"></a>應用程式 #2： 
 請依照用於第 1 個應用程式的相同步驟進行操作，但下列除外： 
 
-**步驟 #5**：「內部 URL」現在應該是 QlikSense URL 搭配應用程式所使用的驗證連接埠。 HTTPS 的預設值是**4244** ， **4248**則適用于4月2018之前的 QlikSense 版本。 2018年4月後的 QlikSense 版本預設為**443** ，適用于 HTTP 的 HTTPS 和**80** 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>**步驟 #10：** 請勿設定 SSO，讓**單一登入保持停用**
+**步驟 #5**：「內部 URL」現在應該是 QlikSense URL 搭配應用程式所使用的驗證連接埠。 HTTPS 的預設值是**4244** ， **4248**則適用于4月2018之前的 QlikSense 版本。 2018年4月後的 QlikSense 版本預設為**443** ，適用于 HTTP 的 HTTPS 和**80** 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>
+**步驟 #10：** 請勿設定 SSO，讓**單一登入保持停用**
  
  
 ## <a name="testing"></a>測試 

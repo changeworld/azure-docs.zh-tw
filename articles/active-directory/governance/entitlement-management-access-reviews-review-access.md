@@ -16,18 +16,18 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78a69301ab2ae637531f8643d9d57a8b44b563f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608926"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968734"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中審查存取套件的存取權
 
 Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint 網站存取的方式。 本文說明如何針對指派給存取套件的其他使用者，以指定的審核者來執行存取權審查。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要檢查使用者的 active access 套件指派，您必須符合進行存取權審查的必要條件：
 - Azure AD Premium P2
@@ -47,7 +47,7 @@ Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint �
 
 1. 按一下 [**審查使用者存取權**] 連結，以開啟存取權審查。 
 
-1. 如果您沒有電子郵件，可以直接流覽至 https://myaccess.microsoft.com來尋找您的暫止存取評論。
+1. 如果您沒有電子郵件，可以直接流覽至 https://myaccess.microsoft.com來尋找您的暫止存取評論。  （針對美國政府，請改用 `https://myaccess.microsoft.us`）。
 
 1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
     

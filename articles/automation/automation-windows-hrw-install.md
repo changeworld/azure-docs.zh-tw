@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: fc6d3bbe1580c4e6f7064c957a9d420555296231
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372480"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082122"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -139,7 +139,13 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-在搜尋結果中，您應該會看到電腦的心跳記錄，指出它已連接並向服務報告。 根據預設，每個代理程式都會將一個信號記錄轉送至其指派的工作區。 當**C:\Program Files\Microsoft Monitoring Agent\Agent**中具有名為**agent\agent 出現 azureautomationfiles**的資料夾時，您可以確認代理程式已正確下載自動化解決方案。 若要確認混合式 Runbook 背景工作角色的版本，請流覽至**C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation** ，並記下**version**子資料夾。
+在搜尋結果中，您應該會看到電腦的心跳記錄，指出它已連接並向服務報告。 根據預設，每個代理程式都會將一個信號記錄轉送至其指派的工作區。 
+
+請使用下列步驟來完成代理程式安裝和設定。
+
+1. 啟用解決方案以將代理程式電腦上架。 請參閱在[工作區中將電腦上架](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)。
+2. 確認代理程式已正確下載自動化解決方案。 在**C:\Program Files\Microsoft Monitoring Agent\Agent**中應該有一個名為**agent\agent 出現 azureautomationfiles**的資料夾。 
+3. 若要確認混合式 Runbook 背景工作角色的版本，請流覽至**C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation** ，並記下**version**子資料夾。
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步驟 4-安裝 runbook 環境並連接到 Azure 自動化
 

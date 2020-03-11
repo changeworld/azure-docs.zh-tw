@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673769"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037141"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 私用端點（預覽）私下連線到 Web 應用程式
 
@@ -73,6 +73,9 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 ## <a name="create-your-web-app-and-private-endpoint"></a>建立您的 Web 應用程式和私人端點
 
 在本節中，您將使用私人端點來建立私用 Web 應用程式。
+
+> [!Note]
+>私人端點功能僅適用于 Premium V2，並與外部 ASE SKU 隔離
 
 ### <a name="web-app"></a>Web 應用程式
 
@@ -150,7 +153,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 1. 在 myVM 中，確認 Web 應用程式無法透過公用 IP 存取。 開啟瀏覽器並複製 Web 應用程式名稱，您必須有403禁止的錯誤頁面
 
-![已禁止][17]
+![禁止][17]
 
 > [!Note]
 > 因為這項功能處於預覽狀態，所以您必須手動管理 DNS 專案。

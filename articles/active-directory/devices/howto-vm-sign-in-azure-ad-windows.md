@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672597"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080079"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
@@ -152,6 +152,7 @@ az vm extension set \
 
 > [!NOTE]
 > 若要允許使用者透過 RDP 登入 VM，您必須指派「虛擬機器系統管理員登入」或「虛擬機器使用者登入」角色。 具有指派給 VM 之「擁有者」或「參與者」角色的 Azure 使用者，不會自動擁有透過 RDP 登入 VM 的許可權。 這是為了在控制虛擬機器的一組人員與可以存取虛擬機器的人員之間，提供了已審核的分隔。
+
 有多種方式可讓您設定 VM 的角色指派：
 
 - 使用 Azure AD 入口網站體驗
@@ -194,7 +195,7 @@ az role assignment create \
 - [使用 RBAC 和 Azure CLI 來管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-cli)
 - [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-portal)
 - [使用 RBAC 和 Azure PowerShell 來管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-powershell)。
-'
+
 ## <a name="using-conditional-access"></a>使用條件式存取
 
 您可以先強制執行條件式存取原則（例如多重要素驗證或使用者登入風險檢查），再授權存取 Azure 中啟用 Azure AD 登入的 Windows Vm。 若要套用條件式存取原則，您必須從 [雲端應用程式] 或 [動作] 指派選項中選取 [Azure Windows VM 登入] 應用程式，然後使用 [登入風險] 作為條件，並（或）要求多重要素驗證做為 [授與存取控制]。 
@@ -363,4 +364,5 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 請在[Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上，分享您對這項預覽功能的意見反應，或報告問題。
 
 ## <a name="next-steps"></a>後續步驟
-如需 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
+
+如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

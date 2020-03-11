@@ -1,26 +1,18 @@
 ---
 title: 將第一個應用程式部署到 Microsoft Azure 上的 Cloud Foundry
 description: 將應用程式部署到 Azure 上的 Cloud Foundry
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036836"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970065"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>將第一個應用程式部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -39,7 +31,7 @@ ms.locfileid: "74036836"
 
 ## <a name="connect-to-the-cloud-controller"></a>連線至 Cloud Controller
 
-Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們會透過[CLOUD FOUNDRY CLI][cf-cli]與它互動。 您可以在 Linux、MacOS 或 Windows 上安裝 CLI，但如果您不想安裝它，則可預先安裝在[Azure Cloud Shell][cloudshell-docs]中。
+Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們會透過[CLOUD FOUNDRY CLI][cf-cli]與它互動。 您可以在 Linux、macOS 或 Windows 上安裝 CLI，但如果您不想安裝它，則可預先安裝在[Azure Cloud Shell][cloudshell-docs]中。
 
 若要登入，請在您從市集部署取得的 SYSTEMDOMAINURL 前面加上 `api`。 由於預設部署使用自我簽署憑證，您也應該包含 `skip-ssl-validation` 參數。
 
@@ -132,7 +124,7 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>調整應用程式
 
-根據預設，`cf push` 只會建立應用程式的單一執行個體。 若要確保高可用性，並且啟用擴增以獲得較高的輸送量，您通常要執行應用程式的多個執行個體。 您可以使用 `scale` 命令，輕鬆地相應放大已部署的應用程式：
+根據預設，`cf push` 只會建立應用程式的單一執行個體。 若要確保高可用性，並且啟用相應放大以獲得較高的輸送量，您通常要執行應用程式的多個執行個體。 您可以使用 `scale` 命令，輕鬆地相應放大已部署的應用程式：
 
 ```bash
 cf scale -i 2 hello-spring-cloud

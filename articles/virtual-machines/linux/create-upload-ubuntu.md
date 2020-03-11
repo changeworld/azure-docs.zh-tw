@@ -1,21 +1,17 @@
 ---
 title: 在 Azure 中建立及上傳 Ubuntu Linux VHD
 description: 了解如何建立及上傳包含 Ubuntu Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251687"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970293"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>準備適用於 Azure 的 Ubuntu 虛擬機器
 
@@ -28,7 +24,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
 * Ubuntu 18.04/Bionic： [Bionic-server-cloudimg-amd64](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 * Ubuntu 18.10/Cosmic：[cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **Ubuntu 安裝注意事項**
@@ -47,7 +43,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
 
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
 
-2. 按一下 **[連接]** 開啟虛擬機器視窗。
+2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 
 3. 取代映射中的目前儲存機制，以使用 Ubuntu 的 Azure 存放庫。 此步驟會隨著 Ubuntu 版本而略有不同。
    

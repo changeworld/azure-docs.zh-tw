@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848743"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968780"
 ---
 # <a name="what-are-authentication-methods"></a>驗證方法有哪些？
 
@@ -26,14 +26,14 @@ ms.locfileid: "74848743"
 
 Microsoft 強烈建議系統管理員讓使用者可選取多於必要驗證方法數目下限，以免使用者無法存取其中一個。
 
-|驗證方法|用量|
+|驗證方法|使用量|
 | --- | --- |
 | 密碼 | MFA 和 SSPR |
 | 安全性問題 | 僅 SSPR |
 | 電子郵件地址 | 僅 SSPR |
 | Microsoft Authenticator 應用程式 | MFA 和 SSPR |
 | OATH 硬體權杖 | MFA 和 SSPR 的公開預覽版 |
-| 簡訊 | MFA 和 SSPR |
+| sms | MFA 和 SSPR |
 | 語音通話 | MFA 和 SSPR |
 | 應用程式密碼 | 只有在某些情況下的 MFA |
 
@@ -156,25 +156,25 @@ Microsoft Authenticator 應用程式或其他第三方應用程式可以作為�
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬體權杖 (公開預覽)
 
-OATH 是一項開放標準，可指定單次密碼 (OTP) 程式碼的產生方式。 Azure AD 將會支援使用每 30 秒或 60 秒變換一次的 OATH-TOTP SHA-1 權杖。 客戶可以從他們選擇的廠商購買這些權杖。 秘密金鑰限制為128個字元，但可能與所有權杖不相容。 秘密金鑰必須以 Base32 編碼。
+OATH 是一項開放標準，可指定單次密碼 (OTP) 程式碼的產生方式。 Azure AD 將會支援使用每 30 秒或 60 秒變換一次的 OATH-TOTP SHA-1 權杖。 客戶可以從他們選擇的廠商購買這些權杖。 秘密金鑰限制為128個字元，但可能與所有權杖不相容。 秘密金鑰只能*包含字元 a-z*或 a-z 和數位*1-7*，*而且必須*以 Base32 編碼。
 
-![將 OATH 權杖上傳到 MFA Server OATH 權杖分頁](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![將 OATH 權杖上傳到 MFA OATH 權杖分頁](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-OATH 硬體權杖已支援作為公開預覽的一部分。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+公開預覽中支援 OATH 硬體權杖。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-取得權杖後，必須使用逗號分隔值 (CSV) 檔案格式加以上傳，包括 UPN、序號、祕密金鑰、時間間隔、製造商和模型，如下列範例所示。
+取得權杖之後，必須以逗號分隔值（CSV）檔案格式上傳，包括 UPN、序號、秘密金鑰、時間間隔、製造商和型號，如下列範例所示：
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> 請確定您在 CSV 檔案中包含標頭資料列，如上所示。
+> 請確定您在 CSV 檔案中包含標頭資料列。
 
-一旦將格式正確設為 CSV 檔案後，系統管理員接著可以登入 Azure 入口網站，然後瀏覽至 [Azure Active Directory]、[MFA 伺服器]、[OATH 權杖]，並上傳所產生的 CSV 檔案。
+一旦正確格式化為 CSV 檔案之後，系統管理員就可以登入 Azure 入口網站，流覽至**Azure Active Directory** > **安全性** > **MFA** > **OATH 權杖**，然後上傳產生的 CSV 檔案。
 
-視 CSV 檔案的大小而定，可能需要數分鐘的時間來處理。 按一下 [重新整理] 按鈕來取得目前的狀態。 如果檔案中有任何錯誤，您可以選擇下載 CSV 檔案，當中會列出需要您解決的任何錯誤。
+視 CSV 檔案的大小而定，可能需要數分鐘的時間來處理。 按一下 [重新整理] 按鈕來取得目前的狀態。 如果檔案中有任何錯誤，您可以選擇下載 CSV 檔案，當中會列出需要您解決的任何錯誤。 下載的 CSV 檔案中的功能變數名稱與上傳的版本不同。
 
 一旦已解決任何錯誤後，系統管理員可以接著按一下 [啟動] 來啟動每個金鑰，以便啟動權杖及輸入權杖上顯示的 OTP。
 
@@ -186,7 +186,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 有兩個選項可供使用行動電話的使用者使用。
 
-如果使用者不想在目錄中顯示其行動電話號碼，但仍想要用於密碼重設，管理員便不應將該號碼填入目錄。 使用者應該透過[密碼重設註冊入口網站](https://aka.ms/ssprsetup)，填妥其**驗證電話**屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
+如果使用者不想在目錄中顯示其行動電話號碼，但仍想要用於密碼重設，管理員便不應將該號碼填入目錄。 使用者應該透過**密碼重設註冊入口網站**，填妥其[驗證電話](https://aka.ms/ssprsetup)屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
 
 為了正確運作，電話號碼的格式必須是：+國碼 電話號碼，例如 +1 4255551234。
 
@@ -265,4 +265,4 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 [啟用租使用者中的合併註冊](howto-registration-mfa-sspr-combined.md)
 
-[使用者驗證方法設定文件](https://aka.ms/securityinfoguide) \(英文\)
+[使用者驗證方法設定文件](https://aka.ms/securityinfoguide)

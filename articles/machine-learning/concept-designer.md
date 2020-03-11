@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312425"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037635"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>什麼是 Azure Machine Learning 設計工具？ 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>什麼是 Azure Machine Learning 設計工具（預覽）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫布上的[資料集](#datasets)和[模組](#module)，以建立機器學習模型。 若要瞭解如何開始使用設計工具，請參閱[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>從視覺化介面移至設計工具
 
-視覺介面（預覽）已更新，現在已 Azure Machine Learning 設計工具中。 設計工具已重新架構為使用管線型後端，可完全與 Azure Machine Learning 的其他功能整合。 
+視覺介面（預覽）已更新，現在已 Azure Machine Learning 設計工具（預覽）。 設計工具已重新架構為使用管線型後端，可完全與 Azure Machine Learning 的其他功能整合。 
 
 由於這些更新的結果，視覺介面的一些概念和詞彙已變更或重新命名。 請參閱下表，以瞭解最重要的概念變更。 
 
@@ -135,13 +135,5 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解預測性分析和機器學習服務的基本概念[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)
-* 使用其中一個範例，並進行修改以符合您的需求：
-
-- [範例 1-回歸：預測汽車的價格](how-to-designer-sample-regression-automobile-price-basic.md)
-- [範例 2-回歸：比較汽車價格預測的演算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [範例 3-使用特徵選取進行分類：收入預測](how-to-designer-sample-classification-predict-income.md)
-- [範例 4-分類：預測信用風險（區分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [範例 5-分類：預測流失](how-to-designer-sample-classification-churn.md)
-- [範例 6-分類：預測航班延誤](how-to-designer-sample-classification-flight-delay.md)
-- [範例 7-文字分類：維琪百科 SP 500 資料集](how-to-designer-sample-text-classification.md)
+* 瞭解如何修改現有的[設計工具範例](samples-designer.md)，以適應您的需求。
 

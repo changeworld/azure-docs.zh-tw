@@ -2,17 +2,18 @@
 title: Azure 磁碟加密範例腳本
 description: 本文是 Linux Vm 的 Microsoft Azure 磁片加密附錄。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad0e3bbba729436c3a07f44d989a40f5349dfb3e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326356"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970516"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例腳本 
 
@@ -44,10 +45,10 @@ ms.locfileid: "74326356"
 
 |參數|描述|是否為強制？|
 |------|------|------|
-|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| true|
-|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| true|
-|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|true|
-|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|true|
+|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
+|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
+|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|True|
+|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|True|
 |$aadAppName|會用來將祕密寫入到金鑰保存庫的 Azure AD 應用程式名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的應用程式。 如果此應用程式已經存在，請將 aadClientSecret 參數傳遞至指令碼。|False|
 |$aadClientSecret|稍早建立的 Azure AD 應用程式用戶端密碼。|False|
 |$keyEncryptionKeyName|金鑰保存庫中選用金鑰加密金鑰的名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的金鑰。|False|
@@ -289,7 +290,7 @@ ms.locfileid: "74326356"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   to:
+   至：
    ```bash
     if [ 1 ]; then
    ```
@@ -370,7 +371,7 @@ ms.locfileid: "74326356"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   收件人
+   to
    ```bash
     if [ 1 ]; then
    ```

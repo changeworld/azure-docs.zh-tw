@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718358"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081772"
 ---
 # <a name="limits-and-quotas"></a>限制和配額
 
@@ -42,8 +42,8 @@ S0 專案預期會在一段時間後增加「每個專案的訓練影像數」�
 |影像高度/寬度上限（以圖元為單位）|無限制|無限制|
 |最大影像大小 (訓練影像上傳) |6 MB|6 MB|
 |最大影像大小 (預測)|4 MB|4 MB|
-|每個物件偵測訓練影像的最大區域|200|200|
-|每個分類影像的標記上限|30|30|
+|每個物件偵測訓練影像的最大區域|300|300|
+|每個分類影像的標記上限|100|100|
 
 > [!NOTE]
 > 小於256圖元的影像將被接受，但放大。

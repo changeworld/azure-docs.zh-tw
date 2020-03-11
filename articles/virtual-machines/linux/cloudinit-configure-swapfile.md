@@ -1,25 +1,18 @@
 ---
 title: 使用雲端 init 在 Linux VM 上設定交換資料分割
 description: 如何在使用 Azure CLI 建立期間，使用雲端 init 在 Linux VM 中設定交換磁碟分割
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036762"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969194"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>使用雲端 init 在 Linux VM 上設定交換資料分割
 本文說明如何使用[雲端 init](https://cloudinit.readthedocs.io)來設定各種 Linux 散發套件上的交換資料分割。 交換磁碟分割傳統上是由 Linux 代理程式（WALA）根據所需的散發套件進行設定。  本檔將概述使用雲端 init，在布建期間視需要建立交換資料分割的程式。  如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
@@ -29,7 +22,7 @@ ms.locfileid: "74036762"
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>為 Red Hat 和以 CentOS 為基礎的映射建立交換磁碟分割
 
-在您目前的 shell 中建立名為*cloud_init_swappart*的檔案，並貼上下列設定。 針對此範例，請在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor cloud_init_swappart.txt` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
+在您目前的 shell 中建立名為*cloud_init_swappart*的檔案，並貼上下列設定。 針對此案例，在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor cloud_init_swappart.txt` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
 
 ```yaml
 #cloud-config

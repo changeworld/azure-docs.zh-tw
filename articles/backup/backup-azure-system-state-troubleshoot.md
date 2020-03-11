@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對內部部署 Windows 伺服�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583294"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969582"
 ---
 # <a name="troubleshoot-system-state-backup"></a>針對系統狀態備份進行疑難排解
 
@@ -137,7 +137,7 @@ Microsoft 軟體陰影複製提供者（SWPRV） | 手動
 
 | 徵狀 | 解決方案
 | -- | --
-| -MARS 代理程式失敗，並出現錯誤訊息：備份失敗，因為陰影複製磁片區的磁碟空間不足，因此包含系統檔案 <br/><br/> -Volsnap 系統事件記錄檔中出現下列錯誤/警告記錄檔：「磁片區 C 上的磁碟空間不足：若要為 C：增加陰影複製的陰影複製儲存區」，由於發生此錯誤，所有 volume C 的陰影複製都有刪除的風險。」 | -釋放事件記錄檔中反白顯示磁片區的空間，讓陰影複製有足夠的空間可在備份進行時成長 <br/><br/> -設定陰影複製空間時，我們可以限制用於陰影複製的空間量。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
+| -MARS 代理程式失敗，並出現錯誤訊息：備份失敗，因為陰影複製磁片區的磁碟空間不足，因此包含系統檔案 <br/><br/> -Volsnap 系統事件記錄檔中出現下列錯誤/警告記錄檔：「磁片區 C 上的磁碟空間不足：若要為 C：增加陰影複製的陰影複製儲存區」，由於發生此錯誤，所有 volume C 的陰影複製都有刪除的風險。」 | -釋放事件記錄檔中反白顯示磁片區的空間，讓陰影複製有足夠的空間可在備份進行時成長 <br/><br/> -設定陰影複製空間時，我們可以限制用於陰影複製的空間量。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 磁碟分割已鎖定
 

@@ -1,20 +1,17 @@
 ---
 title: 虛擬機器的 Azure 專用主機總覽
 description: 深入瞭解如何使用 Azure 專用主機來部署虛擬機器。
-services: virtual-machines-linux
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ddd08f87fb7847a81b28b18c1dedc1c4f0a7a169
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246203"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970736"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 

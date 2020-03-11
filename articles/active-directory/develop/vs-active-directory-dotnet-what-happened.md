@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159466"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036965"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
@@ -24,13 +24,13 @@ ms.locfileid: "77159466"
 > - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
-本文說明在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案會進行哪些明確的變更。
+本文識別[使用 Visual Studio 新增 Azure Active Directory 聯機服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案所做的確切變更。
 
 如需使用連線服務的相關資訊，請參閱[開始使用](vs-active-directory-dotnet-getting-started.md)。
 
 ## <a name="added-references"></a>新增的參考
 
-會影響專案檔 *.NET 參考和 `packages.config` (NuGet 參考)。
+會影響專案檔（*. NET 參考）和 `packages.config` （NuGet 參考）。
 
 | 類型 | 參考 |
 | --- | --- |

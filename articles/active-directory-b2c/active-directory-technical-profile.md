@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944219"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078857"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -64,13 +64,13 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **signInNames. emailAddress**或**signInNames. userName**。 針對同盟帳戶： **alternativeSecurityId**。
 
-InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
+[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
 
 ## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含 Azure AD 技術設定檔傳回的宣告清單。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。 只要設定了 `DefaultValue` 屬性，也可以加入 Azure Active Directory 未傳回的宣告。
 
-**OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
+[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 例如，**AAD-UserWriteUsingLogonEmail** 技術設定檔會建立本機帳戶，並傳回下列宣告：
 
@@ -92,7 +92,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** 元素包含 Azure AD 應保留的所有值，以及在原則之 ClaimsSchema 區段中已定義的宣告類型與 Azure AD 屬性名稱之間可能的對應資訊。
+**PersistedClaims**元素包含的所有值，應由原則中的[ClaimsSchema](claimsschema.md)區段內已定義的宣告類型和 Azure AD 屬性名稱之間的可能對應資訊 Azure AD 來保存。
 
 **AAD-UserWriteUsingLogonEmail** 技術設定檔，可建立新的本機帳戶，持續使用下列宣告：
 
@@ -123,9 +123,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 
 ### <a name="read"></a>讀取
 
-**讀取**作業可讀取單一使用者帳戶的相關資料。 若要讀取使用者資料，需要提供索引碼做為輸入宣告，例如 **objectId** **userPrincipalName**、**signInNames** (任何類型、使用者名稱和以電子郵件為基礎的帳戶) 或 **alternativeSecurityId**。
-
-以下技術設定檔會利用使用者的 objectId 讀取使用者帳戶的相關資料：
+**讀取**作業可讀取單一使用者帳戶的相關資料。 以下技術設定檔會利用使用者的 objectId 讀取使用者帳戶的相關資料：
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 
 ### <a name="write"></a>寫入
 
-**寫入**作業可建立或更新單一使用者帳戶。 若要寫入使用者資料，需要提供索引碼做為輸入宣告，例如 **objectId** **userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-下列技術設定檔會建立新的社交帳戶：
+**寫入**作業可建立或更新單一使用者帳戶。 下列技術設定檔會建立新的社交帳戶：
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-**DeleteClaims** 作業會清除提供之宣告清單中的資訊。 若要刪除宣告中的資訊，需要提供索引碼做為輸入宣告，例如 **objectId**、**userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-下列技術設定檔會刪除宣告：
+**DeleteClaims** 作業會清除提供之宣告清單中的資訊。 下列技術設定檔會刪除宣告：
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-**DeleteClaimsPrincipal** 作業會將單一使用者帳戶從目錄中刪除。 若要刪除使用者資料，需要提供索引碼做為輸入宣告，例如 **objectId** **userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-下列技術設定檔會使用使用者主體名稱，將使用者帳戶從目錄中刪除：
+**DeleteClaimsPrincipal** 作業會將單一使用者帳戶從目錄中刪除。 下列技術設定檔會使用使用者主體名稱，將使用者帳戶從目錄中刪除：
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -253,16 +245,30 @@ InputClaimsTransformations 元素可能包含輸入宣告轉換元素的集合�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 此值可進行[當地語系化](localization.md)。|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
-| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 此值可進行[當地語系化](localization.md)。|
 | ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
 | ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
+
+### <a name="error-messages"></a>錯誤訊息
+ 
+下列設定可用於設定失敗時顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 可以將錯誤訊息[當地語系化](localization.md)。
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
+
+
+## <a name="next-steps"></a>後續步驟
+
+如需使用 Azure AD 技術設定檔的範例，請參閱下列文章：
+
+- [在 Azure Active Directory B2C 中使用自訂原則新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: d7f9527aa5aa3353dc9087f4bcc5f3a5fb241637
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184548"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082892"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>將受 HSM 保護的金鑰匯入至 Key Vault
 
@@ -31,10 +31,19 @@ ms.locfileid: "78184548"
 
 根據您所使用的 Hsm，透過兩種不同的方法來支援將受 HSM 保護的金鑰傳輸至 Key Vault。 使用下表來判斷應該使用哪一種方法來產生 Hsm，然後傳輸您自己的受 HSM 保護的金鑰，以與 Azure Key Vault 搭配使用。 
 
-|HSM 廠商名稱|支援的 HSM 模型|支援的 HSM 金鑰傳輸方法|
-|---|---|---|
-|Thales|<ul><li>SafeNet Luna HSM 7 系列，含7.3 或更新版本的固件</li></ul>| [使用新的 BYOK 方法（預覽）](hsm-protected-keys-vendor-agnostic-byok.md)|
-|nCipher|<ul><li>Hsm 的 nShield 系列</li></ul>|[使用舊版 BYOK 方法](hsm-protected-keys-legacy.md)|
+|廠商名稱|廠商類型|支援的 HSM 模型|支援的 HSM 金鑰傳輸方法|
+|---|---|---|---|
+|nCipher|製造商|<ul><li>Hsm 的 nShield 系列</li></ul>|[使用舊版 BYOK 方法](hsm-protected-keys-legacy.md)|
+|Thales|製造商|<ul><li>SafeNet Luna HSM 7 系列，含7.3 或更新版本的固件</li></ul>| [使用新的 BYOK 方法（預覽）](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix|HSM 即服務|<ul><li>自我保護金鑰管理服務（SDKMS）</li></ul>|[使用新的 BYOK 方法（預覽）](hsm-protected-keys-vendor-agnostic-byok.md)|
+
+
+
+
+
+
+
+
 
 
 ## <a name="next-steps"></a>後續步驟

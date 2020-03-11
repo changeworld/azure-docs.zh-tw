@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383152"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037513"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
@@ -24,15 +24,18 @@ ms.locfileid: "74383152"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+> [!IMPORTANT]
+> 免費帳戶限制為每月5000筆交易，只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層<span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求率的詳細資訊，請參閱[資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
+
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行任何文字分析的容器，您必須擁有主機電腦和容器環境。
 
-## <a name="preparation"></a>準備工作
+## <a name="preparation"></a>準備
 
 使用文字分析容器之前，您必須符合下列必要條件：
 
-|必要項|目的|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
@@ -48,15 +51,15 @@ ms.locfileid: "74383152"
 
 下表說明針對每個文字分析容器配置的最低和建議 CPU 核心 (至少 2.6 GHz 或更快的版本) 與記憶體 (以 GB 為單位)。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[關鍵片語擷取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[語言偵測](#tab/language)
+# <a name="language-detection"></a>[語言偵測](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情感分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -71,15 +74,15 @@ ms.locfileid: "74383152"
 
 您可以在 Microsoft Container Registry 上取得文字分析的容器映射。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[關鍵片語擷取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[語言偵測](#tab/language)
+# <a name="language-detection"></a>[語言偵測](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情感分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -89,15 +92,15 @@ ms.locfileid: "74383152"
 
 ### <a name="docker-pull-for-the-text-analytics-containers"></a>文字分析容器的 Docker pull
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[關鍵片語擷取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[語言偵測](#tab/language)
+# <a name="language-detection"></a>[語言偵測](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情感分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -107,7 +110,7 @@ ms.locfileid: "74383152"
 
 容器位於[主機電腦](#the-host-computer)上時，請透過下列程序來使用容器。
 
-1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](../text-analytics-resource-container-config.md#example-docker-run-commands)可供參考。
+1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 [ 命令有相關](../text-analytics-resource-container-config.md#example-docker-run-commands)範例`docker run`可供參考。
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
@@ -116,15 +119,15 @@ ms.locfileid: "74383152"
 
 `docker run` 命令的[範例](../text-analytics-resource-container-config.md#example-docker-run-commands)可供使用。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[關鍵片語擷取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[語言偵測](#tab/language)
+# <a name="language-detection"></a>[語言偵測](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情感分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -167,7 +170,7 @@ ms.locfileid: "74383152"
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行文字分析容器的概念和工作流程。 摘要說明：
 

@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 11/08/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942228"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078488"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>藉由估算器使用 Azure Machine Learning 將模型定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75942228"
 
 ### <a name="single-node-training"></a>單一節點定型
 
-使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經建立[計算目標](how-to-set-up-training-targets.md#amlcompute)物件 `compute_target` 與[資料存放區](how-to-access-data.md)物件 `ds`。
+使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經建立[計算目標](how-to-set-up-training-targets.md#amlcompute)物件 `compute_target` 和您的[FileDataset](how-to-create-register-datasets.md)物件 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +58,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 此程式碼片段會將下列參數指定給 `Estimator` 建構函式。
 
-參數 | 說明
+參數 | 描述
 --|--
 `source_directory`| 包含定型作業所需之所有程式碼的本機目錄。 此資料夾會從您的本機電腦複製到遠端計算。
 `script_params`| 指定命令列引數的字典，`entry_script`，以 `<command-line argument, value>` 組的形式傳遞給您的定型腳本。 若要在 `script_params`中指定詳細資訊旗標，請使用 `<command-line argument, "">`。
@@ -68,7 +68,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 此函式具有另一個稱為 `pip_packages` 的參數，您可用於所需的任何 pip 套件。
 
-您現在已建立 `Estimator` 物件，請透過在您的 [Experiment](concept-azure-machine-learning-architecture.md#experiments) 物件 `experiment` 上呼叫 `submit` 函式，提交要在遠端計算上執行的定型作業。 
+您現在已建立 `Estimator` 物件，請透過在您的 `submit`Experiment[ 物件 ](concept-azure-machine-learning-architecture.md#experiments) 上呼叫 `experiment` 函式，提交要在遠端計算上執行的定型作業。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -110,7 +110,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 上面的程式碼公開下列新參數給 `Estimator` 建構函式：
 
-參數 | 說明 | 預設
+參數 | 描述 | 預設
 --|--|--
 `custom_docker_image`| 您要使用的映像名稱。 只提供公用 Docker 存放庫 (在此案例中是 Docker Hub) 中可用的映像。 若要使用來自私人 Docker 存放庫的映像，請改為使用建構函式的 `environment_definition` 參數。 [請參閱範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
 `node_count`| 用於定型作業的節點數目。 | `1`

@@ -4,23 +4,22 @@ description: 了解如何使用 Resource Manager 範本來建立傳統計量警�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
+ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668038"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037230"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
-本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 設定 Azure 度量警示。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。
-
-> [!NOTE]
+> [!WARNING]
 > 
-> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 如果您要尋找使用範本建立[新版計量警示](../../azure-monitor/platform/alerts-metric-near-real-time.md)的方式，[此文章](alerts-metric-create-templates.md)提供詳細資訊。
+> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 傳統警示已于2019年8月淘汰，並已設定為在6月2020日完全淘汰。 您無法建立新的傳統警示公用 Azure。 某些區域版本的 Azure 仍然可以選擇，但我們建議您改為使用範本來建立[較新](../../azure-monitor/platform/alerts-metric-near-real-time.md)的計量警示（如果可能的話）。 [本文](alerts-metric-create-templates.md)提供詳細資料。
 >
 
+本文說明如何使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來設定 Azure 傳統計量警示。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。
 
 基本步驟如下：
 

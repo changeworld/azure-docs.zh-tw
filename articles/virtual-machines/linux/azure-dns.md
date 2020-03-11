@@ -1,24 +1,17 @@
 ---
-title: Azure 中 Linux 虛擬機器的 DNS 名稱解析選項
+title: Linux Vm 的 DNS 名稱解析選項
 description: Azure IaaS 中 Linux 虛擬機器的名稱解析案例 (包括提供的 DNS 服務)：混合式外部 DNS 和自備 DNS 伺服器。
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084031"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969327"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的 DNS 名稱解析選項
 Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析。 您可以在 Azure 託管的虛擬機器上設定專屬 DNS 服務，以實作專屬 DNS 名稱解析解決方案。 下列案例應該可協助您選擇哪一種適合您的情況。
@@ -50,7 +43,7 @@ Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析
 * 在虛擬網路的虛擬機器之間提供名稱解析，不需要 FQDN。
 * 您可以使用最能描述部署的主機名稱，而不是使用自動產生的名稱。
 
-**考量**
+**考量因素：**
 
 * Azure 建立的 DNS 尾碼不能修改。
 * 您無法手動註冊您自己的記錄。
@@ -86,7 +79,7 @@ SUSE (使用 netconf)：
 5. 重新啟動網路服務 (「服務網路重新啟動」) 來設定快取作為本機 DNS 解析程式
 
 > [!NOTE]
-> :'dnsmasq' 封裝只是許多適用於 Linux 之 DNS 快取的其中一個。 在您使用它之前，請檢查您需求的適用性，而且沒有安裝其他快取。
+> ：'dnsmasq' 封裝只是許多適用於 Linux 之 DNS 快取的其中一個。 在您使用它之前，請檢查您需求的適用性，而且沒有安裝其他快取。
 >
 >
 

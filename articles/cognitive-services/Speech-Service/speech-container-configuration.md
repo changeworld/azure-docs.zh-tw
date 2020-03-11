@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816566"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037314"
 ---
 # <a name="configure-speech-service-containers"></a>設定語音服務容器
 
@@ -50,7 +50,7 @@ ms.locfileid: "74816566"
 
 - Azure 入口網站：**語音的**總覽，加上標籤 `Endpoint`
 
-| 必要項 | Name | Data type | 描述 |
+| 必要 | 名稱 | 資料類型 | 描述 |
 | -------- | ---- | --------- | ----------- |
 | 是 | `Billing` | String | 計費端點 URI。 如需取得帳單 URI 的詳細資訊，請參閱[收集必要的參數](speech-container-howto.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
 
@@ -72,16 +72,16 @@ ms.locfileid: "74816566"
 
 ## <a name="mount-settings"></a>裝載設定
 
-使用繫結裝載將資料讀取和寫入至容器，及從中讀取和寫入。 您可以在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 選項，以指定輸入裝載或輸出裝載。
+使用繫結裝載將資料讀取和寫入至容器，及從中讀取和寫入。 您可以在 `--mount`docker run[ 命令中指定 ](https://docs.docker.com/engine/reference/commandline/run/) 選項，以指定輸入裝載或輸出裝載。
 
 標準語音容器不會使用輸入或輸出裝載來儲存訓練或服務資料。 不過，自訂語音容器會依賴磁片區裝載。
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](speech-container-howto.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。
 
-| 選用 | Name | Data type | 描述 |
+| 選用 | 名稱 | 資料類型 | 描述 |
 | -------- | ---- | --------- | ----------- |
 | 不允許 | `Input` | String | 標準語音容器不會使用此功能。 自訂語音容器會使用[磁片](#volume-mount-settings)區掛接。                                                                                    |
-| 選用 | `Output` | String | 輸出裝載的目標。 預設值為 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output` |
+| 選用 | `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>磁片區掛接設定
 
@@ -115,7 +115,7 @@ ms.locfileid: "74816566"
 
 請將 {_argument_name_} 取代為您自己的值：
 
-| Placeholder | Value | 格式或範例 |
+| 預留位置 | 值 | 格式或範例 |
 | ----------- | ----- | ----------------- |
 | **{API_KEY}** | [Azure `Speech` 金鑰] 頁面上 `Speech` 資源的端點金鑰。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | [計費端點] 值可在 Azure `Speech` [總覽] 頁面取得。 | 如需明確的範例，請參閱[收集必要的參數](speech-container-howto.md#gathering-required-parameters)。 |
@@ -130,7 +130,7 @@ ms.locfileid: "74816566"
 
 下列是適用于語音容器的 Docker 範例。
 
-## <a name="speech-to-texttabstt"></a>[語音轉文字](#tab/stt)
+## <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>語音轉換文字的基本範例
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[自訂語音轉換文字](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>自訂語音轉換文字的基本範例
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[文字轉換語音](#tab/tss)
+## <a name="text-to-speech"></a>[文字轉換語音](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>文字轉換語音的基本範例
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[自訂文字轉換語音](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>自訂文字轉換語音的基本範例
 

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048694"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080375"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -150,6 +150,7 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 10004：「無法探索 < Windows/Linux > 機的已安裝應用程式。」 |  設備中未提供存取 < Windows/Linux > 機的認證。| 將認證新增至可存取 < Windows/Linux > 機的應用裝置。
 10005：「無法存取內部部署伺服器」。 | 存取認證可能錯誤。 | 更新設備認證，並確定您可以使用它們來存取相關的電腦。 
 10006：「無法存取內部部署伺服器」。 | 如果電腦作業系統不是 Windows 或 Linux，就可能發生這種情況。|  僅使用適用于 Windows/Linux 的應用程式探索。
+10007：「無法處理抓取的中繼資料」 | 嘗試還原序列化 JSON 時發生此內部錯誤 | 聯絡 Microsoft 支援服務以解決問題
 9000/9001/9002：「無法探索安裝在伺服器上的應用程式」。 | VMware 工具可能未安裝或已損毀。 | 在相關電腦上安裝/重新安裝 VMware 工具，並檢查它是否正在執行。
 9003：無法探索安裝在伺服器上的應用程式」。 | 如果電腦作業系統不是 Windows 或 Linux，就可能發生這種情況。 | 僅使用適用于 Windows/Linux 的應用程式探索。
 9004：「無法探索安裝在伺服器上的應用程式」。 | 如果 VM 已關閉電源，可能就會發生這種情況。 | 針對 [探索]，請確定 VM 已開啟。
@@ -158,9 +159,21 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 9008：「無法取得已安裝伺服器的應用程式」。 | 可能是內部錯誤。  | Tf 問題不會在24小時內自行解決，請聯絡支援人員。
 9009：「無法取得已安裝伺服器的應用程式」。 | 如果伺服器上的 Windows 使用者帳戶控制（UAC）設定受到限制，並防止探索已安裝的應用程式，就會發生此問題。 | 搜尋伺服器上的 [使用者帳戶控制] 設定，並將伺服器上的 UAC 設定設為較低兩個層級的其中一個。
 9010：「無法取得已安裝伺服器的應用程式」。 | 可能是內部錯誤。  | Tf 問題不會在24小時內自行解決，請聯絡支援人員。
+9011：在來賓 VM 上找不到「從來賓下載的檔案」 | 問題可能是內部錯誤所造成。 | 此問題應該會在24小時內自動解決。 如果問題仍然持續發生，請洽詢 Microsoft 支援服務。
+9012：「結果檔案內容是空的。」 | 問題可能是內部錯誤所造成。 | 此問題應該會在24小時內自動解決。 如果問題仍然持續發生，請洽詢 Microsoft 支援服務。
+9013：「每次登入 VMware VM 時，都會建立新的暫存設定檔」 | 每次登入 VM 時，都會建立新的暫存設定檔 | 請確定來賓 VM 認證中提供的使用者名稱是 UPN 格式。
+9015：「因為 vCenter 上的許可權不足，所以無法連接到 VMware Vm」 | VCenter 使用者帳戶未啟用來賓作業角色 | 請確定已在 vCenter 使用者帳戶上啟用來賓作業角色。
+9016：「無法連線至 VMware Vm，因為來賓作業代理程式已超出資料」 | VMware 工具未正確安裝或不是最新版本。 | 請確認 VMware 工具已正確安裝且處於最新狀態。
+9017：「在 VM 上找不到具有探索到的中繼資料的檔案」。 | 問題可能是內部錯誤所造成。 | 請聯絡 Microsoft 支援服務以取得解決方法。
+9018：「來賓 Vm 中未安裝 PowerShell。」 | 在來賓 VM 中無法使用 PowerShell。 | 在來賓 VM 中安裝 PowerShell。
+9019：「因為來賓 VM 操作失敗而無法探索」 | VM 上的 VMware 來賓操作失敗。 | 請確認 VM 認證有效，而且來賓 VM 認證中提供的使用者名稱是 UPN 格式。
+9020：「檔案建立許可權遭到拒絕」。 | 與使用者或群組原則相關聯的角色，會限制使用者在資料夾中建立檔案。 | 檢查來賓使用者所提供的是否具有資料夾中檔案的 create 許可權。 請參閱伺服器評估中的**通知**，以取得資料夾的名稱。
+9021：「資料夾系統暫存路徑中的檔案建立許可權遭到拒絕」。 | 不支援 VM 上的 VMware 工具版本 | 將您的 VMware 工具版本升級至10.2.0。
+9022：「取得 WMI 物件存取遭到拒絕」。 | 與使用者或群組原則相關聯的角色會限制使用者存取 WMI 物件。 | 請連絡 Microsoft 支援。
+9023：「SystemRoot 環境變數值是空的。」 | 未知 | 請連絡 Microsoft 支援。
+9024：「TEMP 環境變數值是空的。」 | 未知 | 請連絡 Microsoft 支援。
+9025：「來賓 Vm 中的 PowerShell 已損毀。」 | 未知 | 在來賓 VM 中重新安裝 PowerShell，並檢查是否可以在來賓 VM 上執行 PowerShell。
 8084：「因為 VMware 錯誤而無法探索應用程式： <Exception from VMware>」 | Azure Migrate 設備會使用 VMware Api 來探索應用程式。 如果在嘗試探索應用程式時 vCenter Server 擲回例外狀況，就會發生這個問題。 來自 VMware 的錯誤訊息會顯示在入口網站中顯示的錯誤訊息中。 | 搜尋[VMware 檔](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)中的訊息，並遵循步驟來修正。 如果您無法修正，請聯絡 Microsoft 支援服務。
-9012：「無法探索安裝在伺服器上的應用程式」 | 問題可能是內部錯誤所造成。  | 如果問題無法在24小時內自行解決，請聯絡支援人員。
-9013：「無法探索安裝在伺服器上的應用程式」 | 每次登入 VM 時，就會建立新的暫存設定檔。  | 請確定未針對提供的來賓使用者建立暫存設定檔。
 
 
 

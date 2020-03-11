@@ -3,12 +3,12 @@ title: Azure Migrate 中的相依性視覺效果
 description: 概述伺服器評定服務中的評估計算，Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361839"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082595"
 ---
 # <a name="dependency-visualization"></a>相依性視覺效果
 
@@ -55,7 +55,7 @@ ms.locfileid: "78361839"
 **受支援的作業系統** | 審查支援無代理程式視覺效果的[作業系統](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
 **VM** | **Vmware 工具**： vmware 工具必須在您想要分析的 vm 上安裝並執行。<br/><br/> **帳戶**：在 Azure Migrate 設備上，您必須新增可用來存取 vm 以進行分析的使用者帳戶。<br/><br/> **Windows vm**：使用者帳戶必須是電腦上的本機或網域系統管理員。<br/><br/> **Linux vm**：帳戶上需要根許可權。 或者，使用者帳戶需要/bin/netstat 和/bin/ls 檔案上的這兩項功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 | [深入瞭解](migrate-appliance.md)Azure Migrate 設備。
 **VMware** | **vCenter**：設備需要具備唯讀存取權的 vCenter Server 帳戶，以及為虛擬機器 > 來賓作業啟用的許可權。<br/><br/> **ESXi 主機**：在執行您要分析之 Vm 的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 通訊埠443。
-**收集的資料** |  無代理程式相依性視覺效果的運作方式是從已啟用它的機器中，捕獲 TCP 連線資料。 相依性探索開始之後，應用裝置會每五分鐘輪詢一次，從機器收集這項資料：<br/> -TCP 連接。<br/> -具有作用中連接之進程的名稱。<br/> -使用作用中連接執行進程的已安裝應用程式名稱。<br/> -每個輪詢間隔偵測到的連線數目。
+**收集的資料** |  無代理程式相依性分析的運作方式是從已啟用它的電腦上，捕獲 TCP 連線資料。 啟用相依性探索之後，應用裝置會每隔5分鐘從來賓 Vm 收集 TCP 連線資料。 此資料是透過使用 vSphere Api 的 vCenter Server，從來賓 Vm 收集而來。 收集的資料會在設備上處理，以推算相依性資訊，並每隔6小時傳送至 Azure Migrate。 以下是從每部電腦收集的資料： <br/> -具有作用中連接之進程的名稱。<br/> -使用作用中連接執行進程的應用程式名稱。<br/> -作用中連接上的目的地埠。
 
 
 ## <a name="next-steps"></a>後續步驟

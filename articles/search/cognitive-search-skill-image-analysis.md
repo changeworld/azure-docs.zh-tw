@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840497"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080201"
 ---
 # <a name="image-analysis-cognitive-skill"></a>映像分析認知技能
 
@@ -32,15 +32,15 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 這些參數會區分大小寫。
 
-| 參數名稱     | 說明 |
+| 參數名稱     | 描述 |
 |--------------------|-------------|
 | defaultLanguageCode   |  此字串表示要傳回的語言。 服務會以指定語言傳回辨識結果。 如果未指定此屬性，則預設值為 "en"。 <br/><br/>支援的語言為： <br/>*en* - 英文 (預設) <br/> *es* -西班牙文 <br/> *ja-jp* -日文 <br/> *pt* -葡萄牙文 <br/> *zh* - 簡體中文|
-| visualFeatures |  此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li>*成人*-偵測影像本質上是否為色情（描述裸體或性別 act），或為繁雜（描述極端的暴力或血壓）。 也會偵測到有色情的暗示性內容（也稱為猥褻內容）。</li><li>*品牌*-偵測影像內的各種品牌，包括大約的位置。 *品牌*視覺功能僅提供英文版。</li><li> *類別*-根據認知服務[電腦視覺檔](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中所定義的分類，將影像內容分類。 </li><li> *色彩*-決定輔色、主要色彩，以及影像是否為黑色 & 白色。</li><li>*描述*-以支援的語言描述具有完整句子的影像內容。</li><li>*臉部*-偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li>  *imageType* -偵測影像是否為美工圖案或線條繪圖。</li><li>  *物件*-偵測影像內的各種物件，包括大約的位置。 [*物件*] 視覺效果功能僅提供英文版。</li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li></ul> 視覺功能的名稱會區分大小寫。|
+| visualFeatures |  此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li>*成人*-偵測影像本質上是否為色情（描述裸體或性別 act），或為繁雜（描述極端的暴力或血壓）。 也會偵測到有色情的暗示性內容（也稱為猥褻內容）。</li><li>*品牌*-偵測影像內的各種品牌，包括大約的位置。 *品牌*視覺功能僅提供英文版。</li><li> *類別*-根據認知服務[電腦視覺檔](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中所定義的分類，將影像內容分類。 </li><li>*描述*-以支援的語言描述具有完整句子的影像內容。</li><li>*臉部*-偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li> *物件*-偵測影像內的各種物件，包括大約的位置。 [*物件*] 視覺效果功能僅提供英文版。</li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li></ul> 視覺功能的名稱會區分大小寫。 請注意， *color*和*imageType*視覺功能已被取代，但仍可透過[自訂技能](https://go.microsoft.com/fwlink/?linkid=2121117)存取這項功能。|
 | 詳細資料   | 字串陣列表示要傳回的特定領域詳細資料。 有效的視覺功能類型包括： <ul><li>*名人*-識別映射中偵測到的名人。</li><li>*地標*-識別映射中偵測到的地標。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 說明                                          |
+| 輸入名稱      | 描述                                          |
 |---------------|------------------------------------------------------|
 | image         | 複雜類型。 目前僅可搭配 "/document/normalized_images" 欄位使用，該欄位是由 Azure Blob 索引子在 ```imageAction``` 被設定為 ```none``` 以外的其他值時產生。 如需詳細資訊，請參閱[範例](#sample-output)。|
 
@@ -470,20 +470,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {
@@ -517,7 +503,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ## <a name="error-cases"></a>錯誤案例
 在下列錯誤案例中，不會擷取任何元素。
 
-| 錯誤碼 | 說明 |
+| 錯誤碼 | 描述 |
 |------------|-------------|
 | NotSupportedLanguage | 不支援提供的語言。 |
 | InvalidImageUrl | 映像 URL 格式不正確或無法存取。|
@@ -543,7 +529,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

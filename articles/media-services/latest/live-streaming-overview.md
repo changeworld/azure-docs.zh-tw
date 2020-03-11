@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: af7bfe74d8df177650cea76a9bed7b0d7311f87e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78244651"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968990"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -33,7 +33,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 本文提供使用媒體服務的即時串流總覽和指導方針，以及其他相關文章的連結。
  
 > [!NOTE]
-> 目前您無法使用 Azure 入口網站管理 v3 資源。 請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作（例如，轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging"></a>動態封裝
 
@@ -56,7 +56,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ### <a name="pass-through"></a>傳遞
 
-![pass-through (通過)](./media/live-streaming/pass-through.svg)
+![即時通行](./media/live-streaming/pass-through.svg)
 
 使用傳遞**即時事件**時，您會依賴內部部署即時編碼器來產生多位元率的影片串流，並將其作為發佈摘要傳送至即時事件（使用 RTMP 或分散的輸入通訊協定）。 實況活動接著會透過傳入的影片串流傳送至動態封裝程式（串流端點），而不需要任何進一步的轉碼。 這類傳遞即時事件已針對長時間執行的即時事件或24x365 線性即時串流進行優化。 
 
@@ -125,5 +125,6 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="next-steps"></a>後續步驟
 
+* [即時串流快速入門]（live-events-wirecast-quickstart.md （
 * [即時串流教學課程](stream-live-tutorial-with-api.md)
 * [從媒體服務 v2 移動至 v3 的移轉指導](migrate-from-v2-to-v3.md)

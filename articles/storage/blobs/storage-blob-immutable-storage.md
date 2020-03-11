@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365329"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968352"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變的儲存體儲存業務關鍵的 blob 資料
 
@@ -68,7 +68,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 下列限制適用于保留原則：
 
 - 針對儲存體帳戶，具有鎖定之以時間為基礎的不可變原則的容器數目上限為10000。
-- 最小保留間隔是一天。 最大值為146000天（400年）。
+- 保留間隔的最小值為1天。 最大值為146000天（400年）。
 - 針對容器，針對鎖定的以時間為基礎的不可變原則，擴充保留間隔的編輯次數上限為5。
 - 針對容器，已鎖定的原則會保留最多七個以時間為基礎的保留原則 audit 記錄。
 
@@ -84,15 +84,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 解除鎖定以時間為基礎的保留原則可讓 `allowProtectedAppendWrites` 設定隨時啟用和停用。 一旦鎖定以時間為基礎的保留原則，就無法變更 `allowProtectedAppendWrites` 設定。
 
-合法保存原則無法啟用 `allowProtectedAppendWrites`，且不允許將新的區塊附加至附加 blob。 如果將合法保存套用至已啟用 `allowProtectedAppendWrites` 的以時間為基礎的保留原則，則*AppendBlock* API 將會失敗，直到您放棄合法保存為止。
-
-> [!IMPORTANT] 
-> [以時間為基礎的保留] 下的 [允許受保護的附加 blob 寫入] 設定目前適用于下欄區域：
-> - 美國東部
-> - 美國中南部
-> - 美國西部 2
->
-> 此時，我們強烈建議您不要在指定的任何其他區域中啟用 `allowProtectedAppendWrites`，因為它可能會導致間歇性失敗，並影響附加 blob 的相容性。 如需有關如何設定和鎖定以時間為基礎之保留原則的詳細資訊，請參閱[啟用允許受保護的附加 blob 寫入](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。
+合法保存原則無法啟用 `allowProtectedAppendWrites` 而且任何合法保存都會使失效 ' allowProtectedAppendWrites ' 屬性。 如果將合法保存套用至已啟用 `allowProtectedAppendWrites` 的以時間為基礎的保留原則，則*AppendBlock* API 將會失敗，直到您放棄合法保存為止。
 
 ## <a name="legal-holds"></a>合法保存
 
@@ -140,7 +132,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **我可以同時套用合法保存和以時間為基礎的保留原則嗎？**
 
-是，容器可以同時具有合法保存和以時間為基礎的保留原則。 該容器中的所有 Blob 都會保持固定狀態，直到所有合法保存都遭到清除為止 (即使其有效保留期限已過期)。 相反地，Blob 會保持固定狀態，直到有效保留週期到期為止 (即使已清除所有合法保存)。
+是，容器可以同時具有合法保存和以時間為基礎的保留原則;不過，在清除合法保存之前，不會套用 ' allowProtectedAppendWrites ' 設定。 該容器中的所有 Blob 都會保持固定狀態，直到所有合法保存都遭到清除為止 (即使其有效保留期限已過期)。 相反地，Blob 會保持固定狀態，直到有效保留週期到期為止 (即使已清除所有合法保存)。 
 
 **合法的持有原則是否僅適用于法律訴訟，或是否有其他使用案例？**
 
@@ -164,7 +156,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **如果我付款失敗，而保留間隔尚未過期，則會發生什麼事？**
 
-如果未付款，則會依照您與 Microsoft 簽訂的合約條款與條件規定，套用一般資料保留原則。
+如果未付款，則會依照您與 Microsoft 簽訂的合約條款與條件規定，套用一般資料保留原則。 如需一般資訊，請參閱[Microsoft 的資料管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
 
 **您是否提供試用此功能的試用版或寬限期？**
 

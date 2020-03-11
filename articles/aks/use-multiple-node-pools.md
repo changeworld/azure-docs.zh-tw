@@ -3,17 +3,17 @@ title: 在 Azure Kubernetes Service 中使用多個節點集區（AKS）
 description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 services: container-service
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374516"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082659"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
-在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 這些節點集區包含執行應用程式的基礎 Vm。 當您建立 AKS 叢集時，會定義初始節點數目及其大小（SKU），以建立*預設節點集*區。 若要支援具有不同計算或儲存體需求的應用程式，您可以建立額外的節點集區。 例如，您可以使用這些額外的節點集區，為計算密集型應用程式提供 Gpu，或存取高效能 SSD 儲存體。
+在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 這些節點集區包含執行應用程式的基礎 Vm。 當您建立 AKS 叢集時，會定義初始節點數目及其大小（SKU），此叢集會建立*預設節點集*區。 若要支援具有不同計算或儲存體需求的應用程式，您可以建立額外的節點集區。 例如，您可以使用這些額外的節點集區，為計算密集型應用程式提供 Gpu，或存取高效能 SSD 儲存體。
 
 > [!NOTE]
 > 這項功能可讓您更進一步控制如何建立和管理多個節點集區。 因此，建立/更新/刪除需要個別的命令。 先前透過 `az aks create` 或 `az aks update` 的叢集作業會使用 managedCluster API，而且是變更控制平面和單一節點集區的唯一選項。 這項功能會透過 agentPool API 公開代理程式組件區的個別作業集，並要求使用 `az aks nodepool` 命令集，以在個別節點集區上執行作業。
@@ -33,8 +33,8 @@ ms.locfileid: "78374516"
 * AKS 叢集必須使用標準 SKU 負載平衡器來使用多個節點集區，但基本 SKU 負載平衡器不支援此功能。
 * AKS 叢集必須使用節點的虛擬機器擴展集。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間，而 Windows 節點集區的長度必須介於1到6個字元之間。
-* 所有節點集區都必須位於相同的 vnet 和子網中。
-* 在叢集建立時建立多個節點集區時，節點集區所使用的所有 Kubernetes 版本都必須符合控制平面的版本。 使用每個節點集區作業布建叢集之後，即可更新此項。
+* 所有節點集區都必須位於相同的虛擬網路和子網中。
+* 在叢集建立時建立多個節點集區時，節點集區所使用的所有 Kubernetes 版本都必須符合控制平面的版本。 使用每個節點集區作業布建叢集之後，即可更新此版本。
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
@@ -195,11 +195,11 @@ AKS 叢集有兩個叢集資源物件與 Kubernetes 版本相關聯。
 
 控制平面會對應至一或多個節點集區。 升級作業的行為取決於所使用的 Azure CLI 命令。
 
-升級 AKS 控制平面需要使用 `az aks upgrade`。 這會升級控制項平面版本以及叢集中的所有節點集區。 
+升級 AKS 控制平面需要使用 `az aks upgrade`。 此命令會升級控制平面版本以及叢集中的所有節點集區。
 
 使用 `--control-plane-only` 旗標發出 `az aks upgrade` 命令時，只會升級叢集控制平面。 叢集中沒有任何相關聯的節點集區變更。
 
-升級個別節點集區需要使用 `az aks nodepool upgrade`。 這只會升級具有指定 Kubernetes 版本的目標節點集區
+升級個別節點集區需要使用 `az aks nodepool upgrade`。 此命令只會以指定的 Kubernetes 版本升級目標節點集區
 
 ### <a name="validation-rules-for-upgrades"></a>升級的驗證規則
 
@@ -212,7 +212,7 @@ AKS 叢集有兩個叢集資源物件與 Kubernetes 版本相關聯。
 
 * 提交升級作業的規則：
    * 您無法降級控制平面或節點集區 Kubernetes 版本。
-   * 如果未指定節點集區 Kubernetes 版本，則行為取決於所使用的用戶端。 Resource Manager 範本中的宣告會切換回已針對節點集區定義的現有版本（如果使用的話），如果未設定，則會使用控制平面版本來切換回來。
+   * 如果未指定節點集區 Kubernetes 版本，則行為取決於所使用的用戶端。 Resource Manager 範本中的宣告會回復至針對節點集區定義的現有版本（如果使用的話），如果未設定，則會使用控制平面版本來切換回來。
    * 您可以在指定的時間升級或調整控制平面或節點集區，而無法同時在單一控制平面或節點集區資源上提交多項作業。
 
 ## <a name="scale-a-node-pool-manually"></a>手動調整節點集區
@@ -449,12 +449,50 @@ Events:
 
 只有套用此污點的 pod 可以在*gpunodepool*的節點上排程。 任何其他 pod 都會在*nodepool1*節點集區中排程。 如果您建立其他節點集區，您可以使用其他污點和容差來限制可在這些節點資源上排程的 pod。
 
-## <a name="specify-a-tag-for-a-node-pool"></a>指定節點集區的標記
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定節點集區的污點、標籤或標記
 
-您可以將 Azure 標記套用至 AKS 叢集中的節點集區。 套用至節點集區的標記會套用至節點集區中的每個節點，並透過升級來保存。 標記也會套用至相應放大作業期間新增至節點集區的新節點。 新增標籤可協助進行原則追蹤或成本預估之類的工作。
+建立節點集區時，您可以將污點、標籤或標記新增至該節點集區。 當您新增污點、標籤或標記時，該節點集區中的所有節點也會取得該污點、標籤或標記。
+
+若要建立具有污點的節點集區，請使用[az aks nodepool add][az-aks-nodepool-add]。 指定名稱*taintnp* ，並使用 `--node-taints` 參數指定污點的*sku = gpu： NoSchedule* 。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
+
+下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*taintnp*正在*建立*具有指定*nodeTaints*的節點：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  {
+      "sku": "gpu:NoSchedule"
+    },
+    ...
+  },
+ ...
+]
+```
+
+在處理節點排程規則的 Kubernetes 中，會顯示污點資訊。
 
 > [!IMPORTANT]
-> 若要使用節點集區標記，您需要*aks-preview* CLI 擴充功能版本0.4.29 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+> 若要使用節點集區標籤和標記，您需要*aks-preview* CLI 擴充功能版本0.4.35 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
 > 
 > ```azurecli-interactive
 > # Install the aks-preview extension
@@ -464,7 +502,51 @@ Events:
 > az extension update --name aks-preview
 > ```
 
-使用[az aks node pool add][az-aks-nodepool-add]建立節點集區。 指定名稱*tagnodepool* ，並使用 `--tag` 參數來指定適用于標記的*部門 = IT*和*costcenter = 9999* 。
+您也可以在建立節點集區時，將標籤新增至節點集區。 在節點集區設定的標籤會新增至節點集區中的每個節點。 這些[標籤會顯示在 Kubernetes 中][kubernetes-labels]，以處理節點的排程規則。
+
+若要建立具有標籤的節點集區，請使用[az aks nodepool add][az-aks-nodepool-add]。 指定名稱*labelnp* ，並使用 `--labels` 參數來指定適用于標籤的*部門 = IT*和*costcenter = 9999* 。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> 標籤只能在節點集區建立期間，針對節點集區設定。 標籤也必須是索引鍵/值組，而且具有[有效的語法][kubernetes-label-syntax]。
+
+下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*labelnp*正在*建立*具有指定*nodeLabels*的節點：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+您可以將 Azure 標記套用至 AKS 叢集中的節點集區。 套用至節點集區的標記會套用至節點集區中的每個節點，並透過升級來保存。 標籤也會套用至向外延展作業期間新增至節點集區的新節點。 新增標籤可協助進行原則追蹤或成本預估之類的工作。
+
+使用[az aks nodepool add][az-aks-nodepool-add]建立節點集區。 指定名稱*tagnodepool* ，並使用 `--tag` 參數來指定適用于標記的*部門 = IT*和*costcenter = 9999* 。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -617,13 +699,13 @@ az group deployment create \
 > [!WARNING]
 > 在針對每個節點指派公用 IP 的預覽期間，因為可能會有負載平衡器規則與 VM 布建衝突，所以無法*在 AKS 中與 STANDARD LOAD BALANCER SKU*搭配使用。 由於這項限制，此預覽功能不支援 Windows 代理程式組件區。 在預覽期間，如果您需要為每個節點指派一個公用 IP，則必須使用*基本 LOAD BALANCER SKU* 。
 
-AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，某些情況下，節點集區中的節點可能需要有自己的公用 IP 位址。 其中一個範例是遊戲，其中主控台需要直接連線到雲端虛擬機器，以將躍點降至最低。 這可以藉由註冊個別的預覽功能 [節點公用 IP （預覽）] 來達成。
+AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，某些情況下，節點集區中的節點可能需要有自己的公用 IP 位址。 其中一個範例是遊戲，其中主控台需要直接連線到雲端虛擬機器，以將躍點降至最低。 您可以註冊個別的預覽功能 [節點公用 IP （預覽）] 來達成此案例。
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-成功註冊之後，請遵循[上述](#manage-node-pools-using-a-resource-manager-template)相同指示部署 Azure Resource Manager 範本，並將 [布林值] 屬性 `enableNodePublicIP` 新增至 agentPoolProfiles。 將值設定為 `true`，預設為，如果未指定，則會設定為 `false`。 這是僅限建立時間的屬性，而且需要最低 API 版本2019-06-01。 這可同時套用至 Linux 和 Windows 節點集區。
+成功註冊之後，請遵循[上述](#manage-node-pools-using-a-resource-manager-template)相同指示部署 Azure Resource Manager 範本，並將 [布林值] 屬性 `enableNodePublicIP` 新增至 agentPoolProfiles。 將值設定為 `true`，預設為，如果未指定，則會設定為 `false`。 此屬性是僅限建立時間的屬性，而且需要最低 API 版本2019-06-01。 這可同時套用至 Linux 和 Windows 節點集區。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -652,6 +734,8 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md

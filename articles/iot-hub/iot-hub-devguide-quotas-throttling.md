@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396517"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968341"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -105,7 +105,7 @@ IoT 中樞會強制執行其他操作限制：
 | 雲端到裝置的傳訊<sup>1</sup> | 訊息大小上限為 64 KB。 每個裝置的傳遞擱置訊息上限為50。 |
 | 直接方法<sup>1</sup> | 直接方法承載的大小上限為 128 KB。 |
 | 自動裝置和模組設定<sup>1</sup> | 每個付費 SKU 中樞 100 項設定。 每個免費 SKU 中樞 20 項設定。 |
-| IoT Edge 自動部署<sup>1</sup> | 每個部署 20 個模組。 每個付費 SKU 中樞100部署（包括分層部署）。 每個免費 SKU 中樞10個部署。 |
+| IoT Edge 自動部署<sup>1</sup> | 50每個部署的模組。 每個付費 SKU 中樞100部署（包括分層部署）。 每個免費 SKU 中樞10個部署。 |
 | 對應項<sup>1</sup> | 所需屬性和報告屬性區段的大小上限為 32 KB。 標記的大小上限為 8 KB。 |
 | 共用存取原則 | 共用存取原則的最大數目為16 |
 

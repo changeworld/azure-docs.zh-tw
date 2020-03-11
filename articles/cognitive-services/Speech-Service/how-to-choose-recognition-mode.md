@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935244"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079819"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>選擇語音辨識模式
 
@@ -33,7 +33,7 @@ ms.locfileid: "75935244"
 如需使用 `RecognizeOnceAsync` 函式的詳細資訊，請參閱[.Net 語音 SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)檔。
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ result = speech_recognizer.recognize_once()
 
 ## <a name="continuous"></a>連續
 
-如果您需要長時間執行的辨識，請使用啟動和對應的 stop 函式來進行連續辨識。 啟動函式會啟動並繼續處理所有的語句，直到您叫用 stop 函式為止，或直到超過過多時間為止。 使用連續模式時，請務必註冊將在發生時引發的各種事件。 例如，當語音辨識發生時，就會引發「已辨識」事件。 您需要有事件處理常式，才能處理辨識。 語音服務會強制執行每個會話的總語音辨識時間上限10分鐘。
+如果您需要長時間執行的辨識，請使用啟動和對應的 stop 函式來進行連續辨識。 啟動函式會啟動並繼續處理所有的語句，直到您叫用 stop 函式為止，或直到超過過多時間為止。 使用連續模式時，請務必註冊將在發生時引發的各種事件。 例如，當語音辨識發生時，就會引發「已辨識」事件。 您需要有事件處理常式，才能處理辨識。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

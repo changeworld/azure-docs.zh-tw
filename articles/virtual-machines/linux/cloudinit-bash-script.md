@@ -1,35 +1,27 @@
 ---
 title: 使用雲端 init 在 Azure 上的 Linux VM 中執行 bash 腳本
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 在 Linux 虛擬機器中執行 Bash 指令碼
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e18b740b9b656236bd1958dd191bc9b02283d67
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036789"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969222"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 上的 Linux 虛擬機器中執行 Bash 指令碼
-本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在 Linux 虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上執行現有的 Bash 指令碼。 一旦 Azure 佈建資源之後，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
+本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在 Linux 虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上執行現有的 Bash 指令碼。 一旦 Azure 佈建資源，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
 
 ## <a name="run-a-bash-script-with-cloud-init"></a>使用 cloud-init 執行 Bash 指令碼
 透過 cloud-init，您不需要將現有指令碼轉換成雲端組態，cloud-init 接受多種輸入類型，其中一個就是 Bash 指令碼。
 
 如果您已使用 Linux 自訂指令碼的 Azure 延伸模組來執行指令碼，您可以將其移轉為使用 cloud-init。 但是，Azure 延伸模組有整合的指令碼失敗警示報告，而 cloud-init 映像部署則是「不會」在指令碼失敗時失敗。
 
-若要在實際操作中查看這項功能，可建立簡單的 Bash 指令碼進行測試。 如同 cloud-init 的 `#cloud-config` 檔案，此指令碼必須位於您執行 AzureCLI 命令來佈建虛擬機器的位置。  針對此範例，請在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor simple_bash.sh` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
+若要在實際操作中查看這項功能，可建立簡單的 Bash 指令碼進行測試。 如同 cloud-init 的 `#cloud-config` 檔案，此指令碼必須位於您執行 AzureCLI 命令來佈建虛擬機器的位置。  針對此案例，在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor simple_bash.sh` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
 
 ```bash
 #!/bin/sh
