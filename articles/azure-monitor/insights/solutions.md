@@ -1,18 +1,17 @@
 ---
 title: Azure 監視器中的監視解決方案 | Microsoft Docs
 description: Azure 監視器中的監視解決方案是邏輯、視覺效果和資料擷取規則的集合，可提供針對特定問題領域進行計量的樞紐分析。  本文提供有關安裝及使用監視解決方案的資訊。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 7ea7051b24deeddea25b1db771b73a226f650067
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401157"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360810"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 監視解決方案會運用 Azure 中的服務，提供特定應用程式或服務的額外作業見解。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。
@@ -34,7 +33,7 @@ ms.locfileid: "75401157"
 1. 使用畫面頂端的下拉式清單方塊，來變更針對圖格所使用的工作區或時間範圍。
 1. 按一下解決方案的圖格，以開啟其視圖，其中包含更詳細的分析收集的資料。
 
-![概觀](media/solutions/overview.png)
+![總覽](media/solutions/overview.png)
 
 監視解決方案可以包含多種的 Azure 資源，而您可以檢視解決方案隨附的任何資源，就像任何其他資源一樣。 例如，解決方案中包含的任何記錄查詢都會列在 [查詢總管](../log-query/get-started-portal.md#load-queries) 中的 [解決方案查詢] 下方。您在使用[記錄查詢](../log-query/log-query-overview.md) 執行臨機操作分析時，使用那些查詢。
 
