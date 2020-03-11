@@ -23,7 +23,7 @@
       href: stream-analytics-manage-job.md
     - name: 2 - 執行 Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - 執行 Javascript UDF
+    - name: 3 - 執行 JavaScript UDF
       href: stream-analytics-javascript-user-defined-functions.md
     - name: 4 - 在 Aure Pipelines 中使用 CI/CD 部署
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: 串流分析查詢語言
   items:
+    - name: 串流分析查詢語言概觀
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: 內建函式
       items:
         - name: 內建函式概觀

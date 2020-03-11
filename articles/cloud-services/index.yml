@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure 雲端服務文件
+summary: 了解如何使用雲端服務來裝載及執行高度可用且可調整的雲端應用程式和 API。 示範如何管理虛擬機器主機，以及設定、修補和安裝軟體。
+metadata:
+  title: Azure 雲端服務文件
+  description: 說明如何使用雲端服務來裝載及執行高度可用且可調整的雲端應用程式和 API。
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943188"
+landingContent:
+- title: 關於雲端服務
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是雲端服務？
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: 雲端服務影片庫
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: 開始使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python for Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: 開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立 PHP Web 和背景工作角色
+      url: ../cloud-services-php-create-web-role.md
+    - text: 建置和部署 Node.js 應用程式
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: 使用 Express 建置和部署 Node.js Web 應用程式
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: 部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在入口網站中建立和部署雲端服務
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: 使用 PowerShell 建立空的雲端服務容器
+      url: cloud-services-powershell-create-cloud-container.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 一般管理工作
+      url: cloud-services-how-to-manage-portal.md
+    - text: 設定雲端服務
+      url: cloud-services-how-to-configure-portal.md

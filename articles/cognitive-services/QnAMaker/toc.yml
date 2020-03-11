@@ -66,39 +66,39 @@
         - name: 管理資源
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: 取得分析
-          href: How-To/get-analytics-knowledge-base.md
         - name: 建立商務持續性方案
           href: How-To/business-continuity-plan.md
     - name: 管理知識庫
       items:
-        - name: 使用 QnA Maker 和 LUIS 建立 Bot
-          href: Tutorials/integrate-qnamaker-luis.md
+        - name: 建立知識庫
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: 語言選擇
           href: How-To/language-knowledge-base.md
-        - name: 移轉知識庫
-          href: Tutorials/migrate-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: 在知識庫上共同作業
-          href: How-To/collaborate-knowledge-base.md
-        - name: 測試知識庫
-          href: How-To/test-knowledge-base.md
-        - name: 使用主動學習來改善知識庫
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: 編輯知識庫
-          href: How-To/edit-knowledge-base.md
-        - name: 使用後續提示建立多回合交談
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: 新增閒聊
           href: How-to/chit-chat-knowledge-base.md
+        - name: 遷移至新的知識庫
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: 共同作業
+          href: How-To/collaborate-knowledge-base.md
+        - name: 測試
+          href: How-To/test-knowledge-base.md
+    - name: 管理 QnA 集合
+      items:
+        - name: 編輯知識庫
+          href: How-To/edit-knowledge-base.md
+        - name: 新增後續提示
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: 取得建議的替代問題
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
         - name: 新增受保護的 SharePoint 檔案
           href: How-To/add-sharepoint-datasources.md
           displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-        - name: 查詢知識庫
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: 查詢知識庫
+      href: How-To/metadata-generateanswer-usage.md
+      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: 與用戶端應用程式搭配使用
       items:
         - name: LUIS 和 QnA Maker

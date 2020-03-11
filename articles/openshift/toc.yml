@@ -33,6 +33,12 @@
           href: howto-create-tenant.md
         - name: 建立 Azure AD 應用程式物件和使用者
           href: howto-aad-app-configuration.md
+    - name: Azure Red Hat OpenShift 4.3 (預覽)
+      items:
+        - name: 建立 Azure Red Hat OpenShift 4.3 叢集
+          href: howto-using-azure-redhat-openshift.md
+        - name: 設定適用於 Azure Red Hat OpenShift 4.3 的 Azure 監視器
+          href: howto-azure-monitor-v4.md
     - name: 在 Azure Red Hat OpenShift 叢集中部署獨立 Prometheus
       href: howto-deploy-prometheus.md
     - name: 建立私人 Azure Red Hat OpenShift 叢集

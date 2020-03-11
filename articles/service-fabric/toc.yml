@@ -133,7 +133,7 @@
           href: service-fabric-cluster-security.md
         - name: 內建安全性控制
           href: service-fabric-security-controls.md
-    - name: 術語
+    - name: 詞彙
       href: service-fabric-technical-overview.md
     - name: 建置應用程式
       items:
@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 平衡叢集
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: 子叢集
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: 節流
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服務動作
@@ -358,7 +360,7 @@
       href: concepts-managed-identity.md
     - name: 設定容器存放庫認證
       href: configure-container-repository-credentials.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 設定開發環境
       items:
@@ -643,11 +645,11 @@
                   href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
             - name: 調整
               items:
-                - name: 手動相應放大
+                - name: 手動擴增
                   href: service-fabric-cluster-scale-up-down.md
-                - name: 以程式設計方式相應放大
+                - name: 以程式設計方式擴增
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: 相應增加主要節點類型
+                - name: 擴大主要節點類型
                   href: service-fabric-scale-up-node-type.md
                 - name: 新增節點類型
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
@@ -880,7 +882,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
     - name: Azure Resource Manager 部署限制
       href: service-fabric-azure-resource-manager-guardrails.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

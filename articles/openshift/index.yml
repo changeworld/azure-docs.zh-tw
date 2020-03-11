@@ -1,37 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Red Hat OpenShift 服務
+### YamlMime:Landing
+title: Azure Red Hat OpenShift 文件
+summary: Azure Red Hat OpenShift 在 Azure 上提供單一租用戶、高可用性的 Kubernetes 叢集 (由 Red Hat 與 Microsoft 支援)。
 metadata:
-  title: Azure Red Hat OpenShift 服務文件 - 教學課程、API 參考
-  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
-  services: container-service
-  author: tylermsft
+  title: Azure Red Hat OpenShift 文件
+  description: Microsoft Azure Red Hat OpenShift 允許您在 Azure 中快速部署準備用於生產的 Red Hat OpenShift 叢集。 透過這些教學課程和操作指南，了解如何使用 Azure Red Hat OpenShift。
   ms.service: container-service
+  services: container-service
   ms.topic: landing-page
-  ms.date: 05-06-2019
-  ms.author: twhitney
-abstract:
-  description: Azure Red Hat OpenShift 在 Azure 上提供單一租用戶、高可用性的 Kubernetes 叢集 (由 Red Hat 與 Microsoft 支援)。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建立和管理 Azure Red Hat OpenShift 叢集。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/openshift/tutorial-create-cluster">建立 Azure Red Hat OpenShift 叢集</a>
-          - html: <a href="/azure/openshift/tutorial-scale-cluster">調整 Azure Red Hat OpenShift 叢集</a>
-          - html: <a href="/azure/openshift/tutorial-delete-cluster">刪除 Azure Red Hat OpenShift 叢集</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/openshift">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/openshift">REST API</a></p>
-          - title: Red Hat 文件
-            html: '<p><a href="https://docs.openshift.com/aro/welcome/index.html">Red Hat OpenShift docs</a></p>'
+  author: jimzim
+  ms.author: jzim
+  ms.date: 03/06/2020
+  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
+  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "79037050"
+landingContent:
+- title: 關於 Azure Red Hat OpenShift
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Red Hat OpenShift？
+      url: intro-openshift.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 建立 Azure Red Hat OpenShift 叢集
+      url: tutorial-create-cluster.md
+    - text: 調整 Azure Red Hat OpenShift 叢集
+      url: tutorial-scale-cluster.md
+    - text: 刪除 Azure Red Hat OpenShift 叢集
+      url: tutorial-delete-cluster.md
+- title: 設定
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 設定您的 Azure Red Hat OpenShift 開發環境
+      url: howto-setup-environment.md
+    - text: 建立 Azure AD 租用戶
+      url: howto-create-tenant.md
+    - text: 建立 Azure AD 應用程式物件和使用者
+      url: howto-aad-app-configuration.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/openshift
+    - text: REST API
+      url: /rest/api/openshift
+    - text: Red Hat OpenShift 文件
+      url: https://docs.openshift.com/aro/welcome/index.html

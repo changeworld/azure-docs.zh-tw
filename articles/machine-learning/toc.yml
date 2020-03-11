@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: 端對端 MLOps 範例
       href: 'https://github.com/microsoft/MLOps'
+    - name: 設計工具管線
+      href: samples-designer.md
 - name: 概念
   items:
     - name: 工作區
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: 將模型定型
       items:
-        - name: 使用設計工具
-          displayName: sample designer experiments
-          items:
-            - name: 預測價格
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: 預測價格 (進階)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: 預測收入
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: 預測信用風險 (進階)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: 預測變換
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: 預測航班誤點
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: 文字分類
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: 為 ML 使用估算器
           items:
             - name: 在訓練中建立估算器
@@ -312,7 +290,7 @@
         - name: Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure Container Instances
+        - name: Azure 容器執行個體
           displayName: aci
           href: how-to-deploy-azure-container-instance.md
         - name: IoT Edge

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Microsoft 身分識別平台 (前身為適用於開發人員的 Azure Active Directory)
-summary: Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 開發人員平台的演化。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別，並取得權杖以呼叫 Microsoft Graph 等 Microsoft API，或開發人員所建置的 API。 這個平台功能完整，包含符合 OAuth 2.0 和 OpenID Connect 標準的驗證服務、多個開放原始碼程式庫、應用程式註冊以及組態、健全的概念及參考文件、快速入門範例、程式碼範例、教學課程和操作指南。
+title: Microsoft 身分識別平台文件
+summary: Microsoft 身分識別平台可讓開發人員建置應用程式以登入所有 Microsoft 身分識別，並取得權杖以呼叫 Microsoft Graph 等 Microsoft API 或您所建置的 API。 這個平台功能完整，包含符合 OAuth 2.0 和 OpenID Connect 標準的驗證服務、多個開放原始碼程式庫、應用程式註冊以及組態、健全的概念及參考文件、快速入門、程式碼範例、教學課程和操作指南。
 metadata:
   ms.topic: landing-page
   ms.date: 06/22/2019
@@ -9,21 +9,21 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: ea67860d851e9228ca14c6e53c4831f8d6f34f17
-  ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+  ms.openlocfilehash: edc613b275d996ac8ef8ed4470529153fdcfbecb
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/13/2020
-  ms.locfileid: "77194533"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943464"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
   - linkListType: overview
     links:
-    - text: Microsoft 身分識別平台的演化
-      url: about-microsoft-identity-platform.md
     - text: Microsoft 身分識別平台 (v2.0)
       url: v2-overview.md
+    - text: Microsoft 身分識別平台的演化
+      url: about-microsoft-identity-platform.md
     - text: 開發人員適用的 Azure Active Directory (v1.0)
       url: ../azuread-dev/v1-overview.md
   - linkListType: concept

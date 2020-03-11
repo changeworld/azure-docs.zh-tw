@@ -118,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: 結構描述和資料彙總
                   href: traffic-analytics-schema.md
+                - name: 結構描述更新 (2019 年 8 月)
+                  href: traffic-analytics-schema-update.md
             - name: 使用 Power BI
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: 使用彈性堆疊

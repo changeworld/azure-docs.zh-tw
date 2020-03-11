@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Azure 上的 Cloud Foundry 文件
+summary: Cloud Foundry 是開放原始碼的平台即服務 (PaaS)，可用於建置、部署和操作以各種不同語言和架構開發的 12-factor 應用程式。
+metadata:
+  title: Azure 上的 Cloud Foundry 文件
+  description: Cloud Foundry 是開放原始碼的平台即服務 (PaaS)，可用於建置、部署和操作以各種不同語言和架構開發的 12-factor 應用程式。
+  services: multiple
+  ms.service: multiple
+  ms.devlang: devops
+  ms.topic: landing-page
+  author: georgewallace
+  ms.author: gwallace
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 5c2ad3d9e471c339223ad21092b89e6aee64995d
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943164"
+landingContent:
+- title: 關於 Azure 上的 Cloud Foundry
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 上的 Cloud Foundry 概觀
+      url: ../virtual-machines/linux/cloudfoundry-get-started.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 上部署 Cloud Foundry
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+  - linkListType: how-to-guide
+    links:
+    - text: 部署您的第一個應用程式
+      url: ../virtual-machines/linux/cloudfoundry-deploy-your-first-app.md
+- title: 資源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure 上的 Pivotal Cloud Foundry
+      url: https://pivotal.io/partners/microsoft
+    - text: 整合 Cloud Foundry 與 Azure
+      url: how-cloud-foundry-integrates-with-azure.md
+    - text: 安裝 Azure 上的 Cloud Foundry
+      url: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
+    - text: 適用於 Cloud Foundry 的 Azure DevOps 外掛程式
+      url: https://github.com/Microsoft/vsts-cloudfoundry
+    - text: 適用於 Cloud Foundry 的 Microsoft Log Analytics Nozzle
+      url: https://github.com/Azure/oms-log-analytics-firehose-nozzle
+    - text: 了解 Cloud Foundry
+      url: https://docs.cloudfoundry.org/

@@ -213,6 +213,8 @@
               items:
                 - name: 用戶端 JavaScript
                   href: app/javascript.md
+                - name: JavaScript 的來源對應
+                  href: app/source-map-support.md
             - name: Application Insights API 摘要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: 將管理事件遷移至活動記錄警示
               href: platform/migrate-management-alerts.md
+            - name: Webhook 結構描述
+              href: platform/activity-log-alerts-webhook.md
         - name: 活動記錄中的服務健康情況警示
           items:
             - name: 檢視通知
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: 整合常見警示結構描述和 Logic Apps
               href: platform/alerts-common-schema-integrations.md
-            - name: Webhook 結構描述
-              href: platform/activity-log-alerts-webhook.md
             - name: SMS 警示行為
               href: platform/alerts-sms-behavior.md
             - name: 通知速率限制

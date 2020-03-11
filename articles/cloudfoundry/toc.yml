@@ -1,5 +1,5 @@
 - name: Cloud Foundry 文件
-  href: index.md
+  href: index.yml
 - name: 快速入門
   expanded: true
   items:
