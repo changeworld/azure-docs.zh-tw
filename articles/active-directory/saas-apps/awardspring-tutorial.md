@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d397d179a3f5bd50479e76c04e5eb709a3ef1f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260713"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897803"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AwardSpring 整合
 
@@ -104,7 +104,7 @@ ms.locfileid: "76260713"
     | 名字 | user.givenname |
     | 姓氏 | user.surname |
     | 電子郵件 | user.mail |
-    | 使用者名稱 | user.userprinicipalname |
+    | 使用者名稱 | user.userprincipalname |
     | StudentID | < 學生識別碼 > |
 
     > [!NOTE]

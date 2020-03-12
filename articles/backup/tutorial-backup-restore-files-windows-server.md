@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Microsoft Azure �
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171808"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672952"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>將檔案從 Azure 復原至 Windows Server
 
@@ -21,7 +21,7 @@ Azure Backup 可以復原 Windows Server 備份中的個別項目。 如果必�
 > * 選取復原點
 > * 從復原點還原項目
 
-本教學課程假設您已執行[將 Windows Server 備份至 Azure](backup-configure-vault.md) 的步驟，在 Azure 中至少有一份 Windows Server 檔案的備份。
+本教學課程假設您已執行[將 Windows Server 備份至 Azure](backup-windows-with-mars-agent.md) 的步驟，在 Azure 中至少有一份 Windows Server 檔案的備份。
 
 ## <a name="initiate-recovery-of-individual-items"></a>起始復原個別的項目
 

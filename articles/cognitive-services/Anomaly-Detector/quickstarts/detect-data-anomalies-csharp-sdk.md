@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fdb35edc35e07ed4ee718281942565a8f1d061d4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448923"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402683"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入門：適用於 .NET 的 Anomaly Detector 用戶端程式庫
 
@@ -56,7 +56,7 @@ dotnet build
 
 建置輸出應該不會有警告或錯誤。 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)

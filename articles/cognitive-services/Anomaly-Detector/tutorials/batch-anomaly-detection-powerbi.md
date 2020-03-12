@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448858"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402657"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教學課程：使用批次偵測與 Power BI 將異常狀況視覺化
 
@@ -29,13 +29,13 @@ ms.locfileid: "75448858"
 > * 將您資料中的異常狀況視覺化，包括預期和所見的值，以及異常偵測界限。
 
 ## <a name="prerequisites"></a>Prerequisites
-
+* [Azure 訂用帳戶](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)(免費提供)。
 * 包含時間序列資料點的 Excel 檔案 (.xlsx)。 此快速入門的範例資料可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
 ## <a name="load-and-format-the-time-series-data"></a>載入及格式化時間序列資料
 

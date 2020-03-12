@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13d6ed773b582e1ca59ec31de9101fa1541dcb5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 53e1863f6f3421a6d8df9112f463f16443cff93e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759955"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943055"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C# IoT Edge 模組
 
@@ -59,7 +59,7 @@ ms.locfileid: "76759955"
 
 若要完成下列教學課程，請在您的開發機器上備妥下列其他必要條件：
 
-* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-module-project"></a>建立模組專案
@@ -72,9 +72,9 @@ ms.locfileid: "76759955"
 
 1. 在 Visual Studio Code 中，選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
 
-2. 在命令選擇區中，輸入並執行命令 [Azure:  登入]，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
+2. 在 [命令選擇區] 中，輸入並執行命令 **Azure:Sign in**，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
 
-3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge: **新增 IoT Edge 解決方案**。 依照命令選擇區中的提示建立解決方案。
+3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge：**新增 IoT Edge 解決方案**。 依照命令選擇區中的提示建立解決方案。
 
    | 欄位 | 值 |
    | ----- | ----- |

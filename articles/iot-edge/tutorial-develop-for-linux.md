@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 38ffd4931f318b15f1ac06fcfd742bde8e5c6838
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a127c8c77f97708729cf91d6ced214e98924fb6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772958"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943018"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 IoT Edge 模組
 
@@ -65,7 +65,7 @@ ms.locfileid: "76772958"
   * 請確定您的開發機器支援「巢狀虛擬化」。 下一節中安裝的容器引擎會需要此功能來執行。
 * 大部分可以執行容器引擎的作業系統，均可用來開發適用於 Linux 裝置的 IoT Edge 模組。 本教學課程會使用 Windows 電腦，但會指出 MacOS 或 Linux 上的已知差異。
 * 安裝 [Git](https://git-scm.com/)，以在本教學課程稍後提取模組的範本套件。  
-* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 位於 Linux 上的 Azure IoT Edge 裝置：

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e490f9a5b6801ed86ca7d594dfd6069a380d5fe5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772293"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943022"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教學課程：將 Azure 函式部署為 IoT Edge 模組
 
@@ -51,7 +51,7 @@ ms.locfileid: "76772293"
 
 若要以 Azure Functions 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件：
 
-* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [C# for Visual Studio Code (採用 OmniSharp 技術) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-function-project"></a>建立函式專案
@@ -66,7 +66,7 @@ ms.locfileid: "76772293"
 
 2. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
 
-3. 在命令選擇區中，輸入並執行命令 [Azure IoT Edge:  新增 IoT Edge 解決方案]。 依照命令選擇區中的提示建立解決方案。
+3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge：**新增 IoT Edge 解決方案**。 依照命令選擇區中的提示建立解決方案。
 
    | 欄位 | 值 |
    | ----- | ----- |
@@ -225,11 +225,11 @@ ms.locfileid: "76772293"
 
 ## <a name="view-the-generated-data"></a>檢視所產生的資料
 
-您可以在命令選擇區中執行 [Azure IoT Hub:  開始監視內建事件端點]，以查看送達 IoT 中樞的所有訊息。
+您可以在命令選擇區中執行 Azure IoT Hub:**開始監視內建事件端點**。
 
 您也可以篩選檢視來查看所有從特定裝置送達 IoT 中樞的訊息。 請以滑鼠右鍵按一下 [Azure IoT 中樞裝置]  區段中的裝置，然後選取 [開始監視內建事件端點]  。
 
-若要停止監視訊息，請在命令選擇區中執行命令 [Azure IoT Hub:  停止監視內建事件端點]。
+若要停止監視訊息，請在命令選擇區中執行命令 Azure IoT Hub:**停止監視內建事件端點**。
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252433"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942493"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio Code 和 .NET Core
 
@@ -81,7 +81,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 使用 VS Code 的 .NET Core 和 Node.js 開發人員有豐富的功能可供使用，例如 Kubernetes 偵錯。
 
 1. 如果您沒有 [VS Code](https://code.visualstudio.com/Download)，請加以安裝。
-1. 下載及安裝 [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 擴充功能。 針對每個擴充功能，在擴充功能的 Marketplace 頁面上按一下 [安裝]，然後在 VS Code 中再按一次。
+1. 下載及安裝 [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 擴充功能。 針對每個擴充功能，在擴充功能的 Marketplace 頁面上按一下 [安裝]，然後在 VS Code 中再按一次。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>建立在容器中執行的 Web 應用程式
 

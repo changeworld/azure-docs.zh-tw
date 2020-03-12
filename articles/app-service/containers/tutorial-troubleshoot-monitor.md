@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
-ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227990"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399524"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>教學課程：使用 Azure 監視器針對 App Service 應用程式進行疑難排解
 
@@ -127,7 +127,7 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 讓我們看看 Log Analytics 工作區中有哪些記錄可供使用。 
 
-按一下此 [Log Analytics 工作區連結](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)，以存取 Azure 入口網站中的工作區。
+按一下此 [Log Analytics 工作區連結](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)，以存取 Azure 入口網站中的工作區。
 
 在 Azure 入口網站中，選取 Log Analytics 工作區。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329437"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教學課程：使用裝置功能模型建立 IoT 隨插即用 (預覽) 裝置，並將其連線至您的 IoT Central 應用程式
 
@@ -169,10 +169,10 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. 組件順利完成後，請在相同的命令提示字元中執行您的應用程式。 以您先前記下的值取代 `<scopeid>` 和 `<primarykey>`：
+1. 組件順利完成後，請在相同的命令提示字元中執行您的應用程式。 以您先前記下的值取代 `<scopeid>` 和 `<devicekey>`：
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
 1. 裝置應用程式會開始將資料傳送至 IoT 中樞。 有時候，您會在第一次執行前一個命令時看到 `Error registering device for DPS` 錯誤。 如果您看到此錯誤，請重試命令。

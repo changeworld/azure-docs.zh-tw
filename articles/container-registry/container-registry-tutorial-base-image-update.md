@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何設定 Azure Container Re
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 3870bc70e9d18a3c1c854055cb0c27018554a556
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249986"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402868"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 
 
@@ -99,7 +99,7 @@ az acr task create \
 
 此工作類似於[上一個教學課程](container-registry-tutorial-build-task.md)中建立的工作。 它會指示 ACR 工作在認可推送至 `--context` 所指定的存放庫時觸發映像建置。 在上一個教學課程中用來建置映像的 Dockerfile 會指定公用基底映像 (`FROM node:9-alpine`)，而此工作中的 Dockerfile [Dockerfile-app][dockerfile-app]，則是會指定相同登錄中的基底映像：
 
-```Dockerfile
+```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
@@ -151,9 +151,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 如果您已完成上一個教學課程 (且未刪除登錄)，您應該會看到如下的輸出。 請記下工作回合數目和最新的回合識別碼，以便在下一節更新基底映像後比較輸出。
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK            PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da6       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T23:07:22Z  00:00:38
@@ -168,7 +166,7 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base**，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
 
-```Dockerfile
+```dockerfile
 ENV NODE_VERSION 9.11.2a
 ```
 
@@ -190,9 +188,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 輸出大致如下。 最後執行之建置的 TRIGGER 應為 "Image Update"，表示工作是由基底映像的快速工作所起始。
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------
 da8       taskhelloworld  Linux       Succeeded  Image Update  2018-09-17T23:11:50Z  00:00:33

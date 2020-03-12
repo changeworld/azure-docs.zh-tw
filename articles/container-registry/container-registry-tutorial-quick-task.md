@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure Container Re
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398509"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
@@ -95,8 +95,7 @@ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 
 [az acr build][az-acr-build] 命令的輸出如下。 您可以檢視上傳至 Azure 的原始程式碼 (「內容」)，以及 ACR 工作在雲端中執行之 `docker build` 作業的詳細資料。 由於 ACR 工作會使用 `docker build` 建置您的映像，因此您無須對 Dockerfile 進行任何變更，即可立即開始使用 ACR 工作。
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -244,17 +243,7 @@ az container create \
 
 `--dns-name-label` 值在 Azure 內必須是唯一的，因此，上述命令會將您容器登錄的名稱附加至容器的 DNS 名稱標籤。 命令的輸出會顯示容器的完整網域名稱 (FQDN)，例如：
 
-```console
-$ az container create \
->     --resource-group $RES_GROUP \
->     --name acr-tasks \
->     --image $ACR_NAME.azurecr.io/helloacrtasks:v1 \
->     --registry-login-server $ACR_NAME.azurecr.io \
->     --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
->     --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
->     --dns-name-label acr-tasks-$ACR_NAME \
->     --query "{FQDN:ipAddress.fqdn}" \
->     --output table
+```output
 FQDN
 ----------------------------------------------
 acr-tasks-myregistry.eastus.azurecontainer.io
@@ -272,8 +261,7 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 `az container attach` 輸出會先顯示容器在提取映像和啟動時的狀態，然後將本機主控台的 STDOUT 和 STDERR 繫結至容器的 STDOUT 和 STDERR。
 
-```console
-$ az container attach --resource-group $RES_GROUP --name acr-tasks
+```output
 Container 'acr-tasks' is in state 'Running'...
 (count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
 (count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"

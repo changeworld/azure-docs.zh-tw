@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770311"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082909"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>新增 Azure 虛擬機器的擴充計量
 
@@ -34,7 +34,7 @@ Cloudyn 會使用 Azure VM 的 Azure 計量資料來顯示其資源的詳細資�
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>決定是否啟用擴充計量
 
-1. 登入 Azure 入口網站： https://portal.azure.com 。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 在 [虛擬機器]  下選取 VM，然後在 [監視]  下選取 [計量]  。 此時會顯示可用計量清單。
 3. 選取某些計量，隨即出現顯示資料的圖形。  
     ![計量範例 - 主機百分比 CPU](./media/azure-vm-extended-metrics/metric01.png)

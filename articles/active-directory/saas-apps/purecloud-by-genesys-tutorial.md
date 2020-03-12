@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242434"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897773"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PureCloud by Genesys 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "73242434"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -125,7 +125,7 @@ ms.locfileid: "73242434"
 
     | 名稱 | 來源屬性|
     | ---------------| --------------- |
-    | 電子郵件 | user.userprinicipalname |
+    | 電子郵件 | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
@@ -210,7 +210,7 @@ ms.locfileid: "73242434"
 
     ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. 在 [全名]  方塊中，輸入使用者的名稱。 例如︰**B.simon**。
+    a. 在 [全名]  方塊中，輸入使用者的名稱。 例如：**B.simon**。
 
     b. 在 [電子郵件]  方塊中，輸入使用者的電子郵件。 例如：**b.simon\@contoso.com**。
 

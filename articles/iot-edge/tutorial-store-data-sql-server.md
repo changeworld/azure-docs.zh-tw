@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 44d1c6e5b119ae0639398c8be69ab7fb0d50fcf4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772205"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944280"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教學課程：使用 SQL Server 資料庫在邊緣儲存資料
 
@@ -48,7 +48,7 @@ ms.locfileid: "76772205"
 
 本教學課程會使用 Azure Functions 模組，將資料傳送至 SQL Server。 若要以 Azure Functions 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件：
 
-* [C# for Visual Studio Code (由 OmniSharp 提供技術支援) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) (適用於 Visual Studio Code)。
+* [C# for Visual Studio Code (由 OmniSharp 提供技術支援) 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) (適用於 Visual Studio Code)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-function-project"></a>建立函式專案
@@ -63,7 +63,7 @@ ms.locfileid: "76772205"
 
 2. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
 
-3. 在命令選擇區中，輸入並執行命令 [Azure IoT Edge:  新增 IoT Edge 解決方案]。 在命令選擇區中提供下列資訊，以建立解決方案：
+3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge:**新增 IoT Edge 解決方案**。 在命令選擇區中提供下列資訊，以建立解決方案：
 
    | 欄位 | 值 |
    | ----- | ----- |
