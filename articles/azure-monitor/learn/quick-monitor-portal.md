@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661698"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894860"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>開始監視 ASP.NET Web 應用程式
 
@@ -23,7 +23,7 @@ Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、
 ## <a name="prerequisites"></a>Prerequisites
 若要完成本快速入門：
 
-- 使用下列工作負載安裝 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
+- 使用下列工作負載安裝 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
     - ASP.NET 和 Web 開發
     - Azure 開發
 

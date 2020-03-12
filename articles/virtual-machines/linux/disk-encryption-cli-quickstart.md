@@ -3,15 +3,16 @@ title: 使用 Azure CLI 來建立和加密 Linux VM
 description: 在本快速入門中，您將了解如何使用 Azure CLI 建立和加密 Linux 虛擬機器
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: f6883e627644f9bea68ddce401162d269509c67e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 14b6f07ead59f3d86b80489460956dd37fb7378b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750108"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970699"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立和加密 Linux VM
 

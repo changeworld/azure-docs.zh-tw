@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655747"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944348"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -168,7 +168,6 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
     @Controller
     @ConfigurationProperties("controller")
-
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -179,7 +178,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta").block());
             return "welcome";
         }
     }

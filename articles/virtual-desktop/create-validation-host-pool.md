@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 98d1a9c3dd86972990ae896d156be6c6aedfff77
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367397"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128097"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
@@ -62,7 +63,7 @@ Cmdlet 的結果應該類似以下輸出：
     FriendlyName        :
     Description         :
     Persistent          : False 
-    CustomRdpProperty   : use multimon:i:0;
+    CustomRdpProperty    : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
     ValidationEnv       : True

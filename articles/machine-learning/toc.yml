@@ -257,7 +257,7 @@
           displayName: SDK automl
           href: how-to-configure-auto-train.md
         - name: 使用自動化 ML (介面)
-          href: how-to-create-portal-experiments.md
+          href: how-to-use-automated-ml-for-ml-models.md
         - name: 使用遠端計算目標
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
@@ -290,7 +290,7 @@
         - name: Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure 容器執行個體
+        - name: Azure Container Instances
           displayName: aci
           href: how-to-deploy-azure-container-instance.md
         - name: IoT Edge

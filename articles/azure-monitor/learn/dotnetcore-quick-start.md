@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670622"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894822"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>開始監視 ASP.NET Core Web 應用程式
 
@@ -24,10 +24,10 @@ Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、
 
 若要完成本快速入門：
 
-- 使用下列工作負載[安裝 Visual Studio 2019](https://www.visualstudio.com/downloads/)：
+- 使用下列工作負載[安裝 Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
   - ASP.NET 和 Web 開發
   - Azure 開發
-- [安裝 .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
+- [安裝 .NET Core 2.0 SDK](https://dotnet.microsoft.com/download)
 - 您需要 Azure 訂用帳戶和現有的 .NET Core Web 應用程式。
 
 如果您沒有 ASP.NET Core Web 應用程式，可以使用我們的逐步指南來[建立 ASP.NET Core 應用程式，並新增 Application Insights](../../azure-monitor/app/asp-net-core.md)。

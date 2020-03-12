@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431245"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945448"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來啟動 Java Spring 應用程式
 
@@ -74,7 +74,7 @@ az extension add --name spring-cloud
 4. 開啟 Azure CLI 視窗並執行下列命令來佈建 Azure Spring Cloud 的執行個體。
 
     ```azurecli
-        az spring-cloud create -n <service name> -g <resource group name>
+        az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
     服務執行個體大約需要五分鐘的時間來完成部署。
@@ -82,7 +82,7 @@ az extension add --name spring-cloud
 5. 使用下列命令來設定預設資源群組名稱及叢集名稱：
 
     ```azurecli
-        az configure --defaults group=<service group name>
+        az configure --defaults group=<resource group name>
         az configure --defaults spring-cloud=<service instance name>
     ```
 
@@ -93,8 +93,8 @@ az extension add --name spring-cloud
 
 搭配我們專案之 Git 存放庫的位置來更新您的設定伺服器：
 
-```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
+```azurecli
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]
@@ -158,7 +158,7 @@ az spring-cloud app show --name gateway | grep url
 ```
 Windows：
 ```azurecli
-az spring-cloud app show --name gateway | findstr url
+az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
 3. 瀏覽至由上一個命令所提供的 URL，以執行 PiggyMetrics 應用程式。
     ![正在執行 PiggyMetrics 的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)

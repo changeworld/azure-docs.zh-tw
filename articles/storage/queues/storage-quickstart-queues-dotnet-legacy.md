@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: f51038b1e79a699c15ad2fd969d75c09a2530f6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457613"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943565"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列
 
@@ -35,7 +35,7 @@ ms.locfileid: "75457613"
 ### <a name="linux"></a>Linux
 
 - 安裝 [.NET Core for Linux](https://www.microsoft.com/net/download/linux)
-- 選擇性安裝 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)
+- 選擇性安裝 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ### <a name="macos"></a>macOS
 
