@@ -3,12 +3,12 @@ title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925102"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129042"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -188,6 +188,11 @@ ms.locfileid: "78925102"
 |執行的檢查|
 |---|
 |<ul><li>客戶是否遇到使用者產生的服務匯流排錯誤？</li><li>使用者是否遇到服務匯流排命名空間升級以致暫時性錯誤增加？</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>ServiceFabric/叢集
+|執行的檢查|
+|---|
+|<ul><li>Service Fabric 叢集是否已啟動且正在執行？</li><li>Service Fabric 叢集可以透過 Azure Resource Manager 管理嗎？</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft .SQL/managedInstances/資料庫
 |執行的檢查|

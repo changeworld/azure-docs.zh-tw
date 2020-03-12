@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384682"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129308"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>教學課程：連接、設定和啟動 Azure Data Box Edge 
 
@@ -47,7 +47,7 @@ ms.locfileid: "78384682"
 3. 開啟瀏覽器視窗，然後在 `https://192.168.100.10` 存取裝置的本機 Web UI。  
     在您開啟裝置之後，此動作可能需要花費幾分鐘的時間。 
 
-    您會看到錯誤或警告指出網站的安全性憑證有問題。 
+    您會看到錯誤或警告，指出網站的安全性憑證發生問題。 
    
     ![網站安全性憑證錯誤訊息](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
 
@@ -101,6 +101,11 @@ ms.locfileid: "78384682"
    c. 如果您使用驗證，請輸入使用者名稱和密碼。
 
    d. 若要驗證並套用所設定的 Web Proxy 設定，請選取 [套用設定]。
+   
+   > [!NOTE]
+   > 不支援 Proxy 自動設定（PAC）檔案。 PAC 檔案會定義 web 瀏覽器和其他使用者代理程式如何自動選擇適當的 proxy 伺服器（存取方法）來提取指定的 URL。
+   > 嘗試攔截和讀取所有流量（然後以自己的憑證重新簽署所有內容）的 proxy 不相容，因為 proxy 的憑證不受信任。
+   > 透明 proxy 通常會與 Azure Data Box Edge 搭配運作。
 
 4. (選擇性) 在左側窗格中，選取 [時間設定]，然後設定您裝置的時區，以及主要和次要 NTP 伺服器。  
     NTP 伺服器是必要的，因為您的裝置必須讓時間同步，才能與您的雲端服務提供者進行驗證。

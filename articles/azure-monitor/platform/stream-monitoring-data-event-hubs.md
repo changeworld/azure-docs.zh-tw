@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381152"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128749"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>將 Azure 監視資料串流至事件中樞
 Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](/azure/event-hubs/)。 本文提供如何將來自不同來源的監視資料串流至事件中樞的簡短描述，以及詳細指引的連結。
@@ -32,10 +32,10 @@ Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服�
 ## <a name="monitoring-data-available"></a>可用的監視資料
 [適用于 Azure 監視器的監視資料來源](data-sources.md)會描述 Azure 應用程式的不同資料層，以及適用于各項的監視資料類型。 下表列出每個層級，以及如何將該資料串流處理至事件中樞的說明。 請遵循提供的連結以取得進一步的詳細資料。
 
-| 層 | Data | 方法 |
+| 層 | 資料 | 方法 |
 |:---|:---|:---|
 | [Azure 租使用者](data-sources.md#azure-tenant) | Azure Active Directory audit 記錄檔 | 在您的 AAD 租使用者上設定租使用者診斷設定。 如需詳細資訊，請參閱[教學課程：將 Azure Active Directory 記錄串流至 Azure 事件中樞](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
-| [Azure 訂用帳戶](data-sources.md#azure-subscription) | Azure 活動記錄檔 | 建立記錄設定檔，將活動記錄檔事件匯出至事件中樞。  如需詳細資訊，請參閱[將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞](activity-log-export.md)。 |
+| [Azure 訂用帳戶](data-sources.md#azure-subscription) | Azure 活動記錄檔 | 建立記錄設定檔，將活動記錄檔事件匯出至事件中樞。  如需詳細資訊，請參閱[將 Azure 平臺記錄串流至 Azure 事件中樞](resource-logs-stream-event-hubs.md)。 |
 | [Azure 資源](data-sources.md#azure-resources) | 平臺計量<br> 資源記錄 |這兩種資料都會使用資源診斷設定來傳送至事件中樞。 如需詳細資訊，請參閱[將 Azure 資源記錄串流至事件中樞](resource-logs-stream-event-hubs.md)。 |
 | [作業系統（來賓）](data-sources.md#operating-system-guest) | Azure 虛擬機器 | 在 Azure 中的 Windows 和 Linux 虛擬機器上安裝[Azure 診斷延伸](diagnostics-extension-overview.md)模組。 如需有關 Windows Vm 的詳細資料，請參閱[使用事件中樞在最忙碌路徑中串流 Azure 診斷資料](diagnostics-extension-stream-event-hubs.md)，並[使用 linux 診斷擴充功能來監視計量和記錄](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)檔，以取得 Linux vm 的詳細資訊。 |
 | [應用程式代碼](data-sources.md#application-code) | Application Insights | Application Insights 不會提供將資料串流至事件中樞的直接方法。 您可以設定將 Application Insights 資料[連續匯出](../../azure-monitor/app/export-telemetry.md)至儲存體帳戶，然後使用邏輯應用程式將資料傳送至事件中樞，如[使用邏輯應用程式手動串流](#manual-streaming-with-logic-app)中所述。 |

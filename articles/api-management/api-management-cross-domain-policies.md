@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375078"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126528"
 ---
 # <a name="api-management-cross-domain-policies"></a>API 管理跨網域原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -127,7 +127,7 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 |cors|根元素。|是|N/A|
 |allowed-origins|包含可說明跨網域要求之允許來源的 `origin` 元素。 `allowed-origins` 可包含指定了 `origin` 以允許任何來源的單一 `*` 元素，或一或多個包含 URI 的 `origin` 元素。|是|N/A|
 |來源|值可以是 `*` 以允許所有來源，或是 URI 以指定單一來源。 URI 必須包含配置、主機和連接埠。|是|如果 URI 中省略了連接埠，則會將連接埠 80 用於 HTTP，將連接埠 443 用於 HTTPS。|
-|allowed-methods|如果允許 GET 或 POST 以外的方法，則需要此元素。 包含指定了所支援 HTTP 動詞命令的 `method` 元素。|否|如果這個區段不存在，則會支援 GET 和 POST。|
+|allowed-methods|如果允許 GET 或 POST 以外的方法，則需要此元素。 包含指定了所支援 HTTP 動詞命令的 `method` 元素。 值 `*` 表示所有方法。|否|如果這個區段不存在，則會支援 GET 和 POST。|
 |method|指定 HTTP 動詞命令。|如果 `method` 區段存在，則需要至少一個 `allowed-methods` 元素。|N/A|
 |allowed-headers|此元素包含指定了可包含在要求中之標頭名稱的 `header` 元素。|否|N/A|
 |expose-headers|此元素包含指定了可供用戶端存取之標頭名稱的 `header` 元素。|否|N/A|
@@ -137,8 +137,8 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 
 |名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|事前回應中的 `Access-Control-Allow-Credentials` 標頭會設定為這個屬性的值，並影響用戶端是否能夠在跨網域要求中提交認證。|否|false|
-|preflight-result-max-age|事前回應中的 `Access-Control-Max-Age` 標頭會設定為這個屬性的值，並影響使用者代理程式是否能夠快取事前回應。|否|0|
+|allow-credentials|預檢回應中的 `Access-Control-Allow-Credentials` 標頭會設定為這個屬性的值，而且會影響用戶端在跨網域要求中提交認證的能力。|否|false|
+|preflight-result-max-age|預檢回應中的 `Access-Control-Max-Age` 標頭會設定為這個屬性的值，並影響使用者代理程式快取預先傳送回應的能力。|否|0|
 
 ### <a name="usage"></a>使用量
 此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。

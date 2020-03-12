@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383655"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127923"
 ---
 # <a name="identify-and-diagnose-issues"></a>識別並診斷問題
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Windows 虛擬桌面診斷只會使用一個 PowerShell Cmdlet，但包含許多選用參數，以協助縮小和隔離問題。 下列各節列出您可以執行以診斷問題的 Cmdlet。 大部分的篩選準則都可以一起套用。 以方括弧括住的值（例如 `<tenantName>`）應取代為適用于您情況的值。
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>在您的租使用者中取出診斷活動
+>[!IMPORTANT]
+>診斷功能適用于單一使用者的疑難排解。 所有使用 PowerShell 的查詢都必須包含 *-UserName*或 *-ActivityID*參數。 如需監視功能，請使用 Log Analytics。 如需如何將診斷資料傳送至您的工作區的詳細資訊，請參閱[使用 Log Analytics 進行診斷功能](diagnostics-log-analytics.md)。 
 
-您可以藉由輸入**RdsDiagnosticActivities** Cmdlet 來抓取診斷活動。 下列範例 Cmdlet 會傳回診斷活動的清單，並從最高到最新排序。
+### <a name="filter-diagnostic-activities-by-user"></a>依使用者篩選診斷活動
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-如同其他 Windows 虛擬桌面 PowerShell Cmdlet，您必須使用 **-TenantName**參數來指定您想要用於查詢的租使用者名稱。 租使用者名稱適用于幾乎所有的診斷活動查詢。
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>取得詳細的診斷活動
-
-**-詳細**參數會針對每個傳回的診斷活動提供額外的詳細資料。 每個活動的格式會根據其活動類型而有所不同。 **-詳細**的參數可以新增至任何**RdsDiagnosticActivities**查詢，如下列範例所示。
+**-UserName**參數會傳回由指定使用者起始的診斷活動清單，如下列範例 Cmdlet 所示。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+**-UserName**參數也可以與其他選擇性篩選參數結合。
+
+### <a name="filter-diagnostic-activities-by-time"></a>依時間篩選診斷活動
+
+您可以使用 **-StartTime**和 **-EndTime**參數來篩選傳回的診斷活動清單。 **-StartTime**參數會傳回從特定日期開始的診斷活動清單，如下列範例所示。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+**-EndTime**參數可以使用 **-StartTime**參數新增至 Cmdlet，以指定您想要接收結果的特定時間長度。 下列範例 Cmdlet 會傳回8月1日到8月10日之間的診斷活動清單。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+**-StartTime**和 **-EndTime**參數也可以與其他選擇性篩選參數結合。
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>依活動類型篩選診斷活動
+
+您也可以使用 **-ActivityType**參數，依活動類型篩選診斷活動。 下列 Cmdlet 會傳回使用者連線的清單：
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+下列 Cmdlet 會傳回系統管理員管理工作的清單：
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+**RdsDiagnosticActivities** Cmdlet 目前不支援指定摘要作為 ActivityType。
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>依結果篩選診斷活動
+
+您可以使用 **-結果**參數，依結果篩選傳回的診斷活動清單。 下列範例 Cmdlet 會傳回成功的診斷活動清單。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+下列範例 Cmdlet 會傳回失敗診斷活動的清單。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+**-結果**參數也可以與其他選擇性篩選參數結合。
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>依活動識別碼抓取特定的診斷活動
 
@@ -68,63 +112,13 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>依使用者篩選診斷活動
+### <a name="retrieve-detailed-diagnostic-activities"></a>取得詳細的診斷活動
 
-**-UserName**參數會傳回由指定使用者起始的診斷活動清單，如下列範例 Cmdlet 所示。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-**-UserName**參數也可以與其他選擇性篩選參數結合。
-
-### <a name="filter-diagnostic-activities-by-time"></a>依時間篩選診斷活動
-
-您可以使用 **-StartTime**和 **-EndTime**參數來篩選傳回的診斷活動清單。 **-StartTime**參數會傳回從特定日期開始的診斷活動清單，如下列範例所示。
+**-詳細**參數會針對每個傳回的診斷活動提供額外的詳細資料。 每個活動的格式會根據其活動類型而有所不同。 **-詳細**的參數可以新增至任何**RdsDiagnosticActivities**查詢，如下列範例所示。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-**-EndTime**參數可以使用 **-StartTime**參數新增至 Cmdlet，以指定您想要接收結果的特定時間長度。 下列範例 Cmdlet 會傳回8月1日到8月10日之間的診斷活動清單。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-**-StartTime**和 **-EndTime**參數也可以與其他選擇性篩選參數結合。
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>依活動類型篩選診斷活動
-
-您也可以使用 **-ActivityType**參數，依活動類型篩選診斷活動。 下列 Cmdlet 會傳回使用者連線的清單：
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-下列 Cmdlet 會傳回系統管理員管理工作的清單：
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-**RdsDiagnosticActivities** Cmdlet 目前不支援指定摘要作為 ActivityType。
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>依結果篩選診斷活動
-
-您可以使用 **-結果**參數，依結果篩選傳回的診斷活動清單。 下列範例 Cmdlet 會傳回成功的診斷活動清單。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-下列範例 Cmdlet 會傳回失敗診斷活動的清單。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-**-結果**參數也可以與其他選擇性篩選參數結合。
 
 ## <a name="common-error-scenarios"></a>常見的錯誤案例
 

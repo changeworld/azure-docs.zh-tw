@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396424"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127174"
 ---
 # <a name="what-is-automated-machine-learning"></a>什麼是自動化機器學習服務？
 
@@ -95,9 +95,9 @@ ms.locfileid: "78396424"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Advanced 前置處理：選擇性特徵化
 
-另外還提供額外的先進前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入瞭解包含的特徵化](how-to-create-portal-experiments.md#featurization)。 啟用此設定的方式：
+另外還提供額外的先進前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入瞭解包含的特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。 啟用此設定的方式：
 
-+ Azure Machine Learning studio：在 [ **View 其他**設定] 區段中[使用下列步驟](how-to-create-portal-experiments.md#create-and-run-experiment)啟用**自動特徵化**。
++ Azure Machine Learning studio：在 [ **View 其他**設定] 區段中[使用下列步驟](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)啟用**自動特徵化**。
 
 + Python SDK：指定[`AutoMLConfig` 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
@@ -153,7 +153,7 @@ ms.locfileid: "78396424"
 
 ## <a name="classification--regression"></a>分類 & 回歸
 
-分類和回歸是最常見的機器學習工作類型。 兩者都是監督式學習的類型，其中的模型會學習使用定型資料，並將這些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供 featurizations，例如分類的深度類神經網路文字有。 深入瞭解[特徵化選項](how-to-create-portal-experiments.md#featurization)。 
+分類和回歸是最常見的機器學習工作類型。 兩者都是監督式學習的類型，其中的模型會學習使用定型資料，並將這些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供 featurizations，例如分類的深度類神經網路文字有。 深入瞭解[特徵化選項](how-to-use-automated-ml-for-ml-models.md#featurization)。 
 
 分類模型的主要目標是要根據學習的定型資料，預測哪些類別的新資料會落入何處。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。  深入瞭解並查看[使用自動化機器學習進行分類](tutorial-train-models-with-aml.md)的範例。
 
@@ -286,7 +286,7 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 + 遵循[教學課程：使用 Azure Machine Learning 自動定型回歸模型](tutorial-auto-train-models.md)
 
 + 設定自動訓練實驗的設定：
-  + 在 Azure Machine Learning studio 中，請[使用下列步驟](how-to-create-portal-experiments.md)。
+  + 在 Azure Machine Learning studio 中，請[使用下列步驟](how-to-use-automated-ml-for-ml-models.md)。
   + 透過 Python SDK，請[使用下列步驟](how-to-configure-auto-train.md)。
 
 + 若要瞭解如何使用時間序列資料來自動定型，請[使用下列步驟](how-to-auto-train-forecast.md)。

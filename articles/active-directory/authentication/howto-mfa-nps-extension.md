@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378137"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086400"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -29,7 +29,7 @@ Azure MFA 的網路原則伺服器 (NPS) 擴充功能可使用現有伺服器將
 1. **NAS/VPN 伺服器**會從 VPN 用戶端接收要求，並將其轉換為對 NPS 伺服器的 RADIUS 要求。 
 2. **NPS 伺服器**會連線至 Active Directory，以對 RADIUS 要求執行主要驗證，並於成功時將要求傳遞至任何已安裝的擴充功能。  
 3. **NPS 擴充功能**會觸發 Azure MFA 要求以進行第二項驗證。 當擴充功能收到回應後，如果 MFA 挑戰成功，擴充功能便會藉由為 NPS 伺服器提供包含 Azure STS 所發行之 MFA 宣告的安全性權杖來完成驗證要求。  
-4. **Azure MFA** 會與 Azure Active Directory 通訊以擷取使用者的詳細資料，並使用為使用者設定的驗證方法執行第二項驗證。
+4. **AZURE MFA**會與 Azure Active Directory 進行通訊，以取得使用者的詳細資料，並使用設定給使用者的驗證方法執行次要驗證。
 
 下圖說明此高階驗證要求流程︰ 
 
@@ -250,9 +250,9 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 ### <a name="nps-extension-health-check-script"></a>NPS 擴充功能健全狀況檢查腳本
 
-下列腳本可在 TechNet 元件庫中取得，以在疑難排解 NPS 延伸模組時執行基本的健全狀況檢查步驟。
+下列腳本可在針對 NPS 擴充功能進行疑難排解時，執行基本健全狀況檢查步驟。
 
-[MFA_NPS_Troubleshooter ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 如需其他疑難排解指引和可能的解決方案，請參閱[從適用于 Azure 多因素驗證的 NPS 擴充功能解決錯誤訊息](howto-mfa-nps-extension-errors.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
+
+- [Windows Server 中網路原則伺服器的總覽和設定](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - 在 [Multi-Factor Authentication 之 NPS 延伸模組的進階設定選項](howto-mfa-nps-extension-advanced.md)中，設定登入的替代識別碼，或為不應該執行雙步驟驗證之 IP 設定的例外狀況清單
 

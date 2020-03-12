@@ -1,6 +1,6 @@
 ---
-title: 建立和查詢資料倉儲（Azure 入口網站）
-description: 使用 Azure 入口網站建立及查詢 Azure Synapse Analytics SQL 集區
+title: 建立和查詢 Synapse SQL 集區（Azure 入口網站）
+description: 使用 Azure 入口網站建立及查詢 Synapse SQL 集區
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381079"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128726"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及查詢 Azure Synapse Analytics SQL 集區
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及查詢 Synapse SQL 集區
 
-使用 Azure 入口網站，在 Azure Synapse Analytics （先前稱為 SQL DW）中布建 SQL 集區，以快速建立及查詢資料倉儲。
+使用 Azure 入口網站，在 Azure Synapse Analytics （先前稱為 SQL DW）中快速建立及查詢 Synapse SQL 集區（資料倉儲）。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -39,7 +39,7 @@ ms.locfileid: "78381079"
 
 資料倉儲會使用 Azure Synapse 分析中的 SQL 集區來建立。 使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立 SQL 集區。 此資料庫建立於 [Azure 資源群組](../azure-resource-manager/management/overview.md)和 [Azure SQL 邏輯伺服器](../sql-database/sql-database-servers.md)內。
 
-請遵循下列步驟來建立包含**AdventureWorksDW**範例資料的資料倉儲。
+請遵循下列步驟來建立包含**AdventureWorksDW**範例資料的 SQL 集區。
 
 1. 在 Azure 入口網站的左上角，選取 [**建立資源**]。
 
@@ -55,7 +55,7 @@ ms.locfileid: "78381079"
    | :------ | :-------------- | :---------- |
    | **訂用帳戶** | 您的訂用帳戶 | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
    | **資源群組** | myResourceGroup | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
-   | **資料倉儲名稱** | 任何全域唯一的名稱（例如*mySampleDataWarehouse*） | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 請注意，資料倉儲是一種資料庫。 |
+   | **SQL 集區名稱** | 任何全域唯一的名稱（例如*mySampleDataWarehouse*） | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 請注意，SQL 集區是一種資料庫類型。 |
    | **Server** | 任何全域唯一名稱 | 選取 [現有伺服器] 或 [建立新的伺服器名稱]，然後選取 **[新建]。** 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
 
    ![建立資料倉儲基本細節](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ ms.locfileid: "78381079"
 
    如需效能層級的詳細資訊，請參閱[管理 Azure SQL 資料倉儲中的計算](sql-data-warehouse-manage-compute-overview.md)。
 
-5. 現在您已完成 Azure Synapse Analytics 表單的 [基本] 索引標籤，請選取 [審核] [ **+ 建立**]，然後按一下 [**建立**]，在 SQL 集區中建立資料倉儲。 佈建需要幾分鐘的時間。
+5. 既然您已完成 Azure Synapse Analytics 表單的 [基本] 索引標籤，請選取 [審核] [ **+ 建立**]，然後按一下 [**建立**] 以建立 SQL 集區。 佈建需要幾分鐘的時間。
 
    ![選取 [審核] + [建立]](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -105,7 +105,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 8. 選取 **[確定]** ，然後關閉 [**防火牆設定**] 頁面。
 
-您現在可以使用這個 IP 位址連線到 SQL Server 及其資料倉儲。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 ServerAdmin 帳戶。
+您現在可以使用此 IP 位址連接到 SQL server 及其 SQL 集區。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 ServerAdmin 帳戶。
 
 > [!IMPORTANT]
 > 根據預設，已對所有 Azure 服務啟用透過 SQL Database 防火牆存取。 選取此頁面上的 [**關閉**]，然後選取 [**儲存**] 以停用所有 Azure 服務的防火牆。
@@ -116,7 +116,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 從左側功能表中選取 [ **Azure Synapse 分析**]，然後在 [ **azure Synapse 分析**] 頁面上選取您的資料倉儲。
+2. 從左側功能表中選取 [ **Azure Synapse 分析**]，然後在 [ **azure Synapse 分析**] 頁面上選取您的。
 
 3. 在 Azure 入口網站中您資料庫的 [基本資訊] 窗格中，找到後複製 [伺服器名稱]。 在此範例中，完整名稱是 sqlpoolservername.database.windows.net。
 
@@ -174,21 +174,21 @@ SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您需對資料倉儲單位和資料倉儲上儲存的資料付費。 這些計算和儲存體資源會分開計費。
+您需要為數據倉儲單位和儲存 SQL 集區的資料付費。 這些計算和儲存體資源會分開計費。
 
-- 如果您需要將資料保留在儲存體中，可以在您不使用資料倉儲時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備要使用資料時，您可以繼續計算。
+- 如果您想要將資料保留在儲存體中，您可以在未使用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備要使用資料時，您可以繼續計算。
 
-- 如果您需要移除未來的費用，可以將資料倉儲刪除。
+- 如果您想要移除未來費用，您可以刪除 SQL 集區。
 
 遵循下列步驟，清除不再需要的資源。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取您的資料倉儲。
+1. 登入[Azure 入口網站](https://portal.azure.com)，選取您的 SQL 集區。
 
    ![清除資源](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. 若要暫停計算，請選取 [暫停] 按鈕。 資料倉儲暫停時，您會看到 [繼續] 按鈕。 若要繼續計算，請選取 [**繼續**]。
+2. 若要暫停計算，請選取 [暫停] 按鈕。 當 SQL 集區暫停時，您會看到 [**繼續**] 按鈕。 若要繼續計算，請選取 [**繼續**]。
 
-3. 若要移除資料倉儲，因此您不需支付計算或儲存體的費用，請選取 [**刪除**]。
+3. 若要移除 SQL 集區，讓您不需支付計算或儲存體的費用，請選取 [**刪除**]。
 
 4. 若要移除您所建立的 SQL server，請選取上一個映射中的 [ **sqlpoolservername.database.windows.net** ]，然後選取 [**刪除**]。 請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
 
@@ -196,7 +196,4 @@ SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗�
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立資料倉儲、建立防火牆規則、連線到您的資料倉儲，並執行了一些查詢。 若要深入了解 Azure SQL 資料倉儲，請繼續進行載入資料的教學課程。
-
-> [!div class="nextstepaction"]
-> [將資料載入 SQL 資料倉儲](load-data-from-azure-blob-storage-using-polybase.md)
+若要深入瞭解如何將資料載入您的 SQL 集區，請繼續進行將[資料載入 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區一文。 

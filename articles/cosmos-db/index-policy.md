@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386971"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129339"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的編制索引原則
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 支援兩種編制索引模式：
 
 根據預設，編制索引原則會設定為 `automatic`。 將索引編制原則中的 `automatic` 屬性設定為 `true`，即可達成此目的。 將此屬性設定為 `true` 可讓 Azure CosmosDB 在檔寫入時自動編制索引。
 
-## <a name="including-and-excluding-property-paths"></a>包含和排除屬性路徑
+## <a id="include-exclude-paths"></a>包含和排除屬性路徑
 
 自訂索引編制原則可以指定從索引中明確包含或排除的屬性路徑。 藉由優化已編制索引的路徑數目，您可以降低容器所使用的儲存體數量，並改善寫入作業的延遲。 這些路徑會依照[[編制索引總覽] 區段中所述的方法](index-overview.md#from-trees-to-property-paths)定義，並具有下列新增專案：
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 支援兩種編制索引模式：
 
 - 對於包含：英數位元和 _ （底線）之一般字元的路徑，您不需要以雙引號括住路徑字串（例如，"/path/？"）。 針對具有其他特殊字元的路徑，您需要以雙引號括住路徑字串（例如，"/\"path-abc\"/？"）。 如果您的路徑中預期有特殊字元，您可以將每個路徑都換成安全。 在功能上，如果您要將每個路徑與包含特殊字元的路徑進行轉義，則不會有任何差異。
 
-- 除非將 etag 新增至所包含的索引路徑，否則系統屬性 "etag" 預設會從索引中排除。
+- 除非將 etag 新增至所包含的索引路徑，否則系統屬性 "_etag" 預設會從索引中排除。
 
 包含和排除路徑時，您可能會遇到下列屬性：
 

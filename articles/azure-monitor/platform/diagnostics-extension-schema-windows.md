@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384140"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128454"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 診斷延伸模組架構
 Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作業系統和 Azure 計算資源的工作負載收集監視資料。 本文詳細說明在 Windows 虛擬機器和其他計算資源上設定診斷擴充功能時所使用的架構。
@@ -506,7 +506,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 ```
 
 > [!NOTE]
-> 公用設定 Azure 監視器接收定義具有兩個屬性： *PrincipalId*和*Secret*。 這些只有傳統 VM 和傳統雲端服務才需要使用。 這些屬性不應該用於其他資源。
+> 私用設定 Azure 監視器接收定義具有兩個屬性： *PrincipalId*和*Secret*。 這些只有傳統 VM 和傳統雲端服務才需要使用。 這些屬性不應該用於其他資源。
 
 
 ```json

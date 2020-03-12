@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364438"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128634"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -19,7 +19,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 
 ## <a name="indexing-policy-examples"></a>索引編製原則範例
 
-下面有一些以其 JSON 格式顯示的索引編製原則範例，這就是其在 Azure 入口網站上公開的方式。 透過 Azure CLI 或任何 SDK 也可以設定相同的參數。
+以下是一些以[JSON 格式](index-policy.md#include-exclude-paths)顯示的索引編制原則範例，也就是它們在 Azure 入口網站上的公開方式。 透過 Azure CLI 或任何 SDK 也可以設定相同的參數。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>可選擇性地排除一些屬性路徑的退出原則
 
@@ -153,7 +153,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [

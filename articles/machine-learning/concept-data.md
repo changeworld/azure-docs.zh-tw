@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396175"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129555"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的資料存取
 
@@ -83,7 +83,7 @@ Azure Machine Learning 資料存放區是 Azure 儲存體服務的儲存體抽�
 
 + [訓練機器學習模型](how-to-train-with-datasets.md)。
 + 使用中的資料集 
-     + [自動化 ML 實驗](how-to-create-portal-experiments.md)
+     + [自動化 ML 實驗](how-to-use-automated-ml-for-ml-models.md)
      + [設計](tutorial-designer-automobile-price-train-score.md#import-data)工具 
 + 使用[機器學習管線](how-to-create-your-first-pipeline.md)中的批次推斷來存取資料集以進行評分。
 + 建立[資料標籤專案](#label)。

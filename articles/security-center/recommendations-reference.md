@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380729"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086512"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議-參考指南
 
@@ -25,7 +25,10 @@ ms.locfileid: "78380729"
 
 若要瞭解如何回應這些建議，請參閱[Azure 資訊安全中心中的補救建議](security-center-remediate-recommendations.md)。
 
-您的安全分數是根據您已緩和的資訊安全中心建議數而定。 若要優先處理建議以解決問題，請考慮每一個的嚴重性。
+您的安全分數是根據您已完成的資訊安全中心建議數目而定。 若要決定要先解決哪些建議，請查看每一項的嚴重性，以及其對您安全分數的潛在影響。
+
+>[!TIP]
+> 如果建議的描述顯示「沒有相關的原則」，通常是因為該建議相依于不同的建議和*其*原則。 例如，建議的「應補救端點保護健康情況失敗 ...」，取決於檢查是否已*安裝*endpoint protection 解決方案的建議（「應該安裝 endpoint protection 解決方案 ...」）。 基礎*建議有*原則。 將原則限制為只有基本的建議可簡化原則管理。
 
 ## <a name="recs-network"></a>網路建議
 
@@ -106,7 +109,7 @@ ms.locfileid: "78380729"
 |**弱點評量解決方案應修復弱點**|針對已部署弱點評定第三方解決方案的虛擬機器，持續評定是否有應用程式和 OS 弱點。 每當找到這類弱點時，都會隨著建議一併提供這些弱點的相關詳細資訊。<br>（相關原則：弱點評估解決方案應補救弱點）|高|N|電腦|
 |**您應在機器上修復安全性組態的弱點**|修復機器上安全性設定中的弱點，以避免這些機器遭受攻擊。<br>（相關原則：您電腦上安全性設定中的弱點應予以補救）|低|N|電腦|
 |**應補救容器安全性設定中的弱點**|修複已安裝 Docker 之機器上安全性設定中的弱點，以避免這些機器遭受攻擊。<br>（相關原則：應補救容器安全性設定中的弱點）|高|N|電腦|
-|**端點保護健康情況問題應在您的電腦上解決**|為了獲得完整的「資訊安全中心」保護，請依照《疑難排解指南》中的指示，解決機器上的監視代理程式問題。<br>（沒有相關的原則-相依于「在您的電腦上安裝 endpoint protection 解決方案」）|中|N|電腦|
+|**端點保護健康情況問題應在您的電腦上解決**|為了獲得完整的「資訊安全中心」保護，請依照《疑難排解指南》中的指示，解決機器上的監視代理程式問題。<br>（這項建議取決於「在您的電腦上安裝端點保護解決方案」和其原則）|中|N|電腦|
 ||||||
 
 

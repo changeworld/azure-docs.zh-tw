@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381948"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128457"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 
 對應 Azure Data Factory 中的資料流程提供無程式碼介面，以大規模設計、部署和協調資料轉換。 如果您不熟悉對應的資料流程，請參閱[對應資料流程總覽](concepts-data-flow-overview.md)。
 
 當您從 ADF UX 設計和測試資料流程時，請務必切換開啟 [偵測模式]，以即時執行您的資料流程，而不需要等待叢集準備。 如需詳細資訊，請參閱[Debug Mode](concepts-data-flow-debug-mode.md)。
+
+這段影片會示範將資料轉換成資料流程的一些範例時間：
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>監視資料流程效能
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0a2ace3f73379cff0b9289a8cebb10cb7930348d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397353"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129080"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -49,18 +49,18 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 * date  
 * decimal  
 * double  
-* float  
+* FLOAT  
 * 冰雪奇緣  
 * inet  
 * int  
 * list  
 * set  
-* smallint  
-* 文字  
+* SMALLINT  
+* text  
 * time  
 * timestamp  
 * timeuuid  
-* tinyint  
+* TINYINT  
 * Tuple  
 * uuid  
 * varchar  
@@ -73,7 +73,7 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 
 Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
-* 權杖  
+* Token  
 * 彙總函式
   * min、max、avg、count
 * Blob 轉換函式 
@@ -145,13 +145,15 @@ Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
 
 * CREATE KEYSPACE (已忽略此命令的複寫設定)
 * CREATE TABLE 
+* CREATE INDEX （不指定索引名稱，以及尚未支援的完整凍結索引）
+* 允許篩選
 * ALTER TABLE 
 * USE 
-* INSERT 
+* Insert 
 * SELECT 
 * UPDATE 
 * BATCH - 只支援未記錄的命令 
-* DELETE
+* 刪除
 
 透過 CQL v4 相容 SDK 執行的所有 CRUD 作業，將傳回有關錯誤及已取用的要求單位等額外資訊。 DELETE 和 UPDATE 命令應使用納入考慮的資源管理來處理，確保會以最有效率的方式使用佈建的輸送量。
 
@@ -179,7 +181,7 @@ Azure Cosmos DB 支援角色型存取控制 (RBAC) 來佈建、輪替金鑰、�
 
 ## <a name="keyspace-and-table-options"></a>Keyspace 和資料表選項
 
-目前已忽略 "Create Keyspace" 命令中區域名稱、類別、replication_factor 和資料中心的選項。 系統會使用基礎 Azure Cosmos DB 的[全域散發](global-dist-under-the-hood.md)複寫方法來新增區域。 如果您需要資料跨區域存在，可以使用 PowerShell、CLI 或入口網站在帳戶層級加以啟用。若要深入了解，請參閱[如何新增區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 無法停用 Durable_writes，因為 Azure Cosmos DB 可確保每次寫入都是持久的。 在每個區域中，Azure Cosmos DB 會將資料複寫到由四個複本組成的複本集，而此複本集[設定](global-dist-under-the-hood.md)無法加以修改。
+目前已忽略 "Create Keyspace" 命令中區域名稱、類別、replication_factor 和資料中心的選項。 系統會使用基礎 Azure Cosmos DB 的[全域散發](global-dist-under-the-hood.md)複製方法來新增區域。 如果您需要資料跨區域存在，可以使用 PowerShell、CLI 或入口網站在帳戶層級加以啟用。若要深入了解，請參閱[如何新增區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 無法停用 Durable_writes，因為 Azure Cosmos DB 可確保每次寫入都是持久的。 在每個區域中，Azure Cosmos DB 會將資料複寫到由四個複本組成的複本集，而此複本集[設定](global-dist-under-the-hood.md)無法加以修改。
  
 建立資料表時會忽略所有選項，但應設定為零的 gc_grace_seconds 除外。
 Keyspace 和資料表有一個名為 "cosmosdb_provisioned_throughput" 的額外選項，其最小值為 400 RU/秒。 Keyspace 輸送量可讓您跨多個資料表共用輸送量，而當所有資料表均未使用佈建的輸送量時就很有用。 Alter Table 命令可讓您變更跨區域佈建的輸送量。 
