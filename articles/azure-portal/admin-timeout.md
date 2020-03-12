@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132082"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096603"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>設定目錄層級的非啟用時間
 
@@ -43,7 +43,7 @@ ms.locfileid: "77132082"
 此設定會對新的會話生效。 它不會立即套用到已登入的任何使用者。
 
 > [!NOTE]
-> 如果系統管理員已設定目錄層級的超時設定，使用者可以覆寫原則並設定自己的非作用中登出持續時間。 不過，使用者必須選擇小於目錄層級設定的時間間隔。
+> 如果全域管理員已設定目錄層級的超時設定，使用者可以覆寫原則並設定自己的非作用中登出持續時間。 不過，使用者必須選擇小於全域管理員在目錄層級設定的時間間隔。
 >
 
 ## <a name="next-steps"></a>後續步驟

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654428"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096219"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -137,7 +137,7 @@ Microsoft 對等互連
 NPM 只會識別來源 IP 和目的地 IP 之間的基礎網路躍點 (交換器、路由器、伺服器等) 的 IP 和主機名稱， 也也會識別這些已識別躍點之間的延遲， 但不會個別監控這些基礎躍點。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>NPM 是否可用來監控 Azure 與 AWS 之間的網路連線？
-是的。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文 (英文)。
+是。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文 (英文)。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 頻寬的用量是傳入還是傳出？
 頻寬用量是傳入和傳出頻寬的總和， 以位元/秒表示。
@@ -183,7 +183,7 @@ NPM 使用追蹤路由的修改版本，來探索從來源代理程式到目的�
 * 網路裝置不允許 ICMP_TTL_EXCEEDED 流量。
 * 防火牆阻止來自網路裝置的 ICMP_TTL_EXCEEDED 回應。
 
-當其中一個端點位於 Azure 中時，追蹤路由會顯示無法辨識的躍點，因為 Azure ndrastructure 不會向追蹤路由顯示身分識別。 
+當其中一個端點位於 Azure 中時，追蹤路由會顯示無法辨識的躍點，因為 Azure 基礎結構不會向追蹤路由顯示身分識別。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到狀況不良測試的警示，但我在 NPM 的遺失和延遲圖表中看不到高的值。 如何? 檢查什麼狀況不良？
 如果來源與目的地之間的端對端延遲超出其之間任何路徑的臨界值，NPM 就會引發警示。 有些網路有多個路徑連接相同的來源和目的地。 NPM 引發警示是任何路徑狀況不良。 圖表中顯示的遺失和延遲是所有路徑的平均值，因此它可能不會顯示單一路徑的確切值。 若要瞭解臨界值被違反的位置，請尋找警示中的「子類型」資料行。 如果問題是由路徑所造成，則會 NetworkPath 子類型值（適用于效能監控測試）、EndpointPath （適用于服務連線能力監視測試）和 ExpressRoutePath （適用于 ExpressRotue 監視器測試）。 
@@ -209,7 +209,7 @@ HopLatencyValues 是來源到端點。
 如果主機防火牆或中繼防火牆 (網路防火牆或 Azure NSG) 透過 NPM 監視的連接埠封鎖來源代理程式與目的地之間的通訊 (除非客戶改變連接埠，否則預設情況下，連接埠為 8084)，則會發生此情況。
 
 * 若要驗證主機防火牆是否未封鎖所需連接埠上的通訊，請至此查看來源節點和目的地節點的健康情況狀態：[網路效能監控] -> [設定] -> [節點]。 
-  如果節點狀況不良，請查看說明並採取修正措施。 如果節點狀況良好，請跳至步驟 b。 如下。
+  如果節點狀況不良，請查看說明並採取修正措施。 如果節點狀況良好，請跳至步驟 b。 。
 * 若要驗證中繼網路防火牆或 Azure NSG 是否未封鎖所需連接埠上的通訊，請依照以下說明使用第三方 PsPing 公用程式：
   * 可以在[這裡](https://technet.microsoft.com/sysinternals/psping.aspx)下載 psping 公用程式 
   * 從來源節點執行下列命令。

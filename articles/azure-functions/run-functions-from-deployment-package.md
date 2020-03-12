@@ -3,12 +3,12 @@ title: 從封裝執行您的 Azure Functions
 description: 讓 Azure Functions 執行階段藉由掛接部署套件檔案 (內含函式應用程式的專案檔) 來執行函式。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921108"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087018"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>從套件檔案執行 Azure Functions
 
@@ -91,6 +91,7 @@ ms.locfileid: "77921108"
 - 不支援 Tar 和 gzip 格式。
 - 這項功能不會使用本機快取來撰寫。
 - 若要改善冷啟動效能，請使用本機 Zip 選項（`WEBSITE_RUN_FROM_PACKAGE`= 1）。
+- 從封裝執行與部署自訂選項（`SCM_DO_BUILD_DURING_DEPLOYMENT=true`）不相容，部署期間將會忽略組建步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

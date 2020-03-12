@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474237"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129385"
 ---
 ## <a name="limitations"></a>限制
 
 - 專用主機目前不支援虛擬機器擴展集。
-- 初始版本支援下列 VM 系列： DSv3、ESv3、FSv2、LSv2 和 MSv2。 
+- 專用主機可用的大小和硬體類型因區域而異。 若要深入瞭解，請參閱主機[定價頁面](https://aka.ms/ADHPricing)。
 
 ## <a name="create-a-host-group"></a>建立主機群組
 
@@ -36,8 +36,6 @@ ms.locfileid: "77474237"
 1. 開啟 Azure[入口網站](https://portal.azure.com)。
 1. 選取左上角的 [**建立資源**]。
 1. 搜尋 [**主機群組**]，然後從結果中選取 [**主機群組**]。
-
-    ![主機群組搜尋結果。](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. 在 [**主機群組**] 頁面中，選取 [**建立**]。
 1. 選取您想要使用的訂用帳戶，然後選取 **[新建] 以建立**新的資源群組。
 1. 輸入*myDedicatedHostsRG*作為**名稱**，然後選取 **[確定]** 。
@@ -46,8 +44,6 @@ ms.locfileid: "77474237"
 1. 針對 [**可用性區域**]，選取 [ **1**]。
 1. 針對 [**容錯網域計數**]，選取 [ **2**]。
 1. 選取 [審核] [ **+ 建立**]，然後等候驗證。
-
-    ![主機群組設定](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. 一旦您看到 [**通過驗證**] 訊息，請選取 [**建立**] 以建立主機群組。
 
 建立主機群組只需要幾分鐘的時間。
@@ -62,16 +58,12 @@ ms.locfileid: "77474237"
 
 1. 選取左上角的 [**建立資源**]。
 1. 搜尋 [**專用主機**]，然後從結果中選取 [**專用主機**]。
-
-    ![主機群組搜尋結果。](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. 在 [**專用主機**] 頁面上，選取 [**建立**]。
 1. 選取您要使用的訂用帳戶識別碼。
 1. 選取 [ *myDedicatedHostsRG* ] 作為 [**資源群組**]。
 1. 在 [**實例詳細資料**] 中，輸入*Myhost 代表*作為 [**名稱**]，然後選取 [*美國東部*] 作為位置。
-1. 在 [**硬體設定檔**] 中，選取 [*標準以及 es3 系列]-* 在 [**大小] 系列**中輸入1，針對 [**主機] 群組**選取 [ *myHostGrup* ]，然後針對 [**容錯網域**] 選取*1* 。 保留其餘欄位的預設值。
+1. 在 [**硬體設定檔**] 中，選取 [*標準以及 es3 系列]-* 在 [**大小] 系列**中輸入1，針對 [**主機] 群組**選取 [ *myHostGroup* ]，然後針對 [**容錯網域**] 選取*1* 。 保留其餘欄位的預設值。
 1. 當您完成時，選取 [審核] [ **+ 建立**] 並等候驗證。
-
-    ![主控件設定](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. 一旦您看到 [**通過驗證**] 訊息，請選取 [**建立**] 以建立主機。
 
 

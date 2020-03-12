@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025923"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086216"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 應用程式套件將應用程式部署至計算節點
 
@@ -90,13 +90,11 @@ Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 �
 
 我們建議您建立「專門」用來與 Batch 帳戶搭配使用的儲存體帳戶，並在此處選取它。 在建立儲存體帳戶之後，您可以使用 [儲存體帳戶] 視窗，將它連結到 Batch 帳戶。
 
-> [!NOTE] 
-> 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
-> 
+> [!IMPORTANT] 
+> - 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
+> - 已將**階層命名空間**設定為 [**已啟用**] 的 Azure 儲存體帳戶，無法用於應用程式封裝。
 
 Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 blob 資料，您需[支付一般費用][storage_pricing]，而每個套件的大小不能超過區塊 blob 大小上限。 如需詳細資訊，請參閱[儲存體帳戶的 Azure 儲存體擴充性和效能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
-> 
-> 
 
 ### <a name="view-current-applications"></a>檢視目前的應用程式
 若要檢視 Batch 帳戶中的應用程式，請在檢視 [Batch 帳戶] 視窗時按一下左側功能表中的 [應用程式] 功能表項目。
@@ -297,7 +295,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> 如需計算節點環境設定的詳細資訊，請參閱 [Batch 功能概觀](batch-api-basics.md)中的[工作的環境設定](batch-api-basics.md#environment-settings-for-tasks)。
+> 如需計算節點環境設定的詳細資訊，請參閱 [Batch 功能概觀](batch-api-basics.md#environment-settings-for-tasks)中的[工作的環境設定](batch-api-basics.md)。
 > 
 > 
 

@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303608"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087907"
 ---
-# <a name="assets-in-azure-media-services"></a>Azure 媒體服務中的資產
+# <a name="assets-in-azure-media-services-v3"></a>Azure 媒體服務 v3 中的資產
 
 在 Azure 媒體服務中，[資產](https://docs.microsoft.com/rest/api/media/assets)是核心概念。 這是您輸入媒體的位置（例如，透過上傳或即時內嵌）、輸出媒體（來自作業輸出），以及從發佈媒體（適用于串流處理）。 
 
@@ -39,37 +39,6 @@ ms.locfileid: "78303608"
 ### <a name="blobs"></a>Blob
 
 資產中的檔案/blob 名稱必須遵循[blob 名稱需求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和[NTFS 名稱需求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 這些需求的原因是檔案可以從 blob 儲存體複製到本機 NTFS 磁片進行處理。
-
-## <a name="map-v3-asset-properties-to-v2"></a>將 v3 資產屬性對應至 v2
-
-下表顯示[資產](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)在 v3 中的屬性如何對應至第2版中的資產屬性。
-
-|v3 屬性|v2 屬性|
-|---|---|
-|`id`-（唯一）完整 Azure Resource Manager 路徑，請參閱[資產](https://docs.microsoft.com/rest/api/media/assets/createorupdate)中的範例||
-|`name`-（唯一）請參閱[命名慣例](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|`Id`-（唯一）值的開頭為 `nb:cid:UUID:` 前置詞。|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` （建立選項）|
-|`type`||
-
-## <a name="storage-side-encryption"></a>儲存端加密
-
-若要保護待用資產，資產應該透過儲存端加密來進行加密。 下表顯示儲存端加密在媒體服務中的運作方式：
-
-|加密選項|描述|媒體服務 v2|媒體服務 v3|
-|---|---|---|---|
-|媒體服務的儲存體加密|AES-256 加密，媒體服務管理的金鑰。|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
-|[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援|支援|
-|[儲存體用戶端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 儲存體所提供的用戶端加密、由客戶在 Key Vault 中管理的金鑰。|不支援|不支援|
-
-<sup>1</sup>雖然媒體服務支援以清除/不使用任何形式的加密來處理內容，但並不建議這麼做。
-
-<sup>2</sup> 在媒體服務 v3 中，如果您的資產是以媒體服務 v2 建立，則儲存體加密 (AES-256 加密) 只對回溯相容性有所支援。 這表示 v3 適用于現有的儲存體加密資產，但不允許建立新的資產。
 
 ## <a name="next-steps"></a>後續步驟
 

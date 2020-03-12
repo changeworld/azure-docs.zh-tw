@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435464"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117229"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的網路安全性群組（NSG）服務標記
 
@@ -40,7 +40,7 @@ ms.locfileid: "75435464"
 
 1. 從 [**來源服務標記**] 下拉式清單中，選取 [ **HDInsight**]。
 
-    ![Azure 入口網站新增服務標記](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure 入口網站新增服務標記](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 此標籤包含適用于 HDInsight 的所有區域之健全狀況和管理服務的 IP 位址，並確保您的叢集可以與所需的健康狀態和管理服務進行通訊，而不論其建立位置為何。
 
@@ -54,9 +54,9 @@ ms.locfileid: "75435464"
 
 如果您偏好使用服務標籤選項2，且您的叢集位於此表格中所列的其中一個區域，則您只需要將單一區域服務標籤新增至您的網路安全性群組。
 
-| 國家/地區 | 地區 | 服務標記 |
+| Country | 區域 | 服務標記 |
 | ---- | ---- | ---- |
-| 澳洲 | 澳大利亞東部 | AustraliaEast |
+| 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 | &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
 | &nbsp; | 澳大利亞中部 | AustraliaCentral |
 | 中國 | 中國東部 2 | ChinaEast2 |
@@ -64,7 +64,7 @@ ms.locfileid: "75435464"
 | 美國 | 美國中北部 | NorthCentralUS |
 | &nbsp; | 美國西部 2 | WestUS2 |
 | &nbsp; | 美國中西部 | WestCentralUS |
-| 加拿大 | 加拿大東部 | CanadaEast |
+| Canada | 加拿大東部 | CanadaEast |
 | 巴西 | 巴西南部 | BrazilSouth |
 | 南韓 | 南韓中部 | KoreaCentral |
 | &nbsp; | 南韓南部 | KoreaSouth |
@@ -73,9 +73,10 @@ ms.locfileid: "75435464"
 | 日本 | 日本西部 | JapanWest |
 | 法國 | 法國中部| FranceCentral |
 | 英國 | 英國南部 | UKSouth |
-| Azure 政府機構 | USDoD 中部   | USDoDCentral |
+| Azure Government | USDoD 中部   | USDoDCentral |
 | &nbsp; | 美國政府德克薩斯州 | USGovTexas |
 | &nbsp; | UsDoD 東部 | USDoDEast |
+| &nbsp; | 美國政府亞利桑那州 | USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多個區域服務標記
 
@@ -83,7 +84,7 @@ ms.locfileid: "75435464"
 
 其餘的區域會根據其使用的區域服務標籤分成群組。
 
-#### <a name="group-1"></a>群組 1
+#### <a name="group-1"></a>群組1
 
 如果您的叢集是在下表的其中一個區域中建立，除了列出的地區服務標籤之外，允許 `HDInsight.WestUS` 和 `HDInsight.EastUS` 的服務標記。 本節中的區域需要三個服務標記。
 
@@ -93,7 +94,7 @@ ms.locfileid: "75435464"
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| 國家/地區 | 地區 | 服務標記 |
+| Country | 區域 | 服務標記 |
 | ---- | ---- | ---- |
 | 美國 | 美國東部 2 | EastUS2 |
 | &nbsp; | 美國中部 | CentralUS |
@@ -104,19 +105,19 @@ ms.locfileid: "75435464"
 | 日本 | 日本東部 | JapanEast |
 | 歐洲 | 北歐 | NorthEurope |
 | &nbsp; | 西歐| WestEurope |
-| 亞洲 | 東亞 | EastAsia |
+| Asia | 東亞 | EastAsia |
 | &nbsp; | 東南亞 | SoutheastAsia |
-| 澳洲 | 澳大利亞東部 | AustraliaEast |
+| 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 
 #### <a name="group-2"></a>群組 2
 
 **中國北部**和**中國東部**區域中的叢集需要允許兩個服務標記： `HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast`。
 
-#### <a name="group-3"></a>群組 3
+#### <a name="group-3"></a>群組3
 
 **US Gov 愛荷華州**和**US Gov 維吉尼亞州**區域中的叢集需要允許兩個服務標記： `HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia`。
 
-#### <a name="group-4"></a>群組 4
+#### <a name="group-4"></a>群組4
 
 位於**德國中部**和**德國東北部**區域的叢集需要允許兩個服務標記： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNorthEast`。
 

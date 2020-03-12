@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8d40dd09144bddc41347947c0123988530f93f90
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945415"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096668"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 連線能力設定
 > [!NOTE]
@@ -77,49 +77,6 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 ```
 
-## <a name="minimal-tls-version"></a>最低 TLS 版本 
-最低的 TLS 版本可讓客戶控制其 Azure SQL Server 的[傳輸層安全性](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)版本。
-
-我們建議您將最低的 TLS 版本設定為1.2。 針對具有依賴舊版 TLS 之應用程式的客戶，我們建議您根據應用程式的需求來設定最低的 TLS 版本。 針對依賴應用程式使用未加密連線進行連線的客戶，我們建議您不要設定任何最低的 TLS 版本。 如需其他資訊，請參閱[SQL Database 連接的 TLS 考慮](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)。
-
-設定最少的 TLS 版本後，從使用低於最低 TLS 版本伺服器之 TLS 版本的用戶端登入嘗試將會失敗，並出現下列錯誤：
-
-```output
-Error 47072
-Login failed with invalid TLS version
-```
-
-## <a name="set-minimal-tls-version-via-powershell"></a>透過 PowerShell 設定最低的 TLS 版本
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 下列腳本需要[Azure PowerShell 模組](/powershell/azure/install-az-ps)。
-
-下列 PowerShell 腳本示範如何 `Get` 並 `Set` 邏輯伺服器層級的**最低 TLS 版本**屬性：
-
-```powershell
-#Get the Public Network Access property
-(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).PublicNetworkAccess
-
-# Update Public Network Access to Disabled
-$SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
-
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString  -MinimalTlsVersion "1.2"
-```
-
-## <a name="set-minimal-tls-version-via-azure-cli"></a>透過 Azure CLI 設定最低的 TLS 版本
-> [!IMPORTANT]
-> 本節中的所有腳本都需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-
-### <a name="azure-cli-in-a-bash-shell"></a>Bash shell 中的 Azure CLI
-下列 CLI 腳本示範如何在 bash shell 中變更**最小的 TLS 版本**設定：
-
-```azurecli-interactive
-# Get current setting for Minimal TLS Version
-az sql server show -n sql-server-name -g sql-server-group --query "minimalTlsVersion"
-
-# Update setting for Minimal TLS Version
-az sql server update -n sql-server-name -g sql-server-group --set minimalTlsVersion="1.2"
-```
 
 ## <a name="connection-policy"></a>連線原則
 連線[原則](sql-database-connectivity-architecture.md#connection-policy)會決定用戶端連接到 Azure SQL Server 的方式。 

@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596176"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126599"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes Service （AKS）診斷總覽
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診斷（預覽）總覽
 
 疑難排解 Azure Kubernetes Service （AKS）叢集問題是維護叢集的重要部分，特別是當您的叢集正在執行任務關鍵性工作負載時。 AKS Diagnostics 是智慧型、自我診斷的體驗，可協助您找出並解決叢集中的問題。 AKS 診斷是雲端原生的，您可以使用它，而不需要額外的設定或計費成本。
+
+這項功能現已開放公開預覽。
 
 ## <a name="open-aks-diagnostics"></a>開啟 AKS 診斷
 

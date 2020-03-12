@@ -1,25 +1,25 @@
 ---
-title: 使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI 輸出（預覽）
+title: 使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI 輸出
 description: 本文說明如何使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI 輸出。
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459683"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086320"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI （預覽）
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI
 
-輸出至 Power BI 的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)可供 Azure 串流分析作為預覽。 這可讓串流分析作業直接存取您 Power BI 帳戶內的工作區。 這項功能可讓串流分析作業的部署完全自動化，因為使用者不再需要透過 Azure 入口網站以互動方式登入 Power BI。 此外，現在更能支援寫入 Power BI 的長時間執行作業，因為您不需要定期重新授權作業。
+輸出至 Power BI 的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)可讓串流分析作業直接存取您 Power BI 帳戶內的工作區。 這項功能可讓串流分析作業的部署完全自動化，因為使用者不再需要透過 Azure 入口網站以互動方式登入 Power BI。 此外，現在更能支援寫入 Power BI 的長時間執行作業，因為您不需要定期重新授權作業。
 
 本文說明如何透過 Azure 入口網站以及透過 Azure Resource Manager 部署，為串流分析作業的 Power BI 輸出啟用受控識別。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用此功能需要下列各項：
 

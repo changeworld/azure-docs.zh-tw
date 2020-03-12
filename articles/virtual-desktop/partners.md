@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201776"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127565"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -159,7 +160,7 @@ Liquit 應用程式匯總與傳遞軟體可讓企業和服務提供者與所有�
 
 登入 .VSI 是 Windows 虛擬桌面增值服務提供者和 Microsoft 合作夥伴提供軟體，以在 Windows 虛擬桌面環境中進行應用程式效能測試。 客戶將其內部部署商務服務移至 Windows 虛擬桌面使用登入 .VSI Enterprise Edition 來評估和維護 Windows 10 企業版多會話、Windows 10 企業版和的最佳效能、擴充性和可用性Windows 7 已啟用其業務關鍵應用程式。
 
-- [前往合作夥伴網站](https://www.loginvsi.com)。
+- [前往合作夥伴網站](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop)。
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Tricerat 為 Windows 虛擬桌面和其他桌面平臺提供了絕佳的列印�
 使用 Tricerat 時，列印功能會順暢地 Windows 虛擬桌面或更遠的範圍內。 Tricerat software 可讓系統管理員輕鬆地將內部部署印表機連接到雲端，將企業列印管理從傳統環境延伸到新的現代化工作區。
 
 - [前往合作夥伴網站](https://www.tricerat.com/microsoft-printing)。
+
+## <a name="vast-limits"></a>龐大的限制
+
+![龐大的限制標誌](./media/partners/vast-limits.png)
+
+uberAgent 公司的龐大限制提供 Windows 虛擬桌面部署的可見度。 它會為企業 IT 建立軟體，因為它知道 IT 專業人員的想法，以及所需的工具。 其產品藉由提供他們完成工作所需的確切功能，協助 IT 專業人員更有效率;不是更多，不是更少。
+
+uberAgent 是針對使用者運算而設計的監視和分析產品，不只是收集資料，而是為客戶提供重要的資訊。 uberAgent 有自己的計量，其中涵蓋了使用者經驗、應用程式效能和端點安全性的重要層面，告訴您您需要知道 Windows 虛擬桌面 Vm 的一切，而不會影響系統的使用者密度。 uberAgent 可簡化疑難排解、協助進行調整大小，並提供資訊安全性的重要資訊。
+
+- [前往合作夥伴網站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot control
 

@@ -9,26 +9,30 @@ ms.topic: conceptual
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 8a9dc92baf47242af502862edebffe686263dd5d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.date: 03/11/2020
+ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399656"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129709"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>建立事件驅動機器學習工作流程（預覽）
 
-[Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)支援 Azure Machine Learning 事件。 例如，您可以使用範圍設定為工作區的執行完成、模型註冊、模型部署和資料漂移偵測的事件。
+[Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)支援 Azure Machine Learning 事件。 您可以在工作區中訂閱和使用事件，例如執行狀態已變更、執行完成、模型註冊、模型部署和資料漂移偵測。
 
-如需詳細資訊，請參閱[Azure Machine Learning 與事件方格整合](concept-event-grid-integration.md)和[Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)。
+如需事件種類的詳細資訊，請參閱[Azure Machine Learning 與事件方格整合](concept-event-grid-integration.md)和[Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)。
 
 使用「事件方格」來啟用常見案例，例如：
 
-* 執行完成時傳送電子郵件
+* 在執行失敗時傳送電子郵件並執行完成
 * 在註冊模型之後使用 azure 函式
 * 將事件從 Azure Machine Learning 串流至各種端點
 * 偵測到漂移時觸發 ML 管線
+
+> [!NOTE] 
+> 目前，只有在執行狀態為**失敗**時，才會觸發 runStatusChanged 事件
+>
 
 ## <a name="prerequisites"></a>Prerequisites
 * 您將為其建立事件之 Azure Machine Learning 工作區的參與者或擁有者存取權。
@@ -43,13 +47,14 @@ ms.locfileid: "78399656"
 
 1. 選取要使用的事件種類。 例如，下列螢幕擷取畫面已選取 [__已註冊的模型__]、已__部署模型__、[__執行已完成__] 和 [偵測__到資料集漂移__]：
 
-    ![新增-事件種類](./media/how-to-use-event-grid/add-event-type.png)
+    ![新增-事件種類](./media/how-to-use-event-grid/add-event-type-updated.png)
 
 1. 選取要發佈事件的端點。 在下列螢幕擷取畫面中，__事件中樞__是選取的端點：
 
     ![select-事件處理常式](./media/how-to-use-event-grid/select-event-handler.png)
 
 確認您的選擇之後，請按一下 [__建立__]。 設定之後，這些事件將會推送至您的端點。
+
 
 ### <a name="configure-eventgrid-using-the-cli"></a>使用 CLI 設定 EventGrid
 
@@ -76,13 +81,17 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
+## <a name="filter-events"></a>篩選事件
+
+設定事件時，您可以將篩選套用至僅在特定事件資料上觸發。 在下列範例中，針對執行狀態已變更事件，您可以依執行類型進行篩選。 只有符合準則時，才會觸發事件。 請參閱[Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)，以瞭解您可以篩選的事件資料。 
+
+1. 移至 Azure 入口網站，選取新的訂用帳戶或現有的訂閱。 
+
+1. 選取 [篩選] 索引標籤，並向下流覽至 [高級篩選]。 在 [索引**鍵**] 和 [**值**] 中，提供您想要用來篩選的屬性類型。 在這裡，您可以看到只有在執行類型為管線執行或管線步驟執行時，才會觸發事件。  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="篩選事件":::
+
 ## <a name="sample-scenarios"></a>範例案例
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 根據標記來部署模型
-
-Azure Machine Learning 模型物件包含您可以在其中進行資料透視部署的參數，例如模型名稱、版本、標記和屬性。 模型註冊事件可以觸發端點，而您可以使用 Azure 函式，根據這些參數的值來部署模型。
-
-如需範例，請參閱[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid)存放庫，並遵循**自述**檔中的步驟。
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>使用邏輯應用程式傳送電子郵件警示
 
@@ -100,7 +109,7 @@ Azure Machine Learning 模型物件包含您可以在其中進行資料透視部
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. 您也可以新增篩選器，只在事件種類的子集上觸發邏輯應用程式。 在下列螢幕擷取畫面中，會使用 __/datadriftID/runs/__ 的__前置詞篩選準則__。
+1. 您可以使用上一節中的篩選方法，或新增篩選器，只在事件種類的子集上觸發邏輯應用程式。 在下列螢幕擷取畫面中，會使用 __/datadriftID/runs/__ 的__前置詞篩選準則__。
 
     ![篩選-事件](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -164,6 +173,11 @@ Azure Machine Learning 模型物件包含您可以在其中進行資料透視部
 
 ![視圖-工作區](./media/how-to-use-event-grid/view-in-workspace.png)
 
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 根據標記來部署模型
+
+Azure Machine Learning 模型物件包含您可以在其中進行資料透視部署的參數，例如模型名稱、版本、標記和屬性。 模型註冊事件可以觸發端點，而您可以使用 Azure 函式，根據這些參數的值來部署模型。
+
+如需範例，請參閱[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid)存放庫，並遵循**自述**檔中的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 9f3fd59fa040ab46a5fc4ef8272a17cba4c631b8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925770"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127327"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>將您的 IaaS 資源遷移到2023年3月1日 Azure Resource Manager 
 
@@ -23,7 +23,7 @@ ms.locfileid: "77925770"
 
 今天，大約有90% 的 IaaS Vm 正在使用 Azure Resource Manager。 如果您透過 Azure Service Manager （ASM）使用 IaaS 資源，請立即開始規劃您的遷移，並于2023年3月1日前完成，以利用[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)。
 
-傳統 Vm 將會遵循[新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy)來進行淘汰。
+傳統 Vm 將會遵循[新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy)來淘汰。
 
 ## <a name="how-does-this-affect-me"></a>此變更對我造成什麼影響？ 
 
@@ -31,7 +31,7 @@ ms.locfileid: "77925770"
 2) 2023年3月1日之後，客戶將無法再使用 Azure Service Manager 啟動 IaaS Vm，而且任何仍在執行或已配置的系統將會停止並解除配置。 
 2) 在2023年3月1日，尚未遷移至 Azure Resource Manager 的訂用帳戶將會收到刪除任何剩餘傳統 Vm 之時程表的相關通知。  
 
-此淘汰**不**會影響下列 Azure 服務和功能： 
+下列 Azure 服務和功能將**不受**此淘汰的影響： 
 - 雲端服務 
 - 傳統 Vm**未**使用的儲存體帳戶 
 - 傳統 Vm**未**使用的虛擬網路（vnet）。 

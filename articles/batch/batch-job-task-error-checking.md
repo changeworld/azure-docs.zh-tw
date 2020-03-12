@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852181"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087002"
 ---
 # <a name="job-and-task-error-checking"></a>作業和工作錯誤檢查
 
@@ -72,6 +72,17 @@ ms.locfileid: "74852181"
 工作失敗對作業的影響，以及任何任務相依性都必須考慮。  您可以為工作指定[exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions)屬性，以設定相依性和作業的動作。
 - 對於相依性， [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction)會控制是否要封鎖或執行依存于失敗工作的工作。
 - 針對此作業， [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction)會控制失敗的工作會導致作業停用、終止或保持不變。
+
+### <a name="task-command-line-failures"></a>工作命令列失敗
+
+執行工作命令列時，會將輸出寫入 `stderr.txt` 並 `stdout.txt`。 此外，應用程式可能會寫入應用程式特定的記錄檔。
+
+如果工作執行所在的集區節點仍存在，則可以取得及查看記錄檔。 例如，Azure 入口網站會列出並可查看工作或集區節點的記錄檔。 多個 Api 也允許列出並取得工作檔案，例如 [[從工作取得](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)]。
+
+由於集區和集區節點經常是暫時的，因此會持續新增和刪除節點，因此建議保存記錄檔。 工作[輸出](https://docs.microsoft.com/azure/batch/batch-task-output-files)檔案是將記錄檔儲存至 Azure 儲存體的便利方式。
+
+### <a name="output-file-failures"></a>輸出檔失敗
+在每次檔案上傳時，Batch 會將 `fileuploadout.txt` 和 `fileuploaderr.txt` 兩個記錄檔寫入計算節點中。 若要進一步了解特定錯誤，您可以檢查這些記錄檔。 在從未嘗試過檔案上傳的情況下（例如因為工作本身無法執行），這些記錄檔將不存在。  
 
 ## <a name="next-steps"></a>後續步驟
 

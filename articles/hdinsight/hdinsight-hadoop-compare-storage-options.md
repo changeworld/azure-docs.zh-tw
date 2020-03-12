@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898919"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095541"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比較與 Azure HDInsight 叢集搭配使用的儲存體選項
 
@@ -28,9 +28,9 @@ ms.locfileid: "78898919"
 
 | 儲存體服務 | 帳戶類型 | 命名空間類型 | 支援的服務 | 支援的效能層級 | 支援的存取層 | HDInsight 版本 | 叢集類型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
-|Azure 儲存體| 一般用途 V2 | Object | blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 全部 |
-|Azure 儲存體| 一般用途 V1 | Object | blob | 標準 | N/A | 全部 | 全部 |
+|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
+|Azure 儲存體| 一般用途 V2 | Object | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 全部 |
+|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | N/A | 全部 | 全部 |
 |Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取、非經常性存取、封存 | 全部 | 全部 |
 |Azure Data Lake Storage Gen1| N/A | 階層式（filesystem） | N/A | N/A | N/A | 僅限3。6 | HBase 以外的所有 |
 
@@ -46,14 +46,14 @@ ms.locfileid: "78898919"
 |---|---|---|---|
 | 3.6 & 4。0 | 一般用途 V1，一般用途 V2 | 一般用途 V1、一般用途 V2、BlobStorage （區塊 Blob） | 是 |
 | 3.6 & 4。0 | 一般用途 V1，一般用途 V2 | Data Lake Storage Gen2 | 否 |
-| 3.6 & 4。0 | 一般用途 V1，一般用途 V2 | Data Lake Storage Gen1 | 是 |
 | 3.6 & 4。0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | 是 |
 | 3.6 & 4。0 | Data Lake Storage Gen2 * | 一般用途 V1、一般用途 V2、BlobStorage （區塊 Blob） | 是 |
 | 3.6 & 4。0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | 否 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | 是 |
 | 3.6 | Data Lake Storage Gen1 | 一般用途 V1、一般用途 V2、BlobStorage （區塊 Blob） | 是 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | 否 |
-| 4.0 | Data Lake Storage Gen1 | 任何 | 否 |
+| 4.0 | Data Lake Storage Gen1 | 任意 | 否 |
+| 4.0 | 一般用途 V1，一般用途 V2 | Data Lake Storage Gen1 | 否 |
 
 \* = 這可以是一個或多個 Data Lake Storage Gen2 帳戶，只要它們都設定為使用相同的受控識別來進行叢集存取即可。
 

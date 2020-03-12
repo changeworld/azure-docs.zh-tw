@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572332"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126970"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
 
@@ -26,9 +26,9 @@ ms.locfileid: "73572332"
 ## <a name="design-the-logic-app"></a>設計邏輯應用程式
 
 > [!IMPORTANT]
-> 下列範例假設 Azure Analysis Services 防火牆已停用。  如果已啟用防火牆，則要求啟動器的公用 IP 位址必須在 Azure Analysis Services 防火牆的允許清單中。 若要深入瞭解每個區域的邏輯應用程式 IP 範圍，請參閱[Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses)。
+> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在 Azure Analysis Services 防火牆中將要求啟動器的公用 IP 位址列入允許清單。 若要深入瞭解每個區域 Azure Logic Apps IP 範圍，請參閱[Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 #### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
 
@@ -65,14 +65,14 @@ ms.locfileid: "73572332"
 |屬性  |值  |
 |---------|---------|
 |**方法**     |POST         |
-|**URI**     | HTTPs://*您的伺服器區域*/servers/ *.aas 伺服器名稱*/models/*您的資料庫名稱*對/refreshes <br /> <br /> 例如： HTTPs： \//westus. asazure. net/servers/myserver/型號/AdventureWorks/重新整理|
-|**標頭**     |   內容類型、應用程式/json <br /> <br />  ![標頭](./media/analysis-services-async-refresh-logic-app/6.png)    |
-|**內文**     |   若要深入瞭解如何形成要求主體，請參閱[使用 REST API 張貼對/refreshes 的非同步](analysis-services-async-refresh.md#post-refreshes)重新整理。 |
+|**URI**     | HTTPs://*您的伺服器區域*/servers/ *.aas 伺服器名稱*/models/*您的資料庫名稱*對/refreshes <br /> <br /> 例如： HTTPs：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
+|**標頭**     |   內容類型、應用程式/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**本文**     |   若要深入瞭解如何形成要求主體，請參閱[使用 REST API 張貼對/refreshes 的非同步](analysis-services-async-refresh.md#post-refreshes)重新整理。 |
 |**驗證**     |Active Directory OAuth         |
 |**出租**     |填入您的 Azure Active Directory TenantId         |
 |**目標對象**     |HTTPs：//*. asazure. net         |
 |**用戶端識別碼**     |輸入您的服務主體名稱 ClientID         |
-|**認證類型**     |Secret         |
+|**認證類型**     |祕密         |
 |**祕密**     |輸入您的服務主體名稱秘密         |
 
 範例：

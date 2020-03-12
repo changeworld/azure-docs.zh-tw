@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: ffe9ea5f46571f6a22717c376c97055f6f1759e4
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ad0d8e751e79a23b2e7ac7b9da934f141ca9aa55
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604734"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086523"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增強的安全分數（預覽） 
 
@@ -99,7 +99,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 |**修復弱點**|6|-應在您的 SQL server 上啟用 Advanced data security<br>-應補救 Azure Container Registry 映射中的弱點（預覽）<br>-應補救 SQL 資料庫上的弱點<br>-弱點評估解決方案應補救弱點<br>-應在您的 SQL 受控實例上啟用弱點評估<br>-應在您的 SQL server 上啟用弱點評估<br>-弱點評估解決方案應該安裝在您的虛擬機器上|
 |**啟用待用加密**|4|-應在虛擬機器上套用磁片加密<br>-應啟用 SQL 資料庫上的透明資料加密<br>-自動化帳戶變數應加密<br>-Service Fabric 叢集應將 ClusterProtectionLevel 屬性設定為 EncryptAndSign<br>-應使用您自己的金鑰來加密 SQL server TDE 保護裝置|
 |**加密傳輸中的資料**|4|-API 應用程式應該只能透過 HTTPS 存取<br>-函數應用程式只能透過 HTTPS 存取<br>-只應啟用 Redis 快取的安全連線<br>-應啟用儲存體帳戶的安全傳輸<br>-Web 應用程式應該只能透過 HTTPS 存取|
-|**管理存取權和許可權**|4|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除已淘汰的帳戶（預覽）<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶（預覽）<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶（預覽）<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-應從您的訂用帳戶中移除具有寫入權限的外部帳戶（預覽）<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
+|**管理存取權和許可權**|4|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除已淘汰的帳戶<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-應從您的訂用帳戶移除具有寫入權限的外部帳戶<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
 |**修復安全性設定**|4|-Pod 安全性原則應定義于 Kubernetes Services （預覽）<br>-應補救容器安全性設定中的弱點<br>-應補救您電腦上安全性設定中的弱點<br>-應補救虛擬機器擴展集上安全性設定中的弱點<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式健康情況問題應在您的電腦上解決|
 |**限制未經授權的網路存取**|4|-您的虛擬機器上的 IP 轉送應停用<br>-已授權的 IP 範圍應定義于 Kubernetes Services （預覽）<br>-（已淘汰）應限制應用程式服務的存取（預覽）<br>-（已淘汰）應強化 IaaS Nsg 上 web 應用程式的規則<br>-虛擬機器應該與網路安全性群組相關聯<br>-CORS 不應允許每個資源存取您的 API 應用程式<br>-CORS 不應允許每個資源存取您的函數應用程式<br>-CORS 不應允許每個資源存取您的 Web 應用程式<br>-API 應用程式的遠端偵測應關閉<br>-應關閉函數應用程式的遠端偵錯程式<br>-應關閉 Web 應用程式的遠端偵錯程式<br>-應限制與網際網路對向 Vm 的寬鬆網路安全性群組<br>-應強化網際網路面向虛擬機器的網路安全性群組規則|
 |**套用適應性應用程式控制**|3|-應在虛擬機器上啟用彈性應用程式控制<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式健康情況問題應在您的電腦上解決|

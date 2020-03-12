@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372462"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096214"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL Database 受控執行個體資料庫中設定複寫
 
@@ -38,7 +38,7 @@ ms.locfileid: "75372462"
   > - 本文旨在引導使用者從端對端設定 Azure 資料庫受控實例的複寫，從建立資源群組開始。 如果您已經部署受控實例，請直接跳到[步驟 4](#4---create-a-publisher-database)來建立發行者資料庫，如果您已經有發行者和訂閱者資料庫，而且準備好開始設定複寫，請略過步驟[6](#6---configure-distribution) 。  
   > - 這篇文章會在同一個受控實例上設定您的發行者和散發者。 若要將散發者放在個別的受控實例上，請參閱[設定 MI 發行者與 mi 散發者之間](sql-database-managed-instance-configure-replication-tutorial.md)的複寫教學課程。 
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 將受控實例設定為「發行者」和/或「散發者」時，需要：
 
@@ -53,7 +53,7 @@ ms.locfileid: "75372462"
  > Azure SQL Database 中的單一資料庫與集區資料庫只能是訂閱者。 
 
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 支援：
 
@@ -81,9 +81,9 @@ Azure SQL Database 的受控執行個體中不支援下列功能：
 
 ## <a name="3---create-azure-storage-account"></a>3-建立 Azure 儲存體帳戶
 
-建立工作目錄的[Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，然後在儲存體帳戶內建立檔案[共用](../storage/files/storage-how-to-create-file-share.md)。 
+為工作目錄[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../storage/files/storage-how-to-create-file-share.md)。 
 
-以下列格式複製檔案共用路徑： `\\storage-account-name.file.core.windows.net\file-share-name`
+複製下列格式的檔案共用路徑：`\\storage-account-name.file.core.windows.net\file-share-name`
 
 範例： `\\replstorage.file.core.windows.net\replshare`
 
@@ -185,7 +185,7 @@ EXEC sp_adddistpublisher
 ```
 
    > [!NOTE]
-   > 請務必只針對 file_storage 參數使用反斜線（`\`）。 當連接到檔案共用時，使用正斜線（`/`）可能會導致錯誤。 
+   > 請務必只針對 file_storage 參數使用反斜線（`\`）。 若使用正斜線 (`/`)，在連線至檔案共用時可能會導致錯誤。 
 
 此腳本會在受控實例上設定本機發行者、加入連結的伺服器，並為 SQL Server Agent 建立一組作業。 
 
@@ -260,8 +260,8 @@ EXEC sp_addpushsubscription_agent
   @subscriber_security_mode = 0,
   @subscriber_login = N'$(target_username)',
   @subscriber_password = N'$(target_password)',
-  @job_login = N'$(target_username)',
-  @job_password = N'$(target_password)';
+  @job_login = N'$(username)',
+  @job_password = N'$(password)';
 
 -- Initialize the snapshot
 EXEC sp_startpublication_snapshot
@@ -292,15 +292,15 @@ where subsystem in ('Distribution','LogReader','Snapshot') and command not like 
 
 ## <a name="10---test-replication"></a>10-測試複寫
 
-一旦設定了複寫，您就可以在發行者上插入新的專案，並監看這些變更傳播到訂閱者，藉以進行測試。 
+設定複寫後，您可以在發行者上插入新項目，並監看這些變更傳播到訂閱者，藉以測試複寫。 
 
-執行下列 T-sql 程式碼片段以查看訂閱者上的資料列：
+執行下列 T-SQL 程式碼片段，以檢視訂閱者上的資料列：
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-執行下列 T-sql 程式碼片段，在「發行者」上插入其他資料列，然後再次檢查「訂閱者」上的資料列。 
+執行下列 T-SQL 程式碼片段，在發行者上插入其他資料列，然後再次查看訂閱者上的資料列。 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')

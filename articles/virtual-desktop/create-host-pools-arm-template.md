@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 5b07416f785ad263b4dbb9a0d249cb6022c01b13
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: f61319a1d2a5d5599a4745979f3c5abc0a713ac7
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367480"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128128"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立主機集區
 
@@ -66,7 +67,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-使用者的 UPN 應該符合 Azure Active Directory 中的使用者身分識別 (例如user1@contoso.com)。 如果您想要新增多個使用者，則必須針對每個使用者執行此 Cmdlet。
+使用者的 UPN 應符合使用者在 Azure Active Directory 中的身分識別（例如，user1@contoso.com）。 如果您想要新增多個使用者，則必須針對每個使用者執行此 Cmdlet。
 
 在您完成這些步驟之後，新增至桌面應用程式群組的使用者可以透過支援的遠端桌面用戶端登入 Windows 虛擬桌面，並看到工作階段桌面的資源。
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303115"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086885"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning 中的資料內嵌
 
@@ -26,7 +26,7 @@ ms.locfileid: "78303115"
 
 資料內嵌是從一或多個來源解壓縮非結構化資料，然後準備好定型機器學習模型的程式。 這也需要很長的時間，特別是手動完成時，如果您有多個來源的大量資料，則更是如此。 自動化此工作可釋出資源，並確保您的模型使用最新且適用的資料。
 
-我們建議您一開始評估使用 Azure Data Factory （ADF），因為它是特別建立來解壓縮、載入和轉換資料。 如果您無法使用 ADF 來符合您的需求，您可以使用 Python SDK 來開發自訂程式碼解決方案，或使用 ADF 和 Python SDK 來建立整體資料內嵌工作流程，以符合您的需求。
+Azure Data Factory （ADF）是特別為了解壓縮、載入和轉換資料而建立的，不過，Python SDK 可讓您針對基本資料內嵌工作開發自訂程式碼解決方案。 如果兩者都不符合您的需求，您也可以同時使用 ADF 和 Python SDK 來建立整體資料內嵌工作流程，以滿足您的需求。 
 
 ## <a name="use-azure-data-factory"></a>使用 Azure Data Factory
 
@@ -52,6 +52,8 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 
     ![ADF 資料內嵌](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線。
 
 ## <a name="use-the-python-sdk"></a>使用 Python SDK 
 

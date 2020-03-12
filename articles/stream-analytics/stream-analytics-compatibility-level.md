@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201793"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087866"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -25,11 +25,9 @@ ms.locfileid: "77201793"
 
 Azure 串流分析目前支援三種相容性層級：
 
-* 1.0-先前的行為
-* 1.1-預設行為
+* 1.0-原始相容性層級是在 Azure 串流分析幾年前推出的正式運作。
+* 1.1-先前的行為
 * 1.2-最近改良功能的最新行為
-
-原始的1.0 相容性層級是在幾年前的 Azure 串流分析正式運作期間引進。
 
 當您建立新的串流分析作業時，最佳作法是使用最新的相容性層級來建立它。 開始您的工作設計，依賴最新的行為，以避免日後新增變更和複雜度。
 
@@ -123,7 +121,7 @@ Upsert 行為是*insert 或 replace*。
 
 ### <a name="service-bus-xml-format"></a>服務匯流排 XML 格式
 
-**1.0 層級：** Azure 串流分析使用 DataContractSerializer，因此訊息內容包含 XML 標記。 例如，
+**1.0 層級：** Azure 串流分析使用 DataContractSerializer，因此訊息內容包含 XML 標記。 例如：
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

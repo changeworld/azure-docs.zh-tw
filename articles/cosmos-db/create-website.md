@@ -4,17 +4,17 @@ description: 了解如何使用 Azure Resource Manager 範本，來部署 Azure 
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901924"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128366"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Azure Cosmos DB 和 Azure App Service Web Apps
-本教學課程示範如何使用 Azure Resource Manager 範本，來部署和整合 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web 應用程式及範例 Web 應用程式。
+本教學課程說明如何使用 Azure Resource Manager 範本來部署和整合[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web 應用程式，以及範例 web 應用程式。
 
 使用 Azure Resource Manager 範本，您可以輕鬆自動化 Azure 資源的部署和設定。  本教學課程示範如何部署 Web 應用程式，以及自動設定 Azure Cosmos DB 帳戶連接資訊。
 
@@ -25,7 +25,7 @@ ms.locfileid: "76901924"
 
 <a id="Prerequisites"></a>
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 > [!TIP]
 > 雖然本教學課程沒有假設您先前已有使用 Azure Resource Manager 範本或 JSON 的經驗，但是，如果您需要修改參考的範本或部署選項，還是需要每個領域的知識。
 > 
@@ -125,7 +125,7 @@ ms.locfileid: "76901924"
 * 如需從網站變更為 App Service 的指南，請參閱： [Azure App Service 及其對現有 Azure 服務的影響](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> 如果您想在註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://go.microsoft.com/fwlink/?LinkId=523751)，即可在 App Service 中立即建立短期入門 Web 應用程式。 無需信用卡，也無需簽定合約。
+> 如果您想在註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://go.microsoft.com/fwlink/?LinkId=523751)，即可在 App Service 中立即建立短期入門 Web 應用程式。 不需要信用卡；無需承諾。
 > 
 > 
 

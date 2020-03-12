@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659130"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096773"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>準備封存至儲存體帳戶 Azure 監視器平臺記錄的格式變更
 
 > [!WARNING]
-> 如果您是使用[記錄設定檔](activity-log-export.md)，將[Azure 資源記錄或計量](resource-logs-collect-storage.md)傳送至儲存體帳戶，則儲存體帳戶中的資料格式會在2018年11月1日變更為 JSON 行。 下方的指示會說明新格式的影響，以及如何更新工具來加以因應。
+> 如果您是使用[記錄設定檔](resource-logs-collect-storage.md)，將[Azure 資源記錄或計量](resource-logs-collect-storage.md)傳送至儲存體帳戶，則儲存體帳戶中的資料格式會在2018年11月1日變更為 JSON 行。 下方的指示會說明新格式的影響，以及如何更新工具來加以因應。
 >
 
 ## <a name="what-changed"></a>變更內容

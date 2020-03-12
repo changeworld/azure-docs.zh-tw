@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606566"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117294"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure 資料箱磁碟安全性和資料保護
 
@@ -34,7 +34,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 ## <a name="security-features"></a>安全性功能
 
-資料箱磁碟會確保只有獲得授權的實體可以檢視、修改或刪除您的資料，從而提供資料保護的安全解決方案。 此解決方案的安全性功能適用於磁碟以及相關聯的服務，確保在其中所儲存資料的安全性。 
+資料箱磁碟會確保只有獲得授權的實體可以檢視、修改或刪除您的資料，從而提供資料保護的安全解決方案。 此解決方案的安全性功能適用於磁碟以及相關聯的服務，確保在其中所儲存資料的安全性。
 
 ### <a name="data-box-disk-protection"></a>資料箱磁碟保護
 
@@ -48,7 +48,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 流入及流出資料箱磁碟的資料會受到下列功能保護：
 
-- 隨時進行 BitLocker 的資料加密。 
+- 隨時進行 BitLocker 的資料加密。
 - 將資料上傳至 Azure 完成之後，安全清除磁碟中的資料。 資料清除是根據 NIST 800-88r1 標準。
 
 ### <a name="data-box-service-protection"></a>資料箱服務保護
@@ -56,10 +56,9 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 資料箱服務受到下列功能保護。
 
 - 若要存取資料箱磁碟服務，貴組織需有內含資料箱磁碟的 Azure 訂用帳戶。 您的訂用帳戶控管您在 Azure 入口網站中可存取的功能。
-- 因為資料箱服務裝載於 Azure 中，所以會受到 Azure 安全性功能的保護。 如需有關 Microsoft Azure 所提供的安全性功能的詳細資訊，請移至 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。 
+- 因為資料箱服務裝載於 Azure 中，所以會受到 Azure 安全性功能的保護。 如需有關 Microsoft Azure 所提供的安全性功能的詳細資訊，請移至 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
 - 資料箱磁碟會儲存磁碟通行金鑰，可用來將服務中的磁碟解除鎖定。 
-- 資料箱磁碟服務會在服務中儲存訂單詳細資料和狀態。 刪除訂單時，會將此資訊刪除。 
-
+- 資料箱磁碟服務會在服務中儲存訂單詳細資料和狀態。 刪除訂單時，會將此資訊刪除。
 
 ## <a name="managing-personal-data"></a>管理個人資料
 

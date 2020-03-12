@@ -4,12 +4,12 @@ description: 瞭解如何使用 IP 位址範圍來保護您的叢集，以存取
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596704"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126614"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中使用授權的 IP 位址範圍來保護 API 伺服器的存取
 
@@ -59,6 +59,8 @@ az aks create \
 > - 防火牆公用 IP 位址
 > - 任何範圍，代表您將從中管理叢集的網路
 > - 如果您在 AKS 叢集上使用 Azure Dev Spaces，您必須根據您的[區域允許額外的範圍][dev-spaces-ranges]。
+
+> 您可以指定的 IP 範圍數目上限為3500。 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定標準 SKU 負載平衡器的輸出 Ip
 

@@ -3,21 +3,21 @@ title: 使用雲端原生 Buildpack 建立映射
 description: 使用 az acr pack build 命令，從應用程式建立容器映射並推送至 Azure Container Registry，而不需要使用 Dockerfile。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456128"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087077"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用雲端原生 Buildpack 從應用程式建立及推送映射
 
 Azure CLI 命令 `az acr pack build` 使用來自[Buildpacks](https://buildpacks.io/)的[`pack`](https://github.com/buildpack/pack) CLI 工具來建立應用程式，並將其映射推送至 Azure container registry。 這項功能可讓您從您的應用程式原始程式碼快速地建立容器映射，而不需要定義 Dockerfile。
 
-您可以使用 Azure Cloud Shell 或本機安裝的 Azure CLI 來執行本文中的範例。 如果您想要在本機使用，則需要2.0.70 或更新版本。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+您可以使用 Azure Cloud Shell 或本機安裝的 Azure CLI 來執行本文中的範例。 如果您想要在本機使用，則需要2.0.70 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 > [!IMPORTANT]
-> 這項功能目前只能預覽。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 ## <a name="use-the-build-command"></a>使用 build 命令
 
@@ -30,7 +30,7 @@ Azure CLI 命令 `az acr pack build` 使用來自[Buildpacks](https://buildpacks
 * ACR 工作的其中一個[支援內容位置](container-registry-tasks-overview.md#context-locations)，例如本機目錄、GitHub 存放庫或遠端 tarball
 * 適用于您應用程式的 Buildpack 產生器映射名稱。 Azure Container Registry 快取產生器映射，例如 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 以加快組建的速度。  
 
-`az acr pack build` 支援 ACR 工作命令的其他功能，包括已串流處理並儲存以供日後抓取的[執行變數](container-registry-tasks-reference-yaml.md#run-variables)和工作[執行記錄](container-registry-tasks-overview.md#view-task-logs)。
+`az acr pack build` 支援 ACR 工作命令的其他功能，包括已串流處理並儲存以供日後抓取的[執行變數](container-registry-tasks-reference-yaml.md#run-variables)和工作[執行記錄](container-registry-tasks-logs.md)。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>範例：使用 Cloud Foundry builder 建立 node.js 映射
 

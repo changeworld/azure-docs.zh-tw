@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: 81ba2b3b5834e06922f694d6eb5338465bfb0ab7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+manager: lizross
+ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975458"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127455"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
@@ -51,11 +52,11 @@ Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionH
 ```powershell
 SessionHostName          LastHeartBeat     AllowNewSession    Status 
 ---------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True  Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True  Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True  NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True  NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True  NoHeartBeat 
+WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
+WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
+WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
+WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
+WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
 ```
 
 您可以執行幾項工作來修正 NoHeartBeat 狀態。

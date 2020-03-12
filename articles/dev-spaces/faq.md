@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 尋找一些關於 Azure Dev Spaces 常見問題的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 526e8a247241bd3ea0e61b6cd3b025cd473b29aa
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942510"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117787"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>關於 Azure Dev Spaces 的常見問題
 
@@ -77,11 +77,17 @@ ms.locfileid: "78942510"
 
 使用 Visual Studio 來準備您的專案時，您可以選擇為您的服務啟用輸入。 啟用輸入會建立公用端點，以便在您的 AKS 叢集上執行時存取您的服務，這是選擇性的。 如果您未啟用輸入，您的服務只能從您的 AKS 叢集中存取。
 
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>我可以搭配 Azure Dev Spaces 使用 pod 受控識別嗎？
+
+目前，Azure Dev Spaces 不支援在已啟用 Azure Dev Spaces 的 AKS 叢集上使用[pod 受控][aks-pod-managed-id]識別。 如果您已安裝 pod 受控識別，而且想要將它卸載，您可以在[卸載附注][aks-pod-managed-id-uninstall]中找到更多詳細資料。
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
+[aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
+[aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works

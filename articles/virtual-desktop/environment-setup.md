@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+manager: lizross
+ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676631"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127912"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
@@ -51,7 +52,7 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 
 在 Windows 虛擬桌面中，Windows 虛擬桌面租使用者是大部分的安裝和設定發生所在的位置。 Windows 虛擬桌面租使用者包含主機集區、應用程式群組和應用程式群組使用者指派。 不過，在某些情況下，您可能需要一次管理多個 Windows 虛擬桌面的租使用者，特別是當您是雲端服務提供者（CSP）或主控夥伴時。 在這些情況下，您可以使用自訂的 Windows 虛擬桌面租使用者群組，將每個客戶的 Windows 虛擬桌面租使用者，集中管理存取權。 不過，如果您只是管理單一 Windows 虛擬桌面租使用者，則不會套用租使用者群組概念，而且您可以繼續操作及管理存在於預設租使用者群組中的租使用者。
 
-## <a name="end-users"></a>終端使用者
+## <a name="end-users"></a>使用者
 
 將使用者指派給其應用程式群組之後，他們就可以使用任何 Windows 虛擬桌面用戶端連線到 Windows 虛擬桌面部署。
 

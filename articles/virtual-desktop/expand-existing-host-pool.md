@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566422"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127890"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
@@ -76,13 +77,13 @@ ms.locfileid: "77566422"
 
 此區段中的所有值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容（*預設的桌面使用者*除外）：
 
-1.  針對 [*訂*用帳戶]，選取您第一次建立主機集區的訂用帳戶。
-2.  針對 [*資源群組*]，選取現有主機集區工作階段主機 vm 所在的相同資源群組。
-3.  針對 [*地區*]，選取現有主機集區工作階段主機 vm 所在的相同區域。
-4.  在 [ *Hostpool 名稱*] 中，輸入現有主機集區的名稱。
-5.  針對 [*桌上型電腦類型*]，選取符合現有主機集區的桌面類型。
-6.  針對 [*預設桌面使用者*]，請輸入以逗號分隔的清單，其中列出您想要登入 Windows 虛擬桌面用戶端的任何其他使用者，並在 Azure Marketplace 供應專案完成後存取桌面。 例如，如果您想要指派 user3@contoso.com 並 user4@contoso.com 存取，請輸入 user3@contoso.com、user4@contoso.com。
-7.  選取 **[下一步：設定虛擬機器]** 。
+1.    針對 [*訂*用帳戶]，選取您第一次建立主機集區的訂用帳戶。
+2.    針對 [*資源群組*]，選取現有主機集區工作階段主機 vm 所在的相同資源群組。
+3.    針對 [*地區*]，選取現有主機集區工作階段主機 vm 所在的相同區域。
+4.    在 [ *Hostpool 名稱*] 中，輸入現有主機集區的名稱。
+5.    針對 [*桌上型電腦類型*]，選取符合現有主機集區的桌面類型。
+6.    針對 [*預設桌面使用者*]，請輸入以逗號分隔的清單，其中列出您想要登入 Windows 虛擬桌面用戶端的任何其他使用者，並在 Azure Marketplace 供應專案完成後存取桌面。 例如，如果您想要指派 user3@contoso.com 並 user4@contoso.com 存取，請輸入 user3@contoso.com、user4@contoso.com。
+7.    選取 **[下一步：設定虛擬機器]** 。
 
 >[!NOTE]
 >除了*預設的桌面使用者*以外，所有欄位都必須完全符合現有主機集區中已設定的內容。 如果出現不相符的情況，將會產生新的主機集區。

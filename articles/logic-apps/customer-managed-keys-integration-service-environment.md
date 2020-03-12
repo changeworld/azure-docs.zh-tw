@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904976"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127642"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以加密 Azure Logic Apps 中整合服務環境（Ise）的待用資料
 
@@ -19,7 +19,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 當您建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)來裝載您的邏輯應用程式時，如果您想要更充分掌控 Azure 儲存體所使用的加密金鑰，您可以使用[Azure Key Vault](../key-vault/key-vault-overview.md)來設定、使用及管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」（BYOK），而您的金鑰稱為「客戶管理的金鑰」。
 
-本主題說明如何設定並指定您自己的加密金鑰，以便在建立 ISE 時使用。 
+本主題說明如何設定並指定您自己的加密金鑰，以在使用 Logic Apps REST API 建立 ISE 時使用。 如需透過 Logic Apps REST API 建立 ISE 的一般步驟，請參閱[使用 Logic Apps REST API 建立整合服務環境（ISE）](../logic-apps/create-integration-service-environment-rest-api.md)。
 
 ## <a name="considerations"></a>考量
 
@@ -33,9 +33,9 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 * 在您傳送建立 ISE 的 HTTPS PUT 要求之後的*30 分鐘*內，您必須將[金鑰保存庫的存取權授與您 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* 相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，可讓您在 Azure 入口網站中建立 ise 時，[啟用 ise 的存取權。](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
 * 已啟用「虛**刪除**」和「**不要清除**」屬性的 Azure 金鑰保存庫
 
@@ -66,6 +66,15 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 > [!IMPORTANT]
 > Logic Apps REST API 2019-05-01 版要求您自行建立 ISE 連接器的 HTTP PUT 要求。
+
+部署通常會在兩個小時內完成。 有時候，部署可能需要多達四小時。 若要檢查部署狀態，請在  [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上，選取 [通知] 圖示，這會開啟 [通知] 窗格。
+
+> [!NOTE]
+> 如果部署失敗或刪除您的 ISE，Azure 可能需要一小時的時間，才能釋出您的子網。 這種延遲表示您可能必須等待，才能在另一個 ISE 中重複使用這些子網。
+>
+> 如果您刪除虛擬網路，Azure 通常需要兩小時的時間，才能釋出您的子網，但此作業可能需要較長的時間。 
+> 刪除虛擬網路時，請確定沒有任何資源仍處於線上狀態。 
+> 請參閱[刪除虛擬網路](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 ### <a name="request-header"></a>要求標頭
 
@@ -220,4 +229,4 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure Key Vault](../key-vault/key-vault-overview.md)
+* 深入了解 [Azure Key Vault](../key-vault/key-vault-overview.md)

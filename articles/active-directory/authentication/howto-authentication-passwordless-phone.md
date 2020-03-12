@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227072"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126692"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 應用程式啟用無密碼登入（預覽）
 
@@ -29,7 +29,7 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 > [!NOTE]
 > 自2017年3月起，這項功能已在 Microsoft Authenticator 應用程式中，因此，有可能在目錄中啟用原則時，使用者可能會立即遇到此流程，如果原則未啟用，則會看到錯誤訊息。 請留意這項變更，並且讓使用者做好準備。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 多重要素驗證，以允許做為驗證方法的推播通知 
 - 在執行 iOS 8.0 或更新版本或 Android 6.0 或更新版本的裝置上安裝的最新版 Microsoft Authenticator。
@@ -62,7 +62,7 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 1. 在**Microsoft Authenticator**中，從 [帳戶] 下拉式功能表中選擇 [**啟用手機登入**]
 1. 遵循應用程式中的指示，完成註冊無密碼手機登入。 
 
-組織可以將他們的使用者指向[使用您的電話登入一文，而不是您的密碼](../user-help/microsoft-authenticator-app-phone-signin-faq.md)，以便在 Microsoft Authenticator 應用程式中進行進一步的協助設定，並啟用手機登入。
+組織可以將他們的使用者指向[使用您的電話登入一文，而不是您的密碼](../user-help/microsoft-authenticator-app-phone-signin-faq.md)，以便在 Microsoft Authenticator 應用程式中進行進一步的協助設定，並啟用手機登入。 若要套用這些設定，您可能需要登出再重新登入租使用者。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>使用無密碼認證登入
 

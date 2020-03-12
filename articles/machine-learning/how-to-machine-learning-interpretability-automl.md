@@ -10,18 +10,20 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 4ab3bc43cf8ef479cb91d187a4c177db03415b86
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525578"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129760"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自動化機器學習中的模型 interpretability
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在 Azure Machine Learning 中啟用自動化機器學習（ML）的 interpretability 功能。 自動化 ML 可協助您瞭解原始和工程功能的重要性。 若要使用模型 interpretability，請在 `AutoMLConfig` 物件中設定 `model_explainability=True`。  
+在本文中，您將瞭解如何在 Azure Machine Learning 中啟用自動化機器學習（ML）的 interpretability 功能。 自動化 ML 可協助您瞭解工程特性的重要性。 
+
+1\.0.85 預設會設定 `model_explainability=True` 之後的所有 SDK 版本。 在 SDK 版本1.0.85 和較舊版本中，使用者必須在 `AutoMLConfig` 物件中設定 `model_explainability=True`，才能使用模型 interpretability。 
 
 在本文中，您將學會如何：
 
@@ -29,21 +31,21 @@ ms.locfileid: "77525578"
 - 啟用視覺效果，協助您查看資料和說明中的模式。
 - 在推斷或評分期間，執行 interpretability。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Interpretability 功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此[回歸模型教學](tutorial-auto-train-models.md)課程，或查看如何[設定自動化 ML 實驗](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>在訓練期間 Interpretability 最佳模型
 
-從 `best_run`取出說明，其中包含工程化功能和原始功能的說明。
+從 `best_run`取出說明，其中包含工程化功能的說明。
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>從成品存放區下載設計的功能重要性
 
-您可以使用 `ExplanationClient` 從 `best_run`的成品存放區下載工程化的功能說明。 若要取得原始功能集 `raw=True`的說明。
+您可以使用 `ExplanationClient` 從 `best_run`的成品存放區下載工程化的功能說明。 
 
 ```python
-from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+from azureml.explain.model._internal.explanation_client import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -52,26 +54,26 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>在定型期間 Interpretability 任何模型 
 
-當您計算模型說明並將其視覺化時，您不限於自動化 ML 模型的現有模型說明。 您也可以使用不同的測試資料來取得模型的說明。 本節中的步驟示範如何根據您的測試資料來計算和視覺化設計的功能重要性和原始功能的重要性。
+當您計算模型說明並將其視覺化時，您不限於自動化 ML 模型的現有模型說明。 您也可以使用不同的測試資料來取得模型的說明。 本節中的步驟示範如何根據您的測試資料來計算和視覺化工程特性的重要性。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>從定型取得任何其他 AutoML 模型
 
 ```python
-automl_run, fitted_model = local_run.get_output(metric='r2_score')
+automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
 ### <a name="set-up-the-model-explanations"></a>設定模型說明
 
-使用 `automl_setup_model_explanations` 來取得工程化和原始功能的說明。 `fitted_model` 可以產生下列專案：
+使用 `automl_setup_model_explanations` 來取得工程化的說明。 `fitted_model` 可以產生下列專案：
 
 - 來自定型或測試範例的精選資料
-- 工程設計和原始功能名稱清單
+- 工程功能名稱清單
 - 分類案例中已加上標籤的資料行中的 Findable 類別
 
 `automl_explainer_setup_obj` 包含上述清單中的所有結構。
 
 ```python
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -86,16 +88,16 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 - 您的工作區
 - LightGBM 模型，可作為 `fitted_model` 自動化 ML 模型的代理
 
-MimicWrapper 也會採用將上傳原始和工程說明的 `automl_run` 物件。
+MimicWrapper 也會採用 `automl_run` 物件，其中將會上傳工程的說明。
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
-                         features=automl_explainer_setup_obj.engineered_feature_names,
+                         features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
                          classes=automl_explainer_setup_obj.classes)
 ```
@@ -105,27 +107,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 您可以使用已轉換的測試範例，在 MimicWrapper 中呼叫 `explain()` 方法，以取得所產生之工程功能的功能重要性。 您也可以使用 `ExplanationDashboard`，透過自動化 ML 有來查看所產生之工程功能的功能重要性值的儀表板視覺效果。
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-engineered_explanations = explainer.explain(['local', 'global'],              
-                                            eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
-ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
-```
-
-### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>使用模擬說明來計算和視覺化原始功能重要性
-
-您可以使用已轉換的測試範例，再次呼叫 MimicWrapper 中的 `explain()` 方法，並設定 `get_raw=True` 以取得原始功能的功能重要性。 您也可以使用 `ExplanationDashboard` 來查看原始功能的功能重要性值的儀表板視覺效果。
-
-```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-
-raw_explanations = explainer.explain(['local', 'global'], get_raw=True, 
-                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
-                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
-print(raw_explanations.get_feature_importance_dict())
-ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="interpretability-during-inference"></a>推斷期間的 Interpretability
@@ -134,7 +117,7 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>註冊模型和評分說明
 
-您可以使用 `TreeScoringExplainer` 來建立評分說明，以便在推斷階段計算原始和工程化功能的重要性值。 您可以使用先前所計算的 `feature_map` 來初始化評分說明。 評分說明會使用 `feature_map` 傳回原始功能的重要性。
+使用 `TreeScoringExplainer` 來建立評分說明，以便在推斷階段計算工程化功能的重要性值。 您可以使用先前所計算的 `feature_map` 來初始化評分說明。 
 
 儲存評分說明，然後向模型管理服務註冊模型和評分說明。 執行下列程式碼：
 
@@ -208,21 +191,19 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>使用測試資料推斷
 
-使用一些測試資料進行推斷，以查看自動化 ML 模型的預測值。 針對預測值和原始功能的重要性，請參閱已設計的功能重要性。
+使用一些測試資料進行推斷，以查看自動化 ML 模型的預測值。 查看預測值的工程功能重要性。
 
 ```python
 if service.state == 'Healthy':
     # Serialize the first row of the test data into json
     X_test_json = X_test[:1].to_json(orient='records')
     print(X_test_json)
-    # Call the service to get the predictions and the engineered and raw explanations
+    # Call the service to get the predictions and the engineered explanations
     output = service.run(X_test_json)
     # Print the predicted value
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
-    # Print the raw feature importances for the predicted value
-    print(output['raw_local_importance_values'])
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>視覺化以在定型時間探索資料和說明中的模式

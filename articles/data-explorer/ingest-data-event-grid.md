@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424978"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096411"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>訂閱 Event Grid 通知，以便將 Blob 擷取至 Azure 資料總管
 
@@ -118,7 +118,7 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
     | Table | *TestTable* | 您在 **TestDatabase** 中建立的資料表。 |
-    | 資料格式 | *JSON* | 支援的格式為 Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV 和 TXT。 支援的壓縮選項： Zip 和 GZip |
+    | 資料格式 | *JSON* | 支援的格式為 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV、RAW 和 TXT。 支援的壓縮選項： Zip 和 GZip |
     | 資料行對應 | *TestMapping* | 您在 **TestDatabase** 中建立的對應，會將傳入的 JSON 資料對應至 **TestTable** 的資料行名稱與資料類型。|
     | | |
     
@@ -150,13 +150,32 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> 為了達到最佳的內嵌效能，必須傳達針對內嵌所提交之壓縮 blob 的*未壓縮*大小。 由於事件方格通知只包含基本的詳細資料，因此必須明確地傳達大小資訊。 藉由設定 blob 中繼資料*上的 `rawSizeBytes`* 屬性（以位元組為單位），即可提供未壓縮的大小資訊。
+
+### <a name="ingestion-properties"></a>內嵌屬性
+
+您可以指定透過 blob 中繼資料內嵌之 blob 的內嵌[屬性](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties)。
+
+您可以設定這些屬性：
+
+|**屬性** | **屬性描述**|
+|---|---|
+| `rawSizeBytes` | 原始（未壓縮）資料的大小。 針對 Avro/ORC/Parquet，這是套用格式特定壓縮之前的大小。|
+| `kustoTable` |  現有目標資料表的名稱。 覆寫在 [`Data Connection`] 分頁上設定的 `Table`。 |
+| `kustoDataFormat` |  資料格式。 覆寫在 [`Data Connection`] 分頁上設定的 `Data format`。 |
+| `kustoIngestionMappingReference` |  要使用之現有內嵌對應的名稱。 覆寫在 [`Data Connection`] 分頁上設定的 `Column mapping`。|
+| `kustoIgnoreFirstRecord` | 如果設定為 `true`，Kusto 會忽略 blob 的第一個資料列。 使用表格式格式資料（CSV、TSV 或類似）來忽略標頭。 |
+| `kustoExtentTags` | 代表將附加至結果範圍之[標記](/azure/kusto/management/extents-overview#extent-tagging)的字串。 |
+| `kustoCreationTime` |  覆寫 blob 的[$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) ，格式為 ISO 8601 字串。 用於回填。 |
 
 > [!NOTE]
 > Azure 資料總管不會在內嵌後刪除 blob。

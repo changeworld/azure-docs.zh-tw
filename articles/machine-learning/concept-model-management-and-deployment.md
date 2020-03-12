@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250869"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096170"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
@@ -70,11 +70,6 @@ Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性
 
 您無法刪除使用中部署的已註冊模型。
 如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#registermodel)的註冊模型一節。
-
-### <a name="profile-models"></a>設定檔模型
-
-Azure Machine Learning 可以協助您瞭解當您部署模型時，將會建立之服務的 CPU 和記憶體需求。 分析會測試執行模型的服務，並傳回如 CPU 使用量、記憶體使用量和回應延遲的資訊。 它也會根據資源使用量提供 CPU 和記憶體建議。
-如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#profilemodel)的分析一節。
 
 ### <a name="package-and-debug-models"></a>封裝和調試模型
 

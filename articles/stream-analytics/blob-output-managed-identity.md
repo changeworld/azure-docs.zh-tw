@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664311"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129966"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出（預覽）
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出
 
-輸出至 Azure Blob 儲存體的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)適用于 azure 串流分析做為預覽。 這可讓串流分析作業直接存取儲存體帳戶，而不是使用連接字串。 除了增強的安全性之外，這項功能也可讓您將資料寫入 Azure 中虛擬網路（VNET）的儲存體帳戶。
+輸出至 Azure Blob 儲存體的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)可讓串流分析作業直接存取儲存體帳戶，而不是使用連接字串。 除了增強的安全性之外，這項功能也可讓您將資料寫入 Azure 中虛擬網路（VNET）的儲存體帳戶。
 
 本文說明如何透過 Azure 入口網站以及透過 Azure Resource Manager 部署，為串流分析作業的 Blob 輸出啟用受控識別。
 

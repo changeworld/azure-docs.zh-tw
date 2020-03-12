@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614227"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126712"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>變更現有 Azure AD Domain Services 受控網域的 SKU
 
-在 Azure Active Directory Domain Services （Azure AD DS）中，可用的效能和功能是以 SKU 類型為基礎。 這些功能的差異包括備份頻率或單向輸出樹系信任的最大數目（目前處於預覽狀態）。 當您建立受控網域時，您會選取 SKU，而且可以在部署受控網域之後，隨著業務需求變更來切換 Sku。 商務需求的變更可能包括需要更頻繁的備份，或建立額外的樹系信任。 如需不同 Sku 之限制和定價的詳細資訊，請參閱[AZURE AD DS SKU 概念][concepts-sku]和[Azure AD ds 定價][pricing]頁面。
+在 Azure Active Directory Domain Services （Azure AD DS）中，可用的效能和功能是以 SKU 類型為基礎。 這些功能的差異包括備份頻率或單向輸出樹系信任的最大數目（目前處於預覽狀態）。 當您建立受控網域時，您會選取 SKU，而且可以在部署受控網域之後，隨著業務需求的變更來向上或向下切換 Sku。 商務需求的變更可能包括需要更頻繁的備份，或建立額外的樹系信任。 如需不同 Sku 之限制和定價的詳細資訊，請參閱[AZURE AD DS SKU 概念][concepts-sku]和[Azure AD ds 定價][pricing]頁面。
 
 本文說明如何使用 Azure 入口網站變更現有 Azure AD DS 受控網域的 SKU。
 
@@ -36,9 +36,12 @@ ms.locfileid: "77614227"
 
 ## <a name="sku-change-limitations"></a>SKU 變更限制
 
-如果您使用資源樹系（目前處於預覽狀態），並已建立從 Azure AD DS 到內部部署 AD DS 環境的單向輸出樹系信任，則 SKU 變更作業會有一些限制。 *Premium*和*Enterprise* sku 會定義您可以建立的信任數目限制。 您無法變更為低於目前所設定的最大限制的 SKU。
+部署 Azure AD DS 受控網域之後，您可以將 Sku 上下變更。 不過，如果您使用資源樹系（目前處於預覽狀態）並已建立從 Azure AD DS 到內部部署 AD DS 環境的單向輸出樹系信任，則 SKU 變更作業會有一些限制。 *Premium*和*Enterprise* sku 會定義您可以建立的信任數目限制。 您無法變更為低於目前所設定的最大限制的 SKU。
 
-例如，如果您已在*Premium* sku 上建立兩個樹系信任，就無法變更為*標準*sku。 *標準*SKU 不支援樹系信任。 或者，如果您已在*Premium* SKU 上建立了7個信任，就無法變更為*Enterprise* sku。 *企業*SKU 最多支援五個信任。
+例如：
+
+* 如果您已在*Premium* sku 上建立兩個樹系信任，就無法變更為*標準*sku。 *標準*SKU 不支援樹系信任。
+* 或者，如果您已在*Premium* SKU 上建立了7個信任，就無法變更為*Enterprise* sku。 *企業*SKU 最多支援五個信任。
 
 如需這些限制的詳細資訊，請參閱[AZURE AD DS SKU 功能和限制][concepts-sku]。
 

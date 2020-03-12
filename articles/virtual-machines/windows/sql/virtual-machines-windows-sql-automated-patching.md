@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b48ccede9ca3330d356fa75d4df34789e31eb916
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350755"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127676"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虛擬機器的 SQL Server 自動修補 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "75350755"
 自動修補會針對執行 SQL Server 的 Azure 虛擬機器建立維護時間範圍。 自動更新只能在此維護時間範圍內安裝。 對 SQL Server 來說，這項限制可確保系統更新及任何關聯的重新啟動都會在對資料庫而言最佳的時機發生。 
 
 > [!IMPORTANT]
-> 只會安裝標示為**重要**的 Windows 和 SQL Server 更新。 其他 SQL Server 更新 (例如累計更新) 必須以手動方式安裝。 
+> 只會安裝標示為「**重要**」或「**重大**」的 Windows 和 SQL Server 更新。 其他 SQL Server 更新（例如未標示為**重要**或**重大**的 service pack 和累計更新）必須以手動方式安裝。 
 
 自動修補相依於 [SQL Server IaaS 代理程式擴充](virtual-machines-windows-sql-server-agent-extension.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用自動修補，請考慮下列必要條件︰
 
 **作業系統**：
@@ -66,13 +66,13 @@ ms.locfileid: "75350755"
 ## <a name="settings"></a>設定
 下表說明可以為自動修補設定的選項。 實際的設定步驟會依據您是使用 Azure 入口網站或 Azure Windows PowerShell 命令而有所不同。
 
-| 設定 | 可能值 | 說明 |
+| 設定 | 可能值 | 描述 |
 | --- | --- | --- |
 | **自動修補** |啟用/停用 (已停用) |啟用或停用 Azure 虛擬機器的自動修補。 |
 | **維護排程** |每天、星期一、星期二、星期三、星期四、星期五、星期六、星期日 |虛擬機器的 Windows、SQL Server 和 Microsoft 更新的下載及安裝排程。 |
 | **維護開始時間** |0-24 |更新虛擬機器的當地開始時間。 |
 | **維護時間範圍** |30-180 |允許完成下載和安裝更新的分鐘數。 |
-| **PATCH 類別** |重要 | 要下載並安裝之 Windows 更新的類別。|
+| **PATCH 類別** |重要事項 | 要下載並安裝之 Windows 更新的類別。|
 
 ## <a name="configuration-in-the-portal"></a>入口網站的組態
 您可以在佈建期間或針對現有的 VM，使用 Azure 入口網站來設定「自動修補」。
@@ -114,7 +114,7 @@ s 集合-Set-azvmsqlserverextension-AutoPatchingSettings $aps-VMName $vmname-Res
 
 下表會根據此範例來描述對目標 Azure VM 的實際效果：
 
-| 參數 | 影響 |
+| 參數 | 效果 |
 | --- | --- |
 | **DayOfWeek** |在每個星期四安裝修補程式。 |
 | **MaintenanceWindowStartingHour** |在上午 11:00 開始更新。 |

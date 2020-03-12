@@ -1,5 +1,5 @@
 ---
-title: 將 Azure 資料總管部署至您的虛擬網路（預覽）
+title: 將 Azure 資料總管部署至您的虛擬網路
 description: 瞭解如何將 Azure 資料總管部署至您的虛擬網路
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851461"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096760"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>將 Azure 資料總管部署至您的虛擬網路（預覽）
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>將 Azure 資料總管部署至您的虛擬網路
 
 本文說明當您將 Azure 資料總管叢集部署至自訂 Azure 虛擬網路時，所存在的資源。 這項資訊可協助您將叢集部署到虛擬網路（VNet）中的子網。 如需 Azure 虛擬網路的詳細資訊，請參閱[什麼是 azure 虛擬網路？](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Azure 資料總管支援將叢集部署至您虛擬網路（VNet）中的子網�
 * 強制執行 Azure 資料總管叢集流量的[網路安全性群組](/azure/virtual-network/security-overview)（NSG）規則。
 * 將內部部署網路連線到 Azure 資料總管叢集的子網。
 * 使用[服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)來保護您的資料連線來源（[事件中樞](/azure/event-hubs/event-hubs-about)和[事件方格](/azure/event-grid/overview)）。
-
-> [!NOTE]
-> 虛擬網路整合和部署處於預覽模式。 若要啟用這項功能，請開啟[支援票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>在您的 VNet 中存取您的 Azure 資料總管叢集
 
@@ -48,7 +45,7 @@ Azure 資料總管支援將叢集部署至您虛擬網路（VNet）中的子網�
 
 IP 位址總數：
 
-| 用法 | 位址數目 |
+| 使用 | 位址數目 |
 | --- | --- |
 | 引擎服務 | 每個實例1個 |
 | 資料管理服務 | 2 |
@@ -77,8 +74,8 @@ IP 位址總數：
 
 | **使用**   | **From**   | **若要**   | **通訊協定**   |
 | --- | --- | --- | --- |
-| 管理  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子網：443  | TCP  |
-| 健康情況監視  | [ADX 健全狀況監視位址](#health-monitoring-addresses)  | ADX 子網：443  | TCP  |
+| 管理性  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子網：443  | TCP  |
+| 健康狀況監視  | [ADX 健全狀況監視位址](#health-monitoring-addresses)  | ADX 子網：443  | TCP  |
 | ADX 內部通訊  | ADX 子網：所有埠  | ADX 子網：所有埠  | 全部  |
 | 允許 Azure 負載平衡器輸入（健康情況探查）  | AzureLoadBalancer  | ADX 子網：80443  | TCP  |
 
@@ -255,8 +252,8 @@ crl3.digicert.com:80
 
 | 名稱 | 位址首碼 | 下一個躍點 |
 | --- | --- | --- |
-| ADX_Management | 13.64.38.225/32 | 網際網路 |
-| ADX_Monitoring | 23.99.5.162/32 | 網際網路 |
+| ADX_Management | 13.64.38.225/32 | Internet |
+| ADX_Monitoring | 23.99.5.162/32 | Internet |
 
 ## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本將 Azure 資料總管叢集部署至您的 VNet
 

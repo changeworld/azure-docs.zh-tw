@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246221"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129106"
 ---
 ## <a name="limitations"></a>限制
 
 - 專用主機目前不支援虛擬機器擴展集。
-- 支援下列 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="benefits"></a>優點 
 
@@ -89,7 +88,7 @@ ms.locfileid: "78246221"
 
 免費試用和 MSDN 訂用帳戶沒有 Azure 專用主機的配額。
 
-## <a name="pricing"></a>Pricing
+## <a name="pricing"></a>價格
 
 無論部署多少個 Vm，都會以專用主機為使用者付費。 在您的每月語句中，您會看到新的可計費資源類型為 [主機]。 專用主機上的 Vm 仍會顯示在您的語句中，但其價格會是0。
 
@@ -101,17 +100,15 @@ ms.locfileid: "78246221"
 
 您也可以使用[Azure 專用主機的保留實例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)來節省成本。
  
-## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬體世代
+## <a name="sizes-and-hardware-generations"></a>大小和硬體層代
 
-SKU 是針對主機定義的，它代表 VM 大小數列和類型。 您可以在單一主機內混合使用多個不同大小的 Vm，只要它們屬於相同的大小系列即可。 類型是目前在區域中可用的硬體世代。
+SKU 是針對主機定義的，它代表 VM 大小數列和類型。 您可以在單一主機內混合使用多個不同大小的 Vm，只要它們屬於相同的大小系列即可。 
 
-相同 VM 系列的不同 `types` 將來自不同的 CPU 廠商，而且有不同的 CPU 世代和核心數目。
+*類型*是硬體世代。 相同 VM 系列的不同硬體類型將來自不同的 CPU 廠商，並具有不同的 CPU 世代和核心數目。 
 
-若要深入瞭解，請參閱主機[定價頁面](https://aka.ms/ADHPricing)。
+大小和硬體類型會因區域而異。 若要深入瞭解，請參閱主機[定價頁面](https://aka.ms/ADHPricing)。
 
-專用主機支援下列主機 SKU\types： DSv3_Type1 和 ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>主機生命週期
 
 

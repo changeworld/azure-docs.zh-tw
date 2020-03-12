@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344023"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129762"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -69,7 +69,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
 * [範例：自動化機器學習的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [如何：在 Python 中設定自動化 ML 實驗](how-to-configure-auto-train.md)
 * [如何：自動定型時間序列預測模型](how-to-auto-train-forecast.md)
-* [How to：使用[Azure Machine Learning Studio](how-to-create-portal-experiments.md)建立、探索及部署自動化的機器學習實驗
+* [How to：使用 Azure Machine Learning studio 建立、探索及部署自動化的機器學習實驗](how-to-use-automated-ml-for-ml-models.md)
 
 ### <a name="estimators"></a>估算器
 

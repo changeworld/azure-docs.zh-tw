@@ -4,14 +4,15 @@ description: 使用 Azure 入口網站將 Vm 部署到專用主機。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.workload: infrastructure
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970740"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086744"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用入口網站將 Vm 部署至專用主機
 
@@ -38,6 +39,26 @@ ms.locfileid: "78970740"
 1. 當您看到驗證已通過的訊息時，請選取 [**建立**]。
 
 可能需要幾分鐘的時間才能部署好 VM。
+
+## <a name="add-an-existing-vm"></a>新增現有的 VM 
+
+您可以將現有的 VM 新增至專用主機，但必須先 Stop\Deallocated. VM 將 VM 移至專用主機之前，請確定已支援 VM 設定：
+
+- VM 大小必須與專用主機位於相同大小的系列。 例如，如果您的專用主機已 DSv3，則 VM 大小可能會 Standard_D4s_v3，但不能是 Standard_A4_v2。 
+- VM 必須位於與專用主機相同的區域中。
+- VM 不能是鄰近放置群組的一部分。 將 VM 移至專用主機之前，請先從鄰近放置群組中移除它。 如需詳細資訊，請參閱[將 VM 移出鄰近位置群組](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能位於可用性設定組中。
+- 如果 VM 位於可用性區域中，它必須與主機群組位於相同的可用性區域。 VM 和主機群組的可用性區域設定必須相符。
+
+使用[入口網站](https://portal.azure.com)將 VM 移至專用主機。
+
+1. 開啟 VM 的頁面。
+1. 選取 [**停止**] 以 stop\deallocate VM。
+1. 從左側功能表**中選取 [** 設定]。
+1. 從下拉式功能表中選取主機群組和主機。
+1. 當您完成時，請選取頁面頂端的 [**儲存**]。
+1. 將 VM 新增至主機之後，請從左側功能表中選取 **[總覽**]。
+1. 在頁面頂端，選取 [**啟動**] 以重新開機 VM。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484412"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096051"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 傳遞驗證：常見問題集
 
@@ -44,7 +44,7 @@ ms.locfileid: "77484412"
 是。 所有條件式存取功能（包括 Azure 多重要素驗證）都會使用傳遞驗證。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>傳遞驗證支援以「替代識別碼」而非「userPrincipalName」來作為使用者名稱嗎？
-在有限範圍內，傳遞驗證支援在 Azure AD Connect 中設定時，以替代識別碼作為使用者名稱。 作為必要條件，Azure AD Connect 需要將內部部署 Active Directory `UserPrincipalName` 屬性同步到 Azure AD。 這會讓內部部署 AD 和 Azure AD 上的 `UserPrincipalName` 變得完全相同。 如果您想要使用另一個屬性從內部部署 AD 同步處理至 Azure AD 的 UPN，您就必須使用密碼雜湊同步或 AD FS。 如需詳細資訊，請參閱[自訂 Azure AD Connect 安裝](how-to-connect-install-custom.md)。 並非所有 Office 365 應用程式都支援 `Alternate ID`。 請參閱支援陳述式的特定應用程式文件。
+使用非 UPN 值登入（例如替代電子郵件）目前正針對傳遞驗證（PTA）和密碼雜湊同步處理（PHS）在私人預覽中進行測試。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密碼雜湊同步處理是否會作為傳遞驗證的遞補？
 

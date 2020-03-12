@@ -1,17 +1,17 @@
 ---
-title: 使用診斷設定收集 Azure 活動記錄檔（預覽）-Azure 監視器 |Microsoft Docs
+title: 使用診斷設定收集 Azure 活動記錄-Azure 監視器 |Microsoft Docs
 description: 使用診斷設定，將 Azure 活動記錄轉送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670333"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096903"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>更新至 Azure 活動記錄收集和匯出
 [Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 將活動記錄專案傳送到[事件中樞或儲存體帳戶](activity-log-export.md)或[log Analytics 工作區](activity-log-collect.md)的方法，已變更為使用[診斷設定](diagnostic-settings.md)。 本文說明方法之間的差異，以及如何在準備變更為診斷設定時清除舊版設定。

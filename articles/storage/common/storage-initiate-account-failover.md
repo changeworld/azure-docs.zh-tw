@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157698"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128342"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>起始儲存體帳戶容錯移轉 (預覽)
 
@@ -29,9 +29,8 @@ ms.locfileid: "77157698"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須先確實執行下列步驟，才可開始對儲存體帳戶執行帳戶容錯移轉：
+在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您已執行下列步驟：
 
-- 註冊帳戶容錯移轉預覽版。 如需註冊方式的相關資訊，請參閱[關於預覽版](storage-disaster-recovery-guidance.md#about-the-preview)。
 - 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 如需有關異地多餘儲存體的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
 ## <a name="important-implications-of-account-failover"></a>帳戶容錯移轉的重要影響
@@ -44,7 +43,7 @@ ms.locfileid: "77157698"
 
 為您的儲存體帳戶重新啟用 GRS 之後，Microsoft 會開始將您帳戶中的資料複寫到新的次要區域。 複寫時間取決於複寫的資料量。  
 
-## <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+## <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 若要從 Azure 入口網站起始帳戶容錯移轉，請遵循下列步驟：
 
@@ -60,7 +59,7 @@ ms.locfileid: "77157698"
 
     ![顯示帳戶容錯移轉的確認對話方塊的螢幕擷取畫面](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 起始帳戶容錯移轉，您必須先安裝 6.0.1 預覽模組。 請依照下列步驟安裝此模組：
 
@@ -97,7 +96,7 @@ ms.locfileid: "77157698"
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 來起始帳戶容錯移轉，請執行下列命令：
 

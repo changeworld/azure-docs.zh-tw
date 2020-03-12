@@ -3,12 +3,12 @@ title: ACR 工作概觀
 description: ACR 工作簡介，這是 Azure Container Registry 中的一套功能，可在雲端中提供安全、自動化的容器映射組建、管理和修補。
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615944"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087287"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
@@ -77,7 +77,7 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 
 深入瞭解 ACR 工作的[基底映射更新觸發](container-registry-tasks-base-images.md)程式。 並瞭解如何在基底映射推送至容器登錄時觸發映射組建，教學課程會在[Azure container registry 中更新基底映射時自動執行容器映射組建](container-registry-tutorial-base-image-update.md)
 
-## <a name="schedule-a-task"></a>排程工作
+## <a name="schedule-a-task"></a>排定工作
 
 當您建立或更新工作時，藉由設定一或多個*計時器觸發*程式，選擇性地排程工作。 排程工作適用于依照定義的排程執行容器工作負載，或對定期推送至您的登錄的映射執行維護作業或測試。 如需詳細資訊，請參閱依[定義的排程執行 ACR](container-registry-tasks-scheduled.md)工作。
 
@@ -124,15 +124,11 @@ ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如
 | Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>查看工作記錄
+## <a name="view-task-output"></a>檢視工作輸出
 
-每個工作執行都會產生可供您檢查的記錄輸出，以判斷工作步驟是否已順利執行。 如果您使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令來觸發工作，則會將工作執行的記錄輸出串流處理到主控台，並儲存以供日後抓取。 當工作自動觸發時（例如，由原始程式碼認可或基底映射更新），只會儲存工作記錄。 查看在 Azure 入口網站中執行之工作的記錄，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
+每個工作執行都會產生可供您檢查的記錄輸出，以判斷工作步驟是否已順利執行。 當您手動觸發工作時，會將工作執行的記錄輸出串流處理到主控台，並儲存以供日後抓取。 當工作自動觸發時（例如，由原始程式碼認可或基底映射更新），只會儲存工作記錄。 查看 Azure 入口網站中的執行記錄，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
 
-根據預設，在登錄中執行工作的資料和記錄會保留30天，然後自動清除。 如果您想要封存工作執行的資料，請使用[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run)命令來啟用保存。 下列範例會在登錄*myregistry*中啟用 [工作執行*cf11* ] 的封存。
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+進一步瞭解如何[查看和管理工作記錄](container-registry-tasks-logs.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

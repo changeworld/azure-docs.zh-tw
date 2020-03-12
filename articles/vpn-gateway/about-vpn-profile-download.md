@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151632"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127304"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>關於 P2S VPN 用戶端設定檔
 
@@ -33,7 +33,7 @@ $PROFILE.VpnProfileSASUrl
 解壓縮 zip 檔案。 檔案包含下列資料夾：
 
 * AzureVPN
-* 泛型
+* 一般
 * OpenVPN （如果您已在閘道上啟用 OpenVPN 和 Azure AD 驗證設定。 請參閱[建立租](openvpn-azure-ad-tenant.md)使用者。）
 
 ## <a name="3-retrieve-information"></a>3. 取出資訊
@@ -60,7 +60,7 @@ $PROFILE.VpnProfileSASUrl
 
 ## <a name="folder-contents"></a>資料夾內容
 
-* **OpenVPN 資料夾**包含需要修改的*vpnconfig.ovpn*設定檔，以包含金鑰和憑證。 如需詳細資訊，請參閱[設定 Azure VPN 閘道的 OpenVPN 用戶端](vpn-gateway-howto-openvpn-clients.md#windows)。
+* **OpenVPN 資料夾**包含需要修改的*vpnconfig.ovpn*設定檔，以包含金鑰和憑證。 如需詳細資訊，請參閱[設定 Azure VPN 閘道的 OpenVPN 用戶端](vpn-gateway-howto-openvpn-clients.md#windows)。 如果在 VPN 閘道上選取了 Azure AD authentication，此資料夾就不會出現在 zip 檔案中。 相反地，azurevpnconfig 會在 AzureVPN 資料夾中。
 
 * **Generic 資料夾**包含公用伺服器憑證和 vpnsettings.xml 檔。 Vpnsettings.xml 包含設定一般用戶端所需的資訊。
 
