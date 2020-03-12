@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何設定「Azure Container 
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7d84770f1b945ff47cb4e9118d9c342e67118722
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249912"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402311"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教學課程：於認可原始程式碼時在雲端執行多步驟容器工作流程
 
@@ -92,7 +92,7 @@ az acr task create \
 
 成功執行的 [az acr task create][az-acr-task-create] 命令會產生如下的輸出：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -157,7 +157,7 @@ az acr task run --registry $ACR_NAME --name example1
 
 根據預設，`az acr task run` 命令會在您執行命令時將記錄輸出串流處理至主控台。 輸出會顯示每個工作步驟的執行進度。 以下輸出會扼要地顯示關鍵步驟。
 
-```console
+```output
 Queued a run with ID: cf19
 Waiting for an agent...
 2019/05/03 03:03:31 Downloading source code...
@@ -234,8 +234,7 @@ git push origin master
 
 在您執行 `git push` 命令時，系統可能會要求您提供 GitHub 認證。 請提供您的 GitHub 使用者名稱，並輸入您先前為密碼建立的個人存取權杖 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -248,8 +247,7 @@ az acr task logs --registry $ACR_NAME
 
 輸出會類似於下列內容，顯示目前正在執行 (或最後執行) 的工作：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: cf1d
 
@@ -268,9 +266,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 此命令的輸出應類似於下列內容。 ACR 工作已執行的流程執行會顯示出來，且最新工作的 [觸發程序] 資料行中會出現「Git 認可」：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  ---------  ----------  ---------  ---------  --------------------  ----------
 cf1d      example1   linux       Succeeded  Commit     2019-05-03T04:16:44Z  00:00:37
@@ -282,7 +278,7 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 ## <a name="create-a-multi-registry-multi-step-task"></a>建立多登錄的多步驟工作
 
-根據預設，ACR 工作具有從登錄 (工作執行之處) 推送或提取映像的權限。 您可以執行以一個或多個登錄 (除了執行登錄以外) 為目標的多步驟工作。 例如，您可能需要在一個登錄中建置映像，並將具有不同標記的映像儲存在生產系統可存取的第二個登錄。 此範例會示範如何建立這類工作，並提供另一個登錄的認證。
+根據預設，ACR 工作具有從登錄 (工作執行之處) 推送或提取映像的權限。 您可以執行以一個或多個登錄 (除了執行登錄以外) 為目標的多步驟工作。 例如，您可能需要在一個登錄中建置映像，並將具有不同標記的映像儲存在生產系統可存取的的第二個登錄。 此範例會示範如何建立這類工作，並提供另一個登錄的認證。
 
 如果您還沒有第二個登錄，請為此範例建立一個。 如果您需要登錄，請參閱[上一個教學課程](container-registry-tutorial-quick-task.md)或[快速入門：使用 Azure CLI 建立容器登錄](container-registry-get-started-azure-cli.md)。
 
@@ -362,7 +358,7 @@ az acr task run --registry $ACR_NAME --name example2
 
 輸出：
 
-```console
+```output
 Queued a run with ID: cf1g
 Waiting for an agent...
 2019/05/03 04:33:39 Downloading source code...

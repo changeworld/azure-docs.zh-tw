@@ -4,12 +4,12 @@ description: 建立 HTTP 觸發的無伺服器 PowerShell 函式來自動建立 
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196530"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331020"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教學課程：使用 HTTP 觸發的 Azure 函式來建立容器群組
 
@@ -42,7 +42,7 @@ ms.locfileid: "78196530"
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>在函式應用程式中啟用由 Azure 管理的身分識別
 
-現在，在函式應用程式中啟用系統指派的[受控識別](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity)。 執行應用程式的 PowerShell 主機可以使用此身分識別自動進行驗證，讓函式在該身分識別可存取的 Azure 服務上採取動作。 在本教學課程中，您會對受控識別授與可以在函式應用程式資源群組中建立資源的權限。 
+現在，在函式應用程式中啟用系統指派的[受控識別](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity)。 執行應用程式的 PowerShell 主機可以使用此身分識別自動進行驗證，讓函式在該身分識別可存取的 Azure 服務上採取動作。 在本教學課程中，您會對受控識別授與可以在函式應用程式資源群組中建立資源的權限。 
 
 首先，使用 [az group show][az-group-show] 命令來取得函式應用程式資源群組的識別碼，並將其儲存在環境變數中。 此範例假設您會在 Bash 殼層中執行命令。
 

@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978470"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331037"
 ---
 # <a name="what-is-the-translator-text-api"></a>什麼是 Translator Text API？
 
 您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具文字 API。 它可讓您以 [60 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
 
-翻譯工具文字 API 是由雲端中機器學習與 AI 演算法所組成的 [Azure 認知服務 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合的一部分，且隨時可供您在開發專案中取用。
+翻譯工具文字 API 是由雲端中機器學習與 AI 演算法所組成的 [Azure 認知服務 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 集合的一部分，且隨時可供您在開發專案中取用。
 
 ## <a name="about-microsoft-translator"></a>關於 Microsoft Translator
 

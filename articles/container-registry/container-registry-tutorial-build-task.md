@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何設定「Azure Container 
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6882cb683e0bd8b76bb1207e628e43f24c7b5987
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252124"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402839"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教學課程：於認可原始程式碼時在雲端自動執行容器映像建置
 
@@ -69,7 +69,7 @@ az acr task create \
 
 成功執行的 [az acr task create][az-acr-task-create] 命令會產生如下的輸出：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -136,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 根據預設，`az acr task run` 命令會在您執行命令時將記錄輸出串流處理至主控台。
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -225,8 +223,7 @@ git push origin master
 
 在您執行 `git push` 命令時，系統可能會要求您提供 GitHub 認證。 請提供您的 GitHub 使用者名稱，並輸入您先前為密碼建立的個人存取權杖 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -239,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 輸出會類似於下列內容，顯示目前正在執行 (或最後執行) 的工作：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -259,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 此命令的輸出應類似於下列內容。 ACR 工作已執行的流程執行會顯示出來，且最新工作的 [觸發程序] 資料行中會出現「Git 認可」：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44

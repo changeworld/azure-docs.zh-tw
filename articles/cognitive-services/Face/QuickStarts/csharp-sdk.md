@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930153"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78401775"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入門：適用於 .NET 的臉部用戶端程式庫
 
@@ -64,7 +64,7 @@ dotnet build
 
 建置輸出應該不會有警告或錯誤。 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)
