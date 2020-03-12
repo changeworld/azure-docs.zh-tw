@@ -3,14 +3,14 @@ title: 設定預備環境
 description: 瞭解如何將應用程式部署到非生產位置，以及進行進入生產環境。 增加可靠性並消除部署中的應用程式停機時間。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666445"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300838"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>在 Azure App Service 中設定預備環境
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ ms.locfileid: "75666445"
 * 先將應用程式部署至某個位置，然後再將它交換到生產位置，可確保該位置的所有執行個體在交換到生產位置之前都已準備就緒。 這麼做可以排除部署應用程式時的停機情況。 流量能夠順暢地重新導向，且不會因為交換作業而捨棄任何要求。 當不需要預先交換驗證時，您可以設定[自動交換](#Auto-Swap)，以自動化整個工作流程。
 * 交換之後，先前具有預備應用程式的位置，現在已經有之前的生產應用程式。 若交換到生產位置的變更不是您需要的變更，您可以立即執行相同的交換，以恢復「上一個已知的良好網站」。
 
-每個 App Service 方案層所支援的部署位置個數都不一樣。 使用部署位置不需要額外付費。 若要找出應用程式層支援的位置數目，請參閱[App Service 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)。 
+每個 App Service 方案層所支援的部署位置個數都不一樣。 使用部署位置不需要額外付費。 若要找出應用程式層支援的位置數目，請參閱[App Service 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。 
 
 若要將您的應用程式調整為不同的層級，請確定目標層支援您的應用程式已使用的位置數目。 例如，如果您的應用程式有五個以上的位置，您就無法將其向下調整為**標準**層，因為**標準**層只支援五個部署位置。 
 
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>使用預覽起始交換（多階段交換），並將目的地位置設定套用至來源位置
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>交換部署位置
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

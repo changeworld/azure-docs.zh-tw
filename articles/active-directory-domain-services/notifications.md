@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704499"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613294"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定問題的電子郵件通知
 
@@ -37,7 +37,7 @@ ms.locfileid: "74704499"
 
 ### <a name="why-would-i-receive-email-notifications"></a>為什麼我會收到電子郵件通知？
 
-Azure AD DS 會針對受控網域的重要更新傳送電子郵件通知。 這些通知僅適用于影響服務且應立即解決的緊急問題。 每個電子郵件通知都是由 Azure AD DS 受控網域上的警示所觸發。 警示也會出現在 Azure 入口網站中，而且可以在  [AZURE AD DS 健全狀況] 頁面[check-health]上查看。
+Azure AD DS 會針對受控網域的重要更新傳送電子郵件通知。 這些通知僅適用于影響服務且應立即解決的緊急問題。 每個電子郵件通知都是由 Azure AD DS 受控網域上的警示所觸發。 警示也會出現在 Azure 入口網站中，而且可以在  [AZURE AD DS 健全狀況 頁面][check-health]上查看。
 
 Azure AD DS 不會傳送電子郵件，供廣告、更新或銷售之用。
 
@@ -58,7 +58,7 @@ Azure AD DS 的電子郵件收件者清單應由能夠管理和變更受控網�
 若要檢查現有的電子郵件通知收件者或新增其他收件者，請完成下列步驟：
 
 1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**。
-1. 選取您的 Azure AD DS 受控網域，例如*aadds.contoso.com*。
+1. 選取您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。
 1. 在 [Azure AD DS 資源] 視窗的左側，選取 [**通知設定**]。 會顯示電子郵件通知的現有收件者。
 1. 若要新增電子郵件收件者，請在 [其他收件者] 資料表中輸入電子郵件地址。
 1. 完成時，請選取頂端導覽上的 [**儲存**]。
@@ -76,7 +76,7 @@ Azure AD DS 的電子郵件收件者清單應由能夠管理和變更受控網�
 
 如果您無法存取 Azure 入口網站中的 [通知設定] 頁面，表示您沒有編輯 Azure AD DS 受控網域的許可權。 您必須洽詢全域管理員，才能取得編輯 Azure AD DS 資源或從收件者清單中移除的許可權。
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>即使我已經提供電子郵件地址，似乎還是無法接收電子郵件通知。 為什麼呢？
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>即使我已經提供電子郵件地址，似乎還是無法接收電子郵件通知。 原因為何？
 
 請檢查電子郵件中的垃圾郵件資料夾中是否有通知，並務必允許 `azure-noreply@microsoft.com`的寄件者。
 

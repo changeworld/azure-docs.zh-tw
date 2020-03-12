@@ -2,15 +2,15 @@
 title: 從 Azure VM 讓更新管理、變更追蹤和清查解決方案上線
 description: 了解如何在 Azure 虛擬機器上讓屬於 Azure 自動化一部分的更新管理、變更追蹤和清查解決方案上線。
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421829"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299516"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>從 Azure 虛擬機器讓更新管理、變更追蹤和清查解決方案上線
 
@@ -22,13 +22,17 @@ Azure 自動化提供的解決方案可協助您管理作業系統安全性更�
 
 ## <a name="enable-the-solutions"></a>啟用解決方案
 
-移至現有的虛擬機器。 在 [作業] 底下，選取 [更新管理]、[清查] 或 [變更追蹤]。 無論您的自動化帳戶位置為何，虛擬機器都可以存在於任何區域中。 當您從 VM 上架解決方案時，您必須具有 `Microsoft.OperationalInsights/workspaces/read` 許可權，才能判斷 VM 是否上架至工作區。 若要瞭解一般所需的其他許可權，請參閱將[機器上架所需的許可權](automation-role-based-access-control.md#onboarding)。
+首先，在您的 VM 上啟用一或所有三個解決方案：
 
-若只要啟用 VM 的解決方案，請確定您已選取 [對此 VM 啟用]。 若要在解決方案中將多部機器上線，請選取 [對此訂用帳戶中的 VM 啟用]，然後選取 [按一下以選取要啟用的機器]。 若要了解如何讓多部機器一次上線，請參閱[讓更新管理、變更追蹤和清查解決方案上線](automation-onboard-solutions-from-automation-account.md)。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，從左側窗格中選取 **虛擬機器** 或 [搜尋]，然後**從首頁選取 [** **虛擬機器**]。
+2. 選取您要為其啟用解決方案的 VM。
+3. 在 [VM] 頁面的 [**作業**] 底下，選取 [**更新管理**]、[**清查**] 或 [**變更追蹤**]。 無論您的自動化帳戶位置為何，虛擬機器都可以存在於任何區域中。 當您從 VM 上架解決方案時，您必須具有 `Microsoft.OperationalInsights/workspaces/read` 許可權，才能判斷 VM 是否上架至工作區。 若要瞭解所需的其他許可權，請參閱將[機器上架所需的許可權](automation-role-based-access-control.md#onboarding)。
+
+若要了解如何讓多部機器一次上線，請參閱[讓更新管理、變更追蹤和清查解決方案上線](automation-onboard-solutions-from-automation-account.md)。
 
 選取 Azure Log Analytics 工作區與自動化帳戶，然後選取 [啟用] 來啟用解決方案。 啟用解決方案最多需要 15 分鐘。
 
-![讓更新管理解決方案上線](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![讓更新管理解決方案上線](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 移至其他解決方案，然後選取 [啟用]。 [Log Analytics 工作區] 和 [自動化帳戶] 下拉式清單已停用，因為這些解決方案使用的工作區和自動化帳戶與先前啟用的解決方案相同。
 
@@ -37,7 +41,7 @@ Azure 自動化提供的解決方案可協助您管理作業系統安全性更�
 
 ## <a name="scope-configuration"></a>範圍設定
 
-每個解決方案都會使用工作區中的範圍設定，來鎖定會取得解決方案的電腦。 範圍設定是一或多個已儲存搜尋的群組，用以將解決方案的範圍限定於特定電腦。 若要存取自動化帳戶中的範圍設定，請在 [相關資源] 之下，選取 [工作區]。 在工作區的 [工作區資料來源] 底下，選取 [範圍設定]。
+每個解決方案都會使用工作區中的範圍設定，來鎖定會取得解決方案的電腦。 範圍設定是一或多個已儲存搜尋的群組，用以將解決方案的範圍限定於特定電腦。 若要存取範圍設定，請在您的自動化帳戶中，選取 [**相關資源**] 底下的 [**工作區**]。 在工作區的 [**工作區資料來源**] 底下，選取 [**範圍**設定]。
 
 如果選取的工作區還沒有 [更新管理] 或 [變更追蹤] 解決方案，則系統會建立以下範圍設定：
 
@@ -91,9 +95,9 @@ Azure 自動化提供的解決方案可協助您管理作業系統安全性更�
 
 若使用「更新管理」解決方案，您可以在移除解決方案之後選擇移除已不再需要的下列項目。
 
-* 更新排程 - 每個都會有符合您建立的更新部署名稱
+* 更新排程-每個都有符合您所建立之更新部署的名稱。
 
-* 針對解決方案建立的混合式背景工作角色群組 - 每個都會具有如下名稱：machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8。
+* 為解決方案建立的混合式背景工作角色群組-其名稱類似于 com_9ceb8108 machine1-26c9-4051-名稱-227600d715c8）。
 
 若使用「於下班時間啟動/停止 VM」解決方案，您可以在移除解決方案之後選擇移除已不再需要的下列項目。
 
@@ -115,5 +119,7 @@ Azure 自動化提供的解決方案可協助您管理作業系統安全性更�
 繼續進行解決方案的教學課程以了解其使用方式：
 
 * [教學課程 - 管理 VM 的更新](automation-tutorial-update-management.md)
+
 * [教學課程 - 識別 VM 上的軟體](automation-tutorial-installed-software.md)
+
 * [教學課程 - 對 VM 的變更進行疑難排解](automation-tutorial-troubleshoot-changes.md)
