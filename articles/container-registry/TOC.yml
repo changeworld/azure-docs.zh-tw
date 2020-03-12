@@ -181,6 +181,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: 使用 Buildpacks 建置映像 (預覽)
           href: container-registry-tasks-pack-build.md
+        - name: 檢視工作記錄
+          href: container-registry-tasks-logs.md
 - name: 參考
   expanded: false
   items:

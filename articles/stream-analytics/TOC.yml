@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: 使用受控識別進行驗證 - Power BI
           href: powerbi-output-managed-identity.md
+        - name: 將資料進行加密
+          href: data-protection.md
     - name: 建置解決方案
       items:
         - name: Twitter 情緒分析
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: 使用適用於 IoT Edge 的 API 作業
           href: stream-analytics-cicd-api.md
+        - name: 使用 Azure Resource Manager 進行匯出並部署
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: 安裝工具

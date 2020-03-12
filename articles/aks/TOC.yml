@@ -216,7 +216,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: 透過 Azure 原則控制部署 (預覽)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
-        - name: 更新叢集服務主體認證
+        - name: 更新叢集認證
           href: update-credentials.md
         - name: 限制和控制叢集輸出流量
           href: limit-egress-traffic.md

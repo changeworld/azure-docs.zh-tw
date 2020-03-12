@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: 存取 Azure 虛擬網路
       items:
-        - name: 連線到具有整合服務環境的虛擬網路
+        - name: 建立整合服務環境 - Azure 入口網站
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 建立整合服務環境 - REST API
+          href: create-integration-service-environment-rest-api.md
         - name: 設定多個整合服務環境的存取權
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: 將資源新增到整合服務環境

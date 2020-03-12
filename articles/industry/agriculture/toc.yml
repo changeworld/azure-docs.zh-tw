@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: 內嵌歷程記錄遙測資料
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: 查詢內嵌的遙測資料
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: 概念
   items:
     - name: 整合模式
