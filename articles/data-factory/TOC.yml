@@ -392,14 +392,22 @@
       items:
         - name: 使用複製活動複製資料
           href: copy-activity-overview.md
+        - name: 監視複製活動
+          href: copy-activity-monitoring.md
         - name: 使用刪除活動刪除檔案
           href: delete-activity.md
         - name: 複製資料工具
           href: copy-data-tool.md
         - name: 格式和壓縮支援
           href: supported-file-formats-and-compression-codecs.md
-        - name: 效能和微調
-          href: copy-activity-performance.md
+        - name: 複製活動效能
+          items:
+            - name: 效能和延展性指南
+              href: copy-activity-performance.md
+            - name: 針對效能進行疑難排解
+              href: copy-activity-performance-troubleshooting.md
+            - name: 效能功能
+              href: copy-activity-performance-features.md
         - name: 保留中繼資料和 ACL
           href: copy-activity-preserve-metadata.md
         - name: 結構描述和類型對應
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: 部落格
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 提出問題 - MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 提出問題 - Stack Overflow

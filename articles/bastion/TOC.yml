@@ -4,7 +4,11 @@
   items:
     - name: 關於 Azure Bastion
       href: bastion-overview.md
-- name: 使用說明指南
+- name: 快速入門
+  items:
+    - name: 從 VM 設定建立堡壘主機
+      href: quickstart-host-portal.md
+- name: 操作指南
   items:
     - name: 建立 Bastion 主機
       items:

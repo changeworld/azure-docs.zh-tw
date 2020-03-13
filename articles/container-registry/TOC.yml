@@ -80,6 +80,8 @@
           items:
             - name: 限制虛擬網路的存取 (預覽)
               href: container-registry-vnet.md
+            - name: 與 Azure Private Link 整合 (預覽)
+              href: container-registry-private-link.md
             - name: 在防火牆外存取
               href: container-registry-firewall-access-rules.md
             - name: 驗證
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: 內容信任
               href: container-registry-content-trust.md
-            - name: 使用資訊安全中心掃描影像 (預覽)
+            - name: 使用資訊安全中心掃描影像
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: 加密登錄資料 (預覽)
+              href: container-registry-customer-managed-keys.md
         - name: 登錄和其他 Azure 服務
           expanded: false
           items:
