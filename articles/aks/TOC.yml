@@ -117,18 +117,12 @@
   items:
     - name: 叢集作業
       items:
-        - name: 建立 AKS 叢集
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: 調整 AKS 叢集
           href: scale-cluster.md
         - name: 升級 AKS 叢集
           href: upgrade-cluster.md
         - name: 流程節點 OS 更新
           href: node-updates-kured.md
-        - name: 刪除 AKS 叢集
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: 整合具有 AKS 叢集的 ACR
           href: cluster-container-registry-integration.md
         - name: 建立虛擬節點
