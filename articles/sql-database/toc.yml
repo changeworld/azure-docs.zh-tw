@@ -71,13 +71,9 @@
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: 安全性最佳做法
           href: sql-database-security-best-practice.md
-        - name: 存取管理
-          items:
-            - name: 存取控制
-              href: sql-database-control-access.md
-            - name: 登入和使用者
-              href: sql-database-manage-logins.md
-        - name: 驗證
+        - name: 登入、使用者帳戶、角色和權限
+          href: sql-database-manage-logins.md
+        - name: Azure AD 驗證
           href: sql-database-aad-authentication.md
           items:
             - name: 設定 Azure AD 驗證
@@ -86,6 +82,8 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: 設定多因素驗證
               href: sql-database-ssms-mfa-authentication-configure.md
+            - name: 條件式存取
+              href: sql-database-conditional-access.md
         - name: 資料保護
           items:
             - name: 透明資料加密 (TDE)
@@ -108,12 +106,12 @@
                   href: sql-database-always-encrypted.md
                 - name: 使用 Azure Key Vault
                   href: sql-database-always-encrypted-azure-key-vault.md
-        - name: 監視、記錄和稽核
+        - name: 稽核
           items:
-            - name: 稽核
-              items:
-                - name: 開始使用 SQL Database 稽核
-                  href: sql-database-auditing.md
+            - name: 開始使用 SQL Database 稽核
+              href: sql-database-auditing.md
+            - name: 稽核記錄檔格式
+              href: sql-database-audit-log-format.md
         - name: 安全性管理
           items:
             - name: 進階資料安全性
@@ -140,18 +138,12 @@
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
             - name: 私人連結
               href: sql-database-private-endpoint-overview.md
-            - name: 稽核記錄檔格式
-              href: sql-database-audit-log-format.md
-            - name: 條件式存取
-              href: sql-database-conditional-access.md
         - name: 受控執行個體安全性
           items:
             - name: 保護公用端點
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: 受控執行個體稽核
               href: sql-database-managed-instance-auditing.md
-        - name: 安全性基準
-          href: security-baseline.md
     - name: 連線和查詢
       href: sql-database-connect-query.md
       items:
@@ -240,36 +232,40 @@
           href: sql-database-monitoring-tuning-index.yml
         - name: 監視與效能概觀
           href: sql-database-monitor-tune-overview.md
-        - name: 效能監控
+        - name: Database 建議程式和查詢效能深入解析
           items:
-            - name: Azure SQL 分析監視
-              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
-            - name: 診斷遙測記錄
-              href: sql-database-metrics-diag-logging.md
-        - name: 智慧型效能
-          items:
-            - name: 自動微調
-              href: sql-database-automatic-tuning.md
-            - name: 將 Intelligent Insights 納入效能
-              href: sql-database-intelligent-insights.md
-            - name: 微調動作和建議
-              href: sql-database-performance.md
             - name: 資料庫建議程式效能建議
               href: sql-database-advisor.md
-        - name: 監視與微調資料庫
+            - name: 查詢效能深入解析
+              href: sql-database-query-performance.md
+        - name: 自動微調
+          href: sql-database-automatic-tuning.md
+        - name: Intelligent Insights 和 SQL 分析
           items:
-            - name: 手動微調
+            - name: 將 Intelligent Insights 納入效能
+              href: sql-database-intelligent-insights.md
+            - name: 診斷遙測記錄
+              href: sql-database-metrics-diag-logging.md
+            - name: 使用 Intelligent Insights 診斷記錄
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: 使用 Intelligent Insights 針對效能問題進行疑難排解
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+            - name: SQL 分析
+              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
+        - name: 手動監視和微調
+          items:
+            - name: 識別查詢效能問題
+              href: sql-database-identify-query-performance-issues.md
+            - name: 應用程式和資料庫調整指引
               href: sql-database-performance-guidance.md
             - name: 使用 DMV 監視效能
               href: sql-database-monitoring-with-dmvs.md
-            - name: 使用查詢存放區監視效能
-              href: sql-database-operate-query-store.md
-            - name: 使用 Intelligent Insights 針對效能問題進行疑難排解
-              href: sql-database-intelligent-insights-troubleshoot-performance.md
-            - name: 使用 Intelligent Insights 診斷記錄
-              href: sql-database-intelligent-insights-use-diagnostics-log.md
             - name: 監視記憶體內部 OLTP 空間
               href: sql-database-in-memory-oltp-monitoring.md
+            - name: 超大規模資料庫效能診斷
+              href: sql-database-hyperscale-performance-diagnostics.md
+            - name: 密集彈性集區中的資源管理
+              href: sql-database-elastic-pool-resource-management.md
             - name: 擴充事件
               items:
                 - name: 擴充事件
@@ -278,10 +274,6 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: 擴充事件 - 信號緩衝區
                   href: sql-database-xevent-code-ring-buffer.md
-        - name: 超大規模資料庫效能診斷
-          href: sql-database-hyperscale-performance-diagnostics.md
-        - name: 密集彈性集區中的資源管理
-          href: sql-database-elastic-pool-resource-management.md
     - name: 延展性
       items:
         - name: 延展性文件
@@ -538,8 +530,6 @@
               href: sql-database-resource-limits-database-server.md
             - name: 連線架構
               href: sql-database-connectivity-architecture.md
-            - name: 連線能力設定
-              href: sql-database-connectivity-settings.md
         - name: 資料同步
           items:
             - name: Data Sync Agent
@@ -552,10 +542,6 @@
               href: sql-database-best-practices-data-sync.md
             - name: 資料同步疑難排解
               href: sql-database-troubleshoot-data-sync.md
-        - name: 效能監控
-          items:
-            - name: 查詢效能深入解析
-              href: sql-database-query-performance.md
         - name: T-SQL 差異
           href: sql-database-transact-sql-information.md
         - name: 特性
@@ -739,7 +725,7 @@
           items:
             - name: MI pub 到 MI sub
               href: replication-with-sql-database-managed-instance.md
-            - name: MI pub、MI dist、SQL Sub
+            - name: MI pub、MI dist、SQL sub
               href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: 概念
       items:

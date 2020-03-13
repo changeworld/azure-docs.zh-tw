@@ -88,6 +88,8 @@
           href: concept-disaster-recovery.md
 - name: 操作指南
   items:
+    - name: 為子集使用者啟用功能
+      href: howto-feature-filters-aspnet-core.md
     - name: 匯入或匯出設定資料
       href: howto-import-export-data.md
     - name: 將事件路由至自訂端點

@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: 語言與區域支援
       href: language-support.md
+    - name: 文字位移
+      href: concepts/text-offsets.md
 - name: 操作指南
   items:
     - name: 呼叫文字分析 API

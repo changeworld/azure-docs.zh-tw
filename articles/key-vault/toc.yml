@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: 透過事件方格和 Logic Apps 接收通知
       href: event-grid-logicapps.md
+    - name: 為單一使用者資源輪換秘密
+      href: tutorial-rotation.md
     - name: 與 Azure 原則整合
       href: azure-policy.md
     - name: 與 Azure Private Link 服務整合 (預覽)
