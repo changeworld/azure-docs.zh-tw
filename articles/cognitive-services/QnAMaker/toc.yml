@@ -68,6 +68,8 @@
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
         - name: 建立商務持續性方案
           href: How-To/business-continuity-plan.md
+        - name: 共同作業
+          href: How-To/collaborate-knowledge-base.md
     - name: 管理知識庫
       items:
         - name: 建立知識庫
@@ -79,8 +81,6 @@
         - name: 遷移至新的知識庫
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: 共同作業
-          href: How-To/collaborate-knowledge-base.md
         - name: 測試
           href: How-To/test-knowledge-base.md
     - name: 管理 QnA 集合

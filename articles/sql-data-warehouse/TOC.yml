@@ -94,7 +94,7 @@
         - name: 存取控制
           items:
             - name: 概觀
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: 資料行層級安全性
               href: column-level-security.md
             - name: 資料列層級安全性
@@ -381,7 +381,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
