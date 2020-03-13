@@ -1,16 +1,16 @@
 ---
 title: 使用 GitHub 動作在 Azure Functions 中進行程式碼更新
 description: 瞭解如何使用 GitHub 動作來定義工作流程，以在 GitHub 中建立及部署 Azure Functions 專案。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769144"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649903"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -54,7 +54,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="configure-the-github-secret"></a>設定 GitHub 秘密
 
-1. 在[GitHub](https://github.com)中，流覽至您的存放庫，選取 [**設定**] [ > **秘密**] > 新增**密碼**]。
+1. 在[GitHub](https://github.com)中，流覽至您的存放庫，選取 [**設定**] [ > **秘密**] > 新增**密碼**。
 
    ![新增秘密](media/functions-how-to-github-actions/add-secret.png)
 
@@ -69,7 +69,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 設定環境是使用特定語言的發行設定動作來完成。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例顯示使用 `actions/setup-node` 動作來設定環境的工作流程部分：
 
@@ -84,7 +84,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下列範例顯示使用 `actions/setup-python` 動作來設定環境的工作流程部分：
 
@@ -99,7 +99,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 下列範例顯示使用 `actions/setup-dotnet` 動作來設定環境的工作流程部分：
 
@@ -114,7 +114,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下列範例顯示使用 `actions/setup-java` 動作來設定環境的工作流程部分：
 
@@ -138,7 +138,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 下列範例會顯示建立函式應用程式的工作流程部分，這是語言特定的：
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

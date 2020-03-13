@@ -7,12 +7,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 957fef32702f35b4b509d829eba6a41914c4fc53
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: ff69262a89d8112419ffe62cd391d003cb21adc1
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205852"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967604"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>與 Azure 受控識別整合
 
@@ -26,14 +26,14 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 您可以使用任何程式碼編輯器來進行本教學課程中的步驟。 Windows、macOS 及 Linux 平台上都有提供的 [Visual Studio Code](https://code.visualstudio.com/) 是一個絕佳的選項。
 
-在本文中，您將學會如何：
+在本文中，您將了解：
 
 > [!div class="checklist"]
 > * 授與「應用程式組態」的受控識別存取權。
 > * 設定讓應用程式在您連線到「應用程式組態」時使用受控識別。
 > * （選擇性）將您的應用程式設定為透過應用程式組態 Key Vault 參考連接到 Key Vault 時使用受控識別。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您必須具備：
 
@@ -239,8 +239,6 @@ git push azure master
 ```bash
 http://<app_name>.azurewebsites.net
 ```
-
-![在 App Service 中執行的應用程式](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
 ## <a name="use-managed-identity-in-other-languages"></a>以其他語言使用受控識別
 
