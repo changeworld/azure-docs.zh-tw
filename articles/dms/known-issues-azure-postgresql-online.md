@@ -3,8 +3,8 @@ title: 已知問題：從于 postgresql 到適用於 PostgreSQL 的 Azure 資料
 titleSuffix: Azure Database Migration Service
 description: 瞭解使用 Azure 資料庫移轉服務從于 postgresql 到 Azure Database for PostgreSQ 進行線上遷移的已知問題和遷移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -13,13 +13,13 @@ ms.custom:
 - seo-lt-2019
 - seo-dt-2019
 ms.topic: article
-ms.date: 02/13/2020
-ms.openlocfilehash: ecc3075bbddd313e7c6471abef0d201a79cb87ec
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
-ms.translationtype: MT
+ms.date: 02/20/2020
+ms.openlocfilehash: ded3302c590a55f0da8e4e37869f2b7f5a702838
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471358"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650498"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>從于 postgresql 至 Azure DB for 于 postgresql 進行線上遷移的已知問題/遷移限制
 
@@ -91,27 +91,27 @@ ms.locfileid: "77471358"
 
 當您嘗試執行從 AWS RDS 于 postgresql 到適用於 PostgreSQL 的 Azure 資料庫的線上遷移時，您可能會遇到下列錯誤。
 
-- **錯誤**：在來源與目標伺服器上，資料庫 ' {database} ' 中資料表 ' {table} ' 的資料行 ' {column} ' 的預設值不同。 來源上為 '{value on source}'，而目標上為 '{value on target}'。
+- **錯誤**：在資料庫 '{database}' 中，資料表 '{table}' 中資料行 '{}' 的預設值在來源和目標伺服器上不一樣。 來源上為 '{value on source}'，而目標上為 '{value on target}'。
 
-  **限制**：當來源與目標資料庫之間的資料行架構上的預設值不同時，就會發生此錯誤。
-  因應**措施：確定**目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **限制**：當來源與目標資料庫之間的資料行架構上的預設值不同時，就會發生這個錯誤。
+  **因應措施**：確定目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
-- **錯誤**：目標資料庫 ' {database} ' 有 ' {個數據表數目} ' 資料表，因為源資料庫 ' {database} ' 有 ' {資料表數目} ' 資料表。 來源和目標資料庫上的資料表數目應相符。
+- **錯誤**：目標資料庫 '{database}' 有 '{number of tables}' 個資料表，而來源資料庫 '{database}' 有 '{number of tables}' 個資料表。 來源和目標資料庫上的資料表數目應相符。
 
-  **限制**：當來源與目標資料庫之間的資料表數目不同時，就會發生此錯誤。
+  **限制**：當來源與目標資料庫之間的資料表數目不同時，就會發生這個錯誤。
 
-  因應**措施：確定**目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **因應措施**：確定目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 - **錯誤：** 源資料庫 {database} 是空的。
 
   **限制**：當源資料庫是空的時，就會發生此錯誤。 這很可能是因為您選取了錯誤的資料庫做為來源。
 
-  因應**措施：再次**檢查您選取要遷移的源資料庫，然後再試一次。
+  **因應措施**：再次檢查您選取要遷移的源資料庫，然後再試一次。
 
 - **錯誤：** 目標資料庫 {database} 是空的。 請遷移結構描述。
 
   **限制**：當目標資料庫上沒有架構時，就會發生此錯誤。 請確定目標上的架構符合來源上的架構。
-  因應**措施：確定**目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **因應措施**：確定目標上的架構符合來源上的架構。 如需有關遷移架構的詳細資訊，請參閱[Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -119,5 +119,5 @@ ms.locfileid: "77471358"
 - 擷取資料表必須有主索引鍵。 如果資料表沒有主索引鍵，則 DELETE 和 UPDATE 記錄作業將會產生無法預期的結果。
 - 系統會忽略主索引鍵片段的更新。 在這類情況下，套用這類更新會使目標將更新識別為沒有更新任何資料列，並導致系統將記錄寫入至例外狀況資料表。
 - 移轉多個具相同名稱但大小寫不同的資料表 (如 table1、TABLE1 和 Table1) 可能會造成無法預期的行為，因此沒有受到支援。
-- 變更 [建立 | 的處理ALTER |DROP |截斷] 不支援資料表 Ddl。
+- 變更 [建立 |] 的處理ALTER |DROP |截斷 不支援資料表 Ddl。
 - 在 Azure 資料庫移轉服務中，單一遷移活動最多隻能容納四個資料庫。

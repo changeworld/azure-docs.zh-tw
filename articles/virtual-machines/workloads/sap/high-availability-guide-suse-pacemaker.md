@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fb73bf6af46ce8303e1be80d1bfc7303f95cda06
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598437"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927335"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中於 SUSE Linux Enterprise Server 上設定 Pacemaker
 
@@ -328,6 +328,16 @@ o- / ...........................................................................
    <pre><code>sudo zypper in socat
    </code></pre>
 
+1. **[A]** 安裝叢集資源所需的 azure-lb 元件
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > 請檢查套件資源代理程式的版本，並確定符合最低版本需求：  
+   > - 對於 SLES 12 SP4/SP5，版本必須至少是 4.3.018. a7fb5035-3.30.1。  
+   > - SLES 15/15 SP1 的版本至少必須是資源代理程式-4.3.0184.6 ee15eb2-4.13.1。  
+
 1. **[A]** 設定作業系統
 
    在某些情況下，Pacemaker 會建立許多程序，因此用盡允許的程序數目。 在此情況下，叢集節點之間的活動訊號可能會失敗，而導致您的資源容錯移轉。 我們建議設定下列參數，以增加允許的程序上限。
@@ -607,9 +617,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Azure 提供[排程的事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 排定的事件是透過中繼資料服務所提供，並可讓應用程式針對 VM 關機、VM 重新部署等事件進行準備。資源代理程式 **[azure-](https://github.com/ClusterLabs/resource-agents/pull/1161)** 已排程 azure 事件的事件監視。 如果偵測到事件，代理程式將會嘗試停止受影響 VM 上的所有資源，並將其移至叢集中的另一個節點。 若要達到此目的，必須設定額外的 Pacemaker 資源。 
 
-1. **[A]** 安裝**azure 事件**代理程式。 
+1. **[A]** 請確定已安裝**azure 事件**代理程式的套件，且其為最新狀態。 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** 在 Pacemaker 中設定資源。 
