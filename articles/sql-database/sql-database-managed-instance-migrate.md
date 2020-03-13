@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828083"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208936"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>將 SQL Server 遷移至 Azure SQL Database 受控執行個體
 
@@ -45,7 +45,7 @@ ms.locfileid: "73828083"
 
 使用[資料移轉小幫手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview)，可偵測影響 Azure SQL Database 資料庫功能的潛在相容性問題。 DMA 尚不支援將受控執行個體做為移轉目的地，但建議您針對 Azure SQL Database 執行評估，並針對產品文件，仔細檢閱提報的功能同位和相容性問題清單。 請參閱 [Azure SQL Database 功能](sql-database-features.md)，以檢查是否有一些回報的執行問題不是受控執行個體中造成作業無法繼續執行個問題，因為造成無法無移轉到 Azure SQL Database 的大部分問題在受控執行個體中都已移除。 例如跨資料庫查詢、相同執行個體內的跨資料庫交易、其他 SQL 來源的連結伺服器、CLR、全域暫存資料表、執行個體層級檢視、Service Broker 等功能皆可在受控執行個體中使用。
 
-若受控制執行個體部署選項並未移除一些回報的執行問題，您可能需要考慮替代選項，例如 [Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 這裡有一些範例：
+若受控制執行個體部署選項並未移除一些回報的執行問題，您可能需要考慮替代選項，例如 [Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 以下是一些範例：
 
 - 如果您需要直接存取作業系統或檔案系統，例如在具有 SQL Server 的相同虛擬機器上安裝第三方或自訂代理程式。
 - 如果您的執行個體與尚不支援的功能有緊密相依性，例如 FileStream / FileTable、PolyBase 及跨執行個體交易等功能。
@@ -72,14 +72,14 @@ ms.locfileid: "73828083"
 - 藉由檢查動態管理檢視或查詢存放區（如果您要從 SQL Server 2016 + 版本進行遷移），來監視工作負載和查詢效能或 SQL Server 實例。 識別工作負載中最重要查詢的平均持續時間和 CPU 使用量，以與受控執行個體上執行的查詢進行比較。
 
 > [!Note]
-> 如果您注意到 SQL Server 的工作負載有任何問題，例如高 CPU 使用率、記憶體壓力、tempdb 或 parametrization 問題，您應該先嘗試在來源 SQL Server 實例上加以解決，再進行基準和遷移。 將已知問題遷移至任何新的系統 migh 會導致非預期的結果，並使任何效能比較失效。
+> 如果您注意到 SQL Server 的工作負載有任何問題，例如高 CPU 使用率、記憶體壓力、tempdb 或參數化問題，您應該先嘗試在來源 SQL Server 實例上加以解決，再進行基準和遷移。 將已知問題遷移至任何新的系統 migh 會導致非預期的結果，並使任何效能比較失效。
 
 作為此活動的結果，您應該已記載來源系統上的 CPU、記憶體和 IO 使用量的平均和尖峰值，以及主要和工作負載中最重要查詢的平均和最大持續時間和 CPU 使用量。 您稍後應該使用這些值來比較受控執行個體的工作負載效能與來源 SQL Server 上工作負載的基準效能。
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到最佳大小的受控執行個體
 
 受控執行個體專為打算移至雲端的內部工作負載量身訂做。 它引進[新的購買模型](sql-database-service-tiers-vcore.md)，提供更大的彈性來選取適合您工作負載的正確資源層級。 在內部部署的環境中，您可能習慣使用實體核心數目與 IO 頻寬來調整這些工作負載大小。 受控執行個體的購買模型是以虛擬核心 (vCore) 為基礎，再個別加上額外儲存體與可用 IO。 相對於目前使用的內部部署方案，VCore 模型可讓您較簡單地了解雲端中的計算需求。 這個新模型可讓您在雲端中具有正確大小的目的地環境。 以下說明一些可協助您選擇正確服務層級和特性的一般指導方針：
-- 根據基準 CPU 使用量，您可以布建符合您在 SQL Server 上使用之核心數目的受控執行個體，請記住，CPU 特性可能需要調整，以符合[安裝受控執行個體的 VM 特性](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- 根據基準 CPU 使用量，您可以布建符合您在 SQL Server 上使用之核心數目的受控執行個體，但請注意，CPU 特性可能需要調整，以符合[安裝受控執行個體的 VM 特性](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
 - 根據 [基準記憶體使用量]，選擇[具有相符記憶體的服務層級](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。 記憶體數量無法直接選擇，因此您必須選取具有相符記憶體的虛擬核心數量的受控執行個體（例如第5代中的 5.1 GB/vCore）。 
 - 根據檔案子系統的基準 IO 延遲，選擇一般用途（延遲大於5毫秒）和商務關鍵服務層級（延遲時間小於3毫秒）。
 - 根據基準輸送量，預先配置資料或記錄檔的大小，以取得預期的 IO 效能。

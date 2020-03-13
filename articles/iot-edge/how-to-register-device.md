@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f7facb539a84d39e6659627e80ecc560fc87591c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285093"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>註冊 Azure IoT Edge 裝置
 
@@ -112,12 +112,12 @@ Azure 訂用帳戶中的免費或標準[IoT 中樞](../iot-hub/iot-hub-create-th
 
 ## <a name="register-with-the-azure-cli"></a>向 Azure CLI 註冊
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)是一種開放原始碼跨平臺命令列工具，可用於管理 Azure 資源，例如 IoT Edge。 它可讓您管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及現成的連結中樞。 新的 IoT 擴充功能會以裝置管理和完整 IoT Edge 功能等功能來擴充 Azure CLI 的功能。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)是一種開放原始碼跨平臺命令列工具，可用於管理 Azure 資源，例如 IoT Edge。 它可讓您管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及現成的連結中樞。 IoT 擴充功能以裝置管理和完整 IoT Edge 功能來擴充 Azure CLI 的功能。
 
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLI 的必要條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須是 2.0.24 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
 * [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>使用 Azure CLI 建立 IoT Edge 裝置

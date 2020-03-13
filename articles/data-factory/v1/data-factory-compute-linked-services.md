@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281544"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
 > [!NOTE]
@@ -81,10 +81,10 @@ Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDIn
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 隨選連結服務
 Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選 HDInsight 叢集來處理資料。 叢集建立所在的區域，就是與叢集相關聯之儲存體帳戶所在的區域。 請使用 JSON **linkedServiceName** 屬性來建立叢集。
 
-請注意下列有關隨選 HDInsight 連結服務的重點  ：
+請注意下列有關隨選 HDInsight 連結服務的重點：
 
 * Azure 訂用帳戶中不會出現隨選 HDInsight 叢集。 Data Factory 服務會代您管理隨選 HDInsight 叢集。
-* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料]  窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
+* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料] 窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
 * 您只需要就 HDInsight 叢集啟動並執行作業的時間來付費。
 
 > [!IMPORTANT]
@@ -112,7 +112,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 > [!IMPORTANT]
-> HDInsight 叢集會在您於 JSON **linkedServiceName** 屬性中指定的 Azure Blob 儲存體內建立「預設容器」  。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
+> HDInsight 叢集會在您於 JSON *linkedServiceName* 屬性中指定的 Azure Blob 儲存體內建立「預設容器」。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
 >
 > 隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<your Data Factory name>-<linked service name>-<date and time>`。 您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com/) 之類的工具來刪除 Blob 儲存體中的容器。
 >
@@ -390,10 +390,10 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
-| 授權 | 在 Data Factory 編輯器中，選取 [授權]  按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
+| 授權 | 在 Data Factory 編輯器中，選取 [授權] 按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
 | sessionID     | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用 Data Factory 編輯器時便會自動產生此設定。 | 是      |
 
-**範例：使用者認證驗證**
+**範例：使用者認證授權**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -412,7 +412,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 #### <a name="token-expiration"></a>權杖到期
-您選取 [授權]  按鈕所產生的授權碼會在一定時間後到期。 
+您選取 [授權] 按鈕所產生的授權碼會在一定時間後到期。 
 
 當驗證權杖到期時，您可能會看見下列錯誤訊息： 
 
@@ -422,10 +422,10 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 使用者類型                                | 到期時間                            |
 | :--------------------------------------- | :--------------------------------------- |
-| 「不受」  Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
-| 「受」  Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
+| 「不受」Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
+| 「受」Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
 
-若要避免或解決此錯誤，請在權杖到期時選取 [授權]  按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId  和 authorization  屬性的值：
+若要避免或解決此錯誤，請在權杖到期時選取 [授權] 按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId 和 authorization 屬性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

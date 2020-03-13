@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707939"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136478"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令針對裝置進行疑難排解
 
@@ -29,7 +29,7 @@ Dsregcmd.exe/status 公用程式必須以網域使用者帳戶的身分執行。
 | AzureAdJoined | EnterpriseJoined | Enterpriseregistration.windows.net domainjoined | 裝置狀態 |
 | ---   | ---   | ---   | ---   |
 | YES | 否 | 否 | Azure AD 聯結 |
-| 否 | 否 | YES | 透過網域加入 |
+| 否 | 否 | YES | 已加入網域 |
 | YES | 否 | YES | 已加入混合式 AD |
 | 否 | YES | YES | 已聯結內部部署 DRS |
 
@@ -81,7 +81,7 @@ Dsregcmd.exe/status 公用程式必須以網域使用者帳戶的身分執行。
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>租用戶詳細資料
+## <a name="tenant-details"></a>租使用者詳細資料
 
 只有在裝置已加入 Azure AD 或混合式 Azure AD （未 Azure AD 註冊）時，才會顯示。 此區段會列出裝置加入 Azure AD 時的一般租使用者詳細資料。
 
@@ -136,7 +136,7 @@ Dsregcmd.exe/status 公用程式必須以網域使用者帳戶的身分執行。
 - **WorkplaceJoined：** 如果已在目前的 ntuser.dat 內容中，將 Azure AD 已註冊的帳戶新增至裝置，請設定為 [是]。
 - **WamDefaultSet：** 如果已針對登入的使用者建立 WAM 預設 WebAccount，則設定為 [是]。 如果在管理內容中執行 dsreg/status，此欄位可能會顯示錯誤。 
 - **WamDefaultAuthority：** 設定為 Azure AD 的 [組織]。
-- Azure AD 的**WamDefaultId:** - “https://login.microsoft.com”Always ""。
+- **WamDefaultId：** -一律為 Azure AD 的「 https://login.microsoft.com」。
 - **WamDefaultGUID：** -預設 WAM WEBACCOUNT 的 WAM 提供者（Azure AD/MICROSOFT 帳戶） GUID。 
 
 ### <a name="sample-user-state-output"></a>範例使用者狀態輸出
@@ -211,8 +211,16 @@ Azure AD 註冊的裝置可以忽略此區段。
 - **AD 設定測試：** -Test 會讀取並驗證是否已在內部部署 AD 樹系中正確設定 SCP 物件。 這項測試中的錯誤可能會導致探索階段發生聯結錯誤，錯誤碼為0x801c001d。
 - **DRS 探勘測試：** -Test 從探索中繼資料端點取得 DRS 端點，並執行使用者領域要求。 這項測試中的錯誤可能會導致探索階段發生聯結錯誤。
 - **Drs 連線能力測試：** -Test 會對 DRS 端點執行基本的連線測試。
-- **權杖取得測試：** -如果使用者租使用者為同盟，測試會嘗試取得 Azure AD 驗證權杖。 這項測試中的錯誤可能會導致驗證階段發生聯結錯誤。 如果驗證失敗，則會嘗試將同步聯結視為回溯，除非使用登錄機碼明確停用回溯。
-- 回溯**至同步-聯結：** 如果登錄機碼導致無法與驗證失敗進行同步聯結，則設定為 [已啟用]，則不會顯示。 此選項可從 Windows 10 1803 和更新版本中取得。
+- **權杖取得測試：** -如果使用者租使用者為同盟，測試會嘗試取得 Azure AD 驗證權杖。 這項測試中的錯誤可能會導致驗證階段發生聯結錯誤。 如果驗證失敗，則會嘗試將同步聯結視為回溯，除非使用下列登錄機碼設定明確停用回溯。
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **回到同步-聯結：** -如果上述登錄機碼導致無法與驗證失敗同步的聯結，則設定為 [已啟用]，則不會顯示。 此選項可從 Windows 10 1803 和更新版本中取得。
 - **先前的註冊：** -發生先前聯結嘗試的時間。 只會記錄失敗的聯結嘗試。
 - **錯誤階段：** -已中止之聯結的階段。 可能的值為預先檢查、探索、驗證、聯結。
 - **用戶端 ErrorCode：** -傳回用戶端錯誤碼（HRESULT）。

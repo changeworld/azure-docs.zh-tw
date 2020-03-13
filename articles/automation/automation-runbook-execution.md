@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372602"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278645"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -39,7 +39,7 @@ Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 
 下表列出一些 runbook 執行工作，其中列出每個的建議執行環境。
 
-|工作|最佳選項|注意事項|
+|Task|最佳選項|注意|
 |---|---|---|
 |與 Azure 資源整合|Azure 沙箱|在 Azure 中託管，驗證會比較簡單。 如果您在 Azure VM 上使用混合式 Runbook 背景工作角色，您可以使用[azure 資源的受控](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)識別。|
 |取得最佳效能來管理 Azure 資源|Azure 沙箱|腳本會在相同的環境中執行，但延遲較少。|
@@ -224,17 +224,17 @@ function Get-ContosoFiles
 
 | 狀態 | 描述 |
 |:--- |:--- |
-| 已完成 |工作已成功完成。 |
+| Completed |工作已成功完成。 |
 | 失敗 |無法編譯圖形化或 PowerShell 工作流程 runbook。 PowerShell 腳本 runbook 無法啟動，或作業發生例外狀況。 請參閱[Azure 自動化的 runbook 類型](automation-runbook-types.md)。|
 | 處理失敗，正在等候資源 |工作失敗，因為其達到 [公平共用](#fair-share) 的三次上限，且每次從相同的檢查點或啟動 Runbook 開始。 |
 | 已排入佇列 |作業正在等候自動化背景工作角色上的資源變成可用，以便可以啟動它。 |
 | 啟動中 |此作業已指派給背景工作角色，並且系統正在進行啟動。 |
 | 繼續中 |工作暫停後，系統正在繼續工作。 |
-| 正在執行 |工作正在執行。 |
+| 執行中 |工作正在執行。 |
 | 執行中，正在等候資源 |作業已卸載，因為已達到公平共用限制。 工作會很快地從其上一個檢查點繼續。 |
 | 已停止 |工作完成之前已由使用者停止。 |
-| Stopping |系統正在停止作業。 |
-| Suspended |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 工作已由使用者、系統或 Runbook 中的命令暫停。 如果 runbook 沒有檢查點，則會從頭開始。 如果它有檢查點，則可重新啟動並從其最後一個檢查點繼續。 只有在發生例外狀況時，系統才會暫停 runbook。 根據預設， *ErrorActionPreference*變數會設定為 Continue，表示作業會在發生錯誤時持續**執行**。 如果喜好設定變數設為 [**停止**]，則作業會在發生錯誤時暫停。  |
+| 停止中 |系統正在停止作業。 |
+| 暫止 |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 工作已由使用者、系統或 Runbook 中的命令暫停。 如果 runbook 沒有檢查點，則會從頭開始。 如果它有檢查點，則可重新啟動並從其最後一個檢查點繼續。 只有在發生例外狀況時，系統才會暫停 runbook。 根據預設， *ErrorActionPreference*變數會設定為 Continue，表示作業會在發生錯誤時持續**執行**。 如果喜好設定變數設為 [**停止**]，則作業會在發生錯誤時暫停。  |
 | Suspending |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 因使用者要求，系統正在嘗試暫停工作。 Runbook 必須達到其下一個檢查點才能暫停。 如果它已經通過其最後一個檢查點，它就會在暫停之前完成。 |
 
 ### <a name="viewing-job-status-from-the-azure-portal"></a>從 Azure 入口網站檢視作業狀態

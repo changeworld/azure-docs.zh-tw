@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269012"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 
@@ -45,7 +45,7 @@ ms.locfileid: "77597777"
 如果您想要使用儲存體帳戶金鑰來存取 Azure 檔案共用，建議使用「[網路](#networking)功能」一節中所述的服務端點。
 
 ## <a name="networking"></a>網路功能
-您可以透過儲存體帳戶的公用端點，從任何地方存取 Azure 檔案共用。 這表示已驗證的要求（例如使用者登入身分識別所授權的要求）可以從 Azure 內部或外部安全地產生。 在許多客戶環境中，Azure 檔案共用在內部部署工作站上的初始掛接將會失敗，即使 Azure Vm 的裝載成功也一樣。 這是因為許多組織和網際網路服務提供者（Isp）會封鎖 SMB 用來通訊的埠（埠445）。 
+您可以透過儲存體帳戶的公用端點，從任何地方存取 Azure 檔案共用。 這表示已驗證的要求（例如使用者登入身分識別所授權的要求）可以從 Azure 內部或外部安全地產生。 在許多客戶環境中，Azure 檔案共用在內部部署工作站上的初始掛接將會失敗，即使 Azure Vm 的裝載成功也一樣。 這是因為許多組織和網際網路服務提供者（Isp）會封鎖 SMB 用來通訊的埠（埠445）。 若要查看 ISP 是否允許從連接埠 445 進行存取的摘要，請參閱 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) \(英文\)。
 
 若要解除封鎖 Azure 檔案共用的存取，您有兩個主要選項：
 

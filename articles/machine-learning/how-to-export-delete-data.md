@@ -9,16 +9,17 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 11/04/2019
+ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2eb4c385e4dae15161ab7834306f1b0bc8a3dc4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218278"
 ---
-# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料 
+# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在 Azure Machine Learning 中，您可以使用已驗證的 REST API，匯出或刪除工作區。 本文會說明做法。
@@ -28,15 +29,16 @@ ms.locfileid: "75537327"
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>控制您的工作區資料
+
 Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learning studio、CLI、SDK 及已驗證的 REST Api 進行匯出和刪除。 透過 Azure 隱私權入口網站可以存取遙測資料。 
 
 在 Azure Machine Learning 中，個人資料會包含執行歷程記錄文件中的使用者資訊，以及使用者與服務部分互動的遙測記錄。
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>使用 REST API 來刪除工作區資料 
+## <a name="delete-workspace-data-with-the-rest-api"></a>使用 REST API 來刪除工作區資料
 
 為了刪除資料，可以使用 HTTP DELETE 動詞來進行下列 API 呼叫。 這些可透過在要求中指定 `Authorization: Bearer <arm-token>` 標頭來進行授權，其中 `<arm-token>` 是 `https://management.core.windows.net/` 端點的 AAD 存取權杖。  
 
-若要了解如何取得此權杖及呼叫 Azure 端點，請參閱 [Azure REST API 文件](https://docs.microsoft.com/rest/api/azure/) \(英文\)。  
+若要瞭解如何取得此權杖及呼叫 Azure 端點，請參閱[使用 REST 來管理 ML 資源](how-to-manage-rest.md)和[azure REST API 檔](https://docs.microsoft.com/rest/api/azure/)。  
 
 在下列範例中，請以決定相關資源的執行個體名稱取代 {} 中的文字。
 
@@ -46,53 +48,53 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 > [!WARNING]
 > 將刪除所有資訊，而且工作區將不再可用。
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2018-03-01-preview
+    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
 ### <a name="delete-models"></a>刪除模型
 
 使用此呼叫來取得模型及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
 可以藉由下列方式刪除個別模型：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
 ### <a name="delete-assets"></a>刪除資產
 
 使用此呼叫來取得資產及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
 可以藉由下列方式刪除個別資產：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
 ### <a name="delete-images"></a>刪除映像
 
 使用此呼叫來取得映像及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
 可以藉由下列方式刪除個別映像：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
 ### <a name="delete-services"></a>刪除服務
 
 使用此呼叫來取得服務及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
 可以藉由下列方式刪除個別服務：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
 ## <a name="export-service-data-with-the-rest-api"></a>使用 REST API 來匯出服務資料
 
 為了匯出資料，可以使用 HTTP GET 動詞來進行下列 API 呼叫。 這些可透過在要求中指定 `Authorization: Bearer <arm-token>` 標頭來進行授權，其中 `<arm-token>` 是 `https://management.core.windows.net/` 端點的 AAD 存取權杖  
 
-若要了解如何取得此權杖及呼叫 Azure 端點，請參閱 [Azure REST API 文件](https://docs.microsoft.com/rest/api/azure/) \(英文\)。   
+若要瞭解如何取得此權杖及呼叫 Azure 端點，請參閱[使用 REST 來管理 ML 資源](how-to-manage-rest.md)和[azure REST API 檔](https://docs.microsoft.com/rest/api/azure/)。   
 
 在下列範例中，請以決定相關資源的執行個體名稱取代 {} 中的文字。
 
@@ -100,23 +102,24 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 使用此呼叫來取得所有工作區的清單：
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2018-03-01-preview
+    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2019-11-01
 
 可以藉由下列方式取得個別工作區的相關資訊：
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2018-03-01-preview
+    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
 ### <a name="export-compute-information"></a>匯出計算資訊
 
 可以藉由下列方式取得附加至工作區的所有計算目標：
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2018-03-01-preview
+    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2019-11-01
 
 可以藉由下列方式取得單一計算目標的相關資訊：
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2018-03-01-preview
+    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01
 
 ### <a name="export-run-history-data"></a>匯出執行歷程記錄資料
+
 使用此呼叫來取得所有實驗及其資訊：
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
@@ -136,16 +139,16 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 可以藉由下列方式取得單一執行計量：
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
-    
+
 ### <a name="export-artifacts"></a>匯出成品
 
 使用此呼叫來取得成品及其路徑的清單：
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
-    
+
 ### <a name="export-notifications"></a>匯出通知
 
-使用此呼叫來取得已儲存工作的清單：     
+使用此呼叫來取得已儲存工作的清單：
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
 
@@ -167,41 +170,41 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 使用此呼叫來取得模型及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
 可以藉由下列方式取得個別模型：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
 ### <a name="export-assets"></a>匯出資產
 
 使用此呼叫來取得資產及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
 可以藉由下列方式取得個別資產：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
 ### <a name="export-images"></a>匯出映像
 
 使用此呼叫來取得映像及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
 可以藉由下列方式取得個別映像：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
 ### <a name="export-services"></a>匯出服務
 
 使用此呼叫來取得服務及其識別碼的清單：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
 可以藉由下列方式取得個別服務：
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
+    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
 ### <a name="export-pipeline-experiments"></a>匯出管線實驗
 
@@ -247,12 +250,14 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 ### <a name="delete-datasets-in-the-designer"></a>在設計工具中刪除資料集
 
-若要刪除設計工具中的資料集，請使用 Azure 入口網站或儲存體總管流覽至已連線的儲存體帳戶，並刪除其中的資料集。 在設計工具中取消註冊資料集，只會移除儲存體中的參考點。 
+若要刪除設計工具中的資料集，請使用 Azure 入口網站或儲存體總管流覽至已連線的儲存體帳戶，並刪除其中的資料集。 在設計工具中取消註冊資料集，只會移除儲存體中的參考點。
 
 ## <a name="export-data-in-the-designer"></a>在設計工具中匯出資料
 
 在您建立實驗的設計工具中，匯出您已新增的資料：
 
 1. 在左側選取 [**資料集**]。
+
+1. 在清單中，選取要匯出的資料集
 
     ![下載資料](./media/how-to-export-delete-data/unregister-dataset.png)

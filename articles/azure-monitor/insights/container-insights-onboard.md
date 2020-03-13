@@ -4,11 +4,11 @@ description: 本文說明如何啟用和設定容器的 Azure 監視器，讓您
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395382"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275304"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>如何啟用容器的 Azure 監視器
 
@@ -30,7 +30,7 @@ ms.locfileid: "78395382"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您有下列項目：
 
@@ -65,7 +65,7 @@ ms.locfileid: "78395382"
 | *.oms.opinsights.azure.com | 443 | 
 | *.blob.core.windows.net | 443 |
 | dc.services.visualstudio.com | 443 |
-| \* microsoftonline.com | 443 |
+| *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -89,7 +89,7 @@ ms.locfileid: "78395382"
 | microsoft.com | 80 | 用於網路連接。 只有在代理程式映射版本為 ciprod09262019 或更早版本時，才需要此參數。 |
 | dc.services.visualstudio.com | 443 | 針對使用 Azure 公用雲端 Application Insights 的代理程式遙測。 |
 
-## <a name="components"></a>Components
+## <a name="components"></a>元件
 
 您監視效能的能力取決於專為容器的 Azure 監視器而開發之適用于 Linux 的容器化 Log Analytics 代理程式。 這個特製化的代理程式會收集叢集中所有節點的效能和事件資料，且會自動部署並在部署期間向指定的 Log Analytics 工作區進行註冊。 代理程式版本是 microsoft/oms:ciprod04202018 或更新版本，且會以下列格式的日期呈現：*mmddyyyy*。
 

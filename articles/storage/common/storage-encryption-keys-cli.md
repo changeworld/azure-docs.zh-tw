@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bf21cd27fa290b9b9b863803aef043eccc815573
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: fcb4636263843143e685de2e3d2a27bf87cc5a90
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912704"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137402"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 以 Azure Key Vault 設定客戶管理的金鑰
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-若要瞭解如何使用 Azure CLI 在現有的金鑰保存庫上啟用「虛**刪除**」和「不要**清除**」，請參閱[如何搭配使用虛刪除與 CLI](../../key-vault/key-vault-soft-delete-cli.md)中的
+若要瞭解如何使用 Azure CLI 在現有的金鑰保存庫上啟用「虛**刪除**」和「不要**清除**」，請參閱[如何搭配使用虛刪除與 CLI](../../key-vault/key-vault-soft-delete-cli.md)中的 < 啟用虛**刪除**和**啟用清除保護**的章節。
 
 ## <a name="configure-the-key-vault-access-policy"></a>設定 key vault 存取原則
 
@@ -120,11 +120,21 @@ az storage account update
 
 若要變更 Azure 儲存體加密所使用的金鑰，請呼叫[az Storage account update](/cli/azure/storage/account#az-storage-account-update) ，如使用[客戶管理的金鑰設定加密](#configure-encryption-with-customer-managed-keys)中所示，並提供新的金鑰名稱和版本。 如果新的金鑰位於不同的金鑰保存庫中，請同時更新金鑰保存庫 URI。
 
+## <a name="revoke-customer-managed-keys"></a>撤銷客戶管理的金鑰
+
+如果您認為金鑰可能遭到入侵，您可以藉由移除 key vault 存取原則來撤銷客戶管理的金鑰。 若要撤銷客戶管理的金鑰，請呼叫[az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy)命令，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+
+```azurecli-interactive
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>停用客戶管理的金鑰
 
-當您停用客戶管理的金鑰時，您的儲存體帳戶會使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請呼叫[az storage account update](/cli/azure/storage/account#az-storage-account-update) ，並將 `--encryption-key-source parameter` 設定為 `Microsoft.Storage`，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+當您停用客戶管理的金鑰時，您的儲存體帳戶會再次使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請呼叫[az storage account update](/cli/azure/storage/account#az-storage-account-update) ，並將 `--encryption-key-source parameter` 設定為 `Microsoft.Storage`，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
 
-```powershell
+```azurecli-interactive
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

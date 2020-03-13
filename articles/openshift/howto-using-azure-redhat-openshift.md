@@ -1,18 +1,18 @@
 ---
 title: 建立 Azure Red Hat OpenShift 4.3 叢集 |Microsoft Docs
-description: 使用 Azure Red Hat OpenShift 3.11 建立叢集
+description: 使用 Azure Red Hat OpenShift 4.3 建立叢集
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23d7c950396c36925ce50d746195916292d360ad
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082824"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79201037"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>建立、存取和管理 Azure Red Hat OpenShift 4.3 叢集
 
@@ -56,7 +56,7 @@ ms.locfileid: "79082824"
 2. 執行下列命令來安裝 `az aro` 延伸模組：
 
    ```console
-   az extension add --source https://arosvc.blob.core.windows.net/az-preview/aro-0.1.0-py2.py3-none-any.whl
+   az extension add -n aro --index https://az.aroapp.io/preview
    ```
 
 3. 確認已註冊 ARO 延伸模組。

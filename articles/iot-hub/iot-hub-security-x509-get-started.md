@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457015"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271170"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
 
 本教學課程說明使用*X.509 憑證驗證*來保護 Azure IoT 中樞所需的步驟。 為了說明，我們使用開放原始碼工具 OpenSSL，在您的 Windows 電腦本機上建立憑證。 建議您僅將本教學課程用於測試目的。 針對生產環境，您應該向根憑證授權單位 (CA) 購買憑證。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程需要您準備下列資源：
 
@@ -97,7 +97,7 @@ ms.locfileid: "75457015"
 
     此步驟會下載及安裝 Azure IoT 裝置 SDK NuGet 套件及其相依專案，並新增對它的參考。
 
-1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在 `using`Program.cs**檔案開頭處新增下列** 陳述式：
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

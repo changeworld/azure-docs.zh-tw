@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b43169b59425e97b0aa614eb64a5c86c20179a8d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368680"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136811"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure 地圖服務 Android SDK 入門
 
@@ -109,7 +109,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     * 設定您的 Azure 地圖服務驗證資訊
     * 在 **onCreate** 方法中取得地圖控制項執行個體
 
-    使用 `setSubscriptionKey` 或 `setAadProperties` 方法，全域設定 `AzureMaps` 類別的驗證資訊，讓您不需要在每個視圖上新增驗證資訊。 
+    使用 `AzureMaps` 或 `setSubscriptionKey` 方法全域設定 `setAadProperties` 類別的驗證資訊，而無須在每個檢視上新增您的驗證資訊。 
 
     地圖控制項包含其本身用來管理 Android OpenGL 生命週期的生命週期方法。 這些生命週期方法必須直接從包含活動呼叫。 若要讓您的應用程式正確地呼叫地圖控制項的生命週期方法，您必須覆寫活動中包含地圖控制項的下列生命週期方法。 而且，您必須呼叫個別的地圖控制方法。 
 
@@ -273,7 +273,7 @@ mapControl.onReady(map -> {
 瞭解如何在地圖上新增重迭資料：
 
 > [!div class="nextstepaction"]
-> [將符號圖層新增至 Android 地圖](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [將符號圖層新增至 Android 地圖](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [將圖形新增至 Android 地圖](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

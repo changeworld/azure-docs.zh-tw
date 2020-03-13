@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498176"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281778"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>執行 Hyper-V VM 的容錯回復
 
@@ -29,7 +29,7 @@ ms.locfileid: "75498176"
 2. 請確定 Azure Vm 使用的是儲存體帳戶，而非受控磁片。 不支援使用受控磁片複寫的 Hyper-v Vm 容錯回復。
 3. 檢查內部部署 Hyper-v 主機（或如果您使用搭配 Site Recovery 的 System Center VMM 伺服器）是否正在執行並已連線至 Azure。 
 4. 請確定 Vm 的容錯移轉和認可已完成。 您不需要設定任何特定的 Site Recovery 元件，即可從 Azure 容錯回復 Hyper-v Vm。
-5. 完成資料同步處理和啟動內部部署 VM 所需的時間將取決於許多因素。 若要加速資料下載，您可以設定 Microsoft 復原服務代理程式使用更多執行緒來平行處理下載。 [深入了解](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)。
+5. 完成資料同步處理和啟動內部部署 VM 所需的時間將取決於許多因素。 若要加速資料下載，您可以設定 Microsoft 復原服務代理程式使用更多執行緒來平行處理下載。 [詳細資訊](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)。
 
 
 ## <a name="fail-back-to-the-original-location"></a>容錯回復至原始位置

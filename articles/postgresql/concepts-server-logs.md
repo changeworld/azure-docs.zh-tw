@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844933"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280491"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 適用於 PostgreSQL 的 Azure 資料庫可讓您設定和存取 Postgres 的標準記錄。 記錄可用來識別、疑難排解和修復設定錯誤和效能較佳。 您可以設定和存取的記錄資訊包括錯誤、查詢資訊、自動資料清理記錄、連接和檢查點。 （不提供交易記錄檔的存取權）。
@@ -117,7 +117,7 @@ AzureDiagnostics
 | DatatypeName | 資料類型的名稱 (如果適用) |
 | LogicalServerName | 伺服器的名稱 | 
 | _ResourceId | 資源 URI |
-| 首碼 | 記錄行的前置詞 |
+| 前置詞 | 記錄行的前置詞 |
 
 
 ## <a name="next-steps"></a>後續步驟

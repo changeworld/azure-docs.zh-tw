@@ -8,11 +8,11 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384892"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254777"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>遠端連線至 StorSimple 8000 系列裝置
 
@@ -67,7 +67,7 @@ ms.locfileid: "78384892"
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>使用裝置序列主控台啟用遠端管理
 1. 在序列主控台的功能表中，選取選項 1。 如需有關如何使用裝置序列主控台的詳細資訊，請移至[透過裝置序列主控台連線到 Windows PowerShell for StorSimple](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)。
 2. 在出現提示時輸入： `Enable-HcsRemoteManagement –AllowHttp`
-3. 您會看到使用 HTTP 來連線至裝置的安全性漏洞的相關通知。 出現提示時，請輸入 **Y** 進行確認。
+3. 您會看到使用 HTTP 來連線至裝置的安全性漏洞的相關通知。 出現提示時，輸入 **Y**確認。
 4. 確認 HTTP 已啟用，做法是輸入: `Get-HcsSystem`
 5. 確認 [RemoteManagementMode] 欄位顯示 **HttpsAndHttpEnabled**。下圖顯示 PuTTY 中的這些設定。
    
@@ -132,7 +132,7 @@ ms.locfileid: "78384892"
 
 1. 移至您的 StorSimple 裝置管理員服務。 選取 [裝置]，然後選取並按一下您想要設定遠端管理的裝置。 移至 [裝置設定] > [安全性]。
 2. 在 [安全性設定] 刀鋒視窗中，按一下 [遠端管理]。
-3. 將 **[啟用遠端管理]** 設為 **[是]** 。
+3. 將 [啟用遠端管理] 設為 [是]。
 4. 您現在可以選擇使用 HTTPS 來連線。 （預設值是透過 HTTPS 連接）。請確定已選取 [HTTPS]。
 5. 按一下 [...]，然後按一下 [下載遠端管理憑證]。 指定要儲存此檔案的位置。 您必須將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
 6. 按一下 [儲存]，系統提示您進行確認時，按一下 [是]。
@@ -143,7 +143,7 @@ ms.locfileid: "78384892"
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>使用裝置序列主控台啟用遠端管理
 1. 在序列主控台的功能表中，選取選項 1。 如需有關如何使用裝置序列主控台的詳細資訊，請移至[透過裝置序列主控台連線到 Windows PowerShell for StorSimple](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)。
-2. 在命令提示字元中，輸入：
+2. 在出現提示時輸入：
    
      `Enable-HcsRemoteManagement`
    
@@ -182,21 +182,21 @@ ms.locfileid: "78384892"
 以下說明上述各程序。
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>匯入遠端主機上的憑證
-1. 在 .cer 檔案上按一下滑鼠右鍵，然後選取 [安裝憑證]。 這會啟動 [憑證匯入精靈]。
+1. 以滑鼠右鍵按一下.cer 檔案，選取 [ **安裝憑證**]。 這會啟動 [憑證匯入精靈]。
    
     ![憑證匯入精靈 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. 對於 [存放區位置]，選取 [本機電腦]，然後按 [下一步]。
-3. 選取 [將所有憑證放入以下的存放區]，然後按一下 [瀏覽]。 瀏覽至遠端主機的根存放區，然後按 [下一步]。
+2. [存放區位置] 請選取 [本機電腦]，然後按一下 [下一步]。
+3. 選取 [將所有憑證放入以下的存放區]，然後按一下 [瀏覽]。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
    
     ![憑證匯入精靈  2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 按一下 **[完成]** 。 會出現訊息告訴您匯入成功。
+4. 按一下 [完成]。 會出現訊息告訴您匯入成功。
    
     ![憑證匯入精靈  3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>將裝置序號新增至遠端主機
 1. 以管理員的身分啟動 [記事本]，然後開啟位於 \Windows\System32\Drivers\etc 的主機檔案。
 2. 將下列三個項目新增至主機檔案：**DATA 0 IP 位址**、**控制器 0 固定 IP 位址**、**控制器 1 固定 IP 位址**。
-3. 輸入您稍早儲存的裝置序號。 對應至 IP 位址，如下圖所示。 對於控制器 0 及控制器 1，在序號 (CN 名稱) 尾端附加 **Controller0** 及 **Controller1**。
+3. 輸入您稍早儲存的裝置序號。 對應至 IP 位址，如下圖所示。 對於控制器 0 及控制器 1，在序號 (CN 名稱) 結尾後附加 **Controller0** 和 **Controller1**。
    
     ![將 CN 名稱加入至主機檔案](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
 4. 儲存主機檔案。
@@ -229,7 +229,7 @@ ms.locfileid: "78384892"
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     請為 Cmdlet 中的 -ComputerName 參數提供 <目標裝置的序號>。 此序號已對應至您的遠端主機上主機檔案中 DATA 0 的 IP 位址，如下圖所示的 **SHX0991003G44MT** 。
-5. 類型：
+5. 輸入：
    
      `Enter-PSSession $session`
 6. 您必須等候幾分鐘，接著便會透過 SSL 經由 HTTPS 連線到您的裝置。 您會看到訊息，指出您已連線到裝置。

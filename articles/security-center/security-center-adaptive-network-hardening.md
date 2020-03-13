@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心中的彈性網路強化 |Microsoft Docs
-description: 瞭解如何根據實際的流量模式、您的網路安全性群組（NSG）規則進行強化，並進一步改善您的安全性狀態。
+description: 瞭解如何使用實際的流量模式來強化您的網路安全性群組（NSG）規則，並進一步改善您的安全性狀態。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559284"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139584"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的彈性網路強化
 瞭解如何在 Azure 資訊安全中心中設定彈性網路強化功能。
@@ -30,10 +30,12 @@ ms.locfileid: "74559284"
 
 例如，假設現有的 NSG 規則是允許埠22上來自 140.20.30.10/24 的流量。 根據分析，彈性網路強化的建議是縮小範圍，並允許來自 140.23.30.10/29 的流量（這是較窄的 IP 範圍），並拒絕該埠的所有其他流量。
 
+>[!TIP]
+> 只有特定埠支援彈性網路強化建議。 如需完整清單，請參閱以下的[支援哪些埠？](#which-ports-are-supported) 
+
+
 ![網路強化視圖](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-> [!NOTE]
-> 下列埠支援彈性網路強化建議：22、3389、21、23、445、4333、3306、1433、1434、53、20、5985、5986、5432、139、66、1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看彈性網路強化警示和規則
 
@@ -73,7 +75,7 @@ ms.locfileid: "74559284"
     ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### 修改規則<a name ="modify-rule"></a>
+### 修改規則<a name ="modify-rule"> </a>
 
 您可能想要修改已建議的規則參數。 例如，您可能會想要變更建議的 IP 範圍。
 
@@ -106,7 +108,7 @@ ms.locfileid: "74559284"
 
     ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### 新增規則<a name ="add-rule"></a>
+### 新增規則<a name ="add-rule"> </a>
 
 您可以新增資訊安全中心不建議的「允許」規則。
 
@@ -129,7 +131,7 @@ ms.locfileid: "74559284"
     ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### 刪除規則<a name ="delete-rule"></a>
+### 刪除規則<a name ="delete-rule"> </a>
 
 必要時，您可以刪除目前會話的建議規則。 例如，您可能會判斷套用建議的規則可能會封鎖合法的流量。
 
@@ -139,11 +141,72 @@ ms.locfileid: "74559284"
 
     ![強化規則](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
-
-
-
-
-
-
  
 
+## <a name="which-ports-are-supported"></a>支援哪些埠？
+
+只有特定埠支援彈性網路強化建議。 下表提供完整清單：
+
+|連接埠|通訊協定|相關聯的服務|
+|:---:|:----:|:----|
+|13|UDP|日間服務|
+|17|UDP|QOTD 通訊協定|
+|19|UDP|CHARGEN 通訊協定|
+|22|TCP|SSH|
+|23|TCP|Telnet|
+|53|UDP|DNS|
+|69|UDP|TFTP|
+|81|TCP|潛在惡意（TOR 結束節點）|
+|111|TCP/UDP|RPC|
+|119|TCP|NNTP|
+|123|UDP|NTP|
+|135|TCP/UDP|端點對應程式;4CELL|
+|137|TCP/UDP|NetBIOS 名稱服務|
+|138|TCP/UDP|NetBIOS Datagram Service|
+|139|TCP|NetBIOS Session Service|
+|161|TCP/UDP|SNMP|
+|162|TCP/UDP|SNMP|
+|389|TCP|LDAP|
+|445|TCP|SMB|
+|512|TCP|Rexec|
+|514|TCP|遠端 shell|
+|593|TCP/UDP|HTTP RPC|
+|636|TCP|LDAP|
+|873|TCP|Rsync|
+|1433|TCP|MS SQL|
+|1434|UDP|MS SQL|
+|1900|UDP|SSDP|
+|1900|UDP|SSDP|
+|2049|TCP/UDP|NFS|
+|2301|TCP|Compaq 管理服務|
+|2323|TCP|3d-nfsd|
+|2381|TCP|Compaq 管理服務|
+|3268|TCP|LDAP|
+|3306|TCP|MySQL|
+|3389|TCP|RDP|
+|4333|TCP|mSQL|
+|5353|UDP|Mdn|
+|5432|TCP|PostgreSQL|
+|5555|TCP|個人代理程式;HP OmniBack|
+|5800|TCP|VNC|
+|5900|TCP|遠端畫面格緩衝區;VNC|
+|5900|TCP|VNC|
+|5985|TCP|Windows PowerShell|
+|5986|TCP|Windows PowerShell|
+|6379|TCP|Redis|
+|6379|TCP|Redis|
+|7000|TCP|Cassandra|
+|7001|TCP|Cassandra|
+|7199|TCP|Cassandra|
+|8081|TCP|CosmosDBSun Proxy 系統管理員|
+|8089|TCP|Splunk|
+|8545|TCP|潛在惡意（Cryptominer）|
+|9042|TCP|Cassandra|
+|9160|TCP|Cassandra|
+|9300|TCP|Elasticsearch|
+|11211|UDP|Memcached|
+|16379|TCP|Redis|
+|26379|TCP|Redis|
+|27017|TCP|MongoDB|
+|37215|TCP|可能是惡意的|
+||||

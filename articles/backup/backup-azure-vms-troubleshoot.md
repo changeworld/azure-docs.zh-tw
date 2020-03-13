@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對 Azure 虛擬機器備份和
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: c087814d74032bfc39310690cb31e258fdb1e41e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247926"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -76,7 +76,7 @@ ms.locfileid: "78363701"
 錯誤碼： ExtensionInstallationFailedMDTC <br/>
 錯誤訊息：延伸模組安裝失敗，錯誤為「COM + 無法與 Microsoft 分散式交易協調器交談 <br/>
 
-由於 Windows 服務**Com + 系統**應用程式發生問題，導致備份操作失敗。  若要解決此問題，請執行下列步驟：
+由於 Windows 服務**Com + 系統**應用程式發生問題，導致備份操作失敗。  若要解決此問題，請依照下列步驟執行︰
 
 * 嘗試啟動/重新開機 Windows 服務**Com + 系統應用程式**（從提高許可權的命令提示字元 **-net start COMSysApp**）。
 * 請確定**分散式交易協調器**服務是以**Network service**帳戶的身分執行。 如果沒有，請將它變更為 [以**網路服務**帳戶執行]，然後重新開機**Com + 系統應用程式**。
@@ -134,7 +134,7 @@ ms.locfileid: "78363701"
 錯誤碼： ExtensionStuckInDeletionState <br/>
 錯誤訊息：無法執行備份作業的延伸模組狀態
 
-備份作業失敗，因為備份延伸模組的狀態不一致。 若要解決此問題，請執行下列步驟：
+備份作業失敗，因為備份延伸模組的狀態不一致。 若要解決此問題，請依照下列步驟執行︰
 
 * 確認客體代理程式已安裝且可回應
 * 從 Azure 入口網站，移至 [**虛擬機器**] > [**所有設定**] > [**延伸**模組]
@@ -190,30 +190,30 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入了解 [VM 代理程式安裝，以及如何驗證 VM 代理程式安裝](#vm-agent)。 |
 | **錯誤碼**： ExtensionSnapshotFailedNoSecureNetwork <br/> **錯誤訊息**：快照集作業失敗，因為無法建立安全的網路通道。 | <ol><li> 在提高權限的模式中執行 **regedit.exe**，來開啟登錄編輯程式。 <li> 識別系統中存在的所有 .NET Framework 版本。 它們位於登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** 的階層下。 <li> 針對登錄機碼中的每個 .NET Framework，新增下列機碼︰ <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
 | **錯誤碼**： ExtensionVCRedistInstallationFailure <br/> **錯誤訊息**：快照集作業失敗，因為無法安裝適用于C++ Visual Studio 2012 的 Visual 可轉散發套件。 | 流覽至 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion 並安裝 vcredist2013_x64。<br/>請確定允許服務安裝的登錄機碼值設定為正確的值。 也就是將**HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver**中的**Start**值設定為**3** ，而不是**4**。 <br><br>如果您仍遇到安裝問題，請從提高權限的命令提示字元執行 **MSIEXEC /UNREGISTER**，再執行 **MSIEXEC /REGISTER**，以重新啟動安裝服務。  |
-
+| **錯誤碼**： UserErrorRequestDisallowedByPolicy <BR> **錯誤訊息**：在 VM 上設定了不正確原則，這會導致快照集作業無法運作。 | 如果您的 Azure 原則可[控制環境中的標記](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，請考慮將原則從[拒絕效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)變更為[修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或根據[Azure 備份所需的命名架構](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)，手動建立資源群組。
 ## <a name="jobs"></a>工作
 
 | 錯誤詳細資料 | 因應措施 |
 | --- | --- |
-| 此作業類型不支援取消： <br>請等候作業完成。 |無 |
+| 此作業類型不支援取消： <br>請等候作業完成。 |None |
 | 此作業未處於可取消的狀態： <br>請等候作業完成。 <br>**or**<br> 選取的作業未處於可取消的狀態： <br>請等候作業完成。 |作業很可能已經快要完成。 請等候作業完成。|
 | 備份無法取消作業，因為它並未正在進行： <br>僅支援針對進行中的作業進行取消。 請嘗試取消正在進行的作業。 |此錯誤發生的原因是因為暫時性的狀態。 請稍候再重試取消作業。 |
-| 備份無法取消作業： <br>請等候作業完成。 |無 |
+| 備份無法取消作業： <br>請等候作業完成。 |None |
 
-## <a name="restore"></a>還原
+## <a name="restore"></a>{1}還原{2}
 
 | 錯誤詳細資料 | 因應措施 |
 | --- | --- |
 | 還原失敗，發生雲端內部錯誤。 |<ol><li>您嘗試還原的雲端服務是使用 DNS 設定所設定。 您可以檢查： <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**。<br>如果已設定 [位址]，則 DNS 設定便已設定。<br> <li>您嘗試還原到其中的雲端服務是使用 **ReservedIP** 所設定，而雲端服務中的現有 VM 目前處於停止狀態。 您可以使用下列 PowerShell Cmdlet 來檢查雲端服務是否已保留 IP： **$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName**。 <br><li>您嘗試將具有下列特殊網路組態的虛擬機器還原至相同的雲端服務： <ul><li>負載平衡器設定下的虛擬機器，內部與外部。<li>具有多個保留 IP 的虛擬機器。 <li>具有多個 NIC 的虛擬機器。 </ul><li>在 UI 中選取新的雲端服務，或參閱適用於具有特殊網路組態之 VM 的[還原考量](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)。</ol> |
 | 選取的 DNS 名稱已有人使用： <br>請指定不同的 DNS 名稱並再試一次。 |此 DNS 名稱是指雲端服務名稱，其結尾通常是 **.cloudapp.net**。 此名稱必須是唯一的。 如果您遇到這個錯誤，您需要在還原期間選擇不同的 VM 名稱。 <br><br> 只有 Azure 入口網站的使用者才會看到這個錯誤。 透過 PowerShell 執行還原作業將會成功，因為它只會還原磁碟，並不會建立 VM。 當您在磁碟還原作業之後明確建立 VM 時，將會遇到此錯誤。 |
-| 指定的虛擬網路設定不正確： <br>請指定不同的虛擬網路設定並再試一次。 |無 |
-| 指定的雲端服務所使用的保留 IP 不符合要還原之虛擬機器的設定： <br>請指定未使用保留 IP 的其他雲端服務。 或選擇另一個復原點來進行還原。 |無 |
-| 雲端服務已達到其輸入端點的數目限制： <br>請指定不同的雲端服務或使用現有的端點來重試作業。 |無 |
-| 復原服務保存庫和目標儲存體帳戶處於兩個不同的區域： <br>請確定還原作業中所指定的儲存體帳戶和您的復原服務保存庫皆位於相同的 Azure 區域中。 |無 |
-| 不支援針對還原作業所指定的儲存體帳戶： <br>僅支援具有本地備援或異地備援複寫設定的「基本」或「標準」儲存體帳戶。 請選取支援的儲存體帳戶。 |無 |
+| 指定的虛擬網路設定不正確： <br>請指定不同的虛擬網路設定並再試一次。 |None |
+| 指定的雲端服務所使用的保留 IP 不符合要還原之虛擬機器的設定： <br>請指定未使用保留 IP 的其他雲端服務。 或選擇另一個復原點來進行還原。 |None |
+| 雲端服務已達到其輸入端點的數目限制： <br>請指定不同的雲端服務或使用現有的端點來重試作業。 |None |
+| 復原服務保存庫和目標儲存體帳戶處於兩個不同的區域： <br>請確定還原作業中所指定的儲存體帳戶和您的復原服務保存庫皆位於相同的 Azure 區域中。 |None |
+| 不支援針對還原作業所指定的儲存體帳戶： <br>僅支援具有本地備援或異地備援複寫設定的「基本」或「標準」儲存體帳戶。 請選取支援的儲存體帳戶。 |None |
 | 針對還原作業所指定的儲存體帳戶類型未上線： <br>請確定針對還原作業所指定的儲存體帳戶類型已上線。 |此錯誤發生的原因可能是因為 Azure 儲存體中發生暫時性錯誤，或是因為運作中斷。 選擇另一個儲存體帳戶。 |
-| 已達到資源群組配額： <br>請從 Azure 入口網站刪除一些資源群組，或連絡 Azure 支援以提高限制。 |無 |
-| 選取的子網路不存在： <br>請選取存在的子網路。 |無 |
+| 已達到資源群組配額： <br>請從 Azure 入口網站刪除一些資源群組，或連絡 Azure 支援以提高限制。 |None |
+| 選取的子網路不存在： <br>請選取存在的子網路。 |None |
 | 備份服務無權存取您訂用帳戶中的資源。 |若要解決此錯誤，請先使用[還原備份的磁碟](backup-azure-arm-restore-vms.md#restore-disks)中的步驟來還原磁碟。 然後使用[從還原的磁碟建立 VM](backup-azure-vms-automation.md#restore-an-azure-vm) 中的 PowerShell 步驟。 |
 
 ## <a name="backup-or-restore-takes-time"></a>備份或還原需花費很長的時間

@@ -10,17 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ba792c225c9875bbad50e3fb460c84ed012ce615
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 58ccd63e16382aca8e16eb67efba951a055eb254
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169103"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217826"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>疑難排解指南：建立及連接到 Azure Machine Learning Studio （傳統）工作區
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 本指南提供一些在您設定 Azure Machine Learning Studio （傳統）工作區時經常遇到之挑戰的解決方案。
-
-
 
 ## <a name="workspace-owner"></a>工作區擁有者
 若要在 Machine Learning Studio （傳統）中開啟工作區，您必須登入您用來建立工作區的 Microsoft 帳戶，或者您需要收到來自擁有者的邀請，才能加入工作區。 您可以從 Azure 入口網站管理工作區，其中包括設定存取的能力。
@@ -30,14 +31,14 @@ ms.locfileid: "77169103"
 [管理 Azure Machine Learning Studio （傳統）工作區]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>允許區域
-機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶並未包含這其中一個區域，您可能會看見錯誤訊息「您在允許的區域中沒有任何訂用帳戶」。
+機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶不包含其中一個區域，您可能會看到錯誤訊息「您在允許的區域中沒有任何訂用帳戶。」
 
 為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費] 做為問題類型，並遵照提示來提交您的要求。
 
 ## <a name="storage-account"></a>儲存體帳戶
 機器學習服務需要儲存體帳戶來儲存資料。 您可以使用現有的儲存體帳戶，也可以在建立新的 Machine Learning Studio （傳統）工作區時建立新的儲存體帳戶（如果您有建立新儲存體帳戶的配額）。
 
-建立新的 Machine Learning Studio （傳統）工作區之後，您可以使用您用來建立工作區的 Microsoft 帳戶登入 Machine Learning Studio （傳統）。 如果您遇到錯誤訊息「找不到工作區」(類似於下列螢幕擷取畫面)，請使用下列步驟來刪除您的瀏覽器 Cookie。
+建立新的 Machine Learning Studio （傳統）工作區之後，您可以使用您用來建立工作區的 Microsoft 帳戶登入 Machine Learning Studio （傳統）。 如果您遇到錯誤訊息「找不到工作區」（類似下列螢幕擷取畫面），請使用下列步驟來刪除您的瀏覽器 cookie。
 
 ![找不到工作區](media/troubleshooting-creating-ml-workspace/screen3.png)
 

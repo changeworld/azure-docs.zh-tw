@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388864"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279750"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>診斷虛擬機器網路流量篩選問題
 
@@ -170,12 +170,12 @@ az vm show \
 
 | 屬性                | 值                                                                              |
 |---------                |---------                                                                           |
-| 來源                  | 任何                                                                                |
-| 來源連接埠範圍      | 任何                                                                                |
+| 來源                  | 任意                                                                                |
+| 來源連接埠範圍      | 任意                                                                                |
 | Destination             | VM 的 IP 位址、IP 位址範圍，或是子網路中的所有位址。 |
 | 目的地連接埠範圍 | 80                                                                                 |
 | 通訊協定                | TCP                                                                                |
-| 動作                  | 允許                                                                              |
+| 動作                  | Allow                                                                              |
 | 優先順序                | 100                                                                                |
 | 名稱                    | Allow-HTTP-All                                                                     |
 

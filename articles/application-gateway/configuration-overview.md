@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279217"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -340,7 +340,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 ## <a name="back-end-pool"></a>後端集區
 
-您可以將後端集區指向四種類型的後端成員：特定的虛擬機器、虛擬機器擴展集、IP 位址/FQDN 或應用程式服務。 每個後端集區都可以指向相同類型的多個成員。 不支援指向相同後端集區中不同類型的成員。
+您可以將後端集區指向四種類型的後端成員：特定的虛擬機器、虛擬機器擴展集、IP 位址/FQDN 或應用程式服務。 
 
 建立後端集區之後，您必須將它與一或多個要求路由規則產生關聯。 您也必須為應用程式閘道上的每個後端集區設定健康情況探查。 符合要求路由規則條件時，應用程式閘道會將流量轉送到對應後端集區中狀況良好的伺服器（由健康情況探查所決定）。
 

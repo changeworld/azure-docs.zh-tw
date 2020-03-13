@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276500"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 觸發程序和繫結概念
 
@@ -31,7 +31,7 @@ ms.locfileid: "74226553"
 | 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *None* | 佇列<sup>*</sup> |
 |排程工作會讀取 Blob 儲存體內容，並建立新的 Cosmos DB 檔。 | 計時器 | Blob 儲存體 | Cosmos DB |
 |事件方格是用來從 Blob 儲存體中讀取影像，並使用來自 Cosmos DB 的檔來傳送電子郵件。 | Event Grid | Blob 儲存體和 Cosmos DB | SendGrid |
-| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | http | *None* | Microsoft Graph |
+| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *None* | Microsoft Graph |
 
 <sup>\*</sup>代表不同的佇列
 

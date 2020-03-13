@@ -3,12 +3,12 @@ title: 使用容器的 Azure 監視器即時查看計量 |Microsoft Docs
 description: 本文描述計量的即時觀點，而不使用 kubectl 與容器的 Azure 監視器。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216596"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>如何即時查看計量
 
@@ -34,7 +34,7 @@ ms.locfileid: "75404940"
 
 [輪詢間隔] 是從 [**設定間隔**] 下拉式設定，可讓您在每1、5、15和30秒輪詢新資料。 
 
-![[上線] 下拉輪詢間隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![[上線] 下拉輪詢間隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >我們建議您將輪詢間隔設定為1秒，並在一小段時間內進行問題的疑難排解。 這些要求可能會影響叢集上 Kubernetes API 的可用性和節流。 之後，重新設定為較長的輪詢間隔。 

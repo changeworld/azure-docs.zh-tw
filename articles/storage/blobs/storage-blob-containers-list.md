@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690999"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135899"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 blob 容器
 
-當您從程式碼列出 Azure 儲存體帳戶中的容器時，您可以指定數個選項來管理從 Azure 儲存體傳回結果的方式。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)來列出容器。  
+當您從程式碼列出 Azure 儲存體帳戶中的容器時，您可以指定數個選項來管理從 Azure 儲存體傳回結果的方式。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來列出容器。  
 
 ## <a name="understand-container-listing-options"></a>瞭解容器清單選項
 
@@ -98,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [列出容器](/rest/api/storageservices/list-containers2)
 [列舉 Blob 資源](/rest/api/storageservices/enumerating-blob-resources)

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204319"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure AI 資源庫](https://gallery.azure.ai)** 是一個由社群驅動的網站，可用於探索及共用透過 Azure AI 建置的解決方案。
 資源庫具有各種資源，可供您開發自己的分析解決方案。
@@ -86,7 +88,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 1. 在實驗畫布下方的動作清單中，選取 [發佈到資源庫]。
 
-1. 在資源庫中，輸入 [名稱] 和描述性 [標記]。 醒目提示您所使用的技術或您正在解決的實際問題。 舉例來說，「二元分類法：Twitter 情感分析」即為具描述性的實驗標題。
+1. 在資源庫中，輸入 [名稱] 和描述性 [標記]。 醒目提示您所使用的技術或您正在解決的實際問題。 描述性實驗標題的範例是「二元分類： Twitter 情感分析」。
 
 1. 在 [摘要] 方塊中，輸入您的實驗摘要。 簡短說明此實驗要解決的問題，以及您的處理方式。
 

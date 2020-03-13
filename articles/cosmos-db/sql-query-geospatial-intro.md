@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 655c3a96792fba83ac73365f02d48ce0347e9048
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566344"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137881"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 
@@ -25,7 +25,10 @@ ms.locfileid: "77566344"
 
 空間資料可描述空間中物件的位置和形狀。 在大部分的應用程式中，這些會對應至地球上的物件和地理空間資料。 空間資料可以用來代表人、感興趣的地方、城市邊界或湖泊。 常見使用案例通常涉及鄰近性查詢，例如「尋找我目前位置附近的所有咖啡廳」。
 
-Azure Cosmos DB 的 SQL API 支援**geography**資料類型。 **geography** 類型代表圓形表面座標系統中的資料。
+Azure Cosmos DB 的 SQL API 支援兩種空間資料類型： **geometry**資料類型和**geography**資料類型。
+
+- **Geometry**類型代表 Euclidean （平面）座標系統中的資料
+- **geography** 類型代表圓形表面座標系統中的資料。
 
 ## <a name="supported-data-types"></a>支援的資料類型
 
@@ -70,7 +73,11 @@ Azure Cosmos DB 支援下列空間資料類型：
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>地理位置座標系統中的點
+### <a name="points-in-a-geometry-coordinate-system"></a>Geometry 座標系統中的點
+
+若為**geometry**資料類型，GeoJSON 規格會先指定水準軸和垂直軸秒。
+
+### <a name="points-in-a-geography-coordinate-system"></a>地理座標系統中的點
 
 對於**geography**資料類型，GeoJSON 規格會指定經度 first 和緯度 second。 如同其他的地圖應用程式，經度和緯度為角度，並以度為表示單位。 經度值是從本初子午線測量，並介於 -180 度和 180.0 度之間；緯度值是從赤道測量，並介於 -90.0 度和 90.0 度之間。
 

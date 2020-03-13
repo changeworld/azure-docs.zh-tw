@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967640"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136341"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>使用 OAuth 2.0、Azure Active Directory B2C 和 Azure API 管理來保護 SPA 後端
 
@@ -250,7 +250,7 @@ ms.locfileid: "78967640"
 
    > [!NOTE]
    > 下列區段是選擇性的，不適用於不支援開發人員入口網站的**耗用量**層。
-   > 如果您不想要使用開發人員入口網站，或因為您使用的是取用層而無法使用它，請略過此步驟，並直接跳到「[建立 JAVASCRIPT SPA 以取用 API](##build-the-javascript-spa-to-consume-the-api)」。
+   > 如果您不想要使用開發人員入口網站，或因為您使用的是取用層而無法使用它，請略過此步驟，並直接跳到「[建立 JAVASCRIPT SPA 以取用 API](#build-the-javascript-spa-to-consume-the-api)」。
 
 ## <a name="optional-configure-the-developer-portal"></a>選擇性設定開發人員入口網站
 

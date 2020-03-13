@@ -4,12 +4,12 @@ description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584484"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276825"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -363,6 +363,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 | _headers_ | 包含回應標頭的物件。             |
 | _isRaw_   | 表示略過回應的格式。    |
 | _status_  | 回應的 HTTP 狀態碼。                     |
+| _cookie_ | 在回應中設定的 HTTP cookie 物件陣列。 HTTP cookie 物件具有 `name`、`value`和其他 cookie 屬性，例如 `maxAge` 或 `sameSite`。 |
 
 ### <a name="accessing-the-request-and-response"></a>存取要求和回應 
 

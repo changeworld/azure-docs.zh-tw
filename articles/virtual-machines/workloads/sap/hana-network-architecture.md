@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 068cc2ed9743a62aa2249a815893c71499711092
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: ca05603ebf06906349a7f94443eafb773a0764f9
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617022"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138989"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (大型執行個體) 網路架構
 
@@ -77,7 +77,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 用於 Azure 外部的基礎結�
 
 有了 HANA 大型實例戳記的修訂4，部署到「HANA 大型實例」戳記的 Azure Vm 之間的網路延遲，有經驗可以符合平均值或高於 SAP Note 中所記載的平均分類[#1100926-FAQ：](https://launchpad.support.sap.com/#/notes/1100926/E)如果已設定 Azure ExpressRoute 快速路徑，則為網路效能（請參閱下文）。 若要以接近修訂版4的 HANA 大型實例單位來部署 Azure Vm，您需要利用[Azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)。 「鄰近性放置群組」如何用來在與修訂版4託管 HANA 大型實例單位相同的 Azure 資料中心內尋找 SAP 應用層的方式，會在[Azure 鄰近放置群組中說明，以取得 sap 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 
-若要在 Vm 與 HANA 大型實例之間提供具決定性的網路延遲，您必須選擇 ExpressRoute 閘道 SKU。 不同於內部部署與 VM 之間的流量模式，VM 和 HANA 大型執行個體之間的流量模式可以開發很小但高載的要求和資料磁碟區來進行傳輸。 為了妥善處理這類高載，強烈建議您使用 UltraPerformance 閘道 SKU。 針對類型 II 類別的 HANA 大型實例 Sku，您必須使用 UltraPerformance 閘道 SKU 作為 ExpressRotue 閘道。
+若要在 Vm 與 HANA 大型實例之間提供具決定性的網路延遲，您必須選擇 ExpressRoute 閘道 SKU。 不同於內部部署與 VM 之間的流量模式，VM 和 HANA 大型執行個體之間的流量模式可以開發很小但高載的要求和資料磁碟區來進行傳輸。 為了妥善處理這類高載，強烈建議您使用 UltraPerformance 閘道 SKU。 針對類型 II 類別的 HANA 大型實例 Sku，您必須使用 UltraPerformance 閘道 SKU 做為 ExpressRoute 閘道。
 
 > [!IMPORTANT] 
 > 考慮到 SAP 應用程式與資料庫層之間的整體網路流量，因此僅支援使用虛擬網路的 HighPerformance 或 UltraPerformance 閘道 SKU 來連線至 SAP HANA on Azure (大型執行個體)。 對於 HANA 大型實例類型 II Sku，只支援 UltraPerformance 閘道 SKU 作為 ExpressRoute 閘道。 使用 ExpressRoute 快速路徑時，適用例外狀況（請參閱下文）

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
 ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391864"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279321"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>關於 BGP 與 Azure VPN 閘道
 這篇文章提供 Azure VPN 閘道中的 BGP (邊界閘道協定) 支援概觀。

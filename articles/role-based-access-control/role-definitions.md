@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981005"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283221"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解適用於 Azure 資源的角色定義
 
@@ -48,7 +48,7 @@ AssignableScopes []
 
 作業字串的 `{action}` 部分指定您可以對資源類型執行的作業類型。 例如，您將會在 `{action}` 中看到下列子字串：
 
-| 動作子字串    | 說明         |
+| 動作子字串    | 描述         |
 | ------------------- | ------------------- |
 | `*` | 此萬用字元會授與所有符合字串之作業的存取權。 |
 | `read` | 啟用讀取作業 (GET)。 |
@@ -56,7 +56,7 @@ AssignableScopes []
 | `action` | 啟用像是重新開機虛擬機器（POST）之類的自訂作業。 |
 | `delete` | 啟用刪除作業 (DELETE)。 |
 
-以下是 JSON 格式的[參與者](built-in-roles.md#contributor)角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
+以下是 JSON 格式的[參與者](built-in-roles.md#contributor)角色定義。 `*` 下的萬用字元 (`Actions`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
 
 ```json
 {
@@ -176,7 +176,7 @@ Bob 的許可權僅限於[儲存體 Blob 資料參與者](built-in-roles.md#stor
 
 `Actions` 權限會指定角色所允許執行的管理作業。 它是識別 Azure 資源提供者的安全性實體作業的作業字串集合。 以下是可用於 `Actions` 中的一些管理作業範例。
 
-| 作業字串    | 說明         |
+| 作業字串    | 描述         |
 | ------------------- | ------------------- |
 | `*/read` | 授與所有 Azure 資源提供者的所有資源類型之讀取作業的存取權。|
 | `Microsoft.Compute/*` | 授與對 Microsoft.Compute 資源提供者中所有資源類型之所有作業的存取權。|
@@ -186,7 +186,7 @@ Bob 的許可權僅限於[儲存體 Blob 資料參與者](built-in-roles.md#stor
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions` 權限指定從所允許 `Actions` 中排除的管理作業。 如果排除限制的作業可更輕鬆地定義您要允許的作業集合，請使用 `NotActions` 權限。 角色 (有效權限) 所授與之存取權的計算方式是將 `Actions` 作業扣除 `NotActions` 作業。
+`NotActions` 權限指定從所允許 `Actions` 中排除的管理作業。 如果排除限制的作業可更輕鬆地定義您要允許的作業集合，請使用 `NotActions` 權限。 角色 (有效權限) 所授與之存取權的計算方式是將 `NotActions` 作業扣除 `Actions` 作業。
 
 > [!NOTE]
 > 如果為使用者指派會排除 `NotActions` 中作業的角色，並指派授與相同作業存取權的第二個角色，即會允許使用者執行該作業。 `NotActions` 不是拒絕規則 - 它只是一個便利的方式，可以在需要排除特定作業時建立允許的作業集合。
@@ -196,7 +196,7 @@ Bob 的許可權僅限於[儲存體 Blob 資料參與者](built-in-roles.md#stor
 
 `DataActions` 權限會指定角色允許對物件內資料執行的管理作業。 例如，如果使用者有儲存體帳戶的讀取 Blob 資料存取權，則他們可讀取該儲存體帳戶中的 Blob。 以下是可用於 `DataActions` 中的一些資料作業範例。
 
-| 作業字串    | 說明         |
+| 作業字串    | 描述         |
 | ------------------- | ------------------- |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | 傳回 Blob 或 Blob 清單。 |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | 傳回寫入 Blob 的結果。 |
@@ -205,7 +205,7 @@ Bob 的許可權僅限於[儲存體 Blob 資料參與者](built-in-roles.md#stor
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions` 權限可指定從所允許 `DataActions` 中排除的資料作業。 角色 (有效權限) 所授與之存取權的計算方式是將 `DataActions` 作業扣除 `NotDataActions` 作業。 每個資源提供者會提供個別的一組 API 來完成資料作業。
+`NotDataActions` 權限可指定從所允許 `DataActions` 中排除的資料作業。 角色 (有效權限) 所授與之存取權的計算方式是將 `NotDataActions` 作業扣除 `DataActions` 作業。 每個資源提供者會提供個別的一組 API 來完成資料作業。
 
 > [!NOTE]
 > 如果為使用者指派的角色已在 `NotDataActions` 中排除一個資料作業，並且指派授與相同資料作業存取權的第二個角色給使用者，即會允許使用者執行該資料作業。 `NotDataActions` 不是拒絕規則 - 它只是一個便利的方式，可以在需要排除特定資料作業時建立允許的資料作業集合。

@@ -18,11 +18,11 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377123"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262447"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上設定 SSO
 
@@ -69,7 +69,7 @@ MSAL 支援透過 iOS keychain 存取群組進行 SSO 共用。
 
 若要讓 Microsoft 身分識別平臺知道哪些應用程式可以共用權杖，那些應用程式必須共用相同的用戶端識別碼或應用程式識別碼。 這是您在入口網站中註冊第一個應用程式時提供給您的唯一識別碼。
 
-Microsoft 身分識別平臺會告訴使用相同應用程式識別碼的應用程式，其方式就是重新**導向 uri**。 每個應用程式可以在上架的入口網站中註冊多個重新導向 URI。 組件中的每個應用程式將會有不同的重新導向 URI。 例如，
+Microsoft 身分識別平臺會告訴使用相同應用程式識別碼的應用程式，其方式就是重新**導向 uri**。 每個應用程式可以在上架的入口網站中註冊多個重新導向 URI。 組件中的每個應用程式將會有不同的重新導向 URI。 例如：
 
 App1 重新導向 URI： `msauth.com.contoso.mytestapp1://auth`  
 App2 重新導向 URI： `msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +149,7 @@ MSAL 可支援 Microsoft Authenticator 的代理驗證。 Microsoft Authenticato
 
 下列步驟說明如何使用您應用程式的驗證代理人來啟用 SSO：
 
-1. 在應用程式的資訊中，為應用程式註冊 broker 相容的重新導向 URI 格式。 plist。 Broker 相容的重新導向 URI 格式為 `msauth.<app.bundle.id>://auth`。 以您應用程式的套件組合識別碼取代 ' < app.config. id > ' '。 例如，
+1. 在應用程式的資訊中，為應用程式註冊 broker 相容的重新導向 URI 格式。 plist。 Broker 相容的重新導向 URI 格式為 `msauth.<app.bundle.id>://auth`。 以您應用程式的套件組合識別碼取代 ' < app.config. id > ' '。 例如：
 
     ```xml
     <key>CFBundleURLSchemes</key>

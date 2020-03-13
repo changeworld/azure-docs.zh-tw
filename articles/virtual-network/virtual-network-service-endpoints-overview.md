@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380123"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244780"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
@@ -139,7 +139,7 @@ ms.locfileid: "78380123"
 
 VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此篩選器只允許透過服務端點的特定 Azure 服務資源。 服務端點原則可針對流向 Azure 服務的虛擬網路流量提供更細微的存取控制。 如需詳細資訊，請參閱[虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
 
-## <a name="faqs"></a>FAQ
+## <a name="faqs"></a>常見問題集
 
 如需常見問題，請參閱[虛擬網路服務端點常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
 

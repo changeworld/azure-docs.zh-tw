@@ -8,11 +8,11 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360804"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275044"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和取出 Azure 活動記錄事件
 
@@ -42,13 +42,13 @@ ms.locfileid: "78360804"
 | 類別 | 描述 |
 |:---|:---|
 | 管理 | 包含透過 Resource Manager 執行的所有建立、更新、刪除和動作作業的記錄。 系統管理事件的範例包括 [_建立虛擬機器_] 和 [_刪除網路安全性群組_]。<br><br>使用 Resource Manager 的使用者或應用程式所採取的每個動作，都會在特定資源類型上模型化為作業。 如果作業類型為 [_寫入_]、[_刪除_] 或 [_動作_]，該作業的 [啟動] 和 [成功] 或 [失敗] 記錄都會記錄在 [系統管理] 類別中。 系統管理事件也包括對訂用帳戶中的角色型存取控制所做的任何變更。 |
-| 服務健全狀況 | 包含 Azure 中發生之任何服務健康狀態事件的記錄。 _美國東部的 SQL Azure_服務健康狀態事件的範例是發生停機。 <br><br>服務健康狀態事件分為六種：_需要採取動作_、_協助_復原、_事件_、_維護_、_資訊_或_安全性_。 只有當您的訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
+| 服務健康情況 | 包含 Azure 中發生之任何服務健康狀態事件的記錄。 _美國東部的 SQL Azure_服務健康狀態事件的範例是發生停機。 <br><br>服務健康狀態事件分為六種：_需要採取動作_、_協助_復原、_事件_、_維護_、_資訊_或_安全性_。 只有當您的訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
 | 資源健全狀況 | 包含 Azure 資源已發生之任何資源健康狀態事件的記錄。 資源健康狀態事件的一個範例是_虛擬機器健全狀況狀態已變更為 [無法使用_]。<br><br>資源健康狀態事件可以代表四種健康狀態之一： [_可用_]、[_無法使用_]、[已_降級_] 和 [_未知_]。 此外，資源健康狀態事件可以分類為已_起始平臺_或_使用者起始_。 |
 | 警示 | 包含 Azure 警示的啟用記錄。 警示事件的範例是_myVM 上的 CPU% 在過去5分鐘內已超過 80_。|
 | Autoscale | 包含根據您在訂用帳戶中定義的自動調整規模設定，與自動調整引擎作業相關之任何事件的記錄。 自動調整規模事件的一個範例是 [_自動調整相應增加] 動作失敗_。 |
 | 建議 | 包含來自 Azure Advisor 的建議事件。 |
 | 安全性 | 包含 Azure 資訊安全中心所產生之任何警示的記錄。 安全性事件的範例是_執行可疑的雙重擴充_檔案。 |
-| Policy(Windows Intune 說明：原則) | 包含 Azure 原則所執行之所有效果動作作業的記錄。 原則事件的範例包括_Audit_和_Deny_。 原則所採取的每個動作會模型化為資源上的作業。 |
+| 原則 | 包含 Azure 原則所執行之所有效果動作作業的記錄。 原則事件的範例包括_Audit_和_Deny_。 原則所採取的每個動作會模型化為資源上的作業。 |
 
 ## <a name="view-change-history"></a>檢視變更記錄
 
@@ -173,7 +173,7 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="activity-logs-analytics-monitoring-solution"></a>活動記錄分析監視解決方案
 Azure Log Analytics 監視解決方案包含多個記錄查詢和視圖，可用於分析 Log Analytics 工作區中的活動記錄檔記錄。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 您必須建立診斷設定，以將訂用帳戶的活動記錄傳送至 Log Analytics 工作區。 請參閱[在 Azure 監視器中收集 Log Analytics 工作區中的 Azure 平臺記錄](resource-logs-collect-workspace.md)。
 
 ### <a name="install-the-solution"></a>安裝解決方案

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969346"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221505"
 ---
 # <a name="authoring-and-runtime-keys"></a>撰寫和執行階段金鑰
 
@@ -44,7 +44,7 @@ Language Understanding （LUIS）有兩個服務和 API 集：
 
 LUIS 允許三種類型的 Azure 資源： 
  
-|索引鍵|目的|認知服務 `kind`|認知服務 `type`|
+|Key|目的|認知服務 `kind`|認知服務 `type`|
 |--|--|--|--|
 |[授權金鑰](#programmatic-key)|使用撰寫、訓練、發行和測試來存取和管理應用程式的資料。 如果您想要以程式設計方式撰寫 LUIS 應用程式，請建立 LUIS 撰寫金鑰。<br><br>`LUIS.Authoring` 金鑰的目的是允許您：<br>* 以程式設計方式管理 Language Understanding 應用程式和模型，包括定型和發佈<br> * 將人員指派給「[參與者」角色](#contributions-from-other-authors)，以控制撰寫資源的許可權。|`LUIS.Authoring`|`Cognitive Services`|
 |[預測金鑰](#prediction-endpoint-runtime-key)| 查詢預測端點要求。 在您的用戶端應用程式要求預測超過起始資源所提供的1000要求之前，請先建立 LUIS 預測金鑰。 |`LUIS`|`Cognitive Services`|
@@ -125,7 +125,7 @@ LUIS 執行時間端點接受兩種查詢樣式，兩者都使用預測端點執
 |修改模型|
 |發佈|
 |檢閱用於[主動式學習](luis-how-to-review-endpoint-utterances.md)的端點語句|
-|訓練|
+|定型|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
@@ -137,7 +137,7 @@ LUIS 執行時間端點接受兩種查詢樣式，兩者都使用預測端點執
 |:--|:--|
 |可供擁有者和參與者使用|適用于擁有者、參與者，以及任何知道應用程式識別碼的其他人|
 
-您可以在伺服器對伺服器的環境中呼叫 LUIS 執行時間金鑰，以控制他們看到的人。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 當呼叫伺服器端 API 並驗證並驗證授權時，請將上的呼叫傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的金鑰和端點 URL，讓您能夠追蹤存取權，並可讓您新增端點回應記錄（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
+您可以在伺服器對伺服器的環境中呼叫 LUIS 執行時間金鑰，以控制他們看到的人。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/functions/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/active-directory/))。 當呼叫伺服器端 API 並驗證並驗證授權時，請將上的呼叫傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的金鑰和端點 URL，讓您能夠追蹤存取權，並可讓您新增端點回應記錄（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
 
 #### <a name="runtime-security-for-private-apps"></a>私用應用程式的執行時間安全性
 
@@ -163,7 +163,7 @@ LUIS 沒有轉移資源擁有權的概念。
 
 ## <a name="securing-the-endpoint"></a>保護端點 
 
-您可以在伺服器對伺服器的環境中呼叫它，以控制可查看 LUIS 預測執行時間端點金鑰的人員。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 呼叫伺服器端 API 並確認驗證和授權之後，請將呼叫繼續傳遞給 LUIS。 雖然此策略並無法防止攔截式攻擊，但可向您的使用者混淆端點、讓您能夠追蹤存取，以及讓您新增端點回應記錄功能 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/))。  
+您可以在伺服器對伺服器的環境中呼叫它，以控制可查看 LUIS 預測執行時間端點金鑰的人員。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/functions/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/active-directory/))。 呼叫伺服器端 API 並確認驗證和授權之後，請將呼叫繼續傳遞給 LUIS。 雖然此策略並無法防止攔截式攻擊，但可向您的使用者混淆端點、讓您能夠追蹤存取，以及讓您新增端點回應記錄功能 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/))。  
 
 ## <a name="next-steps"></a>後續步驟
 

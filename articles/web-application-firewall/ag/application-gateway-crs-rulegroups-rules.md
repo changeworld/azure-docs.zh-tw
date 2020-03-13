@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075363"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279243"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 應用程式防火牆 CRS 規則群組與規則
 
@@ -94,7 +94,7 @@ CRS 2.2.9 包含10個規則群組，如下表所示。 每個群組都包含多�
 
 在應用程式閘道上使用 Web 應用程式防火牆時，可以使用下列規則群組和規則。
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3。1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3。1](#tab/owasp31)
 
 ## <a name="owasp31"></a>規則集
 
@@ -340,7 +340,7 @@ CRS 2.2.9 包含10個規則群組，如下表所示。 每個群組都包含多�
 |944130|可疑的 JAVA 類別|
 |944200|利用 JAVA 還原序列化 Apache Commons|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3。0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3。0](#tab/owasp30)
 
 ## <a name="owasp30"></a>規則集
 
@@ -540,7 +540,7 @@ CRS 2.2.9 包含10個規則群組，如下表所示。 每個群組都包含多�
 |943110|可能的工作階段 Fixation 攻擊 = 具有關閉網域查閱者的工作階段識別碼參數名稱|
 |943120|可能的工作階段 Fixation 攻擊 = 沒有查閱者的工作階段識別碼參數名稱|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2。9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2。9](#tab/owasp2)
 
 ## <a name="owasp229"></a>規則集
 

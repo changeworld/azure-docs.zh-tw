@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276864"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -92,7 +92,7 @@ ms.locfileid: "76292921"
 
 評估函式中的行為、效能和錯誤時，Application Insights 的下欄區域會很有説明：
 
-| 索引標籤 | 說明 |
+| 索引標籤 | 描述 |
 | ---- | ----------- |
 | **[故障](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況建立圖表和警示。 **作業名稱**是函式名稱。 除非您針對相依性執行自訂遙測，否則不會顯示相依性中的失敗。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 分析效能問題。 |
@@ -119,7 +119,7 @@ requests
 
 可用的資料表會顯示在左邊的 [**架構**] 索引標籤中。 您可以找到下表中函式引動過程所產生的資料：
 
-| 表格 | 說明 |
+| Table | 描述 |
 | ----- | ----------- |
 | **追蹤** | 由執行時間和函式程式碼所建立的記錄。 |
 | **requests** | 每個函式呼叫都有一個要求。 |
@@ -162,8 +162,8 @@ Azure Functions 記錄器也會包含每個記錄檔的*記錄層級*。 [LogLev
 |資訊 | 2 |
 |警告     | 3 |
 |錯誤       | 4 |
-|危急    | 5 |
-|無        | 6 |
+|重大    | 5 |
+|None        | 6 |
 
 下一節會說明記錄層級 `None`。 
 
@@ -209,10 +209,10 @@ Azure Functions 記錄器也會包含每個記錄檔的*記錄層級*。 [LogLev
 此範例會設定下列規則：
 
 * 針對類別為 `Host.Results` 或 `Function`的記錄，只傳送 `Error` 層級和更新版本到 Application Insights。 `Warning` 層級和以下層級的記錄均會被忽略。
-* 針對類別為 `Host.Aggregator` 的記錄，則會將所有記錄傳送到 Application Insights。 `Trace` 記錄層級和某些記錄器稱為 `Verbose` 的記錄層級相同，但會在 [host.json] 檔案中使用 `Trace`。
+* 針對類別為 `Host.Aggregator` 的記錄，則會將所有記錄傳送到 Application Insights。 `Trace` 記錄層級和某些記錄器稱為 `Verbose` 的記錄層級相同，但會在 `Trace`host.json[Host.json]。
 * 針對所有其他記錄，只會將 `Information` 層級和以上層級傳送至 Application Insights。
 
-[Host.json] 中的類別值會控制以相同值開頭之所有類別的記錄。 [host.json]中的`Host`控制`Host.General`、`Host.Executor`、`Host.Results`等等的記錄。
+[Host.json] 中的類別值會控制以相同值開頭之所有類別的記錄。 `Host` 在[Host.json]中，會控制 `Host.General`、`Host.Executor`、`Host.Results`等的記錄。
 
 如果 [host.json] 包含多個以相同字串開頭的類別，則會先比對較長的類別。 假設您想要來自執行時間的所有專案，但 `Host.Aggregator` 以 `Error` 層級登入，但您希望 `Host.Aggregator` 在 `Information` 層級進行記錄：
 
@@ -337,7 +337,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 
 在您的函式中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 參數而不是 `TraceWriter` 參數。 使用 `TraceWriter` 建立的記錄會移至 Application Insights，但 `ILogger` 可讓您執行[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會寫入分類為 "Function. < YOUR_FUNCTION_NAME > `Information` 記錄。「使用者」。
+使用 `ILogger` 物件，您可以[在 ILogger 上呼叫 `Log<level>` 擴充方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)，以建立記錄。 下列程式碼會寫入分類為 "Function. < YOUR_FUNCTION_NAME > `Information` 記錄。「使用者」。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -378,7 +378,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ### <a name="custom-metrics-logging"></a>自訂計量記錄
 
-在 C# 指令碼函式中，您可以使用 `ILogger` 上的 `LogMetric` 擴充方法，在 Application Insights 中建立自訂計量。 以下是範例方法呼叫：
+在 C# 指令碼函式中，您可以使用 `LogMetric` 上的 `ILogger` 擴充方法，在 Application Insights 中建立自訂計量。 以下是範例方法呼叫：
 
 ```csharp
 logger.LogMetric("TestMetric", 1234);
@@ -668,7 +668,7 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 當您啟用 Application Insights 時，請停用使用 Azure 儲存體的內建記錄。 內建記錄適用于使用輕量工作負載進行測試，但不適用於高負載生產用途。 針對生產環境監視，建議 Application Insights。 如果在生產環境中使用內建記錄，記錄記錄可能不完整，因為 Azure 儲存體上的節流。
 
-若要停用內建記錄，請刪除 `AzureWebJobsDashboard` 應用程式設定。 如需在 Azure 入口網站中刪除應用程式設定的相關資訊，請參閱[如何管理函式應用程式](functions-how-to-use-azure-function-app-settings.md#settings)的**應用程式設定**。 在您刪除應用程式設定之前，請確定同一個函式應用程式中沒有任何現有的函式會使用 Azure 儲存體觸發程式或系結的設定。
+若要停用內建記錄，請刪除 `AzureWebJobsDashboard` 應用程式設定。 如需在 Azure 入口網站中刪除應用程式設定的相關資訊，請參閱**如何管理函式應用程式**的[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings)。 在您刪除應用程式設定之前，請確定同一個函式應用程式中沒有任何現有的函式會使用 Azure 儲存體觸發程式或系結的設定。
 
 ## <a name="next-steps"></a>後續步驟
 

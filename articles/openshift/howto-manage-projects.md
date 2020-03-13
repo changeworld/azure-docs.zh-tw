@@ -4,16 +4,16 @@ description: 管理 Azure Red Hat OpenShift 叢集中的專案、範本、影像
 services: openshift
 keywords: red hat openshift projects 要求自我布建程式
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378223"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139108"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>管理 Azure Red Hat OpenShift 叢集中的專案、範本、影像串流 
 
@@ -25,11 +25,11 @@ ms.locfileid: "75378223"
 
 提交專案要求時，API 會替代範本中的下列參數：
 
-| 參數               | 說明                                    |
+| 參數               | 描述                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 專案的名稱。 必要。             |
-| PROJECT_DISPLAYNAME     | 專案的顯示名稱。 可以是空的。 |
-| PROJECT_DESCRIPTION     | 專案的描述。 可以是空的。  |
+| PROJECT_DISPLAYNAME     | 專案的顯示名稱。 可能是空的。 |
+| PROJECT_DESCRIPTION     | 專案的描述。 可能是空的。  |
 | PROJECT_ADMIN_USER      | 管理使用者的使用者名稱。       |
 | PROJECT_REQUESTING_USER | 要求使用者的使用者名稱。           |
 

@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312612"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137606"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中樞 .NET Framework API 概觀
 
-本文將摘要列出一些主要 Azure 事件中樞 [.NET Framework 用戶端 API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)。 分為兩種類別：管理和執行階段 API。 執行階段 API 是由傳送和接收訊息所需的所有作業組成。 管理作業可讓您管理事件中樞實體狀態，方法是建立、更新和刪除實體。
+本文將摘要列出一些主要 Azure 事件中樞 [.NET Framework 用戶端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 分為兩種類別：管理和執行階段 API。 執行階段 API 是由傳送和接收訊息所需的所有作業組成。 管理作業可讓您管理事件中樞實體狀態，方法是建立、更新和刪除實體。
 
 [監視案例](event-hubs-metrics-azure-monitor.md)跨越管理和執行階段。 如需 .NET API 的詳細參考文件，請參閱 [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)、[.NET Standard](/dotnet/api/microsoft.azure.eventhubs) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 參考。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76312612"
 
 若要執行下列管理作業，您必須擁有事件中樞命名空間的 **管理** 權限：
 
-### <a name="create"></a>Create
+### <a name="create"></a>建立
 
 ```csharp
 // Create the event hub

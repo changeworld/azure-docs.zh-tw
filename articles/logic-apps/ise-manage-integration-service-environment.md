@@ -5,17 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 03/11/2020
+ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284196"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中管理您的整合服務環境（ISE）
 
-若要檢查您的[整合服務環境（ise）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)的網路健全狀況，並管理存在於 ISE 中的邏輯應用程式、連線、整合帳戶和連接器，請遵循本主題中的步驟。 若要將這些成品新增至您的 ISE，請參閱[將構件新增至您的整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)。
+本文說明如何針對您的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)執行管理工作，例如：
+
+* 管理您 ISE 中的資源，例如邏輯應用程式、連線、整合帳戶和連接器。
+* 檢查 ISE 的網路健全狀況。
+* 新增容量、重新開機 ISE，或刪除您的 ISE，請遵循本主題中的步驟。 若要將這些成品新增至您的 ISE，請參閱[將構件新增至您的整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)。
 
 ## <a name="view-your-ise"></a>查看您的 ISE
 
@@ -97,6 +101,83 @@ ms.locfileid: "74792632"
 
 1. 若要在不再需要的情況下從 ISE 中移除整合帳戶，請選取那些整合帳戶，然後選取 [**刪除**]。
 
+<a name="add-capacity"></a>
+
+## <a name="add-ise-capacity"></a>新增 ISE 容量
+
+Premium ISE 基礎單位具有固定容量，因此如果您需要更多輸送量，可以在建立期間或之後新增更多縮放單位。 開發人員 SKU 不包含新增縮放單位的功能。
+
+1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 ISE。
+
+1. 若要查看 ISE 的使用量和效能計量，請在 ISE 功能表上選取 **[總覽**]。
+
+   ![查看 ISE 的使用方式](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
+
+1. 在 [**設定**] 下，選取 [**相應**放大]。在 [**設定**] 窗格中，從下列選項中選取：
+
+   * [**手動調整**](#manual-scale)：根據您要使用的處理單位數目進行調整。
+   * [**自訂自動**](#custom-autoscale)調整：根據效能計量進行選擇，方法是選取各種準則，並指定符合該準則的臨界值條件。
+
+   ![選取您想要的縮放類型](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+
+<a name="manual-scale"></a>
+
+### <a name="manual-scale"></a>手動調整
+
+1. 選取 [**手動調整**] 之後，針對 [**其他容量**]，選取您想要使用的縮放單位數。
+
+   ![選取您想要的縮放類型](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+
+1. 完成時，選取 [儲存]。
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>自訂自動調整
+
+1. 在您選取 [**自訂自動**調整] 之後，針對 [**自動調整設定名稱**]，提供您的設定名稱，並選擇性地選取設定所屬的 Azure 資源群組。
+
+   ![提供自動調整設定的名稱，然後選取 [資源群組]](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+
+1. 針對 [**預設**條件]，選取 [**根據度量調整規模**] 或 [**調整為特定實例計數**]。
+
+   * 如果您選擇 [實例型]，請輸入處理單位的數位，這是介於0到10之間的值。
+
+   * 如果您選擇 [以計量為基礎]，請遵循下列步驟：
+
+     1. 在 [**規則**] 區段中，選取 [**新增規則**]。
+
+     1. 在 [**調整規則**] 窗格上，設定規則引發時要採取的準則和動作。
+
+     1. 針對 [**實例限制**]，請指定下列值：
+
+        * **最小值**：要使用的處理單位數目下限
+        * **最大值**：要使用的處理單位數目上限
+        * **預設值**：如果在讀取資源計量時發生任何問題，而且目前的容量低於預設容量，則自動調整會相應放大為預設的處理單位數。 不過，如果目前容量超過預設容量，自動調整就不會相應縮小。
+
+1. 若要新增另一個條件，請選取 [**新增調整條件**]。
+
+1. 當您完成自動調整規模設定後，請儲存您的變更。
+
+<a name="restart-ISE"></a>
+
+## <a name="restart-ise"></a>重新開機 ISE
+
+如果您變更 DNS 伺服器或 DNS 伺服器設定，就必須重新開機 ISE，讓 ISE 能夠收取這些變更。 重新開機 Premium SKU ISE 不會導致停機，因為回收期間一次重新開機一個的冗余和元件。 不過，開發人員 SKU ISE 會遇到停機時間，因為沒有任何重複的複本存在。 如需詳細資訊，請參閱[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
+
+1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 ISE。
+
+1. 在 ISE 功能表上，選取 **[總覽**]。 在 [總覽] 工具列上，**重新開機**。
+
+   ![重新開機整合服務環境](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+
+<a name="delete-ise"></a>
+
+## <a name="delete-ise"></a>刪除 ISE
+
+刪除您不再需要的 ISE 或包含 ISE 的 Azure 資源群組之前，請確認您在包含這些資源的 Azure 資源群組或 Azure 虛擬網路上沒有任何原則或鎖定，因為這些專案可能會封鎖刪除。
+
+刪除 ISE 之後，您可能必須等候最多9小時，然後再嘗試刪除您的 Azure 虛擬網路或子網。
+
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[從隔離式 Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [將資源新增至整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)

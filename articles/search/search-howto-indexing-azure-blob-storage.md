@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 32912f0aef91bd4a7c831a82d1e83f00a1e0f131
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283104"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔的索引
 
@@ -233,7 +233,7 @@ blob 索引子可以從下列文件格式擷取文字：
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要編製 blob 哪些部分的索引
 
-您可以使用 `dataToExtract` 組態參數來控制要編製 blob 哪些部分的索引。 它可以接受下列值：
+您可以使用 `dataToExtract` 組態參數來控制要編製 blob 哪些部分的索引。 它可以採用下列值：
 
 * `storageMetadata` - 指定只有[標準 blob 屬性和使用者指定的中繼資料](../storage/blobs/storage-properties-metadata.md)會編製索引。
 * `allMetadata` - 指定儲存體中繼資料和從 blob 內容擷取的[內容型別特定中繼資料](#ContentSpecificMetadata)會編製索引。
@@ -281,7 +281,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如，
+如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如：
 
     {
       ... other parts of indexer definition
@@ -289,16 +289,56 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量編製索引和刪除偵測
+
 當您設定 blob 索引子排程執行時，它只會針對變更的 blob (由 blob 的 `LastModified` 時間戳記決定) 來重新編制索引。
 
 > [!NOTE]
 > 您不需要指定變更偵測原則 – 會自動為您啟用增量編制索引。
 
-若要支援刪除文件，請使用「虛刪除」方法。 如果您直接刪除 blob，對應的文件將不會在搜尋索引中移除。 請改用下列步驟：  
+若要支援刪除文件，請使用「虛刪除」方法。 如果您直接刪除 blob，對應的文件將不會在搜尋索引中移除。
 
-1. 將自訂中繼資料屬性新增至 blob，以向 Azure 認知搜尋指出其以邏輯方式刪除
-2. 在資料來源上設定虛刪除偵測原則
-3. 索引子處理過 blob 後 (如索引子狀態 API 所示)，您就可以實際刪除 blob
+有兩種方式可執行虛刪除方法。 以下說明兩者。
+
+### <a name="native-blob-soft-delete-preview"></a>原生 blob 虛刪除（預覽）
+
+> [!IMPORTANT]
+> 對原生 blob 虛刪除的支援處於預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) 提供此功能。 目前沒有入口網站或 .NET SDK 支援。
+
+在此方法中，您將使用 Azure Blob 儲存體所提供的[原生 blob 虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果資料來源具有原生虛刪除原則集，而索引子發現已轉換成虛刪除狀態的 blob，則索引子將會從索引中移除該檔。
+
+使用下列步驟：
+1. 啟用[Azure Blob 儲存體的原生虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 我們建議您將保留原則設定為比索引子間隔排程更高的值。 如此一來，如果執行索引子時發生問題，或如果您有大量要編制索引的檔，則索引子會有足夠的時間來最終處理已虛刪除的 blob。 Azure 認知搜尋索引子只會在處理 blob 處於虛刪除狀態時，才從索引中刪除該檔。
+1. 在資料來源上設定原生 blob 虛刪除偵測原則。 範例如下所示。 由於這項功能目前為預覽狀態，因此您必須使用預覽 REST API。
+1. 執行索引子，或將索引子設定為依排程執行。 當索引子執行並處理 blob 時，將會從索引中移除檔。
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>重新索引未刪除的 blob
+
+如果您從 Azure Blob 儲存體中刪除 blob，並在儲存體帳戶上啟用原生虛刪除，blob 會轉換成虛刪除狀態，讓您可以選擇在保留期限內取消刪除該 blob。 當 Azure 認知搜尋資料來源具有原生 blob 虛刪除原則，而且索引子處理已虛刪除的 blob 時，它會從索引中移除該檔。 如果稍後取消刪除該 blob，索引子將**不**會一律重新編制該 blob 的索引。 這是因為索引子會根據 blob 的 `LastModified` 時間戳記來決定要編制索引的 blob。 刪除虛刪除的 blob 時，其 `LastModified` 時間戳記不會更新，因此，如果索引子已經處理 blob，且其 `LastModified` 時間戳記比未刪除的 blob 還新，它就不會重新編制刪除的 blob 的索引。 若要確定未刪除的 blob 是重新建立索引，您應該重新儲存該 blob 的中繼資料。 您不需要變更中繼資料，但重新儲存中繼資料將會更新 blob 的 `LastModified` 時間戳記，讓索引子知道它需要重新編制此 blob 的索引。
+
+### <a name="soft-delete-using-custom-metadata"></a>使用自訂中繼資料的虛刪除
+
+在此方法中，您將使用自訂中繼資料屬性來指出何時應從搜尋索引中移除檔。
+
+使用下列步驟：
+
+1. 將自訂中繼資料屬性新增至 blob，以向 Azure 認知搜尋指出其以邏輯方式刪除。
+1. 在資料來源上設定虛刪除資料行偵測原則。 範例如下所示。
+1. 一旦索引子處理 blob 並從索引中刪除檔，您就可以刪除 Azure Blob 儲存體的 blob。
 
 例如，如果 blob 有值為 `IsDeleted` 的中繼資料屬性 `true`，則下列原則會認為 blob 已刪除：
 
@@ -310,13 +350,17 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>重新索引未刪除的 blob
+
+如果您在資料來源上設定虛刪除資料行偵測原則，然後將自訂中繼資料屬性新增至具有標記值的 blob，然後執行索引子，則索引子將會從索引中移除該檔。 如果您想要將該檔重新編制索引，只需變更該 blob 的虛刪除中繼資料值，然後重新執行索引子。
 
 ## <a name="indexing-large-datasets"></a>編製索引大型資料集
 
@@ -336,7 +380,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
 - 針對每個資料來源建立對應的索引子。 所有索引子可以指向相同的目標搜尋索引。  
 
-- 服務中的單一搜尋單位一次只能執行一個索引子。 以上述方式建立多個索引子，只有在這些索引子都以平行的方式執行時才會有幫助。 若要平行執行多個索引子，請透過建立適當數目的磁碟分割和複本，來對搜尋服務進行擴增。 例如，如果您的搜尋服務具有 6 個搜尋單位 (例如 2 個磁碟分割 x 3 個複本)，則 6 個索引子將可以同時執行，並使編製索引的輸送量提升六倍。 若要深入瞭解調整和容量規劃，請參閱[在 Azure 認知搜尋中針對查詢和編制索引工作負載調整資源層級](search-capacity-planning.md)。
+- 服務中的單一搜尋單位一次只能執行一個索引子。 以上述方式建立多個索引子，只有在這些索引子都以平行的方式執行時才會有幫助。 若要平行執行多個索引子，請透過建立適當數目的磁碟分割和複本，來對搜尋服務進行相應放大。 例如，如果您的搜尋服務具有 6 個搜尋單位 (例如 2 個磁碟分割 x 3 個複本)，則 6 個索引子將可以同時執行，並使編製索引的輸送量提升六倍。 若要深入瞭解調整和容量規劃，請參閱[在 Azure 認知搜尋中針對查詢和編制索引工作負載調整資源層級](search-capacity-planning.md)。
 
 ## <a name="indexing-documents-along-with-related-data"></a>為文件及相關資料編製索引
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217229"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>保護 Azure 中 PaaS 資料庫的最佳做法
 
@@ -68,7 +68,7 @@ SQL Database 的預設來源 IP 位址限制會允許來自任何 Azure 位址 (
 
 若要深入了解 Azure SQL 防火牆和 IP 限制，請參閱：
 
-- [Azure SQL Database 和 SQL 資料倉儲存取控制](../../sql-database/sql-database-control-access.md)
+- [Azure SQL Database 和 SQL 資料倉儲存取控制](../../sql-database/sql-database-manage-logins.md)
 - [Azure SQL Database 和 SQL 資料倉儲防火牆規則](../../sql-database/sql-database-firewall-configure.md)
 
 
@@ -79,7 +79,7 @@ Azure SQL 會管理 TDE 的金鑰相關問題。 如同 TDE，在移動資料庫
 
 Azure SQL 可透過 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 提供資料行加密。 如此僅有獲得授權的應用程式得以存取敏感的資料行。 使用此類加密可讓加密資料行的 SQL 查詢限制於相等值。
 
-應用程式層級加密也應該用於選擇性資料。 使用保留在正確國家/地區的金鑰來加密資料, 有時可以減輕資料主權的顧慮。 這甚至可以防止意外資料轉送造成問題，因為在沒有金鑰的情況下，就無法將資料解密，這裡是假設使用增強式演算法 (例如 AES 256)。
+應用程式層級加密也應該用於選擇性資料。 使用保留在正確國家/地區的金鑰來加密資料，有時可以減輕資料主權的顧慮。 這甚至可以防止意外資料轉送造成問題，因為在沒有金鑰的情況下，就無法將資料解密，這裡是假設使用增強式演算法 (例如 AES 256)。
 
 您可以採取其他預防措施來協助保護資料庫，例如設計安全系統、加密機密資產，以及建置圍繞資料庫伺服器的防火牆。
 

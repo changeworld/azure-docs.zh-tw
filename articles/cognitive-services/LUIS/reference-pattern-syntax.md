@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890267"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221281"
 ---
 # <a name="pattern-syntax"></a>模式語法
 
@@ -125,7 +125,7 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 
 在上表中，主旨應該是 `the man from La Mancha` （書名），但因為主旨包含選擇性的 word `from`，所以不會正確預測標題。
 
-若要修正模式的這個例外狀況，請使用[撰寫明確清單的 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，新增 `the man from la mancha` 作為符合 {subject} 實體的明確清單。
+若要修正模式的這個例外狀況，請使用`the man from la mancha`撰寫明確清單的 API[，新增 ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 作為符合 {subject} 實體的明確清單。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>在範本語句中標記選用文字的語法
 您可以使用規則運算式的方括弧語法 `[]`，在語句中標記選用文字。 選用文字最多只能在方括弧中套嵌兩個大括弧。

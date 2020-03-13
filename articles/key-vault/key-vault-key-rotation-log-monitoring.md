@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195510"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218408"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用金鑰輪替和稽核設定 Azure Key Vault
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195510"
 
 當您具有金鑰保存庫之後，即可開始用它來儲存金鑰和秘密。 應用程式不再需要保存您的金鑰或秘密，而是可視需要從保存庫要求取得。 金鑰保存庫可讓您更新金鑰和密碼，而不會影響應用程式的行為，這會開啟您的金鑰和密碼管理的各種可能性。
 
->[!IMPORTANT]
-> 本文中的範例僅供說明之用。 它們不適合用于生產環境使用。 
+本文逐步解說如何執行排程的儲存體帳戶金鑰輪替、監視金鑰保存庫的審核記錄，並在提出未預期的要求時引發警示。 
 
-本文將逐步解說：
+您必須先使用您選擇的方法來建立金鑰保存庫：
 
-- 使用 Azure Key Vault 來儲存秘密的範例。 在本文中，儲存的密碼是應用程式所存取的 Azure 儲存體帳戶金鑰。 
-- 如何執行該儲存體帳戶金鑰的排程輪替。
-- 如何監視金鑰保存庫的 audit 記錄，並在提出未預期的要求時引發警示。
+- [使用 Azure CLI 從 Azure Key Vault 設定和取出秘密](quick-create-cli.md)
+- [使用 Azure PowerShell 從 Azure Key Vault 設定和取出秘密](quick-create-powershell.md)
+- [使用 Azure 入口網站從 Azure Key Vault 設定和取出秘密](quick-create-portal.md)
 
-> [!NOTE]
-> 本文不會詳細說明金鑰保存庫的初始設定。 如需此資訊，請參閱[什麼是 Azure Key Vault？](key-vault-overview.md)。 如需跨平臺命令列介面的指示，請參閱[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>設定金鑰保存庫
+## <a name="store-a-secret"></a>儲存秘密
 
 若要讓應用程式能夠從金鑰保存庫擷取密碼，您必須先建立此密碼，並上傳至保存庫。
 

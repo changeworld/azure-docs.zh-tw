@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c060462a84b197cdd0aec1beecc0b4d4807feb49
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030108"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136650"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>將設定轉換成複合資源
 
@@ -47,7 +47,7 @@ CompositeResource 會自動化從您的設定建立新模組的程式。
 接下來，您可以使用 CompositeResource 模組所提供的函式來自動化轉換，而不是執行設定來產生 MOF 檔案。
 此 Cmdlet 會載入您的設定內容、取得參數的清單，並以您需要的所有專案產生新的模組。
 
-產生模組之後，您可以在每次進行變更時遞增版本並新增版本資訊，並將其發佈至您自己的[PowerShellGet 存放庫](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)。
+產生模組之後，您可以在每次進行變更時遞增版本並新增版本資訊，並將其發佈至您自己的[PowerShellGet 存放庫](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)。
 
 建立包含設定（或多個設定）的複合資源模組之後，您可以在 Azure 的可組合撰寫[體驗](/azure/automation/compose-configurationwithcompositeresources)中使用它們，或將它們新增至[DSC 設定腳本](/powershell/scripting/dsc/configurations/configurations)來產生 mof 檔案，並將[mof 檔案上傳到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
 然後從[內部部署](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)註冊您的伺服器，以提取設定。

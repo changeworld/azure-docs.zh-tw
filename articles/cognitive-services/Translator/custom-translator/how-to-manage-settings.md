@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221241"
 ---
 # <a name="how-to-manage-settings"></a>如何管理設定
 
@@ -87,7 +87,7 @@ ms.locfileid: "68595776"
 
 1.  **讀取者：** 工作區中的讀取者將可檢視工作區中的所有資訊。
 
-2.  **編輯者：** 工作區中的編輯者將可新增文件、訓練模型，以及刪除文件和專案。 他們可以新增訂用帳戶金鑰，但無法修改工作區的共用對象、刪除工作區或變更工作區名稱。
+2.  **編輯者：** 工作區中的編輯者將可新增文件、定型模型，以及刪除文件和專案。 他們可以新增訂用帳戶金鑰，但無法修改工作區的共用對象、刪除工作區或變更工作區名稱。
 
 3.  **擁有者：** 擁有者具有工作區的完整權限。
 

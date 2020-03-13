@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 2cf682a404154b9c1bb94680b3adb673892c1c72
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566370"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137898"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 為地理空間資料編制索引
 
@@ -25,6 +25,44 @@ ms.locfileid: "77566370"
 > Azure Cosmos DB 支援對點、Linestring、多邊形和 MultiPolygons 編制索引
 >
 >
+
+## <a name="modifying-geospatial-data-type"></a>修改地理空間資料類型
+
+在您的容器中，`geospatialConfig` 會指定地理空間資料的編制索引方式。 您應該為每個容器指定一個 `geospatialConfig`： geography 或 geometry。 如果未指定，`geospatialConfig` 將會預設為 geography 資料類型。 當您修改 `geospatialConfig`時，容器中所有現有的地理空間資料都將會重新建立索引。
+
+> [!NOTE]
+> Azure Cosmos DB 目前僅支援在3.6 和更新版本中修改 .NET SDK 中的 geospatialConfig。
+>
+
+以下範例說明如何藉由設定 `geospatialConfig` 屬性和新增**boundingBox**，將地理空間資料類型修改為 `geometry`：
+
+```csharp
+    //Retrieve the container's details
+    ContainerResponse containerResponse = await client.GetContainer("db", "spatial").ReadContainerAsync();
+    //Set GeospatialConfig to Geometry
+    GeospatialConfig geospatialConfig = new GeospatialConfig(GeospatialType.Geometry);
+    containerResponse.Resource.GeospatialConfig = geospatialConfig;
+    // Add a spatial index including the required boundingBox
+    SpatialPath spatialPath = new SpatialPath
+            {  
+                Path = "/locations/*",
+                BoundingBox = new BoundingBoxProperties(){
+                    Xmin = 0,
+                    Ymin = 0,
+                    Xmax = 10,
+                    Ymax = 10
+                }
+            };
+    spatialPath.SpatialTypes.Add(SpatialType.Point);
+    spatialPath.SpatialTypes.Add(SpatialType.LineString);
+    spatialPath.SpatialTypes.Add(SpatialType.Polygon);
+    spatialPath.SpatialTypes.Add(SpatialType.MultiPolygon);
+
+    containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+
+    // Update container with changes
+    await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
+```
 
 ## <a name="geography-data-indexing-examples"></a>地理資料索引編制範例
 
@@ -58,11 +96,64 @@ ms.locfileid: "77566370"
 
 > [!NOTE]
 > 如果文件中的 GeoJSON 位置值格式不正確或無效，就不會為其編製索引以用於空間查詢。 您可以使用 ST_ISVALID 和 ST_ISVALIDDETAILED 驗證位置值。
->
->
->
 
 您也可以使用 Azure CLI、PowerShell 或任何 SDK 來[修改索引編制原則](how-to-manage-indexing-policy.md)。
+
+## <a name="geometry-data-indexing-examples"></a>幾何資料索引編制範例
+
+使用**geometry**資料類型時，與 geography 資料類型類似，您必須指定要編制索引的相關路徑和類型。 此外，您也必須在索引編制原則中指定 `boundingBox`，以指出要為該特定路徑編制索引的所需區域。 每個地理空間路徑都需要自己的`boundingBox`。
+
+周框方塊包含下列屬性：
+
+- **xmin**：最小的索引 x 座標
+- **ymin**：最小索引 y 座標
+- **xmax**：索引 x 座標的最大值
+- **ymax**：索引 y 座標的最大值
+
+周框方塊是必要的，因為幾何資料佔用的平面可能是無限的。 不過，空間索引需要有限的空間。 對於**geography**資料類型，地球是界限，您不需要設定周框方塊。
+
+您應該建立包含所有（或大部分）資料的周框方塊。 只有在完全位於周框方塊內的物件上計算的作業，才能夠利用空間索引。 您不應該讓周框方塊明顯大於必要，因為這會對查詢效能造成負面影響。
+
+以下是索引編制原則的範例，其會將**幾何**資料與**geospatialConfig**設定為 `geometry`：
+
+```json
+ {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/locations/*",
+            "types": [
+                "Point",
+                "LineString",
+                "Polygon",
+                "MultiPolygon"
+            ],
+            "boundingBox": {
+                "xmin": -10,
+                "ymin": -20,
+                "xmax": 10,
+                "ymax": 20
+            }
+        }
+    ]
+}
+```
+
+上述的編制索引原則具有 x 座標的**boundingBox** （-10，10），而 y 座標則為（-20，20）。 具有上述索引編制原則的容器將會為完全在此區域內的所有點、多邊形、MultiPolygons 和 Linestring 編制索引。
+
+> [!NOTE]
+> 如果您嘗試將具有**boundingBox**的索引編制原則加入至 `geography` 資料類型的容器中，將會失敗。 在新增**boundingBox**之前，您應該先將容器的**geospatialConfig**修改為 `geometry`。 您可以在選取容器的地理空間資料類型之前或之後，新增資料並修改索引編制原則的其餘部分（例如路徑和類型）。
 
 ## <a name="next-steps"></a>後續步驟
 

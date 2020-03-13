@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304416"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136495"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -57,4 +57,4 @@ Microsoft Graph 目前支援兩種版本： v1.0 和搶鮮版（Beta）。 V1.0 
 
 Microsoft Graph Explorer 是一個 web 型工具，可讓您使用 Microsoft Graph Api 來建立及測試要求。 您可以在下列位置存取 Microsoft Graph Explorer： `https://developer.microsoft.com/graph/graph-explorer`。
 
-Postman 是一種工具，您也可以使用 Microsoft Graph Api 來建立和測試要求。 您可以下載 Postman，網址為： `https://www.getpostman.com/`。 若要與 Postman 中的 Microsoft Graph 互動，您可以使用 Postman 中的 Microsoft Graph 集合。 如需詳細資訊，請參閱搭配[使用 Postman 與 MICROSOFT GRAPH API](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。
+Postman 是一種工具，您也可以使用 Microsoft Graph Api 來建立和測試要求。 您可以下載 Postman，網址為： `https://www.getpostman.com/`。 若要與 Postman 中的 Microsoft Graph 互動，您可以使用 Postman 中的 Microsoft Graph 集合。 如需詳細資訊，請參閱搭配[使用 Postman 與 MICROSOFT GRAPH API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157171"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281479"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -47,7 +47,7 @@ ms.locfileid: "77157171"
 
 使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 AMQP 初始化工作階段時的網路成本較高，但 HTTPS 需要額外的 SSL 工作負荷來處理每個要求。 對於頻繁的發行者，AMQP 的效能較高。
 
-![事件中心](./media/event-hubs-features/partition_keys.png)
+![事件中樞](./media/event-hubs-features/partition_keys.png)
 
 事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則，系統將發生錯誤。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77157171"
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
-您不需要事先建立發佈者名稱，不過這些名稱必須符合發佈事件時使用的 SAS 權杖，以確保發佈者身分識別是獨立的。 使用發行者原則時，**PartitionKey** 值會設為發行者名稱。 為了正常運作，這些值必須相符。
+您不需要事先建立發佈者名稱，不過這些名稱必須符合發佈事件時使用的 SAS 權杖，以確保發佈者身分識別是獨立的。 在使用發佈者原則時，系統會將 **PartitionKey** 值設定為發佈者名稱。 為了正常運作，這些值必須相符。
 
 ## <a name="capture"></a>擷取
 
@@ -95,13 +95,13 @@ ms.locfileid: "77157171"
 
 下圖顯示事件中樞串流處理架構︰
 
-![事件中心](./media/event-hubs-features/event_hubs_architecture.png)
+![事件中樞](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>串流位移
 
 「位移」是事件在資料分割內的位置。 您可以將位移視為用戶端指標。 位移是事件的位元組編號。 此位移可讓事件取用者 (讀取器) 在事件串流中指定某個點，以便從該點開始讀取事件。 您可以指定時間戳記或位移值等形式的位移。 取用者需負責將自己的位移值儲存在事件中樞服務之外。 在資料分割內，每個事件都含有一個位移。
 
-![事件中心](./media/event-hubs-features/partition_offset.png)
+![事件中樞](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>檢查點
 

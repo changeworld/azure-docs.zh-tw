@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 03/06/2020
 ms.author: victorh
-ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad3289d9b93421df6776c685325f388d552bdba4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279230"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>關於應用程式閘道的常見問題
 
@@ -65,6 +65,8 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>哪裡可以找到應用程式閘道的 IP 和 DNS？
 
 如果您使用公用 IP 位址作為端點，您會在公用 IP 位址資源上找到 IP 和 DNS 資訊。 或在入口網站中，于應用程式閘道的 [總覽] 頁面上找到它。 如果您使用的是內部 IP 位址，請在 [總覽] 頁面上尋找相關資訊。
+
+針對 v2 SKU，開啟公用 IP 資源，**然後選取 [** 設定]。 [ **Dns 名稱標籤（選擇性）** ] 欄位可用來設定 dns 名稱。
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-alive timeout 和 TCP 閒置超時的設定為何？
 
@@ -130,7 +132,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-application-gateway-support-connection-draining"></a>應用程式閘道是否支援連線清空？
 
-是。 您可以設定連線清空來變更後端集區中的成員，而不會中斷。 如需詳細資訊，請參閱[應用程式閘道的連接清空一節](overview.md#connection-draining)。
+是。 您可以設定連線清空來變更後端集區中的成員，而不會中斷。 如需詳細資訊，請參閱[應用程式閘道的連接清空一節](features.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可在中斷的情況下，將執行個體大小從中型變成大型？
 
@@ -410,7 +412,7 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 僅限私人 IP 存取的範例 NSG 設定： ![應用程式閘道 V2 NSG 設定僅供私人 IP 存取](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 cookie 是否支援 SameSite 屬性？
-是， [Chromium browser](https://www.chromium.org/Home) [V80 update](https://chromiumdash.appspot.com/schedule)在 HTTP cookie 上引進了強制，而不會將 SameSite 屬性視為 SameSite = 不嚴格。 這表示應用程式閘道親和性 cookie 不會由瀏覽器在第三 pary 內容中傳送。 為了支援此案例，應用程式閘道除了現有的*ApplicationGatewayAffinity* cookie 之外，也會插入另一個稱為*ApplicationGatewayAffinityCORS*的 cookie。  這些 cookie 很類似，但*ApplicationGatewayAffinityCORS* cookie 已新增兩個屬性： *SameSite = None;安全*。 即使是跨原始來源要求，這些屬性仍會維護粘滯會話。 如需詳細資訊，請參閱以[cookie 為基礎的相似性一節](configuration-overview.md#cookie-based-affinity)。
+是， [Chromium browser](https://www.chromium.org/Home) [V80 update](https://chromiumdash.appspot.com/schedule)在 HTTP cookie 上引進了強制，而不會將 SameSite 屬性視為 SameSite = 不嚴格。 這表示在協力廠商內容中，瀏覽器不會傳送應用程式閘道親和性 cookie。 為了支援此案例，應用程式閘道除了現有的*ApplicationGatewayAffinity* cookie 之外，也會插入另一個稱為*ApplicationGatewayAffinityCORS*的 cookie。  這些 cookie 很類似，但*ApplicationGatewayAffinityCORS* cookie 已新增兩個屬性： *SameSite = None;安全*。 即使是跨原始來源要求，這些屬性仍會維護粘滯會話。 如需詳細資訊，請參閱以[cookie 為基礎的相似性一節](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>後續步驟
 

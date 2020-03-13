@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 736b128e5207e58220afa69b4cf5dc4e8fea4a26
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268767"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140802"
 ---
 # <a name="enter-data-manually-module"></a>手動輸入資料模組
 
@@ -62,13 +62,13 @@ ms.locfileid: "78268767"
   
     -   **ARFF**：貼上現有的 ARFF 格式檔案。 如果您要直接輸入值，請務必在資料的開頭加入選擇性的標頭和必要的屬性欄位。 
     
-        例如，您可以將下列標頭和屬性資料列加入至簡單列表。 欄位標題會是 `SampleText`。
+        例如，您可以將下列標頭和屬性資料列加入至簡單列表。 欄位標題會是 `SampleText`。 請注意，不支援字串類型。
     
         ```text
-        % Title: SampleText.ARFF  
-        % Source: Enter Data module  
-        @ATTRIBUTE SampleText STRING  
-        @DATA  
+        % Title: SampleText.ARFF
+        % Source: Enter Data module
+        @ATTRIBUTE SampleText NUMERIC
+        @DATA
         \<type first data row here>  
         ```
 

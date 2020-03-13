@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230892"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277020"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的持續部署
 
@@ -63,7 +63,7 @@ Azure 中的函式部署單位是函式應用程式。 函數應用程式中的�
 
 6. 查看所有詳細資料，然後選取 **[完成]** 以完成部署設定。
 
-    ![Summary](./media/functions-continuous-deployment/summary.png)
+    ![摘要](./media/functions-continuous-deployment/summary.png)
 
 當程式完成時，來自指定來源的所有程式碼都會部署到您的應用程式。 此時，部署來源中的變更會觸發將這些變更部署至 Azure 中的函數應用程式。
 

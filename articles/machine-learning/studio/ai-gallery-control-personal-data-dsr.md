@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168978"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204540"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>從 Azure AI 資源庫檢視和刪除產品中的使用者資料
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 您可以使用介面或 AI 資源庫目錄 API，從 Azure AI 資源庫檢視和刪除產品中的使用者資料。 本文會說明做法。
 
@@ -30,9 +32,9 @@ ms.locfileid: "77168978"
 
 您可以透過 Azure AI 資源庫網站 UI 檢視所發行的項目。 使用者可以檢視公開的和未列出的解決方案、專案、實驗和其他已發行的項目：
 
-1.  登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
-2.  按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
-3.  載入個人資料頁面會顯示所有已發行至資源庫的項目，包括未列出的項目。
+1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
+2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
+3.    載入個人資料頁面會顯示所有已發行至資源庫的項目，包括未列出的項目。
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>使用 AI 資源庫目錄 API 來檢視資料
 
@@ -43,9 +45,9 @@ ms.locfileid: "77168978"
 ### <a name="get-an-author-id"></a>取得建立者識別碼
 建立者識別碼是以發行至 Azure AI 資源庫時所使用的電子郵件地址為基礎的。 它不會變更：
 
-1.  登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
-2.  按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
-3.  網址列中的 URL 會在 `authorId=` 後面顯示英數字元識別碼。 例如，若 URL 為：`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
+2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
+3.    網址列中的 URL 會在 `authorId=` 後面顯示英數字元識別碼。 例如，若 URL 為：`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     則建立者識別碼為：`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ ms.locfileid: "77168978"
 
 若要取得存取權杖，您必須檢查瀏覽器在登入時對目錄 API 所提出的 HTTP 要求 `DataLabAccessToken` 標頭：
 
-1.  登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
-2.  按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
-3.  按 F12 來開啟瀏覽器的 [開發人員工具] 窗格、選取 [網路] 索引標籤，然後重新整理頁面。 
+1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
+2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
+3.    按 F12 來開啟瀏覽器的 [開發人員工具] 窗格、選取 [網路] 索引標籤，然後重新整理頁面。 
 4. 在 [篩選條件] 文字方塊中輸入「目錄」字串來對該字串篩選要求。
-5.  在 [要求 URL] `https://catalog.cortanaanalytics.com/entities`中，尋找 GET 要求，然後選取 [*標頭*] 索引標籤。向下移至 [*要求標頭*] 區段。
-6.  `DataLabAccessToken`　標頭下方是英數字元權杖。 為了讓資料保持安全，請勿共用此權杖。
+5.    在 [要求 URL] `https://catalog.cortanaanalytics.com/entities`中，尋找 GET 要求，然後選取 [*標頭*] 索引標籤。向下移至 [*要求標頭*] 區段。
+6.    `DataLabAccessToken`　標頭下方是英數字元權杖。 為了讓資料保持安全，請勿共用此權杖。
 
 ### <a name="view-user-information"></a>檢視使用者資訊
 使用您在先前步驟中取得的建立者識別碼取代下列 URL 中的 `[AuthorId]`，來檢視使用者個人資料中的資訊：
@@ -84,7 +86,7 @@ ms.locfileid: "77168978"
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
-例如，
+例如：
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 
@@ -92,9 +94,9 @@ ms.locfileid: "77168978"
 
 此查詢只會顯示公開實體。 若要檢視所有實體 (包括未列出的實體)，請提供上一節所取得的存取權杖。
 
-1.  使用 [Postman](https://www.getpostman.com) 等工具，建立目錄 URL 的 HTTP GET 要求，如[取得存取權杖](#get-your-access-token)所述。
-2.  建立名為 `DataLabAccessToken` 的 HTTP 要求標頭，並將值設為存取權杖。
-3.  提交 HTTP 要求。
+1.    使用 [Postman](https://www.getpostman.com) 等工具，建立目錄 URL 的 HTTP GET 要求，如[取得存取權杖](#get-your-access-token)所述。
+2.    建立名為 `DataLabAccessToken` 的 HTTP 要求標頭，並將值設為存取權杖。
+3.    提交 HTTP 要求。
 
 > [!TIP]
 > 如果來自目錄 API 的回應未能顯示未列出的實體，表示使用者的存取權杖可能無效或已過期。 登出 Azure AI 資源庫，然後重複[取得存取權杖](#get-your-access-token)中的步驟來更新權杖。 

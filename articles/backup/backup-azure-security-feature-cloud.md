@@ -3,12 +3,12 @@ title: 協助保護雲端工作負載的安全性功能
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更加安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395530"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248069"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>協助保護使用 Azure 備份之雲端工作負載的安全性功能
 
@@ -178,24 +178,23 @@ SoftDeleteFeatureState : Disabled
 1. 請遵循下列步驟來停用虛[刪除](#disabling-soft-delete)。
 2. 在 Azure 入口網站中，移至您的保存庫，移至 [**備份專案**]，然後選擇虛刪除的 VM。
 
-![選擇虛刪除的 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![選擇虛刪除的 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. 選取 [取消**刪除**] 選項。
 
-![選擇取消刪除](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![選擇取消刪除](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. 視窗隨即出現。 選取 [取消**刪除**]。
 
-![選取取消刪除](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![選取取消刪除](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. 選擇 [**刪除備份資料**]，以永久刪除備份資料。
 
-![選擇 [刪除備份資料]](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![選擇 [刪除備份資料]](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. 輸入備份專案的名稱，以確認您想要刪除復原點。
 
-![輸入備份專案的名稱](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![輸入備份專案的名稱](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. 若要刪除專案的備份資料，請選取 [**刪除**]。 通知訊息可讓您知道備份資料已被刪除。
 
@@ -268,6 +267,10 @@ Azure 備份可讓您備份 Azure 虛擬機器，其中包含使用客戶管理�
 ### <a name="backup-of-encrypted-vms"></a>備份已加密的 Vm
 
 您可以使用 Azure 備份服務，備份及還原具有加密磁片的 Windows 或 Linux Azure 虛擬機器（Vm）。 如需指示，請參閱[使用 Azure 備份備份和還原已加密的虛擬機器](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
+
+## <a name="private-endpoints"></a>私人端點
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>其他安全性功能
 

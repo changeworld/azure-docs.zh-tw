@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254205"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -409,7 +409,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 具有此角色的使用者可以開啟 Microsoft for Azure 和 Office 365 服務的支援要求，並在 [ [Azure 入口網站](https://portal.azure.com)] 和 [ [Microsoft 365 系統管理中心](https://admin.microsoft.com)] 中查看服務儀表板和訊息中心。 [有關系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的詳細資訊。
 
 > [!NOTE]
-> 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「服務支援系統管理員」。 這是[Azure 入口網站](https://portal.azure.com)、 [Microsoft 365 系統管理中心](https://admin.microsoft.com)和 Intune 入口網站中的「服務管理員」。
+> 先前在[Azure 入口網站](https://portal.azure.com)和[Microsoft 365 系統管理中心](https://admin.microsoft.com)中，此角色稱為「服務管理員」。 我們已將它重新命名為「服務支援管理員」，以配合 Microsoft Graph API、Azure AD 圖形 API 和 Azure AD PowerShell 中的現有名稱。
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 系統管理員](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft 目錄/群組/整合/appRoleAssignments/更新 | 更新 Azure Active Directory 中的 groups.unified 屬性。 |
 | microsoft 目錄/群組/統一/基本/更新 | 更新 Office 365 群組的基本屬性。 |
 | microsoft。目錄/群組/整合/建立 | 建立 Office 365 群組。 |
 | microsoft 目錄/群組/整合/刪除 | 刪除 Office 365 群組。 |
 | microsoft 目錄/群組/整合/成員/更新 | 更新 Office 365 群組的成員資格。 |
 | microsoft。目錄/群組/整合/擁有者/更新 | 更新 Office 365 群組的擁有權。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的所有層面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>外部識別提供者系統管理員許可權
 
@@ -1101,7 +1102,6 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft.office365.messageCenter/messages/read | 讀取 microsoft.office365.messageCenter 中的訊息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 
 ### <a name="guest-inviter-permissions"></a>來賓邀請者許可權
 能夠邀請不受 [成員能夠邀請來賓] 設定限制的來賓使用者。
@@ -1212,10 +1212,12 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理商務用 Skype Online 的所有層面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>訊息中心隱私權讀者許可權
 
@@ -1260,7 +1262,6 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft.office365.messageCenter/messages/read | 讀取 microsoft.office365.messageCenter 中的訊息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 | office365. userCommunication/allEntities/allTasks | 閱讀及更新新消息的可見度。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
@@ -1442,7 +1443,6 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | office365。 search/allEntities/allProperties/allTasks | 建立和刪除所有資源，以及讀取和更新 office365 中的所有屬性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="search-editor-permissions"></a>搜尋編輯器許可權
@@ -1458,7 +1458,6 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | 讀取 microsoft.office365.messageCenter 中的訊息。 |
 | office365/content/allProperties/allTasks | 建立和刪除內容，以及讀取和更新 office365 中的所有屬性。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 
 ### <a name="security-administrator-permissions"></a>安全性系統管理員許可權
 
@@ -1507,7 +1506,6 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft.azure.advancedThreatProtection/allEntities/read | 閱讀並設定 Azure AD Advanced 威脅防護。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的所有層面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | 閱讀並設定安全性 & 合規性中心。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | 讀取和設定 Windows Defender Advanced 威脅防護。 |
 
 ### <a name="security-reader-permissions"></a>安全性讀取者許可權
@@ -1560,18 +1558,19 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft 目錄/群組/整合/appRoleAssignments/更新 | 更新 Azure Active Directory 中的 groups.unified 屬性。 |
 | microsoft 目錄/群組/統一/基本/更新 | 更新 Office 365 群組的基本屬性。 |
 | microsoft。目錄/群組/整合/建立 | 建立 Office 365 群組。 |
 | microsoft 目錄/群組/整合/刪除 | 刪除 Office 365 群組。 |
 | microsoft 目錄/群組/整合/成員/更新 | 更新 Office 365 群組的成員資格。 |
 | microsoft。目錄/群組/整合/擁有者/更新 | 更新 Office 365 群組的擁有權。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.office365.sharepoint 中的標準屬性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="teams-communications-administrator-permissions"></a>小組通訊系統管理員許可權
 
@@ -1741,7 +1740,7 @@ Power 平臺系統管理員 | Power 平臺系統管理員 | 11648597-926c-4cf3-9
 安全性系統管理員 | 安全性系統管理員 | 194ae4cb-b126-40b2-bd5b-6091b380977d
 安全性運算子 | 安全性運算子 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 安全性讀取者 | 安全性讀取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
-服務支援管理員 | 服務管理員 | f023fd81-a637-4b56-95fd-791ac0226033
+服務支援管理員 | 服務支援管理員 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint 服務管理員 | SharePoint 管理員 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Microsoft Teams 通訊系統管理員 | Microsoft Teams 通訊系統管理員 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Microsoft Teams 通訊支援工程師 | Microsoft Teams 通訊支援工程師 | f70938a0-fc10-4177-9e90-2178f8765737

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388576"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277566"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x 的 Azure Cosmos DB 觸發程式
 
@@ -236,11 +236,12 @@ Python 不支援屬性。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (選擇性) 如果設定，將會以毫秒為單位定義目前由執行個體保有之分割區的所有租用所適用的更新間隔。 預設值為 17000 (17 秒)。
 |**checkpointFrequency**| **CheckpointFrequency**| (選擇性) 如果設定，將會以毫秒為單位定義租用檢查點的間隔。 預設永遠是各函式呼叫後。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| 選擇性設定時，這個屬性會設定每個函式呼叫所接收的最大專案數。 如果受監視集合中的作業是透過預存程式執行，則從變更摘要讀取專案時，會保留[交易範圍](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，接收的專案數可能會高於指定的值，如此一來，相同交易變更的專案就會當做一個不可部分完成批次的一部分傳回。
-|**startFromBeginning**| **StartFromBeginning**| 選擇性此選項會指示觸發程式從集合的變更歷程記錄開始讀取變更，而不是從目前的時間開始。 從開頭開始讀取只會在觸發程式第一次啟動時運作，而在後續的執行中，檢查點已經儲存。 若已建立租用，將此選項設定為 `true` 則不會有任何作用。
+|**startFromBeginning**| **StartFromBeginning**| 選擇性此選項會指示觸發程式從集合的變更歷程記錄開始讀取變更，而不是從目前的時間開始。 從開頭開始讀取只會在觸發程式第一次啟動時運作，而在後續的執行中，檢查點已經儲存。 若已建立租用，將此選項設定為 `true` 則不會有任何作用。 |
+|**preferredLocations**| **PreferredLocations**| 選擇性定義 Azure Cosmos DB 服務中異地複寫資料庫帳戶的慣用位置（區域）。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 觸發程序需要第二個集合，用來在分割區上儲存「租用」。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
 

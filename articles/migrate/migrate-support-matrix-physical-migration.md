@@ -4,11 +4,11 @@ description: 瞭解 Azure Migrate 中的實體伺服器遷移支援。
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030233"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269545"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
 
@@ -26,7 +26,7 @@ ms.locfileid: "76030233"
 - 在公用雲端中執行的 Vm，例如 Amazon Web Services （AWS）或 Google Cloud Platform （GCP）。
 
 
-## <a name="migration-limitations"></a>移轉限制
+## <a name="migration-limitations"></a>遷移限制
 
 您一次最多可以選取10部機器進行複寫。 如果您想要遷移更多電腦，請以10個群組進行複寫。
 
@@ -54,7 +54,7 @@ ms.locfileid: "76030233"
 **NFS** | 裝載為電腦上磁片區的 NFS 磁片區不會複寫。
 **iSCSI 目標** | 無代理程式遷移不支援具有 iSCSI 目標的機器。
 **多重路徑 IO** | 不支援。
-**儲存體 vMotion** | 支援的
+**儲存體 vMotion** | 支援
 **組合的 Nic** | 不支援。
 **Ipv4** | 不支援。
 
@@ -85,7 +85,7 @@ ms.locfileid: "76030233"
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。
 BitLocker | 不支援。 | 為電腦啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 |  更新 Site Recovery 中電腦屬性的值。
-在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，啟用 RDP 並允許**Windows 防火牆**中的 Rdp -> **允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
+在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，啟用 RDP 並允許**Windows 防火牆**中的 Rdp -> **允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [詳細資訊](prepare-for-migration.md)。 |
 在遷移後連接-Linux | 若要在使用 SSH 進行遷移之後連線到 Azure Vm：<br/> 在進行遷移之前，請在內部部署機器上，確認安全殼層服務已設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/> 容錯移轉之後，在 Azure VM 上，允許已容錯移轉的 VM 上的網路安全性群組規則之 SSH 埠的連入連線，以及它所連接的 Azure 子網。 此外，請新增 VM 的公用 IP 位址。 |  
 
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382832"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258391"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器應用程式和服務資訊清單範例
 以下舉例說明多容器 Service Fabric 應用程式的應用程式和服務資訊清單。 這些範例的目的是要說明有哪些設定可供使用以及要如何使用。 這些應用程式和服務資訊清單是以 [Windows Server 2016 容器範例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)的資訊清單作為基礎。

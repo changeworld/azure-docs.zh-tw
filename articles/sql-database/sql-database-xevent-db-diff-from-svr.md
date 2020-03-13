@@ -3,7 +3,7 @@ title: 擴充事件
 description: 描述 Azure SQL Database 中的擴充事件 (XEvents)，以及事件工作階段與 Microsoft SQL Server 中的事件工作階段有如何的些微不同。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822308"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213952"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database 中的擴充事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "73822308"
 - [Quick Start: Extended events in SQL Server (快速入門：SQL Server 中的擴充事件)](https://msdn.microsoft.com/library/mt733217.aspx)
 - [擴充事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本主題假設您已經有一些下列項目的知識：
 
@@ -77,29 +77,29 @@ ms.locfileid: "73822308"
 - 最佳做法是在您的 **CREATE EVENT SESSION** 或 **ALTER EVENT SESSION** 陳述式中包含 **STARTUP_STATE = ON** 的事件工作階段選項。
     - **= ON** 值支援在由於容錯移轉而進行邏輯資料庫的重新設定之後，自動重新啟動。
 
-## <a name="new-catalog-views"></a>新的目錄檢視
+## <a name="new-catalog-views"></a>新目錄檢視
 
 擴充事件功能受到多個 [目錄檢視](https://msdn.microsoft.com/library/ms174365.aspx)支援。 目錄檢視會告訴您目前資料庫中使用者建立事件工作階段的 *中繼資料或定義* 的相關資訊。 檢視不會傳回作用中事件工作階段的執行個體的相關資訊。
 
-| 名稱<br/>目錄檢視的名稱 | 說明 |
+| 名稱<br/>目錄檢視的名稱 | 描述 |
 |:--- |:--- |
-| **sys.database_event_session_actions** |針對事件工作階段的每個事件上的每個動作傳回資料列。 |
+| **sys.database_event_session_actions** |針對事件工作階段之每個事件的每個動作傳回資料列。 |
 | **sys.database_event_session_events** |針對事件工作階段中的每個事件傳回資料列。 |
 | **sys.database_event_session_fields** |針對已在事件和目標上明確設定的每個可自訂資料行傳回資料列。 |
-| **sys.database_event_session_targets** |針對事件工作階段的每個事件目標傳回資料列。 |
+| **sys.database_event_session_targets** |傳回事件工作階段中每一個事件目標的資料列。 |
 | **sys.database_event_sessions** |針對 SQL Database 資料庫中的每個事件工作階段傳回資料列。 |
 
 在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_ *\_* 而不是 .database *\_* 的名稱。 名稱模式類似 **sys.server_event_%** 。
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新的動態管理檢視 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>新的動態管理檢視 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) 。 DMV 會告訴您 *作用中* 事件工作階段的相關資訊。
 
-| DMV 的名稱 | 說明 |
+| DMV 的名稱 | 描述 |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |會傳回事件工作階段動作的相關資訊。 |
-| **sys.dm_xe_database_session_events** |會傳回工作階段事件的相關資訊。 |
-| **sys.dm_xe_database_session_object_columns** |顯示繫結至工作階段的物件的組態值。 |
+| **sys.dm_xe_database_session_event_actions** |傳回有關事件工作階段動作的資訊。 |
+| **sys.dm_xe_database_session_events** |傳回有關工作階段事件的資訊。 |
+| **sys.dm_xe_database_session_object_columns** |顯示繫結至工作階段之物件的組態值。 |
 | **sys.dm_xe_database_session_targets** |會傳回工作階段目標的相關資訊。 |
 | **sys.dm_xe_database_sessions** |針對範圍為目前資料庫的每個事件工作階段傳回資料列。 |
 
@@ -171,7 +171,7 @@ SELECT
 
 - 讀取
 - 寫入
-- 列出
+- 清單
 
 ## <a name="performance-considerations"></a>效能考量
 

@@ -5,11 +5,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255862"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252723"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux Node.js 應用程式
 
@@ -88,7 +88,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>執行 npm 開始
 
-若要使用 `npm start`來啟動您的應用程式，請確定 `start` 腳本位於*package. json*檔案中。 例如，
+若要使用 `npm start`來啟動您的應用程式，請確定 `start` 腳本位於*package. json*檔案中。 例如：
 
 ```json
 {
@@ -136,7 +136,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 如果您將 node.js 應用程式設定為以[PM2 執行](#run-with-pm2)，則您可以在[Visual Studio Code](https://code.visualstudio.com/)中從遠端進行偵錯工具，除非您使用 * .js、*. yml 或*yaml*來執行它。
 
-在大部分情況下，您的應用程式不需要進行額外的設定。 如果您的應用程式是使用*進程. json*檔案（預設或自訂）執行，它在 json 根目錄中必須有 `script` 屬性。 例如，
+在大部分情況下，您的應用程式不需要進行額外的設定。 如果您的應用程式是使用*進程. json*檔案（預設或自訂）執行，它在 json 根目錄中必須有 `script` 屬性。 例如：
 
 ```json
 {
@@ -164,7 +164,7 @@ process.env.NODE_ENV
 
 根據預設，Kudu 會在辨識出已部署的 node.js 應用程式時執行 `npm install --production`。 如果您的應用程式需要任何熱門的自動化工具，例如 Grunt、Bower 或 Gulp，您必須提供[自訂部署腳本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)來執行它。
 
-若要讓您的存放庫能夠執行這些工具，您需要將它們新增至*package. json*中的相依性。 例如，
+若要讓您的存放庫能夠執行這些工具，您需要將它們新增至*package. json*中的相依性。 例如：
 
 ```json
 "dependencies": {
@@ -243,7 +243,7 @@ fi
 
 在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要檢查使用者要求是否有加密，請檢查 `X-Forwarded-Proto` 標頭。
 
-熱門的 Web 架構可讓您在標準的應用程式模式中存取 `X-Forwarded-*` 資訊。 在[Express](https://expressjs.com/)中，您可以使用[信任](https://expressjs.com/guide/behind-proxies.html)proxy。 例如，
+熱門的 Web 架構可讓您在標準的應用程式模式中存取 `X-Forwarded-*` 資訊。 在[Express](https://expressjs.com/)中，您可以使用[信任](https://expressjs.com/guide/behind-proxies.html)proxy。 例如：
 
 ```javascript
 app.set('trust proxy', 1)
@@ -266,7 +266,7 @@ if (req.secure) {
 當工作中的 node.js 應用程式在 App Service 中有不同的行為，或發生錯誤時，請嘗試下列動作：
 
 - [存取記錄資料流](#access-diagnostic-logs)。
-- 以生產模式在本機測試應用程式。 App Service 會在生產模式中執行您的 node.js 應用程式，因此您必須確定您的專案在本機的生產模式中如預期般運作。 例如，
+- 以生產模式在本機測試應用程式。 App Service 會在生產模式中執行您的 node.js 應用程式，因此您必須確定您的專案在本機的生產模式中如預期般運作。 例如：
     - 視您的*封裝*而定，可能會針對生產模式（`dependencies` 與 `devDependencies`）安裝不同的套件。
     - 某些 web 架構可能會在生產模式中以不同的方式部署靜態檔案。
     - 某些 web 架構在生產模式中執行時，可能會使用自訂啟動腳本。

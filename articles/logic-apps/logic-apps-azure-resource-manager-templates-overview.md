@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284040"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>總覽：使用 Azure Resource Manager 範本自動部署 Azure Logic Apps
 
@@ -319,7 +319,7 @@ ms.locfileid: "77191428"
 
 以下是您的邏輯應用程式資源定義特有的屬性：
 
-| 屬性 | 必要項 | 類型 | 描述 |
+| 屬性 | 必要 | 類型 | 描述 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 您的邏輯應用程式在部署時的狀態，其中 `Enabled` 表示邏輯應用程式已上線，`Disabled` 表示邏輯應用程式為非使用中。 例如，如果您還沒有準備好讓邏輯應用程式上線，但想要部署草稿版本，您可以使用 `Disabled` 選項。 |
 | `integrationAccount` | 否 | Object | 如果您的邏輯應用程式使用整合帳戶來儲存企業對企業（B2B）案例的成品，此物件會包含 `id` 屬性，以指定整合帳戶的識別碼。 |

@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920207"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280725"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -580,14 +580,14 @@ Azure 原則支援下列類型的效果：
 
 下列函式可在原則規則中使用，但與 Azure Resource Manager 範本中的用法不同：
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime**： [Required] 通用 ISO 8601 dateTime 格式 ' Yyyy-mm-dd ' ddTHH： MM： Ss. ss.fffffffz ' 中的 string 字串
-  - **numberOfDaysToAdd**： [必要] 整數-要加入的天數
 - `utcNow()`-不同于 Resource Manager 範本，這可以在 defaultValue 以外使用。
   - 傳回設定為目前日期和時間的字串，其為通用 ISO 8601 DateTime 格式 ' yyyy-mm-dd ' ddTHH： MM： ss. Ss.fffffffz '
 
 下列函式僅適用于原則規則：
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **datetime**： [Required] 通用 ISO 8601 dateTime 格式 ' Yyyy-mm-dd ' ddTHH： MM： Ss. ss.fffffffz ' 中的 string 字串
+  - **numberOfDaysToAdd**： [必要] 整數-要加入的天數
 - `field(fieldName)`
   - **fieldName**： [必要] 字串-要抓取之[欄位](#fields)的名稱
   - 傳回 If 條件所評估資源中該欄位的值。

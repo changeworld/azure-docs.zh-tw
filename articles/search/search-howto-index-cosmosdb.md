@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283000"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 認知搜尋中的索引子為 Cosmos DB 資料編制索引 
 
@@ -179,7 +179,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 |**type**| 必要。 必須是 `cosmosdb`。 |
 |**credentials** | 必要。 必須是 Cosmos DB 連接字串。<br/>若是 SQL 集合，連接字串的格式如下： `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>針對 MongoDB 集合，請將**ApiKind = MongoDB**新增至連接字串：<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>針對 Gremlin 圖形和 Cassandra 資料表，請註冊[閘道索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview)以取得預覽的存取權，以及如何格式化認證的相關資訊。<br/><br/>請避免在端點 URL 中使用連接埠號碼。 如果您包含埠號碼，Azure 認知搜尋將無法為您的 Azure Cosmos DB 資料庫編制索引。|
 | **container** | 包含下列元素： <br/>**名稱**：必要。 指定要編制索引之資料庫集合的識別碼。<br/>**查詢**：選擇性。 您可以指定查詢，將任意 JSON 檔壓平合併為 Azure 認知搜尋可以編制索引的一般架構。<br/>針對 MongoDB API、Gremlin API 和 Cassandra API，不支援查詢。 |
-| **dataChangeDetectionPolicy** | 建議。 請參閱[索引變更的文件](#DataChangeDetectionPolicy)小節。|
+| **dataChangeDetectionPolicy** | 建議使用。 請參閱[索引變更的文件](#DataChangeDetectionPolicy)小節。|
 |**dataDeletionDetectionPolicy** | 選擇性。 請參閱[索引刪除的文件](#DataDeletionDetectionPolicy)小節。|
 
 ### <a name="using-queries-to-shape-indexed-data"></a>使用查詢來形塑索引的資料

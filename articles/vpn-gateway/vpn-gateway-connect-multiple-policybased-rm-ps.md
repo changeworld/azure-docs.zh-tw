@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: yushwang
 ms.openlocfilehash: 028ed1a632016fcbdf29bb47ab81a36f659785da
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660465"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279308"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 將 Azure VPN 閘道連線至多個內部部署以原則為基礎的 VPN 裝置
 
@@ -38,7 +38,7 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
 
 |                          | **PolicyBased VPN 閘道** | **RouteBased VPN 閘道**       |**RouteBased VPN 閘道**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure 閘道 SKU**    | Basic                       | Basic                            | Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3  |
+| **Azure 閘道 SKU**    | 基本                       | 基本                            | Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3  |
 | **IKE 版本**          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                                    |
 | **讀數.S2S 連線** | **1**                       | 10                               |標準：10<br> 其他 Sku：30                     |
 |                          |                             |                                  |                                                    |

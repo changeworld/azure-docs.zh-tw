@@ -3,12 +3,12 @@ title: 設定私人連結
 description: 在容器登錄上設定私用端點，並啟用本機虛擬網路中的私人連結
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 57c2a59ad8b16c39c7c577173feae68dcb263277
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128392"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203350"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>設定 azure container registry 的 Azure 私人連結 
 
@@ -28,7 +28,14 @@ ms.locfileid: "79128392"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 若要使用本文中的 Azure CLI 步驟，建議您 Azure CLI 版本2.2.0 或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。 或在[Azure Cloud Shell](../cloud-shell/quickstart.md)中執行。
-* 如果您還沒有容器登錄，請建立一個（需要進階層）並從 Docker Hub 推送範例映射，例如 `hello-world`。 例如，使用[Azure 入口網站][quickstart-portal]或[Azure CLI][quickstart-cli]來建立登錄。 
+* 如果您還沒有容器登錄，請建立一個（需要進階層）並從 Docker Hub 推送範例映射，例如 `hello-world`。 例如，使用[Azure 入口網站][quickstart-portal]或[Azure CLI][quickstart-cli]來建立登錄。
+* 如果您想要使用不同 Azure 訂用帳戶中的私人連結來設定登錄存取，您必須在該訂用帳戶中註冊 Azure Container Registry 的資源提供者。 例如：
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 本文中的 Azure CLI 範例使用下列環境變數。 替代適用于您環境的值。 所有範例都是針對 Bash shell 進行格式化：
 

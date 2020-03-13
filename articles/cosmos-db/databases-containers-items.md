@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246782"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用資料庫、容器和專案
 
@@ -74,7 +74,7 @@ Azure Cosmos 容器專門用於 API 特定的實體，如下表所示：
 
 | Azure Cosmos 實體 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 容器 | 容器 | 表格 | 集合 | 圖表 | 表格 |
+|Azure Cosmos 容器 | 容器 | Table | 集合 | 圖形 | Table |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的屬性
 
@@ -100,7 +100,7 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 | --- | --- | --- | --- | --- | --- | --- |
 | 列舉資料庫中的容器 | 是 | 是 | 是 | 是 | NA | NA |
 | 讀取容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 建立新的容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 建立新容器 | 是 | 是 | 是 | 是 | NA | NA |
 | 更新容器 | 是 | 是 | 是 | 是 | NA | NA |
 | 刪除容器 | 是 | 是 | 是 | 是 | NA | NA |
 
@@ -110,7 +110,7 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 
 | Cosmos 實體 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 項目 | 文件 | 資料列 | 文件 | 節點或邊緣 | 項目 |
+|Azure Cosmos 項目 | Document | 資料列 | Document | 節點或邊緣 | Item |
 
 ### <a name="properties-of-an-item"></a>項目的屬性
 

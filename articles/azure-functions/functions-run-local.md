@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276656"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -65,13 +65,13 @@ Azure Functions Core Tools 有三個版本。 您使用的版本取決於您的�
 
     ##### <a name="v2x"></a>v2.x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools
     ```
 
     ##### <a name="v3x"></a>v3. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
@@ -79,7 +79,7 @@ Azure Functions Core Tools 有三個版本。 您使用的版本取決於您的�
 
 1. 如果您不打算使用[延伸]模組配套，請安裝[適用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 下列步驟使用 Homebrew 在 macOS 上安裝 Core Tools。
 
@@ -163,33 +163,33 @@ Functions 專案目錄包含 [host.json](functions-host-json.md) 和 [local.sett
 
 在終端機視窗或命令提示字元中，執行下列命令來建立專案和本機 Git 存放庫：
 
-```bash
+```
 func init MyFunctionProj
 ```
 
 當您提供專案名稱時，系統會建立具有該名稱的新資料夾，並將其初始化。 否則，會將目前的資料夾初始化。  
 在 2.x 版中，當您執行命令時，您必須為您的專案選擇執行階段。 
 
-```output
+<pre>
 Select a worker runtime:
 dotnet
 node
 python 
 powershell
-```
+</pre>
 
 使用向上/向下鍵來選擇語言，然後按 Enter。 如果您打算開發 JavaScript 或 TypeScript 函式，請選擇 [ **node**]，然後選取語言。 TypeScript 有[一些額外的需求](functions-reference-node.md#typescript)。 
 
 JavaScript 專案的輸出看起來會像下列範例：
 
-```output
+<pre>
 Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-```
+</pre>
 
 `func init` 支援下列選項 (僅限用於 2.x 版，除非另有指定)：
 
@@ -247,12 +247,12 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   + 從現有的函數應用程式下載所有設定：
 
-    ```bash
+    ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
   + 取得特定儲存體帳戶的連接字串：
 
-    ```bash
+    ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
@@ -262,13 +262,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 若要建立函式，請執行下列命令：
 
-```bash
+```
 func new
 ```
 
 在 2.x 版中，當您執行 `func new` 時，系統會提示您選擇採用函式應用程式預設語言的範本，然後系統也會提示您為您的函式選擇名稱。 在 1.x 版中，系統也會提示您選擇語言。
 
-```output
+<pre>
 Select a language: Select a template:
 Blob trigger
 Cosmos DB trigger
@@ -279,18 +279,18 @@ SendGrid
 Service Bus Queue trigger
 Service Bus Topic trigger
 Timer trigger
-```
+</pre>
 
 如您在下列佇列觸發程序輸出中所見，函式程式碼會在子資料夾中產生並採用所提供的函式名稱：
 
-```output
+<pre>
 Select a language: Select a template: Queue trigger
 Function name: [QueueTriggerJS] MyQueueTrigger
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-```
+</pre>
 
 您也可以使用下列引數，在命令中指定這些選項：
 
@@ -303,62 +303,65 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 例如，若要在單一命令中建立 JavaScript HTTP 觸發程序，請執行：
 
-```bash
+```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
 若要在單一命令中建立佇列所觸發的函式，請執行：
 
-```bash
+```
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
 ## <a name="start"></a>在本機執行函式
 
-若要執行 Functions 專案，請執行 Functions 主機。 主機會對專案中的所有函式啟用觸發程式。 
+若要執行 Functions 專案，請執行 Functions 主機。 主機會對專案中的所有函式啟用觸發程式。 視您的專案語言而定，啟動命令會有所不同。
 
-### <a name="version-2x"></a>2\.x 版
+# <a name="c"></a>[C\#](#tab/csharp)
 
-在2.x 版的執行時間中，視您的專案語言而定，start 命令會有所不同。
-
-#### <a name="c"></a>C\#
-
-```command
+```
 func start --build
 ```
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
-#### <a name="javascript"></a>JavaScript
-
-```command
+```
 func start
 ```
 
-#### <a name="typescript"></a>TypeScript
+# <a name="python"></a>[Python](#tab/python)
 
-```command
+```
+func start
+```
+此命令必須[在虛擬環境中執行](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)。
+
+# <a name="typescript"></a>[TypeScript](#tab/ts)
+
+```
 npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>1\.x 版
+---
 
-1\.x 版的函式執行時間需要 `host` 命令，如下列範例所示：
-
-```command
-func host start
-```
+>[!NOTE]  
+> 1\.x 版的函式執行時間需要 `host` 命令，如下列範例所示：
+>
+> ```
+> func host start
+> ```
 
 `func start` 支援下列選項：
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 僅限 2.x 版。 |
-| **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 僅限 2.x 版。 |
-| **`--cors-credentials`** | 允許跨來源的已驗證要求 (也就是 cookie 及驗證標頭) 僅限 2.x 版。 |
+| **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1\.x 版不支援。 |
+| **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1\.x 版不支援。 |
+| **`--cors-credentials`** | 針對1.x 版，允許不支援跨原始來源驗證的要求（也就是 cookie 和驗證標頭）。 |
 | **`--cors`** | 以逗號分隔的 CORS 來源清單，不含空格。 |
-| **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供[debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 僅限 2.x 版。 |
+| **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供[debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 1\.x 版不支援。 |
 | **`--nodeDebugPort`** , **`-n`** | 要使用之 node.js 偵錯工具的埠。 預設值：Launch.json 中的值或 5858。 僅限 1.x 版。 |
-| **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 僅限 2.x 版。 |
+| **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 1\.x 版不支援。 |
 | **`--port`** , **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
 | **`--pause-on-error`** | 暫停以在結束處理程序之前取得其他輸入。 這僅適用於從整合式開發環境 (IDE) 啟動 Core Tools 時。|
 | **`--script-root`** , **`--prefix`** | 用來為要執行或部署的函式應用程式指定根目錄的路徑。 此選項可用於在子資料夾中產生專案檔的編譯專案。 例如，當您建置 C# 類別庫專案時，將會以類似於 *的路徑在*root`MyProject/bin/Debug/netstandard2.0` 子資料夾中產生 host.json、local.settings.json 和 function.json 等檔案。 在此情況下，請將前置詞設為 `--script-root MyProject/bin/Debug/netstandard2.0`。 這是函式應用程式在 Azure 中執行時的根目錄。 |
@@ -367,13 +370,13 @@ func host start
 
 Functions 主機啟動時，它會輸出 HTTP 觸發函式的 URL：
 
-```output
+<pre>
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
 Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
-```
+</pre>
 
 >[!IMPORTANT]
 >在本機執行時，不會對 HTTP 端點強制執行授權。 這表示所有的本機 HTTP 要求會作為 `authLevel = "anonymous"` 處理。 如需詳細資訊，請參閱 [HTTP 繫結文章](functions-bindings-http-webhook-trigger.md#authorization-keys)。
@@ -397,21 +400,31 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 下列 cURL 命令從 GET 要求在查詢字串中傳遞 `MyHttpTrigger`name_參數，觸發_ 快速入門函式。
 
-```bash
+```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
 下列範例與從 POST 要求在要求本文中傳遞 _name_ 所呼叫的函式相同：
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azure Rocks'}"
+```
+---
 
 您可以從瀏覽器在查詢字串中傳遞資料來進行 GET 要求。 對於所有其他 HTTP 方法，您必須使用 cURL、Fiddler、Postman 或類似的 HTTP 測試工具。
 
 #### <a name="non-http-triggered-functions"></a>非 HTTP 觸發函式
 
-對於 HTTP 觸發程序和 Webhook 以外的所有函式類型，您可以呼叫管理端點在本機測試函式。 在本機伺服器上使用 HTTP POST 要求來呼叫此端點會觸發函式。 您可以在 POST 要求本文中選擇性地傳遞測試資料到執行程序。 這項功能類似於 Azure 入口網站中的 [測試] 索引標籤。
+對於 HTTP 觸發程式和 webhook 和事件方格觸發程式以外的所有函式類型，您可以呼叫管理端點，在本機測試您的函式。 在本機伺服器上使用 HTTP POST 要求來呼叫此端點會觸發函式。 
+
+若要在本機測試 Event Grid 觸發的函式，請參閱[使用檢視器 web 應用程式進行本機測試](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)。
+
+您可以在 POST 要求本文中選擇性地傳遞測試資料到執行程序。 這項功能類似於 Azure 入口網站中的 [測試] 索引標籤。
 
 您可以呼叫下列系統管理員端點來觸發非 HTTP 函式：
 
@@ -427,16 +440,22 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 
 `<trigger_input>` 值包含函式預期格式的資料。 下列 cURL 範例是 POST 到 `QueueTriggerJS` 函式。 在此情況下，輸入是一個相當於在佇列中預期找到的訊息字串。
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTrigger
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```bash
+curl --request POST -H "Content-Type:application/json" --data "{'input':'sample queue data'}" http://localhost:7071/admin/functions/QueueTrigger
+```
+---
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>使用版本 1.x 中的 `func run` 命令
+#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令（僅限1.x 版）
 
 >[!IMPORTANT]
-> 工具的版本 2.x 不支援 `func run` 命令。 如需詳細資訊，請參閱[如何設定 Azure Functions 執行階段版本目標](set-runtime-version.md)主題。
+> 只有1.x 版的工具才支援 `func run` 命令。 如需詳細資訊，請參閱[如何設定 Azure Functions 執行階段版本目標](set-runtime-version.md)主題。
 
-您也可以使用 `func run <FunctionName>` 直接叫用函式，並為函式提供輸入資料。 此命令類似於使用 Azure 入口網站中的 [測試] 索引標籤執行函式。
+在1.x 版中，您也可以使用 `func run <FunctionName>` 直接叫用函式，並提供函數的輸入資料。 此命令類似於使用 Azure 入口網站中的 [測試] 索引標籤執行函式。
 
 `func run` 支援下列選項：
 
@@ -450,7 +469,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 例如，若要呼叫 HTTP 觸發的函式並傳遞內容的內文，請執行下列命令：
 
-```bash
+```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
@@ -467,7 +486,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 若要將您的本機程式碼發佈至 Azure 中的函數應用程式，請使用 `publish` 命令：
 
-```bash
+```
 func azure functionapp publish <FunctionAppName>
 ```
 
@@ -504,7 +523,7 @@ func azure functionapp publish <FunctionAppName>
 
 Azure Functions 可讓您在[自訂的 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函數專案。 如需詳細資訊，請參閱[使用自訂映像在 Linux 上建立函式](functions-create-function-linux-custom-image.md)。 自訂容器必須具有 Dockerfile。 若要建立具有 Dockerfile 的應用程式，請使用 `func init`上的--Dockerfile 選項。
 
-```bash
+```
 func deploy
 ```
 

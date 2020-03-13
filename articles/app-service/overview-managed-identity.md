@@ -3,15 +3,15 @@ title: 受控身分識別
 description: 瞭解受控識別在 Azure App Service 和 Azure Functions 中的使用方式、如何設定受控識別，以及如何產生後端資源的權杖。
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161914"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280023"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -22,9 +22,9 @@ ms.locfileid: "77161914"
 
 您的應用程式可以授與兩種類型的身分識別： 
 - **系統指派的身分識別**會繫結至您的應用程式，如果您的應用程式已刪除，則會被刪除。 應用程式只能有一個系統指派的身分識別。
-- **使用者指派的身分識別**是一個獨立的 Azure 資源，可以指派給您的應用程式。 應用程式可以有多個使用者指派的身分識別。
+- **使用者指派**的身分識別是一種獨立的 Azure 資源，可指派給您的應用程式。 應用程式可以有多個使用者指派的身分識別。
 
-## <a name="adding-a-system-assigned-identity"></a>新增系統指派的身分識別
+## <a name="add-a-system-assigned-identity"></a>新增系統指派的身分識別
 
 若要建立採用系統指派的身分識別的應用程式，您必須在應用程式上設定額外的屬性。
 
@@ -47,12 +47,12 @@ ms.locfileid: "77161914"
 若要使用 Azure CLI 設定受控身分識別，您必須對現有的應用程式使用 `az webapp identity assign` 命令。 有三個選項可供您執行本節中的範例︰
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
+- 透過位於下方每個程式碼區塊右上角的 [試試看] 按鈕，使用內嵌的 Azure Cloud Shell。
 - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 或更新版本)。 
 
 下列步驟將逐步引導您建立 web 應用程式，並使用 CLI 指派身分識別給它：
 
-1. 如果您要在本機主控台中使用 Azure CLI，請先使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure。 使用您要部署應用程式且已與 Azure 訂用帳戶相關聯的帳戶：
+1. 如果您要在本機主控台中使用 Azure CLI，請先使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure。 使用與您想要部署應用程式的 Azure 訂用帳戶相關聯的帳戶：
 
     ```azurecli-interactive
     az login
@@ -146,10 +146,10 @@ ms.locfileid: "77161914"
 }
 ```
 
-其中，`<TENANTID>` 和 `<PRINCIPALID>` 會取代為 GUID。 tenantId 屬性能辨識身分識別所隸屬的 AAD 租用戶。 principalId 是應用程式新身分識別的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
+tenantId 屬性能辨識身分識別所隸屬的 AAD 租用戶。 principalId 是應用程式新身分識別的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
 
 
-## <a name="adding-a-user-assigned-identity"></a>新增使用者指派的身分識別
+## <a name="add-a-user-assigned-identity"></a>新增使用者指派的身分識別
 
 利用使用者指派的身分識別建立應用程式會需要您建立身分識別，然後將其資源識別碼新增到您的應用程式設定中。
 
@@ -230,15 +230,17 @@ ms.locfileid: "77161914"
 }
 ```
 
-其中，`<PRINCIPALID>` 和 `<CLIENTID>` 會取代為 GUID。 principalId 是用於 AAD 管理的身分識別的唯一識別碼。 clientId 是應用程式的新身分識別的唯一識別碼，用來指定要在執行階段呼叫期間使用的身分識別。
+PrincipalId 是用於 AAD 管理之身分識別的唯一識別碼。 ClientId 是應用程式新身分識別的唯一識別碼，用來指定執行時間呼叫期間要使用的身分識別。
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>取得 Azure 資源的權杖
+## <a name="obtain-tokens-for-azure-resources"></a>取得 Azure 資源的權杖
 
 應用程式可以使用其受控識別來取得權杖，以存取 AAD 所保護的其他資源，例如 Azure Key Vault。 這些權杖代表存取資源的應用程式，而不是任何特定的應用程式使用者。 
 
+您可能需要設定目標資源，讓應用程式得以存取。 例如，如果您要求權杖來存取 Key Vault，您必須確定您已新增包含應用程式身分識別的存取原則。 否則即使呼叫含有權杖，依然會遭到拒絕。 若要深入了解哪些資源支援 Azure Active Directory 權杖，請參閱[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+
 > [!IMPORTANT]
-> 您可能需要設定目標資源，讓應用程式得以存取。 例如，如果您要求權杖來存取 Key Vault，您必須確定您已新增包含應用程式身分識別的存取原則。 否則即使呼叫含有權杖，依然會遭到拒絕。 若要深入了解哪些資源支援 Azure Active Directory 權杖，請參閱[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+> 受控識別的後端服務會保留每個資源 URI 的快取約8小時。 如果您更新特定目標資源的存取原則，並立即抓取該資源的權杖，您可以繼續取得具有過期許可權的快取權杖，直到該權杖過期為止。 目前沒有任何方法可以強制重新整理權杖。
 
 有一個簡單的 REST 通訊協定可用來在 App Service 和 Azure Functions 中取得權杖。 這可用於所有應用程式和語言。 針對 .NET 和 JAVA，Azure SDK 提供此通訊協定的抽象概念，並協助本機開發體驗。
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>程式碼範例
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > 對於 .NET 語言，您也可以使用 [Microsoft.Azure.Services.AppAuthentication](#asal) 而不需要自行製作要求。
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -413,7 +415,7 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove"></a>移除身分識別
 
-您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有的身分識別，在 REST/ARM 範本通訊協定中，做法是將類型設定為「無」：
+您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請在[ARM 範本](#using-an-azure-resource-manager-template)中將類型設定為 "None"：
 
 ```json
 "identity": {

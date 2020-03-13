@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: dapine
 ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221223"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 認知服務中的容器支援
 
@@ -49,7 +49,7 @@ Azure 認知服務中的容器支援可讓開發人員使用 Azure 中可用的�
 
 Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包含 Azure 認知服務中服務之功能的子集：
 
-| Service | 支援的定價層 | 容器 | 描述 |
+| 服務 | 支援的定價層 | 容器 | 描述 |
 |---------|----------|----------|-------------|
 |[異常偵測器][ad-containers] |F0，S0|**異常-偵測器** |Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取](https://aka.ms/adcontainer)|
 |[電腦視覺][cv-containers] |F0，S1|**讀取** |從具不同表面和背景之各種物件 (例如收據、海報和名片) 的影像擷取印刷文字。 讀取容器也會偵測影像中的*手寫文字*，並提供 PDF/TIFF/多頁支援。<br/><br/>**重要事項：** 讀取容器目前僅適用于英文。|
@@ -71,7 +71,7 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 此外，認知服務的[**多項**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)供應專案資源金鑰中支援某些容器。 您可以建立一個單一認知服務的一體資源，並在下列服務的支援服務中使用相同的帳單金鑰：
 
 * 電腦視覺
-* 臉
+* 臉部
 * LUIS
 * 文字分析
 
@@ -89,7 +89,7 @@ Azure 認知服務容器可透過您的 Azure 訂用帳戶公開取得，而 Doc
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須滿足下列必要條件才能使用 Azure 認知服務容器：
 

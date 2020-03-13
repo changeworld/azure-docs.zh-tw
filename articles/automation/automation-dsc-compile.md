@@ -6,11 +6,11 @@ ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: a4a46837e366caf2860aa0d6597ec7aebc94905a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373540"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278983"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>編譯 Azure Automation State Configuration 中的 DSC 組態
 
@@ -31,7 +31,7 @@ ms.locfileid: "78373540"
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure 狀態設定中編譯 DSC 設定
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>入口網站
 
 1. 從您的自動化帳戶，按一下 [State Configuration (DSC)]。
 1. 按一下 [組態] 索引標籤，然後按一下要編譯的組態名稱。
@@ -97,7 +97,7 @@ Configuration ParametersExample
 
 您可以在 Azure 自動化狀態設定入口網站中或使用 Azure PowerShell，編譯使用基本參數的 DSC 設定。
 
-#### <a name="portal"></a>Portal
+#### <a name="portal"></a>入口網站
 
 在入口網站中，您可以在按一下 [編譯]後輸入參數值。
 
@@ -182,7 +182,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="work-with-assets-in-azure-automation-during-compilation"></a>在編譯期間使用 Azure 自動化中的資產
 
-Azure 自動化狀態設定和 runbook 中的資產參考都相同。 如需詳細資訊，請參閱下列內容：
+Azure 自動化狀態設定和 runbook 中的資產參考都相同。 如需詳細資訊，請參閱下列：
 
 - [憑證](automation-certificates.md)
 - [連線](automation-connections.md)

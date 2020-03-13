@@ -4,11 +4,11 @@ description: 撰寫 SDK 的遙測處理器和遙測初始設定式來篩選屬�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361842"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276318"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中篩選及前置處理遙測
 

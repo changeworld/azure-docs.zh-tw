@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d9650db601426cef195c27e6eb874ec26cf13bb8
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595242"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137674"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 blob 快照集
 
-快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)來建立和管理 blob 快照集。
+快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
 ## <a name="about-blob-snapshots"></a>關於 blob 快照集
 
@@ -142,7 +142,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 下列案例示範如何針對區塊 Blob 及其快照集產生費用。
 
-#### <a name="scenario-1"></a>案例 1
+#### <a name="scenario-1"></a>實例 1
 
 在案例 1 中，基底 Blob 在擷取快照之後尚未更新，因此只會針對唯一區塊 1、2 和 3 產生費用。
 

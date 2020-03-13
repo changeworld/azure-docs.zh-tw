@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 7246a072c1bf2253b822fca53b0b69700c66221d
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565232"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208238"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>將存取權限指派給身分識別
 
@@ -26,7 +26,7 @@ ms.locfileid: "77565232"
 - **儲存體檔案資料 SMB 共用提高許可權參與者**允許透過 smb 在 Azure 儲存體檔案共用中進行讀取、寫入、刪除及修改 NTFS 許可權。
 
 > [!IMPORTANT]
-> 完整管理控制檔案共用 (包括將角色指派給身分識別的能力) 需要使用儲存體帳戶金鑰。 Azure AD 認證不支援管理控制。
+> 檔案共用的完整系統管理控制權，包括取得檔案擁有權的能力，需要使用儲存體帳戶金鑰。 Azure AD 認證不支援管理控制。
 
 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。
 

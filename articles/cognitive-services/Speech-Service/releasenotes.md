@@ -12,11 +12,11 @@ ms.date: 02/25/2020
 ms.author: brianem
 ms.custom: seodec18
 ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221265"
 ---
 # <a name="release-notes"></a>版本資訊
 ## <a name="speech-sdk-1100-2020-february-release"></a>語音 SDK 1.10.0： 2020-二月發行

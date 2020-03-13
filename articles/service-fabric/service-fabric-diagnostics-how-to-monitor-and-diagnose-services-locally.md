@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464615"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258508"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>監視和診斷本機開發設定中的服務
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Service Fabric Visual Studio 專案範本包含範例程式碼。 程式碼示�
 針對從 **動作項目範本** (無狀態或可設定狀態) 所建立專案：
 
 1. 開啟 **"ProjectName".cs** 檔案，其中 *ProjectName* 是您針對 Visual Studio 專案所選擇的名稱。  
-2. 在 *DoWorkAsync* 方法中找出程式碼 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`。  這是來自應用程式程式碼撰寫的自訂 ETW 追蹤範例。  
+2. 在 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`DoWorkAsync*方法中找出程式碼*。  這是來自應用程式程式碼撰寫的自訂 ETW 追蹤範例。  
 3. 在 **ActorEventSource.cs** 中，您會找到 `ActorEventSource.ActorMessage` 方法的多載，出於效能因素，應該將其用於高頻率事件。
 
 將自訂 ETW 追蹤新增至服務程式碼之後，您可以再次建置、部署，以及執行應用程式以查看診斷事件檢視器中的事件。 如果您使用 **F5**來偵錯應用程式，診斷事件檢視器將會自動開啟。

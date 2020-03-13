@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282779"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立基本索引
 
@@ -53,7 +53,7 @@ ms.locfileid: "75460757"
 
 方式，Azure 認知搜尋索引是由下列元素所組成。 
 
-「[欄位集合](#fields-collection)」通常是索引中最大的一部分，其中每個欄位都會具有名稱、類型和屬性，以及可決定其使用方式的可允許行為。 其他元素包括[建議工具](#suggesters)、[評分設定檔](#scoring-profiles)、具有元件部分的[分析器](#analyzers)，以支援自訂、 [CORS](#cors)和[加密金鑰](#encryption-key)選項。
+「[欄位集合 *」* ](#fields-collection)通常是索引中最大的一部分，其中每個欄位都會具有名稱、類型和屬性，以及可決定其使用方式的可允許行為。 其他元素包括[建議工具](#suggesters)、[評分設定檔](#scoring-profiles)、具有元件部分的[分析器](#analyzers)，以支援自訂、 [CORS](#cors)和[加密金鑰](#encryption-key)選項。
 
 ```json
 {
@@ -145,7 +145,7 @@ ms.locfileid: "75460757"
 您在定義結構描述時必須指定索引中每個欄位的名稱、類型和屬性。 欄位類型可分類該欄位中儲存的資料。 個別欄位上設定的屬性可指定使用欄位的方式。 下列幾個資料表列舉您可以指定的類型和屬性。
 
 ### <a name="data-types"></a>資料類型
-| 類型 | 說明 |
+| 類型 | 描述 |
 | --- | --- |
 | *Edm.String* |可選擇性予以 Token 化以供進行全文檢索搜尋 (斷字、詞幹分析等) 的文字。 |
 | *Collection(Edm.String)* |可選擇性予以 Token 化以供進行全文檢索搜尋的字串清單。 理論上，集合中的項目數沒有上限，但集合的承載大小有 16 MB 的上限。 |
@@ -166,7 +166,7 @@ ms.locfileid: "75460757"
 
 您用來建立索引的 Api 有不同的預設行為。 對於[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，大部分的屬性預設為啟用（例如，字串欄位**的可搜尋和可供**搜尋 **），而且**您通常只需要設定它們（如果您想要將它們關閉）。 針對 .NET SDK，相反的為 true。 在您未明確設定的任何屬性上，除非您特別啟用，否則預設會停用對應的搜尋行為。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | `key` |字串，提供每一份文件的唯一識別碼，用於查閱文件。 每個索引必須有一個索引鍵。 只有一個欄位可以做為索引鍵，而且其類型必須設定為 Edm.String。 |
 | `retrievable` |指定搜尋結果中是否可傳回某欄位。 |
@@ -183,7 +183,7 @@ ms.locfileid: "75460757"
 
 ![以屬性選取專案為基礎的索引大小](./media/search-what-is-an-index/realestate-index-size.png "以屬性選取專案為基礎的索引大小")
 
-雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定 **retrievable** 是否會增加索引大小？ 不會。 將欄位新增至**建議工具**是否會增加索引大小？ 可以。
+雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定 **retrievable** 是否會增加索引大小？ 否。 將欄位新增至**建議工具**是否會增加索引大小？ 是。
 
 支援篩選和排序的索引會按比例大於僅支援全文檢索搜尋的索引。 篩選和排序作業會掃描是否有完全相符的專案，需要有不完整的檔。 相較之下，支援全文檢索和模糊搜尋的可搜尋欄位會使用倒置索引，其中會填入比完整文件取用較少空間的權杖化字詞。 
 
@@ -195,7 +195,7 @@ ms.locfileid: "75460757"
 
 新增至建議工具的欄位用來建置自動完成搜尋字詞。 所有的搜尋字詞都建立於編製索引期間，且分開儲存。 如需有關建立建議工具結構的詳細資訊，請參閱[新增建議工具](index-add-suggesters.md)。
 
-## <a name="scoring-profiles"></a>計分檔案
+## <a name="scoring-profiles"></a>評分設定檔
 
 [評分設定檔](index-add-scoring-profiles.md)是結構描述的區段，能定義自訂評分行為，讓您能夠影響搜尋結果中哪些項目的出現機率會比較高。 評分設定檔是由欄位權數和函式所組成。 若要使用它們，您可以在查詢字串上以名稱指定設定檔。
 
@@ -213,7 +213,7 @@ ms.locfileid: "75460757"
 
 + **allowedOrigins** （必要）：這是將授與您索引存取權的原始來源清單。 這表示將允許來自那些原始來源的所有 JavaScript 程式碼查詢您的索引 (假設它能提供正確的 API 金鑰)。 每個原始來源的形式通常是 `protocol://<fully-qualified-domain-name>:<port>` (儘管經常會忽略 `<port>`)。 請參閱[跨原始來源資源共用](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)以取得詳細資料。
 
-  如果您想要允許所有原始來源進行存取，請在 **allowedOrigins** 陣列中包含 `*` 作為單一項目。 「此做法並不建議用於生產環境搜尋服務」，但對於開發和偵錯通常很有幫助。
+  如果您想要允許所有原始來源進行存取，請在 `*`allowedOrigins**陣列中包含** 作為單一項目。 「此做法並不建議用於生產環境搜尋服務」，但對於開發和偵錯通常很有幫助。
 
 + **maxAgeInSeconds** （選用）：瀏覽器會使用此值來判斷快取 CORS 預檢回應的持續時間（以秒為單位）。 這必須是非負數的整數。 這個值越大，效能就越好，但是讓 CORS 原則變更生效的時間也就越長。 若未設定，即會使用預設持續期間 5 分鐘。
 

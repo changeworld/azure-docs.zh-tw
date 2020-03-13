@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
 ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379383"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249109"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器的 Log Analytics 工作區中收集並分析 Azure 活動記錄
 

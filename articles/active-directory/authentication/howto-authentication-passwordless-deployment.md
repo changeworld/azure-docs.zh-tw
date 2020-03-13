@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378173"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136529"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中規劃無密碼 authentication 部署
 
@@ -61,7 +61,7 @@ Microsoft 的無密碼 authentication 方法可啟用不同的案例。 請考�
 
 如需為您的組織選取最佳方法的相關資訊，請參閱[決定無密碼方法](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始進行無密碼部署之前，組織必須符合下列必要條件：
 
@@ -130,7 +130,7 @@ Microsoft 提供多重要素驗證[通訊範本](https://aka.ms/mfatemplates)、
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式規劃無密碼 authentication
 
-Microsoft Authenticator 應用程式可從 Google Play 或 Apple App Store 免費下載。 [深入瞭解如何下載 Microsoft Authenticator 應用程式](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak)。 讓使用者下載 Microsoft Authenticator 應用程式。 並遵循指示來啟用手機登入。 
+Microsoft Authenticator 應用程式可從 Google Play 或 Apple App Store 免費下載。 [深入瞭解如何下載 Microsoft Authenticator 應用程式](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。 讓使用者下載 Microsoft Authenticator 應用程式。 並遵循指示來啟用手機登入。 
 
 它會將任何 iOS 或 Android 手機轉換成強式的無密碼認證。 使用者可以藉由取得電話通知來登入任何平臺或瀏覽器，比對螢幕上顯示的數位與電話上的號碼，然後使用生物識別或 PIN 來確認。 [請參閱 Microsoft Authenticator 應用程式運作方式的詳細資料](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in)。 
 
@@ -296,7 +296,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄檔：
 | --- | --- |
 | 全域管理員|最低特殊許可權角色能夠執行合併的註冊體驗。 |
 | 驗證系統管理員 | 最低特殊許可權角色能夠執行和管理驗證方法。 |
-| 使用者 | 在裝置上設定驗證器應用程式，或註冊 web 或 Windows 10 登入的安全性金鑰裝置的最低特殊許可權角色。 |
+| User | 在裝置上設定驗證器應用程式，或註冊 web 或 Windows 10 登入的安全性金鑰裝置的最低特殊許可權角色。 |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式部署手機登入
 
@@ -308,7 +308,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄檔：
 
 ### <a name="troubleshoot-phone-sign-in"></a>針對手機登入進行疑難排解
 
-| 狀況 | 解決方案 |
+| 狀況 | 解決方法 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 請確定已啟用[合併註冊](concept-registration-mfa-sspr-combined.md)。 |
 | 使用者無法啟用手機登入驗證器應用程式。 | 請確定使用者在部署範圍內。 |
@@ -316,7 +316,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄檔：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>對安全性金鑰登入進行疑難排解
 
-| 狀況 | 解決方案 |
+| 狀況 | 解決方法 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 請確定已啟用[合併註冊](concept-registration-mfa-sspr-combined.md)。 |
 | 使用者無法在其[安全性設定](https://aka.ms/mysecurityinfo)中新增安全性金鑰。 | 請確定已啟用[安全性金鑰](howto-authentication-passwordless-security-key.md)。 |

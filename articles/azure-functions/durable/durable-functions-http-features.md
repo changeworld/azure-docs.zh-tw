@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262855"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278060"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -41,11 +41,11 @@ Durable Functions 延伸模組會自動將一組 HTTP Api 新增至 Azure Functi
 
 [協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結會公開可產生便利 HTTP 回應裝載的 api。 例如，它可以建立回應，其中包含特定協調流程實例的管理 Api 連結。 下列範例顯示的 HTTP 觸發程式函式示範如何將此 API 用於新的協調流程實例：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ Retry-After: 10
 
 下列範例程式碼顯示發出輸出 HTTP 要求的協調器函式：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Durable Functions 原本就支援對接受 Azure Active Directory （Azure AD）
 
 下列程式碼是 .NET 協調器函式的範例。 此函式會使用 Azure Resource Manager[虛擬機器 REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)，進行已驗證的呼叫以重新開機虛擬機器。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

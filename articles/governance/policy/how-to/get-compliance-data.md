@@ -4,11 +4,11 @@ description: Azure 原則評估和效果會決定合規性。 瞭解如何取得
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873143"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280634"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的相容性資料
 
@@ -26,7 +26,7 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 
 ## <a name="evaluation-triggers"></a>評估觸發程序
 
-透過 `PolicyStates` 和 `PolicyEvents` 作業可在 `Microsoft.PolicyInsights`「資源提供者」中取得完成的評估週期結果。 如需 Azure 原則 Insights REST API 作業的詳細資訊，請參閱[Azure 原則 Insights](/rest/api/policy-insights/)。
+透過 `Microsoft.PolicyInsights` 和 `PolicyStates` 作業可在 `PolicyEvents`「資源提供者」中取得完成的評估週期結果。 如需 Azure 原則 Insights REST API 作業的詳細資訊，請參閱[Azure 原則 Insights](/rest/api/policy-insights/)。
 
 下列各種事件都會導致評估指派的原則和計畫：
 
@@ -49,17 +49,17 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 在每個 REST API URI 中有一些變數，需要您以自己的值取代它們：
 
 - `{YourRG}` - 以您的資源群組名稱取代
-- `{subscriptionId}` - 以您的訂用帳戶 ID 取代
+- `{subscriptionId}` - 以您的訂用帳戶識別碼取代
 
 掃描支援訂用帳戶或資源群組中的資源評估。 請使用 REST API **POST** 命令，運用下列 URI 結構來依據範圍啟動掃描：
 
-- Subscription
+- 訂用帳戶
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-- Resource group
+- 資源群組
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
@@ -71,7 +71,7 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-`{ResourceContainerGUID}` 是針對要求的範圍以靜態方式所產生。 如果某個範圍已在執行隨選掃描，則不會啟動新的掃描。 相反地，系統會提供相同的 `{ResourceContainerGUID}` **location** URI 新要求以取得狀態。 針對 **Location** URI 的 REST API **GET** 命令會傳回 **202 已接受**，同時持續進行評估。 評估掃描完成時，會傳回 **200 確定**狀態。 完成掃描的主體是具有狀態的 JSON 回應：
+`{ResourceContainerGUID}` 是針對要求的範圍以靜態方式所產生。 如果某個範圍已在執行隨選掃描，則不會啟動新的掃描。 相反地，新的要求會針對狀態提供相同的 `{ResourceContainerGUID}`**位置**URI。 針對 **Location** URI 的 REST API **GET** 命令會傳回 **202 已接受**，同時持續進行評估。 評估掃描完成時，會傳回 **200 確定**狀態。 完成掃描的主體是具有狀態的 JSON 回應：
 
 ```json
 {
@@ -84,12 +84,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 在指派中，如果資源沒有遵循原則或方案規則，則該資源**不符合規範**。
 下表顯示不同的原則效果如何與結果合規性狀態的條件評估搭配使用：
 
-| 資源狀態 | 影響 | 原則評估 | 合規性狀態 |
+| 資源狀態 | 效果 | 原則評估 | 合規性狀態 |
 | --- | --- | --- | --- |
-| exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | 是 | 不相容 |
-| exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | 否 | 相容 |
-| 新功能 | 稽核、AuditIfNotExist\* | 是 | 不相容 |
-| 新功能 | 稽核、AuditIfNotExist\* | 否 | 相容 |
+| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不相容 |
+| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 相容 |
+| 新增 | 稽核、AuditIfNotExist\* | True | 不相容 |
+| 新增 | 稽核、AuditIfNotExist\* | False | 相容 |
 
 \* Append、DeployIfNotExist 和 AuditIfNotExist 效果需要 IF 陳述式為 TRUE。
 這些效果也需要存在條件為 FALSE，以呈現不符合規範。 若為 TRUE，IF 條件會觸發相關資源的存在條件評估。
@@ -244,7 +244,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-### <a name="view-events"></a>檢視活動
+### <a name="view-events"></a>檢視事件
 
 當建立或更新資源時，會產生原則評估結果。 結果稱為_原則事件_。 您可以使用下列 URI 來檢視與訂用帳戶建立關聯的最新原則事件。
 
@@ -385,7 +385,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-您可以透過 Azure PowerShell Cmdlet `Get-AzADUser` 使用 [PrincipalOid] 欄位來取得特定使用者。 以您從上一個範例取得的回應取代 **{principalOid}** 。
+您可以透過 Azure PowerShell Cmdlet  **使用 [PrincipalOid]** `Get-AzADUser` 欄位來取得特定使用者。 以您從上一個範例取得的回應取代 **{principalOid}** 。
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName

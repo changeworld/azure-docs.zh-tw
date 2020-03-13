@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: ec210fcdf521413438edd256cc3ee988b67f293f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168670"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218090"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>以 Azure Machine Learning Studio 執行 Python 機器學習服務腳本（傳統）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python 是許多資料科學家工具櫃中的重要工具。 它用於一般機器學習工作流程的每個階段，包括資料探索、功能解壓縮、模型定型和驗證，以及部署。
 
@@ -71,7 +73,7 @@ Studio 資料集與 Panda 資料框架不同。 因此，Studio （傳統）中�
 
 常見的使用案例是將現有的 Python 腳本納入 Studio （傳統）實驗中。 [執行 Python 腳本][execute-python-script]模組接受在第三個輸入埠包含 Python 模組的 zip 檔案。 該檔案會由執行架構在執行階段解壓縮，且內容會新增至 Python 解譯器的程式庫路徑。 然後 `azureml_main` 進入點函式可以直接匯入這些模組。 
 
-作為範例，請考量包含簡單 “Hello, World” 函式的 Hello.py 檔案。
+例如，請考慮包含簡單 "Hello，World" 函式的 file Hello.py。
 
 ![Hello.py 檔案中的使用者定義函數](./media/execute-python-scripts/figure4.png)
 

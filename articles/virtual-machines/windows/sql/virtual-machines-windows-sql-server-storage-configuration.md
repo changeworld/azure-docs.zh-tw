@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981745"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243194"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的儲存體組態
 
@@ -28,7 +28,7 @@ ms.locfileid: "75981745"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用自動儲存體組態設定，您的虛擬機器需具備下列特性︰
 
@@ -40,7 +40,7 @@ ms.locfileid: "75981745"
 
 下列各節說明如何為新的 SQL Server 虛擬機器設定儲存體。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
 使用 SQL Server 資源庫映射布建 Azure VM 時，請選取 [ **SQL Server 設定**] 索引標籤上的 [**變更**設定]，以開啟 [效能優化存放裝置設定] 頁面。 您可以保留預設值，或根據您的工作負載，修改最符合您需求的磁片設定類型。 
 
@@ -140,9 +140,9 @@ Azure 會使用下列設定在 SQL Server VM 上建立存放集區。
 
 下表描述三個可用的工作負載類型選項以及其對應的最佳化︰
 
-| 工作負載類型 | 說明 | 最佳化 |
+| 工作負載類型 | 描述 | 最佳化 |
 | --- | --- | --- |
-| **一般** |支援大多數工作負載的預設設定 |無 |
+| **一般** |支援大多數工作負載的預設設定 |None |
 | **交易式處理** |可將儲存體最佳化來處理傳統資料庫 OLTP 工作負載。 |追蹤旗標 1117<br/>追蹤旗標 1118 |
 | **資料倉儲** |可將儲存體最佳化來處理分析和報告工作負載。 |追蹤旗標 610<br/>追蹤旗標 1117 |
 

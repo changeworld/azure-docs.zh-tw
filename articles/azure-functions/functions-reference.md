@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768991"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276617"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 開發人員指南
 在 Azure Functions 中，不論您使用何種語言或繫結，特定函式都會共用一些核心技術概念和元件。 閱讀指定語言或繫結特有的詳細資料之前，請務必詳閱這份適用於所有語言或繫結的概觀。
@@ -42,9 +42,9 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 
 | 屬性 | 值/類型 | 註解 |
 | --- | --- | --- |
-| `type` |string |繫結類型。 例如： `queueTrigger` 。 |
+| `type` |字串 |繫結類型。 例如： `queueTrigger` 。 |
 | `direction` |'in'、'out' |表示繫結用於將資料接收到函數，還是從函數傳送資料。 |
-| `name` |string |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
+| `name` |字串 |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
 
 ## <a name="function-app"></a>函式應用程式
 函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此，這是您的函式部署和管理的單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用程式中的所有函式會共用相同的定價方案、部署方法和執行階段版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 若要深入瞭解，請參閱[如何管理函數應用程式](functions-how-to-use-azure-function-app-settings.md)。 
@@ -55,7 +55,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 ## <a name="folder-structure"></a>資料夾結構
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-以上是 Function 應用程式的預設 (且建議的) 資料夾結構。 如果您想要變更函式程式碼的檔案位置，請修改 _function.json_ 檔案的 `scriptFile` 區段。 我們也建議您使用[套件部署](deployment-zip-push.md)來將您的專案部署到 Azure 中的函數應用程式中。 您也可以使用諸如[持續整合與部署](functions-continuous-deployment.md)和 Azure DevOps 之類的現有工具。
+以上是 Function 應用程式的預設 (且建議的) 資料夾結構。 如果您想要變更函式程式碼的檔案位置，請修改 `scriptFile`function.json_檔案的_ 區段。 我們也建議您使用[套件部署](deployment-zip-push.md)來將您的專案部署到 Azure 中的函數應用程式中。 您也可以使用諸如[持續整合與部署](functions-continuous-deployment.md)和 Azure DevOps 之類的現有工具。
 
 > [!NOTE]
 > 如果手動部署封裝，請務必將您的 _host.json_ 檔案和函式資料夾直接部署至 `wwwroot` 資料夾。 您的部署中請勿包含 `wwwroot` 資料夾。 否則，您會得到 `wwwroot\wwwroot` 資料夾。

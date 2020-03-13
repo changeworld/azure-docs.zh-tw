@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168939"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218257"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架構，例如，任意維度的深度神經網路或迴旋。 您可以使用複雜的結構來改善影像、視訊或音訊等的資料學習。
 
@@ -89,17 +91,17 @@ Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層
 
 `Const X = 28;`
 
-若要同時定義兩個或更多常數，請將識別碼名稱和值放在大括號中，並使用分號分隔。 例如，
+若要同時定義兩個或更多常數，請將識別碼名稱和值放在大括號中，並使用分號分隔。 例如：
 
 `Const { X = 28; Y = 4; }`
 
-各個指派運算式的右側可以是整數、實數、布林值 (True/False) 或數學運算式。 例如，
+各個指派運算式的右側可以是整數、實數、布林值 (True/False) 或數學運算式。 例如：
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>層宣告
 
-層宣告是必要宣告。 它定義層的大小和來源，包括層的連線套組和屬性。 宣告陳述式以層的名稱開頭 (輸入、隱藏或輸出)，其後是層的維度 (正整數的 Tuple)。 例如，
+層宣告是必要宣告。 它定義層的大小和來源，包括層的連線套組和屬性。 宣告陳述式以層的名稱開頭 (輸入、隱藏或輸出)，其後是層的維度 (正整數的 Tuple)。 例如：
 
 ```Net#
 input Data auto;

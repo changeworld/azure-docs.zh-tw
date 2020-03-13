@@ -3,12 +3,12 @@ title: 使用復原服務保存庫的診斷設定
 description: 說明如何針對 Azure 備份使用舊的和新的診斷事件的文章
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583940"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136934"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用適用於復原服務保存庫的診斷設定
 
@@ -56,7 +56,9 @@ Azure 備份提供下列診斷事件，其中每一個都會在一組特定的�
 
 傳統上，保存庫的所有備份相關診斷資料都已包含在名為 ' AzureBackupReport ' 的單一事件中。 上面所述的六個事件基本上是 AzureBackupReport 中包含的所有資料的分解。 
 
-目前，如果使用者在此事件中有現有的自訂查詢，例如自訂記錄警示、自訂視覺效果等，我們就會繼續支援 AzureBackupReport 事件以提供回溯相容性。不過，我們建議您針對保存庫中的所有新診斷設定選擇新的事件，因為這可讓資料更容易在記錄查詢中使用、提供更好的架構和其結構的探索性，同時改善兩個內嵌的效能。延遲和查詢時間。 使用 Azure 診斷模式的支援最終會被淘汰，因此選擇新的事件可協助您避免在日後進行複雜的遷移。
+目前，如果使用者在此事件中有現有的自訂查詢，例如自訂記錄警示、自訂視覺效果等，我們就會繼續支援 AzureBackupReport 事件以提供回溯相容性。不過，**建議您儘快移至新的事件**，因為這可讓資料更容易在記錄查詢中使用、提供更好的架構和其結構的探索能力，同時提升了內嵌延遲和查詢時間的效能。 **使用 Azure 診斷模式的支援最終會被淘汰，因此選擇新的事件可協助您避免在日後進行複雜的遷移**。
+
+使用 Azure 備份的內建原則，為指定範圍內的所有保存庫新增6個新事件的診斷設定：設定大規模的保存[庫診斷設定](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 您可以選擇為 AzureBackupReport 和六個新的事件建立個別的診斷設定，直到您將所有自訂查詢遷移成使用新資料表中的資料為止。 下圖顯示具有兩個診斷設定的保存庫範例。 第一個設定（名為**Setting1** ）會以 AzureDiagnostics 模式將 AzureBackupReport 事件的資料傳送至 LA 工作區。 第二個設定（名為**Setting2** ）會將六個新 Azure 備份事件的資料傳送至資源特定模式中的 LA 工作區。
 

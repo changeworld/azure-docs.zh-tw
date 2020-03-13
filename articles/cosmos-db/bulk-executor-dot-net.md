@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365494"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246873"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫在 Azure Cosmos DB 中執行大量作業
 
@@ -22,7 +22,7 @@ ms.locfileid: "78365494"
 
 目前，Azure Cosmos DB SQL API 和 Gremlin API 帳戶僅支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 .NET 程式庫。 若要瞭解如何搭配 Gremlin API 帳戶使用大量執行程式 .NET 程式庫，請參閱在[Azure Cosmos DB GREMLIN api 中執行大量作業](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您尚未安裝 Visual Studio 2019，您可以下載並使用[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 

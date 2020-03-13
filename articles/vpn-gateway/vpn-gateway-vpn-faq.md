@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016743"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279880"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 閘道常見問題集
 
@@ -20,11 +20,11 @@ ms.locfileid: "77016743"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>是否可以連接不同 Azure 區域中的虛擬網路？
 
-可以。 事實上，沒有區域限制。 一個虛擬網路可以連接到相同區域或不同 Azure 區域中的另一個虛擬網路。 
+是。 事實上，沒有區域限制。 一個虛擬網路可以連接到相同區域或不同 Azure 區域中的另一個虛擬網路。 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>是否可以使用不同訂用帳戶連接虛擬網路？
 
-可以。
+是。
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>是否可以從單一虛擬網路連接到多個網站？
 
@@ -32,7 +32,7 @@ ms.locfileid: "77016743"
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>將 VPN 閘道設定為主動 - 主動是否需要額外費用？
 
-不會。 
+否。 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>有哪些跨單位連線選項？
 
@@ -70,7 +70,7 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>我可以將以原則為基礎的 VPN 閘道更新為路由式嗎？
 
-不會。 Azure Vnet 閘道類型無法從原則式變更為以路由為基礎或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
+否。 Azure Vnet 閘道類型無法從原則式變更為以路由為基礎或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
 1. 刪除與要刪除之閘道相關聯的任何連線。
 1. 刪除閘道：
    - [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -80,13 +80,13 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
 
-可以。 閘道子網路包含虛擬網路閘道服務使用的 IP 位址。 若要設定虛擬網路閘道，您必須為 VNet 建立閘道子網路。 所有閘道子網路都必須命名為 'GatewaySubnet' 才能正常運作。 請勿將閘道子網路命名為其他名稱。 請勿對閘道子網路部署 VM 或任何其他項目。
+是。 閘道子網路包含虛擬網路閘道服務使用的 IP 位址。 若要設定虛擬網路閘道，您必須為 VNet 建立閘道子網路。 所有閘道子網路都必須命名為 'GatewaySubnet' 才能正常運作。 請勿將閘道子網路命名為其他名稱。 請勿對閘道子網路部署 VM 或任何其他項目。
 
 當您建立閘道子網路時，您可指定子網路包含的 IP 位址數目。 閘道子網路中的 IP 位址會配置給閘道服務。 某些組態要求將較多 IP 位址配置給閘道服務 (相較於其他服務)。 您想要確定您的閘道子網路包含足夠的 IP 位址，以因應未來成長及可能的其他新連線組態。 所以﹐您可以建立像 /29 這麼小的閘道子網路，但建議您建立 /27 或更大 (/27、/26、/25 等) 的閘道子網路。 查看您想要建立的組態需求﹐並確認您擁有的閘道子網路將符合這些需求。
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>是否可以將虛擬機器或角色執行個體部署到閘道子網路？
 
-不會。
+否。
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>在建立之前是否可以取得我的 VPN 閘道 IP 位址？
 
@@ -125,7 +125,7 @@ Azure VPN 使用 PSK (預先共用金鑰) 驗證。 當建立 VPN 通道時，�
 
 ### <a name="can-i-configure-force-tunneling"></a>是否可以設定強制通道？
 
-可以。 請參閱[設定強制通道](vpn-gateway-about-forced-tunneling.md)。
+是。 請參閱[設定強制通道](vpn-gateway-about-forced-tunneling.md)。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>是否可以在 Azure 中設定自己的 VPN 伺服器，並用來連接到內部部署網路？
 
@@ -169,6 +169,10 @@ Azure 基礎結構通訊需要這些連接埠。 它們受到 Azure 憑證的保
 
 其他軟體 VPN 解決方案只要符合業界標準 IPsec 實作，應該就能使用我們的閘道。 如需設定和支援指示，請連絡軟體供應商。
 
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>如何? 變更我的點對站連線的驗證類型？
+
+您可以前往 [VPN 閘道] 底下的 [**點對站**設定] 區段，然後核取所需的選項按鈕，以變更點對站連線的驗證方法。 目前的選項為 [ **Azure 憑證]、[RADIUS 驗證] 和 [Azure Active Directory**]。 請注意，除非在用戶端上下載並設定新的設定檔，否則目前的用戶端**可能**無法在變更之後進行連線。
+
 ## <a name="P2S"></a>使用原生 Azure 憑證驗證的點對站
 
 本節適用於資源管理員部署模型。
@@ -188,7 +192,7 @@ Azure 基礎結構通訊需要這些連接埠。 它們受到 Azure 憑證的保
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>是否可以使用 Azure VPN 閘道，在我的內部部署網站之間傳輸流量，或將流量傳輸到另一個虛擬網路？
 
 **Resource Manager 部署模型**<br>
-可以。 如需詳細資訊，請參閱 [BGP](#bgp) 一節。
+是。 如需詳細資訊，請參閱 [BGP](#bgp) 一節。
 
 **傳統部署模型**<br>
 使用傳統部署模型即可透過 Azure VPN 閘道傳輸流量，但其依賴網路組態檔中靜態定義的位址空間。 使用傳統部署模型的 Azure 虛擬網路和 VPN 閘道尚未支援 BGP。 若沒有 BGP，手動定義傳輸位址空間很容易出錯，因此並不建議。
@@ -232,7 +236,7 @@ Azure 基礎結構通訊需要這些連接埠。 它們受到 Azure 憑證的保
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>如果我的虛擬機器位於具有跨單位連線能力的虛擬網路，所有來自我的 VM 的流量是否都會通過該連線？
 
-不會。 只有目地的 IP 包含在您指定之虛擬網路區域網路 IP 位址範圍的流量，才會通過虛擬網路閘道。 目的地 IP 位於虛擬網路內的流量仍會留在虛擬網路內。 其他流量是透過負載平衡器傳送至公用網路，或者如果使用強制通道，則透過 Azure VPN 閘道傳送。
+否。 只有目地的 IP 包含在您指定之虛擬網路區域網路 IP 位址範圍的流量，才會通過虛擬網路閘道。 目的地 IP 位於虛擬網路內的流量仍會留在虛擬網路內。 其他流量是透過負載平衡器傳送至公用網路，或者如果使用強制通道，則透過 Azure VPN 閘道傳送。
 
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>如何針對 VM 的 RDP 連線進行疑難排解
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426708"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282272"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的診斷和效能監視
 Reliable ServiceRemoting 執行階段會發出[效能計數器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 這些項目提供深入了解 ServiceRemoting 的運作方式，並有助於疑難排解及效能監視。
@@ -19,7 +19,7 @@ Reliable ServiceRemoting 執行階段會發出[效能計數器](https://msdn.mic
 ## <a name="performance-counters"></a>效能計數器
 Reliable ServiceRemoting 執行階段定義下列效能計數器類別：
 
-| 類別 | 說明 |
+| 類別 | 描述 |
 | --- | --- |
 | Service Fabric Service |Azure Service Fabric Service Remoting 的特定計數器，例如處理要求所花費的平均時間 |
 | Service Fabric Service Method |Service Fabric Remoting Service 所實作方法特定的計數器，例如叫用服務方法的頻率 |
@@ -74,7 +74,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 Reliable Service 執行階段會發佈與執行服務方法相關的下列效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | 說明 |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric Service Method |叫用數目/秒 |每秒叫用服務方法的次數 |
 | Service Fabric Service Method |每個叫用的平均毫秒數 |執行服務方法花費的時間 (單位為毫秒) |
@@ -83,7 +83,7 @@ Reliable Service 執行階段會發佈與執行服務方法相關的下列效能
 ### <a name="service-request-processing-performance-counters"></a>服務要求處理效能計數器
 當用戶端透過服務 Proxy 物件叫用方法時，會造成要求訊息透過網路傳送至遠端服務。 服務會處理要求訊息，並傳送回應給用戶端。 Reliable ServiceRemoting 執行階段會發佈下列與服務要求處理相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | 說明 |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric Service |# of outstanding requests |服務中正在處理的要求數目 |
 | Service Fabric Service |每個要求的平均毫秒數 |服務處理要求所花費的時間 (單位為毫秒) |

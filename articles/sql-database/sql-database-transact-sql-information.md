@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822486"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208822"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解決移轉至 SQL Database 期間的 Transact-SQL 差異
 
 [將您的資料庫從 SQL Server 移轉](sql-database-single-database-migrate.md)至 Azure SQL Server 時，您可能會發現您的資料庫必須先進行一些再造，才能移轉 SQL Server。 本文章提供一些指引，以協助您執行此再造作業，以及了解為何必須執行再造的基礎原因。 若要偵測不相容性，請使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部分 Transact-SQL 功能。 例如，資料類型、運算子、字串、算術、邏輯及資料指標函式等核心 SQL 元件在 SQL Server 與 SQL Database 中都以相同的方式運作。 不過，DDL (資料定義語言) 和 DML (資料操作語言) 元素中有幾個 T-SQL 差異導致對 T-SQL 陳述式和查詢僅提供部分支援 (將在本文章中稍後探討)。
 
@@ -38,7 +38,7 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 
 - CREATE 和 ALTER DATABASE 陳述式有超過三十多個選項。 這些陳述式包括僅適用於 SQL Server 的檔案放置、FILESTREAM 及服務訊息代理程式選項。 如果您是在移轉之前建立資料庫，這可能無關緊要，但如果您要移轉建立資料庫的 T-SQL 程式碼，您就應該將 [CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) 與在 [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) 的 SQL Server 語法做比較，以確定系統支援您使用的所有選項。 Azure SQL Database 的 CREATE DATABASE 也有僅適用於 SQL Database 的服務目標和靈活擴充能力選項。
 - CREATE 和 ALTER TABLE 陳述式具有無法在 SQL Database 上使用的 FileTable 選項，因為 FILESTREAM 不受支援。
-- CREATE 和 ALTER 登入陳述式受支援，但 SQL Database 並未提供所有選項。 為了讓您的資料庫更具可攜性，SQL Database 建議您儘可能使用自主資料庫使用者，而不要使用登入。 如需詳細資訊，請參閱 [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) 及[控制和授與資料庫存取權](sql-database-manage-logins.md)。
+- CREATE 和 ALTER 登入陳述式受支援，但 SQL Database 並未提供所有選項。 為了讓您的資料庫更具可攜性，SQL Database 建議您儘可能使用自主資料庫使用者，而不要使用登入。 如需詳細資訊，請參閱[建立/改變登](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)入和管理登入[和使用者](sql-database-manage-logins.md)。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>在 Azure SQL Database 中不支援的 Transact-SQL 語法
 

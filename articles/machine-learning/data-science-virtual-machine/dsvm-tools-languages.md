@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283650"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的語言 
 
@@ -118,7 +118,7 @@ ms.locfileid: "75615420"
 
 * 在命令提示字元中執行：
 
-  開啟命令提示字元，然後輸入 `R`：
+  開啟命令提示字元，然後輸入 `R`。
 
 * 在 IDE 中使用：
 

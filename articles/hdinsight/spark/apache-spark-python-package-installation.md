@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 98326d23f5aca1264bc47168cc25b427c3db331d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087117"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135950"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -74,12 +74,38 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
 
     您可以搜尋[套件索引](https://pypi.python.org/pypi)，以取得可用的套件完整清單。 您也可以從其他來源取得可用套件清單。 例如，您可以安裝經由 [conda-forge](https://conda-forge.org/feedstocks/) 提供的套件。
 
-    -   `seaborn` 是您想要安裝的套件名稱。
-    -   `-n py35new` 指定只建立的虛擬環境名稱。 請務必根據您的虛擬環境建立，相應地變更名稱。
+    如果您想要安裝具有最新版本的程式庫，請使用下列命令：
+    
+    - 使用 conda 通道：
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` 是您想要安裝的套件名稱。
+        -   `-n py35new` 指定只建立的虛擬環境名稱。 請務必根據您的虛擬環境建立，相應地變更名稱。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - 或者，使用 PyPi 存放庫，變更 `seaborn` 並相應地 `py35new`：
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    如果您想要安裝具有特定版本的程式庫，請使用下列命令：
+
+    - 使用 conda 通道：
+
+        -   `numpy=1.16.1` 是您想要安裝的套件名稱和版本。
+        -   `-n py35new` 指定只建立的虛擬環境名稱。 請務必根據您的虛擬環境建立，相應地變更名稱。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - 或者，使用 PyPi 存放庫，變更 `numpy==1.16.1` 並相應地 `py35new`：
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     如果您不知道虛擬環境名稱，您可以透過 SSH 連線到叢集的前端節點，然後執行 `/usr/bin/anaconda/bin/conda info -e` 以顯示所有虛擬環境。
 

@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276123"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -45,12 +45,12 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼（`qJSXU`）指派給相依性遙測，並使用 pageView 的識別碼做為 `operation_ParentId`。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
 
-| itemType   | 名稱                      | ID           | operation_ParentId | operation_Id |
+| itemType   | NAME                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 頁面                |              | STYz               | STYz         |
-| dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| 相依性 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | 要求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| 相依性 | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 對外部服務進行呼叫 `GET /api/stock/value` 時，您必須知道該伺服器的身分識別，才能適當地設定 [`dependency.target`] 欄位。 當外部服務不支援監視時，`target` 會設定為服務的主機名稱 (例如 `stock-prices-api.com`)。 但是，如果服務藉由傳回預先定義的 HTTP 標頭來識別自己，`target` 包含服務識別，可讓 Application Insights 藉由查詢該服務的遙測來建立分散式追蹤。
 

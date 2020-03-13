@@ -4,11 +4,11 @@ description: 深入瞭解 Azure Migrate 中的評量。
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392864"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269688"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>關於 Azure Migrate 中的評量
 

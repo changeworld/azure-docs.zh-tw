@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358670"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284898"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 執行階段和架構
 
@@ -88,8 +88,8 @@ IoT Edge 代理程式是另一個組成 Azure IoT Edge 執行階段的模組。 
 * **createOptions** –啟動模組的容器時，直接傳遞至 Moby 容器背景程式的字串。 在此屬性中新增選項，可讓您進行像是埠轉送或將磁片區掛接到模組容器的先進設定。  
 * **status**：IoT Edge 代理程式放置模組的狀態。 此值通常會設定為 [*執行中]，因為大多數*人都想要 IoT Edge 代理程式立即啟動裝置上的所有模組。 不過，您可以指定要停止之模組的初始狀態，並等候一段時間，以告知 IoT Edge 代理程式啟動模組。 IoT Edge 代理程式會在回報的屬性中，將每個模組的狀態報表回雲端。 所需屬性和回報的屬性之間的差異可能表示裝置異常。 支援的狀態如下：
 
-  * 下載
-  * 正在執行
+  * 正在下載
+  * 執行中
   * 狀況不良
   * 失敗
   * 已停止

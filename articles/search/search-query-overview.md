@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793225"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282818"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的查詢類型和組合
 
@@ -33,7 +33,7 @@ ms.locfileid: "72793225"
 }
 ```
 
-+ **`queryType`** 設定剖析器，也就是[預設的簡單查詢](search-query-simple-examples.md)剖析器（適用于全文檢索搜尋的最佳），或用於高階運算式、鄰近搜尋、模糊和等先進查詢結構的[完整 Lucene 查詢](search-query-lucene-examples.md)剖析器。萬用字元搜尋，命名為幾個。
++ **`queryType`** 設定剖析器，這是預設的[簡單查詢](search-query-simple-examples.md)剖析器（適用于全文檢索搜尋的最佳做法），或用於高階運算式、鄰近搜尋、模糊和萬用字元搜尋等先進查詢結構的[完整 Lucene 查詢](search-query-lucene-examples.md)剖析器。
 
 + **`search`** 會提供比對準則，這通常是文字，但往往會伴隨布林運算子。 單一的獨立字詞是「字詞」查詢。 用引號括住、有多個部分的查詢則是「關鍵片語」查詢。 搜尋可能是未定義的 (如 **`search=*`** 中)，但更可能會包含字詞、片語和運算子，如下列範例所示。
 
@@ -111,7 +111,7 @@ queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=Ho
 
 Azure 認知搜尋支援廣泛的查詢類型。 
 
-| 查詢類型 | 用量 | 範例和詳細資訊 |
+| 查詢類型 | 使用量 | 範例和詳細資訊 |
 |------------|--------|-------------------------------|
 | 自由格式文字檢索 | 搜尋參數和任一剖析器| 全文檢索搜尋會掃描索引中所有「可搜尋」欄位內的一或多個字詞，而且運作方式就如同您對 Google 或 Bing 等搜尋引擎的期待。 簡介中的範例便是全文檢索搜尋。<br/><br/>全文檢索搜尋會使用標準 Lucene 分析器 (預設值) 將所有字詞轉換為小寫，並移除停用字詞 (例如 "the")，以進行文字分析。 若要覆寫預設值，您可以使用[非英文分析器](index-add-language-analyzers.md#language-analyzer-list)或[特製化語言無關分析器](index-add-custom-analyzers.md#AnalyzerTable) (以修改文字分析)。 其中一個範例是[關鍵字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)，其會將欄位的整個內容視為單一語彙基元。 這適合用於郵遞區號、識別碼和產品名稱等資料。 | 
 | 經過篩選的搜尋 | [OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)和任一剖析器 | 篩選查詢會對索引中的所有「可篩選」欄位評估布林運算式。 不同於搜尋，篩選查詢會比對欄位的確切內容，包括字串欄位的大小寫。 另一個差異是篩選查詢會以 OData 語法來表示。 <br/>[篩選條件運算式範例](search-query-simple-examples.md#example-3-filter-queries) |
@@ -157,7 +157,7 @@ Azure 認知搜尋可讓您輕鬆地執行搜尋結果分頁。 透過使用 **`
 ### <a name="hit-highlighting"></a>搜尋結果醒目提示
 在 Azure 認知搜尋中，您可以使用 **`highlight`** 、 **`highlightPreTag`** 和 **`highlightPostTag`** 參數，強調符合搜尋查詢之搜尋結果的確切部分。 您可以指定哪些可搜尋欄位應該強調其*相符的文字*，以及指定要附加到 Azure 認知搜尋傳回的相符文字開頭和結尾的確切字串標記。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋在 Azure 認知搜尋中的運作方式（查詢剖析架構）](search-lucene-query-architecture.md)
 + [搜尋總管](search-explorer.md)

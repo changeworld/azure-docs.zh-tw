@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539394"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283143"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
@@ -62,12 +62,12 @@ Azure 認知搜尋支援 Lucene 支援的35分析器，以及由 Office 和 Bing
 ## <a name="language-analyzer-list"></a>語言分析器清單 
  以下是支援的語言清單與 Lucene 和 Microsoft 的分析器名稱。  
 
-|語言|Microsoft 分析器名稱|Lucene 分析器名稱|  
+|Language|Microsoft 分析器名稱|Lucene 分析器名稱|  
 |--------------|-----------------------------|--------------------------|  
 |阿拉伯文|ar.microsoft|ar.lucene|  
 |亞美尼亞文||hy.lucene|  
 |孟加拉文|bn.microsoft||  
-|Basque||eu.lucene|  
+|巴斯克文||eu.lucene|  
 |保加利亞文|bg.microsoft|bg.lucene|  
 |卡達隆尼亞文|ca.microsoft|ca.lucene|  
 |簡體中文|zh-Hans.microsoft|zh-Hans.lucene|  

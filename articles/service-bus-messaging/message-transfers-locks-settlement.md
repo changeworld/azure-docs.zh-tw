@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759273"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260991"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>訊息傳輸、鎖定和安置
 
@@ -104,7 +104,7 @@ for (int i = 0; i < 100; i++)
 
 此模式的優點是接收者不需對訊息採取進一步動作，同時也不會因為等候安置結果而變慢。 如果個別訊息中包含的資料值很低和 (或) 資料在極短時間內才有意義，則此模式是合理的選擇。
 
-### <a name="peeklock"></a>PeekLock
+### <a name="peeklock"></a>查看鎖定
 
 [查看鎖定](/dotnet/api/microsoft.servicebus.messaging.receivemode)模式會告知訊息代理程式，接收用戶端想要明確地安置已接收的訊息。 訊息可讓接收者用來加以處理，同時保留於服務的獨佔鎖定下，如此，其他競爭的接收者就無法看見該訊息。 鎖定的持續期間一開始會定義於佇列或訂用帳戶層級，可由擁有鎖定的用戶端透過 [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 作業來延長。
 

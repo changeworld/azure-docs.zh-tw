@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304390"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136154"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的建議和最佳作法
 
@@ -51,7 +51,7 @@ ms.locfileid: "78304390"
 
 |  |  |
 |--|--|
-| 使用 Visual Studio Code 的 Azure AD B2C 延伸模組編輯自訂原則 | [從 Visual Studio Code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c))下載 Visual Studio Code 和此社區建立的延伸模組。 雖然不是官方的 Microsoft 產品，Visual Studio Code 的 Azure AD B2C 延伸模組包含數項功能，可協助您更輕鬆地使用自訂原則。 |
+| 使用 Visual Studio Code 的 Azure AD B2C 延伸模組編輯自訂原則 | [從 Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)下載 Visual Studio Code 和此社區建立的延伸模組。 雖然不是官方的 Microsoft 產品，Visual Studio Code 的 Azure AD B2C 延伸模組包含數項功能，可協助您更輕鬆地使用自訂原則。 |
 | 瞭解如何疑難排解 Azure AD B2C | 瞭解如何在開發期間針對[自訂原則進行疑難排解](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)。 瞭解一般驗證流程的樣子，並使用工具來探索異常和錯誤。 例如，使用[Application Insights](troubleshoot-with-application-insights.md)來審查使用者旅程的輸出記錄。 |
 | 運用經證實的自訂原則模式程式庫 | 尋找數個增強 Azure AD B2C 客戶身分識別與存取管理（CIAM）使用者旅程的[範例](https://github.com/azure-ad-b2c/samples)。 |
 

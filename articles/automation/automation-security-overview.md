@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278567"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自動化中的驗證簡介  
 Azure 自動化可讓您針對 Azure、內部部署以及其他雲端提供者 (例如 Amazon Web Services (AWS)) 的資源自動執行工作。  為了讓 Runbook 執行其必要動作，其必須有權能以訂用帳戶內的最少必要權限，安全地存取資源。
@@ -38,7 +38,7 @@ Azure Resource Manager 提供了角色型存取控制來對 Azure AD 使用者�
 ## <a name="authentication-methods"></a>驗證方法
 下表摘要說明 Azure 自動化支援的每個環境所適用的不同驗證方法，以及將會說明如何設定 Runbook 驗證的文章。
 
-| 方法 | 環境 | 文章 |
+| 方法 | 環境 | 發行項 |
 | --- | --- | --- |
 | Azure AD 使用者帳戶 |Azure Resource Manager 和 Azure 傳統 |[使用 Azure AD 使用者帳戶驗證 Runbook](automation-create-aduser-account.md) |
 | Azure 執行身分帳戶 |Azure Resource Manager |[使用 Azure 執行身分帳戶驗證 Runbook](automation-sec-configure-azure-runas-account.md) |

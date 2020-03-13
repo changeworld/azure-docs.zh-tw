@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: afd466e0266cf2d95f95eb8536943f5856c26a58
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365326"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280972"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞的 .NET 程式設計指南（EventHubs 套件的舊版）
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](event-hubs-what-is-event-hubs.md)。
 
 > [!WARNING]
-> 本指南適用于舊的**EventHubs**套件。 我們建議您[遷移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)程式碼，以使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)套件。  
+> 本指南適用于舊的**EventHubs**套件。 我們建議您[遷移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)程式碼，以使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)套件。  
 
 
 ## <a name="event-publishers"></a>事件發佈者
@@ -62,7 +62,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="event-serialization"></a>事件序列化
 
-[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如，
+[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如：
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -98,7 +98,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 分批傳送事件可以協助增加輸送量。 您可使用 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 來建立批次，資料物件稍後可針對 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 呼叫新增至該批次。
 
-單一批次不能超過每個事件 1 MB 的限制。 此外，批次中的每個訊息都會使用相同的身分識別。 確保批次未超過最大事件大小是傳送者的責任。 如果超過，則會產生「傳送」錯誤。 您可以使用協助程式方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 以確保批次不超過 1 MB。 您會從 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) API 取得空 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)，然後使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 新增事件來建立批次。 
+單一批次不能超過每個事件 1 MB 的限制。 此外，批次中的每個訊息都會使用相同的身分識別。 確保批次未超過最大事件大小是傳送者的責任。 如果超過的話，系統會產生用戶端 **Send** 錯誤。 您可以使用協助程式方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 以確保批次不超過 1 MB。 您會從 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) API 取得空 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)，然後使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 新增事件來建立批次。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>以非同步方式傳送和大規模傳送
 
@@ -114,7 +114,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-若要啟動事件處理，請將 [EventProcessorHost][] 具現化，其中需為事件中樞提供適當的參數。 例如，
+若要啟動事件處理，請將 [EventProcessorHost][] 具現化，其中需為事件中樞提供適當的參數。 例如：
 
 > [!NOTE]
 > EventProcessorHost 及其相關類別會在**EventHubs**中提供。 依照本文中的指示[，或在](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)[[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)] 視窗中發出下列命令，將套件新增至您的 Visual Studio 專案：`Install-Package Microsoft.Azure.EventHubs.Processor`。

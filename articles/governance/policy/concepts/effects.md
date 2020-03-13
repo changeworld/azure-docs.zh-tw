@@ -4,11 +4,11 @@ description: Azure 原則定義有各種不同的效果，可決定合規性的�
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544125"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281180"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -117,7 +117,7 @@ Append 效果只有一個 **details** 陣列且為必要。 由於 **details** �
   - 定義的角色必須包括授與[參與者](../../../role-based-access-control/built-in-roles.md#contributor)角色的所有作業。
 - **作業**[必要]
   - 要在比對資源上完成之所有標記作業的陣列。
-  - 屬性:
+  - 屬性：
     - 作業 **[必要**]
       - 定義要對相符資源採取的動作。 選項包括： _addOrReplace_、 _Add_、 _Remove_。 _新增_的行為類似于[附加](#append)效果。
     - **欄位**[必要]
@@ -161,7 +161,7 @@ Append 效果只有一個 **details** 陣列且為必要。 由於 **details** �
 |作業 |描述 |
 |-|-|
 |addOrReplace |將已定義的標籤和值新增至資源，即使標記已經存在且具有不同的值。 |
-|Add |將已定義的標記和值加入至資源。 |
+|加 |將已定義的標記和值加入至資源。 |
 |移除 |從資源中移除已定義的標記。 |
 
 ### <a name="modify-examples"></a>修改範例
@@ -540,7 +540,7 @@ EnforceRegoPolicy 效果的**details**屬性具有描述閘道管理員 v2 許�
 
 ## <a name="layering-policies"></a>分層原則
 
-一個資源可能會受到數個指派影響。 這些指派可能屬於相同範圍，也可能屬於不同範圍。 這些指派中的每項指派也可能定義了不同的效果。 針對每個原則的條件和效果，都會以獨立方式進行評估。 例如，
+一個資源可能會受到數個指派影響。 這些指派可能屬於相同範圍，也可能屬於不同範圍。 這些指派中的每項指派也可能定義了不同的效果。 針對每個原則的條件和效果，都會以獨立方式進行評估。 例如：
 
 - 原則 1
   - 將資源位置限制為 'westus'

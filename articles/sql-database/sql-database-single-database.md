@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820948"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208844"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什麼是 Azure SQL Database 中的單一資料庫
 
@@ -37,7 +37,7 @@ ms.locfileid: "73820948"
 
 ## <a name="monitoring-and-alerting"></a>監視和警示
 
-您可以使用[內建的效能監視](sql-database-performance.md)和[警示工具](sql-database-insights-alerts-portal.md)，並搭配使用效能分級。 使用這些工具，您可以根據目前或專案的效能需求快速評估相應增加或減少的影響。 此外，SQL Database 可以[發出計量和診斷記錄](sql-database-metrics-diag-logging.md)以便進行監視。
+您可以使用[內建的效能監視](sql-database-performance.md)和[警示工具](sql-database-insights-alerts-portal.md)，並搭配使用效能分級。 使用這些工具，您可以根據目前或專案的效能需求快速評估相應增加或減少的影響。 此外，SQL Database 可以[發出計量和資源記錄](sql-database-metrics-diag-logging.md)檔，以方便進行監視。
 
 ## <a name="availability-capabilities"></a>可用性功能
 

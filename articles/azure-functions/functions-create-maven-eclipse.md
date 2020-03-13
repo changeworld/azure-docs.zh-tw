@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227114"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136828"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 JAVA 和 Eclipse 建立您的第一個函式 
 
@@ -42,8 +42,8 @@ ms.locfileid: "74227114"
 1. 選取 [新增原型] 並新增 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 的項目。
     - 原型群組識別碼：com.microsoft.azure
     - 原型構件識別碼：azure-functions-archetype
-    - 版本：從[中央存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    使用最新版本**1.22** ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+    - 版本：檢查並使用[中央存放庫中的](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)最新版本
+    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. 按一下 **[確定]** ，然後按 **[下一步]** 。  請務必填入所有欄位的值，包括 `resourceGroup`、`appName`和 `appRegion` （請使用**fabrikam-function-20170920120101928**以外的其他 appName），最後**完成**。
     ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 

@@ -4,11 +4,11 @@ description: 瞭解如何透過 Azure Notebooks UI 和直接終端機存取來�
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197686"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280595"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> 在 Azure Notebooks Preview 中管理和設定專案
 
@@ -73,7 +73,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 ![檔案內容功能表上的命令](media/project-file-commands.png)
 
-| 命令 | 鍵盤快速鍵 | 動作 |
+| Command | 鍵盤快速鍵 | 動作 |
 | --- | --- | --- |
 | 執行 | r (或按一下) | 執行 Notebook 檔案。 其他檔案類型開啟供檢視。  |
 | 複製連結 | y | 將檔案的連結複製到剪貼簿。 |
@@ -91,7 +91,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 預覽頁面支援數個工具列命令，有鍵盤快速鍵：
 
-| 命令 | 鍵盤快速鍵 | 動作 |
+| Command | 鍵盤快速鍵 | 動作 |
 | --- | --- | --- |
 | 共用 | s | 顯示共用的快顯，您可以從其中取得連結、分享到社交媒體、取得內嵌的 HTML，以及傳送電子郵件。 |
 | 複製 | c  | 將 Notebook 複製到您的帳戶。 |

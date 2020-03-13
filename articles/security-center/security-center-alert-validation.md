@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604578"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139992"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 資訊安全中心中的警示驗證（EICAR 測試檔案）
 這份文件可協助您了解如何驗證您的系統是否已針對 Azure 資訊安全中心警示正確設定。
@@ -75,8 +75,7 @@ ms.locfileid: "77604578"
 ## <a name="next-steps"></a>後續步驟
 本文介紹警示驗證程序。 現在，您已熟悉此驗證，請嘗試下列文章︰
 
+* [驗證 Azure 資訊安全中心中的 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)-瞭解如何管理警示，以及回應資訊安全中心中的安全性事件。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
 * [瞭解 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)-瞭解不同類型的安全性警示。
-* [Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)-瞭解如何針對資訊安全中心中的常見問題進行疑難排解。
-* [Azure 安全性 blog](https://blogs.msdn.com/b/azuresecurity/) -尋找有關 Azure 安全性與合規性的 Blog 文章。

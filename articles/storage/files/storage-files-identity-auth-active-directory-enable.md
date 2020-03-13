@@ -4,14 +4,14 @@ description: 瞭解如何透過 Active Directory，為 Azure 檔案共用啟用�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/11/2020
 ms.author: rogarana
-ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d9d2e06cc3beae8a7bb8ea1b4eee15fb1641ddd4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129434"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255219"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>針對 Azure 檔案共用啟用透過 SMB 進行 Active Directory 驗證
 
@@ -129,7 +129,8 @@ Connect-AzAccount
 #Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
-#Register the target storage account with your active directory environment under the target OU
+#Register the target storage account with your active directory environment under the target OU (for example: "OU=ComputersOU,DC=prod,DC=corp,DC=contoso,DC=com")
+#You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
@@ -150,7 +151,7 @@ join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Na
 
 如果您的 OU 強制執行密碼逾期，您必須在密碼最長使用期限前更新密碼，以避免在存取 Azure 檔案共用時發生驗證失敗。 如需詳細資訊，請參閱[更新 AD 帳戶密碼](#update-ad-account-password)。
 
-保留新建立之帳戶的 SID，在下一個步驟中需要用到它。
+保留新建立之帳戶的 SID，在下一個步驟中需要用到它。 您剛才建立的 AD 身分識別（代表儲存體帳戶）不需要同步到 Azure AD。
 
 ##### <a name="c-enable-the-feature-on-your-storage-account"></a>c. 在您的儲存體帳戶上啟用此功能
 

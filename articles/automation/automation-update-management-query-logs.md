@@ -3,14 +3,14 @@ title: 查詢 Azure 更新管理記錄
 description: 本文說明如何在 Log Analytics 工作區中查詢更新管理的記錄。
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216836"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure 監視器記錄中更新管理的查詢更新記錄
 
@@ -26,12 +26,12 @@ ms.locfileid: "75867057"
 
 建立類型為 `RequiredUpdate` 的記錄，代表電腦所需的更新。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 | 
+| 屬性 | 描述 | 
 |----------|-------------|
 | 電腦 | 報告機器的完整功能變數名稱。 |
 | KBID | Windows update 的知識庫文章識別碼。 |
 | ManagementGroupName | Operations Manager 管理群組或 Log Analytics 工作區的名稱。 | 
-| 產品 | 更新適用的產品。 | 
+| Products | 更新適用的產品。 | 
 | PublishDate | 已準備好從 Windows Update 下載並安裝更新的日期。 |
 | 伺服器 | | 
 | SourceHealthServiceId | 代表 Log Analytics Windows 代理程式識別碼的唯一識別碼。 |
@@ -40,14 +40,14 @@ ms.locfileid: "75867057"
 | TimeGenerated | 記錄的建立日期和時間。 | 
 | 類型 | *更新* | 
 | UpdateClassification | 表示可以套用的更新類型。 若為 Windows：<br> *重大更新*<br> *安全性更新*<br> *更新彙總套件*<br> *功能套件*<br> *Service pack*<br> *定義更新*<br> *工具*<br> *更新*。 若為 Linux：<br> *重大和安全性更新*<br> *其他* |
-| UpdateSeverity | 弱點的嚴重性等級。 值為：<br> *嚴重*<br> *重要*<br> *中*<br> *低* |
+| UpdateSeverity | 弱點的嚴重性等級。 值為：<br> *嚴重*<br> *重要*<br> *排定*<br> *量* |
 | UpdateTitle | 更新的標題。|
 
 ### <a name="update"></a>更新
 
 系統會建立類型為 `Update` 的記錄，代表可用的更新以及電腦的安裝狀態。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 | 
+| 屬性 | 描述 | 
 |----------|-------------|
 | ApprovalSource | 僅適用于 Windows 作業系統。 值為*Microsoft Update*。 |
 | 已核准 | *True*或*False* |
@@ -55,7 +55,7 @@ ms.locfileid: "75867057"
 | 電腦 | 報告機器的完整功能變數名稱。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 |
 | MSRCBulletinID | 資訊安全佈告欄識別碼 | 
-| MSRCSeverity | 弱點的嚴重性等級。 值為：<br> *嚴重*<br> *重要*<br> *中*<br> *低* |  
+| MSRCSeverity | 弱點的嚴重性等級。 值為：<br> *嚴重*<br> *重要*<br> *排定*<br> *量* |  
 | KBID | Windows update 的知識庫文章識別碼。 |
 | ManagementGroupName | Operations Manager 管理群組或 Log Analytics 工作區的名稱。 |
 | UpdateID | 軟體更新的唯一識別碼。 |
@@ -73,7 +73,7 @@ ms.locfileid: "75867057"
 | Title | 更新的標題。 |
 | 加入 publisheddate （UTC） | 已準備好從 Windows Update 下載並安裝更新的日期。  |
 | UpdateState | 更新的目前狀態。 | 
-| 產品 | 更新適用的產品。 |
+| Products | 更新適用的產品。 |
 | SubscriptionId | Azure 訂用帳戶的唯一識別碼。 | 
 | ResourceGroup | 資源所屬資源群組的名稱。 | 
 | ResourceProvider | 指定資源提供者。 | 
@@ -84,7 +84,7 @@ ms.locfileid: "75867057"
 
 建立類型為 `UpdateAgent` 的記錄，以提供電腦上更新代理程式的詳細資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 | 
+| 屬性 | 描述 | 
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
@@ -105,7 +105,7 @@ ms.locfileid: "75867057"
 
 建立類型為 `UpdateRunProgress` 的記錄，提供電腦排程部署的更新部署狀態。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 | 
+| 屬性 | 描述 | 
 |----------|-------------|
 | 電腦 | 報告機器的完整功能變數名稱。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 | 
@@ -116,7 +116,7 @@ ms.locfileid: "75867057"
 | KBID | Windows update 的知識庫文章識別碼。 | 
 | ManagementGroupName | Operations Manager 管理群組或 Log Analytics 工作區的名稱。 |
 | OSType | 指定作業系統（ *Windows*或*Linux*）的類型。 | 
-| 產品 | 更新適用的產品。 |
+| Products | 更新適用的產品。 |
 | 資源 | 資源名稱。 | 
 | ResourceId | 與記錄相關聯之資源的唯一識別碼。 |
 | ResourceProvider | 指定資源提供者。 | 
@@ -137,15 +137,15 @@ ms.locfileid: "75867057"
 
 建立類型為 `UpdateSummary` 的記錄，由機器提供更新摘要。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 | 
+| 屬性 | 描述 | 
 |----------|-------------|
 | 電腦 | 報告機器的完整功能變數名稱。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 | 
 | CriticalUpdatesMissing | 遺失的重大更新數目。 | 
 | ManagementGroupName | Operations Manager 管理群組或 Log Analytics 工作區的名稱。 |
 | NETRuntimeVersion | Windows 電腦上安裝的 .NET Framework 版本。 |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | 值為：<br> *最近*<br> *30天前*<br> *60天前*<br> *那些* | 
+| OldestMissingSecurityUpdateInDays | 偵測到最舊的更新在未安裝的情況下的總天數。 |
 | OsVersion | 作業系統的版本。 |
 | OtherUpdatesMissing | 已偵測到的更新計數遺失。 |
 | 資源 |  資源名稱。 | 

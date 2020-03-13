@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082418"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209436"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL Database
 
@@ -43,7 +43,7 @@ ms.locfileid: "74082418"
 
 - [手動微調](sql-database-performance-guidance.md)
 - [使用 DMV 監視效能](sql-database-monitoring-with-dmvs.md)
-- [使用查詢存放區監視效能](sql-database-operate-query-store.md)
+- [使用查詢存放區監視效能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [使用 Intelligent Insights 針對效能問題進行疑難排解](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [使用 Intelligent Insights 診斷記錄](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [監視記憶體內部 OLTP 空間](sql-database-in-memory-oltp-monitoring.md)

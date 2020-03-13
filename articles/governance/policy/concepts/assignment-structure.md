@@ -4,11 +4,11 @@ description: 描述 Azure 原則用來將原則定義和參數關聯至資源進
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747213"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265294"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure 原則指派結構
 
@@ -59,10 +59,10 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 
 此屬性具有下列值：
 
-|[模式] |JSON 值 |類型 |手動修復 |活動記錄專案 |說明 |
+|[模式] |JSON 值 |類型 |手動修復 |活動記錄專案 |描述 |
 |-|-|-|-|-|-|
-|啟用 |預設 |string |是 |是 |在資源建立或更新期間，會強制執行原則效果。 |
-|已停用 |DoNotEnforce |string |是 |否 | 在資源建立或更新期間不會強制執行原則效果。 |
+|啟用 |預設 |字串 |是 |是 |在資源建立或更新期間，會強制執行原則效果。 |
+|已停用 |DoNotEnforce |字串 |是 |否 | 在資源建立或更新期間不會強制執行原則效果。 |
 
 如果未在原則或計畫定義中指定**enforcementMode** ，則會使用_預設_值。 即使**enforcementMode**設為_DoNotEnforce_，也可以針對[deployIfNotExists](./effects.md#deployifnotexists)原則啟動[補救](../how-to/remediate-resources.md)工作。
 

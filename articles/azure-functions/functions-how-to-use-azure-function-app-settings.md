@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276942"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -25,9 +25,9 @@ ms.locfileid: "74230581"
 > [!TIP]  
 > 您也可以使用[Azure CLI]來管理許多設定選項。 
 
-## <a name="get-started-in-the-azure-portal"></a>在 Azure 入口網站中開始使用
+## <a name="get-started-in-the-azure-portal"></a>開始使用 Azure 入口網站
 
-若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函式應用程式的名稱並從清單中加以選取。 選取函數應用程式之後，您會看到下列頁面：
+若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函數應用程式的名稱，然後從清單中選取它。 選取函數應用程式之後，您會看到下列頁面：
 
 ![Azure 入口網站中的函數應用程式概觀](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 

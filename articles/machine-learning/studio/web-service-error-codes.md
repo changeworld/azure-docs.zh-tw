@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468169"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217766"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio （傳統） REST API 錯誤代碼
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
 Azure Machine Learning Studio （傳統） web 服務上的作業可能會傳回下列錯誤碼。
  
@@ -27,7 +29,7 @@ Azure Machine Learning Studio （傳統） web 服務上的作業可能會傳回
  
 提供的引數無效。
  
-此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看 [詳細資料] 區段中的 [錯誤碼] 欄位，以診斷那個特定引數無效。
+此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看 [詳細資料] 區段中的「程式碼」欄位，以診斷哪些特定引數無效。
  
 | 錯誤碼 | 使用者訊息 |
 | ---------- |--------------|

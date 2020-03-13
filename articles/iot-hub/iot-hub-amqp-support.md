@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284781"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 通訊協定與您的 IoT 中樞通訊
 
@@ -29,7 +29,7 @@ Azure IoT 中樞支援[OASIS Advanced 訊息佇列通訊協定（AMQP）1.0 版]
 | 資訊 | 值 |
 |-------------|--------------|
 | IoT 中樞主機名稱 | `<iot-hub-name>.azure-devices.net` |
-| 索引鍵名稱 | `service` |
+| 機碼名稱 | `service` |
 | 存取金鑰 | 與服務相關聯的主要或次要金鑰 |
 | 共用存取簽章 | 具有下列格式的短期共用存取簽章： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
 

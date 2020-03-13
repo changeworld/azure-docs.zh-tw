@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037064"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140785"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-成功提交管線之後，您可以在模組的右面板中預覽影像 ![上傳影像](media/module/upload-image-in-python-script.png)
+成功提交管線之後，您可以在模組的右面板中預覽影像
+
+[!div class="mx-imgBorder"]
+![上傳-影像](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>如何設定執行 Python 腳本
 
@@ -132,7 +135,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是以檔案類型資料集的形式上傳到您工作區的 zip 壓縮檔案。 
+4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是以檔案類型資料集的形式上傳到您工作區的 zip 壓縮檔案。 您可以在 [**資料集**資產] 頁面中上傳資料集，也可以從 [設計師撰寫] 頁面左側模組樹狀目錄中的 [**我的資料集**] 清單拖放資料集模組。 
 
     在管線執行期間，您可以使用上傳的壓縮封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但是您必須在路徑前面加上名為**src**的目錄。
 

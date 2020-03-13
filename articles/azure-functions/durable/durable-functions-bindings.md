@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278216"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>長期函式中的繫結 (Azure Functions)
 
@@ -21,7 +21,7 @@ ms.locfileid: "75410231"
 
 當您使用 Azure Functions 適用的 Visual Studio 工具時，協調流程觸發程序會使用 [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET 屬性進行設定。
 
-當您以指令碼語言 (例如，JavaScript 或 C# 指令碼處理) 撰寫協調器函式時，協調流程觸發程序會由 *function.json* 檔案之 `bindings` 陣列中的下列 JSON 物件所定義：
+當您以指令碼語言 (例如，JavaScript 或 C# 指令碼處理) 撰寫協調器函式時，協調流程觸發程序會由 `bindings`function.json*檔案之* 陣列中的下列 JSON 物件所定義：
 
 ```json
 {
@@ -128,7 +128,7 @@ module.exports = df.orchestrator(function*(context) {
 
 如果您使用 Visual Studio，則會使用 `ActivityTriggerAttribute` .NET 屬性來設定活動觸發程式。
 
-如果您使用 VS Code 或 Azure 入口網站來進行開發，則活動觸發程序會由 *function.json* 之 `bindings` 陣列中的下列 JSON 物件定義：
+如果您使用 VS Code 或 Azure 入口網站來進行開發，則活動觸發程序會由 `bindings`function.json*之* 陣列中的下列 JSON 物件定義：
 
 ```json
 {
@@ -500,7 +500,7 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> 從 `durable-functions` npm 套件 **1.3.0** 版開始，JavaScript 提供了耐久性實體。
+> 從 **npm 套件**1.3.0`durable-functions` 版開始，JavaScript 提供了耐久性實體。
 
 ## <a name="entity-client"></a>實體用戶端
 
@@ -634,7 +634,7 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> 從 `durable-functions` npm 套件 **1.3.0** 版開始，JavaScript 提供了耐久性實體。
+> 從 **npm 套件**1.3.0`durable-functions` 版開始，JavaScript 提供了耐久性實體。
 
 <a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.json 設定

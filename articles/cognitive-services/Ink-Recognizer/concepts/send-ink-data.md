@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221531"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>將筆跡資料傳送至筆跡辨識器 API 
 
 數位筆跡是指能夠數位呈現手寫和繪圖等輸入的技術。 要實現此功能，我們一般會使用數位板來擷取手寫筆等輸入裝置的移動。 由於裝置能夠繼續提供豐富的數位筆跡體驗，因此人工智慧和機器學習能夠辨識任何內容中的書寫圖形和文字。 筆跡辨識器 API 可讓您傳送筆跡筆觸並取得其相關詳細資訊。 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>筆跡辨識器 API 與OCR 服務
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>筆跡辨識器 API 與 OCR 服務
 
 筆跡辨識器 API 不會使用光學字元辨識 (OCR)。 OCR 服務會處理影像中的像素資料，以提供手寫和文字辨識。 這有時候稱為離線辨識。 相反地，筆跡辨識器 API 則需要使用輸入裝置時所擷取的數位筆跡筆觸資料。 相較於 OCR 服務，以這種方式處理數位筆跡資料會產生更精確的辨識結果。 
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255687"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什麼是 Azure SQL Database 服務？
 
@@ -68,7 +68,7 @@ SQL Database 提供下列購買模型：
 Azure SQL Database 提供三個針對不同類型的應用程式所設計的服務層級：
 - 專為一般工作負載而設計的[一般用途/標準](sql-database-service-tier-general-purpose.md)服務層級。 它提供預算導向的平衡計算和儲存體選項。
 - 針對具有高交易率和最低延遲 i/o 的 OLTP 應用程式而設計的[商務關鍵/](sql-database-service-tier-business-critical.md)高階服務層級。 它可以使用數個隔離的複本，為失敗提供最高的復原能力。
-- [超大規模資料庫](sql-database-service-tier-hyperscale.md)服務層級是針對非常大型的 OLTP 資料庫所設計，而且能夠自動調整儲存體和調整計算流暢地。 
+- [超大規模資料庫](sql-database-service-tier-hyperscale.md)服務層級是針對非常大型的 OLTP 資料庫所設計，而且能夠自動調整儲存體和調整計算流暢地。    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>可將資源使用量最大化的彈性集區
 
@@ -76,7 +76,7 @@ Azure SQL Database 提供三個針對不同類型的應用程式所設計的服�
 
    ![顯示基本、標準和 premium 版本彈性集區的圖形](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-使用彈性集區，您就不必隨著資源的需求波動，專注於調高或調低資料庫效能。 集區資料庫會視需要取用彈性集區的效能資源。 集區資料庫會取用集區的資源，但不會超過其限制，因此您的成本可在個別資料庫使用情形無法預測的狀況下維持可預測性。
+使用彈性集區時，您不需要專注于在資源變動的情況下，將資料庫效能上下增加或減少。 集區資料庫會視需要取用彈性集區的效能資源。 集區資料庫會取用，但不會超過集區的限制，因此即使個別資料庫使用量不是，您的成本仍然可預測。
 
 您可以在集區中[新增和移除資料庫](sql-database-elastic-pool-manage-portal.md)，將您的應用程式從數個資料庫擴充至上千個，全都在您所控制的預算內。 您也可以控制集區中資料庫可用的最小和最大資源，以確保集區中的資料庫不會使用所有的集區資源，而且每個集區資料庫都有保證的最低資源數量。 若要深入瞭解使用彈性集區的軟體即服務（SaaS）應用程式的設計模式，請參閱[使用 SQL Database 多租使用者 SaaS 應用程式的設計模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
@@ -95,7 +95,7 @@ Azure SQL Database 提供先進的監視和疑難排解功能，可協助您取�
  - 最新版 SQL Server 資料庫引擎所提供的內建監視功能。 它們可讓您尋找即時效能深入解析。 
  - Azure 提供的 PaaS 監視功能，可讓您監視和疑難排解大量的資料庫實例。
 
-[查詢存放區](sql-database-operate-query-store.md)是內建 SQL Server 監視功能，可即時記錄查詢的效能，並可讓您找出潛在的效能問題和最上層的資源取用者。 自動調整和建議提供有關具有回歸效能和遺失或重複索引之查詢的建議。 SQL Database 中的自動調整可讓您手動套用可修正問題的腳本，或讓 SQL Database 套用修正程式。 SQL Database 也可以測試並驗證修正是否提供一些好處，並根據結果保留或還原變更。 除了查詢存放區和自動調整功能以外，您還可以使用標準[dmv 和 XEvent](sql-database-monitoring-with-dmvs.md)來監視工作負載效能。
+[查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)是內建 SQL Server 監視功能，可即時記錄查詢的效能，並可讓您找出潛在的效能問題和最上層的資源取用者。 自動調整和建議提供有關具有回歸效能和遺失或重複索引之查詢的建議。 SQL Database 中的自動調整可讓您手動套用可修正問題的腳本，或讓 SQL Database 套用修正程式。 SQL Database 也可以測試並驗證修正是否提供一些好處，並根據結果保留或還原變更。 除了查詢存放區和自動調整功能以外，您還可以使用標準[dmv 和 XEvent](sql-database-monitoring-with-dmvs.md)來監視工作負載效能。
 
 Azure 提供[內建的效能監視](sql-database-performance.md)和[警示](sql-database-insights-alerts-portal.md)工具，並結合效能評等，讓您監視上千個資料庫的狀態。 使用這些工具，您可以根據目前或預測的效能需求，快速評估相應增加或減少的影響。 此外，SQL Database 可以[發出計量和診斷記錄](sql-database-metrics-diag-logging.md)以便進行監視。 您可以將 SQL Database 設定為將資源使用量、背景工作與工作階段及連線儲存到下列其中一項 Azure 資源：
 
@@ -157,7 +157,7 @@ SQL Database 會提供您需要監視之查詢的詳細解析。 SQL Database �
 
 ### <a name="adaptive-query-processing"></a>自適性查詢處理
 
-您可以使用彈性[查詢處理](/sql/relational-databases/performance/intelligent-query-processing)，包括交錯執行多重語句資料表值函式、批次模式記憶體授與意見反應，以及批次模式的自我調整聯結。 每個自適性查詢處理功能都會應用類似的「了解並適應」技術，協助進一步解決與過去很棘手的查詢最佳化問題相關的效能問題。
+您可以使用彈性[查詢處理](/sql/relational-databases/performance/intelligent-query-processing)，包括交錯執行多重語句資料表值函式、批次模式記憶體授與意見反應，以及批次模式的自我調整聯結。 每一個彈性查詢處理功能都套用類似的「學習和調整」技術，有助於進一步解決與過去棘手的查詢優化問題相關的效能問題。
 
 ## <a name="advanced-security-and-compliance"></a>進階安全性與合規性
 
@@ -221,7 +221,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、JAVA、node.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制何時發生修補停機？
 
-No。 如果您在應用程式中[採用重試邏輯](sql-database-develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱[在 Azure SQL Database 中規劃 Azure 維護事件](sql-database-planned-maintenance.md)。
+否。 如果您在應用程式中[採用重試邏輯](sql-database-develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱[在 Azure SQL Database 中規劃 Azure 維護事件](sql-database-planned-maintenance.md)。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure Hybrid Benefit 問題
 

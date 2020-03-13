@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274721"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138496"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>在 Azure Active Directory 中變更企業應用程式的名稱或標誌
 
@@ -42,8 +42,8 @@ ms.locfileid: "74274721"
 7. 在檔案選擇器中，選取您想要作為新標誌的檔案。 檔案的名稱會出現在目前標誌影像下方的方塊中。
 
    > [!NOTE]
-   > Azure 要求標誌影像必須是 PNG 檔案，而且會套用寬度、高度和檔案大小的限制。
-8. 選取 [ **儲存**]。 如果您選擇新的標誌，**標誌**欄位的影像會變更，以反映新的標誌檔案。
+   > Azure 要求標誌影像必須是 PNG 檔案，而且會套用寬度、高度和檔案大小的限制。 自訂標誌的大小必須剛好為 215 &times; 215 圖元，且格式為 PNG。 我們建議您在應用程式標誌中使用純色背景，而不會出現透明度，使其最適合使用者。
+8. 選取 [儲存]。 如果您選擇新的標誌，**標誌**欄位的影像會變更，以反映新的標誌檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586439"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136951"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
@@ -49,7 +49,7 @@ ms.locfileid: "77586439"
 [監視] 區段會顯示預先定義的 [備份警示] 和 [備份作業] 查詢結果。 [監視] 圖格會提供有關下列各項的最新資訊：
 
 * 備份作業的 [重大] 和 [警告] 警示 (在過去 24 小時內)
-* Azure VM 的前置檢查狀態 - 如果前置檢查狀態的完整資訊，請參閱[有關備份前置檢查狀態的備份部落格](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。
+* Azure Vm 的前置檢查狀態。 如需預先檢查狀態的完整資訊，請參閱[備份預先檢查狀態](#backup-pre-check-status)。
 * 進行中的備份作業，以及失敗的作業 (在過去 24 小時內)。
 
 [使用量] 圖格會提供：
@@ -62,6 +62,22 @@ ms.locfileid: "77586439"
 ![針對重大警示篩選的備份警示功能表](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 上圖中的 [備份警示] 功能表的篩選依據：狀態為作用中、嚴重性為重大，且時間為前 24 小時。
+
+### <a name="backup-pre-check-status"></a>備份預先檢查狀態
+
+備份預先檢查檢查您的 Vm 設定是否有可能會對備份造成負面影響的問題。 它們會匯總此資訊，讓您可以直接從復原服務保存庫儀表板進行查看，並提供更正措施的建議，以確保檔案一致或應用程式一致的備份。 它們不需要任何基礎結構，而且沒有額外費用。  
+
+備份預先檢查會在 Azure Vm 的排程備份作業中執行。 他們最後會有下列其中一種狀態：
+
+* 已**通過**：此狀態表示 VM 的設定應該會導致備份成功，而且不需要採取任何更正動作。
+* **警告**：此狀態表示 VM 設定中*可能*導致備份失敗的一或多個問題。 它會提供*建議*的步驟，以確保備份成功。 例如，未安裝最新的 VM 代理程式，可能會導致備份間歇地失敗。 這種情況會提供警告狀態。
+* **重大**：此狀態表示 VM 設定中*會*導致備份失敗的一或多個重大問題，並提供*必要*的步驟來確保備份成功。 例如，因 VM 的 NSG 規則更新而造成的網路問題，將會導致備份失敗，因為它會防止 VM 與 Azure 備份服務進行通訊。 這種情況會提供嚴重的狀態。
+
+請遵循下列步驟，以開始解決復原服務保存庫上 VM 備份預先檢查備份前所回報的任何問題。
+
+* 選取 [復原服務保存庫] 儀表板上的 [**備份檢查前狀態（Azure vm）** ] 磚。
+* 選取 [**重大**] 或 [**警告**] 的備份前置檢查狀態的任何 VM。 此動作會開啟 [ **VM 詳細資料**] 窗格。
+* 選取窗格頂端的窗格通知，以顯示設定問題描述和補救步驟。
 
 ## <a name="manage-backup-alerts"></a>管理備份警示
 
@@ -272,4 +288,3 @@ ms.locfileid: "77586439"
 
 * [從 Azure 還原 Windows Server 或 Windows 用戶端](backup-azure-restore-windows-server.md)
 * 若要深入了解 Azure 備份，請參閱 [Azure 備份概觀](backup-introduction-to-azure-backup.md)
-

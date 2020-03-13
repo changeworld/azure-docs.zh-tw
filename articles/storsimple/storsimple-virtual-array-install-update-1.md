@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365673"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254504"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 1.0
 
@@ -76,7 +76,7 @@ ms.locfileid: "78365673"
    
     ![搜尋目錄](./media/storsimple-virtual-array-install-update-1/download1.png)
 
-4. 按一下 [下載]
+4. 按一下 [下載]。
 
 5. 將兩個檔案下載至資料夾。 您也可以將資料夾複製到裝置可連線的網路共用位置。
 
@@ -103,7 +103,7 @@ ms.locfileid: "78365673"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. 在 [更新檔案路徑]中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 **[套用]** 。
+2. 在 [更新檔案路徑]中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-1/update2m.png)
 

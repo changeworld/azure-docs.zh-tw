@@ -4,11 +4,11 @@ description: 了解如何在執行於 Azure 容器執行個體中的容器內設
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379132"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247224"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器實例中設定環境變數
 

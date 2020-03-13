@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599180"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137623"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虛擬機器支援案例上的 SAP 工作負載
 在 Azure 中設計 SAP NetWeaver、Business one、`Hybris` 或 S/4HANA 系統架構，可為各種架構和工具提供許多不同的機會，讓您能夠使用可調整、有效率且高可用性的部署。 雖然相依于使用的作業系統或 DBMS，但還是有一些限制。 此外，在 Azure 中，不支援在內部部署支援的所有案例。 本檔將會以獨佔方式使用 Azure Vm，以提供支援的非高可用性設定和高可用性設定和架構。 針對[Hana 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)支援的案例，請參閱[Hana 大型實例支援的案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)一文。 
@@ -66,7 +66,8 @@ SAP 2 層設定會被視為在相同伺服器或 VM 單位上執行的 SAP DBMS 
 - Windows 上的 SQL Server
 - IBM Db2。 在[多個實例（Linux、UNIX）](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)一文中尋找詳細資料
 - 針對 Oracle。 如需詳細資訊，請參閱[sap 支援附注 #1778431](https://launchpad.support.sap.com/#/notes/1778431)和相關的 sap 附注
-- 針對 SAP Hana，支援在一個 VM 上有多個實例，SAP 會呼叫這個部署方法 MCOS。 如需詳細資訊，請參閱 SAP 文章[一部主機上的多個 SAP Hana 系統（MCOS）](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html)
+- 針對 SAP Hana，支援在一個 VM 上有多個實例，SAP 會呼叫這個部署方法 MCOS。 如需詳細資訊，請參閱 SAP 文章 [一部主機上的多個 SAP Hana 系統（MCOS）] （ https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
 在一部主機上執行多個資料庫實例，您必須確定不同的實例不會競爭資源，因而超出 VM 的實體資源限制。 特別是當您需要將記憶體上限為共用 VM 所能配置之實例的任何人時，就會發生這種情況。 這也可能適用于不同資料庫實例可以利用的 CPU 資源。 所有提及的 DBMS 都有設定，可限制實例層級的記憶體配置和 CPU 資源。
 為了支援 Azure Vm 的這類設定，預期用於不同實例所管理之資料庫的資料和記錄/重做記錄檔的磁片或磁片區是分開的。 換句話說，其他 DBMS 實例所管理之資料庫的資料或記錄/重做記錄檔，不應該共用相同的磁片或磁片區。 
@@ -121,6 +122,8 @@ HANA 大型實例的磁片設定已進行傳遞，並會在[Hana 大型實例的
 
 > [!IMPORTANT]
 > 針對上述所有案例，我們都支援在一個 VM 中設定多個 DBMS 實例。 表示在每個案例中，每個 VM 只能部署一個資料庫實例，並使用所述的高可用性方法進行保護。 目前**不**支援在相同的 Windows 或 Pacemaker 容錯移轉叢集下保護多個 DBMS 實例。 而且僅針對每個 VM 部署案例的單一實例支援 Oracle Data Guard。 
+
+各種資料庫系統允許在一個 DBMS 實例下裝載多個資料庫。 就 SAP Hana 而言，多個資料庫可以裝載在多個資料庫容器（MDC）中。 針對這些多資料庫設定在一個容錯移轉叢集資源內運作的情況，支援這些設定。 不支援的設定是需要多個叢集資源的情況。 針對您要在一個 SQL Server 實例下定義多個 SQL Server 可用性群組的設定。
 
 
 ![DBMS HA 設定](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

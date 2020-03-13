@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818972"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256181"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>雲端中的新 DBA - 在 Azure SQL Database 中管理您的單一和集區資料庫
 
@@ -68,7 +68,7 @@ ms.locfileid: "73818972"
 |---|:---:|
 |基本|7|
 |標準|35|
-|高級|35|
+|Premium|35|
 |||
 
 此外，[長期保留 (LTR)](sql-database-long-term-retention.md) 功能可讓您保留備份檔案更長期間 (具體而言，最長為 10 年)，並在該期間內從這些備份的任何時間點還原資料。 更重要的是，資料庫備份會保存在異地複寫儲存體，以確保從區域災難的恢復功能。 您也可以在保留期限內於任何時間點還原任何 Azure 區域的這些備份。 請參閱[業務持續性概觀](sql-database-business-continuity.md)。
@@ -91,7 +91,7 @@ ms.locfileid: "73818972"
 
 SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層級與平台層級提供安全性，而分成數個層時最易於了解。 您可以在每個層進行控制，並為應用程式提供最佳的安全性。 這些層為：
 
-- 身分識別與驗證 ([Windows/SQL 驗證和 Azure Active Directory [AAD] 驗證](sql-database-control-access.md))。
+- 身分識別 & 驗證（[SQL 驗證和 Azure Active Directory [AAD] 驗證](sql-database-manage-logins.md)）。
 - 監視活動 ([稽核](sql-database-auditing.md)和[威脅偵測](sql-database-threat-detection.md))。
 - 保護實際資料 ([透明資料加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)和 [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 控制對於敏感和特殊權限資料 ([資料列層級安全性](/sql/relational-databases/security/row-level-security)和[動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)) 的存取權。
@@ -100,10 +100,10 @@ SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層�
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database 提供哪些使用者驗證方法
 
-SQL Database 提供[兩個驗證方法](sql-database-control-access.md#authentication)：
+SQL Database 提供兩種驗證方法：
 
 - [Azure Active Directory 驗證](sql-database-aad-authentication.md)
-- SQL 驗證
+- [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支援傳統 Windows 驗證。 Azure Active Directory (AD) 是集中式身分識別和存取管理服務。 利用此服務，您可以非常輕鬆地為組織中的所有人員提供單一登入存取 (SSO)。 這表示認證會在所有 Azure 服務間共用，以簡化驗證。 AAD 支援 [MFA (多重要素驗證)](sql-database-ssms-mfa-authentication.md)，[只要按幾下滑鼠](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 即可與 Windows Server Active Directory 整合。 SQL 驗證的運作方式正如同您過去使用它的方式。 您提供使用者名稱/密碼，而您可以向指定 SQL Database 伺服器上的任何資料庫驗證使用者。 這也可讓 SQL Database 和 SQL 資料倉儲提供多重要素驗證和 Azure AD 網域內的來賓使用者帳戶。 如果您已經有內部部署 Active Directory，您可以使目錄與 Azure Active Directory 結成同盟，將您的目錄延伸至 Azure。
 
@@ -173,7 +173,7 @@ SQL Database 提供[兩個驗證方法](sql-database-control-access.md#authentic
 |**加密範圍**|端對端|待用資料|
 |**資料庫伺服器可以存取敏感性資料**|否|是，因為加密用於待用資料|
 |**允許的 T-SQL 作業**|相等比較|所有 T-SQL 介面區域可供使用|
-|**使用此功能需要進行應用程式變更**|有限|非常有限|
+|**使用此功能需要進行應用程式變更**|最小|非常有限|
 |**加密資料細微度**|資料行層級|資料庫層級|
 ||||
 
@@ -198,7 +198,7 @@ TDE 有雙重金鑰階層 – 每個使用者資料庫中的資料是由對稱 A
 
 根據預設，為了方便起見，透明資料加密的主要金鑰是由 SQL Database 服務管理。 如果您的組織想要控管主要金鑰，有一個選項可將 Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 當作金鑰存放區。 使用 Azure Key Vault，您的組織即可取得金鑰佈建、輪替和權限控制權。 [輪替或切換 TDE 主索引鍵的類型](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation)很快速，因為它只會將 DEK 重新加密。 若為區隔安全性與資料管理之間角色的組織，安全性管理員可以為 Azure Key Vault 中的 TDE 主要金鑰佈建金鑰內容，並將 Azure Key Vault 金鑰識別碼提供給資料庫管理員，以便用於在伺服器上進行待用資料加密。 Key Vault 的設計能使得 Microsoft 無法看見或擷取您的加密金鑰。 您也可以因此集中管理組織的金鑰。
 
-#### <a name="always-encrypted"></a>一律加密
+#### <a name="always-encrypted"></a>Always Encrypted
 
 Always Encrypted 中也有[雙重金鑰階層](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) - 敏感性資料的資料行是由 AES 256 資料行加密金鑰 (CEK) 加密，接著由資料行主要金鑰 (CMK) 加密。 針對 Always Encrypted 提供的用戶端驅動程式沒有 CMK 長度限制。 CEK 的加密值會儲存在資料庫中，而 CMK 會儲存在受信任的金鑰存放區中，例如 Windows 憑證存放區、Azure Key Vault 或硬體安全性模組。
 
@@ -226,7 +226,7 @@ Express Route 也可讓您高載至所購買的頻寬限制最多 2 倍，不額
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database 是否符合任何法規需求，以及這對於自己組織的合規性有何幫助
 
-SQL Database 符合各種法規規範。 若要查看 SQL Database 符合的最新規範，請造訪[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，並向下切入您組織的重要規範，以查看符合規範的 Azure 服務是否包含 SQL Database。 請務必注意，雖然 SQL Database 可能被公認為合規的服務，這有助於您組織的服務合規性，但不自動保證這點。
+SQL Database 符合一系列的法規 compliancies。 若要查看 SQL Database 符合的最新 compliancies，請造訪[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，並向下切入您組織的重要 compliancies，以查看符合規範的 Azure 服務是否包含 SQL Database。 請務必注意，雖然 SQL Database 可能被公認為合規的服務，這有助於您組織的服務合規性，但不自動保證這點。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>移轉之後的智慧型資料庫監視及維護
 
@@ -303,7 +303,7 @@ SQL Database 提供三個服務層級：基本、標準和進階。 在每個服
 |**服務層**|**常見的使用案例**|
 |---|---|
 |**基本**|應用程式具有少數使用者與一個資料庫，沒有高度並行能力、規模和效能需求。 |
-|**標準**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
+|**Standard**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
 |**高級**|應用程式具有許多並行使用者、高度 CPU/記憶體和高度 IO 要求。 高度並行能力、高輸送量和對延遲敏感的應用程式可以利用高級層級。 |
 |||
 

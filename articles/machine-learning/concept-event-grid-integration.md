@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 5ec953ace6bb9583c622f89cfcd0196482b1c683
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541747"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139040"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>使用 Azure Machine Learning 事件（預覽）
 
@@ -36,12 +36,13 @@ Azure 事件方格會從來源讀取事件，例如 Azure Machine Learning 和�
 
 Azure Machine Learning 在機器學習服務生命週期的各個點中提供事件： 
 
-| 事件類型 | 說明 |
+| 事件類型 | 描述 |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | 在機器學習實驗執行完成時引發 |
 | `Microsoft.MachineLearningServices.ModelRegistered` | 在工作區中註冊機器學習模型時引發 |
 | `Microsoft.MachineLearningServices.ModelDeployed` | 當具有一或多個模型的推斷服務部署完成時引發 |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | 當兩個資料集的資料漂移偵測作業完成時引發 |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | 當執行狀態變更時引發，目前只有在執行狀態為「失敗」時才會引發 |
 
 ## <a name="subscribe-to-machine-learning-events"></a>訂閱 Machine Learning 事件
 
@@ -61,6 +62,7 @@ Azure 事件方格支援以__開頭__和__結尾為__符合的主旨篩選器，
 | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
 | `Microsoft.MachineLearningServices.ModelDeployed` | `endpoints/{serviceId}` | `endpoints/my_sklearn_aks` |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
 ### <a name="advanced-filtering"></a>進階篩選
 
@@ -90,7 +92,7 @@ Azure 事件方格也支援以已發佈的事件架構為基礎的先進篩選�
 Azure 事件方格可讓客戶建立可由 Azure Machine Learning 事件觸發的解除耦合訊息處理常式。 一些值得注意的訊息處理常式範例包括：
 * Azure Functions
 * Azure Logic Apps
-* Azure 事件中樞
+* Azure 事件中心
 * Azure Data Factory 管線
 * 可裝載于 Azure 平臺或其他位置的一般 webhook
 

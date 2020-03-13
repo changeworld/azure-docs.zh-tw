@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282480"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>對 Azure Service Fabric 進行監視和診斷
 
@@ -45,7 +45,7 @@ Service Fabric 提供一組完整的現成事件。 這些 [Service Fabric 事�
 
 這些事件會透過 Windows 和 Linux 上的標準通道傳送，並可由任何支援這些通道的監視工具讀取。 Azure 監視器的解決方案是 Azure 監視器記錄。 歡迎閱讀我們的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)詳細資訊，其中包括叢集的自訂作業儀表板，以及您可以從中建立警示的一些範例查詢。 如需更多叢集監視概念，請參閱[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
 
-### <a name="health-monitoring"></a>狀況監控
+### <a name="health-monitoring"></a>健康狀況監視
 Service Fabric 平台包括健康情況模型，針對叢集中的實體狀態提供可延伸的健康情況報告。 每個節點、應用程式、服務、分割區、複本或執行個體，都有可持續更新的健康情況狀態。 健康情況狀態可以是「良好」、「警告」或「錯誤」。 您可以將 Service Fabric 事件想成從叢集到各種實體的「動詞」，並將健康情況想成針對每個實體的「形容詞」。 每當某個實體的健康情況轉換時，系統也會發出事件。 如此一來，您便可以使用和其他事件相同的方式，在自己所選的監視工具中針對健康情況事件設定查詢和警示。 
 
 此外，我們還會讓使用者覆寫實體的健康情況。 如果您在應用程式升級後遇到驗證測試失敗的問題，您可以使用健康情況 API 寫入 Service Fabric 健康情況，以表明您的應用程式的健康情況已不再良好，而 Service Fabric 將會自動復原該升級！ 如需健康情況模型的詳細資訊，請參閱 [Service Fabric 健康情況監視簡介](service-fabric-health-introduction.md)

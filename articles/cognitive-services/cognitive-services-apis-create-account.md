@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221235"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 入口網站建立認知服務資源
 
@@ -23,7 +23,7 @@ ms.locfileid: "74482870"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 有效的 Azure 訂用帳戶-[免費建立一個](https://azure.microsoft.com/free/)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74482870"
 
 1. 建立資源。
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[多服務資源](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[多服務資源](#tab/multiservice)
     
     在入口網站中，多服務資源的名稱為**認知服務**。 [建立認知服務資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
     
@@ -39,26 +39,26 @@ ms.locfileid: "74482870"
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Content Moderator                                    | 臉部               | Language Understanding (LUIS) | 文字分析   |
-    | Translator Text  | Bing 搜尋 v7 <br>（Web、影像、新聞、影片、視覺效果） | Bing 自訂搜尋 | Bing 實體搜尋            | Bing 自動建議 |
+    | 電腦視覺  | 內容仲裁                                    | 臉部               | 語言理解 (LUIS) | 文字分析   |
+    | 翻譯文字  | Bing 搜尋 v7 <br>（Web、影像、新聞、影片、視覺效果） | Bing 自訂搜尋 | Bing 實體搜尋            | Bing 自動建議 |
     | Bing 拼字檢查 |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[單一服務資源](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[單一服務資源](#tab/singleservice)
 
     使用下列連結來建立可用認知服務的資源：
 
-    | 辨識                      | 語音                  | 語言                          | 決策             | Search                 |
+    | 視覺                      | 語音                  | Language                          | 決策             | 搜尋                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [電腦視覺](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [語音服務](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式讀者](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [異常偵測器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing 搜尋 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [自訂視覺服務](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [說話者辨識](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [內容仲裁](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing 自訂搜尋](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [臉部](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [個人化工具](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing 實體搜尋](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [筆跡辨識器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文字分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing 拼字檢查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
-    |           |                         | [翻譯工具文字](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing 自動鍵](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+    |           |                         | [翻譯工具文字](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing 自動建議](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
 
 3. 在 [建立] 頁面上，提供下列資訊：
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[多服務資源](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[多服務資源](#tab/multiservice)
 
     |    |    |
     |--|--|
@@ -70,9 +70,9 @@ ms.locfileid: "74482870"
 
     ![資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    按一下 [建立]。
+    按一下 **[建立]** 。
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[單一服務資源](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[單一服務資源](#tab/singleservice)
 
     |    |    |
     |--|--|
@@ -84,7 +84,7 @@ ms.locfileid: "74482870"
 
     ![資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    按一下 [建立]。
+    按一下 **[建立]** 。
 
     ***
 
@@ -109,7 +109,7 @@ ms.locfileid: "74482870"
 2. 找出包含要刪除之資源的資源群組
 3. 以滑鼠右鍵按一下資源群組清單。 選取 [刪除資源群組] 並且確認。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [驗證 Azure 認知服務要求](authentication.md)
 * [什麼是 Azure 認知服務？](Welcome.md)

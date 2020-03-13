@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847476"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281830"
 ---
-# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>嚴重損壞修復至 Azure 後的 VMware Vm 容錯回復
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>災害復原至 Azure 後的 VMware VM 容錯回復
 
 當您在災害復原程序進行期間容錯移轉至 Azure 之後，您可以容錯回復至內部部署網站。 有兩種不同類型的容錯回復能與 Azure Site Recovery 搭配使用： 
 

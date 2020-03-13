@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 的 Python 開發人員參考
 description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276682"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -65,16 +65,16 @@ Python 函式專案的建議資料夾結構如下列範例所示：
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ Python 函式專案的建議資料夾結構如下列範例所示：
 
 每個函式都具有本身的程式碼檔案和繫結設定檔 (function.json)。 
 
-共用程式碼應該保存在 \_\_應用程式\_\_的個別資料夾中。 若要參考 SharedCode 資料夾中的模組，您可以使用下列語法：
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-若要參考函數的本機模組，您可以使用相對的匯入語法，如下所示：
-
-```python
-from . import example
-```
-
 將您的專案部署至 Azure 中的函式應用程式時，主要專案（ *\_\_應用程式\_\_* ）資料夾的完整內容應該包含在套件中，而不是資料夾本身。 我們建議您在與專案資料夾不同的資料夾中維護您的測試，在此範例中 `tests`。 這可讓您不需要將測試程式碼與應用程式一起部署。 如需詳細資訊，請參閱[單元測試](#unit-testing)。
+
+## <a name="import-behavior"></a>匯入行為
+
+您可以使用明確的相對和絕對參考，在函式程式碼中匯入模組。 根據以上所示的資料夾結構，下列匯入作業會從函式檔案內 *\_\_應用程式\_\_\my\_首先\_\\_\_init\_\_。 .py*：
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+下列匯入*無法*在同一個檔案中使用：
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+共用程式碼應該保存在 *\_\_應用程式\_\_* 的個別資料夾中。 若要參考*共用\_程式碼*資料夾中的模組，您可以使用下列語法：
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>觸發程式和輸入
 
@@ -366,7 +394,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="python-version"></a>Python 版本 
 
-目前，Azure Functions 支援 Python 3.6. x 和 3.7. x （官方 CPython 散發套件）。 在本機執行時，執行時間會使用可用的 Python 版本。 若要在 Azure 中建立函數應用程式時要求特定的 Python 版本，請使用[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create)命令的 `--runtime-version` 選項。 只有在函數應用程式建立時，才允許版本變更。  
+Azure Functions 支援下列 Python 版本：
+
+| Functions 版本 | Python<sup>*</sup>版本 |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup>官方 CPython 散發套件
+
+若要在 Azure 中建立函數應用程式時要求特定的 Python 版本，請使用[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create)命令的 `--runtime-version` 選項。 函數執行階段版本是由 `--functions-version` 選項所設定。 當函式應用程式已建立且無法變更時，就會設定 Python 版本。  
+
+在本機執行時，執行時間會使用可用的 Python 版本。 
 
 ## <a name="package-management"></a>套件管理
 

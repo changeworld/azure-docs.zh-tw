@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283338"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作夥伴中心管理您的商業 Marketplace 帳戶
 
@@ -59,7 +59,7 @@ ms.locfileid: "78385520"
 
 在 [發行者識別碼] 區段中，您可以看到您的**SYMANTEC 識別碼**、**賣方識別碼**、**使用者識別碼**、 **MPN 識別碼**和**Azure AD**租使用者。 Microsoft 會指派這些值來唯一識別您的開發人員帳戶，而且無法編輯。
 
-### <a name="contact-info"></a>連絡人資訊
+### <a name="contact-info"></a>連絡資訊
 
 在 [連絡人資訊] 區段中，您可以看到您的**發行者顯示名稱**、**賣方連絡人資訊**（公司賣方的連絡人名稱、電子郵件、電話號碼和位址），以及**公司核准者**（擁有核准公司決策之人員的姓名、電子郵件和電話號碼）。
 
@@ -346,7 +346,7 @@ Azure Active Directory （AD）租使用者（在本檔中也稱為您的「工�
 > [!TIP]
 > 如果您目前已使用相同租使用者中的帳戶登入合作夥伴中心，則無法移除租使用者。 若要移除租使用者，您必須以**管理員**的身分登入合作夥伴中心，以取得與該帳戶相關聯的另一個租使用者。 如果只有一個租使用者與該帳戶相關聯，只有在使用開啟帳戶的 Microsoft 帳戶登入之後，才可以移除該租使用者。
 
-## <a name="agreements"></a>協議
+## <a name="agreements"></a>合約
 
 [合作夥伴中心] 的 [**協定**] 區段（在 [**帳戶設定**] 下）可讓您查看已授權的發佈合約清單。 這些合約會根據名稱和版本號碼列出，包括接受日期和接受合約的使用者名稱。
 

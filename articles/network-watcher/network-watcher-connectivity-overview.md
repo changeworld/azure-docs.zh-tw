@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842864"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283273"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
 
@@ -29,7 +29,7 @@ ms.locfileid: "76842864"
 
 下表顯示當連線疑難排解完成執行時所傳回的屬性。
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |ConnectionStatus     | 連線檢查的狀態。 可能的結果是 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 連線檢查期間的平均延遲，以毫秒為單位。 (只有在檢查狀態為可連線時顯示)        |
@@ -72,7 +72,7 @@ ms.locfileid: "76842864"
 
 連線疑難排解傳回連線的相關錯誤類型。 下表提供一份目前傳回錯誤類型的清單。
 
-|類型  |說明  |
+|類型  |描述  |
 |---------|---------|
 |CPU     | 高 CPU 使用率。       |
 |記憶體     | 高記憶體使用率。       |

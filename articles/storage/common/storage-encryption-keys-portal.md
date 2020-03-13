@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5f091341bee65d17b42e289bab1192142d095637
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665474"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136120"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>使用 Azure 入口網站以 Azure Key Vault 設定客戶管理的金鑰
 
@@ -94,7 +94,7 @@ Azure 儲存體加密僅支援大小為2048的 RSA 金鑰。 如需金鑰的詳�
 
 ## <a name="disable-customer-managed-keys"></a>停用客戶管理的金鑰
 
-當您停用客戶管理的金鑰時，您的儲存體帳戶會使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請遵循下列步驟：
+當您停用客戶管理的金鑰時，您的儲存體帳戶會再次使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請遵循下列步驟：
 
 1. 流覽至您的儲存體帳戶，並顯示**加密**設定。
 1. 取消選取 [**使用您自己的金鑰**] 設定旁的核取方塊。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132934"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257962"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>執行從 Hyper-V VM 到次要網站的 DR 演練
 
@@ -119,7 +119,7 @@ ms.locfileid: "74132934"
 
 此程序說明如何針對復原方案執行測試容錯移轉。 或者，您可以在 [虛擬機器] 索引標籤上針對單一虛擬機器執行容錯移轉。
 
-1. 選取 [復原方案]  >  *recoveryplan_name*。 按一下 [容錯移轉] **容錯移轉** > **Test 容錯移轉**中張貼意見或問題。
+1. 選取 [復原方案] > *recoveryplan_name*。 按一下 [容錯移轉] **容錯移轉** > **Test 容錯移轉**中張貼意見或問題。
 2. 在 [測試容錯移轉] 刀鋒視窗上，指定複本 VM 在測試容錯移轉後應如何連線至網路。
 3. 在 [工作] 索引標籤上追蹤容錯移轉進度。
 4. 完成容錯移轉之後，請確認 VM 已成功啟動。

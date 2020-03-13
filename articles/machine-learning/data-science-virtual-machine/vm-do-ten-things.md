@@ -10,11 +10,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824390"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283624"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
@@ -40,7 +40,7 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 您可以在[建立虛擬機器時](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)取得在 Azure 入口網站上布建資料科學虛擬機器的指示。
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>建立和讓 R 模型
-您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 步驟如下：
+您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 以下為其步驟：
 
 1. 建立設定 json 檔案，以提供您的工作區識別碼和驗證權杖。 
 2. 撰寫模型之 predict 函數的包裝函式。
@@ -176,7 +176,7 @@ ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema =
 ```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>取用 Azure Machine Learning 中部署的模型
-若要從用戶端應用程式取用模型，請使用 Azure Machine Learning 程式庫依名稱查閱已發佈的 web 服務。 使用 `services` API 呼叫來判斷端點。 然後您只要呼叫 `consume` 函數並傳入要預測的資料框架。
+若要從用戶端應用程式取用模型，請使用 Azure Machine Learning 程式庫依名稱查閱已發佈的 web 服務。 使用 `services` API 呼叫來判斷端點。 然後您只要呼叫 `consume` 函式並傳入要預測的資料框架。
 
 使用下列程式碼來取用發佈為 Azure Machine Learning web 服務的模型：
 
@@ -265,7 +265,7 @@ DSVM 會在命令列上與用戶端工具一起載入，並在 GUI 上用來存�
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型。 本節說明如何將資料移至 Blob 儲存體，並存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
@@ -364,10 +364,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 ![前 10 個資料列的螢幕擷取畫面](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
-### <a name="azure-data-lake"></a>Azure 資料湖
+### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料庫存放庫，而且與 Hadoop 分散式檔案系統（HDFS）相容。 它可以與 Hadoop、Spark 及 Azure Data Lake Analytics 搭配運作。 在本節中，您將瞭解如何使用 Azure Data Lake Analytics 將資料移至 Azure Data Lake Storage 並執行分析。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 在[Azure 入口網站](https://portal.azure.com)中建立 Azure Data Lake Analytics 實例。
 
@@ -452,7 +452,7 @@ USING Outputters.Csv();
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 叢集
 Azure HDInsight 是雲端中的受控 Apache Hadoop、Spark、HBase 和風暴服務。 您可以從資料科學虛擬機器輕鬆地使用 Azure HDInsight 叢集。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。 此儲存體帳戶用來儲存 HDInsight 叢集的資料。
 

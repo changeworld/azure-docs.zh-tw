@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255737"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248017"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -50,10 +50,11 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**： UserErrorVmProvisioningStateFailed<br>
 **錯誤訊息**： VM 處於失敗的布建狀態<br>
 
-當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。
+當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。 若要深入瞭解，請參閱布建[狀態](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
 
 - 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份。 此動作會重新安裝延伸模組，並執行備份作業。  <br>
-- 如果任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確定已解決這些延伸模組問題，然後重試備份操作。  
+- 如果任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確定已解決這些延伸模組問題，然後重試備份操作。
+- 如果 VM 布建狀態為「正在更新」狀態，它可能會干擾備份。 請確定其狀況良好，然後重試備份操作。
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已達到還原點集合上限
 
@@ -145,7 +146,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代理程式有助於取得最新版本。 也有助於重新開始與服務通訊。
 
@@ -161,7 +162,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -199,13 +200,13 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失敗，因為它無權存取儲存體帳戶，或是因為快照集工作延遲執行。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方案 |
+| 原因 | 解決方法 |
 | --- | --- |
-| 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，可使用 VM 儀表板上的 [關閉] 選項來關閉入口網站中的 VM。 |
+| 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，請在入口網站中使用 VM 儀表板上的 [**關機**] 選項來關閉 vm。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，則應透過**Azure 入口網站**或**PowerShell**加以設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何使用 PowerShell 設定靜態 IP 位址。
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>從還原點資源群組中移除鎖定

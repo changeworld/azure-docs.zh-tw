@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2019
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 77324dff7e3f34574f36aa3bb775aed6a945a3bd
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d7e4843bfbd622ad99cad4d9048e91a0cb49b1c1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665286"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136239"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>使用 PowerShell 以 Azure Key Vault 設定客戶管理的金鑰
 
@@ -51,7 +51,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-若要瞭解如何使用 PowerShell 啟用「虛**刪除**」和「不要**清除**」現有的金鑰保存庫，請參閱[如何搭配使用虛刪除與 powershell](../../key-vault/key-vault-soft-delete-powershell.md)中的
+若要瞭解如何使用 PowerShell 啟用「虛**刪除**」和「不要**清除**」現有的金鑰保存庫，請參閱[如何搭配使用虛刪除與 powershell](../../key-vault/key-vault-soft-delete-powershell.md)中的 < 啟用虛**刪除**和**啟用清除保護**的章節。
 
 ## <a name="configure-the-key-vault-access-policy"></a>設定 key vault 存取原則
 
@@ -97,9 +97,18 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 若要變更用於 Azure 儲存體加密的金鑰，請呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，如使用[客戶管理的金鑰設定加密](#configure-encryption-with-customer-managed-keys)中所示，並提供新的金鑰名稱和版本。 如果新的金鑰位於不同的金鑰保存庫中，請同時更新金鑰保存庫 URI。
 
+## <a name="revoke-customer-managed-keys"></a>撤銷客戶管理的金鑰
+
+如果您認為金鑰可能遭到入侵，您可以藉由移除 key vault 存取原則來撤銷客戶管理的金鑰。 若要撤銷客戶管理的金鑰，請呼叫[set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy)命令，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+
+```powershell
+Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
+    -ObjectId $storageAccount.Identity.PrincipalId `
+```
+
 ## <a name="disable-customer-managed-keys"></a>停用客戶管理的金鑰
 
-當您停用客戶管理的金鑰時，您的儲存體帳戶會使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請使用 `-StorageEncryption` 選項呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+當您停用客戶管理的金鑰時，您的儲存體帳戶會再次使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請使用 `-StorageEncryption` 選項呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `

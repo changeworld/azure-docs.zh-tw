@@ -1,6 +1,6 @@
 ---
 title: 適用于 Azure RBAC 的 azure 內建角色
-description: 說明 azure 角色型存取控制（Azure RBAC）的 Azure 內建角色。 列出 Actions、NotActions、DataActions 和 NotDataActions。
+description: 本文說明 azure 角色型存取控制（RBAC）的 Azure 內建角色。 它會列出 Actions、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281102"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
-[Azure 角色型存取控制（AZURE RBAC）](overview.md)具有數個 azure 內建角色，可供您指派給使用者、群組、服務主體和受控識別。 角色指派是您控制 Azure 資源存取權的方式。 如果內建角色不符合您組織的特定需求，您可以建立自己的[Azure 自訂角色](custom-roles.md)。
+[Azure 角色型存取控制（RBAC）](overview.md)具有數個 azure 內建角色，可供您指派給使用者、群組、服務主體和受控識別。 角色指派是您控制 Azure 資源存取權的方式。 如果內建角色不符合您組織的特定需求，您可以建立自己的[Azure 自訂角色](custom-roles.md)。
 
-本文章列出適用於 Azure 資源的內建角色，這些角色總是不斷更新。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果要尋找 Azure Active Directory 的系統管理員角色，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文章列出適用於 Azure 資源的內建角色，這些角色總是不斷更新。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果您要尋找 Azure Active Directory （Azure AD）的系統管理員角色，請參閱[Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ## <a name="descriptions-and-ids"></a>描述與識別碼
 
-下表提供每個內建角色的簡短描述和唯一識別碼。 按一下角色名稱，即可查看每個角色的 `Actions`、`NotActions`、`DataActions` 及 `NotDataActions` 清單。 如需這些動作的意義以及它們如何套用在管理和資料平面的相關資訊，請參閱[了解 Azure 資源的角色定義](role-definitions.md)。
+下表提供每個內建角色的簡短描述和唯一識別碼。 選取 [角色名稱]，以查看每個角色的 `Actions`、`NotActions`、`DataActions`和 `NotDataActions` 清單。 如需這些動作的意義以及它們如何套用在管理和資料平面的相關資訊，請參閱[了解 Azure 資源的角色定義](role-definitions.md)。
 
 
 > [!div class="mx-tableFixed"]
@@ -77,14 +77,14 @@ ms.locfileid: "78205886"
 > | [區塊鏈成員節點存取（預覽）](#blockchain-member-node-access-preview) | 允許存取區塊鏈成員節點 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | [藍圖參與者](#blueprint-contributor) | 可以管理藍圖定義，但不能加以指派。 | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [藍圖操作者](#blueprint-operator) | 可以指派現有的已發行藍圖，但無法建立新的藍圖。 注意：這僅適用于使用使用者指派的受控識別來完成指派。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
-> | [CDN 端點參與者](#cdn-endpoint-contributor) | 可管理 CDN 端點，但無法對其他使用者授與存取權。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
-> | [CDN 端點讀者](#cdn-endpoint-reader) | 可檢視 CDN 端點，但無法進行變更。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
-> | [CDN 設定檔參與者](#cdn-profile-contributor) | 可管理 CDN 設定檔及其端點，但無法對其他使用者授與存取權。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
-> | [CDN 設定檔讀者](#cdn-profile-reader) | 可檢視 CDN 設定檔及其端點，但無法進行變更。 | 8f96442b-4075-438f-813d-ad51ab4019af |
+> | [CDN 端點參與者](#cdn-endpoint-contributor) | 可以管理 CDN 端點，但無法將存取權授與其他使用者。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
+> | [CDN 端點讀者](#cdn-endpoint-reader) | 可以查看 CDN 端點，但無法進行變更。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
+> | [CDN 設定檔參與者](#cdn-profile-contributor) | 可以管理 CDN 設定檔及其端點，但無法將存取權授與其他使用者。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
+> | [CDN 設定檔讀者](#cdn-profile-reader) | 可以查看 CDN 設定檔及其端點，但無法進行變更。 | 8f96442b-4075-438f-813d-ad51ab4019af |
 > | [傳統網路參與者](#classic-network-contributor) | 可讓您管理傳統網路，但無法存取它們。 | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | [傳統儲存體帳戶參與者](#classic-storage-account-contributor) | 可讓您管理傳統儲存體帳戶，但無法存取它們。 | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | [傳統儲存體帳戶金鑰操作員服務角色](#classic-storage-account-key-operator-service-role) | 「傳統儲存體帳戶金鑰操作員」可以列出及重新產生「傳統儲存體帳戶」的金鑰 | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
-> | [傳統虛擬機器參與者](#classic-virtual-machine-contributor) | 可讓您管理傳統虛擬機器 (不含虛擬機器所連線的虛擬網路或儲存體帳戶)，但無法存取它們。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | [傳統虛擬機器參與者](#classic-virtual-machine-contributor) | 可讓您管理傳統虛擬機器 (不含虛擬機器所連接的虛擬網路或儲存體帳戶)，但無法存取它們。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [認知服務參與者](#cognitive-services-contributor) | 可讓您建立、讀取、更新、刪除及管理認知服務的金鑰。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [認知服務資料讀取器（預覽）](#cognitive-services-data-reader-preview) | 可讓您讀取認知服務資料。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [認知服務使用者](#cognitive-services-user) | 可讓您讀取和列出認知服務的金鑰。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
@@ -1024,7 +1024,7 @@ ms.locfileid: "78205886"
 
 ### <a name="classic-virtual-machine-contributor"></a>傳統虛擬機器參與者
 
-可讓您管理傳統虛擬機器 (不含虛擬機器所連線的虛擬網路或儲存體帳戶)，但無法存取它們。
+可讓您管理傳統虛擬機器 (不含虛擬機器所連接的虛擬網路或儲存體帳戶)，但無法存取它們。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1059,7 +1059,7 @@ ms.locfileid: "78205886"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -2052,7 +2052,7 @@ ACR 隔離資料寫入者
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3853,10 +3853,7 @@ ACR 隔離資料寫入者
 
 ### <a name="blueprint-operator"></a>藍圖運算子
 
-可以指派現有的已發行藍圖，但無法建立新的藍圖。 
-
-> [!NOTE] 
-> 這僅適用于使用使用者指派的受控識別來完成指派。
+可以指派現有的已發行藍圖，但無法建立新的藍圖。 注意：這僅適用于使用使用者指派的受控識別來完成指派。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ ACR 隔離資料寫入者
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.alertsmanagement/smartDetectorAlertRules/* |  |
+> | Microsoft.alertsmanagement/actionRules/* |  |
+> | Microsoft.alertsmanagement/smartGroups/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -4359,7 +4358,9 @@ ACR 隔離資料寫入者
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -5296,7 +5297,7 @@ ACR 隔離資料寫入者
 
 ### <a name="cdn-endpoint-contributor"></a>CDN 端點參與者
 
-可管理 CDN 端點，但無法對其他使用者授與存取權。
+可以管理 CDN 端點，但無法將存取權授與其他使用者。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5322,7 +5323,7 @@ ACR 隔離資料寫入者
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5350,7 +5351,7 @@ ACR 隔離資料寫入者
 
 ### <a name="cdn-endpoint-reader"></a>CDN 端點讀者
 
-可檢視 CDN 端點，但無法進行變更。
+可以查看 CDN 端點，但無法進行變更。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5376,7 +5377,7 @@ ACR 隔離資料寫入者
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5404,7 +5405,7 @@ ACR 隔離資料寫入者
 
 ### <a name="cdn-profile-contributor"></a>CDN 設定檔參與者
 
-可管理 CDN 設定檔及其端點，但無法對其他使用者授與存取權。
+可以管理 CDN 設定檔及其端點，但無法將存取權授與其他使用者。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5430,7 +5431,7 @@ ACR 隔離資料寫入者
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5458,7 +5459,7 @@ ACR 隔離資料寫入者
 
 ### <a name="cdn-profile-reader"></a>CDN 設定檔讀者
 
-可檢視 CDN 設定檔及其端點，但無法進行變更。
+可以查看 CDN 設定檔及其端點，但無法進行變更。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5484,7 +5485,7 @@ ACR 隔離資料寫入者
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel 參與者
 > | **動作** |  |
 > | SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | Microsoft.OperationalInsights/workspaces/read | 取得現有工作區 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 資料 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | 取得現有的 OMS 解決方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 針對工作區中的資料執行查詢 |
@@ -5763,7 +5764,7 @@ Azure Sentinel 參與者
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel 讀取器
 > | **動作** |  |
 > | SecurityInsights/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | Microsoft.OperationalInsights/workspaces/read | 取得現有工作區 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 資料 |
+> | Microsoft.operationalinsights/workspace/Linkedservices.json 和 datasets.json/read | 取得指定工作區下已連結的服務。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
 > | Microsoft.OperationsManagement/solutions/read | 取得現有的 OMS 解決方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 針對工作區中的資料執行查詢 |
@@ -5829,7 +5831,8 @@ Azure Sentinel 讀取器
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel 回應程式
 > | **動作** |  |
 > | SecurityInsights/*/read |  |
 > | SecurityInsights/案例/* |  |
+> | SecurityInsights/事件/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | Microsoft.OperationalInsights/workspaces/read | 取得現有工作區 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 資料 |
 > | Microsoft.operationalinsights/工作區/資料來源/讀取 | 取得工作區下的資料來源。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
 > | Microsoft.OperationsManagement/solutions/read | 取得現有的 OMS 解決方案 |
@@ -5897,8 +5901,9 @@ Azure Sentinel 回應程式
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6655,6 +6660,7 @@ Azure Sentinel 回應程式
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 取得給定作業的作業狀態 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 驗證功能 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6709,7 +6715,8 @@ Azure Sentinel 回應程式
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],

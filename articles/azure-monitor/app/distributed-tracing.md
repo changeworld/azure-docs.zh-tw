@@ -6,20 +6,20 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669585"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136735"
 ---
 # <a name="what-is-distributed-tracing"></a>什麼是分散式追蹤？
 
-新式雲端和[微服務](https://azure.com/microservices)架構的問世，造就了可獨立部署的簡單服務，協助您降低成本，同時提高可用性和輸送量。 這些變動雖然整體上讓個別服務更容易了解，但是讓整體系統更難以理解和偵錯。
+新式雲端和[微服務](https://azure.com/microservices)架構的問世，造就了可獨立部署的簡單服務，協助您降低成本，同時提高可用性和輸送量。 但是雖然這些移動作業讓個別的服務更容易瞭解，但它們也使整體系統更棘手，以及進行 debug。
 
-在單體式架構中，我們已習慣透過呼叫堆疊進行偵錯。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
+在整合型架構中，我們已用來以呼叫堆疊進行調試。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
 
-這就是分散式追蹤的由來。  
+這就是分散式追蹤的來源。  
 
 分散式追蹤相當於新式雲端和微服務架構的呼叫堆疊，但增添了非常簡單的效能分析工具。 在 Azure 監視器中，我們提供兩種取用分散式追蹤資料的體驗。 第一種是[交易診斷](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)檢視，就像是新增了時間維度的呼叫堆疊。 交易診斷檢視可顯示單一交易/要求，並可協助您找出可靠性問題的根本原因及每個要求的效能瓶頸。
 
@@ -38,7 +38,7 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](https://doc
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (預覽)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 安裝和設定適當的 Application Insights SDK 後，SDK 相依性自動收集器就會針對熱門的架構、程式庫和技術自動收集追蹤資訊。 完整的支援技術清單位於[相依性自動收集文件](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中。
 
@@ -48,7 +48,7 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](https://doc
 
 除了 Application Insights SDK，Application Insights 也支援透過 [OpenCensus](https://opencensus.io/) 的分散式追蹤。 OpenCensus 是開放原始碼、廠商中立的單一程式庫散發，可提供服務的計量收集和分散式追蹤。 它也可讓開放原始碼社群，使用熱門的技術 (例如 Redis、Memcached 或 MongoDB) 進行分散式追蹤。 [Microsoft 在 OpenCensus 上與其他數個監視和雲端夥伴共同作業](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)。
 
-[Python (預覽)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 OpenCensus 網站會維護 [Python](https://opencensus.io/api/python/trace/usage.html) 與 [Go](https://godoc.org/go.opencensus.io) 的 API 參考文件，以及可供使用 OpenCensus 的各種不同指南。 
 

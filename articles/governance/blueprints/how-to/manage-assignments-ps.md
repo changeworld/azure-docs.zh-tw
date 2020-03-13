@@ -4,11 +4,11 @@ description: 瞭解如何使用官方 Azure 藍圖 PowerShell 模組 Az. 藍圖�
 ms.date: 09/30/2019
 ms.topic: how-to
 ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973640"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280712"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理指派
 

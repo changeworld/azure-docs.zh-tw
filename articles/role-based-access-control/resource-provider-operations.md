@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 6b0d967dad250b06988865cde2f4ce11367f8acb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206991"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245768"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 資源提供者作業
 
@@ -448,10 +448,9 @@ Azure 服務： [API 管理](../api-management/index.yml)
 > | 動作 | ApiManagement/服務/閘道/讀取 | 列出已向服務實例註冊的閘道集合。 或取得其識別碼所指定之閘道的詳細資料。 |
 > | 動作 | ApiManagement/服務/閘道/寫入 | 建立或更新要在 Api 管理實例中使用的閘道。 或會更新其識別碼所指定之閘道的詳細資料。 |
 > | 動作 | ApiManagement/服務/閘道/刪除 | 刪除特定的閘道。 |
-> | 動作 | ApiManagement/服務/閘道/金鑰/動作 | 抓取閘道金鑰。 |
-> | 動作 | ApiManagement/服務/閘道/regeneratePrimaryKey/動作 | 重新產生主要閘道金鑰 invalidationg 使用它建立的任何權杖。 |
-> | 動作 | ApiManagement/服務/閘道/regenerateSecondaryKey/動作 | 重新產生次要閘道金鑰 invalidationg 使用它建立的任何權杖。 |
-> | 動作 | ApiManagement/服務/閘道/權杖/動作 | 取得閘道的共用存取授權權杖。 |
+> | 動作 | ApiManagement/服務/閘道/listKeys/動作 | 抓取閘道金鑰。 |
+> | 動作 | ApiManagement/服務/閘道/regenerateKey/動作 | 重新產生指定的閘道金鑰 invalidationg 使用它建立的任何權杖。 |
+> | 動作 | ApiManagement/服務/閘道/generateToken/動作 | 取得閘道的共用存取授權權杖。 |
 > |  | **服務/閘道/api** |  |
 > | 動作 | ApiManagement/服務/閘道/api/讀取 | 列出與閘道相關聯的 Api 集合。 |
 > | 動作 | ApiManagement/服務/閘道/api/寫入 | 將 API 新增至指定的閘道。 |
@@ -483,7 +482,7 @@ Azure 服務： [API 管理](../api-management/index.yml)
 > | 動作 | ApiManagement/service/namedValues/read | 列出在服務實例內定義的已命名值集合。 或取得其識別碼所指定之已命名值的詳細資料。 |
 > | 動作 | ApiManagement/service/namedValues/write | 建立或更新名為的值。 或會更新特定的已命名值。 |
 > | 動作 | ApiManagement/service/namedValues/delete | 從 API 管理服務實例中刪除特定的已命名值。 |
-> | 動作 | ApiManagement/service/namedValues/listSecrets/action | 取得其識別碼所指定之已命名值的秘密。 |
+> | 動作 | ApiManagement/service/namedValues/listValue/action | 取得其識別碼所指定之已命名值的密碼。 |
 > |  | **服務/networkstatus** |  |
 > | 動作 | Microsoft.ApiManagement/service/networkstatus/read | 取得服務相依資源的網路存取狀態。 |
 > |  | **服務/通知** |  |
@@ -809,6 +808,18 @@ Azure 服務：[自動化](../automation/index.yml)
 > | 動作 | Microsoft.Automation/automationAccounts/nodes/reports/content/read | 讀取 Azure Automation DSC 報告內容 |
 > |  | **automationAccounts/objectDataTypes/fields** |  |
 > | 動作 | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | 取得 Azure 自動化 TypeField |
+> |  | **automationAccounts/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/read | 讀取 Azure 自動化私用端點連接 Proxy |
+> | 動作 | AutomationAccounts/privateEndpointConnectionProxies/write | 建立 Azure 自動化私用端點連接 Proxy |
+> | 動作 | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/validate/action | 驗證私用端點連接要求（groupId 驗證） |
+> | 動作 | AutomationAccounts/privateEndpointConnectionProxies/delete | 刪除 Azure 自動化私用端點連接 Proxy |
+> |  | **automationAccounts/privateEndpointConnectionProxies/operationResults** |  |
+> | 動作 | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/operationResults/read | 取得 Azure 自動化私用端點 proxy 操作結果。 |
+> |  | **automationAccounts/privateEndpointConnections** |  |
+> | 動作 | Microsoft. Automation/automationAccounts/privateEndpointConnections/read | 取得 Azure 自動化私人端點線上狀態 |
+> | 動作 | AutomationAccounts/privateEndpointConnections/write | 核准或拒絕 Azure 自動化的私用端點連接 |
+> |  | **automationAccounts/privateLinkResources** |  |
+> | 動作 | Microsoft. Automation/automationAccounts/privateLinkResources/read | 讀取私人端點的群組資訊 |
 > |  | **automationAccounts/python2Packages** |  |
 > | 動作 | Microsoft.Automation/automationAccounts/python2Packages/read | 取得 Azure 自動化 Python 2 套件 |
 > | 動作 | Microsoft.Automation/automationAccounts/python2Packages/write | 建立或更新 Azure 自動化 Python 2 套件 |
@@ -910,6 +921,8 @@ Azure 服務：核心
 > | 動作類型 | 作業 | 描述 |
 > | --- | --- | --- |
 > | 動作 | Microsoft.AzureStack/register/action | 向 Microsoft.AzureStack 資源提供者註冊訂用帳戶 |
+> |  | **cloudManifestFiles** |  |
+> | 動作 | AzureStack/cloudManifestFiles/read | 取得雲端資訊清單檔案 |
 > |  | **作業** |  |
 > | 動作 | Microsoft.AzureStack/Operations/read | 取得資源提供者作業的屬性 |
 > |  | **登記** |  |
@@ -927,8 +940,6 @@ Azure 服務：核心
 > | 動作 | AzureStack/註冊/產品/getProducts/動作 | 抓取 Azure Stack Marketplace 產品的清單 |
 > | 動作 | AzureStack/註冊/產品/getProduct/動作 | 抓取 Azure Stack Marketplace 產品 |
 > | 動作 | AzureStack/註冊/產品/uploadProductLog/動作 | 記錄 Azure Stack Marketplace 產品作業狀態和時間戳記 |
-> |  | **verificationKeys** |  |
-> | 動作 | AzureStack/verificationKeys/getCurrentKey/action | 取得 Azure Stack 簽署公用金鑰的目前版本 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -1010,6 +1021,7 @@ Azure 服務：[成本管理 + 帳單](../cost-management-billing/index.yml)
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/write |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/read |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/write |  |
+> | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/write |  |
 > |  | **billingAccounts/billingProfiles/billingPermissions** |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/billingPermissions/read |  |
 > |  | **billingAccounts/billingProfiles/客戶** |  |
@@ -1019,6 +1031,7 @@ Azure 服務：[成本管理 + 帳單](../cost-management-billing/index.yml)
 > |  | **billingAccounts/billingProfiles/invoiceSections** |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/invoiceSections/write |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/invoiceSections/read |  |
+> | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/invoiceSections/write |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingPermissions** |  |
 > | 動作 | Microsoft 帳單/billingAccounts/billingProfiles/invoiceSections/billingPermissions/read |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingSubscriptions** |  |
@@ -1263,14 +1276,6 @@ Azure 服務：[內容傳遞網路](../cdn/index.yml)
 > | 動作 | Microsoft.Cdn/CheckNameAvailability/action |  |
 > | 動作 | Microsoft.Cdn/ValidateProbe/action |  |
 > | 動作 | Microsoft.Cdn/CheckResourceUsage/action |  |
-> |  | **cdnwebapplicationfirewallmanagedrulesets** |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallmanagedrulesets/read |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallmanagedrulesets/write |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallmanagedrulesets/delete |  |
-> |  | **cdnwebapplicationfirewallpolicies** |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallpolicies/read |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallpolicies/write |  |
-> | 動作 | Microsoft Cdn/cdnwebapplicationfirewallpolicies/delete |  |
 > |  | **edgenodes** |  |
 > | 動作 | Microsoft.Cdn/edgenodes/read |  |
 > | 動作 | Microsoft.Cdn/edgenodes/write |  |
@@ -1279,10 +1284,6 @@ Azure 服務：[內容傳遞網路](../cdn/index.yml)
 > | 動作 | Microsoft.Cdn/operationresults/read |  |
 > | 動作 | Microsoft.Cdn/operationresults/write |  |
 > | 動作 | Microsoft.Cdn/operationresults/delete |  |
-> |  | **operationresults/cdnwebapplicationfirewallpolicyresults** |  |
-> | 動作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/read |  |
-> | 動作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/write |  |
-> | 動作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/delete |  |
 > |  | **operationresults/profileresults** |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/read |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/write |  |
@@ -1306,6 +1307,10 @@ Azure 服務：[內容傳遞網路](../cdn/index.yml)
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/delete |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/DisableCustomHttps/action |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/EnableCustomHttps/action |  |
+> |  | **operationresults/profileresults/endpointresults/origingroupresults** |  |
+> | 動作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/read |  |
+> | 動作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/write |  |
+> | 動作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/delete |  |
 > |  | **operationresults/profileresults/endpointresults/originresults** |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/read |  |
 > | 動作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/write |  |
@@ -1335,6 +1340,10 @@ Azure 服務：[內容傳遞網路](../cdn/index.yml)
 > | 動作 | Microsoft.Cdn/profiles/endpoints/customdomains/delete |  |
 > | 動作 | Microsoft.Cdn/profiles/endpoints/customdomains/DisableCustomHttps/action |  |
 > | 動作 | Microsoft.Cdn/profiles/endpoints/customdomains/EnableCustomHttps/action |  |
+> |  | **設定檔/端點/origingroups** |  |
+> | 動作 | Microsoft. Cdn/設定檔/端點/origingroups/讀取 |  |
+> | 動作 | Microsoft Cdn/設定檔/端點/origingroups/寫入 |  |
+> | 動作 | Microsoft Cdn/設定檔/端點/origingroups/刪除 |  |
 > |  | **設定檔/端點/來源** |  |
 > | 動作 | Microsoft.Cdn/profiles/endpoints/origins/read |  |
 > | 動作 | Microsoft.Cdn/profiles/endpoints/origins/write |  |
@@ -1756,6 +1765,7 @@ Azure 服務：[認知服務](../cognitive-services/index.yml)
 > [!div class="mx-tdCol2BreakAll"]
 > | 動作類型 | 作業 | 描述 |
 > | --- | --- | --- |
+> | 動作 | Microsoft.CognitiveServices/register/action | 訂用帳戶註冊動作 |
 > | 動作 | Microsoft.CognitiveServices/register/action | 為認知服務註冊訂用帳戶 |
 > | 動作 | CognitiveServices/checkDomainAvailability/action | 讀取訂用帳戶的可用 Sku。 |
 > | 動作 | Microsoft.CognitiveServices/register/action | 為認知服務註冊訂用帳戶 |
@@ -2108,7 +2118,7 @@ Azure 服務：核心
 > |  | **RateCard** |  |
 > | 動作 | Microsoft.Commerce/RateCard/read | 傳回給定訂用帳戶的供應項目資料、資源/計量中繼資料和速率。 |
 > |  | **UsageAggregates** |  |
-> | 動作 | Microsoft.Commerce/UsageAggregates/read | 擷取訂用帳戶的 Microsoft Azure 耗用量。 結果會包含特定時間範圍內的彙總使用量資料、訂用帳戶和資源相關資訊。 |
+> | 動作 | Microsoft.Commerce/UsageAggregates/read | 抓取訂用帳戶 Microsoft Azure 的耗用量。 結果會包含特定時間範圍內的彙總使用量資料、訂用帳戶和資源相關資訊。 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -2447,6 +2457,8 @@ Azure 服務： [Container Registry](../container-registry/index.yml)
 > | 動作 | Microsoft.ContainerRegistry/registries/queueBuild/action | 根據要求參數建立新的組建，並將它新增至組建佇列。 |
 > | 動作 | Microsoft.ContainerRegistry/registries/listBuildSourceUploadUrl/action | 取得容器登錄的來源上傳 URL 位置。 |
 > | 動作 | Microsoft.ContainerRegistry/registries/scheduleRun/action | 排程對容器登錄的流程執行。 |
+> |  | **登錄/agentpools** |  |
+> | 動作 | ContainerRegistry/registry/agentpools/listQueueStatus/action | 列出容器登錄之 agentpool 的所有佇列狀態。 |
 > |  | **登錄/構件** |  |
 > | 動作 | ContainerRegistry/registry/構件/delete | 刪除容器登錄中的成品。 |
 > |  | **登錄/組建** |  |
@@ -2510,6 +2522,8 @@ Azure 服務： [Container Registry](../container-registry/index.yml)
 > | 動作 | ContainerRegistry/registry/scopeMaps/operationStatuses/read | 取得範圍對應非同步作業狀態。 |
 > |  | **登錄/簽署** |  |
 > | 動作 | Microsoft.ContainerRegistry/registries/sign/write | 推送/提取容器登錄的內容信任中繼資料。 |
+> |  | **登錄/taskruns** |  |
+> | 動作 | ContainerRegistry/registry/taskruns/listDetails/action | 列出容器登錄之/tr u n 的所有詳細資料。 |
 > |  | **登錄/工作** |  |
 > | 動作 | Microsoft.ContainerRegistry/registries/tasks/read | 取得容器登錄的工作或列出所有工作。 |
 > | 動作 | Microsoft.ContainerRegistry/registries/tasks/write | 建立或更新容器登錄的工作。 |
@@ -2812,6 +2826,9 @@ Azure 服務： [Azure Databricks](../azure-databricks/index.yml)
 > | 動作 | Microsoft.Databricks/workspaces/delete | 移除 Databricks 工作區。 |
 > | 動作 | Databricks/workspace/refreshPermissions/action | 重新整理工作區的許可權 |
 > | 動作 | Databricks/workspace/updateDenyAssignment/action | 針對工作區的受控資源群組更新拒絕指派而非動作 |
+> | 動作 | Databricks/workspace/refreshWorkspaces/action | 使用新的詳細資料（例如 URL）重新整理工作區 |
+> |  | **工作區/dbWorkspaces** |  |
+> | 動作 | Databricks/workspace/dbWorkspaces/write | 初始化 Databricks 工作區（僅限內部） |
 > |  | **工作區/提供者/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | 設定 Databricks 工作區的可用診斷設定 |
 > | 動作 | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | 新增或修改診斷設定。 |
@@ -3470,7 +3487,7 @@ Azure 服務：[適用於 PostgreSQL 的 Azure 資料庫](../postgresql/index.ym
 > | 動作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | 取得資源的診斷設定 |
 > | 動作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
 > |  | **伺服器/提供者/Microsoft Insights/logDefinitions** |  |
-> | 動作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | 取得 Postgres 伺服器的可用記錄 |
+> | 動作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | 取得于 postgresql 伺服器的可用記錄 |
 > |  | **伺服器/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/metricDefinitions/read | 傳回可供資料庫使用之計量的類型 |
 > |  | **伺服器/queryTexts** |  |
@@ -3506,7 +3523,7 @@ Azure 服務：[適用於 PostgreSQL 的 Azure 資料庫](../postgresql/index.ym
 > | 動作 | DBforPostgreSQL/serversv2/provider/Microsoft Insights/diagnosticSettings/read | 取得資源的診斷設定 |
 > | 動作 | DBforPostgreSQL/serversv2/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
 > |  | **serversv2/providers/Microsoft Insights/logDefinitions** |  |
-> | 動作 | DBforPostgreSQL/serversv2/provider/Microsoft Insights/logDefinitions/read | 取得 Postgres 伺服器的可用記錄 |
+> | 動作 | DBforPostgreSQL/serversv2/provider/Microsoft Insights/logDefinitions/read | 取得于 postgresql 伺服器的可用記錄 |
 > |  | **serversv2/providers/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | DBforPostgreSQL/serversv2/provider/Microsoft Insights/Metricdefinitions.listasync/read | 傳回可供資料庫使用之計量的類型 |
 
@@ -3597,6 +3614,7 @@ Azure 服務： [IoT 中樞](../iot-hub/index.yml)、 [IoT 中樞裝置佈建服
 > | 動作 | Microsoft.Devices/iotHubs/listkeys/Action | 取得所有 IotHub 金鑰 |
 > | 動作 | Microsoft.Devices/iotHubs/exportDevices/Action | 匯出裝置 |
 > | 動作 | Microsoft.Devices/iotHubs/importDevices/Action | 匯入裝置 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionsApproval/Action | 核准或拒絕私人端點連接 |
 > |  | **iotHubs/憑證** |  |
 > | 動作 | Microsoft.Devices/iotHubs/certificates/Read | 取得憑證 |
 > | 動作 | Microsoft.Devices/iotHubs/certificates/Write | 建立或更新憑證 |
@@ -3611,6 +3629,10 @@ Azure 服務： [IoT 中樞](../iot-hub/index.yml)、 [IoT 中樞裝置佈建服
 > |  | **IotHubs/diagnosticSettings** |  |
 > | 動作 | Microsoft.Devices/IotHubs/diagnosticSettings/read | 取得資源的診斷設定 |
 > | 動作 | Microsoft.Devices/IotHubs/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> |  | **iotHubs/digitalTwinsLinks** |  |
+> | 動作 | Microsoft. Devices/iotHubs/digitalTwinsLinks/Write |  |
+> | 動作 | Microsoft. Devices/iotHubs/digitalTwinsLinks/Read |  |
+> | 動作 | Microsoft. Devices/iotHubs/digitalTwinsLinks/Delete |  |
 > |  | **iotHubs/eventGridFilters** |  |
 > | 動作 | Microsoft.Devices/iotHubs/eventGridFilters/Write | 建立新的或更新現有的事件格線篩選 |
 > | 動作 | Microsoft.Devices/iotHubs/eventGridFilters/Read | 取得事件格線篩選 |
@@ -3631,6 +3653,21 @@ Azure 服務： [IoT 中樞](../iot-hub/index.yml)、 [IoT 中樞裝置佈建服
 > | 動作 | Microsoft.Devices/IotHubs/metricDefinitions/read | 取得 IotHub 服務的可用計量 |
 > |  | **iotHubs/operationresults** |  |
 > | 動作 | Microsoft.Devices/iotHubs/operationresults/Read | 取得作業結果 (過時的 API) |
+> |  | **iotHubs/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/validate/Action | 在建立期間驗證私用端點連接 proxy 輸入 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Read | 取得指定之私用端點連接 proxy 的屬性 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Write | 建立或更新私用端點連接 proxy |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Delete | 刪除現有的私用端點連接 proxy |
+> |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/operationResults/Read | 取得私用端點連接 proxy 上非同步作業的結果 |
+> |  | **iotHubs/privateEndpointConnections** |  |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Read | 取得指定之私用端點連接的屬性 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Delete | 刪除現有的私用端點連接 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Write | 建立或更新私用端點連接 |
+> |  | **iotHubs/privateEndpointConnections/operationResults** |  |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/operationResults/Read | 取得私用端點連接上非同步作業的結果 |
+> |  | **iotHubs/privateLinkResources** |  |
+> | 動作 | Microsoft. Devices/iotHubs/privateLinkResources/Read | 取得 IotHub 的私人連結資源 |
 > |  | **iotHubs/quotaMetrics** |  |
 > | 動作 | Microsoft.Devices/iotHubs/quotaMetrics/Read | 取得配額計量 |
 > |  | **iotHubs/路由** |  |
@@ -4121,6 +4158,17 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | Microsoft.EventGrid/domains/delete | 刪除網域 |
 > | 動作 | Microsoft.EventGrid/domains/listKeys/action | 列出網域的金鑰 |
 > | 動作 | Microsoft.EventGrid/domains/regenerateKey/action | 重新產生網域的金鑰 |
+> |  | **網域/privateEndpointConnectionProxies** |  |
+> | 動作 | EventGrid/網域/privateEndpointConnectionProxies/驗證/動作 | 驗證網域的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/網域/privateEndpointConnectionProxies/read | 讀取網域的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/網域/privateEndpointConnectionProxies/write | 寫入網域的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/網域/privateEndpointConnectionProxies/delete | 刪除網域的 PrivateEndpointConnectionProxies |
+> |  | **網域/privateEndpointConnections** |  |
+> | 動作 | EventGrid/網域/privateEndpointConnections/read | 讀取網域的 PrivateEndpointConnections |
+> | 動作 | EventGrid/網域/privateEndpointConnections/write | 寫入網域的 PrivateEndpointConnections |
+> | 動作 | EventGrid/網域/privateEndpointConnections/delete | 刪除網域的 PrivateEndpointConnections |
+> |  | **網域/privateLinkResources** |  |
+> | 動作 | EventGrid/網域/privateLinkResources/read | 取得或列出網域的 PrivateLinkResources |
 > |  | **網域/提供者/Microsoft Insights/logDefinitions** |  |
 > | 動作 | EventGrid/網域/提供者/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
 > |  | **網域/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
@@ -4160,12 +4208,56 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | Microsoft.EventGrid/operations/read | 列出 EventGrid 作業。 |
 > |  | **operationsStatus** |  |
 > | 動作 | Microsoft.EventGrid/operationsStatus/read | 讀取作業的狀態 |
+> |  | **partnerNamespaces** |  |
+> | 動作 | EventGrid/partnerNamespaces/write | 建立或更新合作夥伴命名空間 |
+> | 動作 | EventGrid/partnerNamespaces/read | 讀取合作夥伴命名空間 |
+> | 動作 | EventGrid/partnerNamespaces/delete | 刪除合作夥伴命名空間 |
+> | 動作 | EventGrid/partnerNamespaces/listKeys/action | 列出合作夥伴命名空間的金鑰 |
+> | 動作 | EventGrid/partnerNamespaces/regenerateKey/action | 重新產生夥伴命名空間的金鑰 |
+> |  | **partnerNamespaces/eventChannels** |  |
+> | 動作 | EventGrid/partnerNamespaces/eventChannels/read | 讀取事件通道 |
+> | 動作 | EventGrid/partnerNamespaces/eventChannels/write | 建立或更新事件通道 |
+> | 動作 | EventGrid/partnerNamespaces/eventChannels/delete | 刪除事件通道 |
+> |  | **partnerRegistrations** |  |
+> | 動作 | EventGrid/partnerRegistrations/write | 建立或更新合作夥伴註冊 |
+> | 動作 | EventGrid/partnerRegistrations/read | 閱讀合作夥伴註冊 |
+> | 動作 | EventGrid/partnerRegistrations/delete | 刪除合作夥伴註冊 |
+> |  | **partnerTopics** |  |
+> | 動作 | EventGrid/partnerTopics/read | 閱讀合作夥伴主題 |
+> | 動作 | EventGrid/partnerTopics/write | 建立或更新合作夥伴主題 |
+> | 動作 | EventGrid/partnerTopics/delete | 刪除合作夥伴主題 |
+> | 動作 | EventGrid/partnerTopics/啟動/動作 | 啟用合作夥伴主題 |
+> | 動作 | EventGrid/partnerTopics/停用/動作 | 停用合作夥伴主題 |
+> |  | **sku** |  |
+> | 動作 | EventGrid/sku/讀取 | 讀取事件方格資源的可用 Sku 定義 |
+> |  | **systemTopics** |  |
+> | 動作 | EventGrid/systemTopics/read | 閱讀系統主題 |
+> | 動作 | EventGrid/systemTopics/write | 建立或更新系統主題 |
+> | 動作 | EventGrid/systemTopics/delete | 刪除系統主題 |
+> |  | **systemTopics/providers/Microsoft Insights/diagnosticSettings** |  |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/read | 取得系統主題的診斷設定 |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新系統主題的診斷設定 |
+> |  | **systemTopics/providers/Microsoft Insights/logDefinitions** |  |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
+> |  | **systemTopics/providers/Microsoft Insights/Metricdefinitions.listasync** |  |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得系統主題的可用計量 |
 > |  | **主題** |  |
 > | 動作 | Microsoft.EventGrid/topics/write | 建立或更新主題 |
 > | 動作 | Microsoft.EventGrid/topics/read | 讀取主題 |
 > | 動作 | Microsoft.EventGrid/topics/delete | 刪除主題 |
 > | 動作 | Microsoft.EventGrid/topics/listKeys/action | 列出主題的金鑰 |
 > | 動作 | Microsoft.EventGrid/topics/regenerateKey/action | 重新產生主題的金鑰 |
+> |  | **主題/privateEndpointConnectionProxies** |  |
+> | 動作 | EventGrid/主題/privateEndpointConnectionProxies/validate/action | 驗證主題的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/主題/privateEndpointConnectionProxies/read | 閱讀主題的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/主題/privateEndpointConnectionProxies/write | 撰寫主題的 PrivateEndpointConnectionProxies |
+> | 動作 | EventGrid/主題/privateEndpointConnectionProxies/delete | 刪除主題的 PrivateEndpointConnectionProxies |
+> |  | **主題/privateEndpointConnections** |  |
+> | 動作 | EventGrid/主題/privateEndpointConnections/read | 閱讀主題的 PrivateEndpointConnections |
+> | 動作 | EventGrid/主題/privateEndpointConnections/write | 撰寫主題的 PrivateEndpointConnections |
+> | 動作 | EventGrid/主題/privateEndpointConnections/delete | 刪除主題的 PrivateEndpointConnections |
+> |  | **主題/privateLinkResources** |  |
+> | 動作 | EventGrid/主題/privateLinkResources/read | 閱讀主題的 PrivateLinkResources |
 > |  | **主題/提供者/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 取得主題的診斷設定 |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新主題的診斷設定 |
@@ -4259,6 +4351,11 @@ Azure 服務：[事件中樞](../event-hubs/index.yml)
 > | 動作 | Microsoft. EventHub/命名空間/networkrulesets/delete | 刪除 VNET 規則資源 |
 > |  | **命名空間/operationresults** |  |
 > | 動作 | Microsoft.EventHub/namespaces/operationresults/read | 取得命名空間作業的狀態 |
+> |  | **命名空間/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft. EventHub/命名空間/privateEndpointConnectionProxies/驗證/動作 | 驗證私用端點連接 Proxy |
+> | 動作 | Microsoft. EventHub/命名空間/privateEndpointConnectionProxies/read | 取得私人端點連接 Proxy |
+> | 動作 | Microsoft. EventHub/命名空間/privateEndpointConnectionProxies/write | 建立私用端點連接 Proxy |
+> | 動作 | Microsoft. EventHub/命名空間/privateEndpointConnectionProxies/delete | 刪除私人端點連接 Proxy |
 > |  | **命名空間/提供者/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | 動作 | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
@@ -4885,6 +4982,8 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft Insights/myWorkbooks/Read | 讀取私人活頁簿 |
 > |  | **作業** |  |
 > | 動作 | Microsoft.Insights/Operations/Read | 讀取作業 |
+> |  | **PrivateLinkScopeOperationStatuses** |  |
+> | 動作 | Microsoft Insights/PrivateLinkScopeOperationStatuses/Read | 讀取已設定範圍的私人連結操作狀態 |
 > |  | **PrivateLinkScopes** |  |
 > | 動作 | Microsoft Insights/PrivateLinkScopes/Read | 讀取私人連結範圍 |
 > | 動作 | Microsoft Insights/PrivateLinkScopes/Write | 建立或更新私人連結範圍 |
@@ -5630,6 +5729,7 @@ Azure 服務：核心
 > | 動作類型 | 作業 | 描述 |
 > | --- | --- | --- |
 > | 動作 | Microsoft.Marketplace/register/action | 在訂用帳戶中註冊 Microsoft.Marketplace 資源提供者。 |
+> | 動作 | Microsoft Marketplace/privateStores/動作 | 更新 PrivateStore。 |
 > |  | **offerTypes/發行者/優惠/方案/合約** |  |
 > | 動作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | 傳回協議。 |
 > | 動作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | 接受已簽署的協議。 |
@@ -5637,6 +5737,13 @@ Azure 服務：核心
 > | 動作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | 傳回組態。 |
 > | 動作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | 儲存組態。 |
 > | 動作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | 將映像匯入至終端使用者的 ACR。 |
+> |  | **privateStores** |  |
+> | 動作 | Microsoft Marketplace/privateStores/write | 建立 PrivateStore。 |
+> | 動作 | Microsoft Marketplace/privateStores/delete | 刪除 PrivateStore。 |
+> | 動作 | Microsoft Marketplace/privateStores/優惠/動作 | PrivateStore 中的更新供應專案。 |
+> |  | **privateStores/優惠** |  |
+> | 動作 | Microsoft Marketplace/privateStores/提供/寫入 | 在 PrivateStore 中建立供應專案。 |
+> | 動作 | Microsoft Marketplace/privateStores/優惠/刪除 | 從 PrivateStore 中刪除供應專案。 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -5988,6 +6095,10 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft 網路/ApplicationGatewayWebApplicationFirewallPolicies/讀取 | 取得應用程式閘道 WAF 原則 |
 > | 動作 | Microsoft 網路/ApplicationGatewayWebApplicationFirewallPolicies/寫入 | 建立應用程式閘道 WAF 原則，或更新應用程式閘道 WAF 原則 |
 > | 動作 | Microsoft 網路/ApplicationGatewayWebApplicationFirewallPolicies/刪除 | 刪除應用程式閘道 WAF 原則 |
+> |  | **applicationRuleCollections** |  |
+> | 動作 | Microsoft 網路/applicationRuleCollections/讀取 | 取得 Azure 防火牆 ApplicationRuleCollection |
+> | 動作 | Microsoft 網路/applicationRuleCollections/寫入 | CreatesOrUpdates Azure 防火牆 ApplicationRuleCollection |
+> | 動作 | Microsoft 網路/applicationRuleCollections/刪除 | 刪除 Azure 防火牆 ApplicationRuleCollection |
 > |  | **applicationSecurityGroups** |  |
 > | 動作 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | 將 IP 設定加入至應用程式安全性群組。 未打斷。 |
 > | 動作 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | 將安全性規則加入至應用程式安全性群組。 未打斷。 |
@@ -6042,48 +6153,48 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/dnszones/write | 在資源群組內建立或更新 DNS 區域。  用來更新 DNS 區域資源上的標記。 請注意，此命令無法用來在區域內建立或更新記錄集。 |
 > | 動作 | Microsoft.Network/dnszones/delete | 刪除 JSON 格式的 DNS 區域。 區域屬性包含標記、etag、numberOfRecordSets 和 maxNumberOfRecordSets。 |
 > |  | **dnszones/A** |  |
-> | 動作 | Microsoft.Network/dnszones/A/read | 取得 JSON 格式的 'A' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/A/write | 在 DNS 區域內建立或更新 'A' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/A/delete | 從 DNS 區域中移除名稱已給定且類型為 'A' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/A/read | 取得 JSON 格式的 ' A ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/A/write | 在 DNS 區域內建立或更新 ' A ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/A/delete | 從 DNS 區域中移除指定名稱和類型 ' A ' 的記錄集。 |
 > |  | **dnszones/AAAA** |  |
-> | 動作 | Microsoft.Network/dnszones/AAAA/read | 取得 JSON 格式的 'AAAA' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/AAAA/write | 在 DNS 區域內建立或更新 'AAAA' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/AAAA/delete | 從 DNS 區域中移除名稱已給定且類型為 'AAAA' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/AAAA/read | 取得 JSON 格式的 ' AAAA ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/AAAA/write | 在 DNS 區域內建立或更新 ' AAAA ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/AAAA/delete | 從 DNS 區域中移除指定名稱和類型 ' AAAA ' 的記錄集。 |
 > |  | **dnszones/全部** |  |
 > | 動作 | Microsoft.Network/dnszones/all/read | 取得跨類型的 DNS 記錄集 |
 > |  | **dnszones/CAA** |  |
-> | 動作 | Microsoft.Network/dnszones/CAA/read | 取得 JSON 格式的 'CAA' 類型記錄集。 記錄集包含 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/CAA/write | 在 DNS 區域內建立或更新 'CAA' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/CAA/delete | 從 DNS 區域中移除指定名稱且類型為 'CAA' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/CAA/read | 取得 JSON 格式的 ' CAA ' 類型記錄集。 記錄集包含 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/CAA/write | 在 DNS 區域內建立或更新 ' CAA ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/CAA/delete | 從 DNS 區域中移除指定名稱的記錄集，並輸入 ' CAA '。 |
 > |  | **dnszones/CNAME** |  |
-> | 動作 | Microsoft.Network/dnszones/CNAME/read | 取得 JSON 格式的 'CNAME' 類型記錄集。 記錄集包含 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/CNAME/write | 在 DNS 區域內建立或更新 'CNAME' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/CNAME/delete | 從 DNS 區域中移除名稱已給定且類型為 'CNAME' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/CNAME/read | 取得 JSON 格式的 ' CNAME ' 類型記錄集。 記錄集包含 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/CNAME/write | 在 DNS 區域內建立或更新 ' CNAME ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/CNAME/delete | 從 DNS 區域中移除指定名稱和類型為 ' CNAME ' 的記錄集。 |
 > |  | **dnszones/MX** |  |
-> | 動作 | Microsoft.Network/dnszones/MX/read | 取得 JSON 格式的 'MX' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/MX/write | 在 DNS 區域內建立或更新 'MX' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/MX/delete | 從 DNS 區域中移除名稱已給定且類型為 'MX' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/MX/read | 取得 JSON 格式的 ' MX ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/MX/write | 在 DNS 區域內建立或更新 ' MX ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/MX/delete | 從 DNS 區域中移除指定名稱和類型 ' MX ' 的記錄集。 |
 > |  | **dnszones/NS** |  |
 > | 動作 | Microsoft.Network/dnszones/NS/read | 取得 NS 類型的 DNS 記錄集 |
 > | 動作 | Microsoft.Network/dnszones/NS/write | 建立或更新 NS 類型的 DNS 記錄集 |
 > | 動作 | Microsoft.Network/dnszones/NS/delete | 刪除 NS 類型的 DNS 記錄集 |
 > |  | **dnszones/PTR** |  |
-> | 動作 | Microsoft.Network/dnszones/PTR/read | 取得 JSON 格式的 'PTR' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/PTR/write | 在 DNS 區域內建立或更新 'PTR' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/PTR/delete | 從 DNS 區域中移除名稱已給定且類型為 'PTR' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/PTR/read | 取得 JSON 格式的 ' PTR ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/PTR/write | 在 DNS 區域內建立或更新 ' PTR ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/PTR/delete | 從 DNS 區域中移除指定名稱和類型 ' PTR ' 的記錄集。 |
 > |  | **dnszones/記錄集** |  |
 > | 動作 | Microsoft.Network/dnszones/recordsets/read | 取得跨類型的 DNS 記錄集 |
 > |  | **dnszones/SOA** |  |
 > | 動作 | Microsoft.Network/dnszones/SOA/read | 取得 SOA 類型的 DNS 記錄集 |
 > | 動作 | Microsoft.Network/dnszones/SOA/write | 建立或更新 SOA 類型的 DNS 記錄集 |
 > |  | **dnszones/SRV** |  |
-> | 動作 | Microsoft.Network/dnszones/SRV/read | 取得 JSON 格式的 'SRV' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/SRV/read | 取得 JSON 格式的 ' SRV ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
 > | 動作 | Microsoft.Network/dnszones/SRV/write | 建立或更新 SRV 類型的記錄集 |
-> | 動作 | Microsoft.Network/dnszones/SRV/delete | 從 DNS 區域中移除名稱已給定且類型為 'SRV' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/SRV/delete | 從 DNS 區域中移除指定名稱和類型為 ' SRV ' 的記錄集。 |
 > |  | **dnszones/TXT** |  |
-> | 動作 | Microsoft.Network/dnszones/TXT/read | 取得 JSON 格式的 'TXT' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
-> | 動作 | Microsoft.Network/dnszones/TXT/write | 在 DNS 區域內建立或更新 'TXT' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
-> | 動作 | Microsoft.Network/dnszones/TXT/delete | 從 DNS 區域中移除名稱已給定且類型為 'TXT' 的記錄集。 |
+> | 動作 | Microsoft.Network/dnszones/TXT/read | 取得 JSON 格式的 ' TXT ' 類型記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
+> | 動作 | Microsoft.Network/dnszones/TXT/write | 在 DNS 區域內建立或更新 ' TXT ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
+> | 動作 | Microsoft.Network/dnszones/TXT/delete | 從 DNS 區域中移除指定名稱和類型 ' TXT ' 的記錄集。 |
 > |  | **expressRouteCircuits** |  |
 > | 動作 | Microsoft.Network/expressRouteCircuits/read | 取得 ExpressRouteCircuit |
 > | 動作 | Microsoft.Network/expressRouteCircuits/write | 建立或更新現有的 ExpressRouteCircuit |
@@ -6259,6 +6370,22 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/locations/usages/read | 取得資源使用量計量 |
 > |  | **位置/virtualNetworkAvailableEndpointServices** |  |
 > | 動作 | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | 取得可用虛擬網路端點服務的清單 |
+> |  | **natRuleCollections** |  |
+> | 動作 | Microsoft 網路/natRuleCollections/讀取 | 取得 Azure 防火牆 NatRuleCollection |
+> | 動作 | Microsoft 網路/natRuleCollections/寫入 | CreatesOrUpdates Azure 防火牆 NatRuleCollection |
+> | 動作 | Microsoft 網路/natRuleCollections/刪除 | 刪除 Azure 防火牆 NatRuleCollection |
+> |  | **networkExperimentProfiles** |  |
+> | 動作 | Microsoft 網路/networkExperimentProfiles/讀取 | 取得網際網路分析器設定檔 |
+> | 動作 | Microsoft 網路/networkExperimentProfiles/寫入 | 建立或更新網際網路分析器設定檔 |
+> | 動作 | Microsoft 網路/networkExperimentProfiles/刪除 | 刪除網際網路分析器設定檔 |
+> |  | **networkExperimentProfiles/實驗** |  |
+> | 動作 | Microsoft. Network/networkExperimentProfiles/實驗/讀取 | 取得網際網路分析器測試 |
+> | 動作 | Microsoft. Network/networkExperimentProfiles/實驗/寫入 | 建立或更新網際網路分析器測試 |
+> | 動作 | Microsoft 網路/networkExperimentProfiles/實驗/刪除 | 刪除網際網路分析器測試 |
+> | 動作 | Microsoft. Network/networkExperimentProfiles/實驗/時間序列/action | 取得網際網路分析器測試的時間序列 |
+> | 動作 | Microsoft. Network/networkExperimentProfiles/實驗/latencyScorecard/action | 取得網際網路分析器測試的延遲計分卡 |
+> |  | **networkExperimentProfiles/preconfiguredEndpoints** |  |
+> | 動作 | Microsoft. Network/networkExperimentProfiles/preconfiguredEndpoints/read | 取得網際網路分析器設定檔的預先設定端點 |
 > |  | **networkIntentPolicies** |  |
 > | 動作 | Microsoft.Network/networkIntentPolicies/read | 取得網路意圖原則描述 |
 > | 動作 | Microsoft.Network/networkIntentPolicies/write | 建立網路意圖原則或更新現有的網路意圖原則 |
@@ -6287,6 +6414,10 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/networkProfiles/setContainers/action | 設定容器 |
 > | 動作 | Microsoft.Network/networkProfiles/removeContainers/action | 移除容器 |
 > | 動作 | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | 設定容器網路介面 |
+> |  | **networkRuleCollections** |  |
+> | 動作 | Microsoft 網路/networkRuleCollections/讀取 | 取得 Azure 防火牆 NetworkRuleCollection |
+> | 動作 | Microsoft 網路/networkRuleCollections/寫入 | CreatesOrUpdates Azure 防火牆 NetworkRuleCollection |
+> | 動作 | Microsoft 網路/networkRuleCollections/刪除 | 刪除 Azure 防火牆 NetworkRuleCollection |
 > |  | **networkSecurityGroups** |  |
 > | 動作 | Microsoft.Network/networkSecurityGroups/read | 取得網路安全性群組定義 |
 > | 動作 | Microsoft.Network/networkSecurityGroups/write | 建立網路安全性群組，或更新現有的網路安全性群組 |
@@ -7030,6 +7161,18 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFActivityRun/讀取 | 讀取來自 ADFActivityRun 資料表的資料 |
 > |  | **工作區/查詢/ADFPipelineRun** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFPipelineRun/讀取 | 讀取來自 ADFPipelineRun 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISIntegrationRuntimeLogs** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISIntegrationRuntimeLogs/讀取 | 讀取來自 ADFSSISIntegrationRuntimeLogs 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISPackageEventMessageCoNtext** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISPackageEventMessageCoNtext/讀取 | 讀取來自 ADFSSISPackageEventMessageCoNtext 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISPackageEventMessages** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISPackageEventMessages/讀取 | 讀取來自 ADFSSISPackageEventMessages 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISPackageExecutableStatistics** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISPackageExecutableStatistics/讀取 | 讀取來自 ADFSSISPackageExecutableStatistics 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISPackageExecutionComponentPhases** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISPackageExecutionComponentPhases/讀取 | 讀取來自 ADFSSISPackageExecutionComponentPhases 資料表的資料 |
+> |  | **工作區/查詢/ADFSSISPackageExecutionDataStatistics** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFSSISPackageExecutionDataStatistics/讀取 | 讀取來自 ADFSSISPackageExecutionDataStatistics 資料表的資料 |
 > |  | **工作區/查詢/ADFTriggerRun** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/ADFTriggerRun/讀取 | 讀取來自 ADFTriggerRun 資料表的資料 |
 > |  | **工作區/查詢/ADReplicationResult** |  |
@@ -7052,14 +7195,30 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AmlComputeJobEvent/讀取 | 讀取來自 AmlComputeJobEvent 資料表的資料 |
 > |  | **工作區/查詢/ApiManagementGatewayLogs** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/ApiManagementGatewayLogs/讀取 | 讀取來自 ApiManagementGatewayLogs 資料表的資料 |
+> |  | **工作區/查詢/AppAvailabilityResults** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppAvailabilityResults/讀取 | 讀取來自 AppAvailabilityResults 資料表的資料 |
+> |  | **工作區/查詢/AppBrowserTimings** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppBrowserTimings/讀取 | 讀取來自 AppBrowserTimings 資料表的資料 |
 > |  | **工作區/查詢/AppCenterError** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | 從 AppCenterError 資料表讀取資料 |
+> |  | **工作區/查詢/AppDependencies** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppDependencies/讀取 | 讀取來自 AppDependencies 資料表的資料 |
+> |  | **工作區/查詢/AppEvents** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppEvents/讀取 | 讀取來自 AppEvents 資料表的資料 |
 > |  | **工作區/查詢/ApplicationInsights** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | 從 ApplicationInsights 資料表讀取資料 |
+> |  | **工作區/查詢/AppMetrics** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppMetrics/讀取 | 讀取來自 AppMetrics 資料表的資料 |
+> |  | **工作區/查詢/AppPageViews** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppPageViews/讀取 | 讀取來自 AppPageViews 資料表的資料 |
+> |  | **工作區/查詢/AppPerformanceCounters** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppPerformanceCounters/讀取 | 讀取來自 AppPerformanceCounters 資料表的資料 |
 > |  | **工作區/查詢/AppPlatformLogsforSpring** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AppPlatformLogsforSpring/讀取 | 讀取來自 AppPlatformLogsforSpring 資料表的資料 |
 > |  | **工作區/查詢/AppPlatformSystemLogs** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AppPlatformSystemLogs/讀取 | 讀取來自 AppPlatformSystemLogs 資料表的資料 |
+> |  | **工作區/查詢/AppRequests** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppRequests/讀取 | 讀取來自 AppRequests 資料表的資料 |
 > |  | **工作區/查詢/AppServiceAppLogs** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AppServiceAppLogs/讀取 | 讀取來自 AppServiceAppLogs 資料表的資料 |
 > |  | **工作區/查詢/AppServiceAuditLogs** |  |
@@ -7072,6 +7231,10 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AppServiceFileAuditLogs/讀取 | 讀取來自 AppServiceFileAuditLogs 資料表的資料 |
 > |  | **工作區/查詢/AppServiceHTTPLogs** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AppServiceHTTPLogs/讀取 | 讀取來自 AppServiceHTTPLogs 資料表的資料 |
+> |  | **工作區/查詢/AppSystemEvents** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppSystemEvents/讀取 | 讀取來自 AppSystemEvents 資料表的資料 |
+> |  | **工作區/查詢/AppTraces** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AppTraces/讀取 | 讀取來自 AppTraces 資料表的資料 |
 > |  | **工作區/查詢/AuditLogs** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | 從 AuditLogs 資料表讀取資料 |
 > |  | **工作區/查詢/AutoscaleEvaluationsLog** |  |
@@ -7086,6 +7249,8 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | 從 AzureActivity 資料表讀取資料 |
 > |  | **工作區/查詢/AzureAssessmentRecommendation** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AzureAssessmentRecommendation/讀取 | 讀取來自 AzureAssessmentRecommendation 資料表的資料 |
+> |  | **工作區/查詢/AzureDiagnostics** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AzureDiagnostics/讀取 | 讀取來自 AzureDiagnostics 資料表的資料 |
 > |  | **工作區/查詢/AzureMetrics** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | 從 AzureMetrics 資料表讀取資料 |
 > |  | **工作區/查詢/BaiClusterEvent** |  |
@@ -7424,6 +7589,8 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | 從 SPAssessmentRecommendation 資料表讀取資料 |
 > |  | **工作區/查詢/SQLAssessmentRecommendation** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | 從 SQLAssessmentRecommendation 資料表讀取資料 |
+> |  | **工作區/查詢/SqlDataClassification** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/SqlDataClassification/讀取 | 讀取來自 SqlDataClassification 資料表的資料 |
 > |  | **工作區/查詢/SQLQueryPerformance** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | 從 SQLQueryPerformance 資料表讀取資料 |
 > |  | **工作區/查詢/SqlThreatProtectionLoginAudits** |  |
@@ -7784,6 +7951,21 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > |  | **保存庫/monitoringConfigurations** |  |
 > | 動作 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | 取得復原服務保存庫通知組態。 |
 > | 動作 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | 設定復原服務保存庫的電子郵件通知。 |
+> |  | **保存庫/privateEndpointConnectionProxies** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnectionProxies/delete | 取得所有可保護的容器 |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnectionProxies/read | 取得所有可保護的容器 |
+> | 動作 | azurerm.recoveryservices/保存庫/privateEndpointConnectionProxies/驗證/動作 | 取得所有可保護的容器 |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnectionProxies/write | 取得所有可保護的容器 |
+> |  | **保存庫/privateEndpointConnectionProxies/operationResults** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnectionProxies/operationResults/read | 取得所有可保護的容器 |
+> |  | **保存庫/privateEndpointConnectionProxies/operationsStatus** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnectionProxies/operationsStatus/read | 取得所有可保護的容器 |
+> |  | **保存庫/privateEndpointConnections** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnections/write | 取得所有可保護的容器 |
+> |  | **保存庫/privateEndpointConnections/operationResults** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnections/operationResults/read | 取得所有可保護的容器 |
+> |  | **保存庫/privateEndpointConnections/operationsStatus** |  |
+> | 動作 | azurerm.recoveryservices/vault/privateEndpointConnections/operationsStatus/read | 取得所有可保護的容器 |
 > |  | **保存庫/registeredIdentities** |  |
 > | 動作 | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | 「註冊服務容器」作業可用來向復原服務註冊容器。 |
 > | 動作 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
@@ -8008,6 +8190,11 @@ Azure 服務： [Azure 轉送](../service-bus-relay/relay-what-is-it.md)
 > | 動作 | Microsoft 轉送/命名空間/networkrulesets/delete | 刪除 VNET 規則資源 |
 > |  | **命名空間/operationresults** |  |
 > | 動作 | Microsoft.Relay/namespaces/operationresults/read | 取得命名空間作業的狀態 |
+> |  | **命名空間/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft 轉送/命名空間/privateEndpointConnectionProxies/驗證/動作 | 驗證私用端點連接 Proxy |
+> | 動作 | Microsoft 轉送/命名空間/privateEndpointConnectionProxies/讀取 | 取得私人端點連接 Proxy |
+> | 動作 | Microsoft 轉送/命名空間/privateEndpointConnectionProxies/寫入 | 建立私用端點連接 Proxy |
+> | 動作 | Microsoft 轉送/命名空間/privateEndpointConnectionProxies/delete | 刪除私人端點連接 Proxy |
 > |  | **命名空間/提供者/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft 轉送/命名空間/提供者/Microsoft Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | 動作 | Microsoft 轉送/命名空間/提供者/Microsoft Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
@@ -8043,6 +8230,8 @@ Azure 服務： [Azure 服務健康狀態](../service-health/index.yml)
 > | 動作 | Microsoft.ResourceHealth/AvailabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
 > |  | **AvailabilityStatuses/目前** |  |
 > | 動作 | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | 取得指定資源的可用性狀態 |
+> |  | **emergingissues** |  |
+> | 動作 | ResourceHealth/emergingissues/read | 取得 Azure 服務的新興問題 |
 > |  | **events** |  |
 > | 動作 | Microsoft.ResourceHealth/events/read | 取得指定訂用帳戶的服務健康狀態事件 |
 > |  | **healthevent** |  |
@@ -8216,6 +8405,9 @@ Azure 服務：[資訊安全中心](../security-center/index.yml)
 > |  | **評估** |  |
 > | 動作 | Microsoft. 安全性/評量/讀取 | 取得訂用帳戶的安全性評量 |
 > | 動作 | Microsoft. 安全性/評量/寫入 | 在您的訂用帳戶上建立或更新安全性評量 |
+> |  | **autoProvisioningSettings** |  |
+> | 動作 | Microsoft. Security/autoProvisioningSettings/read | 取得訂用帳戶的安全性自動布建設定 |
+> | 動作 | Microsoft. Security/autoProvisioningSettings/write | 建立或更新訂用帳戶的安全性自動布建設定 |
 > |  | **complianceResults** |  |
 > | 動作 | Microsoft.Security/complianceResults/read | 取得資源的合規性結果 |
 > |  | **informationProtectionPolicies** |  |
@@ -8406,6 +8598,11 @@ Azure 服務：[服務匯流排](../service-bus/index.md)
 > | 動作 | Microsoft. 匯流排/命名空間/networkrulesets/delete | 刪除 VNET 規則資源 |
 > |  | **命名空間/operationresults** |  |
 > | 動作 | Microsoft.ServiceBus/namespaces/operationresults/read | 取得命名空間作業的狀態 |
+> |  | **命名空間/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft。執行匯流排/命名空間/privateEndpointConnectionProxies/驗證/動作 | 驗證私用端點連接 Proxy |
+> | 動作 | Microsoft. 匯流排/命名空間/privateEndpointConnectionProxies/read | 取得私人端點連接 Proxy |
+> | 動作 | Microsoft. 匯流排/命名空間/privateEndpointConnectionProxies/write | 建立私用端點連接 Proxy |
+> | 動作 | Microsoft. 匯流排/命名空間/privateEndpointConnectionProxies/delete | 刪除私人端點連接 Proxy |
 > |  | **命名空間/提供者/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | 動作 | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |

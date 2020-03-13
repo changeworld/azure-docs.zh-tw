@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978766"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276474"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 詞彙︰Azure 平台上的雲端術語字典
 
@@ -153,7 +153,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 ## <a name="web-app"></a>Web 應用程式
 [App Service 應用程式](#app-service-app)的另一個名稱。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [開始使用 Azure](https://azure.microsoft.com/get-started/)
 * [雲端資源中心](https://azure.microsoft.com/resources/)  

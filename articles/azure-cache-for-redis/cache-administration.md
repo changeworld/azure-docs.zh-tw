@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122529"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278840"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Cache for Redis
 本主題說明如何執行管理工作，例如為 Azure Cache for Redis 執行個體進行[重新啟動](#reboot)和[排程更新](#schedule-updates)。
@@ -65,14 +65,14 @@ ms.locfileid: "74122529"
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>我可以使用 PowerShell、CLI 或其他管理工具重新啟動我的快取嗎？
 是，如需 PowerShell 指示，請參閱[重新啟動 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)。
 
-## <a name="schedule-updates"></a>排程更新
+## <a name="schedule-updates"></a>更新排程
 [**排程更新**] 分頁可讓您指定快取實例的維護視窗。 若指定了維護期間，即會在此期間進行任何 Redis 伺服器更新。 
 
 > [!NOTE] 
 > 維護期間僅適用於 Redis 伺服器更新，不適用於任何 Azure 更新，或是在裝載快取的 VM 上更新作業系統。
 >
 
-![排程更新](./media/cache-administration/redis-schedule-updates.png)
+![更新排程](./media/cache-administration/redis-schedule-updates.png)
 
 若要指定維護期間，請檢查所需的天數，並指定每一天的維護期間開始小時，然後按一下 [確定]。 請注意，維護期間時間是 UTC。 
 

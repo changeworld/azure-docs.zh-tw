@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826416"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214495"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>設定和使用多租使用者 SQL Database SaaS 應用程式的 Azure 監視器記錄
 
@@ -41,7 +41,7 @@ ms.locfileid: "73826416"
 
 針對 Azure SQL Database，Azure 入口網站中提供了有關資料庫和集區的監視與警示功能。 這個內建的監視與警示功能相當方便，但它也是資源特定的功能。 這意謂著它較不適合用來監視大型安裝項目，或是提供跨資源和訂用帳戶的合併檢視。
 
-針對高容量的案例，您可以使用 Azure 監視器記錄來進行監視和警示。 Azure 監視器是個別的 Azure 服務，可針對在工作區中收集的診斷記錄和遙測，從可能的許多服務進行分析。 Azure 監視器記錄檔提供內建的查詢語言和資料視覺化檢視，可讓您進行運算元據分析。 「SQL 分析」解決方案提供數個預先定義的彈性集區及資料庫監視與警示檢視和查詢。 Azure 監視器記錄也會提供自訂的視圖設計工具。
+針對高容量的案例，您可以使用 Azure 監視器記錄來進行監視和警示。 Azure 監視器是個別的 Azure 服務，可讓您分析工作區中所收集的記錄，而不可能有許多服務。 Azure 監視器記錄檔提供內建的查詢語言和資料視覺化檢視，可讓您進行運算元據分析。 「SQL 分析」解決方案提供數個預先定義的彈性集區及資料庫監視與警示檢視和查詢。 Azure 監視器記錄也會提供自訂的視圖設計工具。
 
 OMS 工作區現在稱為 Log Analytics 工作區。 您可以在 Azure 入口網站中開啟 Log Analytics 工作區和分析解決方案。 Azure 入口網站是較新的存取點，但在某些方面可能落後於 Operations Management Suite 入口網站。
 
@@ -52,13 +52,13 @@ OMS 工作區現在稱為 Log Analytics 工作區。 您可以在 Azure 入口�
 
    a. 設定 **$DemoScenario = 1**，佈建一批租用戶。
 
-   b.這是另一個 C# 主控台應用程式。 若要執行指令碼並部署額外的 17 個租用戶，請按 F5。
+   b. 若要執行指令碼並部署額外的 17 個租用戶，請按 F5。
 
 1. 現在，啟動負載產生器，以在所有租用戶上執行模擬負載。
 
     a. 設定 **$DemoScenario = 2**，_產生一般強度負載（大約30個 DTU）_ 。
 
-    b.這是另一個 C# 主控台應用程式。 若要執行指令碼，請按 F5。
+    b. 若要執行指令碼，請按 F5。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式指令碼
 

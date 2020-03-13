@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 97c5bf0c7bdf036a0555e8d536b5421d739327ad
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195986"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256610"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>使用 Azure Synapse 分析中的資源類別進行工作負載管理
 
@@ -73,7 +73,7 @@ ms.locfileid: "78195986"
 | DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
 | DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
 | DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
-| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
+| DW500c         | 5%                | 10%                    | 22%                    | 70%                    |
 | DW1000c 至<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
 
 

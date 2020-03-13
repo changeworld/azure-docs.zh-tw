@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562355"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251254"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -150,7 +150,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
     假設您的客戶主要是監看即時內容，但偶爾只會監看隨選內容，而且會從相同的串流端點提供服務。 視需要內容的使用量低，會佔用快取空間，以更有效率的方式儲存即時內容。 在此案例中，建議您從一個串流端點和來自另一個串流端點的長尾內容來提供即時內容。 這將可改善即時事件內容的效能。
     
-## <a name="scaling-streaming-with-cdn"></a>使用 CDN 調整串流
+## <a name="scaling-streaming-with-cdn"></a>使用 CDN 調整串流作業的規模
 
 查看下列文章：
 

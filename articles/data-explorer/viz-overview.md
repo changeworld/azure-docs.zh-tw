@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064558"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139057"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 資料總管的資料視覺效果 
 
@@ -42,6 +42,10 @@ Azure 資料總管可讓您使用[內建的原生 Excel 連接器](excel-connect
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com)提供 azure 資料總管外掛程式，可讓您將 azure 資料總管的資料視覺化。 您會[將 Azure 資料總管設定為 Grafana 的資料來源，然後將資料視覺化](/azure/data-explorer/grafana)。 
+
+## <a name="kibana"></a>Kibana
+
+Azure 資料總管可讓您使用 K2Bridge （開放原始碼連接器）來連線到[Kibana （[探索] 頁面）](https://www.elastic.co/guide/en/kibana/6.8/discover.html) 。 您會[將 Azure 資料總管設定為 Kibana 的資料來源，然後將資料視覺化](/azure/data-explorer/k2bridge)。
 
 ## <a name="odbc-connector"></a>ODBC 連接器
 

@@ -1,24 +1,24 @@
 ---
-title: 效能微調指導方針
-description: 深入了解如何使用建議來手動微調 Azure SQL Database 查詢效能。
+title: 應用程式和資料庫的效能微調指導方針
+description: 瞭解如何在 Azure SQL Database 中微調資料庫應用程式和資料庫的效能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255947"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>在 Azure SQL Database 中手動微調查詢效能
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>在 Azure SQL Database 中調整應用程式和資料庫的效能
 
 在您發現 SQL Database 的效能問題後，這篇文章可協助您：
 
@@ -232,6 +232,10 @@ ORDER BY start_time DESC
 
 如果工作負載具有一組重複的查詢，擷取並驗證您計劃選項的最適化通常是合理的，因為這會讓主控資料庫所需的資源大小單位降到最低。 在驗證之後，請偶爾重新檢查計劃以確保它們不會降級。 您可以深入了解 [查詢提示 (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)。
 
+### <a name="very-large-database-architectures"></a>非常大型的資料庫架構
+
+在 Azure SQL Database 的單一資料庫的[超大規模資料庫](sql-database-service-tier-hyperscale.md)服務層發行之前，客戶會用來達到個別資料庫的容量限制。 這些容量限制仍然存在於彈性集區中的集區資料庫和受控實例中的實例資料庫。 下列兩節會討論兩個選項，以解決當您無法使用超大規模資料庫服務層級時，Azure SQL Database 中非常大型資料庫的問題。
+
 ### <a name="cross-database-sharding"></a>跨資料庫分區化
 
 因為 Azure SQL Database 會在商用硬體上執行，所以個別資料庫的容量限制會比傳統的內部部署 SQL Server 安裝更低。 有些客戶會在資料庫作業不符合 Azure SQL Database 中的個別資料庫限制時，使用分區化技術在多個資料庫散佈這些作業。 在 Azure SQL Database 上使用分區化技術的大部分客戶都會在跨多個資料庫的單一維度上分割其資料。 針對此方法，您必須了解 OLTP 應用程式通常會執行的交易只會套用到結構描述內的一個資料列或一小組資料列。
@@ -243,7 +247,7 @@ ORDER BY start_time DESC
 
 雖然資料庫分區化不會減少方案的彙整資源容量，但可以非常有效地支援分配到多個資料庫的非常大型方案。 每個資料庫可以在不同的計算大小執行以支援具有高資源需求且非常大型的「有效」資料庫。
 
-### <a name="functional-partitioning"></a>功能資料分割
+#### <a name="functional-partitioning"></a>功能資料分割
 
 SQL Server 使用者通常會在個別資料庫內結合許多功能。 例如，如果應用程式有管理商店庫存的邏輯，該資料庫可能具有的邏輯會與庫存、追蹤訂單、預存程序和管理月底報告的索引或具體化檢視相關聯。 這項技術可以簡化備份等作業的資料庫管理，但也需要您調整硬體大小來跨應用程式的所有功能處理尖峰負載。
 

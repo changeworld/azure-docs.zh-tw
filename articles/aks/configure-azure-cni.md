@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: f7f8fe85b0a0e149859715b86abb08753a6ea65e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252996"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
 
@@ -19,7 +19,7 @@ ms.locfileid: "78390260"
 
 本文示範如何使用 *Azure CNI* 網路，針對 AKS 叢集建立和使用虛擬網路子網路。 如需網路選項和考慮的詳細資訊，請參閱[Kubernetes 和 AKS 的網路概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * AKS 叢集可能不會使用 Kubernetes 服務位址範圍的 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`或 `192.0.2.0/24`。
@@ -31,7 +31,7 @@ ms.locfileid: "78390260"
 
 使用 Azure CNI 網路設定的叢集需要進行額外的規劃。 您的虛擬網路及其子網路的大小必須配合您規劃要執行的 Pod 數目以及叢集的節點數目。
 
-Pod 和叢集節點的 IP 位址會從虛擬網路內的指定子網路來指派。 每個節點都以主要 IP 位址進行設定。 根據預設，Azure CNI 預先設定的 30 個額外 IP 位址會指派給在節點上排程的 Pod。 當您將叢集擴增時，每個節點同樣也會設定子網路中的 IP 位址。 您也可以檢視[每個節點的最大 Pod 數目](#maximum-pods-per-node)。
+Pod 和叢集節點的 IP 位址會從虛擬網路內的指定子網路來指派。 每個節點都以主要 IP 位址進行設定。 根據預設，Azure CNI 預先設定的 30 個額外 IP 位址會指派給在節點上排程的 Pod。 當您將叢集相應放大時，每個節點同樣也會設定子網路中的 IP 位址。 您也可以檢視[每個節點的最大 Pod 數目](#maximum-pods-per-node)。
 
 > [!IMPORTANT]
 > 所需的 IP 位址數目應包含針對升級和調整作業考量的數目。 如果設定只支援固定節點數目的 IP 位址範圍，將無法升級或擴展您的叢集。
@@ -61,7 +61,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」�
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是（最多250） |
 | Resource Manager 範本 | 110 | 30 | 是（最多250） |
-| Portal | 110 | 30 | 否 |
+| 入口網站 | 110 | 30 | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>設定最大值 - 新叢集
 
@@ -69,7 +69,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」�
 
 會強制執行每個節點最大 pod 數的最小值，以確保系統 pod 對叢集健康狀態的重大空間。 只有在每個節點集區的設定至少有30個 pod 的空間時，才可以針對每個節點的最大 pod 數設定的最小值為10。 例如，將每個節點的最大 pod 數設定為最小值10時，每個個別節點集區至少要有3個節點。 這項需求也適用于每個建立的新節點集區，因此如果10定義為每個節點的最大 pod 數，則每個新增的節點集區至少必須有3個節點。
 
-| 網路功能 | 最低 | 最大需求 |
+| 網路功能 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -147,7 +147,7 @@ az aks create \
 
 * 是否可以在叢集子網路中部署 VM？
 
-  No。 不支援在 Kubernetes 叢集所使用的子網路中部署 VM。 虛擬機器可部署在相同虛擬網路中，但不能部署在不同的子網路。
+  否。 不支援在 Kubernetes 叢集所使用的子網路中部署 VM。 虛擬機器可部署在相同虛擬網路中，但不能部署在不同的子網路。
 
 * 是否可以針對個別 Pod 設定網路原則？
 

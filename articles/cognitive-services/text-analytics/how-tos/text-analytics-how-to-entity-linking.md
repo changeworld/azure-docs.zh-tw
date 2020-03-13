@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117753"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203486"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用已命名的實體識別
 
@@ -182,14 +182,13 @@ NER
 
 所有 POST 要求都會傳回 JSON 格式的回應，其中包含識別碼和偵測到的實體屬性。
 
-輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。
-
+輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。 由於多語系和表情的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理文字位移](../concepts/text-offsets.md)。
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview）](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>範例 v3 回應
 
-第3版為 NER 和實體連結提供個別的端點。 這兩項作業的回應如下所示。
+第3版為 NER 和實體連結提供個別的端點。 這兩項作業的回應如下所示。 
 
 #### <a name="example-ner-response"></a>範例 NER 回應
 

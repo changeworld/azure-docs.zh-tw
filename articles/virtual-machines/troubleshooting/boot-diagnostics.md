@@ -11,19 +11,19 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
 ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245326"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用開機診斷對 Azure 中的虛擬機器進行疑難排解
 
-有許多原因會讓虛擬機器進入無法開機的狀態。 若要針對使用 Resource Manager 部署模型所建立的虛擬機器，解決其所遇到的問題，您可以使用下列偵錯功能：Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
+有許多原因會讓虛擬機器進入無法開機的狀態。 若要解決使用 Resource Manager 部署模型所建立之虛擬機器的問題，您可以使用下列偵錯工具功能： Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
 
 若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 請注意，螢幕擷取畫面和輸出最多可能需要 10 分鐘的時間才會出現在您的儲存體帳戶中。
 
-您可以選取 [開機診斷]  選項來檢視記錄和螢幕擷取畫面。
+您可以選取 [開機診斷] 選項來檢視記錄和螢幕擷取畫面。
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "78362688"
 
 下列程序適用於使用 Resource Manager 部署模型所建立的虛擬機器。
 
-在 [管理]  索引標籤上的 [監視]  區段中，確定 [開機診斷]  已開啟。 從 [診斷儲存體帳戶]  下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
+在 [管理] 索引標籤上的 [監視] 區段中，確定 [開機診斷] 已開啟。 從 [診斷儲存體帳戶] 下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
  
 ![建立 VM](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
@@ -79,15 +79,15 @@ ms.locfileid: "78362688"
 }
 ```
 
-如需如何使用範本來部署資源的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
+如需使用範本部署資源的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立和部署 Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在現有的虛擬機器上啟用開機診斷 
 
 若要在現有的虛擬機器上啟用開機診斷功能，請遵循下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取虛擬機器。
-2. 在 [支援 + 疑難排解]  區段中，選取 [開機診斷]  ，然後選取 [設定]  索引標籤。
-3. 在 [開機診斷]  設定中，將狀態變更為 [開啟]  ，然後從 [儲存體帳戶]  下拉式清單選取儲存體帳戶。 
+2. 在 [支援 + 疑難排解] 區段中，選取 [開機診斷]，然後選取 [設定] 索引標籤。
+3. 在 [開機診斷] 設定中，將狀態變更為 [開啟]，然後從 [儲存體帳戶] 下拉式清單選取儲存體帳戶。 
 4. 儲存變更。
 
     ![更新現有的 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

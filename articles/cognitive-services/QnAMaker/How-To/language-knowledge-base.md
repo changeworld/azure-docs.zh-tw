@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73793926"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221445"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 知識庫內容的語言支援
 
-當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須是相同的語言。 
+當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須是相同的語言。
 
 語言會決定 QnA Maker 提供的結果相關性，以回應使用者查詢。
 
@@ -29,25 +29,25 @@ QnA Maker 可讓您在建立第一個知識庫時，選取 QnA 服務的語言�
 
 在一個資源中以不同的語言建立知識庫，會對使用者查詢所提供之結果 QnA Maker 的相關性造成負面影響。
 
-請參閱支援的[語言](../overview/language-support.md#languages-supported)清單，以及語言對比對[與相關性](#query-matching-and-relevance)的影響。 
+請參閱支援的[語言](../overview/language-support.md#languages-supported)清單，以及語言對比對[與相關性](#query-matching-and-relevance)的影響。
 
 ## <a name="select-language-when-creating-first-knowledge-base"></a>在建立第一個知識庫時選取語言
 
-語言選擇是在資源中建立第一個知識庫的部分步驟。 
+語言選擇是在資源中建立第一個知識庫的部分步驟。
 
 ![QnA Maker 入口網站為第一個知識庫選取語言的螢幕擷取畫面](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>查詢比對和相關性
-QnA Maker 取決於提供結果的[Azure 認知搜尋語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。 
+QnA Maker 取決於提供結果的[Azure 認知搜尋語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
 
-雖然 Azure 認知搜尋功能與支援的語言相同，但 QnA Maker 具有位於 Azure 搜尋服務結果上方的其他 ranker。 在此 ranker 模型中，我們會以下列語言使用一些特殊的語義和單字式功能。 
+雖然 Azure 認知搜尋功能與支援的語言相同，但 QnA Maker 具有位於 Azure 搜尋服務結果上方的其他 ranker。 在此 ranker 模型中，我們會以下列語言使用一些特殊的語義和單字式功能。
 
 |具有其他 ranker 的語言|
 |--|
 |中文|
 |捷克文|
 |荷蘭文|
-|English|
+|英文|
 |法文|
 |德文|
 |匈牙利文|
@@ -65,10 +65,10 @@ QnA Maker 取決於提供結果的[Azure 認知搜尋語言分析器](https://do
 
 您可以從 QnA Maker 的 [服務設定] 頁面確認 QnA Maker 資源的語言。
 
-![QnA Maker 入口網站的 [服務設定] 頁面螢幕擷取畫面](../media/language-support/language-knowledge-base.png) 
+![QnA Maker 入口網站的 [服務設定] 頁面螢幕擷取畫面](../media/language-support/language-knowledge-base.png)
 
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Azure Bot 服務建立 QnA Bot](../Tutorials/create-qna-bot.md)
+> [遷移知識庫](../Tutorials/migrate-knowledge-base.md)

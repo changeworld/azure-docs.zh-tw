@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917028"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205202"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中輪替憑證（AKS）
 
@@ -37,7 +37,7 @@ AKS 會產生並使用下列憑證、憑證授權單位單位和服務帳戶：
 * `kubectl` 用戶端具有與 AKS 叢集通訊的憑證。
 
 > [!NOTE]
-> 在2019年3月之前建立的 AKS 叢集，其憑證會在兩年後到期。 2019年3月之後建立的任何叢集，或任何已輪替其憑證的叢集，其憑證會在30年後到期。 若要確認您的叢集建立時間，請使用 `kubectl get nodes` 查看節點集區的*存留期*。
+> 在2019年3月之前建立的 AKS 叢集，其憑證會在兩年後到期。 2019年3月之後建立的任何叢集，或任何已輪替其憑證的叢集，其叢集 CA 憑證會在30年後到期。 所有其他憑證會在兩年後到期。 若要確認您的叢集建立時間，請使用 `kubectl get nodes` 查看節點集區的*存留期*。
 > 
 > 此外，您可以檢查叢集憑證的到期日。 例如，下列命令會顯示*myAKSCluster*叢集的憑證詳細資料。
 > ```console

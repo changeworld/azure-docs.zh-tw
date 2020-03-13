@@ -8,16 +8,16 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 395210c582ba7f5e8170a96a46e2816336e33b2d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624042"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137657"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
-除了其包含的資料以外，blob 還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)來管理系統屬性和使用者定義的中繼資料。
+除了其包含的資料以外，blob 還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來管理系統屬性和使用者定義的中繼資料。
 
 ## <a name="about-properties-and-metadata"></a>關於屬性和中繼資料
 

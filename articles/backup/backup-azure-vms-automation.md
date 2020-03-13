@@ -4,11 +4,11 @@ description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247978"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份和還原 Azure Vm
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-或
+Or
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -521,7 +521,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>使用部署範本建立 VM
 
-產生的作業詳細資料會提供可供查詢和部署的範本 URI。
+結果工作詳細資料提供可查詢和部署的範本 URI。
 
 ```powershell
    $properties = $details.properties
@@ -530,7 +530,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-無法直接存取範本，因為它是在客戶的儲存體帳戶和指定的容器底下。 我們需要完整的 URL （以及暫時的 SAS 權杖）來存取此範本。
+此範本位於客戶的儲存體帳戶和指定的容器下，因此無法直接存取。 我們需要完整的 URL (以及暫時的 SAS 權杖)，才能存取此範本。
 
 1. 先從 templateBlobURI 解壓縮範本名稱。 格式如下所述。 您可以在 Powershell 中使用分割作業，從這個 URL 解壓縮最終範本名稱。
 

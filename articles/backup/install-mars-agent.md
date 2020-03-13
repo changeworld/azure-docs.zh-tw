@@ -3,12 +3,12 @@ title: 安裝 Microsoft Azure 復原服務（MARS）代理程式
 description: 瞭解如何安裝 Microsoft Azure 復原服務（MARS）代理程式來備份 Windows 電腦。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: cf6b332c308bb0224dbfed546f8b3ba819abcb02
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673102"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247757"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安裝 Azure 備份 MARS 代理程式
 
@@ -98,6 +98,10 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 > 新線路的公用對等互連已被取代。
 
 所有先前的 Url 和 IP 位址都會在埠443上使用 HTTPS 通訊協定。
+
+### <a name="private-endpoints"></a>私人端點
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="download-the-mars-agent"></a>下載 MARS 代理程式
 

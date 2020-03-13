@@ -4,11 +4,11 @@ description: 在使用 Azure 委派的資源管理時，請務必考慮安全性
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270702"
 ---
 # <a name="recommended-security-practices"></a>建議的安全性作法
 

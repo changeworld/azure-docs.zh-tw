@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721569"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136985"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 本文會講解如何實作搜尋結果頁面的標準項目，例如次數總計、擷取文件、排序次序和導覽。 將資料或資訊提供給搜尋結果的頁面相關選項，會透過傳送至 Azure 認知搜尋服務的[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)要求來指定。 
@@ -25,7 +25,7 @@ ms.locfileid: "76721569"
 + 使用入口網站中的[應用程式](search-create-app-portal.md)產生器，建立具有搜尋列、多面向導覽和結果區域的 HTML 網頁。
 + 遵循在教學課程[中C#建立您的第一個應用程式](tutorial-csharp-create-first-app.md)，以建立功能用戶端。
 
-有幾個程式碼範例包含 web 前端介面，您可以在這裡找到：[紐約的作業示範應用程式](https://azjobsdemo.azurewebsites.net/)、 [JavaScript 使用即時示範網站的範例程式碼](https://github.com/liamca/azure-search-javascript-samples)，以及[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+有幾個程式碼範例包含 web 前端介面，您可以在這裡找到：[紐約的作業示範應用程式](https://aka.ms/azjobsdemo)、 [JavaScript 使用即時示範網站的範例程式碼](https://github.com/liamca/azure-search-javascript-samples)，以及[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
 > 有效的要求包含一些項目，例如服務 URL 及路徑、HTTP 動詞命令、`api-version` 等。 為求簡單明瞭，我們縮減此範例，只突顯與分頁相關的語法。 如需要求語法的詳細資訊，請參閱[Azure 認知搜尋 REST api](https://docs.microsoft.com/rest/api/searchservice)。

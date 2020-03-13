@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3559a139ff89c949ee691310ae25af7d6950abdf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251605"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138955"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 VPN 用戶端以進行 P2S OpenVPN 通訊協定連線： Azure AD 驗證
 
@@ -60,23 +60,23 @@ ms.locfileid: "78251605"
 
 1. 在頁面上，選取 [匯入]。
 
-    ![匯入](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![入口](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
-    ![匯入](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![入口](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定設定檔的名稱，然後選取 [儲存]。
 
-    ![匯入](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![入口](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 選取 [連線] 以連線至 VPN。
 
-    ![匯入](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![入口](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
-    ![匯入](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![入口](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>刪除用戶端設定檔
 
@@ -92,23 +92,23 @@ ms.locfileid: "78251605"
 
 1. 在頁面上，依序選取 [ **+** ] 和 [ **+ 新增**]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![連接](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填寫連接資訊。 如果您不確定這些值，請洽詢您的系統管理員。 填寫值之後，選取 [**儲存**]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![連接](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 選取 [連線] 以連線至 VPN。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![連接](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 選取適當的認證，然後選取 [**繼續**]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![連接](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功連線後，圖示將會變成綠色，並顯示 [**已連線**]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![連接](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="autoconnect"></a>自動連接
 
@@ -116,19 +116,19 @@ ms.locfileid: "78251605"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **VPN 設定**]。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊上選取 **[是]** 。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 請確定您要設定的連線尚未連接，然後將設定檔反白顯示，並勾選 [**自動連接]** 核取方塊。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>診斷連線問題
 
@@ -184,6 +184,10 @@ ms.locfileid: "78251605"
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> OpenVPN Azure AD 用戶端會利用 DNS 名稱解析原則表格（NRPT）專案，這表示 DNS 伺服器不會列在 `ipconfig /all`的輸出底下。 若要確認您的使用中 DNS 設定，請參閱 PowerShell 中[的 get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
 

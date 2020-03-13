@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872157"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246847"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>將 MongoDB 應用程式連接到 Azure Cosmos DB
 了解如何使用 MongoDB 連接字串，將 MongoDB 應用程式連線至 Azure Cosmos DB。 您可以使用 Azure Cosmos 資料庫作為 MongoDB 應用程式的資料存放區。 
@@ -23,7 +23,7 @@ ms.locfileid: "74872157"
 - [快速啟動方法](#QuickstartConnection)，用來搭配 .NET、Node.js、MongoDB Shell、Java 和 Python 驅動程式
 - [自訂連接字串方法](#GetCustomConnection)，用來搭配其他驅動程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一個 Azure 帳戶。 如果您沒有 Azure 帳戶，可以立即建立一個[免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 - Cosmos 帳戶。 如需相關指示，請參閱[使用適用於 MongoDB 的 Azure Cosmos DB API 和 .NET SDK 建置 Web 應用程式](create-mongodb-dotnet.md)。

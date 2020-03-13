@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602578"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283533"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -297,7 +297,7 @@ Web 服務也支援以權杖為基礎的驗證，但僅適用于 Azure Kubernete
 
 ### <a name="token-based-web-service-authentication"></a>以權杖為基礎的 web 服務驗證
 
-當您啟用 web 服務的權杖驗證時，使用者必須向 web 服務出示 Azure Machine Learning 的 JSON Web 權杖才能存取它。 權杖會在指定的時間範圍之後過期，而且需要重新整理才能繼續進行呼叫。
+當您啟用 web 服務的權杖驗證時，使用者必須向 web 服務出示 Azure Machine Learning 的 JSON Web 權杖才能存取它。 權杖會在指定的時間範圍之後過期，且需要重新整理才能繼續進行呼叫。
 
 * 當您部署到 Azure Kubernetes Service 時，**預設會停用**權杖驗證。
 * 當您部署至 Azure 容器實例時，**不支援**權杖驗證。
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> 您必須在權杖的 `refresh_by` 時間之後，要求新的權杖。 如果您需要在 Python SDK 以外重新整理權杖，其中一個選項是使用 REST API 搭配服務主體驗證，定期進行 `service.get_token()` 呼叫（如先前所述）。
+> 您將必須在權杖的 `refresh_by` 時間之後要求新的權杖。 如果您需要在 Python SDK 以外重新整理權杖，其中一個選項是使用 REST API 搭配服務主體驗證，定期進行 `service.get_token()` 呼叫（如先前所述）。
 >
 > 強烈建議您在與 Azure Kubernetes Service 叢集相同的區域中建立您的 Azure Machine Learning 工作區。 
 >

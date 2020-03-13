@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297835"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138938"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式登入帳戶
 
@@ -112,7 +112,7 @@ ms.locfileid: "78297835"
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>為您的帳戶使用雙因素驗證登入
 
-標準的雙因素驗證方法會要求您在您登入的裝置中輸入您的使用者名稱和密碼，然後選擇 Microsoft Authenticator 應用程式是否接收 Microsoft Authenticator 應用程式。 在 Android 裝置上，您可以在 [帳戶] 畫面上找到這些驗證碼。 在 iOS 裝置上，您可以在帳戶的 [**帳戶**] 畫面或 [全螢幕] 視圖中找到這些驗證碼，視帳戶類型而定。 您要在過程中為您的帳戶開啟雙因素驗證，才能將該帳戶新增到 Microsoft Authenticator 應用程式。
+標準的雙因素驗證方法會要求您在您登入的裝置上輸入您的使用者名稱和密碼。 然後，開啟您的 Microsoft Authenticator 應用程式，並在 [**輸入代碼**] 方塊中，輸入您帳戶的隨機產生程式碼。 在 Android 裝置上，您可以在 [**帳戶**] 畫面上找到這些驗證碼。 在 iOS 裝置上，您可以在帳戶的 [**帳戶**] 畫面或 [全螢幕] 視圖上找到這些驗證碼，視帳戶類型而定。 您要在過程中為您的帳戶開啟雙因素驗證，才能將該帳戶新增到 Microsoft Authenticator 應用程式。
 
 >[!Note]
 >如果您在 Microsoft Authenticator 應用程式的 [帳戶] 畫面上沒有看到您的公司或學校帳戶，或您個人的帳戶，表示您還沒有將該帳戶新增到 Microsoft Authenticator 應用程式。 若要新增您的帳戶，請參閱[新增公司或學校帳戶](user-help-auth-app-add-work-school-account.md)或[新增個人帳戶](user-help-auth-app-add-personal-ms-account.md)。

@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494962"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271898"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>部署和管理 HDInsight 上的 Apache Storm 拓撲
 
 在本文件中，您可以了解管理和監視在 Storm on HDInsight 叢集上所執行 [Apache Storm](https://storm.apache.org/) 拓撲的基本概念。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm] 作為 [叢集類型]。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75494962"
 
 1. 啟動 Visual Studio。
 
-1. 在 [**開始**] 視窗中，選取 [**建立新專案**]。
+1. 在 [開始] 視窗中，選取 [建立新專案]。
 
 1. 在 [**建立新專案**] 視窗中，選取 [搜尋] 方塊，然後輸入 `Storm`。 然後從結果清單中選擇 [**風暴 Sample** ]，然後選取 **[下一步]** 。
 
@@ -172,7 +172,7 @@ storm rebalance TOPOLOGYNAME
 
 Storm UI 的主頁面會提供下列資訊：
 
-| 區段 | 說明 |
+| 區段 | 描述 |
 | --- | --- |
 | 叢集摘要| 有關 Storm 叢集的基本資訊。 |
 | Nimbus 摘要 | 基本 Nimbus 資訊的清單。 |
@@ -188,7 +188,7 @@ Storm UI 的主頁面會提供下列資訊：
 
 選取 [拓撲摘要] 區段中的連結會顯示拓撲的下列資訊：
 
-| 區段 | 說明 |
+| 區段 | 描述 |
 | --- | --- |
 | 拓撲摘要 | 有關拓撲的基本資訊。 |
 | 拓撲動作| 您可以針對拓撲執行的管理動作。 本章節稍後會說明可用的動作。 |
@@ -205,9 +205,9 @@ Storm UI 的主頁面會提供下列資訊：
 
 在 [**拓撲動作**] 區段中，您可以選取下列按鈕來執行動作：
 
-| 按鈕 | 說明 |
+| 按鈕 | 描述 |
 | --- | --- |
-| 啟用 | 繼續處理已停用的拓撲。 |
+| 啟動 | 繼續處理已停用的拓撲。 |
 | 停用 | 暫停執行中拓撲。 |
 | 重新平衡 | 調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中的拓撲。 這項作業可讓拓撲調整平行處理原則，以彌補叢集中增加或減少的節點數目。<br/><br/>如需詳細資訊，請參閱 <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of an Apache Storm topology</a> (了解 Apache Storm 拓撲的平行處理原則)。
 | 終止 | 在指定的逾時之後終止 Storm 拓撲。 |
@@ -219,7 +219,7 @@ Storm UI 的主頁面會提供下列資訊：
 
 從 [Spout] 或 [Bolt] 區段中選取 Spout 會顯示所選取項目的下列資訊：
 
-| 區段 | 說明 |
+| 區段 | 描述 |
 | --- | --- |
 | 元件摘要 | 有關 Spout 或 Bolt 的基本資訊。 |
 | 元件動作 | [ **Debug** ] 和 [**停止] 調試**按鈕。 |
@@ -249,11 +249,11 @@ Storm UI 的主頁面會提供下列資訊：
 
 您可以透過數種方式來尋找叢集前端節點的完整功能變數名稱（FQDN）：
 
-| FQDN 探索方法 | 說明 |
+| FQDN 探索方法 | 描述 |
 | --- | --- |
-| SSH 會話 | 使用命令 `headnode -f` 從 SSH 會話連線到叢集。 |
+| SSH 會話 | 使用命令 `headnode -f` (從 SSH 工作階段到叢集)。 |
 | Ambari Web | 在 [Ambari 叢集] 網頁（`https://CLUSTERNAME.azurehdinsight.net`）上，從頁面頂端選取 [**服務**]，然後選取 [**風暴**]。 從 [摘要] 索引標籤，選取 [Storm UI 伺服器]。 託管 Storm UI 和 REST API 的節點 FQDN 位於頁面頂端。 |
-| Ambari REST API | 您可以使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`，來抓取有關執行暴 UI 和 REST API 之節點的相關資訊。 以叢集名稱取代*CLUSTERNAME*的兩個實例。 當系統提示您時，請輸入使用者（admin）帳戶的密碼。 在回應中，JSON 輸出的 "host_name" 專案會包含節點的 FQDN。 |
+| Ambari REST API | 使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 來擷取 Storm UI 和 REST API 執行所在節點的相關資訊。 以叢集名稱取代*CLUSTERNAME*的兩個實例。 當系統提示您時，請輸入使用者（admin）帳戶的密碼。 在回應中，JSON 輸出的 "host_name" 專案會包含節點的 FQDN。 |
 
 ### <a name="authentication"></a>驗證
 
