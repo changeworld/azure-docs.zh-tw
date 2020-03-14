@@ -4,11 +4,11 @@ description: 描述如何分割 Service Fabric 具狀態服務。 資料分割�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390214"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258612"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>分割 Service Fabric 可靠服務
 這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上也提供本文中使用的原始碼。

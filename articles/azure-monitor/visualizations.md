@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
 ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372251"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274108"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。

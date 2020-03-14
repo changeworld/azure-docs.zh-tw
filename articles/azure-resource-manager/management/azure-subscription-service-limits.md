@@ -4,11 +4,11 @@ description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254326"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274524"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -310,7 +310,7 @@ ms.locfileid: "78254326"
 
 如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="storage-limits"></a>存放裝置限制
+## <a name="storage-limits"></a>儲存體限制
 
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]

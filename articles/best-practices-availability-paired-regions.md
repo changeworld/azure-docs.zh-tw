@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270993"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248251"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>業務持續性和災害復原 (BCDR)：Azure 配對的區域
 
@@ -26,7 +26,7 @@ Azure 地理位置會定義一個世界中至少包含一個 Azure 區域的區�
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-某些 Azure 服務會進一步利用配對的區域，以確保業務持續性，並防止資料遺失。  Azure 提供數個[儲存體解決方案](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，可利用配對的區域，以確保資料可用性。 例如， [Azure 異地複寫儲存體](/storage/common/storage-redundancy.md#geo-redundant-storage)（GRS）會自動將資料複寫到次要區域，確保即使在主要區域無法復原的情況下，資料仍持久。 
+某些 Azure 服務會進一步利用配對的區域，以確保業務持續性，並防止資料遺失。  Azure 提供數個[儲存體解決方案](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，可利用配對的區域，以確保資料可用性。 例如， [Azure 異地複寫儲存體](./storage/common/storage-redundancy.md#geo-redundant-storage)（GRS）會自動將資料複寫到次要區域，確保即使在主要區域無法復原的情況下，資料仍持久。 
 
 請注意，並非所有的 Azure 服務都會自動複寫資料，而所有 Azure 服務也會自動從失敗的區域切換回其配對。  在這種情況下，復原和複寫必須由客戶進行設定。
 

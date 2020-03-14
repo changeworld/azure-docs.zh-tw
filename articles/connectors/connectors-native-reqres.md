@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 tags: connectors
 ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386511"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247276"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 接收和回應連入的 HTTPS 呼叫
 

@@ -4,11 +4,11 @@ description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597536"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269571"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 

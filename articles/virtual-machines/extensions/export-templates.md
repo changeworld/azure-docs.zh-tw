@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073134"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253906"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>匯出包含 VM 擴充功能的資源群組
 
@@ -33,10 +33,10 @@ Azure 資源群組可以匯出到之後會重新部署的新 Resource Manager �
 
 下列擴充功能可以使用自動化指令碼功能匯出。
 
-| 擴充功能 ||||
+| 分機 ||||
 |---|---|---|---|
 | Acronis Backup | Datadog Windows Agent | OS Patching For Linux | VM Snapshot Linux
-| Acronis Backup Linux | Docker 擴充功能 | Puppet Agent |
+| Acronis Backup Linux | Docker 延伸模組 | Puppet Agent |
 | Bg Info | DSC 延伸模組 | Site 24x7 Apm Insight |
 | BMC CTM Agent Linux | Dynatrace Linux | Site 24x7 Linux Server |
 | BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows Server |

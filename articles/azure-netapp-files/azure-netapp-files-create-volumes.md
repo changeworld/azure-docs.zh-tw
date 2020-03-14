@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274082"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 
@@ -86,7 +86,7 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
         
         如果您尚未委派子網路，您可以按一下 [建立磁碟區] 頁面上的 [新建]。 在 [建立子網路] 頁面上指定子網路資訊，然後選取 [Microsoft.NetApp/volumes] 以委派 Azure NetApp Files 的子網路。 在每個 Vnet 中，只有一個子網可委派給 Azure NetApp Files。   
  
-        ![建立磁片區](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![建立磁碟區](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![建立子網路](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

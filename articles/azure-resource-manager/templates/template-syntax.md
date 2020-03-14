@@ -4,11 +4,11 @@ description: 使用宣告式 JSON 語法描述 Azure Resource Manager 範本的�
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622887"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248238"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure Resource Manager 範本的結構和語法
 

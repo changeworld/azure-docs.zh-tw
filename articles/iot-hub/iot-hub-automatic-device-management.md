@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429361"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271300"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 入口網站自動進行 IoT 裝置和模組管理
 
@@ -209,7 +209,7 @@ SELECT deviceId, moduleId FROM devices.modules
    * 目標條件 
    * 標籤 
    * 優先順序 
-   * 計量
+   * 度量
 
 4. 選取 [儲存]。
 

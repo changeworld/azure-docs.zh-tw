@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272964"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理 NAT。 有些連線提供者會以受控服務來支援設定和管理路由。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵守以下所述的需求。 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252021"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
 

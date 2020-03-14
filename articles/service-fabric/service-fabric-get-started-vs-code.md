@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258482"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
 
@@ -21,7 +21,7 @@ ms.locfileid: "78361234"
 > [!IMPORTANT]
 > Service Fabric Java 應用程式可以在 Windows 機器上開發，但是只能部署到 Azure Linux 叢集上。 不支援在 Windows 上針對 Java 應用程式進行偵錯。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 必須在所有環境上安裝下列必要條件。
 
@@ -48,7 +48,7 @@ ms.locfileid: "78361234"
 必須針對 .NET Core/C# 開發安裝下列必要條件：
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (版本 2.0.0 或更新版本)
-* [適用於 Visual Studio Code 的 C# (由 OmniSharp 驅動) VS Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)，需要該擴充功能才能針對 C# 服務進行偵錯。 您可以藉由在 VS Code 中的 [活動列] 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
+* [適用於 Visual Studio Code 的 C# (由 OmniSharp 驅動) VS Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)，需要該擴充功能才能針對 C# 服務進行偵錯。 您可以藉由在 VS Code 中的 [活動列] 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
 
 ## <a name="setup"></a>安裝程式
 

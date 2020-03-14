@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257117"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>設定和管理 VMware 嚴重損壞修復的複寫原則
 
@@ -61,5 +61,5 @@ ms.locfileid: "73954332"
 
 1. 選擇複寫原則。
     a. 若要中斷原則與組態伺服器的關聯，請確定沒有複寫機器使用該原則。 然後按一下 [中斷關聯]。
-    b.這是另一個 C# 主控台應用程式。 若要刪除原則，請確定它沒有與組態伺服器相關聯。 然後按一下 [刪除]。 刪除應需要 30-60 秒。
+    b. 若要刪除原則，請確定它沒有與組態伺服器相關聯。 然後按一下 [刪除]。 刪除應需要 30-60 秒。
 2. 按一下 [確定]。

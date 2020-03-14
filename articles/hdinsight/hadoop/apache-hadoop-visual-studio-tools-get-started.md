@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272782"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用 Data Lake Tools for Visual Studio 連線至 Azure HDInsight 及執行 Apache Hive 查詢
 
@@ -26,7 +26,7 @@ ms.locfileid: "73825024"
 
 您可以使用 Data Lake Tools for Visual Studio 來存取 Azure Data Lake Analytics 和 HDInsight。 如需 Data Lake Tools 的相關資訊，請參閱[使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文並使用適用于 Visual Studio 的 Data Lake 工具，您需要下列專案：
 
@@ -80,7 +80,7 @@ ms.locfileid: "73825024"
 > [!NOTE]  
 > 如需連線到一般 Hadoop 叢集的相關資訊，請參閱[如何使用 Visual Studio 撰寫和提交 Hive 查詢](https://blogs.msdn.microsoft.com/xiaoyong/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio/)。
 
-### <a name="connect-to-an-azure-subscription"></a>連接到 Azure 訂用帳戶
+### <a name="connect-to-an-azure-subscription"></a>連線到 Azure 訂用帳戶
 
 若要連線到您的 Azure 訂用帳戶：
 

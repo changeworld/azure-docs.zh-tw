@@ -4,11 +4,11 @@ description: 描述如何在「Azure 資源管理員」範本中使用連結的�
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272582"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274251"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 

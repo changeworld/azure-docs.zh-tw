@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252099"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中保存檔案
 Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在初始啟動時，Cloud Shell 會提示您關聯新的或現有的檔案共用，以在工作階段間保存檔案。

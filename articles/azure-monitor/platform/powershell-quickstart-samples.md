@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274316"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 監視器 PowerShell 快速入門範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -230,13 +230,13 @@ Web 應用程式、VM、雲端服務或虛擬機器擴展集之類的資源只�
 
 下列範例將示範如何使用 CPU 使用率計量，為 Windows 作業系統的虛擬機器擴展集建立自動調整設定。
 
-首先，建立擴增的規則，讓執行個體計數增加。
+首先，建立相應放大的規則，讓執行個體計數增加。
 
 ```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-接著，建立縮減的規則，讓執行個體計數減少。
+接著，建立相應縮小的規則，讓執行個體計數減少。
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1

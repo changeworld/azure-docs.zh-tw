@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749229"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255427"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 儲存體的效能和擴充性檢查清單
 
@@ -31,13 +31,13 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 | &nbsp; |延展性目標 |[您是否要避免接近容量和交易限制？](#capacity-and-transaction-targets) |
 | &nbsp; |延展性目標 |[有大量的用戶端同時存取單一 blob 嗎？](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |延展性目標 |[您的應用程式是否會在單一 blob 的擴充性目標內保持不動？](#bandwidth-and-operations-per-blob) |
-| &nbsp; |分割 |[您的命名慣例設計能因應更好的負載平衡嗎？](#partitioning) |
-| &nbsp; |網路 |[用戶端裝置是否有足夠高的頻寬和足夠低的延遲，以達到所需的效能？](#throughput) |
-| &nbsp; |網路 |[用戶端裝置是否有高品質網路連結？](#link-quality) |
-| &nbsp; |網路 |[用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
+| &nbsp; |資料分割 |[您的命名慣例設計能因應更好的負載平衡嗎？](#partitioning) |
+| &nbsp; |網路功能 |[用戶端裝置是否有足夠高的頻寬和足夠低的延遲，以達到所需的效能？](#throughput) |
+| &nbsp; |網路功能 |[用戶端裝置是否有高品質網路連結？](#link-quality) |
+| &nbsp; |網路功能 |[用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
 | &nbsp; |直接用戶端存取 |[您是否使用共用存取簽章 (SAS) 和跨原始資源共用 (CORS) 來啟用 Azure 儲存體的直接存取？](#sas-and-cors) |
-| &nbsp; |快取 |[您的應用程式快取經常存取且極少變更的資料嗎？](#reading-data) |
-| &nbsp; |快取 |[您的應用程式是否會藉由在用戶端上快取更新，然後在較大的集合中上傳來進行批次處理](#uploading-data-in-batches) |
+| &nbsp; |Caching |[您的應用程式快取經常存取且極少變更的資料嗎？](#reading-data) |
+| &nbsp; |Caching |[您的應用程式是否會藉由在用戶端上快取更新，然後在較大的集合中上傳來進行批次處理](#uploading-data-in-batches) |
 | &nbsp; |.NET 組態 |[您使用 .NET Core 2.1 或更新版本來獲得最佳效能嗎？](#use-net-core) |
 | &nbsp; |.NET 組態 |[您是否已設定用戶端使用足夠數量的並行連線？](#increase-default-connection-limit) |
 | &nbsp; |.NET 組態 |[針對 .NET 應用程式，您是否已設定 .NET 使用足夠數量的執行緒？](#increase-minimum-number-of-threads) |
@@ -93,7 +93,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 
 您也可以使用內容傳遞網路（CDN）（例如 Azure CDN）在 blob 上散發作業。 如需 Azure CDN 的詳細資訊，請參閱[AZURE cdn 總覽](../../cdn/cdn-overview.md)。  
 
-## <a name="partitioning"></a>分割
+## <a name="partitioning"></a>資料分割
 
 瞭解 Azure 儲存體分割 blob 資料的方式有助於提升效能。 Azure 儲存體可以更快速地在單一分割區中提供資料，而不是跨越多個資料分割的資料。 藉由適當地命名 blob，您可以改善讀取要求的效率。
 
@@ -115,7 +115,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
   
 - 如需 Azure 儲存體中使用之資料分割配置的詳細資訊，請參閱[Azure 儲存體：具有強式一致性的高可用性雲端儲存體服務](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 應用程式的實體網路限制可能會對效能產生重大影響。 下列各節說明使用者可能會遇到的部分限制。  
 
@@ -123,7 +123,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
 
 如下列各節所述，網路連結的頻寬和品質在應用程式效能中扮演重要角色。
 
-#### <a name="throughput"></a>輸送量
+#### <a name="throughput"></a>Throughput
 
 頻寬的問題經常是用戶端的功能。 較大型的 Azure 執行個體擁有較大容量的 NIC，因此，如果您需要單一機器的較高網路限制，您應考慮使用較大型的執行個體或更多的 VM。 如果您從內部部署應用程式存取 Azure 儲存體，則適用相同的規則：了解用戶端裝置的網路功能和與 Azure 儲存體位置的網路連線能力，以及視需要進行改善或設計您的應用程式以便使用其功能。
 
@@ -131,7 +131,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
 
 與任何網路使用方式一樣，請記住導致錯誤和封包遺失的網路狀況將會減慢有效的輸送量。  使用 WireShark 或 NetMon 可能有助於診斷此問題。  
 
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 在任何分散式環境中，將用戶端放置於伺服器附近可提供最佳的效能。 若要以最低的延遲時間存取 Azure 儲存體，對用戶端而言的最佳位置是在同一個 Azure 區域內。 例如，如果您擁有使用 Azure 儲存體的 Azure Web 應用程式，則將這兩者置於單一區域內 (例如，美國西部或東南亞)。 共置資源可降低延遲和成本，因為單一區域內的頻寬使用量是免費的。  
 
@@ -151,7 +151,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
   
 SAS 和 CORS 都可協助您避免 Web 應用程式上不必要的負載。  
 
-## <a name="caching"></a>快取
+## <a name="caching"></a>Caching
 
 快取在效能方面扮演著重要的角色。 下列各節將討論快取的最佳作法。
 
@@ -285,6 +285,6 @@ Azure 儲存體支援區塊 blob、附加 blob 和分頁 blob。 在指定使用
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 儲存體的擴充性和效能目標](scalability-targets.md)
-- [標準儲存體帳戶的擴充性和效能目標](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Blob 儲存體的延展性和效能目標](scalability-targets.md)
+- [標準儲存體帳戶的延展性和效能目標](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [狀態和錯誤碼](/rest/api/storageservices/Status-and-Error-Codes2)

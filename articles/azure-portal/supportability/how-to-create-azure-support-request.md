@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248485"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何建立 Azure 支援要求
 
 ## <a name="overview"></a>概觀
 
-Azure 客戶可以在[Azure 入口網站](https://portal.azure.com)中建立和管理支援要求。
+Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以在[Azure 入口網站](https://portal.azure.com)中建立和管理要求，這會在本文中討論。 您也可以使用[Azure 支援票證 REST API](/rest/api/support)，以程式設計方式建立和管理要求。
 
 > [!NOTE]
 > Azure 入口網站 URL 專屬於您的組織部署所在的 Azure 雲端。
@@ -43,13 +43,13 @@ Azure 客戶可以在[Azure 入口網站](https://portal.azure.com)中建立和�
 
 ### <a name="role-based-access-control"></a>角色型存取控制
 
-若要建立支援要求，您必須是系統管理員，或被指派給[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。
+若要建立支援要求，您必須是系統管理員，或被指派給訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>前往全域標頭中的 [說明 + 支援]
 
 若要從 Azure 入口網站中的任何位置啟動支援要求：
 
-1. 選取入口網站右上角的 **?** 在全域標頭中。 然後選取 [說明 **+ 支援**]。
+1. 選取 [ **？** ] 在全域標頭中。 然後選取 [說明 **+ 支援**]。
 
    ![說明與支援](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -84,7 +84,7 @@ Azure 客戶可以在[Azure 入口網站](https://portal.azure.com)中建立和�
 >
 >
 
-### <a name="solutions"></a>解決方案
+### <a name="solutions"></a>方案
 
 收集基本資訊之後，接下來我們會向您示範可自行嘗試的解決方案。 在某些情況下，我們甚至可能會執行快速診斷。 解決方案是由 Azure 工程師撰寫，並可解決最常見的問題。
 

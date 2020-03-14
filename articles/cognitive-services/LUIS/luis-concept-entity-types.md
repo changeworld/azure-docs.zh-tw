@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: HT
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221517"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>實體及其在 LUIS 中的用途
 
@@ -40,7 +40,7 @@ ms.locfileid: "74422574"
 |語句|單位|資料|
 |--|--|--|
 |購買 3 張到紐約的機票|預先建置的號碼<br>Location.Destination|3<br>紐約|
-|購買 1 張 3 月 5 日從紐約到倫敦的機票|Location.Origin<br>Location.Destination<br>預先建置的 datetimeV2|紐約<br>倫敦<br>2018 年 3 月 5 日|
+|購買 1 張 3 月 5 日從紐約到倫敦的機票|Location.Origin<br>Location.Destination<br>預先建置的 datetimeV2|紐約<br>London<br>2018 年 3 月 5 日|
 
 ### <a name="entities-are-optional"></a>實體是選擇性的
 
@@ -60,8 +60,8 @@ ms.locfileid: "74422574"
 |--|--|--|--|
 |説明|help|-|沒有要解壓縮的內容。|
 |傳送內容|sendSomething|-|沒有要解壓縮的內容。 尚未訓練此模型在此內容中解壓縮 `something`，也沒有任何收件者。|
-|傳送目前的 Bob|sendSomething|`Bob`，`present`|已使用[personName](luis-reference-prebuilt-person.md)預先建立的實體（已將名稱 `Bob`解壓縮）來定型模型。 已使用機器學習的實體來解壓縮 `present`。|
-|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`，`box of chocolates`|實體已將兩個重要的資料片段（`Bob` 和 `box of chocolates`）解壓縮。|
+|傳送目前的 Bob|sendSomething|`Bob`, `present`|已使用[personName](luis-reference-prebuilt-person.md)預先建立的實體（已將名稱 `Bob`解壓縮）來定型模型。 已使用機器學習的實體來解壓縮 `present`。|
+|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|實體已將兩個重要的資料片段（`Bob` 和 `box of chocolates`）解壓縮。|
 
 ## <a name="design-entities-for-decomposition"></a>設計用於分解的實體
 
@@ -75,7 +75,7 @@ ms.locfileid: "74422574"
 
 機器學習的實體會根據透過定型語句學習到的內容觸發。 **條件約束**是套用至機器學習實體的選擇性規則，會根據非機器學習的實體（例如[清單](reference-entity-list.md)或[Regex](reference-entity-regular-expression.md)）的精確文字比對定義，進一步限制觸發。 例如，`size` 機器學習的實體可以有 `sizeList` 清單實體的條件約束，限制只有在遇到 `sizeList` 實體內所包含的值時，才會觸發 `size` 實體。
 
-[**描述**](luis-concept-feature.md)項是為了提升預測之單字或片語的相關性而套用的功能。 因為它們是用來*描述*意圖或實體，所以稱為 *「描述項*」。 描述元會說明資料的特性或屬性，例如重要的單字或片語。 該 LUIS 會觀察並學習。
+[**描述**](luis-concept-feature.md)項是為了提升預測之單字或片語的相關性而套用的功能。 因為它們是用來*描述*意圖或實體，所以稱為 *「描述項*」。 描述項說明資料的特性或屬性，例如 LUIS 觀察及學習的重要單字或片語。
 
 當您在 LUIS 應用程式中建立片語清單功能時，預設會全域啟用，並會在所有意圖和實體之間平均套用。 不過，如果您將片語清單套用為機器學習實體（或*模型*）的描述項（功能），則其範圍會縮減為只套用至該模型，而且不再與所有其他模型搭配使用。 使用片語清單做為模型的描述項有助於分解，方法是協助其適用之模型的精確度。
 
@@ -141,3 +141,4 @@ LUIS 入口網站會顯示實體（在範例中為語句）與您所選取的實
 請參閱[新增實體](luis-how-to-add-entities.md)，以深入了解如何將實體新增至 LUIS 應用程式。
 
 請參閱[教學課程：在 Language Understanding （LUIS）中使用機器學習的實體從使用者語句解壓縮結構化資料](tutorial-machine-learned-entity.md)，以瞭解如何使用機器學習的實體從語句中解壓縮結構化資料。
+ 

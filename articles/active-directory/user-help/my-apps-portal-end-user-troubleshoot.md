@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377963"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253152"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>針對我的應用程式入口網站的問題進行疑難排解
 

@@ -8,11 +8,11 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257442"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 

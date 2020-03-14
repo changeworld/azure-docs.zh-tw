@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100539"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249772"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 備份和還原
 
@@ -63,7 +63,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 [Azure 備份](/azure/backup/)針對在 Azure VM 中執行的 SQL Server 提供企業級備份功能。 所有備份都會儲存在復原服務保存庫儲存中，並在那裡進行管理。 此解決方案能提供數項特別適用於企業的優點：
 
 - **零基礎架構備份**：您不必管理備份伺服器或儲存位置。
-- **調整**：可保護許多 SQL VM 與數以千計的資料庫。
+- **規模**：可保護許多 SQL VM 與數以千計的資料庫。
 - **隨用隨付**：這項功能是由 Azure 備份提供的個別服務，但和所有 Azure 服務一樣，您只需依據使用量付費。
 - **集中管理和監視**：從 Azure 中的單一儀表板集中管理所有備份，包括 Azure 備份支援的其他工作負載。
 - **原則驅動的備份和保留**：針對定期備份建立標準備份原則。 建立保留原則以維護備份長達數年的時間。
@@ -133,7 +133,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 | 在 Azure 入口網站中設定備份原則 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 在 Azure 入口網站中還原資料庫 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 於單一儀表板中管理多部伺服器 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 還原時間點 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| 時間點還原 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 15 分鐘復原點目標 (RPO) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 短期備份保留原則 (天) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 長期備份保留原則 (月、年) |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |

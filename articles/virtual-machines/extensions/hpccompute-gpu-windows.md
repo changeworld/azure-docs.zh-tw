@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383295"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250539"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>適用於 Windows 的 NVIDIA GPU 驅動程式擴充功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "78383295"
 如需手動安裝驅動程式和目前支援版本的指示，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)。
 在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上也有擴充功能可用來安裝 NVIDIA GPU 驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -71,11 +71,11 @@ ms.locfileid: "78383295"
 
 ### <a name="properties"></a>屬性
 
-| 名稱 | 值 / 範例 | 資料型別 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| 類型 | NvidiaGpuDriverWindows | string |
+| publisher | Microsoft.HpcCompute | 字串 |
+| type | NvidiaGpuDriverWindows | 字串 |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -159,7 +159,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="error-codes"></a>錯誤碼
 
-| 錯誤 碼 | 意義 | 可能的動作 |
+| 錯誤碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
 | 0 | 作業已順利完成 |
 | 1 | 作業成功。 需要重新開機。 |

@@ -12,11 +12,11 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383742"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269350"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>在 SQL 資料倉儲中使用預存程序
 在 Azure SQL 資料倉儲中實作預存程序以便開發解決方案的秘訣。

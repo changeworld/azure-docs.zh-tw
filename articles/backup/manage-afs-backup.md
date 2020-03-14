@@ -4,17 +4,17 @@ description: 本文說明管理和監視 Azure 備份所備份之 Azure 檔案�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382528"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247653"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 檔案共用備份
 
 本文說明管理和監視[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)所備份之 Azure 檔案共用的一般工作。 您將瞭解如何在復原服務保存庫中執行管理工作。
 
-## <a name="monitor-jobs"></a>監控工作
+## <a name="monitor-jobs"></a>監視工作
 
 當您觸發備份或還原作業時，備份服務會建立追蹤的工作。 您可以在 [備份作業] 頁面上監視所有作業的進度。
 

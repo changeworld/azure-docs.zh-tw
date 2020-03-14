@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440564"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244533"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Netezza 複製資料
 
@@ -39,7 +39,7 @@ Netezza 連接器支援從來源進行平行複製。 如需詳細資訊，請�
 
 Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要為了使用此連接器而需手動安裝驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -53,7 +53,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要
 
 以下是針對 Netezza 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **type** 屬性必須設為 **Netezza**。 | 是 |
 | connectionString | 連線到 Netezza 的 ODBC 連接字串。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `pwd` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
@@ -61,7 +61,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要
 
 一般的連接字串為 `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`。 下表描述更多您可設定的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | SecurityLevel | 驅動程式用來連線到資料存放區的安全性 (SSL/TLS) 層級。 範例： `SecurityLevel=preferredSecured`. 支援的值為：<br/>- **僅限未受保護連線** (**onlyUnSecured**)：驅動程式不會使用 SSL。<br/>- **偏好未受保護連線 (preferredUnSecured) (預設值)** ：如果伺服器提供選擇，則驅動程式不使用 SSL。 <br/>- **偏好受保護連線 (preferredSecured)** ：如果伺服器提供選擇，則驅動程式會使用 SSL。 <br/>- **僅限受保護連線 (onlySecured)** ：除非有 SSL 連線，否則驅動程式不會連線。 | 否 |
 | CaCertFile | 伺服器所用 SSL 憑證的完整路徑。 範例： `CaCertFile=<cert path>;`| 是，如果已啟用 SSL |
@@ -118,7 +118,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要
 
 若要從 Netezza 複製資料，請將資料集的 **type** 屬性設定為 **NetezzaTable**。 以下是支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **NetezzaTable** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
@@ -154,7 +154,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要
 
 若要從 Netezza 複製資料，請將複製活動中的**來源**類型設定為 **NetezzaSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設定為 **NetezzaSource**。 | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 範例： `"SELECT * FROM MyTable"` | 否 (如果已指定資料集中的 "tableName") |
@@ -206,7 +206,7 @@ Data Factory Netezza 連接器會提供內建的資料分割，以平行方式�
 
 建議您啟用具有資料分割的平行複製，特別是當您從 Netezza 資料庫載入大量資料時。 以下是適用于不同案例的建議設定。 將資料複製到以檔案為基礎的資料存放區時，會建議寫入資料夾做為多個檔案（僅指定資料夾名稱），在此情況下，效能會比寫入單一檔案更好。
 
-| 案例                                                     | 建議的設定                                           |
+| 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 來自大型資料表的完整載入。                                   | **分割區選項**：資料配量。 <br><br/>在執行期間，Data Factory 會根據[Netezza 的內建資料](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)配量，自動分割資料，並依分割區複製資料。 |
 | 使用自訂查詢載入大量資料。                 | **分割區選項**：資料配量。<br>**查詢**： `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>在執行期間，Data Factory 會取代 `?AdfPartitionCount` （在複製活動上設定的平行複製編號）和 `?AdfDataSliceCondition` 與資料配量分割區邏輯，並傳送至 Netezza。 |

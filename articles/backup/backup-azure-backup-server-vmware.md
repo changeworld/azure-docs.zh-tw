@@ -4,11 +4,11 @@ description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152862"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273471"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
@@ -336,11 +336,11 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![保護群組成員和設定的摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
+## <a name="vmware-vsphere-67"></a>VMWare vSphere 6。7
 
 若要備份 vSphere 6.7，請執行下列動作：
 
-- 在 DPM Server 上啟用 TLS 1.2
+- 在 DPM 服務器上啟用 TLS 1。2
 
 >[!NOTE]
 >VMWare 6.7 開始已將 TLS 啟用為通訊協定。

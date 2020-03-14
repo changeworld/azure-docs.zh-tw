@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660304"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249590"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍
 當您在[Azure 入口網站的 Log Analytics](get-started-portal.md)中執行[記錄查詢](log-query-overview.md)時，查詢所評估的資料集取決於您選取的範圍和時間範圍。 本文說明範圍和時間範圍，以及如何根據您的需求進行設定。 它也會描述不同類型範圍的行為。
@@ -22,7 +22,7 @@ ms.locfileid: "77660304"
 
 範圍一律會顯示在 [Log Analytics] 視窗的左上角。 圖示會指出範圍是 Log Analytics 工作區還是 Application Insights 應用程式。 沒有圖示表示另一個 Azure 資源。
 
-![範圍](media/scope/scope.png)
+![影響範圍](media/scope/scope.png)
 
 範圍取決於您用來啟動 Log Analytics 的方法，在某些情況下，您可以按一下來變更範圍。 下表列出所使用的不同範圍類型，以及每個類別的不同詳細資料。
 
@@ -65,7 +65,7 @@ Log Analytics 會在使用特定數目的區域時發出警告或錯誤，協助
 ## <a name="time-range"></a>時間範圍
 時間範圍會根據建立記錄時，指定針對查詢評估的一組記錄。 這是由工作區或應用程式中每一筆記錄的標準屬性所定義，如下表所指定。
 
-| 位置 | 屬性 |
+| Location | 屬性 |
 |:---|:---|
 | Log Analytics 工作區          | TimeGenerated |
 | Application Insights 應用程式 | timestamp     |

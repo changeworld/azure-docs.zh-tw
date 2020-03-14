@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387454"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265905"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]

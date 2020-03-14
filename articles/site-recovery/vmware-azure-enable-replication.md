@@ -7,11 +7,11 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495382"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257312"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "75495382"
 * OS 磁片應該是基本磁碟，而非動態磁碟。
 * 針對第2代/已啟用 UEFI 的虛擬機器，作業系統系列應為 Windows，而且開機磁片應小於 300 GB。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經：
 

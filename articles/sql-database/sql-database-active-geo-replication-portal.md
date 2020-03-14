@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256428"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 入口網站中為 Azure SQL Database 設定主動式異地複寫，並起始容錯移轉
 
@@ -24,7 +24,7 @@ ms.locfileid: "78396877"
 
 如需單一和集區資料庫的自動容錯移轉群組的相關資訊，請參閱[使用容錯移轉群組搭配單一和集區資料庫的最佳作法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 如需使用受控實例之自動容錯移轉群組的相關資訊，請參閱[使用容錯移轉群組搭配受控實例的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用 Azure 入口網站來設定作用中異地複寫，您需要下列資源：
 

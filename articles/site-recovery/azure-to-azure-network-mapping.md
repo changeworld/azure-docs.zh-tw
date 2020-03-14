@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396907"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258079"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>為 VNet 設定網路對應和 IP 位址
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131956"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268700"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 
@@ -148,6 +148,10 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
 ### <a name="latency"></a>Latency
 
 自動繼續和自動暫停無伺服器資料庫的延遲通常是從1分鐘到自動繼續，以及1-10 分鐘到自動暫停的順序。
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>客戶管理的透明資料加密（BYOK）
+
+如果使用[客戶管理的透明資料加密](transparent-data-encryption-byok-azure-sql.md)（BYOK），且無伺服器資料庫會在金鑰刪除或撤銷發生時自動暫停，則資料庫會維持在自動暫停狀態。  在此情況下，當您下次嘗試繼續時，資料庫會保持暫停，直到其狀態在大約10分鐘後轉換成無法存取為止。  一旦資料庫變成無法存取，復原程式就會與已布建的計算資料庫相同。  如果在發生金鑰刪除或撤銷時，無伺服器資料庫在線上，則在大約10分鐘之後，資料庫也會變成無法存取，其方式與布建的計算資料庫相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>上架到無伺服器計算層
 

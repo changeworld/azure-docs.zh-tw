@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082181"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256792"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
 
@@ -68,15 +68,15 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **組態** | **支援**  
 --- | --- 
-主機 - NIC 小組 | yes 
-主機 - VLAN | yes 
-主機 - IPv4 | yes 
+主機 - NIC 小組 | 是 
+主機 - VLAN | 是 
+主機 - IPv4 | 是 
 主機 - IPv6 | 否 
 客體 VM - NIC 小組 | 否
-客體 VM - IPv4 | yes
+客體 VM - IPv4 | 是
 客體 VM - IPv6 | 否
-客體 VM - Windows/Linux - 靜態 IP 位址 | yes
-客體 VM - 多重 NIC | yes
+客體 VM - Windows/Linux - 靜態 IP 位址 | 是
+客體 VM - 多重 NIC | 是
 
 
 ## <a name="storage"></a>儲存體
@@ -85,34 +85,34 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **儲存體 (主機)** | **支援** 
 --- | --- 
-NFS | yes 
+NFS | 是 
 SMB 3.0 | N/A 
-SAN (ISCSI) | yes 
-多重路徑 (MPIO) | yes 
+SAN (ISCSI) | 是 
+多重路徑 (MPIO) | 是 
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
 **組態** | **支援** 
 --- | --- 
-VMDK | yes 
+VMDK | 是 
 VHD/VHDX | N/A 
 第 2 代 VM | N/A 
-共用叢集磁碟 | yes 
+共用叢集磁碟 | 是 
 已加密磁碟 | 否 
-UEFI| yes 
+UEFI| 是 
 NFS | 否 
 SMB 3.0 | 否 
-RDM | yes 
-磁碟 > 1 TB | yes 
-使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | yes 
+RDM | 是 
+磁碟 > 1 TB | 是 
+使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | 是 
 儲存空間 | 否 
-熱新增/移除磁碟 | yes 
-排除磁碟 | yes 
+熱新增/移除磁碟 | 是 
+排除磁碟 | 是 
 多重路徑 (MPIO) | N/A 
 
 ## <a name="vaults"></a>保存庫
 
-**Action** | **支援** 
+**動作** | **支援** 
 --- | --- 
 跨資源群組間移動保存庫 (在訂用帳戶之內或跨訂用帳戶) | 否 
 跨資源群組間移動儲存體、網路、Azure VM (在訂用帳戶之內或跨訂用帳戶) | 否 

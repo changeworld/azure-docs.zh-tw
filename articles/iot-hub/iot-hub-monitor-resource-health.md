@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929699"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271079"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
 
@@ -42,7 +42,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 「Azure 監視器」會追蹤「IoT 中樞」中進行的各種不同作業。 每個類別都有一個結構描述，當中定義該類別中事件的回報方式。
 
-#### <a name="connections"></a>連線
+#### <a name="connections"></a>連接
 
 連線類別會追蹤來自 IoT 中樞的裝置連線和中斷連線事件以及錯誤。 此類別對於識別未經授權的連線嘗試，及/或在遺失裝置連線時發出警示非常有用。
 
@@ -343,9 +343,9 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在這裡，`durationMs` 不會進行計算，因為 IoT 中樞的時鐘可能未與裝置的時鐘同步，因此計算持續時間可能會產生誤導。 建議您使用 `properties` 區段中的時間戳記來撰寫邏輯，以擷取暴增的裝置到雲端延遲。
 
-| 屬性 | 在系統提示您進行確認時，輸入 | 描述 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | 整數， | 裝置到雲端訊息的大小 (以位元組為單位) |
+| **messageSize** | 整數 | 裝置到雲端訊息的大小 (以位元組為單位) |
 | deviceId | 由 ASCII 7 位元英數字元組成的字串 | 裝置的身分識別 |
 | **callerLocalTimeUtc** | UTC 時間戳記 | 裝置本機時鐘所報告的訊息建立時間 |
 | **calleeLocalTimeUtc** | UTC 時間戳記 | IoT 中樞服務端時鐘所報告、訊息抵達 IoT 中樞閘道的時間 |
@@ -377,10 +377,10 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在 [`properties`] 區段中，此記錄檔包含有關訊息輸入的其他資訊。
 
-| 屬性 | 在系統提示您進行確認時，輸入 | 描述 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | 字串 | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
+| **isRoutingEnabled** | String | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中樞輸出記錄
 
@@ -409,11 +409,11 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在 [`properties`] 區段中，此記錄檔包含有關訊息輸入的其他資訊。
 
-| 屬性 | 在系統提示您進行確認時，輸入 | 描述 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | 字串 | 路由端點的名稱 |
-| **endpointType** | 字串 | 路由端點的類型 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
+| **endpointName** | String | 路由端點的名稱 |
+| **endpointType** | String | 路由端點的類型 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
 #### <a name="configurations"></a>組態
 

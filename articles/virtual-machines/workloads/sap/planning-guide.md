@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245261"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南
 
@@ -370,7 +370,7 @@ Microsoft Azure 是 Microsoft 所推出的雲端服務平台，可提供各式�
 
 下列 SAP 附註與 Azure 上的 SAP 主題相關︰
 
-| 附註編號 | 標題 |
+| 附註編號 | Title |
 | --- | --- |
 | [1928533] |Azure 上的 SAP 應用程式︰支援的產品和大小 |
 | [2015553] |Microsoft Azure 上的 SAP：支援的必要條件 |
@@ -495,9 +495,17 @@ Microsoft Azure 平臺是多租使用者平臺。 因此，裝載 Azure Vm 的�
 
 此外，Azure 還提供專用主機的概念。 專用主機概念可讓您更充分掌控 Azure 所執行的修補週期。 您可以根據自己的排程時間進行修補。 這項供應專案特別針對工作負載可能不會遵循正常工作負載週期的客戶來設定目標。 若要閱讀 Azure 專用主機供應專案的概念，請閱讀[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)一文。 SAP 工作負載支援使用這項供應專案，而且許多 SAP 客戶會想要更充分掌控 Microsoft 的基礎結構和最終維護計畫。 如需有關 Microsoft 如何維護及修補主控虛擬機器之 Azure 基礎結構的詳細資訊，請參閱[azure 中的虛擬機器維護](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)一文。
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>第1代和第2代虛擬機器
+Microsoft 的程式管理者能夠處理兩個不同的虛擬機器層代。 這些格式稱為**第1代**和**第2代**。 **第2代**是在2012年引進，Windows Server 2012 程式管理程式。 Azure 已開始使用第1代虛擬機器。 當您部署 Azure 虛擬機器時，預設值仍會使用第1代格式。 同時，您也可以部署第2代 VM 格式。 [Azure 上第2代 vm 的支援](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)一文會列出可部署為第2代 VM 的 Azure VM 系列。 本文也會列出第2代虛擬機器的重要功能差異，因為它們可以在 Hyper-v 私人雲端和 Azure 上執行。 更重要的是，本文也會列出第1代虛擬機器和第2代 Vm 之間的功能差異，如同在 Azure 中執行。 
+
+> [!NOTE]
+> 在 Azure 中執行的第1代和第2代 Vm 有功能上的差異。 如需這些差異的清單，請參閱[Azure 上第2代 vm 的支援](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)一文。  
+ 
+不可能將現有的 VM 從一個世代移至另一個世代。 若要變更虛擬機器的世代，您需要部署所需世代的新 VM，並重新安裝您在世代的虛擬機器中執行的軟體。 這只會影響 VM 的基本 VHD 映射，而且不會影響資料磁片或連接的 NFS 或 SMB 共用。 原本已指派給第1代 VM 的資料磁片、NFS 或 SMB 共用
+
+目前，您會遇到此問題，尤其是在 Azure M 系列 Vm 和 Mv2 系列 Vm 之間。 由於第1代 VM 格式的限制，Mv2 系列的大型 Vm 無法以第1代格式提供，但必須僅在層代2中提供。 另一方面，M 系列 VM 系列尚未啟用，無法部署在第2代。 因此，在 M 系列和 Mv2 系列虛擬機器之間重新調整大小，需要在以另一個 VM 系列為目標的虛擬機器上重新安裝軟體。 Microsoft 正努力讓您針對第2代部署部署 M 系列 Vm。 未來將 M 系列 Vm 部署為第2代 Vm，可讓您在 M 系列和 Mv2 系列虛擬機器之間進行現象的重新調整。 在這兩個方向中，從 M 系列調整為較大的 Mv2 系列虛擬機器，或從較大的 Mv2 系列 Vm 向下調整為較小的 M 系列 Vm。 只要 M 系列 Vm 可以部署為第2代 Vm，檔就會立即更新。    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>儲存體：Microsoft Azure 儲存體和資料磁碟
 Microsoft Azure 虛擬機器使用不同的儲存體類型。 在 Azure 虛擬機器服務上實作 SAP 時，請務必了解下列兩種主要儲存體類型之間的差異：
@@ -628,7 +636,7 @@ Azure 中的每個虛擬機器都必須連線到虛擬網路。
 
 
 > [!NOTE]
-> 根據預設，一旦部署 VM，就無法變更虛擬網路組態。 TCP/IP 設定必須留給 Azure DHCP 伺服器決定。 預設行為是動態 IP 指派。
+> 根據預設，一旦部署 VM，就無法變更虛擬網路組態。 TCP/IP 設定必須留給 Azure DHCP 伺服器。 預設行為是動態 IP 指派。
 >
 >
 
@@ -813,7 +821,7 @@ Azure CLI 提供您一組開放原始碼的跨平台命令集合，供您運用�
 在您的規劃中，千萬不要低估此專案的這個階段。 只有當您有關于本主題的合約和規則時，才需要移至下一個步驟，也就是規劃您在 Azure 中部署的網路架構。
 
 
-## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>在 Azure 中為 SAP 部署 VM 的不同方法
+## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>在 Azure 中為 SAP 部署 VM 的不同方式
 
 在本章中，您會學習在 Azure 中部署 VM 的不同方式。 本章涵蓋其他準備程序，以及在 Azure 中處理 VHD 和 VM 的方式。
 
@@ -1324,7 +1332,7 @@ Azure 異地複寫可在 VM 中的每個 VHD 上本機運作，而且不會依�
 > ![Windows][Logo_Windows] Windows
 >
 > 預設會開啟 Azure 所部署之 VM 中的 Windows 防火牆。 您現在必須允許開啟 SAP 連接埠，否則 SAP GUI 將無法連線。
-> 若要這樣做：
+> 作法：
 >
 > * 將 [控制台\系統及安全性\Windows 防火牆] 開啟至 [進階設定]。
 > * 現在以滑鼠右鍵按一下 [輸入規則]，然後選擇 [新增規則]。
@@ -1566,7 +1574,7 @@ az vm unmanaged-disk attach --resource-group $rgName --vm-name SAPERPDemo --size
 az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 --disk datadisk --new
 ```
 
-##### <a name="template"></a>範本
+##### <a name="template"></a>[範本]
 
 您可以使用 GitHub 上的 azure 快速入門-範本存放庫中的範例範本。
 
@@ -1619,12 +1627,12 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Service | 連接埠名稱 | 範例 `<nn`> = 01 | 預設範圍 (最小值-最大值) | 註解 |
+| 服務 | 連接埠名稱 | 範例 `<nn`> = 01 | 預設範圍 (最小值-最大值) | 註解 |
 | --- | --- | --- | --- | --- |
-| Dispatcher |sapdp`<nn>` 請參閱 * |3201 |3200 - 3299 |SAP 發送器，供 Windows 和 Java 的 SAP GUI 使用 |
-| 訊息伺服器 |sapms`<sid`> 請參閱 ** |3600 |任意 sapms`<anySID`> |sid = SAP-System-ID |
-| 閘道 |sapgw`<nn`> 請參閱 * |3301 |free |SAP 閘道，用於 CPIC 和 RFC 通訊 |
-| SAP 路由器 |sapdp99 |3299 |free |安裝後，只能將 /etc/services 中的 CI (中央執行個體) 服務名稱重新指派為任意值。 |
+| 發送器 |sapdp`<nn>` 請參閱 * |3201 |3200 - 3299 |SAP 發送器，供 Windows 和 Java 的 SAP GUI 使用 |
+| 訊息伺服器 |sapms`<sid`> 請參閱 ** |3600 |任意 sapms`<anySID`> |sid = SAP 系統 ID |
+| 閘道 |sapgw`<nn`> 請參閱 * |3301 |任意 |SAP 閘道，用於 CPIC 和 RFC 通訊 |
+| SAP 路由器 |sapdp99 |3299 |任意 |安裝後，只能將 /etc/services 中的 CI (中央執行個體) 服務名稱重新指派為任意值。 |
 
 *) nn = SAP 執行個體號碼
 
@@ -1646,7 +1654,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> 若要這樣做：
+> 作法：
 >
 > * 有些網路印表機隨附組態精靈，可讓您輕鬆地在 Azure VM 中設定印表機。 如果印表機未隨附任何精靈軟體，設定印表機的手動方式是建立新的 TCP/IP 印表機連接埠。
 > * 開啟 [控制台] -> [裝置和印表機] -> [新增印表機]
@@ -1790,13 +1798,13 @@ Azure 中的 SAP 執行個體必須能夠存取公司內部的檔案共用。 �
 
 **如需確切的操作說明，以及在部署期間使用這些 PowerShell Cmdlet 或 CLI 命令的詳細步驟，請遵循[部署指南][deployment-guide]中提供的指示。**
 
-### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>將 Azure 中的 SAP 執行個體整合到 SAProuter
+### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>將位於 Azure 的 SAP 執行個體整合到 SAProuter
 
 在 Azure 中執行的 SAP 執行個體也必須能夠從 SAProuter 存取。
 
 ![SAP 路由器網路連線][planning-guide-figure-2600]
 
-SAProuter 可啟用參與系統之間的 TCP/IP 通訊 (如果沒有直接的 IP 連線)。 這樣做的優點是，通訊合作夥伴之間不需要有網路層級的端對端連線。 SAProuter 預設會在連接埠 3299 接聽。
+如果沒有直接的 IP 連線，SAProuter 可啟用參與系統之間的 TCP/IP 通訊。 這樣做的優點是，通訊合作夥伴之間不需要有網路層級的端對端連線。 SAProuter 預設會在連接埠 3299 接聽。
 若要透過 SAProuter 來連線 SAP 實例，您必須提供 SAProuter 字串和主機名稱，並嘗試連接。
 
 ## <a name="sap-netweaver-as-java"></a>SAP NetWeaver AS Java

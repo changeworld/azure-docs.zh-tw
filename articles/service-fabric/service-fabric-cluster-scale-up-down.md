@@ -4,11 +4,11 @@ description: 針對每個節點類型/虛擬機器擴展集設定自動調整規
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587476"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258729"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>將叢集相應縮小或相應放大
 

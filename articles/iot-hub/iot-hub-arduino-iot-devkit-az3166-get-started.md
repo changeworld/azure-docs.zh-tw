@@ -9,11 +9,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
 ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912369"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271287"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>將 IoT DevKit AZ3166 連線至 Azure IoT 中樞
 
@@ -328,7 +328,7 @@ DevKit 會重新開機，然後開始執行程式碼。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，尋找您所建立的 IoT 中樞。
 
-    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure 入口網站](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. 在 [共用存取原則] 窗格中，按一下 [iothubowner] 原則，然後記下您 IoT 中樞的連接字串。
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257273"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/實體伺服器嚴重損壞修復的設定伺服器
 
@@ -138,7 +138,7 @@ ms.locfileid: "73954350"
 
 ## <a name="upgrade-the-configuration-server"></a>升級設定伺服器
 
-您執行更新彙總來更新設定伺服器。 更新最多可以套用到 N-4 版本。 例如︰
+執行更新彙總來更新組態伺服器。 更新最多可以套用到 N-4 版本。 例如：
 
 - 如果您執行 9.7、9.8、9.9 或 9.10，就可以直接升級至 9.11。
 - 如果您執行 9.6 或更早版本，而且想要升級至 9.11，則在升級到 9.11 之前，必須先升級到 版本 9.7。
@@ -184,9 +184,9 @@ ms.locfileid: "73954350"
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>參數
 
-|參數名稱| 在系統提示您進行確認時，輸入 | 描述| 值|
+|參數名稱| 類型 | 描述| 值|
 |-|-|-|-|
 | /ServerMode|必要|指定應該同時安裝組態和處理序伺服器，還是只安裝處理序伺服器|CS<br>PS|
 |/InstallLocation|必要|安裝元件的資料夾| 電腦上的任何資料夾|

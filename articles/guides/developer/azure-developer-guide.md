@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245001"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 

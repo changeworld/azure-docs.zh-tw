@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844950"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269428"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的緩慢查詢記錄
 在適用於 MySQL 的 Azure 資料庫中，使用者可以使用慢速查詢記錄。 不支援存取交易記錄。 慢速查詢記錄檔可以用來找出效能瓶頸，以進行疑難排解。

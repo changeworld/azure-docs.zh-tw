@@ -4,11 +4,11 @@ description: 透過將鎖定套用到所有使用者和角色，防止使用者�
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384507"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274004"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250617"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能（Microsoft.ostcextensions.customscriptforlinux. DSCForLinux）
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620605"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257936"
 ---
 # <a name="about-migration"></a>關於移轉
 
@@ -30,7 +30,7 @@ ms.locfileid: "73620605"
 
 ## <a name="what-do-we-mean-by-migration"></a>移轉的意思為何？
 
-除了使用站台復原進行內部部署與 Azure VM 的災害復原，您還可以使用 Site Recovery 服務來加以移轉。 有何不同？
+除了使用站台復原進行內部部署與 Azure VM 的災害復原，您還可以使用 Site Recovery 服務來加以移轉。 有什麼不同？
 
 - 對於災害復原，您需要定期將機器複寫至 Azure。 當發生運行中斷時，您就會將該機器從主要站台容錯移轉至 Azure 次要站台，並從該處進行存取。 當主要站台恢復可用狀態時，您就可以從 Azure 進行容錯回復。
 - 進行移轉時，您會將內部部署機器複寫至 Azure，或將 Azure VM 複寫至次要地區。 然後，將 VM 從主要站台容錯移轉至次要站台，並完成移轉流程。 其中不包含容錯回復。  

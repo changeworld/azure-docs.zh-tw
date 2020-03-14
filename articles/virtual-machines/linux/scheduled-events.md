@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390459"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267192"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 中繼資料服務：Linux VM 的已排定事件
 
@@ -46,7 +46,7 @@ ms.locfileid: "78390459"
 排程的事件會提供下列使用案例中的事件：
 
 - [平臺起始的維護](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates)（例如，VM 重新開機、即時移轉或保留主機的記憶體更新）
-- 降低的硬體
+- 虛擬機器在降級的[主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行，預測即將失敗
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
 - [找出 VM](spot-vms.md)和[點擴展集](../../virtual-machine-scale-sets/use-spot.md)實例收回。
 
@@ -146,6 +146,9 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 重新部署 | 10 分鐘 |
 | Preempt | 30 秒 |
 | Terminate | [可](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)設定的使用者：5到15分鐘 |
+
+> [!NOTE] 
+> 在某些情況下，Azure 會因為硬體降級而預測主機失敗，並會嘗試藉由排程遷移來減輕服務中斷的影響。 受影響的虛擬機器將會收到具有 `NotBefore` 的排程事件，這通常是未來幾天的時間。 實際的時間會依預測的失敗風險評估而有所不同。 Azure 會在可能的情況下，儘量提供7天的事先通知，但實際的時間會有所不同，如果預測是硬體故障即將的機率很高，可能會較小。 若要將服務的風險降到最低，以免系統起始的遷移之前發生硬體故障，建議您儘快重新部署虛擬機器。
 
 ### <a name="start-an-event"></a>啟動事件 
 

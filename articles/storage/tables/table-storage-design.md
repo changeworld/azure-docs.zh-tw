@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387110"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255141"
 ---
 # <a name="design-scalable-and-performant-tables"></a>設計可擴充且具效能的資料表
 
@@ -140,19 +140,8 @@ ms.locfileid: "78387110"
 EGT 也會帶來需在您設計中評估的潛在取捨。 那就是，使用較多分割會增加應用程式的延展性，因為 Azure 有更多機會可在多個節點間執行負載平衡要求。 但是，使用多個分割可能會在應用程式執行不可部分完成的交易時，及維護資料的嚴格一致性時造成限制。 此外，還有些在分割層級上的特定延展性目標，可能會限制單一節點的預期交易輸送量。 如需 Azure 標準儲存體帳戶之擴充性目標的詳細資訊，請參閱[標準儲存體帳戶的擴充性目標](../common/scalability-targets-standard-account.md)。 如需深入了解表格服務的延展性目標，請參閱[適用於表格儲存體的延展性和效能目標](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量考量
-下表說明您在設計表格服務方案時所需注意的某些索引鍵值：  
 
-| Azure 儲存體帳戶的容量總計 | 500 TB |
-| --- | --- |
-| Azure 儲存體帳戶中的資料表數目 |僅受限於儲存體帳戶的容量 |
-| 資料表中的資料分割數目 |僅受限於儲存體帳戶的容量 |
-| 資料分割中的實體數目 |僅受限於儲存體帳戶的容量 |
-| 個別實體的大小 |最多 1 MB 和 255 個屬性 (包括 **PartitionKey**、**RowKey** 和 **Timestamp**) |
-| **PartitionKey** |大小最多 1 KB 的字串 |
-| **RowKey** |大小最多 1 KB 的字串 |
-| 實體群組交易的大小 |交易最多可以包含 100 個實體，而承載大小必須小於 4 MB。 一個 EGT 只能更新實體一次。 |
-
-如需詳細資訊，請參閱 [了解表格服務資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>成本考量
 表格儲存體比較便宜，但您在評估任何表格服務方案時，均應將容量使用量和交易數目的成本預估同時納入考量。 不過，在許多情況下，儲存反正規化或重複的資料以改善方案的效能或延展性，也是有效措施。 如需定價的詳細資訊，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。  

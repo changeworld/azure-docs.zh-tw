@@ -9,27 +9,27 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462576"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256051"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>受控實例的 T-sql 差異、限制和已知問題
 
 本文摘要說明並解釋 Azure SQL Database 受控實例與內部部署 SQL Server 資料庫引擎之間的語法和行為差異。 受控執行個體的部署選項提供對內部部署 SQL Server 資料庫引擎的高度相容性。 受控執行個體支援大部分的 SQL Server 資料庫引擎功能。
 
-![遷移](./media/sql-database-managed-instance/migration.png)
+![移轉](./media/sql-database-managed-instance/migration.png)
 
 受控執行個體引進了一些 PaaS 限制，相較于 SQL Server，還有一些行為變更。 差異分成下列類別：<a name="Differences"></a>
 
 - [可用性](#availability)包括[Always On 可用性群組](#always-on-availability-groups)和[備份](#backup)的差異。
-- [安全性](#security)包括[審核](#auditing)、[憑證](#certificates)、[認證](#credential)、[密碼編譯提供者](#cryptographic-providers)、[登入和使用者](#logins-and-users)以及[服務金鑰和服務主要金鑰](#service-key-and-service-master-key)的差異。
-- [設定](#configuration)包括[緩衝集區延伸](#buffer-pool-extension)、定[序](#collation)、[相容性層級](#compatibility-levels)、[資料庫鏡像](#database-mirroring)、[資料庫選項](#database-options)、[SQL Server Agent](#sql-server-agent) 和[資料表選項](#tables)的差異。
-- [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分散式交易](#distributed-transactions)、[擴充事件](#extended-events)、[外部程式庫](#external-libraries)、[filestream 和 FileTable](#filestream-and-filetable)、[全文檢索語義搜尋](#full-text-semantic-search)、[連結的伺服器](#linked-servers)、[PolyBase](#polybase)、[複寫](#replication)、[還原](#restore-statement)、[Service Broker](#service-broker)、[預存程式、函數和觸發程式](#stored-procedures-functions-and-triggers)。
+- [安全性](#security)包括[審核](#auditing)、[憑證](#credential)、認證[、](#certificates)[密碼編譯提供者](#cryptographic-providers)、登入[和使用者](#logins-and-users)，以及[服務金鑰和服務主要金鑰](#service-key-and-service-master-key)的差異。
+- [Configuration](#configuration)設定包括[緩衝集區延伸](#buffer-pool-extension)、定[序](#collation)、[相容性層級](#compatibility-levels)、[資料庫鏡像](#database-mirroring)、[資料庫選項](#database-options)、 [SQL Server Agent](#sql-server-agent)和[資料表選項](#tables)的差異。
+- [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、 [CLR](#clr)、 [DBCC](#dbcc)、[分散式交易](#distributed-transactions)、[擴充的事件](#extended-events)、[外部程式庫](#external-libraries)、 [filestream 和 FileTable](#filestream-and-filetable)、[全文檢索語義搜尋](#full-text-semantic-search)、[連結的伺服器](#linked-servers)、 [PolyBase](#polybase) [、複寫](#replication)、[還原](#restore-statement)、 [Service Broker](#service-broker)、[預存程式、函數和觸發](#stored-procedures-functions-and-triggers)程式。
 - [環境設定](#Environment)，例如 vnet 和子網設定。
 
 大部分的功能都是架構條件約束，並代表服務功能。
@@ -48,7 +48,7 @@ ms.locfileid: "77462576"
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>備份
+### <a name="backup"></a>Backup
 
 受控實例具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -65,8 +65,7 @@ ms.locfileid: "77462576"
 
 - 使用受控實例，您可以將實例資料庫備份至最多32個等量的備份，如果使用備份壓縮，這就足以應付最多 4 TB 的資料庫。
 - 您無法在使用服務管理的透明資料加密（TDE）加密的資料庫上執行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服務管理的 TDE 會強制使用內部 TDE 金鑰來加密備份。 無法匯出金鑰，因此您無法還原備份。 使用自動備份和時間點還原，或改為使用[客戶管理的（BYOK） TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) 。 您也可以在資料庫上停用加密。
-- 只有[BlockBlobStorage 帳戶](/azure/storage/common/storage-account-overview#types-of-storage-accounts)才支援手動備份至 Azure Blob 儲存體。
-- 在受控實例中使用 `BACKUP` 命令的備份等量大小上限為 195 GB，這是最大 blob 大小。 在備份命令中增加條帶 (Stripe) 數目，可減少個別條帶 (Stripe) 的大小並維持在此限制內。
+- 在受控實例中使用 `BACKUP` 命令的備份等量大小上限為 195 GB，這是最大 blob 大小。 在備份命令中增加等量磁碟區的數目，以減少個別的等量磁碟區大小並維持在這項限制內。
 
     > [!TIP]
     > 若要解決這項限制，當您從內部部署環境或虛擬機器中的 SQL Server 備份資料庫時，您可以：
@@ -96,7 +95,7 @@ Azure SQL Database 中的資料庫和 SQL Server 中的資料庫兩者之間的�
 - 系統會提供新的語法 `TO URL`，讓您可以用來指定放置 `.xel` 檔案之 Azure Blob 儲存體容器的 URL。
 - 不支援語法 `TO FILE`，因為受控實例無法存取 Windows 檔案共用。
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
 - [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -111,7 +110,7 @@ Azure SQL Database 中的資料庫和 SQL Server 中的資料庫兩者之間的�
 
 請參閱 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) 和 [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql)。 
  
-**因應措施**：請改為[取得憑證二進位內容和私密金鑰、將它儲存為 .sql 檔案，並從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)，而不是建立憑證的備份及還原備份：
+因應**措施：您**可以改[為取得憑證二進位內容和私密金鑰、將它儲存為 .sql 檔案，並從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)，而不是建立憑證的備份及還原備份：
 
 ```sql
 CREATE CERTIFICATE  
@@ -140,8 +139,8 @@ WITH PRIVATE KEY (<private_key_options>)
     受控實例支援使用 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`語法 Azure AD 資料庫主體。 這項功能也稱為 Azure AD 自主資料庫使用者。
 
 - 不支援使用 `CREATE LOGIN ... FROM WINDOWS` 語法建立的 Windows 登入。 使用 Azure Active Directory 登入和使用者。
-- 建立實例的 Azure AD 使用者具有不[受限制的系統管理員許可權](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
-- 您可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 語法來建立非系統管理員 Azure AD 資料庫層級的使用者。 請參閱 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)。
+- 建立實例的 Azure AD 使用者具有不[受限制的系統管理員許可權](sql-database-manage-logins.md)。
+- 您可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 語法來建立非系統管理員 Azure AD 資料庫層級的使用者。 請參閱[建立使用者 .。。來自外部提供者](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。
 - Azure AD 伺服器主體（登入）僅支援一個受控實例中的 SQL 功能。 需要跨實例互動的功能，不論它們是否位於相同的 Azure AD 租使用者或不同的 tenant 中，Azure AD 的使用者都不支援。 這類功能的範例如下：
 
   - SQL 異動複寫。
@@ -273,15 +272,15 @@ WITH PRIVATE KEY (<private_key_options>)
 
 如需詳細資訊，請參閱 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
-### <a name="sql-server-agent"></a>SQL Server 代理程式
+### <a name="sql-server-agent"></a>SQL Server Agent
 
-- 目前不支援在受控實例中啟用和停用 SQL Server Agent。 SQL Agent 一直在執行中。
+- 目前不支援在受控實例中啟用和停用 SQL Server Agent。 SQL 代理程式一律會處於正在執行的狀態。
 - SQL Server Agent 設定是唯讀的。 受控實例中不支援此程式 `sp_set_agent_properties`。 
-- 工作 (Job)
+- 工作
   - 支援 T-SQL 作業步驟。
   - 支援下列複寫作業：
     - 交易記錄讀取器
-    - 快照集
+    - 快照式
     - 散發者
   - 支援 SSIS 作業步驟。
   - 目前不支援其他類型的作業步驟：
@@ -425,12 +424,12 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支援的語法：
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- 來源: 
+- 來源： 
   - `FROM URL` （Azure Blob 儲存體）是唯一支援的選項。
   - 不支援 `FROM DISK`/`TAPE`/備份裝置。
   - 不支援備份組。
 - 不支援 `WITH` 選項，例如沒有 `DIFFERENTIAL` 或 `STATS`。
-- `ASYNC RESTORE`:即使用戶端連接中斷，仍會繼續還原。 如果您的連接已中斷，您可以查看 [`sys.dm_operation_status`] 視圖，以取得還原作業的狀態，以及建立和卸載資料庫的狀態。 請參閱 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)。 
+- `ASYNC RESTORE`：即使用戶端連接中斷，還是會繼續還原。 如果您的連接已中斷，您可以查看 [`sys.dm_operation_status`] 視圖，以取得還原作業的狀態，以及建立和卸載資料庫的狀態。 請參閱 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)。 
 
 系統會設定或覆寫下列資料庫選項，而且之後無法變更： 
 
@@ -455,13 +454,13 @@ WITH PRIVATE KEY (<private_key_options>)
  > [!IMPORTANT]
  > 相同的限制適用于內建的時間點還原作業。 例如，無法在業務關鍵實例上還原超過 4 TB 的一般目的資料庫。 具有記憶體內部 OLTP 檔案或超過280個檔案的商務關鍵資料庫，無法在一般用途實例上還原。
 
-### <a name="service-broker"></a>Service broker
+### <a name="service-broker"></a>Service Broker
 
 不支援跨執行個體的服務訊息代理程式：
 
-- `sys.routes`:必要條件是，您必須從 sys.databases 選取位址。 位址在每個路由上都必須是 LOCAL。 請參閱 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql)。
-- `CREATE ROUTE`:您無法將 `CREATE ROUTE` 與 `LOCAL`以外的 `ADDRESS` 搭配使用。 請參閱 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql)。
-- `ALTER ROUTE`:您無法將 `ALTER ROUTE` 與 `LOCAL`以外的 `ADDRESS` 搭配使用。 請參閱 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql)。 
+- `sys.routes`：必要條件，您必須從 sys.databases 選取位址。 位址在每個路由上都必須是 LOCAL。 請參閱 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql)。
+- `CREATE ROUTE`：您無法將 `CREATE ROUTE` 與 `LOCAL`以外的 `ADDRESS` 搭配使用。 請參閱 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql)。
+- `ALTER ROUTE`：您無法將 `ALTER ROUTE` 與 `LOCAL`以外的 `ADDRESS` 搭配使用。 請參閱 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql)。 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>預存程式、函數和觸發程式
 
@@ -470,6 +469,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - 不支援 `sp_execute_external_scripts`。 請參閱 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
@@ -491,7 +491,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Environment"></a>環境條件約束
 
-### <a name="subnet"></a>Subnet
+### <a name="subnet"></a>子網路
 -  您無法將任何其他資源（例如虛擬機器）放在已部署受控實例的子網中。 使用不同的子網來部署這些資源。
 - 子網必須有足夠的可用[IP 位址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)數目。 最小值為16，而建議在子網中至少要有32個 IP 位址。
 - [服務端點無法與受控實例的子網建立關聯](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 當您建立虛擬網路時，請確定已停用 [服務端點] 選項。
@@ -536,19 +536,19 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>透過入口網站針對容錯移轉群組進行手動容錯移轉的限制
 
-**日期**Jan 2020
+**日期：** Jan 2020
 
 如果容錯移轉群組跨越不同 Azure 訂用帳戶或資源群組中的實例，則無法從容錯移轉群組中的主要實例起始手動容錯移轉。
 
-**因應措施**：透過入口網站，從地理位置次要實例起始容錯移轉。
+因應**措施：透過**入口網站，從地理位置次要實例起始容錯移轉。
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理程式角色需要非系統管理員（sysadmin）登入的明確執行許可權
 
-**日期**12月2019
+**日期：** 12月2019
 
-如果將非系統管理員（sysadmin）登入加入任何[SQL Agent 固定資料庫角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)中，就會有一個問題，即必須授與主要預存程式的明確執行許可權，才能讓這些登入工作。 如果遇到此問題，就會出現錯誤訊息「物件 < 拒絕執行許可權 object_name > （Microsoft SQL Server，錯誤：229）」將會顯示。
+如果將非系統管理員（sysadmin）登入加入任何[SQL Agent 固定資料庫角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)中，就會有一個問題，即必須授與主要預存程式的明確執行許可權，才能讓這些登入工作。 如果發生此問題，將會顯示錯誤訊息「物件 < 上的執行許可權被拒絕 object_name > （Microsoft SQL Server，錯誤：229）」。
 
-**因應措施**：一旦您將登入新增至其中一個 SQL Agent 固定資料庫角色：SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole，針對新增至這些角色的每個登入，會執行下列 T-sql 腳本，以明確地將執行許可權授與所列的預存程式。
+因應措施：將登入新增至其中一個 SQL Agent 固定資料庫**角色： SQLAgentUserRole**、SQLAgentReaderRole 或 SQLAgentOperatorRole，針對新增至這些角色的每個登入，執行下列 t-sql 腳本，將執行許可權明確授與所列的預存程式。
 
 ```tsql
 USE [master]
@@ -562,53 +562,53 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>代理程式進程重新開機可能會中斷 SQL 代理程式作業
 
-**日期**12月2019
+**日期：** 12月2019
 
 SQL 代理程式會在每次作業啟動時建立新的會話，逐漸增加記憶體耗用量。 為了避免達到會封鎖執行排程工作的內部記憶體限制，Agent 進程會在其記憶體耗用量達到閾值後重新開機。 這可能會導致在重新開機時中斷執行的作業。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>記憶體內部 OLTP 記憶體限制不適用
 
-**日期**2019年10月
+**日期：** 2019年10月
 
 在某些情況下，商務關鍵服務層級將不會正確地套用[記憶體優化物件的最大記憶體限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 受控實例可讓工作負載針對記憶體內部 OLTP 作業使用更多記憶體，這可能會影響實例的可用性和穩定性。 達到限制的記憶體內部 OLTP 查詢可能不會立即失敗。 這個問題很快就會修正。 使用更多記憶體內部 OLTP 記憶體的查詢，如果達到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)，將會很快失敗。
 
-**因應措施：** 使用[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [監視記憶體內部 OLTP 儲存體使用量](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)，以確保工作負載不會使用超過可用的記憶體。 增加相依于虛擬核心數目的記憶體限制，或優化您的工作負載以使用較少的記憶體。
+因應措施 **：** 使用[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [監視記憶體內部 OLTP 儲存體使用量](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)，以確保工作負載不會使用超過可用的記憶體。 增加相依于虛擬核心數目的記憶體限制，或優化您的工作負載以使用較少的記憶體。
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>嘗試移除不是空的檔案時傳回錯誤的錯誤
 
-**日期**2019年10月
+**日期：** 2019年10月
 
 SQL Server/受控執行個體[不允許使用者捨棄不是空的](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)檔案。 如果您嘗試使用 `ALTER DATABASE REMOVE FILE` 語句移除非空白的資料檔案，將不會立即傳回錯誤 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`。 受控執行個體會繼續嘗試卸載檔案，而且在使用 `Internal server error`30 分鐘之後，作業將會失敗。
 
-**因應措施**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令移除檔案的內容。 如果這是檔案群組中唯一的檔案，您必須先從與這個檔案群組相關聯的資料表或分割區中刪除資料，然後再壓縮檔案，並選擇性地將此資料載入另一個資料表/資料分割。
+因應**措施：使用**`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令移除檔案的內容。 如果這是檔案群組中唯一的檔案，您必須先從與這個檔案群組相關聯的資料表或分割區中刪除資料，然後再壓縮檔案，並選擇性地將此資料載入另一個資料表/資料分割。
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>進行中的資料庫還原會封鎖變更服務層級和建立實例作業
 
-**日期**Sep 2019
+**日期：** Sep 2019
 
 進行中的 `RESTORE` 語句、資料移轉服務遷移程式和內建的還原時間點，將會封鎖更新服務層級或重新調整現有實例的大小，並建立新的實例，直到還原程式完成為止。 還原程式將會在還原程式執行所在的相同子網中，封鎖受控實例和實例集區上的這些作業。 實例集區中的實例不受影響。 建立或變更服務層作業不會失敗或超時，一旦還原程式完成或取消，就會繼續進行。
 
-**因應措施**：等到還原程式完成，或如果建立或更新服務層級作業的優先順序較高，則取消還原程式。
+因應**措施：等到**還原程式完成，或如果建立或更新服務層級作業的優先順序較高，則取消還原程式。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>業務關鍵服務層級上的 Resource Governor 可能需要在容錯移轉之後重新設定
 
-**日期**Sep 2019
+**日期：** Sep 2019
 
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)功能可讓您限制指派給使用者工作負載的資源，可能會在容錯移轉或使用者起始的服務層級變更之後，不正確地分類某些使用者工作負載（例如，最大 vCore 或最大實例儲存體大小的變更）。
 
-**因應措施**：如果您使用[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，請在實例啟動時，定期執行 `ALTER RESOURCE GOVERNOR RECONFIGURE` 或當做 Sql 代理程式作業的一部分，以執行 sql 工作。
+因應措施：如果您使用[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，請在實例啟動時，**定期執行 `ALTER RESOURCE GOVERNOR RECONFIGURE`** 或當做 sql 代理程式作業的一部分，以執行 sql 工作。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>服務層升級之後，必須重新初始化跨資料庫 Service Broker 對話方塊
 
-**日期**2019年8月
+**日期：** 2019年8月
 
 跨資料庫 Service Broker 對話方塊會在變更服務層級作業之後，停止將訊息傳遞至其他資料庫中的服務。 訊息不會**遺失**，而且可以在寄件者佇列中找到。 受控執行個體中的任何虛擬核心或實例儲存體大小變更，將會導致在所有資料庫中變更[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) view `service_broke_guid` 值。 使用[BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql)語句來建立的任何 `DIALOG`，都會參考其他資料庫中的服務代理程式，將會停止傳遞訊息到目標服務。
 
-**因應措施：** 請先停止使用跨資料庫 Service Broker 對話交談的任何活動，再更新服務層級，然後在之後重新初始化。 如果有剩餘的訊息在服務層級變更後無法傳遞，請從來源佇列讀取訊息，然後將它們重新傳送至目標佇列。
+因應措施 **：** 請先停止使用跨資料庫 Service Broker 對話交談的任何活動，再更新服務層級，然後在之後重新初始化。 如果有剩餘的訊息在服務層級變更後無法傳遞，請從來源佇列讀取訊息，然後將它們重新傳送至目標佇列。
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>不支援 Azure AD 登入類型的 Impersonification
 
-**日期**2019 年 7 月
+**日期：** 2019年7月
 
 不支援使用下列 AAD 主體 `EXECUTE AS USER` 或 `EXECUTE AS LOGIN` 的模擬：
 -   AAD 使用者別名。 在此情況下，會傳回下列錯誤 `15517`。
@@ -616,19 +616,19 @@ SQL Server/受控執行個體[不允許使用者捨棄不是空的](/sql/relatio
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>sp_send_db_mail 不支援 @query 參數
 
-**日期**2019 年 4 月
+**日期：** 2019年4月
 
-[Sp_send_db_mail ](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql)`@query`程式中的參數無法使用。
+[Sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql)程式中的 `@query` 參數無法使用。
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>必須在異地容錯移轉之後重新設定異動複寫
 
-**日期**Mar 2019
+**日期：** Mar 2019
 
 如果在自動容錯移轉群組中的資料庫上啟用異動複寫，則受管理的實例系統管理員必須清除舊主要複本上的所有發行集，並在容錯移轉至另一個區域之後，在新的主要上重新設定它們。 如[需詳細資訊，請](#replication)參閱複寫。
 
 ### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>SSDT 中不支援 AAD 登入和使用者
 
-**日期**2019年11月
+**日期：** 2019年11月
 
 SQL Server Data Tools 不完全支援 Azure Active directory 登入和使用者。
 
@@ -636,7 +636,7 @@ SQL Server Data Tools 不完全支援 Azure Active directory 登入和使用者�
 
 當資料庫在受控執行個體上還原時，還原服務會先建立具有所需名稱的空資料庫，以在實例上配置名稱。 經過一段時間之後，就會卸載此資料庫，並啟動實際資料庫的還原。 處於*還原*狀態的資料庫將暫時具有隨機 GUID 值，而不是名稱。 一旦還原程式完成，暫存名稱就會變更為 `RESTORE` 語句中所指定的名稱。 在初始階段中，使用者可以存取空的資料庫，甚至在此資料庫中建立資料表或載入資料。 當還原服務啟動第二個階段時，將會卸載此暫存資料庫。
 
-**因應措施**：除非您看到還原已完成，否則請不要存取您要還原的資料庫。
+因應**措施：除非**您看到還原已完成，否則請不要存取您要還原的資料庫。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>已重新建立 TEMPDB 結構和內容
 
@@ -696,13 +696,13 @@ using (var scope = new TransactionScope())
 
 雖然此程式碼適用于相同實例內的資料，但它需要 MSDTC。
 
-**因應措施：** 使用[sqlconnection.changedatabase （String）](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)在連接內容中使用另一個資料庫，而不是使用兩個連接。
+因應措施 **：** 使用[sqlconnection.changedatabase （String）](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)在連接內容中使用另一個資料庫，而不是使用兩個連接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模組與連結的伺服器有時候無法參考本機 IP 位址
 
 放在受控實例中的 CLR 模組和連結的伺服器，或參考目前實例的分散式查詢有時無法解析本機實例的 IP。 此錯誤為暫時性問題。
 
-**因應措施：** 如果可能的話，請在 CLR 模組中使用內容連接。
+因應措施 **：** 如果可能的話，請在 CLR 模組中使用內容連接。
 
 ## <a name="next-steps"></a>後續步驟
 

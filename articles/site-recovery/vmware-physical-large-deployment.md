@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256935"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>針對 VMware Vm/實體伺服器設定大規模的嚴重損壞修復
 
@@ -26,7 +26,7 @@ ms.locfileid: "75895784"
 - 當您針對 VMware Vm 規劃大規模的嚴重損壞修復，並找出所需的 Azure 資源時，您可以指定將用於容量計算的 RTO 值。
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 大規模嚴重損壞修復的一些一般最佳作法。 這些最佳作法會在檔的下一節中更詳細地討論。
 
@@ -95,7 +95,7 @@ ms.locfileid: "75895784"
 
 什麼是相符的意思？ 若要啟動 Azure VM，Azure 需要某些驅動程式處於開機啟動狀態，而 DHCP 等服務會設定為自動啟動。
 - 符合規範的電腦就已準備好這些設定。
-- 對於執行 Windows 的機器，您可以主動檢查合規性，並視需要使其符合規範。 [深入了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
+- 對於執行 Windows 的機器，您可以主動檢查合規性，並視需要使其符合規範。 [詳細資訊](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
 - Linux 機器只會在容錯移轉時進入合規性狀態。
 
 **機器符合 Azure 的規定嗎？** | **Azure VM 限制（受控磁片容錯移轉）**
@@ -155,7 +155,7 @@ ms.locfileid: "75895784"
 
 **CPU** | **記憶體** | **快取磁碟** | **變換率**
  --- | --- | --- | --- 
-12 個 vCPU<br> 2個通訊端 * 6 核心 @ 2.5 Ghz | 24 GB | 1GB | 一天最多 2 TB
+12 個 vCPU<br> 2個通訊端 * 6 核心 @ 2.5 Ghz | 24 GB | 1 GB | 一天最多 2 TB
 
 設定進程伺服器，如下所示：
 

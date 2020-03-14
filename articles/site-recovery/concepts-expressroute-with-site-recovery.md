@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362568"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258001"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute 搭配 Azure Site Recovery
 
@@ -21,7 +21,7 @@ Microsoft Azure ExpressRoute 可讓您透過連線提供者所提供的私人連
 
 本文說明如何使用 Azure ExpressRoute 來搭配 Azure Site Recovery 以進行災害復原和移轉。
 
-## <a name="expressroute-circuits"></a>ExpressRoute 循環
+## <a name="expressroute-circuits"></a>ExpressRoute 線路
 
 ExpressRoute 線路代表您的內部部署基礎結構與 Microsoft 雲端服務之間，透過連線提供者的邏輯連線。 您可以訂購多條 ExpressRoute 線路。 每一條線路可以位於相同或不同區域，且可透過不同的連線提供者連線到您的內部環境。 請在[這裡](../expressroute/expressroute-circuit-peerings.md)深入了解 ExpressRoute 線路。
 
@@ -35,7 +35,7 @@ Site Recovery 會透過公用端點，將資料複製到目標 Azure 區域上�
 
 請確定也符合設定伺服器的[網路需求](vmware-azure-configuration-server-requirements.md#network-requirements)。 設定伺服器需要連線到特定的 Url，才能進行 Site Recovery 複寫的協調流程。 ExpressRoute 無法用於此連線。 
 
-如果您在內部部署使用 proxy，而且想要針對複寫流量使用 ExpressRoute，您必須在設定伺服器和進程伺服器上設定 Proxy 略過清單。 遵循下面的步驟：
+如果您在內部部署使用 proxy，而且想要針對複寫流量使用 ExpressRoute，您必須在設定伺服器和進程伺服器上設定 Proxy 略過清單。 請依照下列步驟執行：
 
 - 從[這裡](https://aka.ms/PsExec)下載 PsExec 工具以存取系統使用者內容。
 - 執行下列命令列 psexec-s-i "%programfiles%\Internet Explorer\iexplore.exe"，以在系統使用者內容中開啟 Internet Explorer

@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392719"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271690"
 ---
 # <a name="manage-users"></a>管理使用者
 
 Azure FarmBeats 包含屬於 Azure Active Directory （Azure AD）實例之人員的使用者管理。 您可以將使用者新增至 Azure FarmBeats 實例，以存取 Api、查看產生的對應，以及從伺服器陣列存取感應器遙測。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 需要安裝 Azure FarmBeats。 如需詳細資訊，請參閱[安裝 Azure FarmBeats](install-azure-farmbeats.md)。
 - 您想要在 Azure FarmBeats 實例中新增或移除之使用者的電子郵件識別碼。

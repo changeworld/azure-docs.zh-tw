@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374436"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249499"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理中的範本資源
 Azure API 管理提供下列類型的資源，用於開發人員入口網站的範本。  
@@ -48,7 +48,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 以下是支援的當地語系化選項：
 
-| 地區設定    | 語言               |
+| Locale    | Language               |
 |-----------|------------------------|
 | 「zh-tw」      | /              |
 | cs      | "Čeština"              |
@@ -115,7 +115,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 |名稱|Text|  
 |----------|----------|  
-|PageTitleApis|APIs|  
+|PageTitleApis|API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
@@ -135,7 +135,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebDevelopersAppNotSubmitted|未提交|  
 |WebDevelopersAppTableCategoryHeader|類別|  
 |WebDevelopersAppTableNameHeader|名稱|  
-|WebDevelopersAppTableStateHeader|狀態|  
+|WebDevelopersAppTableStateHeader|State|  
 |WebDevelopersEditLink|編輯|  
 |WebDevelopersRegisterAppLink|註冊應用程式|  
 |WebDevelopersRemoveLink|移除|  
@@ -167,9 +167,9 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |ButtonLabelSave|儲存|  
 |GeneralExceptionMessage|某些項目不正確。 可能是暫時性的問題或有錯誤。 請再試一次。|  
 |NoItemsToDisplay|沒有可顯示的項目。|  
-|PagerButtonLabelFirst|第一個|  
-|PagerButtonLabelLast|上次|  
-|PagerButtonLabelNext|下一步|  
+|PagerButtonLabelFirst|First|  
+|PagerButtonLabelLast|Last|  
+|PagerButtonLabelNext|下一頁|  
 |PagerButtonLabelPrevious|上一頁|  
 |PagerLabelPageNOfM|第 {0}/{1} 頁|  
 |PasswordTooShort|密碼太短|  
@@ -321,13 +321,13 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |BadRequestParameterExpected|「預期收到 '{0}' 參數」|  
 |TooltipTextDoubleClickToSelectAll|按兩下以全部選取。|  
 |TooltipTextHideRevealSecret|顯示/隱藏|  
-|ButtonLinkOpenConsole|現在|  
-|SectionHeadingRequestBody|要求本文|  
+|ButtonLinkOpenConsole|試試看|  
+|SectionHeadingRequestBody|Request body|  
 |SectionHeadingRequestParameters|要求參數|  
 |SectionHeadingRequestUrl|要求 URL|  
 |SectionHeadingResponse|回應|  
 |SectionHeadingRequestHeaders|要求標頭|  
-|FormLabelSubtextOptional|optional|  
+|FormLabelSubtextOptional|選用|  
 |SectionHeadingCodeSamples|程式碼範例|  
 |TextblockOpenidConnectHeaderDescription|從 < i\>取得的 OpenID Connect 識別碼權杖 {0}</i\>。 支援的授與類型︰<i\>{1}</i\>。|  
   
@@ -335,7 +335,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 |名稱|Text|  
 |----------|----------|  
-|LinkLabelBack|back|  
+|LinkLabelBack|上一步|  
 |LinkLabelHomePage|首頁|  
 |LinkLabelSendUsEmail|傳送電子郵件|  
 |PageTitleError|很抱歉，提供要求的頁面時發生問題|  
@@ -381,7 +381,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |----------|----------|  
 |WebProductsAgreement|訂閱 {0} 產品即表示我同意 `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`。|  
 |WebProductsLegalTermsLink|使用條款|  
-|WebProductsSubscribeButton|Subscribe|  
+|WebProductsSubscribeButton|訂閱|  
 |WebProductsUsageLimitsHeader|使用限制|  
 |WebProductsYouAreNotSubscribed|您已訂閱此產品。|  
 |WebProductsYouRequestedSubscription|您要求訂閱此產品。|  
@@ -458,7 +458,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebAuthenticationPasswordCompareErrorMessage|密碼不符|  
 |WebAuthenticationPasswordConfirmLabel|確認密碼|  
 |ValidationErrorPasswordInvalidDetailed|密碼太弱。|  
-|WebAuthenticationPasswordLabel|Password|  
+|WebAuthenticationPasswordLabel|密碼|  
 |ValidationErrorPasswordRequired|密碼為必填欄位。|  
 |WebAuthenticationPasswordResetSendNotice|已將變更密碼確認電子郵件傳送到 {0}。 請遵循電子郵件中的指示以繼續您的密碼變更程序。|  
 |WebAuthenticationPasswordResetSendNoticeHeader|已成功處理您的密碼重設要求|  
@@ -535,8 +535,8 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |----------|----------|  
 |SubscriptionCancelConfirmation|確定要取消輸入這個訂用帳戶嗎?|  
 |SubscriptionRenewConfirmation|確定要續訂這個訂用帳戶嗎?|  
-|WebDevelopersManageSubscriptions|管理訂閱|  
-|WebDevelopersPrimaryKey|主要金鑰|  
+|WebDevelopersManageSubscriptions|管理訂用帳戶|  
+|WebDevelopersPrimaryKey|主索引鍵|  
 |WebDevelopersRegenerateLink|重新產生|  
 |WebDevelopersSecondaryKey|次要索引鍵|  
 |ButtonLabelShowKey|顯示|  
@@ -544,11 +544,11 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebDevelopersSubscriptionRequested|已於 {0} 要求|  
 |WebDevelopersSubscriptionRequestedState|已要求|  
 |WebDevelopersSubscriptionTableNameHeader|名稱|  
-|WebDevelopersSubscriptionTableStateHeader|狀態|  
+|WebDevelopersSubscriptionTableStateHeader|State|  
 |WebDevelopersUsageStatisticsLink|分析報告|  
 |WebDevelopersYourSubscriptions|您的訂用帳戶|  
 |SubscriptionPropertyLabelRequestedDate|已於此日期要求|  
-|SubscriptionPropertyLabelStartedDate|開始時間|  
+|SubscriptionPropertyLabelStartedDate|已於此日期開始|  
 |PageTitleRenameSubscription|重新命名訂用帳戶|  
 |SubscriptionPropertyLabelName|訂閱名稱|  
   
@@ -587,7 +587,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |SubscriptionStateExpired|已過期|  
 |SubscriptionStateRejected|已拒絕|  
 |SubscriptionStateRequested|已要求|  
-|SubscriptionStateSuspended|Suspended|  
+|SubscriptionStateSuspended|暫止|  
 |DefaultSubscriptionNameTemplate|{0}  (預設值)|  
 |SubscriptionNameTemplate|開發人員存取 #{0}|  
 |TextboxLabelSubscriptionName|訂閱名稱|  

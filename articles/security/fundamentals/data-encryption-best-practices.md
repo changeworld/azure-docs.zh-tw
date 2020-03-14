@@ -4,7 +4,7 @@ description: 本文提供使用內建 Azure 功能的一些資料安全性和加
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243493"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
 本文說明資料安全性與加密的最佳作法。
@@ -108,7 +108,7 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 **詳細資料**：[使用點對站 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通過專用的高速 WAN 連結移動大型資料集。   
-**詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以透過使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
+**詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以使用 SSL/TLS 或其他通訊協定來加密應用層級的資料，以提供額外的保護。
 
 **最佳做法**：透過 Azure 入口網站與 Azure 儲存體互動。   
 **詳細資料**：透過 HTTPS 發生的所有交易。 您也可以使用透過 HTTPS 的[儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)來與[Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。

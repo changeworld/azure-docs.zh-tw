@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388808"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249733"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>在 Azure 中 Windows 虛擬機器上執行的 SQL Server 常見問題集
 
