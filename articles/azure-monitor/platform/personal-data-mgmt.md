@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248745"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
@@ -102,7 +102,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 #### <a name="log-data"></a>記錄資料
 
 * [POST 清除](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID 
-* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如，
+* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -114,7 +114,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 #### <a name="application-data"></a>應用程式資料
 
 * [POST 清除](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID
-* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如，
+* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

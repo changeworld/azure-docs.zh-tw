@@ -4,11 +4,11 @@ description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387699"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273926"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 此文章列出 Azure 資源類型是否支援移動作業。 它也會提供移動資源時要考慮之特殊條件的相關資訊。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390455"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250747"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集實例的終止通知
 擴展集實例可以選擇接收實例終止通知，並將預先定義的延遲時間設定為終止作業。 終止通知會透過 Azure Metadata Service- [Scheduled Events](../virtual-machines/windows/scheduled-events.md)傳送，這會提供影響力作業的通知和延遲，例如重新開機和重新部署。 解決方案會將另一個事件–終止–新增至 Scheduled Events 清單，而終止事件的相關延遲將取決於使用者在其擴展集模型設定中所指定的延遲限制。

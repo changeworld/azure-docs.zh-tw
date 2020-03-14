@@ -3,12 +3,12 @@ title: 資源提供者和資源類型
 description: 說明支援資源管理員、其結構描述及可用 API 版本的資源提供者，以及可裝載資源的區域。
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372212"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273978"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -84,7 +84,7 @@ Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, Registr
 
 傳回的結果類似於：
 
-```powershell
+```output
 ProviderNamespace                RegistrationState
 -------------------------------- ------------------
 Microsoft.ClassicCompute         Registered
@@ -102,7 +102,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 傳回的結果類似於：
 
-```powershell
+```output
 ProviderNamespace : Microsoft.Batch
 RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
@@ -119,7 +119,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 傳回的結果類似於：
 
-```powershell
+```output
 {ProviderNamespace : Microsoft.Batch
 RegistrationState : Registered
 ResourceTypes     : {batchAccounts}
@@ -136,7 +136,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 
 它會傳回：
 
-```powershell
+```output
 batchAccounts
 operations
 locations
@@ -153,7 +153,7 @@ API 版本會對應至資源提供者所發行的 REST API 作業版本。 當�
 
 它會傳回：
 
-```powershell
+```output
 2017-05-01
 2017-01-01
 2015-12-01
@@ -171,7 +171,7 @@ API 版本會對應至資源提供者所發行的 REST API 作業版本。 當�
 
 它會傳回：
 
-```powershell
+```output
 West Europe
 East US
 East US 2
@@ -189,7 +189,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 傳回的結果類似於：
 
-```azurecli
+```output
 Provider                         Status
 -------------------------------- ----------------
 Microsoft.ClassicCompute         Registered
@@ -217,7 +217,7 @@ az provider show --namespace Microsoft.Batch
 
 傳回的結果類似於：
 
-```azurecli
+```output
 {
     "id": "/subscriptions/####-####/providers/Microsoft.Batch",
     "namespace": "Microsoft.Batch",
@@ -236,7 +236,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceT
 
 它會傳回：
 
-```azurecli
+```output
 Result
 ---------------
 batchAccounts
@@ -255,7 +255,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 它會傳回：
 
-```azurecli
+```output
 Result
 ---------------
 2017-05-01
@@ -275,7 +275,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 它會傳回：
 
-```azurecli
+```output
 Result
 ---------------
 West Europe

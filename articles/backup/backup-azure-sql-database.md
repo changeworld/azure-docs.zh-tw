@@ -4,11 +4,11 @@ description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462583"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273237"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
@@ -76,38 +76,38 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
 * **備份喜好設定：主要**
 
-**備份類型** | **Node**
+**備份類型** | **節點**
     --- | ---
-    完整 | 主要
-    差異 | 主要
-    記錄檔 |  主要
-    只複製完整 |  主要
+    完整 | Primary
+    差異 | Primary
+    Log |  Primary
+    只複製完整 |  Primary
 
 * **備份喜好設定：僅次要**
 
-**備份類型** | **Node**
+**備份類型** | **節點**
 --- | ---
-完整 | 主要
-差異 | 主要
-記錄檔 |  次要
+完整 | Primary
+差異 | Primary
+Log |  次要
 只複製完整 |  次要
 
 * **備份喜好設定：次要**
 
-**備份類型** | **Node**
+**備份類型** | **節點**
 --- | ---
-完整 | 主要
-差異 | 主要
-記錄檔 |  次要
+完整 | Primary
+差異 | Primary
+Log |  次要
 只複製完整 |  次要
 
 * **沒有備份喜好設定**
 
-**備份類型** | **Node**
+**備份類型** | **節點**
 --- | ---
-完整 | 主要
-差異 | 主要
-記錄檔 |  次要
+完整 | Primary
+差異 | Primary
+Log |  次要
 只複製完整 |  次要
 
 ## <a name="set-vm-permissions"></a>設定 VM 權限

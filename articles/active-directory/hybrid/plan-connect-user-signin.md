@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253737"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
 Azure Active Directory (Azure AD) Connect 可讓您的使用者使用相同的密碼來登入雲端和內部部署資源。 本文說明每個身分識別模型的主要概念，以協助您選擇要用於登入 Azure AD 的身分識別。
@@ -126,9 +126,9 @@ Azure AD 登入體驗取決於 Azure AD 是否能夠將要同步處理之使用�
 Azure AD Connect 會列出為網域定義的 UPN 尾碼，並嘗試將它們與 Azure AD 中的自訂網域對應。 接著，它會協助您進行需要採取的適當動作。
 Azure AD 登入頁面會列出為內部部署 Active directory 定義的 UPN 尾碼，並顯示每個尾碼相對應的狀態。 狀態值可以是下列其中一個︰
 
-| 狀態 | 描述 | 需要採取的動作 |
+| State | 描述 | 需要採取的動作 |
 |:--- |:--- |:--- |
-| 已驗證 |Azure AD Connect 在 Azure AD 中找到一個已驗證的相符網域。 此網域的所有使用者均可使用其內部部署認證來進行登入。 |無須任何動作。 |
+| Verified |Azure AD Connect 在 Azure AD 中找到一個已驗證的相符網域。 此網域的所有使用者均可使用其內部部署認證來進行登入。 |不需要採取任何動作。 |
 | 未驗證 |Azure AD Connect 在 Azure AD 中找到對應的自訂網域，但該網域未經驗證。 如果未驗證網域，此網域的使用者 UPN 尾碼將會在同步處理後變更為預設的 .onmicrosoft.com 尾碼。 | [驗證 Azure AD 中的自訂網域。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | 未新增 |Azure AD Connect 找不到與 UPN 尾碼對應的自訂網域。 如果未在 Azure 中新增並驗證網域，此網域的使用者 UPN 尾碼將會變更為預設的 .onmicrosoft.com 尾碼。 | [新增並驗證與 UPN 尾碼對應的自訂網域。](../fundamentals/add-custom-domain.md) |
 
@@ -155,22 +155,22 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>快速設定/密碼雜湊同步處理
 
-| 狀態 | 對使用者的 Azure 登入體驗的影響 |
+| State | 對使用者的 Azure 登入體驗的影響 |
 |:---:|:--- |
 | 未新增 |在此案例中，Azure AD 目錄內並未針對 contoso.com 新增任何自訂網域。 內部部署 UPN 尾碼為 @contoso.com 的使用者將無法使用其內部部署 UPN 來登入 Azure。 他們必須改為使用 Azure AD 透過為預設 Azure AD 目錄新增尾碼來提供給他們的新 UPN。 例如，如果您要將使用者同步至 Azure AD 目錄 azurecontoso.onmicrosoft.com，則內部部署使用者 user@contoso.com 將得到的 UPN 會是 user@azurecontoso.onmicrosoft.com。 |
 | 未驗證 |在此案例中，我們已在 Azure AD 目錄中新增自訂網域 contoso.com。 不過，此網域尚未經過驗證。 如果您在未驗證網域的情況下就繼續同步處理使用者，Azure AD 就會為使用者指派一個新的 UPN，就像在「未新增」案例中所做的一樣。 |
-| 已驗證 |在此案例中，我們已在 Azure AD 中為 UPN 尾碼新增並驗證自訂網域 contoso.com。 將使用者同步至 Azure AD 之後，他們將能夠使用其內部部署使用者主體名稱 (例如 user@contoso.com) 來登入 Azure。 |
+| Verified |在此案例中，我們已在 Azure AD 中為 UPN 尾碼新增並驗證自訂網域 contoso.com。 將使用者同步至 Azure AD 之後，他們將能夠使用其內部部署使用者主體名稱 (例如 user@contoso.com) 來登入 Azure。 |
 
 ###### <a name="ad-fs-federation"></a>AD FS 同盟
 您無法與 Azure AD 中的預設 .onmicrosoft.com 網域或 Azure AD 中未驗證的自訂網域建立同盟。 當您執行 Azure AD Connect 精靈時，如果選取要與未驗證的網域建立同盟，則 Azure AD Connect 會在裝載該網域 DNS 的地方，提示您必須建立的記錄。 如需詳細資訊，請參閱[驗證所選取用於同盟的 Azure AD 網域](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
 如果您選取了 [與 AD FS 同盟] 使用者登入選項，就必須擁有自訂網域，才能繼續在 Azure AD 中建立同盟。 就我們的討論而言，這意謂著我們應該在 Azure AD 目錄中新增自訂網域 contoso.com。
 
-| 狀態 | 對使用者 Azure 登入體驗的影響 |
+| State | 對使用者 Azure 登入體驗的影響 |
 |:---:|:--- |
 | 未新增 |在此案例中，Azure AD Connect 在 Azure AD 目錄中找不到與 UPN 尾碼 contoso.com 對應的自訂網域。 如果您需要讓使用者使用 AD FS 搭配其內部部署 UPN (例如 user@contoso.com) 來進行登入，就必須新增自訂網域 contoso.com。 |
 | 未驗證 |在此案例中，Azure AD Connect 會提示您適當的詳細資料，指導您如何在稍後的階段中驗證網域。 |
-| 已驗證 |在此案例中，您可以繼續進行設定，而不需採取任何進一步的動作。 |
+| Verified |在此案例中，您可以繼續進行設定，而不需採取任何進一步的動作。 |
 
 ## <a name="changing-the-user-sign-in-method"></a>變更使用者登入方法
 您可以在使用精靈完成 Azure AD Connect 的初始設定之後，使用 Azure AD Connect 中的可用工作，將使用者登入方法從同盟變更為密碼雜湊同步處理或傳遞驗證。 請再次執行 Azure AD Connect 精靈，您將會看到您可執行的工作清單。 在工作清單中選取 [變更使用者登入] 。
@@ -179,11 +179,11 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 
 在下一個頁面上，系統會要求您提供 Azure AD 的認證。
 
-![連接到 Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
+![連接至 Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
 
 在 [使用者登入] 頁面上，選取所需的使用者登入。
 
-![連接到 Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
+![連接至 Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
 > 如果您只是要暫時切換到密碼雜湊同步處理，則請選取 [請勿轉換使用者帳戶] 核取方塊。 不勾選該選項將導致將每個使用者都轉換為同盟使用者，而這可能耗費數小時。

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221507"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 應用程式中的意圖
 

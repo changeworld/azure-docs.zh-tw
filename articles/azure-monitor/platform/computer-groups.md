@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274771"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure 監視器記錄檔查詢中的電腦群組
 Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-query-overview.md)範圍限於一組特定的電腦。  使用您所定義的查詢，或從不同來源匯入群組，將電腦填入每個群組中。  當記錄查詢包含群組時，結果就僅限於與群組中的電腦相符的記錄。

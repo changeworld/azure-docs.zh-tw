@@ -14,11 +14,11 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269077"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>針對 SQL Database 的暫時性連接錯誤進行疑難排解
 

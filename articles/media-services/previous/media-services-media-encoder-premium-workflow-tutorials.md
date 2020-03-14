@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251007"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>進階媒體編碼器 Premium 工作流程教學課程
 ## <a name="overview"></a>概觀
 本文件包含的逐步解說可示範如何使用**工作流程設計工具**自訂工作流程。 您可以在[這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)尋找實際的工作流程檔案。  
 
 ## <a name="toc"></a>目錄
-涵蓋下列主題：
+其中涵蓋下列主題：
 
 * [將 MXF 編碼為單一位元速率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [開始新的工作流程](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)

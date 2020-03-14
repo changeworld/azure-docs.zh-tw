@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255115"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 [Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 

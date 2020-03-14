@@ -2,23 +2,17 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78924880"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248407"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
-您通常會將 Azure 資源部署到 Azure 訂用帳戶中的資源群組。 不過，您也可以在下列位置建立資源：
-
-* 訂用帳戶層級（本文涵蓋）
-* [管理群組層級](deploy-to-management-group.md)
-* [租使用者層級](deploy-to-tenant.md)
-
-您可以使用訂用帳戶層級部署來採取對該層級有意義的動作，例如建立資源群組，或指派[角色型存取控制](../../role-based-access-control/overview.md)。
+若要簡化 Azure 訂用帳戶中的資源管理，您可以在整個訂用帳戶中定義和指派[原則](../../governance/policy/overview.md)或[角色型存取控制](../../role-based-access-control/overview.md)。 使用訂用帳戶層級範本時，您會以宣告方式套用原則，並在訂用帳戶指派角色。 您也可以建立資源群組和部署資源。
 
 若要在訂用帳戶層級部署範本，請使用 Azure CLI、PowerShell 或 REST API。 Azure 入口網站不支援在訂用帳戶層級進行部署。
 
@@ -46,10 +40,10 @@ ms.locfileid: "78924880"
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-針對參數檔案，請使用：
+所有部署範圍的參數檔案架構都相同。 針對參數檔案，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>部署命令
@@ -387,5 +381,4 @@ New-AzSubscriptionDeployment `
 * 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您可以在[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)找到範例範本。
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
-* 如需在範本中可用函式的清單，請參閱 [範本函式](template-functions.md)。
+* 您也可以在[管理群組層級](deploy-to-management-group.md)和[租使用者層級](deploy-to-tenant.md)部署範本。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361558"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264787"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>建立和修改 ExpressRoute 線路的對等互連
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 778f6b8d133ddb21f918d65a9d8aecd8b2205b08
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283767"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -32,8 +32,7 @@ ms.locfileid: "78255783"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>必要條件
-
+## <a name="prerequisites"></a>Prerequisites
 若要建立及使用資料集，您需要：
 
 * Azure 訂用帳戶。 如果您沒有，請在開始前建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -44,6 +43,16 @@ ms.locfileid: "78255783"
 
 > [!NOTE]
 > 某些資料集類別具有[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)套件的相依性。 針對 Linux 使用者，只有下列散發版本才支援這些類別： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+
+## <a name="compute-size-guidance"></a>計算大小指引
+
+建立資料集時，請檢查您的計算處理能力和記憶體中的資料大小。 儲存體中的資料大小與資料框架中的資料大小不同。 例如，CSV 檔案中的資料最多可在資料框架中展開10倍，因此 1 GB 的 CSV 檔案在資料框架中可能會變成 10 GB。 
+
+主要因素是資料集在記憶體中的大小，亦即資料框架。 我們建議您的計算大小和處理能力，包含 RAM 大小的2倍。 因此，如果您的資料框架是 10 GB，則您想要具有20個以上 RAM 的計算目標，以確保資料框架能夠滿足記憶體中的大小並加以處理。 如果您的資料已壓縮，則可以進一步擴充;以壓縮的 parquet 格式儲存的 20 GB 相對稀疏資料，在記憶體中可以擴充至 ~ 800 GB。 由於 Parquet 檔案會以單欄式格式儲存資料，如果您只需要一半的資料行，則您只需要在記憶體中載入 ~ 400 GB。
+ 
+如果您使用 Pandas，則不會有超過1個 vCPU 的理由，因為這就是它將會使用的。 您可以透過 Modin 和 Dask/Ray 輕鬆地平行處理單一 Azure Machine Learning 計算實例/節點上的多個個 vcpu，並視需要向外延展至大型叢集，只要將 `import pandas as pd` 變更為 `import modin.pandas as pd`即可。 
+ 
+如果您無法為數據取得夠大的虛擬，您有兩個選項：使用 Spark 或 Dask 之類的架構來執行資料「記憶體不足」的處理，亦即，資料框架會依分割區載入 RAM 分割並加以處理，最後的結果是結束時搜集。 如果此速度太慢，Spark 或 Dask 可讓您相應放大到仍然可以互動方式使用的叢集。 
 
 ## <a name="dataset-types"></a>資料集類型
 
@@ -57,9 +66,9 @@ ms.locfileid: "78255783"
 
 ## <a name="create-datasets"></a>建立資料集
 
-藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在現有的位置，所以不會產生額外的儲存成本。 您可以使用 Python SDK 或 https://ml.azure.com來建立 `TabularDataset` 和 `FileDataset` 資料集。
+藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在現有的位置，所以不會產生額外的儲存成本。 您可以使用 Python SDK 或 https://ml.azure.com建立 `TabularDataset` 和 `FileDataset` 資料集。
 
-若要讓 Azure Machine Learning 可存取的資料，必須從[Azure 資料存放區](how-to-access-data.md)或公用 web url 中的路徑建立資料集。
+若要讓 Azure Machine Learning 可存取的資料，必須從[Azure 資料存放區](how-to-access-data.md)或公用 web url 中的路徑建立資料集。 
 
 ### <a name="use-the-sdk"></a>使用 SDK
 
@@ -70,7 +79,6 @@ ms.locfileid: "78255783"
 2. 藉由參考資料存放區中的路徑來建立資料集。
 > [!Note]
 > 您可以從多個資料存放區中的多個路徑建立資料集。 您可以從中建立資料集的檔案或資料大小沒有固定限制。 不過，針對每個資料路徑，會將幾個要求傳送至儲存體服務，以檢查它是否指向檔案或資料夾。 此額外負荷可能會導致效能降低或失敗。 參考一個含有1000檔案的資料夾的資料集會被視為參考一個資料路徑。 建議您在資料存放區中建立參考小於100路徑的資料集，以獲得最佳效能。
-
 
 #### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
@@ -110,7 +118,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|式|Pclass|名稱|性別|天數|SibSp|Parch|Ticket|費用|插槽|著手
+| |PassengerId|式|Pclass|名稱|性別|Age|SibSp|Parch|Ticket|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th 。|female|38.0|1|0|電腦17599|71.2833|C85|C
@@ -138,7 +146,7 @@ datastore = workspace.get_default_datastore()
 
 # upload the local file from src_dir to the target_path in datastore
 datastore.upload(src_dir='data', target_path='data')
-create a dataset referencing the cloud location
+# create a dataset referencing the cloud location
 dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
 ```
 
@@ -198,10 +206,10 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 在 https://ml.azure.com登入。
 1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。 
 1. 選取 [**建立資料集**] 以選擇資料集的來源。 此來源可以是本機檔案、資料存放區或公用 Url。
-1. 選取 [表格式 **] 或 [** 檔案] 做為資料集類型。
+1. 選取**Tabular** [表格式 **] 或 [** 檔案] 做為資料集類型。
 1. 選取 **[下一步]** 以開啟資料存放區**和檔案選擇**表單。 在此表單上，您可以選取要在建立資料集之後保留的位置，以及選取要用於資料集的資料檔案。 
 1. 選取 **[下一步]** 以填入**設定和預覽**和**架構**表單;它們會根據檔案類型以智慧方式填入，您可以在建立這些表單之前進一步設定您的資料集。 
-1. 選取 **[下一步]** 以查看 [**確認詳細資料**] 表單。 檢查您的選擇，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](how-to-create-portal-experiments.md#profile)。 
+1. 選取 **[下一步]** 以查看 [**確認詳細資料**] 表單。 檢查您的選擇，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 選取 [**建立**] 以完成建立資料集。
 
 ## <a name="register-datasets"></a>註冊資料集

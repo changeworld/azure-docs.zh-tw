@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256961"
 ---
 # <a name="manage-the-mobility-agent"></a>管理行動代理程式 
 
@@ -37,11 +37,24 @@ ms.locfileid: "73953637"
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>透過 Windows server 上的 powershell 腳本更新行動服務
 
+在開始之前，請先確定已更新設定伺服器、向外延展處理伺服器，以及要一起部署的所有主要目標伺服器，然後才更新受保護機器上的行動服務。
+
 使用下列腳本，透過 power shell Cmdlet 升級伺服器上的行動服務
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>在每部受保護的伺服器上手動更新行動服務
+
+1. 在開始之前，請先確定已更新設定伺服器、向外延展處理伺服器，以及要一起部署的所有主要目標伺服器，然後才更新受保護機器上的行動服務。
+
+2. 根據伺服器的作業系統，[尋找代理程式安裝程式](vmware-physical-mobility-service-overview.md#locate-installer-files)。
+
+>[!IMPORTANT]
+> 如果您要將 Azure IaaS VM 從一個 Azure 區域複寫到另一個，請不要使用此方法。 如需所有可用選項的相關資訊，請參閱[我們的指導](azure-to-azure-autoupdate.md)方針。
+
+3. 將安裝檔案複製到受保護的電腦上，然後執行它來更新行動代理程式。
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>行動服務的推入安裝所使用的更新帳戶
 
@@ -54,7 +67,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 從 UI 或命令提示字元解除安裝。
 
 - **從 UI**：在機器的 [控制台] 中，選取 [程式集]。 選取 [Microsoft Azure Site Recovery 行動服務/主要目標伺服器] > [解除安裝]。
-- **從命令提示字元**：以機器上的系統管理員身分開啟命令提示字元視窗。 執行下列命令： 
+- **從命令提示字元**：以機器上的系統管理員身分開啟命令提示字元視窗。 執行以下命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
@@ -62,7 +75,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 ### <a name="on-a-linux-machine"></a>在 Linux 機器上
 1. 在 Linux 機器上，以 **root** 使用者身分登入。
 2. 在終端機中，移至/Usr/local/asr。
-3. 執行下列命令：
+3. 執行以下命令：
     ```
     uninstall.sh -Y
    ```

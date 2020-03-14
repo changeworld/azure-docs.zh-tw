@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376108"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253880"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：設計概念
 本文件旨在說明 Azure AD Connect 實作設計期間必須考量的領域。 本文件是特定領域的深入探討，而在其他文件中也會簡短描述這些概念。
@@ -140,7 +140,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]。
 
-4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按 **[下一步]** ，繼續進行。
+4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 選取 [下一步] 以繼續操作。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384588"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265437"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -45,9 +45,12 @@ ms.locfileid: "78384588"
 
 3. 選取共用的 [類型]。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
 
-4. 提供共用所在的 [儲存體帳戶]。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。
+4. 提供共用所在的 [儲存體帳戶]。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。  
 
 5. 從區塊 Blob、分頁 Blob 或檔案中選擇 [儲存體服務]。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在本例中，我們想要資料以區塊 Blob 的方式存在 Azure 中，因此，我們選取 [區塊 Blob]。 如果選擇 [分頁 Blob]，您必須確定資料對齊 512 個位元組。 例如，VHDX 一律是 512 位元組規格。
+
+   > [!IMPORTANT]
+   > 如果您使用的是 Azure Stack Edge 或資料箱閘道裝置，請確定您使用的 Azure 儲存體帳戶未在其上設定永久性原則。 如需詳細資訊，請參閱[設定和管理 blob 儲存體的不可變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步驟取決於您要建立 SMB 還是 NFS 共用。
     - **如果建立 SMB 共用** - 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]、[密碼]，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
@@ -89,21 +92,21 @@ ms.locfileid: "78384588"
 
 在 Azure 入口網站中執行下列步驟，以重新整理共用。
 
-1.  在 Azure 入口網站中，移至 [共用]。 選取並按一下您想要重新整理的共用。
+1.   在 Azure 入口網站中，移至 [共用]。 選取並按一下您想要重新整理的共用。
 
     ![選取共用](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.  按一下 [重新整理]。 
+2.   按一下 [重新整理]。 
 
     ![按一下 [重新整理]](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.  系統提示您進行確認時，按一下 [是]。 系統會開始一項作業，以重新整理內部部署共用的內容。 
+3.   系統提示您進行確認時，按一下 [是]。 系統會開始一項作業，以重新整理內部部署共用的內容。 
 
     ![確認重新整理](media/data-box-gateway-manage-shares/refresh-3.png)
  
-4.  進行重新整理時，操作功能表中的重新整理選項會呈現灰色。 按一下作業通知來檢視重新整理作業狀態。
+4.   進行重新整理時，操作功能表中的重新整理選項會呈現灰色。 按一下作業通知來檢視重新整理作業狀態。
 
-5.  重新整理的時間取決於 Azure 容器中的檔案數目，以及裝置上的檔案。 成功完成重新整理之後，共用時間戳記就會更新。 即使重新整理有部分失敗，此作業都會被視為成功，而且時間戳記會更新。 
+5.   重新整理的時間取決於 Azure 容器中的檔案數目，以及裝置上的檔案。 成功完成重新整理之後，共用時間戳記就會更新。 即使重新整理有部分失敗，此作業都會被視為成功，而且時間戳記會更新。 
 
     ![已更新的時間戳記](media/data-box-gateway-manage-shares/refresh-4.png)
  

@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure Active Directory 驗證
-description: 在設定 Azure AD 之後，瞭解如何使用 Azure Active Directory 驗證來連線到 SQL Database、受控實例和 Azure Synapse。
+description: 瞭解如何在設定 Azure AD 之後，使用 Azure Active Directory 驗證連接到 SQL Database、受控實例和 SQL 資料倉儲。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,20 +11,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 01/07/2020
-tags: azure-synapse
-ms.openlocfilehash: 42f79b83d174571d26f49b28ed480f86a004036c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 7c439091cecca153779017358188e6c1388086a9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196122"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256649"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 設定及管理 Azure Active Directory 驗證
 
-本文說明如何建立和填入 Azure AD，然後使用 Azure AD 搭配 Azure [SQL Database](sql-database-technical-overview.md)、[受控實例](sql-database-managed-instance.md)和[azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如需概觀，請參閱 [Azure Active Directory 驗證](sql-database-aad-authentication.md)。
+本文說明如何建立和填入 Azure AD，然後使用 Azure AD 搭配 Azure [SQL Database](sql-database-technical-overview.md)、[受控實例](sql-database-managed-instance.md)和[SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如需概觀，請參閱 [Azure Active Directory 驗證](sql-database-aad-authentication.md)。
 
 > [!NOTE]
-> 本文適用于 Azure SQL server，以及在 Azure SQL server 上建立的 SQL Database 和 Azure Synpase]。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
+> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
 
 > [!IMPORTANT]  
 > 使用 Azure Active Directory 帳戶不支援連線到 Azure VM 上執行的 SQL Server。 請改用 Active Directory 網域帳戶。
@@ -46,7 +45,7 @@ ms.locfileid: "78196122"
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>建立 Azure SQL 伺服器的 Azure AD 系統管理員
 
-每個 Azure SQL 伺服器（裝載 SQL Database 或 Azure Synapse）都是以單一伺服器系統管理員帳戶開始，這是整個 Azure SQL server 的系統管理員。 第二個 SQL Server 系統管理員必須建立，也就是 Azure AD 帳戶。 這個主體會在 master 資料庫中建立為自主資料庫使用者。 身為系統管理員，伺服器系統管理員帳戶是每個使用者資料庫中的 **db_owner** 角色成員，並且會進入每個使用者資料庫做為 **dbo** 使用者。 如需有關伺服器管理員帳戶的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)。
+每個 Azure SQL 伺服器 (裝載 SQL Database 或「SQL 資料倉儲」) 一開始都只有一個伺服器系統管理員帳戶，也就是整個 Azure SQL 伺服器的系統管理員。 第二個 SQL Server 系統管理員必須建立，也就是 Azure AD 帳戶。 這個主體會在 master 資料庫中建立為自主資料庫使用者。 身為系統管理員，伺服器系統管理員帳戶是每個使用者資料庫中的 **db_owner** 角色成員，並且會進入每個使用者資料庫做為 **dbo** 使用者。 如需有關伺服器管理員帳戶的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)。
 
 將 Azure Active Directory 與異地複寫搭配使用時，必須為主要和次要伺服器設定 Azure Active Directory 系統管理員。 如果伺服器沒有 Azure Active Directory 系統管理員，則 Azure Active Directory 登入和使用者將會收到「無法連線至伺服器」錯誤。
 
@@ -219,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以呼叫下列 CLI 命令，為 SQL 受控實例布建 Azure AD 管理員：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 為 SQL 受控實例布建 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
 |[az sql mi ad-管理員刪除](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控實例的 Azure Active Directory 系統管理員。 |
@@ -233,13 +232,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>為 Azure SQL Database 伺服器佈建 Azure Active Directory 系統管理員
 
 > [!IMPORTANT]
-> 如果您要在 Azure Synapse 中布建 Azure SQL Database 伺服器或 SQL 集區，請只遵循下列步驟。
+> 只有當您要佈建的是 Azure SQL Database 伺服器或「資料倉儲」時，才可依照這些步驟進行操作。
 
 下列兩個程序會示範如何在 Azure 入口網站以及使用 PowerShell，佈建 Azure SQL 伺服器的 Azure Active Directory 系統管理員。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的右上角，選取您的連線以顯示可能的 Active Directory 下拉式清單。 選擇正確的 Active Directory 做為預設 Azure AD。 此步驟會連結與訂用帳戶相關聯的 Active Directory 和 Azure SQL 伺服器，確定 Azure AD 和 SQL Server 使用相同的訂用帳戶。 （Azure SQL server 可裝載 Azure SQL Database 或 Azure Synapse）。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的右上角，選取您的連線以顯示可能的 Active Directory 下拉式清單。 選擇正確的 Active Directory 做為預設 Azure AD。 此步驟會連結與訂用帳戶相關聯的 Active Directory 和 Azure SQL 伺服器，確定 Azure AD 和 SQL Server 使用相同的訂用帳戶。 (Azure SQL 伺服器可以裝載 Azure SQL Database 或 Azure SQL 資料倉儲。)
 
     ![choose-ad][8]
 
@@ -256,7 +255,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
     ![Active Directory 管理員設定的 SQL server](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
-5. 在 [新增系統管理員] 頁面中，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [選取]。 [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 （請參閱**Azure AD 功能和限制**一節中的支援的系統管理員清單，以[SQL Database 或 Azure Synapse 驗證使用 Azure Active Directory 驗證](sql-database-aad-authentication.md)。）角色型存取控制（RBAC）僅適用于入口網站，不會傳播至 SQL Server。
+5. 在 [新增系統管理員] 頁面中，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [選取]。 [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 （請參閱**Azure AD 功能和限制**一節中的支援的系統管理員清單， [Azure Active Directory 驗證使用 SQL Database 或 SQL 資料倉儲](sql-database-aad-authentication.md)）。角色型存取控制（RBAC）僅適用于入口網站，不會傳播至 SQL Server。
 
     ![選取 Azure Active Directory 系統管理員](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
@@ -271,7 +270,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 若稍後要移除系統管理員，請在 [Active Directory 系統管理員] 頁面頂端，選取 [移除系統管理員]，然後選取 [儲存]。
 
-### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>適用于 Azure SQL Database 和 Azure Synapse 的 PowerShell
+### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>適用于 Azure SQL Database 和 Azure SQL 資料倉儲的 PowerShell
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -280,13 +279,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 - Connect-AzAccount
 - 選取-Get-azsubscription
 
-用來布建和管理 Azure Synpase 中 Azure SQL Database 和 SQL 集區 Azure AD 系統管理員的 Cmdlet：
+用來布建和管理 Azure SQL Database 和 Azure SQL 資料倉儲 Azure AD 系統管理員的 Cmdlet：
 
 | Cmdlet 名稱 | 描述 |
 | --- | --- |
-| [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |布建 Azure SQL server 或 Azure Synpase 的 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
-| [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 |
-| [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |傳回目前為 Azure SQL server 或 Azure Synapse 設定的 Azure Active Directory 系統管理員的相關資訊。 |
+| [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |佈建 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員 (必須來自目前的訂用帳戶。 （必須來自目前的訂用帳戶） |
+| [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
+| [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |傳回目前為 Azure SQL 伺服器或 Azure SQL 資料倉儲設定的 Azure Active Directory 系統管理員的相關資訊。 |
 
 使用 PowerShell 命令 get-help 來查看每個命令的詳細資訊。 例如： `get-help Set-AzSqlServerActiveDirectoryAdministrator` 。
 
@@ -327,12 +326,12 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 布建 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 傳回目前為 Azure SQL server 或 Azure Synapse 設定的 Azure Active Directory 系統管理員的相關資訊。 |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL server 或 Azure Synapse 的 Active Directory 系統管理員。 |
+|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 佈建 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員 (必須來自目前的訂用帳戶。 （必須來自目前的訂用帳戶） |
+|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
+|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 傳回目前為 Azure SQL 伺服器或 Azure SQL 資料倉儲設定的 Azure Active Directory 系統管理員的相關資訊。 |
+|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
 
 如需 CLI 命令的詳細資訊，請參閱[az sql server](/cli/azure/sql/server)。
 
@@ -343,7 +342,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 ## <a name="configure-your-client-computers"></a>設定用戶端電腦
 
-在所有用戶端電腦上，您的應用程式或使用者會使用 Azure AD 身分識別連線到 Azure SQL Database 或 SQL 集區 Azure Synpase，您必須安裝下列軟體：
+在您的應用程式或使用者使用 Azure AD 身分識別連接到 Azure SQL Database 或 Azure SQL 資料倉儲的所有用戶端電腦上，您必須安裝下列軟體：
 
 - 從 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 安裝 .NET Framework 4.6 或更新版本。
 - SQL Server 的 Azure Active Directory 驗證程式庫（*ADAL）。DLL*）。 以下是安裝最新的 SSMS、ODBC 和包含 ADAL 之 OLE DB 驅動程式的下載連結 *。DLL 連結*庫。
@@ -366,7 +365,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 Azure Active Directory 驗證需要建立資料庫使用者做為自主資料庫使用者。 以 Azure AD 身分識別為基礎的自主資料庫使用者係指在 master 資料庫中沒有登入身分的資料庫使用者，並且此使用者會對應至 Azure AD 目錄中與資料庫關聯的身分識別。 Azure AD 身分識別可以是個別的使用者帳戶或群組。 如需有關自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 RBAC 角色不會傳播至 Azure Synapse 中的 SQL Server、SQL Database 或 SQL 集區。 Azure RBAC 角色可用來管理 Azure 資源，並不會套用到資料庫權限。 例如，「 **SQL Server 參與者**」角色不會授與存取權，以連線至 Azure Synapse 中的 SQL DATABASE 或 SQL 集區。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
+> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 RBAC 角色不會傳播至 SQL Server、SQL Database 或「SQL 資料倉儲」。 Azure RBAC 角色可用來管理 Azure 資源，並不會套用到資料庫權限。 例如，「SQL Server 參與者」 角色不會授與可連線到 SQL Database 或「SQL 資料倉儲」的存取權。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
 
 > [!WARNING]
 > 不支援在 T-SQL CREATE LOGIN 和 CREATE USER 陳述式中的使用者名稱內使用冒號 `:` 或 `&` 等特殊字元。
@@ -491,7 +490,7 @@ conn.Open();
 
 ## <a name="azure-ad-token"></a>Azure AD 權杖
 
-此驗證方法允許仲介層服務透過從 Azure Active Directory （AAD）取得權杖，連接到 Azure Synapse 中的 Azure SQL Database 或 SQL 集區。 這可容許包含憑證型驗證的複雜案例。 您必須完成四個基本步驟，才能使用 Azure AD 權杖驗證︰
+這種驗證方法可以從 Azure Active Directory (AAD) 取得權杖，讓中介層服務連接到 Azure SQL Database 或 Azure SQL 資料倉儲。 這可容許包含憑證型驗證的複雜案例。 您必須完成四個基本步驟，才能使用 Azure AD 權杖驗證︰
 
 1. 向 Azure Active Directory 註冊您的應用程式，並取得程式碼的用戶端識別碼。
 2. 建立代表應用程式的資料庫使用者。 (稍早在步驟 6 中已完成)。
@@ -527,8 +526,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需 SQL Database 中存取權和控制權的概觀，請參閱 [SQL Database 的存取權和控制權](sql-database-control-access.md)。
-- 如需 SQL Database 中登入、使用者和資料庫角色的概觀，請參閱[登入、使用者和資料庫角色](sql-database-manage-logins.md)。
+- 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入[、使用者、資料庫角色和使用者帳戶](sql-database-manage-logins.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 如需資料庫角色的詳細資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 如需 SQL Database 中防火牆規則的詳細資訊，請參閱 [SQL Database 防火牆規則](sql-database-firewall-configure.md)。

@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245521"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>針對適用於 Azure 資源的 RBAC 進行疑難排解
 
@@ -28,13 +28,13 @@ ms.locfileid: "75980997"
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC 角色指派的問題
 
-- 如果您無法在 [**存取控制（IAM）** ] 的 Azure 入口網站中新增角色指派，因為 [**新增** > **新增角色指派**] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，請確認您目前登入的使用者已`Microsoft.Authorization/roleAssignments/write`獲指派角色的許可權，例如您嘗試指派角色之範圍的[擁有者](built-in-roles.md#owner)或[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。
+- 如果您無法在 [**存取控制（IAM）** ] 的 Azure 入口網站中新增角色指派，因為 [**新增** > **新增角色指派**] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，請確認您目前已登入的使用者已獲指派角色，且該角色具有 [`Microsoft.Authorization/roleAssignments/write`] 許可權，例如您嘗試指派角色之範圍的 [[擁有](built-in-roles.md#owner)者] 或 [[使用者存取系統管理員](built-in-roles.md#user-access-administrator)]。
 - 如果您在嘗試指派角色時收到錯誤訊息「無法建立更多角色指派（程式碼： RoleAssignmentLimitExceeded）」，請嘗試改為將角色指派給群組，以減少角色指派的數目。 Azure 支援每個訂用帳戶最多 **2000** 個角色指派。 這個角色指派限制是固定的，而且無法增加。
 
 ## <a name="problems-with-custom-roles"></a>自訂角色的問題
 
 - 如果您需要如何建立自訂角色的步驟，請參閱使用[Azure PowerShell](tutorial-custom-role-powershell.md)或[Azure CLI](tutorial-custom-role-cli.md)的自訂角色教學課程。
-- 如果您無法更新現有的自訂角色，請檢查您目前登入的使用者是否已獲指派具有`Microsoft.Authorization/roleDefinition/write`許可權的角色，例如[擁有者](built-in-roles.md#owner)或[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。
+- 如果您無法更新現有的自訂角色，請確認您目前登入的使用者已獲指派具有 [`Microsoft.Authorization/roleDefinition/write`] 許可權的角色，例如 [[擁有](built-in-roles.md#owner)者] 或 [[使用者存取系統管理員](built-in-roles.md#user-access-administrator)]。
 - 如果您無法刪除自訂角色，並收到錯誤訊息「有現有的角色指派參考角色（代碼： RoleDefinitionHasAssignments）」，則仍有使用自訂角色的角色指派。 請移除這些角色指派，並試著再次刪除自訂角色。
 - 如果您收到「已超過角色定義限制」錯誤訊息。 當您嘗試建立新的自訂角色時，無法建立更多角色定義（代碼： RoleDefinitionLimitExceeded）」，請刪除未使用的任何自訂角色。 Azure 在租使用者中最多支援**5000**個自訂角色。 (若為特製化的雲端，例如 Azure Government、Azure 德國和 Azure 中國 21Vianet，則限制為 2000 個自訂角色)。
 - 如果您收到類似于「用戶端具有在範圍 '/subscriptions/{subscriptionid} ' 上執行動作 ' roleDefinitions/write ' 的許可權，但找不到連結的訂用帳戶」的錯誤，請檢查租使用者中是否已刪除一或多個可[指派的範圍](role-definitions.md#assignablescopes)。 如果範圍已刪除，則可以建立支援票證，因為此時已沒有可用的自助解決方案。

@@ -8,11 +8,11 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128749"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274186"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>將 Azure 監視資料串流至事件中樞
 Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](/azure/event-hubs/)。 本文提供如何將來自不同來源的監視資料串流至事件中樞的簡短描述，以及詳細指引的連結。

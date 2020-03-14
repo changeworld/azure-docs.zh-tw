@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
 ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252692"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256272"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>彈性集區可協助您管理及調整多個 Azure SQL 資料庫
 

@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373522"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252697"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自動化中的認證資產
 
@@ -29,7 +29,7 @@ ms.locfileid: "78373522"
 
 針對 Azure PowerShell Az 模組，下表中的 Cmdlet 是用來使用 Windows PowerShell 建立和管理自動化認證資產。 它們會隨附于[AzureAz 模組](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)中，可在自動化 RUNBOOK 和 DSC 設定中使用。
 
-| Cmdlet | 描述 |
+| 指令程式 | 描述 |
 |:--- |:--- |
 | [AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |擷取認證資產的相關資訊。 這不會傳回 PSCredential 物件。  |
 | [新增-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |建立新的自動化認證。 |
@@ -51,7 +51,7 @@ ms.locfileid: "78373522"
 
 下表中的函式用於存取 Python2 Runbook 中的認證。
 
-| 函數 | 描述 |
+| 函式 | 描述 |
 |:---|:---|
 | automationassets.get_automation_credential | 擷取認證資產的相關資訊。 |
 
@@ -71,7 +71,7 @@ ms.locfileid: "78373522"
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 建立新的認證資產
 
-下列範例命令顯示如何建立新的自動化認證。 PSCredential 物件是先建立了名稱和密碼，然後用來建立認證資產。 或者，您可以使用 **Get-Credential** Cmdlet 讓系統提示您輸入名稱和密碼。
+下列範例命令顯示如何建立新的自動化認證。 PSCredential 物件是先建立了名稱和密碼，然後用來建立認證資產。 您也可以使用 **Get-Credential** Cmdlet 來提示您輸入名稱和密碼。
 
 ```powershell
 $user = "MyDomain\MyUser"
@@ -82,7 +82,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>使用 PowerShell 認證
 
-您會使用 **Get-AutomationPSCredential** 活動在 Runbook 或 DSC 設定中擷取認證資產。 這會傳回 [PSCredential 物件](/dotnet/api/system.management.automation.pscredential)，以便您搭配需要 PSCredential 參數的活動或 Cmdlet 使用。 您也可以擷取要個別使用的認證物件的屬性。 此物件具有使用者名稱和安全密碼的屬性，或您可使用 **GetNetworkCredential** 方法來傳回 [NetworkCredential](/dotnet/api/system.net.networkcredential) 物件，而該物件提供的密碼版本不安全。
+您會使用 **Get-AutomationPSCredential** 活動在 Runbook 或 DSC 設定中擷取認證資產。 這會傳回 [PSCredential 物件](/dotnet/api/system.management.automation.pscredential) ，您可以對需要 PSCredential 參數的活動或 Cmdlet 搭配使用此物件。 您也可以擷取要個別使用的認證物件的屬性。 物件具備使用者名稱和安全密碼的屬性，或是您可以使用 **GetNetworkCredential** 方法來傳回將提供不安全版本的密碼的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 物件。
 
 > [!NOTE]
 > **AzAutomationCredential**不會傳回可用於驗證的**PSCredential** 。 它只提供認證的相關資訊。 如果您需要在 runbook 中使用認證，則必須使用**AutomationPSCredential**來取出**PSCredential**物件。
