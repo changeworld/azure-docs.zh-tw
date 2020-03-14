@@ -4,11 +4,11 @@ description: 在 Azure Service Fabric 上建立第一個 Windows 容器應用程
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906257"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258469"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 建立第一個 Service Fabric 容器應用程式
 
@@ -270,7 +270,7 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
    >
 
 ## <a name="configure-resource-governance"></a>設定資源控管
-[資源控管](service-fabric-resource-governance.md)可限制容器在主機上可使用的資源。 應用程式資訊清單中指定的 `ResourceGovernancePolicy` 元素是用於宣告服務程式碼封裝的資源限制。 下列資源可設定資源限制：記憶體、MemorySwap、CpuShares (CPU relative weight)、MemoryReservationInMB、BlkioWeight (BlockIO 相對權數)。 在此範例中，service package Guest1Pkg 會在其所在的叢集節點上獲得一個核心。 記憶體限制是絕對的，因此程式碼封裝會限制為 1024MB 的記憶體 (並具有同樣的彈性保證保留)。 程式碼套件 (容器或處理序) 無法配置超過此限制的記憶體，如果嘗試這麼做，將會導致發生記憶體不足的例外狀況。 若要讓資源限制強制能夠運作，應該為服務套件內的所有程式碼套件都指定記憶體限制。
+[資源控管](service-fabric-resource-governance.md)可限制容器在主機上可使用的資源。 應用程式資訊清單中指定的 `ResourceGovernancePolicy` 元素是用於宣告服務程式碼封裝的資源限制。 可為以下資源設定限制：記憶體、MemorySwap、CpuShares (CPU 相對權數)、MemoryReservationInMB、BlkioWeight (BlockIO 相對權數)。 在此範例中，service package Guest1Pkg 會在其所在的叢集節點上獲得一個核心。 記憶體限制是絕對的，因此程式碼封裝會限制為 1024MB 的記憶體 (並具有同樣的彈性保證保留)。 程式碼套件 (容器或處理序) 無法配置超過此限制的記憶體，如果嘗試這麼做，將會導致發生記憶體不足的例外狀況。 若要讓資源限制強制能夠運作，應該為服務套件內的所有程式碼套件都指定記憶體限制。
 
 ```xml
 <ServiceManifestImport>
@@ -326,7 +326,7 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一個 Web 型工具，可檢查和管理 Service Fabric 叢集中的應用程式與節點。 開啟瀏覽器並瀏覽至 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` 然後遵循應用程式部署。 此應用程式會進行部署，但在叢集節點中下載映像之前 (視映像大小而定，這可能需要一些時間) 會處於錯誤狀態︰![錯誤][1]
 
-應用程式處於 ```Ready``` 狀態時便已準備就緒︰![就緒][2]
+應用程式處於 ```Ready``` 狀態時便已準備就緒：![就緒][2]
 
 開啟瀏覽器並瀏覽至 `http://containercluster.westus2.cloudapp.azure.com:8081` 。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
@@ -343,7 +343,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server 容器作業系統和主機作業系統的相容性
 
-Windows Server 容器在主機 OS 的所有版本之間不相容。 例如：
+Windows Server 容器在主機 OS 的所有版本之間不相容。 例如:
  
 - 使用 Windows Server 1709 版本所建置的 Windows Server 容器無法在執行 Windows Server 2016 版本的主機上運作。 
 - 使用 Windows Server 2016 所建立的 windows Server 容器，只能在執行 Windows Server 1709 版的主機上使用 Hyper-v 隔離模式。 
@@ -351,7 +351,7 @@ Windows Server 容器在主機 OS 的所有版本之間不相容。 例如：
  
 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如：
+在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如:
 
 - 請確定您部署的容器具有的 OS 與您叢集節點上的 OS 相容。
 - 請確定為容器應用程式所指定的隔離模式，與其部署所在節點上的容器 OS 支援一致。

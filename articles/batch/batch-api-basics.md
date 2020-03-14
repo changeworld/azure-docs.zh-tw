@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247679"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 開發大規模的平行運算解決方案
 
@@ -89,7 +89,7 @@ Batch 支援下列類型的「Azure 儲存體」帳戶：
 
 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
 
-您可以在建立 Batch 帳戶時或在稍後，建立儲存體帳戶與 Batch 帳戶的關聯。 在選擇儲存體帳戶時，請考慮您的成本和效能需求。 例如，相較於 GPv1，GPv2 和 Blob 儲存體帳戶選項支援更大的[容量和延展性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （請聯絡 Azure 支援以要求增加儲存體限制）。這些帳戶選項可以改善 Batch 解決方案的效能，其中包含從儲存體帳戶讀取或寫入的大量平行工作。
+您可以在建立 Batch 帳戶時或在稍後，建立儲存體帳戶與 Batch 帳戶的關聯。 在選擇儲存體帳戶時，請考慮您的成本和效能需求。 例如，相較於 GPv1，GPv2 和 Blob 儲存體帳戶選項支援更大的[容量和延展性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 (請連絡 Azure 支援以要求增加儲存體限制。)對於包含讀取自或寫入至儲存體帳戶之大量平行工作的 Batch 解決方案，這些帳戶選項可以改善其效能。
 
 ## <a name="compute-node"></a>計算節點
 
@@ -230,7 +230,7 @@ Azure Batch 集區的建置基礎為核心 Azure 計算平台。 這些集區可
 
     Batch 可以偵測並重試失敗的工作。 您可以指定**工作重試次數上限**作為條件約束，包括要「一律」重試工作還是「決不」重試工作。 重試工作表示工作會重新排入佇列，以便再次執行。
 
-* 用戶端應用程式可以在作業中新增工作，或者您可以指定 [作業管理員工作](#job-manager-task)。 作業管理員工作包含為作業建立必要工作所需的資訊，而作業管理員工作會在集區內的其中一個計算節點上執行。 Batch 會特別處理作業管理員工作，此工作會在作業建立後立即排入佇列，且如果失敗，則會重新啟動。 由[作業排程](#scheduled-jobs)建立的作業「需要」有作業管理員工作，因為它是在作業具現化之前唯一可定義工作的方法。
+* 用戶端應用程式可以在作業中新增工作，或者您可以指定 [作業管理員工作](#job-manager-task)。 作業管理員工作包含為作業建立必要工作所需的資訊，而作業管理員工作會在集區內的其中一個計算節點上執行。 Batch 會特別處理作業管理員工作，此工作會在作業建立後立即排入佇列，且如果失敗，則會重新啟動。 由 *[作業排程](#scheduled-jobs)* 建立的作業「需要」有作業管理員工作，因為它是在作業具現化之前唯一可定義工作的方法。
 * 根據預設，作業內的所有工作都完成時，作業仍會保持作用中狀態。 您可以變更此行為，讓作業在其中的所有工作完成時自動終止。 將作業的 [ **onAllTasksComplete** ] 屬性（在 Batch .net 中為[onAllTasksComplete][net_onalltaskscomplete] ）設定為 [ *terminatejob* ]，以在其所有工作都處於 [已完成] 狀態時自動終止作業。
 
     Batch 服務會考慮*沒有*工作的作業，以完成其所有任務。 因此，這個選項最常搭配 [作業管理員工作](#job-manager-task)使用。 如果您想要使用自動作業終止，而不透過作業管理員，您一開始就應該將新作業的 **onAllTasksComplete** 屬性設定為 noaction，而只在您完成將工作新增至作業之後，將它設定為 terminatejob。
@@ -247,7 +247,7 @@ Azure Batch 集區的建置基礎為核心 Azure 計算平台。 這些集區可
 
 [作業][rest_job_schedules]排程可讓您在 Batch 服務內建立週期性作業。 作業排程會指定何時要執行作業，並且包含要執行之作業的規格。 您可以指定排程的持續時間 (排程的有效時間和生效時間)，以及在排程期間建立作業的頻率。
 
-## <a name="task"></a>Task
+## <a name="task"></a>工作
 
 工作是與作業相關聯的計算單位。 工作是在節點上執行。 工作會指派給節點以便執行，或排入佇列直到節點變成可用為止。 簡言之，工作會在計算節點上執行一或多個程式或指令碼，以執行您需要完成的工作。
 
@@ -335,7 +335,7 @@ Batch 會提供作業前執行設定的作業準備工作。 作業釋放工作�
 
 如需在 Batch 中使用 Batch .NET 程式庫執行 MPI 作業的詳細討論，請參閱 [在 Azure Batch 中使用多個執行個體的工作執行訊息傳遞介面 (MPI) 應用程式](batch-mpi.md)。
 
-### <a name="task-dependencies"></a>工作相依性
+### <a name="task-dependencies"></a>作業相依性
 
 [工作相依性](batch-task-dependencies.md)正如其名，可讓您在執行某個工作之前，指定該工作相依於其他工作。 此功能提供下列情況的支援：「下游」工作取用「上游」工作的輸出，或當上游工作執行下游工作所需的某種初始化時。 若要使用這項功能，您必須先在 Batch 作業上啟用工作相依性。 然後，針對每個相依于另一個（或其他許多其他工作）的工作，指定該工作相依的工作。
 
@@ -367,7 +367,7 @@ Batch 服務會在節點上公開檔案系統的一部分作為「根目錄」�
 
 ![計算節點目錄結構][1]
 
-* **應用程式**：包含有關計算節點上所安裝應用程式套件詳細資料的資訊。 工作可藉由參考 `AZ_BATCH_APP_PACKAGE` 環境變數來存取這個目錄。
+* **應用程式**：包含在計算節點上安裝之應用程式套件的詳細資訊。 工作可藉由參考 `AZ_BATCH_APP_PACKAGE` 環境變數來存取這個目錄。
 
 * **fsmounts**：此目錄包含裝載于計算節點上的任何檔案系統。 工作可藉由參考 `AZ_BATCH_NODE_MOUNTS_DIR` 環境變數來存取這個目錄。 如需詳細資訊，請參閱[在 Batch 集區上掛接虛擬檔案系統](virtual-file-mount.md)。
 
@@ -377,9 +377,9 @@ Batch 服務會在節點上公開檔案系統的一部分作為「根目錄」�
 
 * **volatile**：此目錄適用于內部用途。 不保證此目錄中的任何檔案或目錄本身將會存在於未來。
 
-* 工作**專案：此**目錄包含作業的目錄，以及其在計算節點上的工作。
+* 工作**專案：** 此目錄包含計算節點上的作業目錄和其工作。
 
-* **Tasks** **：在工作專案目錄中**，會為節點上執行的每個工作建立一個目錄。 它是藉由參考 `AZ_BATCH_TASK_DIR` 環境變數來存取。
+* **工作**：**在工作專案目錄中**，會為節點上執行的每個工作建立一個目錄。 它是藉由參考 `AZ_BATCH_TASK_DIR` 環境變數來存取。
 
     在每個工作目錄中，Batch 服務會建立由 `AZ_BATCH_TASK_WORKING_DIR` 環境變數指定唯一路徑的工作目錄 (`wd`)。 這個目錄可供讀取/寫入工作。 工作可以建立、讀取、更新和刪除此目錄下的檔案。 此目錄會根據工作指定的「RetentionTime」 條件約束而保留。
 

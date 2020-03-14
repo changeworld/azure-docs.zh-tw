@@ -4,11 +4,11 @@ description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612882"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276487"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
 

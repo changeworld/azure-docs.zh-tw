@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495867"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257507"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署規劃工具報告以進行 VMware 嚴重損壞修復至 Azure
 

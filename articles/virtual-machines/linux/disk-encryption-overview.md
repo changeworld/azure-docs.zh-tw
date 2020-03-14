@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970466"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250422"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密 
 
@@ -81,7 +81,7 @@ Azure 未背書的 Linux 伺服器散發套件不支援 Azure 磁碟加密;對�
 > [!NOTE]
 > 適用于 RHEL7 隨用隨付映射的 RHEL OS 和資料磁片支援新的 Azure 磁碟加密執行。  
 >
-> RHEL 自備訂用帳戶金級映射也支援 ADE，但只有在註冊訂閱**之後**才可。 如需詳細資訊，請參閱[在 Azure 中 Red Hat Enterprise Linux 自備訂用帳戶黃金映射](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> RHEL 自備訂用帳戶金級映射也支援 ADE，但只有在註冊訂閱**之後**才可。 如需詳細資訊，請參閱[在 Azure 中 Red Hat Enterprise Linux 自備訂用帳戶黃金映射](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>其他 VM 需求
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257923"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>設定內部部署實體伺服器至 Azure 的災害復原
 
@@ -27,7 +27,7 @@ ms.locfileid: "75980327"
 > * 建立複寫原則
 > * 啟用伺服器的複寫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -146,7 +146,7 @@ ms.locfileid: "75980327"
 2. 指定目標部署模型。
 3. Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶和網路。
 
-   ![確定目標](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![目標](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>建立複寫原則
@@ -180,7 +180,7 @@ ms.locfileid: "75980327"
 9. 在 [實體機器] 中，按一下 [+實體機器]。 指定名稱和 IP 位址。 選擇您想要複寫之機器的作業系統。 需要經過幾分鐘才會發現並列出伺服器。 
 10. 在 [名稱] >  [設定屬性] 中，選取處理序伺服器將用來在機器上自動安裝行動服務的帳戶。
 11. 在 [複寫設定] >  [進行複寫設定] 中，確認已選取正確的複寫原則。 
-12. 按一下 [啟用複寫]。 您可以在 [設定] >  [作業] >  [Site Recovery 作業] 中，追蹤 [啟用保護] 作業的進度。 執行 [完成保護] 作業之後，機器即準備好進行容錯移轉。
+12. 按一下 [啟用複寫]。 您可以在 [設定] **[作業]**  >  **[Site Recovery 作業]**  >  中，追蹤 [啟用保護] 作業的進度。 執行 [完成保護] 作業之後，機器即準備好進行容錯移轉。
 
 
 若要監視您新增的伺服器，您可以在 [設定伺服器] > [上次連絡時間] 中查看上次探索伺服器的時間。 若要新增機器而不等候已排定的探索時間，請醒目提示設定伺服器 (不要按一下)，然後按一下 [重新整理]。

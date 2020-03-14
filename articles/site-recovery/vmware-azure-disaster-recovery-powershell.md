@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391722"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257195"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 設定 VMware VM 至 Azure 的災害復原
 
@@ -31,7 +31,7 @@ ms.locfileid: "78391722"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
@@ -118,7 +118,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-除了 ASRVaultCoNtext 指令程式以外，您也可以使用 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如，
+除了 ASRVaultCoNtext 指令程式以外，您也可以使用 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如：
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -351,7 +351,7 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 現在使用此表格中指定的設定複寫下列虛擬機器
 
 
-|虛擬機器  |處理序伺服器        |儲存體帳戶              |記錄檔儲存體帳戶  |Policy(Windows Intune 說明：原則)           |行動服務安裝的帳戶|目標資源群組  | 目標虛擬網路  |目標子網路  |
+|虛擬機器  |處理序伺服器        |儲存體帳戶              |記錄檔儲存體帳戶  |原則           |行動服務安裝的帳戶|目標資源群組  | 目標虛擬網路  |目標子網路  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   

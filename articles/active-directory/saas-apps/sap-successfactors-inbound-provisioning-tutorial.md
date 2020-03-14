@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249681"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教學課程：將 SAP SuccessFactors 設定為 Active Directory 使用者布建（預覽）
 本教學課程的目的是要示範將使用者從 SuccessFactors 員工中心布建到 Active Directory （AD）和 Azure AD 的必要步驟，並將電子郵件地址的選擇性回寫至 SuccessFactors。 這項整合處於公開預覽狀態，支援從 SuccessFactors Employee Central 抓取超過70個以上的[使用者屬性](../app-provisioning/sap-successfactors-attribute-reference.md)。

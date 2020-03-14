@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394411"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274758"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 和 Linux 效能資料來源
 Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可收集效能計數器，以頻繁間隔進行接近即時 (NRT) 的分析，並彙總較長期分析和報告所需的效能資料。

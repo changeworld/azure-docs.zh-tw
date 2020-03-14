@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893139"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245716"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
 
@@ -57,7 +57,7 @@ InnoDB 緩衝集區大小無法設定並系結至您的[定價層](concepts-serv
 
 |**參數**|**固定值**|
 | :------------------------ | :-------- |
-|基本層中的 innodb_file_per_table|關|
+|基本層中的 innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512MB|

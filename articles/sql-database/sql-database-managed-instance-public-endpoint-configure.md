@@ -11,17 +11,17 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227992"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256155"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>在 Azure SQL Database 受控實例中設定公用端點
 
 [受控實例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)的公用端點可讓您從[虛擬網路](../virtual-network/virtual-networks-overview.md)外部對您的受控實例進行資料存取。 您可以從多租使用者 Azure 服務（例如 Power BI、Azure App Service 或內部部署網路）存取您的受控實例。 藉由使用受控實例上的公用端點，您不需要使用 VPN，這有助於避免 VPN 輸送量問題。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > - 在 Azure 入口網站中啟用受控實例的公用端點
@@ -94,12 +94,12 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     |設定  |建議的值  |描述  |
     |---------|---------|---------|
-    |**來源**     |任何 IP 位址或服務標記         |<ul><li>針對 Power BI 之類的 Azure 服務，請選取 [Azure 雲端服務] 標籤</li> <li>針對您的電腦或 Azure VM，使用 NAT IP 位址</li></ul> |
+    |**Source**     |任何 IP 位址或服務標記         |<ul><li>針對 Power BI 之類的 Azure 服務，請選取 [Azure 雲端服務] 標籤</li> <li>針對您的電腦或 Azure VM，使用 NAT IP 位址</li></ul> |
     |**來源埠範圍**     |*         |將此設為 * （任何），因為來源埠通常會動態配置，因此無法預測 |
-    |**位置**     |任意         |將目的地保留為任何，以允許流量進入受控實例子網 |
+    |**目的地**     |任意         |將目的地保留為任何，以允許流量進入受控實例子網 |
     |**目的地埠範圍**     |3342         |將目的地埠範圍設為3342，這是受控實例公用 TDS 端點 |
     |**通訊協定**     |TCP         |受控實例使用 TDS 的 TCP 通訊協定 |
-    |**Action**     |允許         |允許透過公用端點對受控實例進行輸入流量 |
+    |**動作**     |Allow         |允許透過公用端點對受控實例進行輸入流量 |
     |**優先順序**     |1300         |請確定此規則的優先順序高於**deny_all_inbound**規則 |
 
     ![mi-nsg-rules .png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)

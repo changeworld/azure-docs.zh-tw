@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
 ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395003"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257650"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>關於 VMware 至 Azure 的 Azure Site Recovery 部署規劃工具
 本文是 VMware 到 Azure 生產部署的 Azure Site Recovery 部署規劃工具使用者指南。

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
 ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396639"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258677"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 

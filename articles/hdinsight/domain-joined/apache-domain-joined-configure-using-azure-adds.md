@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
 ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386412"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272834"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中使用 Azure Active Directory Domain Services 的企業安全性套件設定
 

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270364"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps 中觸發程式和動作類型的架構參考指南
 

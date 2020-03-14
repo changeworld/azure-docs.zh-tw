@@ -4,11 +4,11 @@ description: 使用 Microsoft Azure 復原服務（MARS）代理程式來備份 
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 0e1f7044c62bbaa9969b97690bf16b9ed446c27c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247770"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>使用 Azure 備份 MARS 代理程式來備份 Windows 機器
 
@@ -70,7 +70,7 @@ Azure 備份不會自動將日光節約時間（DST）納入考慮。 這個預�
     * 保留設定會指定要儲存的復原點，以及儲存它們的時間長度。
     * 若為每日保留設定，表示在指定的每日保留期間，最新的復原點會保留指定的天數。 或者，您可以指定每月的保留原則，表示每個月30日所建立的復原點應該儲存12個月。
     * 每日和每週復原點的保留通常會符合備份排程。 因此，當排程觸發備份時，備份所建立的復原點會儲存在每日或每週保留原則指定的期間。
-    * 在下列範例中：
+    * 在下例中︰
 
         * 午夜和下午6:00 的每日備份會保留七天。
         * 在星期六午夜和下午6:00 所進行的備份會保留四周。

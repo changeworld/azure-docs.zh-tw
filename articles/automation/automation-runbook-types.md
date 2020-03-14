@@ -6,17 +6,17 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6346c29210b6390f11c884ff51e0b60af89bbbb7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420899"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278606"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自動化 Runbook 類型
 
 Azure 自動化支援下表中簡短描述的幾種 Runbook。  下列各節提供各種類型的進一步資訊，包括每種類別何時使用的考量。
 
-| 類型 | 說明 |
+| Type | 描述 |
 |:--- |:--- |
 | [圖形化](#graphical-runbooks)|以 Windows PowerShell 為基礎，而且完全在 Azure 入口網站的圖形化編輯器中建立和編輯。 |
 | [圖形化 PowerShell 工作流程](#graphical-runbooks)|以 Windows PowerShell 工作流程為基礎，而且完全在 Azure 入口網站的圖形化編輯器中建立和編輯。 |

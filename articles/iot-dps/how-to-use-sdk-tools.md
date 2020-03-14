@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271521"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具來簡化開發以進行佈建
 IoT 中樞裝置佈建服務會以安全且可擴充的方式，透過零接觸的 Just-In-Time [自動佈建](concepts-auto-provisioning.md)來簡化佈建程序。  需要有 X.509 憑證或信賴平台模組 (TPM) 形式的安全性證明。  Microsoft 也與[其他安全性硬體合作夥伴](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) \(英文\) 合作，以提升保護 IoT 部署安全的信心。 對於開發人員而言，了解硬體安全性需求可能會是相當大的挑戰。 我們提供一組 Azure IoT 佈建服務 SDK，讓開發人員能夠輕鬆撰寫要與佈建服務交談之用戶端。 SDK 也提供適用於常見案例的範例以及一組工具，來簡化開發中的安全性證明。

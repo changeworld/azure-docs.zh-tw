@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214150"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>監視及管理多租用戶 SaaS 應用程式中分區化多租用戶 Azure SQL 資料庫的效能
 
@@ -47,11 +47,11 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 * 若要避免手動監視效能，最有效的方式是**設定在資料庫偏離正常範圍時觸發的警示**。
 * 若要回應資料庫計算大小的短期波動，可以**相應增加或減少 DTU 層級**。 如果這樣的波動是以定期或可預測的方式發生，則**可排定自動調整資料庫**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以縮小。
 * 若要回應長期波動或租用戶中的變更，**個別租用戶可以移至其他租用戶**。
-* 若要回應「個別」租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 事先知道時，則能預先移動租用戶以確保資料庫一律擁有它所需的資源，和避免影響多租用戶資料庫中的其他租用戶。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
+* 若要回應「個別」租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 事先知道這一點時，可以事先移動租使用者，以確保資料庫一律擁有它所需的資源，並避免影響多租使用者資料庫中的其他租使用者。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
 
 [Azure 入口網站](https://portal.azure.com)提供大部分資源的內建監視與警示功能。 針對 SQL Database，可使用資料庫監視與警示功能。 這個內建的監視與警示功能是資源特定，因此針對少數資源使用很方便，但是搭配許多資源使用時則不方便。
 
-在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/)。 這是個別的 Azure 服務，可針對發出的診斷記錄和在 Log Analytics 工作區中收集的遙測提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
+在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/)。 這是個別的 Azure 服務，可針對在 Log Analytics 工作區中收集的已發出記錄提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>取得 Wingtip Tickets SaaS 多租用戶資料庫應用程式原始碼和指令碼
 

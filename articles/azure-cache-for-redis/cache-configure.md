@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714629"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278736"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。

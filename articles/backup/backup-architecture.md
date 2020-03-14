@@ -4,11 +4,11 @@ description: 概略說明 Azure 備份服務所使用的架構、元件和程序
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273614"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 

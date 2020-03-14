@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221463"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中編輯知識庫
 
@@ -36,13 +36,13 @@ QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的�
  
 1. 選取 [Settings] \(設定)。 您可以在這裡編輯必要的欄位：[服務名稱]。
   
-    |目標|行動|
+    |目標|動作|
     |--|--|
     |新增 URL|您可以藉由按一下 [管理知識庫] -> [+ 新增 URL] 連結來新增 URL，以便將新的常見問題集內容新增至知識庫。|
     |刪除 URL|您可以選取刪除圖示 (即垃圾桶)，以刪除現有 URL。|
     |重新整理內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理] 核取方塊。 這會以最新的 URL 內容一次更新知識庫。 這不會設定週期性更新排程。|
     |新增檔案|您可以藉由選取 [管理知識庫] 和 [+ 新增檔案]，將受支援的檔案文件新增為知識庫的一部分|
-    |Import|您也可以藉由選取 [匯入知識庫] 按鈕，匯入任何現有的知識庫。 |
+    |匯入|您也可以選取 [匯**入知識庫**] 按鈕，匯入任何現有的知識庫。 |
     |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的**管理定價層**。 如有需要，您也可以從 Azure 入口網站更新管理層。
 
 1. 變更知識庫完成之後，選取頁面右上角的 [儲存並訓練] 以維持變更。    

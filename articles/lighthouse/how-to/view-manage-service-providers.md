@@ -4,11 +4,11 @@ description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁�
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270624"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 

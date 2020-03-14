@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359491"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269805"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
 

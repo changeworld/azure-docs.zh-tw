@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402095"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218396"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -29,7 +29,7 @@ Azure 委派的資源管理能為管理多個客戶的資源提供更具彈性�
 
 ![顯示服務提供者責任的三個客戶租用戶](../media/azure-delegated-resource-management-customer-tenants.jpg)
 
-透過使用 Azure 委派的資源管理，已授權的使用者便可以登入服務提供者的租用戶以存取這些資源，如這裡所示：
+使用 Azure 委派的資源管理，已授權的使用者可以登入服務提供者的租使用者來存取這些資源，如下所示：
 
 ![透過其中一個服務提供者租用戶進行管理的客戶資源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -63,6 +63,7 @@ Azure PowerShell [get-azsubscription 指令程式](https://docs.microsoft.com/po
 
 - 備份及還原客戶租用戶中的客戶資料
 - 使用 [[備份瀏覽器](../../backup/monitor-azure-backup-with-backup-explorer.md)] 可協助您查看備份專案的作業資訊（包括尚未設定備份的 Azure 資源），以及委派訂閱的監視資訊（作業和警示）。 備份瀏覽器目前僅適用于 Azure VM 資料。
+- 跨委派的訂用帳戶使用[備份報告](../../backup/configure-reports.md)來追蹤歷程記錄趨勢、分析備份儲存體耗用量，以及審核備份和還原。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 
@@ -90,7 +91,7 @@ Azure PowerShell [get-azsubscription 指令程式](https://docs.microsoft.com/po
 [Azure 資訊安全中心](../../security-center/index.yml)：
 
 - 跨租用戶可見性
-  - 監視安全性原則的合規性，並確保安全性涵蓋範圍會涵蓋所有租用戶的資源
+  - 監視安全性原則的合規性，並確保所有租使用者資源的安全性涵蓋範圍
   - 在單一檢視中針對多個客戶進行持續性的法規合規性監視
   - 透過安全分數計算對可採取動作的安全性建議進行監視、分級和設定優先權
 - 跨租用戶安全性狀態管理
@@ -98,7 +99,7 @@ Azure PowerShell [get-azsubscription 指令程式](https://docs.microsoft.com/po
   - 透過可採取動作的安全性建議對不符合規範的資源採取動作
   - 收集及儲存安全性相關的資料
 - 跨租用戶威脅偵測和保護
-  - 偵測租用戶資源上的威脅
+  - 跨租使用者的資源偵測威脅
   - 套用進階威脅防護控制措施，例如 Just-In-Time (JIT) VM 存取
   - 透過自適性網路強化來強化網路安全性群組設定
   - 透過自適性應用程式控制來確保伺服器只會執行適當的應用程式與處理序
@@ -136,10 +137,10 @@ Azure PowerShell [get-azsubscription 指令程式](https://docs.microsoft.com/po
 ## <a name="current-limitations"></a>目前的限制
 在所有案例中，請留意下列目前限制：
 
-- 由 Azure Resource Manager 所處理的要求可以使用 Azure 委派的資源管理來執行。 這些要求的作業 URI 會以 `https://management.azure.com` 作為開頭。 不過，由某個資源類型 (例如 KeyVault 祕密存取或儲存體資料存取) 的執行個體所處理的要求，並不支援 Azure 委派的資源管理。 這些要求的作業 URI 通常會以您執行個體特有的位址作為開頭，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 此外，後者通常是資料作業，而非管理作業。 
+- 由 Azure Resource Manager 所處理的要求可以使用 Azure 委派的資源管理來執行。 這些要求的作業 URI 會以 `https://management.azure.com` 作為開頭。 不過，Azure 委派的資源管理不支援由資源類型（例如 KeyVault 秘密存取或儲存資料存取）的實例所處理的要求。 這些要求的作業 URI 通常會以您執行個體特有的位址作為開頭，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 此外，後者通常是資料作業，而非管理作業。 
 - 角色指派必須使用角色型存取控制 (RBAC) [內建角色](../../role-based-access-control/built-in-roles.md) \(部分機器翻譯\)。 除了「擁有者」或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) \(部分機器翻譯\) 權限的任何內建角色以外，Azure 委派的資源管理目前支援所有內建角色。 只有在[將角色指派給受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)時，才支援「使用者存取系統管理員」角色的有限用途。  此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
 - 雖然您可以將使用 Azure Databricks 的訂用帳戶上線，但管理租使用者中的使用者目前無法在委派的訂閱上啟動 Azure Databricks 的工作區。
-- 雖然您可以將訂用帳戶和資源群組上線，以進行 Azure 委派的資源管理來鎖定資源，但這些鎖定無法防止管理租用戶中的使用者執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
+- 雖然您可以將訂用帳戶和資源群組上線，以進行 Azure 委派的資源管理來鎖定資源，但這些鎖定無法防止管理租用戶中的使用者執行動作。 [拒絕](../../role-based-access-control/deny-assignments.md)保護系統管理資源的指派，例如由 Azure 受控應用程式或 Azure 藍圖（系統指派的拒絕指派）所建立的資源，可防止管理租使用者中的使用者在這些資源上執行動作;不過，在這段時間內，客戶租使用者中的使用者無法建立自己的拒絕指派（使用者指派的拒絕指派）。
 
 ## <a name="next-steps"></a>後續步驟
 

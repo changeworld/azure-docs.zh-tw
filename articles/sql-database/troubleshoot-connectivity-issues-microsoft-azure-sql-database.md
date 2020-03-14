@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591229"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208789"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>疑難排解 Microsoft Azure SQL Database 的連線問題和其他錯誤
 
-Azure SQL Database 的連線失敗時，您會收到錯誤訊息。 這些連線問題的原因可能是 Azure SQL Database 重新設定、防火牆設定、連接逾時、不正確的登入資訊，或在 [應用程式設計] 期間套用最佳作法和設計指導方針（sql-database-develop-overview.md）進程。 此外，如果達到某些 Azure SQL Database 資源的最大限制，您就無法連接到 Azure SQL Database。
+Azure SQL Database 的連線失敗時，您會收到錯誤訊息。 這些連線問題可能是因為 Azure SQL Database 重新設定、防火牆設定、連接逾時、不正確的登入資訊，或在[應用程式設計](sql-database-develop-overview.md)過程中套用最佳作法和設計指導方針所造成。 此外，如果達到某些 Azure SQL Database 資源的最大限制，您就無法連接到 Azure SQL Database。
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>暫時性錯誤訊息（40197、40613及其他）
 

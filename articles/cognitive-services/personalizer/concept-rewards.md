@@ -4,11 +4,11 @@ description: 獎勵分數會指出個人化選擇 (RewardActionID) 對使用者�
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623771"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221215"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>獎勵分數表示個人化的成就
 

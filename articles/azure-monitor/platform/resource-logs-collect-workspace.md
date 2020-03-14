@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391051"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248589"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器的 Log Analytics 工作區中收集 Azure 平臺記錄
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可提供 azure 資源的詳細診斷和審核資訊，以及它們所依賴的 azure 平臺。 本文說明如何在 Log Analytics 工作區中收集資源記錄，讓您可以使用功能強大的記錄查詢在 Azure 監視器記錄中收集的其他監視資料進行分析，也可以利用警示和之類的其他 Azure 監視器功能項. 

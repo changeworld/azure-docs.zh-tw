@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386069"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271001"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。

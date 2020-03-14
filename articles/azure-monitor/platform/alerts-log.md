@@ -2,25 +2,23 @@
 title: 使用 Azure 監視器建立、查看和記錄管理警示 |Microsoft Docs
 description: 使用 Azure 監視器來撰寫、查看和管理 Azure 中的記錄警示規則。
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 525e8d2ffcd673f47cf30699de2572b35fc3b314
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249421"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
 ## <a name="overview"></a>概觀
 本文會示範如何使用 Azure 入口網站內的警示介面來設定記錄警示。 警示規則的定義分成三個部分：
-- 目標：要監視的特定 Azure 資源
-- 條件：訊號中所示且會觸發動作的特定條件或邏輯
+- 目標:要監視的特定 Azure 資源
+- 準則：訊號中所示且會觸發動作的特定條件或邏輯
 - 動作：傳送至通知 (電子郵件、SMS、Webhook 等) 接收者的特定呼叫。
 
 記錄**警示**一詞，用來描述[log Analytics 工作區](../learn/tutorial-viewdata.md)或[Application Insights](../app/analytics.md)中的信號是記錄查詢的警示。 閱讀[記錄警示 - 概觀](alerts-unified-log.md)以深入了解其功能、術語和類型。
@@ -42,7 +40,7 @@ ms.locfileid: "76290270"
 
     ![新增警示](media/alerts-log/AlertsPreviewOption.png)
 
-1. [建立警示] 區段會以三個部分顯示：「定義警示條件」、「定義警示詳細資料」和「定義動作群組」。
+1. [建立警示] 區段會顯示三個部分，包括：[定義警示條件]、[定義警示詳細資料]，以及 [定義動作群組]。
 
     ![建立規則](media/alerts-log/AlertsPreviewAdd.png)
 
@@ -52,7 +50,7 @@ ms.locfileid: "76290270"
    > 若要建立記錄警示 - 請先確認選取的資源可使用 **log** 訊號，再繼續下面的步驟。
    >  ![選取資源](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. 記錄警示：請確認 [資源類型] 是分析來源 (例如「Log Analytics」或「Application Insights」) 且訊號類型為 [記錄]，然後在選擇適當的 [資源] 後，按一下 [完成]。 接著使用 [新增準則] 按鈕，檢視資源可用的訊號選項清單，然後從訊號清單中選取所選記錄監視服務 (例如 *Log Analytics* 或 *Application Insights*) 的 [自訂記錄搜尋] 選項。
+1. *記錄警示*：請確認 [資源類型] 是分析來源 (例如「Log Analytics」或「Application Insights」) 且訊號類型為 [記錄]，然後在選擇適當的 [資源] 後，按一下 [完成]。 接著使用 [新增準則] 按鈕，檢視資源可用的訊號選項清單，然後從訊號清單中選取所選記錄監視服務 (例如 *Log Analytics* 或 *Application Insights*) 的 [自訂記錄搜尋] 選項。
 
    ![選取資源 - 自訂記錄搜尋](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
@@ -60,7 +58,7 @@ ms.locfileid: "76290270"
    > 
    > [警示] 清單可匯入分析查詢作為訊號類型 - [記錄 (已儲存的查詢)]，如上圖所示。 如此一來，使用者就可以在分析中完美查詢，然後儲存它們以供日後在警示中使用-如需使用儲存查詢的詳細資訊，請查看在[Azure 監視器中使用記錄查詢](../log-query/log-query-overview.md)，或在[application insights 分析中的共用查詢](../app/app-insights-overview.md)。
 
-1. *記錄警示*：選好後，即可在 [搜尋查詢] 欄位中指定警示的查詢；如果查詢語法不正確，欄位會以紅色顯示錯誤。 如果查詢語法正確 - 指定查詢的記錄資料會顯示為圖形以供參考，以及顯示調整時間範圍的選項 (從過去六小時到過去一週)。
+1. *記錄警示*：選取後，即可在 [搜尋查詢] 欄位中指定警示的查詢；如果查詢語法不正確，欄位會以紅色顯示錯誤。 如果查詢語法正確 - 指定查詢的記錄資料會顯示為圖形以供參考，以及顯示調整時間範圍的選項 (從過去六小時到過去一週)。
 
     ![設定警示規則](media/alerts-log/AlertsPreviewAlertLog.png)
 
@@ -71,7 +69,7 @@ ms.locfileid: "76290270"
    > 
    > ![[依據彙總] 選項](media/alerts-log/aggregate-on.png)
 
-1. 記錄警示：當視覺效果就緒後，您就可以從所示的條件、彙總和閾值 (最後選取) 選項來選取**警示邏輯**。 最後，使用 [期間] 選項，在邏輯中指定用來評估指定條件的時間。 以及，透過選取 [頻率]，來指定警示執行的頻率。 **記錄警示**可以根據：
+1. *記錄警示*：當視覺效果就緒後，您就可以從所示的條件、彙總和閾值 (最後選取) 選項來選取**警示邏輯**。 最後，使用 [期間] 選項，在邏輯中指定用來評估指定條件的時間。 以及，透過選取 [頻率]，來指定警示執行的頻率。 **記錄警示**可以根據：
     - [記錄數目](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查詢所傳回的記錄數目大於或小於所提供的值，則會建立警示。
     - [計量測量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」超過提供的閾值，而且彙總值依據選擇的值來「分組」，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
 
@@ -80,7 +78,7 @@ ms.locfileid: "76290270"
 
     警示詳細資料中有一些額外的功能可使用 (僅限於**記錄警示**)：
 
-    - **隱藏警示**：當您開啟警示規則的隱藏功能時，此規則的動作會在建立新警示後停用並持續一段您所定義的時間。 此規則仍在執行中，並且會在符合準則時建立警示記錄。 讓您有時間更正問題，而不需執行重複的動作。
+    - 隱藏警示：當您開啟警示規則的隱藏功能時，此規則的動作會在建立新警示後停用並持續一段您所定義的時間。 此規則仍在執行中，並且會在符合準則時建立警示記錄。 讓您有時間更正問題，而不需執行重複的動作。
 
         ![記錄警示的隱藏警示](media/alerts-log/AlertsPreviewSuppress.png)
 
@@ -94,8 +92,8 @@ ms.locfileid: "76290270"
 
     針對**記錄警示**，有一些額外的功能可用來覆寫預設的動作：
 
-    - **電子郵件通知**：覆寫透過「動作群組」傳送的電子郵件「電子郵件主旨」；如果前述的「動作群組」中存在一或多個電子郵件動作。 您無法修改電子郵件的本文，且此欄位**不是**用於電子郵件地址。
-    - **包括自訂 JSON 承載**：覆寫「動作群組」所使用的 Webhook JSON；如果前述的「動作群組」中存在一或多個 Webhook 動作。 使用者可以指定要用於相關聯動作群組中設定的所有 Webhook JSON 格式；如需有關 Webhook 格式的詳細資訊，請參閱[記錄警示的 Webhook 動作](../../azure-monitor/platform/alerts-log-webhook.md)。 提供的 [檢視 Webhook] 選項可用來檢查使用 JSON 資料範例的格式。
+    - **電子郵件通知**：覆寫透過「動作群組」傳送的電子郵件「電子郵件主旨」；如果前述的「動作群組」中存在一個或多個電子郵件動作。 您無法修改電子郵件的本文，且此欄位**不是**用於電子郵件地址。
+    - **包含自訂 JSON 承載**：覆寫「動作群組」所使用的 Webhook JSON；如果前述的「動作群組」中存在一或多個 Webhook 動作。 使用者可以指定要用於相關聯動作群組中設定的所有 Webhook JSON 格式；如需有關 Webhook 格式的詳細資訊，請參閱[記錄警示的 Webhook 動作](../../azure-monitor/platform/alerts-log-webhook.md)。 提供的 [檢視 Webhook] 選項可用來檢查使用 JSON 資料範例的格式。
 
         ![記錄警示的動作覆寫](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -307,17 +305,17 @@ ms.locfileid: "76290270"
 
 Azure 監視器[排程的查詢規則 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)是 REST API，而且與 Azure Resource Manager REST API 完全相容。 以下所列的 PowerShell Cmdlet 可用於利用已[排程的查詢規則 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。
 
-1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ： Powershell Cmdlet 可建立新的記錄警示規則。
-1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) ： Powershell Cmdlet 可更新現有的記錄警示規則。
-1. [AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) ： Powershell Cmdlet 可建立或更新指定記錄警示之來源參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-1. [AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule)： Powershell Cmdlet 可建立或更新指定記錄警示之排程參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-1. [AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) ： Powershell Cmdlet 可建立或更新指定記錄警示之動作參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-1. [AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ： Powershell Cmdlet 可建立或更新指定記錄警示之動作群組參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) Cmdlet 的輸入。
-1. [AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ： Powershell Cmdlet 可建立或更新指定記錄警示之觸發條件參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) Cmdlet 的輸入。
-1. [AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： Powershell Cmdlet 可用於建立或更新物件，指定度量[量測類型記錄警示的計量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)觸發條件參數。 用來做為[AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
-1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) ：用來列出現有記錄警示規則或特定記錄警示規則的 Powershell Cmdlet
-1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) ：用來啟用或停用記錄警示規則的 Powershell Cmdlet
-1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule)： Powershell Cmdlet 刪除現有的記錄警示規則
+1. [新 AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ：Powershell Cmdlet 來建立新的記錄警示規則。
+1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) ：用來更新現有記錄警示規則的 Powershell Cmdlet。
+1. [新 AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) ：Powershell Cmdlet 來建立或更新指定記錄警示之來源參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
+1. [新 AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule)：Powershell Cmdlet 來建立或更新指定記錄警示之排程參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
+1. [新 AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) ：Powershell Cmdlet 來建立或更新指定記錄警示之動作參數的物件。 做為[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
+1. [新 AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ：Powershell Cmdlet 來建立或更新指定記錄警示之動作群組參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) Cmdlet 的輸入。
+1. [新 AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ：Powershell Cmdlet 來建立或更新指定記錄警示之觸發條件參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) Cmdlet 的輸入。
+1. [新 AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ：用來建立或更新物件的 Powershell Cmdlet，其指定度量[類型記錄警示的計量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)觸發條件參數。 用來做為[AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
+1. [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) ：用以列出現有記錄警示規則或特定記錄警示規則的 Powershell Cmdlet
+1. [更新-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) ：用來啟用或停用記錄警示規則的 Powershell Cmdlet
+1. [移除-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule)：用來刪除現有記錄警示規則的 Powershell Cmdlet
 
 > [!NOTE]
 > ScheduledQueryRules PowerShell Cmdlet 只能管理已建立的 Cmdlet 本身，或使用 Azure 監視器[排程的查詢規則 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。 只有在使用者[切換 Log Analytics 警示的 API 喜好](alerts-log-api-switch.md)設定之後，才可以使用 ScheduledQueryRules PowerShell Cmdlet 來管理使用舊版[LOG analytics 警示 API](api-alerts.md)建立的記錄警示規則，以及[log analytics 儲存的搜尋和警示](../insights/solutions-resources-searches-alerts.md)的舊版範本。

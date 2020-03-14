@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394071"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248576"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 

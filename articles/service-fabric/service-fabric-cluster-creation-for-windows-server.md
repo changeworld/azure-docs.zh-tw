@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389834"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258820"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>建立在 Windows Server 上執行的獨立叢集
 您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric](./service-fabric-deploy-anywhere.md)叢集。

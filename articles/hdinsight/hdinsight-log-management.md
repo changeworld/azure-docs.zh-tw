@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272301"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 叢集的記錄
 

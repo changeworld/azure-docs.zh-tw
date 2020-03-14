@@ -1,6 +1,6 @@
 ---
 title: 查詢效能深入解析
-description: 查詢效能監視可識別最耗用 CPU 的 Azure SQL 資料庫查詢。
+description: 查詢效能監視會針對 Azure SQL database 中的單一和集區資料庫，識別最耗用 CPU 和長時間執行的查詢。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821245"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214050"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database 的查詢效能深入解析
 
-要管理和調整關聯式資料庫的效能，需要投入專業知識和時間。 查詢效能深入解析是 Azure SQL Database 智慧型效能產品線的一部分。 它提供了下列功能，讓您能夠以較少的時間對資料庫效能進行疑難排解：
+查詢效能深入解析提供單一和集區資料庫的智慧型查詢分析。 它有助於識別您的工作負載中最常見的資源取用和長時間執行的查詢。 這可協助您找到要優化的查詢，以改善整體工作負載效能，並有效率地使用您要支付的資源。 查詢效能深入解析藉由提供下列功能，協助您花更少的時間針對資料庫效能進行疑難排解：
 
-* 更深入的資料庫資源 (DTU) 取用分析。
-* 依 CPU、持續時間和執行計數詳列最高排名的資料庫查詢 (可經由調整而改善效能的候選項目)。
-* 能夠向下切入查詢的詳細資料，以檢視查詢文字和資源使用量的歷程記錄。
-* 有註釋可顯示 [SQL Database Advisor](sql-database-advisor.md) 所提供的效能建議。
+* 深入瞭解您的資料庫資源（DTU）耗用量
+* 依 CPU、持續時間和執行計數列出最上層資料庫查詢的詳細資料（效能改進的可能調整候選項目）
+* 能夠向下切入查詢的詳細資料，以查看查詢文字和資源使用率的歷程記錄
+* 顯示來自[資料庫顧問](sql-database-advisor.md)之效能建議的批註
 
 ![查詢效能深入解析](./media/sql-database-query-performance/opening-title.png)
 
-> [!TIP]
-> 若要對 Azure SQL Database 進行基本的效能監視，建議您使用查詢效能深入解析。 請留意本文所列的產品限制。 若要對資料庫效能大規模的進階監視，建議您使用 [Azure SQL 分析](../azure-monitor/insights/azure-sql.md)。 它具有可自動執行效能疑難排解的內建智慧。 若要自動調整一些最常見資料庫效能問題，建議您使用[自動調整](sql-database-automatic-tuning.md)。
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 「查詢效能深入解析」要求 [查詢存放區](https://msdn.microsoft.com/library/dn817826.aspx) 在您的資料庫上為作用中狀態。 依預設會為所有 Azure SQL 資料庫啟用此項目。 如果查詢存放區未執行，Azure 入口網站會提示您加以啟用。
 
 > [!NOTE]
-> 如果入口網站中出現「此資料庫的查詢存放區未正確設定」訊息，請參閱[最佳化查詢存放區組態](#optimize-the-query-store-configuration-for-query-performance-insight)。
->
+> 如果入口網站中出現「此資料庫的查詢存放區未正確設定」訊息，請參閱[最佳化查詢存放區組態](#optimize-the-query-store-configuration)。
 
 ## <a name="permissions"></a>權限
 
@@ -65,6 +61,11 @@ ms.locfileid: "73821245"
 
 > [!NOTE]
 > 查詢存放區需要擷取數小時的資料，SQL Database 才能在「查詢效能深入解析」中顯示資訊。 如果在某段時間內資料庫沒有活動，或查詢存放區處於非作用中狀態，則在「查詢效能深入解析」顯示該時間範圍時，圖表將是空的。 如果查詢存放區未執行，您可以隨時加以啟用。 如需詳細資訊，請參閱[查詢存放區的最佳做法](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)。
+>
+
+如需資料庫效能的建議，請選取 [查詢效能深入解析] 導覽刀鋒視窗上的[建議](sql-database-advisor.md)。
+
+![建議索引標籤](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>檢閱最耗用 CPU 的查詢
 
@@ -72,9 +73,9 @@ ms.locfileid: "73821245"
 
 1. 使用核取方塊，選取或清除圖表要包含或排除的個別查詢。
 
-    第一行會顯示資料庫的整體 DTU 百分比。 長條圖會顯示選取的查詢在所選間隔期間內耗用的 CPU 百分比。 例如，如果選取 [過去一週]，則每個長條分別代表一天。
+   第一行會顯示資料庫的整體 DTU 百分比。 長條圖會顯示選取的查詢在所選間隔期間內耗用的 CPU 百分比。 例如，如果選取 [過去一週]，則每個長條分別代表一天。
 
-    ![最高排名的查詢](./media/sql-database-query-performance/top-queries.png)
+   ![最高排名的查詢](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > 顯示的 DTU 行會彙總為一小時期間內的最大耗用量值。 這只能用來與查詢執行統計資料進行概略性的比較。 在某些情況下，DTU 使用率與執行的查詢相較時可能會顯得太高，但實際上可能並非如此。
@@ -192,7 +193,7 @@ ms.locfileid: "73821245"
 
 例如，許多資料導向的網站會針對每個使用者要求大量存取資料庫。 雖然有連線集區的協助，但是資料庫伺服器上增加的網路流量和處理負載可能會導致效能下降。 一般情況下，應盡可能壓低往返次數。
 
-若要識別經常執行的 (「多對話」) 查詢：
+若要識別經常執行的（「多對話」）查詢：
 
 1. 針對選取的資料庫，在 [查詢效能深入解析] 中開啟 [自訂] 索引標籤。
 2. 將計量變更為 [執行計數]。
@@ -217,7 +218,7 @@ ms.locfileid: "73821245"
 
 使查詢和效能調整動作相互關聯，有助於深入了解您的工作負載。
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>最佳化查詢效能深入解析的查詢存放區組態
+## <a name="optimize-the-query-store-configuration"></a>將查詢存放區設定優化
 
 在使用查詢效能深入解析時，您可能會看到下列查詢存放區錯誤訊息：
 
@@ -236,16 +237,16 @@ ms.locfileid: "73821245"
 
 保留期原則有兩種：
 
-* 以**大小為基礎**：如果此原則設定為 [**自動**]，則會在達到接近大小上限時自動清除資料。
-* **時間**型：根據預設，此原則設定為30天。 如果查詢存放區的空間用盡，就會刪除 30 天之前的查詢資訊。
+* **以大小為依據**：此原則設為 [自動] 時，將會在收集的資料量接近容量上限時自動清除資料。
+* **以時間為基礎**：根據預設，此原則會設為 30 天。 如果查詢存放區的空間用盡，就會刪除 30 天之前的查詢資訊。
 
 您可以將擷取原則設為：
 
-* **All**：查詢存放區會捕捉所有查詢。
-* **Auto**：查詢存放區忽略不常執行的查詢，以及具有無意義的編譯和執行持續時間的查詢。 執行次數、編譯持續時間和執行階段持續時間的閾值皆由內部決定。 這是預設選項。
-* **無**：查詢存放區會停止捕捉新的查詢，但仍會收集已捕捉之查詢的執行時間統計資料。
+* **全部**：查詢存放區會擷取所有查詢。
+* [自動]：查詢存放區會忽略不常執行的查詢，以及編譯和執行持續時間微不足道的查詢。 執行次數、編譯持續時間和執行階段持續時間的閾值皆由內部決定。 這是預設選項。
+* **無**：查詢存放區會停止擷取新的查詢，不過仍然會收集已擷取查詢的執行階段統計資料。
 
-建議您從 **SSMS** 或 Azure 入口網站執行下列命令，將所有原則設為 [自動][](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)，並將清除原則設為 30 天。 (請將 `YourDB` 取代為資料庫名稱)。
+建議您從 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 入口網站執行下列命令，將所有原則設為 [自動]，並將清除原則設為 30 天。 (請將 `YourDB` 取代為資料庫名稱)。
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -260,7 +261,7 @@ ms.locfileid: "73821245"
 
 透過 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 入口網站連線到資料庫，並執行下列查詢，以增加查詢存放區的大小。 (請將 `YourDB` 取代為資料庫名稱)。
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ ms.locfileid: "73821245"
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Summary
-
-「查詢效能深入解析」可協助您了解查詢工作負載的影響，以及其與資料庫資源耗用量的關係。 使用此功能，您將了解資料庫上最耗用資源的查詢，並在發生問題前找出應最佳化的查詢。
-
 ## <a name="next-steps"></a>後續步驟
 
-* 如需資料庫效能的建議，請選取 [查詢效能深入解析] 導覽刀鋒視窗上的[建議](sql-database-advisor.md)。
-
-    ![建議索引標籤](./media/sql-database-query-performance/ia.png)
-
-* 考慮啟用[自動調整](sql-database-automatic-tuning.md)來處理常見的資料庫效能問題。
-* 了解如何 [Intelligent Insights](sql-database-intelligent-insights.md) 如何協助您對資料庫效能問題自動進行疑難排解。
-* 考慮使用 [Azure SQL 分析]( ../azure-monitor/insights/azure-sql.md)，透過內建的智慧對龐大的 SQL 資料庫、彈性集區和受控執行個體機組執行進階的效能監視。
+請考慮使用[Azure SQL 分析](../azure-monitor/insights/azure-sql.md)，以進行大量單一和集區資料庫、彈性集區、受控實例和實例資料庫的先進效能監視。

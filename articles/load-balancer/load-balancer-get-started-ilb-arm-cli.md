@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284105"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 來建立內部負載平衡器以平衡 VM 的負載
 

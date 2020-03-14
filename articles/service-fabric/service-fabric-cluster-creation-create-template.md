@@ -4,11 +4,11 @@ description: 了解如何為 Service Fabric 叢集建立 Resource Manager 範本
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258872"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>建立 Service Fabric 叢集 Resource Manager 範本
 

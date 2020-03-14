@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253763"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶與權限
 

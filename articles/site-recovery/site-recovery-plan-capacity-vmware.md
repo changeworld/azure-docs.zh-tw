@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961364"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257611"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>針對復原到 Azure 的 VMware 災害復原進行容量和規模調整規劃
 

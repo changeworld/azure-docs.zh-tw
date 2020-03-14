@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI，將資源部署至 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250666"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273900"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 範本與 Azure CLI 部署資源
 
@@ -24,13 +24,13 @@ ms.locfileid: "78250666"
 
 若要部署至**資源群組**，請使用[az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
 
-```azurecli
+```azurecli-interactive
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
 若要部署至**訂**用帳戶，請使用[az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)：
 
-```azurecli
+```azurecli-interactive
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
@@ -103,7 +103,7 @@ az group deployment create --resource-group examplegroup \
 
 若要傳遞內嵌參數，請提供 `parameters` 中的值。 例如，若要透過 Bash 殼層將字串和陣列傳遞至範本，請使用：
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \
@@ -114,7 +114,7 @@ az group deployment create \
 
 您也可以取得檔案內容，並提供該內容作為內嵌參數。
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \
@@ -150,7 +150,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>處理延伸 JSON 格式
 
-若要部署含有多行字串或批註的範本，您必須使用 `--handle-extended-json-format` 參數。  例如，
+若要部署含有多行字串或批註的範本，您必須使用 `--handle-extended-json-format` 參數。  例如：
 
 ```json
 {

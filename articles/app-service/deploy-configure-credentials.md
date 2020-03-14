@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372078"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266074"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳號憑證不同。

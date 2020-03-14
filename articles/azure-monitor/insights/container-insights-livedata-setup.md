@@ -4,11 +4,11 @@ description: 本文說明如何設定容器記錄（stdout/stderr）和事件的
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395410"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275369"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 

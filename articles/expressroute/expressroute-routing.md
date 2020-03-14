@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273042"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理路由。 有些連線提供者會以受控服務形式提供路由的設定和管理。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵循下列需求：
@@ -241,7 +241,7 @@ CRM Online 支援 Dynamics 8.2 和以下的。 針對較高的版本，請選取
 
 | **國家雲端 Azure 區域**| **BGP 社群值** |
 | --- | --- |
-| **美國政府** |  |
+| **US Gov** |  |
 | US Gov 亞利桑那州 | 12076:51106 |
 | US Gov 愛荷華州 | 12076:51109 |
 | US Gov 維吉尼亞州 | 12076:51105 |
@@ -252,7 +252,7 @@ CRM Online 支援 Dynamics 8.2 和以下的。 針對較高的版本，請選取
 
 | **國家雲端中的服務** | **BGP 社群值** |
 | --- | --- |
-| **美國政府** |  |
+| **US Gov** |  |
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | 商務用 Skype Online |12076:5130 |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822225"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214455"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>監視及管理多租用戶 SaaS 應用程式中 Azure SQL 資料庫和集區的效能
 
@@ -52,11 +52,11 @@ Wingtip Tickets SaaS Database Per Tenant 應用程式使用單一租用戶資料
 * 若要避免手動監視效能，最有效的方式是**設定在資料庫或集區偏離正常範圍時觸發的警示**。
 * 若要回應集區彙總計算大小中的短期波動，**可以相應增加或減少集區 eDTU 層級**。 如果這樣的波動是以定期或可預測的基礎發生，則**可排定自動調整集區**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以縮小。
 * 若要回應長期波動或多個資料庫中的變更，**個別資料庫可以移至其他集區**。
-* 若要回應「個別」資料庫負載中的短期增加，**可由集區中取出個別資料庫並指派個別計算大小**。 一旦負載降低後，就可以讓資料庫返回到集區。 事先知道時，則能預先移動資料庫以確保資料庫一律擁有它所需的資源，和避免影響集區中的其他資料庫。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
+* 若要回應「個別」資料庫負載中的短期增加，**可由集區中取出個別資料庫並指派個別計算大小**。 一旦負載降低後，就可以讓資料庫返回到集區。 事先知道這一點時，可以事先移動資料庫以確保資料庫一律擁有它所需的資源，並避免影響集區中的其他資料庫。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
 
 [Azure 入口網站](https://portal.azure.com)提供大部分資源的內建監視與警示功能。 針對 SQL Database，可使用資料庫和集區監視與警示功能。 這個內建的監視與警示功能是資源特定，因此針對少數資源使用很方便，但是搭配許多資源使用時則不是很方便。
 
-在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](saas-dbpertenant-log-analytics.md)。 這是個別的 Azure 服務，可針對發出的診斷記錄和在 Log Analytics 工作區中收集的遙測提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
+在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](saas-dbpertenant-log-analytics.md)。 這是個別的 Azure 服務，可針對在 Log Analytics 工作區中收集的已發出記錄提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得 Wingtip Tickets SaaS Database Per Tenant 應用程式指令碼
 
@@ -218,7 +218,7 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 
 ## <a name="other-performance-management-patterns"></a>其他效能管理模式
 
-**預先調整** 在您探索如何調整隔離資料庫的上述練習中，您知道要尋找的資料庫。 如果 Contoso 演藝廳管理已通知 Wingtips 即將發生的票證銷售，則資料庫可能已預先移出集區。 否則，它可能會需要集區或資料庫上的警示來了解發生的事件。 您不會想要從集區中其他抱怨效能降低的租用戶得知這件事。 而且如果租用戶可以預測需要其他資源多久的時間，您可以設定 Azure 自動化 Runbook 將資料庫移出集區，然後依定義的排程將它重新移回到集區中。
+**預先調整** 在您探索如何調整隔離資料庫的上述練習中，您知道要尋找的資料庫。 如果 Contoso 協同廳的管理已通知 Wingtips 即將推出的票證銷售，則資料庫可能已移出集區事先。 否則，它可能會需要集區或資料庫上的警示來了解發生的事件。 您不會想要從集區中其他抱怨效能降低的租用戶得知這件事。 而且如果租用戶可以預測需要其他資源多久的時間，您可以設定 Azure 自動化 Runbook 將資料庫移出集區，然後依定義的排程將它重新移回到集區中。
 
 **租用戶自助調整** 因為調整是可以透過管理 API 輕鬆呼叫的工作，您可以輕易地在您的租用戶面向應用程式中建立調整租用戶資料庫的能力，並以 SaaS 服務的功能形式提供。 例如，讓租用戶自行管理相應增加和減少，或許會直接影響其計費！
 

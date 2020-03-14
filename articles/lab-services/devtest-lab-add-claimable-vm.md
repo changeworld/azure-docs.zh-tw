@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270793"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中建立和管理可認領 VM
 您可以從[自訂映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)等「基底」，使用和[新增標準 VM](devtest-lab-add-vm.md) 相似的方法將可宣告 VM 新增至實驗室。 本教學課程會逐步引導您使用 Azure 入口網站，新增可認領 VM 至 DevTest Labs 中的實驗室，並為使用者示範認領與取消認領 VM 的流程。

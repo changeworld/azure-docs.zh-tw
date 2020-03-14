@@ -8,11 +8,11 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968119"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250253"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上設定軟體 RAID
 在 Azure 的 Linux 虛擬機器上使用軟體 RAID，以單一 RAID 裝置的形式顯示多個連接的資料磁碟，這種案例很常遇到。 相較於只使用單一磁碟，這通常可用來提高效能並允許增加輸送量。
