@@ -12,11 +12,11 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/18/2019
 ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261212"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -102,7 +102,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 以下是應用程式參數和屬性的詳細資料： 
 
-| 屬性                                                    | 描述                                                  | 必要項 |
+| 屬性                                                    | 描述                                                  | 必要 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode**"`<AuthenticationKey>`"                     | 使用指定的驗證金鑰註冊自我裝載整合執行時間節點。 | 否       |
 | **RegisterNewNode**"`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的驗證金鑰和節點名稱，註冊自我裝載整合執行時間節點。 | 否       |
@@ -148,7 +148,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 即使資料存放區位於 Azure 基礎結構即服務（IaaS）虛擬機器上的雲端，也請使用自我裝載整合執行時間。
 - 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，請在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼的值從1（已啟用）變更為0（已停用）： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 支援的 Windows 版本包括：
   + Windows 7 Service Pack 1
@@ -202,7 +202,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
     1. 選取 [註冊]。
 
-## <a name="high-availability-and-scalability"></a>高可用性和延展性
+## <a name="high-availability-and-scalability"></a>高可用性與延展性
 
 您可以將自我裝載整合執行時間與多個內部部署電腦或 Azure 中的虛擬機器建立關聯。 這些電腦稱為節點。 一個自我裝載整合執行階段最多可與四個節點建立關聯。 在具有為邏輯閘道安裝閘道的內部部署機器上具有多個節點的優點如下：
 
@@ -219,7 +219,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="scale-considerations"></a>調整考量
 
-#### <a name="scale-out"></a>橫向擴充
+#### <a name="scale-out"></a>相應放大
 
 當處理器使用量很高，且自我裝載 IR 的可用記憶體不足時，請新增新的節點，以協助相應放大電腦上的負載。 如果活動因為超時或自我裝載 IR 節點離線而失敗，它會協助您將節點新增至閘道。
 

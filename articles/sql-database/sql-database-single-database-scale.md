@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 92d6dccec3ce6483072a81c8739b65e81ce2c7fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359950"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268570"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整單一資料庫資源
 
@@ -106,10 +106,11 @@ else {
 
 ### <a name="vcore-based-purchasing-model"></a>以虛擬核心為基礎的購買模型
 
-- 可以使用 1GB 為增量單位，將儲存體佈建到大小上限。 資料儲存體的最小可設定值是 5 GB
-- 藉由使用 [Azure 入口網站](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) 增加或減少其大小上限，即可佈建單一資料庫的儲存體。
-- SQL Database 會自動為記錄檔配置 30% 的額外儲存體，為 TempDB 的每個虛擬核心配置 32GB 儲存體，但不超過 384GB。 TempDB 位於所有服務層級中的已連結 SSD 上。
-- 單一資料庫的儲存體價格為資料儲存體和記錄儲存體數量的總和乘以服務層的儲存體單價。 TempDB 的成本包含在虛擬核心價格內。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。
+- 您可以使用 1 GB 的增量，將儲存體布建到資料儲存體的最大大小限制。 可設定的最小資料儲存體為 1 GB。 如需每個服務目標中的資料儲存體最大大小限制，請參閱[單一資料庫](sql-database-vcore-resource-limits-single-databases.md)的資源限制檔頁面和[彈性](sql-database-vcore-resource-limits-elastic-pools.md)集區。
+- 單一資料庫的資料儲存體可以藉由使用[Azure 入口網站](https://portal.azure.com)、 [transact-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、 [Azure CLI](/cli/azure/sql/db#az-sql-db-update)或[REST API](https://docs.microsoft.com/rest/api/sql/databases/update)來增加或減少其大小上限來布建。 如果指定的大小上限值是以位元組為單位，它必須是 1 GB 的倍數（1073741824個位元組）。
+- 可儲存在資料庫資料檔案中的資料量會受到設定的資料儲存體大小上限所限制。 除了該儲存體之外，SQL Database 會自動為交易記錄檔配置30% 以上的儲存空間。
+- SQL Database 會針對 `tempdb` 資料庫自動設定每個 vCore 32 GB。 `tempdb` 位於所有服務層級中的本機 SSD 儲存體。
+- 單一資料庫或彈性集區的儲存體價格是資料儲存體和交易記錄儲存體數量的總和，乘以服務層的儲存體單位價格。 `tempdb` 的成本包含在價格中。 如需儲存體價格的詳細資訊，請參閱[SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
 > 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](sql-database-file-space-management.md)。

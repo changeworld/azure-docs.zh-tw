@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077032e4fe3886d5bf9a678dffdffca1a5802091
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377504"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263799"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
@@ -156,7 +156,7 @@ ms.locfileid: "78377504"
 
 用來建立自訂訊息的範例腳本。
 
-| 訊息名稱 | 指令檔 |
+| 訊息名稱 | 指令碼 |
 | --- | --- |
 | 驗證成功 | 已成功驗證您的登入。 不用. |
 | 延伸模組提示 | 感謝您使用 Microsoft 的登入驗證系統。 請按井字鍵以繼續。 |
@@ -171,7 +171,7 @@ ms.locfileid: "78377504"
 | 詐騙問候語（PIN） | 感謝您使用 Microsoft 的登入驗證系統。  請輸入您的 PIN，然後按井字鍵完成您的驗證。 如果您未起始此驗證，可能是有人嘗試存取您的帳戶。 請按零英鎊以提交詐騙警示。 這會通知您公司的 IT 小組，並封鎖進一步的驗證嘗試。 |
 | 重試（PIN） | 感謝您使用 Microsoft 的登入驗證系統。 請輸入您的 PIN，然後按井字鍵完成您的驗證。 |
 | 數位之後的延伸提示 | 如果已在此延伸模組中，請按井字鍵以繼續。 |
-| 拒絕驗證 | 很抱歉，我們目前無法將您登入。 請稍後再試。 |
+| 拒絕驗證 | 很抱歉，我們目前無法將您登入。 請稍後再試一次。 |
 | 啟用問候語（標準） | 感謝您使用 Microsoft 的登入驗證系統。 請按井字鍵完成您的驗證。 |
 | 啟用重試（標準） | 感謝您使用 Microsoft 的登入驗證系統。 請按井字鍵完成您的驗證。 |
 | 啟用問候語（PIN） | 感謝您使用 Microsoft 的登入驗證系統。 請輸入您的 PIN，然後按井字鍵完成您的驗證。 |
@@ -233,7 +233,7 @@ Microsoft Office 2013 用戶端和更新版本支援新式驗證。 Office 2013 
 使用應用程式密碼時，請考量下列要點：
 
 * 每個應用程式只能輸入一次應用程式密碼。 使用者不需要追蹤密碼，也不需要每次輸入。
-* 實際使用的密碼是自動產生的，而不是由使用者提供。 攻擊者比較難以猜中自動產生的密碼，所以比較安全。
+* 實際的密碼會自動產生，而不是由使用者提供。 攻擊者比較難以猜中自動產生的密碼，所以比較安全。
 * 每位使用者的密碼以 40 組為限。
 * 因為公司或學校帳戶以外的應用程式密碼是未知的，快取密碼並在內部部署案例中使用這些密碼的應用程式可能會開始失敗。 將 Exchange 電子郵件存放在內部部署設施，但是將封存郵件存放在雲端即是此案例的一個範例。 在此案例中，同樣的密碼無法適用於兩者。
 * 在使用者的帳戶上啟用 Multi-Factor Authentication 之後，應用程式密碼就能用於大部分的非瀏覽器用戶端 (例如 Outlook 和 Microsoft 商務用 Skype)。 透過非瀏覽器的應用程式 (例如 Windows PowerShell) 使用應用程式密碼無法執行系統管理動作。 即使使用者具有系統管理員帳戶，仍無法執行動作。 若要執行 PowerShell 指令碼，請使用強式密碼建立服務帳戶，且請勿為該帳戶啟用雙步驟驗證。
@@ -300,7 +300,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 
 | Azure AD 租用戶類型 | 信任的 IP 功能選項 |
 |:--- |:--- |
-| Managed |**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 最多可設定50個信任的 IP 範圍。|
+| 受控 |**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 最多可設定50個信任的 IP 範圍。|
 | 同盟 |**所有同盟使用者**：所有從組織內登入的同盟使用者，都可略過雙步驟驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 |
 
 信任的 IP 只會略過公司內部網路之內的工作。 如果您選取 [所有同盟使用者] 選項，且使用者從公司內部網路之外登入時，使用者必須使用雙步驟驗證來進行驗證。 即使使用者提供 AD FS 宣告，程序還是相同的。 
@@ -382,7 +382,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 3. 選取 [多重要素驗證]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]。
 5. 在 [服務設定] 頁面的 [驗證選項] 下，選取/取消選取要提供給使用者的方法。
-6. Haga clic en **Guardar**.
+6. 按一下 [檔案]。
 
 其他的驗證方法使用方式詳細資料，可在[驗證的方法](concept-authentication-methods.md)一文中找到。
 

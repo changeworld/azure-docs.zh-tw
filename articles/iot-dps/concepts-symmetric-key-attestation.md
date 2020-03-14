@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975290"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271508"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明
 
@@ -46,10 +46,10 @@ SAS 權杖具有下列格式：
 
 下列為每個權杖的元件：
 
-| Value | 描述 |
+| 值 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 簽章字串。 對於個別註冊，此簽章是使用對稱金鑰（主要或次要）來執行雜湊所產生的。 對於註冊群組，衍生自註冊群組索引鍵的索引鍵會用來執行雜湊。 雜湊是在表單的訊息上執行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要事項**：金鑰必須是從 base64 解碼而來，才能用來執行 HMAC-SHA256 計算的金鑰。 此外，簽章結果必須以 URL 編碼。 |
-| {resourceURI} |可以使用此權杖存取的註冊端點 URI，開頭為裝置佈建服務執行個體的範圍 ID。 例如，`{Scope ID}/registrations/{Registration ID}` |
+| {resourceURI} |可以使用此權杖存取的註冊端點 URI，開頭為裝置佈建服務執行個體的範圍 ID。 例如， `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
 | {URL-encoded-resourceURI} |小寫資源 URI 的小寫 URL 編碼 |
 | {policyName} |此權杖所參考的共用存取原則名稱。 使用對稱金鑰證明佈建時使用的原則名稱是**註冊**。 |

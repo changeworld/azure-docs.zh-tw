@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77196128"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263357"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B 共同作業的限制
 Azure Active Directory (Azure AD) B2B 共同作業目前受限於本文所述的限制。
@@ -32,6 +32,21 @@ Azure AD B2B 受限於 Azure AD 服務目錄限制。 如需使用者可建立�
 
 ## <a name="national-clouds"></a>國家雲端
 [國家](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)雲端是實體獨立的 Azure 實例。 不支援跨國家雲端界限進行 B2B 共同作業。 例如，如果您的 Azure 租使用者位於公用的全域雲端，您就無法邀請其帳戶位於國家雲端的使用者。 若要與使用者共同作業，請要求他們提供另一個電子郵件地址，或在您的目錄中建立成員使用者帳戶。
+
+## <a name="azure-us-government-clouds"></a>Azure 美國政府雲端
+在 Azure 美國政府雲端中，目前只有在 Azure 美國政府雲端內的租使用者，以及同時支援 B2B 共同作業的租使用者之間，才支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端的一部分，或是尚未支援 B2B 共同作業，則邀請將會失敗，或使用者將無法兌換邀請。 如需其他限制的詳細資訊，請參閱[Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>如何判斷我的 Azure 美國政府租使用者是否可以使用 B2B 共同作業？
+若要瞭解您的 Azure 美國政府雲端租使用者是否支援 B2B 共同作業，請執行下列動作：
+
+1. 在瀏覽器中，移至下列 URL，並以您的租使用者名稱取代 *&lt;tenantname&gt;* ：
+
+   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
+
+2. 在 JSON 回應中尋找 `"tenant_region_scope"`：
+
+   - 如果出現 `"tenant_region_scope":"USGOV”`，就會支援 B2B。
+   - 如果出現 `"tenant_region_scope":"USG"`，則不支援 B2B。
 
 ## <a name="next-steps"></a>後續步驟
 

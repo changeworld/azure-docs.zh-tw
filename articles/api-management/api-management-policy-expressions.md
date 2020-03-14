@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374308"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244000"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理原則運算式
-本文討論7中的C#原則運算式語法。 每個運算式具有存取權以隱含方式提供[內容](api-management-policy-expressions.md#ContextVariables)變數並允許[子集](api-management-policy-expressions.md#CLRTypes)的.NET Framework 型別。
+本文討論7中的C#原則運算式語法。 每個運算式皆可存取以隱含方式提供的[內容](api-management-policy-expressions.md#ContextVariables)變數，以及允許的 .NET Framework 類型[子集](api-management-policy-expressions.md#CLRTypes)。
 
 其他資訊：
 
@@ -206,7 +206,7 @@ ms.locfileid: "78374308"
 |System.Xml.XmlNodeType|全部|
 
 ## <a name="ContextVariables"></a>內容變數
-變數，名為`context`隱含地使用每個原則[運算式](api-management-policy-expressions.md#Syntax)。 其成員會提供與 `\request` 相關的資訊。 所有 `context` 成員都是唯讀的。
+名為 `context` 的變數可在每個原則[運算式](api-management-policy-expressions.md#Syntax)中隱含地使用。 其成員會提供與 `\request` 相關的資訊。 所有 `context` 成員都是唯讀的。
 
 |內容變數|允許的方法、屬性和參數值|
 |----------------------|-------------------------------------------------------|

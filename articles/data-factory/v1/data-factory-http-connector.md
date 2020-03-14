@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260419"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 HTTP 來源的資料
 
@@ -50,10 +50,10 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 下表說明 HTTP 連結服務專屬的 JSON 元素：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| 類型 | **類型**屬性必須設定為 **Http**。 | 是 |
-| URL | Web 伺服器的基底 URL。 | 是 |
+| type | **類型**屬性必須設定為 **Http**。 | 是 |
+| url | Web 伺服器的基底 URL。 | 是 |
 | authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱本文後續幾節。 | 是 |
 | enableServerCertificateValidation | 指定在來源是 HTTPS Web 伺服器的情況下，是否要啟用伺服器 SSL 憑證驗證。 當 HTTPS 伺服器使用自我簽署的憑證時，請將此屬性設定為 **false**。 | 否<br /> (預設值為 **true**) |
 | gatewayName | 用來連線至內部部署 HTTP 來源的「資料管理閘道」執行個體名稱。 | 如果要從內部部署 HTTP 來源複製資料，則為是。 |
@@ -65,7 +65,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 將 **authenticationType** 設定為**基本**、**摘要**或 **Windows**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | userName | 用來存取 HTTP 端點的使用者名稱。 | 是 |
 | 密碼 | 使用者 (**username**) 的密碼。 | 是 |
@@ -93,7 +93,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 若要使用基本驗證，請將 **authenticationType** 設定為 **ClientCertificate**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | embeddedCertData | PFX 檔案二進位資料的 Base64 編碼內容。 | 指定 **embeddedCertData** 或 **certThumbprint** |
 | certThumbprint | 憑證指紋已安裝在您閘道器電腦的憑證存放區上。 當您從內部部署 HTTP 來源複製資料時才適用。 | 指定 **embeddedCertData** 或 **certThumbprint** |
@@ -157,15 +157,15 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 不同類型資料集的 **typeProperties** 區段不同。 **typeProperties** 區段可提供資料存放區中的資料位置資訊。 類型為 **Http** 的資料集中，其 **typeProperties** 區段有下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 資料集的**類型**必須設定為 **Http**。 | 是 |
+| type | 資料集的**類型**必須設定為 **Http**。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)。 範例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)** 。 | 否 |
 | requestMethod | HTTP 方法。 允許的值為 **GET** 和 **POST**。 | 否 <br />(預設值為 **GET**) |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的主體。 | 否 |
-| 格式 | 如果您想要「從 HTTP 端點依現狀擷取資料」而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
-| 壓縮 | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 如果您想要「從 HTTP 端點依現狀擷取資料」而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| compression | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 **範例︰使用 GET (預設值) 方法**
 
@@ -220,7 +220,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 目前，當複製活動中的來源類型為 **HttpSource** 時，支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 逾時會取得回應，而非逾時讀取回應資料。 | 否<br />(預設值：**00:01:40**) |
 

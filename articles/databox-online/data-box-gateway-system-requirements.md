@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442376"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260185"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 中部署資料閘道的系統需求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料箱閘道系統需求
 
 本文會針對 Microsoft Azure 資料箱閘道解決方案以及連線至 Azure 資料箱閘道的用戶端，說明其各自的重要系統需求。 建議您先仔細檢閱此資訊再部署資料箱閘道，之後在進行部署和後續作業期間若有必要，也請回頭查閱。
 
@@ -34,7 +34,7 @@ ms.locfileid: "65442376"
 | 虛擬處理器 (核心)   | 最少 4 個 |
 | 記憶體  | 最少 8 GB|
 | 可用性|單一節點|
-| 磁碟| OS 磁碟：250 GB <br> 資料磁碟：最少 2 TB、精簡佈建且必須以 SSD 為後盾|
+| 磁碟| 作業系統磁碟：250 GB <br> 資料磁碟：最少 2 TB，精簡佈建且必須以 SSD 支援|
 | 網路介面|1 或多個虛擬網路介面|
 
 
@@ -48,7 +48,7 @@ ms.locfileid: "65442376"
 
 ## <a name="supported-virtualization-platforms-for-device"></a>裝置的受支援虛擬化平台
 
-| **作業系統/平台**  |**版本**   |**注意事項**  |
+| **作業系統/平台**  |**版本**   |**注意**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支援 VMware 工具。         |
@@ -69,7 +69,7 @@ ms.locfileid: "65442376"
 
 ## <a name="networking-port-requirements"></a>網路連接埠需求
 
-下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in  或 inbound  指的是輸入用戶端要求存取裝置的方向。 Out  或 outbound  指的是資料箱閘道裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
+下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 Out 或 outbound 指的是資料箱閘道裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 

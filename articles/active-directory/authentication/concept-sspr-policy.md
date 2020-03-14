@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263929"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>密碼原則和 Azure Active Directory 中的限制
 
@@ -79,7 +79,7 @@ ms.locfileid: "76962487"
 
 下表描述在 Azure AD 中建立和管理的使用者帳戶所套用的密碼原則設定：
 
-| 屬性 | 要求 |
+| 屬性 | 需求 |
 | --- | --- |
 | 允許的字元 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ "（）;</li> <li>空格</li></ul> |
 | 不允許的字元 | Unicode 字元。 |
@@ -149,7 +149,7 @@ Microsoft 雲端服務的全域管理員或使用者管理員可以使用適用�
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * 若要將組織中所有使用者的密碼設定為永不過期，請執行下列 Cmdlet：
+   * 若要將組織中所有使用者的密碼設定為永不過期，請執行下列指令程式：
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration

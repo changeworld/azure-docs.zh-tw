@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385344"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265723"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -42,7 +42,7 @@ ms.locfileid: "78385344"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -105,7 +105,7 @@ public IDictionary<string, string> Execute(
      <li>從右邊的專案類型清單中選取 [類別庫]<b></b>。 在 Visual Studio 中，選擇 [<b>類別庫（.NET Framework）</b> ] </li>
      <li>針對 [名稱]<b></b> 輸入 <b>MyDotNetActivity</b>。</li>
      <li>在 [位置]<b></b> 選取 <b>C:\ADFGetStarted</b>。</li>
-     <li>按一下 [確定]<b></b> 建立專案。</li>
+     <li>按一下 [確定] <b></b> 以建立專案。</li>
    </ol>
 
 2. 按一下 [**工具**]，指向 [**NuGet 封裝管理員**]，然後按一下 [**封裝管理員主控台**]。

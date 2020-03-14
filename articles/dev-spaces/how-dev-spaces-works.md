@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式，以及如何在 azds yaml 設定檔中設定它們。
 keywords: azds. yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259912"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces 的運作方式和設定
 
@@ -205,7 +205,7 @@ azds up
 1. 建立應用程式的容器。
 1. 將您的應用程式部署至開發人員空間。
 1. 如果已設定，則為您的應用程式端點建立可公開存取的 DNS 名稱。
-1. 使用*埠向前轉送*，以使用 http://localhost 來提供應用程式端點的存取權。
+1. 使用*埠向前轉送*，以使用 http://localhost來提供應用程式端點的存取權。
 1. 將 stdout 和 stderr 轉送至用戶端工具。
 
 
@@ -220,7 +220,7 @@ azds up
 1. 控制器會以唯一的會話識別碼取代 Helm 圖中的 *$ （tag）* 預留位置，並為您的服務安裝 Helm 圖表。 將唯一會話識別碼的參考新增至 Helm 圖表，可讓針對此特定會話部署至 AKS 叢集的容器，系結回到會話要求和相關聯的資訊。
 1. 在安裝 Helm 圖期間，Kubernetes webhook 許可伺服器會將額外的容器新增至您應用程式的 pod，以進行檢測並存取專案的原始程式碼。 新增 devspaces-proxy 和 devspaces proxy-init 容器，以提供 HTTP 追蹤和空間路由。 已新增 devspaces-build 容器，以提供可存取 Docker 實例和專案原始程式碼的 pod，以建立應用程式的容器。
 1. 啟動應用程式的 pod 時，會使用 devspaces-build 容器和 devspaces proxy-init 容器來建立應用程式容器。 接著會啟動應用程式容器和 devspaces proxy 容器。
-1. 應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的*埠轉送*功能，透過 http://localhost 提供應用程式的 HTTP 存取。 此埠轉送會將您的開發電腦連接到您的開發人員空間中的服務。
+1. 應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的*埠轉送*功能，透過 http://localhost提供應用程式的 HTTP 存取。 此埠轉送會將您的開發電腦連接到您的開發人員空間中的服務。
 1. 當 pod 中的所有容器都已啟動時，服務就會在執行中。 此時，用戶端功能會開始串流 HTTP 追蹤、stdout 和 stderr。 這項資訊是由開發人員的用戶端功能所顯示。
 
 ### <a name="updating-a-running-service"></a>正在更新執行中的服務
@@ -267,7 +267,7 @@ azds up
 
 ### <a name="how-routing-works"></a>路由的運作方式
 
-開發人員空間是以 AKS 為基礎，並使用相同的[網路概念](../aks/concepts-network.md)。 Azure Dev Spaces 也有一個集中式*ingressmanager*服務，並將它自己的輸入控制器部署到 AKS 叢集。 *Ingressmanager*服務會監視具有 dev SPACES 的 AKS 叢集，並使用用於路由傳送至應用程式 pod 的輸入物件，來擴大叢集中的 Azure Dev Spaces 輸入控制器。 每個 pod 中的 devspaces proxy 容器都會根據 URL，將 HTTP 流量的 `azds-route-as` HTTP 標頭新增至開發人員空間。 例如， *http://azureuser.s.default.serviceA.fedcba09...azds.io* URL 的要求會取得具有 `azds-route-as: azureuser` 的 HTTP 標頭。 Devspaces proxy 容器若已存在，則不會新增 `azds-route-as` 標頭。
+開發人員空間是以 AKS 為基礎，並使用相同的[網路概念](../aks/concepts-network.md)。 Azure Dev Spaces 也有一個集中式*ingressmanager*服務，並將它自己的輸入控制器部署到 AKS 叢集。 *Ingressmanager*服務會監視具有 dev SPACES 的 AKS 叢集，並使用用於路由傳送至應用程式 pod 的輸入物件，來擴大叢集中的 Azure Dev Spaces 輸入控制器。 每個 pod 中的 devspaces proxy 容器都會根據 URL，將 HTTP 流量的 `azds-route-as` HTTP 標頭新增至開發人員空間。 例如， *http://azureuser.s.default.serviceA.fedcba09...azds.io* URL 的要求會取得具有 `azds-route-as: azureuser`的 HTTP 標頭。 Devspaces proxy 容器若已存在，則不會新增 `azds-route-as` 標頭。
 
 從叢集外部對服務發出 HTTP 要求時，要求會移至輸入控制器。 輸入控制器會根據輸入物件和規則，將要求直接路由傳送至適當的 pod。 Pod 中的 devspaces proxy 容器會接收要求、根據 URL 新增 `azds-route-as` 標頭，然後將要求路由傳送至應用程式容器。
 
@@ -397,11 +397,11 @@ ingress:
   enabled: true
 ```
 
-## <a name="debug-your-code"></a>偵錯程式碼
+## <a name="debug-your-code"></a>偵錯工具代碼
 
 針對 JAVA、.NET 和 node.js 應用程式，您可以使用 Visual Studio Code 或 Visual Studio，在開發人員空間中直接對執行的應用程式進行 debug。 Visual Studio Code 和 Visual Studio 提供工具來連接到您的開發人員空間、啟動應用程式，以及附加偵錯工具。 執行 `azds prep`之後，您可以在 Visual Studio Code 或 Visual Studio 中開啟專案。 Visual Studio Code 或 Visual Studio 會產生自己的設定檔來進行連線，而這與執行 `azds prep`不同。 從 Visual Studio Code 或 Visual Studio 中，您可以設定中斷點，並啟動應用程式到您的開發人員空間。
 
-![偵錯您的程式碼](media/get-started-node/debug-configuration-nodejs2.png)
+![偵錯工具代碼](media/get-started-node/debug-configuration-nodejs2.png)
 
 當您使用 Visual Studio Code 或 Visual Studio 進行偵錯工具啟動應用程式時，它們會以執行 `azds up`的相同方式，來處理啟動和連接到您的開發人員空間。 Visual Studio Code 和 Visual Studio 中的用戶端工具也會提供額外的參數，其中包含用於進行偵錯工具的特定資訊。 參數包含偵錯工具映射的名稱、偵錯工具映射中的偵錯工具位置，以及應用程式容器內用來掛接偵錯工具資料夾的目的地位置。
 

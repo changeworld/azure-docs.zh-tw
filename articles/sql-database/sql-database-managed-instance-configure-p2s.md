@@ -12,17 +12,17 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268882"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入門：設定從內部部署連線至 Azure SQL Database 受控執行個體的點對站連線
 
 此快速入門示範如何使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)，利用點對站連線從內部部署用戶端電腦連線到 Azure SQL Database 受控執行個體。 如需點對站連線的詳細資訊，請參閱[關於點對站 VPN](../vpn-gateway/point-to-site-about.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此快速入門：
 
@@ -81,7 +81,7 @@ ms.locfileid: "73818921"
 1. 移至內部部署用戶端電腦上**網路 & 網際網路**中的**VPN** ，然後選取您的受控執行個體虛擬網路，以建立與此 VNet 的連線。 在下圖中，VNet 的名稱為 **MyNewVNet**。
 
     ![VPN 連線](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. 選取 [ **連接**]。
+2. 選取 [連接]。
 3. 在對話方塊中，選取 [連線]。
 
     ![VPN 連線](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  

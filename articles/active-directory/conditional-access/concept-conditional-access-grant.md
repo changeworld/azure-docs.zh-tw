@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0716c2d4475bb538c06b9a591521fbdcfc0c80e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249109"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263435"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -35,7 +35,7 @@ ms.locfileid: "78249109"
 系統管理員可以選擇在授與存取權時，強制執行一或多個控制項。 這些控制項包括下列選項： 
 
 - [需要多重要素驗證（Azure 多重要素驗證）](../authentication/concept-mfa-howitworks.md)
-- [需要將裝置標示為符合規範（Microsoft Intune）](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [需要將裝置標示為符合規範（Microsoft Intune）](/intune/protect/device-compliance-get-started)
 - [需要已加入混合式 Azure AD 裝置](../devices/concept-azure-ad-join-hybrid.md)
 - [需要核准的用戶端應用程式](app-based-conditional-access.md)
 - [需要應用程式保護原則](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ ms.locfileid: "78249109"
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>裝置需要標記為符合規範
 
-已部署 Microsoft Intune 的組織可以使用其裝置所傳回的資訊，來識別符合特定合規性需求的裝置。 此原則合規性資訊會從 Intune 轉送至 Azure AD，讓條件式存取可以決定要授與或封鎖資源的存取權。 如需相容性原則的詳細資訊，請參閱[使用 Intune 在裝置上設定規則以允許存取您組織中的資源一](https://docs.microsoft.com/intune/protect/device-compliance-get-started)文。
+已部署 Microsoft Intune 的組織可以使用其裝置所傳回的資訊，來識別符合特定合規性需求的裝置。 此原則合規性資訊會從 Intune 轉送至 Azure AD，讓條件式存取可以決定要授與或封鎖資源的存取權。 如需相容性原則的詳細資訊，請參閱[使用 Intune 在裝置上設定規則以允許存取您組織中的資源一](/intune/protect/device-compliance-get-started)文。
 
 Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適用于 Windows 10 裝置）可能會將裝置標示為符合規範。 Jamf pro 是唯一支援的協力廠商 MDM 系統。 如需整合的詳細資訊，請參閱[整合 Jamf Pro 與 Intune 以取得相容性](/intune/protect/conditional-access-integrate-jamf)一文。
 
@@ -67,7 +67,36 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端應用程式支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
 
-支援的應用程式可在[Microsoft Intune 受保護的應用程式](/intune/apps/apps-supported-intune-apps)一文中找到。
+此設定適用于下列 iOS 和 Android 應用程式：
+
+- Microsoft Azure 資訊保護
+- Microsoft 預約
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune 受控瀏覽器
+- Microsoft Invoicing
+- Microsoft Kaizala
+- Microsoft Launcher
+- Microsoft Office
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft 商務用 Skype
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
 
 **備註**
 
@@ -76,17 +105,26 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
    - 僅支援 iOS 和 Android 的裝置平臺條件。
 - 條件式存取在 InPrivate 模式中無法將 Microsoft Edge 視為已核准的用戶端應用程式。
 
+如需設定範例，請參閱[如何：使用條件式存取針對雲端應用程式存取要求核准的用戶端應用程式](app-based-conditional-access.md)一文。
+
 ### <a name="require-app-protection-policy"></a>需要應用程式保護原則
 
 在您的條件式存取原則中，您可以要求用戶端應用程式上有[Intune 應用程式保護原則](/intune/app-protection-policy)，才能存取所選的雲端應用程式。 
 
-支援的應用程式可在[Microsoft Intune 受保護的應用程式](/intune/apps/apps-supported-intune-apps)一文中找到。
+此設定適用於下列用戶端應用程式：
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
 
 **備註**
 
 - 應用程式保護原則的應用程式支援具有原則保護的 Intune 行動應用程式管理功能。
 - **需要應用程式保護原則**需求：
     - 僅支援 iOS 和 Android 的裝置平臺條件。
+
+如需設定範例，請參閱[如何：需要應用程式保護原則和核准的用戶端應用程式，以使用條件式存取進行雲端應用程式存取一](app-protection-based-conditional-access.md)文。
 
 ### <a name="terms-of-use"></a>使用規定
 

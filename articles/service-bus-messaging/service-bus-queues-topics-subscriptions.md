@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259509"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服務匯流排佇列、主題和訂用帳戶
 
@@ -49,7 +49,7 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 如果應用程式在處理訊息之後，尚未發出 **CompleteAsync** 要求之前當機，則會在應用程式重新啟動時將訊息重新傳遞給該應用程式。 這個過程通常稱為「至少一次」處理；也就是說，會至少將每個訊息都處理一次。 不過，但在特定狀況下，可能會重新傳遞相同訊息。 如果此案例不容許重複處理，則應用程式中需要額外的邏輯才能根據訊息的 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性偵測可達成的重複項目，而該屬性在各傳遞嘗試之間維持不變。 這個功能稱為「剛好一次」處理。
 
-## <a name="topics-and-subscriptions"></a>主題及訂閱
+## <a name="topics-and-subscriptions"></a>主題和訂用帳戶
 
 有別於佇列，佇列中的每個訊息只會由單一取用者處理，「主題」和「訂用帳戶」採用「發佈/訂閱」模式，提供一對多的通訊形式。 適合用於相應增加為非常大量的收件者，每個發佈的訊息都會提供給每個已註冊主題的訂用帳戶。 根據可依每個訂用帳戶設定的篩選規則，訊息會傳送至主題並傳遞給一或多個相關聯的訂用帳戶。 訂用帳戶可以使用其他篩選器來限制他們想要接收的訊息。 訊息會以其傳送至佇列的相同方式傳送至主題，但不會從主題直接接收訊息。 反而會從訂用帳戶接收。 主題訂用帳戶類似於虛擬佇列，同樣可接收已傳送到主題的訊息複本。 從佇列接收訊息的方式就像從訂用帳戶接收訊息一樣。
 

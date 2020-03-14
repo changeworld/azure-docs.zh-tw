@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791759"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270572"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立會重複工作流程動作或處理陣列的迴圈
 
@@ -20,9 +20,9 @@ ms.locfileid: "74791759"
 若要重複執行動作直到條件符合或狀態改變，您可以建立 ["Until" 迴圈](#until-loop)。 您的邏輯應用程式會先執行迴圈內的所有動作，然後再檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 如需一個邏輯應用程式回合中可擁有的 "Until" 迴圈數上限，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。 
 
 > [!TIP]
-> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 **SplitOn** [觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」。 
+> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用SplitOn[ 觸發屬性**將該陣列「解除批次」** ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
@@ -130,7 +130,7 @@ ms.locfileid: "74791759"
 
    ![開啟並行控制](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-如果您要處理邏輯應用程式的 JSON 定義，您可以藉由新增 `operationOptions` 參數來使用 `Sequential` 選項，例如：
+如果您要處理邏輯應用程式的 JSON 定義，您可以藉由新增 `Sequential` 參數來使用 `operationOptions` 選項，例如：
 
 ``` json
 "actions": {
@@ -173,10 +173,10 @@ ms.locfileid: "74791759"
 
    ![設定週期排程](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | 屬性 | Value |
+   | 屬性 | 值 |
    | -------- | ----- |
    | **間隔** | 1 | 
-   | **頻率** | 天 |
+   | **頻率** | Day |
    | **在這幾小時內** | 8 |
    ||| 
 
@@ -189,11 +189,11 @@ ms.locfileid: "74791759"
 
    ![設定變數屬性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | 屬性 | Value | 描述 |
+   | 屬性 | 值 | 描述 |
    | -------- | ----- | ----------- |
    | **名稱** | 限制 | 變數的名稱 | 
-   | **類型** | 整數 | 變數的資料類型 | 
-   | **值** | 0 | 變數的起始值 | 
+   | **型別** | 整數 | 變數的資料類型 | 
+   | **ReplTest1** | 0 | 變數的起始值 | 
    |||| 
 
 1. 在 [初始化變數] 動作下，選擇 [新增步驟]。 
@@ -230,11 +230,11 @@ ms.locfileid: "74791759"
 
       ![設定電子郵件內容](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | 屬性 | Value | 描述 |
+      | 屬性 | 值 | 描述 |
       | -------- | ----- | ----------- | 
-      | **To** | *\<電子郵件地址\@網域 >* | 收件者的電子郵件地址。 若要進行測試，請使用自己的電子郵件地址。 | 
+      | **若要** | *\<電子郵件地址\@網域 >* | 收件者的電子郵件地址。 若要進行測試，請使用自己的電子郵件地址。 | 
       | **主旨** | [限制] 目前的值是**限制** | 指定電子郵件主旨。 在此範例中，請確定您已包含**限制**變數。 | 
-      | **內文** | <*email-content*> | 指定您想要傳送的電子郵件訊息內容。 針對此範例，輸入任何您喜歡的文字。 | 
+      | **本文** | <*email-content*> | 指定您想要傳送的電子郵件訊息內容。 針對此範例，輸入任何您喜歡的文字。 | 
       |||| 
 
 1. 儲存您的邏輯應用程式。 若要手動測試邏輯應用程式，在設計工具的工具列上，選擇 [執行]。

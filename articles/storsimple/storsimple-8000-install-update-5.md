@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394207"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267881"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝 Update 5
 
@@ -61,7 +61,7 @@ Update 5 包含裝置軟體、Storport 和 Spaceport、OS 安全性更新和 OS 
 * Update 1、1.1、1.2
 * Update 2、2.1、2.2
 * Update 3、3.1
-* 更新 4
+* Update 4
 
 > [!NOTE] 
 > 嘗試從 Update 3 及更新版本更新時，安裝 Update 5 的建議方法是透過 Azure 入口網站進行。 更新執行 Update 3 之前版本的裝置時，請使用此程序。 您也可以在嘗試透過 Azure 入口網站安裝更新，而無法通過閘道器檢查時使用此程序。 當您指派閘道器給非 DATA 0 網路介面且您的裝置正在執行早於 Update 1 的軟體版本時，檢查會失敗。
@@ -76,19 +76,19 @@ Hotfix 方法涉及下列三個步驟：
 
 您必須以指定的順序和建議的資料夾下載並安裝下列 Hotfix：
 
-| 使用 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |軟體更新<br> 下載 _HcsSoftwareUpdate.exe_ 和 _CisMSDAgent.exe_ |Regular <br></br>非干擾性 |~ 25 分鐘 |FirstOrderUpdate|
 
 如果從執行 Update 4 的裝置更新，您只需要將作業系統累積更新當作第二順位的更新來進行安裝。
 
-| 使用 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |OS 累積更新套件 <br> 下載 Windows Server 2012 R2 版本 |Regular <br></br>非干擾性 |- |SecondOrderUpdate|
 
 如果從執行 Update 3 或更早版本的裝置進行安裝，除了累積更新，也請安裝下列項目。
 
-| 使用 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 2B. |KB4011841 <br> KB4011842 |LSI 驅動程式與韌體更新 <br> USM 韌體更新 (3.38 版) |Regular <br></br>非干擾性 |~ 3 小時 <br> (包括 2A. 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS 安全性更新套件 <br> 下載 Windows Server 2012 R2 版本 |Regular <br></br>非干擾性 |- |SecondOrderUpdate|
@@ -97,7 +97,7 @@ Hotfix 方法涉及下列三個步驟：
 
 除了前面表格所示的所有更新之外，您可能還需要安裝磁碟韌體更新。 您可以執行 `Get-HcsFirmwareVersion` Cmdlet 來確認是否需要進行磁碟韌體更新。 如果您執行的是這些韌體版本：`XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N003`、`0107`，您就不需要安裝這些更新。
 
-| 使用 | KB | 描述 | 更新類型 | 安裝時間 | 安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 | 安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |磁碟韌體 |維護 <br></br>干擾性 |~ 30 分鐘 | ThirdOrderUpdate |
 

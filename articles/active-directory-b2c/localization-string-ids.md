@@ -11,11 +11,11 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3abf38a4b1ea798c39150454ac33f73ea588b782
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933048"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264371"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -37,7 +37,7 @@ ms.locfileid: "78933048"
 | **local_intro_username** | 使用您的使用者名稱登入 |
 | **logonIdentifier_username** | 使用者名稱 |
 | **requiredField_username** | 請輸入您的使用者名稱 |
-| **password** | Password |
+| **password** | 密碼 |
 | **requiredField_password** | 請輸入您的密碼 |
 | **invalid_password** | 您輸入的密碼未採用預期的格式。 |
 | **forgotpassword_link** | 忘記密碼了嗎? |
@@ -47,8 +47,8 @@ ms.locfileid: "78933048"
 | **cancel_message** | 使用者忘記密碼 |
 | **button_signin** | 登入 |
 | **social_intro** | 使用您的社交帳戶登入 |
-  **remember_me** |讓我保持登入狀態|
-| **unknown_error** | 我們無法將您登入。 請稍後再試。 |
+  **remember_me** |讓我保持登入|
+| **unknown_error** | 我們無法將您登入。 請稍後再試一次。 |
 
 下列範例示範在註冊或登入頁面中使用某些使用者介面元素的方式：
 
@@ -104,11 +104,11 @@ ms.locfileid: "78933048"
 | **ver_but_send** | 傳送驗證碼 |
 | **alert_yes** | 是 |
 | **error_fieldIncorrect** | 有一或多個欄位填寫不正確。 請檢查您的輸入，然後再試一次。 |
-| **year** | 年 |
+| **year** | Year |
 | **verifying_blurb** | 正在處理您的資訊，請稍候。 |
 | **button_cancel** | 取消 |
-| **ver_fail_no_retry** | 您已嘗試太多次，但都不正確。 請稍後再試。 |
-| **month** | 月 |
+| **ver_fail_no_retry** | 您已嘗試太多次，但都不正確。 請稍後再試一次。 |
+| **month** | Month |
 | **ver_success_msg** | 已驗證電子郵件地址。 您現在可以繼續。 |
 | **months** | 一月、二月、三月、四月、五月、六月、七月、八月、九月、十月、十一月、十二月 |
 | **ver_fail_server** | 我們無法驗證您的電子郵件地址。 請輸入有效的電子郵件地址，然後再試一次。 |
@@ -186,7 +186,7 @@ ms.locfileid: "78933048"
 | **intro_sms_p** |我們為您記錄了下列號碼。 請選擇可以簡訊傳送驗證碼的號碼，以驗證您的身分。 |
 | **requiredField_countryCode** | 請選取您的國碼 (地區碼) |
 | **requiredField_number** | 請輸入您的電話號碼 |
-| **country_code_input_placeholder_text** |國家或地區 |
+| **country_code_input_placeholder_text** |國家或區域 |
 | **number_label** | 電話號碼 |
 | **error_tryagain** | 提供的電話號碼目前忙線中或不通。 請檢查號碼，然後再試一次。 |
 | **error_incorrect_code** | 您輸入的驗證碼與我們的記錄不符。 請再試一次，或要求新的驗證碼。 |

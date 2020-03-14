@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263994"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>避免在組織中使用不當密碼
 
@@ -65,7 +65,7 @@ Azure AD Identity Protection 小組會持續分析 Azure AD 的安全性遙測�
 
 相反地，只會封鎖主要的基本術語，更有效率且更安全：
 
-- 「Contoso」
+- Contoso
 - 位於
 - 機械
 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126113"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260094"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
 
-當您部署和操作 Azure Data Box Heavy 裝置時, 請考慮這些限制。 下表描述資料箱的這些限制。
+當您部署和操作 Azure Data Box Heavy 裝置時，請考慮這些限制。 下表描述資料箱的這些限制。
 
 
 ## <a name="data-box-heavy-service-limits"></a>Data Box Heavy 服務限制

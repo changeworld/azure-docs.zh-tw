@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251004"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270325"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理 B2B 企業整合的整合帳戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "78251004"
 * 將整合帳戶移到另一個 Azure 資源群組或訂用帳戶。
 * 刪除整合帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "78251004"
 
    ![提供整合帳戶詳細資料](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | 屬性 | 必要項 | 值 | 描述 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **名稱** | 是 | <*integration-account-name*> | 您的整合帳戶名稱，其中只能包含字母、數位、連字號（`-`）、底線（`_`）、括弧（`(`、`)`）和句點（`.`）。 這個範例會使用「Fabrikam-整合」。 |
    | **訂用帳戶** | 是 | <*Azure-subscription-name*> | Azure 訂用帳戶的名稱 |
@@ -206,7 +206,7 @@ ms.locfileid: "78251004"
    },
    ```
 
-   例如，
+   例如：
 
    ![尋找 "integrationAccount" 物件](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 4146191453e7c7a589dacc41345a36a29a540de5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964281"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260770"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立 Azure-SSIS 整合執行階段
 
@@ -37,7 +37,7 @@ ms.locfileid: "76964281"
 
 本文說明如何使用 Azure 入口網站、Azure PowerShell 和 Azure Resource Manager 範本來布建 Azure SSIS IR。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -368,7 +368,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-使用[remove-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)命令建立[Azure 資源群組](../azure-resource-manager/management/overview.md)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。
+使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令來建立 [Azure 資源群組](/powershell/module/az.resources/new-azresourcegroup)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。
 
 如果您的資源群組已經存在，請勿將此程式碼複製到您的指令碼。 
 

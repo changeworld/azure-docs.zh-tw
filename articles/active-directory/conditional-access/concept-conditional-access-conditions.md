@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620721"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263331"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -72,7 +72,7 @@ Azure AD 條件式存取支援下列裝置平臺：
       - 此選項包括使用不支援新式驗證之基本/舊版驗證通訊協定的用戶端。
          - 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
          - 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
-         - Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
          - Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
          - IMAP4-供 IMAP 電子郵件客戶程式使用。
          - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
@@ -142,8 +142,8 @@ Azure AD 條件式存取支援下列裝置平臺：
 | [電子郵件]/[行事曆]/[人員] 應用程式、Outlook 2016、Outlook 2013 (使用新式驗證)| Office 365 Exchange Online | Windows 10 |
 | 應用程式的 MFA 和位置原則。 不支援裝置型原則。| 任何 My Apps 應用程式服務 | Android 和 iOS |
 | Microsoft Teams Services - 這會控制支援 Microsoft Teams 及其所有用戶端應用程式的所有服務 - Windows 桌面、iOS、Android、WP 和 Web 用戶端 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 及 macOS |
-| Office 2016 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 應用程式、通用 Office 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Office 2016 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
+| Office 2016 應用程式、通用 Office 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (僅限 Word、Excel、PowerPoint、OneNote)。 | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10，macOS |
 | Office 行動應用程式 | Office 365 SharePoint Online | Android、iOS |

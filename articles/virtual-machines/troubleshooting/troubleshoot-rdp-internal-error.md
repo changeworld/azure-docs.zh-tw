@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381715"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266919"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤
 
@@ -30,7 +30,7 @@ ms.locfileid: "78381715"
 
 - RDP 內部錯誤
 - 發生內部錯誤
-- 這部電腦無法連線到遠端電腦。 請重新嘗試連線。 如果問題持續發生，請連絡遠端電腦的擁有者或網路系統管理員
+- 這部電腦無法連線到遠端電腦。 請嘗試重新連線。 如果問題持續發生，請連絡遠端電腦的擁有者或網路系統管理員
 
 
 ## <a name="cause"></a>原因
@@ -41,7 +41,7 @@ ms.locfileid: "78381715"
 - TLS 通訊協定已停用。
 - 憑證損毀或過期。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 

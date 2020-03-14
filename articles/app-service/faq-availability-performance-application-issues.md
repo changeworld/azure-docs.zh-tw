@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659708"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259860"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure Web 應用程式的應用程式效能常見問題集
 
@@ -92,8 +92,9 @@ ms.locfileid: "75659708"
 根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 缺點是在 Web 應用程式卸載之後對第一個要求的回應時間比較長，以便讓 Web 應用程式載入及啟動服務回應。 在基本和標準服務方案中，您可以開啟 [永遠開啟] 設定以讓應用程式保持載入。 這會排除應用程式閒置之後的較長載入時間。 若要變更 [永遠開啟] 設定：
 
 1. 在 Azure 入口網站中，移至您的 Web 應用程式。
-2. 選取 [應用程式設定]。
-3. 針對 [永遠開啟]，選取 [開啟]。
+2. 選取**設定**
+3. 選取 **[一般設定**]。
+4. 針對 [永遠開啟]，選取 [開啟]。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何開啟失敗要求追蹤？
 

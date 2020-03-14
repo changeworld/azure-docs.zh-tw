@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377566"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263292"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的條件式存取最佳做法
 
@@ -49,7 +49,7 @@ ms.locfileid: "78377566"
 
 所有的原則都會在兩個階段強制執行：
 
-- 階段 1： 
+- 第 1 階段： 
    - 詳細資料集合：收集詳細資料以識別已滿足的原則。
    - 在此階段中，如果裝置合規性是條件式存取原則的一部分，使用者可能會看到憑證提示。 當裝置作業系統不是 Windows 10 時，瀏覽器應用程式可能會出現此提示。
    - 原則評估的第1階段會針對所有已啟用的原則和原則，在[僅限報表模式](concept-conditional-access-report-only.md)中進行。

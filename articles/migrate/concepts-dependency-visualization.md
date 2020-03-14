@@ -4,11 +4,11 @@ description: 概述伺服器評定服務中的評估計算，Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269701"
 ---
 # <a name="dependency-visualization"></a>相依性視覺效果
 

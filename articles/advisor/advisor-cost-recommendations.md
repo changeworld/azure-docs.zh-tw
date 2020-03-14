@@ -3,12 +3,12 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443116"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259691"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -46,6 +46,9 @@ Azure Advisor 會偵測重複失敗的 Azure Data Factory 管線，並建議您�
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>使用受控磁碟的標準快照集
 若要節省 60% 的成本，無論父代磁片的儲存體類型為何，建議您將快照集儲存在標準儲存體中。 此選項是受控磁碟快照集的預設選項。 Azure Advisor 會識別儲存進階儲存體的快照集，並建議您將快照集從 Premium 遷移至標準儲存體。 [深入瞭解受控磁片定價](https://aka.ms/aa_manageddisksnapshot_learnmore)
+
+## <a name="utilize-lifecycle-management"></a>利用生命週期管理
+Azure Advisor 將會利用有關 Azure blob 儲存體物件計數、總大小和交易的情報，以偵測是否有一或多個儲存體帳戶最適合用來啟用將生命週期管理分層資料的階層。 它會提示您建立生命週期管理規則，將您的資料自動分層到非經常性或封存，以將您的儲存體成本優化，同時保留 Azure blob 儲存體中的資料以達到應用程式相容性。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何存取 Azure Advisor 中的成本建議
 

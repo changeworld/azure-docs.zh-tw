@@ -15,11 +15,11 @@ ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522590"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264085"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -41,7 +41,7 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
    ![使用對應來查看和編輯使用者屬性](./media/customize-application-attributes/21.png)
 
-1. 選取 [對應] 設定，以開啟相關的 [**屬性對應**] 畫面。 SaaS 應用程式需要一些屬性對應，才能正常運作。 若為必要的屬性，[刪除] 功能就無法使用。
+1. 選取 [ **Mappings**對應] 設定，以開啟相關的 [**屬性對應**] 畫面。 SaaS 應用程式需要一些屬性對應，才能正常運作。 若為必要的屬性，[刪除] 功能就無法使用。
 
    ![使用屬性對應來設定應用程式的屬性對應](./media/customize-application-attributes/22.png)
 
@@ -111,7 +111,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
 
 - Salesforce
 - ServiceNow
-- 工作日
+- Workday
 - Azure Active Directory （[REST API Microsoft Graph 支援1.0 版參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自訂目錄延伸模組）
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 

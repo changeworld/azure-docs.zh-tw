@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246028"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "78226792"
 
 Azure Active Directory B2C （Azure AD B2C）中的單一登入（SSO）會話管理可讓系統管理員在使用者已通過驗證後，控制與使用者的互動。 例如，系統管理員可以控制是否顯示選取的身分識別提供者，或是否需要再輸入一次本機帳戶詳細資料。 本文說明如何設定 Azure AD B2C 的 SSO 設定。
 
-SSO 工作階段管理有兩個部分。 第一個是處理使用者與 Azure AD B2C 的直接互動，另一個則是處理使用者與外部合作對象 (例如 Facebook) 的互動。 Azure AD B2C 不會覆寫或略過外部合作對象可能保留的 SSO 工作階段。 會「記住」透過 Azure AD B2C 到達外部合作對象的路徑，這樣就不需要重新提示使用者選取其社交或企業身分識別提供者。 最終 SSO 決策是由外部合作對象所決定。
+SSO 工作階段管理有兩個部分。 第一個是處理使用者與 Azure AD B2C 的直接互動，另一個則是處理使用者與外部合作對象 (例如 Facebook) 的互動。 Azure AD B2C 不會覆寫或略過外部合作對象可能保留的 SSO 工作階段。 相反地，透過 Azure AD B2C 到達外部合作物件的路由會「記住」，而不需要重新提示使用者來選取其社交或企業身分識別提供者。 最終 SSO 決策是由外部合作對象所決定。
 
 SSO 工作階段管理使用相同的語意，作為自訂原則中的其他任何技術設定檔。 執行協調流程步驟時，會查詢與步驟建立關聯的技術設定檔是否有 `UseTechnicalProfileForSessionManagement` 參考。 如果有的話，接著會檢查參考的 SSO 工作階段提供者，以查看使用者是否為工作階段參與者。 如果是這樣，則會使用 SSO 工作階段提供者來重新填入工作階段。 同樣地，執行協調流程步驟完成時，如果已指定 SSO 工作階段提供者，則會使用提供者來將資訊儲存在工作階段中。
 
@@ -118,7 +118,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述|
+| 屬性 | 必要 | 描述|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 目前未使用，可以忽略。 |
 
@@ -138,7 +138,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 使用提供者來儲存 B2C SAML 會話時，`RegisterServiceProviders` 必須設定為 `true`。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
 
-[SAML 簽發者技術設定檔](connect-with-saml-service-providers.md)會使用下列 `SM-Saml-idp` 技術設定檔
+[SAML 簽發者技術設定檔](saml-issuer-technical-profile.md)會使用下列 `SM-Saml-idp` 技術設定檔
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -148,7 +148,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 ```
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述|
+| 屬性 | 必要 | 描述|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 目前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|

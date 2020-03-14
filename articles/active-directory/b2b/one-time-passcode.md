@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272314"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263370"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子郵件單次密碼驗證 (預覽版)
 
@@ -73,7 +73,7 @@ ms.locfileid: "74272314"
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  在導覽窗格中，選取 [Azure Active Directory]。
 3.  在 [管理] 下方，選取 [組織關係]。
-4.  選取 [Settings] (設定)。
+4.  選取 [Settings] \(設定)。
 5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)] 下方，選取 [是]。
  
 ### <a name="to-opt-in-using-powershell"></a>使用 PowerShell 選擇加入
@@ -140,7 +140,7 @@ $currentpolicy -ne $null
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  在導覽窗格中，選取 [Azure Active Directory]。
 3.  在 [管理] 下方，選取 [組織關係]。
-4.  選取 [Settings] (設定)。
+4.  選取 [Settings] \(設定)。
 5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)] 下方，選取 [否]。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>使用 PowerShell 關閉預覽版

@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697535"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263045"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 身分識別平臺開發人員詞彙
 
@@ -25,7 +25,7 @@ ms.locfileid: "76697535"
 
 ## <a name="access-token"></a>存取權杖
 
-由[授權伺服器](#authorization-server)所簽發的一種[安全性權杖](#security-token)，可供[用戶端應用程式](#client-application)用來存取[受保護的資源伺服器](#resource-server)。 權杖通常以[JSON Web 權杖（JWT）][JWT]的形式組成，由[資源擁有](#resource-owner)者授與用戶端的授權，以取得所要求的存取層級。 此權杖中會包含所有適用的主體相關 [宣告](#claim) ，可讓用戶端應用程式以它做為某種形式的認證以存取給定的資源。 這也可讓資源擁有者不必對用戶端公開認證。
+由[授權伺服器](#security-token)所簽發的一種[安全性權杖](#authorization-server)，可供[用戶端應用程式](#client-application)用來存取[受保護的資源伺服器](#resource-server)。 權杖通常以[JSON Web 權杖（JWT）][JWT]的形式組成，由[資源擁有](#resource-owner)者授與用戶端的授權，以取得所要求的存取層級。 此權杖中會包含所有適用的主體相關 [宣告](#claim) ，可讓用戶端應用程式以它做為某種形式的認證以存取給定的資源。 這也可讓資源擁有者不必對用戶端公開認證。
 
 根據所提供的認證而定，存取權杖有時會稱為「使用者 + 應用程式」或「僅限應用程式」。 例如，當用戶端應用程式使用：
 
@@ -67,11 +67,11 @@ ms.locfileid: "76697535"
 授與已驗證的安全性主體權限以執行某些工作的動作。 在 Azure AD 程式設計模型中有兩大使用案例︰
 
 * 在 [OAuth2 授權授與](#authorization-grant)流程期間︰當[資源擁有者](#resource-owner)授與授權給[用戶端應用程式](#client-application)，以允許用戶端存取資源擁有者的資源。
-* 在用戶端存取資源期間︰和[資源伺服器](#resource-server)所實作的一樣，使用[存取權杖](#access-token)所提供的[宣告](#claim)值來據以做出存取控制決定。
+* 在用戶端存取資源期間︰和[資源伺服器](#resource-server)所實作的一樣，使用[存取權杖](#claim)所提供的[宣告](#access-token)值來據以做出存取控制決定。
 
 ## <a name="authorization-code"></a>授權碼
 
-在四個 OAuth2 [授權授與](#authorization-grant)之一的「授權碼」流程中，由[授權端點](#authorization-endpoint)提供給[用戶端應用程式](#client-application)的短暫「權杖」。 為回應 [資源擁有者](#resource-owner)的驗證，會將授權碼傳回給用戶端應用程式，以指出資源擁有者已委派存取所要求資源的授權。 在流程進行期間稍後的時候，會將授權碼兌換為 [存取權杖](#access-token)。
+在四個 OAuth2 [授權授與](#client-application)之一的「授權碼」流程中，由[授權端點](#authorization-endpoint)提供給[用戶端應用程式](#authorization-grant)的短暫「權杖」。 為回應 [資源擁有者](#resource-owner)的驗證，會將授權碼傳回給用戶端應用程式，以指出資源擁有者已委派存取所要求資源的授權。 在流程進行期間稍後的時候，會將授權碼兌換為 [存取權杖](#access-token)。
 
 ## <a name="authorization-endpoint"></a>授權端點
 
@@ -85,7 +85,7 @@ ms.locfileid: "76697535"
 
 ## <a name="authorization-server"></a>受保護的資源
 
-如[OAuth2 授權架構][OAuth2-Role-Def]所定義，負責在成功驗證[資源擁有](#resource-owner)者並取得其授權之後，將存取權杖發行至[用戶端](#client-application)的伺服器。 [用戶端應用程式](#client-application)會在執行階段根據 OAuth2 所定義的[授權授與](#authorization-grant)，透過其[授權](#authorization-endpoint)和[權杖](#token-endpoint)端點與授權伺服器互動。
+如[OAuth2 授權架構][OAuth2-Role-Def]所定義，負責在成功驗證[資源擁有](#resource-owner)者並取得其授權之後，將存取權杖發行至[用戶端](#client-application)的伺服器。 [用戶端應用程式](#client-application)會在執行階段根據 OAuth2 所定義的[授權授與](#authorization-endpoint)，透過其[授權](#token-endpoint)和[權杖](#authorization-grant)端點與授權伺服器互動。
 
 在 Microsoft 身分識別平臺應用程式整合的案例中，Microsoft 識別平臺會為 Azure AD 應用程式和 Microsoft 服務 Api （例如[Microsoft Graph api][Microsoft-Graph]）實行授權伺服器角色。
 
@@ -119,7 +119,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="multi-tenant-application"></a>多租用戶應用程式
 
-一種應用程式類別，能讓在任何 Azure AD [租用戶](#tenant) (包括用戶端註冊所在之租用戶以外的租用戶) 中佈建的使用者登入和[同意](#consent)。 [原生用戶端](#native-client)應用程式預設是多租用戶，而 [Web 用戶端](#web-client)和 [Web 資源/API](#resource-server) 應用程式則可以在單一或多租用戶之間做選擇。 相反地，若 Web 應用程式註冊為單一租用戶，則只會允許來自應用程式註冊所在相同租用戶中所佈建之使用者帳戶的登入。
+一種應用程式類別，能讓在任何 Azure AD [租用戶](#consent) (包括用戶端註冊所在之租用戶以外的租用戶) 中佈建的使用者登入和[同意](#tenant)。 [原生用戶端](#native-client)應用程式預設是多租用戶，而 [Web 用戶端](#web-client)和 [Web 資源/API](#resource-server) 應用程式則可以在單一或多租用戶之間做選擇。 相反地，若 Web 應用程式註冊為單一租用戶，則只會允許來自應用程式註冊所在相同租用戶中所佈建之使用者帳戶的登入。
 
 如需詳細資訊，請參閱[如何使用多租使用者應用程式模式登入任何 Azure AD 使用者][AAD-Multi-Tenant-Overview]。
 
@@ -129,9 +129,9 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="permissions"></a>權限
 
-透過宣告權限要求來取得[資源伺服器](#resource-server)存取權的[用戶端應用程式](#client-application)。 其可用類型有兩種︰
+透過宣告權限要求來取得[資源伺服器](#client-application)存取權的[用戶端應用程式](#resource-server)。 其可用類型有兩種︰
 
-* 「委派」權限，其可使用登入的[資源擁有者](#resource-owner)的委派授權指定[範圍型](#scopes)存取，而在執行階段會以用戶端[存取權杖](#access-token)中的 ["scp" 宣告](#claim)形式顯示給資源。
+* 「委派」權限，其可使用登入的[資源擁有者](#scopes)的委派授權指定[範圍型](#resource-owner)存取，而在執行階段會以用戶端[存取權杖](#claim)中的 ["scp" 宣告](#access-token)形式顯示給資源。
 * 「應用程式」權限，其可使用用戶端應用程式的認證/身分識別指定[角色型](#roles)存取，而在執行階段會以用戶端存取權杖中的[「角色」宣告](#claim)形式顯示給資源。
 
 權限也會在 [同意](#consent) 程序期間出現，讓系統管理員或資源擁有者有機會允許/拒絕用戶端對其租用戶中的資源進行存取。
@@ -184,7 +184,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="sign-out"></a>登出
 
-讓使用者變成未驗證狀態的程序，以便解除使用者在[登入](#sign-in)期間與[用戶端應用程式](#client-application)工作階段相關聯的狀態。
+讓使用者變成未驗證狀態的程序，以便解除使用者在[登入](#client-application)期間與[用戶端應用程式](#sign-in)工作階段相關聯的狀態。
 
 ## <a name="tenant"></a>tenant
 

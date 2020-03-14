@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965464"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267777"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>為 StorSimple 8000 系列裝置部署 StorSimple 裝置管理員服務
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple 裝置。 建立服務之後，可使用該服務，從單一集中位置來管理所有連接至 StorSimple 裝置管理員服務的裝置，因而將管理負擔降到最低。
 
@@ -57,7 +57,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
 各項 StorSimple 裝置管理員服務具有以下屬性：
 
-* **名稱** – 在建立時指派給您的 StorSimple 裝置管理員服務的名稱。 **建立服務之後，無法變更服務名稱。這也適用於其他實體，例如裝置、磁碟區、磁碟區容器和備份原則，在 Azure 入口網站中無法重新命名。**
+* **名稱** – 在建立時指派給您的 StorSimple 裝置管理員服務的名稱。 **服務建立之後，即無法變更服務名稱。這也適用于其他實體，例如裝置、磁片區、磁片區容器，以及無法在 Azure 入口網站中重新命名的備份原則。**
 * **狀態** – 服務的狀態，可以是 [作用中]、[建立] 或是 [線上]。
 * **位置** – 部署 StorSimple 裝置所在的地理位置。
 * **訂用帳戶** – 與您的服務相關聯的計費訂用帳戶。
@@ -77,7 +77,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
     ![搜尋要刪除的服務](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 這會帶您前往 StorSimple 裝置管理員服務刀鋒視窗。 按一下 [刪除]。
+2. 這會帶您前往 StorSimple 裝置管理員服務刀鋒視窗。 按一下 **[刪除]** 。
 
     ![刪除服務](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -95,7 +95,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
 將服務註冊金鑰保存在安全的位置。 您需要這個金鑰，以及服務資料加密金鑰，才能對額外裝置註冊此服務。 取得服務註冊金鑰之後，您必須透過適用於 StorSimple 的 Windows PowerShell 介面設定裝置。
 
-如需有關如何使用此登錄機碼的詳細資訊，請參閱[步驟 3：透過適用於 StorSimple 的 Windows PowerShell 設定和註冊裝置](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
+如需如何使用此註冊金鑰的詳細資訊，請參閱[步驟 3：透過 Windows PowerShell for StorSimple 設定和註冊裝置](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
 
 ## <a name="regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
 如果您必須執行金鑰替換或服務管理員的清單已變更，您必須重新產生服務註冊金鑰。 當您重新產生金鑰時，新的金鑰僅用於註冊後續裝置。 已註冊的裝置不會受到此程序影響。
@@ -103,7 +103,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 執行下列步驟以重新產生服務註冊金鑰。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]中，移至 [管理] **&gt;** [金鑰]。
+1. 在**StorSimple Device Manager**  分頁中，移至 **管理 &gt;** **金鑰**。
     
     ![[金鑰] 刀鋒視窗](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -129,7 +129,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 2. 使用 Windows PowerShell for StorSimple，起始服務資料加密金鑰變更。
 3. 如果您有一個以上的 StorSimple 裝置，請在其他裝置上更新服務資料加密金鑰。
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>步驟 1:使用 Windows PowerShell 指令碼，授權裝置以變更服務資料加密金鑰
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>步驟 1：使用 Windows PowerShell 指令碼，授權裝置以變更服務資料加密金鑰
 一般而言，裝置系統管理員將會要求服務管理員授權裝置，以變更服務資料加密金鑰。 然後服務管理員就會授權裝置來變更金鑰。
 
 使用以 Azure Resource Manager 為基礎的指令碼來執行此步驟。 服務管理員可以選擇具備授權資格的裝置。 然後裝置就會獲得授權，以啟動服務資料加密金鑰變更程序。 
@@ -145,7 +145,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 * 正在變換服務資料加密金鑰時，無法授權裝置。
 * 如果有些已向服務註冊的裝置已變換加密，而某些裝置還沒有，則您可以授權裝置。 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>步驟 2:使用適用於 StorSimple 的 Windows PowerShell 起始服務資料加密金鑰變更
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>步驟 2：使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更
 這個步驟是在 Windows PowerShell for StorSimple 介面中，對已獲授權的 StorSimple 裝置執行。
 
 > [!NOTE]
@@ -178,7 +178,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>若要在實體裝置上更新服務資料加密金鑰
 1. 使用 Windows PowerShell for StorSimple 連線到主控台。 選取選項 1 以使用完整存取權登入。
 2. 在命令提示字元中，輸入：`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. 提供您在[步驟 2：使用適用於 StorSimple 的 Windows PowerShell 起始服務資料加密金鑰變更](#to-initiate-the-service-data-encryption-key-change)中取得的服務資料加密金鑰。
+3. 提供您在 [步驟 2：使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更](#to-initiate-the-service-data-encryption-key-change)中取得的服務資料加密金鑰。
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>若要更新所有 8010/8020 雲端設備上的服務資料加密金鑰
 1. 下載並安裝 [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell 指令碼。 
@@ -189,7 +189,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>執行 Update 5.0 之前版本的裝置上支援的作業
 Azure 入口網站僅支援執行 Update 5.0 和更新版本的 StorSimple 裝置。 對執行舊版本的裝置的支援有限。 移轉至 Azure 入口網站之後，請使用下表了解執行 Update 5.0 之前版本的裝置可支援哪些作業。
 
-| 運算                                                                                                                       | 支援      |
+| 作業                                                                                                                       | 支援      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 註冊裝置                                                                                                               | 是            |
 | 設定裝置設定，例如一般設定、網路設定和安全性設定                                                                | 是            |

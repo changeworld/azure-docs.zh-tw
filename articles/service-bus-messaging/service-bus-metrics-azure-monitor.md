@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260965"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 服務匯流排 Azure 監視器中的計量
 
@@ -80,8 +80,8 @@ Azure 監視器上的計量和警示會依每個警示來計費。 當警示已�
 
 | 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|內送訊息|在指定時段內，傳送至服務匯流排的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|外寄訊息|在指定時段內，從服務匯流排接收的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|傳入訊息|在指定時段內，傳送至服務匯流排的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|外送訊息|在指定時段內，從服務匯流排接收的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 | 訊息| 佇列/主題中的訊息計數。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 維度：EntityName |
 | ActiveMessages| 佇列/主題中的作用中訊息計數。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 維度：EntityName |
 | 死信訊息| 佇列/主題中的無效字母訊息計數。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/>維度：EntityName |
@@ -158,7 +158,7 @@ Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新
     8. 在 [電子郵件/簡訊/推播/語音] 頁面上，執行下列動作：
         1. 選取 [電子郵件]。 
         2. 輸入**電子郵件地址**。 
-        3. 選取 **[確定]** 。
+        3. 選取 [確定]。
 
             ![警示詳細資料](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. 在 [新增動作群組] 頁面上，選取 [確定]。 

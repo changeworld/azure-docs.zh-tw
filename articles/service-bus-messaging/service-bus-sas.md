@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259470"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共用存取簽章的服務匯流排存取控制
 
@@ -98,7 +98,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 用於簽署的共用存取授權規則必須設定於此 URI 或其中一個階層式上層所指定的實體。 例如，先前範例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
-SAS 權杖適用於所有以 `signature-string` 中所使用的 `<resourceURI>` 開頭的資源。
+SAS 權杖適用於所有以 `<resourceURI>` 中所使用的 `signature-string` 開頭的資源。
 
 ## <a name="regenerating-keys"></a>重新產生金鑰
 
@@ -114,7 +114,7 @@ SAS 權杖適用於所有以 `signature-string` 中所使用的 `<resourceURI>` 
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>存取實體上的共用存取授權規則
 
-藉由服務匯流排 .NET Framework 程式庫，您可以透過對應的 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，存取服務匯流排佇列或主題上設定的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 物件。
+藉由服務匯流排 .NET Framework 程式庫，您可以透過對應的 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 集合，存取服務匯流排佇列或主題上設定的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 物件。
 
 下列程式碼示範如何新增佇列的授權規則。
 
@@ -168,7 +168,7 @@ sendClient.Send(helloMessage);
 
 連接字串可包含規則名稱 (*SharedAccessKeyName*) 和規則金鑰 (*SharedAccessKey*) 或先前發行的權杖 (*SharedAccessSignature*)。 當這些名稱出現在傳至任何建構函式的連接字串中，或是接受連接字串的 Factory 方法中時，系統會自動建立 SAS 權杖提供者並填入。
 
-請注意，若要搭配使用 SAS 授權與服務匯流排轉送，您可以使用在服務匯流排命名空間上設定的 SAS 金鑰。 如果您在命名空間 (具有 [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription) 的 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)) 物件上明確建立轉送，您可以設定該轉送的 SAS 規則。 若要搭配使用 SAS 授權與服務匯流排訂用帳戶，您可以使用在服務匯流排命名空間或主題上設定的 SAS 金鑰。
+請注意，若要搭配使用 SAS 授權與服務匯流排轉送，您可以使用在服務匯流排命名空間上設定的 SAS 金鑰。 如果您在命名空間 (具有 [RelayDescription](/dotnet/api/microsoft.servicebus.namespacemanager) 的 [NamespaceManager](/dotnet/api/microsoft.servicebus.messaging.relaydescription)) 物件上明確建立轉送，您可以設定該轉送的 SAS 規則。 若要搭配使用 SAS 授權與服務匯流排訂用帳戶，您可以使用在服務匯流排命名空間或主題上設定的 SAS 金鑰。
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>使用共用存取簽章 (於 HTTP 層級)
 
@@ -268,14 +268,14 @@ AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權�
 | **服務登錄** | | |
 | 列舉私人原則 |管理 |任何命名空間位址 |
 | 開始在命名空間上接聽 |接聽 |任何命名空間位址 |
-| 將訊息傳送至命名空間上的接聽程式 |傳送 |任何命名空間位址 |
+| 將訊息傳送至命名空間上的接聽程式 |Send |任何命名空間位址 |
 | **佇列** | | |
 | 建立佇列 |管理 |任何命名空間位址 |
 | 刪除佇列 |管理 |任何有效的佇列位址 |
 | 列舉佇列 |管理 |/$Resources/Queues |
 | 取得佇列描述 |管理 |任何有效的佇列位址 |
 | 設定佇列的授權規則 |管理 |任何有效的佇列位址 |
-| 傳送到佇列中 |傳送 |任何有效的佇列位址 |
+| 傳送到佇列中 |Send |任何有效的佇列位址 |
 | 從佇列接收訊息 |接聽 |任何有效的佇列位址 |
 | 在 peek-lock 模式中接收訊息後放棄或完成訊息 |接聽 |任何有效的佇列位址 |
 | 延遲訊息以便稍後擷取 |接聽 |任何有效的佇列位址 |
@@ -289,7 +289,7 @@ AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權�
 | 列舉主題 |管理 |/$Resources/Topics |
 | 取得主題描述 |管理 |任何有效的主題位址 |
 | 設定主題的授權規則 |管理 |任何有效的主題位址 |
-| 傳送至主題 |傳送 |任何有效的主題位址 |
+| 傳送至主題 |Send |任何有效的主題位址 |
 | **訂用帳戶** | | |
 | 建立訂用帳戶 |管理 |任何命名空間位址 |
 | 刪除訂用帳戶 |管理 |../myTopic/Subscriptions/mySubscription |

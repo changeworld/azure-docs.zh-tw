@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263682"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平臺（v2.0）？
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平台 (v2.0)？
 
 開發新的應用程式時，請務必瞭解 Microsoft 身分識別平臺（v2.0）和 Azure Active Directory （v1.0）端點之間的差異。 本文涵蓋端點的主要差異，以及 Microsoft 身分識別平臺的一些現有限制。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77165133"
 * Microsoft 身分識別平臺端點可讓 Azure AD 和個人 Microsoft 帳戶（MSA）（例如 hotmail.com、outlook.com 和 msn.com）的公司和學校帳戶登入。
 * 這兩個端點也會針對設定為 *[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點（`https://login.microsoftonline.com/{TenantId_or_Name}`）的*多租*使用者應用程式，接受 Azure AD 目錄的 *[來賓使用者](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 登入。
 
-Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶及公司和學校帳戶的登入。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
+Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶及公司和學校帳戶的登入。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
 
 針對 Microsoft 身分識別平臺端點，您可以使用 Microsoft 驗證程式庫（MSAL）來取得取用者、教育和企業環境的存取權。 Azure AD v1.0 端點只接受來自公司和學校帳戶的登入。
 
@@ -70,7 +70,7 @@ Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自�
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

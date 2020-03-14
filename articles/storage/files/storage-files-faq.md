@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361887"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268180"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -81,6 +81,9 @@ ms.locfileid: "78361887"
   **我真的想要查看加入 Azure 檔案儲存體的特定功能。可以新增嗎？**  
     Azure 檔案服務小組很樂意聽到您對於我們所提供之服務的所有意見反應。 請在 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\) 上投票支持您認同的功能要求！ 我們期待能透過諸多新的功能讓您感到滿意。
 
+  **Azure 檔案儲存體是否支援檔案鎖定？**  
+    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式的檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。 
+    
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 
 * <a id="afs-region-availability"></a>
@@ -211,6 +214,11 @@ ms.locfileid: "78361887"
 
     是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 Azure AD DS 或 AD 驗證。本機檔案伺服器上目錄/檔案 NTFS Acl 的變更將分層成 Azure 檔案儲存體，反之亦然。
 
+* <a id="ad-aad-smb-files"></a>
+**如何檢查我的儲存體帳戶和 ad 網域資訊是否已啟用 ad 驗證？**
+
+    您可以參考[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的指示，以驗證您的儲存體帳戶是否已啟用 Azure 檔案儲存體 AD 驗證，並取得 ad 網域資訊。
+    
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  
 

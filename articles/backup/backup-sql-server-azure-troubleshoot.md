@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602315"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247822"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份對 SQL Server 資料庫備份進行疑難排解
 
@@ -21,6 +21,7 @@ ms.locfileid: "77602315"
 若要設定虛擬機器上 SQL Server 資料庫的保護，您必須在該虛擬機器上安裝**AzureBackupWindowsWorkload**延伸模組。 如果您收到錯誤**UserErrorSQLNoSysadminMembership**，表示您的 SQL Server 實例沒有必要的備份許可權。 若要修正此錯誤，請依照[設定 VM 許可權](backup-azure-sql-database.md#set-vm-permissions)中的步驟進行。
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>針對探索和設定問題進行疑難排解
+
 建立和設定復原服務保存庫之後，探索資料庫和設定備份是兩個步驟的程式。<br>
 
 ![sql](./media/backup-azure-sql-database/sql.png)
@@ -35,9 +36,25 @@ ms.locfileid: "77602315"
 
 - 如果在用來保護資料庫的相同保存庫中註冊 SQL VM 的保存庫，請遵循[設定備份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)步驟。
 
-如果需要在新的保存庫中註冊 SQL VM，則必須從舊的保存庫取消註冊。  從保存庫取消註冊 SQL VM 需要停止保護所有受保護的資料來源，然後您就可以刪除備份的資料。 刪除備份的資料是破壞性作業。  在您檢查並採取取消註冊 SQL VM 的所有預防措施之後，請使用新的保存庫註冊此相同的 VM，然後重試備份作業。
+如果需要在新的保存庫中註冊 SQL VM，則必須從舊的保存庫取消註冊。  從保存庫取消註冊 SQL VM 需要停止保護所有受保護的資料來源，然後您就可以刪除已備份的資料。 刪除備份的資料是破壞性作業。  在您檢查並採取取消註冊 SQL VM 的所有預防措施之後，請使用新的保存庫註冊此相同的 VM，然後重試備份作業。
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>針對備份和復原問題進行疑難排解  
 
+有時候，在備份和還原作業中可能會發生隨機失敗，或這些作業可能會停滯。 這可能是因為您的 VM 上有防毒程式。 建議的最佳作法是，建議您執行下列步驟：
+
+1. 從防毒軟體掃描中排除下列資料夾：
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    將 `C:\` 取代為*SystemDrive*的字母。
+
+1. 從防毒軟體掃描中排除下列三個在 VM 中執行的處理常式：
+
+    - IaasWLPluginSvc .exe
+    - IaasWorkloadCoordinaorService .exe
+    - TriggerExtensionJob .exe
+
+1. SQL 也提供一些關於使用防毒程式的指導方針。 如需詳細資訊，請參閱[本文](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)。
 
 ## <a name="error-messages"></a>錯誤訊息
 
@@ -149,7 +166,6 @@ ms.locfileid: "77602315"
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
 因為網際網路連線問題，VM 無法與 Azure 備份服務聯繫。 | VM 需要 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出連線能力。| -如果您使用 NSG 來限制連線，則您應該使用 AzureBackup 服務標籤，以允許 Azure 備份 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出存取。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)來授與存取權。<br>-確認 DNS 正在解析 Azure 端點。<br>-檢查 VM 是否位於封鎖網際網路存取的負載平衡器後方。 藉由將公用 IP 指派給 Vm，探索將會正常執行。<br>-確認沒有防火牆/防毒程式正在封鎖對上述三個目標服務的呼叫。
-
 
 ## <a name="re-registration-failures"></a>重新註冊失敗
 

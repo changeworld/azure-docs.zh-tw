@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
 ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268778"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什麼是 Azure SQL Database 受控實例？
 
@@ -60,7 +60,7 @@ ms.locfileid: "77201589"
 | 內建執行個體和資料庫的監視與計量 | 是 |
 | 自動軟體修補 | 是 |
 | 最新的資料庫引擎功能 | 是 |
-| 每個資料庫的資料檔案 (ROWS) 數目 | 選擇性顯示 |
+| 每個資料庫的資料檔案 (ROWS) 數目 | 多個 |
 | 每個資料庫的記錄檔 (LOG) 數目 | 1 |
 | VNet - Azure Resource Manager 部署 | 是 |
 | VNet - 傳統部署模型 | 否 |

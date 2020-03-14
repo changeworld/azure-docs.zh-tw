@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386291"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258989"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
 
@@ -106,7 +106,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 * Service Fabric 系統服務會在叢集中的主要節點類型中執行。 切勿關閉該節點類型的執行個體，或將其數目相應減少到低於可靠性層級保證所需的執行個體數目。 
 * 針對具狀態服務，您需要一定數目的節點，這些節點一律會維持可用性並保留服務的狀態。 您至少需要數個節點，其等於分割區或服務的目標複本集計數。
 
-若要手動縮減，請遵循下列步驟︰
+若要手動相應縮小，請遵循下列步驟︰
 
 1. 從 PowerShell 中，使用意圖 `RemoveNode` 執行 `Disable-ServiceFabricNode`，以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
 2. 執行 `Get-ServiceFabricNode` 以確保節點已轉換為停用狀態。 如果沒有，請等到節點停用。 這可能需要幾個小時的時間才能執行每個節點。 請等到節點已轉換為停用狀態後，再繼續操作。

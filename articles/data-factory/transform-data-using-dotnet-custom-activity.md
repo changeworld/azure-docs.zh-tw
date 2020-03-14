@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439534"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260575"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 
@@ -99,7 +99,7 @@ ms.locfileid: "75439534"
 
 下表描述此活動特有的屬性之名稱和描述。
 
-| 屬性              | 說明                              | 必要項 |
+| 屬性              | 描述                              | 必要 |
 | :-------------------- | :--------------------------------------- | :------- |
 | NAME                  | 管線中的活動名稱     | 是      |
 | description           | 說明活動用途的文字。  | 否       |
@@ -349,7 +349,7 @@ Activity Error section:
 如果您的現有 .NET 程式碼是針對第1版（自訂） DotNet 活動所撰寫，您必須修改程式碼，才能使用目前版本的自訂活動。 遵循下列高階指導方針來更新程式碼：
 
   - 將專案從 .NET 類別庫變更為主控台應用程式。
-  - 使用 `Main` 方法啟動您的應用程式。 已不再需要 `IDotNetActivity` 介面的 `Execute` 方法。
+  - 使用 `Main` 方法啟動您的應用程式。 已不再需要 `Execute` 介面的 `IDotNetActivity` 方法。
   - 使用 JSON 序列化程式來讀取和剖析已連結的服務、資料集和活動，而不是作為強型別物件。 將必要屬性的值傳遞給您主要的自訂程式碼邏輯。 請參閱之前的 SampleApp.exe 程式碼作為範例。
   - 不再支援記錄器物件。 您可以將可執行檔的輸出列印到主控台並儲存至 stdout.txt。
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 套件。

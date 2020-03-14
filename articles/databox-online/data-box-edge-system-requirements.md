@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757861"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260224"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系統需求
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 針對裝載 Azure IoT Edge 執行階段的伺服器，使用下表來進行連接埠設定：
 
-| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要項 | 指導方針 |
+| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指引 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 

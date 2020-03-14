@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266022"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure Data Factory 透過 Open Hub 從 SAP Business Warehouse 複製資料
 
@@ -73,7 +73,7 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 
 若要進行適當的差異處理，則不允許在相同的開啟中樞資料表中有來自不同 DTPs 的要求識別碼。 因此，您不能為每個開啟的中樞目的地（OHD）建立一個以上的 DTP。 當需要來自相同 InfoProvider 的完整和差異解壓縮時，您應該為相同的 InfoProvider 建立兩個 OHDs。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此 SAP Business Warehouse Open Hub 連接器，您必須：
 
@@ -104,18 +104,18 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 
 以下是 SAP Business Warehouse Open Hub 連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | Type 屬性必須設定為： **SapOpenHub** | 是 |
+| type | Type 屬性必須設定為： **SapOpenHub** | 是 |
 | 伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | 是 |
 | systemNumber | SAP BW 系統的系統編號。<br/>允許的值：以字串表示的二位數十進位數字。 | 是 |
 | clientId | SAP W 系統中用戶端的用戶端識別碼。<br/>允許的值：以字串表示的三位數十進位數字。 | 是 |
 | 語言 | SAP 系統使用的語言。 | 否 (預設值為 **EN**)|
 | userName | 能夠存取 SAP 伺服器的使用者名稱。 | 是 |
-| password | 使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -144,16 +144,16 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP BW 開放式中樞資料集所支援的屬性清單。
 
-若要從 SAP BW Open Hub 複製資料以及將資料複製到該處，請將資料集的 type 屬性設為 **SapOpenHubTable**。 支援以下屬性。
+若要從 SAP BW Open Hub 複製資料以及將資料複製到該處，請將資料集的 type 屬性設為 **SapOpenHubTable**。 以下是支援的屬性。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 類型屬性必須設為 **SapOpenHubTable**。  | 是 |
+| type | 類型屬性必須設為 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要從中複製資料的 Open Hub Destination 名稱。 | 是 |
 
 如果您是在資料集內設定 `excludeLastRequest` 和 `baseRequestId`，則仍會受到支援，但建議您繼續使用活動來源中的新模型。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -180,9 +180,9 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 
 若要從 SAP BW 開放式中樞複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 複製活動來源的**類型**屬性必須設定為**SapOpenHubSource**。 | 是 |
+| type | 複製活動來源的**類型**屬性必須設定為**SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否要排除最後一個要求的記錄。 | 否 (預設值為 **true**) |
 | baseRequestId | 差異載入的要求識別碼。 設定之後，將只會擷取 requestId **大於**此屬性值的資料。  | 否 |
 
@@ -191,7 +191,7 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 
 若要加速資料載入，您可以在複製活動上設定[`parallelCopies`](copy-activity-performance.md#parallel-copy) ，以平行方式從 SAP BW 開放式中樞載入資料。 例如，如果您將 `parallelCopies` 設定為四，Data Factory 會同時執行四個 RFC 呼叫，而每個 RFC 呼叫都會從您的 SAP BW 開放式中樞資料表中，抓取由 DTP 要求識別碼和套件識別碼分割的部分資料。 這適用于唯一 DTP 要求識別碼 + 套件識別碼的數目大於 `parallelCopies`的值時。 將資料複製到以檔案為基礎的資料存放區時，也會建議寫入資料夾做為多個檔案（僅指定資料夾名稱），在此情況下，效能會比寫入單一檔案更好。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -232,7 +232,7 @@ ADF SAP BW 開放式中樞連接器提供兩個選擇性屬性： `excludeLastRe
 |:--- |:--- |
 | C (字串) | String |
 | I (整數) | Int32 |
-| F (浮點數) | DOUBLE |
+| F (浮點數) | Double |
 | D (日期) | String |
 | T (時間) | String |
 | P (BCD 封裝、貨幣、小數、數量) | Decimal |

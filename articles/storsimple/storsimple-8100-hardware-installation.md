@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277090"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267582"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打開包裝、掛接機架和佈線 StorSimple 8100 裝置
 
@@ -42,7 +42,7 @@ ms.locfileid: "76277090"
    
     **儲存體裝置打開包裝的樣子**
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    | --- | --- |
    |   1 |包裝箱 |
    |   2 |底層發泡材料 |
@@ -104,7 +104,7 @@ ms.locfileid: "76277090"
 
     **將內部滑軌連接至機箱側邊**
    
-    標籤 | 說明
+    標籤 | 描述
     ----- | -----------
     1     | M 3x4 圓頭螺釘
     2     | 底座滑軌
@@ -118,7 +118,7 @@ ms.locfileid: "76277090"
    
     **將外部滑軌組件連接至機架**
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    | --- | --- |
    |   1 |固定螺絲 |
    |   2 |方孔前端機架柱螺絲 |
@@ -144,7 +144,7 @@ ms.locfileid: "76277090"
    
     **安裝輪緣蓋**
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    | --- | --- |
    |   1 |機箱鎖固螺絲 |
 
@@ -153,7 +153,7 @@ ms.locfileid: "76277090"
 ## <a name="cable-your-storsimple-8100-device"></a>佈線您的 StorSimple 8100 裝置
 下列程序說明如何針對 StorSimple 8100 裝置的電源、網路和序列連線進行佈線。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 開始您的裝置佈線之前，您需要：
 
 * 完全打開儲存體裝置的包裝並掛接機架。
@@ -184,7 +184,7 @@ ms.locfileid: "76277090"
    
     **裝置後方的資料連接埠**
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    | --- | --- |
    |   0,1,4,5 |1 GbE 網路介面 |
    |   2,3 |10 GbE 網路介面 |
@@ -195,7 +195,7 @@ ms.locfileid: "76277090"
 
     **您裝置的網路纜線**
 
-   |標籤 | 說明 |
+   |標籤 | 描述 |
    |----- | ----------- |
    | A    | 具有網際網路存取的 LAN |
    | B    | 控制器 0 |

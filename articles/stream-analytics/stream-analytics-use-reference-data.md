@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267283"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
@@ -46,7 +46,7 @@ ms.locfileid: "75369559"
 
 ### <a name="generate-reference-data-on-a-schedule"></a>依排程產生參考資料
 
-如果您的參考資料是不常變更的資料集，可以啟用重新整理參考資料的支援，方法是使用 {date} 與 {time} 替代權杖指定輸入設定內的路徑模式。 串流分析會根據此路徑模式採用更新的參考資料定義。 例如，日期格式為 **"YYYY-MM-DD"** 且時間格式為 **"HH:mm"** 的模式 `sample/{date}/{time}/products.csv`，會指示串流分析在 UTC 時區 2015 年 4 月 16 日的下午 5:30 採用更新的 Blob `sample/2015-04-16/17-30/products.csv`。
+如果您的參考資料是不常變更的資料集，可以啟用重新整理參考資料的支援，方法是使用 {date} 與 {time} 替代權杖指定輸入設定內的路徑模式。 串流分析會根據此路徑模式採用更新的參考資料定義。 例如，日期格式為 `sample/{date}/{time}/products.csv`"YYYY-MM-DD"**且時間格式為**"HH:mm"**的模式**，會指示串流分析在 UTC 時區 2015 年 4 月 16 日的下午 5:30 採用更新的 Blob `sample/2015-04-16/17-30/products.csv`。
 
 Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 blob。 如果使用時間戳10:30:00 的 blob 上傳了較小的延遲（例如，10:30:30），您會注意到參考此 blob 的串流分析作業中有短暫的延遲。 若要避免這類情況，建議您上傳早于目標有效時間（在此範例中為10:30:00）的 blob，讓串流分析作業有足夠的時間來探索並載入記憶體中，並執行操作。 
 
@@ -59,7 +59,7 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 > 
 > 此情況有例外，就是當工作需要回到之前來重新處理資料，或當工作第一次啟動的時候。 啟動時，作業會尋找在指定作業啟動時間之前產生的最新 Blob。 這是為了確保在作業啟動時，會有 **非空白** 的參考資料集。 如果無法找到，作業會顯示下列診斷： `Initializing input without a valid reference data blob for UTC time <start time>`。
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) 可用來針對串流分析更新參考資料定義時所需的已更新 Blob，協調建立這些 Blob 的工作。 Data Factory 是雲端式資料整合服務，可協調和自動化資料的移動及轉換作業。 Data Factory 可 [連線到大量雲端式和內部部署的資料存放區](../data-factory/copy-activity-overview.md) ，也可根據您指定的定期排程輕鬆移動資料。 如需詳細資訊及逐步解說指南，瞭解該如何設定 Data Factory 管線才能產生依預先定義排程重新整理的「串流分析」參考資料，請查看此 [GitHub 範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)。
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) 可用來針對串流分析更新參考資料定義時所需的已更新 Blob，協調建立這些 Blob 的工作。 Data Factory 是雲端架構資料整合服務，用來協調以及自動移動和轉換資料。 Data Factory 可 [連線到大量雲端式和內部部署的資料存放區](../data-factory/copy-activity-overview.md) ，也可根據您指定的定期排程輕鬆移動資料。 如需詳細資訊及逐步解說指南，瞭解該如何設定 Data Factory 管線才能產生依預先定義排程重新整理的「串流分析」參考資料，請查看此 [GitHub 範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)。
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>重新整理 Blob 參考資料的秘訣
 
@@ -90,7 +90,7 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 |**屬性名稱**|**說明**  |
 |---------|---------|
 |輸入別名|在工作查詢中將用來參考這個輸入的易記名稱。|
-|訂閱|選擇您的訂用帳戶|
+|訂用帳戶|選擇您的訂用帳戶|
 |資料庫|包含參考資料的 Azure SQL Database。 針對 Azure SQL Database 受控執行個體，必須指定埠3342。 例如， *sampleserver、3342、* 。|
 |使用者名稱|與 Azure SQL Database 相關聯的使用者名稱。|
 |密碼|與 Azure SQL Database 相關聯的密碼。|

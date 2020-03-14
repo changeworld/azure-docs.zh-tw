@@ -4,11 +4,11 @@ description: 在任何情況下，只要應用程式可以選取正確的項目�
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622709"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221207"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>使用個人化工具的位置和方式
 

@@ -8,11 +8,11 @@ ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375111"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266139"
 ---
 # <a name="automation-with-service-principals"></a>使用服務主體進行自動化
 
@@ -24,14 +24,14 @@ Analysis Services 也支援使用服務主體的受控識別所執行的作業�
 
 ## <a name="create-service-principals"></a>建立服務主體
  
-服務主體可以在 Azure 入口網站中建立，或是使用 PowerShell 建立。 若要了解詳細資訊，請參閱：
+服務主體可以在 Azure 入口網站中建立，或是使用 PowerShell 建立。 若要深入了解，請參閱：
 
 [建立服務主體 - Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)   
 [建立服務主體 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>在 Azure 自動化中儲存認證和憑證資產
 
-服務主體認證和憑證可以安全地儲存在 Azure 自動化中，以進行 Runbook 作業。 若要了解詳細資訊，請參閱：
+服務主體認證和憑證可以安全地儲存在 Azure 自動化中，以進行 Runbook 作業。 若要深入了解，請參閱：
 
 [Azure 自動化中的認證資產](../automation/automation-credentials.md)   
 [Azure 自動化中的憑證資產](../automation/automation-certificates.md)

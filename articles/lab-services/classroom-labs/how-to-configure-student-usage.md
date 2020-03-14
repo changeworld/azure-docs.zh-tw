@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358644"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270936"
 ---
 # <a name="add-and-manage-lab-users"></a>新增和管理實驗室使用者
 本文說明如何將使用者新增至實驗室、讓他們向實驗室註冊、控制他們可以使用 VM 的時數等等。 
@@ -128,7 +128,7 @@ ms.locfileid: "78358644"
 ## <a name="set-additional-quota-for-a-specific-user"></a>為特定使用者設定額外的配額
 您可以為使用者指定額外的配額。 此配額除了上一節中所有使用者所設定的一般配額之外。 例如，如果您（身為講師）將所有使用者的配額設為10小時，並為特定使用者設定5小時的額外配額，則該使用者會取得15（10 + 5）小時的配額。 如果您稍後將一般配額變更為（例如15），則使用者會取得20（15 + 5）小時的配額。 請記住，此整體配額是在排定的時間外。 在排程時間期間，學生在實驗室 VM 上花費的時間，不會計入此配額。 
 
-若要執行此作業，請遵循下列步驟：
+若要這樣做，請依照下列步驟執行：
 
 1. 在 [**使用者**] 頁面上，從使用者清單中選取使用者（student）。
 2. 然後，從工具列選取 [**調整配額**]。 
@@ -144,7 +144,7 @@ ms.locfileid: "78358644"
 ## <a name="student-accounts"></a>學生帳戶
 若要將學生新增至教室實驗室，請使用其電子郵件帳戶。 可能會使用下列類型的電子郵件帳戶：
 
-- 大學的 Office 365 Azure Active Directory （AAD）所提供的學生電子郵件帳戶。 
+- 您的大學 Office 365 Azure Active Directory 所提供的學生電子郵件帳戶。 
 - Microsoft 電子郵件帳戶，例如 `@outlook.com`、`@hotmail.com`、`@msn.com`或 `@live.com`。
 - 非 Microsoft 的電子郵件帳戶，例如 Yahoo 或 Google 提供的帳戶。 不過，這些類型的帳戶必須與 Microsoft 帳戶連結。
 - GitHub 帳戶。 此帳戶必須與 Microsoft 帳戶連結。
@@ -173,6 +173,14 @@ ms.locfileid: "78358644"
 ![使用 GitHub 連結進行登入](../media/how-to-configure-student-usage/signin-github.png)
 
 最後，系統會提示他們建立連結至其 GitHub 帳戶的 Microsoft 帳戶。 當學生選取 **[下一步]** 時，就會自動發生。  然後，學生會立即登入並聯機到教室實驗室。
+
+## <a name="export-list-of-users-to-a-csv-file"></a>將使用者清單匯出至 CSV 檔案
+
+1. 切換至 [**使用者**] 索引標籤。
+2. 選取工具列上的 [ **...** ] （省略號），然後選取 [**匯出 CSV**]。 
+
+    ![匯出使用者清單](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：

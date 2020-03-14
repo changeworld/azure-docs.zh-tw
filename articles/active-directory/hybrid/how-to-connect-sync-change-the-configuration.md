@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919064"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261160"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步處理：變更預設組態
 本文的目的是要引導您瞭解如何變更 Azure Active Directory （Azure AD） Connect 同步處理中的預設設定。它提供一些常見案例的步驟。 具備此知識，您應該能夠根據自己的商務規則對自己的組態進行簡單的變更。
@@ -104,7 +104,7 @@ ms.locfileid: "74919064"
 1. 挑選幾個範例物件，確定這是預期的值並已套用規則。 
 2. 從頂端選取 [Metaverse 搜尋] 。 新增您需要的任何篩選條件以尋找相關的物件。 
 3. 從搜尋結果中，開啟物件。 查看屬性值，同時在 [同步處理規則] 資料行中確認已如預期套用規則。  
-![Metaverse search](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
+![Metaverse 搜尋](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>停用排程器
 如果一切如同預期，您可以再次啟用排程器。 從 PowerShell，執行 `Set-ADSyncScheduler -SyncCycleEnabled $true`。
@@ -136,19 +136,19 @@ ms.locfileid: "74919064"
 
 ### <a name="length-of-attributes"></a>屬性的長度
 字串屬性預設可編索引，且最大長度為 448 個字元。 如果您使用的字串屬性可能包含更多字元，請確定在屬性流程中包含下列項目：  
-`attributeName` <- `Left([attributeName],448)`。
+`attributeName` <- `Left([attributeName],448)`＞。
 
 ### <a name="changing-the-userprincipalsuffix"></a>變更 userPrincipalSuffix
 由於使用者未必會知道 Active Directory 中的 userPrincipalName 屬性，因此這個屬性可能不適合做為登入識別碼。 您可以利用 Azure AD Connect 同步處理安裝精靈來選擇不同的屬性，例如 mail。 但是在某些情況下必須計算屬性。
 
 例如，Contoso 公司有兩個 Azure AD 目錄，一個用於生產環境，一個用於測試。 他們想讓其測試租用戶中的使用者在登入識別碼中使用其他後置詞：  
-`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`。
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`＞。
 
 在此運算式中，取出第一個 @-sign 左邊的所有內容 (Word)，然後使用固定的字串串連。
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>將多重值屬性轉換成單一值
 Active Directory 中的某些屬性在結構描述中是多重值，但是在 [Active Directory 使用者和電腦] 中看起來是單一值。 描述屬性是其中一個範例：  
-`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`。
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`＞。
 
 在此運算式中，如果屬性有值，請取屬性中的第一個項目 (*Item*)、移除開頭和結尾的空格 (*Trim*)，然後保留字串中的前 448 個字元 (*Left*)。
 
@@ -208,7 +208,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
     如果您選擇此方法，則在啟用 UserType 屬性的同步處理之前，請先確定內部部署 Active Directory 中同步至 Azure AD 之所有現有使用者物件的指定屬性都已填入正確的值。
 
-- 或者，您也可以從其他屬性衍生 UserType 屬性的值。 例如，如果使用者的內部部署 userPrincipalName 屬性是以 <em>@partners.fabrikam123.org</em> 網域部分作為結尾，您就需要以 **Guest** 身分來同步處理所有使用者。 
+- 或者，您也可以從其他屬性衍生 UserType 屬性的值。 例如，如果使用者的內部部署 userPrincipalName 屬性是以 <em>網域部分作為結尾，您就需要以 @partners.fabrikam123.orgGuest</em> 身分來同步處理所有使用者。 
 
     如先前所述，Azure AD Connect 不允許 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 因此，您必須確定您租用戶中所有現有 Azure AD 使用者的 UserType 屬性設定方式，都與您決定使用的邏輯一致。
 
@@ -262,9 +262,9 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 3. 按一下 [新增規則] 按鈕以建立新的輸入規則。
 4. 在 [描述] 索引標籤下，提供下列設定︰
 
-    | 屬性 | Value | 詳細資料 |
+    | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
-    | Name | 提供名稱 | 例如，*In from AD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*In from AD – User UserType* |
     | 描述 | 提供描述 |  |
     | 連線系統 | 選取內部部署 AD 連接器 |  |
     | 連線系統物件類型 | **使用者** |  |
@@ -274,7 +274,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 5. 移至 [範圍篩選器] 索引標籤，並**使用下列子句來新增單一範圍篩選器群組**：
 
-    | 屬性 | 運算子 | Value |
+    | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 使用者\_ |
 
@@ -284,7 +284,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
     | 流程類型 | 目標屬性 | 來源 | 套用一次 | 合併類型 |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | 未核取 | 更新 |
+    | 直接 | UserType | extensionAttribute1 | 未核取 | 更新 |
 
     在另一個範例中，您要從其他屬性衍生 UserType 屬性的值。 例如，如果他們的內部部署 AD userPrincipalName 屬性是以網域部分<em>@partners.fabrikam123.org</em>結尾，您就會想要將所有使用者同步處理為來賓。您可以執行如下所示的運算式：
 
@@ -304,9 +304,9 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 3. 按一下 [新增規則] 按鈕。
 4. 在 [描述] 索引標籤下，提供下列設定︰
 
-    | 屬性 | Value | 詳細資料 |
+    | 屬性 | 值 | 詳細資料 |
     | ----- | ------ | --- |
-    | Name | 提供名稱 | 例如，*Out to AAD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*Out to AAD – User UserType* |
     | 描述 | 提供描述 ||
     | 連線系統 | 選取 AAD 連接器 ||
     | 連線系統物件類型 | **使用者** ||
@@ -316,10 +316,10 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 5. 移至 [範圍篩選器] 索引標籤，並使用兩個子句來新增**單一範圍篩選器群組**：
 
-    | 屬性 | 運算子 | Value |
+    | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
-    | cloudMastered | NOTEQUAL | 是 |
+    | cloudMastered | NOTEQUAL | True |
 
     範圍篩選器會決定此輸出同步處理規則要套用至哪個 Azure AD 物件。 在此範例中，我們會使用來自 Out to AD – User Identity 現成可用的同步處理規則的同一個範圍篩選器。 它可避免同步處理規則套用到並非從內部部署 Active Directory 同步過來的使用者物件。 您可能需要根據 Azure AD Connect 部署來調整範圍篩選器。
 
@@ -327,7 +327,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
     | 流程類型 | 目標屬性 | 來源 | 套用一次 | 合併類型 |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | 未核取 | 更新 |
+    | 直接 | UserType | UserType | 未核取 | 更新 |
 
 7. 按一下 [新增] 來建立輸出規則。
 

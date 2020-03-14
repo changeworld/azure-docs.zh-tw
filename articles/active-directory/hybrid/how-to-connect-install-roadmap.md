@@ -14,22 +14,22 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721022"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261420"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安裝藍圖
 
-## <a name="install-azure-ad-connect"></a>安裝 Azure AD Connect
+## <a name="install-azure-ad-connect"></a>安裝 Azure AD Connect。
 
 > [!IMPORTANT]
 > Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect 同步處理。 這些動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
 
 您可以在 [Microsoft 下載中心](https://go.microsoft.com/fwlink/?LinkId=615771)下載 Azure AD Connect。
 
-| 方案 | 案例 |
+| 解決方法 | 狀況 |
 | --- | --- |
 | 開始之前 - [硬體和必要條件](how-to-connect-install-prerequisites.md) |<li>開始安裝 Azure AD Connect 之前所應完成的步驟。</li> |
 | [快速設定](how-to-connect-install-express.md) |<li>如果您有單一樹系 AD，則這是建議使用的選項。</li> <li>使用密碼同步處理以相同的密碼進行使用者登入。</li> |
@@ -165,13 +165,13 @@ Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情�
 * **Active Directory Domain Services**：此選項會顯示 Azure AD Connect Health 目前正在監視的所有 AD DS 樹系。 當您選取樹系時，開啟的刀鋒視窗會顯示該樹系的相關資訊。 這項資訊包括基本資訊概觀、網域控制站儀表板、複寫狀態儀表板、警示和監視。 如需深入了解這些功能，請參閱[在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
 * **設定**︰本節包含開啟或關閉下列功能的選項︰
 
-   - Azure AD Connect Health 代理程式**自動更新**為最新版本：每當有新版本可用時，就會自動更新 Azure AD Connect Health 代理程式。 預設會啟用此選項。
+   - Azure AD Connect Health 代理程式**自動更新**為最新版本：每當有新版本可用時，就會自動更新 Azure AD Connect Health 代理程式。 此選項預設為啟用。
    - 僅針對疑難排解目的，從 Azure AD directory 完整性的**資料存取**：如果啟用此選項，microsoft 可以存取使用者所查看的相同資料。 這種資訊有助於疑難排解，並提供必要的協助。 預設會停用此選項
 * **角色型存取控制 (IAM)** 是用來管理角色基底中 Connect Health 資料存取權的區段。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [硬體和必要條件](how-to-connect-install-prerequisites.md) 
+- [硬體和先決條件](how-to-connect-install-prerequisites.md) 
 - [快速設定](how-to-connect-install-express.md)
 - [自訂設定](how-to-connect-install-custom.md)
 - [密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)|

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 616cdc0387d5c5cf3c2980ae1cfbc10e3c1119f4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754454"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261355"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -65,9 +65,11 @@ ms.locfileid: "75754454"
 
 ## <a name="configuration"></a>組態
 
-若要在 Azure Data Factory 中使用複製活動，您需要：
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-1. **建立來源資料存放區和接收資料存放區的連結服務。** 如需設定資訊和支援的屬性，請參閱連接器文章的「連結服務屬性」一節。 您可以在本文的[支援的資料存放區和格式](#supported-data-stores-and-formats)一節中找到支援的連接器清單。
+一般而言，若要在 Azure Data Factory 中使用複製活動，您需要：
+
+1. **建立來源資料存放區和接收資料存放區的連結服務。** 您可以在本文的[支援的資料存放區和格式](#supported-data-stores-and-formats)一節中找到支援的連接器清單。 如需設定資訊和支援的屬性，請參閱連接器文章的「連結服務屬性」一節。 
 2. **建立來源和接收的資料集。** 如需設定資訊和支援的屬性，請參閱來源和接收連接器文章的「資料集屬性」章節。
 3. **建立具有複製活動的管線。** 下一節提供範例。
 
@@ -123,7 +125,7 @@ ms.locfileid: "75754454"
 
 #### <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 說明 | 必要項？ |
+| 屬性 | 描述 | 必要項？ |
 |:--- |:--- |:--- |
 | type | 若為複製活動，請將設定為 `Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
@@ -140,102 +142,7 @@ ms.locfileid: "75754454"
 
 ## <a name="monitoring"></a>監視
 
-您可以在 Azure Data Factory**作者 & 監視器** UI 中或以程式設計方式監視複製活動執行。
-
-### <a name="monitor-visually"></a>以視覺化方式監視
-
-若要以視覺化方式監視複製活動執行，請移至您的 data factory，然後移至 [作者] [ **& 監視器**]。 在 [**監視**] 索引標籤上，您會在 [**動作**] 資料行中看到一份管線執行清單，其中包含 [**觀看活動執行**] 按鈕
-
-![監視管線回合](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-選取 [**觀看活動執行**] 以查看管線執行中的活動清單。 在 [**動作**] 資料行中，您會看到複製活動輸入、輸出、錯誤（如果複製活動執行失敗）和詳細資料的連結：
-
-![監視活動回合](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-選取 [**動作**] 資料行中的 [**詳細資料**] 按鈕，以查看複製活動的執行詳細資料和效能特性。 您會看到像是從來源複製到接收的資料列數量/數目、輸送量、複製活動經歷的步驟、對應的持續時間，以及用於複製案例的設定等資訊。
-
->[!TIP]
->在某些情況下，您也會在 [複製監視] 頁面的頂端看到**效能微調提示**。 這些秘訣會告訴您已發現的瓶頸，並提供如何變更以提升複製輸送量的相關資訊。 如需範例，請參閱本文的[效能和微調](#performance-and-tuning)一節。
-
-**範例：從 Amazon S3 複製到 Azure Data Lake 存放區**
-![監視活動執行詳細資料](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**範例：從 Azure SQL Database 複製到具有分段複製
-的 Azure SQL 資料倉儲**![監視活動執行詳細資料](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>以程式設計方式監視
-
-複製活動的執行詳細資料和效能特性也會在**複製活動**的執行結果 > **輸出**區段中傳回。 以下是可能會傳回的完整屬性清單。 您只會看到適用于您的複製案例的屬性。 如需如何監視活動執行的相關資訊，請參閱[監視管線執行](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)。
-
-| 屬性名稱  | 說明 | 單位 |
-|:--- |:--- |:--- |
-| dataRead | 從來源讀取的資料量。 | Int64 值（以位元組為單位） |
-| dataWritten | 寫入接收的資料量。 | Int64 值（以位元組為單位） |
-| filesRead | 從檔案儲存體複製期間複製的檔案數目。 | Int64 值 (未指定單位) |
-| filesWritten | 複製到檔案儲存體期間複製的檔案數目。 | Int64 值 (未指定單位) |
-| sourcePeakConnections | 在複製活動執行期間，建立到來源資料存放區的並行連線尖峰數目。 | Int64 值 (未指定單位) |
-| sinkPeakConnections | 在複製活動執行期間，建立至接收資料存放區的並行連線尖峰數目。 | Int64 值 (未指定單位) |
-| rowsRead | 從來源讀取的資料列數（不適用於二進位複製）。 | Int64 值 (未指定單位) |
-| rowsCopied | 複製到接收的資料列數（不適用於二進位複製）。 | Int64 值 (未指定單位) |
-| rowsSkipped | 略過的不相容資料列數目。 您可以將 `enableSkipIncompatibleRow` 設定為 true，以啟用略過不相容的資料列。 | Int64 值 (未指定單位) |
-| copyDuration | 複製執行的持續時間。 | Int32 值（以秒為單位） |
-| throughput | 資料傳輸速率。 | 浮點數字，以 KBps 為單位 |
-| sourcePeakConnections | 在複製活動執行期間，建立到來源資料存放區的並行連線尖峰數目。 | Int32 值（沒有單位） |
-| sinkPeakConnections| 在複製活動執行期間，建立至接收資料存放區的並行連線尖峰數目。| Int32 值（沒有單位） |
-| sqlDwPolyBase | 將資料複製到 SQL 資料倉儲時是否使用 PolyBase。 | Boolean |
-| redshiftUnload | 從 Redshift 複製資料時，是否使用 UNLOAD。 | Boolean |
-| hdfsDistcp | 從 HDFS 複製資料時是否使用 DistCp。 | Boolean |
-| effectiveIntegrationRuntime | 用來啟動活動執行的整合執行時間（IR）或執行時間，格式 `<IR name> (<region if it's Azure IR>)`。 | 文字 (字串) |
-| usedDataIntegrationUnits | 複製期間的有效資料整合單位。 | Int32 值 |
-| usedParallelCopies | 複製期間有效的 parallelCopies。 | Int32 值 |
-| redirectRowPath | 在您于 [`redirectIncompatibleRowSettings`] 屬性中設定的 blob 儲存體中，略過不相容資料列的記錄檔路徑。 請參閱本文稍後的[容錯](#fault-tolerance)。 | 文字 (字串) |
-| executionDetails | 複製活動所經歷之階段的詳細資料，以及對應的步驟、持續時間、設定等等。 我們不建議您剖析此區段，因為它可能會變更。<br/><br/>Data Factory 也會報告 `detailedDurations`下各種階段所花費的詳細持續時間（以秒為單位）。 這些步驟的持續時間是獨佔的。 只有適用于指定複製活動執行的持續時間才會出現：<br/>**佇列持續時間**（`queuingDuration`）：複製活動在整合執行時間上實際開始之前的時間量。 如果您使用自我裝載 IR 且此值很大，請檢查 IR 容量和使用量，並根據您的工作負載相應增加或相應放大。 <br/>**預先複製腳本持續時間**（`preCopyScriptDuration`）：複製活動開始于 IR 上的時間，以及複製活動完成執行接收資料存放區中的預先複製腳本之間所經過的時間。 適用于設定預先複製腳本時。 <br/>**時間到第一個位元組**（`timeToFirstByte`）：上一個步驟結束與紅外線從來源資料存放區接收第一個位元組之間經過的時間。 適用于非以檔案為基礎的來源。 如果這個值很大，請檢查並優化查詢或伺服器。<br/>**傳輸持續時間**（`transferDuration`）：上一個步驟結束與紅外線將所有資料從來源傳輸到接收之間的時間。 | Array |
-| perfRecommendation | 複製效能微調秘訣。 如需詳細資訊，請參閱[效能和微調](#performance-and-tuning)。 | Array |
-
-```json
-"output": {
-    "dataRead": 6198358,
-    "dataWritten": 19169324,
-    "filesRead": 1,
-    "sourcePeakConnections": 1,
-    "sinkPeakConnections": 2,
-    "rowsRead": 39614,
-    "rowsCopied": 39614,
-    "copyDuration": 1325,
-    "throughput": 4.568,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedDataIntegrationUnits": 4,
-    "usedParallelCopies": 1,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AzureBlobStorage"
-            },
-            "sink": {
-                "type": "AzureSqlDatabase"
-            },
-            "status": "Succeeded",
-            "start": "2019-08-06T01:01:36.7778286Z",
-            "duration": 1325,
-            "usedDataIntegrationUnits": 4,
-            "usedParallelCopies": 1,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "preCopyScriptDuration": 12,
-                "transferDuration": 1311
-            }
-        }
-    ],
-    "perfRecommendation": [
-        {
-            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
-            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
-            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
-        }
-    ]
-}
-```
+您可以透過視覺化和程式設計方式來監視 Azure Data Factory 中的複製活動執行。 如需詳細資訊，請參閱[監視複製活動](copy-activity-monitoring.md)。
 
 ## <a name="incremental-copy"></a>增量複製
 
@@ -243,15 +150,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 ## <a name="performance-and-tuning"></a>效能和微調
 
-[複製活動的效能和擴充性指南](copy-activity-performance.md)會說明透過 Azure Data Factory 中的複製活動，影響資料移動效能的主要因素。 它也會列出測試期間觀察到的效能值，並討論如何將複製活動的效能優化。
-
-在某些情況下，當您在 Data Factory 中執行複製活動時，您會在 [[複製活動監視] 頁面](#monitor-visually)頂端看到**效能微調提示**，如下列範例所示。 提示會告訴您指定的複本執行所識別的瓶頸。 它們也會提供要變更哪些內容以提升複製輸送量的相關資訊。 效能微調秘訣目前提供在將資料複製到 Azure SQL 資料倉儲時使用 PolyBase 的建議、在資料存放區端的資源為瓶頸時增加 Azure Cosmos DB ru 或 Azure SQL Database Dtu，以及移除不需要的分段複本。
-
-**範例：使用效能微調提示覆制到 Azure SQL Database**
-
-在此範例中，在複製執行期間，Data Factory 會追蹤接收 Azure SQL Database 中的高 DTU 使用率。 這種狀況會使寫入作業變慢。 建議在 Azure SQL Database 層增加 Dtu：
-
-![複製監視和效能微調祕訣](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+[複製活動監視](copy-activity-monitoring.md)體驗會顯示每個活動執行的複製效能統計資料。 [複製活動的效能和擴充性指南](copy-activity-performance.md)會說明透過 Azure Data Factory 中的複製活動，影響資料移動效能的主要因素。 它也會列出測試期間觀察到的效能值，並討論如何將複製活動的效能優化。
 
 ## <a name="resume-from-last-failed-run"></a>從上一次失敗的執行繼續
 
