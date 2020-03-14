@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376119"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253828"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
 本文說明使用 Azure AD Connect 同步處理做為重要整合解決方案的各種內部部署和 Azure Active Directory (Azure AD) 拓撲。 本文包含受支援和不受支援的組態。

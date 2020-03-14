@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: 描述在 Azure Kubernetes Services 中執行 Azure Dev Spaces 的網路需求
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，CNI，kubenet，SDN，網路
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389662"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265346"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>在不同的網路拓撲中設定 Azure Dev Spaces 的網路功能
 

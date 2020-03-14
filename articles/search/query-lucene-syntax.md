@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149876"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283130"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢語法
 

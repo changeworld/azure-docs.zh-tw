@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072824"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221369"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>設定 Bing 自訂搜尋體驗
 
@@ -131,9 +131,9 @@ ms.locfileid: "74072824"
 
 | 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| Starts with | 如果使用者的查詢字串開頭為釘選查詢字串，該釘選即為相符項目。 |
-| Ends with   | 如果使用者的查詢字串結尾為釘選查詢字串，該釘選即為相符項目。  |
-| Contains    | 如果使用者的查詢字串包含釘選查詢字串，該釘選即為相符項目。   |
+| 開頭為 | 如果使用者的查詢字串開頭為釘選查詢字串，該釘選即為相符項目。 |
+| 結束於   | 如果使用者的查詢字串結尾為釘選查詢字串，該釘選即為相符項目。  |
+| 包含    | 如果使用者的查詢字串包含釘選查詢字串，該釘選即為相符項目。   |
 
 
 若要變更釘選比對條件，請按一下釘選的編輯圖示。 在 [查詢比對條件] 欄中，按一下下拉式清單並選取要使用的新條件。 接著，按一下儲存圖示以儲存變更。

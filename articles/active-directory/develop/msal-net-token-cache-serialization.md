@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377486"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262798"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的權杖快取序列化
 在[取得權杖](msal-acquire-cache-tokens.md)後，該權杖會由 Microsoft 驗證程式庫 (MSAL) 快取。  應用程式程式碼應該先試著從快取中取得權杖，再用另一種方法取得權杖。  本文討論 MSAL.NET 中權杖快取的預設和自訂序列化。

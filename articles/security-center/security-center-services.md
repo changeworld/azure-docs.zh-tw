@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245235"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
@@ -93,7 +93,7 @@ ms.locfileid: "78394675"
 
 如需每一項保護何時產生建議的相關資訊，請參閱[Endpoint Protection 評估和建議](security-center-endpoint-protection.md)。
 
-| Endpoint Protection| 平台 | 資訊安全中心安裝 | 資訊安全中心探索 |
+| 端點保護| 平台 | 資訊安全中心安裝 | 資訊安全中心探索 |
 |------|------|-----|-----|
 | Windows Defender (Microsoft 反惡意程式碼軟體)| Windows Server 2016| 否，內建於 OS| 是 |
 | System Center Endpoint Protection (Microsoft 反惡意程式碼軟體) | Windows Server 2012 R2、2012、2008 R2 (請參閱下列附註) | 透過延伸模組 | 是 |

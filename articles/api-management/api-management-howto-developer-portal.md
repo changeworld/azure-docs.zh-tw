@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297980"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站總覽
 
@@ -156,6 +156,12 @@ ms.locfileid: "79126548"
     </expose-headers>
 </cors>
 ```
+
+在全域範圍上套用 CORS，以確保它已針對所有 Api 啟用。
+
+1. 在 Azure 入口網站的 API 管理服務的 [ **api** ] 區段中，流覽至 [**所有 api** ]。
+2. 在 [**輸入處理**] 區段中，按一下 [ **</>** ] 圖示。
+3. 將原則插入 XML 檔案的 **<inbound>** 區段中。 請確定 **<origin>** 值符合開發人員入口網站的網域。
 
 > [!NOTE]
 > 

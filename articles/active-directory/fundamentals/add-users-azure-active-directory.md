@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073478"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262109"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 新增或刪除使用者
 
@@ -42,7 +42,7 @@ ms.locfileid: "74073478"
 
    - **名稱**。 必要。 新使用者的姓氏與名字。 例如 *Mary Parker*。
 
-   - **使用者名稱**。 必要。 新使用者的使用者名稱。 例如， `mary@contoso.com`。
+   - **使用者名稱**。 必要。 新使用者的使用者名稱。 例如： `mary@contoso.com` 。
 
      使用者名稱的網域部分必須使用初始預設功能變數名稱、 *\<您功能變數名稱 >. onmicrosoft .com*或自訂功能變數名稱（例如*contoso.com*）。 如需有關如何建立自訂功能變數名稱的詳細資訊，請參閱[使用 Azure Active Directory 入口網站新增自訂功能變數名稱](add-custom-domain.md)。
 

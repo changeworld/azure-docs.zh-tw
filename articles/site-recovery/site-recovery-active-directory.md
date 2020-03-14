@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257806"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>設定 Active Directory 和 DNS 的災害復原
 
@@ -22,7 +22,7 @@ ms.locfileid: "74084591"
 
 本文說明如何建立 Active Directory 的災害復原解決方案。 其中包括先決條件，以及容錯移轉指示。 開始之前，您應該先熟悉 Active Directory 與 Site Recovery。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您要複寫至 Azure，請[準備 Azure 資源](tutorial-prepare-azure.md)，包括訂用帳戶、Azure 虛擬網路、儲存體帳戶和復原服務保存庫。
 * 檢閱所有元件的[支援需求](site-recovery-support-matrix-to-azure.md)。

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 Azure 備份來備份 Azure
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120841"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273328"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>備份 Azure VM 中的 SQL Server 資料庫
 
@@ -29,7 +29,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 >**AZURE vm 中的 SQL server 虛刪除和 AZURE vm 工作負載中的 SAP Hana 虛刪除**現已提供預覽。<br>
 >若要註冊預覽版，請在 AskAzureBackupTeam@microsoft.com 寫信給我們
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在備份 SQL Server 資料庫之前，請先檢查下列準則：
 
@@ -97,6 +97,10 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 使用 NSG 服務標籤 | 會自動合併範圍變更，因此更容易管理 <br/><br/> 沒有額外的成本 <br/><br/> | 只能搭配 NSG 使用 <br/><br/> 提供整個服務的存取權
 使用 Azure 防火牆 FQDN 標籤 | 會自動管理所需的 FQDN，因此更容易管理 | 只能搭配 Azure 防火牆使用
 使用 HTTP Proxy | VM 的單一網際網路存取點 <br/> | 使用 Proxy 軟體執行 VM 時的額外成本 <br/> 沒有已發佈的 FQDN 位址，允許規則將受限於 Azure IP 位址變更
+
+#### <a name="private-endpoints"></a>私人端點
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 備份的資料庫命名方針
 
@@ -196,7 +200,7 @@ SQL Server 資料庫是需要低復原點目標（RPO）和長期保留的重要
 
 7. 在入口網站的 [通知] 區域中，追蹤設定進度。
 
-    ![通知區域](./media/backup-azure-sql-database/notifications-area.png)
+    ![[通知] 區域](./media/backup-azure-sql-database/notifications-area.png)
 
 ### <a name="create-a-backup-policy"></a>建立備份原則
 

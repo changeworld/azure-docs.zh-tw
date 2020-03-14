@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611760"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257260"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter Server
 

@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 085b907b6a848fb534df63b5465948864048cc19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256480"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>針對 Azure Synapse 中的 SQL 分析進行疑難排解
 本文列出常見的疑難排解問題。

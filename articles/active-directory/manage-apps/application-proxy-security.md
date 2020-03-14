@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244260"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366099"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考量
 
@@ -81,13 +81,9 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 為了改善 Azure AD 應用程式 Proxy 所發佈應用程式的安全性，我們會封鎖 Web 編目程式傀儡程式，使其無法對您的應用程式編製索引和進行保存。 每次 Web 編目程式傀儡程式嘗試擷取已發佈應用程式的傀儡程式設定時，應用程式 Proxy 會以含有 `User-agent: * Disallow: /` 的 robots.txt 檔案回覆。
 
-### <a name="ddos-prevention"></a>DDOS 預防
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS 保護服務
 
-透過應用程式 Proxy 發佈應用程式會受到保護，能抵禦分散式阻斷服務 (DDOS) 攻擊。
-
-應用程式 Proxy 服務會監視嘗試連接應用程式和網路的流量。 如果要求從遠端存取應用程式的裝置數目升高，Microsoft 會調節網路的存取。 
-
-Microsoft 會監看個別應用程式和整個訂用帳戶的傳輸模式。 如果某個應用程式收到高於一般的要求，存取該應用程式的要求會在一段不久時間內遭到拒絕。 如果收到的要求超過整個訂用帳戶的一般要求數目，則要求會遭拒而無法存取您的任何應用程式。 這個預防措施可防止應用程式伺服器因遠端存取要求而超出負載，讓內部部署使用者能持續存取他們的應用程式。 
+透過應用程式 Proxy 發佈的應用程式會受到保護，以防止分散式阻斷服務（DDoS）攻擊。 **Azure DDoS 保護**是 azure 平臺提供的一項服務，可保護您的 azure 資源免于拒絕服務的攻擊。 **基本**服務層級會自動啟用，以提供 always on 的流量監視，以及即時緩和常見的網路層級攻擊。 **標準**層也可供使用，提供額外的緩和功能，專門針對 Azure 虛擬網路資源進行調整。 如需詳細資訊，請參閱[Azure DDoS 保護 Standard 總覽](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
 ## <a name="under-the-hood"></a>背後原理
 

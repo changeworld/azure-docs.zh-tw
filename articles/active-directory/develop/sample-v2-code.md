@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f24412aa7e53c52f0fcbf0c266b57db077d41eb1
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a0ba46abcc6e3b837dc0b13422bdc3d714ed0022
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262681"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平臺程式碼範例（v2.0 端點）
 
@@ -114,6 +114,7 @@ ms.locfileid: "77612038"
 | ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2。2 | Dotnet 的 ASP.NET Core Web API （服務） [-原生-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![此圖顯示 ASP.NET 標誌](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [Ms-identity-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof)的 Web API （服務） |
 | ![此圖顯示 JAVA 標誌](media/sample-v2-code/logo_java.png) | Ms-身分識別的 Web API （服務）- [java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi) |
+| ![此圖顯示 node.js 標誌](media/sample-v2-code/logo_nodejs.png) | Active directory 的 Web API （服務） [-javascript-nodejs-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) |
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions 作為 web Api
 
@@ -133,5 +134,4 @@ ms.locfileid: "77612038"
 ## <a name="see-also"></a>另請參閱
 
 - [Azure Active Directory （v1.0）開發人員指南](../azuread-dev/v1-overview.md)
-- [Azure AD 圖形 API 的概念和參考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-- [Azure AD Graph API 協助程式程式庫](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Microsoft Graph API 概念和參考](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)

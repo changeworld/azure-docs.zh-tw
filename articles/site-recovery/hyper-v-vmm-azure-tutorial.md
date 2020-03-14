@@ -8,11 +8,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039680"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281674"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>將 VMM 雲端中 Hyper-V VM 的災害復原設定至 Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "74039680"
 
 這是一系列中的第三個教學課程，說明如何為內部部署 VMware VM 設定 Azure 的災害復原。 在上一個教學課程中，我們已[備妥內部部署 hyper-v 環境](hyper-v-prepare-on-premises-tutorial.md)，以進行 Azure 的嚴重損壞修復。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 選取複寫來源和目標。

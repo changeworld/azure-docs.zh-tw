@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.date: 1/24/2020
 ms.author: raiye
 ms.openlocfilehash: c4bdb6fec5c20940e0afe4ab2e94702a2b21a60c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344533"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273107"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 客體 OS 版次與 SDK 相容性矩陣
 提供適用於雲端服務的最新 Azure 客體作業系統版次的最新資訊。 此資訊協助您在客體 OS停用之前規劃升級路徑。 如果您設定角色來使用「自動化」 客體 OS 更新，如 [Azure 客體 OS 更新設定][Azure Guest OS Update Settings]所述，則不一定要閱讀此頁面。

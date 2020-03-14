@@ -14,11 +14,11 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375810"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263188"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>操作說明：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -59,7 +59,7 @@ ms.locfileid: "78375810"
 | access_token |
 | account_type |
 | acr |
-| actor (執行者) |
+| actor |
 | actortoken |
 | aio |
 | altsecid |
@@ -71,7 +71,7 @@ ms.locfileid: "78375810"
 | appctxsender |
 | appid |
 | appidacr |
-| Assertion - 判斷提示 |
+| assertion |
 | at_hash |
 | aud |
 | auth_data |
@@ -105,7 +105,7 @@ ms.locfileid: "78375810"
 | grant_type |
 | graph |
 | group_sids |
-| 群組 |
+| groups |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -159,7 +159,7 @@ ms.locfileid: "78375810"
 | resource |
 | 角色 (role) |
 | 角色 |
-| 範圍 |
+| scope |
 | scp |
 | sid |
 | 簽章 |
@@ -286,45 +286,45 @@ ms.locfileid: "78375810"
 
 | 來源 | ID | 描述 |
 |-----|-----|-----|
-| 使用者 | surname | 姓氏 |
-| 使用者 | givenname | 名稱 |
-| 使用者 | displayname | 顯示名稱 |
-| 使用者 | objectid | ObjectID |
-| 使用者 | 郵件 | 電子郵件地址 |
-| 使用者 | userprincipalname | 使用者主體名稱 |
-| 使用者 | department|department|
-| 使用者 | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
-| 使用者 | netbiosname| NetBios 名稱 |
-| 使用者 | dnsdomainname | DNS 網域名稱 |
-| 使用者 | onpremisesecurityidentifier | 內部部署安全識別碼 |
-| 使用者 | companyname| 組織名稱 |
-| 使用者 | streetaddress | 街道地址 |
-| 使用者 | postalcode | 郵遞區號 |
-| 使用者 | preferredlanguange | 慣用語言 |
-| 使用者 | onpremisesuserprincipalname | 內部部署 UPN |
-| 使用者 | mailnickname | 郵件暱稱 |
-| 使用者 | extensionattribute1 | 擴充屬性 1 |
-| 使用者 | extensionattribute2 | 擴充屬性 2 |
-| 使用者 | extensionattribute3 | 擴充屬性 3 |
-| 使用者 | extensionattribute4 | 擴充屬性 4 |
-| 使用者 | extensionattribute5 | 擴充屬性 5 |
-| 使用者 | extensionattribute6 | 擴充屬性 6 |
-| 使用者 | extensionattribute7 | 擴充屬性 7 |
-| 使用者 | extensionattribute8 | 擴充屬性 8 |
-| 使用者 | extensionattribute9 | 擴充屬性 9 |
-| 使用者 | extensionattribute10 | 擴充屬性 10 |
-| 使用者 | extensionattribute11 | 擴充屬性 11 |
-| 使用者 | extensionattribute12 | 擴充屬性 12 |
-| 使用者 | extensionattribute13 | 擴充屬性 13 |
-| 使用者 | extensionattribute14 | 擴充屬性 14 |
-| 使用者 | extensionattribute15 | 擴充屬性 15 |
-| 使用者 | othermail | 其他郵件 |
-| 使用者 | country | Country |
-| 使用者 | 城市 | 城市 |
-| 使用者 | state | 狀態 |
-| 使用者 | jobtitle | 職稱 |
-| 使用者 | employeeid | 員工 ID |
-| 使用者 | facsimiletelephonenumber | 傳真電話號碼 |
+| User | surname | 姓氏 |
+| User | givenname | 名字 |
+| User | displayname | 顯示名稱 |
+| User | objectid | ObjectID |
+| User | mail | 電子郵件地址 |
+| User | userprincipalname | 使用者主體名稱 |
+| User | department|department|
+| User | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
+| User | netbiosname| NetBios 名稱 |
+| User | dnsdomainname | DNS 網域名稱 |
+| User | onpremisesecurityidentifier | 內部部署安全識別碼 |
+| User | companyname| 組織名稱 |
+| User | streetaddress | 街道地址 |
+| User | postalcode | 郵遞區號 |
+| User | preferredlanguange | 慣用語言 |
+| User | onpremisesuserprincipalname | 內部部署 UPN |
+| User | mailNickname | 郵件暱稱 |
+| User | extensionattribute1 | 擴充屬性 1 |
+| User | extensionattribute2 | 擴充屬性 2 |
+| User | extensionattribute3 | 擴充屬性 3 |
+| User | extensionattribute4 | 擴充屬性 4 |
+| User | extensionattribute5 | 擴充屬性 5 |
+| User | extensionattribute6 | 擴充屬性 6 |
+| User | extensionattribute7 | 擴充屬性 7 |
+| User | extensionattribute8 | 擴充屬性 8 |
+| User | extensionattribute9 | 擴充屬性 9 |
+| User | extensionattribute10 | 擴充屬性 10 |
+| User | extensionattribute11 | 擴充屬性 11 |
+| User | extensionattribute12 | 擴充屬性 12 |
+| User | extensionattribute13 | 擴充屬性 13 |
+| User | extensionattribute14 | 擴充屬性 14 |
+| User | extensionattribute15 | 擴充屬性 15 |
+| User | othermail | 其他郵件 |
+| User | country | Country |
+| User | city | City |
+| User | state | State |
+| User | jobtitle | 職稱 |
+| User | employeeid | 員工識別碼 |
+| User | facsimiletelephonenumber | 傳真電話號碼 |
 | application, resource, audience | displayname | 顯示名稱 |
 | application, resource, audience | objected | ObjectID |
 | application, resource, audience | tags | 服務主體標籤 |
@@ -361,7 +361,7 @@ ms.locfileid: "78375810"
 |TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
 |Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|郵件|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
+|ExtractMailPrefix|mail|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
 
 **InputClaims：** 使用 InputClaims 元素可從宣告結構描述項目將資料傳遞至轉換。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -386,31 +386,31 @@ ms.locfileid: "78375810"
 
 |來源|ID|描述|
 |-----|-----|-----|
-| 使用者 | 郵件|電子郵件地址|
-| 使用者 | userprincipalname|使用者主體名稱|
-| 使用者 | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
-| 使用者 | employeeid|員工 ID|
-| 使用者 | extensionattribute1 | 擴充屬性 1 |
-| 使用者 | extensionattribute2 | 擴充屬性 2 |
-| 使用者 | extensionattribute3 | 擴充屬性 3 |
-| 使用者 | extensionattribute4 | 擴充屬性 4 |
-| 使用者 | extensionattribute5 | 擴充屬性 5 |
-| 使用者 | extensionattribute6 | 擴充屬性 6 |
-| 使用者 | extensionattribute7 | 擴充屬性 7 |
-| 使用者 | extensionattribute8 | 擴充屬性 8 |
-| 使用者 | extensionattribute9 | 擴充屬性 9 |
-| 使用者 | extensionattribute10 | 擴充屬性 10 |
-| 使用者 | extensionattribute11 | 擴充屬性 11 |
-| 使用者 | extensionattribute12 | 擴充屬性 12 |
-| 使用者 | extensionattribute13 | 擴充屬性 13 |
-| 使用者 | extensionattribute14 | 擴充屬性 14 |
-| 使用者 | extensionattribute15 | 擴充屬性 15 |
+| User | mail|電子郵件地址|
+| User | userprincipalname|使用者主體名稱|
+| User | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
+| User | employeeid|員工識別碼|
+| User | extensionattribute1 | 擴充屬性 1 |
+| User | extensionattribute2 | 擴充屬性 2 |
+| User | extensionattribute3 | 擴充屬性 3 |
+| User | extensionattribute4 | 擴充屬性 4 |
+| User | extensionattribute5 | 擴充屬性 5 |
+| User | extensionattribute6 | 擴充屬性 6 |
+| User | extensionattribute7 | 擴充屬性 7 |
+| User | extensionattribute8 | 擴充屬性 8 |
+| User | extensionattribute9 | 擴充屬性 9 |
+| User | extensionattribute10 | 擴充屬性 10 |
+| User | extensionattribute11 | 擴充屬性 11 |
+| User | extensionattribute12 | 擴充屬性 12 |
+| User | extensionattribute13 | 擴充屬性 13 |
+| User | extensionattribute14 | 擴充屬性 14 |
+| User | extensionattribute15 | 擴充屬性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允許 SAML NameID 使用的轉換方法
 
 | TransformationMethod | 限制 |
 | ----- | ----- |
-| ExtractMailPrefix | 無 |
+| ExtractMailPrefix | None |
 | Join | 所聯結的尾碼必須是資源租用戶的已驗證網域。 |
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
@@ -435,7 +435,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您是 Azure AD 的新手，建議您[先了解如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)，然後再參考範例繼續操作。
 

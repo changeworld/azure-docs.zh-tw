@@ -9,11 +9,11 @@ ms.date: 01/23/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fca9fa8a964c6c9d69ffbb3036bd4774e0d1bd34
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255544"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 儲存體總管來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2
 

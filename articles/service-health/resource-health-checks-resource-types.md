@@ -4,11 +4,11 @@ description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258300"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。

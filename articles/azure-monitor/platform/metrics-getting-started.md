@@ -8,11 +8,11 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248771"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -37,7 +37,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 3. 從可用的計量清單中選取 [度量]。
 
-    > ![選取度量](./media/metrics-getting-started/metric-picker.png)
+    > ![選取計量](./media/metrics-getting-started/metric-picker.png)
 
 4. （選擇性）您可以變更計量匯總。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 

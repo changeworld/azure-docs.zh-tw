@@ -4,11 +4,11 @@ description: 搜尋追蹤、NLog 或 Log4Net 所產生的記錄。
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665981"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276266"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>探索 Application Insights 中的 .NET/.NET Core 和 Python 追蹤記錄
 
@@ -131,14 +131,14 @@ NuGet 套件會安裝必要的元件，並修改 web.config 或 app.config （�
 ## <a name="use-the-trace-api-directly"></a>直接使用追蹤 API
 您可以直接呼叫 Application Insights 追蹤 API。 記錄配接器會使用此 API。
 
-例如，
+例如：
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如，您可以在該處編碼 POST 資料。
 
-您也可以將嚴重性層級新增至您的訊息。 而和其他遙測一樣，您可以加入屬性值來協助篩選或搜尋不同的追蹤集。 例如，
+您也可以將嚴重性層級新增至您的訊息。 而和其他遙測一樣，您可以加入屬性值來協助篩選或搜尋不同的追蹤集。 例如：
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",

@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765658"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283689"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ Azure Machine Learning 提供兩種方式來控制對 web 服務的存取。
 
 |驗證方法|ACI|AKS|
 |---|---|---|
-|索引鍵|預設為停用| 預設啟用|
+|Key|預設為停用| 預設啟用|
 |Token| 無法使用| 預設為停用 |
 
 將要求傳送至以金鑰或權杖保護的服務時，請使用__Authorization__標頭來傳遞金鑰或權杖。 金鑰或權杖必須格式化為 `Bearer <key-or-token>`，其中 `<key-or-token>` 是您的金鑰或 token 值。

@@ -3,16 +3,22 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273211"
+ms.locfileid: "79297352"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份總覽
 
 本文說明[Azure 備份服務](backup-introduction-to-azure-backup.md)如何備份 Azure 虛擬機器（vm）。
+
+Azure 備份提供獨立和隔離的備份，以防止非預期的資料在您的 Vm 上損毀。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。 設定和調整很簡單，備份已優化，您可以視需要輕鬆地還原。
+
+做為備份程式的一部分，[會建立快照](#snapshot-creation)集，並將資料傳輸至復原服務保存庫，而不會影響生產工作負載。 快照集會提供不同層級的一致性，如[這裡](#snapshot-consistency)所述。
+
+Azure 備份也有適用于資料庫工作負載的特製化供應專案，例如可感知工作負載的[SQL Server](backup-azure-sql-database.md)和[SAP Hana](sap-hana-db-about.md) 、提供15分鐘的 RPO （復原點目標），以及允許備份和還原個別的資料庫。
 
 ## <a name="backup-process"></a>備份程序
 
@@ -66,7 +72,7 @@ Azure 備份會根據備份排程來取得快照集。
   - 如果前置腳本和後置腳本執行成功，Azure 備份會將復原點標記為應用程式一致。 不過，當您使用自訂腳本時，您最終會負責應用程式的一致性。
   - [深入瞭解](backup-azure-linux-app-consistent.md)如何設定腳本。
 
-### <a name="snapshot-consistency"></a>快照集一致性
+## <a name="snapshot-consistency"></a>快照集一致性
 
 下表說明不同類型的快照集一致性：
 

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116914"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284118"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
 
@@ -26,7 +26,7 @@ ms.locfileid: "77116914"
 > [!NOTE]
 > Logic Apps 和 Azure Functions 之間的整合目前不適用於已啟用的位置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -125,7 +125,7 @@ function convertToDateString(request, response){
 
    1. 在 [程式**代碼**] 方塊中，將您的程式碼新增至函式範本，包括您想要在函式完成執行後傳回給邏輯應用程式的回應和承載。 當您完成時，選取 [建立]。
 
-   例如，
+   例如：
 
    ![定義函式](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

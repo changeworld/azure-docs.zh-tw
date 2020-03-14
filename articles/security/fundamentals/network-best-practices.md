@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245222"
+ms.locfileid: "79299340"
 ---
 # <a name="azure-best-practices-for-network-security"></a>適用于網路安全性的 Azure 最佳作法
 本文討論 Azure 最佳作法的集合，以加強您的網路安全性。 這些最佳作法衍生自我們的 Azure 網路經驗和客戶的經驗。
@@ -55,7 +55,7 @@ Azure 虛擬網路類似于內部部署網路上的 Lan。 Azure 虛擬網路背
 **最佳做法**：將較大的位址空間分割成子網路。   
 **詳細資料**：您可以使用 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 型子網路原則來建立子網路。
 
-**最佳做法**：建立子網路之間的網路存取控制。 子網路之間的路由傳送會自動發生，您不需手動設定路由表。 根據預設，您在 Azure 虛擬網路上建立的子網之間沒有網路存取控制。   
+**最佳做法**：建立子網路之間的網路存取控制。 子網之間的路由會自動發生，您不需要手動設定路由表。 根據預設，您在 Azure 虛擬網路上建立的子網之間沒有網路存取控制。   
 **詳細資料**：使用[網路安全性群組](/azure/virtual-network/virtual-networks-nsg)來防止未經要求的流量進入 Azure 子網。 網路安全性群組是簡單的具狀態封包檢查裝置，其使用5元組方法（來源 IP、來源埠、目的地 IP、目的地埠和第4層通訊協定）來建立網路流量的允許/拒絕規則。 您可以允許或拒絕單一 IP 位址、多個 IP 位址或整個子網路的輸入或輸出流量。
 
 當您使用網路安全性群組進行子網之間的網路存取控制時，您可以將屬於相同安全性區域或角色的資源放在其自己的子網中。
@@ -111,7 +111,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 * 防毒
 * 殭屍網路防護
 
-若要尋找可用的 Azure 虛擬網路安全性設備，請移至 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 並搜尋 "security" 和 "network security"。
+若要尋找可用的 Azure 虛擬網路安全性設備，請移至[Azure Marketplace](https://azure.microsoft.com/marketplace/)並搜尋「安全性」和「網路安全性」。
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>部署安全性區域的周邊網路
 [周邊網路](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (也稱為 DMZ) 是實體或邏輯網路區段，可在您的資產與網際網路之間提供額外一層安全性。 在周邊網路邊緣上的特製化網路存取控制裝置，只允許所要的流量進入您的虛擬網路。
@@ -122,7 +122,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 
 根據先前所述的零信任概念，建議您考慮使用周邊網路進行所有的高安全性部署，以增強 Azure 資源的網路安全性和存取控制層級。 您可以使用 Azure 或協力廠商解決方案，在您的資產與網際網路之間提供額外的安全性層級：
 
-- Azure 原生控制項。 應用程式閘道中的[Azure 防火牆](/azure/firewall/overview)和[web 應用程式防火牆](/azure/application-gateway/overview#web-application-firewall)提供具有完全具狀態的防火牆即服務的基本安全性、內建高可用性、不受限制的雲端擴充、FQDN 篩選、OWASP 核心規則集的支援，以及簡單的安裝和設定。
+- Azure 原生控制項。 應用程式閘道中的[Azure 防火牆](/azure/firewall/overview)和[web 應用程式防火牆](../../application-gateway/features.md#web-application-firewall)提供具有完全具狀態的防火牆即服務的基本安全性、內建高可用性、不受限制的雲端擴充、FQDN 篩選、OWASP 核心規則集的支援，以及簡單的安裝和設定。
 - 協力廠商供應專案。 搜尋[Azure Marketplace](https://azuremarketplace.microsoft.com/)以取得下一代的防火牆（NGFW）和其他協力廠商供應專案，提供熟悉的安全性工具及大幅增強的網路安全性層級。 設定可能比較複雜，但協力廠商供應專案可讓您使用現有的功能和技能集。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>使用專用的 WAN 連結避免暴露于網際網路
@@ -130,7 +130,7 @@ Azure 網路安全性設備可提供比網路層級控制更佳的安全性。 �
 
 在混合式 IT 案例中，通常會有某種類型的跨單位連線能力。 跨單位連線可讓公司將其內部部署網路連線到 Azure 虛擬網路。 可用的跨單位連線解決方案有兩個︰
 
-* [站對站 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 可靠且完備的技術，但連線是透過網際網路來建立。 頻寬限制為最多 1.25 Gbps。 在某些情況下，站對站 VPN 是理想的選項。
+* [站對站 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 這是受信任、可靠且已建立的技術，但連線會透過網際網路進行。 頻寬限制為最多 1.25 Gbps。 在某些情況下，站對站 VPN 是理想的選項。
 * **Azure ExpressRoute**。 我們建議您針對跨單位連線改用 [ExpressRoute](../../expressroute/expressroute-introduction.md)。 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Office 365 和 Dynamics 365）的連接。 ExpressRoute 是內部部署位置或 Microsoft Exchange 主機服務提供者之間專用的 WAN 連結。 因為這是一個電信連線，所以您的資料不會透過網際網路傳輸，因此不會暴露在網際網路通訊的潛在風險中。
 
 ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠性和網路流量可見度。 您必須識別在現有（內部部署）網路中終止 ExpressRoute 的位置。 您可以：
@@ -139,7 +139,7 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 - 在防火牆內終止（網路延伸模組範例）。 這是預設建議。 在所有其他情況下，建議您將 Azure 視為第 n 個資料中心。
 
 ## <a name="optimize-uptime-and-performance"></a>將執行時間和效能最佳化
-如果服務已關閉，便無法存取資訊。 如果因為效能不佳而使資料無法使用，您可以將該資料視為無法存取。 從安全性觀點來看，您需要盡可能地確保您的服務有最佳的執行時間和效能。
+如果服務已關閉，就無法存取訊號。 如果因為效能不佳而使資料無法使用，您可以將該資料視為無法存取。 從安全性觀點來看，您需要盡可能地確保您的服務有最佳的執行時間和效能。
 
 增強可用性和效能之常見且有效的方法是負載平衡。 負載平衡是將網路流量分散於服務中各伺服器的方法。 比方說，如果您的服務中有前端 Web 伺服器，您可以使用負載平衡將流量分散於多部前端 Web 伺服器。
 
@@ -158,7 +158,7 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 **案例**：您需要將來自網際網路的傳入連線，進行負載平衡分散到位在 Azure 虛擬網路中的伺服器之間。 案例如當您：
 
 - 有接受來自網際網路傳入要求的無狀態應用程式時。
-- 不需要黏性工作階段或 SSL 卸載時。 黏性工作階段是搭配應用程式負載平衡，以達到伺服器親和性的方法。
+- 不需要粘滯話或 SSL 卸載。 黏性工作階段是搭配應用程式負載平衡，以達到伺服器親和性的方法。
 
 **負載平衡選項**：使用 Azure 入口網站[建立外部負載平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)，將傳入要求分散到多個 VM，以提供較高層級的可用性。
 
@@ -175,7 +175,7 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 例如，如果使用者從 EU 對您的服務提出要求，此連線則會被導向到您位於 EU 資料中心的服務。 這部分的流量管理員全域負載平衡有助於改善效能，因為連接到最近的資料中心比連接到遠處的資料中心還要快。
 
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>停用對虛擬機器的 RDP/SSH 存取
-使用[遠端桌面通訊協定](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) 和[安全殼層](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) 通訊協定可以連到 Azure 虛擬機器。 透過這些通訊協定可允許遠端的管理 VM，且它們是資料中心計算的標準。
+您可以使用[遠端桌面通訊協定](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol)（RDP）和[安全殼層](https://en.wikipedia.org/wiki/Secure_Shell)（SSH）通訊協定來連接到 Azure 虛擬機器。 透過這些通訊協定可允許遠端的管理 VM，且它們是資料中心計算的標準。
 
 在網際網路上使用這些通訊協定的潛在安全性問題是，攻擊者可以使用[暴力密碼破解](https://en.wikipedia.org/wiki/Brute-force_attack)技術來取得 Azure 虛擬機器的存取權。 攻擊者取得存取權之後，就可以使用您的虛擬機器作為破壞您虛擬網路上其他電腦的啟動點，或甚至攻擊 Azure 之外的網路裝置。
 
@@ -192,7 +192,7 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 **案例**：使用專用的 WAN 連結來提供類似站對站 VPN 的功能。   
 **選項**：使用 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)。 它提供類似站對站 VPN 的功能。 主要差別在於：
 
-- 專用的 WAN 連結不會周遊網際網路。
+- 專用 WAN 連結不會跨越網際網路。
 - 專用的 WAN 連結通常比較穩定且效能較好。
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>將重要的 Azure 服務資源只放到您的虛擬網路保護
@@ -210,4 +210,4 @@ ExpressRoute 連線的位置可能會影響防火牆容量、擴充性、可靠�
 若要深入了解服務端點，以及在哪些區域有哪些 Azure 服務的服務端點可取得，請參閱[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
-如需更多安全性最佳做法，請參閱 [Azure 安全性最佳做法與模式](best-practices-and-patterns.md)，以便在使用 Azure 設計、部署和管理雲端解決方案時使用。
+如需更多安全性最佳做法，請參閱[azure 安全性最佳作法和模式](best-practices-and-patterns.md)，以瞭解使用 azure 設計、部署和管理雲端解決方案時的使用方式。

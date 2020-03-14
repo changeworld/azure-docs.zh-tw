@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263747"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 中的報告
 
 Azure Multi-Factor Authentication 提供數個報告，可供您和貴組織透過 Azure 入口網站使用。 下表列出可用的報告：
 
-| 報告 | 位置 | 說明 |
+| Report | Location | 描述 |
 |:--- |:--- |:--- |
 | 已封鎖的使用者歷程記錄 | Azure AD > 安全性 > MFA > 封鎖/解除封鎖使用者 | 顯示使用者封鎖或解除封鎖要求的歷程記錄。 |
 | 使用方式和詐騙警示 | Azure AD > 登入 | 提供整體使用量、使用者摘要和使用者詳細資料的相關資訊；以及在指定的日期範圍期間所提交的詐騙警示歷程記錄。 |
@@ -40,7 +40,7 @@ Azure Multi-Factor Authentication 提供數個報告，可供您和貴組織透�
 
 ## <a name="azure-ad-sign-ins-report"></a>Azure AD 登入報告
 
-透過 [Azure 入口網站](https://portal.azure.com)中的**登入活動報告**，您可以取得判斷環境執行狀況所需的資訊。
+透過 **Azure 入口網站**中的[登入活動報告](https://portal.azure.com)，您可以取得判斷環境執行狀況所需的資訊。
 
 登入報告可為您提供受控應用程式使用方式和使用者登入活動的相關資訊，包括 Multi-Factor Authentication (MFA) 使用方式的相關資訊。 MFA 資料可讓您深入了解 MFA 如何在您的組織中運作。 它可讓您回答問題，例如：
 
@@ -104,7 +104,7 @@ MFA 的登入活動報告可讓您存取下列資訊：
       - 找不到使用者
       - 驗證碼已使用過一次
 
-**MFA 驗證方法：** 使用者用來完成 MFA 的驗證方法。 可能值包括：
+**MFA 驗證方法：** 使用者用來完成 MFA 的驗證方法。 可能的值包括：
 
 - 簡訊
 - 行動應用程式通知
@@ -148,12 +148,12 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 下表可用於使用下載的多因素驗證活動報告版本進行多重要素驗證疑難排解。 它們不會直接出現在 Azure 入口網站中。
 
-| 呼叫結果 | 說明 | 廣泛描述 |
+| 呼叫結果 | 描述 | 廣泛描述 |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | 已輸入 PIN | 使用者已輸入 PIN。  如果驗證成功，則他們輸入了正確的 PIN。  如果驗證遭到拒絕，則他們輸入了不正確的 PIN，或使用者設定為標準模式。 |
-| SUCCESS_NO_PIN | 僅輸入 # | 如果使用者設定為 PIN 模式且驗證遭到拒絕，這表示使用者未輸入 PIN，只輸入 #。  如果使用者設定為標準模式且驗證成功，這表示使用者只輸入 #，而在標準模式下這是正確的動作。 |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | 輸入後未按 # | 使用者未傳送任何 DTMF 數字，因為並未輸入 #。  除非輸入 #，表示專案完成，否則不會傳送其他輸入的數位。 |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | 無電話輸入 - 已逾時 | 已接聽電話，但沒有回應。  這通常表示來電是由語音信箱所挑選。 |
+| SUCCESS_WITH_PIN | 已輸入 PIN | 使用者已輸入 PIN。  如果驗證成功，表示使用者已輸入正確的 PIN。  如果驗證遭到拒絕，則他們輸入了不正確的 PIN，或使用者設定為標準模式。 |
+| SUCCESS_NO_PIN | 僅輸入 # | 如果使用者設定為 PIN 模式且驗證遭到拒絕，這表示使用者未輸入 PIN，只輸入 #。  如果使用者設定為標準模式且驗證成功，這表示使用者只輸入 #，這是在標準模式中要執行的正確動作。 |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | 輸入後未按 # | 使用者未傳送任何 DTMF 數字，因為並未輸入 #。  除非輸入 # 表示已完成輸入，否則不會傳送其他數字。 |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | 無電話輸入 - 已逾時 | 已接聽電話，但沒有回應。  這通常表示電話已轉到語音信箱。 |
 | SUCCESS_PIN_EXPIRED | PIN 已到期且未變更 | 使用者的 PIN 已到期且使用者已收到變更提示，但是 PIN 變更未順利完成。 |
 | SUCCESS_USED_CACHE | 已使用快取 | 驗證成功，沒有多重要素驗證呼叫，因為在設定的快取時間範圍內發生相同使用者名稱的先前驗證成功。 |
 | SUCCESS_BYPASSED_AUTH | 已略過驗證 | 使用針對使用者起始之單次許可的驗證已成功。  如需許可的詳細資訊，請參閱略過的使用者歷程記錄報告。 |
@@ -172,7 +172,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | CONFIG_ISSUE | 無法接通電話 | 已嘗試呼叫，但無法放置或未回答。  這包括忙碌信號、快速忙碌信號（已中斷連線）、三色調（不在服務中的數位）、響鈴一段時間等。 |
 | FAILED_INVALID_PHONENUMBER | 電話號碼格式無效 | 電話號碼中有無效的格式。  電話號碼必須是數位，而且國家/地區代碼必須是10位數 + 1 （美國 & 加拿大）。 |
 | FAILED_USER_HUNGUP_ON_US | 使用者已掛斷電話 | 使用者已接聽電，但隨後未按下任何按鍵即掛斷。 |
-| FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。  只允許數位、逗號、* 和 #。  也可以使用 @ 前置詞。 |
+| FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。  允許的字元僅限數字、逗號、* 及 #。  前面還可以加上 @。 |
 | FAILED_FRAUD_CODE_ENTERED | 已輸入詐騙代碼 | 在導致系統拒絕驗證並封鎖電話號碼的通話期間，使用者已選擇回報詐騙。| 
 | FAILED_SERVER_ERROR | 無法撥打電話 | 多重要素驗證服務無法放置呼叫。 |
 | FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送文字訊息。  驗證遭到拒絕。 |

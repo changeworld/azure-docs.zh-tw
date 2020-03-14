@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 031423d72aecacc1feed692aaa32bcd1ff7efbab
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373091"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282701"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -127,6 +127,10 @@ Azure 資訊安全中心與 Azure 服務整合，以監視及保護您的 Window
 
 此外，我們的全球安全性研究人員小組會持續監視威脅的範圍。 他們會在探索到容器特有的警示和弱點時加以新增。
 
+> [!TIP]
+> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的指示來模擬容器警示。
+
+
 
 
 
@@ -208,6 +212,9 @@ Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常�
 * [如何為 Azure 儲存體啟用先進的威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 儲存體的威脅防護警示清單](alerts-reference.md#alerts-azurestorage)
 
+
+> [!TIP]
+> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬 Azure 儲存體警示。
 
 
 

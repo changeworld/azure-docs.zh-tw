@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705610"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298796"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
 本文提供常見 Azure FarmBeats 問題的解決方案。
 
-如需其他說明，請聯絡我們 farmbeatssupport@microsoft.com。 請務必在您的電子郵件中包含部署程式 **.log**檔案。
+如需其他說明，請聯絡我們 farmbeatssupport@microsoft.com。 請確定在您的電子郵件中包含部署程式 **.log**檔案。
 
 若要下載部署器 **.log**檔案，請執行下列動作：
 
@@ -65,11 +65,11 @@ ms.locfileid: "76705610"
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,7 +119,7 @@ ms.locfileid: "76705610"
 2. 刪除特定裝置。  
 
     > [!NOTE]
-    > 如果感應器與裝置相關聯，您就無法將它刪除。 如需有關如何刪除相關聯感應器的詳細資訊，請參閱[從感應器合作夥伴取得感應器資料](get-sensor-data-from-sensor-partner.md)中的「刪除感應器」一節。
+    > 如果感應器與裝置相關聯，您就無法將它刪除。 如需有關如何刪除相關聯感應器的詳細資訊，請參閱[從感應器合作夥伴取得感應器資料](get-sensor-data-from-sensor-partner.md)中的**刪除感應器**一節。
 
 
 ## <a name="issues-with-jobs"></a>作業的問題
@@ -138,7 +138,7 @@ ms.locfileid: "76705610"
 
 **訊息**：「找不到相符的使用者」。
 
-**更正動作**：檢查您嘗試新增角色指派的電子郵件識別碼。 電子郵件識別碼必須完全符合在 Active Directory 中為該使用者註冊的識別碼。 若錯誤持續發生，請將錯誤訊息新增至 FarmBeats 論壇上的文章，或連絡人 FarmBeatsSupport@microsoft.com。
+**更正動作**：檢查您嘗試新增角色指派的電子郵件識別碼。 電子郵件識別碼必須完全符合識別碼，這會在 Active Directory 中註冊給該使用者。 若錯誤持續發生，請將錯誤訊息新增至 FarmBeats 論壇上的文章，或連絡人 FarmBeatsSupport@microsoft.com。
 
 ### <a name="unable-to-log-in-to-accelerator"></a>無法登入加速器
 
@@ -163,6 +163,7 @@ ms.locfileid: "76705610"
 **問題**： FarmBeats 加速器未顯示最新版本，即使您已升級 FarmBeatsDeployment 也是一樣。
 
 **更正動作**：此錯誤是因為瀏覽器中的服務工作者持續性所造成。 執行下列動作：
+
 1. 關閉所有已開啟快速鍵的瀏覽器索引標籤，然後關閉瀏覽器視窗。
 2. 啟動瀏覽器的新實例，然後重載快速鍵 URI。 此動作會載入新版本的加速器。
 
@@ -175,6 +176,7 @@ ms.locfileid: "76705610"
 矯正**措施：**
 
 執行下列其中一個動作：
+
 - 重新執行安裝程式，以正確的使用者名稱和密碼來升級 Datahub。
 - 重新執行失敗的作業，或在5到7天的日期範圍內執行附屬索引作業，然後查看作業是否成功。
 
@@ -198,6 +200,7 @@ ms.locfileid: "76705610"
 1. 如果任何作業或管線因為正在執行維護而失敗，請在一段時間後重新提交作業。 
 
    如需任何已規劃或非計畫的 Sentinel 維護活動的相關資訊，請移至[Copernicus Open Access Hub 新聞](https://scihub.copernicus.eu/news/)網站。  
+
 2. 重新執行失敗的作業，或在5到7天的日期範圍內執行附屬索引作業，然後查看作業是否成功。
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：已達到最大連接數目
@@ -207,17 +210,19 @@ ms.locfileid: "76705610"
 **意義**：如果作業因為已達到最大連接數目而失敗，則會在另一個軟體部署中使用相同的 Sentinel 帳戶。
 
 **更正動作**：請嘗試下列其中一項：
+
 * 建立新的 Sentinel 帳戶，然後重新執行安裝程式，以使用新的 Sentinel 使用者名稱和密碼來升級 Datahub。  
 * 重新執行失敗的作業，或在5到7天的日期範圍內執行附屬索引作業，然後查看作業是否成功。
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel 伺服器：拒絕的連接 
 
-**作業失敗訊息**：「伺服器拒絕連接于： http://172.30.175.69:8983/solr/dhus 」。 
+**作業失敗訊息**：「伺服器拒絕連接于： http://172.30.175.69:8983/solr/dhus」。 
 
 **更正動作**：如果在 Sentinel 伺服器上進行任何維護活動，就會發生此問題。 
 1. 如果任何作業或管線因為正在執行維護而失敗，請在一段時間後重新提交作業。 
 
    如需任何已規劃或非計畫的 Sentinel 維護活動的相關資訊，請移至[Copernicus Open Access Hub 新聞](https://scihub.copernicus.eu/news/)網站。  
+
 2. 重新執行失敗的作業，或在5到7天的日期範圍內執行附屬索引作業，然後查看作業是否成功。
 
 ## <a name="collect-logs-manually"></a>手動收集記錄檔
@@ -225,6 +230,7 @@ ms.locfileid: "76705610"
 [安裝和部署 Azure 儲存體總管]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>在 Datahub 中收集 Azure Data Factory 作業記錄
+
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在**搜尋**方塊中，搜尋 FarmBeats Datahub 資源群組。
 
@@ -300,11 +306,11 @@ ms.locfileid: "76705610"
 
 ### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory （Azure AD）相關問題
 
-**錯誤訊息**：「無法將必要的設定更新為 Azure AD App d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0：許可權不足，無法完成作業。 請確定已針對 Azure AD App 正確設定上述設定。」
+**錯誤訊息**：「無法將必要的設定更新為 Azure AD App d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0：許可權不足，無法完成作業。 請確定已正確設定 Azure AD App 的上述設定。」
 
 **意義**： Azure AD 應用程式註冊設定未正確完成。  
 
-**更正動作**：向 IT 系統管理員（具有租使用者讀取權限的人員）要求使用我們的[腳本](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts)來建立 Azure AD 應用程式註冊。 此腳本也會自動負責設定步驟。
+**更正動作**：請要求 IT 系統管理員（具有租使用者讀取權限的人員）使用我們的[腳本](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts)來建立 Azure AD 應用程式註冊。 此腳本也會自動負責設定步驟。
 
 **錯誤訊息**：「無法在此租使用者中建立新的 Active Directory 應用程式 '\<應用程式名稱\>'：已有另一個物件具有相同的屬性識別碼 uri 值。」
 

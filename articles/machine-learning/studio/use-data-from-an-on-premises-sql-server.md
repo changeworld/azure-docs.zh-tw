@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169125"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204177"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>使用內部部署 SQL Server 資料庫執行 Azure Machine Learning Studio （傳統）分析
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 使用內部部署資料的企業通常會想要針對他們的機器學習服務工作負載來利用雲端的範圍和靈活度。 但是他們又不想因為將內部部署資料移至雲端而中斷目前的商務程序和工作流程。 Azure Machine Learning Studio （傳統）現在支援從內部部署 SQL Server 資料庫讀取您的資料，然後使用此資料對模型進行定型和評分。 您不再需要手動複製和同步處理雲端與內部部署伺服器之間的資料。 相反地，Azure Machine Learning Studio （傳統）中的匯**入資料**模組現在可以直接從您的內部部署 SQL Server 資料庫讀取，以進行定型和評分作業。
 
@@ -43,7 +45,7 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 * Data Factory 自我裝載整合需要 64 位元的作業系統，以及 .NET Framework 4.6.1 以上。
 * 支援的 Windows 作業系統版本包括 Windows 10、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016。 
 * 建議的 IR 電腦組態為至少 2 GHz、4 核心 CPU、8 GB RAM 和 80GB 磁碟。
-* 如果主機電腦休眠，IR 就不會回應資料要求。 因此，安裝 IR 之前，請先在電腦上設定適當的電源計劃。 如果電腦已設定為休眠，安裝 IR 時會顯示訊息。
+* 如果主機電腦處於休眠狀態，則 IR 不會回應資料要求。 因此，安裝 IR 之前，請先在電腦上設定適當的電源計劃。 如果電腦已設定為休眠，安裝 IR 時會顯示訊息。
 * 由於複製活動會以特定的頻率發生，因此，電腦上的資源使用量 (CPU、記憶體) 也會遵循與尖峰和閒置時間相同的模式。 資源使用率也仰賴要移動的資料量。 如果有多個複製作業正在進行，您將可觀察到資源使用量會在尖峰時段增加。 雖然上述的基本組態在技術上來說即已足夠，但是根據資料移動的特定負載而定，您的組態最好具備比基本組態還要多的資源。
 
 在安裝及使用 Data Factory 自我裝載整合執行階段時，請考量下列事項：
@@ -51,7 +53,7 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 * 一部電腦上只能安裝一個 IR 執行個體。
 * 您可以在多個內部部署資料來源使用單一 IR。
 * 您可以將不同電腦上的多個 IR 連線到同一個內部部署資料來源。
-* 您一次只能為一個工作區設定一個「ir」。 目前，IR 無法在工作區之間共用。
+* 您一次只能為一個工作區設定一個「ir」。 目前，無法在工作區之間共用 IRs。
 * 您可以為單一工作區設定多個 IR。 例如，當您準備好要讓時，您可能會想要使用在開發期間連接到測試資料來源的 IR，以及生產環境 IR。
 * IR 不一定要在與資料來源相同的電腦上。 但是，愈接近資料來源，可縮短閘道連線到資料來源的時間。 建議在不同的電腦上安裝 IR 及裝載內部部署資料來源，這樣閘道和資料來源才不會爭搶資源。
 * 如果您的電腦上已安裝 IR 來提供 Power BI 或 Azure Data Factory 案例，請在另一部電腦上安裝個別的 IR for Azure Machine Learning Studio （傳統）。
@@ -68,7 +70,7 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 在此逐步解說中，您將在 Azure Machine Learning 工作區中設定 Azure Data Factory Integration Runtime、加以設定，然後從內部部署 SQL Server 資料庫讀取資料。
 
 > [!TIP]
-> 開始之前，請先針對 `studio.azureml.net` 停用瀏覽器的快顯封鎖程式。 如果您使用 Google Chrome 瀏覽器，請下載並安裝數個可在 Google Chrome 線上應用程式商店 [Click Once 應用程式擴充功能](https://chrome.google.com/webstore/search/clickonce?_category=extensions)上取得的外掛程式之一。
+> 開始之前，請先停用瀏覽器的快顯封鎖程式，以進行 `studio.azureml.net`。 如果您使用 Google Chrome 瀏覽器，請下載並安裝數個可在 Google Chrome 線上應用程式商店 [Click Once 應用程式擴充功能](https://chrome.google.com/webstore/search/clickonce?_category=extensions)上取得的外掛程式之一。
 >
 > [!NOTE]
 > Azure Data Factory自我裝載整合執行階段原名為資料管理閘道。 逐步教學課程會繼續稱之為閘道。  
@@ -118,7 +120,7 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 這會完成 Azure Machine Learning Studio （傳統）中的閘道設定程式。
 您現在可以開始使用內部部署資料。
 
-您可以針對每個工作區，在 Studio （傳統）中建立及設定多個閘道。 例如，您可能想要有一個可在開發期間連接到測試資料來源的閘道器，以及另一個適用於生產資料來源的閘道器。 Azure Machine Learning Studio （傳統）可讓您根據公司環境，彈性地設定多個閘道。 目前您無法在工作區之間共用一個閘道器，而且單一電腦上只能安裝一個閘道器。 如需詳細資訊，請參閱[利用資料管理閘道在內部部署來源和雲端之間移動資料](../../data-factory/tutorial-hybrid-copy-portal.md)。
+您可以針對每個工作區，在 Studio （傳統）中建立及設定多個閘道。 例如，您可能想要有一個可在開發期間連接到測試資料來源的閘道器，以及另一個適用於生產資料來源的閘道器。 Azure Machine Learning Studio （傳統）可讓您根據公司環境，彈性地設定多個閘道。 目前您無法在工作區之間共用閘道，而且單一電腦只能安裝一個閘道。 如需詳細資訊，請參閱[利用資料管理閘道在內部部署來源和雲端之間移動資料](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步驟 2︰使用閘道器讀取來自內部部署資料來源的資料
 設定閘道之後，您可以將 **匯入資料** 模組新增到會輸入來自內部部署 SQL Server 資料庫之資料的實驗。

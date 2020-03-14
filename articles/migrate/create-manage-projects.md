@@ -4,11 +4,11 @@ description: 在 Azure Migrate 中尋找、建立、管理和刪除專案。
 ms.topic: how-to
 ms.date: 02/17/2020
 ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392737"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269636"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
 

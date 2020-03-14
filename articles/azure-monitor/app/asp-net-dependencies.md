@@ -4,11 +4,11 @@ description: 使用 Application Insights 監視來自內部部署或 Microsoft A
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361837"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276292"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式深入解析中的相依性追蹤 
 

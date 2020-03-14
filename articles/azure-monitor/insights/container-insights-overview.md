@@ -4,11 +4,11 @@ description: 本文說明適用於容器的 Azure 監視器，其會監視 AKS �
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385532"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275226"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>適用於容器的 Azure 監視器概觀
 

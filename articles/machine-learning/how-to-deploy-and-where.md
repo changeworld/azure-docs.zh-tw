@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4bb13080d2539610eb7cbf3a3e29ce3090c49f55
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283637"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "78250959"
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
@@ -673,7 +673,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 | 狀況不良 | 服務已部署，但目前無法連線。  | 否 |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
 | 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
-| 狀況良好 | 服務狀況良好，且端點可供使用。 | 是 |
+| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
 ### <a id="notebookvm"></a>計算實例 web 服務（開發/測試）
 
@@ -1034,7 +1034,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如， 
+建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如： 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`第 1 課：建立 Windows Azure 儲存體物件{2}。 
 
@@ -1155,4 +1155,5 @@ docker kill mycontainer
 * [使用部署為 Web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)
+* [建立模型部署的事件警示和觸發程式](how-to-use-event-grid.md)
 

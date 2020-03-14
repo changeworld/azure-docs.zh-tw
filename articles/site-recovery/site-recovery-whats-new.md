@@ -4,11 +4,11 @@ description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的�
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257429"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 

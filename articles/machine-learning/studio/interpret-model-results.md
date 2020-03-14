@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 2d13385b63802bc0037c3fbe32cd38ed5caaf1c6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218058"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio 中解讀模型結果（傳統）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 本主題說明如何在 Azure Machine Learning Studio （傳統）中將預測結果視覺化並加以解讀。 在您訓練好模型並完成其預測 (「模型評分」) 之後，您必須了解和解譯預測結果。
 
 
@@ -115,7 +117,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 **結果解譯**
 
-左側 16 個資料行代表測試集的特徵值。 類別 "XX" 之名稱為「評分機率」之類的資料行，就像是雙類別案例的「評分機率」資料行。 它們會顯示對應項目落在特定類別的機率。 例如，對於第一個項目，有 0.003571 的機率是 “A”，有 0.000451 的機率是 “B”，依此類推。 最後的資料行 (評分標籤) 與雙類別案例的「評分標籤」相同。 它會選取具有最大評分機率的類別做為對應項目的預測類別。 例如，對於第一個項目，評分標籤為 “F”，因為它的最大機率是 “F” (0.916995)。
+左側 16 個資料行代表測試集的特徵值。 類別 "XX" 之名稱為「評分機率」之類的資料行，就像是雙類別案例的「評分機率」資料行。 它們會顯示對應項目落在特定類別的機率。 例如，對於第一個專案，其為「A」、「0.000451 的機率」為「B」等等，會有0.003571 的機率。 最後的資料行 (評分標籤) 與雙類別案例的「評分標籤」相同。 它會選取具有最大評分機率的類別做為對應項目的預測類別。 例如，針對第一個專案，評分標籤為 "F"，因為它的機率最大為 "F" （0.916995）。
 
 **Web 服務發佈**
 
@@ -129,7 +131,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 圖 9. 字母辨識多類別分類問題的最終評分實驗
 
-發佈及執行 Web 服務並輸入一些輸入特徵值之後，傳回的結果如圖 10 所示。 此手寫字母具有其擷取的 16 個特徵，預測為 “T” 的機率是 0.9715。
+發佈及執行 Web 服務並輸入一些輸入特徵值之後，傳回的結果如圖 10 所示。 這種手寫的字母（其解壓縮的16個功能）會預測為具有0.9715 機率的 "T"。
 
 ![測試解譯評分模組](./media/interpret-model-results/9_1.png)
 
@@ -183,7 +185,7 @@ Azure Machine Learning Studio （傳統）有不同的模組來處理這類分�
 
 圖 15. 鳶尾花叢集問題實驗
 
-叢集與分類的不同之處在於訓練資料集本身沒有實況標籤。 將訓練資料集執行個體群組至不同的叢集。 在訓練處理期間，模型會為項目加上標籤，方法是學習其特徵之間的差異。 之後，定型模型可進一步用來分類未來的項目。 在叢集問題當中，我們感興趣的結果有兩個部分。 第一個部分是為訓練資料集加上標籤，而第二個部分是使用定型模型來分類新的資料集。
+叢集與分類的不同之處在于，訓練資料集本身不會有真的標籤。 將訓練資料集執行個體群組至不同的叢集。 在訓練處理期間，模型會為項目加上標籤，方法是學習其特徵之間的差異。 之後，定型模型可進一步用來分類未來的項目。 在叢集問題當中，我們感興趣的結果有兩個部分。 第一個部分是為訓練資料集加上標籤，而第二個部分是使用定型模型來分類新的資料集。
 
 您可以按一下[定型群集模型][train-clustering-model]的左側輸出埠，然後按一下 [**視覺化**]，來視覺化結果的第一個部分。 視覺化如圖 16 所示。
 

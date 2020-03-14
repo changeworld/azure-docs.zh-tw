@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 03f383bd6e44a55388e0bef6a38c4a1880d6f044
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 29fa294d2f384ae74c1184c6207648907cb99386
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268258"
+ms.locfileid: "79299102"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -392,7 +392,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure Container Registry 工作 | Microsoft.ContainerRegistry/registries | 建立容器映射時，ACR 工作可以存取儲存體帳戶。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | 允許透過 ADF 執行時間存取儲存體帳戶。 |
 | Azure Data Share               | DataShare/accounts           | 允許透過資料共用存取儲存體帳戶。 |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | 讓邏輯應用程式能夠存取儲存體帳戶。 [詳細資訊](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md)。 |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | 讓邏輯應用程式能夠存取儲存體帳戶。 [詳細資訊](/azure/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning 服務 | Microsoft.MachineLearningServices      | 已授權的 Azure Machine Learning 工作區會將實驗輸出、模型和記錄寫入 Blob 儲存體，並讀取資料。 [詳細資訊](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL 資料倉儲       | Microsoft.Sql                          | 允許使用 PolyBase 從特定的 SQL Database 實例匯入和匯出資料。 [詳細資訊](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入 Blob 儲存體。 此功能目前為預覽狀態。 [詳細資訊](/azure/stream-analytics/blob-output-managed-identity)。 |

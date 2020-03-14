@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255557"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367613"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變的儲存體儲存業務關鍵的 blob 資料
 
 Azure Blob 儲存體的固定儲存體可讓使用者以 WORM （一次寫入，多次讀取）狀態儲存業務關鍵資料物件。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。 在保留間隔的持續期間內，可以建立和讀取 blob，但無法修改或刪除。 固定儲存體適用于所有 Azure 區域中的一般用途 v1、一般用途 v2、BlobStorage 和 BlockBlobStorage 帳戶。
 
 如需如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定和清除合法保存或建立以時間為基礎的保留原則的詳細資訊，請參閱[設定和管理 Blob 儲存體的不可變性原則](storage-blob-immutability-policies-manage.md)。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>關於不可變的 Blob 儲存體
 

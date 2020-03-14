@@ -1,19 +1,19 @@
 ---
-title: 適用於 MariaDB 的 Azure 資料庫（預覽） CLI 安裝方法的私人連結
+title: 私用連結-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何從 Azure CLI 設定適用於 MariaDB 的 Azure 資料庫的私人連結
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561794"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371693"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫（預覽）的私用連結
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的私用連結
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure CLI 來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MariaDB 的 Azure 資料庫伺服器。
 

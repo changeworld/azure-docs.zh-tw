@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064337"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245040"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>加入、變更或刪除虛擬網路子網路
 

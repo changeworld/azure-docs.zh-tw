@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187819"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371370"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合與傳遞
 
@@ -60,7 +60,7 @@ ms.locfileid: "77187819"
 
    ![建立您自己的範本](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. 選取 [**載入**檔案]，然後選取 [產生的 Resource Manager] 範本。
+1. 選取 [**載入**檔案]，然後選取 [產生的 Resource Manager] 範本。 這是在步驟1匯出的 .zip 檔案中的**arm_template json**檔案。
 
    ![編輯範本](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "77187819"
 
     參數檔案也必須位於發行分支中。
 
--  在上一節所述的 Azure Resource Manager 部署工作之前，新增[Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)工作：
+1. 在上一節所述的 Azure Resource Manager 部署工作之前，新增[Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)工作：
 
     1.  在 [工作] 索引標籤上，建立新**的工作。** 搜尋**Azure Key Vault**並加以新增。
 
@@ -179,9 +179,9 @@ ms.locfileid: "77187819"
 
     ![新增 Key Vault 工作](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>為 Azure Pipelines 代理程式授與權限
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>為 Azure Pipelines 代理程式授與權限
 
-   如果未設定正確的許可權，Azure Key Vault 工作可能會失敗並出現「拒絕存取」錯誤。 下載版本的記錄檔，並找出包含命令的 ps1 檔案，以授與 Azure Pipelines 代理程式的許可權。 您可以直接執行命令。 或者，您可以從檔案複製主體識別碼，然後在 Azure 入口網站中手動新增存取原則。 `Get` 和 `List` 是所需的最小許可權。
+如果未設定正確的許可權，Azure Key Vault 工作可能會失敗並出現「拒絕存取」錯誤。 下載版本的記錄檔，並找出包含命令的 ps1 檔案，以授與 Azure Pipelines 代理程式的許可權。 您可以直接執行命令。 或者，您可以從檔案複製主體識別碼，然後在 Azure 入口網站中手動新增存取原則。 `Get` 和 `List` 是所需的最小許可權。
 
 ### <a name="update-active-triggers"></a>更新使用中的觸發程序
 
@@ -471,7 +471,10 @@ else {
 * 您會使用自動化的 CI/CD，而您想要在 Resource Manager 部署期間變更某些屬性，但預設不會將屬性參數化。
 * 因為預設 Resource Manager 範本的數目超過允許的最大值（256），所以您的 factory 很大。
 
-在這些情況下，若要覆寫預設參數化範本，請在指定為 data factory git 整合根資料夾的資料夾中，建立名為 arm-template-parameters-definition 的檔案。 您必須使用該正確的檔案名。 Data Factory 從您目前在 Azure Data Factory 入口網站中的任何分支讀取此檔案，而不只是從共同作業分支。 您可以從私人分支建立或編輯該檔案，您可以在 UI 中選取 [**匯出 ARM 範本**] 來測試變更。 接著，您可以將檔案合併到共同作業分支。 如果找不到任何檔案，則會使用預設範本。
+在這些情況下，若要覆寫預設參數化範本，請在指定為 data factory git 整合根資料夾的資料夾中，建立名為**arm-template-parameters-definition**的檔案。 您必須使用該正確的檔案名。 Data Factory 從您目前在 Azure Data Factory 入口網站中的任何分支讀取此檔案，而不只是從共同作業分支。 您可以從私人分支建立或編輯該檔案，您可以在 UI 中選取 [**匯出 ARM 範本**] 來測試變更。 接著，您可以將檔案合併到共同作業分支。 如果找不到任何檔案，則會使用預設範本。
+
+> [!NOTE]
+> 自訂參數化範本不會變更 ARM 範本參數限制256。 它可讓您選擇並減少參數化屬性的數目。
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>自訂參數檔案的語法
 
@@ -657,7 +660,7 @@ else {
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

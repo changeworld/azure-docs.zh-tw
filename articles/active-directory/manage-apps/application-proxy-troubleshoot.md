@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375713"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244221"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>針對應用程式 Proxy 問題和錯誤訊息進行疑難排解
 

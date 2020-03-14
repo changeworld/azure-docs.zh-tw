@@ -1,25 +1,19 @@
 ---
 title: 在 Azure 中建立具有多個 Nic 的 Linux VM
 description: 了解如何使用 Azure CLI 或 Resource Manager 範本，來建立連接多個 NIC 的 Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fed0d14908dff346fa6134a91096c757c6d9fab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383174"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267179"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中建立有多個網路介面卡的 Linux 虛擬機器
 

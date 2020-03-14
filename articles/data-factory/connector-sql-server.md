@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/24/2019
-ms.openlocfilehash: 6b5c5d46003c995ae0e853809e2283e8502615bc
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/12/2020
+ms.openlocfilehash: 50575fdae75addb4bf2bcb4c7222d35b0e19d080
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891958"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281687"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SQL Server 複製資料
 
@@ -49,7 +49,7 @@ ms.locfileid: "75891958"
 >[!NOTE]
 >此連接器目前不支援 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) 。 若要解決此情況，您可以使用[一般 odbc 連接器](connector-odbc.md)和 SQL Server ODBC 驅動程式。 請遵循[此指導](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017)方針與 ODBC 驅動程式下載及連接字串設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "75891958"
 
 以下是針對 SQL Server 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為 **SqlServer**。 | 是 |
 | connectionString |指定使用 SQL 驗證或 Windows 驗證連接到 SQL Server 資料庫所需的**connectionString**資訊。 請參考下列範例。<br/>您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請從連接字串中提取 `password` 設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -147,7 +147,7 @@ ms.locfileid: "75891958"
 
 若要將資料從和複製到 SQL Server 資料庫，支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為 **SqlServerTable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -183,12 +183,13 @@ ms.locfileid: "75891958"
 
 若要從 SQL Server 複製資料，請將複製活動中的來源類型設定為 **SqlSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type屬性必須設定為 **SqlSource**。 | 是 |
 | sqlReaderQuery |使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
 | storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程式參數的名稱和大小寫。 |否 |
+| isolationLevel | 指定 SQL 來源的交易鎖定行為。 允許的值為： **ReadCommitted** （預設值）、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如需詳細資訊，請參閱[此](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)檔。 | 否 |
 
 **注意事項：**
 
@@ -289,7 +290,7 @@ GO
 
 若要將資料複製到 SQL Server，請將複製活動中的接收器類型設定為 **SqlSink**。 複製活動的 [接收] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 type 屬性必須設定為 **SqlSink**。 | 是 |
 | writeBatchSize |要插入 SQL 資料表中*每個批次*的資料列數目。<br/>允許的值為整數的資料列數目。 根據預設，Azure Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。 |否 |
@@ -496,9 +497,9 @@ END
 | BINARY |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |日期時間 |
-| Datetime |日期時間 |
-| datetime2 |日期時間 |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -510,17 +511,17 @@ END
 | ntext |String, Char[] |
 | NUMERIC |Decimal |
 | NVARCHAR |String, Char[] |
-| real |單一 |
+| real |Single |
 | rowversion |Byte[] |
-| smalldatetime |日期時間 |
+| smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |物件 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Int16 |
-| UNIQUEIDENTIFIER |GUID |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | Xml |Xml |

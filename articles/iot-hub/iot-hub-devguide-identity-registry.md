@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363144"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271352"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
 
@@ -63,7 +63,7 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 ## <a name="disable-devices"></a>停用裝置
 
-您可以在身分識別登錄中更新身分識別的 [狀態]  屬性來停用裝置。 您通常會在兩種情況下使用此屬性：
+您可以在身分識別登錄中更新身分識別的 [狀態] 屬性來停用裝置。 您通常會在兩種情況下使用此屬性：
 
 * 在佈建協調程序期間。 如需詳細資訊，請參閱[裝置佈建](iot-hub-devguide-identity-registry.md#device-provisioning)。
 
@@ -79,6 +79,8 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 如需有關匯入和匯出 API 的詳細資訊，請參閱 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource)。 若要深入了解如何執行匯入和匯出作業，請參閱[大量管理 IoT 中樞的裝置身分識別](iot-hub-bulk-identity-mgmt.md)。
 
+裝置身分識別也可以透過服務 API 從 IoT 中樞匯出和匯入，方法是透過[REST API](/rest/api/iothub/service/createimportexportjob)或其中一個 IoT 中樞[服務 sdk](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
+
 ## <a name="device-provisioning"></a>裝置佈建
 
 給定的 IoT 解決方案儲存的裝置資料取決於該解決方案的特定需求。 但是解決方案至少必須儲存裝置身分識別和驗證金鑰。 Azure IoT 中樞包含身分識別登錄，其可以儲存每個裝置的值，例如識別碼、驗證金鑰和狀態碼。 解決方案可以使用其他 Azure 服務 (例如表格儲存體、Blob 儲存體或 Cosmos DB) 來儲存任何其他裝置資料。
@@ -89,13 +91,13 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 IoT 中樞身分識別登錄包含稱為 **connectionState** 的欄位。 請只在進行開發和偵錯時才使用 **connectionState**。 IoT 解決方案不應該在執行階段查詢欄位。 例如，請勿查詢 **connectionState** 欄位從而在傳送雲端到裝置訊息或 SMS 之前先確認裝置是否已連線。 我們建議您訂閱事件方格上的[**裝置中斷連線**事件](iot-hub-event-grid.md#event-types)來取得警示，並監視裝置連線狀態。 使用此[教學課程](iot-hub-how-to-order-connection-state-events.md)可了解如何將 IoT 中樞的「裝置連線」和「裝置中斷連線」事件整合至 IoT 解決方案中。
 
-如果 IoT 解決方案需要知道裝置是否已連線，可實作「活動訊號模式」  。
+如果 IoT 解決方案需要知道裝置是否已連線，可實作「活動訊號模式」。
 在活動訊號模式中，裝置每隔固定時間就會至少傳送一次裝置到雲端的訊息 (例如，每小時至少一次)。 因此，即使裝置沒有任何要傳送的資料，它仍會傳送空的裝置到雲端的訊息 (通常具有可識別它是活動訊號的屬性)。 此解決方案會在服務端保有一份對應，其中有針對每個裝置收到的最後一次活動訊號。 此解決方案若未在預期時間內收到裝置傳來的活動訊號訊息，就會假設該裝置發生問題。
 
 更複雜的實作可以包含來自 [Azure 監視器](../azure-monitor/index.yml)和 [Azure 資源健康狀態](../service-health/resource-health-overview.md)的資訊，以便識別嘗試連線或通訊但失敗的裝置，請查看[使用診斷進行監視](iot-hub-monitor-resource-health.md)指南。 當您實作活動訊號模式時，請務必檢查 [IoT 中樞配額與節流](iot-hub-devguide-quotas-throttling.md)。
 
 > [!NOTE]
-> 如果 IoT 解決方案僅使用連線狀態來判斷是否要傳送雲端到裝置訊息，而且訊息未廣播到大量的裝置組合，請考慮使用較簡單的「短暫的到期時間」  模式。 此模式所達到的效果與使用活動訊號模式來維護裝置連線狀態登錄相同，但更有效率。 如果您要求訊息收條，IoT 中樞會通知您哪些裝置能夠收到訊息，哪些裝置不能收到。
+> 如果 IoT 解決方案僅使用連線狀態來判斷是否要傳送雲端到裝置訊息，而且訊息未廣播到大量的裝置組合，請考慮使用較簡單的「短暫的到期時間」模式。 此模式所達到的效果與使用活動訊號模式來維護裝置連線狀態登錄相同，但更有效率。 如果您要求訊息收條，IoT 中樞會通知您哪些裝置能夠收到訊息，哪些裝置不能收到。
 
 ## <a name="device-and-module-lifecycle-notifications"></a>裝置與模組的生命週期通知
 
@@ -153,7 +155,7 @@ moduleId | 模組的識別碼 |
 operationTimestamp | 作業的 ISO8601 時間戳記 |
 iothub-message-schema | moduleLifecycleNotification |
 
-主體：本節為 JSON 格式，以及表示所建立的模組身分識別的對應項。 例如，
+主體：本節為 JSON 格式，它表示所建立模組身分識別的對應項。 例如，
 
 ```json
 {
@@ -188,10 +190,10 @@ iothub-message-schema | moduleLifecycleNotification |
 | etag |必要，唯讀 |依據 [RFC7232](https://tools.ietf.org/html/rfc7232)，此字串代表裝置身分識別的弱式 ETag。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
-| status |必要 |存取指示器。 可以是 [已啟用]  或 [已停用]  。 如果為 [已啟用]  ，則允許連接裝置。 如果為 [已停用]  ，此裝置無法存取任何裝置面向的端點。 |
+| status |required |存取指示器。 可以是 [已啟用] 或 [已停用]。 如果為 [已啟用]，則允許連接裝置。 如果為 [已停用]，此裝置無法存取任何裝置面向的端點。 |
 | statusReason |選用 |長度為 128 個字元的字串，用來儲存裝置身分識別狀態的原因。 允許所有 UTF-8 字元。 |
 | statusUpdateTime |唯讀 |暫時指示器，顯示上次狀態更新的日期和時間。 |
-| connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要**：此欄位應僅供開發/偵錯之用。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
+| connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要事項**：此欄位只應用於開發/偵錯用途。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
 | connectionStateUpdatedTime |唯讀 |暫時指示器，顯示上次更新連線狀態的日期和時間。 |
 | lastActivityTime |唯讀 |暫時指示器，顯示裝置上次連接、接收或傳送訊息的日期和時間。 |
 
@@ -199,7 +201,7 @@ iothub-message-schema | moduleLifecycleNotification |
 > 連線狀態只能代表連線狀態的 IoT 中樞檢視。 根據網路狀況和組態而定，可能會延遲此狀態的更新。
 
 > [!NOTE]
-> 裝置 SDK 目前不支援在 **deviceId** 中使用 `+` 和 `#` 字元。
+> 裝置 SDK 目前不支援在 `+`deviceId`#` 中使用 **和** 字元。
 
 ## <a name="module-identity-properties"></a>模組身分識別屬性
 
@@ -213,15 +215,15 @@ iothub-message-schema | moduleLifecycleNotification |
 | etag |必要，唯讀 |依據 [RFC7232](https://tools.ietf.org/html/rfc7232)，此字串代表裝置身分識別的弱式 ETag。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
-| status |必要 |存取指示器。 可以是 [已啟用]  或 [已停用]  。 如果為 [已啟用]  ，則允許連接裝置。 如果為 [已停用]  ，此裝置無法存取任何裝置面向的端點。 |
+| status |required |存取指示器。 可以是 [已啟用] 或 [已停用]。 如果為 [已啟用]，則允許連接裝置。 如果為 [已停用]，此裝置無法存取任何裝置面向的端點。 |
 | statusReason |選用 |長度為 128 個字元的字串，用來儲存裝置身分識別狀態的原因。 允許所有 UTF-8 字元。 |
 | statusUpdateTime |唯讀 |暫時指示器，顯示上次狀態更新的日期和時間。 |
-| connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要**：此欄位應僅供開發/偵錯之用。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
+| connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要事項**：此欄位只應用於開發/偵錯用途。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
 | connectionStateUpdatedTime |唯讀 |暫時指示器，顯示上次更新連線狀態的日期和時間。 |
 | lastActivityTime |唯讀 |暫時指示器，顯示裝置上次連接、接收或傳送訊息的日期和時間。 |
 
 > [!NOTE]
-> 裝置 SDK 目前不支援在 **deviceId** 和 **moduleId** 中使用 `+` 和 `#` 字元。
+> 裝置 SDK 目前不支援在 `+`deviceId`#` 和 **moduleId** 中使用 **和** 字元。
 
 ## <a name="additional-reference-material"></a>其他參考資料
 

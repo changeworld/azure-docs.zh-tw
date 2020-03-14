@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251657"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>建立 Hive 資料表，並從 Azure Blob 儲存體載入資料
 

@@ -3,16 +3,16 @@ title: 針對 Cosmos DB 使用 Azure Functions 觸發程式時的問題進行疑
 description: 使用 Cosmos DB 的 Azure Functions 觸發程式時，常見的問題、解決方法和診斷步驟
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605084"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365503"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>針對 Cosmos DB 使用 Azure Functions 觸發程式時，診斷並疑難排解問題
 
@@ -52,6 +52,10 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 
 舊版的 Azure Cosmos DB 擴充功能不支援使用在[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)內建立的租用容器。 若要解決此問題，請更新[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)延伸模組，以取得最新版本。
 
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure 函式無法啟動，因為「必須提供此作業的 PartitionKey。」
+
+此錯誤表示您目前使用的分割租用集合具有舊的[延伸](#dependencies)模組相依性。 升級至最新的可用版本。 如果您目前正在 Azure Functions V1 上執行，則必須升級至 Azure Functions V2。
+
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 函式的開頭不能是「租用集合，如果已分割，則必須有等於 id 的分割區索引鍵」。
 
 此錯誤表示您目前的租用容器已分割，但不 `/id`分割區索引鍵路徑。 若要解決此問題，您需要使用 `/id` 做為分割區索引鍵來重新建立租用容器。
@@ -70,6 +74,13 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 3. 您的 Azure Cosmos 容器可能會受到[速率限制](./request-units.md)。
 4. 您可以使用觸發程式中的 `PreferredLocations` 屬性來指定以逗號分隔的 Azure 區域清單，以定義自訂的慣用連接順序。
 
+### <a name="some-changes-are-repeated-in-my-trigger"></a>某些變更會在我的觸發程式中重複
+
+「變更」的概念是對檔的作業。 收到相同檔之事件的最常見案例包括：
+* 帳戶使用最終一致性。 使用最終一致性層級中的變更摘要時，可能會有重複的事件（在後續的變更摘要讀取作業之間）（其中一個讀取作業的最後一個事件會顯示為下一個）。
+* 正在更新檔。 變更摘要可以包含相同檔的多項作業，如果該檔接收更新，它可以挑選多個事件（每個更新各一個）。 有一種簡單的方式可以區別相同檔的不同作業，就是追蹤[每項變更](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)的 `_lsn` 屬性。 如果兩者不相符，則會在相同檔上有不同的變更。
+* 如果您只要 `id`來識別檔，請記住，檔的唯一識別碼是 `id` 和其分割區索引鍵（可以有兩個檔具有相同的 `id` 但不同的分割區索引鍵）。
+
 ### <a name="some-changes-are-missing-in-my-trigger"></a>我的觸發程式中遺漏了某些變更
 
 如果您發現 Azure 函式未挑選 Azure Cosmos 容器中所發生的某些變更，則需要進行初始調查步驟。」
@@ -83,14 +94,14 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 > [!NOTE]
 > 根據預設，Cosmos DB 的 Azure Functions 觸發程式在程式碼執行期間發生未處理的例外狀況時，不會重試一批變更。 這表示變更未抵達目的地的原因是因為您無法處理它們。
 
-如果您發現您的觸發程式完全不會收到某些變更，最常見的情況就是**另一個 Azure 函數正在**執行。 它可能是部署在 Azure 中的另一個 Azure 函式，或是在具有**完全相同**設定（相同的受監視和租用容器）的開發人員電腦上本機執行的 azure function，而此 Azure 函式會竊取您預期 Azure 函式所要處理的變更子集。
+如果您發現您的觸發程式完全沒有收到任何變更，最常見的案例是**另一個 Azure 函數正在**執行。 它可能是部署在 Azure 中的另一個 Azure 函式，或是在具有**完全相同**設定（相同的受監視和租用容器）的開發人員電腦上本機執行的 azure function，而此 Azure 函式會竊取您預期 Azure 函式所要處理的變更子集。
 
-此外，如果您知道您正在執行多少個 Azure 函數應用程式實例，就可以驗證此案例。 如果您檢查租用容器並計算中的租用專案數，則其中 `Owner` 屬性的相異值應該等於您函數應用程式的實例數目。 如果擁有者人數超過已知的 Azure 函式應用程式執行個體，則表示是這些額外的擁有者「竊取」了變更。
+此外，如果您知道您正在執行多少個 Azure 函數應用程式實例，就可以驗證此案例。 如果您檢查租用容器並計算中的租用專案數，則其中 `Owner` 屬性的相異值應該等於您函數應用程式的實例數目。 如果擁有者超過已知的 Azure 函數應用程式實例，則表示這些額外的擁有者是「竊取」變更的擁有者。
 
 解決這種情況的一個簡單方法，就是使用新的/不同的值將 `LeaseCollectionPrefix/leaseCollectionPrefix` 套用至您的函式，或者使用新的租用容器來測試。
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>需要從頭開始重新開機並重新處理我的容器中的所有專案 
-從一開始就重新處理容器中的所有專案：
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>需要從頭開始重新開機和處理我容器中的所有專案 
+若要從一開始重新處理容器中的所有專案：
 1. 如果您的 Azure 函式目前正在執行，請將它停止。 
 1. 刪除租用集合中的檔（或刪除並重新建立租用集合，使其空白）
 1. 將函數中的[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 屬性設定為 true。 
@@ -102,7 +113,7 @@ Azure 函數失敗，並出現錯誤訊息：「來源集合 ' collection-name '
 
 如果您的 Azure Functions 專案（或任何參考的專案）包含與[Azure Functions Cosmos DB 延伸](./troubleshoot-changefeed-functions.md#dependencies)模組所提供不同版本之 Azure Cosmos DB SDK 的手動 NuGet 參考，就會發生此錯誤。
 
-若要解決這種情況，請移除已新增的手動 NuGet 參考，然後讓 Azure Cosmos DB SDK 參考透過 Azure Functions Cosmos DB 延伸模組套件來解析。
+若要解決這種情況，請移除已新增的手動 NuGet 參考，並讓 Azure Cosmos DB SDK 參考透過 Azure Functions Cosmos DB 延伸模組套件來解析。
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>變更偵測變更的 Azure Function 輪詢間隔
 

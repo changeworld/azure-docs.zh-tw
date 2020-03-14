@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030947"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272327"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>將 Azure HDInsight 中的 Apache Hive 查詢最佳化
 
@@ -122,7 +122,7 @@ STORED AS TEXTFILE;
 
 ## <a name="use-the-orcfile-format"></a>使用 ORCFile 格式
 
-Hive 支援不同的檔案格式。 例如，
+Hive 支援不同的檔案格式。 例如：
 
 * **文字**：預設檔案格式且適用於大部分的案例。
 * **Avro**：適用於互通性案例。
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-接著，將資料從暫存資料表插入至 ORC 資料表。 例如，
+接著，將資料從暫存資料表插入至 ORC 資料表。 例如：
 
 ```sql
 INSERT INTO TABLE lineitem_orc

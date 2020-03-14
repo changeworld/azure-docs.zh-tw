@@ -7,11 +7,11 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191437"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270533"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 

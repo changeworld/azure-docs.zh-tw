@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 39e6e9d500a398fd34b8b61727dee8bf11da7430
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462151"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270481"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -135,7 +135,7 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 您可以使用機器學習管線來建立和管理結合多個機器學習階段的工作流程。 例如，管線可能包括資料準備、模型定型、模型部署，以及推斷/計分階段。 每個階段都可以包含多個步驟，這些步驟各自都可以在各種計算目標中自動執行。 
 
-管線步驟是可重複使用的，如果該步驟的輸出未變更，則可以執行，而不需要重新執行後續步驟。 例如，如果資料尚未變更，您可以重新定型模型，而不需要重新執行昂貴的資料準備步驟。 管線也可讓資料科學家在機器學習工作流程的不同區域上共同作業。
+管線步驟是可重複使用的，如果這些步驟的輸出未變更，則可以執行，而不需要重新執行先前的步驟。 例如，如果資料尚未變更，您可以重新定型模型，而不需要重新執行昂貴的資料準備步驟。 管線也可讓資料科學家在機器學習工作流程的不同區域上共同作業。
 
 如需有關機器學習管線與此服務的詳細資訊，請參閱[管線和 Azure Machine Learning](concept-ml-pipelines.md)。
 

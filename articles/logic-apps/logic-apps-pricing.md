@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526139"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270455"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
@@ -64,7 +64,7 @@ ms.locfileid: "77526139"
 
   如需整合帳戶限制的詳細資訊，請參閱[Logic Apps 限制和](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)設定。 您可以在本主題稍後深入瞭解[整合帳戶層及其計價模式](#integration-accounts)。
 
-如果您選擇 Premium ISE SKU，基礎單位會有固定容量。 如果您需要更多的輸送量，您可以在建立期間或之後[新增更多縮放單位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 開發人員 ISE SKU 沒有新增更多縮放單位的功能。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。
+如果您選擇 Premium ISE SKU，基礎單位會有固定容量。 如果您需要更多的輸送量，您可以在建立期間或之後[新增更多縮放單位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 開發人員 ISE SKU 沒有新增更多縮放單位的功能。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。
 
 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 

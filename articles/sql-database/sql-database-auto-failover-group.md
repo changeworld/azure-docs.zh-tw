@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116185"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269831"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 
@@ -25,7 +25,7 @@ ms.locfileid: "77116185"
 > [!NOTE]
 > 在 SQL Database 伺服器上使用單一或集區資料庫時，若您希望在相同或不同區域中有多個次要資料庫，請使用[主動式異地複寫](sql-database-active-geo-replication.md)。 
 
-當您使用自動容錯移轉群組與自動容錯移轉原則時，影響群組中一或多個資料庫的任何中斷，都會導致自動容錯移轉。 這些事件通常無法由內建的自動高可用性作業自行緩和。 容錯移轉觸發程式的範例包括由於數個計算節點上的作業系統核心記憶體流失而導致 SQL 租使用者環或控制環中斷，或因為在 ro 期間發生錯誤的網路纜線而關閉的一或多個租使用者通道所造成的事件。utine 硬體解除委任。  如需詳細資訊，請參閱[SQL Database 高可用性](sql-database-high-availability.md)。
+當您使用自動容錯移轉群組與自動容錯移轉原則時，影響群組中一或多個資料庫的任何中斷，都會導致自動容錯移轉。 這些事件通常無法由內建的自動高可用性作業自行緩和。 容錯移轉觸發程式的範例包括由於數個計算節點上的作業系統核心記憶體流失而導致 SQL 租使用者通道或控制環已關閉的事件，或因一或多個租使用者環中斷而造成的事件，因為在期間發生錯誤的網路纜線例行硬體解除委任。  如需詳細資訊，請參閱[SQL Database 高可用性](sql-database-high-availability.md)。
 
 此外，自動容錯移轉群組還提供在容錯移轉期間仍保持不變的讀寫和唯讀接聽程式端點。 無論您使用手動或自動啟動容錯移轉，容錯移轉都會將群組中所有次要資料庫切換到主要資料庫。 資料庫容錯移轉完成後，DNS 記錄會自動更新以將端點重新導向至新的區域。 針對特定的 RPO 和 RTO 資料，請參閱[商務持續性概觀](sql-database-business-continuity.md)。
 
@@ -390,7 +390,7 @@ ms.locfileid: "77116185"
 
 如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何實作存取角色的詳細資訊，請參閱 [Azure 角色型存取控制](../role-based-access-control/overview.md)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用單一資料庫與彈性集區管理 SQL 資料庫容錯移轉
 
@@ -413,11 +413,11 @@ ms.locfileid: "77116185"
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |觸發容錯移轉群組到次要實例的容錯移轉|
 | [移除-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | 移除容錯移轉群組|
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用單一資料庫與彈性集區管理 SQL 資料庫容錯移轉
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -427,7 +427,7 @@ ms.locfileid: "77116185"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>使用受控實例管理 SQL database 容錯移轉群組
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [az sql 實例-容錯移轉-群組建立](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | 此命令會建立容錯移轉群組，並同時在主要和次要實例上註冊 |
 | [az sql 實例-容錯移轉-群組更新](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | 修改容錯移轉群組的設定|

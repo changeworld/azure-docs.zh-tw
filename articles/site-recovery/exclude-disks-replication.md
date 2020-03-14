@@ -4,11 +4,11 @@ description: 如何使用 Azure Site Recovery 將磁片從複寫排除到 Azure�
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498263"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281843"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>排除磁片免于嚴重損壞修復
 

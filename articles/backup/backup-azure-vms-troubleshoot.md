@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對 Azure 虛擬機器備份和
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: c087814d74032bfc39310690cb31e258fdb1e41e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247926"
+ms.locfileid: "79297385"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "79247926"
 * 確定 VM 代理程式（WA 代理程式）為[最新版本](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)。
 * 請確定已支援 Windows 或 Linux VM 作業系統版本，請參閱[IAAS VM 備份支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)。
 * 確認另一個備份服務並未執行。
-  * 若要確保沒有任何快照集擴充功能問題，請[卸載擴充功能以強制重載，然後再重試備份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
+  * 若要確保沒有任何快照集擴充功能問題，請[卸載擴充功能以強制重載，然後再重試備份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)。
 * 確認 VM 具有網際網路連線能力。
   * 請確定另一個備份服務並未執行。
 * 從 `Services.msc`，確定**Windows Azure 來賓代理程式** **服務正在執行。** 如果**Windows Azure 來賓代理程式**服務遺失，請從[備份復原服務保存庫中的 Azure vm](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)進行安裝。

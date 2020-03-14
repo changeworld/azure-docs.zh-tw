@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/25/2019
-ms.openlocfilehash: c00ed0b0ee24028e0a9e90f3fd3707e4a545ace6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78926013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283494"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集進行定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Azure Machine Learning 資料集提供與 Azure Machine Learning 訓練產品（
 
 若要使用資料集來建立和定型，您需要：
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366210"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296841"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -204,6 +204,12 @@ pipeline_run.wait_for_completion()
 |**追蹤和版本控制**|使用管線 SDK 明確地為您的資料來源、輸入及輸出命名與設定版本，而不需在逐一查看時手動追蹤資料和結果路徑。 您也可以個別管理指令碼和資源，以提升產能。|
 | **模組** | 區隔考慮和隔離變更，可讓軟體以更快的速度以較高的品質來發展。 | 
 |**協作**|管線可讓資料科學家在機器學習設計流程的所有區域之間共同作業，同時能夠同時處理管線步驟。|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>選擇適當的 PipelineStep 子類別
+
+`PythonScriptStep` 是抽象 `PipelineStep`最具彈性的子類別。 其他子類別，例如 `EstimatorStep` 子類別和 `DataTransferStep` 可以使用較少的程式碼來完成特定工作。 例如，只要傳入步驟的名稱、`Estimator`和計算目標，就可以建立 `EstimatorStep`。 或者，您可以覆寫輸入和輸出、管線參數和引數。 如需詳細資訊，請參閱[使用估計工具將模型定型 Azure Machine Learning](how-to-train-ml-models.md)。 
+
+`DataTransferStep` 可讓您輕鬆地在資料來源與接收之間移動資料。 手動執行此動作的程式碼很簡單，但卻是重複的。 相反地，您可以只使用名稱、資料來源的參考、資料接收和計算目標來建立 `DataTransferStep`。 [具有 DataTransferStep 的筆記本 Azure Machine Learning 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)會示範這種彈性。
 
 ## <a name="modules"></a>模組
 

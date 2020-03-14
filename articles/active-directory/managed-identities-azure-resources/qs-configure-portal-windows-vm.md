@@ -16,21 +16,21 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266659"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>使用 Azure 入口網站在虛擬機器上設定 Azure 資源的受控識別
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-適用於 Azure 資源的受控識別會在 Azure Active Directory 中為 Azure 服務提供自動的受控識別。 您可以使用此身分識別來完成任何支援 Azure AD 驗證的服務驗證，不需要任何您程式碼中的認證。 
+Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供自動受控識別。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。 
 
 在本文中，您會了解如何使用 Azure 入口網站，為 Azure 虛擬機器 (VM) 啟用和停用系統與使用者指派的受控識別。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。

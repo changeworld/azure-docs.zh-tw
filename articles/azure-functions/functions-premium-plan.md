@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161562"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276903"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-在此範例中，請將 `<RESOURCE_GROUP>` 取代為您的資源群組，並使用您的方案名稱（在資源群組中是唯一的） `<PLAN_NAME>`。 指定[支援的 `<REGION>`](#regions)。 若要建立支援 Linux 的 Premium 方案，請包含 `--is-linux` 選項。
+在此範例中，請將 `<RESOURCE_GROUP>` 取代為您的資源群組，並使用您的方案名稱（在資源群組中是唯一的） `<PLAN_NAME>`。 指定[支援的 `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 若要建立支援 Linux 的 Premium 方案，請包含 `--is-linux` 選項。
 
 建立計畫之後，您可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)來建立函數應用程式。 在入口網站中，會同時建立方案和應用程式。 如需完整 Azure CLI 腳本的範例，請參閱[在 Premium 方案中建立函數應用程式](scripts/functions-cli-create-premium-plan.md)。
 
@@ -65,7 +65,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="longer-run-duration"></a>較長的執行持續時間
 
-取用方案中的 Azure Functions 僅限10分鐘的時間執行一次。  在 Premium 方案中，回合持續時間預設為30分鐘，以防止執行失控。 不過，您可以[修改 host. json](./functions-host-json.md#functiontimeout)設定，讓 Premium 方案應用程式有60分鐘的時間。
+取用方案中的 Azure Functions 僅限10分鐘的時間執行一次。  在 Premium 方案中，回合持續時間預設為30分鐘，以防止執行失控。 不過，您可以[修改 host. json](./functions-host-json.md#functiontimeout)設定，讓 Premium 方案應用程式不受限制（保證60分鐘）。
 
 ## <a name="plan-and-sku-settings"></a>方案和 SKU 設定
 
@@ -99,44 +99,42 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 例如，JavaScript 函數應用程式受限於 node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請將應用程式設定 `languageWorkers:node:arguments` 加上 `--max-old-space-size=<max memory in MB>`的值。
 
-## <a name="regions"></a>區域
+## <a name="region-max-scale-out"></a>區域最大 Scale Out
 
-以下是每個 OS 目前支援的區域。
+以下是每個區域和 OS 設定中，單一計畫目前支援的最大相應放大值。 若要要求增加，請開啟支援票證。
+
+請參閱這裡的函式完整區域可用性： [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |區域| Windows | Linux |
 |--| -- | -- |
-|澳大利亞中部| ✔<sup>1</sup> | |
-|澳大利亞中部 2| ✔<sup>1</sup> | |
-|澳大利亞東部| ✔ | ✔<sup>1</sup> |
-|澳大利亞東南部 | ✔ | ✔<sup>1</sup> |
-|巴西南部| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|加拿大中部| ✔ | ✔<sup>1</sup> |
-|美國中部| ✔ | ✔<sup>1</sup> |
-|東亞| ✔ | ✔<sup>1</sup> |
-|美國東部 | ✔ | ✔<sup>1</sup> |
-|美國東部 2| ✔ | ✔<sup>1</sup> |
-|法國中部| ✔ | ✔<sup>1</sup> |
-|德國中西部| ✔ | |
-|日本東部| ✔ | ✔<sup>1</sup> |
-|日本西部| ✔ | ✔<sup>1</sup> |
-|南韓中部| ✔ | ✔<sup>1</sup> |
-|美國中北部| ✔ | ✔<sup>1</sup> |
-|北歐| ✔ | ✔<sup>1</sup> |
-|挪威東部| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|美國中南部| ✔ | ✔<sup>1</sup> |
-|印度南部 | ✔ | |
-|東南亞| ✔ | ✔<sup>1</sup> |
-|英國南部| ✔ | ✔<sup>1</sup> |
-|英國西部| ✔ | ✔<sup>1</sup> |
-|西歐| ✔ | ✔<sup>1</sup> |
-|印度西部| ✔ | ✔<sup>1</sup> |
-|美國中西部| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|美國西部| ✔ | ✔<sup>1</sup> |
-|美國西部 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup>最大相應放大限制為20個實例。  
-<sup>2</sup>最大相應放大限制為60個實例。
-
+|澳大利亞中部| 20 | 無法使用 |
+|澳大利亞中部 2| 20 | 無法使用 |
+|澳大利亞東部| 100 | 20 |
+|澳大利亞東南部 | 100 | 20 |
+|巴西南部| 60 | 20 |
+|加拿大中部| 100 | 20 |
+|美國中部| 100 | 20 |
+|東亞| 100 | 20 |
+|美國東部 | 100 | 20 |
+|美國東部 2| 100 | 20 |
+|法國中部| 100 | 20 |
+|德國中西部| 100 | 無法使用 |
+|日本東部| 100 | 20 |
+|日本西部| 100 | 20 |
+|南韓中部| 100 | 20 |
+|美國中北部| 100 | 20 |
+|北歐| 100 | 20 |
+|挪威東部| 20 | 20 |
+|美國中南部| 100 | 20 |
+|印度南部 | 100 | 無法使用 |
+|東南亞| 100 | 20 |
+|英國南部| 100 | 20 |
+|英國西部| 100 | 20 |
+|西歐| 100 | 20 |
+|印度西部| 100 | 20 |
+|美國中西部| 20 | 20 |
+|美國西部| 100 | 20 |
+|美國西部 2| 100 | 20 |
 
 ## <a name="next-steps"></a>後續步驟
 

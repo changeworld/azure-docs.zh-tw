@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943644"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214129"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>適用于 Azure SQL Database 的 Azure 安全性基準
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 此外，您可以將 Azure SQL 診斷遙測串流至 Azure SQL 分析，這是一種雲端解決方案，可大規模監視 Azure SQL 資料庫、彈性集區和受控實例的效能，以及跨多個訂用帳戶。 可協助您收集 Azure SQL Database 效能計量，並以視覺效果方式呈現，而且有內建智慧可以執行效能疑難排解。
 
-
 如何設定 Azure SQL Database 的審核：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-如何使用 Azure 監視器收集平臺記錄和計量：
+如何使用 Azure 監視器收集計量和資源記錄檔：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
@@ -360,7 +359,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 **責任**：不適用
 
-## <a name="identity-and-access-control"></a>識別和存取控制
+## <a name="identity-and-access-control"></a>身分識別與存取控制
 
 *如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 

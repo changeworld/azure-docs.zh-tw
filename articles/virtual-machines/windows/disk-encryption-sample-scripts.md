@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266724"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例腳本 
 

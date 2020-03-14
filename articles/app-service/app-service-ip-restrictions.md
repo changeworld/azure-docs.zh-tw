@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422229"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280348"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制 #
 

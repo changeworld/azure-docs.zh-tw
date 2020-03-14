@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422060"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266191"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中建立 Web 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "75422060"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本教學課程假設您已建立 App Service 環境。 如果尚未建立，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式

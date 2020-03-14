@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260159"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure 資料箱磁碟限制
 

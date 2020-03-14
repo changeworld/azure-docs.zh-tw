@@ -4,12 +4,12 @@ description: 瞭解 Azure container registry 的待用加密，以及如何使�
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096577"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365335"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>使用客戶管理的金鑰進行加密
 
@@ -27,6 +27,7 @@ ms.locfileid: "79096577"
 
 * 您目前只能在建立登錄時啟用此功能。
 * 在登錄上啟用客戶管理的金鑰之後，您就無法將它停用。
+* 以客戶管理的金鑰加密的登錄中，目前不支援[內容信任](container-registry-content-trust.md)。
 * 在以客戶管理的金鑰加密的登錄中，執行目前僅保留24小時[ACR 工作](container-registry-tasks-overview.md)的記錄。 如果您需要保留記錄較長的時間，請參閱[匯出和儲存工作執行記錄](container-registry-tasks-logs.md#alternative-log-storage)的指引。
 
 ## <a name="prerequisites"></a>Prerequisites

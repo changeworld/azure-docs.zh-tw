@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168790"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218175"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定義 Azure Machine Learning Studio 的自訂 R 模組（傳統）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本主題說明如何撰寫和部署自訂的 R Studio （傳統）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組； 並說明如何在 Machine Learning 工作區中建構這些用來定義模組的檔案，以及如何註冊模組以進行部署。 接著，詳細說明用於自訂模組定義中的元素和屬性。 此外，也討論如何使用輔助功能和檔案以及多個輸出。 
 
@@ -200,7 +202,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
     </Ports> 
 
 
-然後在清單中，以 ‘CustomAddRows.R’ 中的正確順序，傳回物件清單：
+並以 ' Customaddrows.zip ' 中的正確順序傳回清單中的物件清單：
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
 放在自訂模組 ZIP 檔案中的所有檔案在執行期間都可供使用。 所有存在的目錄結構皆會保留。 這表示檔案來源在本機和 Azure Machine Learning Studio （傳統）執行中的運作方式相同。 
 
 > [!NOTE]
-> 請注意，所有檔案都會解壓縮到 ‘src’ 目錄中，因此所有路徑應該都有 ‘src/’ 前置詞。
+> 請注意，所有檔案都會解壓縮至 ' src ' 目錄，因此所有路徑都應該有 ' src/' 前置詞。
 > 
 > 
 
-例如，假設您要先移除資料集中包含 NA 的所有資料列，並移除所有重複的資料列，然後才將該資料集輸出到 CustomAddRows 中，而且您已經撰寫一個在 RemoveDupNARows.R 檔案中執行該操作的 R 函數：
+例如，假設您想要從資料集移除具有 NAs 的任何資料列，並在將其輸出到 Customaddrows.zip 之前移除所有重複的資料列，而且您已經撰寫在檔案 Removedupnarows.r 中執行該動作的 R 函數：
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
         return (dataset)
     }
 
-接著，上傳包含 ‘CustomAddRows.R’、‘CustomAddRows.xml’ 和 ‘RemoveDupNARows.R’ 的 zip 檔案，做為自訂 R 模組。
+接下來，將包含 ' Customaddrows.zip '、' Customaddrows.zip ' 和 ' Removedupnarows.r ' 的 zip 檔案上傳為自訂 R 模組。
 
 ## <a name="execution-environment"></a>執行環境
 R 指令碼的執行環境使用與 **Execute R Script** 模組相同的 R 版本，並且可以使用相同的預設封裝。 您也可以將其他 R 封裝納入自訂模組 zip 封裝，以將其新增至自訂模組。 只要在您的 R 指令碼中載入它們，就像在您自己的 R 環境中一樣。 

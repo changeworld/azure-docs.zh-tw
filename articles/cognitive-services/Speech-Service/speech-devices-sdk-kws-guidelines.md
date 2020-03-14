@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 3c3943f7269fa2d0ed25acf2215549635b5f16ac
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1d363f9f6f9cb5b1ea28e6ae15a9cef857304cab
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221251"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370668"
 ---
 # <a name="guidelines-for-creating-an-effective-keyword"></a>建立有效關鍵字的指導方針
 
@@ -25,21 +25,15 @@ ms.locfileid: "79221251"
 
 當您選擇關鍵字時，請考慮下列指導方針：
 
-* 您的關鍵字應該是英文單字或片語。
-
-* 說出喚醒字所需的時間不應超過兩秒。
-
-* 由 4 到 7 個音節所構成的單字，是效果最佳的喚醒字。 例如，「嗨，Computer」是不錯的關鍵字。 只有 "Hey" 則不好。
-
-* 關鍵字應遵循常用的英文發音規則。
-
-* 遵循一般英文發音規則的獨特或甚至虛構的單字可減少誤判的情況。 例如，"computerama" 可能是不錯的關鍵字。
-
-* 請勿選擇一般單字。 例如，"eat" 和 "go" 是一般對話中常說的單字。 它們可能會不小心觸發您的裝置。
-
-* 請避免使用可能有其他發音的關鍵字。 使用者將必須知道讓裝置回應的「正確」發音。 例如，"509" 可能會讀為 "five zero nine"、"five oh nine" 或 "five hundred and nine"。 "R.E.I." 可能會讀為 "r-e-i" 或 "ray"。 "Live" 可能會讀為"/līv/" 或 "/liv/"。
-
-* 請勿使用特殊字元、符號或數字。 例如，「Go #」和「20 + 貓」可能是有問題的關鍵字。 不過，"go sharp" 或 "twenty plus cats" 是可用的喚醒字。 您仍然可以使用品牌中的符號，並使用行銷管道和文件來強調適當的發音。
+> [!div class="checklist"]
+> * 您的關鍵字應該是英文單字或片語。
+> * 說出喚醒字所需的時間不應超過兩秒。
+> * 由 4 到 7 個音節所構成的單字，是效果最佳的喚醒字。 例如，「嗨，Computer」是不錯的關鍵字。 只有 "Hey" 則不好。
+> * 關鍵字應遵循常用的英文發音規則。
+> * 遵循一般英文發音規則的獨特或甚至虛構的單字可減少誤判的情況。 例如，"computerama" 可能是不錯的關鍵字。
+> * 請勿選擇一般單字。 例如，"eat" 和 "go" 是一般對話中常說的單字。 它們可能會不小心觸發您的裝置。
+> * 請避免使用可能有其他發音的關鍵字。 使用者將必須知道讓裝置回應的「正確」發音。 例如，"509" 可能會讀為 "five zero nine"、"five oh nine" 或 "five hundred and nine"。 "R.E.I." 可能會讀為 "r-e-i" 或 "ray"。 "Live" 可能會讀為"/līv/" 或 "/liv/"。
+> * 請勿使用特殊字元、符號或數字。 例如，「Go #」和「20 + 貓」可能是有問題的關鍵字。 不過，"go sharp" 或 "twenty plus cats" 是可用的喚醒字。 您仍然可以使用品牌中的符號，並使用行銷管道和文件來強調適當的發音。
 
 > [!NOTE]
 > 如果您選擇商標單字做為關鍵字，請確定您擁有該商標，或您具有商標擁有者的許可權，才能使用此字組。 Microsoft 對於您選擇的關鍵字可能會發生的任何法律問題概不負任何責任。

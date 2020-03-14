@@ -4,11 +4,11 @@ description: 尋找一些關於 Azure Kubernetes Service （AKS）常見問題�
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.openlocfilehash: 1531308a8d0bd5a09952d8ad8ccd03c92f2f99eb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252944"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 

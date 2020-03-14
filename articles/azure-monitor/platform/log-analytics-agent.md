@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672135"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274602"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式總覽
 Azure Log Analytics 代理程式是針對任何雲端、內部部署機器及[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)監視的虛擬機器，開發的完整管理。 Windows 和 Linux 代理程式會將從不同來源收集的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、 [Azure 資訊安全中心](/azure/security-center/)和[Azure 自動化](../../automation/automation-intro.md)。
@@ -101,7 +101,7 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 從 2018 年 8 月之後所發行的版本開始，我們會對支援模型進行下列變更：  
 
 * 只支援伺服器版本，不支援用戶端版本。  
-* 一律支援新版的 [Azure Linux 背書散發版本](../../virtual-machines/linux/endorsed-distros.md)。  
+* 任何[Azure Linux 背書散發版本](../../virtual-machines/linux/endorsed-distros.md)的焦點支援。 請注意，新的散發版本/版本已背書 Azure Linux 並支援 Log Analytics Linux 代理程式時，可能會有一些延遲。
 * 列出的每個主要版本都支援所有次要版本。
 * 不支援製造商結束支援日期已過的版本。  
 * 不支援新版 AMI。  
@@ -173,10 +173,10 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 proxy 伺
 |屬性| 描述 |
 |--------|-------------|
 |通訊協定 | https |
-|User - 使用者 | 用於驗證 Proxy 的選擇性使用者名稱 |
+|user | 用於驗證 Proxy 的選擇性使用者名稱 |
 |密碼 | 用於驗證 Proxy 的選擇性密碼 |
 |proxyhost | Proxy 伺服器/Log Analytics 閘道的位址或 FQDN |
-|port | Proxy 伺服器/Log Analytics 閘道的選擇性連接埠號碼 |
+|連接埠 | Proxy 伺服器/Log Analytics 閘道的選擇性連接埠號碼 |
 
 例如： `https://user01:password@proxy01.contoso.com:30443`
 

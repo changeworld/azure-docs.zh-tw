@@ -3,12 +3,12 @@ title: Azure VM 備份的支援矩陣
 description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669161"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247900"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -43,8 +43,6 @@ ms.locfileid: "78669161"
 
 **動作** | **支援**
 --- | ---
-建立 Windows Azure VM 時啟用備份 | 支援： <br/><br/> -Windows Server 2019 （Datacenter/Datacenter Core/Standard） <br/><br/> -Windows Server 2016 （Datacenter/Datacenter Core/Standard） <br/><br/> -Windows Server 2012 R2 （Datacenter/Standard） <br/><br/> -Windows Server 2008 R2 （RTM 和 SP1 標準）
-建立 Linux VM 時啟用備份 | 支援：<br/><br/> -Ubuntu Server：18.04、17.10、17.04、16.04 （LTS）、14.04 （LTS）<br/><br/> -Red Hat： RHEL 6.7、6.8、6.9、7.2、7.3、7。4<br/><br/> -SUSE Linux Enterprise Server： 11 SP4、12 SP2、12 SP3、15 <br/><br/> -Debian：8、9<br/><br/> -CentOS：6.9、7。3<br/><br/> -Oracle Linux：6.7、6.8、6.9、7.2、7。3
 備份已關閉/離線 VM 的 VM | 支援。<br/><br/> 僅建立絕對一致快照集，而非應用程式一致快照集。
 遷移至受控磁片之後備份磁片 | 支援。<br/><br/> 備份會繼續運作。 您不需要執行任何動作。
 啟用資源群組鎖定後備份受控磁碟 | 不支援。<br/><br/> Azure 備份無法刪除較舊的還原點，而且當達到還原點的最大限制時，備份將會開始失敗。

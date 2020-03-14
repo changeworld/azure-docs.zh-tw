@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249198"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365810"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見錯誤和疑難排解步驟
 
@@ -30,7 +30,7 @@ ms.locfileid: "78249198"
 
 | **範例錯誤訊息** | **解決方案** |
 | --- |:--- |
-| *此網路上已有使用中的名稱 addscontoso.com。請指定未使用的名稱。* |[虛擬網路中的網域名稱衝突](troubleshoot.md#domain-name-conflict) |
+| *此網路上已有使用中的名稱 aaddscontoso.com。請指定未使用的名稱。* |[虛擬網路中的網域名稱衝突](troubleshoot.md#domain-name-conflict) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。服務對名為「Azure AD Domain Services 同步」的應用程式沒有足夠的許可權。刪除名為「Azure AD Domain Services 同步」的應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[網域服務對 Azure AD Domain Services 同步應用程式沒有足夠的許可權](troubleshoot.md#inadequate-permissions) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。Azure AD 租使用者中的網域服務應用程式沒有啟用網域服務所需的許可權。使用應用程式識別碼 d87dcbc6-a371-462e-88e3-28ad15ec4e64 刪除應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[未在您的 Azure AD 租使用者中正確設定網域服務應用程式](troubleshoot.md#invalid-configuration) |
 | *無法在此 Azure AD 租使用者中啟用網域服務。您的 Azure AD 租使用者中已停用 Microsoft Azure AD 應用程式。啟用應用程式識別碼為 00000002-0000-0000-c000-000000000000 的應用程式，然後嘗試為您的 Azure AD 租使用者啟用網域服務。* |[您的 Azure AD 租用戶已停用 Microsoft Graph 應用程式](troubleshoot.md#microsoft-graph-disabled) |

@@ -4,11 +4,11 @@ description: 本指南會逐步引導您在 Azure 原則中，修復不符合原
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264527"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 

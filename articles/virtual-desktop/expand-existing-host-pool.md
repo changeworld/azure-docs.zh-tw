@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127890"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365214"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
@@ -71,7 +71,7 @@ ms.locfileid: "79127890"
 
 ## <a name="run-the-azure-marketplace-offering"></a>執行 Azure Marketplace 供應專案
 
-遵循[使用 Azure Marketplace 建立主機集](./create-host-pools-azure-marketplace.md)區中的指示，直到[執行 Azure Marketplace 供應專案以布建新的主機集](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)區為止。 當您進入該點時，您必須為每個分葉輸入下列資訊：
+遵循[使用 Azure Marketplace 建立主機集](./create-host-pools-azure-marketplace.md)區中的指示，直到[執行 Azure Marketplace 供應專案以布建新的主機集](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)區為止。 當您進入該點時，您必須在每個索引標籤上輸入下列資訊：
 
 ### <a name="basics"></a>基本概念
 

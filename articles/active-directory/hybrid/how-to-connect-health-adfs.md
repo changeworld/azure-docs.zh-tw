@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261563"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 AD FS
 下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 如需使用 Azure AD Connect Health 監視 Azure AD Connect （同步）的相關資訊，請參閱[使用 Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。

@@ -4,16 +4,16 @@ description: 瞭解如何使用 Azure CLI，透過直接上傳，將 vhd 上傳�
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970333"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365844"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 將 vhd 上傳至 Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "78970333"
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 - 儲存在本機的 vhd 檔案
-- 如果您想要從內部部署環境上傳 vhd：已[針對 Azure 準備](../windows/prepare-for-upload-vhd-image.md)的 vhd，儲存在本機上。
+- 如果您想要從內部部署上傳 vhd：已[針對 Azure 備妥的](../windows/prepare-for-upload-vhd-image.md)固定大小 vhd，並儲存在本機。
 - 或者，如果您想要執行複製動作，則是 Azure 中的受控磁片。
 
 ## <a name="create-an-empty-managed-disk"></a>建立空的受控磁片
@@ -79,8 +79,6 @@ az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --d
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-如果您的 SAS 在上傳期間過期，而且您尚未呼叫 `revoke-access`，您可以使用 `grant-access`再次取得新的 SAS 來繼續上傳。
 
 上傳完成之後，而且您不再需要將任何其他資料寫入磁片，請撤銷 SAS。 撤銷 SAS 將會變更受控磁片的狀態，並可讓您將磁片連結至 VM。
 

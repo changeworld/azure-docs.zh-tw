@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930927"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281726"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Teradata 有利複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -38,14 +38,14 @@ ms.locfileid: "74930927"
 具體而言，這個 Teradata 連接器支援：
 
 - Teradata**版本14.10、15.0、15.10、16.0、16.10 和 16.20**。
-- 使用**Basic**或**Windows**驗證來複製資料。
+- 使用**基本**或**Windows**驗證來複製資料。
 - 從 Teradata 來源進行平行複製。 如需詳細資訊，請參閱[從 Teradata 的平行複製](#parallel-copy-from-teradata)一節。
 
 > [!NOTE]
 >
 > 在自我裝載整合執行時間 v 3.18 發行之後，Azure Data Factory 升級 Teradata 連接器。 仍然支援任何使用舊版 Teradata 連接器的現有工作負載。 不過，對於新的工作負載而言，使用新的就是個不錯的主意。 請注意，新的路徑需要一組不同的連結服務、資料集和複製來源。 如需設定詳細資料，請參閱下列各節。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -63,12 +63,12 @@ ms.locfileid: "74930927"
 
 Teradata 連結服務支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | Type 屬性必須設定為**Teradata**。 | 是 |
+| type | Type 屬性必須設定為**Teradata**。 | 是 |
 | connectionString | 指定連接到 Teradata 實例所需的資訊。 請參考下列範例。<br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 設定。 如需詳細資訊，請參閱[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。 | 是 |
 | username | 指定要連接到 Teradata 的使用者名稱。 適用于使用 Windows 驗證時。 | 否 |
-| password | 針對您為使用者名稱指定的使用者帳戶指定密碼。 您也可以選擇[參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 <br>適用于當您使用 Windows 驗證，或參考 Key Vault 中的密碼進行基本驗證時。 | 否 |
+| 密碼 | 針對您為使用者名稱指定的使用者帳戶指定密碼。 您也可以選擇[參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 <br>適用于當您使用 Windows 驗證，或參考 Key Vault 中的密碼進行基本驗證時。 | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |是 |
 
 您可以在連接字串中，根據您的案例設定更多的連接屬性：
@@ -150,13 +150,13 @@ Teradata 連結服務支援下列屬性：
 
 若要從 Teradata 複製資料，支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 資料集的類型屬性必須設定為 `TeradataTable`。 | 是 |
-| 資料庫 | Teradata 實例的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
+| type | 資料集的類型屬性必須設定為 `TeradataTable`。 | 是 |
+| [資料庫] | Teradata 實例的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 | 資料表 | Teradata 實例中的資料表名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -204,10 +204,10 @@ Teradata 連結服務支援下列屬性：
 
 若要從 Teradata 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 複製活動來源的類型屬性必須設定為 `TeradataSource`。 | 是 |
-| query | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Teradata 平行複製](#parallel-copy-from-teradata)一節。 | 否（如果已指定資料集中的資料表） |
+| type | 複製活動來源的類型屬性必須設定為 `TeradataSource`。 | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Teradata 平行複製](#parallel-copy-from-teradata)一節。 | 否（如果已指定資料集中的資料表） |
 | partitionOptions | 指定用來從 Teradata 載入資料的資料分割選項。 <br>允許值為： **None** （預設值）、 **Hash**和**DynamicRange**。<br>當分割區選項已啟用（也就是不 `None`）時，從 Teradata 並行載入資料的平行處理原則程度，是由複製活動上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不 `None`時套用。 | 否 |
 | partitionColumnName | 針對 [平行複製的範圍分割或雜湊分割]，指定將使用的來源資料行名稱。 如果未指定，則會自動偵測資料表的主要索引，並使用它做為資料分割資料行。 <br>在 `Hash` 或 `DynamicRange`分割區選項時套用。 如果您使用查詢來抓取來源資料，請在 WHERE 子句中 `?AdfHashPartitionCondition` 或 `?AdfRangePartitionColumnName`。 請參閱[Parallel copy From Teradata](#parallel-copy-from-teradata)一節中的範例。 | 否 |
@@ -260,7 +260,7 @@ Data Factory Teradata 連接器會提供內建的資料分割，以平行方式�
 
 建議您啟用具有資料分割的平行複製，特別是當您從 Teradata 載入大量資料時。 以下是適用于不同案例的建議設定。 將資料複製到以檔案為基礎的資料存放區時，會建議寫入資料夾做為多個檔案（僅指定資料夾名稱），在此情況下，效能會比寫入單一檔案更好。
 
-| 案例                                                     | 建議的設定                                           |
+| 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 來自大型資料表的完整載入。                                   | 資料**分割選項**： Hash。 <br><br/>在執行期間，Data Factory 會自動偵測 PK 資料行、對其套用雜湊，並依資料分割複製資料。 |
 | 使用自訂查詢載入大量資料。                 | 資料**分割選項**： Hash。<br>**查詢**： `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`。<br>資料**分割資料行**：指定用於套用雜湊資料分割的資料行。 如果未指定，Data Factory 會自動偵測您在 Teradata 資料集中指定之資料表的 PK 資料行。<br><br>在執行期間，Data Factory 會以雜湊磁碟分割邏輯取代 `?AdfHashPartitionCondition`，並傳送至 Teradata。 |
@@ -306,39 +306,39 @@ Data Factory Teradata 連接器會提供內建的資料分割，以平行方式�
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| 日期 |日期時間 |
+| Date |Datetime |
 | Decimal |Decimal |
-| DOUBLE |DOUBLE |
-| 圖形 |不支援。 在來源查詢中套用明確轉換。 |
+| Double |Double |
+| Graphic |不支援。 在來源查詢中套用明確轉換。 |
 | 整數 |Int32 |
-| 間隔日 |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Day |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔日至小時 |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔日至分鐘 |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔日至秒鐘 |不支援。 在來源查詢中套用明確轉換。 |
-| 間隔小時 |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Hour |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔小時至分鐘 |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔小時至秒鐘 |不支援。 在來源查詢中套用明確轉換。 |
-| 間隔分鐘 |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Minute |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔分鐘至秒鐘 |不支援。 在來源查詢中套用明確轉換。 |
-| 間隔月 |不支援。 在來源查詢中套用明確轉換。 |
-| 間隔第二 |不支援。 在來源查詢中套用明確轉換。 |
-| 間隔年 |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Month |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Second |不支援。 在來源查詢中套用明確轉換。 |
+| Interval Year |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔年至月 |不支援。 在來源查詢中套用明確轉換。 |
-| Number |DOUBLE |
+| Number |Double |
 | 期間（日期） |不支援。 在來源查詢中套用明確轉換。 |
 | 期間（時間） |不支援。 在來源查詢中套用明確轉換。 |
 | 期間（使用時區的時間） |不支援。 在來源查詢中套用明確轉換。 |
 | Period (Timestamp) |不支援。 在來源查詢中套用明確轉換。 |
 | Period （含時區的時間戳記） |不支援。 在來源查詢中套用明確轉換。 |
 | SmallInt |Int16 |
-| 時間 |時間範圍 |
-| 時區的時間 |時間範圍 |
-| Timestamp |日期時間 |
-| 時區的時間戳記 |日期時間 |
+| Time |TimeSpan |
+| 時區的時間 |TimeSpan |
+| 時間戳記 |Datetime |
+| 時區的時間戳記 |Datetime |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |不支援。 在來源查詢中套用明確轉換。 |
-| xml |不支援。 在來源查詢中套用明確轉換。 |
+| Xml |不支援。 在來源查詢中套用明確轉換。 |
 
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
@@ -347,4 +347,4 @@ Data Factory Teradata 連接器會提供內建的資料分割，以平行方式�
 
 
 ## <a name="next-steps"></a>後續步驟
-如需 Data Factory 中複製活動所支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
+如需 Data Factory 中的複製活動所支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

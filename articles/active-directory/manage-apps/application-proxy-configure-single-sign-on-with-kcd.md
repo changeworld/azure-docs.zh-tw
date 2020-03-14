@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669198"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253451"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
 
@@ -43,7 +43,7 @@ ms.locfileid: "78669198"
 7. 「連接器」會使用從 AD 接收的 Kerberos 權杖，將原始要求傳送至應用程式伺服器。
 8. 應用程式會傳送回應至「連接器」，然後再傳回至「應用程式 Proxy」服務，最後再傳回給使用者。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始使用 IWA 應用程式的單一登入之前，請確定您的環境已完成下列設定和組態︰
 
 * 您的應用程式 (例如 SharePoint Web 應用程式) 已設為使用「整合式 Windows 驗證」。 如需詳細資訊，請參閱[啟用支援 Kerberos 驗證](https://technet.microsoft.com/library/dd759186.aspx)，或者若是使用 SharePoint，請參閱[為 SharePoint 2013 中的 Kerberos 驗證做規劃](https://technet.microsoft.com/library/ee806870.aspx)。
@@ -89,10 +89,10 @@ ms.locfileid: "78669198"
    ```
 
 ## <a name="configure-single-sign-on"></a>設定單一登入 
-1. 根據 [使用應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)中的所述指示來發佈您的應用程式。 請務必選取 [Azure Active Directory] 做為 [預先驗證方法]。
+1. 根據 [使用應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)中的所述指示來發佈您的應用程式。 請務必選取 [Azure Active Directory] 作為 [預先驗證方法]。
 2. 應用程式出現於企業應用程式清單後，將其選取並按一下 [單一登入]。
 3. 將單一登入模式設定為 [整合式 Windows 驗證]。  
-4. 輸入應用程式伺服器的 [內部應用程式 SPN]。 在此範例中，已發佈應用程式的 SPN 為 http/www.contoso.com。 此 SPN 必須在連接器可以呈送委派認證的服務清單中。 
+4. 輸入應用程式伺服器的 [內部應用程式 SPN] 。 在此範例中，已發佈應用程式的 SPN 為 http/www.contoso.com。 此 SPN 必須在連接器可以呈送委派認證的服務清單中。 
 5. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]。 如需詳細資訊，請參閱[使用不同的內部部署和雲端身分識別](#working-with-different-on-premises-and-cloud-identities)
 
    ![進階應用程式組態](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  

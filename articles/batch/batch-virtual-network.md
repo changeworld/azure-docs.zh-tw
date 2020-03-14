@@ -10,11 +10,11 @@ ms.date: 04/10/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022761"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247744"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虛擬網路中建立 Azure Batch 集區
 
@@ -24,7 +24,7 @@ ms.locfileid: "77022761"
 
 Azure Batch 集區有設定可讓計算節點彼此通訊，以便 (舉例來說) 執行多執行個體工作。 這些設定不需要個別的 VNet。 但根據預設，節點無法與不屬於 Batch 集區的虛擬機器 (例如，授權伺服器或檔案伺服器) 通訊。 若要讓集區的計算節點能與其他虛擬機器或內部部署網路安全地通訊，您可以在 Azure VNet 的子網路中佈建集區。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **驗證**。 若要使用 Azure VNet，Batch 用戶端 API 必須使用 Azure Active Directory (AD) 驗證。 Azure Batch 對於 Azure AD 的支援記載於[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)中。 
 

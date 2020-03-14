@@ -13,11 +13,11 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375868"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244208"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>為非資源庫應用程式設定 SAML 型單一登入
 

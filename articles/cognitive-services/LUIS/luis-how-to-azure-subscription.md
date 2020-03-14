@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225565"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221325"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>使用撰寫和執行時間資源金鑰
 
@@ -58,11 +58,11 @@ ms.locfileid: "74225565"
 
     ![建立語言理解資源](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Name|目的|
+    |名字|目的|
     |--|--|
     |資源名稱| 您選擇的自訂名稱，用來作為撰寫和預測端點查詢 URL 的一部分。|
-    |訂用帳戶名稱| 將收取資源費用的訂用帳戶。|
-    |Resource group| 您選擇或建立的自訂資源組名。 資源群組可讓您將 Azure 資源分組，以在相同區域中進行存取和管理。|
+    |訂閱名稱| 將收取資源費用的訂用帳戶。|
+    |資源群組| 您選擇或建立的自訂資源組名。 資源群組可讓您將 Azure 資源分組，以在相同區域中進行存取和管理。|
     |製作位置|與您的模型相關聯的區域。|
     |製作定價層|定價層會決定每秒和每月的交易上限。|
     |執行階段位置|與已發行之預測端點執行時間相關聯的區域。|
@@ -81,7 +81,7 @@ ms.locfileid: "74225565"
 
 1. 登入 Azure CLI：
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ ms.locfileid: "74225565"
 
 1. 在 `westus` 區功能變數名稱為 `my-resource-group` 的_現有_資源群組中，建立名為 `my-luis-authoring-resource` 的**LUIS 撰寫資源**（類型 `LUIS.Authoring`）。 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. 在 `westus` 區功能變數名稱為 `my-resource-group` 的_現有_資源群組中，建立名為 `my-luis-prediction-resource` 的**LUIS 預測端點資源**（類型 `LUIS`）。 如果您想要比免費層更高的輸送量，請將 `F0` 變更為 `S0`。 深入瞭解[定價層和輸送量](luis-boundaries.md#key-limits)。
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
@@ -106,7 +106,7 @@ ms.locfileid: "74225565"
 
 您可以針對單一應用程式或 LUIS 中的所有應用程式，指派撰寫資源。 下列程式會將所有應用程式指派給單一撰寫資源。
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)。
 1. 在上方導覽列中，選取最右側的 [使用者帳戶]，然後選取 [**設定**]。
 1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [儲存]。 
 
@@ -134,7 +134,7 @@ ms.locfileid: "74225565"
 
     此 POST API 需要下列設定︰
 
-    |標頭|Value|
+    |頁首|值|
     |--|--|
     |`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。| 
     |`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
@@ -145,11 +145,11 @@ ms.locfileid: "74225565"
 
     此 POST API 需要下列設定︰
 
-    |Type|設定|Value|
+    |Type|設定|值|
     |--|--|--|
-    |標頭|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
-    |標頭|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
-    |標頭|`Content-type`|`application/json`|
+    |頁首|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
+    |頁首|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
+    |頁首|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 應用程式識別碼。 
     |body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
@@ -203,7 +203,7 @@ ms.locfileid: "74225565"
 
 您可以設定時間週期和計量類型的計量圖表。 
 
-![自訂計量](./media/luis-usage-tiers/metrics-custom.png)
+![自訂度量](./media/luis-usage-tiers/metrics-custom.png)
 
 ### <a name="total-transactions-threshold-alert"></a>交易總數閾值警示
 如果您想要知道何時達到特定交易閾值 (例如 10,000 筆交易) 時，可以建立警示。 

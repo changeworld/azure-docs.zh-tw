@@ -4,11 +4,11 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367676"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276162"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 

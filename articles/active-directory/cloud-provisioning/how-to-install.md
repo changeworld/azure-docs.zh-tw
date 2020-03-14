@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620942"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263344"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安裝 Azure AD Connect 雲端佈建代理程式
 本檔會逐步引導您完成 Azure Active Directory （Azure AD） Connect 布建代理程式的安裝程式，以及如何在 Azure 入口網站中一開始進行設定。

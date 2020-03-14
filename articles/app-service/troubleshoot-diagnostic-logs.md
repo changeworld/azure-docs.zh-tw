@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280465"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -23,7 +23,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 >
 >
 
-|類型|平台|位置|說明|
+|類型|平台|Location|描述|
 |-|-|-|-|
 | 應用程式記錄檔 | Windows、Linux | App Service 檔案系統和/或 Azure 儲存體 blob | 記錄您的應用程式代碼所產生的訊息。 這些訊息可以由您選擇的 web 架構，或直接使用您語言的標準記錄模式來產生。 每則訊息會指派下列其中一個類別：**重大**、**錯誤**、**警告**、**資訊**、 **Debug**和**Trace**。 當您啟用應用程式記錄時，您可以藉由設定嚴重性層級，來選取您想要記錄的詳細資訊。|
 | Web 服務器記錄| Windows | App Service 檔案系統或 Azure 儲存體 blob| [W3C 擴充記錄檔格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 要求資料。 每個記錄訊息都包含 HTTP 方法、資源 URI、用戶端 IP、用戶端埠、使用者代理程式、回應碼等資料。 |
@@ -59,7 +59,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 | 層級 | 包含的類別 |
 |-|-|
-|**Disabled** | 無 |
+|**Disabled** | None |
 |**錯誤** | 錯誤、嚴重 |
 |**警告** | 警告、錯誤、嚴重|
 |**資訊** | 資訊、警告、錯誤、嚴重|
@@ -163,7 +163,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 對於 Windows 應用程式，ZIP 檔案包含 App Service 檔案系統中*D:\Home\LogFiles*目錄的內容。 其結構如下：
 
-| 記錄類型 | 目錄 | 說明 |
+| 記錄類型 | 目錄 | 描述 |
 |-|-|-|
 | **應用程式記錄檔** |*/LogFiles/Application/* | 包含一個或多個文字檔。 記錄訊息的格式取決於您所使用的記錄提供者。 |
 | **失敗的要求追蹤** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 檔案和 XSL 檔案。 您可以在瀏覽器中查看格式化的 XML 檔案。 |
@@ -182,7 +182,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表顯示支援的記錄類型和描述： 
 
-| 記錄類型 | Windows 支援 | Linux （Docker）支援 | 說明 |
+| 記錄類型 | Windows 支援 | Linux （Docker）支援 | 描述 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 標準輸出和標準錯誤 |
 | AppServiceHTTPLogs | 是 | 是 | Web 伺服器記錄 |

@@ -5,11 +5,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609216"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257689"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>執行從內部部署容錯移轉至 Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "75609216"
 
 **容錯移轉之後** | **位置** | **動作**
 --- | --- | ---
-**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用] 新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線存取 Azure VM，請在機器上啟用 RDP，並確定在 [Windows 防火牆] ->  [允許的應用程式和功能] 中已針對 [網域] 和 [私人] 網路允許 RDP。<br/><br/> <br/><br/> 移除任何靜態持續性路由和 WinHTTP proxy。 確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
+**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用] 新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線存取 Azure VM，請在機器上啟用 RDP，並確定在 [Windows 防火牆] ->  [允許的應用程式和功能] 中已針對 [網域] 和 [私人] 網路允許 RDP。<br/><br/> <br/><br/> 移除任何靜態持續性路由和 WinHTTP proxy。 確定作業系統的 SAN 原則已設為 **OnlineAll**。 [詳細資訊](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
 
 
@@ -137,7 +137,7 @@ Site Recovery 會處理磁碟機號的保留。 如果您在 VM 複寫期間排�
     - 保留相同的 IP 位址：您可以在 Azure VM 上使用與配置給內部部署機器相同的 IP 位址。
     - 使用不同的 IP 位址：您可以針對 Azure VM 使用不同的 IP 位址。
     - [深入瞭解](concepts-on-premises-to-azure-networking.md#assign-an-internal-address)如何設定內部 IP 位址。
-- **外部 IP 位址**：您可以在容錯移轉時保留公用 ip 位址。 在容錯移轉程式中建立的 azure Vm 必須獲指派 azure 區域中可用的 Azure 公用 IP 位址。 您可以手動指派公用 IP 位址，或透過復原方案將程式自動化。 [深入了解](concepts-public-ip-address-with-site-recovery.md)。
+- **外部 IP 位址**：您可以在容錯移轉時保留公用 ip 位址。 在容錯移轉程式中建立的 azure Vm 必須獲指派 azure 區域中可用的 Azure 公用 IP 位址。 您可以手動指派公用 IP 位址，或透過復原方案將程式自動化。 [詳細資訊](concepts-public-ip-address-with-site-recovery.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

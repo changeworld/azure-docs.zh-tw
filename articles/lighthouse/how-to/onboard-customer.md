@@ -1,14 +1,14 @@
 ---
 title: 讓客戶在 Azure 委派的資源管理中上線
 description: 了解如何讓客戶在 Azure 委派的資源管理中上線，讓其資源可透過您自己的租用戶來管理。
-ms.date: 01/20/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7cf0ff1d64603215a9607f5a25ebc4077f9fa9da
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649784"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270676"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>讓客戶在 Azure 委派的資源管理中上線
 
@@ -22,9 +22,6 @@ ms.locfileid: "77649784"
 > 當客戶購買您發佈至 Azure Marketplace 的受控服務供應項目 (公用或私人) 時，系統也可讓他們上線。 如需詳細資訊，請參閱[將受控服務供應項目發佈到 Azure Marketplace](publish-managed-services-offers.md)。 您也可以使用此處所述的上執行緒序，以及發行至 Azure Marketplace 的供應專案。
 
 上線程序需要您在服務提供者的租用戶與客戶的租用戶內都採取動作。 此文章中描述所有這些步驟。
-
-> [!IMPORTANT]
-> 目前，如果訂用帳戶使用 Azure Databricks，您無法將訂用帳戶 (或資源群組內的訂用帳戶) 上線至 Azure 委派的資源管理。 同樣地，如果訂用帳戶已向 **Microsoft.ManagedServices** 資源提供者註冊要上線，您目前無法為該訂用帳戶建立 Databricks 工作區。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租用戶與訂用帳戶詳細資料
 
@@ -41,7 +38,7 @@ ms.locfileid: "77649784"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-將滑鼠指標暫留在 Azure 入口網站右上角的帳戶名稱上，或選取 [切換目錄] 就能查看您的租用戶識別碼。 若要選取並複製您的租使用者識別碼，請在入口網站中搜尋 "Azure Active Directory"，然後選取 [屬性]，並複製 [目錄識別碼] 欄位中顯示的值。 若要在客戶租使用者中尋找訂用帳戶的識別碼，請搜尋「訂閱」，然後選取適當的訂用帳戶識別碼。
+將滑鼠指標暫留在 Azure 入口網站右上角的帳戶名稱上，或選取 [切換目錄] 就能查看您的租用戶識別碼。 若要選取並複製您的租使用者識別碼，請在入口網站中搜尋 "Azure Active Directory"，然後選取 [屬性]，並複製 [目錄識別碼] 欄位中顯示的值。 若要尋找客戶租用戶中的訂用帳戶識別碼，請搜尋「訂用帳戶」，然後選取適當的訂用帳戶識別碼。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -98,7 +95,7 @@ az account show
 az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
+az ad user show --id "<yourUPN>" --query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
 az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv

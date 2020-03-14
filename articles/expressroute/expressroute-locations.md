@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: cd2562974a689ecbca0d7016d3d970895ea211d9
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 405aa49d83f120ffee5c72a2956f781a317809ff
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081755"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298864"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -78,7 +78,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |支援 |支援 |墨爾本、雪梨 |
 | **[Airtel](https://www.airtel.in/business/#/)** | 支援 | 支援 | 辰內 2、孟買 2 |
-| **[AIS](http://business.ais.co.th/solution/microsoft-azure.html?category=cloud)** | 支援 | 支援 | 曼谷 |
+| **[AIS](https://business.ais.co.th/solution/en/azure-expressroute.html)** | 支援 | 支援 | 曼谷 |
 | **[Aryaka Networks](https://www.aryaka.com/)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、香港特別行政區、聖保羅、西雅圖、矽谷、新加坡、東京、華盛頓特區 |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |支援 |支援 |聖保羅 |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、倫敦、矽谷、新加坡、雪梨、東京、多倫多、華盛頓特區 |

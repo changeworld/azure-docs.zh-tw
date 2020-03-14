@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397223"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265658"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
 
 了解如何使用 Azure Data Lake Storage Gen1 來擷取 Azure 事件中樞所收到的資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -88,11 +88,11 @@ ms.locfileid: "78397223"
 
 1. 從事件中樞命名空間的 [概觀] 窗格，按一下 [+ 事件中樞]。
 
-    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "建立事件中心")
+    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "建立事件中樞")
 
 1. 提供下列值來設定事件中樞，以將資料擷取到 Data Lake Storage Gen1。
 
-    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "建立事件中心")
+    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "建立事件中樞")
 
     a. 提供事件中樞的名稱。
     
@@ -104,7 +104,7 @@ ms.locfileid: "78397223"
 
     e. 將 [擷取檔案名稱格式範例] 保留為預設值。 此選項會掌管在擷取資料夾下建立的資料夾結構。
 
-    f. 按一下 [建立]。
+    f. 按一下 **[建立]** 。
 
 ## <a name="test-the-setup"></a>測試設定
 

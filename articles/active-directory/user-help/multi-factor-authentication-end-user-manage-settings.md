@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: curtand
 ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377493"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253243"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>變更您的雙因素驗證方法和設定
 

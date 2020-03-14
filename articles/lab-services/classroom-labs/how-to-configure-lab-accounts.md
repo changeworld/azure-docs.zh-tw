@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443411"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284300"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 實驗室服務中設定實驗室帳戶 
 在 Azure 實驗室服務中，實驗室帳戶是適用于受控實驗室類型的容器，例如教室實驗室。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 

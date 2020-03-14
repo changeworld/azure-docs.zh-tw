@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123053"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369160"
 ---
 # <a name="translator-text-api-v30"></a>Microsoft Translator Text API v3.0
 
@@ -58,17 +58,74 @@ Microsoft Translator 透過多個資料中心位置來提供服務。 目前位�
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果您要傳遞祕密金鑰，請使用認知服務訂用帳戶。<br/>此值是您 Translator Text API 訂用帳戶的 Azure 祕密金鑰。|
 |授權|如果您要傳遞驗證權杖，請使用認知服務訂用帳戶。<br/>此值是持有人權杖：`Bearer <token>`。|
-|Ocp-Apim-Subscription-Region|*如果您要傳遞多服務秘密金鑰，請搭配使用與認知服務多服務訂用帳戶。*<br/>此值是多服務訂用帳戶的區域。 當不使用多服務訂用帳戶時，這個值是選擇性的。|
+|Ocp-Apim-Subscription-Region|*使用與認知服務多服務和區域翻譯工具資源。*<br/>值是多服務或區域轉譯程式資源的區域。 使用全域轉譯器資源時，這個值是選擇性的。|
 
 ###  <a name="secret-key"></a>祕密金鑰
 第一個選項是使用 `Ocp-Apim-Subscription-Key` 標頭來進行驗證。 將 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 標頭新增至您的要求。
 
-### <a name="authorization-token"></a>授權權杖
+#### <a name="authenticating-with-a-global-resource"></a>使用全域資源進行驗證
+
+當您使用全域轉譯程式[資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)時，您必須包含一個標頭以呼叫 translator API。
+
+|headers|描述|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 此值是您 Translator Text API 訂用帳戶的 Azure 祕密金鑰。|
+
+以下是使用全域翻譯工具資源呼叫 Translator API 的範例要求
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>使用地區資源進行驗證
+
+當您使用[區域翻譯工具資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)時。
+有2個標頭，您必須呼叫 translator API。
+
+|headers|描述|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 此值是您 Translator Text API 訂用帳戶的 Azure 祕密金鑰。|
+|Ocp-Apim-Subscription-Region| 值是翻譯工具資源的區域。 |
+
+以下是使用區域翻譯工具資源呼叫 Translator API 的範例要求
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>使用多服務資源進行驗證
+
+當您使用認知服務的多服務資源時。 這可讓您使用單一祕密金鑰來驗證多個服務的要求。 
+
+當您使用多服務秘密金鑰時，您必須在要求中包含兩個驗證標頭。 有2個標頭，您必須呼叫 translator API。
+
+|headers|描述|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 此值是您的多服務資源的 Azure 秘密金鑰。|
+|Ocp-Apim-Subscription-Region| 此值是多服務資源的區域。 |
+
+多服務文字 API 訂用帳戶需要區域。 您選取的區域是您在使用多服務訂用帳戶金鑰時，可以用於文字翻譯的唯一區域，而且必須是您透過 Azure 入口網站註冊多服務訂用帳戶時所選取的相同區域。
+
+可用的區域為 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`和 `southafricanorth`。
+
+如果您在查詢字串中使用參數 `Subscription-Key` 傳遞祕密金鑰，則必須使用查詢參數 `Subscription-Region` 來指定區域。
+
+### <a name="authenticating-with-an-access-token"></a>使用存取權杖進行驗證
 或者，您可以用秘密金鑰交換存取權杖。 此權杖會隨附在每個要求中作為 `Authorization` 標頭。 若要取得授權權杖，請對下列 URL 提出 `POST` 要求：
 
-| Environment     | 驗證服務 URL                                |
+| 資源類型     | 驗證服務 URL                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| 全域          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| 區域或多服務 | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 以下要求範例示範如何取得具有祕密金鑰的權杖：
 
@@ -88,24 +145,31 @@ Authorization: Bearer <Base64-access_token>
 
 驗證權杖的有效時間為 10 分鐘。 對翻譯工具 Api 進行多次呼叫時，應該重複使用權杖。 不過，如果您的程式在一段很長的時間內對翻譯工具 API 提出要求，則您的程式必須定期要求新的存取權杖（例如，每8分鐘一次）。
 
-### <a name="multi-service-subscription"></a>多服務訂用帳戶
+## <a name="virtual-network-support"></a>虛擬網路支援
 
-最後一個驗證選項是使用認知服務的多服務訂用帳戶。 這可讓您使用單一祕密金鑰來驗證多個服務的要求。 
+Translator 服務現已提供有限區域（`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`Central US EUAP`、`global`）中的虛擬網路功能。 若要啟用虛擬網路，請參閱設定[Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
-當您使用多服務秘密金鑰時，您必須在要求中包含兩個驗證標頭。 第一個標頭傳遞祕密金鑰，第二個標頭指定與訂用帳戶相關聯的區域。 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+一旦您開啟這項功能，就必須使用自訂端點來呼叫 Translator API。 您不能使用全域 translator 端點（"api.cognitive.microsofttranslator.com"），也無法使用存取權杖進行驗證。
 
-多服務文字 API 訂用帳戶需要區域。 您選取的區域是您在使用多服務訂用帳戶金鑰時，可以用於文字翻譯的唯一區域，而且必須是您透過 Azure 入口網站註冊多服務訂用帳戶時所選取的相同區域。
+建立[translator 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)之後，您就可以找到自訂端點。
 
-可用的區域為 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`和 `southafricanorth`。
+|headers|描述|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 此值是您 Translator Text API 訂用帳戶的 Azure 祕密金鑰。|
+|Ocp-Apim-Subscription-Region| 值是翻譯工具資源的區域。 如果資源是 `global`，這個值是選擇性的。|
 
-如果您在查詢字串中使用參數 `Subscription-Key` 傳遞祕密金鑰，則必須使用查詢參數 `Subscription-Region` 來指定區域。
+以下是使用自訂端點呼叫 Translator API 的範例要求
 
-如果您使用持有人權杖，則必須從區域端點取得權杖：`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`。
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
-
-## <a name="errors"></a>錯誤數
+## <a name="errors"></a>Errors
 
 標準錯誤回應是名稱/值組為 `error` 的 JSON 物件。 此值也可以是具有下列屬性的 JSON 物件：
 
@@ -124,7 +188,7 @@ Authorization: Bearer <Base64-access_token>
 ```
 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 常見的錯誤碼包括：
 
-| 代碼 | 描述 |
+| 程式碼 | 描述 |
 |:----|:-----|
 | 400000| 其中一個要求輸入無效。|
 | 400001| "scope" 參數無效。|

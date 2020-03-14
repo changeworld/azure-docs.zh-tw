@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256831"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -118,7 +118,7 @@ ms.locfileid: "77539377"
 #### <a name="installation-settings"></a>安裝設定
 **設定** | **詳細資料**
 --- | ---
-使用方式 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安裝位置 >/Platform "VmWare"/Silent
+使用量 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安裝位置 >/Platform "VmWare"/Silent
 安裝記錄 | 在 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 底下。
 /Role | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 /InstallLocation| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
@@ -128,7 +128,7 @@ ms.locfileid: "77539377"
 #### <a name="registration-settings"></a>註冊設定
 **設定** | **詳細資料**
 --- | ---
-使用方式 | Unifiedagentconfigurator.exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
+使用量 | Unifiedagentconfigurator.exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 代理程式設定記錄 | 在 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 底下。
 /CSEndPoint | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 /PassphraseFilePath |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -157,7 +157,7 @@ ms.locfileid: "77539377"
 #### <a name="installation-settings"></a>安裝設定
 **設定** | **詳細資料**
 --- | ---
-使用方式 | ./install-d \<安裝位置 >-r \<MS/MT >-v VmWare-q
+使用量 | ./install-d \<安裝位置 >-r \<MS/MT >-v VmWare-q
 -r | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 -d | 選擇性參數。 指定行動服務安裝位置：/usr/local/ASR。
 -v | Mandatory。 指定要安裝行動服務的平台。 如果是 VMware VM/實體伺服器，則為 **VMware**；如果是 Azure VM，則為 **Azure**。
@@ -166,7 +166,7 @@ ms.locfileid: "77539377"
 #### <a name="registration-settings"></a>註冊設定
 **設定** | **詳細資料**
 --- | ---
-使用方式 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+使用量 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
 -i | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 -P |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 

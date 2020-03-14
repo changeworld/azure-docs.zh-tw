@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359069"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280309"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 Azure 可讓您在共用實體基礎結構上執行應用程式和虛擬機器（Vm）。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。

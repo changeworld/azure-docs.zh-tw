@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422525"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261719"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>核准或拒絕 Azure AD 權利管理中的存取要求
 
@@ -43,7 +43,7 @@ ms.locfileid: "75422525"
 
 如果您沒有電子郵件，您可以遵循下列步驟來尋找待核准的存取要求。
 
-1. 在[https://myaccess.microsoft.com](https://myaccess.microsoft.com)登入我的存取權入口網站。
+1. 在[https://myaccess.microsoft.com](https://myaccess.microsoft.com)登入我的存取權入口網站。  （針對美國政府，我的存取權入口網站連結中的網域將會 `myaccess.microsoft.us`）。
 
 1. 在左側功能表中，按一下 [**核准**] 以查看待核准的存取要求清單。
 

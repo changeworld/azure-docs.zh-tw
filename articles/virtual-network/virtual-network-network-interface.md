@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543098"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244936"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>建立、變更或刪除網路介面
 
@@ -33,11 +33,11 @@ ms.locfileid: "76543098"
 在完成本文任一節的步驟之前，請先完成下列工作︰
 
 - 如果您還沒有 Azure 帳戶，請註冊[免費試用帳戶](https://azure.microsoft.com/free)。
-- 如果使用入口網站，請開啟 https://portal.azure.com ，並使用您的 Azure 帳戶來登入。
+- 如果使用入口網站，請開啟 https://portal.azure.com，並使用您的 Azure 帳戶來登入。
 - 如果使用 PowerShell 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/powershell) \(英文\) 中執行命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 本教學課程需要 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 - 如果使用命令列介面 (CLI) 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/bash) \(英文\) 中執行命令，或從您的電腦執行 CLI。 本教學課程需要 Azure CLI 2.0.28 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
-您登入或連線到 Azure 的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派[權限](#permissions)中所列適當動作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+您登入或連線到 Azure 的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派[權限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中所列適當動作的[自訂角色](#permissions)。
 
 ## <a name="create-a-network-interface"></a>建立網路介面
 
@@ -54,11 +54,11 @@ ms.locfileid: "76543098"
     |子網路|是|選取您所選虛擬網路內的子網路。 在網路介面建立後，您可以變更為它指派的子網路。|
     |私人 IP 位址指派|是| 在此設定中，您選擇的是 IPv4 位址指派方法。 選擇下列任一指派方法︰**動態︰** 若選取此選項，Azure 會自動指派您所選子網路位址空間中的下一個可用位址。 **靜態︰** 若選取此選項，您必須手動指派所選子網路位址空間中的可用 IP 位址。 直到您變更靜態和動態位址或刪除網路介面，位址才會變更。 您可以在建立網路介面後變更指派方法。 Azure DHCP 伺服器會將此位址指派給虛擬機器作業系統內的網路介面。|
     |網路安全性群組|否| 保持設為 [無]、選取現有的[網路安全性群組](security-overview.md)或[建立網路安全性群組](tutorial-filter-network-traffic.md)。 網路安全性群組可讓您篩選進出網路介面的網路流量。 您可以將網路安全性群組套用至網路介面或不套用。 您也可以將網路安全性群組套用至網路介面的目的地子網路或不套用。 當網路安全性群組套用至網路介面和網路介面的目的地子網路後，有時會發生非預期結果。 若要為套用至網路介面和子網路的網路安全性群組進行疑難排解，請參閱[針對網路安全性群組進行疑難排解](diagnose-network-traffic-filter-problem.md)。|
-    |訂閱|是|選取其中一個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的訂用帳戶。|
+    |訂用帳戶|是|選取其中一個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的訂用帳戶。|
     |私人 IP 位址 (IPv6)|否| 如果您選取此核取方塊，除了指派給網路介面的 IPv4 位址以外，IPv6 位址也會指派給網路介面。 如需使用 IPv6 搭配網路介面的重要資訊，請參閱本文的 IPv6 一節。 您無法選取 IPv6 位址的指派方法。 如果您選擇要指派 IPv6 位址，會使用動態方法指派。
     |IPv6 名稱 (只有在核取 [私人 IP 位址 (IPv6)] 核取方塊時才會顯示) |是，如果核取 [私人 IP 位址 (IPv6)] 核取方塊。| 這個名稱會指派給網路介面的次要 IP 組態。 若要深入了解 IP 設定，請參閱[檢視網路介面設定](#view-network-interface-settings)。|
     |資源群組|是|選取現有的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)，或建立一個群組。 網路介面可以位於與其連結的虛擬機器或虛擬機器所連線的虛擬網路相同或不同的資源群組中。|
-    |位置|是|連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的[地區](https://azure.microsoft.com/regions) (亦稱為區域)。|
+    |Location|是|連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的[地區](https://azure.microsoft.com/regions) (亦稱為區域)。|
 
 當您建立網路介面時，入口網站並未提供將公用 IP 位址指派給網路介面的選項，然而在使用入口網站建立虛擬機器時，入口網站會建立公用 IP 位址，並將它指派給網路介面。 若要了解如何在建立網路介面之後對其新增公用 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。 如果您想要建立具有公用 IP 位址的網路介面，就必須使用 CLI 或 PowerShell 來建立網路介面。
 
@@ -247,11 +247,11 @@ Azure 網路監看員的下一個躍點功能，也可協助您判斷路由是�
 - Azure CLI：[az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell： [AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 若要針對網路介面執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當權限的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 行動                                                                     | 名稱                                                      |
+| 動作                                                                     | 名稱                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | 取得網路介面                                     |
 | Microsoft.Network/networkInterfaces/write                                  | 建立或更新網路介面                        |

@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698521"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263110"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺上的 OAuth 2.0 和 OpenID Connect 通訊協定
 
@@ -59,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受下列這四個不同值的其中一個：
 
-| 值 | 說明 |
+| 值 | 描述 |
 | --- | --- |
 | `common` | 允許使用者使用個人的 Microsoft 帳戶和工作/學校帳戶，從 Azure AD 登入應用程式。 |
 | `organizations` | 僅允許使用者使用工作/學校帳戶，從 Azure AD 登入應用程式。 |

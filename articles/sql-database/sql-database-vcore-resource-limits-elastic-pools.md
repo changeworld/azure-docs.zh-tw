@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 03/03/2020
 ms.openlocfilehash: a6186753c845070ff2a5b3a3f8c6ff0de51e52f0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269575"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255700"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 購買模型的彈性集區資源限制
 

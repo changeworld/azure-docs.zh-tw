@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251969"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和資料庫中佈建輸送量
 
@@ -87,11 +87,11 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>更新資料庫或容器的輸送量
 
-建立 Azure Cosmos 容器或資料庫之後，您可以更新布建的輸送量。 您可以在資料庫或容器上設定的最大布建輸送量沒有任何限制。 布建的最小輸送量視下列因素而定： 
+建立 Azure Cosmos 容器或資料庫之後，您可以更新布建的輸送量。 您可以在資料庫或容器上設定的最大布建輸送量沒有任何限制。 布[建的最小輸送量](concepts-limits.md#storage-and-throughput)視下列因素而定： 
 
 * 您在容器中儲存的資料大小上限
 * 您在容器上布建的最大輸送量
-* 您在具有共用輸送量的資料庫中建立的 Azure Cosmos 容器數目上限。 
+* 您在具有共用輸送量的資料庫中擁有的 Azure Cosmos 容器目前數目。 
 
 您可以使用 Sdk 或查看 Azure 入口網站中的值，以程式設計方式抓取容器或資料庫的最小輸送量。 使用 .NET SDK 時， [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)方法可讓您調整已布建的輸送量值。 使用 JAVA SDK 時， [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples)方法可讓您調整已布建的輸送量值。 
 

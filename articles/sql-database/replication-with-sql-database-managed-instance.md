@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096214"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299068"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL Database 受控執行個體資料庫中設定複寫
 
@@ -42,7 +42,6 @@ ms.locfileid: "79096214"
 
 將受控實例設定為「發行者」和/或「散發者」時，需要：
 
-- 受控執行個體目前未參與異地複寫關聯性。
 - 發行者受控實例與散發者和訂閱者位於相同的虛擬網路上，或已在所有三個實體的虛擬網路之間建立[vNet 對等互連](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 連線會在複寫參與者之間使用 SQL 驗證。
 - 複寫工作目錄的 Azure 儲存體帳戶共用。

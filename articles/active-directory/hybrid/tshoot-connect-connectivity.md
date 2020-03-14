@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376011"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253594"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -43,7 +43,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 
 在這些 URL 當中，下表是能夠連接到 Azure AD 的最基本項目。 這份清單並未包含任何選用的功能，例如密碼回寫或 Azure AD Connect Health。 在此記錄以便協助疑難排解初始設定。
 
-| URL | Port | 描述 |
+| URL | 連接埠 | 描述 |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |用來下載 CRL 清單。 |
 | \*.verisign.com |HTTP/80 |用來下載 CRL 清單。 |
@@ -95,7 +95,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 | 錯誤 | 錯誤文字 | 註解 |
 | --- | --- | --- |
-| 403 |已禁止 |Proxy 尚未對要求的 URL 開放。 重新瀏覽 Proxy 組態，並確定 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) 已經開啟。 |
+| 403 |禁止 |Proxy 尚未對要求的 URL 開放。 重新瀏覽 Proxy 組態，並確定 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) 已經開啟。 |
 | 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果您的 proxy 伺服器需要驗證，請務必在 machine.config 中設定這項設定。此外，請確定您為執行嚮導的使用者和服務帳戶使用網域帳戶。 |
 
 ### <a name="proxy-idle-timeout-setting"></a>Proxy 閒置逾時設定
@@ -113,7 +113,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **連接至 Azure AD**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **設定**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
@@ -140,7 +140,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **初始同步處理**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

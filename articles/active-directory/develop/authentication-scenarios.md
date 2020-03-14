@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194990"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138513"
 ---
 # <a name="authentication-basics"></a>驗證基本概念
 
@@ -50,7 +50,7 @@ Azure AD 也提供 Azure Active Directory B2C，讓組織可以使用像是 Goog
 
 安全性權杖包含使用者和應用程式的相關資訊。 Azure AD 使用包含宣告的 JSON 型權杖（Jwt）。
 
-宣告會提供有關某個實體（例如[用戶端應用程式](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)或[資源擁有](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)者）的判斷提示給另一個實體（例如[資源伺服器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)）。
+宣告會提供有關某個實體（例如[用戶端應用程式](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)或[資源擁有](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)者）到另一個實體（例如[資源伺服器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)）的判斷提示。
 
 宣告是轉送權杖主體相關事實的名稱/值配對。 例如，宣告可能包含[授權伺服器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)所驗證之安全性主體的相關事實。 指定權杖中的宣告取決於許多專案，包括權杖類型、用來驗證主體的認證類型、應用程式設定等等。
 

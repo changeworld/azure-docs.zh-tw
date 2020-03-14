@@ -15,11 +15,11 @@ ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abd6b13dc56f8f948d50e2b3564712ed8f5b1476
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443340"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253386"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>將使用者和群組指派至 Azure Active Directory 中的應用程式
 本文說明如何將使用者和群組指派至 Azure Active Directory (Azure AD) 中的應用程式。 首先，務必將使用者指派至應用程式，這樣管理員才能授予他們執行以下操作的存取權限：

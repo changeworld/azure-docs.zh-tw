@@ -4,11 +4,11 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361843"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276188"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start]可以藉由結合來自 Application Insights sdk 的資料與雲端服務的[Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)資料，來監視[Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、失敗和使用方式。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645152"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243350"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 中虛擬機器磁碟的延展性和效能目標
 
@@ -31,6 +31,6 @@ ms.locfileid: "75645152"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

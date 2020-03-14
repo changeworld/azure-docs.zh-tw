@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272457"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>在 Linux 上使用 HDInsight 的相關資訊
 
 Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端中執行的 Apache Hadoop。 其操作大多與 Linux 安裝上的任何其他 Hadoop 相同。 本文件會指出其中應注意的特殊不同之處。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文件中的許多步驟都使用下列公用程式，可能需要安裝在您的系統上。
 
@@ -28,7 +28,7 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - 用來從遠端管理 Azure 服務。
 * **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-## <a name="users"></a>使用者人數
+## <a name="users"></a>使用者
 
 除非[已加入網域](./domain-joined/hdinsight-security-overview.md)，否則應將 HDInsight 視為**單一使用者**系統。 叢集中會建立一個具有系統管理員層級權限的 SSH 使用者帳戶。 您可以建立其他 SSH 帳戶，但這些帳戶也會擁有叢集的系統管理員權限。
 

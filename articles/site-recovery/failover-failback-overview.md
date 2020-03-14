@@ -4,11 +4,11 @@ description: 深入瞭解 Azure Site Recovery 中的容錯移轉和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539513"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281804"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>關於內部部署嚴重損壞修復容錯移轉/容錯回復
 
@@ -54,7 +54,7 @@ Site Recovery 中的容錯移轉和容錯回復有四個階段：
 
 Site Recovery 提供不同的容錯移轉選項。
 
-**容錯移轉** | **詳細資料** | **復原** | **工作流程**
+**容錯移轉** | **詳細資料** | **復原** | **Workflow**
 --- | --- | --- | ---
 **測試容錯移轉** | 用來執行演練，以驗證您的 BCDR 策略，而不會遺失任何資料或停機時間。| 在 Azure 中建立 VM 的複本，而不影響進行中的複寫或生產環境。 | 1. 在單一 VM 上或在復原方案中的多個 Vm 上執行測試容錯移轉。<br/><br/> 2. 選取要用於測試容錯移轉的復原點。<br/><br/> 3. 選取 azure VM 在容錯移轉後建立時將位於其中的 azure 網路。 網路僅用於測試容錯移轉。<br/><br/> 4. 確認演練是否如預期般運作。 Site Recovery 會在演練期間自動清除在 Azure 中建立的 Vm。
 **規劃的容錯移轉-Hyper-v**  | 通常用於計畫的停機時間。<br/><br/> 來源 Vm 已關閉。 在起始容錯移轉之前，會同步處理最新的資料。 | 計畫的工作流程零資料遺失。 | 1. 規劃停機時間維護視窗並通知使用者。<br/><br/> 2. 讓使用者面向的應用程式離線。<br/><br/> 3. 使用最新的復原點來起始規劃的容錯移轉。 如果電腦未關閉或發生錯誤，則不會執行容錯移轉。<br/><br/> 4. 容錯移轉之後，請檢查複本 Azure VM 在 Azure 中是否作用中。<br/><br/> 5. 認可容錯移轉以完成。 認可動作會刪除所有復原點。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906768"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250188"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
@@ -267,7 +267,13 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. 如果 VM 將是網域的一部分，請檢查下列 Azure AD 原則，以確定先前的設定不會還原。 
+5. 建立 Azure 平臺網路的規則：
+
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. 如果 VM 將是網域的一部分，請檢查下列 Azure AD 原則，以確定先前的設定不會還原。 
 
     | 目標                                 | 原則                                                                                                                                                  | 值                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
@@ -366,7 +372,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
    - 所有人
 
-   - 使用者人數
+   - 使用者
 
 10. 重新開機 VM，以確保 Windows 仍然狀況良好，並可透過 RDP 連線來達到。 此時，您可能會想要在本機 Hyper-v 中建立 VM，以確保 VM 會完全啟動。 然後進行測試，以確定您可以透過 RDP 連線到 VM。
 
@@ -402,7 +408,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | 核心                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| 遠端桌面服務 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+| 遠端桌面服務問題 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |

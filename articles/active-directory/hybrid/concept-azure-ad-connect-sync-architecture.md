@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261615"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步處理：了解架構
 本主題涵蓋 Azure AD Connect 同步處理的基本架構。在許多方面，它類似于其前身的 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。

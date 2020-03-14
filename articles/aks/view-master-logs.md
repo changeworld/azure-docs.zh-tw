@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259379"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 

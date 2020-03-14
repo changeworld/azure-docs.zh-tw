@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282753"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>資料匯入總覽-Azure 認知搜尋
 
@@ -48,7 +48,7 @@ ms.locfileid: "74113789"
 在 .NET SDK 中，將您的資料封裝到 `IndexBatch` 物件中。 `IndexBatch` 封裝 `IndexAction` 物件的集合，其中每一個都包含一個檔，以及一個屬性，告訴 Azure 認知搜尋要對該檔執行什麼動作。 如需程式碼範例，請參閱[ C#快速入門](search-get-started-dotnet.md)。
 
 
-| @search.action | 描述 | 每個文件的必要欄位 | 注意事項 |
+| @search.action | 描述 | 每個文件的必要欄位 | 注意 |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` 動作類似「upsert」，如果是新文件，就會插入該文件，如果文件已經存在，就會更新/取代它。 |索引鍵以及其他任何您想要定義的欄位 |在更新/取代現有文件時，要求中未指定的欄位會將其欄位設定為 `null`。 即使先前已將欄位設定為非 null 值也是一樣。 |
 | `merge` |使用指定的欄位更新現有文件。 如果文件不存在於索引中，合併就會失敗。 |索引鍵以及其他任何您想要定義的欄位 |您在合併中指定的任何欄位將取代文件中現有的欄位。 在 .NET SDK 中，這包括 `DataType.Collection(DataType.String)`類型的欄位。 在 REST API 中，這包括 `Collection(Edm.String)`類型的欄位。 例如，如果文件包含欄位 `tags` 且值為 `["budget"]`，而您使用值 `["economy", "pool"]` 針對 `tags` 執行合併，則 `tags` 欄位最後的值會是 `["economy", "pool"]`。 而不會是 `["budget", "economy", "pool"]`。 |

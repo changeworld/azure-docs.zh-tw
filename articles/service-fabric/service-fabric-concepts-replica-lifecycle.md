@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391392"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258560"
 ---
 # <a name="replicas-and-instances"></a>複本和執行個體 
 本文概述具狀態服務之複本及無狀態服務之執行個體的生命週期。

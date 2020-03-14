@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
 ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372316"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278957"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>將機器上架交由 Azure Automation State Configuration 管理
 

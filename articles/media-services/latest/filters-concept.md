@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388107"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251462"
 ---
-# <a name="filters"></a>篩選器。
+# <a name="filters"></a>篩選器
 
 將您的內容傳遞給客戶（即時串流事件或隨選影片）時，您的用戶端可能需要比預設資產資訊清單檔案中所述更多的彈性。 Azure 媒體服務根據預先定義的篩選器提供[動態資訊清單](filters-dynamic-manifest-overview.md)。 
 
 篩選器是伺服器端規則，可讓您的客戶執行下列動作： 
 
-- 僅播放視訊的某個區段 (而非播放整個視訊)。 例如，
+- 僅播放視訊的某個區段 (而非播放整個視訊)。 例如：
   - 縮小資訊清單以顯示即時事件的子剪輯 (「子剪輯篩選」)，或者
   - 修剪視訊開頭 (「修剪視訊」)。
 - 只傳遞用來播放內容的裝置所支援的指定轉譯和/或指定的語言資料軌 (轉譯篩選)。 
@@ -66,7 +66,7 @@ ms.locfileid: "78388107"
 |**startTimestamp**|適用于隨選影片（VoD）或即時串流。<br/>這是代表資料流程絕對起點的長數值。 系統會將此值四捨五入到最接近的下一個 GOP 起始。 單位是時間刻度，因此150000000的 startTimestamp 會是15秒。<br/>使用 startTimestamp 和 endTimestampp 修剪播放清單（資訊清單）中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用預設的時間刻度，會產生一個播放清單，其中包含介於 VoD 簡報的4秒和10秒之間的片段。 如果片段跨越界限，則整個片段都會包含在資訊清單中。|
 |**timescale**|適用于呈現時間範圍內的所有時間戳記和持續期間，指定為一秒內的增量數目。<br/>預設值為 10000000-10000000 遞增一秒，其中每個增量會是100毫微秒長。<br/>例如，如果您想要將 startTimestamp 設定為30秒，則使用預設的時間刻度時，會使用300000000的值。|
 
-### <a name="tracks"></a>追蹤
+### <a name="tracks"></a>資料軌
 
 您可以根據您的串流追蹤（即時串流或隨選影片）應包含在動態建立的資訊清單中，指定篩選追蹤屬性條件（FilterTrackPropertyConditions）的清單。 篩選器是使用邏輯 **AND** 和 **OR** 運算。
 

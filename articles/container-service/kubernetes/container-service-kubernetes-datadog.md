@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271058"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371166"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(已淘汰) 使用 DataDog 監視 Azure Container Service 叢集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 同時也假設您已經安裝 `az` Azure cli 和 `kubectl` 工具。
 
 您可以藉由執行下列操作來測試是否已安裝 `az` 工具：
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 如果您尚未安裝 `az` 工具，[這裡](https://github.com/azure/azure-cli#installation)有指示。
@@ -34,13 +34,13 @@ $ az --version
 您可以藉由執行下列操作來測試是否已安裝 `kubectl` 工具：
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 如果您尚未安裝 `kubectl`，可以執行︰
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog

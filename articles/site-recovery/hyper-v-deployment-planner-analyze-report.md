@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385117"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257897"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署規劃工具報告
 本文討論 Azure Site Recovery 部署規劃工具針對 Hyper-V 到 Azure 的案例產生的 Excel 報告所包含的工作表。

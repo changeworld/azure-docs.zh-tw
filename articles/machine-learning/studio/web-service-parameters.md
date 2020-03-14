@@ -12,14 +12,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432187"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204404"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure Machine Learning Studio （傳統） web 服務參數
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 藉由發行包含可設定參數模組的試驗，來建立 Azure Machine Learning Web 服務。 在某些情況下，您可能想要在執行 Web 服務時之際，變更模組的行為。 「Web 服務參數」可讓您執行這項工作。 
 
 常見的範例是設定匯[入資料][reader]模組，讓已發佈之 web 服務的使用者可以在存取 web 服務時，指定不同的資料來源。 或設定[匯出資料][writer]模組，以便能夠指定不同的目的地。 一些其他範例包括變更[特徵雜湊][feature-hashing]模組的位數，或針對以[篩選為基礎的特徵選取][filter-based-feature-selection]模組所需的功能數目。 

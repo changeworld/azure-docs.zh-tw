@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936966"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365163"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 匯入及匯出 DNS 區域檔案
 
@@ -55,7 +55,7 @@ Azure CLI 是用來管理 Azure 服務的跨平台命令列工具。 它可從 [
 * `$ORIGIN` 指示詞為選擇性並受到支援。 若未設定 `$ORIGIN` ，則使用的預設值是在命令列上指定的區域名稱 (加上結尾的 ".")。
 * `$INCLUDE` 和 `$GENERATE` 指示詞不受支援。
 * 支援這些記錄類型： A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
-* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但 `host` 參數*除外*。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
+* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但  *參數*除外`host`。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
 * Azure DNS 也會在建立區域時，自動建立位於區域頂點的名稱伺服器記錄集。 只會匯入此記錄集的 TTL。 這些記錄包含 Azure DNS 所提供的名稱伺服器名稱。 所匯入區域檔案中包含的值不會覆寫記錄資料。
 * 在公開預覽期間，Azure DNS 僅支援單一字串 TXT 記錄。 Multistring TXT 記錄會串連起來並截斷為 255 個字元。
 
@@ -173,7 +173,7 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 若要將 **myresourcegroup** 資源群組中的現有 Azure DNS 區域 **contoso.com** 匯出至 **contoso.com.txt** 檔案 (在目前資料夾中)，請執行 `azure network dns zone export`。 此命令會呼叫 Azure DNS 服務，以列舉區域中的記錄集，並將結果匯出至 BIND 相容的區域檔案。
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

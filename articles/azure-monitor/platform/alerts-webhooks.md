@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373397"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248979"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure 監視器中呼叫具有傳統計量警示的 webhook
 

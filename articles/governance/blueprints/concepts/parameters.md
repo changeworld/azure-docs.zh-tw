@@ -4,11 +4,11 @@ description: 瞭解靜態和動態參數，以及如何使用它們來建立安�
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644965"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264709"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
 
@@ -131,7 +131,7 @@ ms.locfileid: "75644965"
   }
   ```
 
-在此範例中，**principalIds** 屬性會利用 `[parameters('owners')]` 的值來使用**擁有者**藍圖層級參數。 使用藍圖層級參數在成品上設定參數，仍然是一個**靜態參數**範例。 藍圖層級參數無法在藍圖指派期間設定，而且在每個指派上都會是相同的值。
+在此範例中，**principalIds** 屬性會利用  **的值來使用**擁有者`[parameters('owners')]`藍圖層級參數。 使用藍圖層級參數在成品上設定參數，仍然是一個**靜態參數**範例。 藍圖層級參數無法在藍圖指派期間設定，而且在每個指派上都會是相同的值。
 
 ##### <a name="artifact-level-parameter"></a>成品層級參數
 

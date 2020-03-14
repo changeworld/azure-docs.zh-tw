@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251722"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 資料總管 Python 程式庫內嵌資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "78379860"
 
 這篇文章也以[Azure 筆記本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)的形式提供。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

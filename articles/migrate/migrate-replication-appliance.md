@@ -4,11 +4,11 @@ description: 瞭解以代理程式為基礎的 VMWare 遷移的 Azure Migrate �
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901566"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245859"
 ---
 # <a name="replication-appliance"></a>複寫設備
 
@@ -41,9 +41,9 @@ ms.locfileid: "76901566"
 PowerCLI | 如果複寫設備在 VMware VM 上執行，則應該安裝[PowerCLI 6.0 版](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1)。
 NIC 類型 | VMXNET3 （如果設備是 VMware VM）
  | **硬體設定**
-CPU 核心數 | 8
+CPU 核心 | 8
 RAM | 16 GB
-磁碟數目 | 三： OS 磁片、進程伺服器快取磁片和保留磁片磁碟機。
+磁碟數量 | 三： OS 磁片、進程伺服器快取磁片和保留磁片磁碟機。
 可用磁碟空間（快取） | 600 GB
 可用磁碟空間 (保留磁碟) | 600 GB
 **軟體設定** |

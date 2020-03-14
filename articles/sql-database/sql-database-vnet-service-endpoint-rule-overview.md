@@ -12,11 +12,11 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972707"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255739"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>對資料庫伺服器使用虛擬網路服務端點和規則
 
@@ -110,7 +110,7 @@ Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶�
 
 PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料倉儲。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 如需透過連線至固定到 VNet 的 Azure 儲存體的 Azure SQL 資料倉儲來啟用 PolyBase 匯入和匯出案例，請按照下列所示的步驟進行：
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 - 使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
 - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
@@ -129,10 +129,10 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料�
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. 以此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)建立**一般用途的 v2 儲存體帳戶**。
+1. 以此**指南**建立[一般用途的 v2 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
 
    > [!NOTE]
-   > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
+   > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 **指南**[升級至 v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
     
 1. 請瀏覽至您儲存體帳戶之下的 [存取控制 \(IAM\)]，然後按一下 [新增角色指派]。 將**儲存體 Blob 資料參與者**RBAC 角色指派給您的 Azure SQL Server 裝載您已向 AZURE ACTIVE DIRECTORY （AAD）註冊的 Azure SQL 資料倉儲，如步驟 # 1 所示。
@@ -224,7 +224,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 
 - [虛擬網路規則：作業][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須已有一個子網路是以 Azure SQL Database 相關的特定虛擬網路服務端點「類型名稱」所標記。
 

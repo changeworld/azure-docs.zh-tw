@@ -12,15 +12,15 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706836"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221473"
 ---
 # <a name="project-url-preview-v7-reference"></a>專案 URL 預覽 v7 參考
 
-URL 預覽支援部落格文章、論壇討論、預覽頁面等 Web 資源的簡短說明。此 URL 可以是任何類型的網際網路資源：網頁、新聞、影像或影片。 查詢必須是帶有 http 或 https 配置的絕對 URL；不支援相對 URL 或其他配置，例如 ftp://。
+URL 預覽支援網路資源摘要、論壇討論、預覽頁面等的簡短描述。此 URL 可以是任何類型的網際網路資源：網頁、新聞、影像或影片。 查詢必須是帶有 http 或 https 配置的絕對 URL；不支援相對 URL 或其他配置，例如 ftp://。
 
 使用 URL 預覽的應用程式會以 URL 將 Web 要求傳送至端點，以在查詢參數中預覽。 要求必須包含 *Ocp-Apim-Subscription-Key* 標頭。
 
@@ -41,7 +41,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 q - 識別欲預覽之 URL 的查詢
 
-下列章節提供關於影響搜尋結果之回應物件、查詢參數和標頭的技術詳細資料。
+以下幾節將提供關於影響搜尋結果的回應物件、查詢參數和標頭的技術詳細資料。
 
 關於要求所應包含之標頭的相關資訊，請參閱[標頭](#headers)。
 
@@ -60,21 +60,21 @@ q - 識別欲預覽之 URL 的查詢
 > 
 > 此外，某些參數目前對 URL 預覽 API 沒有意義，但可能在將來用於改善全球化。
 
-## <a name="headers"></a>標頭
+## <a name="headers"></a>headers
 以下是要求和回應可能包含的標頭。
 
-|標頭|描述|
+|頁首|描述|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|回應標頭。<br /><br /> 要求所使用的市場。 格式為 \<languageCode\>-\<countryCode\>。 例如：en-US。|
 |<a name="traceid" />BingAPIs-TraceId|回應標頭。<br /><br /> 包含要求詳細資料記錄項目的識別碼。 發生錯誤時，會擷取這個識別碼。 如果您無法判定並解決問題，請將此識別碼與其他資訊一併提供給支援小組。|
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|必要的要求標頭。<br /><br /> 您在[認知服務](https://www.microsoft.com/cognitive-services/)中註冊此服務時收到的訂用帳戶金鑰。|
 |<a name="clientid" />X-MSEdge-ClientID|選擇性要求和回應標頭。<br /><br /> Bing 使用此標頭在 Bing API 所有呼叫之間為使用者提供一致的行為。 Bing 經常推出新功能和改善項目，且會以用戶端識別碼作為不同測試版指派流量的金鑰。 如果在多個要求中，未讓使用者使用相同的用戶端識別碼，Bing 可能會將使用者指派至多個衝突的測試版。 若指派給多個衝突的測試版，可能會導致使用者體驗不一致。 例如若第二個要求與第一個要求指派的測試版不同，可能會產生意料外的體驗。 此外，Bing 可以使用用戶端識別碼將 Web 結果調整為該用戶端識別碼的搜尋記錄，為使用者提供更豐富的體驗。<br /><br /> Bing 也會使用此標頭分析用戶端識別碼產生的活動，協助改善結果的順位。 相關性改進功能有助於 Bing API 提供更高品質的結果，進而為 API 取用者提供更高的點擊率。<br /><br />以下是適用於此標頭的基本使用規則。<br /><ul><li>在裝置上使用您應用程式的每個使用者必須具有 Bing 產生的唯一用戶端識別碼。<br /><br/>如果您未在要求中包含此標頭，Bing 會產生一個識別碼，並於 X-MSEdge-ClientID 回應標頭傳回該識別碼。 不應在要求中包含此標頭的唯一時機是使用者初次在該裝置上使用您的應用程式時。<br /><br/></li><li>您的應用程式每次為該裝置上的該名使用者提出 Bing API 請求時，均需使用此用戶端識別碼。<br /><br/></li><li>**注意：** 您必須確保此用戶端識別碼不能連結到任何可辨識身分的使用者帳戶資訊。</li><br/><li>保存用戶端識別碼。 若要在瀏覽器應用程式中保存識別碼，請使用永續性的 HTTP Cookie，以確保在所有工作階段均使用該識別碼。 請勿使用工作階段 Cookie。 若為其他應用程式 (例如行動裝置應用程式)，請使用裝置本身的永久儲存裝置保存識別碼。<br /><br/>使用者下次在該裝置上使用您的應用程式時，會取得您保存的用戶端識別碼。</li></ul><br /> **注意：** Bing 回應不一定會包含此標頭。 如果回應包含此標頭，請擷取用戶端識別碼，並將其用於該裝置上使用者的所有後續 Bing 要求。<br /><br /> **注意：** 如果您包含 X-MSEdge-ClientID，則不得在要求中加入 Cookie。|
-|<a name="clientip" />X-MSEdge-ClientIP|選擇性要求標頭。<br /><br /> 用戶端裝置的 IPv4 或 IPv6 位址。 此 IP 位址可用來探索使用者的位置。 Bing 使用位置資訊來判斷安全搜尋行為。<br /><br /> 請勿混淆位址 (例如，藉由將最後一個八位元變更為 0)。 混淆位址會導致位置不在裝置的實際位置附近，這可能會造成 Bing 產生錯誤結果。|
+|<a name="clientip" />X-MSEdge-ClientIP|選擇性要求標頭。<br /><br /> 用戶端裝置的 IPv4 或 IPv6 位址。 此 IP 位址可用來探索使用者的位置。 Bing 會使用位置資訊來判斷安全搜尋行為。<br /><br /> 請勿混淆位址 (例如，藉由將最後一個八位元變更為 0)。 混淆位址會導致位置不在裝置的實際位置附近，這可能會造成 Bing 產生錯誤結果。|
 
 ## <a name="query-parameters"></a>查詢參數
 要求可能含有下列查詢參數。 請參閱必要參數的必要資料行。 您必須對查詢參數進行 URL 編碼。 查詢必須是帶有 http 或 https 配置的絕對 URL；不支援相對 URL 或其他配置，例如 ftp://
 
-|名稱|值|Type|必要項|
+|名稱|值|類型|必要|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|產生結果的市場。 <br /><br />如需可能的市場值清單，請參閱市場代碼。<br /><br /> **注意：** URL 預覽 API 目前僅支援美國地理位置和英文。<br /><br />|String|是|
 |<a name="query" />q|要預覽的 URL|String|是|
@@ -84,14 +84,14 @@ q - 識別欲預覽之 URL 的查詢
 ## <a name="response-objects"></a>回應物件
 回應結構描述是 [WebPage] 或 ErrorResponse，如同在 Web 搜尋 API 中一樣。 如果要求失敗，則最上層的物件是 [ErrorResponse](#errorresponse) 物件。
 
-|物件|描述|
+|Object|描述|
 |------------|-----------------|
 |[網頁](#webpage)|包含預覽屬性的最上層 JSON 物件。|
 
-### <a name="error"></a>Error
+### <a name="error"></a>錯誤
 定義發生的錯誤。
 
-|元素|描述|Type|
+|元素|描述|類型|
 |-------------|-----------------|----------|
 |<a name="error-code" />code|識別錯誤類別的錯誤碼。 如需可能的代碼清單，請參閱[錯誤碼](#error-codes)。|String|
 |<a name="error-message" />message|錯誤的描述。|String|
@@ -103,26 +103,26 @@ q - 識別欲預覽之 URL 的查詢
 ### <a name="errorresponse"></a>ErrorResponse
 要求失敗時，回應包含的最上層物件。
 
-|名稱|值|Type|
+|名稱|值|類型|
 |----------|-----------|----------|
 |_type|類型提示。|String|
-|<a name="errors" />errors|說明要求失敗原因的錯誤清單。|[錯誤](#error)[]|
+|<a name="errors" />errors|說明要求失敗原因的錯誤清單。|[Error](#error)[]|
 
-### <a name="webpage"></a>網頁
+### <a name="webpage"></a>WebPage
 定義預覽網頁的相關資訊。
 
-|名稱|值|Type|
+|名稱|值|類型|
 |----------|-----------|----------|
-|name|頁面標題，不一定是 HTML 標題|String|
+|NAME|頁面標題，不一定是 HTML 標題|String|
 |url|實際搜耙的 URL (要求可能已遵循重新導向)|String|
 |description|頁面和內容的簡短描述|String|
 |isFamilyFriendly|對於 Web 索引中的項目最準確；即時擷取僅會根據 URL 進行此偵測動作，而非頁面內容|boolean|
 |primaryImageOfPage/contentUrl|要包含在預覽中的代表圖片 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|名稱|值|Type|
+|名稱|值|類型|
 |-------------|-----------------|----------|
-|ID|資源識別碼|String|
+|id|資源識別碼|String|
 
 ## <a name="error-codes"></a>錯誤碼
 
@@ -132,7 +132,7 @@ q - 識別欲預覽之 URL 的查詢
 |-----------------|-----------------|
 |200|成功。|
 |400|缺少其中一個查詢參數，或查詢參數無效。|
-|400|ServerError、subCode ResourceError：無法觸達的要求 URL|
+|400|ServerError、subCode ResourceError：無法觸達要求的 URL|
 |400|ServerError、subCode ResourceError：要求的 URL 未傳回成功代碼 (如果其傳回 HTTP 404 也包括在內)|
 |400|InvalidRequest、subCode Blocked：要求的 URL 可能包含成人內容，且已遭封鎖|
 |401|缺少訂用帳戶金鑰或無效。|
@@ -174,7 +174,7 @@ q - 識別欲預覽之 URL 的查詢
 |程式碼|子代碼|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 狀態碼為 500。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已封鎖|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果您使用的是 HTTP 通訊協定，而不是 HTTPS，Bing 會傳回 HttpNotAllowed，且 HTTP 狀態碼為 410。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blocked|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果您使用的是 HTTP 通訊協定，而不是 HTTPS，Bing 會傳回 HttpNotAllowed，且 HTTP 狀態碼為 410。
 |RateLimitExceeded|沒有子代碼|每當您超過每秒查詢 (QPS) 或每月查詢 (QPM) 配額時，Bing 會傳回 RateLimitExceeded。<br/><br/>如果您超過 QPS，Bing 會傳回 HTTP 狀態碼 429，如果您超過 QPM，Bing 會傳回 403。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|當 Bing 無法驗證呼叫者時，Bing 會傳回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 標頭，或訂用帳戶金鑰無效。<br/><br/>如果您指定一個以上的驗證方法，則會出現備援。<br/><br/>如果錯誤是 InvalidAuthorization，則 HTTP 狀態碼為 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|當呼叫者沒有資源存取權限時，Bing 會傳回 InsufficientAuthorization。 如果訂用帳戶金鑰已停用或已過期，則會發生此情況。 <br/><br/>如果錯誤是 InsufficientAuthorization，則 HTTP 狀態碼為 403。
