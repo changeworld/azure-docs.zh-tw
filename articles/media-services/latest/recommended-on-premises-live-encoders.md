@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268184"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298949"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>建議的內部部署即時串流編碼器
+# <a name="tested-on-premises-live-streaming-encoders"></a>已測試內部部署即時串流編碼器
 
 在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents) (通道) 代表處理即時串流內容的管線。 即時事件會以兩種方式之一收到即時輸入資料流。
 
@@ -24,10 +24,12 @@ ms.locfileid: "78268184"
 
     如果您使用多位元率串流來進行傳遞實況活動，則必須同步處理不同位元速率的影片 GOP 大小和影片片段，以避免播放端發生非預期的行為。
 
-  > [!NOTE]
+  > [!TIP]
   > 使用傳遞方法是進行即時串流的最經濟實惠方式。
  
 * 內部部署即時編碼器會將單一位元速率串流傳送至即時事件，而此活動已啟用為使用下列其中一種格式的媒體服務執行即時編碼： RTMP 或 Smooth Streaming （分散的專案類型）。 即時事件接著會執行即時編碼，將內送單一位元速率資料流編碼成多位元速率 (自適性) 視訊資料流。
+
+本文討論已測試的內部部署即時串流編碼器。 如需如何驗證您的內部部署即時編碼器的指示，請參閱[驗證您的內部部署編碼器](become-on-premises-encoder-partner.md)
 
 如需媒體服務即時編碼的詳細資訊，請參閱[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)。
 
@@ -99,8 +101,8 @@ ms.locfileid: "78268184"
 
 ## <a name="see-also"></a>另請參閱
 
-[成為內部部署編碼器合作夥伴](become-on-premises-encoder-partner.md)
+[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)
+[如何驗證您的編碼器](become-on-premises-encoder-partner.md)

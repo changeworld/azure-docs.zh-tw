@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272054"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中樞的存取權
 
@@ -35,9 +35,9 @@ ms.locfileid: "76546940"
 
 您可以透過下列方式授與[權限](#iot-hub-permissions)：
 
-* **IoT 中樞層級的共用存取原則**。 共用存取原則可以授與上面所列[權限](#iot-hub-permissions)的任意組合。 您可以使用 [IoT 中樞資源 REST API](/rest/api/iothub/iothubresource)，或使用 [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI，以程式設計方式在 [Azure 入口網站](https://portal.azure.com)中定義原則。 新建立的 IoT 中樞有下列預設原則︰
+* **IoT 中樞層級的共用存取原則**。 共用存取原則可以授與上面所列[權限](#iot-hub-permissions)的任意組合。 您可以使用 [IoT 中樞資源 REST API](https://portal.azure.com)，或使用 [az iot hub policy](/rest/api/iothub/iothubresource) CLI，以程式設計方式在 [Azure 入口網站](/cli/azure/iot/hub/policy?view=azure-cli-latest)中定義原則。 新建立的 IoT 中樞有下列預設原則︰
   
-  | 共用的存取原則 | 使用權限 |
+  | 共用的存取原則 | 權限 |
   | -------------------- | ----------- |
   | iothubowner | 所有權限 |
   | 服務 | **ServiceConnect** 權限 |
@@ -134,7 +134,7 @@ IoT 中樞也允許裝置使用 [X.509 憑證](iot-hub-devguide-security.md#supp
 
 以下是預期的值：
 
-| 值 | 說明 |
+| 值 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。 |
 | {resourceURI} |可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 中樞的主機名稱 (無通訊協定)。 例如， `myHub.azure-devices.net/devices/device1` |
@@ -408,7 +408,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 您可以使用 IoT 中樞[身分識別登錄](iot-hub-devguide-identity-registry.md)，利用[權杖](iot-hub-devguide-security.md#security-tokens)來設定每個裝置/模組的安全性認證和存取控制。 如果 IoT 解決方案已經有自訂身分識別登錄及/或驗證配置，請考慮建立「權杖服務」，將這個基礎結構與 IoT 中樞整合。 如此一來，您可以在解決方案中使用其他 IoT 功能。
 
-權杖服務是自訂雲端服務。 建立具備 **DeviceConnect** 或 **ModuleConnect** 權限的 IoT 中樞「共用存取原則」，以建立「裝置範圍」或「模組範圍」權杖。 這些權杖可讓裝置與模組連線到 IoT 中樞。
+權杖服務是自訂雲端服務。 建立具備 *DeviceConnect* 或 **ModuleConnect** 權限的 IoT 中樞「共用存取原則」，以建立「裝置範圍」或「模組範圍」權杖。 這些權杖可讓裝置與模組連線到 IoT 中樞。
 
 ![權杖服務模式的步驟](./media/iot-hub-devguide-security/tokenservice.png)
 

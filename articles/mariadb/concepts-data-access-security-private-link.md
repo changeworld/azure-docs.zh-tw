@@ -1,21 +1,21 @@
 ---
-title: 適用於 MariaDB 的 Azure 資料庫的私人連結（預覽）
+title: 私人連結-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解私用連結在適用於 MariaDB 的 Azure 資料庫中的運作方式。
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/10/2020
+ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982390"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367715"
 ---
-# <a name="private-link-for-azure-database-for-mariadb-preview"></a>適用於 MariaDB 的 Azure 資料庫的私人連結（預覽）
+# <a name="private-link-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的私用連結
 
-私人連結可讓您透過私人端點連接到 Azure 中的各種 PaaS 服務。 Azure 私用連結基本上會將 Azure 服務帶入您的私用虛擬網路（VNet）內。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。
+私人連結可讓您建立適用於 MariaDB 的 Azure 資料庫的私用端點，並將 Azure 服務帶入您的私用虛擬網路（VNet）內。 私人端點會公開私人 IP，您可以用來連接到適用於 MariaDB 的 Azure 資料庫資料庫伺服器，就像 VNet 中的任何其他資源一樣。
 
 如需支援私用連結功能之 PaaS 服務的清單，請參閱私用連結[檔](https://docs.microsoft.com/azure/private-link/index)。 私人端點是特定 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 和子網內的私人 IP 位址。
 
@@ -58,10 +58,7 @@ ms.locfileid: "75982390"
 
 ### <a name="approval-process"></a>核准流程
 
-一旦網路系統管理員建立私用端點（PE），系統管理員就可以管理要適用於 MariaDB 的 Azure 資料庫的私用端點連線（PEC）。
-
-> [!NOTE]
-> 目前，適用於 MariaDB 的 Azure 資料庫只支援私人端點的自動核准。
+一旦網路系統管理員建立私用端點（PE），系統管理員就可以管理要適用於 MariaDB 的 Azure 資料庫的私用端點連線（PEC）。 網路系統管理員和 DBA 之間的責任區隔，對於管理適用於 MariaDB 的 Azure 資料庫連線很有説明。 
 
 * 流覽至 Azure 入口網站中的適用於 MariaDB 的 Azure 資料庫伺服器資源。 
     * 在左窗格中選取 [私人端點連接]
@@ -84,7 +81,7 @@ ms.locfileid: "75982390"
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的私人連結使用案例
 
-用戶端可以從相同的 VNet、相同區域中的對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線來連線到私人端點。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
+用戶端可以從相同的 VNet 連線到私人端點、在相同區域中對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
 
 ![選取私人端點總覽](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
@@ -110,6 +107,19 @@ ms.locfileid: "75982390"
 * 如果您設定公用流量或服務端點，並建立私人端點，則不同類型的連入流量會由對應類型的防火牆規則所授權。
 
 * 如果您未設定任何公用流量或服務端點，並建立私人端點，則適用於 MariaDB 的 Azure 資料庫只能透過私人端點來存取。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私人端點之後，就不會有任何流量可以存取適用於 MariaDB 的 Azure 資料庫。
+
+## <a name="deny-public-access-for-azure-database-for-mariadb"></a>拒絕適用於 MariaDB 的 Azure 資料庫的公用存取
+
+如果您想要完全依賴私人端點來存取其適用於 MariaDB 的 Azure 資料庫，您可以在資料庫伺服器上設定**拒絕公用網路存取**設定，以停用設定所有公用端點（[防火牆規則](concepts-firewall-rules.md)和[VNet 服務端點](concepts-data-access-security-vnet.md)）。 
+
+當此設定設為 *[是]* 時，只允許透過私人端點的連線到您的適用於 MariaDB 的 Azure 資料庫。 當此設定設為 [*否*] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定連線到您的適用於 MariaDB 的 Azure 資料庫。 此外，一旦設定了 [私人網路存取] 的值，您就無法新增和/或更新現有的防火牆和 VNet 服務端點規則。
+
+> [!Note]
+> 這項功能適用于所有 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫單一伺服器支援一般用途和記憶體優化定價層。
+>
+> 此設定不會影響適用於 MariaDB 的 Azure 資料庫的 SSL 和 TLS 設定。
+
+若要瞭解如何為您的適用於 MariaDB 的 Azure 資料庫從 Azure 入口網站設定**拒絕公用網路存取**，請參閱[如何設定拒絕公用網路存取](howto-deny-public-network-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

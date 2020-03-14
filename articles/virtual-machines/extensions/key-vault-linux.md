@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945209"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298983"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Key Vault 虛擬機器擴充功能
 
@@ -27,6 +27,10 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 - Ubuntu-1804
 - Debian-9
 - Suse-15 
+
+### <a name="supported-certificate-content-types"></a>支援的憑證內容類型
+
+- PKCS #12
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -67,16 +71,16 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 | 資料型別 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| 類型 | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | 字串 |
+| type | KeyVaultForLinux | 字串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字串 |
+| certificateStoreName | MY | 字串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | LocalMachine | 字串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 

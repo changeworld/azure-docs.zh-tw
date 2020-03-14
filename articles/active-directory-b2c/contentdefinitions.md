@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374794"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246054"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "78374794"
 
 **ContentDefinition** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
 
@@ -133,11 +133,11 @@ ms.locfileid: "78374794"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| 項目 | 0:n | 與內容定義相關的中繼資料。 |
+| Item | 0:n | 與內容定義相關的中繼資料。 |
 
 **Metadata** 元素的 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Key | 是 | 中繼資料索引鍵。  |
 
@@ -145,7 +145,7 @@ ms.locfileid: "78374794"
 
 內容定義支援下列中繼資料專案：
 
-| Key | 必要項 | 描述 |
+| Key | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 包含內容定義名稱的字串。 |
 
@@ -159,9 +159,9 @@ ms.locfileid: "78374794"
 
 **LocalizedResourcesReference**元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 語言 | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
+| Language | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的識別碼。 |
 
 下列範例顯示的是註冊或登入內容定義，其參考英文、法文和西班牙文的當地語系化：

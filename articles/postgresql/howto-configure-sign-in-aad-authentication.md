@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299272"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向于 postgresql 進行驗證
 
@@ -47,7 +47,7 @@ ms.locfileid: "74763635"
 3. 在適用於 PostgreSQL 的 Azure 資料庫中建立角色 `<user>@yourtenant.onmicrosoft.com`。
 4. 使 `<user>@yourtenant.onmicrosoft.com` 成為角色 azure_ad_user 的成員。 這必須僅提供給 Azure AD 使用者。
 
-**範例：**
+**範例︰**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -60,7 +60,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 若要啟用 Azure AD 群組來存取您的資料庫，請使用與使用者相同的機制，但改為指定組名：
 
-**範例：**
+**範例︰**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
@@ -163,7 +163,7 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 現在您可以使用適用於 PostgreSQL 的 Azure 資料庫起始連線，如下所示：
 
 ```shell
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres"
+psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
 您現在已使用 Azure AD authentication 來驗證您的于 postgresql 伺服器。

@@ -3,16 +3,23 @@ title: 將 SQL Server 資料庫備份到 Azure
 description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說明 SQL Server 復原。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273237"
+ms.locfileid: "79297470"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
-SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工作負載。 您可以使用 [Azure 備份](backup-overview.md)來備份在 Azure VM 上執行的 SQL Server 資料庫。
+[Azure 備份](backup-overview.md)提供以資料流程為基礎的特製化解決方案，以備份在 Azure vm 中執行的 SQL Server。 此解決方案與 Azure 備份的零基礎結構備份、長期保留和集中管理的優點一致。 此外，它還提供下列優點，專門用於 SQL Server：
+
+1. 支援所有備份類型的工作負載感知備份-完整、差異和記錄
+2. 使用經常記錄備份的 15-最低 RPO （復原點目標）
+3. 時間點恢復最多一秒
+4. 個別資料庫層級的備份與還原
+
+若要查看目前支援的備份和還原案例，請參閱[支援矩陣](backup-azure-sql-database.md#scenario-support)。
 
 ## <a name="backup-process"></a>備份程序
 
@@ -65,11 +72,11 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Alaways On 可用性群組的備份行為
 
-建議僅在 AG 的一個節點上設定備份。 備份應該一律設定於與主要節點相同的區域中。 換句話說，您設定備份的區域中一定要出現主要節點。 如果 AG 的所有節點都位於備份設定所在的相同區域中，則沒有任何疑慮。
+建議僅在 AG 的一個節點上設定備份。 備份應該一律設定於與主要節點相同的區域中。 換句話說，您設定備份的區域中一定要出現主要節點。 如果 AG 的所有節點都位於已設定備份的相同區域中，就不會有任何顧慮。
 
 #### <a name="for-cross-region-ag"></a>若為跨區域 AG
 
-* 不論備份喜好設定為何，都不會從不在備份設定所在相同區域中的節點進行備份。 這是因為不支援跨區域備份。 如果您只有兩個節點，而第二個節點位於其他區域，在此情況下，將從主要節點繼續進行備份 (除非您的備份喜好設定為「僅限次要」)。
+* 無論備份喜好設定為何，都不會從不是位於已設定備份之相同區域中的節點進行備份。 這是因為不支援跨區域備份。 如果您只有兩個節點，而次要節點位於另一個區域中，則為，在此情況下，備份將會繼續從主要節點進行（除非您的備份喜好設定為「僅次要」）。
 * 如果備份設定所在區域以外的區域發生容錯移轉，則備份會在已容錯移轉區域中的節點發生失敗。
 
 視備份喜好設定和備份類型 (完整/差異/記錄/只複製完整) 而定，會從特定節點 (主要/次要) 進行備份。

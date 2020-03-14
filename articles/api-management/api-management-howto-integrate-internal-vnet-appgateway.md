@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298045"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>整合內部 VNET 中的 API 管理與應用程式閘道
 
-## <a name="overview"></a>總覽
+## <a name="overview"> </a>總覽
 
 API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛擬網路中加以存取。 Azure 應用程式閘道是一項 PAAS 服務，可提供第 7 層負載平衡器。 它可做為反向 Proxy 服務，並在其供應項目中提供 Web 應用程式防火牆 (WAF)。
 
@@ -35,7 +35,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 * 憑證 - 適用於 API 主機名稱的 cer 和 pfx，和適用於開發人員入口網站主機名稱的 pfx。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"> </a>案例
 
 本文說明如何針對內部和外部取用者使用單一 API 管理服務，並將其作為內部部署和雲端 Api 的單一前端。 您也會看到如何使用應用程式閘道中提供的路由功能，只公開您 API 的一部分 (在範例中以綠色醒目提示) 供外部取用。
 
@@ -55,7 +55,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 ![URL 路由](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="before-you-begin"> </a>開始之前
 
 * 確定您使用最新版本的 Azure PowerShell。 請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)上的安裝指示。 
 
@@ -69,7 +69,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 * **自訂健全狀況探查︰** 應用程式閘道預設會使用 IP 位址型探查，來找出 BackendAddressPool 中有哪些伺服器正在作用中。 API 管理服務只會回應具有正確主機標頭的要求，因此預設探查會失敗。 需要定義自訂的健全狀況探查以協助應用程式閘道判斷服務正在執行，因此它應該轉送要求。
 * **自訂網域憑證︰** 若要從網際網路存取 API 管理，您需要建立其主機名稱和應用程式閘道前端 DNS 名稱的 CNAME 對應。 這可確保主機名稱的標頭和憑證傳送到轉送至 API 管理的應用程式閘道，是 APIM 可以辨識為有效的。 在此範例中，我們將使用兩個憑證 - 分別用於後端和開發人員入口網站。  
 
-## <a name="overview-steps"></a>整合 API 管理和應用程式閘道所需的步驟
+## <a name="overview-steps"> </a>整合 API 管理和應用程式閘道所需的步驟
 
 1. 建立資源管理員的資源群組。
 2. 建立應用程式閘道的虛擬網路、子網路和公用 IP。 為 API 管理建立其他子網路。
@@ -84,7 +84,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 在本指南中，我們也會透過應用程式閘道對外部對象公開**開發人員入口網站**。 這需要執行額外的步驟，以建立開發人員入口網站的接聽程式、探查、設定和規則。 所有詳細資料分別提供於各自的步驟中。
 
 > [!WARNING]
-> 如果您使用 Azure AD 或第三方驗證，請啟用應用程式閘道中的 [cookie 型工作階段同質性](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)功能。
+> 如果您使用 Azure AD 或第三方驗證，請啟用應用程式閘道中的 [cookie 型工作階段同質性](../application-gateway/features.md#session-affinity)功能。
 
 > [!WARNING]
 > 若要防止應用程式閘道 WAF 在開發人員入口網站中中斷下載 OpenAPI 規格，您必須停用防火牆規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
@@ -363,10 +363,10 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"> </a>摘要
 VNET 中設定的 Azure API 管理為所有已設定的 Api 提供單一閘道介面，不論它們是裝載于內部部署或雲端。 整合應用程式閘道與 API 管理提供選擇性地使特定 API 可在網際網路上存取的彈性，並提供 Web 應用程式防火牆來做為 API 管理執行個體的前端。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"> </a>後續步驟
 * 深入了解 Azure 應用程式閘道
   * [應用程式閘道概觀](../application-gateway/application-gateway-introduction.md)
   * [應用程式閘道 Web 應用程式防火牆](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

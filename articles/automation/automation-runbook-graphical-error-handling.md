@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246266"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367068"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自動化之圖形化 Runbook 中的錯誤處理
 
@@ -48,21 +48,21 @@ Runbook 執行期間可能發生的 PowerShell 錯誤類型為終止錯誤和非
 1. 傳送有關此問題的通知。
 2. 啟動另一個 runbook，它會自動布建新的 VM。
 
-其中一個解決方案是將 runbook 中的錯誤連結指向處理第一個步驟的活動。 例如，runbook 可以將**寫入警告**Cmdlet 連接到步驟二的活動，例如[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0)指令程式。
+其中一個解決方案是將 runbook 中的錯誤連結指向處理第一個步驟的活動。 例如，runbook 可以將 `Write-Warning` Cmdlet 連線到步驟2的活動，例如[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0)指令程式。
 
 您也可以將這兩個活動放在不同的錯誤處理 runbook 中，將此行為一般化以用於許多 runbook。 在原始 runbook 呼叫此錯誤處理 runbook 之前，它可以從其資料中建立自訂訊息，然後將它當做參數傳遞至錯誤處理 runbook。
 
 ## <a name="how-to-use-error-handling"></a>如何使用錯誤處理
 
-Runbook 中的每個活動都有一項設定，可將例外狀況變成非終止錯誤。 根據預設，此設定為停用。 建議您在 runbook 處理錯誤的任何活動上啟用此設定。 此設定可確保 runbook 會使用錯誤連結，將活動中的終止和非終止錯誤處理為非終止錯誤。  
+Runbook 中的每個活動都有一項設定，可將例外狀況變成非終止錯誤。 此設定預設為停用狀態。 建議您在 runbook 處理錯誤的任何活動上啟用此設定。 此設定可確保 runbook 會使用錯誤連結，將活動中的終止和非終止錯誤處理為非終止錯誤。  
 
 啟用設定之後，請讓您的 runbook 建立可處理錯誤的活動。 如果活動產生任何錯誤，則會遵循傳出錯誤連結。 即使活動也會產生一般的輸出，也不會遵循一般的連結。<br><br> ![自動化 Runbook 的錯誤連結範例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
 在下列範例中，runbook 會抓取包含 VM 電腦名稱稱的變數。 然後，它會嘗試使用下一個活動來啟動 VM。<br><br> ![自動化 runbook 錯誤處理範例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-**Get-automationvariable**活動和[update-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) Cmdlet 已設定為將例外狀況轉換為錯誤。 如果取得變數或啟動 VM 時發生問題，則程式碼會產生錯誤。<br><br> ![自動化 runbook 錯誤處理活動設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
+`Get-AutomationVariable` 活動和[update-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) Cmdlet 已設定為將例外狀況轉換為錯誤。 如果取得變數或啟動 VM 時發生問題，則程式碼會產生錯誤。<br><br> ![自動化 runbook 錯誤處理活動設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-錯誤連結會從這些活動流向單一**錯誤管理**程式碼活動。 此活動設定了簡單的 PowerShell 運算式，它會使用**throw**關鍵字來停止處理，並使用 `$Error.Exception.Message` 來取得描述目前例外狀況的訊息。<br><br> ![自動化 runbook 錯誤處理常式代碼範例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+錯誤連結會從這些活動流向單一 `error management` 程式碼活動。 此活動設定了簡單的 PowerShell 運算式，它會使用 `throw` 關鍵字來停止處理，並使用 `$Error.Exception.Message` 來取得描述目前例外狀況的訊息。<br><br> ![自動化 runbook 錯誤處理常式代碼範例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>後續步驟
 

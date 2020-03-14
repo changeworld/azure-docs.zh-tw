@@ -1,21 +1,14 @@
 ---
 title: 列出實體類型-LUIS
-titleSuffix: Azure Cognitive Services
 description: 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用 [建議] 功能，根據目前的清單查看新單字的建議。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 03/12/2020
+ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297232"
 ---
 # <a name="list-entity"></a>清單實體
 
@@ -28,7 +21,7 @@ ms.locfileid: "74849763"
 * 是已知的組合。
 * 不常變更。 如果您需要經常變更清單，或想要讓清單自我展開，使用片語清單提升的簡單實體是較好的選擇。
 * 此組合不會超過此實體類型的最大 LUIS [界限](luis-boundaries.md)。
-* 語句中的文字是與同義字或正式名稱完全相符的項目。 LUIS 不會將清單用於完全相符之文字項目以外的範圍。 不會使用清單實體解析模糊比對、不區分大小寫、詞幹分析、複數和其他變化。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
+* 語句中的文字是與同義字或標準名稱不區分大小寫的相符項。 LUIS 不會使用比對的清單。 不會使用清單實體解析模糊比對、詞幹分析、複數和其他變化。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
 
 ![清單實體](./media/luis-concept-entities/list-entity.png)
 
@@ -63,14 +56,14 @@ ms.locfileid: "74849763"
 
 |清單項目|項目同義字|
 |---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
 |`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
 
 `book 2 tickets to paris`
 
 在上述語句中，`paris` 一字會對應至 `Cities` 清單實體中的 paris 項目。 此清單實體會同時比對項目的正規化名稱及項目同義字。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
   "entities": [
@@ -88,7 +81,7 @@ ms.locfileid: "74849763"
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 
 如果在查詢字串中設定 `verbose=false`，這就是 JSON：
@@ -132,7 +125,7 @@ ms.locfileid: "74849763"
 
 * * *
 
-|資料物件|實體名稱|Value|
+|資料物件|實體名稱|值|
 |--|--|--|
 |列出實體|`Cities`|`paris`|
 

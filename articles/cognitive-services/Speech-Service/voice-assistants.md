@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221245"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369891"
 ---
-# <a name="about-voice-assistants"></a>關於語音助理
+# <a name="what-is-a-voice-assistant"></a>什麼是語音助理？
 
 語音助理使用語音服務，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。
 

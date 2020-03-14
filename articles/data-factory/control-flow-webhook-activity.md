@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399995"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213009"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
-您可以使用 webhook 活動，透過您的自訂程式碼來控制管線的執行。 客戶可以使用 webhook 活動來呼叫端點，並傳遞回呼 URL。 管線執行會等候回呼被叫用，然後再繼續進行下一個活動。
+
+Webhook 活動可以透過您的自訂程式碼來控制管線的執行。 使用 webhook 活動，客戶的程式碼可以呼叫端點，並將回呼 URL 傳遞給它。 管線執行會等待回呼調用，再繼續進行下一個活動。
 
 ## <a name="syntax"></a>語法
 
@@ -48,34 +49,31 @@ ms.locfileid: "78399995"
 
 ```
 
-
 ## <a name="type-properties"></a>類型屬性
-
-
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | Web 勾點活動的名稱 | String | 是 |
-type | 必須設定為**WebHook**。 | String | 是 |
-method | 目標端點的 Rest API 方法。 | 字串。 支援的類型： ' POST ' | 是 |
-url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 | 是 |
-headers | 傳送至要求的標頭。 例如，若要設定要求的語言和類型： "標頭"： {"Accept-Language"： "en-us"，"Content-type"： "application/json"}。 | 字串 (或含有字串之 resultType 的運算式) | 是，Content-type 標頭是必要的。 "標頭"： {"Content-type"： "application/json"} |
-body | 代表傳送至端點的承載。 | 有效的 JSON （或具有 JSON 之 resultType 的運算式）。 請在[要求乘載結構描述](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0)一節中查看要求乘載的結構描述。 | 是 |
-驗證 (authentication) | 呼叫端點所使用的驗證方法。 支援的類型為「基本」或「ClientCertificate」。 如需詳細資訊，請參閱[驗證](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0)一節。 如果不需要驗證，請排除這個屬性。 | 字串 (或含有字串之 resultType 的運算式) | 否 |
-timeout | 活動會等待&#39;callBackUri&#39;叫用的時間長度。 活動將等候 ' callBackUri ' 被叫用的時間長度。 預設值為10mins （"00:10:00"）。 格式為 Timespan，例如 d. hh： mm： ss | String | 否 |
-回撥時報告狀態 | 允許使用者報告 webhook 活動的失敗狀態，這會將活動標示為失敗 | Boolean | 否 |
+**name** | Webhook 活動的名稱。 | String | 是 |
+**type** | 必須設定為 "WebHook"。 | String | 是 |
+**method** | 目標端點的 REST API 方法。 | 字串。 支援的類型為 "POST"。 | 是 |
+**url** | 目標端點和路徑。 | 字串或具有字串之**resultType**值的運算式。 | 是 |
+**headers** | 傳送至要求的標頭。 以下範例會設定要求的語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字串或具有字串之**resultType**值的運算式。 | 是。 需要 `Content-Type` 標頭（例如 `"headers":{ "Content-Type":"application/json"}`）。 |
+**body** | 代表傳送至端點的承載。 | 有效的 JSON，**或值為 JSON 的運算式**。 如需要求裝載的架構，請參閱[要求裝載架構](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)。 | 是 |
+**驗證** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或具有字串之**resultType**值的運算式。 | 否 |
+**timeout** | 活動等候**callBackUri**指定之回呼的時間長度。 預設值為10分鐘（"00:10:00"）。 值具有 TimeSpan 格式*d*。*hh*：*mm*：*ss*。 | String | 否 |
+**回撥時報告狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | Boolean | 否 |
 
 ## <a name="authentication"></a>驗證
 
-以下是 webhook 活動中支援的驗證類型。
+Webhook 活動支援下列驗證類型。
 
 ### <a name="none"></a>None
 
-如果不需要驗證，請勿包含 authentication 屬性。
+如果不需要驗證，請不要包含**驗證**屬性。
 
 ### <a name="basic"></a>基本
 
-指定要搭配基本驗證使用的使用者名稱和密碼。
+指定要與基本驗證搭配使用的使用者名稱和密碼。
 
 ```json
 "authentication":{
@@ -87,7 +85,7 @@ timeout | 活動會等待&#39;callBackUri&#39;叫用的時間長度。 活動將
 
 ### <a name="client-certificate"></a>用戶端憑證
 
-指定以 base64 編碼的 PFX 檔案和密碼內容。
+指定以 Base64 編碼的 PFX 檔案內容和密碼。
 
 ```json
 "authentication":{
@@ -99,7 +97,7 @@ timeout | 活動會等待&#39;callBackUri&#39;叫用的時間長度。 活動將
 
 ### <a name="managed-identity"></a>受控識別
 
-將使用資料處理站的受控身分識別指定為其要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何運作的詳細資訊，請參閱 [Azure 資源的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)概觀頁面。
+使用 data factory 的受控識別來指定要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何工作的詳細資訊，請參閱[適用于 Azure 資源的受控識別總覽](/azure/active-directory/managed-identities-azure-resources/overview)。
 
 ```json
 "authentication": {
@@ -109,26 +107,26 @@ timeout | 活動會等待&#39;callBackUri&#39;叫用的時間長度。 活動將
 ```
 
 > [!NOTE]
-> 如果您的 data factory 設定了 git 存放庫，您必須將認證儲存在 Azure Key Vault 中，才能使用基本或用戶端憑證驗證。 Azure Data Factory 不會將密碼儲存在 git 中。
+> 如果您的 data factory 設定了 Git 存放庫，您必須將認證儲存在 Azure Key Vault 中，才能使用基本或用戶端憑證驗證。 Azure Data Factory 不會將密碼儲存在 Git 中。
 
 ## <a name="additional-notes"></a>其他注意事項
 
-Azure Data Factory 會將本文中的其他屬性 "callBackUri" 傳遞至 url 端點，而且會預期在指定的超時值之前叫用此 uri。 如果未叫用 uri，活動將會失敗，並出現狀態 ' TimedOut '。
+Data Factory 會在傳送至 URL 端點的主體中傳遞額外的屬性**callBackUri** 。 Data Factory 預期在指定的超時值之前叫用此 URI。 如果未叫用 URI，活動就會失敗，並出現狀態 "TimedOut"。
 
-當自訂端點的呼叫失敗時，webhook 活動本身會失敗。 任何錯誤訊息都可以加入至回呼的主體，並用於後續的活動中。
+當自訂端點的呼叫失敗時，webhook 活動就會失敗。 任何錯誤訊息都可以加入至回呼主體，並用於後續的活動中。
 
-對於每個 REST API 呼叫，如果端點未在1分鐘內回應，則用戶端將會超時。這是標準的 HTTP 最佳作法。 若要修正此問題，您必須在此情況下執行202模式，其中端點會傳回202（已接受），而用戶端將會輪詢。
+針對每個 REST API 呼叫，如果端點在一分鐘內沒有回應，用戶端就會超時。 這種行為是標準的 HTTP 最佳作法。 若要修正此問題，請執行202模式。 在目前的案例中，端點會傳回202（已接受），而用戶端會輪詢。
 
-要求中的1分鐘超時時間與活動超時不會有任何作用。 這會用來等候 callbackUri。
+要求的一分鐘超時與活動超時無關。 後者是用來等候**callbackUri**所指定的回呼。
 
-回傳給回呼 URI 的主體應為有效的 JSON。 您必須將 Content-type 標頭設定為 `application/json`。
+傳回回撥 URI 的主體必須是有效的 JSON。 將 `Content-Type` 標頭設定為 `application/json`。
 
-當您使用「回呼時報告狀態」選項時，您必須在進行回呼時，將下列程式碼片段新增至本文：
+當您使用回呼屬性的**報告狀態**時，您必須在進行回呼時，將下列程式碼新增至本文：
 
-```
+```json
 {
     "Output": {
-        // output object will be used in activity output
+        // output object is used in activity output
         "testProp": "testPropValue"
     },
     "Error": {
@@ -136,15 +134,13 @@ Azure Data Factory 會將本文中的其他屬性 "callBackUri" 傳遞至 url �
         "ErrorCode": "testErrorCode",
         "Message": "error message to show in activity error"
     },
-    "StatusCode": "403" // when status code is >=400, activity will be marked as failed
+    "StatusCode": "403" // when status code is >=400, activity is marked as failed
 }
 ```
 
-
-
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Data Factory 支援的其他控制流程活動：
+請參閱下列 Data Factory 支援的控制流程活動：
 
 - [If Condition 活動](control-flow-if-condition-activity.md)
 - [執行管道活動](control-flow-execute-pipeline-activity.md)

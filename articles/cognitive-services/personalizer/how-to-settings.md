@@ -4,11 +4,11 @@ description: 服務設定包括服務如何處理報酬、服務進行探索的�
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623707"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221213"
 ---
 # <a name="configure-personalizer-learning-loop"></a>設定個人化工具學習迴圈
 

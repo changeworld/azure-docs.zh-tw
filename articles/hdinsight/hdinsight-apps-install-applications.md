@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272613"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366337"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安裝協力廠商 Apache Hadoop 應用程式
 
@@ -39,12 +39,12 @@ HDInsight 應用程式是使用者可以在 HDInsight 叢集上安裝的應用�
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01) |Hadoop、Spark、HBase |適用于 HDInsight 的 Trifacta Wrangler Enterprise 針對任何規模的資料支援全企業的資料整頓。 在 Azure 上執行 Trifacta 的成本是 Trifacta 訂用帳戶成本加上虛擬機器的 Azure 基礎結構成本的組合。 |
 |[Unifi 資料平臺](https://unifisoftware.com/platform/) |Hadoop、HBase、風暴、Spark |Unifi 資料平臺是一套緊密整合的自助式資料工具套件，其設計目的是要讓商務使用者能夠解決增加收益、降低成本或操作複雜度的資料挑戰。 |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |適用于 HDInsight Spark 叢集的解決資料應用程式。 |
-|[為 AI 驅動的資料目錄進行等高線](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |使用 AI 以商務詞彙自動標記資料，以將資料進行目錄、組織及控管。 Waterline 是自助式分析、合規性與治理以及 IT 管理計劃成功的重要環節。 |
+|[為 AI 驅動的資料目錄進行等高線](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |使用 AI 以商務詞彙自動標記資料，以將資料進行目錄、組織及控管。 「等高線」的「商務 serilog.sinks.literate 目錄」是自助分析、合規性與治理和 IT 管理計畫的重要、成功元件。 |
 
 本文提供的指示將使用 Azure 入口網站。 您也可以從入口網站匯出 Azure Resource Manager 範本或從廠商取得 Resource Manage 範本的複本，然後使用 Azure PowerShell 與 Azure 傳統 CLI 來部署範本。  請參閱[使用 Resource Manager 範本在 HDInsight 上建立 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
-如果您想要在現有的 HDInsight 叢集上安裝 HDInsight 應用程式，您必須有 HDInsight 叢集。 若要建立叢集，請參閱 [建立叢集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。 您也可以在建立 HDInsight 叢集時安裝 HDInsight 應用程式。
+如果您想要在現有的 HDInsight 叢集上安裝 HDInsight 應用程式，您必須有 HDInsight 叢集。 若要建立叢集，請參閱 [建立叢集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。 您也可以在建立 HDInsight 叢集時安裝 HDInsight 應用程式。
 
 ## <a name="install-applications-to-existing-clusters"></a>將應用程式安裝到現有的叢集
 下列程序示範如何將 HDInsight 應用程式安裝到現有的 HDInsight 叢集。
@@ -53,7 +53,7 @@ HDInsight 應用程式是使用者可以在 HDInsight 叢集上安裝的應用�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 從左側功能表中，流覽至 [**所有服務**] [ > **分析**] [ > ] [ **HDInsight**叢集]。
-3. 從清單中選取 HDInsight 叢集。  如果您沒有叢集，則必須先建立一個。  請參閱 [建立叢集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
+3. 從清單中選取 HDInsight 叢集。  如果您沒有叢集，則必須先建立一個。  請參閱 [建立叢集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 4. 在 [**設定**] 類別底下，選取 [**應用程式**]。 您可以在主視窗中看到已安裝的應用程式清單。 
    
     ![HDInsight 應用程式入口網站功能表](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)

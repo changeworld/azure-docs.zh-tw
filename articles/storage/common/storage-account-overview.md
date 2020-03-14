@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597163"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371543"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -108,7 +108,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 - **熱**存取層。 此層級已針對儲存體帳戶中的物件頻繁存取進行優化。 存取經常性存取層中的資料最符合成本效益，而儲存成本較高。 預設會在經常性存取層中建立新的儲存體帳戶。
 - 非**經常性存取層**。 這一層已優化，可用於儲存不常存取且至少儲存30天的大量資料。 在非經常性存取層中儲存資料更符合成本效益，但是存取該資料可能比存取經常性存取層中的資料更昂貴。
-- 封存**層。** 這一層僅適用于個別的區塊 blob 和附加 blob。 封存層已針對可容忍數小時的抓取延遲，而且將保留在封存層中至少180天的資料進行優化。 封存層是儲存資料最符合成本效益的選項。 不過，存取該資料比存取經常性或非經常性存取層中的資料更耗費資源。
+- 封存**層。** 這一層僅適用于個別的區塊 blob。 封存層已針對可容忍數小時的抓取延遲，而且將保留在封存層中至少180天的資料進行優化。 封存層是儲存資料最符合成本效益的選項。 不過，存取該資料比存取經常性或非經常性存取層中的資料更耗費資源。
 
 如果您的資料使用模式有所變更，您可以隨時在這些存取層之間切換。 如需存取層的詳細資訊，請參閱[Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](../blobs/storage-blob-storage-tiers.md)。
 

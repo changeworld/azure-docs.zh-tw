@@ -10,22 +10,24 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 85bae9bfc10460b51935c6eb1e14e3a3dd816a8c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169081"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217802"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>將分析從 Excel 遷移至 Azure Machine Learning Studio （傳統）
 
-> *Kate Baroni* 和 *Ben Boatman* 是 Microsoft 的 Data Insights Center of Excellence 的企業解決方案架構設計人員。 在本文中，他們會說明他們使用 Azure Machine Learning Studio （傳統）將現有迴歸分析套件遷移至雲端式解決方案的經驗。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+> *Kate Baroni*和*Ben Boatman*是 Microsoft 的資料深入解析中心的企業解決方案架構設計人員。 在本文中，他們會說明他們使用 Azure Machine Learning Studio （傳統）將現有迴歸分析套件遷移至雲端式解決方案的經驗。
 
 ## <a name="goal"></a>目標
 
 我們的專案開始時有兩個目標： 
 
-1. 使用預測分析來改善我們組織每月營收預測的準確度 
+1. 使用預測性分析來改善組織的每月收入預測準確度 
 2. 使用 Azure Machine Learning Studio （傳統）來確認、優化、提高結果的速度和規模。 
 
 與許多企業一樣，我們的組織會每個月都會經歷營收預測程序。 我們的商務分析師小組會負責使用 Azure Machine Learning Studio （傳統）來支援程式並改善預測準確度。 小組花費數個月收集多個來源的資料，並透過可識別與服務銷售預測相關的索引鍵屬性的統計分析，來執行資料屬性。 下一步是要開始在 Excel 中建立為資料建立統計迴歸模型的原型。 在幾週內我們便有了 Excel 迴歸模型，其效果優於目前的欄位和財務預測程序。 這也成為預測結果的比較基準。 
@@ -132,8 +134,8 @@ ms.locfileid: "77169081"
 ## <a name="resources"></a>資源
 以下是一些可幫助您處理迴歸的資源： 
 
-* Excel 中的迴歸。 如果您從未嘗試過使用 Excel 進行迴歸，此教學課程可讓您輕鬆地完成：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* 迴歸與預測。 Tyler Chessman 撰寫部落格文章，說明如何在 Excel 中執行時間序列預測，其中包含初學者適用的良好線性迴歸描述。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
+* Excel 中的迴歸。 如果您從未在 Excel 中嘗試回歸，本教學課程可讓您輕鬆完成： [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
+* 迴歸與預測。 Tyler Chessman 寫了一篇 blog 文章，說明如何在 Excel 中進行時間序列預測，其中包含了絕佳的初學者對線性回歸的說明。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * 一般最小平方線性迴歸：缺點、問題和陷阱。 如需回歸的簡介和討論： [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

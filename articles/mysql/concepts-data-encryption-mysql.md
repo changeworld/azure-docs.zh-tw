@@ -1,17 +1,17 @@
 ---
-title: 使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密
+title: 使用客戶管理的金鑰進行資料加密-適用於 MySQL 的 Azure 資料庫
 description: 使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密，可讓您攜帶您自己的金鑰（BYOK）以進行待用資料保護。 它也可讓組織在金鑰和資料的管理中，執行責任分離。
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299119"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密
 

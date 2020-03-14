@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278450"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366984"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -71,14 +71,14 @@ ms.locfileid: "79278450"
 
 | 參數 | 狀態 | 描述 |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | 強制性 | 與您的自動化帳戶相關聯的資源群組名稱。 |
-| *AutomationAccountName* | 強制性 | 自動化帳戶的名稱。
-| *認證* | 選用 | 登入 Azure 環境時所要使用的認證。 |
-| *HybridGroupName* | 強制性 | 您針對支援此案例的 Runbook，指定作為目標的「混合式 Runbook 背景工作角色」群組名稱。 |
-| *OMSResourceGroupName* | 選用 | Log Analytics 工作區的資源群組名稱。 如果未指定此資源群組，則會使用*AAResourceGroupName*的值。 |
-| *訂閱* | 強制性 | 與您的自動化帳戶相關聯之 Azure 訂用帳戶的識別碼。 |
-| *TenantID* | 選用 | 與您的自動化帳戶相關聯的租使用者組織識別碼。 |
-| *WorkspaceName* | 選用 | Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。 |
+| `AAResourceGroupName` | 強制性 | 與您的自動化帳戶相關聯的資源群組名稱。 |
+| `AutomationAccountName` | 強制性 | 自動化帳戶的名稱。
+| `Credential` | 選用 | 登入 Azure 環境時所要使用的認證。 |
+| `HybridGroupName` | 強制性 | 您針對支援此案例的 Runbook，指定作為目標的「混合式 Runbook 背景工作角色」群組名稱。 |
+| `OMSResourceGroupName` | 選用 | Log Analytics 工作區的資源群組名稱。 如果未指定此資源群組，則會使用 `AAResourceGroupName` 的值。 |
+| `SubscriptionID` | 強制性 | 與您的自動化帳戶相關聯之 Azure 訂用帳戶的識別碼。 |
+| `TenantID` | 選用 | 與您的自動化帳戶相關聯的租使用者組織識別碼。 |
+| `WorkspaceName` | 選用 | Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。 |
 
 > [!NOTE]
 > 啟用解決方案時，Azure 自動化只支援特定區域來連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
@@ -89,7 +89,7 @@ ms.locfileid: "79278450"
 
 ### <a name="step-3---run-the-powershell-script"></a>步驟 3-執行 PowerShell 腳本
 
-在 PowerShell 命令列 shell 中，流覽至包含您已下載之腳本的資料夾。 變更 [ *AutomationAccountName*]、[ *AAResourceGroupName*]、[ *OMSResourceGroupName*]、[ *HybridGroupName*]、[ *SubscriptionID*] 和 [ *WorkspaceName*] 參數的值。 然後執行指令碼。
+在 PowerShell 命令列 shell 中，流覽至包含您已下載之腳本的資料夾。 變更參數 `AutomationAccountName`、`AAResourceGroupName`、`OMSResourceGroupName`、`HybridGroupName`、`SubscriptionID`和 `WorkspaceName`的值。 然後執行指令碼。
 
 執行指令碼之後，系統會提示您向 Azure 進行驗證。 您必須使用屬於訂用帳戶管理員角色成員和訂用帳戶共同管理員的帳戶登入。
 
@@ -149,7 +149,7 @@ Heartbeat
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步驟 4-安裝 runbook 環境並連接到 Azure 自動化
 
-當您將代理程式設定為向 Log Analytics 工作區報告時，自動化解決方案會向下推送**HybridRegistration** PowerShell 模組，其中包含**add-hybridrunbookworker** Cmdlet。 使用此 Cmdlet 在電腦上安裝 runbook 環境，並向 Azure 自動化註冊。
+當您將代理程式設定為向 Log Analytics 工作區報告時，自動化解決方案會向下推送包含 `Add-HybridRunbookWorker` Cmdlet 的 `HybridRegistration` PowerShell 模組。 使用此 Cmdlet 在電腦上安裝 runbook 環境，並向 Azure 自動化註冊。
 
 以系統管理員模式開啟 PowerShell 工作階段，並執行下列命令來匯入模組。
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-現在，請使用下列語法來執行**add-hybridrunbookworker** Cmdlet。
+現在，使用下列語法執行 `Add-HybridRunbookWorker` Cmdlet。
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
 ![[管理金鑰] 頁面](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* 針對 [群組群組 *] 參數，* 使用混合式 Runbook 背景工作角色群組的名稱。 如果「自動化」帳戶中已經有這個群組，系統就會將目前的電腦新增至其中。 如果此群組不存在，則會新增此群組。
-* 針對 [*端點*] 參數，使用 [管理金鑰] 頁面上的 [ **URL** ] 專案。
-* 針對*權杖*參數，使用 [管理金鑰] 頁面上的 [**主要存取金鑰**] 專案。
-* 如有需要，請設定*Verbose*參數以接收有關安裝的詳細資料。
+* 針對 `GroupName` 參數，請使用混合式 Runbook 背景工作角色群組的名稱。 如果「自動化」帳戶中已經有這個群組，系統就會將目前的電腦新增至其中。 如果此群組不存在，則會新增此群組。
+* 針對 `EndPoint` 參數，請使用 [管理金鑰] 頁面上的 [ **URL** ] 專案。
+* 針對 `Token` 參數，請使用 [管理金鑰] 頁面上的 [**主要存取金鑰**] 專案。
+* 如有需要，請設定 `Verbose` 參數，以接收有關安裝的詳細資料。
 
 ### <a name="step-5----install-powershell-modules"></a>步驟 5-安裝 PowerShell 模組
 
 Runbook 可以使用 Azure 自動化環境中安裝的模組中定義的任何活動和 Cmdlet。 因為這些模組不會自動部署到內部部署電腦，所以您必須手動安裝它們。 例外狀況是 Azure 模組。 此模組預設會安裝，並可讓您存取所有 Azure 服務和活動的 Cmdlet，以進行 Azure 自動化。
 
-由於「混合式 Runbook 背景工作角色」功能的主要目的是要管理本機資源，因此您很有可能需要安裝支援這些資源的模組，特別是**PowerShellGet**模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
+由於「混合式 Runbook 背景工作角色」功能的主要目的是要管理本機資源，因此您很有可能需要安裝支援這些資源的模組，特別是 `PowerShellGet` 模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
 
-安裝的模組必須位於 *PSModulePath* 環境變數所參考的位置中，如此混合式背景工作角色才能自動匯入它們。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+已安裝的模組必須位於 `PSModulePath` 環境變數所參考的位置，才能讓混合式背景工作角色自動匯入它們。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
 
 ## <a name="next-steps"></a>後續步驟
 

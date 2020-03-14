@@ -6,157 +6,28 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: a22ba5d8b33dd41fcc76c65fcddaf60c1c0ed5e3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bf9dbd0cef19ad54ba6c3b58f2b9b3071b98bd93
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514743"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370956"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>設定 Always On VPN 使用者通道
 
-Windows 10 VPN 用戶端 Always On 的新功能，就是維護 VPN 連線的能力。 使用 Always On 時，作用中的 VPN 設定檔可以根據觸發程式自動連線並保持連接狀態，例如使用者登入、網路狀態變更或裝置螢幕作用中。
+[!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-您可以使用 Azure 虛擬網路閘道搭配 Windows 10 Always On，為 Azure 建立持續的使用者通道和裝置通道。 本文可協助您設定 Always On VPN 使用者通道。
+## <a name="configure-the-gateway"></a>設定閘道
 
-Always On VPN 連線包含兩種通道類型之一：
+ 使用[設定點對站 VPN 連線一](vpn-gateway-howto-point-to-site-resource-manager-portal.md)文中的指示，將 VPN 閘道設定為使用 IKEv2 和以憑證為基礎的驗證。
 
-* **裝置**通道：在使用者登入裝置之前，會連線到指定的 VPN 伺服器。 登入前的連線案例和裝置管理使用裝置通道。
+[!INCLUDE [user configuration](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
-* **使用者**通道：只有在使用者登入裝置之後，才會連線。 藉由使用使用者通道，您可以透過 VPN 伺服器存取組織資源。
+## <a name="to-remove-a-profile"></a>移除設定檔
 
-裝置通道和使用者通道的運作與它們的 VPN 設定檔無關。 它們可以同時連接，而且可以適當地使用不同的驗證方法和其他 VPN 設定。
-
-在下列各節中，您會設定 VPN 閘道和使用者通道。
-
-## <a name="step-1-configure-a-vpn-gateway"></a>步驟1：設定 VPN 閘道
-
-您可以遵循此[點對站](vpn-gateway-howto-point-to-site-resource-manager-portal.md)文章中的指示，將 VPN 閘道設定為使用 IKEv2 和憑證型驗證。
-
-## <a name="step-2-configure-a-user-tunnel"></a>步驟2：設定使用者通道
-
-1. 在 Windows 10 用戶端上安裝用戶端憑證，如此[點對站 VPN 用戶端一](point-to-site-how-to-vpn-client-install-azure-cert.md)文所示。 憑證必須位於 [目前使用者] 存放區中。
-
-1. 遵循[設定 Windows 10 用戶端 ALWAYS ON VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)連線中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
-
-### <a name="example-configuration-for-the-user-tunnel"></a>使用者通道的範例設定
-
-設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
-
-1. 複製下列文字，並將它儲存為*usercert*：
-
-   ```
-   Param(
-   [string]$xmlFilePath,
-   [string]$ProfileName
-   )
-
-   $a = Test-Path $xmlFilePath
-   echo $a
-
-   $ProfileXML = Get-Content $xmlFilePath
-
-   echo $XML
-
-   $ProfileNameEscaped = $ProfileName -replace ' ', '%20'
-
-   $Version = 201606090004
-
-   $ProfileXML = $ProfileXML -replace '<', '&lt;'
-   $ProfileXML = $ProfileXML -replace '>', '&gt;'
-   $ProfileXML = $ProfileXML -replace '"', '&quot;'
-
-   $nodeCSPURI = './Vendor/MSFT/VPNv2'
-   $namespaceName = "root\cimv2\mdm\dmmap"
-   $className = "MDM_VPNv2_01"
-
-   $session = New-CimSession
-
-   try
-   {
-   $newInstance = New-Object Microsoft.Management.Infrastructure.CimInstance $className, $namespaceName
-   $property = [Microsoft.Management.Infrastructure.CimProperty]::Create("ParentID", "$nodeCSPURI", 'String', 'Key')
-   $newInstance.CimInstanceProperties.Add($property)
-   $property = [Microsoft.Management.Infrastructure.CimProperty]::Create("InstanceID", "$ProfileNameEscaped", 'String', 'Key')
-   $newInstance.CimInstanceProperties.Add($property)
-   $property = [Microsoft.Management.Infrastructure.CimProperty]::Create("ProfileXML", "$ProfileXML", 'String', 'Property')
-   $newInstance.CimInstanceProperties.Add($property)
-
-   $session.CreateInstance($namespaceName, $newInstance)
-   $Message = "Created $ProfileName profile."
-   Write-Host "$Message"
-   }
-   catch [Exception]
-   {
-   $Message = "Unable to create $ProfileName profile: $_"
-   Write-Host "$Message"
-   exit
-   }
-   $Message = "Complete."
-   Write-Host "$Message"
-   ```
-1. 複製下列文字，並將它儲存為*VPNProfile*與*usercert*相同的資料夾中。 編輯下列文字以符合您的環境：
-
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
-   * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
-   * `<Address>192.168.3.4</Address>  <= IP of resource in the vnet or the vnet address space`
-   * `<PrefixSize>32</PrefixSize>     <= Subnet mask`
-
-   ```
-    <VPNProfile>  
-      <NativeProfile>  
-    <Servers>azuregateway-b115055e-0882-49bc-a9b9-7de45cba12c0-8e6946892333.vpn.azure.com</Servers>  
-    <NativeProtocolType>IKEv2</NativeProtocolType>  
-    <Authentication>  
-    <UserMethod>Eap</UserMethod>
-    <Eap>
-    <Configuration>
-    <EapHostConfig xmlns="http://www.microsoft.com/provisioning/EapHostConfig"><EapMethod><Type xmlns="http://www.microsoft.com/provisioning/EapCommon">13</Type><VendorId xmlns="http://www.microsoft.com/provisioning/EapCommon">0</VendorId><VendorType xmlns="http://www.microsoft.com/provisioning/EapCommon">0</VendorType><AuthorId xmlns="http://www.microsoft.com/provisioning/EapCommon">0</AuthorId></EapMethod><Config xmlns="http://www.microsoft.com/provisioning/EapHostConfig"><Eap xmlns="http://www.microsoft.com/provisioning/BaseEapConnectionPropertiesV1"><Type>13</Type><EapType xmlns="http://www.microsoft.com/provisioning/EapTlsConnectionPropertiesV1"><CredentialsSource><CertificateStore><SimpleCertSelection>true</SimpleCertSelection></CertificateStore></CredentialsSource><ServerValidation><DisableUserPromptForServerValidation>false</DisableUserPromptForServerValidation><ServerNames></ServerNames></ServerValidation><DifferentUsername>false</DifferentUsername><PerformServerValidation xmlns="http://www.microsoft.com/provisioning/EapTlsConnectionPropertiesV2">false</PerformServerValidation><AcceptServerName xmlns="http://www.microsoft.com/provisioning/EapTlsConnectionPropertiesV2">false</AcceptServerName></EapType></Eap></Config></EapHostConfig>
-    </Configuration>
-    </Eap>
-    </Authentication>  
-    <RoutingPolicyType>SplitTunnel</RoutingPolicyType>  
-     <!-- disable the addition of a class based route for the assigned IP address on the VPN interface -->
-    <DisableClassBasedDefaultRoute>true</DisableClassBasedDefaultRoute>  
-      </NativeProfile> 
-      <!-- use host routes(/32) to prevent routing conflicts -->  
-      <Route>  
-    <Address>192.168.3.5</Address>  
-    <PrefixSize>32</PrefixSize>  
-      </Route>  
-      <Route>  
-    <Address>192.168.3.4</Address>  
-    <PrefixSize>32</PrefixSize>  
-      </Route>  
-    <!-- traffic filters for the routes specified above so that only this traffic can go over the device tunnel --> 
-      <TrafficFilter>  
-    <RemoteAddressRanges>192.168.3.4, 192.168.3.5</RemoteAddressRanges>  
-      </TrafficFilter>
-    <!-- need to specify always on = true --> 
-    <AlwaysOn>true</AlwaysOn>
-    <RememberCredentials>true</RememberCredentials>
-    <!--new node to register client IP address in DNS to enable manage out -->
-    <RegisterDNS>true</RegisterDNS>
-    </VPNProfile>
-   ```
-1. 以系統管理員身分執行 PowerShell。
-
-1. 在 PowerShell 中，切換至*usercert*和*VPNProfile*所在的資料夾，然後執行下列命令：
-
-   ```powershell
-   C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
-   ```
-   
-   ![MachineCertTest](./media/vpn-gateway-howto-always-on-user-tunnel/p2s2.jpg)
-1. 在 [ **VPN 設定**] 底下，尋找 [ **UserTest** ] 專案，然後選取 **[連線]** 。
-
-1. 如果連線成功，則您已成功設定 Always On 的使用者通道。
-
-## <a name="clean-up-your-resources"></a>清除資源
-
-若要移除設定檔，請執行下列動作：
+若要移除設定檔，請使用下列步驟：
 
 1. 執行以下命令：
 
@@ -166,7 +37,7 @@ Always On VPN 連線包含兩種通道類型之一：
 
 1. 中斷連接連線，並清除 [**自動連接]** 核取方塊。
 
-![清理](./media/vpn-gateway-howto-always-on-user-tunnel/p2s4..jpg)
+   ![清理](./media/vpn-gateway-howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>後續步驟
 

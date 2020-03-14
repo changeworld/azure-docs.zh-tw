@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128165"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370197"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器
 
@@ -73,7 +73,7 @@ ms.locfileid: "79128165"
 7. 在搜尋結果中選取 [ **Azure NetApp Files** ]，然後選取 [**建立**]。
 
 8. 選取 [新增] 按鈕。
-9. 當 [**新的 NetApp 帳戶**] 分頁開啟時，輸入下列值：
+9. 當 [**新的 NetApp 帳戶**] 索引標籤開啟時，輸入下列值：
 
     - 針對 [**名稱**]，輸入您的 NetApp 帳戶名稱。
     - 針對 [**訂**用帳戶]，從下拉式功能表中選取您在步驟4中設定之儲存體帳戶的訂用帳戶。
@@ -92,7 +92,7 @@ ms.locfileid: "79128165"
 1. 移至 Azure NetApp Files 功能表，然後選取您的新帳戶。
 2. 在 [帳戶] 功能表中，選取 [儲存體服務] 底下的 [**容量**集區]。
 3. 選取 [**新增集**區]。
-4. 當 [**新增容量集**區] 分頁開啟時，輸入下列值：
+4. 當 [**新增容量集**區] 索引標籤開啟時，輸入下列值：
 
     - 針對 [**名稱**]，輸入新容量集區的名稱。
     - 針對 [**服務等級**]，從下拉式功能表中選取您想要的值。 我們建議大部分環境的**Premium** 。
@@ -127,7 +127,7 @@ ms.locfileid: "79128165"
 
 1. 選取 [**磁片**區]，然後選取 [**新增磁片**區]。
 
-2. 當 [**建立磁片**區] 分頁開啟時，輸入下列值：
+2. 當 [**建立磁片**區] 索引標籤開啟時，輸入下列值：
 
     - 針對 [**磁片區名稱**]，輸入新磁片區的名稱。
     - 針對 [**容量集**區]，從下拉式功能表中選取您剛才建立的容量集區。

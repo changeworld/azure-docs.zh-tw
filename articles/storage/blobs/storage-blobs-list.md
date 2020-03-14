@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650702"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137915"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
 
 當您列出程式碼中的 blob 時，您可以指定數個選項來管理 Azure 儲存體傳回結果的方式。 您可以指定要在每一組結果中傳回的結果數目，然後取得後續的集合。 您可以指定前置詞，以傳回名稱開頭為該字元或字串的 blob。 而且您可以列出一般清單結構中或階層式的 blob。 階層式清單會傳回 blob，就好像它們已組織成資料夾一樣。 
 
-本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)來列出 blob。  
+本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來列出 blob。  
 
 ## <a name="understand-blob-listing-options"></a>瞭解 blob 清單選項
 

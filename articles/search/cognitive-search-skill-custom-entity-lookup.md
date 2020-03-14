@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651333"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369772"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能（預覽）
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能（預覽）
 
 > [!IMPORTANT] 
 > 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有入口網站或 .NET SDK 支援。
@@ -38,9 +38,9 @@ CustomEntityLookupSkill。
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| entitiesDefinitionUri | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
+| entitiesDefinitionUri    | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
 |inlineEntitiesDefinition | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 不能以內嵌方式提供超過 10 KB 的設定。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)，以取得預期的 JSON 架構。 |
-|defaultLanguageCode |  選擇性輸入文字的語言代碼，用來 token 化和描繪輸入文字。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt`。 預設值為 [英文（`en`）]。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
+|defaultLanguageCode |    選擇性輸入文字的語言代碼，用來 token 化和描繪輸入文字。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt`。 預設值為 [英文（`en`）]。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
 
 
 ## <a name="skill-inputs"></a>技能輸入
@@ -48,13 +48,13 @@ CustomEntityLookupSkill。
 | 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
 | text          | 要分析的文字。          |
-| languageCode  | 選擇性。 預設值為 `"en"`。  |
+| languageCode    | 選擇性。 預設值為 `"en"`。  |
 
 
 ## <a name="skill-outputs"></a>技能輸出
 
 
-| 輸出名稱     | 描述                   |
+| 輸出名稱      | 描述                   |
 |---------------|-------------------------------|
 | 實體 | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 識別的每個實體都可能包含下欄欄位：  <ul> <li> *名稱*：識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼：使用者*在「自訂實體定義格式」中所定義之實體的唯一識別碼。</li> <li> *描述*：使用者在「自訂實體定義格式」中所定義的實體描述。 </li> <li> *類型：* 使用者在「自訂實體定義格式」中所定義的實體類型。</li> <li> *子類型：* 實體子類型，如使用者在「自訂實體定義格式」中所定義。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都將具有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：此比對與原始機構名稱或別名不同的字元數。  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 在某些情況下，提供自訂實體清單以直接對應至技能定義可能會比較方便。 在此情況下，您可以使用類似上述的 JSON 格式，但它會在技能定義中內嵌。
 只有小於 10 KB 大小（序列化大小）的設定可以用內嵌方式定義。 
 
-##  <a name="sample-definition"></a>範例定義
+##    <a name="sample-definition"></a>範例定義
 
 使用內嵌格式的範例技能定義如下所示：
 
@@ -231,7 +231,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 
 ```
 
-##  <a name="sample-input"></a>範例輸入
+##    <a name="sample-input"></a>範例輸入
 
 ```json
 {
@@ -248,7 +248,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 }
 ```
 
-##  <a name="sample-output"></a>範例輸出
+##    <a name="sample-output"></a>範例輸出
 
 ```json
   { 
@@ -295,6 +295,12 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>錯誤和警告
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告：已達到相符專案的最大容量，略過所有其他重複的相符專案。
+
+如果偵測到的相符專案數目大於允許的最大值，就會發出此警告。 在此情況下，我們將停止包含重複的相符專案。 如果您無法接受這種情況，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，讓我們可以協助您使用個別的使用案例。
 
 ## <a name="see-also"></a>另請參閱
 

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121409"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297912"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>從 Azure 儲存體在 Linux 上的 App Service 中提供內容
 
@@ -20,12 +20,12 @@ ms.locfileid: "77121409"
 
 本指南說明如何將 Azure 儲存體附加至 Linux 上的 App Service。 優點包括安全內容、內容可攜性、持續儲存、存取多個應用程式，以及多個傳輸方法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 或更新版本)。
 - 現有的[Linux 上的 App Service 應用程式](https://docs.microsoft.com/azure/app-service/containers/)。
 - [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- [Azure 檔案共用和目錄](https://docs.microsoft.com/azure/storage/common/storage-azure-cli#create-and-manage-file-shares)。
+- [Azure 檔案共用和目錄](../../storage/files/storage-how-to-use-files-cli.md)。
 
 
 ## <a name="limitations-of-azure-storage-with-app-service"></a>使用 App Service Azure 儲存體的限制
@@ -70,7 +70,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Azure 儲存體可以透過使用自訂識別碼的多容器應用程式來裝載。若要查看自訂識別碼名稱，請執行[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
 
-在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應到 `custom-id`。 例如，
+在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應到 `custom-id`。 例如：
 
 ```yaml
 wordpress:

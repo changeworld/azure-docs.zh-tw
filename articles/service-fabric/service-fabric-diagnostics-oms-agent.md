@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609939"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366733"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure 監視器記錄進行效能監視
 
@@ -33,17 +33,17 @@ ms.locfileid: "75609939"
 
 3. 如果您要建立 Windows 叢集，請按一下 [Windows 伺服器]，如果您要建立 Linux 叢集，請按一下 [Linux 伺服器]。 此頁面會顯示您的 `workspace ID` 和 `workspace key` (列為入口網站中的主索引鍵)。 您在下一個步驟需要上述兩項。
 
-4. 執行命令，使用 Cloud Shell 中的 `vmss extension set` API 來將 Log Analytics 代理程式安裝到您的叢集：
+4. 執行命令，使用 `vmss extension set` API 將 Log Analytics 代理程式安裝到您的叢集：
 
     若為 Windows 叢集：
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     若為 Linux 叢集：
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -53,7 +53,7 @@ ms.locfileid: "75609939"
 
 5. 應該在 15 分鐘內即可成功地將代理程式新增至您的節點。 您可以使用 `az vmss extension list` API 驗證是否已新增代理程式：
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
@@ -67,7 +67,7 @@ ms.locfileid: "75609939"
 
 現在您已新增 Log Analytics 代理程式，請前往 Log Analytics 入口網站來選擇您要收集的效能計數器。
 
-1. 在 Azure 入口網站中，移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 [ServiceFabric\<nameOfLog AnalyticsWorkspace\>]。
+1. 在 Azure 入口網站中，移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 [ServiceFabric**nameOfLog AnalyticsWorkspace\<]\>** 。
 
 2. 按一下 [Log Analytics]。
 

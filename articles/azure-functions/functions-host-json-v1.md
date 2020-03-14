@@ -4,11 +4,11 @@ description: Azure Functions host.json 檔案與 v1 執行階段的參考文件�
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769603"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277046"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 host.json 參考
 
@@ -16,7 +16,7 @@ ms.locfileid: "75769603"
 > * [第 1 版](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出 v1 執行階段可用的設定。 JSON 結構描述位於 http://json.schemastore.org/host 。
+*host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出 v1 執行階段可用的設定。 JSON 結構描述位於 http://json.schemastore.org/host。
 
 > [!NOTE]
 > 本文適用於 Azure Functions 1.x。  如需函式2.x 和更新版本中的 host. json 參考，請參閱 Azure Functions 2.x 的[host. json 參考](functions-host-json.md)。
@@ -136,7 +136,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------|
 |GatewayMode|閘道|連線到 Azure Cosmos DB 服務時函式所使用的連線模式。 選項為 `Direct` 和 `Gateway`|
 |通訊協定|Https|連線到 Azure Cosmos DB 服務時函式所使用的連線通訊協定。  請參閱[此處以了解這兩種模式](../cosmos-db/performance-tips.md#networking)|
@@ -188,7 +188,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |已啟用|true|指定是否已啟用此功能。 | 
 |healthCheckInterval|10 秒|定期背景健康情況檢查之間的時間間隔。 | 
@@ -211,7 +211,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|啟用時，此設定會促使要求處理管線定期檢查系統效能計數器，例如連線/執行緒/處理程序/記憶體/CPU/其他，而且如果這些計數器中任一個超過內建的臨界值上限 (80%)，則要求會遭到拒絕，並包含 429「忙碌」的回應，直到計數器回到正常水平。|
 |maxConcurrentRequests|未系結（`-1`）|將平行執行的 HTTP 函式數目上限。 這可讓您控制並行作業，幫助您管理資源使用率。 例如，您可能有一個使用大量系統資源（記憶體/cpu/通訊端）的 HTTP 函式，因此當並行處理太高時，會造成問題。 或者，如果函式對第三方服務發出傳出要求，則需要限制這些呼叫的速率。 在這些情況下，套用節流會有所幫助。|
@@ -249,7 +249,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |categoryFilter|n/a|指定依類別的篩選| 
 |defaultLevel|資訊|針對 `categoryLevels` 陣列中未指定的任何類別，會將這個層級和以上層級的記錄傳送至 Application Insights。| 
@@ -271,7 +271,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |maxPollingInterval|60000|佇列輪詢之間的間隔上限 (毫秒)。| 
 |visibilityTimeout|0|處理訊息失敗時，重試之間的時間間隔。| 
@@ -290,7 +290,7 @@ ms.locfileid: "75769603"
     }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |從|n/a|所有函式的寄件者電子郵件地址。| 
 
@@ -308,7 +308,7 @@ ms.locfileid: "75769603"
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|訊息幫浦應該起始之回呼的並行呼叫數上限。 Functions 執行階段預設會並行處理多個訊息。 若要指示執行階段一次只處理一個佇列或主題訊息，請將 `maxConcurrentCalls` 設定為 1。 | 
 |prefetchCount|n/a|基礎 MessageReceiver 將使用的預設 PrefetchCount。| 
@@ -330,7 +330,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|取得函式層級鎖定的期間。 鎖定會自動更新。| 
 |listenerLockPeriod|00:01:00|接聽程式鎖定所需的期間。| 
@@ -353,7 +353,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 }
 ```
 
-|屬性  |預設 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |consoleLevel|info|主控台記錄的追蹤層級。 選項為：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|檔案記錄的追蹤層級。 選項為 `never`、`always`、`debugOnly`。| 

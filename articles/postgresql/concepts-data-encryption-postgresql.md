@@ -1,17 +1,17 @@
 ---
-title: 使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密
+title: 使用客戶管理的金鑰進行資料加密-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密，可讓您攜帶您自己的金鑰（BYOK）以進行待用資料保護。 它也可讓組織在金鑰和資料的管理中，執行責任分離。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198695"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297017"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密
 
@@ -32,9 +32,9 @@ Key Vault 是以雲端為基礎的外部金鑰管理系統。 它具有高可用
 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密提供下列優點：
 
 * 資料存取是由您完全控制，您可以移除索引鍵並使資料庫無法存取 
-*   完整控制金鑰生命週期，包括輪替金鑰以配合公司原則
-*   集中管理和 Azure Key Vault 中的金鑰組織
-*   能夠在安全人員與 DBA 和系統管理員之間實施責任分隔
+*    完整控制金鑰生命週期，包括輪替金鑰以配合公司原則
+*    集中管理和 Azure Key Vault 中的金鑰組織
+*    能夠在安全人員與 DBA 和系統管理員之間實施責任分隔
 
 ## <a name="terminology-and-description"></a>術語和描述
 

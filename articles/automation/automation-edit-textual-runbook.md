@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246414"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367273"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自動化中編輯文字式 Runbook
 
@@ -37,7 +37,7 @@ Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發�
 2. 在 [程序自動化] 底下選取 [Runbook] 開啟 Runbook 清單。
 3. 選擇要編輯的 runbook，然後按一下 [**編輯**]。
 4. 編輯 Runbook。
-5. 編輯完成時，按一下 [儲存]。
+5. 當您完成編輯時，按一下 [儲存] 。
 6. 如果您想要發佈 runbook 的最新草稿版本，請按一下 [**發佈**]。
 
 ### <a name="insert-a-cmdlet-into-a-runbook"></a>將 Cmdlet 插入 runbook
@@ -59,7 +59,7 @@ Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發�
 
 ### <a name="insert-an-asset-into-a-runbook"></a>將資產插入 runbook
 
-1. 在文字式編輯器的 [畫布] 中，將游標移至您要放置子 Runbook 程式碼的位置。
+1. 在文字式編輯器的 Canvas 控制項中，將游標放在您要放置子 runbook 程式碼的位置。
 2. 在程式庫控制項中，展開 [資產] 節點。
 3. 展開所需資產類型的節點。
 4. 以滑鼠右鍵按一下要插入的資產名稱，然後選取 [**新增至畫布**]。 針對[變數資產](automation-variables.md)，請選取 **將「取得變數」新增至畫布**，或**將「設定變數」新增至畫布**，視您是否要取得或設定變數而定。
@@ -67,7 +67,7 @@ Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發�
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 編輯 Azure 自動化 runbook
 
-若要使用 Windows PowerShell 編輯 runbook，請使用您選擇的編輯器，並將 runbook 儲存至 "ps1" 檔案。 您可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) Cmdlet 來取出 runbook 的內容。 您可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) Cmdlet，將現有的草稿 runbook 取代為已修改的 runbook。
+若要使用 Windows PowerShell 編輯 runbook，請使用您選擇的編輯器，並將 runbook 儲存至**ps1**檔案。 您可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) Cmdlet 來取出 runbook 的內容。 您可以使用[AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) Cmdlet，將現有的草稿 runbook 取代為已修改的 runbook。
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 取出 runbook 的內容
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 變更 runbook 的內容
 
-下列範例命令可顯示如何以指令碼檔案的內容取代 Runbook 的現有內容。 這個範例程序與[使用 Windows PowerShell 從指令碼檔案匯入 Runbook](manage-runbooks.md#import-a-runbook) 的相同。
+下列範例命令顯示如何以指令碼檔案內容取代現有 Runbook 的內容。 這個範例程序與[使用 Windows PowerShell 從指令碼檔案匯入 Runbook](manage-runbooks.md#import-a-runbook) 的相同。
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

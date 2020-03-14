@@ -8,24 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79218426"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371574"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>匯入和匯出 IoT 中樞大量的裝置身分識別
 
 每個 IoT 中樞都有一個身分識別登錄，您可用來在服務中建立各裝置的資源。 身分識別登錄也可讓您控制裝置面向端點的存取權。 本文說明如何在身分識別登錄中大量匯入和匯出裝置身分識別。 若要查看中的實用C#範例，並瞭解如何在將中樞複製到不同區域時使用這項功能，請參閱[如何複製 IoT 中樞](iot-hub-how-to-clone.md)。
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT 中樞最近在有限數目的區域中新增了虛擬網路支援。 這項功能可保護匯入和匯出作業的安全，並免除傳遞金鑰以進行驗證的需求。  一開始，虛擬網路支援僅適用于下欄區域：*WestUS2*、 *EastUS*和*SouthCentralUS*。 若要深入瞭解虛擬網路支援和用來執行它的 API 呼叫，請參閱[虛擬網路的 IoT 中樞支援](virtual-network-support.md)。
 
 匯入和匯出操作會在「作業」的內容中進行，其可讓您對 IoT 中樞執行大量服務操作。
 
 **RegistryManager** 類別包含使用**作業**架構的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 這些方法可讓您匯出、匯入和同步處理整個 IoT 中樞身分識別登錄。
 
 本主題討論如何使用**RegistryManager**類別和**作業**系統，在 IoT 中樞的身分識別登錄中執行裝置的大量匯入和匯出。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](/azure/iot-dps)。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>什麼是作業？
 
@@ -83,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> 如果您的儲存體帳戶具有限制 IoT 中樞連線的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
+
 
 ## <a name="device-importexport-job-limits"></a>裝置匯入/匯出作業限制
 

@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2019
+ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: e629a9dd65a20883aa605e5d1d23248bcde575b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279698"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365146"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -42,8 +42,10 @@ ms.locfileid: "79279698"
 
 | Tag | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **ActionGroup** | 動作群組。 | 輸入 | 否 | 否 |
 | **ApiManagement** | Azure API 管理-專用部署的管理流量。 <br/><br/>*注意：* 此標記代表每個區域之控制平面的 Azure API 管理服務端點。 這可讓客戶在 API 管理服務上設定的 Api、作業、原則、NamedValues 上執行管理作業。  | 輸入 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
+| **AppConfiguration** | 應用程式組態。 | 輸出 | 否 | 否 |
 | **AppService**    | Azure App Service。 對 web 應用程式前端的輸出安全性規則，建議使用此標記。 | 輸出 | 是 | 是 |
 | **AppServiceManagement** | 專用於 App Service 環境之部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureActiveDirectory** | Azure Active Directory。 | 輸出 | 否 | 是 |
@@ -59,22 +61,27 @@ ms.locfileid: "79279698"
 | **AzureDatabricks** | Azure Databricks。 | 兩者 | 否 | 否 |
 | **AzureDataExplorerManagement** | Azure 資料總管管理。 | 輸入 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 輸出 | 否 | 是 |
+| **AzureDevSpaces** | Azure Dev Spaces。 | 輸出 | 否 | 否 |
 | **AzureEventGrid** | Azure 事件格線。 <br/><br/>*注意：* 此標記涵蓋美國中南部、美國東部、美國東部2、美國西部2和美國中部的 Azure 事件方格端點。 | 兩者 | 否 | 否 |
-| **AzureFrontDoor** | Azure Front 的大門。 | 兩者 | 否 | 否 |
-| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**和**AzureFrontDoor**標記。 也請將下列 Ip 加入白名單（即將移除此相依性）： 13.107.6.181 & 13.107.9.181。 | 輸出 | 否 | 否 |
+| **AzureFrontDoor 前端** <br/> **AzureFrontDoor. 後端** <br/> **AzureFrontDoor.FirstParty**  | Azure Front 的大門。 | 兩者 | 否 | 否 |
+| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**、 **AzureFrontDoor**和**AzureFrontDoor. FirstParty**標記。 | 輸出 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此標記與**AzureActiveDirectory**標記具有相依性。 | 輸出 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯為 Azure 健康狀態探查所源自主機（168.63.129.16）的[虛擬 IP 位址](security-overview.md#azure-platform-considerations)。 這不會包含 Azure Load Balancer 資源的流量。 如果您不是使用 Azure Load Balancer，您可以覆寫此規則。 | 兩者 | 否 | 否 |
 | **AzureMachineLearning** | Azure Machine Learning | 兩者 | 否 | 是 |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自訂計量（Gb 端點）。<br/><br/>*注意：* 針對 Log Analytics，此標記與**儲存體**標記相依。 | 輸出 | 否 | 是 |
+| **AzureOpenDatasets** | Azure 開放資料集。<br/><br/>*注意：* 此標記相依于**AzureFrontDoor**和**儲存體**標記。 | 輸出 | 否 | 否 |
 | **AzurePlatformDNS** | 基本基礎結構（預設） DNS 服務。<br/><br>您可以使用此標記來停用預設 DNS。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service （IMDS），這是基本的基礎結構服務。<br/><br/>您可以使用此標記來停用預設 IMDS。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
 | **AzurePlatformLKM** | Windows 授權或金鑰管理服務。<br/><br/>您可以使用此標記來停用授權的預設值。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
 | **AzureResourceManager** | Azure Resource Manager。 | 輸出 | 否 | 否 |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此標記相依于**儲存體**、 **AzureActiveDirectory**和**EventHub**標記。 | 輸出 | 否 | 否 |
+| **Azuresignalr-samples** | Azure SignalR。 | 輸出 | 否 | 否 |
+| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**、 **AzureKeyVault**、 **EventHub**、**GuestAndHybridManagement**和**儲存體**標記。 | 輸出 | 否 | 否 |
 | **Azuretrafficmanager 僅限** | Azure 流量管理員探查 IP 位址。<br/><br/>如需流量管理員探查 IP 位址的詳細資訊，請參閱[Azure 流量管理員常見問題](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 輸入 | 否 | 是 |  
 | **BatchNodeManagement** | 專用於 Azure Batch 之部署的管理流量。 | 兩者 | 否 | 是 |
 | **CognitiveServicesManagement** | Azure 認知服務流量的位址範圍。 | 輸出 | 否 | 否 |
+| **DataFactory**  | Azure Data Factory | 輸出 | 否 | 否 |
+| **DataFactoryManagement** | Azure Data Factory 的管理流量。 | 輸入 | 否 | 否 |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 行銷電子郵件服務的位址範圍。 | 輸出 | 是 | 否 |
 | **ElasticAFD** | 彈性 Azure Front。 | 兩者 | 否 | 否 |
 | **EventHub** | Azure 事件中樞。 | 輸出 | 是 | 是 |
@@ -82,13 +89,18 @@ ms.locfileid: "79279698"
 | **GuestAndHybridManagement** | Azure 自動化和來賓設定。 | 輸出 | 否 | 是 |
 | **HDInsight** | Azure HDInsight。 | 輸入 | 是 | 否 |
 | **網際網路** | 位於虛擬網路外部且可由公用網際網路連線的 IP 位址空間。<br/><br/>位址範圍包含[Azure 擁有的公用 IP 位址空間](https://www.microsoft.com/download/details.aspx?id=41653)。 | 兩者 | 否 | 否 |
+| **LogicApps** | Logic Apps。 | 兩者 | 否 | 否 |
+| **LogicAppsManagement** | Logic Apps 的管理流量。 | 輸入 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |
-| **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 也請將下列 IP 列入白名單（即將移除此相依性）：204.79.197.219。 | 輸出 | 是 | 是 |
+| **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 此標記相依于**AzureFrontDoor. FirstParty**標記。 | 輸出 | 是 | 是 |
+| **PowerQueryOnline** | 線上 Power Query。 | 兩者 | 否 | 否 |
 | **ServiceBus** | Azure 服務匯流排使用 Premium 服務層級的流量。 | 輸出 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標記代表每個區域之控制平面的 Service Fabric 服務端點。 這可讓客戶從其 VNET 執行其 Service Fabric 叢集的管理作業（例如 HTTPs://westus.servicefabric.azure.com） | 兩者 | 否 | 否 |
 | **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 受控實例。 | 輸出 | 是 | 是 |
 | **SqlManagement** | 適用于 SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
+| **StorageSyncService** | 儲存體同步服務。 | 兩者 | 否 | 否 |
+| **WindowsVirtualDesktop** | Windows 虛擬桌面。 | 兩者 | 否 | 否 |
 | **VirtualNetwork** | 虛擬網路位址空間（針對虛擬網路定義的所有 IP 位址範圍）、所有已連線的內部部署位址空間、[對等互連](virtual-network-peering-overview.md)虛擬網路、連接到[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虛擬網路、[主機的虛擬 IP 位址](security-overview.md#azure-platform-considerations)，以及[使用者定義的路由](virtual-networks-udr-overview.md)所使用的位址首碼。 此標記可能也會包含預設路由。 | 兩者 | 否 | 否 |
 
 >[!NOTE]

@@ -4,14 +4,14 @@ description: 在 Azure 中使用私人容器登錄來推送和提取開放容器
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456250"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371047"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>使用 Azure container registry 推送和提取 OCI 成品
 
@@ -19,7 +19,7 @@ ms.locfileid: "74456250"
 
 為了示範這項功能，本文說明如何使用 OCI 登錄[作為儲存體（ORAS）](https://github.com/deislabs/oras)工具，將範例成品（文字檔）推送至 Azure container Registry。 然後，從登錄中提取成品。 您可以使用適用于每個成品的不同命令列工具，在 Azure container registry 中管理各種 OCI 構件。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 容器登錄庫** - 在 Azure 訂用帳戶中建立容器登錄庫。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **ORAS 工具**-從[GitHub](https://github.com/deislabs/oras/releases)存放庫下載並安裝適用于您作業系統的最新 ORAS 版本。 此工具會以壓縮的 tarball （`.tar.gz` 檔案）發行。 使用適用于您作業系統的標準程式，解壓縮並安裝檔案。
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 使用 `oras push` 命令，將此文字檔推送至您的登錄。 下列範例會將範例文字檔推送至 `samples/artifact` 存放庫。 登錄會以完整的登錄名稱*myregistry.azurecr.io* （全部小寫）識別。 成品已標記 `1.0`。 根據預設，成品具有未定義的類型，並以 `artifact.txt`檔案名後面的*媒體類型*字串識別。 如需其他類型，請參閱[OCI 構件](https://github.com/opencontainers/artifacts)。 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 成功推送的輸出如下所示：

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254780"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221421"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -57,9 +57,9 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `version` | 表示用來解讀檔標記的 SSML 規格版本。 目前的版本為1.0。 | 必要項 |
-| `xml:lang` | 指定根文檔的語言。 此值可包含小寫、兩個字母的語言代碼（例如 `en`），或語言代碼和大寫國家/地區（例如，`en-US`）。 | 必要項 |
-| `xmlns` | 指定檔的 URI，以定義 SSML 檔的標記詞彙（元素類型和屬性名稱）。 目前的 URI 為 https://www.w3.org/2001/10/synthesis。 | 必要項 |
+| `version` | 表示用來解讀檔標記的 SSML 規格版本。 目前的版本為1.0。 | 必要 |
+| `xml:lang` | 指定根文檔的語言。 此值可包含小寫、兩個字母的語言代碼（例如 `en`），或語言代碼和大寫國家/地區（例如，`en-US`）。 | 必要 |
+| `xmlns` | 指定檔的 URI，以定義 SSML 檔的標記詞彙（元素類型和屬性名稱）。 目前的 URI 為 https://www.w3.org/2001/10/synthesis。 | 必要 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>選擇文字轉換語音的語音
 
@@ -77,7 +77,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要項 |
+| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要 |
 
 **範例**
 
@@ -100,7 +100,7 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要項 |
+| `name` | 識別文字到語音轉換輸出所使用的語音。 如需支援的語音的完整清單，請參閱[語言支援](language-support.md#text-to-speech)。 | 必要 |
 
 > [!IMPORTANT]
 > 多個語音與「字邊界」功能不相容。 必須停用「字邊界」功能，才能使用多個語音。
@@ -258,8 +258,8 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
-| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選擇性 |
+| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選用 |
+| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選用 |
 
 | 程度 | 描述 |
 |----------|-------------|
@@ -329,7 +329,7 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定合成 `ph` 屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>.ipa &ndash; 國際語音字母</li><li>sapi &ndash; 語音 API 電話集合</li><li>通用電話組 &ndash; 的 ups</li></ul>此字母僅適用于元素中的音素。 如需詳細資訊，請參閱[語音字母參考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 選擇性 |
+| `alphabet` | 指定合成 `ph` 屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>`ipa` &ndash; 國際語音字母</li><li>`sapi` &ndash; 語音服務拼音字母</li><li>`ups` &ndash; 通用電話集</li></ul><br>此字母僅適用于元素中的 `phoneme`。 如需詳細資訊，請參閱[語音字母參考](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)。 | 選用 |
 | `ph` | 包含電話的字串，指定 `phoneme` 元素中的單字發音。 如果指定的字串包含無法辨識的手機，文字轉換語音（TTS）服務會拒絕整個 SSML 檔，而且不會產生任何在檔中指定的語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
@@ -418,13 +418,11 @@ Could you help leave a message to Robert Benigni for me?
 - 檔案大小：自訂字典檔案大小上限為 100 KB，如果超過此大小，合成要求將會失敗。
 - 辭典快取重新整理：自訂字典會在第一次載入 TTS 服務時，以 URI 作為金鑰來進行快取。 具有相同 URI 的字典不會在15分鐘內重載，因此自訂的詞典變更必須等候15分鐘才會生效。
 
-**SAPI 手機組**
+**語音服務拼音設定**
 
-在上述範例中，我們使用的是國際語音關聯（.IPA）電話組。 我們建議開發人員使用 .IPA，因為 .IPA 是國際標準。 
+在上述範例中，我們使用國際語音字母（也稱為 .IPA 電話集）。 我們建議開發人員使用 .IPA，因為它是國際標準。 考慮到 .IPA 並不容易記住，語音服務會針對七種語言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定義語音集合。
 
-考慮到 .IPA 並不容易記住，Microsoft 為七種語言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定義了一組 SAPI 電話。 如需更多的字母資訊，請參閱[語音字母參考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。
-
-您可以使用具有自訂字典的 SAPI 電話集，如下所示。 使用**sapi**設定字母值。
+您可以使用 `sapi` 做為具有自訂字典之 `alphabet` 屬性的 back，如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ Could you help leave a message to Robert Benigni for me?
 </lexicon>
 ```
 
-如需詳細的 SAPI 字母的詳細資訊，請參閱[SAPI 字母參考](sapi-phoneset-usage.md)。
+如需詳細語音服務拼音字母的詳細資訊，請參閱[語音服務拼音設定](speech-ssml-phonetic-sets.md)。
 
 ## <a name="adjust-prosody"></a>調整韻律
 
@@ -463,12 +461,12 @@ Could you help leave a message to Robert Benigni for me?
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>。 | 選擇性 |
-| `contour` | 類神經語音不支援等高線。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如， <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值會使用相對值或音調的列舉值，指定要提高或降低音調的數量（請參閱 `pitch`）。 | 選擇性 |
-| `range` | 值，表示文字的音調範圍。 您可以使用相同的絕對值、相對值或用來描述 `pitch`的列舉值來表示 `range`。 | 選擇性 |
-| `rate` | 表示文字的說話速率。 您可以將 `rate` 表達為：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
-| `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選擇性 |
-| `volume` | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>無聲</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>default</li></ul></li></ul> | 選擇性 |
+| `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul>。 | 選用 |
+| `contour` | 類神經語音不支援等高線。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值會使用相對值或音調的列舉值，指定要提高或降低音調的數量（請參閱 `pitch`）。 | 選用 |
+| `range` | 值，表示文字的音調範圍。 您可以使用相同的絕對值、相對值或用來描述 `pitch`的列舉值來表示 `range`。 | 選用 |
+| `rate` | 表示文字的說話速率。 您可以將 `rate` 表達為：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選用 |
+| `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選用 |
+| `volume` | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>無聲</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>預設</li></ul></li></ul> | 選用 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -546,15 +544,15 @@ Could you help leave a message to Robert Benigni for me?
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `interpret-as` | 表示元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要項 |
-| `format` | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選擇性 |
-| `detail` | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對 `detail`定義的標準值。 | 選擇性 |
+| `interpret-as` | 表示元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
+| `format` | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選用 |
+| `detail` | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對 `detail`定義的標準值。 | 選用 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
 以下是支援的 `interpret-as` 和 `format` 屬性的內容類型。 只有在 `interpret-as` 設定為 [日期和時間] 時，才包含 [`format`] 屬性。
 
-| 解讀為 | 格式 | 解讀 |
+| 解讀為 | format | 解讀 |
 |--------------|--------|----------------|
 | `address` | | 文字會以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法院的美國華盛頓州 redmond」。 |
 | `cardinal`, `number` | | 文字是以基本數位來讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三種替代方案」。 |
@@ -645,9 +643,9 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果您在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` `100` 內含。 預設值是 `1`。 | 選擇性 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0`，這相當於「不淡入」。 **接受的值**： `0` `10000` 內含。  | 選擇性 |
-| `fadeout` | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為 `0`，相當於 [不淡出]。**接受的值**： `0` `10000` 內含。  | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` `100` 內含。 預設值是 `1`。 | 選用 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0`，這相當於「不淡入」。 **接受的值**： `0` `10000` 內含。  | 選用 |
+| `fadeout` | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為 `0`，相當於 [不淡出]。**接受的值**： `0` `10000` 內含。  | 選用 |
 
 **範例**
 

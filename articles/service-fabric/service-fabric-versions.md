@@ -3,12 +3,12 @@ title: Azure 中支援的叢集版本 Service Fabric
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252715"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370418"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -37,7 +37,7 @@ ms.locfileid: "78252715"
 | 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019年3月31日  |
 | 6.4.* | 6.2.301.* |小於或等於 3.3 版 |2019年9月15日 |
 | 6.5. * | 6.4.617.* |小於或等於版本3。4 |2020 5 月1日 |
-| 7.0. * | 6.4.664.# |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
+| 7.0. * | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
 下表列出支援的 Service Fabric 版本所支援的作業系統。

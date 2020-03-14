@@ -3,14 +3,14 @@ title: Azure Site Recovery 中 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 對 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復支援。
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
+ms.date: 2/24/2020
 ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444242"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371387"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -135,7 +135,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支援所有[股票 SUSE 15 
 
 **元件** | **支援**
 --- | ---
-檔案系統 | ext3、ext4、XFS
+檔案系統 | ext3、ext4、XFS、BTRFS （條件依據此資料表而適用）
 磁碟區管理員 | -支援 LVM。<br/> -從[更新彙總套件 31](https://support.microsoft.com/help/4478871/) （行動服務的9.20 版）開始支援 LVM 上的/boot。 舊版的行動服務版本不支援此功能。<br/> -不支援多個 OS 磁片。
 並行虛擬存放裝置 | 不支援並行虛擬驅動程式所匯出的裝置。
 多佇列區塊 IO 裝置 | 不支援。

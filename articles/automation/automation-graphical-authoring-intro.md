@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c1af4b0dac4b50e01b62b02f606be9fdd89d2ad1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278879"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367324"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自動化中的圖形化編寫
 
@@ -72,7 +72,7 @@ Canvas 控制項可讓您設計 runbook。 您可以從程式庫控制項中的�
 
 #### <a name="parameter-values"></a>參數值
 
-在指定參數的值時，您可以選取資料來源以判斷如何指定值。 適用于特定參數的資料來源取決於該參數的有效值。 例如，對於不允許 null 值的參數而言， **Null**不是可用的選項。
+在指定參數的值時，您可以選取資料來源以判斷如何指定值。 適用于特定參數的資料來源取決於該參數的有效值。 例如，對於不允許 Null 值的參數而言，Null 並非可用選項。
 
 | 資料來源 | 描述 |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Canvas 控制項可讓您設計 runbook。 您可以從程式庫控制項中的�
 
 #### <a name="optional-additional-parameters"></a>選擇性的其他參數
 
-所有 Cmdlet 可選擇提供額外的參數。 這些是 PowerShell 一般參數或其他自訂參數。 圖形化編輯器會顯示一個文字方塊，您可以在其中使用 PowerShell 語法來提供參數。 例如，若要使用*Verbose*一般參數，您應該指定 `-Verbose:$True`。
+所有 Cmdlet 可選擇提供額外的參數。 這些是 PowerShell 一般參數或其他自訂參數。 圖形化編輯器會顯示一個文字方塊，您可以在其中使用 PowerShell 語法來提供參數。 例如，若要使用 `Verbose` 一般參數，您應該指定 `-Verbose:$True`。
 
 ### <a name="retry-activity"></a>重試活動
 
@@ -102,14 +102,14 @@ Canvas 控制項可讓您設計 runbook。 您可以從程式庫控制項中的�
 
 ![活動重試延遲](media/automation-graphical-authoring-intro/retry-condition.png)
 
-重試條件可以使用名為*RetryData*的變數，以提供有關活動重試資訊的存取權。 此變數具有下表中的屬性：
+重試條件可以使用名為 `RetryData` 的變數，以提供有關活動重試資訊的存取權。 此變數具有下表中的屬性：
 
 | 屬性 | 描述 |
 |:--- |:--- |
-| NumberOfAttempts |活動已執行的次數。 |
-| 輸出 |活動上次執行的輸出。 |
-| TotalDuration |活動第一次開始之後的經過時間。 |
-| StartedAt |第一次啟動活動時的時間（UTC 格式）。 |
+| `NumberOfAttempts` |活動已執行的次數。 |
+| `Output` |活動上次執行的輸出。 |
+| `TotalDuration` |活動第一次開始之後的經過時間。 |
+| `StartedAt` |第一次啟動活動時的時間（UTC 格式）。 |
 
 以下是活動重試條件的範例。
 
@@ -136,7 +136,7 @@ $RetryData.TotalDuration.TotalMinutes -ge 2
 
 「工作流程腳本控制」是一種特殊的活動，可接受 PowerShell 或 PowerShell 工作流程腳本，視所撰寫的圖形化 runbook 類型而定。 此控制項提供其他方法可能無法使用的功能。 它不能接受參數，但它可以對活動輸出和 Runbook 輸入參數使用變數。 活動的任何輸出都會新增至 databus。 例外狀況是沒有連出連結的輸出，在此情況下，會將輸出新增至 runbook 的輸出。
 
-例如，下列程式碼會使用名為*NumberOfDays*的 runbook 輸入變數來執行日期計算。 然後，它會傳送匯出的 DateTime 值做為輸出，供 runbook 中的後續活動使用。
+例如，下列程式碼會使用名為 `NumberOfDays`的 runbook 輸入變數來執行日期計算。 然後，它會傳送匯出的 DateTime 值做為輸出，供 runbook 中的後續活動使用。
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -167,9 +167,9 @@ $DateTimeStart
 
 ### <a name="link-conditions"></a>連結條件
 
-當您在連結上指定條件時，只有在條件解析為 True 時，目的地活動才會執行。 您通常會在條件中使用*ActivityOutput*變數來取出來源活動的輸出。
+當您在連結上指定條件時，只有在條件解析為 True 時，目的地活動才會執行。 您通常會在條件中使用 `ActivityOutput` 變數，以取得來源活動的輸出。
 
-對於管線連結，您必須指定單一物件的條件。 Runbook 會根據來源活動來評估每個物件輸出的條件。 然後，它會針對滿足條件的每個物件執行目的地活動。 例如，透過 Update-azvm 的來源活動，您可以針對條件**式**管線連結使用下列語法，只取出資源群組中名為 Group1 的虛擬機器。
+對於管線連結，您必須指定單一物件的條件。 Runbook 會根據來源活動來評估每個物件輸出的條件。 然後，它會針對滿足條件的每個物件執行目的地活動。 例如，使用 `Get-AzVM`的來源活動時，您可以針對條件式管線連結使用下列語法，只取出資源群組中名為 Group1 的虛擬機器。
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
@@ -181,7 +181,7 @@ $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 
 ![具有順序的條件式連結](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Runbook 會使用三種不同的順序連結來驗證輸入參數*VMName*和*ResourceGroupName*的值，以判斷要採取的適當動作。 可能的動作包括啟動單一 VM、啟動資源群組中的所有 Vm，或啟動訂用帳戶中的所有 Vm。 針對 [**連接到 Azure]** 和 [**取得單一 VM**] 之間的順序連結，以下是條件邏輯：
+Runbook 會使用三種不同的順序連結來驗證輸入參數的值 `VMName` 並 `ResourceGroupName` 以判斷要採取的適當動作。 可能的動作包括啟動單一 VM、啟動資源群組中的所有 Vm，或啟動訂用帳戶中的所有 Vm。 對於 `Connect to Azure` 和 `Get single VM`之間的順序連結，以下是條件邏輯：
 
 ```powershell-interactive
 <#
@@ -196,11 +196,11 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 使用條件式連結時，可從來源活動提供該分支中的其他活動使用的資料將由條件篩選。 如果活動是多個連結的來源，則每個分支中的活動可用的資料，取決於連接到該分支的連結中的條件。
 
-例如，下列 runbook 中的**update-azvm**活動會啟動所有虛擬機器。 它有兩個條件式連結。 第一個條件式連結會使用運算式 `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`，以篩選**update-azvm**活動是否成功完成。 第二個條件式連結會使用運算式 `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` 來篩選**update-azvm**活動是否無法啟動虛擬機器。
+例如，下列 runbook 中的 `Start-AzVM` 活動會啟動所有虛擬機器。 它有兩個條件式連結。 第一個條件式連結會使用運算式 `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` 來篩選 `Start-AzVM` 活動是否成功完成。 第二個條件式連結會使用運算式 `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` 來篩選 `Start-AzVm` 活動是否無法啟動虛擬機器。
 
 ![條件式連結範例](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-遵循第一個連結並使用來自**get-help**的活動輸出的任何活動，只會抓取在執行**get-help**時啟動的虛擬機器。 遵循第二個連結的任何活動，只會取得在執行**get-help**時停止的虛擬機器。 遵循第三個連結的任何活動，會取得所有虛擬機器，不論其執行狀態為何。
+第一個連結後面的任何活動，並使用來自 `Get-AzureVM` 的活動輸出，只會抓取 `Get-AzureVM` 執行時啟動的虛擬機器。 遵循第二個連結的任何活動，只會取得執行 `Get-AzureVM` 時停止的虛擬機器。 遵循第三個連結的任何活動，會取得所有虛擬機器，不論其執行狀態為何。
 
 ### <a name="junctions"></a>接合
 
@@ -232,7 +232,7 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 ![活動輸出](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-第二個數據存取機制會使用如下所示的語法，透過*ActivityOutput*變數抓取 PowerShell 運算式資料來源中的活動輸出或工作流程腳本活動。 如果輸出是物件，您的 runbook 可以指定單一屬性。
+第二個數據存取機制會使用如下所示的語法，在 PowerShell 運算式資料來源中抓取活動的輸出，或使用 `ActivityOutput` 變數來抓取工作流程腳本活動。 如果輸出是物件，您的 runbook 可以指定單一屬性。
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -245,7 +245,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-只有圖形化 PowerShell 工作流程 runbook 才會啟用檢查點，而圖形化 runbook 無法使用。 如果 runbook 使用 Azure Cmdlet，則應該遵循具有**disconnect-azaccount**活動的任何檢查點活動。 當 runbook 暫停，而且必須在不同的背景工作上從這個檢查點重新開機時，就會使用 connect 作業。
+只有圖形化 PowerShell 工作流程 runbook 才會啟用檢查點，而圖形化 runbook 無法使用。 如果 runbook 使用 Azure Cmdlet，則應該遵循具有 `Connect-AzAccount` 活動的任何檢查點活動。 當 runbook 暫停，而且必須在不同的背景工作上從這個檢查點重新開機時，就會使用 connect 作業。
 
 ## <a name="runbook-input-and-output"></a>Runbook 輸入和輸出
 
@@ -255,7 +255,7 @@ Runbook 需要使用者透過 Azure 入口網站或從另一個 runbook 啟動 r
 
 Runbook 會藉由定義一或多個輸入參數來接受輸入。 使用者每次啟動 runbook 時，都會提供這些參數的值。 當使用者使用 Azure 入口網站啟動 runbook 時，系統會提示使用者為 runbook 支援的每個輸入參數提供值。
 
-撰寫 runbook 時，您可以按一下 runbook 工具列上的 [**輸入和輸出**] 按鈕來存取其輸入參數。 這會開啟 [輸入和輸出] 控制項，您可以在其中編輯現有的輸入參數，或按一下 [**加入輸入**] 來建立一個新的。
+撰寫 runbook 時，您可以按一下 runbook 工具列上的 [**輸入和輸出**] 來存取其輸入參數。 這會開啟 [輸入和輸出] 控制項，您可以在其中編輯現有的輸入參數，或按一下 [**加入輸入**] 來建立一個新的。
 
 ![加入輸入](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -266,8 +266,8 @@ Runbook 會藉由定義一或多個輸入參數來接受輸入。 使用者每�
 | 名稱 | 必要。 參數名稱。 此名稱在 runbook 內必須是唯一的。 它必須以字母開頭，且只能包含字母、數位和底線。 名稱不能包含空格。 |
 | 描述 |選擇性。 輸入參數用途的描述。 |
 | 類型 | 選擇性。 對參數值預期的資料型別。 提示您輸入時，Azure 入口網站會對每個參數提供適當的資料類型控制項。 支援的參數類型為 String、Int32、Int64、Decimal、Boolean、DateTime 和 Object。 如果未選取資料類型，則會預設為 String。|
-| 強制性 | 選擇性。 設定，指定是否必須提供參數的值。 如果您選擇 [**是]** ，則必須在 runbook 啟動時提供值。 如果您選擇 [**否**]，則在 runbook 啟動時不需要值，而且可以使用預設值。 如果您沒有為每個未定義預設值的強制參數提供值，runbook 就無法啟動。 |
-| 預設值 | 選擇性。 當 runbook 啟動時，用於參數的值（如果未傳入的話）。 若要設定預設值，請選擇 [自訂]。 如果您不想提供任何預設值，請選取 [**無**]。 |
+| 強制性 | 選擇性。 設定，指定是否必須提供參數的值。 如果您選擇 [`yes`]，則必須在啟動 runbook 時提供值。 如果您選擇 [`no`]，啟動 runbook 時就不需要值，而且可以使用預設值。 如果您沒有為每個未定義預設值的強制參數提供值，runbook 就無法啟動。 |
+| 預設值 | 選擇性。 當 runbook 啟動時，用於參數的值（如果未傳入的話）。 若要設定預設值，請選擇 [`Custom`]。 如果您不想提供任何預設值，請選取 [`None`]。 |
 
 ### <a name="runbook-output"></a>Runbook 輸出
 
@@ -304,7 +304,7 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>活動輸出
 
-若要在 runbook 中使用上一個活動的輸出，請使用*ActivityOutput*變數搭配下列語法。
+若要在 runbook 中使用上一個活動的輸出，請使用 `ActivityOutput` 變數搭配下列語法。
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -332,7 +332,7 @@ Runbook 可在更複雜的運算式中使用活動的輸出，如下所示。 �
 
 使用 [比較運算子](https://technet.microsoft.com/library/hh847759.aspx) 來比較值或判斷值是否符合指定的模式。 比較會傳回 True 或 False 的值。
 
-例如，下列條件會判斷來自名為**get-help**之活動的虛擬機器目前是否已停止。
+例如，下列條件會判斷來自名為 `Get-AzureVM` 之活動的虛擬機器目前是否已停止。
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
@@ -344,7 +344,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-您可以使用[邏輯運算子](https://technet.microsoft.com/library/hh847789.aspx)（例如 **-and**或 **-or**）聯結 runbook 中的多個條件。 例如，下列條件會檢查上一個範例中的虛擬機器是否處於**已停止**或**正在停止**的狀態。
+您可以使用[邏輯運算子](https://technet.microsoft.com/library/hh847789.aspx)（例如 `-and` 或 `-or`）聯結 runbook 中的多個條件。 例如，下列條件會檢查上一個範例中的虛擬機器是否處於已停止或正在停止的狀態。
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -369,7 +369,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-下列範例使用稱為 **Get Twitter Connection** 的活動的輸出來填入雜湊表。
+下列範例會使用稱為 `Get Twitter Connection` 之活動的輸出來填入雜湊表。
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -380,30 +380,30 @@ $h
 
 ## <a name="authenticating-to-azure-resources"></a>向 Azure 資源驗證
 
-管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](automation-create-runas-account.md)（也稱為服務主體）是自動化 runbook 用來存取訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以藉由將使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**連線資產新增至畫布，將此功能新增至圖形化 runbook。 您也可以新增[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。 下列範例說明此案例。
+管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](automation-create-runas-account.md)（也稱為服務主體）是自動化 runbook 用來存取訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以藉由將使用[get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的 `AzureRunAsConnection` 連線資產新增至畫布，將此功能新增至圖形化 runbook。 您也可以新增[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。 下列範例說明此案例。
 
 ![執行身分驗證活動](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-「**取得執行**身分」連線活動（或**get-automationconnection**）是使用名為**AzureRunAsConnection**的常數值資料來源來設定。
+`Get Run As Connection` 活動（或 `Get-AutomationConnection`）是使用名為 `AzureRunAsConnection`的常數值資料來源進行設定。
 
 ![執行身分連線設定](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-下一個活動（ **disconnect-azaccount**）會新增已驗證的執行身分帳戶，以便在 runbook 中使用。
+下一個活動（`Connect-AzAccount`）會新增已驗證的執行身分帳戶，以便在 runbook 中使用。
 
 ![Connect-Disconnect-azaccount 參數集](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->針對 PowerShell runbook， **disconnect-azaccount**和**add-AzureRMAccount**是**disconnect-azaccount**的別名。 請注意，您的圖形化 runbook 無法使用這些別名。 圖形化 runbook 只能使用**disconnect-azaccount**本身。
+>針對 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount`的別名。 請注意，您的圖形化 runbook 無法使用這些別名。 圖形化 runbook 只能使用 `Connect-AzAccount` 本身。
 
-針對參數欄位、 **APPLICATIONID**、 **CERTIFICATETHUMBPRINT**和**TENANTID**，請指定欄位路徑的屬性名稱，因為活動會輸出具有多個屬性的物件。 否則，當 runbook 執行時，它會在嘗試進行驗證時失敗。 這就是您使用執行身分帳戶驗證 Runbook 時所需的最低限度。
+針對參數欄位**APPLICATIONID**、 **CERTIFICATETHUMBPRINT**和**TENANTID**，請指定欄位路徑的屬性名稱，因為活動會輸出具有多個屬性的物件。 否則，當 runbook 執行時，它會在嘗試進行驗證時失敗。 這就是您使用執行身分帳戶驗證 Runbook 時所需的最低限度。
 
-有些訂閱者會使用[Azure AD 使用者帳戶](automation-create-aduser-account.md)建立自動化帳戶，以管理 Azure 傳統部署或 Azure Resource Manager 資源。 為維持這些訂閱者的回溯相容性，在 runbook 中使用的驗證機制是具有認證[資產](automation-credentials.md)的**add-azureaccount** Cmdlet。 資產代表可存取 Azure 帳戶的 Active Directory 使用者。
+有些訂閱者會使用[Azure AD 使用者帳戶](automation-create-aduser-account.md)建立自動化帳戶，以管理 Azure 傳統部署或 Azure Resource Manager 資源。 為維持這些訂閱者的回溯相容性，在 runbook 中使用的驗證機制是具有[認證資產](automation-credentials.md)的 `Add-AzureAccount` Cmdlet。 資產代表可存取 Azure 帳戶的 Active Directory 使用者。
 
-您可以藉由將認證資產新增至畫布，然後按使用認證資產進行輸入的**add-azureaccount**活動，為您的圖形化 runbook 啟用這項功能。 請參閱下列範例。
+您可以為圖形化 runbook 啟用這項功能，方法是將認證資產新增至畫布，後面接著使用認證資產進行輸入的 `Add-AzureAccount` 活動。 請參閱下列範例。
 
 ![驗證活動](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Runbook 必須在其啟動時和每個檢查點之後進行驗證。 因此，在任何**檢查點工作流程**活動之後，您必須使用**add-azureaccount**活動。 您不需要使用額外的認證活動。
+Runbook 必須在其啟動時和每個檢查點之後進行驗證。 因此，在任何 `Checkpoint-Workflow` 活動之後，您都必須使用 `Add-AzureAccount` 活動。 您不需要使用額外的認證活動。
 
 ![活動輸出](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 

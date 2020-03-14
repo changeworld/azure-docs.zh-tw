@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Active Directory 適用於 MySQL 的 Azure 資料庫-單一伺服器
-description: 瞭解如何設定 Azure Active Directory （Azure AD）以適用於 MySQL 的 Azure 資料庫單一伺服器進行驗證
+title: 使用 Azure Active Directory 適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何設定 Azure Active Directory （Azure AD）以使用適用於 MySQL 的 Azure 資料庫進行驗證
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110619"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299000"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 來向 MySQL 進行驗證
 
@@ -205,7 +205,7 @@ CREATE AADUSER 'Prod_DB_Readonly';
 
 ## <a name="next-steps"></a>後續步驟
 
-* 回顧[適用於 MySQL 的 Azure 資料庫-單一伺服器的 Azure Active Directory 驗證](concepts-azure-ad-authentication.md)的整體概念
+* 請參閱[使用適用於 MySQL 的 Azure 資料庫 Azure Active Directory 驗證](concepts-azure-ad-authentication.md)的整體概念
 
 <!--Image references-->
 

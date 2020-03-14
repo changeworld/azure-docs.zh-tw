@@ -4,14 +4,14 @@ description: 瞭解如何使用 Azure 入口網站或 CLI 來建立、查看和�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363401"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369381"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -136,7 +136,7 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Resource Manager 範本建立計量警示](../../azure-monitor/platform/alerts-enable-template.md)。
+- [使用 Azure Resource Manager 範本建立計量警示](../../azure-monitor/platform/alerts-metric-create-templates.md)。
 - [了解計量警示的運作方式](alerts-metric-overview.md)。
 - [了解計量警示如何搭配動態閾值條件運作](alerts-dynamic-thresholds.md)。
 - [了解計量警示的 Webhook 結構描述](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

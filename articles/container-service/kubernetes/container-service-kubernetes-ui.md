@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276989"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371132"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(已淘汰) 搭配 Azure Container Service 使用 Kubernetes Web UI
 
@@ -21,7 +21,7 @@ ms.locfileid: "76276989"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 
@@ -29,8 +29,8 @@ ms.locfileid: "76276989"
 
 您可以藉由執行下列操作來測試是否已安裝 `az` 工具：
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 如果您尚未安裝 `az` 工具，[這裡](https://github.com/azure/azure-cli#installation)有指示。
@@ -38,13 +38,13 @@ $ az --version
 您可以藉由執行下列操作來測試是否已安裝 `kubectl` 工具：
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 如果您尚未安裝 `kubectl`，可以執行︰
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>概觀
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>連接至 Web UI
 您可以藉由執行下列操作啟動 Kubernetes Web UI：
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 這應該會開啟網頁瀏覽器，設定與安全 Proxy (將您的本機電腦連接至 Kubernetes Web UI) 通訊。

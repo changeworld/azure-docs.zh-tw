@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395979"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243792"
 ---
 # <a name="what-are-mapping-data-flows"></a>什麼是對應資料流程？
 
@@ -33,13 +33,13 @@ ms.locfileid: "78395979"
 
 資料流程畫布分成三個部分：頂端列、圖形和設定面板。 
 
-![畫布](media/data-flow/canvas1.png "Canvas")
+![畫布](media/data-flow/canvas1.png "畫布")
 
 ### <a name="graph"></a>圖形
 
 圖形會顯示轉換資料流程。 它會顯示來源資料流入一或多個接收時的歷程。 若要新增來源，請選取 [新增**來源**]。 若要加入新的轉換，請選取現有轉換右下方的加號。
 
-![畫布](media/data-flow/canvas2.png "Canvas")
+![畫布](media/data-flow/canvas2.png "畫布")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 整合執行時間資料流程屬性
 

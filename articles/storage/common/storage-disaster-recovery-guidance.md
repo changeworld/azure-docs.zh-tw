@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894535"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365353"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>嚴重損壞修復和帳戶容錯移轉（預覽）
 
 Microsoft 致力於確保 Azure 服務皆能持續可用。 不過仍然可能會發生計畫外的服務中斷。 如果您的應用程式需要復原功能，Microsoft 建議使用異地多餘的儲存體，以便將您的資料複製到第二個區域。 此外，客戶應該要建立災害復原計畫來處理區域服務中斷。 災害復原計畫相當重要的一部分，便是準備在主要端點無法使用的情況下容錯移轉到次要端點。
 
 Azure 儲存體針對異地備援儲存體帳戶支援帳戶容錯移轉 (預覽)。 透過帳戶容錯移轉，您可以在主要端點無法使用時，為您的儲存體帳戶起始容錯移轉程序。 容錯移轉會更新次要端點以成為儲存體帳戶的主要端點。 容錯移轉完成後，用戶端便可以開始寫入到新的主要端點。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 本文說明涉及帳戶容錯移轉的概念和程序，並討論如何準備儲存體帳戶，以在對客戶造成最少影響的前提下進行復原。 若要了解如何在 Azure 入口網站或 PowerShell 中起始帳戶容錯移轉，請參閱[起始帳戶容錯移轉 (預覽)](storage-initiate-account-failover.md)。
 
@@ -124,7 +126,7 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 #### <a name="storage-account-containing-archived-blobs"></a>包含已封存 blob 的儲存體帳戶
 
-包含封存 blob 的儲存體帳戶支援帳戶容錯移轉。 容錯移轉完成後，若要將帳戶轉換回 GRS 或 RA-GRS，必須先將所有 archieved blob 解除凍結至線上層。
+包含封存 blob 的儲存體帳戶支援帳戶容錯移轉。 容錯移轉完成後，若要將帳戶轉換回 GRS 或 RA-GRS，必須先將所有封存的 blob 解除凍結到線上層。
 
 #### <a name="storage-resource-provider"></a>儲存體資源提供者
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 147a131eb79c74dc38c4217d167c7d65ee8a9274
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046476"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366167"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>為 Office 365 群組設定到期原則
 
@@ -42,7 +42,7 @@ ms.locfileid: "77046476"
 
 ## <a name="activity-based-automatic-renewal"></a>以活動為基礎的自動續約
 
-使用 Azure AD 情報，群組現在會根據最近是否已使用來自動更新。 這項功能不需要由群組擁有者進行手動動作，因為它是以 Office 365 服務（如 Outlook、SharePoint、小組或 Yammer）的群組使用者活動為基礎。 例如，如果擁有者或群組成員執行的作業類似在 SharePoint 中上傳檔、流覽小組頻道，或傳送電子郵件至 Outlook 中的群組，則會自動更新該群組，而且擁有者不會收到任何更新通知。
+使用 Azure AD 情報，群組現在會根據最近是否已使用來自動更新。 這項功能不需要由群組擁有者進行手動動作，因為它是以 Office 365 服務（如 Outlook、SharePoint 或小組）中群組的使用者活動為基礎。 例如，如果擁有者或群組成員執行的作業類似在 SharePoint 中上傳檔、流覽小組頻道，或傳送電子郵件至 Outlook 中的群組，則會自動更新該群組，而且擁有者不會收到任何更新通知。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>自動更新群組到期的活動
 
@@ -134,7 +134,7 @@ User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所
    Connect-AzureAD
    ```
 
-1. 設定到期設定使用 Remove-azureadmsgrouplifecyclepolicy 指令程式，將 Azure AD 組織中所有 Office 365 群組的存留期設為365天。 無擁有者之 Office 365 群組的續約通知會傳送給 ‘emailaddress@contoso.com’
+1. 設定到期設定使用 Remove-azureadmsgrouplifecyclepolicy 指令程式，將 Azure AD 組織中所有 Office 365 群組的存留期設為365天。 不具擁有者之 Office 365 群組的續約通知會傳送至 'emailaddress@contoso.com'
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所
 
    - 原則識別碼
    - Azure AD 組織中所有 Office 365 群組的存留期皆設定為365天
-   - 無擁有者之 Office 365 群組的續約通知會傳送給 ‘emailaddress@contoso.com’。
+   - 不具擁有者之 Office 365 群組的續約通知會傳送至 'emailaddress@contoso.com'。
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ea0b173f12a1c80f276af3ce3f6222efaad07972
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691051"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370622"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援（預覽）
 
 變更摘要的目的是要為儲存體帳戶中 blob 和 blob 中繼資料所發生的所有變更提供交易記錄。 變更摘要會提供這些變更的已**排序**、**保證**、**持久**、**不可變**、**唯讀**記錄。 用戶端應用程式可以隨時在串流處理或批次模式中讀取這些記錄。 變更摘要可讓您建立有效率且可調整的解決方案，以低成本處理 Blob 儲存體帳戶中發生的變更事件。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 變更摘要會以[blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)的形式儲存在儲存體帳戶的特殊容器中，以標準[blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)成本為限。 您可以根據您的需求來控制這些檔案的保留期限（請參閱目前版本的[條件](#conditions)）。 變更事件會以[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式規格的記錄形式附加至變更摘要，這是精簡、快速的二進位格式，可使用內嵌架構提供豐富的資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。
 
@@ -55,7 +57,7 @@ ms.locfileid: "75691051"
 > [!IMPORTANT]
 > 變更摘要處於公開預覽狀態，並可在**westcentralus**和**westus2**區域中使用。 請參閱本文的[條件](#conditions)一節。 若要註冊預覽，請參閱本文的[註冊您的訂](#register)用帳戶一節。 您必須先註冊您的訂用帳戶，才能在您的儲存體帳戶上啟用變更摘要。
 
-### <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站，在您的儲存體帳戶上啟用變更摘要：
 
@@ -69,7 +71,7 @@ ms.locfileid: "75691051"
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 啟用變更摘要：
 
@@ -99,7 +101,7 @@ ms.locfileid: "75691051"
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[範本](#tab/template)
+### <a name="template"></a>[範本](#tab/template)
 使用 Azure Resource Manager 範本，透過 Azure 入口網站在現有的儲存體帳戶上啟用變更摘要：
 
 1. 在 Azure 入口網站中，選擇 **建立資源**。
@@ -148,7 +150,7 @@ ms.locfileid: "75691051"
 
 <a id="segment-index"></a>
 
-### <a name="segments"></a>區隔
+### <a name="segments"></a>使用者分佈
 
 變更摘要是組織成**每小時***區段*，但每隔幾分鐘就會附加和更新的變更記錄。 只有當該小時內發生 blob 變更事件時，才會建立這些區段。 這可讓您的用戶端應用程式取用在特定時間範圍內發生的變更，而不需要搜尋整個記錄檔。 若要深入瞭解，請參閱[規格](#specifications)。
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484801"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273796"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>引進 Azure Deployment Manager 的健全狀況整合推出（公開預覽）
 
@@ -138,7 +138,7 @@ Azure Deployment Manager 中的新*healthCheck*步驟可讓您宣告指出狀況
 
     1. 完成部署作業之後，Vm 可能會重新開機、根據新的資料進行重新設定，或甚至是第一次啟動。 服務也需要一些時間，才會開始發出健全狀況信號，讓健全狀況監視提供者將其匯總到有用的專案。 在此」動盪過程中，檢查服務健全狀況可能不合理，因為更新尚未達到穩定狀態。 事實上，服務在狀況良好和狀況不良狀態時，可能會因為資源已結算而不穩定。 
     1. 在等待階段期間，不會監視服務健康狀態。 這是用來允許已部署的資源在開始健康情況檢查程式之前製作時間。 
-1. 彈性
+1. Elastic
 
     1. 由於在所有情況下，資源在製作穩定之前需要多久的時間才會變長，因此彈性階段可讓您在資源可能不穩定以及需要維持健康狀態良好的情況之間有彈性的時段狀態.
     1. 當彈性階段開始時，Azure Deployment Manager 會開始針對服務健全狀況定期輪詢提供的 REST 端點。 可設定輪詢間隔。 

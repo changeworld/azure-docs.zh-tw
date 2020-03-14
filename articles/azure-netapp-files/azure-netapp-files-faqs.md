@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248537"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369738"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -60,7 +60,7 @@ ms.locfileid: "79248537"
 
 Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片區產生唯一的 XTS-AES-256 資料加密金鑰。 加密金鑰階層用來加密和保護所有磁片區金鑰。 這些加密金鑰永遠不會以未加密的格式顯示或報告。 刪除磁片區時，會立即刪除加密金鑰。
 
-目前不支援使用者管理的金鑰（攜帶您自己的金鑰）。
+使用 Azure 專用 HSM 的使用者管理金鑰（攜帶您自己的金鑰）支援可在美國東部、美國西部2和美國中南部區域以控制的基礎提供。  客戶可以在 anffeedback@microsoft.com要求存取權，而當容量可供使用時，將會核准要求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>我可以設定 NFS 匯出原則規則來控制 Azure NetApp Files 服務裝載目標的存取權嗎？
 

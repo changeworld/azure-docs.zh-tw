@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906565"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370469"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
 您可以將自訂網域對應至 blob 服務端點或[靜態網站](storage-blob-static-website.md)端點。 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > 這個對應僅適用于子域（例如： `www.contoso.com`）。 如果您想要在根域（例如： `contoso.com`）上使用 web 端點，則必須使用 Azure CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
@@ -229,9 +231,9 @@ ms.locfileid: "76906565"
 
 ### <a name="remove-a-custom-domain-mapping"></a>移除自訂網域對應
 
-若要移除自訂網域對應，請取消註冊自訂網域。 請使用下列其中一個程式。
+若要移除自訂網域對應，請取消註冊自訂網域。 請利用下列其中一項程序。
 
-#### <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+#### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 若要移除自訂網域設定，請執行下列操作：
 
@@ -246,7 +248,7 @@ ms.locfileid: "76906565"
 
 成功移除自訂網域之後，您會看到已成功更新儲存體帳戶的入口網站通知
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要移除自訂網域註冊，請使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，然後指定空字串 (`""`) 作為 `--custom-domain` 引數值。
 
@@ -268,7 +270,7 @@ ms.locfileid: "76906565"
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

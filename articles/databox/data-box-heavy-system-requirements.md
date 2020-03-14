@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 資料方塊沈重的系統需求 |Microsoft Docs
-description: 了解軟體與您 Azure 資料方塊大量的網路需求
+title: Microsoft Azure Data Box Heavy 系統需求 |Microsoft Docs
+description: 瞭解您 Azure Data Box Heavy 的軟體和網路需求
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839788"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260068"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Azure 資料方塊繁重的系統需求
+# <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy 系統需求
 
-本文說明 Azure 資料方塊大量裝置及連接到裝置的用戶端的重要的系統需求。 我們建議您仔細檢閱資訊，再部署您的資料方塊 （大量），然後參考回，視需要在部署和後續作業期間。
+本文說明 Azure Data Box Heavy 裝置和連線到裝置的用戶端的重要系統需求。 我們建議您先仔細閱讀資訊，然後再部署 Data Box Heavy，然後在部署和後續作業期間視需要回頭查看。
 
 系統需求包括：
 
-* **主機連接到資料方塊大量的軟體需求**-描述支援的平台、 本機 web UI 的瀏覽器、 SMB 用戶端，以及主機可連接到資料箱的任何其他需求。
-* **資料方塊大量的網路需求**-提供最佳的大量資料方塊中的裝置作業的網路需求的相關資訊。
+* 連線**到 Data Box Heavy 之主機的軟體需求**-描述支援的平臺、本機 web UI 的瀏覽器、SMB 用戶端，以及可連接至資料箱之主機的任何其他需求。
+* **Data Box Heavy 的網路需求**-提供 Data Box Heavy 裝置最佳操作的網路需求相關資訊。
 
 ## <a name="software-requirements"></a>軟體需求
 
@@ -50,11 +50,11 @@ ms.locfileid: "67839788"
 
 ## <a name="networking-requirements"></a>網路需求
 
-您的資料中心必須有高速網路。 最快的複製速度，您可以利用兩個 40 GbE 連接，以平行方式 （每個節點一個）。 如果您沒有 40 GbE 可用，建議您有至少兩個 10 GbE 連接 （每個節點一個）。
+您的資料中心必須有高速網路。 如需最快速的複製速度，可以平行使用 2 40-GbE 連線（每個節點一個）。 如果您沒有 40-GbE 可用，建議您至少有 2 10-GbE 連線（每個節點一個）。
 
-### <a name="port-requirements"></a>連接埠需求
+### <a name="port-requirements"></a>埠需求
 
-下表列出必須在您允許 SMB 或 NFS 流量的防火牆中開啟的連接埠。 在這個資料表中，in  或 inbound  指的是輸入用戶端要求存取裝置的方向。 *Out*或*輸出*指的是資料方塊大量的裝置所在部署以外傳送外部資料的方向： 例如，輸出到網際網路。
+下表列出需要在防火牆中開啟以允許 SMB 或 NFS 流量的埠。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 [ *Out* ] 或 [*輸出*] 是指您的 Data Box Heavy 裝置在外部將資料傳送到部署之外的方向：例如，輸出到網際網路。
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

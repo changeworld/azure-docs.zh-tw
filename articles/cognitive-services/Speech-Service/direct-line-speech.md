@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562525"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367800"
 ---
-# <a name="about-direct-line-speech"></a>關於 Direct Line 語音
+# <a name="what-is-direct-line-speech"></a>什麼是 Direct Line Speech？
 
 **Direct Line Speech**是強大的端對端解決方案，可讓您建立彈性、可擴充的語音助理。 它是由 Bot Framework 和其 Direct Line 的語音通道提供技術支援，其已針對語音輸入優化，與 bot 的語音輸出互動。
 

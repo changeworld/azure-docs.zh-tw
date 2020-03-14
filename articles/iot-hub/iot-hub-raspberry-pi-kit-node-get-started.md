@@ -2,20 +2,20 @@
 title: 將 Raspberry Pi 連線至雲端中的 Azure IoT 中樞（node.js）
 description: 瞭解如何在本教學課程中設定 Raspberry Pi，並將其連線至 Raspberry Pi 的 Azure IoT 中樞，以將資料傳送到 Azure 雲端平臺。
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: azure iot raspberry pi, raspberry pi iot 中樞, raspberry pi 將資料傳送至雲端, raspberry pi 至 cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457110"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371491"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 連接至 Azure IoT Hub (Node.js)
 
@@ -131,7 +131,7 @@ ms.locfileid: "75457110"
 
 ### <a name="connect-the-sensor-to-pi"></a>將感應器連接至 Pi
 
-使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果沒有感應器，請[略過本節](#connect-pi-to-the-network)。
+使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果您沒有感應器，請[略過本節](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和感應器連接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -202,13 +202,13 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 3. 複製範例應用程式。
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. 安裝該範例的所有套件。 此安裝包含 Azure IoT 裝置 SDK、BME280 感應器程式庫及 Wiring Pi 程式庫。
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -256,6 +256,6 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
 ## <a name="next-steps"></a>後續步驟
 
-您已執行範例應用程式收集感應器資料並傳送至 IoT 中樞。
+您已執行範例應用程式來收集感應器資料，並將它傳送到您的 IoT 中樞。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

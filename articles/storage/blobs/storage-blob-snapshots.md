@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d9650db601426cef195c27e6eb874ec26cf13bb8
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 17cd57fbcf9b1c14fb275a070bdefdd1282c4d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137674"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370520"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 blob 快照集
 
 快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
 ## <a name="about-blob-snapshots"></a>關於 blob 快照集
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Blob 的快照集與其基底 Blob 相同，除了 Blob URI 附加了 [日期時間] 值以表示擷取快照當時的時間。 例如，如果分頁 Blob URI 為 `http://storagesample.core.blob.windows.net/mydrives/myvhd`，則快照集 URI 類似於 `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。
 

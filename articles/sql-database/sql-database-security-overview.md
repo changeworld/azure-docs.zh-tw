@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 348b8fc44628437cbbcfbcd39a26d048284aa60e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208861"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database 安全性功能的概觀
 
@@ -77,7 +77,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
-## <a name="threat-protection"></a>威脅防護
+## <a name="threat-protection"></a>威脅保護
 
 SQL Database 可藉由提供稽核和威脅偵測功能來保護客戶資料。
 
@@ -116,7 +116,7 @@ Sql Server 會針對所有連線強制執行加密（SSL/TLS）。 這可確保�
 
 ### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault 的金鑰管理
 
- [透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) 的[攜帶您自己的金鑰](transparent-data-encryption-byok-azure-sql.md) (BYOK) 支援可讓客戶使用  [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) (Azure 的雲端式外部金鑰管理系統)，取得金鑰管理與輪替的擁有權。 如果撤銷了資料庫對金鑰保存庫的存取權，資料庫即無法解密並讀取到記憶體中。 Azure Key Vault 可提供集中金鑰管理平台、使用嚴密監控的硬體安全性模組 (HSM)，並可區分管理金鑰和資料的職責，以利符合安全性合規性需求。
+[透明資料加密](transparent-data-encryption-byok-azure-sql.md) (TDE) 的 [攜帶您自己的金鑰](/sql/relational-databases/security/encryption/transparent-data-encryption) (BYOK) 支援可讓客戶使用  [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) (Azure 的雲端式外部金鑰管理系統)，取得金鑰管理與輪替的擁有權。 如果撤銷了資料庫對金鑰保存庫的存取權，資料庫即無法解密並讀取到記憶體中。 Azure Key Vault 可提供集中金鑰管理平台、使用嚴密監控的硬體安全性模組 (HSM)，並可區分管理金鑰和資料的職責，以利符合安全性合規性需求。
 
 ### <a name="always-encrypted-encryption-in-use"></a>一律加密 (使用中加密)
 
@@ -152,6 +152,6 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需在 SQL Database 中使用存取控制功能的討論，請參閱[控制存取](sql-database-control-access.md)。
+- 如需在 SQL Database 中使用登入、使用者帳戶、資料庫角色和許可權的討論，請參閱[管理登入和使用者帳戶](sql-database-manage-logins.md)。
 - 如需資料庫稽核的相關討論，請參閱 [SQL Database 稽核 (英文)](sql-database-auditing.md)。
 - 如需威脅偵測的相關討論，請參閱 [SQL Database 威脅偵測](sql-database-threat-detection.md)。

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620525"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256805"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>設定內部部署 VMware 虛擬機器或實體伺服器至次要網站的災害復原
 
@@ -51,13 +51,13 @@ Azure Site Recovery 將持續創新，以 Azure 作為災害復原站台，為 V
 **必要的元件** |複寫機器上的行動服務。 內部部署組態伺服器、處理伺服器、主要目標伺服器。Azure 中用於容錯回復的臨時處理伺服器。|行動服務、處理伺服器、組態伺服器和主要目標
 **組態和協調流程** |Azure 入口網站中的復原服務保存庫 | 使用 vContinuum 
 **複寫** |磁碟 (Windows 和 Linux) |磁碟區 - Windows<br> 磁碟 - Linux
-**共用磁碟叢集** |不支援|支援的
+**共用磁碟叢集** |不支援|支援
 **資料變換限制 (平均值)** |每個磁碟 10 MB/s 的資料<br> 每個 VM 25 MB/s 的資料<br> [深入了解](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | 每個磁碟 > 10 MB/s 的資料  <br> 每個 VM > 25 MB/s 的資料
 **監視** |從 Azure 入口網站|從 CX (組態伺服器)
 **支援矩陣** | [按一下這裡以取得詳細資訊](./vmware-physical-azure-support-matrix.md)|[下載 ASR Scout 相容矩陣](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程：
 
 - [檢閱](vmware-physical-secondary-support-matrix.md)所有元件的支援需求。

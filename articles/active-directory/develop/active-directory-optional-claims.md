@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300063"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136512"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：為您的 Azure AD 應用程式提供選擇性宣告
 
@@ -85,10 +85,10 @@ ms.locfileid: "78300063"
 | `pwd_exp`     | 密碼到期時間        | 密碼到時的日期時間。 |       |
 | `pwd_url`     | 變更密碼 URL             | 使用者可以瀏覽來變更其密碼的 URL。   |   |
 | `in_corp`     | 公司網路內部        | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含宣告。   |  根據 MFA 中的[可信任 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 設定。    |
-| `nickname`    | 暱稱                        | 使用者的其他名稱。 昵稱會與名字或姓氏分開。 | 
-| `family_name` | 姓氏                       | 提供使用者物件中所定義之使用者的姓氏、姓氏或家庭名稱。 <br>"family_name":"Miller" | MSA 和 Azure AD 中支援   |
-| `given_name`  | 名字                      | 提供使用者的第一個或「指定」名稱，如使用者物件上所設定。<br>"given_name": "Frank"                   | MSA 和 Azure AD 中支援  |
-| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久識別碼，且不應該用於金鑰資料。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 |
+| `nickname`    | 暱稱                        | 使用者的其他名稱。 昵稱會與名字或姓氏分開。 需要 `profile` 範圍。| 
+| `family_name` | 姓氏                       | 提供使用者物件中所定義之使用者的姓氏、姓氏或家庭名稱。 <br>"family_name":"Miller" | MSA 和 Azure AD 支援。 需要 `profile` 範圍。   |
+| `given_name`  | 名字                      | 提供使用者的第一個或「指定」名稱，如使用者物件上所設定。<br>"given_name": "Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
+| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久識別碼，且不應該用於金鑰資料。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
 
@@ -117,12 +117,13 @@ ms.locfileid: "78300063"
         }
     ```
 
-這個 OptionalClaims 物件會導致傳回給用戶端的識別碼權杖包含另一個 UPN，該 UPN 含有額外的主租用戶和資源租用戶資訊。 只有當使用者是租使用者中的來賓（使用不同的 IDP 進行驗證）時，才會變更權杖中的 `upn` 宣告。 
+這個 OptionalClaims 物件會使傳回給用戶端的識別碼權杖包含 upn 宣告，並附上額外的主租使用者和資源租使用者資訊。 只有當使用者是租使用者中的來賓（使用不同的 IDP 進行驗證）時，才會變更權杖中的 `upn` 宣告。 
 
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
 
 > [!IMPORTANT]
 > 存取權杖**一律**會使用資源的資訊清單（而非用戶端）產生。  因此，在要求中 `...scope=https://graph.microsoft.com/user.read...` 資源是 Microsoft Graph API。  因此，會使用 Microsoft Graph API 資訊清單（而不是用戶端的資訊清單）來建立存取權杖。  變更應用程式的資訊清單永遠不會導致 Microsoft Graph API 的權杖看起來不同。  若要驗證您的 `accessToken` 變更是否有效，請為您的應用程式要求權杖，而不是另一個應用程式。  
+
 
 您可以透過 UI 或應用程式資訊清單，為您的應用程式設定選擇性宣告。
 
@@ -207,7 +208,7 @@ ms.locfileid: "78300063"
 | `additionalProperties` | 集合 (Edm.String) | 宣告的額外屬性。 如果屬性存在於此集合中，它就會修改名稱屬性中所指定之選擇性宣告的行為。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>設定目錄擴充功能的選擇性宣告
 
-除了標準的選擇性宣告集之外，您也可以設定權杖以包含延伸模組。 此功能可用來附加應用程式可使用的額外使用者資訊 – 例如，使用者已設定的額外識別碼或重要設定選項。 如需範例，請參閱此頁面底部。
+除了標準的選擇性宣告集之外，您也可以設定權杖以包含延伸模組。 如需詳細資訊，請參閱[Microsoft Graph extensionProperty 檔](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0)-請注意，選擇性宣告不支援架構和開啟延伸模組，只有 AAD 圖形樣式目錄延伸模組。 此功能可用來附加應用程式可使用的額外使用者資訊 – 例如，使用者已設定的額外識別碼或重要設定選項。 如需範例，請參閱此頁面底部。
 
 > [!NOTE]
 > - 目錄架構延伸是一個僅限 Azure AD 的功能，因此如果您的應用程式資訊清單要求自訂延伸模組，而 MSA 使用者登入您的應用程式，則不會傳回這些延伸模組。
@@ -269,7 +270,7 @@ ms.locfileid: "78300063"
    如果您想要將權杖中的群組分組以包含 [選擇性宣告] 區段中的內部部署 AD 群組屬性，請指定應套用哪一個權杖類型、所要求的選擇性宣告，以及所需的任何其他屬性。  可以列出多個權杖類型：
 
    - OIDC 識別碼權杖的 idToken
-   - OAuth/OIDC 存取權杖的 accessToken
+   - OAuth 存取權杖的 accessToken
    - SAML 權杖的 Saml2Token。
 
    > [!NOTE]

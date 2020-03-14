@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080871"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137189"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>使用 Azure 入口網站建立媒體服務帳戶
 
@@ -54,8 +54,6 @@ Azure 入口網站提供快速建立 Azure 媒體服務帳戶的方式。 您可
     
 1. 選取 **[釘選到儀表板]** 以查看帳戶部署的進度。
 1. 按一下表單底部的 [建立] 。
-   
-    成功建立帳戶後，隨即載入概觀頁面。 在串流端點資料表中，此帳戶將具有 [**已停止**] 狀態的預設串流端點。 
 
     建立媒體服務帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流處理您的內容，並利用[動態封裝](dynamic-packaging-overview.md)和[動態加密](content-protection-overview.md)功能，您想要串流內容的串流端點必須**處於 [執行**中] 狀態。 
 

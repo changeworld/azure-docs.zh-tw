@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 043350db2c5372fc81fbb2b68155a4ac75457208
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278398"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367018"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 Webhook 啟動 Azure 自動化 Runbook
 
@@ -39,37 +39,37 @@ Webhook 可讓外部服務透過單一 HTTP 要求，在 Azure 自動化中啟�
 
 Webhook 可以定義 runbook 啟動時使用的 runbook 參數值。 Webhook 必須包含任何強制 runbook 參數的值，而且可以包含選擇性參數的值。 即使在 webhook 建立之後，也可以修改設定為 webhook 的參數值。 連結至單一 runbook 的多個 webhook 可以使用不同的 runbook 參數值。 當用戶端使用 Webhook 啟動 Runbook 時，其無法覆寫 Webhook 中定義的參數值。
 
-若要從用戶端接收資料，runbook 支援稱為*WebhookData*的單一參數。 此參數會定義物件，其中包含用戶端在 POST 要求中所包含的資料。
+若要從用戶端接收資料，runbook 支援稱為 `WebhookData`的單一參數。 此參數會定義物件，其中包含用戶端在 POST 要求中所包含的資料。
 
 ![WebhookData 屬性](media/automation-webhooks/webhook-data-properties.png)
 
-*WebhookData*參數具有下列屬性：
+`WebhookData` 參數具有下列屬性：
 
 | 屬性 | 描述 |
 |:--- |:--- |
-| WebhookName | Webhook 的名稱。 |
-| RequestHeader | 雜湊表，包含傳入 POST 要求的標頭。 |
-| RequestBody | 傳入 POST 要求的主體。 此主體會保留任何資料格式，例如字串、JSON、XML 或表單編碼。 Runbook 必須撰寫用來搭配預期的資料格式。 |
+| `WebhookName` | Webhook 的名稱。 |
+| `RequestHeader` | 雜湊表，包含傳入 POST 要求的標頭。 |
+| `RequestBody` | 傳入 POST 要求的主體。 此主體會保留任何資料格式，例如字串、JSON、XML 或表單編碼。 Runbook 必須撰寫用來搭配預期的資料格式。 |
 
-不需要設定 webhook 就能支援*WebhookData*參數，而且 runbook 不需要接受它。 如果 runbook 並未定義參數，則會忽略從用戶端傳送之要求的任何詳細資料。
+不需要設定 webhook 就能支援 `WebhookData` 參數，而且 runbook 不需要接受它。 如果 runbook 並未定義參數，則會忽略從用戶端傳送之要求的任何詳細資料。
 
 > [!NOTE]
 > 呼叫 webhook 時，用戶端應該一律儲存任何參數值，以防呼叫失敗。 如果發生網路中斷或連線問題，應用程式將無法取得失敗的 webhook 呼叫。
 
-如果您在建立 webhook 時指定*WebhookData*的值，當 webhook 使用來自用戶端 POST 要求的資料來啟動 runbook 時，就會覆寫它。 即使應用程式未在要求主體中包含任何資料，也會發生這種情況。 
+如果您在建立 webhook 時指定 `WebhookData` 的值，當 webhook 使用來自用戶端 POST 要求的資料來啟動 runbook 時，就會覆寫它。 即使應用程式未在要求主體中包含任何資料，也會發生這種情況。 
 
-如果您使用 webhook 以外的機制來啟動定義*WebhookData*的 runbook，您可以為 runbook 可辨識的*WebhookData*提供值。 這個值應該是具有與*WebhookData*參數相同[屬性](#webhook-properties)的物件，因此 runbook 可以使用它，就像它適用于 webhook 所傳遞的實際*WebhookData*物件一樣。
+如果您使用 webhook 以外的機制來啟動定義 `WebhookData` 的 runbook，您可以為 runbook 可辨識的 `WebhookData` 提供值。 這個值應該是具有與 `WebhookData` 參數相同[屬性](#webhook-properties)的物件，因此 runbook 可以使用它，就像它適用于由 webhook 所傳遞的實際 `WebhookData` 物件一樣。
 
 例如，如果您從 Azure 入口網站啟動下列 runbook，並想要傳遞一些範例 webhook 資料進行測試，您必須在使用者介面中以 JSON 傳遞資料。
 
 ![來自 UI 的 WebhookData 參數](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-針對下一個 runbook 範例，讓我們定義下列屬性*WebhookData*：
+針對下一個 runbook 範例，讓我們定義 `WebhookData`的下列屬性：
 
 * **WebhookName**： MyWebhook
 * **RequestBody**： `*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
-現在，我們會在 UI 中傳遞*WebhookData*參數的下列 JSON 物件。 這個範例使用回車和分行符號，符合從 webhook 傳入的格式。
+現在，我們會在 UI 中傳遞 `WebhookData` 參數的下列 JSON 物件。 這個範例使用回車和分行符號，符合從 webhook 傳入的格式。
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
@@ -84,7 +84,7 @@ Webhook 可以定義 runbook 啟動時使用的 runbook 參數值。 Webhook 必
 
 Webhook 的安全性依賴其 URL 的隱私權，其中包含允許叫用 webhook 的安全性權杖。 Azure 自動化不會對要求執行任何驗證，只要它是對正確的 URL。 基於這個理由，您的用戶端不應針對執行高度機密作業的 runbook 使用 webhook，而不需使用替代方法來驗證要求。
 
-您可以在 runbook 中包含邏輯，以判斷 webhook 是否呼叫它。 讓 runbook 檢查*WebhookData*參數的**WebhookName**屬性。 Runbook 可以藉由尋找**RequestHeader**和**RequestBody**屬性中的特定資訊來執行進一步的驗證。
+您可以在 runbook 中包含邏輯，以判斷 webhook 是否呼叫它。 讓 runbook 檢查 `WebhookData` 參數的 `WebhookName` 屬性。 Runbook 可以藉由尋找 `RequestHeader` 和 `RequestBody` 屬性中的特定資訊來執行進一步的驗證。
 
 另一個策略是讓 runbook 在收到 webhook 要求時，執行部分外部條件的驗證。 例如，當 GitHub 存放庫有新的認可時，請考慮由 GitHub 呼叫的 runbook。 Runbook 可能會連線到 GitHub，以驗證是否已發生新的認可，然後再繼續。
 
@@ -108,13 +108,13 @@ Webhook 的安全性依賴其 URL 的隱私權，其中包含允許叫用 webhoo
 
 ## <a name="using-a-webhook"></a>使用 Webhook
 
-若要在建立 webhook 之後使用它，您的用戶端必須使用 webhook 的 URL 發出 HTTP POST 要求。 語法為：
+若要在建立 webhook 之後使用它，您的用戶端必須發出 HTTP `POST` 要求，並提供 webhook 的 URL。 語法為：
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-用戶端會從 POST 要求中接收下列其中一個傳回碼。
+用戶端會從 `POST` 要求接收下列其中一個傳回碼。
 
 | 程式碼 | Text | 描述 |
 |:--- |:--- |:--- |
@@ -147,7 +147,7 @@ http://<Webhook Server>/token?=<Token Value>
 下列範例 Runbook 會接受 Webhook 資料，並啟動要求本文中指定的虛擬機器。 若要測試此 runbook，請在您的自動化帳戶的 [ **runbook**] 底下，按一下 [**建立 runbook**]。 如果您不知道如何建立 Runbook，請參閱[建立 Runbook](automation-quickstart-create-runbook.md)。
 
 > [!NOTE]
-> 針對非圖形化 PowerShell runbook， **disconnect-azaccount**和**AzureRMAccount**是[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的別名。 您可以使用這些 Cmdlet，也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)為最新版本。 即使您剛建立新的自動化帳戶，也可能需要更新您的模組。
+> 針對非圖形化 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的別名。 您可以使用這些 Cmdlet，也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)為最新版本。 即使您剛建立新的自動化帳戶，也可能需要更新您的模組。
 
 ```powershell
 param
@@ -219,7 +219,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-下列範例顯示的要求本文可在 **WebhookData** 的 *RequestBody* 屬性中提供給 Runbook 使用。 此值會以 JSON 格式格式化，以與要求主體中包含的格式相容。
+下列範例顯示在 `WebhookData`的 `RequestBody` 屬性中，可供 runbook 使用的要求主體。 此值會以 JSON 格式格式化，以與要求主體中包含的格式相容。
 
 ```json
 [

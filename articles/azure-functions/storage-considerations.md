@@ -3,12 +3,12 @@ title: Azure Functions 的儲存體考慮
 description: 瞭解 Azure Functions 的儲存體需求，以及如何加密儲存的資料。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276578"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存體考慮
 
@@ -56,6 +56,25 @@ ms.locfileid: "77190292"
 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 如需詳細資訊，請參閱待用[資料的加密 Azure 儲存體](../storage/common/storage-service-encryption.md)。
 
 根據預設，資料會使用 Microsoft 管理的金鑰進行加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰，以用於加密 blob 和檔案資料。 這些金鑰必須存在於 Azure Key Vault 中，函式才能存取儲存體帳戶。 若要深入瞭解，請參閱[使用 Azure 入口網站設定 Azure Key Vault 的客戶管理金鑰](../storage/common/storage-encryption-keys-portal.md)。  
+
+## <a name="mount-file-shares-linux"></a>掛接檔案共用（Linux）
+
+您可以將現有的 Azure 檔案儲存體共用掛接至 Linux 函數應用程式。 藉由將共用裝載至您的 Linux 函式應用程式，您可以利用現有的機器學習模型或函式中的其他資料。 您可以使用[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add)命令，將現有的共用掛接至您的 Linux 函式應用程式。 
+
+在此命令中，`share-name` 是現有 Azure 檔案儲存體共用名稱，而 `custom-id` 可以是在裝載至函式應用程式時，可唯一定義共用的任何字串。 此外，`mount-path` 是在函數應用程式中存取共用的路徑。 `mount-path` 的格式必須是 `/dir-name`，而且開頭不能是 `/home`。
+
+如需完整範例，請參閱[建立 Python 函式應用程式和掛接 Azure 檔案儲存體共用](scripts/functions-cli-mount-files-storage-linux.md)中的腳本。 
+
+目前僅支援 `AzureFiles` 的 `storage-type`。 您只能將五個共用掛接至指定的函式應用程式。 若儲存體帳戶位於不同的區域，掛接檔案共用可能會使冷啟動時間增加至少 200-300 毫秒，或甚至更多。
+
+裝載的共用可供您的函式程式碼在指定的 `mount-path` 使用。 例如，當 `mount-path` `/path/to/mount`時，您可以透過檔案系統 Api 存取目標目錄，如下列 Python 範例所示：
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>後續步驟
 

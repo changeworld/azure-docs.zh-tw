@@ -4,12 +4,12 @@ description: 使用 Azure Functions 排程可連接到 Azure SQL Database 以定
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972229"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366799"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 連接到 Azure SQL Database
 
@@ -17,7 +17,7 @@ ms.locfileid: "74972229"
 
 如果這是您第一次使用 C# Functions，則您應該先閱讀 [Azure Functions C# 開發人員參考資料](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 完成[使用 Visual Studio 建立您的第一個](functions-create-your-first-function-visual-studio.md)函式一文中的步驟，以建立以2.x 版或更新版本的執行時間為目標的區域函式應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
 
@@ -43,7 +43,7 @@ ms.locfileid: "74972229"
 
 您必須先將應用程式發佈至 Azure。 如果您尚未這麼做，請[將您的函式應用程式發行至 Azure](functions-develop-vs.md#publish-to-azure)。
 
-1. 在方案總管中，以滑鼠右鍵按一下函式應用程式專案，然後選擇 **發佈** > **管理應用程式設定**...。選取 新增**設定**，在 **新的應用程式設定名稱** 中，輸入 `sqldb_connection`，然後選取**確定**。
+1. 在方案總管中，以滑鼠右鍵按一下函數應用程式專案，然後選擇 **發佈** > **編輯 Azure App Service 設定**。 在 [新增應用程式設定名稱] 中選取 [新增設定]，輸入 `sqldb_connection`，然後選取 [確定]。
 
     ![函數應用程式的應用程式設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "74972229"
 
 ## <a name="add-a-timer-triggered-function"></a>新增計時器觸發函式
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下函數應用程式專案，並依序選擇 [新增]  >  [新專案]。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下函數應用程式專案，並依序選擇 [新增] >  [新專案]。
 
 1. 選取 **Azure Functions** 範本後，將新的項目命名為 `DatabaseCleanup.cs`，然後選取 [新增]。
 

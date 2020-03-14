@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/13/2020
+ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905226"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370163"
 ---
 # <a name="release-notes"></a>版本資訊
 
@@ -49,7 +49,7 @@ HDInsight 中的所有受控磁碟都會使用 Azure 儲存體服務加密 (SSE)
 即將發行的版本中將會發生下列變更。 
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>前端節點必須至少有4核心 VM 
-前端節點必須至少有4核心 VM，才能確保 HDInsight 叢集的高可用性和可靠性。 自2020年4月6日起，客戶只能選擇4核心或以上的 VM 作為新 HDInsight 叢集的前端節點。 現有的叢集將會如預期般繼續執行。 
+前端節點必須至少有4核心 VM，才能確保 HDInsight 叢集的高可用性和可靠性。 自2020年4月6日起，客戶只能選擇4核心或以上的 VM 作為新 HDInsight 叢集的前端節點。 現有的叢集將會繼續如預期般執行。 
 
 ### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 叢集節點大小變更 
 在即將發行的版本中，ESP Spark 叢集所允許的最小節點大小會變更為 Standard_D13_V2。 A 系列 Vm 可能會造成 ESP 叢集問題，因為 CPU 和記憶體容量相對較低。 A 系列 Vm 將會被取代，以建立新的 ESP 叢集。
@@ -65,38 +65,3 @@ HDInsight 會繼續改善叢集的可靠性和效能。
 
 ## <a name="component-version-change"></a>元件版本變更
 此版本沒有任何元件版本變更。 您可以在這裡找到 HDInsight 4.0 ad HDInsight 3.6 的目前元件版本。
-
-## <a name="known-issues"></a>已知問題
-
-從2020年1月29日起，有一個作用中的問題，當您嘗試使用 Jupyter 筆記本時，可能會收到錯誤。 使用下列步驟來修正問題。 您也可以參閱這篇[MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或這[篇 StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)，以取得最新資訊或提出其他問題。 修正問題時，將會更新此頁面。
-
-**錯誤**
-
-* ValueError：無法將筆記本轉換為 v5，因為該版本不存在
-* 載入筆記本時發生錯誤。載入此筆記本時發生未知的錯誤。 此版本可以載入筆記本格式 v4 或更早版本
-
-**原因** 
-
-叢集上 _version 的 .py 檔案已更新為5.x，而不是 4.4. x. # #，或 Ambari 必須重新開機。
-
-**方案**
-
-如果您建立新的 Jupyter 筆記本，並收到上述其中一個錯誤，請執行下列步驟來修正此問題。
-
-1. 前往 `https://CLUSTERNAME.azurehdinsight.net`，在網頁瀏覽器中開啟 Ambari，其中 CLUSTERNAME 是您的叢集名稱。
-1. 在 Ambari 的左側功能表中，按一下 [ **Jupyter**]，然後在 [**服務動作**] 上按一下 [**停止**]。
-1. 透過 ssh 連線到 Jupyter 服務執行所在的叢集前端節點。
-1. 在 sudo 模式中開啟下列檔案/usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version. .py。
-1. 檢查 version_info 的值。
-1. 如果 version_info 的值設定為： 
-
-    version_info = （5，0，3）
-
-    然後將專案修改為： 
-    
-    version_info = （4，4，0）
-
-    並儲存檔案。 
-
-    如果 version_info 已設定為（4，4，0），請繼續進行下一個步驟，因為只有 Ambari 需要重新開機，不需要進行其他任何變更。
-1. 返回 [Ambari]，然後在 [**服務動作**] 中，按一下 [**全部重新開機**]。

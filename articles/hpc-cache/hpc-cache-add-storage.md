@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990601"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271885"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -148,9 +148,9 @@ NFS 儲存體目標可以有多個虛擬路徑，前提是每個路徑都代表�
 
 | 使用方式模型 | 快取模式 | 後端驗證 | 最大回寫延遲 |
 | ---- | ---- | ---- | ---- |
-| 讀取大量、不頻繁的寫入 | 讀取 | 永不 | 無 |
+| 讀取大量、不頻繁的寫入 | 讀取 | 永不 | None |
 | 超過15% 寫入 | 讀取/寫入 | 永不 | 1 小時 |
-| 用戶端略過快取 | 讀取 | 30 秒 | 無 |
+| 用戶端略過快取 | 讀取 | 30 秒 | None |
 
 ## <a name="next-steps"></a>後續步驟
 

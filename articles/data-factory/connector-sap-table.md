@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926184"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281752"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP 資料表複製資料
 
@@ -47,7 +47,7 @@ ms.locfileid: "74926184"
 - 若已設定 SNC，則使用基本驗證或安全網路通訊（SNC）來複製資料。
 - 連接到 SAP 應用程式伺服器或 SAP 訊息伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此 SAP 資料表連接器，您需要：
 
@@ -72,7 +72,7 @@ ms.locfileid: "74926184"
 
 以下是針對 SAP BW 開放式中樞連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設為 `SapTable`。 | 是 |
 | `server` | SAP 實例所在的伺服器名稱。<br/>用來連接到 SAP 應用程式伺服器。 | 否 |
@@ -180,7 +180,7 @@ ms.locfileid: "74926184"
 
 若要將資料從和複製到 SAP BW 開放式中樞連結服務，支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設為 `SapTableResource`。 | 是 |
 | `tableName` | 要從中複製資料的 SAP 資料表名稱。 | 是 |
@@ -212,7 +212,7 @@ ms.locfileid: "74926184"
 
 若要從 SAP 資料表複製資料，支援下列屬性：
 
-| 屬性                         | 描述                                                  | 必要項 |
+| 屬性                         | 描述                                                  | 必要 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 屬性必須設為 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要抓取的資料列數目。                              | 否       |
@@ -238,7 +238,7 @@ ms.locfileid: "74926184"
 | :------- | :------- |
 | `EQ` | 等於 |
 | `NE` | 不等於 |
-| `LT` | 少於 |
+| `LT` | 小於 |
 | `LE` | 小於或等於 |
 | `GT` | 大於 |
 | `GE` | 大於或等於 |

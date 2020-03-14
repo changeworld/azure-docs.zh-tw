@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647341"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371217"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -39,7 +39,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 ## <a name="supported-regions-and-service-offerings"></a>支援的區域和服務供應專案
 
-認知服務的虛擬網路支援僅限於「*全像美國中部」 EUAP*、 *「西歐」* 和「*美國西部 2* Azure 區域」。 此外，並非所有認知服務供應專案都支援虛擬網路。 下列認知服務供應專案允許使用虛擬網路。 如果此處未列出服務供應專案，則不支援虛擬網路。
+以下所列認知服務的虛擬網路支援僅限於*美國中部 EUAP*、美國*中南部*、美國*東部*、*美國西部 2*、*歐洲北部*、*南非北部*、*西歐*、*印度中部*、*澳大利亞東部*、*美國西部*和*US Gov 維吉尼亞州*Azure 區域。 如果此處未列出服務供應專案，則不支援虛擬網路。
 
 > [!div class="checklist"]
 > * [異常偵測器](./anomaly-detector/index.yml)
@@ -51,6 +51,27 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 > * [LUIS](./luis/index.yml)
 > * [個人化工具](./personalizer/index.yml)
 > * [文字分析](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+
+以下所列認知服務的虛擬網路支援僅限於*美國中部 EUAP*、美國*中南部*、*美國東部*、*美國西部 2*、*全球*和*US Gov 維吉尼亞州*Azure 區域。
+> [!div class="checklist"]
+> * [翻譯工具文字](./translator/index.yml)
+
+## <a name="service-tags"></a>服務標記
+除了支援上述服務的虛擬網路服務端點之外，認知服務也支援輸出網路規則設定的服務標記。 下列服務會包含在 CognitiveServicesManagement 服務標記中。
+> [!div class="checklist"]
+> * [異常偵測器](./anomaly-detector/index.yml)
+> * [電腦視覺](./computer-vision/index.yml)
+> * [內容仲裁](./content-moderator/index.yml)
+> * [自訂視覺](./custom-vision-service/index.yml)
+> * [臉部](./face/index.yml)
+> * [表單辨識器](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [個人化工具](./personalizer/index.yml)
+> * [文字分析](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [翻譯工具文字](./translator/index.yml)
+> * [語音服務](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>變更預設的網路存取規則
 
@@ -63,7 +84,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 您可以透過 Azure 入口網站、PowerShell 或 Azure CLI 來管理認知服務資源的預設網路存取規則。
 
-# <a name="azure-portaltabportal"></a>[Azure 入口網站](#tab/portal)
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
 1. 移至您想要保護的認知服務資源。
 
@@ -78,7 +99,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 選取 [儲存] 以套用變更。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安裝[Azure PowerShell](/powershell/azure/install-az-ps)並登[入](/powershell/azure/authenticate-azureps)，或選取 [**試試看**]。
 
@@ -114,7 +135,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安裝[Azure CLI](/cli/azure/install-azure-cli)並登[入](/cli/azure/authenticate-azure-cli)，或選取 [**試試看**]。
 
@@ -165,7 +186,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 您可以透過 Azure 入口網站、PowerShell 或 Azure CLI 來管理認知服務資源的虛擬網路規則。
 
-# <a name="azure-portaltabportal"></a>[Azure 入口網站](#tab/portal)
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
 1. 移至您想要保護的認知服務資源。
 
@@ -200,7 +221,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 選取 [儲存] 以套用變更。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安裝[Azure PowerShell](/powershell/azure/install-az-ps)並登[入](/powershell/azure/authenticate-azureps)，或選取 [**試試看**]。
 
@@ -260,7 +281,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安裝[Azure CLI](/cli/azure/install-azure-cli)並登[入](/cli/azure/authenticate-azure-cli)，或選取 [**試試看**]。
 
@@ -340,7 +361,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 您可以透過 Azure 入口網站、PowerShell 或 Azure CLI 來管理認知服務資源的 IP 網路規則。
 
-# <a name="azure-portaltabportal"></a>[Azure 入口網站](#tab/portal)
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
 1. 移至您想要保護的認知服務資源。
 
@@ -358,7 +379,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 選取 [儲存] 以套用變更。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安裝[Azure PowerShell](/powershell/azure/install-az-ps)並登[入](/powershell/azure/authenticate-azureps)，或選取 [**試試看**]。
 
@@ -416,7 +437,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安裝[Azure CLI](/cli/azure/install-azure-cli)並登[入](/cli/azure/authenticate-azure-cli)，或選取 [**試試看**]。
 

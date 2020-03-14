@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258053"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -133,8 +133,8 @@ RDM | NA | NA
 待用加密（CMK） <br></br> （僅適用于容錯移轉至受控磁片）| 是（透過 PowerShell Az 3.3.0 module 開始） | 是（透過 PowerShell Az 3.3.0 module 開始）
 進階儲存體 | 是 | 是
 匯入/匯出服務 | 否 | 否
-已啟用防火牆的 Azure 儲存體帳戶 | 可以。 適用于目標儲存體和快取。 | 可以。 適用于目標儲存體和快取。
-修改儲存體帳戶 | 不會。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | 否
+已啟用防火牆的 Azure 儲存體帳戶 | 是。 適用于目標儲存體和快取。 | 是。 適用于目標儲存體和快取。
+修改儲存體帳戶 | 否。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | 否
 
 
 ## <a name="azure-compute-features"></a>Azure 計算功能
@@ -163,7 +163,7 @@ FC 磁碟 | 不支援 | 若不支援，則必要條件檢查會失敗。
 硬碟格式 | VHD <br/><br/> VHDX | Site Recovery 會在您容錯移轉至 Azure 時，自動將 VHDX 轉換為 VHD。 當您容錯回復到內部部署時，虛擬機器仍會繼續使用 VHDX 格式。
 BitLocker | 不支援 | 為 VM 啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 介於 1 到 63 個字元。 只能使用字母、數字和連字號。 VM 名稱必須以字母或數字為開頭或結尾。 | 更新 Site Recovery 中 VM 屬性的值。
-VM 類型 | 第 1 代<br/><br/> 第 2 代--Windows | OS 磁碟基本類型的第 2 代 VM (其中包含一或兩個格式化為 VHDX 的資料磁碟區) 且支援小於 300 GB 的磁碟空間。<br></br>不支援 Linux 第 2 代 VM。 [深入了解](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
+VM 類型 | 第 1 代<br/><br/> 第 2 代--Windows | OS 磁碟基本類型的第 2 代 VM (其中包含一或兩個格式化為 VHDX 的資料磁碟區) 且支援小於 300 GB 的磁碟空間。<br></br>不支援 Linux 第 2 代 VM。 [詳細資訊](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
 
 ## <a name="recovery-services-vault-actions"></a>復原服務保存庫動作
 

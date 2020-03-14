@@ -1,32 +1,49 @@
 ---
-title: 呼叫 HTTP 和 HTTPS 端點
-description: 使用 Azure Logic Apps 將連出要求傳送至 HTTP 和 HTTPS 端點
+title: 使用 HTTP 或 HTTPS 呼叫服務端點
+description: 從 Azure Logic Apps 將輸出 HTTP 或 HTTPS 要求傳送至服務端點
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297185"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將撥出電話傳送至 HTTP 或 HTTPS 端點
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫透過 HTTP 或 HTTPS 的服務端點
 
-透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的 HTTP 觸發程式或動作，您可以建立自動化的工作和工作流程，定期將要求傳送至任何 HTTP 或 HTTPS 端點。 若要改為接收和回應傳入的 HTTP 或 HTTPS 呼叫，請使用內建的[要求觸發程式或回應動作](../connectors/connectors-native-reqres.md)。
+透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的 HTTP 觸發程式或動作，您可以建立自動化的工作和工作流程，以透過 HTTP 或 HTTPS 將要求傳送至服務端點。 例如，您可以根據特定排程來檢查該端點，以監視網站的服務端點。 當指定的事件發生在該端點時（例如您的網站停止運作），事件會觸發邏輯應用程式的工作流程，並在該工作流程中執行動作。 如果您想要改為接收和回應輸入 HTTPS 呼叫，請使用內建的[要求觸發程式或回應動作](../connectors/connectors-native-reqres.md)。
 
-例如，您可以在指定的排程上檢查該端點，以監視網站的服務端點。 當特定事件發生在該端點時（例如您的網站停止運作），事件會觸發邏輯應用程式的工作流程，並執行指定的動作。
+> [!NOTE]
+> 根據目標端點的功能，HTTP 連接器支援傳輸層安全性（TLS）版本1.0、1.1 和1.2。 Logic Apps 使用支援的最高版本來與端點協調。 例如，如果端點支援1.2，連接器會先使用1.2。 否則，連接器會使用下一個支援的最高版本。
 
-若要定期檢查或*輪詢*端點，您可以使用 HTTP 觸發程式做為工作流程中的第一個步驟。 在每次檢查時，觸發程序會將呼叫或「要求」傳送至端點。 端點的回應會決定是否執行邏輯應用程式的工作流程。 觸發程序會將回應的任何內容，傳遞至邏輯應用程式中的動作。
+若要依週期性排程檢查或*輪詢*端點，請[新增 HTTP 觸發](#http-trigger)程式做為工作流程中的第一個步驟。 每次觸發程式檢查端點時，觸發程式會呼叫或傳送*要求*至端點。 端點的回應會決定是否執行邏輯應用程式的工作流程。 觸發程式會將端點回應中的任何內容傳遞至邏輯應用程式中的動作。
 
-您可以使用 HTTP 動作作為工作流程中的任何其他步驟，在您想要的時候檢查端點。 端點的回應會決定工作流程的剩餘動作如何執行。
+若要從工作流程中的任何其他位置呼叫端點，請[新增 HTTP 動作](#http-action)。 端點的回應會決定工作流程的剩餘動作如何執行。
 
-根據目標端點的功能，HTTP 連接器支援傳輸層安全性（TLS）版本1.0、1.1 和1.2。 Logic Apps 使用支援的最高版本來與端點協調。 因此，例如，如果端點支援1.2，連接器會先使用1.2。 否則，連接器會使用下一個支援的最高版本。
+> [!IMPORTANT]
+> 如果 HTTP 觸發程式或動作包含這些標頭，Logic Apps 會從產生的要求訊息中移除這些標頭，而不會顯示任何警告或錯誤：
+>
+> * `Accept-*`
+> * `Allow`
+> * `Content-*`，但有下列例外狀況： `Content-Disposition`、`Content-Encoding`和 `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> 雖然 Logic Apps 不會阻止您儲存使用 HTTP 觸發程式或動作與這些標頭的邏輯應用程式，Logic Apps 會忽略這些標頭。
 
-## <a name="prerequisites"></a>必要條件
+本文說明如何將 HTTP 觸發程式或動作新增至邏輯應用程式的工作流程。
+
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,13 +53,15 @@ ms.locfileid: "77118001"
 
 * 您想要從中呼叫目標端點的邏輯應用程式。 若要開始使用 HTTP 觸發程式，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 動作，請使用您想要的任何觸發程式來啟動邏輯應用程式。 這個範例會使用 HTTP 觸發程式做為第一個步驟。
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>新增 HTTP 觸發程式
 
 此內建觸發程式會對指定的端點 URL 進行 HTTP 呼叫，並傳迴響應。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 在邏輯應用程式設計工具中開啟空白邏輯應用程式。
 
-1. 在 [**選擇動作**] 下的 [搜尋] 方塊中，輸入 "HTTP" 作為篩選準則。 從**觸發**程式清單中，選取**HTTP**觸發程式。
+1. 在設計工具的搜尋方塊下，選取 [**內建**]。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從**觸發**程式清單中，選取**HTTP**觸發程式。
 
    ![選取 HTTP 觸發程序](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,6 +82,8 @@ ms.locfileid: "77118001"
 
 1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>新增 HTTP 動作
 
 此內建動作會對指定的端點 URL 進行 HTTP 呼叫，並傳迴響應。
@@ -75,7 +96,7 @@ ms.locfileid: "77118001"
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（ **+** ），然後選取 [**新增動作**]。
 
-1. 在 [**選擇動作**] 下的 [搜尋] 方塊中，輸入 "HTTP" 作為篩選準則。 從 [**動作**] 清單中，選取 [ **HTTP** ] 動作。
+1. 在 [選擇動作] 底下，選取 [內建]。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從 [**動作**] 清單中，選取 [ **HTTP** ] 動作。
 
    ![選取 HTTP 動作](./media/connectors-native-http/select-http-action.png)
 
@@ -153,18 +174,18 @@ ms.locfileid: "77118001"
 
 | 屬性名稱 | 類型 | 描述 |
 |---------------|------|-------------|
-| 頁首 | object | 要求的標頭 |
-| body | object | JSON 物件 | 具有來自要求之本文內容的物件 |
+| headers | 物件 (object) | 要求的標頭 |
+| body | 物件 (object) | JSON 物件 | 具有來自要求之本文內容的物件 |
 | 狀態碼 | int | 來自要求的狀態碼 |
 |||
 
 | 狀態碼 | 描述 |
 |-------------|-------------|
-| 200 | 確定 |
+| 200 | [確定] |
 | 202 | 已接受 |
 | 400 | 不正確的要求 |
-| 401 | Unauthorized |
-| 403 | 已禁止 |
+| 401 | 未經授權 |
+| 403 | 禁止 |
 | 404 | 找不到 |
 | 500 | 內部伺服器錯誤。 發生未知錯誤。 |
 |||

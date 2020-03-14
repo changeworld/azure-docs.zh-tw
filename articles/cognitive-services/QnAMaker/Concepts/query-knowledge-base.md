@@ -4,11 +4,11 @@ description: 必須發行知識庫。 發佈之後，就會使用 generateAnswer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846346"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221461"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查詢知識庫中的答案
 

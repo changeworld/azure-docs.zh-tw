@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: abe159221846c4820ba9750f62bdbc814521ecc4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 8fd2f808169a0615e1ad5ca338823e3a8e3212ff
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252736"
+ms.locfileid: "79297844"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>針對 Runbook 的錯誤進行疑難排解
 
@@ -609,7 +609,7 @@ if ($SomeVariable.someproperty -eq ....
 
 ### <a name="issues-passing-parameters-into-webhooks"></a>將參數傳遞至 webhook 的問題
 
-如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
+如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](../automation-webhooks.md#parameters-used-when-the-webhook-starts-a-runbook)。
 
 ### <a name="issues-using-az-modules"></a>使用 Az 模組的問題
 
@@ -630,7 +630,7 @@ if ($SomeVariable.someproperty -eq ....
 
 ### <a name="passing-parameters-into-webhooks"></a>將參數傳遞至 Webhook
 
-如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
+如需將參數傳遞至 webhook 的說明，請參閱[從 Webhook 啟動 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook)。
 
 ### <a name="using-az-modules"></a>使用 Az 模組
 

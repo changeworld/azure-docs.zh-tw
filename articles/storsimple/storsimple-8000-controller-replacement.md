@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365782"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267920"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的控制器模組
 ## <a name="overview"></a>概觀
@@ -79,7 +79,7 @@ ms.locfileid: "78365782"
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>若要取下單一故障的控制器模組
 1. 在 Azure 入口網站中，移至 StorSimple 裝置管理員服務，按一下 [裝置]，然後按一下您想要監視的裝置名稱。
-2. 移至 [監視] > [硬體健康狀態]。 控制器 0 或控制器 1 的狀態應為紅色，表示故障。
+2. 移至 [監視] > [硬體健康狀態]。 控制器 0 或控制器 1 的狀態應該是紅色，表示故障。
    
    > [!NOTE]
    > 單一控制器更換中的故障控制器一律為待命控制器。
@@ -103,7 +103,7 @@ ms.locfileid: "78365782"
 8. 在控制器重新啟動之後，請檢查 Azure 入口網站中的 [控制器狀態] 和 [叢集狀態]，以確認控制器回到良好的狀態且處於待命模式。
 
 > [!NOTE]
-> 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 序列主控台功能表呈現時，您就知道更換完成。 如果功能表未在啟動控制器更換的兩個小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
+> 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表呈現時，您便知道更換已完成。 如果功能表未在啟動控制器更換的兩個小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
 >
 > 從 Update 4 開始，您也可以在裝置的 Windows PowerShell 介面中使用 Cmdlet `Get-HCSControllerReplacementStatus` 來監視控制器更換程序的狀態。
 > 
@@ -120,7 +120,7 @@ ms.locfileid: "78365782"
    2. 它是否為叢集的一部分？
    3. 對等控制器是否執行中並構成叢集？
       
-      如果上述條件皆不成立，則控制器會尋找最近的每日備份 (位於磁碟機 S 上的 **nonDOMstorage** 中)。 控制器會從備份複製 VHD 的最新快照。
+      如果上述狀況無一成立，則控制器會尋找最新的每日備份 (位於磁碟機 S 上的 **nonDOMstorage** )。 控制器會從備份複製 VHD 的最新快照。
 2. 在位置 0 的控制站會使用快照集映像本身。
 3. 同時，插槽 1 中的控制器會等到控制器 0 完成映像和啟動。
 4. 在控制器 0 啟動之後，控制器 1 會偵測到控制器 0 所建立的叢集，這會觸發單一控制器更換邏輯。 如需詳細資訊，請參閱[單一控制器更換邏輯](#single-controller-replacement-logic)。
@@ -153,7 +153,7 @@ ms.locfileid: "78365782"
    4. 在第一個控制器重新啟動並處於狀況良好的狀態之後，系統就會執行。
       
       > [!NOTE]
-      > 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表出現時，您便知道更換已完成。 如果功能表未在控制器開始更換的 2.5 小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
+      > 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表出現時，您便知道更換已完成。 如果功能表未在啟動控制器更換的 2.5 個小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
      
 ## <a name="remove-a-controller"></a>取下控制器
 請使用下列程序，從 StorSimple 裝置中取下故障的控制器模組。

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279217"
+ms.locfileid: "79297929"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -127,7 +127,7 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前4個和�
 
 - 如果您選擇 HTTP，則會加密用戶端與應用程式閘道之間的流量。
 
-- 如果您想要[ssl 終止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端對端 ssl 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，請選擇 [HTTPS]。 用戶端和應用程式閘道之間的流量會經過加密。 而且 SSL 連線會在應用程式閘道上終止。 如果您想要端對端 SSL 加密，您必須選擇 [HTTPS] 並設定**後端 HTTP**設定。 這可確保在從應用程式閘道傳送至後端時，會重新加密流量。
+- 如果您想要[ssl 終止](features.md#secure-sockets-layer-ssltls-termination)或[端對端 ssl 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，請選擇 [HTTPS]。 用戶端和應用程式閘道之間的流量會經過加密。 而且 SSL 連線會在應用程式閘道上終止。 如果您想要端對端 SSL 加密，您必須選擇 [HTTPS] 並設定**後端 HTTP**設定。 這可確保在從應用程式閘道傳送至後端時，會重新加密流量。
 
 若要設定 SSL 終止和端對端 SSL 加密，您必須將憑證新增至接聽程式，讓應用程式閘道可以衍生對稱金鑰。 這取決於 SSL 通訊協定規格。 對稱金鑰是用來加密和解密傳送至閘道的流量。 閘道憑證必須採用「個人資訊交換」（PFX）格式。 此格式可讓您匯出閘道用來加密和解密流量的私密金鑰。
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096411"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370435"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>訂閱 Event Grid 通知，以便將 Blob 擷取至 Azure 資料總管
 
@@ -69,7 +69,7 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
 
 1. 將下列命令複製到視窗，然後選取 [執行] 以建立資料表 (TestTable)，該資料表會接收內嵌的資料。
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
 
 1. 將下列命令複製到視窗中，然後選取 [執行] 以將傳入的 JSON 資料對應至資料表 (TestTable) 的資料行名稱與資料類型。
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
 
 使用這個指令碼將資料儲存到檔案並上傳：
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -187,7 +187,7 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
 > [!NOTE]
 > Azure 資料總管具有資料擷取的彙總 (批次處理) 原則，可將擷取程序最佳化。
 根據預設，此原則設定為 5 分鐘。
-您可以視需要在稍後變更此原則。 在本文中，您可以預期會有幾分鐘的延遲。
+如有需要，您可以稍後再變更原則。 在本文中，您可以預期會有幾分鐘的延遲。
 
 1. 當應用程式正在執行時，在 Azure 入口網站內事件格線的下方，您會看見活動爆增。
 
@@ -195,14 +195,14 @@ Azure 資料總管是一項快速又可調整的資料探索服務，可用於�
 
 1. 若要檢查目前為止已有多少則訊息成功進入資料庫，請在測試資料庫中執行下列查詢。
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. 若要查看訊息的內容，請在測試資料庫中執行下列查詢。
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

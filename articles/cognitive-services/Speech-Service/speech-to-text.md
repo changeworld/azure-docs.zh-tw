@@ -3,19 +3,19 @@ title: 語音轉換文字-語音服務
 titleSuffix: Azure Cognitive Services
 description: 語音轉換文字功能可將音訊串流的即時轉譯為文字。 您的應用程式、工具或裝置可以對此文字輸入使用、顯示和採取動作。 此服務可與文字轉換語音（語音合成），以及語音翻譯功能緊密搭配運作。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221247"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371251"
 ---
 # <a name="what-is-speech-to-text"></a>什麼是語音轉換文字？
 
@@ -24,9 +24,8 @@ ms.locfileid: "79221247"
 語音轉換文字服務預設會使用通用語言模型。 此模型已使用 Microsoft 所擁有的資料進行定型，並已部署在雲端中。 這對於對話式和聽寫案例而言是最理想的。 在獨特的環境中使用語音轉換文字進行辨識和轉譯時，您可以建立及定型自訂聲場、語言和發音模型。 自訂有助於解決環境雜訊或產業特定詞彙。
 
 > [!NOTE]
-> Bing 語音已于2019年10月15日解除委任。 如果您的應用程式、工具或產品使用 Bing 語音 Api 或自訂語音，我們建立了指南，協助您遷移至語音服務。
+> Bing 語音已于2019年10月15日解除委任。 如果您的應用程式、工具或產品使用 Bing 語音 Api，我們就建立了指南，協助您遷移至語音服務。
 > - [從 Bing 語音遷移至語音服務](how-to-migrate-from-bing-speech.md)
-> - [從自訂語音遷移至語音服務](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>開始使用語音轉換文字
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4908d5f9f6eccaaaf71308b868d712f0eb96cb52
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 972712d37c146ce288c49af7832919946f5503cd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303149"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297113"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE （Azure Cosmos DB）
- 傳回兩個 GeoJSON Point、Polygon 或 LineString 運算式之間的距離。  
+ 傳回兩個 GeoJSON 點、多邊形、MultiPolygon 或 LineString 運算式之間的距離。 若要深入瞭解，請參閱[地理空間和 GeoJSON 位置資料](sql-query-geospatial-intro.md)一文。
   
 ## <a name="syntax"></a>語法
   

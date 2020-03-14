@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823409"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268856"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Database 受控執行個體的管理 API 參考
 
@@ -37,10 +37,10 @@ ms.locfileid: "73823409"
 > [!TIP]
 > 如需 PowerShell 範例腳本，請參閱[快速啟動腳本：使用 PowerShell 程式庫建立 AZURE SQL 受控執行個體](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)。
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|建立 Azure SQL Database 受控執行個體 |
-|[AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|傳回 Azure SQL Database 受控執行個體的資訊|
+|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|傳回 Azure SQL Database 受控執行個體的資訊|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|設定 Azure SQL Database 受控執行個體的屬性|
 |[移除-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|移除 Azure SQL Database 受控執行個體|
 |[新增-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|建立 Azure SQL Database 受控執行個體資料庫|
@@ -55,7 +55,7 @@ ms.locfileid: "73823409"
 > [!TIP]
 > 如需 Azure CLI 快速入門，請參閱[使用 Azure CLI 處理 SQL 受控執行個體](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)。
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 |[az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |建立受控執行個體|
 |[az sql mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|列出可用的受控執行個體|
@@ -72,20 +72,20 @@ ms.locfileid: "73823409"
 若要在建立受控執行個體後建立與管理執行個體資料庫，請使用下列 T-SQL 命令。 您可以使用 Azure 入口網站、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) 發出這些命令。 [Visual Studio Code](https://code.visualstudio.com/docs)，或可以連接到 Azure SQL Database 伺服器並傳遞 TRANSACT-SQL 命令的其他任何程式。
 
 > [!TIP]
-> 如需示範如何在 Microsoft Windows 上使用 SQL Server Management Studio 設定及連線到受控執行個體的快速入門，請參閱[快速入門：設定 AZURE VM 以連線至 Azure SQL Database 受控執行個體](sql-database-managed-instance-configure-vm.md)和[快速入門：設定從內部部署到 Azure SQL Database 受控執行個體的點對站](sql-database-managed-instance-configure-p2s.md)連線。
+> 如需示範如何使用 Microsoft Windows 上的 SQL Server Management Studio 來設定及連線到受控執行個體的快速入門，請參閱[快速入門：設定 AZURE VM 以連線至 Azure SQL Database 受控執行個體](sql-database-managed-instance-configure-vm.md)和[快速入門：設定從內部部署到 Azure SQL Database 受控執行個體的點對站](sql-database-managed-instance-configure-p2s.md)連線。
 > [!IMPORTANT]
 > 您無法使用 Transact-SQL 建立或刪除受控執行個體。
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|建立新的受控執行個體資料庫。 您必須連線到 master 資料庫才能建立新的資料庫。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|建立新的受控執行個體資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 Azure SQL Database 受控執行個體資料庫。|
 
 ## <a name="rest-api-create-and-manage-managed-instances"></a>REST API：建立和管理受控實例
 
 若要建立和管理受控執行個體，請使用下列 REST API 要求。
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|建立或更新受控執行個體。|
 |[Managed Instances - Delete](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|刪除受控執行個體。|

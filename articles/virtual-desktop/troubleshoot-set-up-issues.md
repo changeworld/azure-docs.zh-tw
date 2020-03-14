@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127433"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371591"
 ---
 # <a name="tenant-and-host-pool-creation"></a>建立租用戶和主機集區
 
@@ -145,7 +145,7 @@ ms.locfileid: "79127433"
 
 若要修正此問題，請執行下列動作：
 
-1. 開啟 Azure 入口網站，然後移至 [**虛擬網路**] 分頁。
+1. 開啟 Azure 入口網站，然後移至 [**虛擬網路**] 索引標籤。
 2. 尋找您的 VNET，然後選取 [ **DNS 伺服器**]。
 3. [DNS 伺服器] 功能表應該會出現在畫面的右側。 在該功能表上，選取 [**自訂**]。
 4. 請確定列在 [自訂] 底下的 DNS 伺服器符合您的網域控制站或 Active Directory 網域。 如果您沒有看到您的 DNS 伺服器，您可以在 [**新增 dns 伺服器**] 欄位中輸入其值來新增它。

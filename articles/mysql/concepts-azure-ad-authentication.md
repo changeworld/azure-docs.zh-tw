@@ -1,17 +1,17 @@
 ---
-title: Active Directory 驗證-適用於 MySQL 的 Azure 資料庫-單一伺服器
-description: 瞭解使用適用於 MySQL 的 Azure 資料庫單一伺服器進行驗證 Azure Active Directory 的概念
+title: Active Directory 驗證-適用於 MySQL 的 Azure 資料庫
+description: 瞭解使用適用於 MySQL 的 Azure 資料庫驗證 Azure Active Directory 的概念
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706098"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299017"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 來向 MySQL 進行驗證
 
@@ -55,7 +55,7 @@ Microsoft Azure Active Directory （Azure AD）驗證是使用 Azure AD 中定�
 
 ![系統管理員結構][2]
 
-## <a name="permissions"></a>使用權限
+## <a name="permissions"></a>權限
 
 若要建立可使用 Azure AD 進行驗證的新使用者，您必須是設計的 Azure AD 系統管理員。 此使用者是藉由設定特定適用於 MySQL 的 Azure 資料庫伺服器的 Azure AD 系統管理員帳戶來指派。
 
@@ -90,7 +90,7 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何建立和填入 Azure AD，然後使用適用於 MySQL 的 Azure 資料庫設定 Azure AD，請參閱[使用適用於 MySQL 的 Azure 資料庫的 Azure AD 設定和登入](howto-configure-sign-in-azure-ad-authentication.md)。
-- 如需登入和適用於 MySQL 的 Azure 資料庫的資料庫使用者的總覽，請參閱[在適用於 MySQL 的 Azure 資料庫-單一伺服器中建立使用者](howto-create-users.md)。
+- 如需登入的總覽，以及適用於 MySQL 的 Azure 資料庫的資料庫使用者，請參閱[在適用於 MySQL 的 Azure 資料庫中建立使用者](howto-create-users.md)。
 
 <!--Image references-->
 

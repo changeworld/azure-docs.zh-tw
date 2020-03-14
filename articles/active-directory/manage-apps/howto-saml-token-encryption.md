@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148635"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365861"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>如何：設定 SAML 權杖加密 Azure AD （預覽）
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：設定 SAML 權杖加密 Azure AD
 
 > [!NOTE]
 > 權杖加密是 Azure Active Directory (Azure AD) 的高級功能。 若要深入了解 Azure AD 版本、功能及定價，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -123,26 +123,21 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>使用 PowerShell 設定權杖加密
 
-這項功能即將登場。 
+1. 使用最新的 Azure AD PowerShell 模組連接到您的租使用者。
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. 使用 **[AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令設定權杖加密設定。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. 使用下列命令讀取權杖加密設定。
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>使用應用程式資訊清單設定權杖加密
 

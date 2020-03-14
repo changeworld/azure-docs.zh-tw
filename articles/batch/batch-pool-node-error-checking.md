@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484123"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369262"
 ---
 # <a name="check-for-pool-and-node-errors"></a>檢查是否有集區和節點錯誤
 
@@ -137,8 +137,21 @@ Azure Batch 將[節點狀態](https://docs.microsoft.com/rest/api/batchservice/c
 
 針對每個工作所寫出的檔案，可以指定每個工作的保留時間，以決定要在自動清除之前保留工作檔案的時間長度。 保留時間可以減少，以降低儲存需求。
 
-如果暫存磁碟空間填滿，則目前節點會停止執行中的工作。 未來將會回報[節點錯誤](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)。
+如果暫存磁碟空間不足（或非常接近空間不足），節點將會移至 [[無法使用](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)] 狀態，而節點錯誤（使用已存在的連結）將會報告，指出磁片已滿。
 
+### <a name="what-to-do-when-a-disk-is-full"></a>當磁片已滿時該怎麼辦
+
+判斷磁片已滿的原因：如果您不確定節點上佔用的空間，建議您從遠端執行節點，並手動調查空間已消失的位置。 您也可以使用[Batch 清單檔案 API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode)來檢查 batch 管理的資料夾中的檔案（例如，工作輸出）。 請注意，此 API 只會列出 Batch 管理目錄中的檔案，如果您的工作在其他地方建立檔案，您就不會看到它們。
+
+請確定您所需的任何資料都已從節點抓取，或已上傳至長期存放區。 所有磁片完整問題的緩和措施包括刪除資料以釋出空間。
+
+### <a name="recovering-the-node"></a>復原節點
+
+1. 如果您的集區是[loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)集區，您可以透過[BATCH 重新映射 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)重新建立節點的映射。這會清除整個磁片。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)集區目前不支援重新映射。
+
+2. 如果您的集區是[VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)，您可以使用[移除節點 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)從集區中移除節點。 然後，您可以再次增加集區，以使用全新的節點來取代錯誤的節點。
+
+3.  刪除舊的已完成作業或舊的已完成工作，其工作資料仍在節點上。 如需您可以在節點上的哪些作業/工作資料所在的提示，請查看節點上的[RecentTasks 集合](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)，或[節點上](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)的檔案。 刪除作業將會刪除作業中的所有工作，而刪除作業中的工作將會觸發節點上工作目錄中要刪除的資料，因而釋放空間。 釋放足夠的空間之後，請重新開機節點，它應該會移出「無法使用」狀態並重新進入「閒置中」。
 
 ## <a name="next-steps"></a>後續步驟
 

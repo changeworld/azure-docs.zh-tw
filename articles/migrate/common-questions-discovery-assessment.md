@@ -4,11 +4,11 @@ description: 取得 Azure Migrate 中探索、評估和相依性分析的常見�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269870"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 

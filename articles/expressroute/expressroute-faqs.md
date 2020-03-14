@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264917"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -51,6 +51,14 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>如何在 ExpressRoute 私用對等互連上公告 Vnet？
 
 ExpressRoute 閘道會通告 Azure VNet 的*位址空間*，您無法在子網層級包含/排除。 它一律是所通告的 VNet 位址空間。 此外，如果使用 VNet 對等互連，且對等互連 VNet 已啟用「使用遠端閘道」，則也會公告對等互連 VNet 的位址空間。
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>在 ExpressRoute 私用對等互連上，有多少首碼可以從 VNet 公告至內部部署？
+
+單一 ExpressRoute 連線上或透過使用閘道傳輸的 VNet 對等互連，最多可有200個首碼。 例如，如果您在連接到 ExpressRoute 線路的單一 VNet 上有199位址空間，這些前置詞的所有199都會公告至內部部署。 或者，如果您已啟用 VNet 來允許閘道傳輸，並使用 [允許遠端閘道] 選項啟用 [1 個位址空間] 和 [150 輪輻 Vnet]，則使用閘道部署的 VNet 將會向內部部署公告151首碼。
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>如果我超過 ExpressRoute 連線的前置詞限制，會發生什麼事？
+
+ExpressRoute 線路與閘道之間的連線（以及使用閘道傳輸的對等互連 Vnet （如果適用）將會關閉。 當不再超過前置詞限制時，它就會重新建立。  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>我可以篩選來自內部部署網路的路由嗎？
 

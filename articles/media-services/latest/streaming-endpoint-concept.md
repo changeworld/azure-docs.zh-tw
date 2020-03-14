@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: c71643adf3b34954ea5ce020351559abbfc60fab
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251254"
+ms.locfileid: "79298932"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -116,7 +116,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
     > [!NOTE]
     > 位於相同資料中心的串流端點不能共用相同的自訂主機名稱。
 
-    目前，媒體服務不支援使用自訂網域的 SSL。
+    目前媒體服務不支援將 SSL 用於自訂網域。
 
 - `maxCacheAge`-覆寫媒體片段和隨選資訊清單上的串流端點所設定的預設最大壽命 HTTP 快取控制標頭。 此值的設定會以秒為單位。
 - `resourceState` -
@@ -163,4 +163,4 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 ## <a name="next-steps"></a>後續步驟
 
-[此存放庫中](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)的範例會示範如何使用 .NET 啟動預設的串流端點。
+[管理串流端點](manage-streaming-endpoints-howto.md)

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
 ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394668"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254153"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 
@@ -27,7 +27,7 @@ ms.locfileid: "78394668"
 
 ### <a name="are-data-disks-supported-within-scale-sets"></a>在擴展集內是否支援資料磁碟？
 
-是的。 擴展集可以定義套用至集合中所有 VM 的連結資料磁碟組態。 如需詳細資訊，請參閱 [Azure 擴展集和連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)。 其他用於儲存資料的選項包括：
+是。 擴展集可以定義套用至集合中所有 VM 的連結資料磁碟組態。 如需詳細資訊，請參閱 [Azure 擴展集和連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)。 其他用於儲存資料的選項包括：
 
 * Azure 檔案 (SMB 共用磁碟機)
 * OS 磁碟機
@@ -76,7 +76,7 @@ ms.locfileid: "78394668"
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>是否有任何根據 Azure 服務匯流排主題和佇列長度自動調整的範例？
 
-是的。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+是。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 如需服務匯流排佇列，請使用下列 JSON：
 
@@ -126,7 +126,7 @@ ms.locfileid: "78394668"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止 (已取消配置) VM，該 VM 是否在自動調整作業中啟動？
 
-No。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
+否。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
 
 
 
@@ -170,7 +170,7 @@ az sf cluster create -h
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可指定 SSH 金鑰組以便透過 Resource Manager 範本中的 Linux 虛擬機器擴展集來進行 SSH 驗證？
 
-是的。 **osProfile** 的 REST API 類似於標準 VM REST API。
+是。 **osProfile** 的 REST API 類似於標準 VM REST API。
 
 在您的範本中包含 **osProfile**︰
 
@@ -221,7 +221,7 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名稱 | 必要項 | 類型 | 描述
+linuxConfiguration 元素名稱 | 必要 | 類型 | 描述
 --- | --- | --- | ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 金鑰組態
 path | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
@@ -333,9 +333,9 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/msi-overview)是否可以與虛擬機器擴展集搭配運作？
 
-是的。 您可以在適用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入門範本中看到一些範例 MSI 範本。
+是。 您可以在適用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入門範本中看到一些範例 MSI 範本。
 
-## <a name="deleting"></a>刪除 
+## <a name="deleting"></a>刪除中 
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>刪除實例時，是否會遵守我在虛擬機器擴展集實例上設定的鎖定？
 
@@ -343,7 +343,7 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
  
 在 Azure CLI 中，您只有刪除個別實例的能力。 如果您嘗試刪除已有鎖定的單一實例，則會遵守鎖定，而且您將無法刪除該實例。 
 
-## <a name="extensions"></a>擴充功能
+## <a name="extensions"></a>延伸模組
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>如何刪除虛擬機器擴展集擴充功能？
 
@@ -466,7 +466,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以將「網路安全性群組」(NSG) 指派給擴展集，以便將它套用至擴展集中的所有 VM NIC？
 
-是的。 您可以透過在網路設定檔的 networkInterfaceConfigurations 區段中參考「網路安全性群組」，將它直接套用至擴展集。 範例：
+是。 您可以透過在網路設定檔的 networkInterfaceConfigurations 區段中參考「網路安全性群組」，將它直接套用至擴展集。 範例：
 
 ```json
 "networkProfile": {
@@ -520,7 +520,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>我可以搭配加速的網路使用擴展集嗎？
 
-是的。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
+是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -561,9 +561,9 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>我可以設定擴展集以搭配多個應用程式閘道使用嗎？
 
-是的。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增至擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的 [ _applicationGatewayBackendAddressPools_ ] 清單。
+是。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增至擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的 [ _applicationGatewayBackendAddressPools_ ] 清單。
 
-## <a name="scale"></a>縮放
+## <a name="scale"></a>調整
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>在何種情況下，我會建立具有兩部以下 VM 的虛擬機器擴展集？
 
@@ -642,7 +642,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
-您可以在 Azure 入口網站的 Log Analytics 工作區中找到所需的 workspaceId 和 workspaceKey。 在 [概觀] 頁面中，按一下 [設定] 圖格。 按一下頂端的 [連線來源] 索引標籤。
+您可以在 Azure 入口網站的 Log Analytics 工作區中找到所需的 workspaceId 和 workspaceKey。 在 [概觀] 頁面中，按一下 [設定] 圖格。 按一下頂端的 [連接的來源] 索引標籤。
 
 > [!NOTE]
 > 如果您的擴展集_upgradePolicy_設為 [手動]，您必須呼叫升級，將擴充功能套用至集合中的所有 vm。 在 CLI 中，這會是 _az vmss update-instances_。
@@ -696,7 +696,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 刪除虛擬機器擴展集中的 VM 與解除配置 VM 之間的主要差異在於 `deallocate` 不會刪除虛擬硬碟 (VHD)。 執行 `stop deallocate` 會產生相關的儲存體成本。 基於下列原因之一，您可能會採用其中一種做法：
 
 - 您想要停止支付計算成本，但又想要保留 VM 的磁碟狀態。
-- 您想要更快速地啟動一組 VM，則可擴增虛擬機器擴展集。
+- 您想要更快速地啟動一組 VM，則可相應放大虛擬機器擴展集。
   - 關於這種情況，您可能已建立自己的自動調整引擎，並想要更快速的端對端擴展。
 - 您的虛擬機器擴展集並未平均分散於各容錯網域或更新網域。 這可能是因為您選擇性地刪除 VM，或是因為 VM 在過度佈建之後遭到刪除。 在虛擬機器擴展集上接續執行 `stop deallocate` 和 `start`，可讓 VM 平均分散於各容錯網域或更新網域。
 

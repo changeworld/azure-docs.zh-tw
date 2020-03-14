@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ad56f1f15936bc3f3f1ac75396352206f68e7a61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671472"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136701"
 ---
 # <a name="connection-strings"></a>連接字串
 
@@ -47,7 +47,7 @@ ms.locfileid: "77671472"
 
 ![總覽分頁上的連接字串](media/overview-dashboard/overview-connection-string.png)
 
-### <a name="schema"></a>Schema
+### <a name="schema"></a>結構描述
 
 #### <a name="max-length"></a>最大長度
 
@@ -276,4 +276,4 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (預覽)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)

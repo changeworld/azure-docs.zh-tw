@@ -1,6 +1,6 @@
 ---
 title: 成為內部部署編碼器合作夥伴-Azure 媒體服務
-description: 成為具有 Azure 媒體服務的內部部署編碼器合作夥伴。
+description: 本文討論如何驗證您的內部部署即時串流編碼器。
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298626"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>成為內部部署編碼器合作夥伴
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證您的內部部署即時串流編碼器
 
 身為 Azure 媒體服務內部部署編碼器合作夥伴，媒體服務將會向企業客戶建議您的編碼器，以協助推廣您的產品。 若要成為內部部署編碼器合作夥伴，您必須向媒體服務驗證您內部部署編碼器的相容性。 若要這樣做，請完成下列驗證。
 
-### <a name="pass-through-live-event-verification"></a>傳遞即時事件驗證
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>傳遞即時事件驗證
 
 1. 在您的媒體服務帳戶中，確認**串流端點**正在執行。 
 2. 建立並啟動**傳遞**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
@@ -38,7 +40,7 @@ ms.locfileid: "78252970"
 15. 於建立每個範例之後，重設即時事件狀態。
 16. 針對您編碼器所支援的所有設定 (包含及不包含廣告訊號、字幕，或不同的編碼速度) 重複步驟 5 到步驟 15。
 
-### <a name="live-encoding-live-event-verification"></a>即時編碼即時事件驗證
+## <a name="live-encoding-live-event-verification"></a>即時編碼即時事件驗證
 
 1. 在您的媒體服務帳戶中，確認**串流端點**正在執行。 
 2. 建立並啟動**即時編碼**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
@@ -57,17 +59,17 @@ ms.locfileid: "78252970"
 15. 於建立每個範例之後，重設即時事件狀態。
 16. 針對您編碼器所支援的所有設定 (包含及不包含廣告訊號、字幕，或不同的編碼速度) 重複步驟 5 到步驟 15。
 
-### <a name="longevity-verification"></a>使用壽命驗證
+## <a name="longevity-verification"></a>使用壽命驗證
 
 除了步驟 11 外，遵循與[傳遞即時事件驗證](#pass-through-live-event-verification)中相同的其他步驟。 <br/>讓您的即時編碼器執行一週或更久，而不是 10 分鐘。 使用 [Azure 媒體播放器](https://aka.ms/azuremediaplayer)等播放程式不時觀看即時串流 (或已封存的資產)，以確保播放沒有可見問題。
 
-### <a name="email-your-recorded-settings"></a>用電子郵件傳送記錄的設定
+## <a name="email-your-recorded-settings"></a>用電子郵件傳送記錄的設定
 
 最後，以電子郵件將記錄的設定和即時封存參數傳送到 amshelp@microsoft.com 的 Azure 媒體服務，做為所有自我驗證檢查已通過的通知。 此外，包含任何後續動作的連絡資訊。 若有任何關於此程序的問題，請連絡 Azure 媒體服務團隊。
 
 ## <a name="see-also"></a>另請參閱
 
-[建議的內部部署即時編碼器](recommended-on-premises-live-encoders.md)
+[已測試內部部署編碼器](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>後續步驟
 

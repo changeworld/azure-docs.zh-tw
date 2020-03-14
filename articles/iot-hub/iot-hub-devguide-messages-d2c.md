@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748051"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370452"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -45,7 +45,7 @@ IoT 中樞目前支援下列服務做為自訂端點︰
 
 有兩個儲存體服務 IoT 中樞可以將訊息路由至-- [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)和[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) （ADLS Gen2）帳戶。 Azure Data Lake Storage 帳戶是建置於 blob 儲存體之上的已啟用[階層命名空間](../storage/blobs/data-lake-storage-namespace.md)的儲存體帳戶。 這兩個都會使用 blob 來儲存其儲存體。
 
-IoT 中樞支援以[Apache Avro](https://avro.apache.org/)格式和 JSON 格式將資料寫入 Azure 儲存體。 預設值為 AVRO。 只有在設定 blob 儲存體端點時，才可以設定編碼格式。 無法編輯現有端點的格式。 使用 JSON 編碼時，您必須將 contentType 設定為**application/JSON** ，並在訊息[系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中 contentEncoding 為**utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。 您可以使用 IoT 中樞建立或更新 REST API，特別是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)，來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
+IoT 中樞支援以[Apache Avro](https://avro.apache.org/)格式和 JSON 格式將資料寫入 Azure 儲存體。 預設值為 AVRO。 只有在設定 blob 儲存體端點時，才可以設定編碼格式。 無法編輯現有端點的格式。 使用 JSON 編碼時，您必須將 contentType 設定為**application/JSON** ，並在訊息[系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中 contentEncoding 為**utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。 您可以使用 IoT 中樞建立或更新 REST API （特別是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
 
 ![Blob 儲存體端點編碼](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> 如果您的儲存體帳戶具有限制 IoT 中樞連線的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
+
 若要建立 Azure Data Lake Gen2 相容的儲存體帳戶，請建立新的 V2 儲存體帳戶，然後在 [ **Advanced** ] 索引標籤上的 [*階層命名空間*] 欄位中選取 [*已啟用*]，如下圖所示：
 
 ![選取 Azure Date Lake Gen2 儲存體](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 做為 IoT 中樞端點的服務匯流排佇列和主題不能啟用 [工作階段] 或 [重複偵測]。 如果已啟用其中一個選項，端點會在 Azure 入口網站中顯示為 [無法連線]。
 
+> [!NOTE]
+> 如果您的服務匯流排資源具有限制 IoT 中樞連線能力的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
+
+
 ### <a name="event-hubs"></a>事件中樞
 
 除了內建事件中樞相容端點之外，您也可以將資料傳送至事件中樞類型的自訂端點。 
+
+> [!NOTE]
+> 如果您的事件中樞資源具有限制 IoT 中樞連線能力的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
+
 
 ## <a name="reading-data-that-has-been-routed"></a>讀取已傳送的資料
 
@@ -104,6 +115,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 * 從[服務匯流排主題](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)讀取
 
+
 ## <a name="fallback-route"></a>後援路由
 
 後援路由會將與任何現有路由查詢條件不符的所有訊息，傳送至與**事件中樞**相容的內建事件中樞 ([訊息/事件](/azure/event-hubs/))。 如果訊息路由已開啟，您即可啟用後援路由功能。 建立路由之後，除非建立該端點的路由，否則資料會停止流向內建端點。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
@@ -112,7 +124,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="non-telemetry-events"></a>非遙測事件
 
-除了裝置遙測之外，訊息路由也可讓您傳送裝置對應項變更事件、裝置生命週期事件，以及數位對應項變更事件（處於公開預覽狀態）。 例如，如果隨同設定為**裝置對應項變更事件**的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果使用設定為**裝置生命週期事件**的資料來源建立路由，IoT 中樞會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分，開發人員可以建立將資料來源設定為數字對應項**變更事件**的路由，並在每次設定或變更數位對應項[屬性](../iot-pnp/iot-plug-and-play-glossary.md)（[數位對應項](../iot-pnp/iot-plug-and-play-glossary.md)）時傳送訊息 IoT 中樞已取代，或基礎裝置對應項發生變更事件時。
+除了裝置遙測之外，訊息路由也可讓您傳送裝置對應項變更事件、裝置生命週期事件，以及數位對應項變更事件（處於公開預覽狀態）。 例如，如果隨同設定為**裝置對應項變更事件**的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果使用設定為**裝置生命週期事件**的資料來源建立路由，IoT 中樞會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分，開發人員可以建立將資料來源設定為數字對應項**變更事件**的路由，並在每次設定或變更數位對應項[屬性](../iot-pnp/iot-plug-and-play-glossary.md)、[數位](../iot-pnp/iot-plug-and-play-glossary.md)對應項已被取代，或基礎裝置對應項發生變更事件時，IoT 中樞傳送訊息。
 
 [IoT 中樞也會與 Azure 事件方格整合](iot-hub-event-grid.md)，以發佈裝置事件，以根據這些事件來支援即時整合和自動化工作流程。 請參閱[訊息路由與事件格線之間的關鍵差異](iot-hub-event-grid-routing-comparison.md)了解何者最適合您的情況。
 

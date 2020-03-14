@@ -1,5 +1,5 @@
 ---
-title: 關於多裝置交談（預覽）-語音服務
+title: 多重裝置交談（預覽）-語音服務
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560808"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371353"
 ---
-# <a name="about-multi-device-conversation-preview"></a>關於多裝置交談（預覽）
+# <a name="what-is-multi-device-conversation-preview"></a>什麼是多重裝置對話（預覽）？
 
 **多重裝置交談**可讓您輕鬆地在多個用戶端之間建立語音或文字交談，並協調其間傳送的訊息。
 
@@ -75,8 +75,8 @@ ms.locfileid: "77560808"
 **對話**是一位使用者啟動的會話，供其他參與的使用者加入。 所有用戶端都會使用五個字母的交談程式**代碼**來連接到交談。
 
 每個交談都會建立包含下列各項的中繼資料：
--   交談開始和結束的時間戳記
--   交談中所有參與者的清單，其中包括每位使用者選擇的昵稱，以及用於語音或文字輸入的主要語言。
+-    交談開始和結束的時間戳記
+-    交談中所有參與者的清單，其中包括每位使用者選擇的昵稱，以及用於語音或文字輸入的主要語言。
 
 
 對話中有兩種使用者類型： [**主機**] 和 [**參與者**]。

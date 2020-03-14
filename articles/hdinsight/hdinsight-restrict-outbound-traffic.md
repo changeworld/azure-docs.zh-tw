@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/11/2020
+ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646688"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370180"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -22,16 +22,17 @@ ms.locfileid: "75646688"
 
 Azure HDInsight 叢集通常會部署在您自己的虛擬網路中。 叢集相依于該虛擬網路外部的服務，需要網路存取權才能正常運作。
 
-有數個需要輸入流量的相依性。 輸入管理流量無法透過防火牆裝置傳送。 此流量的來源位址是已知的, 並在[此](hdinsight-management-ip-addresses.md)發佈。 您也可以使用此資訊來建立網路安全性群組（NSG）規則，以保護對叢集的輸入流量。
+有數個需要輸入流量的相依性。 輸入管理流量無法透過防火牆裝置傳送。 此流量的來源位址是已知的，[並在此發佈。](hdinsight-management-ip-addresses.md) 您也可以使用此資訊來建立網路安全性群組（NSG）規則，以保護對叢集的輸入流量。
 
 HDInsight 輸出流量相依性幾乎是以 Fqdn 定義，其後面沒有靜態 IP 位址。 缺少靜態位址表示無法使用網路安全性群組（Nsg）來鎖定叢集的輸出流量。 位址的變更通常就足以讓人無法根據目前的名稱解析來設定規則，並使用它來設定 NSG 規則。
 
-保護輸出位址的解決方法是使用防火牆裝置來控制以功能變數名稱為基礎的輸出流量。 Azure 防火牆可以根據目的地或[fqdn 標記](https://docs.microsoft.com/azure/firewall/fqdn-tags)的 fqdn 來限制輸出 HTTP 和 HTTPS 流量。
+保護輸出位址的解決方法是使用防火牆裝置來控制以功能變數名稱為基礎的輸出流量。 Azure 防火牆可以根據目的地或[fqdn 標記](../firewall/fqdn-tags.md)的 fqdn 來限制輸出 HTTP 和 HTTPS 流量。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>使用 HDInsight 設定 Azure 防火牆
 
 使用 Azure 防火牆來鎖定現有 HDInsight 輸出的步驟摘要如下：
 
+1. 建立子網路。
 1. 建立防火牆。
 1. 將應用程式規則新增至防火牆
 1. 將網路規則新增至防火牆。
@@ -63,7 +64,7 @@ HDInsight 輸出流量相依性幾乎是以 Fqdn 定義，其後面沒有靜態 
     |---|---|
     |名稱| FwAppRule|
     |優先順序|200|
-    |行動|允許|
+    |動作|Allow|
 
     **FQDN 標記區段**
 
@@ -77,7 +78,7 @@ HDInsight 輸出流量相依性幾乎是以 Fqdn 定義，其後面沒有靜態 
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | HTTPs：443 | login.windows.net | 允許 Windows 登入活動 |
     | Rule_3 | * | HTTPs：443 | login.microsoftonline.com | 允許 Windows 登入活動 |
-    | Rule_4 | * | HTTPs：443，HTTP：80 | storage_account_name. core。 | 以您實際的儲存體帳戶名稱取代 `storage_account_name`。 如果您的叢集是由 WASB 支援，則請新增 WASB 的規則。 若只要使用 HTTPs 連線，請確定已在儲存體帳戶上啟用「[需要安全傳輸](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)」。 |
+    | Rule_4 | * | HTTPs：443，HTTP：80 | storage_account_name. core。 | 以您實際的儲存體帳戶名稱取代 `storage_account_name`。 如果您的叢集是由 WASB 支援，則請新增 WASB 的規則。 若只要使用 HTTPs 連線，請確定已在儲存體帳戶上啟用「[需要安全傳輸](../storage/common/storage-require-secure-transfer.md)」。 |
 
    ![標題：輸入應用程式規則集合詳細資料](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -97,7 +98,7 @@ HDInsight 輸出流量相依性幾乎是以 Fqdn 定義，其後面沒有靜態 
     |---|---|
     |名稱| FwNetRule|
     |優先順序|200|
-    |行動|允許|
+    |動作|Allow|
 
     **IP 位址區段**
 
@@ -110,7 +111,7 @@ HDInsight 輸出流量相依性幾乎是以 Fqdn 定義，其後面沒有靜態 
 
     **服務標記區段**
 
-    | 名稱 | 通訊協定 | 來源位址 | 服務標籤 | 目的地埠 | 注意 |
+    | 名稱 | 通訊協定 | 來源位址 | 服務標記 | 目的地埠 | 注意 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的 [服務標籤] 區段中設定網路規則，讓您可以記錄和審核 SQL 流量，除非您已在 HDInsight 子網上設定 SQL Server 的服務端點，這樣會略過防火牆。 |
 
@@ -182,7 +183,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 ## <a name="access-to-the-cluster"></a>存取叢集
 
-成功設定防火牆之後，您可以使用內部端點（`https://CLUSTERNAME-int.azurehdinsight.net`）從 VNET 內部存取 Ambari。
+成功設定防火牆之後，您可以使用內部端點（`https://CLUSTERNAME-int.azurehdinsight.net`）從虛擬網路內部存取 Ambari。
 
 若要使用公用端點（`https://CLUSTERNAME.azurehdinsight.net`）或 ssh 端點（`CLUSTERNAME-ssh.azurehdinsight.net`），請確定路由表中有正確的路由和 NSG 規則，以避免[此處](../firewall/integrate-lb.md)說明的非對稱式路由問題。 具體而言，在此情況下，您必須允許輸入 NSG 規則中的用戶端 IP 位址，並將下一個躍點設定為 `internet`，將其新增至使用者定義的路由表。 如果未正確設定，您會看到逾時錯誤。
 

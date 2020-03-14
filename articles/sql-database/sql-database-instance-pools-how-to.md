@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754049"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299357"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL Database 實例集區（預覽）操作指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "75754049"
 
 下表顯示與實例集區相關的可用作業，以及其在 Azure 入口網站和 PowerShell 中的可用性。
 
-|Command|Azure Portal|PowerShell|
+|Command|Azure 入口網站|PowerShell|
 |:---|:---|:---|
 |建立執行個體集區|否|是|
 |更新實例集區（屬性數目有限）|否 |是 |
@@ -41,7 +41,7 @@ ms.locfileid: "75754049"
 
 可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |說明 |
+|Cmdlet |描述 |
 |:---|:---|
 |[新增-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | 建立 Azure SQL Database 實例集區。 |
 |[AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | 傳回 Azure SQL 實例集區的相關資訊。 |
@@ -50,7 +50,7 @@ ms.locfileid: "75754049"
 |[AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 傳回 Azure SQL 實例集區使用量的相關資訊。 |
 
 
-若要使用 PowerShell，請[安裝最新版的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)，然後依照指示[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+若要使用 PowerShell，請[安裝最新版的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，然後依照指示[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 如需在集區和單一實例中與實例相關的作業，請使用標準的[受控實例命令](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)，但當您針對集區中的實例使用這些命令時，必須填入 [*實例集區名稱*] 屬性。
 

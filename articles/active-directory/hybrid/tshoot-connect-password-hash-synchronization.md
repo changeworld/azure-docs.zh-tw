@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376273"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253542"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解
 
@@ -235,7 +235,7 @@ ms.locfileid: "78376273"
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   例如，
+   例如：
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -353,14 +353,14 @@ ms.locfileid: "78376273"
 
 | 狀態 | 描述 |
 | --- | --- |
-| 成功 |已成功同步處理密碼。 |
+| Success |已成功同步處理密碼。 |
 | FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼]。 未同步處理密碼。 |
 | NoTargetConnection |Metaverse 或 Azure AD 連接器空間中沒有任何物件。 |
 | SourceConnectorNotPresent |在內部部署 Active Directory 連接器空間中找不到任何物件。 |
 | TargetNotExportedToDirectory |尚未匯出 Azure AD 連接器空間中的物件。 |
 | MigratedCheckDetailsForMoreInfo |記錄項目建立於組建 1.0.9125.0 之前，並且以其舊版的狀態顯示。 |
 | 錯誤 |服務傳回未知的錯誤。 |
-| 未知 |嘗試處理密碼雜湊的批次時發生錯誤。  |
+| Unknown |嘗試處理密碼雜湊的批次時發生錯誤。  |
 | MissingAttribute |無法使用 Azure AD Domain Services 所需的特定屬性 (例如，Kerberos 雜湊)。 |
 | RetryRequestedByTarget |先前無法使用 Azure AD Domain Services 所需的特定屬性 (例如，Kerberos 雜湊)。 會嘗試重新同步處理使用者的密碼雜湊。 |
 

@@ -1,19 +1,19 @@
 ---
-title: 適用於 MySQL 的 Azure 資料庫（預覽）入口網站安裝方法的私人連結
+title: 私用連結-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何從 Azure 入口網站設定適用於 MySQL 的 Azure 資料庫的私人連結
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561658"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371914"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫（預覽）的私人連結
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的私用連結
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MySQL 的 Azure 資料庫伺服器。
 
@@ -126,13 +126,13 @@ ms.locfileid: "77561658"
 
 在本節中，您將建立 MySQL 伺服器，並在其中新增私人端點。 
 
-1. 在 Azure 入口網站的畫面左上角，選取 [建立資源] > [網路] > [Private Link 中心 (預覽)]。
+1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] > [**網路**] > [**私人連結**]。
 
 2. 在 [私人連結中心 - 概觀] 中，選取 [與服務建立私人連線] 選項上的 [開始]。
 
     ![私用連結總覽](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. 在 [建立私人端點 (預覽) - 基本] 中，輸入或選取這項資訊：
+1. 在 [**建立私人端點-基本**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -156,7 +156,7 @@ ms.locfileid: "77561658"
     |目標子資源 |選取*mysqlServer*|
     |||
 7. 選取 **[下一步：設定]** 。
-8. 在 [建立私人端點 (預覽) - 組態] 中，輸入或選取這項資訊：
+8. 在 [**建立私人端點-** 設定] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |

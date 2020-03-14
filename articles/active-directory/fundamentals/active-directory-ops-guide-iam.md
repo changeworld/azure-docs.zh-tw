@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298609"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 身分識別與存取管理作業參考指南
 
@@ -97,7 +97,7 @@ Azure AD Connect 在布建流程中扮演重要角色。 如果同步處理伺�
 
 ![Azure AD Connect 預備模式設定的螢幕擷取畫面](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>掌握最新消息
+#### <a name="stay-current"></a>保持最新狀態
 
 Microsoft 會定期 Azure AD Connect 更新。 隨時保持最新的優勢，以利用每個新版本所提供的效能改進、bug 修正和新功能。
 
@@ -170,7 +170,7 @@ Azure Active Directory 透過 Microsoft 雲端服務的[群組型授權](https:/
 資源擁有者可能會認為 [**所有使用者**] 群組只包含**企業員工**，因為他們可能實際上同時包含**企業員工**和**來賓**。 因此，當您使用 [**所有使用者**] 群組進行應用程式指派，以及授與資源（例如 SharePoint 內容或應用程式）的存取權時，您應該特別注意。
 
 > [!IMPORTANT]
-> 如果已啟用 [**所有使用者**] 群組並用於條件式存取原則、應用程式或資源指派，如果您不想要讓它包含來賓使用者，請務必[保護群組](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group)。 此外，您應該藉由建立並指派給僅包含**企業員工**的群組，來修正授權指派。 另一方面，如果您發現 [**所有使用者**] 群組已啟用，但並未用來授與資源的存取權，請確定您組織的操作指引是刻意使用該群組（包括**企業員工**和**來賓**）。
+> 如果已啟用 [**所有使用者**] 群組並用於條件式存取原則、應用程式或資源指派，如果您不想要讓它包含來賓使用者，請務必[保護群組](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups)。 此外，您應該藉由建立並指派給僅包含**企業員工**的群組，來修正授權指派。 另一方面，如果您發現 [**所有使用者**] 群組已啟用，但並未用來授與資源的存取權，請確定您組織的操作指引是刻意使用該群組（包括**企業員工**和**來賓**）。
 
 ### <a name="automated-user-provisioning-to-apps"></a>應用程式的自動化使用者布建
 
@@ -191,7 +191,7 @@ Azure Active Directory 透過 Microsoft 雲端服務的[群組型授權](https:/
 - [使用 IdFix 工具（Office 365）準備與 Office 365 同步處理的目錄屬性](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：在同步處理期間針對錯誤進行疑難排解](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 安全身分識別基礎結構有五個層面。 這份清單可協助您快速尋找並採取必要的動作，以保護及管理您組織中身分識別及其權利的生命週期。
 

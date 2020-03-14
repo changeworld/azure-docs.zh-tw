@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131890"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298762"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -20,30 +20,29 @@ ms.locfileid: "77131890"
 
 ## <a name="before-you-begin"></a>開始之前
 
-繼續進行本文之前，請確定您已從 IoT 裝置安裝 FarmBeats 和收集的歷程記錄資料。
-您也需要啟用合作夥伴存取權，如下列步驟所述。
+繼續進行本文之前，請確定您已從 IoT 裝置安裝 FarmBeats 和收集的歷程記錄資料。 您也需要啟用合作夥伴存取權，如下列步驟所述。
 
 ## <a name="enable-partner-access"></a>啟用合作夥伴存取
 
 您必須啟用 Azure FarmBeats 實例的合作夥伴整合。 此步驟會建立可存取您的 Azure FarmBeats 實例作為裝置合作夥伴的用戶端，並提供後續步驟中所需的下列值：
 
-- API 端點：這是 Datahub URL，例如 HTTPs://\<Datahub >. net。
+- API 端點：這是 Datahub URL，例如 HTTPs://\<Datahub >. net
 - 租用戶識別碼
 - 用戶端識別碼
 - 用戶端密碼
 - EventHub 連接字串
 
-請遵循下列步驟。
+請遵循下列步驟：
 
 >[!NOTE]
 > 您必須是系統管理員，才能執行下列步驟。
 
 1. 下載[zip](https://aka.ms/farmbeatspartnerscriptv2)檔案，並將它解壓縮到您的本機磁片磁碟機。 Zip 檔案中將會有一個檔案。
-2. 登入 https://portal.azure.com/ 並移至 Azure Active Directory > 應用程式註冊
+2. 登入 https://portal.azure.com/ 並移至**Azure Active Directory** > **應用程式註冊**。
 
-3. 按一下在 FarmBeats 部署過程中建立的應用程式註冊。 它的名稱會與您的 FarmBeats Datahub 相同。
+3. 選取在 FarmBeats 部署過程中建立的**應用程式註冊**。 它的名稱會與您的 FarmBeats Datahub 相同。
 
-4. 按一下 [公開 API]-> 按一下 [新增用戶端應用程式] 並輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46** ，然後選取 [授權範圍]。 這會授與 Azure CLI （Cloud Shell）的存取權，以執行下列步驟。
+4. 選取 [**公開 API** ] > 選取 [**新增用戶端應用程式**]，然後輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**並檢查**授權範圍**。 這會授與 Azure CLI （Cloud Shell）的存取權，以執行下列步驟：
 
 5. 開啟 Cloud Shell。 此選項可在 Azure 入口網站右上角的工具列上取得。
 
@@ -59,9 +58,9 @@ ms.locfileid: "77131890"
 
 8. 移至上傳檔案的目錄。 根據預設，檔案會上傳至使用者名稱底下的主目錄。
 
-9. 執行下列指令碼。 腳本會要求提供可從 Azure Active Directory > 總覽頁面取得的租使用者識別碼。
+9. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從**Azure Active Directory** > 的 **[總覽] 頁面**取得。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ ms.locfileid: "77131890"
 10. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
 ## <a name="create-device-or-sensor-metadata"></a>建立裝置或感應器中繼資料
 
- 現在您已有必要的認證，您可以定義裝置和感應器。 若要這麼做，請呼叫 FarmBeats Api 來建立中繼資料。 請注意，您將需要呼叫 Api，做為您在上一節中建立的用戶端應用程式
+ 現在您已有必要的認證，您可以定義裝置和感應器。 若要這麼做，請呼叫 FarmBeats Api 來建立中繼資料。 請務必呼叫 Api，做為您在上一節中建立的用戶端應用程式。
 
- FarmBeats Datahub 具有下列 Api，可讓您建立及管理裝置或感應器中繼資料。 請注意，身為合作夥伴，您只能存取讀取、建立和更新中繼資料;**夥伴不允許刪除。**
+ FarmBeats Datahub 具有下列 Api，可讓您建立及管理裝置或感應器中繼資料。
+
+ > [!NOTE]
+ > 身為合作夥伴，您只能存取讀取、建立和更新中繼資料; **[刪除] 選項僅限於合作夥伴。**
 
 - /**devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
 - /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
@@ -284,6 +286,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
+以下是 Python 中的範例程式碼。 此範例中使用的存取權杖，與驗證期間所收到的相同。
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
+```
+
+
 > [!NOTE]
 > Api 會針對每個建立的實例傳回唯一的識別碼。 您必須保留識別碼，才能傳送對應的遙測訊息。
 
@@ -331,11 +349,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -392,8 +410,10 @@ write_client.stop()
 
 矯正**措施：**
 
-1. 請確認您已正確完成合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API，進行取得，並檢查合作夥伴是否已註冊。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
+1. 請確定您已完成適當的合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API、執行 Get 並檢查是否已註冊夥伴，以檢查此項。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
+
 2. 請確定您已使用合作夥伴用戶端認證建立中繼資料（Devicemodel 傳遞、裝置、SensorModel、感應器）。
+
 3. 請確定您已使用正確的遙測訊息格式（如下所示）：
 
 ```json
@@ -407,11 +427,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }

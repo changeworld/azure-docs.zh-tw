@@ -4,100 +4,23 @@ description: 瞭解如何建立私用 Azure Kubernetes Service （AKS）叢集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944208"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205176"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>建立私人 Azure Kubernetes Service 叢集（預覽）
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私用 Azure Kubernetes Service 叢集
 
 在私人叢集中，控制平面或 API 伺服器具有在[私人網際網路的 RFC1918 位址配置](https://tools.ietf.org/html/rfc1918)檔中所定義的內部 IP 位址。 藉由使用私人叢集，您可以確保您的 API 伺服器與節點集區之間的網路流量只會保留在私人網路上。
 
 控制平面或 API 伺服器位於 Azure Kubernetes Service （AKS）管理的 Azure 訂用帳戶中。 客戶的叢集或節點集區位於客戶的訂用帳戶中。 伺服器和叢集或節點集區可以透過 API 伺服器虛擬網路中的[Azure 私人連結服務][private-link-service]，以及在客戶 AKS 叢集的子網中公開的私用端點，彼此通訊。
 
-> [!IMPORTANT]
-> AKS 預覽功能是自助服務，並以選擇為基礎提供。 預覽會依*原樣提供，並會*在服務等級協定（SLA *）和有限*擔保中排除。 AKS 預覽會以*最*大的方式由客戶支援部門部分涵蓋。 因此，這些功能不適用於生產用途。 如需詳細資訊，請參閱下列支援文章：
->
-> * [AKS 支援原則](support-policies.md)
-> * [Azure 支援常見問題集](faq.md)
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="prerequisites"></a>必要條件
+* Azure CLI 版2.2.0 或更新版本
 
-* Azure CLI 版2.0.77 或更新版本，以及 Azure CLI AKS Preview 延伸模組版本0.4.18
-
-## <a name="currently-supported-regions"></a>目前支援的區域
-
-* 澳大利亞東部
-* 澳大利亞東南部
-* 巴西南部
-* 加拿大中部
-* 加拿大東部
-* Cenral 我們
-* 東亞
-* 美國東部
-* 美國東部 2
-* 美國東部 2 EUAP
-* 法國中部
-* 德國北部
-* 日本東部
-* 日本西部
-* 南韓中部
-* 南韓南部
-* 美國中北部
-* 北歐
-* 北歐
-* 美國中南部
-* 英國南部
-* 西歐
-* 美國西部
-* 美國西部 2
-* 美國東部 2
-
-## <a name="currently-supported-availability-zones"></a>目前支援的可用性區域
-
-* 美國中部
-* 美國東部
-* 美國東部 2
-* 法國中部
-* 日本東部
-* 北歐
-* 東南亞
-* 英國南部
-* 西歐
-* 美國西部 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安裝最新的 Azure CLI AKS Preview 擴充功能
-
-若要使用私人叢集，您需要 Azure CLI AKS Preview 延伸模組版本0.4.18 或更新版本。 使用[az extension add][az-extension-add]命令來安裝 Azure CLI AKS Preview 延伸模組，然後使用下列[az extension update][az-extension-update]命令來檢查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> 當您在訂用帳戶上註冊功能時，目前無法取消註冊該功能。 啟用一些預覽功能之後，您可以針對訂用帳戶中建立的所有 AKS 叢集使用預設設定。 請勿在生產訂用帳戶上啟用預覽功能。 使用個別的訂用帳戶來測試預覽功能並收集意見反應。
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-註冊狀態可能需要幾分鐘的時間才會顯示為*已註冊*。 您可以使用下列[az feature list][az-feature-list]命令來檢查狀態：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-當狀態為 [已註冊] 時，請使用下列[az provider register][az-provider-register]命令重新整理*microsoft.containerservice*資源提供者的註冊：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>建立私用 AKS 叢集
 
 ### <a name="create-a-resource-group"></a>建立資源群組
@@ -159,6 +82,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必
 9. 移至您擁有 VM 的虛擬網路，選取 [**對等互連**]，選取 [AKS] 虛擬網路，然後建立對等互連。 如果 AKS 虛擬網路上的位址範圍和 VM 的虛擬網路衝突，對等互連會失敗。 如需詳細資訊，請參閱[虛擬網路對等互連][virtual-network-peering]。
 
 ## <a name="dependencies"></a>相依性  
+
 * 僅標準 Azure Load Balancer 支援私用連結服務。 不支援基本 Azure Load Balancer。  
 * 若要使用自訂 DNS 伺服器，請使用 DNS 部署 AD 伺服器以轉寄至此 IP 168.63.129.16
 
@@ -173,7 +97,6 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必
 * 不支援將現有的 AKS 叢集轉換成私人叢集
 * 刪除或修改客戶子網中的私用端點，會導致叢集停止運作。 
 * 目前不支援容器即時資料的 Azure 監視器。
-* 目前不支援*攜帶您自己的 DNS* 。
 
 
 <!-- LINKS - internal -->

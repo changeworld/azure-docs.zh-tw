@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026857"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298813"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線到 Azure IoT Central
 
 本文介紹 Microsoft Azure IoT Central 裝置連線能力的重要相關概念。
 
-Azure IoT Central 會使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/about-iot-dps.md)來管理所有裝置註冊和連線。
+Azure IoT Central 會使用 [Azure IoT 中樞裝置佈建服務 (DPS)](../../iot-dps/about-iot-dps.md) 來管理所有的裝置註冊和連線。
 
-使用 DPS 可啟用：
+使用 DPS 可實現如下效果：
 
-- IoT Central 支援大規模上線和連線裝置。
-- 您可以產生裝置認證並將裝置設定為離線，而不需要透過 IoT Central UI 註冊裝置。
+- 讓 IoT Central 支援大規模的裝置上線和連線。
+- 讓您產生裝置認證並在離線狀態下設定裝置，而不需要透過 IoT Central UI 來註冊裝置。
 - 要使用共用存取簽章（SAS）連接的裝置。
-- 使用業界標準的 x.509 憑證連接的裝置。
-- 您可以使用自己的裝置識別碼，在 IoT Central 中註冊裝置。 使用您自己的裝置識別碼可簡化與現有後置 office 系統的整合。
-- 單一且一致的方式，可將裝置連接到 IoT Central。
+- 讓裝置使用業界標準的 X.509 憑證來連線。
+- 讓您使用自己的裝置識別碼在 IoT Central 中註冊裝置。 使用自己的裝置識別碼可簡化與現有後台系統的整合。
+- 讓您以單一且一致的方式將裝置連線到 IoT Central。
 
 本文說明下列使用案例：
 
@@ -194,6 +194,9 @@ IoT 隨插即用（預覽）與 IoT Central 的其中一個重要功能，就是
     - 未在 [**裝置**] 頁面上以有效認證連線，但未在註冊期間指定範本識別碼的裝置手動註冊。  
 操作員可以使用 [**遷移**] 按鈕，從 [**裝置**] 頁面將裝置與範本建立關聯。
 
+## <a name="best-practices"></a>最佳作法 
+1.  使用 DPS 將裝置連接到 IoT Central 時，請確定（IoT 中樞）裝置連接字串不是保存或快取。 若要重新連線裝置，請完成一般 DPS 裝置註冊流程，以取得正確的裝置連接字串。 如果快取連接字串，則在 IoT Central 更新基礎 Azure IoT 中樞的案例中，裝置軟體會面臨具有過時連接字串的風險。 
+
 ## <a name="sdk-support"></a>SDK 支援
 
 Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可用的裝置 SDK 如下：
@@ -213,7 +216,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 
 下表摘要說明 Azure IoT Central 裝置功能與 IoT 中樞功能的對應方式：
 
-| Azure IoT Central | Azure IoT 中心 |
+| Azure IoT 中心 | Azure IoT 中樞 |
 | ----------- | ------- |
 | 量測：遙測 | 裝置到雲端傳訊 |
 | 裝置屬性 | 裝置對應項的報告屬性 |

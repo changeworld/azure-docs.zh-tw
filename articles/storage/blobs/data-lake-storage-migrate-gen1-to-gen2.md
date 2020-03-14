@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130017"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371837"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -132,7 +132,8 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 
 4. 解除委任 Gen1。
 
-![隨即轉移模式](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ![隨即轉移模式](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>使用隨即轉移模式的考慮
 
@@ -152,7 +153,8 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 
 4. 解除委任 Gen1。
 
-![增量複製模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> ![增量複製模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>使用累加式複製模式的考慮：
 
@@ -172,7 +174,8 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 
 4. 停止所有寫入至 Gen1，然後解除委任 Gen1。
 
-![雙重管線模式](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> ![雙重管線模式](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>使用雙重管線模式的考慮：
 
@@ -190,7 +193,8 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 
 4. 解除委任 Gen1。
 
-![雙向模式](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> ![雙向模式](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>使用雙向同步處理模式的考慮：
 

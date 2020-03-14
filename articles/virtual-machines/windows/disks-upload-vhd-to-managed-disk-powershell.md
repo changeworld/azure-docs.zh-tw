@@ -3,17 +3,17 @@ title: 使用 Azure PowerShell 將 vhd 上傳至 Azure
 description: 瞭解如何使用 Azure PowerShell，透過直接上傳，將 vhd 上傳至 Azure 受控磁片，以及跨區域複製受控磁片。
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459993"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369551"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 將 vhd 上傳至 Azure
 
@@ -23,11 +23,11 @@ ms.locfileid: "75459993"
 
 目前，標準 HDD、標準 SSD 和 premium SSD 受控磁片支援直接上傳。 Ultra Ssd 尚不支援此程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
-- 如果您想要從內部部署環境上傳 VHD：已[針對 Azure 準備](prepare-for-upload-vhd-image.md)的 vhd，儲存在本機上。
+- 如果您想要從內部部署上傳 VHD：已[針對 Azure 備妥的](prepare-for-upload-vhd-image.md)固定大小 vhd，並儲存在本機。
 - 或者，如果您想要執行複製動作，則是 Azure 中的受控磁片。
 
 ## <a name="create-an-empty-managed-disk"></a>建立空的受控磁片
@@ -76,8 +76,6 @@ $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-如果您的 SAS 在上傳期間過期，而且您尚未呼叫 `revoke-access`，您可以使用 `grant-access`再次取得新的 SAS 來繼續上傳。
 
 上傳完成之後，而且您不再需要將任何其他資料寫入磁片，請撤銷 SAS。 撤銷 SAS 將會變更受控磁片的狀態，並可讓您將磁片連結至 VM。
 

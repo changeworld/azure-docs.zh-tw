@@ -1,5 +1,5 @@
 ---
-title: 關於語音裝置 SDK-語音服務
+title: 語音裝置 SDK-語音服務
 titleSuffix: Azure Cognitive Services
 description: 開始使用語音裝置 SDK。 語音服務可與各種裝置和音訊來源搭配運作。 語音裝置 SDK 是已預先微調的程式庫，可搭配有目的建置的麥克風陣列開發套件。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136968"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370639"
 ---
-# <a name="about-the-speech-devices-sdk"></a>關於語音裝置 SDK
+# <a name="what-is-the-speech-devices-sdk"></a>什麼是語音裝置 SDK？
 
 [語音服務](overview.md)可與各種裝置和音訊來源搭配運作。 您現在可以利用相符的硬體和軟體，將語音應用程式提升至下一個層級。 語音裝置 SDK 是已預先微調的程式庫，可搭配有目的建置的麥克風陣列開發套件。
 

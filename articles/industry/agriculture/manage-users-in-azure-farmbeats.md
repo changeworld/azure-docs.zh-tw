@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271690"
+ms.locfileid: "79298779"
 ---
 # <a name="manage-users"></a>管理使用者
 
@@ -26,6 +26,8 @@ Azure FarmBeats 包含屬於 Azure Active Directory （Azure AD）實例之人�
 Azure FarmBeats 會使用 Azure AD 來進行驗證、存取控制和角色。 您可以在 Azure FarmBeats 中，將使用者新增 Azure AD 租使用者中。
 
 > [!NOTE]
+> 如果使用者不是 Azure AD 的租使用者使用者，請依照**新增 Azure AD 使用者**一節中的指示完成設定。
+
 > 如果您嘗試新增為 Azure FarmBeats 使用者的使用者不存在於 Azure AD 租使用者中，請遵循「新增 Azure AD 使用者」一節中的指示完成安裝。
 
 Azure FarmBeats 支援兩種類型的使用者角色：
@@ -63,7 +65,7 @@ Azure FarmBeats 支援兩種類型的使用者角色：
 ## <a name="add-azure-ad-users"></a>新增 Azure AD 使用者
 
 > [!NOTE]
-> Azure FarmBeats 使用者必須存在於 Azure AD 租使用者中，您才能將它們指派給應用程式和角色。 如果您想要新增至 Azure FarmBeats 的使用者尚未存在於 Azure AD 租使用者中，請遵循本節中的指示。 如果使用者存在於 Azure AD 租使用者中，您可以略過這些指示。
+> 在您將 Azure FarmBeats 使用者指派給應用程式和角色之前，必須先存在於 Azure AD 租使用者中。 如果 Azure AD 的租使用者中不存在使用者，請遵循本節中的指示。 如果 Azure AD 租使用者中已經有使用者，請略過指示。
 
 若要將使用者新增至 Azure AD，請執行下列動作：
 

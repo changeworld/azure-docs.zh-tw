@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082235"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257065"
 ---
 # <a name="monitor-the-process-server"></a>監視處理序伺服器
 
@@ -59,11 +59,11 @@ ms.locfileid: "74082235"
 ![警告][yellow] | 過去15分鐘內快取資料夾可用空間 < 30%
 ![警告][yellow] | Site Recovery 會每隔五分鐘監視擱置/傳出資料，並估計在30分鐘內無法將進程伺服器快取中的資料上傳至 Azure。
 ![警告][yellow] | 進程伺服器服務未在過去15分鐘內執行
-![重要][red] | 過去15分鐘內的 CPU 使用率 > 95%
-![重要][red] | 過去15分鐘內記憶體使用量 > 95%
-![重要][red] | 過去15分鐘內快取資料夾可用空間 < 25%
-![重要][red] | Site Recovery 會每隔五分鐘監視擱置/傳出資料，並估計進程伺服器快取中的資料在45分鐘內無法上傳至 Azure。
-![重要][red] | 進程伺服器沒有15分鐘的任何心跳。
+![重大][red] | 過去15分鐘內的 CPU 使用率 > 95%
+![重大][red] | 過去15分鐘內記憶體使用量 > 95%
+![重大][red] | 過去15分鐘內快取資料夾可用空間 < 25%
+![重大][red] | Site Recovery 會每隔五分鐘監視擱置/傳出資料，並估計進程伺服器快取中的資料在45分鐘內無法上傳至 Azure。
+![重大][red] | 進程伺服器沒有15分鐘的任何心跳。
 
 ![資料表索引鍵](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 

@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283520"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368191"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>設定及使用計算目標進行模型定型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "79283520"
 您可以使用 Azure Machine Learning SDK、Azure Machine Learning studio、Azure CLI 或 Azure Machine Learning VS Code 延伸模組來建立和管理計算目標。 如果您有透過另一個服務（例如 HDInsight 叢集）建立的計算目標，您可以將它們附加至您的 Azure Machine Learning 工作區來使用它們。
  
 在本文中，您將了解如何使用各種計算目標來訓練模型。  所有計算目標的步驟皆遵循相同的工作流程：
-1. 如果您沒有計算目標，請__建立__一個。
+1. __建立__計算目標（如果您還沒有的話）。
 2. 將計算目標__連結__至您的工作區。
 3. __設定__計算目標，以便其包含您的指令碼所需的 Python 環境和封裝相依性。
 
@@ -89,7 +89,7 @@ ML 管線是由多個**步驟**所構成，這些步驟是管線中的相異計�
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
-現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合。
 
 ### <a id="amlcompute"></a>Azure Machine Learning Compute
 
@@ -114,7 +114,7 @@ Azure Machine Learning Compute 有預設限制，例如可配置的核心數目�
   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
 
 
-現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合。
 
 #### <a id="persistent"></a>持續性計算
 
@@ -136,7 +136,7 @@ Azure Machine Learning Compute 有預設限制，例如可配置的核心數目�
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
-現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合。
 
 
 ### <a id="vm"></a>遠端虛擬機器
@@ -154,15 +154,30 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
 1. **附加**：若要附加現有的虛擬機器作為計算目標，您必須提供虛擬機器的完整功能變數名稱（FQDN）、使用者名稱和密碼。 在範例中，請以 VM 的公用 FQDN 或公用 IP 位址取代 \<fqdn>。 將 \<username> 和 \<password> 取代為 VM 的 SSH 使用者名稱和密碼。
 
+    > [!IMPORTANT]
+    > 下列 Azure 區域不支援使用 VM 的公用 IP 位址來連接虛擬機器。 相反地，請使用 VM 的 Azure Resource Manager 識別碼和 `resource_id` 參數：
+    >
+    > * 美國東部
+    > * 美國西部 2
+    > * 美國中南部
+    >
+    > 您可以使用訂用帳戶識別碼、資源組名和 VM 名稱，以下列字串格式來建立 VM 的資源識別碼： `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`。
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -184,7 +199,7 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
-現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合。
 
 ### <a id="hdinsight"></a>Azure HDInsight 
 
@@ -198,6 +213,15 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
 
 1. **附加**：若要附加 hdinsight 叢集作為計算目標，您必須提供 hdinsight 叢集的主機名稱、使用者名稱和密碼。 下列範例會使用 SDK 將叢集附加到您的工作區。 在此範例中，將 \<clustername> 取代為叢集的名稱。 將 \<username> 和 \<password> 取代為叢集的 SSH 使用者名稱和密碼。
 
+    > [!IMPORTANT]
+    > 下列 Azure 區域不支援使用叢集的公用 IP 位址來附加 HDInsight 叢集。 請改為使用具有 `resource_id` 參數之叢集的 Azure Resource Manager 識別碼：
+    >
+    > * 美國東部
+    > * 美國西部 2
+    > * 美國中南部
+    >
+    > 您可以使用訂用帳戶識別碼、資源組名和叢集名稱，以下列字串格式來建造叢集的資源識別碼： `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`。
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -225,7 +254,7 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
-現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合。
 
 
 ### <a id="azbatch"></a>Azure Batch 
@@ -234,9 +263,9 @@ Azure Batch 可用來在雲端有效率地執行大規模的平行和高效能�
 
 若要將 Azure Batch 附加為計算目標，您必須使用 Azure Machine Learning SDK，並提供下列資訊：
 
--   **Azure Batch 計算名稱**：要在工作區中用於計算的易記名稱
--   **Azure Batch 帳戶名稱**： Azure Batch 帳戶的名稱
--   **資源群組**：包含 Azure Batch 帳戶的資源群組。
+-    **Azure Batch 計算名稱**：要在工作區中用於計算的易記名稱
+-    **Azure Batch 帳戶名稱**： Azure Batch 帳戶的名稱
+-    **資源群組**：包含 Azure Batch 帳戶的資源群組。
 
 下列程式碼示範如何將 Azure Batch 連結為計算目標：
 

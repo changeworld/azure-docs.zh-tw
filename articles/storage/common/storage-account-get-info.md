@@ -9,16 +9,16 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457481"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137053"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 取得儲存體帳戶類型和 SKU 名稱
 
-本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage/client)，取得 blob 的 Azure 儲存體帳戶類型和 SKU 名稱。
+本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)，取得 blob 的 Azure 儲存體帳戶類型和 SKU 名稱。
 
 從2018-03-28 版開始，服務版本提供帳戶資訊。
 

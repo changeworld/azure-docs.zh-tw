@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127985"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366678"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面上部署 Windows 7 虛擬機器
 
@@ -35,7 +35,7 @@ ms.locfileid: "79127985"
 4. 將使用 RDP 連接到主機時所用的帳戶新增至「遠端桌面使用者」群組。 如果您不這麼做，在將 VM 加入 Active Directory 網域之後，您可能無法連線到該 VM。
 5. 移至 VM 上的 Windows Update。
 6. 安裝 [重要] 分類中的所有 Windows 更新。
-7. 安裝選用類別（不含語言套件）中的所有 Windows 更新。 這會安裝完成這些指示所需的遠端桌面通訊協定8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)）。
+7. 安裝選用類別（不含語言套件）中的所有 Windows 更新。 這會安裝完成這些指示所需的遠端桌面通訊協定8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)）。
 8. 開啟本機群組原則編輯器，然後流覽至 **電腦**設定 > **系統管理範本** > **Windows 元件** ** > 遠端桌面服務 > 遠端桌面工作階段主機** ** > ** **遠端會話環境**。
 9. 啟用遠端桌面通訊協定8.0 原則。
 10. 將此 VM 加入您的 Active Directory 網域。

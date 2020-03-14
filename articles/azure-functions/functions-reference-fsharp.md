@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276760"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開發人員參考
 
@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`答案中所述步驟，工作帳戶即會啟用。
+* `Microsoft.Azure.WebJobs.Host`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 ## <a name="referencing-external-assemblies"></a>參考外部組件
 同樣地，在新增架構組件參考時也可以加上 `#r "AssemblyName"` 指示詞。
@@ -169,7 +169,7 @@ Azure Functions 裝載環境會自動加入下列組件︰
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`答案中所述步驟，工作帳戶即會啟用。
+* `System.Net.Http.Formatting`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 此外，下列組件為特殊案例，可以使用簡單名稱來參考 (例如 `#r "AssemblyName"`)：
 
@@ -177,7 +177,7 @@ Azure Functions 裝載環境會自動加入下列組件︰
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`答案中所述步驟，工作帳戶即會啟用。
+* `Microsoft.AspNEt.WebHooks.Common`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 如果您需要參考私用組件，您可以將組件檔案上傳至您函式的相對 `bin` 資料夾，然後使用檔案名稱來參考它 (例如 `#r "MyAssembly.dll"`)。 如需如何將檔案上傳至函數資料夾的資訊，請參閱以下的＜封裝管理＞小節。
 
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>重複使用 .fsx 程式碼
-您可以使用 `#load` 指示詞以使用其他 `.fsx` 檔案中的程式碼。 例如：
+您可以使用 `.fsx` 指示詞以使用其他 `#load` 檔案中的程式碼。 例如：
 
 `run.fsx`
 
@@ -288,7 +288,7 @@ let mylog(log: ILogger, text: string) =
 如需詳細資訊，請參閱下列資源：
 
 * [F# 指南](/dotnet/articles/fsharp/index)
-* [Azure Functions 的最佳做法](functions-best-practices.md)
+* [Azure Functions 的最佳作法](functions-best-practices.md)
 * [Azure Functions 開發人員參考](functions-reference.md)
 * [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
 * [Azure Functions 測試](functions-test-a-function.md)

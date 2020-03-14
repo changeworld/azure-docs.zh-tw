@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb9c628993201553b8da1d1bd37b4705e0f23dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271645"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371094"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(已淘汰) 使用 Sysdig 監視 Azure Container Service Kubernetes 叢集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 同時也假設您已經安裝 azure cli 和 kubectl 工具。
 
 您可以藉由執行下列操作來測試是否已安裝 `az` 工具：
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 如果您尚未安裝 `az` 工具，[這裡](https://github.com/azure/azure-cli#installation)有指示。
@@ -34,13 +34,13 @@ $ az --version
 您可以藉由執行下列操作來測試是否已安裝 `kubectl` 工具：
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 如果您尚未安裝 `kubectl`，可以執行︰
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
@@ -61,13 +61,13 @@ DaemonSets 是每部機器執行單一容器執行個體的 Kubernetes API 物�
 在 Linux 與 OS X 上，您可以執行︰
 
 ```console
-$ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
+curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
 在 PowerShell 中：
 
-```console
-$ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
 然後編輯該檔案，以插入您從 Sysdig 帳戶取得的存取金鑰。
@@ -75,7 +75,7 @@ $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-s
 最後，建立 DaemonSet：
 
 ```console
-$ kubectl create -f sysdig-daemonset.yaml
+kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>檢視您的監視

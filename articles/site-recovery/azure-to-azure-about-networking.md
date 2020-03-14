@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759818"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371438"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 嚴重損壞修復中的網路功能
 
@@ -52,6 +52,8 @@ ms.locfileid: "76759818"
 login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL 的授權和驗證。
 *.hypervrecoverymanager.windowsazure.com | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。
 *.servicebus.windows.net | 需要此項目方可從 VM 寫入 Site Recovery 監視和診斷資料。
+*.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
+*. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
@@ -63,6 +65,8 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 - 建立 [Azure Active Directory (AAD) 服務標籤](../virtual-network/security-overview.md#service-tags)型 NSG 規則，以允許存取對應至 AAD 的所有 IP 位址
 - 針對目的地區域建立以 EventsHub 服務標記為基礎的 NSG 規則，以允許存取 Site Recovery 監視。
 - 建立以 AzureSiteRecovery 服務標記為基礎的 NSG 規則，以允許存取任何區域中的 Site Recovery 服務。
+- 建立以 AzureKeyVault 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用啟用 ADE 的虛擬機器複寫時，才需要這項功能。
+- 建立以 GuestAndHybridManagement 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用複寫專案的行動代理程式自動升級時，才需要進行這項工作。
 - 建議您在測試 NSG 上建立必要的 NSG 規則，並確認沒有問題後，再於生產 NSG 上建立規則。
 
 ## <a name="example-nsg-configuration"></a>範例 NSG 設定

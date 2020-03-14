@@ -1,32 +1,35 @@
 ---
-title: 使用具有 Azure 儲存體的私用端點 |Microsoft Docs
+title: 使用私用端點
+titleSuffix: Azure Storage
 description: 針對從虛擬網路對儲存體帳戶進行安全存取的私用端點的總覽。
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252652"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299051"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 儲存體的私用端點（預覽）
+# <a name="use-private-endpoints-for-azure-storage"></a>Azure 儲存體使用私人端點
 
 您可以針對您的 Azure 儲存體帳戶使用[私人端點](../../private-link/private-endpoint-overview.md)，以允許虛擬網路（VNet）上的用戶端透過[私人連結](../../private-link/private-link-overview.md)安全地存取資料。 私人端點會針對您的儲存體帳戶服務使用 VNet 位址空間中的 IP 位址。 VNet 上的用戶端與儲存體帳戶之間的網路流量會流經 VNet，並在 Microsoft 骨幹網路上進行私人連結，以消除公開網際網路的風險。
 
 針對您的儲存體帳戶使用私人端點可讓您：
+
 - 設定儲存體防火牆以封鎖儲存體服務的公用端點上的所有連線，藉此保護您的儲存體帳戶。
 - 藉由讓您封鎖從 VNet 外泄的資料，提高虛擬網路（VNet）的安全性。
 - 使用[VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或具有私人對等互連的[ExpressRoutes](../../expressroute/expressroute-locations.md) ，安全地從連線到 VNet 的內部部署網路連線到儲存體帳戶。
 
-## <a name="conceptual-overview"></a>概念式概觀
-![Azure 儲存體總覽的私用端點](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>概念概觀
+
+![Azure 儲存體的私用端點總覽](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 私人端點是[虛擬網路](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服務的特殊網路介面。 當您建立儲存體帳戶的私人端點時，它會在 VNet 上的用戶端與您的儲存體之間提供安全的連線。 私人端點會從 VNet 的 IP 位址範圍指派 IP 位址。 私人端點與儲存體服務之間的連接會使用安全的私用連結。
 
@@ -43,7 +46,7 @@ VNet 中的應用程式可以**使用相同的連接字串和授權機制**，�
 
 您可以藉由設定[儲存防火牆](storage-network-security.md#change-the-default-network-access-rule)預設拒絕透過其公用端點的存取，來保護您的儲存體帳戶，使其僅接受來自 VNet 的連線。 您不需要防火牆規則，就可以允許來自具有私人端點之 VNet 的流量，因為儲存體防火牆只會控制透過公用端點的存取。 私用端點會改為依賴同意流程來授與對儲存體服務的子網存取權。
 
-### <a name="private-endpoints-for-storage-service"></a>儲存體服務的私人端點
+### <a name="private-endpoints-for-azure-storage"></a>Azure 儲存體的私用端點
 
 建立私用端點時，您必須指定儲存體帳戶和它所連接的儲存體服務。 在您需要存取的儲存體帳戶中，每個儲存體服務都需要個別的私用[端點，也](../files/storage-files-introduction.md)就是[blob](../blobs/storage-blobs-overview.md)、 [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、檔案、[佇列](../queues/storage-queues-introduction.md)、[資料表](../tables/table-storage-overview.md)或[靜態網站](../blobs/storage-blob-static-website.md)。
 
@@ -51,8 +54,6 @@ VNet 中的應用程式可以**使用相同的連接字串和授權機制**，�
 > 為儲存體服務的次要實例建立個別的私用端點，以在遠端協助 GRS 帳戶上獲得更佳的讀取效能。
 
 若要使用針對異地多餘儲存體設定的儲存體帳戶進行次要區域的讀取存取，您需要服務之主要和次要實例的個別私人端點。 您不需要為次要實例建立私人端點來進行**容錯移轉**。 私人端點會在容錯移轉之後自動連接到新的主要實例。 如需儲存體冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
-
-#### <a name="resources"></a>資源
 
 如需有關為您的儲存體帳戶建立私人端點的詳細資訊，請參閱下列文章：
 
@@ -111,29 +112,34 @@ StorageAccountA 的 DNS 資源記錄（當由裝載私用端點的 VNet 中的�
 | 表格服務          | `privatelink.table.core.windows.net` |
 | 靜態網站        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>資源
-
 如需有關設定您自己的 DNS 伺服器以支援私人端點的詳細資訊，請參閱下列文章：
 
 - [Azure 虛擬網路中的資源名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [私人端點的 DNS 設定](/azure/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>Pricing
+## <a name="pricing"></a>價格
 
 如需定價詳細資料，請參閱 [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link)。
 
 ## <a name="known-issues"></a>已知問題
 
+請記住，Azure 儲存體的私用端點的下列已知問題。
+
 ### <a name="copy-blob-support"></a>複製 Blob 支援
 
-在預覽期間，我們不支援在來源儲存體帳戶受到防火牆保護時，針對透過私人端點存取的儲存體帳戶所發出的[複製 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)命令。
+如果儲存體帳戶受到防火牆保護，且帳戶是透過私人端點來存取，則該帳戶無法作為[複製 Blob](/rest/api/storageservices/copy-blob)作業的來源。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有私人端點的 Vnet 中用戶端的儲存體存取條件約束
 
-Vnet 中具有現有私用端點的用戶端，在存取其他具有私人端點的儲存體帳戶時，會面臨條件約束。 比方說，假設 VNet N1 具有儲存體帳戶 A1 的私用端點（例如 blob 服務）。 如果儲存體帳戶 A2 在 VNet 中有適用于 blob 服務的私用端點，則 VNet N1 中的用戶端也必須使用私用端點來存取帳戶 A2 的 blob 服務。 如果儲存體帳戶 A2 沒有 blob 服務的任何私用端點，則 VNet N1 中的用戶端可以存取其 blob 服務，而不需要私用端點。
+Vnet 中具有現有私用端點的用戶端，在存取其他具有私人端點的儲存體帳戶時，會面臨條件約束。 例如，假設 VNet N1 具有儲存體帳戶 A1 的私人端點，適用于 Blob 儲存體。 如果儲存體帳戶 A2 在 VNet 中有適用于 Blob 儲存體的私用端點，則 VNet N1 中的用戶端也必須使用私用端點來存取帳戶 A2 中的 Blob 儲存體。 如果儲存體帳戶 A2 沒有 Blob 儲存體的任何私人端點，則 VNet N1 中的用戶端可以存取該帳戶中的 Blob 儲存體，而不需要私用端點。
 
 此條件約束是當帳戶 A2 建立私人端點時，所做的 DNS 變更結果。
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有私人端點之子網的網路安全性群組規則
 
 目前，您無法為私人端點設定[網路安全性群組](../../virtual-network/security-overview.md)（NSG）規則和使用者定義的路由。 套用至裝載私用端點之子網的 NSG 規則會套用至私用端點。 此問題的有限因應措施是在來源子網上為私人端點執行存取規則，不過這種方法可能需要較高的管理負荷。
+
+## <a name="next-steps"></a>後續步驟
+
+- [設定 Azure 儲存體防火牆和虛擬網路](storage-network-security.md)
+- [Blob 儲存體的安全性建議](../blobs/security-recommendations.md)

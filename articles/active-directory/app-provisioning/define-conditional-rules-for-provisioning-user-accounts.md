@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544261"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138530"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -103,13 +103,14 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 
 >[!IMPORTANT] 
-> 目前不支援 IsMemberOf 篩選。
+> - 目前不支援 IsMemberOf 篩選。
+> - 多重值屬性不支援 EQUALS 和 NOT EQUALS
 
 9. (選擇性) 重複步驟 7-8，新增更多範圍子句。
 
 10. 在 [範圍篩選器標題] 中，新增您範圍篩選器的名稱。
 
-11. 選取 **[確定]** 。
+11. 選取 [確定]。
 
 12. 在 [範圍篩選條件] 畫面上，再次選取 [確定]。 (選擇性) 重複步驟 6-11，新增另一個範圍篩選條件。
 

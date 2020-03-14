@@ -1,21 +1,21 @@
 ---
-title: 適用於 PostgreSQL 的 Azure 資料庫的私人連結-單一伺服器（預覽）
+title: 私人連結-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的私用連結運作方式。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898361"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371676"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>適用於 PostgreSQL 的 Azure 資料庫的私人連結-單一伺服器（預覽）
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器的私人連結
 
-私人連結可讓您透過私人端點連接到 Azure 中的各種 PaaS 服務。 Azure 私用連結基本上會將 Azure 服務帶入您的私用虛擬網路（VNet）內。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。
+私人連結可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器建立私人端點，並將 Azure 服務帶入您的私用虛擬網路（VNet）內。 私人端點會公開私人 IP，您可以用來連線到您的資料庫伺服器，就像 VNet 中的任何其他資源一樣。
 
 如需支援私用連結功能之 PaaS 服務的清單，請參閱私用連結[檔](https://docs.microsoft.com/azure/private-link/index)。 私人端點是特定 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 和子網內的私人 IP 位址。
 
@@ -57,10 +57,7 @@ ms.locfileid: "75898361"
 * [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>核准流程
-一旦網路系統管理員建立私人端點（PE），于 postgresql 管理員就可以管理要適用於 PostgreSQL 的 Azure 資料庫的私用端點連接（PEC）。
-
-> [!NOTE]
-> 目前，適用於 PostgreSQL 的 Azure 資料庫單一伺服器僅支援私用端點的自動核准。
+一旦網路系統管理員建立私人端點（PE），于 postgresql 管理員就可以管理要適用於 PostgreSQL 的 Azure 資料庫的私用端點連接（PEC）。 網路系統管理員和 DBA 之間的責任區隔，對於管理適用於 PostgreSQL 的 Azure 資料庫連線很有説明。 
 
 * 流覽至 Azure 入口網站中的適用於 PostgreSQL 的 Azure 資料庫伺服器資源。 
     * 在左窗格中選取 [私人端點連接]
@@ -83,7 +80,7 @@ ms.locfileid: "75898361"
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫的私人連結使用案例
 
-用戶端可以從相同的 VNet、相同區域中的對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線來連線到私人端點。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
+用戶端可以從相同的 VNet 連線到私人端點、在相同區域中對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
 
 ![選取私人端點總覽](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
@@ -109,6 +106,19 @@ ms.locfileid: "75898361"
 * 如果您設定公用流量或服務端點，並建立私人端點，則不同類型的連入流量會由對應類型的防火牆規則所授權。
 
 * 如果您未設定任何公用流量或服務端點，並建立私人端點，則適用於 PostgreSQL 的 Azure 資料庫單一伺服器只能透過私人端點來存取。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私人端點之後，將無法存取適用於 PostgreSQL 的 Azure 資料庫單一伺服器的流量。
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>拒絕適用於 PostgreSQL 的 Azure 資料庫單一伺服器的公用存取
+
+如果您只想依賴私人端點來存取其適用於 PostgreSQL 的 Azure 資料庫單一伺服器，您可以在資料庫伺服器上設定**拒絕公用網路存取**設定，以停用設定所有公用端點（[防火牆規則](concepts-firewall-rules.md)和[VNet 服務端點](concepts-data-access-and-security-vnet.md)）。 
+
+當此設定設為 *[是]* 時，只允許透過私人端點的連線到您的適用於 PostgreSQL 的 Azure 資料庫。 當此設定設為 [*否*] 時，用戶端就可以根據您的防火牆或 VNet 服務端點設定連線到您的適用於 PostgreSQL 的 Azure 資料庫。 此外，一旦 [私人網路存取] 的值設定為 [客戶]，就無法新增及/或更新現有的 [防火牆規則] 和 [VNet 服務端點規則]
+
+> [!Note]
+> 這項功能適用于所有 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫單一伺服器支援一般用途和記憶體優化定價層。
+>
+> 此設定並不會影響適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 SSL 和 TLS 設定。
+
+若要瞭解如何從 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的**拒絕公用網路存取**，請參閱如何設定[拒絕公用網路存取](howto-deny-public-network-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0df2c0501dfba6311d1178703e0907090706859a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303251"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296773"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
@@ -67,7 +67,7 @@ AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中
 
 資訊安全中心為您的容器化環境提供即時威脅偵測，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
-我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅偵測](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
+我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅偵測](threat-protection.md#azure-containers)。
 
 
 ## <a name="container-security-faq"></a>容器安全性常見問題

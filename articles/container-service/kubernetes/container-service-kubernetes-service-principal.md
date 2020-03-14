@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274358"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371115"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(已被取代) 在 Container Service 中設定 Kubernetes 叢集的 Azure AD 服務主體
 
@@ -103,7 +103,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 下列命令會建立 Kubernetes 叢集並產生 SSH 金鑰和服務主體認證︰
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 除非您在建立服務主體時以 `--years` 參數指定自訂的有效範圍，否則其認證的有效期為自建立起 1 年內。 當認證到期時，您的叢集節點可能會進入 **NotReady** 狀態。
 
-若要檢查服務主體的到期日，請執行 [az ad app show](/cli/azure/ad/app#az-ad-app-show) 命令並搭配 `--debug` 參數，然後在輸出底部附近尋找 `passwordCredentials` 的 `endDate` 值：
+若要檢查服務主體的到期日，請執行 [az ad app show](/cli/azure/ad/app#az-ad-app-show) 命令並搭配 `--debug` 參數，然後在輸出底部附近尋找 `endDate` 的 `passwordCredentials` 值：
 
 ```azurecli
 az ad app show --id <appId> --debug

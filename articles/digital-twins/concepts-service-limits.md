@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264945"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370369"
 ---
 # <a name="public-preview-service-limits"></a>公開預覽服務限制
 
-在公開預覽期間，Azure Digital Twins 具有下列暫時的訂用帳戶、執行個體和比率限制。
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-這些限制條件可讓您更輕鬆地了解新服務和其許多功能。
-
-> [!NOTE]
-> 公開上市 (GA) 後，這些限制將會增加或移除。
+在公開預覽期間，針對現有的客戶，Azure 數位 Twins 具有下列暫時的訂用帳戶、實例和速率限制。 這些條件約束的存在有助於簡化新服務和其許多功能的學習，並會在公開上市（GA）時增加或移除。
 
 ## <a name="per-subscription-limits"></a>每個訂用帳戶的限制
 
-在公開預覽期間，每個 Azure 訂用帳戶一次只能建立或執行一個 Azure Digital Twins 執行個體。
-
-> [!TIP]
-> 如果您刪除執行個體，則可建立一個新的執行個體。
+在公開預覽期間，每個 Azure 訂用帳戶一次只能建立或執行一個 Azure Digital Twins 執行個體。 如果您刪除執行個體，則可建立一個新的執行個體。
 
 ## <a name="per-instance-limits"></a>每個執行個體的限制
 
@@ -71,7 +65,7 @@ Azure Digital Twins 管理 API 的要求比率限制如下：
 下列限制是裝置可傳送至 Azure Digital Twins 執行個體的所有訊息總數上限：
 
 - 所有裝置上每秒100個訊息
--   每個裝置每秒25則訊息
+-    每個裝置每秒25則訊息
 
 ## <a name="next-steps"></a>後續步驟
 

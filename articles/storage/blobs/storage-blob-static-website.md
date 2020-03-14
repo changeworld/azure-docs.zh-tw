@@ -8,16 +8,18 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252691"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370486"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
 您可以直接從名為 *$web*的儲存體容器提供靜態內容（HTML、CSS、JavaScript 和影像檔案）。 在 Azure 儲存體中裝載內容可讓您使用包括[Azure Functions](/azure/azure-functions/functions-overview)和其他平臺即服務（PaaS）服務的無伺服器架構。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
 > 如果您的網站相依于伺服器端程式碼，請改用[Azure App Service](/azure/app-service/overview) 。
@@ -98,7 +100,7 @@ ms.locfileid: "78252691"
 
 如果您想要使用標頭來控制快取，請參閱使用快取[規則控制 AZURE CDN](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)快取行為。
 
-## <a name="pricing"></a>Pricing
+## <a name="pricing"></a>價格
 
 您可以免費啟用靜態網站裝載。 您只需支付您的網站利用的 blob 儲存體和營運成本。 如需 Azure Blob 儲存體價格的詳細資訊，請參閱 [Azure Blob 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 

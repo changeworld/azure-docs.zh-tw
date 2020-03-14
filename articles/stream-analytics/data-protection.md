@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 34cbe5f23728c1fcff0555256575cc34b2b6a869
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079854"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299391"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 中的資料保護串流分析 
 
@@ -53,8 +53,6 @@ Azure 串流分析是完全受控的平臺即服務，可讓您建立即時分�
 * 您已撰寫的查詢及其相關設定  
 
 * 使用者自訂函數 
-
-* 從輸入取樣資料的結果 
 
 * 串流分析執行時間所需的檢查點
 

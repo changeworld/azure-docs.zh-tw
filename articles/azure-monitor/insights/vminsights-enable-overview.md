@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361835"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249200"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>啟用適用於 VM 的 Azure 監視器（預覽）總覽
 
@@ -24,7 +24,7 @@ ms.locfileid: "78361835"
 * 使用 PowerShell，跨指定的訂用帳戶或資源群組啟用兩個或多個 Azure VM 或虛擬機器擴展集。
 * 啟用適用於 VM 的 Azure 監視器來監視在公司網路或其他雲端環境中裝載的 Vm 或實體電腦。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您了解下列各節中的資訊。 
 
@@ -206,7 +206,7 @@ ms.locfileid: "78361835"
 
 |物件名稱 |計數器名稱 |
 |------------|-------------|
-|LogicalDisk |可用空間百分比 |
+|LogicalDisk |% Free Space |
 |LogicalDisk |Avg. Disk sec/Read |
 |LogicalDisk |Avg. Disk sec/Transfer |
 |LogicalDisk |Avg. Disk sec/Write |
@@ -220,24 +220,24 @@ ms.locfileid: "78361835"
 |記憶體 |可用的 MB |
 |網路介面卡 |Bytes Received/sec |
 |網路介面卡 |Bytes Sent/sec |
-|處理器 |% 處理器時間 |
+|處理器 |% Processor Time |
 
 ### <a name="linux-performance-counters"></a>Linux 效能計數器
 
 |物件名稱 |計數器名稱 |
 |------------|-------------|
-|邏輯磁碟 |% Used Space |
-|邏輯磁碟 |Disk Read Bytes/sec |
-|邏輯磁碟 |Disk Reads/sec |
-|邏輯磁碟 |Disk Transfers/sec |
-|邏輯磁碟 |Disk Write Bytes/sec |
-|邏輯磁碟 |Disk Writes/sec |
-|邏輯磁碟 |Free Megabytes |
-|邏輯磁碟 |Logical Disk Bytes/sec |
+|Logical Disk |% Used Space |
+|Logical Disk |Disk Read Bytes/sec |
+|Logical Disk |Disk Reads/sec |
+|Logical Disk |Disk Transfers/sec |
+|Logical Disk |Disk Write Bytes/sec |
+|Logical Disk |Disk Writes/sec |
+|Logical Disk |Free Megabytes |
+|Logical Disk |Logical Disk Bytes/sec |
 |記憶體 |Available MBytes Memory |
 |網路 |Total Bytes Received |
 |網路 |Total Bytes Transmitted |
-|處理器 |% 處理器時間 |
+|處理器 |% Processor Time |
 
 ## <a name="management-packs"></a>管理組件
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445581"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368123"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的變更摘要 - 概觀
 
-Azure Cosmos DB 中的變更摘要支援是藉由接聽 Azure Cosmos 容器進行任何變更來運作。 然後變更摘要會輸出已排序的文件清單，這些文件已依其修改的順序變更過。 變更會保存，可進行非同步及累加處理，而輸出可配送給一或多個取用者進行平行處理。 
+Azure Cosmos DB 中的變更摘要支援是靠接聽 Azure Cosmos 容器的任何變更而運作。 然後變更摘要會輸出已排序的文件清單，這些文件已依其修改的順序變更過。 變更會保存，可進行非同步累加處理，而輸出可配送給一或多個取用者進行平行處理。 
 
 Azure Cosmos DB 非常適合用於 IoT、遊戲、零售，以及操作記錄應用程式。 這類應用程式常用的設計模式，是利用資料的變更觸發其他動作。 其他動作的範例包括：
 
@@ -42,11 +42,15 @@ Azure Cosmos DB 中的變更摘要可讓您針對每一個模式建置有效率�
 
 ## <a name="change-feed-and-different-operations"></a>變更摘要和不同的作業
 
-現在，您會看到變更摘要中的所有作業。 可讓您控制變更摘要的功能還無法使用，只能執行特定作業，例如更新，無法執行像插入等作業。 在變更摘要中處理項目時，您可以在項目上新增「軟標記」以用於更新，並據以篩選。 目前變更摘要不會記錄刪除項目。 您可以像先前的範例那樣，在正在刪除的項目上新增軟標記，可以在項目中新增稱為 "deleted" 的屬性，並將它設定為 "true"，然後在項目上設定 TTL，讓它可以被自動刪除。 您可以讀取歷程記錄專案的變更摘要（對應至專案的最新變更，不包括中繼變更），例如五年前新增的專案。 如果項目未刪除，您可以讀取至原始容器的變更摘要。
+現在，您會看到變更摘要中的所有作業。 可讓您控制變更摘要的功能還無法使用，只能執行特定作業，例如更新，無法執行像插入等作業。 在變更摘要中處理專案時，您可以在專案上新增「軟標記」以進行更新和篩選。 目前變更摘要不會記錄刪除。 您可以像先前的範例那樣，在正在刪除的項目上新增軟標記，可以在項目中新增稱為 "deleted" 的屬性，並將它設定為 "true"，然後在項目上設定 TTL，讓它可以被自動刪除。 您可以讀取歷程記錄專案的變更摘要（對應至專案的最新變更，不包括中繼變更），例如五年前新增的專案。 如果項目未刪除，您可以讀取至原始容器的變更摘要。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>變更摘要中項目的排序順序
 
-變更摘要項目會按修改時間順序排列。 系統會依據邏輯分區索引鍵保障此排序順序。
+變更摘要項目會按修改時間順序排列。 每個邏輯分割區索引鍵可保證此排序次序。
+
+### <a name="consistency-level"></a>一致性層級
+
+使用最終一致性層級中的變更摘要時，可能會有重複的事件（在後續的變更摘要讀取作業之間）（其中一個讀取作業的最後一個事件會顯示為下一個）。
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>多重區域 Azure Cosmos 帳戶中的變更摘要
 

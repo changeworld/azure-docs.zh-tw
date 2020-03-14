@@ -1,20 +1,20 @@
 ---
-title: 接收和回應 HTTPS 呼叫
-description: 使用 Azure Logic Apps 即時處理 HTTPS 要求和事件
+title: 使用 HTTPS 接收和回應呼叫
+description: 使用 Azure Logic Apps 處理來自外部服務的輸入 HTTPS 要求
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247276"
+ms.locfileid: "79297285"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 接收和回應連入的 HTTPS 呼叫
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>接收和回應 Azure Logic Apps 中的輸入 HTTPS 要求
 
 透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的要求觸發程式或回應動作，您可以建立自動化的工作和工作流程，以接收和回應連入的 HTTPS 要求。 例如，您可以有邏輯應用程式：
 
@@ -202,6 +202,19 @@ ms.locfileid: "79247276"
 您可以使用 [回應] 動作，以將承載（資料）回應到傳入的 HTTPS 要求，但僅限於由 HTTPS 要求觸發的邏輯應用程式。 您可以在工作流程中的任何時間點新增回應動作。 如需此觸發程式之基礎 JSON 定義的詳細資訊，請參閱[回應動作類型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
 
 您的邏輯應用程式只會將傳入要求保持開啟一分鐘。 假設您的邏輯應用程式工作流程包含回應動作，如果邏輯應用程式在這段時間過後不會傳迴響應，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 傳回給呼叫者。 否則，如果邏輯應用程式未包含回應動作，則邏輯應用程式會立即將 `202 ACCEPTED` 回應傳回給呼叫者。
+
+> [!IMPORTANT]
+> 如果回應動作包含這些標頭，Logic Apps 會從產生的回應訊息中移除這些標頭，而不會顯示任何警告或錯誤：
+>
+> * `Allow`
+> * `Content-*`，但有下列例外狀況： `Content-Disposition`、`Content-Encoding`和 `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> 雖然 Logic Apps 不會阻止您儲存具有這些標頭之回應動作的邏輯應用程式，Logic Apps 會忽略這些標頭。
 
 1. 在邏輯應用程式設計工具中，于您要新增回應動作的步驟底下，選取 [**新增步驟**]。
 

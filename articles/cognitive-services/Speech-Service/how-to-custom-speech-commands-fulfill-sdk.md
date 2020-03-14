@@ -1,23 +1,23 @@
 ---
-title: 如何使用語音 SDK 滿足用戶端上的自訂命令
+title: 如何使用語音 SDK 滿足用戶端的命令
 titleSuffix: Azure Cognitive Services
-description: 在本文中，我們會說明如何使用語音 SDK 處理用戶端上的自訂命令活動。
+description: 在本文中，我們會說明如何使用語音 SDK 來處理用戶端上的自訂命令活動。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156500"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367733"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>如何：使用語音 SDK 完成用戶端上的命令（預覽）
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>使用語音 SDK 滿足用戶端的命令（預覽）
 
 若要使用自訂命令應用程式來完成工作，您可以將自訂承載傳送至已連線的用戶端裝置。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76156500"
 - 從您的自訂命令應用程式定義和傳送自訂 JSON 承載
 - 從C# UWP 語音 SDK 用戶端應用程式接收並視覺化自訂 JSON 承載內容
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - 適用于語音服務的 Azure 訂用帳戶金鑰
@@ -49,7 +49,7 @@ ms.locfileid: "76156500"
    > [!div class="mx-imgBorder"]
    > ![傳送活動完成規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 設定 | 建議的值 | 說明 |
+   | 設定 | 建議的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 規則名稱 | UpdateDeviceState | 描述規則用途的名稱 |
    | 條件 | 必要參數-`OnOff` 和 `SubjectDevice` | 判斷規則何時可執行檔條件 |
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>歡迎試用
+## <a name="try-it-out"></a>試做
 
 1. 啟動應用程式
 1. 選取 [啟用麥克風]

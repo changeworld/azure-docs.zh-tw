@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772155"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367562"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中樞 IP 位址
 
-IoT 中樞公用端點的 IP 位址首碼會定期發佈在_AzureIoTHub_ [服務](../virtual-network/service-tags-overview.md)標籤底下。 您可以使用這些 IP 位址首碼來控制 IoT 中樞與您的裝置或網路資產之間的連線，以執行各種不同的網路隔離目標：
+IoT 中樞公用端點的 IP 位址首碼會定期發佈在_AzureIoTHub_ [服務](../virtual-network/service-tags-overview.md)標籤底下。
+
+> [!NOTE]
+> 對於部署在內部部署網路內的裝置，Azure IoT 中樞支援與私人端點的 VNET 連線能力整合。 如需詳細資訊，請參閱[VNET 的 IoT 中樞支援](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)。
+
+
+您可以使用這些 IP 位址首碼來控制 IoT 中樞與您的裝置或網路資產之間的連線，以執行各種不同的網路隔離目標：
 
 | 目標 | 適用案例 | 方法 |
 |------|-----------|----------|
@@ -26,7 +32,7 @@ IoT 中樞公用端點的 IP 位址首碼會定期發佈在_AzureIoTHub_ [服務
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 * 在裝置的防火牆設定中新增允許規則時，最好提供[適用的通訊協定所使用的特定埠](./iot-hub-devguide-protocols.md#port-numbers)。
 

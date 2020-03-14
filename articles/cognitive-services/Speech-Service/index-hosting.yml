@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: 主檔案
+title: 裝載文件
 summary: 語音服務容器適用于語音轉換文字和文字轉換語音案例，包含標準或自訂的模型。
 metadata:
   title: 裝載檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
@@ -10,32 +10,32 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920870"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79366695"
 landingContent:
-- title: 開始使用
+- title: 關於裝載
   linkLists:
   - linkListType: concept
     links:
-    - text: 語音服務容器
+    - text: 安裝和執行語音容器
       url: speech-container-howto.md
-    - text: 具有 Kubernetes 的語音服務容器
+    - text: 具有 Kubernetes 和 Helm 的語音容器
       url: speech-container-howto-on-premises.md
-    - text: Azure 容器實例上的語音服務容器
+    - text: Azure 容器實例上的語音容器
       url: deploy-speech-on-container-instances.md
-- title: 逐步指南
+- title: 建立和設定
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 建立 Azure 語音資源
       url: get-started.md#new-resource
-    - text: 設定容器
+    - text: 設定語音容器
       url: speech-container-configuration.md
 - title: 參考
   linkLists:

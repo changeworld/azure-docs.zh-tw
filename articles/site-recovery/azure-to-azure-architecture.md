@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759801"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371608"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -135,6 +135,8 @@ Site Recovery 會依照下列方式建立快照集：
 | login.microsoftonline.com | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | *.hypervrecoverymanager.windowsazure.com | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | *.servicebus.windows.net | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
+| *.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
+| *. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
@@ -149,6 +151,8 @@ Site Recovery 會依照下列方式建立快照集：
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory 的範圍（Azure AD）  | AzureActiveDirectory
 允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱 >
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>目標區域規則
 
@@ -158,6 +162,8 @@ Site Recovery 會依照下列方式建立快照集：
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍  | AzureActiveDirectory
 允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱 >
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 規則控制存取

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b9808ddc3b61b0055642c5a0f2a82b0dc7553b33
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384853"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367307"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一個 PowerShell Runbook
 
@@ -39,21 +39,24 @@ ms.locfileid: "78384853"
 
 PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 runbook 相同。 不過，有一些差異和限制。
 
-* 相較于 PowerShell 工作流程 runbook，PowerShell runbook 執行速度會快速，因為它們不會使用編譯步驟。
-* PowerShell 活頁簿不支援在 PowerShell 工作流程 runbook 中使用的檢查點。 使用檢查點，PowerShell 工作流程 runbook 可以從任何時間點繼續操作。 您的 PowerShell runbook 只能從一開始就繼續操作。
-* PowerShell Runbook 只能以序列方式執行命令。 PowerShell 工作流程 runbook 同時支援序列和平行執行。
-* 針對 PowerShell runbook，腳本中的所有專案都會在單一執行空間中執行。 在 PowerShell 工作流程 Runbook 中，活動、命令或指令碼區塊可以有它自己的 Runspace， 
-* PowerShell runbook 與 PowerShell 工作流程 runbook 有一些[語法差異](https://technet.microsoft.com/magazine/dn151046.aspx)。
+| 特性  | PowerShell Runbook | PowerShell 工作流程 Runbook |
+| ------ | ----- | ----- |
+| 速度 | 快速執行，因為它們不會使用編譯步驟。 | 執行速度變慢。 |
+| 檢查點 | 不支援檢查點。 PowerShell runbook 只能從一開始就繼續操作。 | 使用檢查點，讓活頁簿可以從任何時間點繼續操作。 |
+| 命令執行 | 僅支援序列執行。 | 同時支援序列和平行執行。|
+| Runspace | 單一的運行空間會執行腳本中的所有專案。 | 個別的運行時可以用於活動、命令或腳本區塊。 |
+
+除了這些差異之外，PowerShell runbook 與 PowerShell 工作流程 runbook 有一些[語法差異](https://technet.microsoft.com/magazine/dn151046.aspx)。
 
 ## <a name="step-1---create-runbook"></a>步驟 1 - 建立 Runbook
 
-您會由建立一個可輸出文字 Hello World的簡單 Runbook 開始。
+從建立可輸出文字 `Hello World`的簡單 runbook 開始。
 
 1. 在 Azure 入口網站中，開啟您的自動化帳戶。
 2. 選取 [程式**自動化**] 底下的 [ **runbook** ] 以開啟 runbook 清單。
 3. 選取 [**建立 runbook**] 來建立新的 runbook。
 4. 將 Runbook 命名為「MyFirstRunbook-PowerShell」。
-5. 在此情況下，您將建立[PowerShell runbook](automation-runbook-types.md#powershell-runbooks)。 針對 [ **Runbook 類型**] 選取 [ **Powershell** ]。
+5. 在此情況下，您將建立[PowerShell runbook](automation-runbook-types.md#powershell-runbooks)。 針對 [ **Runbook 類型**] 選取 [ **PowerShell** ]。
 6. 按一下 [建立] 來建立 Runbook 並開啟文字式編輯器。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步驟 2 - 將程式碼加入至 runbook
@@ -74,9 +77,9 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 2. 按一下 [開始] 以開始測試。 這應該是唯一啟用的選項。
 3. 請注意，會建立[runbook 工作](automation-runbook-execution.md)，並在窗格中顯示其狀態。
 
-   作業狀態會以「已**排入佇列**」開始，表示作業正在等候雲端中的 runbook 背景工作可供使用。 當背景工作宣告作業時，狀態會變更為 [**正在啟動**]。 最後，當 runbook 實際開始執行時，狀態會變成 [**正在**執行]。
+   作業狀態會從 `Queued`開始，表示作業正在等候雲端中的 runbook 背景工作可供使用。 當背景工作宣告作業時，狀態會變更為 `Starting`。 最後，當 runbook 實際開始執行時，狀態會變成 `Running`。
 
-4. 當 runbook 作業完成時，[測試] 窗格會顯示其輸出。 在此情況下，您會看到 Hello World。
+4. 當 runbook 作業完成時，[測試] 窗格會顯示其輸出。 在此情況下，您會看到 `Hello World`。
 
    ![測試窗格輸出](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
@@ -96,12 +99,12 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
    ![工作摘要](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. 一旦 runbook 狀態顯示 [**已完成**]，請按一下 [**輸出**] 以開啟 [輸出] 頁面，您可以在其中看到**Hello World**顯示。
+1. 一旦 runbook 狀態顯示 `Completed`，請按一下 [**輸出**] 以開啟 [輸出] 頁面，您可以在其中看到 `Hello World` 顯示。
 
    ![作業輸出](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. 關閉 [輸出] 頁面。
-1. 按一下 [所有記錄] 以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流程中看到**Hello World** 。
+1. 按一下 [所有記錄] 以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流程中看到 `Hello World`。
 
     請注意，[資料流程] 窗格可以顯示 runbook 作業的其他資料流程，例如 [詳細資訊] 和 [錯誤資料流程] （如果 runbook 寫入它們）。
 
@@ -118,10 +121,10 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
 您已測試並發行您的 Runbook，但是到目前為止，它似乎並不實用。 您想要讓它管理 Azure 資源。 若要這樣做，runbook 必須能夠使用您在建立自動化帳戶時自動建立的執行身分帳戶進行驗證。
 
-如下列範例所示，會使用[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 來建立執行身分連線。 如果您要管理跨多個訂用帳戶的資源，您必須使用*set-azcoNtext*參數以及[set-azcoNtext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)。
+如下列範例所示，會使用[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 來建立執行身分連線。 如果您要管理跨多個訂用帳戶的資源，您必須使用 `AzContext` 參數搭配[set-azcoNtext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)。
 
 > [!NOTE]
-> 針對 PowerShell runbook， **disconnect-azaccount**和**add-AzureRMAccount**是**disconnect-azaccount**的別名。 您可以使用這些 Cmdlet，也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)為最新版本。 即使您剛建立新的自動化帳戶，也可能需要更新您的模組。
+> 針對 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount`的別名。 您可以使用這些 Cmdlet，也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)為最新版本。 即使您剛建立新的自動化帳戶，也可能需要更新您的模組。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -149,7 +152,7 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 1. 按一下 [ **MyFirstRunbook-PowerShell** ] 頁面上的 [**編輯**] 來開啟文字式編輯器。
-1. 您不再需要**寫入輸出**行。 只要繼續並刪除它。
+1. 您不再需要 `Write-Output` 行。 只要繼續並刪除它。
 1. 輸入或複製並貼上下列程式碼，以處理您的自動化執行身分帳戶的驗證。
 
    ```powershell
@@ -181,7 +184,7 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
 由於您的 Runbook 正在驗證您的 Azure 訂用帳戶，所以您可以管理資源。 讓我們新增命令來啟動虛擬機器。 您可以在 Azure 訂用帳戶中挑選任何虛擬機器，並立即在 runbook 中將該名稱硬式編碼。
 
-1. 在您的 runbook 腳本中，新增[update-azvm 指令程式](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0)來啟動虛擬機器。 如下所示，此 Cmdlet 會以名為**VMName**的虛擬機器和名為**ResourceGroupName**的資源群組啟動。
+1. 在您的 runbook 腳本中，新增[update-azvm 指令程式](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0)來啟動虛擬機器。 如下所示，此 Cmdlet 會啟動名稱為 `VMName` 的虛擬機器，以及名為 `ResourceGroupName`的資源群組。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -211,7 +214,7 @@ PowerShell runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
 您的 runbook 目前會啟動您在 runbook 中硬式編碼的虛擬機器。 如果您在啟動 runbook 時指定虛擬機器，runbook 會更有用。 讓我們將輸入參數新增至 runbook，以提供該功能。
 
-1. 在文字式編輯器中，修改**update-azvm 指令程式**，以針對*VMName*和*ResourceGroupName*參數使用變數。 
+1. 在文字式編輯器中，修改 `Start-AzVM` Cmdlet，以將變數用於 `VMName` 和 `ResourceGroupName`參數。 
 
    ```powershell
    Param(

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584536"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276604"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
@@ -63,7 +63,7 @@ App Service 方案可讓您利用您所管理的專用基礎結構。 您的函�
 
 * 永久暖實例以避免任何冷啟動
 * VNet 連線
-* 無限制的執行持續時間
+* 無限制的執行持續時間（保證為60分鐘）
 * Premium 實例大小（一個核心、兩個核心和四個核心實例）
 * 更可預測的定價
 * 針對具有多個函數應用程式的方案進行高密度應用程式佈建
@@ -93,7 +93,7 @@ App Service 方案可讓您利用您所管理的專用基礎結構。 您的函�
 
 在 App Service 方案中，函式應用程式的費用與其他 App Service 資源（例如 web apps）相同。 如需 App Service 方案運作方式的詳細資訊，請參閱 [Azure App Service 方案深入概觀](../app-service/overview-hosting-plans.md)。
 
-透過 App Service 方案，您可以藉由新增更多 VM 實例來手動相應放大。 您也可以啟用自動調整。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 您也可以透過選擇不同的 App Service 方案來相應增加。 如需詳細資訊，請參閱[在 Azure 中為應用程式進行相應增加](../app-service/manage-scale-up.md)。 
+透過 App Service 方案，您可以藉由新增更多 VM 實例來手動相應放大。 您也可以啟用自動調整。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 您也可以透過選擇不同的 App Service 方案來擴大。 如需詳細資訊，請參閱[在 Azure 中為應用程式進行擴大](../app-service/manage-scale-up.md)。 
 
 在 App Service 方案上執行 JavaScript 函式時，您應該選擇 vCPU 數目較少的方案。 如需詳細資訊，請參閱[選擇單一核心 App Service 方案](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
@@ -142,7 +142,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ### <a name="runtime-scaling"></a>執行階段調整
 
-Azure Functions 使用名為「縮放控制器」的元件來監視事件的速率，並判斷是否相應放大或相應縮小。 縮放控制器會在每種觸發程序類型使用啟發學習法。 例如，當使用 Azure 佇列儲存體觸發程序時，會根據佇列長度和最舊佇列訊息的壽命調整規模。
+Azure Functions 使用名為「縮放控制器」的元件來監視事件的速率，並判斷是否擴增或縮減。 縮放控制器會在每種觸發程序類型使用啟發學習法。 例如，當使用 Azure 佇列儲存體觸發程序時，會根據佇列長度和最舊佇列訊息的壽命調整規模。
 
 Azure Functions 的尺規單位是函式應用程式。 當函式應用程式相應放大時，會配置額外資源來執行 Azure Functions 主機的多個執行個體。 反之，當計算需求降低時，縮放控制器會移除 Functions 主機的執行個體。 當函式應用程式中沒有任何函式正在執行時，實例的數目最後會相應*縮小*為零。
 
@@ -153,12 +153,10 @@ Azure Functions 的尺規單位是函式應用程式。 當函式應用程式相
 縮放比例會因為許多因素而有所不同，也會因為選取的觸發程序和語言不同，而進行不同的規模調整。 有幾個複雜的調整行為需要注意：
 
 * 單一函數應用程式只會向外延展到最多200實例。 單一執行個體可能會一次處理一個以上的訊息或要求，因此沒有設定平行執行的數目上限。
-* 針對 HTTP 觸發程式，最多隻會每隔1秒配置一次新的實例。
-* 對於非 HTTP 觸發程式，新的實例最多隻會每隔30秒配置一次。
-
-不同的觸發程序可能也會有不同的縮放限制，包含下方文件中所述的限制：
-
-* [事件中樞](functions-bindings-event-hubs-trigger.md#scaling)
+* 針對 HTTP 觸發程式，每秒最多會配置一次新的實例。
+* 針對非 HTTP 觸發程式，每隔30秒最多會配置新的實例一次。 在高階[計畫](#premium-plan)中執行時，調整速度會更快。
+* 針對服務匯流排觸發程式，請使用資源的 [_管理_許可權] 來進行最有效率的調整。 使用_接聽_許可權時，調整不會正確，因為佇列長度無法用來通知調整決策。 若要深入瞭解如何在服務匯流排存取原則中設定許可權，請參閱[共用存取授權原則](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
+* 如需事件中樞觸發程式，請參閱參考文章中的[調整指導](functions-bindings-event-hubs-trigger.md#scaling)方針。 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可調整應用程式的最佳做法與模式
 

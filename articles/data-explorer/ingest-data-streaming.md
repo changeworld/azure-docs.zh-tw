@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330969"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297079"
 ---
 # <a name="streaming-ingestion-preview"></a>串流內嵌（預覽）
 
@@ -72,7 +72,7 @@ ms.locfileid: "78330969"
 
 ## <a name="limitations"></a>限制
 
-* 串流內嵌不支援[資料庫資料指標](/azure/kusto/management/databasecursor)或[資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/tables#create-ingestion-mapping)資料對應。 
+* 串流內嵌不支援[資料庫資料指標](/azure/kusto/management/databasecursor)或[資料對應](/azure/kusto/management/mappings)。 僅支援[預先建立的](/azure/kusto/management/create-ingestion-mapping-command)資料對應。 
 * 透過增加的 VM 和叢集大小，串流處理內嵌的效能和容量規模。 每個核心的並行擷取限制為六個擷取。 例如，針對16核心 Sku （例如 D14 和 L16 也），支援的最大負載為96並行擷取。 針對兩個核心 Sku （例如 D11），支援的最大負載為12個並行擷取。
 * 每個內嵌要求的資料大小限制為 4 MB。
 * 架構更新（例如建立和修改資料表和內嵌對應）最多可能需要五分鐘的時間來處理串流內嵌服務。

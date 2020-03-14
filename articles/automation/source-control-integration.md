@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253739"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368803"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自動化中的原始檔控制整合
 
@@ -29,11 +29,11 @@ Azure 自動化支援三種類型的原始檔控制：
 * Azure Repos （Git）
 * Azure Repos （TFVC）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 原始檔控制存放庫（GitHub 或 Azure Repos）
 * [執行身分帳戶](manage-runas-account.md)
-* 自動化帳戶中的[最新 Azure 模組](automation-update-azure-modules.md)，包括**az Account**模組（AzureRM 的 az 模組對應項）
+* 自動化帳戶中的[最新 Azure 模組](automation-update-azure-modules.md)，包括 `Az.Accounts` 模組（Az 模組對等的 `AzureRM.Profile`）
 
 > [!NOTE]
 > 原始檔控制同步處理工作會在使用者的自動化帳戶下執行，並以與其他自動化作業相同的費率計費。
@@ -54,15 +54,15 @@ Azure 自動化支援三種類型的原始檔控制：
 
 3. 瀏覽器視窗隨即開啟，並提示您登入。 遵循提示以完成驗證。
 
-4. 在 [**原始檔控制摘要**] 頁面上，使用欄位填入下列定義的原始檔控制屬性。 完成後，請按一下 [儲存]。 
+4. 在 [原始檔控制摘要] 頁面上，使用欄位填入下列定義的原始檔控制屬性。 完成後，請按一下 [儲存]。 
 
     |屬性  |描述  |
     |---------|---------|
     |原始檔控制名稱     | 原始檔控制的易記名稱。 此名稱必須只包含字母和數位。        |
-    |原始檔控制類型     | 原始檔控制機制的類型。 可用選項包括：</br> GitHub</br>Azure Repos （Git）</br> Azure Repos （TFVC）        |
-    |儲存機制     | 存放庫或專案的名稱。 系統會抓取前200存放庫。 若要搜尋存放庫，請在欄位中輸入名稱，然後按一下 [**在 GitHub 上搜尋**]。|
+    |原始檔控制類型     | 原始檔控制機制的類型。 可用選項包括：</br> * GitHub</br>* Azure Repos （Git）</br> * Azure Repos （TFVC）        |
+    |Repository     | 存放庫或專案的名稱。 系統會抓取前200存放庫。 若要搜尋存放庫，請在欄位中輸入名稱，然後按一下 [**在 GitHub 上搜尋**]。|
     |分支     | 要從中提取來源檔案的分支。 分支目標不適用於 TFVC 原始檔控制類型。          |
-    |資料夾路徑     | 包含要同步處理之 runbook 的資料夾，例如/Runbooks。 只有指定資料夾中的 runbook 會進行同步處理。 不支援遞迴。        |
+    |資料夾路徑     | 包含要同步處理之 runbook 的資料夾，例如 **/Runbooks**。 只有指定資料夾中的 runbook 會進行同步處理。 不支援遞迴。        |
     |自動同步處理<sup>1</sup>     | 在原始檔控制存放庫中進行認可時，會開啟或關閉自動同步處理的設定。        |
     |發佈 Runbook     | 如果 runbook 在從原始檔控制進行同步處理之後自動發行，則設定為 On，否則為 Off。           |
     |描述     | 指定原始檔控制之其他詳細資料的文字。        |
@@ -72,7 +72,7 @@ Azure 自動化支援三種類型的原始檔控制：
    ![原始檔控制摘要](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> 您的原始檔控制儲存機制登入可能會與 Azure 入口網站的登入不同。 設定原始檔控制時，請確定您是以正確的原始檔控制存放庫帳戶登入。 如果不確定，請在瀏覽器中開啟新的索引標籤，從 visualstudio.com 或 github.com 登出，然後再次嘗試連接到原始檔控制。
+> 您的原始檔控制儲存機制登入可能會與 Azure 入口網站的登入不同。 設定原始檔控制時，請確定您是以正確的原始檔控制存放庫帳戶登入。 如果不確定，請在瀏覽器中開啟新的索引標籤，從**visualstudio.com**或**github.com**登出，然後再次嘗試連接到原始檔控制。
 
 ### <a name="configure-source-control----powershell"></a>設定原始檔控制--PowerShell
 
@@ -107,25 +107,25 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 下表定義 GitHub 所需的最低 PAT 許可權。 如需在 GitHub 中建立 PAT 的詳細資訊，請參閱[建立命令列的個人存取權杖](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。
 
-|範圍  |描述  |
+|影響範圍  |描述  |
 |---------|---------|
-|**存放庫**     |         |
-|repo:status     | 存取認可狀態         |
-|repo_deployment      | 存取部署狀態         |
-|public_repo     | 存取公用存放庫         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | 寫入存放庫勾點         |
-|read:repo_hook|讀取存放庫勾點|
+|**`repo`**     |         |
+|`repo:status`     | 存取認可狀態         |
+|`repo_deployment`      | 存取部署狀態         |
+|`public_repo`     | 存取公用存放庫         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | 寫入存放庫勾點         |
+|`read:repo_hook`|讀取存放庫勾點|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos 的最小 PAT 許可權
 
 下列清單定義 Azure Repos 所需的最小 PAT 許可權。 如需在 Azure Repos 中建立 PAT 的詳細資訊，請參閱[使用個人存取權杖來驗證存取權](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
-| 範圍  |  存取類型  |
+| 影響範圍  |  存取類型  |
 |---------| ----------|
 | 程式碼      | 讀取  |
 | 專案與小組 | 讀取 |
-| 相同比較 | 讀取     |
+| 身分識別 | 讀取     |
 | 使用者設定檔 | 讀取     |
 | 工作項目 | 讀取    |
 | 服務連接 | 讀取、查詢、管理<sup>1</sup>    |
@@ -134,9 +134,9 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 ## <a name="synchronizing"></a>正在同步處理
 
-執行下列動作，以與原始檔控制進行同步處理。 
+請遵循下列步驟來與原始檔控制進行同步處理。 
 
-1. 從 [**原始檔控制**] 頁面上的資料表中選取來源。 
+1. 從 [原始檔控制] 頁面上的資料表中選取來源。 
 
 2. 按一下 [開始同步處理] 開始同步處理程序。 
 
@@ -178,7 +178,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
     ```
 
-6. 選取 [**原始檔控制同步處理作業摘要**] 頁面上的 [**所有記錄**]，即可取得其他記錄。 這些額外的記錄專案可協助您針對使用原始檔控制時可能發生的問題進行疑難排解。
+6. 選取 [原始檔控制同步處理作業摘要] 頁面上的 [**所有記錄**]，即可取得其他記錄。 這些額外的記錄專案可協助您針對使用原始檔控制時可能發生的問題進行疑難排解。
 
 ## <a name="disconnecting-source-control"></a>中斷原始檔控制的連線
 
@@ -188,11 +188,11 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 2. 選取要移除的原始檔控制機制。 
 
-3. 在 [原始檔控制摘要] 頁面上，按一下 [刪除]。
+3. 在 [原始檔控制摘要] 頁面上，按一下 [**刪除**]。
 
 ## <a name="handling-encoding-issues"></a>處理編碼問題
 
-如果有多位使用者正在使用不同的編輯器編輯原始檔控制存放庫中的 runbook，則可能會發生編碼問題。 若要深入瞭解這種情況，請參閱[編碼問題的常見原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+如果有多位使用者正在使用不同的編輯器編輯原始檔控制存放庫中的 runbook，則可能會發生編碼問題。 若要深入瞭解這種情況，請參閱[編碼問題的常見原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)。
 
 ## <a name="updating-the-pat"></a>更新 PAT
 

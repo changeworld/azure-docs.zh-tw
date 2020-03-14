@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132837"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298728"
 ---
 # <a name="sensor-partner-integration"></a>感應器合作夥伴整合
 
 本文提供 Azure FarmBeats **Translator**元件的相關資訊，以啟用感應器夥伴整合。
 
-使用此元件，合作夥伴可以使用 FarmBeats 資料中樞 Api 與 FarmBeats 整合，並將客戶裝置資料和遙測傳送至 FarmBeats 資料中樞。 在 FarmBeats 中提供資料之後，它會使用 FarmBeats 加速器進行視覺化，並可用於資料融合和建立機器學習/人工智慧模型。
+使用此元件，合作夥伴可以使用 FarmBeats Datahub Api 與 FarmBeats 整合，並將客戶裝置資料和遙測傳送至 FarmBeats Datahub。 在 FarmBeats 中提供資料之後，它會使用 FarmBeats 加速器進行視覺化，並可用於資料融合和建立機器學習/人工智慧模型。
 
 ## <a name="before-you-start"></a>開始之前
 
@@ -50,7 +50,7 @@ FarmBeats 會使用 Microsoft Azure Active Directory 驗證。 Azure App Servi
 
 如需詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。
 
-FarmBeats 資料中樞會使用持有人驗證，其需要下列認證：
+FarmBeats Datahub 會使用持有人驗證，其需要下列認證：
    - 用戶端識別碼
    - 用戶端密碼
    - 租用戶識別碼
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP 要求標頭**
 
-以下是您對 FarmBeats 資料中樞進行 API 呼叫時，需要指定的最常見要求標頭。
+以下是您對 FarmBeats Datahub 進行 API 呼叫時，需要指定的最常見要求標頭。
 
 
 **標頭** | **描述和範例**
 --- | ---
-Content-Type | 要求格式（內容類型： application/<format>）。 針對 FarmBeats 資料中樞 Api，格式為 JSON。 Content-Type: application/json
+Content-Type | 要求格式（內容類型： application/<format>）。 針對 FarmBeats Datahub Api，格式為 JSON。 Content-Type: application/json
 授權 | 指定進行 API 呼叫所需的存取權杖。 授權：持有人 < 存取權杖 >
-Accept | 回應格式。 針對 FarmBeats 資料中樞 Api，格式為 JSON。 Accept： application/json
+Accept | 回應格式。 針對 FarmBeats Datahub Api，格式為 JSON。 Accept： application/json
 
 **API 要求**
 
@@ -119,7 +119,7 @@ JSON 是一種與語言無關的通用資料格式，可提供任意資料結構
 
 ## <a name="metadata-specifications"></a>中繼資料規格
 
-FarmBeats 資料中樞具有下列 Api，可讓裝置合作夥伴建立和管理裝置或感應器中繼資料。
+FarmBeats Datahub 具有下列 Api，可讓裝置合作夥伴建立和管理裝置或感應器中繼資料。
 
 - /**devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是 [閘道] 或 [節點]。
 - /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
@@ -230,11 +230,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ write_client.stop()
 
 ## <a name="unlink-farmbeats"></a>取消連結 FarmBeats
 
-裝置合作夥伴可以讓客戶取消連結現有的 FarmBeats 整合。 取消連結 FarmBeats 不應刪除 FarmBeats 資料中樞內建立的任何裝置或感應器中繼資料。 取消連結會執行下列動作：
+裝置合作夥伴可以讓客戶取消連結現有的 FarmBeats 整合。 取消連結 FarmBeats 不應刪除在 FarmBeats Datahub 中建立的任何裝置或感應器中繼資料。 取消連結會執行下列動作：
 
    - 停止遙測流量。
    - 刪除並清除裝置夥伴上的整合認證。

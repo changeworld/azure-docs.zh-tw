@@ -4,11 +4,11 @@ description: 瞭解 Azure Migrate 的 Hyper-v 遷移支援。
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245820"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
 
@@ -62,7 +62,7 @@ ms.locfileid: "77064456"
 資料磁碟計數 | 16或更少。 | 若不支援，則檢查會失敗。
 資料磁碟大小 | 最多 4,095 GB | 若不支援，則檢查會失敗。
 網路介面卡 | 支援多個介面卡。 |
-共用的 VHD | 不支援。 | 若不支援，則檢查會失敗。
+共用 VHD | 不支援。 | 若不支援，則檢查會失敗。
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。
 BitLocker | 不支援。 | 為電腦啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 |  更新 Site Recovery 中電腦屬性的值。
