@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 3f8d0e8996aa972aa63f31d6d5cf8b3fb3c00bd8
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651977"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924943"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 Node.js 應用程式。 在本快速入門中，您將了解如何具現化用戶端、傳送要求，以及列印回應。
 
@@ -54,7 +54,7 @@ Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 
 
 ## <a name="create-a-project-and-declare-required-modules"></a>建立專案，並宣告所需的模組
 
-在 `package.json` 的同一個目錄中，使用您慣用的 IDE 或編輯器，建立新的 Node.js 專案。 例如：`sample.js`。
+在 `package.json` 的同一個目錄中，使用您慣用的 IDE 或編輯器，建立新的 Node.js 專案。 例如： `sample.js` 。
 
 接下來，將此程式碼複製到您的專案。 此程式碼會載入上一節中所安裝的模組。
 
