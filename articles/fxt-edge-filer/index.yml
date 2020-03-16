@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure FXT Edge Filer 文件
+summary: Azure FXT Edge Filer 混合式儲存體快取是一個硬體/軟體混合式系統，可加速檔案式、讀取密集高效能運算 (HPC) 工作流程的資料存取速度。
 metadata:
   title: Azure FXT Edge Filer 文件
-  description: 將 Azure FXT Edge Filer 當做讀取密集高效能運算 (HPC) 工作的快取層
-  author: ekpgh
+  description: 將 Azure FXT Edge Filer 當做讀取密集高效能運算 (HPC) 工作的快取層。
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: Azure FXT Edge Filer 混合式儲存體快取是一個硬體/軟體混合式系統，可加速檔案式、讀取密集高效能運算 (HPC) 工作流程的資料存取速度。 三個以上的 Azure FXT Edge Filer 裝置叢集可加速內部部署 NAS 系統 (NetApp 或 Dell EMC Isilon)、雲端儲存體或解決方案組合的儲存體效能。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">安裝 Azure FXT Edge Filer 硬體</a>
-          - html: <a href="fxt-network-power">讓 Azure FXT Edge Filer 可連網</a>
-          - html: <a href="fxt-node-password">在硬體節點上設定根密碼</a>
-          - html: <a href="fxt-cluster-create">建立混合式儲存體快取叢集</a>
-          - html: <a href="fxt-add-nodes">新增叢集節點</a>
-          - html: <a href="fxt-add-storage">新增後端儲存體並設定虛擬命名空間</a>
-          - html: <a href="fxt-configure-network"> 設定叢集的網路設定</a>
-  - title: 使用說明指南
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">將用戶端與 Azure FXT Edge Filer 叢集連線</a>
-          - html: <a href="fxt-monitor">監視 Azure FXT Edge Filer</a>
-          - html: <a href="fxt-power-off">安全地關閉硬體節點的電源</a>
-  - title: 資源
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">硬體規格</a>
-          - html: <a href="fxt-additional-doc">其他文件</a>
-          - html: <a href="fxt-support-ticket">開啟支援票證</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298847"
+landingContent:
+- title: 關於 Azure FXT Edge Filer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure FXT Edge Filer？
+      url: fxt-overview.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1 - 安裝硬體
+      url: fxt-install.md
+    - text: 2 - 連接纜線
+      url: fxt-network-power.md
+    - text: 3 - 設定硬體密碼
+      url: fxt-node-password.md
+    - text: 4 - 建立叢集
+      url: fxt-cluster-create.md
+    - text: 5 - 新增叢集節點
+      url: fxt-add-nodes.md
+    - text: 6 - 新增後端儲存體並設定虛擬命名空間
+      url: fxt-add-storage.md
+    - text: 7 - 設定叢集網路設定
+      url: fxt-configure-network.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在叢集上掛接用戶端
+      url: fxt-mount-clients.md
+    - text: 監視硬體狀態
+      url: fxt-monitor.md
+    - text: 安全地關閉硬體電源
+      url: fxt-power-off.md
+- title: 資源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 硬體規格
+      url: fxt-specs.md
+    - text: 其他文件
+      url: fxt-additional-doc.md

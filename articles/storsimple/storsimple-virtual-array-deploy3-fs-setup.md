@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365630"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267517"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple Virtual Array - 透過 Azure 入口網站設定為檔案伺服器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -45,7 +45,7 @@ ms.locfileid: "78365630"
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>步驟 1：完成本機 Web UI 的安裝程序，並為裝置註冊
 #### <a name="to-complete-the-setup-and-register-the-device"></a>如何完成裝置的安裝程序並為裝置註冊
-1. 開啟瀏覽器視窗，並連接至本機 Web UI。 類型：
+1. 開啟瀏覽器視窗，並連接至本機 Web UI。 輸入：
    
    `https://<ip-address of network interface>`
    
@@ -72,11 +72,11 @@ ms.locfileid: "78365630"
    1. 為裝置指派唯一的 [名稱] 。 這個名稱可以有 1 至 15 個字元，且可以包含字母、數字和連字號。
    2. 對於您要建立的裝置 [類型]，按一下 [檔案伺服器]![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png)**圖示**。 檔案伺服器可讓您建立共用資料夾。
    3. 由於您的裝置是檔案伺服器，您必須讓裝置加入某個網域。 輸入 [網域名稱]。
-   4. 按一下 **[套用]** 。
+   4. 按一下 [套用]。
 7. 此時畫面會出現對話方塊。 請以指定格式輸入網域認證。 按一下核取圖示。 系統會驗證該網域認證。 如果認證不正確，畫面會出現錯誤訊息。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. 按一下 **[套用]** 。 這將會套用並驗證裝置設定。
+8. 按一下 [套用]。 這將會套用並驗證裝置設定。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -93,7 +93,7 @@ ms.locfileid: "78365630"
    1. 以此格式提供 **Web Proxy URL**：「 http://*主機 IP 位址或 FQDN&lt;:連接埠號碼」&gt;* 。 請注意，此處不支援 HTTPS URL。
    2. 將 [驗證] 指定為 [基本] 或 [無]。
    3. 如果要使用驗證功能，您也必須提供 [使用者名稱] 和 [密碼]。
-   4. 按一下 **[套用]** 。 這將會驗證並套用您設定的 Web Proxy 設定。
+   4. 按一下 [套用]。 這將會驗證並套用您設定的 Web Proxy 設定。
 10. (可省略) 設定裝置的時間設定，例如時區，以及主要和次要 NTP 伺服器。 NTP 伺服器是必要的，因為您的裝置必須讓時間同步，才能與您的雲端服務提供者進行驗證。
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -103,14 +103,14 @@ ms.locfileid: "78365630"
     1. 根據裝置部署的地理位置，從下拉式清單中選取 [時區] 。 裝置的預設時區是太平洋標準時間。 裝置將針對所有排程的操作使用這個時區。
     2. 指定裝置的 [主要 NTP 伺服器] ，或是接受預設值 time.windows.com。 請確定您的網路允許 NTP 流量從您的資料中心通過網際網路。
     3. (選擇性) 指定裝置的 [次要 NTP 伺服器] 。
-    4. 按一下 **[套用]** 。 這將會驗證並套用您設定的時間設定。
+    4. 按一下 [套用]。 這將會驗證並套用您設定的時間設定。
 11. 設定裝置的雲端設定。 在此步驟中，您將會完成本機裝置設定，然後向您的 StorSimple 裝置管理員服務註冊裝置。
     
     1. 輸入您在 **步驟 2：取得服務註冊金鑰** 中取得的 StorSimple Virtual Array [服務註冊金鑰](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) 。
     2. 如果這是您向此服務註冊的第一個裝置，則會出現**服務資料加密金鑰**。 複製這個金鑰，並將它儲存在安全的位置。 這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。 
        
        如果這不是您向此服務註冊的第一個裝置，您將必須提供服務資料加密金鑰。 如需詳細資訊，請參閱使用本機 Web UI 取得 [服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
-    3. 按一下 [註冊] 這將讓裝置重新啟動。 您可能需要等待 2 至 3 分鐘，裝置才會註冊成功。 裝置重新啟動之後，您將會看到登入頁面。
+    3. 按一下 [註冊]。 這將讓裝置重新啟動。 您可能需要等待 2 至 3 分鐘，裝置才會註冊成功。 裝置重新啟動之後，您將會看到登入頁面。
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. 返回 Azure 入口網站。 移至 [所有資源]，搜尋您的 StorSimple 裝置管理員服務。
@@ -155,7 +155,7 @@ ms.locfileid: "78365630"
    
         ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. 成功建立儲存體帳戶認證之後，[設定] 刀鋒視窗將會更新，以顯示指定的儲存體帳戶認證。 按一下 **[設定]** 。
+5. 成功建立儲存體帳戶認證之後，[設定] 刀鋒視窗將會更新，以顯示指定的儲存體帳戶認證。 按一下 [設定]。
    
    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    

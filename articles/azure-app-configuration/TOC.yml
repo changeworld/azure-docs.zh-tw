@@ -64,8 +64,6 @@
   items:
     - name: 索引鍵-值存放區
       href: concept-key-value.md
-    - name: 使用客戶管理的金鑰加密
-      href: concept-customer-managed-keys.md
     - name: 時間點快照集
       href: concept-point-time-snapshot.md
     - name: 功能管理
@@ -74,8 +72,12 @@
       href: concept-github-action.md
     - name: 事件處理
       href: concept-app-configuration-event.md
-    - name: 驗證
+    - name: 安全性
       items:
+        - name: 使用客戶管理的金鑰加密
+          href: concept-customer-managed-keys.md
+        - name: 使用私人端點保護您的設定存放區
+          href: concept-private-endpoint.md
         - name: 與 Azure 受控識別整合
           href: howto-integrate-azure-managed-service-identity.md
         - name: 使用 Azure Active Directory 啟用存取
