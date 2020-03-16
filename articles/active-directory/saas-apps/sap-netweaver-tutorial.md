@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103373"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897741"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP NetWeaver 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "71103373"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -173,11 +173,11 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
 
-    ![映像](./media/sapnetweaver-tutorial/nameidattribute1.png)
+    ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
     b. 從 [轉換]  清單中，選取 [ExtractMailPrefix()]  。
 
-    c. 從 [參數 1]  清單中，選取 [user.userprinicipalname]  。
+    c. 從 [參數 1]  清單中，選取 [user.userprincipalname]  。
 
     d. 按一下 [檔案]  。
 
@@ -259,7 +259,7 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
     ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. 移至 [信任的提供者]  索引標籤 > [識別身分同盟]  (位於畫面底部)。 按一下 [編輯]  。
+11. 移至 [信任的提供者]  索引標籤 > [識別身分同盟]  (位於畫面底部)。 按一下 **[編輯]** 。
 
     ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 

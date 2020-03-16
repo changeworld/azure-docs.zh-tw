@@ -4,16 +4,16 @@ description: 本文將說明如何安裝及使用 Azure 成本管理 Power BI �
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169699"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399641"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用適用於 Enterprise 合約 (EA) 的 Azure 成本管理 Power BI 應用程式來分析成本
 
@@ -43,7 +43,7 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
   ![開始使用您的新應用程式 - 連結](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留**註冊號碼**的預設**範圍**值，然後選取 [下一步]  。  
   ![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 保留已設定的預設值，然後選取 [登入]  。  
+10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值*，然後選取 [登入]  。  
   ![連接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後的安裝步驟會連結到您的 EA 註冊，而且需要[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 選取 [登入]  ，以向您的 EA 註冊進行驗證。 此步驟也會在 Power BI 中啟動資料重新整理動作。  
   ![連結到 EA 註冊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 **RI 購買** - 此報表會顯示在指定期間內的 RI 購買。
 
 **價位表** - 此報表會顯示計費帳戶或 EA 註冊專屬價格的詳細清單。
+
+## <a name="troubleshoot-problems"></a>問題疑難排解
+
+如果您在 Power BI 應用程式中遇到問題，下列疑難排解資訊可能會有幫助。
+
+### <a name="budgetamount-error"></a>BudgetAmount 錯誤
+
+您可能會收到錯誤訊息，內容為：
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>原因
+
+發生此錯誤的原因是基礎中繼資料包含錯誤 (bug)。 發生此問題的原因是，在 Azure 入口網站的**成本管理 > 預算**下沒有可用的預算。 我們正在部署到 Power BI Desktop 和 Power BI 服務的流程中處理此錯誤 (bug) 修正。 
+
+#### <a name="solution"></a>解決方法
+
+- 在錯誤 (bug) 修正完成之前，您可以在 Azure 入口網站的計費帳戶/EA 註冊層級新增測試預算來解決此問題。 測試預算會解除與 Power BI 的連線中斷情況。 如需關於建立預算的詳細資訊，請參閱[教學課程：建立和管理 Azure 預算](tutorial-acm-create-budgets.md)。
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>AzureBlob 錯誤的無效認證
+
+您可能會收到錯誤訊息，內容為：
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>原因
+
+如果您變更 AutoFitComboMeter Blob 連線的驗證方法，就會發生此錯誤。
+
+#### <a name="solution"></a>解決方法
+
+1. 連線到您的資料。
+1. 輸入 EA 註冊和月數之後，請確定您將驗證方法保留為**匿名**的預設值，並將隱私權等級設為**無**。  
+  ![連接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. 在下一個頁面上，將驗證方法設定為 **OAuth2**，並將隱私權等級設為**無**。 接著，登入以驗證您的註冊。 此步驟也會重新整理 Power BI 資料。
+
 
 ## <a name="data-reference"></a>資料參考
 

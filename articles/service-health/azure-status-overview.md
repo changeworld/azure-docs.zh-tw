@@ -3,12 +3,12 @@ title: Azure 狀態概觀 | Microsoft Docs
 description: Azure 服務健康狀態的全域檢視
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654149"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898331"
 ---
 # <a name="azure-status-overview"></a>Azure 狀態概觀
 
@@ -26,7 +26,7 @@ ms.locfileid: "77654149"
 
 因為 [Azure 狀態] 頁面一律會顯示最新的健康情況資訊，您可以使用 [Azure 狀態歷程記錄頁面](https://status.azure.com/status/history/)檢視較舊的事件。
 
-您可以查看最多過去 90 天的事件，包括初步的根本原因、風險降低以及 Azure 的後續步驟。
+從 2019 年 11 月發佈的事件開始，狀態歷程記錄頁面會顯示過去最多 365 天的事件，包括初步的根本原因、緩和措施，以及 Azure 的後續步驟。
 
 ## <a name="rss-feed"></a>RSS 摘要
 

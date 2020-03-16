@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 伺服器移轉將內部部署 Hyp
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545903"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943306"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -243,7 +243,10 @@ Azure Migrate 伺服器移轉會執行輕量型 Hyper-V VM 設備。
 
 ## <a name="complete-the-migration"></a>完成移轉
 
-1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]  。 這會停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。
+1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]  。 這會執行以下動作：
+    - 停止內部部署機器的複寫。
+    - 從 Azure Migrate 中的**複寫伺服器**計數移除機器：伺服器移轉。
+    - 清除 VM 的複寫狀態資訊。
 2. 在已遷移的機器上安裝 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理程式。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。
 4. 在現在於 Azure 中執行的已移轉應用程式上，執行最終的應用程式和移轉接受度測試。

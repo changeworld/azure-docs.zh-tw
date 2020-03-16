@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084381"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129931"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
 在本教學課程中，您將了解如何整合 iOS 或 macOS 應用程式與 Microsoft 身分識別平台。 應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。  
 
 完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
+
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，建議您從[從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API](quickstart-v2-ios.md) 開始了解。
 
 ## <a name="how-this-tutorial-works"></a>本教學課程的運作方式
 

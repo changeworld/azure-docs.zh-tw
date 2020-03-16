@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304118"
+ms.locfileid: "78359098"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 閘道資源設計虛擬網路 (公開預覽版)
 
@@ -307,7 +307,7 @@ NAT 對於完整輸出案例需要足夠的 SNAT 連接埠庫存。 調整 NAT �
 
 SNAT 會將多個私人位址對應到一個公用位址，並使用多個公用 IP 進行調整。
 
-NAT 閘道資源將使用公用 IP 位址的 64000 個連接埠 (SNAT 連接埠)。  這些 SNAT 連接埠會成為私人到公用流量對應的可用庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 NAT 閘道資源可以擴充至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。  TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
+NAT 閘道資源將使用公用 IP 位址的 64000 個連接埠 (SNAT 連接埠)。  這些 SNAT 連接埠會成為私人到公用流量對應的可用庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 NAT 閘道資源可以擴大至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。  TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
 
 NAT 閘道資源會伺機重複使用來源連接埠。 基於調整目的，您應該假設每個流量都需要新的 SNAT 連接埠，並調整輸出流量的可用 IP 位址總數。
 
@@ -335,7 +335,7 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 ## <a name="limitations"></a>限制
 
 - NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
-- 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。
+- 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。  NAT 無法部署在具有 IPv6 首碼的子網路上。
 - 使用 NAT 時，不支援 NSG 流量記錄。
 - NAT 無法跨越多個虛擬網路。
 
@@ -352,7 +352,7 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 * 了解[虛擬網路 NAT](nat-overview.md)。
 * 了解 [NAT 閘道資源的計量和警示](nat-metrics.md)。
 * 了解[針對 NAT 閘道資源進行疑難排解](troubleshoot-nat.md)。
-* [告訴我們接下來要在 UserVoice 中建置的項目](https://aka.ms/natuservoice)。
+* [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
 * [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
 * 驗證 NAT 閘道的教學課程
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)，

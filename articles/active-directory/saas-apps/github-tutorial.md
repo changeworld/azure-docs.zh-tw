@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983455"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129898"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -163,6 +163,8 @@ ms.locfileid: "76983455"
     c. 在記事本中開啟從 Azure 入口網站下載的憑證，將內容貼至 [公開憑證]  文字方塊。
 
     d. 按一下 [編輯]  圖示以編輯 [簽章方法]  和 [摘要方法]  ，將 **RSA-SHA1** 和 **SHA1** 改為 **RSA-SHA256** 和 **SHA256**，如下所示。
+    
+    e. 更新預設 URL 中的**判斷提示取用者服務 URL (回覆 URL)** ，讓 Github 中的 URL 符合 Azure 應用程式註冊中的 URL。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 

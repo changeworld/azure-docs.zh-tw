@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270007"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851129"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 C# 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>建立用戶端
 
-在 Main 下建立 `SearchServiceClient` 類別的執行個體。
+在 `Main` 下建立 `SearchServiceClient` 類別的執行個體。
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > `SearchServiceClient` 類別會管理連至搜尋服務的連線。 為了避免開啟太多連線，如果可以，您應該嘗試在應用程式中共用 `SearchServiceClient` 的單一執行個體。 它的方法是可啟用這類共用的安全執行緒。
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>新增函式以在失敗期間結束程式
+
+本教學課程旨在協助您了解編製索引管線的每個步驟。 如果發生嚴重問題，導致程式無法建立資料來源、技能集、索引或索引子，程式將會輸出錯誤訊息並結束，讓您可以得知並解決問題。
+
+將 `ExitProgram` 新增至 `Main`，以處理需要結束程式的案例。
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3 - 建立管線
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 如果要求成功，方法將傳回已建立的資料來源。 如果要求發生問題 (例如無效的參數)，則方法將擲回例外狀況。
 
-接著，在 Main 中新增一行，以呼叫您剛才新增的 `CreateOrUpdateDataSource` 函式。
+現在，在 `Main` 中新增一行，以呼叫您剛才新增的 `CreateOrUpdateDataSource` 函式。
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-將以下幾行新增至 Main。
+將下列數行新增至 `Main`。
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 在測試期間，您可能發現您正嘗試多次建立索引。 基於此緣故，請檢查以查看您即將建立的索引是否已經存在，然後再嘗試建立它。
 
-將以下幾行新增至 Main。
+將下列數行新增至 `Main`。
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-將以下幾行新增至 Main。
+將下列數行新增至 `Main`。
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 某些來源檔案和技能的組合常會出現警告，這並不一定表示有問題。 在本教學課程中，警告是良性的 (例如，沒有來自 JPEG 檔案的文字輸入)。
 
-將以下幾行新增至 Main。
+將下列數行新增至 `Main`。
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 在驗證步驟中，您會查詢所有欄位的索引。
 
-將以下幾行新增至 Main。
+將下列數行新增至 `Main`。
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-將下列程式碼新增至 Main。 第一個 try-catch 會傳回索引定義，以及每個欄位的名稱、類型和屬性。 第二個是參數化查詢，其中，`Select` 會指定要包含在結果中的欄位，例如 `organizations`。 `"*"` 的搜尋字串會傳回單一欄位的所有內容。
+將下列程式碼新增至 `Main`。 第一個 try-catch 會傳回索引定義，以及每個欄位的名稱、類型和屬性。 第二個是參數化查詢，其中，`Select` 會指定要包含在結果中的欄位，例如 `organizations`。 `"*"` 的搜尋字串會傳回單一欄位的所有內容。
 
 ```csharp
 //Verify content is returned after indexing is finished

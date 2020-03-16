@@ -1,6 +1,6 @@
 ---
-title: '快速入門：暫停和繼續計算 - PowerShell '
-description: 使用 PowerShell 暫停 Azure Synapse Analytics SQL 集區中的計算以節省成本。 在您準備好使用資料倉儲時繼續計算。
+title: 使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
+description: 您可以使用 Azure PowerShell 來暫停和繼續 Synapse SQL 集區 (資料倉儲)。 計算資源。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ce183edef9e5895d7b3f702f5466c505956a869a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4677668004831b93f45f4bfac240f16ba20a82ee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200561"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130282"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 暫停和繼續 Azure Synapse Analytics SQL 集區中的計算
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 
-使用 Azure PowerShell 暫停 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時[繼續計算](sql-data-warehouse-manage-compute-overview.md)。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+您可以使用 Azure PowerShell 來暫停和繼續 Synapse SQL 集區 (資料倉儲) 計算資源。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -50,26 +48,29 @@ Get-AzSubscription
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>查詢資料倉儲資訊
+## <a name="look-up-sql-pool-information"></a>查詢 SQL 集區資訊
 
 找出您想要暫停和繼續之 SQL 集區的資料庫名稱、伺服器名稱和資源群組。
 
-依照下列步驟尋找您 SQL 集區的位置資訊。
+依照下列步驟尋找您 SQL 集區的位置資訊：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 按一下 Azure 入口網站左側頁面中的 [Azure Synapse Analytics (先前為 SQL DW)]  。
-1. 從 [Azure Synapse Analytics (先前為 SQL DW)]  頁面中選取 [mySampleDataWarehouse]  。 資料倉儲隨即開啟。
+1. 從 [Azure Synapse Analytics (先前為 SQL DW)]  頁面中選取 [mySampleDataWarehouse]  。 SQL 集區隨即開啟。
 
     ![伺服器名稱和資源群組](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. 記下資料倉儲名稱，這便是資料庫名稱。 也請記下伺服器名稱與資源群組。
+1. 記下 SQL 集區名稱，這便是資料庫名稱。 也請記下伺服器名稱與資源群組。
 1. 在 PowerShell Cmdlet 中，請使用伺服器名稱的第一個部分即可。 在上圖中，完整伺服器名稱是 sqlpoolservername.database.windows.net。 在 PowerShell Cmdlet 中，我們會使用 **sqlpoolservername** 作為伺服器名稱。
 
 ## <a name="pause-compute"></a>暫停計算
 
-為了節省成本，您可以隨選暫停和繼續計算資源。 例如，如果您在夜間和週末不會使用資料庫，可以在這段時間暫停，並且在白天時繼續。 資料庫暫停時，計算資源不會有費用。 不過，您仍需持續支付儲存體費用。
+為了節省成本，您可以隨選暫停和繼續計算資源。 例如，如果您在夜間和週末不會使用資料庫，可以在這段時間暫停，並且在白天時繼續。 
 
-若要暫停資料庫，請使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) Cmdlet。 下列範例會暫停在伺服器 **sqlpoolservername** 上裝載的資料倉儲 **mySampleDataWarehouse**。 此伺服器位於 Azure 資源群組 **myResourceGroup** 中。
+>[!NOTE]
+>資料庫暫停時，計算資源不會有費用。 不過，您仍需持續支付儲存體費用。
+
+若要暫停資料庫，請使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) Cmdlet。 下列範例會暫停在伺服器 **sqlpoolservername** 上裝載的 SQL 集區 **mySampleDataWarehouse**。 此伺服器位於 Azure 資源群組 **myResourceGroup** 中。
 
 
 ```Powershell
@@ -77,7 +78,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-一種變異，這個範例會將資料庫擷取至 $database 物件。 然後將物件輸送到 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase)。 結果會儲存在物件 resultDatabase 中。 最終的命令會顯示結果。
+下列範例會將資料庫擷取至 $database 物件。 然後將物件輸送到 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase)。 結果會儲存在物件 resultDatabase 中。 最終的命令會顯示結果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -95,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-一種變異，這個範例會將資料庫擷取至 $database 物件。 接著將物件輸送到 [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase)，並將結果儲存在 $resultDatabase 中。 最終的命令會顯示結果。
+下一個範例會將資料庫擷取至 $database 物件。 接著將物件輸送到 [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase)，並將結果儲存在 $resultDatabase 中。 最終的命令會顯示結果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -104,9 +105,9 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="check-status-of-your-data-warehouse-operation"></a>檢查資料倉儲作業的狀態
+## <a name="check-status-of-your-sql-pool-operation"></a>檢查 SQL 集區作業的狀態
 
-若要檢查資料倉儲的狀態，請使用 [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) Cmdlet。
+若要檢查 SQL 集區的狀態，請使用 [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) Cmdlet。
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -114,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您需對資料倉儲單位和資料倉儲上儲存的資料付費。 這些計算和儲存體資源會分開計費。
+您需對資料倉儲單位和 SQL 集區上儲存的資料付費。 這些計算和儲存體資源會分開計費。
 
 - 如果您想保留儲存體中的資料，請暫停計算。
 - 如果您需要移除未來的費用，可以將 SQL 集區刪除。
@@ -136,7 +137,4 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已暫停和繼續 SQL 集區的計算。 若要深入了解 SQL 集區，請繼續進行載入資料的教學課程。
-
-> [!div class="nextstepaction"]
-> [將資料載入至 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)
+若要深入了解 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。 

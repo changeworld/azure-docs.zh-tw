@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: aeccd604a4dae3b2ca83f5b599d9a6857acee34a
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934018"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037180"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教學課程：透過設計工具部署機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "76934018"
 
 1. 在管線畫布上方，選取 [建立推斷管線]   > [即時推斷管線]  。
 
-    ![顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     您的管線此時應會顯示如下： 
 
@@ -56,7 +56,7 @@ ms.locfileid: "76934018"
     > 根據預設，**Web 服務輸入**會預期與用來建立預測管線的訓練資料相同的資料結構描述。 在此情況下，價格會包含在結構描述中。 不過，在預測期間並不會以價格作為因素。
     >
 
-1. 選取 [執行]  ，並使用您在第一部分中使用的相同計算目標和實驗。
+1. 選取 [提交]  ，並使用您在第一部分中使用的相同計算目標和實驗。
 
 1. 選取 [部署]  。
 
@@ -123,4 +123,4 @@ ms.locfileid: "76934018"
 在本教學課程中，您已了解在如何設計工具中建立、部署和使用機器學習模型的關鍵步驟。 若要深入了解如何使用設計工具來解決其他類型的問題，請參閱我們的其他範例管線。
 
 > [!div class="nextstepaction"]
-> [信用風險分類範例](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [設計工具範例](samples-designer.md)

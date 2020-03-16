@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772862"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897752"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Fiori 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "70772862"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -42,7 +42,7 @@ ms.locfileid: "70772862"
 
 ## <a name="scenario-description"></a>案例描述
 
-在此教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * SAP Fiori 支援由 **SP** 起始的 SSO
 
@@ -137,7 +137,7 @@ ms.locfileid: "70772862"
     ![SAP SAML 2.0 中繼資料對話方塊中的下載中繼資料連結](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP Fiori]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -173,9 +173,9 @@ ms.locfileid: "70772862"
 
     1. 在 [轉換]  清單中，選取 [ExtractMailPrefix()]  。
 
-    1. 在 [參數 1]  清單中，選取 [user.userprinicipalname]  。
+    1. 從 [參數 1]  清單中，選取 [user.userprincipalname]  。
 
-    1. 選取 [ **儲存**]。
+    1. 選取 [儲存]  。
 
        ![[管理使用者宣告] 窗格](./media/sapfiori-tutorial/nameidattribute.png)
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58ff181ec144dcd0b1089b0e53f868f241be73f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985249"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workplace by Facebook 整合
 
@@ -30,7 +30,7 @@ ms.locfileid: "76985249"
 * 讓使用者使用他們的 Azure AD 帳戶自動登入 Workplace by Facebook。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -157,6 +157,8 @@ ms.locfileid: "76985249"
     a. 核取 [單一登入 (SSO)]  選項。
     
     b. 按一下 [+新增 SSO 提供者]  。
+    > [!NOTE]
+    > 請務必一併勾選 [密碼登入] 核取方塊。 在執行憑證變換時，管理員可能需要此選項來進行登入，以防止自己遭到鎖定。
 
 1. 在 [驗證]  索引標籤底下，選取 [單一登入 (SSO)]  ，然後執行下列步驟：
 
@@ -238,7 +240,7 @@ ms.locfileid: "76985249"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -247,4 +249,3 @@ ms.locfileid: "76985249"
 - [嘗試搭配 Azure AD 使用 Workplace by Facebook](https://aad.portal.azure.com)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

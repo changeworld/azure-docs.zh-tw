@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443676"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079804"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -170,6 +170,8 @@ Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台�
 存取 Azure 地圖服務時須前往 [Azure 入口網站](https://portal.azure.com)，並建立 Azure 地圖服務帳戶。
 
 Azure 地圖服務會使用金鑰型驗證結構描述。 您的帳戶隨附已預先為您產生的兩個金鑰，請使用任一個金鑰。 開始在您的應用程式中整合這些位置功能，並提出對 Azure 地圖服務的要求。
+
+注意 - Azure 地圖服務會與第三方 TomTom 分享客戶提供的位址/位置查詢 (稱為「查詢」)，以用於對應功能。 與 TomTom 分享時，查詢不會連結至任何客戶或終端使用者，也不能用來識別個人。 Microsoft 目前正在將 TomTom 新增至線上服務轉包商清單。 請注意，包含與 Moovit 和 AccuWeather 整合的行動性和天氣服務，目前處於[預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
 
 ## <a name="supported-regions"></a>支援區域
 

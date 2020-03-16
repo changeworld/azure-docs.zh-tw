@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 03/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b23ef246561d052935642c323c2d830e21cbe7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f019d818fb5a017d184bda8d773eb0aaf0f3645a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "73570220"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Druva 整合
 
@@ -33,7 +32,7 @@ ms.locfileid: "73570220"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -44,7 +43,8 @@ ms.locfileid: "73570220"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* Druva 支援由 **SP 和 IDP** 起始的 SSO
+* Druva 支援由 **IDP** 起始的 SSO
+* 設定 Druva SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -81,11 +81,13 @@ ms.locfileid: "73570220"
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
-1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，則不需要執行任何步驟，因為應用程式已預先整合到 Azure。
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+1. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
-    在 [登入 URL]  文字方塊中，輸入 URL：`https://login.druva.com/api/commonlogin/samlconsume`
+    a. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入字串值：`DCP-login`。
+    
+    b. 在 [回覆 URL (判斷提示取用者服務 URL)]  文字方塊中，以輸入 URL：`https://cloud.druva.com/wrsaml/consume`。
 
 1. 按一下 [檔案]  。
 
@@ -98,7 +100,7 @@ ms.locfileid: "73570220"
     | 名稱 | 來源屬性|
     | ------------------- | -------------------- |
     | emailAddress | user.email |
-    | druva_auth_token | 從 DCP 管理主控台產生的 SSO 權杖 (沒有引號)。  例如︰X-XXXXX-XXXX-S-A-M-P-L-E+TXOXKXEXNX=. Azure 會在驗證權杖前後自動加上引號。 |
+    | druva_auth_token | 從 DCP 管理主控台產生的 SSO 權杖 (沒有引號)。  例如：X-XXXXX-XXXX-S-A-M-P-L-E+TXOXKXEXNX=. Azure 會在驗證權杖前後自動加上引號。 |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -182,3 +184,5 @@ ms.locfileid: "73570220"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Druva](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

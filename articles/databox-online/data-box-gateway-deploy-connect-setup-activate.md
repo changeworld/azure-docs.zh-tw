@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561828"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087946"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教學課程：連線、設定、啟動 Azure 資料箱閘道
 
@@ -92,6 +92,11 @@ ms.locfileid: "77561828"
    2. 在 [驗證]  底下，選取 [無]  或 [NTLM]  。
    3. 如果您使用驗證，請輸入**使用者名稱**和**密碼**。
    4. 若要驗證並套用所設定的 Web Proxy 設定，請選取 [套用]  。
+
+   > [!NOTE]
+   > 不支援 Proxy 自動設定 (PAC) 檔案。 PAC 檔案會定義網頁瀏覽器和其他使用者代理程式如何自動選擇適當的 Proxy 伺服器 (存取方法) 來擷取指定的 URL。
+   > 嘗試攔截和讀取所有流量 (然後以自己的憑證重新簽署所有內容) 的 Proxy 不受系統相容，因為 Proxy 的憑證不受信任。
+   > 通常透明的 Proxy 與 Azure 資料箱閘道搭配較能運作良好。
 
 4. (選擇性) 在左側窗格中，選取 [時間設定]  ，然後設定您裝置的時區，以及主要和次要 NTP 伺服器。 
 

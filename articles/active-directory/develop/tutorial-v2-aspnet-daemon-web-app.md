@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701224"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129960"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 
@@ -39,7 +39,8 @@ ms.locfileid: "76701224"
 
 此範例中的「精靈」元件是一個 API 控制器 (`SyncController.cs`)。 控制器收到呼叫時會從 Microsoft Graph 提取客戶的 Azure Active Directory (Azure AD) 租用戶使用者清單。 `SyncController.cs` 會由 Web 應用程式中的 AJAX 呼叫加以觸發。 其會使用[適用於 .NET 的 Microsoft 驗證程式庫 (MSAL)](msal-overview.md) 來取得 Microsoft Graph 的存取權杖。
 
-對於較簡單的主控台精靈應用程式，請參閱 [.NET Core 精靈快速入門](quickstart-v2-netcore-daemon.md)。
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，建議您從 [.NET Core 精靈快速入門](quickstart-v2-netcore-daemon.md)開始了解。
 
 ## <a name="scenario"></a>狀況
 

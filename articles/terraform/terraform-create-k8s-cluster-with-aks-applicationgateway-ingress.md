@@ -1,14 +1,15 @@
 ---
 title: 教學課程 - 在 Azure Kubernetes Service 中建立應用程式閘道輸入控制器
-description: 教學課程說明如何使用 Azure Kubernetes Service 建立 Kubernetes 叢集並以應用程式閘道作為輸入控制器
+description: 在本教學課程中，您會使用 Azure Kubernetes Service 建立 Kubernetes 叢集，並以應用程式閘道作為輸入控制器
+keywords: azure devops terraform 應用程式閘道輸入 aks kubernetes
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/09/2020
+ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251768"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945327"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教學課程：在 Azure Kubernetes Service 中建立應用程式閘道輸入控制器
 
@@ -77,7 +78,10 @@ ms.locfileid: "78251768"
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.18"
+      # The "feature" block is required for AzureRM provider 2.x. 
+      # If you are using version 1.x, the "features" block is not allowed.
+      version = "~>2.0"
+      features {}
     }
 
     terraform {
@@ -442,11 +446,10 @@ ms.locfileid: "78251768"
         }
       }
 
-      agent_pool_profile {
+      default_node_pool {
         name            = "agentpool"
-        count           = var.aks_agent_count
+        node_count      = var.aks_agent_count
         vm_size         = var.aks_agent_vm_size
-        os_type         = "Linux"
         os_disk_size_gb = var.aks_agent_os_disk_size
         vnet_subnet_id  = data.azurerm_subnet.kubesubnet.id
       }
@@ -475,7 +478,7 @@ ms.locfileid: "78251768"
 
 `linux_profile` 記錄可讓您設定使用 SSH 登入背景工作角色節點的設定。
 
-透過 AKS，您只需要為背景工作角色節點付費。 `agent_pool_profile` 記錄可設定這些背景工作角色節點的詳細資料。 `agent_pool_profile record` 涵蓋要建立的背景工作角色節點數量，以及背景工作角色節點的類型。 若您日後需要相應增加或相應減少叢集，可修改此記錄中的 `count` 值。
+透過 AKS，您只需要為背景工作角色節點付費。 `agent_pool_profile` 記錄可設定這些背景工作角色節點的詳細資料。 `agent_pool_profile record` 涵蓋要建立的背景工作角色節點數量，以及背景工作角色節點的類型。 若您日後需要擴大或縮小叢集，可修改此記錄中的 `count` 值。
 
 ## <a name="create-a-terraform-output-file"></a>建立 Terraform 輸出檔
 

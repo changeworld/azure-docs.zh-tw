@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,seodec18
+ms.date: 03/11/2020
+ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494381"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117226"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教學課程：將 Apache Spark 結構化串流用於 HDInsight 上的 Apache Kafka
 
-本教學課程說明如何使用 [Apache Spark 結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)，對 Azure HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 讀取和寫入資料。
+本教學課程說明如何使用 [Apache Spark 結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)，對 Azure HDInsight 上的 [Apache Kafka](./kafka/apache-kafka-introduction.md) 讀取和寫入資料。
 
 Spark 結構化串流是建置在 Spark SQL 上的串流處理引擎。 它允許您進行與靜態資料批次計算相同的串流計算。  
 
@@ -29,7 +29,7 @@ Spark 結構化串流是建置在 Spark SQL 上的串流處理引擎。 它允�
 
 當您完成本文件中的步驟時，請記得刪除叢集，以避免產生過多的費用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * jq，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
@@ -144,7 +144,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     | --- | --- |
     | 訂用帳戶 | 您的 Azure 訂用帳戶 |
     | 資源群組 | 包含資源的資源群組。 |
-    | 位置 | 資源建立所在的 Azure 區域。 |
+    | Location | 資源建立所在的 Azure 區域。 |
     | Spark 叢集名稱 | Spark 叢集的名稱。 前六個字元必須與 Kafka 叢集名稱不同。 |
     | Kafka 叢集名稱 | Kafka 叢集的名稱。 前六個字元必須與 Spark 叢集名稱不同。 |
     | 叢集登入使用者名稱 | 叢集的管理員使用者名稱。 |
@@ -168,23 +168,21 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 1. 收集主機資訊。 使用 curl 和 [jq](https://stedolan.github.io/jq/) 命令來取得 Kafka ZooKeeper 及訊息代理程式主機的資訊。 這些命令專為 Windows 命令提示字元所設計，若使用其他環境，則需要一點變化。 以 Kafka 叢集的名稱取代 `KafkaCluster`，並以叢集登入密碼取代 `KafkaPassword`。 此外，將 `C:\HDI\jq-win64.exe` 取代為安裝 jq 的實際路徑。 在 Windows 命令提示字元中輸入命令並儲存輸出，以在稍後步驟中使用。
 
     ```cmd
+    REM Enter cluster name in lowercase
+
     set CLUSTERNAME=KafkaCluster
     set PASSWORD=KafkaPassword
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):2181"""] | join(""",""")"
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-2. 在網頁瀏覽器中，連線到您 Spark 叢集上的 Jupyter Notebook。 在下列 URL 中，將 `CLUSTERNAME`取代為您的 __Spark__ 叢集名稱：
+1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 `CLUSTERNAME` 是叢集的名稱。 出現提示時，輸入您在建立叢集時所使用的叢集登入 (admin) 和密碼。
 
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
+1. 選取 [新增] > [Spark]  來建立 Notebook。
 
-    出現提示時，輸入您在建立叢集時所使用的叢集登入 (admin) 和密碼。
-
-3. 選取 [新增] > [Spark]  來建立 Notebook。
-
-4. Spark 串流具有微批次處理，這表示資料會以批次方式提供，而執行程式會在資料批次上執行。 如果執行程式的閒置逾時小於處理批次所需的時間，則會不斷加入及移除執行程式。 如果執行程式的閒置逾時大於批次持續時間，則永遠不會移除執行程式。 因此，**我們建議您在執行串流應用程式時，將 spark.dynamicAllocation.enabled 設定為 false，以停用動態配置。**
+1. Spark 串流具有微批次處理，這表示資料會以批次方式提供，而執行程式會在資料批次上執行。 如果執行程式的閒置逾時小於處理批次所需的時間，則會不斷加入及移除執行程式。 如果執行程式的閒置逾時大於批次持續時間，則永遠不會移除執行程式。 因此，**我們建議您在執行串流應用程式時，將 spark.dynamicAllocation.enabled 設定為 false，以停用動態配置。**
 
     在 Notebook 資料格中輸入下列資訊，即可載入 Notebook 使用的套件。 使用 **CTRL + ENTER** 執行命令。
 
@@ -199,7 +197,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     }
     ```
 
-5. 建立 Kafka 主題。 編輯下列命令，將 `YOUR_ZOOKEEPER_HOSTS` 取代為在第一個步驟中擷取的 Zookeeper 主機資訊。 將編輯後的命令輸入 Jupyter Notebook 中，以建立 `tripdata` 主題。
+1. 建立 Kafka 主題。 編輯下列命令，將 `YOUR_ZOOKEEPER_HOSTS` 取代為在第一個步驟中擷取的 Zookeeper 主機資訊。 將編輯後的命令輸入 Jupyter Notebook 中，以建立 `tripdata` 主題。
 
     ```scala
     %%bash
@@ -208,7 +206,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-6. 擷取計程車車程資料。 在下一個資料格中輸入命令，以載入紐約市的計程車車程資料。 資料會載入 dataframe，然後 dataframe 會顯示為資料格的輸出。
+1. 擷取計程車車程資料。 在下一個資料格中輸入命令，以載入紐約市的計程車車程資料。 資料會載入 dataframe，然後 dataframe 會顯示為資料格的輸出。
 
     ```scala
     import spark.implicits._
@@ -224,7 +222,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     taxiDF.show()
     ```
 
-7. 設定 Kafka 訊息代理程式主機資訊。 將 `YOUR_KAFKA_BROKER_HOSTS` 取代為您在步驟 1 擷取的訊息代理程式主機資訊。  在下一個 Jupyter Notebook 資料格中，輸入已編輯的命令。
+1. 設定 Kafka 訊息代理程式主機資訊。 將 `YOUR_KAFKA_BROKER_HOSTS` 取代為您在步驟 1 擷取的訊息代理程式主機資訊。  在下一個 Jupyter Notebook 資料格中，輸入已編輯的命令。
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -234,7 +232,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. 將資料傳送至 Kafka。 在下列命令中，`vendorid` 欄位會用來作為 Kafka 訊息的索引鍵值。 Kafka 會在分割資料時使用該索引鍵。 所有的欄位都會以 JSON 字串值的形式儲存在 Kafka 訊息中。 在 Jupyter 中輸入下列命令，以使用批次查詢將資料儲存到 Kafka。
+1. 將資料傳送至 Kafka。 在下列命令中，`vendorid` 欄位會用來作為 Kafka 訊息的索引鍵值。 Kafka 會在分割資料時使用該索引鍵。 所有的欄位都會以 JSON 字串值的形式儲存在 Kafka 訊息中。 在 Jupyter 中輸入下列命令，以使用批次查詢將資料儲存到 Kafka。
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -243,7 +241,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Data sent to Kafka")
     ```
 
-9. 宣告結構描述。 下列命令會示範從 kafka 讀取 JSON 資料時如何使用結構描述。 在下一個 Jupyter 資料格中輸入命令。
+1. 宣告結構描述。 下列命令會示範從 kafka 讀取 JSON 資料時如何使用結構描述。 在下一個 Jupyter 資料格中輸入命令。
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -279,7 +277,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Schema declared")
     ```
 
-10. 選取資料，並啟動串流。 下列命令會示範如何使用批次查詢從 kafka 擷取資料，然後將結果寫出到 Spark 叢集上的 HDFS。 在此範例中，`select` 會從 Kafka 擷取訊息 (值欄位)，並對其套用結構描述。 接著，資料會以 Parquet 格式寫入到 HDFS (WASB 或 ADL)。 在下一個 Jupyter 資料格中輸入命令。
+1. 選取資料，並啟動串流。 下列命令會示範如何使用批次查詢從 kafka 擷取資料，然後將結果寫出到 Spark 叢集上的 HDFS。 在此範例中，`select` 會從 Kafka 擷取訊息 (值欄位)，並對其套用結構描述。 接著，資料會以 Parquet 格式寫入到 HDFS (WASB 或 ADL)。 在下一個 Jupyter 資料格中輸入命令。
 
     ```scala
     // Read a batch from Kafka
@@ -291,14 +289,14 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Wrote data to file")
     ```
 
-11. 您可以在下一個 Jupyter 資料格中輸入命令，確認檔案是否已建立。 這會在 `/example/batchtripdata` 目錄中列出檔案。
+1. 您可以在下一個 Jupyter 資料格中輸入命令，確認檔案是否已建立。 這會在 `/example/batchtripdata` 目錄中列出檔案。
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-12. 雖然上述範例使用批次查詢，但下列命令會示範如何使用串流查詢來執行相同動作。 在下一個 Jupyter 資料格中輸入命令。
+1. 雖然上述範例使用批次查詢，但下列命令會示範如何使用串流查詢來執行相同動作。 在下一個 Jupyter 資料格中輸入命令。
 
     ```scala
     // Stream from Kafka
@@ -309,7 +307,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Wrote data to file")
     ```
 
-13. 執行下列資料格來確認串流查詢是否已寫入這些檔案。
+1. 執行下列資料格來確認串流查詢是否已寫入這些檔案。
 
     ```scala
     %%bash
@@ -322,7 +320,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 若要使用 Azure 入口網站移除資源群組：
 
-1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
 2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多]  按鈕 (...)。
 3. 選取 [刪除資源群組]  ，並加以確認。
 
@@ -333,7 +331,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 [Apache Spark 結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)對 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 寫入及讀取資料。 請使用下列連結了解如何搭配使用 [Apache Storm](https://storm.apache.org/) 與 Kafka。
+在本教學課程中，您已了解如何使用 [Apache Spark 結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)對 HDInsight 上的 [Apache Kafka](./kafka/apache-kafka-introduction.md) 寫入及讀取資料。 請使用下列連結了解如何搭配使用 [Apache Storm](./storm/apache-storm-overview.md) 與 Kafka。
 
 > [!div class="nextstepaction"]
 > [使用 Apache Storm 搭配 Apache Kafka](hdinsight-apache-storm-with-kafka.md)

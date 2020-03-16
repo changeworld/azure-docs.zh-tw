@@ -1,20 +1,74 @@
 ---
-title: Azure 監視器文件的最新動向
+title: Azure 監視器文件的最新內容
 description: 每月更新的 Azure 監視器文件重大更新。
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657736"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673314"
 ---
-# <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
+# <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新內容
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="agents"></a>代理程式
+診斷擴充功能內容改寫多次更新。
+
+- [Azure 監視代理程式概觀](platform/agents-overview.md) - 調整過的資料表，以更清楚地說明每個代理程式的獨特功能。
+- [Azure 診斷擴充功能概觀](platform/diagnostics-extension-overview.md) - 完成改寫。
+- [在 Azure 監視器中，對 IIS 使用 Blob 儲存體並對事件使用資料表儲存體](platform/diagnostics-extension-logs.md) - 一般改寫以更新和釐清資訊。
+- [安裝和設定 Windows Azure 診斷擴充功能 (WAD)](platform/diagnostics-extension-windows-install.md) - 新增文章。 
+- [Windows 診斷擴充功能結構描述](platform/diagnostics-extension-schema-windows.md) - 重新整理。
+- [將資料從 Windows Azure 診斷擴充功能傳送至 Azure 事件中樞](platform/diagnostics-extension-stream-event-hubs.md) - 完全改重寫並更新。
+- [儲存和檢視 Azure 儲存體中的診斷資料](platform/diagnostics-extension-to-storage.md) - 完全改重寫並更新。
+- [適用於 Windows 的 Log Analytics 虛擬機器擴充功能](../virtual-machines/extensions/oms-windows.md) - 更清楚說明與 Log Analytics 代理程式的關係。
+- [適用於 Linux 的 Azure 監視器虛擬機器擴充功能](../virtual-machines/extensions/oms-linux.md) - 更清楚說明與 Log Analytics 代理程式的關係。
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights 中的連接字串](app/sdk-connection-string.md) - 新文章。
+
+### <a name="insights-and-solutions"></a>見解和解決方案
+
+#### <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
+- [整合 Azure Active Directory 與 Azure Kubernetes Service](../aks/azure-ad-integration.md) - 新增的備註，用來建立用戶端應用程式以支援已啟用 RBAC 的叢集，進而支援容器的 Azure 監視器。
+
+#### <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器
+- [適用於 VM 的 Azure 監視器 (GA) 常見問題集](insights/vminsights-ga-release-faq.md) - 儲存效能資料的方式有所變更。
+
+#### <a name="office-365"></a>Office 365
+- [Azure 中的 Office 365 管理解決方案](insights/solution-office-365.md) - 淘汰日期更新。
+
+
+### <a name="logs"></a>記錄
+- [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新文章。
+- [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 改善的範例查詢，協助您了解使用量。
+
+### <a name="metrics"></a>計量
+- [可透過診斷設定匯出 Azure 監視器平台計量](platform/metrics-supported-export-diagnostic-settings.md) - 新增了 Null 和零值的行為變更一節。
+
+
+### <a name="visualizations"></a>視覺效果
+活頁簿轉換指南中有關檢視表設計師的多篇新文章。
+
+- [將 Azure 監視器檢視表設計師轉換成活頁簿的指南](platform/view-designer-conversion-overview.md) - 新文章。
+- [將 Azure 監視器檢視表設計師轉換成活頁簿的指南](platform/view-designer-conversion-options.md) - 新文章。
+- [將 Azure 監視器檢視表設計師轉換成活頁簿圖格](platform/view-designer-conversion-tiles.md) - 新文章。
+- [將 Azure 監視器檢視表設計師轉換成活頁簿的摘要和存取](platform/view-designer-conversion-access.md) - 新文章。
+- [將 Azure 監視器檢視表設計師轉換成活頁簿的常見工作](platform/view-designer-conversion-tasks.md) - 新文章。
+- [將 Azure 監視器檢視表設計師轉換成活頁簿的常見工作](platform/view-designer-conversion-examples.md) - 新文章。
+
+
+
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -43,14 +97,14 @@ ms.locfileid: "77657736"
 ### <a name="insights-and-solutions"></a>見解和解決方案
 
 #### <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
-- [設定適用於容器的 Azure 監視器代理程式資料收集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
-- [為適用於容器的 Azure 監視器建立效能警示](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) - 已修訂資訊及更新步驟，以便使用工作區內容警示，對工作區中儲存的效能資料建立警示。
-- [使用適用於容器的 Azure 監視器進行 Kubernetes 監視](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) - 已更新有關 Windows Kubernetes 叢集支援的概觀文章和分析文章。
-- [使用適用於容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
-- [使用適用於容器的 Azure 監視器來設定混合式 Kubernetes 叢集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) - 已更新內容，以反映 Kubelet 的 cAdvisor 新增了安全連接埠 10250 支援。
-- [如何管理適用於容器的 Azure 監視器代理程式](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) - 相較於其他類型的 Kubernetes 叢集，已更新透過 Azure Red Hat OpenShift 抓取計量的行為和設定相關詳細資料。
-- [如何管理適用於容器的 Azure 監視器代理程式](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) - 已更新透過 Azure Red Hat OpenShift (相較於其他類型的 Kubernetes 叢集) 抓取計量的行為和設定相關詳細資訊。
-- [如何針對計量更新適用於容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) - 相較於其他類型的 Kubernetes 叢集， Azure Red Hat OpenShift 的計量抓取的行為和設定相關的更新詳細資料。
+- [設定適用於容器的 Azure 監視器代理程式資料收集](insights/container-insights-agent-config.md) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
+- [為適用於容器的 Azure 監視器建立效能警示](insights/container-insights-alerts.md) - 已修訂資訊及更新步驟，以便使用工作區內容警示，對工作區中儲存的效能資料建立警示。
+- [使用適用於容器的 Azure 監視器進行 Kubernetes 監視](insights/container-insights-analyze.md) - 已更新有關 Windows Kubernetes 叢集支援的概觀文章和分析文章。
+- [使用適用於容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集](insights/container-insights-azure-redhat-setup.md) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
+- [使用適用於容器的 Azure 監視器來設定混合式 Kubernetes 叢集](insights/container-insights-hybrid-setup.md) - 已更新內容，以反映 Kubelet 的 cAdvisor 新增了安全連接埠 10250 支援。
+- [如何管理適用於容器的 Azure 監視器代理程式](insights/container-insights-manage-agent.md) - 相較於其他類型的 Kubernetes 叢集，已更新透過 Azure Red Hat OpenShift 抓取計量的行為和設定相關詳細資料。
+- [如何管理適用於容器的 Azure 監視器代理程式](insights/container-insights-prometheus-integration.md) - 已更新透過 Azure Red Hat OpenShift (相較於其他類型的 Kubernetes 叢集) 抓取計量的行為和設定相關詳細資訊。
+- [如何針對計量更新適用於容器的 Azure 監視器](insights/container-insights-update-metrics.md) - 相較於其他類型的 Kubernetes 叢集， Azure Red Hat OpenShift 的計量抓取的行為和設定相關的更新詳細資料。
 
 
 #### <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器

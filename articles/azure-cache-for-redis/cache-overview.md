@@ -1,38 +1,37 @@
 ---
 title: 什麼是 Azure Redis 快取？
-description: 了解什麼是 Azure Cache for Redis 和一般用途，包括另行快取、內容快取、使用者工作階段快取、作業和訊息佇列，以及分散式交易。
+description: 了解 Azure Cache for Redis 以啟用另行快取、內容快取、使用者工作階段快取、作業和訊息佇列，以及分散式交易。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.custom: mvc
-ms.date: 03/26/2018
-ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/11/2020
+ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433428"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126359"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis 描述
 
-Azure Cache for Redis 以廣受使用的軟體 [Redis](https://redis.io/) 為基礎。 通常用來作為快取，可為高度依賴後端資料存放區的系統改善效能及延展性。 藉由暫時將經常存取的資料複製到靠近應用程式的快速儲存體中，進而改善效能。 透過 [Azure Cache for Redis](https://redis.io/) \(英文\)，此快速儲存體會與 Azure Cache for Redis 同樣位於記憶體中，而不會由資料庫從磁碟載入。
+Azure Cache for Redis 會根據開放原始碼軟體 [Redis](https://redis.io/) 提供記憶體中的資料存放區。 用來作為快取時，Redis 可為高度依賴後端資料存放區的系統改善效能及延展性； 藉由將經常存取的資料複製到靠近應用程式的快速儲存體中，進而改善效能。 使用 Azure Cache for Redis，此快速儲存體會位於記憶體中，而不會由資料庫從磁碟載入。
 
-Azure Cache for Redis 也可用來作為記憶體中的資料結構存放區、分散式非關聯資料庫和訊息代理程式。 利用 Redis 引擎的低延遲與高輸送量效能可提升應用程式效能。
+Azure Cache for Redis 可用來作為記憶體中的資料結構存放區、分散式非關聯資料庫和訊息代理程式。 利用 Redis 引擎的低延遲與高輸送量效能可提升應用程式效能。
 
-Azure Cache for Redis 可讓您存取安全、專用的 Redis 快取。 Azure Cache for Redis 會由 Microsoft 管理並裝載於 Azure 內，且可讓您從 Azure 內部或外部的任何應用程式存取。
+Azure Cache for Redis 可存取安全、專用的 Redis 快取。 Azure Cache for Redis 會由 Microsoft 管理並裝載於 Azure 內，且可讓您從 Azure 內部或外部的任何應用程式存取。
 
 ## <a name="using-azure-cache-for-redis"></a>使用 Azure Cache for Redis
 
-Azure Cache for Redis 用來支援應用程式架構或改善應用程式效能的常見模式有很多。 最常見的一些模式包括：
+Azure Cache for Redis 藉由支援常見的應用程式架構模式來改善應用程式效能。 最常見的一些模式包括：
 
 | 模式      | 描述                                        |
 | ------------ | -------------------------------------------------- |
-| [另行快取](cache-web-app-cache-aside-leaderboard.md) | 由於資料庫可能很大，所以將整個資料庫載入快取並不是建議的方法。 常見的方法是使用[另行快取](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)模式，只在需要時，將資料項目載入至快取。 系統變更後端資料時，也會同時更新分佈到其他用戶端的快取。 此外，系統可以在資料項目上設定到期日，或使用收回原則，讓資料更新重新載入至快取。|
-| [內容快取](cache-aspnet-output-cache-provider.md) | 大部分的網頁都是從範本產生，且具有頁首、頁尾、工具列、功能表等項目。這些網頁實際上不常變更，而且不應該以動態方式產生。 相較於後端資料存放區，使用 Azure Cache for Redis 之類的記憶體中快取，將可讓 Web 伺服器快速存取此類型的靜態內容。 此模式可減少動態產生內容時所需的處理時間和伺服器負載。 這可讓 Web 伺服器的回應速度更快，並可讓您減少需要處理負載的伺服器數目。 Azure Cache for Redis 會提供 Redis 輸出快取提供者，以協助使用 ASP.NET 來支援此模式。|
-| [使用者工作階段快取](cache-aspnet-session-state-provider.md) | 此模式通常會與購物車和使用者歷程記錄這類資訊搭配使用，而 Web 應用程式可能會想要讓使用者 cookie 與這些資訊產生關聯。 在 cookie 中儲存太多資料可能會對效能產生負面影響，因為 cookie 的大小會增加，且會與每個要求一起傳遞和驗證。 一般解決方案是使用 cookie 作為索引鍵，來查詢後端資料庫中的資料。 使用 Azure Cache for Redis 之類的記憶體中快取來將資訊關聯至使用者，速度會比與完整的關聯式資料庫互動快很多。 |
-| 作業與訊息佇列 | 當應用程式收到要求時，執行與要求相關聯的作業通常會需要額外時間。 常見的模式是將執行時間長的作業新增至佇列，以延後處理這些應用程式，或可能讓另一個伺服器來處理。 此延後工作的方法稱為工作佇列。 有許多軟體元件的設計都支援工作佇列。 Azure Cache for Redis 也會以分散式佇列的形式來達到此目的。|
-| 分散式交易 | 常見的應用程式需求是要能以單一作業的形式 (自動)，執行一系列對後端資料存放區執行的命令。 所有命令都必須都成功，或所有命令必須回復為初始狀態。 Azure Cache for Redis 支援會以[交易](https://redis.io/topics/transactions) \(英文\) 形式，將命令批次當成單一作業來執行。 |
+| [另行快取](cache-web-app-cache-aside-leaderboard.md) | 資料庫通常太大，無法直接載入快取中。 常見的方法是使用[另行快取](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)模式，只在需要時，將資料載入至快取。 系統變更資料時，也會同時更新快取，並散發到其他用戶端。 此外，系統可以在資料上設定到期日，或使用收回原則，觸發資料更新進入快取。|
+| [內容快取](cache-aspnet-output-cache-provider.md) | 許多網頁都是從使用靜態內容 (例如標題、頁尾、橫幅) 的範本所產生。 這些靜態項目不應該經常變更。 相較於後端資料存放區，使用記憶體內部快取可讓您快速存取靜態內容。 此模式可減少處理時間和伺服器負載，讓網頁伺服器更具回應能力， 並可以讓您減少處理負載所需的伺服器數目。 Azure Cache for Redis 會提供 Redis 輸出快取提供者，以使用 ASP.NET 來支援此模式。|
+| [使用者工作階段快取](cache-aspnet-session-state-provider.md) | 此模式通常會與購物車和其他使用者記錄資料這類資訊搭配使用，而 Web 應用程式則會讓使用者 Cookie 與這些資訊產生關聯。 在 cookie 中儲存太多資料可能會對效能產生負面影響，因為 cookie 的大小會增加，且會與每個要求一起傳遞和驗證。 一般解決方案是使用 Cookie 作為索引鍵，來查詢資料庫中的資料。 使用 Azure Cache for Redis 之類的記憶體中快取來將資訊關聯至使用者，速度會比與完整的關聯式資料庫互動快很多。 |
+| 作業與訊息佇列 | 當與要求關聯的工作需要時間執行時，應用程式通常會將工作新增到佇列。 較長的執行作業會排入佇列，而且通常是由另一部伺服器依序處理。  此延後工作的方法稱為工作佇列。 Azure Cache for Redis 提供分散式佇列，以在您的應用程式中啟用此模式。|
+| 分散式交易 | 應用程式有時需要一系列針對後端資料存放區的命令，以執行單一不可部分完成的作業。 所有命令都必須都成功，或所有命令必須回復為初始狀態。 Azure Cache for Redis 支援以單次[交易](https://redis.io/topics/transactions)執行命令批次。 |
 
 ## <a name="azure-cache-for-redis-offerings"></a>Azure Cache for Redis 供應項目
 
@@ -40,15 +39,15 @@ Azure Cache for Redis 可在以下層級使用：
 
 | 層 | 描述 |
 |---|---|
-基本 | 單一節點快取。 本層支援多種記憶體大小 (250 MB - 53 GB)。 本層適用於開發/測試和非重大的工作量。 基本層沒有服務等級協定 (SLA) |
-| 標準 | 複寫的快取是兩節點 (主要/次要) 組態，由 Microsoft 管理且具高可用 SLA (99.9%) |
+基本 | 單一節點快取。 這一層支援多個記憶體大小 (250 MB - 53 GB)，非常適用於開發/測試和非關鍵工作負載。 基本層沒有服務等級協定 (SLA) |
+| 標準 | 複寫的快取是雙節點 (主要/次要) 組態，由 Azure 管理且具高可用性 SLA (99.9%) |
 | Premium | 進階層是可供企業使用的層級。 進階層快取支援更多功能，而且具有較高的輸送量和較低的延遲。 進階層中的快取是部署在更強大的硬體上，因此效能優於基本或標準層。 這項優勢表示，針對大小相同的快取，其輸送量在進階層中會比在標準層中高。 |
 
 > [!TIP]
 > 如需進階快取的大小、輸送量和頻寬的詳細資訊，請參閱 [Azure Cache for Redis 常見問題集](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 >
 
-快取建立好之後，您可以將快取提升至更高的層級。 但不支援向下調整至較低層級。 如需調整階層的逐步指示，請參閱[如何調整 Azure Cache for Redis](cache-how-to-scale.md) 和[如何將調整作業自動化](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
+快取建立好之後，您可以將快取調整至更高的層級。 但不支援向下調整至較低層級。 如需調整階層的逐步指示，請參閱[如何調整 Azure Cache for Redis](cache-how-to-scale.md) 和[如何將調整作業自動化](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
 
 ### <a name="feature-comparison"></a>功能比較
 

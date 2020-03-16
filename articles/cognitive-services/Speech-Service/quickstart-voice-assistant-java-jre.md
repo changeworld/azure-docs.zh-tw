@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330819"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>快速入門：使用 Speech SDK、Java 建立語音助理 (預覽)
 
 另備有[語音轉文字](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)、[文字轉語音](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)和[語音翻譯](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)的快速入門。
 
-在本文中，您會使用 [Azure 認知服務語音 SDK](speech-sdk.md)，建立 Java 主控台應用程式。 此應用程式會連線到先前撰寫的 Bot，該 Bot 設定為使用 Direct Line Speech 頻道、傳送語音要求，以及傳回語音回應活動 (若已設定的話)。 此應用程式是使用語音 SDK Maven 套件，以及Windows、Ubuntu Linux 或 macOS 上的 Eclipse Java IDE 來建置。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
+在本文中，您會使用 [Azure 認知服務語音 SDK](speech-sdk.md)，建立 Java 主控台應用程式。 此應用程式會連線到先前撰寫的 Bot，該 Bot 設定為使用 Direct Line Speech 頻道、傳送語音要求，以及傳回語音回應活動 (若已設定的話)。 此應用程式是使用語音 SDK Maven 套件，以及Windows、Linux 或 macOS 上的 Eclipse Java IDE 來建置。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本快速入門需要：
 
-- 作業系統：Windows (64 位元)、Ubuntu Linux 16.04/18.04 (64 位元) 或 macOS 10.13 或更新版本。
+- 作業系統：Windows (64 位元)、Ubuntu Linux 16.04/18.04 (64 位元)、RHEL/CentOS 8 (64 位元) 或 macOS 10.13 或更新版本。
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰](get-started.md)或 [Azure 入口網站](https://portal.azure.com)上建立金鑰。
@@ -42,6 +42,17 @@ ms.locfileid: "77119694"
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 如果您執行 Windows (64 位元)，請確定您已為平台安裝 Microsoft Visual C++ 可轉散發套件：
 

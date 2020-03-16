@@ -4,15 +4,15 @@ description: 本文提供 Azure Web 應用程式防火牆 (WAF) 的概觀
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488284"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851179"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>什麼是 Azure Web 應用程式防火牆？
 
@@ -24,7 +24,11 @@ Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於�
 
 相較於保護每個個別的 Web 應用程式，WAF 解決方案可透過集中修補已知弱點，更快地因應安全性威脅。
 
-您可以使用 Azure 應用程式閘道和 Azure Front Door Service 來部署 WAF。 目前，WAF 有適用於每個特定服務自訂的功能。 如需每個服務 WAF 功能的詳細資訊，請參閱每個服務的概觀。
+## <a name="supported-services"></a>支援的服務
+
+您可以使用 [Azure 應用程式閘道](../application-gateway/overview.md)和 [Azure Front Door Service](../frontdoor/front-door-overview.md) 來部署 WAF。 這兩種服務都是第 7 層 (HTTP/S) 負載平衡器，但應用程式閘道是區域服務，而 Front Door 則是全域服務。 WAF 有適用於每個特定服務自訂的功能。
+
+如需詳細資訊，請參閱每個服務的 WAF 概觀。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,20 +1,15 @@
 ---
 title: 快速入門 - 將 Docker 容器部署至容器執行個體 - 入口網站
 description: 在本快速入門中，您可以使用 Azure 入口網站快速地部署在隔離式 Azure 容器執行個體中執行的容器化的 Web 應用程式
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533518"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087990"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署容器執行個體
 
@@ -40,15 +35,16 @@ ms.locfileid: "74533518"
 
 * 資源群組：**新建** > `myresourcegroup`
 * 容器名稱：`mycontainer`
-* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld`
+* 映像來源：**快速入門映像**
+* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![在 Azure 入口網站中設定新容器執行個體的基本設定][aci-portal-03]
 
-在本快速入門中，使用預設的 [公用]  [映像類型]  設定來部署公用 Microsoft `aci-helloworld` 映像。 此 Linux 映像會封裝以 Node.js 撰寫並提供靜態 HTML 網頁的小型 Web 應用程式。
+在本快速入門中，您會使用預設設定部署公用 Microsoft `aci-helloworld` 映像。 此範例 Linux 映像會封裝以 Node.js 撰寫並提供靜態 HTML 網頁的小型 Web 應用程式。 您也可以使用儲存在 Azure Container Registry、Docker Hub 或其他登錄中自己的容器映像。
 
 在 [網路]  頁面上，為您的容器指定 [DNS 名稱標籤]  。 這在您建立容器執行個體所在的 Azure 區域中，必須是唯一的名稱。 您的容器將可在 `<dns-name-label>.<region>.azurecontainer.io` 讓他人公開存取。 如果出現「DNS 名稱標籤無法使用」錯誤訊息，請嘗試使用不同的 DNS 名稱標籤。
 
-![在 Azure 入口網站中設定新的容器執行個體][aci-portal-04]
+![在 Azure 入口網站中設定新容器執行個體的網路設定][aci-portal-04]
 
 將其他設定保留預設值，然後選取 [檢閱 + 建立]  。
 

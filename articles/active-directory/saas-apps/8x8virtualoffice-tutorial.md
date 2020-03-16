@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562307"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 8x8 整合
 
@@ -30,7 +30,7 @@ ms.locfileid: "77562307"
 * 讓使用者使用其 Azure AD 帳戶自動登入 8x8。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -86,20 +86,9 @@ ms.locfileid: "77562307"
 
 1. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
-    a. 在 [識別碼]  文字方塊中，使用下列其中一種模式來輸入 URL：
+    a. 在 [識別碼]  文字方塊中，鍵入 URL：`https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. 在 [回覆 URL]  文字方塊中，以下列其中一個模式輸入 URL：
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://sso.8x8.com/saml2`
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。 在本教學課程中，您稍後會在 [設定 8x8 SSO]  區段中用到此憑證。
 
@@ -151,9 +140,15 @@ ms.locfileid: "77562307"
 
 1. 從首頁按一下 [身分識別管理]  。
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. 核取 [單一登入 (SSO)]  ，然後選取 [Microsoft Azure AD]  。
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. 將 Azure AD 中 [設定使用 SAML 的單一登入]  頁面內的三個 URL 和簽署憑證，複製到 8x8 Configuration Manager 中的 [Microsoft Azure AD SAML 設定]  區段。
+
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. 將 [登入 URL]  複製到 [IDP 登入 URL]  。
 
@@ -171,15 +166,27 @@ ms.locfileid: "77562307"
 
 1. 在 [應用程式面板] 上選取 [Virtual Office 帳戶管理員]  。
 
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. 選取 [商務]  帳戶以進行管理，並按一下 [登入]  按鈕。
+
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. 按一下功能表清單中的 [帳戶]  索引標籤。
 
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. 按一下 [帳戶] 清單中的 [單一登入]  。
+
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. 選取 [驗證方法] 底下的 [單一登入]  ，然後按一下 [SAML]  。
 
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. 在 [SAML 單一登入]  區段中，執行下列步驟：
+
+    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
@@ -205,7 +212,7 @@ ms.locfileid: "77562307"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

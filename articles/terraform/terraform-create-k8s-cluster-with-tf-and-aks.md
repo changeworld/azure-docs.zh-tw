@@ -1,14 +1,15 @@
 ---
 title: 教學課程 - 使用 Azure Kubernetes Service (AKS) 和 Terraform 建立 Kubernetes 叢集
-description: 教學課程說明如何以 Azure Kubernetes Service 和 Terraform 建立 Kubernetes 叢集
+description: 在本教學課程中，您會以 Azure Kubernetes Service 和 Terraform 建立 Kubernetes 叢集
+keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472242"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945300"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教學課程：使用 Azure Kubernetes Service 和 Terraform 建立 Kubernetes 叢集
 
@@ -71,7 +72,10 @@ ms.locfileid: "77472242"
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {
@@ -166,7 +170,7 @@ ms.locfileid: "77472242"
 
     `linux_profile` 記錄可讓您設定使用 SSH 登入背景工作角色節點的設定。
 
-    透過 AKS，您只需要為背景工作角色節點付費。 `default_node_pool` 記錄可設定這些背景工作角色節點的詳細資料。 `default_node_pool record` 涵蓋要建立的背景工作角色節點數量，以及背景工作角色節點的類型。 若您日後需要相應增加或相應減少叢集，可修改此記錄中的 `count` 值。
+    透過 AKS，您只需要為背景工作角色節點付費。 `default_node_pool` 記錄可設定這些背景工作角色節點的詳細資料。 `default_node_pool record` 涵蓋要建立的背景工作角色節點數量，以及背景工作角色節點的類型。 若您日後需要擴大或縮小叢集，可修改此記錄中的 `count` 值。
 
 1. 儲存檔案 ( **&lt;Ctrl>S**) 並結束編輯器 ( **&lt;Ctrl>Q**)。
 

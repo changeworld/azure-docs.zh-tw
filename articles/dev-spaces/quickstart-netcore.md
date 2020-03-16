@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f3e91ec11e054e0a069eb97a3700b051476be0a1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6593cc3d5926fae05b2afd1e926552a2996ae885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251993"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943713"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -30,7 +30,7 @@ Azure Dev Spaces 也可讓您使用下列工具進行偵錯和逐一查看：
 
 - Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 - [已安裝 Visual Studio Code](https://code.visualstudio.com/download)。
-- 已安裝適用於 Visual Studio Code 的 [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 擴充功能。
+- 已安裝適用於 Visual Studio Code 的 [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 擴充功能。
 - [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>建立 Azure Kubernetes Service 叢集
@@ -110,6 +110,9 @@ git clone https://github.com/Azure/dev-spaces
 > 如果您未在 [命令選擇區]  中看到任何 Azure Dev Spaces 命令，請確定您已安裝[適用於 Azure Dev Spaces 的 Visual Studio Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 也請確認您已在 Visual Studio Code 中開啟 dev-spaces/samples/dotnetcore/getting-started/webfrontend  目錄。
 
 您可以開啟公用 URL，查看執行的服務。
+
+> [!Note]
+> 一開始，公用 URL 可能會顯示「不正確的閘道」  錯誤。 請稍候幾秒，再重新整理網頁，您應該會看到服務正在執行。
 
 依序按一下 [偵錯]  和 [停止偵錯]  來停止偵錯工具。
 

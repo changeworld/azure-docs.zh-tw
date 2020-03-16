@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432189"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898745"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教學課程 3：部署信用風險模型 - Azure Machine Learning Studio (傳統)
 
@@ -227,11 +227,7 @@ Machine Learning Studio (傳統) 已在移除[分割][split]模組時移除一�
 * **要求/回應** - 使用者以 HTTP 通訊協定，將一或多列的信用資料傳送給服務，然後服務回應一或多組結果。
 * **批次執行** - 使用者在 Azure Blob 中儲存一或多列信用資料，然後將 Blob 位置傳送給服務。 服務會給輸入 Blob 中的所有資料列評分，將結果儲存在另一個 Blob 中，再傳回該容器的 URL。  
 
-存取傳統 Web 服務最簡單快速的方式，是透過 [Azure ML 要求-回應服務 Web 應用程式 (英文)](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) 或 [Azure ML 批次執行服務 Web 應用程式範本 (英文)](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)。
-
-這些 Web 應用程式範本可以建立自訂的 Web 應用程式，該應用程式知道您的 Web 服務輸入資料和將傳回的內容。 您所需要做的就是提供 Web 服務和資料的存取權限，範本會執行其餘部分。
-
-如需使用 Web 應用程式範本的詳細資訊，請參閱[使用 Azure Machine Learning Web 服務與 Web 應用程式範本](/azure/machine-learning/studio/consume-web-services)。
+如需存取和使用 Web 服務的詳細資訊，請參閱[使用 Azure Machine Learning Web 服務與 Web 應用程式範本](/azure/machine-learning/studio/consume-web-services)。
 
 
 

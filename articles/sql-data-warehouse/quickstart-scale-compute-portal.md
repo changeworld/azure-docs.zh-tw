@@ -1,6 +1,6 @@
 ---
-title: '快速入門：調整計算 - Azure 入口網站 '
-description: 在 Azure 入口網站中調整 SQL 集區中的計算。 相應放大計算以提升效能，或將計算調整回來以節省成本。
+title: 調整 Synapse SQL 集區的計算 (Azure 入口網站)
+description: 您可以使用 Azure 入口網站來調整 Synapse SQL 集區 (資料倉儲) 的計算。
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200328"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130269"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中調整 Azure Synapse Analytics SQL 集區中的計算
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站調整 Synapse SQL 集區的計算
 
-在 Azure 入口網站中調整 SQL 集區中的計算。 [相應放大計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。 
+您可以使用 Azure 入口網站來調整 Synapse SQL 集區 (資料倉儲) 的計算。 [擴增計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -30,9 +30,9 @@ ms.locfileid: "78200328"
 
 ## <a name="before-you-begin"></a>開始之前
 
-您可以調整您已有的 SQL 集區，也可以使用[快速入門：建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的 SQL 集區。  本快速入門會調整 **mySampleDataWarehouse**。
+您可以調整您已有的 SQL 集區，也可以使用[快速入門：建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的 SQL 集區。 本快速入門會調整 **mySampleDataWarehouse**。
 
->[!Note]
+>[!IMPORTANT] 
 >您的 SQL 集區必須在線上才能進行調整。 
 
 ## <a name="scale-compute"></a>調整計算
@@ -52,7 +52,4 @@ ms.locfileid: "78200328"
     ![移動滑桿](media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>後續步驟
-您現在已了解如何調整 SQL 集區的計算。 若要深入了解 SQL 集區，請繼續進行載入資料的教學課程。
-
-> [!div class="nextstepaction"]
->[將資料載入至 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)
+若要深入了解 SQL 集區，請繼續[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)的教學課程。 

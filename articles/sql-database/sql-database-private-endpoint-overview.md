@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121075"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945378"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>適用於 Azure SQL Database 和資料倉儲的 Private Link (預覽)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>適用於 Azure SQL Database 和資料倉儲的 Private Link
 
 Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../private-link/index.yml)頁面。 私人端點是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子網內的私人 IP 位址。 
 
@@ -145,7 +145,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 檢查連線能力
 > [!NOTE]
->在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** 。 根據設計，任何直接對 IP 位址進行的登入嘗試都會失敗。
+> 在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** 。 任何直接對 IP 位址進行的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定 FQDN，登入才會成功。
 
 請遵循此處的步驟來使用 [SSMS 連線到 SQL Database](sql-database-connect-query-ssms.md)。 使用 SSMS 連線到 SQL Database 之後，請執行下列查詢，以確認您可以從 Azure VM 的私人 IP 位址進行連線：
 
@@ -153,8 +153,9 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> 在預覽中，私人端點的連線僅支援 **Proxy** 作為[連線原則](sql-database-connectivity-architecture.md#connection-policy)
+
+## <a name="limitations"></a>限制 
+私人端點的連線僅支援 **Proxy** 作為[連線原則](sql-database-connectivity-architecture.md#connection-policy)
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>從對等互連虛擬網路 (VNet) 中的 Azure VM 進行連線 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701173"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129892"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
 
@@ -32,6 +32,9 @@ ms.locfileid: "76701173"
 
 >[!NOTE]
 > 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)。
+
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，建議您從[從通用 Windows 平台 (UWP) 應用程式快速入門呼叫 Microsoft Graph API](quickstart-v2-uwp.md) 開始了解。
 
 ## <a name="how-this-guide-works"></a>本指南使用方式
 

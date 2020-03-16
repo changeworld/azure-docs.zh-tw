@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 3ad011529f8b4be90fc0c108a2049c30d1c69302
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500083"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897322"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "77500083"
 若要完成本教學課程：
 
 * [安裝 Git](https://git-scm.com/)
-* [安裝 .NET Core](https://www.microsoft.com/net/core/)
+* [安裝 .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>建立本機 .NET Core 應用程式
 
@@ -216,7 +216,7 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 `Database.Migrate()` 呼叫可在於 Azure 中執行時協助您，因為它會根據其移轉設定，自動建立您的 .NET Core 應用程式需要的資料庫。 
 
 > [!IMPORTANT]
-> 對於需要相應放大的生產應用程式，請遵循[在生產環境中套用移轉](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
+> 對於需要擴增的生產應用程式，請遵循[在生產環境中套用移轉](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
 > 
 
 儲存變更，然後將變更認可至 Git 存放庫中。 

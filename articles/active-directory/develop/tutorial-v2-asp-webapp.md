@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701325"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126636"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -30,6 +30,9 @@ ms.locfileid: "76701325"
 當您完成此指南時，您的應用程式就能夠接受來自 outlook.com 和 live.com 等個人帳戶的登入。 此外，與 Microsoft 身分識別平台整合的任何公司或組織中的公司和學校帳戶也可以登入您的應用程式。
 
 > 此指南需要 Microsoft Visual Studio 2019。  沒有嗎？  [免費下載 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，建議您從[將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)開始了解。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 

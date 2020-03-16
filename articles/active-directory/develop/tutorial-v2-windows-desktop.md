@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1864b4867b8e1367a2397c5ed2ed9a77001dadb4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701190"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129918"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
@@ -30,6 +30,9 @@ ms.locfileid: "76701190"
 
 > [!NOTE]
 > 本指南需要 Visual Studio 2015 Update 3、Visual Studio 2017 或 Visual Studio 2019。 沒有上述任一版本嗎？ [免費下載 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，建議您從[從 Windows 桌面應用程式取得權杖並呼叫 Microsoft Graph API](quickstart-v2-windows-desktop.md) 開始了解。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 

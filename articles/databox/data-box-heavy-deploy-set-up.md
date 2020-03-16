@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514420"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117246"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ ms.locfileid: "76514420"
 
 在裝置的其中一個節點上，執行下列步驟來連接網路纜線。
 
-1. 使用 CAT 6 RJ-45 網路纜線 (圖片中的藍色纜線)，將主機電腦連接到 1 Gbps 的管理連接埠。
+1. 使用 CAT 6 RJ-45 網路纜線 (圖片中右上的已連結的纜線，用來插入標記的 MGMT)，將主機電腦連線到 1-Gbps 的管理連接埠。
 2. 針對資料使用 QSFP+ 纜線 (Fiber 或銅纜線) 連接至少一個 40 Gbps (最好超過 1 Gbps) 網路介面。 如果使用 10-Gbps 交換器，應使用 SFP + 纜線和 QSFP+ 對 SFP+ 配接器 (QSA 配接器) 連接 40-Gbps 的網路介面來傳輸資料。
 
     ![已連接纜線的 Data Box Heavy 連接埠](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122831"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037355"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "76122831"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 如需引導式快速入門，但您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請先完成[設定教學課程](tutorial-1st-experiment-sdk-setup.md)。 
 
@@ -85,7 +85,7 @@ def_data_store = ws.get_default_datastore()
 - 包含標籤的目錄。
 - 用於輸出的目錄。
 
-`Dataset` 類別可用來在 Azure Machine Learning 中探索、轉換和管理資料。 此類別有兩種類型：`TabularDataset` 和 `FileDataset`。 在此範例中，您將使用 `FileDataset` 作為批次推斷管線步驟的輸入。 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) 類別可用來在 Azure Machine Learning 中探索、轉換和管理資料。 此類別有兩種類型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此範例中，您將使用 `FileDataset` 作為批次推斷管線步驟的輸入。 
 
 > [!NOTE] 
 > 批次推斷中的 `FileDataset` 支援目前僅限於 Azure Blob 儲存體。 
@@ -94,7 +94,7 @@ def_data_store = ws.get_default_datastore()
 
 如需 Azure Machine Learning 資料集的詳細資訊，請參閱[建立和存取資料集 (預覽)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
 
-`PipelineData` 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -190,7 +190,7 @@ model = Model.register(model_path="models/",
 - `init()`:請將此函式用於高成本或一般的準備，以進行後續的推斷。 例如，使用此函式將模型載入至全域物件。 此函式只會在程序開始時呼叫一次。
 -  `run(mini_batch)`:此函式會針對每個 `mini_batch` 執行個體來執行。
     -  `mini_batch`:ParallelRunStep 會叫用 run 方法，並將 list 或 Pandas 資料框架作為引數傳遞給方法。 min_batch 中的每個項目會是檔案路徑 (如果輸入是 FileDataset) 或 Pandas 資料框架 (如果輸入是 TabularDataset)。
-    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 使用者應確保執行結果中有足夠的資料可將輸入對應至執行結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以使用者應該在輸出中使用某個索引鍵以將其對應至輸入。
+    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 您應確保執行結果中有足夠的資料可將輸入對應至執行結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以您應該在輸出中使用某個索引鍵以將其對應至輸入。
 
 ```python
 # Snippets from a sample script.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>執行管道
 
-現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 `Pipeline` 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次評分只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
+現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次評分只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
 
 接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。
 

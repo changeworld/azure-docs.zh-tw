@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 12/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383110"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943108"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教學課程：建立單頁 Web 應用程式
 
@@ -39,6 +39,12 @@ Bing 新聞搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 > * 處理可能會發生的錯誤
 
 本教學課程頁完全獨立，不會使用任何外部架構、樣式表或影像檔。 它使用唯一且廣泛支援的 JavaScript 語言功能，適用於所有主要網頁瀏覽器的目前版本。
+
+
+## <a name="prerequisites"></a>Prerequisites
+
+若要依照本教學課程，您需要 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有此金鑰，可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+
 
 ## <a name="app-components"></a>應用程式元件
 如同任何單頁 Web 應用程式，本教學課程應用程式包含三個部分：

@@ -6,50 +6,53 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c3fac7aecaf37b5822ad6e8c655867f6f2c683c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872701"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399566"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入門：透過 Azure PowerShell 使用 Azure 應用程式閘道引導網路流量
 
-本快速入門說明如何使用 Azure PowerShell 快速建立應用程式閘道。  建立應用程式閘道之後，您要加以測試，確定它可正常運作。 您會使用 Azure 應用程式閘道，將接聽程式指派給連接埠、建立規則，以及將資源新增至後端集區，來將應用程式網路流量導向至特定資源。 為了簡單起見，本文使用簡單的設定，包括公用前端 IP、在此應用程式閘道上裝載單一網站的基本接聽程式、用於後端集區的兩部虛擬機器，以及基本的要求路由規則。
+在本快速入門中，您會使用 Azure PowerShell 來建立應用程式閘道。 然後，您會進行測試以確定能正常運作。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+應用程式閘道會將應用程式 Web 流量導向至後端集區中的特定資源。 您可以將接聽程式指派給連接埠、建立規則，並將資源新增至後端集區。 為了簡單起見，本文使用簡單的設定，包括公用前端 IP、在此應用程式閘道上裝載單一網站的基本接聽程式、基本的要求路由規則，以及後端集區中的兩部虛擬機器。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+您也可以使用 [Azure CLI](quick-create-cli.md) 或 [Azure 入口網站](quick-create-portal.md)完成本快速入門。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="azure-powershell-module"></a>Azure PowerShell 模組
+## <a name="prerequisites"></a>Prerequisites
 
-如果您選擇在本機安裝和使用 Azure PowerShell，在執行本教學課程時，您必須使用 Azure PowerShell 模組 1.0.0 版或更新版本。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Azure PowerShell 1.0.0 版或更新版本](/powershell/azure/install-az-ps) (如果您在本機執行 Azure PowerShell)。
 
-1. 若要尋找版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 
-2. 若要建立與 Azure 的連線，請執行 `Login-AzAccount`。
+## <a name="connect-to-azure"></a>連線到 Azure
 
-### <a name="resource-group"></a>資源群組
+若要與 Azure 連線，請執行 `Connect-AzAccount`。
 
-在 Azure 中，您可以將相關資源配置到資源群組。 您可以使用現有的資源群組，或建立一個新的群組。 在此範例中，您將使用 [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) Cmdlet 建立新的資源群組，如下所示： 
+## <a name="create-a-resource-group"></a>建立資源群組
+
+在 Azure 中，您可以將相關資源配置到資源群組。 您可以使用現有的資源群組，或建立一個新的群組。
+
+使用 `New-AzResourceGroup` Cmdlet 建立新的資源群組： 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
-
-### <a name="required-network-resources"></a>必要的網路資源
+## <a name="create-network-resources"></a>建立網路資源
 
 Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。  應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。  您可以為應用程式閘道建立新的子網路，或使用現有的子網路。 在此範例中您會建立兩個子網路：一個用於應用程式閘道，另一個用於後端伺服器。 您可以根據自己的使用案例，將應用程式閘道的前端 IP 設定為「公用」或「私人」。 在此範例中，您會選擇公用前端 IP。
 
-1. 呼叫 [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig) 以建立子網路組態。
-2. 呼叫 [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork) 以使用子網路組態建立虛擬網路。 
-3. 呼叫 [New-AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress) 以建立公用 IP 位址。 
+1. 使用 `New-AzVirtualNetworkSubnetConfig` 建立子網路組態。
+2. 使用 `New-AzVirtualNetwork` 以子網路組態建立虛擬網路。 
+3. 使用 `New-AzPublicIpAddress` 建立公用 IP 位址。 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -75,9 +78,9 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
-1. 使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration)，建立讓您先前建立的子網路與應用程式閘道產生關聯的組態。 
-2. 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig)，建立會將您先前建立的公用 IP 位址指派給應用程式閘道的組態。 
-3. 使用 [New-AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport) 指派連接埠 80，用以存取應用程式閘道。
+1. 使用 `New-AzApplicationGatewayIPConfiguration`，建立讓您先前建立的子網路與應用程式閘道產生關聯的組態。 
+2. 使用 `New-AzApplicationGatewayFrontendIPConfig`，建立會將您先前建立的公用 IP 位址指派給應用程式閘道的組態。 
+3. 使用 `New-AzApplicationGatewayFrontendPort` 指派連接埠 80 來存取應用程式閘道。
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -96,8 +99,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>建立後端集區
 
-1. 使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) 建立應用程式閘道的後端集區。 現在，後端集區是空的，當您在下一節中建立後端伺服器 NIC 時，您會將其新增至後端集區。
-2. 使用 [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting) 設定後端集區的設定。
+1. 使用 `New-AzApplicationGatewayBackendAddressPool` 來建立應用程式閘道的後端集區。 現在，後端集區是空的，當您在下一節中建立後端伺服器 NIC 時，您會將其新增至後端集區。
+2. 使用 `New-AzApplicationGatewayBackendHttpSetting` 設定後端集區的各項設定。
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -116,8 +119,8 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 Azure 需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 Azure 也需要接聽程式的規則，以得知要對傳入的流量使用哪個後端集區。 
 
-1. 使用 [New-AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) 以及您先前建立的前端設定和前端連接埠，來建立接聽程式。 
-2. 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule) 建立名為 rule1  的規則。 
+1. 使用 `New-AzApplicationGatewayHttpListener` 以及您先前建立的前端設定和前端連接埠，來建立接聽程式。 
+2. 使用 `New-AzApplicationGatewayRequestRoutingRule` 建立名為 *rule1* 的規則。 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -137,8 +140,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 您已建立必要的支援資源，接著請建立應用程式閘道：
 
-1. 使用 [New-AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) 指定應用程式閘道的參數。
-2. 使用 [New-AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) 建立應用程式閘道。
+1. 使用 `New-AzApplicationGatewaySku` 指定應用程式閘道的參數。
+2. 使用 `New-AzApplicationGateway` 建立應用程式閘道。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -165,12 +168,12 @@ New-AzApplicationGateway `
 
 #### <a name="create-two-virtual-machines"></a>建立兩部虛擬機器
 
-1. 使用 [Get-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/get-Azapplicationgatewaybackendaddresspool) 取得最近建立的應用程式閘道後端集區設定
-2. 使用 [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface) 建立網路介面。 
-3. 使用 [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig) 建立虛擬機器設定。
-4. 使用 [New-AzVM](/powershell/module/Az.compute/new-Azvm) 來建立虛擬機器。
+1. 使用 `Get-AzApplicationGatewayBackendAddressPool` 取得最近建立的應用程式閘道後端集區設定。
+2. 使用 `New-AzNetworkInterface` 建立網路介面。
+3. 使用 `New-AzVMConfig` 建立虛擬機器組態。
+4. 使用 `New-AzVM` 建立虛擬機器。
 
-當您執行下列程式碼範例以建立虛擬機器時，Azure 會提示您輸入認證。 輸入「azureuser」  作為使用者名稱，並且輸入「Azure123456!」  作為密碼：
+當您執行下列程式碼範例以建立虛擬機器時，Azure 會提示您輸入認證。 輸入「azureuser」  作為使用者名稱，並且輸入密碼：
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -223,7 +226,7 @@ for ($i=1; $i -le 2; $i++)
 
 雖然不需要 IIS 即可建立應用程式閘道，但您仍會在本快速入門中加以安裝，以確認 Azure 是否已成功建立應用程式閘道。 使用 IIS 測試應用程式閘道：
 
-1. 執行 [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) 以取得應用程式閘道的公用 IP 位址。 
+1. 執行 `Get-AzPublicIPAddress` 以取得應用程式閘道的公用 IP 位址。 
 2. 將公用 IP 位址複製並貼到瀏覽器的網址列中。 當您重新整理瀏覽器時，應該會看到虛擬機器的名稱。 有效的回應會確認應用程式閘道已成功建立，並可與後端順利連線。
 
 ```azurepowershell-interactive
@@ -235,9 +238,9 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要先前為應用程式閘道建立的資源時，請移除資源群組。 藉由移除資源群組，您也可以移除應用程式閘道及其所有相關資源。 
+當您不再需要先前為應用程式閘道建立的資源時，請刪除資源群組。 當您刪除資源群組時，也可以刪除應用程式閘道及其所有相關資源。 
 
-若要移除資源群組，請呼叫 [Remove-AzResourceGroup](/powershell/module/Az.resources/remove-Azresourcegroup) Cmdlet，如下所示：
+呼叫 `Remove-AzResourceGroup` Cmdlet 以刪除資源群組：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7886c863dd50fd3f09d782f892bdebabceb73546
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b878c9e26a1f1f0e1e71e79d8f52b81f12924ef3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160090"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968399"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>教學課程：整合 Qlik Sense Enterprise 與 Azure Active Directory
 
@@ -31,9 +30,9 @@ ms.locfileid: "73160090"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Qlik Sense Enterprise。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -42,7 +41,11 @@ ms.locfileid: "73160090"
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 Qlik Sense Enterprise 支援由 **SP** 起始的 SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 
+* Qlik Sense Enterprise 支援由 **SP** 起始的 SSO。
+* Qlik Sense Enterprise 支援 **Just-in-Time 佈建**
+
+* 設定 Qlik Sense Enterprise 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>從資源庫新增 Qlik Sense Enterprise
 
@@ -62,11 +65,11 @@ ms.locfileid: "73160090"
 若要設定及測試與 Qlik Sense Enterprise 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
-2. **[設定 Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** - 在應用程式端設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 Qlik Sense Enterprise 測試使用者](#create-qlik-sense-enterprise-test-user)** - 使 Qlik Sense Enterprise 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-6. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
+    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
+    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
+1. **[設定 Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** - 在應用程式端設定單一登入設定。
+    * **[建立 Qlik Sense Enterprise 測試使用者](#create-qlik-sense-enterprise-test-user)** - 使 Qlik Sense Enterprise 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
@@ -82,7 +85,7 @@ ms.locfileid: "73160090"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL︰ `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
-    b. 在 [識別碼]  文字方塊中，使用下列模式輸入 URL：
+    b. 在 [識別碼]  文字方塊中，使用下列其中一種模式來輸入 URL：
 
     | |
     |--|
@@ -101,7 +104,37 @@ ms.locfileid: "73160090"
 
     ![憑證下載連結](common/metadataxml.png)
 
-### <a name="configure-qlik-sense-enterprise-sso"></a>設定 Qlik Sense Enterprise SSO
+### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
+
+在本節中，您會在 Azure 入口網站中建立名稱為 Britta Simon 的測試使用者。
+
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `Britta Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `BrittaSimon@contoso.com` 。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+   1. 按一下頁面底部的 [新增]  。
+
+### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
+
+在本節中，您會將 Qlik Sense Enterprise 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [Qlik Sense Enterprise]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+
+   ![[使用者和群組] 連結](common/users-groups-blade.png)
+
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+
+    ![[新增使用者] 連結](common/add-assign-user.png)
+
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+
+## <a name="configure-qlik-sense-enterprise-sso"></a>設定 Qlik Sense Enterprise SSO
 
 1. 準備同盟中繼資料 XML 檔案，以便將該檔案上傳至 Qlik Sense 伺服器。
 
@@ -142,7 +175,7 @@ ms.locfileid: "73160090"
 
     c. [工作階段閒置逾時 (分鐘)]  是指透過此虛擬 Proxy 連接的逾時值。
 
-    d. [工作階段 cookie 標頭名稱]  是 cookie 名稱，用於儲存使用者在成功驗證後收到的 Qlik Sense 工作階段識別碼。  此名稱必須是唯一的。
+    d. [工作階段 cookie 標頭名稱]  是 cookie 名稱，用於儲存使用者在成功驗證後收到的 Qlik Sense 工作階段識別碼。  這個名稱必須是唯一的。
 
 7. 按一下 [驗證] 功能表選項，讓它立即可見。  [驗證] 畫面隨即出現。
 
@@ -218,39 +251,9 @@ ms.locfileid: "73160090"
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
-
-在本節中，您會在 Azure 入口網站中建立名稱為 Britta Simon 的測試使用者。
-
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `Britta Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `BrittaSimon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
-
-### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
-
-在本節中，您會將 Qlik Sense Enterprise 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
-
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Qlik Sense Enterprise]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
-
 ### <a name="create-qlik-sense-enterprise-test-user"></a>建立 Qlik Sense Enterprise 測試使用者
 
-在本節中，您要在 Qlik Sense Enterprise 中建立名為 Britta Simon 的使用者。 請與  [Qlik Sense Enterprise 支援小組](https://www.qlik.com/us/services/support)合作，在 JQlik Sense Enterprise 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+Qlik Sense Enterprise 支援 **Just-in-Time 佈建**，使用者會在使用 SSO 功能時自動新增至 Qlik Sense Enterprise 的「使用者」存放庫。 此外，用戶端可以使用 QMC 並建立 UDC (使用者目錄連接器)，從其選擇的 LDAP (例如 Active Directory 和其他) 預先填入 Qlik Sense Enterprise 中的使用者。
 
 ### <a name="test-sso"></a>測試 SSO
 
@@ -260,9 +263,11 @@ ms.locfileid: "73160090"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

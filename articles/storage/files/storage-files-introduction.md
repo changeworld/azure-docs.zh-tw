@@ -4,15 +4,15 @@ description: Azure 檔案服務的概觀，此服務可讓您使用業界標準 
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 07/19/2018
+ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d19f5b3f291f69e7b6f765dcee230345421d1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431792"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969139"
 ---
 # <a name="what-is-azure-files"></a>什麼是 Azure 檔案服務？
 Azure 檔案提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)存取。 Windows、Linux 和 macOS 的雲端部署或內部部署可同時掛接 Azure 檔案共用。 此外，透過 Azure 檔案同步可以在 Windows Server 上快取 Azure 檔案共用，以便在資料的使用位置附近快速存取。
@@ -26,7 +26,7 @@ Azure 檔案提供雲端中完全受控的檔案共用，可透過業界標準[�
 Azure 檔案共用可以用來：
 
 * **取代或補充內部部署檔案伺服器**：  
-    Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服器或 NAS 裝置。 無論身在何處，熱門作業系統 (例如 Windows、macOS 和 Linux) 都可以直接掛接 Azure 檔案共用。 透過 Azure 檔案同步，也可以將 Azure 檔案共用複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。
+    Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服器或 NAS 裝置。 無論身在何處，熱門作業系統 (例如 Windows、macOS 和 Linux) 都可以直接掛接 Azure 檔案共用。 透過 Azure 檔案同步，也可以將 Azure 檔案共用複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。 使用最新版本的 [Azure 檔案儲存體 AD 驗證](storage-files-active-directory-overview.md)，Azure 檔案共用可以繼續使用已裝載 AD 的內部部署進行存取控制。 
 
 * **「原形移轉」應用程式**：  
     Azure 檔案服務可讓您輕易將預期檔案共用會儲存檔案應用程式或使用者資料的應用程式「原形移轉」到雲端。 Azure 檔案服務可支援「傳統」原形移轉案例 (其中的應用程式及其資料會移至 Azure)，和「混合式」原形移轉案例 (其中的應用程式資料會移至 Azure 檔案服務，而應用程式會繼續在內部部署環境執行)。 

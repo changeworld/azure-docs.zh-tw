@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073474"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898906"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Windows 虛擬機器
 
@@ -46,16 +46,15 @@ az group create --name myResourceGroup --location eastus
 
 使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會建立名為 myVM  的 VM。 此範例會以 azureuser  作為系統管理使用者名稱。 
 
-您必須變更 `--admin-password` 的值，否則其會失敗。 將其變更為符合 [Azure VM 密碼需求](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)的密碼。 使用者名稱和密碼會於稍候您連線至 VM 時用到。
+您必須提供符合 [Azure VM 密碼需求](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)的密碼。 使用下列範例時，系統會提示您在命令列中輸入密碼。 您也可以使用您的密碼值來新增 `--admin-password` 參數。 使用者名稱和密碼會於稍候您連線至 VM 時用到。
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 建立虛擬機器和支援資源需要幾分鐘的時間。 下列範例輸出顯示 VM 建立作業成功。

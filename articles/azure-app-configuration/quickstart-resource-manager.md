@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274507"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126375"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>快速入門：使用應用程式組態進行自動化 VM 部署
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署
 
 使用 Azure PowerShell 模組，即可利用 PowerShell Cmdlet 或指令碼建立和管理 Azure 資源。 本快速入門說明如何使用 Azure PowerShell 和 Azure Resource Manager 範本來部署 Azure 應用程式組態存放區。 然後，您會了解如何使用存放區中的索引鍵/值來部署 VM。
 
 您可以使用必要條件範本來建立應用程式組態存放區，然後使用 Azure 入口網站或 Azure CLI，將索引鍵/值新增至存放區。 主要範本會參考現有組態存放區中的現有索引鍵/值組態。 所擷取的值可用來設定範本所建立資源的屬性，例如此範例中的 VM。
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -85,7 +89,7 @@ New-AzResourceGroup `
       },
       "skuName": {
         "type": "string",
-        "defaultValue": "free",
+        "defaultValue": "standard",
         "metadata": {
           "description": "Specifies the SKU of the app configuration store."
         }
@@ -332,7 +336,7 @@ New-AzResourceGroup `
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('windowsOSVersionParameters')).value]",
+                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -340,7 +344,7 @@ New-AzResourceGroup `
                     },
                     "dataDisks": [
                         {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('diskSizeGBParameters')).value]",
+                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
                             "lun": 0,
                             "createOption": "Empty"
                         }

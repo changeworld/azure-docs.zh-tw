@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252207"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096693"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. 按一下[**應用程式註冊**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. 按一下 [新增註冊] 
  5. 輸入 `<resourceGroupName>-app` 之類的 [名稱]  ，然後選取 [僅限此組織目錄中的帳戶] 
- 6. 選取應用程式類型 [Web]  ，輸入登入 URL (例如 http://localhost) ，然後按一下 [新增]。 登入 URL 並未使用，而且可以是任何有效的 URL
- 7. 選取 [憑證和秘密]  ，然後按一下 [新增用戶端密碼] 
+ 6. 選取應用程式類型 [Web]  ，輸入登入 URL (例如 http://localhost) ，然後按一下 [新增]。 登入 URL 並未使用，而且可以是任何有效的 URL。 完成後，按一下 [註冊] 
+ 7. 選取新應用程式註冊的 [憑證和祕密]  ，然後按一下 [新增用戶端密碼] 
  8. 輸入新金鑰 (用戶端密碼) 的說明、選取 [永不過期]  ，然後按一下 [新增] 
  9. 記下秘密的值。 此值用來作為服務主體的密碼
 10. 選取 [概觀]  。 記下應用程式識別碼。 此識別碼會作為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
@@ -569,12 +569,14 @@ sudo systemctl restart mssql-server
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 執行 `exit` 命令以結束 SQL CMD 工作階段，然後回到您的 SSH 工作階段。
@@ -623,6 +625,7 @@ BACKUP CERTIFICATE dbm_certificate
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>在所有複本上建立資料庫鏡像端點
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>建立可用性群組。
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>為 Pacemaker 建立 SQL Server 登入
@@ -688,9 +693,12 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 在所有 SQL Server 上，儲存用於 SQL Server 登入的認證。 
@@ -733,6 +741,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. 在主要複本和每個次要複本上，執行下列 Transact-SQL 指令碼：
@@ -742,6 +751,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. 聯結次要複本後，您可以在 SSMS 物件總管中加以檢視，方法是展開 **Always On 高可用性**節點：
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>確認已在次要伺服器上建立資料庫
@@ -805,7 +816,6 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>建立虛擬 IP 資源
@@ -946,7 +956,6 @@ Daemon Status:
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>測試隔離
@@ -975,7 +984,7 @@ Node: <VM3> fenced
 
 ## <a name="next-steps"></a>後續步驟
 
-若要將可用性群組接聽程式用於您在 Azure 中建立的 SQL Server，您必須先建立並設定負載平衡器。
+若要將可用性群組接聽程式用於 SQL Server，您必須建立並設定負載平衡器。
 
 > [!div class="nextstepaction"]
-> [在 Azure 入口網站中建立及設定負載平衡器](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式](sql-server-linux-rhel-ha-listener-tutorial.md)

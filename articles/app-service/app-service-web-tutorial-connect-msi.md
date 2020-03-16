@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524371"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897667"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -127,6 +127,9 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 
 - 尋找名為 `MyDbConnection` 的連接字串，並將其 `connectionString` 值取代為 `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`。 將 _\<server-name>_ 和 _\<db-name>_ 取代為您的伺服器名稱和資料庫名稱。
 
+> [!NOTE]
+> 您剛註冊的 SqlAuthenticationProvider 是以您稍早安裝的 AppAuthentication 程式庫為基礎。 根據預設，其會使用系統指派的身分識別。 若要利用使用者指派的身分識別，您需要提供其他組態。 請參閱 AppAuthentication 程式庫的[連接字串支援](../key-vault/service-to-service-authentication.md#connection-string-support)。
+
 這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您會設定 SQL Database 伺服器以允許來自 App Service 應用程式受控識別的連線。
 
 輸入 `Ctrl+F5` 以再次執行應用程式。 瀏覽器中的相同 CRUD 應用程式此時會使用 Azure AD 驗證直接連線至 Azure SQL Database。 此設定可讓您從 Visual Studio 執行資料庫移轉。
@@ -189,6 +192,9 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 
 接著，您將設定 App Service 應用程式，以使用系統指派的受控識別連線至 SQL Database。
 
+> [!NOTE]
+> 雖然本節中的指示適用於系統指派的身分識別，但您也可以輕鬆使用使用者指派的身分識別。 要執行這項作業， 您需要變更 `az webapp identity assign command`，才能指派所需的使用者指派身分識別。 然後，在建立 SQL 使用者時，請務必使用使用者指派的身分識別資源名稱，不要使用網站名稱。
+
 ### <a name="enable-managed-identity-on-app"></a>啟用應用程式上的受控識別
 
 若要啟用 Azure 應用程式的受控識別，請在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令。 在下列命令中，取代 *\<app-name>* 。
@@ -237,9 +243,12 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* 是 Azure AD 中的受控識別名稱。 此名稱是由系統指派的，因此一律會與您 App Service 應用程式的名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup*)。
+*\<identity-name>* 是 Azure AD 中的受控識別名稱。 如果身分識別是由系統指派的，則名稱一律會與您 App Service 應用程式名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup*)。
 
 輸入 `EXIT` 以返回 Cloud Shell 提示字元。
+
+> [!NOTE]
+> 受控識別的後端服務也會[維護權杖快取](overview-managed-identity.md#obtain-tokens-for-azure-resources)，只有當目標資源過期時，才會更新其權杖。 如果您在設定 SQL Database 權限時發生錯誤，並在嘗試透過應用程式取得權杖*之後*嘗試修改權限，則在快取的權杖過期前，您實際上不會取得具有更新權限的新權杖。
 
 ### <a name="modify-connection-string"></a>修改連接字串
 

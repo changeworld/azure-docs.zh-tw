@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278492"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399215"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(已淘汰) 部署 DC/OS 叢集
 
@@ -128,19 +128,19 @@ ACS DC/OS 叢集的預設排程機制為 Marathon。 Marathon 可用來啟動應
 
 執行下列命令可排程要在 DC/OS 叢集上執行的應用程式。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 若要查看應用程式的部署狀態，請執行下列命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 當 **WAITING** 資料行值從 True  切換為 False  時，應用程式部署就已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```

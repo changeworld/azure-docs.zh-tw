@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669534"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359245"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什麼是虛擬網路 NAT (公開預覽版)？
 
@@ -53,7 +53,7 @@ NAT 與標準 SKU [公用 IP 位址資源](./virtual-network-ip-addresses-overvi
 
 NAT 會使用「連接埠網路位址轉譯」(PNAT 或 PAT)，而且建議用於大部分的工作負載。 動態或分歧的工作負載可透過隨選輸出流量配置輕鬆地適應。 避免輸出資源的廣泛預先規劃、預先配置和最終過度佈建。 SNAT 連接埠資源可透過特定 NAT 閘道資源在所有子網路上共用和取得，並可在需要時提供。
 
-連結至 NAT 的公用 IP 位址最多可為 UDP 和 TCP 提供 64000 個並行流量。 您可以從單一 IP 位址開始，並擴充至 16 個公用 IP 位址。
+連結至 NAT 的公用 IP 位址最多可為 UDP 和 TCP 提供 64000 個並行流量。 您可以從單一 IP 位址開始，並擴大至 16 個公用 IP 位址。
 
 NAT 可讓您建立從虛擬網路到網際網路的流量。 只有在回應作用中流量時，才允許從網際網路傳回流量。
 
@@ -192,13 +192,13 @@ NAT 是透過標準支援管道來支援。
 
 ## <a name="limitations"></a>限制
 
-- NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
-- 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。
-- 使用 NAT 時，不支援 NSG 流量記錄。
-- NAT 無法跨越多個虛擬網路。
+* NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
+* 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。  NAT 無法部署在具有 IPv6 首碼的子網路上。
+* 使用 NAT 時，不支援 NSG 流量記錄。
+* NAT 無法跨越多個虛擬網路。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。
-- [告訴我們接下來要在 UserVoice 中建置的項目](https://aka.ms/natuservoice)。
-- [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
+* 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。
+* [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
+* [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。

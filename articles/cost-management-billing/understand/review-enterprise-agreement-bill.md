@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270183"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898642"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 
@@ -118,7 +118,7 @@ ms.locfileid: "78270183"
 
 本節內容僅適用於澳洲、日本或新加坡的 Azure 客戶。
 
-在企業入口網站的 [報表]   > [使用量摘要]  上，比較您的 Azure Marketplace 總計和 Marketplace 發票。 Marketplace 發票僅適用於 Azure Marketplace 購買和使用量。 **使用量摘要**的金額不含稅。
+在企業入口網站的 [報表]   > [使用量摘要]  上，比較您的 Azure Marketplace 總計和 Marketplace 發票。 Marketplace 發票僅適用於 Azure Marketplace 購買和使用量。 **使用量摘要**上的數量已包含由發行者決定的稅金。
 
 登入 [Enterprise 入口網站](https://ea.azure.com)，然後選取 [報告]  。 在索引標籤右上角，將檢視從 **M** 切換為 **C**，以符合發票上的期間。  
 

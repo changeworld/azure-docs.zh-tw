@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402805"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(已被取代) Azure Container Service 教學課程 - 管理 DC/OS
 
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 若要建立 SSH 通道，請執行下列命令，並遵循螢幕上的指示。 如果連接埠 80 已在使用中，命令就會失敗。 將通道連接埠更新為非使用中的連接埠，例如 `85:localhost:80`。 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 在 CLI 可與叢集搭配使用之前，它必須先設定為使用 SSH 通道。 若要這樣做，請執行下列命令，並視需要調整連接埠。
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ ACS DC/OS 叢集的預設排程機制為 Marathon。 Marathon 可用來啟動應
 
 執行下列命令可排程要在 DC/OS 叢集上執行的應用程式。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 若要查看應用程式的部署狀態，請執行下列命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 當 **TASKS** 資料行值從 0/1  切換為 1/1  時，應用程式部署就已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 使用 `dcos marathon app update` 命令更新應用程式。
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 若要查看應用程式的部署狀態，請執行下列命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 當 **TASKS** 資料行值從 1/3  切換為 3/1  時，應用程式部署就已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ ACS DC/OS 叢集包含兩個節點集合，一個是可在網際網路上存取�
 
 執行下列命令可排程要在 DC/OS 叢集上執行的應用程式。
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 取得 DC/OS 公用叢集代理程式的公用 IP 位址。
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 若不再需要，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令將資源群組、DC/OS 叢集和所有相關資源移除。
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

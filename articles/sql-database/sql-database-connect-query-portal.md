@@ -12,18 +12,18 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827103"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087182"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入門：使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料
 
 SQL 查詢編輯器是 Azure 入口網站瀏覽器工具，提供簡單的方法在您的 Azure SQL Database 或 Azure SQL 資料倉儲上執行 SQL 查詢。 在此快速入門中，您將使用查詢編輯器連線至 SQL 資料庫，然後使用 Transact-SQL 陳述式查詢、插入、更新及刪除資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -86,7 +86,7 @@ SQL 查詢編輯器是 Azure 入口網站瀏覽器工具，提供簡單的方法
 
 7. 在 [SQL Server]  功能表中，選取 [SQL 資料庫]  ，然後選取您的 SQL 資料庫。
 
-8. 在 [SQL 資料庫]  功能表中，選取 [查詢編輯器 (預覽)]  。 在 [登入]  頁面的 [Active Directory 驗證]  標籤下方，如果您是 Azure AD 系統管理員，即會顯示一則訊息，指出您已登入。然後選取 [作為 \<您的使用者或群組識別碼>  繼續]  按鈕。
+8. 在 [SQL 資料庫]  功能表中，選取 [查詢編輯器 (預覽)]  。 在 [登入]  頁面的 [Active Directory 驗證]  標籤下方，如果您是 Azure AD 系統管理員，即會顯示一則訊息，指出您已登入。然後選取 [繼續使用  \<您的使用者或群組識別碼>]  按鈕。
 
 ## <a name="view-data"></a>檢視資料
 
@@ -167,6 +167,8 @@ SQL 查詢編輯器是 Azure 入口網站瀏覽器工具，提供簡單的方法
 
 * 查詢編輯器會使用連接埠 443 和 1443 來進行通訊。  請確定您已在這些連接埠上啟用輸出 HTTPS 流量。 您也必須將輸出 IP 位址新增至伺服器的允許防火牆規則，以存取您的資料庫和資料倉儲。
 
+* 查詢編輯器可與 Private Link 搭配運作，而不需要將用戶端 IP 位址新增至 SQL Database 防火牆
+
 * 按下 F5 可重新整理查詢編輯器頁面，而且任何正在進行的查詢都會遺失。
 
 * 查詢編輯器不支援連線到 `master` 資料庫。
@@ -176,6 +178,8 @@ SQL 查詢編輯器是 Azure 入口網站瀏覽器工具，提供簡單的方法
 * 查詢編輯器僅支援地理資料類型的圓柱形投影。
 
 * 不支援用於資料庫表格和檢視的 IntelliSense。 但編輯器支援已輸入名稱的自動完成功能。
+
+
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448777"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943918"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
@@ -34,7 +34,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請參閱[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
+- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請在 Azure 入口網站中[建立 Bing 自訂搜尋資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services)。
 - 如果尚未安裝 Visual Studio 2017 或更新版本，您可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>建立自訂搜尋執行個體
@@ -45,7 +45,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
 2. 瀏覽至自訂搜尋[入口網站](https://customsearch.ai)。  
   
-3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]  。 如果這是您第一次使用入口網站，它會要求您提供存取資料的權限。 按一下 [是]  。  
+3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]  。 如果這是您第一次使用入口網站，其會要求您提供存取資料的權限。 按一下 [是]  。  
   
 4. 登入之後，按一下 [新增自訂搜尋]  。 在 [建立新的自訂搜尋執行個體]  視窗中，輸入有意義的名稱且名稱能夠描述搜尋傳回的內容類型。 您可以隨時變更名稱。  
   
@@ -60,11 +60,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 若要包括來自特定網站或 URL 的結果，請將它們加入到 [使用中]  索引標籤。
 
-1.  在 [設定]  頁面上，按一下 [使用中]  索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
+1.       在 [設定]  頁面上，按一下 [使用中]  索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
 
     ![定義編輯器 [使用中] 索引標籤的螢幕擷取畫面](../media/customSrchEditor.png)
 
-2.  若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
+2.       若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
 
 ## <a name="add-blocked-entries"></a>加入已封鎖的項目
 

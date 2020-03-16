@@ -1,7 +1,7 @@
 ---
-title: 建立您的第一個自動化 ML 實驗
+title: 建立自動化 ML 分類模型
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure Machine Learning Studio 中使用自動化機器學習來定型及部署分類模型。
+description: 了解如何使用 Azure Machine Learning 的自動化機器學習 (自動化 ML) 介面來定型及部署分類模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048293"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129685"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教學課程：使用自動化機器學習建立第一個分類模型
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在此教學課程中，您會了解如何透過 Azure Machine Learning Studio，建立第一個自動化機器學習實驗，而不需要撰寫任何一行程式碼。 此範例會建立分類模型來預測客戶是否會向金融機構申請定期存款。
+在本教學課程中，您會了解如何透過 Azure Machine Learning 的自動化機器學習介面，建立基本的分類模型，而不需要撰寫任何一行程式碼。 此分類模型會建立分類模型來預測客戶是否會向金融機構申請定期存款。
 
 透過自動化機器學習，您可以將耗費大量時間的工作自動化。 自動化機器學習會快速地逐一嘗試多種演算法和超參數的組合，協助您根據所選擇的成功計量找到最佳模型。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77048293"
 
 Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。 
 
-您透過 Azure Machine Learning Studio (管理 Azure 資源的 Web 型主控台) 建立工作區。
+您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,31 +51,31 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ## <a name="create-and-run-the-experiment"></a>建立及執行實驗
 
-您在 Azure Machine Learning Studio 中完成下列實驗設定及執行步驟，該頁面是統一的介面，為所有技能等級的資料科學從業人員，提供執行資料科學情節的機器學習工具。 Internet Explorer 瀏覽器不支援 Studio。
+您會透過 Azure Machine Learning 在 https://ml.azure.com 中完成下列實驗設定及執行步驟；這是統一的 Web 介面，為所有技能等級的資料科學從業人員，提供執行資料科學案例的機器學習工具。 Internet Explorer 瀏覽器不支援此介面。
 
-1. 登入 [Azure Machine Learning Studio](https://ml.azure.com)。
+1. 在 https://ml.azure.com 登入 Azure Machine Learning。
 
 1. 選取訂用帳戶與您建立的工作區。
 
-1. 選取 [馬上開始]  。
+1. 選取 [馬上開始]。 
 
-1. 在左側窗格中，選取 [撰寫]  區段下的 [自動化 ML]  。
+1. 在左側窗格中，選取 [撰寫] 區段下的 [自動化 ML]。  
 
    由於這是您的第一個自動化 ML 實驗，因此您會看到一個空白清單與文件連結。
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![開始使用頁面](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. 選取 [新增自動化 ML 回合]  。 
 
 1. 透過從 [+建立資料集]  下拉式清單選取 [從本機檔案]  ，以建立新的資料集。 
 
-    1. 在 [基本資訊]  表單上，為您的資料集提供名稱，並提供選擇性描述。 Azure Machine Learning studio 中的自動化 ML 目前僅支援表格式資料集，因此資料集類型應預設為 [表格式]。
+    1. 在 [基本資訊] 表單上，為資料集提供名稱，並提供選擇性描述。  自動化 ML 介面目前僅支援表格式資料集，因此資料集類型應預設為*表格式*。
 
-    1. 選取左下方的 [下一步]  。
+    1. 選取左下方的 [下一步]。 
 
     1. 在 [資料存放區和檔案選取]  表單上，選取在建立工作區時自動設定的預設資料存放區 [workspaceblobstore (Azure Blob 儲存體)]  。 您可以在這裡上傳資料檔案，以供工作區使用。
 
-    1. 選取 [瀏覽]  。
+    1. 選取 [瀏覽]。 
     
     1. 選擇您本機電腦上的 **bankmarketing_train.csv** 檔案。 這是您作為[必要條件](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)下載的檔案。
 
@@ -85,7 +85,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
     
        上傳完成時，系統會根據檔案類型，預先填入 [設定與預覽] 表單。 
        
-    1. 確認 [設定與預覽]  表單的填入方式如下，然後選取 [下一步]  。
+    1. 確認 [設定與預覽] 表單的填入方式如下，然後選取 [下一步]。  
         
         欄位|描述| 教學課程的值
         ---|---|---
@@ -95,7 +95,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。| All files have same headers (所有檔案都有相同的標頭)
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。| None
 
-    1. [Schema]  \(結構描述\) 表單可讓您進一步設定此實驗的資料。 針對此範例，請選取 [day_of_week]  特徵的切換開關，如此一來，就不會將它包含在此實驗中。 選取 [下一步]  。
+    1. [Schema] \(結構描述\) 表單可讓您進一步設定此實驗的資料。  針對此範例，請選取 [day_of_week]  特徵的切換開關，如此一來，就不會將它包含在此實驗中。 選取 [下一步]  。
 
         ![預覽索引標籤的設定](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -163,9 +163,9 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ![執行反覆項目的詳細資料](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>部署模型
+## <a name="deploy-the-best-model"></a>部署最佳模型
 
-Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個步驟，將最佳模型部署為 Web 服務。 部署是模型的整合，因此可以根據新資料進行預測，並找出潛在的商機區域。 
+自動化機器學習介面可讓您透過幾個步驟，將最佳模型部署為 Web 服務。 部署是模型的整合，因此可以根據新資料進行預測，並找出潛在的商機區域。 
 
 此實驗中對 Web 服務的部署表示金融機構現在有可反覆進行且可調整的 Web 解決方案，能識別潛在的定期存款客戶。 
 
@@ -201,9 +201,9 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
 
 ### <a name="delete-the-deployment-instance"></a>刪除部署執行個體
 
-如果您想要保留資源群組與工作區以進行其他教學課程和探索，您可以只從 Azure Machine Learning Studio 刪除部署執行個體。 
+如果您想保留資源群組與工作區以進行其他教學課程和探索，可以在 https://ml.azure.com/ 中只刪除 Azure Machine Learning 的部署執行個體。 
 
-1. 移至 [Azure Machine Learning Studio](https://ml.azure.com/)。 瀏覽至您的工作區，並在左側的 [資產]  窗格下，選取 [端點]  。 
+1. 移至 https://ml.azure.com/ 的 Azure Machine Learning。 瀏覽至您的工作區，並在左側的 [資產]  窗格下，選取 [端點]  。 
 
 1. 選取您想要刪除的部署，然後選取 [刪除]  。 
 
@@ -215,15 +215,15 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
 
 ## <a name="next-steps"></a>後續步驟
 
-在此自動化機器學習教學課程中，您已使用 Azure Machine Learning Studio 來建立及部署分類模型。 請參閱下列文章，以了解更多資訊及接下來的步驟：
+在此自動化機器學習教學課程中，您已使用 Azure Machine Learning 的自動化 ML 介面來建立及部署分類模型。 請參閱下列文章，以了解更多資訊及接下來的步驟：
 
 > [!div class="nextstepaction"]
 > [取用 Web 服務](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ 深入了解[特徵化](how-to-create-portal-experiments.md#featurization)。
-+ 深入了解[資料分析](how-to-create-portal-experiments.md#profile)。
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
-+ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
++ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。深入了解[特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。
++ 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。
+
 
 >[!NOTE]
 > 此銀行行銷資料集可在 [Creative Commons (CCO：公用網域) 授權](https://creativecommons.org/publicdomain/zero/1.0/)底下取得。 個別資料庫內容中的任何權限都是以[資料庫內容授權](https://creativecommons.org/publicdomain/zero/1.0/)為依據，並可在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上取得。 此資料集原本位在 [UCI Machine Learning 資料庫](https://archive.ics.uci.edu/ml/datasets/bank+marketing)內。<br><br>

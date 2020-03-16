@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931823"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851442"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入門：使用 Azure CLI 將遙測資料從裝置傳送至 IoT 中樞並加以監視
 
@@ -22,7 +22,7 @@ ms.locfileid: "73931823"
 
 IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 在本快速入門中，您會使用 Azure CLI 建立 IoT 中樞和模擬裝置、將裝置遙測資料傳送至中樞，以及傳送從雲端到裝置的訊息。 您也會使用 Azure 入口網站將裝置計量視覺化。 這是使用 CLI 與 IoT 中樞應用程式互動的開發人員適用的基本工作流程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - 如果您沒有 Azure 訂用帳戶，請在開始之前[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure CLI。 您可以使用 Azure Cloud Shell (在瀏覽器中執行的互動式 CLI Shell) 來執行本快速入門中的所有命令。 如果您使用 Cloud Shell，就不需要安裝任何項目。 如果您偏好在本機使用 CLI，本快速入門需要有 Azure CLI 2.0.76 版或更新版本。 執行 az --version 以尋找版本。 若要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -35,6 +35,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 在本節中，您會啟動 Azure Cloud Shell 的執行個體。 如果您在本機使用 CLI，請跳至[準備兩個 CLI 工作階段](#prepare-two-cli-sessions)一節。
 
 若要啟動 Cloud Shell：
+
 1. 在 Azure 入口網站右上角的功能表列中，選取 [Cloud Shell]  按鈕。 
 
     ![Azure 入口網站 Cloud Shell 按鈕](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     > [!NOTE]
     > 如果這是您第一次使用 Cloud Shell，它將會提示您建立使用 Cloud Shell 所需的儲存體。  選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。 
 
-1. 在 [選取環境]  下拉式清單中，選取您慣用的 CLI 環境。 本快速入門會使用 **Bash** 環境。 下列所有 CLI 命令也都可在 Powershell 環境中運作。 
+2. 在 [選取環境]  下拉式清單中，選取您慣用的 CLI 環境。 本快速入門會使用 **Bash** 環境。 下列所有 CLI 命令也都可在 Powershell 環境中運作。 
 
     ![選取 CLI 環境](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>準備兩個 CLI 工作階段
+
 在本節中，您將準備兩個 Azure CLI 工作階段。 如果您使用 Cloud Shell，您將在個別的瀏覽器索引標籤中執行兩個工作階段。 如果使用本機 CLI 用戶端，則會執行兩個不同的 CLI 執行個體。 您將以第一個工作階段作為模擬裝置，並使用第二個工作階段來監視和傳送訊息。 若要執行命令，請選取 [複製]  以複製本快速入門中的程式碼區塊，將其貼入您的 Shell 工作階段中，然後加以執行。
 
 使用 Azure CLI 時，您必須登入 Azure 帳戶。 您的 Azure CLI Shell 工作階段與 IoT 中樞之間的所有通訊都會經過驗證和加密。 因此，本快速入門不需要您用於實際裝置的其他驗證，例如連接字串。
 
-1. 執行 [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) 命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 CLI Shell。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+*  執行 [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) 命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 CLI Shell。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    安裝 Azure IOT 擴充功能後，您不需要在任何 Cloud Shell 工作階段中再次加以安裝。 
+   
+   安裝 Azure IOT 擴充功能後，您不需要在任何 Cloud Shell 工作階段中再次加以安裝。 
 
-1. 開啟第二個 CLI 工作階段。  如果您使用 Cloud Shell，請選取 [開啟新的工作階段]  。 如果您在本機使用 CLI，請開啟第二個執行個體。 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![開啟新的 Cloud Shell 工作階段](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  開啟第二個 CLI 工作階段。  如果您使用 Cloud Shell，請選取 [開啟新的工作階段]  。 如果您在本機使用 CLI，請開啟第二個執行個體。 
+
+    >[!div class="mx-imgBorder"]
+    >![開啟新的 Cloud Shell 工作階段](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 在本節中，您將使用 Azure CLI 建立資源群組和 IoT 中樞。  Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 IoT 中樞可作為 IoT 應用程式與裝置之間雙向通訊的中央訊息中樞。 

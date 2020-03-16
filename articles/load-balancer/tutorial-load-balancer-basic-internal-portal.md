@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453513"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096124"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中使用基本負載平衡器來平衡內部流量負載
 
@@ -121,10 +121,10 @@ ms.locfileid: "75453513"
 1. 在 [新增後端集區]  頁面上，輸入或選取下列值：
    
    - **Name**：輸入 MyBackendPool  。
-   - **與下列產生關聯**：下拉並選取 [可用性設定組]  。
-   - **可用性設定組**：選取 [MyAvailabilitySet]  。
+   - **與下列產生關聯**：下拉並選取 [虛擬機器]  。
    
-1. 選取 [新增目標網路 IP 組態]  。 
+   
+1. 選取 [虛擬機器]  。 
    1. 將 **MyVM1** 和 **MyVM2** 新增到後端集區。
    2. 新增每部機器之後，下拉並選取其 [網路 IP 組態]  。 
    

@@ -4,17 +4,17 @@ description: 此教學課程可協助規劃和說明您取用之 Azure 服務的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251235"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128364"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -54,7 +54,7 @@ ms.locfileid: "78251235"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-- 在 https://portal.azure.com 登入 Azure 入口網站。
+- 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 入口網站中建立預算
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立預算
 
-您可以使用 Azure Resource Manager 範本建立預算。 此範本可協助您在資源群組下建立預算。 此範本僅支援 Enterprise 合約客戶。
+您可以使用 Azure Resource Manager 範本建立預算。 此範本可協助您在資源群組下建立預算。 
 
 選取以下影像來登入 Azure 入口網站並開啟範本：
 

@@ -3,13 +3,12 @@ title: 在 Azure 中建立可回應 HTTP 要求的函式
 description: 了解如何從命令列建立函式，然後將本機專案發佈至 Azure Functions 中的無伺服器裝載。
 ms.date: 01/28/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272753"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096253"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -23,7 +22,12 @@ ms.locfileid: "78272753"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 版或更新的 2.x 版。
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Python 3.6 和 3.7 需要 [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 版或更新的 2.x 版。 Python 3.8 需要 [版本 3.x](./functions-run-local.md#v2) 的 Core Tools。
+::: zone-end
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.0.76 版或更新版本。 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -31,7 +35,7 @@ ms.locfileid: "78272753"
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3.7](https://www.python.org/downloads/release/python-375/) 或 [Python 3.6](https://www.python.org/downloads/release/python-368/) (受 Azure Functions 支援)。 不支援 Python 3.8 和更新版本。 
++ Azure Functions 支援 [Python 3.8](https://www.python.org/downloads/release/python-382/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -51,11 +55,11 @@ ms.locfileid: "78272753"
 + 執行 `node --version`，以確認您的 Node.js 版本回報為 8.x 或 10.x。
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ 執行 `python --version` (Linux/MacOS) 或 `py --version` (Windows)，以確認您的 Python 版本回報為 3.7.x 或 3.6.x。
++ 執行 `python --version` (Linux/MacOS) 或 `py --version` (Windows)，以確認您的 Python 版本回報為 3.8.x、3.7.x 或 3.6.x。
 
 ## <a name="create-venv"></a>建立並啟用虛擬環境
 
-在適用的資料夾中執行下列命令，以建立並啟用名為 `.venv` 的虛擬環境。 請務必使用受 Azure Functions 支援的 Python 3.7 或 3.6。
+在適用的資料夾中執行下列命令，以建立並啟用名為 `.venv` 的虛擬環境。 請務必使用受 Azure Functions 支援的 Python 3.8、3.7 或 3.6。
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -161,7 +165,7 @@ py -m venv .venv
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* 包含 `Run` 方法，會接收 `req` 變數中的要求資料，而該變數是一個以 ](/dotnet/api/microsoft.aspnetcore.http.httprequest)HttpTriggerAttribute **裝飾的 [HttpRequest**，可定義觸發程序行為。 
+*HttpExample.cs* 包含 `Run` 方法，會接收 `req` 變數中的要求資料，而該變數是一個以 **HttpTriggerAttribute** 裝飾的 [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest)，可定義觸發程序行為。 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -268,13 +272,15 @@ py -m venv .venv
     
     在本快速入門中，儲存體帳戶只會產生幾美分的費用。
     
-1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令來建立 Functions 應用程式。 在下列範例中，使用您在上一個步驟中所用的帳戶名稱取代 `<STORAGE_NAME>`，並使用適合您的全域唯一名稱取代 `<APP_NAME>`。 `<APP_NAME>` 也是函式應用程式的預設 DNS 網域。 
+1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令來建立函式應用程式。 在下列範例中，使用您在上一個步驟中所用的帳戶名稱取代 `<STORAGE_NAME>`，並使用適合您的全域唯一名稱取代 `<APP_NAME>`。 `<APP_NAME>` 也是函式應用程式的預設 DNS 網域。 
 
     ::: zone pivot="programming-language-python"  
-    如果您使用 Python 3.6，也請將 `--runtime-version` 變更為 `3.6`。
+    如果您使用 Python 3.8，請將 `--runtime-version` 變更為 `3.8`，並將 `--functions_version` 變更為 `3`。
+    
+    如果您使用 Python 3.6，請將 `--runtime-version` 變更為 `3.6`。
 
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -283,19 +289,19 @@ py -m venv .venv
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 

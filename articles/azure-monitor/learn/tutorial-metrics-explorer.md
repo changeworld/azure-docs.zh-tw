@@ -2,17 +2,16 @@
 title: 教學課程 - 在 Azure 監視器中建立計量圖表
 description: 了解如何使用 Azure 計量瀏覽器建立您的第一個計量圖表。
 author: bwren
-services: azure-monitor
+ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: bwren
-ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661459"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082807"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教學課程：在 Azure 監視器中建立計量圖表
 計量瀏覽器是 Azure 入口網站中 Azure 監視器的功能之一，可讓您從計量值建立圖表、以視覺化方式將趨勢相互關聯，以及調查計量值的遽增和滑落。 使用計量瀏覽器可調查 Azure 資源的健康情況和使用量，或是從自訂計量繪製圖表。 
@@ -23,6 +22,10 @@ ms.locfileid: "77661459"
 > * 選取要繪製圖表的計量
 > * 執行不同的計量值彙總
 > * 修改圖表的時間範圍和細微性
+
+以下影片顯示比本文中所述程序廣泛的案例。 如果您不熟悉計量，建議您先閱讀這篇文章，然後觀看影片以了解更多細節。 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>Prerequisites
 

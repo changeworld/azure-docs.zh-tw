@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 4332d57c8d5587a34ba3a593deb9bd635132b03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6070b53e5f906bc378402d98275b8f798f57b505
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820960"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674437"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的單一資料庫
 
@@ -34,10 +34,8 @@ ms.locfileid: "73820960"
 
 您可以使用 PowerShell 或 Azure CLI 來建立、設定及調整資料庫。
 
-- [使用 PowerShell 建立和設定單一資料庫](scripts/sql-database-create-and-configure-database-powershell.md)
-- [使用 Azure CLI 建立和設定單一資料庫](scripts/sql-database-create-and-configure-database-cli.md)
-- [使用 PowerShell 來更新單一資料庫和調整資源](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [使用 Azure CLI 來更新單一資料庫和調整資源](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [使用 PowerShell 建立和設定單一資料庫](scripts/sql-database-create-and-configure-database-powershell.md)或 [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md)
+- [使用 PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) 或 [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md) 來更新單一資料庫並調整資源
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>以最短停機時間移轉到單一資料庫
 

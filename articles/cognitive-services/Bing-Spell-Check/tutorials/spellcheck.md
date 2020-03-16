@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382791"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943099"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>教學課程：建置網頁拼字檢查用戶端
 
@@ -29,7 +29,7 @@ ms.locfileid: "75382791"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要依照本教學課程，您需要 Bing 拼字檢查 API 的訂用帳戶金鑰。 如果您沒有金鑰，請[註冊免費試用](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
+若要依照本教學課程，您需要 Bing 拼字檢查 API 的訂用帳戶金鑰。 如果您沒有金鑰，請在 Azure 入口網站中[建立 Bing 拼字檢查資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
 
 ## <a name="create-a-new-web-page"></a>建立新的網頁
 

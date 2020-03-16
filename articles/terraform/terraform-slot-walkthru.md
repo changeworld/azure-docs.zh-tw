@@ -1,14 +1,15 @@
 ---
 title: 教學課程 - 使用 Terraform 佈建具有 Azure 部署位置的基礎結構
-description: 關於使用 Terraform 和 Azure 提供者部署位置的教學課程
+description: 在本教學課程中，您會使用 Terraform 和 Azure 提供者部署位置
+keywords: azure devops terraform 部署位置
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159173"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943494"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>教學課程：使用 Terraform 佈建具有 Azure 部署位置的基礎結構
 
@@ -16,9 +17,9 @@ ms.locfileid: "74159173"
 
 本文逐步引導您透過 GitHub 和 Azure 部署兩個應用程式，以說明部署位置的使用範例。 一個應用程式會裝載在生產位置中。 第二個應用程式會裝載在預備位置中。 (「生產」和「預備」名稱可任意指定。 它們可以是您的案例適用的任何名稱。)設定部署位置後，您可以視需要使用 Terraform 來交換兩個位置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 。
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **GitHub 帳戶**：您需要有 [GitHub](https://www.github.com) 帳戶，才能派生和使用測試 GitHub 存放庫。
 
@@ -68,7 +69,12 @@ ms.locfileid: "74159173"
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     resource "azurerm_resource_group" "slotDemo" {
         name = "slotDemoResourceGroup"
@@ -247,7 +253,12 @@ ms.locfileid: "74159173"
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     # Swap the production slot and the staging slot
     resource "azurerm_app_service_active_slot" "slotDemoActiveSlot" {

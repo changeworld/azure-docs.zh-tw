@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920989"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942923"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 簡介
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 讓 Azure 儲存體成為在 Azure 上打造企業 Data L
 
 Data Lake Storage Gen2 的基礎部分是新增至 Blob 儲存體的[階層命名空間](data-lake-storage-namespace.md)。 階層命名空間會將物件/檔案組織成目錄階層，讓資料存取更有效率。 一般物件存放區命名慣例是在名稱中使用斜線來模仿階層式目錄結構。 Data Lake Storage Gen2 會使這樣的結構成真。 重新命名或刪除目錄等操作會成為目錄中單一不可部分完成的中繼資料作業，而不是列舉及處理共用目錄名稱前置詞的所有物件。
 
-以往雲端式分析必須在效能、管理及安全性方面妥協。 Data Lake Storage Gen2 透過下列方式解決這些方面的問題：
+Data Lake Storage Gen2 建置於 Blob 儲存體，並以下列方式增強效能、管理和安全性：
 
--   **效能**經過最佳化，因為您不需要複製或轉換資料作為分析的必要條件。 階層命名空間大幅提高目錄管理作業的效能，從而提高整體作業效能。
+-   **效能**經過最佳化，因為您不需要複製或轉換資料作為分析的必要條件。 相較於 Blob 儲存體上的一般命名空間，階層命名空間大幅提高目錄管理作業的效能，從而提高整體作業效能。
 
 -   **管理**更容易，因為您可以透過目錄和子目錄整理和操作檔案。
 
 -   **安全性**是強制的，因為您可以在目錄或個人檔案上定義 POSIX 權限。
 
--   **符合成本效益**，因為 Data Lake Storage Gen2 建立在低成本的 [Azure Blob 儲存體](storage-blobs-introduction.md)上。 額外功能進一步降低了在 Azure 上執行巨量資料分析的擁有權總成本。
+此外，Azure Data Lake Storage Gen2 非常符合成本效益，因為其建立在低成本的 [Azure Blob 儲存體](storage-blobs-introduction.md)上。 額外功能進一步降低了在 Azure 上執行巨量資料分析的擁有權總成本。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 

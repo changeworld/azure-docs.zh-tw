@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330390"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -92,8 +92,6 @@ ms.locfileid: "77539598"
 1. 選取包含已啟用靜態網站代管功能之儲存體帳戶的訂用帳戶。 接著，在出現提示時，選取該儲存體帳戶。
 
 Visual Studio Code 現在會將您的檔案上傳到 Web 端點，然後顯示成功狀態列。 啟動網站以在 Azure 中檢視網站。
-
-![在 Azure 中檢視靜態網站部署](media/storage-blob-static-website-host/view-static-website-endpoint.png)
 
 您已順利完成本教學課程並將靜態網站部署至 Azure。
 

@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200909"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942578"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>針對 Azure 付款問題進行疑難排解
 
 您嘗試在 Microsoft Azure 入口網站或 Azure 帳戶中心更新付款資訊帳戶時，可能會遇到某些問題或錯誤。
 
 若要解決您的問題，請選取下列與您的錯誤最相似的主題。
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>嘗試註冊 Azure 時，信用卡遭到拒
+
+若要針對遭拒卡片的相關問題進行疑難排解，請參閱[針對在 Azure 註冊時遭拒的卡片進行疑難排解](troubleshoot-declined-card.md)。
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>無法查看我帳號底下的訂用帳戶來更新付款方式
+
+您使用的電子郵件識別碼可能與訂用帳戶所使用的不同。
+
+若要針對此問題進行疑難排解，請參閱 [Azure 入口網站或 Azure 帳戶中心的「找不到訂用帳戶」登入錯誤](no-subscriptions-found.md)。
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>無法使用虛擬或預付信用卡或轉帳卡作為付款方式。
+
+*   虛擬卡或預付信用卡無法作為 Azure 訂用帳戶的付款方式。
+*   轉帳卡無法作為 Azure 訂用帳戶的付款方式。
+
+如需詳細資訊，請參閱[針對在 Azure 註冊時遭拒的卡片進行疑難排解](troubleshoot-declined-card.md)。
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>無法從已儲存的帳單付款方式中移除信用卡
 
@@ -33,19 +50,11 @@ ms.locfileid: "77200909"
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>加入新的付款方式之後，無法刪除舊的付款方式
 
-新的付款方式可能無法與訂用帳戶建立關聯。 如需將付款方式與訂用帳戶建立關聯的協助，請參閱[新增、更新或移除用於 Azure 的信用卡或轉帳卡](change-credit-card.md)。
-
-若要針對遭拒卡片的相關問題進行疑難排解，請參閱[如何在 Azure 註冊上針對遭到拒絕的卡片進行疑難排解](troubleshoot-declined-card.md)。
+新的付款方式可能無法與訂用帳戶建立關聯。 如需將付款方式與訂用帳戶建立關聯的協助，請參閱[新增、更新或移除用於 Azure 的信用卡](change-credit-card.md)。
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>無法刪除付款方式，因為出現「無法刪除付款方式」  錯誤
 
 這是因為未付餘額所造成。 請先清除任何未付餘額，再刪除付款方式。
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>無法查看我帳號底下的訂用帳戶來更新付款方式
-
-您使用的電子郵件識別碼可能與訂用帳戶所使用的不同。
-
-若要針對此問題進行疑難排解，請參閱 [Azure 入口網站或 Azure 帳戶中心的「找不到訂用帳戶」登入錯誤](no-subscriptions-found.md)。
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>無法對訂用帳戶進行付款
 

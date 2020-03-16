@@ -1,19 +1,19 @@
 ---
 title: 與 Azure Private Link 服務整合
 description: 了解如何整合 Azure Key Vault 與 Azure Private Link 服務
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 01/28/2020
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e058e643f4c37336f09b43c41cd09aa361a23d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908632"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080338"
 ---
-# <a name="integrate-key-vault-with-azure-private-link-preview"></a>整合 Key Vault 與 Azure Private Link (預覽)
+# <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
 Azure Private Link 服務可讓您透過虛擬網路中的私人端點存取各項 Azure 服務 (例如 Azure Key Vault、Azure 儲存體 和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
 
@@ -34,7 +34,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 
 您的私人端點會使用您虛擬網路中的私人 IP 位址。
 
-## <a name="establish-a-private-link-connection-to-key-vault"></a>建立金鑰保存庫的私人連結連線
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>使用 Azure 入口網站建立 Key Vault 的私人連結連線 
 
 首先，依照[使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)中的步驟建立虛擬網路。
 
@@ -79,6 +79,60 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 ![影像](./media/private-link-service-3.png)
 ![影像](./media/private-link-service-4.png)
 
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>使用 CLI 建立 Key Vault 的私人連結連線
+
+### <a name="login-to-azure-cli"></a>登入 Azure CLI
+```console
+az login 
+```
+### <a name="select-your-azure-subscription"></a>選取您的 Azure 訂用帳戶 
+```console
+az account set --subscription {AZURE SUBSCRIPTION ID}
+```
+### <a name="create-a-new-resource-group"></a>建立新的資源群組 
+```console
+az group create -n {RG} -l {AZURE REGION}
+```
+### <a name="register-microsoftkeyvault-as-a-provider"></a>將 Microsoft.KeyVault 註冊為提供者 
+```console
+az provider register -n Microsoft.KeyVault
+```
+### <a name="create-a-new-key-vault"></a>建立新 Key Vault
+```console
+az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
+```
+### <a name="create-a-virtual-network"></a>建立虛擬網路
+```console
+az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
+```
+### <a name="add-a-subnet"></a>新增子網路
+```console
+az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
+```
+### <a name="disable-virtual-network-policies"></a>停用虛擬網路原則 
+```console
+az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
+```
+### <a name="add-a-private-dns-zone"></a>建立私人 DNS 區域 
+```console
+az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
+```
+### <a name="link-private-dns-zone-to-virtual-network"></a>將私人 DNS 區域連結至虛擬網路 
+```console
+az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+```
+### <a name="create-a-private-endpoint-automatically-approve"></a>建立私人端點 (自動核准) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
+```
+### <a name="create-a-private-endpoint-manually-request-approval"></a>建立私人端點 (手動要求核准) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
+```
+### <a name="show-connection-status"></a>顯示連線狀態 
+```console
+az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
+```
 ## <a name="manage-private-link-connection"></a>管理私人連結連線
 
 當您建立私人端點時，必須核准連線。 如果您要建立私人端點的資源位於您的目錄中，您就能夠核准該連線要求 (前提是您有足夠的權限)。如果您要連線到另一個目錄中的 Azure 資源，則必須等候該資源的擁有者核准您的連線要求。
@@ -92,7 +146,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 | 拒絕 | 已拒絕 | 私人連結資源擁有者已拒絕連線。 |
 | 移除 | 已中斷連接 | 私人連結資源擁有者已移除連線，而私人端點變成參考性，且應該刪除以進行清除。 |
  
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault"></a>如何管理金鑰保存庫的私人端點連線
+###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>如何使用 Azure 入口網站管理 Key Vault 的私人端點連線 
 
 1. 登入 Azure 管理入口網站。
 1. 在搜尋列中輸入「金鑰保存庫」。
@@ -104,6 +158,23 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 如果您想拒絕任何私人端點連線 (不論是暫止要求或現有連線)，請選取連線，然後按一下 [拒絕] 按鈕。
 
     ![映像](./media/private-link-service-7.png)
+
+##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>如何使用 Azure CLI 管理 Key Vault 的私人端點連線
+
+### <a name="approve-a-private-link-connection-request"></a>核准 Private Link 連線要求
+```console
+az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="deny-a-private-link-connection-request"></a>拒絕 Private Link 連線要求
+```console
+az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="delete-a-private-link-connection-request"></a>刪除 Private Link 連線要求
+```console
+az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
+```
 
 ## <a name="validate-that-the-private-link-connection-works"></a>驗證私人連結連線是否正常運作
 

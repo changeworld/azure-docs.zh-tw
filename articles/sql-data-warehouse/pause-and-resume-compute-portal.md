@@ -1,5 +1,5 @@
 ---
-title: '快速入門：暫停和繼續計算 - Azure 入口網站 '
+title: 透過 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 description: 使用 Azure 入口網站暫停 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時繼續計算。
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200588"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130356"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中調整和繼續 Azure Synapse Analytics SQL 集區中的計算
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>快速入門：透過 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 
-使用 Azure 入口網站暫停 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時[繼續計算](sql-data-warehouse-manage-compute-overview.md)。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+您可以使用 Azure 入口網站來暫停和繼續 Synapse SQL 集區 (資料倉儲) 計算資源。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -34,9 +32,11 @@ ms.locfileid: "78200588"
 
 ## <a name="pause-compute"></a>暫停計算
 
-為了節省成本，您可以隨選暫停和繼續計算資源。 例如，如果您在夜間和週末不會使用資料庫，可以在這段時間暫停，並且在白天時繼續。 資料庫暫停時，系統將不會向您收取計算資源的費用。 不過，您仍需持續支付儲存體費用。 
+為了降低成本，您可以隨選暫停和繼續計算資源。 例如，如果您在夜間和週末不會使用資料庫，可以在這段時間暫停，並且在白天時繼續。 
+>[!NOTE]
+>資料庫暫停時，系統將不會向您收取計算資源的費用。 不過，您仍需持續支付儲存體費用。 
 
-請依照下列步驟將 SQL 集區暫停。
+請依照下列步驟將 SQL 集區暫停：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下 Azure 入口網站左側導覽頁面中的 [Azure Synapse Analytics (先前為 SQL DW)]  。
@@ -80,7 +80,7 @@ ms.locfileid: "78200588"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您需為資料倉儲單位和儲存在資料倉儲中的資料付費。 這些計算和儲存體資源會分開計費。 
+您需為資料倉儲單位和儲存在 SQL 集區中的資料付費。 這些計算和儲存體資源會分開計費。 
 
 - 如果您想保留儲存體中的資料，請暫停計算。
 - 如果您需要移除未來的費用，可以將 SQL 集區刪除。 
@@ -95,14 +95,15 @@ ms.locfileid: "78200588"
 
 2. 若要移除 SQL 集區以免支付計算或儲存體的費用，請按一下 [刪除]  。
 
-3. 若要移除您所建立的 SQL 伺服器，請按一下 [sqlpoolservername.database.windows.net]  ，然後按一下 [刪除]  。  請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
+3. 若要移除您所建立的 SQL 伺服器，請按一下 [sqlpoolservername.database.windows.net]  ，然後按一下 [刪除]  。  
 
-4. 若要移除此資源群組，請按一下 [myResourceGroup]  ，然後按一下 [刪除資源群組]  。
+   > [!CAUTION]
+   > 請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
+
+5. 若要移除此資源群組，請按一下 [myResourceGroup]  ，然後按一下 [刪除資源群組]  。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已暫停和繼續 SQL 集區的計算。 若要了解後續步驟，請繼續進行載入資料的教學課程。
+現在您已暫停和繼續 SQL 集區的計算。 請繼續閱讀下一篇文章以深入了解如何[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。 
 
-> [!div class="nextstepaction"]
-> [將資料載入至 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448908"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402665"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教學課程：使用 Azure Databricks 對串流資料進行異常情況偵測
 
@@ -40,12 +40,10 @@ ms.locfileid: "75448908"
 > * 對推文執行異常偵測
 
 > [!Note]
-> 本教學課程介紹一種方法來對 Anomaly Detector API 實作建議的[解決方案架構](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
+> * 本教學課程介紹一種方法來對 Anomaly Detector API 實作建議的[解決方案架構](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
+> * 您無法使用 Anomaly Detector API 或 Azure Databricks 的免費試用完成教學課程。 
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
-
-> [!Note]
-> 使用免費的 Anomaly Detector API 試用版金鑰，便無法完成本教學課程。 若要使用免費帳戶建立 Azure Databricks 叢集，在建立叢集之前，請先移至您的設定檔，並將訂用帳戶變更為**隨用隨付**。 如需詳細資訊，請參閱 [Azure 免費帳戶](https://azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請建立一個 [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

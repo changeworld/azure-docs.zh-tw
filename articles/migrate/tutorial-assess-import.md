@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902546"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079871"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -109,7 +109,7 @@ ms.locfileid: "75902546"
 **IP 位址** | 否 | 伺服器位址。
 **核心** | 是 | 配置給伺服器的處理器核心數目。
 **記憶體** | 是 | 配置給伺服器的 RAM 總計 (以 MB 為單位)。
-**作業系統名稱** | 是 | 伺服器作業系統。
+**作業系統名稱** | 是 | 伺服器作業系統。 <br/> 評估會識別符合或包含[此](#supported-operating-system-names)清單中之名稱的作業系統名稱。
 **作業系統版本** | 否 | 伺服器作業系統版本。
 **磁碟數量** | 否 | 如果提供了個別磁碟詳細資料，則不需要。
 **磁碟 1 大小**  | 否 | 磁碟的大小上限 (以 GB 為單位)。<br/>您可以藉由在範本中[新增資料行](#add-multiple-disks)，來新增更多磁碟的詳細資料。 您最多可以新增八個磁碟。

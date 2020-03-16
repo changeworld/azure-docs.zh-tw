@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 701ae5e70612b89c28e3092571e26e4f06389af0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924619"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946154"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>教學課程：使用 Azure Data Box Edge 轉送資料
 
@@ -22,14 +22,14 @@ ms.locfileid: "64924619"
 
 此程序可能需要大約 10 分鐘才能完成。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 新增共用
 > * 連線至共用
 
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 將共用新增至 Data Box Edge 之前，請確定：
 
@@ -69,7 +69,7 @@ ms.locfileid: "64924619"
    
     f. 根據您已建立的是 SMB 共用還是 NFS 共用，執行下列其中一個步驟： 
      
-    - **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 在此指派權限之後，您可以使用 [檔案總管] 加以修改。
+    - **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 目前不支援修改共用層級權限。
 
         如果您針對此共用資料選取 [僅允許讀取作業]  核取方塊，則可以指定唯讀使用者。
 

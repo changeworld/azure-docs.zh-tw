@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772443"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898689"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像
 
@@ -58,6 +58,16 @@ ms.locfileid: "75772443"
 
 在您提交手邊資料的標籤後，Azure 會以工作佇列中的一組新影像來重新整理頁面。
 
+### <a name="assisted-machine-learning"></a>輔助機器學習 
+
+在多類別或多標籤分類工作期間，可能會觸發機器學習演算法。 如果您的專案中已啟用這些演算法，可能會看到下列內容：
+
+* 在標記過部分影像之後，您可能會在畫面頂端的專案名稱旁看到**工作已叢集處理**。  這表示影像會群組在一起，以在相同頁面上呈現類似的影像。  若是如此，請切換到多個影像檢視的其中一個，以利用分組功能帶來的好處。  
+
+* 稍後，您可能會在專案名稱旁看到**工作已預先標記**。  然後，影像會顯示來自機器學習服務分類模型的建議標籤。 機器學習模型的精確度不會是 100%。 雖然我們只使用信心水準高的模型影像，這些影像仍有可能未預先套用正確的標記。  當您看到這些標籤時，請更正任何錯誤的標籤再提交頁面。  
+
+特別是早期在標記專案，機器學習模型的精確度可能只能預先將小部分的影像子集建立標記。 這些影像加上標籤之後，標記專案會回到手動標記，以收集更多資料供下一輪模型定型之用。 經過一段時間之後，此模型就會更有信心處理較多數量的影像，以便稍後在專案中能預先將更多工作進行標記處理。
+
 ## <a name="tag-images-for-multi-class-classification"></a>標記影像以進行多類別分類
 
 如果您的專案屬於「影像分類多類別」類型，您將會為整個影像指派單一標籤。 若要隨時查看指示，請移至 [指示]  頁面，並選取 [檢視詳細指示]  。
@@ -81,6 +91,7 @@ ms.locfileid: "75772443"
 ![顯示多個取消選取項目的螢幕擷取畫面](./media/how-to-label-images/multiple-deselection.png)
 
 當您對每個影像套用至少一個標籤後，Azure 才會啟用 [提交]  按鈕。 選取 [提交]  以儲存您的工作。
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>標記影像並指定週框方塊以進行物件偵測
 

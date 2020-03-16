@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 40f5935c7d653ce90aa56bc5ee2bb15711bb9dd8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249057"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399256"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
@@ -82,9 +82,11 @@ ms.locfileid: "78249057"
 > [下載程式碼範例]()
 
 > [!div renderon="docs"]
+
 > #### <a name="step-3-configure-your-javascript-app"></a>步驟 3：設定您的 JavaScript 應用程式
 >
-> 在 *JavaScriptSPA* 資料夾中編輯 *authConfig.js*，並且在 `msalConfig` 下設定 `clientID` 與 `authority` 值。
+> 在 *JavaScriptSPA* 資料夾中編輯 *authConfig.js*，並且在 `msalConfig` 下設定 `clientID`、`authority` 與 `redirectUri` 等值。
+>
 > ```javascript
 >
 >  // Config object to be passed to Msal on creation
@@ -97,10 +99,10 @@ ms.locfileid: "78249057"
 >    cache: {
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
->      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
 >    }
 >  };  
-> ```
+>
+>```
 
 > [!div renderon="portal"]
 > > [!NOTE]
@@ -124,6 +126,27 @@ ms.locfileid: "78249057"
 > 我們已使用您的應用程式屬性值來設定您的專案。 
 
 > [!div renderon="docs"]
+> 
+> 然後在相同的資料夾中，繼續編輯 *graphConfig.js* 檔案，以設定 `apiConfig` 物件的 `graphMeEndpoint` 和 `graphMeEndpoint`。
+> ```javascript
+>   // Add here the endpoints for MS Graph API services you would like to use.
+>   const graphConfig = {
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>   };
+>
+>   // Add here scopes for access token to be used at MS Graph API endpoints.
+>   const tokenRequest = {
+>       scopes: ["Mail.Read"]
+>   };
+> ```
+>
+
+> [!div renderon="docs"]
+>
+> 其中：
+> - *\<Enter_the_Graph_Endpoint_Here>* 是要對其進行 API 呼叫的端點。 針對主要或全域 Microsoft Graph API 服務，只需輸入 `https://graph.microsoft.com`。 如需詳細資訊，請參閱[國家雲端部署](https://docs.microsoft.com/graph/deployments)
+>
 > #### <a name="step-4-run-the-project"></a>步驟 4：執行專案
 
 使用 [Node.js](https://nodejs.org/en/download/) 以網頁伺服器執行專案：
@@ -155,7 +178,6 @@ MSAL 程式庫會登入使用者並要求權杖，該權杖是用來存取受 Mi
 > [!TIP]
 > 您可以使用 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) \(英文\) 下的最新發行版本取代上述版本。
 
-
 或者，如果您已安裝 Node.js，可以透過 Node.js 套件管理員 (npm) 下載最新版本：
 
 ```batch
@@ -177,7 +199,6 @@ npm install msal
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
   };  
 
@@ -228,7 +249,7 @@ MSAL 使用三個方法來取得權杖：`acquireTokenRedirect`、`acquireTokenP
 `acquireTokenSilent` 方法會處理權杖取得和更新作業，不需要與使用者進行任何互動。 在第一次執行 `loginRedirect` 或 `loginPopup` 方法之後，`acquireTokenSilent` 就會成為用來取得權杖的常用方法，以在後續呼叫中使用那些權杖存取受保護的資源。 以無訊息方式進行要求或更新權杖的呼叫。
 
 ```javascript
-// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+
 const tokenRequest = {
     scopes: ["Mail.Read"]
 };

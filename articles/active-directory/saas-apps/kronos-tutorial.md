@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec568793d717da2493b2c45fe1dca5ad56073886
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4ae90b729db51287f2a98caa36ae43d83a2a207c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986257"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Kronos 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "68986257"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -91,23 +91,23 @@ ms.locfileid: "68986257"
 
 1. Kronos 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![映像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
-    a. 按一下 [編輯]  圖示以開啟 [管理使用者宣告]  對話方塊。
+    a. 按一下 [**編輯**] 圖示以開啟 [**管理使用者宣告**] 對話方塊。
 
     ![image](./media/kronos-tutorial/tutorial_usermail.png)
 
-    ![映像](./media/kronos-tutorial/tutorial_usermailedit.png)
+    ![image](./media/kronos-tutorial/tutorial_usermailedit.png)
 
     b. 從 [轉換]  清單中，選取 [ExtractMailPrefix()]  。
 
-    c. 從 [參數 1]  清單中，選取 [user.userprinicipalname]  。
+    c. 從 [參數 1]  清單中，選取 [user.userprincipalname]  。
 
     d. 按一下 [檔案]  。
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證，並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 

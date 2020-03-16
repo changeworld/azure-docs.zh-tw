@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986656"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943885"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教學課程：使用 Bing Web 搜尋 API 建立單頁應用程式
 
@@ -37,8 +37,7 @@ ms.locfileid: "76986656"
 以下是數個您執行應用程式所需的項目：
 
 * Node.js 8 或更新版本
-* 訂用帳戶金鑰
-
+* 適用於 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有金鑰，請 [建立 Bing 搜尋 v7 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 ## <a name="get-the-source-code-and-install-dependencies"></a>取得原始程式碼並安裝相依性
 
 第一個步驟是使用範例應用程式的原始程式碼來複製存放庫。

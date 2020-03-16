@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: c36f31ef30b6386677c517b1d7e643f9eacea093
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303285"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927378"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Node.js 連線至 Azure Cosmos DB SQL API 帳戶並從中查詢資料
 
 > [!div class="op_single_selector"]
-> * [.NET V3](create-sql-api-dotnet.md)
-> * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
-> * [Node.js](create-sql-api-nodejs.md)
-> * [Python](create-sql-api-python.md)
-> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+> - [.NET V3](create-sql-api-dotnet.md)
+> - [.NET V4](create-sql-api-dotnet-V4.md)
+> - [Java](create-sql-api-java.md)
+> - [Node.js](create-sql-api-nodejs.md)
+> - [Python](create-sql-api-python.md)
+> - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 在本快速入門中，您會從 Azure 入口網站以及藉由使用從 GitHub 複製的 Node.js 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
@@ -33,32 +33,40 @@ ms.locfileid: "78303285"
 - [Node.js 6.0.0+](https://nodejs.org/)。
 - [Git](https://www.git-scm.com/downloads)。
 
-## <a name="create-a-database"></a>建立資料庫
+## <a name="create-an-azure-cosmos-account"></a>建立 Azure Cosmos 帳戶
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+在此快速入門中，您可以使用[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 選項來建立 Azure Cosmos 帳戶。
+
+1. 瀏覽至[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 頁面。
+
+1. 選擇 [SQL]  API 帳戶，然後選取 [建立]  。 使用您的 Microsoft 帳戶登入 。
+
+1. 登入成功之後，您的 Azure Cosmos 帳戶應該已就緒。 選取 [在 Azure 入口網站中開啟]  ，以開啟新建立的帳戶。
+
+「免費試用 Azure Cosmos DB」選項不需要 Azure 訂用帳戶，您可以使用 Azure Cosmos 帳戶 30 天。 如果想使用 Azure Cosmos 帳戶較長的時間，您應該在 Azure 訂用帳戶內[建立帳戶](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。
 
 ## <a name="add-a-container"></a>新增容器
 
-您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立資料庫和容器。 
+您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立資料庫和容器。
 
-1. 選取 [資料總管]   > [新增容器]  。 
-    
-    [新增容器]  區域會顯示在最右邊，您可能需要向右捲動才能看到它。
+1. 選取 [資料總管]   > [新增容器]  。
 
-    ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   [新增容器]  區域會顯示在最右邊，您可能需要向右捲動才能看到它。
+
+   ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
 2. 在 [新增容器]  頁面上，輸入新容器的設定。
 
-    |設定|建議的值|描述
-    |---|---|---|
-    |**資料庫識別碼**|工作|輸入 *Tasks* 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量]  選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
-    |**輸送量**|400|讓輸送量保持在每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以相應增加輸送量。| 
-    |**容器識別碼**|項目|輸入 *Items* 作為新容器的名稱。 容器識別碼與資料庫名稱具有相同的字元需求。|
-    |**分割區索引鍵**| /類別| 本文中所述的範例使用 */category* 作為分割區索引鍵。|
-    
-    除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]  。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
-    
-    選取 [確定]  。 [資料總管] 會顯示新的資料庫和容器。
+   | 設定           | 建議的值 | 描述                                                                                                                                                                                                                                                                                                                                                                           |
+   | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **資料庫識別碼**   | 工作           | 輸入 _Tasks_ 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量]  選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
+   | **輸送量**    | 400             | 讓輸送量保持在每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。                                                                                                                                                                                                                                                    |
+   | **容器識別碼**  | 項目           | 輸入 _Items_ 作為新容器的名稱。 容器識別碼與資料庫名稱具有相同的字元需求。                                                                                                                                                                                                                                                               |
+   | **分割區索引鍵** | /類別       | 本文中所述的範例使用 _/category_ 作為分割區索引鍵。                                                                                                                                                                                                                                                                                                           |
+
+   除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]  。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
+
+   選取 [確定]  。 [資料總管] 會顯示新的資料庫和容器。
 
 ## <a name="add-sample-data"></a>新增範例資料
 
@@ -84,9 +92,21 @@ ms.locfileid: "78303285"
 
 如果您熟悉舊版 SQL JavaScript SDK，則可能已習慣看到「集合」  和「文件」  等字詞。 因為 Azure Cosmos DB 支援[多個 API 模型](introduction.md)，[2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 會使用「容器」  這個泛用字詞，此字詞可能是用來說明容器內容的集合、圖表或資料表和「項目」  。
 
+Cosmos DB JavaScript SDK 稱為「@azure/cosmos」，可以從 npm 安裝...
+
+```bash
+npm install @azure/cosmos
+```
+
 下列程式碼片段全部取自 _app.js_ 檔案。
 
-- 初始化 `CosmosClient` 物件。
+- `CosmosClient` 是從 `@azure/cosmos` npm 套件匯入。
+
+  ```javascript
+  const CosmosClient = require("@azure/cosmos").CosmosClient;
+  ```
+
+- 已初始化新的 `CosmosClient` 物件。
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -115,8 +135,6 @@ ms.locfileid: "78303285"
   const { resources: results } = await container.items
     .query(querySpec)
     .fetchAll();
-
-  return results;
   ```
 
 - 建立新的項目
@@ -134,8 +152,6 @@ ms.locfileid: "78303285"
   const { resource: itemToUpdate } = await container
     .item(id, category)
     .replace(itemToUpdate);
-
-  return result;
   ```
 
 - 刪除項目
@@ -167,19 +183,17 @@ ms.locfileid: "78303285"
 
 ## <a name="run-the-app"></a>執行應用程式
 
-1. 在終端機中執行 `npm install` 以安裝必要的 npm 模組
+1. 在終端機中執行 `npm install` 以安裝「@azure/cosmos」npm 套件
 
 2. 在終端機中執行 `node app.js` 來啟動您的節點應用程式。
 
-您現在可以返回 [資料總管] 並進行修改，然後使用這項新資料。
+3. 您稍早在本快速入門中建立的兩個項目都會列出。已建立新項目。 該項目上的「isComplete」旗標會更新為「true」，最後系統會刪除該項目。
+
+您可以繼續在此範例應用程式中實驗，或返回資料總管、修改和處理您的資料。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>清除資源
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

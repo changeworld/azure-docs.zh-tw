@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立資料倉儲 (PowerShell)
-description: 使用 Azure PowerShell 快速建立 Azure Synapse Analytics 資料倉儲邏輯伺服器與伺服器層級防火牆規則。
+title: 使用 Azure PowerShell 建立及查詢 Synapse SQL 集區
+description: 使用 Azure PowerShell，透過伺服器層級的防火牆規則快速建立 Synapse SQL 集區邏輯伺服器。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199983"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130288"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立和查詢資料倉儲
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及查詢 Synapse SQL 集區
 
-使用 Azure PowerShell 佈建 SQL 集區，以建立 Azure Synapse Analytics 資料倉儲。
+使用 Azure PowerShell 在 Azure Synapse Analytics 中建立 Synapse SQL 集區。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-> [!NOTE]
-> 建立倉儲可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> [!IMPORTANT]
+> 建立 SQL 集區可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>設定伺服器防火牆規則
 
-使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) 命令建立 [Azure SQL 伺服器層級防火牆規則](../sql-database/sql-database-firewall-configure.md)。 伺服器層級防火牆規則可讓外部應用程式 (例如 SQL Server Management Studio 或 SQLCMD 公用程式) 穿過 SQL 資料倉儲服務防火牆連線到 SQL 資料倉儲。 在下列範例中，只會針對其他 Azure 資源開啟防火牆。 若要啟用外部連線，請將 IP 位址變更為適合您環境的地址。 若要開啟所有 IP 位址，請使用 0.0.0.0 作為起始 IP 位址，並使用 255.255.255.255 作為結束位址。
+使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) 命令建立 [Azure SQL 伺服器層級防火牆規則](../sql-database/sql-database-firewall-configure.md)。 伺服器層級防火牆規則可讓外部應用程式 (例如 SQL Server Management Studio 或 SQLCMD 公用程式) 穿過 SQL 集區服務防火牆連線到 SQL 集區。 
+
+在下列範例中，只會針對其他 Azure 資源開啟防火牆。 若要啟用外部連線，請將 IP 位址變更為適合您環境的地址。 若要開啟所有 IP 位址，請使用 0.0.0.0 作為起始 IP 位址，並使用 255.255.255.255 作為結束位址。
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>建立資料倉儲
-這個範例會使用先前定義的變數建立資料倉儲。  並將服務目標指定為成本較低的資料倉儲起點 DW100c。 
+## <a name="create-a-sql-pool"></a>建立 SQL 集區
+以下範例會使用先前定義的變數建立 SQL 集區，  並將服務目標指定為成本較低的 SQL 集區起點 DW100c。 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 必要參數如下：
 
 * **RequestedServiceObjectiveName**：您要求的[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)數量。 增加此數量會增加計算成本。 如需支援值的清單，請參閱[記憶體和並行存取限制](memory-concurrency-limits.md)。
-* **DatabaseName**：您要建立之資料倉儲的名稱。
+* **DatabaseName**：您要建立的 SQL 集區名稱。
 * **ServerName**：您用來建立的伺服器名稱。
 * **ResourceGroupName**：您使用的資源群組。 若要尋找訂用帳戶中可用的資源，請使用 Get-AzureResource。
-* **版本**：必須是 "DataWarehouse"，才能建立資料倉儲。
+* **版本**：必須是 "DataWarehouse"，才能建立 SQL 集區。
 
 選擇性參數如下：
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立資料倉儲、建立防火牆規則、連線到您的資料倉儲，並執行了一些查詢。 若要深入了解，請繼續進行載入資料的教學課程。
-> [!div class="nextstepaction"]
->[將資料載入至資料倉儲](load-data-from-azure-blob-storage-using-polybase.md)
+您現在已建立了 SQL 集區、防火牆規則、連線到您的 SQL 集區，並執行了一些查詢。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。

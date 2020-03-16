@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/07/2019
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251319"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395733"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
@@ -64,6 +64,7 @@ ms.locfileid: "78251319"
 即使您沒有太多程式設計經驗，也可以在您的流程中開始使用 Text Analytics API。 使用這些教學課程可以了解如何使用 API 以不同的方式來分析文字，以符合您的經驗層級。 
 
 * 所需的最少程式設計：
+    * [使用文字分析和 Power Automate 在 Excel 中擷取資訊](tutorials/extract-excel-information.md)
     * [使用文字分析 API 和 MS Flow 來識別 Yammer 群組中註解的情緒](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [將 Power BI 與文字分析 API 整合以分析客戶的意見反應](tutorials/tutorial-power-bi-key-phrases.md)
 * 建議的程式設計體驗：

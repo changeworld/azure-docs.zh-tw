@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 268f5f5b7bf1bed27a01085974bea72af6a84f3b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304050"
+ms.locfileid: "78359090"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虛擬網路 NAT 計量
 
@@ -57,8 +57,10 @@ NAT 閘道資源會在 Azure 監視器中提供下列多維度計量：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[虛擬網路 NAT](nat-overview.md)
-- 了解 [NAT 閘道資源](nat-gateway-resource.md)
-- 了解 [Azure 監視器](../azure-monitor/overview.md)
-- 了解[針對 NAT 閘道資源進行疑難排解](troubleshoot-nat.md)。
+* 了解[虛擬網路 NAT](nat-overview.md)
+* 了解 [NAT 閘道資源](nat-gateway-resource.md)
+* 了解 [Azure 監視器](../azure-monitor/overview.md)
+* 了解[針對 NAT 閘道資源進行疑難排解](troubleshoot-nat.md)。
+* [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
+
 

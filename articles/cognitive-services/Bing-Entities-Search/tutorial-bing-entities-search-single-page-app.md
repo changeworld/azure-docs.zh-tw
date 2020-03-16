@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448597"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943126"
 ---
 # <a name="tutorial-single-page-web-app"></a>教學課程：單一頁面 Web 應用程式
 
@@ -55,6 +55,10 @@ Bing 實體搜尋 API 可讓您搜尋網路上的「實體」  和「地點」  
 
 > [!NOTE]
 > 本教學課程與[單頁 Bing Web 搜尋應用程式教學課程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)非常類似，但只會處理實體搜尋結果。
+
+## <a name="prerequisites"></a>Prerequisites
+
+若要依照本教學課程，您需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 如果您沒有此金鑰，可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
 
 ## <a name="app-components"></a>應用程式元件
 
