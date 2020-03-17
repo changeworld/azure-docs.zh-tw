@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278372"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -67,7 +67,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 4. 按一下 [ **Runbook**檔案]，然後選取要匯入的檔案。
 5. 如果 [**名稱**] 欄位已啟用，則您可以選擇變更 runbook 名稱。 名稱必須以字母開頭，而且可以包含字母、數位、底線和連字號。
 6. [Runbook 類型](automation-runbook-types.md) 會自動選取，但在考量適用的限制之後，您可以變更類型。
-7. 按一下 [建立]。 新的 Runbook 會出現在自動化帳戶的 Runbook 清單中。
+7. 按一下頁面底部的 [新增]。 新的 Runbook 會出現在自動化帳戶的 Runbook 清單中。
 8. 您必須 [發佈 Runbook](#publish-a-runbook) ，才能執行。
 
 > [!NOTE]

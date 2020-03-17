@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: 4ce048cafa4c20e3bbdbd8ecf1669748531ee122
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: f47a543143c949715fe2a49adccf074759a346fa
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129087"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381562"
 ---
 ```json
 {
@@ -21,13 +21,13 @@ ms.locfileid: "74129087"
 }
 ```
 
-`extensionBundle`提供下列屬性：
+`extensionBundle` 中有下列屬性可供使用：
 
 | 屬性 | 描述 |
 | -------- | ----------- |
-| id | Microsoft Azure 函式擴充功能配套的命名空間。 |
-| 版本 | 要安裝的配套版本。 函數執行時間一律會挑選版本範圍或間隔所定義的最大允許版本。 上述版本值允許所有來自1.0.0 的套件組合版本，但不包括2.0.0。 如需詳細資訊，請參閱[指定版本範圍的間隔標記法](/nuget/reference/package-versioning#version-ranges-and-wildcards)。 |
+| id | Microsoft Azure 函式擴充功能套件組合的命名空間。 |
+| version | 要安裝的套件組合版本。 函式執行階段一律會挑選版本範圍或間隔所定義的最大允許版本。 上述版本值允許所有 1.0.0 版本以上的所有套件組合版本，但不包括 2.0.0。 如需詳細資訊，請參閱[指定版本範圍的間隔標記法](/nuget/reference/package-versioning#version-ranges)。 |
 
-配套版本隨著套件在配套中的增加而變更。 當配套中的套件以主要版本遞增時，就會發生主要版本變更。 套件組合中的主要版本變更通常會與函式執行時間的主要版本變更一致。  
+套件組合版本會因為組合中的套件發生變更而增加。 當套件組合中的套件以主要版本遞增時，表示發生主要版本變更。 套件組合中的主要版本變更通常會與函式執行階段的主要版本變更一致。  
 
-預設配套所安裝的目前延伸模組集合會在此[副檔名 json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)檔案中列舉。
+預設套件組合目前所安裝的擴充功能集合會在此 [extensions.json 檔案](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)中列舉。

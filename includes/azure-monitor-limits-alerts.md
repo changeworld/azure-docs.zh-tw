@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 44dbe6d036000aaff403e212052f8fdb21647a80
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: b31698f166866f8ee7f89f13120f31ecbe3d4913
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71210167"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356389"
 ---
-| Resource | 預設限制 | 上限 |
+| 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
-| 計量警示（傳統） |100每個訂用帳戶的作用中警示規則。 | 請致電支援部門。 |
-| 度量警示 |1000 Azure 公用、Azure 中國世紀和 Azure Government 雲端中每個訂用帳戶的作用中警示規則。 | 請致電支援部門。 |
-| 活動記錄警示 | 100每個訂用帳戶的作用中警示規則。 | 與預設值相同。 |
+| 計量警示 (傳統) |每個訂用帳戶 100 個使用中警示規則。 | 請致電支援部門。 |
+| 度量警示 |Azure 公用、Azure China 21Vianet 和 Azure Government 雲端中每個訂用帳戶 2,000 個使用中警示規則。 | 請致電支援部門。 |
+| 活動記錄警示 | 每個訂用帳戶 100 個使用中警示規則。 | 與預設值相同。 |
 | 記錄警示 | 512 | 請致電支援部門。 |
-| 動作群組 |每個訂用帳戶2000個動作群組。 | 請致電支援部門。 |
-| 自動調整設定 |每個訂用帳戶每個區域100。 | 與預設值相同。 |
+| 動作群組 |每一訂用帳戶 2,000 個動作群組。 | 請致電支援部門。 |
+| 自動調整設定 |每個區域中每個訂用帳戶 100 個。 | 與預設值相同。 |
