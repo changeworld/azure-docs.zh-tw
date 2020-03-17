@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022268"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253178"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>從我的應用程式入口網站登入和啟動應用程式
 
@@ -79,7 +79,7 @@ ms.locfileid: "77022268"
 
 1. 選取 [新增**我的應用程式安全登入延伸**模組] 圖示 ![延伸模組圖示，](media/my-apps-portal/my-apps-portal-extension-icon.png) 在**網址**列的右邊，然後選取 [登**入以開始**使用]。
 
-2. 以滑鼠右鍵按一下 **設定** 圖示 ![設定 圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)]，然後選取 [**設定**。
+2. 以滑鼠右鍵按一下 [**設定** 圖示 ![設定 圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)]，然後選取 **設定**。
 
 3. 在 [**設定**] 方塊中，選取您想要在入口網站上看到的最近使用的應用程式數目，以及是否允許重新導向組織的內部 url，讓您可以從遠端使用它們。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77022268"
 
 1. 在您的電腦上登入您的公司或學校帳戶。
 
-2. 在支援的網頁瀏覽器中，開啟並移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂網頁，例如 `https://myapps.microsoft.com/contoso.com` ）。
+2. 在支援的網頁瀏覽器中，開啟並移至 [https://myapps.microsoft.com]，或使用組織提供的連結（如果他們將您導向至自訂網頁，例如 `https://myapps.microsoft.com/contoso.com`）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有可供您使用的所有雲端應用程式。
 
@@ -111,7 +111,7 @@ ms.locfileid: "77022268"
 
 1. 在您的行動裝置上，從[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)和[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下載並安裝 Intune Managed Browser 應用程式。
 
-2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com ，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
+2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -125,7 +125,7 @@ ms.locfileid: "77022268"
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Safari。
 
-2. 移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
+2. 移至 [https://myapps.microsoft.com]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有可供您使用的所有雲端應用程式。
 
@@ -139,7 +139,7 @@ ms.locfileid: "77022268"
 
 1. 在您的行動裝置上，啟動 web 瀏覽器應用程式，例如 Google Chrome。
 
-2. 移至 [https://myapps.microsoft.com ]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com ）。
+2. 移至 [https://myapps.microsoft.com]，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com）。
 
     [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
 
@@ -178,12 +178,12 @@ ms.locfileid: "77022268"
 
 進入**我的應用程式**入口網站之後，您可以：
 
-- 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式入口網站中存取和使用集合](my-applications-portal-workspaces.md)。
+- 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式入口網站上存取和使用集合](my-applications-portal-workspaces.md)。
 
-- 檢閱、更新或撤銷已授與應用程式的權限。 如需詳細資訊，請參閱在[我的應用程式入口網站中編輯或撤銷應用程式許可權](my-applications-portal-permissions-saved-accounts.md)。
+- 檢閱、更新或撤銷已授與應用程式的權限。 如需詳細資訊，請參閱[在我的應用程式入口網站中編輯或撤銷應用程式權限](my-applications-portal-permissions-saved-accounts.md)。
 
 >[!Note]
->如果您沒有看到任何可用的集合或類別，這表示您的系統管理員尚未設定或與您共用任何。 請洽詢您組織的技術服務人員，以取得共用集合的其他協助或許可權。
+>如果您未看到任何可用的集合或類別，這表示您的系統管理員尚未設定任何集合或類別或將其與您共用。 請洽詢組織的技術服務人員，以取得其他協助或權限來查看共用的集合。
 
 ## <a name="next-steps"></a>後續步驟
 

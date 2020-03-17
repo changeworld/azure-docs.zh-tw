@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891370"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279789"
 ---
 # <a name="get-started-with-storage-explorer"></a>開始使用儲存體總管
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概觀
 
 Microsoft Azure 儲存體總管是獨立應用程式，可讓您輕鬆地使用 Windows、macOS 和 Linux 上的 Azure 儲存體資料。 在本文中，您將瞭解幾種連接和管理 Azure 儲存體帳戶的方式。
 
 ![Microsoft Azure 儲存體總管][0]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 下列版本的 Windows 支援儲存體總管：
 
@@ -35,13 +35,13 @@ Microsoft Azure 儲存體總管是獨立應用程式，可讓您輕鬆地使用 
 
 針對所有版本的 Windows，儲存體總管需要 .NET Framework 4.6.2 或更新版本。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 下列版本的 macOS 支援儲存體總管：
 
 * macOS 10.12 的塞拉里昂和更新版本
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 在最常見的 Linux 散發套件的[貼齊存放區](https://snapcraft.io/storage-explorer)中，可以使用儲存體總管。 我們建議此安裝的貼齊存放區。 [儲存體總管] 嵌入式管理單元會在新版本發行至 [貼齊存放區] 時，安裝其所有相依性和更新。
 
@@ -108,7 +108,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * 透過[Azure AD 新增資源](#add-a-resource-via-azure-ad)。 如果您只有資料層的許可權，請使用此選項來新增 blob 容器或 Azure Data Lake Storage Gen2 Blob 儲存體容器。
 * [使用連接字串](#use-a-connection-string)。 如果您有儲存體帳戶的連接字串，請使用此選項。 儲存體總管支援「金鑰」和「[共用存取](storage/common/storage-dotnet-shared-access-signature-part-1.md)簽章」連接字串。
 * [使用共用存取](#use-a-shared-access-signature-uri)簽章 URI。 如果您有 blob 容器、檔案共用、佇列或資料表的[共用存取](storage/common/storage-dotnet-shared-access-signature-part-1.md)簽章 URI，請使用它來附加至資源。 若要取得共用存取簽章 URI，您可以使用[儲存體總管](#generate-a-sas-in-storage-explorer)或[Azure 入口網站](https://portal.azure.com)。
-* [使用名稱和金鑰](#use-a-name-and-key)。 如果您知道儲存體帳戶的其中一個帳戶金鑰，您可以使用此選項來快速連接。 在 [儲存體帳戶] 頁面中選取 [**設定**] > [ [Azure 入口網站](https://portal.azure.com)中的 [**存取金鑰**] 來尋找您的金鑰。
+* [使用名稱和金鑰](#use-a-name-and-key)。 如果您知道儲存體帳戶的其中一個帳戶金鑰，您可以使用此選項來快速連接。 在 [儲存體帳戶] 頁面中選取 [**設定**] >  [Azure 入口網站](https://portal.azure.com)中的 [**存取金鑰**] 來尋找您的金鑰。
 * [附加至本機模擬器](#attach-to-a-local-emulator)。 如果您使用其中一個可用的 Azure 儲存體模擬器，請使用此選項輕鬆地連接到您的模擬器。
 * [使用連接字串連接到 Azure Cosmos DB 帳戶](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 如果您有 CosmosDB 實例的連接字串，請使用此選項。
 * [依 URI 連接到 Azure Data Lake 存放區](#connect-to-azure-data-lake-store-by-uri)。 如果您有 Azure Data Lake 存放區的 URI，請使用此選項。
@@ -217,7 +217,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 選取 [Azure Cosmos DB API]，輸入您的**連接字串**資料，然後選取 **[確定**] 以連接 Azure Cosmos DB 帳戶。 如需如何取得連接字串的資訊，請參閱[管理 Azure Cosmos 帳戶](https://docs.microsoft.com/azure/cosmos-db/manage-account)。
 
-    ![Connection string][22]
+    ![連接字串][22]
 
 #### <a name="connect-to-azure-data-lake-store-by-uri"></a>以 URI 連線至 Azure Data Lake Store
 

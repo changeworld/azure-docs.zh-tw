@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681158"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280751"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 建立管理 App Service 方案
 
@@ -52,7 +52,7 @@ ms.locfileid: "75681158"
 > 您無法在建立方案時指定您想要的網路空間，但這可確保方案建立於與現有方案相同的網路空間中。 簡單地說，所有使用相同資源群組和區域組合建立的方案都會部署到相同的網路空間中。 比方說，如果您在資源群組 A 和區域 B 中建立方案，則您後續在資源群組 A 和區域 B 中建立的方案都會部署到相同網路空間中。 請注意，方案建立之後便不能移動網路空間，所以您無法藉由將方案移至另一個資源群組，將其移到與另一個方案「相同的網路空間」中。
 > 
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]，然後選取您想要移動的應用程式。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**，然後選取您想要移動的應用程式。
 
 2. 從左側功能表中，選取 [**變更 App Service 方案**]。
 

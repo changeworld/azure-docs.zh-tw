@@ -7,11 +7,11 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680903"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266009"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
 
@@ -21,7 +21,7 @@ ms.locfileid: "75680903"
 
 ## <a name="open-ftp-dashboard"></a>開啟 FTP 儀表板
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]。
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**。
 
     ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
 
@@ -112,6 +112,6 @@ Azure App Service 支援透過主動與被動模式進行連線。 建議使用�
 
 如需更多的進階部署案例，請嘗試[使用 Git 部署至 Azure ](deploy-local-git.md)。 Git 型部署至 Azure 可啟用版本控制、封裝還原、MSBuild 等等。
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 * [Azure App Service 部署認證](deploy-configure-credentials.md)

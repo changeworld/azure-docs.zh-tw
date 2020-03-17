@@ -4,11 +4,11 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769025"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276747"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -156,9 +156,9 @@ Jdk 和函數應用程式的相關問題[Azure 支援](https://azure.microsoft.c
 
 您可以在名為 `JAVA_OPTS`的應用程式設定中提供額外的引數。 您可以在 Azure 入口網站或 Azure CLI 中，將應用程式設定新增至部署至 Azure 的函數應用程式。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
-在 [ [Azure 入口網站](https://portal.azure.com)中，使用 [應用程式設定]](functions-how-to-use-azure-function-app-settings.md#settings)索引`JAVA_OPTS`標籤來新增設定。
+在  [Azure 入口網站](https://portal.azure.com)中，使用 [應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings)索引標籤來新增 `JAVA_OPTS` 設定。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -291,7 +291,7 @@ public class Function {
 
 如果有多個輸出繫結，請只對其中一個使用傳回值。
 
-若要傳送多個輸出值，請使用 `azure-functions-java-library` 套件中定義的 `OutputBinding<T>`。 
+若要傳送多個輸出值，請使用 `OutputBinding<T>` 套件中定義的 `azure-functions-java-library`。 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -331,7 +331,7 @@ public class Function {
 
  這些是在 `azure-functions-java-library`中定義。 它們是可與 HttpTrigger 函式搭配使用的協助程式類型。
 
-| 特殊類型      |       確定目標        | 一般使用方式                  |
+| 特殊類型      |       目標        | 一般使用方式                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP 觸發程序     | 取得方法、標頭或查詢 |
 | `HttpResponseMessage` | HTTP 輸出繫結 | 傳回200以外的狀態   |

@@ -7,11 +7,11 @@ ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680967"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266035"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持續部署至 Azure App Service
 
@@ -27,7 +27,7 @@ ms.locfileid: "75680967"
 
 針對 Bitbucket 或 GitHub，授權 Azure App Service 連接到您的存放庫。 您只需要對原始檔控制服務授權一次。 
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]。 
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**。 
 
    ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "75680967"
 
 您可以使用內建的 Kudu App Service 組建伺服器，從 GitHub、Bitbucket 或 Azure Repos 持續部署。 
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]，然後選取您想要部署的 web 應用程式。 
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**，然後選取您想要部署的 web 應用程式。 
    
 1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
    
@@ -102,7 +102,7 @@ ms.locfileid: "75680967"
 
 若要設定 Azure Pipelines （預覽）：
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**]，然後選取您想要部署的 web 應用程式。 
+1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**，然後選取您想要部署的 web 應用程式。 
    
 1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
    
