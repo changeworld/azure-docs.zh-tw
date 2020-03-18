@@ -10,24 +10,23 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818316"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924805"
 ---
 > [!NOTE]
 > Unity 支援 Windows Desktop (x86 和 x64) 或通用 Windows 平台 (x86、x64、ARM/ARM64)、Android (x86、ARM32/64) 以及 iOS (x64 模擬器、ARM32 和 ARM64)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請務必：
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=unity)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=unity)
 
 ## <a name="add-a-ui"></a>加入 UI
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: af213ba8dc6621d7d1141887edbf4ddbb645dcde
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9e24179c1c47ab3cfb78449f1784cec26197ef60
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446452"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925295"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,8 +23,7 @@ ms.locfileid: "77446452"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=dotnetcore)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 

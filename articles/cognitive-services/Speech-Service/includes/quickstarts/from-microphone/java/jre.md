@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eb131f3f53e04809ca21efda7367f03a79081bbc
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446865"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925229"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -17,8 +17,7 @@ ms.locfileid: "77446865"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=jre)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * 確定您可以存取麥克風以擷取音訊
 
 ## <a name="add-sample-code"></a>新增範例程式碼

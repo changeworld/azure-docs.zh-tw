@@ -3,89 +3,177 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 02/14/2020
+ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194288"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79200197"
 ---
-在此步驟中，您將建立 Azure SQL Database 單一資料庫。 
+在此步驟中，您會建立 Azure SQL Database 伺服器，以及使用 AdventureWorksLT 範例資料的單一資料庫。 您可以使用 Azure 入口網站功能表和畫面，或在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 指令碼來建立資料庫。
 
-> [!IMPORTANT]
-> 請務必設定防火牆規則，以使用您用來完成本文的電腦公用 IP 位址。
->
-> 如需資訊，請參閱[建立資料庫層級防火牆規則](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或者，若要判斷對於電腦的伺服器層級防火牆規則所用的 IP 位址，請參閱[建立伺服器層級防火牆](../sql-database-server-level-firewall-rule.md)。  
+所有的方法都包括設定伺服器層級的防火牆規則，以允許您用來存取伺服器之電腦的公用 IP 位址。 如需建立伺服器防火牆規則的詳細資訊，請參閱[建立伺服器層級防火牆](../sql-database-server-level-firewall-rule.md)。 您也可以設定資料庫層級的防火牆規則。 請參閱[建立資料庫層級防火牆規則](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站建立您的資源群組和單一資料庫。
+要在 Azure 入口網站中建立資源群組、SQL 伺服器和單一資料庫：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]  。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]  ，然後在搜尋方塊中輸入 Azure SQL  。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-2. 選取 [+ 新增]  以開啟 [選取 SQL 部署選項]  頁面。 您可以選取 [資料庫]  圖格上的 [顯示詳細資料]  ，以查看不同資料庫的其他資訊。
-3. 選取 [建立]  ：
+1. 登入[入口網站](https://portal.azure.com)。
+1. 從搜尋列中，搜尋並選取 [Azure SQL]。
+1. 在 [Azure SQL] 頁面上，選取 [新增]。 
+   
+   ![新增至 Azure SQL](../media/sql-database-single-database-get-started/sqldbportal.png)
+   
+1. 在 [選取 SQL 部署選項] 頁面上，選取 [SQL 資料庫] 圖格，並在**資源類型**下選取 [單一資料庫]。 您可以選取 [顯示詳細資料]，以檢視不同資料庫的更多資訊。
+1. 選取 [建立]。
+   
+   ![建立單一資料庫](../media/sql-database-single-database-get-started/create-single-database.png)
+   
+1. 在 **建立 SQL 資料庫**表單的 [基本資料] 索引標籤上，在 [專案詳細資料] 下，選取正確的 Azure **訂用帳戶** (如果尚未選取)。
+1. 在 [資源群組] 下選取 [建立新的]，輸入 myResourceGroup，然後選取 [確定]。
+1. 在 [資料庫詳細資料]下，針對**資料庫名稱**輸入 *mySampleDatabase*。
+1. 在 [伺服器] 中，選取 [建立新的]，並填寫**新伺服器**表單，如下所示：
+   - **伺服器名稱**：輸入 mysqlserver 和一些字元來表示唯一性。
+   - **伺服器管理員登入**：輸入 azureuser。
+   - **密碼**：輸入符合需求的密碼，然後在 [確認密碼] 欄位中再次輸入。
+   - **位置**：下拉並選擇位置，例如 **(美國) 美國東部**。
+   
+   選取 [確定]。
+   
+   ![New server](../media/sql-database-single-database-get-started/new-server.png)
+   
+   請記錄伺服器管理員登入和密碼，以便登入伺服器和資料庫。 如果您忘記登入或密碼，可以在建立資料庫後，於 **SQL 伺服器**頁面上取得登入名稱或重設密碼。 若要開啟 **SQL 伺服器**頁面，請選取資料庫**概觀**頁面上的伺服器名稱。
+   
+1. 在 [計算 + 儲存體] 下，如果想要重新設定預設值，請選取 [設定資料庫]。
+   
+   在 [設定] 頁面上，您可以選擇：
+   - 將**計算層**從**已佈建**變更為**無伺服器**。
+   - 檢閱並變更 [虛擬核心] 和 [資料大小上限] 的設定。
+   - 選取 [變更組態] 來變更硬體世代。
+   
+   完成變更之後，請選取 [套用]。
+   
+1. 完成時，選取 [下一步:網路功能]，為於頁面底部。
+   
+   ![新的 SQL 資料庫 - 基本資料索引標籤](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   
+1. 在 [網路功能] 索引標籤的 [連線方法] 下，選取 [公用端點]。 
+1. 在 [防火牆規則] 下，將 [新增目前的用戶端 IP 位址] 設定為 **是**。
+1. 完成時，選取 [下一步:其他設定]，位於頁面底部。
+   
+   ![網路功能索引標籤](../media/sql-database-single-database-get-started/networking.png)
+   
+   如需防火牆設定的詳細資訊，請參閱[允許 Azure 服務和資源存取此伺服器](../sql-database-networkaccess-overview.md)和[新增私人端點](../../private-link/private-endpoint-overview.md)。
+   
+1. 在 [其他設定] 索引標籤的 [資料來源] 區段中，針對 [使用現有的資料]，選取 [範例]。
+1. 選取頁面底部的 [檢閱 + 建立]。
+   
+   ![其他設定索引標籤](../media/sql-database-single-database-get-started/additional-settings.png)
+   
+1. 檢閱設定之後，選取 [建立]。
 
-   ![建立單一資料庫](../media/sql-database-get-started-portal/create-single-database.png)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-4. 在 [基本資料]  索引標籤的 [專案詳細資料]  區段中，輸入或選取下列值：
+您可以使用 Azure 命令列介面 (Azure CLI) 來建立 Azure 資源群組、SQL 伺服器和單一資料庫。 如果您不想使用 Azure Cloud Shell，請在您的電腦上[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-   - 訂用帳戶  ：下拉並選取正確的訂用帳戶 (若未出現)。
-   - **資源群組**：選取 [新建]  ，輸入 `myResourceGroup`，然後選取 [確定]  。
+若要在 Azure Cloud Shell 中執行下列程式碼範例，請選取程式碼範例標題列中的 [試用]。 當 Cloud Shell 開啟時，請選取程式碼範例標題列中的 [複製]，然後將程式碼範例貼入 Cloud Shell 視窗中。 在程式碼中，將 `<Subscription ID>` 取代為您的 Azure 訂用帳戶識別碼，並針對 `$startip` 和 `$endip`，將 `0.0.0.0` 取代為您所使用之電腦的公用 IP 位址。
 
-     ![新的 SQL 資料庫 - 基本資料索引標籤](../media/sql-database-get-started-portal/new-sql-database-basics.png)
+遵循螢幕上的提示來登入 Azure 並執行程式碼。 
 
-5. 在 [資料庫詳細資料]  區段中，輸入或選取下列值：
+您也可以從 Azure 入口網站使用 Azure Cloud Shell，方法是選取頂端列的 Cloud Shell 圖示。 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+第一次使用入口網站中的 Cloud Shell 時，請在 [歡迎使用] 對話方塊中選取 [Bash]。 後續的工作階段會在 Bash 環境中使用 Azure CLI；或者您也可以從 Cloud Shell 控制列選取 **Bash**。 
 
-   - **資料庫名稱**：輸入 `mySampleDatabase`。
-   - **伺服器**：選取 [新建]  ，輸入下列值，然後選取 [選取]  。
-       - **伺服器名稱**：輸入`mysqlserver`類別；以及一些表示唯一性的數字。
-       - **伺服器管理員登入**：輸入 `azureuser`。
-       - **密碼**：輸入符合密碼需求的複雜密碼。
-       - **位置**：從下拉式清單中選擇位置，例如 `West US`。
+下列 Azure CLI 程式碼會建立 Azure 資源群組、SQL 伺服器、單一資料庫，以及用來存取伺服器的防火牆規則。 請務必記錄所產生的資源群組和伺服器名稱，以便您稍後可以管理這些資源。
 
-         ![New server](../media/sql-database-get-started-portal/new-server.png)
+```azurecli-interactive
+#!/bin/bash
 
-      > [!IMPORTANT]
-      > 請記得記錄下伺服器管理員登入和密碼，以便在進行這個和其他快速入門時能夠登入伺服器和資料庫。 如果您忘記登入或密碼，您可以在 [SQL Server]  頁面上取得登入名稱或重設密碼。 若要開啟 [SQL Server]  頁面，請在資料庫建立後，選取資料庫 [概觀]  頁面上的伺服器名稱。
+# Sign in to Azure and set execution context (if necessary)
+az login
+az account set --subscription <Subscription ID>
 
-   - **您要使用 SQL 彈性集區嗎**：選取 [否]  選項。
-   - **計算 + 儲存體**：選取 [設定資料庫]  。 
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup-$RANDOM
+location=westus2
 
-     ![SQL Database 詳細資料](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567
 
-   - 選取 [已佈建]  。  或者，選取 [無伺服器]  以建立無伺服器資料庫。
+# Set a logical server name that is unique in the system
+servername=server-$RANDOM
 
-     ![已佈建的 Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
 
-   - 檢閱 [vCores]  和 [資料大小上限]  的設定。 視需要變更這些設定。 
-     - 您也可以選取 [變更組態]  來變更硬體世代。
-   - 選取 [套用]  。
+# Create a resource group
+az group create \
+    --name $resourceGroupName \
+    --location $location
 
-6. 選取 [網路]  索引標籤，並決定是否要[**允許 Azure 服務和資源存取此伺服器**](../sql-database-networkaccess-overview.md)，或新增[私人端點](../../private-link/private-endpoint-overview.md)。
+# Create a logical server in the resource group
+az sql server create \
+    --name $servername \
+    --resource-group $resourceGroupName \
+    --location $location  \
+    --admin-user $adminlogin \
+    --admin-password $password
 
-   ![網路索引標籤](../media/sql-database-get-started-portal/create-database-networking.png)
+# Configure a firewall rule for the server
+az sql server firewall-rule create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    -n AllowYourIp \
+    --start-ip-address $startip \
+    --end-ip-address $endip
 
-7. 選取 [其他設定]  索引標籤。 
-8. 在 [資料來源]  區段的 [使用現有資料]  下方，選取 `Sample`。
+# Create a gen5 2 vCore database in the server
+az sql db create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    --name mySampleDatabase \
+    --sample-name AdventureWorksLT \
+    --edition GeneralPurpose \
+    --family Gen5 \
+    --capacity 2 \
+```
 
-   ![其他 SQL DB 設定](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
+上述程式碼會使用這些 Azure CLI 命令：
 
-   > [!IMPORTANT]
-   > 請務必選取 [範例 (AdventureWorksLT)]  資料，以便依照本快速入門和使用這項資料的其他 Azure SQL Database 快速入門的指示操作。
+| Command | 描述 |
+|---|---|
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 | 
+| [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 建立裝載單一資料庫和彈性集區的 SQL Database 伺服器。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | 建立伺服器的防火牆規則。 | 
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | 建立資料庫。 | 
 
-9. 將其餘的值保留為預設值，然後在表單底部選取 [檢閱 + 建立]  。
-10. 檢閱最終設定，然後選取 [建立]  。
-
-11. 在 [SQL Database]  表單中，選取 [建立]  以部署和佈建資源群組、伺服器和資料庫。
+如需 Azure SQL Database Azure CLI 的範例 ，請參閱 [Azure CLI 範例](../sql-database-cli-samples.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+您可以使用 Windows PowerShell 來建立 Azure 資源群組、SQL 伺服器和單一資料庫。 如果您不想使用 Azure Cloud Shell，請[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-使用 PowerShell 建立您的資源群組和單一資料庫。
+若要在 Azure Cloud Shell 中執行下列程式碼範例，請選取程式碼標題列中的 [試用]。 當 Cloud Shell 開啟時，請選取程式碼範例標題列中的 [複製]，然後將程式碼範例貼入 Cloud Shell 視窗中。 在程式碼中，將 `<Subscription ID>` 取代為您的 Azure 訂用帳戶識別碼，並針對 `$startIp` 和 `$endIp`，將 `0.0.0.0` 取代為您所使用之電腦的公用 IP 位址。 
+
+遵循螢幕上的提示來登入 Azure 並執行程式碼。 
+
+您也可以從 Azure 入口網站使用 Azure Cloud Shell，方法是選取頂端列的 Cloud Shell 圖示。 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+第一次使用入口網站中的 Cloud Shell 時，請從 [歡迎使用] 對話方塊中選取 [PowerShell]。 後續的工作階段會使用 PowerShell，您也可以從 Cloud Shell 控制列中加以選取。 
+
+下列 PowerShell 程式碼會建立 Azure 資源群組、SQL 伺服器、單一資料庫，以及用來存取伺服器的防火牆規則。 請務必記錄所產生的資源群組和伺服器名稱，以便您稍後可以管理這些資源。
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -93,18 +181,16 @@ ms.locfileid: "78194288"
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
    $location = "West US"
    $adminLogin = "azureuser"
-   $password = "PWD27!"+(New-Guid).Guid
+   $password = "Azure1234567"
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
 
    # The ip address range that you want to allow to access your server 
-   # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
    $endIp = "0.0.0.0"
 
    # Show randomized variables
    Write-host "Resource group name is" $resourceGroupName 
-   Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
 
    # Connect to Azure
@@ -147,56 +233,15 @@ ms.locfileid: "78194288"
    $database
    ```
 
-本文的這個部分會使用下列 PowerShell Cmdlet：
+上述程式碼會使用這些 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 建立裝載單一資料庫和彈性集區的 SQL Database 伺服器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 建立邏輯伺服器的防火牆規則。 | 
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 建立新的 Azure SQL Database 單一資料庫。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 建立 Azure SQL Database 單一資料庫。 | 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-使用 AZ CLI 建立您的資源群組和單一資料庫。
-
-   ```azurecli-interactive
-   #!/bin/bash
-   # set variables
-   $subscription = "<subscriptionID>"
-   $randomIdentifier = $(Get-Random)
-
-   $resourceGroup = "resource-$randomIdentifier"
-   $location = "East US"
-   
-   $login = "sampleLogin"
-   $password = "samplePassword123!"
-
-   $server = "server-$randomIdentifier"
-   $database = "database-$randomIdentifier"
-  
-   az login # connect to Azure
-   az account set -s $subscription # set subscription context for the Azure account
-
-   echo "Creating resource group..."
-   az group create --name $resourceGroup --location $location
-
-   echo "Creating primary logical server..."
-   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
-
-   echo "Creating a gen5 2 vCore database..."
-   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
-   ```
-
-此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
-
-| Command | 注意 |
-|---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 | 
-| [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 建立裝載單一資料庫和彈性集區的 SQL Database 伺服器。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 建立伺服器的防火牆規則。 | 
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 建立資料庫。 | 
-
+如需更多 Azure SQL Database PowerShell 範例，請參閱 [Azure PowerShell 範例](../sql-database-powershell-samples.md)。
 
 ---

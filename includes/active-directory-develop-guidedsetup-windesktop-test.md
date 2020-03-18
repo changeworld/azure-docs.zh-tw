@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174157"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129529"
 ---
 ## <a name="test-your-code"></a>測試您的程式碼
 
@@ -41,10 +41,10 @@ ms.locfileid: "67174157"
 
 登入之後，您應該會看到 Microsoft Graph API 呼叫所傳回的使用者設定檔資訊。 結果即會顯示於 [API 呼叫結果]  方塊中。 在 [權杖資訊]  方塊中，應該顯示透過呼叫 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 取得的權杖基本資訊。 結果包含下列屬性：
 
-|屬性  |格式  |說明 |
+|屬性  |[格式]  |描述 |
 |---------|---------|---------|
-
-|**使用者名稱** |<span>user@domain.com</span> |用來識別使用者的使用者名稱。| |**權杖到期** |日期時間 |權杖到期的日期時間。 MSAL 會視需要更新權杖來延展到期日。|
+|**使用者名稱** |<span>user@domain.com</span> |用來識別使用者的使用者名稱。|
+|**權杖到期** |Datetime |權杖的到期時間。 MSAL 會視需要更新權杖來延展到期日。|
 
 
 <!--start-collapse-->

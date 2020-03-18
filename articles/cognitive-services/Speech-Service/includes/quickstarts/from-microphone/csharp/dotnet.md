@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 9c16e2e1726fcbf1e0b55ee0e9808a607b611ea6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445918"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925554"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,8 +22,7 @@ ms.locfileid: "77445918"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * 確定您可以存取麥克風以擷取音訊
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中開啟您的專案
@@ -56,17 +55,23 @@ ms.locfileid: "77445918"
 
 從 `SpeechRecognizer` 物件，您將呼叫 `RecognizeOnceAsync()` 方法。 此方法可讓語音服務知道您要傳送單一片語以進行辨識，且一旦識別出該片語即停止辨識語音。
 
-在 using 陳述式中，新增下列程式碼：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
+在 using 陳述式中，新增下列程式碼。
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>顯示辨識結果 (或錯誤)
 
 當語音服務傳回辨識結果時，建議您對其執行一些動作。 為了簡單起見，我們將結果列印到主控台。
 
-在 using 陳述式中的 `RecognizeOnceAsync()` 下方，新增此程式碼：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
+在 using 陳述式中的 `RecognizeOnceAsync()` 下方，新增此程式碼。
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
 ## <a name="check-your-code"></a>檢查您的程式碼
 
-此時，您的程式碼應該如下所示：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
+此時，您的程式碼應會如下所示。
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
 
 ## <a name="build-and-run-your-app"></a>建置並執行您的應用程式
 

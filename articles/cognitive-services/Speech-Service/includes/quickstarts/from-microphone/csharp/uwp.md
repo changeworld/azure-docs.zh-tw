@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: e6934e908111773cef3f7ddcfc2a971d8e1706bf
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927946"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925069"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,8 +22,7 @@ ms.locfileid: "75927946"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * 確定您可以存取麥克風以擷取音訊
 
 如果您已經這麼做，很棒。 讓我們繼續進行。
@@ -64,7 +63,9 @@ ms.locfileid: "75927946"
 
 從 `SpeechRecognizer` 物件，您將呼叫 `RecognizeOnceAsync()` 方法。 此方法可讓語音服務知道您要傳送單一片語以進行辨識，且一旦識別出該片語即停止辨識語音。
 
-在 using 陳述式中，新增下列程式碼：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
+在 using 陳述式中，新增下列程式碼。
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>顯示辨識結果 (或錯誤)
 

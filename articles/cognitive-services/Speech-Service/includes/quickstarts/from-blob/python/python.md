@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 646cce25efcbebab6229389f63912346e3712cdd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942797"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925170"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請務必：
 
 > [!div class="checklist"]
-> * [設定開發環境](../../../../quickstarts/setup-platform.md)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md)
 > * [建立 Azure 語音資源](../../../../get-started.md)
 > * [將原始程式檔上傳至 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 

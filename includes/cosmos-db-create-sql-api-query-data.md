@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174524"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927398"
 ---
 您可以在 [資料總管] 中，使用查詢來擷取和篩選您的資料。
 
-1. 在 [資料總管] 中的 [文件]  索引標籤頂端，檢閱預設查詢 `SELECT * FROM c`。 此查詢會依照識別碼順序擷取並顯示集合中的所有文件。 
+1. 在 [資料總管] 中的 [項目] 索引標籤頂端，檢閱預設查詢 `SELECT * FROM c`。 此查詢會依照識別碼順序擷取並顯示集合中的所有文件。 
    
    ![[資料總管] 中的預設查詢為 `SELECT * FROM c`](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    
-1. 若要變更查詢，請選取 [編輯篩選條件]  ，以 `ORDER BY c._ts DESC` 取代預設查詢，然後選取 [套用篩選條件]  。
+1. 若要變更查詢，請選取 [編輯篩選條件]，以 `ORDER BY c._ts DESC` 取代預設查詢，然後選取 [套用篩選條件]。
    
    ![新增 ORDER BY c._ts DESC 並按一下 [套用篩選]，以變更預設查詢](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 

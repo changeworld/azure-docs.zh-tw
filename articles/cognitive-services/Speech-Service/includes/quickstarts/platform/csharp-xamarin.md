@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 664dbd01ae3e9db7b765eec85e874267c32691e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ba4ef590b3becd9259230246555d6c74b0078b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467498"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925886"
 ---
-本指南說明如何安裝適用於 [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，Xamarin 是開放原始碼平台，可使用 .NET 建立適用於 iOS、Android 和 Windows 的現代化高效能應用程式。 
+本指南說明如何安裝適用於 [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，Xamarin 是開放原始碼平台，可使用 .NET 建立適用於 iOS、Android 和 Windows 的現代化高效能應用程式。 如果您想直接開始使用套件名稱，請在 NuGet 主控台中執行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 

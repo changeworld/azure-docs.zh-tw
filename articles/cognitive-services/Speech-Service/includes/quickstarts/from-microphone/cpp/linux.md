@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 82b6647a87fad12243b1034f7d5c624f73d5aeb8
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 1ba1f2a61a293880e81dde0ce1f93460a555fa62
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445761"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925298"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,8 +22,7 @@ ms.locfileid: "77445761"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=linux)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=linux)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * 確定您可以存取麥克風以擷取音訊
 
 ## <a name="add-sample-code"></a>新增範例程式碼

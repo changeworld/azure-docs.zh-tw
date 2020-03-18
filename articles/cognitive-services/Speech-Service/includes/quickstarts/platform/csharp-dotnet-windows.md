@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467512"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924833"
 ---
-本指南說明如何安裝適用於 .NET Framework (Windows) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
+本指南說明如何安裝適用於 .NET Framework (Windows) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，請在 NuGet 主控台中執行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -71,7 +71,21 @@ ms.locfileid: "75467512"
 
    安裝套件之後，[套件管理員主控台]  視窗中會出現確認訊息。
 
-您現在可以繼續進行下列[後續步驟](#next-steps)。
+### <a name="choose-target-architecture"></a>選擇目標架構
+
+若要建置及執行主控台應用程式，請建立符合電腦架構的平台組態。
+
+1. 從功能表列選取 [建置]   > [組態管理員]  。 [組態管理員]  對話方塊隨即出現。
+
+   ![組態管理員對話方塊](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. 在 [使用中的方案平台]  下拉式方塊中，選取 [新增]  。 [新增方案平台]  對話方塊隨即出現。
+
+1. 在 [輸入或選取新平台]  下拉式方塊中：
+   - 如果您執行 64 位元的 Windows，請選取 **x64**。
+   - 如果您執行 32 位元的 Windows，請選取 **x86**。
+
+1. 選取 [確定]  ，然後選取 [關閉]  。
 
 ## <a name="next-steps"></a>後續步驟
 

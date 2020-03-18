@@ -1,20 +1,15 @@
 ---
-title: 快速入門：辨識來自音訊檔案的語音，Python - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/30/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: f3a6ffeede05c1a2e9a883d40df19819e6a4bb3b
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: b3d7ea44acac99cc8077993f679bdcea2e5018fa
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445344"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082504"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,8 +18,7 @@ ms.locfileid: "77445344"
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
 > * [建立 LUIS 應用程式並取得端點金鑰](../../../../quickstarts/create-luis.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?pivots=programming-language-python)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -93,7 +87,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>透過 Visual Studio Code 安裝及使用語音 SDK
 
-1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 或更新版本)。
+1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 到 3.8 版本)。
 1. 下載並安裝 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 開啟 Visual Studio Code，然後安裝 Python 擴充功能。 從功能表選取 [檔案]   > [喜好設定]   > [擴充功能]  。 搜尋 **Python**。
 

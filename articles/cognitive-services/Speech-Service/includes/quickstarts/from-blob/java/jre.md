@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942672"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925916"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請務必：
 
 > [!div class="checklist"]
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [建立 Azure 語音資源](../../../../get-started.md)
 > * [將原始程式檔上傳至 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -32,7 +31,9 @@ ms.locfileid: "75942672"
 ## <a name="add-a-reference-to-gson"></a>新增對 Gson 的參考
 我們將在本快速入門中使用外部 JSON 序列化程式/還原序列化程式。 針對 Java，我們選擇 [Gson](https://github.com/google/gson) \(英文\)。
 
-開啟您的 pom.xml，並新增下列參考： [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+開啟您的 pom.xml，並新增下列參考。
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>從重複使用程式碼開始著手
 

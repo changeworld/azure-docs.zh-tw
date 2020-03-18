@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383953"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰](~/articles/cognitive-services/Speech-Service/get-started.md)。
-* [Python 3.5 或更新版本](https://www.python.org/downloads/)。
+* [Python 3.5 到 3.8 版本](https://www.python.org/downloads/)。
 * Python 語音 SDK 套件適用於下列作業系統：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 版或更新版本。
-    * Linux：x64 上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+    * Linux：x64 上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8 和 CentOS 8。
 * 在 Linux 上，執行下列命令以安裝必要的套件：
 
   * 在 Ubuntu 上：
@@ -40,6 +40,16 @@ ms.locfileid: "77445358"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * 在 RHEL/CentOS 8 上：
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 * 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>透過 Visual Studio Code 安裝及使用語音 SDK
 
-1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 或更新版本)。
+1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 到 3.8 版本)。
 1. 下載並安裝 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 開啟 Visual Studio Code，然後安裝 Python 擴充功能。 從功能表選取 [檔案]   > [喜好設定]   > [擴充功能]  。 搜尋 **Python**。
 

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469040"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924882"
 ---
-本指南說明如何安裝適用於 64 位元 JAVA 8 JRE 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
+本指南說明如何安裝適用於 64 位元 JAVA 8 JRE 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，就無法在 Maven 中央存放庫中使用 JAVA SDK。 無論您使用的是 Gradle 或 `pom.xml` 相依性檔案，都需要新增指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自訂存放庫 (請參閱下方的套件名稱)。
 
 > [!NOTE]
 > 針對語音裝置 SDK 和 Roobo 裝置，請參閱[語音裝置 SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md)。
@@ -29,7 +29,7 @@ ms.locfileid: "75469040"
 - JAVA 語音 SDK 套件適用於下列作業系統：
   - Windows：僅限 64 位元
   - Mac：macOS X 10.13 版或更新版本
-  - Linux：僅限 Ubuntu 16.04、Ubuntu 18.04 或 Debian 9 上的 64 位元
+  - Linux：64 位元僅在 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8 和 CentOS 8 提供
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -51,6 +51,16 @@ ms.locfileid: "75469040"
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
+
+  - 在 RHEL/CentOS 8 上，執行下列命令以安裝必要的套件：
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+        ```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 - 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 請注意，第一次安裝時，可能需要重新啟動 Windows，再繼續進行本指南。
 

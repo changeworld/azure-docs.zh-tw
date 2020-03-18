@@ -1,20 +1,15 @@
 ---
-title: 快速入門：辨識來自音訊檔案的語音，C++ (Linux) - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: erhopf
-ms.openlocfilehash: dcd34170668230b1e1a3224844d8779b8f51d1db
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.date: 03/10/2020
+ms.author: dapine
+ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445335"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082618"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,8 +17,7 @@ ms.locfileid: "77445335"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=linux)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=linux)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

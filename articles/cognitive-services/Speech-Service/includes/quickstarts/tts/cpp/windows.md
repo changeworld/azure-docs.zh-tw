@@ -10,21 +10,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 35c8eb640e3c8c9e33486d5126f83dd40b5b96e0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ab2193a1ea34b176e5f97806f0099dfc86d75965
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818394"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925677"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請務必：
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md?tabs=windows)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
@@ -42,9 +41,9 @@ ms.locfileid: "74818394"
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 現在會編譯程式碼，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-1. 選擇 [偵錯]   > [開始偵錯]  \(或按 **F5**\) 以啟動 **helloworld** 應用程式。
+1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
 
 1. 鍵入英文片語或句子。 應用程式會將您的文字傳送到語音服務，文字會轉換為合成語音並傳送回應用程式，以在喇叭上播放。
 

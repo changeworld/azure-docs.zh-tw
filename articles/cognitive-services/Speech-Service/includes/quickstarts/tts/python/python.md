@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 19/14/2020
 ms.author: dapine
-ms.openlocfilehash: 7be9037ddfd19d82263b37fe0b824e3c2b3f5078
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037519"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925841"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,8 +23,7 @@ ms.locfileid: "76037519"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定開發環境](../../../../quickstarts/setup-platform.md)
-> * [建立空的範例專案](../../../../quickstarts/create-project.md)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md)
 
 ## <a name="support-and-updates"></a>支援及更新
 
@@ -52,7 +51,7 @@ python quickstart.py
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>透過 Visual Studio Code 安裝及使用語音 SDK
 
-1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 或更新版本)。
+1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 到 3.8 版本)。
 1. 下載並安裝 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 開啟 Visual Studio Code，然後安裝 Python 擴充功能。 從功能表選取 [檔案]   > [喜好設定]   > [擴充功能]  。 搜尋 **Python**。
 
