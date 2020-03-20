@@ -144,6 +144,6 @@ ms.locfileid: "77485398"
 Pg_stat_statements 提供的查詢執行資訊與伺服器效能的影響，會在記錄每個 SQL 語句時受到取捨。 如果您不是使用 pg_stat_statements 延伸模組，建議您將 `pg_stat_statements.track` 設定為 [`none`]。 某些協力廠商監視服務可能會依賴 pg_stat_statements 來傳遞查詢效能深入解析，因此請確認是否符合您的情況。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
-您可以使用 dblink 和 postgres_fdw，從一個于 postgresql 伺服器連線到另一個，或連接到相同伺服器中的另一個資料庫。 接收端伺服器必須允許來自傳送端伺服器通過其防火牆的連線。 若要使用這些擴充功能在適用於 PostgreSQL 的 Azure 資料庫伺服器之間進行連線，請將 [**允許存取 Azure 服務**] 設定為 [開啟]。 如果您想要使用延伸模組來回複至相同的伺服器，您也需要開啟此設定。 [**允許存取 Azure 服務**] 設定可在 Postgres 伺服器的 [連線**安全性**] 底下的 [Azure 入口網站] 頁面中找到。 啟用 [**允許存取 azure 服務]，以將**所有 azure ip 列入白名單。
+您可以使用 dblink 和 postgres_fdw，從一個于 postgresql 伺服器連線到另一個，或連接到相同伺服器中的另一個資料庫。 接收端伺服器必須允許來自傳送端伺服器通過其防火牆的連線。 若要使用這些擴充功能在適用於 PostgreSQL 的 Azure 資料庫伺服器之間進行連線，請將 [**允許存取 Azure 服務**] 設定為 [開啟]。 如果您想要使用延伸模組來回複至相同的伺服器，您也需要開啟此設定。 [**允許存取 Azure 服務**] 設定可在 Postgres 伺服器的 [連線**安全性**] 底下的 [Azure 入口網站] 頁面中找到。 啟用 [**允許存取 azure 服務]，以將**所有 azure ip 列入允許清單。
 
 目前不支援來自適用於 PostgreSQL 的 Azure 資料庫的輸出連線，但與其他適用於 PostgreSQL 的 Azure 資料庫伺服器的連接除外。

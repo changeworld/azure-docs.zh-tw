@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 瞭解如何在啟用和使用 Azure Dev Spaces 時，疑難排解和解決常見的問題
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: fdb0d8afa55f87ae61213b189e9e24ec63bfcfb8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: af6577684af559b7e152a53fbe4293740d676e6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265281"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370826"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -76,12 +76,15 @@ Azure Dev Spaces 無法在 AKS 叢集上建立控制器，因為它找不到處�
 
 若要修正此問題，請在您的 AKS 叢集上[更新您的污點](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)設定，以確保至少有一個 Linux 節點允許排程 pod，而不指定容差。 此外，請確定至少有一個 Linux 節點允許在不指定容差的情況下排程 pod，處於*就緒*狀態。 如果您的節點花費較長的時間來達到 [*就緒*] 狀態，您可以嘗試重新開機您的節點。
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>執行 `az aks use-dev-spaces` 時發生「Azure Dev Spaces CLI 未正確安裝」錯誤
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>執行 az aks 時發生錯誤「Azure Dev Spaces CLI 未正確安裝」
 
 Azure Dev Spaces CLI 的更新已變更其安裝路徑。 如果您使用2.0.63 之前的 Azure CLI 版本，您可能會看到此錯誤。 若要顯示您的 Azure CLI 版本，請使用 `az --version`。
 
 ```azurecli
 az --version
+```
+
+```output
 azure-cli                         2.0.60 *
 ...
 ```
@@ -126,7 +129,7 @@ Azure Dev Spaces 提供 C# 和 Node.js 的原生支援。 當您使用其中一�
 如果您執行 `azds up` 並搭配 `--verbose` 參數，或在 Visual Studio 中啟用詳細資訊記錄，則會看到其他詳細資料：
 
 ```cmd
-$ azds up --verbose
+azds up --verbose
 
 Installed chart in 2s
 Waiting for container image build...
@@ -265,7 +268,7 @@ Service cannot be started.
 例如，若要停止和停用*Windows BranchCache*服務：
 * 從命令提示字元執行 `services.msc`。
 * 以滑鼠右鍵按一下 [ *BranchCache* ]，然後選取 [*屬性*]。
-* 按一下 [停止]。
+* 按一下 [*停止*]。
 * （選擇性）您可以將 [*啟動類型*] 設為 [*停用*] 來停用它。
 * 按一下 [確定]。
 
@@ -304,7 +307,7 @@ Service cannot be started.
 
 執行 Visual Studio Code 偵錯工具時，您可能會看到此錯誤。 VS Code 延伸模組預設會使用 `src` 作為容器上專案的工作目錄。 如果您已將 `Dockerfile` 更新成指定不同的工作目錄，就可能看到此錯誤。
 
-若要修正此問題，請更新專案資料夾的 `.vscode` 子目錄下的 `launch.json` 檔案。 將 `configurations->cwd` 指示詞變更成指向與您專案之 `Dockerfile`.中所定義 `WORKDIR` 相同的目錄。 您可能也需要更新 `configurations->program` 指示詞。
+若要修正此問題，請更新專案資料夾的 `.vscode` 子目錄下的 `launch.json` 檔案。 將 `configurations->cwd` 指示詞變更成指向與您專案之 `WORKDIR`.中所定義 `Dockerfile` 相同的目錄。 您可能也需要更新 `configurations->program` 指示詞。
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>「管道程式 ' azds ' 意外結束並出現代碼126」錯誤。
 
@@ -361,6 +364,9 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 ```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
+```
+
+```bash
 kubectl delete InitializerConfiguration azds
 ```
 
@@ -395,7 +401,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>與 Dev Spaces 服務相關聯的公用 URL 進行 DNS 名稱解析失敗
 
-您可以藉由對 `azds prep` 命令指定 `--enable-ingress` 參數，或藉由在 Visual Studio 中選取 `Publicly Accessible` 核取方塊，來為服務設定公用 URL 端點。 當您在 Dev Spaces 中執行服務時，公用 DNS 名稱會自動完成註冊。 如果此 DNS 名稱未完成註冊，您就會在連線至公用 URL 時，於網頁瀏覽器中看到「頁面無法顯示」或「網站無法連線」的錯誤。
+您可以藉由對 `--enable-ingress` 命令指定 `azds prep` 參數，或藉由在 Visual Studio 中選取 `Publicly Accessible` 核取方塊，來為服務設定公用 URL 端點。 當您在 Dev Spaces 中執行服務時，公用 DNS 名稱會自動完成註冊。 如果此 DNS 名稱未完成註冊，您就會在連線至公用 URL 時，於網頁瀏覽器中看到「頁面無法顯示」或「網站無法連線」的錯誤。
 
 若要修正此問題：
 
@@ -423,7 +429,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 1. 如果容器處於建置/部署程序，您可以等待 2-3 秒，然後再次嘗試存取服務。 
 1. 檢查下列資產中的埠設定：
-    * **[Helm 圖表](https://docs.helm.sh)：** 由 `service.port` 所指定，並 `deployment.containerPort` yaml scaffold by `azds prep` 命令。
+    * **[Helm 圖](https://docs.helm.sh)：** 由 `service.port` 所指定，並 `deployment.containerPort` yaml scaffold by `azds prep` 命令。
     * 在應用程式程式碼中開啟的任何連接埠，例如在 Node.js 中：`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>找不到類型或命名空間名稱 "MyLibrary"
@@ -471,12 +477,12 @@ kubectl -n my-namespace delete pod --all
 
 若要在 AKS 叢集上啟用 Azure Dev Spaces，以限制來自叢集節點的輸出流量，您必須允許下列 Fqdn：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS：443 | 提取 linux alpine 和其他 Azure Dev Spaces 映射 |
 | gcr.io | HTTP：443 | 提取 helm/tiller 映射|
 | storage.googleapis.com | HTTP：443 | 提取 helm/tiller 映射|
-| azds-<guid>.<location>. azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN|
+| azds-<guid>。<location>。 azds.io | HTTPS：443 | 與您的控制器 Azure Dev Spaces 後端服務進行通訊。 您可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到確切的 FQDN|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>錯誤「找不到訂用帳戶 \<subscriptionId\>」中的叢集 \<叢集\>
 
@@ -491,9 +497,12 @@ kubectl -n my-namespace delete pod --all
 
 在[AKS 叢集中輪替憑證](../aks/certificate-rotation.md)之後，某些作業（例如 `azds space list` 和 `azds up`）將會失敗。 在您的叢集上輪替憑證之後，您也需要重新整理 Azure Dev Spaces 控制器上的憑證。
 
-若要修正此問題，請確定您的*kubeconfig*已使用 `az aks get-credentials` 更新的憑證，然後執行 `azds controller refresh-credentials` 命令。 例如:
+若要修正此問題，請確定您的*kubeconfig*已使用 `az aks get-credentials` 更新的憑證，然後執行 `azds controller refresh-credentials` 命令。 例如：
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>
+```
+
+```console
 azds controller refresh-credentials -g <resource group name> -n <cluster name>
 ```

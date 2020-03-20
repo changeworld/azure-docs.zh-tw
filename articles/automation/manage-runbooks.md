@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278372"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366831"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -33,7 +33,7 @@ ms.locfileid: "79278372"
 
 ### <a name="create-a-runbook-with-powershell"></a>使用 PowerShell 建立 Runbook
 
-您可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) Cmdlet 來建立空的[PowerShell 工作流程 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用*Type*參數來指定為**AzAutomationRunbook**定義的其中一個 runbook 類型。
+您可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) Cmdlet 來建立空的[PowerShell 工作流程 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用 `Type` 參數來指定為 `New-AzAutomationRunbook`定義的其中一個 runbook 類型。
 
 下列範例顯示如何建立新的空白 runbook。
 
@@ -67,7 +67,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 4. 按一下 [ **Runbook**檔案]，然後選取要匯入的檔案。
 5. 如果 [**名稱**] 欄位已啟用，則您可以選擇變更 runbook 名稱。 名稱必須以字母開頭，而且可以包含字母、數位、底線和連字號。
 6. [Runbook 類型](automation-runbook-types.md) 會自動選取，但在考量適用的限制之後，您可以變更類型。
-7. 按一下頁面底部的 [新增]。 新的 Runbook 會出現在自動化帳戶的 Runbook 清單中。
+7. 按一下 **[建立]** 。 新的 Runbook 會出現在自動化帳戶的 Runbook 清單中。
 8. 您必須 [發佈 Runbook](#publish-a-runbook) ，才能執行。
 
 > [!NOTE]
@@ -75,7 +75,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>使用 Windows PowerShell 從腳本檔案匯入 runbook
 
-使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) Cmdlet 將腳本檔案匯入為草稿 PowerShell 工作流程 runbook。 如果 runbook 已經存在，除非您搭配 Cmdlet 使用*Force*參數，否則匯入將會失敗。
+使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) Cmdlet 將腳本檔案匯入為草稿 PowerShell 工作流程 runbook。 如果 runbook 已經存在，除非您使用 `Force` 參數搭配 Cmdlet，否則匯入將會失敗。
 
 下列範例顯示如何將腳本檔案匯入 runbook。
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>測試 Runbook
 
-當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但[輸出](automation-runbook-output-and-messages.md#output-stream)和[警告和錯誤](automation-runbook-output-and-messages.md#message-streams)資料流程會顯示在 [測試輸出] 窗格中。 只有在*VerbosePreference*變數 （automation-runbook-Output-messages. md # 喜好設定變數）設為 [**繼續**] 時，才會在 [輸出] 窗格中顯示訊息給[詳細資訊資料流程](automation-runbook-output-and-messages.md#message-streams)。
+當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但[輸出](automation-runbook-output-and-messages.md#output-stream)和[警告和錯誤](automation-runbook-output-and-messages.md#message-streams)資料流程會顯示在 [測試輸出] 窗格中。 只有當 `VerbosePreference` 變數 （automation-runbook-Output-messages. md # 喜好設定變數）設為 [繼續] 時，才會在 [輸出] 窗格中顯示訊息至[詳細資訊資料流程](automation-runbook-output-and-messages.md#message-streams)。
 
 即使執行的是草稿版本，Runbook 仍會正常執行，並對環境中的資源執行任何動作。 因此，您只應在非生產資源中測試 Runbook。
 
