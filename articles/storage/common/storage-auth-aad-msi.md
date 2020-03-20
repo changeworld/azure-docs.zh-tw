@@ -11,11 +11,11 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965769"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255336"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -47,7 +47,7 @@ Azure 身分識別用戶端程式庫的優點是，它可讓您使用相同的�
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>指派角色型存取控制（RBAC）角色以存取資料
 
-當 Azure AD 安全性主體嘗試存取 blob 或佇列資料時，該安全性主體必須擁有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 RBAC 角色指派給安全性主體，以授與 Azure 儲存體中 blob 或佇列資料的存取權。 如需透過 RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中的
+當 Azure AD 安全性主體嘗試存取 blob 或佇列資料時，該安全性主體必須擁有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 RBAC 角色指派給安全性主體，以授與 Azure 儲存體中 blob 或佇列資料的存取權。 如需透過 RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中的 <<c0>指派存取權限的 RBAC 角色一節。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在開發環境中驗證使用者
 

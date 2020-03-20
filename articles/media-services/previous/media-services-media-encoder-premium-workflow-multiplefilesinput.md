@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015442"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250994"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>搭配進階編碼器使用多個輸入檔案和元件屬性
 ## <a name="overview"></a>總覽
-在某些情況下，您可能需要在使用「媒體編碼器高階工作流程」 媒體處理器提交工作時，自訂元件屬性、指定剪輯清單 XML 內容，或傳送多個輸入檔案。 部分範例如下：
+在某些情況下，您可能需要在使用「媒體編碼器高階工作流程」 媒體處理器提交工作時，自訂元件屬性、指定剪輯清單 XML 內容，或傳送多個輸入檔案。 部份範例如下：
 
 * 在每個輸入視訊的執行階段在視訊上覆疊文字並設定文字值 (例如，目前的日期)。
 * 自訂剪輯清單 XML (以指定一或多個包含或不含修剪的來源檔案等)。
@@ -83,7 +83,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 **setRuntimeProperties** 可用來覆寫工作流程元件中的屬性。
 
-範例:
+範例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,7 +99,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ### <a name="property-with-an-xml-value"></a>具有 XML 值的屬性
 若要設定預期會有 XML 值的屬性，請使用 `<![CDATA[ and ]]>`進行封裝。
 
-範例:
+範例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -141,7 +141,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![動作/編輯](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
-![內容](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
+![屬性](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
 ## <a name="multiple-input-files"></a>多個輸入檔案
 提交給「媒體編碼器高階工作流程」 的每個工作都需要兩個資產︰
@@ -271,7 +271,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>範例 1：在視訊上方覆疊影像
 
-### <a name="presentation"></a>簡報
+### <a name="presentation"></a>展示
 請設想視訊編碼時要在輸入視訊上覆疊標誌影像的範例。 在此範例中，輸入視訊的名稱為 "Microsoft_HoloLens_Possibilities_816p24.mp4"，而標誌的名稱為 "logo.png"。 您應執行下列步驟：
 
 * 使用工作流程檔案建立工作流程資產 (參閱下列範例)。

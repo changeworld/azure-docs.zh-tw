@@ -10,11 +10,11 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157443"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268479"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以從用戶端應用程式授權要求
 
@@ -32,7 +32,7 @@ ms.locfileid: "77157443"
 
 使用 Azure AD 來授與儲存體資源存取權的第一個步驟，是向[Azure 入口網站](https://portal.azure.com)向 Azure AD 租使用者註冊您的用戶端應用程式。 當您註冊用戶端應用程式時，您會提供應用程式的相關資訊以 Azure AD。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的用戶端識別碼 (也稱為「應用程式識別碼」)。 若要深入了解用戶端識別碼，請參閱 [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要註冊您的 Azure 儲存體應用程式，請遵循[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)中所示的步驟。 下圖顯示註冊 web 應用程式的一般設定：
+若要註冊您的 Azure 儲存體應用程式，請遵循 [快速入門中所示的步驟：使用 Microsoft 身分識別平臺來註冊應用程式](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 下圖顯示註冊 web 應用程式的一般設定：
 
 ![顯示如何向 Azure AD 註冊儲存體應用程式的螢幕擷取畫面](./media/storage-auth-aad-app/app-registration.png)
 
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 <> [為何要更新 Microsoft 身分識別平臺（v2.0）](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) 中的「**增量和動態同意**」一節。
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體一開始可以要求一組最小許可權，並視需要新增許可權一段時間。 當您的程式碼要求存取權杖時，請在 `scope` 參數中指定您的應用程式在任何指定時間所需的許可權範圍。 如需有關增量同意的詳細資訊，請參閱 [為何要更新 Microsoft 身分識別平臺（v2.0）](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的「**增量和動態同意**」一節。
 
 下列方法會針對要求增量同意來建立驗證屬性：
 

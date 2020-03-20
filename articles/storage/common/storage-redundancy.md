@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471341"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255258"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -61,14 +61,14 @@ Azure 儲存體帳戶中的資料一律會在主要區域中複寫三次。 Azur
 
 |    儲存體帳戶類型    |    支援區域    |    支援的服務    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    一般用途 v2<sup>1</sup>    | 東南亞<br /> 北歐<br />  西歐<br /> 法國中部<br /> 日本東部<br /> 英國南部<br /> 美國中部<br /> 美國東部<br /> 美國東部 2<br /> 美國西部 2    |    區塊 Blob<br /> 分頁 blob<sup>2</sup><br /> 檔案共用（標準）<br /> 資料表<br /> 佇列<br /> |
+|    一般用途 v2<sup>1</sup>    | 東南亞<br /> 澳大利亞東部<br /> 北歐<br />  西歐<br /> 法國中部<br /> 日本東部<br /> 南非北部<br /> 英國南部<br /> 美國中部<br /> 美國東部<br /> 美國東部 2<br /> 美國西部 2    |    區塊 Blob<br /> 分頁 blob<sup>2</sup><br /> 檔案共用（標準）<br /> 資料表<br /> 佇列<br /> |
 |    BlockBlobStorage<sup>1</sup>    | 西歐<br /> 美國東部    |    僅限區塊 Blob    |
 |    FileStorage    | 西歐<br /> 美國東部    |    僅 Azure 檔案儲存體    |
 
 <sup>1</sup>封存層目前不支援 ZRS 帳戶。<br />
-<sup>2</sup>個適用于虛擬機器的 Azure 磁片，包括受控和非受控磁片，僅支援 LRS。 它們不支援 ZRS 或切換。 如需受控磁片的詳細資訊，請參閱[Azure 受控磁片的定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
+<sup>2</sup>包含虛擬機器之 Azure 受控磁片的儲存體帳戶一律使用 LRS。 Azure 非受控磁片也應該使用 LRS。 您可以為使用 GRS 的 Azure 非受控磁片建立儲存體帳戶，但不建議這種做法，這是因為非同步異地複寫的一致性可能發生問題。 受控或非受控磁片都不支援 ZRS 或切換。 如需受控磁片的詳細資訊，請參閱[Azure 受控磁片的定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
-如需哪些區域支援 ZRS 的相關資訊，請參閱 [什麼是 Azure 可用性區域？](../../availability-zones/az-overview.md)中**的服務支援（依區域**）。
+如需哪些區域支援 ZRS 的相關資訊，請參閱 <<c1>什麼是 Azure 可用性區域？中**的服務支援（依區域**）。
 
 ## <a name="redundancy-in-a-secondary-region"></a>次要區域中的冗余
 
@@ -109,10 +109,12 @@ GRS 和切換之間的主要差異在於資料在主要區域中的複寫方式�
 - 東南亞
 - 北歐
 - 西歐
+- 日本東部
 - 英國南部
 - 美國東部
 - 美國東部 2
 - 美國中部
+- 美國西部 2
 
 Microsoft 會繼續在其他 Azure 區域中啟用切換和 RA 切換。 請定期查看[Azure 服務更新](https://azure.microsoft.com/updates/)頁面，以取得支援區域的相關資訊。
 
