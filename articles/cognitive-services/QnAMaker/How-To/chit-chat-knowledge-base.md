@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221459"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>在知識庫中新增閒聊
 
@@ -31,7 +31,7 @@ ms.locfileid: "74901203"
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |風格|範例|
 |--|--|
-|專業|年齡並不是真的適用于我。|
+|Professional|年齡並不是真的適用于我。|
 |易記|我的年齡並不太長。|
 |詼諧|我是免費使用的。|
 |管也|我沒有年齡。|
@@ -46,7 +46,7 @@ ms.locfileid: "74901203"
 |語言|
 |--|
 |中文|
-|繁體中文|
+|英文|
 |法文|
 |德國|
 |義大利文|
@@ -86,6 +86,6 @@ ms.locfileid: "74901203"
 > [!div class="nextstepaction"]
 > [匯入知識庫](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>請參閱 
+## <a name="see-also"></a>另請參閱 
 
 [QnA Maker 概觀](../Overview/overview.md)
