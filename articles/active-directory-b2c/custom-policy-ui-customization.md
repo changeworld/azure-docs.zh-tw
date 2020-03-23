@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245989"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面
 
@@ -24,22 +24,22 @@ ms.locfileid: "78374831"
 
 藉由完成本文中的步驟，您可以建立具有品牌和外觀的註冊和登入自訂原則。 使用 Azure Active Directory B2C (Azure AD B2C)，幾乎可完全掌控對使用者呈現的 HTML 和 CSS 內容。 使用自訂原則時，您會以 XML 設定 UI 自訂，而不是在 Azure 入口網站中使用控制項。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您應該有一個使用本機帳戶來註冊和登入的有效自訂原則。
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. 修改擴充檔案
+## <a name="4-modify-the-extensions-file"></a>4.修改擴充檔案
 
 若要設定 UI 自訂，請將**ContentDefinition**及其子項目從基底檔案複製到擴充檔案。
 
-1. 開啟原則的基底檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> 。 此基底檔案是自訂原則入門套件中所包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 開啟原則的基底檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>。 此基底檔案是自訂原則入門套件中所包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜尋 **ContentDefinitions** 元素的完整內容並且複製。
 1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
 1. 貼上您複製的 **ContentDefinitions** 元素完整內容，作為 **BuildingBlocks** 元素的子項目。
-1. 在您複製的 XML 中，搜尋包含 **的**ContentDefinition`Id="api.signuporsignin"` 元素。
-1. 將 **LoadUri** 的值變更為您上傳至儲存體的 HTML 檔案 URL。 例如： `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
+1. 在您複製的 XML 中，搜尋包含 `Id="api.signuporsignin"` 的 **ContentDefinition** 元素。
+1. 將 **LoadUri** 的值變更為您上傳至儲存體的 HTML 檔案 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     您的自訂原則看起來應該像下列程式碼片段：
 
@@ -60,7 +60,7 @@ ms.locfileid: "78374831"
 
 1. 儲存擴充檔案。
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. 上傳並測試已更新的自訂原則
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5.上傳並測試您已更新的自訂原則
 
 ### <a name="51-upload-the-custom-policy"></a>5.1 上傳自訂原則
 

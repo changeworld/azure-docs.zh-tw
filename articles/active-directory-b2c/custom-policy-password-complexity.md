@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af6a7611381cbf7a251e65969d156f4c40d71843
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126782"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138429"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度
 
@@ -31,7 +31,7 @@ ms.locfileid: "79126782"
 
 ## <a name="add-the-elements"></a>新增元素
 
-若要設定密碼複雜性，請覆寫 `newPassword`，並使用述詞[驗證](predicates.md#predicatevalidations)的參考來 `reenterPassword` 宣告[類型](claimsschema.md)。 PredicateValidations 元素會將一組述詞分組，以構成可套用至宣告類型的使用者輸入驗證。 開啟原則的擴充檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em> 。
+若要設定密碼複雜性，請覆寫 `newPassword`，並使用述詞[驗證](predicates.md#predicatevalidations)的參考來 `reenterPassword` 宣告[類型](claimsschema.md)。 PredicateValidations 元素會將一組述詞分組，以構成可套用至宣告類型的使用者輸入驗證。 開啟原則的擴充檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。
 
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
 1. 找出[ClaimsSchema](claimsschema.md)元素。 如果此元素不存在，請加以新增。
@@ -153,4 +153,4 @@ ms.locfileid: "79126782"
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何[在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更](custom-policy-password-change.md)。
-- - 深入瞭解 IEF 參考中的述[詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations)元素。
+- 深入瞭解 IEF 參考中的述[詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations)元素。

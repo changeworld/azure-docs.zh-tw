@@ -3,17 +3,16 @@ title: 將 Azure 平臺記錄串流至事件中樞
 description: 瞭解如何將 Azure 資源記錄串流至事件中樞，以將資料傳送至外部系統（例如協力廠商 Siem 和其他 log analytics 解決方案）。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750352"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658909"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>將 Azure 平臺記錄串流至 Azure 事件中樞
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可提供 azure 資源的詳細診斷和審核資訊，以及它們所依賴的 azure 平臺。  本文說明將資料串流至事件中樞，以將資料傳送至外部系統（例如協力廠商 Siem 和其他 log analytics 解決方案）的資料流程平臺記錄。
@@ -26,7 +25,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
   
 * **建立自訂遙測和記錄平臺**–事件中樞的高擴充性發佈訂閱特性，可讓您將平臺記錄彈性地內嵌到自訂的 teletry 平臺。 如需詳細資訊，請參閱[Azure 事件中樞上的全域調整遙測平臺的設計和調整大小](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)。
 
-* 藉**由將資料串流至 Power BI 來查看服務健全狀況**–使用事件中樞、串流分析和 Power BI，將您的診斷資料轉換為 Azure 服務上近乎即時的深入解析。 如需此解決方案的詳細資訊，請參閱[串流分析和 Power BI：串流資料的即時分析儀表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)。
+* 藉**由將資料串流至 Power BI 來查看服務健全狀況**–使用事件中樞、串流分析和 Power BI，將您的診斷資料轉換為 Azure 服務上近乎即時的深入解析。 請參閱 [串流分析和 Power BI：串流資料的即時分析儀表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)，以取得此解決方案的詳細資訊。
 
     下列 SQL 程式碼是您可以使用的範例串流分析查詢，能將所有記錄資料剖析至 Power BI 表格：
     
@@ -57,14 +56,14 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 ## <a name="consuming-log-data-from-event-hubs"></a>從事件中樞取用記錄資料
 來自事件中樞的平臺記錄會以 JSON 格式使用下表中的元素。
 
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
-| 記錄 |此承載中的所有記錄事件的陣列。 |
+| 記錄數 |此承載中的所有記錄事件的陣列。 |
 | time |事件發生的時間。 |
 | category |此事件的記錄檔分類。 |
 | resourceId |產生此事件之資源的資源識別碼。 |
 | operationName |作業名稱。 |
-| 層級 |選擇性。 表示記錄事件層級。 |
+| level |選擇性。 表示記錄事件層級。 |
 | properties |事件的屬性。 每個 Azure 服務都會有不同的變更，[]()如中所述。 |
 
 

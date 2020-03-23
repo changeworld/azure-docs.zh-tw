@@ -11,25 +11,28 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126806"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136137"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自訂原則在客戶註冊期間停用電子郵件驗證
 
 [!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您應該擁有可運作的自訂原則，以便使用社交和本機帳戶註冊和登入。
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>將中繼資料新增至自我判斷技術設定檔
 
-**LocalAccountSignUpWithLogonEmail**技術設定檔是[自我](self-asserted-technical-profile.md)判斷的，在註冊流程期間會叫用。 若要停用電子郵件驗證，請將 `EnforceEmailVerification` 中繼資料設定為 false。 覆寫擴充檔中的 LocalAccountSignUpWithLogonEmail 技術設定檔。 尋找 `ClaimsProviders` 元素。 將下列宣告提供者新增至 `ClaimsProviders` 元素：
+**LocalAccountSignUpWithLogonEmail**技術設定檔是[自我](self-asserted-technical-profile.md)判斷的，在註冊流程期間會叫用。 若要停用電子郵件驗證，請將 `EnforceEmailVerification` 中繼資料設定為 false。 覆寫擴充檔中的 LocalAccountSignUpWithLogonEmail 技術設定檔。 
 
+1. 開啟原則的擴充檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。
+1. 尋找 `ClaimsProviders` 元素。 如果此元素不存在，請加以新增。
+1. 將下列宣告提供者新增至 `ClaimsProviders` 元素：
 
 ```XML
 <ClaimsProvider>
