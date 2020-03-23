@@ -5,11 +5,11 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248550"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API 逐步解說
 
@@ -84,7 +84,7 @@ $authHeader = @{
 2. 擷取度量值
 
 > [!NOTE]
-> 如需使用 Azure REST API 進行驗證的詳細資訊，請參閱[azure REST API 參考](https://docs.microsoft.com/rest/api/azure/)。
+> 有關使用Azure REST API進行身份驗證的其他信息，請參考 [Azure REST API Reference](https://docs.microsoft.com/rest/api/azure/)
 >
 >
 
@@ -94,7 +94,7 @@ $authHeader = @{
 
 **方法**：GET
 
-**要求 URI**： HTTPs：\/\/Management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{coNtext.resourcename}* /providers/microsoft.insights/metricdefinitions api-version？ api 版本 = *{apiVersion}*
+**要求 URI**： https://management.azure.com/subscriptions/\/{subscriptionId}\//resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* {resourceType}/{resourceName//providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要取出 Azure 儲存體帳戶的計量定義，則要求看起來如下所示：
 
@@ -238,7 +238,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**要求 URI**： HTTPs\://management.azure.com/subscriptions/ *{訂用帳戶識別碼}* /resourceGroups/ *{資源群組-名稱}* /providers/ *{資源提供者-命名空間}* / *{資源類型}* / *{資源名稱}* /providers/microsoft.insights/metrics？ metricnames = *{公制}* & Timespan = *{starttime/endtime}* & $filter = *{filter}* & resultType = 中繼資料 & api 版本 = *{apiVersion}*
+**要求 URI**： https://management.azure.com/subscriptions/\:{subscription-id} */resourceGroups/* {resource-group-name} */providers/* {resource-provider-namespace}/{resource-type}/{resource-name} */providers/microsoft.insights/metrics?metric=* {metric} *&timespan=* {starttime/endtime} *&$filter=* {filter} *&resultType=metadata&api-version=* {apiVersion}*
 
 例如，若要擷取 'Transactions' 計量之 'API Name dimension' 中發出的維度值清單，其中指定時間範圍內的 GeoType 維度 = 'Primary'，要求將如下所示：
 
@@ -390,7 +390,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**要求 URI**： HTTPs：\/\/Management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{coNtext.resourcename}* /providers/microsoft.insights/metricdefinitions api-version？ api 版本 = *{apiVersion}*
+**要求 URI**： https://management.azure.com/subscriptions/\/{subscriptionId}\//resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* {resourceType}/{resourceName//providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要取出 Azure Logic App 的計量定義，則要求看起來如下所示：
 
@@ -597,7 +597,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 上述程式碼中，要使用的資源識別碼是所需 Azure 資源的完整路徑。 例如，若要查詢 Azure Web 應用程式，資源識別碼為︰
 
-<bpt id="p1">*</bpt>/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{site-name}/<ept id="p1">*</ept>
+*/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{site-name}/*
 
 下列範例清單包含各種 Azure 資源的資源識別碼格式︰
 
@@ -653,7 +653,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 抓取 Azure 儲存體帳戶的資源識別碼，請執行 `az storage account show` 命令，如下列範例所示：
+若要使用 Azure CLI 取出 Azure 儲存體帳戶的資源識別碼，請執行 'az storage account show' 命令，如下列範例所示：
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017

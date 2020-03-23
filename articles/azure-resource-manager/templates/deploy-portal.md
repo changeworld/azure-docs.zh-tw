@@ -4,11 +4,11 @@ description: 使用 Azure 入口網站和 Azure 資源管理，將您的資源�
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485100"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274355"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 範本與 Azure 入口網站來部署資源
 
@@ -25,7 +25,7 @@ ms.locfileid: "75485100"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-1. 若要建立新的資源群組，請從 [ [Azure 入口網站](https://portal.azure.com)中選取 [**資源群組**]。
+1. 若要建立新的資源群組，請從 [Azure 入口網站](https://portal.azure.com)中選取 [**資源群組**]。
 
    ![選取資源群組](./media/deploy-portal/select-resource-groups.png)
 
@@ -35,8 +35,8 @@ ms.locfileid: "75485100"
 
 1. 選取或輸入下列屬性值：
 
-    - **訂用帳戶**：選取 Azure 訂用帳戶。
-    - **資源群組**：為資源群組指定名稱。
+    - 訂用帳戶：選取 Azure 訂用帳戶。
+    - **資源群組**：提供資源群組的名稱。
     - **區域**：指定 Azure 位置。 這是資源群組用來儲存資源相關中繼資料的位置。 為了符合法規，您可能會想要指定中繼資料的儲存位置。 一般情況下，我們建議您指定大部分資源所在的位置。 使用相同位置可簡化範本。
 
    ![設定群組值](./media/deploy-portal/set-group-properties.png)
@@ -86,7 +86,7 @@ ms.locfileid: "75485100"
 1. 您會看到數個建立範本的選項：
 
     - **在編輯器中建立您自己的範本**：使用入口網站範本編輯器建立範本。  編輯器能夠加入資源範本架構。
-    - **一般範本**：建立 Linux 虛擬機器、Windows 虛擬機器、web 應用程式和 Azure SQL 資料庫共有四個常見的範本。
+    - **一般範本**：有四個常見的範本可用於建立 Linux 虛擬機器、Windows 虛擬機器、web 應用程式和 Azure SQL 資料庫。
     - **載入 GitHub 快速入門範本**：使用現有的[快速入門範本](https://azure.microsoft.com/resources/templates/)。
 
    ![檢視選項](./media/deploy-portal/see-options.png)
@@ -113,7 +113,7 @@ ms.locfileid: "75485100"
 1. 選取 [儲存]。 現在您會看到入口網站範本部署介面。 請注意您在範本中定義的兩個參數。
 1. 輸入或選取屬性值：
 
-    - **訂用帳戶**：選取 Azure 訂用帳戶。
+    - 訂用帳戶：選取 Azure 訂用帳戶。
     - **資源群組**：選取 [**新建**] 並指定名稱。
     - **位置**：選取 Azure 位置。
     - **儲存體帳戶類型**：使用預設值。
