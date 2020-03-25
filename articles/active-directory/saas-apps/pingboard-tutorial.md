@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教學課程：Azure Active Directory 與 Pingboard 整合
@@ -34,7 +34,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Pingboard 與 Azure AD 的整合，您需要下列項目：
 
@@ -208,7 +208,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-pingboard-test-user"></a>建立 Pingboard 測試使用者
 
-本節目標是在 Pingboard 中建立名為 Britta Simon 的使用者。 Pingboard 支援自動使用者佈建，該功能預設為啟用。 在[這裡](pingboard-provisioning-tutorial.md)可以找到更多關於如何設定自動使用者佈建的詳細資料。
+本節目標是在 Pingboard 中建立名為 Britta Simon 的使用者。 Pingboard 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](pingboard-provisioning-tutorial.md)找到關於如何設定自動使用者佈建的更多詳細資料。
 
 **如果您需要手動建立使用者，請執行下列步驟：**
 

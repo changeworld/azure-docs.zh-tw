@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593371"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教學課程：更新 Azure Kubernetes Service (AKS) 中的應用程式
@@ -34,7 +34,7 @@ ms.locfileid: "77593371"
 
 ## <a name="update-an-application"></a>更新應用程式
 
-我們將變更範例應用程式，然後更新已部署至 AKS 叢集的版本。 請確定您位於複製的 *azure-voting-app-redis* 目錄。 您接著可在 *azure-vote* 目錄中找到範例應用程式的原始程式碼。 使用編輯器 (例如 `vi`) 開啟 *config_file.cfg* 檔案：
+我們將變更範例應用程式，然後更新已部署至 AKS 叢集的版本。 請確定您位於複製的 *azure-voting-app-redis* 目錄。 您接著可在 *azure-vote* 目錄中找到範例應用程式的原始程式碼。 使用編輯器 (例如 *) 開啟* config_file.cfg`vi` 檔案：
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
@@ -85,7 +85,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 現在，使用 [docker push][docker-push] 將映像上傳至您的登錄。 將 `<acrLoginServer>` 取代為您的 ACR 登入伺服器名稱。
 
 > [!NOTE]
-> 如果您在推送到 ACR 登錄時發生問題，請確定您仍處於登入狀態。 使用 [建立 Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) 步驟中建立的 Azure Container Registry 名稱，執行 [az acr login][az-acr-login] 命令。 例如： `az acr login --name <azure container registry name>` 。
+> 如果您在推送到 ACR 登錄時發生問題，請確定您仍處於登入狀態。 使用 [建立 Azure Container Registry][az-acr-login] 步驟中建立的 Azure Container Registry 名稱，執行 [az acr login](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) 命令。 例如： `az acr login --name <azure container registry name>` 。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

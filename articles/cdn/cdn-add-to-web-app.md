@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594233"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教學課程：將 Azure CDN 新增至 Azure App Service Web 應用程式
@@ -38,7 +38,7 @@ ms.locfileid: "67594233"
 > * 使用查詢字串來控制快取的版本。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -72,7 +72,7 @@ ms.locfileid: "67594233"
 
 ![在入口網站中建立設定檔和端點](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| 設定 | 建議的值 | 說明 |
+| 設定 | 建議的值 | 描述 |
 | ------- | --------------- | ----------- |
 | **CDN 設定檔** | myCDNProfile | CDN 設定檔是定價層相同的 CDN 端點集合。 |
 | **定價層** | 標準 Akamai | [定價層](cdn-features.md)指定提供者和可用的功能。 本教學課程使用標準 Akamai  。 |
@@ -210,7 +210,7 @@ Azure CDN 提供下列快取行為選項︰
 
 從 [查詢字串快取行為]  下拉式清單中，選取 [快取每個唯一 URL]  。
 
-選取 [ **儲存**]。
+選取 [儲存]  。
 
 ![選取查詢字串快取行為](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

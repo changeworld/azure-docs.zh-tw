@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67550398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教學課程：Azure Active Directory 與 ForeSee CX Suite 整合
@@ -34,7 +34,7 @@ ms.locfileid: "67550398"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 ForeSee CX Suite 的整合，您需要下列項目：
 

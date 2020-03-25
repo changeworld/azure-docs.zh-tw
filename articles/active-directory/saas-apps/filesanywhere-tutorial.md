@@ -17,10 +17,10 @@ ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f26311a6c9a1b751243c0571ce9a3417af891959
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教學課程：Azure Active Directory 與 FilesAnywhere 整合
@@ -35,7 +35,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 FilesAnywhere 整合，您需要下列項目：
 
@@ -123,7 +123,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-    當使用者註冊 FilesAnywhere 時，他們會取得來自 [FilesAnywhere 小組](mailto:support@FilesAnywhere.com)的 **clientid** 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端 ID] 屬性。
+    當使用者註冊 FilesAnywhere 時，他們會取得來自 **FilesAnywhere 小組**的 [clientid](mailto:support@FilesAnywhere.com) 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端 ID] 屬性。
 
 7. 除了以上屬性外，FilesAnywhere 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -133,9 +133,9 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![映像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![映像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 

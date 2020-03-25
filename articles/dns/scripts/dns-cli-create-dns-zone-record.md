@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939298"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI 指令碼範例：建立 DNS 區域和記錄

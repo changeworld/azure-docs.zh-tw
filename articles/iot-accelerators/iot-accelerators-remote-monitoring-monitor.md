@@ -10,13 +10,13 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890879"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>教學課程：監視您的 IoT 裝置
+# <a name="tutorial-monitor-your-iot-devices"></a>教學課程：監視 IoT 裝置
 
 在本教學課程中，您會使用遠端監視解決方案加速器來監視已連線的 IoT 裝置。 您可使用解決方案儀表板來檢視遙測、裝置資訊、警示和 KPI。
 

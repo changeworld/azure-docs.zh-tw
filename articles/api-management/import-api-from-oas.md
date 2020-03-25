@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77468383"
 ---
 # <a name="import-an-openapi-specification"></a>匯入 OpenAPI 規格
@@ -39,7 +39,7 @@ ms.locfileid: "77468383"
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>匯入和發佈後端 API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
 1. 選取 [API 管理]  下方的 [API]  。
 2. 從 [加入新的 API]  清單選取 [OpenAPI 規格]  。
@@ -57,7 +57,7 @@ ms.locfileid: "77468383"
     |**說明**|提供 API 的選擇性描述。|如果您在輸入服務 URL 之後按下 Tab，APIM 將根據 json 中的內容填寫此欄位。|
     |**API URL 尾碼**|*conference*|這個尾碼會附加到 API 管理服務的基底 URL。 API 管理依尾碼來區分 API，因此，特定發行者的每一個 API 必須有唯一的尾碼。|
     |**URL 配置**|*HTTPS*|決定可使用哪些通訊協定來存取 API。 |
-    |**產品**|*無限制*| 透過將 API 關聯至某個產品來發佈 API。 若要選擇性地將這個新的 API 新增至產品中，請輸入產品名稱。 可以重複此步驟多次來將 API 加入多個產品。<br/>產品是一或多個 API 的關聯。 您可以包括數個 API，並透過開發人員入口網站將它們提供給開發人員。 開發人員必須先訂閱產品，才能取得 API 的存取權。 當他們訂閱時，就能取得適用於該產品中任何 API 的中訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此根據預設，您已訂閱每一個產品。<br/> 依預設，每個 API 管理執行個體會隨附兩個範例產品：[入門]  和 [無限制]  。 |
+    |**產品**|*無限制*| 透過將 API 關聯至某個產品來發佈 API。 若要選擇性地將這個新的 API 新增至產品中，請輸入產品名稱。 可以重複此步驟多次來將 API 加入多個產品。<br/>產品是一或多個 API 的關聯。 您可以包括數個 API，並透過開發人員入口網站將它們提供給開發人員。 開發人員必須先訂閱產品，才能取得 API 的存取權。 當他們訂閱時，就能取得適用於該產品中任何 API 的中訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此根據預設，您已訂閱每一個產品。<br/> 根據預設，每個「API 管理」執行個體都隨附兩個範例產品：**入門**與**無限制**。 |
 
 4. 選取 [建立]  。
 

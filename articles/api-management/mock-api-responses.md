@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067949"
 ---
 # <a name="mock-api-responses"></a>模擬 API 回應
@@ -27,7 +27,7 @@ ms.locfileid: "70067949"
 + 先設計 API 外觀，再於稍後進行後端實作時。 或者，以平行方式開發後端時。
 + 當後端暫時無法運作或無法調整規模時。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立測試 API 
@@ -37,11 +37,11 @@ ms.locfileid: "70067949"
 
 ![模擬的作業回應](./media/mock-api-responses/mock-api-responses01.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
 + 了解 [Azure API 管理的原則概念](api-management-howto-policies.md)。
-+ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
++ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 
 ## <a name="create-a-test-api"></a>建立測試 API 
 
@@ -63,7 +63,7 @@ ms.locfileid: "70067949"
 1. 選取您在上一個步驟中建立的 API。
 2. 按一下 [+ 新增作業]  。
 
-    | 設定             | 值                             | 說明                                                                                                                                                                                   |
+    | 設定             | 值                             | 描述                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **顯示名稱**    | 測試呼叫                        | 顯示於**開發人員入口網站**中的名稱。                                                                                                                                       |
     | **URL** (HTTP 指令動詞) | GET                               | 您可以選擇其中一個預先定義的 HTTP 指令動詞。                                                                                                                                         |

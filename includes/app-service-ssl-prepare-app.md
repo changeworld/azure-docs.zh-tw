@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78300992"
 ---
 ## <a name="prepare-your-web-app"></a>準備您的 Web 應用程式
@@ -37,7 +37,7 @@ ms.locfileid: "78300992"
 
 ### <a name="check-the-pricing-tier"></a>檢查定價層
 
-在 Web 應用程式頁面的左側導覽中，捲動到 [設定]  區段，然後選取 [相應增加 (App Service 方案)]  。
+在 Web 應用程式頁面的左側導覽中，捲動到 [設定]  區段，然後選取 [擴大 (App Service 方案)]  。
 
 ![相應增加功能表](./media/app-service-ssl-prepare-app/scale-up-menu.png)
 
@@ -45,9 +45,9 @@ ms.locfileid: "78300992"
 
 ![檢查定價層](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-**F1** 或 **D1** 層中不支援自訂 SSL。 如果您需要相應增加，請遵循下一節中的步驟來進行。 否則，請關閉 [相應增加]  頁面，並略過[相應增加 App Service 方案](#scale-up-your-app-service-plan)一節。
+**F1** 或 **D1** 層中不支援自訂 SSL。 如果您需要擴大，請遵循下一節中的步驟來進行。 否則，請關閉 [擴大]  頁面，並略過[擴大 App Service 方案](#scale-up-your-app-service-plan)一節。
 
-### <a name="scale-up-your-app-service-plan"></a>相應增加您的 App Service 方案
+### <a name="scale-up-your-app-service-plan"></a>擴大您的 App Service 方案
 
 選取任何非免費層 (**B1**、**B2** **B3**或「生產」類別中的任何一層)。  如需其他選項，請按一下 [查看其他選項]  。
 
@@ -57,5 +57,5 @@ ms.locfileid: "78300992"
 
 當您看見下列通知時，表示擴充作業已完成。
 
-![相應增加通知](./media/app-service-ssl-prepare-app/scale-notification.png)
+![擴大通知](./media/app-service-ssl-prepare-app/scale-notification.png)
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73177011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>教學課程：Azure Active Directory 與 Picturepark 整合
@@ -34,7 +34,7 @@ Picturepark 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Picturepark 整合，您需要下列項目：
 
@@ -148,7 +148,7 @@ Picturepark 與 Azure AD 整合提供下列優點：
 
 3. 按一下 [驗證]  ，然後按一下 [識別提供者]  。
    
-    ![驗證](./media/picturepark-tutorial/ic795063.png "Authentication")
+    ![驗證](./media/picturepark-tutorial/ic795063.png "驗證")
 
 4. 在 [識別提供者組態]  區段中，執行下列步驟：
    
@@ -240,7 +240,7 @@ Picturepark 與 Azure AD 整合提供下列優點：
    
     ![建立使用者](./media/picturepark-tutorial/ic795069.png "建立使用者")
    
-    a. 在 [電子郵件地址]  文字方塊中，輸入使用者 `BrittaSimon@contoso.com` 的**電子郵件地址**。  
+    a. 在 [電子郵件地址]  文字方塊中，輸入使用者  **的**電子郵件地址`BrittaSimon@contoso.com`。  
    
     b. 在 [密碼]  和 [確認密碼]  文字方塊中，輸入 BrittaSimon 的**密碼**。 
    

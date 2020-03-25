@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439303"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL 資料庫
@@ -267,7 +267,7 @@ END
 1. 選取 [自我裝載]  ，然後按一下 [繼續]  。 
 1. 輸入 **MySelfHostedIR** 作為 [名稱]  ，然後按一下 [建立]  。 
 
-1. 在 [選項 1：快速安裝] 區段中，按 [按一下這裡啟動此電腦的快速安裝]   。 
+1. 在 [選項 1：快速安裝]  區段中，按 [按一下這裡啟動此電腦的快速安裝]  。 
 
    ![按一下 [快速安裝] 連結](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在 [Integration Runtime (自我裝載) 快速安裝]  視窗中，按一下 [關閉]  。 
@@ -396,7 +396,7 @@ END
 
 1. 在 [活動]  工具箱中展開 [反覆項目與條件]  ，並將 [ForEach]  活動拖放至管線設計工具介面。 在 [屬性]  視窗的 [一般]  索引標籤中，輸入 **IterateSQLTables**。 
 
-1. 切換到 [設定]  索引標籤，然後為 [項目]  輸入 `@pipeline().parameters.tableList`。 ForEach 活動會逐一查看資料表清單，並執行累加式複製作業。 
+1. 切換到 [設定]  索引標籤，然後為 [項目]`@pipeline().parameters.tableList`**輸入**。 ForEach 活動會逐一查看資料表清單，並執行累加式複製作業。 
 
     ![ForEach 活動 - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 

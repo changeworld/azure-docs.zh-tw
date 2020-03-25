@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66122072"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器並設定防火牆規則
@@ -33,7 +33,7 @@ ms.locfileid: "66122072"
 ## <a name="script-explanation"></a>指令碼說明
 此指令碼會使用下表中簡述的命令：
 
-| **命令** | **注意事項** |
+| **命令** | **注意** |
 |---|---|
 | [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az postgres server create](/cli/azure/postgres/server) | 建立主控資料庫的 PostgreSQL 伺服器。 |
@@ -41,5 +41,5 @@ ms.locfileid: "66122072"
 | [az group delete](/cli/azure/group) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀更多有關 Azure CLI 的資訊：[Azure CLI 文件](/cli/azure)
-- 嘗試額外的指令碼：[Azure Database for PostgreSQL 的 Azuer CLI 範例](../sample-scripts-azure-cli.md)
+- 了解 Azure CLI 的詳細資訊：[Azure CLI 文件](/cli/azure)
+- 嘗試其他指令碼：[「適用於 PostgreSQL 的 Azure 資料庫」的 Azure CLI 範例](../sample-scripts-azure-cli.md)
