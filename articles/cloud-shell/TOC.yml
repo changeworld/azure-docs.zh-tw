@@ -20,7 +20,7 @@
       items:
         - name: 建立執行計畫
           href: example-terraform-bash.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: Windows 使用者適用的 PowerShell Cloud Shell
       href: cloud-shell-windows-users.md

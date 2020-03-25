@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199121"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教學課程：檢閱個別 Azure 帳單
@@ -120,7 +120,7 @@ Azure 入口網站中的成本分析也可協助您確認費用。 若要快速�
 
 ![發票使用量費用](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>外部服務會分開計費
+## <a name="external-services-billed-separately"></a><a name="external"></a>外部服務會分開計費
 
 外部服務 (或 Marketplace) 費用為協力廠商軟體廠商建立的資源費用。 您可以從 Azure Marketplace 取得並使用這些資源。 例如，Barracuda Firewall 是由協力廠商提供的 Azure Marketplace 資源。 適用於該防火牆和其相對應計量的所有費用都會顯示為外部服務費用。
 
@@ -149,7 +149,7 @@ Azure 不會直接根據資源成本計費。 資源費用會使用一或多個�
 
 您可以在使用量 CSV 檔案中查看用來計算費用的計量。
 
-## <a name="payment"></a>支付您的帳單
+## <a name="pay-your-bill"></a><a name="payment"></a>支付您的帳單
 
 如果您設定信用卡作為付款方式，我們會在計費期間結束後的 10 天內自動扣款。 在您的信用卡對帳單上，明細項目的名稱會是 **MSFT Azure**。
 

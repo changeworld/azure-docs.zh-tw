@@ -50,7 +50,7 @@
               href: data-box-security.md
             - name: 常見問題集
               href: data-box-faq.md
-        - name: 作法
+        - name: 如何
           items:
             - name: 透過 Azure 入口網站管理
               href: data-box-portal-admin.md
@@ -62,7 +62,7 @@
               href: data-box-cable-options.md
             - name: 請連絡支援人員
               href: data-box-disk-contact-microsoft-support.md
-            - name: 移轉
+            - name: 遷移
               items:
                 - name: 至 SharePoint Online
                   href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
@@ -109,7 +109,7 @@
               href: data-box-disk-security.md
             - name: 常見問題集
               href: data-box-disk-faq.md
-        - name: 作法
+        - name: 如何
           items:
             - name: 透過 Azure 入口網站管理
               href: data-box-portal-ui-admin.md
@@ -165,7 +165,7 @@
               href: data-box-heavy-system-requirements.md
             - name: 了解限制
               href: data-box-heavy-limits.md
-        - name: 作法
+        - name: 如何
           items:
             - name: 透過 Azure 入口網站管理
               href: data-box-portal-admin.md
@@ -177,7 +177,7 @@
               href: data-box-how-to-set-data-tier.md
             - name: 請連絡支援人員
               href: data-box-disk-contact-microsoft-support.md
-            - name: 移轉
+            - name: 遷移
               items:
                 - name: 至 SharePoint Online
                   href: data-box-heavy-migrate-spo.md

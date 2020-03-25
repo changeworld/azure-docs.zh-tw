@@ -139,6 +139,8 @@
           href: cloud-services-allocation-failures.md
         - name: 回收雲端服務角色的常見原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: 應用程式不支援 TLS 1.2
+          href: applications-dont-support-tls-1-2.md
         - name: 預設 TEMP 資料夾大小對角色而言太小
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 常見部署問題
@@ -191,7 +193,7 @@
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

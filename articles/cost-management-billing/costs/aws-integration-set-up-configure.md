@@ -1,20 +1,18 @@
 ---
 title: 設定 AWS 與 Azure 成本管理的整合
 description: 本文會逐步引導您設定 AWS 成本和使用量報告與 Azure 成本管理的整合。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199988"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203078"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>設定 AWS 成本和使用量報告的整合
 
@@ -39,11 +37,11 @@ AWS 建議使用成本和使用量報告來收集和處理 AWS 成本。 如需�
 9. 在 [設定 S3 貯體] 對話方塊中，執行下列其中一項工作：
     1. 從下拉式清單中選取現有的貯體，然後選擇 [下一步]  。
     2. 輸入貯體名稱和您要在其中建立新貯體的區域，然後選擇 [下一步]  。
-10. 選取 [我已確認此原則正確無誤]  ，然後按一下 [儲存]  。
-11. (選擇性) 在 [報告路徑前置詞] 中，輸入您想要在報告名稱前面加上的報告路徑前置詞。
+10.    選取 [我已確認此原則正確無誤]  ，然後按一下 [儲存]  。
+11.    (選擇性) 在 [報告路徑前置詞] 中，輸入您想要在報告名稱前面加上的報告路徑前置詞。
 如果您未指定前置詞，則預設前置詞會是您為報告指定的名稱。 日期範圍具有 `/report-name/date-range/` 格式。
 12. 在 [時間單位]  中，選擇 [每小時]  。
-13. 在 [報告版本設定]  中，選擇是要讓報告的每個版本覆寫先前的版本，還是要建立其他新的報告。
+13.    在 [報告版本設定]  中，選擇是要讓報告的每個版本覆寫先前的版本，還是要建立其他新的報告。
 14. 在 [為下列項目啟用資料整合]  中，不需要選取任何項目。
 15. 在 [壓縮]  中，選取 [GZIP]  。
 16. 選取 [下一步]  。
@@ -124,8 +122,8 @@ Azure 成本管理一天會存取成本和使用量報告儲存所在的 S3 貯�
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

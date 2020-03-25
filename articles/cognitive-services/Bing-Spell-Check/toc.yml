@@ -32,7 +32,7 @@
   items:
     - name: 建置拼字檢查 Web 應用程式
       href: tutorials/spellcheck.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 從 v5 升級到 v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md

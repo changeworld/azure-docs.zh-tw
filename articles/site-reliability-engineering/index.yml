@@ -12,10 +12,10 @@ metadata:
   ms.author: dnb
   ms.date: 02/18/2020
   ms.openlocfilehash: a89b50cb23d87c9495b24e4ac2ae562b637ec6fa
-  ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/25/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "77598930"
 highlightedContent:
   items:
@@ -152,7 +152,7 @@ conceptualContent:
       text: Azure 架構延展性要素
     - url: https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out
       itemType: get-started
-      text: 相應放大的設計
+      text: 擴增的設計
     - url: https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability
       itemType: get-started
       text: 效能和延展性模式

@@ -249,7 +249,7 @@
   items:
     - name: 常見問題集
       href: api-management-faq.md
-    - name: 定價
+    - name: 價格
       href: 'https://aka.ms/apimpricing'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

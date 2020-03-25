@@ -245,7 +245,7 @@
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Azure 上的 HPC
       href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

@@ -3,21 +3,17 @@ title: 針對 Azure 付款問題進行疑難排解
 description: 解決在 Microsoft Azure 入口網站或帳戶中心更新付款資訊時的問題。
 author: v-miegge
 ms.reviewerr: dcscontentpm
-editor: v-jesits
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3374fc948c2ed3c75108e49eb6129f3976f8c956
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942578"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202959"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>針對 Azure 付款問題進行疑難排解
 

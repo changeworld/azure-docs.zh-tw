@@ -16,7 +16,7 @@
       href: virtual-machines-windows-classic-sql-connect.md
     - name: 移轉 SQL Server 資料庫
       href: ../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
-- name: 作法
+- name: 如何
   items:
     - name: 設定高可用性
       items:
@@ -72,7 +72,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: SQL Server 資料工具 (SSDT)
+    - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
     - name: SQL Server Management Studio (SSMS)
       href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'

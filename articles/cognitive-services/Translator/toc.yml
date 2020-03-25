@@ -32,7 +32,7 @@
           href: customization.md
         - name: API 如何計算字元
           href: character-counts.md
-    - name: 使用說明指南
+    - name: 操作指南
       items:
         - name: 註冊 Translator Text API
           href: translator-text-how-to-signup.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: 使用動態字典功能
           href: dynamic-dictionary.md
-        - name: 使用容器
-          items:
-            - name: 安裝及執行容器
-              href: how-to-install-containers.md
-            - name: 設定容器
-              href: translator-text-container-config.md
         - name: 防火牆後翻譯
           href: firewalls.md
     - name: 範例
@@ -94,7 +88,7 @@
           items:
             - name: 轉換文字
               href: transform-text.md
-            - name: 如何使用共同作業翻譯架構 (CTF) 報告
+            - name: 如何使用 Collaborative Translation Framework (CTF) 報告
               href: ctf-reporting.md
             - name: 傳回 N 最佳翻譯
               href: return-n-best-translations.md
@@ -144,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分數
           href: custom-translator/what-is-bleu-score.md
-    - name: 使用說明指南
+    - name: 操作指南
       items:
         - name: 建立專案
           href: custom-translator/how-to-create-project.md
@@ -178,5 +172,7 @@
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: 法規遵循
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: 加密
+          href: translator-encryption-of-data-at-rest.md
         - name: 堆疊溢位
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
