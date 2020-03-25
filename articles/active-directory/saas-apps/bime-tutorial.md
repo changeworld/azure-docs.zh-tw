@@ -17,10 +17,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教學課程：Azure Active Directory 與 Bime 整合
@@ -35,7 +35,7 @@ Bime 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Bime 整合，您需要下列項目：
 
@@ -137,7 +137,7 @@ Bime 與 Azure AD 整合提供下列優點：
 
 2. 在工具列中，按一下 [管理]  ，然後按一下 [帳戶]  。
   
-    ![管理員](./media/bime-tutorial/ic775558.png "Admin")
+    ![管理員](./media/bime-tutorial/ic775558.png "管理")
 
 3. 在 [帳戶組態] 頁面上，執行下列步驟：
   
@@ -212,7 +212,7 @@ Bime 與 Azure AD 整合提供下列優點：
 
 2. 在工具列中，按一下 [管理]  ，然後按一下 [使用者]  。
 
-    ![管理員](./media/bime-tutorial/ic775561.png "Admin")
+    ![管理員](./media/bime-tutorial/ic775561.png "管理")
 
 3. 在 [使用者清單]  中，按一下 新增使用者  \("+")。
 
@@ -226,7 +226,7 @@ Bime 與 Azure AD 整合提供下列優點：
 
     b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [ 電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 
     d. 按一下 [檔案]  。
 

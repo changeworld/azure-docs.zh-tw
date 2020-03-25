@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037365"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教學課程：在 Power BI 中從 Azure 資料總管將資料視覺化
@@ -29,7 +29,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 > * 使用視覺效果來建立報表
 > * 發佈和共用報表
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 除了 Azure 和 Power BI 訂用帳戶之外，您還需要下列項目，才能完成本教學課程：
 

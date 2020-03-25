@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 824e9c459df75ea0307fe314fbf4118cca6e69d3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76841722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>教學課程：Azure Active Directory 與 Gigya 整合
@@ -130,7 +130,7 @@ Gigya 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Gigya 公司網站。
 
-2. 移至 [設定]\>[SAML 登入]  ，然後按一下 [新增]  按鈕。
+2. 移至 [設定] **[SAML 登入]\>** ，然後按一下 [新增]  按鈕。
    
     ![SAML 登入](./media/gigya-tutorial/ic789532.png "SAML 登入")
 
@@ -209,7 +209,7 @@ Gigya 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入您的 **Gigya** 公司網站。
 
-2. 移至 [系統管理員]\>[管理使用者]  ，然後按一下 [邀請使用者]  。
+2. 移至 [系統管理員] **[管理使用者]\>** ，然後按一下 [邀請使用者]  。
    
     ![管理使用者](./media/gigya-tutorial/ic789535.png "管理使用者")
 

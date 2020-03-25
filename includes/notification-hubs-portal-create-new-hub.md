@@ -9,15 +9,15 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67509142"
 ---
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選取左功能表上的 [所有服務]  ，然後選取 [行動]  區段中的 [通知中樞]  。 選取服務名稱旁邊的星號圖示，將服務加到左功能表上的 [我的最愛]  區段。 在 [通知中樞]  加到 [我的最愛]  之後，在左功能表上予以選取。
+1. 選取左功能表上的 [所有服務]  ，然後選取 [行動]  區段中的 [通知中樞]  。 選取服務名稱旁邊的星號圖示，將服務加到左功能表上的 [我的最愛]  區段。 將 [通知中樞]  新增至 [我的最愛]  之後，在左功能表上予以選取。
 
       ![Azure 入口網站 - 選取通知中樞](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 

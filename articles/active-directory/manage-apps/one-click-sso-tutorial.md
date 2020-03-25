@@ -17,10 +17,10 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67872433"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>單一登入的單鍵應用程式設定
@@ -37,7 +37,7 @@ ms.locfileid: "67872433"
 - 更有效且精確的 SSO 設定。
 - 設定時不需要與合作夥伴通訊或請求支援。 應用程式會提供用於設定 SAML 的 UI。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 可設定 SSO 的有效應用程式訂用帳戶。 您也需要管理員認證。
 - 在瀏覽器中安裝 Microsoft 所提供的**我的應用程式安全登入擴充功能**。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
@@ -59,7 +59,7 @@ ms.locfileid: "67872433"
 
    ![安裝我的應用程式安全登入瀏覽器擴充功能](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. 將擴充功能新增至瀏覽器之後，請選取 [設定 \<應用程式名稱\>]  。 當您重新導向應用程式管理員入口網站後，請以系統管理員身分登入。
+6. 將擴充功能新增至瀏覽器之後，請選取 [設定 **應用程式名稱\<]\>** 。 當您重新導向應用程式管理員入口網站後，請以系統管理員身分登入。
 
    ![設定應用程式名稱](./media/one-click-sso-tutorial/setup-sso.png)
 

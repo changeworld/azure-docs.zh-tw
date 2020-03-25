@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174646"
 ---
 請依照下列步驟來連線到儲存體帳戶及驗證連線。
@@ -17,11 +17,11 @@ ms.locfileid: "67174646"
 
     ![資料箱儀表板](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. 貼上您的 [帳戶名稱]  和 [帳戶金鑰]  (來自本機 Web UI 中 [連線並複製]  頁面的金鑰 1 值)。 選取 [其他 (在下方輸入)]  作為儲存體端點網域，然後提供 Blob 服務端點，如下所示。 請只在透過 *http* 傳輸的情況下，才勾選 [使用 HTTP]  選項。 如果使用 *https*，請將此選項維持不勾選。 選取 [下一步]  。
+2. 貼上您的 [帳戶名稱]  和 [帳戶金鑰]  (來自本機 Web UI 中 [連線並複製]  頁面的金鑰 1 值)。 選取 [其他 (在下方輸入)]  作為儲存體端點網域，然後提供 Blob 服務端點，如下所示。 請只在透過 **http** 傳輸的情況下，才勾選 [使用 HTTP]  選項。 如果使用 *https*，請將此選項維持不勾選。 選取 [下一步]  。
 
     ![資料箱儀表板](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. 在 [連線摘要]  對話方塊中，檢閱所提供的資訊。 選取 [ **連接**]。
+3. 在 [連線摘要]  對話方塊中，檢閱所提供的資訊。 選取 [連接]  。
 
     ![資料箱儀表板](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 

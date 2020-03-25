@@ -17,10 +17,10 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教學課程：Azure Active Directory 與 Asana 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73157862"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 Asana 的 Azure AD 整合，您需要下列項目：
 
@@ -128,7 +128,7 @@ ms.locfileid: "73157862"
 
 ### <a name="configure-asana-single-sign-on"></a>設定 Asana 單一登入
 
-1. 在不同的瀏覽器視窗中，登入您的 Asana 應用程式。 若要在 Asana 中設定 SSO，請按一下螢幕右上角的工作區名稱來存取工作區設定。 然後，按一下 [\<您的工作區名稱\> 設定]  。
+1. 在不同的瀏覽器視窗中，登入您的 Asana 應用程式。 若要在 Asana 中設定 SSO，請按一下螢幕右上角的工作區名稱來存取工作區設定。 然後，按一下 [**您的工作區名稱\< 設定]\>** 。
 
     ![Asana sso 設定](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "73157862"
 
 ### <a name="create-asana-test-user"></a>建立 Asana 測試使用者
 
-本節的目標是在 Asana 中建立名為 Britta Simon 的使用者。 Asana 支援自動使用者佈建，該功能預設為啟用。 在[這裡](asana-provisioning-tutorial.md)可以找到更多關於如何設定自動使用者佈建的詳細資料。
+本節的目標是在 Asana 中建立名為 Britta Simon 的使用者。 Asana 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](asana-provisioning-tutorial.md)找到關於如何設定自動使用者佈建的更多詳細資料。
 
 **如果您需要手動建立使用者，請執行下列步驟：**
 

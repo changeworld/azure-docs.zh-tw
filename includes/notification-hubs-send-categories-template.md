@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74228163"
 ---
 在本節中，您會從 .NET 主控台應用程式將即時新聞以加註標記的範本通知形式傳送。
@@ -67,7 +67,7 @@ ms.locfileid: "74228163"
 
    此程式碼會分別將範本通知傳送給字串陣列中的六個標籤。 使用標籤可確保裝置只會收到已登錄類別的通知。
 
-1. 在上述程式碼中，請使用您的通知中樞名稱及通知中樞儀表板的 *DefaultFullSharedAccessSignature* 連接字串，來取代 `<hub name>` 和 `<connection string with full access>` 預留位置。
+1. 在上述程式碼中，請使用您的通知中樞名稱及通知中樞儀表板的 `<hub name>`DefaultFullSharedAccessSignature`<connection string with full access>` 連接字串，來取代 *和* 預留位置。
 
 1. 在 `Main()` 方法中新增下列程式碼行：
 

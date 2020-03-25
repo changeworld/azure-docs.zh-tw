@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 27f216a3cc101d4241fb8d30d27999a0397356dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277226"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062798"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及管理虛擬機器擴展集
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 建立及管理虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
@@ -69,7 +69,7 @@ az vmss list-instances \
 
 下列範例輸出顯示擴展集中的兩個 VM 執行個體：
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -100,7 +100,7 @@ az vmss list-instance-connection-info \
 
 下列範例輸出顯示執行個體名稱、負載平衡器的公用 IP 位址，以及 NAT 規則將流量轉送到的連接埠號碼：
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -109,19 +109,19 @@ az vmss list-instance-connection-info \
 
 透過 SSH 連線至您的第一個 VM 執行個體。 請使用 `-p` 參數指定您的公用 IP 位址和連接埠號碼，如先前的命令所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登入該 VM 執行個體後，您可以視需要執行一些手動組態變更。 目前，請如常關閉 SSH 工作階段：
 
-```bash
+```console
 exit
 ```
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 執行個體映像
-當您在教學課程一開始建立擴展集時，您為 VM 執行個體指定了 *UbuntuLTS* 的 `--image`。 Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要查看最常用的映像清單，請使用 [az vm image list](/cli/azure/vm/image) 命令。
+當您在教學課程一開始建立擴展集時，您為 VM 執行個體指定了 `--image`UbuntuLTS*的*。 Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要查看最常用的映像清單，請使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -129,7 +129,7 @@ az vm image list --output table
 
 下列範例輸出顯示 Azure 上最常用的 VM 映像。 *UrnAlias* 可用來指定這些在您建立擴展集時最常用的映像之一。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -153,7 +153,7 @@ az vm image list --offer CentOS --all --output table
 
 下列的扼要的輸出會顯示部分可用的 CentOS 7.3 映像：
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -202,7 +202,7 @@ az vm list-sizes --location eastus --output table
 
 其輸出類似於下列扼要的範例，顯示指派給每個 VM 大小的資源：
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168
@@ -233,7 +233,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>變更擴展集的容量
-當您在教學課程一開始建立擴展集時，您依預設部署了兩個 VM 執行個體。 您可以在使用 [az vmss create](/cli/azure/vmss) 時指定 `--instance-count` 參數，以變更要隨擴展集建立的執行個體數目。 若要增加或減少您現有擴展集中的 VM 執行個體數目，您可以手動變更容量。 擴展集會建立或移除所需的 VM 執行個體數目，然後設定用來分散流量的負載平衡器。
+當您在教學課程一開始建立擴展集時，您依預設部署了兩個 VM 執行個體。 您可以在使用 `--instance-count`az vmss create[ 時指定 ](/cli/azure/vmss) 參數，以變更要隨擴展集建立的執行個體數目。 若要增加或減少您現有擴展集中的 VM 執行個體數目，您可以手動變更容量。 擴展集會建立或移除所需的 VM 執行個體數目，然後設定用來分散流量的負載平衡器。
 
 若要手動增加或減少擴展集中的 VM 執行個體數目，請使用 [az vmss scale](/cli/azure/vmss)。 下列範例會將擴展集中的 VM 執行個體數目設為 *3*：
 

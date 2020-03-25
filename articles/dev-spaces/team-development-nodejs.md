@@ -6,10 +6,10 @@ ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code，在 Azure Kubernetes Service 中 Node.js 應用程式上進行小組開發
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 ms.openlocfilehash: abcf4934af056d508ac136f80758597294d40b1a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251941"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用 Node.js 和 Visual Studio Code 進行小組開發
@@ -53,7 +53,7 @@ ms.locfileid: "78251941"
 
 1. 複製 [Dev Spaces 應用程式範例](https://github.com/Azure/dev-spaces)：`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. 簽出遠端分支 azds_updates  ：`git checkout -b azds_updates origin/azds_updates`
-1. 選取 dev  空間：`azds space select --name dev`。 出現選取父代開發人員空間的提示時，請選取\<無\>  。
+1. 選取 dev  空間：`azds space select --name dev`。 出現選取父代開發人員空間的提示時，請選取_無\<\>_ 。
 1. 瀏覽至 mywebapi  目錄並執行：`azds up -d`
 1. 瀏覽至 webfrontend  目錄並執行：`azds up -d`
 1. 執行 `azds list-uris` 以查看 webfrontend  的公用端點
@@ -98,7 +98,7 @@ azds space select --name scott
 我們要了解它是如何運作的。
 
 ### <a name="make-a-code-change"></a>進行程式碼變更
-請移至 `mywebapi` 的 VS Code 視窗，並對 `server.js` 中的預設 GET `/` 處理常式進行程式碼編輯，例如：
+請移至 `mywebapi` 的 VS Code 視窗，並對 `/` 中的預設 GET `server.js` 處理常式進行程式碼編輯，例如：
 
 ```javascript
 app.get('/', function (req, res) {

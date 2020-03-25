@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, kubernetes, k8s, aks, 藍/綠部署, 持續傳
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251484"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和藍/綠部署模式來部署至 Azure Kubernetes Service (AKS)
@@ -29,7 +29,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 ## <a name="prerequisites"></a>Prerequisites
 - [GitHub 帳戶](https://github.com)：您需要 GitHub 帳戶來複製範例存放庫。
 - [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)：您可使用 Azure CLI 2.0 來建立 Kubernetes 叢集。
-- [Chocolatey](https://chocolatey.org)：用來安裝 kubectl 的套件管理員。
+- [Chocolatey](https://chocolatey.org) - 用來安裝 kubectl 的套件管理員。
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)：用來對 Kubernetes 叢集執行命令的命令列介面。
 - [jq](https://stedolan.github.io/jq/download/)：輕量級的命令列 JSON 處理器。
 
@@ -255,7 +255,7 @@ Azure Kubernetes Service (AKS) 可管理裝載 Kubernetes 的環境，以便快�
 
 ## <a name="run-the-job"></a>執行作業
 
-1. 請確認您可以在本機環境中成功執行專案。 方法：[在本機電腦上執行專案](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. 請確認您可以在本機環境中成功執行專案。 方式如下：[在本機電腦上執行專案](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. 執行 Jenkins 作業。 第一次執行作業時，Jenkins 會將 Todo 應用程式部署到藍色環境，也就是預設非使用中環境。 
 

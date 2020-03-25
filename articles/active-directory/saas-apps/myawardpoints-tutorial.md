@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b1de9e394dd1e6b4c47b8de3175dd1e8fba1d87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>教學課程：Azure Active Directory 與 My Award Points Top Sub/Top Team 整合
@@ -34,7 +34,7 @@ ms.locfileid: "73161336"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 My Award Points Top Sub/Top Team 整合，您需要下列項目：
 
@@ -125,7 +125,7 @@ ms.locfileid: "73161336"
     c. 登出 URL
 
     >[!NOTE]
-    >在 Azure 入口網站中的 [基本 SAML 組態]  區段中，將複製的 Azure AD 識別碼值和登入 URL 附加至 `<Azure AD Identifier>` 位置。
+    >在 Azure 入口網站中的 [基本 SAML 組態]`<Azure AD Identifier>`**區段中，將複製的 Azure AD 識別碼值和登入 URL 附加至** 位置。
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>設定 My Award Points Top Sub/Top Team 單一登入
 

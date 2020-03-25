@@ -17,10 +17,10 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>教學課程：Azure Active Directory 與 KnowBe4 Security Awareness Training 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73159665"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 KnowBe4 Security Awareness Training 的整合作業，需要下列項目：
 
@@ -111,7 +111,7 @@ ms.locfileid: "73159665"
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
-    > 登入 URL 值不是真正的值。 請使用實際的登入 URL 來更新此值。 請連絡 [KnowBe4 Security Awareness Training 用戶端支援小組](mailto:support@KnowBe4.com)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  區段所顯示的模式。
+    > 登入 URL 值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [KnowBe4 Security Awareness Training 用戶端支援小組](mailto:support@KnowBe4.com)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  區段所顯示的模式。
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入字串值：`KnowBe4`
 

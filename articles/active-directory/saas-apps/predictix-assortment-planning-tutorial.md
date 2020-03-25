@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>教學課程：Azure Active Directory 與 Predictix Assortment Planning 整合
@@ -35,7 +35,7 @@ ms.locfileid: "67094157"
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Predictix Assortment Planning 的整合作業，您需要具備：
 
@@ -121,7 +121,7 @@ ms.locfileid: "67094157"
         | |
 
     > [!NOTE]
-    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [Predictix Assortment Planning 支援小組](https://www.infor.com/support)以取得此值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  對話方塊所示的模式。
+    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [Predictix Assortment Planning 支援小組](https://www.infor.com/support)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  對話方塊所顯示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，依據您的需求選取 [憑證 (Base64)]  旁邊的 [下載]  連結，並將憑證儲存在您的電腦上：
 
@@ -139,7 +139,7 @@ ms.locfileid: "67094157"
 
 ### <a name="configure-predictix-assortment-planning-single-sign-on"></a>設定 Predictix Assortment Planning 單一登入
 
-若要在 Predictix Assortment Planning 端設定單一登入，您必須將從 Azure 入口網站下載的憑證和複製的 URL 傳送給 [Predictix Assortment Planning 支援小組](https://www.infor.com/support)。 此小組會確保兩端的 SAML SSO 連線都已正確設定。
+若要在 Predictix Assortment Planning 端設定單一登入，您必須將從 Azure 入口網站下載的憑證和複製的 URL 傳送給 [Predictix Assortment Planning 支援小組](https://www.infor.com/support)。 此小組會確定兩端的 SAML SSO 連線都已正確設定。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -202,7 +202,7 @@ ms.locfileid: "67094157"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 Predictix Assortment Planning 圖格時，應該會自動登入您設定 SSO 的 Predictix Assortment Planning 執行個體。 如需詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Predictix Assortment Planning 圖格時，應該會自動登入您設定 SSO 的 Predictix Assortment Planning 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 

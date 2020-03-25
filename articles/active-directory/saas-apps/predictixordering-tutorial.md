@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教學課程：Azure Active Directory 與 Predictix Ordering 整合
@@ -35,7 +35,7 @@ ms.locfileid: "67094128"
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Predictix Ordering 的整合，您必須具備：
 
@@ -195,7 +195,7 @@ ms.locfileid: "67094128"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Predictix Ordering] 圖格時，應該會自動登入您已設定 SSO 的 Predictix Ordering 執行個體。 如需詳細資訊，請參閱[在我的應用程式入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Predictix Ordering] 圖格時，應該會自動登入您已設定 SSO 的 Predictix Ordering 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 

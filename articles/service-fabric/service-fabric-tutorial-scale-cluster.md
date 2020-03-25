@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251803"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
@@ -18,9 +18,9 @@ ms.locfileid: "78251803"
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 新增和移除節點 (相應放大和相應縮小)
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
+> * 新增和移除節點 (擴增和縮減)
+> * 新增和移除節點類型 (擴增和縮減)
+> * 增加節點資源 (擴大)
 
 在本教學課程系列中，您將了解如何：
 > [!div class="checklist"]
@@ -76,7 +76,7 @@ ms.locfileid: "78251803"
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>從節點類型中新增或移除節點
 
-相應縮小和放大，或水平調整時，請變更叢集中的節點數目。 當您相應縮小或放大時，會將更多虛擬機器執行個體新增至擴展集。 這些執行個體會成為 Service Fabric 使用的節點。 擴展集有多個新增的執行個體 (透過相應放大) 時，Service Fabric 會知道並自動回應。 您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。
+相應縮小和放大，或水平調整時，請變更叢集中的節點數目。 當您縮減或擴增時，會將更多虛擬機器執行個體新增至擴展集。 這些執行個體會成為 Service Fabric 使用的節點。 擴展集有多個新增的執行個體 (透過相應放大) 時，Service Fabric 會知道並自動回應。 您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。
 
 ### <a name="update-the-template"></a>更新範本
 
@@ -865,9 +865,9 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
-> * 新增和移除節點 (相應放大和相應縮小)
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
+> * 新增和移除節點 (擴增和縮減)
+> * 新增和移除節點類型 (擴增和縮減)
+> * 增加節點資源 (擴大)
 
 接下來，請前往下列教學課程，了解如何升級叢集執行階段。
 > [!div class="nextstepaction"]
@@ -878,8 +878,8 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
+> * 新增和移除節點類型 (擴增和縮減)
+> * 增加節點資源 (擴大)
 
 接下來，請前往下列教學課程，了解如何升級叢集執行階段。
 > [!div class="nextstepaction"]

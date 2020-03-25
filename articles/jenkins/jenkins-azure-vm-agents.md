@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 虛擬機器, 代理程式
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158543"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理程式調整 Jenkins 部署以滿足需求
@@ -27,7 +27,7 @@ ms.locfileid: "74158543"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents/player]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶
 * Jenkins 主要伺服器。 如果沒有，請參閱[快速入門](install-jenkins-solution-template.md)，在 Azure 中設定一個。
@@ -100,10 +100,10 @@ ms.locfileid: "74158543"
 設定用來定義 Azure VM 代理程式的範本。 此範本在建立後會定義每個代理程式的計算資源。
 
 1. 選取 [新增 Azure 虛擬機器範本]  旁的 [新增]  。
-1. 於 [名稱]  輸入 `defaulttemplate`
-1. 於 [標籤]  輸入 `ubuntu`
+1. 於 [名稱]`defaulttemplate`**輸入**
+1. 於 [標籤]`ubuntu`**輸入**
 1. 從下拉式方塊中選取所需的 [Azure 區域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-1. 從 **[虛擬機器大小]** 下方的下拉式清單中選取 [虛擬機器大小](/azure/virtual-machines/linux/sizes)。 一般用途的 `Standard_DS1_v2` 大小適用於教學課程。   
+1. 從 [[虛擬機器大小]](/azure/virtual-machines/linux/sizes) 下方的下拉式清單中選取 **虛擬機器大小**。 一般用途的 `Standard_DS1_v2` 大小適用於教學課程。   
 1. 將 [保留時間]  保留為 `60`。 此設定會定義 Jenkins 解除配置閒置的代理程式前等待的分鐘數。 如果您不想要自動移除閒置的代理程式，請指定 0。
 
    ![一般虛擬機器組態](./media/jenkins-azure-vm-agents/general-config.png)
@@ -122,10 +122,10 @@ ms.locfileid: "74158543"
 
 1. 在 Jenkins 儀表板中，按一下 [新增項目]  。 
 1. 輸入 `demoproject1` 作為名稱，然後選取 [自由式專案]  ，再選取 [確定]  。
-1. 在 [一般]  索引標籤中，選擇 [限制可執行專案的位置]  ，並在 [標籤運算式]  中輸入 `ubuntu`。 您會看到一則訊息確認標籤是由上個步驟中建立的雲端設定所提供。 
+1. 在 [一般]  索引標籤中，選擇 [限制可執行專案的位置]  ，並在 [標籤運算式]`ubuntu`**中輸入**。 您會看到一則訊息確認標籤是由上個步驟中建立的雲端設定所提供。 
    ![設定工作](./media/jenkins-azure-vm-agents/job-config.png)
 1. 在 [原始程式碼管理]  索引標籤中，選取 [Git]  ，然後在 [存放庫 URL]  欄位中新增以下 URL：`https://github.com/spring-projects/spring-petclinic.git`
-1. 在 [組建]  索引標籤中，選取 [新增組建步驟]  ，然後選取 [叫用最上層 Maven 目標]  。 在 [目標]  欄位中輸入 `package`。
+1. 在 [組建]  索引標籤中，選取 [新增組建步驟]  ，然後選取 [叫用最上層 Maven 目標]  。 在 [目標]`package`**欄位中輸入**。
 1. 選取 [儲存]  以儲存作業定義。
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>在 Azure VM 代理程式上建置新作業

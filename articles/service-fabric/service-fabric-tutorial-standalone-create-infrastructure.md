@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75613970"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教學課程：建立用來裝載 Service Fabric 叢集的 AWS 基礎結構
@@ -41,7 +41,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 ![EC2 執行個體選取][aws-ec2instance]
 
-選取 [t2.medium]  ，然後選取 [下一步:  設定執行個體詳細資料]，然後在下一個畫面上將執行個體數目變更為 `3`，再選取 [進階詳細資料]  以展開該區段。
+依序選取 [t2.medium]  、[下一步：設定執行個體詳細資料]  ，然後在下一個畫面上將執行個體數目變更為 `3`，再選取 [進階詳細資料]  以展開該區段。
 
 若要一併連接 Service Fabric 中的虛擬機器，裝載基礎結構的 VM 必須具有相同的認證。  有兩個常見的方法可用來取得一致的認證：將虛擬機器全部加入相同的網域，或在每個 VM 上設定相同的系統管理員密碼。  在本教學課程中，您會透過使用者資料指令碼來設定 EC2 執行個體，使其全部具有相同的密碼。  在生產環境中，將主機加入 Windows 網域，會更加安全。
 

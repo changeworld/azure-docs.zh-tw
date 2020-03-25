@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351852"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教學課程：部署 Service Fabric Mesh 應用程式
@@ -61,11 +61,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 選取您的 Azure 帳戶和訂用帳戶。 選擇 [位置]  。 本文使用**美國東部**。
 
-在 [資源群組]  下方，選取 [\<建立新的資源群組...>]  。 對話方塊隨即出現，而您將在其中建立新的資源群組。 本文使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的群組名稱)。  按 [建立]  以建立資源群組並返回發佈對話方塊。
+在 [資源群組]  下方，選取 [**建立新的資源群組...>]\<** 。 對話方塊隨即出現，而您將在其中建立新的資源群組。 本文使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的群組名稱)。  按 [建立]  以建立資源群組並返回發佈對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-返回 [發佈 Service Fabric 應用程式]  對話方塊，在 [Azure Container Registry]  下方，選取 [\<建立新的容器登錄...>]  。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本教學課程使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為**基本**，然後按 [建立]  ，以建立私人 Azure 容器登錄，並回到 [發佈] 對話方塊。
+返回 [發佈 Service Fabric 應用程式]  對話方塊，在 [Azure Container Registry]  下方，選取 [**建立新的容器登錄...>]\<** 。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本教學課程使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為**基本**，然後按 [建立]  ，以建立私人 Azure 容器登錄，並回到 [發佈] 對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增容器登錄對話方塊](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

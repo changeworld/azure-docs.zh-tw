@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025838"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教學課程：使用 Azure Batch 執行平行 R 模擬 
@@ -108,7 +108,7 @@ generateClusterConfig("cluster.json")
 針對此教學課程變更設定，如下所示：
 
 * 將 `maxTasksPerNode` 增加至 2  ，以利用每個節點上的兩個核心
-* 將 `dedicatedNodes` 設定為 0  ，即可嘗試 Batch 可用的低優先順序 VM。 將 `lowPriorityNodes` 的 `min` 設定為 5  ， 以及將 `max` 設定為 10  ，或者視需要選擇較小的數字。 
+* 將 `dedicatedNodes` 設定為 0  ，即可嘗試 Batch 可用的低優先順序 VM。 將 `min` 的 `lowPriorityNodes` 設定為 5  ， 以及將 `max` 設定為 10  ，或者視需要選擇較小的數字。 
 
 保留其餘設定的預設值，然後儲存檔案。 看起來應類似下列範例：
 

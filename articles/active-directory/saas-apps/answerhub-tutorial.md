@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73152983"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教學課程：Azure Active Directory 與 AnswerHub 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73152983"
 若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 AnswerHub 的整合，您需要下列項目：
 
@@ -236,7 +236,7 @@ ms.locfileid: "73152983"
 
 4. 在左側窗格的 [管理使用者]  區段中，選取 [建立或匯入使用者]  ，然後選取 [使用者和群組]  。
 
-   [使用者和群組] 索引標籤![](./media/answerhub-tutorial/ic785175.png "使用者和群組")
+   [使用者和群組] 索引標籤![](./media/answerhub-tutorial/ic785175.png "使用者與群組")
 
 5. 在適當的方塊中，輸入您要新增之有效 Azure AD 帳戶的 [電子郵件地址]  、[使用者名稱]  和 [密碼]  ，然後選取 [儲存]  。
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: dd16753a9b057e441884b0a6a019701766aaa321
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73821407"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Database 的 Azure PowerShell 範例
@@ -27,7 +27,7 @@ Azure SQL Database 可讓您使用 Azure PowerShell 來設定資料庫、執行�
 
 如果選擇在本機安裝和使用 PowerShell，此教學課程需要 AZ PowerShell 1.4.0 或更新版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="single-database-and-elastic-poolstabsingle-database"></a>[單一資料庫與彈性集區](#tab/single-database)
+## <a name="single-database-and-elastic-pools"></a>[單一資料庫與彈性集區](#tab/single-database)
 
 下表包含適用於 Azure SQL Database 之範例 Azure PowerShell 指令碼的連結。
 
@@ -59,7 +59,7 @@ Azure SQL Database 可讓您使用 Azure PowerShell 來設定資料庫、執行�
 
 深入了解[單一資料庫 Azure PowerShell API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)。
 
-## <a name="managed-instancetabmanaged-instance"></a>[受控執行個體](#tab/managed-instance)
+## <a name="managed-instance"></a>[受控執行個體](#tab/managed-instance)
 
 下表包含適用於 Azure SQL Database - 受控執行個體之範例 Azure PowerShell 指令碼的連結。
 

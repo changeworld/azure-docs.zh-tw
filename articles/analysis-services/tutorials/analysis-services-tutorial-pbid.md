@@ -8,13 +8,13 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73572324"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>教學課程：使用 Power BI Desktop 進行連線
+# <a name="tutorial-connect-with-power-bi-desktop"></a>教學課程 - 使用 Power BI Desktop 進行連線
 
 在本教學課程中，您會使用 Power BI Desktop 連線至伺服器上的 adventureworks 範例模型資料庫。 您所完成的工作會模擬一般使用者對模型的連線，並從模型資料建立基本報告。
 
@@ -23,7 +23,7 @@ ms.locfileid: "73572324"
 > * 使用 Power BI Desktop 進行連線
 > * 建立基本報告
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [新增 adventureworks 範例模型資料庫](../analysis-services-create-sample-model.md)至您的伺服器。
 - 具有 adventureworks 範例模型資料庫的[*讀取*](../analysis-services-server-admins.md)權限。

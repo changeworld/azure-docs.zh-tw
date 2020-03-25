@@ -13,13 +13,13 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420587"
 ---
-# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教學課程：為 B2B 來賓使用者強制執行多重要素驗證
+# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教學課程：針對 B2B 來賓使用者強制執行多重要素驗證
 
 當與外部 B2B 來賓使用者共同作業時，使用多重要素驗證 (MFA) 原則來保護您的應用程式是個不錯的做法。 如此一來，外部使用者在存取您的資源時，將不僅只是需要使用者名稱和密碼。 在 Azure Active Directory (Azure AD) 中，您可以使用要求使用 MFA 進行存取的條件式存取原則來達成此目標。 MFA 原則可以在租用戶、應用程式或個別來賓使用者層級強制執行，方式就像針對您自己組織的成員啟用這些原則一樣。
 
@@ -43,7 +43,7 @@ ms.locfileid: "74420587"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程中的案例，您需要：
 
@@ -123,7 +123,7 @@ ms.locfileid: "74420587"
 
     ![顯示要在哪裡選取 [What If] 選項的螢幕擷取畫面](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
-## <a name="test-your-conditional-access-policy"></a>測試您的條件式存取原則
+## <a name="test-your-conditional-access-policy"></a>測試條件式存取原則
 1.  使用您的測試使用者名稱和密碼來登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  您應該會看到需要其他驗證方法的要求。 請注意，可能需要一些時間，原則才會生效。
 

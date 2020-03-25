@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教學課程：Azure Active Directory 與 Questetra BPM Suite 整合
@@ -34,7 +34,7 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Questetra BPM Suite 整合，您需要以下項目：
 
@@ -226,9 +226,9 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
    
     ![建立測試使用者][300] 
    
-    a. 在 [名稱]  文字方塊中，輸入使用者 britta.simon@contoso.com 的**名稱**。
+    a. 在 [名稱]  文字方塊中，輸入使用者  **的**名稱britta.simon@contoso.com。
    
-    b. 在 [電子郵件]  文字方塊中，輸入使用者 britta.simon@contoso.com 的**電子郵件**。
+    b. 在 [電子郵件]  文字方塊中，輸入使用者  **的**電子郵件britta.simon@contoso.com。
    
     c. 在 [密碼]  文字方塊中，輸入使用者的**密碼**。
     

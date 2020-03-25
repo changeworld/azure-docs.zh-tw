@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614038"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教學課程：使用 Application Insights 監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式
@@ -102,7 +102,7 @@ Application Insights 有兩個 Service Fabric 特定的 NuGet，可依情節來�
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. 按一下所顯示 [檢閱變更]  對話方塊上的 [確定]  ，然後選擇 [接受授權]  。 這會完成將 NuGet 新增至服務。
 6. 您現在需要在兩個服務中設定遙測初始設定式。 若要這麼做，請開啟 VotingWeb.cs  和 VotingData.cs  。 對這兩者執行下列兩個步驟：
-    1. 在每個 *\<ServiceName>.cs* 的頂端，於現有 *using* 陳述式之後新增下列兩個 *using* 陳述式：
+    1. 在每個  ServiceName>.cs *的頂端，於現有 \<using* 陳述式之後新增下列兩個 *using* 陳述式：
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -150,7 +150,7 @@ Application Insights 有兩個 Service Fabric 特定的 NuGet，可依情節來�
         .Build();
     ```
 
-再次確認已在 VotingWeb.cs  和 VotingData.cs  中呼叫 `UseApplicationInsights()` 方法，如上所述。
+再次確認已在 VotingWeb.cs`UseApplicationInsights()` *和 VotingData.cs* *中呼叫* 方法，如上所述。
 
 >[!NOTE]
 >此範例應用程式會使用 HTTP 進行服務的通訊。 如果您使用服務遠端處理第 2 版開發應用程式，則您也必須依照前述作法，在相同的位置加入以下幾行程式碼
@@ -203,7 +203,7 @@ ConfigureServices(services => services
 
 1. 在其他 using 陳述式的結尾新增 `using Microsoft.ApplicationInsights;`。
 2. 在類別開頭，在建立 *IReliableStateManager* 下方宣告新的 *TelemetryClient*：`private TelemetryClient telemetry = new TelemetryClient();`。
-3. 在 *Put()* 函式中，新增事件來確認已新增選票。 在交易完成之後，緊鄰在傳回的 *OkResult* 陳述式前面新增 `telemetry.TrackEvent($"Added a vote for {name}");`。
+3. 在 *Put()* 函式中，新增事件來確認已新增選票。 在交易完成之後，緊鄰在傳回的 `telemetry.TrackEvent($"Added a vote for {name}");`OkResult*陳述式前面新增*。
 4. 在 *delete （)* 中，有一個 "if/else" 是以 *votesDictionary* 包含給定投票選項的選票為條件。
     1. 在 *if* 陳述式中，在 *await tx.CommitAsync()* 後面新增事件來確認刪除選票：`telemetry.TrackEvent($"Deleted votes for {name}");`
     2. 在 *else* 陳述式中，在 return 陳述式前面新增事件來指出刪除未發生：`telemetry.TrackEvent($"Unable to delete votes for {name}, voting option not found");`

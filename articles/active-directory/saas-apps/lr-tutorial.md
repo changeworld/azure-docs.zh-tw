@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0087288bed06a09b3a78b190f3d60e8985d7ad29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67097771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>教學課程：Azure Active Directory 與 LoginRadius 整合
@@ -35,7 +35,7 @@ LoginRadius 與 Azure AD 整合可提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 LoginRadius 的整合，您需要下列項目：
 
@@ -111,7 +111,7 @@ LoginRadius 與 Azure AD 整合可提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`https://LoginRadius.hub.loginradius.com/`
 
     > [!NOTE]
-    > 開啟 [登入 URL] 頁面。 按一下[單一登入]  索引標籤並輸入 [LoginRadius 支援小組](mailto:support@loginradius.com)提供的**外掛程式名稱**，然後按一下 [登入]  按鈕，系統會將您重新導向至 Azure AD 頁面進行登入。
+    > 開啟 [登入 URL] 頁面。 按一下[單一登入]  索引標籤並輸入 **LoginRadius 支援小組**提供的[外掛程式名稱](mailto:support@loginradius.com)，然後按一下 [登入]  按鈕，系統會將您重新導向至 Azure AD 頁面進行登入。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 

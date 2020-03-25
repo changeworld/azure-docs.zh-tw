@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 63165da69815c77afb8692e1e68c1710beb8df8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教學課程：Azure Active Directory 與 SilkRoad Life Suite 整合
@@ -34,7 +34,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 SilkRoad Life Suite 的 Azure AD 整合，您需要下列項目：
 
@@ -207,7 +207,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     d. 在 [Metadata File] \(中繼資料檔案\)  文字方塊中，上傳您從 Azure 入口網站下載的**中繼資料**檔案。
   
-    e. 在 [IdP Name] \(IdP 名稱\)  文字方塊中，輸入設定專屬的名稱 (例如：*Azure SP*)。
+    e. 在 [IdP Name] \(IdP 名稱\)  文字方塊中，輸入設定特定的名稱 (例如：*Azure SP*)。
   
     f. 在 [登出服務 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 

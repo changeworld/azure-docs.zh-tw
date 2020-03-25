@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
 ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438980"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教學課程：使用 Visual Studio 建立資料處理站
@@ -29,19 +29,19 @@ ms.locfileid: "75438980"
 
 
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 來建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
 
 本教學課程示範如何使用 Visual Studio 建立 Azure Data Factory。 您可使用 Data Factory 專案範本建立 Visual Studio 專案，以 JSON 格式定義 Data Factory 實體 (連結服務、資料集和管線)，然後將這些實體發佈/部署至雲端。 
 
 本教學課程中的管線有一個活動︰**HDInsight Hive 活動**。 此活動會在 Azure HDInsight 叢集上執行 Hive 指令碼，以轉換輸入資料來產生輸出資料。 管線已排定每個月在指定的開始與結束時間之間執行一次。 
 
 > [!NOTE]
-> 本教學課程不會顯示如何使用 Azure Data Factory 複製資料。 如需如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程︰將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本教學課程不會顯示如何使用 Azure Data Factory 複製資料。 如需說明如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程：將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
 > 一個管線中可以有多個活動。 您可以將一個活動的輸出資料集設為另一個活動的輸入資料集，藉此鏈結兩個活動 (讓一個活動接著另一個活動執行)。 如需詳細資訊，請參閱 [Data Factory 排程和執行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 
-## <a name="walkthrough-create-and-publish-data-factory-entities"></a>逐步解說：建立和發佈 Data Factory 實體
+## <a name="walkthrough-create-and-publish-data-factory-entities"></a>逐步解說︰建立和發佈 Data Factory 實體
 以下是您會在本逐步解說中執行的步驟：
 
 1. 建立兩個連結服務：**AzureStorageLinkedService1** 和 **HDInsightOnDemandLinkedService1**。 
@@ -214,7 +214,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 4. 儲存 **OutputDataset.json** 檔案。
 
 ### <a name="create-pipeline"></a>建立管線
-到目前為止，您已建立 Azure 儲存體連結服務，以及輸入和輸出資料集。 現在，建立具有 **HDInsightHive** 活動的管線。 Hive 活動的 **input** 會設為 **AzureBlobInput**，而 **output** 則設為 **AzureBlobOutput**。 每個月都可取得輸入資料集配量 (頻率：月，間隔：1)，而且每個月也會產生輸出配量。 
+到目前為止，您已建立 Azure 儲存體連結服務，以及輸入和輸出資料集。 現在，建立具有 **HDInsightHive** 活動的管線。 Hive 活動的 **input** 會設為 **AzureBlobInput**，而 **output** 則設為 **AzureBlobOutput**。 每個月都可取得輸入資料集的配量 (頻率：每月，間隔：1)，而且也會每個月產生輸出配量。 
 
 1. 以滑鼠右鍵按一下 [方案總管]  中的 [管線]  ，指向 [新增]  ，然後按一下 [新增項目]  。
 2. 從清單中選取 [Hive 轉換管線]  ，然後按一下 [新增]  。
@@ -275,7 +275,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 
     在 HDInsight Hive 活動特有的類型屬性中，您會指定哪個 Azure 儲存體連結服務具有 Hive 指令碼檔案、指令碼檔案的路徑，以及指令碼檔案的路徑。 
 
-    Hive 指令碼檔案 (**partitionweblogs.hql**) 會儲存於 Azure 儲存體帳戶 (由 scriptLinkedService 指定)，以及容器 `adfgetstarted` 的 `script` 資料夾中。
+    Hive 指令碼檔案 (**partitionweblogs.hql**) 會儲存於 Azure 儲存體帳戶 (由 scriptLinkedService 指定)，以及容器 `script` 的 `adfgetstarted` 資料夾中。
 
     `defines` 區段可用來指定執行階段設定，該設定將傳遞到 Hive 指令碼作為 Hive 設定值 (`${hiveconf:inputtable}`、`${hiveconf:partitionedtable})`)。
 
@@ -288,7 +288,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 1. 以滑鼠右鍵按一下 [方案總管]  視窗中的 [相依性]  ，指向 [新增]  ，按一下 [現有項目]  。  
 2. 瀏覽至 **C:\ADFGettingStarted**、選取 **partitionweblogs.hql** 及 **input.log** 檔案，然後按一下 [新增]  。 您建立了兩個檔案，作為一部分的 [教學課程概觀](data-factory-build-your-first-pipeline.md)必要條件。
 
-當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到 `adfgetstarted` Blob 容器中的**指令碼**資料夾。   
+當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到  **Blob 容器中的**指令碼`adfgetstarted`資料夾。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>發佈/部署 Data Factory 實體
 在此步驟中，您會將專案中的 Data Factory 實體 (連結的服務、資料集和管線) 發佈至 Azure Data Factory 服務。 在發佈過程中，您可指定資料處理站的名稱。 
@@ -375,7 +375,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
    > 建立隨選 HDInsight 叢集通常需要一些時間 (大約 20 分鐘)。 因此，管線預計需要 **大約 30 分鐘** 的時間來處理配量。  
    
     ![資料集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 當配量處於**就緒**狀態時，檢查您 blob 儲存體中 `adfgetstarted` 容器內 `partitioneddata` 資料夾的輸出資料。  
+10. 當配量處於**就緒**狀態時，檢查您 blob 儲存體中 `partitioneddata` 容器內 `adfgetstarted` 資料夾的輸出資料。  
 
     ![輸出資料](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 按一下配量，以在 [資料配量]  刀鋒視窗中查看其詳細資料。
@@ -402,11 +402,11 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
     ![活動時段詳細資料](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 (input.log) 上傳至 `adfgetstarted` 容器的 `inputdata` 資料夾。
+> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 (input.log) 上傳至 `inputdata` 容器的 `adfgetstarted` 資料夾。
 
 ### <a name="additional-notes"></a>其他注意事項
 - 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換輸入資料。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單，請參閱 [計算連結服務](data-factory-compute-linked-services.md) 。
-- 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單以及可在其上執行的[轉換活動](data-factory-data-transformation-activities.md)，請參閱[計算連結服務](data-factory-compute-linked-services.md)。
+- 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單以及可在其上執行的[轉換活動](data-factory-compute-linked-services.md)，請參閱[計算連結服務](data-factory-data-transformation-activities.md)。
 - 如需使用於 Azure 儲存體連結服務定義之 JSON 屬性的詳細資料，請參閱[從 Azure Blob 移入/移出資料](data-factory-azure-blob-connector.md#azure-storage-linked-service)。
 - 您可以使用自己的 HDInsight 叢集，不必使用隨選的 HDInsight 叢集。 請參閱 [計算連結服務](data-factory-compute-linked-services.md) 以取得詳細資料。
 -  Data Factory 會使用先前的 JSON 為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
@@ -414,7 +414,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
     
     隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`。 請使用 [Microsoft 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 - 目前，輸出資料集會影響排程，因此即使活動並未產生任何輸出，您都必須建立輸出資料集。 如果活動沒有任何輸入，您可以略過建立輸入資料集。 
-- 本教學課程不會顯示如何使用 Azure Data Factory 複製資料。 如需如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程︰將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+- 本教學課程不會顯示如何使用 Azure Data Factory 複製資料。 如需說明如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程：將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用伺服器總管檢視 Data Factory
@@ -556,7 +556,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 4. 建立具有 **HDInsight Hive** 活動的**管線**。  
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱[教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱 [教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 您可以將一個活動的輸出資料集設為另一個活動的輸入資料集，藉此鏈結兩個活動 (讓一個活動接著另一個活動執行)。 如需詳細資訊，請參閱[在 Data Factory 中排程和執行](data-factory-scheduling-and-execution.md)。 
 

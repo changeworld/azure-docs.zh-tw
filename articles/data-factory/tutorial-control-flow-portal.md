@@ -12,17 +12,17 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 3fe4dc76e8ece0d525f307626b1772a3239805db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977500"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
 在本教學課程中，您會建立 Data Factory 管道來展示部分的控制流程功能。 這個管道只是簡單地從 Azure Blob 儲存體中的一個容器複製到相同儲存體帳戶中的另一個容器。 如果複製活動成功，管線會在成功電子郵件中傳送成功複製作業的詳細資料 (例如寫入的資料量)。 如果複製活動失敗，管線會在失敗電子郵件中傳送複製失敗的詳細資料 (例如錯誤訊息)。 在整個教學課程中，您會看到如何傳遞參數。
 
-案例的高階概觀：![概觀](media/tutorial-control-flow-portal/overview.png)
+情節的高階概觀：![概觀](media/tutorial-control-flow-portal/overview.png)
 
 您會在本教學課程中執行下列步驟：
 
@@ -149,7 +149,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 5. 選取 Data Factory 的 [位置]  。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 6. 選取 [釘選到儀表板]  。     
 7. 按一下頁面底部的 [新增]  。      
-8. 在儀表板上，您會看到狀態如下的下列圖格︰**部署 Data Factory**。
+8. 在儀表板上，您會看到狀態如下的下列圖格︰**正在部署資料處理站**。
 
     ![部署資料處理站圖格](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. 建立完成之後，您會看到如圖中所示的 [Data Factory]  頁面。
@@ -266,13 +266,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
 
         ![第二個 Web 活動的設定](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管線設計工具中選取 [複製]  活動，按一下 +->  按鈕，然後選取 [錯誤]  。  
+22. 在管線設計工具中選取 [複製]  活動，按一下 **+->** 按鈕，然後選取 [錯誤]  。  
 
     ![第二個 Web 活動的設定](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 將複製活動旁邊的**紅色**按鈕拖曳至第二個 Web 活動 **SendFailureEmailActivity**。 您可以將活動四處移動，讓管線看起來如下圖所示：
 
     ![具有所有活動的完整管線](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. 若要驗證管線，按一下工具列上的 [驗證]  按鈕。 按一下 >>  按鈕，來關閉 [管線驗證輸出]  視窗。
+24. 若要驗證管線，按一下工具列上的 [驗證]  按鈕。 按一下  **按鈕，來關閉 [管線驗證輸出]>>** 視窗。
 
     ![驗證管線](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. 若要將實體 (資料集、管線等等) 發佈至 Data Factory 服務，請選取 [全部發佈]  。 請靜待 [發佈成功]  訊息顯示。

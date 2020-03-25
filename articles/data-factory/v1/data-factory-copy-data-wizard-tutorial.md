@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438908"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教學課程：使用 Data Factory 複製精靈建立具有複製活動的管線
@@ -61,7 +61,7 @@ Azure Data Factory 的[複製精靈]  可讓您快速建立資料管線，以將
       - 選取 [使用現有的]  以選取現有的資源群組。
       - 選取 [建立新的]  以輸入資源群組的名稱。
           
-        本教學課程的某些步驟會假設您使用名為：**ADFTutorialResourceGroup** 的資源群組。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../../azure-resource-manager/management/overview.md)。
+        本教學課程的某些步驟是假設您使用 **ADFTutorialResourceGroup** 做為資源群組名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../../azure-resource-manager/management/overview.md)。
    4. 選取 Data Factory 的 [位置]  。
    5. 選取刀鋒視窗底部的 [釘選到儀表板]  核取方塊。  
    6. 按一下頁面底部的 [新增]  。

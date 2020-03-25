@@ -10,10 +10,10 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971493"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>教學課程：使用 Azure DevOps Projects 部署 ASP.NET 應用程式和 Azure SQL Database 程式碼
@@ -37,7 +37,7 @@ DevOps Projects 也可用於：
 > * 連線到 Azure SQL 資料庫 
 > * 清除資源
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 您可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得免費的訂用帳戶。
 
@@ -68,7 +68,7 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 1. 為您的 Azure DevOps 專案輸入名稱。 
 
-1. 選取您的 Azure 訂用帳戶服務。  
+1. 選取 Azure 訂用帳戶服務。  
     (選擇性) 若要檢視其他 Azure 組態設定，以及在 [資料庫伺服器登入詳細資料]  區段中識別使用者名稱，您可以選取 [變更]  。 請儲存使用者名稱以供本教學課程的後續步驟使用。 如果您執行此選用步驟，請先結束 Azure 設定區域，再選取 [完成]  。
  
 1. 選取 [完成]  。  
@@ -116,7 +116,7 @@ DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps �
     您在先前步驟中檢查的建置管線會產生用於成品的輸出。 
 
 1. 在 [置放]  圖示的右側，選取 [持續部署觸發程序]  。  
-    這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此您的部署需要手動執行。 
+    這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
 
     DevOps Projects 會設定隨機的 SQL 密碼，並將它用於發行管線。
     

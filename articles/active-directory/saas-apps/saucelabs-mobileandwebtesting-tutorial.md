@@ -1,5 +1,5 @@
 ---
-title: 教學課程：Azure Active Directory 與 Sauce Labs - Mobile and Web Testing 整合 | Microsoft Docs
+title: 教學課程：Azure Active Directory 與 Sauce Labs - 行動和 Web 測試整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Sauce Labs - 行動和 Web 測試之間的單一登入。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091565"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教學課程：Azure Active Directory 與 Sauce Labs - Mobile and Web Testing 整合
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教學課程：Azure Active Directory 與 Sauce Labs - 行動和 Web 測試整合
 
 在本教學課程中，您將了解如何將 Sauce Labs - 行動和 Web 測試與 Azure Active Directory (Azure AD) 整合。
 將 Sauce Labs - 行動和 Web 測試與 Azure AD 整合可提供下列優點：
@@ -34,7 +34,7 @@ ms.locfileid: "67091565"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Sauce Labs - 行動和 Web 測試整合，您需要下列項目：
 

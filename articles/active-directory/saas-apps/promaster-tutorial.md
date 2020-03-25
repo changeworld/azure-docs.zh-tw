@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c0a1f58705a64a973bb91e47e6e9fce87a48ce99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb4520e221209acc6461c6ea949a2012d652b91b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094206"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教學課程：Azure Active Directory 與 ProMaster (by Inlogik) 整合
 
@@ -34,7 +34,7 @@ ms.locfileid: "67094206"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 ProMaster (by Inlogik) 的 Azure AD 整合，您需要下列項目：
 
@@ -129,8 +129,8 @@ ms.locfileid: "67094206"
 
     | |
     | - |-|
-    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
+    | `https://secure.inlogik.com/<COMPANYNAME>`|
+    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
     | |
 
     > [!NOTE]

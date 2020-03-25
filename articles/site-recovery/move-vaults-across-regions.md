@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74090302"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>將復原服務保存庫和 Azure Site Recovery 組態移至另一個 Azure 區域
@@ -33,7 +33,7 @@ ms.locfileid: "74090302"
 > [!IMPORTANT]
 > 目前並沒有可將復原服務保存庫和災害復原組態依原狀移至不同區域的最佳方法。 本文會引導您完成停用複寫並在新的區域中加以設定的程序。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 請先確定您已移除並刪除災害復原設定，再嘗試將 Azure VM 移至不同區域。 
 

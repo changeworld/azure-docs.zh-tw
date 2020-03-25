@@ -4,17 +4,18 @@ titleSuffix: Azure Storage
 description: 建立 Azure 儲存體帳戶，然後擷取並輪替其中一個帳戶存取金鑰。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894932"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060817"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>使用 PowerShell 輪替儲存體帳戶存取金鑰
 
@@ -40,7 +41,7 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 此指令碼使用下列命令來建立儲存體帳戶，並擷取及輪替其中一個存取金鑰。 下表中的每個項目都會連結至特定命令的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | 取得所有位置和每個位置支援的資源提供者。 |
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立 Azure 資源群組。 |

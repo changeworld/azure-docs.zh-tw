@@ -9,10 +9,10 @@ ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d8f8021925ac9c9e427dd6571ecaa1a30c85497
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174601"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
@@ -25,7 +25,7 @@ ms.locfileid: "67174601"
 
 3. 在資源清單中，選取您的 IoT 中樞。 本教學課程使用 **ContosoTestHub**。 在 [中樞] 窗格中選取 [IoT 裝置]  。
 
-4. 選取 [+ 新增]  。 在 [新增裝置] 窗格中，填入裝置識別碼。 本教學課程使用 **Contoso-Test-Device**。 金鑰的部分保留空白，並勾選 [自動產生金鑰]  。 請確定 [將裝置連線到 IoT 中樞]  已啟用。 選取 [ **儲存**]。
+4. 選取 [+ 新增]  。 在 [新增裝置] 窗格中，填入裝置識別碼。 本教學課程使用 **Contoso-Test-Device**。 金鑰的部分保留空白，並勾選 [自動產生金鑰]  。 請確定 [將裝置連線到 IoT 中樞]  已啟用。 選取 [儲存]  。
 
    ![新增裝置畫面](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982600"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教學課程：將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體
@@ -413,7 +413,7 @@ ms.locfileid: "75982600"
     > - 選取以您用於連線到 SQL Server 執行個體的驗證為基礎的區段。
     > - 以您的整合執行階段名稱取代 **\<整合執行階段名稱>** 。
     > - 儲存檔案之前，以您的 SQL Server 執行個體值取代 **\<servername>** 、 **\<databasename>** 、 **\<username>** 和 **\<password>** 。
-    > - 如果您需要在使用者帳戶或伺服器名稱中使用反斜線 (\\)，請在它的前面加上逸出字元 (\\)。 例如，使用 mydomain\\\\myuser  。
+    > - 如果您需要在使用者帳戶或伺服器名稱中使用反斜線 (\\)，請在它的前面加上逸出字元 (\\)。 例如，使用 mydomain *\\myuser\\* 。
 
 1. 若要將敏感性資料加密 (使用者名稱、密碼等)，請執行 `New-AzDataFactoryV2LinkedServiceEncryptedCredential` Cmdlet。  
     此加密可確保使用資料保護應用程式開發介面 (DPAPI) 來加密認證。 已加密的認證會本機儲存在自我裝載的整合執行階段節點 (本機電腦) 上。 輸出承載可以重新導向至另一個包含加密認證的 JSON 檔案 (在此例中是 encryptedLinkedService.json  )。
@@ -705,7 +705,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>驗證輸出
-管道會自動在 `adftutorial` Blob 容器中建立名為 fromonprem  的輸出資料夾。 確認您在輸出資料夾中看到 *dbo.emp.txt* 檔案。
+管道會自動在  *Blob 容器中建立名為 fromonprem*`adftutorial` 的輸出資料夾。 確認您在輸出資料夾中看到 *dbo.emp.txt* 檔案。
 
 1. 在 Azure 入口網站的 [adftutorial]  容器視窗中，選取 [重新整理]  可查看輸出資料夾。
 1. 在資料夾清單中選取 `fromonprem`。

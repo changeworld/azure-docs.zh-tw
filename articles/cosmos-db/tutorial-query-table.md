@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770491"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教學課程：使用資料表 API 查詢 Azure Cosmos DB
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教學課程：使用 Table API 查詢 Azure Cosmos DB
 
 Azure Cosmos DB [資料表 API](table-introduction.md) 支援對索引鍵/值 (資料表) 資料進行 OData 和 [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查詢。  
 

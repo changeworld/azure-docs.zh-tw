@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420366"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 建立彈性作業代理程式
@@ -29,12 +29,12 @@ ms.locfileid: "74420366"
 > * 建立作業認證，讓作業可在其目標上執行指令碼
 > * 定義您要對其執行作業的目標 (伺服器、彈性集區、資料庫、分區對應)
 > * 在目標資料庫中建立資料庫範圍認證，讓代理程式可連接及執行作業
-> * 建立工作
+> * 建立作業
 > * 將作業步驟新增至作業
 > * 開始執行作業
 > * 監視作業
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 升級版本的彈性資料庫作業具有一組新的 PowerShell Cmdlet，可以在移轉期間使用。 這些新的 Cmdlet 會將您所有的現有作業認證、目標 (包括資料庫、伺服器、自訂集合)、作業觸發程序、作業排程、作業內容及作業傳輸至新的彈性資料庫代理程式。
 
@@ -236,7 +236,7 @@ $job | Add-AzSqlElasticJobStep -Name "step1" -TargetGroupName $serverGroup.Targe
 $job | Add-AzSqlElasticJobStep -Name "step2" -TargetGroupName $serverGroupExcludingDb2.TargetGroupName -CredentialName $jobCred.CredentialName -CommandText $sqlText2
 ```
 
-### <a name="run-the-job"></a>執行工作
+### <a name="run-the-job"></a>執行作業
 
 若要立即啟動作業，請執行下列命令：
 
@@ -274,9 +274,9 @@ $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 
 下表列出可能的作業執行狀態：
 
-|State|說明|
+|State|描述|
 |:---|:---|
-|**建立時間** | 作業執行剛建立，且尚未開始執行。|
+|**建立日期** | 作業執行剛建立，且尚未開始執行。|
 |**InProgress** | 作業執行目前正在進行中。|
 |**WaitingForRetry** | 作業執行無法完成其動作，且正在等候重試。|
 |**已成功** | 作業執行已順利完成。|
@@ -307,7 +307,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 > * 建立作業認證，讓作業可在其目標上執行指令碼
 > * 定義您要對其執行作業的目標 (伺服器、彈性集區、資料庫、分區對應)
 > * 在目標資料庫中建立資料庫範圍認證，讓代理程式可連接及執行作業
-> * 建立工作
+> * 建立作業
 > * 將作業步驟新增至作業
 > * 開始執行作業
 > * 監視作業

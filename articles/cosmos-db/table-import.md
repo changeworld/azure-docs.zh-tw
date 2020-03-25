@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66242579"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>將您的資料移轉至 Azure Cosmos DB 資料表 API 帳戶
@@ -26,11 +26,11 @@ ms.locfileid: "66242579"
 > * 使用 AzCopy 匯入資料
 > * 從資料表 API (預覽) 移轉至資料表 API 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **增加輸送量：** 資料移轉的時間長短取決於您為個別容器或一組容器設定的輸送量。 針對較大資料移轉，請務必增加輸送量。 完成移轉之後，再降低輸送量以節省成本。 如需在 Azure 入口網站增加輸送量的詳細資訊，請參閱 Azure Cosmos DB 中的效能等級和定價層。
+* **增加輸送量︰** 資料移轉的時間長短取決於您為個別容器或一組容器設定的輸送量。 針對較大資料移轉，請務必增加輸送量。 完成移轉之後，再降低輸送量以節省成本。 如需在 Azure 入口網站增加輸送量的詳細資訊，請參閱 Azure Cosmos DB 中的效能等級和定價層。
 
-* **建立 Azure Cosmos DB 資源：** 在您開始移轉資料之前，請先從 Azure 入口網站預先建立所有資料表。 如果您要遷移至具有資料庫層級輸送量的 Azure Cosmos DB 帳戶，請務必在建立 Azure Cosmos DB 資料表時提供分割區索引鍵。
+* **建立 Azure Cosmos DB 資源：** 在您開始遷移資料之前，請先從 Azure 入口網站預先建立所有資料表。 如果您要遷移至具有資料庫層級輸送量的 Azure Cosmos DB 帳戶，請務必在建立 Azure Cosmos DB 資料表時提供分割區索引鍵。
 
 ## <a name="data-migration-tool"></a>資料移轉工具
 
@@ -91,7 +91,7 @@ ms.locfileid: "66242579"
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>範例命令：來源是 Azure 資料表儲存體
+### <a name="sample-command-source-is-azure-table-storage"></a>命令範例：來源是 Azure 資料表儲存體
 
 以下命令列範例會說明如何從 Azure 資料表儲存體匯入到資料表 API：
 
@@ -99,7 +99,7 @@ ms.locfileid: "66242579"
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>範例命令：來原是 Azure Cosmos DB 資料表 API (預覽)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>命令範例：來源是 Azure Cosmos DB 資料表 API (預覽)
 
 以下是從資料表 API 預覽版匯入到資料表 API GA 的命令列範例：
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: eb96027351cf244e9cd4404f702544411130db5e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174669"
 ---
 [Azure 服務匯流排](/azure/service-bus-messaging/service-bus-messaging-overview)是企業[整合](https://azure.microsoft.com/product-categories/integration/)訊息代理程式。 服務匯流排支援兩種通訊類型：佇列和主題。 

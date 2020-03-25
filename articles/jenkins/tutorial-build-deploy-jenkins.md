@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 虛擬機器, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192603"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教學課程：使用 Jenkins 和 Azure DevOps Services 在 Azure 中將應用程式部署至 Linux 虛擬機器
@@ -78,7 +78,7 @@ ms.locfileid: "78192603"
 3. 在 [原始程式碼管理]  索引標籤中，選取 **Git**，然後輸入包含應用程式程式碼的存放庫與分支詳細資料。    
     ![將存放庫新增至組建](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. 在 [Build Triggers] (組建觸發程序)  索引標籤上，選取 [Poll SCM] (輪詢 SCM)  ，並輸入排程 `H/03 * * * *`，每隔三分鐘輪詢 Git 存放庫以檢查變更。 
-5. 在 [Build Environment] (組建環境)  索引標籤上，選取 [提供節點 &amp; npm bin/ 資料夾路徑]  ，然後選取 [NodeJS 安裝]  值。 將 **npmrc 檔案**的設定保留為 [使用系統預設值]  。
+5. 在 [Build Environment] (組建環境)  索引標籤上，選取 [提供節點  **npm bin/ 資料夾路徑]&amp;** ，然後選取 [NodeJS 安裝]  值。 將 **npmrc 檔案**的設定保留為 [使用系統預設值]  。
 6. 在 [組建]  索引標籤上，選取 [Execute shell] (執行殼層)  ，並輸入 `npm install` 命令，以確保所有相依性都會更新。
 
 
@@ -122,7 +122,7 @@ ms.locfileid: "78192603"
    > [!NOTE]
    > 在下列程序中，請務必安裝必要元件，並且*請勿使用 sudo 權限執行指令碼。*
 
-1. 開啟 [建置 &amp; 發行]  中樞裡的 [發行]  索引標籤，並開啟 [部署群組]  ，然後選取 [+ 新增]  。
+1. 開啟 [建置  **發行]** **中樞裡的 [發行]&amp;** 索引標籤，並開啟 [部署群組]  ，然後選取 [+ 新增]  。
 2. 輸入部署群組的名稱和選擇性說明。 然後選取 [建立]  。
 3. 選擇部署目標虛擬機器的作業系統。 例如，選取 [Ubuntu 16.04+]  。
 4. 選取 [使用指令碼中的個人存取權杖進行驗證]  。
@@ -138,12 +138,12 @@ ms.locfileid: "78192603"
 
 若要在 Azure Pipelines 中建立發行管線：
 
-1. 開啟 [建置 &amp; 發行]  中樞裡的 [發行]  索引標籤，然後選取 [建立發行管線]  。 
+1. 開啟 [建置  **發行]** **中樞裡的 [發行]&amp;** 索引標籤，然後選取 [建立發行管線]  。 
 2. 選擇開頭為 [空白流程]  ，以選取 [空白]  範本。
 3. 在 [成品]  區段中，選取 [+ 新增成品]  ，然後選擇 [Jenkins]  用於 [來源類型]  。 選取您的 Jenkins 服務端點連線。 然後選取 Jenkins 來源作業，並選取 [新增]  。
 4. 選取 [環境 1]  旁的省略符號。 選取 [新增部署群組階段]  。
 5. 選擇您的部署群組。
-5. 選取 [+]  將工作新增至 [部署群組階段]  。
+5. 選取 [ **]+** 將工作新增至 [部署群組階段]  。
 6. 選取 [殼層指令碼]  工作，然後選取 [新增]  。 **殼層指令碼**工作提供每個伺服器上要執行的指令碼設定，以安裝 Node.js 並啟動應用程式。
 8. 若為**指令碼路徑**，請輸入 **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**。
 9. 選取 [進階]  ，然後啟用 [指定工作目錄]  。
@@ -155,7 +155,7 @@ ms.locfileid: "78192603"
 
 1. 選取 [+ 發行]  ，然後選取 [建立發行]  。
 2. 在反白顯示的下拉式清單中選取您完成的組建，然後選取 [佇列]  。
-3. 在快顯訊息中選擇發行連結。 例如：「發行 **Release-1** 已建立。」
+3. 在快顯訊息中選擇發行連結。 例如：「發行「**發行-1**」已建立。」
 4. 開啟 [記錄]  索引標籤以查看發行主控台輸出。
 5. 在瀏覽器中，開啟您在部署群組中新增之其中一部伺服器的 URL。 例如，輸入 **http://{您的伺服器 IP 位址}** 。
 6. 移至來源 Git 存放庫，並使用某些變更的文字修改 app/views/index.jade 檔案中的 **h1** 標題。

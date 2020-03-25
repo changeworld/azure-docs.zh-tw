@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834649"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站監視兩部虛擬機器之間的網路通訊
@@ -159,7 +159,7 @@ ms.locfileid: "76834649"
 
     您可以在 **myvm2529** 網路介面的狀態資料行中看到紅色驚嘆號圖示。
 
-6. 若要深入了解狀態為何會變更，請在上圖中選取 10.0.0.5。 連線監視會通知您通訊失敗的原因是：*下列網路安全性群組規則致使流量遭到封鎖：UserRule_DenySshInbound*。
+6. 若要深入了解狀態為何會變更，請在上圖中選取 10.0.0.5。 連線監視會通知您通訊失敗的原因是：流量遭到封鎖，原因是下列網路安全性群組規則：UserRule_DenySshInbound  。
 
     如果您不知道誰實作了您在步驟 4 中建立的安全性規則，您可以從連線監視知道是該規則造成通訊問題。 然後，您可以變更、覆寫或移除規則，以還原虛擬機器之間的通訊。
 

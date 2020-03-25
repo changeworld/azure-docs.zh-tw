@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>教學課程：Azure Active Directory 與 UserVoice 整合
@@ -34,7 +34,7 @@ UserVoice 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 UserVoice 的整合作業，您需要下列項目：
 
@@ -140,7 +140,7 @@ UserVoice 與 Azure AD 整合提供下列優點：
 
 3. 在 [Web 入口網站]  索引標籤的 [使用者驗證]  區段中，按一下 [編輯]  ，以開啟 [編輯使用者驗證]  對話頁面。
    
-    ![Web 入口網站索引標籤](./media/uservoice-tutorial/ic777520.png "Web 入口網站")
+    ![Web 入口網站索引標籤](./media/uservoice-tutorial/ic777520.png "入口網站")
 
 4. 在 [編輯使用者驗證]  對話頁面上執行下列步驟：
    
@@ -218,7 +218,7 @@ UserVoice 與 Azure AD 整合提供下列優點：
    
     ![設定](./media/uservoice-tutorial/ic777811.png "設定")
 
-3. 按一下 [一般]  。
+3. 按一下 **[一般]** 。
 
 4. 按一下 [代理程式和權限]  。
    

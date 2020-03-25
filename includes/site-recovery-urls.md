@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174504"
 ---
-Name | 商業 URL | 政府 URL | 說明
+名稱 | 商業 URL | 政府 URL | 描述
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | 可用於使用 Azure Active Directory 來管理存取控制和身分識別。 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | 用於複寫資料的傳輸和協調。

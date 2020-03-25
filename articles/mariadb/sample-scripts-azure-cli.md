@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 12/02/2019
-ms.openlocfilehash: affb7efc4c93561472bc006cb13ac93ab19aeec0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d10d5b4885e826da9b6efd95dfc02940e1a9644a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771720"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79529963"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」的 Azuer CLI 範例 
 下表包含「適用於 MariaDB 的 Azure 資料庫」的範例 Azure CLI 指令碼連結。

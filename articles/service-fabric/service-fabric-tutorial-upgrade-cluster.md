@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252742"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中升級 Service Fabric 叢集的執行階段
@@ -75,7 +75,7 @@ Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 
 ## <a name="upgrade-the-runtime"></a>升級執行階段
 
-以 `Get-ServiceFabricRuntimeUpgradeVersion` Cmdlet 使用來自上一節的 **ClusterCodeVersion** 值，探索可以升級到哪些版本。 此 Cmdlet 只能在可連線到網際網路的電腦上執行。 例如，若您想要查看可以從 `5.7.198.9494` 版升級到哪些執行階段版本，請使用下列命令：
+以 **Cmdlet 使用來自上一節的**ClusterCodeVersion`Get-ServiceFabricRuntimeUpgradeVersion` 值，探索可以升級到哪些版本。 此 Cmdlet 只能在可連線到網際網路的電腦上執行。 例如，若您想要查看可以從 `5.7.198.9494` 版升級到哪些執行階段版本，請使用下列命令：
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"

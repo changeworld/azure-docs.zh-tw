@@ -17,10 +17,10 @@ ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdd8daa5cb0d82a3bfdb97496c650e1ce1d21a81
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>教學課程：Azure Active Directory 與 Asset Bank 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73157848"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 Asset Bank 的 Azure AD 整合，您需要下列項目：
 
@@ -51,7 +51,7 @@ ms.locfileid: "73157848"
 
 ## <a name="adding-asset-bank-from-the-gallery"></a>從資源庫新增 Asset Bank
 
-若要設定將 Asset Bank 整合到 Azure AD 中，您需要從資源庫將 Asset Bank 新增到受控 SaaS app 清單。
+若要設定 Asset Bank 與 Azure AD 整合，您需要從資源庫將 Asset Bank 新增到受控 SaaS app 清單。
 
 **若要從資源庫新增 Asset Bank，請執行下列步驟：**
 

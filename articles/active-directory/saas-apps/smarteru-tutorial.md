@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76549286"
 ---
 > [!NOTE]
@@ -217,7 +217,7 @@ SmarterU 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增使用者]  。
 
-    b. 在下列文字方塊中輸入該 Azure AD 使用者帳戶的相關屬性值：[主要電子郵件]  、[員工識別碼]  、[密碼]  、[驗證密碼]  、[名字]  、[姓氏]  。
+    b. 在下列文字方塊中輸入該 Azure AD 使用者帳戶的相關屬性值：**主要電子郵件地址**、**員工識別碼**、**密碼**、**確認密碼**、**名字**、**姓氏**。
 
     c. 按一下 [作用中]  。
 

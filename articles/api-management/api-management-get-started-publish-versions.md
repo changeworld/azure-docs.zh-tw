@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176828"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>為您的 API 發佈多個版本 
@@ -34,11 +34,11 @@ ms.locfileid: "73176828"
 
 ![開發人員入口網站上顯示的版本](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
-+ 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
++ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
++ 同時也請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>加入新版本
 
@@ -89,7 +89,7 @@ Azure API 管理可讓您選擇讓呼叫者指定他們想要之 API 版本的�
 3. 選取 [API]  。
 4. 選取 [新增]  。
 5. 選取 [示範會議 API，版本 v1]  。
-6. 按一下 [選取]  。
+6. 按一下 [選取]。 
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>瀏覽開發人員入口網站以查看版本
 

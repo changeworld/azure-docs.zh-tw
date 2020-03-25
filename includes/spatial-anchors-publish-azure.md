@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173668"
 ---
 ### <a name="open-the-publish-wizard"></a>開啟發佈精靈
@@ -41,10 +41,10 @@ ms.locfileid: "67173668"
 
 在 [設定主控方案]  對話方塊中，使用以下設定：
 
-| 設定 | 建議的值 | 說明 |
+| 設定 | 建議的值 | 描述 |
 |-|-|-|
 |App Service 方案| MySharingServicePlan | App Service 方案的名稱。 |
-| 位置 | 美國西部 | 裝載 Web 應用程式的資料中心。 |
+| Location | 美國西部 | 裝載 Web 應用程式的資料中心。 |
 | 大小 | 免費 | 決定裝載功能的[定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 |
 
 選取 [確定]  。

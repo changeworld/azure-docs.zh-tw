@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68229343"
 ---
 若要使用 Azure 入口網站建立 IoT 中樞：
@@ -27,10 +27,10 @@ ms.locfileid: "68229343"
 
     | 設定 | 值 |
     | ------- | ----- |
-    | Subscription | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
-    | Resource group | 新建。 本教學課程使用 **tutorials-iot-hub-rg** 名稱。 |
+    | 訂用帳戶 | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
+    | 資源群組 | 新建。 本教學課程使用 **tutorials-iot-hub-rg** 名稱。 |
     | 區域 | 本教學課程使用**美國西部**。 您可以選擇最接近您所在地的區域。 |
-    | Name | 下列螢幕擷取畫面會使用 **tutorials-iot-hub** 名稱。 在建立中樞時，您必須選擇您自己的唯一名稱。 |
+    | 名稱 | 下列螢幕擷取畫面會使用 **tutorials-iot-hub** 名稱。 在建立中樞時，您必須選擇您自己的唯一名稱。 |
 
     ![中樞設定 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
 ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73686343"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教學課程：使用 Azure 資訊安全中心保護您的資源
@@ -30,7 +30,7 @@ ms.locfileid: "73686343"
 > * 設定 Just-In-Time VM 存取原則
 > * 設定應用程式控制原則
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要逐步執行本教學課程中涵蓋的功能，您必須是在資訊安全中心的標準定價層。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)快速入門會為您逐步解說如何升級至「標準」定價層。
 
 ## <a name="manage-vm-access"></a>管理 VM 存取
@@ -100,14 +100,14 @@ JIT VM 存取可用於鎖定 Azure VM 的連入流量，進而降低暴露於攻
 2. 選取您需要返回免費層的訂用帳戶或原則。 [安全性原則]  隨即開啟。
 3. 在 [原則元件]  下，選取 [定價層]  。
 4. 選取 [免費]  以將訂用帳戶從標準層變更為免費層。
-5. 選取 [ **儲存**]。
+5. 選取 [儲存]  。
 
 如果您需要停用自動佈建：
 
 1. 返回 [資訊安全中心] 主功能表，並選取 [安全性原則]  。
 2. 選取您想要停用自動佈建的訂用帳戶。
 3. 在 [安全性原則 - 資料收集]  下，選取 [上架]  底下的 [關閉]  以停用自動佈建。
-4. 選取 [ **儲存**]。
+4. 選取 [儲存]  。
 
 >[!NOTE]
 > 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Microsoft Monitoring Agent。 停用自動佈建會限制對資源的安全性監視。

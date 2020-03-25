@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084182"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>準備 Azure 資源以進行 Hyper-V 災害復原
@@ -60,7 +60,7 @@ ms.locfileid: "74084182"
 6. 在 [效能]  中選取 [標準]  。 接下來，在 [存取層]  中，選取預設選項 [經常性存取層]  。
 7. 在 [訂用帳戶]  中，選擇您要在其中建立新儲存體帳戶的訂用帳戶。
 8. 在 [資源群組]  中，輸入新的資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 本教學課程使用 **ContosoRG**。
-9. 在 [位置]  中，選擇儲存體帳戶的地理位置。 本教學課程使用**歐洲西部**。
+9. 在 [位置]  中，選擇儲存體帳戶的地理位置。 本教學課程使用**西歐**。
 10. 選取 [建立]  以建立儲存體帳戶。
 
    ![建立儲存體帳戶](media/tutorial-prepare-azure/create-storageacct.png)
@@ -71,7 +71,7 @@ ms.locfileid: "74084182"
 2. 選取 [備份與復原 (OMS)]  。 接下來，在 [備份與復原]  頁面上，選取 [建立]  。
 1. 在 [復原服務保存庫] > [名稱]  中，輸入用來識別保存庫的自訂名稱。 在此教學課程中，使用 **ContosoVMVault**。
 2. 在 [資源群組]  中選取現有的資源群組，或建立新的資源群組。 本教學課程使用 **contosoRG**。
-3. 在 [位置]  中，選取要設置保存庫的區域。 本教學課程使用**歐洲西部**。
+3. 在 [位置]  中，選取要設置保存庫的區域。 本教學課程使用**西歐**。
 4. 若要從儀表板快速存取保存庫，請按一下 [釘選到儀表板]   > [建立]  。
 
 ![建立新保存庫](./media/tutorial-prepare-azure/new-vault-settings.png)
@@ -82,12 +82,12 @@ ms.locfileid: "74084182"
 
 當 Azure VM 在容錯移轉後從儲存體建立時，會加入此網路。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]   > [網路]   > [虛擬網路]  。 保持選取 [Resource Manager] 作為部署模型。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 **[建立資源]**  >  **[網路]**  >  **[虛擬網路]** 。 保持選取 [Resource Manager] 作為部署模型。
 2. 在 [名稱]  中，輸入網路名稱。 此名稱必須是 Azure 資源群組中的唯一名稱。 本教學課程使用 **ContosoASRnet**。
 3. 指定要在其中建立網路的資源群組。 此教學課程使用現有的資源群組 **contosoRG**。
 4. 在 [位址範圍]  中，輸入 **10.0.0.0/24** 作為網路範圍。 此網路沒有子網路。
 5. 在 [訂用帳戶]  中，選取要在其中建立網路的訂用帳戶。
-6. 在 [位置]  中，選擇 [歐洲西部]  。 此網路必須位於與復原服務保存庫相同的區域中。
+6. 在 [位置]  中，選擇 [西歐]  。 此網路必須位於與復原服務保存庫相同的區域中。
 7. 保留基本 DDoS 保護的預設選項，且網路上沒有任何服務端點。
 8. 選取 [建立]  。
 

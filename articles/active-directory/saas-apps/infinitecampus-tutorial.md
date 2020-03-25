@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教學課程：Azure Active Directory 與 Infinite Campus 整合
@@ -34,7 +34,7 @@ Infinite Campus 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Infinite Campus 整合，您需要下列項目：
 
@@ -122,7 +122,7 @@ Infinite Campus 與 Azure AD 整合提供下列優點：
 
 2. 在左側的功能表中，按一下 [系統管理]  。
 
-    ![系統管理員](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
+    ![管理員](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
 3. 瀏覽至 [使用者安全性]   > [SAML 管理]   > [SSO 服務提供者組態]  。
 

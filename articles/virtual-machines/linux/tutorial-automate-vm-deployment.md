@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 62a8c68b11562cac7bb9e8a318cbe08084449423
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034646"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066513"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教學課程 - 如何使用 cloud-init 在首次開機時於 Azure 中自訂 Linux 虛擬機器
 
@@ -47,7 +47,7 @@ Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install**
 |Canonical |UbuntuServer |18.04-LTS |最新 |是 | 
 |Canonical |UbuntuServer |16.04-LTS |最新 |是 | 
 |Canonical |UbuntuServer |14.04.5-LTS |最新 |是 |
-|CoreOS |CoreOS |Stable |最新 |是 |
+|CoreOS |CoreOS |穩定 |最新 |是 |
 |OpenLogic 7.6 |CentOS |7-CI |最新 |preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
@@ -58,7 +58,7 @@ Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install**
 
 在 Bash 提示字元或 Cloud Shell 中，建立名為 cloud-init.txt  的檔案，並貼上下列組態。 例如，輸入 `sensible-editor cloud-init.txt` 可建立檔案，並查看可用的編輯器清單。 請確定已正確複製整個 cloud-init 檔案，特別是第一行：
 
-```azurecli-interactive
+```bash
 #cloud-config
 package_upgrade: true
 packages:

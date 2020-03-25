@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75895483"
 ---
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -34,7 +34,7 @@ ms.locfileid: "75895483"
 
 1. 在 [Digital Twins]  窗格中，輸入下列資訊：
    * **資源名稱**：為 Digital Twins 執行個體建立獨一無二的名稱。
-   * 訂用帳戶  ：選擇您要用來建立此 Digital Twins 執行個體的訂用帳戶。 
+   * **訂用帳戶**：選擇您要用來建立此 Digital Twins 執行個體的訂用帳戶。 
    * **資源群組**：選取或建立 Digital Twins 執行個體的[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。
    * **位置**：選取最接近裝置的位置。
 

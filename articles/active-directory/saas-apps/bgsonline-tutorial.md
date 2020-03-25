@@ -17,10 +17,10 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bccd90340fe8f8dfd5393a391899caf92dd2251f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>教學課程：Azure Active Directory 與 BGS Online 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73158865"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 BGS Online 整合，您需要下列項目：
 
@@ -106,7 +106,7 @@ ms.locfileid: "73158865"
 
     ![BGS Online 網域和 URL 單一登入資訊](common/idp-intiated.png)
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
+    a. 在 [識別碼]  文字方塊中，使用下列模式輸入 URL：
 
     針對生產環境，請使用此模式 `https://<company name>.millwardbrown.report`
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174644"
 ---
 1. 登入「資料箱」裝置。 確定裝置已解除鎖定。
@@ -27,7 +27,7 @@ ms.locfileid: "67174644"
 
     ![資料箱儀表板](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. 以系統管理員身分啟動 [記事本]  ，然後開啟位於 `C:\Windows\System32\Drivers\etc` 的 **hosts** 檔案。
+5. 以系統管理員身分啟動 [記事本]  ，然後開啟位於 **的**hosts`C:\Windows\System32\Drivers\etc` 檔案。
 6. 將下列項目新增至 **hosts** 檔案：`<device IP address> <Blob service endpoint>`
 7. 使用下圖以供參考。 儲存 **hosts** 檔案。
 

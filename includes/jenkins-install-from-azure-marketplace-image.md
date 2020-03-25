@@ -10,10 +10,10 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67174599"
 ---
 1. 在瀏覽器中開啟[適用於 Jenkins 的 Azure Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)。
@@ -62,7 +62,7 @@ ms.locfileid: "67174599"
 1. 在 [整合設定]  索引標籤中，指定下列值：
 
     - **服務主體** - 新增至 Jenkins 作為向 Azure 驗證的認證服務主體。 `Auto` 表示將由 MSI (受控服務識別) 建立主體。 `Manual` 表示應該由您建立主體。 
-        - **應用程式識別碼**和**祕密** - 如果在 [服務主體]  選項選取 `Manual` 選項，則必須為服務主體指定 `Application ID` 和 `Secret`。 [建立服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)時，請注意預設角色是**參與者**，其資格足以使用 Azure 資源。
+        - **應用程式識別碼**和**祕密** - 如果在 [服務主體]`Manual`**選項選取** 選項，則必須為服務主體指定 `Application ID` 和 `Secret`。 [建立服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)時，請注意預設角色是**參與者**，其資格足以使用 Azure 資源。
     - **啟用雲端代理程式** - 指定代理程式的預設雲端範本，其中 `ACI` 是指 Azure 容器執行個體，`VM` 是指虛擬機器。 如果您不想要啟用雲端代理程式，也可以指定 `No`。
 
 1. 選取 [確定]  以繼續前往 [摘要]  索引標籤。

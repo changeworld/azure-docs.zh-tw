@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430741"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自訂開發人員入口網站頁面的風格
@@ -40,8 +40,8 @@ ms.locfileid: "75430741"
 ## <a name="prerequisites"></a>Prerequisites
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
-+ 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
++ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
++ 同時也請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 ## <a name="customize-the-developer-portal"></a>自訂開發人員入口網站
 

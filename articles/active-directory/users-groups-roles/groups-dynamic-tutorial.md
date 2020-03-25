@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74027099"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教學課程：自動新增或移除群組成員
@@ -33,7 +33,7 @@ ms.locfileid: "74027099"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須是租用戶的全域管理員，且具有一個 Azure AD Premium 授權，才能使用此功能。 如果您沒有授權，請在 Azure AD 中選取 [授權]   > [產品]   > [試用/購買]  。
 

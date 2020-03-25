@@ -17,10 +17,10 @@ ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教學課程：Azure Active Directory 與 Zendesk 整合
@@ -35,7 +35,7 @@ Zendesk 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 Zendesk 的 Azure AD 整合，您需要下列項目：
 
@@ -117,15 +117,15 @@ Zendesk 與 Azure AD 整合提供下列優點：
 
 5. Zendesk 應用程式需要特定格式的 SAML 判斷提示。 沒有任何必要 SAML 屬性，但您可以視需要從應用程式整合頁面的 [使用者屬性]  區段管理。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![映像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![映像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![映像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -245,7 +245,7 @@ Zendesk 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-zendesk-test-user"></a>建立 Zendesk 測試使用者
 
-本節的目標是要在 Zendesk 中建立名為 Britta Simon 的使用者。 Zendesk 支援自動使用者佈建，該功能預設為啟用。 在[這裡](Zendesk-provisioning-tutorial.md)可以找到更多關於如何設定自動使用者佈建的詳細資料。
+本節的目標是要在 Zendesk 中建立名為 Britta Simon 的使用者。 Zendesk 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](Zendesk-provisioning-tutorial.md)找到關於如何設定自動使用者佈建的更多詳細資料。
 
 **如果您需要手動建立使用者，請執行下列步驟：**
 

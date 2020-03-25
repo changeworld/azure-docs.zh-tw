@@ -17,10 +17,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教學課程：Azure Active Directory 與 IdeaScale 整合
@@ -35,7 +35,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 IdeaScale 整合，您需要下列項目：
 
@@ -140,7 +140,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     ![社群設定](./media/ideascale-tutorial/ic790847.png "社群設定")
 
-3. 移至 [安全性] \> [單一登入設定]  。
+3. 移至 [安全性]  **[單一登入設定]\>** 。
 
     ![單一登入設定](./media/ideascale-tutorial/ic790848.png "單一登入設定")
 
@@ -158,7 +158,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     c. 在 [登出成功 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
-    d. 按一下 [儲存變更]  。
+    d. 按一下 **[儲存變更]** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -223,7 +223,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     ![社群設定](./media/ideascale-tutorial/ic790847.png "社群設定")
 
-3. 移至 [基本設定] \> [成員管理]  。
+3. 移至 [基本設定]  **[成員管理]\>** 。
 
 4. 按一下 [新增成員]  。
 
@@ -235,7 +235,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     a. 在 [電子郵件地址]  文字方塊輸入您想要佈建之 Azure AD 帳戶的有效電子郵件地址。
 
-    b. 按一下 [儲存變更]  。
+    b. 按一下 **[儲存變更]** 。
 
     > [!NOTE]
     > Azure Active Directory 帳戶的持有者會收到一封包含連結的電子郵件，可在啟用帳戶前進行確認。

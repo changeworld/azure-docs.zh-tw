@@ -8,10 +8,10 @@ ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78298525"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在 Azure Government 和公用區域之間移動 Azure VM 
@@ -199,7 +199,7 @@ ms.locfileid: "78298525"
 
 10. 在 [名稱]   >  [設定屬性]  中，選取處理序伺服器將用來在機器上自動安裝行動服務的帳戶。
 11. 在 [複寫設定]   >  [進行複寫設定]  中，確認已選取正確的複寫原則。 
-12. 按一下 [啟用複寫]  。 您可以在 [設定]   >  [作業]   >  [Site Recovery 作業]  中，追蹤 [啟用保護]  作業的進度。 執行 [完成保護]  作業之後，機器即準備好進行容錯移轉。
+12. 按一下 [啟用複寫]  。 您可以在 [設定]  **[作業]**  >  **[Site Recovery 作業]**  >  中，追蹤 [啟用保護]  作業的進度。 執行 [完成保護]  作業之後，機器即準備好進行容錯移轉。
 
 
 若要監視您新增的伺服器，您可以在 [設定伺服器]   > [上次連絡時間]  中查看上次探索伺服器的時間。 若要新增機器而不等候已排定的探索時間，請醒目提示設定伺服器 (不要按一下)，然後按一下 [重新整理]  。
@@ -211,8 +211,8 @@ ms.locfileid: "78298525"
 2. 在 [測試容錯移轉]  中，選取要用於容錯移轉的復原點：
 
    - **最近處理**：將 VM 容錯移轉到 Site Recovery 服務所處理的最新復原點。 隨即顯示時間戳記。 使用此選項時，無須花費時間處理資料，因此它會提供低 RTO (復原時間目標)。
-   - **最新應用程式一致**：此選項會將所有 VM 容錯移轉到最新的應用程式一致復原點。 隨即顯示時間戳記。
-   - [自訂]  ：選取任何復原點。
+   - **最近的應用程式一致**：此選項會將所有 VM 容錯移轉到最新的應用程式一致復原點。 隨即顯示時間戳記。
+   - **自訂**：選取任何復原點。
 
 3. 選取您要移入 Azure VM 的目標 Azure 虛擬網路，以測試組態。 
 

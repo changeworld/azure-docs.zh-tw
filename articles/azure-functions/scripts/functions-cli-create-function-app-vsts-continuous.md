@@ -5,15 +5,15 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922647"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>在 Azure 中建立從 Azure DevOps 部署的函式
 
-本主題示範如何使用 Azure Functions，以使用[取用方案](../functions-scale.md#consumption-plan)來建立[無伺服器](https://azure.microsoft.com/solutions/serverless/)函式應用程式。 函式應用程式 (即您函式的容器) 是從 Azure DevOps 存放庫持續部署。 
+本主題示範如何使用 Azure Functions，以使用[取用方案](https://azure.microsoft.com/solutions/serverless/)來建立[無伺服器](../functions-scale.md#consumption-plan)函式應用程式。 函式應用程式 (即您函式的容器) 是從 Azure DevOps 存放庫持續部署。 
 
 若要完成本主題，您必須具備：
 

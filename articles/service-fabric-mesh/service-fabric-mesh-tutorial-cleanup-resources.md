@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351863"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教學課程：移除 Azure 資源
@@ -53,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-或者，您可以[從入口網站](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)刪除 **sfmeshTutorial1RG** 資源群組。 
+或者，您可以**從入口網站**刪除 [sfmeshTutorial1RG](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups) 資源群組。 
 
 ## <a name="next-steps"></a>後續步驟
 

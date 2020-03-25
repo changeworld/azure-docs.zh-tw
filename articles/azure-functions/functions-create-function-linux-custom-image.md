@@ -4,13 +4,13 @@ description: 了解如何建立在自訂 Linux 映像上執行的 Azure Function
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482355"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223725"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -35,7 +35,7 @@ ms.locfileid: "77482355"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 具有有效訂用帳戶的 Azure 帳戶。 免費[建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 版或更新版本
 - [Azure CLI](/cli/azure/install-azure-cli) 2.0.77 版或更新版本
 - [Azure Functions 2.x 執行階段](functions-versions.md)
@@ -70,7 +70,7 @@ ms.locfileid: "77482355"
 
 1. 在終端機或命令提示字元中，於適當的位置建立本教學課程的資料夾，然後瀏覽至該資料夾。
 
-1. 依照[建立及啟動虛擬環境](functions-create-first-function-python.md#create-and-activate-a-virtual-environment)上的指示，建立虛擬環境以用於本教學課程。
+1. 依照[建立及啟動虛擬環境](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)上的指示，建立虛擬環境以用於本教學課程。
 
 1. 針對您所選擇的語言執行下列命令，以在名為 `LocalFunctionsProject` 的資料夾中建立函式應用程式專案。 `--docker` 選項會產生專案的 `Dockerfile`，這會定義適合用於 Azure Functions 和所選執行階段的自訂容器。
 
@@ -256,7 +256,7 @@ ms.locfileid: "77482355"
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. 映像一旦在本機容器中執行，請將瀏覽器開啟至 `http://localhost:8080`，這應會顯示如下所示的預留位置影像。 此影像會在此時出現，因為您的函式是在本機容器中執行，就像在 Azure 中一樣，這表示其利用 `"authLevel": "function"` 屬性受到 *function.json* 中所定義的存取金鑰保護。 然而，容器尚未在 Azure 中發佈至函式應用程式，因此還沒有可用的金鑰。 如果您想要在本機測試，請停止 Docker、將授權屬性變更為 `"authLevel": "anonymous"`、重建映像，然後重新啟動 Docker。 然後在 *function.json* 中重設 `"authLevel": "function"`。 如需詳細資訊，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+1. 映像一旦在本機容器中執行，請將瀏覽器開啟至 `http://localhost:8080`，這應會顯示如下所示的預留位置影像。 此影像會在此時出現，因為您的函式是在本機容器中執行，就像在 Azure 中一樣，這表示其利用 *屬性受到*function.json`"authLevel": "function"` 中所定義的存取金鑰保護。 然而，容器尚未在 Azure 中發佈至函式應用程式，因此還沒有可用的金鑰。 如果您想要在本機測試，請停止 Docker、將授權屬性變更為 `"authLevel": "anonymous"`、重建映像，然後重新啟動 Docker。 然後在 `"authLevel": "function"`function.json*中重設*。 如需詳細資訊，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![表示容器正在本機執行的預留位置影像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -296,7 +296,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     az login
     ```
     
-1. 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 下列範例會在 `westeurope` 區域建立名為 `AzureFunctionsContainers-rg` 的資源群組。 (您通常會使用來自 `az account list-locations` 命令的可用區域，在您附近的區域中建立資源群組和資源。)
+1. 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 下列範例會在 `AzureFunctionsContainers-rg` 區域建立名為 `westeurope` 的資源群組。 (您通常會使用來自 `az account list-locations` 命令的可用區域，在您附近的區域中建立資源群組和資源。)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
@@ -313,7 +313,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     
     在本教學課程中，儲存體帳戶只會產生幾美分的費用。
     
-1. 使用命令，針對 [彈性進階 1]  定價層 (`--sku EP1`)、西歐區域 (`-location westeurope` 或使用您附近的適當區域) 和 Linux 容器 (`--is-linux`) 中名為 `myPremiumPlan` 的 Azure Functions 建立進階方案。
+1. 使用命令，針對 [彈性進階 1]`myPremiumPlan` **定價層 (** )、西歐區域 (`--sku EP1` 或使用您附近的適當區域) 和 Linux 容器 (`-location westeurope`) 中名為 `--is-linux` 的 Azure Functions 建立進階方案。
 
     ```azurecli
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
@@ -339,8 +339,9 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    ```
     
-1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+1. 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令，將此設定新增至函式應用程式。 在下列命令中，將 `<app_name>` 取代為函式應用程式的名稱，並將 `<connection_string>` 取代為上一個步驟中的連接字串 (以 "DefaultEndpointProtocol=" 開頭的長編碼字串)：
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -527,7 +528,7 @@ Azure Functions 可讓您將函式連線至其他 Azure 服務和資源，而不
 
 ### <a name="add-an-output-binding-to-functionjson"></a>將輸出繫結新增至 function.json
 
-在 Azure 函式中，每一種繫結都需要在 function.json  檔案中定義 `direction`、`type` 和唯一的 `name`。 您的 function.json  已經包含 "httpTrigger" 類型的輸入繫結，以及 HTTP 回應的輸出繫結。 若要將繫結新增至儲存體佇列，請如下所示修改檔案，這會新增「佇列」類型的輸出繫結，其中佇列會出現在程式碼中，作為名為 `msg` 的輸入引數。 佇列繫結也需要要使用的佇列名稱，在此例中為 `outqueue`，以及保留連接字串的設定名稱，在此例中為 `AzureWebJobStorage`。
+在 Azure 函式中，每一種繫結都需要在 function.json`direction``type` 檔案中定義 `name`、*和唯一的*。 您的 function.json  已經包含 "httpTrigger" 類型的輸入繫結，以及 HTTP 回應的輸出繫結。 若要將繫結新增至儲存體佇列，請如下所示修改檔案，這會新增「佇列」類型的輸出繫結，其中佇列會出現在程式碼中，作為名為 `msg` 的輸入引數。 佇列繫結也需要要使用的佇列名稱，在此例中為 `outqueue`，以及保留連接字串的設定名稱，在此例中為 `AzureWebJobStorage`。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -875,7 +876,7 @@ export default httpTrigger;
 
 您可以在 [Azure 入口網站](../storage/queues/storage-quickstart-queues-portal.md)或 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)中檢視佇列。 您也可以在 Azure CLI 中檢視佇列，如下列步驟所說明：
 
-1. 開啟函式專案的 *local.setting.json* 檔案，並複製連接字串值。 在終端機或命令視窗中，執行下列命令 (請貼上您的特定連接字串以取代 `<connection_string>`)，以建立名為 `AZURE_STORAGE_CONNECTION_STRING`的環境變數。 (此環境變數意味著您無須使用 `--connection-string` 引數將連接字串提供給每個後續命令。)
+1. 開啟函式專案的 *local.setting.json* 檔案，並複製連接字串值。 在終端機或命令視窗中，執行下列命令 (請貼上您的特定連接字串以取代 `AZURE_STORAGE_CONNECTION_STRING`)，以建立名為 `<connection_string>`的環境變數。 (此環境變數意味著您無須使用 `--connection-string` 引數將連接字串提供給每個後續命令。)
 
     # <a name="bash"></a>[bash](#tab/bash)
     

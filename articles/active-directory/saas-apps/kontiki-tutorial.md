@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教學課程：Azure Active Directory 與 Kontiki 整合
@@ -35,7 +35,7 @@ Kontiki 與 Azure AD 整合提供下列優點：
 
 如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Kontiki 的整合作業，需要下列項目：
 
@@ -79,7 +79,7 @@ Kontiki 支援下列功能︰
 
 若要設定及測試與 Kontiki 搭配運作的 Azure AD 單一登入，您需要完成下列構成要素：
 
-| Task | 說明 |
+| Task | 描述 |
 | --- | --- |
 | **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** | 讓使用者能夠使用此功能。 |
 | **[設定 Kontiki 單一登入](#configure-kontiki-single-sign-on)** | 在應用程式中設定單一登入設定。 |

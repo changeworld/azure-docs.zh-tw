@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: 4bce52ba3320506b85949493407dded1d52415a3
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ff449626ce528cfe0218a95330a567303c547e5f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673620"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79486133"
 ---
 1. 使用位於 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) \(英文\) 的指示來安裝適用於 Python 的 Azure Machine Learning SDK
 
@@ -24,12 +24,12 @@ ms.locfileid: "78673620"
 
 1. 複製 [GitHub 存放庫](https://aka.ms/aml-notebooks)。
 
-    ```CLI
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
 1. 從複製的目錄中啟動 Notebook 伺服器。
 
-    ```shell
+    ```bash
     jupyter notebook
     ```

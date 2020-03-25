@@ -17,10 +17,10 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>教學課程：Azure Active Directory 與 Zoho 整合
@@ -35,7 +35,7 @@ Zoho 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Zoho 整合，您需要下列項目：
 
@@ -215,9 +215,9 @@ Zoho 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入您的 **Zoho Mail** 公司網站。
 
-1. 移至 [控制台] \> [郵件和文件]  。
+1. 移至 [控制台]  **[郵件和文件]\>** 。
 
-1. 移至 [使用者詳細資料] \> [新增使用者]  。
+1. 移至 [使用者詳細資料]  **[新增使用者]\>** 。
    
     ![加入使用者](./media/zoho-mail-tutorial/ic789611.png "新增使用者")
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>教學課程：Azure Active Directory 與 Recognize 整合
@@ -34,7 +34,7 @@ ms.locfileid: "68943347"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Recognize 整合，您需要下列項目：
 
@@ -141,7 +141,7 @@ ms.locfileid: "68943347"
 
 1. 在不同的網頁瀏覽器視窗中，以管理員身分登入您的 Recognize 租用戶。
 
-2. 按一下右上角的 [功能表]  。 移至 [Company Admin]  (公司管理員)。
+2. 按一下右上角的 [功能表]  。 移至 [Company Admin]  \(公司管理員)。
    
     ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_000.png)
 
@@ -243,7 +243,7 @@ ms.locfileid: "68943347"
    
     a. 對於 [已啟用同步處理]  選取 **ON**。
    
-    b. 對於 [Choose sync provider]  (選擇同步處理提供者)，選取 [Microsoft / Office 365]  。
+    b. 對於 [Choose sync provider]  \(選擇同步處理提供者)，選取 [Microsoft / Office 365]  。
    
     c. 按一下 [Run User Sync]  \(執行使用者同步處理)。
 

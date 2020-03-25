@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720808"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL 教學課程：建置 SQL API Java 主控台應用程式
@@ -42,7 +42,7 @@ ms.locfileid: "73720808"
 
 讓我們開始吧！
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 請確定您具有下列項目：
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費帳戶](https://azure.microsoft.com/free/)。 
@@ -58,7 +58,7 @@ ms.locfileid: "73720808"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>步驟 2：複製 GitHub 專案
+## <a name="step-2-clone-the-github-project"></a><a id="GitClone"></a>步驟 2︰複製 GitHub 專案
 您可以先從複製[開始使用 Azure Cosmos DB 和 Java](https://github.com/Azure-Samples/documentdb-java-getting-started) 的 GitHub 存放庫著手。 例如，請從本機目錄執行下列命令將範例專案擷取到本機。
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,7 +73,7 @@ ms.locfileid: "73720808"
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>步驟 3：連線至 Azure Cosmos DB 帳戶
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>步驟 3：連接至 Azure Cosmos DB 帳戶
 接下來，回到 [Azure 入口網站](https://portal.azure.com)以擷取您的端點和主要金鑰。 必須提供 Azure Cosmos DB 端點 URL 和主要金鑰，您的應用程式才能了解所要連線的位置，而 Azure Cosmos DB 才會信任您的應用程式連線。
 
 在 Azure 入口網站中，瀏覽至 Azure Cosmos DB 帳戶，然後按一下 [金鑰]  。 從入口網站複製 URI，並將它貼到 Program.java 檔案的 `https://FILLME.documents.azure.com` 中。 然後從入口網站複製主要金鑰，並將它貼到 `FILLME`中。
@@ -87,19 +87,19 @@ ms.locfileid: "73720808"
 ![NoSQL 教學課程用來建立 Java 主控台應用程式之 Azure 入口網站的螢幕擷取畫面。 顯示 Azure Cosmos DB 帳戶，內含反白顯示的 [主動式] 集線器、[Azure Cosmos DB 帳戶] 刀鋒視窗上反白顯示的 [金鑰] 按鈕、[金鑰] 刀鋒視窗上反白顯示的 [URI]、[主要金鑰] 和 [次要金鑰] 值][keys]
 
 ## <a name="step-4-create-a-database"></a>步驟 4：建立資料庫
-可以使用 **DocumentClient** 類別的 [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) 方法建立 Azure Cosmos DB [資料庫](databases-containers-items.md#azure-cosmos-databases)。 資料庫是分割給多個集合之 JSON 文件儲存體的邏輯容器。
+可以使用 [DocumentClient](databases-containers-items.md#azure-cosmos-databases) 類別的 [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) 方法建立 Azure Cosmos DB **資料庫**。 資料庫是分割給多個集合之 JSON 文件儲存體的邏輯容器。
 
     Database database = new Database();
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>步驟 5：建立集合
+## <a name="step-5-create-a-collection"></a><a id="CreateColl"></a>步驟 5：建立集合
 > [!WARNING]
 > **createCollection** 會建立含有保留輸送量且具有價格含意的新集合。 如需詳細資訊，請造訪[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 > 
 > 
 
-可以使用 **DocumentClient** 類別的 [createCollection](/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) 方法建立集合。 集合是 JSON 文件和相關聯 JavaScript 應用程式邏輯的容器。
+可以使用 [DocumentClient](/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) 類別的 **createCollection** 方法建立集合。 集合是 JSON 文件和相關聯 JavaScript 應用程式邏輯的容器。
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -112,8 +112,8 @@ ms.locfileid: "73720808"
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>步驟 6：建立 JSON 文件
-您可以使用 **DocumentClient** 類別的 [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) 方法建立文件。 文件會是使用者定義的 (任意) JSON 內容。 現在可插入一或多份文件。 如果您已經有想要儲存於資料庫中的資料，就可以使用 Azure Cosmos DB 的[資料移轉工具](import-data.md)，將資料匯入資料庫中。
+## <a name="step-6-create-json-documents"></a><a id="CreateDoc"></a>步驟 6：建立 JSON 文件
+您可以使用 [DocumentClient](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) 類別的 **createDocument** 方法建立文件。 文件會是使用者定義的 (任意) JSON 內容。 現在可插入一或多份文件。 如果您已經有想要儲存於資料庫中的資料，就可以使用 Azure Cosmos DB 的[資料移轉工具](import-data.md)，將資料匯入資料庫中。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -135,7 +135,7 @@ ms.locfileid: "73720808"
 
 ![說明 NoSQL 教學課程用來建立 Java 主控台應用程式之帳戶、線上資料庫、集合和文件之間階層式關聯性的圖表](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>步驟 7：查詢 Azure Cosmos DB 資源
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步驟 7︰查詢 Azure Cosmos DB 資源
 Azure Cosmos DB 支援針對儲存於每個集合的 JSON 文件進行豐富[查詢](how-to-sql-query.md)。  下列範例程式碼示範如何使用 SQL 語法與 [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments) 方法來查詢 Azure Cosmos DB 中的文件。
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB 支援針對儲存於每個集合的 JSON 文件進行豐富[查
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>步驟 8：取代 JSON 文件
+## <a name="step-8-replace-json-document"></a><a id="ReplaceDocument"></a>步驟 8︰取代 JSON 文件
 Azure Cosmos DB 支援使用 [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument) 方法來更新 JSON 文件。
 
     // Update a property
@@ -159,17 +159,17 @@ Azure Cosmos DB 支援使用 [replaceDocument](/java/api/com.microsoft.azure.doc
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>步驟 9：刪除 JSON 文件
+## <a name="step-9-delete-json-document"></a><a id="DeleteDocument"></a>步驟 9︰刪除 JSON 文件
 同樣地，Azure Cosmos DB 支援使用 [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument) 方法來將 JSON 文件刪除。  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>步驟 10：刪除資料庫
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>步驟 10：刪除資料庫
 刪除已建立的資料庫會移除資料庫和所有子系資源 (集合、文件等)。
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>步驟 11：一起執行您的 Java 主控台應用程式！
+## <a name="step-11-run-your-java-console-application-all-together"></a><a id="Run"></a>步驟 11：一起執行您的 Java 主控台應用程式！
 若要從主控台執行應用程式，瀏覽至專案資料夾並使用 Maven 進行編譯：
     
     mvn package

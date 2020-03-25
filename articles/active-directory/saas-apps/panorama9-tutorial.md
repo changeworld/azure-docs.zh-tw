@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: c88088b804f90769512d33a5e96fdedc5ce6fba8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教學課程：Azure Active Directory 與 Panorama9 整合
@@ -34,7 +34,7 @@ Panorama9 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Panorama9 整合，您需要下列項目：
 
@@ -136,7 +136,7 @@ Panorama9 與 Azure AD 整合提供下列優點：
 
 2. 在最上面的工具列中，按一下 [管理]  ，然後按一下 [擴充功能]  。
    
-    ![擴充功能](./media/panorama9-tutorial/ic790023.png "擴充功能")
+    ![延伸模組](./media/panorama9-tutorial/ic790023.png "延伸模組")
 
 3. 在 [擴充功能]  對話方塊中，按一下 [單一登入]  。
    

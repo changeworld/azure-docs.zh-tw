@@ -17,10 +17,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>教學課程：Azure Active Directory 與 Envi MMIS 整合
@@ -35,7 +35,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Envi MMIS 整合，您需要下列項目：
 
@@ -141,7 +141,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure1.png)
 
-3. 按一下 [編輯]  。
+3. 按一下 **[編輯]** 。
 
     ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure2.png)
 

@@ -17,10 +17,10 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158711"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教學課程：Azure Active Directory 與 Cezanne HR Software 整合
@@ -35,7 +35,7 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Cezanne HR Software 整合，您需要以下項目：
 
@@ -256,15 +256,15 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 5. 瀏覽至 [單一登入]  索引標籤並選取 [SAML 2.0 識別碼]  區域中的 [新增]  。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "使用者")
+    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
 
 6. 為 [識別提供者]  選擇識別提供者，並在 [使用者識別碼]  文字方塊中輸入 Britta Simon 帳戶的電子郵件地址。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "使用者")
+    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
 
 7. 按一下 [儲存]  按鈕。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "使用者")
+    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
