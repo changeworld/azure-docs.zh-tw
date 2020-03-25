@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio，在 Azure Kubernetes Service 中 .NET Core 應用程式上進行小組開發
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78245058"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用 .NET Core 和 Visual Studio 進行小組開發
@@ -63,8 +63,8 @@ ms.locfileid: "78245058"
 1. 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [屬性]  。
 1. 選取位於左側的 [偵錯]  索引標籤，以顯示 [Azure 開發人員空間] 設定。
 1. 選取 [變更]  來建立空間，以供您在對服務按下 F5 或 Ctrl+F5 時使用。
-1. 在 [空間] 下拉式清單中，選取 [\<建立新空間...\>]  。
-1. 確定父空間設定為 [\<無\>]  ，然後輸入空間名稱 **dev**。 按一下 [確定]。
+1. 在 [空間] 下拉式清單中，選取 [**建立新空間...\<]\>** 。
+1. 確定父空間設定為 [**無\<]\>** ，然後輸入空間名稱 **dev**。 按一下 [確定]。
 1. 按 Ctrl+F5，以執行 mywebapi  而不連結偵錯工具。
 1. 切換至含有 webfrontend  專案的 Visual Studio 視窗，同時按 Ctrl+F5 加以執行。
 
@@ -88,7 +88,7 @@ ms.locfileid: "78245058"
 2. 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [屬性]  。
 3. 選取位於左側的 [偵錯]  索引標籤，以顯示 [Azure 開發人員空間] 設定。
 4. 從此處，您可以變更或建立您按 F5 或 Ctrl+F5 時所將使用的叢集和/或空間。 *請確定已選取您稍早建立的 Azure 開發人員空間*。
-5. 在 [空間] 下拉式清單中，選取 [\<建立新空間...\>]  。
+5. 在 [空間] 下拉式清單中，選取 [**建立新空間...\<]\>** 。
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "78245058"
 
 ### <a name="update-code-for-mywebapi"></a>更新 *mywebapi* 的程式碼
 
-1. 在 mywebapi  專案中，對檔案 `Controllers/ValuesController.cs` 中的 `string Get(int id)` 方法進行程式碼變更，如下所示：
+1. 在 mywebapi  專案中，對檔案 `string Get(int id)` 中的 `Controllers/ValuesController.cs` 方法進行程式碼變更，如下所示：
  
     ```csharp
     [HttpGet("{id}")]

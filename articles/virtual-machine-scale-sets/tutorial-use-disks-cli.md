@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278239"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067049"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集所適用的磁碟
 虛擬機器擴展集會使用磁碟來儲存 VM 執行個體的作業系統、應用程式和資料。 當您建立及管理擴展集時，請務必選擇預期的工作負載所適用的磁碟大小和組態。 本教學課程將說明如何建立及管理 VM 磁碟。 在本教學課程中，您將了解如何：
@@ -146,7 +146,7 @@ az vmss list-instance-connection-info \
 
 使用您自己公用 IP 位址和連接埠號碼連線至第一個 VM 執行個體，如下列範例所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -198,7 +198,7 @@ sudo df -h
 
 下列範例輸出顯示這三個磁碟已正確地將其檔案系統掛接在 */datadisks* 下：
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt
@@ -207,7 +207,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sde1       126G   60M  120G   1% /datadisks/disk3
 ```
 
-您的擴展集中每個 VM 執行個體上的磁碟都會以相同的方式自動準備。 當您的擴展集要相應增加時，必要的資料磁碟會連結至新的 VM 執行個體。 此外也會執行自訂指令碼延伸模組，以自動準備磁碟。
+您的擴展集中每個 VM 執行個體上的磁碟都會以相同的方式自動準備。 當您的擴展集要擴大時，必要的資料磁碟會連結至新的 VM 執行個體。 此外也會執行自訂指令碼延伸模組，以自動準備磁碟。
 
 關閉 VM 執行個體的 SSH 連線：
 

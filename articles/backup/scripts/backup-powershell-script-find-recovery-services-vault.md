@@ -4,10 +4,10 @@ description: 了解如何使用 Azure PowerShell 指令碼來尋找您的儲存�
 ms.topic: sample
 ms.date: 1/28/2020
 ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76775864"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>用來尋找儲存體帳戶註冊所在之復原服務保存庫的 PowerShell 指令碼

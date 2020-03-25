@@ -10,10 +10,10 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: b03fb27c46d4fd925b91b8927fdd50ff4912aaec
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969566"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>教學課程：使用 Azure DevOps Projects 將 ASP.NET 應用程式部署至 Azure 虛擬機器
@@ -37,7 +37,7 @@ DevOps Projects 也可用於：
 > * 設定 Azure Application Insights 監視
 > * 清除資源
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 您可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得免費的訂用帳戶。
 
@@ -122,7 +122,7 @@ DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps �
     您在先前步驟中檢查的建置管線會產生用於成品的輸出。 
 
 1. 在 [置放]  圖示旁邊，選取 [持續部署觸發程序]  。  
-    這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此您的部署需要手動執行。 
+    這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
 
 1. 從左側選取 [工作]  ，然後選取您的環境。  
     工作是您的部署程序所執行的活動，會在階段中分組。 此發行管線會在兩個階段中發生：

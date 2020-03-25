@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77192963"
 ---
 ## <a name="create-the-webapi-project"></a>建立 WebAPI 專案
@@ -20,7 +20,7 @@ ms.locfileid: "77192963"
 下列各節討論如何建立新的 ASP.NET WebAPI 後端。 此程序有三個主要用途：
 
 - **驗證用戶端**：您可以新增訊息處理常式來驗證用戶端要求，並將使用者與要求建立關聯。
-- **使用 WebAPI 後端來註冊通知**：您會新增控制器來處理新的註冊，以便用戶端裝置接收通知。 經過驗證的使用者名稱會自動新增至註冊作為 [標記](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md)。
+- **使用 WebAPI 後端註冊通知**：您可新增一個控制器來處理新的註冊，以便用戶端裝置接收通知。 經過驗證的使用者名稱會自動新增至註冊作為 [標記](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md)。
 - **傳送通知給用戶端**：您可新增一個控制器，以便使用者對與標籤建立關聯的裝置和用戶端觸發安全的推送。
 
 執行下列動作，建立新的 ASP.NET WebAPI 後端：
@@ -141,7 +141,7 @@ ms.locfileid: "77192963"
 
     > [!NOTE]
     > 安全性注意事項：`AuthenticationTestHandler` 類別未提供真正的驗證。 它僅可用於模仿基本驗證而且並不安全。 您必須在生產應用程式和服務中實作安全的驗證機制。
-5. 若要註冊訊息處理常式，請在 **App_Start/WebApiConfig.cs** 類別中 `Register` 方法的結尾新增下列程式碼：
+5. 若要註冊訊息處理常式，請在 `Register`App_Start/WebApiConfig.cs**類別中** 方法的結尾新增下列程式碼：
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());

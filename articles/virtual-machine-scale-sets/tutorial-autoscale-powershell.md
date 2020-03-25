@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278417"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 自動調整虛擬機器擴展集
@@ -57,7 +57,7 @@ New-AzureRmVmss `
 
 建立及設定所有擴展集資源和 VM 需要幾分鐘的時間。
 
-## <a name="create-a-rule-to-autoscale-out"></a>建立自動相應放大的規則
+## <a name="create-a-rule-to-autoscale-out"></a>建立自動擴增的規則
 如果您的應用程式需求增加，您擴展集內 VM 執行個體上的負載也會跟著增加。 如果這樣的負載增加會持續而非只是短暫的需求，您就可以設定自動調整規則來增加擴展集中的 VM 執行個體數目。 建立這些 VM 執行個體並部署應用程式後，擴展集就會開始透過負載平衡器將流量分散給它們。 您可以控制要監視哪些計量 (例如 CPU 或磁碟)、應用程式負載必須符合給定的閾值多久，以及要將多少個 VM 執行個體新增至擴展集。
 
 使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 建立規則，以在平均 CPU 負載在 5 分鐘期間內大於 70% 時，增加擴展集中的 VM 執行個體數目。 當此規則觸發時，VM 執行個體數目會增加三個。
@@ -72,12 +72,12 @@ New-AzureRmVmss `
 | *-TimeWindow*           | 在比較計量與閾值之前監視的時間長短。                                   | 5 分鐘      |
 | *-Operator*             | 用以比較計量資料與閾值之間差異的運算子。                                                     | 大於   |
 | *-Threshold*            | 讓自動調整規則觸發動作的值。                                                      | 70%            |
-| *-ScaleActionDirection* | 定義擴展集在套用規則時該相應增加還是相應減少。                                             | 增加       |
+| *-ScaleActionDirection* | 定義擴展集在套用規則時該擴大還是縮減。                                             | 增加       |
 | *-ScaleActionScaleType* | 指出 VM 執行個體數目應依特定值變更。                                    | 變更計數   |
 | *-ScaleActionValue*     | 觸發此規則時，應該變更多少 VM 執行個體百分比。                                            | 3              |
 | *-ScaleActionCooldown*  | 再次套用規則前需要等待多久時間，以便讓自動調整動作生效。 | 5 分鐘      |
 
-下列範例建立保存此相應增加規則的 *myRuleScaleOut* 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
+下列範例建立保存此擴大規則的 *myRuleScaleOut* 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
 
 ```azurepowershell-interactive
 $myRuleScaleOut = New-AzureRmAutoscaleRule `
@@ -95,10 +95,10 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ```
 
 
-## <a name="create-a-rule-to-autoscale-in"></a>建立自動相應縮小的規則
+## <a name="create-a-rule-to-autoscale-in"></a>建立自動縮減的規則
 在夜晚或週末，您的應用程式需求可能會減少。 若這樣的負載減少會持續一段時間，您就可以設定自動調整規則來減少擴展集中的 VM 執行個體數目。 這個相應縮小的動作可減少執行擴展集的成本，因為只會執行符合目前需求所需的執行個體數目。
 
-使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 建立另一個規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，減少擴展集中的 VM 執行個體數目。 觸發規則時，VM 執行個體數目會減少一個。下列範例會建立保存此相應增加規則的 *myRuleScaleDown* 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
+使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 建立另一個規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，減少擴展集中的 VM 執行個體數目。 觸發規則時，VM 執行個體數目會減少一個。下列範例會建立保存此擴大規則的 *myRuleScaleDown* 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `
@@ -117,7 +117,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
 
 
 ## <a name="define-an-autoscale-profile"></a>定義自動調整設定檔
-若要將自動調整規則與擴展集建立關聯，請建立設定檔。 自動調整設定檔會定義預設、最小和最大擴展集容量，並建立自動調整規則的關聯。 使用 [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) 建立自動調整設定檔。 下列範例會設定 *2* 個 VM 執行個體的預設和最小容量，以及最多 *10* 個。 接著附加前面步驟中所建立的相應放大和相應縮小規則：
+若要將自動調整規則與擴展集建立關聯，請建立設定檔。 自動調整設定檔會定義預設、最小和最大擴展集容量，並建立自動調整規則的關聯。 使用 [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) 建立自動調整設定檔。 下列範例會設定 *2* 個 VM 執行個體的預設和最小容量，以及最多 *10* 個。 接著附加前面步驟中所建立的擴增和縮減規則：
 
 ```azurepowershell-interactive
 $myScaleProfile = New-AzureRmAutoscaleProfile `
@@ -130,7 +130,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 
 
 ## <a name="apply-autoscale-profile-to-a-scale-set"></a>將自動調整設定檔套用至擴展集
-最後一個步驟是將自動調整設定檔套用至擴展集。 您的擴展集接著將可根據應用程式需求自動相應縮小或相應放大。 使用 [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) 套用自動調整設定檔，如下所示：
+最後一個步驟是將自動調整設定檔套用至擴展集。 您的擴展集接著將可根據應用程式需求自動縮減或擴增。 使用 [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) 套用自動調整設定檔，如下所示：
 
 ```azurepowershell-interactive
 Add-AzureRmAutoscaleSetting `
@@ -143,7 +143,7 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>在擴展集上產生 CPU 負載
-若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
+若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則擴增，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會縮減，並減少 VM 執行個體數目。
 
 若要列出要連線至擴展集中之 VM 執行個體的 NAT 連接埠，請先透過 [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) 取得負載平衡器物件。 接著，使用 [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig) 檢視輸入 NAT 規則：
 
@@ -190,8 +190,8 @@ mstsc /v 52.168.121.216:50001
 
 - 選取 [確定]  ，以接受 [使用建議的安全性、隱私權與相容性設定]  的提示
 - 在網址列中輸入 *http://download.sysinternals.com/files/CPUSTRES.zip* 。
-- 在啟用 [Internet Explorer 增強式安全性設定] 的情況下，選擇將 *http://download.sysinternals.com* 網域**新增**至信任網站清單。
-- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行** *CPUSTRES.EXE* 工具。
+- 在啟用 [Internet Explorer 增強式安全性設定] 的情況下，選擇將  *網域 http://download.sysinternals.com 新增*至信任網站清單。
+- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行***CPUSTRES.EXE* 工具。
 
 若要產生一些 CPU 負載，請勾選**作用中**執行緒的兩個方塊。 從這兩個執行緒的 [活動]  下拉式功能表中，選取 [最大值]  。 您可以開啟工作管理員，確認 VM 的 CPU 負載是 100%。
 
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>監視作用中的自動調整規則
-若要監視擴展集中的 VM 執行個體數目，請使用 **while**。 約需要 5 分鐘的時間，自動調整規則才會開始執行相應放大程序，以回應 **CPUStress* 對每個 VM 執行個體產生的 CPU 負載：
+若要監視擴展集中的 VM 執行個體數目，請使用 **while**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **CPUStress* 對每個 VM 執行個體產生的 CPU 負載：
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `
@@ -229,13 +229,13 @@ MYRESOURCEGROUP   myScaleSet_5   eastus Standard_DS2                   5        
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Creating
 ```
 
-與每個 VM 執行個體的遠端桌面連線工作階段中，關閉 **CPU Stress** 工具。 擴展集中的平均 CPU 負載會恢復正常。 再經過 5 分鐘之後，自動調整規則會相應縮小 VM 執行個體數目。 相應縮小動作會先移除具有最高識別碼的 VM 執行個體。 當擴展集使用可用性設定組或可用性區域時，相應縮小動作會平均散發到這些 VM 執行個體上。 下列範例輸出顯示擴展集自動相應縮小時所刪除的一個 VM 執行個體：
+與每個 VM 執行個體的遠端桌面連線工作階段中，關閉 **CPU Stress** 工具。 擴展集中的平均 CPU 負載會恢復正常。 再經過 5 分鐘之後，自動調整規則會縮減 VM 執行個體數目。 縮減動作會先移除具有最高識別碼的 VM 執行個體。 當擴展集使用可用性設定組或可用性區域時，縮減動作會平均散發到這些 VM 執行個體上。 下列範例輸出顯示擴展集自動相應縮小時所刪除的一個 VM 執行個體：
 
 ```powershell
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Deleting
 ```
 
-使用 `Ctrl-c` 結束 *while*。 擴展集會繼續每隔 5 分鐘相應縮小一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
+使用 *結束*while`Ctrl-c`。 擴展集會繼續每隔 5 分鐘縮減一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -247,7 +247,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何使用 Azure PowerShell 自動相應縮小或放大擴展集：
+在本教學課程中，您已了解如何使用 Azure PowerShell 自動縮減或擴增擴展集：
 
 > [!div class="checklist"]
 > * 使用擴展集的自動調整

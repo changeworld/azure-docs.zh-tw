@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
 ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77047278"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>與 CI/CD 管線整合
@@ -48,7 +48,7 @@ ms.locfileid: "77047278"
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. 開啟 Program.cs  ，並藉由呼叫 `config.AddJsonFile()` 方法，將 `CreateWebHostBuilder` 方法更新為使用匯出的 JSON 檔案。  也請新增 `System.Reflection` 命名空間。
+1. 開啟 Program.cs  ，並藉由呼叫 `CreateWebHostBuilder` 方法，將 `config.AddJsonFile()` 方法更新為使用匯出的 JSON 檔案。  也請新增 `System.Reflection` 命名空間。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

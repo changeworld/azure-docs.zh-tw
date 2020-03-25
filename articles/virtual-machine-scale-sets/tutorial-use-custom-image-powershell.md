@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278302"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集的自訂映像
@@ -69,7 +69,7 @@ mstsc /v:<IpAddress>
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-準備您的 VM 以作為自訂映像使用的最後一個步驟是一般化 VM。 Sysprep 會移除所有您個人帳戶的資訊和組態，並將 VM 重設為初始狀態，以便在未來進行部署。 如需詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx) \(英文\)。
+準備您的 VM 以作為自訂映像使用的最後一個步驟是一般化 VM。 Sysprep 會移除所有您個人帳戶的資訊和組態，並將 VM 重設為初始狀態，以便在未來進行部署。 如需詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx)。
 
 若要一般化 VM，執行 Sysprep 並設定 VM 即可享有現成可用的體驗。 完成時，指示 Sysprep 關閉 VM：
 

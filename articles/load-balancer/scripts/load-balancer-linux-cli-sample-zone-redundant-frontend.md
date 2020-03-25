@@ -10,14 +10,14 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 8ef4a0d1eca76ffaad7136c9b55756b96b80925f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274584"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79218332"
 ---
-# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI 指令碼範例：跨越多個可用性區域為虛擬機器進行負載平衡
+# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI 指令碼範例：跨越可用性區域為 VM 進行負載平衡
 
 此 Azure CLI 指令碼範例會建立所需的一切，以執行數部依據高可用性和負載平衡組態所設定的 Ubuntu 虛擬機器。 執行指令碼之後，在區域內的所有可用性區域中，您將擁有三部可透過 Azure Standard Load Balancer 存取的虛擬機器。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "76274584"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \

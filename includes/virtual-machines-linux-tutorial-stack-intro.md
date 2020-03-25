@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 64290aad2d9f98006a715b480be8cb96965abbaf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173987"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80117059"
 ---
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -17,7 +17,7 @@ ms.locfileid: "67173987"
 
 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -27,7 +27,7 @@ az group create --name myResourceGroup --location eastus
 
 下列範例會建立名為 myVM  的 VM，並建立 SSH 金鑰 (如果它們不存在於預設金鑰位置)。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 此命令也會將 azureuser  設定為管理員使用者名稱。 稍後您會使用此名稱來連線到 VM。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -38,7 +38,7 @@ az vm create \
 
 建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 記下 `publicIpAddress`。 後面的步驟會使用此位址來存取 VM。
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -57,9 +57,10 @@ az vm create \
 
 依預設只能透過 SSH 連線至 Azure 中部署的 Linux VM。 因為此 VM 即將成為 Web 伺服器，所以您需要從網際網路開啟連接埠 80。 使用 [az vm open-port](/cli/azure/vm) 命令來開啟所需的連接埠。  
  
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
+
 ## <a name="ssh-into-your-vm"></a>透過 SSH 連線到您的 VM
 
 

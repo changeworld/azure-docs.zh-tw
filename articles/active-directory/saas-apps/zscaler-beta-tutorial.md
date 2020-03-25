@@ -17,10 +17,10 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教學課程：Azure Active Directory 與 Zscaler Beta 整合
@@ -35,7 +35,7 @@ ms.locfileid: "68943298"
 如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Zscaler Beta 的整合，您需要下列項目：
 
@@ -169,7 +169,7 @@ ms.locfileid: "68943298"
 
 4. 移至 [管理]   > [驗證]   > [驗證設定]  ，並執行下列步驟。
    
-    ![系統管理](./media/zscaler-beta-tutorial/ic800206.png "系統管理")
+    ![管理](./media/zscaler-beta-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型]  下方，選取 [SAML]  。
 
@@ -201,7 +201,7 @@ ms.locfileid: "68943298"
 
     a. 將滑鼠停留在左下方的 [啟用]  功能表上。
 
-    b. 選取 [ **啟用**]。
+    b. 選取 [啟用]  。
 
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
 若要在 Internet Explorer 中進行 Proxy 設定，請執行下列步驟。
@@ -214,7 +214,7 @@ ms.locfileid: "68943298"
 
 3. 選取 [連線]  索引標籤。 
   
-     ![連線索引標籤](./media/zscaler-beta-tutorial/ic769493.png "連線")
+     ![連線索引標籤](./media/zscaler-beta-tutorial/ic769493.png "連接")
 
 4. 選取 [LAN 設定]  以開啟 [區域網路 (LAN) 設定]  對話方塊。
 

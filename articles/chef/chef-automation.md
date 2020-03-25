@@ -8,10 +8,10 @@ author: tomarchermsft
 ms.author: tarcher
 ms.date: 02/22/2020
 ms.openlocfilehash: 824e4df7662ee67c3f0786877053c39a8d952d49
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77589492"
 ---
 # <a name="quickstart---configure-a-windows-virtual-machine-in-azure-using-chef"></a>快速入門 - 使用 Chef 在 Azure 中設定 Windows 虛擬機器
@@ -71,7 +71,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 如果您尚未使用 Chef 伺服器，則可以：
 
 * 註冊[受控 Chef](https://manage.chef.io/signup)，這是開始使用 Chef 的最快方式。
-* 按照 [Chef Docs](https://docs.chef.io/) 中的[安裝說明](https://docs.chef.io/install_server.html)，在 Linux 型電腦上安裝獨立的 Chef 伺服器。
+* 按照 [Chef Docs](https://docs.chef.io/install_server.html) 中的[安裝說明](https://docs.chef.io/)，在 Linux 型電腦上安裝獨立的 Chef 伺服器。
 
 ### <a name="creating-a-hosted-chef-account"></a>建立受控 Chef 帳戶
 
@@ -99,7 +99,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 將 `chef-starter\chef-repo\.chef` 下的所有檔案複製到您的 `c:\chef` 目錄。
 
-如果 `organization-validator.pem` 檔案儲存在 `c:\Downloads`中，請將它複製到 `c:\chef`。
+如果 `organization-validator.pem` 檔案儲存在 `c:\chef`中，請將它複製到 `c:\Downloads`。
 
 您的目錄現在看起來應該類似以下範例。
 
@@ -273,7 +273,7 @@ Chef 會使用逐步指南來定義一組您想在受控用戶端上執行的命
 
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>使用 Knife Azure 部署虛擬機器
 
-部署 Azure 虛擬機器，並使用 `knife` 命令來套用 `Webserver` 逐步指南。
+部署 Azure 虛擬機器，並使用 `Webserver` 命令來套用 `knife` 逐步指南。
 
 `knife` 命令也會安裝 IIS Web 服務和預設網頁。
 

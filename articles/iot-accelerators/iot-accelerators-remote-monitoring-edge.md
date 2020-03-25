@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117636"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教學課程：使用遠端監視解決方案加速器來偵測邊緣異常狀況
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教學課程：使用遠端監視解決方案加速器來偵測異常狀況
 
 在本教學課程中，您會設定遠端監視解決方案，以因應 IoT Edge 裝置所偵測到的異常狀況。 IoT Edge 裝置可讓您在 Edge 處理遙測資料，以減少傳送至解決方案的遙測資料數量，並加快對裝置事件的回應速度。 若要深入了解 Edge 處理的優點，請參閱[什麼是 Azure IoT Edge](../iot-edge/about-iot-edge.md)。
 
@@ -45,7 +45,7 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
 
 本教學課程會使用 Linux 虛擬機器作為 IoT Edge 裝置。 您也安裝了 Edge 模組來模擬油料幫浦千斤頂裝置。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -80,11 +80,11 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 工作 (Job)     | 標記  |
+    | 工作 (Job)     | Tags  |
     | 作業名稱 | AddEdgeTag |
     | Key     | IsOilPump |
     | 值   | Y     |
-    | 類型    | 文字  |
+    | 類型    | Text  |
 
     [![新增標記](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
@@ -100,7 +100,7 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
     | 欄位   | Tags.IsOilPump |
     | 運算子 | = Equals |
     | 值    | Y |
-    | 類型     | 文字 |
+    | 類型     | Text |
 
     [![建立裝置群組](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -163,7 +163,7 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
     | 作業名稱 | EdgeDeviceJob |
     | 訂用帳戶 | 您的 Azure 訂用帳戶 |
     | 資源群組 | IoTEdgeDevices |
-    | 位置 | 美國東部 |
+    | Location | 美國東部 |
     | 裝載環境 | Edge |
     | 串流單位 | 1 |
 
@@ -315,7 +315,7 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
     | 選項 | 值 |
     | ------ | ----- |
     | 規則名稱 | 油泵溫度 |
-    | 說明 | 油泵溫度超過 300 度 |
+    | 描述 | 油泵溫度超過 300 度 |
     | 裝置群組 | OilPumps |
     | 計算 | 立即 |
     | 欄位 | 溫度 |

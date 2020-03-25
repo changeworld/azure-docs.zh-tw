@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73819873"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>將 R 套件新增至 Azure SQL Database 機器學習服務 (預覽)
@@ -26,7 +26,7 @@ ms.locfileid: "73819873"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 將 [R](https://www.r-project.org) 和 [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) 安裝在本機電腦上。 R 適用於 Windows、MacOS 和 Linux。 本文假設您使用 Windows。
 
@@ -70,7 +70,7 @@ WITH RESULT SETS((
 
 ### <a name="install-sqlmlutils"></a>安裝 **sqlmlutils**
 
-1. 從 https://github.com/Microsoft/sqlmlutils/tree/master/R/dist 將最新的 **sqlmlutils** zip 檔案下載到您的本機電腦。 您不需要解壓縮此檔案。
+1. 從 **將最新的**sqlmlutils https://github.com/Microsoft/sqlmlutils/tree/master/R/dist zip 檔案下載到您的本機電腦。 您不需要解壓縮此檔案。
 
 1. 開啟**命令提示字元**並執行下列命令，將 **RODBCext** 和 **sqlmlutils** 安裝在您的本機電腦上。 請替換為您下載 **sqlmlutils** zip 檔案的完整路徑 (此範例假設該檔案位於您的 Documents 資料夾中)。
     
@@ -92,7 +92,7 @@ WITH RESULT SETS((
 
 ### <a name="add-the-package"></a>新增套件
 
-1. 開啟 RStudio 並建立新的 **R 指令碼**檔案。 
+1. 開啟 RStudio，並建立新的 **R 指令碼**檔案。 
 
 1. 使用下列 R 程式碼透過 **sqlmlutils** 安裝 **glue** 套件。 請替換為您自己的 Azure SQL Database 連線資訊。
 
@@ -108,7 +108,7 @@ WITH RESULT SETS((
     ```
 
     > [!TIP]
-    > **scope** 可以是 **PUBLIC** 或 **PRIVATE**。 公用範圍可供資料庫管理員安裝所有使用者皆可使用的套件。 私人範圍會使套件僅可供套件安裝者使用。 若未指定範圍，預設範圍將是 **PRIVATE**。
+    > **scope** 可以是 **PUBLIC** 或 **PRIVATE**。 資料庫管理員可以使用公開範圍來安裝所有使用者都可以使用的套件。 私人範圍可讓套件僅供安裝套件的使用者使用。 若未指定範圍，預設範圍是**私人**。
 
 ### <a name="verify-the-package"></a>確認套件
 
@@ -164,7 +164,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> 將 R 套件安裝到 Azure SQL 資料庫的另一個方法，是使用 **CREATE EXTERNAL LIBRARY** T-SQL 陳述式從位元組資料流上傳 R 套件。 請參閱 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 參考文件中的[從位元組資料流建立程式庫](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)。
+> 將 R 套件安裝到 Azure SQL 資料庫的另一個方法，是使用 **CREATE EXTERNAL LIBRARY** T-SQL 陳述式從位元組資料流上傳 R 套件。 請參閱 [CREATE EXTERNAL LIBRARY](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) 參考文件中的[從位元組資料流建立程式庫](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql)。
 
 ## <a name="next-steps"></a>後續步驟
 

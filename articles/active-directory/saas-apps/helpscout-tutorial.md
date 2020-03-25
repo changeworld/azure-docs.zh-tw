@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教學課程：Azure Active Directory 與 Help Scout 整合
@@ -35,7 +35,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 Help Scout 的 Azure AD 整合，您需要下列項目：
 
@@ -210,7 +210,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     b. 按一下 [上傳憑證]  以上傳從 Azure 入口網站下載的**憑證 (Base64)** 。
 
-    c. 在 [電子郵件網域]  文字方塊中，輸入組織的電子郵件網域，如 `contoso.com`。 您可以使用逗號來分隔多個網域。 每當 Help Scout 使用者或系統管理員在 [Help Scout 登入頁面](https://secure.helpscout.net/members/login/)中輸入該特定網域時，便會路由傳送至「識別提供者」，以驗證其認證。
+    c. 在 [電子郵件網域]`contoso.com`**文字方塊中，輸入組織的電子郵件網域，如**。 您可以使用逗號來分隔多個網域。 每當 Help Scout 使用者或系統管理員在 [Help Scout 登入頁面](https://secure.helpscout.net/members/login/)中輸入該特定網域時，便會路由傳送至「識別提供者」，以驗證其認證。
 
     d. 最後，如果您希望使用者只能透過此方法登入 Help Scout，則可以切換開啟 [強制 SAML 登入]  。 如果您仍想保留以 Help Scout 認證登入的選項，則可以將其切換為關閉。 即使啟用此選項，帳戶擁有者一律可以使用其帳戶密碼來登入 Help Scout。
 

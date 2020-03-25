@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278264"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集所適用的磁碟
@@ -235,7 +235,7 @@ PartitionNumber  DriveLetter  Offset   Size   Type
 1                H            1048576  128 GB  IFS
 ```
 
-您的擴展集中每個 VM 執行個體上的磁碟都會以相同的方式自動準備。 當您的擴展集要相應增加時，必要的資料磁碟會連結至新的 VM 執行個體。 此外也會執行自訂指令碼延伸模組，以自動準備磁碟。
+您的擴展集中每個 VM 執行個體上的磁碟都會以相同的方式自動準備。 當您的擴展集要擴大時，必要的資料磁碟會連結至新的 VM 執行個體。 此外也會執行自訂指令碼延伸模組，以自動準備磁碟。
 
 關閉 VM 執行個體的遠端桌面連線工作階段。
 

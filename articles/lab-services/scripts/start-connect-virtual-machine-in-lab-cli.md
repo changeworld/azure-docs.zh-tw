@@ -15,11 +15,11 @@ ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 2159e594f0cc6a43905f3562c0ad6f3e3c9984fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867502"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61084463"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure DevTest Labs 中啟動實驗室中的虛擬機器
 
@@ -38,7 +38,7 @@ ms.locfileid: "56867502"
 
 此指令碼會使用下列命令：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az lab vm start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | 啟動實驗室中的虛擬機器 (VM)。 此作業可能需要一些時間來完成。 |
 

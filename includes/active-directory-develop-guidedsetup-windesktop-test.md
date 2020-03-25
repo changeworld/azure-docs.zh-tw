@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129529"
 ---
 ## <a name="test-your-code"></a>測試您的程式碼
@@ -39,7 +39,7 @@ ms.locfileid: "79129529"
 
 ### <a name="view-application-results"></a>檢視應用程式結果
 
-登入之後，您應該會看到 Microsoft Graph API 呼叫所傳回的使用者設定檔資訊。 結果即會顯示於 [API 呼叫結果]  方塊中。 在 [權杖資訊]  方塊中，應該顯示透過呼叫 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 取得的權杖基本資訊。 結果包含下列屬性：
+登入之後，您應該會看到 Microsoft Graph API 呼叫所傳回的使用者設定檔資訊。 結果即會顯示於 [API 呼叫結果]  方塊中。 在 [權杖資訊]`AcquireTokenInteractive``AcquireTokenSilent` 方塊中，應該顯示透過呼叫 **或** 取得的權杖基本資訊。 結果包含下列屬性：
 
 |屬性  |[格式]  |描述 |
 |---------|---------|---------|

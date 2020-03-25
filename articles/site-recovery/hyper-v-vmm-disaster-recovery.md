@@ -9,17 +9,17 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74132999"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>設定從 Hyper-V VM 到次要內部部署網站的災害復原
 
 [Azure Site Recovery](site-recovery-overview.md) 服務可藉由管理及協調內部部署電腦與 Azure 虛擬機器 (VM) 的複寫、容錯移轉及容錯回復，為您的災害復原策略做出貢獻。
 
-本文說明如何設定從 System Center Virtual Machine Manager (VMM) 雲端中管理的內部部署 Hyper-V VM 到次要網站的災害復原。 在本文中，您將了解：
+本文說明如何設定從 System Center Virtual Machine Manager (VMM) 雲端中管理的內部部署 Hyper-V VM 到次要網站的災害復原。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 準備內部部署 VMM 伺服器和 Hyper-V 主機
@@ -30,7 +30,7 @@ ms.locfileid: "74132999"
 > * 啟用 VM 複寫
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此案例：
 
@@ -65,7 +65,7 @@ ms.locfileid: "74132999"
 
 選取您要複寫的項目以及您要複寫到的位置。
 
-1. 按一下 [Site Recovery]   > [步驟 1:  準備基礎結構] > [保護目標]  。
+1. 按一下 [Site Recovery]   > [步驟 1: 準備基礎結構]   > [保護目標]  。
 2. 選取 [到復原網站]  ，然後選取 [是，利用 Hyper-V]  。
 3. 選取 [是]  ，表示您使用 VMM 來管理 Hyper-V 主機。
 4. 如果您有次要 VMM 伺服器，請選取 [是]  。 如果您要在單一 VMM 伺服器上的雲端之間部署複寫，請按一下 [否]  。 然後按一下 [確定]  。
@@ -134,7 +134,7 @@ ms.locfileid: "74132999"
 2. 在 [復原點保留]  中，針對每個復原點指定保留期的長度 (以小時為單位)。 複寫的機器可以復原到週期內的任意點。
 3. 在 [應用程式一致快照頻率]  中，指定建立包含應用程式一致快照之復原點的頻率 (1-12 小時)。 Hyper-V 使用兩種快照集：
     - **標準快照集**：提供整個虛擬機器的累加快照集。
-    - **應用程式一致快照集**：建立 VM 內應用程式資料的時間點快照集。 磁碟區陰影複製服務(VSS) 可確保在建立快照集時，應用程式處於一致狀態。 啟用應用程式一致快照集，會影響來源 VM 上的應用程式效能。 設定一個值，此值小於您設定的其他復原點數目。
+    - **應用程式一致快照集**：建立 VM 內應用程式資料的時間點快照集。 磁碟區陰影複製服務(VSS) 可確保在建立快照集時，應用程式處於一致狀態。 啟用應用程式一致快照集，會影響來源 VM 上的應用程式效能。 設定的值應該小於您設定的其他復原點數目。
 4. 在 [資料傳輸壓縮]  中，指定是否應該壓縮已傳輸的複寫資料。
 5. 選取 [刪除複本 VM]  ，以指定如果您停用對來源 VM 的保護，則應刪除複本虛擬機器。 如果啟用此設定，當您停用對來源 VM 的保護時，便會從 Site Recovery 主控台中加以移除、在 VMM 主控台中移除 VMM 的 Site Recovery 設定，並刪除複本。
 6. 在 [初始複寫方法]  中，如果您要透過網路進行複寫，請指定是否要啟動初始複寫，或將它排程。 若要節省網路頻寬，您可能要將它排程在離峰時間執行。 然後按一下 [確定]  。
@@ -152,7 +152,7 @@ ms.locfileid: "74132999"
 4. 在 [虛擬機器]  中，從清單中選取您要保護的 VM。
 
 
-您可以在 [作業]   > [Site Recovery 作業]  中，追蹤 [啟用保護]  動作的進度。 在**完成保護**作業完成後，即完成初始複寫，且 VM 已可進行容錯移轉。
+您可以在 [作業]  **[Site Recovery 作業]**  >  中，追蹤 [啟用保護]  動作的進度。 在**完成保護**作業完成後，即完成初始複寫，且 VM 已可進行容錯移轉。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72792513"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>將建議或自動完成新增至您的 Azure 認知搜尋應用程式
@@ -36,7 +36,7 @@ ms.locfileid: "72792513"
 > * 使用 C# 時，在 HomeController.cs 中定義建議和自動完成動作
 > * 使用 JavaScript 時，直接呼叫 REST API 以提供相同的功能
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure 認知搜尋服務在此練習中是選擇性的，因為解決方案所使用的即時沙箱服務裝載了備妥的 NYCJobs 示範索引。 如果您想要在自己的搜尋服務上執行此範例，請參閱[設定 NYC 作業索引](#configure-app)以取得相關指示。
 

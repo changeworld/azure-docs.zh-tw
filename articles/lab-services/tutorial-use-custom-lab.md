@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68360273"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教學課程：在 Azure DevTest Labs 中存取實驗室
@@ -31,7 +31,7 @@ ms.locfileid: "68360273"
 > * 連接至 VM
 > * 取消認領 VM
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="access-the-lab"></a>存取實驗室
 
@@ -86,5 +86,5 @@ ms.locfileid: "68360273"
 本教學課程會示範如何存取和使用透過 Azure DevTest Labs 建立的實驗室。 若要深入了解如何存取和使用實驗室中的 VM，請參閱 
 
 > [!div class="nextstepaction"]
-> [操作說明：在實驗室中使用 VM](devtest-lab-add-vm.md)
+> [作法：在實驗室中使用 VM](devtest-lab-add-vm.md)
 

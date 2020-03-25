@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9d7e0a99a7ba2c00b2ebe5ea8c77d527765ead67
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f9b60ca31765ac52f4693e4efaac09af2ec2f293
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271422"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062776"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教學課程：使用 Azure 範本自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。 在本教學課程中，您將了解如何：
@@ -56,7 +56,7 @@ ms.locfileid: "76271422"
 ```
 
 
-## <a name="define-a-rule-to-autoscale-out"></a>定義自動相應放大的規則
+## <a name="define-a-rule-to-autoscale-out"></a>定義自動擴增的規則
 如果您的應用程式需求增加，您擴展集內 VM 執行個體上的負載也會跟著增加。 如果這樣的負載增加會持續而非只是短暫的需求，您就可以設定自動調整規則來增加擴展集中的 VM 執行個體數目。 建立這些 VM 執行個體並部署應用程式後，擴展集就會開始透過負載平衡器將流量分散給它們。 您可以控制要監視哪些計量 (例如 CPU 或磁碟)、應用程式負載必須符合給定的閾值多久，以及要將多少個 VM 執行個體新增至擴展集。
 
 在下列範例中會定義一個規則，以在平均 CPU 負載於 5 分鐘期間內大於 70% 時，增加擴展集內的 VM 執行個體數目。 當此規則觸發時，VM 執行個體數目會增加三個。
@@ -71,7 +71,7 @@ ms.locfileid: "76271422"
 | *timeWindow*      | 在比較計量與閾值之前監視的時間長短。                                   | 5 分鐘       |
 | *operator*        | 用以比較計量資料與閾值之間差異的運算子。                                                     | 大於    |
 | *threshold*       | 讓自動調整規則觸發動作的值。                                                      | 70%             |
-| *direction*       | 定義在套用規則時擴展集應相應縮小還是相應放大。                                              | 增加        |
+| *direction*       | 定義在套用規則時擴展集應縮減還是擴增。                                              | 增加        |
 | *type*            | 指出 VM 執行個體數目應依特定值變更。                                    | 變更計數    |
 | *value*           | 在套用規則時應相應縮小或相應放大多少個 VM 執行個體。                                             | 3               |
 | *cooldown*        | 再次套用規則前需要等待多久時間，以便讓自動調整動作生效。 | 5 分鐘       |
@@ -104,10 +104,10 @@ ms.locfileid: "76271422"
 ```
 
 
-## <a name="define-a-rule-to-autoscale-in"></a>定義自動相應縮小的規則
+## <a name="define-a-rule-to-autoscale-in"></a>定義自動縮減的規則
 在夜晚或週末，您的應用程式需求可能會減少。 若這樣的負載減少會持續一段時間，您就可以設定自動調整規則來減少擴展集中的 VM 執行個體數目。 這個相應縮小的動作可減少執行擴展集的成本，因為只會執行符合目前需求所需的執行個體數目。
 
-下列範例將定義規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，將 VM 執行個體數目相應縮小一個。 在先前使用了相應放大的規則之後，即會在自動調整設定檔中新增此規則：
+下列範例將定義規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，將 VM 執行個體數目縮減一個。 在先前使用了擴增的規則之後，即會在自動調整設定檔中新增此規則：
 
 ```json
 {
@@ -154,7 +154,7 @@ az group deployment create \
 
 
 ## <a name="generate-cpu-load-on-scale-set"></a>在擴展集上產生 CPU 負載
-若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則相應放大，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會相應縮小，並減少 VM 執行個體數目。
+若要測試自動調整規則，請在擴展集中的 VM 執行個體上產生 CPU 負載。 這種模擬的 CPU 負載會使自動調整規則擴增，並增加 VM 執行個體數目。 當模擬的 CPU 負載隨後減輕時，自動調整規則即會縮減，並減少 VM 執行個體數目。
 
 首先，請使用 [az vmss list-instance-connection-info](/cli/azure/vmss)，列出連線至擴展集中的 VM 執行個體的位址和連接埠：
 
@@ -175,55 +175,55 @@ az vmss list-instance-connection-info \
 
 透過 SSH 連線至您的第一個 VM 執行個體。 請使用 `-p` 參數指定您自己的公用 IP 位址和連接埠號碼，如先前的命令所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登入之後，安裝 **stress** 公用程式。 請啟動 10  個會產生 CPU 負載的 **stress** 背景工作。 這些背景工作會執行 420  秒，這就足以讓自動調整規則實作所需的動作。
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter  鍵返回提示。
+當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd  的輸出時，請按 Enter  鍵返回提示。
 
 若要確認 **stress** 產生了 CPU 負載，請使用 **top** 公用程式檢查作用中的系統負載：
 
-```azurecli-interactive
+```console
 top
 ```
 
 結束 **top**，然後關閉 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 使用先前的 [az vmss list-instance-connection-info](/cli/azure/vmss) 中所列的連接埠號碼，連線至第二個 VM 執行個體：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 安裝並執行 **stress**，然後在第二個 VM 執行個體上啟動十個背景工作。
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter  鍵返回提示。
+同樣地，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd  的輸出時，請按 Enter  鍵返回提示。
 
 關閉第二個 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
-```azurecli-interactive
+```console
 exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>監視作用中的自動調整規則
-若要監視擴展集中的 VM 執行個體數目，請使用 **watch**。 約需要 5 分鐘的時間，自動調整規則才會開始執行相應放大程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
+若要監視擴展集中的 VM 執行個體數目，請使用 **watch**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
 
 ```azurecli-interactive
 watch az vmss list-instances \
@@ -234,7 +234,7 @@ watch az vmss list-instances \
 
 達到 CPU 閾值時，自動調整規則就會增加擴展集中的 VM 執行個體數目。 下列輸出顯示擴展集自動相應放大時所建立的三個 VM：
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -246,13 +246,13 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-初始 VM 執行個體的 **stress** 停止時，平均 CPU 負載即會恢復正常。 再經過 5 分鐘之後，自動調整規則會相應縮小 VM 執行個體數目。 相應縮小動作會先移除具有最高識別碼的 VM 執行個體。 當擴展集使用可用性設定組或可用性區域時，相應縮小動作會平均散發到這些 VM 執行個體上。 下列範例輸出顯示擴展集自動相應縮小時所刪除的一個 VM 執行個體：
+初始 VM 執行個體的 **stress** 停止時，平均 CPU 負載即會恢復正常。 再經過 5 分鐘之後，自動調整規則會縮減 VM 執行個體數目。 縮減動作會先移除具有最高識別碼的 VM 執行個體。 當擴展集使用可用性設定組或可用性區域時，縮減動作會平均散發到這些 VM 執行個體上。 下列範例輸出顯示擴展集自動相應縮小時所刪除的一個 VM 執行個體：
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-使用 `Ctrl-c` 結束 watch  。 擴展集會繼續每隔 5 分鐘相應縮小一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
+使用  *結束 watch*`Ctrl-c`。 擴展集會繼續每隔 5 分鐘縮減一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -264,7 +264,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>後續步驟
-在此教學課程中，您已了解如何使用 Azure CLI 自動相應縮小或相應放大擴展集：
+在此教學課程中，您已了解如何使用 Azure CLI 自動縮減或擴增擴展集：
 
 > [!div class="checklist"]
 > * 使用擴展集的自動調整

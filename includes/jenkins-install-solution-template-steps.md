@@ -4,12 +4,12 @@ ms.service: jenkins
 ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
-ms.openlocfilehash: 2468dc72881755a2990e8ddf8112d7fe27f64f4d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274447"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79200293"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -63,11 +63,11 @@ Jenkins 伺服器現在已準備要建置程式碼。
 
 ![建立 Git 存放庫](./media/jenkins-install-solution-template-steps/jenkins-job-git-configuration.png) 
 
-選取 [建置]  索引標籤，然後選取 [新增建置步驟]  、[叫用 Gradle 指令碼]  。 選取 [使用 Gradle 包裝函式]  ，然後在 [包裝函式位置]  中輸入 `complete` 並輸入 `build` 作為 [工作]  。
+選取 [建置]  索引標籤，然後選取 [新增建置步驟]  、[叫用 Gradle 指令碼]  。 選取 [使用 Gradle 包裝函式]  ，然後在 [包裝函式位置]`complete`**中輸入** 並輸入 `build` 作為 [工作]  。
 
 ![使用要建置的 Gradle 包裝函式](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-選取 [進階]  ，然後在 [根組建指令碼]  欄位中輸入 `complete`。 選取 [儲存]  。
+選取 [進階]  ，然後在 [根組建指令碼]`complete`**欄位中輸入**。 選取 [儲存]  。
 
 ![在 Gradle 包裝函式建置步驟中設定進階設定](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 
@@ -86,4 +86,4 @@ Jenkins 伺服器現在已準備要建置程式碼。
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [新增 Azure VM 作為 Jenkins 代理程式](/azure/jenkins-azure-vm-agents)
+> [新增 Azure VM 作為 Jenkins 代理程式](/azure/jenkins/jenkins-azure-vm-agents)

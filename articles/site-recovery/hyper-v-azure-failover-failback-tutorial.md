@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75498168"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>將 Hyper-V VM 容錯移轉至 Azure
@@ -39,8 +39,8 @@ ms.locfileid: "75498168"
 容錯移轉和容錯回復有三個階段：
 
 1. **容錯移轉至 Azure**：從內部部署網站將 Hyper-V VM 容錯移轉至 Azure。
-2. **容錯回復至內部部署環境**：在內部部署網站可供使用時，將 Azure VM 容錯移轉至內部部署網站。 它會開始將資料從 Azure 同步處理至內部部署，並在完成時，於內部部署上啟動 VM。  
-3. **反向複寫內部部署 VM**：在容錯回復至內部部署環境之後，反向複寫內部部署 VM，以開始將這些 VM 複寫至 Azure。
+2. **容錯回復至內部部署**：在內部部署網站可供使用時，將 Azure VM 容錯回復至內部部署網站。 它會開始將資料從 Azure 同步處理至內部部署，並在完成時，於內部部署上啟動 VM。  
+3. **反向複寫內部部署 VM**：容錯回復至內部部署之後，請反向複寫內部部署 VM，以開始將這些 VM 複寫至 Azure。
 
 ## <a name="verify-vm-properties"></a>驗證 VM 屬性
 
@@ -64,7 +64,7 @@ ms.locfileid: "75498168"
 4. 驗證容錯移轉之後，請按一下 [認可]  。 這會刪除所有可用的復原點。
 
 > [!WARNING]
-> **請勿取消正在進行中的容錯移轉**：如果您在進行中取消，容錯移轉會停止，但 VM 不會再次複寫。
+> **請勿取消進行中的容錯移轉**：如果您在進行時取消，容錯移轉會停止，但 VM 不會再次複寫。
 
 ## <a name="connect-to-failed-over-vm"></a>連線至容錯移轉的 VM
 

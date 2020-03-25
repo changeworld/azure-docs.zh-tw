@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768517"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>使用要求追蹤對 API 進行偵錯
@@ -34,8 +34,8 @@ ms.locfileid: "75768517"
 ## <a name="prerequisites"></a>Prerequisites
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
-+ 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
++ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
++ 同時也請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 ## <a name="trace-a-call"></a>追蹤呼叫
 

@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75928230"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 入口網站中建立命名空間
@@ -54,7 +54,7 @@ ms.locfileid: "75928230"
 3. 在 [共用存取原則]  畫面中，按一下 **RootManageSharedAccessKey**。
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. 在 [原則：  RootManageSharedAccessKey] 視窗中，按一下 [主要連接字串]  旁的複製按鈕，將連接字串複製到剪貼簿以供後續使用。 將此值貼到記事本或一些其他暫存位置。
+4. 在 [原則：RootManageSharedAccessKey]  視窗中，按一下 [主要連接字串]  旁邊的 [複製] 按鈕，將連接字串複製到剪貼簿以供後續使用。 將此值貼到記事本或一些其他暫存位置。
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 重複前一個步驟，複製 [主要金鑰]  的值並貼到暫存位置以供稍後使用。

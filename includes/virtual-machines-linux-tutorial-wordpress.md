@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68857334"
 ---
 ## <a name="install-wordpress"></a>安裝 WordPress
@@ -85,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-您現在即可完成 WordPress 設定並且在平台上發佈。 現在開啟瀏覽器並前往 `http://yourPublicIPAddress/wordpress`。 替換為您 VM 的公用 IP 位址。 該頁面看起來應該類似下圖。
+您現在即可完成 WordPress 設定並且在平台上發佈。 開啟瀏覽器並前往 `http://yourPublicIPAddress/wordpress`。 替換為您 VM 的公用 IP 位址。 該頁面看起來應該類似下圖。
 
 ![WordPress 安裝頁面](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

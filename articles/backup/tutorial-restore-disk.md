@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393070"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222445"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中還原磁碟並建立已復原的 VM
 
@@ -141,7 +141,7 @@ az backup job list \
     --output table
 ```
 
-輸出會類似下列範例，其顯示的還原作業為 InProgress︰
+輸出會類似下列範例，其顯示的還原作業為 InProgress  ︰
 
 ```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration
@@ -151,7 +151,7 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-當還原作業的 [狀態] 報告 [已完成] 時，表示所需的資訊 (VM 組態和部署範本) 已還原至儲存體帳戶。
+當還原作業的 [狀態]  報告 [已完成]  時，表示所需的資訊 (VM 組態和部署範本) 已還原至儲存體帳戶。
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>從還原的磁碟建立 VM
 

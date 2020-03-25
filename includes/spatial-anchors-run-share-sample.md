@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882333"
 ---
-## <a name="androidtabandroid"></a>[Android](#tab/Android)
+## <a name="android"></a>[Android](#tab/Android)
 
 JAVA Android 範例支援跨裝置共用。
-從 Android Studio 的範例資料夾開啟 `SharedActivity.java` 檔案。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `SharedActivity.java` 檔案中 `SharingAnchorsServiceUrl` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
+從 Android Studio 的範例資料夾開啟 `SharedActivity.java` 檔案。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `SharingAnchorsServiceUrl` 檔案中 `SharedActivity.java` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="iostabios"></a>[iOS](#tab/iOS)
+## <a name="ios"></a>[iOS](#tab/iOS)
 
 Objective-C iOS 範例支援跨裝置共用。
-開啟範例資料夾中的檔案 `SharedDemoViewController.m`。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `SharedActivity.java` 檔案中 `SharingAnchorsServiceUrl` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
+開啟範例資料夾中的檔案 `SharedDemoViewController.m`。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `SharingAnchorsServiceUrl` 檔案中 `SharedActivity.java` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Xamarin Android 和 iOS 範例都支援跨裝置共用。
-開啟範例資料夾中的檔案 `AccountDetails.cs`。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `SharedActivity.java` 檔案中 `AnchorSharingServiceUrl` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
+開啟範例資料夾中的檔案 `AccountDetails.cs`。 輸入您在上一個步驟中取得的 URL (來自您的 ASP.NET Web 應用程式 Azure 部署)，做為 `AnchorSharingServiceUrl` 檔案中 `SharedActivity.java` 的值。 將 URL 中的 `index.html` 取代為 `api/anchors`。 它看起來應該像這樣：`https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="unitytabunity"></a>[Unity](#tab/Unity)
+## <a name="unity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -60,7 +60,7 @@ Xamarin Android 和 iOS 範例都支援跨裝置共用。
 
 登入 Android 裝置並使用 USB 纜線將它連接到電腦。
 
-藉由選取 [檔案]   > [組建設定]  來開啟 [組建設定]  。
+藉由選取 [檔案]  **[組建設定]**  >  來開啟 [組建設定]  。
 
 在 [建置中的場景]  底下，確定所有場景旁邊都有勾號。
 
@@ -70,7 +70,7 @@ Xamarin Android 和 iOS 範例都支援跨裝置共用。
 
 ### <a name="deploy-to-an-ios-device"></a>部署到 iOS 裝置
 
-藉由選取 [檔案]   > [組建設定]  來開啟 [組建設定]  。
+藉由選取 [檔案]  **[組建設定]**  >  來開啟 [組建設定]  。
 
 在 [建置中的場景]  底下，確定所有場景旁邊都有勾號。
 

@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252756"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教學課程：使用 Yeoman 封裝和部署容器作為 Service Fabric 應用程式
@@ -83,7 +83,7 @@ Service Fabric 提供 Scaffolding 工具，可協助您使用 Yeoman 範本產�
 若要將其他容器服務新增至已使用 Yeoman 建立的應用程式，請執行下列步驟︰
 
 1. 將目錄變更一個層級至 **TestContainer** 目錄，例如 *./TestContainer*
-2. `yo azuresfcontainer:AddService`執行
+2. `yo azuresfcontainer:AddService`執行 {2}
 3. 將服務命名為 'azurevoteback'
 4. 為 Redis 提供容器映像路徑 - 'alpine:redis'
 5. 按 Enter 鍵，讓 Commands 區段保留空白

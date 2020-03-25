@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
 ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108404"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>匯入 Logic App 作為 API
 
 本文會示範如何匯入 Logic App 作為 API，以及測試匯入的 API。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
@@ -31,14 +31,14 @@ ms.locfileid: "74108404"
 > -   在 Azure 入口網站中測試 API
 > -   在開發人員入口網站中測試 API
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 -   完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 -   確定您的訂用帳戶中有一個邏輯應用程式會公開 HTTP 端點。 如需詳細資訊，請參閱[透過 HTTP 端點觸發工作流程](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>匯入和發佈後端 API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
 1. 選取 [API 管理]  下方的 [API]  。
 2. 從 [加入新的 API]  清單選取 [Logic App]  。

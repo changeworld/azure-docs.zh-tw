@@ -8,10 +8,10 @@ ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio，在 Azure Kubernetes Service 上對多服務 .NET Core 應用程式進行偵錯
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438394"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>執行多個相依服務：搭配 Azure Dev Spaces 使用 .NET Core 和 Visual Studio
@@ -27,7 +27,7 @@ ms.locfileid: "75438394"
 為了節省時間，我們將從 GitHub 存放庫下載範例程式碼。 請移至 https://github.com/Azure/dev-spaces ，然後選取 [複製或下載]  ，從 GitHub 存放庫進行下載。 本節的程式碼位於 `samples/dotnetcore/getting-started/mywebapi`。
 
 ### <a name="run-mywebapi"></a>執行 *mywebapi*
-1. 在個別的 Visual Studio 視窗  中開啟專案 `mywebapi`。
+1. 在個別的 Visual Studio 視窗`mywebapi`*中開啟專案* 。
 1. 從啟動設定下拉式清單中選取 [Azure 開發人員空間]  ，如同您先前對 `webfrontend` 專案所做的。 這次請不要建立新的 AKS 叢集，而應選取您已建立的同一個叢集。 與之前相同，將 [空間] 保留為預設的 `default`，然後按一下 [確定]  。 在 [輸出] 視窗中，您可能會發現 Visual Studio 開始在開發人員空間中「準備」這項新服務，以在您開始偵錯時加速作業。
 1. 按 F5，並等候服務進行建置和部署。 當 Visual Studio 的狀態列變成橙色時，即表示已就緒
 1. 記下 [輸出]  視窗的 [適用於 AKS 的 Azure 開發人員空間]  窗格中顯示的 URL 端點。 輸出應該會類似於 `http://localhost:<portnumber>`。 容器可能看起來像在本機執行，但實際是在 Azure 的開發人員空間中執行。
@@ -66,7 +66,7 @@ ms.locfileid: "75438394"
 
 ### <a name="debug-across-multiple-services"></a>在多個服務間進行偵錯
 1. 此時，`mywebapi` 仍應使用附加的偵錯工具執行中。 如果不是，在 `mywebapi` 專案中按 F5。
-1. 在 `Controllers/ValuesController.cs` 檔案中負責處理 `api/values/{id}` GET 要求的 `Get(int id)` 方法內設定中斷點。
+1. 在 `Get(int id)` 檔案中負責處理 `Controllers/ValuesController.cs` GET 要求的 `api/values/{id}` 方法內設定中斷點。
 1. 在您已貼上前述程式碼的 `webfrontend` 專案中，請將中斷點設定在傳送 GET 要求給 `mywebapi/api/values` 的前一刻。
 1. 在 `webfrontend` 專案中按 F5。 Visual Studio 會重新開啟瀏覽器並進入適當 localhost 連接埠，且會顯示 Web 應用程式。
 1. 按一下頁面頂端的 [關於]  連結，以觸發 `webfrontend` 專案中的中斷點。 

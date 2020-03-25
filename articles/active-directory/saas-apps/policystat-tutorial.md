@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教學課程：Azure Active Directory 與 PolicyStat 整合
@@ -34,7 +34,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 PolicyStat 整合，您需要下列項目：
 
@@ -126,13 +126,13 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     | 名稱 | 來源屬性 |
     |------------------- | -------------------- |
-    | UID | ExtractMailPrefix([mail]) |
+    | uid | ExtractMailPrefix([mail]) |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
     
-    ![映像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![映像](./media/policystat-tutorial/attribute01.png)
+    ![image](./media/policystat-tutorial/attribute01.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -178,9 +178,9 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     c. 在 [姓氏屬性]  文字方塊中，輸入使用者的**姓氏**：**Simon**。
 
-    d. 在 [電子郵件屬性]  文字方塊中，輸入使用者 `BrittaSimon@contoso.com` 的**電子郵件地址**。
+    d. 在 [電子郵件屬性]  文字方塊中，輸入使用者  **的**電子郵件地址`BrittaSimon@contoso.com`。
 
-    e. 按一下 [儲存變更]  。
+    e. 按一下 **[儲存變更]** 。
 
 5. 按一下 [您的 IDP 中繼資料]  ，然後在 [您的 IDP 中繼資料]  區段中，執行下列步驟：
    
@@ -188,7 +188,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
    
     a. 開啟您下載的中繼資料檔案，複製內容，然後貼到 [您的識別提供者中繼資料]  文字方塊中。
 
-    b. 按一下 [儲存變更]  。
+    b. 按一下 **[儲存變更]** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 

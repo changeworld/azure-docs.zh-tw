@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849746"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223835"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure App Service 中使用 SSL 繫結保護自訂 DNS 名稱
 
-本文說明如何藉由建立憑證繫結，在您的 [App Service 應用程式](https://docs.microsoft.com/azure/app-service/)或[函式應用程式](https://docs.microsoft.com/azure/azure-functions/)中保護[自訂網域](app-service-web-tutorial-custom-domain.md)。 完成此作業後，您將可在自訂 DNS 名稱的 `https://` 端點存取您的 App Service 應用程式 (例如 `https://www.contoso.com`)。 
+本文說明如何藉由建立憑證繫結，在您的 [App Service 應用程式](app-service-web-tutorial-custom-domain.md)或[函式應用程式](https://docs.microsoft.com/azure/app-service/)中保護[自訂網域](https://docs.microsoft.com/azure/azure-functions/)。 完成此作業後，您將可在自訂 DNS 名稱的 `https://` 端點存取您的 App Service 應用程式 (例如 `https://www.contoso.com`)。 
 
 ![Web 應用程式與自訂 SSL 憑證](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "74849746"
 > * 強制使用 TLS 1.1/1.2
 > * 使用指令碼將 TLS 管理自動化
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循本操作說明指南：
 
@@ -79,7 +79,7 @@ ms.locfileid: "74849746"
 
 利用下表在 [TLS/SSL 繫結]  對話方塊中設定繫結，然後按一下 [新增繫結]  。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 |-|-|
 | 自訂網域 | 要新增 SSL 繫結的網域名稱。 |
 | 私人憑證指紋 | 要繫結的憑證。 |
@@ -131,7 +131,7 @@ ms.locfileid: "74849746"
 
 ![強制使用 HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
-當作業完成時，瀏覽至指向您的應用程式的任何 HTTP URL。 例如︰
+當作業完成時，瀏覽至指向您的應用程式的任何 HTTP URL。 例如：
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -146,6 +146,12 @@ ms.locfileid: "74849746"
 ![強制使用 TLS 1.1 或 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 當作業完成時，您的應用程式會拒絕與較低 TLS 版本的所有連線。
+
+## <a name="handle-ssl-termination"></a>處理 SSL 終止
+
+在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要檢查使用者要求是否有加密，請檢查 `X-Forwarded-Proto` 標頭。
+
+語言專屬的設定指南 (如 [Linux Node.js 設定](containers/configure-language-nodejs.md#detect-https-session)指南) 會說明如何在應用程式的程式碼中偵測 HTTPS 工作階段。
 
 ## <a name="automate-with-scripts"></a>使用指令碼進行自動化
 

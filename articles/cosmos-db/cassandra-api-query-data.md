@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038172"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60899894"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>教學課程：從 Azure Cosmos DB 中的 Cassandra API 帳戶查詢資料
 
@@ -28,7 +28,7 @@ ms.locfileid: "54038172"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 本文為多部分教學課程的一部分。 在開始之前，請務必完成上述步驟來建立 Cassandra API 帳戶、keyspace、資料表，並[將範例資料載入到資料表](cassandra-api-load-data.md)。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "54038172"
 
 若要從您的 Cassandra API 帳戶查詢資料，請使用下列步驟：
 
-1. 開啟 `src\main\java\com\azure\cosmosdb\cassandra` 資料夾下的 `UserRepository.java` 檔案。 附加下列程式碼區塊。 此程式碼提供三種方法： 
+1. 開啟 `UserRepository.java` 資料夾下的 `src\main\java\com\azure\cosmosdb\cassandra` 檔案。 附加下列程式碼區塊。 此程式碼提供三種方法： 
 
    * 查詢資料庫中的所有使用者
    * 查詢依使用者識別碼篩選的特定使用者
@@ -77,7 +77,7 @@ ms.locfileid: "54038172"
    }
    ```
 
-2. 開啟 `src\main\java\com\azure\cosmosdb\cassandra` 資料夾下的 `UserProfile.java` 檔案。 此類別包含會呼叫您先前所定義 createKeyspace、createTable 和 insert data 方法的主要方法。 現在，附加查詢所有使用者或特定使用者的下列程式碼：
+2. 開啟 `UserProfile.java` 資料夾下的 `src\main\java\com\azure\cosmosdb\cassandra` 檔案。 此類別包含會呼叫您先前所定義 createKeyspace、createTable 和 insert data 方法的主要方法。 現在，附加查詢所有使用者或特定使用者的下列程式碼：
 
    ```java
    LOGGER.info("Select all users");
@@ -103,11 +103,11 @@ ms.locfileid: "54038172"
    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
    ```
 
-2. 現在，在 Azure 入口網站中，開啟 [資料總管] 並確認已刪除使用者資料表。
+2. 現在，在 Azure 入口網站中，開啟 [資料總管]  並確認已刪除使用者資料表。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，您可以刪除資源群組、Azure Cosmos 帳戶和所有相關資源。 請選取虛擬機器的資源群組，選取 [刪除]，然後確認要刪除的資源群組名稱，即可刪除資源。
+若不再需要，您可以刪除資源群組、Azure Cosmos 帳戶和所有相關資源。 請選取虛擬機器的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱，即可刪除資源。
 
 ## <a name="next-steps"></a>後續步驟
 

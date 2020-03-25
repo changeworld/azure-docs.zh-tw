@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
 ms.openlocfilehash: fbc91b2610d97fe071e6585a58d7789dca873a9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882305"
 ---
 將應用程式部署到您的裝置。 一旦應用程式啟動，在 [選擇示範]  對話方塊中，使用向左鍵或向右鍵來選取 [LocalShare]  選項，並且點選 [執行！]  。 依照應用程式中的指示操作。 您可以選取 [建立及共用錨點]  或 [尋找共用的錨點]  。

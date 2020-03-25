@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661647"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>根據效能資料或排程建立自動調整 Azure 資源規模設定
@@ -22,7 +22,7 @@ ms.locfileid: "77661647"
 在本教學課程中，您將： 
 > [!div class="checklist"]
 > * 建立 Web 應用程式與 App Service 方案
-> * 設定自動調整規模規則，以依據 Web 應用程式接收的要求數目相應縮小和相應放大
+> * 設定自動調整規模規則，以依據 Web 應用程式接收的要求數目縮減和擴增
 > * 觸發相應放大動作，觀察執行個體數目的增加
 > * 觸發相應縮小動作，觀察執行個體的數目的減少
 > * 清除資源
@@ -174,7 +174,7 @@ ms.locfileid: "77661647"
 在本教學課程中，您：  
 > [!div class="checklist"]
 > * 建立 Web 應用程式與 App Service 方案
-> * 設定自動調整規模規則，以依據 Web 應用程式接收的要求數目相應縮小和相應放大
+> * 設定自動調整規模規則，以依據 Web 應用程式接收的要求數目縮減和擴增
 > * 觸發相應放大動作，觀察執行個體數目的增加
 > * 觸發相應縮小動作，觀察執行個體數目的減少
 > * 清除資源
