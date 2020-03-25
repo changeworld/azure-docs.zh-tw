@@ -1,26 +1,28 @@
 ---
-title: 啟動 Azure 訂用帳戶與帳戶 | Microsoft Docs
+title: 啟動 Azure 訂用帳戶與帳戶
 description: 使用新的和現有帳戶的 Azure Resource Manager API 來啟用存取，並解決常見的帳戶問題。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301364"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474657"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 啟動 Azure 訂用帳戶與帳戶
 
 新增或更新您的 Azure Resource Manager 認證，可讓 Cloudyn 探索 Azure 租用戶中的所有帳戶和訂用帳戶。 如果您也在虛擬機器上啟用 Azure 診斷擴充功能，則 Cloudyn 可以收集擴充計量，例如 CPU 和記憶體。 本文說明如何使用新的和現有帳戶的 Azure Resource Manager API 來啟用存取。 它也說明了如何解決常見的帳戶問題。
 
 訂用帳戶若「未啟動」  ，Cloudyn 便無法存取大部分的 Azure 訂用帳戶資料。 您必須編輯「未啟動」  的帳戶，Cloudyn 才能存取它們。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>必要的 Azure 權限
 

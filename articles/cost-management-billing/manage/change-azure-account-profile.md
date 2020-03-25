@@ -1,5 +1,5 @@
 ---
-title: 變更 Azure 帳戶的設定檔資訊 | Microsoft Docs
+title: 變更 Azure 帳戶的設定檔資訊
 description: 說明如何變更 Azure 系統管理帳戶和連絡人電子郵件地址的設定檔。
 author: genlin
 ms.reviewer: dcscontentpm
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46f2645b640224a9dfd68775574653c35da8652d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1a53dd6e6682d0237793c4afcdea25370f9cc17c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199869"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202976"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>變更 Azure 帳戶的設定檔資訊
 

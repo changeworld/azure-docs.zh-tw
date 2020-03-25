@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206022"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80131364"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -65,7 +65,7 @@ Azure 支援三個範圍進行資源管理。 每個範圍都支援管理存取�
 
 - **在超出預算時採取行動** – 成本管理參與者也需要存取權來建立及/或管理動作群組，以便自動回應超額部分。 請考慮將[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予資源群組，其中包含在超出預算限額時所要使用的動作群組。 需要所用特定服務 (例如自動化和 Azure Functions) 的其他角色，才能自動執行特定動作。
 - **排程成本資料匯出** – 成本管理參與者也需要存取權來管理儲存體帳戶，以排程將資料複製到儲存體帳戶中的匯出。 請考慮將[儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予資源群組，其中包含成本資料匯出所在的儲存體帳戶。
-- **檢視節省成本建議** – 成本管理讀者和成本管理參與者預設都有存取來「檢視」  成本建議。 不過，需要個別資源的存取權，才具備對成本建議採取行動的存取權。 如果您想要對以成本為基礎的建議採取行動，請考慮授與[服務專屬角色](../../role-based-access-control/built-in-roles.md#descriptions-and-ids)。
+- **檢視節省成本建議** – 成本管理讀者和成本管理參與者預設都有存取來「檢視」  成本建議。 不過，需要個別資源的存取權，才具備對成本建議採取行動的存取權。 如果您想要對以成本為基礎的建議採取行動，請考慮授與[服務專屬角色](../../role-based-access-control/built-in-roles.md#all)。
 
 ## <a name="enterprise-agreement-scopes"></a>Enterprise 合約範圍
 

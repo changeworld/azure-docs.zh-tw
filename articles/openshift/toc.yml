@@ -41,6 +41,8 @@
           href: howto-azure-monitor-v4.md
     - name: 在 Azure Red Hat OpenShift 叢集中部署獨立 Prometheus
       href: howto-deploy-prometheus.md
+    - name: 管理 Azure Red Hat OpenShift 叢集中的專案
+      href: howto-manage-projects.md
     - name: 建立私人 Azure Red Hat OpenShift 叢集
       href: howto-create-private-cluster.md
     - name: 監視和記錄
