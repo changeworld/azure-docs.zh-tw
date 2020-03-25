@@ -8,24 +8,24 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791421"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60617472"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教學課程：使用 Batch Explorer 轉譯 Blender 場景
 
 本教學課程說明如何轉譯 Blender 示範場景的多個畫面格。 本教學課程會使用 Blender，因為這在用戶端和轉譯的 VM 兩端都可免費使用，但如果您使用 Maya 或 3ds Max 之類的其他應用程式，作業程序也十分類似。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 將 Blend 場景上傳至 Azure 儲存體
 > * 建立含有多個節點的 Batch 集區以執行轉譯
 > * 轉譯多個畫面格
 > * 檢視和下載轉譯的畫面格檔案
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要隨用隨付訂用帳戶或其他 Azure 購買選項，以按使用量付費的方式，在 Batch 中使用轉譯應用程式。 如果您使用提供信用額度金額的免費 Azure 方案，則不支援按使用量付費授權。
 

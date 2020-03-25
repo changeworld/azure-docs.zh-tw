@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: brendm
 ms.openlocfilehash: 94f7b5a2363b7c53e0f70500e5a0a8cb6f64e611
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277511"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>將 Azure Cache for Redis 繫結至 Azure Spring Cloud 應用程式 
@@ -35,7 +35,7 @@ ms.locfileid: "76277511"
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. 從 `application.properties` 檔案移除任何 `spring.redis.*` 屬性
+1. 從 `spring.redis.*` 檔案移除任何 `application.properties` 屬性
 
 1. 使用 `az spring-cloud app update` 來更新目前的部署，或是使用 `az spring-cloud app deployment create` 來建立新部署。
 

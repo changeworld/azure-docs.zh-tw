@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465467"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教學課程：建立和部署含有 ASP.NET Core Web API 前端服務和具狀態後端服務的應用程式
@@ -241,7 +241,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-此外在 `CreateServiceInstanceListeners()` 下方新增下列 `GetVotingDataServiceName`，然後儲存變更。 `GetVotingDataServiceName` 會在輪詢時傳回服務名稱。
+此外在 `GetVotingDataServiceName` 下方新增下列 `CreateServiceInstanceListeners()`，然後儲存變更。 `GetVotingDataServiceName` 會在輪詢時傳回服務名稱。
 
 ```csharp
 internal static Uri GetVotingDataServiceName(ServiceContext context)

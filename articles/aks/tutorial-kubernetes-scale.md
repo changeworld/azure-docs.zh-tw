@@ -6,15 +6,15 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
 ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77621101"
 ---
-# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中調整應用程式
 
-如果您已依照教學課程操作，就會在 AKS 中有一個正常運作的 Kubernetes 叢集，並已部署範例 Azure 投票應用程式。 在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 相應放大，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 節點的數目，以變更叢集裝載工作負載的容量。 您會了解如何：
+如果您已依照教學課程操作，就會在 AKS 中有一個正常運作的 Kubernetes 叢集，並已部署範例 Azure 投票應用程式。 在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 擴增，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 節點的數目，以變更叢集裝載工作負載的容量。 您會了解如何：
 
 > [!div class="checklist"]
 > * 調整 Kubernetes 節點

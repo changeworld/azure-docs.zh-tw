@@ -4,10 +4,10 @@ description: 用於部署管理功能 (例如角色和鎖定) 的 Azure Resource
 ms.topic: sample
 ms.date: 11/16/2018
 ms.openlocfilehash: 61d46d4b032a4eaf326acd21e85b332bdb407f40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75471783"
 ---
 # <a name="azure-resource-manager-templates-for-management-features"></a>管理功能的 Azure Resource Manager 範本

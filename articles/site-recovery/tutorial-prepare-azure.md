@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367081"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067555"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>準備 Azure 以進行內部部署災害復原至 Azure
 
@@ -54,32 +54,32 @@ ms.locfileid: "78367081"
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
-1. 從 Azure 入口網站功能表，選取 [建立資源]，然後在 Marketplace 中搜尋 [復原]。
-2. 選取 [備份和 Site Recovery]，然後在 [備份和 Site Recovery] 頁面中按一下 [建立]。 
-3. 在 [建立復原服務保存庫] 頁面中，選取 [訂閱]。 我們使用 **Contoso 訂閱**。
-4. 在 [資源群組] 中選取現有的資源群組，或建立新的資源群組。 在本教學課程中，我們將使用 **contosoRG**。
-5. 在 [保存庫名稱] 中，輸入易記名稱以識別保存庫。 在這一組教學課程中，我們會使用 **ContosoVMVault**。
-6. 在 [區域] 中，選取保存庫應位於的區域。 我們使用**西歐**。
-7. 選取 [檢閱 + 建立]。
+1. 從 Azure 入口網站功能表，選取 [建立資源]  ，然後在 Marketplace 中搜尋 [復原]  。
+2. 選取 [備份和 Site Recovery]  ，然後在 [備份和 Site Recovery] 頁面中按一下 [建立]  。 
+3. 在 [建立復原服務保存庫]  頁面中，選取 [訂閱]  。 我們使用 **Contoso 訂閱**。
+4. 在 [資源群組]  中選取現有的資源群組，或建立新的資源群組。 在本教學課程中，我們將使用 **contosoRG**。
+5. 在 [保存庫名稱]  中，輸入易記名稱以識別保存庫。 在這一組教學課程中，我們會使用 **ContosoVMVault**。
+6. 在 [區域]  中，選取保存庫應位於的區域。 我們使用**西歐**。
+7. 選取 [檢閱 + 建立]  。
 
    ![建立新保存庫](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新的保存庫會出現在 [儀表板] > [所有資源] 上，以及主要 [復原服務保存庫] 頁面上。
+   新的保存庫會出現在 [儀表板]   > [所有資源]  上，以及主要 [復原服務保存庫]  頁面上。
 
 ## <a name="set-up-an-azure-network"></a>設定 Azure 網路
 
 內部部署機器會複寫至 Azure 受控磁碟。 發生容錯移轉時，系統會從這些受控磁碟建立Azure VM，並將其加入您在此程序中指定的 Azure 網路。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 **[建立資源]**  >  **[網路]**  >  **[虛擬網路]** 。
-2. 保留選取 [Resource Manager] 作為部署模型。
-3. 在 [名稱] 中，輸入網路名稱。 此名稱必須是 Azure 資源群組中的唯一名稱。 在本教學課程中，我們使用 **ContosoASRnet**。
-4. 在 [位址空間] 中，以 CIDR 標記法輸入虛擬網路的位址範圍。 我們使用 **10.1.0.0/24**。
-5. 在 [訂用帳戶] 中，選取要在其中建立網路的訂用帳戶。
+2. 保留選取 [Resource Manager]  作為部署模型。
+3. 在 [名稱]  中，輸入網路名稱。 此名稱必須是 Azure 資源群組中的唯一名稱。 在本教學課程中，我們使用 **ContosoASRnet**。
+4. 在 [位址空間]  中，以 CIDR 標記法輸入虛擬網路的位址範圍。 我們使用 **10.1.0.0/24**。
+5. 在 [訂用帳戶]  中，選取要在其中建立網路的訂用帳戶。
 6. 指定要在其中建立網路的**資源群組**。 我們使用現有的資源群組 **contosoRG**。
-7. 在 [位置] 中，選取與在其中建立復原服務保存庫相同的區域。 在本教學課程中為 [西歐]。 此網路必須位於與保存庫相同的區域中。
-8. 在 [位址範圍] 中，輸入網路範圍。 我們正在使用 **10.1.0.0/24**，而不使用子網路。
+7. 在 [位置]  中，選取與在其中建立復原服務保存庫相同的區域。 在本教學課程中為 [西歐]  。 此網路必須位於與保存庫相同的區域中。
+8. 在 [位址範圍]  中，輸入網路範圍。 我們正在使用 **10.1.0.0/24**，而不使用子網路。
 9. 我們保留基本 DDoS 保護的預設選項，且網路上沒有任何服務端點或防火牆。
-9. 選取 [建立]。
+9. 選取 [建立]  。
 
    ![建立虛擬網路](media/tutorial-prepare-azure/create-network.png)
 

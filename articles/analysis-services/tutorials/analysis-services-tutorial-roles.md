@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273687"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教學課程：設定伺服器管理員和使用者角色
@@ -143,5 +143,5 @@ ms.locfileid: "78273687"
 在本教學課程中，您已了解如何連線至 Azure AS 伺服器，並在 SSMS 中瀏覽 adventureworks 範例模型資料庫和屬性。 您也已了解如何使用 SSMS 和 TMSL 指令碼將使用者或群組新增至現有和新的角色。 現在，您已為伺服器和範例模型資料庫設定使用者權限，接下來您和其他使用者即可使用 Power BI 之類的用戶端應用程式連線至該資料庫。 若要深入了解，請繼續進行下一個教學課程。 
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 Power BI Desktop 進行連線](analysis-services-tutorial-pbid.md)
+> [教學課程 - 使用 Power BI Desktop 進行連線](analysis-services-tutorial-pbid.md)
 

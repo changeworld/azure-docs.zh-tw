@@ -7,13 +7,13 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376642"
 ---
-# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教學課程：設定 Jenkins 環境以便在 Service Fabric 上啟用 Java 應用程式的 CI/CD
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教學課程︰設定 Jenkins 環境以便在 Service Fabric 上啟用 Java 應用程式的 CI/CD
 
 本教學課程是一個系列的第五部分。 它會示範如何使用 Jenkins 將升級部署至您的應用程式。 在此教學課程中，Service Fabric Jenkins 外掛程式會搭配裝載 Voting 應用程式的 GitHub 存放庫使用，以將應用程式部署至叢集。
 
@@ -119,7 +119,7 @@ ms.locfileid: "75376642"
 
 ## <a name="update-your-existing-application"></a>更新現有的應用程式
 
-1. 使用 **Service Fabric Voting 範例 V2** 更新 VotingApplication/VotingWebPkg/Code/wwwroot/index.html  檔案中的 HTML 標題。
+1. 使用 *Service Fabric Voting 範例 V2* 更新 VotingApplication/VotingWebPkg/Code/wwwroot/index.html  檔案中的 HTML 標題。
 
     ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
@@ -133,7 +133,7 @@ ms.locfileid: "75376642"
     </div>
     ```
 
-1. 在 Voting/VotingApplication/ApplicationManifest.xml  檔案中將 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新為 **2.0.0**。
+1. 在 Voting/VotingApplication/ApplicationManifest.xml  檔案中將 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新為 *2.0.0*。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -160,7 +160,7 @@ ms.locfileid: "75376642"
     </ApplicationManifest>
     ```
 
-1. 在 Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml  檔案中將 **ServiceManifest** 中的 **Version** 欄位和 **CodePackage** 標記中的 **Version** 欄位更新為 **2.0.0**。
+1. 在 Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml  檔案中將 **ServiceManifest** 中的 **Version** 欄位和 **CodePackage** 標記中的 *Version* 欄位更新為 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

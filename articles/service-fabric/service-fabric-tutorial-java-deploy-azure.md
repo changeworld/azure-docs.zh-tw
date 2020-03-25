@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252809"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教學課程：將 Java 應用程式部署到 Azure 中的 Service Fabric 叢集
@@ -225,7 +225,7 @@ ms.locfileid: "78252809"
 
     ![Voting 應用程式 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. 若要從叢集將您的應用程式解除安裝，請執行 **Scripts** 資料夾中的 *uninstall.sh* 指令碼。
+7. 若要從叢集將您的應用程式解除安裝，請執行 *Scripts* 資料夾中的 **uninstall.sh** 指令碼。
 
     ```bash
     ./uninstall.sh

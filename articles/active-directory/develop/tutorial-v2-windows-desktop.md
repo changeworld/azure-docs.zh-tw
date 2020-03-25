@@ -16,10 +16,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129918"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
@@ -162,7 +162,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 本節會說明應用程式如何查詢受保護的後端伺服器 (例如 Microsoft Graph)。 
 
-系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 \<Grid>  節點取代為下列程式碼：
+系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 *Grid>\<* 節點取代為下列程式碼：
 
 ```xml
 <Grid>

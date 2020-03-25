@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770867"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何搭配 Ruby 使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
@@ -94,7 +94,7 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>更新實體
 有多種方法可以用來更新現有的實體：
 
-* **update_entity()：** 透過取代現有實體來進行更新。
+* **update_entity()：** 藉由取代現有實體來更新現有實體。
 * **merge_entity()：** 藉由將新的屬性值合併到現有實體來更新現有實體。
 * **insert_or_merge_entity()：** 藉由取代現有實體來更新現有實體。 如果實體不存在，將會插入新的實體：
 * **insert_or_replace_entity()：** 藉由將新的屬性值合併到現有實體來更新現有實體。 如果實體不存在，將會插入新的實體。

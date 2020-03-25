@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893641"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222625"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>準備內部部署 VMware 伺服器以進行 Azure 的災害復原
 
@@ -68,8 +68,8 @@ Site Recovery 需要存取 VMware 伺服器才能：
 
 準備有權限可以在 VM 上安裝的網域或本機帳戶。
 
-- **Windows VM**：在 Windows VM 上安裝時，如果您不是使用網域帳戶，請停用本機電腦上的「遠端使用者存取」控制。 若要執行此動作，請在登錄的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，新增 DWORD 登錄 **LocalAccountTokenFilterPolicy**，其值為 1。
-- **Linux VM**：若要在 Linux VM 上安裝，請在來源 Linux 伺服器上準備根帳戶。
+- **Windows VMs**：若要在 Windows VM 上安裝，如果您不使用網域帳戶，請停用本機電腦上的遠端使用者存取控制。 若要執行此動作，請在登錄的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，新增 DWORD 登錄 **LocalAccountTokenFilterPolicy**，其值為 1。
+- **Linux VMs**：若要在 Linux VM 上安裝，請在來源 Linux 伺服器上準備根帳戶。
 
 
 ## <a name="check-vmware-requirements"></a>檢查 VMware 需求
@@ -94,7 +94,7 @@ Site Recovery 需要存取 VMware 伺服器才能：
 - **站對站 VPN 存取**：
     - 在容錯移轉前，請在內部部署電腦上啟用 RDP。
     - 您應該在 [Windows 防火牆]   -> [允許的應用程式與功能]  中，針對 [網域] 和 [私人]  網路允許 RDP。
-    - 確認作業系統的 SAN 原則已設為 [OnlineAll]  。 [深入了解](https://support.microsoft.com/kb/3031135)。
+    - 確認作業系統的 SAN 原則已設為 [OnlineAll]  。 [詳細資訊](https://support.microsoft.com/kb/3031135)。
 - 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
 - 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷]  以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 

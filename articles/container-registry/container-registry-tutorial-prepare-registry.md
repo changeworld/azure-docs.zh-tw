@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454431"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222145"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
@@ -45,8 +45,8 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 為新的登錄進行以下設定：
 
-* **登錄名稱**：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
-* **資源群組**：**新建** > `myResourceGroup`
+* **登錄名稱**：建立登錄名稱，其必須在 Azure 中全域唯一且包含 5-50 個英數字元
+* **資源群組**：**建立新的** > `myResourceGroup`
 * **位置**：`West US`
 * **管理員使用者**：`Enable` (必要項目；可讓用於容器的 Web 應用程式提取映像)
 * **SKU**：`Premium` (異地複寫的必要項目)
@@ -205,7 +205,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由於您已將登錄設定為要進行異地複寫，因此系統會使用單一 `docker push` 命令，將您的映像自動複寫至「美國西部」  和「美國東部」  地區。
+由於您已將登錄設定為要進行異地複寫，因此系統會使用單一  *命令，將您的映像自動複寫至「美國西部」* *和「美國東部」* `docker push`地區。
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
