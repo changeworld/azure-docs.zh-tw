@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200209"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237899"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>您 Microsoft 客戶合約發票中的詞彙
 
@@ -23,7 +23,7 @@ ms.locfileid: "77200209"
 
 ## <a name="billing-period"></a>計費期間
 
-您的發票會按月開立。 您可以在 [Azure 入口網站](https://portal.azure.com/)中查看帳單設定檔屬性下方的*發票日期*，以確認您會在一個月中的哪一天收到發票。 在計費期間結束和發票日期之間發生的費用，會包含在下個月的發票中，因為這些費用屬於下一個計費期間。 每張發票的計費期間開始和結束日期都會列在 [帳單摘要]  上方的發票 PDF 中。
+您的發票會按月開立。 您可以在 *Azure 入口網站*中查看帳單設定檔屬性下方的[發票日期](https://portal.azure.com/)，以確認您會在一個月中的哪一天收到發票。 在計費期間結束和發票日期之間發生的費用，會包含在下個月的發票中，因為這些費用屬於下一個計費期間。 每張發票的計費期間開始和結束日期都會列在 [帳單摘要]  上方的發票 PDF 中。
 
 ## <a name="invoice-terms-and-descriptions"></a>發票詞彙和說明
 

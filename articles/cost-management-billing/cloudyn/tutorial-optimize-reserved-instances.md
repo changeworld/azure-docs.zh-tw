@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 使用 Cloudyn 將保留執行個體成本最佳化 - Azure
 description: 在本教學課程中，您將了解如何將 Azure 和 Amazon Web Services (AWS) 的保留執行個體成本最佳化。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 22a435a63c4ff649fe428e031bca7beecdbc46d1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201113"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463708"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -36,6 +36,8 @@ ms.locfileid: "77201113"
 > * 修改未使用的保留
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -169,7 +171,7 @@ Cloudyn 會比較隨選執行個體使用量與可能的保留執行個體。 �
 
 在此範例中，Cloudyn\_A 帳戶有 32 項保留執行個體購買建議。 如果您遵循所有購買建議，您每年可能省下 $137,770 美元。 請記住，Cloudyn 所提供的購買建議假設執行中工作負載的使用量維持一致。
 
-若要檢視可解釋為何建議每項購買的詳細資訊，請按一下 [理由]  下方的加號 ( **+** )。 以下是清單中第一項建議的範例。
+若要檢視可解釋為何建議每項購買的詳細資訊，請按一下 [理由] **+ 下方的加號 (**  )。 以下是清單中第一項建議的範例。
 
 ![顯示購買理由詳細資料的範例](./media/tutorial-optimize-reserved-instances/aws02.png)
 

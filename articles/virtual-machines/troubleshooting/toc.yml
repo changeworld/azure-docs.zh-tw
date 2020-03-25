@@ -126,7 +126,7 @@
           href: guest-os-firewall-blocking-inbound-traffic.md
         - name: 客體 OS 防火牆設定不正確
           href: guest-os-firewall-misconfigured.md
-        - name: 針對由 netvsc.sys所造成的 RDP 錯誤進行疑難排解
+        - name: '針對由 netvsc.sys{1}{2}所造成的 RDP 錯誤進行疑難排解'
           href: troubleshoot-rdp-driver-netvsc.md
     - name: SSH
       items:

@@ -62,7 +62,7 @@
           href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: 在 ASEv1 中設定自動調整
           href: app-service-environment-auto-scale.md
-        - name: 在 ASEv1 中相應放大應用程式
+        - name: 在 ASEv1 中擴增應用程式
           href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
         - name: 網路架構
           href: app-service-app-service-environment-network-architecture-overview.md

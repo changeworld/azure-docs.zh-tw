@@ -248,7 +248,7 @@
           href: authorization-agents.md
         - name: 訊息代理程式驗證 - Android
           href: brokered-auth.md
-        - name: 遷移
+        - name: 移轉
           items:
             - name: 概觀
               href: msal-migration.md

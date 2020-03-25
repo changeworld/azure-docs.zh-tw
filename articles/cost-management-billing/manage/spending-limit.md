@@ -1,5 +1,5 @@
 ---
-title: Azure 消費限制 | Microsoft Docs
+title: Azure 消費限制
 description: 本文說明 Azure 消費限制的運作方式及如何移除此限制。
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361013"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238052"
 ---
 # <a name="azure-spending-limit"></a>Azure 消費限制
 

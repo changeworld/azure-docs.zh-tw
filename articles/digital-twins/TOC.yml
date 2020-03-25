@@ -84,7 +84,7 @@
           href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
     - name: 價格與可用性
       items:
-        - name: 定價
+        - name: 價格
           href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
         - name: 定價計算機
           href: 'https://azure.microsoft.com/pricing/calculator/'

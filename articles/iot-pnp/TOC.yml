@@ -83,35 +83,31 @@
           href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
         - name: 產生 REST 安全性權杖
           href: howto-generate-sas-token.md
-- name: 相關參考
-  items:
-    - name: 方案
-      items:
-        - name: IoT 中心
-          href: /azure/iot-central
-        - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
-    - name: 平台服務
-      items:
-        - name: IoT 中樞
-          href: /azure/iot-hub
-        - name: IoT 隨插即用
-          href: /azure/iot-pnp
-        - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
-        - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 地圖
-          href: /azure/azure-maps
-        - name: 時間序列深入解析
-          href: /azure/time-series-insights
-    - name: Edge 解決方案
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 裝置 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 資源
   items:
     - name: 支援和協助選項
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT 服務
+      items:
+        - name: IoT 中樞
+          href: /azure/iot-hub
+        - name: IoT 中樞裝置佈建服務
+          href: /azure/iot-dps
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
+          href: /azure/azure-maps
+        - name: 時間序列深入解析
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服務 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT 裝置 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e885abcd997a4764090c5e8c8ce7ad14c0963220
-  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79086712"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80129812"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -304,7 +304,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: sql-data-warehouse/index.yml
+    url: synapse-analytics/sql-data-warehouse/index.yml
   - title: 資料目錄
     summary: 讓企業資料資產發揮更大的價值
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
@@ -336,7 +336,7 @@ productDirectory:
     - analytics
     url: hdinsight/index.yml
   - title: Log Analytics
-    summary: 可完整檢視應用程式、基礎結構和網路
+    summary: 可完整觀察您的應用程式、基礎結構和網路
     imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
     azureCategories:
     - analytics
@@ -800,7 +800,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
     azureCategories:
     - integration
-    url: service-bus/index.md
+    url: service-bus-messaging/index.yml
   - title: Azure Digital Twins (預覽)
     summary: 建置新一代 IoT 空間智慧解決方案
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
@@ -1220,7 +1220,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
     azureCategories:
     - storage
-    url: storsimple/index.md
+    url: storsimple/index.yml
   - title: Azure SignalR 服務
     summary: 輕鬆地新增即時 Web 功能
     imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg

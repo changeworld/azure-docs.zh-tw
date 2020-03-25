@@ -12,10 +12,10 @@ ms.topic: hub-page
 ms.date: 10/28/2019
 ms.author: alkohli
 ms.openlocfilehash: e2a3d17dda5f0d7a1cecc13583981d3659775283
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "73583198"
 ---
 <div id="main" class="v2">
@@ -35,7 +35,7 @@ ms.locfileid: "73583198"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>適用於資料大小 &lt; 40 TB 的<b>資料箱磁碟</b>。 Microsoft 會寄送給您 1 至 5 個已加密的固態硬碟 (SSD)，以便複製資料並且送回。</p>
+                            <p>適用於資料大小 <b> 40 TB 的</b>資料箱磁碟&lt;。 Microsoft 會寄送給您 1 至 5 個已加密的固態硬碟 (SSD)，以便複製資料並且送回。</p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ ms.locfileid: "73583198"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>適用於資料大小 &gt; 500 TB 的 <b>Data Box Heavy</b>。 Microsoft 會透過貨運寄送給您 1 PB 的裝置，以便複製資料並且送回。</p>
+                            <p>適用於資料大小 <b> 500 TB 的 </b>Data Box Heavy&gt;。 Microsoft 會透過貨運寄送給您 1 PB 的裝置，以便複製資料並且送回。</p>
                         </div>
                     </div>
                 </div>

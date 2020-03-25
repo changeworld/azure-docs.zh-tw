@@ -38,7 +38,7 @@
       href: analysis-services-bcdr.md
     - name: 支援的資料來源
       href: analysis-services-datasource.md
-- name: 作法
+- name: 操作方式
   items:
     - name: 伺服器
       items:

@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245394"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238154"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -124,7 +124,7 @@ Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶�
 
 這些常見問題集適用於將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶的使用者。
 
-### <a name="whoisaa"></a> 誰是帳戶的計費管理員？
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> 誰是帳戶的計費管理員？
 
 計費管理員是有權管理帳戶計費的人員。 他們已獲准存取 [Azure 入口網站](https://portal.azure.com)上的計費，並可執行各種計費工作，例如建立訂用帳戶、檢視和支付發票，或更新付款方式。
 
@@ -142,7 +142,7 @@ Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶�
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有項目都會移轉嗎？ 包括資源群組、VM、磁碟和其他執行中的服務？
 
-VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如果您將訂用帳戶轉移給另一個 Azure AD 租用戶中的帳戶，並[不會轉移](#transfer-a-subscription-to-another-azure-ad-tenant-account)訂用帳戶上的任何[管理員角色](add-change-subscription-administrator.md)和[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 指派。 此外，[應用程式註冊](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他租用戶特定服務也不會隨訂用帳戶轉移。
+VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如果您將訂用帳戶轉移給另一個 Azure AD 租用戶中的帳戶，並[不會轉移](add-change-subscription-administrator.md)訂用帳戶上的任何[管理員角色](../../role-based-access-control/role-assignments-portal.md)和[角色型存取控制 (RBAC)](#transfer-a-subscription-to-another-azure-ad-tenant-account) 指派。 此外，[應用程式註冊](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他租用戶特定服務也不會隨訂用帳戶轉移。
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>我可以將擁有權轉移給另一個國家/地區的帳戶嗎？
 很抱歉，您無法在 Azure 入口網站中執行跨國家/地區的轉移。 若要跨國家/地區轉移訂用帳戶，[請連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -206,15 +206,15 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a id="no-button"></a> 為什麼看不到 [移轉訂用帳戶] 按鈕？
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> 為什麼看不到 [移轉訂用帳戶] 按鈕？
 
 您的計費帳戶無法使用自助式訂用帳戶轉移。 目前，我們不支援在 Azure 入口網站中，轉移 Enterprise 合約 (EA) 帳戶中的訂用帳戶帳單擁有權。 此外，與 Microsoft 代表共同建立的 Microsoft 客戶合約帳戶不支援轉移帳單擁有權。
 
-### <a id="no-button"></a> 我的訂用帳戶類型為何不支援轉移？
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> 我的訂用帳戶類型為何不支援轉移？
 
 並非所有的訂用帳戶類型都支援帳單擁有權轉移。 若要檢視支援轉移的訂用帳戶類型清單，請參閱[支援的訂用帳戶類型](#supported-subscription-types)
 
-### <a id="no-button"></a> 當我嘗試轉移訂用帳戶的帳單擁有權時，我為何會收到拒絕存取錯誤？
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> 當我嘗試轉移訂用帳戶的帳單擁有權時，我為何會收到拒絕存取錯誤？
 
 如果您嘗試轉移 Microsoft Azure 方案訂用帳戶，但沒有必要的權限，您就會看到此錯誤。 若要轉移 Microsoft Azure 方案訂用帳戶，您在訂用帳戶計費的發票區段上必須是擁有者或參與者。 如需詳細資訊，請參閱[管理發票區段的訂用帳戶](understand-mca-roles.md#manage-subscriptions-for-invoice-section)。
 
