@@ -16,7 +16,7 @@
       href: data-lake-analytics-get-started-powershell.md
     - name: Azure CLI
       href: data-lake-analytics-get-started-cli.md
-- name: 作法
+- name: 如何
   items:
     - name: 管理 Data Lake Analytics
       items:
@@ -72,7 +72,7 @@
               href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
-            - name: Install
+            - name: 安裝
               href: data-lake-analytics-data-lake-tools-install.md
             - name: 本機執行
               href: data-lake-analytics-data-lake-tools-local-run.md

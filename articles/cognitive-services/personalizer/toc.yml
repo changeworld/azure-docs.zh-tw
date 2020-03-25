@@ -107,9 +107,11 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure 藍圖
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
-    - name: 定價
+    - name: 價格
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
     - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/personalizer'

@@ -145,7 +145,7 @@
           href: data-factory-azure-ml-update-resource-activity.md
         - name: 預存程序活動
           href: data-factory-stored-proc-activity.md
-        - name: 資料湖分析 U-SQL 活動
+        - name: Data Lake Analytics U-SQL 活動
           href: data-factory-usql-activity.md
         - name: .NET 自訂活動
           href: data-factory-use-custom-activities.md

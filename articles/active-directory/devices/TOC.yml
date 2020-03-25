@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Azure 受控工作站
       href: concept-azure-managed-workstation.md
-- name: 使用說明指南
+- name: 操作指南
   expanded: false
   items:
     - name: 規劃 Azure AD 聯結實作

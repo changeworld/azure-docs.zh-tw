@@ -9,17 +9,17 @@ metadata:
   ms.service: mariadb
   ms.topic: landing-page
   ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
-  ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/06/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "70735384"
 landingContent:
 - title: 關於適用於 MariaDB 的 Azure 資料庫
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是適用於 MariaDB 的 Azure 資料？
+    - text: 什麼是適用於 MariaDB 的 Azure 資料庫？
       url: overview.md
   - linkListType: whats-new
     links:
@@ -55,7 +55,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 備份與還原
+    - text: 備份及還原
       url: concepts-backup.md
   - linkListType: how-to-guide
     links:
@@ -105,7 +105,7 @@ landingContent:
       url: howto-data-in-replication.md
     - text: 使用 Azure 入口網站建立讀取複本
       url: howto-read-replicas-portal.md
-- title: 使用程式設計 API 撰寫程式
+- title: 使用程式設計 API 撰寫程式碼
   linkLists:
   - linkListType: get-started
     links:

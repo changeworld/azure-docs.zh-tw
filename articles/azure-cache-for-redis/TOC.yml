@@ -33,6 +33,10 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 容錯移轉和修補
       href: cache-failover.md
     - name: 最佳作法
@@ -44,7 +48,7 @@
     - name: 計畫
       items:
         - name: 選擇快取層
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: 利用叢集來散發您的快取
           href: cache-how-to-premium-clustering.md
         - name: 利用 Redis 資料永續性來留存您的快取
@@ -113,7 +117,7 @@
       items:
         - name: 更新至不同的大小與階層
           href: cache-how-to-scale.md
-        - name: 使用 Redis 叢集進行相應縮小/放大
+        - name: 使用 Redis 叢集進行縮減/放大
           href: cache-how-to-premium-clustering.md
 - name: 參考
   items:
@@ -141,7 +145,7 @@
       href: /learn/browse/?products=azure-redis-cache
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis 常見問題集
       href: cache-faq.md

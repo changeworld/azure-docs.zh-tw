@@ -2,7 +2,7 @@
   href: ./index.yml
 - name: 概觀
   items:
-    - name: 什麼是影片索引器？
+    - name: 什麼是影片索引子？
       href: video-indexer-overview.md
 - name: 快速入門
   expanded: true
@@ -97,7 +97,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

@@ -1,20 +1,20 @@
 ---
-title: 新增 Azure 虛擬機器的擴充計量 | Microsoft Docs
+title: 新增 Azure 虛擬機器的擴充計量
 description: 這篇文章可協助您啟用及設定 Azure VM 的擴充診斷計量。
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082909"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481614"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>新增 Azure 虛擬機器的擴充計量
 
@@ -27,10 +27,12 @@ Cloudyn 會使用 Azure VM 的 Azure 計量資料來顯示其資源的詳細資�
 - 根據使用量調整大小以控制您的成本。
 - 從 Cloudyn 取得有效調整成本大小的最佳化建議。
 
-例如，您可以監視 Azure VM 的 CPU % 和記憶體 %。 Azure VM 計量會對應到 [CPU 百分比]  和 [使用中的 \Memory\% 認可位元組]  。
+例如，您可以監視 Azure VM 的 CPU % 和記憶體 %。 Azure VM 計量會對應到 [CPU 百分比]  和 [使用中的 \Memory _認可位元組]\%_ 。
 
 > [!NOTE]
-> 目前僅支援將擴充的計量資料收集用於 Azure 來賓層級監視。 Cloudyn 與 [Log Analytics 代理程式](../../azure-monitor/platform/agents-overview.md)不相容。 
+> 目前僅支援將擴充的計量資料收集用於 Azure 來賓層級監視。 Cloudyn 與 [Log Analytics 代理程式](../../azure-monitor/platform/agents-overview.md)不相容。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>決定是否啟用擴充計量
 
@@ -43,7 +45,7 @@ Cloudyn 會使用 Azure VM 的 Azure 計量資料來顯示其資源的詳細資�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>在 Azure 入口網站中啟用擴充計量
 
-標準計量是主機電腦計量。 「CPU 百分比」  計量是一個例子。 來賓 VM 也有一些基本計量，它們也稱為擴充計量。 擴充計量的範例包括 [使用中的 \Memory\% 認可位元組]  和 [\Memory\Available Bytes]  。
+標準計量是主機電腦計量。 「CPU 百分比」  計量是一個例子。 來賓 VM 也有一些基本計量，它們也稱為擴充計量。 擴充計量的範例包括 [使用中的 \Memory _認可位元組]\%_ 和 [\Memory\Available Bytes]  。
 
 啟用擴充計量相當簡單。 針對每個 VM 啟用來賓層級監視。 當您啟用來賓層級的監視時，Azure 診斷代理程式就會安裝在 VM 上。 依預設會新增一組基本的擴充計量。 下列程序對傳統和一般 VM 而言一樣，而對於 Windows 和 Linux VM 而言也一樣。
 

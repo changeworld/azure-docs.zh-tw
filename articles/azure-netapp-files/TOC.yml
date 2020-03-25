@@ -29,7 +29,7 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: 與 SMB 效能相關的常見問題集
           href: azure-netapp-files-smb-performance.md
-    - name: 適用於Azure NetApp Files 的成本模型
+    - name: '適用於{1}{2}Azure NetApp Files 的成本模型'
       href: azure-netapp-files-cost-model.md
     - name: 適用於 Azure NetApp Files 網路方案的指導方針
       href: azure-netapp-files-network-topologies.md
@@ -79,7 +79,7 @@
       href: /azure/templates/microsoft.netapp/allversions
 - name: 資源
   items:
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/netapp/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'

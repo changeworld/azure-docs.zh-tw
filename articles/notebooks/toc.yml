@@ -22,7 +22,7 @@
       href: tutorial-create-run-jupyter-notebook.md
 - name: 範例
   items:
-    - name: 範例 Notebook
+    - name: 範例筆記本
       href: azure-notebooks-samples.md
 - name: 概念
   items:
@@ -30,7 +30,7 @@
       href: azure-notebooks-user-account.md
     - name: 設定檔
       href: azure-notebooks-user-profile.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 建立及複製專案
       href: create-clone-jupyter-notebooks.md

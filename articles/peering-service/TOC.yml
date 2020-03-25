@@ -8,13 +8,13 @@
   items:
     - name: 位置與合作夥伴
       href: location-partners.md
-    - name: 連線
+    - name: Connection
       href: connection.md
     - name: 連線遙測
       href: connection-telemetry.md
     - name: 上線模型
       href: onboarding-model.md
-- name: 使用指南
+- name: 操作指南
   items:
     - name: 註冊對等互連服務
       items:

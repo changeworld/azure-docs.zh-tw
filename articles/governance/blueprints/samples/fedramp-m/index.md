@@ -4,10 +4,10 @@ description: FedRAMP適中等級藍圖範例概觀。 此藍圖範例可協助�
 ms.date: 10/31/2019
 ms.topic: sample
 ms.openlocfilehash: 4a94d4ad29fdc79be508deb4bed76a91e8e76168
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544449"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP適中等級藍圖範例概觀

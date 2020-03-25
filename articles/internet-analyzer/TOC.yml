@@ -10,7 +10,7 @@
       href: internet-analyzer-create-test-portal.md
     - name: 使用 CLI 建立 Internet Analyzer 測試
       href: internet-analyzer-cli.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 內嵌用戶端
       href: internet-analyzer-embed-client.md

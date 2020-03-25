@@ -316,8 +316,6 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 平衡叢集
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: 子叢集
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: 節流
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服務動作
@@ -882,7 +880,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
     - name: Azure Resource Manager 部署限制
       href: service-fabric-azure-resource-manager-guardrails.md
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

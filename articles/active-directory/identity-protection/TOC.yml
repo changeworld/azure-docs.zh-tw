@@ -17,7 +17,7 @@
       href: concept-identity-protection-user-experience.md
     - name: Identity Protection 和 B2B 使用者
       href: concept-identity-protection-b2b.md
-- name: 使用說明指南
+- name: 操作指南
   expanded: true
   items:
     - name: 設定通知

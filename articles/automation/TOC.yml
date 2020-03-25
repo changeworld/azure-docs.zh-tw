@@ -305,11 +305,11 @@
 - name: 管理共用的資源
   items:
     - name: 憑證
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: 連接
       href: automation-connections.md
     - name: 認證
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: PowerShell 模組
       items:
         - name: 模組
@@ -319,9 +319,9 @@
         - name: 更新 Azure PowerShell 模組
           href: automation-update-azure-modules.md
     - name: 排程
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: 變數
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: 管理 Python 2 套件
       href: python-packages.md
     - name: 針對共用資源進行疑難排解
@@ -372,7 +372,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

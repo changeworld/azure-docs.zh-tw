@@ -43,7 +43,7 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 取得影片深入解析
       href: video-insights.md

@@ -17,7 +17,7 @@
       href: tutorial-sync-data-factory.md
     - name: 使用 SQL 資料同步來同步資料
       href: tutorial-sync-data-sync.md
-- name: 作法
+- name: 如何
   items:
     - name: DAC 套件和串流分析作業
       href: stream-analytics.md

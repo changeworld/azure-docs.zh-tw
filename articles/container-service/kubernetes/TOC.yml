@@ -29,7 +29,7 @@
   items:
     - name: 服務主體 - Kubernetes
       href: container-service-kubernetes-service-principal.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: Kubernetes 與 Windows
       href: container-service-kubernetes-windows-walkthrough.md

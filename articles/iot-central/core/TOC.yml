@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: 切換即時聊天
               href: howto-show-hide-chat.md
-- name: 相關參考
+- name: 資源
   items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 業界應用程式範本
       items:
         - name: 零售
@@ -139,30 +141,30 @@
           href: ../government/overview-iot-central-government.md
         - name: 醫療保健
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: 平台服務
+    - name: Azure IoT 服務
       items:
         - name: IoT 中樞
           href: /azure/iot-hub
-        - name: IoT 隨插即用
-          href: /azure/iot-pnp
         - name: IoT 中樞裝置佈建服務
           href: /azure/iot-dps
-        - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 地圖
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
           href: /azure/azure-maps
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: Edge 解決方案
+    - name: Azure IoT SDK
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: IoT 服務 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT 裝置 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: 資源
-  items:
-    - name: 支援和協助選項
-      href: /azure/iot-fundamentals/iot-support-help
     - name: IoT Central API 參考
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 客戶資料要求

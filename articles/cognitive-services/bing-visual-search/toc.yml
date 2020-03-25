@@ -56,7 +56,7 @@
     - name: 圖像式搜尋 API 的分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 使用權杖取得深入解析
       href: use-insights-token.md

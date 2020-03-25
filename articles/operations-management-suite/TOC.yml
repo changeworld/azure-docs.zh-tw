@@ -12,7 +12,7 @@
       href: ../backup/backup-introduction-to-azure-backup.md
     - name: Site Recovery
       href: ../site-recovery/site-recovery-overview.md
-- name: 作法
+- name: 如何
   items:
     - name: 分析
       items:
@@ -106,7 +106,7 @@
           href: ../azure-monitor/insights/solutions-resources-automation.md
         - name: 記錄搜尋與警示
           href: ../azure-monitor/insights/solutions-resources-searches-alerts.md
-        - name: Views
+        - name: 檢視
           href: ../azure-monitor/insights/solutions-resources-views.md
         - name: 最佳作法
           href: ../azure-monitor/insights/solutions-best-practices.md

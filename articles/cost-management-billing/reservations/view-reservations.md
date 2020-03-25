@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199240"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 入口網站中檢視 Azure 保留
@@ -33,7 +33,7 @@ ms.locfileid: "77199240"
     ![顯示保留清單的範例](./media/view-reservations/view-reservations.png)
 4. 選取保留，並查看過去五天的使用率趨勢。  
     ![顯示保留使用率趨勢的範例](./media/view-reservations/reservation-utilization.png)
-5. 您也可以使用「保留執行個體使用量 API」和 [Microsoft Azure 使用量見解 Power BI 內容套件](/power-bi/service-connect-to-azure-consumption-insights)，來取得[保留使用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)。
+5. 您也可以使用「保留執行個體使用量 API」和 [Microsoft Azure 使用量見解 Power BI 內容套件](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)，來取得[保留使用率](/power-bi/service-connect-to-azure-consumption-insights)。
 
 如果您需要變更保留的範圍、分割保留或變更可管理保留的人員，請參閱 [管理 Azure Reservations](manage-reserved-vm-instance.md)。
 

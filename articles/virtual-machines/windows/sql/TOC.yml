@@ -131,7 +131,7 @@
   items:
     - name: 常見問題集
       href: virtual-machines-windows-sql-server-iaas-faq.md
-    - name: 定價
+    - name: 價格
       href: virtual-machines-windows-sql-server-pricing-guidance.md
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'

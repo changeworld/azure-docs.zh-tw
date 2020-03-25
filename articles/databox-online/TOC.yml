@@ -29,7 +29,7 @@
           href: data-box-gateway-security.md
         - name: 檢視使用案例
           href: data-box-gateway-use-cases.md
-    - name: 作法
+    - name: 如何
       items:
         - name: 管理
           items:
@@ -87,7 +87,7 @@
           href: data-box-edge-security.md
         - name: 檢閱規格
           href: data-box-edge-technical-specifications-compliance.md
-    - name: 作法
+    - name: 如何
       items:
         - name: '開發 C# 模組'
           href: data-box-edge-create-iot-edge-module.md

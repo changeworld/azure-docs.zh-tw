@@ -83,8 +83,6 @@
       items:
         - name: 開始使用 Azure EA 入口網站
           href: ea-portal-get-started.md
-        - name: 了解您的 EA 帳單
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Azure 中的 EA 角色
           href: understand-ea-roles.md
         - name: Azure EA 入口網站系統管理員

@@ -4,11 +4,11 @@
   items:
     - name: 什麼是 Stretch Database？
       href: /sql/sql-server/stretch-database/stretch-database
-    - name: 限制與封鎖問題
+    - name: 限制和封鎖問題
       href: /sql/sql-server/stretch-database/limitations-for-stretch-database
 - name: 開始使用
   items:
-    - name: 識別資料庫與資料表
+    - name: 識別資料庫和資料表
       href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
     - name: 執行精靈
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
@@ -26,13 +26,13 @@
       items:
         - name: 監視資料移轉
           href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
-        - name: 暫停與繼續移轉
+        - name: 暫停及繼續移轉
           href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
-        - name: 管理與疑難排解
+        - name: 管理及疑難排解
           href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
         - name: 備份
           href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
-        - name: Restore
+        - name: '{1}還原{2}'
           href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
         - name: 停用 Stretch Database
           href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data

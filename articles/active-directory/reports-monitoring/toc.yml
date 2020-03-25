@@ -45,10 +45,10 @@
       href: concept-reporting-api.md
     - name: Azure 監視器中的 Azure AD 記錄
       href: concept-activity-logs-azure-monitor.md
-- name: 使用說明指南
+- name: 操作指南
   expanded: true
   items:
-    - name: 報告
+    - name: 報表
       items:
         - name: 尋找活動報告
           href: howto-find-activity-reports.md

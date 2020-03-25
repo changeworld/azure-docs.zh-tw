@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: 相關參考
-  items:
-    - name: 私人連結
-      href: ../private-link/private-link-overview.md
-    - name: 應用程式閘道
-      href: /azure/application-gateway/
-    - name: 虛擬網路
-      href: /azure/virtual-network/
-    - name: 虛擬機器
-      href: /azure/virtual-machines/
-    - name: 負載平衡器
-      href: /azure/load-balancer/
-    - name: 流量管理員
-      href: /azure/traffic-manager/
-    - name: Web 應用程式
-      href: /azure/app-service/
 - name: 資源
   items:
     - name: Azure 藍圖
@@ -183,7 +167,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: 網路部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/dns/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

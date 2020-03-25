@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: 檢閱 Microsoft 合作夥伴合約帳單
           href: review-partner-agreement-bill.md
+        - name: 檢閱 Enterprise 合約帳單
+          href: review-enterprise-agreement-bill.md
     - name: 概念
       items:
         - name: 個人訂用帳戶使用量條款

@@ -221,7 +221,7 @@
           href: devtest-lab-reference-architecture.md
         - name: 遞交概念證明
           href: deliver-proof-concept.md
-        - name: 相應增加您的 DevTest Labs 部署
+        - name: 擴大您的 DevTest Labs 部署
           href: devtest-lab-guidance-scale.md
         - name: 協調 DevTest Labs 實作
           href: devtest-lab-guidance-orchestrate-implementation.md
@@ -259,7 +259,7 @@
   items:
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'

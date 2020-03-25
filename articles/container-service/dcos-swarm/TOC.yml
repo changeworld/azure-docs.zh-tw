@@ -25,7 +25,7 @@
   items:
     - name: 安全容器
       href: container-service-security.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 調整 ACS 叢集的規模
       href: container-service-scale.md
