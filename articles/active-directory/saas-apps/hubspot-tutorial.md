@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教學課程：Azure Active Directory 與 HubSpot 整合
@@ -35,11 +35,11 @@ HubSpot 與 Azure AD 整合提供下列優點：
 
 如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 HubSpot 的 Azure AD 整合，您需要下列項目：
 
-* Azure AD 訂用帳戶。 如果您沒有 Azure AD 訂用帳戶，請在開始前先建立 [免費帳戶](https://azure.microsoft.com/free/)。
+* Azure AD 訂用帳戶。 如果您沒有 Azure AD 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用單一登入的 HubSpot 訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
@@ -79,7 +79,7 @@ HubSpot 支援下列功能︰
 
 若要設定及測試與 HubSpot 搭配運作的 Azure AD 單一登入，您需要完成下列構成要素：
 
-| Task | 說明 |
+| Task | 描述 |
 | --- | --- |
 | **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** | 讓使用者能夠使用此功能。 |
 | **[設定 HubSpot 單一登入](#configure-hubspot-single-sign-on)** | 在應用程式中設定單一登入設定。 |

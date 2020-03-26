@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 PowerShell 新增來賓使用者-Azure AD
+title: 快速入門：使用 PowerShell 新增來賓使用者 - Azure AD
 description: 在此快速入門中，您將了解如何使用 PowerShell 向外部的 Azure AD B2B 共同作業使用者傳送邀請。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377758"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216006"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入門：使用 PowerShell 新增來賓使用者
 
@@ -78,7 +78,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 1. 若要向測試電子郵件帳戶傳送邀請，請執行下列 PowerShell 命令 (將 **"Sanda"** 與 **sanda\@fabrikam.com** 取代為您的測試電子郵件帳戶名稱與電子郵件地址)： 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. 此命令會向指定的電子郵件地址傳送邀請。 請檢查輸出，它看起來應類似下列範例：
 

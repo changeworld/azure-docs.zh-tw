@@ -17,10 +17,10 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>教學課程：Azure Active Directory 與 Sectigo Certificate Manager 整合
@@ -35,7 +35,7 @@ Sectigo Certificate Manager 與 Azure AD 整合提供下列優點：
 
 如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Sectigo Certificate Manager 整合，您需要下列項目：
 
@@ -79,7 +79,7 @@ Sectigo Certificate Manager 支援下列功能：
 
 若要使用 Sectigo Certificate Manager 來設定及測試 Azure AD 單一登入，您需要完成下列建置組塊：
 
-| Task | 說明 |
+| Task | 描述 |
 | --- | --- |
 | **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** | 讓使用者能夠使用此功能。 |
 | **[設定 Sectigo Certificate Manager 單一登入](#configure-sectigo-certificate-manager-single-sign-on)** | 在應用程式中設定單一登入設定。 |

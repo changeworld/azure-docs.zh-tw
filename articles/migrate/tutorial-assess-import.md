@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079871"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79453641"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -142,7 +142,6 @@ ms.locfileid: "79079871"
 **公司擁有者** | 否 | 業務單位擁有者。
 **商務應用程式名稱** | 否 | 應用程式所屬的應用程式名稱。
 **位置** | 否 | 伺服器所在的資料中心。
-**伺服器解除委任日期** | 否 | 實體伺服器或虛擬伺服器的基礎實體伺服器的解除委任日期。
 
 ### <a name="add-operating-systems"></a>新增作業系統
 

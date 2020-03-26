@@ -14,23 +14,23 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68639982"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：準備使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中執行群集所需的資料
 
 在這個三部分教學課程系列的第一部分中，您會使用 R 來匯入和準備來自 Azure SQL 資料庫中的資料。在本系列稍後的內容中，您則會使用此資料透過 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型和部署群集模型。
 
-*群集*可以解釋為將資料歸類為群組成員有某些共通點的群組。
-您將使用 **K-Means** 演算法，對產品購買和退貨的資料集中包含的客戶執行群集。 藉由執行客戶的群集，您將可鎖定特定群組而更有效率地投入您的行銷工作。
-K-Means 群集是一種*非監督式學習*演算法，會根據相似之處尋找資料中的模式。
+*叢集*可以解釋成將資料組織成群組，而群組的成員在某些方面是相似的。
+您將使用 **K-Means** 演算法在產品購買和退貨資料集中，執行客戶叢集。 透過將客戶叢集，您可以鎖定特定群組，以更有效率地專注於行銷工作。
+K-Means 叢集是*非監督式學習*演算法，會根據相似性找出資料中的模式。
 
 在本系列的第一和第二部分中，您會在 RStudio 中開發一些 R 指令碼，以便準備資料並定型機器學習模型。 然後，在第三部分中，則會使用預存程序在 SQL 資料庫內執行這些 R 指令碼。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 將範例資料庫匯入 Azure SQL 資料庫中
@@ -43,7 +43,7 @@ K-Means 群集是一種*非監督式學習*演算法，會根據相似之處尋�
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - 如果您沒有 Azure 訂用帳戶，請在開始前[建立帳戶](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ K-Means 群集是一種*非監督式學習*演算法，會根據相似之處尋�
 
 ## <a name="import-the-sample-database"></a>匯入範例資料庫
 
-本教學課程使用的範例資料集已儲存至 **.bacpac** 資料庫備份檔案，供您下載及使用。 此資料集衍生自[交易處理效能委員會 (TPC)](http://www.tpc.org/default.asp) 所提供的 [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) 資料集。
+本教學課程使用的範例資料集已儲存至 **.bacpac** 資料庫備份檔案，供您下載及使用。 此資料集衍生自 [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) 資料集 (由 [Transaction Processing Performance Council (TPC)](http://www.tpc.org/default.asp) 提供)。
 
 1. 下載 [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac) 檔案。
 
@@ -71,15 +71,15 @@ K-Means 群集是一種*非監督式學習*演算法，會根據相似之處尋�
    * 在公開預覽期間，請為新資料庫選擇 **Gen5/虛擬核心**組態
    * 將新資料庫命名為 "tpcxbb_1gb"
 
-## <a name="separate-customers"></a>區分客戶
+## <a name="separate-customers"></a>劃分客戶
 
 在 RStudio 中建立新的 RScript 檔案，並執行下列指令碼。
 在 SQL 查詢中，您將依據下列維度來區分客戶：
 
-* **orderRatio** = 退訂率 (部分退訂或全部退訂的總數與訂單總數的比例)
-* **itemsRatio** = 退貨率 (退貨總數與購貨數目的比例)
-* **monetaryRatio** = 退款率 (退貨總金額與購買金額的比例)
-* **frequency** = 退回頻率
+* **orderRatio** = 退貨訂單率 (部分退貨或全部退貨的訂單總數與訂單總數比較)
+* **itemsRatio** = 退貨率 (退貨總數與購買項目數目比較)
+* **monetaryRatio** = 退貨金額率 (退貨的貨幣金額總計與購買金額比較)
+* **frequency** = 退貨頻率
 
 在 **paste** 函式中，將 **Server**、**UID** 和 **PWD** 取代為您自己的連線資訊。
 
@@ -156,7 +156,7 @@ LEFT OUTER JOIN (
 "
 ```
 
-## <a name="load-the-data-into-a-data-frame"></a>將資料載入資料框架中
+## <a name="load-the-data-into-a-data-frame"></a>將資料載入資料框架
 
 現在請使用下列指令碼，利用 **rxSqlServerData** 函式將查詢的結果傳回至 R 資料框架。
 在此程序中，您將定義所選資料行的類型 (使用 colClasses) 以確保類型會正確傳輸至 R。
@@ -182,7 +182,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-您應該會看到如下的結果。
+您應該會看見如下所示的結果。
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency

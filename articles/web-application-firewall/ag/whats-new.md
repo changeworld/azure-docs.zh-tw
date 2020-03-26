@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
 ms.openlocfilehash: 0e0e67bfb893e1bf141182e45ce4a49f5f6880ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73495496"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web 應用程式防火牆有哪些新功能？
@@ -25,7 +25,7 @@ Azure Web 應用程式防火牆會持續更新。 為了讓您隨時掌握最新
 
 ## <a name="new-features"></a>新功能
 
-|功能  |說明  |新增日期  |
+|功能  |描述  |新增日期  |
 |---------|---------|---------|
 |Bot 風險降低規則集 (預覽)|您可以將 Bot 風險降低規則集與您選擇的 CRS 規則集一起啟用。 | 2019 年 11 月 |
 |GeoDB 整合 (預覽)|現在，您可以建立依來源國家/地區限制流量的自訂規則。 | 2019 年 11 月 |

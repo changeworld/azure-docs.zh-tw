@@ -4,10 +4,10 @@ description: HIPAA HITRUST4 藍圖範例的部署步驟，其中包括藍圖成�
 ms.date: 12/03/2019
 ms.topic: sample
 ms.openlocfilehash: a4277dbbf40a9ab8651598203e9279bca00eb164
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75470733"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>部署 HIPAA HITRUST 藍圖範例

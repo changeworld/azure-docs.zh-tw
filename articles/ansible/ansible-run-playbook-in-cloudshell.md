@@ -5,10 +5,10 @@ keywords: ansible、azure、devops、bash、cloudshell、腳本、bash
 ms.topic: quickstart
 ms.date: 04/30/2019
 ms.openlocfilehash: 2a938179cf2e07a61749042db32ef9e1c9d843ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78247881"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>快速入門：在 Azure Cloud Shell 中透過 Bash 執行 Ansible 劇本

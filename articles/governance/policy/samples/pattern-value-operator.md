@@ -4,10 +4,10 @@ description: 此 Azure 原則模式提供如何在原則定義中使用值預算
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77170146"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure 原則模式：值運算子

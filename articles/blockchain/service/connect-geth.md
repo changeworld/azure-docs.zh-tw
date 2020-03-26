@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455839"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>快速入門：使用 Geth 連結至 Azure 區塊鏈服務交易節點
@@ -17,7 +17,7 @@ ms.locfileid: "74455839"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 安裝 [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
 * 完成[快速入門：使用 Azure 入口網站建立區塊鏈成員](create-member.md)或[快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員](create-member-cli.md)
@@ -39,7 +39,7 @@ ms.locfileid: "74455839"
 ## <a name="connect-to-geth"></a>連線至 Geth
 
 1. 開啟命令提示字元或殼層。
-1. 使用 Geth attach 子命令，連結至您交易節點上執行中的 Geth 執行個體。 貼上連接字串，作為 attach 子命令的引數。 例如︰
+1. 使用 Geth attach 子命令，連結至您交易節點上執行中的 Geth 執行個體。 貼上連接字串，作為 attach 子命令的引數。 例如：
 
     ``` bash
     geth attach <connection string>

@@ -4,16 +4,18 @@ description: 本快速入門提供數個 Python 程式碼範例，您可用於�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: seo-python-october2019
+ms.custom:
+- mvc
+- seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938924"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067906"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>快速入門：使用 Python 連線適用於 MySQL 的 Azure 資料庫並查詢資料
 
@@ -79,7 +81,7 @@ ms.locfileid: "76938924"
 
 使用下列程式碼搭配 **INSERT** SQL 陳述式連線至伺服器和資料庫、建立資料表，以並載入資料。 
 
-此程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
+程式碼會匯入 mysql.connector 程式庫，並使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函式搭配 config 集合中的[引數](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)連線至適用於 MySQL 的 Azure 資料庫。 此程式碼使用連線上的資料指標，而 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法會對 MySQL 資料庫執行 SQL 查詢。 
 
 ```python
 import mysql.connector

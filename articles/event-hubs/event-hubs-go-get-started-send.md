@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73720580"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入門：使用 Go 將事件傳送至事件中樞或從中接收事件
@@ -25,7 +25,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 > [!NOTE]
 > 您可以從 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) 下載此快速入門來作為範例，並以您事件中樞的值取代 `EventHubConnectionString` 和 `EventHubName` 字串，然後執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -38,7 +38,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ### <a name="install-go-package"></a>安裝 Go 套件
 
-使用 `go get` 或 `dep` 取得適用於事件中樞的 Go 套件。 例如︰
+使用 `go get` 或 `dep` 取得適用於事件中樞的 Go 套件。 例如：
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go

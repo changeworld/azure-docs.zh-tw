@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647939"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473042"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>發佈 Azure 受控應用程式定義
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>快速入門：發佈 Azure 受控應用程式定義
 
 本快速入門將簡介如何使用受控應用程式。 您可以為您組織中的使用者，將受控應用程式定義新增至內部目錄。 為簡化指示，我們已為受控應用程式建置檔案。 這些檔案皆可透過 GitHub 取得。 您可以從[建立服務目錄應用程式](publish-service-catalog-app.md)教學課程中，了解如何建置這些檔案。
 

@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74187292"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>教學課程：在 Azure Functions 應用程式中使用動態組態
@@ -32,7 +32,7 @@ ms.locfileid: "74187292"
 > * 設定您的 Azure Functions 應用程式，使其在應用程式組態存放區發生變更時更新其組態。
 > * 將最新的組態插入您的 Azure Functions 呼叫中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 包含 **Azure 開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)

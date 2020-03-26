@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74186359"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教學課程：透過使用 Azure 入口網站的虛擬網路服務端點來限制對 PaaS 資源的網路存取
@@ -55,7 +55,7 @@ ms.locfileid: "74186359"
    |位址空間| 10.0.0.0/16|
    |訂用帳戶| 選取您的訂用帳戶|
    |資源群組 | 選取 [新建]  ，然後輸入 *myResourceGroup*。|
-   |位置| 選取 [美國東部]  |
+   |Location| 選取 [美國東部]  |
    |子網路名稱| 公開|
    |子網路位址範圍| 10.0.0.0/24|
    |DDoS 保護| 基本|
@@ -77,7 +77,7 @@ ms.locfileid: "74186359"
 
     |設定|值|
     |----|----|
-    |名稱| 私人 |
+    |名稱| Private |
     |位址範圍| 10.0.1.0/24|
     |服務端點| 選取 [服務]  底下的 [Microsoft.Storage] |
 
@@ -97,7 +97,7 @@ ms.locfileid: "74186359"
     |名稱| myNsgPrivate |
     |訂用帳戶| 選取您的訂用帳戶|
     |資源群組 | 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。|
-    |位置| 選取 [美國東部]  |
+    |Location| 選取 [美國東部]  |
 
 4. 建立網路安全性群組之後，請在入口網站頂端的 [搜尋資源、服務和文件]  方塊中，輸入 myNsgPrivate  。 當 **myNsgPrivate** 出現在搜尋結果中時，請加以選取。
 5. 在 [設定]  下，選取 [輸出安全性規則]  。
@@ -108,11 +108,11 @@ ms.locfileid: "74186359"
     |----|----|
     |來源| 選取 [VirtualNetwork]  |
     |來源連接埠範圍| * |
-    |目的地 | 選取 [服務標記] |
+    |Destination | 選取 [服務標記] |
     |目的地服務標記 | 選取 [儲存體] |
     |目的地連接埠範圍| * |
     |通訊協定|任意|
-    |動作|允許|
+    |動作|Allow|
     |優先順序|100|
     |名稱|Allow-Storage-All|
 
@@ -122,7 +122,7 @@ ms.locfileid: "74186359"
     |----|----|
     |來源| 選取 [VirtualNetwork]  |
     |來源連接埠範圍| * |
-    |目的地 | 選取 [服務標記] |
+    |Destination | 選取 [服務標記] |
     |目的地服務標記| 選取 [網際網路] |
     |目的地連接埠範圍| * |
     |通訊協定|任意|
@@ -138,10 +138,10 @@ ms.locfileid: "74186359"
     |----|----|
     |來源| 任意 |
     |來源連接埠範圍| * |
-    |目的地 | 選取 [VirtualNetwork] |
+    |Destination | 選取 [VirtualNetwork] |
     |目的地連接埠範圍| 3389 |
     |通訊協定|任意|
-    |動作|允許|
+    |動作|Allow|
     |優先順序|120|
     |名稱|Allow-RDP-All|
 
@@ -164,7 +164,7 @@ ms.locfileid: "74186359"
     |----|----|
     |名稱| 請輸入在所有 Azure 位置間具有唯一性、長度介於 3-24 個字元，且僅使用數字和小寫字母的名稱。|
     |帳戶類型|StorageV2 (一般用途 v2)|
-    |位置| 選取 [美國東部]  |
+    |Location| 選取 [美國東部]  |
     |複寫| 本地備援儲存體 (LRS)|
     |訂用帳戶| 選取您的訂用帳戶|
     |資源群組 | 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。|
@@ -218,11 +218,11 @@ ms.locfileid: "74186359"
    |設定|值|
    |----|----|
    |名稱| myVmPublic|
-   |使用者名稱|輸入您選擇的使用者名稱。|
+   |[使用者名稱]|輸入您選擇的使用者名稱。|
    |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
    |訂用帳戶| 選取您的訂用帳戶。|
    |資源群組| 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。|
-   |位置| 選取 [美國東部]  。|
+   |Location| 選取 [美國東部]  。|
 
    ![輸入虛擬機器的相關基本資訊](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. 選取虛擬機器的大小，然後選取 [選取]  。

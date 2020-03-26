@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595038"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BlueJeans for Azure AD 整合
@@ -33,7 +33,7 @@ ms.locfileid: "72595038"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -81,7 +81,7 @@ ms.locfileid: "72595038"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [BlueJeans for Azure AD]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -137,7 +137,7 @@ ms.locfileid: "72595038"
 
 2. 移至 [管理] \> [群組設定] \> [安全性]  。
 
-    ![管理員](./media/bluejeans-tutorial/ic785868.png "Admin")
+    ![管理員](./media/bluejeans-tutorial/ic785868.png "管理")
 
 3. 在 [安全性]  區段中，執行下列步驟：
 
@@ -161,7 +161,7 @@ ms.locfileid: "72595038"
 
 5. 繼續執行下列步驟：
 
-    ![Save Changes](./media/bluejeans-tutorial/ic785874.png "儲存變更")
+    ![儲存變更](./media/bluejeans-tutorial/ic785874.png "儲存變更")
 
     a. 在 [使用者識別碼]  文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
@@ -179,7 +179,7 @@ ms.locfileid: "72595038"
 
 2. 移至 [管理] \> [管理使用者] \> [新增使用者]  。
 
-    ![管理員](./media/bluejeans-tutorial/ic785877.png "Admin")
+    ![管理員](./media/bluejeans-tutorial/ic785877.png "管理")
 
     > [!IMPORTANT]
     > 只有在未核取 [安全性]  索引標籤中的 [啟用自動佈建]  時，才能使用 [新增使用者]  索引標籤。

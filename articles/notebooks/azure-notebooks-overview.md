@@ -4,10 +4,10 @@ description: 使用不需要安裝或設定的免費 Azure Notebooks 預覽服�
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75646325"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 預覽概觀

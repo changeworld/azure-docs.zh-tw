@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327508"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教學課程：使用 AzCopy 將內部部署資料遷移至雲端儲存體
@@ -29,7 +29,7 @@ AzCopy 是命令列工具，可使用簡單的命令從 Azure Blob 儲存體、A
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請下載最新版本的 AzCopy。 請參閱[開始使用 AzCopy](storage-use-azcopy-v10.md)。
 
@@ -121,11 +121,11 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 > [!NOTE]
 > Linux 範例會附加 SAS 權杖。 您必須在命令中提供該權杖。 目前版本的 AzCopy V10 不支援 Cron 作業中的 Azure AD 授權。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
     azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
     azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
 
@@ -135,7 +135,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
  **Schtasks** 可讓系統管理員建立、刪除、查詢、變更、執行和結束本機或遠端電腦上的排程工作。 **Cron** 可讓 Linux 和 Unix 使用者在指定的日期和時間執行命令或指令碼，方法是使用 [cron 運算式](https://en.wikipedia.org/wiki/Cron#CRON_expression)。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 若要在 Linux 上建立 cron 作業，請在終端機上輸入下列命令：
 
@@ -146,7 +146,7 @@ crontab -e
 
 在命令中指定 cron 運算式 `*/5 * * * *` 會指出殼層指令碼 `script.sh` 應該每隔五分鐘執行一次。 您可以排程指令碼在每日、每月或每年的指定時間執行。 若要深入了解針對作業執行設定日期和時間，請參閱 [cron 運算式](https://en.wikipedia.org/wiki/Cron#CRON_expression)。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 若要在 Windows 上建立排程工作，請於命令提示字元或者 PowerShell 中輸入下列命令：
 

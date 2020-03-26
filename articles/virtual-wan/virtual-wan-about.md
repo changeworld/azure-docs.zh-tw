@@ -9,11 +9,11 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379395"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290186"
 ---
 # <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
 
@@ -25,30 +25,30 @@ Azure 虛擬 WAN 將許多 Azure 雲端連線服務 (例如站對站 VPN、使�
 
 本文可讓您快速檢視 Azure 虛擬 WAN 中的網路連線。 虛擬 WAN 提供下列優點：
 
-* **中樞和輪輻中的整合式連線解決方案：** 自動化站對站設定，以及內部部署網站與 Azure 中樞之間的連線能力。
+* **中樞和輪幅中的整合式連線解決方案：** 自動化站對站設定，以及內部部署網站與 Azure 中樞之間的連線。
 * **自動化輪輻設定和組態：** 將您的虛擬網路和工作負載順暢地連線至 Azure 中樞。
-* **直覺的疑難排解：** 您可以查看 Azure 內的端對端流程，然後使用此資訊來採取必要的動作。
+* **直覺式疑難排解：** 您可以看到 Azure 內的端對端流程，然後使用此資訊來採取必要的動作。
 
-## <a name="basicstandard"></a>基本和標準的虛擬 WAN
+## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>基本和標準的虛擬 WAN
 
-有兩種類型的虛擬 Wan：基本和標準。 下表顯示每種類型的可用設定。
+虛擬 WAN 有兩種類型：基本和標準。 下表顯示每種類型的可用設定。
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
 如需如何升級虛擬 WAN 的步驟，請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
-## <a name="architecture"></a>架構
+## <a name="architecture"></a><a name="architecture"></a>架構
 
 如需有關虛擬 WAN 架構以及如何遷移至虛擬 WAN 的詳細資訊，請參閱下列文章：
 
 * [虛擬 WAN 架構](migrate-from-hub-spoke-topology.md)
 * [全域傳輸網路架構](virtual-wan-global-transit-network-architecture.md)
 
-## <a name="resources"></a>虛擬 WAN 資源
+## <a name="virtual-wan-resources"></a><a name="resources"></a>虛擬 WAN 資源
 
 若要設定端對端虛擬 WAN，您可以建立下列資源：
 
-* **virtualWAN：** virtualWAN 資源代表 Azure 網路的虛擬重疊，而且是多個資源的集合。 它包含所有您想要包含在虛擬 WAN 內虛擬中樞的連結。 虛擬 WAN 資源會互相隔離，且不能包含一般的中樞。 跨虛擬 WAN 的虛擬中樞不會互相通訊。
+* **virtualWAN：** 虛擬 WAN 資源代表您 Azure 網路的虛擬覆疊，而且是多個資源的集合。 它包含所有您想要包含在虛擬 WAN 內虛擬中樞的連結。 虛擬 WAN 資源會互相隔離，且不能包含一般的中樞。 跨虛擬 WAN 的虛擬中樞不會互相通訊。
 
 * **中樞：** 虛擬中樞是受 Microsoft 管理的虛擬網路。 中樞包含各種可實現連線的服務端點。 從內部部署網路 (vpnsite)，您可以連線到虛擬中樞內的 VPN 閘道、將 ExpressRoute 線路連線到虛擬中樞，或甚至將行動使用者連線到虛擬中樞內的點對站閘道。 中樞是您在區域中的網路核心。 每個 Azure 區域只能有一個中樞。
 
@@ -62,19 +62,19 @@ Azure 虛擬 WAN 將許多 Azure 雲端連線服務 (例如站對站 VPN、使�
 
 **其他虛擬 WAN 資源**
 
-  * **網站：** 此資源僅用於站對站連線。 站台資源為 **vpnsite**。 它代表您的內部部署 VPN 裝置及其設定。 使用虛擬 WAN 合作夥伴，您將擁有內建的解決方案，會將這項資訊自動匯出至 Azure。
+  * **站台：** 此資源僅用於站對站連線。 站台資源為 **vpnsite**。 它代表您的內部部署 VPN 裝置及其設定。 使用虛擬 WAN 合作夥伴，您將擁有內建的解決方案，會將這項資訊自動匯出至 Azure。
 
-## <a name="connectivity"></a>連線類型
+## <a name="types-of-connectivity"></a><a name="connectivity"></a>連線類型
 
-虛擬 WAN 允許下列類型的連線能力：站對站 VPN、使用者 VPN （點對站）和 ExpressRoute。
+虛擬 WAN 可實現下列類型的連線：站對站 VPN、使用者 VPN (點對站) 和 ExpressRoute。
 
-### <a name="s2s"></a>站對站 VPN 連線
+### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>站對站 VPN 連線
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan.png)
 
 當您建立虛擬 WAN 站對站連線時，可以使用可用的夥伴。 如果您不想使用夥伴，可以手動設定連線。 如需詳細資訊，請參閱[使用虛擬 WAN 建立站對站連線](virtual-wan-site-to-site-portal.md)。
 
-#### <a name="s2spartner"></a>虛擬 WAN 夥伴工作流程
+#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>虛擬 WAN 夥伴工作流程
 
 當您使用虛擬 WAN 夥伴時，工作流程是：
 
@@ -82,22 +82,22 @@ Azure 虛擬 WAN 將許多 Azure 雲端連線服務 (例如站對站 VPN、使�
 2. 分支裝置 (VPN/SDWAN) 控制器會取得 Azure 連線設定，並更新本機裝置。 這會將設定下載、編輯和更新內部部署 VPN 裝置等動作自動化。
 3. 一旦裝置有正確的 Azure 設定後，隨即建立與 Azure WAN 的站對站連線 (兩個使用中的通道)。 Azure 同時支援 IKEv1 與 IKEv2。 BGP 為選擇性。
 
-#### <a name="partners"></a>站對站虛擬 WAN 連線的夥伴
+#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>站對站虛擬 WAN 連線的夥伴
 
 如需可用夥伴和位置的清單，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
 
-### <a name="uservpn"></a>使用者 VPN (點對站) 連線
+### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>使用者 VPN (點對站) 連線
 
 您可以透過 IPsec/IKE (IKEv2) 或 OpenVPN 連線，來連線到您在 Azure 中的資源。 此類型的連線需要在用戶端電腦上設定 VPN 用戶端。 如需詳細資訊，請參閱[建立點對站連線](virtual-wan-point-to-site-portal.md)。
 
-### <a name="er"></a>ExpressRoute 連線
+### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 連線
 ExpressRoute 可讓您透過私人連線將內部部署網路連線至 Azure。 若要建立連線，請參閱[使用虛擬 WAN 建立 ExpressRoute 連線](virtual-wan-expressroute-portal.md)。
 
-## <a name="locations"></a>位置
+## <a name="locations"></a><a name="locations"></a>位置
 
 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
 
-## <a name="faq"></a>常見問題集
+## <a name="faq"></a><a name="faq"></a>常見問題集
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

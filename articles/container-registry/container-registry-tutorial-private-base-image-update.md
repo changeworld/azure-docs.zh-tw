@@ -4,10 +4,10 @@ description: 在本教學課程中，您會設定 Azure Container Registry 工�
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77617681"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教學課程：在另一個私人容器登錄中更新基礎映像時自動執行容器映像建置 
@@ -21,7 +21,7 @@ ACR 工作支援在容器的[基礎映像更新時](container-registry-tasks-bas
 > [!div class="checklist"]
 > * 在基礎登錄中建置基礎映像
 > * 在另一個登錄中建立應用程式建置工作，以追蹤基礎映像 
-> * 更新基礎映像以觸發應用程式映像工作
+> * 更新基底映像以觸發應用程式映像工作
 > * 顯示已觸發的工作
 > * 確認更新的應用程式映像
 
@@ -59,23 +59,23 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 ```
 
-### <a name="base-image-update-scenario"></a>基礎映像更新案例
+### <a name="base-image-update-scenario"></a>基底映像更新案例
 
-本教學課程將逐步說明基礎映像更新案例。 此案例反映了在其他登錄中建立應用程式映像射時，用來管理通用私人容器登錄中基礎映像的開發工作流程。 基礎映像可指定小組所使用的通用作業系統和架構，甚至是通用服務元件。
+本教學課程將逐步說明基底映像更新案例。 此案例反映了在其他登錄中建立應用程式映像射時，用來管理通用私人容器登錄中基礎映像的開發工作流程。 基礎映像可指定小組所使用的通用作業系統和架構，甚至是通用服務元件。
 
 例如，在自己的登錄中開發應用程式映像的開發人員，可以存取一組在通用基礎登錄中維護的基礎映像。 基礎登錄可以位於另一個區域，或甚至是異地複寫。
 
 [程式碼範例][code-sample]包含兩個 Dockerfile：一個應用程式映像，及其指定作為基底的映像。 在以下幾節中，您會建立一項 ACR 工作，以在基礎映像的新版本推送至不同的 Azure 容器登錄時自動觸發應用程式映像的建置。
 
-* [Dockerfile-app][dockerfile-app]：一個小型 Node.js Web 應用程式，會呈現一個靜態網頁，顯示它所依據的 Node.js 版本。 系統會模擬版本字串：它會顯示基礎映像中定義的環境變數 `NODE_VERSION` 的內容。
+* [Dockerfile-app][dockerfile-app]：一個小型 Node.js Web 應用程式，會呈現一個靜態網頁，顯示它所依據的 Node.js 版本。 系統會模擬版本字串：它會顯示基底映像中定義的環境變數 `NODE_VERSION` 的內容。
 
 * [Dockerfile-base][dockerfile-base]：`Dockerfile-app` 指定作為其基底的映像。 它本身會以[節點][base-node]映像為基礎，且包含 `NODE_VERSION` 環境變數。
 
-在以下幾節中，您會建立工作、更新基礎映像 Dockerfile 中的 `NODE_VERSION` 值，然後使用 ACR 工作來建置基礎映像。 當 ACR 工作將新的基礎映像推送至您的登錄時，它會自動觸發應用程式映像的建置。 您可以選擇性地在本機執行應用程式容器映像，以查看已建置的映像中不同的版本字串。
+在以下幾節中，您會建立工作、更新基底映像 Dockerfile 中的 `NODE_VERSION` 值，然後使用 ACR 工作來建置基底映像。 當 ACR 工作將新的基底映像推送至您的登錄時，它會自動觸發應用程式映像的建置。 您可以選擇性地在本機執行應用程式容器映像，以查看已建置的映像中不同的版本字串。
 
 在本教學課程中，您的 ACR 工作會建置並推送在 Dockerfile 中指定的應用程式容器映像。 ACR 工作也可執行[多步驟工作](container-registry-tasks-multi-step.md)，使用 YAML 檔案來定義相關步驟，以建置、推送並選擇性地測試多個容器。
 
-## <a name="build-the-base-image"></a>建置基礎映像
+## <a name="build-the-base-image"></a>建置基底映像
 
 首先請使用 [az acr build][az-acr-build]，透過 ACR 工作的快速工作  來建置基礎映像。 如本系列的[第一個教學課程](container-registry-tutorial-quick-task.md)所討論的，此程序不僅會建置映像，也會在建置成功時將映像推送至您的容器登錄。 在此範例中，映像會推送至基礎映像登錄。
 
@@ -108,7 +108,7 @@ az acr task create \
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
-此組態可以讓稍後在本教學課程中的基礎映像模擬架構修補程式變得容易。
+此組態可以讓稍後在本教學課程中的基底映像模擬架構修補程式變得容易。
 
 ## <a name="give-identity-pull-permissions-to-base-registry"></a>將身分識別提取權限授與基礎登錄
 
@@ -154,7 +154,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 ### <a name="optional-run-application-container-locally"></a>選擇性：在本機執行應用程式容器
 
-如果您在本機工作 (而不是在 Cloud Shell 中)，且您已安裝 Docker，請先執行容器以檢視在網頁瀏覽器中呈現的應用程式，再重建其基礎映像。 如果您使用 Cloud Shell，請略過本節 (Cloud Shell 不支援 `az acr login` 或 `docker run`)。
+如果您在本機工作 (而不是在 Cloud Shell 中)，且您已安裝 Docker，請先執行容器以檢視在網頁瀏覽器中呈現的應用程式，再重建其基底映像。 如果您使用 Cloud Shell，請略過本節 (Cloud Shell 不支援 `az acr login` 或 `docker run`)。
 
 首先，使用 [az acr login][az-acr-login] 驗證您的容器登錄：
 
@@ -186,7 +186,7 @@ docker stop myapp
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
-如果您已完成上一個教學課程 (且未刪除登錄)，您應該會看到如下的輸出。 請記下工作回合數目和最新的回合識別碼，以便在下一節更新基礎映像後比較輸出。
+如果您已完成上一個教學課程 (且未刪除登錄)，您應該會看到如下的輸出。 請記下工作回合數目和最新的回合識別碼，以便在下一節更新基底映像後比較輸出。
 
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
@@ -201,31 +201,31 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="update-the-base-image"></a>更新基礎映像
+## <a name="update-the-base-image"></a>更新基底映像
 
-在此您將模擬基礎映像中的架構修補程式。 請編輯 **Dockerfile-base**，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
+在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base**，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
 
 ```Dockerfile
 ENV NODE_VERSION 9.11.2a
 ```
 
-執行快速工作，以建置經過修改的基礎映像。 請記下輸出中的**回合識別碼**。
+執行快速工作，以建置經過修改的基底映像。 請記下輸出中的**回合識別碼**。
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-當建置完成，且 ACR 工作已將新的基礎映像推送至您的登錄後，它會觸發應用程式映像的建置。 您先前建立的工作可能需要一些時間才能觸發應用程式映像建置，因為它必須偵測最新建置並推送的基礎映像。
+當建置完成，且 ACR 工作已將新的基底映像推送至您的登錄後，它會觸發應用程式映像的建置。 您先前建立的工作可能需要一些時間才能觸發應用程式映像建置，因為它必須偵測最新建置並推送的基底映像。
 
 ## <a name="list-updated-build"></a>列出更新的組建
 
-現在您已更新基礎映像，接下來可以再次列出您的工作回合，將其與先前的清單比較。 若起初輸出並無差異，請定期執行命令，以查看清單中出現的新工作回合。
+現在您已更新基底映像，接下來可以再次列出您的工作回合，將其與先前的清單比較。 若起初輸出並無差異，請定期執行命令，以查看清單中出現的新工作回合。
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
-輸出大致如下。 最後執行之建置的 TRIGGER 應為 "Image Update"，表示工作是由基礎映像的快速工作所起始。
+輸出大致如下。 最後執行之建置的 TRIGGER 應為 "Image Update"，表示工作是由基底映像的快速工作所起始。
 
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
@@ -256,7 +256,7 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 ![呈現在瀏覽器中的範例應用程式的螢幕擷取畫面][base-update-02]
 
-務必留意的是，您是使用新的版本號碼更新**基礎**映像，但最後建置的**應用程式**映像會顯示新版本。 ACR 工作會取用您對基礎映像的變更，並自動重建您的應用程式映像。
+務必留意的是，您是使用新的版本號碼更新**基底**映像，但最後建置的**應用程式**映像會顯示新版本。 ACR 工作會取用您對基底映像的變更，並自動重建您的應用程式映像。
 
 若要停止和移除容器，請執行下列命令：
 
@@ -266,7 +266,7 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用工作，在映像的基礎映像有所更新時自動觸發容器映像建置。 現在，請繼續進行下一個教學課程，了解如何根據定義的排程觸發工作。
+在本教學課程中，您已了解如何使用工作，在映像的基底映像有所更新時自動觸發容器映像建置。 現在，請繼續進行下一個教學課程，了解如何根據定義的排程觸發工作。
 
 > [!div class="nextstepaction"]
 > [依照排程執行工作](container-registry-tasks-scheduled.md)

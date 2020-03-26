@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157587"
 ---
 # <a name="what-is-azure-signalr-service"></a>什麼是 Azure SignalR 服務？
@@ -72,6 +72,6 @@ SignalR Service 可讓伺服器傳送訊息到特定連線、所有連線、屬�
 
 使用 Azure SignalR Service 進行程式設計有許多不同的方式，一些範例如下所示：
 
-- **[調整 ASP.NET Core SignalR 應用程式](signalr-concept-scale-aspnet-core.md)** - 將 Azure SignalR 服務與 ASP.NET Core SignalR 應用程式整合，以相應放大為成千上萬個連線。
+- **[調整 ASP.NET Core SignalR 應用程式](signalr-concept-scale-aspnet-core.md)** - 將 Azure SignalR 服務與 ASP.NET Core SignalR 應用程式整合，以擴增為成千上萬個連線。
 - **[建置無伺服器的即時應用程式](signalr-concept-azure-functions.md)** - 使用 Azure Functions 與 SignalR 服務的整合來以 JavaScript、C# 和 Java 等語言建置無伺服器的即時應用程式。
 - **[透過 REST API 將訊息從伺服器傳送至用戶端](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** - Azure SignalR 服務提供 REST API，讓應用程式能以任何支援 REST 的程式設計語言，將訊息張貼到使用 SignalR 服務來連線的用戶端。

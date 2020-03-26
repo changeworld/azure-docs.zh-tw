@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
 ms.openlocfilehash: 8bdd8b9d900cc50fdeb34ff7d233ac4d7e17a45c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191002"
 ---
-將 `msg` 參數新增至函式定義和 `msg.set(name)` 陳述式下的 `if name:`，以更新 *HttpExample\\\_\_init\_\_.py*，使其符合下列程式碼。
+將  *參數新增至函式定義和 \\ 陳述式下的 \_，以更新 \_HttpExample\_\_* init`msg``msg.set(name)`.py`if name:`，使其符合下列程式碼。
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 

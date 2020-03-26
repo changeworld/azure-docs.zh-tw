@@ -16,11 +16,11 @@ ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394853"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222425"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教學課程：在 Azure CDN 自訂網域上設定 HTTPS
 
@@ -34,7 +34,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 - 容易啟用：從 [Azure 入口網站](https://portal.azure.com)按一下就能佈建。 您也可以使用 REST API 或其他開發工具來啟用此功能。
 
-- 可以使用完整憑證管理：為您處理所有憑證採購及管理。 憑證會在到期之前自動佈建並更新，進而消除因為憑證到期而中斷服務的風險。
+- 可使用完整憑證管理：為您處理所有憑證採購及管理。 憑證會在到期之前自動佈建並更新，進而消除因為憑證到期而中斷服務的風險。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 您必須先建立 CDN 設定檔和至少一個 CDN 端點，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
-此外，您必須在您的 CDN 端點上讓 Azure CDN 自訂網域產生關聯。 如需詳細資訊，請參閱[教學課程：將自訂網域新增至您的 AZURE CDN 端點](cdn-map-content-to-custom-domain.md)。
+此外，您必須在您的 CDN 端點上讓 Azure CDN 自訂網域產生關聯。 如需詳細資訊，請參閱[教學課程：將自訂網域新增至 Azure CDN 端點](cdn-map-content-to-custom-domain.md)。
 
 > [!IMPORTANT]
 > CDN 受控憑證不適用於根或頂點網域。 如果您的 Azure CDN 自訂網域是根或頂點網域，則您必須使用「使用您自己的憑證」功能。 
@@ -68,7 +68,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 依照下列步驟啟用自訂網域的 HTTPS︰
 
-1. 請移至 [Azure 入口網站](https://portal.azure.com)，尋找您的 Azure CDN 所管理的憑證。 搜尋並選取 [CDN 設定檔]。 
+1. 請移至 [Azure 入口網站](https://portal.azure.com)，尋找您的 Azure CDN 所管理的憑證。 搜尋並選取 [CDN 設定檔]  。 
 
 2. 選擇**來自 Microsoft 的標準 Azure CDN**、**來自 Akamai 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔。
 
@@ -76,17 +76,17 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
     ![端點清單](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
-    [端點] 頁面隨即出現。
+    [端點]  頁面隨即出現。
 
 4. 在自訂網域清單中，選取您要啟用 HTTPS 的自訂網域。
 
     ![自訂網域清單](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-    [自訂網域] 頁面隨即出現。
+    [自訂網域]  頁面隨即出現。
 
-5. 在憑證管理類型底下，選取 [CDN 管理]。
+5. 在憑證管理類型底下，選取 [CDN 管理]  。
 
-6. 選取 [開啟] 以啟用 HTTPS。
+6. 選取 [開啟]  以啟用 HTTPS。
 
     ![自訂網域 HTTPS 狀態](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
@@ -124,19 +124,19 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
  
 授與 Azure CDN 權限，以存取您 Azure Key Vault 帳戶中的憑證 (祕密)。
 
-1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]，然後選取 [新增] 以建立新原則。
+1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]  ，然後選取 [新增]  以建立新原則。
 
     ![建立新的存取原則](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. 在 [選取主體] 中，搜尋 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，然後選擇 [Microsoft.Azure.Cdn]。 按一下 [選取]。
+2. 在 [選取主體]  中，搜尋 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，然後選擇 [Microsoft.Azure.Cdn]  。 按一下 [選取]。 
 
     ![存取原則設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. 選取 [憑證權限]，然後選取 [取得] 和 [列出] 的核取方塊，允許 CDN 執行這些權限來取得和列出憑證。
+3. 選取 [憑證權限]  ，然後選取 [取得]  和 [列出]  的核取方塊，允許 CDN 執行這些權限來取得和列出憑證。
 
-4. 選取 [祕密權限]，然後選取 [取得] 和 [列出] 的核取方塊，以允許 CDN 執行這些權限來取得和列出祕密。
+4. 選取 [祕密權限]  ，然後選取 [取得]  和 [列出]  的核取方塊，以允許 CDN 執行這些權限來取得和列出祕密。
 
-5. 選取 [確定]。 
+5. 選取 [確定]  。 
 
     Azure CDN 現在可以存取此金鑰保存庫和此金鑰保存庫中儲存的憑證 (祕密)。
  
@@ -146,9 +146,9 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 2. 在自訂網域清單中，選取您要啟用 HTTPS 的自訂網域。
 
-    [自訂網域] 頁面隨即出現。
+    [自訂網域]  頁面隨即出現。
 
-3. 在憑證管理類型底下，選取 [使用我自己的憑證]。 
+3. 在憑證管理類型底下，選取 [使用我自己的憑證]  。 
 
     ![設定您的憑證](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
 
@@ -159,7 +159,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
     - 所選金鑰保存庫底下的憑證 (密碼)。 
     - 可用的憑證版本。 
  
-5. 選取 [開啟] 以啟用 HTTPS。
+5. 選取 [開啟]  以啟用 HTTPS。
   
 6. 當您使用自己的憑證時，不需要進行網域驗證。 請繼續進行[等待傳播](#wait-for-propagation)。
 
@@ -176,7 +176,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 如果您使用自己的憑證，則不需要進行網域驗證。
 
-您的 CNAME 記錄應該採用下列格式，其中「名稱」是您的自訂網域名稱，而「值」則是您的 CDN 端點主機名稱：
+您的 CNAME 記錄應該採用下列格式，其中「名稱」  是您的自訂網域名稱，而「值」  則是您的 CDN 端點主機名稱：
 
 | 名稱            | 類型  | 值                 |
 |-----------------|-------|-----------------------|
@@ -224,7 +224,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ## <a name="wait-for-propagation"></a>等待傳播
 
-自訂網域 HTTPS 功能要在網域名稱通過驗證之後 6-8 小時才會啟用。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已啟用]，而且 [自訂網域] 對話方塊中的四個作業步驟會標示為完成。 您的自訂網域現在已準備好使用 HTTPS。
+自訂網域 HTTPS 功能要在網域名稱通過驗證之後 6-8 小時才會啟用。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已啟用]  ，而且 [自訂網域] 對話方塊中的四個作業步驟會標示為完成。 您的自訂網域現在已準備好使用 HTTPS。
 
 ![[啟用 HTTPS] 對話方塊](./media/cdn-custom-ssl/cdn-enable-custom-ssl-complete.png)
 
@@ -262,7 +262,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>停用 HTTPS 功能 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [CDN 設定檔]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [CDN 設定檔]  。 
 
 2. 選擇**來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔。
 
@@ -272,13 +272,13 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     ![自訂網域清單](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-5. 選擇 [關閉] 以停用 HTTPS，然後選取 [套用]。
+5. 選擇 [關閉]  以停用 HTTPS，然後選取 [套用]  。
 
     ![自訂 HTTPS 對話方塊](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
 ### <a name="wait-for-propagation"></a>等待傳播
 
-自訂網域 HTTPS 功能停用之後，可能需要 6-8 小時才會生效。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已停用]，而且 [自訂網域] 對話方塊中的三個作業步驟會標示為完成。 您的自訂網域無法再使用 HTTPS。
+自訂網域 HTTPS 功能停用之後，可能需要 6-8 小時才會生效。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已停用]  ，而且 [自訂網域] 對話方塊中的三個作業步驟會標示為完成。 您的自訂網域無法再使用 HTTPS。
 
 ![[停用 HTTPS] 對話方塊](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
@@ -314,11 +314,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     否，目前不需要憑證授權單位授權記錄。 不過，如果您的確有一個授權記錄，它必須包含 DigiCert 作為有效的 CA。
 
-6. *從2018年6月20日起，Azure CDN from Verizon 依預設會開始使用具有 SNI TLS/SSL 的專用憑證。使用主體別名（SAN）憑證和以 IP 為基礎的 TLS/SSL，現有的自訂網域會發生什麼事？*
+6. *在 2018 年 6 月 20 日，來自 Verizon 的 Azure CDN 預設開始使用專用憑證搭配 SNI TLS/SSL。如果使用主體別名 (SAN) 憑證和以 IP 為基礎的 TLS/SSL ，我的現有自訂網域會發生什麼狀況？*
 
     如果 Microsoft 分析只有對您的應用程式進行 SNI 用戶端要求，則您現有的網域將在未來幾個月中逐漸移轉至單一憑證。 如果 Microsoft 偵測到有一些對您的應用程式進行的非 SNI 用戶端要求，您的網域會保持使用 SAN 憑證搭配以 IP 為基礎的 TLS/SSL。 在任何情況下，不論您的用戶端要求是 SNI 還是非 SNI，您對於這些要求的服務或支援都不會中斷。
 
-7. 若使用您自己的憑證，該如何更新憑證？
+7. 若使用您自己的憑證，該如何更新憑證？ 
 
     若要確保較新的憑證能部署到 PoP 基礎結構，只需將新憑證上傳至 Azure KeyVault，並在 Azure CDN 的 SSL 設定中選擇最新的憑證版本，然後點擊 [儲存]。 Azure CDN 接著會傳播已更新的憑證。 
 

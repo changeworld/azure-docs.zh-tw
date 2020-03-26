@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
 ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77589448"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
@@ -28,7 +28,7 @@ ms.locfileid: "77589448"
 > * 建立 Azure 函式
 > * 檢查 Azure Cache for Redis 尋找結果
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>設定串流分析作業以執行函式 
 
@@ -142,7 +142,7 @@ ms.locfileid: "77589448"
 
 2. 瀏覽至您的函式，並選取 [概觀]   > [輸出]   > [新增]  。 若要新增輸出，請對於接收選項選取 **Azure Function**。 新的 Functions 輸出配接器具有下列屬性：  
 
-   |**屬性名稱**|**描述**|
+   |**屬性名稱**|**說明**|
    |---|---|
    |輸出別名| 在作業的查詢中用來參考該次輸入的易記名稱。 |
    |匯入選項| 您可以使用目前訂用帳戶的函式，如果函式位於另一個訂用帳戶中，也可以手動提供設定。 |

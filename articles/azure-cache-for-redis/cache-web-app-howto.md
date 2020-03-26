@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3da1902906c4fb12bf5eef473ee39e721e4efe3a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74927076"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 ASP.NET Web 應用程式 
 
 在本快速入門中，您會使用 Visual Studio 2019 建立 ASP.NET Web 應用程式，並連線至 Azure Cache for Redis 以儲存資料和從快取擷取資料。 接著，您會將應用程式部署到 Azure App Service。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與 Web 開發**和 **Azure 開發**工作負載。
@@ -47,7 +47,7 @@ ms.locfileid: "74927076"
 
 4. 確定 [驗證]  設定已指定為 [不需要驗證]  。 視您的 Visual Studio 版本而定，預設的 [驗證]  設定可能會是其他值。 若要加以變更，請選取 [變更驗證]  ，然後選取 [不需要驗證]  。
 
-5. 選取 [確定]  以建立專案。
+5. 選取 [確定]  可建立專案。
 
 ## <a name="create-a-cache"></a>建立快取
 
@@ -143,7 +143,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.GetDatabase();
+            IDatabase cache = lazyConnection.Value.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -166,7 +166,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Dispose();
+            lazyConnection.Value.Dispose();
 
             return View();
         }
@@ -180,7 +180,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
 
-    取代為
+    成為：
 
     ```csharp
     @Html.ActionLink("Azure Cache for Redis Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -259,7 +259,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 3. 在 [建立 App Service]  對話方塊中，進行下列變更：
 
-    | 設定 | 建議值 | 說明 |
+    | 設定 | 建議值 | 描述 |
     | ------- | :---------------: | ----------- |
     | **應用程式名稱** | 使用預設值。 | 應用程式名稱會是應用程式部署至 Azure 時的主機名稱。 如有必要，該名稱中會新增時間戳記尾碼，以成為唯一名稱。 |
     | **訂用帳戶** | 選擇 Azure 訂用帳戶。 | 系統會就任何相關的裝載費用，對此訂用帳戶收費。 如果您有多個 Azure 訂用帳戶，請確認您已選取所需的訂用帳戶。|

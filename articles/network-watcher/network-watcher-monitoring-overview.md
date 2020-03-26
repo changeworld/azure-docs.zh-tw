@@ -15,10 +15,10 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844984"
 ---
 # <a name="what-is-azure-network-watcher"></a>什麼是 Azure 網路監看員？
@@ -27,7 +27,7 @@ Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資�
 
 ## <a name="monitoring"></a>監視
 
-### <a name = "connection-monitor"></a>監視虛擬機器與端點之間的通訊
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>監視虛擬機器與端點之間的通訊
 
 端點可以是另一個虛擬機器 (VM)、完整網域名稱 (FQDN)、統一資源識別項 (URI) 或 IPv4 位址。 *連線監視器*功能可定期監視 VM 與端點之間的存取性、延遲和網路拓撲變更，並對您發出通知。 例如，您可能會有與資料庫伺服器 VM 通訊的 Web 伺服器 VM。 您的組織中可能會有您不認識的人將自訂路由或網路安全性規則套用至 Web 伺服器或資料庫伺服器 VM 或子網路。
 
@@ -55,7 +55,7 @@ Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資�
 
 當您建立虛擬網路時，Azure 會為網路流量建立數個預設輸出路由。 所有資源 (例如在虛擬網路中部署的 VM) 的輸出流量都會根據 Azure 的預設路由進行路由傳送。 您可以覆寫 Azure 的預設路由，或建立其他路由。 您可能會發現 VM 因特定的路徑而無法再與其他資源通訊。 *下一個躍點*功能可讓您指定來源和目的地 IPv4 位址。 接著，下一個躍點會測試通訊，並向您指出用來路由流量的何種類型的下一個躍點。 其後，您可以移除、變更或新增路由，以解決路由問題。 深入了解[下一個躍點](diagnose-vm-network-routing-problem.md)功能。
 
-### <a name="connection-troubleshoot"></a>診斷來自 VM 的輸出連線
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>診斷來自 VM 的輸出連線
 
 *測試疑難排解*功能可讓您測試不同 VM 之間的連線、FQDN、URI 或 IPv4 位址。 此測試會傳回使用[連線監視器](#connection-monitor)功能時傳回的類似資訊，但會測試某個時間點的連線，而不是像連線監視器一樣監視連線一段時間。 深入了解如何使用[連線疑難排解](network-watcher-connectivity-overview.md)對連線進行疑難排解。
 

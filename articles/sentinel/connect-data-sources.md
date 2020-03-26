@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588326"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214806"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
@@ -56,7 +56,6 @@ Azure Sentinel 支援下列資料連線方法：
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft Web 應用程式防火牆](connect-microsoft-waf.md)
-    - [Windows 安全性事件](connect-windows-security-events.md) 
     - [Windows 防火牆](connect-windows-firewall.md)
     - [Windows 安全性事件](connect-windows-security-events.md)
 
@@ -91,7 +90,7 @@ Azure Sentinel 支援下列資料連線方法：
     - Linux 伺服器
     - 其他雲端
     
-## 代理程式連接選項<a name="agent-options"></a>
+## <a name="agent-connection-options"></a>代理程式連接選項<a name="agent-options"></a>
 
 若要將外部設備連接至 Azure Sentinel，代理程式必須部署在專用的機器上 (VM 或內部部署裝置)，才能支援設備與 Azure Sentinel 之間的通訊。 您可以透過自動或手動來部署代理程式。 只有當您的專用機器是在 Azure 中建立的新 VM 時，才能使用自動部署。 
 

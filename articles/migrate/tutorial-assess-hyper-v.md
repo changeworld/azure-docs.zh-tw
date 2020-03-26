@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845510"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222005"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -258,7 +258,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
     ![建立評估](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]** 。
+6. 評量建立好之後，可在 伺服器   > **Azure Migrate：** 。
 7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
 
 

@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73936147"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>將執行 Windows Server 2008 的伺服器移轉到 Azure
@@ -46,7 +46,7 @@ ms.locfileid: "73936147"
 > - 請先確定您已安裝最新的 Service Pack 和 Windows 更新，再進行遷移。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始之前，最好先檢閱 [VMware 和實體伺服器移轉](vmware-azure-architecture.md)或 [Hyper-V 虛擬機器移轉](hyper-v-azure-architecture.md)的 Azure Site Recovery 架構 
 
@@ -155,7 +155,7 @@ ms.locfileid: "73936147"
 針對您要移轉的機器執行容錯移轉。
 
 1. 在 [設定]   > [複寫的項目]  中，按一下機器 > [容錯移轉]  。
-2. 在 [容錯移轉]  中，選取要容錯移轉的目標**復原點**。 選取最新的復原點。
+2. 在 [容錯移轉]  中，選取容錯移轉的目標**復原點**。 選取最新的復原點。
 3. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)  。 Site Recovery 會先嘗試關閉伺服器，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
 4. 確認 Azure VM 如預期般出現在 Azure 中。
 5. 在 [複寫的項目]  中，以滑鼠右鍵按一下伺服器 > [完成移轉]  。 這會執行以下動作：

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74074074"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教學課程：整合 MyWorkDrive 與 Azure Active Directory
@@ -28,11 +28,11 @@ ms.locfileid: "74074074"
 
 * 在 Azure AD 中控制可存取 MyWorkDrive 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 MyWorkDrive。
-* 在 Azure 入口網站中集中管理您的帳戶。
+* 在 Azure 入口網站集中管理您的帳戶。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -50,7 +50,7 @@ ms.locfileid: "74074074"
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增新的應用程式，請選取 [新增應用程式]  。
+1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **MyWorkDrive**。
 1. 從結果面板選取 [MyWorkDrive]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
@@ -143,7 +143,7 @@ ms.locfileid: "74074074"
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [MyWorkDrive]  。
-1. 在應用程式的概觀頁面，尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 

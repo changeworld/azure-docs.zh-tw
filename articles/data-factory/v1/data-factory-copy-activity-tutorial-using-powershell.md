@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73682848"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 Data Factory 管線來移動資料
@@ -44,7 +44,7 @@ ms.locfileid: "73682848"
 > 
 > 本教學課程中的資料管線會將資料從來源資料存放區，複製到目的地資料存放區。 如需如何使用 Azure Data Factory 轉換資料的教學課程，請參閱[教學課程︰使用 Hadoop 叢集建置管線來轉換資料](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -274,7 +274,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 
     下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-    | 屬性 | 說明 |
+    | 屬性 | 描述 |
     |:--- |:--- |
     | type | type 屬性會設為 **AzureBlob**，因為資料位於 Azure Blob 儲存體中。 |
     | linkedServiceName | 表示您稍早建立的 **AzureStorageLinkedService**。 |
@@ -305,7 +305,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
     ProvisioningState : Succeeded
     ```
 
-### <a name="create-an-output-dataset"></a>建立輸出資料表
+### <a name="create-an-output-dataset"></a>建立輸出資料集
 在此步驟的這個部分中，您會建立名為 **OutputDataset**的輸出資料集。 此資料集指向 Azure SQL 資料庫中 **AzureSqlLinkedService**所代表的 SQL 資料表。 
 
 1. 在 **C:\ADFGetStartedPSH** 資料夾中，使用下列內容建立名為 **OutputDataset.json** 的 JSON 檔案：
@@ -339,7 +339,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 
     下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-    | 屬性 | 說明 |
+    | 屬性 | 描述 |
     |:--- |:--- |
     | type | type 屬性會設為 **AzureSqlTable**，因為資料已複製到 Azure SQL 資料庫中的資料表。 |
     | linkedServiceName | 表示您稍早建立的 **AzureSqlLinkedService**。 |
@@ -427,7 +427,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
      
      將 **start** 屬性的值替換為目前日期，並將 **end**值替換為隔天的日期。 在日期時間中，您只指定日期部分，並略過時間部分。 例如，"2016-02-03"，這相當於 "2016-02-03T00:00:00Z"
      
-     開始和結束日期時間都必須是 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如︰2016-10-14T16:32:41Z. **end** 時間為選擇性項目，但在本教學課程中會用到。 
+     開始和結束日期時間都必須是 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z. **end** 時間為選擇性項目，但在本教學課程中會用到。 
      
      如果您未指定 **end** 屬性的值，則會以「**start + 48 小時**」計算。 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。
      
@@ -461,7 +461,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
-    例如︰
+    例如：
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
@@ -553,7 +553,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 
 如需 Data Factory Cmdlet 的完整文件，請參閱 [Data Factory Cmdlet 參考](/powershell/module/az.datafactory)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您已建立要將資料從 Azure Blob 複製到 Azure SQL 資料庫的 Azure Data Factory。 您已使用 PowerShell 建立 Data Factory、連結服務、資料集和管線。 以下是您在本教學課程中執行的高階步驟：  
 
 1. 建立 Azure **Data Factory**。

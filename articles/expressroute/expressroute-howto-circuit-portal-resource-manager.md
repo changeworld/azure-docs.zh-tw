@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74813121"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教學課程：建立和修改 ExpressRoute 線路
@@ -34,7 +34,7 @@ ms.locfileid: "74813121"
 * 確定您具有建立新網路資源的權限。 如果您沒有正確的權限，請連絡您的帳戶管理員。
 * 您可以在開始前先[觀賞影片](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)，以便更加了解步驟。
 
-## <a name="create"></a>建立和佈建 ExpressRoute 線路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>建立和佈建 ExpressRoute 線路
 
 ### <a name="1-sign-in-to-the-azure-portal"></a>1.登入 Azure 入口網站
 
@@ -87,21 +87,21 @@ ms.locfileid: "74813121"
 當您建立新的 ExpressRoute 線路時，線路會是下列狀態：
 
 提供者狀態：未佈建<BR>
-線路狀態：已啟用
+線路狀態：啟用
 
 ![起始佈建程序](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 當連線提供者正在為您啟用線路時，線路會變更為下列狀態：
 
 提供者狀態：佈建<BR>
-線路狀態：已啟用
+線路狀態：啟用
 
 若要能夠使用 ExpressRoute 線路，它必須處於下列狀態：
 
 提供者狀態：已佈建<BR>
-線路狀態：已啟用
+線路狀態：啟用
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期檢查線路金鑰的狀態與狀況
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期檢查線路金鑰的情況和狀態
 
 選取感興趣的線路，即可檢視該線路的屬性。 檢查 [提供者狀態]  ，確定它已變成 [已佈建]  再繼續。
 
@@ -118,11 +118,11 @@ ms.locfileid: "74813121"
 
 接下來，將虛擬網路連結到 ExpressRoute 線路。 當使用 Resource Manager 部署模型時，使用[將虛擬網路連結到 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)文章。
 
-## <a name="status"></a>取得 ExpressRoute 線路的狀態
+## <a name="getting-the-status-of-an-expressroute-circuit"></a><a name="status"></a>取得 ExpressRoute 線路的狀態
 
 您可選取線路並檢視 [概觀] 頁面，以檢視該線路的狀態。
 
-## <a name="modify"></a>修改 ExpressRoute 線路
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 線路
 
 您可以修改 ExpressRoute 線路的某些屬性，而不會影響連線。 您可以在 [組態]  頁面中修改頻寬、SKU、計費模型並允許傳統作業。 如需限制的相關資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
 
@@ -151,7 +151,7 @@ ms.locfileid: "74813121"
 
 ![修改線路](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
-## <a name="delete"></a>取消佈建和刪除 ExpressRoute 線路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消佈建和刪除 ExpressRoute 線路
 
 您可以選取**刪除**圖示，刪除 ExpressRoute 線路。 請注意下列資訊︰
 

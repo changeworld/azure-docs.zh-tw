@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274019"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
@@ -58,7 +58,7 @@ ms.locfileid: "78274019"
 
 [!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>步驟 2：設定 Visual Studio 專案
+## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>步驟 2：設定 Visual Studio 專案
 
 1. 開啟 Visual Studio，然後選取 [建立新專案]  。
 1. 在 [建立新專案]  中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  。
@@ -75,7 +75,7 @@ ms.locfileid: "78274019"
 
 太棒了！ 現在已完成安裝程式，讓我們開始撰寫一些程式碼。 如需本教學課程的已完成專案，請參閱[使用 Azure Cosmos DB 開發 .NET 主控台應用程式](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)。
 
-## <a id="Connect"></a>步驟 3：連線至 Azure Cosmos DB 帳戶
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>步驟 3：連線至 Azure Cosmos DB 帳戶
 
 1. 在 *Program.cs* 檔案中，將 C# 應用程式開頭的參考，替換為下列參考：
 
@@ -270,7 +270,7 @@ ms.locfileid: "78274019"
 
 恭喜！ 您已成功建立 Azure Cosmos 資料庫。  
 
-## <a id="CreateColl"></a>步驟 5：建立容器
+## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>步驟 5：建立容器
 
 > [!WARNING]
 > `CreateContainerIfNotExistsAsync` 方法會建立具有定價含意的新容器。 如需詳細資訊，請造訪 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
@@ -301,7 +301,7 @@ ms.locfileid: "78274019"
 
 恭喜！ 您已成功建立 Azure Cosmos 容器。  
 
-## <a id="CreateDoc"></a>步驟 6：將項目新增至容器
+## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>步驟 6：將項目新增至容器
 
 `CosmosContainer`類別的 [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_)方法可以建立項目。 使用 SQL API 時，預期的項目會是文件，這是使用者定義的任意 JSON 內容。 您現在可以將項目插入 Azure Cosmos 容器中。
 
@@ -342,7 +342,7 @@ ms.locfileid: "78274019"
 
 恭喜！ 您已成功建立兩個 Azure Cosmos 項目。  
 
-## <a id="Query"></a>步驟 7：查詢 Azure Cosmos DB 資源
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步驟 7：查詢 Azure Cosmos DB 資源
 
 Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查詢。 如需詳細資訊，請參閱[開始使用 SQL 查詢](sql-api-sql-query.md)。 下列範例程式碼示範如何對上一個步驟中插入的項目執行查詢。
 
@@ -370,7 +370,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 恭喜！ 您已成功查詢 Azure Cosmos 容器。
 
-## <a id="ReplaceItem"></a>步驟 8：取代 JSON 項目
+## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>步驟 8：取代 JSON 項目
 
 現在，我們會更新 Azure Cosmos DB 中的項目。 我們會變更 `Family` 的 `IsRegistered` 屬性，以及其中一個子系的 `Grade`。
 
@@ -399,7 +399,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 恭喜！ 您已成功取代 Azure Cosmos 項目。
 
-## <a id="DeleteDocument"></a>步驟 9：刪除項目
+## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>步驟 9：刪除項目
 
 現在，我們將刪除 Azure Cosmos DB 中的項目。
 
@@ -429,7 +429,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 恭喜！ 您已成功刪除 Azure Cosmos 項目。
 
-## <a id="DeleteDatabase"></a>步驟 10：刪除資料庫
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>步驟 10：刪除資料庫
 
 我們現在會刪除我們的資料庫。 刪除已建立的資料庫會移除資料庫和所有子系資源。 這些資源包括容器、項目，以及任何預存程式、使用者定義的函式和觸發程序。 我們也會處置 `CosmosClient` 執行個體。
 
@@ -445,7 +445,7 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查�
 
 恭喜！ 您已成功刪除 Azure Cosmos 資料庫。
 
-## <a id="Run"></a>步驟 11：一起執行您的 C# 主控台應用程式！
+## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>步驟 11：一起執行您的 C# 主控台應用程式！
 
 在 Visual Studio 中選取 F5，即可在偵錯模式下建置和執行應用程式。
 
@@ -478,7 +478,7 @@ End of demo, press any key to exit.
 
 恭喜！ 您已經完成本教學課程，並擁有運作中的 C# 主控台應用程式！
 
-## <a id="GetSolution"></a>取得完整的教學課程解決方案
+## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>取得完整的教學課程解決方案
 
 如果您沒有時間完成本教學課程中的步驟，或只想要下載程式碼範例，您可加以下載。
 

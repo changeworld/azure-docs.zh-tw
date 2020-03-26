@@ -10,15 +10,15 @@ ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68782598"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>在區域之間容錯移轉及重新保護 Azure VM
 
-本教學課程說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 服務將 Azure 虛擬機器 (VM) 容錯移轉到次要 Azure 區域。 在容錯移轉之後，您會重新保護 VM。 在本教學課程中，您了解如何：
+本教學課程說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 服務將 Azure 虛擬機器 (VM) 容錯移轉到次要 Azure 區域。 在容錯移轉之後，您會重新保護 VM。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 容錯移轉 Azure VM
@@ -28,7 +28,7 @@ ms.locfileid: "68782598"
 > 本教學課程包含採用預設設定和最低自訂的最簡單路徑。 如需更複雜的案例，請使用「操作說明」之下關於 Azure VM 的文章。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 開始之前，請檢閱關於容錯移轉的[相關常見問題](site-recovery-faq.md#failover)。
 - 確定您已完成[災害復原演練](azure-to-azure-tutorial-dr-drill.md)，檢查一切是否如預期般運作。
@@ -44,7 +44,7 @@ ms.locfileid: "68782598"
 
    * **最新** (預設值)：在 Site Recovery 服務中處理所有資料，並提供最低的復原點目標 (RPO)。
    * **最近處理**：將虛擬機器還原到 Site Recovery 服務已處理的最新復原點。
-   * **自訂**：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
+   * [自訂]  ：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
 
 3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]  。 關機有助於確保不會遺失資料。 即使關機失敗，仍會繼續容錯移轉。 Site Recovery 並不會在容錯移轉後清除來源。
 

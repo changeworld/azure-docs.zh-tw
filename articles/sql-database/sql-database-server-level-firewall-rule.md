@@ -12,17 +12,17 @@ ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73818246"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站為單一和集區資料庫建立伺服器層級防火牆規則
 
 本快速入門會逐步解說如何使用 Azure 入口網站，在 Azure SQL Database 中為單一和集區資料庫建立[伺服器層級防火牆規則](sql-database-firewall-configure.md)，以便您能連線至資料庫伺服器、單一資料庫和彈性集區及其資料庫。 需要有防火牆規則，才能從其他 Azure 資源和從內部部署資源進行連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門將以[使用 Azure 入口網站建立單一資料庫](sql-database-single-database-get-started.md)中建立的資源作為起始點。
 

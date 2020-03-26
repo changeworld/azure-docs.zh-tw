@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 9fcf178b71ac1f07bfb58cd2502701ae5392b472
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158397"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教學課程：使用 Jenkins 持續整合和部署從 GitHub 部署至 Azure App Service
@@ -33,7 +33,7 @@ ms.locfileid: "74158397"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列項目：
 
@@ -158,9 +158,9 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    ![新增 Azure 服務主體認證](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | 屬性 | 值 | 說明 | 
+   | 屬性 | 值 | 描述 | 
    |----------|-------|-------------| 
-   | **訂用帳戶識別碼** | <*yourAzureSubscription-ID*> | 您 Azure 訂用帳戶的 GUID 值 <p>**秘訣**：如果您不知道您的 Azure 訂用帳戶 ID，請從命令列或在 Cloud Shell 中執行下列 Azure CLI 命令，然後使用 `id` GUID 值： <p>`az account list` | 
+   | **訂用帳戶識別碼** | <*yourAzureSubscription-ID*> | 您 Azure 訂用帳戶的 GUID 值 <p>**提示**：如果您不知道您的 Azure 訂用帳戶 ID，請從命令列或在 Cloud Shell 中執行下列 Azure CLI 命令，然後使用 `id` GUID 值： <p>`az account list` | 
    | **用戶端識別碼** | <*yourAzureServicePrincipal-ID*> | 先前為您的 Azure 服務主體產生的 `appId` GUID 值 | 
    | **用戶端祕密** | <*yourSecurePassword*> | 您為 Azure 服務主體提供的 `password` 值或「祕密」 | 
    | **租用戶識別碼** | <*yourAzureActiveDirectoryTenant-ID*> | 您 Azure Active Directory 租用戶的 `tenant` GUID 值 | 

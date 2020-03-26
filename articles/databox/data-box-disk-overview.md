@@ -10,11 +10,11 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204773"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215726"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什麼是 Azure 資料箱磁碟？
 
@@ -74,7 +74,7 @@ Microsoft Azure 資料箱磁碟解決方案可讓您以快速、實惠和可靠�
 ## <a name="features-and-specifications"></a>功能和規格
 
 
-| 規格                                          | 說明              |
+| 規格                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | < 2 磅。 每個資料箱。 資料箱中最多有 5 個磁碟                |
 | 維度                                              | 磁碟 - 2.5 吋 SSD |            

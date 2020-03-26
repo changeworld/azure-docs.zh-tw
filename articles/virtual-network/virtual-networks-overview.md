@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
 ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372391"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290196"
 ---
 # <a name="what-is-azure-virtual-network"></a>什麼是 Azure 虛擬網路？
 
@@ -26,10 +26,10 @@ Azure 虛擬網路 (VNet) 是私人網路在 Azure 中的基本建置組塊。 V
 
 ## <a name="vnet-concepts"></a>VNet 概念
 
-- **位址空間：** 建立 VNet 時，您必須使用公用和私人（RFC 1918）位址來指定自訂的私人 IP 位址空間。 Azure 會從您指派的位址空間，將私人 IP 位址指派給虛擬網路中的資源。 例如，如果您在位址空間為 10.0.0.0/16 的 VNet 中部署 VM，系統就會對 VM 指派像是 10.0.0.4 等的私人 IP。
-- **子網：** 子網可讓您將虛擬網路分割成一或多個子網，並將虛擬網路位址空間的一部分配置給每個子網。 然後，您便可以在特定子網路中部署 Azure 資源。 和傳統網路一樣，子網路也可讓您將 VNet 位址空間分成多個區段，以便適合組織的內部網路使用。 這也會改善位址的配置效率。 您可以使用網路安全性群組來保護子網路內的資源。 如需詳細資訊，請參閱[安全性群組](security-overview.md)。
-- **區域**： VNet 的範圍設定為單一區域/位置;不過，您可以使用虛擬網路對等互連，將來自不同區域的多個虛擬網路連接在一起。
-- **訂**用帳戶：VNet 的範圍為訂用帳戶。 您可以在每個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和 Azure [區域](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)內實作多個虛擬網路。
+- **位址空間︰** 在建立 VNet 時，您必須使用公用和私人 (RFC 1918) 位址指定自訂私人 IP 位址空間。 Azure 會從您指派的位址空間，將私人 IP 位址指派給虛擬網路中的資源。 例如，如果您在位址空間為 10.0.0.0/16 的 VNet 中部署 VM，系統就會對 VM 指派像是 10.0.0.4 等的私人 IP。
+- **子網路：** 子網路可讓您將虛擬網路分成一或多個次網路，並將虛擬網路位址空間的一部分配置給每個子網路。 然後，您便可以在特定子網路中部署 Azure 資源。 和傳統網路一樣，子網路也可讓您將 VNet 位址空間分成多個區段，以便適合組織的內部網路使用。 這也會改善位址的配置效率。 您可以使用網路安全性群組來保護子網路內的資源。 如需詳細資訊，請參閱[安全性群組](security-overview.md)。
+- **區域**：VNet 的範圍為單一區域/位置；不過，您可以使用虛擬網路對等互連將不同區域的多個虛擬網路連在一起。
+- **訂用帳戶︰** VNet 的範圍為訂用帳戶。 您可以在每個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和 Azure [區域](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)內實作多個虛擬網路。
 
 ## <a name="best-practices"></a>最佳作法
 
@@ -38,7 +38,7 @@ Azure 虛擬網路 (VNet) 是私人網路在 Azure 中的基本建置組塊。 V
 - 確保沒有重疊的位址空間。 確定 VNet 位址空間 (CIDR 區塊) 不會與組織的其他網路範圍重疊。
 - 子網路不應涵蓋 VNet 的整個位址空間。 預先規劃並保留部分位址空間供日後使用。
 - 建議您擁有少量大型 VNet 而非多個小型 VNet。 這可避免造成管理負荷。
-- 藉由將網路安全性群組（Nsg）指派給其底下的子網，來保護您的 VNet。
+- 將網路安全性群組 (NSG) 指派給其下的子網路，以保護您的 VNet。
 
 ## <a name="communicate-with-the-internet"></a>與網際網路通訊
 
@@ -53,7 +53,7 @@ Azure 資源可透過下列其中一種方式安全地相互通訊：
 
 - **透過虛擬網路**：您可以將虛擬機器和數種其他類型的 Azure 資源部署到虛擬網路，例如 Azure App Service Environment、Azure Kubernetes Service (AKS) 和 Azure 虛擬機器擴展集。 若要檢視可部署到虛擬網路中的 Azure 資源的完整清單，請參閱[虛擬網路服務整合](virtual-network-for-azure-services.md)。
 - **透過虛擬網路服務端點**：透過直接連線，將您的虛擬網路私人位址空間與虛擬網路的身分識別延伸至 Azure 服務資源，例如 Azure 儲存體帳戶與 Azure SQL 資料庫。 服務端點可讓您將重要的 Azure 服務資源限用於虛擬網路，而加以保護。 若要深入了解，請參閱[虛擬網路服務端點概觀](virtual-network-service-endpoints-overview.md)。
-- **透過 VNet 對等互連**：您可以將虛擬網路彼此連線，讓任一虛擬網路中的資源能夠使用虛擬網路對等互連彼此通訊。 您所連線的虛擬網路可位於相同或不同的 Azure 區域。 若要深入了解，請參閱[虛擬網路對等互連](virtual-network-peering-overview.md)。
+- **透過 VNet 對等互連**：您可以讓虛擬網路彼此連線，以便虛擬網路中的資源能夠使用虛擬網路對等互連彼此通訊。 您所連線的虛擬網路可位於相同或不同的 Azure 區域。 若要深入了解，請參閱[虛擬網路對等互連](virtual-network-peering-overview.md)。
 
 ## <a name="communicate-with-on-premises-resources"></a>與內部部署資源通訊
 
@@ -67,21 +67,21 @@ Azure 資源可透過下列其中一種方式安全地相互通訊：
 
 您可以使用下列一個或兩個選項，篩選子網路之間的網路流量︰
 
-- **安全性群組：** 網路安全性群組和應用程式安全性群組可以包含多個輸入和輸出安全性規則，讓您依照來源和目的地 IP 位址、埠和通訊協定，篩選進出資源的流量。 若要深入了解，請參閱[網路安全性群組](security-overview.md#network-security-groups)或[應用程式安全性群組](security-overview.md#application-security-groups)。
+- **安全性群組：** 網路安全性群組可包含多個輸入和輸出安全性規則，讓您依照來源和目的地 IP 位址、連接埠和通訊協定篩選資源收送的流量。 若要深入了解，請參閱[網路安全性群組](security-overview.md#network-security-groups)或[應用程式安全性群組](security-overview.md#application-security-groups)。
 - **網路虛擬設備：** 網路虛擬設備是執行網路功能的 VM，例如防火牆、WAN 最佳化或其他網路功能。 若要檢視可在虛擬網路中部署的網路虛擬設備，請參閱 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。
 
 ## <a name="route-network-traffic"></a>路由網路流量
 
 Azure 依預設會路由子網路、連線的虛擬網路、內部部署網路和網際網路之間的流量。 您可以實作下列一個或兩個選項，覆寫 Azure 所建立的預設路由︰
 
-- **路由資料表︰** 您可以建立自訂路由表，其中的路由可控制每個子網路的流量會路由傳送至的位置。 深入了解[路由表](virtual-networks-udr-overview.md#user-defined)。
-- **邊界閘道協定 (BGP) 路由︰** 如果您使用 Azure VPN 閘道或 ExpressRoute 連線將虛擬網路連線至內部部署網路，您可以將內部部署 BGP 路由傳播至虛擬網路。 深入了解如何透過 [Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) 使用 BGP。
+- **路由資料表︰** 你可以自訂路由表，設定傳送路線用來控制傳送到每個子網路的流量 深入了解[路由表](virtual-networks-udr-overview.md#user-defined)。
+- **邊界閘道協定 (BGP) 路由：** 如果您使用 Azure VPN 閘道或 ExpressRoute 連線將虛擬網路連線至內部部署網路，則可將您的內部部署 BGP 路由傳播至虛擬網路。 深入了解如何透過 [Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) 使用 BGP。
 
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 
 您可以部署的 Azure 資源數量有一些限制。 大部分的 Azure 網路限制均在最大值。 不過，您可以[增加某些網路限制](../azure-portal/supportability/networking-quota-requests.md)，如 [VNet 限制頁面](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)所指定。 
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 Azure VNet 沒有使用費，成本為零。 但資源會有標準費用，例如虛擬機器 (VM) 和其他產品。 若要深入了解，請參閱 [VNet 定價](https://azure.microsoft.com/pricing/details/virtual-network/)和 Azure[定價計算機](https://azure.microsoft.com/pricing/calculator/)。
 

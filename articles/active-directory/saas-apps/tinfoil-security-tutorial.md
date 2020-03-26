@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71d3078b553843922cd51e4e0f43ea84b6dcde16
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74170755"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TINFOIL SECURITY 整合
@@ -33,7 +33,7 @@ ms.locfileid: "74170755"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -148,7 +148,7 @@ ms.locfileid: "74170755"
 
     ![儀表板](./media/tinfoil-security-tutorial/ic798971.png "儀表板")
 
-1. 按一下 [安全性]  。
+1. 按一下 **[安全性]** 。
 
     ![安全性](./media/tinfoil-security-tutorial/ic798972.png "安全性")
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中樞 - 使用 .NET Framework 傳送/接收事件
-description: 快速入門：本文提供逐步解說，說明如何建立可將事件傳送至 Azure 事件中樞的 .NET Framework 應用程式。
+description: 快速入門：本文會逐步解說如何建立 .NET Framework 應用程式，以將事件傳送至 Azure 事件中樞。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -16,13 +16,13 @@ ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: shvija
 ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365325"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216046"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入門：使用 .NET Framework 將事件傳送至或接收來自 Azure 事件中樞的事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入門：使用 .NET Framework 將事件傳送至 Azure 事件中樞或從中接收事件
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
 
 本教學課程說明如何以 C# 建立 .NET Framework 主控台應用程式，以將事件傳送至事件中樞或從中接收事件。 
@@ -44,8 +44,8 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ### <a name="add-the-event-hubs-nuget-package"></a>新增事件中樞 NuGet 封裝
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 [寄件者] 專案，然後按一下 [管理方案的 NuGet 封裝]。 
-2. 按一下 [瀏覽] 索引標籤，然後搜尋 `WindowsAzure.ServiceBus`。 按一下 [安裝] 並接受使用條款。 
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [寄件者]  專案，然後按一下 [管理方案的 NuGet 封裝]  。 
+2. 按一下 [瀏覽]  索引標籤，然後搜尋 `WindowsAzure.ServiceBus`。 按一下 [安裝]  並接受使用條款。 
    
     ![安裝服務匯流排 NuGet 套件](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
@@ -53,7 +53,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>撰寫程式碼以將訊息傳送到事件中樞
 
-1. 在 `using`Program.cs**檔案開頭處新增下列** 陳述式：
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
    
     ```csharp
     using System.Threading;
@@ -115,8 +115,8 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ### <a name="add-the-event-hubs-nuget-package"></a>新增事件中樞 NuGet 封裝
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 [收件者]專案，然後按一下 [管理方案的 NuGet 封裝]。
-2. 按一下 [瀏覽] 索引標籤，然後搜尋 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 按一下 [安裝] 並接受使用條款。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [收件者]  專案，然後按一下 [管理方案的 NuGet 封裝]  。
+2. 按一下 [瀏覽]  索引標籤，然後搜尋 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 按一下 [安裝]  並接受使用條款。
    
     ![搜尋事件處理器主機 NuGet 套件](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
@@ -124,7 +124,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ### <a name="implement-the-ieventprocessor-interface"></a>實作 IEventProcessor 介面
 
-1. 在 [接收者] 專案上按一下滑鼠右鍵，按一下 [新增]，然後按一下 [類別]。 將新類別命名為 **SimpleEventProcessor**，然後按一下 [新增] 以建立該類別。
+1. 在 [接收者]  專案上按一下滑鼠右鍵，按一下 [新增]  ，然後按一下 [類別]  。 將新類別命名為 **SimpleEventProcessor**，然後按一下 [新增]  以建立該類別。
    
     ![新增 SimpleEventProcessor 類別](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. 在 SimpleEventProcessor.cs 檔案開頭處新增下列陳述式：
@@ -188,7 +188,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. 以下列程式碼取代 `Main` 類別中的 `Program` 方法，並替代您先前儲存的事件中樞名稱和命名空間層級連接字串，以及您在先前各節中複製的儲存體帳戶和金鑰。 
+2. 以下列程式碼取代 `Program` 類別中的 `Main` 方法，並替代您先前儲存的事件中樞名稱和命名空間層級連接字串，以及您在先前各節中複製的儲存體帳戶和金鑰。 
     
       ```csharp
       static void Main(string[] args)

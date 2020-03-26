@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
-ms.openlocfilehash: 6445b9707273d273c562b7d643da34f5ba26e1fc
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967494"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79216767"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>教學課程：使用 Java Spring 應用程式中的動態組態
 
@@ -53,4 +53,7 @@ ms.locfileid: "78967494"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已啟用 Spring Boot 應用程式，以動態方式從應用程式組態重新整理組態設定。 如需詳細資訊，請參閱 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。
+在本教學課程中，您已啟用 Spring Boot 應用程式，以動態方式從應用程式組態重新整理組態設定。 若要了解如何使用 Azure 受控服務識別來簡化對應用程式組態的存取，請繼續進行下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [受控識別整合](./howto-integrate-azure-managed-service-identity.md)

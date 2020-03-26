@@ -4,15 +4,15 @@ description: 在本教學課程中，您將了解如何將執行於 Azure VM 上
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171890"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中備份 SQL Server 資料庫
 
-本教學課程說明如何將執行於 Azure VM 上的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。 在本文中，您將了解：
+本教學課程說明如何將執行於 Azure VM 上的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
@@ -21,7 +21,7 @@ ms.locfileid: "74171890"
 > * 為資料庫設定自動保護。
 > * 執行隨選備份。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 備份 SQL Server 資料庫之前，請先檢查下列條件：
 

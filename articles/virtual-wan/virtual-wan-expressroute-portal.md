@@ -9,10 +9,10 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209421"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
@@ -44,7 +44,7 @@ ms.locfileid: "77209421"
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="openvwan"></a>建立虛擬 WAN
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>建立虛擬 WAN
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
@@ -62,19 +62,19 @@ ms.locfileid: "77209421"
 4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
 5. 驗證通過後，選取 [建立]  ，以建立虛擬 WAN。
 
-## <a name="hub"></a>建立虛擬中樞與閘道
+## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>建立虛擬中樞與閘道
 
 虛擬中樞是虛擬 WAN 建立和使用的虛擬網路。 它可以包含各種閘道，例如 VPN 和 ExpressRoute。 在本節中，您將為虛擬中樞建立 ExpressRoute 閘道。 您可以在[建立新的虛擬中樞](#newhub)時建立閘道，也可以編輯[現有中樞](#existinghub)建立閘道。 
 
 ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbps，最多支援 10 個縮放單位 = 20 Gbps。 建立完整的虛擬中樞和閘道需要大約 30 分鐘。
 
-### <a name="newhub"></a>建立新的虛擬中樞和閘道
+### <a name="to-create-a-new-virtual-hub-and-a-gateway"></a><a name="newhub"></a>建立新的虛擬中樞和閘道
 
 建立新的虛擬中樞。 建立中樞後，您需要支付中樞費用，即使您未連結任何網站也是如此。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>在現有的中樞內建立閘道
+### <a name="to-create-a-gateway-in-an-existing-hub"></a><a name="existinghub"></a>在現有的中樞內建立閘道
 
 您也可以編輯現有的中樞來建立閘道。
 
@@ -90,7 +90,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
 ![檢視閘道](./media/virtual-wan-expressroute-portal/viewgw.png "檢視閘道")
 
-## <a name="connectvnet"></a>將 VNet 連線至中樞
+## <a name="connect-your-vnet-to-the-hub"></a><a name="connectvnet"></a>將 VNet 連線至中樞
 
 在本節中，您會在中樞和 VNet 之間建立同儕節點連線。 為您想要連線的每個 VNet 重複這些步驟。
 
@@ -103,7 +103,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
     * **訂用帳戶** - 請確認訂用帳戶。
     * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道 (VPN 和 ExpressRoute 皆無法)。
 
-## <a name="connectcircuit"></a>將您的線路連線至中樞閘道
+## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>將您的線路連線至中樞閘道
 
 建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute Global Reach 支援位置中的 ExpressRoute Premium 線路可以連線到虛擬 WAN ExpressRoute 閘道。
 
@@ -116,7 +116,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
    ![連線線路](./media/virtual-wan-expressroute-portal/cktconnect.png "連線線路")
 
-### <a name="authkey"></a>兌換授權金鑰以進行連線
+### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>兌換授權金鑰以進行連線
 
 使用提供的授權金鑰和線路 URI 以進行連線。
 

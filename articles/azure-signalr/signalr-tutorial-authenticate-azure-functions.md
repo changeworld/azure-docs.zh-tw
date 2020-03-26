@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158140"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教學課程：使用 Azure Functions 進行 Azure SignalR 服務驗證
@@ -25,7 +25,7 @@ ms.locfileid: "74158140"
 * [Azure SignalR 服務](https://azure.microsoft.com/services/signalr-service/?WT.mc_id=serverlesschatlab-tutorial-antchu) - 將新訊息廣播至已連線的聊天用戶端
 * [Azure 儲存體](https://azure.microsoft.com/services/storage/?WT.mc_id=serverlesschatlab-tutorial-antchu) - 裝載聊天用戶端 UI 的靜態網站
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 以下是建置本教學課程所需的軟體。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74158140"
     |---|---|
     | 資源名稱 | SignalR 服務執行個體的唯一名稱 |
     | 資源群組 | 使用唯一名稱來建立新的資源群組 |
-    | 位置 | 選取您附近的位置 |
+    | Location | 選取您附近的位置 |
     | 定價層 | 免費 |
 
 1. 按一下頁面底部的 [新增]  。
@@ -148,7 +148,7 @@ ms.locfileid: "74158140"
     | 名稱 | 值 |
     |---|---|
     | 函式應用程式資料夾 | 選取主要專案資料夾 |
-    | 範本 | HTTP 觸發程序 |
+    | [範本] | HTTP 觸發程序 |
     | 名稱 | negotiate |
     | 授權層級 | 匿名 |
 
@@ -207,7 +207,7 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
     | 名稱 | 值 |
     |---|---|
     | 函式應用程式資料夾 | 選取主要專案資料夾 |
-    | 範本 | HTTP 觸發程序 |
+    | [範本] | HTTP 觸發程序 |
     | 名稱 | SendMessage |
     | 授權層級 | 匿名 |
 
@@ -320,7 +320,7 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
     | 訂用帳戶 | 選取包含 SignalR Service 執行個體的訂用帳戶 |
     | 資源群組 | 選取相同的資源群組 |
     | 資源名稱 | 儲存體帳戶的唯一名稱 |
-    | 位置 | 選取與您的其他資源相同的位置 |
+    | Location | 選取與您的其他資源相同的位置 |
     | 效能 | 標準 |
     | 帳戶類型 | StorageV2 (一般用途 V2) |
     | 複寫 | 本地備援儲存體 (LRS) |

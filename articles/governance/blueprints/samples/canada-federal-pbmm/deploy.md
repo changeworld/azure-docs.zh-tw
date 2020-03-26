@@ -4,10 +4,10 @@ description: 加拿大聯邦 PBMM 藍圖範例的部署步驟，其中包括藍�
 ms.date: 09/05/2019
 ms.topic: sample
 ms.openlocfilehash: 087112df7ab18cd71bde80f22b13c9c7800c05e9
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544590"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大聯邦 PBMM 藍圖範例
@@ -91,11 +91,11 @@ ms.locfileid: "74544590"
 
 下表提供藍圖成品參數的清單：
 
-成品名稱|成品類型|參數名稱|說明|
+成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式 |原則指派 |Linux VM 的 Log Analytics 工作區 |如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
-|\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式 |原則指派 |選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS |空陣列可以用來表示沒有選擇性參數：`[]` |
-|\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式 |原則指派 |選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS |空陣列可以用來表示沒有選擇性參數：`[]` |
+|\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式 |原則指派 |選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS |空陣列可以用來表示沒有選擇性參數：`[]` |
+|\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式 |原則指派 |選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS |空陣列可以用來表示沒有選擇性參數：`[]` |
 |\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式 |原則指派 |Windows VM 的 Log Analytics 工作區 |如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[預覽\]：稽核加拿大聯邦 PBMM 控制並部署特定的 VM 擴充功能，以支援稽核需求 |原則指派 |應設定 VM 的 Log Analytics 工作區識別碼 |這是應設定 VM 的 Log Analytics 工作區識別碼 (GUID)。 |
 |\[預覽\]：稽核加拿大聯邦 PBMM 控制並部署特定的 VM 擴充功能，以支援稽核需求 |原則指派 |應啟用診斷記錄的資源類型清單 |診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。 |

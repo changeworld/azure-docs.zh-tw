@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74978146"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 設計多租用戶資料庫
@@ -23,13 +23,13 @@ ms.locfileid: "74978146"
 > [!div class="checklist"]
 > * 建立 Hyperscale (Citus) 伺服器群組
 > * 使用 psql 公用程式建立結構描述
-> * 進行跨節點的資料表分區
+> * 進行跨節點的資料表分區化
 > * 內嵌範例資料
 > * 查詢租用戶資料
 > * 在租用戶之間共用資料
 > * 自訂每一租用戶的結構描述
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -126,7 +126,7 @@ CREATE TABLE impressions (
 
 多租用戶應用程式只能就個別的租用戶強制執行唯一性，這正是所有主要和外部索引鍵都包含公司識別碼的原因。
 
-## <a name="shard-tables-across-nodes"></a>進行跨節點的資料表分區
+## <a name="shard-tables-across-nodes"></a>進行跨節點的資料表分區化
 
 超大規模部署會根據使用者指定的資料行值，在不同的節點上儲存資料表資料列。 這個「散發資料行」標記會標示哪個租用戶擁有哪些資料列。
 

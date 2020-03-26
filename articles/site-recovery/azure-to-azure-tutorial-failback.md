@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74091353"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 區域之間容錯回復 Azure VM
@@ -48,7 +48,7 @@ ms.locfileid: "74091353"
 3. 在 [容錯移轉]  中，選取要容錯移轉的目標復原點：
     - **最新 (預設值)** ：在 Site Recovery 服務中處理所有資料，並提供最低的復原點目標 (RPO)。
     - **最近處理**：將 VM 還原到 Site Recovery 所處理的最新復原點。
-    - **自訂**：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
+    - [自訂]  ：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
 4. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將 DR 區域中的 VM 關機，請選取 [先將機器關機再開始容錯移轉]  。 即使關機失敗，仍會繼續容錯移轉。 
 5. 在 [作業]  頁面上追蹤容錯移轉進度。
 6. 容錯移轉完成後，請登入 VM 進行驗證。 您可以視需要變更復原點。

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945448"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470855"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來啟動 Java Spring 應用程式
 
@@ -69,6 +69,7 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
+
     深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。
 
 4. 開啟 Azure CLI 視窗並執行下列命令來佈建 Azure Spring Cloud 的執行個體。
@@ -104,14 +105,14 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 1. 建立新資料夾並將範例應用程式存放庫複製到您的 Azure 雲端帳戶。  
 
-    ```azurecli
+    ```console
         mkdir source-code
         git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
 2. 變更目錄並建置專案。
 
-    ```azurecli
+    ```console
         cd piggymetrics
         mvn clean package -D skipTests
     ```
@@ -150,16 +151,21 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+
 2. 查詢**閘道**應用程式來取得其公用 IP，讓您可以確認該應用程式正在執行：
 
 Linux：
+
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
+
 Windows：
+
 ```azurecli
 az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
+
 3. 瀏覽至由上一個命令所提供的 URL，以執行 PiggyMetrics 應用程式。
     ![正在執行 PiggyMetrics 的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 

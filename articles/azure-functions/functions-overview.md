@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77621012"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 簡介
@@ -67,7 +67,7 @@ Functions 是處理大量資料、整合系統、使用物聯網 (IoT)，以及�
 
 - **服務匯流排主題**：藉由[回應服務匯流排主題訊息](./functions-bindings-service-bus.md)來連接其他 Azure 服務或內部部署服務
 
-## <a name="pricing"></a>Functions 的計費方式
+## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Functions 的計費方式
 
 Azure Functions 有三種定價方案。 請選擇最符合您需求的方案：
 

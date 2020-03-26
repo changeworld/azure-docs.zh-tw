@@ -13,17 +13,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 28b35f273783b2e4d0b8f59c5bc5be384b933ba2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826883"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入門：使用 Visual Studio Code 連接及查詢 Azure SQL Database
 
 [Visual Studio Code](https://code.visualstudio.com/docs) 是 Linux、macOS 及 Windows 適用的圖形化程式碼編輯器。 它支援擴充功能，包括可供查詢 Microsoft SQL Server、Azure SQL Database 和 SQL 資料倉儲的 [mssql 擴充功能](https://aka.ms/mssql-marketplace)。 在此快速入門中，您將使用 Visual Studio Code 連線至 Azure SQL 資料庫，然後執行 Transact-SQL 陳述式來查詢、插入、更新和刪除資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure SQL 資料庫。 您可以使用其中一個快速入門，在 Azure SQL Database 中建立資料庫並加以設定：
 
@@ -105,15 +105,15 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 4. 請依照提示指定新設定檔的連線屬性。 指定每個值之後，選擇 **ENTER** 繼續。
 
-   | 屬性       | 建議的值 | 說明 |
+   | 屬性       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **伺服器名稱** | 完整伺服器名稱 | 應該類似這樣︰**mynewserver20170313.database.windows.net**。 |
    | **資料庫名稱** | mySampleDatabase | 要連線的資料庫。 |
    | **驗證** | SQL 登入| 本教學課程使用 SQL 驗證。 |
-   | **使用者名稱** | 使用者名稱 | 建立伺服器時所使用伺服器系統管理員帳戶的使用者名稱。 |
+   | **使用者名稱** | [使用者名稱] | 建立伺服器時所使用伺服器系統管理員帳戶的使用者名稱。 |
    | **密碼 (SQL 登入)** | 密碼 | 建立伺服器時所使用伺服器系統管理員帳戶的密碼。 |
-   | **儲存密碼？** | 是或否 | 如果您不希望每次都要輸入密碼，請選取 [是]  。 |
-   | **輸入這個設定檔的名稱** | 設定檔名稱，例如 **mySampleProfile** | 儲存設定檔可讓您在後續登入時加快連線速度。 |
+   | **儲存密碼嗎？** | [是] 或 [否] | 如果您不希望每次都要輸入密碼，請選取 [是]  。 |
+   | **輸入此設定檔的名稱** | 設定檔名稱，例如 **mySampleProfile** | 儲存設定檔可讓您在後續登入時加快連線速度。 |
 
    如果成功會顯示通知，指出您的設定檔已建立並連線。
 

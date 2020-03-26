@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: fasttrack-edit
+ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 2b83fc6231f590b3c0765ec647101b22920058da
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581662"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067689"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入門：開始使用 Azure Sentinel
 
@@ -51,7 +51,7 @@ ms.locfileid: "77581662"
 
    ![Azure Sentinel 地圖](./media/qs-get-visibility/anomolies.png)
 
-## 使用內建活頁簿<a name="dashboards"></a>
+## <a name="use-built-in-workbooks"></a>使用內建活頁簿<a name="dashboards"></a>
 
 內建活頁簿會從已連線的資料來源提供整合式資料，讓您深入探討這些服務中所產生的事件。 內建活頁簿包含 Azure AD、Azure 活動事件和內部部署資料，該資料可以是來自伺服器、來自第一方警示、來自任何第三方 (包括防火牆流量記錄、Office 365 和以 Windows 為基礎的不安全通訊協定) 的 Windows 事件資料。 活頁簿是以 Azure 監視器活頁簿為基礎，可讓您在設計自己的活頁簿時使用增強的自訂功能和彈性。 如需詳細資訊，請參閱[活頁簿](../azure-monitor/app/usage-workbooks.md)。
 

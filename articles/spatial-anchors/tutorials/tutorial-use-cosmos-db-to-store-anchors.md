@@ -9,15 +9,15 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77615161"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教學課程：跨工作階段和裝置與 Azure Cosmos DB 後端共用 Azure Spatial Anchors
 
-本教學課程是[跨工作階段和裝置來共用 Azure Spatial Anchors](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md) 的後續。 本文會引導您完成新增幾項功能的流程，讓 Azure Cosmos DB 成為後端儲存體，同時在工作階段和裝置之間共用 Azure Spatial Anchors。
+本教學課程是[跨工作階段和裝置來共用 Azure Spatial Anchors](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md) 的後續。 本文會引導您完成新增幾項功能的流程，讓 Azure Cosmos DB 成為後端儲存體，同時在工作階段和裝置之間共用 Azure 空間錨點。
 
 ![說明物件持續性的 GIF](./media/persistence.gif)
 

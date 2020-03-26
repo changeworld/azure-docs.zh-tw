@@ -9,10 +9,10 @@ ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75457732"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
@@ -141,7 +141,7 @@ ms.locfileid: "75457732"
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>取得 Azure Spatial Anchors SDK
 
-## <a name="via-unity-packagetabunitypackage"></a>[透過 Unity 套件](#tab/UnityPackage)
+## <a name="via-unity-package"></a>[透過 Unity 套件](#tab/UnityPackage)
 
 現在，我們將下載 Azure Spatial Anchors SDK。 移至 [Azure Spatial Anchors GitHub 發行頁面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在資產下方，下載 **AzureSpatialAnchors.unitypackage**。 在 Unity 中移至 [資產]  ，然後按一下 [匯入套件]   > [自訂套件...]  。瀏覽至套件並選取 [開啟]  。
 
@@ -149,7 +149,7 @@ ms.locfileid: "75457732"
 
 現在，我們必須還原 Nuget 套件以取得 Azure Spatial Anchors SDK。 從 **Unity** 進行建置，然後開啟並重新建置產生的 **Visual Studio** 解決方案，如[立即試用](#trying-it-out)中所詳述。
 
-## <a name="via-nugetforunitytabnugetforunity"></a>[透過 NuGetForUnity](#tab/NuGetForUnity)
+## <a name="via-nugetforunity"></a>[透過 NuGetForUnity](#tab/NuGetForUnity)
 
 首先，我們需要安裝 NuGetForUnity。 移至 [NuGetForUnity GitHub 發行頁面](https://github.com/GlitchEnzo/NuGetForUnity/releases)。 在 [資產] 下，下載最新的 **NuGetForUnity.unitypackage**。 在 Unity 中移至 [資產]  ，然後按一下 [匯入套件]   > [自訂套件...]  。瀏覽至套件並選取 [開啟]  。 Unity 現在會安裝 NugetForUnity。 如果您在 Unity 中未看到新的 [NuGet]  下拉式清單，則可能需要在 [專案]   > [資產]  底下按一下滑鼠右鍵。 然後選取 [全部重新匯入]  。
 

@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, 劇本, 調整, 自動調整, 虛擬機�
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156825"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>教學課程：使用 Ansible 自動調整 Azure 中的虛擬機器擴展集
@@ -29,7 +29,7 @@ ms.locfileid: "74156825"
 > * 擷取自動調整設定資訊 
 > * 停用自動調整設定
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -85,7 +85,7 @@ ansible-playbook vmss-auto-scale.yml
 
 ## <a name="autoscale-based-on-performance-data"></a>根據效能資料自動調整
 
-如果您的應用程式需求增加，您擴展集內 VM 執行個體上的負載也會跟著增加。 如果這樣的負載增加會持續而非只是短暫的需求，您就可以設定自動調整規則來增加擴展集中的 VM 執行個體數目。 建立這些 VM 執行個體並部署應用程式後，擴展集就會開始透過負載平衡器將流量分散給它們。 Ansible 可讓您控制要監視哪些計量，例如 CPU 使用量、磁碟使用量和應用程式載入時間。 您可以根據效能標準臨界值、週期性排程或特定日期，對擴展集進行相應縮小和相應放大。 
+如果您的應用程式需求增加，您擴展集內 VM 執行個體上的負載也會跟著增加。 如果這樣的負載增加會持續而非只是短暫的需求，您就可以設定自動調整規則來增加擴展集中的 VM 執行個體數目。 建立這些 VM 執行個體並部署應用程式後，擴展集就會開始透過負載平衡器將流量分散給它們。 Ansible 可讓您控制要監視哪些計量，例如 CPU 使用量、磁碟使用量和應用程式載入時間。 您可以根據效能標準臨界值、週期性排程或特定日期，對擴展集進行縮減和擴增。 
 
 本節中的劇本程式碼會在每週一的 18:00 檢查過去 10 分鐘的 CPU 工作負載。 
 

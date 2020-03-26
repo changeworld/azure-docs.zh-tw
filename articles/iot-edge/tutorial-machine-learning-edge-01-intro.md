@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74106502"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>教學課程：使用 Azure Machine Learning 和 IoT Edge 的端對端解決方案
@@ -74,7 +74,7 @@ GitHub 使用者 hankroark 的[渦輪風扇引擎退化](https://github.com/hank
 
 1. **維護並精簡模型**。 部署模型後，我們的工作尚未完成。 在許多情況下，我們希望繼續收集資料，並將資料定期上傳至雲端。 然後我們可以使用這些資料來重新定型及改善我們的模型，然後我們可以將其重新部署到 IoT Edge。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要可在其中建立資源之 Azure 訂用帳戶的存取權。 此教學課程中使用的一些服務將產生 Azure 費用。 如果您還沒有 Azure 訂用帳戶，則可以開始使用 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)。
 

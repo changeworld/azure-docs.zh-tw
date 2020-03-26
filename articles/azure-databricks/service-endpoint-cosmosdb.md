@@ -8,10 +8,10 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706152"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>教學課程：使用 Cosmos DB 端點實作 Azure Databricks
@@ -27,7 +27,7 @@ ms.locfileid: "74706152"
 > * 建立 Azure Databricks 叢集
 > * 從 Azure Databricks Notebook 查詢 Cosmos DB
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請執行下列作業：
 
@@ -61,7 +61,7 @@ ms.locfileid: "74706152"
    |資源群組|*您的資源群組*|
    |帳戶名稱|db-vnet-service-endpoint|
    |API|Core (SQL)|
-   |位置|美國西部|
+   |Location|美國西部|
    |異地備援|停用|
    |多重區域寫入|啟用|
 
@@ -90,7 +90,7 @@ ms.locfileid: "74706152"
 
 ## <a name="upload-data-to-cosmos-db"></a>將資料上傳至 Cosmos DB
 
-1. 開啟圖形化介面版本的 [Cosmos DB 資料移轉工具](https://aka.ms/csdmtool) **Dtui.exe**。
+1. 開啟圖形化介面版本的 [Cosmos DB 資料移轉工具](https://aka.ms/csdmtool)**Dtui.exe**。
 
     ![Cosmos DB 資料移轉工具](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
 

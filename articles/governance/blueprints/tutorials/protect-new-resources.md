@@ -4,10 +4,10 @@ description: 在本教學課程中，您將使用 Azure 藍圖資源鎖定的「
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327452"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>教學課程：使用 Azure 藍圖資源鎖定保護新資源
@@ -23,7 +23,7 @@ ms.locfileid: "74327452"
 > - 檢查新資源群組
 > - 取消指派藍圖來移除鎖定
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "74327452"
 
 1. 在 [基本資料]  索引標籤中輸入這些資訊：
 
-   - **藍圖名稱**：為您的藍本範例副本提供名稱。 在此教學課程中，我們使用的名稱是 **locked-storageaccount**。
+   - **藍圖名稱**：為您的藍本範例複本提供名稱。 在此教學課程中，我們使用的名稱是 **locked-storageaccount**。
    - **藍圖描述**：加入藍圖定義的描述。 請使用「**在已部署的資源上測試藍圖資源鎖定**」。
    - **定義位置**：選取省略符號按鈕 (...)，然後選取要儲存您藍圖定義的管理群組或訂用帳戶。
 
@@ -152,10 +152,10 @@ ms.locfileid: "74327452"
 
      本節中定義的參數會套用至其定義所屬的成品。 這些參數是[動態參數](../concepts/parameters.md#dynamic-parameters)，因為定義於藍圖指派期間。 針對 [值]  資料行中顯示的內容，為每個成品設定參數值。
 
-     |成品名稱|成品類型|參數名稱|值|說明|
+     |成品名稱|成品類型|參數名稱|值|描述|
      |-|-|-|-|-|
      |RGtoLock 資源群組|資源群組|名稱|TestingBPLocks|定義要套用藍圖鎖定的新資源群組名稱。|
-     |RGtoLock 資源群組|資源群組|位置|美國西部 2|定義要套用藍圖鎖定的新資源群組位置。|
+     |RGtoLock 資源群組|資源群組|Location|美國西部 2|定義要套用藍圖鎖定的新資源群組位置。|
      |StorageAccount|Resource Manager 範本|storageAccountType (StorageAccount)|Standard_GRS|儲存體 SKU。 預設值是 Standard_LRS  。|
 
 1. 輸入所有參數後，選取頁面底部的 [指派]  。

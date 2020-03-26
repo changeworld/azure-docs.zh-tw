@@ -9,10 +9,10 @@ ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241219"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入門：建立和監視 Azure HDInsight 中的 Apache Storm 拓撲
@@ -21,7 +21,7 @@ Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運�
 
 在本快速入門中，您可以使用 Apache [storm-starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) 專案的範例來監視 Apache Storm 拓撲並將其建立到現有的 Apache Storm 叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm]  作為 [叢集類型]  。
 
@@ -55,7 +55,7 @@ Storm 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsight �
 
     新頁面提供以下資訊：
 
-    |屬性 | 說明 |
+    |屬性 | 描述 |
     |---|---|
     |拓撲統計資料|拓撲效能的基本資訊，已整理為時間範圍。 選取特定的時間範圍，可以變更頁面中其他區段所顯示之資訊的時間範圍。|
     |Spout|Spout 的基本資訊，包括每個 spout 傳回的最後一個錯誤。|
@@ -72,7 +72,7 @@ Storm 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsight �
 
     新頁面會顯示以下資訊：
 
-    |屬性 | 說明 |
+    |屬性 | 描述 |
     |---|---|
     |Spout/Bolt 統計資料|元件效能的基本資訊，已整理為時間範圍。 選取特定的時間範圍，可以變更頁面中其他區段所顯示之資訊的時間範圍。|
     |輸入統計資料 (僅限 Bolt)|提供的資訊是關於產生 bolt 所使用之資料的元件。|

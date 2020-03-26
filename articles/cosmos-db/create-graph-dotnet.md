@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395468"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214956"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶來建立 .NET Framework 或核心應用程式
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶建置 .NET Framework 或 Core 應用程式
 
 > [!div class="op_single_selector"]
 > * [Gremlin 主控台](create-graph-gremlin-console.md)
@@ -83,19 +83,19 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 下列程式碼片段全部取自 Program.cs 檔案。
 
-* 根據上面建立的帳戶，設定您的連線參數： 
+* 根據上面建立的帳戶來設定您的連線參數： 
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* 要執行的 Gremlin 命令會列在字典中：
+* 要執行的 Gremlin 命令會列於字典中：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* 使用上述提供的參數建立新的 `GremlinServer`，並 `GremlinClient` 連線物件：
+* 使用上面提供的參數來建立新的 `GremlinServer` 和 `GremlinClient` 連線物件：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* 使用 `GremlinClient` 物件搭配非同步工作來執行每個 Gremlin 查詢。 您可以從上一個步驟中定義的字典讀取 Gremlin 查詢，然後加以執行。 稍後使用 Newtonsoft 中的 `JsonSerializer` 類別，取得結果並讀取已格式化為字典的值：
+* 使用 `GremlinClient` 物件搭配非同步工作，執行每個 Gremlin 查詢。 您可以從上一個步驟中定義的字典讀取 Gremlin 查詢，然後加以執行。 之後，使用 Newtonsoft.Json 套件中的 `JsonSerializer` 類別，取得結果並讀取已格式化為字典的值：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -103,7 +103,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽至您的圖形資料庫帳戶。 在 [概觀] 索引標籤中，您可以看到兩個端點： 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽至您的圖形資料庫帳戶。 在 [概觀]  索引標籤中，您可以看到兩個端點： 
  
    **.NET SDK URI** - 當您使用 Microsoft.Azure.Graphs 程式庫連線至圖形帳戶時，將會使用此值。 
 
@@ -111,18 +111,18 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     ![複製端點](./media/create-graph-dotnet/endpoint.png)
 
-   若要執行此範例，請複製 [ **Gremlin 端點**] 值，並刪除結尾的埠號碼，即 URI 會變成 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 端點值應該看起來像 `testgraphacct.gremlin.cosmosdb.azure.com`
+   若要執行此範例，請複製 [Gremlin 端點]  值，並刪除結尾處的連接埠號碼，使 URI 變成 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 端點值看起來應該像 `testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. 接下來，流覽至 **金鑰** 索引標籤，然後從 Azure 入口網站複製 **主要金鑰** 值。 
+1. 接下來，瀏覽至 [金鑰]  索引標籤，然後從 Azure 入口網站複製 [主要金鑰]  值。 
 
-1. 複製帳戶的 URI 和主要金鑰之後，請將其儲存至執行應用程式之本機電腦上的新環境變數。 若要設定環境變數，請開啟 [命令提示字元] 視窗，然後執行下列命令。 請務必取代 < Your_Azure_Cosmos_account_URI > 和 < Your_Azure_Cosmos_account_PRIMARY_KEY > 值。
+1. 在複製您帳戶的 URI 與主要金鑰後，請在執行應用程式的本機電腦上，將該字串儲存到新的環境變數中。 若要設定環境變數，請開啟命令提示字元視窗，然後執行下列命令。 請務必取代 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
    ```console
    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. 開啟*Program.cs*檔案，並使用上面所建立的資料庫和容器（也就是圖形名稱）名稱來更新「資料庫」和「容器」變數。
+1. 開啟 Program.cs  檔案，並使用上面所建立的資料庫和容器 (也是圖形名稱) 名稱來更新「資料庫」和「容器」變數。
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -140,9 +140,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 您現在可以回到 Azure 入口網站中的 [資料總管]，瀏覽及查詢新的圖形資料。
 
-1. 在 [資料總管] 中，新的資料庫會出現在 [圖形] 窗格中。 展開資料庫和容器節點，然後按一下 [圖形]。
+1. 在 [資料總管] 中，新的資料庫會出現在 [圖形] 窗格中。 展開資料庫和容器節點，然後按一下 [圖形]  。
 
-2. 按一下 [套用篩選條件] 按鈕，以使用預設查詢來檢視圖形中的所有頂點。 範例應用程式所產生的資料會顯示在 [圖形] 窗格中。
+2. 按一下 [套用篩選條件]  按鈕，以使用預設查詢來檢視圖形中的所有頂點。 範例應用程式所產生的資料會顯示在 [圖形] 窗格中。
 
     您可以縮放圖形、展開圖形顯示空間、新增其他頂點，並在顯示介面上移動頂點。
 

@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b53896896ecd4b0e577e8d2c5ec13e00ce6fab30
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e68e91d90846ab77b994b53be7a84a9dd8bc5a25
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191921"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216166"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob
 
@@ -118,7 +118,7 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 下圖顯示資源之間的關係。
 
-![Blob 儲存體架構圖](./media/storage-blob-introduction/blob1.png)
+![Blob 儲存體架構圖](./media/storage-blobs-introduction/blob1.png)
 
 使用下列 JavaScript 類別與這些資源互動：
 

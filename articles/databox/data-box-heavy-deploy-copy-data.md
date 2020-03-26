@@ -10,11 +10,11 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914041"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214202"
 ---
 ::: zone target = "docs"
 
@@ -32,7 +32,7 @@ ms.locfileid: "70914041"
 
 本教學課程說明如何使用本機 Web UI 來連線至主機電腦並從中複製資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 連線至 Data Box Heavy
@@ -50,7 +50,7 @@ ms.locfileid: "70914041"
 
 ::: zone target = "docs"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -171,7 +171,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
     ```
     下表說明這些屬性。
     
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |/e      |複製子目錄，包含空的目錄。         |
     |/r:     |指定失敗複製的重試次數。         |

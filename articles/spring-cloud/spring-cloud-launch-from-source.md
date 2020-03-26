@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3ab4b1729ea380671b72a9bb01740930a186d5c3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589006"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470789"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>快速入門：從原始程式碼啟動 Spring Cloud 應用程式
 
@@ -48,7 +48,7 @@ Azure Spring Cloud 可讓您直接從 java 原始程式碼或預先建置的 JAR
 
 使用下列命令安裝適用於 Azure CLI 的 Azure Spring Cloud 擴充功能
 
-```Azure CLI
+```azurecli
 az extension add --name spring-cloud
 ```
 
@@ -56,7 +56,7 @@ az extension add --name spring-cloud
 
 登入 Azure CLI 並選擇您的有效定用帳戶。 請務必選擇已加入 Azure Spring Cloud 白清單的有效訂用帳戶
 
-```Azure CLI
+```azurecli
 az login
 az account list -o table
 az account set --subscription

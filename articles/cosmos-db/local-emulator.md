@@ -7,11 +7,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
 ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364439"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222125"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -227,7 +227,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 從 Python 和 Node.js SDK 連接到模擬器時，會停用 SSL 驗證。
 
-## <a id="command-line"></a>命令列工具參考
+## <a name="command-line-tool-reference"></a><a id="command-line"></a>命令列工具參考
 您可以從安裝位置使用命令列來啟動和停止模擬器、設定選項，以及執行其他作業。
 
 ### <a name="command-line-syntax"></a>命令列語法
@@ -276,7 +276,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | 一致性 | 設定帳戶的預設一致性層級。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<一致性\>：值必須屬於下列其中一個[一致性層級](consistency-levels.md)：Session、Strong、Eventual 或 BoundedStaleness。 預設值為 Session。 |
 | ? | 顯示說明訊息。| | |
 
-## <a id="set-partitioncount"></a>變更容器數目
+## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>變更容器數目
 
 根據預設，您最多可以建立 25 個固定大小的容器 (僅支援使用 Azure Cosmos DB SDK)，或者，使用 Azure Cosmos 模擬器來建立 5 個無限制的容器。 藉由修改 **PartitionCount** 值，您最多可以建立 250 個固定大小的容器、50 個無限制的容器，或兩者不超過 250 個固定大小容器的任意組合 (其中一個無限制的容器 = 5 個固定大小的容器)。 但是，不建議將模擬器設定為搭配超過 200 個固定大小的容器來執行。 由於它對磁碟 IO 作業新增了額外負荷，因此，會在使用端點 API 時導致無法預期的逾時。
 
@@ -421,7 +421,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 如果您在 Linux Docker 容器上執行 .NET 用戶端應用程式，並且在主機電腦上執行 Azure Cosmos 模擬器，請依照下一節中關於 Linux 的指示，將憑證匯入 Linux Docker 容器中。
 
-## 在 Mac 或 Linux 上執行<a id="mac"></a>
+## <a name="running-on-mac-or-linux"></a>在 Mac 或 Linux 上執行<a id="mac"></a>
 
 目前 Cosmos 模擬器只能在 Windows 上執行。 執行 Mac 或 Linux 的使用者可以在裝載於 Parallels 或 VirtualBox 等 Hypervisor 的 Windows 虛擬機器中執行模擬器。 以下是此功能的啟用步驟。
 
@@ -505,7 +505,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見**服務目前無法使用**的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]  ，來重設模擬器的資料。
 
-### <a id="trace-files"></a>收集追蹤檔案
+### <a name="collect-trace-files"></a><a id="trace-files"></a>收集追蹤檔案
 
 若要收集偵錯追蹤，請從系統管理命令提示字元執行下列命令︰
 
@@ -518,7 +518,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 7. 瀏覽至 `%ProgramFiles%\Azure Cosmos DB Emulator` 並尋找 docdbemulator_000001.etl 檔案。
 8. 在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證，並納入 .etl 檔案與重現步驟。
 
-### <a id="uninstall"></a>將本機模擬器解除安裝
+### <a name="uninstall-the-local-emulator"></a><a id="uninstall"></a>將本機模擬器解除安裝
 
 1. 以滑鼠右鍵按一下系統匣上的 Azure Cosmos 模擬器圖示，然後按一下 [結束]，即可結束本機模擬器所有已開啟的執行個體。 結束所有執行個體可能需要數分鐘的時間。
 2. 在 Windows 搜尋方塊中，輸入 **App 與功能**，然後按一下 [App 與功能 (系統設定)]  結果。

@@ -1,6 +1,6 @@
 ---
 title: Data Factory (資料整合服務) 簡介
-description: 了解 Azure Data Factory 是什麼：這是一項雲端資料整合服務，用來協調及自動移動和轉換資料。
+description: 了解 Azure Data Factory 是什麼：一項雲端資料整合服務，用來協調以及自動移動和轉換資料。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666807"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory 簡介 
@@ -25,7 +25,7 @@ ms.locfileid: "73666807"
 > * [第 2 版 (目前的版本)](../introduction.md)
 
 > [!NOTE]
-> 本文適用於 Azure Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory V2 簡介](../introduction.md)。
+> 本文適用於 Azure Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory V2 簡介](../introduction.md)。
 
 
 ## <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
@@ -118,7 +118,7 @@ Data Factory 中的連結服務，有兩個原因：
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory 實體之間的關聯性
 
-![圖表：Data Factory (雲端資料整合服務) - 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![圖表︰Data Factory (雲端資料整合服務) - 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>支援區域
 您目前可以在「美國西部」、「美國東部」和「北歐」區域建立 Data Factory。 不過，Data Factory 可以存取其他 Azure 區域的資料存放區和計算資料，以在資料存放區之間移動資料或使用計算服務處理資料。
@@ -140,7 +140,7 @@ Data Factory 只在「美國西部」、「美國東部」和「北歐」區域�
 
 若要了解如何建置具有資料管線的 Data Factory，請遵循下列教學課程中的逐步指示：
 
-| 教學課程 | 說明 |
+| 教學課程 | 描述 |
 | --- | --- |
 | [在兩個雲端資料存放區之間移動資料](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |您會建立具有管線的 Data Factory，以從 Blob 儲存體 移動資料至 SQL Database。 |
 | [使用 Hadoop 叢集轉換資料](data-factory-build-your-first-pipeline.md) |您會在 Azure HDInsight (Hadoop) 叢集上執行 Hive 指令碼，以建立您的第一個 Azure Data Factory 與用來處理資料的資料管線。 |

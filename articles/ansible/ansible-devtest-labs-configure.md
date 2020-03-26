@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, 劇本, devtest lab
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156270"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>教學課程：使用 Ansible 在 Azure DevTest Labs 中設定實驗室
@@ -33,7 +33,7 @@ ms.locfileid: "74156270"
 > * 建立實驗室映像
 > * 刪除實驗室
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]

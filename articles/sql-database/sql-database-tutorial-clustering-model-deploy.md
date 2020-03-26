@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640916"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署群集模型
@@ -26,10 +26,10 @@ ms.locfileid: "68640916"
 
 您將使用內嵌的 R 指令碼建立預存程序，以執行群集。 您的模型執行於 Azure SQL 資料庫中，因此能夠根據儲存在資料庫中的資料輕易定型。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
-> * 建立會產生模型的預存程序
+> * 建立一個會產生模型的預存程序
 > * 在 SQL Database 中執行群集
 > * 使用群集資訊
 
@@ -39,16 +39,16 @@ ms.locfileid: "68640916"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 本教學課程系列的第三部分假設您已完成[**第一部分**](sql-database-tutorial-clustering-model-prepare-data.md)和[**第二部分**](sql-database-tutorial-clustering-model-build.md)。
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>建立會產生模型的預存程序
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>建立一個會產生模型的預存程序
 
-執行下列 T-SQL 指令碼以建立預存程序。 此程序會重新建立在本教學課程系列的第一和第二部分中開發的步驟：
+執行下列 T-SQL 指令碼來建立預存程序。 此程序會重新建立您在本教學課程系列的第一部分和第二部分中所開發的步驟：
 
-* 根據客戶的購買和退貨歷程記錄將客戶分類
-* 使用 K-Means 演算法產生四個客戶叢集
+* 根據客戶的購買和退貨記錄來分類客戶
+* 使用 K-Means 演算法產生客戶的四個叢集
 
 此程序會將產生的客戶叢集對應儲存在資料庫資料表 **customer_return_clusters** 中。
 
@@ -208,7 +208,7 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 
 ## <a name="use-the-clustering-information"></a>使用群集資訊
 
-由於您已將群集程序儲存在資料庫中，此程序將可根據儲存在相同資料庫中的客戶資料有效率地執行群集。 每當您的客戶資料有所更新時，您即可執行此程序，並使用更新的群集資訊。
+由於您已將群集程序儲存在資料庫中，因此它可以有效率地針對儲存在相同資料庫中的客戶資料執行群集。 每當客戶資料更新時，您都可以執行此程序，並使用更新的群集資訊。
 
 假設您想要將促銷電子郵件傳送給叢集 3 中的客戶，也就是退貨行為較為頻繁的群組 (您可以在[第二部分](sql-database-tutorial-clustering-model-build.md#analyze-the-results)的說明中查看這四個叢集的行為)。 下列程式碼會選取叢集 3 中所含客戶的電子郵件地址。
 
@@ -239,7 +239,7 @@ WHERE r.cluster = 3
 
 在本教學課程系列的第三部分中，您已完成下列步驟：
 
-* 建立會產生模型的預存程序
+* 建立一個會產生模型的預存程序
 * 在 SQL Database 中執行群集
 * 使用群集資訊
 

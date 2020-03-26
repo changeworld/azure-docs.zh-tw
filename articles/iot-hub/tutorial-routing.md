@@ -10,10 +10,10 @@ ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084378"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure CLI 和 Azure 入口網站設定 IoT 中樞訊息路由
@@ -162,7 +162,7 @@ az servicebus queue create --name $sbQueueName \
 
 9. 現在，請完成其餘路由查詢資訊。 此查詢會指定準則，來規範如何將訊息傳送至您剛才新增為端點的儲存體容器。 填寫畫面上的欄位。
 
-   **名稱**：輸入路由查詢的名稱。 本教學課程使用 **ContosoStorageRoute**。
+   **Name**：輸入路由查詢的名稱。 本教學課程使用 **ContosoStorageRoute**。
 
    **端點**：這會顯示您剛才設定的端點。
 
@@ -200,7 +200,7 @@ az servicebus queue create --name $sbQueueName \
 
 6. 現在，請完成其餘路由查詢資訊。 此查詢會指定準則，來規範如何將訊息傳送至您剛才新增為端點的服務匯流排佇列。 填寫畫面上的欄位。 
 
-   **名稱**：輸入路由查詢的名稱。 本教學課程使用 **ContosoSBQueueRoute**。 
+   **Name**：輸入路由查詢的名稱。 本教學課程使用 **ContosoSBQueueRoute**。 
 
    **端點**：這會顯示您剛才設定的端點。
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494363"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教學課程：在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka
@@ -32,7 +32,7 @@ ms.locfileid: "73494363"
 > * 停止拓撲
 > * 清除資源
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 熟悉如何建立 Kafka 主題。 如需詳細資訊，請參閱 [HDInsight 上的 Kafka 快速入門](./kafka/apache-kafka-get-started.md)文件。
 
@@ -64,19 +64,19 @@ ms.locfileid: "73494363"
 
 Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課程中會使用下列元件：
 
-* `org.apache.storm.kafka.KafkaSpout`：此元件會從 Kafka 讀取資料。 此元件依存於下列元件：
+* `org.apache.storm.kafka.KafkaSpout`:此元件會從 Kafka 讀取資料。 此元件依存於下列元件：
 
-    * `org.apache.storm.kafka.SpoutConfig`：提供 Spout 元件的組態。
+    * `org.apache.storm.kafka.SpoutConfig`:提供 Spout 元件的組態。
 
     * `org.apache.storm.spout.SchemeAsMultiScheme` 和 `org.apache.storm.kafka.StringScheme`：來自 Kafka 的資料如何轉換為 Storm Tuple。
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`：此元件會將資料寫入至 Kafka。 此元件依存於下列元件：
+* `org.apache.storm.kafka.bolt.KafkaBolt`:此元件會將資料寫入至 Kafka。 此元件依存於下列元件：
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`：說明寫入的目標主題。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`:說明寫入的目標主題。
 
-    * `org.apache.kafka.common.serialization.StringSerializer`：設定 Bolt 以將資料序列化為字串值。
+    * `org.apache.kafka.common.serialization.StringSerializer`:設定 Bolt 以將資料序列化為字串值。
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`：從在 Strom 拓樸內使用的 Tuple 資料結構對應至儲存在 Kafka 中的欄位。
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`:從在 Strom 拓樸內使用的 Tuple 資料結構對應至儲存在 Kafka 中的欄位。
 
 這些是 `org.apache.storm : storm-kafka` 套件中提供的元件。 請使用與 Storm 版本相符的套件版本。 對於 HDInsight 3.6，適用的 Storm 版本為 1.1.0。
 您也需要 `org.apache.kafka : kafka_2.10` 套件，其中包含其他 Kafka 元件。 請使用與 Kafka 版本相符的套件版本。 對於 HDInsight 3.6，適用的 Kafka 版本為 1.1.1。
@@ -134,15 +134,15 @@ Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課�
 
 在執行階段會針對這些拓撲設定下列參數：
 
-* `${kafka.topic}`：拓樸讀取/寫入的 Kafka 主題名稱。
+* `${kafka.topic}`:拓樸讀取/寫入的 Kafka 主題名稱。
 
-* `${kafka.broker.hosts}`：Kafka 訊息代理程式執行所在的主機。 KafkaBolt 在寫入 Kafka 時會使用訊息代理程式資訊。
+* `${kafka.broker.hosts}`:Kafka 訊息代理程式執行所在的主機。 KafkaBolt 在寫入 Kafka 時會使用訊息代理程式資訊。
 
-* `${kafka.zookeeper.hosts}`：Kafka 叢集中 Zookeeper 執行所在的主機。
+* `${kafka.zookeeper.hosts}`:Kafka 叢集中 Zookeeper 執行所在的主機。
 
-* `${hdfs.url}`：HDFSBolt 元件的檔案系統 URL。 指出資料會寫入至「Azure 儲存體」帳戶還是 Azure Data Lake Storage。
+* `${hdfs.url}`:HDFSBolt 元件的檔案系統 URL。 指出資料會寫入至「Azure 儲存體」帳戶還是 Azure Data Lake Storage。
 
-* `${hdfs.write.dir}`：寫入資料的目標目錄。
+* `${hdfs.write.dir}`:寫入資料的目標目錄。
 
 如需有關 Flux 拓撲的詳細資訊，請參閱 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 
@@ -366,7 +366,7 @@ streams:
 
 專案包含名為 `dev.properties` 的檔案，用來傳遞拓撲所使用的參數。 它會定義下列屬性：
 
-| dev.properties 檔案 | 說明 |
+| dev.properties 檔案 | 描述 |
 | --- | --- |
 | `kafka.zookeeper.hosts` | Kafka 叢集的 [Apache ZooKeeper](https://zookeeper.apache.org/) 主機。 |
 | `kafka.broker.hosts` | Kafka 代理程式主機 (背景工作節點)。 |
@@ -410,7 +410,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
       | --- | --- |
       | 訂用帳戶 | 您的 Azure 訂用帳戶 |
       | 資源群組 | 包含資源的資源群組。 |
-      | 位置 | 資源建立所在的 Azure 區域。 |
+      | Location | 資源建立所在的 Azure 區域。 |
       | Kafka 叢集名稱 | Kafka 叢集的名稱。 |
       | Storm 叢集名稱 | Storm 叢集的名稱。 |
       | 叢集登入使用者名稱 | 叢集的管理員使用者名稱。 |
@@ -566,13 +566,13 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     此命令使用的參數如下：
 
-    * `org.apache.storm.flux.Flux`：使用 Flux 來設定及執行此拓撲。
+    * `org.apache.storm.flux.Flux`:使用 Flux 來設定及執行此拓撲。
 
-    * `--remote`：將拓撲提交至 Nimbus。 拓撲會分散於叢集中的背景工作節點。
+    * `--remote`:將拓撲提交至 Nimbus。 拓撲會分散於叢集中的背景工作節點。
 
-    * `-R /writer.yaml`：使用 `writer.yaml` 檔案來設定拓撲。 `-R` 表示此資源包含在 jar 檔案中。 剛檔案位於 jar 的根目錄中，所以 `/writer.yaml` 是它的路徑。
+    * `-R /writer.yaml`:使用 `writer.yaml` 檔案來設定拓撲。 `-R` 表示此資源包含在 jar 檔案中。 剛檔案位於 jar 的根目錄中，所以 `/writer.yaml` 是它的路徑。
 
-    * `--filter`：使用 `dev.properties` 檔案的值填入 `writer.yaml` 拓撲的項目。 例如，使用檔案的 `kafka.topic` 項目值取代拓撲定義的 `${kafka.topic}` 項目。
+    * `--filter`:使用 `dev.properties` 檔案的值填入 `writer.yaml` 拓撲的項目。 例如，使用檔案的 `kafka.topic` 項目值取代拓撲定義的 `${kafka.topic}` 項目。
 
 ## <a name="start-the-reader"></a>開始讀取器
 

@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640004"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建置群集模型
 
 在這三部分教學課程系列的第二部分中，您將使用 R 建立 K-Means 模型來執行群集。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署此模型。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
-> * 定義 K-Means 演算法的叢集數目
-> * 執行群集
+> * 為 K-Means 演算法定義叢集數目
+> * 執行叢集
 > * 分析結果
 
 在[第一部分](sql-database-tutorial-clustering-model-prepare-data.md)中，您已了解如何在 Azure SQL 資料庫中準備執行群集所需的資料。
@@ -37,19 +37,19 @@ ms.locfileid: "68640004"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 本教學課程的第二部分假設您已完成[**第一部分**](sql-database-tutorial-clustering-model-prepare-data.md)及其必要條件。
 
 ## <a name="define-the-number-of-clusters"></a>定義叢集數目
 
-若要建立客戶資料的叢集，您可以使用 **K-Means** 群集演算法，這是最簡單且知名的資料分組方法。
-您可以在 [K-Means 群集演算法的完整指南](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)中深入了解 K-Means。
+若要為您的客戶資料進行叢集化，您將使用 **K-Means** 叢集演算法，這是對資料進行分組的最簡單、最廣為人知的方法之一。
+您可以在 [K-means 叢集演算法的完整指南](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)中深入了解 K-Means。
 
-此演算法接受兩種輸入：資料本身，以及預先定義的數字 "*k*"，此數字代表要產生的叢集數目。
-輸出是將輸入資料分割至各個叢集間的 *k* 叢集。
+此演算法接受兩個輸入：資料本身，以及預先定義的數字「*k*」代表要產生的叢集數目。
+輸出為 *k* 個叢集，包含在叢集之間分割的輸入資料。
 
-若要判斷演算法所應使用的叢集數目，請使用群組內平方和與擷取的叢集數目所製成的的繪圖。 所應使用的適當叢集數目位於繪圖的「彎曲」處。
+若要對要使用的演算法判斷其叢集數目，請使用「群組平方和」內的繪圖，並以擷取的叢集數目為依據。 要使用的適當叢集數目是在繪圖的折彎處或「肘線」處。
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -60,11 +60,11 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![彎曲的圖形](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![肘線圖](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-根據圖表，*k = 4* 應該是可以嘗試的適當值。 該 *k* 值會將客戶分組到四個叢集中。
+根據圖表，*k = 4* 看起來是理想的嘗試值。 *k* 值會將客戶分組成四個叢集。
 
-## <a name="perform-clustering"></a>執行群集
+## <a name="perform-clustering"></a>執行叢集
 
 在下列 R 指令碼中，您將使用 **rxKmeans** 函式，這是 RevoScaleR 套件中的 K-Means 函式。
 
@@ -122,18 +122,18 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-四個叢集的機制是使用[第一部分](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)中定義的變數指定的：
+使用[第一部分](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)中定義的變數以提供四種叢集平均值：
 
-* *orderRatio* = 退訂率 (部分退訂或全部退訂的總數與訂單總數的比例)
-* *itemsRatio* = 退貨率 (退貨總數與購貨數目的比例)
-* *monetaryRatio* = 退款率 (退貨總金額與購買金額的比例)
-* *frequency* = 退回頻率
+* *orderRatio* = 退貨訂單率 (部分退貨或全部退貨的訂單總數與訂單總數比較)
+* *itemsRatio* = 退貨率 (退貨總數與購買項目數目比較)
+* *monetaryRatio* = 退貨金額率 (退貨的貨幣金額總計與購買金額比較)
+* *frequency* = 退貨頻率
 
-使用 K-Means 的資料採礦通常需要進一步分析結果，且需要以後續步驟深入了解每個叢集，但有可能提供一些有用的線索。
-這些結果可用以下幾個面向來解譯：
+使用 K-Means 的資料採礦經常需要進一步分析結果，並採取更多步驟，以深入了解每個叢集，但可以提供一些良好的潛在客戶。
+您可以透過以下幾種方式來解譯這些結果：
 
 * 叢集 1 (最大的叢集) 似乎是不活躍的客戶群組 (所有值皆為零)。
-* 叢集 3 似乎是退貨行為最頻繁的群組。
+* 叢集 3 似乎是在退貨行為方面比較明顯的群組。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -150,8 +150,8 @@ Within cluster sum of squares by cluster:
 
 在本教學課程系列的第二部分中，您已完成下列步驟：
 
-* 定義 K-Means 演算法的叢集數目
-* 執行群集
+* 為 K-Means 演算法定義叢集數目
+* 執行叢集
 * 分析結果
 
 若要部署您所建立的機器學習模型，請遵循此教學課程系列的第三部分：

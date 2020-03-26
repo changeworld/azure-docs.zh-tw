@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241591"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>快速入門：使用 R 主控台對 Azure HDInsight 中的 ML 服務叢集執行 R 指令碼
@@ -21,7 +21,7 @@ Azure HDInsight 上的 ML 服務可讓 R 指令碼使用 Apache Spark 和 Apache
 
 在本快速入門中，您將了解如何使用 R 主控台執行 R 指令碼，以示範如何使用 Spark 進行分散式 R 計算。 您將定義計算內容，以在邊緣節點上本機執行計算，然後分散到 HDInsight 叢集中的各個節點上計算。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]  作為 [叢集類型]  。
 

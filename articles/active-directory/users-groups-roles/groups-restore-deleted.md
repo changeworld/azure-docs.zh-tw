@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96d212df51a58125e3b959a18f5cf2ac9d391d30
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74422368"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中還原已刪除的 Office 365 群組
@@ -33,7 +33,7 @@ ms.locfileid: "74422368"
 --------- | ---------
 全域管理員、群組管理員、合作夥伴第 2 層支援，以及 Intune 管理員 | 可以還原任何已刪除的 Office 365 群組
 使用者管理員和合作夥伴第 1 層支援 | 可以還原任何已刪除的 Office 365 群組，但指派給公司系統管理員角色的群組除外
-使用者 | 可以還原他們擁有的任何已刪除的 Office 365 群組
+User | 可以還原他們擁有的任何已刪除的 Office 365 群組
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>檢視及管理可供還原的已刪除 Office 365 群組
 

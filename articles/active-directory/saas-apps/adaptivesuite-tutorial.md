@@ -17,10 +17,10 @@ ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232128"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>教學課程：整合 Adaptive Insights 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "74232128"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -104,7 +104,7 @@ ms.locfileid: "74232128"
 
 2. 移至 [管理]  。
 
-    ![管理員](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![管理員](./media/adaptivesuite-tutorial/ic805644.png "管理")
 
 3. 在 [使用者和角色]  區段中，按一下 [SAML SSO 設定]  。
 
@@ -178,7 +178,7 @@ ms.locfileid: "74232128"
 
 2. 移至 [管理]  。
 
-   ![管理員](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![管理員](./media/adaptivesuite-tutorial/IC805644.png "管理")
 
 3. 在 [使用者和角色]  區段中，按一下 [使用者]  。
 

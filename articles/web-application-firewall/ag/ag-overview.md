@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74384119"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 應用程式閘道上的 Web 應用程式防火牆
@@ -123,10 +123,10 @@ OWASP 有兩種可用來決定是否要封鎖流量的模式：傳統模式和�
 
 在異常評分模式中，處於預防模式中的防火牆不會立即封鎖符合任何規則的流量。 規則會有特定嚴重性：「重大」  、「錯誤」  、「警告」  或「通知」  。 該嚴重性會影響要求的數值，此值稱為異常分數。 例如，符合一個「警告」  規則的分數為 3 分。 符合一個「重大」  規則的分數為 5 分。
 
-|嚴重性  |值  |
+|Severity  |值  |
 |---------|---------|
-|重要     |5|
-|Error        |4|
+|重大     |5|
+|錯誤        |4|
 |警告      |3|
 |注意事項       |2|
 

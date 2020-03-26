@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "64918999"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教學課程：在 Azure AD Connect 中將 PHS 設定為 AD FS 的備份
@@ -29,7 +29,7 @@ ms.locfileid: "64918999"
 >[!NOTE]
 >如果您無法存取 Azure AD Connect 伺服器，或該伺服器無法存取網際網路，您可以連絡 [Microsoft 支援服務](https://support.microsoft.com/en-us/contactus/)，以協助您切換至 Azure AD 端。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本教學課程的建置基礎為[教學課程：將單一 AD 樹系環境與雲端建立同盟](tutorial-federation.md)，必須先加以完成，才能嘗試進行本教學課程。  如果您尚未完成該教學課程，請先加以完成，再嘗試執行本文件中的步驟。
 
 >[!IMPORTANT]

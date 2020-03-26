@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72028100"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虛擬網路容器網路介面外掛程式
@@ -29,9 +29,9 @@ Azure 虛擬網路容器網路介面 (CNI) 外掛程式會安裝 Azure 虛擬機
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>部署 ACS-Engine Kubernetes 叢集外掛程式
 
-ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢集設定是在 JSON 檔案中設定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其說明的完整清單，請參閱 [Microsoft Azure Container Service 引擎 - 叢集定義](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 外掛程式是針對使用 ACS-Engine 建立的叢集的預設網路功能外掛程式。 設定外掛程式時，下列網路組態設定很重要：
+ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢集設定是在 JSON 檔案中指定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其說明的完整清單，請參閱 [Microsoft Azure Container Service 引擎 - 叢集定義](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 外掛程式是針對使用 ACS-Engine 建立的叢集的預設網路功能外掛程式。 設定外掛程式時，下列網路組態設定很重要：
 
-  | 設定                              | 說明                                                                                                           |
+  | 設定                              | 描述                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | 配置給主要節點的 IP 位址。 這是必要的設定。                                     |
   | kubernetesConfig 下的 clusterSubnet | 部署叢集的虛擬網路子網路的 CIDR，以及配置給 Pods 的 IP 位址   |
@@ -39,7 +39,7 @@ ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢�
   | vnetCidr                             | 要部署叢集所在的虛擬網路的 CIDR                                                             |
   | kubeletConfig 下的 max-Pods         | 每個代理程式虛擬機器上的 Pod 數目上限。 外掛程式的預設值是 30 個。 最多可以指定到 250 個  |
 
-### <a name="example-configuration"></a>設定範例
+### <a name="example-configuration"></a>範例設定
 
 接下來的 json 範例是含有下列屬性的叢集：
 -   1 個主要節點和 2 個代理程式節點 
