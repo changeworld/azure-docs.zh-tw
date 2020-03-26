@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74324814"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>教學課程：為 Azure Blockchain Workbench 建立區塊鏈應用程式
@@ -25,7 +25,7 @@ ms.locfileid: "74324814"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Blockchain Workbench 部署。 如需詳細資訊，請參閱 [Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資訊。
 * 租用戶中與 Blockchain Workbench 相關聯的 Azure Active Directory 使用者。 如需詳細資訊，請參閱[在 Azure Blockchain Workbench 中新增 Azure AD 使用者](manage-users.md#add-azure-ad-users)。
@@ -281,7 +281,7 @@ contract HelloBlockchain {
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函式
 
 函式是合約中商務邏輯的可執行單位。 函式所需要的參數會定義為組態檔中的函式參數。 兩個檔案中的參數數目、順序和類型都必須相符。 函式會與組態檔中 Blockchain Workbench 工作流程的轉換相關聯。 執行轉換動作可移至合約為應用程式的工作流程所決定的下一個階段。
 

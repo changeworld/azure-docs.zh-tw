@@ -4,10 +4,10 @@ description: 教學課程將說明如何在裝載本機資源的 Azure 中實作
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159213"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>教學課程：使用 Terraform 在 Azure 中建立內部部署虛擬網路
@@ -22,9 +22,9 @@ ms.locfileid: "74159213"
 > * 使用 Terraform 來建立內部部署虛擬機器
 > * 使用 Terraform 來建立內部部署虛擬私人網路閘道
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-1. [使用 Azure 中的 Terraform 建立中樞和輪輻混合網路拓樸](./terraform-hub-spoke-introduction.md)。
+1. [使用 Azure 中的 Terraform 建立中樞和輪輻混合網路拓撲](./terraform-hub-spoke-introduction.md)。
 
 ## <a name="create-the-directory-structure"></a>建立目錄結構
 

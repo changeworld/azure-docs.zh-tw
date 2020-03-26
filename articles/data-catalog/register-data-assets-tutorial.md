@@ -7,17 +7,17 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68950239"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教學課程：註冊 Azure 資料目錄中的資料資產
 
 在本教學課程中，您可使用註冊工具，向目錄註冊 Azure SQL 資料庫範例中的資料資產。 註冊的過程會從資料來源及其包含的資產中，擷取重要的結構化中繼資料 (例如名稱、類型和位置)，並將該中繼資料複製到目錄。 資料來源及資料資產會留在原地，但目錄會利用中繼資料，讓您更輕鬆探索和了解資料來源及其資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 註冊資料資產 
 > * 搜尋資料資產
@@ -26,7 +26,7 @@ ms.locfileid: "68950239"
 > * 管理資料資產
 > * 刪除資料資產
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始著手，您必須完成[快速入門](register-data-assets-tutorial.md)。
 
@@ -117,7 +117,7 @@ ms.locfileid: "68950239"
 
 1. 選取 Azure 資料目錄入口網站中的 [首頁]  。 如果您已關閉網頁瀏覽器，請移至 [Azure 資料目錄首頁](https://www.azuredatacatalog.com)。
 
-2. 在搜尋方塊中輸入 `product`，然後按 **ENTER**鍵。
+2. 在搜尋方塊中輸入 `product` ，然後按 **ENTER**鍵。
 
     ![Azure 資料目錄--基本文字搜尋](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "68950239"
 
 1. 清除 [篩選]  中 [物件類型]  底下的 [資料表]  篩選。  
 
-2. 在搜尋方塊中輸入 `tags:product`，然後按 **ENTER**鍵。 請參閱 [資料目錄搜尋語法參考](/rest/api/datacatalog/#search-syntax-reference)，以取得用來搜尋資料目錄的所有屬性。
+2. 在搜尋方塊中輸入 `tags:product` ，然後按 **ENTER**鍵。 請參閱 [資料目錄搜尋語法參考](/rest/api/datacatalog/#search-syntax-reference) ，以取得用來搜尋資料目錄的所有屬性。
 
 3. 確認您在結果中看到資料表和資料庫。  
 
@@ -162,7 +162,7 @@ ms.locfileid: "68950239"
 
 使用括號進行分組，您即可將一部分的查詢分組以達到邏輯隔離 (尤其是搭配布林運算子)。
 
-1. 在搜尋方塊中輸入 `name:product AND (tags:product AND objectType:table)`，然後按 **ENTER**鍵。
+1. 在搜尋方塊中輸入 `name:product AND (tags:product AND objectType:table)` ，然後按 **ENTER**鍵。
 
 2. 確認您只在搜尋結果中看到 **Product** 資料表。
 
@@ -176,7 +176,7 @@ ms.locfileid: "68950239"
 
 2. 清除 [物件類型]  底下的 [資料表]  篩選。
 
-3. 按 **ENTER**鍵。
+3. 按 ENTER 鍵  。
 
 4. 確認您在搜尋結果中看到已註冊的 **Product**、**ProductCategory** 和 **ProductDescription** 資料表以及 Azure SQL 資料庫。
 
@@ -253,7 +253,7 @@ Azure 資料目錄支援支援群眾外包 (crowd-sourcing) 的註解作法。 A
 
 在本練習中，您連接到使用 Azure 資料目錄找到的資料資產。 在 Azure 資料目錄入口網站中，您可以使用整合到 [開啟於]  功能表中的用戶端應用程式來直接連接。 您也可以使用資產中繼資料中包含的連接位置資訊，與您所選的任何應用程式連接。 例如︰您可以使用 SQL Server Management Studio 連線到 Azure SQL 資料庫，以存取本教學課程中註冊的資料資產中的資料。
 
-1. 開啟 **SQL Server Management Studio**。
+1. 開啟 [SQL Server Management Studio]  。
 
 2. 在 [連線到伺服器]  對話方塊中，輸入 Azure 資料目錄入口網站 [屬性]  窗格中的伺服器名稱。
 
@@ -312,7 +312,7 @@ Azure 資料目錄支援支援群眾外包 (crowd-sourcing) 的註解作法。 A
 > [!NOTE]
 > 目錄的預設行為是允許任何使用者註冊任何資料來源，並允許任何使用者刪除任何已註冊的資料資產。 標準版 Azure 資料目錄中包含的管理功能提供其他選項，可用來取得資產的所有權、限制誰可以探索資產，以及限制誰可以刪除資產。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本教學課程中，您已瀏覽 Azure 資料目錄的基本功能，包括註冊、註解、探索和管理企業資料資產。 既然您已經完成本教學課程，現在可以開始使用。 您可以立即開始註冊您和小組所依賴的資料來源，並邀請同事使用目錄。
 

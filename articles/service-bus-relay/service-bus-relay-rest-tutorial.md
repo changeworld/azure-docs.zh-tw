@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure 轉送的 REST 教學課程
-description: 教學課程：建置 Azure 服務匯流排轉送主機應用程式以公開 REST 架構介面。
+description: 教學課程：建置 Azure服務匯流排轉送主機應用程式以公開 REST 架構介面。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 229ed2b00582f2c73ce68c47406d68325abda736
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718827"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教學課程：Azure WCF 轉送的 REST 教學課程
@@ -38,7 +38,7 @@ ms.locfileid: "73718827"
 > * 裝載及執行 REST 型 WCF 服務。
 > * 執行和測試服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 

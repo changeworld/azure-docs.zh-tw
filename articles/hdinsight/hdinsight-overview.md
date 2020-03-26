@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure HDInsight
-description: HDInsight 簡介和 Apache Hadoop 和 Apache Spark 技術堆疊和元件，包括用於 big data 分析的 Kafka、Hive、風暴和 HBase。
+description: HDInsight 及 Apache Hadoop 與 Apache Spark 技術堆疊和元件簡介，包括用於巨量資料分析的 Kafka、Hive、Storm 和 HBase。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,11 +9,11 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
 ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361323"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216426"
 ---
 # <a name="what-is-azure-hdinsight"></a>什麼是 Azure HDInsight？
 
@@ -36,7 +36,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |功能  |描述  |
 |---------|---------|
 |雲端原生     |     Azure HDInsight 可讓您在 Azure 上建立 [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [互動式查詢 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) 和  [ML 服務](./r-server/r-server-overview.md)的最佳化叢集。 HDInsight 也提供所有生產工作負載的端對端 SLA。  |
-|低成本且可調整     | HDInsight 可讓您[相應](./hdinsight-administer-use-portal-linux.md#scale-clusters) 增加或減少工作負載。 您可以 [視需要建立](./hdinsight-hadoop-create-linux-clusters-adf.md)叢集 並僅支付您所使用的費用，以降低成本。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
+|低成本且可調整     | HDInsight 可讓您[相應](./hdinsight-administer-use-portal-linux.md#scale-clusters) 增加或減少工作負載。 您可以 [依照需求建立叢集](./hdinsight-hadoop-create-linux-clusters-adf.md) 來降低成本，且只支付您所使用的部分。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
 |安全且符合規範    | HDInsight 可讓您使用 [Azure 虛擬網路](./hdinsight-plan-virtual-network-deployment.md)、[加密](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與 [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) 整合來保護企業資料資產。 HDInsight 也符合最受歡迎的產業和政府[合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。        |
 |監視    | Azure HDInsight 與 [Azure 監視器記錄](./hdinsight-hadoop-oms-log-analytics-tutorial.md)整合後會提供單一介面，以便監視所有的叢集。        |
 |正式上市 | HDInsight 的適用 [區域](https://azure.microsoft.com/regions/services/) 超過任何其他巨量資料分析供應項目。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。 |  
@@ -59,7 +59,7 @@ Azure HDInsight 可在巨量資料處理的各種案例中使用。 它可以是
 
 ### <a name="internet-of-things-iot"></a>物聯網 (IoT)
 
-您可以使用 HDInsight 來處理從不同類型的裝置即時接收的串流資料。 如需詳細資訊，請[閱讀 Azure 的此部落格文章，其中宣佈了在 HDInsight 上使用 Azure 受控磁碟的 Apache Kafka 公開預覽](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
+您可以使用 HDInsight 來處理從不同裝置類型即時接收的串流資料。 如需詳細資訊，請[閱讀 Azure 的此部落格文章，其中宣佈了在 HDInsight 上使用 Azure 受控磁碟的 Apache Kafka 公開預覽](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
 ![HDInsight 架構：物聯網](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT 架構")
 
@@ -95,7 +95,7 @@ Azure HDInsight 可讓您透過開放原始碼架構 (例如 Hadoop、Spark、Hi
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight 中的程式設計語言
 
-HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程式設計語言。 某些程式設計語言並未預設安裝。 針對預設不會安裝的程式庫、模組或套件，請[使用腳本動作來安裝元件](./hdinsight-hadoop-script-actions-linux.md)。
+HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程式設計語言。 某些程式設計語言並未預設安裝。 針對未預設安裝的程式庫、模組或套件，請[使用指令碼動作來安裝元件](./hdinsight-hadoop-script-actions-linux.md)。
 
 |程式設計語言  |資訊  |
 |---------|---------|

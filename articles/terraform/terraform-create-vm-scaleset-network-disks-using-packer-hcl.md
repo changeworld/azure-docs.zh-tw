@@ -4,10 +4,10 @@ description: 使用 Terraform 從 Packer 產生的自訂映像設定 Azure 虛�
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472194"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教學課程：使用 Terraform 從 Packer 自訂映像建立 Azure 虛擬機器擴展集

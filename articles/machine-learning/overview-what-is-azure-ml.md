@@ -9,11 +9,11 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355750"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290466"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -21,7 +21,7 @@ ms.locfileid: "78355750"
 
 Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深度學習、受監督和不受監督的學習。 無論您想要撰寫 Python 或 R 程式碼或使用零程式碼/低程式碼選項 (例如[設計工具](tutorial-designer-automobile-price-train-score.md))，都可以在 Azure Machine Learning 工作區中建立、定型和追蹤高精確度的機器學習和深度學習模型。 
 
-開始訓練您的本機電腦，然後向外擴充到雲端。 
+開始訓練您的本機電腦，然後向外擴增到雲端。 
 
 此服務也會與熱門的開放原始碼工具 (例如 PyTorch、TensorFlow 和 scikit-learn) 交互操作。
 
@@ -56,7 +56,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 ## <a name="build-ml-models-in-python-or-r"></a>以 Python 或 R 建置 ML 模型
 
-使用 Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>，開始訓練您的本機電腦。 然後可以擴充至雲端。 
+使用 Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>，開始訓練您的本機電腦。 然後可以擴增至雲端。 
 
 透過許多可用的[計算目標](how-to-set-up-training-targets.md) (例如 Azure Machine Learning Compute 和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)) 及[進階的超參數微調服務](how-to-tune-hyperparameters.md)，您可以使用雲端功能更快地建置更好的模型。
 
@@ -116,7 +116,7 @@ Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也�
 
 您的 Azure 儲存體帳戶、計算目標和其他資源可以在虛擬網路內安全地使用，以定型模型及執行推斷。 如需詳細資訊，請參閱[虛擬網路中的安全實驗和推斷](how-to-enable-virtual-network.md)。
 
-## <a name="sku"></a>基本版和 Enterprise 版
+## <a name="basic--enterprise-editions"></a><a name="sku"></a>基本版和 Enterprise 版
 
 Azure Machine Learning 提供兩個針對您的機器學習需求量身打造的版本：
 + 基本 (正式推出)

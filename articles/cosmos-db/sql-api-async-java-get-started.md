@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444894"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>教學課程：使用 Async Java SDK 建置 Java 應用程式以管理 SQL API 帳戶中儲存的資料
@@ -54,7 +54,7 @@ ms.locfileid: "75444894"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>複製 GitHub 存放庫
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>複製 GitHub 存放庫
 
 複製[開始使用 Azure Cosmos DB 和 Java](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) 的 GitHub 存放庫。 例如，請從本機目錄執行下列命令將範例專案擷取到本機。
 
@@ -75,7 +75,7 @@ cd azure-cosmosdb-get-started
 </dependency>
 ```
 
-## <a id="Connect"></a>連線至 Azure Cosmos 帳戶
+## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>連線至 Azure Cosmos 帳戶
 
 接下來，回到 [Azure 入口網站](https://portal.azure.com)以擷取您的端點和主要金鑰。 必須提供 Azure Cosmos DB 端點 URL 和主要金鑰，您的應用程式才能了解所要連線的位置，而 Azure Cosmos DB 才會信任您的應用程式連線。 `AccountSettings.java` 檔案會保存主要金鑰和 URI 值。 
 
@@ -112,7 +112,7 @@ client = new AsyncDocumentClient.Builder()
          .build();
 ```
 
-## <a id="CreateDatabase"></a>建立資料庫
+## <a name="create-a-database"></a><a id="CreateDatabase"></a>建立資料庫
 
 使用 DocumentClient 類別的 `createDatabaseIfNotExists()` 方法來建立 Azure Cosmos 資料庫。 資料庫是分割給多個集合之 JSON 文件儲存體的邏輯容器。
 
@@ -156,7 +156,7 @@ private void createDatabaseIfNotExists() throws Exception
 }
 ```
 
-## <a id="CreateColl"></a>建立集合
+## <a name="create-a-collection"></a><a id="CreateColl"></a>建立集合
 
 您可以使用 DocumentClient 類別的 `createDocumentCollectionIfNotExists()` 方法來建立集合。 集合是 JSON 文件和相關聯 JavaScript 應用程式邏輯的容器。
 
@@ -200,7 +200,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
     }
 ```
 
-## <a id="CreateDoc"></a>建立 JSON 文件
+## <a name="create-json-documents"></a><a id="CreateDoc"></a>建立 JSON 文件
 
 使用 DocumentClient 類別的 createDocument 方法來建立文件。 文件會是使用者定義的 (任意) JSON 內容。 現在可插入一或多份文件。 "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" 檔案會定義系列 JSON 文件。 
 
@@ -220,7 +220,7 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>查詢 Azure Cosmos DB 資源
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>查詢 Azure Cosmos DB 資源
 
 Azure Cosmos DB 支援針對儲存於每個集合的 JSON 文件進行豐富查詢。 下列範例程式碼示範如何使用 SQL 語法搭配 `queryDocuments` 方法來查詢 Azure Cosmos DB 中的文件。
 
@@ -254,7 +254,7 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>執行您的 Java 主控台應用程式
+## <a name="run-your-java-console-application"></a><a id="Run"></a>執行您的 Java 主控台應用程式
 
 若要從主控台執行應用程式，移至專案資料夾並使用 Maven 進行編譯：
 

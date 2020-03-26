@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977393"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
@@ -66,7 +66,7 @@ ms.locfileid: "75977393"
 1. 開啟 [Azure 儲存體總管]。 展開您的儲存體帳戶。 以滑鼠右鍵按一下 [Blob 容器]  ，然後選取 [建立 Blob 容器]  。
 1. 將新容器命名為 *adfv2branch*，然後選取 [上傳]  將您的 *input.txt* 檔案新增至該容器。
 
-## 建立 Visual Studio 專案<a name="create-visual-studio-project"></a>
+## <a name="create-visual-studio-project"></a>建立 Visual Studio 專案<a name="create-visual-studio-project"></a>
 
 建立 C# .NET 主控台應用程式：
 

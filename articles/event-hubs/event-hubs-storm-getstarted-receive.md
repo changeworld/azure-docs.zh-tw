@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73717602"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入門：使用 Apache Storm 從事件中樞接收事件
@@ -28,7 +28,7 @@ ms.locfileid: "73717602"
 
 如需事件中樞接收模式的詳細資訊，請參閱 [事件中樞概觀][Event Hubs overview]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在開始進行本快速入門之前，您必須先**建立事件中樞命名空間和事件中樞**。 請使用 [Azure 入口網站](https://portal.azure.com)建立「事件中樞」類型的命名空間，然後取得您的應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 
 
 ## <a name="create-project-and-add-code"></a>建立專案並新增程式碼

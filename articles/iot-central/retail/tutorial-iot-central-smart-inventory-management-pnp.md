@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: 5632d98d9d853d9a4b0882c28cad1836bb6f3cef
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77025464"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教學課程：部署和逐步執行智慧庫存管理應用程式範本
@@ -20,7 +20,7 @@ ms.locfileid: "77025464"
 
 此教學課程示範如何開始部署 IoT Central **智慧庫存管理**應用程式範本。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
-在此教學課程中，您會了解如何： 
+在此教學課程中，您將了解如何： 
 * 建立智慧庫存管理應用程式 
 * 逐步執行應用程式 
 

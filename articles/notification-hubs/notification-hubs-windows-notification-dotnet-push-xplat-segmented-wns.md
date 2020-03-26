@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72385610"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>教學課程：將通知傳送至執行通用平台應用程式的特定 Windows 裝置
@@ -47,7 +47,7 @@ ms.locfileid: "72385610"
 > * 傳送加註標記的通知
 > * 執行應用程式並產生通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成[教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式][get-started]，再開始此教學課程。  
 

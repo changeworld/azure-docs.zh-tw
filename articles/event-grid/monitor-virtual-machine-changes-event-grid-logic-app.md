@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982577"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更

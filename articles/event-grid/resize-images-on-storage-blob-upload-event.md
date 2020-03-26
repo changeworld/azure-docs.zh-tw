@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 6b3375ea8c82ce916f3d6a5e0e29f2845400cc76
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117771"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454069"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -54,17 +54,17 @@ ms.locfileid: "79117771"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您先前未在訂用帳戶中註冊事件方格資源提供者，請務必註冊。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.EventGrid
-```
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您選擇在本機安裝和使用 CLI，本教學課程需要 Azure CLI 2.0.14 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 如果您未使用 Cloud Shell，您必須先使用 `az login` 登入。
+
+如果您先前未在訂用帳戶中註冊事件方格資源提供者，請務必註冊。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.EventGrid
+```
 
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 

@@ -3,13 +3,13 @@ title: 教學課程：使用容器的舊版應用程式 (預覽)
 description: 了解如何將自訂 Windows 容器遷移至 Azure App Service，以及如何在容器中部署自訂軟體。
 ms.topic: tutorial
 ms.date: 10/22/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671967"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046625"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器將 ASP.NET 應用程式移轉至 Azure App Service (預覽)
 
@@ -17,7 +17,7 @@ ms.locfileid: "74671967"
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 

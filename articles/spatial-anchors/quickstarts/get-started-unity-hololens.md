@@ -9,15 +9,15 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77615417"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入門：建立使用 Azure Spatial Anchors 的 Unity HoloLens 應用程式
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入門：建立使用 Azure 空間錨點的 Unity HoloLens 應用程式
 
-在本快速入門中，您將建立使用 [Azure Spatial Anchors](../overview.md) 的 Unity HoloLens 應用程式。 Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。 當您完成時，您將會有搭配 Unity 建置的 HoloLens 應用程式，並可儲存和回收空間錨點。
+在本快速入門中，您將建立使用 [Azure 空間錨點](../overview.md)的 Unity HoloLens 應用程式。 Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。 當您完成時，您將會有搭配 Unity 建置的 HoloLens 應用程式，並可儲存和回收空間錨點。
 
 您將學習如何：
 

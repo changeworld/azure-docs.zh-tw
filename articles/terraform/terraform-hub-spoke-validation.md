@@ -4,10 +4,10 @@ description: 驗證將所有虛擬網路連線至另一個網路的中樞和輪�
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159198"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>教學課程：使用 Terraform 在 Azure 中驗證中樞和輪輻網路
@@ -17,13 +17,13 @@ ms.locfileid: "74159198"
 本教學課程涵蓋下列工作：
 
 > [!div class="checklist"]
-> * 使用 HCL (HashiCorp 語言) 在中樞輪輻拓撲中實作中樞 VNet
+> * 使用 HCL (HashiCorp 語言) 以在中樞輪輻拓撲中實作中樞 VNet
 > * 使用 Terraform 方案驗證要部署的資源
 > * 使用 Terraform 套用在 Azure 中建立資源
 > * 驗證不同網路之間的連線能力
 > * 使用 Terraform 終結所有資源
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. [使用 Azure 中的 Terraform 建立中樞和輪輻混合網路拓撲](./terraform-hub-spoke-introduction.md)。
 1. [使用 Azure 中的 Terraform 建立內部部署虛擬網路](./terraform-hub-spoke-on-prem.md)。
@@ -93,7 +93,7 @@ ms.locfileid: "74159198"
 
 1. 在 **onprem-vnet-rg** 索引標籤上，選取名為 **onprem-vm** 的 VM。
 
-1. 選取 [ **連接**]。
+1. 選取 [連接]  。
 
 1. 將 [使用 VM 本機帳戶登入]  文字旁邊的 **ssh** 命令複製到剪貼簿。
 

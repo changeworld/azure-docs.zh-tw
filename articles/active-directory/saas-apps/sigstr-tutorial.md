@@ -17,10 +17,10 @@ ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e87f6aa3d85694afc8fa9fabacdae5e8b0719213
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69641835"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigstr"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Sigstr 整合
@@ -33,7 +33,7 @@ ms.locfileid: "69641835"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -76,10 +76,10 @@ ms.locfileid: "69641835"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Sigstr]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
-   ![編輯基本 SAML 設定](common/edit-urls.png)
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 設定]  設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須按一下 [儲存]  按鈕，才能儲存設定。
 
@@ -89,7 +89,7 @@ ms.locfileid: "69641835"
 
 1. 除了以上屬性外，Sigstr 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
-    | Name |  來源屬性|
+    | 名稱 |  來源屬性|
     | -------|----------- |
     | 電子郵件 | user.mail |
 

@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73822798"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教學課程：Azure SQL Database 中使用 Azure AD 伺服器主體 (登入) 的受控執行個體安全性
@@ -38,7 +38,7 @@ ms.locfileid: "73822798"
 
 若要深入了解，請參閱 [Azure SQL Database 受控執行個體概觀](sql-database-managed-instance-index.yml)和[功能](sql-database-managed-instance.md)文章。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列必要條件：
 
@@ -191,7 +191,7 @@ ms.locfileid: "73822798"
 
 1. 在 SQL Server Management Studio 中開啟新的查詢視窗。
 
-    這個範例假設 Azure AD 中有一個稱為 mygroup  的群組。 執行以下命令：
+    這個範例假設 Azure AD 中有一個稱為 mygroup  的群組。 執行下列命令：
 
     ```sql
     USE master

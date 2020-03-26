@@ -7,10 +7,10 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277486"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中調整應用程式
@@ -51,7 +51,7 @@ ms.locfileid: "76277486"
 
 * **記憶體/GB**：每個應用程式執行個體的記憶體數量上限為 8 GB。 應用程式的記憶體總數會是此處所設定的值乘以應用程式執行個體的數目。
 
-* **應用程式執行個體計數**：在標準層中，您可以相應放大到最多 20 個執行個體。 此值會變更微服務應用程式個別執行中執行個體的數目。
+* **應用程式執行個體計數**：在標準層中，您可以擴增到最多 20 個執行個體。 此值會變更微服務應用程式個別執行中執行個體的數目。
 
 請務必選取 [儲存]  以套用調整設定。
 

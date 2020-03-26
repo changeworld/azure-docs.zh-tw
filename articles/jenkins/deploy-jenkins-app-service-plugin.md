@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251465"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 外掛程式來部署到 Azure App Service 
@@ -46,7 +46,7 @@ sudo apt-get install -y maven
 
 若要部署到「適用於容器的 Web App」，請在 Jenkins Master 上或在用於組建的 VM 代理程式上安裝 Docker。 如需相關指示，請參閱[在 Ubuntu 上安裝 Docker](https://docs.docker.com/engine/installation/linux/ubuntu/) \(英文\)。
 
-## <a name="service-principal"></a>將 Azure 服務主體新增到 Jenkins 認證
+## <a name="add-an-azure-service-principal-to-the-jenkins-credentials"></a><a name="service-principal"></a>將 Azure 服務主體新增到 Jenkins 認證
 
 您必須要有 Azure 服務主體，才能部署到 Azure。 
 

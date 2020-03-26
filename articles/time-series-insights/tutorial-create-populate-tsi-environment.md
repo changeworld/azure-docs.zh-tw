@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7bebc9e682f5156fa235b77ff020e502695a28be
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76981186"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教學課程：建立 Azure 時間序列深入解析環境

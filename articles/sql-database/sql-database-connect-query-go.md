@@ -12,17 +12,17 @@ ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827070"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>快速入門：使用 Golang 查詢 Azure SQL 資料庫
 
 在此快速入門中，您將使用 [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) 程式設計語言來連線至 Azure SQL 資料庫。 然後，執行 Transact-SQL 陳述式來查詢和修改資料。 [Golang](https://golang.org/) 是一種開放原始碼程式設計語言，可輕鬆建置簡單、可靠又有效的軟體。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 

@@ -17,10 +17,10 @@ ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231998"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教學課程：整合 AirWatch 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "74231998"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -130,11 +130,11 @@ ms.locfileid: "74231998"
 
 1. 按一下 [使用者]  索引標籤，在 [基準 DN]  文字方塊中輸入您的網域名稱，然後按一下 [儲存]  。
 
-   ![使用者](./media/airwatch-tutorial/ic791922.png "使用者")
+   ![使用者](./media/airwatch-tutorial/ic791922.png "User")
 
 1. 按一下 [伺服器]  索引標籤。
 
-   ![伺服器](./media/airwatch-tutorial/ic791923.png "伺服器")
+   ![Server](./media/airwatch-tutorial/ic791923.png "伺服器")
 
 1. 在 [LDAP]  區段上執行下列步驟：
 
@@ -164,11 +164,11 @@ ms.locfileid: "74231998"
 
 1. 再按一次 [使用者]  索引標籤。
 
-    ![使用者](./media/airwatch-tutorial/ic791926.png "使用者")
+    ![使用者](./media/airwatch-tutorial/ic791926.png "User")
 
 1. 在 [屬性]  區段中，執行下列步驟：
 
-    ![屬性](./media/airwatch-tutorial/ic791927.png "屬性")
+    ![Attribute](./media/airwatch-tutorial/ic791927.png "屬性")
 
     a. 在 [物件識別碼]  文字方塊中，輸入 `http://schemas.microsoft.com/identity/claims/objectidentifier`。
 

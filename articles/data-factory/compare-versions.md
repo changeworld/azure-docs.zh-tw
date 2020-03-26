@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74924812"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>比較 Azure Data Factory 與 Data Factory 第 1 版
@@ -71,7 +71,7 @@ ETL 模式中的重要使用案例是「差異載入」，其只會載入從管�
 ### <a name="other-control-flow-activities"></a>其他控制流程活動
 以下是目前的 Data Factory 版本所支援的其他控制流程活動。 
 
-控制活動 | 說明
+控制活動 | 描述
 ---------------- | -----------
 [ForEach 活動](control-flow-for-each-activity.md) | 定義管線中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
 [Web 活動](control-flow-web-activity.md) | 從 Data Factory 管線呼叫自訂 REST 端點。 您可以傳遞資料集和連結服務，以供活動取用和存取。 

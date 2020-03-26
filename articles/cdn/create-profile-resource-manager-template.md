@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3cda4db558210ecbfcfc8ce2aaed8c6f69f5e026
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083148"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79458778"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>快速入門：使用 Resource Manager 範本，建立 Azure CDN 設定檔和端點
 
@@ -42,7 +42,7 @@ ms.locfileid: "74083148"
 
 在您選取的位置中建立資源群組。 此範例示範如何在 [美國東部] 位置中建立名為 cdn 的資源群組。
 
-```bash
+```azurecli-interactive
 az group create --name cdn --location eastus
 ```
 
@@ -189,7 +189,7 @@ az group create --name cdn --location eastus
 
 **endpointOriginHostName** - 系統會透過 CDN 處理的端點，例如 cdndemo.azurewebsites.net。
 
-```bash
+```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
@@ -197,7 +197,7 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ## <a name="view-the-cdn-profile"></a>檢視 CDN 設定檔
 
-```bash
+```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
@@ -205,7 +205,7 @@ az cdn profile list --resource-group cdn -o table
 
 ## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>檢視 standard-microsoft 設定檔的 CDN 端點
 
-```bash
+```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
@@ -217,7 +217,7 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 刪除資源群組會自動移除部署其中的所有資源。
 
-```bash
+```azurecli-interactive
 az group delete --name cdn
 ```
 

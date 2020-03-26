@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68496563"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教學課程：整合 Amazon Business 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "68496563"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -120,7 +120,7 @@ ms.locfileid: "68496563"
 
     ![image](./media/amazon-business-tutorial/config04.png)
 
-    ![映像](./media/amazon-business-tutorial/config05.png)
+    ![image](./media/amazon-business-tutorial/config05.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 
@@ -176,27 +176,27 @@ ms.locfileid: "68496563"
 
 1. 在 [ Amazon 連線資料]  精靈上，按 [下一步]  。
 
-    ![連線](media/amazon-business-tutorial/amazon-connect.png)
+    ![Connection](media/amazon-business-tutorial/amazon-connect.png)
 
 1. 請檢查已設定步驟的 [狀態]  ，然後按一下 [開始測試]  。
 
-    ![連線](media/amazon-business-tutorial/sso-connection1.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection1.png)
 
 1. 在 [測試 SSO 連線]  精靈上，按一下 [測試]  。
 
-    ![連線](media/amazon-business-tutorial/sso-connection2.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection2.png)
 
 1. 在 [IDP 起始的 URL]  精靈上，按一下 [啟動]  之前，請複製指派給 **idpid** 的值，並貼到 Azure 入口網站的 [基本 SAML 組態]  區段中 [回覆 URL]  的 **idpid** 參數中。
 
-    ![連線](media/amazon-business-tutorial/sso-connection3.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection3.png)
 
 1. 在 [您準備好切換到使用中的 SSO 嗎?]  精靈上，勾選 [我已完整測試過 SSO 並準備好上線]  核取方塊，然後按一下 [切換到使用中]  。
 
-    ![連線](media/amazon-business-tutorial/sso-connection4.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection4.png)
 
 1. 最後在 [SSO 連線詳細資料]  區段中，[狀態]  會顯示為 [使用中]  。
 
-    ![連線](media/amazon-business-tutorial/sso-connection5.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection5.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

@@ -5,17 +5,17 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74456382"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立私人容器登錄
 
 Azure Container Registry 是受控的私用 Docker 容器登錄服務，用於建立、儲存及提供 Docker 容器映像。 在此快速入門中，您會學到如何使用 PowerShell 建立 Azure 容器登錄。 然後，使用 Docker 命令將容器映像推送到登錄中，最後從您的登錄中提取映像並加以執行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

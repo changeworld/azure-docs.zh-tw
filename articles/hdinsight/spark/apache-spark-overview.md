@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 02/25/2020
 ms.openlocfilehash: 83bfeb85d110f7a84720e943e28f5e014e4c3888
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77605040"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Spark

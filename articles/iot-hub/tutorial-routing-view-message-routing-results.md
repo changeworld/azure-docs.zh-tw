@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890398"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教學課程：第 2 部分 - 檢視路由的訊息
@@ -30,7 +30,7 @@ ms.locfileid: "73890398"
 |------|------|
 |level="storage" |寫入至 Azure 儲存體。|
 |level="critical" |寫入至服務匯流排佇列。 邏輯應用程式會從佇列擷取訊息，並使用 Office 365 以電子郵件傳送訊息。|
-|預設值 |使用 Power BI 顯示此資料。|
+|預設 |使用 Power BI 顯示此資料。|
 
 現在，您要建立將作為訊息路由傳送目的地的資源、執行應用程式將訊息傳送至中樞，然後看看路由的運作方式。
 
@@ -40,7 +40,7 @@ ms.locfileid: "73890398"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [+ 建立資源]  。 在 [搜尋] 方塊中輸入**邏輯應用程式**，然後按一下 Enter。 從顯示的搜尋結果中選取邏輯應用程式，然後選取 [建立]  繼續前往 [建立邏輯應用程式]  窗格。 填寫欄位。
 
-   **名稱**：此欄位是邏輯應用程式的名稱。 本教學課程使用 **ContosoLogicApp**。
+   **Name**：此欄位是邏輯應用程式的名稱。 本教學課程使用 **ContosoLogicApp**。
 
    訂用帳戶  ：選取 Azure 訂用帳戶。
 

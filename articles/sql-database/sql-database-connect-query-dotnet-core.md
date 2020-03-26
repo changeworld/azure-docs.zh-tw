@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
 ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827096"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>快速入門：使用 .NET Core (C#) 查詢 Azure SQL 資料庫
@@ -25,7 +25,7 @@ ms.locfileid: "73827096"
 > [!TIP]
 > 下列 Microsoft Learn 模組可協助您免費學習如何[開發和設定可查詢 Azure SQL Database 的 ASP.NET 應用程式](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您需要：
 
@@ -39,7 +39,7 @@ ms.locfileid: "73827096"
   | 設定 | [伺服器層級 IP 防火牆規則](sql-database-server-level-firewall-rule.md)| [VM 的連線能力](sql-database-managed-instance-configure-vm.md)|
   |||[現場的連線能力](sql-database-managed-instance-configure-p2s.md)
   |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](sql-database-import.md) 檔案還原或匯入 Adventure Works|
+  |||從 [GitHub](sql-database-import.md) 中的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 檔案還原或匯入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -64,7 +64,7 @@ ms.locfileid: "73827096"
 
 1. 瀏覽至 **mySampleDatabase** 頁面，然後在 [設定]  之下選取 [連接字串]  。
 
-2. 檢閱完整的 **ADO.NET** 連接字串。
+2. 檢閱完整 **ADO.NET** 連接字串。
 
     ![ADO.NET 連接字串](./media/sql-database-connect-query-dotnet/adonet-connection-string2.png)
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74773499"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure Database for MySQL 伺服器
@@ -47,13 +47,13 @@ az group create --name myresourcegroup --location westus
 
 **設定** | **範例值** | **說明**
 ---|---|---
-name | mydemoserver | 選擇可識別 Azure Database for MySQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
+NAME | mydemoserver | 選擇可識別 Azure Database for MySQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
 resource-group | myresourcegroup | 提供 Azure 資源群組的名稱。
 sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tier}\_{compute generation}\_{vCores}。 請參閱下表，以取得有關 sku-name 參數的詳細資訊。
 backup-retention | 7 | 備份應保留的時間長度。 單位為天。 範圍為 7-35 天。 
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。 允許的值：Enabled、Disabled。
 location | westus | 伺服器的 Azure 位置。
-ssl-enforcement | 已啟用 | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。
+ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。
 storage-size | 51200 | 伺服器的儲存體容量 (單位為 MB)。 有效 storage-size 的最小值為 5120 MB，並以 1024 MB 的增量增加。 如需儲存體大小限制的詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)文件。 
 version | 5.7 | MySQL 主要版本。
 admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
@@ -67,7 +67,7 @@ sku-name 參數值會遵循慣例 {pricing tier}\_{compute generation}\_{vCores}
 
 請參閱[定價層](./concepts-pricing-tiers.md)文件，以了解每個區域和每一層的有效值。
 
-下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 MySQL 5.7 伺服器 (位於美國西部)。 這是**第 4 代** **一般用途**伺服器，它具有 2 個 **vCore**。 將 `<server_admin_password>` 替換成您自己的值。
+下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 MySQL 5.7 伺服器 (位於美國西部)。 這是**第 4 代** **一般用途**伺服器，它具有 **2 個 vCore**。 將 `<server_admin_password>` 替換成您自己的值。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -209,7 +209,7 @@ mysql>
 |   連線名稱 | 我的連線 | 指定此連線的標籤 (這可以是任何項目) |
 | 連線方式 | 選擇標準 (TCP/IP) | 使用 TCP/IP 通訊協定來連線到 MySQL> 的 Azure 資料庫 |
 | 主機名稱 | mydemoserver.mysql.database.azure.com | 您先前記下的伺服器名稱。 |
-| Port | 3306 | 會使用 MySQL 的預設連接埠。 |
+| 連接埠 | 3306 | 會使用 MySQL 的預設連接埠。 |
 | 使用者名稱 | myadmin@mydemoserver | 先前記下的伺服器管理員登入。 |
 | 密碼 | **** | 使用您稍早設定的管理帳戶密碼。 |
 

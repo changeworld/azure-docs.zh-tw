@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77025481"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教學課程：部署及逐步執行數位配送中心應用程式範本
@@ -20,7 +20,7 @@ ms.locfileid: "77025481"
 
 此教學課程示範如何透過部署 IoT Central **數位配送中心**應用程式範本來開始。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
-在此教學課程中，您會了解如何： 
+在此教學課程中，您將了解如何： 
 * 建立數位配送中心應用程式 
 * 逐步執行應用程式 
 

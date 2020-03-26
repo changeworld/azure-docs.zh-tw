@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教學課程：Azure Active Directory 與 Periscope Data 整合
@@ -34,7 +34,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 Periscope Data 的 Azure AD 整合，您需要下列項目：
 
@@ -137,7 +137,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
     d. 尋找 **SingleLogoutService** 標記，並在 [SLO URL]  文字方塊中貼上**位置**值。
 
-    e. 複製執行個體的 [識別碼]  值，並將其貼入 Azure 入口網站上 [基本 SAML 設定]  區段中的 [識別碼 (實體識別碼)]   文字方塊內。
+    e. 複製執行個體的 [識別碼]  值，並將其貼入 Azure 入口網站上 [基本 SAML 設定]  區段中的 [識別碼 (實體識別碼)]  文字方塊內。
 
     f. 尋找 XML 檔案的第一個標記，複製 **entityID** 的值，並將其貼入 [簽發者]  文字方塊。
 
@@ -220,7 +220,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
     b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    c. 在 [Email] \(電子郵件\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 
     d. 按一下 [新增]  。
 

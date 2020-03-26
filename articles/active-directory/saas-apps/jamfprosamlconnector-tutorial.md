@@ -17,10 +17,10 @@ ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77373186"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>教學課程：Azure Active Directory SSO 與 Jamf Pro 整合

@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72754992"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>適用於 MongoDB (3.2 版) 的 Azure Cosmos DB API：支援的功能和語法
@@ -38,7 +38,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 ### <a name="query-and-write-operation-commands"></a>查詢和寫入作業命令
 
 - delete
-- find
+- 尋找
 - findAndModify
 - getLastError
 - getMore
@@ -56,7 +56,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 - dropDatabase
 - listCollections
 - drop
-- create
+- 建立
 - filemd5
 - createIndexes
 - listIndexes
@@ -81,7 +81,7 @@ Cosmos DB 支援 MongoDB 3.2 公開預覽版中的彙總管線。 請參閱 [Azu
 
 ### <a name="aggregation-commands"></a>彙總命令
 
-- aggregate
+- 彙總 (aggregate)
 - count
 - distinct
 
@@ -205,7 +205,7 @@ Cosmos DB 支援 MongoDB 3.2 公開預覽版中的彙總管線。 請參閱 [Azu
 - $push
 - $addToSet
 
-## <a name="operators"></a>運算子
+## <a name="operators"></a>操作員
 
 下列運算子可透過其相對應用法範例支援使用。 請將下列查詢中使用的此範例文件列入考量：
 
@@ -300,7 +300,7 @@ $maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxD
 $center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | 是 |
 $centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | 是 |
 $box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | 是 |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | yes |
+$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
 
 ## <a name="sort-operations"></a>排序作業
 

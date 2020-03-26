@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: rohink
 ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939471"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教學課程：使用流量管理員控制加權端點的流量路由
@@ -51,7 +51,7 @@ ms.locfileid: "76939471"
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
 
-在本節中，您會在美國東部和歐洲西部的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
+在本節中，您會在美國東部和西歐的 Azure 區域中建立兩個 VM (myIISVMEastUS  和 myIISVMWestEurope  )。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
@@ -67,7 +67,7 @@ ms.locfileid: "76939471"
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
 5. 檢閱設定，然後按一下 [建立]  。  
-6. 請依照步驟來建立名為 myIISVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [歐洲西部]  ，然後將其他設定設成跟 myIISVMEastUS  一樣。
+6. 請依照步驟來建立名為 myIISVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [西歐]  ，然後將其他設定設成跟 myIISVMEastUS  一樣。
 7. 可能需要數分鐘才會建立虛擬機器。 請等到這兩個虛擬機器都已建立，再繼續進行其餘步驟。
 
 ![建立 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -111,7 +111,7 @@ ms.locfileid: "76939471"
 
 ### <a name="create-a-test-vm"></a>建立測試 VM
 
-在本節中，您會在每個 Azure 區域 (**美國東部**和**歐洲西部**) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 您會使用這些 VM 來測試流量管理員如何將流量路由傳送至權數值較高的網站端點。
+在本節中，您會在每個 Azure 區域 (**美國東部**和**西歐**) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 您會使用這些 VM 來測試流量管理員如何將流量路由傳送至權數值較高的網站端點。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
@@ -127,7 +127,7 @@ ms.locfileid: "76939471"
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
 5. 檢閱設定，然後按一下 [建立]  。  
-6. 請依照步驟來建立名為 myVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [歐洲西部]  ，然後將其他設定設成跟 myVMEastUS  一樣。
+6. 請依照步驟來建立名為 myVMWestEurope  的第二個 VM，並將 [資源群組]  命名為 myResourceGroupTM2  、將 [地區]  設定為 [西歐]  ，然後將其他設定設成跟 myVMEastUS  一樣。
 7. 可能需要數分鐘才會建立虛擬機器。 請等到這兩個虛擬機器都已建立，再繼續進行其餘步驟。
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔

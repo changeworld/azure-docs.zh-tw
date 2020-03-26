@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74012315"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 SSL 終止的應用程式閘道
@@ -88,7 +88,7 @@ Export-PfxCertificate `
 
     在 [設定虛擬網路]  底下，選取 [新建]  以建立新的虛擬網路。 在隨即開啟的 [建立虛擬網路]  視窗中，輸入下列值以建立虛擬網路和兩個子網路：
 
-    - **名稱**：輸入 myVNet  作為虛擬網路的名稱。
+    - **Name**：輸入 myVNet  作為虛擬網路的名稱。
 
     - **子網路名稱** (應用程式閘道子網路)：[子網路]  方格將會顯示名為 *Default* 的子網路。 將此子網路的名稱變更為 *myAGSubnet*。<br>應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。
 
@@ -122,7 +122,7 @@ Export-PfxCertificate `
 
 2. 在隨即開啟的 [新增後端集區]  視窗中，輸入下列值以建立空的後端集區：
 
-    - **名稱**：輸入 *myBackendPool* 作為後端集區的名稱。
+    - **Name**：輸入 *myBackendPool* 作為後端集區的名稱。
     - **新增不含目標的後端集區**：選取 [是]  以建立不含目標的後端集區。 您將會在建立應用程式閘道之後再新增後端目標。
 
 3. 在 [新增後端集區]  視窗中，選取 [新增]  以儲存後端集區設定，並返回 [後端]  索引標籤。
@@ -184,7 +184,7 @@ Export-PfxCertificate `
 
 ### <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-1. 在 Azure 入口網站上，選取 [建立資源]  。 [新增]  視窗隨即出現。
+1. 在 Azure 入口網站中，選取 [建立資源]  。 [新增]  視窗隨即出現。
 2. 選取 [熱門]  清單中的 [Windows Server 2016 Datacenter]  。 [建立虛擬機器]  頁面隨即出現。
 
    應用程式閘道可將流量路由至其後端集區中所用任何類型的虛擬機器。 在此範例中，您會使用 Windows Server 2016 Datacenter。

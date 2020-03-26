@@ -16,10 +16,10 @@ ms.date: 01/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f132deb8e391ca4c8f4ed093e7cc5e0d91e595e3
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76991950"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ticketmanager"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TicketManager 整合

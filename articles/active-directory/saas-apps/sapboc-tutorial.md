@@ -17,10 +17,10 @@ ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68347792"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教學課程：整合 SAP Analytics Cloud 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "68347792"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -100,7 +100,7 @@ ms.locfileid: "68347792"
     > [!NOTE] 
     > 這些 URL 中的值僅供示範。 使用實際的「登入 URL」及「識別碼 URL」來更新這些值。 若要取得登入 URL，請連絡 [SAP Analytics Cloud 用戶端支援小組](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)。 您可以從管理員主控台下載 SAP Analytics Cloud 中繼資料，以取得識別碼 URL。 稍後在本教學課程中會加以說明。
 
-4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  以下載憑證，並將其儲存在電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 

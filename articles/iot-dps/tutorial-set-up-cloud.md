@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976718"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教學課程：設定雲端資源以使用 IoT 中樞裝置佈建服務來佈建裝置
@@ -43,7 +43,7 @@ ms.locfileid: "74976718"
 
 4. 在 [IoT 中樞裝置佈建服務]  表單中填寫下列資訊：
     
-   | 設定       | 建議的值 | 說明 | 
+   | 設定       | 建議的值 | 描述 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名稱** | 任何唯一的名稱 | -- | 
    | **訂用帳戶** | 您的訂用帳戶  | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |

@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77168698"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>快速入門：使用 Azure IoT Central 監視您的裝置

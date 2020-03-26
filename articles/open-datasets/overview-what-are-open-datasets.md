@@ -8,10 +8,10 @@ author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
 ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73606163"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>什麼是 Azure 開放資料集，以及如何使用它們？
@@ -33,14 +33,14 @@ Azure 開放資料集中經過策劃的開放式公用資料集已針對機器�
 
 ### <a name="weather-data"></a>天氣資料
  
-|Dataset         | Notebooks     | 說明                                    |
+|資料集         | Notebooks     | 描述                                    |
 |----------------|---------------|------------------------------------------------|
 |[NOAA 整合式地面資料 (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) \(英文\) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | 來自 NOAA 的全球每小時天氣資料，北美、歐洲、澳大利亞和亞洲部分地區的空間覆蓋率最高。 每日更新。 |
 |[NOAA 全球預測系統 (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | 來自 NOAA 的 15 天美國每小時天氣預測資料。 每日更新。 |
 
 ### <a name="calendar-data"></a>行事曆資料
 
-|Dataset         | Notebooks     | 說明                                    |
+|資料集         | Notebooks     | 描述                                    |
 |----------------|---------------|------------------------------------------------|
 |[國定假日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) \(英文\) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | 1970 年到 2099 年的全球國定假日資料，涵蓋 41 個國家/地區。 包含國家/地區，以及大多數人是否帶薪休假。 |
 

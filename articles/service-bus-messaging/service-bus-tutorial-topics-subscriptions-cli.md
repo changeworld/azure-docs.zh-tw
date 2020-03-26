@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718919"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教學課程：使用 CLI 和主題/訂用帳戶來更新庫存
@@ -34,7 +34,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用 Java 開發服務匯流排應用程式，您必須安裝下列項目：
 

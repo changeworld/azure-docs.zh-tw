@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure 中使用 Terratest 測試 Terraform 模組
 description: 了解如何使用 Terratest 來測試 Terraform 模組。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158957"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79370792"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>教學課程：在 Azure 中使用 Terratest 測試 Terraform 模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "74158957"
 - **所有測試案例均以 Go 撰寫**。 大部分使用 Terraform 的開發人員都是 Go 開發人員。 如果您是 Go 開發人員，則不需要學習另一種程式設計語言來使用 Terratest。 此外，您在 Terratest 中執行測試案例所需的相依性只有 Go 與 Terraform。
 - **此基礎結構具有高度擴充性**。 您可以在 Terratest 的基礎上延伸額外功能，例如包含 Azure 特定的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 這篇實際操作文章與平台無關。 您可以在 Windows、 Linux 或 MacOS 上，執行我們在本文中使用的程式碼範例。 
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 若要執行單元測試，請在命令列上完成下列步驟：
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 傳統的 Go 測試結果大約會在一分鐘內傳回。
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 若要執行整合測試，請在命令列上完成下列步驟：
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 傳統的 Go 測試結果大約會在兩分鐘內傳回。 您也可以藉由執行下列命令，同時執行單元測試與整合測試：
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 整合測試所需的進行時間比單元測試還久 (相較於五個單元案例需要一分鐘，一個整合案例就需要兩分鐘)。 但是您可以決定在案例中使用單元測試或整合測試。 一般而言，如果是使用 Terraform HCL 函式的複雜邏輯，我們喜歡使用單元測試。 對於使用者的端對端觀點，我們通常會使用整合測試。
@@ -413,11 +419,11 @@ mage 唯一的要求是專案根目錄中有 `magefile.go` (在下列範例中�
 ```
 
 以下是 `./magefile.go` 的 範例。 在這個以 Go 撰寫的建置指令碼中，我們實作了五個建置步驟：
-- `Clean`：此步驟會移除在測試執行期間產生的所有產生及暫存檔案。
-- `Format`：此步驟會執行 `terraform fmt` 和 `go fmt` 來設定程式碼基底的格式。
-- `Unit`：此步驟會在 `./test/` 資料夾底下執行所有單元測試 (使用函式名稱慣例 `TestUT_*`)。
-- `Integration`：此步驟類似於 `Unit`，但不會執行單元測試，而是會執行整合測試 (`TestIT_*`)。
-- `Full`：此步驟會依序執行 `Clean`、`Format`、`Unit` 和 `Integration`。
+- `Clean`:此步驟會移除在測試執行期間產生的所有產生及暫存檔案。
+- `Format`:此步驟會執行 `terraform fmt` 和 `go fmt` 來設定程式碼基底的格式。
+- `Unit`:此步驟會在 `./test/` 資料夾底下執行所有單元測試 (使用函式名稱慣例 `TestUT_*`)。
+- `Integration`:此步驟類似於 `Unit`，但不會執行單元測試，而是會執行整合測試 (`TestIT_*`)。
+- `Full`:此步驟會依序執行 `Clean`、`Format`、`Unit` 和 `Integration`。
 
 ```go
 // +build mage
@@ -496,13 +502,16 @@ func Clean() error {
 
 您可以使用下列命令來執行完整的測試套件。 此程式碼類似於我們在先前章節中使用的執行步驟。 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 您可以使用其他 mage 步驟來取代最後一個命令列。 例如，您可以使用 `mage unit` 或 `mage clean`。 在 magefile 中內嵌 `dep` 命令和 `az login` 是個不錯的主意。 我們不會在此顯示程式碼。 

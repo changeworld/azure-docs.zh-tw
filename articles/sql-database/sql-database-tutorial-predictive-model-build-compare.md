@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68596806"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建立預測模型
 
 在這個三部分教學課程系列的第二部分中，您將在 R 中建立兩個預測模型，然後選取最精確的模型。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署此模型。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 定型兩個機器學習模型
@@ -37,7 +37,7 @@ ms.locfileid: "68596806"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 本教學課程的第二部分假設您已完成[**第一部分**](sql-database-tutorial-predictive-model-prepare-data.md)及其必要條件。
 

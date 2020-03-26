@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70241397"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教學課程：訂購 Azure Data Box Heavy
@@ -29,7 +29,7 @@ Azure Data Box Heavy 是一項混合式解決方案，可讓您以快速、簡�
 > * 追蹤訂單狀態
 > * 取消訂單
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您部署裝置之前，請完成下列資料箱服務與裝置的組態必要條件。
 
@@ -81,7 +81,7 @@ Azure Data Box Heavy 是一項混合式解決方案，可讓您以快速、簡�
 
     |設定  |值  |
     |---------|---------|
-    |Subscription     | 為資料箱服務選取 EA、CSP 或 Azure 贊助訂用帳戶。 <br> 訂用帳戶會連結到您的帳單帳戶。       |
+    |訂用帳戶     | 為資料箱服務選取 EA、CSP 或 Azure 贊助訂用帳戶。 <br> 訂用帳戶會連結到您的帳單帳戶。       |
     |傳輸類型     | 選取 [匯入至 Azure]  。        |
     |來源國家/地區     | 選取您的資料目前所在的國家/地區。         |
     |目的地 Azure 區域     | 選取要傳輸資料的 Azure 區域。        |
@@ -96,8 +96,8 @@ Azure Data Box Heavy 是一項混合式解決方案，可讓您以快速、簡�
     
     |設定  |值  |
     |---------|---------|
-    |Name     | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。      |
-    |Resource group     | 使用現有的群組或建立新群組。 <br> 資源群組是適用於資源而可一併管理或部署的邏輯容器：         |
+    |名稱     | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。      |
+    |資源群組     | 使用現有的群組或建立新群組。 <br> 資源群組是適用於資源而可一併管理或部署的邏輯容器：         |
     |目的地 Azure 區域     | 選取儲存體帳戶的區域。 <br> 如需詳細資訊，請移至[區域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=databox)。        |
     |儲存體目的地     | 從儲存體帳戶、受控磁碟或兩者中進行選擇。 <br> 根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 <br>Data Box Heavy 最多可以與 10 個儲存體帳戶連結。 <br> 您也可以建立新的**一般用途 v1**、**一般用途 v2** 或 **Blob 儲存體帳戶**。 <br> 不支援 Azure Data Lake Storage Gen 2 帳戶。 請參閱[您的裝置支援的儲存體帳戶](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支援具有虛擬網路的儲存體帳戶。 若要允許資料箱服務使用受保護的儲存體帳戶來運作，請在儲存體帳戶網路防火牆設定內啟用受信任的服務。 如需詳細資訊，請參閱如何[新增 Azure 資料箱服務作為受信任的服務](../storage/common/storage-network-security.md#exceptions)。|
 
@@ -160,7 +160,7 @@ Azure Data Box Heavy 是一項混合式解決方案，可讓您以快速、簡�
 在本教學課程中，您已了解 Azure Data Box Heavy 的相關主題，像是：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 訂購 Data Box Heavy
 > * 追蹤訂單狀態
 > * 取消訂單

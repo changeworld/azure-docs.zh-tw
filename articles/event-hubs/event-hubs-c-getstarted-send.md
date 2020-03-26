@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73720671"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入門：使用 C 將事件傳送至 Azure 事件中樞
@@ -29,7 +29,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 本教學課程說明如何使用以 C 撰寫的主控台應用程式，將事件傳送至事件中樞。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成此教學課程，您需要下列項目：
 
 * C 開發環境。 本教學課程假設 Azure Linux VM上的 gcc 堆疊有 Ubuntu 14.04。

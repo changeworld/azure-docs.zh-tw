@@ -4,10 +4,10 @@ description: IRS 1075 (Rev.11-2016) 藍圖範例的部署步驟，其中包括�
 ms.date: 11/20/2019
 ms.topic: sample
 ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546808"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>部署 IRS 1075 藍圖範例
@@ -91,20 +91,20 @@ ms.locfileid: "74546808"
 
 下表提供藍圖成品參數的清單：
 
-|成品名稱|成品類型|參數名稱|說明|
+|成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應設定 VM 的 Log Analytics 工作區識別碼|這是應設定 VM 的 Log Analytics 工作區識別碼 (GUID)。|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應從 Windows VM 系統管理員群組中排除的使用者清單|應從系統管理員本機群組中排除之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應納入 Windows VM 系統管理員群組中的使用者清單|應納入系統管理員本機群組中之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|
-|為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS|空陣列可以用來表示沒有選擇性參數：\[\]|
+|為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS|空陣列可以用來表示沒有選擇性參數：\[\]|
 |部署適用於 Linux VM 的 Log Analytics 代理程式|原則指派|Linux VM 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|
-|部署適用於 Linux VM 的 Log Analytics 代理程式|原則指派|選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS|空陣列可以用來表示沒有選擇性參數：\[\]|
+|部署適用於 Linux VM 的 Log Analytics 代理程式|原則指派|選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS|空陣列可以用來表示沒有選擇性參數：\[\]|
 |為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|Windows VM 擴展集 (VMSS) 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|
-|為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS|空陣列可以用來表示沒有選擇性參數：\[\]|
+|為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS|空陣列可以用來表示沒有選擇性參數：\[\]|
 |部署適用於 Windows VM 的 Log Analytics 代理程式|原則指派|Windows VM 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|
-|部署適用於 Windows VM 的 Log Analytics 代理程式|原則指派|選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS|空陣列可以用來表示沒有選擇性參數：\[\]|
+|部署適用於 Windows VM 的 Log Analytics 代理程式|原則指派|選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS|空陣列可以用來表示沒有選擇性參數：\[\]|
 |在儲存體帳戶部署進階威脅防護|原則指派|效果|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)|
 |在 SQL 伺服器上部署稽核|原則指派|保留期間天數中的值 (0 表示無保留天數限制)|保留天數 (選擇性，若未指定則為 180 天)|
 |在 SQL 伺服器上部署稽核|原則指派|儲存體帳戶用於 SQL 伺服器稽核的資源群組名稱|稽核會將資料庫事件寫入您 Azure 儲存體帳戶的稽核記錄中 (儲存體帳戶會建立於 SQL Server 建立所在的每個區域中，且將由該區域中的所有伺服器共用)。 重要 - 為使稽核作業正常運作，請勿刪除或重新命名資源群組或儲存體帳戶。|
