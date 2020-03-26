@@ -3,7 +3,7 @@ title: 快速入門：使用 Azure 入口網站下載稽核報告 | Microsoft Do
 description: 了解如何使用 Azure 入口網站下載稽核報告
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e5dd1c42537ce6ff419d7d81d69d824242ec4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68989684"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站下載稽核報告
 
 在此快速入門中，您將學到如何下載租用戶過去 24 小時內的稽核記錄 CSV 檔。 您可以從 Azure 入口網站最多下載 250,000 筆記錄。 這些記錄會依「最近期」方式排序，因此根據預設，您會取得最近的 250,000 筆記錄。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要：
 

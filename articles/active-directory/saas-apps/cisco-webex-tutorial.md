@@ -17,10 +17,10 @@ ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026260"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco Webex Meetings 整合
@@ -33,7 +33,7 @@ ms.locfileid: "72026260"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -77,7 +77,7 @@ ms.locfileid: "72026260"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Cisco Webex Meetings]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，您可以藉由上傳**服務提供者中繼資料**檔案，在 **IDP** 起始模式中設定應用程式，如下所示：
 
     a. 按一下 [上傳中繼資料檔案]  。
@@ -108,7 +108,7 @@ ms.locfileid: "72026260"
     |   firstname    | user.givenname |
     |   lastname    | user.surname |
     |   電子郵件       | user.mail |
-    |   UID    | user.mail |
+    |   uid    | user.mail |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 

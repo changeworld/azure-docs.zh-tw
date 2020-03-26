@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Sugar CRM 整合
@@ -33,7 +33,7 @@ ms.locfileid: "74231969"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -147,15 +147,15 @@ ms.locfileid: "74231969"
 
 1. 移至 [管理]  。
 
-    ![管理員](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![管理員](./media/sugarcrm-tutorial/ic795888.png "管理")
 
 1. 在 [管理]  區段中，按一下 [密碼管理]  。
 
-    ![系統管理](./media/sugarcrm-tutorial/ic795889.png "系統管理")
+    ![管理](./media/sugarcrm-tutorial/ic795889.png "系統管理")
 
 1. 按一下 [啟用 SAML 驗證]  。
 
-    ![系統管理](./media/sugarcrm-tutorial/ic795890.png "系統管理")
+    ![管理](./media/sugarcrm-tutorial/ic795890.png "系統管理")
 
 1. 在 [SAML 驗證]  區段中，執行下列步驟：
 
@@ -179,11 +179,11 @@ ms.locfileid: "74231969"
 
 1. 移至 [管理]  。
 
-    ![管理員](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![管理員](./media/sugarcrm-tutorial/ic795888.png "管理")
 
 1. 在 [管理]  區段中，按一下 [使用者管理]  。
 
-    ![系統管理](./media/sugarcrm-tutorial/ic795893.png "系統管理")
+    ![管理](./media/sugarcrm-tutorial/ic795893.png "系統管理")
 
 1. 移至 [使用者] \> [建立新的使用者]  。
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/02/2019
-ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769076"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79535556"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什麼是適用於 MariaDB 的 Azure 資料庫？
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>在幾秒之內即可調整效能和規模
 
-「適用於 MariaDB 的 Azure 資料庫」服務提供了多個服務層級：「基本」、「一般用途」及「記憶體最佳化」。 每個服務層提供不同的效能和功能，以支援輕量到重量級的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可協助資料庫以透明的方式回應快速變化的資源需求。 有資源需求時，您才需要就所需資源支付費用。 如需詳細資訊，請參閱 [定價層](concepts-pricing-tiers.md)。
+「適用於 MariaDB 的 Azure 資料庫」服務提供了多個服務層級：基本、一般用途和記憶體最佳化。 每個服務層提供不同的效能和功能，以支援輕量到重量級的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可協助資料庫以透明的方式回應快速變化的資源需求。 有資源需求時，您才需要就所需資源支付費用。 如需詳細資訊，請參閱 [定價層](concepts-pricing-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>監視和警示
 

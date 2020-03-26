@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75434668"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入門：使用 C# 向裝置佈建服務註冊 X.509 裝置
@@ -65,7 +65,7 @@ ms.locfileid: "75434668"
 
 3. 依照[管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟操作。
 
-除了 C SDK 中的工具以外，*Microsoft Azure IoT SDK for .NET* 中的[群組憑證驗證範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)會說明如何在 C# 中使用現有的 X.509 中繼或根 CA 憑證執行擁有權證明。
+除了 C SDK 中的工具以外，[Microsoft Azure IoT SDK for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) 中的*群組憑證驗證範例*會說明如何在 C# 中使用現有的 X.509 中繼或根 CA 憑證執行擁有權證明。
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>取得佈建服務的連接字串
 
@@ -95,7 +95,7 @@ ms.locfileid: "75434668"
 
    此步驟會下載及安裝 [Azure IoT 佈建服務用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 套件及其相依項目，並新增對它的參考。
 
-1. 在 `Program.cs` 的頂端，將下列 `using` 陳述式新增於其他 `using` 陳述式之後：
+1. 在 `using` 的頂端，將下列 `using` 陳述式新增於其他 `Program.cs` 陳述式之後：
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -123,7 +123,7 @@ ms.locfileid: "75434668"
    > * 替佈建服務管理員將連接字串硬式編碼會違反安全性最佳做法。 連接字串應以安全的方式保存，例如保存在安全的組態檔或保存在登錄中。
    > * 務必僅只上傳簽署憑證的公開部分。 決不將包含私密金鑰的 .pfx (PKCS12) 或 .pem 檔案上傳至佈建服務。
 
-1. 將下列方法新增至 `Program` 類別。 此程式碼會建立註冊群組項目，然後在 `ProvisioningServiceClient` 上呼叫 `CreateOrUpdateEnrollmentGroupAsync` 方法，以將註冊群組新增到佈建服務。
+1. 將下列方法新增至 `Program` 類別。 此程式碼會建立註冊群組項目，然後在 `CreateOrUpdateEnrollmentGroupAsync` 上呼叫 `ProvisioningServiceClient` 方法，以將註冊群組新增到佈建服務。
 
    ```csharp
    public static async Task RunSample()

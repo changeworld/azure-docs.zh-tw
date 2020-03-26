@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73043564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Veracode 整合
@@ -33,7 +33,7 @@ ms.locfileid: "73043564"
 
 若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -73,7 +73,7 @@ ms.locfileid: "73043564"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Veracode]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的鉛筆圖示，以編輯設定。
 
    ![[以 SAML 設定單一登入] 的螢幕擷取畫面，其中已醒目提示鉛筆圖示](common/edit-urls.png)
@@ -129,7 +129,7 @@ ms.locfileid: "73043564"
     b. 在 [使用者資料更新]  選取 [Veracode 使用者資料喜好設定]  。
 
     c. 針對 [SAML 屬性詳細資料]  ，請選取下列選項：
-      * **[使用者角色]**
+      * **使用者角色**
       * **[原則系統管理員]**
       * **[檢閱者]**
       * **[安全性負責人]**

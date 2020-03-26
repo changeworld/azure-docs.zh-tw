@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357788"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290106"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -143,9 +143,9 @@ module.exports = df.orchestrator(function*(context) {
   * **OrchestratorCompleted**：協調器函式已等候。
   * **ContinueAsNew**：協調器函式已完成，並且以新的狀態自行重新啟動。 `Result` 資料行包含值，可作為重新啟動執行個體的輸入。
   * **ExecutionCompleted**：協調器函式即將完成 (或失敗)。 函式或錯誤詳細資料的輸出會儲存在 `Result` 資料行。
-* **時間戳記**：歷程記錄事件的 UTC 時間戳記。
+* **Timestamp**：歷程記錄事件的 UTC 時間戳記。
 * **Name**：被叫用之函式的名稱。
-* **輸入**：函式的 JSON 格式輸入。
+* **Input**：函式的 JSON 格式輸入。
 * **Result**：函式的輸出，也就是它的傳回值。
 
 > [!WARNING]
@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要區段 (Durable Functions 2.x，目前僅限 .NET)
 
-協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用 `LockAsync` 方法來定義「重要區段」  。
+協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用  *方法來定義「重要區段」* `LockAsync`。
 
 下列範例程式碼顯示可定義重要區段的協調器函式。 它會使用 `LockAsync` 方法輸入重要區段。 此方法需要將一或多個參考傳遞至[長期實體](durable-functions-entities.md)，其會持久地管理鎖定狀態。 此協調流程一次只有一個執行個體可以在重要區段中執行程式碼。
 
@@ -267,7 +267,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
+在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

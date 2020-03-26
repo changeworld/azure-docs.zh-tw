@@ -17,11 +17,11 @@ ms.author: markvi
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57b68ebb21c0c10c3fbe3fd77d11785d16a10053
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445915"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60443461"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教學課程：在 Linux VM 上利用使用者指派的受控識別來存取 Azure Resource Manager
 
@@ -29,7 +29,7 @@ ms.locfileid: "58445915"
 
 本教學課程說明如何建立使用者指派的受控識別，並將其指派給 Linux 虛擬機器 (VM)，然後使用該身分識別來存取 Azure Resource Manager API。 適用於 Azure 資源的受控識別會自動由 Azure 管理。 它們會啟用對支援 Azure AD 驗證之服務的驗證，而不需要在程式碼中內嵌認證。 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立使用者指派的受控識別
@@ -37,7 +37,7 @@ ms.locfileid: "58445915"
 > * 在 Azure Resource Manager 中，將存取資源群組的權利，授予使用者指派的受控識別 
 > * 利用使用者指派的受控識別來取得存取權杖，以用來呼叫 Azure Resource Manager 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -125,7 +125,7 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
 若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 用戶端。 
 
 1. 登入 Azure [入口網站](https://portal.azure.com)。
-2. 在入口網站中，瀏覽至 [虛擬機器]，並移至您的 Linux 虛擬機器，在 [概觀] 中按一下 [連線]。 複製字串以連線到您的 VM。
+2. 在入口網站中，瀏覽至 [虛擬機器]  ，並移至您的 Linux 虛擬機器，在 [概觀]  中按一下 [連線]  。 複製字串以連線到您的 VM。
 3. 使用您所選擇的 SSH 用戶端來連線到虛擬機器。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](~/articles/virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
 4. 在終端機視窗中使用 CURL，向 Azure Instance Metadata Service (IMDS) 身分識別端點提出要求來取得 Azure Resource Manager 的存取權杖。  
 

@@ -7,10 +7,10 @@ ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272794"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>將您的 Java 函式連線至 Azure 儲存體
@@ -97,7 +97,7 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>更新測試
 
-因為原型也會建立一組測試，所以您需要更新這些測試，以處理 `run` 方法簽章中的新 `msg` 參數。  
+因為原型也會建立一組測試，所以您需要更新這些測試，以處理 `msg` 方法簽章中的新 `run` 參數。  
 
 瀏覽至 _src/test/java_  底下的測試程式碼位置，開啟 *Function.java* 專案檔案，並以下列程式碼取代 `//Invoke` 下的程式碼行。
 

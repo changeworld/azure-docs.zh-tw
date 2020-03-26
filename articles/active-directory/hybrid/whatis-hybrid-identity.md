@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68779840"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什麼是 Azure Active Directory 的混合式身分識別？
@@ -73,5 +73,5 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 - [什麼是密碼雜湊同步處理 (PHS)？](whatis-phs.md) 
 - [什麼是傳遞驗證 (PTA)？](how-to-connect-pta.md) 
 - [什麼是同盟？](whatis-fed.md) 
-- [何謂單一登入？](how-to-connect-sso.md) 
+- [什麼是單一登入？](how-to-connect-sso.md) 
 

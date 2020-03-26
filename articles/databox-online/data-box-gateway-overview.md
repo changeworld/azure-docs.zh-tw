@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69900577"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什麼是 Azure Data Box Gateway？
@@ -49,7 +49,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 資料箱閘道具有下列功能：
 
-|功能 |說明  |
+|功能 |描述  |
 |---------|---------|
 |速度     | 完全自動化且高度最佳化的資料傳輸與頻寬。|
 |支援的通訊協定     | 支援用於資料擷取的標準 SMB 與 NFS 通訊協定。 <br> 如需支援版本的詳細資訊，請移至[資料箱閘道系統需求](data-box-gateway-system-requirements.md)。|
@@ -64,12 +64,12 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 資料箱閘道虛擬裝置具有下列規格：
 
-| 規格                                          | 說明              |
+| 規格                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | 虛擬處理器 (核心)   | 最少 4 個 |
 | 記憶體  |最少 8 GB|
 | 可用性|單一節點|
-| 磁碟|OS 磁碟：250 GB <br> 資料磁碟：最少 2 TB、精簡佈建且必須以 SSD 為後盾|
+| 磁碟|作業系統磁碟：250 GB <br> 資料磁碟：最少 2 TB，精簡佈建且必須以 SSD 支援|
 | 網路介面 |1 或多個虛擬網路介面|
 | 原生的檔案共用通訊協定|SMB 和 NFS  |
 | 安全性|驗證以解除存取裝置和資料的鎖定 <br> 資料傳輸使用 AES-256 位元加密|

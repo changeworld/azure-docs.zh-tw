@@ -17,10 +17,10 @@ ms.date: 11/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e33af932e405552cf9d8f5aaf6d42cbd095607b0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74085011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Netskope 使用者驗證整合
@@ -33,7 +33,7 @@ ms.locfileid: "74085011"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -189,7 +189,7 @@ ms.locfileid: "74085011"
 
     ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/add-user.png)
 
-1. 按一下 [新增使用者]  。
+1. 按一下 [加入使用者]  。
 
     ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/user-add.png)
 

@@ -2,15 +2,15 @@
 title: 概觀
 description: 描述如何使用 Azure Resource Manager 在 Azure 上進行資源的部署、管理及存取控制。
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455862"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258136"
 ---
-# <a name="azure-resource-manager-overview"></a>Azure Resource Manager 概觀
+# <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
 Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
@@ -20,7 +20,7 @@ Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層�
 
 當使用者從任何 Azure 工具、API 或 SDK 傳送要求時，Resource Manager 就會收到要求。 其會驗證並授權要求。 Resource Manager 會將要求傳送至 Azure 服務，而該服務會接受要求的動作。 因為所有要求都是透過相同的 API 來處理，所以您會在所有不同工具中看到一致的結果和功能。
 
-下圖顯示處理 Azure 要求時，Azure Resource Manager 所扮演的角色。 
+下圖顯示處理 Azure 要求時，Azure Resource Manager 所扮演的角色。
 
 ![Resource Manager 要求模型](./media/overview/consistent-management-layer.png)
 
@@ -102,12 +102,8 @@ Azure Resource Manager 服務專門設計來提供復原和持續可用性。 RE
 
 ## <a name="next-steps"></a>後續步驟
 
-* 針對資源提供者提供的所有作業，請參閱 [Azure REST API](/rest/api/azure/)。
-
 * 若要了解如何移動資源，請參閱[將資源移動到新的資源群組或訂用帳戶](move-resource-group-and-subscription.md)。
 
 * 若要了解如何標記資源，請參閱 [使用標記來組織 Azure 資源](tag-resources.md)。
 
 * 若要了解鎖定資源，請參閱[鎖定資源以防止非預期的變更](lock-resources.md)。
-
-* 如需有關建立部署範本的資訊，請參閱[範本部署概觀](../templates/overview.md)。

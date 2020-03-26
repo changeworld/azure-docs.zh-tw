@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
 ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77523470"
 ---
 # <a name="what-is-azure-app-configuration"></a>什麼是 Azure 應用程式設定？
@@ -51,7 +51,7 @@ Azure 應用程式組態會提供集中管理應用程式設定和功能旗標�
 
 您可以透過 Microsoft 提供的用戶端程式庫，將應用程式組態存放區新增至您的應用程式，這是最簡單的方式。 根據您選擇的語言和架構，您可以使用下列方法來與應用程式連線。
 
-| 程式設計語言和架構 | 如何連線 |
+| 程式設計語言和架構 | 如何連接 |
 |---|---|
 | .NET Core 和 ASP.NET Core | 適用於 .NET Core 的應用程式設定提供者 |
 | .NET Framework 和 ASP.NET | 適用於 .NET 的應用程式設定建立器 |

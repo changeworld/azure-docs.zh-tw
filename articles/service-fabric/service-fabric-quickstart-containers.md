@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75466277"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入門：將 Windows 容器部署至 Service Fabric
@@ -132,7 +132,7 @@ Thumbprint                                Subject
 
 以滑鼠右鍵按一下 [方案總管] 中的 **MyFirstContainer**，並選擇 [發佈]  。 [發行] 對話方塊隨即出現。
 
-當您執行上述 `Import-PfxCertificate` 命令時，在 PowerShell 視窗中複製 **CN =** 後面的內容，並在其中新增連接埠 `19000`。 例如： `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 將它複製到 [連線端點]  欄位中。 請記住這個值，因為您會在之後的步驟中用到該值。
+當您執行上述 **命令時，在 PowerShell 視窗中複製**CN =`Import-PfxCertificate` 後面的內容，並在其中新增連接埠 `19000`。 例如： `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 將它複製到 [連線端點]  欄位中。 請記住這個值，因為您會在之後的步驟中用到該值。
 
 按一下 [進階連線參數]  並確認連線參數資訊。  *FindValue* 和 *ServerCertThumbprint* 值必須符合您在前一個步驟中執行 `Import-PfxCertificate` 時所安裝的憑證指紋。
 
@@ -144,7 +144,7 @@ Thumbprint                                Subject
 
 開啟瀏覽器並瀏覽至您在前一個步驟中放入 [連線端點]  欄位中的位址。 您可以選擇性地在 URL 前面加上配置識別碼 `http://`，並將連接埠 `:80` 附加到 URL。 例如，http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
 
- 您應該會看見 IIS 預設網頁：![IIS 預設網頁][iis-default]
+ 您應會看到 IIS 預設網頁：![IIS 預設網頁][iis-default]
 
 ## <a name="clean-up"></a>清除
 

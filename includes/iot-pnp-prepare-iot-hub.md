@@ -4,19 +4,16 @@ ms.author: baanders
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/24/2019
-ms.openlocfilehash: 3f3e7c54ec59c42ed102da682fc9aa077709ef3f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a3340eb9e53afa83c35109bad7d22f81413dd644
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262409"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80234151"
 ---
 ## <a name="prepare-an-iot-hub"></a>準備 IoT 中樞
 
 您的 Azure 訂用帳戶中也必須要有 Azure IoT 中樞，才能完成本快速入門。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 如果您沒有 IoT 中樞，請依照[下列指示建立一個](../articles/iot-hub/iot-hub-create-using-cli.md)。
-
-> [!IMPORTANT]
-> 在公開預覽期間，IoT 隨插即用功能只能在**美國中部**、**北歐**和**日本東部**區域中建立的 IoT 中樞上使用。
 
 如果您要在本機使用 Azure CLI，請先使用 `az login` 登入您的 Azure 訂用帳戶。 如果您要在 Azure Cloud Shell 中執行這些命令，則會自動登入。
 

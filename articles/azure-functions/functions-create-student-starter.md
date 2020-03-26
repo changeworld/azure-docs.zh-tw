@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75921123"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用 Azure 學生入門版建立函式
@@ -72,9 +72,9 @@ Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions
 
 接下來，您要在新的函式應用程式中建立函式。
 
-## <a name="create-function"></a>建立由 HTTP 觸發的函式
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>建立由 HTTP 觸發的函式
 
-1. 展開新的函式應用程式，接著選取 [Functions]  旁的 **+** 按鈕、選擇 [入口網站內]  ，然後選取 [繼續]  。
+1. 展開新的函式應用程式，接著選取 [Functions] **+ 旁的**  按鈕、選擇 [入口網站內]  ，然後選取 [繼續]  。
 
     ![Functions 快速入門選擇平台。](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 

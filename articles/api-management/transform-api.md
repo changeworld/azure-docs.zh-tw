@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067459"
 ---
 # <a name="transform-and-protect-your-api"></a>轉換及保護您的 API
@@ -26,7 +26,7 @@ ms.locfileid: "70067459"
 
 本教學課程示範透過使用「Azure API 管理」設定速率限制，來為後端 API 新增保護是多麼簡單容易的工作。 例如，您可以限制呼叫 API 的呼叫次數，使得開發人員不會過度使用它。 如需詳細資訊，請參閱 [API 管理原則](api-management-policies.md)。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 >
@@ -37,7 +37,7 @@ ms.locfileid: "70067459"
 
 ![原則](./media/transform-api/api-management-management-console.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 -   了解 [Azure API 管理術語](api-management-terminology.md)。
 -   了解 [Azure API 管理的原則概念](api-management-howto-policies.md)。
@@ -114,7 +114,7 @@ ms.locfileid: "70067459"
 4.  在 [輸出處理]  區段中，按一下 **</>** 圖示。
 5.  將游標放在 **&lt;outbound&gt;** 元素內部。
 6.  在右側視窗的 [轉換原則]  下方，按一下 [+ 尋找並取代主體中的字串]  。
-7.  修改您的 **find-and-replace** 程式碼 (位於 **\<outbound\>** 元素中)，並用來取代 URL，以符合您的 APIM 閘道。 例如︰
+7.  修改您的 **find-and-replace** 程式碼 (位於 **\<outbound\>** 元素中)，並用來取代 URL，以符合您的 APIM 閘道。 例如：
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 

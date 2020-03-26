@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73062617"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>將資源庫應用程式新增至 Azure AD 組織
@@ -71,27 +71,27 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
        |---|---|---|---|---|
        | 為使用者啟用登入？ | 需要使用者指派？ | 可讓使用者看見？ | 已指派的使用者可以登入？ | 已指派的使用者可以看見應用程式？* |
        | 是 | 是 | 是 | 是 | 是  |
-       | 是 | 是 | no  | 是 | no   |
-       | 是 | no  | 是 | 是 | 是  |
-       | 是 | no  | no  | 是 | no   |
-       | no  | 是 | 是 | no  | no   |
-       | no  | 是 | no  | no  | no   |
-       | no  | no  | 是 | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | 是 | 是 | 否  | 是 | 否   |
+       | 是 | 否  | 是 | 是 | 是  |
+       | 是 | 否  | 否  | 是 | 否   |
+       | 否  | 是 | 是 | 否  | 否   |
+       | 否  | 是 | 否  | 否  | 否   |
+       | 否  | 否  | 是 | 否  | 否   |
+       | 否  | 否  | 否  | 否  | 否   |
 
       **未指派**的使用者行為：
 
        | 應用程式屬性設定 | | | 未指派的使用者體驗 | |
        |---|---|---|---|---|
        | 為使用者啟用登入？ | 需要使用者指派？ | 可讓使用者看見？ | 未指派的使用者可以登入？ | 未指派的使用者可以看見應用程式？* |
-       | 是 | 是 | 是 | no  | no   |
-       | 是 | 是 | no  | no  | no   |
-       | 是 | no  | 是 | 是 | no   |
-       | 是 | no  | no  | 是 | no   |
-       | no  | 是 | 是 | no  | no   |
-       | no  | 是 | no  | no  | no   |
-       | no  | no  | 是 | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | 是 | 是 | 是 | 否  | 否   |
+       | 是 | 是 | 否  | 否  | 否   |
+       | 是 | 否  | 是 | 是 | 否   |
+       | 是 | 否  | 否  | 是 | 否   |
+       | 否  | 是 | 是 | 否  | 否   |
+       | 否  | 是 | 否  | 否  | 否   |
+       | 否  | 否  | 是 | 否  | 否   |
+       | 否  | 否  | 否  | 否  | 否   |
 
      *使用者是否可以在存取面板和 Office 365 應用程式啟動器中看到應用程式？
 

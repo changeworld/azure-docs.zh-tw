@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024104"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215306"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中執行您的第一個 Batch 作業
 
@@ -24,7 +24,7 @@ ms.locfileid: "77024104"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure 
 
-在 https://portal.azure.com 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-a-batch-account"></a>建立批次帳戶：
 

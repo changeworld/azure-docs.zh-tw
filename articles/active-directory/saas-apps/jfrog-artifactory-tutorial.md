@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70213570"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教學課程：整合 JFrog Artifactory 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "70213570"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -105,7 +105,7 @@ ms.locfileid: "70213570"
 
     ![image](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![映像](./media/jfrog-artifactory-tutorial/config05.png)
+    ![image](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 

@@ -8,10 +8,10 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67174350"
 ---
 ## <a name="run-the-web-application"></a>執行 Web 應用程式
@@ -34,4 +34,4 @@ ms.locfileid: "67174350"
 1. 在不同的瀏覽器視窗中開啟另一個 Web 應用程式執行個體。 您將會看見所有已傳送的訊息都會出現在該應用程式的所有執行個體中。
 
 > [!IMPORTANT]
-> HTML 頁面會使用 HTTPS 處理，但本機 Azure Functions 執行階段預設使用 HTTP，因此您的瀏覽器可能會強制使用混合內容原則，而封鎖從網頁向您的函式發出的要求。 為了解決這個問題，請使用沒有這項限制的瀏覽器，或在 */docs/demo/chat-v2* 目錄中啟動本機 HTTP 伺服器，例如 [http-server](https://www.npmjs.com/package/http-server)。 確定已將原點新增至 *local.settings.json* 中的 `CORS` 設定。
+> HTML 頁面會使用 HTTPS 處理，但本機 Azure Functions 執行階段預設使用 HTTP，因此您的瀏覽器可能會強制使用混合內容原則，而封鎖從網頁向您的函式發出的要求。 為了解決這個問題，請使用沒有這項限制的瀏覽器，或在 [/docs/demo/chat-v2](https://www.npmjs.com/package/http-server) 目錄中啟動本機 HTTP 伺服器，例如 *http-server*。 確定已將原點新增至 `CORS`local.settings.json*中的* 設定。

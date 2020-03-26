@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726398"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 在 Azure Blob 儲存體之間傳送物件
 在本快速入門中，您會了解如何使用 PHP 在 Azure Blob 儲存體容器中上傳、下載及列出區塊 Blob。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -42,14 +42,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 ## <a name="configure-your-storage-connection-string"></a>設定儲存體連接字串
 在應用程式中，您必須提供儲存體帳戶名稱和帳戶金鑰，才能建立應用程式的 **BlobRestProxy** 執行個體。 建議您在執行應用程式的本機電腦上，將這些識別碼儲存在環境變數內。 請根據您的作業系統，使用以下其中一個範例來建立環境變數。 使用您的帳戶名稱和金鑰取代 **youraccountname** 和 **youraccountkey** 值。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -57,7 +57,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ```
 ---
 
-## <a name="configure-your-environment"></a>設定您的環境
+## <a name="configure-your-environment"></a>設定環境
 從本機 git 資料夾取得資料夾，並將它放在您的 PHP 伺服器所提供的目錄中。 然後，開啟範圍限於該相同目錄的命令提示字元並輸入：`php composer.phar install`
 
 ## <a name="run-the-sample"></a>執行範例

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74899972"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什麼是 Azure AD Privileged Identity Management？
@@ -78,11 +78,11 @@ Privileged Identity Management 支援下列案例：
 - 檢視要啟用之要求的狀態
 - 如果已核准啟用，在 Azure AD 中完成您的工作
 
-## <a name="terminology"></a>術語
+## <a name="terminology"></a>詞彙
 
 若要深入了解 Privileged Identity Management 及其文件，請檢閱下列詞彙。
 
-| 詞彙或概念 | 角色指派類別 | 說明 |
+| 詞彙或概念 | 角色指派類別 | 描述 |
 | --- | --- | --- |
 | 合格 | 類型 | 需要使用者執行一或多個動作才能使用角色的角色指派。 如果使用者已有資格使用角色，即表示他們可以在需要執行特殊權限工作時啟用該角色。 使用者不論是具有永久角色指派還是合格角色指派，獲得的存取權並無差異。 唯一的差異在於有些使用者並不一直需要該存取權。 |
 | 作用中 | 類型 | 不要求使用者執行任何動作即可使用角色的角色指派。 指派為有效的使用者具有指派給角色的權限。 |
@@ -93,7 +93,7 @@ Privileged Identity Management 支援下列案例：
 | 永久有效 | Duration | 使用者一律可以使用角色而不需執行任何動作的角色指派。 |
 | 合格過期 | Duration | 使用者有資格在指定的開始和結束日期內啟用角色的角色指派。 |
 | 有效過期 | Duration | 使用者可以在指定的開始和結束日期內使用角色而不需執行任何動作的角色指派。 |
-| just-in-time (JIT) 存取 |  | 一種模型，使用者會在其中獲得臨時權限以執行特殊權限的工作，這可防止惡意或未經授權的使用者在權限過期後取得存取權。 只有當使用者需要時才會獲得存取權。 |
+| Just-In-Time (JIT) 存取 |  | 一種模型，使用者會在其中獲得臨時權限以執行特殊權限的工作，這可防止惡意或未經授權的使用者在權限過期後取得存取權。 只有當使用者需要時才會獲得存取權。 |
 | 最低權限存取的原則 |  | 建議的安全性做法，每位使用者只會獲得所需的最低權限，以便完成他們獲得授權而可執行的工作。 這種做法只需要最少量的全域管理員，並會改為針對特定案例使用特定的管理員角色。 |
 
 ## <a name="license-requirements"></a>授權需求

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66474012"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教學課程：使用密碼雜湊同步處理整合單一 AD 樹系 (PHS)
@@ -27,7 +27,7 @@ ms.locfileid: "66474012"
 
 下列教學課程將逐步說明如何使用密碼雜湊同步來建立混合式身分識別環境。此環境可用於測試或更熟悉混合式身分識別的運作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 下列是完成此教學課程的必要條件
 - 已安裝 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
 - [外部網路介面卡](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
@@ -83,7 +83,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 6. 輸入您的授權金鑰，然後按一下 [下一步]  。
 7. 選取 [我接受授權條款]，然後按一下 [下一步]  。
 8. 選取**自訂：只安裝 Windows (進階)**
-9. 按一下 [下一步] 
+9. 按 **[下一步]**
 10. 安裝完成之後，請重新啟動虛擬機器、登入並執行 Windows 更新，以確保 VM 為最新。  安裝最新的更新。
 
 ## <a name="install-active-directory-prerequisites"></a>安裝 Active Directory 必要條件
