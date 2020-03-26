@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494319"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教學課程：使用 ODBC 和 PowerShell 查詢 Apache Hive
@@ -28,7 +28,7 @@ Microsoft ODBC 驅動程式提供彈性的方式來與不同資料來源類型 (
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前，您必須具備下列項目：
 
@@ -52,19 +52,19 @@ Microsoft ODBC 驅動程式提供彈性的方式來與不同資料來源類型 (
 
 1. 輸入或選取下列值：
 
-   | 屬性 | 說明 |
+   | 屬性 | 描述 |
    | --- | --- |
    |  資料來源名稱 |為資料來源指定名稱 |
-   |  主機 |輸入 `CLUSTERNAME.azurehdinsight.net` 。 例如， `myHDICluster.azurehdinsight.net` |
-   |  Port |使用 **443**|
+   |  主機 |輸入 `CLUSTERNAME.azurehdinsight.net`。 例如， `myHDICluster.azurehdinsight.net` |
+   |  連接埠 |使用 **443**|
    |  資料庫 |使用**預設值**。 |
    |  機制 |選取 [Windows Azure HDInsight 服務]  |
    |  使用者名稱 |輸入 HDInsight 叢集 HTTP 使用者的使用者名稱。 預設的使用者名稱為 **admin**。 |
    |  密碼 |輸入 HDInsight 叢集使用者的密碼。 選取 [儲存密碼 (加密)]  核取方塊。|
 
-1. 選用：選取 [進階選項]  。  
+1. 選擇性：選取 [進階選項]  。  
 
-   | 參數 | 說明 |
+   | 參數 | 描述 |
    | --- | --- |
    |  使用原生查詢 |選取此選項時，ODBC 驅動程式不會嘗試將 TSQL 轉換為 HiveQL。 只有當您 100% 確定要送出純 HiveQL 陳述式時，再使用此選項。 連接到 SQL Server 或 Azure SQL Database 時，您應將它保留為未勾選。 |
    |  每個區塊擷取的資料列 |在擷取大量記錄時，可能必須調整此參數，以確保最佳效能。 |

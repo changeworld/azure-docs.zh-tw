@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 7ee17fa1ddb0c70921f8a9625944053e71ec016f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 111003718fc82683f1756276132def0aea7b7375
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201926"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239564"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>快速入門：使用 Ansible 在 Azure 中設定 Linux 虛擬機器
 
@@ -220,7 +220,7 @@ Ansible 需要用來部署資源的資源群組。 下列範例 Ansible 腳本�
 
 1. 建立名為 `azure_create_complete_vm.yml` 的檔案 (以包含您腳本)，然後在 VI 編輯器中加以開啟，如下所示：
 
-   ```azurecli-interactive
+   ```bash
    vi azure_create_complete_vm.yml
    ```
 

@@ -8,10 +8,10 @@ ms.date: 04/29/2019
 ms.author: msangapu
 ms.custom: cli-validate
 ms.openlocfilehash: 92a9368bf6aa4f2cf043b3aabd443b37cdcde390
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523942"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教學課程：在適用於容器的 Web 應用程式中建立多容器 (預覽) 應用程式
@@ -486,7 +486,7 @@ WordPress 會連線至 Redis 伺服器。 連線**狀態**會顯示在相同頁�
 
 ![WordPress 會連線至 Redis 伺服器。 連線 **狀態** 會顯示在相同頁面上。][6]
 
-**恭喜**，您已將 WordPress 連線至 Redis。 已可用於生產環境的應用程式現在會使用**適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis**。 您現在可以將 App Service 方案相應放大至多個執行個體。
+**恭喜**，您已將 WordPress 連線至 Redis。 已可用於生產環境的應用程式現在會使用**適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis**。 您現在可以將 App Service 方案擴增至多個執行個體。
 
 ## <a name="find-docker-container-logs"></a>尋找 Docker 容器記錄
 

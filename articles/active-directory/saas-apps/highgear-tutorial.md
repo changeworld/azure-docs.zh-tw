@@ -17,10 +17,10 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>教學課程：Azure Active Directory 與 HighGear 整合
@@ -35,7 +35,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 HighGear 的整合，您需要下列項目：
 
@@ -150,7 +150,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
 ![單一登入設定功能表項目](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. 在 [識別提供者名稱]  中，輸入將在 [登入] 頁面上出現在 HighGear [單一登入] 按鈕中的簡短描述。 例如︰Azure AD
+1. 在 [識別提供者名稱]  中，輸入將在 [登入] 頁面上出現在 HighGear [單一登入] 按鈕中的簡短描述。 例如：Azure AD
 
 2. 在 HighGear 的 [單一登入 (SSO) URL]  欄位中，貼上在 Azure 的 [設定 HighGear]  區段中位於 [登入 URL]  欄位內的值。
 
@@ -230,7 +230,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
     右側會滑出一個窗格，讓您輸入新使用者的資訊。  
     ![新增連絡人表單](media/highgear-tutorial/new-contact-form.png)
 
-3. 在 [名稱]  欄位中，輸入連絡人的名稱。 例如︰Britta Simon
+3. 在 [名稱]  欄位中，輸入連絡人的名稱。 例如：Britta Simon
 
 4. 按一下 [更多選項]  功能表，然後選取 [帳戶資訊]  功能表項目。
 
@@ -240,7 +240,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
     [啟用單一登入]  欄位也會自動設為 [是]。
 
-6. 在 [單一登入使用者識別碼]  欄位中，輸入使用者的識別碼。 例如：BrittaSimon@contoso.com
+6. 在 [單一登入使用者識別碼]  欄位中，輸入使用者的識別碼。 例如： BrittaSimon@contoso.com
 
     [帳戶資訊] 區段此時應會顯示如下：  
     ![已完成的帳戶資訊區段](media/highgear-tutorial/finished-account-info-section.png)

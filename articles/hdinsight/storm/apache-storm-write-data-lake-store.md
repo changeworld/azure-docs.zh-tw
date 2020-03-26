@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73241203"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教學課程：從 Azure HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS
@@ -30,7 +30,7 @@ ms.locfileid: "73241203"
 > * 檢視輸出資料
 > * 停止拓撲
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)
 
@@ -40,7 +40,7 @@ ms.locfileid: "73241203"
 
 * 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 `wasb://` 適用於 Azure 儲存體，`abfs://` 適用於 Azure Data Lake Storage Gen2 或 `adl://` 適用於 Azure Data Lake Storage Gen1。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
-### <a name="example-configuration"></a>設定範例
+### <a name="example-configuration"></a>範例設定
 
 下列 YAML 是摘錄自範例中隨附的 `resources/writetohdfs.yaml` 檔案。 此檔案會使用 Apache Storm 的 [Flux](https://storm.apache.org/releases/current/flux.html) 架構定義 Storm 拓撲。
 
@@ -100,11 +100,11 @@ bolts:
 
 此 YAML 會定義下列項目：
 
-* `syncPolicy`：定義檔案何時同步處理/排清到檔案系統。 在此範例中，為每 1000 個 Tuple。
-* `fileNameFormat`：定義寫入檔案時要使用的路徑和檔案名稱模式。 在此範例中，會使用篩選條件在執行階段提供路徑，而檔案的副檔名為 `.txt`。
-* `recordFormat`：定義所寫入檔案的內部格式。 在此範例中，會以 `|` 字元分隔欄位。
-* `rotationPolicy`：定義何時輪替檔案。 在此範例中，不會執行輪替。
-* `hdfs-bolt`：使用舊版元件作為 `HdfsBolt` 類別的設定參數。
+* `syncPolicy`:定義檔案何時同步處理/排清到檔案系統。 在此範例中，為每 1000 個 Tuple。
+* `fileNameFormat`:定義寫入檔案時要使用的路徑和檔案名稱模式。 在此範例中，會使用篩選條件在執行階段提供路徑，而檔案的副檔名為 `.txt`。
+* `recordFormat`:定義所寫入檔案的內部格式。 在此範例中，會以 `|` 字元分隔欄位。
+* `rotationPolicy`:定義何時輪替檔案。 在此範例中，不會執行輪替。
+* `hdfs-bolt`:使用舊版元件作為 `HdfsBolt` 類別的設定參數。
 
 如需有關 Flux 架構的詳細資訊，請參閱 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 

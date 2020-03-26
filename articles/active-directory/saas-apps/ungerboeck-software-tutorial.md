@@ -17,10 +17,10 @@ ms.date: 06/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69c7a7a8fe0ef346cb26e3b0b4f14d3dae7211b9
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67372631"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>教學課程：Ungerboeck Software 與 Azure Active Directory 整合
@@ -33,7 +33,7 @@ ms.locfileid: "67372631"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -63,8 +63,8 @@ ms.locfileid: "67372631"
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** ，讓您的使用者能夠使用此功能。
 2. **[設定 Ungerboeck Software SSO](#configure-ungerboeck-software-sso)** 以在應用程式端設定 SSO 設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** 以使用 B.Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** 以讓 B.Simon 能夠使用 Azure AD 單一登入。
+3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 B.Simon 測試 Azure AD 單一登入。
+4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ，讓 B.Simon 能夠使用 Azure AD 單一登入。
 5. **[建立 Ungerboeck Software 測試使用者](#create-ungerboeck-software-test-user)** 以在 Ungerboeck Software 中建立 B.Simon 的對應項目，且該項目與 Azure AD 中代表使用者的項目連結。
 6. **[測試 SSO](#test-sso)** ，以驗證組態是否能運作。
 
@@ -129,7 +129,7 @@ ms.locfileid: "67372631"
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
-在本節中，您會在 Azure 入口網站中建立名稱為 B.Simon 的測試使用者。
+在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]  。

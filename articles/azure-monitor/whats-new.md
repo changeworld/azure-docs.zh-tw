@@ -1,22 +1,22 @@
 ---
-title: Azure 監視器文件的最新內容
+title: Azure 監視器文件的最新動向
 description: 每月更新的 Azure 監視器文件重大更新。
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673314"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79500491"
 ---
-# <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新內容
+# <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
 
-## <a name="march-2020"></a>2020 年 3 月
+## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="agents"></a>代理程式
 診斷擴充功能內容改寫多次更新。
@@ -27,7 +27,7 @@ ms.locfileid: "78673314"
 - [安裝和設定 Windows Azure 診斷擴充功能 (WAD)](platform/diagnostics-extension-windows-install.md) - 新增文章。 
 - [Windows 診斷擴充功能結構描述](platform/diagnostics-extension-schema-windows.md) - 重新整理。
 - [將資料從 Windows Azure 診斷擴充功能傳送至 Azure 事件中樞](platform/diagnostics-extension-stream-event-hubs.md) - 完全改重寫並更新。
-- [儲存和檢視 Azure 儲存體中的診斷資料](platform/diagnostics-extension-to-storage.md) - 完全改重寫並更新。
+- [儲存和檢視 Azure 儲存體中的診斷資料](/azure/cloud-services/diagnostics-extension-to-storage) - 完全改重寫並更新。
 - [適用於 Windows 的 Log Analytics 虛擬機器擴充功能](../virtual-machines/extensions/oms-windows.md) - 更清楚說明與 Log Analytics 代理程式的關係。
 - [適用於 Linux 的 Azure 監視器虛擬機器擴充功能](../virtual-machines/extensions/oms-linux.md) - 更清楚說明與 Log Analytics 代理程式的關係。
 
@@ -53,7 +53,7 @@ ms.locfileid: "78673314"
 - [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新文章。
 - [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 改善的範例查詢，協助您了解使用量。
 
-### <a name="metrics"></a>計量
+### <a name="metrics"></a>度量
 - [可透過診斷設定匯出 Azure 監視器平台計量](platform/metrics-supported-export-diagnostic-settings.md) - 新增了 Null 和零值的行為變更一節。
 
 
@@ -175,7 +175,7 @@ ms.locfileid: "78673314"
 - [刪除和復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 已新增 PowerShell 方法。
 - [設計您的 Azure 監視器記錄部署](platform/design-logs-deployment.md) - 已提高工作區的擷取率。
 
-### <a name="metrics"></a>計量
+### <a name="metrics"></a>度量
 - [可透過診斷設定匯出的 Azure 監視器平台計量](platform/metrics-supported-export-diagnostic-settings.md) - 新文章。
 
 ### <a name="platform-logs"></a>平台記錄

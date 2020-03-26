@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教學課程：Azure Active Directory 與 Everbridge 整合
@@ -33,7 +33,7 @@ ms.locfileid: "67103247"
 如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Everbridge 整合，您需要下列項目：
 
@@ -134,7 +134,7 @@ ms.locfileid: "67103247"
      > [!NOTE]
      > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」和「登入 URL」值更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載**同盟中繼資料 XML**。 然後將其儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載**同盟中繼資料 XML**。 將其儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "67103247"
    
      f. 對於 [服務提供者起始的要求繫結]  ，請選取 [HTTP 重新導向]  。
 
-     g. 選取 [ **儲存**]。
+     g. 選取 [儲存]  。
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>將 Everbridge 設定為 Everbridge 成員入口網站單一登入
 
@@ -194,7 +194,7 @@ ms.locfileid: "67103247"
   
     b. 在 [使用者名稱]  方塊中，輸入 `brittasimon@yourcompanydomain.extension`。 例如 BrittaSimon@contoso.com。
 
-    c. 選取 [顯示密碼]  核取方塊。 寫下 [密碼]  方塊中顯示的值。
+    c. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
 
     d. 選取 [建立]  。
 

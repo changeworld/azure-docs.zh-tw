@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425302"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223915"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 SSL 憑證
 
@@ -349,7 +349,7 @@ az keyvault secret download \
 
 ### <a name="delete-certificate"></a>Delete certificate 
 
-刪除 App Service 憑證是不可更改且無法復原的。 App Service 中任何與此憑證的繫結都會變成無效。 為了防止意外刪除，Azure 會鎖定憑證。 若要刪除 App Service 憑證，您必須先移除憑證的刪除鎖定。
+刪除 App Service 憑證是不可更改且無法復原的。 刪除 App Service 憑證資源會導致憑證遭到撤銷。 App Service 中任何與此憑證的繫結都會變成無效。 為了防止意外刪除，Azure 會鎖定憑證。 若要刪除 App Service 憑證，您必須先移除憑證的刪除鎖定。
 
 選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後在左側導覽中選取 [鎖定]  。
 

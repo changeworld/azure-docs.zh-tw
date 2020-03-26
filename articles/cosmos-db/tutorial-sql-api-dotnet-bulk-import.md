@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587561"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
@@ -120,13 +120,13 @@ ms.locfileid: "77587561"
 
 在 `Main` 方法中，新增下列程式碼以初始化 CosmosClient 物件：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
 
 啟用大量執行之後，CosmosClient 會在內部將並行作業組為單一服務呼叫。 如此一來，它會藉由在分割區之間發佈服務呼叫，最後再將個別結果指派給原始呼叫端的方式，以將輸送量使用率最佳化。
 
 接著，您可以建立容器來儲存我們所有的項目。  將 `/pk` 定義為分割區索引鍵，定義每秒 50000 RU 為佈建的輸送量，並定義自訂編製索引原則來排除所有欄位，以將寫入輸送量最佳化。 在 CosmosClient 初始化陳述式後面新增下列程式碼：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>步驟 6：填入並行工作清單
 
@@ -141,22 +141,22 @@ ms.locfileid: "77587561"
 
 定義所要儲存項目的定義。 您必須在 `Program.cs` 檔案內定義 `Item` 類別：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
 
 接下來，在 `Program` 類別內建立 helper 函數。 此 helper 函數會取得您定義要插入的項目數目，並產生隨機資料：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
 讀取項目，並使用 `System.Text.Json` 類別將項目序列化至資料流執行個體。 由於自動產生資料的性質，資料會序列化為資料流。 您也可以直接使用項目執行個體，但透過將它們轉換成資料流，您便可以在 CosmosClient 中利用資料流 API 的效能。 通常只要您知道分割區索引鍵，就可以直接使用資料。 
 
 
 若要將資料轉換成資料流執行個體，請在 `Main` 方法中，於建立容器之後隨即加入下列程式碼：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
 接下來，使用資料流來建立並行工作，並填入工作清單以將項目插入容器中。 若要執行這項操作，請將下列程式碼新增至 `Program` 類別：
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 
 這些並行點作業會全部一起執行 (亦即大量)，如簡介一節中所述。
 

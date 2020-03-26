@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726466"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入門：使用 Go 上傳、下載及列出 Blob
 
 在本快速入門中，您會了解如何使用 Go 程式設計語言在 Azure Blob 儲存體容器中上傳、下載及列出區塊 Blob。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -50,14 +50,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-go-quickstart
 ## <a name="configure-your-storage-connection-string"></a>設定儲存體連接字串
 此解決方案要求將儲存體帳戶名稱和金鑰安全地儲存在執行範例之電腦本機的環境變數。 視您的作業系統而定，遵循以下其中一個範例來建立環境變數。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -147,7 +147,7 @@ handleErrors(err)
 
 Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 最常使用的是區塊 Blob，這也是本快速入門中所使用的。  
 
-若要將檔案上傳至 blob，請使用 **os.Open** 開啟檔案。 然後，您可以使用其中一個 REST API 將檔案上傳至指定的路徑：上傳 (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)。 
+若要將檔案上傳至 blob，請使用 **os.Open** 開啟檔案。 您可以接著使用以下其中一個 REST API，將檔案上傳到指定的路徑：Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)。 
 
 此外，SDK 還提供以低階 REST API 為基礎的 [高階 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)。 例如，***UploadFileToBlockBlob*** 函式會使用 StageBlock (PutBlock) 作業同時在多個區塊中上傳一個檔案，以達到最佳輸送量。 如果檔案小於 256 MB，它會改用 Upload (PutBlob )來完成在單一交易中傳輸。
 

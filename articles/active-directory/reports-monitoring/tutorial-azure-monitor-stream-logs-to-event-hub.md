@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007644"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教學課程：將 Azure Active Directory 記錄串流到 Azure 事件中樞
 
 在本教學課程中，您會了解如何設定 Azure 監視器診斷設定，以將 Azure Active Directory (Azure AD) 記錄串流到 Azure 事件中樞。 使用這個機制將記錄與 Splunk 和 QRadar 等第三方安全性資訊與事件管理 (SIEM) 工具整合在一起。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要使用此功能，您必須要有：
 

@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教學課程：Azure Active Directory 與 Zscaler Internet Access Administrator 整合
@@ -35,7 +35,7 @@ ms.locfileid: "73161031"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Zscaler Internet Access Administrator 整合，您需要下列項目：
 
@@ -140,9 +140,9 @@ ms.locfileid: "73161031"
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![映像](./common/new-save-attribute.png)
+    ![image](./common/new-save-attribute.png)
     
-    ![映像](./common/new-attribute-details.png)
+    ![image](./common/new-attribute-details.png)
 
     b. 從 [來源屬性]  清單中，選取屬性值。
 
@@ -173,7 +173,7 @@ ms.locfileid: "73161031"
 
 2. 移至 管理員 > 管理員管理  ，執行下列步驟並按一下 儲存：
 
-    ![系統管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "系統管理")
+    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "系統管理")
 
     a. 核取 [啟用 SAML 驗證]  。
 

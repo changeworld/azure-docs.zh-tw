@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
 ms.openlocfilehash: 5654e1f8b8a55c705798368df70ce300241c9dff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989073"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
@@ -823,7 +823,7 @@ END
 
 6. 您可以看到所有管線執行及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]  。 若要檢查傳遞到管線的參數，請選取 [參數]  資料行中的連結。 如果發生錯誤，您就會在 [錯誤]  資料行中看到連結。
 
-    ![管線執行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![管線執行回合](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. 當您選取 [動作]  資料行中的連結時，您會看到管線的所有活動執行。 
 
 8. 若要回到 [管線執行]  檢視，請選取 [所有管線執行]  。 

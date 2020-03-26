@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77913813"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>從 Google Maps 遷移 Web 服務
@@ -166,7 +166,7 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 | `rankby`                    | *N/A*                               |
 | `type`                      | `categorySet –` 請參閱[支援的搜尋類別](supported-search-categories.md)文件。   |
 
-## <a name="calculate-routes-and-directions"></a>計算路線和方向
+## <a name="calculate-routes-and-directions"></a>計算路線和方線
 
 使用 Azure 地圖服務來計算路線和方向。 Azure 地圖服務有許多與 Google Maps 路線服務相同的功能，例如：
 

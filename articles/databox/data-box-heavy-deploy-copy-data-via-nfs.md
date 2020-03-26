@@ -9,24 +9,24 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595807"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222805"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure Data Box Heavy
 
 本教學課程說明如何使用 Azure Data Box Heavy 的本機 Web UI，連接主機電腦並從中複製資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 連線至 Data Box Heavy
 > * 將資料複製到 Data Box Heavy
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -156,7 +156,7 @@ ms.locfileid: "67595807"
 在本教學課程中，您已了解 Azure Data Box Heavy 的相關主題，像是：
 
 > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 連線至 Data Box Heavy
 > * 將資料複製到 Data Box Heavy
 

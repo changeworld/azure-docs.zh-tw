@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388690"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223995"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure Data Factory 大量複製多個資料表
 
@@ -67,11 +67,11 @@ ms.locfileid: "78388690"
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服務存取 SQL Server
 
-針對 SQL Database 和 SQL 資料倉儲，允許 Azure 服務存取 SQL 伺服器。 確保 Azure SQL Server 的 [允許存取 Azure 服務] 設定已 [開啟]。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure SQL 資料倉儲。 若要確認並開啟此設定，請執行下列步驟：
+針對 SQL Database 和 SQL 資料倉儲，允許 Azure 服務存取 SQL 伺服器。 確保 Azure SQL Server 的 [允許存取 Azure 服務]  設定已 [開啟]  。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure SQL 資料倉儲。 若要確認並開啟此設定，請執行下列步驟：
 
-1. 按一下左邊的 [所有服務] 中樞，然後按一下 [SQL Server]。
-2. 選取您的伺服器，然後按一下 [設定] 下的 [防火牆]。
-3. 在 [防火牆設定] 頁面中，對 [允許存取 Azure 服務] 按一下 [開啟]。
+1. 按一下左邊的 [所有服務]  中樞，然後按一下 [SQL Server]  。
+2. 選取您的伺服器，然後按一下 [設定]  下的 [防火牆]  。
+3. 在 [防火牆設定]  頁面中，對 [允許存取 Azure 服務]  按一下 [開啟]  。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
@@ -109,7 +109,7 @@ ms.locfileid: "78388690"
         ```
 
     * 若要建立 Data Factory 執行個體，您必須是 Azure 訂用帳戶的參與者或系統管理員。
-    * 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+    * 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
@@ -117,7 +117,7 @@ ms.locfileid: "78388690"
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>建立來源 Azure SQL Database 連結服務
 
-1. 在 **C:\ADFv2TutorialBulkCopy** 資料夾中，使用下列內容建立名為 **AzureSqlDatabaseLinkedService.json** 的 JSON 檔案：(如果 ADFv2TutorialBulkCopy 資料夾尚不存在，請建立。)
+1. 在 **C:\ADFv2TutorialBulkCopy** 資料夾中，使用下列內容建立名為 **AzureSqlDatabaseLinkedService.json** 的 JSON 檔案：(如果 ADFv2TutorialBulkCopy 資料夾不存在，請加以建立。)
 
     > [!IMPORTANT]
     > 儲存檔案之前，以您的 Azure SQL Database 的值取代 &lt;servername&gt;、&lt;databasename&gt;、&lt;username&gt;@&lt;servername&gt; 和 &lt;password&gt;。
@@ -136,7 +136,7 @@ ms.locfileid: "78388690"
 
 2. 在 **Azure PowerShell** 中，切換至 **ADFv2TutorialBulkCopy** 資料夾。
 
-3. 執行**set-azdatafactoryv2linkedservice**指令，以建立連結服務： **AzureSqlDatabaseLinkedService**。 
+3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務：**AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -170,7 +170,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立已連結的服務： **AzureSqlDWLinkedService**，請執行**set-azdatafactoryv2linkedservice** Cmdlet。
+2. 若要建立連結服務：**AzureSqlDWLinkedService**，請執行 **Set-AzDataFactoryV2LinkedService** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -206,7 +206,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立已連結的服務： **AzureStorageLinkedService**，請執行**set-azdatafactoryv2linkedservice** Cmdlet。
+2. 若要建立連結服務：**AzureStorageLinkedService**，請執行 **Set-AzDataFactoryV2LinkedService** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -245,7 +245,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立資料集： **AzureSqlDatabaseDataset**，請執行**set-azdatafactoryv2dataset** Cmdlet。
+2. 若要建立資料集：**AzureSqlDatabaseDataset**，請執行 **Set-AzDataFactoryV2Dataset** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -289,7 +289,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立資料集： **AzureSqlDWDataset**，請執行**set-azdatafactoryv2dataset** Cmdlet。
+2. 若要建立資料集：**AzureSqlDWDataset**，請執行 **Set-AzDataFactoryV2Dataset** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -381,7 +381,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立管線： **IterateAndCopySQLTables**，請執行**set-azdatafactoryv2pipeline** Cmdlet。
+2. 若要建立管線：**IterateAndCopySQLTables**，請執行 **Set-AzDataFactoryV2Pipeline** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -457,7 +457,7 @@ ms.locfileid: "78388690"
     }
     ```
 
-2. 若要建立管線： **GetTableListAndTriggerCopyData**，請執行**set-azdatafactoryv2pipeline** Cmdlet。
+2. 若要建立管線：**GetTableListAndTriggerCopyData**，請執行 **Set-AzDataFactoryV2Pipeline** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

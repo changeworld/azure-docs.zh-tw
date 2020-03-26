@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
 ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441269"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教學課程：使用 JavaScript SDK 建置 Node.js Web 應用程式來管理 Azure Cosmos DB 中的 SQL API 帳戶 
@@ -38,7 +38,7 @@ ms.locfileid: "75441269"
 > * 將應用程式連線至 Azure Cosmos DB
 > * 執行應用程式並將其部署至 Azure
 
-## <a name="_Toc395783176"></a>必要條件
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>必要條件
 
 依照本文的指示進行之前，請確定您具備下列資源：
 
@@ -50,14 +50,14 @@ ms.locfileid: "75441269"
 * [Express 產生器](https://www.expressjs.com/starter/generator.html) (您可以透過 `npm install express-generator -g` 安裝 Express)
 * 在您的本機工作站上安裝 [Git][Git]。
 
-## <a name="_Toc395637761"></a>建立 Azure Cosmos DB 帳戶
+## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>建立 Azure Cosmos DB 帳戶
 我們將從建立 Azure Cosmos DB 帳戶開始著手。 如果您已經擁有帳戶，或如果您正在使用 Azure Cosmos DB 模擬器來進行本教學課程，可以跳到[步驟 2：建立新的 Node.js 應用程式](#_Toc395783178)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
-## <a name="_Toc395783178"></a>建立新的 Node.js 應用程式
+## <a name="create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>建立新的 Node.js 應用程式
 現在，我們來了解如何使用 Express 架構來建立基本的 Hello World Node.js 專案。
 
 1. 開啟您喜好的終端機，例如 Node.js 命令提示字元。
@@ -89,7 +89,7 @@ ms.locfileid: "75441269"
 
    在終端機視窗中使用 CTRL+C 停止應用程式，然後選取 **y** 以終止批次作業。
 
-## <a name="_Toc395783179"></a>安裝必要的模組
+## <a name="install-the-required-modules"></a><a name="_Toc395783179"></a>安裝必要的模組
 
 **package.json** 檔案是建立在專案根目錄中的其中一個檔案。 這個檔案包含 Node.js 應用程式所需的其他模組清單。 當您將此應用程式部署至 Azure 時，此檔案可用來決定 Azure 上應安裝哪些模組才能支援您的應用程式。 再安裝兩個本教學課程所需的套件。
 
@@ -99,7 +99,7 @@ ms.locfileid: "75441269"
    npm install @azure/cosmos
    ```
 
-## <a name="_Toc395783180"></a>將 Node.js 應用程式連線至 Azure Cosmos DB
+## <a name="connect-the-nodejs-application-to-azure-cosmos-db"></a><a name="_Toc395783180"></a>將 Node.js 應用程式連線至 Azure Cosmos DB
 您已完成初始安裝和設定，接下來您會撰寫所需的程式碼，以供待辦事項應用程式與 Azure Cosmos DB 通訊。
 
 ### <a name="create-the-model"></a>建立模型
@@ -357,7 +357,7 @@ ms.locfileid: "75441269"
 
 3. 最後，儲存並關閉 **app.js** 檔案。
 
-## <a name="_Toc395783181"></a>建置使用者介面
+## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>建置使用者介面
 
 現在我們將建置使用者介面，讓使用者可以與應用程式互動。 我們在前幾節中建立的 Express 應用程式使用 **Jade** 作為檢視引擎。
 
@@ -433,7 +433,7 @@ ms.locfileid: "75441269"
     
 第二個表單包含兩個輸入欄位，以及可讓您透過張貼到控制器的 **/addtask** 方法來建立項目的按鈕。 這就是應用程式運作所需的一切。
 
-## <a name="_Toc395783181"></a>在本機執行您的應用程式
+## <a name="run-your-application-locally"></a><a name="_Toc395783181"></a>在本機執行您的應用程式
 
 現在，應用程式已建立，您可以使用下列步驟在本機執行此應用程式：  
 
@@ -454,7 +454,7 @@ ms.locfileid: "75441269"
 
 5. 若要停止應用程式，請在終端機視窗中按 CTRL+C，然後選取 **Y** 以終止批次作業。
 
-## <a name="_Toc395783182"></a>將應用程式部署至 Web Apps
+## <a name="deploy-your-application-to-web-apps"></a><a name="_Toc395783182"></a>將應用程式部署至 Web Apps
 
 應用程式在本機成功執行之後，您可以使用下列步驟將其部署至 Azure 部署：
 
@@ -478,7 +478,7 @@ ms.locfileid: "75441269"
 
 若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 請選取用於 Azure Cosmos DB 帳戶的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱，即可刪除資源。
 
-## <a name="_Toc395637775"></a>後續步驟
+## <a name="next-steps"></a><a name="_Toc395637775"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式](mobile-apps-with-xamarin.md)

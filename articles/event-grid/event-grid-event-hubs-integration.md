@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718191"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教學課程：將巨量資料串流處理至資料倉儲
@@ -38,7 +38,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 > * 執行應用程式，將資料傳送至事件中樞。
 > * 在資料倉儲中檢視移轉的資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -85,9 +85,9 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         az group create -l eastus -n <Name for the resource group>
         ```
     1. 指定**資源群組**的名稱
-    2. 按 **ENTER**鍵。 
+    2. 按 ENTER 鍵  。 
 
-        下列是一個範例：
+        範例如下：
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp

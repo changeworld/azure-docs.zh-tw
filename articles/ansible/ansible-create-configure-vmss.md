@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, 腳本, 虛擬機器, 虛擬機器擴展
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156546"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>教學課程：使用 Ansible 在 Azure 中設定虛擬機器擴展集
@@ -25,7 +25,7 @@ ms.locfileid: "74156546"
 > * 設定擴展集
 > * 藉由增加 VM 執行個體來調整擴展集 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -209,7 +209,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>相應放大擴展集
+## <a name="scale-out-a-scale-set"></a>擴增擴展集
 
 本節中的劇本程式碼會擷取擴展集的相關資訊，並將其容量從兩個變更為三個。
 

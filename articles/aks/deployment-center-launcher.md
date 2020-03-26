@@ -5,13 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-monikerRange: vsts
-ms.openlocfilehash: eecb4dba39ff847515a4a312b7cb74698867c693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247898"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048117"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>適用於 Azure Kubernetes 的部署中心
 
@@ -53,7 +52,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
 1. 移至您在上一節中建立的資源群組。
 
-1. 選取 AKS 叢集，然後在左側刀鋒視窗上選取 [部署中心 (預覽)]  。 選取 [馬上開始]  。
+1. 選取 AKS 叢集，然後在左側刀鋒視窗上選取 [部署中心 (預覽)]  。 選取 [馬上開始]。 
 
    ![settings](media/deployment-center-launcher/settings.png)
 

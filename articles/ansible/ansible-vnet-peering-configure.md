@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, 劇本, 網路, 對等互連
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155723"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>教學課程：使用 Ansible 設定 Azure 虛擬網路對等互連
@@ -27,7 +27,7 @@ ms.locfileid: "74155723"
 > * 讓兩個虛擬網路對等互連
 > * 刪除兩個網路之間的對等互連
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74380092"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入門：必須接受使用規定才可存取雲端應用程式
@@ -31,7 +31,7 @@ ms.locfileid: "74380092"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本快速入門中的案例，您需要：
 
@@ -116,7 +116,7 @@ ms.locfileid: "74380092"
    ![使用者和群組](./media/require-tou/24.png)
 
    1. 按一下 [選取使用者和群組]  ，然後選取 [群組設定]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
    1. 在 [選取]  頁面上，選取 [Isabella Simonsen]  ，然後按一下 [選取]  。
    1. 在 [使用者和群組]  頁面上，按一下 [完成]  。
 1. 按一下 [雲端應用程式]  。
@@ -128,7 +128,7 @@ ms.locfileid: "74380092"
    ![選取雲端應用程式](./media/require-tou/26.png)
 
    1. 按一下 [選取應用程式]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
    1. 在 [選取]  頁面中，選取 [Microsoft Azure 管理]  ，然後按一下 [選取]  。
    1. 在 [雲端應用程式]  頁面上，按一下 [完成]  。
 1. 在 [存取控制]  區段中，按一下 [授與]  。
@@ -141,7 +141,7 @@ ms.locfileid: "74380092"
 
    1. 選取 [授與存取權]  。
    1. 選取 [我的 TOU]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
 1. 在 [啟用原則]  區段中，按一下 [開啟]  。
 
    ![啟用原則](./media/require-tou/18.png)
@@ -172,7 +172,7 @@ ms.locfileid: "74380092"
 
 1. 按一下 **使用者**，選取 **Isabella Simonsen**，然後按一下 **選取**。
 
-   ![使用者](./media/require-tou/15.png)
+   ![User](./media/require-tou/15.png)
 
 1. 若要選取雲端應用程式：
 
@@ -180,7 +180,7 @@ ms.locfileid: "74380092"
 
    1. 按一下 [雲端應用程式]  。
    1. 在 [雲端應用程式]  頁面上，按一下 [選取應用程式]  。
-   1. 按一下 [選取]  。
+   1. 按一下 [選取]。 
    1. 在 [選取]  頁面中，選取 [Microsoft Azure 管理]  ，然後按一下 [選取]  。
    1. 在 [雲端應用程式] 頁面上，按一下 [完成]  。
 1. 按一下 [What If]  。
@@ -189,7 +189,7 @@ ms.locfileid: "74380092"
 
 在上一節中，您已經學會如何評估模擬的登入狀況。 除了模擬，您也應該測試條件式存取原則，以確保它如預期般運作。
 
-若要測試原則，請再次使用 **Isabella Simonsen** 測試帳戶來嘗試登入 [Azure 入口網站](https://portal.azure.com)。 您應該會看到一個對話方塊要求您接受使用規定。
+若要測試原則，請再次使用 [Isabella Simonsen](https://portal.azure.com) 測試帳戶來嘗試登入 **Azure 入口網站**。 您應該會看到一個對話方塊要求您接受使用規定。
 
 ![使用規定](./media/require-tou/57.png)
 

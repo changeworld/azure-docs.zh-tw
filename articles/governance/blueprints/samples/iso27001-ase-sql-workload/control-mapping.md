@@ -4,10 +4,10 @@ description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例�
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: bc370170374654bf8bc9ae9ed3f1b545f4db8cba
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75920707"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應

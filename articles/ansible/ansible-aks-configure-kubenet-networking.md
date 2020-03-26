@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, cloudshell, 劇本, aks, 容器, aks, ku
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156888"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>教學課程：使用 Ansible 在 Azure Kubernetes Service (AKS) 中設定 kubenet 網路
@@ -31,7 +31,7 @@ ms.locfileid: "74156888"
 > * 建立 AKS 叢集
 > * 設定 Azure Kubenet 網路
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -108,7 +108,7 @@ ms.locfileid: "74156888"
 - `network_profile` 會定義 kubenet 網路外掛程式的屬性。
 - `service_cidr` 會用來將 AKS 叢集中的內部服務指派給 IP 位址。 此 IP 位址範圍應該是未在您網路中的其他位置使用的位址空間。 
 - `dns_service_ip` 位址應該是您服務 IP 位址範圍的 ".10" 位址。
-- `pod_cidr` 應該是未在您網路環境中的其他位置使用的大型位址空間。 此位址範圍必須夠大而足以容納您要相應增加的節點數目。 部署叢集後，即無法變更此位址範圍。
+- `pod_cidr` 應該是未在您網路環境中的其他位置使用的大型位址空間。 此位址範圍必須夠大而足以容納您要擴大的節點數目。 部署叢集後，即無法變更此位址範圍。
 - Pod IP 位址範圍會用來為叢集中的每個節點指派 /24 位址空間。 在下列範例中，192.168.0.0/16 的 `pod_cidr` 會指派第一個節點 192.168.0.0/24、第二個節點 192.168.1.0/24 和第三個節點 192.168.2.0/24。
 - 隨著叢集調整或升級，Azure 會繼續為每個新的節點指派 Pod IP 位址範圍。
 - 劇本會從 `~/.ssh/id_rsa.pub` 載入 `ssh_key`。 如果您加以修改，請使用單行格式，且開頭應為 "ssh-rsa" (不含引號)。

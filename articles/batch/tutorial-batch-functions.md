@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Functions 觸發 Batch 作業
-description: 教學課程 - 在文件新增至儲存體 Blob 時，將 OCR 套用至已掃描的文件
+description: 教學課程 - 在文件新增至儲存體 blob 時，將 OCR 套用至已掃描的文件
 author: LauraBrenner
 ms.service: batch
 ms.devlang: dotnet
@@ -9,15 +9,15 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: a967fdc14b85f294ee11cbcc57a8d2280dba38e8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77017185"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教學課程：使用 Azure Functions 觸發 Batch 作業
 
-在本教學課程中，您將了解如何使用 Azure Functions 觸發 Batch 作業。 我們將逐步解說範例，在範例中，每個新增至 Azure 儲存體 Blob 容器的文件都會透過 Azure Batch 套用光學字元辨識 (OCR)。 為了簡化 OCR 處理流程，我們將設定 Azure 函式，每當檔案新增至 Blob 容器時，函式便會執行 Batch OCR 作業。
+在本教學課程中，您將了解如何使用 Azure Functions 觸發 Batch 作業。 我們將逐步解說範例，在其中新增至 Azure 儲存體 blob 容器的文件已透過 Azure Batch 套用光學字元辨識 (OCR)。 為了簡化 OCR 處理流程，我們將設定 Azure 函式，每當檔案新增至 blob 容器時，函式便會執行 Batch OCR 作業。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "77017185"
 1. 選取左側邊列上的 [集區]  ，然後選取搜尋表單上方的 [新增]  按鈕，以建立集區。 
     1. 選擇識別碼和顯示名稱。 此範例中，我們將使用 `ocr-pool`。
     1. 將縮放類型設定為 [固定大小]  ，並將專用節點計數設定為 3。
-    1. 選取 [Ubuntu 18.04-LTS]  作為作業系統。
+    1. 選取 [Ubuntu 18.04-LTS]  做為作業系統。
     1. 選擇 `Standard_f2s_v2` 為虛擬機器大小。
     1. 啟用啟動工作，並新增命令 `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`。 請務必將使用者身分識別設定為**工作預設使用者 (管理員)** ，這可讓啟動工作包含具 `sudo` 的命令。
     1. 選取 [確定]  。
@@ -59,10 +59,10 @@ ms.locfileid: "77017185"
 1. 使用您的 Azure 認證登入儲存體總管。
 1. 遵循[建立 Blob 容器](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)中的步驟，使用連結至 Batch 帳戶的儲存體帳戶，建立兩個 Blob 容器 (一個用於輸入檔，一個用於輸出檔案)。
 
-在此範例中，輸入容器的名稱為 `input`，所有不具 OCR 的文件，一開始都會先上傳到此處等待處理。 輸出容器的名稱為 `output`，經處理且已具有 OCR 的文件，都會在此處由 Batch 作業進行寫入。  
+在此範例中，輸入容器的名稱為 `input`，它是沒有 OCR 的所有文件最初上傳處理的位置。 輸出容器的名稱為 `output`，它是 Batch 作業利用 OCR 寫入已處理文件的位置。  
     * 在此範例中，我們將輸入容器稱為 `input`，輸出容器稱為 `output`。  
-    * 輸入容器是所有不具 OCR 的文件最初上傳的位置。  
-    * 輸出容器是 Batch 作業為已具有 OCR 的文件進行寫入的位置。  
+    * 輸入容器是沒有 OCR 的所有文件最初上傳的位置。  
+    * 輸出容器是 Batch 作業利用 OCR 寫入文件的位置。  
 
 在儲存體總管中建立輸出容器的共用存取簽章。 要執行這項操作請在輸出容器上按一下滑鼠右鍵，然後選取 [取得共用存取簽章...]  。在 [權限]  下方，勾選 [寫入]  。 不需任何其他權限。  
 
@@ -81,7 +81,7 @@ ms.locfileid: "77017185"
 
 ## <a name="trigger-the-function-and-retrieve-results"></a>觸發函式並取出結果
 
-從 GitHub 上的 [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) 目錄將任何或所有已掃描的檔案上傳至輸入容器。 監視 Batch Explorer 以確認工作已為每個檔案新增至 `ocr-pool`。 幾秒之後，套用 OCR 的檔案會新增至輸出容器。 檔案隨即就會顯示在儲存體總管中並可加以取出。
+從 GitHub 上的 [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) 目錄將任何或所有已掃描的檔案上傳至輸入容器。 監視 Batch Explorer 以確認工作已為每個檔案新增至 `ocr-pool`。 幾秒之後，套用 OCR 的檔案會新增至輸出容器。 檔案接著即可在儲存體總管上看見並可取出。
 
 此外，您可以在 Azure Functions Web 編輯器視窗底部觀看記錄檔，您會看到上傳至輸入容器的每個檔案都有如下訊息：
 

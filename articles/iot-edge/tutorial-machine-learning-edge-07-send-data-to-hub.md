@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706901"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教學課程：透過透明閘道傳送資料
 
 > [!NOTE]
-> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至這篇文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
+> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
 
 在此文章中，我們會再次使用開發電腦作為模擬裝置，但與其直接將資料傳送至 IoT 中樞，裝置會將資料傳送至設定為透明閘道的 IoT Edge 裝置。
 
@@ -233,7 +233,7 @@ ms.locfileid: "74706901"
 
 在此文章中，我們已使用開發電腦來模擬將感應器和作業資料傳送至邊緣裝置的分葉裝置。 我們以透過先檢查邊緣裝置的即時作業，然後查看上傳至儲存體帳戶的檔案，來驗證路由、分類、保存及上傳資料之裝置上的模組。
 
-在下列頁面中可找到詳細資訊：
+您可以在下列頁面上找到更多資訊：
 
 * [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)
 * [在 IoT Edge (預覽) 使用 Azure Blob 儲存體，以便在邊緣儲存資料](how-to-store-data-blob.md)

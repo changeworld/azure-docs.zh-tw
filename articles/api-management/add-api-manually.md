@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072709"
 ---
 # <a name="add-an-api-manually"></a>手動新增 API
@@ -27,7 +27,7 @@ ms.locfileid: "70072709"
 
 在本文中，我們會建立空白的 API，並指定 [httpbin.org](https://httpbin.org) (公用測試服務) 作為後端 API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 
@@ -42,7 +42,7 @@ ms.locfileid: "70072709"
     ![空白 API](media/add-api-manually/blank-api.png)
 4. 輸入 API 的設定。
 
-    |**名稱**|**值**|**說明**|
+    |**名稱**|**ReplTest1**|**說明**|
     |---|---|---|
     |**顯示名稱**|*空白 API*|此名稱會顯示於開發人員入口網站中。|
     |**名稱**|*blank-api*|為 API 提供唯一的名稱。|
@@ -67,7 +67,7 @@ ms.locfileid: "70072709"
 2. 按一下 [+ 新增作業]  。
 3. 在 **URL** 中選取 **GET**，並在資源中輸入 " */get*"。
 4. 輸入 "*FetchData* 作為**顯示名稱**。
-5. 選取 [ **儲存**]。
+5. 選取 [儲存]  。
 
 ### <a name="test-an-operation"></a>測試作業
 
@@ -89,7 +89,7 @@ ms.locfileid: "70072709"
 2. 按一下 [+ 新增作業]  。
 3. 在 **URL** 中選取 **GET**，並在資源中輸入" */status/{code}* "。 您可以選擇性地提供與此參數相關聯的一些資訊。 例如，在 [類型]  中輸入「數字」  ，在 [值]  中輸入「200」  (預設)。
 4. 輸入 "GetStatus" 作為**顯示名稱**。
-5. 選取 [ **儲存**]。
+5. 選取 [儲存]  。
 
 ### <a name="test-the-operation"></a>測試作業 
 

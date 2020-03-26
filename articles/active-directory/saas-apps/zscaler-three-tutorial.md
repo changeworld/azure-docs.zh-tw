@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b23abcf9a39ce7f6d77bc40e7143505bc68e8b72
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72554997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler Three 整合
@@ -33,7 +33,7 @@ ms.locfileid: "72554997"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -80,7 +80,7 @@ ms.locfileid: "72554997"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Zscaler Three]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -148,13 +148,13 @@ ms.locfileid: "72554997"
 
 2. 將擴充功能新增至瀏覽器之後，按一下 [設定 Zscaler Three]  便會將您導向到 Zscaler Three 應用程式。 請從該處提供用以登入 Zscaler Three 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
 
-    ![設定](common/setup-sso.png)
+    ![安裝程式](common/setup-sso.png)
 
 3. 如果您想要手動設定 Zscaler Three，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Zscaler Three 公司網站，然後執行下列步驟：
 
 4. 移至 管理 > 驗證 > 驗證設定  並執行下列步驟：
    
-    ![系統管理](./media/zscaler-three-tutorial/ic800206.png "系統管理")
+    ![管理](./media/zscaler-three-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型] 下選擇 [SAML]  。
 
@@ -199,7 +199,7 @@ ms.locfileid: "72554997"
 
 3. 按一下 [連線]  索引標籤。   
   
-     ![連線](./media/zscaler-three-tutorial/ic769493.png "連線")
+     ![連線](./media/zscaler-three-tutorial/ic769493.png "連接")
 
 4. 按一下 [區域網路設定]  可開啟 [區域網路設定]  對話方塊。
 

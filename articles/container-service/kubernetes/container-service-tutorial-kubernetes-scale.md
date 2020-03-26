@@ -8,10 +8,10 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273994"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(即將淘汰) 調整 Kubernetes Pod 和 Kubernetes 基礎結構
@@ -23,7 +23,7 @@ ms.locfileid: "78273994"
 
 如果您一直都依照教學課程操作，就會在 Azure Container Service 中有一個正常運作 Kubernetes 叢集，並已部署「Azure 投票」應用程式。 
 
-在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 相應放大，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 代理程式節點的數目，以變更叢集的工作負載裝載容量。 完成的工作包括：
+在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 擴增，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 代理程式節點的數目，以變更叢集的工作負載裝載容量。 完成的工作包括：
 
 > [!div class="checklist"]
 > * 手動調整 Kubernetes Pod

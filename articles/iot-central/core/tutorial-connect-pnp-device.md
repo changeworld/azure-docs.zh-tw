@@ -8,21 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329437"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064425"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教學課程：使用裝置功能模型建立 IoT 隨插即用 (預覽) 裝置，並將其連線至您的 IoT Central 應用程式
 
 _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) (預覽) 裝置的功能。 IoT Central 可在裝置第一次連接時，使用 DCM 來建立裝置的裝置範本和視覺效果。
 
 [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
-
-> [!NOTE]
-> 請連絡技術支援以取得存取權，以建立支援 IoT 隨插即用裝置的預覽應用程式。
 
 在本教學課程中，您會了解如何：
 

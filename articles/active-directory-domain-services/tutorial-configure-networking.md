@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
 ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73172639"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>教學課程：為 Azure Active Directory Domain Services 執行個體設定虛擬網路
@@ -31,7 +31,7 @@ ms.locfileid: "73172639"
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -104,7 +104,7 @@ ms.locfileid: "73172639"
 1. 若要建立對等互連，請選取 [+ 新增]  。 在下列範例中，預設的 *aadds-vnet* 會對等互連至名為 *myVnet* 的虛擬網路。 請使用您自己的值進行下列設定：
 
     * **從 aadds-vnet 到遠端虛擬網路的對等互連名稱**：這兩個網路的描述性識別碼，例如 *aadds-vnet-to-myvnet*
-    * **虛擬網路部署類型**：*資源管理員*
+    * **虛擬網路部署類型**：*Resource Manager*
     * 訂用帳戶  ：您要對等互連之虛擬網路的訂用帳戶，例如 *Azure*
     * **虛擬網路**：您要對等互連的虛擬網路，例如 *myVnet*
     * **從 myVnet 到 aadds-vnet 的對等互連名稱**：這兩個網路的描述性識別碼，例如 *myvnet-to-aadds-vnet*

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: sngun
 ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274082"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
@@ -42,7 +42,7 @@ ms.locfileid: "78274082"
 > [!TIP]
 > 本教學課程假設您先前有過使用 ASP.NET Core MVC 和 Azure App Service 的經驗。 如果您不熟悉 ASP.NET Core 或[必備工具](#prerequisites)，建議您從 [GitHub][GitHub] 下載完整的範例專案、新增必要的 NuGet 套件，並加以執行。 專案建置完成後，您可以檢閱本文，以加深對專案內容中程式碼的了解。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a><a name="prerequisites"></a>必要條件
 
 依照本文的指示進行之前，請確定您具備下列資源：
 
@@ -54,7 +54,7 @@ ms.locfileid: "78274082"
 
 本文中的所有螢幕擷取畫面都是來自 Microsoft Visual Studio Community 2019。 如果您使用不同的版本，您的畫面和選項可能不會完全相符。 如果您符合必要條件，解決方案應可正常執行。
 
-## <a name="create-an-azure-cosmos-account"></a>步驟 1：建立 Azure Cosmos 帳戶
+## <a name="step-1-create-an-azure-cosmos-account"></a><a name="create-an-azure-cosmos-account"></a>步驟 1：建立 Azure Cosmos 帳戶
 
 我們將從建立 Azure Cosmos 帳戶開始著手。 如果您已經擁有 Azure Cosmos DB SQL API 帳戶，或如果您正在使用 Azure Cosmos DB 模擬器，請跳到[步驟 2：建立新的 ASP.NET MVC 應用程式](#create-a-new-mvc-application)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "78274082"
 
 在下一節中，您會建立新的 ASP.NET Core MVC 應用程式。
 
-## <a name="create-a-new-mvc-application"></a>步驟 2：建立新的 ASP.NET Core MVC 應用程式
+## <a name="step-2-create-a-new-aspnet-core-mvc-application"></a><a name="create-a-new-mvc-application"></a>步驟 2：建立新的 ASP.NET Core MVC 應用程式
 
 1. 開啟 Visual Studio，然後選取 [建立新專案]  。
 
@@ -80,7 +80,7 @@ ms.locfileid: "78274082"
 
 1. 選取 [偵錯]   > [開始偵錯]  或 F5 以在本機執行 ASP.NET 應用程式。
 
-## <a name="add-nuget-packages"></a>步驟 3：對專案新增 Azure Cosmos DB NuGet 套件
+## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>步驟 3：對專案新增 Azure Cosmos DB NuGet 套件
 
 現在我們已經擁有此解決方案所需的大部分 ASP.NET Core MVC 架構程式碼，接下來讓我們新增所需的 NuGet 套件以便連線到 Azure Cosmos DB。
 
@@ -98,11 +98,11 @@ ms.locfileid: "78274082"
    Install-Package Microsoft.Azure.Cosmos
    ```
   
-## <a name="set-up-the-mvc-application"></a>步驟 4︰設定 ASP.NET Core MVC 應用程式
+## <a name="step-4-set-up-the-aspnet-core-mvc-application"></a><a name="set-up-the-mvc-application"></a>步驟 4︰設定 ASP.NET Core MVC 應用程式
 
 現在我們可以開始將模型、檢視和控制站新增至此 MVC 應用程式。
 
-### <a name="add-a-model"></a>新增模型
+### <a name="add-a-model"></a><a name="add-a-model"></a>新增模型
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Models]  資料夾，選取 [新增]   > [類別]  。
 
@@ -114,7 +114,7 @@ ms.locfileid: "78274082"
 
 Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonProperty` 屬性來控制 JSON 序列化和還原序列化物件的方式。 `Item` 類別會示範 `JsonProperty` 屬性。 此程式碼會控制進入 JSON 的屬性名稱格式。 它也會將 .NET 屬性重新命名為 `Completed`。
 
-### <a name="add-views"></a>新增檢視
+### <a name="add-views"></a><a name="add-views"></a>新增檢視
 
 接下來，讓我們建立下列三個檢視。
 
@@ -122,7 +122,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 * 新增項目檢視
 * 新增編輯項目檢視
 
-#### <a name="AddItemIndexView"></a>新增清單項目檢視
+#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>新增清單項目檢視
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Views]  資料夾，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Item*。
 
@@ -141,7 +141,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 完成後，Visual Studio 會開啟它所建立的 *cshtml*檔案。 您可以在 Visual Studio 中關閉該檔案。 我們稍後會再回來。
 
-#### <a name="AddNewIndexView"></a>新增新項目檢視
+#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>新增新項目檢視
 
 與您建立檢視以列出項目的方法類似，請使用下列步驟建立新的檢視，來建立項目：
 
@@ -155,7 +155,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 選取 [使用版面配置頁面]  ，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]  。
 
-#### <a name="AddEditIndexView"></a>新增編輯項目檢視
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>新增編輯項目檢視
 
 最後，請新增檢視以透過下列步驟編輯項目：
 
@@ -171,7 +171,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 完成這些步驟後，請將 Visual Studio 中的所有 cshtml  文件關閉，您稍後會回頭使用這些檢視。
 
-### <a name="initialize-services"></a>宣告並初始化服務
+### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>宣告並初始化服務
 
 首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDBService` 的類別和名為 `ICosmosDBService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
 
@@ -203,7 +203,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
    :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
 
-### <a name="add-a-controller"></a>新增控制器
+### <a name="add-a-controller"></a><a name="add-a-controller"></a>新增控制器
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Controllers]  資料夾，選取 [新增]   > [控制器]  。
 
@@ -221,7 +221,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 我們也會在方法參數上使用 **Bind** 屬性，以協助防範 over-posting 攻擊。 如需詳細資訊，請參閱[教學課程：使用 ASP.NET MVC 中的 Entity Framework 來實作 CRUD 功能][Basic CRUD Operations in ASP.NET MVC]。
 
-## <a name="run-the-application"></a>步驟 5：在本機執行應用程式
+## <a name="step-5-run-the-application-locally"></a><a name="run-the-application"></a>步驟 5：在本機執行應用程式
 
 若要在本機電腦測試應用程式，請使用下列步驟：
 
@@ -245,7 +245,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 完成測試應用程式後，選取 Ctrl + F5 停止偵錯應用程式。 您現在可以開始進行部署。
 
-## <a name="deploy-the-application-to-azure"></a>步驟 6：部署應用程式
+## <a name="step-6-deploy-the-application"></a><a name="deploy-the-application-to-azure"></a>步驟 6：部署應用程式
 
 您已經擁有可在 Azure Cosmos DB 正常運作的完整應用程式，我們現在要將此 Web 應用程式部署至 Azure App Service。  
 

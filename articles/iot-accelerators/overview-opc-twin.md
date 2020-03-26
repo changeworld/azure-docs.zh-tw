@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826230"
 ---
 # <a name="what-is-opc-twin"></a>什麼是 OPC 對應項？
@@ -28,7 +28,7 @@ OPC 對應項可讓工廠操作員掃描工廠網路，以便探索和註冊 OPC
 ### <a name="simple-control"></a>簡單的控制
 OPC 對應項可讓工廠操作員自動或手動從雲端即時回應事件，並重新設定其廠房機器。 OPC 對應項提供的 REST API 可在 OPC UA 伺服器上叫用服務、瀏覽其位址空間，以及讀取/寫入變數和執行方法。 例如，鍋爐可使用溫度 KPI 來控制產品線。 溫度感應器會使用 OPC 發行者發佈資料的變更。 工廠操作員會收到溫度已達到閾值的警示。 生產線會透過 OPC 對應項自動減緩速度。 工廠操作員會收到生產線減速的通知。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 您可以使用 OPC 對應項進行簡單的驗證，以及使用簡單的開發人員體驗。
 
 ### <a name="simple-authentication"></a>簡單的驗證 

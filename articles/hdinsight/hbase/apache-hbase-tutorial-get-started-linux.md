@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
 ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71077145"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 中的 Apache HBase
@@ -29,7 +29,7 @@ ms.locfileid: "71077145"
 > * 使用 Curl 來使用 HBase REST API
 > * 檢查叢集狀態
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -45,11 +45,11 @@ ms.locfileid: "71077145"
 
 2. 從 [自訂部署]  刀鋒視窗，輸入下列值：
 
-    |屬性 |說明 |
+    |屬性 |描述 |
     |---|---|
     |訂用帳戶|選取用來建立叢集的 Azure 訂用帳戶。|
     |資源群組|建立 Azure 資源管理群組，或使用現有的群組。|
-    |位置|指定資源群組的位置。 |
+    |Location|指定資源群組的位置。 |
     |ClusterName|輸入 HBase 叢集的名稱。|
     |叢集登入名稱和密碼|預設登入名稱為 **admin**。|
     |SSH 使用者名稱和密碼|預設的使用者名稱為 **sshuser**。|
@@ -290,7 +290,7 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 
    - 區域伺服器
    - 備份主機
-   - tables
+   - 資料表
    - 工作
    - 軟體屬性
 
@@ -302,7 +302,7 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。
-1. 按一下 [刪除]  。 按一下 [是]  。
+1. 按一下 **[刪除]** 。 按一下 [是]  。
 
 ## <a name="next-steps"></a>後續步驟
 

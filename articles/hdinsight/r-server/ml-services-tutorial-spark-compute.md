@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121927"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 的 Spark 計算內容中使用 R
@@ -31,7 +31,7 @@ ms.locfileid: "71121927"
 > * 使用複合 XDF 檔案
 > * 將 XDF 轉換為 CSV
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure HDInsight Machine Learning 服務叢集。 請移至[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]  作為 [叢集類型]  。
 
@@ -160,7 +160,7 @@ rxHadoopListFiles(airDataDir)
 
 在 Spark 計算內容中，您可以使用下列函式建立資料來源：
 
-|函式 | 說明 |
+|函式 | 描述 |
 |---------|-------------|
 |`RxTextData` | 以逗號分隔文字的資料來源。 |
 |`RxXdfData` | 使用 XDF 資料檔案格式的資料。 在 RevoScaleR 中，為 Hadoop 修改 XDF 檔案格式，將資料儲存在複合的檔案集，而不是單一檔案。 |

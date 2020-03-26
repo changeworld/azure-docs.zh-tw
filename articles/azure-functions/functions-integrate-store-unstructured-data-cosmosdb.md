@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230555"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 儲存非結構化資料
@@ -22,7 +22,7 @@ ms.locfileid: "74230555"
 
 ![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -50,14 +50,14 @@ ms.locfileid: "74230555"
 
     ![設定 Cosmos DB 輸出繫結](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | 設定      | 建議的值  | 說明                                |
+    | 設定      | 建議的值  | 描述                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **文件參數名稱** | taskDocument | 該名稱參考程式碼中的 Cosmos DB 物件。 |
     | **資料庫名稱** | taskDatabase | 用於儲存文件的資料庫名稱。 |
     | **集合名稱** | TaskCollection | 資料庫集合的名稱。 |
     | **如果為 true，就會建立 Cosmos DB 資料庫和集合** | 已檢查 | 集合尚未存在，因此加以建立。 |
     | **Azure Cosmos DB 帳戶連線** | 新增設定 | 選取 [新增]  ，然後選擇 [訂用帳戶]  、稍早建立的 [資料庫帳戶]  以及 [選取]  。 建立適用於帳戶連線的應用程式設定。 繫結會使用此設定來連線至資料庫。 |
-    | **集合輸送量** |400 RU| 如果您想要降低延遲，稍後可以相應增加輸送量。 |
+    | **集合輸送量** |400 RU| 如果您想要降低延遲，稍後可以擴大輸送量。 |
 
 1. 選取 [儲存]  以建立繫結。
 

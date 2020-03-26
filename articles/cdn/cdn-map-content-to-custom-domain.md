@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837423"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222405"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教學課程：將自訂網域新增至 Azure CDN 端點
 本教學課程說明如何將自訂網域新增至 Azure 內容傳遞網路 (CDN) 端點。 使用 CDN 端點來傳遞內容時，如果您想要在 CDN URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。 
@@ -34,7 +34,7 @@ ms.locfileid: "73837423"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 CDN 設定檔和至少一個 CDN 端點，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
@@ -66,11 +66,11 @@ ms.locfileid: "73837423"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源                    | 類型  | 目的地                     |
+    | 來源                    | 類型  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - 來源：以下列格式輸入您的自訂網域名稱 (包括 cdnverify 子網域)：cdnverify.&lt;自訂網域名稱&gt;。 例如 cdnverify.www.contoso.com。
+    - 來源：以下列格式輸入您的自訂網域名稱 (包括 cdnverify 子網域)：cdnverify.&lt;自訂網域名稱&gt;。 例如 cdnverify. www.contoso.com。
 
     - 輸入：輸入 CNAME  。
 
@@ -160,7 +160,7 @@ ms.locfileid: "73837423"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源          | 類型  | 目的地           |
+    | 來源          | 類型  | Destination           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

@@ -4,13 +4,13 @@ description: 了解如何藉由連線至 Azure 中的 MySQL 資料庫，讓 Linu
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: cdac051e8f80186f7089996d931f02453128fdda
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 693f132bed590af65cf79ebf4739ea5dcadbfc52
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913067"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045523"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 PHP 和 MySQL 應用程式
 

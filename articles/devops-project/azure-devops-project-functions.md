@@ -10,10 +10,10 @@ ms.date: 06/20/2019
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971565"
 ---
 # <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>使用 DevOps Projects 持續部署到 Azure Functions
@@ -39,7 +39,7 @@ DevOps Projects 也可用於：
 
 目前支援的函式執行階段是 **.NET** 和 **Node.js**。 我們使用 . NET 執行階段在此教學課程中部署至 Azure Functions。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 您可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得免費的訂用帳戶
 
@@ -51,7 +51,7 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 1. 在左窗格中選取 [建立資源]  。
 
-1. 在 [搜尋] 方塊中，輸入 **DevOps Projects**，然後按一下 [新增]  。
+1. 在搜尋方塊中，輸入 **DevOps Projects**，然後按一下 [新增]  。
 
    ![DevOps Projects](_img/azure-devops-project-functions/devops-project.png)
 
@@ -97,7 +97,7 @@ DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 1. 按一下 [建置]  底下的超連結。 瀏覽器索引標籤會顯示新專案的建置管線。
 
-    ![建置](_img/azure-devops-project-functions/build.png)
+    ![Build](_img/azure-devops-project-functions/build.png)
 
 1. 選取 [編輯]  。 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源程式碼、建置應用程式、執行單元測試，以及發佈用來進行部署的輸出。
 
