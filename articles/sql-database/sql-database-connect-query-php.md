@@ -11,17 +11,17 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
 ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827006"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>快速入門：使用 PHP 查詢 Azure SQL 資料庫
 
 本文示範如何使用 [PHP](https://php.net/manual/en/intro-whatis.php) 連線至 Azure SQL 資料庫。 您可以接著使用 T-SQL 陳述式來查詢資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此範例，請確定您具有下列必要條件：
 
@@ -35,7 +35,7 @@ ms.locfileid: "73827006"
   | 設定 | [伺服器層級 IP 防火牆規則](sql-database-server-level-firewall-rule.md)| [VM 的連線能力](sql-database-managed-instance-configure-vm.md)|
   |||[現場的連線能力](sql-database-managed-instance-configure-p2s.md)
   |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](sql-database-import.md) 檔案還原或匯入 Adventure Works|
+  |||從 [GitHub](sql-database-import.md) 中的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 檔案還原或匯入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -108,4 +108,4 @@ ms.locfileid: "73827006"
 
 - [回報問題或發問](https://github.com/Microsoft/msphpsql/issues)
 
-- [重試邏輯範例：使用 PHP 復原連線 SQL](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [重試邏輯範例：使用 PHP 彈性連接到 SQL](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

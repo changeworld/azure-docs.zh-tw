@@ -12,10 +12,10 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768610"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入門：使用 Node.js 查詢 Azure SQL 資料庫
@@ -28,17 +28,17 @@ ms.locfileid: "76768610"
 - [Azure SQL 資料庫](sql-database-single-database-get-started.md)
 - [Node.js](https://nodejs.org) 相關軟體
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  安裝 Homebrew 和 Node.js，然後使用[在 macOS 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Homebrew 和 Node.js，然後使用**在 macOS 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安裝 Node.js，然後使用[在 Ubuntu 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Node.js，然後使用**在 Ubuntu 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  安裝 Chocolatey 和 Node.js，然後使用[在 Windows 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Chocolatey 和 Node.js，然後使用**在 Windows 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
   ---
 

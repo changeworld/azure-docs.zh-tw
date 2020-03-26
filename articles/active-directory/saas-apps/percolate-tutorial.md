@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教學課程：Azure Active Directory 與 Percolate 整合
@@ -36,7 +36,7 @@ ms.locfileid: "67094604"
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Percolate 的整合，您需要具備：
 
@@ -148,7 +148,7 @@ ms.locfileid: "67094604"
 
     1. 在 [啟用 SSO 自動佈建]  清單中，選取 [否]  。
 
-    1. 選取 [ **儲存**]。
+    1. 選取 [儲存]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76930405"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
@@ -37,7 +37,7 @@ Azure 自動化 [Desired State Configuration](automation-dsc-overview.md) 是適
 
 使用 Azure 自動化跨混合式環境更新 Windows 和 Linux 系統。 您可以看見 Azure、內部部署和其他雲端之間的更新相容性。 您可以建立排程部署，在協調定義維護時間內的更新安裝。 如果電腦上不應該安裝更新，您可以從部署中排除這些更新。
 
-### <a name="shared-resources"></a>共用資源
+### <a name="shared-resources"></a><a name="shared-resources"></a>共用資源
 
 Azure 自動化包含一組共用資源，讓您能更輕鬆地自動化，並大量設定您的環境。
 

@@ -17,10 +17,10 @@ ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 65a1bcad1d77030a029c623abea48f12741f2352
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75532741"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-presspage"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PressPage 整合

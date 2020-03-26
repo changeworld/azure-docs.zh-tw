@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68302595"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>教學課程：整合 Abstract 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "68302595"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -110,7 +110,7 @@ ms.locfileid: "68302595"
 2. 移至左側工具列中的 [權限]  頁面。
 3. 在 [設定 SSO]  區段中，輸入您的**中繼資料 URL** 和**實體識別碼**。
 4. 輸入您可能會遇到的任何手動例外。 手動例外區段中所列的電子郵件將會略過 SSO，並且能夠使用電子郵件和密碼登入。 
-5. 按一下 [儲存變更]  。
+5. 按一下 **[儲存變更]** 。
 
 >[!Note] 
 >您必須在手動例外清單中使用主要電子郵件地址。 如果您列出的電子郵件是使用者的次要電子郵件，SSO 將會無法啟用。 如果發生這種情況，您會看到失敗帳戶的主要電子郵件錯誤訊息。 請在確認您知道使用者是誰之後，將該主要電子郵件新增至手動例外清單。

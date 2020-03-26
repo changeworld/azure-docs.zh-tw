@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083112"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215456"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 
-Azure SQL Database 可讓您建立及排程可針對一或多個資料庫定期執行的作業，以便執行 T-SQL 查詢及執行維護工作。 每項作業會記錄執行狀態，如果發生任何失敗，也會自動重試作業。
+Azure SQL Database 可讓您建立及排程可針對一或多個資料庫定期執行的作業，以便執行 T-SQL 查詢及執行維護工作。
+每項作業會記錄執行狀態，如果發生任何失敗，也會自動重試作業。
 您可以定義將執行作業的目標資料庫或 Azure SQL 資料庫群組，也可定義可供執行作業的排程。
 作業可處理登入目標資料庫的工作。 您也要定義、維護及保存要在 Azure SQL 資料庫群組中執行的 Transact-SQL 指令碼。
 
@@ -48,10 +49,10 @@ Azure SQL Database 中可用的作業排程技術如下：
 
 值得注意的是 SQL Agent (可用於內部部署且作為 SQL Database 受控執行個體的一部分) 與資料庫彈性作業代理程式 (適用於 Azure SQL 資料庫中的單一資料庫，以及 SQL 資料倉儲中的資料庫) 之間的差異。
 
-|  |彈性作業  |SQL Agent |
+| |彈性作業 |SQL Agent |
 |---------|---------|---------|
-|影響範圍     |  與作業代理程式位於相同 Azure 雲端中任何數目的 Azure SQL 資料庫和/或資料倉儲。 目標可以位於不同的 SQL Database 伺服器、訂用帳戶和/或區域。 <br><br>目標群組可由個別資料庫或資料倉儲，或伺服器、集區或 shardmap 中的所有資料庫所組成 (在作業執行階段以動態方式列舉)。 | 與 SQL 代理程式位於相同 SQL Server 執行個體中的任何個別資料庫。 |
-|支援的 API 和工具     |  入口網站、PowerShell、T-SQL、Azure Resource Manager      |   T-SQL、SQL Server Management Studio (SSMS)     |
+|影響範圍 | 與作業代理程式位於相同 Azure 雲端中任何數目的 Azure SQL 資料庫和/或資料倉儲。 目標可以位於不同的 SQL Database 伺服器、訂用帳戶和/或區域。 <br><br>目標群組可由個別資料庫或資料倉儲，或伺服器、集區或 shardmap 中的所有資料庫所組成 (在作業執行階段以動態方式列舉)。 | 與 SQL 代理程式位於相同 SQL Server 執行個體中的任何個別資料庫。 |
+|支援的 API 和工具 | 入口網站、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent 作業
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 您可以通知操作員您的 SQL Agent 作業有狀況發生。 操作員可定義負責維護一或多個受控執行個體的個人連絡資訊。 操作員責任有時會指派給某一個人。
@@ -140,23 +141,24 @@ RECONFIGURE
 您可以使用 SSMS 或 Transact-SQL 指令碼來建立操作員，如下列範例所示：
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 您可以使用 SSMS 或下列 Transact-SQL 指令碼來修改任何作業並指派操作員，該操作員會在作業完成、失敗或成功時透過電子郵件收到通知：
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>SQL Agent 作業限制
 
 受控執行個體不支援有些適用於 SQL Server 的 SQL Agent 功能：
+
 - SQL 代理程式設定是唯讀狀態。 受控執行個體中不支援 `sp_set_agent_properties` 程序。
 - 受控執行個體目前不支援啟用/停用 SQL 代理程式。 SQL 代理程式一律會處於正在執行的狀態。
 - 部分支援通知
@@ -180,17 +182,16 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ### <a name="elastic-job-components"></a>彈性作業元件
 
-|元件  | 描述 (其他詳細資料位於表格下方) |
+|元件 | 描述 (其他詳細資料位於表格下方) |
 |---------|---------|
-|[**彈性作業代理程式**](#elastic-job-agent) |  您建立用來執行和管理作業的 Azure 資源。   |
-|[**作業資料庫**](#job-database)    |    作業代理程式用來儲存作業相關資料、作業定義等的 Azure SQL 資料庫。      |
-|[**目標群組**](#target-group)      |  要執行作業的伺服器、集區、資料庫和分區對應集合。       |
-|[**作業**](#job)  |  作業是由一或多個[作業步驟](#job-step)所組成的工作單位。 作業步驟可指定要執行的 T-SQL 指令碼，以及執行指令碼所需的其他詳細資料。  |
-
+|[**彈性作業代理程式**](#elastic-job-agent) | 您建立用來執行和管理作業的 Azure 資源。 |
+|[**作業資料庫**](#job-database) | 作業代理程式用來儲存作業相關資料、作業定義等的 Azure SQL 資料庫。 |
+|[**目標群組**](#target-group) | 要執行作業的伺服器、集區、資料庫和分區對應集合。 |
+|[**作業**](#job) | 作業是由一或多個[作業步驟](#job-step)所組成的工作單位。 作業步驟可指定要執行的 T-SQL 指令碼，以及執行指令碼所需的其他詳細資料。 |
 
 #### <a name="elastic-job-agent"></a>彈性作業代理程式
 
-彈性作業代理程式是用於建立、執行和管理作業的 Azure 資源。 彈性作業代理程式是您在入口網站中建立的 Azure 資源 (也支援 [PowerShell](elastic-jobs-powershell.md) 和 REST)。 
+彈性作業代理程式是用於建立、執行和管理作業的 Azure 資源。 彈性作業代理程式是您在入口網站中建立的 Azure 資源 (也支援 [PowerShell](elastic-jobs-powershell.md) 和 REST)。
 
 建立**彈性作業代理程式**時需要現有的 SQL 資料庫。 此代理程式會將這個現有資料庫設定為[作業資料庫  ](#job-database)。
 
@@ -202,24 +203,20 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 對於目前的預覽，需要現有的 Azure SQL 資料庫 (S0 或更高版本) 才能建立彈性作業代理程式。
 
-「作業資料庫」  不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務目標。 「作業資料庫」  的建議服務目標為 S1 或更高，但最佳選擇取決於作業的效能需求：作業步驟數、作業目標數，以及作業的執行頻率。 例如，若為每小時執行少量作業且目標少於 10 個資料庫的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時，S0 資料庫可能就不夠快，而更高的服務層級可能比較適合。 
+「作業資料庫」  不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務目標。 「作業資料庫」  的建議服務目標為 S1 或更高，但最佳選擇取決於作業的效能需求：作業步驟數、作業目標數，以及作業的執行頻率。 例如，若為每小時執行少量作業且目標少於 10 個資料庫的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時，S0 資料庫可能就不夠快，而更高的服務層級可能比較適合。
 
-如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV 來[監視](sql-database-monitor-tune-overview.md#monitor-database-performance)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](sql-database-service-tiers-dtu.md) 或 [vCore 模型](sql-database-service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
-
+如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV 來[監視](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](sql-database-service-tiers-dtu.md) 或 [vCore 模型](sql-database-service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
 
 ##### <a name="job-database-permissions"></a>作業資料庫權限
 
 在作業代理程式建立期間，會在「作業資料庫」  中建立結構描述、資料表，以及名為 jobs_reader  的角色。 此角色會具有下列權限，而且旨在賦予系統管理員更細微的存取控制以便監視作業：
 
-
-|角色名稱  |'jobs' 結構描述權限  |'jobs_internal' 結構描述權限  |
+|角色名稱 |'jobs' 結構描述權限 |'jobs_internal' 結構描述權限 |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    None     |
+|**jobs_reader** | SELECT | None |
 
 > [!IMPORTANT]
 > 在以資料庫管理員身分授與「作業資料庫」  存取權之前，請考慮安全性含意。 有權建立或編輯作業的惡意使用者可以建立或編輯一項作業，該作業使用預存認證來連線到惡意使用者所掌控的資料庫，這可讓惡意使用者決定認證的密碼。
-
-
 
 #### <a name="target-group"></a>目標群組
 
@@ -247,7 +244,6 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 **範例 4** 顯示包含以彈性集區作為目標的目標群組。 類似於*範例 2*，集區會在作業執行時間以動態方式列舉，以決定集區中的資料庫清單。
 <br><br>
 
-
 ![目標群組範例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
 **範例 5** 和**範例 6** 顯示進階案例，其中 Azure SQL 伺服器、彈性集區和資料庫都可使用包含及排除規則來結合。<br>
@@ -271,7 +267,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 #### <a name="job-history"></a>作業歷程記錄
 
-作業執行歷程記錄會儲存在「作業資料庫」  中。 系統清理作業會清除留存超過 45 天的執行歷程記錄。 若要移除留存少於 45 天的歷程記錄，請在「作業資料庫」  中呼叫 **sp_purge_history** 預存程序。
+作業執行歷程記錄會儲存在「作業資料庫」  中。 系統清理作業會清除留存超過 45 天的執行歷程記錄。 若要移除留存少於 45 天的歷程記錄，請在「作業資料庫」  中呼叫 *sp_purge_history* 預存程序。
 
 ### <a name="agent-performance-capacity-and-limitations"></a>代理程式效能、容量和限制
 
@@ -287,7 +283,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[什麼是 SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [如何建立及管理彈性作業](elastic-jobs-overview.md) 
-- [使用 PowerShell 建立及管理彈性作業](elastic-jobs-powershell.md) 
-- [使用 Transact-SQL (T-SQL) 來建立及管理彈性作業](elastic-jobs-tsql.md) 
+- 請參閱[什麼是 SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [如何建立及管理彈性作業](elastic-jobs-overview.md)
+- [使用 PowerShell 建立及管理彈性作業](elastic-jobs-powershell.md)
+- [使用 Transact-SQL (T-SQL) 來建立及管理彈性作業](elastic-jobs-tsql.md)

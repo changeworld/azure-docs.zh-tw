@@ -10,11 +10,11 @@ keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新�
 ms.date: 02/24/2020
 ms.topic: overview
 ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372248"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290126"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
 
@@ -43,16 +43,16 @@ ms.locfileid: "78372248"
 
 在大部分情況下，您在建立安裝指令碼時所選取的位置，應該是地理位置最接近機器位置的 Azure 區域。 待用資料會儲存在包含您所指定區域的 Azure 地理位置中，如果您有資料落地需求，這可能也會影響選擇的區域。 如果您的機器所連線的 Azure 區域受到中斷影響，連線的機器不會受到影響，但使用 Azure 的管理作業可能無法完成。 在發生區域性中斷的情況下，如果您有多個位置可提供異地備援服務，最好將每個位置中的機器連線到不同的 Azure 區域。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="supported-operating-systems"></a>支援的作業系統
 
 Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作業系統版本： 
 
-- Windows Server 2012 R2 和更新版本（包括 Windows Server Core）
+- Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
 - Ubuntu 16.04 和 18.04
 - CentOS Linux 7
-- SUSE Linux Enterprise Server （SLES）15
+- SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
 - Amazon Linux 7
 
@@ -72,9 +72,9 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 通訊協定
 
-為確保傳輸至 Azure 的資料安全性，我們強烈建議您將電腦設定為使用傳輸層安全性（TLS）1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 
+為了確保資料傳送至 Azure 時的安全性，我們強烈建議您將機器設定為使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 
 
-|平台/語言 | 支援 | 詳細資訊 |
+|平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。 | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
 | Windows Server 2012 R2 及更高版本 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。|
@@ -135,7 +135,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="connected-machine-agent"></a>Connected Machine 代理程式
 
-您可以從下列位置下載適用于 Windows 和 Linux 的 Azure 連線機器代理程式套件。
+您可以從下列位置下載適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式套件。
 
 - 您可以從 Microsoft 下載中心取得 [Windows 代理程式的 Windows Installer 套件](https://aka.ms/AzureConnectedMachineAgent)。
 - Linux 代理程式套件會使用散發所慣用的套件格式 (.RPM 或 .DEB)，透過 Microsoft 的[套件存放庫](https://packages.microsoft.com/)來散發代理程式。
@@ -143,11 +143,11 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 >[!NOTE]
 >在此預覽期間，只發行了一個套件，其適用於 Ubuntu 16.04 或 18.04。
 
-適用于 Windows 和 Linux 的 Azure 連線機器代理程式可以手動或自動升級為最新版本，視您的需求而定。 針對 Windows，您可以使用[apt](https://help.ubuntu.com/lts/serverguide/apt.html)命令列工具，透過 Windows Update 和 Ubuntu 自動完成代理程式更新。
+您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 若使用 Windows，可以使用 Windows Update 自動完成代理程式更新；若使用 Ubuntu，則請使用 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) 命令列工具。
 
 ### <a name="agent-status"></a>代理程式狀態
 
-連線的機器代理程式每隔5分鐘就會將一般的心跳訊息傳送至服務。 如果未收到15分鐘的時間，則會將機器視為離線，且狀態會自動變更為在入口網站中**中斷**連線。 從已連線的機器代理程式收到後續的心跳訊息時，其狀態會自動變更為 [**已連線**]。
+Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果 15 分鐘未收到訊息，則系統會將機器視為離線，且入口網站中的狀態會自動變更為**中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為**連線**。
 
 ## <a name="install-and-configure-agent"></a>安裝及設定代理程式
 

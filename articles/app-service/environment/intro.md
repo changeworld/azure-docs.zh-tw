@@ -6,13 +6,13 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768322"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057375"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service 環境簡介 #
  
@@ -24,7 +24,7 @@ Azure App Service Environment 是 Azure App Service 的功能，可提供完全�
 * Linux Web 應用程式 
 * Docker 容器
 * 行動應用程式
-* 函式
+* Functions
 
 App Service Environment (ASE) 適合需要下列項目的應用程式工作負載：
 
@@ -55,7 +55,7 @@ ASE 是由前端和背景工作角色所組成。 前端負責處理 HTTP/HTTPS 
 * 兩個 vCPU/7 GB RAM
 * 四個 vCPU/14 GB RAM
 
-客戶不需要管理前端和背景工作角色。 所有的基礎結構會隨客戶的 App Service 方案相應放大而自動新增。 隨著 App Service 方案建立或相應縮小 ASE，會視需要將基礎結構新增或移除。
+客戶不需要管理前端和背景工作角色。 所有的基礎結構會隨客戶的 App Service 方案擴增而自動新增。 隨著 App Service 方案建立或相應縮小 ASE，會視需要將基礎結構新增或移除。
 
 ASE 會有一般每月費率來支付基礎結構，且不會依 ASE 的大小而變更。 此外，每個 App Service 方案 vCPU 核心都會有其成本。 ASE 中裝載的所有應用程式都會位於隔離價格 SKU 中。 如需 ASE 價格的相關資訊，請參閱 [App Service 價格][Pricing]頁面，並檢閱 ASE 的可用選項。
 
@@ -75,9 +75,9 @@ ASE 可以是具有公用 IP 位址的網際網路對應，或只具有 Azure �
 
 ## <a name="app-service-environment-v1"></a>App Service 環境 v1 ##
 
-App Service 環境有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。 
+App Service Environment 有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。 
 
-在 ASEv1 中，您必須手動管理所有資源。 其中包括前端、背景工作角色和用於 IP 型 SSL 的 IP 位址。 首先，您必須將想要在其中裝載的背景工作角色集區相應放大，才能相應放大 App Service 方案。
+在 ASEv1 中，您必須手動管理所有資源。 其中包括前端、背景工作角色和用於 IP 型 SSL 的 IP 位址。 首先，您必須將想要在其中裝載的背景工作角色集區擴增，才能擴增 App Service 方案。
 
 ASEv1 使用與 ASEv2 不同的定價模式。 在 ASEv1 中，您需要支付每個配置的 vCPU。 其中包括用於前端或未裝載任何工作負載之背景工作角色的 vCPU。 在 ASEv1 中，ASE 的預設最大調整大小總計是 55 個主機， 包括背景工作角色與前端。 ASEv1 的其中一個優點，是可以部署在傳統虛擬網路和 Resource Manager虛擬網路中。 若要深入了解 ASEv1，請參閱 [App Service 環境 v1 簡介][ASEv1Intro]。
 

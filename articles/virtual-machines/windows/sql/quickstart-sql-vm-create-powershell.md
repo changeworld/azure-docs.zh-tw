@@ -14,10 +14,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790903"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 來建立 SQL Server Windows 虛擬機器
@@ -28,18 +28,18 @@ ms.locfileid: "74790903"
 > - 本快速入門提供快速佈建及連線到 SQL VM 的途徑。 如需其他用於建立 SQL VM 之 Azure PowerShell 選項的詳細資訊，請參閱[使用 Azure PowerShell 佈建 SQL Server VM 的指南](virtual-machines-windows-ps-sql-create.md)。
 > - 如果您有 SQL Server 虛擬機器的相關問題，請參閱[常見問題集](virtual-machines-windows-sql-server-iaas-faq.md)。
 
-## <a id="subscription"></a> 取得 Azure 訂用帳戶
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> 取得 Azure 訂用帳戶
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
-## <a id="powershell"></a> 取得 Azure PowerShell
+## <a name="get-azure-powershell"></a><a id="powershell"></a> 取得 Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-powershell"></a>設定 PowerShell
 
-1. 開啟 PowerShell 並執行 **Connect-AzAccount** 來建立您的 Azure 帳戶存取權限。
+1. 開啟 PowerShell，然後執行 **Connect-AzAccount** 命令來建立存取您 Azure 帳戶的權限。
 
    ```powershell
    Connect-AzAccount
@@ -170,11 +170,11 @@ ms.locfileid: "74790903"
 
 1. 當提示輸入認證，請選擇不同帳戶的輸入認證。 輸入包含前置反斜線的使用者名稱 (例如 `\azureadmin`)，以及您先前在本快速入門中設定的密碼。
 
-## <a name="connect-to-sql-server"></a>連接到 SQL Server
+## <a name="connect-to-sql-server"></a>連接至 SQL Server
 
 1. 登入遠端桌面工作階段之後，從 [開始] 功能表啟動 **SQL Server Management Studio 2017**。
 
-1. 在 [連線到伺服器]  對話方塊中，保留預設值。 伺服器名稱為 VM 的名稱。 驗證已設為 [Windows 驗證]  。 選取 [ **連接**]。
+1. 在 [連線到伺服器]  對話方塊中，保留預設值。 伺服器名稱為 VM 的名稱。 驗證已設為 [Windows 驗證]  。 選取 [連接]  。
 
 您現在已從本機連線到 SQL Server。 若要從遠端連線，您必須從入口網站或以手動方式[設定連線](virtual-machines-windows-sql-connect.md)。
 

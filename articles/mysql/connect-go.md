@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770759"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067963"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 Go 語言連線並查詢資料
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL︰使用 Go 語言連線及查詢資料
 本快速入門示範如何從 Windows、Ubuntu Linux 和 Apple macOS 平台使用以 [Go](https://golang.org/) 語言撰寫的程式碼，連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 Go 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本快速入門使用在以下任一指南中建立的資源作為起點︰
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -27,12 +27,12 @@ ms.locfileid: "74770759"
 在自己的電腦上安裝 [Go](https://golang.org/doc/install) 和 [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation)。 根據您的平台，遵循適當小節中的步驟：
 
 ### <a name="windows"></a>Windows
-1. 根據[安裝指示](https://golang.org/doc/install)，[下載](https://golang.org/dl/)並安裝 Go for Microsoft Windows。
+1. 根據[安裝指示](https://golang.org/dl/)，[下載](https://golang.org/doc/install)並安裝 Go for Microsoft Windows。
 2. 從 [開始] 功能表啟動命令提示字元。
-3. 為您的專案產生資料夾，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo` 。
+3. 為您的專案產生資料夾，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo`第 1 課：建立 Windows Azure 儲存體物件{2}。
 4. 將目錄切換到專案資料夾，例如 `cd %USERPROFILE%\go\src\mysqlgo`。
-5. 將 GOPATH 環境變數設定為指向來源程式碼目錄。 `set GOPATH=%USERPROFILE%\go` 。
-6. 執行 `go get github.com/go-sql-driver/mysql` 命令以安裝 [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation)。
+5. 將 GOPATH 環境變數設定為指向來源程式碼目錄。 `set GOPATH=%USERPROFILE%\go`第 1 課：建立 Windows Azure 儲存體物件{2}。
+6. 執行 [ 命令以安裝 ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql`。
 
    總而言之，就是安裝 Go，然後在命令提示字元中執行下列命令：
    ```cmd
@@ -48,7 +48,7 @@ ms.locfileid: "74770759"
 3. 在主目錄中為您的專案產生資料夾，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 將目錄切換到此資料夾，例如 `cd ~/go/src/mysqlgo/`。
 5. 將 GOPATH 環境變數設定為指向有效的來源目錄，例如目前主目錄的 go 資料夾。 在 Bash 殼層，執行 `export GOPATH=~/go` 以將 go 目錄新增為目前殼層工作階段的 GOPATH。
-6. 執行 `go get github.com/go-sql-driver/mysql` 命令以安裝 [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation)。
+6. 執行 [ 命令以安裝 ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql`。
 
    總而言之，就是執行下列 bash 命令：
    ```bash
@@ -65,7 +65,7 @@ ms.locfileid: "74770759"
 3. 在主目錄中為您的專案產生資料夾，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 將目錄切換到此資料夾，例如 `cd ~/go/src/mysqlgo/`。
 5. 將 GOPATH 環境變數設定為指向有效的來源目錄，例如目前主目錄的 go 資料夾。 在 Bash 殼層，執行 `export GOPATH=~/go` 以將 go 目錄新增為目前殼層工作階段的 GOPATH。
-6. 執行 `go get github.com/go-sql-driver/mysql` 命令以安裝 [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation)。
+6. 執行 [ 命令以安裝 ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql`。
 
    總而言之，就是安裝 Go，然後執行下列 bash 命令：
    ```bash

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66473000"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教學課程：使用傳遞驗證整合單一 AD 樹系 (PTA)
@@ -24,16 +24,16 @@ ms.locfileid: "66473000"
 
 下列教學課程將逐步說明如何使用傳遞驗證來建立混合式身分識別環境。  此環境可用於測試或更熟悉混合式身分識別的運作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 下列是完成此教學課程的必要條件
 - 已安裝 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
 - [Azure 訂用帳戶](https://azure.microsoft.com/free)
 - - [外部網路介面卡](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
-- 一份 Windows Server 2016
+- Windows Server 2016 複本
 - 可驗證的[自訂網域](../../active-directory/fundamentals/add-custom-domain.md)
 
 > [!NOTE]
-> 此教學課程使用 PowerShell 指令碼，因此您可以在最快的時間內建立教學課程環境。  每個指令碼都使用在指令碼開頭處宣告的變數。  您可以且應該變更變數以反映您的環境。
+> 此教學課程使用 PowerShell 指令碼，可讓您在最快的時間內建立教學課程環境。  每個指令碼都使用在指令碼開頭處宣告的變數。  您可以且應該變更變數以反映您的環境。
 >
 >用來在安裝 Azure AD Connect 之前建立一般 Active Directory 環境的指令碼。  它們在所有指令碼中都通用。
 >
@@ -86,7 +86,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 6. 輸入您的授權金鑰，然後按一下 [下一步]  。
 7. 選取 [我接受授權條款]，然後按一下 [下一步]  。
 8. 選取**自訂：只安裝 Windows (進階)**
-9. 按一下 [下一步] 
+9. 按 **[下一步]**
 10. 安裝完成之後，請重新啟動虛擬機器、登入並執行 Windows 更新，以確保 VM 為最新。  安裝最新的更新。
 
 ## <a name="install-active-directory-prerequisites"></a>安裝 Active Directory 必要條件
@@ -209,12 +209,12 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. 返回 [Azure 入口網站](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)，並關閉 [所有使用者]  刀鋒視窗。
 2. 在左側選取 [自訂網域名稱]  。
 3. 選取 [新增自訂網域]  。</br>
-![自訂](media/tutorial-federation/custom1.png)</br>
+![Custom](media/tutorial-federation/custom1.png)</br>
 4. 在 [自訂網域名稱]  上，於方塊中輸入您的自訂網域名稱，然後按一下 [新增網域]  。
 5. 在自訂網域名稱畫面上，我們將提供 TXT 或 MX 資訊給您。  此資訊必須新增到網域註冊機構中您的網域下的 DNS 資訊中。  因此，您必須移至您的網域註冊機構，然後將 TXT 或 MX 資訊輸入到您網域的 DNS 設定中。  這將可允許 Azure 驗證您的網域。  Azure 最多可能需要 24 小時才能驗證該網域。  如需詳細資訊，請參閱[新增自訂網域](../../active-directory/fundamentals/add-custom-domain.md)文件。</br>
-![自訂](media/tutorial-federation/custom2.png)</br>
+![Custom](media/tutorial-federation/custom2.png)</br>
 6. 若要確定系統會驗證它，請按一下 [驗證] 按鈕。</br>
-![自訂](media/tutorial-federation/custom3.png)</br>
+![Custom](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>下載並安裝 Azure AD Connect
 現在您可以下載並安裝 Azure AD Connect。  安裝之後，我們將會執行快速安裝。  執行下列動作：
@@ -249,7 +249,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 3. 在 [管理]  底下選取 [使用者]  。
 4. 確認您看到新使用者存在於我們的租用戶 ![同步](media/tutorial-password-hash-sync/synch1.png)
 
-## <a name="test-signing-in-with-one-of-our-users"></a>使用我們的其中一個使用者來測試登入
+## <a name="test-signing-in-with-one-of-our-users"></a>使用我們其中一個使用者來測試登入
 
 1. 瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用我們在新租用戶中建立的使用者來登入。  您必須使用下列格式登入：(user@domain.onmicrosoft.com)。 透過該使用者在內部部署用來登入的密碼登入。

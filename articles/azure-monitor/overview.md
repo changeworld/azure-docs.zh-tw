@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669160"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536848"
 ---
 # <a name="azure-monitor-overview"></a>Azure 監視器概觀
 
@@ -24,6 +24,9 @@ Azure 監視器可藉由提供全方位的解決方案，以便收集、分析�
 - 使用 [Log Analytics](log-query/log-query-overview.md) 向下鑽研您的監視資料，以進行疑難排解與深入診斷。
 - 使用[智慧警示](platform/alerts-smartgroups-overview.md)與[自動化動作](platform/alerts-action-rules.md)來支援大規模作業。
 - 使用 Azure [儀表板](learn/tutorial-logs-dashboards.md)與 [Workbooks](app/usage-workbooks.md) 建立視覺效果。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
@@ -39,7 +42,7 @@ Azure 監視器所收集的所有資料均符合下列兩個基本類型之一�
 
 對於許多 Azure 資源，您會在 Azure 入口網站的 [概觀] 頁面當中看到 Azure 監視器所收集的資料。 比方說，查看一下任何虛擬機器，您會看到數個顯示效能計量的圖表。 按一下任何圖表，以在 Azure 入口網站的[計量瀏覽器](platform/metrics-charts.md)中開啟資料，可讓您將一段時間的多個計量值繪製成圖表。  您可以互動方式檢視圖表，或將其釘選到儀表板，利用其他視覺效果進行檢視。
 
-![計量](media/overview/metrics.png)
+![度量](media/overview/metrics.png)
 
 可以使用[查詢](log-query/log-query-overview.md)分析 Azure 監視器收集的記錄資料，以快速擷取、彙總和分析收集的資料。  您可以在 Azure 入口網站中使用 [Log Analytics](log-query/portals.md) 來建立和測試查詢，然後使用這些工具直接分析資料，或儲存查詢以便搭配[視覺效果](visualizations.md)或[警示規則](platform/alerts-overview.md)使用。
 
@@ -51,11 +54,11 @@ Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/ku
 
 Azure 監視器可以從各種來源收集資料。 您可以考慮為各層中的應用程式監視資料，範圍從您的應用程式、它所倚賴的任何作業系統和服務，以至平台本身。 Azure 監視器會從下列各層收集資料：
 
-- **應用程式監視資料**：您所撰寫程式碼的效能和功能相關資料 (不論其平台為何)。
-- **客體 OS 監視資料**：有關應用程式執行所在作業系統的資料。 這可以在 Azure、其他雲端或內部部署中執行。 
-- **Azure 資源監視資料**：有關 Azure 資源操作的資料。
-- **Azure 訂用帳戶監視資料**：有關 Azure 訂用帳戶作業和管理的資料，以及有關 Azure 本身健康情況和作業的資料。 
-- **Azure 租用戶監視資料**：租用戶層級 Azure 服務的作業相關資料，例如 Azure Active Directory。
+- **應用程式監視資料：** 您所撰寫程式碼的效能和功能相關資料 (不論其平台為何)。
+- **客體 OS 監視資料：** 有關應用程式執行所在作業系統的資料。 這可以在 Azure、其他雲端或內部部署中執行。 
+- **Azure 資源監視資料：** 有關 Azure 資源作業的資料。
+- **Azure 訂用帳戶監視資料：** 有關 Azure 訂用帳戶作業和管理的資料，以及有關 Azure 本身健康情況和作業的資料。 
+- **Azure 租用戶監視資料：** 租用戶層級 Azure 服務的作業相關資料，例如 Azure Active Directory。
 
 當您建立 Azure 訂用帳戶並開始新增資源 (例如虛擬機器和 Web 應用程式) 時，Azure 監視器就會開始收集資料。  [活動記錄](platform/platform-logs-overview.md)會記錄資源的建立或修改時間。 [計量](platform/data-platform.md)會告訴您如何執行資源以及它所取用的資源。 
 

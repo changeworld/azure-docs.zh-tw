@@ -12,10 +12,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: efcbdb2ebd7f4830214dbd0f2ea2ea1cfe36c3de
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75893507"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虛擬機器
@@ -30,7 +30,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 * **雲端中的應用程式** – 因為您應用程式的需求可能會變動，在 Azure VM 上執行它在經濟上是合理的。 當您需要 VM 時便支付額外的 VM，而當您不需要時便關閉這些 VM。
 * **擴充的資料中心** – 可輕鬆將 Azure 虛擬網路中的虛擬機器連線到您組織的網路。
 
-您的應用程式所使用的 VM 數目可以相應增加及相應放大為符合您需求的任何內容。
+您的應用程式所使用的 VM 數目可以擴大及擴增為符合您需求的任何內容。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>我在建立 VM 之前需要先考慮什麼？
 當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰

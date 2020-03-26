@@ -6,15 +6,15 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75863261"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>建立 Azure Cosmos DB 所觸發的函式
 
-了解如何建立在 Azure Cosmos DB 中新增或變更資料時觸發的函式。 若要深入了解 Azure Cosmos DB，請參閱[Azure Cosmos DB：使用 Azure Functions 的無伺服器資料庫計算](../cosmos-db/serverless-computing-database.md)。
+了解如何建立在 Azure Cosmos DB 中新增或變更資料時觸發的函式。 如需 Azure Cosmos DB 的詳細資訊，請參閱 [Azure Cosmos DB：使用 Azure Functions 的無伺服器資料庫計算](../cosmos-db/serverless-computing-database.md)。
 
 ![檢視記錄中的訊息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "75863261"
 
 ## <a name="create-azure-cosmos-db-trigger"></a>建立 Azure Cosmos DB 觸發程序
 
-1. 展開函式應用程式，然後按一下 [Functions]  旁的 [+]  按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內]  和 [繼續]  。 否則，請移至步驟三。
+1. 展開函式應用程式，然後按一下 [Functions] **+ 旁的 [** ]  按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內]  和 [繼續]  。 否則，請移至步驟三。
 
    ![Azure 入口網站中的 Functions 快速入門](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "75863261"
 
     此函式範本會將文件數和第一個文件識別碼寫入記錄。
 
-接下來，連線至 Azure Cosmos DB 帳戶，並在 `Tasks` 資料庫中建立 `Items` 容器。
+接下來，連線至 Azure Cosmos DB 帳戶，並在 `Items` 資料庫中建立 `Tasks` 容器。
 
 ## <a name="create-the-items-container"></a>建立項目容器
 
@@ -100,7 +100,7 @@ ms.locfileid: "75863261"
     | **資料庫識別碼** | 工作 |新資料庫的名稱。 這必須符合您函式繫結中定義的名稱。 |
     | **容器識別碼** | 項目 | 新容器的名稱。 這必須符合您函式繫結中定義的名稱。  |
     | **[分割區索引鍵](../cosmos-db/partition-data.md)** | /類別|可將資料平均分散到每個資料分割的資料分割索引鍵。 選取正確的資料分割索引鍵對於建立高效能容器來說很重要。 | 
-    | **輸送量** |400 RU| 使用預設值。 如果您想要降低延遲，稍後可以相應增加輸送量。 |    
+    | **輸送量** |400 RU| 使用預設值。 如果您想要降低延遲，稍後可以擴大輸送量。 |    
 
 1. 按一下 [確定]  以建立 [項目] 容器。 容器可能會在很短的時間內建立。
 

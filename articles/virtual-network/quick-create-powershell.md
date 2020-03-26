@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392062"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290226"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入門：使用 PowerShell 建立虛擬網路
 
@@ -140,16 +140,16 @@ Get-AzPublicIpAddress `
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-1. 如果出現提示，請選取 [連接]。
+1. 如果出現提示，請選取 [連接]  。
 
 1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
     > [!NOTE]
-    > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
+    > 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 **[確定]** 。
+1. 選取 [確定]  。
 
-1. 您可能會收到憑證警告。 如果如此，請選取 [是] 或 [繼續]。
+1. 您可能會收到憑證警告。 如果如此，請選取 [是]  或 [繼續]  。
 
 ## <a name="communicate-between-vms"></a>虛擬機器之間的通訊
 

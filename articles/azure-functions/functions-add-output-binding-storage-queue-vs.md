@@ -5,10 +5,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74849202"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 將函式連線至 Azure 儲存體
@@ -19,7 +19,7 @@ ms.locfileid: "74849202"
 
 大部分的繫結都需要函式用來存取繫結服務的預存連接字串。 為了方便作業，您可以使用您以函式應用程式建立的儲存體帳戶。 此帳戶的連線已儲存在名為 `AzureWebJobsStorage` 的應用程式設定中。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始本文之前，您必須： 
 
@@ -75,11 +75,11 @@ ms.locfileid: "74849202"
 
 1. 在 Visual Studio 的 [檢視]  功能表中，選取 [Cloud Explorer]  。
 
-1. 在 [Cloud Explorer]  中，展開您的 Azure 訂用帳戶和 [儲存體帳戶]  ，然後展開您的函式所使用的儲存體帳戶。 如果您不記得儲存體帳戶名稱，請檢查 local.settings.json  檔案中的 `AzureWebJobsStorage` 連接字串設定。  
+1. 在 [Cloud Explorer]  中，展開您的 Azure 訂用帳戶和 [儲存體帳戶]  ，然後展開您的函式所使用的儲存體帳戶。 如果您不記得儲存體帳戶名稱，請檢查 local.settings.json`AzureWebJobsStorage`*檔案中的* 連接字串設定。  
 
 1. 展開 [佇列]  節點，然後按兩下名為 **outqueue** 的佇列，以在 Visual Studio 中查看佇列的內容。 
 
-   佇列包含訊息，該訊息將您執行 HTTP 觸發程序函式時建立的輸出繫結排入佇列。 如果您已叫用預設 `name` 值為 *Azure* 的函式，則佇列訊息是 *Name passed to the function:Azure*。
+   佇列包含訊息，該訊息將您執行 HTTP 觸發程序函式時建立的輸出繫結排入佇列。 如果您叫用具有預設 `name` 值為 Azure  的函式，佇列訊息是：Name passed to the function: Azure  。
 
     ![Azure 儲存體總管中顯示的佇列訊息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

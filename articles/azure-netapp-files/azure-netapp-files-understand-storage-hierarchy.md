@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: b-juche
 ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78163959"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>什麼是 Azure NetApp Files 的儲存體階層
@@ -28,14 +28,14 @@ ms.locfileid: "78163959"
 > [!IMPORTANT] 
 > Azure NetApp Files 目前不支援訂用帳戶之間的資源移轉。
 
-## <a name="azure_netapp_files_account"></a>NetApp 帳戶
+## <a name="netapp-accounts"></a><a name="azure_netapp_files_account"></a>NetApp 帳戶
 
 - NetApp 帳戶可充當組成容量集區的系統管理群組。  
 - NetApp 帳戶與一般 Azure 儲存體帳戶不同。 
 - NetApp 帳戶的範圍具有區域性。   
 - 您在一個區域中可以有多個 NetApp 帳戶，但是每個 NetApp 帳戶都只繫結至單一區域。
 
-## <a name="capacity_pools"></a>容量集區
+## <a name="capacity-pools"></a><a name="capacity_pools"></a>容量集區
 
 - 容量集區是依據其佈建容量進行測量。  
 - 容量是以您購買的固定 SKU (例如 4-TiB 容量) 進行佈建。
@@ -45,7 +45,7 @@ ms.locfileid: "78163959"
   例如，在下方[儲存體階層的概念圖表](#conceptual_diagram_of_storage_hierarchy)中，容量集區 1 無法從美國東部 NetApp 帳戶移至美國西部 2 NetApp 帳戶。  
 - 必須先刪除容量集區內的所有磁碟區之後，才能刪除容量集區。
 
-## <a name="volumes"></a>磁碟區
+## <a name="volumes"></a><a name="volumes"></a>磁碟區
 
 - 磁碟區會依據邏輯容量耗用量進行測量，且可以調整。 
 - 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。
@@ -54,7 +54,7 @@ ms.locfileid: "78163959"
   例如，在下方的[儲存體階層的概念圖表](#conceptual_diagram_of_storage_hierarchy)中，您可以將磁碟區從容量集區 1 移至容量集區 2。
 - 必須先刪除磁碟區的所有快照之後，才能刪除磁碟區。
 
-## <a name="conceptual_diagram_of_storage_hierarchy"></a>儲存體階層的概念圖表 
+## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>儲存體階層的概念圖表 
 下列範例顯示 Azure 訂用帳戶、NetApp 帳戶、容量集區和磁碟區之間的關係。   
 
 ![儲存體階層的概念圖表](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)

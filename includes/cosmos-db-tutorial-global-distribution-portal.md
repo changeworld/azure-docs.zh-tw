@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75752128"
 ---
-## <a id="addregion"></a>使用 Azure 入口網站新增全球資料庫區域
+## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>使用 Azure 入口網站新增全球資料庫區域
 全球所有 [Azure 區域][azureregions]都有提供 Azure Cosmos DB。 選取資料庫帳戶的預設一致性層級之後，您可以關聯一或多個區域 (取決於您對於預設一致性層級和全球發佈需求的選擇)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的左列中，按一下 [Azure Cosmos DB]  。

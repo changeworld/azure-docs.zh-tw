@@ -17,10 +17,10 @@ ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcf0341e03a5d95abbe8b1a8ce69379fef8251b7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68989056"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler 整合
@@ -33,7 +33,7 @@ ms.locfileid: "68989056"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -179,7 +179,7 @@ ms.locfileid: "68989056"
 
 1. 移至 管理 > 驗證 > 驗證設定  並執行下列步驟：
 
-    ![系統管理](./media/zscaler-tutorial/ic800206.png "系統管理")
+    ![管理](./media/zscaler-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型] 下選擇 [SAML]  。
 
@@ -225,7 +225,7 @@ ms.locfileid: "68989056"
 
 1. 按一下 [連線]  索引標籤。
   
-    ![連線](./media/zscaler-tutorial/ic769493.png "連線")
+    ![連線](./media/zscaler-tutorial/ic769493.png "連接")
 
 1. 按一下 [區域網路設定]  可開啟 [區域網路設定]  對話方塊。
 

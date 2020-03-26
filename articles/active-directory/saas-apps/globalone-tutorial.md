@@ -17,10 +17,10 @@ ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 14eac7240c183911fba763bf21c37077107cc275
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944925"
 ---
 # <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>教學課程：整合 GlobalOne 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "68944925"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -86,7 +86,7 @@ ms.locfileid: "68944925"
 
 1. 除了以上屬性之外，GlobalOne 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
-    | Name | 來源屬性|
+    | 名稱 | 來源屬性|
     | ---------------| --------------- |
     | 名字 | user.givenname |
     | 姓氏 | user.surname |
@@ -95,9 +95,9 @@ ms.locfileid: "68944925"
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![映像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![映像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 

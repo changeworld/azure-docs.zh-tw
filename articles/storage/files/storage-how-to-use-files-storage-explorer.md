@@ -8,13 +8,13 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431829"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>快速入門：使用 Azure 儲存體總管來建立及管理 Azure 檔案共用
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>快速入門：使用 Azure 儲存體總管來建立及管理 Azure 檔案共用的快速入門
 本指南會逐步說明透過 [Azure 儲存體總管](storage-files-introduction.md)來使用 Azure 檔案共用的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準 SMB 通訊協定，並可在多個機器、應用程式及執行個體上啟用檔案共用。 
 
 Azure 儲存體總管是適用於 Windows、macOS 和 Linux 的熱門用戶端工具。 您可以使用儲存體總管來管理 Azure 檔案共用和其他儲存體資源。
@@ -32,9 +32,9 @@ Azure 儲存體總管是適用於 Windows、macOS 和 Linux 的熱門用戶端�
 ## <a name="connect-storage-explorer-to-azure-resources"></a>將儲存體總管連線至 Azure 資源
 您第一次啟動儲存體總管時，[Microsoft Azure 儲存體總管 - 連線]  視窗會隨即出現。 儲存體總管提供數種方式來連線至儲存體帳戶： 
 
-- **使用您的 Azure 帳戶來登入**：您可以使用組織或 Microsoft 帳戶的使用者認證登入。 
-- **使用連接字串或 SAS 權杖連線到特定儲存體帳戶**：連接字串是包含儲存體帳戶名稱和儲存體帳戶金鑰/SAS 權杖的特殊字串。 儲存體總管會透過權杖直接存取儲存體帳戶 (並非只是看到 Azure 帳戶中的所有儲存體帳戶)。 若要深入了解連接字串，請參閱[設定 Azure 儲存體連接字串](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
-- **使用儲存體帳戶名稱和金鑰連線到特定儲存體帳戶**：使用儲存體帳戶的名稱和金鑰來連線到 Azure 儲存體。
+- **使用您的 Azure 帳戶登入**：您可以使用組織或 Microsoft 帳戶的使用者認證登入。 
+- **使用連接字串或 SAS 權杖連線至特定的儲存體帳戶**：連接字串是特殊字串，其中包含儲存體帳戶名稱和儲存體帳戶金鑰/SAS 權杖。 儲存體總管會透過權杖直接存取儲存體帳戶 (並非只是看到 Azure 帳戶中的所有儲存體帳戶)。 若要深入了解連接字串，請參閱[設定 Azure 儲存體連接字串](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+- **使用儲存體帳戶名稱和金鑰來連線至特定儲存體帳戶**：使用儲存體帳戶的儲存體名稱和儲存體帳戶金鑰來連線到 Azure 儲存體。
 
 為使用本快速入門，請使用您的 Azure 帳戶登入。 選取 [新增 Azure 帳戶]  ，然後選取 [登入]  。 依照提示來登入您的 Azure 帳戶。
 

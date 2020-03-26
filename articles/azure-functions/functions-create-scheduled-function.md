@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769280"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中建立由計時器觸發的函式
@@ -36,7 +36,7 @@ ms.locfileid: "75769280"
 
 ## <a name="create-a-timer-triggered-function"></a>建立由計時器觸發的函式
 
-1. 展開函式應用程式，然後按一下 [Functions]  旁的 [+]  按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內]  和 [繼續]  。 否則，移至步驟 3。
+1. 展開函式應用程式，然後按一下 [Functions] **+ 旁的 [** ]  按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內]  和 [繼續]  。 否則，移至步驟 3。
 
    ![Azure 入口網站中的 Functions 快速入門](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "75769280"
 
 1. 展開您的函式，然後按一下 [整合]  。 您可以在這裡定義函式的輸入和輸出繫結，以及設定排程。 
 
-2. 輸入 `0 0 */1 * * *` 作為新的每小時 [排程]  值，然後按一下 [儲存]  。  
+2. 輸入  **作為新的每小時 [排程]** `0 0 */1 * * *` 值，然後按一下 [儲存]  。  
 
 ![函式便會在 Azure 入口網站中更新計時器排程。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 

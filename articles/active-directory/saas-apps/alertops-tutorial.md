@@ -17,10 +17,10 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107065"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>教學課程：整合 AlertOps 與 Azure Active Directory
@@ -29,11 +29,11 @@ ms.locfileid: "67107065"
 
 * 在 Azure AD 中控制可存取 AlertOps 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 AlertOps。
-* 在 Azure 入口網站中集中管理您的帳戶。
+* 在 Azure 入口網站集中管理您的帳戶。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -51,7 +51,7 @@ ms.locfileid: "67107065"
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增新的應用程式，請選取 [新增應用程式]  。
+1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **AlertOps**。
 1. 從結果面板選取 [AlertOps]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
@@ -91,7 +91,7 @@ ms.locfileid: "67107065"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [AlertOps 用戶端支援小組](mailto:support@alertops.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
    ![憑證下載連結](common/certificatebase64.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "67107065"
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [AlertOps]  。
-1. 在應用程式的概觀頁面，尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 

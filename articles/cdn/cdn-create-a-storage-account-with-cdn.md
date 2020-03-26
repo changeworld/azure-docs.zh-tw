@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75386981"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入門：整合 Azure 儲存體帳戶與 Azure CDN
@@ -31,7 +31,7 @@ ms.locfileid: "75386981"
 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
-使用下列程序，為 Azure 訂用帳戶建立新的儲存體帳戶。 有了儲存體帳戶，才能存取 Azure 儲存體服務。 儲存體帳戶代表最高層級的命名空間，用於存取每個 Azure 儲存體服務元件：Azure Blob、佇列和資料表儲存體。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體簡介](../storage/common/storage-introduction.md)。
+使用下列程序，為 Azure 訂用帳戶建立新的儲存體帳戶。 有了儲存體帳戶，才能存取 Azure 儲存體服務。 儲存體帳戶代表最高層級的命名空間，用於存取每個 Azure 儲存體服務元件：Azure Blob、佇列和資料表儲存。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體簡介](../storage/common/storage-introduction.md)。
 
 若要建立儲存體帳戶，您必須是服務管理員或是相關訂用帳戶的共同管理員。
 
@@ -55,7 +55,7 @@ ms.locfileid: "75386981"
    
     此值會成為 URI 內用來將訂用帳戶的 blob、佇列或資料表資源定址的主機名稱。 若要在 Blob 儲存體中將容器資源定址，請使用下列格式的 URI：
    
-    http://&lt;StorageAcountLabel&gt;  .blob.core.windows.net/&lt;mycontainer&gt; 
+    http://*StorageAcountLabel&lt;&gt;* .blob.core.windows.net/*mycontainer&lt;&gt;*
 
     其中 *&lt;StorageAccountLabel&gt;* 指的是您在 [名稱]  方塊中輸入的值。
    

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77050625"
 ---
 # <a name="choose-the-right-iot-solution"></a>選擇合適的 IoT 解決方案
@@ -47,7 +47,7 @@ ms.locfileid: "77050625"
 
 - 選擇受控應用程式平台方法，以自訂商標、儀表板、使用者角色、裝置和遙測。 不過，您不想要處理基礎 IoT 系統管理負荷。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 哪個定價結構最符合您的需求？
 

@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 5e80ab6d5ed0076e03f5378cbe975b15d0a28f47
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157656"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216106"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立事件中樞
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
@@ -51,7 +51,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 事件中樞命名空間提供唯一的範圍容器 (依其完整網域名稱來參考)，您可以在其中建立一或多個事件中樞。 若要使用入口網站在您的資源群組中建立命名空間，請執行下列動作：
 
 1. 在 Azure 入口網站中，按一下畫面左上方的 [建立資源]  。
-2. 選取左側功能表中的 [所有服務]  ，然後選取 [分析]  類別中 [事件中樞]  旁邊的 **星號 (`*`)** 。 確認 [事件中樞]  已新增至左側導覽功能表中的 [我的最愛]  。 
+2. 選取左側功能表中的 [所有服務]  ，然後選取 [分析] **`*` 類別中 [事件中樞]** **旁邊的**星號 ( **)** 。 確認 [事件中樞]  已新增至左側導覽功能表中的 [我的最愛]  。 
     
    ![搜尋事件中樞](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 3. 選取左側導覽功能表中 [我的最愛]  下方的 [事件中樞]  ，然後選取工具列上的 [新增]  。

@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
 ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77595445"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
@@ -48,7 +48,7 @@ AKS 節點是在 Azure 虛擬機器上執行的。 您可以將儲存體連接�
 
 ### <a name="cluster-node-and-pod-scaling"></a>調整叢集節點與 Pod
 
-視資源變更的需求，執行服務的叢集節點或 Pod 數目可以自動相應增加或減少。 您可以同時使用水平 Pod 自動調整程式或叢集自動調整程式。 此調整方式讓 AKS 叢集視需要自動調整，並且只執行需要的資源。
+視資源變更的需求，執行服務的叢集節點或 Pod 數目可以自動擴大或縮小。 您可以同時使用水平 Pod 自動調整程式或叢集自動調整程式。 此調整方式讓 AKS 叢集視需要自動調整，並且只執行需要的資源。
 
 如需詳細資訊，請參閱[縮放 Azure Kubernetes Service (AKS) 叢集][aks-scale]。
 

@@ -17,10 +17,10 @@ ms.date: 11/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 042dd242285081001ca48c9f17e4d42c2294c0ff
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979134"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
@@ -33,7 +33,7 @@ ms.locfileid: "74979134"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -179,7 +179,7 @@ ms.locfileid: "74979134"
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>驗證
 
 ![設定 Akamai](./media/header-akamai-tutorial/configure09.png)
 
@@ -227,7 +227,7 @@ ms.locfileid: "74979134"
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>驗證
 
 按一下 [儲存]  並移至 [服務]。
 
@@ -273,7 +273,7 @@ ms.locfileid: "74979134"
 
     e. 指定連接器的位置，然後選擇連接器。
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>驗證
 
 按一下 [儲存]  並移至 [服務]。
 

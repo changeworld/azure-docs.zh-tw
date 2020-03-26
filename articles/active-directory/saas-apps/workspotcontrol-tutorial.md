@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教學課程：Azure Active Directory 與 Workspot Control 整合
@@ -32,7 +32,7 @@ ms.locfileid: "67086672"
 
 如需有關 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱 [Azure AD 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Workspot Control 的整合，您需要下列項目：
 
@@ -156,7 +156,7 @@ ms.locfileid: "67086672"
 
     1. 選取 [更新檔案]  ，將您從 Azure 入口網站下載的 base-64 編碼憑證上傳至 X.509 憑證中。
 
-    1. 選取 [ **儲存**]。
+    1. 選取 [儲存]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

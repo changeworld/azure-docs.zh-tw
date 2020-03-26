@@ -12,13 +12,13 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: 034f92ca3b7552373ae69148d09d58d3a5dd166a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768650"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入門：使用 JAVA 查詢 Azure SQL 資料庫
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入門：使用 Java 查詢 Azure SQL 資料庫
 
 在本快速入門中，您會使用 Java 來連線至 Azure SQL 資料庫，並使用 T-SQL 陳述式來查詢資料。
 
@@ -28,17 +28,17 @@ ms.locfileid: "76768650"
 - [Azure SQL 資料庫](sql-database-single-database-get-started.md)
 - [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 相關軟體
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  安裝 Homebrew 和 Java，然後使用[在 macOS 上使用 SQL Server 建立 Java 應用程式](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) 中的 **1.2** 和 **1.3** 步驟來安裝 Maven。
+  安裝 Homebrew 和 Java，然後使用**在 macOS 上使用 SQL Server 建立 Java 應用程式** 中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) 步驟來安裝 Maven。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安裝 Java、Java 開發套件，然後使用[在 Ubuntu 上使用 SQL Server 建立 Java 應用程式](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) 中的 **1.2**、**1.3** 和 **1.4** 步驟來安裝 Maven。
+  安裝 Java、Java 開發套件，然後使用**在 Ubuntu 上使用 SQL Server 建立 Java 應用程式** 中的 **1.2**、**1.3** 和 [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) 步驟來安裝 Maven。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  安裝 Java，然後使用[在 Windows 上使用 SQL Server 建立 Java 應用程式](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) 中的 **1.2** 和 **1.3** 步驟來安裝 Maven。
+  安裝 Java，然後使用**在 Windows 上使用 SQL Server 建立 Java 應用程式** 中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) 步驟來安裝 Maven。
 
   ---
 

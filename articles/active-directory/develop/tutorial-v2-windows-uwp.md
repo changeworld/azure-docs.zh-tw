@@ -16,10 +16,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129892"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
@@ -206,7 +206,7 @@ Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，�
     }
     ```
 
-#### 以互動方式取得使用者權杖<a name="more-information"></a>
+#### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖<a name="more-information"></a>
 
 `AcquireTokenInteractive` 方法會顯示一個視窗，提示使用者登入。 當使用者第一次需要存取受保護的資源時，應用程式通常會要求使用者以互動方式登入。 當取得權杖的無訊息作業失敗時，使用者也可能需要登入。 例如，使用者的密碼過期時。
 
@@ -295,7 +295,7 @@ Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，�
 > [!NOTE]
 > MSAL.NET 會使用非同步方法來取得權杖或管理帳戶。 您必須在 UI 執行緒中支援 UI 動作。 這就是 `Dispatcher.RunAsync` 呼叫的原因，以及呼叫 `ConfigureAwait(false)` 的預防措施。
 
-#### 有關登出的詳細資訊<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>有關登出的詳細資訊<a name="more-information-on-sign-out"></a>
 
 `SignOutButton_Click` 方法會從 MSAL 使用者快取中移除使用者。 此方法會有效告知 MSAL 忘記目前的使用者。 只有互動方式，未來取得權杖的要求才能成功。
 
@@ -320,7 +320,7 @@ Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，�
    }
    ```
 
-#### 詳細資訊<a name="more-information-1"></a>
+#### <a name="more-information"></a>詳細資訊<a name="more-information-1"></a>
 
 使用 **OpenID Connect** 取得的識別碼權杖也包含一小部分與使用者有關的資訊。 `DisplayBasicTokenInfo` 會顯示權杖中包含的基本資訊。 此資訊包括使用者的顯示名稱和識別碼。 還包括權杖的到期日，以及代表存取權杖本身的字串。 如果您選取 [呼叫 Microsoft Graph API]  按鈕多次，您就會了解相同的權杖如何重複用於後續要求。 您也可以在 MSAL 決定應該要更新權杖時，看到延長的到期日。
 

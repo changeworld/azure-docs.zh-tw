@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74846346"
 ---
 # <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>教學課程：使用風險偵測觸發 Multi-Factor Authentication 和密碼變更
@@ -40,7 +40,7 @@ Azure AD Identity Protection 原則可以與現有的條件式存取原則搭配
 > * 啟用風險型密碼變更
 > * 啟用風險型 Multi-Factor Authentication
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 能夠存取可運作且至少已被指派試用版 Azure AD Premium P2 授權的 Azure AD 租用戶。
 * 在 Azure AD 租用戶中具有全域系統管理員權限的帳戶。
