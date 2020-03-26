@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77013655"
 ---
 ## <a name="what-is-table-storage"></a>什麼是資料表儲存體
@@ -26,12 +26,12 @@ Azure 資料表儲存體可儲存大量的結構化資料。 此服務是一個 
 
 ![資料表儲存體元件圖表][Table1]
 
-* **URL 格式：** Azure 表格儲存體帳戶會使用此格式：`http://<storage account>.table.core.windows.net/<table>`
+* **URL 格式：** Azure 資料表儲存體帳戶會使用下列格式：`http://<storage account>.table.core.windows.net/<table>`
 
   Azure Cosmos DB 資料表 API 帳戶會使用下列格式：`http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   您可以使用此位址搭配 OData 通訊協定來直接定址 Azure 資料表。 如需詳細資訊，請參閱 [OData.org][OData.org]。
-* **帳戶：** 所有對 Azure 儲存體的存取都是透過儲存體帳戶進行。 如需儲存體帳戶的詳細資訊，請參閱[儲存體帳戶概觀](../articles/storage/common/storage-account-overview.md)。
+* **帳戶：** 所有對 Azure 儲存體的存取都會透過儲存體帳戶執行。 如需儲存體帳戶的詳細資訊，請參閱[儲存體帳戶概觀](../articles/storage/common/storage-account-overview.md)。
 
     所有對 Azure Cosmos DB 的存取都會透過資料表 API 帳戶執行。 如需建立資料表 API 帳戶的詳細資訊，請參閱[建立資料表 API 帳戶](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)。
 * **資料表**：資料表是一組實體。 資料表不強制規定實體的結構描述，這表示單一資料表包含的實體可以有幾組不同的屬性。  

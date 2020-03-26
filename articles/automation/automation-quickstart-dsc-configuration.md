@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421634"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 來設定虛擬機器
@@ -104,7 +104,7 @@ configuration LAMPServer {
 
 ## <a name="compile-a-configuration"></a>編譯設定
 
-DSC 設定必須先編譯成節點設定 (MOF 文件)，才可以指派至節點。 編譯程式會驗證設定，並允許輸入參數值。 若要深入了解如何編譯組態，請參閱：[編譯 Azure 自動化 DSC 中的組態](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+DSC 設定必須先編譯成節點設定 (MOF 文件)，才可以指派至節點。 編譯程式會驗證設定，並允許輸入參數值。 若要深入了解編譯設定，請參閱：[編譯 Azure 自動化 DSC 中的設定](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 若要編譯設定：
 

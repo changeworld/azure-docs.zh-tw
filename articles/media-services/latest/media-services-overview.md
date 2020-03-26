@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 7e4a242c1f81a504872dae6399683483c836daf2
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086906"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79461005"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒體服務 v3 概觀
 
@@ -31,7 +31,7 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 媒體服務 v3 SDK 是以[媒體服務 v3 OpenAPI 規格 (Swagger)](https://aka.ms/ams-v3-rest-sdk) \(英文\) 為基礎。
 
 > [!NOTE]
-> 目前，您可以使用 [Azure 入口網站](https://portal.azure.com/) 來：管理媒體服務 v3 [即時活動](live-events-outputs-concept.md)、檢視 (不管理) v3 [資產](assets-concept.md)、[取得存取 API 的相關資訊](access-api-portal.md)。 針對所有其他管理工作 (例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md))，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 目前，您可以使用 [Azure 入口網站](https://portal.azure.com/) 來：管理媒體服務 v3 [即時活動](live-events-outputs-concept.md)、檢視 (不管理) v3 [資產](assets-concept.md)、[取得存取 API 的相關資訊](access-api-portal.md)。 針對所有其他管理工作 (例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md))，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

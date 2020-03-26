@@ -7,17 +7,17 @@ ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: quickstart
-ms.custom: H1Hack27Feb2017
+ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 41bfe86f4635a54c56a8313fabefa1f381f4a4ee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543132"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062749"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入門：在 Azure 入口網站建立虛擬機器擴展集
+# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立虛擬機器擴展集
 
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 您可以手動調整擴展集中的 VM 數目，或定義規則以根據 CPU、記憶體需求或網路流量等資源使用量進行自動調整。 其後，Azure 負載平衡器會將流量分配到擴展集中的多個 VM 執行個體。 在此快速入門中，您會在 Azure 入口網站中建立虛擬機器擴展集。
 

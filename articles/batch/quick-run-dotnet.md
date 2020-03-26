@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77017202"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入門：使用 .NET API 執行您的第一個 Azure Batch 作業
@@ -208,7 +208,7 @@ try
 
 ### <a name="create-tasks"></a>建立工作
 
-應用程式會建立一份 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 物件清單。 每項工作都會使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 屬性來處理輸入 `ResourceFile` 物件。 在此範例中，命令列會執行 Windows `type` 命令以顯示輸入檔案。 這個命令是用於示範的簡單範例。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
+應用程式會建立一份 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 物件清單。 每項工作都會使用 `ResourceFile`CommandLine[ 屬性來處理輸入 ](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 物件。 在此範例中，命令列會執行 Windows `type` 命令以顯示輸入檔案。 這個命令是用於示範的簡單範例。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
 
 然後，應用程式會使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法將工作新增至作業，該方法會將工作排入佇列以在計算節點上執行。
 

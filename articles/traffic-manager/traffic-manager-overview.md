@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: rohink
-ms.openlocfilehash: c8f604c042aee8b1af30af9da5a43ed2cd79f214
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6eb1ce18f3bc6674efd5343306fff617bc9cd1f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014380"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060793"
 ---
 # <a name="what-is-traffic-manager"></a>什麼是流量管理員？
 Azure 流量管理員是 DNS 型流量負載平衡器，可讓您跨全球的 Azure 區域將流量最佳分散至服務，同時提供高可用性和回應性。
@@ -51,7 +51,7 @@ Azure 可讓您在世界各地的資料中心內執行雲端服務或網站。 �
 
 利用[巢狀流量管理員設定檔](traffic-manager-nested-profiles.md)，可以組合多種流量路由方法，建立複雜且彈性的規則，以符合更大型且更複雜部署的需求。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 如需定價資訊，請參閱[流量管理員定價](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 

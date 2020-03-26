@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfda5fe7592d4c3f3f9550f406cf7635c43168ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896203"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159467"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -31,7 +31,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 * **雲端中的應用程式** – 因為您應用程式的需求可能會變動，在 Azure VM 上執行它在經濟上是合理的。 當您需要 VM 時便支付額外的 VM，而當您不需要時便關閉這些 VM。
 * **擴充的資料中心** – 可輕鬆將 Azure 虛擬網路中的虛擬機器連線到您組織的網路。
 
-您的應用程式所使用的 VM 數目可以相應增加及相應放大為符合您需求的任何內容。
+您的應用程式所使用的 VM 數目可以擴大及擴增為符合您需求的任何內容。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>我在建立 VM 之前需要先考慮什麼？
 當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰
@@ -93,10 +93,6 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 * Docker - [Azure Marketplace - 與 Docker Swarm 搭配使用的 Azure Container Service](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="vm-sizes"></a>VM 大小
-您使用的 VM [大小](sizes.md)是由所您要執行的工作負載所決定。 您所選的大小會決定例如處理電源、記憶體和儲存體容量等因素。 Azure 提供了各種不同的大小，以支援許多類型的用法。
-
-Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)價格方式收費。 針對不足一小時的部分，Azure 只會收取已使用分鐘數的費用。 儲存體是個別定價與收費。
 
 ## <a name="cloud-init"></a>Cloud-init 
 
@@ -108,12 +104,6 @@ Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.micro
 在支援 [cloud-init](https://cloud-init.io/) 的多數 Linux 散發版本上，Azure 均支援 cloud-init。  我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。
 
 * [在 Azure Linux VM 上使用 cloud-init](using-cloud-init.md)
-
-## <a name="quotas"></a>配額
-每個 Azure 訂用帳戶都有適當的預設配額限制，而此限制會在您要為專案部署大量 VM 時產生影響。 每一訂用帳戶目前的限制是每一區域 20 個 VM。  只要提出支援票證來要求增加限制，即可快速且輕鬆地提高配額限制。  如需有關配額限制的詳細資料：
-
-* [Azure 訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)
-
 
 ## <a name="storage"></a>儲存體
 * [Microsoft Azure 儲存體簡介](../../storage/common/storage-introduction.md)

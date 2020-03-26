@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044169"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "60445788"
 ---
 # <a name="what-is-azure-data-explorer"></a>什麼是 Azure 資料總管？
 
@@ -44,9 +44,9 @@ Azure 資料總管支援多種擷取方法，包括常用服務的連接器 (如
 
 Azure 資料總管中的工作通常會遵循此模式：
 
-1. **建立資料庫：** 建立「叢集」，然後在該叢集中建立一或多個「資料庫」。 [快速入門：建立 Azure 資料總管叢集與資料庫](create-cluster-database-portal.md)
+1. **建立資料庫：** 建立「叢集」  ，然後在該叢集中建立一或多個「資料庫」  。 [快速入門：建立 Azure 資料總管叢集與資料庫](create-cluster-database-portal.md)
 
-1. **擷取資料：** 將資料載入資料庫資料表中，讓您可以對資料執行查詢。 [快速入門：將資料從事件中樞內嵌至 Azure 資料總管](ingest-data-event-hub.md)
+1. **內嵌資料：** 將資料載入資料庫資料表中，讓您可以對資料執行查詢。 [快速入門：將資料從事件中樞內嵌至 Azure 資料總管](ingest-data-event-hub.md)
 
 1. **查詢資料庫：** 使用我們的 Web 應用程式來執行、檢閱及共用查詢和結果。 這可在 Azure 入口網站中取得，也以獨立應用程式的形式提供。 此外，您可以以程式設計方式 (使用 SDK) 或 REST API 端點傳送查詢。 [快速入門：在 Azure 資料總管中查詢資料](web-query-data.md)
 
