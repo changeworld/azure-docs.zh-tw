@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 入口網站, 虛擬機器, 解決方案範本
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.openlocfilehash: 3fa8dcbcc0edcc987fa9c4e76fbdb9d7a2f3396c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274527"
 ---
 # <a name="tutorial-create-a-jenkins-server-on-an-azure-linux-vm"></a>教學課程：在 Azure Linux VM 上建立 Jenkins 伺服器 

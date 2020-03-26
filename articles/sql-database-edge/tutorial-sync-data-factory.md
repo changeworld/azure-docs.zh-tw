@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851684"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教學課程：使用 Azure Data Factory 將 SQL Database Edge 中的資料同步至 Azure Blob 儲存體
@@ -198,7 +198,7 @@ ms.locfileid: "74851684"
     |名稱|類型|值|
     |-----|----|-----|
     |LastModifiedtime|Datetime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
-    |TableName|字串|@{activity('OldWaterMark').output.firstRow.TableName}|
+    |TableName|String|@{activity('OldWaterMark').output.firstRow.TableName}|
 
 33. 若要驗證管線設定，請選取工具列上的 [驗證]  。 確認沒有任何驗證錯誤。 若要關閉 [管線驗證報告]  視窗，請選取 **>>** 。
 

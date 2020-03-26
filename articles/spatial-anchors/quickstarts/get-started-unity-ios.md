@@ -9,15 +9,15 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615391"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215526"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 來建立 Unity iOS 應用程式
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure 空間錨點來建立 Unity iOS 應用程式
 
-本快速入門涵蓋如何使用 [Azure Spatial Anchors](../overview.md) 來建立 Unity iOS 應用程式。 Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合實境體驗。 當您完成時，您將會有搭配 Unity 建置的 ARKit iOS 應用程式，可用來儲存和回收空間錨點。
+本快速入門涵蓋如何使用 [Azure 空間錨點](../overview.md)來建立 Unity iOS 應用程式。 Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合實境體驗。 當您完成時，您將會有搭配 Unity 建置的 ARKit iOS 應用程式，可用來儲存和回收空間錨點。
 
 您將學習如何：
 

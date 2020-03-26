@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2019
 ms.author: rohink
 ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76934809"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
@@ -67,7 +67,7 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>建立 Web Apps
 
-在本快速入門中，您必須在兩個不同的 Azure 區域 (美國東部  和歐洲西部  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
+在本快速入門中，您必須在兩個不同的 Azure 區域 (*美國西部*和*美國東部*) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 ### <a name="create-web-app-service-plans"></a>建立 Web App Service 方案
 針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，請使用 [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) 建立 Web App Service 方案。

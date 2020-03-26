@@ -5,10 +5,10 @@ keywords: azure devops terraform install configure
 ms.topic: quickstart
 ms.date: 03/09/2020
 ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78943511"
 ---
 # <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>快速入門：安裝並設定 Terraform 以佈建 Azure 資源

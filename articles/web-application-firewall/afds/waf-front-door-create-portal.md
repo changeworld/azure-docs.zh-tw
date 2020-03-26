@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186732"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475836"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在 Azure Front Door 上建立 Web 應用程式防火牆原則
 
@@ -25,7 +25,7 @@ ms.locfileid: "74186732"
 > * 將它與前端主機產生關聯
 > * 設定 WAF 規則
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 請遵循[快速入門：建立 Front Door 設定檔](../../frontdoor/quickstart-create-front-door.md)中所述的指示來建立 Front Door 設定檔。 
 

@@ -4,10 +4,10 @@ description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部�
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76990295"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 來評定實體伺服器：伺服器評量

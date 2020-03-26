@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75747497"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric 概觀
@@ -78,7 +78,7 @@ Service Fabric 已與 CI/CD 工具 (例如 [Azure Pipelines](https://www.visuals
 * 以每部機器上數百或數千個應用程式或容器的高密度方式，快速部署應用程式。
 * 並列部署相同應用程式的不同版本，並獨立升級每個應用程式。
 * 無須停機即可管理應用程式的生命週期，包括重大升級與非重大升級。
-* 相應放大或相應縮小叢集中的節點數目。 隨著您調整節點，應用程式也會自動調整。
+* 擴增或縮減叢集中的節點數目。 隨著您調整節點，應用程式也會自動調整。
 * 監視和診斷應用程式的健全狀況，並設定用來執行自動修復的原則。
 * 監看資源平衡器協調整個叢集的應用程式重新分配。 Service Fabric 會從失敗中復原，並會根據可用資源將負載分佈最佳化。
 

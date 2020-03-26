@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68596765"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署預測模型
@@ -31,8 +31,8 @@ ms.locfileid: "68596765"
 > [!div class="checklist"]
 > * 建立會產生機器學習模型的預存程序
 > * 將模型儲存在資料庫資料表中
-> * 建立會使用模型進行預測的預存程序
-> * 執行含有新資料的模型
+> * 建立一個使用此模型進行預測的預存程序
+> * 以新資料執行模型
 
 在[第一部分](sql-database-tutorial-predictive-model-prepare-data.md)中，您已了解如何匯入資料庫範例，然後準備要用來在 R 中定型預測模型的資料。
 
@@ -40,11 +40,11 @@ ms.locfileid: "68596765"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 本教學課程系列的第三部分假設您已完成[**第一部分**](sql-database-tutorial-predictive-model-prepare-data.md)和[**第二部分**](sql-database-tutorial-predictive-model-build-compare.md)。
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>建立會產生模型的預存程序
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>建立一個會產生模型的預存程序
 
 在本教學課程系列的第二部分中，您已判定決策樹 (dtree) 是最精確的模型。 現在，請使用所開發的 R 指令碼建立預存程序 (`generate_rental_rx_model`)，以使用 RevoScaleR 套件中的 rxDTree 來定型及產生 dtree 模型。
 
@@ -90,7 +90,7 @@ GO
 
 ## <a name="store-the-model-in-a-database-table"></a>將模型儲存在資料庫資料表中
 
-的 TutorialDB 資料庫中建立資料表，然後將模型儲存至資料表。
+在 TutorialDB 資料庫中建立資料表，然後將模型儲存至資料表。
 
 1. 建立用來儲存模型的資料表 (`rental_rx_models`)。
 
@@ -128,7 +128,7 @@ GO
     FROM rental_rx_models;
     ```
 
-## <a name="create-a-stored-procedure-that-makes-predictions"></a>建立會進行預測的預存程序
+## <a name="create-a-stored-procedure-that-makes-predictions"></a>建立一個進行預測的預存程序
 
 建立會使用定型的模型和一組新資料進行預測的預存程序 (`predict_rentalcount_new`)。
 
@@ -173,7 +173,7 @@ END;
 GO
 ```
 
-## <a name="execute-the-model-with-new-data"></a>執行含有新資料的模型
+## <a name="execute-the-model-with-new-data"></a>以新資料執行模型
 
 現在，您可以使用預存程序 `predict_rentalcount_new` 從新資料預測出租計數。
 
@@ -197,7 +197,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-您已在 Azure SQL 資料庫中成功建立、定型和部署模型。 接著，您在預存程序中使用該模型根據新資料來預測值。
+您已在 Azure SQL 資料庫中成功建立、定型和部署模型。 接著您在預存程序中使用該模型根據新資料來預測值。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -216,8 +216,8 @@ RentalCount_Predicted
 
 * 建立會產生機器學習模型的預存程序
 * 將模型儲存在資料庫資料表中
-* 建立會使用模型進行預測的預存程序
-* 執行含有新資料的模型
+* 建立一個使用此模型進行預測的預存程序
+* 以新資料執行模型
 
 若要深入了解如何在 Azure SQL Database 機器學習服務 (預覽) 中使用 R，請參閱：
 

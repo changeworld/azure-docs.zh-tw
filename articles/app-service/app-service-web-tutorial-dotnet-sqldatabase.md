@@ -5,13 +5,13 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671388"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047031"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "74671388"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -276,7 +276,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 </th>
 ```
 
-尋找包含 `Html.ActionLink()` Helper 方法的 `<td>` 元素。 在這個 `<td>` _上方_，使用下列 Razor 程式碼新增另一個 `<td>` 元素：
+尋找包含 `Html.ActionLink()` Helper 方法的 `<td>` 元素。 在這個 `<td>`_上方_，使用下列 Razor 程式碼新增另一個 `<td>` 元素：
 
 ```csharp
 <td>
@@ -387,7 +387,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ![搜尋 Azure 應用程式服務](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
-選取您的 Azure 應用程式名稱。
+選取您 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 

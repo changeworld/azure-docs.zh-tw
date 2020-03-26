@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
 ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022795"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
@@ -58,7 +58,7 @@ Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負�
 
 較高層級的工作負載專屬功能也適用 Azure Batch：
 * Batch 支援使用轉譯工具的大規模[轉譯工作負載](batch-rendering-service.md)，轉譯工具包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 
-* R 使用者可以安裝 [doAzureParallel R 套件](https://github.com/Azure/doAzureParallel)，輕鬆地在 Batch 集區上相應放大 R 演算法的執行。
+* R 使用者可以安裝 [doAzureParallel R 套件](https://github.com/Azure/doAzureParallel)，輕鬆地在 Batch 集區上擴增 R 演算法的執行。
 
 您也可以在 [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) 等工具所管理的大型 Azure 工作流程中，使用 Batch 作業來轉換資料。
 

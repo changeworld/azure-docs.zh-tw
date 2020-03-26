@@ -19,10 +19,10 @@ ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74276083"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入門：診斷虛擬機器網路流量篩選問題 - Azure CLI
@@ -74,7 +74,7 @@ az network watcher configure \
 
 根據預設，當您建立 VM 時，Azure 會允許及拒絕 VM 的雙向網路流量。 您稍後可能會覆寫 Azure 的預設值，並允許或拒絕其他類型的流量。 若要測試允許或拒絕送至不同目的地的流量和來自來源 IP 位址的流量，請使用 [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) 命令。
 
-測試從 VM 輸出至 www.bing.com 的其中一個 IP 位址的通訊：
+測試從 VM 輸出至 www.bing.com 其中一個 IP 位址的通訊：
 
 ```azurecli-interactive
 az network watcher test-ip-flow \

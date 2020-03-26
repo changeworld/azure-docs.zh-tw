@@ -6,10 +6,10 @@ ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: caefb11e3d691cea940bae5103bf918d3d31cc96
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77134410"
 ---
 完成您的應用程式和 Azure Cosmos DB 帳戶之後，您可以將建立的 Azure 資源刪除，以免產生更多費用。 若要刪除資源：

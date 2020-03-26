@@ -3,13 +3,13 @@ title: 快速入門：Windows 容器 (預覽)
 description: 將您的第一個自訂 Windows 容器部署至 Azure App Service。 利用容器化，以您偏好的方式自訂 Windows 容器。
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922303"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047109"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure (預覽) 中執行自訂 Windows 容器
 
@@ -55,7 +55,7 @@ ms.locfileid: "75922303"
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. 從 Visual Studio 功能表中，選取 [偵錯]   > [啟動但不偵錯]  以在本機執行 Web 應用程式。
+1. 從 Visual Studio 功能表中，選取 **[偵錯]**  >  **[啟動但不偵錯]** 以在本機執行 Web 應用程式。
 
    ![在本機執行應用程式](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
@@ -145,7 +145,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
    ```HTML
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
-       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+       <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 

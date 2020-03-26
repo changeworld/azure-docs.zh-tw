@@ -4,10 +4,10 @@ description: 了解如何在 Azure Notebooks 預覽中建立和執行 Jupyter No
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75660812"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教學：使用 Python 建立和執行 Jupyter Notebook

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
 ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79037313"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中使用範例資料集 (預覽)

@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 90113373535c835e5cddf707bcb520789e596aec
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d94858391951aaf9387394afeb5ad2ae373fa7b5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202430"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239540"
 ---
 # <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>快速入門：使用 Ansible 在 Azure 中管理 Linux 虛擬機器
 
@@ -34,7 +34,7 @@ Ansible 可讓您將環境中的資源部署和設定自動化。 在本文中�
 
 1. 建立名為 `azure-vm-stop.yml` 的檔案，並在編輯器中將其開啟：
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-stop.yml
     ```
 
@@ -87,7 +87,7 @@ Ansible 可讓您將環境中的資源部署和設定自動化。 在本文中�
 
 1. 建立名為 `azure-vm-start.yml` 的檔案，並在編輯器中將其開啟：
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-start.yml
     ```
 

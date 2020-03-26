@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ff8fd2eb14f1af5133669ad20f303d36ff5af80
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68931813"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>教學課程：整合 iWellnessNow 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "68931813"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -101,7 +101,7 @@ ms.locfileid: "68931813"
 
     ![[iWellnessNow 網域及 URL] 單一登入資訊](common/idp-intiated.png)
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式輸入 URL：`http://<CustomerName>.iwellnessnow.com`
+    a. 在 [識別碼]  文字方塊中，使用下列模式輸入 URL： `http://<CustomerName>.iwellnessnow.com`
 
     b. 在 **[回覆 URL]** 文字方塊中，以下列模式輸入 URL：`https://<CustomerName>.iwellnessnow.com/ssologin`
 
@@ -114,7 +114,7 @@ ms.locfileid: "68931813"
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [iWellnessNow 用戶端支援小組](mailto:info@iwellnessnow.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證，並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976735"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教學課程：跨負載平衡 IoT 中樞來佈建裝置
@@ -27,7 +27,7 @@ ms.locfileid: "74976735"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程是以先前的[將裝置佈建到中樞](tutorial-provision-device-to-hub.md)教學課程為基礎所建置。
 
@@ -48,7 +48,7 @@ ms.locfileid: "74976735"
 配置原則是一項裝置佈建服務設定，可決定要如何將裝置指派到 IoT 中樞。 共有三個支援的配置原則： 
 
 1. **最低延遲**：根據對裝置具有最低延遲的 IoT 中樞，將裝置佈建到該中樞。
-2. **權重相等的分佈** (預設)：裝置佈建到每個已連結 IoT 中樞的機率都一樣。 這是預設設定。 如果您只要將裝置佈建到一個 IoT 中樞，可以保留此設定。 
+2. **權重相等的分佈** (預設)：裝置佈建到每個已連結 IoT 中樞的機率都一樣。 這是預設值。 如果您只要將裝置佈建到一個 IoT 中樞，可以保留此設定。 
 3. **透過註冊清單進行靜態設定**：註冊清單中所需 IoT 中樞的規格，其優先順序高於裝置佈建服務層級的配置原則。
 
 請遵循下列步驟來設定配置原則：

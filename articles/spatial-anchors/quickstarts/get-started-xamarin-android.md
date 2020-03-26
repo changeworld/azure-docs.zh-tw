@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465187"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Xamarin Android 應用程式
@@ -69,13 +69,13 @@ ms.locfileid: "75465187"
 
 將起始專案設為 **SampleXamarin.Android**、將 [解決方案組態]  變更為 [發行]  ，然後在裝置選取器下拉式清單中選取要部署到的裝置。
 
-# <a name="windowstabdeploy-windows"></a>[Windows](#tab/deploy-windows)
+# <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Visual Studio 設定](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 選取 [偵錯]   > [開始偵錯]  以部署並啟動您的應用程式。
 
-# <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
+# <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio 設定](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 

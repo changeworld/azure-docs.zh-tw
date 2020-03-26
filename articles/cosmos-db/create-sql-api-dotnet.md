@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.openlocfilehash: 0981ed30c6bcd9d4246ce1eb047aa66168e3884a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707907"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215276"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入門：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 資源
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 [API 參考文件](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [程式庫原始程式碼](https://github.com/Azure/azure-cosmos-dotnet-v3) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [免費建立一個](https://azure.microsoft.com/free/)，或者您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 
 * [.NET Core 2.1 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
@@ -45,7 +45,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 此節將逐步引導您建立 Azure Cosmos 帳戶，並設定使用適用於 .NET 的 Azure Cosmos DB SQL API 用戶端程式庫來管理資源的專案。 此文章中描述的範例程式碼會在該資料庫內建立 `FamilyDatabase` 資料庫與家庭成員 (每個家庭成員都是一個項目)。 每個家庭成員都有屬性，例如 `Id, FamilyName, FirstName, LastName, Parents, Children, Address,`。 `LastName` 屬性會作為容器的資料分割索引鍵使用。 
 
-### <a id="create-account"></a>建立 Azure Cosmos 帳戶
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>建立 Azure Cosmos 帳戶
 
 如果您使用[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 選項來建立 Azure Cosmos 帳戶，則必須建立類型為 **SQL API** 的 Azure Cosmos DB 帳戶。 已為您建立 Azure Cosmos DB 測試帳戶。 您不需要明確建立帳戶，因此您可以略過此小節並移至下一小節。
 
@@ -82,7 +82,7 @@ az cosmosdb create \
 
 建立 Azure Cosmos 帳戶需要一些時間，一旦作業成功，您就可以看到確認輸出。 命令順利完成之後，請登入 [Azure 入口網站](https://portal.azure.com/)，並確認具有指定名稱的 Azure Cosmos 帳戶存在。 您可以在建立資源之後，關閉 [Azure Cloud Shell] 視窗。 
 
-### <a id="create-dotnet-core-app"></a>建立新的 .NET 應用程式
+### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>建立新的 .NET 應用程式
 
 在您慣用的編輯器或 IDE 中，建立新的 .NET 應用程式。 從您的本機電腦開啟 Windows 命令提示字元或終端機視窗。 您將會從命令提示字元或終端機執行下一節中的所有命令。  執行下列 dotnet new 命令來建立名稱為 `todo` 的新應用程式。 --langVersion 參數會設定所建立專案檔中的 LangVersion 屬性。
 
@@ -111,7 +111,7 @@ Build succeeded.
 Time Elapsed 00:00:34.17
 ```
 
-### <a id="install-package"></a>安裝 Azure Cosmos DB 套件
+### <a name="install-the-azure-cosmos-db-package"></a><a id="install-package"></a>安裝 Azure Cosmos DB 套件
 
 若您仍在應用程式目錄中，請使用 dotnet add package 命令安裝適用於 .NET Core 的 Azure Cosmos DB 用戶端程式庫。
 
@@ -154,7 +154,7 @@ export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
 export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
- ## <a id="object-model"></a>物件模型
+ ## <a name="object-model"></a><a id="object-model"></a>物件模型
 
 在開始建置應用程式之前，讓我們看一下 Azure Cosmos DB 中的資源階層，以及用於建立及存取這些資源的物件模型。 Azure Cosmos DB 會依照下列順序建立資源：
 
@@ -179,7 +179,7 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 
 * [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) - 從您的 Azure Cosmos 帳戶中刪除指定的資料庫。 `DeleteAsync` 方法只會刪除資料庫。 `Cosmosclient` 執行個體的處置應單獨進行 (這會在 DeleteDatabaseAndCleanupAsync 方法中執行)。 
 
- ## <a id="code-examples"></a>程式碼範例
+ ## <a name="code-examples"></a><a id="code-examples"></a>程式碼範例
 
 此文章中描述的範例程式碼會在 Azure Cosmos DB 中建立家庭資料庫。 家庭資料庫包含家庭詳細資料，例如姓名、地址、位置、相關聯的家長、子女和寵物。 將資料填入您的 Azure Cosmos 帳戶之前，請定義家庭項目的屬性。 在範例應用程式的根層級建立一個名為 `Family.cs` 的新類別，並在其中新增下列程式碼：
 

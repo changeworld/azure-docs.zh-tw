@@ -9,11 +9,11 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775333"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223805"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -49,7 +49,7 @@ ms.locfileid: "76775333"
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="openvwan"></a>建立虛擬 WAN
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>建立虛擬 WAN
 
 透過瀏覽器瀏覽至 Azure 入口網站，並使用您的 Azure 帳戶登入。
 
@@ -67,25 +67,25 @@ ms.locfileid: "76775333"
 4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
 5. 驗證通過後，選取 [建立]  ，以建立虛擬 WAN。
 
-## <a name="hub"></a>建立中樞。
+## <a name="create-a-hub"></a><a name="hub"></a>建立中樞。
 
 中樞是一種虛擬網路，其中包含可用於站對站、ExpressRoute 或點對站功能的閘道。 中樞建立好時，您就需要支付中樞費用，即使您未連結任何網站也是如此。 在虛擬中樞內建立站對站 VPN 閘道需要 30 分鐘的時間。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="site"></a>建立網站
+## <a name="create-a-site"></a><a name="site"></a>建立網站
 
 您現在已準備好建立對應到實體位置的網站。 建立需要的網站數目，這會與您的實體位置相對應。 例如，如果您在紐約 (NY)、倫敦和洛杉磯 (LA) 各有分公司，就會建立三個不同網站。 這些網站包含您內部部署的 VPN 裝置端點。 在虛擬 WAN 中，您可以為每個虛擬中樞建立最多 1000 個網站。 如果您有多個中樞，您可以為其中每一個中樞建立 1000 個網站。 如果您有虛擬 WAN 合作夥伴 (連結插入) CPE 裝置，請向他們確認並了解其對 Azure 有何自動化項目。 一般來說，自動化體驗意指簡單按一下即可將大規模分支資訊匯出至 Azure，以及設定從 CPE 到 Azure 虛擬 WAN VPN 閘道的連線。 如需詳細資訊，請參閱[從 Azure 到 CPE 合作夥伴的自動化指引](virtual-wan-configure-automation-providers.md)。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connectsites"></a>將 VPN 網站連線到中樞
+## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>將 VPN 網站連線到中樞
 
 在此步驟中，您會將 VPN 網站連線到中樞。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="vnet"></a>將 VNet 連線到中樞
+## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>將 VNet 連線到中樞
 
 在此步驟中，您會在中樞和 VNet 之間建立連線。 為您想要連線的每個 VNet 重複這些步驟。
 
@@ -99,7 +99,7 @@ ms.locfileid: "76775333"
     * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
 4. 按一下 [確定]  以建立虛擬網路連線。
 
-## <a name="device"></a>下載 VPN 組態
+## <a name="download-vpn-configuration"></a><a name="device"></a>下載 VPN 組態
 
 若要設定您的內部部署 VPN 裝置，請使用 VPN 裝置組態。
 
@@ -251,7 +251,7 @@ ms.locfileid: "76775333"
 * 新的虛擬 WAN 可以支援 IKEv1 和 IKEv2。
 * 虛擬 WAN 可以使用原則式與路由式 VPN 裝置和裝置指示。
 
-## <a name="viewwan"></a>檢視您的虛擬 WAN
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>檢視您的虛擬 WAN
 
 1. 瀏覽至虛擬 WAN。
 2. 在 [概觀]  頁面中，地圖上的每個點都代表著中樞。 將滑鼠停留在任何一個點，即可檢視中樞健康情況摘要、連線狀態，以及傳入和傳出的位元組。

@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70012934"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教學課程：訂購 Azure 資料箱磁碟
@@ -27,7 +27,7 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
 > * 追蹤訂單狀態
 > * 取消訂單
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您部署之前，請先完成資料箱服務與資料相磁碟的下列組態必要條件。
 
@@ -68,7 +68,7 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
 
     |設定|值|
     |---|---|
-    |Subscription|選取要啟用資料箱服務的訂用帳戶。<br> 訂用帳戶會連結到您的帳單帳戶。 |
+    |訂用帳戶|選取要啟用資料箱服務的訂用帳戶。<br> 訂用帳戶會連結到您的帳單帳戶。 |
     |傳輸類型| 匯入至 Azure|
     |來源國家/地區 | 選取您的資料目前所在的國家/地區。|
     |目的地 Azure 區域|選取要傳輸資料的 Azure 區域。|
@@ -82,8 +82,8 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
 
     |設定|值|
     |---|---|
-    |Name|提供用來追蹤訂單的易記名稱。<br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。 |
-    |Resource group| 使用現有的群組或建立新群組。 <br> 資源群組是適用於資源而可一併管理或部署的邏輯容器： |
+    |名稱|提供用來追蹤訂單的易記名稱。<br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。 |
+    |資源群組| 使用現有的群組或建立新群組。 <br> 資源群組是適用於資源而可一併管理或部署的邏輯容器： |
     |目的地 Azure 區域| 選取儲存體帳戶的區域。<br> 目前支援全美國、西歐和北歐、加拿大及澳大利亞地區的儲存體帳戶。 |
     |預估資料大小 (TB)| 輸入以 TB 為單位的估計值。 <br>Microsoft 會根據資料大小為您傳送適當數目的 8 TB SSD (可用容量為 7 TB)。 <br>5 個磁碟的可用容量上限為 35 TB。 |
     |磁碟通行金鑰| 如果您核取了 [使用自訂金鑰而非 Azure 產生的通行金鑰]  ，請提供磁碟通行金鑰。 <br> 請提供 12 到 32 個字元的英數字元金鑰，且至少須包含一個數字和一個特殊字元。 允許的特殊字元為 `@?_+`。 <br> 您可以選擇略過此選項並使用 Azure 產生的通行金鑰，將您的磁碟解除鎖定。|
@@ -97,7 +97,7 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
 
     |設定  |值  |
     |---------|---------|
-    |Resource group     | 如果您想要從內部部署 VHD 建立受控磁碟，請建立新的資源群組。 只有現有資源群組是由資料箱服務針對受控磁碟的資料箱磁碟訂單建立時，才能使用該資源群組。 <br> 僅支援一個資源群組。|
+    |資源群組     | 如果您想要從內部部署 VHD 建立受控磁碟，請建立新的資源群組。 只有現有資源群組是由資料箱服務針對受控磁碟的資料箱磁碟訂單建立時，才能使用該資源群組。 <br> 僅支援一個資源群組。|
 
     ![受控磁碟的資料箱磁碟訂單](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 

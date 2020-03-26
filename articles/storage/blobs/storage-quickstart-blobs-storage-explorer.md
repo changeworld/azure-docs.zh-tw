@@ -4,23 +4,23 @@ titleSuffix: Azure Storage
 description: 在本快速入門中，您將了解如何使用 Azure 儲存體總管來建立容器和 Blob、將 Blob 下載至本機電腦，以及檢視容器中的所有 Blob。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892459"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061382"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入門：使用 Azure 儲存體總管建立 Blob
 
 在本快速入門中，您將了解如何使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來建立容器和 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何檢視容器中的所有 Blob。 您也將了解如何建立 Blob 的快照集、管理容器存取原則，以及建立共用的存取簽章。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

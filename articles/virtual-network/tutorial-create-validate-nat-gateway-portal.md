@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250812"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060003"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教學課程：使用 Azure 入口網站建立 NAT 閘道並測試 NAT 服務
 
 在本教學課程中，您將建立 NAT 閘道，為 Azure 中的虛擬機器提供輸出連線能力。 若要測試 NAT 閘道，請部署來源和目的地虛擬機器。 您將會對從來源到目的地虛擬機器的公用 IP 位址進行輸出連線，藉此測試 NAT 閘道。  僅為了簡單起見，本教學課程會將來源和目的地部署在相同資源群組中的兩個不同虛擬網路中。
 
->[!NOTE] 
->Azure 虛擬網路 NAT 目前以公開預覽形式提供，可在一組有限的[區域](./nat-overview.md#region-availability)中取得。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
+您可以依偏好使用 [Azure CLI](tutorial-create-validate-nat-gateway-cli.md) 或 [Azure PowerShell](tutorial-create-validate-nat-gateway-powershell.md) (而非入口網站) 執行這些步驟。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -315,7 +314,6 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 - [使用 Azure CLI 部署 NAT 閘道資源](./quickstart-create-nat-gateway-cli.md)的快速入門。
 - [使用 Azure PowerShell 部署 NAT 閘道資源](./quickstart-create-nat-gateway-powershell.md)的快速入門。
 - [使用 Azure 入口網站部署 NAT 閘道資源](./quickstart-create-nat-gateway-portal.md)的快速入門。
-- [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
 
 > [!div class="nextstepaction"]
 

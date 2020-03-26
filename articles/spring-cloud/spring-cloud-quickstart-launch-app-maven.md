@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d1e6d6db1465b20f1f32a8ffb2f978d0a04a1033
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201421"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470838"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入門：使用 Maven 外掛程式啟動 Azure Spring Cloud 應用程式
 
@@ -77,13 +77,13 @@ ms.locfileid: "77201421"
 
 1. 執行下列命令以複製 Git 存放庫：
 
-    ```azurecli
+    ```console
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
 1. 變更目錄，並執行下列命令來建置專案：
 
-    ```azurecli
+    ```console
     cd piggymetrics
     mvn clean package -DskipTests
     ```
@@ -92,7 +92,7 @@ ms.locfileid: "77201421"
 
 1. 在包含父系 POM 的 PiggyMetrics 根資料夾中執行下列命令，以產生設定：
 
-    ```azurecli
+    ```console
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
@@ -106,7 +106,7 @@ ms.locfileid: "77201421"
 
 1. POM 現在包含外掛程式相依性和設定。 使用下列命令部署應用程式：
 
-   ```azurecli
+   ```console
    mvn azure-spring-cloud:deploy
    ```
 

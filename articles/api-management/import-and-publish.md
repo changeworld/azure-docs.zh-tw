@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: apimpm
 ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78163472"
 ---
 # <a name="import-and-publish-your-first-api"></a>匯入和發佈您的第一個 API 
@@ -41,7 +41,7 @@ ms.locfileid: "78163472"
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>匯入和發佈後端 API
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
 本節示範如何匯入和發佈 OpenAPI 規格後端 API。
  
@@ -84,7 +84,7 @@ ms.locfileid: "78163472"
    
    後端會回應 **200 確定**與部分資料。
 
-## <a name="next-steps"> </a>後續步驟
+## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 
 在本教學課程中，您已了解如何：
 

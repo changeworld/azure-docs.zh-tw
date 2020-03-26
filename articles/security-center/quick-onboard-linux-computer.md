@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
 ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664487"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入門：將 Linux 電腦上架到 Azure 資訊安全中心
@@ -26,7 +26,7 @@ ms.locfileid: "73664487"
 
 本快速入門說明如何在 Linux 電腦上安裝代理程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要開始使用資訊安全中心，您必須有 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 確認您是使用資訊安全中心的標準定價層之後，再開始按照本快速入門操作。 如需升級指示，請參閱[將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)。 您可以免費試用資訊安全中心的標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。

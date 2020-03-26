@@ -16,13 +16,13 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373061"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222225"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更和更新 Windows 虛擬機器
+# <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Windows 虛擬機器
 
 透過 Azure [變更追蹤](../../automation/change-tracking.md)和[更新管理](../../automation/automation-update-management.md)，您可以輕鬆地在 Azure 中識別 Windows 虛擬機器的變更，並管理這些 VM 的作業系統更新。
 
@@ -36,9 +36,9 @@ ms.locfileid: "78373061"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的 Azure 帳戶搭配使用。
 
-若要在 Cloud Shell 中開啟任何程式碼區塊，只要選取程式碼區塊右上角的 [試試看] 即可。
+若要在 Cloud Shell 中開啟任何程式碼區塊，只要選取程式碼區塊右上角的 [試試看]  即可。
 
-您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤開啟 Cloud Shell。 選取 [複製] 來複製程式碼區塊，將其貼入 [Cloud Shell] 索引標籤，然後選取 Enter 鍵來執行程式碼。
+您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤開啟 Cloud Shell。 選取 [複製]  來複製程式碼區塊，將其貼入 [Cloud Shell] 索引標籤，然後選取 Enter 鍵來執行程式碼。
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
@@ -50,7 +50,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 $cred = Get-Credential
 ```
 
-接下來，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)建立 VM。 下列範例會在 `myVM` 位置建立名為 `East US` 的 VM。 資源群組 `myResourceGroupMonitor` 和支援的網路資源會隨之建立 (如果尚不存在的話)：
+接下來，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)建立 VM。 下列範例會在 `East US` 位置建立名為 `myVM` 的 VM。 資源群組 `myResourceGroupMonitor` 和支援的網路資源會隨之建立 (如果尚不存在的話)：
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,10 +76,10 @@ New-AzVm `
 
 若要啟用 VM 的更新管理：
 
-1. 在視窗的最左邊，選取 [虛擬機器]。
+1. 在視窗的最左邊，選取 [虛擬機器]  。
 1. 從清單中選擇 VM。
-1. 在 [VM] 視窗的 [作業] 窗格中，選取 [更新管理]。
-1. [啟用更新管理] 視窗隨即開啟。
+1. 在 [VM] 視窗的 [作業]  窗格中，選取 [更新管理]  。
+1. [啟用更新管理]  視窗隨即開啟。
 
 判斷此 VM 是否已啟用更新管理的驗證將會執行。 驗證包括檢查 Log Analytics 工作區及連結的自動化帳戶，以及解決方法是否在工作區中。
 
@@ -89,7 +89,7 @@ New-AzVm `
 
 驗證程序也會檢查 VM 是否以 Microsoft Monitoring Agent (MMA) 和自動化混合式 Runbook 背景工作角色佈建。 您可以使用此代理程式與 VM 通訊，並取得更新狀態的相關資訊。
 
-在 [啟用更新管理] 視窗中，選擇 Log Analytics 工作區與自動化帳戶，然後選取 [啟用]。 啟用解決方案最多需要 15 分鐘。
+在 [啟用更新管理]  視窗中，選擇 Log Analytics 工作區與自動化帳戶，然後選取 [啟用]  。 啟用解決方案最多需要 15 分鐘。
 
 上線期間遺漏的下列任何必要條件，都會自動新增：
 
@@ -97,7 +97,7 @@ New-AzVm `
 * [自動化](../../automation/automation-offering-get-started.md)
 * VM 上已啟用的[混合式 Runbook 背景工作角色](../../automation/automation-hybrid-runbook-worker.md)
 
-啟用解決方案之後，[更新管理] 視窗會隨即開啟。 設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後選取 [啟用]。 如果這些選項呈現暗灰色，就表示已啟用 VM 的另一個自動化解決方案，且必須使用該解決方案的工作區和自動化帳戶。
+啟用解決方案之後，[更新管理]  視窗會隨即開啟。 設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後選取 [啟用]  。 如果這些選項呈現暗灰色，就表示已啟用 VM 的另一個自動化解決方案，且必須使用該解決方案的工作區和自動化帳戶。
 
 ![啟用更新管理解決方案](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
@@ -105,7 +105,7 @@ New-AzVm `
 
 ### <a name="view-an-update-assessment"></a>檢視更新評估
 
-啟用 [更新管理] 之後，隨即會顯示 [更新管理] 視窗。 完成更新評估之後，您會在 [遺失更新] 索引標籤上看到遺失的更新清單。
+啟用 [更新管理] 之後，隨即會顯示 [更新管理]  視窗。 完成更新評估之後，您會在 [遺失更新]  索引標籤上看到遺失的更新清單。
 
  ![檢視更新狀態](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
@@ -113,28 +113,28 @@ New-AzVm `
 
 若要安裝更新，請將部署排定在發行排程和服務時段之後。 您可以選擇要在部署中包含的更新類型。 例如，您可以包含重大更新或安全性更新，並排除更新彙總套件。
 
-選取 [更新管理] 視窗頂端的 [排程更新部署]，以針對 VM 來排程新的更新部署。 在 [新增更新部署] 視窗上，指定下列資訊：
+選取 [更新管理]  視窗頂端的 [排程更新部署]  ，以針對 VM 來排程新的更新部署。 在 [新增更新部署]  視窗上，指定下列資訊：
 
 | 選項 | 描述 |
 | --- | --- |
 | **名稱** |輸入唯一名稱來識別更新部署。 |
-|**作業系統**| 選取 [Linux] 或 [Windows]。|
+|**作業系統**| 選取 [Linux]  或 [Windows]  。|
 | **要更新的群組** |針對裝載於 Azure 上的 VM，根據訂用帳戶、資源群組、位置和標籤的組合來定義查詢。 此查詢會為 Azure 裝載的 VM 建立動態群組，以包含在您的部署中。 </br></br>針對未裝載在 Azure 上的 VM，請選取已儲存的現有搜尋。 在此搜尋中，您可以選取這些 VM 的群組，以包含在部署中。 </br></br> 若要深入了解，請參閱[動態群組](../../automation/automation-update-management-groups.md)。|
-| **要更新的機器** |選取 [儲存的搜尋]、[匯入的群組]或 [機器]。<br/><br/>如果您選取 [機器]，您可以從下拉式清單中選擇個別機器。 每部機器的整備程度會顯示於表格的 [更新代理程式整備程度] 欄中。</br></br> 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md) |
+| **要更新的機器** |選取 [儲存的搜尋]  、[匯入的群組]  或 [機器]  。<br/><br/>如果您選取 [機器]  ，您可以從下拉式清單中選擇個別機器。 每部機器的整備程度會顯示於表格的 [更新代理程式整備程度]  欄中。</br></br> 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md) |
 |**更新分類**|選擇所有必要的更新分類。|
-|**包含/排除更新**|選取此選項以開啟 [包含/排除] 窗格。 要包含和要排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment)。 |
-|**排程設定**|選擇開始時間，並選取 [一次] 或 [週期性]。|
+|**包含/排除更新**|選取此選項以開啟 [包含/排除]  窗格。 要包含和要排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment)。 |
+|**排程設定**|選擇開始時間，並選取 [一次]  或 [週期性]  。|
 | **前置指令碼 + 後置指令碼**|選擇要在部署前和部署後執行的指令碼。|
 | **維護時間範圍** | 輸入為更新設定的分鐘數。 有效值的範圍為 30 到 360 分鐘。 |
-| **重新開機控制**| 選取處理重新開機的方式。 可用的選項包括：<ul><li>**在必要時重新開機**</li><li>**一律重新開機**</li><li>**永不重新開機**</li><li>**僅重新開機**</li></ul>[在必要時重新開機] 是預設選項。 如果您選取 [僅重新開機]，則不會安裝更新。|
+| **重新開機控制**| 選取處理重新開機的方式。 可用的選項包括：<ul><li>**在必要時重新開機**</li><li>**一律重新開機**</li><li>**永不重新開機**</li><li>**僅重新開機**</li></ul>[在必要時重新開機]  是預設選項。 如果您選取 [僅重新開機]  ，則不會安裝更新。|
 
-排程設定完成之後，請按一下 [建立] 來返回狀態儀表板。 [已排定] 表格會顯示您建立的部署排程。
+排程設定完成之後，請按一下 [建立]  來返回狀態儀表板。 [已排定]  表格會顯示您建立的部署排程。
 
 您也可以透過程式設計方式建立更新部署。 若要了解如何使用 REST API 來建立更新部署，請參閱[軟體更新設定 - 建立](/rest/api/automation/softwareupdateconfigurations/create)。 此外，您也可以使用 Runbook 範例來建立每週更新部署。 若要深入了解此 Runbook，請參閱[為資源群組中的一或多個 VM 建立每週更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1) \(英文\)。
 
 ### <a name="view-results-of-an-update-deployment"></a>檢視更新部署的結果
 
-已排程的部署開始之後，您就可以在 [更新管理] 視窗的 [更新部署] 索引標籤中看到部署狀態。
+已排程的部署開始之後，您就可以在 [更新管理]  視窗的 [更新部署]  索引標籤中看到部署狀態。
 
 如果目前正在執行部署，其狀態會顯示 [進行中]。 成功完成後，狀態會變更為「成功」。 如果部署中的任何更新失敗，則狀態會是 [部分失敗]。
 
@@ -142,17 +142,17 @@ New-AzVm `
 
 ![特定部署的更新部署狀態儀表板](./media/tutorial-monitoring/manageupdates-view-results.png)
 
-[更新結果] 磚會顯示 VM 上的更新總數和部署結果摘要。 右邊的表格會顯示每個更新的詳細明細及安裝結果。 每個結果會有下列其中一個值：
+[更新結果]  磚會顯示 VM 上的更新總數和部署結果摘要。 右邊的表格會顯示每個更新的詳細明細及安裝結果。 每個結果會有下列其中一個值：
 
-* **未嘗試：未**安裝更新。 根據定義的維護期間，沒有足夠的時間可用。
+* **未嘗試**：未安裝更新。 根據定義的維護期間，沒有足夠的時間可用。
 * **成功**：更新成功。
 * **失敗**：更新失敗。
 
-若要查看部署已建立的所有記錄項目，請選取 [所有記錄]。
+若要查看部署已建立的所有記錄項目，請選取 [所有記錄]  。
 
-選取 [輸出] 磚，以查看負責在目標 VM 上管理更新部署的 Runbook 作業串流。
+選取 [輸出]  磚，以查看負責在目標 VM 上管理更新部署的 Runbook 作業串流。
 
-若要查看任何部署錯誤的詳細資訊，請選取 [錯誤]。
+若要查看任何部署錯誤的詳細資訊，請選取 [錯誤]  。
 
 ## <a name="monitor-changes-and-inventory"></a>監視變更和清查
 
@@ -162,12 +162,12 @@ New-AzVm `
 
 若要為您的 VM 啟用「變更」和「清查」管理：
 
-1. 在視窗的最左邊，選取 [虛擬機器]。
+1. 在視窗的最左邊，選取 [虛擬機器]  。
 1. 從清單中選擇 VM。
-1. 在 VM 視窗的 [作業] 底下，選取 [清查] 或 [變更追蹤]。
-1. [啟用變更追蹤和清查] 頁面會隨即開啟。
+1. 在 VM 視窗的 [作業]  底下，選取 [清查]  或 [變更追蹤]  。
+1. [啟用變更追蹤和清查]  頁面會隨即開啟。
 
-設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後選取 [啟用]。 如果選項呈現暗灰色，表示 VM 已啟用自動化解決方案。 在此情況下，必須使用已啟用的工作區以及自動化帳戶。
+設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後選取 [啟用]  。 如果選項呈現暗灰色，表示 VM 已啟用自動化解決方案。 在此情況下，必須使用已啟用的工作區以及自動化帳戶。
 
 儘管這些解決方案在功能表上是分開顯示，但其實是相同的解決方案。 啟用其中一個會為您的 VM 同時啟用兩個。
 
@@ -177,7 +177,7 @@ New-AzVm `
 
 ### <a name="track-changes"></a>追蹤變更
 
-在您 VM 的 [作業] 底下選取 [變更追蹤]，然後選取 [編輯設定]。 [變更追蹤] 窗格會隨即開啟。 選取您想要追蹤的設定類型，然後選取 [+ 新增] 來進行設定。
+在您 VM 的 [作業]  底下選取 [變更追蹤]  ，然後選取 [編輯設定]  。 [變更追蹤]  窗格會隨即開啟。 選取您想要追蹤的設定類型，然後選取 [+ 新增]  來進行設定。
 
 可用的 Windows 設定選項包括：
 
@@ -188,23 +188,23 @@ New-AzVm `
 
 ### <a name="view-inventory"></a>檢視清查
 
-在您的 VM 上，選取 [作業] 底下的 [清查]。 在 [軟體] 索引標籤上，有一份資料表會顯示已找到的軟體。 每一筆軟體記錄的高階詳細資料都會顯示在資料表中。 這些詳細資料包括軟體名稱、版本、發行者及上次重新整理時間。
+在您的 VM 上，選取 [作業]  底下的 [清查]  。 在 [軟體]  索引標籤上，有一份資料表會顯示已找到的軟體。 每一筆軟體記錄的高階詳細資料都會顯示在資料表中。 這些詳細資料包括軟體名稱、版本、發行者及上次重新整理時間。
 
 ![檢視清查](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>監視活動記錄和變更
 
-從您 VM 上的 [變更追蹤] 視窗，選取 [管理活動記錄連線] 來開啟 [Azure 活動記錄] 窗格。 選取 [連線] 可將變更追蹤連線至 VM 的 Azure 活動記錄。
+從您 VM 上的 [變更追蹤]  視窗，選取 [管理活動記錄連線]  來開啟 [Azure 活動記錄]  窗格。 選取 [連線]  可將變更追蹤連線至 VM 的 Azure 活動記錄。
 
-啟用變更追蹤之後，您可以移至 VM 的 [概觀] 窗格，並選取 [停止] 來將您的 VM 停止。 出現提示時，選取 [是] 可停止 VM。 當 VM 解除配置後，選取 [啟動] 可將您的 VM 重新啟動。
+啟用變更追蹤之後，您可以移至 VM 的 [概觀]  窗格，並選取 [停止]  來將您的 VM 停止。 出現提示時，選取 [是]  可停止 VM。 當 VM 解除配置後，選取 [啟動]  可將您的 VM 重新啟動。
 
-將 VM 記錄停止和重新啟動，可在其活動記錄中記錄事件。 返回 [變更追蹤] 窗格，然後選取窗格底部的 [事件] 索引標籤。 一段時間之後，就會在圖表和資料表中顯示事件。 您可以選取每個事件來查看該事件的詳細資訊。
+將 VM 記錄停止和重新啟動，可在其活動記錄中記錄事件。 返回 [變更追蹤]  窗格，然後選取窗格底部的 [事件]  索引標籤。 一段時間之後，就會在圖表和資料表中顯示事件。 您可以選取每個事件來查看該事件的詳細資訊。
 
 ![檢視活動記錄中的變更](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 
 上一個圖表會顯示一段時間內已發生的變更。 在您新增 Azure 活動記錄連線之後，頂端的折線圖會顯示 Azure 活動記錄事件。
 
-長條圖中的每個資料列都代表不同的可追蹤變更類型。 這些類型為 Linux 精靈、檔案、Windows 登錄機碼、軟體和 Windows 服務。 [變更] 索引標籤會顯示變更的詳細資料。 變更會以每次發生的順序出現，並會先顯示最新的變更。
+長條圖中的每個資料列都代表不同的可追蹤變更類型。 這些類型為 Linux 精靈、檔案、Windows 登錄機碼、軟體和 Windows 服務。 [變更]  索引標籤會顯示變更的詳細資料。 變更會以每次發生的順序出現，並會先顯示最新的變更。
 
 ## <a name="next-steps"></a>後續步驟
 

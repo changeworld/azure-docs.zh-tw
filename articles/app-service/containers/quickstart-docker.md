@@ -6,10 +6,10 @@ ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
 ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75422142"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>將自訂 Linux 容器部署至 Azure App Service
@@ -65,7 +65,7 @@ docker --version
 
 **資源群組**是 Azure 中所有應用程式資源的具名集合。 例如，資源群組可以包含網站、資料庫和 Azure 函式的參考。
 
-**App Service 方案**定義用來裝載您網站的實體資源。 本快速入門使用 **Linux** 基礎結構上的**基本**主控方案，這表示網站會與其他網站一起裝載在 Linux 機器上。 如果您開始使用**基本**方案，可以使用 Azure 入口網站來相應增加，讓您的網站是在機器上執行的唯一網站。
+**App Service 方案**定義用來裝載您網站的實體資源。 本快速入門使用 **Linux** 基礎結構上的**基本**主控方案，這表示網站會與其他網站一起裝載在 Linux 機器上。 如果您開始使用**基本**方案，可以使用 Azure 入口網站來擴大，讓您的網站是在機器上執行的唯一網站。
 
 ## <a name="browse-the-website"></a>瀏覽網站
 

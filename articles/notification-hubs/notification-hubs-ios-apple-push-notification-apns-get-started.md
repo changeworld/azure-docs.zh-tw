@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
 ms.openlocfilehash: 032ca8d4ecbcf1fc7f3c22cbe5a0ee934fc5e17c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74407366"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
@@ -46,7 +46,7 @@ ms.locfileid: "74407366"
 
 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples) 上找到本教學課程的完整程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -122,7 +122,7 @@ ms.locfileid: "74407366"
 
         ![解壓縮 Azure SDK][10]
 
-6. 將新的標頭檔新增至名為 **Constants.h** 的專案。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...]  。然後選取 [標頭檔]  。 此檔案會保存通知中樞的常數。 然後，選取 [下一步]  。 將檔案命名為 **Constants.h**。
+6. 將新的標頭檔新增至名為 **Constants.h** 的專案。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...]  。然後選取 [標頭檔]  。 此檔案會保存通知中樞的常數。 然後選取 [下一步]  。 將檔案命名為 **Constants.h**。
 
 7. 將下列程式碼新增至 Constants.h 檔案：
 

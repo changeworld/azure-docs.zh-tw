@@ -9,17 +9,17 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74122701"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入門：搭配使用 Azure Cache for Redis 與 Java
 
 在本快速入門中，您會使用 [Jedis](https://github.com/xetorthio/jedis) Redis 用戶端將 Azure Cache for Redis 納入 Java 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全、專用快取。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Apache Maven](https://maven.apache.org/download.cgi)

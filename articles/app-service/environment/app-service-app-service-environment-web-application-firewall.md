@@ -6,13 +6,13 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688765"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057454"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>設定 App Service 環境的 Web 應用程式防火牆 (WAF)
 ## <a name="overview"></a>概觀
@@ -23,7 +23,7 @@ Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插�
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 在本文中，我們會設定受多個 Barracuda WAF 負載平衡執行個體保護的 App Service 環境，只讓來自 WAF 的流量到達 App Service 環境，而且無法從 DMZ 存取。 在 Barracuda WAF 執行個體之前，我們也有「Azure 流量管理員」可在 Azure 資料中心和區域中進行負載平衡。 設定的概覽圖表看起來會如下圖所示：
 
 ![架構][Architecture] 

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c6334aa20b543dfbf87fedcfe45d54bbcf7a219a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278314"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477012"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>教學課程：調整 Azure Red Hat OpenShift 叢集
 
@@ -38,7 +38,7 @@ ms.locfileid: "76278314"
 
 如果您是在本機執行 Azure CLI，請執行 `az login` 以登入 Azure。
 
-```bash
+```azurecli
 az login
 ```
 
@@ -54,7 +54,7 @@ CLUSTER_NAME=yourclustername
 
 現在，我們將使用 Azure CLI 將叢集調整為五個節點：
 
-```bash
+```azurecli
 az openshift scale --resource-group $CLUSTER_NAME --name $CLUSTER_NAME --compute-count 5
 ```
 

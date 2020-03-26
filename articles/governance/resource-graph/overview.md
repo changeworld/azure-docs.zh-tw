@@ -4,11 +4,11 @@ description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385208"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214766"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -23,7 +23,7 @@ Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢指定�
 
 > [!NOTE]
 > Azure Resource Graph 負責提供 Azure 入口網站的搜尋列、「所有資源」的全新瀏覽體驗以及用於 Azure 原則的[變更記錄](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> 「視覺效果差異」。 其目的是協助客戶管理大規模的環境。
+>   「視覺效果差異」。 其目的是協助客戶管理大規模的環境。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -41,7 +41,7 @@ Azure Resource Manager 目前支援查詢基本資源欄位 (尤其是資源名�
 ## <a name="how-resource-graph-is-kept-current"></a>Resource Graph 保持最新狀態的方式
 
 更新 Azure 資源時，Resource Manager 會向 Resource Graph 通知變更。
-Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準的「完整掃描」。 此掃描可確保 Resource Graph 能在使用者錯過通知，或是有資源在 Resource Manager 範圍外被更新的情況下保持在最新狀態。
+Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準的「完整掃描」  。 此掃描可確保 Resource Graph 能在使用者錯過通知，或是有資源在 Resource Manager 範圍外被更新的情況下保持在最新狀態。
 
 > [!NOTE]
 > Resource Graph 會對每個資源提供者的最新非預覽版 API 使用 `GET`，以收集屬性和值。 因此，預期的屬性可能無法使用。 在某些情況下，所使用的 API 版本會遭到覆寫，以在結果中提供更新或更廣泛使用的屬性。 請參閱[顯示每個資源類型的 API 版本](./samples/advanced.md#apiversion)範例，了解您環境中的完整清單。
@@ -63,7 +63,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 > Resource Graph 會使用主體在登入期間可使用的訂用帳戶。 若要查看作用中工作階段期間加入的新訂用帳戶資源，主體必須重新整理內容。 若登出後再登入，則此動作會自動執行。
 
 Azure CLI 和 Azure PowerShell 會使用使用者可存取的訂用帳戶。 直接使用 REST API 時，訂用帳戶清單會由使用者提供。 如果使用者可存取清單中的任何訂用帳戶，則系統會傳回使用者可存取訂用帳戶的查詢結果。 這種行為與呼叫[資源群組 - 清單](/rest/api/resources/resourcegroups/list)時相同 \- 您會取得您可以存取的資源群組，而且沒有任何跡象表明結果可能是部分的。
-如果使用者具有適當權限的訂用帳戶清單中沒有任何訂用帳戶，則回應為 403 (禁止)。
+如果使用者具有適當權限的訂用帳戶清單中沒有任何訂用帳戶，則回應為 403  (禁止)。
 
 ## <a name="throttling"></a>節流
 
@@ -72,8 +72,8 @@ Azure CLI 和 Azure PowerShell 會使用使用者可存取的訂用帳戶。 直
 
 Resource Graph 會在使用者層級進行查詢的節流處理。 服務回應會包含下列 HTTP 標頭：
 
-- `x-ms-user-quota-remaining` （int）：使用者的剩餘資源配額。 此值會對應至查詢計數。
-- `x-ms-user-quota-resets-after` （hh： mm： ss）：重設使用者的配額耗用量前的持續時間
+- `x-ms-user-quota-remaining` (int)：使用者的剩餘資源配額。 此值會對應至查詢計數。
+- `x-ms-user-quota-resets-after` (hh:mm:ss)：使用者配額耗用量重設之前的剩餘時間長度
 
 如需詳細資訊，請參閱[節流要求指引](./concepts/guidance-for-throttled-requests.md)。
 

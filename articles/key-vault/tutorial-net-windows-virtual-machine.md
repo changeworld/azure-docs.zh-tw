@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1bf280ac8b9b01189c306f33e8fcc232a5cec8b6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198094"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472668"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>教學課程：在 .NET 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
 
@@ -42,7 +42,7 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 
 若為 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
-  * 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli)。
+  * 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 ## <a name="about-managed-service-identity"></a>關於受控服務識別
 
@@ -119,7 +119,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 請注意下列程式碼中所顯示的系統指派身分識別。 上述命令的輸出會是： 
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -159,9 +159,9 @@ dotnet run
 
 ### <a name="install-the-packages"></a>安裝套件
 
- 從主控台視窗中，安裝本快速入門所需的 .NET 套件：
+從主控台視窗中，安裝本快速入門所需的 .NET 套件：
 
- ```console
+```console
 dotnet add package System.IO;
 dotnet add package System.Net;
 dotnet add package System.Text;

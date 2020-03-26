@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3b965ab7dfafd6c78c801cf3692463efe366c852
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c0bb391348548ecca595fd1a6472bafcb22ed4ee
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198077"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472651"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教學課程：在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
 
@@ -41,7 +41,7 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 
 若為 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
-  * 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli)。
+  * 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 ## <a name="about-managed-service-identity"></a>關於受控服務識別
 
@@ -117,7 +117,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 請注意下列程式碼中所顯示的系統指派身分識別。 上述命令的輸出會是： 
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -148,7 +148,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
   這樣做也會從 Azure AD 擷取權杖。
 1. 將權杖傳遞給金鑰保存庫，然後擷取祕密。 
 
-```
+```python
     # importing the requests library 
     import requests 
 
@@ -170,7 +170,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 您可以執行下列程式碼來顯示祕密值： 
 
-```
+```console
 python Sample.py
 ```
 

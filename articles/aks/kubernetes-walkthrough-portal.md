@@ -6,13 +6,13 @@ ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
 ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390264"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215566"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service （AKS）叢集
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
 Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在本快速入門中，您會使用 Azure 入口網站來部署 AKS 叢集。 在叢集上執行包含 Web 前端和 Redis 執行個體的多容器應用程式。 然後，您會了解如何監視叢集的健康情況和執行您應用程式的 Pod。
 
@@ -30,31 +30,31 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 若要建立 AKS 叢集，請完成下列步驟：
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
+1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]  。
 
-2. 選取 [容器] >  [Kubernetes Service]。
+2. 選取 [容器]   >  [Kubernetes Service]  。
 
-3. 在 [基本資料] 頁面上設定下列選項：
-    - **專案詳細資料**：選取 azure**訂**用帳戶，然後選取或建立 azure**資源群組**，例如*myResourceGroup*。
-    - 叢集**詳細資料**：輸入**Kubernetes 叢集名稱**，例如*myAKSCluster*。 選取 AKS 叢集的 [區域]、[Kubernetes 版本] 及 [DNS 名稱前置詞]。
-    - **主要節點集**區：選取 AKS 節點的 VM**節點大小**。 VM 大小「無法」在 AKS 叢集部署完畢後變更。 
-            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數] 設為「1」。 節點計數*可以*在叢集部署完畢後調整。
+3. 在 [基本資料]  頁面上設定下列選項：
+    - **專案詳細資料**：選取 Azure [訂用帳戶]  ，然後選取或建立 Azure [資源群組]  ，例如 *myResourceGroup*。
+    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster  。 選取 AKS 叢集的 [區域]  、[Kubernetes 版本]  及 [DNS 名稱前置詞]  。
+    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]  。 VM 大小「無法」  在 AKS 叢集部署完畢後變更。 
+            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數]  設為「1」  。 節點計數*可以*在叢集部署完畢後調整。
     
     ![建立 AKS 叢集 - 提供基本資訊](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    選取 **[下一步]：** 完成時調整。
+    完成時，選取 [下一步:  調整]。
 
-4. 在 [調整] 頁面上，保留預設選項。 在畫面底部，按 **[下一步：驗證]** 。
+4. 在 [調整]  頁面上，保留預設選項。 按一下畫面底部的 [下一步:  驗證]。
     > [!CAUTION]
     > 建立新的 AAD 服務主體可能需要數分鐘的時間才能傳播並變成可用，導致 Azure 入口網站中找不到服務主體的錯誤和驗證失敗。 如果您遇到這種情況，請造訪[這裡](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)以取得緩和措施。
 
-5. 在 [驗證] 頁面上，設定下列選項：
-    - 讓 [服務主體] 欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體] 以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
+5. 在 [驗證]  頁面上，設定下列選項：
+    - 讓 [服務主體]  欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體]  以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
     - 啟用 Kubernetes 角色型存取控制 (RBAC) 的選項。 這會針對 AKS 叢集中部署的 Kubernetes 資源提供更細部的存取控管。
 
-根據預設，會使用「基本」網路，並啟用適用於容器的 Azure 監視器。 按一下 [檢閱 + 建立]，然後在驗證完成時按一下 [建立]。
+根據預設，會使用「基本」  網路，並啟用適用於容器的 Azure 監視器。 按一下 [檢閱 + 建立]  ，然後在驗證完成時按一下 [建立]  。
 
-建立 AKS 叢集需要幾分鐘的時間。 完成部署時，請按一下 [移至資源]，或瀏覽至 AKS 叢集資源群組 (例如 myResourceGroup)，然後選取 AKS 資源 (例如 myAKSCluster)。 AKS 叢集儀表板隨即顯示，如此範例所示：
+建立 AKS 叢集需要幾分鐘的時間。 完成部署時，請按一下 [移至資源]  ，或瀏覽至 AKS 叢集資源群組 (例如 myResourceGroup  )，然後選取 AKS 資源 (例如 myAKSCluster  )。 AKS 叢集儀表板隨即顯示，如此範例所示：
 
 ![Azure 入口網站中的 AKS 儀表板範例](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -66,7 +66,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 ![在入口網站中開啟 Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。 下列範例會針對 myResourceGroup 資源群組中的叢集名稱 myAKSCluster 取得認證：
+若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。 下列範例會針對 myResourceGroup  資源群組中的叢集名稱 myAKSCluster  取得認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -92,7 +92,7 @@ Kubernetes 資訊清單檔會定義所需的叢集狀態，例如要執行哪些
 > [!TIP]
 > 在本快速入門中，您會以手動方式建立應用程式資訊清單，並將其部署至 AKS 叢集。 在更貼近現實的案例中，您可以使用 [Azure Dev Spaces][azure-dev-spaces] 快速地逐一查看程式碼，並直接在 AKS 叢集中進行偵錯。 您可以跨作業系統平台和開發環境來使用 Dev Spaces，並與小組中的其他人一起工作。
 
-在 Cloud Shell 中，使用 [`nano azure-vote.yaml`] 或 [`vi azure-vote.yaml`] 命令來建立名為 `azure-vote.yaml`的檔案。 然後，將下列 YAML 定義複製到其中：
+在 Cloud Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令建立名為 `azure-vote.yaml` 的檔案。 然後，將下列 YAML 定義複製到其中：
 
 ```yaml
 apiVersion: apps/v1
@@ -225,24 +225,24 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 當您建立叢集後，就已啟用容器的 Azure 監視器。 此監視功能可針對 AKS 叢集和叢集上執行的 Pod 提供健康情況計量。
 
-可能需要幾分鐘，此資料才會填入至 Azure 入口網站。 若要查看 Azure 投票應用程式 Pod 的目前狀態、執行時間及資源使用量，請往回瀏覽到 Azure 入口網站中的 AKS 資源，例如 myAKSCluster。 然後，您可以存取健康狀態，如下所示：
+可能需要幾分鐘，此資料才會填入至 Azure 入口網站。 若要查看 Azure 投票應用程式 Pod 的目前狀態、執行時間及資源使用量，請往回瀏覽到 Azure 入口網站中的 AKS 資源，例如 myAKSCluster  。 然後，您可以存取健康狀態，如下所示：
 
-1. 在左側的 [監視] 底下，選擇 [見解]
-1. 在頂端選擇 [+ 新增篩選器]
-1. 選取 [命名空間] 作為屬性，然後選擇 *除了 kube-system 以外的所有項目\<\>*
+1. 在左側的 [監視]  底下，選擇 [見解] 
+1. 在頂端選擇 [+ 新增篩選器] 
+1. 選取 [命名空間]  作為屬性，然後選擇 \<除了 kube-system 以外的所有項目\> 
 1. 選擇檢視**容器**。
 
-系統會顯示 azure-vote-back 和 azure-vote-front 容器，如下列範例所示：
+系統會顯示 azure-vote-back  和 azure-vote-front  容器，如下列範例所示：
 
 ![檢視 AKS 中執行的容器健康情況](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的記錄，請從容器清單的下拉式清單中選取 [檢視容器記錄]。 這些記錄包含來自容器的 stdout 和 stderr 資料流。
+若要查看 `azure-vote-front` Pod 的記錄，請從容器清單的下拉式清單中選取 [檢視容器記錄]  。 這些記錄包含來自容器的 stdout  和 stderr  資料流。
 
 ![在 AKS 中檢視容器記錄](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>刪除叢集
 
-不再需要叢集時，請刪除叢集資源，這將會刪除所有相關的資源。 此操作可以在 Azure 入口網站中選取 AKS 叢集儀表板上的 [刪除] 按鈕來完成。 或者，您可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
+不再需要叢集時，請刪除叢集資源，這將會刪除所有相關的資源。 此操作可以在 Azure 入口網站中選取 AKS 叢集儀表板上的 [刪除]  按鈕來完成。 或者，您可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait

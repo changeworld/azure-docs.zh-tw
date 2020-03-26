@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410455"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132527"
 ---
 # <a name="what-is-azure-databricks"></a>何謂 Azure Databricks？
 
@@ -23,7 +23,7 @@ Azure Databricks 是一個針對 Microsoft Azure 雲端服務平台進行最佳�
 
 ![何謂 Azure Databricks？](./media/what-is-azure-databricks/azure-databricks-overview.png "何謂 Azure Databricks？")
 
-Azure Databricks 是快速、簡單且共同作業的 Apache Spark 架構分析服務。 對於巨量資料管線，資料 (原始或結構化) 會透過 Azure Data Factory 分批內嵌到 Azure 中，或使用 Kafka、事件中樞或 IoT 中樞以近乎即時的方式進行串流處理。 此資料會放置在 Data Lake 中長期持續儲存、在 Azure Blob 儲存體或 Azure Data Lake 儲存體中。 在您的分析工作流程中，使用 Azure Databricks 從多個資料來源 (例如 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 資料倉儲](../sql-data-warehouse/index.yml)) 讀取資料，並使用 Spark 將它轉換成突破性見解。
+Azure Databricks 是快速、簡單且共同作業的 Apache Spark 架構分析服務。 對於巨量資料管線，資料 (原始或結構化) 會透過 Azure Data Factory 分批內嵌到 Azure 中，或使用 Kafka、事件中樞或 IoT 中樞以近乎即時的方式進行串流處理。 此資料會放置在 Data Lake 中長期持續儲存、在 Azure Blob 儲存體或 Azure Data Lake 儲存體中。 在您的分析工作流程中，使用 Azure Databricks 從多個資料來源 (例如 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.yml)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/index.yml)) 讀取資料，並使用 Spark 將它轉換成突破性見解。
 
 ![Databricks 管線](./media/what-is-azure-databricks/databricks-pipeline.png)
 

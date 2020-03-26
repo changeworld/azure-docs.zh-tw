@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797179"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>快速入門：在 Azure 資料總管 Web UI 中查詢資料
@@ -20,7 +20,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 除了 Azure 訂用帳戶之外，您還需要[一個測試叢集和資料庫](create-cluster-database-portal.md)，才能完成此快速入門。
 
@@ -181,7 +181,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
 資料總管目前為預覽狀態，我們歡迎您針對使用提出意見反應。 您可以立即執行此作業，或等到您有更多時間可以執行。
 
-1. 在應用程式右上角，選取意見反應圖示： ![意見反應圖示](media/web-query-data/icon-feedback.png)上也提供本文中使用的原始碼。
+1. 在應用程式右上角，選取意見反應圖示： ![意見反應圖示](media/web-query-data/icon-feedback.png)。
 
 1. 輸入您的意見反應，然後選取 [提交]  。
 

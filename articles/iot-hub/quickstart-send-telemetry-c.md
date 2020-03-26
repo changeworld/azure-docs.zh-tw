@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
 ms.openlocfilehash: cbd32be2caefc9b84c2db4255df298cfd0766c01
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893211"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216306"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式加以讀取（C）
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (C)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -56,9 +56,9 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 * **Linux**：Ubuntu 16.04 與 18.04 可使用 apt-get 套件，適用的 CPU 架構如下：amd64、arm64、armhf 與 i386。 如需詳細資訊，請參閱[在Ubuntu 上使用 apt-get 來建立 C 裝置用戶端專案](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md) \(英文\)。
 
-* **mbed**：針對在 mbed 平臺上建立裝置應用程式的開發人員，我們發佈了程式庫和範例，可讓您在幾分鐘內開始使用 Azure IoT 中樞。 如需詳細資訊，請參閱[使用 mbed 程式庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed) \(英文\)。
+* **mbed**：針對在 mbed 平台上建立裝置應用程式的開發人員，我們已發佈可讓您快速了解如何使用 Azure IoT 中樞的程式庫與範例。 如需詳細資訊，請參閱[使用 mbed 程式庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed) \(英文\)。
 
-* **Arduino**：如果您是在 Arduino 上進行開發，您可以利用 Arduino IDE 程式庫管理員中提供的 Azure IoT 程式庫。 如需詳細資訊，請參閱 [適用於 Arduino 的 Azure IoT 中樞](https://github.com/azure/azure-iot-arduino)。
+* **Arduino**：如果您在 Arduino 上開發，您可以利用 Arduino IDE 程式庫管理員中可用的 Azure IoT 程式庫。 如需詳細資訊，請參閱 [適用於 Arduino 的 Azure IoT 中樞](https://github.com/azure/azure-iot-arduino)。
 
 * **iOS**：IoT 中樞裝置 SDK 能以 CocoaPod 形式取得並用於 Mac 與 iOS 裝置開發。 如需詳細資訊，請參閱 [Microsoft Azure IoT 的 iOS 範例](https://cocoapods.org/pods/AzureIoTHubClient) \(英文\)。
 
@@ -66,7 +66,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
-    在開始安裝之前`CMake`，請務必將 Visual Studio 先決條件 (Visual Studio 和「使用 C++ 進行桌面開發」工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
+    在開始安裝 `CMake`**之前**，請務必將 Visual Studio 先決條件 (Visual Studio 和「使用 C++ 進行桌面開發」工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
 
 2. 尋找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的標籤名稱。
 
@@ -123,13 +123,13 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyCDevice**：這是您要註冊的裝置名稱。 建議您使用 **MyCDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+   **MyCDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyCDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」：
+2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」  ：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 

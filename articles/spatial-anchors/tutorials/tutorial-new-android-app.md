@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e1773ef81a5b727187a9a69ccc7ce7ad0421fb2c
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161715"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80246767"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 Android 應用程式的逐步指示
 
@@ -69,7 +69,7 @@ dependencies {
 
 ## <a name="integrating-_sceneform_"></a>整合 _Sceneform_
 
-<a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 可讓您輕鬆地在擴增實境應用程式中呈現逼真的 3D 場景，而不需要學習 OpenGL。
+[_Sceneform_](https://developers.google.com/sceneform/develop/) 可讓您輕鬆地在擴增實境應用程式中呈現逼真的 3D 場景，而不需要學習 OpenGL。
 
 請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼可讓您的應用程式使用 Java 8 的語言建構，這是 `Sceneform` 不可或缺的。 它也會確保您的應用程式將以 `Sceneform` 1.8 版為目標，因為其版本必須符合您的應用程式所使用的 ARCore 版本。 進行此變更後，您可能會收到 Gradle 詢問是否要同步的通知：按一下 [立即同步]  。
 

@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74929194"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教學課程：使用 Visual Studio 建立具有複製活動的管線
@@ -44,7 +44,7 @@ ms.locfileid: "74929194"
 > [!NOTE] 
 > 本教學課程中的資料管線會將資料從來源資料存放區，複製到目的地資料存放區。 如需如何使用 Azure Data Factory 轉換資料的教學課程，請參閱[教學課程︰使用 Hadoop 叢集建置管線來轉換資料](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -80,7 +80,7 @@ ms.locfileid: "74929194"
     ![[新增專案] 對話方塊](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
 3. 指定專案名稱、方案位置和方案名稱，然後按一下 [確定]  。
    
-    ![Controllers\HomeController.cs](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
+    ![方案總管](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>建立連結的服務
 您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本教學課程中，您不會使用任何計算服務，例如 Azure HDInsight 或 Azure Data Lake Analytics。 您可以使用兩種類型的資料存放區：Azure 儲存體 (來源) 和 Azure SQL Database (目的地)。 
@@ -163,7 +163,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
    ``` 
     下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-    | 屬性 | 說明 |
+    | 屬性 | 描述 |
     |:--- |:--- |
     | type | type 屬性會設為 **AzureBlob**，因為資料位於 Azure Blob 儲存體中。 |
     | linkedServiceName | 表示您稍早建立的 **AzureStorageLinkedService**。 |
@@ -211,7 +211,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
     ```
     下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-    | 屬性 | 說明 |
+    | 屬性 | 描述 |
     |:--- |:--- |
     | type | type 屬性會設為 **AzureSqlTable**，因為資料已複製到 Azure SQL 資料庫中的資料表。 |
     | linkedServiceName | 表示您稍早建立的 **AzureSqlLinkedService**。 |
@@ -281,7 +281,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
      
      將 **start** 屬性的值替換為目前日期，並將 **end**值替換為隔天的日期。 在日期時間中，您只指定日期部分，並略過時間部分。 例如，"2016-02-03"，這相當於 "2016-02-03T00:00:00Z"
      
-     開始和結束日期時間都必須是 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如︰2016-10-14T16:32:41Z. **end** 時間為選擇性項目，但在本教學課程中會用到。 
+     開始和結束日期時間都必須是 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z. **end** 時間為選擇性項目，但在本教學課程中會用到。 
      
      如果您未指定 **end** 屬性的值，則會以「**start + 48 小時**」計算。 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。
      
@@ -362,7 +362,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
     ![Data Factory 首頁](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. 請遵循[監視資料集和管線](data-factory-monitor-manage-pipelines.md)中的指示，監視您在本教學課程中建立的管線和資料集。 Visual Studio 目前不支援監視 Data Factory 管線。 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您已建立要將資料從 Azure Blob 複製到 Azure SQL 資料庫的 Azure Data Factory。 您已使用 Visual Studio 建立 Data Factory、連結服務、資料集和管線。 以下是您在本教學課程中執行的高階步驟：  
 
 1. 建立 Azure **Data Factory**。

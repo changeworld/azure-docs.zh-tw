@@ -4,10 +4,10 @@ description: CAF 移轉登陸區域藍圖範例的部署步驟，其中包括藍
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545455"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>部署適用於適用於 Azure 的 Microsoft 雲端採用架構的移轉登陸區域藍圖範例
@@ -101,7 +101,7 @@ ms.locfileid: "74545455"
 
 下表提供藍圖成品參數的清單：
 
-|成品名稱|成品類型|參數名稱|說明|
+|成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |部署 vNET 登陸區域|Resource Manager 範本|IPAddress_Space|**已鎖定** - 提供前兩個八位元資料組範例 10.0|
 |部署金鑰保存庫|Resource Manager 範本|KV-AccessPolicy|**已鎖定** - 在金鑰保存庫中要被授與權限的群組或使用者物件識別碼|

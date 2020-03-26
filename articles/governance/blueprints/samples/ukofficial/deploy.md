@@ -4,10 +4,10 @@ description: UK OFFICIAL 與 UK NHS 藍圖範例的部署步驟，其中包括�
 ms.date: 06/26/2019
 ms.topic: sample
 ms.openlocfilehash: 3d69f4477163618aa225150ac6352a16e901f826
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546390"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署 UK OFFICIAL 與 UK NHS 藍圖範例
@@ -91,11 +91,11 @@ ms.locfileid: "74546390"
 
 下表提供藍圖成品參數的清單：
 
-成品名稱|成品類型|參數名稱|說明|
+成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |UK OFFICIAL 或 UK NHS 的藍圖計畫|原則指派 |用於稽核診斷記錄的資源類型 (原則：UK OFFICIAL 或 UK NHS 的藍圖計畫) |診斷記錄設定未啟用時，可稽核的資源類型清單。  如需可接受的值，請參閱 [Azure 診斷記錄支援的服務、結構描述和類別](../../../../azure-monitor/platform/diagnostic-logs-schema.md)。 |
-|\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式 |原則指派 |選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS (原則：\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式) |(選用) 預設值為 [無]  。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
-|\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式 |原則指派 |選用：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS (原則：\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式) |(選用) 預設值為 [無]  。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式 |原則指派 |選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Linux OS (原則：\[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式) |(選用) 預設值為 [無]  。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式 |原則指派 |選擇性：要新增至範圍的 VM 映像清單，這些映像具有支援的 Windows OS (原則：\[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式) |(選用) 預設值為 [無]  。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 
 ## <a name="next-steps"></a>後續步驟
 

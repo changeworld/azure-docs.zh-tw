@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007852"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>教學課程：將 Azure AD 記錄封存到 Azure 儲存體帳戶
 
 在本教學課程中，您會了解如何設定 Azure 監視器診斷設定，以將 Azure Active Directory (Azure AD) 記錄路由傳送到 Azure 儲存體帳戶。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要使用此功能，您必須要有：
 

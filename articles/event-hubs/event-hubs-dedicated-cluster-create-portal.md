@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77157477"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用的事件中樞叢集 
@@ -35,7 +35,7 @@ ms.locfileid: "77157477"
 - [建立資源群組](../event-hubs/event-hubs-create.md#create-a-resource-group)。
 
 ## <a name="create-an-event-hubs-dedicated-cluster"></a>建立事件中樞專用叢集
-事件中樞叢集提供唯一的範圍容器，您可以在其中建立一或多個命名空間。 在入口網站自助體驗的預覽階段，您可以在精選區域中建立 1 CU 叢集。 如果您需要大於 1 CU 的叢集，您可以在叢集建立後提交 Azure 支援要求來相應增加叢集。
+事件中樞叢集提供唯一的範圍容器，您可以在其中建立一或多個命名空間。 在入口網站自助體驗的預覽階段，您可以在精選區域中建立 1 CU 叢集。 如果您需要大於 1 CU 的叢集，您可以在叢集建立後提交 Azure 支援要求來擴大叢集。
 
 若要使用 Azure 入口網站在資源群組中建立叢集，請完成下列步驟：
 
@@ -89,7 +89,7 @@ ms.locfileid: "77157477"
     5. 針對 [問題類型]  選取 [配額]  。
     6. 針對 [問題子類型]  ，從下拉式清單中選取下列其中一個值：
         1. 選取 [要求專用 SKU]  以要求在您的區域中支援該功能。
-        2. 如果您想要相應增加或相應減少專用叢集，請選取 [要求相應增加或相應減少專用叢集]  。 
+        2. 如果您想要擴大或縮小專用叢集，請選取 [要求擴大或縮小專用叢集]  。 
     7. 針對 [主旨]  ，請描述問題。
 
         ![[支援票證] 頁面](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)

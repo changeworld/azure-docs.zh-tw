@@ -11,10 +11,10 @@ ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
 ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78198111"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教學課程：在 .NET 中透過 Azure Web 應用程式使用 Azure Key Vault

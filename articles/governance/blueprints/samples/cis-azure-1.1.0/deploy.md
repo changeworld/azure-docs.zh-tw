@@ -4,10 +4,10 @@ description: CIS Microsoft Azure 基礎基準測試藍圖範例的部署步驟�
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544530"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>部署 CIS Microsoft Azure 基礎基準測試藍圖範例
@@ -91,7 +91,7 @@ ms.locfileid: "74544530"
 
 下表提供藍圖成品參數的清單：
 
-|成品名稱|成品類型|參數名稱|說明|
+|成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |\[預覽\]：稽核 CIS Microsoft Azure 基礎基準測試 1.1.0 建議，及部署特定的支援 VM 延伸模組|原則指派|應啟用網路監看員的區域清單|分號分隔的區域清單。 若要查看使用 Get-AzLocation 的區域完整清單。 例如：eastus; eastus2|
 |\[預覽\]：稽核 CIS Microsoft Azure 基礎基準測試 1.1.0 建議，及部署特定的支援 VM 延伸模組|原則指派|已核准可使用的虛擬機器延伸模組清單|分號分隔的延伸模組清單。若要查看虛擬機器延伸模組的完整清單，請使用 Get-AzVMExtensionImage。 例如：AzureDiskEncryption; IaaSAntimalware|

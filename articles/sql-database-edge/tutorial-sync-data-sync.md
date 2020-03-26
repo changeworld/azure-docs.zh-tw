@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 7c38ba6dbabef4affd8672295a93d46fd4b0e494
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74384172"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>教學課程：使用 SQL 資料同步將 SQL Database Edge 中的資料同步至 Azure SQL Database
@@ -22,7 +22,7 @@ ms.locfileid: "74384172"
 
 由於 SQL Database Edge 是以最新版的 [SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation/)為建置基礎，因此適用於內部部署 SQL Server 執行個體的任何資料同步處理機制，也都可用來將資料同步至在 Edge 裝置上執行的 SQL Database Edge 執行個體，或進行反向操作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程需要 Windows 電腦，並且需要已設定[適用於 Azure SQL 資料同步的 Data Sync Agent](../sql-database/sql-database-data-sync-agent.md)。
 

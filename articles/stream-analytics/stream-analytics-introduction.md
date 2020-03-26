@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426177"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80235749"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure 串流分析是什麼？
 
@@ -39,7 +39,7 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 串流分析�
 
 下圖顯示如何將資料傳送至串流分析、加以分析並傳送，以進行儲存或呈現等其他動作：
 
-![串流分析流程簡介](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
+![串流分析流程簡介](./media/stream-analytics-introduction/stream-analytics-e2e-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>主要功能和優點
 

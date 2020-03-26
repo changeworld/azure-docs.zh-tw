@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194495"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215866"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 身分識別平台 (v2.0) 概觀
 
@@ -33,7 +33,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 開發人員�
   - 社交或本機帳戶 (透過 Azure AD B2C)
 - **開放原始碼程式庫**：Microsoft 驗證程式庫 (MSAL) 和其他符合標準的程式庫支援
 - **應用程式管理入口網站**：Azure 入口網站內建的註冊和設定體驗，以及所有其他 Azure 管理功能。
-- **應用程式設定 API 和 PowerShell**：可讓應用程式透過 REST API (Microsoft Graph 和 Azure Active Directory Graph 1.6) 和 PowerShell 以程式設計方式進行設定，以便您將 DevOps 工作自動化。
+- **應用程式設定 API 和 PowerShell**：可讓應用程式透過 Microsoft Graph API 和 PowerShell 和 PowerShell 以程式設計方式進行設定，以便您將 DevOps 工作自動化。
 - **開發人員內容**：概念和參考文件、快速入門範例、程式碼範例、教學課程及操作指南。
 
 對於開發人員，Microsoft 身分識別平台會提供身分識別和安全性空間創新的無縫整合，例如無密碼驗證、設定驗證和條件式存取。  您不需要自行實作這類功能：與 Microsoft 身分識別平台整合的應用程式可以原生方式利用這類創新。

@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648805"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教學課程：使用自訂動作和資源建立受控應用程式
@@ -219,7 +219,7 @@ $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $c
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -244,7 +244,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入**受控應用程式中心**，並加以選取。
 2. 在 [受控應用程式中心]  上選擇 [服務類別目錄應用程式定義]  ，然後按一下 [新增]  。 
@@ -277,7 +277,7 @@ az managedapp definition create \
 
 部署受控應用程式定義時，請執行下列指令碼，或依照 Azure 入口網站中的步驟，使用自訂提供者部署您的受控應用程式執行個體：
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -300,7 +300,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[入口網站](#tab/azure-portal)
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入**受控應用程式中心**，並加以選取。
 2. 在 [受控應用程式中心]  上選擇 [服務類別目錄應用程式]  ，然後按一下 [新增]  。 

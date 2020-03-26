@@ -1,14 +1,14 @@
 ---
 title: 教學課程 - 使用 Ansible 調整 Azure App Service 中的應用程式
-description: 了解如何相應增加 Azure App Service 中的應用程式
+description: 了解如何擴大 Azure App Service 中的應用程式
 keywords: ansible, azure, devops, bash, 劇本, Azure App Service, Web App, 調整規模, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155924"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>教學課程：使用 Ansible 調整 Azure App Service 中的應用程式
@@ -22,20 +22,20 @@ ms.locfileid: "74155924"
 > [!div class="checklist"]
 >
 > * 取得現有 App Service 方案的資訊
-> * 將 App Service 方案相應增加為具有三個背景工作的 S2
+> * 將 App Service 方案擴大為具有三個背景工作的 S2
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 - **Azure App Service 應用程式** - 如果您沒有 Azure App Service 應用程式，請[使用 Ansible 在 Azure App Service 中設定應用程式](ansible-create-configure-azure-web-apps.md)。
 
-## <a name="scale-up-an-app"></a>相應增加應用程式
+## <a name="scale-up-an-app"></a>擴大應用程式
 
-調整有兩個工作流程：*相應增加*和*相應放大*。
+調整有兩個工作流程：*擴大*和*擴增*。
 
-**相應增加：** 相應增加的實質意義，是取得更多資源。 這些資源包括 CPU、記憶體、磁碟空間、VM 等。 您可以藉由變更應用程式所屬 App Service 方案的定價層，將應用程式相應增加。 
-**相應放大：** 相應放大的實質意義，是增加執行應用程式的 VM 執行個體數目。 視 App Service 方案的定價層而定，您最多可以相應放大至 20 個執行個體。 [自動調整](/azure/azure-monitor/platform/autoscale-get-started)可讓您根據預先定義的規則和排程自動調整執行個體計數。
+**擴大：** 擴大的實質意義，是取得更多資源。 這些資源包括 CPU、記憶體、磁碟空間、VM 等。 您可以藉由變更應用程式所屬 App Service 方案的定價層，將應用程式擴大。 
+**擴增：** 擴增的實質意義，是增加執行應用程式的 VM 執行個體數目。 視 App Service 方案的定價層而定，您最多可以擴增至 20 個執行個體。 [自動調整](/azure/azure-monitor/platform/autoscale-get-started)可讓您根據預先定義的規則和排程自動調整執行個體計數。
 
 本節中的劇本程式碼會定義下列作業︰
 

@@ -1,7 +1,7 @@
 ---
 title: 什麼是 Microsoft Genomics？
 titleSuffix: Microsoft Genomics
-description: 了解如何使用 Microsoft Genomics 來執行用於基因分析的 BWA-GATK 工作流程。
+description: 了解 Microsoft Genomics 如何透過使用 Burrows-Wheeler Aligner (BWA) 和 Genome Analysis Toolkit (GATK) 的雲端實作加強基因組序列處理。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,11 +9,11 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 461e385bae3b091c72355ed27a35ae5408bda7c2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73498825"
 ---
 # <a name="what-is-microsoft-genomics"></a>什麼是 Microsoft Genomics？

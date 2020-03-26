@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, 腳本, 虛擬機器, 虛擬機器擴展
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155834"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>教學課程：使用 Ansible 從 Azure 共用映像庫建立 VM 或虛擬機器擴展集
@@ -28,7 +28,7 @@ ms.locfileid: "74155834"
 > * 使用一般化映像來建立虛擬機器擴展集
 > * 取得共用映像庫、映像和版本的相關資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

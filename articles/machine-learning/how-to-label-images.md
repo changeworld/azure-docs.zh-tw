@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898689"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79409553"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像
 
@@ -126,4 +126,4 @@ ms.locfileid: "78898689"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何[在 Azure 中將影像分類模型定型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
-* 了解如何[使用 Azure 和 "Faster R-CNN" 技術進行物件偵測](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)
+

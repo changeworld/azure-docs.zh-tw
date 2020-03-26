@@ -4,11 +4,11 @@ description: 在本教學課程中，針對 Azure 原則製作自訂原則定義
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386784"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222745"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
@@ -71,7 +71,7 @@ ms.locfileid: "78386784"
 #### <a name="existing-resource-in-the-portal"></a>入口網站中的現有資源
 
 若要尋找屬性，最簡單的方式是查看相同類型的現有資源。 已使用所要強制執行的設定進行設定的資源，也會提供可用來比較的值。
-在 Azure 入口網站中，查看該項資源的 [匯出範本] 頁面 (在 [設定] 下方)。
+在 Azure 入口網站中，查看該項資源的 [匯出範本]  頁面 (在 [設定]  下方)。
 
 ![現有資源上的 [匯出範本] 頁面](../media/create-custom-policy-definition/export-template.png)
 
@@ -119,13 +119,13 @@ ms.locfileid: "78386784"
 ...
 ```
 
-[屬性] 底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的**類型**是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
+[屬性]  底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的**類型**是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在入口網站建立資源
 
-另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階] 索引標籤下有 [需要安全性傳輸] 選項。 此屬性具有 [停用] 和 [啟用] 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
+另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階]  索引標籤下有 [需要安全性傳輸]  選項。 此屬性具有 [停用]  和 [啟用]  選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
 
-在 [檢閱 + 建立] 索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
+在 [檢閱 + 建立]  索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
 
 ```json
 ...
@@ -155,7 +155,7 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 
 另一種瀏覽 Azure 資源的方式是透過 [Azure 資源總管](https://resources.azure.com) (預覽)。 此工具會使用您訂用帳戶的內容，因此您必須使用 Azure 認證向該網站進行驗證。 通過驗證後，即可依提供者、訂用帳戶、資源群組和資源來進行瀏覽。
 
-找出儲存體帳戶資源，並查看其屬性。 我們在這裡也看到 **supportsHttpsTrafficOnly** 屬性。 選取 [文件] 索引標籤，我們會看到屬性描述符合我們稍早在參考文件中找到的資訊。
+找出儲存體帳戶資源，並查看其屬性。 我們在這裡也看到 **supportsHttpsTrafficOnly** 屬性。 選取 [文件]  索引標籤，我們會看到屬性描述符合我們稍早在參考文件中找到的資訊。
 
 ## <a name="find-the-property-alias"></a>尋找屬性別名
 
@@ -216,7 +216,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-其結果看起來與我們在 Resource Manager 範本中以及透過 Azure 資源總管所看到的結果類似。 不過，Azure Resource Graph 的結果也可能因[投射](../concepts/definition-structure.md#aliases)了_別名_陣列而包含_別名_詳細資料：
+其結果看起來與我們在 Resource Manager 範本中以及透過 Azure 資源總管所看到的結果類似。 不過，Azure Resource Graph 的結果也可能因_投射_了_別名_陣列而包含[別名](../concepts/definition-structure.md#aliases)詳細資料：
 
 ```kusto
 Resources
@@ -350,7 +350,7 @@ Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用�
 
 ### <a name="metadata"></a>中繼資料
 
-前三個元件是原則的中繼資料。 由於我們知道為何要建立規則，所以為這些元件提供值並不難。 [模式](../concepts/definition-structure.md#mode)主要是和標記與資源位置有關。 我們並不需要限制只對支援標記的資源進行評估，因此會對 _mode_ 使用 all 這個值。
+前三個元件是原則的中繼資料。 由於我們知道為何要建立規則，所以為這些元件提供值並不難。 [模式](../concepts/definition-structure.md#mode)主要是和標記與資源位置有關。 我們並不需要限制只對支援標記的資源進行評估，因此會對 **mode** 使用 all  這個值。
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -457,11 +457,11 @@ Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用�
 
 如果您已完成使用本教學課程中的資源，請使用下列步驟來刪除前面建立的任何指派或定義：
 
-1. 選取 Azure 原則頁面左側 [製作] 下的 [定義] (如果您嘗試刪除指派，則選取 [指派])。
+1. 選取 Azure 原則頁面左側 [製作]  下的 [定義]  (如果您嘗試刪除指派，則選取 [指派]  )。
 
 1. 搜尋您要移除的新計畫或原則定義 (或指派)。
 
-1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義] (或 [刪除指派])。
+1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義]  (或 [刪除指派]  )。
 
 ## <a name="review"></a>檢閱
 

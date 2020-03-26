@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: 在本快速入門中，您會在物件 (Blob) 儲存體中使用 Azure PowerShell。 然後使用 PowerShell，將 blob 上傳至 Azure 儲存體、下載 blob，以及列出容器中的 blob。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664231"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061412"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入門：使用 PowerShell 上傳、下載及列出 Blob
 

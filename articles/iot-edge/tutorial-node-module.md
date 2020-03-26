@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 71b22bf9bf040abcdf513a4f8baa916930c8972e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76772213"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>教學課程：為 Linux 裝置開發及部署 Node.js IoT Edge 模組
@@ -76,9 +76,9 @@ ms.locfileid: "76772213"
 
 3. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
 
-4. 在命令選擇區中，輸入並執行命令 **[Azure:** 登入]，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
+4. 在命令選擇區中，輸入並執行命令 **Azure:Sign in**，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
 
-5. 在命令選擇區中，輸入並執行命令 [Azure IoT Edge:  新增 IoT Edge 解決方案]。 依照命令選擇區中的提示建立解決方案。
+5. 在命令選擇區中，輸入並執行命令 Azure IoT Edge:**新增 IoT Edge 解決方案**。 依照命令選擇區中的提示建立解決方案。
 
    | 欄位 | 值 |
    | ----- | ----- |

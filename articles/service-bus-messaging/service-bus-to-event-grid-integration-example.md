@@ -14,25 +14,32 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462096"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067775"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教學課程：使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件
-在本教學課程中，您將了解如何使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件。 您將會執行下列步驟：
- 
-- 建立測試用的 Azure 函式，以便偵錯及檢視來自事件方格的初始事件流程。
-- 建立 Azure 函式來接收和處理 Azure 服務匯流排訊息 (以 Event Grid 事件為基礎)。
-- 建立邏輯應用程式以回應事件方格的事件
+在本教學課程中，您將了解如何使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件。 
 
-建立服務匯流排、事件方格、Azure Functions 和 Logic Apps 成品之後，請執行下列動作： 
+在本教學課程中，您會了解如何：
+> [!div class="checklist"]
+> * 建立服務匯流排命名空間
+> * 準備用來傳送訊息的應用程式範例
+> * 在 Azure 上設定測試函式
+> * 透過 Event Grid 連線函式和命名空間
+> * 對服務匯流排主題傳送訊息
+> * 使用 Azure Functions 接收訊息
+> * 使用 Logic Apps 接收訊息
 
-1. 對服務匯流排主題傳送訊息。 
-2. 確認主題的訂用帳戶有收到這些訊息
-3. 確認訂閱事件的函式或邏輯應用程式已收到事件。 
+## <a name="prerequisites"></a>Prerequisites
+
+若要完成本教學課程，請確定您已安裝︰
+
+- [Visual Studio 2017 Update 3 (版本 15.3, 26730.01)](https://www.visualstudio.com/vs) 或更新版本。
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
 
 ## <a name="create-a-service-bus-namespace"></a>建立服務匯流排命名空間
 請遵循下列教學課程中的指示：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以執行下列工作：
@@ -65,7 +72,7 @@ ms.locfileid: "75462096"
 然後，執行下列步驟： 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
 1. 在樹狀檢視中展開 [Functions]  ，然後選取您的函式。 使用下列程式碼取代該函式的程式碼： 
 
@@ -122,7 +129,7 @@ ms.locfileid: "75462096"
 
     ![取得函式 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. 將函式設定為使用 **V1** 版本： 
     1. 在樹狀檢視中選取您的函式應用程式，然後選取 [函式應用程式設定]  。 

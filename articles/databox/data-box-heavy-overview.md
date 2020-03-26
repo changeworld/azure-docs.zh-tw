@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70142921"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>什麼是 Azure Data Box Heavy？
@@ -59,13 +59,13 @@ Data Box Heavy 的設計可讓它在幾乎不對網路產生影響的情況下�
 
 此版本的 Data Box Heavy 裝置具備下列功能。
 
-| 規格                                          | 說明              |
+| 規格                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | ~ 500 磅。 <br>用於傳輸的鎖定輪上的裝置|
 | 維度                                              | 寬度：26 英吋高：28 英吋長：48 英吋 |
 | 機架空間                                              | 不能安裝在機架上|
 | 必要纜線                                         | 內含 4 條接地 120 V/10 A 電源線 (NEMA 5-15) <br> 裝置支援最多 240 V 電源，並配備 C-13 電源箱 <br> 使用與 [Mellanox MCX314A BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) \(英文\) 相容的網路纜線  |
-| 乘冪                                                    | 跨兩個裝置節點共用的 4 個內建電源供應器單位 (PSU) <br> 1,200 瓦特一般電力消耗|
+| Power                                                    | 跨兩個裝置節點共用的 4 個內建電源供應器單位 (PSU) <br> 1,200 瓦特一般電力消耗|
 | 儲存體容量                                        | ~ 1-PB 未經處理、70 個 14 TB 磁碟 <br> 770-TB 可用容量|
 | 節點數目                                          | 每個裝置 2 個獨立的節點 (各 500 TB) |
 | 每個節點的網路介面                             | 每個節點 4 個網路介面 <br><br> MGMT, DATA3 <ul><li> 2 個 1-GbE 介面 </li><li> MGMT 用於管理和初始設定，使用者無法設定 </li><li> DATA3 是使用者可設定的，預設使用動態主機設定通訊協定 (DHCP)</li></ul>DATA1、DATA2 資料介面 <ul><li>2 個 40-GbE 介面 </li><li> 使用者可設定的 DHCP (預設) 或靜態</li></ul>|

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: rohink
 ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76934775"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立流量管理員設定檔
@@ -33,7 +33,7 @@ ms.locfileid: "76934775"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在本快速入門中，您必須在不同的 Azure 區域 (美國東部  和歐洲西部  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
+在本快速入門中，您必須在不同的 Azure 區域 (美國東部  和西歐  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 1. 在畫面的左上方，選取 [建立資源]   > [Web]   > [Web 應用程式]  。
 
@@ -54,7 +54,7 @@ ms.locfileid: "76934775"
 
 5. 檢閱設定，然後按一下 [建立]  。  成功部署 Web 應用程式時，它會建立預設網站。
 
-6. 依照步驟來建立名為 *myWebAppWestEurope* 的第二個 Web 應用程式，並將 [資源群組]  命名為 *myResourceGroupTM2*、將 [區域]  設定為 [歐洲西部]  、將 [App Service 方案]  命名為 **myAppServicePlanWestEurope**，然後將其他設定設成跟 *myWebAppEastUS* 一樣。
+6. 依照步驟來建立名為 *myWebAppWestEurope* 的第二個 Web 應用程式，並將 [資源群組]  命名為 *myResourceGroupTM2*、將 [區域]  設定為 [西歐]  、將 [App Service 方案]  命名為 **myAppServicePlanWestEurope**，然後將其他設定設成跟 *myWebAppEastUS* 一樣。
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
 
@@ -75,7 +75,7 @@ ms.locfileid: "76934775"
 
 ## <a name="add-traffic-manager-endpoints"></a>新增流量管理員端點
 
-將「美國東部」  中的網站新增為所有使用者流量的主要路由目標端點。 將「歐洲西部」  中的網站新增為容錯移轉端點。 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
+將「美國東部」  中的網站新增為所有使用者流量的主要路由目標端點。 將「西歐」  中的網站新增為容錯移轉端點。 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
 
 1. 在入口網站的搜尋列中，輸入您在上一節建立的流量管理員設定檔名稱。
 2. 從搜尋結果中選取設定檔。
@@ -100,7 +100,7 @@ ms.locfileid: "76934775"
     | 類型 | 選取 [Azure 端點]  。 |
     | 名稱 | 輸入 myFailoverEndpoint  。 |
     | 目標資源類型 | 選取 [App Service]  。 |
-    | 目標資源 | 選取 [選擇 App Service]   > [歐洲西部]  。 |
+    | 目標資源 | 選取 [選擇 App Service]   > [西歐]  。 |
     | 優先順序 | 選取 **2**。 如果主要端點狀況不良，則所有流量都會送到此容錯移轉端點。 |
 
 7. 選取 [確定]  。

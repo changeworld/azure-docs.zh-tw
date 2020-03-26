@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467031"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370316"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>快速入門：搭配 Apache Phoenix 在 Azure HDInsight 中查詢 Apache HBase
 
@@ -21,9 +21,9 @@ ms.locfileid: "73467031"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Apache HBase 叢集。 請參閱[建立叢集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)以建立 HDInsight 叢集。  請確定您選擇的是 [HBase]  叢集類型。
+* Apache HBase 叢集。 請參閱[建立叢集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)以建立 HDInsight 叢集。  請確定您選擇的是 [HBase]  叢集類型。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -53,7 +53,7 @@ curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clus
 
 您可以使用 SSH 來連線到 HBase 叢集，然後使用 Apache Phoenix 來建立 HBase 資料表、插入資料，以及查詢資料。
 
-1. 使用 `ssh` 命令來連線至您的 HBase 叢集。 編輯下列命令並將 `CLUSTERNAME` 取代為您叢集的名稱，然後輸入該命令：
+1. 使用 `ssh` 命令來連線至您的 HBase 叢集。 編輯以下命令並將 `CLUSTERNAME` 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

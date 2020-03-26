@@ -4,10 +4,10 @@ description: CAF Foundation 藍圖範例的部署步驟，其中包括藍圖成�
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545528"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>部署適用於 Azure 的 Microsoft 雲端採用架構的基礎藍圖範例
@@ -100,7 +100,7 @@ ms.locfileid: "74545528"
 
 下表提供藍圖成品參數的清單：
 
-|成品名稱|成品類型|參數名稱|說明|
+|成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |允許的儲存體帳戶 SKU|原則指派|Policy_Allowed-StorageAccount-SKUs|在診斷記錄儲存體帳戶中使用的 SKU|
 |允許的虛擬機器 SKU|原則指派|Policy_Allowed-VM-SKUs|允許的虛擬機器 SKU|

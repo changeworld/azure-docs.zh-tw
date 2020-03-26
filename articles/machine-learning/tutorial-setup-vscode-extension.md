@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604854"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>設定 Azure Machine Learning Visual Studio Code 擴充功能
@@ -53,7 +53,7 @@ ms.locfileid: "77604854"
 若要在 Azure 上佈建資源及執行工作負載，您必須使用您的 Azure 帳戶認證登入。 為了協助管理帳戶，Azure Machine Learning 會自動安裝 Azure 帳戶擴充功能。 請造訪下列網站，[深入了解 Azure 帳戶擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)。
 
 1. 從功能表列中選取 [檢視] > [命令選擇區]  ，以開啟命令選擇區。 
-1. 在命令選擇區中輸入命令 "Azure:Sign In" 以開始登入流程。
+1. 在文字方塊中輸入命令 "Azure:Sign In" 以開始登入流程。
 
 ## <a name="run-a-machine-learning-model-training-script-in-azure"></a>在 Azure 中執行機器學習模型訓練指令碼
 
