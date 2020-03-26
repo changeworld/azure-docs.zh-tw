@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517772"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60757460"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -23,17 +23,17 @@ ms.locfileid: "58517772"
 
 您需要有系統管理員權限，才能佈建並連接至虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 確定主機符合最低裝置需求
 > * 在 VMware 中佈建虛擬裝置
 > * 啟動虛擬裝置，並取得 IP 位址
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在執行 VMware ESXi 6.0、6.5 或 6.7 的主機系統上，佈建虛擬裝置的必要條件如下。
 
@@ -91,16 +91,16 @@ ms.locfileid: "58517772"
 
    ![登入頁面](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
-3. 將 VMDK 上傳至 ESXi 伺服器。 在 [導覽] 窗格中，選取 [儲存體]。
+3. 將 VMDK 上傳至 ESXi 伺服器。 在 [導覽] 窗格中，選取 [儲存體]  。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. 在右窗格的 [資料存放區] 下方，選取您要上傳 VMDK 的資料存放區。 
+4. 在右窗格的 [資料存放區]  下方，選取您要上傳 VMDK 的資料存放區。 
 
     - 資料存放區的類型必須是 VMFS5。 
     - 資料存放區也必須要有足夠的可用空間來容納作業系統和資料磁碟。
    
-5. 按一下滑鼠右鍵並選取 [瀏覽資料存放區]。
+5. 按一下滑鼠右鍵並選取 [瀏覽資料存放區]  。
 
    ![瀏覽資料存放區](./media/data-box-gateway-deploy-provision-vmware/image3.png)
 
@@ -108,11 +108,11 @@ ms.locfileid: "58517772"
 
    ![資料存放區瀏覽器](./media/data-box-gateway-deploy-provision-vmware/image4.png)
 
-7. 在工具列上，按一下 [建立目錄] 圖示來建立新資料夾。 然後指定資料夾的名稱，並把該名稱記下來。 您稍後在建立虛擬機器時，將會使用該資料夾名稱 (建議的最佳做法)。 按一下 [建立目錄]。
+7. 在工具列上，按一下 [建立目錄]  圖示來建立新資料夾。 然後指定資料夾的名稱，並把該名稱記下來。 您稍後在建立虛擬機器時，將會使用該資料夾名稱 (建議的最佳做法)。 按一下 [建立目錄]  。
 
    ![建立目錄](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
-8. [資料存放區瀏覽器] 的左窗格中會出現新的資料夾。 按一下 [上傳] 圖示，然後選取 [上傳檔案]。
+8. [資料存放區瀏覽器]  的左窗格中會出現新的資料夾。 按一下 [上傳]  圖示，然後選取 [上傳檔案]  。
 
     ![上傳檔案](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
@@ -120,42 +120,42 @@ ms.locfileid: "58517772"
 
     ![選取要上傳的檔案](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
-10. 按一下 [開啟] 。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
+10. 按一下 **[開啟]** 。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
 11. 上傳完成之後，檔案就會出現在資料存放區裡您所建立的資料夾中。 現在將第二個 VMDK 檔案上傳至相同的資料存放區。 一旦兩個檔案都上傳，這兩個檔案就會合併成單一檔案。 然後，您會在目錄中看到單一檔案。
 
     ![兩個 VMDK 檔案會合併成單一檔案](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
-12. 返回 vSphere 用戶端視窗。 在 [導覽] 窗格中，選取 [虛擬機器]。 在右窗格中，按一下 [建立/註冊 VM]。
+12. 返回 vSphere 用戶端視窗。 在 [導覽] 窗格中，選取 [虛擬機器]  。 在右窗格中，按一下 [建立/註冊 VM]  。
 
     ![建立或註冊 VM](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
-13. [新增虛擬機器] 隨即顯示。 在 [選取] 建立類型底下，選擇 [建立新的虛擬機器]，然後按 [下一步]。
+13. [新增虛擬機器]  隨即顯示。 在 [選取] 建立類型底下，選擇 [建立新的虛擬機器]  ，然後按 [下一步]  。
     ![選取建立類型頁面](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. 在 [選取名稱和 OS 名稱及位置] 頁面上，指定虛擬機器的**名稱**。 這個名稱應該與之前在步驟 7 中指定的資料夾名稱 (建議的最佳做法) 相同。 選擇 Windows 作為 [客體 OS 系列]，選擇 Microsoft Windows Server 2016 (64 位元) 作為 [客體 OS 版本]。 按 [下一步] 。
+14. 在 [選取名稱和 OS 名稱及位置]  頁面上，指定虛擬機器的**名稱**。 這個名稱應該與之前在步驟 7 中指定的資料夾名稱 (建議的最佳做法) 相同。 選擇 Windows 作為 [客體 OS 系列]  ，選擇 Microsoft Windows Server 2016 (64 位元) 作為 [客體 OS 版本]  。 按 [下一步]  。
 
     ![選取名稱和作業系統名稱與位置頁面](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
-15. 在 [選取儲存體]  頁面上，選取您要用來佈建虛擬機器的資料存放區。 按 [下一步] 。
+15. 在 [選取儲存體]  頁面上，選取您要用來佈建虛擬機器的資料存放區。 按 [下一步]  。
 
     ![選取儲存體頁面](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. 在 [自訂設定] 頁面上，將 [CPU] 設為 4、將 [記憶體] 設為 8192 MB (或以上)、將 [硬碟 1] 設為 2 TB (或以上)。 選擇要新增的 **SCSI 硬碟**。 在此案例中，是 LSI Logic SAS。 **不支援靜態 IDE 磁碟。** [硬碟 1] 是虛擬資料磁碟。 請注意，佈建之後您無法縮小磁碟。 嘗試壓縮磁碟會導致裝置上的所有本機資料遺失。 
+16. 在 [自訂設定]  頁面上，將 [CPU]  設為 4、將 [記憶體]  設為 8192 MB (或以上)、將 [硬碟 1]  設為 2 TB (或以上)。 選擇要新增的 **SCSI 硬碟**。 在此案例中，是 LSI Logic SAS。 **不支援靜態 IDE 磁碟。** [硬碟 1]  是虛擬資料磁碟。 請注意，佈建之後您無法縮小磁碟。 嘗試壓縮磁碟會導致裝置上的所有本機資料遺失。 
 
     ![自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    在相同頁面上，按一下 [新增硬碟]，然後選取 [現有硬碟]。 選取資料存放區中的 VMDK 檔案。 這樣會新增 OS 磁碟。 
+    在相同頁面上，按一下 [新增硬碟]  ，然後選取 [現有硬碟]  。 選取資料存放區中的 VMDK 檔案。 這樣會新增 OS 磁碟。 
 
      !自訂設定頁面[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    向下捲動直到您看到 [新增硬碟]，展開它以檢視設定。 將 [虛擬裝置節點] 設為 [IDE 控制器 0]。
+    向下捲動直到您看到 [新增硬碟]  ，展開它以檢視設定。 將 [虛擬裝置節點]  設為 [IDE 控制器 0]  。
 
      ![自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. (選擇性) 只有在執行 VMware ESXi Server 6.7 時，才可執行此步驟。 在 [自訂設定] 頁面上，按一下 [VM 選項]。 移至 [開機選項] > [韌體]，並將其變更為 [BIOS]。 根據預設，此值會設定為 EFI。 按 [下一步] 。
+17. (選擇性) 只有在執行 VMware ESXi Server 6.7 時，才可執行此步驟  。 在 [自訂設定]  頁面上，按一下 [VM 選項]  。 移至 [開機選項] > [韌體]  ，並將其變更為 [BIOS]  。 根據預設，此值會設定為 EFI。 按 [下一步]  。
 
     ![執行 VMware ESXi Server 6.7 時的自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
-18. 在 [準備完成]  頁面上，檢閱與新的虛擬機器相關的所有設定。 確認 CPU 是 4、記憶體是 8192 MB、網路介面是 1，以及硬碟 2 具有 IDE 控制器 0。 按一下 [完成] 。
+18. 在 [準備完成]  頁面上，檢閱與新的虛擬機器相關的所有設定。 確認 CPU 是 4、記憶體是 8192 MB、網路介面是 1，以及硬碟 2 具有 IDE 控制器 0。 按一下 [完成]  。
    
     ![準備好完成頁面](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![準備好完成頁面](./media/data-box-gateway-deploy-provision-vmware/image17.png)
@@ -174,11 +174,11 @@ ms.locfileid: "58517772"
 請執行下列步驟來啟動您的虛擬裝置，並連線到該虛擬裝置。
 
 #### <a name="to-start-the-virtual-device"></a>啟動虛擬裝置
-1. 啟動虛擬裝置。 在右側窗格中，從 VM 清單選取您的裝置，並按一下滑鼠右鍵來顯示內容功能表。 選取 [電源]，然後選取 [開啟電源]。 此時您的虛擬機器應該會開機。 您可以在 Web 用戶端的窗格底部檢視狀態。
+1. 啟動虛擬裝置。 在右側窗格中，從 VM 清單選取您的裝置，並按一下滑鼠右鍵來顯示內容功能表。 選取 [電源]  ，然後選取 [開啟電源]  。 此時您的虛擬機器應該會開機。 您可以在 Web 用戶端的窗格底部檢視狀態。
 
     ![開啟虛擬裝置電源](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
-2. 再次選取您的 VM。 以滑鼠右鍵按一下並選取 [主控台]，然後選取 [在新視窗開啟]。
+2. 再次選取您的 VM。 以滑鼠右鍵按一下並選取 [主控台]  ，然後選取 [在新視窗開啟]  。
 
     ![開啟虛擬裝置主控台](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "58517772"
 
     ![虛擬裝置主控台](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
-4. 一旦裝置執行，將游標指向主控台視窗中間上方的索引標籤，並且按一下。 選取 [客體 OS > 傳送金鑰 > Ctrl+Alt+Delete]。 這樣會解除鎖定 VM。
+4. 一旦裝置執行，將游標指向主控台視窗中間上方的索引標籤，並且按一下。 選取 [客體 OS > 傳送金鑰 > Ctrl+Alt+Delete]  。 這樣會解除鎖定 VM。
 
    ![解除鎖定虛擬裝置](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 

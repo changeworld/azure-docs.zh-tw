@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: rohink
 ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77136292"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教學課程：使用流量管理員根據使用者子網路將流量導向特定端點

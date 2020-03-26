@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74868672"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
@@ -28,7 +28,7 @@ ms.locfileid: "74868672"
 
 在此案例中，現有的樹系會透過「Azure AD Connect 同步」同步處理至 Azure AD 租用戶。 此外還有一個新樹系，也要同步處理至相同的 Azure AD 租用戶。 您將設定新樹系的雲端佈建。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 
 1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或無法使用，您便可以管理租用戶組態。 了解如何[新增僅限雲端管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會遭租用戶封鎖的關鍵步驟。

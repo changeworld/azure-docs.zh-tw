@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74074766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
@@ -33,7 +33,7 @@ ms.locfileid: "74074766"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -188,7 +188,7 @@ ms.locfileid: "74074766"
     >[!Note]
     >您將需要建立和指定 Kerberos 委派帳戶。 請參閱 KCD 區段 (參閱變數參考的附錄)
 
-    •   使用者名稱來源  `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    •   使用者名稱來源  `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
     •   使用者領域來源  `session.logon.last.domain`
 
