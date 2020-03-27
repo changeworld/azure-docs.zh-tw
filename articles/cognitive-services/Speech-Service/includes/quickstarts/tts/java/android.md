@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
 ms.openlocfilehash: 230b4abb9a740e830392a92369477c7dc44f60ee
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78924712"
 ---
 ## <a name="prerequisites"></a>Prerequisites

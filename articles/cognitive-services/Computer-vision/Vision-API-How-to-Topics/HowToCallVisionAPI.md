@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72177054"
 ---
 # <a name="call-the-computer-vision-api"></a>呼叫電腦視覺 API
@@ -25,7 +25,7 @@ ms.locfileid: "72177054"
 - 取得標籤、描述與類別
 - 取得特定領域資訊或「名人」
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 本機儲存影像的影像 URL 或路徑
 - 支援的輸入方法：應用程式/八位元資料流或影像 URL 形式的原始影像二進位檔

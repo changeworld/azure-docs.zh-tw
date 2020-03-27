@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78925944"
 ---
 ## <a name="prerequisites"></a>Prerequisites
@@ -201,7 +201,7 @@ ms.locfileid: "78925944"
 
 1. 在相同檔案中，以您的 Cognitive Speech 訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `YourServiceRegion`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `westus` 字串。
 
 1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
 
@@ -294,7 +294,7 @@ ms.locfileid: "78925944"
     }
     ```
 
-2. 使用下列內容取代 `public static async Task Main(string[] args)` 函式中的 `CreateConversationAsync();`：
+2. 使用下列內容取代 `CreateConversationAsync();` 函式中的 `public static async Task Main(string[] args)`：
 
     ```csharp
     // Set this to the conversation you want to join

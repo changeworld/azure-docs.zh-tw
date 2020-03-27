@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906629"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 `request()` 方法 (可透過要求模組取得) 可讓我們傳遞 HTTP 方法、URL、要求參數、標頭和 JSON 內文作為 `options` 物件。 在此程式碼片段中，我們將設定要求：
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：音譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：直譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
 
 ```javascript
 let options = {

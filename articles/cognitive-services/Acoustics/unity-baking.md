@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 310decf8053ea16ba46250ba3aabe81c9c254e5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72243115"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>聲場專案 Unity 聲場模擬教學課程
@@ -201,7 +201,7 @@ ms.locfileid: "72243115"
    ![聲場模擬工作狀態](media/azure-batch-task-state.png)  
 
 
-### <a name="Estimating-bake-cost"></a> 評估 Azure 聲場模擬成本
+### <a name="estimate-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> 評估 Azure 聲場模擬成本
 
 若要評估聲場模擬的成本，請從 [預估的計算費用]  值開始，這是持續時間。 針對您選取的 [VM 節點類型]  ，將該值乘以當地貨幣的每小時成本。 請注意，此結果將不會包含讓節點啟動並開始執行所需的節點時間。
 
@@ -209,7 +209,7 @@ ms.locfileid: "72243115"
 
 在 [Azure Batch 定價](https://azure.microsoft.com/pricing/details/virtual-machines/linux)尋找每小時節點成本。 (選取 [計算最佳化]  或 [高效能計算]  作為類別目錄)。
 
-## <a name="Local-bake"></a> 在電腦上針對場景進行聲場模擬
+## <a name="bake-your-scene-on-your-pc"></a><a name="Local-bake"></a> 在電腦上針對場景進行聲場模擬
 您也可以在電腦上針對場景進行聲場模擬。 此方法很適合用於在建立 Azure Batch 帳戶之前，實驗小型場景的聲場。 但請注意，根據場景的大小而定，本機聲場模擬可能需要很長的時間。
 
 ### <a name="minimum-hardware-requirements"></a>最低硬體需求
@@ -233,7 +233,7 @@ ms.locfileid: "72243115"
 2. 若要啟動模擬，請在 Windows 上執行 *runlocalbake.bat* 指令碼，或在 MacOS 上執行 *runlocalbake.sh* 指令碼。 該指令碼會使用模擬處理所需的工具組擷取聲場專案 Docker 映像，並啟動模擬。
 3. 模擬完成後，請將產生的 *.ace* 檔案複製回您的 Unity 專案。 若要確定 Unity 會將它辨識為二進位檔案，請將 ".bytes" 附加到檔案副檔名 (例如，"Scene1.ace.bytes")。 模擬的詳細記錄會儲存在 *AcousticsLog.txt* 中。 如果您遇到任何問題，請檢查此檔案以協助診斷問題。
 
-## <a name="Data-Files"></a> 由聲場模擬程序新增的資料檔案
+## <a name="data-files-added-by-the-bake-process"></a><a name="Data-Files"></a> 由聲場模擬程序新增的資料檔案
 
 聲場模擬程序進行期間會建立下列四個資料檔。 其中包含模擬結果並隨附於您的標題。 其他存放區 Unity 編輯器相關資料。
 

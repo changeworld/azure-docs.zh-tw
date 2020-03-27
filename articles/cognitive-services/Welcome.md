@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
 ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76169099"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
@@ -102,7 +102,7 @@ Azure 認知服務是用來協助開發人員建置智慧型應用程式，且�
 
 ## <a name="securing-resources"></a>保護資源
 
-Azure 認知服務提供多層式安全性模型，包括透過 Azure Active Directory 認證、有效的資源金鑰及 [Azure 虛擬網路](cognitive-services-virtual-networks.md)的[驗證](authentication.md)。
+Azure 認知服務提供多層式安全性模型，包括透過 Azure Active Directory 認證、有效的資源金鑰及 [Azure 虛擬網路](authentication.md)的[驗證](cognitive-services-virtual-networks.md)。
 
 ## <a name="container-support"></a>容器支援
 

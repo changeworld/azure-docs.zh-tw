@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906674"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -208,11 +208,11 @@ foreach (TranslationResult o in deserializedOutput)
 }
 ```
 
-如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解如何使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一個步驟是在 `Main` 中呼叫 `TranslateTextRequest()`。 在此範例中，我們將翻譯成德文 (`de`)、義大利文 (`it`)、日文 (`ja`) 和泰文 (`th`)。 找出 `static void Main(string[] args)` 並將其取代為下列程式碼：
+最後一個步驟是在 `TranslateTextRequest()` 中呼叫 `Main`。 在此範例中，我們將翻譯成德文 (`de`)、義大利文 (`it`)、日文 (`ja`) 和泰文 (`th`)。 找出 `static void Main(string[] args)` 並將其取代為下列程式碼：
 
 ```csharp
 static async Task Main(string[] args)

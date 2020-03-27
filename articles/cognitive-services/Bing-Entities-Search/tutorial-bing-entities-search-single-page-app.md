@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78943126"
 ---
-# <a name="tutorial-single-page-web-app"></a>教學課程：單一頁面 Web 應用程式
+# <a name="tutorial-single-page-web-app"></a>教學課程：單頁 Web 應用程式
 
 Bing 實體搜尋 API 可讓您搜尋網路上的「實體」  和「地點」  相關資訊。 您可以在指定查詢中要求任何一種結果，或兩者都要求。 以下提供地點和實體的定義。
 
@@ -163,7 +163,7 @@ function bingSearchOptions(form) {
 
 例如，安全搜尋功能可以是 `strict`、`moderate` 或 `off`，預設為 `moderate`。 但我們的表單使用只有兩種狀態的核取方塊。 JavaScript 程式碼會將此設定轉換成 `strict` 或 `off` (我們不使用 `moderate`)。
 
-`bingSearchOptions()` 中不會處理 `mapquery` 欄位，因為它適用於 Bing 地圖服務位置查詢，不適用於 Bing 實體搜尋。
+`mapquery` 中不會處理 `bingSearchOptions()` 欄位，因為它適用於 Bing 地圖服務位置查詢，不適用於 Bing 實體搜尋。
 
 ## <a name="obtaining-a-location"></a>取得位置
 

@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71351145"
 ---
 # <a name="what-is-project-acoustics"></a>何謂 Project Acoustics？
@@ -33,7 +33,7 @@ ms.locfileid: "71351145"
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>來自 GDC 2019 的影片簡報 (~30 分鐘)
 [![聲場專案影片](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "按一下以播放影片")
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 [聲場專案 Unity 整合](unity-integration.md)採取拖放式作業，並包含 Unity 音訊引擎外掛程式。 透過在每個音訊物件附加聲場專案 C# 控制項元件，來加強 Unity 音訊來源控制項。
 
 [聲場專案 Unreal 整合](unreal-integration.md)包含 Unreal 的編輯器與遊戲外掛程式，以及 Wwise 混音器外掛程式。 自訂的音訊元件可透過即時音場設計控制項，擴充 Unreal 內眾所熟悉的 Wwise 功能。 設計控制項也會在 Wwise 混音器外掛程式公開。

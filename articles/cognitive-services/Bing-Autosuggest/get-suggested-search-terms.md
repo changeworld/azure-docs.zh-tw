@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75448839"
 ---
 # <a name="what-is-bing-autosuggest"></a>什麼是 Bing 自動建議？
@@ -35,7 +35,7 @@ Bing 自動建議 API 是一種 RESTful Web 服務，可輕易地從任何可發
 2. 在每次使用者於應用程式的搜尋方塊中鍵入新字元時，傳送要求給這個 API。
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 
-一般來說，您會在每次使用者於應用程式的搜尋方塊中鍵入新字元時，呼叫這個 API。 隨著更多字元的輸入，這個 API 會傳回更相關的建議搜尋查詢。 例如，比起 `sail`，API 為單一 `s` 傳回的建議可能會有較低的相關性。
+一般來說，您會在每次使用者於應用程式的搜尋方塊中鍵入新字元時，呼叫這個 API。 隨著更多字元的輸入，這個 API 會傳回更相關的建議搜尋查詢。 例如，比起 `s`，API 為單一 `sail` 傳回的建議可能會有較低的相關性。
 
 下列範例顯示下拉式搜尋方塊與來自 Bing 自動建議 API 的建議查詢字詞。
 

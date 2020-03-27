@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: 使用 Runbook 建立叢集
           href: ./manage-clusters-runbooks.md
+        - name: Apache Ambari 電子郵件通知
+          href: ./apache-ambari-email.md
         - name: 建置 ETL 管線
           href: ./hdinsight-sales-insights-etl.md
     - name: 範例
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: 建立 Apache Spark 叢集 - Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: 建立 Apache Spark 叢集 - 範本
+        - name: 建立 Apache Spark 叢集 - ARM 範本
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: 教學課程
       items:
@@ -416,8 +419,8 @@
       items:
         - name: 建立 Apache Hadoop 叢集 - 入口網站
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: 建立 Apache Hadoop 叢集 - 範本
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: 建立 Apache Hadoop 叢集 - ARM 範本
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: 教學課程
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: 開發
           items:
-            - name: 使用空白邊緣節點
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: 使用 MapReduce 搭配 Apache Hadoop
+              items:
+                - name: MapReduce 概觀
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: 使用 SSH
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: 使用 cURL
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: 使用 Azure PowerShell
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: 使用適用於 .NET 的 SDK
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: 執行 MapReduce 範例
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: 執行自訂 Apache Hadoop MapReduce 程式
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: '開發 C# 串流 MapReduce 程式'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: 開發 Java MapReduce 程式
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 使用 Apache Hive 為擷取、 轉換和載入 (ETL) 工具
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 大規模擷取、 轉換和載入
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: 建立非互動式驗證 .NET HDInsight 應用程式
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: 分析巨量資料
+              items:
+                - name: 使用 Power Query 進行分析
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: 將 Power BI 與互動式查詢連線
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: 將 Power BI 連線到 Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: 將 Excel 連線到 Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: 使用 Apache Hive JDBC 驅動程式連線
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: 分析儲存的推文
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: 使用 Apache Mahout 產生建議
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: HDInsight 的進階分析
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: 管理
+              items:
+                - name: 使用空白邊緣節點
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: 疑難排解
           items:
             - name: 常見問題
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: 建立 Apache Kafka 叢集 - PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: 建立 Apache Kafka 叢集 - 範本
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: 建立 Apache Kafka 叢集 - ARM 範本
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: 教學課程
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: 快速入門
       items:
+        - name: 建立 Apache HBase 叢集 - ARM 範本
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: 查詢 Apache HBase - Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: 查詢 Apache HBase - HBase Shell
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: 快速入門
       items:
+        - name: 建立互動式查詢叢集 - ARM 範本
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: 執行 Apache Hive 查詢 - Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: 教學課程
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: 快速入門
       items:
+        - name: 建立 ML 服務叢集 - ARM 範本
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: 範例作業 - RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: 範例作業 - R 主控台
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: 教學課程
       items:
-        - name: 使用防火牆限制輸出流量
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Apache HBase RBAC with Apache Ranger
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: Apache Hive RBAC with Apache Ranger
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: 保護資料
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: 使用防火牆限制輸出流量
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: 疑難排解
           items:
             - name: ESP 驗證問題

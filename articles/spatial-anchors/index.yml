@@ -1,91 +1,73 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Spatial Anchors 文件
+summary: Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。
 metadata:
   title: Azure Spatial Anchors 文件
-  meta.description: Learn how to use Azure Spatial Anchors to build apps with durable spatial anchors.
+  description: 對具有持久性空間錨點的應用程式使用 Azure Spatial Anchors。 了解驗證、馴鹿、經驗、記錄和粗略的重新當地語系化。
   services: azure-spatial-anchors
-  author: craigktreasure
-  manager: aliemami
   ms.service: azure-spatial-anchors
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 02/24/2019
+  author: craigktreasure
   ms.author: crtreasu
-abstract:
-  description: Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合式實境體驗。
-sections:
-  - title: 概念
-    items:
-      - type: paragraph
-        text: 了解可協助您開始使用 Azure Spatial Anchors 的重要概念：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/spatial-anchors/concepts/authentication">驗證。</a>
-          - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">錨點關聯性和尋路。</a>
-          - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">經驗指導方針。</a>
-          - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">記錄和診斷。</a>
-          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">粗略地重新當地語系化。</a>
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure Spatial Anchors 建立第一個應用程式：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: Unity HoloLens
-            href: quickstarts/get-started-unity-hololens.md
-          - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Unity Android
-            href: quickstarts/get-started-unity-android.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: Unity iOS
-            href: quickstarts/get-started-unity-ios.md
-          - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: HoloLens
-            href: quickstarts/get-started-hololens.md
-          - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Android
-            href: quickstarts/get-started-android.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: iOS
-            href: quickstarts/get-started-ios.md
-          - image:
-              src: /media/logos/logo_xamarin.svg
-              alt: null
-            text: Xamarin Android
-            href: quickstarts/get-started-xamarin-android.md
-          - image:
-              src: /media/logos/logo_xamarin.svg
-              alt: null
-            text: Xamarin iOS
-            href: quickstarts/get-started-xamarin-ios.md
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure Spatial Anchors 設定、管理、建置及部署應用程式：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">跨工作階段和裝置共用。</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">透過 Azure Cosmos DB 持續共用。</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">啟動新的 Unity HoloLens 應用程式。</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">啟動新的 Android 應用程式。</a>
-  - title: 版本資訊
-    items:
-      - type: paragraph
-        text: '<a href="https://github.com/Azure/azure-spatial-anchors-samples/releases">檢視 GitHub 上的版本資訊。</a>'
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9a5d087416f29f0e4a15ae749453438a05f8ee9d
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79471229"
+landingContent:
+- title: 關於 Azure Spatial Anchors
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Spatial Anchors？
+      url: overview.md
+    - text: 檢視 GitHub 上的版本資訊
+      url: https://github.com/Azure/azure-spatial-anchors-samples/releases
+- title: 了解重要概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 驗證
+      url: ./concepts/authentication.md
+    - text: 錨點關聯性和尋路
+      url: ./concepts/anchor-relationships-way-finding.md
+    - text: 經驗指導方針
+      url: ./concepts/guidelines-effective-anchor-experiences.md
+    - text: 記錄和診斷
+      url: ./concepts/logging-diagnostics.md
+    - text: 粗略地重新當地語系化
+      url: ./concepts/coarse-reloc.md
+- title: 建立您的第一個應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: Unity Android
+      url: ./quickstarts/get-started-unity-android.md
+    - text: Unity iOS
+      url: ./quickstarts/get-started-unity-ios.md
+    - text: HoloLens
+      url: ./quickstarts/get-started-hololens.md
+    - text: Android
+      url: ./quickstarts/get-started-android.md
+    - text: iOS
+      url: ./quickstarts/get-started-ios.md
+    - text: Xamarin Android
+      url: ./quickstarts/get-started-xamarin-android.md
+    - text: Xamarin iOS
+      url: ./quickstarts/get-started-xamarin-ios.md
+- title: 設定、管理、建置及部署應用程式
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 跨工作階段和裝置共用
+      url: ./tutorials/tutorial-share-anchors-across-devices.md
+    - text: 透過 Azure Cosmos DB 持續共用
+      url: ./tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - text: 啟動新的 Unity HoloLens 應用程式
+      url: ./tutorials/tutorial-new-unity-hololens-app.md
+    - text: 啟動新的 Android 應用程式
+      url: ./tutorials/tutorial-new-android-app.md

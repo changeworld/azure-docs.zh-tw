@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a76d4f083c791bb1e3c29b4068c2f82f3cd0bc5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973691"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80244676"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>快速入門：使用電腦視覺 REST API 和 Python 產生縮圖
 
@@ -24,7 +24,7 @@ ms.locfileid: "74973691"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/try/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 然後，分別為名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 - 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
@@ -34,6 +34,8 @@ ms.locfileid: "74973691"
 若要建立及執行範例，請將下列程式碼複製到程式碼編輯器中。 
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -76,7 +78,7 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 接下來，執行下列作業：
 1. (選擇性) 將 `image_url` 的值取代為要產生縮圖之不同影像的 URL。
 1. 將程式碼儲存為副檔名為 `.py` 的檔案。 例如： `get-thumbnail.py` 。
-1. 開啟命令提示字元視窗。
+1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python get-thumbnail.py` 。
 
 ## <a name="examine-the-response"></a>檢查回應

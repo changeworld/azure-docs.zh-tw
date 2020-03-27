@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 連線虛擬網路
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: 建立 NAT 閘道 - 入口網站
-          href: quickstart-create-nat-gateway-portal.md
-        - name: 建立 NAT 閘道 - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: 建立 NAT 閘道 - CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: 建立 NAT 閘道 - ARM 範本
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: 建立和驗證 NAT 閘道 - 入口網站
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: 建立和驗證 NAT 閘道 - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: 建立和驗證 NAT 閘道 - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: 建立 NAT 閘道
+      href: quickstart-create-nat-gateway-portal.md
+    - name: 建立和驗證 NAT 閘道
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: 範例
   items:
     - name: Azure CLI
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: 公用 IP - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: 建立 NAT 閘道 - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: 建立 NAT 閘道 - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: 建立 NAT 閘道 - ARM 範本
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: 建立和驗證 NAT 閘道 - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: 建立和驗證 NAT 閘道 - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: 疑難排解
       items:
         - name: 針對虛擬網路對等互連問題進行疑難排解

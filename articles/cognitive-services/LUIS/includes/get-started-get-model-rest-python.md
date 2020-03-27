@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: diberry
 ms.openlocfilehash: 4d8da7d2bc51c4fc4ebc8d71f230f24f20b3aa24
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77368450"
 ---
 ## <a name="prerequisites"></a>Prerequisites

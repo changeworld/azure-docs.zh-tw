@@ -10,14 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448979"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80053704"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。 不論是什麼產業、情境或資料量，Anomaly Detector API 都會自動找出最適合的模型並套用到您的資料。 使用您的時間序列資料，API 可判斷異常偵測的界限、預期的值，以及哪些資料點異常。
 
@@ -27,7 +29,7 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 
 ## <a name="features"></a>特性
 
-透過 Anomaly Detector，您可以自動偵測整個時間序列資料中的異常狀況，或在發生異常時即時偵測。 
+透過 Anomaly Detector，您可以自動偵測整個時間序列資料中的異常狀況，或在發生異常時即時偵測。
 
 |功能  |描述  |
 |---------|---------|
@@ -52,7 +54,7 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 1. 在完成複製作業之前，請先取消核取對話方塊中的 [公用] 選項，否則您的 Notebook (包括任何訂用帳戶金鑰) 將會是公用的。
 1. 按一下 [在免費 Compute 上執行] 
 1. 選取其中一個 Notebook。
-1. 將有效的 Anomaly Detector API 訂用帳戶金鑰新增至 `subscription_key` 變數。 
+1. 將有效的 Anomaly Detector API 訂用帳戶金鑰新增至 `subscription_key` 變數。
 1. 將 `endpoint` 變數變更為您的端點。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 在頂端功能表列上，依序按一下 [儲存格]  和 [全部執行]  。
 

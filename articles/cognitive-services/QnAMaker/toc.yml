@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: 共同作業
           href: How-To/collaborate-knowledge-base.md
+        - name: 開啟主動式學習
+          href: How-To/use-active-learning.md
     - name: 管理知識庫
       items:
         - name: 建立知識庫
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: 語言選擇
           href: How-To/language-knowledge-base.md
         - name: 新增閒聊
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: 管理 QnA 集合
       items:
-        - name: 編輯知識庫
+        - name: 編輯 QnA 集
           href: How-To/edit-knowledge-base.md
         - name: 新增後續提示
           href: How-To/multiturn-conversation.md

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74978027"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
@@ -33,7 +33,7 @@ ms.locfileid: "74978027"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
@@ -56,7 +56,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 
 下列檔案會負責處理應用程式的主要功能。
 
-| 檔案 | 說明 |
+| 檔案 | 描述 |
 |-------------|-------------|
 | [MainPage.xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) \(英文\) | 此檔案會定義 XAML 使用者介面。 它會裝載網路攝影機控制項，並包含用於狀態更新的標籤。|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) \(英文\) | 此程式碼會控制 XAML UI 的行為。 它包含狀態電腦的處理程式碼。|

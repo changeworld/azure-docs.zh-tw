@@ -9,14 +9,16 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170246"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80053588"
 ---
 # <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
 

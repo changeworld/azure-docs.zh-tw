@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75378580"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入門：使用 PHP 來呼叫文字分析認知服務
 <a name="HOLTop"></a>
 
-本文示範如何使用 [文字分析 API](//go.microsoft.com/fwlink/?LinkID=759711)  與 PHP 來[偵測語言](#Detect)、[分析情感](#SentimentAnalysis)、[擷取關鍵片語](#KeyPhraseExtraction)，以及[識別已連結實體](#Entities)。
+本文示範如何使用[文字分析 API](#Detect)[ 與 PHP 來](#SentimentAnalysis)偵測語言[、](#KeyPhraseExtraction)分析情感[、](#Entities)擷取關鍵片語 [，以及](//go.microsoft.com/fwlink/?LinkID=759711)識別已連結實體 。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

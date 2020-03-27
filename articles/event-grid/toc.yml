@@ -98,6 +98,8 @@
   items:
     - name: Event Grid 概念
       href: concepts.md
+    - name: 系統主題
+      href: system-topics.md
     - name: 安全性
       items:
         - name: 驗證

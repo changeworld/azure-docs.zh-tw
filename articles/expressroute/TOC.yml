@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: 概念
   items:
+    - name: 遠端工作
+      href: work-remotely-support.md
     - name: 連線能力模型
       href: expressroute-connectivity-models.md
     - name: 線路和對等互連

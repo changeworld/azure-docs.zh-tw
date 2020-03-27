@@ -8,7 +8,7 @@
   items:
     - name: 開始使用 Advisor
       href: advisor-get-started.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 提高 Azure 應用程式的可用性
       href: advisor-high-availability-recommendations.md
@@ -26,6 +26,10 @@
       href: permissions.md
     - name: 設定建議警示
       href: advisor-alerts.md
+    - name: 建議的大量補救
+      href: advisor-quick-fix.md
+    - name: Azure Resource Graph 中的 Advisor 資料
+      href: advisor-azure-resource-graph.md
 - name: 參考
   items:
     - name: 資訊安全中心
@@ -44,7 +48,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/advisor'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

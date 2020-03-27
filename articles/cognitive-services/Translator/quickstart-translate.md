@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 3be05a6c4005b79a3fcde6a71e663f5f70d4d61e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77525170"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>快速入門：使用翻譯工具文字 API 來翻譯文字

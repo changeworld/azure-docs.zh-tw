@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74977908"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>快速入門：使用 Face REST API 和 Python 偵測影像中的臉部
@@ -26,7 +26,7 @@ ms.locfileid: "74977908"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74977908"
     1. 編輯 `face_api_url` 的值，以包含臉部 API 資源的端點 URL。
     1. (選擇性) 將 `image_url` 的值取代為您要分析之不同影像的 URL。
 1. 將程式碼儲存為副檔名為 `.py` 的檔案。 例如： `detect-face.py` 。
-1. 開啟命令提示字元視窗。
+1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python detect-face.py` 。
 
 ```python

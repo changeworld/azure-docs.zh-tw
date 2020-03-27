@@ -10,14 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978589"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80053646"
 ---
 # <a name="what-is-custom-vision"></a>什麼是自訂視覺服務？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 自訂視覺是一個認知服務，可讓您建置、部署和改善自己的影像分類器。 影像分類器是一項 AI 服務，可根據影像的視覺特性對影像套用標籤 (代表_類別_)。 不同於[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服務，自訂視覺可讓您決定所要套用的標籤。
 
@@ -29,7 +31,7 @@ ms.locfileid: "74978589"
 
 自訂視覺功能可以細分成兩項功能。 **影像分類**會對影像套用一或多個標籤。 **物件偵測**也相類似，但它還會傳回影像中已套用的標籤所在位置的座標。
 
-### <a name="optimization"></a>最佳化
+### <a name="optimization"></a>Optimization
 
 自訂視覺服務已經過最佳化，可快速辨識影像之間的差異，因此您可以少量的資料開始建立您的模型原型。 一般而言，每個標籤 50 個影像是不錯的起點。 不過，此服務並未具備偵測影像中些微差異的最佳效能 (例如，在品保案例中偵測出微小的裂縫或凹痕)。
 

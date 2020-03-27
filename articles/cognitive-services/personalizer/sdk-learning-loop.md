@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/15/2020
 zone_pivot_groups: programming-languages-set-six
 ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77524864"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入門：個人化工具用戶端程式庫

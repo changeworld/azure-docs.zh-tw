@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
 ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75890378"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>教學課程：新增情感分析作為發佈設定

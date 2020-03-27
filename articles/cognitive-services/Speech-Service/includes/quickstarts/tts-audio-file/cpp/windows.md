@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 08/19/2019
 ms.author: wolfma
 ms.openlocfilehash: 55bf7a1753b08212eab2026471662de5c1c36452
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78925869"
 ---
 ## <a name="prerequisites"></a>Prerequisites

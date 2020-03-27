@@ -30,12 +30,16 @@
   items:
     - name: 系統管理員指南
       href: administrator-guide.md
+    - name: 加速實驗室帳戶設定指南
+      href: account-setup-guide.md
+    - name: 加速實驗室設定指南
+      href: setup-guide.md
     - name: 教室實驗室 - 類別類型
       items:
         - name: 課程類型概觀
           href: class-types.md
-        - name: 在自然處理的狀態下進行深度學習
-          href: class-type-deep-learning-natural-processing.md
+        - name: 自然語言處理中的深度學習
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Linux 上的殼層指令碼
           href: class-type-shell-scripting-linux.md
         - name: 道德入侵
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: 指定實驗室的 Marketplace 映像
           href: specify-marketplace-images.md
+        - name: 指定支援資訊 (實驗室帳戶擁有者)
+          href: lab-account-owner-support-information.md
     - name: 建立和設定教室實驗室 (講師)
       items:
         - name: 建立和管理教室實驗室
@@ -87,17 +93,29 @@
         - name: 在中斷連線時啟用自動關機
           href: how-to-enable-shutdown-disconnect.md
         - name: 在範本 VM 上啟用巢狀虛擬化
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: 在範本 VM 上啟用巢狀虛擬化的概觀
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: 使用 UI 在範本 VM 上啟用巢狀虛擬化
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: 使用指令碼在範本 VM 上啟用巢狀虛擬化
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: 準備 Windows 範本 VM
           href: how-to-prepare-windows-template.md
+        - name: 檢視支援資訊 (講師)
+          href: lab-creator-support-information.md
     - name: 在教室實驗室中連線至 VM (學生)
       items:
         - name: 存取教室實驗室
           href: how-to-use-classroom-lab.md
         - name: 使用適用於 Linux VM 的遠端桌面連線
           href: how-to-use-remote-desktop-linux-student.md
+        - name: 使用 RDP 從 Mac 連線至 VM
+          href: connect-virtual-machine-mac-rdp.md
         - name: 設定或重設適用於虛擬機器的密碼
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: 檢視支援資訊 (學生)
+          href: lab-user-support-information.md
 - name: 參考
   items:
     - name: REST API

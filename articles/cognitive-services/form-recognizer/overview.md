@@ -9,14 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118552"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80052425"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的文字、索引鍵/值組和資料表資料。 其會從表單中擷取文件，並輸出在原始檔中包含關聯性的結構化資料。 您可以快速取得針對特定內容量身打造的精確結果，而不需要大量手動操作或廣泛的資料科學專業知識。 表單辨識器是由自訂模型、預建的收據模型和版面配置 API 所組成。 您可以使用 REST API 呼叫表單辨識器模型，以降低複雜度並將其整合至工作流程或應用程式。
 
@@ -49,7 +51,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 ## <a name="layout-api"></a>版面配置 API
 
-表單辨識器也可以使用高畫質的光學字元辨識 (OCR)，擷取文字和資料表結構 (與文字相關聯的資料列和資料行編號)。 
+表單辨識器也可以使用高畫質的光學字元辨識 (OCR)，擷取文字和資料表結構 (與文字相關聯的資料列和資料行編號)。
 
 ## <a name="get-started"></a>開始使用
 
@@ -59,9 +61,9 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
   * 不使用標籤進行定型
     * [快速入門：搭配使用 REST API 與 cURL 來將表單辨識器模型定型並擷取表單資料](quickstarts/curl-train-extract.md)
     * [快速入門：搭配使用 REST API 與 Python 來將表單辨識器模型定型並擷取表單資料](quickstarts/python-train-extract.md)
-  * 使用標籤進行定型 
+  * 使用標籤進行定型
     * [使用範例標記工具，以標籤定型表單辨識器模型](quickstarts/label-tool.md)
-    * [使用 REST API 和 Python 以標籤定型表單辨識器模型](quickstarts/python-labeled-data.md) 
+    * [使用 REST API 和 Python 以標籤定型表單辨識器模型](quickstarts/python-labeled-data.md)
 * 預建的收據 - 從美國銷售收據中擷取資料
   * [快速入門：使用 cURL 擷取收據資料](quickstarts/curl-receipts.md)
   * [快速入門：使用 Python 擷取收據資料](quickstarts/python-receipts.md)
@@ -92,7 +94,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 * 格式必須是 JPEG、PNG、BMP、PDF (文字或掃描) 或 TIFF。
 * 檔案大小必須小於 20 MB。
-* 影像維度必須介於 50 x 50 像素和 10000 x 10000 像素之間。 
+* 影像維度必須介於 50 x 50 像素和 10000 x 10000 像素之間。
 * PDF 維度最多必須是 17 x 17 英寸，對應 Legal 或 A3 紙張大小 (或更小尺寸)。
 * 針對 PDF 和 TIFF，只有前 200 個頁面會進行處理 (若使用免費層的訂用帳戶，只會處理前兩個頁面)。
 

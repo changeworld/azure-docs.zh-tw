@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 11/07/2019
 ms.author: erhopf
 ms.openlocfilehash: 9b46bc070c7e3b9d88bb8aa3742623e62dff579b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74818918"
 ---
 **選擇您的目標環境**
 
-# <a name="java-runtimetabjava-runtime"></a>[Java Runtime](#tab/java-runtime)
+# <a name="java-runtime"></a>[Java Runtime](#tab/java-runtime)
 
 [!INCLUDE [JRE](./jre.md)]
 
-# <a name="androidtabandroid"></a>[Android](#tab/android)
+# <a name="android"></a>[Android](#tab/android)
 
 [!INCLUDE [Android](./android.md)]
 

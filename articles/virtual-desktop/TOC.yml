@@ -86,6 +86,8 @@
       href: publish-apps.md
     - name: 設定 MSIX 應用程式附加
       href: app-attach.md
+    - name: 使用 Microsoft Teams
+      href: teams-on-wvd.md
 - name: 概念
   items:
     - name: Windows 虛擬桌面環境

@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/08/2019
 ms.openlocfilehash: 5089af4a4e1714d49b844a1b6823487a3f6a8dcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74483020"
 ---
 藉由建立下列其中一項 Azure 資源來開始使用 Anomaly Detector 服務。
@@ -37,7 +37,7 @@ ms.locfileid: "74483020"
 
 請使用適合您作業系統的指示。
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx ANOMALY_DETECTOR_KEY <replace-with-your-anomaly-detector-key>
@@ -46,7 +46,7 @@ setx ANOMALY_DETECTOR_ENDPOINT <replace-with-your-anomaly-detector-endpoint>
 
 新增環境變數之後，請重新啟動主控台視窗。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>
@@ -55,7 +55,7 @@ export ANOMALY_DETECTOR_ENDPOINT=<replace-with-your-anomaly-detector-endpoint>
 
 新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 編輯 `.bash_profile`，然後新增環境變數：
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76988255"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教學課程：單頁影片搜尋應用程式
@@ -51,7 +51,7 @@ Bing 影片搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 > * CSS - 定義頁面的外觀
 > * JavaScript - 定義頁面的行為
 
-大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項。 該表單會使用 `<form>` 標籤的 `onsubmit` 屬性，連接至執行搜尋的 JavaScript：
+大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項。 該表單會使用 `onsubmit` 標籤的 `<form>` 屬性，連接至執行搜尋的 JavaScript：
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">

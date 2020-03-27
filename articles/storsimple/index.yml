@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: StorSimple 文件
+summary: 了解如何使用 Azure StorSimple，這是一個整合式儲存體解決方案，可管理內部部署裝置與 Azure 雲端儲存體之間的儲存體工作。
+metadata:
+  title: StorSimple 文件
+  description: 了解如何使用 Azure StorSimple，這是一個整合式儲存體解決方案，可管理內部部署裝置與 Azure 雲端儲存體之間的儲存體工作。
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540301"
+landingContent:
+- title: 關於 StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 搭配 Azure 檔案同步的 StorSimple 和 Data Box Edge 的比較
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple Virtual Array
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 StorSimple Virtual Array？
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: 檢閱需求
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 系列
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 StorSimple 8000 系列？
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: 檢閱需求
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple 資料管理員
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 StorSimple 資料管理員？
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: 在 Azure 入口網站中管理
+      url: storsimple-data-manager-ui.md
+- title: 適用於雲端解決方案提供者的 StorSimple 方案
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是適用於雲端解決方案提供者的 StorSimple 方案？
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: 部署
+      url: storsimple-partner-csp-deploy.md

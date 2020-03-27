@@ -87,6 +87,8 @@
       href: iot-hub-tls-support.md
     - name: TLS 1.0 和 1.1 淘汰
       href: iot-hub-tls-deprecating-1-0-and-1-1.md
+    - name: 虛擬網路支援
+      href: virtual-network-support.md
     - name: 訊息擴充 概觀
       href: iot-hub-message-enrichments-overview.md
     - name: 裝置管理概觀
@@ -444,48 +446,46 @@
           href: iot-hub-operations-monitoring.md
         - name: 移轉至診斷設定
           href: iot-hub-migrate-to-diagnostics-settings.md
-- name: 相關參考
-  items:
-    - name: 方案
-      items:
-        - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
-    - name: 平台服務
-      items:
-        - name: IoT 中樞
-          href: /azure/iot-hub
-        - name: IoT 隨插即用
-          href: /azure/iot-pnp
-        - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
-        - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 地圖
-          href: /azure/azure-maps
-        - name: 時間序列深入解析
-          href: /azure/time-series-insights
-    - name: Edge 解決方案
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 裝置 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 資源
   items:
     - name: 支援和協助選項
       href: /azure/iot-fundamentals/iot-support-help
-    - name: '適用於 C# 的 Azure IoT 範例 (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: 適用於 Node.js 的 Azure IoT 範例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: 適用於 Java 的 Azure IoT 範例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: 適用於 Python 的 Azure IoT 範例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: 適用於 iOS 平台的 Azure IoT 範例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 服務
+      items:
+        - name: IoT 中樞
+          href: /azure/iot-hub
+        - name: IoT 中樞裝置佈建服務
+          href: /azure/iot-dps
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
+          href: /azure/azure-maps
+        - name: 時間序列深入解析
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服務 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT 裝置 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Azure IoT 範例
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS 平台
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT 認證裝置目錄
       href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT 開發人員中心
@@ -496,8 +496,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Azure IoT Tools
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
-    - name: DeviceExplorer 工具
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT 檔案總管工具
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN 論壇

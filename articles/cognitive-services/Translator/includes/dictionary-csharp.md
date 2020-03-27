@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69907078"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -154,11 +154,11 @@ static string PrettyPrint(string s)
 }
 ```
 
-如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解如何使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一個步驟是在 `Main` 中呼叫 `AltTranslation()`。 找出 `static void Main(string[] args)` 並新增下列幾行：
+最後一個步驟是在 `AltTranslation()` 中呼叫 `Main`。 找出 `static void Main(string[] args)` 並新增下列幾行：
 
 ```csharp
 AltTranslation();

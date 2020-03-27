@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75446425"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析索引鍵/值組和資料表的表單
 
 接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 在新的 Python 指令碼中執行下列程式碼，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API。 執行指令碼之前，請進行下列變更：
 
-1. 將 `<file path>` 取代為表單的檔案路徑 (例如，C:\temp\file.pdf)。 這也可以是遠端檔案的 URL。 在本快速入門中，您可以使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)中 **Test** 資料夾底下的檔案。
+1. 將 `<file path>` 取代為表單的檔案路徑 (例如，C:\temp\file.pdf)。 這也可以是遠端檔案的 URL。 在本快速入門中，您可以使用**範例資料集**中 [Test](https://go.microsoft.com/fwlink/?linkid=2090451) 資料夾底下的檔案。
 1. 將 `<model_id>` 取代為您在上一節中取得的模型識別碼。
 1. 將 `<endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。 您可以在表單辨識器的資源 [概觀]  索引標籤上找到此項目。
 1. 將 `<file type>` 取代為檔案類型。 支援的類型：`application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
@@ -62,7 +62,7 @@ ms.locfileid: "75446425"
 1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-analyze.py` 。
 
-當您呼叫**分析表單** API 時，您會收到 **Operation-Location** 標頭的 `201 (Success)` 回應。 此標頭的值是您將用來追蹤分析作業結果的識別碼。 上述指令碼會將此標頭的值列印到主控台。
+當您呼叫**分析表單** API 時，您會收到 `201 (Success)`Operation-Location**標頭的** 回應。 此標頭的值是您將用來追蹤分析作業結果的識別碼。 上述指令碼會將此標頭的值列印到主控台。
 
 ## <a name="get-the-analyze-results"></a>取得分析結果
 

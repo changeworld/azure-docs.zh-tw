@@ -4,10 +4,10 @@ description: 本快速入門示範如何開始使用適用於 .NET 的 QnA Maker
 ms.topic: quickstart
 ms.date: 01/13/2020
 ms.openlocfilehash: 2911c74226c3b682b75e8d10b0b4b7617a48ec64
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75946268"
 ---
 使用適用於 .NET 的 QnA Maker 用戶端程式庫來：

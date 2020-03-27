@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74976973"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教學課程：影片及文字記錄仲裁
@@ -32,7 +32,7 @@ ms.locfileid: "74976973"
 > - 使用文字審核服務來審核文字記錄
 > - 將審核過的文字記錄新增至影片檢閱
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並建立自訂標記。 如果您需要此步驟的說明，請參閱[使用標記](Review-Tool-User-Guide/tags.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74976973"
 
 編輯 `App.config` 檔案，並新增 Active Directory 租用戶名稱、服務端點和以 `#####` 表示的訂用帳戶金鑰。 您需要下列資訊：
 
-|Key|說明|
+|Key|描述|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Azure 媒體服務 (AMS) API 的端點|
 |`ClientSecret`|Azure 媒體服務的訂用帳戶金鑰|
@@ -60,7 +60,7 @@ ms.locfileid: "74976973"
 
 ### <a name="methods-of-program-class"></a>Program 類別的方法
 
-|方法|說明|
+|方法|描述|
 |-|-|
 |`Main`|剖析命令列、收集使用者輸入及開始處理。|
 |`ProcessVideo`|壓縮、上傳、審核及建立影片檢閱。|
@@ -88,7 +88,7 @@ ms.locfileid: "74976973"
 
 不論程式的選項來自命令列或互動式使用者輸入，`Main()` 接下來會呼叫 `Initialize()` 來建立下列執行個體：
 
-|類別|說明|
+|類別|描述|
 |-|-|
 |`AMSComponent`|提交影片檔案以進行審核前，先壓縮影片檔案。|
 |`AMSconfigurations`|應用程式組態資料的介面，位於 `App.config`。|

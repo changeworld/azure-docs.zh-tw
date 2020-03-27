@@ -4,17 +4,17 @@ description: 使用 C#，建置與 Language Understanding (LUIS) 整合的聊天
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.openlocfilehash: 2381f4cba39f81ab593f3149a2708f442156f30d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76987986"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>教學課程：使用以 C# 中 Language Understanding 啟用的 Web 應用程式 Bot
 
 使用 C# 建置與 Language Understanding (LUIS) 整合的聊天機器人。 此 Bot 是使用 Azure [Web 應用程式 Bot](https://docs.microsoft.com/azure/bot-service/) 資源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 所建置的。
 
-**在本教學課程中，您會了解如何：**
+**在本教學課程中，您將了解如何：**
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式 Bot。 此程序會為您建立新的 LUIS 應用程式。

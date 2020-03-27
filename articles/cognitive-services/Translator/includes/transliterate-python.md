@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906584"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ import os, requests, uuid, json
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>設定訂用帳戶金鑰、端點和路徑
 
-此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，您可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
+此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
 
 請將下列程式碼複製到您的專案中：
 
@@ -52,7 +52,7 @@ endpoint = os.environ[endpoint_var_name]
 `params` 用來設定輸入語言以及輸入和輸出字集。 在此範例中，我們會從日文翻譯為拉丁字母。
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：音譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：直譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解如何使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+如果您使用認知服務的多服務訂用帳戶，您也必須在要求參數中包含 `Ocp-Apim-Subscription-Region`。 [深入了解使用多服務訂用帳戶進行驗證](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="create-a-request-to-transliterate-text"></a>建立直譯文字的要求
 

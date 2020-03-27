@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74689313"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 尋找先前搜尋中的類似影像
@@ -23,7 +23,7 @@ ms.locfileid: "74689313"
 
 在 [Github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) 上可找到此教學課程的完整原始程式碼，其中含有其他錯誤處理和註釋。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
@@ -38,7 +38,7 @@ ms.locfileid: "74689313"
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>從 Bing 影像搜尋 SDK 取得 ImageInsightsToken
 
-此應用程式會使用透過 [Bing 影像搜尋 SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) 所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
+此應用程式會使用透過 `ImageInsightsToken`Bing 影像搜尋 SDK[ 所取得的 ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -85,7 +85,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="iterate-through-the-visual-search-results"></a>逐一查看圖像式搜尋結果
 
-圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個 `ImageAction` 都包含 `Data` 欄位，這是會取決於動作類型的值清單。 例如，您可以逐一查看 `visualSearchResults.Tags` 中的 `ImageTag` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印 `PagesIncluding` 動作的詳細資料：
+圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個 `ImageAction` 都包含 `Data` 欄位，這是會取決於動作類型的值清單。 例如，您可以逐一查看 `ImageTag` 中的 `visualSearchResults.Tags` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印 `PagesIncluding` 動作的詳細資料：
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)
@@ -136,8 +136,8 @@ if (visualSearchResults.Tags.Count > 0)
 |ImageById -> WebSearchUrl    |         |
 |RelatedSearches -> WebSearchUrl:    |         |
 |DocumentLevelSuggestions -> WebSearchUrl:     |         |
-|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2f www.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2f www.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
 如上所示，`TopicResults` 和 `ImageResults` 類型包含針對相關影像的查詢。 URL 會連結至 Bing 搜尋結果。
 

@@ -5,10 +5,10 @@ ms.service: cognitiveservices
 ms.topic: include
 ms.date: 12/09/2019
 ms.openlocfilehash: e68a61e570ae878432089bb93235e08c3b71225f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74961469"
 ---
 ## <a name="create-an-azure-resource"></a>建立 Azure 資源

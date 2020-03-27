@@ -1,5 +1,5 @@
 - name: StorSimple 文件
-  href: index.md
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: 概觀
@@ -8,7 +8,7 @@
           href: storsimple-ova-overview.md
     - name: 開始使用
       items:
-        - name: 規劃
+        - name: 計畫
           items:
             - name: 檢閱需求
               href: storsimple-ova-system-requirements.md
@@ -33,7 +33,7 @@
               href: storsimple-virtual-array-deploy3-fs-setup.md
             - name: 設定為 iSCSI 伺服器
               href: storsimple-virtual-array-deploy3-iscsi-setup.md
-    - name: 作法
+    - name: 如何
       items:
         - name: 透過 Azure 入口網站管理
           href: storsimple-virtual-array-manager-service-administration.md
@@ -121,7 +121,7 @@
           href: storsimple-regions.md
     - name: 開始使用
       items:
-        - name: 規劃
+        - name: 計畫
           items:
             - name: 檢閱需求
               href: storsimple-8000-system-requirements.md
@@ -131,7 +131,7 @@
               href: storsimple-8000-limits.md
             - name: 最佳作法
               href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
-        - name: Install
+        - name: 安裝
           items:
             - name: 檢閱安全性
               href: storsimple-8000-safety.md
@@ -157,7 +157,7 @@
               href: storsimple-snapshot-manager-deployment.md
             - name: StorSimple Adapter for SharePoint
               href: storsimple-adapter-for-sharepoint.md
-    - name: 作法
+    - name: 如何
       items:
         - name: 管理
           items:
@@ -312,7 +312,7 @@
               items:
                 - name: 建立支援套件
                   href: storsimple-8000-create-manage-support-package.md
-        - name: 移轉
+        - name: 遷移
           items:
             - name: 訂用帳戶與儲存體帳戶
               href: storsimple-8000-migrate-classic-azure-portal.md
@@ -373,7 +373,7 @@
       items:
         - name: 使用 StorSimple Data Manager
           href: storsimple-data-manager-ui.md
-    - name: 作法
+    - name: 如何
       items:
         - name: 使用 .NET 啟動作業
           href: storsimple-data-manager-dotnet-jobs.md
@@ -409,13 +409,13 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 行銷部落格
       href: 'https://blogs.technet.com/b/cis/'
-    - name: 行銷
+    - name: Marketing
       href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
     - name: StorSimple 支援選項
       href: storsimple-8000-support-options.md
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 07e7cc991f127bf4bb4f466c0108962786e45bce
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68423554"
 ---
 請注意 [效能]  索引標籤的左窗格上出現的 [機率閾值]  滑桿。這是預測必須具備才能視為正確的信賴等級 (用於計算精確度和召回率的目的)。 

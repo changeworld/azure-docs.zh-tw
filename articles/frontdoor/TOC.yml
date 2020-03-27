@@ -1,8 +1,8 @@
-- name: 前端服務文件
+- name: Front Door 文件
   href: index.yml
 - name: 概觀
   items:
-    - name: Azure 前端服務是什麼？
+    - name: Azure Front Door 是什麼？
       href: front-door-overview.md
 - name: 快速入門
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: 使用前端進行快取
       href: front-door-caching.md
+    - name: Front Door 常見問題集
+      href: front-door-faq.md
     - name: 地區篩選
       href: front-door-geo-filtering.md
     - name: 健康狀態探查
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL 重新導向
       href: front-door-url-redirect.md
+    - name: 萬用字元網域
+      href: front-door-wildcard-domain.md
 - name: 操作指南
   items:
     - name: 重新導向流量
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: 允許的憑證授權單位
           href: front-door-troubleshoot-allowed-ca.md
-- name: 常見問題集
-  items:
-    - name: Front Door 常見問題集
-      href: front-door-faq.md
 - name: 參考
   items:
     - name: Azure CLI

@@ -84,7 +84,7 @@
           href: hana-large-instance-virtual-machine-migration.md
 - name: Azure 虛擬機器上的 SAP HANA
   items:
-    - name: 單一執行個體 SAP HANA 安裝
+    - name: 在 Azure VM 上安裝 SAP HANA
       href: hana-get-started.md
     - name: S/4 HANA 或 BW/4 HANA SAP CAL 部署指南
       href: cal-s4h.md

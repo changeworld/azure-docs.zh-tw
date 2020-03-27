@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76170038"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入門：使用自訂視覺 .NET SDK 建立影像分類專案
@@ -41,7 +41,7 @@ ms.locfileid: "76170038"
 
 ## <a name="understand-the-code"></a>了解程式碼
 
-開啟 _Program.cs_ 檔案，並檢查程式碼。 分別為您名為 `CUSTOM_VISION_TRAINING_KEY` 和 `CUSTOM_VISION_PREDICTION_KEY` 的定型和預測金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 指令碼會尋找這些變數。
+開啟 _Program.cs_ 檔案，並檢查程式碼。 分別為您名為 [ 和 ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) 的定型和預測金鑰`CUSTOM_VISION_TRAINING_KEY`建立環境變數`CUSTOM_VISION_PREDICTION_KEY`。 指令碼會尋找這些變數。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "76170038"
 
 ### <a name="upload-and-tag-images"></a>上傳和標記影像
 
-此專案的影像會包含在其中。 它們會在 _Program.cs_ 的 **LoadImagesFromDisk** 方法中受到參考。 您最多可以在單一批次中上傳 64 個影像。
+此專案的影像會包含在其中。 它們會在 **Program.cs** 的 _LoadImagesFromDisk_ 方法中受到參考。 您最多可以在單一批次中上傳 64 個影像。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 

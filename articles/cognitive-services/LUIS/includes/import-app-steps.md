@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/03/2019
 ms.author: diberry
 ms.openlocfilehash: b0d1735df7a3ac36e20af771939aec6b8013f2df
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74840811"
 ---
 1. 在[預覽 LUIS 入口網站](https://preview.luis.ai)中，從 [我的應用程式]  頁面選取 [匯入]  ，然後選取 [匯入為 JSON]  。 尋找上一個步驟中已儲存的 JSON 檔案。 您不需要變更應用程式的名稱。 選取 [完成] 

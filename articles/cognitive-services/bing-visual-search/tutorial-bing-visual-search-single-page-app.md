@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74689163"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>建立圖像式搜尋單頁 Web 應用程式
@@ -25,7 +25,7 @@ Bing 圖像式搜尋 API 會傳回影像的見解。 您可以上傳影像，也
 
 此應用程式的完整原始程式碼 (在經過擴充而使用 Bing 圖像式搜尋 API 之後) 可於 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) 取得。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

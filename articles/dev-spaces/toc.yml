@@ -58,7 +58,21 @@
     - name: 概念
       items:
         - name: Dev Spaces 如何運作
-          href: how-dev-spaces-works.md
+          items:
+            - name: 概觀
+              href: how-dev-spaces-works.md
+            - name: 設定叢集
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: 準備專案
+              href: how-dev-spaces-works-prep.md
+            - name: 執行您的程式碼
+              href: how-dev-spaces-works-up.md
+            - name: 在開發人員空間之間路由
+              href: how-dev-spaces-works-routing.md
+            - name: 遠端偵錯
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: 將您的開發電腦連線至 AKS
+              href: how-dev-spaces-works-connect.md
         - name: VS Code 如可與 Dev Spaces 搭配使用
           href: how-vs-code-works-with-dev-spaces.md
         - name: 不同網路拓撲中的網路設定
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: 針對自訂輸入和 HTTPS 使用 NGINX
           href: how-to/ingress-https-nginx.md
-        - name: 將您的開發電腦連線至 AKS 叢集 (預覽)
+        - name: 將您的開發機器連線至 AKS 叢集 (預覽)
           href: how-to/connect.md
         - name: 將 Azure Dev Spaces 叢集設定為使用 Helm 3 (預覽)
           href: how-to/helm-3.md

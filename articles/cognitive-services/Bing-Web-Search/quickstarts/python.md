@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Python 來執行搜尋 - Bing Web 搜尋 API
+title: 快速入門：使用 Python 執行搜尋 - Bing Web 搜尋 API
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 Python 來傳送要求給「Bing Web 搜尋 REST API」，並接收 JSON 回應
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74976361"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入門：使用 Python 來呼叫 Bing Web 搜尋 API  
@@ -26,7 +26,7 @@ ms.locfileid: "74976361"
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Python 2.x 或 3.x](https://www.python.org/)
 

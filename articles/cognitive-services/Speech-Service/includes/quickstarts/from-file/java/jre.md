@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 4e0959155b3f3e0821ffece9de0faba92486d503
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79082547"
 ---
 ## <a name="prerequisites"></a>Prerequisites
@@ -109,7 +109,7 @@ ms.locfileid: "79082547"
 
 1. 將字串 `YourSubscriptionKey` 取代為您的訂用帳戶金鑰。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `YourServiceRegion`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `westus` 字串。
 
 1. 以您自己的檔案名稱取代字串 `whatstheweatherlike.wav`。
 

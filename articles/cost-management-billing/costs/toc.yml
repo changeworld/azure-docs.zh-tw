@@ -22,6 +22,8 @@
       items:
         - name: Azure 成本管理最佳做法
           href: cost-mgt-best-practices.md
+        - name: 選擇成本管理和 Cloudyn
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: 了解成本管理資料
           href: understand-cost-mgt-data.md
         - name: 了解並使用範圍

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a8201012b088b9db73f110a0f84ab5716f584be
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52097963e900411aa07fabc23786a794ee3f3ec1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973776"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245016"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>快速入門：使用電腦視覺 REST API 和 Python 分析本機影像
 
@@ -28,7 +28,7 @@ ms.locfileid: "74973776"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/try/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您想要在本機執行此範例，就必須安裝 [Python](https://www.python.org/downloads/)。
 - 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 然後，分別為名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
@@ -44,10 +44,12 @@ ms.locfileid: "74973776"
 1. 將下列程式碼複製到文字編輯器。
 1. (選擇性) 將 `image_path` 的值取代為您要分析之不同影像的路徑和檔案名稱。
 1. 將程式碼儲存為副檔名為 `.py` 的檔案。 例如： `analyze-local-image.py` 。
-1. 開啟命令提示字元視窗。
+1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python analyze-local-image.py` 。
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline

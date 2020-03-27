@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 - 設定叢集網路設定
       href: fxt-configure-network.md
-- name: 使用說明指南
-  items:
-    - name: 裝載用戶端
+    - name: 8 - 掛接用戶端
       href: fxt-mount-clients.md
+- name: 操作指南
+  items:
     - name: 監視 Azure FXT Edge Filer 硬體
       href: fxt-monitor.md
     - name: 安全地關閉硬體節點的電源

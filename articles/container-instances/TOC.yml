@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: 從 Azure Container Registry 進行部署
           href: container-instances-using-azure-container-registry.md
+        - name: 使用 GitHub 動作部署 (預覽)
+          href: container-instances-github-action.md
         - name: 加密部署資料
           href: container-instances-encrypt-data.md
         - name: 在專用主機上部署
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: 在側車中啟用 SSL 端點
           href: container-instances-container-group-ssl.md
+        - name: 公開靜態 IP 位址
+          href: container-instances-application-gateway.md
     - name: 裝載資料磁碟區
       items:
         - name: Azure 檔案共用

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/18/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: e826d69bbf0f94d02799e9b93b26db8d4cbbba54
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59f704377695be0f3253bdd0d7a7b82b460c86d0
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462369"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238998"
 ---
 # <a name="quickstart-bing-autosuggest-client-library-for-go"></a>快速入門：適用於 Go 的 Bing 自動建議用戶端程式庫
 
@@ -50,7 +50,7 @@ ms.locfileid: "75462369"
 
 請使用適合您作業系統的指示。
 <!-- replace the below endpoint and key examples -->
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx BING_AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
@@ -59,7 +59,7 @@ setx BING_AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 
 新增環境變數之後，請重新啟動主控台視窗。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -68,7 +68,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 編輯 `.bash_profile`，然後新增環境變數：
 

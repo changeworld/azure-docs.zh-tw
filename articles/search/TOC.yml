@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: 評分調整 (評分設定檔)
           href: index-add-scoring-profiles.md
+        - name: 相關性微調 (相似性演算法)
+          href: index-ranking-similarity.md
     - name: 計畫
       items:
         - name: 選擇階層。

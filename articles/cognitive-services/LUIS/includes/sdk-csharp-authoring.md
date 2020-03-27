@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 53e6382cf8d046b2c9818b906890bc64642fd2ed
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77372072"
 ---
 使用適用於 .NET 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
@@ -190,7 +190,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 請務必了解，實體上不會標示意圖。 它們可以且通常會套用至許多意圖。 只有範例使用者語句會標示特定的單一意圖。
 
-實體的建立方法是[模型](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet)類別的一部分。 每個實體類型都有本身的資料轉換物件 (DTO) 模型，而[模型](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet)命名空間中通常會包含 `model` 這個字。
+實體的建立方法是[模型](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet)類別的一部分。 每個實體類型都有本身的資料轉換物件 (DTO) 模型，而`model`模型[命名空間中通常會包含 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) 這個字。
 
 [!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddEntities)]
 

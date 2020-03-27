@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
 ms.openlocfilehash: 187565f2518145dcd554ae4d300174981eb55ea6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74284751"
 ---
 > [!Tip]

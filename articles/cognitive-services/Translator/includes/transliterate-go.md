@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 5510088925b7a628417c7f3c11bb89c5ce915381
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906468"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -93,7 +93,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：音譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：直譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
 
 ## <a name="create-a-struct-for-your-request-body"></a>建立您的要求本文結構
 

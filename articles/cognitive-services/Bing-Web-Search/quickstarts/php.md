@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 PHP 來執行搜尋 - Bing Web 搜尋 API
+title: 快速入門：使用 PHP 執行搜尋 - Bing Web 搜尋 API
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 PHP 來傳送要求給「Bing Web 搜尋 REST API」，並接收 JSON 回應
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76169718"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入門：使用 PHP 來呼叫 Bing Web 搜尋 API  

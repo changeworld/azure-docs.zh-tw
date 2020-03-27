@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76987949"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入門：使用瀏覽器取得意圖
@@ -34,7 +34,7 @@ ms.locfileid: "76987949"
 1. 請開啟網頁瀏覽器。
 1. 使用下列完整的 URL，將 `YOUR-KEY` 取代為您自己的 LUIS 撰寫或預測金鑰。 要求是 GET 要求，包含以您的 LUIS 撰寫或預測金鑰作為查詢字串參數的授權。
 
-    #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 預測要求](#tab/V3-1-1)
+    #### <a name="v3-prediction-request"></a>[V3 預測要求](#tab/V3-1-1)
 
 
     **GET** 端點 (依位置) 要求的 V3 URL 格式為：
@@ -43,7 +43,7 @@ ms.locfileid: "76987949"
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
-    #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2 預測要求](#tab/V2-1-2)
+    #### <a name="v2-prediction-request"></a>[V2 預測要求](#tab/V2-1-2)
 
     **GET** 端點要求的 V2 URL 格式為：
 
@@ -53,7 +53,7 @@ ms.locfileid: "76987949"
 
 1. 將 URL 貼入瀏覽器視窗，然後按 Enter。 瀏覽器會顯示 JSON 結果，指出 LUIS 偵測到 `HomeAutomation.TurnOn` 意圖 (最高意圖) 和 `HomeAutomation.Operation` 實體 (值為 `on`)。
 
-    #### <a name="v3-prediction-responsetabv3-2-1"></a>[V3 預測回應](#tab/V3-2-1)
+    #### <a name="v3-prediction-response"></a>[V3 預測回應](#tab/V3-2-1)
 
     ```JSON
     {
@@ -74,7 +74,7 @@ ms.locfileid: "76987949"
     }
     ```
 
-    #### <a name="v2-prediction-responsetabv2-2-2"></a>[V2 預測回應](#tab/V2-2-2)
+    #### <a name="v2-prediction-response"></a>[V2 預測回應](#tab/V2-2-2)
 
     ```json
     {
@@ -99,7 +99,7 @@ ms.locfileid: "76987949"
 
 1. 若要查看所有意圖，請新增適當的查詢字串參數。
 
-    #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3 預測端點](#tab/V3-3-1)
+    #### <a name="v3-prediction-endpoint"></a>[V3 預測端點](#tab/V3-3-1)
 
     將 `show-all-intents=true` 新增至查詢字串結尾處，以**顯示所有意圖**：
 
@@ -132,7 +132,7 @@ ms.locfileid: "76987949"
     }
     ```
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[V2 預測端點](#tab/V2)
+    #### <a name="v2-prediction-endpoint"></a>[V2 預測端點](#tab/V2)
 
     將 `verbose=true` 新增至查詢字串結尾處，以**顯示所有意圖**：
 

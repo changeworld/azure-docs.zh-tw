@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure CDN 文件
-summary: Azure 內容傳遞網路 (CDN) 是全球 CDN 解決方案，用來傳遞高頻寬內容。 It它可以裝載在 Azure 或任何其他位置。 使用 Azure CDN 可讓您使用網路連接點 (POP) 伺服器，從 Azure Blob 儲存體、Web 應用程式或任何可公開存取的 Web 伺服器載入的公用物件來快取靜態物件。 Azure CDN 也可運用各種網路和路由最佳化，來加速提供無法快取的動態內容。
+summary: Azure 內容傳遞網路 (CDN) 是全球 CDN 解決方案，用來傳遞高頻寬內容。 它可以裝載在 Azure 或任何其他位置。 使用 Azure CDN 可讓您使用網路連接點 (POP) 伺服器，從 Azure Blob 儲存體、Web 應用程式或任何可公開存取的 Web 伺服器載入的公用物件來快取靜態物件。 Azure CDN 也可運用各種網路和路由最佳化，來加速提供無法快取的動態內容。
 metadata:
   title: Azure CDN 文件 - 教學課程、API 參考
-  description: Azure 內容傳遞網路 (CDN) 是全球 CDN 解決方案，用來傳遞高頻寬內容。 It它可以裝載在 Azure 或任何其他位置。 使用 Azure CDN 可讓您使用網路連接點 (POP) 伺服器，從 Azure Blob 儲存體、Web 應用程式或任何可公開存取的 Web 伺服器載入的公用物件來快取靜態物件。 Azure CDN 也可運用各種網路和路由最佳化，來加速提供無法快取的動態內容。
+  description: Azure 內容傳遞網路 (CDN) 是全球 CDN 解決方案，用來傳遞高頻寬內容。 它可以裝載在 Azure 或任何其他位置。 使用 Azure CDN 可讓您使用網路連接點 (POP) 伺服器，從 Azure Blob 儲存體、Web 應用程式或任何可公開存取的 Web 伺服器載入的公用物件來快取靜態物件。 Azure CDN 也可運用各種網路和路由最佳化，來加速提供無法快取的動態內容。
   ms.service: azure-cdn
   ms.topic: landing-page
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: 7244b5f70468735a0dcced4d9cc9e71c1194350e
-  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.openlocfilehash: e181f5cb94dc33765b6fceb81cc98832a3b800ce
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77582563"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79479768"
 landingContent:
 - title: 關於 Azure CDN
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: Azure CDN 影片庫
       url: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+    - text: 如何在 Microsoft 的 Azure CDN 上使用 HTTP 覆寫
+      url: https://channel9.msdn.com/Shows/Azure-Friday/How-to-use-HTTP-overrides-on-Azure-CDN-from-Microsoft
 - title: 開始使用
   linkLists:
   - linkListType: quickstart

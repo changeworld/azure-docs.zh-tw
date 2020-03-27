@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67174310"
 ---
 ## <a name="publish-or-revert"></a>發佈或還原

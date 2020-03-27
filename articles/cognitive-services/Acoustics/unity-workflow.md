@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68854271"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>聲場專案 Unity 設計教學課程

@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager 範本
+            - name: ARM 範本
               href: service-bus-resource-manager-namespace-queue.md
         - name: 傳送及接收訊息
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure 入口網站
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager 範本
+            - name: ARM 範本
               href: service-bus-resource-manager-namespace-topic.md
         - name: 發佈和訂閱訊息
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: 更新清查 - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: 透過事件方格回應事件
+      href: service-bus-to-event-grid-integration-example.md
 - name: 範例
   items:
     - name: 服務匯流排範例
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: 內建安全性控制
           href: service-bus-messaging-security-controls.md
+        - name: 網路安全性
+          href: network-security.md
 - name: 操作指南
   items:
     - name: 從 Azure Service Manager (傳統) API 遷移至 Resource Manager API
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: 使用 Azure 事件方格處理訊息
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure 事件方格範例
-              href: service-bus-to-event-grid-integration-example.md
         - name: 主題篩選和動作
           href: topic-filters.md
         - name: 從標準遷移到進階命名空間
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: 進階功能
           items:
-            - name: 使用防火牆
-              href: service-bus-ip-filtering.md
-            - name: 虛擬網路服務端點
-              href: service-bus-service-endpoints.md
             - name: 無效信件佇列
               href: service-bus-dead-letter-queues.md
             - name: 預先擷取訊息
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: 暫停及重新啟用訊息實體
           href: entity-suspend.md
-        - name: 使用 Azure 資源管理員範本
+        - name: 使用 ARM 範本
           href: service-bus-resource-manager-overview.md
           items:
             - name: 建立命名空間
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 安全
       items:
-        - name: 設定由客戶管理用來進行待用加密的金鑰
+        - name: 設定防火牆
+          href: service-bus-ip-filtering.md
+        - name: 設定虛擬網路服務端點
+          href: service-bus-service-endpoints.md
+        - name: 設定私人端點 (預覽)
+          href: private-link-service.md
+        - name: 設定客戶管理的金鑰
           href: configure-customer-managed-key.md
     - name: 疑難排解
       items:

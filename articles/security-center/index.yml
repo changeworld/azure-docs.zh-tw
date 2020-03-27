@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604772"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159297"
 landingContent:
 - title: 關於資訊安全中心
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: 保護容器
       url: container-security.md
-    - text: 新增動態合規性套件
-      url: update-regulatory-compliance-packages.md
-    - text: 與 Windows Admin Center 整合
-      url: windows-admin-center-integration.md
+    - text: VM 的整合式弱點評量
+      url: built-in-vulnerability-assessment.md
+    - text: 檢閱安全性警示的結構描述
+      url: alerts-schemas.md
     - text: 自動回應警示和建議
       url: workflow-automation.md
     - text: 匯出安全性警訊和建議
       url: continuous-export.md
-    - text: 設定 Azure Key Vault 的進階威脅防護
+    - text: 設定 Azure Key Vault 的威脅防護
       url: advanced-threat-protection-key-vault.md
 - title: 開始使用
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 什麼是安全分數？
-      url: security-center-secure-score.md
+    - text: 了解安全分數
+      url: secure-score-security-controls.md
     - text: 修正安全性建議
       url: security-center-remediate-recommendations.md
     - text: 自訂安全性建議

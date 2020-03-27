@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: 啟用安全性稽核事件
           href: security-audit-events.md
+        - name: 使用 Azure 監視器活頁簿分析稽核事件
+          href: use-azure-monitor-workbooks.md
     - name: 加入網域 VM
       items:
         - name: 來自範本的 Windows Server VM

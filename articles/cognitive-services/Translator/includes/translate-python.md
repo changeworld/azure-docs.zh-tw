@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906738"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ import os, requests, uuid, json
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>設定訂用帳戶金鑰、端點和路徑
 
-此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，您可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
+此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
 
 請將下列程式碼複製到您的專案中：
 

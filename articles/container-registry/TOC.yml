@@ -35,6 +35,10 @@
     - name: 概念
       expanded: false
       items:
+        - name: 安全性
+          items:
+            - name: 安全性基準
+              href: security-baseline.md
         - name: 容器登錄 SKU 和限制
           href: container-registry-skus.md
         - name: 登錄、存放庫和映像
@@ -120,7 +124,7 @@
         - name: 監視
           expanded: false
           items:
-            - name: 診斷和審核記錄 (預覽)
+            - name: 診斷和審核記錄
               href: container-registry-diagnostics-audit-logs.md
             - name: 使用 Azure 原則來稽核合規性 (預覽)
               href: container-registry-azure-policy.md

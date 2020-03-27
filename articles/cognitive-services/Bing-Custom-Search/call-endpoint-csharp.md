@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: maheshb
-ms.openlocfilehash: 88a8cc0dbedeb9398637ab9a02323e9b2a6b8627
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 03/24/2020
+ms.author: aahi
+ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975256"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238896"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>快速入門：使用 C# 呼叫您的 Bing 自訂搜尋端點 
 
-您可以使用本快速入門，開始要求 Bing 自訂搜尋執行個體所產生的搜尋結果。 雖然此應用程式是以 C# 撰寫的，但 Bing 自訂搜尋 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 中找到。
+您可以使用本快速入門來開始向「Bing 自訂搜尋」執行個體要求搜尋結果。 雖然此應用程式是以 C# 撰寫的，但 Bing 自訂搜尋 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 上找到。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 「Bing 自訂搜尋」執行個體。 請參閱[快速入門：建立您的第一個 Bing 自訂搜尋執行個體](quick-start.md)，以取得詳細資訊。
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
@@ -78,7 +78,7 @@ ms.locfileid: "74975256"
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. 將搜尋詞彙附加到 `q=` 查詢參數，並將搜尋執行個體的自訂組態識別碼附加到 `customconfig=`，以建構要求 URL。 使用 `&` 字元來分隔參數。 `url` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+4. 將搜尋字詞附加至 `q=` 查詢參數，並將搜尋執行個體的「自訂設定識別碼」附加至 `customconfig=`，以建構要求 URL。 使用 `&` 字元來分隔參數。 `url` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +

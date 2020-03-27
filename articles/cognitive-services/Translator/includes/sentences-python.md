@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69906819"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ import os, requests, uuid, json
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>設定訂用帳戶金鑰、端點和路徑
 
-此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，您可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
+此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
 
 請將下列程式碼複製到您的專案中：
 
@@ -49,7 +49,7 @@ endpoint = os.environ[endpoint_var_name]
 
 翻譯工具文字全域端點會設定為 `endpoint`。 `path` 會設定 `breaksentence` 路由，並指出我們要叫用第 3 版的 API。
 
-此範例中的 `params` 會用來設定所提供文字的語言。 `breaksentence` 路由不需要 `params`。 如果排除於要求外，API 將會嘗試偵測所提供文字的語言，並在回應中連同信賴分數提供這項資訊。
+此範例中的 `params` 會用來設定所提供文字的語言。 `params` 路由不需要 `breaksentence`。 如果排除於要求外，API 將會嘗試偵測所提供文字的語言，並在回應中連同信賴分數提供這項資訊。
 
 >[!NOTE]
 > 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)。

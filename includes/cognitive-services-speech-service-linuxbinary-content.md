@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/07/2018
 ms.author: wolfma
 ms.openlocfilehash: 22507b7432a200a5c24c7063ca644b1b82eb5481
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67174273"
 ---
-| Path | 說明 |
+| Path | 描述 |
 |:-----|:----|
 | `license.md` | 授權
 | `ThirdPartyNotices.md` | 第三方聲明。

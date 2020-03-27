@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: 前置處理文字
       href: preprocess-text.md
+    - name: 隱含狄利克雷分佈
+      href: latent-dirichlet-allocation.md
 - name: 建議
   items:
     - name: 評估推薦
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: 訓練 SVD 推薦
       href: train-svd-recommender.md
+- name: 異常偵測
+  items:
+    - name: PCA 型異常偵測
+      href: pca-based-anomaly-detection.md
+    - name: 定型異常偵測模型
+      href: train-anomaly-detection-model.md
 - name: 模組錯誤與疑難排解
   href: designer-error-codes.md

@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: d0327c05119af76bd6e056df6796392967d456d5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74973912"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>快速入門：使用電腦視覺 REST API 和 Node.js 擷取印刷文字 (OCR)
@@ -27,7 +27,7 @@ ms.locfileid: "74973912"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須安裝 [Node.js](https://nodejs.org) 4.x 或更新版本。
 - 您必須安裝 [npm](https://www.npmjs.com/)。
@@ -50,7 +50,7 @@ ms.locfileid: "74973912"
 1. 將下列程式碼複製到文字編輯器。
 1. (選擇性) 將 `imageUrl` 的值取代為您要從中擷取印刷文字之不同影像的 URL。
 1. 將程式碼儲存為副檔名為 `.js` 的檔案。 例如： `get-printed-text.js` 。
-1. 開啟命令提示字元視窗。
+1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `node` 命令來執行該檔案。 例如： `node get-printed-text.js` 。
 
 ```javascript

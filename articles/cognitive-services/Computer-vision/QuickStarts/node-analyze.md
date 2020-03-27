@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
 ms.openlocfilehash: 98fb7eab52c710d9008aafefc50c2d00979d3350
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74973827"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入門：使用電腦視覺 REST API 與 Node.js 分析遠端影像
@@ -24,7 +24,7 @@ ms.locfileid: "74973827"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須安裝 [Node.js](https://nodejs.org) 4.x 或更新版本。
 - 您必須安裝 [npm](https://www.npmjs.com/)。
@@ -48,7 +48,7 @@ ms.locfileid: "74973827"
 1. (選擇性) 將 `imageUrl` 的值取代為您要分析之不同影像的 URL。
 1. (選擇性) 以不同的語言取代 `language` 要求參數的值。
 1. 將程式碼儲存為副檔名為 `.js` 的檔案。 例如： `analyze-image.js` 。
-1. 開啟命令提示字元視窗。
+1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `node` 命令來執行該檔案。 例如： `node analyze-image.js` 。
 
 ```javascript

@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
 ms.openlocfilehash: ba6a373f678f8d34b34a669b3fbb3b570c90ed0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78925245"
 ---
 > [!NOTE]

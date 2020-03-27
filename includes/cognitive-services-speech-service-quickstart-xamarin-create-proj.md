@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
 ms.openlocfilehash: 0bcdd315fe11b7472166a5a9ad4f7395e22d2126
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72675613"
 ---
 若要使用 Xamarin 建立適用於跨平台行動應用程式 .NET 開發的 Visual Studio 專案，您需要：
@@ -68,7 +68,7 @@ ms.locfileid: "72675613"
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下您的方案。 選取 [管理方案的 NuGet 套件]  ，以移至 [NuGet - 解決方案]  視窗。
 
-1. 選取 [瀏覽]  。
+1. 選取 [瀏覽]。 
 
    ![管理解決方案套件對話方塊的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 

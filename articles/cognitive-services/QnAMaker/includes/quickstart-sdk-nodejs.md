@@ -4,10 +4,10 @@ description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Ma
 ms.topic: quickstart
 ms.date: 01/13/2020
 ms.openlocfilehash: 05e6d2c77a351c22c73f0bdb54daeaf0e03f4a9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76020911"
 ---
 使用適用於 Node.js 的 QnA Maker 用戶端程式庫來：

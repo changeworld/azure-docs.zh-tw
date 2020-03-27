@@ -10,14 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622730"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80052081"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程式選擇單一最佳「內容」  項目來顯示每個使用者。 此服務會根據您就內容和關係提供的相關集體即時資訊，從內容項目中選取最佳項目。
 

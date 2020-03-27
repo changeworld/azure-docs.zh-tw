@@ -13,17 +13,17 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74978793"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>快速入門：使用 Bing Web 搜尋 REST API 和 Go 來搜尋 Web
 
 使用本快速入門進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 Go 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 Go 撰寫的，但 API 是一種與大多數的程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 以下是執行本快速入門之前的幾個必備項目：
 
 * [Go 二進位檔](https://golang.org/dl/) (英文)

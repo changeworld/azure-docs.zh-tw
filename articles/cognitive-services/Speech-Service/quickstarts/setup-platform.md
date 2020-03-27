@@ -12,10 +12,10 @@ ms.date: 02/19/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 9c29fd1c808ead71738dbd4597e5290b9239f691
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470049"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入門：設定開發環境

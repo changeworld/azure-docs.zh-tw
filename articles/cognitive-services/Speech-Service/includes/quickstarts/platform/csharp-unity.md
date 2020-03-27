@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: 8d9e05b5d8105cce8355d217cc6922c25bbe1730
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75469168"
 ---
 本指南說明如何安裝適用於 [Unity](https://unity3d.com/) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。

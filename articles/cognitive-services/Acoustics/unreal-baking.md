@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68854894"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>聲場專案 Unreal 聲場模擬教學課程
@@ -88,7 +88,7 @@ ms.locfileid: "68854894"
 
 標記物件之後，請按一下 [Materials]  \(材質\) 按鈕以移至 [Materials] \(材質\) 索引標籤。此索引標籤將用來指定關卡中每個材質的材質屬性。 在標記任何動作項目之前，它會是空白的。
 
-聲場材質會控制從每個表面反射回來的聲音能量多寡。 預設聲場材質的吸收率是與混凝土相當。 聲場專案會根據場景材質名稱建議材質。
+聲場材質會控制從每個表面反射回來的聲音能量多寡。 預設聲場材質的吸收率與混凝土相當。 聲場專案會根據場景材質名稱建議材質。
 
 室內所指定材質的殘響時間與其吸收係數成反比，其中大多數材質的吸收值在 0.01 到 0.20 的範圍。 吸收係數高於此範圍的材質會具備極佳的吸收能力。 例如，如果室內音的殘響太大，請將牆面、地板或天花板的聲場材質變更成吸收性更高的材質。 聲場材質指派會套用至使用該場景材質的所有動作項目。
 
@@ -188,7 +188,7 @@ ms.locfileid: "68854894"
 11. 您場景的探測計數，如 [Probes] \(探測\)  索引標籤上所計算。探測數目會決定需要在雲端執行的模擬次數。 您指定的節點數目不可超過探測數目。
 12. 此訊息會告訴您作業目前的狀態，或是此索引標籤中是否有任何錯誤及那些錯誤的資訊。
 
-您隨時可以在 [Azure 入口網站](https://portal.azure.com)取得作用中作業、計算集區及儲存體的完整相關資訊。
+您一律可以在 [Azure 入口網站](https://portal.azure.com)取得有關作用中作業、計算集區及儲存體的完整資訊。
 
 當作業正在執行時，[Bake] \(製作\)  按鈕會變更為 [Cancel Job] \(取消作業\)  。 使用此按鈕即可取消進行中的作業。 取消作業並無法復原，您將無法取得任何結果，且仍需支付在取消前所使用的任何 Azure 計算時間費用。
 
@@ -196,7 +196,7 @@ ms.locfileid: "68854894"
 
 Azure 認證會安全地儲存在您的本機電腦上，並與您的 Unreal 專案建立關聯。 它們僅供用來與 Azure 建立安全連線。
 
-### <a name="Estimating-bake-cost"></a> 正在評估 Azure 製作成本
+### <a name="estimating-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> 正在評估 Azure 製作成本
 
 若要預估所指定製作項目的成本，請取用在 [Estimated Compute Cost] \(預估計算成本\)  顯示的值 (這是一個持續時間)，然後將其乘以您所選 [VM Node Type] \(VM 節點類型\)  的每小時成本 (採用您的當地貨幣)。 此結果將不會包含讓節點啟動並開始執行所需的節點時間。 例如，如果您選取 [Standard_F8s_v2]  作為您的節點類型，其成本為每小時 0.40 美元，而 [Estimated Compute Cost] \(預估計算成本\) 為 3 小時又 57 分鐘，則執行作業的預估成本將會是 0.40 美元 * ~4 小時 = ~1.60 美元。 實際成本可能會稍微高一點，因為讓節點啟動需要額外的時間。 您可以在 [Azure Batch 定價](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 頁面上找到每小時節點成本 (針對類別選取 [計算最佳化] 或 [高效能計算])。
 
@@ -204,7 +204,7 @@ Azure 認證會安全地儲存在您的本機電腦上，並與您的 Unreal 專
 
 在製作完成之後，請執行執行階段外掛程式，以確認體素和探查點是否都位於其預期位置。
 
-## <a name="Data-Files"></a>資料檔
+## <a name="data-files"></a><a name="Data-Files"></a>資料檔
 
 此外掛程式會在各種點上建立四個資料檔。 執行階段只需要其中之一，且系統會將它置於您專案的 Content/Acoustics 資料夾中，並自動新增至您專案的套件路徑。 其他三個資料檔則會被置於 Acoustics Data 資料夾內，且不會被封裝。
 

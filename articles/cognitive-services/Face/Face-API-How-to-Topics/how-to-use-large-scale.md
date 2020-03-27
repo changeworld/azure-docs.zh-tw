@@ -1,7 +1,7 @@
 ---
 title: 範例：使用大規模功能 - 臉部
 titleSuffix: Azure Cognitive Services
-description: 本指南文章說明如何將規模從現有的 PersonGroup 和 FaceList 物件相應增加為 LargePersonGroup 和 LargeFaceList 物件。
+description: 本指南文章說明如何將規模從現有的 PersonGroup 和 FaceList 物件擴大為 LargePersonGroup 和 LargeFaceList 物件。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76169774"
 ---
 # <a name="example-use-the-large-scale-feature"></a>範例：使用大型功能
 
-本指南是一篇進階文章，可說明如何分別將規模從現有的 PersonGroup 和 FaceList 物件相應增加為 LargePersonGroup 和 LargeFaceList 物件。 本指南示範移轉流程。 其假設您對於 PersonGroup 和 FaceList 物件、[定型](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) \(英文\) 作業及臉部辨識功能已有基本了解。 若要深入了解這些物件，請參閱[臉部辨識](../concepts/face-recognition.md)概念指南。
+本指南是一篇進階文章，可說明如何分別將規模從現有的 PersonGroup 和 FaceList 物件擴大為 LargePersonGroup 和 LargeFaceList 物件。 本指南示範移轉流程。 其假設您對於 PersonGroup 和 FaceList 物件、[定型](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) \(英文\) 作業及臉部辨識功能已有基本了解。 若要深入了解這些物件，請參閱[臉部辨識](../concepts/face-recognition.md)概念指南。
 
 LargePersonGroup 和 LargeFaceList 統稱為大規模作業。 LargePersonGroup 最多可包含 100 萬個人，每人最多可有 248 張臉。 LargeFaceList 最多可包含 100 萬張臉。 大規模作業與傳統的 PersonGroup 和 FaceList 類似，但由於採用新架構，因此有一些差異。 
 

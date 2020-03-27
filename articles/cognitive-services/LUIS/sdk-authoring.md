@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
 ms.openlocfilehash: 614d40bb3e5bc8b83a2307b89cd517fdf7913dbe
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77524439"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>快速入門：Language Understanding (LUIS) 撰寫用戶端程式庫
