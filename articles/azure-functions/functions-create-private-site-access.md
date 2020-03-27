@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 02/15/2020
 ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78852013"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教學課程：建立 Azure Functions 私人網站存取
@@ -163,7 +163,7 @@ ms.locfileid: "78852013"
 1. 在函式應用程式中，繼續移至 [平台功能]  索引標籤。選取 [網路]  區段標題下的 [網路]  連結，以開啟網路功能狀態區段。
 2. **網路功能狀態**頁面是設定 Azure Front Door、Azure CDN 和存取限制的起點。 選取 [設定存取限制]  以設定私人網站存取權。
 3. 在**存取限制**頁面上，您只會看到預設限制。 預設不會對函式應用程式的存取施加任何限制。  選取 [新增規則]  ，以建立私人網站存取限制組態。
-4. 在 [新增存取限制]  窗格中，從 [類型]** **下拉式方塊中選取 [虛擬網路] **** ，然後選取先前建立的虛擬網路和子網路。
+4. 在 [新增存取限制]  窗格中，從 [類型]  下拉式方塊中選取 [虛擬網路]  ，然後選取先前建立的虛擬網路和子網路。
 5. **存取限制**頁面現在會顯示有新的限制。 **端點狀態**從 `Disabled`、`Provisioning` 變更為 `Enabled` 可能需要幾秒鐘的時間。
 
     >[!IMPORTANT]
