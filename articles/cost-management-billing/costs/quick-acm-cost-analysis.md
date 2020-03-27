@@ -1,19 +1,19 @@
 ---
-title: 快速入門 - 利用成本分析探索 Azure 成本 | Microsoft Docs
+title: 快速入門 - 利用成本分析探索 Azure 成本
 description: 本快速入門可協助您使用成本分析，來探索及分析您的 Azure 組織成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649291"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155948"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -27,12 +27,13 @@ ms.locfileid: "77649291"
 - 自訂成本檢視
 - 下載成本分析資料
 
-
 ## <a name="prerequisites"></a>Prerequisites
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。
 
 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../../cost-management/assign-access-acm-data.md)。
+
+如果您有新的訂用帳戶，您無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -43,6 +44,10 @@ ms.locfileid: "77649291"
 若要在成本分析中檢閱您的成本，請在 Azure 入口網站中開啟範圍，然後選取功能表中的 [成本分析]  。 例如，移至 [訂用帳戶]  、從清單中選取訂用帳戶，然後在功能表中選取 [成本分析]  。 使用 [範圍]  框，以切換至成本分析中的不同範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
 您選取的範圍會在成本管理過程中全程使用，以提供資料彙總，並控制成本資訊的存取權。 當您使用範圍時，您不會多重選取。 而是會選取一個其他項目所積存的較大範圍，然後篩選出需要的巢狀範圍。 了解這個方法很重要，因為某些人並沒有單一父項範圍 (包含多個巢狀範圍) 的存取權。
+
+觀看[如何在 Azure 入口網站中使用成本管理](https://www.youtube.com/watch?v=mfxysF-kTFA)影片，以深入了解如何使用成本分析。
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 最初的成本分析檢視包含下列區域。
 
@@ -65,7 +70,6 @@ ms.locfileid: "77649291"
 成本預測會顯示所選期間的預估成本預測。 此模型是以時間序列回歸模型為基礎。 這需要至少 10 天的近期成本和使用量資料，才能精確地預測成本。 針對指定的時間週期，預測模型需要預測期間中相等數量的訓練資料。 例如，三個月的預測需要至少三個月的近期成本和使用量資料。
 
 此模型最多會使用六個月的訓練資料來預測一年的專案成本。 最少則需要七天的訓練資料來變更其預測。 預測會以成本和使用模式中的重大變更 (例如高點和低點) 為基礎。 預測不會為 **Group by (群組依據)** 屬性中的每個項目產生個別預測。 只會提供總累計成本的預測。 如果您使用多種貨幣，此模型只會以美元提供成本的預測。
-
 
 ## <a name="customize-cost-views"></a>自訂成本檢視
 
@@ -174,11 +178,17 @@ ms.locfileid: "77649291"
 
 若要儲存自訂檢視並與其他人共用，請將成本分析釘選到 Azure 入口網站儀表板，或是複製成本分析的連結。
 
+觀看 [Azure 成本管理中的分享和節省成本檢視](https://www.youtube.com/watch?v=kQkXXj-SmvQ)影片，以深入了解如何使用入口網站在您的組織中分享成本知識。
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 若要釘選成本分析，選取右上角的釘選圖示。 釘選成本分析只會儲存主要的圖表或資料表檢視。 請共用儀表板來讓其他人可以存取圖格。 請注意，這只會共用儀表板設定，而不會授與其他人存取基礎資料的權限。 如果您沒有成本存取權，但可以存取共用儀表板，您將會看到「存取遭拒」訊息。
 
 若要共用成本分析的連結，請選取刀鋒視窗頂端的 [共用]  。 此時會顯示自訂 URL，它可以開啟此特定範圍的此特定檢視。 如果您沒有成本存取權並取得此 URL，您會看到「存取遭拒」訊息。
 
 若要深入了解如何為每個支援範圍授與其成本的存取權，請檢閱[了解和使用範圍](understand-work-scopes.md)。
+
+
 
 ## <a name="automation-and-offline-analysis"></a>自動化和離線分析
 

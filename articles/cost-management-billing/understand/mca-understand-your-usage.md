@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199155"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065692"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客戶合約的 Azure 使用量和費用檔案術語
 
@@ -23,7 +23,7 @@ Azure 使用量和費用 CSV 檔案會包含目前計費週期的每日及計量
 
 若要取得 Azure 使用量和費用檔案，請參閱[檢視和下載 Microsoft 客戶合約的 Azure 使用量和費用](download-azure-daily-usage.md)。 此檔案以逗號分隔值 (.csv) 檔案格式提供，您可以使用試算表應用程式開啟這個檔案。
 
-使用量費用是訂用帳戶的**每月**總費用。 使用量費用不會將任何信用額度或折扣列入考慮。
+使用量費用是訂用帳戶的**每月**總費用。 使用量費用不會將任何點數或折扣列入考量。
 
 ## <a name="changes-from-azure-ea-usage-and-charges"></a>來自 Azure EA 使用量和費用的變更
 
@@ -88,6 +88,8 @@ meterCategory | 計量的分類類別名稱。 例如，雲端服務  、網路 
 meterSubCategory | 計量的子分類類別名稱
 meterRegion | 可使用服務計量的區域名稱。 針對根據資料中心位置定價的某些服務，識別資料中心的位置。
 供應項目 | 所購買供應項目的名稱
+PayGPrice | 資源的零售價格。
+PricingModel | 指出計量如何定價的識別碼 (值：隨選、保留、位置)
 productId | 產生費用產品的唯一識別碼
 product | 產生費用產品的名稱
 訂用帳戶識別碼 | 產生費用訂用帳戶的唯一識別碼

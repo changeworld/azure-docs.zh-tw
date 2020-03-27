@@ -1,24 +1,26 @@
 ---
-title: 在 Azure 中使用 Cloudyn 儀表板檢視主要計量 | Microsoft Docs
+title: 在 Azure 中使用 Cloudyn 儀表板檢視主要計量
 description: 本文說明如何在 Cloudyn 中使用儀表板來檢視主要計量。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770120"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464218"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>透過儀表板檢視重要成本計量
 
 Cloudyn 中的儀表板可提供高階的報告檢視。 儀表板可讓您在單一檢視中檢視重要成本計量。 它們也可提供商務趨勢重點摘要，協助您做出重要的商業決策。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 儀表板也用於針對您組織中有不同職責的人員建立檢視，這些人員可能包括：
 

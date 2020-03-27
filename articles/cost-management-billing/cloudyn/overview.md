@@ -1,61 +1,34 @@
 ---
-title: Azure 中 Cloudyn 的概觀 | Microsoft Docs
+title: Azure 中 Cloudyn 的概觀
 description: Cloudyn 是多雲端成本管理解決方案，可協助您使用 Azure 和其他雲端資源。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: bfd00613a3949b29e2defcb6f97398a39091d0e6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e1acee631316ec961af364769daa1f2a3001e72
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774061"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065855"
 ---
 # <a name="what-is-the-cloudyn-service"></a>什麼是 Cloudyn 服務？
 
 Cloudyn 是 Microsoft 的子公司之一，可讓您針對 Azure 資源及包含 AWS 和 Google 在內的其他雲端服務提供者，追蹤雲端使用量和費用。 淺顯易懂的儀表板報告有助於成本配置和回報 (showback)/計費 (chargeback)。 Cloudyn 可以識別未充分使用的資源，以便您管理及調整，藉此最佳化雲端消費。
 
-若要觀看簡介影片，請觀看 [Azure Cloudyn 簡介](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo)。
-
+若要觀看簡介影片，請觀看 [Azure Cloudyn 簡介](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/)。
+ 
 「Azure 成本管理」提供與 Cloudyn 類似的功能。 「Azure 成本管理」是原生的 Azure 成本管理解決方案。 它可協助您分析成本、建立及管理預算、匯出資料，以及檢閱最佳化建議並依據這些建議採取動作來節省成本。 如需詳細資訊，請參閱 [Azure 成本管理](../cost-management-billing-overview.md)。
+ 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
-觀看 [Azure 成本管理和 Cloudyn 影片](https://www.youtube.com/watch?v=PmwFWwSluh8)取得相關建議，了解如何依據您的業務需求，決定應使用 Azure 成本管理或 Cloudyn。
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
-
-## <a name="cloudyn-features-moving-to-azure-cost-management"></a>移至 Azure 成本管理的 Cloudyn 功能
-
-Microsoft 已收購 Cloudyn，並且以原生方式將其成本管理功能從 Cloudyn 入口網站遷移至 Azure。 若要使用新功能，請登入 Azure 入口網站並瀏覽至 Azure 服務清單中的[成本管理與計費](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview)。 相較於 Cloudyn，原生體驗會提供更佳的效能和較低的資料延遲 (大約八小時)。
-
-我們已將 Enterprise 合約、隨用隨付及 MSDN 供應項目類別的重要功能遷移到 Azure 成本管理。 將 CSP 訂用帳戶遷移至 Azure 成本管理的作業正在進行中。
-
-如果您有尚未遷移的供應項目類別，您應該繼續使用 Cloudyn 入口網站。 其他人則可以使用 Azure 成本管理。
-
-| Microsoft Azure 供應項目和功能 | 建議的成本管理服務 |
-| --- | --- |
-| Azure Enterprise 合約 | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Web Direct (PAYG/MSDN) | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Government | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
-| AWS 的跨雲端成本分析支援 (處於預覽階段) | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| AWS 建議 | [Cloudyn](https://azure.cloudyn.com) |
-
-下列有些功能可在 Cloudyn 中使用，但現在這些功能全部都可在 Azure 成本管理中使用。
-
-- API
-- Azure 計算建議
-- Azure 保留建議
-- 預算
-- 成本分析
-- 將資料匯出至 Azure 儲存體帳戶
-- 更低的延遲性
-- Power BI 內容套件和連接器
-- 資源標籤支援
+觀看 [Azure 成本管理和 Cloudyn 影片](https://www.youtube.com/watch?v=15DzKPMBRxM)取得相關建議，了解如何依據您的業務需求，決定應使用 Azure 成本管理或 Cloudyn。
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ## <a name="monitor-usage-and-spending"></a>監視使用量和消費
 
@@ -82,6 +55,6 @@ Microsoft 已收購 Cloudyn，並且以原生方式將其成本管理功能從 C
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已經熟悉 Cloudyn，下一步是註冊雲端環境並開始探索您的資料。
+您現在已熟悉 Cloudyn，下一步是註冊雲端環境並開始探索您的資料。
 
-- [註冊個人 Azure 訂用帳戶](quick-register-azure-sub.md)
+- [註冊 CSP 合作夥伴計劃並檢視成本資料](quick-register-csp.md)

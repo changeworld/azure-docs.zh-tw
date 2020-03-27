@@ -1,5 +1,5 @@
 ---
-title: 下載 Azure 帳單發票和每日使用量資料 | Microsoft Docs
+title: 下載 Azure 帳單發票和每日使用量資料
 description: 說明如何下載或檢視您的 Azure 帳單發票和每日使用量資料。
 keywords: 帳單發票,發票下載,azure 發票,azure 使用量
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125627"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237678"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下載或檢視您的 Azure 帳單發票和每日使用量資料
 
@@ -62,7 +62,7 @@ ms.locfileid: "79125627"
 6. 在下載操作功能表中，選取 [發票]  。
 
 如果您沒有看到上一個計費期間的發票，請參閱**其他資訊**。 <!-- Fix this -->
-### <a name="noinvoice"></a>為什麼我沒有看到上期的發票？
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a>為什麼我沒有看到上期的發票？
 
 您沒有看到發票的可能原因如下︰
 

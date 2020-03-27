@@ -1,20 +1,19 @@
 ---
-title: 教學課程 - 建立和管理 Azure 預算 | Microsoft Docs
+title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128364"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155931"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -28,6 +27,7 @@ ms.locfileid: "79128364"
 
 觀看[使用 Azure 入口網站將預算套用至訂用帳戶](https://www.youtube.com/watch?v=UrkHiUx19Po)影片，以了解如何在 Azure 中建立預算以監視支出。
 
+>[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
 在本教學課程中，您會了解如何：
 

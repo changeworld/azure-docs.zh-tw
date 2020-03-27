@@ -1,5 +1,5 @@
 ---
-title: 使用 Office 365 帳戶註冊 Azure | Microsoft Docs
+title: 使用 Office 365 帳戶註冊 Azure
 description: 了解如何使用 Office 365 帳戶建立 Azure 訂用帳戶
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199580"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238103"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帳戶註冊 Azure 訂用帳戶
 如果您有 Office 365 訂用帳戶，您可以使用 Office 365 帳戶來建立 Azure 訂用帳戶。 使用 Office 365 使用者名稱和密碼來登入 [Azure 入口網站](https://portal.azure.com/)。 如果您想要設定虛擬機器或使用其他 Azure 服務，您必須註冊 Azure 訂用帳戶。 您可以與他人共用您的 Azure 訂用帳戶，並[使用角色型存取控制來管理 Azure 訂用帳戶和資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ ms.locfileid: "77199580"
 
 - 如果您需要將組織中的其他人新增至 Azure 訂用帳戶，請參閱[開始在 Azure 入口網站中進行存取管理](../../role-based-access-control/overview.md)。
 
-## <a id="more-about-subs">深入了解 Azure 和 Office 365 訂用帳戶</a>
+## <a name=""></a><a id="more-about-subs">深入了解 Azure 和 Office 365 訂用帳戶</a>
 Office 365 和 Azure 均使用 Azure AD 服務來管理使用者和訂用帳戶。 Azure 目錄就像您可在其中將使用者和訂用帳戶分組的容器。 若要將相同的使用者帳戶用於 Azure 和 Office 365 訂用帳戶，您需要確定 Azure 訂用帳戶是建立在和 Office 365 訂用帳戶相同的目錄中。 請記住下列幾點：
 
 * 訂用帳戶會建立在目錄之下

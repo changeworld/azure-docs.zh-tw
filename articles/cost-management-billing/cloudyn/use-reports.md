@@ -1,26 +1,28 @@
 ---
-title: 使用 Azure 中的 Cloudyn 報告 | Microsoft Docs
+title: 在 Azure 中使用 Cloudyn 報表
 description: 本文說明 Cloudyn 入口網站中所含 Cloudyn 報告的用途，以協助您有效加以運用。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200005"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463538"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn 入口網站中的可用報告
 
 本文說明 Cloudyn 入口網站中所含 Cloudyn 報告的用途。 也會說明如何有效運用這些報告。 大部分為直覺式的報告，具有一致的外觀及操作方式。 在一份報告中所能執行的動作，大部分也能在其他報告中執行。 如需概略了解 Cloudyn 報告的使用方式 (包括如何自訂和儲存或排定報告)，請參閱[了解成本報告](understanding-cost-reports.md)。
 
 「Azure 成本管理」提供與 Cloudyn 類似的功能。 「Azure 成本管理」是原生的 Azure 成本管理解決方案。 它可協助您分析成本、建立及管理預算、匯出資料，以及檢閱最佳化建議並依據這些建議採取動作來節省成本。 如需詳細資訊，請參閱 [Azure 成本管理](../cost-management-billing-overview.md)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>報表類型
 

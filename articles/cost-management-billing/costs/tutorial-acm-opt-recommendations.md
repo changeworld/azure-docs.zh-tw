@@ -3,21 +3,25 @@ title: 教學課程 - 使用建議來降低 Azure 成本
 description: 本教學課程可在您針對最佳化建議採取行動時協助您降低 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245403"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155914"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教學課程：透過建議最佳化成本
 
 Azure 成本管理可搭配 Azure Advisor，提供成本最佳化建議。 Azure Advisor 可協助您透過識別閒置及使用量過低的資源來最佳化及改善效率。 本教學課程會引導您完成範例，識別使用量過低的 Azure 資源，並讓您採取動作以降低成本。
+
+觀看[在 Azure 成本管理中最佳化雲端投資](https://www.youtube.com/watch?v=cSNPoAb-TNc)影片，深入了解如何使用 Advisor 將您的成本最佳化。
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 在本教學課程中，您會了解如何：
 
@@ -32,7 +36,7 @@ Azure 成本管理可搭配 Azure Advisor，提供成本最佳化建議。 Azure
 - 訂用帳戶
 - 資源群組
 
-如果您有新的訂用帳戶，就無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。 此外，您還必須擁有使用中的虛擬機器，且其至少需要活動 14 天。
+如果您有新的訂用帳戶，您無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。 此外，您還必須擁有使用中的虛擬機器，且其至少需要活動 14 天。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com/)。

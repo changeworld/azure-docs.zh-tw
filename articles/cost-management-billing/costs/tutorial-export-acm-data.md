@@ -3,23 +3,25 @@ title: 教學課程 - 建立及管理 Azure 成本管理的匯出資料
 description: 本文示範如何建立及管理匯出的 Azure 成本管理資料，以將其用於外部系統中。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b950235eccbd41b1dfa46c23985e804212d9e8f2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251129"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155897"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 
 若您已閱讀過成本分析教學課程，您便已對手動下載成本管理資料相當熟悉。 但是，您可以建立週期性工作，每天、每週或每個月自動將您的成本管理資料匯出至 Azure 儲存體。 匯出的資料格式為 CSV，其中包含所有由成本管理收集的資訊。 您接著可以在 Azure 儲存體中，搭配外部系統使用匯出的資料，並與您擁有的自訂資料合併。 您也可以在外部系統 (例如儀表板或其他財務系統) 中使用您的匯出資料。
 
 觀看影片：[如何使用 Azure 成本管理制定匯出至儲存體的排程](https://www.youtube.com/watch?v=rWa_xI1aRzo)，為您的 Azure 成本資料建立匯出至 Azure 儲存體的排程。
+
+>[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 
 本教學課程中的範例會引導您匯出成本管理資料，並驗證該資料已成功匯出。
 
@@ -40,7 +42,7 @@ ms.locfileid: "78251129"
 - 需要寫入權限，才能變更設定的儲存體帳戶，無論匯出的權限為何。
 - 您的 Azure 儲存體帳戶必須針對 Blob 或檔案儲存體進行設定。
 
-如果您有新的訂用帳戶，就無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
+如果您有新的訂用帳戶，您無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com/)。

@@ -1,20 +1,18 @@
 ---
-title: 了解 Azure 成本管理資料 | Microsoft Docs
+title: 了解 Azure 成本管理資料
 description: 本文將協助您深入了解 Azure 成本管理所包含的資料，及其處理、收集、顯示、關閉的頻率。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245380"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203010"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -22,7 +20,7 @@ ms.locfileid: "78245380"
 
 Azure 成本管理涵蓋所有使用量和購買，包括保留和 Enterprise 合約 (EA) 帳戶的第三方供應項目。 採用隨用隨付費率的 Microsoft 客戶合約帳戶和個別訂用帳戶僅包含來自 Azure 和 Marketplace 服務的使用量。 不包含支援和其他成本。 產生發票之前的成本皆為估計值，不會計入點數。
 
-如果您有新的訂用帳戶，就無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
+如果您有新的訂用帳戶，您無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
 ## <a name="supported-microsoft-azure-offers"></a>支援的 Microsoft Azure 供應項目
 
@@ -165,9 +163,9 @@ Enterprise 合約 (EA) 訂用帳戶 – 如果計費月份在 3 月 31 日結束
 成本管理中顯示的成本會四捨五入。 查詢 API 所傳回的成本不會四捨五入。 例如：
 
 - Azure 入口網站中的成本分析 - 費用會使用標準四捨五入規則來進位：大於 0.5 和更高的值會向上捨入，否則會將成本向下捨去。 只有在顯示值時，才會四捨五入。 資料處理和匯總期間不會四捨五入。 例如，成本分析會匯總成本，如下所示：
-  - 費用 1：$0.004
+  -    費用 1：$0.004
   - 費用 2：$0.004
-  - 轉譯的匯總費用：0.004 + 0.004 = 0.008。 顯示的費用為 $0.01。
+  -    轉譯的匯總費用：0.004 + 0.004 = 0.008。 顯示的費用為 $0.01。
 - 查詢 API - 費用會顯示八個小數位數，而且不會四捨五入。
 
 

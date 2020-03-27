@@ -1,24 +1,26 @@
 ---
-title: 在 Azure 中了解 Cloudyn 成本管理報告 | Microsoft Docs
+title: 了解 Azure 中的 Cloudyn 成本管理報表
 description: 本文可協助您了解 Cloudyn 成本管理報告的基本結構和功能。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773994"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474538"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理報告
 
 本文可協助您了解 Cloudyn 成本管理報告的基本結構和功能。 大部分 Cloudyn 報告是直覺式的，並且具有一致的外觀及操作。 閱讀完本文之後，就做好了使用所有成本管理報告的準備。 各種不同的報告提供了許多標準功能，讓您可以輕鬆瀏覽報告。 報告可自訂，而且可以選取數個選項來計算和呈現結果。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>報告欄位和選項
 
@@ -89,7 +91,7 @@ ms.locfileid: "76773994"
      - **帳戶名稱**
        - 帳戶或訂用帳戶名稱。 在 Azure 中，其為 Azure 訂用帳戶的名稱。
      - **帳戶號碼**
-       - 選取一個帳戶、多個帳戶，或所有帳戶。 在 Azure 中，其為 Azure 訂用帳戶的 GUID。
+       - 選取一個帳戶、多個帳戶，或所有帳戶。 在 Azure 中，這是 Azure 訂用帳戶的 GUID。
      - **父帳戶**
        - 選取父帳戶、多個帳戶，或選取全部。
      - **服務**

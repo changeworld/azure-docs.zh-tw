@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199019"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065650"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用量和費用檔案中的詞彙
 
@@ -74,10 +74,12 @@ MeterName | 全部 | 計量的名稱。
 MeterRegion | 全部 | 根據位置定價之服務的資料中心位置名稱。 請參閱 Location。
 MeterSubCategory | 全部 | 計量的子分類類別名稱。
 OfferId<sup>1</sup> | 全部 | 所購買供應項目的名稱。
+PayGPrice | 全部 | 資源的零售價格。
 PartNumber<sup>1</sup> | EA、PAYG | 用來取得特定計量定價的識別碼。
 PlanName | EA、PAYG | Marketplace 方案名稱。
 PreviousInvoiceId | MCA | 如果此明細項目為退費，則為原始發票的參考。
 PricingCurrency | MCA | 根據協商價格額定時所使用的貨幣。
+PricingModel | 全部 | 指出計量如何定價的識別碼。 (值：隨選、保留、位置)
 Products | 全部 | 產品的名稱。
 ProductId<sup>1</sup> | MCA | 產品的唯一識別碼。
 ProductOrderId | 全部 | 產品訂單的唯一識別碼。

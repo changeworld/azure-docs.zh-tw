@@ -1,20 +1,20 @@
 ---
-title: 教學課程 - 在 Azure 中使用 Cloudyn 指派存取權 | Microsoft Docs
+title: 教學課程 - 在 Azure 中使用 Cloudyn 指派存取權
 description: 在此教學課程中，您會了解如何透過定義實體存取層級的使用者帳戶，來指派對 Cloudyn 資料的存取權。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773997"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463606"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>教學課程：指派對 Cloudyn 資料的存取權
 
@@ -33,6 +33,8 @@ ms.locfileid: "76773997"
 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -68,9 +70,9 @@ ms.locfileid: "76773997"
 > [!WARNING]
 > 在刪除使用者後，就無法還原。
 
-1.  在 Cloudyn 入口網站中按一下右上方的齒輪符號，然後選取 [使用者管理]  。
-2.  在使用者清單中選取您要刪除的使用者，然後按一下 [刪除使用者]  (垃圾桶符號)。
-3.  在 [刪除使用者] 方塊中按一下 [是]  ，然後按一下 [確定]  。
+1.    在 Cloudyn 入口網站中按一下右上方的齒輪符號，然後選取 [使用者管理]  。
+2.    在使用者清單中選取您要刪除的使用者，然後按一下 [刪除使用者]  (垃圾桶符號)。
+3.    在 [刪除使用者] 方塊中按一下 [是]  ，然後按一下 [確定]  。
 
 
 ## <a name="delete-or-export-personal-data"></a>刪除或匯出個人資料

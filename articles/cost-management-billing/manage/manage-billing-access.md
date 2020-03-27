@@ -1,5 +1,5 @@
 ---
-title: 管理對 Azure 帳單的存取 | Microsoft Docs
+title: 管理 Azure 帳單的存取權
 description: 了解如何為您的小組成員提供對 Azure 計費資訊的存取權。
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344642"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237661"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
 
@@ -44,7 +44,7 @@ ms.locfileid: "78344642"
 ** 如果您是 EA 客戶，帳戶擁有者可以將上述角色指派給其小組的其他使用者。 但是為了讓這些使用者檢視計費資訊，企業系統管理員必須在 Enterprise 入口網站中啟用 AO 檢視費用。
 
 
-### <a name="opt-in"></a> 允許使用者下載發票
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> 允許使用者下載發票
 
 在帳戶管理員將適當的角色指派給其他使用者之後，他們必須開啟存取才能在 Azure 入口網站中下載發票。 2016 年 12 月以前的發票僅供帳戶管理員使用。
 

@@ -1,5 +1,5 @@
 ---
-title: 將 Azure 帳戶連結到合作夥伴識別碼 | Microsoft Docs
+title: 將 Azure 帳戶連結到合作夥伴識別碼
 description: 將合作夥伴識別碼連結到您用來管理客戶資源的使用者帳戶，以追蹤與 Azure 客戶的業務開發情況。
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651350"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204795"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
-Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達成商業和任務目標。 代表客戶管理、設定和支援 Azure 服務時，合作夥伴使用者會需要存取客戶的環境。 合作夥伴可以使用 [合作夥伴管理連結]，將其合作夥伴網路識別碼與用於服務傳遞的認證產生關聯。
+Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達成商業和任務目標。 代表客戶管理、設定和支援 Azure 服務時，合作夥伴使用者會需要存取客戶的環境。 合作夥伴可以使用合作夥伴管理連結 (PAL)，將其合作夥伴網路識別碼與用於服務傳遞的認證產生關聯。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴。Microsoft 可以根據帳戶的權限 (RBAC 角色) 和範圍 (訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於您的組織。
 
 ## <a name="get-access-from-your-customer"></a>取得客戶提供的存取權
 

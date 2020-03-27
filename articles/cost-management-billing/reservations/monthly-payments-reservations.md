@@ -5,36 +5,24 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: banders
-ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ede60adc13dadc38e18ee5ade468e01b16523f4f
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587085"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235736"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留
 
-到目前為止，Azure 保留皆必須預先付款。 現在您可以透過每月付款的方式購買 Azure 保留。 不同於需支付全額的預先購買，每月付款選項會將保留的總費用平均分配至期限中的每一個月份。 預付和每月付款的保留總費用是相同的，當您選擇按月支付時，您不需要支付任何額外費用。
+您可以透過每月付款的方式購買 Azure 保留。 不同於需支付全額的預先購買，每月付款選項會將保留的總費用平均分配至期限中的每一個月份。 預付和每月付款的保留總費用是相同的，當您選擇按月支付時，您不需要支付任何額外費用。
 
-您的月付金額可能會依當地貨幣的當月市場匯率而異。
+如果是使用 Microsoft 客戶合約 (MCA) 購買保留，則您的月付金額可能會依當地貨幣的當月市場匯率而異。
 
-每月付款適用於：
+每月付款不適用於：Databricks、SUSE Linux 保留、Red Hat 方案和 Azure Red Hat OpenShift Compute。
 
-- 虛擬機器
-- Azure 儲存體
-- SQL Database
-- SQL 資料倉儲
-- Cosmos DB
-- App Service 戳記費用
-- 受控磁碟
-- Azure 資料總管
-- 適用於 MariaDB、MySQL 與 PostgreSQL 的 Azure 資料庫
-- 由 CloudSimple 提供的 Azure VMware 解決方案
-
-
-在 [Azure 入口網站](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade)中購買 Azure 保留。
+在 [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs)中購買 Azure 保留。
 
 ![顯示保留購買的範例](./media/monthly-payments-reservations/purchase-reservation.png)
 
@@ -58,11 +46,11 @@ ms.locfileid: "77587085"
 
 ## <a name="exchange-and-refunds"></a>交換和退款
 
-就像其他保留一樣，您可以針對以每月計費購買的保留進行退款或交換。 目前，針對以每月計費購買的保留，您可以提交支援要求來開始進行交換或退款。
+就像其他保留一樣，您可以針對以每月計費購買的保留進行退款或交換。 
 
 當您交換每月付款的保留時，新購買項目的總存留期費用應大於退回保留而取消的剩餘款項。 交換並不沒有其他限制或費用。 您可以交換預先付款的保留，改為購買每月計費的新保留。 不過，新保留的存留期值應該大於退回保留的比例分配值。
 
-如果取消每月付款的保留，Microsoft 可能會針對一併取消的承諾付款收取 12% 的取消費用。 不過，Microsoft 目前不會進行懲罰性收費。 取消的承諾付款會朝 $50,000 美元的退款限制累積。 如果向您收取了取消的懲罰性費用，則不會影響退款限制。
+如果您取消每月付款的保留，已取消的未來付款將會累積到 50,000 美元的退款限制。
 
 如需有關交換和退款的詳細資訊，請參閱 [Azure 保留的自助式交換和退款](exchange-and-refund-azure-reservations.md)。
 

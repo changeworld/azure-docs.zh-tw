@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117190"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79370724"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -139,7 +139,7 @@ ms.locfileid: "79117190"
 
 ### <a name="azure-reservations-transfer"></a>Azure 保留轉移
 
-Azure 保留專案不會自動與訂用帳戶一起移動。您可以加以保留或在 CSP 中[取消並重新購買保留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。 
+Azure 保留專案不會自動隨著訂用帳戶移動。您可以保有 EA 中的保留以用於其他訂用帳戶，或[取消保留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)而讓合作夥伴在 CSP 中重新購買。 
 
 ### <a name="access-to-azure-services"></a>對 Azure 服務的存取
 

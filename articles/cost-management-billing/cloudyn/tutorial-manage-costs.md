@@ -1,20 +1,20 @@
 ---
-title: 教學課程 - 在 Azure 中使用 Cloudyn 管理成本 | Microsoft Docs
+title: 教學課程 - 在 Azure 中使用 Cloudyn 管理成本
 description: 在本教學課程中，您會了解如何使用成本配置以及回報和退款報告來管理成本。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769899"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474572"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>教學課程：使用 Cloudyn 管理成本
 
@@ -32,6 +32,8 @@ ms.locfileid: "76769899"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
 ## <a name="prerequisites"></a>Prerequisites
 
 - 您必須具有 Azure 帳號。
@@ -46,7 +48,7 @@ Cloudyn 會從 Azure 取得資源群組標記資料，並自動將標記資訊�
 
 使用成本配置模型時，您可以定義類別 (標記)並在內部套用至未分類 (未標記) 的資源，以進行成本的分組，並定義相關規則來處理未標記的成本。 成本配置規則是指您已儲存、據以將某服務的成本分配到其他服務的指示。 其後，只要選取您所建立的模型，這些資源就會在*成本配置*報告中顯示標記/類別。
 
-請注意，這些資源的標記資訊不會出現在*成本分析*報告中。 此外，在 Cloudyn 中使用成本配置套用的標記並不會傳送至 Azure，如此您在 Azure 入口網站中不會看到這些標記。
+請注意，這些資源的標記資訊不會出現在*成本分析*報表中。 此外，在 Cloudyn 中使用成本配置套用的標記並不會傳送至 Azure，如此您在 Azure 入口網站中不會看到這些標記。
 
 當您開始進行成本配置時，必須先使用成本模型來定義範圍。 成本模型並不會變更成本，而是會分配它們。 當您建立成本模型時，會依成本實體、帳戶或訂用帳戶，並透過多個標記將資料分割。 常見的範例標記可能會包含帳單代碼、成本中心或群組名稱。 標記也能協助針對組織的其他部分執行回報或退款。
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199699"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238137"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>使用 Azure 計費與成本管理避免非預期的費用
 
@@ -25,6 +25,8 @@ ms.locfileid: "77199699"
 - 使用[計費](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API 來整合帳單和成本資料與您自己的報告系統。
 - 使用 Enterprise 合約 (EA)、雲端解決方案提供者 (CSP) 和 Azure 贊助客戶的其他資源與工具。
 - 免費使用 [Azure 免費帳戶](https://azure.microsoft.com/free/)提供的[一些最常用的 Azure 服務 12 個月](create-free-services.md)。 除了下列建議之外，請參閱[避免產生免費帳戶的費用](avoid-charges-free-account.md)。
+
+如果您需要取消 Azure 訂用帳戶，請參閱[取消您的 Azure 訂用帳戶](cancel-azure-subscription.md)。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>在新增 Azure 服務之前取得估計的成本
 
@@ -67,7 +69,7 @@ ms.locfileid: "77199699"
 
 建立[預算](../costs/tutorial-acm-create-budgets.md)來管理成本，以及建立[警示](../costs/cost-mgt-alerts-monitor-usage-spending.md)，以在出現異常消費和超支時自動通知利害關係人。
 
-### <a name="costs"></a> 使用成本分析探索及分析成本
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> 使用成本分析探索及分析成本
 
 當您的 Azure 服務執行之後，請定期檢查成本以追蹤您的 Azure 費用。 您可以使用成本分析來了解您的 Azure 使用量所產生的成本。
 
@@ -120,7 +122,7 @@ ms.locfileid: "77199699"
 
 使用 Azure [帳單](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API，以程式設計方式取得帳單和成本資料。 RateCard API 與使用情況 API 一起使用即可取得您的計費使用量。 如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](usage-rate-card-overview.md)。
 
-## <a name="other-offers"></a> 其他資源和特殊案例
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> 其他資源和特殊案例
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA、CSP 和贊助客戶
 若要開始使用，請連絡帳戶管理員或 Azure 。
@@ -133,7 +135,7 @@ ms.locfileid: "77199699"
 
 如果您管理的是大型組織的 IT，我們建議您閱讀 [Azure 企業 Scaffold](/azure/architecture/cloud-adoption-guide/subscription-governance) 和[企業 IT 技術白皮書](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf 下載，僅提供英文版)。
 
-### <a name="EA"></a> Azure 入口網站中的 Enterprise 合約成本檢視
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Azure 入口網站中的 Enterprise 合約成本檢視
 
 企業成本檢視目前只提供公開預覽。 下列為需注意的事項：
 
@@ -159,7 +161,7 @@ ms.locfileid: "77199699"
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>要求服務事件的服務等級協定點數
 
-服務等級協定 (SLA) 描述 Microsoft 對執行時間與連線能力的承諾。 當 Azure 服務遇到會影響執行時間或連線能力 (通常稱為「中斷」  ) 的問題時，系統就會回報服務事件。 如果我們未依照 SLA 中的說明來達到並維護每個服務的服務等級，則您可能有資格取得每月服務費用的信用額度。
+服務等級協定 (SLA) 會說明 Microsoft 對執行時間與連線能力的承諾。 當 Azure 服務遇到會影響執行時間或連線能力 (通常稱為「中斷」  ) 的問題時，系統就會回報服務事件。 如果我們未依照 SLA 中的說明來達到並維護每個服務的服務等級，則您可能有資格取得每月服務費用的信用額度。
 
 若要要求點數：
 
@@ -167,7 +169,7 @@ ms.locfileid: "77199699"
 2. 建立新的支援要求。
 3. 在 [問題類型]  底下，選取 [計費]  。
 4. 在 [問題類型]  底下，選取 [退費要求]  。
-5. 新增詳細資料以指定您要求 SLA 信用額度，並提及日期/時間/時區以及受影響的服務 (VM、網站等)
+5. 新增詳細資料以指定您要求 SLA 點數，並提及日期/時間/時區以及受影響的服務 (VM、網站等)
 6. 請確認您的連絡人詳細資料，然後選取 [建立]  以提交您的要求。
 
 SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 SLA 為 99.95%，而 SQL 標準層的 SLA 為 99.99%。

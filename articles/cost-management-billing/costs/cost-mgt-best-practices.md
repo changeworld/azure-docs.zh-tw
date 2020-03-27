@@ -1,20 +1,19 @@
 ---
-title: 透過 Azure 成本管理將雲端投資最佳化 | Microsoft Docs
+title: 透過 Azure 成本管理將雲端投資最佳化
 description: 本文有助於從雲端投資中獲得最大價值、降低成本並評估您的資金支出。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201062"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157206"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -116,7 +115,7 @@ Azure 定價計算機可讓您混合及比對不同的 Azure 服務組合，以�
 
 Azure Migrate 是一種服務，可評估貴組織在內部部署資料中心內的目前工作負載。 它可讓您深入了解您需要從 Azure 替代方案獲得的服務。 首先，Migrate 會分析您的內部部署電腦，以判斷移轉是否可行。 接著，它會建議 Azure 中的 VM 大小，以便將效能發揮到極致。 最後，它也會建立以 Azure 為基礎的解決方案成本預估。
 
-如需詳細資訊，請參閱 [Azure Migrate](../../site-recovery/migrate-overview.md)。
+如需詳細資訊，請參閱 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)。
 
 ## <a name="analyze-and-manage-your-costs"></a>分析和管理成本
 
@@ -125,6 +124,11 @@ Azure Migrate 是一種服務，可評估貴組織在內部部署資料中心內
 ### <a name="organize-and-tag-your-resources"></a>組織和標記資源
 
 使用成本用心組織您的資源。 當您建立訂用帳戶和資源群組時，請思考負責相關聯成本的小組。 請確定您的報告會牢記您的組織。 訂用帳戶和資源群組提供良好的值區，以整理並歸納整個組織的費用。 標記提供良好的歸納成本方式。 您可以使用標記作為篩選條件。 此外，當您分析資料以及調查成本時，您可以使用標記來分組。 Enterprise 合約客戶也可以建立部門，並將訂用帳戶放在其下。 在 Azure 中，以成本為基礎的組織有助於將負責減少其小組費用的相關人員保留在您組織中。
+
+觀看[如何使用 Azure 成本管理檢閱標記原則](https://www.youtube.com/watch?v=nHQYcYGKuyw)影片，以了解您在組織中可用來強制執行可調整資源標記的工具。
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>使用成本分析
 
