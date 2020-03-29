@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386114"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 啟用 Azure 雲端服務中角色的遠端桌面連線
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Azure 門戶](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [電源外殼](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 遠端桌面可讓您存取 Azure 內執行中角色的桌面。 您可以使用遠端桌面連線來疑難排解和診斷執行中應用程式的問題。
@@ -63,7 +63,7 @@ $expiry = $(Get-Date).AddDays(1)
 $credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
 Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry
 ```
-您可以選擇性地指定部署位置和您想要啟用遠端桌面的角色。 如果未指定這些參數，此 Cmdlet 會在「生產」 部署位置中的所有角色上啟用遠端桌面。
+您可以選擇性地指定部署位置和您想要啟用遠端桌面的角色。 如果未指定這些參數，此 Cmdlet 會在「生產」 **** 部署位置中的所有角色上啟用遠端桌面。
 
 遠端桌面延伸模組與部署相關聯。 如果您為服務建立新的部署，您必須啟用該部署上的遠端桌面。 如果您想一律啟用遠端桌面，則您應該考慮將 PowerShell 指令碼整合到您的部署工作流程中。
 
@@ -96,7 +96,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 > [!NOTE]
 > 若要完全移除延伸模組組態，您應該在呼叫 *remove* Cmdlet 時指定 **UninstallConfiguration** 參數。
 >
-> **UninstallConfiguration** 參數會將任何已套用到服務的延伸模組組態解除安裝。 每個延伸模組組態都與服務組態相關連。 呼叫 remove Cmdlet 時未指定 **UninstallConfiguration** 會取消<mark>部署</mark>與擴充組態的關聯，因此實際上會移除延伸模組。 不過，延伸模組組態仍然與服務相關聯。
+> **UninstallConfiguration** 參數會將任何已套用到服務的延伸模組組態解除安裝。 每個延伸模組組態都與服務組態相關連。 呼叫 remove** Cmdlet 時未指定 **UninstallConfiguration** 會取消<mark>部署</mark>與擴充組態的關聯，因此實際上會移除延伸模組。 不過，延伸模組組態仍然與服務相關聯。
 
 ## <a name="additional-resources"></a>其他資源
 

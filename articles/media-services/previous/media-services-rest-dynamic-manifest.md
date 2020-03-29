@@ -16,16 +16,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
 ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774963"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒體服務 REST API 建立篩選器 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [REST](media-services-rest-dynamic-manifest.md)
+> * [休息](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
@@ -38,16 +38,16 @@ ms.locfileid: "76774963"
 ## <a name="types-used-to-create-filters"></a>用於建立篩選器的類型
 建立篩選器時會使用下列類型：  
 
-* [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* [篩選器](https://docs.microsoft.com/rest/api/media/operations/filter)
 * [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* [演示時間範圍](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
 * [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
 > 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
-## <a name="connect-to-media-services"></a>連接到媒體服務
+## <a name="connect-to-media-services"></a>連線到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -317,7 +317,7 @@ Request body
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP 即時資料流 (HLS) V4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
@@ -325,7 +325,7 @@ Request body
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
-**Smooth Streaming**
+**平滑流式處理**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 

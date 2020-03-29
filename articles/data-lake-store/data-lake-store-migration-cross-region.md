@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60518475"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨區域移轉 Azure Data Lake Storage Gen1
 
 隨著 Azure Data Lake Storage Gen1 在新區域開放使用，您可能會選擇進行一次性移轉，以利用某個新區域。 了解在規劃和完成移轉時的一些考量。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 如需詳細資訊，請參閱[立即建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂閱**。 如需詳細資訊，請參閱[立即建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * **兩個不同區域中的 Data Lake Storage Gen1 帳戶**。 如需詳細資訊，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
-* **Azure Data Factory**。 如需詳細資訊，請參閱 [Azure Data Factory 簡介](../data-factory/introduction.md)。
+* **Azure 資料工廠**。 如需詳細資訊，請參閱 [Azure Data Factory 簡介](../data-factory/introduction.md)。
 
 
 ## <a name="migration-considerations"></a>移轉考量
@@ -42,7 +42,7 @@ ms.locfileid: "60518475"
 
 * **Data Lake Storage Gen1 帳戶名稱**. 新區域中的新帳戶名稱必須是全域唯一的。 例如，在美國東部 2 的舊 Data Lake Storage Gen1 帳戶名稱可能是 contosoeastus2.azuredatalakestore.net。 您可能會將歐盟北部的新 Data Lake Storage Gen1 帳戶命名為 contosonortheu.azuredatalakestore.net。
 
-* **工具**。 建議您使用 [Azure Data Factory 複製活動](../data-factory/connector-azure-data-lake-store.md)來複製 Data Lake Storage Gen1 檔案。 Data Factory 支援高效能與可靠性的資料移動。 請記住，Data Factory 只會複製資料夾階層和檔案內容。 您必須將用於舊帳戶的任何存取控制清單 (ACL) 手動套用到新帳戶。 如需詳細資訊 (包括最佳狀況案例的效能目標)，請參閱[複製活動的效能及微調指南](../data-factory/copy-activity-performance.md)。 如果您想要更快速地複製資料，您可能需要使用其他雲端資料移動單位。 AdlCopy 等其他工具不支援在區域之間複製資料。  
+* **工具**. 建議您使用 [Azure Data Factory 複製活動](../data-factory/connector-azure-data-lake-store.md)來複製 Data Lake Storage Gen1 檔案。 Data Factory 支援高效能與可靠性的資料移動。 請記住，Data Factory 只會複製資料夾階層和檔案內容。 您必須將用於舊帳戶的任何存取控制清單 (ACL) 手動套用到新帳戶。 如需詳細資訊 (包括最佳狀況案例的效能目標)，請參閱[複製活動的效能及微調指南](../data-factory/copy-activity-performance.md)。 如果您想要更快速地複製資料，您可能需要使用其他雲端資料移動單位。 AdlCopy 等其他工具不支援在區域之間複製資料。  
 
 * **頻寬費用**。 適用[頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/)，因為資料會傳出 Azure 區域。
 

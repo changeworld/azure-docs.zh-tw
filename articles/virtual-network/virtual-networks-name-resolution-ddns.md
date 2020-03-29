@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60640373"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>在您自己的 DNS 伺服器中使用動態 DNS 來註冊主機名稱
@@ -35,7 +35,7 @@ Azure 會為虛擬機器 (VM) 及角色執行個體[提供名稱解析](virtual-
 ## <a name="linux-clients"></a>Linux 用戶端
 Linux 用戶端通常不會在啟動時向 DNS 伺服器自行登錄，其假設 DHCP 伺服器會這麼做。 Azure 的 DHCP 伺服器並不具認證，無法在您的 DNS 伺服器登錄記錄。 您可以使用稱為 `nsupdate` 的工具，該工具隨附於繫結套件，以傳送 DDNS 更新。 因為 DDNS 通訊協定已標準化，即使您未在 DNS 伺服器上使用繫結，也可使用 `nsupdate`。
 
-您可以使用 DHCP 用戶端所提供的勾點，在 DNS 伺服器中建立及維護主機名稱實體。 在 DHCP 週期中，用戶端在 */etc/dhcp/dhclient-exit-hooks.d/* 中執行指令碼。 您可以使用勾點來註冊使用 `nsupdate` 的新 IP 位址。 例如:
+您可以使用 DHCP 用戶端所提供的勾點，在 DNS 伺服器中建立及維護主機名稱實體。 在 DHCP 週期中，用戶端在 */etc/dhcp/dhclient-exit-hooks.d/* 中執行指令碼。 您可以使用勾點來註冊使用 `nsupdate` 的新 IP 位址。 例如：
 
 ```bash
 #!/bin/sh

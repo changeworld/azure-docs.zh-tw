@@ -1,6 +1,6 @@
 ---
-title: 高效能運算-Azure 虛擬機器 |Microsoft Docs
-description: 深入了解在 Azure 上的高效能運算。
+title: 高性能計算 - Azure 虛擬機器 |微軟文檔
+description: 瞭解 Azure 上的高性能計算。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707814"
 ---
 # <a name="optimization-for-linux"></a>針對 Linux 進行最佳化
 
-本文說明一些重要的技巧，來最佳化您的 OS 映像。 深入了解[啟用 InfiniBand](enable-infiniband.md)和最佳化 OS 映像。
+本文展示了優化作業系統映射的一些關鍵技術。 瞭解有關啟用[InfiniBand](enable-infiniband.md)和優化作業系統映射的更多詳細資訊。
 
 ## <a name="update-lis"></a>更新 LIS
 
-如果部署使用自訂映像 （例如，例如 CentOS/RHEL 7.4 或 7.5 舊版作業系統），更新 VM 上的 LIS。
+如果使用自訂映射進行部署（例如，較舊的作業系統（如 CentOS/RHEL 7.4 或 7.5），則更新 VM 上的 LIS。
 
 ```bash
 wget https://aka.ms/lis
@@ -36,21 +36,21 @@ pushd LISISO
 
 ## <a name="reclaim-memory"></a>回收記憶體
 
-藉由自動回收以避免遠端記憶體存取的記憶體來改善效率。
+通過自動回收記憶體來提高效率，以避免遠端記憶體訪問。
 
 ```bash
 echo 1 >/proc/sys/vm/zone_reclaim_mode
 ```
 
-若要讓此 VM 重新開機後保存：
+要使這種情況在 VM 重新開機後持續：
 
 ```bash
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf sysctl -p
 ```
 
-## <a name="disable-firewall-and-selinux"></a>停用防火牆和 SELinux
+## <a name="disable-firewall-and-selinux"></a>禁用防火牆和 SELinux
 
-停用防火牆和 SELinux。
+禁用防火牆和 SELinux。
 
 ```bash
 systemctl stop iptables.service
@@ -62,9 +62,9 @@ iptables -nL
 sed -i -e's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
 
-## <a name="disable-cpupower"></a>停用 cpupower
+## <a name="disable-cpupower"></a>禁用 cpu 電源
 
-停用 cpupower。
+禁用 cpu 電源。
 
 ```bash
 service cpupower status
@@ -75,6 +75,6 @@ sudo systemctl disable cpupower
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[啟用 InfiniBand](enable-infiniband.md)和最佳化 OS 映像。
+* 瞭解有關啟用[InfiniBand](enable-infiniband.md)和優化作業系統映射的更多詳細資訊。
 
-* 深入了解[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)在 Azure 上。
+* 在 Azure 上瞭解有關[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多詳細資訊。

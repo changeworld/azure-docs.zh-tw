@@ -4,10 +4,10 @@ description: 受控服務供應項目能允許服務提供者在 Azure Marketpla
 ms.date: 01/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904311"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派的資源管理
@@ -21,11 +21,11 @@ Azure 委派的資源管理可讓使用者以邏輯方式將資源從某個租�
 > [!NOTE]
 > Azure 委派的資源管理也可以用於[擁有多個 Azure AD 租用戶的企業內](enterprise.md)，以簡化跨租用戶管理。
 
-透過 Azure 委派的資源管理，授權使用者可以直接在客戶訂用帳戶的內容中作業，而不需要在該客戶租用戶中擁有帳戶，或是成為該客戶租用戶的共同擁有者。 他們也可以在 Azure 入口網站[新的 [我的客戶] 頁面中檢視及管理所有委派的客戶訂用帳戶](../how-to/view-manage-customers.md)。
+透過 Azure 委派的資源管理，授權使用者可以直接在客戶訂用帳戶的內容中作業，而不需要在該客戶租用戶中擁有帳戶，或是成為該客戶租用戶的共同擁有者。 他們也可以在 Azure 入口網站[新的 [我的客戶]**** 頁面中檢視及管理所有委派的客戶訂用帳戶](../how-to/view-manage-customers.md)。
 
 [跨租用戶管理體驗](cross-tenant-management-experience.md)可協助您更有效率地搭配 Azure 管理服務 (例如 Azure 原則、Azure 資訊安全中心等) 處理工作。 所有服務提供者活動都會在活動記錄中追蹤，其會同時儲存在服務提供者及客戶的租用戶中。 這表示客戶和服務提供者都可以輕鬆地識別與任何變更相關聯的使用者。
 
-當您將客戶上線至 Azure 委派的資源管理時，他們將能存取 Azure 入口網站中新的 [服務提供者] 頁面；客戶將能在其中[確認及管理其供應項目、服務提供者與委派的資源](../how-to/view-manage-service-providers.md)。 如果客戶想要撤銷某個服務提供者的存取權，便可以隨時在這裡那麼做。
+當您將客戶上線至 Azure 委派的資源管理時，他們將能存取 Azure 入口網站中新的 [服務提供者]**** 頁面；客戶將能在其中[確認及管理其供應項目、服務提供者與委派的資源](../how-to/view-manage-service-providers.md)。 如果客戶想要撤銷某個服務提供者的存取權，便可以隨時在這裡那麼做。
 
 您可以[將新的受控服務供應項目類型發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md)，以輕鬆地將客戶上線至 Azure 委派的資源管理。 或者，您也可以[部署 Azure Resource Manager 範本來完成上線程序](../how-to/onboard-customer.md)。
 
@@ -40,11 +40,11 @@ Azure 委派的資源管理可讓使用者以邏輯方式將資源從某個租�
 3. 在客戶上線之後，授權使用者便可以登入您的服務提供者租用戶，並根據您所定義的存取在指定的客戶範圍執行管理工作。
 
 > [!NOTE]
-> 不支援跨不同雲端的兩個租使用者之間的訂用帳戶委派。
+> 不支援跨單獨雲在兩個租戶之間委派訂閱。
 
 ## <a name="support-for-azure-delegated-resource-management"></a>適用於 Azure 委派的資源管理的支援
 
-如果您需要與 Azure 委派的資源管理相關的協助，則可以在 Azure 入口網站中建立支援要求。 針對 [問題類型]，請選擇 [技術]。 選取訂用帳戶，然後選取 [**燈塔**] （在 [**監視 & 管理**] 底下）。
+如果您需要與 Azure 委派的資源管理相關的協助，則可以在 Azure 入口網站中建立支援要求。 針對 [問題類型]****，請選擇 [技術]****。 選擇訂閱，然後選擇**燈塔**（在**監視&管理**下）。
 
 ## <a name="next-steps"></a>後續步驟
 

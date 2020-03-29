@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735505"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>將 IoT 裝置連線到 Azure：IoT 中樞和事件中樞
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>將 IoT 裝置連接到 Azure：IoT 中樞和事件中樞
 
-Azure 提供專為不同連線和通訊類型所開發的服務，協助您連接資料與雲端的強大功能。 「Azure IoT 中樞」和「Azure 事件中樞」都是雲端服務，可擷取大量資料並處理或儲存該資料來獲得業務見解。 這兩種服務的共通點在於支援低延遲時間和高可靠性的資料擷取，不過它們是為不同目的而設計的服務。 IoT 中樞已開發出可解決將 IoT 裝置連線至 Azure 雲端，而事件中樞專為巨量資料串流處理的獨特需求。 Microsoft 建議使用 Azure IoT 中樞連接到 Azure IoT 裝置
+Azure 提供專為不同連線和通訊類型所開發的服務，協助您連接資料與雲端的強大功能。 「Azure IoT 中樞」和「Azure 事件中樞」都是雲端服務，可擷取大量資料並處理或儲存該資料來獲得業務見解。 這兩種服務的共通點在於支援低延遲時間和高可靠性的資料擷取，不過它們是為不同目的而設計的服務。 開發 IoT 中心是為了滿足將 IoT 設備連接到 Azure 雲的獨特要求，而事件中心是為大資料流程設計的。 Microsoft 建議使用 Azure IoT 中心將 IoT 設備連接到 Azure
 
-Azure IoT 中樞是雲端閘道連接 IoT 裝置來收集資料，並進行業務深入分析和自動化。 此外，IoT 中樞的功能還能讓裝置與後端系統之間的關係更豐富。 雙向通訊功能意謂您會收到資料時您也可以從裝置傳送命令，並傳回給裝置的原則。 例如，使用雲端到裝置傳訊來更新屬性，或叫用的裝置管理動作。 雲端到裝置通訊也可讓您使用 Azure IoT Edge 將雲端智慧傳送到 edge 裝置。 IoT 中樞提供的獨特裝置層級身分識別，有助於進一步保護 IoT 解決方案，預防潛在攻擊。 
+Azure IoT 中心是連接 IoT 設備的雲閘道，用於收集資料並推動業務洞察和自動化。 此外，IoT 中樞的功能還能讓裝置與後端系統之間的關係更豐富。 雙向通信功能意味著，當您從設備接收資料時，您還可以將命令和策略發送回設備。 例如，使用雲到設備消息更新屬性或調用裝置管理操作。 雲到設備通信還使您能夠使用 Azure IoT Edge 將雲智慧發送到邊緣設備。 IoT 中樞提供的獨特裝置層級身分識別，有助於進一步保護 IoT 解決方案，預防潛在攻擊。 
 
-[Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)是 Azure 的巨量資料串流服務。 它是專為高輸送量資料串流情節所設計的服務，允許客戶每天傳送數十億筆要求。 事件中樞使用分割取用者模型來相應放大您的串流，並且已融入 Azure 的巨量資料和分析服務當中，如 Databricks、串流分析、ADLS 及 HDInsight。 該服務提供像事件中樞擷取和自動擴充之類的功能，能支援您的巨量資料應用程式和解決方案。 此外，IoT 中樞使用事件中樞的遙測資料流程路徑，讓您的 IoT 解決方案也受惠於事件中樞相當強大。
+[Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)是 Azure 的巨量資料串流服務。 它是專為高輸送量資料串流情節所設計的服務，允許客戶每天傳送數十億筆要求。 事件中樞使用分割取用者模型來相應放大您的串流，並且已融入 Azure 的巨量資料和分析服務當中，如 Databricks、串流分析、ADLS 及 HDInsight。 該服務提供像事件中樞擷取和自動擴充之類的功能，能支援您的巨量資料應用程式和解決方案。 此外，IoT 中心使用事件中心作為其遙測流路徑，因此 IoT 解決方案還受益于事件中心的強大功能。
 
-總結來說，這兩種解決方案專為大規模資料擷取。 只有 「 IoT 中樞提供的豐富 IoT 特定功能所設計，以最大化您的 IoT 裝置連線到 Azure 雲端的商業價值。  如果您剛踏上 IoT 之旅，入手 IoT 中樞來支援資料擷取情節，將能確保當您需要 IoT 功能來滿足商業和技術需求時，可立即取用完備的 IoT 功能。
+總之，這兩種解決方案都是為大規模資料引入而設計的。 只有 IoT 中心提供豐富的 IoT 特定功能，旨在為您最大化將 IoT 設備連接到 Azure 雲的業務價值。  如果您剛踏上 IoT 之旅，入手 IoT 中樞來支援資料擷取情節，將能確保當您需要 IoT 功能來滿足商業和技術需求時，可立即取用完備的 IoT 功能。
 
 下表提供有關針對 IoT 功能評估這兩項服務時，「IoT 中樞」的兩個層級如何與「事件中樞」做比較的詳細資料。 如需有關標準和基本 IoT 中樞層的詳細資訊，請參閱[如何選擇適合的 IoT 中樞層](iot-hub-scaling.md)。
 
 | IoT 功能 | IoT 中樞標準層 | IoT 中樞基本層 | 事件中樞 |
 | --- | --- | --- | --- |
 | 裝置到雲端傳訊 | ![勾選][checkmark] | ![勾選][checkmark] | ![勾選][checkmark] |
-| 通訊協定：HTTPS、AMQP、透過 WebSocket 的 AMQP | ![勾選][checkmark] | ![勾選][checkmark] | ![勾選][checkmark] |
-| 通訊協定：MQTT、透過 WebSocket 的 MQTT | ![勾選][checkmark] | ![勾選][checkmark] |  |
+| 通訊協定：HTTPS、AMQP、透過 webSocket 的 AMQP | ![勾選][checkmark] | ![勾選][checkmark] | ![勾選][checkmark] |
+| 通訊協定：MQTT、透過 webSocket 的 MQTT | ![勾選][checkmark] | ![勾選][checkmark] |  |
 | 每部裝置身分識別 | ![勾選][checkmark] | ![勾選][checkmark] |  |
 | 從裝置上傳檔案 | ![勾選][checkmark] | ![勾選][checkmark] |  |
 | 裝置佈建服務 | ![勾選][checkmark] | ![勾選][checkmark] |  |

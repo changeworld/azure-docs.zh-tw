@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 監視器媒體服務計量和診斷記錄
+title: 使用 Azure 監視器的媒體服務指標和診斷日誌
 titleSuffix: Azure Media Services
-description: 瞭解如何透過 Azure 監視器監視 Azure 媒體服務計量和診斷記錄。
+description: 瞭解如何通過 Azure 監視器監視 Azure 媒體服務指標和診斷日誌。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,103 +15,103 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: f075362f976e6abb26c9781c4b0cdeb7912c0862
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514029"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通過 Azure 監視器監視媒體服務指標和診斷日誌
 
-[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 Azure 監視器所收集的所有資料都符合下列兩種基本類型的其中一種：計量和記錄。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以使用[計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)將計量資料視覺化並加以分析。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)、將其匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
+[Azure 監視器](../../azure-monitor/overview.md)允許您監視指標和診斷日誌，説明您瞭解應用的性能。 Azure 監視器收集的所有資料都適合兩種基本類型之一：指標和日誌。 您可以監視媒體服務診斷日誌，並為收集的指標和日誌創建警報和通知。 您可以使用[指標資源管理器](../../azure-monitor/platform/metrics-getting-started.md)來視覺化和分析指標資料。 您可以將日誌發送到[Azure 存儲](https://azure.microsoft.com/services/storage/)，將它們資料流到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，將其匯出到[日誌分析](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
 
-如需詳細的總覽，請參閱[Azure 監視器計量](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+有關詳細概述，請參閱[Azure 監視器指標](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷日誌](../../azure-monitor/platform/platform-logs-overview.md)。
 
-本主題討論支援的[媒體服務計量](#media-services-metrics)和[媒體服務診斷記錄](#media-services-diagnostic-logs)。
+本主題討論受支援的[媒體服務指標](#media-services-metrics)[和媒體服務診斷日誌](#media-services-diagnostic-logs)。
 
-## <a name="media-services-metrics"></a>媒體服務計量
+## <a name="media-services-metrics"></a>媒體服務指標
 
-不論值是否變更，系統都會定期收集計量。 它們適合用於警示，因為它們可頻繁地進行取樣，而且可使用相對較簡單的邏輯快速引發警示。 如需有關如何建立計量警示的詳細資訊，請參閱[使用 Azure 監視器建立、查看和管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
+不論值是否變更，系統都會定期收集計量。 它們適合用於警示，因為它們可頻繁地進行取樣，而且可使用相對較簡單的邏輯快速引發警示。 有關如何創建指標警報的資訊，請參閱使用 Azure[監視器 創建、查看和管理指標警報](../../azure-monitor/platform/alerts-metric.md)。
 
-媒體服務支援下列資源的監視計量：
+媒體服務支援以下資源的監視指標：
 
 * 帳戶
 * 串流端點
 
 ### <a name="account"></a>帳戶
 
-您可以監視下列帳戶計量。
+您可以監視以下帳戶指標。
 
-|度量名稱|顯示名稱|說明|
+|度量名稱|顯示名稱|描述|
 |---|---|---|
-|AssetCount|資產計數|您帳戶中的資產。|
-|AssetQuota|資產配額|帳戶中的資產配額。|
-|AssetQuotaUsedPercentage|已使用的資產配額百分比|已使用的資產配額百分比。|
-|ContentKeyPolicyCount|內容金鑰原則計數|您帳戶中的內容金鑰原則。|
-|ContentKeyPolicyQuota|內容金鑰原則配額|帳戶中的內容金鑰原則配額。|
-|ContentKeyPolicyQuotaUsedPercentage|已使用的內容金鑰原則配額百分比|已使用的內容金鑰原則配額百分比。|
-|StreamingPolicyCount|串流原則計數|您帳戶中的串流原則。|
-|StreamingPolicyQuota|串流原則配額|您帳戶中的串流原則配額。|
-|StreamingPolicyQuotaUsedPercentage|已使用的串流原則配額百分比|已使用的串流原則配額百分比。|
+|資產計數|資產計數|您帳戶中的資產。|
+|資產配額|資產配額|您帳戶中的資產配額。|
+|資產配額使用百分比|資產配額使用百分比|已使用的資產配額的百分比。|
+|內容關鍵策略計數|內容金鑰策略計數|帳戶中的內容關鍵策略。|
+|內容關鍵策略配額|內容關鍵策略配額|帳戶中的內容關鍵策略配額。|
+|內容關鍵策略配額使用百分比|內容 關鍵策略配額使用百分比|已使用的內容金鑰策略配額的百分比。|
+|流式處理策略計數|流策略計數|帳戶中的流式處理策略。|
+|流式處理策略配額|流式處理策略配額|帳戶中的流式處理策略配額。|
+|流式處理策略配額使用百分比|流策略配額使用百分比|已使用的流式處理策略配額的百分比。|
 
-您也應該查看[帳戶配額和限制](limits-quotas-constraints.md)。
+您還應查看[帳戶配額和限制](limits-quotas-constraints.md)。
 
 ### <a name="streaming-endpoint"></a>串流端點
 
-支援下列媒體服務[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)計量：
+支援以下媒體服務[流終結點](https://docs.microsoft.com/rest/api/media/streamingendpoints)指標：
 
-|度量名稱|顯示名稱|說明|
+|度量名稱|顯示名稱|描述|
 |---|---|---|
-|要求|要求|提供串流端點所服務的 HTTP 要求總數。|
-|輸出|輸出|輸出位元組總數。 例如，串流端點資料流程處理的位元組。|
-|SuccessE2ELatency|成功的端對端延遲|當送出回應的最後一個位元組時，從串流端點收到要求的持續時間。|
+|Requests|Requests|提供流式處理終結點提供的 HTTP 要求總數。|
+|輸出|輸出|出口位元組的總數。 例如，流式處理終結點資料流的位元組。|
+|SuccessE2ELatency|成功端到端延遲|從流式處理終結點收到請求到發送回應的最後一個位元組的持續時間。|
 
-### <a name="why-would-i-want-to-use-metrics"></a>為什麼要使用計量？
+### <a name="why-would-i-want-to-use-metrics"></a>為什麼要使用指標？
 
-以下範例說明監視媒體服務計量如何協助您瞭解應用程式的執行狀況。 媒體服務計量可以解決的一些問題如下：
+以下是監視媒體服務指標如何説明您瞭解應用性能的示例。 媒體服務指標可以解決的一些問題包括：
 
-* 如何? 監視我的標準串流端點，以知道我何時已超過限制？
-* 如何? 知道我是否有足夠的 Premium 串流端點縮放單位？
-* 如何設定警示以知道何時相應增加串流端點？
-* 如何? 設定警示，以知道何時達到在帳戶上設定的輸出上限？
-* 如何查看要求失敗的細目，以及造成失敗的原因為何？
-* 如何查看從封裝程式提取的 HLS 或破折號要求數目？
-* 如何? 設定警示，以知道何時會叫用失敗的要求數目的臨界值？
+* 如何監視標準流式處理終結點，瞭解我何時超出了限制？
+* 如何知道我是否有足夠的高級流式處理終結點縮放單位？
+* 如何設置警報，以便知道何時擴展流式處理終結點？
+* 如何設置警報，以便知道何時到達了帳戶上配置的最大出口？
+* 如何查看請求失敗的細目以及導致失敗的原因？
+* 如何查看從打包程式提取的 HLS 或 DASH 請求數？
+* 如何設置警報，以便知道故障請求的閾值何時命中？
 
 ### <a name="example"></a>範例
 
-請參閱[如何監視媒體服務計量](media-services-metrics-howto.md)。
+請參閱[如何監視媒體服務指標](media-services-metrics-howto.md)。
 
-## <a name="media-services-diagnostic-logs"></a>媒體服務診斷記錄
+## <a name="media-services-diagnostic-logs"></a>媒體服務診斷日誌
 
-診斷記錄可提供有關 Azure 資源作業的豐富且經常性資料。 如需詳細資訊，請參閱[如何收集並取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)。
+診斷日誌提供有關 Azure 資源操作的豐富且頻繁的資料。 有關詳細資訊，請參閱[如何從 Azure 資源收集和使用日誌資料](../../azure-monitor/platform/platform-logs-overview.md)。
 
-媒體服務支援下列診斷記錄：
+媒體服務支援以下診斷日誌：
 
-* 金鑰傳遞
+* 金鑰交付
 
-### <a name="key-delivery"></a>金鑰傳遞
+### <a name="key-delivery"></a>金鑰交付
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
-|金鑰傳遞服務要求|顯示金鑰傳遞服務要求資訊的記錄檔。 如需詳細資訊，請參閱[架構](media-services-diagnostic-logs-schema.md)。|
+|金鑰交付服務請求|顯示金鑰傳遞服務請求資訊的日誌。 有關詳細資訊，請參閱[架構](media-services-diagnostic-logs-schema.md)。|
 
-### <a name="why-would-i-want-to-use-diagnostics-logs"></a>為什麼要使用診斷記錄？
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>為什麼要使用診斷日誌？
 
-您可以使用金鑰傳遞診斷記錄來檢查的一些事項如下：
+您可以使用金鑰傳遞診斷日誌檢查的一些事項包括：
 
-* 查看 DRM 類型所傳遞的授權數目。
-* 查看原則提供的授權數目。
-* 查看 DRM 或原則類型的錯誤。
-* 查看用戶端未經授權的授權要求數目。
+* 請參閱 DRM 類型提供的許可證數。
+* 查看策略交付的許可證數。
+* 按 DRM 或策略類型查看錯誤。
+* 查看來自用戶端的未授權許可證請求數。
 
 ### <a name="example"></a>範例
 
-請參閱[如何監視媒體服務診斷記錄](media-services-diagnostic-logs-howto.md)。
+請參閱[如何監視媒體服務診斷日誌](media-services-diagnostic-logs-howto.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [如何收集並取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
+* [如何從 Azure 資源收集和使用日誌資料](../../azure-monitor/platform/platform-logs-overview.md)
 * [使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)
-* [如何監視媒體服務計量](media-services-metrics-howto.md)
-* [如何監視媒體服務診斷記錄](media-services-diagnostic-logs-howto.md)
+* [如何監視媒體服務指標](media-services-metrics-howto.md)
+* [如何監視媒體服務診斷日誌](media-services-diagnostic-logs-howto.md)

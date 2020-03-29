@@ -9,17 +9,17 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771304"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>適用於 Node.js 的 Azure Cosmos DB 資料表 API︰版本資訊與資源
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
-> * [Java](table-sdk-java.md)
+> * [JAVA](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
  
@@ -27,7 +27,7 @@ ms.locfileid: "76771304"
 |   |   |
 |---|---|
 |**SDK 下載**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API 文件**|[Node.js API 參考文件](https://azure.github.io/azure-storage-node/)|
+|**API 文檔**|[Node.js API 參考文件](https://azure.github.io/azure-storage-node/)|
 |**參與 SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]
@@ -36,7 +36,7 @@ ms.locfileid: "76771304"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * 公開上市版本
 
 ## <a name="release-and-retirement-dates"></a>發行和停用日期
@@ -51,6 +51,6 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 ## <a name="faq"></a>常見問題集
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。 
 

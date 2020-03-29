@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825982"
 ---
 # <a name="how-to-assign-users-to-applications"></a>將使用者指派至應用程式
@@ -44,9 +44,9 @@ ms.locfileid: "65825982"
 
     * [所有使用者](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)群組
 
-3.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的**新增應用程式**功能新增應用程式，而**不需要商務核准**
+3.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，而**不需要商務核准**
 
-4.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的**新增應用程式**功能新增應用程式，但需要經過**一群選定商務核准者的事先核准**
+4.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，但需要經過**一群選定商務核准者的事先核准**
 
 5.  系統管理員啟用[自助群組管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，以允許使用者加入已指派應用程式的群組，而**不需要商務核准**
 
@@ -61,4 +61,4 @@ ms.locfileid: "65825982"
 10. 使用者本身登入應用程式以[同意應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 管理應用程式](what-is-application-management.md)
+[使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

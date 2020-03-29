@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840888"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>使用 Azure REST API 以 Azure 網路監看員管理封包擷取
 
 > [!div class="op_single_selector"]
-> - [Azure 入口網站](network-watcher-packet-capture-manage-portal.md)
-> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
+> - [Azure 門戶](network-watcher-packet-capture-manage-portal.md)
+> - [電源外殼](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
@@ -42,7 +42,7 @@ ms.locfileid: "76840888"
 
 ## <a name="before-you-begin"></a>開始之前
 
-在此案例中，您可以呼叫網路監看員 REST API 以執行 IP 流量驗證。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 您可以在 chocolatey 的 [ARMClient on Chocolatey](https://chocolatey.org/packages/ARMClient) 上找到 ARMClient
+在此案例中，您可以呼叫網路監看員 REST API 以執行 IP 流量驗證。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 在巧克力的[ARMClient](https://chocolatey.org/packages/ARMClient)的巧克力上被發現
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
@@ -60,7 +60,7 @@ armclient login
 
 下列程式碼需要變數︰
 
-- **subscriptionId** -訂用帳戶識別碼也可以使用 get-azsubscription Cmdlet 來**取得**。
+- **訂閱 Id** - 也可以使用**獲取-Az訂閱**Cmdlet 檢索訂閱 ID。
 - **resourceGroupName** - 包含虛擬機器的資源群組名稱。
 
 ```powershell
@@ -301,7 +301,7 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>後續步驟
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關儲存體總管的詳細資訊可以在下列連結找到︰[儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關存儲資源管理器的詳細資訊，請參閱以下連結：[存儲資源管理器](https://storageexplorer.com/)
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 

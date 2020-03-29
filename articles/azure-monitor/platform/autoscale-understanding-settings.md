@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364300"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
@@ -17,7 +17,7 @@ ms.locfileid: "75364300"
 ## <a name="autoscale-setting-schema"></a>自動調整規模設定結構描述
 為了說明自動調整設定結構描述，將會使用以下自動調整設定。 請務必注意，此自動調整設定具有：
 - 一個設定檔。 
-- 此設定檔中有兩個計量規則；一個用於擴增，一個用於縮減。
+- 此設定檔中有兩個計量規則；一個用於相應放大，一個用於相應縮小。
   - 當虛擬機器擴展集的平均「百分比 CPU」計量在過去 10 分鐘大於 85% 時，就會觸發相應放大規則。
   - 當虛擬機器擴展集的平均值在過去 1 分鐘小於 60% 時，就會觸發相應縮小規則。
 
@@ -85,7 +85,7 @@ ms.locfileid: "75364300"
 }
 ```
 
-| 區段 | 元素名稱 | 說明 |
+| 區段 | 元素名稱 | 描述 |
 | --- | --- | --- |
 | 設定 | ID | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
 | 設定 | NAME | 自動調整規模設定名稱。 |
@@ -95,8 +95,8 @@ ms.locfileid: "75364300"
 | 設定檔 | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
 | 設定檔 | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
 | 設定檔 | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
-| 設定檔 | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行縮減。 |
-| 設定檔 | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要擴增，另一個用於決定何時要縮減。 |
+| 設定檔 | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行相應縮小。 |
+| 設定檔 | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要相應放大，另一個用於決定何時要相應縮小。 |
 | rule (規則) | metricTrigger | 定義規則的計量條件。 |
 | metricTrigger | metricName | 計量的名稱。 |
 | metricTrigger |  metricResourceUri | 發出計量之資源的資源識別碼。 在大多數情況下，會與要調整規模的資源相同。 在某些情況下，則可能不同。 例如，您可以根據儲存體佇列中的訊息數目來調整虛擬機器擴展集的規模。 |
@@ -105,15 +105,15 @@ ms.locfileid: "75364300"
 | metricTrigger | timeWindow | 回顧計量的時間長度。 例如 **timeWindow = “PT10M”** 表示每次執行自動調整時，都會查詢過去 10 分鐘的計量。 時間範圍可讓您的計量正規化，而避免對暫時性尖峰做出反應。 |
 | metricTrigger | timeAggregation | 用來彙總所取樣計量的彙總方法。 例如 **TimeAggregation = “Average”** 應該會透過計算平均值來彙總所取樣的計量。 在前述案例中會採用 10 個 1 分鐘樣本，然後計算其平均值。 |
 | rule (規則) | scaleAction | 觸發 metricTrigger 時要採取的動作。 |
-| scaleAction | direction | "Increase" 用於擴增，或 "Decrease" 用於縮減。|
+| scaleAction | direction | "Increase" 用於相應放大，或 "Decrease" 用於相應縮小。|
 | scaleAction | value | 要增加或減少多少資源容量。 |
-| scaleAction | cooldown | 在進行調整作業之後、再次調整之前，所要等待的時間長度。 例如，如果 **cooldown = “PT10M”** ，則自動調整在接下來 10 分鐘內不會再次嘗試進行調整。 cooldown 是用來在新增或移除執行個體之後，讓計量穩定。 |
+| scaleAction | cooldown | 在進行調整作業之後、再次調整之前，所要等待的時間長度。 例如，如果 **cooldown = “PT10M”**，則自動調整在接下來 10 分鐘內不會再次嘗試進行調整。 cooldown 是用來在新增或移除執行個體之後，讓計量穩定。 |
 
 ## <a name="autoscale-profiles"></a>自動調整規模設定檔
 
 自動調整規模設定檔有三種類型：
 
-- **一般設定檔：** 最常見的設定檔。 如果您不需要根據星期幾或特定日子調整資源規模，您可以使用一般設定檔。 接著，可以為此設定檔設定計量規則，以指定何時要擴增及何時要縮減。 您應該只定義一個一般設定檔。
+- **一般設定檔：** 最常見的設定檔。 如果您不需要根據星期幾或特定日子調整資源規模，您可以使用一般設定檔。 接著，可以為此設定檔設定計量規則，以指定何時要相應放大及何時要相應縮小。 您應該只定義一個一般設定檔。
 
     本文中稍早使用的範例設定檔是一般設定檔範例。 請注意，您也可以將設定檔設定成調整至資源的靜態執行個體計數。
 
@@ -301,7 +301,7 @@ ms.locfileid: "75364300"
 ## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
-* [自動調整規模的概觀](../../azure-monitor/platform/autoscale-overview.md)
+* [自動縮放概述](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure 監視器自動調整的常用度量](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Azure 監視器自動調整的最佳作法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自動調整動作傳送電子郵件和 Webhook 警示通知](../../azure-monitor/platform/autoscale-webhook-email.md)

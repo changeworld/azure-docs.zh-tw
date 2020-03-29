@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842898"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>使用網路監看員和 Graylog 在 Azure 中管理和分析網路安全性群組流量記錄
@@ -30,7 +30,7 @@ ms.locfileid: "76842898"
 > [!Warning]
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 網路安全性群組流量記錄可使用網路監看員來啟用。 流量記錄會流入 Azure Blob 儲存體。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 Graylog。 流量記錄儲存在 Graylog 後，就可供進行分析並於自訂儀表板中視覺化呈現。
 
@@ -177,18 +177,18 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 1. 使用您為 Graylog 伺服器 Web 介面所設定的 URL 來瀏覽至該介面。 您可以將瀏覽器導向至 `http://<graylog-server-ip>:9000/` 來存取該介面
 
-2. 若要瀏覽至設定頁面，請選取頂端導覽列右邊的 [系統] 下拉式功能表，然後按一下 [輸入]。
+2. 若要瀏覽至設定頁面，請選取頂端導覽列右邊的 [系統]**** 下拉式功能表，然後按一下 [輸入]****。
    或者，您也可以瀏覽至 `http://<graylog-server-ip>:9000/system/inputs`
 
    ![開始使用](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 若要啟動新的輸入，請在 [選取輸入] 下拉式清單中選取 [GELF UDP]，然後填寫表單。 GELF 代表 Graylog Extended Log Format。 GELF 格式是由 Graylog 所開發的。 若要深入了解其優點，請參閱 Graylog [文件](https://docs.graylog.org/en/2.2/pages/gelf.html)。
+3. 若要啟動新的輸入，請在 [選取輸入]**** 下拉式清單中選取 [GELF UDP]**，然後填寫表單。 GELF 代表 Graylog Extended Log Format。 GELF 格式是由 Graylog 所開發的。 若要深入了解其優點，請參閱 Graylog [文件](https://docs.graylog.org/en/2.2/pages/gelf.html)。
 
-   請務必將輸入繫結至 Graylog 伺服器設定所在的 IP。 IP 位址應符合 Logstash 設定檔 UDP 輸出的 [主機] 欄位。 預設連接埠應為 12201。 請確保連接埠符合 Logstash 設定檔所指定之 UDP 輸出中的 [連接埠] 欄位。
+   請務必將輸入繫結至 Graylog 伺服器設定所在的 IP。 IP 位址應符合 Logstash 設定檔 UDP 輸出的 [主機]**** 欄位。 預設連接埠應為 12201**。 請確保連接埠符合 Logstash 設定檔所指定之 UDP 輸出中的 [連接埠]**** 欄位。
 
    ![輸入](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   在啟動輸入後，您應該就會看到它出現在 [本機輸入] 區段底下，如下圖所示：
+   在啟動輸入後，您應該就會看到它出現在 [本機輸入]**** 區段底下，如下圖所示：
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
@@ -198,7 +198,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="search-through-graylog-messages"></a>搜尋 Graylog 訊息
 
-在給予 Graylog 伺服器一些時間來收集訊息之後，您就可以搜尋所有訊息。 若要檢查傳送給 Graylog 伺服器的訊息，請從 [輸入] 設定頁面中按一下您所建立之 GELF UDP 輸入的 [顯示所收到的訊息] 按鈕。 系統會將您導向至類似下圖的畫面： 
+在給予 Graylog 伺服器一些時間來收集訊息之後，您就可以搜尋所有訊息。 若要檢查傳送給 Graylog 伺服器的訊息，請從 [輸入]**** 設定頁面中按一下您所建立之 GELF UDP 輸入的 [顯示所收到的訊息]**** 按鈕。 系統會將您導向至類似下圖的畫面： 
 
 ![長條圖](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
@@ -214,9 +214,9 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="create-a-dashboard"></a>建立儀表板
 
-1. 在頂端導覽列中選取 [儀表板] 或瀏覽至 `http://<graylog-server-ip>:9000/dashboards/`
+1. 在頂端導覽列中選取 [儀表板]**** 或瀏覽至 `http://<graylog-server-ip>:9000/dashboards/`
 
-2. 從該處按一下綠色的 [建立儀表板] 按鈕，然後在簡短的表單中填寫儀表板的標題和說明。 按 [儲存] 按鈕以建立新的儀表板。 您會看到類似下圖的儀表板：
+2. 從該處按一下綠色的 [建立儀表板]**** 按鈕，然後在簡短的表單中填寫儀表板的標題和說明。 按 [儲存]**** 按鈕以建立新的儀表板。 您會看到類似下圖的儀表板：
 
     ![儀表板](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
@@ -224,15 +224,15 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 您可以按一下儀表板的標題來查看儀表板，由於我們還沒有新增任何小工具，所以儀表板內現在空無一物。 有一個簡單又實用的類型小工具可新增至儀表板，那就是**快速值**圖表，此圖表會顯示所選欄位值的清單和其分佈情形。
 
-1. 藉由在頂端導覽列中選取 [搜尋]，以瀏覽回到會接收流量記錄之 UDP 輸入的搜尋結果。
+1. 藉由在頂端導覽列中選取 [搜尋]****，以瀏覽回到會接收流量記錄之 UDP 輸入的搜尋結果。
 
-2. 在畫面左邊的 [搜尋結果] 面板底下尋找 [欄位] 索引標籤，它會列出每個內送流量 Tuple 訊息的各個欄位。
+2. 在畫面左邊的 [搜尋結果]**** 面板底下尋找 [欄位]**** 索引標籤，它會列出每個內送流量 Tuple 訊息的各個欄位。
 
-3. 選取要據以視覺化的任何所需參數 (在此範例中，已選取 IP 來源)。 若要顯示可用小工具的清單，請按一下欄位左邊的藍色下拉箭頭，然後選取 [快速值] 來產生小工具。 您應該會看到類似下圖的輸出：
+3. 選取要據以視覺化的任何所需參數 (在此範例中，已選取 IP 來源)。 若要顯示可用小工具的清單，請按一下欄位左邊的藍色下拉箭頭，然後選取 [快速值]**** 來產生小工具。 您應該會看到類似下圖的輸出：
 
    ![來源 IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4. 在該處，您可以選取小工具右上方的 [新增至儀表板] 按鈕，然後選取要新增的對應儀表板。
+4. 在該處，您可以選取小工具右上方的 [新增至儀表板]**** 按鈕，然後選取要新增的對應儀表板。
 
 5. 瀏覽回到儀表板，以查看您剛才新增的小工具。
 

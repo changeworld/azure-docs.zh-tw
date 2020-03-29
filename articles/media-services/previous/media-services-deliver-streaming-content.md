@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67051757"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 發佈媒體服務內容  
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [休息](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [入口網站](media-services-portal-publish.md)
 > 
@@ -180,5 +180,5 @@ ms.locfileid: "67051757"
 
 ## <a name="next-steps"></a>後續步驟
 * [下載資產](media-services-deliver-asset-download.md)
-* [設定資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)
+* [配置資產交付策略](media-services-dotnet-configure-asset-delivery-policy.md)
 

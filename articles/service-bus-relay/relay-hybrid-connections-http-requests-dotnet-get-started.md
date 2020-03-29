@@ -1,5 +1,5 @@
 ---
-title: Azure 轉送混合式連接-.NET 中的 HTTP 要求
+title: Azure 中繼混合連接 - 中的 HTTP 要求。
 description: 在 .NET 中為 Azure 轉送混合式連線 HTTP 要求撰寫 C# 主控台應用程式。
 services: service-bus-relay
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 7c984876c4338b4f6802ba55752c8f612c390e94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355155"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>在 .NET 中開始使用轉送混合式連線 HTTP 要求
@@ -34,12 +34,12 @@ ms.locfileid: "75355155"
 4. 撰寫用戶端 (傳送端) 主控台應用程式來傳送訊息。
 5. 執行應用程式。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
-* [Visual Studio 2015 或更新版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2017。
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
+* [視覺工作室 2015 或更高版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2017。
+* Azure 訂用帳戶。 如果沒有，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
 ## <a name="create-a-namespace"></a>建立命名空間
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "75355155"
 1. 執行用戶端應用程式。 您會在用戶端視窗中看見 `hello!`。 用戶端會傳送 HTTP 要求給伺服器，而伺服器則會以 `hello!` 來回應。 
 3. 現在，若要關閉主控台視窗，請在這兩個主控台視窗中按 **ENTER**。 
 
-恭喜，您已建立完整的混合式連線應用程式！
+恭喜您，您已經創建了一個完整的混合連接應用程式！
 
 ## <a name="next-steps"></a>後續步驟
 

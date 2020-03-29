@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中檢視 Azure 串流分析工作
-description: 瞭解如何使用 Visual Studio 來觀看、啟動和停止、測試連線、檢查結果，以及匯出您的 Azure 串流分析作業。
+description: 瞭解如何使用 Visual Studio 查看、啟動和停止、測試連接、檢查結果和匯出 Azure 流分析作業。
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75369621"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 檢視 Azure 串流分析工作
@@ -32,11 +32,11 @@ ms.locfileid: "75369621"
 
 ### <a name="open-the-job-view"></a>開啟作業檢視
 
-1. 在 [伺服器總管] 中，選取 [串流分析工作]，然後選取 [重新整理]。 您的工作應該會顯示在 [串流分析工作] 下。
+1. 在 [伺服器總管]**** 中，選取 [串流分析工作]****，然後選取 [重新整理]****。 您的工作應該會顯示在 [串流分析工作]**** 下。
 
     ![串流分析伺服器總管清單](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-2. 展開作業節點並按兩下 [作業檢視] 節點來開啟作業檢視。
+2. 展開作業節點並按兩下 [作業檢視]**** 節點來開啟作業檢視。
     
    ![展開的作業節點](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "75369621"
 
 ## <a name="check-job-results"></a>檢查工作結果
 
-適用於 Visual Studio 的串流分析工具目前支援 Azure Data Lake Storage 和 Blob 儲存體的輸出預覽。 若要檢視結果，只要按兩下 [作業檢視] 中工作圖表的輸出節點，然後輸入適當的認證。
+適用於 Visual Studio 的串流分析工具目前支援 Azure Data Lake Storage 和 Blob 儲存體的輸出預覽。 若要檢視結果，只要按兩下 [作業檢視]**** 中工作圖表的輸出節點，然後輸入適當的認證。
 
    ![串流分析工作輸出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
@@ -56,25 +56,25 @@ ms.locfileid: "75369621"
 
 有兩種方式可以將現有的作業匯出到專案。
 
-1. 在 [伺服器總管] 的 [資料流分析工作] 節點下，以滑鼠右鍵按一下作業節點。 選取 [匯出至新的串流分析專案]。
+1. 在 [伺服器總管]**** 的 [資料流分析工作] 節點下，以滑鼠右鍵按一下作業節點。 選取 [匯出至新的串流分析專案]****。
     
    ![將工作匯出到專案](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    產生的專案會在 [方案總管] 中顯示。
+    產生的專案會在 [方案總管]**** 中顯示。
     
    ![方案總管](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. 在作業檢視中，選取 [產生專案]。
+2. 在作業檢視中，選取 [產生專案]****。
     
    ![從作業檢視產生專案](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
 ## <a name="test-connections"></a>測試連接
 
-在 [作業檢視] 中，從 [測試連接] 下拉式清單選取選項即可測試輸入和輸出連線。
+在 [作業檢視]**** 中，從 [測試連接]**** 下拉式清單選取選項即可測試輸入和輸出連線。
 
    ![[測試連接] 下拉式清單](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-[測試連接] 結果會顯示在 [輸出] 視窗。
+[測試連接]**** 結果會顯示在 [輸出]**** 視窗。
 
    ![測試連接結果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 

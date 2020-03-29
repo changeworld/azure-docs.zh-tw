@@ -1,5 +1,5 @@
 ---
-title: 透過入口網站使用事件方格監視 Azure 媒體服務事件
+title: 使用門戶使用事件網格監視 Azure 媒體服務事件
 description: 本文說明如何訂閱事件方格以監視 Azure 媒體服務事件。
 services: media-services
 documentationcenter: na
@@ -16,21 +16,21 @@ ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76509218"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>在 Azure 入口網站中使用事件方格建立和監視媒體服務事件
 
-Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由傳送至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+Azure Event Grid 是一項雲端事件服務。 此服務使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件消息路由到訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
 
-在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們會將事件傳送至 web 應用程式，以收集並顯示訊息。
+在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們將事件發送到收集和顯示消息的 Web 應用。
 
 當您完成時，您會看到事件資料已傳送至 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 * 擁有有效的 Azure 訂用帳戶。
 * 建立新的 Azure 媒體服務帳戶，如[此快速入門](create-account-cli-quickstart.md)所述。
@@ -39,7 +39,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 在訂閱媒體服務帳戶的事件之前，我們要先建立事件訊息的端點。 通常，端點會根據事件資料採取動作。 在本文中，您會部署[預先建置的 Web 應用程式](https://github.com/Azure-Samples/azure-event-grid-viewer)以顯示事件訊息。 已部署的解決方案包含 App Service 方案、App Service Web 應用程式，以及 GitHub 中的原始程式碼。
 
-1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
+1. 選取 [部署至 Azure]****，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -53,20 +53,20 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 您可訂閱主題，告知 Event Grid 您想要追蹤的事件，以及要將事件傳送至何處。
 
-1. 在入口網站中選取您的媒體服務帳戶，然後選取 [事件]。
+1. 在入口網站中選取您的媒體服務帳戶，然後選取 [事件]****。
 1. 若要將事件傳送至您的檢視器應用程式，請使用端點的 Web Hook。 
 
    ![選取 Web Hook](./media/monitor-events-portal/select-web-hook.png)
 
 1. 事件訂用帳戶中會預先填入您媒體服務帳戶的值。 
-1. 選取 [Web Hook] 作為 [端點類型]。
-1. 在此主題中，我們將 [訂閱所有事件類型] 保留為核取狀態。 不過，您可以將其取消核取，並篩選特定事件類型。 
-1. 按一下 [選取端點] 連結。
+1. 選擇 **"網站類型"** 的"Web 掛鉤"。
+1. 在此主題中，我們將 [訂閱所有事件類型]**** 保留為核取狀態。 不過，您可以將其取消核取，並篩選特定事件類型。 
+1. 按一下 [選取端點]**** 連結。
 
     針對 Web Hook 端點，提供您的 Web 應用程式 URL，並將 `api/updates` 新增至首頁 URL。 
 
-1. 按 [確認選取項目]。
-1. 按下 [建立]。
+1. 按 [確認選取項目]****。
+1. 按下 [建立] ****。
 1. 請為您的訂用帳戶指定名稱。
 
    ![選取記錄](./media/monitor-events-portal/create-subscription.png)

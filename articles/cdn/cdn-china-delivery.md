@@ -16,10 +16,10 @@ ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593957"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>在中國使用 Azure CDN 所傳遞的內容
@@ -34,23 +34,23 @@ ms.locfileid: "67593957"
 
 - 全球的 Azure CDN：
 
-     - 入口網站： https://portal.azure.com  
+     - 入口網站：https://portal.azure.com  
 
      - 執行中國以外的內容傳遞
 
-     - 四個定價層：Microsoft 標準、 Verizon 標準、 Verizon 和 Akamai 標準
+     - 四個定價層：Microsoft 標準、Verizon 標準、Verizon 進階和 Akamai 標準
 
-     - [Documentation](https://docs.microsoft.com/azure/cdn/)
+     - [文件](https://docs.microsoft.com/azure/cdn/)
 
 - 中國的 Azure CDN：
 
-     - 入口網站： https://portal.azure.cn
+     - 入口網站：https://portal.azure.cn
 
      - 執行中國內部的內容傳遞
 
-     - 兩個定價層：Standard 和 premium
+     - 兩個定價層：標準和進階
 
-     - [Documentation](https://docs.azure.cn/en-us/cdn/)
+     - [文件](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>後續步驟

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840480"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用適用於 Visual Studio 的 Azure 串流分析工具 (預覽) 在本機測試即時資料
@@ -26,8 +26,8 @@ ms.locfileid: "76840480"
 |**輸入**  |**輸出**  |**作業類型**  |
 |---------|---------|---------|
 |本機靜態資料   |  本機靜態資料   |   雲端/Edge |
-|即時輸入資料   |  本機靜態資料   |   雲端 |
-|即時輸入資料   |  即時輸出資料   |   雲端 |
+|即時輸入資料   |  本機靜態資料   |   Cloud |
+|即時輸入資料   |  即時輸出資料   |   Cloud |
 
 ## <a name="local-testing-with-live-data"></a>使用即時資料進行本機測試
 
@@ -35,7 +35,7 @@ ms.locfileid: "76840480"
 
    ![Azure 串流分析 Visual Studio 的本機輸入和本機輸出](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
-2. 若要測試即時資料，從下拉式清單方塊中選擇 [使用雲端輸入]。
+2. 若要測試即時資料，從下拉式清單方塊中選擇 [使用雲端輸入]****。
 
    ![Azure 串流分析 Visual Studio 的即時雲端輸出](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
@@ -43,15 +43,15 @@ ms.locfileid: "76840480"
 
    ![Azure 串流分析 Visual Studio 的即時資料開始時間](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. 按一下 [在本機執行]。 主控台視窗隨即出現，其中具有執行中的進度和作業計量。 如果您想要停止此程序，可以手動進行。 
+4. 按一下 [在本機執行]****。 主控台視窗隨即出現，其中具有執行中的進度和作業計量。 如果您想要停止此程序，可以手動進行。 
 
    ![Azure 串流分析 Visual Studio 的即時資料處理視窗](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
-   在本機執行結果視窗中，每隔三秒就會使用前 500 列輸出資料列重新整理一次輸出結果，並將輸出檔案放置於您的專案路徑 **ASALocalRun** 資料夾中。 您也可以在本機執行結果視窗中按一下 [開啟結果資料夾] 按鈕，來開啟輸出檔案。
+   在本機執行結果視窗中，每隔三秒就會使用前 500 列輸出資料列重新整理一次輸出結果，並將輸出檔案放置於您的專案路徑 **ASALocalRun** 資料夾中。 您也可以在本機執行結果視窗中按一下 [開啟結果資料夾]**** 按鈕，來開啟輸出檔案。
 
    ![Azure 串流分析 Visual Studio 的即時資料開啟結果資料夾](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
-5. 如果您想要將結果輸出至雲端輸出來源，從第二個下拉式清單方塊中選擇 [輸出至雲端]。 Power BI 和 Azure Data Lake Storage 均不支援輸出來源。
+5. 如果您想要將結果輸出至雲端輸出來源，從第二個下拉式清單方塊中選擇 [輸出至雲端]****。 Power BI 和 Azure Data Lake Storage 均不支援輸出來源。
 
    ![Azure 串流分析 Visual Studio 的即時資料輸出至雲端](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
@@ -63,6 +63,6 @@ ms.locfileid: "76840480"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用適用於 Visual Studio 的 Azure 串流分析工具建立串流分析作業](stream-analytics-quick-create-vs.md)
+* [使用視覺化工作室的 Azure 流分析工具創建流分析作業](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)
 * [使用 Visual Studio 檢視 Azure 串流分析工作](stream-analytics-vs-tools.md)

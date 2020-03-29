@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 診斷追蹤雲端服務應用程式中的流程
+title: 使用 Azure 診斷跟蹤雲服務應用程式中的流
 titleSuffix: Azure Cloud Services
 description: 將追蹤訊息加入至 Azure 應用程式來協助偵錯、測量效能、監視、流量分析等等。
 services: cloud-services
@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
 ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386505"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 診斷追蹤雲端服務應用程式的流程
 追蹤是一種方式，可讓您在應用程式執行時加以監視。 您可以使用 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) 和 [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) 類別，在記錄、文字檔或其他裝置中記錄錯誤和應用程式執行的相關資訊，供稍後分析。 如需追蹤的詳細資訊，請參閱 [追蹤和檢測應用程式](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)。
 
 ## <a name="use-trace-statements-and-trace-switches"></a>使用追蹤陳述式和追蹤參數
-藉由加入 [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) 至應用程式組態，並在您的應用程式程式碼中對 System.Diagnostics.Trace 或 System.Diagnostics.Debug 進行呼叫，藉此在雲端服務應用程式中實作追蹤。 將組態檔 app.config 用於背景工作角色，將 web.config 用於 Web 角色。 使用 Visual Studio 範本建立新的託管服務時，Azure 診斷會自動加入至專案，並且 DiagnosticMonitorTraceListener 會加入至您所加入角色的適當組態檔。
+藉由加入 [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) 至應用程式組態，並在您的應用程式程式碼中對 System.Diagnostics.Trace 或 System.Diagnostics.Debug 進行呼叫，藉此在雲端服務應用程式中實作追蹤。 將組態檔 app.config** 用於背景工作角色，將 web.config** 用於 Web 角色。 使用 Visual Studio 範本建立新的託管服務時，Azure 診斷會自動加入至專案，並且 DiagnosticMonitorTraceListener 會加入至您所加入角色的適當組態檔。
 
 如需有關放置追蹤陳述式資訊，請參閱 [作法：加入 Trace 陳述式至應用程式程式碼](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)。
 
@@ -65,8 +65,8 @@ Trace、Debug 和 TraceSource，需要您設定「接聽程式」來收集和記
 完成加入接聽程式的步驟之後，您可以加入您的追蹤陳述式到程式碼中。
 
 ### <a name="to-add-trace-statement-to-your-code"></a>將追蹤陳述式加入至您的程式碼
-1. 開啟您的應用程式的原始程式檔。 例如，\<會為背景工作角色或 web 角色 > .cs 檔案。
-2. 新增下列 using 指示詞（如果尚未加入）：
+1. 開啟您的應用程式的原始程式檔。 例如，\<角色角色或 Web 角色的 RoleName>.cs 檔。
+2. 如果尚未添加以下使用指令，則添加以下使用指令：
     ```
         using System.Diagnostics;
     ```

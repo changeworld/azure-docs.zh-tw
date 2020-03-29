@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844409"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
@@ -21,11 +21,11 @@ ms.locfileid: "76844409"
 
 ## <a name="query-is-not-producing-expected-output"></a>查詢未產生預期的輸出
 1.  在本機執行測試以檢查錯誤：
-    - 在 Azure 入口網站的 [**查詢**] 索引標籤上，選取 [**測試**]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
-    - 您也可以使用適用于 Visual Studio 或[Visual Studio Code](visual-studio-code-local-run-live-input.md)的 Azure 串流分析工具，在[本機測試您的查詢](stream-analytics-live-data-local-testing.md)。 
+    - 在 Azure 門戶上，在 **"查詢**"選項卡上，選擇 **"測試**"。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
+    - 您還可以使用 Visual Studio 或[視覺化工作室代碼](visual-studio-code-local-run-live-input.md)的 Azure 流分析工具[在本地測試查詢](stream-analytics-live-data-local-testing.md)。 
 
-2.  在適用于 Visual Studio 的 Azure 串流分析工具中，[使用工作圖表在本機逐步執行 Debug 查詢](debug-locally-using-job-diagram.md)。 作業圖表會顯示資料如何透過多個查詢步驟從輸入來源（事件中樞、IoT 中樞等）流動，最後輸出到接收。 每個查詢步驟都會對應至使用 WITH 語句在腳本中定義的暫存結果集。 您可以在每個中繼結果集的每個查詢步驟中，查看資料和計量，以找出問題的來源。
-    ![作業圖表預覽結果](./media/debug-locally-using-job-diagram/preview-result.png)
+2.  使用 Visual Studio 的 Azure 流分析工具中的[作業圖在本地逐步調試查詢](debug-locally-using-job-diagram.md)。 作業圖是顯示資料如何從輸入源（事件中心、IoT 中心等）流經多個查詢步驟，最後輸出到接收器。 每個查詢步驟都映射到使用 WITH 語句在腳本中定義的臨時結果集。 您可以查看每個中間結果集中的每個查詢步驟中的資料和指標，以查找問題的根源。
+    ![作業圖預覽結果](./media/debug-locally-using-job-diagram/preview-result.png)
 
 3.  如果您使用 [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於[作業開始時間](stream-analytics-out-of-order-and-late-events.md)的時間戳記。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76844409"
     - 當您使用視窗函式時，請等候完整的視窗運作時間，以查看查詢的輸出。
     - 事件的時間戳記早於作業開始時間，因此事件遭到刪除。
 
-5.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取[**事件排序**](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
+5.  確定事件排序原則已如預期設定。 移至 [設定]****，然後選取[**事件排序**](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試]**** 按鈕測試查詢，則不會** 套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
 
 6. 使用稽核和診斷記錄進行偵錯：
     - 使用[稽核記錄](../azure-resource-manager/resource-group-audit.md)，並透過篩選找出錯誤並進行偵錯。
@@ -52,7 +52,7 @@ ms.locfileid: "76844409"
 
 ![範例串流分析 SELECT INTO 查詢](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個**聯結**步驟會造成所有資料遭到捨棄。
+請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]**** 圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個**聯結**步驟會造成所有資料遭到捨棄。
 
 ![串流分析監視圖格](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 
@@ -68,11 +68,11 @@ ms.locfileid: "76844409"
 
 現在請再次啟動作業，並讓它執行幾分鐘的時間。 然後使用 Visual Studio Cloud Explorer 查詢 temp1 和 temp2 以產生下列表格︰
 
-**temp1 資料表**
-![SELECT INTO temp1 資料表串流分析查詢](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**臨時 1 表**
+![SELECT 進入 temp1 表流分析查詢](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**temp2 資料表**
-![SELECT INTO temp2 資料表串流分析查詢](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**temp2 表**
+![SELECT 進入 temp2 表流分析查詢](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 如您所見，temp1 和 temp2 都有資料，且 temp2 的名稱資料欄已正確地填入。 不過，因為輸出中仍沒有資料，可能有些地方出了問題︰
 
@@ -94,12 +94,12 @@ ms.locfileid: "76844409"
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

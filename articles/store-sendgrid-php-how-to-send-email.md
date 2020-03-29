@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67870919"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何透過 PHP 使用 SendGrid 電子郵件服務
 
 本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 相關範例是以 PHP 撰寫的。
-涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**和**新增附件**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
+涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**和**新增附件**。 有關 SendGrid 和發送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什麼是 SendGrid 電子郵件服務？
 SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電子郵件傳遞]、擴充性和即時分析，以及有彈性的 API 來輕鬆進行自訂整合。 常見的 SendGrid 使用案例包括：
@@ -37,7 +37,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 * 轉寄客戶查詢
 * 透過電子郵件從您的應用程式傳送通知
 
-如需詳細資訊，請參閱 [https://sendgrid.com][https://sendgrid.com]。
+有關詳細資訊，請參閱[https://sendgrid.com][https://sendgrid.com]。
 
 ## <a name="create-a-sendgrid-account"></a>建立 SendGrid 帳戶
 
@@ -47,7 +47,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 
 在 Azure PHP 應用程式中使用 SendGrid 並不需要特殊的組態或程式碼。 SendGrid 是一項服務，因此可以透過雲端應用程式來存取，和透過內部部署應用程式來存取的方式相同。
 
-## <a name="how-to-send-an-email"></a>HOW TO：傳送電子郵件
+## <a name="how-to-send-an-email"></a>如何：傳送電子郵件
 
 您可以使用 SendGrid 提供的 SMTP 或 Web API 傳送電子郵件。
 
@@ -162,7 +162,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 
 SendGrid 的 Web API 與 REST API 十分類似，但並非真的是 REST 型 API，因為在大部分的呼叫中，GET 和 POST 動詞可以交換使用。
 
-## <a name="how-to-add-an-attachment"></a>HOW TO：新增附件
+## <a name="how-to-add-an-attachment"></a>如何：新增附件
 
 ### <a name="smtp-api"></a>SMTP API
 
@@ -297,9 +297,9 @@ SendGrid 的 Web API 與 REST API 十分類似，但並非真的是 REST 型 API
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>HOW TO：使用篩選條件來啟用頁尾、追蹤和分析
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用篩選器來啟用頁尾、追蹤和分析
 
-SendGrid 運用「篩選器」  提供其他電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。
+SendGrid 通過使用*篩選器*提供了其他電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。
 
 您可以使用篩選器屬性對訊息套用篩選器。 每個篩選器都是由包含篩選器特定設定的雜湊來指定。 以下範例會啟用頁尾篩選器，並指定文字訊息來附加到電子郵件訊息的下方。 在此範例中，我們將使用 [sendgrid-php 程式庫]。
 

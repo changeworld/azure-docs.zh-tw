@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60254750"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理磁碟區
@@ -26,8 +26,8 @@ ms.locfileid: "60254750"
 
 如果您想要刪除磁碟區，則必須先刪除磁碟區的所有子物件。 
 
-1.  從 [管理容量集區] 刀鋒視窗按一下 [磁碟區]  刀鋒視窗。 
-2.  使用 [瀏覽磁碟區]  檢視來檢視、更新或刪除現有磁碟區。 
+1.  從 [管理容量集區] 刀鋒視窗按一下 [磁碟區]**** 刀鋒視窗。 
+2.  使用 [瀏覽磁碟區]**** 檢視來檢視、更新或刪除現有磁碟區。 
 
 
 

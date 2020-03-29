@@ -1,6 +1,6 @@
 ---
 title: 使用適用於開發人員的 Azure DevTest Labs | Microsoft Docs
-description: 瞭解可用來滿足開發人員需求的 Azure DevTest Labs 功能，以及您可以遵循來設定實驗室的詳細步驟。
+description: 瞭解可用於滿足開發人員要求的 Azure DevTest Labs 功能，以及設置實驗室時可以遵循的詳細步驟。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760142"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用適用於開發人員的 Azure DevTest Labs
@@ -70,11 +70,11 @@ Azure DevTest Labs 可以用來實作許多重要案例，但是其中一個主�
 
 4. **建立構件以彈性自訂 VM**
 
-   構件是在佈建 VM 之後用來部署和設定您的應用程式。 構件可以是以下項目：
+   構件是在佈建 VM 之後用來部署和設定您的應用程式。 構件可以是：
 
    - 您想要在 VM 上安裝的工具 - 例如，代理程式、Fiddler 及 Visual Studio。
    - 您想要在 VM 上執行的動作 - 例如，複製儲存機制。
-   - 您想測試的應用程式。
+   - 您想要測試的應用程式。
 
    許多構件為現成可用。 如果想要符合特定需求的更多自訂，您可以建立自己的自訂構件。
 

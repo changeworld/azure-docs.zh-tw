@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755173"
 ---
-# <a name="azure-data-box-gateway-limits"></a>Azure 中部署資料閘道限制
+# <a name="azure-data-box-gateway-limits"></a>Azure 資料框閘道限制
 
 當您部署和操作 Microsoft Azure 資料箱閘道解決方案時，請考慮這些限制。 
 
@@ -30,9 +30,9 @@ ms.locfileid: "60755173"
 
 | 描述 | 值 |
 |---|---|
-|資料分割 (每個裝置的檔案) |1 億 <br> 限制約為每 2 TB 的磁碟空間可以有 2 千 5 百萬個檔案，最大限制為 1 億個 |
-|資料分割 (每個裝置的共用) |24 |
-|資料分割 每個 Azure 儲存體容器的共用 |1 |
+|否。 (每個裝置的檔案) |1 億 <br> 限制約為每 2 TB 的磁碟空間可以有 2 千 5 百萬個檔案，最大限制為 1 億個 |
+|否。 (每個裝置的共用) |24 |
+|否。 每個 Azure 儲存體容器的共用 |1 |
 |寫入至共用的檔案大小上限|針對 2 TB 的虛擬裝置，檔案大小上限為 500 GB。 <br> 檔案大小上限會以上述比例隨著資料磁碟大小增加，直到達到上限 5 TB 為止。 |
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制
@@ -53,4 +53,4 @@ ms.locfileid: "60755173"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [準備部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)
+- [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

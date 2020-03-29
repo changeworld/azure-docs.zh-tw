@@ -1,6 +1,6 @@
 ---
-title: 整合帳戶的嚴重損壞修復
-description: 在 Azure Logic Apps 中設定整合帳戶和 B2B 成品與跨區域的嚴重損壞修復
+title: 集成帳戶的災害復原
+description: 在 Azure 邏輯應用中設置集成帳戶和 B2B 專案，並跨區域災害復原
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,13 +9,13 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
 ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905133"
 ---
-# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定整合帳戶的跨區域嚴重損壞修復
+# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>為 Azure 邏輯應用中的集成帳戶設置跨區域災害復原
 
 B2B 工作負載涉及金錢交易，例如訂單和發票。 在災害事件期間，企業務必快速復原，才可符合與合作夥伴達成的商務層級 SLA。 本文示範如何建置 B2B 工作負載的商務持續性計劃。 
 
@@ -34,7 +34,7 @@ B2B 工作負載涉及金錢交易，例如訂單和發票。 在災害事件期
 
 3. 若要提取主要區域的執行狀態，請在次要地區中建立邏輯應用程式。 
 
-   這個邏輯應用程式應該有觸發程序和動作。 
+   這個邏輯應用程式應該有觸發程序** 和動作**。 
    觸發程序應該與主要區域整合帳戶連線，而且動作應該與次要地區整合帳戶連線。 
    根據時間間隔，觸發程序會輪詢主要區域執行狀態資料表，並提取新的記錄 (如果有)。 動作會將它們更新至次要地區整合帳戶。 
    這有助於從主要區域將累加式執行階段狀態更新到次要區域。
@@ -81,7 +81,7 @@ EDI X12 文件的商務持續性是根據控制編號：
 > [!TIP]
 > 您也可以使用 [X12 快速啟動範本](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/)來建立 Logic Apps。 建立主要和次要整合帳戶是使用範本的必要條件。 這個範本可讓您建立 2 個 Logic Apps，一個用於接收的控制編號，另一個用於產生的控制編號。 會在 Logic Apps 中建立個別的觸發程序和動作，將觸發程序連線至主要整合帳戶，並將動作連線至次要整合帳戶。
 
-**先決條件**
+**必要條件**
 
 若要啟用輸入訊息的災害復原，請選取 X12 合約之 [接收設定] 中的重複檢查設定。
 
@@ -89,14 +89,14 @@ EDI X12 文件的商務持續性是根據控制編號：
 
 1. 在次要地區中建立[邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
-2. 搜尋 **X12**，並選取 [X12 - 當控制編號修改時]。   
+2. 搜尋 **X12**，並選取 [X12 - 當控制編號修改時]****。   
 
    ![搜尋 x12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
    觸發程序會提示您建立整合帳戶的連線。 
    觸發程序需連線至主要區域整合帳戶。
 
-3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]，然後選擇 [建立]。   
+3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]**，然後選擇 [建立]****。   
 
    ![主要區域整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
@@ -104,15 +104,15 @@ EDI X12 文件的商務持續性是根據控制編號：
 
    ![日期時間和頻率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. 選取 [新增步驟] > [新增動作]。
+5. 選擇 **"新建步驟** > **添加操作**"。
 
    ![選取 [新增步驟]，然後選取 [新增動作]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. 搜尋 **X12**，並選取 [X12 - 新增或更新控制編號]。   
+6. 搜尋 **X12**，並選取 [X12 - 新增或更新控制編號]****。   
 
    ![新增或更新控制編號](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. 若要將動作連線到次要地區整合帳戶，請選取 [變更連線] > [新增新的連線]，取得可用整合帳戶的清單。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]，然後選擇 [建立]。 
+7. 要將操作連接到次要區域集成帳戶，請選擇 **"更改連接** > 為可用集成帳戶清單**添加新連接**"。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。 
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -136,7 +136,7 @@ EDI X12 文件的商務持續性是根據控制編號：
 
 EDI EDIFACT 文件的商務持續性是根據控制編號。
 
-**先決條件**
+**必要條件**
 
 若要啟用輸入訊息的災害復原，請選取 EDIFACT 合約之 [接收設定] 中的重複檢查設定。
 
@@ -144,14 +144,14 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
 1. 在次要地區中建立[邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
-2. 搜尋 **EDIFACT**，並選取 [EDIFACT - 當控制編號修改時]。
+2. 搜尋 **EDIFACT**，並選取 [EDIFACT - 當控制編號修改時]****。
 
    ![搜尋 EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
    觸發程序會提示您建立整合帳戶的連線。 
    觸發程序需連線至主要區域整合帳戶。 
 
-3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]，然後選擇 [建立]。    
+3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]**，然後選擇 [建立]****。    
 
    ![主要區域整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
@@ -159,15 +159,15 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
    ![日期時間和頻率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-6. 選取 [新增步驟] > [新增動作]。    
+6. 選擇 **"新建步驟** > **添加操作**"。    
 
    ![選取 [新增步驟]，然後選取 [新增動作]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. 搜尋 **EDIFACT**，並選取 [EDIFACT - 新增或更新控制編號]。   
+7. 搜尋 **EDIFACT**，並選取 [EDIFACT - 新增或更新控制編號]****。   
 
    ![新增或更新控制編號](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. 若要將動作連線到次要地區整合帳戶，請選取 [變更連線] > [新增新的連線]，取得可用整合帳戶的清單。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]，然後選擇 [建立]。
+8. 要將操作連接到次要區域集成帳戶，請選擇 **"更改連接** > 為可用集成帳戶清單**添加新連接**"。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -196,14 +196,14 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
 1. 在次要地區中建立[邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。  
 
-2. 搜尋 **AS2**，並選取 [AS2 - 建立 MIC 值時]。   
+2. 搜尋 **AS2**，並選取 [AS2 - 建立 MIC 值時]****。   
 
    ![搜尋 AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
    觸發程序會提示您建立整合帳戶的連線。 
    觸發程序需連線至主要區域整合帳戶。 
    
-3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]，然後選擇 [建立]。
+3. 輸入連線名稱，選取清單中的 [主要區域整合帳戶]**，然後選擇 [建立]****。
 
    ![主要區域整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
@@ -211,15 +211,15 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
    ![日期時間和頻率](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
-5. 選取 [新增步驟] > [新增動作]。  
+5. 選擇 **"新建步驟** > **添加操作**"。  
 
    ![選取 [新增步驟]，然後選取 [新增動作]](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. 搜尋 **AS2**，並選取 [AS2 - 新增或更新 MIC 內容]。  
+6. 搜尋 **AS2**，並選取 [AS2 - 新增或更新 MIC 內容]****。  
 
    ![MIC 新增或更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. 若要將動作連線到次要整合帳戶，請選取 [變更連線] > [新增新的連線]，取得可用整合帳戶的清單。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]，然後選擇 [建立]。
+7. 要將操作連接到輔助集成帳戶，請選擇 **"更改連接** > 為可用集成帳戶清單**添加新連接**"。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

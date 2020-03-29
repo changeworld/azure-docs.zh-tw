@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360339"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
@@ -21,7 +21,7 @@ ms.locfileid: "75360339"
 ## <a name="update-an-azure-service"></a>更新 Azure 服務
 Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯群組。 升級網域 (UD) 是角色執行個體的邏輯集合，會以群組方式進行更新。  Azure 會一次更新一個 UD 的一個雲端服務，讓其他 UD 中的執行個體能夠繼續處理流量。
 
-預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱[Azure 雲端服務定義架構（檔案）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
+預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 有關升級域計數屬性的詳細資訊，請參閱 Azure[雲服務定義架構 （.csdef 檔）。](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)
 
 當您在服務中執行一或多個角色的就地更新時，Azure 會根據所屬的升級網域來更新角色執行個體集合。 Azure 會更新指定的升級網域中的所有執行個體 (予以停止、更新、重新上線)，然後移到下一個網域。 Azure 只會停止在目前升級網域中執行的執行個體，以確保更新儘可能對執行中的服務造成最小的影響。 如需詳細資訊，請參閱本文後面的 [如何繼續進行更新](#howanupgradeproceeds) 。
 
@@ -99,7 +99,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 將服務從單一執行個體升級為多個執行個體時，由於 Azure 升級服務的方式，您的服務將會在執行升級時關閉。 保證服務可用性的服務等級協定僅適用於已部署多個執行個體的服務。 下列清單說明每個 Azure 服務升級案例如何影響每個磁碟機上的資料：
 
-|案例|C 磁碟機|D 磁碟機|E 磁碟機|
+|狀況|C 磁碟機|D 磁碟機|E 磁碟機|
 |--------|-------|-------|-------|
 |VM 重新啟動|保留|保留|保留|
 |入口網站重新啟動|保留|保留|終結|
@@ -114,10 +114,10 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>復原更新
-Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當部署上的更新 (組態變更) 或升級處於 **進行中** 狀態時，才能執行復原。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
+Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當更新 (組態變更) 或升級在部署中處於**進行中**狀態時，才可執行回復。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
 
 > [!NOTE]
-> 只有對 **就地** 更新或升級呼叫 Rollback 才有意義，因為 VIP 交換升級牽涉到以另一個執行個體取代服務的一整個執行中執行個體。
+> 只有針對**就地**更新或升級呼叫 Rollback 才合理，因為 VIP 交換升級牽涉到以另一個執行個體取代您的服務的一整個執行中的執行個體。
 >
 >
 
@@ -139,7 +139,7 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
 有某些情況下，不支援復原更新或升級，如下所示：
 
 * 減少本機資源 - 如果更新增加角色的本機資源，則 Azure 平台不會允許復原。
-* 配額限制 - 如果更新是縮小作業，您可能不再有足夠的計算配額來完成復原作業。 每個 Azure 訂用帳戶都有相關聯的配額，以指定屬於該訂用帳戶的所有託管服務可以取用的核心數目上限。 如果執行指定之更新的復原會讓您的訂用帳戶超出配額，則不會啟用復原。
+* 配額限制 - 如果更新是相應減少作業，您可能不再有足夠的計算配額來完成復原作業。 每個 Azure 訂用帳戶都有相關聯的配額，以指定屬於該訂用帳戶的所有託管服務可以取用的核心數目上限。 如果執行指定之更新的復原會讓您的訂用帳戶超出配額，則不會啟用復原。
 * 競爭情形 - 如果已完成初始更新，則不可能進行復原。
 
 如果您在手動模式中使用 [升級部署](/previous-versions/azure/reference/ee460793(v=azure.100)) 作業來控制您 Azure 託管服務的主要就地升級推展速率，復原更新可能很實用。
@@ -149,7 +149,7 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在進行中的部署上起始多項變更作業
-在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 此狀態稱為「停滯部署」。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
+在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 這個狀態稱為「停滯部署」**。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
 
 一旦 Azure 網狀架構控制器收到更新或升級服務的初始要求，您就可以開始進行後續的變更作業。 也就是說，您不必等候初始作業完成，即可開始進行另一個變更作業。
 
@@ -180,7 +180,7 @@ Azure 會將角色的執行個體平均分散於一組升級網域，而升級�
 >
 
 ## <a name="next-steps"></a>後續步驟
-[如何管理雲端服務](cloud-services-how-to-manage-portal.md)  
+[如何管理雲服務](cloud-services-how-to-manage-portal.md)  
 [如何監視雲端服務](cloud-services-how-to-monitor.md)  
 [如何設定雲端服務](cloud-services-how-to-configure-portal.md)  
 

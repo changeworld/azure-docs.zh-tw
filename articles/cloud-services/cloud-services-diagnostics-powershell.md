@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
 ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386539"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 在 Azure 雲端服務中啟用診斷
 您可以使用 Azure 診斷延伸模組，從雲端服務收集診斷資料 (例如應用程式記錄、效能計數器等)。 本文描述如何使用 PowerShell 啟用雲端服務的 Azure 診斷延伸模組。  如需這篇文章所需要的必要條件，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>啟用診斷延伸模組做為部署雲端服務的一部分
-此方法適用於可以啟用診斷延伸模組做為雲端服務佈署一部分的連續整合類型案例。 建立新的雲端服務部署時，您可以將*ExtensionConfiguration*參數傳遞至[get-azuredeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0)指令程式，以啟用診斷延伸模組。 *ExtensionConfiguration* 參數接受以 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) Cmdlet 建立的診斷組態陣列。
+此方法適用於可以啟用診斷延伸模組做為雲端服務佈署一部分的連續整合類型案例。 創建新的雲服務部署時，可以通過將*擴展配置*參數傳遞到[New-Azure 部署](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0)Cmdlet 來啟用診斷擴展。 *ExtensionConfiguration* 參數接受以 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) Cmdlet 建立的診斷組態陣列。
 
 下列範例示範如何為某個雲端服務 (其中的 WebRole 和 WorkerRole 各自擁有不同的診斷組態) 啟用診斷。
 
@@ -82,9 +82,9 @@ New-AzureDeployment -ServiceName $service_name -Slot Production -Package $servic
 
 Visual Studio Online 使用類似的方法，自動部署具有診斷延伸模組的雲端服務。 請參閱 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) 來取得完整的範例。
 
-如果您未在診斷組態中指定 `StorageAccount`，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果已指定 *StorageAccountName* 參數，則 Cmdlet 一定會使用在此參數中指定的儲存體帳戶，而非在診斷組態檔中指定的儲存體帳戶。
+如果您未在診斷組態中指定 `StorageAccount`，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定*了 StorageAccountName*參數，則 Cmdlet 將始終使用參數中指定的存儲帳戶，而不是診斷設定檔中指定的存儲帳戶。
 
-如果診斷儲存體帳戶和雲端服務分別屬於不同的訂用帳戶，您必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳入 Cmdlet。 當診斷儲存體帳戶位於同一個訂用帳戶中時，就不需要使用 *StorageAccountKey* 參數，因為 Cmdlet 會在啟用診斷擴充功能時自動查詢並設定金鑰值。 不過，如果診斷儲存體帳戶位於不同的訂用帳戶中，Cmdlet 可能就無法自動取得金鑰，您必須透過 *StorageAccountKey* 參數來明確指定金鑰。
+如果診斷儲存體帳戶和雲端服務分別屬於不同的訂用帳戶，您必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳入 Cmdlet。 當診斷存儲帳戶位於同一訂閱中時，不需要*存儲帳戶金鑰*參數，因為 Cmdlet 可在啟用診斷擴展時自動查詢和設置金鑰值。 但是，如果診斷存儲帳戶位於其他訂閱中，則 Cmdlet 可能無法自動獲取金鑰，您需要通過*StorageAccountKey*參數顯式指定金鑰。
 
 ```powershell
 $webrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole" -DiagnosticsConfigurationPath $webrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
@@ -115,13 +115,13 @@ Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>移除診斷延伸模組
-若要關閉雲端服務的診斷功能，您可以使用[set-azureservicediagnosticsextension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) Cmdlet。
+要關閉雲服務上的診斷，可以使用[刪除 Azure 服務診斷擴展](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0)Cmdlet。
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-如果您使用*set-azureservicediagnosticsextension*或不含*Role*參數的*new-azureservicediagnosticsextensionconfig*來啟用診斷延伸模組，則可以使用不含*role*參數的*set-azureservicediagnosticsextension*移除延伸模組。 如果啟用延伸模組時使用了*Role*參數，則移除延伸模組時也必須使用它。
+如果使用 *"設置-Azure 服務診斷擴展*"或"沒有*角色*參數*的新建 Azure 服務診斷擴展配置"* 啟用診斷擴展，則可以使用*刪除 Azure 服務診斷擴展*程式（無需*角色*參數）刪除該擴展。 如果在啟用擴展時使用了*Role*參數，則在刪除擴展時也必須使用它。
 
 若要從每個個別的角色移除診斷延伸模組：
 

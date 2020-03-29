@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67849251"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure 提供越來越多的服務，您可以將這些服務提供給�
 Microsoft 允許以程式設計方式整合您自己的服務管理系統，進而提供 API 讓 CSP 管理 Azure 客戶訂用帳戶。 [這裡](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)可以找到支援的管理功能。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 資源管理
-您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶管理其 Microsoft Azure 訂用帳戶中的資源建立，他們會使用以下其中一個模型："*Connect-Through*" 模型或 "*Direct-To*" 模型。 下列各節會詳細說明這些模型。  
+您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶在其 Microsoft Azure 訂閱中管理資源的創建，他們將使用兩種模型之一："*連接-通過*"模型，或"*直接到*"模型。 下列各節會詳細說明這些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
 ![替代文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -88,10 +88,10 @@ ExpressRoute 可設定為透過單一 ExpressRoute 電路支援三種類型的�
 ## <a name="expressroute-routing-domains"></a>ExpressRoute 路由網域
 ExpressRoute 提供三種路由網域︰公用、私用和 Microsoft 對等。 每個路由網域都是使用主動-主動組態中完全相同的路由器設定，以提供高可用性。 如需 ExpressRoute 路由網域的詳細資訊，請參閱 [這裡](expressroute-circuit-peerings.md)。
 
-您可以定義自訂路由篩選器，只允許您想允許或需要的路由。 如需詳細資訊或想了解如何進行這些變更，請參閱下列文章：[使用 PowerShell 建立和修改 ExpressRoute 線路的路由](expressroute-howto-routing-classic.md)，以取得關於路由篩選的詳細資訊。
+您可以定義自訂路由篩選器，只允許您想允許或需要的路由。 如需詳細資訊或了解如何進行這些變更，請參閱以下文章︰ [使用 PowerShell 建立和修改 ExpressRoute 電路的路由](expressroute-howto-routing-classic.md) ，以取得路由篩選器的詳細資訊。
 
 > [!NOTE]
-> 若為 Microsoft 和公用對等，連線必須是客戶或 CSP 所擁有的公用 IP 位址，而且必須遵守所有定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md) 頁面。  
+> 若為 Microsoft 和公用對等，連線必須是客戶或 CSP 所擁有的公用 IP 位址，而且必須遵守所有定義的規則。 有關詳細資訊，請參閱[快速路由先決條件](expressroute-prerequisites.md)頁面。  
 > 
 > 
 
@@ -120,7 +120,7 @@ ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路�
 1. **客戶隔離** — Azure 平台會將客戶識別碼和 vNet 資訊儲存在安全的資料庫中 (用來封裝 GRE 通道中每個客戶的流量)，藉此提供客戶隔離。
 2. **網路安全性群組 (NSG)** 規則用於定義在 Azure 中傳入和傳出 vNet 子網路的流量。 根據預設，NSG 包含封鎖規則和允許規則，前者可封鎖從網際網路至 vNet 的流量，後者適用於 vNet 內的流量。 如需網路安全性群組的詳細資訊，請參閱 [這裡](https://azure.microsoft.com/blog/network-security-groups/)。
 3. **強制通道** — 這個選項可透過 ExpressRoute 連線，將源自於 Azure 的網際網路繫結流量重新導向至內部部署資料中心。 如需強制通道的詳細資訊，請參閱 [這裡](expressroute-routing.md#advertising-default-routes)。  
-4. **加密** — 即使 ExpressRoute 電路專用於特定客戶，網路提供者仍可能違反規定，讓入侵者檢查封包流量。 若要解決這個可能性，客戶或 CSP 可以針對在內部部署資源與 Azure 資源之間流動的所有流量，定義 IPSec 通道模式原則，進而將透過連線的流量加密 (請參閱上方「圖 5：ExpressRoute 安全性」中客戶 1 的選擇性通道模式 IPSec)。 第二個選項是在 ExpressRoute 電路的每個端點使用防火牆應用裝置。 這需要兩端都安裝額外的第三方防火牆 VM/應用裝置，才能將透過 ExpressRoute 電路的流量加密。
+4. **加密** — 即使 ExpressRoute 電路專用於特定客戶，網路提供者仍可能違反規定，讓入侵者檢查封包流量。 若要解決這個可能性，客戶或 CSP 可以針對在內部部署資源與 Azure 資源之間流動的所有流量，定義 IPSec 通道模式原則，進而將透過連線的流量加密 (請參閱上面圖 5：ExpressRoute 安全性中客戶 1 的選擇性通道模式 IPSec)。 第二個選項是在 ExpressRoute 電路的每個端點使用防火牆應用裝置。 這需要兩端都安裝額外的第三方防火牆 VM/應用裝置，才能將透過 ExpressRoute 電路的流量加密。
 
 ![替代文字](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

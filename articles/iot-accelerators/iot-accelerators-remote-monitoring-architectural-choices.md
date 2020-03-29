@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447163"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>遠端監視架構選擇
@@ -59,7 +59,7 @@ Azure IoT 中樞可作為遠端監視解決方案雲端閘道。 [IoT 中樞](ht
 
 針對串流處理，遠端監視解決方案會使用 Azure 串流分析進行複雜的規則處理。 如果您想要使用更簡單的規則，有自訂微服務可支援簡單規則處理，即使此設定不屬於既有部署的一部分也一樣。 參考架構建議使用 Azure Functions 進行簡單的規則處理，以及使用 Azure 串流分析 進行複雜的規則處理。
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 
 針對儲存體，遠端監視解決方案加速器會同時使用 Azure 時間序列深入解析和 Azure Cosmos DB。 Azure 時間序列深入解析會儲存來自您的已連線裝置並經由 IoT 中樞傳輸的訊息。 解決方案加速器會針對其他儲存體使用 Azure Cosmos DB，例如冷儲存體、規則定義、警示和組態設定。
 

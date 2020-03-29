@@ -1,6 +1,6 @@
 ---
-title: 傳遞和重試-Azure Event Grid IoT Edge |Microsoft Docs
-description: 在 IoT Edge 的事件方格中傳遞和重試。
+title: 傳遞和重試 - Azure 事件網格 IoT 邊緣 |微軟文檔
+description: 在 IoT 邊緣的事件網格中傳遞和重試。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,63 +10,63 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841707"
 ---
 # <a name="delivery-and-retry"></a>傳遞和重試
 
-Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用帳戶傳遞每個訊息一次。 如果訂閱者的端點未確認收到事件或發生失敗，事件方格會根據固定的**重試排程**和**重試原則**來重試傳遞。  根據預設，事件方格模組會一次傳遞一個事件給訂閱者。 但裝載是具有單一事件的陣列。 您可以藉由啟用輸出批次處理功能，讓模組一次傳遞一個以上的事件。 如需這項功能的詳細資訊，請參閱[輸出批次處理](delivery-output-batching.md)。  
+Event Grid 提供持久的傳遞。 它嘗試立即為每個匹配的訂閱至少傳遞一次每條消息。 如果訂戶的終結點不承認收到事件或失敗，事件網格會基於固定**重試計畫和****重試策略**重試傳遞。  預設情況下，事件網格模組一次向訂閱者提供一個事件。 但是，有效負載是具有單個事件的陣列。 通過啟用輸出批次處理功能，可以使模組一次提供多個事件。 有關此功能的詳細資訊，請參閱[輸出批次處理](delivery-output-batching.md)。  
 
 > [!IMPORTANT]
->事件資料沒有持續性支援。 這表示重新部署或重新開機事件方格模組，將會導致您遺失尚未傳遞的任何事件。
+>事件資料沒有持久性支援。 這意味著重新部署或重新開機事件網格模組將導致您丟失尚未傳遞的任何事件。
 
-## <a name="retry-schedule"></a>重試排程
+## <a name="retry-schedule"></a>重試計畫
 
-事件方格在傳遞訊息之後，會等待最多60秒的回應。 如果訂閱者的端點未通知回應，則會將訊息加入其中一個後置佇列中，以供後續重試。
+事件網格在發送消息後最多等待 60 秒以等待回應。 如果訂閱者的終結點不確認回應，則消息將排隊在我們的一個 backoff 佇列中進行後續重試。
 
-有兩個預先設定的反向佇列，可決定嘗試重試的排程。 其中包括：
+有兩個預配置的退退佇列，確定將嘗試重試的計畫。 其中包括：
 
-| 排程 | 說明 |
+| 排程 | 描述 |
 | ---------| ------------ |
-| 1 分鐘 | 每分鐘會嘗試在這裡結束的訊息。
-| 10 分鐘 | 每隔10分鐘就會嘗試在這裡結束的訊息。
+| 1 分鐘 | 最終在這裡的消息每分鐘都會嘗試。
+| 10 分鐘 | 結束在這裡的消息每隔 10 分鐘嘗試一次。
 
 ### <a name="how-it-works"></a>運作方式
 
-1. 訊息抵達事件方格模組。 嘗試立即傳遞。
-1. 如果傳遞失敗，則訊息會加入1分鐘的佇列，並在一分鐘後重試。
-1. 如果傳遞持續失敗，則訊息會加入10分鐘的佇列中，並每隔10分鐘重試一次。
-1. 會嘗試傳遞，直到達到成功或重試原則限制為止。
+1. 消息到達事件網格模組。 嘗試立即交付它。
+1. 如果傳遞失敗，則消息將排隊到 1 分鐘的佇列中，並在一分鐘後重試。
+1. 如果傳遞繼續失敗，則消息將排隊到 10 分鐘的佇列中，每 10 分鐘重試一次。
+1. 在成功或重試策略限制之前，將嘗試交付。
 
-## <a name="retry-policy-limits"></a>重試原則限制
+## <a name="retry-policy-limits"></a>重試策略限制
 
-有兩個設定可決定重試原則。 其中包括：
+有兩種配置決定了重試策略。 其中包括：
 
-* 嘗試次數上限
-* 事件存留時間（TTL）
+* 最大嘗試次數
+* 活動存留時間 （TTL）
 
-如果達到重試原則的其中一個限制，則會捨棄事件。 重試排程本身已在重試排程一節中說明。 這些限制的設定可以針對所有訂閱者或每個訂用帳戶來進行。 下一節會進一步詳細說明每一個。
+如果達到重試策略的任一限制，將刪除事件。 重試計畫本身在"重試計畫"部分仲介紹。 可以對所有訂閱者或基於訂閱執行這些限制的配置。 以下部分將介紹每個部分的進一步詳細資訊。
 
-## <a name="configuring-defaults-for-all-subscribers"></a>設定所有訂閱者的預設值
+## <a name="configuring-defaults-for-all-subscribers"></a>配置所有訂閱者的預設值
 
-有兩個屬性：可以設定為事件方格部署一部分的 `brokers__defaultMaxDeliveryAttempts` 和 `broker__defaultEventTimeToLiveInSeconds`，這會控制所有訂閱者的重試原則預設值。
+有兩個屬性：`brokers__defaultMaxDeliveryAttempts``broker__defaultEventTimeToLiveInSeconds`可以配置為事件網格部署的一部分，該部署控制所有訂閱者的重試策略預設值。
 
-| 屬性名稱 | 說明 |
+| 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | 傳遞事件的嘗試次數上限。 預設值：30。
-| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （以秒為單位），在此時間之後，如果未傳遞，就會捨棄事件。 預設值： **7200**秒
+| `broker__defaultMaxDeliveryAttempts` | 傳遞事件的最大嘗試次數。 預設值：30。
+| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL，在幾秒鐘內，如果未傳遞事件，將丟棄事件。 預設值： **7200**秒
 
-## <a name="configuring-defaults-per-subscriber"></a>設定每個訂閱者的預設值
+## <a name="configuring-defaults-per-subscriber"></a>配置每個訂閱者的預設值
 
-您也可以根據每個訂用帳戶來指定重試原則限制。
-如需如何為每個訂閱者設定預設值的相關資訊，請參閱我們的[API 檔](api.md)。 訂用帳戶層級的預設值會覆寫模組層級設定。
+您還可以根據每個訂閱指定重試策略限制。
+有關如何為每個訂閱者配置預設值的資訊，請參閱我們的[API 文檔](api.md)。 訂閱級預設值覆蓋模組層級別配置。
 
 ## <a name="examples"></a>範例
 
-下列範例會在事件方格模組中設定重試原則，其 maxNumberOfAttempts = 3，事件 TTL 為30分鐘
+以下示例在事件網格模組中設置重試策略，最大嘗試次數 = 3 和事件 TTL 為 30 分鐘
 
 ```json
 {
@@ -86,7 +86,7 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 }
 ```
 
-下列範例會設定 maxNumberOfAttempts = 3 且事件 TTL 為30分鐘的 Web 勾點訂閱
+以下示例設置最大嘗試次數 = 3 和事件 TTL 30 分鐘的 Web 掛鉤訂閱
 
 ```json
 {

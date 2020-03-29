@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 入口網站中建立 Windows VM 的 FQDN
+title: 在 Azure 門戶中為 Windows VM 創建 FQDN
 description: 了解如何在 Azure 入口網站中為基於 Resource Manager 的虛擬機器建立完整格式的網域名稱或 FQDN。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371270"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>在 Azure 入口網站中建立 Windows VM 的完整網域名稱

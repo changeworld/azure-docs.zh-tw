@@ -1,6 +1,6 @@
 ---
-title: 在 Azure DevTest Labs 中設定 VM 的自動啟動設定 |Microsoft Docs
-description: 瞭解如何在實驗室中設定 Vm 的自動啟動設定。 此設定可讓實驗室中的 Vm 依排程自動啟動。
+title: 在 Azure 開發人員測試實驗室中配置 VM 的自動啟動設置 |微軟文檔
+description: 瞭解如何在實驗室中配置 VM 的自動啟動設置。 此設置允許按計劃自動啟動實驗室中的 VM。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
 ms.openlocfilehash: 95f810ba16f358c5aabc35e26294cdb3f8c3cca0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74807910"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>自動啟動實驗室虛擬機器  
-Azure DevTest Labs 可讓您將實驗室中的虛擬機器設定為根據排程自動啟動和關閉。 如需設定 autoshutdown 設定的詳細資訊，請參閱[在 Azure DevTest Labs 中管理實驗室的 autoshutdown 原則](devtest-lab-auto-shutdown.md)。 
+Azure 開發人員測試實驗室允許您根據計畫配置實驗室中的虛擬機器，以便自動啟動和關閉。 有關配置自動關機設置的資訊，請參閱[在 Azure DevTest 實驗室中管理實驗室的自動關閉策略](devtest-lab-auto-shutdown.md)。 
 
-不同于 autoshutdown，在原則開啟時包含所有 Vm，自動啟動原則會要求實驗室使用者明確選取 VM，並加入宣告此排程。 如此一來，您將無法輕易地進入不小心自動啟動的不必要 Vm，而造成非預期的支出。
+與自動關閉不同，在打開策略時包含所有 VM，自動啟動策略要求實驗室使用者明確選取 VM 並加入宣告此計畫。 這樣，您就不會輕易遇到不需要的 VM 意外自動啟動並導致意外支出的情況。
 
-本文說明如何設定實驗室的自動啟動原則。
+本文介紹如何為實驗室配置自動啟動策略。
 
-## <a name="configure-autostart-settings-for-a-lab"></a>設定實驗室的自動啟動設定 
-1. 流覽至您實驗室的首頁。 
-2. 選取左側功能表上的 [設定**和原則**]。 
+## <a name="configure-autostart-settings-for-a-lab"></a>為實驗室配置自動啟動設置 
+1. 導航到實驗室的主頁。 
+2. 選擇左側功能表上的 **"配置"和"策略**"。 
 
-    ![[設定和原則] 功能表](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
-3. 在 [設定**和原則**] 頁面上，執行下列步驟：
+    ![配置和策略功能表](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+3. 在 **"配置和策略"** 頁上，執行以下步驟：
     
-    1. 針對 [**允許自動啟動的虛擬機器] 排程**選取 [**開啟**]，以啟用此實驗室的自動啟動功能。 
-    2. 針對 [**排程開始**] 欄位，選取 [開始時間] （例如：上午8:00:00）。 
-    3. 選取要使用的**時區**。 
-    4. 選取**一周**中需要自動啟動 vm 的天數。 
-    5. 然後，選取工具列上的 [**儲存**] 來儲存設定。 
+    1. 選擇 **"打開**"以**允許自動啟動虛擬機器**，以啟用此實驗室的自動啟動功能。 
+    2. 為 **"計畫開始"** 欄位選擇開始時間（例如：上午 8：00）。 
+    3. 選擇要使用的**時區**。 
+    4. 選擇需要自動啟動 VM 的**一周中的天數**。 
+    5. 然後，選擇 **"在**工具列上保存"以保存設置。 
 
-        ![自動啟動設定](./media/devtest-lab-auto-startup-vm/auto-start-configuration.png)
+        ![自動啟動設置](./media/devtest-lab-auto-startup-vm/auto-start-configuration.png)
 
         > [!IMPORTANT]
-        > 此原則不會自動將自動啟動套用至實驗室中的任何虛擬機器。 若要**選擇**使用個別的虛擬機器，請移至 [虛擬機器] 頁面，並啟用該 VM 的 [**自動啟動**]。
+        > 此策略不會自動應用於實驗室中的任何虛擬機器。 要**選擇單個**虛擬機器，請訪問虛擬機器頁面並為該 VM 啟用**自動啟動**。
 
-## <a name="enable-autostart-for-a-vm-in-the-lab"></a>針對實驗室中的 VM 啟用自動啟動
-下列程式會提供步驟，讓您在實驗室中選擇 VM 的自動啟動原則。 
+## <a name="enable-autostart-for-a-vm-in-the-lab"></a>在實驗室中為 VM 啟用自動啟動
+以下過程為您提供了選擇將 VM 納入實驗室自動啟動策略的步驟。 
 
-1. 在您實驗室的首頁上，選取 [**我的虛擬機器**] 清單中的**VM** 。 
+1. 在實驗室的主頁上，選擇"**我的虛擬機器**"清單中的**VM。** 
 
-    ![[設定和原則] 功能表](./media/devtest-lab-auto-startup-vm/select-vm.png)
-2. 在 [**虛擬機器**] 頁面上，選取左側功能表**或 [排程**] 清單中的 [**自動啟動**]。 
+    ![配置和策略功能表](./media/devtest-lab-auto-startup-vm/select-vm.png)
+2. 在 **"虛擬機器**"頁上，在左側功能表或 **"計畫"** 清單中選擇 **"自動啟動**"。 
 
-    ![選取自動啟動功能表](./media/devtest-lab-auto-startup-vm/select-auto-start.png)
-3. 在 [**自動**啟動] 頁面上，針對 [**允許此虛擬機器排程為自動啟動**] 選項選取 [**開啟**]。
+    ![選擇自動啟動功能表](./media/devtest-lab-auto-startup-vm/select-auto-start.png)
+3. 在 **"自動啟動"** 頁上，**On**選擇"**允許為此虛擬機器計畫自動啟動**"選項。
 
     ![為 VM 啟用自動啟動](./media/devtest-lab-auto-startup-vm/auto-start-vm.png)
-4. 然後，選取工具列上的 [**儲存**] 來儲存設定。 
+4. 然後，選擇 **"在**工具列上保存"以保存設置。 
 
 
 ## <a name="next-steps"></a>後續步驟
-若要瞭解實驗室的設定 autoshutdown 原則，請參閱[在 Azure DevTest Labs 中管理實驗室的 autoshutdown 原則。](devtest-lab-auto-shutdown.md)
+要瞭解實驗室的配置自動關閉策略，請參閱在[Azure 開發人員測試實驗室中管理實驗室的自動關閉策略](devtest-lab-auto-shutdown.md)

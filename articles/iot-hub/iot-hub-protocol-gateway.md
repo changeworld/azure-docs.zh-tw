@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345391"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>讓 IoT 中樞支援其他通訊協定
@@ -43,6 +43,6 @@ MQTT 配接器也會示範程式設計模型，此模型可為其他通訊協定
 
 * [與事件中樞比較](iot-hub-compare-event-hubs.md)
 
-* [調整、 高可用性和災害復原](iot-hub-scaling.md)
+* [調整規格、高可用性和災害復原](iot-hub-scaling.md)
 
-* [IoT 中樞開發人員指南](iot-hub-devguide.md)
+* [IoT 中心開發人員指南](iot-hub-devguide.md)

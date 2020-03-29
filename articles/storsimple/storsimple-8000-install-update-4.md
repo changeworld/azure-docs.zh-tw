@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60860307"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝 Update 4
@@ -45,11 +45,11 @@ Update 4 包含裝置軟體、USM 韌體、LSI 驅動程式與韌體、Storport 
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-確認您的裝置是否正在執行 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)** 。 [ **上次更新日期** ] 應該也已修改。
+確認您的裝置是否正在執行 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)**。 [ **上次更新日期** ] 應該也已修改。
 
 * 您會看到有可用的維護模式更新 (此訊息可能會在您安裝更新之後繼續顯示長達 24 小時)。 維護模式更新為干擾性更新，會導致裝置產生停機時間，且只能透過您裝置的 Windows PowerShell 介面加以套用。
 
-* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 請遵循 [安裝及驗證維護模式 Hotfix](#to-install-and-verify-maintenance-mode-hotfixes) 中列出的步驟安裝維護模式更新。
+* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 按照安裝中列出的步驟[進行驗證維護模式修補程式](#to-install-and-verify-maintenance-mode-hotfixes)以安裝維護模式更新。
 
 ## <a name="install-update-4-as-a-hotfix"></a>以 Hotfix 方式安裝 Update 4
 建議的方法是透過 Azure 入口網站安裝 Update 4。
@@ -74,7 +74,7 @@ Hotfix 方法涉及下列三個步驟：
 
 您必須以指定的順序和建議的資料夾下載並安裝下列 Hotfix：
 
-| 順序 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |軟體更新 |Regular <br></br>非干擾性 |~ 25 分鐘 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI 驅動程式與韌體更新 <br> USM 韌體更新 (3.38 版) |Regular <br></br>非干擾性 |~ 3 小時 <br> (包括 2A. 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Hotfix 方法涉及下列三個步驟：
 
 除了前面表格所示的所有更新之外，您可能還需要安裝磁碟韌體更新。 您可以執行 `Get-HcsFirmwareVersion` Cmdlet 來確認是否需要進行磁碟韌體更新。 如果您執行的是這些韌體版本：`XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002`、`0106`，您就不需要安裝這些更新。
 
-| 順序 | KB | 描述 | 更新類型 | 安裝時間 | 安裝在資料夾|
+| 單 | KB | 描述 | 更新類型 | 安裝時間 | 安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |磁碟韌體 |維護 <br></br>干擾性 |~ 30 分鐘 | ThirdOrderUpdate |
 

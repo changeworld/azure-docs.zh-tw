@@ -1,5 +1,5 @@
 ---
-title: 將飛出視窗新增至遠端監視解決方案 UI-Azure |Microsoft Docs
+title: 在遠端監視解決方案 UI 中新增飛出視窗 - Azure | Microsoft Docs
 description: 本文說明如何在遠端監視解決方案加速器 Web UI 中的頁面上，新增飛出視窗。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447109"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗
@@ -24,7 +24,7 @@ ms.locfileid: "61447109"
 
 本文中的飛出視窗範例會顯示在有格線的頁面上，[在遠端監視解決方案加速器 Web UI 中新增自訂格線](iot-accelerators-remote-monitoring-customize-grid.md)操作方式文章會說明如何新增。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -133,7 +133,7 @@ export class BasicPage extends Component {
 npm start
 ```
 
-上一個命令會在本機於 [http://localhost:3000/dashboard](http://localhost:3000/dashboard) 執行 UI。 瀏覽至 [範例]  頁面，然後按一下 [開啟飛出視窗]  。
+前面的命令在 本地運行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 瀏覽至 [範例]**** 頁面，然後按一下 [開啟飛出視窗]****。
 
 ## <a name="next-steps"></a>後續步驟
 

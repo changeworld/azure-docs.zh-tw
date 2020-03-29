@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65823335"
 ---
 # <a name="understand-the-device-model-schema"></a>了解裝置機型結構描述
@@ -29,7 +29,7 @@ ms.locfileid: "65823335"
 * [實作裝置機型行為](iot-accelerators-remote-monitoring-device-behavior.md)描述您用來實作模擬裝置行為的 JavaScript 檔案。
 * [建立新的模擬裝置](iot-accelerators-remote-monitoring-create-simulated-device.md)會統整並示範如何將新的模擬裝置類型部署到您的解決方案。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 >[!div class="checklist"]
 > * 使用 JSON 檔案以定義模擬裝置機型
@@ -85,12 +85,12 @@ ms.locfileid: "65823335"
 
 裝置狀態的定義具有兩個元素：
 
-* `InitialState` 定義裝置狀態物件之所有屬性的初始值。
-* `Script` 識別排程執行以更新裝置狀態的 JavaScript 檔案。 您可以使用此指令碼檔案讓裝置傳送的遙測值隨機。
+* `InitialState` 會針對裝置狀態物件的所有屬性，定義初始值。
+* `Script` 會識別排程執行以更新裝置狀態的 JavaScript 檔案。 您可以使用此指令碼檔案讓裝置傳送的遙測值隨機。
 
 若要了解有關更新裝置狀態物件之 JavaScript 檔案的詳細資訊，請參閱[了解裝置機型行為](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)。
 
-下列範例會顯示模擬 chiller 裝置之裝置狀態物件的定義：
+下列範例會顯示模擬 Chiller 裝置之裝置狀態物件的定義：
 
 ```json
 "Simulation": {
@@ -116,7 +116,7 @@ ms.locfileid: "65823335"
 
 ## <a name="properties"></a>屬性
 
-結構描述的 `Properties` 區段會定義裝置回報給解決方案的屬性值。 例如:
+結構描述的 `Properties` 區段會定義裝置回報給解決方案的屬性值。 例如：
 
 ```json
 "Properties": {
@@ -165,7 +165,7 @@ ms.locfileid: "65823335"
 * 二進位 - 使用 base64 序列化
 * Text
 * Boolean
-* 整數
+* 整數 
 * Double
 * Datetime
 

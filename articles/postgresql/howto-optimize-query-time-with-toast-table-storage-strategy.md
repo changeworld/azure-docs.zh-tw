@@ -1,16 +1,16 @@
 ---
-title: 最佳化查詢時使用的 Azure 資料庫中的快顯通知資料表儲存體策略適用於 PostgreSQL-單一伺服器
-description: 本文說明如何最佳化查詢時，快顯通知資料表儲存體策略，在 Azure Database for PostgreSQL-單一伺服器。
+title: 使用 Azure 資料庫中的 Toast 表存儲策略優化查詢時間，用於 PostgreSQL - 單伺服器
+description: 本文介紹如何使用適用于 PostgreSQL - 單伺服器的 Azure 資料庫上的 TOAST 表存儲策略來優化查詢時間。
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65066990"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>使用快顯通知資料表儲存策略最佳化查詢時間 

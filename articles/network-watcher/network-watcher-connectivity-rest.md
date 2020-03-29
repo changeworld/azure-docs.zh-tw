@@ -1,5 +1,5 @@
 ---
-title: 針對連線進行疑難排解-Azure REST API
+title: 故障排除連接 - Azure REST API
 titleSuffix: Azure Network Watcher
 description: 了解如何運用 Azure REST API，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
 ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845088"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>使用 Azure REST API 利用 Azure 網路監看員進行連線疑難排解
 
 > [!div class="op_single_selector"]
 > - [入口網站](network-watcher-connectivity-portal.md)
-> - [PowerShell](network-watcher-connectivity-powershell.md)
+> - [電源外殼](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>回應
 
-下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
+下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]****。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
 
 ```json
 {
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>回應
 
-在下列範例中，`connectionStatus` 會顯示為 [無法連線]。 在 `hops` 詳細資料中，您可以在 `issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。
+在下列範例中，`connectionStatus` 會顯示為 [無法連線]****。 在 `hops` 詳細資料中，您可以在 `issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。
 
 ```json
 {
@@ -344,7 +344,7 @@ null
 
 ### <a name="response"></a>回應
 
-在下列回應中，您可以看到 `connectionStatus` 顯示為 [可以連線]。 連線成功時，會提供延遲值。
+在下列回應中，您可以看到 `connectionStatus` 顯示為 [可以連線]****。 連線成功時，會提供延遲值。
 
 ```json
 {
@@ -431,7 +431,7 @@ null
 
 ### <a name="response"></a>回應
 
-下列範例是執行前一個 API 呼叫的回應。 因為檢查成功，所以 `connectionStatus` 屬性會顯示為 [可以連線]。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
+下列範例是執行前一個 API 呼叫的回應。 因為檢查成功，所以 `connectionStatus` 屬性會顯示為 [可以連線]****。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
 
 ```json
 {
@@ -466,6 +466,6 @@ null
 
 ## <a name="next-steps"></a>後續步驟
 
-檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示將封包擷取自動化。
+瞭解如何通過查看[創建觸發的警報資料包捕獲](network-watcher-alert-triggered-packet-capture.md)，使用虛擬機器警報自動捕獲資料包。
 
 造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來得知 VM 是否允許特定流量流入或流出。

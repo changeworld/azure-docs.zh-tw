@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7f5ea80a055c34cddeab042c33071c6f5799a443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463662"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 多重位元速率 4x3 SD 音訊 5.1
@@ -29,7 +29,7 @@ ms.locfileid: "61463662"
  此預設會產生一組 5 個對齊 GOP 的 MP4 檔案 (範圍從 1600 kbps 到 400 kbps) 和 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)。  
   
 > [!NOTE]
->  跨層修改 `Width` 和 `Height` 值時，請確定長寬比保持一致。 例如: 1920x1080、1280x720、1080x576、640x360。 請勿混用長寬比，例如：1280x720、720x480、640x360。  
+>  跨層修改 `Width` 和 `Height` 值時，請確定長寬比保持一致。 例如︰1920x1080、1280x720、1080x576、640x360。 請勿使用混合的長寬比，例如︰1280x720、720x480、640x360。  
   
  XML  
   

@@ -1,5 +1,5 @@
 ---
-title: 將服務新增至遠端監視解決方案 UI-Azure |Microsoft Docs
+title: 在遠端監視解決方案 UI 中新增服務 - Azure | Microsoft Docs
 description: 本文說明如何在遠端監視解決方案加速器 Web UI 中新增服務。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447041"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂服務
@@ -26,7 +26,7 @@ ms.locfileid: "61447041"
 
 在 React 應用程式中，服務通常會與後端服務互動。 遠端監視解決方案加速器中的範例包括會與 IoT 中樞管理員和組態微服務互動的服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 

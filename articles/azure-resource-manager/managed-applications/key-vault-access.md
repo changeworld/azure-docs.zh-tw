@@ -1,15 +1,15 @@
 ---
-title: 部署受管理的應用程式時使用 Key Vault
+title: 部署託管應用時使用金鑰保存庫
 description: 說明在部署受控應用程式時如何使用 Azure Key Vault 中的存取祕密
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248433"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>在部署 Azure 受控應用程式時存取 Key Vault 秘密
@@ -22,37 +22,37 @@ ms.locfileid: "79248433"
 
 1. 在入口網站中，選取您的 Key Vault。
 
-1. 選取 [存取原則]。   
+1. 選擇**訪問策略**。   
 
    ![選取存取原則](./media/key-vault-access/select-access-policies.png)
 
-1. 選取 [按一下以顯示進階存取原則]。
+1. 選取 [按一下以顯示進階存取原則]****。
 
    ![顯示進階存取原則](./media/key-vault-access/advanced.png)
 
-1. 選取 [為範本部署啟用對 Azure Resource Manager 的存取]。 然後選取 [儲存]。
+1. 選取 [為範本部署啟用對 Azure Resource Manager 的存取]****。 然後，選擇 **"保存**"。
 
    ![啟用範本部署](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>將服務新增為參與者
 
-1. 選取 [存取控制 (IAM)]。
+1. 選擇**存取控制 （IAM）。**
 
    ![選取存取控制](./media/key-vault-access/access-control.png)
 
-1. 選取 [新增角色指派]。
+1. 選擇 **"添加角色指派**"。
 
    ![選取 [新增]](./media/key-vault-access/add-access-control.png)
 
-1. 選取 [參與者] 作為角色。 搜尋**設備資源提供者**，並從可用的選項中加以選取。
+1. 選取 [參與者]**** 作為角色。 搜尋**設備資源提供者**，並從可用的選項中加以選取。
 
    ![搜尋提供者](./media/key-vault-access/search-provider.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="reference-key-vault-secret"></a>參考 Key Vault 祕密
 
-若要從 Key Vault 將秘密傳遞至 Managed 應用程式中的範本，您必須使用[連結或嵌套的範本](../templates/linked-templates.md)，並在連結或嵌套範本的參數中參考 Key Vault。 請提供 Key Vault 的資源識別碼和秘密的名稱。
+要將金鑰保存庫的機密傳遞到託管應用程式中的範本，必須使用[連結或嵌套範本](../templates/linked-templates.md)，並在連結或嵌套範本的參數中引用金鑰保存庫。 請提供 Key Vault 的資源識別碼和秘密的名稱。
 
 ```json
 {

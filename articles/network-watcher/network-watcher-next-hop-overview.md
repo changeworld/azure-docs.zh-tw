@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844053"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>使用下一個躍點來診斷虛擬機器路由問題
@@ -34,7 +34,7 @@ ms.locfileid: "76844053"
 * VirtualNetworkPeering
 * VirtualNetworkServiceEndpoint 
 * MicrosoftEdge
-* 無
+* None
 
 若要深入了解每個下一個躍點類型，請參閱[路由概觀](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

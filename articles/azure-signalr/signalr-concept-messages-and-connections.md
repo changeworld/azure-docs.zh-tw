@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75392819"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service 中的訊息和連線
@@ -20,7 +20,7 @@ Azure SignalR Service 的計費模型是以連線數目和訊息數目為基礎�
 
 ## <a name="message-formats"></a>訊息格式 
 
-Azure SignalR Service 支援與 ASP.NET Core SignalR： [JSON](https://www.json.org/)和[MessagePack](/aspnet/core/signalr/messagepackhubprotocol)相同的格式。
+Azure SignalR 服務支援與ASP.NET核心信號[R：JSON](https://www.json.org/)和[消息包](/aspnet/core/signalr/messagepackhubprotocol)相同的格式。
 
 ## <a name="message-size"></a>訊息大小
 
@@ -40,15 +40,15 @@ Azure SignalR Service 沒有訊息大小限制。
 
 ## <a name="how-connections-are-counted"></a>如何計算連線
 
-有 Azure SignalR Service 的伺服器連接和用戶端連線。 根據預設，每個應用程式伺服器一開始會有五個中樞的初始連線，而且每個用戶端都有一個用戶端連接。
+有伺服器連接和用戶端連接與 Azure SignalR 服務。 預設情況下，每個應用程式伺服器從每個中心 5 個初始連接開始，每個用戶端都有一個用戶端連接。
 
 Azure 入口網站中顯示的連線計數包括伺服器連線和用戶端連線。
 
-例如，假設您有兩個應用程式伺服器，並且在程式碼中定義了五個中樞。 伺服器連接計數將是50：2個應用程式伺服器 * 5 個中樞 * 5 個連線。
+例如，假設您有兩個應用程式伺服器，並且在程式碼中定義了五個中樞。 伺服器連接計數將為 50：2 個應用伺服器 + 5 個集線器 = 每個集線器 5 個連接。
 
-ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 根據預設，每個應用程式伺服器需要5個以上的初始伺服器連接。 預設中樞的初始連線計數會與其他中樞保持一致。
+ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 預設情況下，每個應用程式伺服器需要另外五個初始伺服器連接。 預設集線器的初始連接計數與其他集線器的連接計數保持一致。
 
-在應用程式伺服器的存留期內，服務和應用程式伺服器會保留同步線上狀態，並調整伺服器連接，以獲得更佳的效能和服務穩定性。 因此，您可能會看到伺服器連接編號變更的時間。
+在應用程式伺服器的存留期內，服務和應用程式伺服器將保持同步連接狀態，並調整伺服器連接，以更好的性能和服務穩定性。 因此，您可能會看到伺服器連接號不時更改。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何計算輸入/輸出流量
 
@@ -58,5 +58,5 @@ ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的
 
 - [Azure 監視器中的彙總類型](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR 組態](/aspnet/core/signalr/configuration)
-- [JSON](https://www.json.org/)
+- [Json](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

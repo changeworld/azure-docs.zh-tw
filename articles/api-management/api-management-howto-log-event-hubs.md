@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76898782"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
@@ -32,7 +32,7 @@ ms.locfileid: "76898782"
 ## <a name="create-an-api-management-logger"></a>建立 API 管理記錄器
 現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) ，以將事件記錄至事件中樞。
 
-可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱[如何建立記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)。
+可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 有關詳細的請求示例，請參閱[如何創建記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhubs-policies"></a>設定 log-to-eventhubs 原則
 
@@ -40,13 +40,13 @@ ms.locfileid: "76898782"
 
 1. 瀏覽至您的 APIM 執行個體。
 2. 選取 [API] 索引標籤。
-3. 選取您要在其中新增原則的 API。 在此範例中，我們將原則新增至 [無限制] 產品中的 [Echo API]。
-4. 選取 [所有作業]。
+3. 選取您要在其中新增原則的 API。 在此範例中，我們將原則新增至 [無限制]**** 產品中的 [Echo API]****。
+4. 選取 [所有作業]****。
 5. 選取畫面頂端的 [設計] 索引標籤。
 6. 在 [輸入處理] 或 [輸出處理] 視窗中，按一下三角形 (鉛筆旁邊)。
 7. 選取 [程式碼編輯器]。 如需詳細資訊，請參閱[如何設定或編輯原則](set-edit-policies.md)。
 8. 將游標置於 `inbound` 或 `outbound` 原則區段。
-9. 在右側視窗中，選取 [進階原則] > [登入 EventHub]。 這會插入 `log-to-eventhub` 原則陳述式範本。
+9. 在右側的視窗中，選擇 **"高級策略** > **登錄到事件中心**"。 這會插入 `log-to-eventhub` 原則陳述式範本。
 
 ```xml
 <log-to-eventhub logger-id ='logger-id'>
@@ -57,7 +57,7 @@ ms.locfileid: "76898782"
 
 您可以使用任何能傳回字串做為 `log-to-eventhub` 項目之值的運算式。 在此範例中，將記錄包含日期和時間、服務名稱、要求識別碼、要求 IP 位址和作業名稱的字串。
 
-按一下 [儲存] ，儲存更新的原則組態。 儲存完成後，原則便會啟用，事件會記錄至指定的事件中樞。
+按一下 [儲存] **** ，儲存更新的原則組態。 儲存完成後，原則便會啟用，事件會記錄至指定的事件中樞。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 Azure 事件中樞

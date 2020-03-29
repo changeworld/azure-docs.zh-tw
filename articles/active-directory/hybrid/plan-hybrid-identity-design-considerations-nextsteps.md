@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76512958"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory 混合式身分識別設計考量 - 後續步驟
@@ -39,8 +39,8 @@ ms.locfileid: "76512958"
 * [Microsoft Enterprise Mobility 部落格](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
 * [Microsoft In The Cloud 部落格](https://blogs.technet.com/b/in_the_cloud/)
 * [Microsoft Intune 部落格](https://blogs.technet.com/b/microsoftintune/)
-* [Microsoft 端點 Configuration Manager blog](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
+* [微軟端點組態管理員博客](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 [設計考量概觀](plan-hybrid-identity-design-considerations-overview.md)
 

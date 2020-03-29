@@ -1,20 +1,20 @@
 ---
-title: 適用于 Azure Service Fabric 網格的術語
-description: 本文詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
+title: Azure 服務結構網格的術語
+description: 本文詳細介紹了 Azure 服務結構網格用於説明您更好地瞭解文檔中使用的術語。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75351982"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh 術語
 
-Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 本文詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
+Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 本文詳細介紹了 Azure 服務結構網格用於説明您更好地瞭解文檔中使用的術語。
 
 ## <a name="service-fabric"></a>Service Fabric
 
@@ -68,15 +68,15 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
 | 應用程式類型 | 描述依據 | Azure Service Fabric Mesh | Azure Service Fabric 叢集 (任何 OS)| 本機叢集 | 獨立叢集 |
 |---|---|---|---|---|---|
-| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | 支援的 |不支援 | Windows - 支援，Linux 和 Mac - 不支援 | Windows - 不支援 |
-|Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | 不支援| 支援的|支援的|Windows - 支援|
+| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | 支援 |不支援 | Windows - 支援，Linux 和 Mac - 不支援 | Windows - 不支援 |
+|Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | 不支援| 支援|支援|Windows - 支援|
 
 下表針對 Service Fabric 描述不同的應用程式模型以及對應存在的工具。
 
 | 應用程式類型 | 描述依據 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不支援 |不支援 | 支援 - 僅限 Mesh 環境 | 不支援|
-|Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | VS 2017 和 VS 2015| 支援的|支援的|支援的|支援的|
+|Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | VS 2017 和 VS 2015| 支援|支援|支援|支援|
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 擴展集範本中搭配使用 Azure 自動調整與來賓計量
+title: 在 Linux 比例集範本中使用 Azure 自動縮放和來賓指標
 description: 了解如何在 Linux 虛擬機器擴展集範本中使用客體計量自動調整規模
 author: mayanknayar
 tags: azure-resource-manager
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: 88f839b281e4d345b012a7e6acff3770dc536045
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271960"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>在 Linux 擴展集範本中使用客體計量自動調整規模
 
-Azure 中有兩種廣泛的計量類型，從 Vm 和擴展集收集：主機計量和來賓計量。 概括而言，如果您想要使用標準 CPU、磁片和網路計量，那麼主機計量就很適合。 不過，如果您需要更大的計量選取範圍，則應該查閱來賓計量。
+Azure 中有兩種廣泛的指標類型是從 VM 和縮放集收集的：主機指標和來賓指標。 在高級別上，如果要使用標準 CPU、磁片和網路指標，則主機指標非常適合。 但是，如果您需要更多指標選擇，則應研究來賓指標。
 
-主機計量不需要額外的安裝，因為它們是由主機 VM 所收集，而來賓計量則會要求您在來賓 VM 中安裝[Windows Azure 診斷擴充](../virtual-machines/windows/extensions-diagnostics-template.md)功能或[Linux Azure 診斷延伸](../virtual-machines/linux/diagnostic-extension.md)模組。 使用客體計量而非主機計量的一個常見原因是，客體計量會提供比主機計量更大的計量選取範圍。 記憶體耗用量計量即為一例，這類計量只能透過客體計量使用。 [這裡](../azure-monitor/platform/metrics-supported.md)會列出支援的主機度量，而常用的客體計量則列於[這裡](../azure-monitor/platform/autoscale-common-metrics.md)。 本文說明如何修改[基本可行擴展集範本](virtual-machine-scale-sets-mvss-start.md)，以使用以 Linux 擴展集的來賓計量為基礎的自動調整規則。
+主機指標不需要其他設置，因為它們由主機 VM 收集，而來賓指標要求您在來賓 VM 中安裝[Windows Azure 診斷擴展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 診斷擴展](../virtual-machines/linux/diagnostic-extension.md)。 使用客體計量而非主機計量的一個常見原因是，客體計量會提供比主機計量更大的計量選取範圍。 記憶體耗用量計量即為一例，這類計量只能透過客體計量使用。 [這裡](../azure-monitor/platform/metrics-supported.md)會列出支援的主機度量，而常用的客體計量則列於[這裡](../azure-monitor/platform/autoscale-common-metrics.md)。 本文演示如何修改[基本可行的比例集範本](virtual-machine-scale-sets-mvss-start.md)，以便根據 Linux 比例集的來賓指標使用自動縮放規則。
 
 ## <a name="change-the-template-definition"></a>變更範本定義
 
-在[前一篇文章](virtual-machine-scale-sets-mvss-start.md)中，我們已建立基本的擴展集範本。 我們現在會使用先前的範本並加以修改，以建立範本，以使用以來賓計量為基礎的自動調整來部署 Linux 擴展集。
+在前面的一[篇文章中](virtual-machine-scale-sets-mvss-start.md)，我們創建了一個基本的比例集範本。 現在，我們將使用該早期範本對其進行修改，以創建一個範本，該範本使用基於來賓指標的自動縮放部署 Linux 比例集。
 
 首先，新增 `storageAccountName` 和 `storageAccountSasToken` 的參數。 診斷代理程式會將計量資料儲存於此儲存體帳戶的[表格](../cosmos-db/table-storage-how-to-use-dotnet.md)中。 從 Linux 診斷代理程式 3.0 版開始，不再支援使用儲存體存取金鑰。 請改用 [SAS 權杖](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 

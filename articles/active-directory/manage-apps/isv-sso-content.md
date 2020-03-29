@@ -1,6 +1,6 @@
 ---
-title: 多租用戶應用程式啟用 SSO
-description: 使用 Azure active Directory 整合的獨立軟體廠商的指引
+title: 為多租用戶應用程式啟用 SSO
+description: 獨立軟體廠商與 Azure 活動目錄集成指南
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67795172"
 ---
-# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>啟用單一登入您的多租用戶應用程式  
+# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>為多租戶應用程式啟用單一登入  
 
-當您提供您的應用程式，以供其他公司透過購買或訂用帳戶時，您將您的應用程式提供給他們自己的 Azure 租用戶內的客戶。 這稱為建立多租用戶應用程式。 這個概念的概觀，請參閱 <<c0> [ 在 Azure 中的多租用戶應用程式](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)並[Azure Active Directory 中的租用戶](../develop/single-and-multi-tenant-apps.md)。
+當您通過購買或訂閱提供應用程式供其他公司使用時，可以將應用程式提供給其自己的 Azure 租戶中的客戶。 這稱為創建多租戶應用程式。 有關此概念的概述，請參閱[Azure 中的多租戶應用程式](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)和[Azure 活動目錄中的租戶](../develop/single-and-multi-tenant-apps.md)。
 
 ## <a name="what-is-single-sign-on"></a>什麼是單一登入
 
-單一登入 (SSO) 時，新增安全性及便利性的使用者登入應用程式使用 Azure Active Directory 和其他身分識別。 已啟用 SSO 的應用程式時，使用者不需要輸入不同的認證，以存取該應用程式。 如需完整說明單一登入。 [單一登入 Azure Active Directory 中的應用程式請參閱](what-is-single-sign-on.md)。
+當使用者使用 Azure 活動目錄和其他標識登錄到應用程式時，單一登入 （SSO） 增加了安全性和便利性。 啟用 SSO 時，使用者無需輸入單獨的憑據即可訪問該應用程式。 有關單一登入的完整說明。 [請參閱 Azure 活動目錄中的應用程式單一登入](what-is-single-sign-on.md)。
 
-## <a name="why-enable-single-sign-on-in-your-application"></a>為何要讓單一登入您的應用程式嗎？
+## <a name="why-enable-single-sign-on-in-your-application"></a>為什麼在應用程式中啟用單一登入？
 
-有許多優點，若要在多租用戶應用程式中啟用 SSO。 當您為您的應用程式啟用 SSO:
+在多租戶應用程式中啟用 SSO 有許多優點。 當您為應用程式啟用 SSO 時：
 
-* 在 Azure Marketplace 中，您的應用程式所在的數百萬個組織使用 Azure Active Directory 找到可以列出您的應用程式。
-  * 可讓客戶快速設定與 Azure AD 的 應用程式。
+* 您的應用程式可以列在 Azure 應用商店中，其中數百萬使用 Azure 活動目錄的組織可以發現你的應用。
+  * 使客戶能夠使用 Azure AD 快速配置應用程式。
 
-* 您的應用程式是可搜尋在 Office 365 應用程式庫，Office 365 應用程式啟動器，並參閱 Office.com 上的 Microsoft Search 中
+* 您的應用程式可以在 Office 365 應用庫、Office 365 應用啟動器和 Microsoft 搜索中Office.com
 
-* 您的應用程式可以使用 Microsoft Graph REST API 來存取使用者的產能可從 Microsoft Graph 取得的資料。
+* 您的應用程式可以使用 Microsoft 圖形 REST API 訪問可從 Microsoft 圖形獲取的資料，從而提高使用者工作效率。
 
-* 您可以更容易為您的客戶，以降低支援成本。
-  * 應用程式專屬的文件 coproduced 與我們共同客戶 eases 採用 Azure AD 小組。
-  * 如果已啟用單鍵 SSO，您客戶的 IT 系統管理員不需要了解如何在組織中設定您的應用程式使用。
+* 通過讓客戶更容易地降低支援成本。
+  * 與 Azure AD 團隊為我們共同客戶共同製作的特定于應用程式的文檔，可簡化採用。
+  * 如果啟用了一鍵式 SSO，則客戶的 IT 管理員不必瞭解如何配置應用程式以便在其組織中使用。
 
-* 您提供您的客戶能夠完全管理其員工和來賓身分識別的驗證和授權。
+* 您可以為客戶提供完全管理其員工和來賓身份的身份驗證和授權的能力。
 
-  * 將所有資訊，請參閱這些身分識別的客戶擁有者的帳戶管理和合規性責任。
+  * 將所有客戶管理和合規責任交給這些身份的客戶擁有者。
 
-  * 提供能夠啟用或停用特定的身分識別提供者、 群組或使用者，以符合其商務需求的 SSO 的詳細資訊。
+  * 為特定標識供應商、組或使用者啟用或禁用 SSO 以滿足其業務需求。
 
-* 您可以增加您的力和 adoptability。 許多大型組織需要 （或渴望） 員工的所有應用程式有無縫式 SSO 體驗。 如此可輕鬆使用 SSO 很重要。
+* 提高您的可上市性和可採用性。 許多大型組織要求（或渴望）其員工在所有應用程式中擁有無縫的 SSO 體驗。 使 SSO 變得簡單非常重要。
 
-* 您減少使用者分歧，這可能會增加使用者使用量，並增加收益。
+* 您可以減少最終使用者的摩擦，這可能會增加最終使用者的使用並增加您的收入。
 
-## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>如何啟用單一登入已發行的應用程式中
+## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>如何在已發佈的應用程式中啟用單一登入
 
-1. [選擇您的多租用戶應用程式的正確的同盟通訊協定](isv-choose-multi-tenant-federation.md)。
-1. 在您的應用程式中實作 SSO
-   - 請參閱[驗證模式的指引](../develop/v2-app-types.md)
-   - 請參閱[Azure active Directory 程式碼範例](../develop/sample-v2-code.md)OIDC 和 OAuth 通訊協定
-1. [建立您的 Azure 租用戶](isv-tenant-multi-tenant-app.md)並測試您的應用程式
-1. [建立及發行您的網站上的 SSO 文件](isv-create-sso-documentation.md)。
-1. [提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)和 Microsoft 的網站上建立文件與 Microsoft 合作夥伴。
-1. [加入 Microsoft Partner Network （免費），並建立您的上市計劃的絕佳](https://partner.microsoft.com/en-us/explore/commercial#gtm)。
+1. [為多租戶應用程式選擇正確的識別身分同盟協定](isv-choose-multi-tenant-federation.md)。
+1. 在應用程式中實現 SSO
+   - 有關[身份驗證模式的指導](../develop/v2-app-types.md)
+   - 有關 OIDC 和 OAuth 協定的[Azure 活動目錄代碼示例](../develop/sample-v2-code.md)
+1. [創建 Azure 租戶](isv-tenant-multi-tenant-app.md)並測試應用程式
+1. [在您的網站上創建和發佈 SSO 文檔](isv-create-sso-documentation.md)。
+1. [提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)，並與 Microsoft 合作，在 Microsoft 網站上創建文檔。
+1. [加入微軟合作夥伴網路（免費），並創建您的市場計畫](https://partner.microsoft.com/en-us/explore/commercial#gtm)。

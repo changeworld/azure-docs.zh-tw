@@ -17,14 +17,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897201"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
-下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 來監視 Active Directory 網域服務的詳細資訊，請參閱 [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
+下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有關使用 Azure AD 連接運行狀況監視活動目錄域服務的資訊，請參閱[使用 Azure AD 將運行狀況與 AD DS 連接](how-to-connect-health-adds.md)運行狀況。
 
 ![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "76897201"
 * 此報告涵蓋同步處理用戶端所記錄的錯誤 (Azure AD Connect 1.1.281.0 版或更高版本)
 * 它包含同步處理引擎上執行的最後一個同步處理作業所發生的錯誤 (Azure AD Connector 上的「匯出」)。
 * 用於同步處理的 Azure AD Connect Health 代理程式必須有指向所需端點的輸出連線，此報告才會包含最新的資料。
-* 報表會**每隔30分鐘更新一次**，並使用 Azure AD Connect Health 代理程式所上傳的資料進行同步處理。它提供下列主要功能
+* 使用 Azure AD Connect 運行狀況代理上傳的資料進行同步，**報告每 30 分鐘後更新**一次。它提供以下關鍵功能
 
   * 錯誤分類
   * 依各類別之錯誤列出物件
@@ -81,7 +81,7 @@ ms.locfileid: "76897201"
 ### <a name="categorization-of-errors"></a>錯誤分類
 此報告將現有的同步處理錯誤分成下列類別︰
 
-| 類別 | 說明 |
+| 類別 | 描述 |
 | --- | --- |
 | 重複的屬性 |當 Azure AD Connect 嘗試在 Azure AD 中以一或多個重複的屬性值建立或更新物件時發生錯誤，這些屬性在租用戶中必須是唯一的，例如 proxyAddresses、UserPrincipalName。 |
 | 資料不符 |當大致相符無法比對物件時發生錯誤，導致同步處理錯誤。 |
@@ -101,8 +101,8 @@ ms.locfileid: "76897201"
 每個錯誤的詳細檢視中提供下列資料
 
 * 已醒目提示衝突的屬性
-* 所涉及之「AD 物件」的識別項
-* 所涉及之「Azure AD 物件」的識別項 (視情況)
+* 所涉及之「AD 物件」** 的識別項
+* 所涉及之「Azure AD 物件」** 的識別項 (視情況)
 * 錯誤描述及如何修正
 
 ![同步處理錯誤報告詳細資料](./media/how-to-connect-health-sync/duplicateAttributeSyncError.png)
@@ -114,12 +114,12 @@ ms.locfileid: "76897201"
 對於涉及使用者來源錨點更新的特定重複屬性同步錯誤案例，您可以直接從入口網站加以修正。 深入了解[對重複的屬性同步錯誤進行診斷和修復](how-to-connect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>相關連結
-* [針對同步處理期間的錯誤進行疑難排解](tshoot-connect-sync-errors.md)
+* [同步期間的故障排除錯誤](tshoot-connect-sync-errors.md)
 * [重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
-* [使用 Azure AD Connect Health 來搭配 AD FS](how-to-connect-health-adfs.md)
+* [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
 * [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
-* [Azure AD Connect Health 版本歷程記錄](reference-connect-health-version-history.md)
+* [Azure AD 連接運行狀況版本歷程記錄](reference-connect-health-version-history.md)

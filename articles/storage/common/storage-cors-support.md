@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65147695"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure 儲存體服務的跨原始資源共用 (CORS) 支援
@@ -68,13 +68,13 @@ CORS 規則是設定於服務層級，因此您需要針對每個服務 (Blob、
 
 CORS 規則中包含的每個項目敘述如下：
 
-* **AllowedOrigins**：允許透過 CORS 對儲存體服務發出要求的原始網域。 原始網域是要求的來源網域。 請注意，原始網域的大小寫必須與使用者代理程式傳送至服務的原始網域完全相符。 您也可以使用萬用字元 '*'，允許所有原始網域透過 CORS 提出要求。 在範例中，網域 http:\//www.contoso.com 和 http: \/ /www.fabrikam.com 可以提出針對服務使用 CORS 要求。
-* **AllowedMethods**：原始網域可能針對 CORS 要求使用的方法 (HTTP 要求動詞命令)。 在上述範例中，只允許 PUT 和 GET 要求。
+* **AllowedOrigins**：允許透過 CORS 對儲存體服務提出要求的原始網域。 原始網域是要求的來源網域。 請注意，原始網域的大小寫必須與使用者代理程式傳送至服務的原始網域完全相符。 您也可以使用萬用字元 '*'，允許所有原始網域透過 CORS 提出要求。 在上面的示例中，域 HTTP：\//www.contoso.com 和\/HTTP： /www.fabrikam.com 可以使用 CORS 對服務發出請求。
+* **AllowedMethods**：原始網域可能用於 CORS 要求的方法 (HTTP 要求動詞命令)。 在上述範例中，只允許 PUT 和 GET 要求。
 * **AllowedHeaders**：原始網域可在 CORS 要求上指定的要求標頭。 在上述範例中，允許以 x-ms-meta-data、x-ms-meta-target 及 x-ms-meta-abc 開始的所有中繼資料標頭。 請注意，萬用字元 '*' 表示允許任何以指定前置詞開頭的標頭。
-* **ExposedHeaders**：可能包含在對 CORS 要求的回應中傳送，而且由瀏覽器對要求簽發者公開的回應標頭。 在上述範例中，會指示瀏覽器公開任何以 x-ms-meta 開頭的標頭。
-* **MaxAgeInSeconds**：瀏覽器應快取預檢 OPTIONS 要求的時間量上限。
+* **ExposedHeaders**：對 CORS 要求的回應中可能傳送回應標頭，且瀏覽器可能會向發出要求的人員公開回應標頭。 在上述範例中，會指示瀏覽器公開任何以 x-ms-meta 開頭的標頭。
+* **MaxAgeInSeconds**：瀏覽器應該快取預檢 OPTIONS 要求的最大時間量。
 
-Azure 儲存體服務支援為 **AllowedHeaders** 和 **ExposedHeaders** 元素指定有前置詞的標頭。 若要允許標頭的類別，您可以指定該類別的一般前置詞。 例如，指定 *x-ms-meta** 做為有前置詞的標頭會建立一項規則，可比對開頭為 x-ms-meta 的所有標頭。
+Azure 儲存體服務支援為 **AllowedHeaders** 和 **ExposedHeaders** 元素指定帶有前置詞的標頭。 若要允許標頭的類別，您可以指定該類別的一般前置詞。 例如，指定 *x-ms-meta** 做為有前置詞的標頭會建立一項規則，可比對開頭為 x-ms-meta 的所有標頭。
 
 下列限制適用於 CORS 規則：
 
@@ -128,12 +128,12 @@ CORS 規則的評估，如下所示：
 
 接下來，請考慮下列 CORS 要求：
 
-| 要求 |  |  | Response |  |
+| 要求 |  |  | 回應 |  |
 | --- | --- | --- | --- | --- |
-| **方法** |**原始** |**要求標頭** |**規則相符** |**結果** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |第一個規則 |成功 |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |第二個規則 |成功 |
-| **GET** |http:\//www.contoso.com |x-ms-client-request-id |第二個規則 |失敗 |
+| **方法** |**原始** |**請求標頭** |**規則相符** |**結果** |
+| **把** |HTTP：\//www.contoso.com |x-ms-blob-content-type |第一個規則 |Success |
+| **獲取** |HTTP：\//www.contoso.com |x-ms-blob-content-type |第二個規則 |Success |
+| **獲取** |HTTP：\//www.contoso.com |x-ms-client-request-id |第二個規則 |失敗 |
 
 第一個要求符合第一個規則 (原始網域符合允許的原始網域、方法符合允許的方法，而且標頭符合允許的標頭)，因而成功。
 
@@ -162,16 +162,16 @@ CORS 規則的評估，如下所示：
 
 下表指出 Azure 儲存體如何根據先前所述的案例來回應 GET/HEAD 要求：
 
-| 要求 | 帳戶設定和規則評估的結果 |  |  | Response |  |  |
+| 要求 | 帳戶設定和規則評估的結果 |  |  | 回應 |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
-| **要求上存在的 Origin 標頭** |**針對此服務指定的 CORS 規則** |**有允許所有原始網域的比對規則存在 (*)** |**有完全符合原始網域的比對規則存在** |**回應包含已設為 Origin 的 Vary 標頭** |**回應包含 Access-Control-Allowed-Origin："*"** |**回應包含 Access-Control-Exposed-Headers** |
+| **要求上存在的 Origin 標頭** |**針對此服務指定的 CORS 規則** |**有允許所有原始網域的比對規則存在 (*)** |**有完全符合原始網域的比對規則存在** |**回應包含已設為 Origin 的 Vary 標頭** |**回應包括訪問-控制允許源："*"** |**回應包含 Access-Control-Exposed-Headers** |
 | 否 |否 |否 |否 |否 |否 |否 |
 | 否 |是 |否 |否 |是 |否 |否 |
-| 否 |yes |是 |否 |否 |yes |是 |
+| 否 |是 |是 |否 |否 |是 |是 |
 | 是 |否 |否 |否 |否 |否 |否 |
-| yes |是 |否 |yes |是 |否 |yes |
+| 是 |是 |否 |是 |是 |否 |是 |
 | 是 |是 |否 |否 |是 |否 |否 |
-| yes |是 |是 |否 |否 |yes |是 |
+| 是 |是 |是 |否 |否 |是 |是 |
 
 ## <a name="billing-for-cors-requests"></a>CORS 要求的計費方式
 如果您已針對帳戶的所有儲存體服務啟用 CORS (透過呼叫[設定 Blob 服務屬性](https://msdn.microsoft.com/library/hh452235.aspx)、[設定佇列服務屬性](https://msdn.microsoft.com/library/hh452232.aspx)或[設定表格服務屬性](https://msdn.microsoft.com/library/hh452240.aspx))，則成功的預檢要求就會列入計費。 為了將費用降至最低，請考慮將 CORS 規則中的 **MaxAgeInSeconds** 元素設為較大的值，讓使用者代理程式能夠快取要求。
@@ -179,9 +179,9 @@ CORS 規則的評估，如下所示：
 未成功的預檢要求將不會列入計費。
 
 ## <a name="next-steps"></a>後續步驟
-[設定 Blob 服務屬性](https://msdn.microsoft.com/library/hh452235.aspx)
+[設置 Blob 服務屬性](https://msdn.microsoft.com/library/hh452235.aspx)
 
-[設定佇列服務屬性](https://msdn.microsoft.com/library/hh452232.aspx)
+[設置佇列服務屬性](https://msdn.microsoft.com/library/hh452232.aspx)
 
 [設定資料表服務屬性](https://msdn.microsoft.com/library/hh452240.aspx)
 

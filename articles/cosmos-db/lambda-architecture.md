@@ -1,5 +1,5 @@
 ---
-title: 具有 Azure Cosmos DB 和 Apache Spark 的 Lambda 架構
+title: 蘭姆達架構與 Azure 宇宙 DB 和 Apache Spark
 description: 本文描述如何使用 Azure Cosmos DB、HDInsight 及 Spark 實作 Lambda 架構
 ms.service: cosmos-db
 author: tknandu
@@ -7,10 +7,10 @@ ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 68ce06d8a2904bf99f58a53817444b2992b23501
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719733"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上實作 Lambda 架構 
@@ -30,11 +30,11 @@ Lambda 架構為泛型、可擴充且容錯的資料處理架構，可因應 [Na
 
 ![顯示 Lambda 架構的圖表](./media/lambda-architecture/lambda-architecture-intro.png)
 
-來源： http://lambda-architecture.net/
+來源：http://lambda-architecture.net/
 
-上圖根據 [http://lambda-architecture.net](http://lambda-architecture.net/) 描述 Lambda 架構的基本原則。
+lambda 體系結構的基本原則在上圖中按 所述[http://lambda-architecture.net](http://lambda-architecture.net/)描述。
 
- 1. 所有**資料**都會被推送至*這兩個* *批次層*和*速度層*。
+ 1. 所有**資料**都會被推送至*這兩個**批次層*和*速度層*。
  2. **批次層**有主要的資料集 (固定、僅附加的原始資料集) 並預先計算批次檢視。
  3. **服務層**有可供快速查詢的批次檢視。 
  4. **速度層**可補償處理時間 (對於服務層) 並且僅處理最近的資料。
@@ -42,18 +42,18 @@ Lambda 架構為泛型、可擴充且容錯的資料處理架構，可因應 [Na
 
 進一步讀取時，我們可以僅採用下列項目實作此架構：
 
-* Azure Cosmos 容器
+* Azure 宇宙容器
 * HDInsight (Apache Spark 2.1) 叢集
 * Spark 連接器 [1.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
 
 ## <a name="speed-layer"></a>速度層
 
-就作業的觀點而言，維護兩個資料流的資料，同時確保資料的正確狀態，是相當複雜的工作。 若要簡化作業，可利用 [Azure Cosmos DB 變更摘要支援](change-feed.md)來保留「批次層」的狀態，同時對於「速度層」*變更摘要 API*，揭露 Azure Cosmos DB 變更記錄檔。  
+就作業的觀點而言，維護兩個資料流的資料，同時確保資料的正確狀態，是相當複雜的工作。 若要簡化作業，可利用 [Azure Cosmos DB 變更摘要支援](change-feed.md)來保留「批次層」** 的狀態，同時對於「速度層」***變更摘要 API*，揭露 Azure Cosmos DB 變更記錄檔。  
 ![反白顯示新資料、速度層和 Lambda 架構主要資料集部分的圖表](./media/lambda-architecture/lambda-architecture-change-feed.png)
 
 這些層的重要部分：
 
- 1. 所有**資料**都「僅」會推入到 Azure Cosmos DB，因此可以避免多轉換問題。
+ 1. 所有**資料**都「僅」會推入** 到 Azure Cosmos DB，因此可以避免多轉換問題。
  2. **批次層**有主要的資料集 (固定、僅附加的原始資料集) 並預先計算批次檢視。
  3. 下節將討論**服務層**。
  4. **速度層**利用 HDInsight (Apache Spark) 讀取 Azure Cosmos DB 變更摘要。 這可讓您保存您的資料，而且可讓您查詢和並行處理這些資料。
@@ -91,7 +91,7 @@ var streamData = spark.readStream.format(classOf[CosmosDBSourceProvider].getName
 val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0)).groupBy("countcol").count().writeStream.outputMode("complete").format("console").start()
 ```
 
-如需完整的程式碼範例，請參閱 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)，其中包括：
+有關完整的代碼示例，請參閱[azure-cosmosdb 火花/lambda/示例](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)，包括：
 * [Cosmos DB 變更 Feed.scala 的串流查詢](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (英文)
 * [Cosmos DB 變更 Feed.scala 的串流標籤查詢](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) (英文)
 
@@ -114,7 +114,7 @@ val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0))
 
  1. 所有**資料**都只會推入到 Azure Cosmos DB (避免多轉換問題)。
  2. **批次層**有主要的資料集 (固定、僅附加的原始資料集) 儲存於 Azure Cosmos DB。 使用 HDI Spark，您可以預先計算將在計算的批次檢視中儲存的彙總。
- 3. **服務層**是一個 Azure Cosmos 資料庫，其中包含主要資料集和計算的批次視圖的集合。
+ 3. **服務層**是 Azure Cosmos 資料庫，包含主資料集和計算批次處理視圖的集合。
  4. 本文稍後將討論**速度層**。
  5. 合併批次檢視和即時檢視的結果，或個別進行這些結果的 ping，均可回答所有查詢。
 
@@ -161,7 +161,7 @@ limit 10
 
 ![顯示每個雜湊標記推文數目的圖表](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-現在您已有了查詢，使用 Spark 連接器將查詢儲存回集合，將輸出資料儲存至不同的集合。  在此範例中，使用 Scala 展示連線。 與上一個範例類似，請建立設定連線，以將 Apache Spark 資料框架儲存至不同的 Azure Cosmos 容器。
+現在您已有了查詢，使用 Spark 連接器將查詢儲存回集合，將輸出資料儲存至不同的集合。  在此範例中，使用 Scala 展示連線。 與前面的示例類似，創建配置連接以將 Apache Spark 資料幀保存到其他 Azure Cosmos 容器。
 
 ```
 val writeConfigMap = Map(
@@ -179,7 +179,7 @@ val writeConfig = Config(writeConfigMap)
 
 ```
 
-指定 `SaveMode` (指出是否要 `Overwrite` 或 `Append` 文件) 後，建立與上述範例中的 Spark SQL 查詢類似的 `tweets_bytags` 資料框架。  建立 `tweets_bytags` 資料框架後，您可以使用已先前指定的 `write` 進行的 `writeConfig` 方法儲存該資料框架。
+指定 `SaveMode` (指出是否要 `Overwrite` 或 `Append` 文件) 後，建立與上述範例中的 Spark SQL 查詢類似的 `tweets_bytags` 資料框架。  建立 `tweets_bytags` 資料框架後，您可以使用已先前指定的 `writeConfig` 進行的 `write` 方法儲存該資料框架。
 
 ```
 // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore
@@ -192,20 +192,20 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-最後一個語句現在已將您的 Spark 資料框架儲存至新的 Azure Cosmos 容器;從 lambda 架構的觀點來看，這是您在**服務層**內的**batch 視圖**。
+最後一個語句現在將 Spark DataFrame 保存到新的 Azure Cosmos 容器中;從 lambda 體系結構的角度來看，這是服務**層**中的**批次處理視圖**。
  
 #### <a name="resources"></a>資源
 
 如需完整的程式碼範例，請參閱 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)，其中包括：
-* Lambda 架構重新架構 - 批次層 [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
-* Lambda 架構重新架構 - 服務層的批次 [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
+* 蘭姆達架構重新架構 - 批次處理層[HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
+* Lambda 架構重新架構 - 批量到服務層[HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
 
 ## <a name="speed-layer"></a>速度層
-如先前所述，使用 Azure Cosmos DB 變更摘要庫可讓您簡化批次層和速度層之間的作業。 在此架構中，使用 Apache Spark (透過 HDInsight) 對資料執行「結構化資料流」查詢。 您也可能會想要暫時保留結構化串流查詢的結果，以便其他系統可存取此資料。
+如先前所述，使用 Azure Cosmos DB 變更摘要庫可讓您簡化批次層和速度層之間的作業。 在此架構中，使用 Apache Spark (透過 HDInsight) 對資料執行「結構化資料流」** 查詢。 您也可能會想要暫時保留結構化串流查詢的結果，以便其他系統可存取此資料。
 
 ![反白顯示 Lambda 架構速度層的圖表](./media/lambda-architecture/lambda-architecture-speed.png)
 
-若要這麼做，請建立個別的 Azure Cosmos 容器，以儲存結構化串流查詢的結果。  這可讓您得到此資訊的其他系統存取，而不只是 Apache Spark。 另外，使用 Cosmos DB 存留時間 (TTL) 功能，可以設定在設定的持續時間之後自動刪除您的文件。  如需 Azure Cosmos DB TTL 功能的詳細資訊，請參閱[使用存留時間自動將 Azure Cosmos 容器中的資料過期](time-to-live.md)
+為此，請創建一個單獨的 Azure Cosmos 容器以保存結構化流式處理查詢的結果。  這可讓您得到此資訊的其他系統存取，而不只是 Apache Spark。 另外，使用 Cosmos DB 存留時間 (TTL) 功能，可以設定在設定的持續時間之後自動刪除您的文件。  有關 Azure Cosmos DB TTL 功能的詳細資訊，請參閱[Azure Cosmos 容器中的過期資料，並自動隨時間進行生存](time-to-live.md)
 
 ```
 // Import Libraries
@@ -259,21 +259,21 @@ var streamingQuery = streamingQueryWriter.start()
 ### <a name="resources"></a>資源
 
 * **新資料**：[從 Twitter 到 CosmosDB 的資料流摘要](https://github.com/tknandu/TwitterCosmosDBFeed)，這是將新資料推送至 Azure Cosmos DB 的機制。
-* **批次層：** 批次層包括「主要資料集」 (固定、僅附加的原始資料集)，而且能夠對於推入至**服務層**的資料預先計算批次檢視。
-   * **Lambda 架構重新架構 - 批次層**筆記本 [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 會查詢批次檢視的「主要資料集」。
-* **服務層：** **服務層**包括預先計算的資料，產生的批次檢視 (例如彙總、特定的交叉分析篩選器等) 有利於快速查詢。
+* **批次層：** 批次層包括「主要資料集」** (固定、僅附加的原始資料集)，而且能夠對於推入至**服務層**的資料預先計算批次檢視。
+   * **Lambda 架構重新架構 - 批次層**筆記本 [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 會查詢批次檢視的「主要資料集」**。
+* **服務層：****服務層**包括預先計算的資料，產生的批次檢視 (例如彙總、特定的交叉分析篩選器等) 有利於快速查詢。
   * **Lambda 架構重新架構 - 服務層的批次**筆記本 [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) 會將批次資料推送至服務層；也就是說，Spark 會查詢並處理推文的批次集合，然後將它儲存到另一個集合 (計算的批次)。
-    * **速度層：** **速度層**包括利用 Azure Cosmos DB 變更摘要讀取和立即處理的 Spark。 資料也可儲存至「計算的 RT」，以便其他系統可以查詢經過處理的即時資料，而不需要執行即時查詢本身。
+    * **速度層：****速度層**包括利用 Azure Cosmos DB 變更摘要讀取和立即處理的 Spark。 資料也可儲存至「計算的 RT」**，以便其他系統可以查詢經過處理的即時資料，而不需要執行即時查詢本身。
   * [從 Cosmos DB 變更摘要串流查詢](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (英文) scala 指令碼會執行 Azure Cosmos DB 變更摘要的串流查詢，計算從 Spark 殼層的間隔計數。
   * [從 Cosmos DB 變更摘要串流標籤查詢](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) (英文) scala 指令碼會執行 Azure Cosmos DB 變更摘要的串流查詢，計算從 Spark 殼層的標籤間隔計數。
   
 ## <a name="next-steps"></a>後續步驟
 如果您還沒有從 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub 存放庫下載「Spark 至 Azure Cosmos DB」連接器，請進行下載並探索存放庫中的其他資源：
-* [Lambda 架構](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda) (英文)
-* [分散式彙總範例](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples) (英文)
-* [指令碼和 Notebook 範例](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples) (英文)
+* [蘭姆達建築](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)
+* [分散式聚合示例](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
+* [示例腳本和筆記本](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 * [結構化串流示範](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos) (英文)
 * [變更摘要示範](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos) (英文)
 * [使用 Azure Cosmos DB 變更摘要和 Apache Spark 串流處理變更](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark) (英文)
 
-您也可以檢閱 [Apache Spark SQL、DataFrame 和 Dataset 指南](https://spark.apache.org/docs/latest/sql-programming-guide.html) (英文) 和 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 文章。
+您可能還需要查看[Apache Spark SQL、資料幀和資料集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及[Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)一文。

@@ -1,5 +1,5 @@
 ---
-title: 建立 Azure 應用程式閘道-傳統的 Azure CLI
+title: 創建 Azure 應用程式閘道 - Azure 經典 CLI
 description: 了解如何使用 Resource Manager 中的 Azure 傳統 CLI 建立應用程式閘道
 services: application-gateway
 author: vhorne
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095977"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 建立應用程式閘道
 
-Azure 應用程式閘道是第 7 層負載平衡器。 不論是在雲端或內部部署中，此閘道均提供在不同伺服器之間進行容錯移轉及效能路由傳送 HTTP 要求。 應用程式閘道有下列的應用程式傳遞功能：HTTP 負載平衡、 cookie 型工作階段親和性及安全通訊端層 (SSL) 卸載、 自訂健康情況探查，並支援多站台。
+Azure 應用程式閘道是第 7 層負載平衡器。 不論是在雲端或內部部署中，此閘道均提供在不同伺服器之間進行容錯移轉及效能路由傳送 HTTP 要求。 應用程式閘道具有下列應用程式傳遞功能：HTTP 負載平衡、以 Cookie 為基礎的工作階段同質性、「安全通訊端層」(SSL) 卸載、自訂健康狀態探查，以及多站台支援。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>必要條件：安裝 Azure CLI
 
-若要執行本文中的步驟，您需要[安裝 Azure CLI](../xplat-cli-install.md) ，您需要[登入 Azure](/cli/azure/authenticate-azure-cli)。 
+要執行本文中的步驟，需要安裝 Azure [CLI，](../xplat-cli-install.md)並且需要在[Azure 中簽名](/cli/azure/authenticate-azure-cli)。 
 
 > [!NOTE]
 > 如果您沒有 Azure 帳戶，就需要申請一個。 請 [在此處註冊免費試用](../active-directory/fundamentals/sign-up-organization.md)。
@@ -44,13 +44,13 @@ Azure 應用程式閘道是第 7 層負載平衡器。 不論是在雲端或內�
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-開啟**Microsoft Azure 命令提示字元**，並登入。
+打開**Microsoft Azure 命令提示符**並登錄。
 
 ```azurecli-interactive
 az login
 ```
 
-輸入上述範例後會提供程式碼。 瀏覽至 https://aka.ms/devicelogin 瀏覽器繼續登上處理程序中。
+輸入上述範例後會提供程式碼。 在瀏覽器https://aka.ms/devicelogin中導航以繼續登錄過程。
 
 ![顯示裝置登入的 cmd][1]
 
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-建立虛擬網路和子網路後，便已完成應用程式閘道的先決條件。 此外先前匯出的.pfx 憑證和憑證密碼所需的下列步驟：用於後端的 IP 位址是後端伺服器的 IP 位址。 這些值可以是虛擬網路中的私人 IP、公用 IP 或後端伺服器的完整網域名稱。
+建立虛擬網路和子網路後，便已完成應用程式閘道的先決條件。 此外下列步驟也需要先前匯出的 .pfx 憑證和憑證密碼︰用於後端的 IP 位址是後端伺服器的 IP 位址。 這些值可以是虛擬網路中的私人 IP、公用 IP 或後端伺服器的完整網域名稱。
 
 ```azurecli-interactive
 azure network application-gateway create \

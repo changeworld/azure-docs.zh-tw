@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60400145"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中樞開發人員指南
@@ -33,21 +33,21 @@ Azure IoT 中樞可提供您︰
 
 此 IoT 中樞開發人員指南包含下列文章︰
 
-* [裝置到雲端通訊指導方針](iot-hub-devguide-d2c-guidance.md)可協助您在裝置到雲端訊息、裝置對應項的報告屬性，以及檔案上傳之間做出選擇。
+* [裝置對雲端通訊指引](iot-hub-devguide-d2c-guidance.md)可協助您在裝置對雲端訊息、裝置對應項報告屬性和檔案上傳之間做出選擇。
 
-* [雲端到裝置通訊指導方針](iot-hub-devguide-c2d-guidance.md)可協助您在直接方法、裝置對應項所需的屬性，以及雲端到裝置訊息之間做出選擇。
+* [雲端對裝置通訊指引](iot-hub-devguide-c2d-guidance.md)可協助您在直接方法、裝置對應項所需屬性和雲端對裝置訊息之間做出選擇。
 
 * [IoT 中樞的裝置到雲端及雲端到裝置傳訊](iot-hub-devguide-messaging.md)說明 IoT 中樞所公開的傳訊功能 (裝置到雲端和雲端到裝置)。
 
-  * [將裝置到雲端訊息傳送到 IoT 中樞](iot-hub-devguide-messages-d2c.md)。
+  * [將設備到雲的消息發送到 IoT 中心](iot-hub-devguide-messages-d2c.md)。
 
-  * [從內建端點讀取裝置到雲端訊息](iot-hub-devguide-messages-read-builtin.md)。
+  * [從內置終結點讀取設備到雲的消息](iot-hub-devguide-messages-read-builtin.md)。
 
-  * [針對裝置到雲端訊息使用自訂端點與路由規則](iot-hub-devguide-messages-read-custom.md)。
+  * [對設備到雲消息使用自訂終結點和路由規則](iot-hub-devguide-messages-read-custom.md)。
 
-  * [從 IoT 中樞傳送雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。
+  * [從 IoT 中心發送雲到設備的消息](iot-hub-devguide-messages-c2d.md)。
 
-  * [建立及讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)。
+  * [創建和讀取 IoT 中心消息](iot-hub-devguide-messages-construct.md)。
 
 * [從裝置上傳檔案](iot-hub-devguide-file-upload.md)說明如何從裝置上傳檔案。 本文也包含上傳程序可傳送之通知等主題的相關資訊。
 
@@ -55,7 +55,7 @@ Azure IoT 中樞可提供您︰
 
 * [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)說明用來將存取權授與適用於裝置和雲端元件之 IoT 中樞功能的安全性模型。 本文包含使用權杖和 X.509 憑證的相關資訊，以及您可授與之權限的詳細資料。
 
-* [使用裝置對應項同步處理狀態和設定](iot-hub-devguide-device-twins.md)說明「裝置對應項」  概念。 本文也描述功能的裝置對應項公開 （expose），例如同步處理裝置與其裝置對應項。 本文包含裝置對應項中儲存之資料的相關資訊。
+* [使用裝置對應項來同步狀態和設定](iot-hub-devguide-device-twins.md)說明「裝置對應項」** 概念。 本文還介紹了孿生公開的功能設備，例如將設備與其設備孿生同步。 本文包含裝置對應項中儲存之資料的相關資訊。
 
 * [在裝置上叫用直接方法](iot-hub-devguide-direct-methods.md)說明直接方法的生命週期。 本文說明如何從後端應用程式在裝置上叫用方法，以及在裝置上處理直接方法。
 

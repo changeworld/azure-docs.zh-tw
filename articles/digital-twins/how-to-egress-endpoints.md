@@ -1,6 +1,6 @@
 ---
-title: 輸出和端點-Azure 數位 Twins |Microsoft Docs
-description: 瞭解如何在 Azure 數位 Twins 中建立及輸出事件端點。
+title: 出口和終點 - Azure 數位孿生 |微軟文檔
+description: 瞭解如何在 Azure 數位孿生中創建和出口事件終結點。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,21 +9,21 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76511564"
 ---
-# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 數位 Twins 中的輸出和端點
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 數位孿生中的出口和終結點
 
-Azure Digital Twins 的「端點」代表使用者 Azure 訂用帳戶內的訊息或事件代理程式。 事件和訊息可以傳送至 Azure 事件中樞、Azure 事件方格和 Azure 服務匯流排主題。
+Azure Digital Twins 的「端點」** 代表使用者 Azure 訂用帳戶內的訊息或事件代理程式。 事件和訊息可以傳送至 Azure 事件中樞、Azure 事件方格和 Azure 服務匯流排主題。
 
-事件會根據預先定義的路由喜好設定來路由至端點。 使用者會指定每個端點可收到的「事件類型」。
+事件會根據預先定義的路由喜好設定來路由至端點。 使用者會指定每個端點可收到的「事件類型」**。
 
 若要深入了解事件、路由與事件類型，請參閱 [Azure Digital Twins 中的路由事件和訊息](./concepts-events-routing.md)。
 
-## <a name="events"></a>活動
+## <a name="events"></a>事件
 
 IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和事件代理程式進行處理。 事件會根據下列 [Azure 事件方格事件結構描述參考](../event-grid/event-schema.md)來定義。
 
@@ -47,16 +47,16 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 }
 ```
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | --- | --- | --- |
-| id | string | 事件的唯一識別碼。 |
-| subject | string | 發行者定義事件主體的路徑。 |
-| data | object | 資源提供者特有的事件資料。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| data | 物件 (object) | 資源提供者特有的事件資料。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 
 如需有關事件方格事件結構描述的詳細資訊：
 
@@ -77,7 +77,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** 適用於圖表變更。 subject 屬性會指定受影響的物件類型。 下列類型的物件可能會觸發此事件：
+**TopologyOperation** 適用於圖表變更。 subject**** 屬性會指定受影響的物件類型。 下列類型的物件可能會觸發此事件：
 
 - 裝置
 - DeviceBlobMetadata
@@ -85,12 +85,12 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 報告
+- Report
 - RoleDefinition
 - 感應器
 - SensorBlobMetadata
 - SensorExtendedProperty
-- 外太空
+- Space
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -246,7 +246,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 >[!IMPORTANT]
 > 請特別注意 **eventTypes** 屬性。 此屬性會定義端點處理的事件類型，並以此決定其路由方式。
 
-已驗證的 HTTP POST 要求：
+針對的經過身份驗證的 HTTP POST 請求：
 
 ```URL
 YOUR_MANAGEMENT_API_URL/endpoints
@@ -320,7 +320,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
     | YOUR_SECONDARY_KEY | 用於驗證的次要連接字串 |
     | YOUR_EVENT_HUB_NAME | 事件中樞的名稱 |
 
-- 路由傳送至事件中樞事件類型 **DeviceMessage**。 `EntityPath` 必須包含在 **connectionString** 中：
+- 路由傳送至事件中樞事件類型 **DeviceMessage**。 在連接中`EntityPath`包含**String**是強制性的：
 
   ```JSON
   {

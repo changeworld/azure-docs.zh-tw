@@ -1,6 +1,6 @@
 ---
-title: 存取、監視和管理您的 GitHub 存放庫
-description: 使用 Azure Logic Apps 建立自動化工作流程，以監視 GitHub 事件並管理您的 GitHub 存放庫
+title: 訪問、監視和管理 GitHub 存儲庫
+description: 使用 Azure 邏輯應用創建自動工作流，監視 GitHub 事件並管理 GitHub 存儲庫
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378444"
 ---
-# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來監視和管理您的 GitHub 存放庫
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>使用 Azure 邏輯應用監視和管理 GitHub 存儲庫
 
 GitHub 是網頁式 Git 存放庫主機服務，它提供 Git 中所有分散式版本控制和原始程式碼管理 (SCM) 功能，以及其他功能。
 
@@ -22,9 +22,9 @@ GitHub 是網頁式 Git 存放庫主機服務，它提供 Git 中所有分散式
 
 ## <a name="create-a-connection-to-github"></a>建立 GitHub 的連線
 
-若要在邏輯應用程式中使用 GitHub 連接器，您必須先建立「連線」，然後提供這些屬性的詳細資料： 
+若要在邏輯應用程式中使用 GitHub 連接器，您必須先建立「連線」**，然後提供這些屬性的詳細資料： 
 
-| 屬性 | 必要項 | 說明 | 
+| 屬性 | 必要 | 描述 | 
 | -------- | -------- | ----------- | 
 | Token | 是 | 提供您的 GitHub 認證。 |
 
@@ -35,7 +35,7 @@ GitHub 是網頁式 Git 存放庫主機服務，它提供 Git 中所有分散式
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需有關觸發程式、動作和限制的技術詳細資料（由連接器的 OpenAPI （先前稱為 Swagger）描述所描述），請參閱[連接器的參考頁面](/connectors/github/)。
+有關觸發器、操作和限制的技術詳細資訊（由連接器的 OpenAPI（以前的斯瓦格）描述，請查看[連接器的參考頁](/connectors/github/)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 調整 HPC 應用程式-Azure 虛擬機器 |Microsoft Docs
-description: 了解如何調整 Azure Vm 上的 HPC 應用程式。
+title: 擴展 HPC 應用程式 - Azure 虛擬機器 |微軟文檔
+description: 瞭解如何在 Azure VM 上擴展 HPC 應用程式。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,37 +13,37 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707844"
 ---
-# <a name="scaling-hpc-applications"></a>調整 HPC 應用程式
+# <a name="scaling-hpc-applications"></a>擴展 HPC 應用程式
 
-最佳的向上延展及向外延展效能的 Azure 上的 HPC 應用程式需要效能微調和最佳化特定工作負載的實驗。 這一節和 VM 系列專屬頁面會提供一般指導方針來調整您的應用程式。
+Azure 上 HPC 應用程式的最佳擴展和橫向擴充性能需要針對特定工作負荷進行性能調整和優化實驗。 本節和 VM 系列特定頁面提供了擴展應用程式的一般指南。
 
 ## <a name="compiling-applications"></a>編譯應用程式
 
-雖然並非必要，編譯具有適當的最佳化旗標的應用程式提供最佳的向上延展效能 HB 和 HC 系列 Vm 上。
+儘管不是必需的，但使用適當的優化標誌編譯應用程式可在 HB 和 HC 系列 VM 上提供最佳的放大性能。
 
-### <a name="amd-optimizing-cc-compiler"></a>AMD 最佳化 C /C++編譯器
+### <a name="amd-optimizing-cc-compiler"></a>AMD 優化 C/C++ 編譯器
 
-AMD 最佳化 C /C++編譯器 (AOCC) 編譯器系統提供高層級的進階的最佳化，多執行緒處理，以及處理器支援，包括全域最佳化、 向量化、 程序間的分析，迴圈轉換，和產生程式碼。 AOCC 編譯器二進位碼檔案適合用於具有 GNU C 程式庫 (glibc) 2.17 版的 Linux 系統和更新版本。 包含 C 編譯器 suite /C++編譯器 (clang)、 Fortran 編譯器 (FLANG) 和 Clang （Dragon 蛋） 的 Fortran 前端。
+AMD 優化 C/C++ 編譯器 （AOCC） 編譯器系統提供高水準的高級優化、多執行緒和處理器支援，包括全域優化、向量化、過程間分析、環路轉換和代碼生成。 AOCC編譯器二進位檔案適用于具有GNU C庫（glibc）版本2.17及以上版本的Linux系統。 編譯器套件由 C/C++ 編譯器 （clang）、Fortran 編譯器 （FLANG） 和 Clang 前端（龍蛋）組成。
 
-### <a name="clang"></a>Clang
+### <a name="clang"></a>鐺
 
-Clang 是 C， C++，和 Objective C 編譯器處理前置處理、 剖析、 最佳化、 程式碼產生、 組件，和連結。 Clang 支援`-march=znver1`旗標來啟用最佳程式碼產生和微調以 AMD 的 Zen 為主的 x86 架構。
+Clang 是處理預處理、分析、優化、代碼生成、程式集和連結的 C、C++ 和 Objective-C 編譯器。 Clang 支援`-march=znver1`該標誌，以實現 AMD 基於 Zen 的 x86 架構的最佳代碼生成和調優。
 
-### <a name="flang"></a>FLANG
+### <a name="flang"></a>法朗
 
-FLANG 編譯器是 AOCC 套件 （加入 2018 年 4 月） 的最近和目前為發行前版本，讓開發人員下載和測試。 AMD Fortran 2008 為基礎，延伸 FLANG，GitHub 版本 (https://github.com/flangcompiler/flang) 。 FLANG 編譯器支援所有的 Clang 編譯器選項和 FLANG 特定編譯器選項的其他數目。
+FLANG 編譯器是 AOCC 套件（2018 年 4 月添加）的最近添加，目前正在預發佈，供開發人員下載和測試。 基於 Fortran 2008，AMD 擴展了 FLANG 的https://github.com/flangcompiler/flang)GitHub 版本（ 。 FLANG 編譯器支援所有 CLANG 編譯器選項和任意數量的特定于 FLANG 的編譯器選項。
 
-### <a name="dragonegg"></a>DragonEgg
+### <a name="dragonegg"></a>龍蛋
 
-DragonEgg 是取代 GCC 的最佳化工具和程式碼產生器與 LLVM 專案 gcc 外掛程式。 DragonEgg 隨附 AOCC gcc 4.8.x，適用於 x86 32/x86 64 目標經過測試，並已成功地使用各種 Linux 平台上。
+DragonEgg 是 gcc 外掛程式，用 LLVM 專案中的優化器和代碼產生器替換。 AOCC 附帶的龍蛋與 gcc-4.8.x 配合使用，已針對 x86-32/x86-64 目標進行了測試，並已在各種 Linux 平臺上成功使用。
 
-GFortran 是負責前置處理、 剖析，並產生 GCC GIMPLE 中繼表示法 (IR) 的語意分析的 Fortran 程式實際的前端。 DragonEgg 是 GNU 外掛程式，將插入 GFortran 編譯流程。 它會實作 GNU 外掛程式 API。 使用外掛程式架構時，DragonEgg 會變成編譯器的驅動程式，推動編譯的不同階段。  完成後的下載和安裝指示，請 Dragon 蛋可以叫用使用： 
+GFortran 是 Fortran 程式的實際前端，負責預處理、分析和語義分析，生成 GCC GIMPLE 中間表示 （IR）。 龍蛋是一個GNU外掛程式，插入GFortran編譯流。 它實現了 GNU 外掛程式 API。 使用外掛程式體系結構，DragonEgg 成為編譯器驅動程式，驅動編譯的不同階段。  遵循下載和安裝說明後，可以使用以下語言調用龍蛋： 
 
 ```bash
 $ gfortran [gFortran flags] 
@@ -53,21 +53,21 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>PGI 編譯器
-PGI Community Edition ver. 若要使用 AMD EPYC 確認 17。 資料流的 PGI 編譯版本確實提供了完整的記憶體頻寬，平台。 較新的 Community Edition 18.10 (11 月 2018) 應該同樣適用。 以下是範例 CLI 編譯器以最佳方式是以 Intel 編譯器：
+PGI社區版 17 已確認與 AMD EPYC 合作。 PGI 編譯的 STREAM 版本確實可提供平臺的完整記憶體頻寬。 較新的社區版 18.10 （2018 年 11 月） 也應同樣工作良好。 下面是使用英特爾編譯器以最佳方式編譯的 CLI 示例：
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
-### <a name="intel-compiler"></a>Intel 編譯器
-Intel 編譯器 ver. 若要使用 AMD EPYC 確認 18。 以下是範例 CLI 以最佳方式是使用 Intel 編譯器的編譯器。
+### <a name="intel-compiler"></a>英特爾編譯器
+英特爾編譯器 18 已確認與 AMD EPYC 合作。 下面是使用英特爾編譯器以最佳方式編譯器的 CLI 示例。
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp
 ```
 
 ### <a name="gcc-compiler"></a>GCC 編譯器 
-For HPC、 AMD 建議 7.3 或更新版本的 GCC 編譯器。 不建議使用較舊的版本，例如 4.8.5 隨附 RHEL/CentOS 7.4。 GCC 7.3 版，和更新版本中，將會傳遞 HPL、 HPCG 和 DGEMM 測試大幅提高效能。
+對於 HPC，AMD 建議 GCC 編譯器 7.3 或更新。 不建議使用舊版本（如 RHEL/CentOS 7.4 中包含的 4.8.5）。 GCC 7.3 和更高版本將在 HPL、HPCG 和 DGEMM 測試中提供更高的性能。
 
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
@@ -75,15 +75,15 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="scaling-applications"></a>調整應用程式 
 
-下列建議適用於調整的效率、 效能和一致性的最佳應用程式：
+以下建議適用于最佳應用程式擴展效率、性能和一致性：
 
-* 處理程序釘選核心 0-59 使用循序的釘選方式 （而非自動平衡方法）。 
-* 依據 Numa/Core/HwThread 繫結是優於預設繫結。
-* 混合式平行應用程式 (OpenMP + MPI)，使用 4 個執行緒及每 CCX 1 MPI 順位。
-* 純的 MPI 應用程式的試驗 1-4 MPI 每 CCX 排名為達最佳效能。
-* 記憶體頻寬極端的區分大小寫一些應用程式可能會受益於使用的每個 CCX 核心數目減少。 對於這些應用程式中，使用 3 個或 2 個核心每 CCX 可能減少記憶體頻寬競爭的情況，產生較高的真實世界效能或更一致的延展性。 特別是，MPI Allreduce 可能受益於此。
-* 針對更大的規模執行，建議使用 UD 或混合式 RC + UD 傳輸。 許多 MPI 程式庫/執行階段程式庫會在內部 （例如 UCX 或 MVAPICH2） 執行此動作。 請檢查您的傳輸設定大規模執行。
+* 使用順序固定方法（而不是自動平衡方法）將進程固定到內核 0-59。 
+* Numa/Core/HwThread 綁定優於預設綁定。
+* 對於混合並行應用（OpenMP_MPI），每個 CCX 使用 4 個執行緒和 1 個 MPI 排名。
+* 對於純 MPI 應用，試驗 1-4 MPI，每個 CCX 排名最佳性能。
+* 某些對記憶體頻寬具有極高敏感性的應用程式可能受益于每個 CCX 使用數量的內核。 對於這些應用程式，每個 CCX 使用 3 或 2 個內核可能會減少記憶體頻寬爭用，並產生更高的實際性能或更一致的可擴充性。 特別是，MPI全減可能受益于這一點。
+* 對於更大的比例運行，建議使用 UD 或混合 RC+UD 傳輸。 許多 MPI 庫/運行時庫在內部執行此操作（如 UCX 或 MVAPICH2）。 檢查傳輸配置有無大規模運行。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)在 Azure 上。
+在 Azure 上瞭解有關[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多詳細資訊。

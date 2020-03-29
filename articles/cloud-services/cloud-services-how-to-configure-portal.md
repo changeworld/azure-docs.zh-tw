@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75361002"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何設定雲端服務
 
-您可以在 Azure 入口網站中設定雲端服務的最常用設定。 或者，如果想要直接更新組態檔案，請下載要更新的服務組態檔案，然後上傳更新後的檔案並以組態變更來更新雲端服務。 採用任一種方法，組態更新都會推送至所有角色執行個體。
+您可以在 Azure 入口網站中設定雲端服務的最常用設定。 或者，如果您想要直接更新組態檔，可以下載要更新的服務組態檔、上傳更新過的檔案，然後將雲端服務更新為使用這些組態變更。 使用上述任一種方式，都會將組態更新推送到所有角色執行個體。
 
 您也可以管理雲端服務角色的執行個體，或從遠端桌面存取它們。
 
@@ -29,7 +29,7 @@ ms.locfileid: "75361002"
 
 ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-[設定] 或 [所有設定] 連結將開啟 [設定]，讓您可以變更**屬性**、變更**設定**、管理**憑證**、設定**警示規則**，以及管理可存取此雲端服務的**使用者**。
+[設定]**** 或 [所有設定]**** 連結將開啟 [設定]****，讓您可以變更**屬性**、變更**設定**、管理**憑證**、設定**警示規則**，以及管理可存取此雲端服務的**使用者**。
 
 ![Azure 雲端服務設定](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "75361002"
 
 根據預設，Azure 會將客體作業系統定期更新為您在服務組態 (.cscfg) 中指定的作業系統系列內最新支援的映像，例如 Windows Server 2016。
 
-如果您需要將目標設為特定的作業系統版本，可以在 [設定] 中進行設定。
+如果您需要將目標設為特定的作業系統版本，可以在 [設定]**** 中進行設定。
 
 ![設定作業系統版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
@@ -46,11 +46,11 @@ ms.locfileid: "75361002"
 
 ## <a name="monitoring"></a>監視
 
-您可以將警示新增至雲端服務。 按一下 [設定] > [警示規則] > [新增警示]。
+您可以將警示新增至雲端服務。 按一下 **"設置** > **警報規則** > **添加警報**"。
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-您可以從這裡設定警示。 您可以使用 [計量] 下拉式方塊，以設定下列資料類型的警示。
+您可以從這裡設定警示。 您可以使用 [計量]**** 下拉式方塊，以設定下列資料類型的警示。
 
 * 磁碟讀取
 * 磁碟寫入
@@ -62,7 +62,7 @@ ms.locfileid: "75361002"
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>從計量圖格設定監視
 
-除了使用 [設定] > [警示規則]，您也可以在雲端服務的 [監視] 區段中，按一下其中一個計量圖格。
+您可以按一下雲服務的 **"監視"** 部分中的一個指標磁貼，而不是使用**設置** > **警報規則**。
 
 ![雲端服務監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "75361002"
 
 您可能需要透過[服務組態 (cscfg)](cloud-services-model-and-package.md#cscfg) 檔案來重新設定雲端服務。 首先，您需要下載 .cscfg 檔案，進行修改，然後上傳。
 
-1. 按一下 [設定] 圖示或 [所有設定] 連結，以開啟 [設定]。
+1. 按一下 [設定]**** 圖示或 [所有設定]**** 連結，以開啟 [設定]****。
 
     ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. 按一下 [ **組態** ] 項目。

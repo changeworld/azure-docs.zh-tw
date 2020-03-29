@@ -1,6 +1,6 @@
 ---
-title: 在 Azure DevTest Labs 中設定保留原則 |Microsoft Docs
-description: 瞭解如何設定保留原則、清除處理站，以及從 DevTest Labs 淘汰舊的映射。
+title: 在 Azure 開發人員測試實驗室中設置保留原則 |微軟文檔
+description: 瞭解如何配置保留原則、清理工廠並從 DevTest 實驗室停用舊映射。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,67 +13,67 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: a472c500ee6b968b1459e65e49a352b81e5ea6ec
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759409"
 ---
-# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定保留原則
-本文涵蓋設定保留原則、清除處理站，以及淘汰組織中所有其他 DevTest 實驗室的舊映射。 
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>在 Azure 開發人員測試實驗室中設置保留原則
+本文介紹設置保留原則、清理工廠以及從組織中的所有其他 DevTest 實驗室停用舊映射。 
 
-## <a name="prerequisites"></a>必要條件
-請先確定您已遵循這些文章，再繼續進行：
+## <a name="prerequisites"></a>Prerequisites
+在繼續之前，請確保您已遵循了這些文章：
 
-- [建立映射 factory](image-factory-create.md)
-- [從 Azure DevOps 執行映射 factory](image-factory-set-up-devops-lab.md)
-- [儲存自訂映射並散發至多個實驗室](image-factory-save-distribute-custom-images.md)
+- [建立映像處理站](image-factory-create.md)
+- [從 Azure DevOps 執行映像處理站](image-factory-set-up-devops-lab.md)
+- [保存自訂映射並分發到多個實驗室](image-factory-save-distribute-custom-images.md)
 
-下列專案應該已經準備就緒：
+以下專案應已經到位：
 
-- Azure DevTest Labs 中映射 factory 的實驗室
-- 一或多個目標 Azure DevTest Labs，factory 會在其中散發黃金影像
-- 用來自動執行映射 factory 的 Azure DevOps 專案。
-- 包含腳本和設定的原始程式碼位置（在我們的範例中，位於上面使用的相同 DevOps 專案中）
-- 用來協調 Azure Powershell 工作的組建定義
+- Azure 開發人員測試實驗室中映射工廠的實驗室
+- 一個或多個目標 Azure 開發人員測試實驗室，工廠將在其中分發金色圖像
+- 用於自動執行映射工廠的 Azure DevOps 專案。
+- 包含腳本和配置的原始程式碼位置（在我們的示例中，在上面使用的同一 DevOps 專案中）
+- 用於協調 Azure Powershell 任務組建定義
  
-## <a name="setting-the-retention-policy"></a>設定保留原則
-設定清除步驟之前，請定義您想要保留在 DevTest Labs 中的歷史映射數目。 當您遵循[從 Azure DevOps 執行映射](image-factory-set-up-devops-lab.md)處理站一文時，您已設定了各種組建變數。 其中一個是**ImageRetention**。 您可以將此變數設定為 `1`，這表示 DevTest Labs 不會維護自訂映射的歷程記錄。 只會提供最新的分散式映射。 如果您將此變數變更為 `2`，將會保留最新的分散式映射加上先前的影像。 您可以設定此值，以定義您想要在 DevTest Labs 中維護的歷史映射數目。
+## <a name="setting-the-retention-policy"></a>設置保留原則
+在配置清理步驟之前，請定義要在 DevTest 實驗室中保留多少歷史圖像。 當您遵循 Azure DevOps 一文中的["運行映射工廠"](image-factory-set-up-devops-lab.md)時，將配置各種生成變數。 其中之一是**圖像保留**。 將此變數設置為`1`，這意味著 DevTest 實驗室不會維護自訂映射的歷史記錄。 只有最新的分散式圖像可用。 如果將此變數更改為`2`，將保留最新的分散式圖像以及以前的映射。 您可以設置此值以定義您希望在 DevTest Labs 中維護的歷史圖像數。
 
-## <a name="cleaning-up-the-factory"></a>清理 factory
-清除處理站的第一個步驟是從映射處理站移除黃金映射 Vm。 執行此工作的腳本與先前的腳本一樣。 第一個步驟是將另一個**Azure Powershell**工作新增至組建定義，如下圖所示：
+## <a name="cleaning-up-the-factory"></a>清理工廠
+清理工廠的第一步是從映射工廠中刪除金色圖像 VM。 有一個腳本可以像我們以前的腳本一樣執行此任務。 第一步是向組建定義添加另一個**Azure Powershell**任務，如下圖所示：
 
-![PowerShell 步驟](./media/set-retention-policy-cleanup/powershell-step.png)
+![電源外殼步驟](./media/set-retention-policy-cleanup/powershell-step.png)
 
-一旦您在清單中有新的工作，請選取該專案，然後填入所有詳細資料，如下圖所示：
+在清單中有新任務後，選擇該專案並填寫如下圖像所示的所有詳細資訊：
 
-![清除舊映射 PowerShell 工作](./media/set-retention-policy-cleanup/configure-powershell-task.png)
+![清理舊映射 PowerShell 任務](./media/set-retention-policy-cleanup/configure-powershell-task.png)
 
 腳本參數為： `-DevTestLabName $(devTestLabName)`。
 
-## <a name="retire-old-images"></a>淘汰舊的映射 
-此工作會移除任何舊的映射，只保留符合**ImageRetention**組建變數的歷程記錄。 將額外的**Azure Powershell**組建工作新增至我們的組建定義。 新增之後，請選取工作，然後填入詳細資料，如下圖所示： 
+## <a name="retire-old-images"></a>停用舊圖像 
+此任務刪除任何舊映射，僅保留與 Image**保留**生成變數匹配的歷史記錄。 向組建定義添加其他**Azure Powershell**生成任務。 添加任務後，選擇任務並填寫下圖所示的詳細資訊： 
 
-![淘汰舊映射 PowerShell 工作](./media/set-retention-policy-cleanup/retire-old-image-task.png)
+![停用舊映射 PowerShell 任務](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-腳本參數為： `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+腳本參數為：`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>將組建排到佇列
-既然您已完成組建定義，請將新的組建排入佇列，以確保所有專案都能正常運作。 成功完成組建之後，新的自訂映射會顯示在目的地實驗室中，如果您檢查映射工廠實驗室，就會看到沒有任何已布建的 Vm。 此外，如果您將進一步的組建排入佇列，您會看到清除工作根據組建變數中設定的保留值，從 DevTest Labs 淘汰舊的自訂映射。
+## <a name="queue-the-build"></a>對生成進行排隊
+現在已完成組建定義，可以排隊生成，以確保一切正常工作。 生成成功完成後，新的自訂映射顯示在目標實驗室中，如果檢查映射工廠實驗室，則看不到預配的 VM。 此外，如果進一步排隊生成，您將看到清理任務根據生成變數中設置的保留值從 DevTest Labs 中刪除舊的自訂映射。
 
 > [!NOTE]
-> 如果您已在系列的最後一篇文章結尾執行組建管線，請在將新組建排入佇列之前，手動刪除在映射工廠實驗室中建立的虛擬機器。  只有在我們設定所有專案並確認其運作正常時，才需要手動清除步驟。
+> 如果在本系列最後一篇文章的末尾執行了生成管道，請手動刪除在映射工廠實驗室中創建的虛擬機器，然後再排隊生成。  僅在我們設置所有內容並驗證其工作時，才需要手動清理步驟。
 
 
 
-## <a name="summary"></a>摘要
-現在您有一個執行中的映射處理站，可依需求產生自訂映射並將其散發給您的實驗室。 此時，只是要讓您的映射正確設定，並識別目標實驗室。 如前一篇文章中所述，位於您的**Configuration**資料夾中的**Labs. json**檔案會指定每個目標實驗室中應該提供哪些映射。 當您將其他 DevTest Labs 新增至您的組織時，您只需要在新實驗室的 Labs 中新增一個專案。
+## <a name="summary"></a>總結
+現在，您擁有了一個正在運行的映射工廠，可按需生成自訂映射並將其分發到實驗室。 此時，只需正確設置圖像並識別目標實驗室。 如上一篇文章所述，位於 **"配置"** 資料夾中的**Labs.json**檔指定每個目標實驗室都應提供哪些圖像。 當您向組織添加其他 DevTest 實驗室時，只需在新實驗室的 Labs.json 中添加一個條目。
 
-將新的影像加入至您的處理站也很簡單。 當您想要在 factory 中包含新的映射時，請開啟 [ [Azure 入口網站](https://portal.azure.com)]，流覽至您的 Factory DevTest 實驗室，選取 [新增 VM] 按鈕，然後選擇所需的 marketplace 映射和構件。 若不選取 [**建立**] 按鈕來建立新的 VM，請選取 [ **View Azure Resource Manager template**]，然後將範本儲存為 json 檔案，並將其儲存在存放庫中**GoldenImages**資料夾內的某個位置。 下一次執行映射處理站時，它會建立您的自訂映射。
+向工廠添加新映射也很簡單。 如果要在工廠中包含新映射，請打開[Azure 門戶](https://portal.azure.com)，導航到工廠 DevTest Labs，選擇按鈕添加 VM，然後選擇所需的市場映射和專案。 選擇 **"查看 Azure 資源管理器"範本**而不是選擇 **"創建**"按鈕，然後將範本另存為存儲庫中**GoldenImages**資料夾中的 .json 檔。 下次運行映射工廠時，它將創建自訂映射。
 
 
 ## <a name="next-steps"></a>後續步驟
-1. [排程組建/發行](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)以定期執行映射處理站。 它會定期重新整理您的 factory 產生映射。
-2. 為您的工廠製作更多黃金映射。 您也可以考慮[建立](devtest-lab-artifact-author.md)成品來編寫 VM 設定工作的其他部分，並在原廠映射中包含構件。
-4. 建立[個別的組建/版本](/azure/devops/pipelines/overview?view=azure-devops-2019)以分別執行**DistributeImages**腳本。 當您變更 Labs. json 並取得複製到目標實驗室的影像，而不需要重新建立所有映射時，您可以執行此腳本。
+1. [計畫生成/發佈](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)定期運行映射工廠。 它定期刷新工廠生成的映射。
+2. 為您的工廠製作更多金色圖像。 您還可以考慮[創建專案](devtest-lab-artifact-author.md)來編寫 VM 設置任務的其他部分，並在原廠映像中包括工件。
+4. 創建[單獨的生成/版本](/azure/devops/pipelines/overview?view=azure-devops-2019)以單獨運行**分發圖像**腳本。 當您對 Labs.json 進行更改時，可以運行此腳本，並將圖像複製到目標實驗室，而無需再次重新創建所有圖像。
 

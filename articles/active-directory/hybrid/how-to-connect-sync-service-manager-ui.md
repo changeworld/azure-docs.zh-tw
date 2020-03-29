@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步：Synchronization Service Manager UI | Microsoft Docs
+title: Azure AD Connect 同步︰Synchronization Service Manager UI | Microsoft Docs
 description: 了解 Azure AD Connect 的 Synchronization Service Manager。
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381502"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect Synchronization Service Manager UI 簡介
@@ -30,7 +30,7 @@ ms.locfileid: "60381502"
 
 **Synchronization Service Manager** UI 是用來設定更進階的同步處理引擎層面，以及查看服務的操作層面。
 
-您可以從 [開始] 功能表啟動 **Synchronization Service Manager** UI。 它會命名為「同步處理服務」  ，而且可在 **Azure AD Connect** 群組中找到。  
+您可以從 [開始] 功能表啟動 **Synchronization Service Manager** UI。 它會命名為「同步處理服務」****，而且可在 **Azure AD Connect** 群組中找到。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>後續步驟

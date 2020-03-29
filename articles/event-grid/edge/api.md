@@ -1,6 +1,6 @@
 ---
-title: REST API-Azure 事件方格 IoT Edge |Microsoft Docs
-description: IoT Edge 上的事件方格上 REST API。
+title: REST API - Azure 事件網格 IoT 邊緣 |微軟文檔
+description: 在 IoT 邊緣的事件網格上 REST API。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841824"
 ---
 # <a name="rest-api"></a>REST API
-本文說明 Azure 事件方格在 IoT Edge 上的 REST Api
+本文介紹了 IoT 邊緣上 Azure 事件網格的 REST API
 
-## <a name="common-api-behavior"></a>通用 API 行為
+## <a name="common-api-behavior"></a>常見 API 行為
 
 ### <a name="base-url"></a>基底 URL
-IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438）公開的下列 Api。
+IoT Edge 上的事件網格具有通過 HTTP（埠 5888）和 HTTPS（埠 4438）公開的以下 API。
 
-* HTTP： http://eventgridmodule:5888 的基底 URL
-* HTTPS 的基底 URL： https://eventgridmodule:4438
+* 用於 HTTP 的基本 URL：http://eventgridmodule:5888
+* 用於 HTTPS 的基本 URL：https://eventgridmodule:4438
 
-### <a name="request-query-string"></a>要求查詢字串
-所有 API 要求都需要下列查詢字串參數：
+### <a name="request-query-string"></a>請求查詢字串
+所有 API 請求都需要以下查詢字串參數：
 
 ```?api-version=2019-01-01-preview```
 
-### <a name="request-content-type"></a>要求內容類型
-所有 API 要求都必須具有**content-type**。
+### <a name="request-content-type"></a>請求內容類型
+所有 API 請求都必須具有**內容類型**。
 
-如果是**EventGridSchema**或**CustomSchema**，content-type 的值可以是下列其中一個值：
+在**事件網格架構**或**自訂架構**中，內容類型的值可以是以下值之一：
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-在結構化模式下**CloudEventSchemaV1_0**時，content-type 的值可以是下列其中一個值：
+在結構化模式下**CloudEventSchemaV1_0**的情況下，內容類型的值可以是以下值之一：
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,10 +51,10 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-如果是二進位模式的**CloudEventSchemaV1_0** ，請參閱[檔](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)以取得詳細資料。
+如果**CloudEventSchemaV1_0**在二進位模式下，請參閱[文檔](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)以瞭解詳細資訊。
 
 ### <a name="error-response"></a>錯誤回應
-所有 Api 都會傳回具有下列承載的錯誤：
+所有 API 都返回具有以下有效負載的錯誤：
 
 ```json
 {
@@ -72,11 +72,11 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 ## <a name="manage-topics"></a>管理主題
 
-### <a name="put-topic-create--update"></a>Put 主題（建立/更新）
+### <a name="put-topic-create--update"></a>放置主題（創建/更新）
 
-**要求**： ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**請求**：``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-裝載：
+**有效負載**：
 
 ```json
     {
@@ -90,7 +90,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 
 ```json
 {
@@ -105,13 +105,13 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-### <a name="get-topic"></a>取得主題
+### <a name="get-topic"></a>獲取主題
 
-**要求**： ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**請求**：``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -125,13 +125,13 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-### <a name="get-all-topics"></a>取得所有主題
+### <a name="get-all-topics"></a>獲取所有主題
 
-**要求**： ``` GET /topics?api-version=2019-01-01-preview ```
+**請求**：``` GET /topics?api-version=2019-01-01-preview ```
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 ```json
 [
     {
@@ -159,18 +159,18 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 ### <a name="delete-topic"></a>刪除主題
 
-**要求**： ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**請求**：``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**回應**： HTTP 200，空白承載
+**回應**： HTTP 200，空負載
 
 ## <a name="manage-event-subscriptions"></a>管理事件訂閱
-本節中的範例使用 `EndpointType=Webhook;`。 下一節中 `EndpointType=EdgeHub / EndpointType=EventGrid` 的 json 範例。 
+本節中的示例使用`EndpointType=Webhook;`。 下一節將為其`EndpointType=EdgeHub / EndpointType=EventGrid`的 json 示例。 
 
-### <a name="put-event-subscription-create--update"></a>Put 事件訂用帳戶（建立/更新）
+### <a name="put-event-subscription-create--update"></a>放置事件訂閱（創建/更新）
 
-**要求**： ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**請求**：``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-裝載：
+**有效負載**：
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -270,7 +270,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 
 ```json
 {
@@ -371,13 +371,13 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ```
 
 
-### <a name="get-event-subscription"></a>取得事件訂用帳戶
+### <a name="get-event-subscription"></a>獲取事件訂閱
 
-**要求**： ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**請求**：``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -476,13 +476,13 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-### <a name="get-event-subscriptions"></a>取得事件訂閱
+### <a name="get-event-subscriptions"></a>獲取事件訂閱
 
-**要求**： ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**請求**：``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
 **回應**： HTTP 200
 
-裝載：
+**有效負載**：
 ```json
 [
     {
@@ -494,18 +494,18 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ]
 ```
 
-### <a name="delete-event-subscription"></a>刪除事件訂用帳戶
+### <a name="delete-event-subscription"></a>刪除事件訂閱
 
-**要求**： ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**請求**：``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**回應**： HTTP 200，沒有承載
+**回應**： HTTP 200，無有效負載
 
 
-## <a name="publish-events-api"></a>發行事件 API
+## <a name="publish-events-api"></a>發佈事件 API
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>傳送事件批次（在事件方格架構中）
+### <a name="send-batch-of-events-in-event-grid-schema"></a>發送事件批次處理（在事件網格架構中）
 
-**要求**： ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**請求**：``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -523,22 +523,22 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ]
 ```
 
-**回應**： HTTP 200，空白承載
+**回應**： HTTP 200，空負載
 
 
-**裝載欄位描述**
-- ```Id``` 是必要的。 它可以是由呼叫者填入的任何字串值。 事件方格不會執行任何重複的偵測，或在此欄位上強制執行任何語義。
-- ```Topic``` 是選擇性的，但如果指定的必須符合要求 URL 中的 topic_name
-- ```Subject``` 是必要的，可以是任何字串值
-- ```EventType``` 是必要的，可以是任何字串值
-- ```EventTime``` 是必要的，但不會進行驗證，但應該是適當的日期時間。
+**有效負載欄位描述**
+- ```Id```是強制性的。 它可以是調用方填充的任何字串值。 事件網格不執行任何重複檢測或強制執行此欄位上的任何語義。
+- ```Topic```是可選的，但如果指定，則必須與請求 URL 中topic_name匹配
+- ```Subject```是必填項，可以是任一字元串值
+- ```EventType```是必填項，可以是任一字元串值
+- ```EventTime```是強制性的，它未經過驗證，但應該是一個適當的日期時間。
 - ```DataVersion``` 是必要的
-- ```MetadataVersion``` 是選擇性的（如果指定的話）必須是值為的字串 ```"1"```
-- ```Data``` 是選擇性的，而且可以是任何 JSON 權杖（數位、字串、布林值、陣列、物件）
+- ```MetadataVersion```是可選的，如果指定，它必須是具有值的字串```"1"```
+- ```Data```是可選的，可以是任何 JSON 權杖（數位、字串、布林、陣列、物件）
 
-### <a name="send-batch-of-events-in-custom-schema"></a>傳送事件批次（在自訂架構中）
+### <a name="send-batch-of-events-in-custom-schema"></a>發送一批事件（在自訂架構中）
 
-**要求**： ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**請求**：``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -548,18 +548,18 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ]
 ```
 
-**回應**： HTTP 200，空白承載
+**回應**： HTTP 200，空負載
 
 
-**裝載限制**
+**有效負載限制**
 - 必須是事件陣列。
-- 每個陣列專案都必須是 JSON 物件。
-- 沒有其他條件約束（裝載大小除外）。
+- 每個陣列條目都必須是 JSON 物件。
+- 沒有其他約束（有效負載大小）。
 
 ## <a name="examples"></a>範例
 
-### <a name="set-up-topic-with-eventgrid-schema"></a>使用 EventGrid 架構設定主題
-設定一個主題，要求在**eventgridschema**中發行事件。
+### <a name="set-up-topic-with-eventgrid-schema"></a>使用事件網格架構設置主題
+設置主題以要求在**事件網格架構**中發佈事件。
 
 ```json
     {
@@ -571,8 +571,8 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
     }
 ```
 
-### <a name="set-up-topic-with-custom-schema"></a>使用自訂架構設定主題
-設定一個主題，要求在 `customschema`中發佈事件。
+### <a name="set-up-topic-with-custom-schema"></a>使用自訂架構設置主題
+設置主題以要求在 中`customschema`發佈事件。
 
 ```json
     {
@@ -584,8 +584,8 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
     }
 ```
 
-### <a name="set-up-topic-with-cloud-event-schema"></a>使用雲端事件架構設定主題
-設定一個主題，要求在 `cloudeventschema`中發佈事件。
+### <a name="set-up-topic-with-cloud-event-schema"></a>使用雲事件架構設置主題
+設置主題以要求在 中`cloudeventschema`發佈事件。
 
 ```json
     {
@@ -597,8 +597,8 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>將 WebHook 設定為目的地，要在 eventgridschema 中傳遞的事件
-使用此目的地類型，將事件傳送至任何其他模組（裝載 HTTP 端點）或網路/網際網路上的任何 HTTP 可定址端點。
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>將 WebHook 設置為目標，在事件網格架構中傳遞的事件
+使用此目標型別將事件發送到任何其他模組（承載 HTTP 終結點）或網路/Internet 上任何可定址終結點。
 
 ```json
 {
@@ -617,19 +617,19 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-`endpointUrl` 屬性的條件約束：
-- 必須為非 null。
-- 它必須是絕對 URL。
-- 如果 outbound__webhook__HTTPsOnly 在 EventGridModule 設定中設為 true，則必須僅為 HTTPS。
-- 如果 outbound__webhook__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
+屬性的約束`endpointUrl`：
+- 它必須是非 null 的。
+- 它必須是絕對的 URL。
+- 如果在事件網格模組設置中outbound__webhook__HTTPsOnly設置為 true，則它必須僅是 HTTPS。
+- 如果outbound__webhook__HTTPsOnly設置為 false，則可以是 HTTP 或 HTTPS。
 
-`eventDeliverySchema` 屬性的條件約束：
-- 它必須符合訂閱主題的輸入架構。
-- 它可以是 null。 預設為主題的輸入架構。
+屬性的約束`eventDeliverySchema`：
+- 它必須與訂閱主題的輸入架構匹配。
+- 它可以是 Null。 它預設為主題的輸入架構。
 
-### <a name="set-up-iot-edge-as-destination"></a>將 IoT Edge 設定為目的地
+### <a name="set-up-iot-edge-as-destination"></a>將 IoT 邊緣設置為目標
 
-使用此目的地將事件傳送至 IoT Edge 中樞，並受限於 Edge 中樞的路由/篩選/轉送子系統。
+使用此目標將事件發送到 IoT 邊緣中心，並受邊緣中心路由/篩選/轉發子系統的影響。
 
 ```json
 {
@@ -647,9 +647,9 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>將事件方格雲端設定為目的地
+### <a name="set-up-event-grid-cloud-as-destination"></a>將事件網格雲設置為目標
 
-使用此目的地將事件傳送至雲端（Azure）中的事件方格。 在 edge 上建立事件訂閱之前，您必須先在雲端中設定應傳送事件的使用者主題。
+使用此目標可以將事件發送到雲中的事件網格 （Azure）。 您需要先在雲中設置一個使用者主題，然後在邊緣創建事件訂閱之前，應將事件發送到該主題。
 
 ```json
 {
@@ -669,33 +669,33 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-EndpointUrl
-- 必須為非 null。
-- 它必須是絕對 URL。
-- 必須在要求 URL 路徑中定義路徑 `/api/events`。
-- 查詢字串中必須有 `api-version=2018-01-01`。
-- 如果 outbound__eventgrid__HTTPsOnly 在 EventGridModule 設定中設定為 true （預設值為 true），則必須為僅限 HTTPS。
-- 如果 outbound__eventgrid__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
-- 如果 outbound__eventgrid__allowInvalidHostnames 設定為 false （預設為 false），它必須以下列其中一個端點為目標：
+端點Url：
+- 它必須是非 null 的。
+- 它必須是絕對的 URL。
+- 路徑`/api/events`必須在請求 URL 路徑中定義。
+- 它必須在`api-version=2018-01-01`查詢字串中。
+- 如果在事件網格模組設置中將outbound__eventgrid__HTTPsOnly設置為 true（預設情況下為 true），則它必須僅為 HTTPS。
+- 如果outbound__eventgrid__HTTPsOnly設置為 false，則可以是 HTTP 或 HTTPS。
+- 如果outbound__eventgrid__allowInvalidHostnames設置為 false（預設情況下為 false），則必須針對以下終結點之一：
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
 
-SasKey:
-- 必須為非 null。
+薩斯基：
+- 必須為非空。
 
-TopicName:
-- 如果 EventDeliverySchema 設定為 EventGridSchema，則此欄位的值會放入每個事件的 [主題] 欄位，然後再轉送到雲端中的事件方格。
-- 如果 EventDeliverySchema 設定為 CustomEventSchema，則會忽略這個屬性，而自訂事件裝載就會完全依照收到的方式轉送。
+主題名稱：
+- 如果訂閱.事件交付架構設置為事件GridSchema，則此欄位中的值將放入每個事件的主題欄位中，然後再轉發到雲中的事件網格。
+- 如果訂閱.event 傳遞架構設置為自訂事件架構，則將忽略此屬性，並且自訂事件裝載將完全按照收到的格式轉發。
 
-## <a name="set-up-event-hubs-as-a-destination"></a>將事件中樞設定為目的地
+## <a name="set-up-event-hubs-as-a-destination"></a>將事件中心設置為目標
 
-若要發佈至事件中樞，請將 `endpointType` 設定為 `eventHub` 並提供：
+要發佈到事件中心，請設置為`endpointType`並提供： `eventHub`
 
-* connectionString：透過共用存取原則產生的特定事件中樞的連接字串。
+* 連接字串：通過共用訪問策略生成的特定事件中心的連接字串。
 
     >[!NOTE]
-    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 您可以在 Azure 入口網站中流覽至您想要發佈至的特定事件中樞，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+    > 連接字串必須是特定于實體的。 使用命名空間連接字串將不起作用。 可以通過導航到要在 Azure 門戶中發佈到的特定事件中心，然後按一下**共用訪問策略**來生成新的實體特定連接字串，從而生成實體特定的連接字串。
 
     ```json
         {
@@ -710,14 +710,14 @@ TopicName:
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>將服務匯流排佇列設定為目的地
+## <a name="set-up-service-bus-queues-as-a-destination"></a>將服務匯流排佇列設置為目標
 
-若要發行至服務匯流排的佇列，請將 `endpointType` 設定為 `serviceBusQueue` 並提供：
+要發佈到服務匯流排佇列，請設置為`endpointType`和`serviceBusQueue`提供：
 
-* connectionString：透過共用存取原則所設定的目標特定服務匯流排佇列的連接字串。
+* 連接字串：通過共用訪問策略生成的特定服務匯流排佇列的連接字串。
 
     >[!NOTE]
-    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 藉由流覽至您想要在 Azure 入口網站中發佈的特定服務匯流排佇列，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+    > 連接字串必須是特定于實體的。 使用命名空間連接字串將不起作用。 通過導航到要在 Azure 門戶中發佈到的特定服務匯流排佇列，然後按一下**共用訪問策略**以生成新的實體特定連接字串，生成實體特定的連接字串。
 
     ```json
         {
@@ -732,14 +732,14 @@ TopicName:
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>將服務匯流排主題設定為目的地
+## <a name="set-up-service-bus-topics-as-a-destination"></a>將服務匯流排主題設置為目標
 
-若要發行至服務匯流排主題，請將 `endpointType` 設定為 `serviceBusTopic` 並提供：
+要發佈到服務匯流排主題，請設置為`endpointType`和`serviceBusTopic`提供：
 
-* connectionString：您透過共用存取原則所設定的目標特定服務匯流排主題的連接字串。
+* 連接字串：通過共用訪問策略生成的特定服務匯流排主題的連接字串。
 
     >[!NOTE]
-    > 連接字串必須是實體特定的。 使用命名空間連接字串將無法正常執行。 藉由流覽至您想要在 Azure 入口網站中發佈的特定服務匯流排主題，然後按一下 [**共用存取原則**] 來產生新實體的特定 connecection 字串，以產生實體特定的連接字串。
+    > 連接字串必須是特定于實體的。 使用命名空間連接字串將不起作用。 通過導航到要在 Azure 門戶中發佈到的特定服務匯流排主題，然後按一下**共用訪問策略**以生成新的實體特定連接字串，生成實體特定的連接字串。
 
     ```json
         {
@@ -754,15 +754,15 @@ TopicName:
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>將儲存體佇列設定為目的地
+## <a name="set-up-storage-queues-as-a-destination"></a>將存儲佇列設置為目標
 
-若要發佈至儲存體佇列，請將 `endpointType` 設定為 `storageQueue` 並提供：
+要發佈到存儲佇列，請設置為`endpointType`和`storageQueue`提供：
 
-* queueName：您要發行的儲存體佇列的名稱。
-* connectionString：儲存體佇列所在儲存體帳戶的連接字串。
+* 佇列名稱：要發佈到的存儲佇列的名稱。
+* 連接字串：存儲佇列中的存儲帳戶的連接字串。
 
     >[!NOTE]
-    > Unline 事件中樞、服務匯流排佇列和服務匯流排主題，用於儲存體佇列的連接字串不是實體特定的。 相反地，它必須是儲存體帳戶的連接字串。
+    > 取消行線事件中心、服務匯流排佇列和服務匯流排主題，用於存儲佇列的連接字串不是特定于實體的。 相反，它必須，但存儲帳戶的連接字串。
 
     ```json
         {

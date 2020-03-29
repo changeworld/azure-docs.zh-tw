@@ -1,6 +1,6 @@
 ---
-title: 呼叫 web Api 的 web API-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立呼叫 web Api 的 Web API。
+title: 調用 Web API 的 Web API - 微軟身份平臺 |蔚藍
+description: 瞭解如何構建調用 Web API 的 Web API。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833374"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>呼叫 web Api 的 Web API：呼叫 API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>調用 Web API 的 Web API：調用 API
 
-有了權杖之後，您就可以呼叫受保護的 Web API。 您可以從 Web API 的控制器執行此動作。
+獲得權杖後，可以調用受保護的 Web API。 從 Web API 的控制器執行此操作。
 
-## <a name="controller-code"></a>控制器程式碼
+## <a name="controller-code"></a>控制器代碼
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫名為*todolist*的下游 API。
+以下代碼繼續示例代碼，該代碼顯示在[調用 Web API 的 Web API 中：獲取應用的權杖](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中調用代碼。 它調用名為*tolist 的*下游 API。
 
-取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
+獲取權杖後，將其用作無記名權杖來調用下游 API。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫下游 API MS Graph。
+以下代碼繼續示例代碼，該代碼顯示在[調用 Web API 的 Web API 中：獲取應用的權杖](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中調用代碼。 它調用下游 API MS 圖形。
 
-取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
+獲取權杖後，將其用作無記名權杖來調用下游 API。
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-尚未提供使用 MSAL Python 來示範此流程的範例。
+# <a name="python"></a>[Python](#tab/python)
+使用 MSAL Python 演示此流的示例尚不可用。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [呼叫 web Api 的 Web API：移至生產環境](scenario-web-api-call-api-production.md)
+> [調用 Web API 的 Web API：遷移到生產](scenario-web-api-call-api-production.md)

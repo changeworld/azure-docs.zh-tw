@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246448"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解宣告式佈建
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步處理：了解宣告式佈建
 本主題說明 Azure AD Connect 中的組態模型。 此模型稱為宣告式佈建，它可讓您輕鬆地進行組態變更。 本主題中所述的許多項目都是進階的，而且在大部分客戶案例中並非必要。
 
 ## <a name="overview"></a>總覽
@@ -42,18 +42,18 @@ ms.locfileid: "60246448"
 * [優先順序](#precedence)：解決衝突的屬性貢獻
 * 目標：目標物件
 
-## <a name="scope"></a>`Scope`
+## <a name="scope"></a>影響範圍
 範圍模組會評估物件，並判斷在範圍中且應納入處理的規則。 視物件上的屬性值而定，不同的同步處理規則會評估為在範圍中。 例如，沒有 Exchange 信箱的已停用使用者會有不同於具有信箱的已啟用使用者的規則。  
-![`Scope`](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![影響範圍](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 範圍可定義為群組和子句。 子句位於群組中。 邏輯 AND 使用於群組中的所有子句之間。 例如，(department =IT AND country = Denmark)。 邏輯 OR 使用於群組之間。
 
-![範圍](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-此圖中的範圍應該讀為 (department = IT AND country = Denmark) OR (country=Sweden)。 如果群組 1 或 2 群組評估為 true，規則便在範圍中。
+![影響範圍](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+ 此圖中的範圍應該讀為 (department = IT AND country = Denmark) OR (country=Sweden)。 如果群組 1 或 2 群組評估為 true，規則便在範圍中。
 
 範圍模組支援下列作業。
 
-| 運算 | 描述 |
+| 作業 | 描述 |
 | --- | --- |
 | EQUAL、NOTEQUAL |評估此值是否等於屬性值的字串比較。 若為多重值屬性，請參閱 ISIN 和 ISNOTIN。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |評估此值是否小於屬性值的字串比較。 |
@@ -66,18 +66,18 @@ ms.locfileid: "60246448"
 | ISBITSET、ISNOTBITSET |評估是否已設定特定的位元。 例如，可用來評估 userAccountControl 中的位元，以查看使用者已啟用或停用。 |
 | ISMEMBEROF、ISNOTMEMBEROF |此值應該包含連接器空間中群組的 DN。 如果物件是指定群組的成員，規則便在範圍中。 |
 
-## <a name="join"></a>聯結
+## <a name="join"></a>Join
 同步處理管線中的聯結模組負責尋找來源中物件和目標中物件之間的關聯性。 在輸入規則上，此關聯性是連接器空間中的物件找到對 Metaverse 中物件的關聯性。  
 ![聯結 cs 與 mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
-目標在於查看應該相關聯的 Metaverse 中是否已經有一個物件 (由另一個連接器建立)。 比方說，在帳戶-資源樹系中，帳戶樹系中的使用者應該與資源樹系中的使用者聯結。
+ 目標在於查看應該相關聯的 Metaverse 中是否已經有一個物件 (由另一個連接器建立)。 比方說，在帳戶-資源樹系中，帳戶樹系中的使用者應該與資源樹系中的使用者聯結。
 
 聯結大多數使用於輸入規則，以將連接器空間物件與相同的 Metaverse 物件聯結在一起。
 
 聯結會定義為一或多個群組。 在群組中，您有一些子句。 邏輯 AND 使用於群組中的所有子句之間。 邏輯 OR 使用於群組之間。 群組的處理順序為從上而下。 當一個群組在目標中恰巧找到一個相符的物件，則不會評估任何其他聯結規則。 如果找到零個或多個物件，則處理會繼續下一個規則群組。 基於這個理由，應該最先建立最明確的規則，而最後建立比較模糊的規則。  
 ![聯結定義](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-此圖中的聯結會從上而下處理。 首先，同步處理管線會查看是否有相符的 employeeID。 如果沒有，第二個規則會查看帳戶名稱是否可用來將物件聯結在一起。 如果也不相符，則第三個 (最後一個) 規則會使用使用者名稱尋找更模糊的相符項目。
+ 此圖中的聯結會從上而下處理。 首先，同步處理管線會查看是否有相符的 employeeID。 如果沒有，第二個規則會查看帳戶名稱是否可用來將物件聯結在一起。 如果也不相符，則第三個 (最後一個) 規則會使用使用者名稱尋找更模糊的相符項目。
 
-如果所有聯結規則經評估後沒有完全相符的項目，則會使用 [說明]  頁面上的 [連結類型]  。 如果此選項設定為 [佈建]  ，則目標中會建立新的物件。  
+如果所有聯結規則經評估後沒有完全相符的項目，則會使用 [說明]**** 頁面上的 [連結類型]****。 如果此選項設定為 [佈建] ****，則目標中會建立新的物件。  
 ![佈建或聯結](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 一個物件應該只有一個同步處理規則具有在範圍中的聯結規則。 如果有多個同步處理規則定義了聯結，則會發生錯誤。 優先順序不會用於解決聯結衝突。 物件必須具有在範圍中的聯結規則，屬性才能以相同的輸入/輸出方向流動。 如果您需要讓屬性以輸入和輸出方式流向相同的物件，則聯結必須具有輸入和輸出同步處理規則。
@@ -87,25 +87,25 @@ ms.locfileid: "60246448"
 當新的同步處理規則進入範圍時，只會評估聯結模組一次。 物件若已聯結，即使不再符合聯結準則，也不會取消聯結。 如果您想要取消物件的聯結，則聯結物件的同步處理規則必須超出範圍。
 
 ### <a name="metaverse-delete"></a>Metaverse 刪除
-只要有一個在範圍中的同步處理規則，Metaverse 物件的 [連結類型]  就會維持設定為 [佈建]  或 [StickyJoin]  。 StickyJoin 使用於不允許連接器將新物件佈建至 Metaverse 時 ，但若已聯結該物件，則必須先在來源中加以刪除，才能刪除 Metaverse 物件。
+只要有一個在範圍中的同步處理規則，Metaverse 物件的 [連結類型]**** 就會維持設定為 [佈建]**** 或 [StickyJoin]****。 StickyJoin 使用於不允許連接器將新物件佈建至 Metaverse 時 ，但若已聯結該物件，則必須先在來源中加以刪除，才能刪除 Metaverse 物件。
 
-刪除 Metaverse 物件後，所有與標示要 [佈建]  的輸出同步處理規則相關聯的物件都會標示要刪除。
+刪除 Metaverse 物件後，所有與標示要 [佈建] **** 的輸出同步處理規則相關聯的物件都會標示要刪除。
 
 ## <a name="transformations"></a>轉換
-轉換用來定義屬性應如何從來源流動到目標。 流程可以有下列其中一種 **流程類型**︰[直接]、[常數] 或 [運算式]。 直接流程，讓屬性值依現狀流動，而不進行其他轉換。 常數值可設定指定的值。 運算式會使用宣告式佈建運算式語言來表示應該如何轉換。 如需運算式語言的詳細資料，請參閱 [了解宣告式佈建運算式語言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) 主題。
+轉換用來定義屬性應如何從來源流動到目標。 流程可以有下列其中一種 **流程類型**︰直接、常數或運算式。 直接流程，讓屬性值依現狀流動，而不進行其他轉換。 常數值可設定指定的值。 運算式會使用宣告式佈建運算式語言來表示應該如何轉換。 如需運算式語言的詳細資料，請參閱 [了解宣告式佈建運算式語言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) 主題。
 
 ![佈建或聯結](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
-[套用一次]  核取方塊會定義只能在最初建立物件時設定的屬性。 例如，此組態可用來設定新使用者物件的初始密碼。
+[套用一次] **** 核取方塊會定義只能在最初建立物件時設定的屬性。 例如，此組態可用來設定新使用者物件的初始密碼。
 
 ### <a name="merging-attribute-values"></a>合併屬性值
-在屬性流程中，有一個設定可決定是否應該從數個不同的連接器合併多重值屬性。 預設值為 [Update]  ，表示應採用具有最高優先順序的同步處理規則。
+在屬性流程中，有一個設定可決定是否應該從數個不同的連接器合併多重值屬性。 預設值為 [Update] ****，表示應採用具有最高優先順序的同步處理規則。
 
 ![合併類型](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 另外還有 **Merge** 和 **MergeCaseInsensitive**。 這些選項可讓您合併來自不同來源的值。 例如，它可用於合併來自數個不同樹系的成員或 proxyAddresses 屬性。 當您使用此選項時，物件範圍中的所有同步處理規則必須使用相同的合併類型。 您不能定義從一個連接器 **Update** 和從另一個連接器 **Merge**。 如果您嘗試，您會收到錯誤。
 
-**Merge** 和 **MergeCaseInsensitive** 之間的差異在於處理重複屬性值的方式。 同步處理引擎可確保不會將重複的值插入目標屬性中。 使用 [MergeCaseInsensitive]  ，就不會出現只有大小寫差異的重複值。 例如，您不應該在目標屬性中同時看到 SMTP:bob@contoso.com 和 smtp:bob@contoso.com。  只會查看只可能出現大小寫差異的確切值和多個值。
+**Merge** 和 **MergeCaseInsensitive** 之間的差異在於處理重複屬性值的方式。 同步處理引擎可確保不會將重複的值插入目標屬性中。 使用 [MergeCaseInsensitive] ****，就不會出現只有大小寫差異的重複值。 例如，您不應該在目標屬性中同時看到 SMTP:bob@contoso.com 和 smtp:bob@contoso.com。 **** 只會查看只可能出現大小寫差異的確切值和多個值。
 
 **Replace** 選項與 **Update** 相同，但未使用。
 
@@ -120,11 +120,11 @@ ms.locfileid: "60246448"
 
 屬性流程也可以使用 **IgnoreThisFlow**。 意思上類似於 NULL，表示沒有要貢獻的項目。 差別在於它不會移除目標中已經存在的值。 好像屬性流程未曾出現一樣。
 
-下列是一個範例：
+範例如下：
 
 在 *Out to AD - User Exchange hybrid* 可以找到下列流程：  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-此運算式的意思是︰如果使用者信箱位於 Azure AD 中，則將屬性從 Azure AD 傳送至 AD。 如果並非如此，請勿將任何項目送回 Active Directory。 在此情況下，它會在 AD 中保留現有的值。
+ 此運算式的意思是︰如果使用者信箱位於 Azure AD 中，則將屬性從 Azure AD 傳送至 AD。 如果並非如此，請勿將任何項目送回 Active Directory。 在此情況下，它會在 AD 中保留現有的值。
 
 ### <a name="importedvalue"></a>ImportedValue
 函式 ImportedValue 與其他所有函式都不同，其屬性名稱必須以引號 (而非方括號) 括住：  
@@ -132,7 +132,7 @@ ms.locfileid: "60246448"
 
 通常在同步處理期間，屬性會使用預期的值，即使它尚未匯出或在匯出期間 (「協定塔的頂端」) 收到錯誤。 輸入同步處理會假設尚未到達已連接目錄的屬性最後還是會到達。 在某些情況下，請務必只同步處理已連接目錄所確認的值 (「全像圖和差異匯入協定塔」)。
 
-在現成可用的同步處理規則 In from AD – User Common from Exchange  中可以找到此函式的範例。 在混合式 Exchange 中，由 Exchange Online 新增的值只有在確認已成功匯出該值時，才能同步處理：  
+在現成可用的同步處理規則 In from AD – User Common from Exchange ** 中可以找到此函式的範例。 在混合式 Exchange 中，由 Exchange Online 新增的值只有在確認已成功匯出該值時，才能同步處理：  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## <a name="precedence"></a>優先順序
@@ -159,9 +159,9 @@ ms.locfileid: "60246448"
 
 **概觀主題**
 
-* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 
 **參考主題**
 
-* [Azure AD Connect 同步：函式參考](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同步處理：函式參考](reference-connect-sync-functions-reference.md)

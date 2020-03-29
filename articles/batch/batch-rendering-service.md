@@ -8,17 +8,17 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60774024"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 進行轉譯
 
 轉譯是取用 3D 模型並將其轉換成 2D 影像的程序。 3D 場景檔案可在 Autodesk 3ds Max、Autodesk Maya 和 Blender 等應用程式中撰寫。  Autodesk Maya、Autodesk Arnold、Chaos Group V-Ray 和 Blender Cycles 等轉譯應用程式可產生 2D 影像。  有時候，會從場景檔案建立單一映像。 不過，一般通常會建立多個影像的模型並加以轉譯，然後將其結合在動畫中。
 
-媒體和娛樂業的特效 (VFX) 會大量使用轉譯工作負載。 在許多其他如廣告、 零售、 石油和天然氣及製造也會使用轉譯。
+媒體和娛樂業的特效 (VFX) 會大量使用轉譯工作負載。 其他如廣告、零售、石油和天然氣及製造等許多產業，也會使用轉譯。
 
 轉譯的程序會耗用大量運算資源；其間可能會產生許多畫面格/影像，且每個影像的轉譯可能都會耗時數小時。  因此，轉譯非常適合使用批次處理工作負載，利用 Azure 和 Azure Batch 以平行方式執行許多轉譯。
 

@@ -7,10 +7,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自動化
 ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366629"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自動化 PowerShell Runbook 中部署 Azure Resource Manager 範本
@@ -21,11 +21,11 @@ ms.locfileid: "75366629"
 
 在此文章中，我們會建立使用儲存在 [Azure 儲存體](../storage/common/storage-introduction.md)中 Resource Manager 範本的 PowerShell Runbook，來部署新的 Azure 儲存體帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列項目：
 
-* Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[註冊免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您還沒有，您可以[啟動您的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[註冊一個免費帳戶](https://azure.microsoft.com/free/)。
 * [自動化帳戶](automation-sec-configure-azure-runas-account.md) ，用來保存 Runbook 以及向 Azure 資源驗證。  此帳戶必須擁有啟動和停止虛擬機器的權限。
 * 用來儲存 Resource Manager 範本的 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)
 * 本機電腦上安裝的 Azure Powershell。 如需如何取得 Azure PowerShell 的詳細資訊，請參閱[安裝和設定 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
@@ -234,7 +234,7 @@ Runbook 會取得 Resource Manager 範本，並使用它來部署新的 Azure �
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 就這麼簡單！ 現在您可以使用 Azure 自動化和 Azure 儲存體，以及 Resource Manager 範本來部署您所有的 Azure 資源。
 

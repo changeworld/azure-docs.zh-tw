@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中緩和推測性執行的指引
+title: 緩解 Azure 中的推測性執行的指導
 titleSuffix: Azure Cloud Services
 description: 減少推測性執行旁路攻擊漏洞在 Azure 中造成的風險指引。
 services: cloud-services
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 67f85bd7b492e9fce6b132c832e83d64e3175716
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75385504"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>減少推測性執行旁路攻擊漏洞在 Azure 中造成的風險指引

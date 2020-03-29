@@ -1,13 +1,13 @@
 ---
-title: Service Fabric 應用程式的容量規劃
+title: 服務交換矩陣應用的容量規劃
 description: 描述如何識別 Service Fabric 應用程式所需的計算節點的數目
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377203"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 應用程式的容量規劃
@@ -20,7 +20,7 @@ ms.locfileid: "75377203"
 如果是管理 VM 上大量資料的服務，容量規劃應主要著重在大小。 因此，您應該仔細地考量 VM 的 RAM 和磁碟儲存空間容量。 Windows 中的虛擬記憶體管理系統可讓應用程式程式碼將磁碟空間做為 RAM 使用。 此外，Service Fabric 執行階段提供智慧型分頁處理，只將熱資料保留在記憶體，而將冷資料移到磁碟。 因此應用程式就可以使用比 VM 上實際可用還多的記憶體。 有更多 RAM 可完全增加效能，因為 VM 可以在 RAM 中保留更多磁碟儲存空間。 您選取的 VM 要有夠大的磁碟空間來儲存您想要放在 VM 上的資料。 同樣地，VM 也要有足夠的 RAM，提供您想要的效能。 如果您的服務隨著時間成長，您可以加入更多 VM 到叢集，並跨所有 VM 分割資料。
 
 ## <a name="determine-how-many-nodes-you-need"></a>決定您需要多少個節點
-將您的服務進行分割，可讓您擴增您的服務資料。 如需有關分割的詳細資訊，請參閱 [分割 Service Fabric](service-fabric-concepts-partitioning.md)。 必須將每個資料分割納入單一 VM，但是可以將多個 (小型) 資料分割放在單一 VM 上。 因此，如果有比較多的小型資料分割，比起有比較少的大型資料分割，可提供您更大的彈性。 缺點是有很多資料分割會增加 Service Fabric 的負擔，並且您無法跨資料分割執行交易的作業。 如果您的服務程式碼經常需要存取位於不同的資料分割的資料片段，也會產生更多潛在的網路流量。 設計您的服務時，應該仔細考慮這些優缺點，以達成有效的資料分割策略。
+將您的服務進行分割，可讓您相應放大您的服務資料。 如需有關分割的詳細資訊，請參閱 [分割 Service Fabric](service-fabric-concepts-partitioning.md)。 必須將每個資料分割納入單一 VM，但是可以將多個 (小型) 資料分割放在單一 VM 上。 因此，如果有比較多的小型資料分割，比起有比較少的大型資料分割，可提供您更大的彈性。 缺點是有很多資料分割會增加 Service Fabric 的負擔，並且您無法跨資料分割執行交易的作業。 如果您的服務程式碼經常需要存取位於不同的資料分割的資料片段，也會產生更多潛在的網路流量。 設計您的服務時，應該仔細考慮這些優缺點，以達成有效的資料分割策略。
 
 假設您的應用程式有單一可設定狀態服務，其具有您預期一年會成長到 DB_Size GB 的存放區大小。 您願意在經歷該年的成長以外加入更多應用程式 (與資料分割)。  複寫因素 (RF) 決定影響總計 DB_Size 的服務複本數目。 所有複本的總計 DB_Size 是複寫因素乘以 DB_Size。  Node_Size 表示您想要用於服務的每一節點磁碟空間/RAM。 為了達到最佳效能，DB_Size 應符合整個叢集的記憶體，並且選擇接近 VM RAM 的 Node_Size。 如果配置大於 RAM 容量的 Node_Size，您就會依賴 Service Fabric 執行階段提供的分頁處理。 因此，如果整個資料都被視為熱資料 (因為從那時起資料會進入分頁/移出分頁)，您的效能就可能無法達到最佳。 不過，對只有一部分資料是熱資料的許多服務來說，還是比較具成本效益。
 
@@ -49,7 +49,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ![成本計算的試算表][Image1]
 
 ## <a name="next-steps"></a>後續步驟
-查看資料[分割 Service Fabric 服務][10]，以深入瞭解分割您的服務。
+查看[分割 Service Fabric 服務][10]來深入了解分割您的服務。
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png

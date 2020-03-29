@@ -1,6 +1,6 @@
 ---
-title: Azure 轉送-遷移至共用存取簽章授權
-description: 說明如何使用 Azure Active Directory 存取控制服務，將 Azure 轉送應用程式遷移至共用存取簽章授權。
+title: Azure 中繼 - 遷移到共用訪問簽名授權
+description: 介紹如何將 Azure 中繼應用程式從使用 Azure 活動目錄存取控制服務遷移到共用訪問簽名授權。
 services: service-bus-relay
 documentationcenter: ''
 author: clemensv
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514896"
 ---
-# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 轉送-從 Azure Active Directory 存取控制服務遷移至共用存取簽章授權
+# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 中繼 - 從 Azure 活動目錄存取控制服務遷移到共用訪問簽名授權
 
 Azure 轉送應用程式在過去可選擇使用兩個不同的授權模型：由轉送服務直接提供的[共用存取簽章 (SAS)](../service-bus-messaging/service-bus-sas.md) 權杖模型，以及同盟模型，其中授權規則的管理是由 [Azure Active Directory](/azure/active-directory/) 存取控制服務 (ACS) 內部管理，而從 ACS 取得的權杖會傳遞至轉送，以授權存取所需的功能。
 

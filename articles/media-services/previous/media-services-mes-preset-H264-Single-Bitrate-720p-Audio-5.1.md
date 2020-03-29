@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元速率 720p 音訊 5.1 | Microsoft Docs
-description: 本主題提供 **H264 單一位元速率 720p 音訊 5.1** 工作預設的概觀。
+description: 本主題概述了**H264 單位元速率 720p 音訊 5.1**任務預設。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: aad0a5f0e521d0608c1797ea8c1225c48240b391
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61129543"
 ---
 # <a name="h264-single-bitrate-720p-audio-51"></a>H264 單一位元速率 720p 音訊 5.1
@@ -26,7 +26,7 @@ ms.locfileid: "61129543"
   
  本主題說明 XML 和 JSON 格式的 `H264 Single Bitrate 720p Audio 5.1` 預設。  
   
- 此預設會產生位元速率為 4500 kbps 的單一 MP4 檔案，而且是 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)。  
+ 此預設會產生位元速率為 4500 kbps 的單一 MP4 檔案，而且是 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 有關每個元素的含義以及每個元素的有效值的說明，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
   
  XML  
   

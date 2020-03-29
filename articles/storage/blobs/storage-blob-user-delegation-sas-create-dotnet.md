@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET 建立容器或 blob 的使用者委派 SAS
+title: 使用 .NET 為容器或 Blob 創建使用者委派 SAS
 titleSuffix: Azure Storage
-description: 瞭解如何使用適用于 Azure 儲存體的 .NET 用戶端程式庫，建立具有 Azure Active Directory 認證的使用者委派 SAS。
+description: 瞭解如何使用 .NET 用戶端庫進行 Azure 存儲，使用 Azure 活動目錄憑據創建使用者委派 SAS。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,31 +11,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371831"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的使用者委派 SAS
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>為具有 .NET 的容器或 blob 創建使用者委派 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文說明如何使用 Azure Active Directory （Azure AD）認證，利用適用于 .NET 的 Azure 儲存體用戶端程式庫來建立容器或 blob 的使用者委派 SAS。
+本文演示如何使用 Azure 活動目錄 （Azure AD） 憑據為容器或 Blob 創建使用者委派 SAS 的容器或 Blob 的 Azure 存儲用戶端庫為 .NET。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>指派 RBAC 角色以存取資料
+## <a name="assign-rbac-roles-for-access-to-data"></a>分配 RBAC 角色以訪問資料
 
-當 Azure AD 安全性主體嘗試存取 blob 資料時，該安全性主體必須擁有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 RBAC 角色指派給安全性主體，以授與 Azure 儲存體中 blob 資料的存取權。 如需透過 RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中的
+當 Azure AD 安全主體嘗試訪問 Blob 資料時，該安全主體必須具有對資源的許可權。 無論安全主體是 Azure 中的託管標識還是開發環境中運行代碼的 Azure AD 使用者帳戶，都必須為安全主體分配一個 RBAC 角色，該角色授予對 Azure 存儲中的 Blob 資料的訪問。 有關通過 RBAC 分配許可權的資訊，請參閱標題為 **"分配 RBAC 角色以使用** [Azure 活動目錄 訪問 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)"中的存取權限的部分。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-若要深入瞭解如何從 Azure 儲存體使用 Azure 身分識別用戶端程式庫進行驗證，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來授權存取 blob 和佇列](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)一節標題為使用 Azure 身分**識別程式庫進行**驗證。
+要瞭解有關如何使用 Azure 存儲中的 Azure 標識用戶端庫進行身份驗證的詳細資訊，請參閱"使用**Azure 標識庫進行身份驗證**"的部分，這些部分將[授權訪問具有 Azure 活動目錄的 Blob 和佇列以及 Azure 資源的託管標識](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)。
 
 ## <a name="add-using-directives"></a>新增 using 指示詞
 
-將下列 `using` 指示詞新增至您的程式碼，以使用 Azure 身分識別和 Azure 儲存體用戶端程式庫。
+將以下`using`指令添加到代碼中，以使用 Azure 標識和 Azure 存儲用戶端庫。
 
 ```csharp
 using System;
@@ -48,11 +48,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="get-an-authenticated-token-credential"></a>取得已驗證的權杖認證
+## <a name="get-an-authenticated-token-credential"></a>獲取經過身份驗證的權杖憑據
 
-若要取得權杖認證，讓您的程式碼可以用來授權 Azure 儲存體的要求，請建立[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)類別的實例。
+要獲取代碼可用於授權對 Azure 存儲的請求的權杖憑據，請創建[預設 Azure 憑據](/dotnet/api/azure.identity.defaultazurecredential)類的實例。
 
-下列程式碼片段顯示如何取得已驗證的權杖認證，並使用它來建立 Blob 儲存體的服務用戶端：
+以下程式碼片段演示如何獲取經過身份驗證的權杖憑據，並使用它為 Blob 存儲創建服務用戶端：
 
 ```csharp
 // Construct the blob endpoint from the account name.
@@ -63,18 +63,18 @@ BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
 
-## <a name="get-the-user-delegation-key"></a>取得使用者委派金鑰
+## <a name="get-the-user-delegation-key"></a>獲取使用者委派金鑰
 
-每個 SAS 都會以金鑰簽署。 若要建立使用者委派 SAS，您必須先要求使用者委派金鑰，然後用它來簽署 SAS。 使用者委派金鑰類似于用來簽署服務 SAS 或帳戶 SAS 的帳戶金鑰，不同之處在于它會依賴您的 Azure AD 認證。 當用戶端要求使用 OAuth 2.0 權杖的使用者委派金鑰時，Azure 儲存體會代表使用者傳回使用者委派金鑰。
+每個 SAS 都使用金鑰進行簽名。 要創建使用者委派 SAS，必須首先請求使用者委派金鑰，然後用於對 SAS 進行簽名。 使用者委派金鑰類似于用於對服務 SAS 或帳戶 SAS 進行簽名的帳戶金鑰，只不過它依賴于 Azure AD 憑據。 當用戶端使用 OAuth 2.0 權杖請求使用者委派金鑰時，Azure 存儲會代表使用者返回使用者委派金鑰。
 
-擁有使用者委派金鑰後，您就可以使用該金鑰在金鑰存留期內建立任意數目的使用者委派共用存取簽章。 使用者委派金鑰與用來取得它的 OAuth 2.0 權杖無關，因此只要金鑰仍然有效，就不需要更新權杖。 您可以指定金鑰有效期限最多7天。
+獲得使用者委派金鑰後，可以使用該金鑰在金鑰的存留期內創建任意數量的使用者委派共用訪問簽名。 使用者委派金鑰獨立于用於獲取它的 OAuth 2.0 權杖，因此只要金鑰仍然有效，就不需要續訂權杖。 您可以指定金鑰的有效期最長為 7 天。
 
-使用下列其中一種方法來要求使用者委派金鑰：
+使用以下方法之一請求使用者委派金鑰：
 
-- [GetUserDelegationKey](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkey)
-- [GetUserDelegationKeyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkeyasync)
+- [獲取使用者委派金鑰](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkey)
+- [獲取使用者授權鍵同步](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkeyasync)
 
-下列程式碼片段會取得使用者委派金鑰，並寫出其屬性：
+以下程式碼片段獲取使用者委派金鑰並寫入其屬性：
 
 ```csharp
 // Get a user delegation key for the Blob service that's valid for seven days.
@@ -92,9 +92,9 @@ Console.WriteLine("Key signed service: {0}", key.SignedService);
 Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 ```
 
-## <a name="create-the-sas-token"></a>建立 SAS 權杖
+## <a name="create-the-sas-token"></a>創建 SAS 權杖
 
-下列程式碼片段示範如何建立新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) ，並提供使用者委派 SAS 的參數。 然後，程式碼片段會呼叫[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)以取得 SAS 權杖字串。 最後，此程式碼會建立完整的 URI，包括資源位址和 SAS 權杖。
+以下程式碼片段顯示創建新的[BlobSasBuilder，](/dotnet/api/azure.storage.sas.blobsasbuilder)並為使用者委派 SAS 提供參數。 然後，程式碼片段調用[ToSasQuery 參數](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)來獲取 SAS 權杖字串。 最後，代碼生成完整的 URI，包括資源位址和 SAS 權杖。
 
 ```csharp
 // Create a SAS token that's valid for one hour.
@@ -123,9 +123,9 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>範例：取得使用者委派 SAS
+## <a name="example-get-a-user-delegation-sas"></a>示例：獲取使用者委派 SAS
 
-下列範例方法顯示驗證安全性主體和建立使用者委派 SAS 的完整程式碼：
+下面的示例方法顯示了用於驗證安全主體和創建使用者委派 SAS 的完整代碼：
 
 ```csharp
 async static Task<Uri> GetUserDelegationSasBlob(string accountName, string containerName, string blobName)
@@ -183,9 +183,9 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>範例：讀取具有使用者委派 SAS 的 blob
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>示例：使用使用者委派 SAS 讀取 Blob
 
-下列範例會測試在上一個範例中，從模擬的用戶端應用程式建立的使用者委派 SAS。 如果 SAS 有效，用戶端應用程式就能夠讀取 blob 的內容。 如果 SAS 無效（例如，如果它已過期），Azure 儲存體會傳回錯誤碼403（禁止）。
+以下示例測試從類比用戶端應用程式在上一個示例中創建的使用者委派 SAS。 如果 SAS 有效，則用戶端應用程式能夠讀取 blob 的內容。 如果 SAS 無效（例如，如果已過期），Azure 存儲將返回錯誤代碼 403（禁止）。
 
 ```csharp
 private static async Task ReadBlobWithSasAsync(Uri sasUri)
@@ -235,8 +235,8 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)
-- [取得使用者委派金鑰作業](/rest/api/storageservices/get-user-delegation-key)
-- [建立使用者委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)
+- [使用共用訪問簽名 （SAS） 授予對 Azure 存儲資源的有限存取權限](../common/storage-sas-overview.md)
+- [獲取使用者委派金鑰操作](/rest/api/storageservices/get-user-delegation-key)
+- [創建使用者委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)

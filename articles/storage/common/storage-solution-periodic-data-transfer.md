@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67357045"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>適用於定期資料轉送的解決方案
@@ -45,10 +45,10 @@ ms.locfileid: "67357045"
 | 功能                  | AzCopy                                 | Azure 儲存體 REST API       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | 板型規格                 | 來自 Microsoft 的命令列工具       | 客戶對儲存體開發 <br> 使用 Azure 用戶端程式庫的 REST API |
-| 初始的單次設定     | 有限                                | 中度、變動的開發投入量    |
+| 初始的單次設定     | 最小                                | 中度、變動的開發投入量    |
 | 資料格式                 | Azure Blob、Azure 檔案、Azure 資料表 | Azure Blob、Azure 檔案、Azure 資料表   |
 | 效能                 | 已最佳化                      | 開發時最佳化                  |
-| 價格                     | 適用免費資料輸出費用      | 適用免費資料輸出費用        |
+| 定價                     | 適用免費資料輸出費用      | 適用免費資料輸出費用        |
 
 ### <a name="continuous-data-ingestion-over-network"></a>透過網路持續擷取資料
 
@@ -61,11 +61,11 @@ ms.locfileid: "67357045"
 | 資料預先處理                           | 否                         | 是，透過 Edge 計算    | 是                                                           |
 | 本機快取<br>(儲存內部部署資料)    | 是                        | 是                      | 否                                                            |
 | 從其他雲端轉送                    | 否                         | 否                       | 是                                                           |
-| 價格                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
+| 定價                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 AzCopy 轉送資料](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+- [使用 AzCopy 傳輸資料](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
 - 了解如何：
     - [使用資料箱閘道傳輸資料](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。

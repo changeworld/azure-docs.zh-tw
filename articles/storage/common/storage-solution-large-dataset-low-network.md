@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730685"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>在低速或無網路頻寬之情況下進行大型資料集的資料轉送
@@ -59,7 +59,7 @@ ms.locfileid: "60730685"
 |    夥伴整合              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
 |    運送中                         |    Microsoft 管理            |    Microsoft 管理                             |    Microsoft 管理                     |    由客戶管理                    |
 | 當資料移動時的使用         |在商務服務界限內|在商務服務界限內|在商務服務界限內|跨越地理界限，例如美國到歐洲|
-|    價格                          |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    定價                          |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>後續步驟

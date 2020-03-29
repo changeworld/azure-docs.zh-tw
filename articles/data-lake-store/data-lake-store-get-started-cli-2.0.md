@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60885333"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Store
@@ -23,20 +23,20 @@ ms.locfileid: "60885333"
 
 > [!div class="op_single_selector"]
 > * [入口網站](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [電源外殼](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-了解如何使用 Azure CLI 建立 Azure Data Lake Storage Gen1 帳戶並執行基本作業，例如建立資料夾、上傳及下載資料檔案、刪除您的帳戶等等。如需有關 Data Lake Storage Gen1 的詳細資訊，請參閱 [Data Lake Storage Gen1 概觀](data-lake-store-overview.md)。
+瞭解如何使用 Azure CLI 創建 Azure 資料湖存儲 Gen1 帳戶，並執行基本操作，如創建資料夾、上載和下載資料檔案、刪除帳戶等。有關資料存儲第 1 代的詳細資訊，請參閱[資料存儲庫第 1 代概述](data-lake-store-overview.md)。
 
 Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 macOS、Linux 和 Windows。 如需詳細資訊，請參閱 [Azure CLI 概觀](https://docs.microsoft.com/cli/azure)。 您也可以查看 [Azure Data Lake Storage Gen1 CLI 參考](https://docs.microsoft.com/cli/azure/dls)以取得命令和語法的完整清單。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始閱讀本文之前，您必須符合下列必要條件：
 
-* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure CLI** - 如需相關指示，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -63,7 +63,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 ## <a name="create-an-azure-data-lake-storage-gen1-account"></a>建立 Azure Data Lake Storage Gen1 帳戶
 
-1. 建立新的資源群組。 在下列命令中，提供您想要使用的參數值。 如果位置名稱包含空格，請將它放在引號中。 例如 "East US 2"。 
+1. 建立新的資源群組。 在下列命令中，提供您想要使用的參數值。 如果位置名稱包含空格，請將它放在引號中。 例如 "美國東部 2"。 
    
     ```azurecli
     az group create --location "East US 2" --name myresourcegroup
@@ -134,13 +134,13 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>重新命名、下載及刪除 Data Lake Storage Gen1 帳戶中的資料 
 
-* **若要重新命名檔案**，請使用下列命令：
+* **要重命名檔，** 請使用以下命令：
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **若要下載檔案**，請使用下列命令。 請確定您指定的目的地路徑已存在。
+* **要下載檔案，** 請使用以下命令。 請確定您指定的目的地路徑已存在。
   
     ```azurecli     
     az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
@@ -151,7 +151,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     > 
     >
 
-* **若要刪除檔案**，請使用下列命令：
+* **要刪除檔，** 請使用以下命令：
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -185,7 +185,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    輸出應該類似如下範例：
+    輸出應如下所示：
 
         {
             "entries": [

@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813381"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>設定使用者對於 Azure Data Lake Analytics 中作業資訊的存取權 
@@ -25,7 +25,7 @@ ms.locfileid: "60813381"
 
 ## <a name="configure-user-access-to-job-information"></a>設定使用者對於作業資訊的存取權
 
-您可以使用 [新增使用者精靈]  在資料夾上設定 ACL。 如需詳細資訊，請參閱[新增使用者](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
+您可以使用 [新增使用者精靈]**** 在資料夾上設定 ACL。 如需詳細資訊，請參閱[新增使用者](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
 
 如果您需要更細微的控制，或者需要針對權限撰寫指令碼，請保護資料夾，如下所示：
 

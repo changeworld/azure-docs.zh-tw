@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60397272"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>使用低速至中速網路頻寬進行小型資料集資料轉送
@@ -39,7 +39,7 @@ ms.locfileid: "60397272"
 
 - **指令碼/程式設計工具**：例如 AzCopy/PowerShell/Azure CLI 和 Azure 儲存體 REST APIs。
 
-    - **AzCopy**：使用此命令列工具以最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
+    - **AzCopy**：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
     - **Azure PowerShell**：針對熟悉系統管理的使用者，在 Azure PowerShell 中使用 Azure 儲存體模組來轉送資料。
     - **Azure CLI**：使用此跨平台工具來管理 Azure 服務並將資料上傳至 Azure 儲存體。
     - **Azure 儲存體 REST API/SDK**：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API/SDK 來開發應用程式，並使用以多種語言提供的 Azure 用戶端程式庫。

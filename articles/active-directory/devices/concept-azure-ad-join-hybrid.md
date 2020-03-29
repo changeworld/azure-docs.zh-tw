@@ -1,5 +1,5 @@
 ---
-title: 什麼是混合式 Azure AD 加入的裝置？
+title: 什麼是混合 Azure AD 聯接設備？
 description: 了解裝置身分識別管理如何協助您管理存取您環境中資源的裝置。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76512244"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
@@ -25,45 +25,45 @@ ms.locfileid: "76512244"
 - IT 部門可從中央位置管理工作用的裝置。
 - 使用者可使用使用其 Active Directory 公司或學校帳戶登入他們的裝置。
 
-一般而言，具有內部部署使用量的組織會依賴映射處理方法來布建裝置，而且通常會使用**Configuration Manager**或**群組原則（GP）** 來管理它們。
+通常，具有本地佔用空間的組織依賴映射方法來預配設備，並且他們經常使用**組態管理員**或**群組原則 （GP）** 來管理設備。
 
-如果您的環境具有內部部署 AD 使用量，而且您也想要從 Azure Active Directory 所提供的功能受益，您可以實作混合式 Azure AD 已加入裝置。 這些裝置是聯結至內部部署 Active Directory 並向您的 Azure Active Directory 註冊的裝置。
+如果您的環境具有內部部署 AD 使用量，而且您也想要從 Azure Active Directory 所提供的功能受益，您可以實作混合式 Azure AD 已加入裝置。 這些設備是已加入本地活動目錄並在 Azure 活動目錄中註冊的設備。
 
 |   | 混合式 Azure AD 加入 |
 | --- | --- |
-| **[定義]** | 已加入內部部署 AD 和 Azure AD 需要組織帳戶才能登入裝置 |
-| **主要物件** | 適用于具有現有內部部署 AD 基礎結構的混合式組織 |
+| **定義** | 已加入本地 AD 和 Azure AD，要求組織帳戶登錄到設備 |
+| **主要受眾** | 適用于具有現有本地 AD 基礎設施的混合組織 |
 |   | 適用于組織中的所有使用者 |
 | **裝置擁有權** | 組織 |
-| **作業系統** | Windows 10、8.1 和7 |
-|   | Windows Server 2008/R2、2012/R2、2016和2019 |
-| **佈建** | Windows 10、Windows Server 2016/2019 |
-|   | 由 IT 加入網域，並透過 Azure AD Connect 或 ADFS config 進行自動連接 |
-|   | 透過 Windows Autopilot 加入網域，並透過 Azure AD Connect 或 ADFS config 進行自動連接 |
-|   | Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2-需要 MSI |
-| **裝置登入選項** | 組織帳戶使用： |
+| **作業系統** | 視窗 10、8.1 和 7 |
+|   | Windows 伺服器 2008/R2， 2012/R2， 2016 和 2019 |
+| **佈建** | 視窗 10， 視窗伺服器 2016/2019 |
+|   | IT 加入域並通過 Azure AD 連接或 ADFS 配置自動聯接 |
+|   | 通過 Windows 自動駕駛儀加入域並通過 Azure AD 連接或 ADFS 配置自動聯接 |
+|   | Windows 8.1、Windows 7、Windows 伺服器 2012 R2、Windows 伺服器 2012 和 Windows 伺服器 2008 R2 - 需要 MSI |
+| **設備登錄選項** | 使用： |
 |   | 密碼 |
-|   | 適用于 Win10 的 Windows Hello 企業版 |
+|   | 適用于 Win10 的業務視窗你好 |
 | **裝置管理** | 群組原則 |
-|   | 使用 Microsoft Intune Configuration Manager 獨立或共同管理 |
-| **主要功能** | SSO 到雲端和內部部署資源 |
-|   | 透過網域加入或透過 Intune 的條件式存取（如果共同管理） |
-|   | 在鎖定畫面上進行自助式密碼重設和 Windows Hello PIN 重設 |
-|   | 跨裝置企業狀態漫遊 |
+|   | 組態管理員獨立或與微軟 Intune 共同管理 |
+| **主要功能** | SSO 到雲和本地資源 |
+|   | 通過域聯接或通過 Intune 進行條件訪問（如果共同管理） |
+|   | 在鎖定螢幕上的自助服務密碼重設和 Windows Hello PIN 重置 |
+|   | 跨設備遍漫遊的企業狀態 |
 
 ![混合式 Azure AD 已加入裝置](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
 ## <a name="scenarios"></a>案例
 
-如果是下列情況，請使用 Azure AD 混合式聯結裝置：
+在：
 
 - 您已將 Win32 應用程式部署至這些倚賴 Active Directory 電腦驗證的裝置。
-- 您想要繼續使用群組原則來管理裝置設定。
-- 您想要繼續使用現有的映射解決方案來部署和設定裝置。
-- 除了 Windows 10 以外，您還必須支援舊版 Windows 7 和8.1 裝置
+- 您希望繼續使用群組原則來管理設備配置。
+- 您希望繼續使用現有映射解決方案來部署和配置設備。
+- 除了 Windows 10 之外，還必須支援低級 Windows 7 和 8.1 設備
 
 ## <a name="next-steps"></a>後續步驟
 
 - [規劃混合式 Azure AD 聯結實作](hybrid-azuread-join-plan.md)
-- [使用 Azure 入口網站管理裝置身分識別](device-management-azure-portal.md)
+- [使用 Azure 門戶管理設備標識](device-management-azure-portal.md)
 - [管理 Azure AD 中的過時裝置](manage-stale-devices.md)

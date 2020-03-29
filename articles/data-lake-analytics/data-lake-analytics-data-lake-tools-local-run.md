@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62113930"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>在本機電腦上執行 U-SQL 指令碼
@@ -27,7 +27,7 @@ ms.locfileid: "62113930"
 
 |元件|本機執行|雲端執行|
 |---------|---------|---------|
-|儲存體|本機資料根資料夾|預設 Azure Data Lake Store 帳戶|
+|存放裝置|本機資料根資料夾|預設 Azure Data Lake Store 帳戶|
 |計算|U-SQL 本機執行引擎|Azure Data Lake Analytics 服務|
 |執行環境|本機電腦上的工作目錄|Azure Data Lake Analytics 叢集|
 
@@ -51,13 +51,13 @@ U-SQL 本機執行引擎是 U-SQL 作業的**本機計算帳戶**。 使用者�
 
 ## <a name="local-runs-in-microsoft-visual-studio"></a>Microsoft Visual Studio 中的本機執行
 
-Azure Data Lake Tools for Visual Studio 擁有內建的本機執行引擎。 工具會以本機計算帳戶的形式呈現引擎。 若要在本機執行 U-SQL 指令碼，請在指令碼的編輯器邊界下拉式功能表中選取 [Local-machine]  或 [Local-project]  帳戶。 然後，選取 [提交]  。
+Azure Data Lake Tools for Visual Studio 擁有內建的本機執行引擎。 工具會以本機計算帳戶的形式呈現引擎。 若要在本機執行 U-SQL 指令碼，請在指令碼的編輯器邊界下拉式功能表中選取 [Local-machine]**** 或 [Local-project]**** 帳戶。 然後選取 **[提交]**。
 
 ![將 U-SQL 指令碼提交至本機帳戶](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
 ## <a name="local-runs-with-a-local-machine-account"></a>使用 Local-machine 帳戶進行本機執行
 
-**Local-machine** 帳戶是共用本機電腦帳戶，擁有一個作為本機存放區帳戶的本機資料根資料夾。 資料根資料夾的位置預設為 **C:\Users\<使用者名稱>\AppData\Local\USQLDataRoot**。 您也可以透過 [工具]   > [Data Lake]   > [選項和設定]  來設定此位置。
+**Local-machine** 帳戶是共用本機電腦帳戶，擁有一個作為本機存放區帳戶的本機資料根資料夾。 資料根資料夾的位置預設為 **C:\Users\<使用者名稱>\AppData\Local\USQLDataRoot**。 它還可以通過**工具** > **資料湖** > **選項和設置**進行配置。
 
 ![設定本機資料的根資料夾](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
@@ -75,7 +75,7 @@ U-SQL 專案可透過專案參考和屬性來管理這個隔離的本機執行�
 
 U-SQL 專案會建立本機資料根資料夾，並設定 **Local-project** 帳戶的資料。 每當重建和本機執行發生時，U-SQL 專案工作目錄下的暫存資料根資料夾都會清空及重新建立。 在本機作業執行前，U-SQL 專案設定的所有資料來源都會複製到這個暫存本機資料根資料夾。 
 
-您可以設定資料來源的根資料夾。 以滑鼠右鍵按一下 [U-SQL 專案]   > [屬性]   > [測試資料來源]  。 以 **Local-project** 帳戶執行 U-SQL 指令碼時，[測試資料來源]  資料夾內的所有檔案和子資料夾都會複製到暫存本機資料根資料夾。 子資料夾底下的檔案也包含在內。 本機作業執行後，您可以在專案工作目錄的暫存本機資料根資料夾下方找到輸出結果。 在重建及清理專案時，這個輸出內容會全部遭到刪除和清空。 
+您可以設定資料來源的根資料夾。 按右鍵**U-SQL 專案** > **屬性** > **測試資料來源**。 以 **Local-project** 帳戶執行 U-SQL 指令碼時，[測試資料來源]**** 資料夾內的所有檔案和子資料夾都會複製到暫存本機資料根資料夾。 子資料夾底下的檔案也包含在內。 本機作業執行後，您可以在專案工作目錄的暫存本機資料根資料夾下方找到輸出結果。 在重建及清理專案時，這個輸出內容會全部遭到刪除和清空。 
 
 ![設定專案的測試資料來源](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
@@ -95,8 +95,8 @@ U-SQL 專案會建立本機資料根資料夾，並設定 **Local-project** 帳�
 |差異角度|Local-machine|Local-project|
 |----------------|---------------|---------------|
 |本機存取|所有專案均可存取。|只有對應的專案能存取這個帳戶。|
-|本機資料根資料夾|永久本機資料夾。 透過 [工具]   > [Data Lake]   > [選項和設定]  設定。|每次本機執行時，會在 U-SQL 專案工作資料夾下建立暫存資料夾。 資料夾會在重建或重新執行發生時清空。|
-|U-SQL 指令碼的輸入資料|永久本機資料根資料夾下方的相對路徑。|透過 [U-SQL 專案屬性]   > [測試資料來源]  設定。 所有檔案和子資料夾都會在本機執行前複製到暫存資料根資料夾。|
+|本機資料根資料夾|永久本機資料夾。 通過**工具** > **資料湖** > **選項和設置配置**。|每次本機執行時，會在 U-SQL 專案工作資料夾下建立暫存資料夾。 資料夾會在重建或重新執行發生時清空。|
+|U-SQL 指令碼的輸入資料|永久本機資料根資料夾下方的相對路徑。|通過**U-SQL 專案屬性** > **測試資料來源**進行設置。 所有檔案和子資料夾都會在本機執行前複製到暫存資料根資料夾。|
 |U-SQL 指令碼的輸出資料|永久本機資料根資料夾下方的相對路徑。|輸出到暫存資料根資料夾。 結果會在重建或重新執行發生時清空。|
 |參考資料庫部署|以 **Local-machine** 帳戶執行時，不會自動部署參考資料庫。 提交到 Azure Data Lake Analytics 帳戶時也是如此。|參考資料庫會在本機執行前自動部署到 **Local-project** 帳戶。 所有資料庫環境都會在重建或重新執行發生時清空及重新部署。|
 
