@@ -1,52 +1,52 @@
 ---
-title: 在 Azure 中的更新管理部署上設定前置和後置腳本
-description: 本文說明如何設定及管理更新部署的前置腳本和後置腳本。
+title: 在 Azure 中的更新管理部署上配置預腳本和後腳本
+description: 本文介紹如何配置和管理更新部署的預腳本和後腳本。
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75417791"
 ---
-# <a name="manage-pre-and-post-scripts"></a>管理前置和後置腳本
+# <a name="manage-pre-and-post-scripts"></a>管理預腳本和後腳本
 
-前置腳本和後置腳本可讓您在您的 Azure 自動化帳戶中執行 PowerShell runbook，然後（預先工作）和之後（後置工作）更新部署。 前置和後置腳本會在 Azure 內容中執行，而不是在本機執行。 前置腳本會在更新部署開始時執行。 後置腳本會在部署結束時，以及在任何已設定的重新開機之後執行。
+通過預腳本和後腳本，您可以在更新部署之前（任務前）和更新部署之後（任務後）在 Azure 自動化帳戶中運行 PowerShell Runbook。 在 Azure 上下文中運行前腳本和後腳本，而不是本地運行。 預腳本在更新部署開始時運行。 後腳本在部署結束時和配置的任何重新開機後運行。
 
 ## <a name="runbook-requirements"></a>Runbook 需求
 
-若要使用 runbook 做為前置或後置腳本，runbook 必須匯入至您的自動化帳戶併發布。 若要深入瞭解此程式，請參閱[發佈 runbook](manage-runbooks.md#publish-a-runbook)。
+要將 Runbook 用作預腳本或後腳本，必須將 Runbook 導入您的自動化帳戶併發布。 要瞭解有關此過程的更多內容，請參閱[發佈 Runbook](manage-runbooks.md#publish-a-runbook)。
 
-## <a name="using-a-pre-script-or-post-script"></a>使用前置腳本或後置腳本
+## <a name="using-a-pre-script-or-post-script"></a>使用預腳本或後腳本
 
-若要在更新部署中使用前置腳本或後置腳本，請先建立更新部署。 選取 [**前置腳本 + 後置腳本**]。 此動作會開啟 [選取更新前 + 更新後指令碼] 頁面。
+要在更新部署中使用預腳本或後腳本，請從創建更新部署開始。 選擇**預腳本 + 後腳本**。 此動作會開啟 [選取更新前 + 更新後指令碼]**** 頁面。
 
 ![選取指令碼](./media/pre-post-scripts/select-scripts.png)
 
-選取您要使用的腳本。 在此範例中，我們會使用**UpdateManagement-TurnOnVms** runbook。 當您選取 runbook 時，[**設定腳本**] 頁面隨即開啟。 選取 [**前置腳本**]，然後選取 **[確定]** 。
+選擇要使用的腳本。 在此示例中，我們使用**更新管理-TurnOnVms**運行簿。 選擇 Runbook 時，將打開 **"配置腳本"** 頁。 選擇 **"腳本前**"，然後選擇 **"確定**"。
 
-對 **UpdateManagement-TurnOffVms** 指令碼重複此程序。 但當您選擇**腳本類型**時，請選取 [**後置腳本**]。
+對 **UpdateManagement-TurnOffVms** 指令碼重複此程序。 但是，當您選擇**腳本類型**時，請選擇 **"後腳本**"。
 
-[**選取的專案**] 區段現在會顯示您選取的腳本。 其中一個是前置腳本，另一個是後置腳本：
+"**選定專案**"部分現在顯示所選腳本。 一個是預腳本，另一個是後腳本：
 
 ![選取的項目](./media/pre-post-scripts/selected-items.png)
 
-完成更新部署的設定。
+完成配置更新部署。
 
-當更新部署完成時，您可以移至 [**更新部署**] 以查看結果。 如您所見，系統會提供前置腳本和後置腳本的狀態：
+更新部署完成後，可以轉到 **"更新部署"** 以查看結果。 如您所見，為預腳本和後腳本提供了狀態：
 
 ![更新結果](./media/pre-post-scripts/update-results.png)
 
-藉由選取 [更新部署執行]，您會在前置和後置腳本中看到其他詳細資料。 其中會顯示該執行進行時的指令碼來源連結。
+通過選擇更新部署運行，將顯示前腳本和腳本後的其他詳細資訊。 其中會顯示該執行進行時的指令碼來源連結。
 
 ![部署執行的結果](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>傳遞參數
 
-當您設定前置和後置腳本時，您可以傳入參數，就像排程 runbook 一樣。 參數會在建立更新部署時定義。 前置和後置腳本支援下列類型：
+配置預腳本和後腳本時，可以傳遞參數，就像安排 Runbook 一樣。 參數會在建立更新部署時定義。 腳本前和腳本後支援以下類型：
 
 * [char]
 * [byte]
@@ -60,27 +60,27 @@ ms.locfileid: "75417791"
 
 如果您需要另一種物件類型，您可以在 Runbook 中使用您自己的邏輯將其轉換成另一種類型。
 
-除了您的標準 runbook 參數之外，也提供另一個參數： **SoftwareUpdateConfigurationRunCoNtext**
+除了標準 Runbook 參數外，還提供另一個參數：**軟體更新配置RunCoNtext**
 
-此參數是 JSON 字串，如果您在前置或後置腳本中定義參數，則更新部署會自動將其傳入。 參數包含更新部署的相關資訊，這是[SOFTWAREUPDATECONFIGURATIONS API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)傳回的資訊子集。 
+此參數是 JSON 字串，如果您在腳本前或腳本後定義參數，則更新部署會自動傳入該參數。 該參數包含有關更新部署的資訊，更新部署是[軟體更新配置 API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)返回的資訊的子集。 
 
-下表顯示變數中提供的屬性。
+下表顯示了變數中提供的屬性。
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 屬性
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
-|SoftwareUpdateConfigurationName     | 軟體更新設定的名稱。        |
-|SoftwareUpdateConfigurationRunId     | 執行的唯一識別碼。        |
-|SoftwareUpdateConfigurationSettings     | 與軟體更新設定相關的屬性集合。         |
+|SoftwareUpdateConfigurationName     | 軟體更新配置的名稱。        |
+|SoftwareUpdateConfigurationRunId     | 運行的唯一 ID。        |
+|SoftwareUpdateConfigurationSettings     | 與軟體更新配置相關的屬性的集合。         |
 |SoftwareUpdateConfigurationSettings.operatingSystem     | 更新部署的目標作業系統。         |
-|SoftwareUpdateConfigurationSettings.duration     | 更新部署的最大持續時間會以 `PT[n]H[n]M[n]S` 為依據 ISO8601;也稱為*維護視窗*。          |
-|SoftwareUpdateConfigurationSettings.Windows     | 與 Windows 電腦相關的屬性集合。         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 從更新部署排除的 Kb 清單。        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 為更新部署選取的更新分類。        |
-|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | 更新部署的重新開機設定。        |
-|azureVirtualMachines     | 更新部署中 Azure Vm 的資源識別碼清單。        |
-|nonAzureComputerNames|更新部署中的非 Azure 電腦 Fqdn 清單。|
+|SoftwareUpdateConfigurationSettings.duration     | 更新部署的最大持續時間按`PT[n]H[n]M[n]S`ISO8601 運行;也稱為*維護視窗*。          |
+|SoftwareUpdateConfigurationSettings.Windows     | 與 Windows 電腦相關的屬性的集合。         |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 從更新部署中排除的 QB 的清單。        |
+|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 更新為更新部署選擇的分類。        |
+|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | 重新開機更新部署的設置。        |
+|azureVirtualMachines     | 更新部署中 Azure VM 的資源識別碼 清單。        |
+|nonAzureComputerNames|更新部署中非 Azure 電腦 FQDN 的清單。|
 
 以下範例是一個傳遞給 **SoftwareUpdateConfigurationRunContext** 參數的 JSON 字串：
 
@@ -112,15 +112,15 @@ ms.locfileid: "75417791"
    }
 ```
 
-您可以在以下位置找到所有屬性的完整範例：[依名稱取得軟體更新](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)設定。
+具有所有屬性的完整示例，請于：[按名稱獲取軟體更新配置](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)。
 
 > [!NOTE]
-> `SoftwareUpdateConfigurationRunContext` 物件可以包含電腦的重複專案。 這可能會導致在同一部電腦上執行前置和後置腳本多次。 若要解決此行為，請使用 `Sort-Object -Unique`，在您的腳本中只選取唯一的 VM 名稱。
+> 該`SoftwareUpdateConfigurationRunContext`物件可以包含電腦的重複條目。 這可能會導致腳本前和腳本後在同一台電腦上多次運行。 要解決此問題，請使用 僅在`Sort-Object -Unique`腳本中選擇唯一的 VM 名稱。
 
 
 ## <a name="stopping-a-deployment"></a>停止部署
 
-如果您想要根據前置腳本停止部署，則必須[擲](automation-runbook-execution.md#throw)回例外狀況。 如果您沒有這麼做，部署和後置腳本仍然會執行。 下列程式碼片段顯示如何擲回例外狀況。
+如果要停止基於預腳本的部署，則必須[引發](automation-runbook-execution.md#throw)異常。 如果沒有，部署和後腳本仍將運行。 以下程式碼片段演示如何引發異常。
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -137,11 +137,11 @@ foreach($summary in $finalStatus)
 
 ## <a name="samples"></a>範例
 
-您可以在[腳本中心資源庫](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)和[PowerShell 資源庫](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)中找到前置和後置腳本的範例，也可以透過 Azure 入口網站將其匯入。 若要這麼做，請在您的自動化帳戶的 [程式**自動化**] 底下，選取 [ **runbook 資源庫**]。 使用 [更新管理] 作為篩選條件。
+在[腳本中心庫](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)和[PowerShell 庫中](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)可以找到預腳本和後腳本的示例，也可以通過 Azure 門戶導入它們。 為此，在您的自動化帳戶中，在 **"過程自動化**"下，選擇**Runbook 庫**。 使用 [更新管理]**** 作為篩選條件。
 
 ![資源庫清單](./media/pre-post-scripts/runbook-gallery.png)
 
-或者，您也可以依照下列清單所示的腳本名稱來搜尋它們：
+或者，您可以按腳本名稱搜索它們，如以下清單所示：
 
 * 更新管理 - 開啟 VM
 * 更新管理 - 關閉 VM
@@ -150,9 +150,9 @@ foreach($summary in $finalStatus)
 * 更新管理 - 以執行命令來執行指令碼
 
 > [!IMPORTANT]
-> 匯入 runbook 之後，您必須先將其發佈，才能使用它們。 若要這麼做，請在您的自動化帳戶中尋找 runbook，選取 [**編輯**]，然後選取 [**發佈**]。
+> 導入 Runbook 後，必須先發佈它們，然後才能使用它們。 為此，請在自動化帳戶中找到 Runbook，選擇 **"編輯**"，然後選擇 **"發佈**"。
 
-這些範例都是以下列範例中定義的基本範本為基礎。 此範本可用於建立您自己的 runbook，以搭配前置和後置腳本使用。 包含向 Azure 進行驗證及處理 `SoftwareUpdateConfigurationRunContext` 參數的必要邏輯。
+這些示例都基於以下示例中定義的基本範本。 此範本可用於創建自己的 Runbook，以便與預腳本和後腳本一起使用。 包括使用 Azure 進行身份驗證和處理`SoftwareUpdateConfigurationRunContext`參數的必要邏輯。
 
 ```powershell
 <#
@@ -205,33 +205,33 @@ $variable = Get-AutomationVariable -Name $runId
 #>
 ```
 
-## <a name="interacting-with-machines"></a>與機器互動
+## <a name="interacting-with-machines"></a>與機器交互
 
-前置和後置工作會在您的自動化帳戶中以 runbook 的形式執行，而不是直接在您的部署中的機器上執行。 前置和後置工作也會在 Azure 內容中執行，而且不會有非 Azure 機器的存取權。 下列各節顯示如何直接與機器互動，不論它們是 Azure Vm 或非 Azure 機器。
+任務前和任務後作為自動化帳戶中的 Runbook 運行，而不是直接在部署中的電腦上運行。 任務前和任務後也會在 Azure 上下文中運行，並且無法訪問非 Azure 電腦。 以下各節演示如何與電腦直接交互，無論是 Azure VM 還是非 Azure 電腦。
 
-### <a name="interacting-with-azure-machines"></a>與 Azure 機器互動
+### <a name="interacting-with-azure-machines"></a>與 Azure 電腦交互
 
-前置和後置工作會以 runbook 的形式執行，而且不會在您的部署中的 Azure Vm 上以原生方式執行。 若要與您的 Azure Vm 互動，您必須具有下列專案：
+預任務和任務後任務作為 Runbook 運行，並且不會本機在部署中的 Azure VM 上運行。 要與 Azure VM 進行交互，必須具有以下專案：
 
 * 執行身分帳戶
-* 您想要執行的 runbook
+* 要運行的 Runbook
 
-若要與 Azure 機器互動，您應該使用[invoke-azurermvmruncommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Cmdlet 來與您的 azure vm 互動。 如需如何執行這項操作的範例，請參閱 runbook 範例[更新管理–使用執行命令執行腳本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
+要與 Azure 電腦進行交互，應使用[調用 AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Cmdlet 與 Azure VM 進行交互。 有關如何執行此操作的示例，請參閱 Runbook 示例["更新管理 — 使用 Run 命令運行腳本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)"。
 
-### <a name="interacting-with-non-azure-machines"></a>與非 Azure 機器互動
+### <a name="interacting-with-non-azure-machines"></a>與非 Azure 電腦交互
 
-前置和後置工作會在 Azure 內容中執行，且不會有非 Azure 機器的存取權。 若要與非 Azure 機器互動，您必須具有下列專案：
+任務前和任務後在 Azure 上下文中運行，並且無法訪問非 Azure 電腦。 要與非 Azure 電腦進行交互，必須具有以下項：
 
 * 執行身分帳戶
 * 已安裝在機器上的混合式 Runbook 背景工作角色
 * 您想要在本機上執行的 Runbook
-* 父 runbook
+* 父運行簿
 
-若要與非 Azure 機器互動，父 runbook 會在 Azure 內容中執行。 此 Runbook 會使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) Cmdlet 來呼叫子 Runbook。 您必須指定 `-RunOn` 參數，並提供混合式 Runbook 背景工作角色的名稱，好讓指令碼在其中執行。 如需詳細資訊，請參閱 runbook 範例[更新管理–在本機執行腳本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
+要與非 Azure 電腦進行交互，在 Azure 上下文中運行父 Runbook。 此 Runbook 會使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) Cmdlet 來呼叫子 Runbook。 您必須指定 `-RunOn` 參數，並提供混合式 Runbook 背景工作角色的名稱，好讓指令碼在其中執行。 有關詳細資訊，請參閱 runbook 示例["更新管理 " 在本地運行腳本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
 
 ## <a name="abort-patch-deployment"></a>中止修補程式部署
 
-如果您的前置腳本傳回錯誤，您可能會想要中止您的部署。 若要這麼做，您必須在腳本中[擲](/powershell/module/microsoft.powershell.core/about/about_throw)回錯誤，以取得任何會造成失敗的邏輯。
+如果預腳本返回錯誤，則可能需要中止部署。 為此，您必須在腳本中[為](/powershell/module/microsoft.powershell.core/about/about_throw)任何構成失敗的邏輯引發錯誤。
 
 ```powershell
 if (<My custom error logic>)
@@ -243,11 +243,11 @@ if (<My custom error logic>)
 
 ## <a name="known-issues"></a>已知問題
 
-* 當您使用前置和後置腳本時，無法將布林值、物件或陣列傳遞給參數。 如果您這樣做，runbook 就會失敗。 如需支援類型的完整清單，請參閱[傳遞參數](#passing-parameters)。
+* 使用預腳本和後腳本時，不能將布林、物件或陣列傳遞給參數。 如果這樣做，則 Runbook 將失敗。 有關受支援類型的完整清單，請參閱[傳遞參數](#passing-parameters)。
 
 ## <a name="next-steps"></a>後續步驟
 
-請移至下列教學課程，以瞭解如何管理 Windows 虛擬機器的更新：
+繼續學習以下教程，瞭解如何管理 Windows 虛擬機器的更新：
 
 > [!div class="nextstepaction"]
 > [管理 Azure Windows VM 的更新和修補程式](automation-tutorial-update-management.md)

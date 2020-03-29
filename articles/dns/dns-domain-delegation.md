@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939042"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 的 DNS 區域委派
@@ -22,9 +22,9 @@ Azure DNS 可讓您裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記�
 
 ### <a name="domains-and-zones"></a>網域和區域
 
-網域名稱系統是網域階層。 階層從「根」網域開始，其名稱只是 ' **.** '。  下面接著最上層網域，例如 'com'、'net'、'org'、'uk' 或 'jp'。  最上層網域下面是第二層網域，例如 'org.uk' 或 'co.jp'。  依此類推。 DNS 階層中的網域裝載於個別的 DNS 區域。 這些區域遍布全球，由世界各地的 DNS 名稱伺服器所裝載。
+網域名稱系統是網域階層。 層次結構從"root"域開始，其名稱只是 **'.'。**  下面接著最上層網域，例如 'com'、'net'、'org'、'uk' 或 'jp'。  最上層網域下面是第二層網域，例如 'org.uk' 或 'co.jp'。  依此類推。 DNS 階層中的網域裝載於個別的 DNS 區域。 這些區域遍布全球，由世界各地的 DNS 名稱伺服器所裝載。
 
-**DNS 區域** - 網域是網域名稱系統中的唯一名稱，例如 'contoso.com'。 DNS 區域會用於裝載特定網域的 DNS 記錄。 例如，網域 'contoso.com' 可能包含數筆 DNS 記錄，例如 'mail.contoso.com' (用於郵件伺服器) 和 'www.contoso.com' (用於網站)。
+**DNS 區域** - 網域是網域名稱系統中的唯一名稱，例如 'contoso.com'。 DNS 區域用來裝載特定網域的 DNS 記錄。 例如，網域 'contoso.com' 可能包含數筆 DNS 記錄，例如 'mail.contoso.com' (用於郵件伺服器) 和 'www.contoso.com' (用於網站)。
 
 **網域註冊機構** - 網域註冊機構是指可以提供網際網路網域名稱的公司。 他們會驗證您想要使用的網際網路網域是否可用，並允許您購買。 一旦註冊網域名稱，您就成為該網域名稱的合法擁有者。 如果您已經有網際網路網域，您將使用目前的網域註冊機構委派給 Azure DNS。
 
@@ -34,8 +34,8 @@ Azure DNS 可讓您裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記�
 
 有兩種類型的 DNS 伺服器：
 
-* *授權* DNS 伺服器裝載 DNS 區域。 它只會回答這些區域中的 DNS 記錄查詢。
-* *遞迴* DNS 伺服器不裝載 DNS 區域。 它會呼叫授權 DNS 伺服器來收集所需的資料，以回答所有 DNS 查詢。
+* *權威*DNS 伺服器承載 DNS 區域。 它只會回答這些區域中的 DNS 記錄查詢。
+* *遞迴*DNS 伺服器不承載 DNS 區域。 它會呼叫授權 DNS 伺服器來收集所需的資料，以回答所有 DNS 查詢。
 
 Azure DNS 提供具權威性的 DNS 服務。  它不提供遞迴 DNS 服務。 Azure 中的雲端服務和 VM 會自動設定為使用在 Azure 的基礎結構中個別提供的遞迴 DNS 服務。 如需如何變更這些 DNS 設定的詳細資訊，請參閱 [Azure 中的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
@@ -67,5 +67,5 @@ Azure DNS 提供具權威性的 DNS 服務。  它不提供遞迴 DNS 服務。 
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[將您的網域委派給 Azure DNS](dns-delegate-domain-azure-dns.md)
+瞭解如何[將域委派給 Azure DNS](dns-delegate-domain-azure-dns.md)
 

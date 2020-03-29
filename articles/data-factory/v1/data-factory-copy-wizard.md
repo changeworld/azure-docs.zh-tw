@@ -1,5 +1,5 @@
 ---
-title: 使用複製嚮導輕鬆複製資料-Azure
+title: 使用複製嚮導輕鬆複製資料 - Azure
 description: 了解如何使用 Data Factory 複製精靈，將資料從支援的資料來源複製到接收。
 services: data-factory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927060"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure Data Factory 複製精靈輕鬆地複製或移動資料
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
 
 
-Azure Data Factory 複製精靈會簡化內嵌資料的程序，這通常是端對端資料整合案例中的第一個步驟。 逐步執行 Azure Data Factory 複製精靈時，您不需要了解任何用於連結服務、資料集和管線的 JSON 定義。 不過，當您完成精靈中的所有步驟之後，精靈會自動建立管線，將資料從選取的資料來源複製到選取的目的地。 此外，複製精靈可協助您驗證已在撰寫期間內嵌資料，這可節省您的許多時間，特別是當您第一次內嵌資料來源的資料時。 若要啟動複製精靈，請在 Data Factory 首頁按一下 [複製資料] 圖格。
+Azure Data Factory 複製精靈會簡化內嵌資料的程序，這通常是端對端資料整合案例中的第一個步驟。 逐步執行 Azure Data Factory 複製精靈時，您不需要了解任何用於連結服務、資料集和管線的 JSON 定義。 不過，當您完成精靈中的所有步驟之後，精靈會自動建立管線，將資料從選取的資料來源複製到選取的目的地。 此外，複製精靈可協助您驗證已在撰寫期間內嵌資料，這可節省您的許多時間，特別是當您第一次內嵌資料來源的資料時。 若要啟動複製精靈，請在 Data Factory 首頁按一下 [複製資料] **** 圖格。
 
 ![複製精靈](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
@@ -62,7 +62,7 @@ Azure Data Factory 複製精靈會簡化內嵌資料的程序，這通常是端�
 ![驗證運算式](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>篩選 Azure Blob 資料夾中的資料
-您可以在資料夾路徑中使用變數，以複製在執行階段根據[系統變數](data-factory-functions-variables.md#data-factory-system-variables)決定之資料夾內的資料。 支援的變數包括︰ **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** 及 **{custom}** 。 範例︰inputfolder/{year}/{month}/{day}。
+您可以在資料夾路徑中使用變數，以複製在執行階段根據[系統變數](data-factory-functions-variables.md#data-factory-system-variables)決定之資料夾內的資料。 支援的變數包括︰**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** 及 **{custom}**。 範例︰inputfolder/{year}/{month}/{day}。
 
 假設您的輸入資料夾格式如下︰
 
@@ -71,11 +71,11 @@ Azure Data Factory 複製精靈會簡化內嵌資料的程序，這通常是端�
     2016/03/01/03
     ...
 
-按一下 [檔案或資料夾] 的 [瀏覽] 按鈕、瀏覽至其中一個資料夾 (例如 2016->03->01->02)，然後按一下 [選擇]。 您應該會在文字方塊中看到 `2016/03/01/02`。 現在，以 **{year}** 、 **03**取代為 **{Month}** 、 **01**加上 { **day}** ，以及**02**與 **{hour}** 來取代**2016** ，然後按 tab 鍵。您應該會看到下拉式清單來選取這四個變數的格式：
+按一下 [檔案或資料夾]**** 的 [瀏覽]**** 按鈕、瀏覽至其中一個資料夾 (例如 2016->03->01->02)，然後按一下 [選擇]****。 您應該會在文字方塊中看到 `2016/03/01/02`。 現在，將**2016**替換為 **{year}，03**替換為 **{month}，01**替換為 **{day}，02**替換為 **{小時}，** 然後按 Tab。 **03** **01** **02**您應該會看到下拉清單，以選擇以下四個變數的格式：
 
 ![使用系統變數](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-如下列螢幕擷取畫面所示，您也可以使用 **custom** 變數和任何[支援的格式字串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要選取具有該結構的資料夾，請先使用 [瀏覽] 按鈕。 然後將值取代為 **{custom}** ，並按 Tab 鍵來查看可輸入格式字串的文字方塊。     
+如下列螢幕擷取畫面所示，您也可以使用 **custom** 變數和任何[支援的格式字串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要選取具有該結構的資料夾，請先使用 [瀏覽]**** 按鈕。 然後將值取代為 **{custom}**，並按 Tab 鍵來查看可輸入格式字串的文字方塊。     
 
 ![使用自訂變數](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

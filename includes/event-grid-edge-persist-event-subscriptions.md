@@ -9,11 +9,11 @@ ms.date: 01/16/2020
 ms.author: babanisa
 ms.custom: include file
 ms.openlocfilehash: 42d1ebb23cf582c3dfbc375e4886ed449c21f493
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844531"
 ---
 >[!NOTE]
-> 如果您需要保證在裝置重新開機時保存暫止的事件，您必須啟用事件訂用帳戶的持續性。 如需如何設定持續性的詳細資訊，請參閱下列文章：[在 Linux 中保存狀態](../articles/event-grid/edge/persist-state-linux.md)或[在 Windows 中保存狀態](../articles/event-grid/edge/persist-state-windows.md)。
+> 如果需要保證在設備重新開機時保留掛起的事件，則需要為事件訂閱啟用持久性。 有關如何設置持久性的詳細資訊，請參閱以下文章[：Linux 中的持久狀態](../articles/event-grid/edge/persist-state-linux.md)或[Windows 中的持久狀態](../articles/event-grid/edge/persist-state-windows.md)。

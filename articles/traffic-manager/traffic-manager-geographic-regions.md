@@ -1,5 +1,5 @@
 ---
-title: 地理路由所使用的國家/區域階層-Azure 流量管理員
+title: 地理路由使用的國家/區域層次結構 - Azure 流量管理器
 description: 本文列出 Azure 流量管理員地理路由類型使用的國家/地區階層
 services: traffic-manager
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938637"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理員用於地理流量路由方法的國家/地區階層
 
-本文列出 Azure 流量管理員中**地理**流量路由方法所使用的國家和區域。 您也可以呼叫 [Azure 流量管理員的 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，以程式設計方式取得這項資訊。 
+本文列出 Azure 流量管理員中**地理**流量路由方法所使用的國家和區域。 您也可以用程式設計方式呼叫 [ Azure 流量管理員的 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，以取得這項資訊。 
 
 - WORLD(世界)
 
@@ -99,7 +99,7 @@ ms.locfileid: "76938637"
 
         - ME(蒙特內哥羅)
 
-        - MK （北馬其頓）
+        - MK（北馬其頓）
 
         - MT(馬爾他)
 
@@ -128,7 +128,7 @@ ms.locfileid: "76938637"
         - SM(聖馬利諾)
 
         - UA(烏克蘭)
-            - 克裡米亞的區域
+            - 克裡米亞地區
 
         - VA(梵蒂岡)
 
@@ -270,7 +270,7 @@ ms.locfileid: "76938637"
 
         - TT(千里達及托巴哥)
 
-        - UM （美國外島）
+        - UM（美國離島）
 
         - US(美國)
 
@@ -380,7 +380,7 @@ ms.locfileid: "76938637"
 
         - VG(英屬維京群島)
 
-        - VI （美屬英屬維爾京群島）
+        - 六（美屬維爾京群島）
 
         - XE(聖佑達修斯)
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: ff63b9b7027e99c70971230936ed98186c2208e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75397714"
 ---
 # <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的有用運算子
@@ -21,20 +21,20 @@ ms.locfileid: "75397714"
 
 類別                                |相關分析函式
 ----------------------------------------|----------------------------------------
-選取項目和資料行別名            |`project`、`project-away`、`extend`
+選取項目和資料行別名            |`project`, `project-away`, `extend`
 暫存資料表和常數          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
-比較和字串運算子         |`startswith`, `!startswith`, `has`, `!has` <br> `contains`、`!contains`、`containscs` <br> `hasprefix`、`!hasprefix`、`hassuffix`、`!hassuffix`、`in`、`!in` <br> `matches regex` <br> `==`, `=~`, `!=`, `!~`
-常見字串函式                 |`strcat()`、`replace()`、`tolower()`、`toupper()`、`substring()`、`strlen()`
-常見數學函式                   |`sqrt()`，`abs()` <br> `exp()`、`exp2()`、`exp10()`、`log()`、`log2()`、`log10()`、`pow()` <br> `gamma()`，`gammaln()`
+比較和字串運算子         |`startswith`, `!startswith`, `has`, `!has` <br> `contains`, `!contains`, `containscs` <br> `hasprefix`, `!hasprefix`, `hassuffix`, `!hassuffix`, `in`, `!in` <br> `matches regex` <br> `==`, `=~`, `!=`, `!~`
+常見字串函式                 |`strcat()`, `replace()`, `tolower()`, `toupper()`, `substring()`, `strlen()`
+常見數學函式                   |`sqrt()`, `abs()` <br> `exp()`, `exp2()`, `exp10()`, `log()`, `log2()`, `log10()`, `pow()` <br> `gamma()`, `gammaln()`
 剖析文字                            |`extract()`, `extractjson()`, `parse`, `split()`
 限制輸出                         |`take`, `limit`, `top`, `sample`
-日期函式                          |`now()`，`ago()` <br> `datetime()`、`datepart()`、`timespan` <br> `startofday()`, `startofweek()`, `startofmonth()`, `startofyear()` <br> `endofday()`, `endofweek()`, `endofmonth()`, `endofyear()` <br> `dayofweek()`、`dayofmonth()`、`dayofyear()` <br> `getmonth()`, `getyear()`, `weekofyear()`, `monthofyear()`
-群組和彙總                |`summarize by` <br> `max()`、`min()`、`count()`、`dcount()`、`avg()`、`sum()` <br> `stddev()`, `countif()`, `dcountif()`, `argmax()`, `argmin()` <br> `percentiles()`，`percentile_array()`
+日期函式                          |`now()`, `ago()` <br> `datetime()`, `datepart()`, `timespan` <br> `startofday()`, `startofweek()`, `startofmonth()`, `startofyear()` <br> `endofday()`, `endofweek()`, `endofmonth()`, `endofyear()` <br> `dayofweek()`, `dayofmonth()`, `dayofyear()` <br> `getmonth()`, `getyear()`, `weekofyear()`, `monthofyear()`
+群組和彙總                |`summarize by` <br> `max()`, `min()`, `count()`, `dcount()`, `avg()`, `sum()` <br> `stddev()`, `countif()`, `dcountif()`, `argmax()`, `argmin()` <br> `percentiles()`, `percentile_array()`
 聯結和集合聯集                        |`join kind=leftouter`, `inner`, `rightouter`, `fullouter`, `leftanti` <br> `union`
-排序，次序                             |`sort`，`order` 
-動態物件 (JSON 和陣列)         |`parsejson()` <br> `makeset()`，`makelist()` <br> `split()`，`arraylength()` <br> `zip()`，`pack()`
-邏輯運算子                       |`and`、`or`、`iff(condition, value_t, value_f)` <br> `binary_and()`, `binary_or()`, `binary_not()`, `binary_xor()`
-機器學習                        |`evaluate autocluster`, `basket`, `diffpatterns`, `extractcolumns`
+排序，次序                             |`sort`, `order` 
+動態物件 (JSON 和陣列)         |`parsejson()` <br> `makeset()`, `makelist()` <br> `split()`, `arraylength()` <br> `zip()`, `pack()`
+邏輯運算子                       |`and`, `or`, `iff(condition, value_t, value_f)` <br> `binary_and()`, `binary_or()`, `binary_not()`, `binary_xor()`
+機器學習服務                        |`evaluate autocluster`, `basket`, `diffpatterns`, `extractcolumns`
 
 
 ## <a name="next-steps"></a>後續步驟

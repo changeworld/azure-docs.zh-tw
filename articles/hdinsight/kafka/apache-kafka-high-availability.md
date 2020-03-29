@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
 ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435298"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>使用 HDInsight 上的 Apache Kafka 確保您資料的高可用性
@@ -34,7 +34,7 @@ ms.locfileid: "75435298"
 
 * 建立新主題或磁碟分割時
 
-* 當您擴大叢集時
+* 當您相應增加叢集時
 
 ## <a name="replication-factor"></a>複寫因子
 

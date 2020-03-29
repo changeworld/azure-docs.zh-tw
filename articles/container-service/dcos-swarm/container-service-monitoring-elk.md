@@ -8,10 +8,10 @@ ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277766"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(已淘汰) 使用 ELK 監視 Azure Container Service 叢集
@@ -20,7 +20,7 @@ ms.locfileid: "76277766"
 
 在此文章中，我們示範如何在 Azure Container Service 中的 DC/OS 叢集上部署 ELK (Elasticsearch、Logstash、Kibana) 堆疊。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 [部署](container-service-deployment.md)並[連接](../container-service-connect.md) Azure Container Service 所設定的 DC/OS 叢集。 在[這裡](container-service-mesos-marathon-ui.md)探索探索 DC/OS 儀表板和 Marathon 服務。 同時也請安裝 [Marathon Load Balancer](container-service-load-balancing.md)。
 
 
@@ -28,18 +28,18 @@ ms.locfileid: "76277766"
 ELK 堆疊是 Elasticsearch、Logstash 和 Kibana 的組合，提供的端對端堆疊可以監視及分析叢集中的記錄。
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>在 DC/OS 叢集上設定 ELK 堆疊
-由 [http://localhost:80/](http://localhost:80/) 存取 DC/OS UI。開啟 DC/OS UI 之後，瀏覽到 [Universe]。 請在 DC/OS Universe 搜尋並依序安裝 Elasticsearch、Logstash 及 Kibana。 如需組態的詳細資訊，您可以移至 [Advanced Installation (進階安裝)]連結。
+訪問您的DC/OS UI[http://localhost:80/](http://localhost:80/)通過一旦在DC/OS UI導航到**宇宙**。 請在 DC/OS Universe 搜尋並依序安裝 Elasticsearch、Logstash 及 Kibana。 如需組態的詳細資訊，您可以移至 [Advanced Installation (進階安裝)]**** 連結。
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-ELK 容器開始運作之後，您需要讓 Marathon-LB 能夠存取 Kibana。 瀏覽到 [Services (服務)] > [kibana]，然後按一下 [Edit (編輯)]，如下圖。
+ELK 容器開始運作之後，您需要讓 Marathon-LB 能夠存取 Kibana。 導航到**服務** > **kibana**，然後按一下 **"編輯**"，如下所示。
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
 
-切換成 [JSON mode (JSON 模式)]，並捲動到 labels 區段。
+切換成 [JSON mode (JSON 模式)]****，並捲動到 labels 區段。
 您需要新增一個 `"HAPROXY_GROUP": "external"` 項目，如下圖。
-按一下 [Deploy changes (部署變更)] 之後，容器會重新啟動。
+按一下 [Deploy changes (部署變更)]**** 之後，容器會重新啟動。
 
 ![ELK5](./media/container-service-monitoring-elk/elk5.PNG)
 

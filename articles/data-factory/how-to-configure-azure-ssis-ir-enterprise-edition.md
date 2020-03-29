@@ -11,10 +11,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74922654"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>佈建 Azure-SSIS 整合執行階段的企業版
@@ -30,17 +30,17 @@ Azure-SSIS 整合執行階段的企業版可讓您使用下列進階功能：
 
 ## <a name="enterprise-features"></a>企業功能
 
-| **企業功能** | **說明** |
+| **企業功能** | **描述** |
 |---|---|
 | CDC 元件 | CDC 來源、控制工作和分隔器轉換會在 Azure-SSIS IR 企業版上預先安裝。 若要連線到 Oracle，您還需要在另一部電腦上安裝 CDC 設計工具和服務。 |
-| Oracle 連接器 | Oracle 連線管理員、來源和目的地會在 Azure-SSIS IR 企業版上預先安裝。 您也需要在 Azure-SSIS IR 上安裝 Oracle Call Interface (OCI) 驅動程式，並於必要時設定 Oracle Transport Network Substrate (TNS)。 如需詳細資訊，請參閱 [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
-| Teradata 連接器 | 您需要在 Azure-SSIS IR 企業版上安裝 Teradata 連線管理員、來源和目的地，以及 Teradata Parallel Transporter (TPT) API 和 Teradata ODBC 驅動程式。 如需詳細資訊，請參閱 [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
+| Oracle 連接器 | Oracle 連線管理員、來源和目的地會在 Azure-SSIS IR 企業版上預先安裝。 您也需要在 Azure-SSIS IR 上安裝 Oracle Call Interface (OCI) 驅動程式，並於必要時設定 Oracle Transport Network Substrate (TNS)。 如需詳細資訊，請參閱[自訂 Azure-SSIS 整合執行階段的安裝程式](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
+| Teradata 連接器 | 您需要在 Azure-SSIS IR 企業版上安裝 Teradata 連線管理員、來源和目的地，以及 Teradata Parallel Transporter (TPT) API 和 Teradata ODBC 驅動程式。 如需詳細資訊，請參閱[自訂 Azure-SSIS 整合執行階段的安裝程式](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | SAP BW 連接器 | SAP BW 連線管理員、來源和目的地會在 Azure-SSIS IR 企業版上預先安裝。 您也需要在 Azure-SSIS IR 上安裝 SAP BW 驅動程式。 這些連接器支援 SAP BW 7.0 或更早版本。 若要連線至更新版本的 SAP BW 或其他 SAP 產品，您可以在 Azure-SSIS IR 上從第三方 ISV 購買並安裝 SAP 連接器。 如需如何安裝其他元件的詳細資訊，請參閱 [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | Analysis Services 元件               | 資料採礦模型定型目的地、維度處理目的地和分割區處理目的地以及資料採礦查詢轉換，會在 Azure-SSIS IR 企業版上預先安裝。 這些元件都支援 SQL Server Analysis Services (SSAS)，但是只有分割區處理目的地支援 Azure Analysis Services (AAS)。 若要連線到 SSAS，您也必須[在 SSISDB 中設定 Windows 驗證認證](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 除了這些元件以外，Analysis Services 執行 DDL 工作、Analysis Services 處理工作和資料採礦查詢工作，也會在 Azure-SSIS IR 標準/企業版上預先安裝。 |
 | 模糊群組和模糊查閱轉換  | 模糊群組和模糊查閱轉換會在 Azure-SSIS IR 企業版上預先安裝。 這些元件都支援 SQL Server 和 Azure SQL Database 以儲存參考資料。 |
 | 詞彙擷取和詞彙查閱轉換 | 詞彙擷取和詞彙查閱轉換會在 Azure-SSIS IR 企業版上預先安裝。 這些元件都支援 SQL Server 和 Azure SQL Database 以儲存參考資料。 |
 
-## <a name="instructions"></a>範例的指示
+## <a name="instructions"></a>Instructions
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,6 +63,6 @@ Azure-SSIS 整合執行階段的企業版可讓您使用下列進階功能：
 
 ## <a name="next-steps"></a>後續步驟
 
--   [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Azure-SSIS 整合執行階段的自訂安裝](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 -   [如何開發 Azure-SSIS 整合執行階段的付費或授權自訂元件](how-to-develop-azure-ssis-ir-licensed-components.md)

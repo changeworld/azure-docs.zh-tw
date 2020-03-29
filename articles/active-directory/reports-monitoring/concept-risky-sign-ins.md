@@ -1,5 +1,5 @@
 ---
-title: 入口網站中有風險的登入報告 |Microsoft Docs
+title: 門戶中的危險登錄報告 |微軟文檔
 description: 了解 Azure Active Directory 入口網站中有風險的登入報告
 services: active-directory
 author: MarkusVi
@@ -16,19 +16,19 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273829"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中有風險的登入報告
 
-Azure Active Directory (Azure AD) 會偵測使用者帳戶相關的可疑動作。 針對每個偵測到的動作，會建立稱為「**風險偵測**」的記錄。 如需詳細資訊，請參閱[Azure AD 風險](concept-risk-events.md)偵測。 
+Azure Active Directory (Azure AD) 會偵測使用者帳戶相關的可疑動作。 對於每個檢測到的操作，都會創建一個稱為**風險檢測**的記錄。 有關詳細資訊，請參閱[Azure AD 風險檢測](concept-risk-events.md)。 
 
-您可以從 [Azure 入口網站](https://portal.azure.com)中，藉由選取 [Azure Active Directory] 刀鋒視窗，然後瀏覽至 [安全性] 區段，來存取安全性報告。 
+您可以從 [Azure 入口網站](https://portal.azure.com)中，藉由選取 [Azure Active Directory]**** 刀鋒視窗，然後瀏覽至 [安全性]**** 區段，來存取安全性報告。 
 
-有兩個不同的安全性報告是根據風險偵測來計算：
+根據風險檢測計算了兩種不同的安全報告：
 
 - **有風險的登入** - 有風險的登入表示非使用者帳戶合法擁有者的某人嘗試登入。
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 會偵測使用者帳戶相關的可疑動作�
 
 ![有風險的登入](./media/concept-risky-sign-ins/10.png)
 
-若要瞭解如何設定觸發這些風險偵測的原則，請參閱[如何設定使用者風險原則](../identity-protection/howto-user-risk-policy.md)。  
+要瞭解如何配置觸發這些風險檢測的策略，請參閱[如何配置使用者風險策略](../identity-protection/howto-user-risk-policy.md)。  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>誰可以存取風險登入報表？
 
@@ -52,19 +52,19 @@ Azure Active Directory (Azure AD) 會偵測使用者帳戶相關的可疑動作�
 
 所有 Azure AD 版本都會為您提供有風險的登入報告。 不過，報告細微性層級因版本而異： 
 
-- 在**Azure Active Directory Free 版本**中，您會取得有風險的登入清單。 
+- 在**Azure 活動目錄免費版本中**，您將獲得風險登錄的清單。 
 
-- 此外， **Azure Active Directory Premium 1**版本也可讓您檢查已針對每個報告偵測到的一些基礎風險偵測。 
+- 此外 **，Azure 活動目錄高級 1**版允許您檢查已檢測到每個報表的某些基本風險檢測。 
 
-- **Azure Active Directory Premium 2**版本提供有關所有基礎風險偵測的最詳細資訊，同時也可讓您設定安全性原則，以自動回應已設定的風險層級。
+- **Azure Active Directory 高級版**為您提供了有關所有潛在風險檢測的最詳細資訊，還使您能夠配置自動回應配置的風險級別的安全性原則。
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD 免費版的具風險登入報告
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD 免費版的有風險登錄報告
 
-Azure AD 免費版會為您的使用者提供已偵測到的具風險登入清單。 每個記錄都包含下列屬性：
+Azure AD 免費版為您提供為使用者檢測到的危險登錄的清單。 每個記錄都包含下列屬性：
 
-- **使用者** - 在登入作業期間所使用的使用者名稱。
-- **IP** - 用來連線至 Azure Active Directory 的裝置 IP 位址。
-- **位置** - 用來連線至 Azure Active Directory 的位置。 這是根據追蹤、登錄資料、反向查詢及其他資訊，儘可能取得的近似值。
+- **使用者**- 登錄操作期間使用的使用者的名稱。
+- **IP** - 用於連接到 Azure 活動目錄的設備的 IP 位址。
+- **位置**- 用於連接到 Azure 活動目錄的位置。 這是根據追蹤、登錄資料、反向查詢及其他資訊，儘可能取得的近似值。
 - **登入時間** - 執行登入的時間
 - **狀態** - 登入狀態
 
@@ -90,26 +90,26 @@ Azure AD 免費版會為您的使用者提供已偵測到的具風險登入清�
 
 Azure AD 進階版本中有風險的登入報告可為您提供：
 
-- 已偵測到之[風險偵測類型](concept-risk-events.md)的相關匯總資訊。 使用**Azure AD Premium P1 版本**時，您的授權未涵蓋的偵測會顯示為偵測**到有額外風險**的「風險偵測」登入。 使用 **Azure AD Premium P2 版本**時，您會獲得有關所有基礎偵測的最詳細資訊。
+- 有關已檢測到[的風險檢測類型的](concept-risk-events.md)聚合資訊。 使用**Azure AD 高級 P1 版本**，許可證未涵蓋的檢測顯示為風險檢測**登錄，並檢測到其他風險**。 使用**Azure AD 高級 P2 版本**，您可以獲取有關所有基礎檢測的最詳細資訊。
 
 - 下載報告的選項
 
 ![有風險的登入](./media/concept-risky-sign-ins/456.png)
 
-當您選取風險偵測時，您會取得此風險偵測的詳細報表檢視，讓您能夠：
+選擇風險檢測時，您將獲得此風險檢測的詳細報表檢視，使您能夠：
 
 - 選擇設定[使用者風險補救原則](../identity-protection/howto-user-risk-policy.md)  
 
-- 檢查風險偵測的偵測時程表  
+- 查看風險檢測的檢測時間表  
 
-- 查看已偵測到此風險偵測的使用者清單
+- 查看檢測到此風險檢測的使用者清單
 
-- 手動關閉風險偵測。 
+- 手動關閉風險檢測。 
 
 ![有風險的登入](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> 有時候，您可能會發現在登[入報告](concept-sign-ins.md)中沒有相對應登入專案的風險偵測。 這是因為 Identity Protection 會同時評估**互動式**和**非互動式**登入的風險，而登入報告則只會顯示互動式登入的部分。
+> 有時，您可能會在[登錄報告中](concept-sign-ins.md)發現沒有相應登錄條目的風險檢測。 這是因為 Identity Protection 會同時評估**互動式**和**非互動式**登入的風險，而登入報告則只會顯示互動式登入的部分。
 
 當您選取使用者時，即會取得這位使用者的詳細報告檢視，讓您能夠：
 
@@ -119,17 +119,17 @@ Azure AD 進階版本中有風險的登入報告可為您提供：
 
 - 關閉所有事件
 
-- 調查使用者所回報的風險偵測。 
+- 調查使用者報告的風險檢測。 
 
 ![有風險的登入](./media/concept-risky-sign-ins/324.png)
 
-若要調查風險偵測，請從清單中選取一個。  
-這會開啟此風險偵測的 [**詳細資料**] 分頁。 在 [**詳細資料**] 分頁上，您可以選擇手動關閉風險偵測，或重新開機手動關閉的風險偵測。 
+要調查風險檢測，請從清單中選擇一個。  
+這將打開此風險檢測**的詳細資訊**邊欄選項卡。 在 **"詳細資訊"** 邊欄選項卡上，您可以選擇手動關閉風險檢測或重新啟動手動關閉的風險檢測。 
 
 ![有風險的登入](./media/concept-risky-sign-ins/325.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [如何設定使用者風險原則](../identity-protection/howto-user-risk-policy.md)
+- [如何配置使用者風險策略](../identity-protection/howto-user-risk-policy.md)
 - [如何設定風險補救原則](../identity-protection/howto-user-risk-policy.md)
-- [風險偵測類型](concept-risk-events.md)
+- [風險檢測類型](concept-risk-events.md)

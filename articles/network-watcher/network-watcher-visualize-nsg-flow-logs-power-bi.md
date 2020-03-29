@@ -1,5 +1,5 @@
 ---
-title: 視覺化 Azure NSG 流量記錄-Power BI
+title: 視覺化 Azure NSG 流日誌 - Power BI
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Power BI 將 NSG 流程記錄視覺化。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840599"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 將網路安全性群組流程記錄視覺化
@@ -28,7 +28,7 @@ ms.locfileid: "76840599"
 > [!Warning]  
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在下列案例中，我們將 Power BI Desktop 連線至我們已設定的儲存體帳戶，做為 NSG 流程記錄資料的接收器。 當我們連線至儲存體帳戶之後，Power BI 會下載並剖析記錄，以視覺表示法呈現網路安全性群組所記錄的流量。
 
@@ -59,7 +59,7 @@ ms.locfileid: "76840599"
 
       ![power BI 主畫面][2]
 
-1. 輸入儲存體帳戶的存取金鑰。 您可以在 Azure 入口網站瀏覽至您的儲存體帳戶，然後從 [設定] 功能表選取 [存取金鑰]，即可找到有效的存取金鑰。 按一下 [連線]，然後套用變更。
+1. 輸入儲存體帳戶的存取金鑰。 您可以在 Azure 入口網站瀏覽至您的儲存體帳戶，然後從 [設定] 功能表選取 [存取金鑰]****，即可找到有效的存取金鑰。 按一下 [連線]****，然後套用變更。
 
     ![access keys][3]
 

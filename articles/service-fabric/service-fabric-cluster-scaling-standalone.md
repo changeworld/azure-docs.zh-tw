@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 獨立叢集調整
+title: Azure 服務結構獨立群集縮放
 description: 了解 Service Fabric 獨立叢集的相應縮小、相應放大、相應增加或相應減少。
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
 ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451921"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>調整 Service Fabric 獨立叢集

@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI-sfctl 設定遙測
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來設定 sfctl 遙測的命令清單。
+title: Azure 服務結構 CLI-sfctl 設置遙測
+description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於配置 sfctl 遙測的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76903024"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
@@ -19,7 +19,7 @@ Sfctl telemetry 會收集命令名稱 (不提供參數或其名稱)、sfctl 版�
 
 ## <a name="commands"></a>命令
 
-|Command|說明|
+|Command|描述|
 | --- | --- |
 | set-telemetry | 開啟或關閉遙測。 |
 
@@ -28,14 +28,14 @@ Sfctl telemetry 會收集命令名稱 (不提供參數或其名稱)、sfctl 版�
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --off | 關閉遙測。 |
 | --on | 開啟遙測。 這是預設值。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -59,5 +59,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md) Service Fabric CLI。
+- [設置](service-fabric-cli.md)服務結構 CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

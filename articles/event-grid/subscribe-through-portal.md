@@ -1,6 +1,6 @@
 ---
 title: 透過入口網站的 Azure 事件方格訂閱
-description: 本文說明如何使用 Azure 入口網站，為支援的來源建立 Event Grid 訂用帳戶，例如 Azure Blob 儲存體。
+description: 本文介紹如何使用 Azure 門戶為受支援的源（如 Azure Blob 存儲）創建事件網格訂閱。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721501"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
@@ -22,7 +22,7 @@ ms.locfileid: "76721501"
 
 若要針對任何一個支援的[事件來源](event-sources.md)建立事件方格訂閱，請使用下列步驟。 本文示範如何建立適用於 Azure 訂用帳戶的事件方格訂閱。
 
-1. 選取 [所有服務]。
+1. 選擇**所有服務**。
 
    ![選取 [所有服務]](./media/subscribe-through-portal/select-all-services.png)
 
@@ -30,15 +30,15 @@ ms.locfileid: "76721501"
 
    ![搜尋](./media/subscribe-through-portal/search.png)
 
-1. 選取 [+ 事件訂用帳戶]。
+1. 選取 [+ 事件訂用帳戶]****。
 
    ![新增訂用帳戶](./media/subscribe-through-portal/add-subscription.png)
 
-1. 選取您要建立的訂閱類型。 例如，若要訂閱適用於您 Azure 訂用帳戶的事件，請選取 [Azure 訂用帳戶] 和目標訂閱。
+1. 選取您要建立的訂閱類型。 例如，若要訂閱適用於您 Azure 訂用帳戶的事件，請選取 [Azure 訂用帳戶]**** 和目標訂閱。
 
    ![選取 Azure 訂用帳戶](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 若要訂閱適用於此事件來源的所有事件類型，請讓 [訂閱所有事件類型] 選項保持勾選狀態。 否則，選取適用於此訂閱的事件類型。
+1. 若要訂閱適用於此事件來源的所有事件類型，請讓 [訂閱所有事件類型]**** 選項保持勾選狀態。 否則，選取適用於此訂閱的事件類型。
 
    ![選取事件類型](./media/subscribe-through-portal/select-event-types.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "76721501"
 
    ![提供訂閱詳細資料](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 若要啟用無效信件功能及自訂重試原則，請選取 [其他功能]。
+1. 若要啟用無效信件功能及自訂重試原則，請選取 [其他功能]****。
 
    ![選取其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "76721501"
 
    ![啟用無效信件功能並重試](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完成後，請選取 [建立]。
+1. 完成後，請選取 [建立]****。
 
 ## <a name="create-subscription-on-resource"></a>建立資源相關的訂閱
 
@@ -67,5 +67,5 @@ ms.locfileid: "76721501"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。
+* 有關事件網格的簡介，請參閱[有關事件網格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

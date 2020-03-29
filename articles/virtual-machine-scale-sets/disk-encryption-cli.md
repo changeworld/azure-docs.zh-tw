@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 將 Azure 擴展集的磁片加密
+title: 使用 Azure CLI 加密 Azure 規模集的磁片
 description: 了解如何使用 Azure PowerShell 加密 Windows 虛擬機器擴展集中的 VM 執行個體和已連結的磁碟
 author: msmbaldwin
 manager: rkarlin
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279085"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 在虛擬機器擴展集中加密作業系統和連結的資料磁片
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 在虛擬機器規模集中加密作業系統和附加資料磁片
 
-Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 Azure CLI 來建立和加密虛擬機器擴展集。 如需將 Azure 磁片加密套用至虛擬機器擴展集的詳細資訊，請參閱[虛擬機器擴展集的 Azure 磁碟加密](disk-encryption-overview.md)。
+Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 此快速入門演示如何使用 Azure CLI 創建和加密虛擬機器規模集。 有關將 Azure 磁片加密應用於虛擬機器縮放集的詳細資訊，請參閱[虛擬機器縮放集的 Azure 磁片加密](disk-encryption-overview.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-scale-set"></a>建立擴展集
 
-請先使用 [az group create](/cli/azure/group) 建立資源群組，才可以建立擴展集。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+請先使用 [az group create](/cli/azure/group) 建立資源群組，才可以建立擴展集。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，其已設定為在套用變更時自動更新，並在 ~/.ssh/id_rsa 中沒有 SSH 金鑰時產生 SSH 金鑰。 系統會將 32 Gb 資料磁碟連結至每個 VM 執行個體，並使用 Azure [自訂指令碼擴充功能](../virtual-machines/linux/extensions-customscript.md)搭配 [az vmss extension set](/cli/azure/vmss/extension) 來準備資料磁碟：
+現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet** 的擴展集，其已設定為在套用變更時自動更新，並在 ~/.ssh/id_rsa** 中沒有 SSH 金鑰時產生 SSH 金鑰。 系統會將 32 Gb 資料磁碟連結至每個 VM 執行個體，並使用 Azure [自訂指令碼擴充功能](../virtual-machines/linux/extensions-customscript.md)搭配 [az vmss extension set](/cli/azure/vmss/extension) 來準備資料磁碟：
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
@@ -102,11 +102,11 @@ az vmss encryption enable \
 
 加密程序開始可能需要一兩分鐘的時間。
 
-由於擴展集是在先前步驟設定為「自動」時建立的擴展集上的升級原則，因此 VM 執行個體會自動開始執行加密程序。 在升級原則為手動的擴展集上，使用 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 對 VM 執行個體啟動加密原則。
+由於擴展集是在先前步驟設定為「自動」** 時建立的擴展集上的升級原則，因此 VM 執行個體會自動開始執行加密程序。 在升級原則為手動的擴展集上，使用 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 對 VM 執行個體啟動加密原則。
 
-### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 包裝金鑰來啟用加密
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 啟用加密以包裝金鑰
 
-加密虛擬機器擴展集時，您也可以使用金鑰加密金鑰來增加安全性。
+在加密虛擬機器規模集時，還可以使用金鑰加密金鑰來增加安全性。
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -123,10 +123,10 @@ az vmss encryption enable \
 ```
 
 > [!NOTE]
->  磁片加密-keyvault 參數值的語法是完整的識別碼字串：</br>
-/subscriptions/[訂用帳戶識別碼-guid]/resourceGroups/[資源群組-名稱]/providers/Microsoft.KeyVault/vaults/[KeyVault-name]</br></br>
-> 金鑰加密金鑰參數值的語法是 KEK 的完整 URI，如下所示：</br>
-HTTPs：//[keyvault-name]. t a t/keys/[kekname]/[kek-唯一識別碼]
+>  磁片加密金鑰庫參數值的語法是完整的識別碼字串：</br>
+/訂閱/[訂閱-id-guid]/資源組/[資源組名稱]/提供程式/Microsoft.KeyVault/vault/[金鑰保存庫名稱]</br></br>
+> 金鑰加密金鑰參數值的值的語法是 KEK 的完整 URI，如：</br>
+HTTPs：//[鑰匙庫名稱]vault.azure.net/鍵/[kekname]/[kek-唯一id]
 
 ## <a name="check-encryption-progress"></a>檢查加密程序
 
@@ -173,6 +173,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在此文章中，您使用 Azure CLI 加密虛擬機器擴展集。 您也可以使用[Azure PowerShell](disk-encryption-powershell.md)或[Azure Resource Manager 範本](disk-encryption-azure-resource-manager.md)。
-- 如果您想要在布建其他延伸模組之後套用 Azure 磁碟加密，您可以使用[擴充功能排序](virtual-machine-scale-sets-extension-sequencing.md)。 
+- 在此文章中，您使用 Azure CLI 加密虛擬機器擴展集。 您還可以使用 Azure [PowerShell](disk-encryption-powershell.md)或[Azure 資源管理器範本](disk-encryption-azure-resource-manager.md)。
+- 如果希望在預配另一個擴展後應用 Azure 磁片加密，則可以使用[擴展排序](virtual-machine-scale-sets-extension-sequencing.md)。 
 - 您可以在[這裡](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)找到 Linux 擴展集資料磁碟加密的端對端批次檔案範例。 這個範例會建立資源群組和 Linux 擴展集、掛接 5 GB 資料磁碟，並加密虛擬機器擴展集。

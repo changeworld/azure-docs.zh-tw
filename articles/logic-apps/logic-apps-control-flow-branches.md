@@ -1,16 +1,16 @@
 ---
-title: 針對工作流程中的動作建立或加入平行分支
-description: 瞭解如何在 Azure Logic Apps 中，建立或合併獨立工作流程動作的平行執行分支
+title: 創建或聯接工作流中操作的平行分支
+description: 瞭解如何在 Azure 邏輯應用中為獨立的工作流操作創建或合併並行運行分支
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453424"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立或加入工作流程動作的平行分支
@@ -18,13 +18,13 @@ ms.locfileid: "75453424"
 根據預設，邏輯應用程式中的動作會依序執行。 若要同時執行獨立的動作，您可以建立[平行分支](#parallel-branches)，並在之後[將這些分支加入](#join-branches)您的流程中。 
 
 > [!TIP] 
-> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 [**SplitOn** 觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」。
+> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 [**SplitOn** 觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」**。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 <a name="parallel-branches"></a>
 
@@ -41,7 +41,7 @@ ms.locfileid: "75453424"
 
 1. 在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
-1. 將滑鼠指標移到您要新增平行分支的步驟上方的箭號。 選擇所顯示的**加號** ( **+** )，然後選擇 [新增平行分支]。 
+1. 將滑鼠指標移到您要新增平行分支的步驟上方的箭號。 選擇所顯示的**加號** (**+**)，然後選擇 [新增平行分支]****。 
 
    ![新增平行分支](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "75453424"
 
    ![尋找並選取您想要的動作](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 立即在每個平行分支中，新增您想要的步驟。 若要將另一個動作新增至分支，請將滑鼠指標移至您要新增循序動作的動作下方。 選擇所顯示的**加號** ( **+** )，然後選取 [新增動作]。
+1. 立即在每個平行分支中，新增您想要的步驟。 若要將另一個動作新增至分支，請將滑鼠指標移至您要新增循序動作的動作下方。 選擇顯示的**加號**（）**+** 符號，然後選擇 **"添加操作**"。
 
    ![將循序動作新增至平行分支](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "75453424"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，尋找並開啟邏輯應用程式。 
 
-1. 在您想要聯結的平行分支下方，選擇 [新增步驟]。 
+1. 在您想要聯結的平行分支下方，選擇 [新增步驟]****。 
 
    ![新增要聯結的步驟](media/logic-apps-control-flow-branches/add-join-step.png)
 

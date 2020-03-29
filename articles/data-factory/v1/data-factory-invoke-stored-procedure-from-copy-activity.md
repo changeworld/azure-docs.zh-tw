@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Data Factory 複製活動叫用預存程式
+title: 從 Azure 資料工廠複製活動中調用預存程序
 description: 了解如何從 Azure Data Factory 複製活動叫用 Azure SQL Database 或 SQL Server 中的預存程序。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924090"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>從 Azure Data Factory 中的複製活動叫用預存程序
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
 
 
 將資料複製到 [SQL Server](data-factory-sqlserver-connector.md) 或 [Azure SQL Database](data-factory-azure-sql-connector.md) 時，您可以在複製活動中設定 **SqlSink** 以叫用預存程序。 您可以使用預存程序來執行將資料插入到目的地資料表之前所需的任何額外處理 (合併資料行、查詢值、插入到多個資料表等)。 此功能會利用[資料表值參數](https://msdn.microsoft.com/library/bb675163.aspx)。 
@@ -81,7 +81,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>資料表類型定義
-在資料庫中，使用與 **SqlWriterTableType** 相同的名稱來定義資料表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
+在資料庫中，使用與**SqlWriterTableType**同名的表類型定義表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

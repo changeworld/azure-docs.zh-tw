@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76931016"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>使用者隱私權與 Azure Active Directory 傳遞驗證
@@ -29,7 +29,7 @@ ms.locfileid: "76931016"
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure AD 傳遞驗證會建立下列記錄類型，其中可能會包含「個人資料」：
 
@@ -73,7 +73,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>刪除驗證代理程式追蹤記錄檔
 
-您應該定期檢查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace**的內容，並每隔48小時刪除此資料夾的內容。 
+應定期檢查 **%ProgramData%%\Microsoft_Azure AD 連接身份驗證代理\Trace**的內容，並每 48 小時刪除此資料夾的內容。 
 
 >[!IMPORTANT]
 >如果驗證代理程式服務正在執行中，您就無法刪除資料夾中目前的記錄檔。 在重試之前停止服務。 若要避免使用者登入失敗，您應該為傳遞驗證設定[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
@@ -91,15 +91,15 @@ Foreach ($file in $files) {
 若要將此指令碼排程為每 48 小時執行一次，請遵循下列步驟：
 
 1.  將指令碼儲存在副檔名為 ".PS1" 的檔案中。
-2.  開啟 [控制台]，然後按一下 [系統與安全性]。
-3.  在 [系統管理工具] 標題下，按一下 [排程工作]。
-4.  在 [工作排程器] 中，以滑鼠右鍵按一下 [工作排程程式庫]，然後按一下 [建立基本工作...]。
-5.  輸入新工作的名稱，然後按 [下一步]。
-6.  針對 [工作觸發程序] 選取 [每天]，然後按 [下一步]。
-7.  將週期設定為 2 天，然後按 [下一步]。
-8.  選取 [啟動程式] 作為動作，然後按 [下一步]。
-9.  在程式/指令碼的方塊中輸入「PowerShell」，然後在標示為 [新增引數 (可省略)] 的方塊中，輸入您稍早所建立之指令碼的完整路徑，然後按 [下一步]。
-10. 下一個畫面會顯示您即將建立之工作的摘要。 確認所有值，然後按一下 [完成] 來建立工作：
+2.  開啟 [控制台]****，然後按一下 [系統與安全性]****。
+3.  在 **"管理工具"** 標題下，按一下"**計畫任務**"。
+4.  在 [工作排程器]**** 中，以滑鼠右鍵按一下 [工作排程程式庫]****，然後按一下 [建立基本工作...]****。
+5.  輸入新工作的名稱，然後按 [下一步]****。
+6.  針對 [工作觸發程序]**** 選取 [每天]****，然後按 [下一步]****。
+7.  將週期設定為 2 天，然後按 [下一步]****。
+8.  選取 [啟動程式]**** 作為動作，然後按 [下一步]****。
+9.  在程式/腳本的框中鍵入 **"PowerShell"，** 並在標記為"**添加參數（可選）"** 的框中輸入之前創建的腳本的完整路徑，然後按一下"**下一步**"。
+10. 下一個畫面會顯示您即將建立之工作的摘要。 驗證值並按一下 **"完成"** 以創建任務：
  
 ### <a name="note-about-domain-controller-logs"></a>請注意網域控制站記錄
 
@@ -107,4 +107,4 @@ Foreach ($file in $files) {
 
 ## <a name="next-steps"></a>後續步驟
 * [在信任中心檢閱 Microsoft 隱私權原則](https://www.microsoft.com/trustcenter)
-* [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。
+* [**故障排除**](tshoot-connect-pass-through-authentication.md)- 瞭解如何使用該功能解決常見問題。

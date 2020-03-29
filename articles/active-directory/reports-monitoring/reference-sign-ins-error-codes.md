@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 入口網站中的錯誤碼 |Microsoft Docs
+title: Azure 活動目錄門戶中的錯誤代碼 |微軟文檔
 description: 登入活動報告錯誤碼參考。
 services: active-directory
 documentationcenter: ''
@@ -18,21 +18,21 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b4e21a23ebc455653b4d5b22ac18023b533728c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190461"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登入活動報告錯誤碼 
 
-利用[使用者登入報告](concept-sign-ins.md)所提供的資訊，您可以找到下列問題的解答︰
+使用[使用者登錄報告](concept-sign-ins.md)提供的資訊，您可以找到問題的答案，例如：
 
 - 誰登入我的應用程式？
 - 已登入哪些應用程式？
-- 哪些登入失敗？為什麼？
+- 哪些登錄失敗，為什麼？
 
-當登入失敗時，您會看到對應于失敗的錯誤代碼。 [尋找錯誤碼的描述](https://login.microsoftonline.com/error)。
+當登錄失敗時，您將看到與失敗對應的錯誤代碼。 [查找錯誤代碼的說明](https://login.microsoftonline.com/error)。
 
 
 

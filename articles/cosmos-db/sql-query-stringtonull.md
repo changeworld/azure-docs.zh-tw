@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 StringToNull
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToNull。
+title: 在 Azure 宇宙 DB 查詢語言中字串ToNull
+description: 瞭解 Azure 宇宙 DB 中的 SQL 系統函數 StringToNull。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296434"
 ---
-# <a name="stringtonull-azure-cosmos-db"></a>StringToNull （Azure Cosmos DB）
- 傳回轉譯為 null 的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
+# <a name="stringtonull-azure-cosmos-db"></a>字串到空（Azure 宇宙資料庫）
+ 返回轉換為 null 的運算式。 如果無法轉換運算式，則返回未定義。  
   
 ## <a name="syntax"></a>語法
   
@@ -26,19 +26,19 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是要剖析為 null 運算式的字串運算式。
+   是要解析為空運算式的字串運算式。
   
 ## <a name="return-types"></a>傳回類型
   
-  傳回 null 運算式或未定義。  
+  返回空運算式或未定義。  
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示 `StringToNull` 在不同類型之間的行為方式。 
+  下面的示例顯示了不同類型`StringToNull`之間的表現。 
 
-以下是具有有效輸入的範例。
+以下是具有有效輸入的示例。
 
- 只有在 "null" 之前或之後才允許空白字元。
+ 空白僅在"空"之前或之後允許。
 
 ```sql
 SELECT 
@@ -53,9 +53,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-以下是具有無效輸入的範例。
+以下是輸入不正確示例。
 
-Null 會區分大小寫，而且必須寫成所有小寫字元，亦即 "null"。
+Null 區分大小寫，必須用所有小寫字元（即"null"）編寫。
 
 ```sql
 SELECT    
@@ -69,7 +69,7 @@ SELECT
 [{}]
 ```  
 
-傳遞的運算式會剖析為 null 運算式;這些輸入不會評估為 null 類型，因此會傳回 undefined。
+傳遞的運算式將解析為空運算式;因此，將解析為 null 運算式。這些輸入不計算為鍵入 null，因此返回未定義。
 
 ```sql
 SELECT    
@@ -87,10 +87,10 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+此系統功能不會利用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

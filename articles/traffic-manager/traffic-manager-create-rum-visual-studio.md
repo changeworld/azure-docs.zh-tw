@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Mobile Center 的實際使用者度量-Azure 流量管理員
+title: 使用視覺化工作室移動中心進行真實使用者測量 - Azure 流量管理器
 description: 將您使用 Visual Studio Mobile Center 開發的行動應用程式設定為傳送實際使用者度量給流量管理員
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 3106334e1fb3e3000cbd09e00e413b34a1b55e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939193"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 將實際使用者度量傳送給流量管理員
@@ -36,12 +36,12 @@ ms.locfileid: "76939193"
 若要使用 Azure 入口網站取得 RUM 金鑰，請使用下列程序：
 1. 從瀏覽器登入 Azure 入口網站。 如果您沒有帳戶，可以註冊免費試用一個月。
 2. 在入口網站的搜尋列中，搜尋您想要修改的流量管理員設定檔名稱，然後按一下結果中顯示的流量管理員設定檔。
-3. 在流量管理員設定檔分頁上，按一下 [設定] 底下的 [實際使用者度量]。
-4. 按一下 [產生金鑰] 以建立新的 RUM 金鑰。
+3. 在流量管理員設定檔分頁上，按一下 [設定]**** 底下的 [實際使用者度量]****。
+4. 按一下 [產生金鑰]**** 以建立新的 RUM 金鑰。
         
    ![產生實際使用者度量金鑰](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **圖 1：實際使用者度量金鑰產生**
+   **圖 1：真實使用者測量金鑰生成**
 
 5. 分頁會顯示產生的 RUM 金鑰，以及必須內嵌至 HTML 分頁的 JavaScript 程式碼片段。
  
@@ -49,7 +49,7 @@ ms.locfileid: "76939193"
 
    **圖 2：實際使用者度量金鑰和度量 JavaScript**
  
-6. 按一下 [複製] 按鈕以複製 RUM 金鑰。 
+6. 按一下 [複製]**** 按鈕以複製 RUM 金鑰。 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>步驟 2：使用 Mobile Center SDK 的 RUM 套件檢測應用程式
 

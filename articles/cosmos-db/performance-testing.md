@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76313736"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB 的效能和規模測試
@@ -37,12 +37,12 @@ ms.locfileid: "76313736"
 ## <a name="run-the-performance-testing-application"></a>執行效能測試應用程式
 若要開始使用，最快的方法就是依以下步驟所述，編譯並執行 .NET 範例。 您也可以檢閱原始程式碼，然後對自己的用戶端應用程式實作類似的組態。
 
-**步驟 1：** 從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) 或 GitHub 存放庫的分支下載專案。
+**第 1 步：** 從 Azure [Cosmos DB 效能測試示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下載專案 ，或分叉 GitHub 存儲庫。
 
-**步驟 2：** 修改 App.config 中 EndpointUrl、AuthorizationKey、CollectionThroughput 及 DocumentTemplate (選擇性) 的設定。
+**第 2 步：** 修改 App.config 中終結點 Url、授權金鑰、集合輸送量和文件範本（可選）的設置。
 
 > [!NOTE]
-> 以高輸送量佈建集合之前，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每個集合的成本。 Azure Cosmos DB 會以小時為單位，對儲存體和輸送量分別計價。 您可以藉由在測試後刪除或降低 Azure Cosmos 容器的輸送量來節省成本。
+> 以高輸送量佈建集合之前，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每個集合的成本。 Azure Cosmos DB 會以小時為單位，對儲存體和輸送量分別計價。 通過測試後刪除或降低 Azure Cosmos 容器的輸送量，可以節省成本。
 > 
 > 
 
@@ -89,7 +89,7 @@ ms.locfileid: "76313736"
     Press any key to exit...
 
 
-**步驟 4 (如有必要)：** 從工具回報的輸送量 (RU/s) 應該等於或大於佈建的集合或一組集合的輸送量。 如果情況並非如此，向上微調 DegreeOfParallelism 可協助您達到該限制。 如果來自用戶端應用程式的輸送量達持平狀態，請在其他用戶端電腦上啟動多個應用程式執行個體。 如果您需要此步驟的說明，請從[Azure 入口網站](https://portal.azure.com)提出支援票證。
+**步驟 4 (如有必要)：** 從工具回報的輸送量 (RU/s) 應該等於或大於佈建的集合或一組集合的輸送量。 如果情況並非如此，向上微調 DegreeOfParallelism 可協助您達到該限制。 如果來自用戶端應用程式的輸送量達持平狀態，請在其他用戶端電腦上啟動多個應用程式執行個體。 如果您需要對此步驟檔的説明，則從[Azure 門戶](https://portal.azure.com)中提供支援票證。
 
 讓應用程式處於執行狀態之後，您便可以嘗試不同的[索引編製原則](index-policy.md)和[一致性層級](consistency-levels.md)，以了解它們對輸送量和延遲的影響。 您也可以檢閱原始程式碼，然後對自己的測試套件或實際執行應用程式實作類似的組態。
 

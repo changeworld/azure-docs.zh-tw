@@ -1,5 +1,5 @@
 ---
-title: 連接到 MailChimp
+title: 連接到郵件
 description: 使用 MailChimp REST API 和 Azure Logic Apps 建立及管理行銷電子郵件
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: a440f702058abc25bb360111418c451d59c3ab1b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789649"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>開始使用 MailChimp 連接器
@@ -24,9 +24,9 @@ MailChimp 是一項 SaaS 服務，可讓企業管理和自動化電子郵件行�
 
 若要使用 MailChimp 建立邏輯應用程式，您必須先建立**連接**，然後提供下列屬性的詳細資料︰
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --- | --- | --- |
-| token |是 |提供 MailChimp 認證 |
+| Token |是 |提供 MailChimp 認證 |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 

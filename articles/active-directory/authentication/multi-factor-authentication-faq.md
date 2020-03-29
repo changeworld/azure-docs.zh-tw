@@ -1,5 +1,5 @@
 ---
-title: Azure 多因素驗證常見問題-Azure Active Directory
+title: Azure 多重要素驗證常見問題解答 - Azure 活動目錄
 description: 與 Azure Multi-Factor Authentication 相關的常見問題與答案。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425145"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
@@ -25,13 +25,13 @@ ms.locfileid: "75425145"
 ## <a name="general"></a>一般
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 將不再為新部署提供 MFA 伺服器。 希望使用者進行多重要素驗證的新客戶應使用基於雲的 Azure 多重要素驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動憑據。
 > 
-> 自2018年9月1日起，新客戶將無法再使用以耗用量為基礎的授權。
-> 自2018年9月1日起，可能不再建立新的驗證提供者。 現有的驗證提供者可繼續使用與更新。 多重要素驗證將繼續為 Azure AD Premium 授權中的可用功能。
+> 自 2018 年 9 月 1 日起，新客戶不再使用基於消費的許可。
+> 自 2018 年 9 月 1 日起，可能不再創建新身份檢查器提供者。 現有的驗證提供者可繼續使用與更新。 多重要素驗證將繼續為 Azure AD Premium 授權中的可用功能。
 
 > [!NOTE]
-> 下列關於 Azure 多因素驗證服務器的共用資訊僅適用于已執行 MFA Server 的使用者。
+> 下面共用的有關 Azure 多重要素驗證伺服器的資訊僅適用于已運行 MFA 伺服器的使用者。
 
 **問：Azure Multi-Factor Authentication Server 如何處理使用者資料？**
 
@@ -40,12 +40,12 @@ ms.locfileid: "75425145"
 驗證要求傳送至雲端服務時，會收集資料以用於驗證和使用方式報告。 雙步驟驗證記錄中包含的資料欄位如下：
 
 * **唯一識別碼** (使用者名稱或內部部署 Multi-Factor Authentication Server 識別碼兩者之一)
-* **名字和姓氏** (選擇性)
-* **電子郵件地址** (選擇性)
+* **名字和姓氏**（可選）
+* **電子郵件地址**（可選）
 * **電話號碼** (進行語音通話或簡訊驗證時)
 * **裝置權杖** (執行行動應用程式驗證時)
 * **驗證模式**
-* **驗證結果**
+* **身份驗證結果**
 * **Multi-Factor Authentication Server 名稱**
 * **Multi-Factor Authentication Server IP**
 * **用戶端 IP** (如果有的話)
@@ -68,7 +68,7 @@ ms.locfileid: "75425145"
    * 759731 
    * 673801
 
-Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的多重要素驗證即時交付。 為了使用者的利益，Microsoft 可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短程式碼。 除了美國和加拿大以外的國家/地區，Microsoft 不支援簡短代碼。
+Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的多重要素驗證即時交付。 為了使用者的利益，Microsoft 可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短程式碼。 除美國和加拿大外，Microsoft 不支援國家/地區的短代碼。
 
 ## <a name="billing"></a>計費
 
@@ -96,7 +96,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 在某些情況下，是的。
 
-適用于 Azure 系統管理員的多重要素驗證提供免費的 Azure MFA 功能子集，以存取 Microsoft 線上服務，包括[Azure 入口網站](https://portal.azure.com)和 Microsoft 365 系統[管理中心](https://admin.microsoft.com)。 若 Azure Active Directory 執行個體中的全域系統管理員沒有透過 MFA 授權、組合或以獨立使用作為基礎的提供者取得完整版 Azure MFA，則僅適用此供應項目。 如果您的管理員是使用免費版本，然後您購買完整版的 Azure MFA，就會自動將所有全域管理員提升為付費版本。
+Azure 管理員的多重要素驗證提供 Azure MFA 功能的子集，無需付費訪問 Microsoft 線上服務，包括[Azure 門戶](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)。 若 Azure Active Directory 執行個體中的全域系統管理員沒有透過 MFA 授權、組合或以獨立使用作為基礎的提供者取得完整版 Azure MFA，則僅適用此供應項目。 如果您的管理員是使用免費版本，然後您購買完整版的 Azure MFA，就會自動將所有全域管理員提升為付費版本。
 
 適用於 Office 365 使用者的 Multi-Factor Authentication 提供免費的 Azure MFA 功能子集，讓您可存取 Office 365 服務，包括 Exchange Online 和 SharePoint Online。 若使用者擁有指派的 Office 365 授權，但相對應的 Azure Active Directory 執行個體沒有透過 MFA 授權、組合或獨立使用型提供者取得完整版 Azure MFA 時，則適用此供應項目。
 
@@ -104,7 +104,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 如果貴組織購買的 MFA 是使用量計費型獨立服務，則您可以在建立 MFA 提供者時選擇計費模式。 您無法在 MFA 提供者建立之後變更計費模型。 
 
-如果您的 MFA 提供者未連結至 Azure AD 租用戶，或是您將新的 MFA 提供者連結至不同 Azure AD 租用戶，則使用者設定和組態選項並不會進行轉移。 此外，現有 Azure MFA 伺服器也需要使用新 MFA 提供者產生的啟用認證重新啟動。 重新啟用 MFA 伺服器以將其連結至新的 MFA 提供者，並不會影響電話和簡訊驗證，但所有使用者的行動裝置應用程式通知將會停止運作，直到他們重新啟動行動裝置應用程式。
+如果 MFA 提供程式*未*連結到 Azure AD 租戶，或者將新的 MFA 提供程式連結到其他 Azure AD 租戶，則不會傳輸使用者設置和配置選項。 此外，現有 Azure MFA 伺服器也需要使用新 MFA 提供者產生的啟用認證重新啟動。 重新啟用 MFA 伺服器以將其連結至新的 MFA 提供者，並不會影響電話和簡訊驗證，但所有使用者的行動裝置應用程式通知將會停止運作，直到他們重新啟動行動裝置應用程式。
 
 於[開始使用 Azure Multi-Factor Auth 提供者](concept-mfa-authprovider.md)中深入了解 MFA 提供者。
 
@@ -114,7 +114,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 如果您的目錄有*根據使用者計費*的 Azure Multi-Factor Authentication 提供者，您可以新增 MFA 授權。 擁有授權的使用者不會根據每位使用者使用量計費。 沒有授權的使用者仍可透過 MFA 提供者啟用 MFA。 如果您購買授權，並將其指派給所有設定使用 Multi-Factor Authentication 的使用者，您就可以刪除 Azure Multi-Factor Authentication 提供者。 如果您之後會有多於授權的使用者，您隨時都可以建立其他根據使用者計費的 MFA 提供者。
 
-如果您的目錄有依驗證次數計費的 Azure Multi-Factor Authentication 提供者，只要您的 MFA 提供者與訂用帳戶連結，就一律要為每次驗證支付費用。 您可以將 MFA 授權指派給使用者，但您仍需要為每次雙步驟驗證要求支付費用，無論發出此要求的人是否擁有指派的 MFA 授權。
+如果您的目錄有依驗證次數計費** 的 Azure Multi-Factor Authentication 提供者，只要您的 MFA 提供者與訂用帳戶連結，就一律要為每次驗證支付費用。 您可以將 MFA 授權指派給使用者，但您仍需要為每次雙步驟驗證要求支付費用，無論發出此要求的人是否擁有指派的 MFA 授權。
 
 **問：我的組織是否必須使用和同步處理身分識別才能使用 Azure Multi-Factor Authentication？**
 
@@ -124,7 +124,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 ## <a name="manage-and-support-user-accounts"></a>管理和支援使用者帳戶
 
-**問：如果我的使用者在電話上未收到回應，該怎麼辦？**
+**問：如果使用者在手機上沒有收到回應，我應該告訴使用者怎麼做？**
 
 讓使用者在 5 分鐘內最多嘗試 5 次進行電話通話或簡訊的驗證。 Microsoft 會使用多個提供者提供電話及簡訊。 如果這個作法無效，請向 Microsoft 提出支援案例，進行後續疑難排解。
 
@@ -149,11 +149,11 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 > [!NOTE]
 > 適用於 Office 2013 用戶端的新式驗證
 >
-> 只有不支援最新驗證方式的應用程式需要應用程式密碼。 Office 2013 用戶端支援最新的驗證通訊協定，但需要設定。 現在，執行 Office 2013 的2015年3月或更新版本的任何客戶都可以使用新式驗證。 如需詳細資訊，請參閱 blog 文章[更新的 Office 365 新式驗證](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
+> 只有不支援最新驗證方式的應用程式需要應用程式密碼。 Office 2013 用戶端支援最新的驗證通訊協定，但需要設定。 現在，運行 Office 2013 3 月或更高版本更新的任何客戶都可以使用現代身份驗證。 有關詳細資訊，請參閱博客文章更新 Office [365 現代身份驗證](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
 
-**問：我的使用者說，有時不會收到文字訊息或驗證超時。**
+**問：我的使用者說，有時他們沒有收到短信或驗證超時。**
 
-不保證 SMS 訊息的傳遞，因為有可能會影響服務可靠性的無法控制因素。 這些因素包括目的地國家/地區、行動電話貨運公司和信號強度。
+SMS 消息的傳遞不保證，因為有一些無法控制的因素可能會影響服務的可靠性。 這些因素包括目的地國家/地區、行動電話運營商和信號強度。
 
 如果您的使用者時常無法收到簡訊，請告訴他們改用行動裝置應用程式或撥打電話的方式。 行動應用程式可以透過行動數據和 Wi-Fi 連接接收通知。 此外，即使裝置收不到訊號，行動應用程式可以產生驗證碼。 Microsoft 驗證器應用程式適用於 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
@@ -212,9 +212,9 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 請告訴他們遵循這個從行動應用程式移除其帳戶的程序，然後重新新增帳戶︰
 
 1. 移至 [您的 Azure 入口網站設定檔](https://account.activedirectory.windowsazure.com/profile/) ，並使用您的組織帳戶登入。
-2. 選取 [其他安全性驗證]。
+2. 選取 [其他安全性驗證]****。
 3. 將現有帳戶從行動應用程式移除。
-4. 按一下 [設定]，然後依照指示來重新設定行動應用程式。
+4. 按一下 [設定] ****，然後依照指示來重新設定行動應用程式。
 
 **問：如果使用者在登入非瀏覽器應用程式時看到 0x800434D4L 錯誤訊息，應該怎麼辦？**
 

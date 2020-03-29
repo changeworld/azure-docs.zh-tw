@@ -8,14 +8,14 @@ ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924699"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>透過 macOS 的 SMB 掛接 Azure 檔案共用
-[Azure 檔案](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 您可以使用 macOS El Capitan 10.11+ 所推出的業界標準 SMB 3 通訊協定來掛接 Azure 檔案共用。 本文說明兩種在 macOS 上掛接 Azure 檔案共用的不同方式：使用 Finder UI 和使用終端機。
+[Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 您可以使用 macOS El Capitan 10.11+ 所推出的業界標準 SMB 3 通訊協定來掛接 Azure 檔案共用。 本文說明兩種在 macOS 上掛接 Azure 檔案共用的不同方式：使用 Finder UI 和使用終端機。
 
 > [!Note]  
 > 在透過 SMB 掛接 Azure 檔案共用之前，建議您停用 SMB 封包簽章。 不這樣做可能會導致從 macOS 存取 Azure 檔案共用時效能不佳。 SMB 連線將會加密，因此這不會影響您連線的安全性。 從終端機中，下列命令會停用 SMB 封包簽章，如同[停用 SMB 封包簽章的 Apple 支援文章](https://support.apple.com/HT205926)所描述：  
@@ -27,9 +27,9 @@ ms.locfileid: "74924699"
 >    ```
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>在 macOS 上掛接 Azure 檔案共用的必要條件
-* **儲存體帳戶名稱**：若要掛接 Azure 檔案共用，您需要儲存體帳戶的名稱。
+* **存儲帳戶名稱**：要裝載 Azure 檔共用，您需要存儲帳戶的名稱。
 
-* **儲存體帳戶金鑰**：若要掛接 Azure 檔案共用，您需要主要 (或次要) 金鑰。 掛接目前不支援 SAS 金鑰。
+* **存儲帳戶金鑰**：要裝載 Azure 檔共用，需要主（或輔助）存儲金鑰。 掛接目前不支援 SAS 金鑰。
 
 * **請確定已開啟連接埠 445**SMB 透過 TCP 通訊埠 445 進行通訊。 在用戶端電腦 (Mac) 中，請檢查並確定您的防火牆不會封鎖 TCP 通訊埠 445。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74924699"
 1. **開啟搜尋工具**：搜尋工具在 macOS 中為預設開啟，但是您可以按一下 Dock 上的 [macOS 臉部圖示] 確保它是目前選取的應用程式：  
     ![macOS 臉部圖示](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **從 [執行] 功能表選取 [連線到伺服器**]：使用必要條件的 UNC 路徑，將開頭的雙反斜線（`\\`）轉換成 `smb://`，並將所有其他反斜線（`\`）轉送成斜線（`/`）。 您的連結應看起來如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **從"轉到"功能表中選擇"連接到伺服器"：** 使用先決條件中的 UNC 路徑，將開頭的雙反斜線`\\`（）`smb://`和所有其他反斜線 （`\`） 轉換為轉發斜杠 （`/`）。 您的連結應看起來如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **提示您輸入使用者名稱和密碼時，使用儲存體帳戶名稱和儲存體帳戶金鑰**：當您在 [連線至伺服器] 對話方塊中按一下 [連線] 時，系統會提示您的使用者名稱和密碼 (這會使用您的 macOS 使用者名稱自動填入)。 您可以選擇將儲存體帳戶名稱/儲存體帳戶金鑰置於您的 macOS 金鑰鏈。
 

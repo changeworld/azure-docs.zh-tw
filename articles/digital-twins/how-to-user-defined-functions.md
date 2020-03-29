@@ -1,5 +1,5 @@
 ---
-title: 如何建立使用者定義函數-在 Azure 數位 Twins 中 |Microsoft Docs
+title: 如何創建使用者定義的函數 - 在 Azure 數位孿生 |微軟文檔
 description: 如何在 Azure Digital Twins 中建立使用者定義函式、比對器和角色指派。
 ms.author: alinast
 author: alinamstanciu
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276926"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure Digital Twins 中建立使用者定義函式
@@ -142,7 +142,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-**telemetry** 參數會公開 **SensorId** 和 **Message** 屬性 (對應到感應器所傳送的訊息)。 ExecutionContext 參數會公開下列屬性：
+**telemetry** 參數會公開 **SensorId** 和 **Message** 屬性 (對應到感應器所傳送的訊息)。 ExecutionContext**** 參數會公開下列屬性：
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -193,21 +193,21 @@ function process(telemetry, executionContext) {
 }
 ```
 
-如需更複雜的使用者定義函式程式碼範例，請閱讀[佔用量快速入門](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)。
+有關更複雜的使用者定義的函數代碼示例，請閱讀[佔用快速入門](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)。
 
 ## <a name="create-a-role-assignment"></a>建立角色指派
 
-建立角色指派，讓使用者定義函式可在其下執行。 如果為使用者定義的函式沒有角色指派存在，則不會擁有適當的權限可與管理 API 互動，或者不會擁有可對圖表物件執行動作的存取權。 使用者定義函式可執行的動作是透過 Azure Digital Twins 管理 API 內的角色型存取控制所指定與定義的。 例如，您可以藉由指定特定角色或特定存取控制路徑來限制使用者定義函式的範圍。 如需詳細資訊，請參閱以[角色為基礎的存取控制](./security-role-based-access-control.md)檔。
+建立角色指派，讓使用者定義函式可在其下執行。 如果為使用者定義的函式沒有角色指派存在，則不會擁有適當的權限可與管理 API 互動，或者不會擁有可對圖表物件執行動作的存取權。 使用者定義函式可執行的動作是透過 Azure Digital Twins 管理 API 內的角色型存取控制所指定與定義的。 例如，您可以藉由指定特定角色或特定存取控制路徑來限制使用者定義函式的範圍。 有關詳細資訊，請閱讀[基於角色的存取控制](./security-role-based-access-control.md)文檔。
 
 1. 針對所有角色[查詢系統 API](./security-create-manage-role-assignments.md#retrieve-all-roles)，以取得您想要指派給使用者定義函式的角色識別碼。 提出已驗證的 HTTP GET 要求來達成此目的：
 
     ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   保留所需的角色識別碼。 它將會以下方的 JSON 主體屬性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) 來傳遞。
+   保留所需的角色識別碼。 它將作為下面的 JSON 正文屬性**角色 Id** `YOUR_DESIRED_ROLE_IDENTIFIER`傳遞。
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) 將會是稍早建立的使用者定義函式識別碼。
-1. 藉由使用 `fullpath` 查詢您的空間來尋找 **path** (`YOUR_ACCESS_CONTROL_PATH`) 的值。
+1. **objectId** `YOUR_USER_DEFINED_FUNCTION_ID`（ ） 將是前面創建的使用者定義的函數 ID。
+1. 通過查詢空格來**path**查找路徑`YOUR_ACCESS_CONTROL_PATH`（ ） 的值`fullpath`。
 1. 複製傳回的 `spacePaths` 值。 您將會在下方用到該值。 提出已驗證的 HTTP GET 要求：
 
     ```URL
@@ -238,7 +238,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 所需角色的識別碼 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 您所要使用的使用者定義函式其識別碼 |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定使用者定義函數類型的識別碼（`UserDefinedFunctionId`） |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定使用者定義的函數類型的 ID （`UserDefinedFunctionId`） |
     | YOUR_ACCESS_CONTROL_PATH | 存取控制路徑 |
 
 >[!TIP]
@@ -246,7 +246,7 @@ function process(telemetry, executionContext) {
 
 ## <a name="send-telemetry-to-be-processed"></a>傳送要處理的遙測
 
-空間智慧圖形中所定義的感應器會傳送遙測。 接著，遙測會觸發已上傳的使用者定義函式執行。 資料處理器取用遙測資料。 然後，系統會針對使用者定義函數的調用建立執行計畫。
+空間智慧圖形中所定義的感應器會傳送遙測。 接著，遙測會觸發已上傳的使用者定義函式執行。 資料處理器取用遙測資料。 然後，為調用使用者定義的函數創建執行計畫。
 
 1. 針對產生讀數的感應器擷取比對器。
 1. 根據評估成功的比對器，擷取相關聯的使用者定義函式。

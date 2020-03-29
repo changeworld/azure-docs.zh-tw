@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 的 HTTP 至 HTTPS 重新導向
+title: 使用 CLI 向 HTTPS 重定向
 titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure CLI 建立應用程式閘道，並新增 SSL 終止的憑證。
 services: application-gateway
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246866"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
 您可以使用 Azure CLI 來建立包含 SSL 終止憑證的[應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立自我簽署憑證
@@ -28,11 +28,11 @@ ms.locfileid: "78246866"
 > * 新增接聽程式和重新導向規則
 > * 建立包含預設後端集區的虛擬機器擴展集
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
@@ -48,13 +48,13 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.k
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-輸入憑證的密碼。 在此範例中會使用 Azure123456! 。
+輸入憑證的密碼。 在此範例中會使用 Azure123456!** 。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
+下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet** 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -84,9 +84,9 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 
+您可以使用[az 網路應用程式閘道創建](/cli/azure/network/application-gateway#az-network-application-gateway-create)來創建名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 
 
-應用程式閘道會指派給您先前建立的 myAGSubnet 和 myAGPublicIPAddress。 在此範例中，您會在建立應用程式閘道時讓您建立的憑證與其密碼產生關聯。 
+應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 在此範例中，您會在建立應用程式閘道時讓您建立的憑證與其密碼產生關聯。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -109,11 +109,11 @@ az network application-gateway create \
 
  可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
-- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
-- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
+- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
+- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
+- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
 
 ## <a name="add-a-listener-and-redirection-rule"></a>新增接聽程式和重新導向規則
 
@@ -173,7 +173,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立一個名為 *myvmss* 的虛擬機器擴展集，以在應用程式閘道中提供後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet 和 appGatewayBackendPool 相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此範例中，您會建立一個名為 *myvmss* 的虛擬機器擴展集，以在應用程式閘道中提供後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet** 和 appGatewayBackendPool** 相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
 
 ```azurecli-interactive
 az vmss create \
@@ -218,13 +218,13 @@ az network public-ip show \
 
 ![安全警告](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-若要在使用自我簽署憑證時接受安全性警告，請依序按一下 [詳細資料] 與 [繼續瀏覽網頁]。 接著會顯示受保護的 NGINX 網站，如下列範例所示：
+若要在使用自我簽署憑證時接受安全性警告，請依序按一下 [詳細資料]**** 與 [繼續瀏覽網頁]****。 接著會顯示受保護的 NGINX 網站，如下列範例所示：
 
 ![在應用程式閘道中測試基底 URL](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 > * 建立自我簽署憑證

@@ -1,6 +1,6 @@
 ---
-title: 將應用程式從 BizTalk 服務遷移至 Azure Logic Apps
-description: 如何將您的應用程式和解決方案從 Microsoft Azure BizTalk 服務（MABS）移至 Azure Logic Apps
+title: 將應用從 BizTalk 服務遷移到 Azure 邏輯應用
+description: 如何將應用和解決方案從 Microsoft Azure BizTalk 服務 （MABS） 移動到 Azure 邏輯應用
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -9,13 +9,13 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905430"
 ---
-# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將應用和解決方案從 BizTalk 服務遷移到 Azure 邏輯應用
 
 Microsoft Azure BizTalk 服務 (MABS) 即將停用。 若要將 MABS 整合解決方案移至 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)，請遵循本文中的指引。 
 
@@ -35,7 +35,7 @@ BizTalk 服務包含兩個子服務：
 | BizTalk 服務   | Logic Apps            | 目的                      |
 | ------------------ | --------------------- | ---------------------------- |
 | 連接器          | 連接器             | 傳送及接收資料   |
-| 橋接器             | Logic 應用程式             | 管線處理器           |
+| 橋接器             | 邏輯應用程式             | 管線處理器           |
 | 驗證階段     | XML 驗證動作 | 驗證 XML 文件的結構描述 | 
 | 擴充階段       | 資料權杖           | 將屬性升級為訊息或針對路由決策升級屬性 |
 | 轉換階段    | 轉換動作      | 將 XML 訊息從一種格式轉換成另一種格式 |
@@ -51,7 +51,7 @@ BizTalk 服務有數種構件。
 
 ## <a name="connectors"></a>連接器
 
-BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HTTP 要求/回應互動的雙向橋接器。 Logic Apps 使用相同的術語，而且有數百個連接器可透過連接到各種不同的技術和服務來提供相同的用途。 舉例來說，連接器可用於雲端 SaaS 和 PaaS 服務 (例如 OneDrive、Office365、Dynamics CRM 等等)，並可透過內部部署資料閘道 (其取代了 BizTalk 服務的 BizTalk 配接器服務) 在內部部署系統中使用。 BizTalk 服務中的來源限制在 FTP、SFTP 和服務匯流排佇列或主題訂閱。
+BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HTTP 要求/回應互動的雙向橋接器。 邏輯應用使用相同的術語，並且具有數百個連接器，通過連接到各種技術和服務，這些連接器具有相同的目的。 舉例來說，連接器可用於雲端 SaaS 和 PaaS 服務 (例如 OneDrive、Office365、Dynamics CRM 等等)，並可透過內部部署資料閘道 (其取代了 BizTalk 服務的 BizTalk 配接器服務) 在內部部署系統中使用。 BizTalk 服務中的來源限制在 FTP、SFTP 和服務匯流排佇列或主題訂閱。
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
@@ -75,7 +75,7 @@ BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HT
 
 ### <a name="message-processing-decoding-and-encoding"></a>訊息處理、解碼和編碼
 
-在 BizTalk 服務中，您可以接收不同類型的 XML 訊息，並判斷所收到訊息的結構描述是否相符。 這項工作會在接收處理管線的「訊息類型」階段中執行。 然後，解碼階段會使用偵測到的訊息類型，並搭配提供的結構描述來將訊息解碼。 如果結構描述是一般檔案結構描述，這個階段會將傳入的一般檔案轉換成 XML。 
+在 BizTalk 服務中，您可以接收不同類型的 XML 訊息，並判斷所收到訊息的結構描述是否相符。 這項工作會在接收處理管線的「訊息類型」** 階段中執行。 然後，解碼階段會使用偵測到的訊息類型，並搭配提供的結構描述來將訊息解碼。 如果結構描述是一般檔案結構描述，這個階段會將傳入的一般檔案轉換成 XML。 
 
 Logic Apps 提供類似的功能。 您可以使用不同的連接器觸發程序 (檔案系統、FTP、HTTP 等)，透過不同的通訊協定來接收一般檔案，然後使用[一般檔案解碼](../logic-apps/logic-apps-enterprise-integration-flatfile.md)動作將傳入資料轉換成 XML。 您可以將現有的一般檔案結構描述直接移至 Logic Apps，而不需要進行任何變更，再將結構描述上傳至您的整合帳戶。
 
@@ -93,7 +93,7 @@ BizTalk 服務會做出由哪一個端點或連接器來傳送傳入訊息或資
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-在 BizTalk 服務中，如果只有兩個選項，使用「條件」會是在 BizTalk 服務中轉換路由篩選的最佳方法。 如果有兩個以上的選項，則使用 **switch**。
+在 BizTalk 服務中，如果只有兩個選項，使用「條件」** 會是在 BizTalk 服務中轉換路由篩選的最佳方法。 如果有兩個以上的選項，則使用 **switch**。
 
 Logic Apps 提供複雜的邏輯功能，以及具有[條件式陳述式](../logic-apps/logic-apps-control-flow-conditional-statement.md)和[參數陳述式](../logic-apps/logic-apps-control-flow-switch-statement.md)的進階控制流程和路由。
 
@@ -125,7 +125,7 @@ BizTalk 服務和 Logic Apps 包含 EDI 和 B2B 處理，並支援 AS2 (Applicab
 
 ## <a name="manage-and-monitor"></a>管理和監視
 
-在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 Logic Apps 提供更豐富的追蹤和監視功能來[監視 Azure 入口網站中的邏輯應用程式](../logic-apps/monitor-logic-apps.md)，並包含行動應用程式，可讓您在移動時留意事物。
+在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 邏輯應用提供了更豐富的跟蹤和監視功能，用於[監視 Azure 門戶中的邏輯應用](../logic-apps/monitor-logic-apps.md)，並包括一個移動應用程式，用於在移動時密切關注事物。
 
 ## <a name="high-availability"></a>高可用性
 

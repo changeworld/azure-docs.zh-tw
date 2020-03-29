@@ -7,27 +7,27 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75397460"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用字串
 
 
 > [!NOTE]
-> 完成本教學課程之前，您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)和[開始使用 Azure 監視器記錄查詢](get-started-queries.md)。
+> 在完成本教程之前，應完成[Azure 監視器日誌分析](get-started-portal.md)入門以及[Azure 監視器日誌查詢入門](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 此文章說明如何編輯、比較、搜尋字串，以及如何在字串上執行各種其他作業。
 
-字串中的每個字元都有索引編號 (根據其位置)。 第一個字元位於索引0，下一個字元是1，依此類推。 不同的字串函式都會使用索引編號，如以下各節所示。 在下列範例中，許多範例都使用 **print** 命令來示範字串，而未使用特定資料來源。
+字串中的每個字元都有索引編號 (根據其位置)。 第一個字元位於索引 0，下一個字元為 1，等等。 不同的字串函式都會使用索引編號，如以下各節所示。 在下列範例中，許多範例都使用 **print** 命令來示範字串，而未使用特定資料來源。
 
 
 ## <a name="strings-and-escaping-them"></a>字串與字串逸出
-字串值是被單引號字元或雙引號字元括住。 反斜線（\\）用來將字元轉義到後面的字元，例如 \t 代表 tab、\n 代表分行符號，以及 \" 引號字元本身。
+字串值是被單引號字元或雙引號字元括住。 反斜線\\（ ） 用於將字元轉義到它之後的字元，例如 \t 表示選項卡、分行符號\"的 \n 和引號字元本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -46,11 +46,11 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字串比較
 
-運算子       |說明                         |區分大小寫|範例 (結果為 `true`)
+運算子       |描述                         |區分大小寫|範例 (結果為 `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |等於                              |是           |`"aBc" == "aBc"`
+`==`           |Equals                              |是           |`"aBc" == "aBc"`
 `!=`           |不等於                          |是           |`"abc" != "ABC"`
-`=~`           |等於                              |否            |`"abc" =~ "ABC"`
+`=~`           |Equals                              |否            |`"abc" =~ "ABC"`
 `!~`           |不等於                          |否            |`"aBc" !~ "xyz"`
 `has`          |右側是左側中的完整詞彙 |否|`"North America" has "america"`
 `!has`         |右側不是左側中的完整詞彙       |否            |`"North America" !has "amer"` 
@@ -93,7 +93,7 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>引數：
 - `text` - 輸入字串 
 - `search` - 要比對內部文字的純文字或規則運算式。
-- `kind` - _normal_ | _regex_ (預設值：normal)。
+- `kind` - _正常_ | _正則運算式_（預設值：正常）。
 
 ### <a name="returns"></a>傳回值
 
@@ -122,7 +122,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>extract
 
-從給定字串取得規則運算式的相符項目。 也可以選擇性地將已解壓縮的子字串轉換成指定的類型。
+從給定字串取得規則運算式的相符項目。 可選也可以將提取的子字串轉換為指定的類型。
 
 ### <a name="syntax"></a>語法
 

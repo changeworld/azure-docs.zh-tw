@@ -1,5 +1,5 @@
 ---
-title: 具有 Service Fabric 網格的 Service Fabric 可靠磁片區
+title: 使用維修結構網格維修結構可靠的磁片卷
 description: 了解如何使用 Azure CLI 在容器內裝載以 Service Fabric 可靠磁碟為基礎的磁碟區，以在 Azure Service Fabric Mesh 應用程式中儲存狀態。
 author: ashishnegi
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497961"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以 Service Fabric 可靠磁碟為基礎的高可用性磁碟區 
@@ -23,7 +23,7 @@ Service Fabric 可靠磁碟會提供磁碟區來用於本機讀取，並在 Serv
 
 `counterService` 會定期從檔案讀取計數器的值、增加該值並將其寫回檔案。 儲存檔案的資料夾會裝載在由 Service Fabric 可靠磁碟支援的磁碟區中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此工作。 若要依照本文的指示使用 Azure CLI，請確認 `az --version` 至少傳回 `azure-cli (2.0.43)`。  請依照下列[指示](service-fabric-mesh-howto-setup-cli.md)安裝 (或更新) Azure Service Fabric Mesh CLI 擴充功能模組。
 

@@ -1,15 +1,15 @@
 ---
-title: 設定 Service Fabric 應用程式的升級
+title: 佈建服務交換矩陣應用程式的升級
 description: 了解如何使用 Microsoft Visual Studio 來設定升級 Service Fabric 應用程式的設定。
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
 ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464072"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中設定 Service Fabric 應用程式的升級
@@ -22,7 +22,7 @@ Azure Service Fabric 的 Visual Studio 工具提供發佈至本機或遠端叢�
 ## <a name="parameters-needed-to-upgrade"></a>升級所需的參數
 您可以選擇的部署類型有兩種：一般或升級。 一般部署會將叢集上所有先前的部署資訊和資料都清除，而升級部署則會將其保留。 當您在 Visual Studio 中升級 Service Fabric 應用程式時，您需要提供應用程式升級參數和健康情況檢查原則。 應用程式升級參數可協助控制升級，而健康狀態檢查原則則可判斷升級是否成功。 如需詳細資訊，請參閱 [Service Fabric 應用程式升級：升級參數](service-fabric-application-upgrade-parameters.md) 。
 
-有三種升級模式：Monitored、UnmonitoredAuto 及 UnmonitoredManual。
+有三種升級模式：Monitored**、UnmonitoredAuto** 及 UnmonitoredManual**。
 
 * Monitored 升級會自動進行升級和應用程式健康狀態檢查。
 * UnmonitoredAuto 升級會自動進行升級，但會略過應用程式健康狀態檢查。
@@ -31,10 +31,10 @@ Azure Service Fabric 的 Visual Studio 工具提供發佈至本機或遠端叢�
 每一種升級模式都需要一組不同的參數。 若要深入了解可用的升級選項，請參閱 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 。
 
 ## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中升級 Service Fabric 應用程式
-如果您要使用 Visual Studio Service Fabric 工具升級 Service Fabric 應用程式，則您可以核取 [升級應用程式] 核取方塊，將發佈程序指定為升級而非一般部署。
+如果您要使用 Visual Studio Service Fabric 工具升級 Service Fabric 應用程式，則您可以核取 [升級應用程式] **** 核取方塊，將發佈程序指定為升級而非一般部署。
 
 ### <a name="to-configure-the-upgrade-parameters"></a>設定升級參數
-1. 按一下核取方塊旁邊的 [設定] 按鈕。 將會顯示 [編輯升級參數] 對話方塊。 [編輯升級參數] 對話方塊支援 Monitored、UnmonitoredAuto 及 UnmonitoredManual 升級模式。
+1. 按一下核取方塊旁邊的 [設定] **** 按鈕。 將會顯示 [編輯升級參數] **** 對話方塊。 [編輯升級參數] **** 對話方塊支援 Monitored、UnmonitoredAuto 及 UnmonitoredManual 升級模式。
 2. 選取您想要使用的升級模式，然後填寫參數方格。
 
     每個參數都有預設值。 選用參數 *DefaultServiceTypeHealthPolicy* 會接受雜湊表輸入。 以下是 *DefaultServiceTypeHealthPolicy*的雜湊表輸入格式範例：

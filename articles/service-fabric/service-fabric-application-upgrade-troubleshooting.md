@@ -1,16 +1,16 @@
 ---
-title: 疑難排解應用程式升級
+title: 故障排除應用程式升級
 description: 本文涵蓋升級 Service Fabric 應用程式的一些常見問題，以及解決方式。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377917"
 ---
-# <a name="troubleshoot-application-upgrades"></a>對應用程式升級進行疑難排解
+# <a name="troubleshoot-application-upgrades"></a>疑難排解應用程式升級
 
 本文涵蓋升級 Azure Service Fabric 應用程式的一些常見問題，以及解決方式。
 
@@ -74,13 +74,13 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-在此範例中，升級網域 MYUD1 的升級失敗，且兩個資料分割 (744c8d9f-1d26-417e-a60e-cd48f5c098f0 和 4b43f4d8-b26b-424e-9307-7a7a62e79750) 已停滯。 資料分割因為執行階段無法將主要複本 (WaitForPrimaryPlacement) 放在在目標節點 Node1 和 Node4 上而停滯。
+在此範例中，升級網域 MYUD1** 的升級失敗，且兩個資料分割 (744c8d9f-1d26-417e-a60e-cd48f5c098f0** 和 4b43f4d8-b26b-424e-9307-7a7a62e79750**) 已停滯。 資料分割因為執行階段無法將主要複本 (WaitForPrimaryPlacement**) 放在在目標節點 Node1** 和 Node4** 上而停滯。
 
-**Get-ServiceFabricNode** 命令可以用來確認這兩個節點都在升級網域 *MYUD1*中。 UpgradePhase 指出 PostUpgradeSafetyCheck，表示這些安全檢查是在升級網域中的所有節點完成升級之後發生。 這些資訊全都指向應用程式程式碼新版本的潛在問題。 最常見的問題是開啟或升級至主要程式碼路徑的服務錯誤。
+**Get-ServiceFabricNode** 命令可以用來確認這兩個節點都在升級網域 *MYUD1*中。 UpgradePhase** 指出 PostUpgradeSafetyCheck**，表示這些安全檢查是在升級網域中的所有節點完成升級之後發生。 這些資訊全都指向應用程式程式碼新版本的潛在問題。 最常見的問題是開啟或升級至主要程式碼路徑的服務錯誤。
 
-PreUpgradeSafetyCheck 的 UpgradePhase 表示在執行升級之前準備升級網域有問題。 此案例中最常見的問題是關閉主要程式碼路徑或從其中降級的服務錯誤。
+PreUpgradeSafetyCheck** 的 UpgradePhase** 表示在執行升級之前準備升級網域有問題。 此案例中最常見的問題是關閉主要程式碼路徑或從其中降級的服務錯誤。
 
-目前的 UpgradeState 是 RollingBackCompleted，因此原始升級必須以回復 FailureAction 執行，這樣會自動在失敗時回復升級。 如果原始升級以手動 **FailureAction**執行，則升級會處於暫止狀態，以允許應用程式的即時偵錯。
+目前的 UpgradeState**** 是 RollingBackCompleted**，因此原始升級必須以回復 FailureAction**** 執行，這樣會自動在失敗時回復升級。 如果原始升級以手動 **FailureAction**執行，則升級會處於暫止狀態，以允許應用程式的即時偵錯。
 
 在罕見的情況下，如果整體升級逾時，就像系統完成目前升級網域的所有工作，**UpgradeDomainProgressAtFailure** 欄位可能是空的。 如果發生這種情況，請嘗試增加 **UpgradeTimeout** 和 **UpgradeDomainTimeout** 升級參數值，然後重試升級。
 
@@ -142,7 +142,7 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-調查健康狀態檢查失敗時，首先需要了解 Service Fabric 健康狀態模型。 但是即使沒有這類深入了解，我們可以看到兩個服務的健康狀態不良：fabric:/DemoApp/Svc3 和 fabric:/DemoApp/Svc2，以及錯誤健康狀態報告 (在本例中為"InjectedFault")。 在此範例中，4 個服務中有 2 個服務健康狀態不良，低於預設目標 0% 健康狀態不良 (*MaxPercentUnhealthyServices*)。
+調查健康狀態檢查失敗時，首先需要了解 Service Fabric 健康狀態模型。 但是即使沒有這類深入了解，我們可以看到兩個服務的健康狀態不良：fabric:/DemoApp/Svc3** 和 fabric:/DemoApp/Svc2**，以及錯誤健康狀態報告 (在本例中為"InjectedFault")。 在此範例中，4 個服務中有 2 個服務健康狀態不良，低於預設目標 0% 健康狀態不良 (*MaxPercentUnhealthyServices*)。
 
 升級是因啟動升級時手動指定 **FailureAction** 失敗而暫止。 此模式可讓我們在採取任何進一步動作之前，在失敗的狀態下調查即時系統。
 
@@ -156,7 +156,7 @@ ServiceTypeHealthPolicyMap              :
 
 **Start-ServiceFabricApplicationRollback** 命令可以在任何時候用來啟動回復應用程式。 一旦命令成功傳回，回復要求就已在系統中註冊並隨即啟動。
 
-**Resume-ServiceFabricApplicationUpgrade** 命令可以用來以手動方式繼續升級的其餘部分，一次一個升級網域。 在此模式中，系統只會執行安全檢查。 不會執行其他健康狀態檢查。 此命令只能在 UpgradeState 顯示 RollingForwardPending 時使用，表示目前升級網域已完成升級，但是下一個升級網域尚未啟動 (擱置中)。
+**Resume-ServiceFabricApplicationUpgrade** 命令可以用來以手動方式繼續升級的其餘部分，一次一個升級網域。 在此模式中，系統只會執行安全檢查。 不會執行其他健康狀態檢查。 此命令只能在 UpgradeState** 顯示 RollingForwardPending** 時使用，表示目前升級網域已完成升級，但是下一個升級網域尚未啟動 (擱置中)。
 
 **Update-ServiceFabricApplicationUpgrade** 命令可以用來繼續監視的升級，並且執行安全和健康狀態檢查。
 
@@ -190,7 +190,7 @@ ServiceTypeHealthPolicyMap              :
 
 可能的原因 1：
 
-Service Fabric 將所有百分比轉譯為健康狀態評估的實體 (例如複本、資料分割和服務) 實際數目，並且一律無條件進位到實體整數。 例如，如果最大值 MaxPercentUnhealthyReplicasPerPartition 是 21%，而且有 5 個複本，則 Service Fabric 允許最多 2 個狀況不良的複本 (亦即 `Math.Ceiling (5*0.21)`)。 因此，健康狀態原則應該據此設定。
+Service Fabric 將所有百分比轉譯為健康狀態評估的實體 (例如複本、資料分割和服務) 實際數目，並且一律無條件進位到實體整數。 例如，如果最大值 MaxPercentUnhealthyReplicasPerPartition** 是 21%，而且有 5 個複本，則 Service Fabric 允許最多 2 個狀況不良的複本 (亦即 `Math.Ceiling (5*0.21)`)。 因此，健康狀態原則應該據此設定。
 
 可能的原因 2：
 
@@ -204,7 +204,7 @@ Service Fabric 將所有百分比轉譯為健康狀態評估的實體 (例如複
 
 ### <a name="incorrect-time-outs-are-specified"></a>指定了不正確的逾時
 
-您可能想要知道當逾時設定不一致時會發生什麼情況。 例如，您的 UpgradeTimeout 小於 UpgradeDomainTimeout。 答案是會傳回錯誤。 如果 UpgradeDomainTimeout 小於 HealthCheckWaitDuration 和 HealthCheckRetryTimeout 的總和，或如果 UpgradeDomainTimeout 小於 HealthCheckWaitDuration 和 HealthCheckStableDuration 的總和，則會傳回錯誤。
+您可能想要知道當逾時設定不一致時會發生什麼情況。 例如，您的 UpgradeTimeout** 小於 UpgradeDomainTimeout**。 答案是會傳回錯誤。 如果 UpgradeDomainTimeout** 小於 HealthCheckWaitDuration** 和 HealthCheckRetryTimeout** 的總和，或如果 UpgradeDomainTimeout** 小於 HealthCheckWaitDuration** 和 HealthCheckStableDuration** 的總和，則會傳回錯誤。
 
 ### <a name="my-upgrades-are-taking-too-long"></a>我的升級耗費太多時間
 
@@ -212,20 +212,20 @@ Service Fabric 將所有百分比轉譯為健康狀態評估的實體 (例如複
 
 以下是逾時與升級時間之間的互動方式快速複習：
 
-升級網域的升級完成時間無法快於 HealthCheckWaitDuration +  HealthCheckStableDuration。
+升級域的升級完成速度不能快于*運行狀況檢查等待持續時間* + *。*
 
-升級失敗發生時間無法快於 HealthCheckWaitDuration +  HealthCheckRetryTimeout。
+升級失敗不能比*運行狀況檢查等待持續時間* + *運行狀況檢查重試超時更快*。
 
-升級網域的升級時間受到 *UpgradeDomainTimeout*限制。  如果 HealthCheckRetryTimeout 和 HealthCheckStableDuration 兩者都為非零且應用程式的健康狀態會保持來回切換，則升級最終會在 UpgradeDomainTimeout 逾時。 *UpgradeDomainTimeout* 就會開始倒數計時。
+升級網域的升級時間受到 *UpgradeDomainTimeout*限制。  如果 HealthCheckRetryTimeout** 和 HealthCheckStableDuration** 兩者都為非零且應用程式的健康狀態會保持來回切換，則升級最終會在 UpgradeDomainTimeout** 逾時。 *UpgradeDomainTimeout* 就會開始倒數計時。
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 將引導您完成使用 Visual Studio 進行應用程式升級的步驟。
+[使用 Visual Studio 升級應用程式](service-fabric-application-upgrade-tutorial.md)會引導您使用 Visual Studio 進行應用程式升級。
 
-[使用 PowerShell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 將引導您完成使用 PowerShell 進行應用程式升級的步驟。
+[使用 Powershell 升級應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會引導您使用 PowerShell 進行應用程式升級。
 
 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
 
-了解如何使用 [資料序列化](service-fabric-application-upgrade-data-serialization.md)，以讓您的應用程式升級相容。
+通過學習如何使用[資料序列化](service-fabric-application-upgrade-data-serialization.md)，使應用程式升級相容。
 
-參考 [進階主題](service-fabric-application-upgrade-advanced.md)，以了解如何在升級您的應用程式時使用進階功能。
+通過引用[高級主題](service-fabric-application-upgrade-advanced.md)，瞭解如何在升級應用程式時使用高級功能。

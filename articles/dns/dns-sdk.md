@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET SDK 建立 DNS 區域和記錄集
 titleSuffix: Azure DNS
-description: 在此學習路徑中，使用 .NET SDK 開始在 Azure DNS 中建立 DNS 區域和記錄集。
+description: 在此學習路徑中，使用 .NET SDK 開始在 Azure DNS 中創建 DNS 區域和記錄集。
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938870"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 建立 DNS 區域和記錄集
@@ -43,9 +43,9 @@ ms.locfileid: "76938870"
 若要使用 Azure DNS .NET SDK，您需要安裝 **Azure DNS 管理程式庫** NuGet 封裝以及其他必要的 Azure 封裝。
 
 1. 在 **Visual Studio**中，開啟專案或新專案。
-2. 移至**工具** **>** **nuget 套件管理員** **>** **管理解決方案的 nuget 套件**...。
-3. 按一下 [瀏覽]，啟用 [包括發行前版本] 核取方塊，然後在搜尋方塊中輸入 **Microsoft.Azure.Management.Dns**。
-4. 選取封裝，然後按一下 [安裝] 將它加入至您的 Visual Studio 專案。
+2. 轉到**工具****>** **NuGet 包管理器****>****管理 NuGet 包的解決方案...**
+3. 按一下 [瀏覽]****，啟用 [包括發行前版本]**** 核取方塊，然後在搜尋方塊中輸入 **Microsoft.Azure.Management.Dns**。
+4. 選取封裝，然後按一下 [安裝] **** 將它加入至您的 Visual Studio 專案。
 5. 重複上述程序以便一併安裝下列封裝︰**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
 ## <a name="add-namespace-declarations"></a>新增命名空間宣告
@@ -146,9 +146,9 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>列出區域和記錄集
 
-若要列出區域，請使用*DnsManagementClient*方法，其支援列出指定資源群組中的所有區域，或指定 Azure 訂用帳戶中的所有區域（跨資源群組）。若要列出記錄集，請使用*DnsManagementClient*方法，其支援列出指定區域中的所有記錄集，或只有特定類型的記錄集。
+要列出區域，請使用*DnsManagementClient.Zones.list...* 要列出記錄集，請使用*DnsManagementClient.RecordSet.list...*
 
-請注意，在列出區域和記錄集時，其結果可能會分頁。  下列範例示範如何逐一查看結果頁面 (範例中使用了 '2' 的人為小型頁面大小來強制分頁；實際上應該忽略此參數並使用預設頁面大小)。
+請注意，在列出區域和記錄集時，其結果可能會分頁。  下列範例示範如何逐一查看結果頁面  (範例中使用了 '2' 的人為小型頁面大小來強制分頁；實際上應該忽略此參數並使用預設頁面大小)。
 
 ```cs
 // Note: in this demo, we'll use a very small page size (2 record sets) to demonstrate paging

@@ -4,20 +4,20 @@ description: 如何在 Azure 容器執行個體中依照您的容器，監視計
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250024"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>在 Azure 容器執行個體中監視容器資源
 
-[Azure 監視器][azure-monitoring]可讓您深入檢視容器執行個體所使用的計算資源。 此資源使用量資料可協助您判斷容器群組的最佳資源設定。 Azure 監視器也會提供計量，以便追蹤容器執行個體的網路活動。
+[Azure 監視器][azure-monitoring]可提供您的容器執行個體所用計算資源的見解。 此資源使用量資料可協助您判斷容器群組的最佳資源設定。 Azure 監視器也會提供計量，以便追蹤容器執行個體的網路活動。
 
 本文件詳述如何使用 Azure 入口網站和 Azure CLI，針對容器執行個體蒐集 Azure 監視器計量。
 
 > [!IMPORTANT]
-> Azure 容器執行個體中的 Azure 監視器計量目前為預覽狀態，而且[適用一些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> Azure 容器執行個體中的 Azure 監視器計量目前為預覽狀態，而且[適用一些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]，即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 ## <a name="preview-limitations"></a>預覽限制
 
@@ -25,7 +25,7 @@ ms.locfileid: "78250024"
 
 ## <a name="available-metrics"></a>可用的計量
 
-Azure 監視器可為 [Azure 容器執行個體提供下列計量][supported-metrics]。 這些計量均適用於容器群組和個別容器。
+Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metrics]。 這些計量均適用於容器群組和個別容器。
 
 * **CPU 使用量** - 以 **Millicore** 測量。 一個 Millicore 為一個 CPU 核心的 1/1000，因此 500 Millicore (或 500 m) 表示 CPU 核心的 50% 使用量。 彙總為所有核心的**平均使用量**。
 
@@ -35,14 +35,14 @@ Azure 監視器可為 [Azure 容器執行個體提供下列計量][supported-met
 
 ## <a name="get-metrics---azure-portal"></a>取得計量 - Azure 入口網站
 
-建立容器群組後，即可在 Azure 入口網站中使用 Azure 監視資料。 若要查看容器群組的計量，請前往容器群組的 [概觀] 頁面。 您可以在這裡查看為每個可用計量預先建立的圖表。
+建立容器群組後，即可在 Azure 入口網站中使用 Azure 監視資料。 若要查看容器群組的計量，請前往容器群組的 [概觀]**** 頁面。 您可以在這裡查看為每個可用計量預先建立的圖表。
 
 ![雙重圖表][dual-chart]
 
 在包含多個容器的容器群組中，使用[維度][monitor-dimension]來呈現各容器的計量。 若要使用個別容器計量來建立圖表，請執行下列步驟：
 
-1. 在 [概觀] 頁面中，選取其中一個計量圖表，例如 **CPU**。 
-1. 選取 [套用設定] 按鈕，然後選取 [容器名稱]。
+1. 在 [概觀]**** 頁面中，選取其中一個計量圖表，例如 **CPU**。 
+1. 選取 [套用設定]**** 按鈕，然後選取 [容器名稱]****。
 
 ![維度][dimension]
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 入口網站操作說明影片系列
-description: 尋找如何在入口網站中使用 Azure 服務的影片示範。 直接觀看並連結至最新的 how-to 影片。
+description: 查找視頻演示，瞭解如何在門戶中使用 Azure 服務。 直接查看和連結到最新的"手來"視頻。
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,35 +10,35 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 93c9ce45fd660f444146827e2f5bafaeb12fc471
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310506"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 入口網站操作說明影片系列
 
-Azure 入口網站的 how-to 影片系列展示如何在 Azure 入口網站中使用 Azure 服務。 Azure 入口網站小組每週都會加入影片播放清單中。 這些互動式示範可協助您更有效率且更具生產力。
+Azure 門戶"手來"視頻系列演示如何在 Azure 門戶中使用 Azure 服務。 Azure 門戶團隊每週都會添加到視頻播放清單中。 這些互動式示範可説明您提高工作效率和工作效率。
 
-## <a name="featured-video"></a>精選影片
+## <a name="featured-video"></a>精選視頻
 
-在這段精選影片中，我們會探索如何針對虛擬機器的常見問題進行疑難排解。
+在本專題視頻中，我們將探討如何解決虛擬機器的常見問題。
 
 > [!VIDEO https://www.youtube.com/embed/MAJrN-2IPY8]
 
-[針對虛擬機器的常見問題進行疑難排解](https://www.youtube.com/watch?v=MAJrN-2IPY8)
+[解決虛擬機器的常見問題](https://www.youtube.com/watch?v=MAJrN-2IPY8)
 
-趕上您可能錯過的這些最新影片：
+趕上這些最近您可能錯過的視頻：
 
 |   |   |   |
 | ------| ------ | ------ |
-| [有關如何建立函數應用程式的 YouTube 影片 ![影像](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [有關如何使用新的 Azure 主畫面的 YouTube 影片 ![影像](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![YouTube 影片的影像，瞭解如何充分利用 Azure Advisor](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
-| [如何建立函數應用程式](https://www.youtube.com/watch?v=BEIZKCDElMs) | [如何使用新的 Azure 首頁](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [如何充分利用 Azure Advisor](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [![有關如何創建功能應用的 YouTube 視頻圖片](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [![有關如何使用新的 Azure 主畫面的 YouTube 視頻圖片](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![YouTube 視頻圖片，瞭解充分利用 Azure 顧問](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [如何創建函數應用](https://www.youtube.com/watch?v=BEIZKCDElMs) | [如何使用新的 Azure 主頁](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [如何充分利用 Azure 顧問](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
 
-## <a name="video-playlist"></a>影片播放清單
+## <a name="video-playlist"></a>視頻播放清單
 
-探索[Azure 入口網站的 how-to 系列](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)，瞭解如何充分利用 Azure 入口網站的一些絕佳秘訣。 訂閱頻道，以在新增影片時收到通知。
+流覽[Azure 門戶操作操作系列](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)，瞭解有關如何充分利用 Azure 門戶的一些好提示。 訂閱添加新視頻時要通知的頻道。
 
 ## <a name="next-steps"></a>後續步驟
 
-在[影片庫](https://azure.microsoft.com/resources/videos/index/?tag=microsoft-azure-portal)中探索數百個適用于 Azure 服務的影片。
+在[視頻庫中](https://azure.microsoft.com/resources/videos/index/?tag=microsoft-azure-portal)流覽數百個 Azure 服務視頻。

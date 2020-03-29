@@ -1,13 +1,13 @@
 ---
-title: 升級叢集的 Azure Service Fabric 版本
+title: 升級群集的 Azure 服務結構版本
 description: 升級執行 Service Fabric 叢集的 Service Fabric 程式碼和/或組態，包括設定叢集更新模式、升級憑證、新增應用程式連接埠、修補作業系統等等。 執行升級時，您可以期待些什麼？
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451813"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升級叢集的 Service Fabric 版本
@@ -54,7 +54,7 @@ ms.locfileid: "75451813"
 在解決導致復原的問題後，您需要依照之前的相同步驟再次起始升級。
 
 ## <a name="set-custom-health-polices-for-upgrades"></a>設定升級的自訂健康情況原則
-您可以為網狀架構升級指定自訂的健全狀況原則。 如果已將您的叢集設定為自動網狀架構升級，這些原則會套用於[自動網狀架構升級的階段 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
+您可以為網狀架構升級指定自訂的健全狀況原則。 如果將群集設置為"自動結構升級"，則這些策略將應用於[自動結構升級的第 1 階段](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
 如果已將您的叢集設定為手動網狀架構升級，則每當您選取新版本而觸發系統開始在叢集中展開網狀架構升級時，就會套用這些原則。 如果您不覆寫原則，則會使用預設值。
 
 在 [網狀架構升級] 刀鋒視窗下，您可以選取進階升級設定來指定自訂的健康狀態原則，或檢閱目前的設定。 檢閱下列作法圖片。 
@@ -109,9 +109,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 了解如何自訂一些 [Service Fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
+* 瞭解如何自訂某些[服務結構群集結構設置](service-fabric-cluster-fabric-settings.md)
 * 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-up-down.md)
-* 了解 [應用程式升級](service-fabric-application-upgrade.md)
+* 瞭解[應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

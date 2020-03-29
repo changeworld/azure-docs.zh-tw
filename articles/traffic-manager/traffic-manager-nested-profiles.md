@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: rohink
 ms.openlocfilehash: 282099cb274c1ea872a0df9c2753a939ef31421f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938579"
 ---
 # <a name="nested-traffic-manager-profiles"></a>巢狀流量管理員設定檔
@@ -97,17 +97,17 @@ ms.locfileid: "76938579"
 
 ## <a name="faqs"></a>常見問題集
 
-* [如何? 設定嵌套設定檔嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [如何設定巢狀設定檔？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [流量管理員支援多少個嵌套層級？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [流量管理員支援幾層巢狀結構？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [我可以在相同的流量管理員設定檔中，混用其他端點類型與嵌套的子設定檔嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [在同一個「流量管理員」設定檔中，是否可以將其他端點類型與巢狀子設定檔混合使用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [計費模式如何適用于嵌套的設定檔？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [巢狀設定檔如何套用計費模型？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [是否會對嵌套的設定檔產生效能影響？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [巢狀設定檔是否會對效能造成影響？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [流量管理員如何計算父設定檔中之嵌套端點的健全狀況？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [流量管理員如何計算父設定檔中的巢狀端點健康狀態？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 比較 Active Directory 與 Azure Active Directory
-description: 本檔會比較 Active Directory Domain Services （新增）至 Azure Active Directory （AD）。 其中概述了身分識別解決方案中的重要概念，並說明其不同或相似之處。
+title: 將活動目錄與 Azure 活動目錄進行比較
+description: 本文檔將活動目錄域服務 （ADDS） 與 Azure 活動目錄 （AD） 進行比較。 它概述了兩個標識解決方案中的關鍵概念，並解釋了它的不同或相似的方式。
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,43 +12,43 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926892"
 ---
-# <a name="compare-active-directory-to-azure-active-directory"></a>比較 Active Directory 與 Azure Active Directory
+# <a name="compare-active-directory-to-azure-active-directory"></a>將活動目錄與 Azure 活動目錄進行比較
 
-Azure Active Directory 是雲端身分識別和存取管理解決方案的下一個進化。 Microsoft 引進了 Windows 2000 中的 Active Directory Domain Services，讓組織能夠使用每個使用者的單一身分識別，來管理多個內部部署基礎結構元件和系統。
+Azure 活動目錄是雲標識和訪問管理解決方案的下一個演變。 Microsoft 在 Windows 2000 中引入了 Active Directory 域服務，使組織能夠使用每個使用者使用單個標識管理多個本地基礎結構元件和系統。
 
-Azure AD 藉由為組織提供身分識別即服務（IDaaS）解決方案，跨雲端和內部部署的所有應用程式，將此方法帶到下一個層級。
+Azure AD 通過為跨雲和本地的所有應用為組織提供身份即服務 （IDaaS） 解決方案，將此方法提升到一個新的水準。
 
-大部分的 IT 系統管理員都熟悉 Active Directory Domain Services 的概念。 下表概述 Active Directory 概念和 Azure Active Directory 之間的差異和相似性。
+大多數 IT 管理員都熟悉活動目錄域服務概念。 下表概述了活動目錄概念和 Azure 活動目錄之間的差異和相似性。
 
 |概念|Active Directory (AD)|Azure Active Directory |
 |:-|:-|:-|
 |**使用者**|||
-|布建：使用者 | 組織會手動建立內部使用者，或使用內建或自動化的布建系統（例如 Microsoft Identity Manager）來與 HR 系統整合。|現有的 AD 組織會使用[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)將身分識別同步至雲端。</br> Azure AD 新增了從[雲端 HR 系統](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)自動建立使用者的支援。 </br>Azure AD 可以在[已啟用 SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的 SaaS 應用程式中布建身分識別，以自動為應用程式提供必要的詳細資料，以允許使用者存取。 |
-|布建：外部身分識別| 組織會以一般使用者的身分，在專用的外部 AD 樹系中手動建立外部使用者，因而導致管理外部身分識別生命週期的系統管理負擔（來賓使用者）| Azure AD 提供一種特殊的身分識別類別，以支援外部身分識別。 [AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/)會管理外部使用者身分識別的連結，以確保其有效。 |
-| 權利管理和群組| 系統管理員讓使用者成為群組成員。 然後，應用程式和資源擁有者會將應用程式或資源的存取權授與群組。| Azure AD 中也提供[群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)，而且系統管理員也可以使用群組來授與資源的許可權。 在 Azure AD 中，系統管理員可以手動將成員資格指派給群組，或使用查詢以動態方式將使用者加入至群組。 </br> 系統管理員可以使用 Azure AD 中的「[權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)」，讓使用者能夠使用工作流程來存取應用程式和資源的集合，並視需要以時間為基礎的準則。 |
-| 管理員管理|組織將使用 AD 中的網域、組織單位和群組的組合來委派系統管理許可權，以管理其所控制的目錄和資源。| Azure AD 提供具有其角色型存取控制（RBAC）系統的[內建角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)，且支援[建立自訂角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)來委派對身分識別系統、應用程式和其所控制資源的特殊許可權存取權。</br>管理角色可以利用[Privileged Identity Management （PIM）](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)來增強，以提供限時、限時或以工作流程為基礎的特殊許可權角色存取。 |
-| 認證管理| Active Directory 中的認證是以密碼、憑證驗證和智慧卡驗證為基礎。 密碼是使用以密碼長度、到期日和複雜度為依據的密碼原則來管理。|Azure AD 針對雲端和內部部署使用智慧型[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。 保護包括智慧型鎖定，以及封鎖一般和自訂密碼片語和替代。 </br>Azure AD[透過多重要素驗證](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)和[無密碼](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)技術（例如 FIDO2）大幅提升安全性。 </br>Azure AD 為使用者提供[自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)系統，以降低支援成本。 |
+|預配：使用者 | 組織手動創建內部使用者或使用內部或自動預配系統（如 Microsoft 標識管理器）與 HR 系統集成。|現有 AD 組織使用[Azure AD 連接](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)將標識同步到雲。</br> Azure AD 添加了支援，以便從[雲 HR 系統](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)自動創建使用者。 </br>Azure AD 可以在啟用[SCIM 的](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)SaaS 應用中預配標識，以自動向應用提供必要的詳細資訊，以便使用者訪問。 |
+|預配：外部標識| 組織在專用外部 AD 林中手動創建外部使用者，從而導致管理管理外部標識的生命週期（來賓使用者）| Azure AD 提供一個特殊的標識類來支援外部標識。 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/)將管理指向外部使用者標識的連結，以確保它們有效。 |
+| 權利管理和組| 管理員使使用者成為組的成員。 然後，應用和資源擁有者向組授予對應用或資源的存取權限。| [組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)在 Azure AD 中也可用，管理員也可以使用組向資源授予許可權。 在 Azure AD 中，管理員可以手動將成員身份分配給組，或使用查詢動態地將使用者包括到組。 </br> 管理員可以使用 Azure AD 中[的權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)，使使用者使用工作流（如有必要）基於時間的條件，訪問應用和資源的集合。 |
+| 管理管理|組織將使用 AD 中的域、組織單位和組的組合來委派管理許可權來管理它控制的目錄和資源。| Azure AD 通過其基於角色的存取控制 （RBAC） 系統提供[內置角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)，對[創建自訂角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)以委派對標識系統、應用及其控制的資源的存取權限的支援有限。</br>通過[特權標識管理 （PIM）](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)可以增強管理角色，以便提供對特權角色的及時、有時間限制或基於工作流的訪問。 |
+| 認證管理| 活動目錄中的憑據基於密碼、證書身份驗證和智慧卡身份驗證。 密碼使用基於密碼長度、過期和複雜性的密碼原則進行管理。|Azure AD 對雲和本地使用智慧[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。 保護包括智慧鎖定加上阻止常用和自訂密碼短語和替換。 </br>Azure AD[通過多重要素驗證](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)和無[密碼](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)技術（如 FIDO2）顯著提高安全性。 </br>Azure AD 為使用者提供[自助服務密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)系統，從而降低了支援成本。 |
 | **應用程式**|||
-| 基礎結構應用程式|Active Directory 形成許多基礎結構內部部署元件（例如 DNS、DHCP、IPSec、WiFi、NPS 和 VPN 存取）的基礎|在新的雲端環境中，Azure AD 是用來存取應用程式的新控制平面，而不是依賴網路控制。 當使用者進行驗證時，[條件式存取（CA）](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)會控制哪些使用者可以存取所需條件下的哪些應用程式。|
-| 傳統和繼承應用程式| 大部分的內部部署應用程式會使用 LDAP、Windows 整合式驗證（NTLM 和 Kerberos），或以標頭為基礎的驗證來控制使用者的存取權。| Azure AD 可以使用內部部署執行[Azure AD 應用程式 proxy 代理程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)，來提供這些內部部署應用程式類型的存取權。 使用此方法 Azure AD 可以在您遷移或需要與繼承應用程式並存時，使用 Kerberos 驗證內部部署的 Active Directory 使用者。 |
-| SaaS 應用程式|Active Directory 不會以原生方式支援 SaaS 應用程式，而且需要同盟系統，例如 AD FS。|可整合支援 OAuth2、SAML 和 WS\* authentication 的 SaaS 應用程式，以使用 Azure AD 進行驗證。 |
-| 具有新式驗證的企業營運（LOB）應用程式|組織可以搭配 Active Directory 使用 AD FS，以支援需要新式驗證的 LOB 應用程式。| 需要新式驗證的 LOB 應用程式可以設定為使用 Azure AD 進行驗證。 |
-| 中層/後臺服務|在內部部署環境中執行的服務通常會使用 AD 服務帳戶或群組受管理的服務帳戶（gMSA）來執行。 然後，這些應用程式會繼承服務帳戶的許可權。| Azure AD 提供[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別，以在雲端中執行其他工作負載。 這些身分識別的生命週期是由 Azure AD 管理，而且系結至資源提供者無法用於其他目的，以取得後門程式存取權。|
-| **Devices**|||
-| 行動|Active Directory 不會在沒有協力廠商解決方案的情況下，原生支援行動裝置。| Microsoft 的行動裝置管理解決方案（Microsoft Intune）已與 Azure AD 整合。 Microsoft Intune 提供裝置狀態資訊給身分識別系統，以在驗證期間進行評估。 |
-| Windows 桌面|Active Directory 提供網域加入 Windows 裝置的功能，以使用群組原則、System Center Configuration Manager 或其他協力廠商解決方案來管理它們。|Windows 裝置可以[聯結到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 條件式存取可以檢查裝置是否 Azure AD 在驗證過程中聯結。 Windows 裝置也可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理。 在此情況下，條件式存取會在允許存取應用程式之前，考慮裝置是否為投訴（例如，最新的安全性修補程式和病毒碼標記）。|
-| Windows 伺服器| Active Directory 為使用群組原則或其他管理解決方案的內部部署 Windows 伺服器提供強大的管理功能。| 您可以使用[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)來管理 Azure 中的 Windows server 虛擬機器。 當 Vm 需要存取身分識別系統目錄或資源時，可以使用[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別。|
-| Linux/Unix 工作負載|Active Directory 不會在不使用協力廠商解決方案的情況下，原生支援非 Windows，不過 Linux 電腦可以設定為以 Active Directory 作為 Kerberos 領域進行驗證。|Linux/Unix Vm 可以使用[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別來存取身分識別系統或資源。 有些組織會將這些工作負載遷移至雲端容器技術，也可以使用受控識別。|
+| 基礎設施應用|活動目錄構成了許多基礎結構本機群組件的基礎，例如 DNS、DHCP、IPSec、WiFi、NPS 和 VPN 訪問|在新的雲世界中，Azure AD 是訪問應用與依賴網路控制的新控制平面。 當使用者對[進行身份驗證時，條件訪問 （CA）](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)將控制哪些使用者，將有權訪問哪些應用在要求條件下。|
+| 傳統應用和傳統應用| 大多數本地應用使用 LDAP、Windows 集成身份驗證（NTLM 和 Kerberos）或基於標頭的身份驗證來控制對使用者的訪問。| Azure AD 可以使用在本地運行的 Azure AD[應用程式代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)提供對這些類型的本地應用的訪問。 使用此方法，Azure AD 可以在遷移或需要與舊應用共存時使用 Kerberos 對本地活動目錄使用者進行身份驗證。 |
+| SaaS 應用程式|活動目錄不支援本地的 SaaS 應用，並且需要聯合系統（如 AD FS）。|支援 OAuth2、SAML 和 WS 身份驗證的\*SaaS 應用可以集成以使用 Azure AD 進行身份驗證。 |
+| 具有現代身份驗證的業務線 （LOB） 應用|組織可以使用帶有活動目錄的 AD FS 來支援需要現代身份驗證的 LOB 應用。| 需要現代身份驗證的 LOB 應用可以配置為使用 Azure AD 進行身份驗證。 |
+| 中端/守護族服務|在本地環境中運行的服務通常使用 AD 服務帳戶或組託管服務帳戶 （gMSA） 運行。 然後，這些應用將繼承服務帳戶的許可權。| Azure AD 提供[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)，用於在雲中運行其他工作負荷。 這些標識的生命週期由 Azure AD 管理，並且綁定到資來源提供者，不能用於其他目的來獲得後門訪問。|
+| **裝置**|||
+| 行動訊息|沒有協力廠商解決方案，Active Directory 不支援本機支援行動裝置。| 微軟的行動裝置管理解決方案微軟Intune與 Azure AD 集成。 Microsoft Intune 向標識系統提供設備狀態資訊，供身份驗證期間進行評估。 |
+| 視窗桌面|Active Directory 提供使用群組原則、系統中心組態管理員或其他協力廠商解決方案對加入 Windows 設備進行域連接以對其進行管理的功能。|Windows 設備可以[連接到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 條件訪問可以檢查設備是否作為身份驗證過程的一部分加入 Azure AD。 視窗設備也可以管理與[微軟Intune。](https://docs.microsoft.com/intune/what-is-intune) 在這種情況下，條件訪問將考慮設備是否是投訴（例如，最新的安全修補程式和病毒簽名），然後再允許訪問應用。|
+| Windows 伺服器| Active Directory 使用群組原則或其他管理解決方案為本地 Windows 伺服器提供強大的管理功能。| Azure 中的 Windows 伺服器虛擬機器可以使用[Azure AD 域服務](https://docs.microsoft.com/azure/active-directory-domain-services/)進行管理。 當 VM 需要訪問標識系統目錄或資源時，可以使用[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)。|
+| Linux/Unix 工作負載|Active Directory 不支援沒有協力廠商解決方案的非 Windows，儘管可以將 Linux 電腦配置為將 Active Directory 配置為 Kerberos 領域進行身份驗證。|Linux/Unix VM 可以使用[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)來訪問標識系統或資源。 某些組織將這些工作負載遷移到雲容器技術，這些技術也可以使用託管標識。|
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure Active Directory？](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [比較自我管理的 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)
-- [關於 Azure Active Directory 的常見問題](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-faq)
-- [Azure Active Directory 的新功能](https://docs.microsoft.com/azure/active-directory/fundamentals/whats-new)
+- [什麼是 Azure 活動目錄？](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)
+- [關於 Azure Active Directory 的常見問題集](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-faq)
+- [Azure 活動目錄中有哪些新增功能？](https://docs.microsoft.com/azure/active-directory/fundamentals/whats-new)

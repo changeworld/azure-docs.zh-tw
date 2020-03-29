@@ -1,5 +1,5 @@
 ---
-title: 尋找及刪除未連結的 Azure Nic
+title: 查找和刪除未連接的 Azure NIC
 description: 如何使用 Azure CLI 尋找並刪除未連結至 VM 的 Azure NIC
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
 ms.openlocfilehash: 8142b95ee666e205a8328eafd5930f1f386e49af
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945129"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>如何尋找並刪除 Azure VM 未連結的網路介面卡 (NIC)
@@ -20,9 +20,9 @@ ms.locfileid: "78945129"
 
 ## <a name="find-and-delete-unattached-nics"></a>尋找及刪除未連結的 NIC
 
-NIC 的 virtualMachine 屬性會儲存 NIC 所連結 VM 的識別碼和資源群組。 下列指令碼會針對訂用帳戶中的所有 NIC 重複執行，並檢查 virtualMachine 屬性是否為 Null。 如果這個屬性為 Null，則 NIC 不會連結到 VM。
+NIC 的 virtualMachine** 屬性會儲存 NIC 所連結 VM 的識別碼和資源群組。 下列指令碼會針對訂用帳戶中的所有 NIC 重複執行，並檢查 virtualMachine** 屬性是否為 Null。 如果這個屬性為 Null，則 NIC 不會連結到 VM。
 
-若要檢視所有未連結的 NIC，強烈建議您先執行指令碼並將 deleteUnattachedNics 變數設為 0。 若要在檢閱清單輸出後刪除所有未連結的 NIC，請執行指令碼並將 deleteUnattachedNics 設為 1。
+若要檢視所有未連結的 NIC，強烈建議您先執行指令碼並將 deleteUnattachedNics** 變數設為 0**。 若要在檢閱清單輸出後刪除所有未連結的 NIC，請執行指令碼並將 deleteUnattachedNics** 設為 1**。
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs

@@ -1,46 +1,46 @@
 ---
-title: 在專用主機上部署
-description: 使用專用主機，為您的 Azure 容器實例工作負載達成真正的主機層級隔離
+title: 部署在專用主機上
+description: 使用專用主機實現 Azure 容器實例工作負載的真正主機級隔離
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934139"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在專用主機上部署
 
-「專用」是一種 Azure 容器實例（ACI） sku，可提供隔離且專用的計算環境，以安全地執行容器。 使用專用 sku 會導致在 Azure 資料中心具有專用實體伺服器的每個容器群組中，確保完整的工作負載隔離，以協助符合您組織的安全性和合規性需求。 
+"專用"是一個 Azure 容器實例 （ACI） sku，它為安全運行容器提供隔離且專用的計算環境。 使用專用 sKU 會導致每個容器組在 Azure 資料中心中具有專用物理伺服器，確保完全隔離工作負載以説明滿足組織的安全和合規性要求。 
 
-專用 sku 適用于需要從實體伺服器觀點來隔離工作負載的容器工作負載。
+專用 sKU 適用于需要從物理伺服器角度隔離工作負載的容器工作負載。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 使用專用 sku 之任何訂用帳戶的預設限制為0。 如果您想要將此 sku 用於生產容器部署，請建立[Azure 支援要求][azure-support]以增加限制。
+* 任何訂閱使用專用 sKU 的預設限制為 0。 如果要將此 sKU 用於生產容器部署，請創建[Azure 支援請求][azure-support]以增加限制。
 
-## <a name="use-the-dedicated-sku"></a>使用專用 sku
+## <a name="use-the-dedicated-sku"></a>使用專用 sKU
 
 > [!IMPORTANT]
-> 使用專用 sku 僅適用于目前推出的最新 API 版本（2019-12-01）。在您的部署範本中指定此 API 版本。
+> 使用專用 sKU 僅在當前推出的最新 API 版本 （2019-12-01） 中可用。在部署範本中指定此 API 版本。
 >
 
-從 API 版本2019-12-01 開始，部署範本的 [容器群組屬性] 區段底下會有一個 `sku` 屬性，這是 ACI 部署的必要項。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+從 API 版本 2019-12-01 開始`sku`，部署範本的容器組屬性部分下有一個屬性，這是 ACI 部署所必需的。 目前，可以將此屬性用作 ACI 的 Azure 資源管理器部署範本的一部分。 瞭解有關使用教程中的範本部署 ACI 資源的更多資訊[：使用資源管理器範本部署多容器組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
 
-`sku` 屬性可以有下列其中一個值：
-* `Standard`-標準 ACI 部署選擇，其仍可保證程式管理層級安全性 
-* `Dedicated`-用於與容器群組的專用實體主機進行工作負載層級隔離
+該`sku`屬性可以具有以下值之一：
+* `Standard`- 標準 ACI 部署選擇，仍保證虛擬機器管理程式級安全性 
+* `Dedicated`- 用於與容器組的專用物理主機進行工作負載級隔離
 
-## <a name="modify-your-json-deployment-template"></a>修改您的 JSON 部署範本
+## <a name="modify-your-json-deployment-template"></a>修改 JSON 部署範本
 
-在您的部署範本中，修改或加入下列屬性：
-* 在 [`resources`] 底下，將 `apiVersion` 設定為 [`2012-12-01`]。
-* 在容器群組屬性底下，新增具有值 `Dedicated`的 `sku` 屬性。
+在部署範本中，修改或添加以下屬性：
+* 在`resources`下`apiVersion`，`2012-12-01`設置為 。
+* 在容器組屬性下，添加`sku`值 的屬性`Dedicated`。
 
-以下是使用專用 sku 的容器群組部署範本之 resources 區段的範例程式碼片段：
+下面是使用專用 sKU 的容器組部署範本的資源部分的示例程式碼片段：
 
 ```json
 [...]
@@ -60,7 +60,7 @@ ms.locfileid: "76934139"
 ]
 ```
 
-以下是一個完整的範本，它會部署執行單一容器實例的範例容器群組：
+下面是部署運行單個容器實例的示例容器組的完整範本：
 
 ```json
 {
@@ -127,9 +127,9 @@ ms.locfileid: "76934139"
 }
 ```
 
-## <a name="deploy-your-container-group"></a>部署您的容器群組
+## <a name="deploy-your-container-group"></a>部署容器組
 
-如果您已在桌面上建立並編輯部署範本檔案，您可以將檔案拖曳到您的 Cloud Shell 目錄中，將檔案上傳到該檔案。 
+如果在桌面上創建並編輯了部署範本檔，則可以通過將檔拖入其中將其上載到雲外殼目錄。 
 
 使用 [az group create][az-group-create] 命令來建立資源群組。
 
@@ -137,13 +137,13 @@ ms.locfileid: "76934139"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署範本。
+使用 [az group deployment create][az-group-deployment-create] 命令來部署範本。
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-在幾秒內，您應該會從 Azure 收到首次回應。 成功的部署會在專用主機上進行。
+在幾秒內，您應該會從 Azure 收到首次回應。 成功部署將在專用主機上進行。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

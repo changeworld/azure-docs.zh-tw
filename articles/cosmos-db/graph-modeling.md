@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: lbosq
 ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898317"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的圖表資料模型
@@ -71,11 +71,11 @@ ms.locfileid: "78898317"
 
 一個常見的陷阱是將單一實體的多個屬性作為個別的頂點來對應。 請考量下方的範例，範例中將同一個實體以兩種不同的方式表示：
 
-* **以頂點為基礎的屬性**：在這個方法中，實體使用了三個個別的頂點和兩個邊緣來描述其屬性。 雖然這種方法可能會減少冗餘，但會增加模型複雜度。 模型複雜度增加可能會導致增加延遲增加、提升查詢複雜度，以及增加計算成本。 此模型也代表在進行資料分割時將面臨挑戰。
+* **基於頂點的屬性**：在此方法中，實體使用三個單獨的頂點和兩個邊來描述其屬性。 雖然這種方法可能會減少冗餘，但會增加模型複雜度。 模型複雜度增加可能會導致增加延遲增加、提升查詢複雜度，以及增加計算成本。 此模型也代表在進行資料分割時將面臨挑戰。
 
 ![使用頂點作為屬性的實體模型。](./media/graph-modeling/graph-modeling-1.png)
 
-* **屬性內嵌頂點**：這個方法會利用索引鍵/值組清單來代表頂點內部實體的所有屬性。 此方法可降低模型的複雜度，但將會導致只能執行較簡單的查詢和更符合成本效益的周遊。
+* **屬性嵌入頂點**：此方法利用鍵值對清單來表示頂點內實體的所有屬性。 此方法可降低模型的複雜度，但將會導致只能執行較簡單的查詢和更符合成本效益的周遊。
 
 ![使用頂點作為屬性的實體模型。](./media/graph-modeling/graph-modeling-2.png)
 

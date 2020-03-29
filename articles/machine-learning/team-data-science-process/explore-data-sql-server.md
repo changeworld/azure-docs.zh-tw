@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720090"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>在 Azure 上瀏覽 SQL Server 虛擬機器中的資料
 
-本文涵蓋如何瀏覽儲存在 Azure 上 SQL Server VM 中的資料。 使用 SQL 或 Python 來檢查資料。
+本文涵蓋如何瀏覽儲存在 Azure 上 SQL Server VM 中的資料。 使用 SQL 或 Python 檢查資料。
 
 此工作是 [Team Data Science Process](overview.md) 中的一個步驟。
 
@@ -29,13 +29,13 @@ ms.locfileid: "76720090"
 > 
 > 
 
-## <a name="sql-dataexploration"></a>使用 SQL 指令碼瀏覽 SQL 資料
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>使用 SQL 指令碼瀏覽 SQL 資料
 以下是數個 SQL 指令碼範例，可用來探索儲存於 SQL Server 中的資料。
 
 1. 取得每天的觀察計數
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. 取得類別資料行中的層級
+2. 取得類別資料行中的層級 
    
     `select  distinct <column_name> from <databasename>`
 3. 取得兩個類別資料行組合中的層級數目 
@@ -50,8 +50,8 @@ ms.locfileid: "76720090"
 > 
 > 
 
-## <a name="python"></a>使用 Python 瀏覽 SQL 資料
-當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如 [在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 將資料從資料庫載入 pandas 資料框架，然後可以進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 瀏覽 SQL 資料
+當 SQL Server 中的資料與使用 Python 處理 Azure Blob 中的資料（如[資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述）中所述時，使用 Python 來流覽資料和生成功能。 將資料從資料庫載入到熊貓資料幀中，然後可以進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 
@@ -59,7 +59,7 @@ ms.locfileid: "76720090"
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas 程式庫](https://pandas.pydata.org/) 提供一組豐富的資料結構和資料分析工具，可用來對 Python 程式設計進行資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
+Python 中的[Pandas 庫](https://pandas.pydata.org/)為 Python 程式設計的資料操作提供了一組豐富的資料結構和資料分析工具。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

@@ -1,7 +1,7 @@
 ---
-title: 定義自動化機器學習執行的機器學習工作
+title: 為自動機器學習運行定義機器學習任務
 titleSuffix: Azure Machine Learning
-description: 瞭解如何定義自動化機器學習執行的機器學習工作
+description: 瞭解如何為自動機器學習運行定義機器學習任務
 services: machine-learning
 author: RachelKellam
 ms.author: rakellam
@@ -11,33 +11,33 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: a58959904559cd3b2cec27762f2df93cfea72abd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75540525"
 ---
-# <a name="how-to-define-a-machine-learning-task"></a>如何定義機器學習工作 
+# <a name="how-to-define-a-machine-learning-task"></a>如何定義機器學習任務 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解支援的機器學習服務工作，以及如何定義它們以進行自動化機器學習（自動化 ML）實驗執行。
+在本文中，您將瞭解支援的機器學習任務以及如何為自動機器學習 （自動 ML） 實驗運行定義它們。
 
 
-## <a name="What is a machine learning task?"></a>什麼是機器學習服務工作？
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a>什麼是機器學習任務？
 
-機器學習工作表示藉由建立預測性模型所解決的問題類型。 自動化 ML 支援三種不同類型的工作，包括分類、回歸和時間序列預測。
+機器學習任務表示通過創建預測模型正在解決的問題類型。 自動 ML 支援三種不同類型的任務，包括分類、回歸和時間序列預測。
 
-工作類型| 說明| 範例
+任務類型| 描述| 範例
 ----|----|----
-分類 | 用來預測資料集中特定資料列之類別目錄的工作。 | 信用卡上的詐騙偵測。 目標資料行會偵測**到**類別為*True*或*False*的詐騙。 在此情況下，我們會將資料中的每一列分類為 true 或 false。
-迴歸 | 預測連續數量輸出的工作。 | 汽車成本根據其功能而定，目標資料行會是**價格**。
-預測 |此工作可讓您在判斷未來趨勢的方向時做出明智的評估。| 預測接下來48小時的能源需求。 目標資料行會是**需求**，而預測值會用來顯示能源需求中的模式。
+分類 | 用於預測資料集中特定行的類別的任務。 | 信用卡上的欺詐檢測。 目標列將是"**欺詐"，** 類別為 *"真*"或 *"假*"。 在這種情況下，我們將資料中的每一行分類為真或假。
+迴歸 | 用於預測連續數量輸出的任務。 | 汽車成本根據其特點，目標列將是**價格**。
+預測 |在確定未來趨勢方向時作出知情估計的任務。| 預測未來48小時的能源需求。 目標列為**需求**，預測值將用於顯示能源需求模式。
 
 在自動化和調整程序期間，自動化 ML 支援下列演算法。 身為使用者，您不需要指定演算法。
 
 分類 | 迴歸 | 時間序列預測
 -- |-- |--
-[羅吉斯迴歸](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[邏輯回歸](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
 [漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [決策樹](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)|[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)
@@ -47,16 +47,16 @@ ms.locfileid: "75540525"
 [隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線性分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線性回歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[線性回歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[DNN 分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 線性分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線性回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[線性回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
 [貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||
 [隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
 
 
-### <a name="set-the-task-type"></a>設定工作類型
-您可以使用 SDK 或 Azure Machine Learning studio 來設定自動化 ML 實驗的工作類型。
+### <a name="set-the-task-type"></a>設置任務類型
+您可以使用 SDK 或 Azure 機器學習工作室為自動 ML 實驗設置任務類型。
 
-請在 `AutoMLConfig` 的程式中使用 `task` 參數，以指定您的實驗類型。
+使用構造`task`函數中的`AutoMLConfig`參數指定實驗類型。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -65,17 +65,17 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task="classification")
 ```
 
-在 Azure Machine Learning studio 中，您可以將工作設定為自動化 ML 實驗執行建立的一部分。 
+您可以將任務設置為 Azure 機器學習工作室中自動 ML 實驗運行創建的一部分。 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-![工作類型選取範圍](./media/how-to-define-task-type/task-type.png)
+![任務類型選擇](./media/how-to-define-task-type/task-type.png)
 
 
 ## <a name="next-steps"></a>後續步驟
 
-+ 深入瞭解 Azure Machine Learning 中的[自動化 ml](concept-automated-ml.md) 。
-+ 深入瞭解如何在 Azure Machine Learning 中[自動定型時間序列預測模型](how-to-auto-train-forecast.md)
-+ 試用[自動化的 Machine Learning 分類](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)教學課程。
-+ 試用[自動化的 Machine Learning 回歸](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)範例筆記本。
++ 詳細瞭解 Azure 機器學習中的[自動 ml。](concept-automated-ml.md)
++ 瞭解有關在 Azure 機器學習中[自動訓練時間序列預測模型](how-to-auto-train-forecast.md)的更多
++ 嘗試[自動機器學習分類](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)教程。
++ 嘗試[自動機器學習回歸](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)示例筆記本。
 

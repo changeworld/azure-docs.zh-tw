@@ -1,5 +1,5 @@
 ---
-title: 使用範本建立 Azure 服務匯流排資源
+title: 使用範本創建 Azure 服務匯流排資源
 description: 使用 Azure Resource Manager 範本自動建立服務匯流排資源
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264453"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立服務匯流排資源
@@ -28,7 +28,7 @@ ms.locfileid: "76264453"
 Azure Resource Manager 範本會協助您定義要部署給解決方案的資源，以及指定參數和變數，讓您可以針對不同的環境來輸入值。 範本以 JSON 編寫，由用於為部署建構值的運算式組成。 如需撰寫 Azure Resource Manager 範本和討論範本格式的詳細資訊，請參閱 [Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)。
 
 > [!NOTE]
-> 本文中的範例會示範如何使用 Azure Resource Manager 來建立服務匯流排命名空間和訊息實體 (佇列)。 如需其他範本範例，請造訪[Azure 快速入門範本資源庫][Azure Quickstart Templates gallery]並搜尋**服務匯流排**。
+> 本文中的範例會示範如何使用 Azure Resource Manager 來建立服務匯流排命名空間和訊息實體 (佇列)。 如需其他範本範例，請造訪 [Azure 快速入門範本資源庫][Azure Quickstart Templates gallery]並搜尋**服務匯流排**。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -36,13 +36,13 @@ Azure Resource Manager 範本會協助您定義要部署給解決方案的資源
 
 這些服務匯流排 Azure Resource Manager 範本可供下載和部署。 按一下下列連結可取得各自的詳細資料，並附有 GitHub 上的範本連結：
 
-* [建立服務匯流排命名空間](service-bus-resource-manager-namespace.md)
+* [創建服務匯流排命名空間](service-bus-resource-manager-namespace.md)
 * [建立服務匯流排命名空間與佇列](service-bus-resource-manager-namespace-queue.md)
 * [建立服務匯流排命名空間與主題和訂用帳戶](service-bus-resource-manager-namespace-topic.md)
 * [建立服務匯流排命名空間與佇列和授權規則](service-bus-resource-manager-namespace-auth-rule.md)
 * [建立服務匯流排命名空間與主題、訂用帳戶和規則](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-## <a name="deploy-with-powershell"></a>使用 Powershell 部署
+## <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 下列程序描述如何使用 PowerShell 部署建立了標準層服務匯流排命名空間的 Azure Resource Manager 範本，以及如何在該命名空間內部署佇列。 這個範例是以[建立有佇列的服務匯流排命名空間](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)範本為基礎。 近似的工作流程如下︰
 
@@ -181,7 +181,7 @@ Set-AzContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>設定資源群組
 
-如果您沒有現有的資源群組，請使用**remove-azresourcegroup**命令建立新的資源群組。 提供您要使用的資源群組名稱和位置。 例如：
+如果沒有現有資源組，請使用**New-AzResourceGroup**命令創建新的資源組。 提供您要使用的資源群組名稱和位置。 例如：
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>建立部署
 
-若要建立新的部署，請執行 `New-AzResourceGroupDeployment` Cmdlet，並於提示出現時提供必要的參數。 參數會包含部署的名稱、資源群組的名稱，以及範本檔案的路徑或 URL。 如未指定 **Mode** 參數，即會使用預設值 **Incremental**。 如需詳細資訊，請參閱[累加部署與完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+若要建立新的部署，請執行 `New-AzResourceGroupDeployment` Cmdlet，並於提示出現時提供必要的參數。 參數會包含部署的名稱、資源群組的名稱，以及範本檔案的路徑或 URL。 如果未指定**Mode**參數，則使用**增量**的預設值。 如需詳細資訊，請參閱[累加部署與完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
 下列命令會提示您在 PowerShell 視窗中輸入三個參數︰
 
@@ -255,7 +255,7 @@ Parameters        :
 ## <a name="next-steps"></a>後續步驟
 您現在已了解部署 Azure Resource Manager 範本的基本工作流程和命令。 如需更多的詳細資訊，請瀏覽下列連結內容：
 
-* [Azure Resource Manager 概觀][Azure Resource Manager overview]
+* [Azure 資源管理器概述][Azure Resource Manager overview]
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源][Deploy resources with Azure Resource Manager templates]
 * [編寫 Azure 資源管理員範本](../azure-resource-manager/templates/template-syntax.md)
 * [Microsoft.ServiceBus 資源類型](/azure/templates/microsoft.servicebus/allversions)

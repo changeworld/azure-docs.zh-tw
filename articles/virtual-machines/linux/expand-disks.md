@@ -1,6 +1,6 @@
 ---
-title: 擴充 Linux VM 上的虛擬硬碟
-description: 瞭解如何使用 Azure CLI 擴充 Linux VM 上的虛擬硬碟。
+title: 在 Linux VM 上擴展虛擬硬碟
+description: 瞭解如何使用 Azure CLI 在 Linux VM 上擴展虛擬硬碟。
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945176"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 擴充 Linux VM 上的虛擬硬碟
@@ -19,7 +19,7 @@ ms.locfileid: "78945176"
 本文將說明如何使用 Azure CLI 來擴充 Linux 虛擬機器 (VM) 的受控磁碟。 您可以[新增資料磁碟](add-disk.md)來提供更多儲存空間，而您也可以擴充既有的資料磁碟。 在 Azure 中，Linux VM 上作業系統 (OS) 的預設虛擬硬碟大小通常是 30 GB。 
 
 > [!WARNING]
-> 請務必確定您的檔案系統處於狀況良好的狀態，您的磁碟分割資料表類型將會支援新的大小，並確保您的資料會在執行磁片調整大小作業之前進行備份。 如需詳細資訊，請參閱[在 Azure 中備份 Linux 虛擬機器](tutorial-backup-vms.md)。 
+> 始終確保檔案系統處於正常狀態，磁碟分割表類型將支援新大小，並確保在執行磁片調整大小操作之前備份資料。 如需詳細資訊，請參閱[在 Azure 中備份 Linux 虛擬機器](tutorial-backup-vms.md)。 
 
 ## <a name="expand-an-azure-managed-disk"></a>擴充 Azure 受控磁碟
 確定您已安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並且已使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure 帳戶。
@@ -28,7 +28,7 @@ ms.locfileid: "78945176"
 
 在下列範例中，以您自己的值取代範例參數名稱，例如 *myResourceGroup* 和 *myVM*。
 
-1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會解除配置名為 myResourceGroup 資源群組中名為 myVM 的 VM：
+1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會解除配置名為 myResourceGroup** 資源群組中名為 myVM** 的 VM：
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +37,7 @@ ms.locfileid: "78945176"
     > [!NOTE]
     > 必須解除配置 VM，才能擴充虛擬硬碟。 使用 `az vm stop` 停止 VM，不會釋放計算資源。 若要釋放計算資源，請使用 `az vm deallocate`。
 
-1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 來檢視資源群組中的受控磁碟清單。 下列範例會顯示名為 myResourceGroup 之資源群組中的受控磁碟清單：
+1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 來檢視資源群組中的受控磁碟清單。 下列範例會顯示名為 myResourceGroup** 之資源群組中的受控磁碟清單：
 
     ```azurecli
     az disk list \
@@ -58,7 +58,7 @@ ms.locfileid: "78945176"
     > [!NOTE]
     > 當您擴充受控磁碟時，會將更新的大小向上調整為最接近的受控磁碟大小。 如需可用受控磁碟大小和階層的表格，請參閱 [Azure 受控磁碟概觀 - 價格和計費](../windows/managed-disks-overview.md)。
 
-1. 使用 [az vm create](/cli/azure/vm#az-vm-start) 啟動 VM。 下列範例會啟動名為 myResourceGroup 資源群組中名為 myVM 的 VM：
+1. 使用 [az vm create](/cli/azure/vm#az-vm-start) 啟動 VM。 下列範例會啟動名為 myResourceGroup** 資源群組中名為 myVM** 的 VM：
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -133,7 +133,7 @@ ms.locfileid: "78945176"
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. 若要確認資料磁片已調整大小，請使用 `df -h`。 下列範例輸出顯示資料磁碟機 */dev/sdc1* 現在是 200 GB：
+1. 要驗證資料磁片已調整大小，請使用`df -h`。 下列範例輸出顯示資料磁碟機 */dev/sdc1* 現在是 200 GB：
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
@@ -142,4 +142,4 @@ ms.locfileid: "78945176"
 
 ## <a name="next-steps"></a>後續步驟
 * 如果您需要更多儲存空間，您也可以[將資料磁碟新增至 Linux VM](add-disk.md)。 
-* 如需磁片加密的詳細資訊，請參閱[Linux vm 的 Azure 磁碟加密](disk-encryption-overview.md)。
+* 有關磁片加密的詳細資訊，請參閱[Linux VM 的 Azure 磁片加密](disk-encryption-overview.md)。

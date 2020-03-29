@@ -16,10 +16,10 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255468"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>單一 Azure 區域中的 SAP HANA 可用性
@@ -54,7 +54,7 @@ Azure VM 自動重新啟動 (又稱服務修復) 是在以下兩個層級上運�
 Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問題時會自動於狀態良好的 Azure 主機上重新啟動。 
 
 >[!IMPORTANT]
->Azure 服務修復並不會使客體作業系統處於核心異常狀態的 Linux Vm 重新啟動。 在常用的 Linux 發行版本中，預設設定不會自動重新啟動 Linux 核心處於異常狀態的 VM 或伺服器。 相反地，預設設定會讓作業系統維持在核心異常的狀態，以便連結核心偵錯來進行分析。 Azure 會接受該行為，不會自動重新啟動客體作業系統處於這類狀態的 VM。 我們假設這種情況極為罕見。 您也可以覆寫此預設行為，以啟用重新啟動 VM 的功能。 若要變更預設行為，在 /etc/sysctl.conf 中啟用 'kernel.panic' 參數。 設定此參數的時間大約是幾秒鐘。 常見的建議值約需要等候 20-30 秒，才會透過此參數觸發重新開機。 另請參閱<https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>。
+>Azure 服務修復並不會使客體作業系統處於核心異常狀態的 Linux Vm 重新啟動。 在常用的 Linux 發行版本中，預設設定不會自動重新啟動 Linux 核心處於異常狀態的 VM 或伺服器。 相反地，預設設定會讓作業系統維持在核心異常的狀態，以便連結核心偵錯來進行分析。 Azure 會接受該行為，不會自動重新啟動客體作業系統處於這類狀態的 VM。 我們假設這種情況極為罕見。 您也可以覆寫此預設行為，以啟用重新啟動 VM 的功能。 若要變更預設行為，在 /etc/sysctl.conf 中啟用 'kernel.panic' 參數。 設定此參數的時間大約是幾秒鐘。 常見的建議值約需要等候 20-30 秒，才會透過此參數觸發重新開機。 另請參閱 <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>。
 
 您在此案例中依賴的第二個功能，就是在重新啟動的 VM 上執行的 HANA 服務會在 VM 重新開機後自動啟動。 您可以透過不同 HANA 服務的監視程式服務來設定 [HANA 服務自動重新啟動](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)。
 

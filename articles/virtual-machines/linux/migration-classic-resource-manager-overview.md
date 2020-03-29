@@ -1,5 +1,5 @@
 ---
-title: 平臺支援將 IaaS 資源從傳統遷移至 Azure Resource Manager
+title: 平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀
 description: 這篇文章提供平台支援之資源移轉 (從傳統移轉至 Azure Resource Manager) 的逐步解說
 author: tanmaygore
 manager: vashan
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: d548af6cba6d35b497f67a0dc774171088a91010
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944678"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)
 
 > [!IMPORTANT]
-> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 今天，大約 90% 的 IaaS VM 正在使用[Azure 資源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，經典 VM 已被棄用，將于 2023 年 3 月 1 日完全停用。 [詳細瞭解]( https://aka.ms/classicvmretirement)此棄用[及其如何影響您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
 
 
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]

@@ -1,5 +1,5 @@
 ---
-title: Azure 資料表儲存體設計中的模型關聯性 |Microsoft Docs
+title: 在 Azure 表存儲設計中建模關係 |微軟文檔
 description: 了解設計表格儲存體解決方案時的模型化程序。
 services: storage
 author: MarkMcGeeAtAquent
@@ -9,10 +9,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457556"
 ---
 # <a name="modeling-relationships"></a>將關聯性模型化
@@ -122,7 +122,7 @@ ms.locfileid: "75457556"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [資料表設計模式](table-storage-design-patterns.md)
+- [表設計模式](table-storage-design-patterns.md)
 - [查詢的設計](table-storage-design-for-query.md)
 - [加密資料表資料](table-storage-design-encrypt-data.md)
 - [資料修改的設計](table-storage-design-for-modification.md)

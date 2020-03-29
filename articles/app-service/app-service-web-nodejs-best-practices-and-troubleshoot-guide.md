@@ -1,6 +1,6 @@
 ---
-title: Node.js 最佳做法和疑難排解
-description: 瞭解在 Azure App Service 中執行的 node.js 應用程式的最佳作法和疑難排解步驟。
+title: Node.js 最佳實踐和故障排除
+description: 瞭解在 Azure 應用服務中運行的 Node.js 應用程式的最佳做法和故障排除步驟。
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430571"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
@@ -123,7 +123,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 對於 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設為每個 VM 總計有 160 個通訊端 (4 個 node.exe 執行個體 \* 40 個 maxSockets/執行個體)。
 
-範例 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 設定：
+[代理保存系統](https://www.npmjs.com/package/agentkeepalive)配置示例：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [**設定檔**] 索引標籤。選擇 [**載入**] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
+下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 **"個人資料"** 選項卡。選擇 **"載入**"按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -225,7 +225,7 @@ http.createServer(function (req, res) {
 有幾個原因會造成 node.exe 隨機關閉：
 
 1. 您的應用程式擲回未攔截的例外狀況 - 請檢查 d:\\home\\LogFiles\\Application\\logging-errors.txt file 檔案，以取得所擲回例外狀況的詳細資料。 這個檔案有堆疊追蹤，可協助您對應用程式進行偵錯並加以修正。
-2. 您的應用程式耗用太多記憶體，近而讓其他處理序無法開始執行。 如果 VM 記憶體總數接近 100%，則處理序管理員會終止 node.exe。 程序管理員會終止某些處理程序，讓其他處理程序有機會執行一些工作。 若要修正此問題，可分析您應用程式的記憶體流失。 如果您的應用程式需要大量記憶體，請擴大至較大的 VM (這樣會增加 VM 的可用 RAM)。
+2. 您的應用程式耗用太多記憶體，近而讓其他處理序無法開始執行。 如果 VM 記憶體總數接近 100%，則處理序管理員會終止 node.exe。 程序管理員會終止某些處理程序，讓其他處理程序有機會執行一些工作。 若要修正此問題，可分析您應用程式的記憶體流失。 如果您的應用程式需要大量記憶體，請相應增加至較大的 VM (這樣會增加 VM 的可用 RAM)。
 
 ### <a name="my-node-application-does-not-start"></a>我的節點應用程式並未啟動
 
@@ -251,7 +251,7 @@ http.createServer(function (req, res) {
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 狀態和子狀態
 
-`cnodeconstants`[原始](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)程式檔會列出 iisnode 因錯誤而傳回的所有可能狀態/子狀態組合。
+`cnodeconstants` [來源檔案](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)會列出 iisnode 在發生錯誤時可傳回的所有可能狀態/子狀態組合。
 
 為您的應用程式啟用 FREB 以查看 win32 錯誤碼 (基於效能考量，務必只在非生產網站上啟用 FREB)。
 
@@ -269,7 +269,7 @@ http.createServer(function (req, res) {
 
 NODE.exe 具有稱為 `NODE_PENDING_PIPE_INSTANCES` 的設定。 在 Azure App Service 上，此值會設為 5000。 這表示該 node.exe 在具名管道上一次能接受 5000 個要求。 這個值應足以滿足大部分在 Azure App Service 上執行的節點應用程式。 您應該不會在 Azure App Service 上看見 503.1003，因為 `NODE_PENDING_PIPE_INSTANCES` 的值較高
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 請遵循下列連結以深入了解 Azure App Service 上的 node.js 應用程式。
 

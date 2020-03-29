@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure IoT 中樞裝置布建服務中為多組織使用者布建裝置
-description: 如何使用裝置布建服務（DPS）實例為多組織使用者布建裝置
+title: 如何在 Azure IoT 中心設備預配服務中為多租戶預配設備
+description: 如何使用設備預配服務 （DPS） 實例為多租戶預配設備
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434744"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何針對多組織用戶佈建 
@@ -36,7 +36,7 @@ ms.locfileid: "75434744"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)快速入門。
 
@@ -87,38 +87,38 @@ ms.locfileid: "75434744"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，並開啟您的裝置佈建服務執行個體。
 
-2. 選取 [管理註冊] 索引標籤，然後按一下頁面頂端的 [新增註冊群組] 按鈕。 
+2. 選取 [管理註冊]**** 索引標籤，然後按一下頁面頂端的 [新增註冊群組]**** 按鈕。 
 
-3. 在 [新增註冊群組] 上輸入下列資訊，然後按一下 [儲存] 按鈕。
+3. 在 [新增註冊群組]**** 上輸入下列資訊，然後按一下 [儲存]**** 按鈕。
 
     **群組名稱**：輸入 **contoso-us-devices**。
 
-    **證明類型**：選取 [對稱金鑰]。
+    **證明類型**：選取 [對稱金鑰]****。
 
     **自動產生金鑰**：此核取方塊應已勾選。
 
-    **選取要如何將裝置指派給中樞**：選取 [最低延遲]。
+    **選取要如何將裝置指派給中樞**：選取 [最低延遲]****。
 
     ![為對稱金鑰證明新增多租用戶註冊群組](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-4. 在 [新增註冊群組] 上按一下 [連結新的 IoT 中樞]，以連結您的兩個區域中樞。
+4. 在 [新增註冊群組]**** 上按一下 [連結新的 IoT 中樞]****，以連結您的兩個區域中樞。
 
     **訂用帳戶**：如果您有多個訂用帳戶，請選擇您用來建立區域 IoT 中樞的訂用帳戶。
 
     **IoT 中樞**：選取您建立的其中一個區域中樞。
 
-    **存取原則**：選擇 [iothubowner]。
+    **存取原則**：選擇 [iothubowner]****。
 
     ![使用佈建服務連結區域 IoT 中樞](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-5. 在兩個區域 IoT 中樞都已連結後，您必須為註冊群組選取它們，然後按一下 [儲存] 以建立註冊的區域 IoT 中樞群組。
+5. 在兩個區域 IoT 中樞都已連結後，您必須為註冊群組選取它們，然後按一下 [儲存]**** 以建立註冊的區域 IoT 中樞群組。
 
     ![建立註冊的區域中樞群組](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-6. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]。 您必須先儲存註冊，才能產生金鑰。 此金鑰將在後續用來產生兩個模擬裝置的唯一裝置金鑰。
+6. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]****。 您必須先儲存註冊，才能產生金鑰。 此金鑰將在後續用來產生兩個模擬裝置的唯一裝置金鑰。
 
 
 ## <a name="create-regional-linux-vms"></a>建立區域 Linux VM
@@ -191,16 +191,16 @@ ms.locfileid: "75434744"
 
 在此節中，您將會將 Azure IoT C SDK 複製到每部 VM 上。 SDK 包含一個範例，此範例將會模擬從每個區域佈建租用戶裝置。
 
-1. 針對每個 VM，請使用下列命令來安裝**CMake**、 **g + +** 、 **gcc**和[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ：
+1. 對於每個 VM，使用以下命令安裝**CMake** **、g#** **、gcc**和[Git：](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
-1. 尋找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest)SDK 的標記名稱。
+1. 尋找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的標籤名稱。
 
-1. 將 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) \(英文\) 複製到兩部 VM 上。  使用您在上一個步驟中找到的標記做為 `-b` 參數的值：
+1. 將 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) \(英文\) 複製到兩部 VM 上。  使用您在上一個步驟中找到的標籤作為 `-b` 參數的值：
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -300,7 +300,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 此範例程式碼會模擬將佈建要求傳送至裝置佈建服務執行個體的裝置開機順序。 此開機順序能使裝置由系統辨識，並依據延遲指派給最接近的 IoT 中樞。
 
-1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀] 索引標籤，並記下 [識別碼範圍] 值。
+1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀]**** 索引標籤，並記下 [識別碼範圍]**__** 值。
 
     ![從入口網站刀鋒視窗擷取裝置佈建服務端點資訊](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -310,7 +310,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
     ```
 
-1. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍] 值。 
+1. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍]**** 值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -410,18 +410,18 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 依名稱刪除資源群組：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]****。
 
-2. 在 [依名稱篩選] 文字方塊中，輸入您的資源所屬的資源群組名稱 **contoso-us-resource-group**。 
+2. 在 [依名稱篩選]**** 文字方塊中，輸入您的資源所屬的資源群組名稱 **contoso-us-resource-group**。 
 
-3. 在結果清單中的資源群組右側，按一下 **...** ，然後按一下 [刪除資源群組]。
+3. 在結果清單中的資源群組右側，按一下 **...**，然後按一下 [刪除資源群組]****。
 
-4. 系統將會要求您確認是否刪除資源。 再次輸入您的資源群組名稱進行確認，然後按一下 [刪除]。 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
+4. 系統將會要求您確認是否刪除資源。 再次輸入您的資源群組名稱進行確認，然後按一下 [刪除]****。 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
-- 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
+- 要瞭解更多重新調配，請參閱[IoT 中心設備重新調配概念](concepts-device-reprovision.md) 
+- 要瞭解更多取消預配，請參閱[如何取消預配以前自動預配的設備](how-to-unprovision-devices.md) 
 
 
 

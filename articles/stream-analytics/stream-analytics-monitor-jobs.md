@@ -8,21 +8,21 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431675"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以程式設計方式來建立串流分析工作監視
 
 本文示範如何為串流分析工作啟用監視。 透過 REST API、Azure SDK 或 PowerShell 建立的串流分析作業預設不會啟用監視。 您可以在 Azure 入口網站中前往該作業的 [監視] 頁面，然後按一下 [啟用] 按鈕來手動啟用，或是按照本文中的步驟執行，將此程序自動化。 串流分析工作的監視資料將會顯示在 Azure 入口網站的 [計量] 區域中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-開始進行此程式之前，您必須具備下列必要條件：
+在開始此過程之前，您必須具有以下先決條件：
 
-* Visual Studio 2019 或2015
+* 視覺工作室 2019 或 2015
 * 已下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 * 一項已啟用監視的現有串流分析作業
 
@@ -135,7 +135,7 @@ ms.locfileid: "75431675"
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>為現有串流分析作業啟用監視
 
-下列程式碼將為「現有」 串流分析作業啟用監視。 程式碼的第一部分會對串流分析服務執行 GET 要求，以擷取特定串流分析工作的相關資訊。 在程式碼的後半部中，它會使用*ID*屬性（從 GET 要求中抓取）當做 put 方法的參數，將 put 要求傳送至 Insights 服務，以啟用串流分析作業的監視。
+下列程式碼將為「現有」**** 串流分析作業啟用監視。 程式碼的第一部分會對串流分析服務執行 GET 要求，以擷取特定串流分析工作的相關資訊。 它使用*ID*屬性（從 GET 請求檢索）作為代碼後半部分的 Put 方法的參數，該方法向 Insights 服務發送 PUT 請求，以啟用流分析作業的監視。
 
 > [!WARNING]
 > 如果您先前已經為不同的串流分析作業啟用監視 (不論是透過 Azure 入口網站，還是以程式設計方式透過以下的程式碼)，**建議您提供先前啟用監視時所提供的相同儲存體帳戶名稱。**
@@ -169,12 +169,12 @@ ms.locfileid: "75431675"
 
 ## <a name="get-support"></a>取得支援
 
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

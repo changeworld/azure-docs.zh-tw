@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET 的資料手機連結庫傳輸資料
+title: 使用 .NET 的資料移動庫傳輸資料
 titleSuffix: Azure Storage
-description: 使用資料手機連結庫，從 blob 和檔案內容移動或複製資料。 從本機檔案複製資料到 Azure 儲存體，或在儲存體帳戶內或之間複製資料。 輕鬆地將資料移轉至 Azure 儲存體。
+description: 使用資料移動庫將資料移動到或從 blob 和檔內容中移動或複製。 從本機檔案複製資料到 Azure 儲存體，或在儲存體帳戶內或之間複製資料。 輕鬆地將資料移轉至 Azure 儲存體。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,15 +11,15 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942914"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>透過資料移動程式庫傳輸資料
 
-Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式庫，其設計是為了高效能上傳、下載及複製 blob 和檔案。 資料手機連結庫提供了在適用于 .NET 的 Azure 儲存體用戶端程式庫中無法使用的便利方法。 這些方法可讓您設定平行作業的數目、追蹤傳輸進度、輕鬆地恢復已取消的傳輸，以及其他更多作業。
+Azure 存儲資料移動庫是一個跨平臺開源庫，專為高性能上載、下載和複製 Blob 和檔而設計。 資料移動庫提供了在 Azure 存儲用戶端庫中沒有 .NET 的便捷方法。 這些方法提供了設置平行作業的數量、跟蹤傳輸進度、輕鬆恢復取消的傳輸等功能。
 
 此程式庫也會使用 .NET Core，這表示您在建置適用於 Windows、Linux 和 macOS 的 .NET 應用程式時可以使用它。 若要深入了解 .NET Core，請參閱 [.NET Core 文件 (英文)](https://dotnet.github.io/)。 這個程式庫也適用於 Windows 的傳統 .NET 架構應用程式。
 
@@ -32,10 +32,10 @@ Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式�
 - 將檔案從 URL 複製到 Blob 儲存體。
 - 從 Blob 儲存體複製到 Blob 儲存體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure 儲存體帳戶](storage-account-create.md)
+- [視覺工作室代碼](https://code.visualstudio.com/)
+- [Azure 存儲帳戶](storage-account-create.md)
 
 ## <a name="setup"></a>安裝程式
 
@@ -44,12 +44,12 @@ Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式�
 3. 在 Visual Studio Code 中開啟此目錄。 您可以透過在 Windows 中於命令列輸入 `code .` 來快速完成此步驟。
 4. 從 Visual Studio Code Marketplace 安裝 [C# 擴充 (英文)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 重新啟動 Visual Studio Code。
 5. 這時，您應該會看到兩個提示。 其中一個是新增「建置和偵錯的必要資產。」 按一下 [是]。 另一個提示是還原無法解析的相依性。 按一下 [還原]。
-6. 修改 `launch.json` 下的 `.vscode` 以將外部終端機作為主控台。 這項設定應讀取為 `"console": "externalTerminal"`
+6. 修改 `.vscode` 下的 `launch.json` 以將外部終端機作為主控台。 這項設定應讀取為 `"console": "externalTerminal"`
 7. Visual Studio Code 可讓您偵錯 .NET Core 應用程式。 按 `F5` 以執行應用程式，並確定您的設定運作正常。 您應該會看到「Hello World!」 印出到主控台。
 
-## <a name="add-the-data-movement-library-to-your-project"></a>將資料手機連結庫新增至您的專案
+## <a name="add-the-data-movement-library-to-your-project"></a>將資料移動庫添加到專案
 
-1. 將最新版本的資料手機連結庫新增至 `<project-name>.csproj` 檔案的 `dependencies` 區段。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 將最新版本的資料移動庫添加到`dependencies``<project-name>.csproj`檔的部分。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 您應該會看到提示顯示以還原專案。 按一下 [還原] 按鈕。 您也可以在專案目錄的根目錄中輸入命令 `dotnet restore`，來從命令列還原專案。
 
 修改 `<project-name>.csproj`：
@@ -145,7 +145,7 @@ namespace DMLibSample
 }
 ```
 
-## <a name="upload-a-local-file-to-a-blob"></a>將本機檔案上傳至 blob
+## <a name="upload-a-local-file-to-a-blob"></a>將本地檔上載到 Blob
 
 將方法 `GetSourcePath` 和 `GetBlob` 加入到 `Program.cs`：
 
@@ -193,9 +193,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 按 `F5` 以執行應用程式。 您可以使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)檢視儲存體帳戶，確認是否有上傳。
 
-## <a name="set-the-number-of-parallel-operations"></a>設定平行作業的數目
+## <a name="set-the-number-of-parallel-operations"></a>設置平行作業的數量
 
-資料手機連結庫提供的一項功能是能夠設定平行作業的數目，以增加資料傳輸輸送量。 根據預設，資料手機連結庫會將平行作業的數目設定為 8 * 電腦上的核心數目。
+資料移動庫提供的一個功能是能夠設置平行作業的數量以提高資料傳輸輸送量。 預設情況下，資料移動庫將並行運算元設置為 8 = 電腦上的內核數。
 
 請留意，在低頻寬環境執行大量的平行作業可能會拖垮網路連線，並造成作業無法完成。 您必須針對此設定進行實驗，以根據您的可用網路頻寬決定最佳的運作方式。
 
@@ -259,7 +259,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="track-transfer-progress"></a>追蹤傳輸進度
 
-知道資料傳輸所需的時間很有説明。 不過，在傳送作業*期間*能夠查看傳輸的進度會變得更好。 為了達成此案例，我們需要建立 `TransferContext` 物件。 `TransferContext` 物件有兩種形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者是用來傳送單一檔案，而後者則是用來傳送檔案目錄。
+瞭解資料傳輸需要多長時間是有説明的。 然而，在轉移操作*期間*能夠看到轉讓的進度會更好。 為了達成此案例，我們需要建立 `TransferContext` 物件。 `TransferContext` 物件有兩種形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者用於傳輸單個檔，後者用於傳輸檔目錄。
 
 將方法 `GetSingleTransferContext` 和 `GetDirectoryTransferContext` 加入到 `Program.cs`：
 
@@ -309,7 +309,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="resume-a-canceled-transfer"></a>繼續已取消的傳輸
 
-資料手機連結庫所提供的另一項便利功能，是能夠繼續已取消的傳輸。 讓我們加入一些程式碼，使我們能夠輸入 `c` 來暫時取消傳輸，然後在 3 秒之後繼續傳輸。
+資料移動庫提供的另一個方便功能是能夠恢復取消的傳輸。 讓我們加入一些程式碼，使我們能夠輸入 `c` 來暫時取消傳輸，然後在 3 秒之後繼續傳輸。
 
 修改 `TransferLocalFileToAzureBlob`：
 
@@ -365,9 +365,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 目前為止，`checkpoint` 的值一律是設為 `null`。 現在，如果我們取消傳輸，我們會擷取傳輸的最後一個檢查點，然後在新的傳輸內容中使用這個新的檢查點。
 
-## <a name="transfer-a-local-directory-to-blob-storage"></a>將本機目錄傳送至 Blob 儲存體
+## <a name="transfer-a-local-directory-to-blob-storage"></a>將本地目錄傳輸到 Blob 存儲
 
-如果資料手機連結庫一次只能傳送一個檔案，就會令人失望。 所幸，事實並非如此。 資料手機連結庫提供傳輸檔案目錄及其所有子目錄的功能。 讓我們加入一些程式碼來這麼做。
+如果資料移動庫一次只能傳輸一個檔，那將是令人失望的。 所幸，事實並非如此。 資料移動庫提供傳輸檔目錄及其所有子目錄的功能。 讓我們加入一些程式碼來這麼做。
 
 首先，將方法 `GetBlobDirectory` 加入 `Program.cs`：
 
@@ -446,7 +446,7 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 
 這個方法與上傳單一檔案的方法有一些差異。 我們現在使用 `TransferManager.UploadDirectoryAsync` 和稍早建立的 `getDirectoryTransferContext` 方法。 此外，我們現在會提供 `options` 值給上傳作業，這可讓我們指出要在上傳中包含的子目錄。
 
-## <a name="copy-a-file-from-url-to-a-blob"></a>將檔案從 URL 複製到 blob
+## <a name="copy-a-file-from-url-to-a-blob"></a>將檔從 URL 複製到 Blob
 
 現在，讓我們加入程式碼，以從 URL 將檔案複製到 Azure Blob。
 
@@ -504,9 +504,9 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 
 這項功能的一個重要使用案例，是當您必須從另一個雲端服務 (例如 AWS) 將資料移動到 Azure 時。 只要您有可以存取資源的 URL，您就可以使用 `TransferManager.CopyAsync` 方法，輕鬆地將資源移動至 Azure Blob。 這個方法也引入新的布林值參數。 將此參數設定為 `true`，表示我們要執行非同步伺服器端複製。 將此參數設定為 `false` 表示同步複製，這代表資源會先下載到本機電腦，然後再上傳至 Azure Blob。 不過，同步複製目前僅適用於從某個 Azure 儲存體資源複製到另一個 Azure 儲存體。
 
-## <a name="copy-a-blob"></a>複製 blob
+## <a name="copy-a-blob"></a>複製 Blob
 
-資料手機連結庫唯一提供的另一項功能，就是從一個 Azure 儲存體資源複製到另一個資源的能力。
+資料移動庫唯一提供的另一個功能是能夠從一個 Azure 存儲資源複製到另一個 Azure 存儲資源。
 
 修改 `TransferAzureBlobToAzureBlob`：
 
@@ -562,10 +562,10 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 
 在此範例中，我們將 `TransferManager.CopyAsync` 中的布林值參數設為 `false`，指出我們要執行同步複製。 這表示資源會先下載到本機電腦，然後再上傳至 Azure Blob。 同步複製選項是確保複製作業有一致速度的絕佳方式。 相較之下，非同步伺服器端複製取決於伺服器的可用網路頻寬，速度可能會有所變動。 不過，相較於非同步複製，同步複製可能會產生額外的輸出成本。 建議的方法是在與您來源儲存體帳戶位於同一區域的 Azure VM 中使用同步複製，以避免產生輸出成本。
 
-資料移動應用程式現在已完成。 [您可在 GitHub 上取得完整的程式碼範例](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。
+資料移動應用程式現已完成。 [您可在 GitHub 上取得完整的程式碼範例](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure 儲存體資料手機連結庫參考檔](https://azure.github.io/azure-storage-net-data-movement)。
+[Azure 存儲資料移動庫參考文檔](https://azure.github.io/azure-storage-net-data-movement)。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

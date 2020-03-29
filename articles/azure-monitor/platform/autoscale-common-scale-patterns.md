@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75396099"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常見的自動調整規模模式概觀
@@ -18,13 +18,13 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="lets-get-started"></a>開始使用
 
-本文假設您已熟悉如何使用自動調整規模。 您可以[從這裡開始調整您的資源][1]。 下列是一些常見的調整規模模式。
+本文假設您已熟悉如何使用自動調整規模。 您可以[從這裡開始調整資源規模][1]。 下列是一些常見的調整規模模式。
 
 ## <a name="scale-based-on-cpu"></a>根據 CPU 調整規模
 
 您具有 Web 應用程式 (/VMSS/雲端服務角色)，而且
 
-- 您想要根據 CPU 進行擴增/縮減。
+- 您想要根據 CPU 進行相應放大/縮小。
 - 此外，您想要確定執行個體數目會有下限。
 - 另外還想要確定，您會將上限設定為您可調整到的執行個體數目。
 
@@ -35,7 +35,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 您具有 Web 應用程式 (/VMSS/雲端服務角色)，而且
 
 - 您預設想要 3 個執行個體 (在工作日)
-- 您不預期週末會有流量，因此想要在週末縮小為 1 個執行個體。
+- 您不預期週末會有流量，因此想要在週末相應減少為 1 個執行個體。
 
 ![在工作日與週末以不同方式調整規模][3]
 
@@ -43,14 +43,14 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 您具有 Web 應用程式 (/VMSS/雲端服務角色)，而且
 
-- 您預設想要根據 CPU 使用量擴大/縮小
+- 您預設想要根據 CPU 使用量相應增加/減少
 - 不過，在假日期間 (或對貴企業很重要的特定天數)，您會想要覆寫預設值，以便有更多可供使用的容量。
 
 ![在假日期間以不同方式調整規模][4]
 
 ## <a name="scale-based-on-custom-metric"></a>根據自訂計量調整規模
 
-您有 web 前端和與後端通訊的 API 層。
+您有一個 Web 前端和一個與後端通信的 API 層。
 
 - 您想要根據前端的自訂事件來調整 API 層的規模 (例如：您想要根據購物車中的項目數來調整結帳程序)
 

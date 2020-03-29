@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76748830"
 ---
 本文針對以 Azure IoT 為主的物聯網 (IoT) 基礎結構提供更進一層的詳細資料。 它會連結到設定及部署每個元件的實作層級詳細資料。 另外也會提供各種競爭方法之間的比較和選擇。
@@ -33,7 +33,7 @@ IoT 解決方案加速器可使用下列兩個方法保護 IoT 裝置：
 
 * 提供每部裝置唯一識別金鑰 (安全性權杖)，裝置可使用這個金鑰與 IoT 中樞通訊。
 
-* 使用裝置上的 [X.509 憑證](https://www.itu.int/rec/T-REC-X.509-201210-S)與私密金鑰做為向 IoT 中樞驗證裝置的方法。 這種驗證方法可在任何時候確保無法從裝置外部知道裝置上的私密金鑰，提供較高的安全性等級。
+* 使用裝置上的 [X.509 憑證](https://www.itu.int/rec/T-REC-X.509-201210-S)和私密金鑰做為向 IoT 中樞驗證裝置的方法。 這種驗證方法可在任何時候確保無法從裝置外部知道裝置上的私密金鑰，提供較高的安全性等級。
 
 安全性權杖方法藉由將裝置對 IoT 中樞所進行的每個呼叫與對稱金鑰建立關聯，提供每個呼叫的驗證。 X.509 型驗證允許實體層 IoT 裝置的驗證做為 TLS 連線建立作業的一部份。 安全性權杖型方法可不搭配 X.509 驗證使用，該驗證是較不安全的模式。 這兩種方法的選擇主要取決於裝置驗證所需的安全性有多高，以及裝置上安全存放裝置的可用性 (以安全地儲存私密金鑰)。
 
@@ -49,15 +49,15 @@ IoT 中樞使用安全性權杖來驗證裝置和服務，以避免透過網路�
 
 每個 IoT 中樞都有一個[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)，可用來在服務中建立各裝置的資源 (例如含有傳送中雲端到裝置訊息的佇列)，以及允許存取裝置面向端點。 IoT 中樞身分識別登錄會針對方案，為裝置身分識別和安全性金鑰提供安全的儲存體。 個別或群組的裝置身分識別可以新增到允許的清單或封鎖清單，以便完整控制裝置存取。 下列文章提供身分識別登錄結構和所支援作業的更詳細資訊。
 
-[IoT 中樞支援 MQTT、AMQP 與 HTTP 之類的通訊協定](../articles//iot-hub/iot-hub-devguide-security.md)。 這些通訊協定會各自以不同的方式使用 IoT 裝置到 IoT 中樞的安全性權杖：
+[IoT 中樞支援 MQTT、AMQP 和 HTTP](../articles//iot-hub/iot-hub-devguide-security.md) 之類的通訊協定。 這些通訊協定會各自以不同的方式使用 IoT 裝置到 IoT 中樞的安全性權杖：
 
 * AMQP：SASL PLAIN 和 AMQP 宣告式安全性 (若為 IoT 中樞層級權杖時為 `{policyName}@sas.root.{iothubName}`；若為裝置範圍權杖時為 `{deviceId}`)。
 
-* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱]`{IoThubhostname}/{deviceId}`**欄位中使用**，而在 [密碼] 欄位中則使用 SAS 權杖。
+* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱]**** 欄位中使用 `{IoThubhostname}/{deviceId}`，而在 [密碼]**** 欄位中則使用 SAS 權杖。
 
 * HTTP︰有效權杖位於驗證要求標頭中。
 
-IoT 中樞身分識別登錄可用來設定每一裝置的安全性認證和存取控制。 但是，如果 IoT 解決方案已經大幅投資[自訂裝置身分識別登錄和/或驗證配置](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，則可透過建立權杖服務，將現有基礎結構與 IoT 中樞整合。
+IoT 中樞身分識別登錄可用來設定每一裝置的安全性認證和存取控制。 但是，如果 IoT 解決方案已經大幅投資[自訂裝置身分識別登錄及/或驗證配置](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，則可藉由建立權杖服務，將現有基礎結構與 IoT 中樞整合。
 
 ### <a name="x509-certificate-based-device-authentication"></a>X.509 憑證型裝置驗證
 
@@ -77,21 +77,21 @@ IoT 中樞身分識別登錄可用來設定每一裝置的安全性認證和存�
 
 ## <a name="securing-the-connection"></a>保護連線安全
 
-IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援 [TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 與 TLS 1.0 (依此順序)。 針對 TLS 1.0 的支援僅為提供回溯相容性。 請檢查[IoT 中樞中的 tls 支援](../articles/iot-hub/iot-hub-tls-support.md)，以瞭解如何將中樞設定為使用 tls 1.2，因為它提供最高的安全性。
+IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援[TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 和 TLS 1.0，按此順序排列。 針對 TLS 1.0 的支援僅為提供回溯相容性。 檢查[IoT 中心中的 TLS 支援](../articles/iot-hub/iot-hub-tls-support.md)，瞭解如何將集線器配置為使用 TLS 1.2，因為它提供了最大的安全性。
 
 ## <a name="securing-the-cloud"></a>保護雲端
 
 Azure IoT 中樞允許針對每個安全性金鑰定義[存取控制原則](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用下列權限組，授與每個 IoT 中樞端點的存取權。 權限可根據功能限制 IoT 中樞的存取權。
 
-* **RegistryRead**。 為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **註冊表讀取**。 為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
-* **RegistryReadWrite**。 為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **註冊表讀取寫入**。 為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
 * **ServiceConnect**。 授與雲端服務面向通訊和監視端點的存取權。 例如，它授權後端雲端服務接收裝置到雲端的訊息、傳送雲端到裝置的訊息，以及擷取相對應的傳遞通知。
 
 * **DeviceConnect**。 授與裝置面向端點的存取權。 例如，它會授與傳送裝置到雲端的訊息和接收雲端到裝置的訊息的權限。 裝置會使用此權限。
 
-利用**安全性權杖**取得 IoT 中樞之 [DeviceConnect](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
+利用[安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)取得 IoT 中樞之 **DeviceConnect** 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
 
 服務元件只能使用授與適當權限的共用存取原則來[產生安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 
@@ -99,15 +99,15 @@ Azure IoT 中樞和可能屬於解決方案的其他服務，能允許使用 Azu
 
 由 Azure IoT 中樞內嵌的資料可供各種不同服務使用，例如 Azure 串流分析和 Azure Blob 儲存體。 這些服務允許管理存取。 深入了解這些服務和可用選項：
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：一個適用於半結構化資料的可調整、已完全編製索引的資料庫服務，可管理您所佈建裝置的中繼資料，例如屬性、設定與安全性屬性。 Azure Cosmos DB 提供高效能且高輸送量的處理、無從驗證結構描述的資料索引編製，以及豐富的 SQL 查詢介面。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：一個適用於半結構化資料的可調整、已完全編製索引的資料庫服務，可管理您所佈建裝置的中繼資料，例如屬性、組態及安全性屬性。 Azure Cosmos DB 提供高效能且高輸送量的處理、無從驗證結構描述的資料索引編製，以及豐富的 SQL 查詢介面。
 
 * [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)：雲端中處理的即時串流讓您能夠快速開發並部署低成本的分析方案，以在第一時間提供裝置、感應器、基礎結構與應用程式的深入剖析資料。 來自這個完全受控服務的資料可調整為任何數量，但仍可達到高輸送量、低遲性和恢復功能。
 
-* [Azure App Service](https://azure.microsoft.com/services/app-service/)：一個雲端平台，可供建置功能強大的 Web 與行動應用程式來連接各地的資料；不論是在雲端還是內部部署環境內。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
+* [Azure App Service](https://azure.microsoft.com/services/app-service/)：一個雲端平台，可供建置功能強大的 Web 和行動應用程式來連接各地的資料；不論是在雲端還是內部部署環境內。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure App Service 的 Logic Apps 功能可協助您將 IoT 解決方案整合到現有的企業營運系統並自動化工作流程處理。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
 
-* [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/)：可靠且符合經濟效益的雲端儲存體，適用於裝置要傳送到雲端的資料。
+* [Azure Blob 存儲](https://azure.microsoft.com/services/storage/)：設備發送到雲的資料的可靠、經濟的雲存儲。
 
 ## <a name="conclusion"></a>結論
 
