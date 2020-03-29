@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897837"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
@@ -20,14 +20,14 @@ ms.locfileid: "78897837"
 
 ## <a name="create-a-resource-token"></a>建立資源權杖
 
-Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源權杖」  一詞是 Azure Cosmos DB 的概念。 若要建立資源權杖，請下載 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果您的應用程式需要建立資源權杖，並使用它們來存取圖形資料庫，則需要 2 個不同的 SDK。
+Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源權杖」** 一詞是 Azure Cosmos DB 的概念。 若要建立資源權杖，請下載 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果您的應用程式需要建立資源權杖，並使用它們來存取圖形資料庫，則需要 2 個不同的 SDK。
 
 下方將概要說明資源權杖上的物件模型階層：
 
 - **Azure Cosmos DB 帳戶** - 具有相關聯 DNS 的最上層實體 (例如 `contoso.gremlin.cosmos.azure.com`)。
   - **Azure Cosmos DB 資料庫**
     - **使用者**
-      - **權限**
+      - [權限]****
         - **權杖** - 權限物件屬性，代表允許或拒絕的動作。
 
 資源權杖使用下列格式：`"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`。 此字串對用戶端而言是不透明的，而且應該在不修改或解譯的情況下使用。
@@ -95,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>限制
 
-透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，則會拒絕驗證要求，而且您會收到下列錯誤訊息：「已超過允許同時使用的 100 個資源權杖限制。」 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
+透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，身份驗證請求將被拒絕，並且您會收到以下錯誤訊息："超出允許的資源權杖限制 100，可同時使用。 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
 
 ## <a name="permission"></a>權限
 
-應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」  權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()  、.addE()  、.drop()  或 .property()  。
+應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」** 權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()**、.addE()**、.drop()** 或 .property()**。
 
 ## <a name="next-steps"></a>後續步驟
 * Azure Cosmos DB 中的[角色型存取控制](role-based-access-control.md)

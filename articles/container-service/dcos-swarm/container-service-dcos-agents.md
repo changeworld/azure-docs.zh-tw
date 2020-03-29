@@ -8,10 +8,10 @@ ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278373"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(已淘汰) Azure Container Service 的 DC/OS 代理程式集區
@@ -31,14 +31,14 @@ Azure Container Service 中的 DC/OS 叢集包含兩個集區中的代理程式�
 
 Azure Container Service 中的 DC/OS 代理程式集區會以下列方式建立：
 
-* 「私用集區」包含您[部署 DC/OS 叢集](container-service-deployment.md)時所指定數目的代理程式節點。 
+* 「私用集區」**** 包含您[部署 DC/OS 叢集](container-service-deployment.md)時所指定數目的代理程式節點。 
 
-* 「公用集區」一開始會包含所預先決定數目的代理程式節點。 佈建 DC/OS 叢集時會自動新增此集區。
+* 「公用集區」**** 一開始會包含所預先決定數目的代理程式節點。 佈建 DC/OS 叢集時會自動新增此集區。
 
 私用集區和公用集區是 Azure 虛擬機器擴展集。 您可以在部署後調整這些集區的大小。
 
 ## <a name="use-agent-pools"></a>使用代理程式集區
-根據預設，**Marathon** 會將任何新的應用程式部署至*私用*代理程式節點。 您必須在建立應用程式時，明確地將應用程式部署到「公用」節點。 選取 [選用] 索引標籤，然後輸入 **slave_public** 做為 [接受的資源角色] 值。 [這裡](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)和 [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) 文件中皆有此程序的記載。
+根據預設，**Marathon** 會將任何新的應用程式部署至*私用*代理程式節點。 您必須在建立應用程式時，明確地將應用程式部署到「公用」** 節點。 選取 [選用]**** 索引標籤，然後輸入 **slave_public** 做為 [接受的資源角色]**** 值。 [這裡](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)和 [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) 文件中皆有此程序的記載。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解如何[管理 DC/OS 容器](container-service-mesos-marathon-ui.md)。

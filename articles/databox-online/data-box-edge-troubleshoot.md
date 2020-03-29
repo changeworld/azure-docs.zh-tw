@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756152"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>針對 Azure Data Box Edge 問題進行疑難排解 
 
 本文說明如何針對 Azure Data Box Edge 問題進行疑難排解。 
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 執行診斷
@@ -31,7 +31,7 @@ ms.locfileid: "60756152"
 
 若要診斷任何裝置錯誤並進行疑難排解，您可以執行診斷測試。 在您裝置的本機 Web UI 中執行下列步驟，以執行診斷測試。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]  。 選取您想要執行的測試，然後按一下 [執行測試]  。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
+1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您想要執行的測試，然後按一下 [執行測試]****。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
 
     ![選取測試](media/data-box-edge-troubleshoot/run-diag-1.png)
  
@@ -50,11 +50,11 @@ ms.locfileid: "60756152"
 
 執行下列步驟來收集支援套件。 
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [支援]  。 按一下 [建立支援套件]  。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
+1. 在本機 Web UI 中，移至 [疑難排解] > [支援]****。 按一下 [建立支援套件]****。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
 
     ![按一下 [新增使用者]](media/data-box-edge-troubleshoot/collect-logs-1.png)
  
-2. 建立支援套件之後，按一下 [下載支援套件]  。 壓縮的套件會下載至您所選的路徑。 您可以將此套件解壓縮並檢視系統記錄檔。
+2. 建立支援套件之後，按一下 [下載支援套件]****。 壓縮的套件會下載至您所選的路徑。 您可以將此套件解壓縮並檢視系統記錄檔。
 
     ![按一下 [新增使用者]](media/data-box-edge-troubleshoot/collect-logs-2.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "60756152"
 
       ![連接到並檢視共用內容](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. 按一下 Microsoft Data Box Edge 資料夾  。 這個資料夾有兩個子資料夾：
+2. 按一下 Microsoft Data Box Edge 資料夾__。 這個資料夾有兩個子資料夾：
 
     - 具有上傳錯誤記錄檔的 [上傳] 資料夾。
     - 在重新整理期間發生錯誤的 [重新整理] 資料夾。

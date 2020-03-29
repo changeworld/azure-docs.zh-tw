@@ -1,5 +1,5 @@
 ---
-title: Java SDK：Azure Data Lake Storage Gen1 上的檔案系統作業 | Microsoft Docs
+title: Java SDK：Azure Data Lake Storage Gen1 的檔案系統作業 | Microsoft Docs
 description: 使用 Azure Data Lake Storage Gen1 的 Java SDK 在 Data Lake Storage Gen1 上執行檔案系統作業，例如建立資料夾等。
 services: data-lake-store
 documentationcenter: ''
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877459"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 在 Azure Data Lake Storage Gen1 上進行檔案系統作業
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
+> * [JAVA SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
 > 
 
-了解如何使用 Azure Data Lake Storage Gen1 Java SDK 來執行基本作業，例如建立資料夾、上傳和下載資料檔案等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
+瞭解如何使用 Azure 資料存儲源 Gen1 JAVA SDK 執行基本操作，如創建資料夾、上載和下載資料檔案等。有關資料存儲第 1 代的詳細資訊，請參閱[Azure 資料存儲湖存儲第 1 代](data-lake-store-overview.md)。
 
 您可以在 [Azure Data Lake Storage Gen1 Java API 文件](https://azure.github.io/azure-data-lake-store-java/javadoc/)取用適用於 Data Lake Storage Gen1 的 Java SDK API 文件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * Java Development Kit (JDK 7 或更新版本，使用 Java 1.7 版或更新版本)
 * Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。
-* [Maven](https://maven.apache.org/install.html). 本教學課程使用 Maven 來處理組建和專案相依性。 雖有可能不使用 Maven 或 Gradle 等組建系統進行建置，但這些系統讓相依性管理變得輕鬆許多。
+* [馬文](https://maven.apache.org/install.html). 本教學課程使用 Maven 來處理組建和專案相依性。 雖有可能不使用 Maven 或 Gradle 等組建系統進行建置，但這些系統讓相依性管理變得輕鬆許多。
 * (選擇性) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 或 [Eclipse](https://www.eclipse.org/downloads/) 之類的 IDE。
 
 ## <a name="create-a-java-application"></a>建立 Java 應用程式
@@ -43,7 +43,7 @@ ms.locfileid: "60877459"
 
 1. 從命令列或透過 IDE，使用 [mvn 原型](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)建立 Maven 專案。 如需有關如何使用 IntelliJ 建立 Java 專案的指示，請參閱[這裡](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 如需有關如何使用 Eclipse 建立專案的指示，請參閱[這裡](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 將下列相依性新增至 Maven **pom.xml** 檔案。 將下列程式碼片段新增至 **\</project>** 標記之前：
+2. 將下列相依性新增至 Maven **pom.xml** 檔案。 在**\</project>** 標記之前添加以下程式碼片段：
    
         <dependencies>
           <dependency>
@@ -205,7 +205,7 @@ ms.locfileid: "60877459"
     promptEnterKey();
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
-1. 若要從 IDE 執行，請找到並按下 [執行]  按鈕。 若要從 Maven 執行，請使用 [exec: exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
+1. 若要從 IDE 執行，請找到並按下 [執行]**** 按鈕。 若要從 Maven 執行，請使用 [exec: exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
 2. 若要產生您可以從命令列執行的獨立 jar，請使用 [Maven 組件外掛程式](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)建置內含所有相依性的 jar。 [GitHub 上的範例原始程式碼](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 有範例。
 
 ## <a name="next-steps"></a>後續步驟

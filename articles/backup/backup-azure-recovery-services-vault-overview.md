@@ -4,10 +4,10 @@ description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673245"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
@@ -26,7 +26,7 @@ ms.locfileid: "78673245"
 
 - **將您的混合式 IT 環境集中監視**︰透過復原服務保存庫，您不只可以監視 [Azure IaaS VM](backup-azure-manage-vms.md)，還可以從中央入口網站監視[內部部署資產](backup-azure-manage-windows-server.md#manage-backup-items)。 [深入了解](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **角色型存取控制 (RBAC)** ：RBAC 提供 Azure 中的更細緻存取權管理。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 RBAC 相容，且會對一組定義之使用者角色的備份和還原存取權限加以限制。 [深入了解](backup-rbac-rs-vault.md)
+- **角色型存取控制 (RBAC)**：RBAC 提供 Azure 中的更細緻存取權管理。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 RBAC 相容，且會對一組定義之使用者角色的備份和還原存取權限加以限制。 [深入了解](backup-rbac-rs-vault.md)
 
 - **保護 Azure 虛擬機器的所有設定**︰復原服務保存庫會保護以 Resource Manager 為基礎的 VM，包括進階磁碟、受控磁碟及加密的 VM。 將備份保存庫升級至復原服務保存庫，讓您有機會可將以 Service Manager 為基礎的 VM 升級至以 Resource Manager 為基礎的 VM。 在升級保存庫時，您可以保留以 Service Manager 為基礎的 VM 復原點，並設定已升級 (已啟用 Resource Manager) 的 VM 保護。 [深入了解](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
@@ -34,7 +34,7 @@ ms.locfileid: "78673245"
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在入口網站中管理復原服務保存庫
 
-建立和管理 Azure 入口網站中的復原服務保存庫很輕鬆，因為備份服務已整合至其他 Azure 服務。 這項整合代表您可以在目標服務的內容中，建立或管理復原服務保存庫。 例如，若要檢視 VM 的復原點，請選取您的 VM，然後按一下 [作業] 功能表中的 [備份]。
+建立和管理 Azure 入口網站中的復原服務保存庫很輕鬆，因為備份服務已整合至其他 Azure 服務。 這項整合代表您可以在目標服務的內容中，** 建立或管理復原服務保存庫。 例如，若要檢視 VM 的復原點，請選取您的 VM，然後按一下 [作業] 功能表中的 [備份]****。
 
 ![復原服務保存庫詳細資料 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 

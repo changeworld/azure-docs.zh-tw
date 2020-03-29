@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919425"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 啟動程序停滯於 Windows Update
@@ -43,7 +43,7 @@ ms.locfileid: "77919425"
 ### <a name="remove-the-update-that-causes-the-problem"></a>移除造成問題的更新
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。 
-2. [將 OS 磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
+2. [將作業系統磁片附加到恢復 VM。](troubleshoot-recovery-disks-portal-windows.md)
 3. 當 OS 磁碟連結至復原 VM 後，請執行 **diskmgmt.msc** 來開啟磁碟管理，並確認連結的磁碟是**連線**狀態。 記下為已連結而包含 \windows 資料夾的 OS 磁碟指派的磁碟機代號。 如果該磁碟已加密，請先將其解密，再繼續進行本文件中的後續步驟。
 
 4. 開啟提升權限的命令提示字元執行個體 (以系統管理員身分執行)。 執行下列命令以取得連結的 OS 磁碟上包含的更新套件清單：
@@ -53,7 +53,7 @@ ms.locfileid: "77919425"
     例如，若連結的 OS 磁碟是磁碟機 F，請執行下列命令：
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中] 或 [解除安裝擱置中] 狀態的更新。  以下是更新狀態的範例：
+5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中]**** 或 [解除安裝擱置中]**** 狀態的更新。  以下是更新狀態的範例：
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

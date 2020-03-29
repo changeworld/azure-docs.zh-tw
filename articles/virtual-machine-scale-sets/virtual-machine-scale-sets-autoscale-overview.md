@@ -11,10 +11,10 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278148"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虛擬機器擴展集自動調整的概觀
@@ -30,12 +30,12 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 
 
 ## <a name="use-host-based-metrics"></a>使用主機型計量
-您可以建立內建於主機計量、可從您的 VM 執行個體取得的自動調整規則。 主機計量可讓您掌握擴展集中 VM 執行個體的效能，而不需要安裝或設定其他代理程式和資料收集。 使用這些計量的自動調整規模規則可以擴增或縮減 VM 執行個體的數目，以回應 CPU 使用量、記憶體需求或磁碟存取。
+您可以建立內建於主機計量、可從您的 VM 執行個體取得的自動調整規則。 主機計量可讓您掌握擴展集中 VM 執行個體的效能，而不需要安裝或設定其他代理程式和資料收集。 使用這些計量的自動調整規模規則可以相應放大或相應縮小 VM 執行個體的數目，以回應 CPU 使用量、記憶體需求或磁碟存取。
 
 可以使用下列其中一個工具來建立使用主機型計量的自動調整規則：
 
-- [Azure 入口網站](virtual-machine-scale-sets-autoscale-portal.md)
-- [Azure PowerShell](tutorial-autoscale-powershell.md)
+- [Azure 門戶](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure 電源外殼](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 範本](tutorial-autoscale-template.md)
 
@@ -78,7 +78,7 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 | 最大值          |
 | 總計            |
 | Last             |
-| 計數            |
+| Count            |
 
 使用下列其中一個運算子將計量與您定義的閾值相比較時，則會觸發自動調整規則：
 
@@ -86,7 +86,7 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 |--------------------------|
 | 大於             |
 | 大於或等於 |
-| 少於                |
+| 小於                |
 | 小於或等於    |
 | 等於                 |
 | 不等於             |
@@ -124,7 +124,7 @@ Azure 診斷擴充功能是在 VM 執行個體內部執行的代理程式。 代
 
 下列範例是可能因使用以排程為基礎的自動調整規則獲益的情節：
 
-- 在客戶需求增加時的工作日開始時自動擴增 VM 執行個體數目。 在工作日結束時，自動調整 VM 中的執行個體數目，在應用程式使用較低的夜間降低資源成本。
+- 在客戶需求增加時的工作日開始時自動相應放大 VM 執行個體數目。 在工作日結束時，自動調整 VM 中的執行個體數目，在應用程式使用較低的夜間降低資源成本。
 - 如果部門在月份或會計週期的某些時候會使用大量應用程式，則自動調整 VM 執行個體數目以配合部門的額外需求。
 - 有行銷事件、促銷或節日銷售時，您可以在預期的客戶需求來臨前自動調整 VM 執行個體數目。 
 
@@ -132,11 +132,11 @@ Azure 診斷擴充功能是在 VM 執行個體內部執行的代理程式。 代
 ## <a name="next-steps"></a>後續步驟
 您可以使用下列其中一個工具來建立使用主機型計量的自動調整規則：
 
-- [Azure PowerShell](tutorial-autoscale-powershell.md)
+- [Azure 電源外殼](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 範本](tutorial-autoscale-template.md)
 
-本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的*數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的*大小*。 如需詳細資訊，請參閱[使用虛擬機器擴展集垂直自動調整](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
+本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的*數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的*大小*。 有關詳細資訊，請參閱[使用虛擬機器縮放集的垂直自動縮放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
 如需有關如何管理 VM 執行個體的資訊，請參閱[使用 Azure PowerShell 管理虛擬機器擴展集](virtual-machine-scale-sets-windows-manage.md)。
 

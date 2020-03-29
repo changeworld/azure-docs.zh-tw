@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911730"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
@@ -28,7 +28,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - **在 Azure 中託管的 Azure 資料箱服務** – 可供您用來建立裝置訂單、設定裝置，然後追蹤訂單直到完成的管理服務。
 - **資料箱裝置** – 寄送給您的傳輸裝置，可供您將內部部署資料匯入 Azure。 
 - **連線至裝置的用戶端/主機** – 在基礎結構中，連線至資料箱裝置並包含需受保護資料的用戶端。
-- **雲端儲存體** – Azure 雲端中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
+- **雲端儲存體** – Azure 中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
 
 下圖表示透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程。
 
@@ -50,7 +50,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - 只能執行資料箱專用軟體。
 - 在鎖定狀態下開機。
 - 透過裝置解除鎖定密碼控制裝置存取。
-- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證] 頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
+- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證]**** 頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>資料箱資料保護
 

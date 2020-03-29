@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244973"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049779"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>與 Azure AD 同盟的多網域支援
 下列文件提供與 Office 365 或 Azure AD 網域同盟時，如何使用多個頂層網域和子網域的指引。
@@ -69,7 +69,7 @@ ms.locfileid: "60244973"
 
 因此在 Azure AD 或 Office 365 驗證期間，系統會以使用者權杖的 IssuerUri 項目來尋找 Azure AD 中的網域。  如果找不到相符項目，驗證將會失敗。
 
-例如，如果使用者的 UPN 是 bsimon@bmcontoso.com，AD FS 所簽發之權杖中的 IssuerUri 元素將會被設定為 <http://bmcontoso.com/adfs/services/trust>。 此元素將會符合 Azure AD 設定，而驗證將會成功。
+例如，如果使用者的 UPN 是 bsimon@bmcontoso.com，AD FS 所簽發之權杖中的 IssuerUri 元素將會被設定為 `http://bmcontoso.com/adfs/services/trust`。 此元素將會符合 Azure AD 設定，而驗證將會成功。
 
 以下是實作此邏輯的自訂宣告規則：
 
@@ -82,7 +82,7 @@ ms.locfileid: "60244973"
 >
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>如何更新 AD FS 與 Azure AD 之間的信任
-如果您未在 AD FS 與 Azure AD 執行個體之間設定同盟信任，可能需要重新建立此信任。  原因在於，最初未使用 `-SupportMultipleDomain` 參數進行設定時，系統會將 IssuerUri 設定為預設值。  在下列螢幕擷取畫面中，您可以看到已將 IssuerUri 設定為 https://adfs.bmcontoso.com/adfs/services/trust 。
+如果您未在 AD FS 與 Azure AD 執行個體之間設定同盟信任，可能需要重新建立此信任。  原因在於，最初未使用 `-SupportMultipleDomain` 參數進行設定時，系統會將 IssuerUri 設定為預設值。  在下列螢幕擷取畫面中，您可以看到已將 IssuerUri 設定為 `https://adfs.bmcontoso.com/adfs/services/trust`。
 
 如果您已成功地在 Azure AD 入口網站中加入新網域，接著嘗試使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 來轉換它，將會收到下列錯誤。
 
@@ -100,8 +100,8 @@ ms.locfileid: "60244973"
 
 請使用下列步驟來移除 Microsoft Online 信任，然後更新您的原始網域。
 
-1. 在 AD FS 同盟伺服器上，開啟 [AD FS 管理] 
-2. 展開左側的 [信任關係]  和 [信賴憑證者信任] 
+1. 在 AD FS 同盟伺服器上，開啟 [AD FS 管理] ****
+2. 展開左側的 [信任關係]**** 和 [信賴憑證者信任]****
 3. 刪除右側的 **Microsoft Office 365 身分識別平台** 項目。
    ![移除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安裝[適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組](https://msdn.microsoft.com/library/azure/jj151815.aspx)的機器上執行下列命令：`$cred=Get-Credential`。  
@@ -126,18 +126,18 @@ ms.locfileid: "60244973"
 5. 按一下 [安裝]
 
 ### <a name="verify-the-new-top-level-domain"></a>確認新的最上層網域
-藉由使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>`，您可以檢視更新的 IssuerUri。  下列螢幕擷取畫面會顯示已在原始網域 http://bmcontoso.com/adfs/services/trust 上更新同盟設定
+藉由使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>`，您可以檢視更新的 IssuerUri。  下列螢幕擷取畫面會顯示已在原始網域 `http://bmcontoso.com/adfs/services/trust` 上更新同盟設定
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-此外，已將新網域上的 IssuerUri 設定為 https://bmfabrikam.com/adfs/services/trust
+此外，已將新網域上的 IssuerUri 設定為 `https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
 ## <a name="support-for-subdomains"></a>對於子網域的支援
 在加入子網域時，因為 Azure AD 處理網域的方式，子網域將會繼承父項的設定。  所以，IssuerUri 需要與父項相符。
 
-因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  來自 corp.bmcontoso.com 之使用者的 IssuerUri 必須是 **http://bmcontoso.com/adfs/services/trust 。**  不過，以上針對 Azure AD 實作的標準規則，將會透過簽發者產生 **http://corp.bmcontoso.com/adfs/services/trust** 的權杖。 的權杖，這與網域所需的值不符，因此驗證將會失敗。
+因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  來自corp.bmcontoso.com的使用者的頒發者需要是**http://bmcontoso.com/adfs/services/trust。**  但是，上述為 Azure AD 實現的標準規則將生成一個頒發者**http://corp.bmcontoso.com/adfs/services/trust為 的權杖。**  的權杖，這與網域所需的值不符，因此驗證將會失敗。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何啟用對於子網域的支援
 為了解決此行為，需要更新 Microsoft Online 的 AD FS 信賴憑證者信任。  若要這樣做，您必須設定自訂宣告規則，以使其在建構自訂簽發者值時能夠從使用者的 UPN 尾碼移除任何子網域。
@@ -169,7 +169,7 @@ ms.locfileid: "60244973"
 ## <a name="next-steps"></a>後續步驟
 安裝了 Azure AD Connect 之後，您可以 [驗證安裝和指派授權](how-to-connect-post-installation.md)。
 
-深入了解這些在安裝時啟用的功能︰[自動升級](how-to-connect-install-automatic-upgrade.md)、[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)及 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+深入了解這些在安裝時啟用的功能︰[自動升級](how-to-connect-install-automatic-upgrade.md)、[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 
 深入了解這些常見主題︰[排程器和如何觸發同步處理](how-to-connect-sync-feature-scheduler.md)。
 

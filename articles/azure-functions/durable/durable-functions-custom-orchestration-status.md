@@ -5,26 +5,26 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766261"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自訂協調流程狀態 (Azure Functions)
 
-自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態是透過[HTTP GETSTATUS api](durable-functions-http-api.md#get-instance-status)或協調流程用戶端上的[`GetStatusAsync` api](durable-functions-instance-management.md#query-instances)提供。
+自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態通過 HTTP [GetStatus API](durable-functions-http-api.md#get-instance-status)或業務流程用戶端上的[`GetStatusAsync`API](durable-functions-instance-management.md#query-instances)提供。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 
 > [!NOTE]
-> 下列範例示範如何使用和 JavaScript 中C#的自訂狀態功能。 這些C#範例是針對 Durable Functions 2.x 而撰寫的，與 Durable Functions 1.x 不相容。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 以下示例演示如何在 C# 和 JavaScript 中使用自訂狀態功能。 C# 示例是為持久函數 2.x 編寫的，並且與持久函數 1.x 不相容。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
 
 ### <a name="visualize-progress"></a>進度視覺化
 
 用戶端可以輪詢狀態結束點及顯示進度 UI，以視覺化方式呈現目前的執行階段。 以下範例示範進度共用：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-`E1_HelloSequence` 協調器函式：
+`E1_HelloSequence`協調器功能：
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello` 活動函數：
+`E1_SayHello`活動功能：
 
 ```javascript
 module.exports = async function(context, name) {
@@ -85,7 +85,7 @@ module.exports = async function(context, name) {
 
 接著，唯有當 `CustomStatus` 欄位設定為 "London" 時，用戶端才會接收到協調流程的輸出：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -156,7 +156,7 @@ module.exports = async function(context, req) {
 
 另一個有趣的情節是依照獨特的特性或互動傳回自訂輸出，藉此區分使用者。 在自訂協調流程狀態的協助之下，用戶端將能保有泛型的程式碼。 主要修改的內容全都發生在伺服器端，如以下範例所示：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -233,7 +233,7 @@ module.exports = df.orchestrator(function*(context) {
 
 協調器能透過自訂狀態將唯一指示提供給用戶端。 自訂狀態指示將與協調流程程式碼中的步驟相對應：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -294,7 +294,7 @@ module.exports = df.orchestrator(function*(context) {
 
 以下範例先設定自訂狀態：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -347,9 +347,9 @@ GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 > [!WARNING]
-> 自訂狀態承載僅限為 16 KB 的 UTF-16 JSON 文字，因為它必須符合 Azure 資料表儲存體資料行的大小。 如果您需要較大的承載，建議使用外部儲存體。
+> 自訂狀態承載僅限為 16 KB 的 UTF-16 JSON 文字，因為它必須符合 Azure 資料表儲存體資料行的大小。 如果您需要更大的有效負載，我們建議您使用外部存儲。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [瞭解持久計時器](durable-functions-timers.md)
+> [瞭解耐用計時器](durable-functions-timers.md)

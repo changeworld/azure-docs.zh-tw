@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672710"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作
@@ -24,9 +24,9 @@ ms.locfileid: "78672710"
 
 本文將說明此作業的運作方式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
- 如果 Azure AD 聯結的電腦未連線到您組織的網路，則需要 VPN 或其他網路基礎結構。 內部部署 SSO 需要與內部部署 AD DS 網域控制站之間的通訊。
+ 如果 Azure AD 聯接的電腦未連接到組織的網路，則需要 VPN 或其他網路基礎結構。 本地 SSO 需要與本地 AD DS 網域控制站進行視線通信。
 
 ## <a name="how-it-works"></a>運作方式 
 
@@ -34,15 +34,15 @@ ms.locfileid: "78672710"
 
 加入 Azure AD 的裝置不了解您的內部部署 AD 環境，因為這些裝置未加入該環境。 不過，您可以透過 Azure AD Connect 將其他有關內部部署 AD 的資訊提供給這些裝置。
 
-同時具有 Azure AD 和內部部署 AD 的環境也稱為混合式環境。 如果您有混合式環境，您很可能已經部署了 Azure AD Connect，可將內部部署身分識別資訊同步至雲端。 做為同步處理常式的一部分，Azure AD Connect 會將內部部署使用者資訊同步到 Azure AD。 當使用者登入混合式環境中已加入 Azure AD 的裝置時：
+同時具有 Azure AD 和內部部署 AD 的環境也稱為混合式環境。 如果您有混合式環境，您很可能已經部署了 Azure AD Connect，可將內部部署身分識別資訊同步至雲端。 作為同步過程的一部分，Azure AD 連接將本地使用者資訊同步到 Azure AD。 當使用者登入混合式環境中已加入 Azure AD 的裝置時：
 
 1. Azure AD 會將使用者所屬的內部部署網域名稱傳回到裝置。
 1. 本機安全性授權 (LSA) 服務可讓您在裝置上啟用 Kerberos 驗證。
 
-在嘗試對使用者的內部部署環境中要求 Kerberos 的資源進行存取時，裝置會：
+在訪問嘗試訪問在使用者的本地環境中請求 Kerberos 的資源時，設備：
 
 1. 將內部網域資訊和使用者認證傳送給找到的 DC，以對使用者進行驗證。
-1. 接收 Kerberos 的[票證授權票證 (TGT)](/windows/desktop/secauthn/ticket-granting-tickets)，這會用來存取已加入 AD 的資源。 如果嘗試取得 AAD connect 網域的 TGT 失敗（相關的 DCLocator timeout 可能會造成延遲），則會嘗試認證管理員專案，或使用者可能會收到驗證快顯視窗，要求目標資源的認證。
+1. 接收 Kerberos 的[票證授權票證 (TGT)](/windows/desktop/secauthn/ticket-granting-tickets)，這會用來存取已加入 AD 的資源。 如果嘗試獲取 AAD 連接域的 TGT 失敗（相關的 DCLocator 超時可能會導致延遲），則嘗試認證管理員條目，或者使用者可能會收到請求目標資源憑據的身份驗證快顯視窗。
 
 只要應用程式已設定 **Windows 整合式驗證**，當使用者嘗試存取這些應用程式時，就可順利地取得 SSO。
 

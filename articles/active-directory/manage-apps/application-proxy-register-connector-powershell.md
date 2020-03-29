@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756206"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>建立 Azure AD 應用程式 Proxy 連接器的自動安裝指令碼
@@ -34,7 +34,7 @@ ms.locfileid: "76756206"
 * 將連接器安裝與註冊整合成另一個程序的一部分。
 * 建立一個包含連接器位元但未註冊的標準伺服器映像。
 
-若要讓[應用程式 Proxy 連接器](application-proxy-connectors.md)能夠正常執行，必須使用應用程式系統管理員和密碼向您的 Azure AD 目錄註冊。 通常，此資訊是在連接器安裝期間於一個快顯對話方塊中輸入的，但是您可以改用 PowerShell 使此程序自動進行。
+要使[應用程式代理連接器](application-proxy-connectors.md)正常工作，必須使用應用程式管理員和密碼將其註冊到 Azure AD 目錄。 通常，此資訊是在連接器安裝期間於一個快顯對話方塊中輸入的，但是您可以改用 PowerShell 使此程序自動進行。
 
 自動安裝有兩個步驟。 首先，安裝連接器。 其次，向 Azure AD 註冊連接器。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "76756206"
 * 使用離線時建立的權杖註冊連接器
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>使用 Windows PowerShell 認證物件註冊連接器
-1. 建立 Windows PowerShell 認證物件 `$cred`，其中含有目錄的系統管理使用者名稱和密碼。 執行下列命令，取代 *\<使用者名稱\>* 和 *\<密碼\>* ：
+1. 建立 Windows PowerShell 認證物件 `$cred`，其中含有目錄的系統管理使用者名稱和密碼。 運行以下命令，替換*\<\>使用者名和密碼*： * \< \> *
    
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -121,7 +121,7 @@ ms.locfileid: "76756206"
             tenantID = authResult.TenantId;
         }
 
-    **使用 PowerShell：**
+    **使用電源外殼：**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed

@@ -7,39 +7,39 @@ keywords: 清查、自動化、變更、追蹤
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844814"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清查收集來管理 Azure 虛擬機器
 
-您可以從虛擬機器的資源頁面啟用 Azure 虛擬機器的清查追蹤。 您可以在電腦上收集並查看下列清查資訊：
+您可以從虛擬機器的資源頁面啟用 Azure 虛擬機器的清查追蹤。 您可以在電腦上收集和查看以下清單資訊：
 
-- Windows 軟體（Windows 應用程式和 Windows 更新）、服務、檔案和登錄機碼
-- Linux 軟體（套件）守護程式和檔案
+- Windows 軟體（Windows 應用程式和 Windows 更新）、服務、檔和登錄機碼
+- Linux 軟體（包）守護進程和檔
 
 此方法提供以瀏覽器為基礎的使用者介面，讓您設定清查收集。
 
 ## <a name="before-you-begin"></a>開始之前
 
-如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果沒有 Azure 訂閱，[請創建一個免費帳戶](https://azure.microsoft.com/free/)。
 
 本文假設您擁有可設定解決方案的 VM。 如果您沒有 Azure 虛擬機器，請[建立虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https://portal.azure.com/)。
+登錄到 Azure[門戶](https://portal.azure.com/)。
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>從虛擬機器資源頁面啟用清查收集
 
-1. 在 Azure 入口網站的左側窗格中，選取 [虛擬機器]。
+1. 在 Azure 入口網站的左側窗格中，選取 [虛擬機器]****。
 2. 在虛擬機器清單中，選取虛擬機器。
-3. 在 [資源] 功能表上，於 [作業] 下選取 [清查]。
-4. 選取 Log Analytics 工作區來儲存您的資料記錄。
+3. 在 [資源]**** 功能表上，於 [作業]**** 下選取 [清查]****。
+4. 選擇用於存儲資料日誌的日誌分析工作區。
     如果該區域沒有工作區可供您使用，系統會提示您建立預設工作區和自動化帳戶。
-5. 若要開始將您的電腦上架，請按一下 [啟用]。
+5. 若要開始將您的電腦上架，請按一下 [啟用]****。
 
    ![檢視上架選項](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
@@ -53,15 +53,15 @@ ms.locfileid: "76844814"
 
 根據預設會設定收集軟體、Windows 服務及 Linux 精靈。 若要收集 Windows 登錄和檔案清查，請進行清查收集設定。
 
-1. 在 [清查] 檢視中，選取視窗頂端的 [編輯設定] 按鈕。
-2. 若要新增收集設定，請透過選取 [Windows 登錄]、[Windows 檔案] 和 [Linux 檔案] 索引標籤，前往您想要新增的設定分類。
-3. 選取適當的類別，按一下視窗頂端的 [新增]。
+1. 在 [清查]**** 檢視中，選取視窗頂端的 [編輯設定]**** 按鈕。
+2. 若要新增收集設定，請透過選取 [Windows 登錄]****、[Windows 檔案]**** 和 [Linux 檔案]**** 索引標籤，前往您想要新增的設定分類。
+3. 選取適當的類別，按一下視窗頂端的 [新增]****。
 
 下表提供各種類別可設定的每個屬性相關資訊。
 
 ### <a name="windows-registry"></a>Windows 登錄
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定        |
 |項目名稱     | 所要追蹤檔案的易記名稱        |
@@ -70,7 +70,7 @@ ms.locfileid: "76844814"
 
 ### <a name="windows-files"></a>Windows 檔案
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定        |
 |項目名稱     | 所要追蹤檔案的易記名稱        |
@@ -79,7 +79,7 @@ ms.locfileid: "76844814"
 
 ### <a name="linux-files"></a>Linux 檔案
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定        |
 |項目名稱     | 所要追蹤檔案的易記名稱        |
@@ -92,11 +92,11 @@ ms.locfileid: "76844814"
 
 ## <a name="manage-machine-groups"></a>管理電腦群組
 
-清查可讓您建立及查看 Azure 監視器記錄中的電腦群組。 電腦群組是由 Azure 監視器記錄中的查詢所定義的機器集合。
+清單允許您在 Azure 監視器日誌中創建和查看電腦群組。 電腦群組是由 Azure 監視器日誌中的查詢定義的電腦的集合。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要檢視您的電腦群組，請選取 [清查] 頁面上的 [電腦群組] 索引標籤。
+若要檢視您的電腦群組，請選取 [清查] 頁面上的 [電腦群組]**** 索引標籤。
 
 ![在清查頁面上檢視電腦群組](./media/automation-vm-inventory/inventory-machine-groups.png)
 
@@ -104,9 +104,9 @@ ms.locfileid: "76844814"
 
 ![檢視電腦群組頁面](./media/automation-vm-inventory/machine-group-page.png)
 
-按一下 [+ 複製] 按鈕以複製電腦群組。 您必須在此提供群組的新名稱和別名。 在這個階段可以改變定義。 變更查詢之後，按下 [驗證查詢] 可預覽所要選取的電腦。 當您滿意群組時，請按一下 [建立] 以建立電腦群組。
+按一下 [+ 複製]**** 按鈕以複製電腦群組。 您必須在此提供群組的新名稱和別名。 在這個階段可以改變定義。 變更查詢之後，按下 [驗證查詢]**** 可預覽所要選取的電腦。 當您滿意群組時，請按一下 [建立]**** 以建立電腦群組。
 
-如果您想要建立新的電腦群組，請選取 [ **+ 建立電腦群組**]。 這個按鈕會開啟 [建立電腦群組] 頁面，您可在其中定義新的群組。 按一下 [建立] 以建立群組。
+如果要創建新電腦群組，請選擇 **"創建機器組**"。 這個按鈕會開啟 [建立電腦群組]**** 頁面，您可在其中定義新的群組。 按一下 [建立] **** 以建立群組。
 
 ![建立新的電腦群組](./media/automation-vm-inventory/create-new-group.png)
 
@@ -114,15 +114,15 @@ ms.locfileid: "76844814"
 
 若要從清查管理中移除您虛擬機器：
 
-1. 在 Azure 入口網站的左窗格中，選取 [Log Analytics]，然後選取您在將虛擬機器上架時使用的工作區。
-2. 在 **Log Analytics** 視窗的 [資源] 功能表上，於 [工作區資料來源] 類別下選取 [虛擬機器]。
-3. 在清單中，選取您要中斷連線的虛擬機器。 虛擬機器在 [OMS 連線] 資料行中，**這個工作區**文字旁邊會出現綠色核取記號。
+1. 在 Azure 入口網站的左窗格中，選取 [Log Analytics]****，然後選取您在將虛擬機器上架時使用的工作區。
+2. 在 **Log Analytics** 視窗的 [資源]**** 功能表上，於 [工作區資料來源]**** 類別下選取 [虛擬機器]****。
+3. 在清單中，選取您要中斷連線的虛擬機器。 虛擬機器在 [OMS 連線]**** 資料行中，**這個工作區**文字旁邊會出現綠色核取記號。
 
    >[!NOTE]
-   >OMS 現在稱為 Azure 監視器記錄。
+   >OMS 現在稱為 Azure 監視器日誌。
    
-4. 在下一個頁面的頂端，選取 [中斷連線]。
-5. 在確認視窗中，選取 [是]。
+4. 在下一個頁面的頂端，選取 [中斷連線]****。
+5. 在確認視窗中，選取 [是]****。
     這個動作會讓機器脫離管理。
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: 將資料載入 Azure 儲存體環境-小組資料科學流程
-description: 瞭解如何將資料內嵌至儲存和處理資料的各種目標環境。
+title: 將資料載入到 Azure 存儲環境 - 團隊資料科學流程
+description: 瞭解如何將資料引入存儲和處理資料的各種目標環境。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720532"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>將資料載入至儲存體環境以便進行分析
 
-小組資料科學程式需要在每個階段中，將資料內嵌或載入至最適當的方式。 資料目的地可以包含 Azure Blob 儲存體、SQL Azure 資料庫、Azure VM 上的 SQL Server、HDInsight （Hadoop）、Synapse 分析，以及 Azure Machine Learning。 
+團隊資料科學流程要求在每個階段以最適當的方式引入或載入資料。 資料目標可以包括 Azure Blob 存儲、SQL Azure 資料庫、Azure VM 上的 SQL 伺服器、HDInsight（Hadoop）、同步分析和 Azure 機器學習。 
 
 下列文章說明如何將資料內嵌至可儲存和處理資料的各種目標環境中。
 
 * 內嵌至/自 [Azure Blob 儲存體](move-azure-blob.md)
 * 內嵌至 [Azure VM 上的 SQL Server](move-sql-server-virtual-machine.md)
-* 若要[Azure SQL Database](move-sql-azure.md)
+* 到[Azure SQL 資料庫](move-sql-azure.md)
 * 內嵌至 [Hive 資料表](move-hive-tables.md)
 * 內嵌至 [SQL 分割資料表](parallel-load-sql-partitioned-tables.md)
 * 內嵌自[內部部署 SQL Server](move-sql-azure-adf.md)
 
-技術和商務需求，以及資料的初始位置、格式和大小，將會決定最佳的資料內嵌計畫。 最好的計畫有幾個步驟並不常見。 比方說，這一系列工作可以包含資料瀏覽、前置處理、清除、向下取樣和模型定型。  Azure Data Factory 是建議的 Azure 資源，可協調資料移動和轉換。
+技術和業務需求以及資料的初始位置、格式和大小將決定最佳資料引入計畫。 最好的計畫有幾個步驟並不罕見。 比方說，這一系列工作可以包含資料瀏覽、前置處理、清除、向下取樣和模型定型。  Azure 資料工廠是一種推薦的 Azure 資源，用於協調資料移動和轉換。

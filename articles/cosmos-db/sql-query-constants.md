@@ -1,35 +1,35 @@
 ---
-title: Azure Cosmos DB 中的 SQL 常數
-description: 瞭解 Azure Cosmos DB 中的 SQL 查詢常數如何用來代表特定的資料值
+title: Azure 宇宙 DB 中的 SQL 常量
+description: 瞭解如何使用 Azure Cosmos DB 中的 SQL 查詢常量來表示特定資料值
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873415"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查詢常數  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure 宇宙資料庫 SQL 查詢常量  
 
- 常數也稱為常值或純量值，是代表特定資料值的符號。 常數的格式會依其代表的值資料類型而定。  
+ 常數也稱為常值或純量值，是一個代表特定資料值的符號。 常數的格式會隨著所代表之值的資料類型而不同。  
   
  **支援的純量資料類型：**  
   
 |**類型**|**值順序**|  
 |-|-|  
 |**未定義**|單一值： **未定義**|  
-|**Null**|單一值：**Null**|  
-|**布林值**|值：**False**，**True**。|  
-|**Number**|雙精確度浮點數，符合 IEEE 754 標準。|  
-|**String**|零或更多 Unicode 字元的序列。 字串必須以單引號或雙引號括住。|  
-|**Array**|零或更多元素的序列。 除了**Undefined**以外，每個元素都可以是任何純量資料類型的值。|  
-|**Object**|未排序的零或更多名稱/值組。 名稱為 Unicode 字串；除了**未定義**的類型，值可以是任何純量資料類型。|  
+|**空**|單一值：**Null**|  
+|**布林**|值：**False**，**True**。|  
+|**數量**|雙精確度浮點數，符合 IEEE 754 標準。|  
+|**字串**|零或更多 Unicode 字元的序列。 字串必須以單引號或雙引號括住。|  
+|**Array**|零或更多元素的序列。 每個元素可以是任何純量資料型別的值，但 **"未定義"** 除外。|  
+|**物件**|未排序的零或更多名稱/值組。 名稱為 Unicode 字串；除了**未定義**的類型，值可以是任何純量資料類型。|  
   
-## <a name="bk_syntax"></a>語法
+## <a name="syntax"></a><a name="bk_syntax"></a>語法
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873415"
   
 ```  
   
-##  <a name="bk_arguments"></a> 引數
+##  <a name="arguments"></a><a name="bk_arguments"></a>參數
   
 * `<undefined_constant>; Undefined`  
   
@@ -103,7 +103,7 @@ ms.locfileid: "74873415"
   
   允許下列逸出序列：  
   
-|**逸出序列**|**說明**|**Unicode 字元**|  
+|**逸出序列**|**描述**|**Unicode 字元**|  
 |-|-|-|  
 |\\'|apostrophe (')|U+0027|  
 |\\"|引號 (")|U+0022|  
@@ -119,4 +119,4 @@ ms.locfileid: "74873415"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [模型檔資料](modeling-data.md)
+- [模型文件資料](modeling-data.md)

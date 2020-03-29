@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
 ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278007"
 ---
 # <a name="renew-application-gateway-certificates"></a>更新應用程式閘道憑證
@@ -20,13 +20,13 @@ ms.locfileid: "76278007"
 
 您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來更新與接聽程式相關聯的憑證：
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
-若要從入口網站更新接聽程式憑證，請瀏覽至您的應用程式閘道接聽程式。 按一下有憑證需要更新的接聽程式，然後按一下 [更新或編輯選取的憑證]。
+若要從入口網站更新接聽程式憑證，請瀏覽至您的應用程式閘道接聽程式。 按一下有憑證需要更新的接聽程式，然後按一下 [更新或編輯選取的憑證]****。
 
 ![更新憑證](media/renew-certificate/ssl-cert.png)
 
-上傳新的 PFX 憑證並為其命名，輸入密碼，然後按一下 [儲存]。
+上傳新的 PFX 憑證並為其命名，輸入密碼，然後按一下 [儲存]****。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

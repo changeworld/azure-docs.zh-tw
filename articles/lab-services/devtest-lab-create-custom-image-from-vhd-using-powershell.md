@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 從 VHD 檔案建立自訂映射
+title: 使用 Azure PowerShell 從 VHD 檔創建自訂映射
 description: 使用 PowerShell 在 Azure DevTest Labs 中從 VHD 檔案自動建立自訂映像
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: cd144659dd8a8e981e267be998c9c783b7482840
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169567"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 從 VHD 檔案建立自訂映像
@@ -35,20 +35,20 @@ ms.locfileid: "76169567"
 
 下列步驟將逐步引導您使用 PowerShell 從 VHD 檔案建立自訂映像：
 
-1. 在 PowerShell 提示字元中，使用**disconnect-azaccount** Cmdlet 的下列呼叫來登入您的 Azure 帳戶。
+1. 在 PowerShell 提示符下，使用以下調用**連接到連接-AzAccount** Cmdlet 登錄到 Azure 帳戶。
 
     ```powershell
     Connect-AzAccount
     ```
 
-1.  藉由呼叫**get-azsubscription** Cmdlet 來選取所需的 Azure 訂用帳戶。 以有效的 Azure 訂用帳戶 ID 取代 **$subscriptionId** 變數的下列預留位置。
+1.  通過調用**Select-Az 訂閱**Cmdlet 選擇所需的 Azure 訂閱。 以有效的 Azure 訂用帳戶 ID 取代 **$subscriptionId** 變數的下列預留位置。
 
     ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  藉由呼叫**get-azresource** Cmdlet 來取得實驗室物件。 以您環境的適當值取代 **$labRg** 和 **$labName** 變數的下列預留位置。
+1.  通過調用**獲取-AzResource** Cmdlet 獲取實驗室物件。 以您環境的適當值取代 **$labRg** 和 **$labName** 變數的下列預留位置。
 
     ```powershell
     $labRg = '<Specify your lab resource group name here>'
@@ -62,7 +62,7 @@ ms.locfileid: "76169567"
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
-1.  使用**new-azresourcegroupdeployment** Cmdlet 建立自訂映射。 將 **$customImageName** 和 **$customImageDescription** 變數的下列預留位置取代為對您環境有意義的名稱。
+1.  使用**新阿茲資源組部署**Cmdlet 創建自訂映射。 將 **$customImageName** 和 **$customImageDescription** 變數的下列預留位置取代為對您環境有意義的名稱。
 
     ```powershell
     $customImageName = '<Specify the custom image name>'

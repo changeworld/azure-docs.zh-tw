@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773672"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>使用 REST 傳遞點播內容入門  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 本快速入門將逐步引導您使用 REST API 完成利用 Azure 媒體服務 (AMS) 來實作點播視訊 (VoD) 內容傳遞應用程式。
 
@@ -36,10 +36,10 @@ ms.locfileid: "76773672"
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 需要下列必要條件，才能開始使用 REST API 用媒體服務進行開發。
 
-* 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一個 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 了解如何使用媒體服務 REST API 進行開發。 如需詳細資訊，請參閱[媒體服務 REST API 概觀](media-services-rest-how-to-use.md)。
 * 由您選擇可以傳送 HTTP 要求和回應的應用程式。 本教學課程使用 [Fiddler](https://www.telerik.com/download/fiddler)。
@@ -54,7 +54,7 @@ ms.locfileid: "76773672"
 6. 播放您的內容。
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 有關詳細資訊，請參閱[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 如需本文章中所用之 AMS REST 實體的詳細資訊，請參閱 [Azure 媒體服務 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。 此外，請參閱 [Azure 媒體服務概念](media-services-concepts.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76773672"
 使用 Azure 媒體服務時，其中一個最常見的案例是透過自適性串流提供影片。 媒體服務提供動態封裝，這讓您以媒體服務即時支援的串流格式 (MPEG DASH、HLS、Smooth Streaming) 提供自適性 MP4 編碼內容，而不必儲存這些串流格式個別的預先封裝版本。
 
 >[!NOTE]
->建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
+>創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
 
 若要啟動串流端點，請執行下列作業︰
 
@@ -79,21 +79,21 @@ ms.locfileid: "76773672"
 4. 按一下 [啟動] 圖示。
 5. 按一下 [儲存] 按鈕以儲存您的變更。
 
-## <a id="connect"></a>使用 REST API 連接到媒體服務帳戶
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>使用 REST API 連接到媒體服務帳戶
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-## <a id="upload"></a>使用 REST API 建立新資產並上傳視訊檔案
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 建立新資產並上傳視訊檔案
 
-在媒體服務中，您會將數位檔案上傳到到資產。 **資產**實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 將檔案上傳到資產之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。
+在媒體服務中，您會將數位檔案上傳到到資產。 **資產**實體可以包含視頻、音訊、圖像、縮略圖集合、文本軌道和隱藏字幕檔（以及有關這些檔的中繼資料）。 檔上載到資產後，您的內容將安全地存儲在雲中，以便進一步處理和資料流。
 
 您必須建立資產時提供的值是資產建立選項。 **Options** 屬性是描述可以使用建立資產之加密選項的列舉值。 有效的值是以下清單的其中一個值，而不是值的組合。
 
-* **None** = **0** - 不使用加密。 使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
+* **無** = **0** - 不使用加密。 使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
     如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。
-* **StorageEncrypted** = **1** - 使用 AES-256 位元加密對您的內容進行本機加密，接著上傳到已靜止加密儲存的 Azure 儲存體。 以儲存體加密保護的資產會自動解除加密並在編碼前放置在加密的檔案系統中，並且會在上傳為新輸出資產之前選擇性地重新編碼。 儲存體加密的主要使用案例是讓您可以使用強式加密來保護磁碟中靜止的高品質輸入媒體檔。
-* **CommonEncryptionProtected** = **2** - 如果您要上傳已經使用一般加密或 PlayReady DRM (例如使用 PlayReady DRM 保護的 Smooth Streaming) 加密及保護的內容，請使用這個選項。
-* **EnvelopeEncryptionProtected** = **4** – 如果您要上傳使用 AES 加密的 HLS，請使用這個選項。 檔案必須已由 Transform Manager 編碼和加密。
+* **Storage加密** = **1** - 使用 AES-256 位加密在本地加密清除內容，然後將它上載到 Azure 存儲，在靜態存儲中加密存儲。 以儲存體加密保護的資產會自動解除加密並在編碼前放置在加密的檔案系統中，並且會在上傳為新輸出資產之前選擇性地重新編碼。 儲存體加密的主要使用案例是讓您可以使用強式加密來保護磁碟中靜止的高品質輸入媒體檔。
+* **通用加密保護** = **2** - 如果您正在上傳已加密且已使用通用加密或 PlayReady DRM 保護的內容（例如，使用 PlayReady DRM 保護的平滑流式處理），請使用此選項。
+* **信封加密保護** = **4** – 如果您上傳了使用 AES 加密的 HLS，請使用此選項。 檔案必須已由 Transform Manager 編碼和加密。
 
 ### <a name="create-an-asset"></a>建立資產
 資產是媒體服務中多種類型或物件集的容器，包括視訊、音訊、影像、縮圖集合、文字播放軌和隱藏式字幕檔案。 在 REST API 中，建立資產必須傳送 POST 要求給媒體服務，並將關於您資產的任何屬性資訊放在要求主體中。
@@ -261,7 +261,7 @@ ms.locfileid: "76773672"
 
 ### <a name="get-the-upload-url"></a>取得上傳 URL
 
-若要接收實際的上傳 URL，請建立 SAS 定位器。 定位器為想要存取資產中之檔案的用戶端定義連線端點的開始時間和類型。 您可以為指定的 AccessPolicy 與 Asset 配對建立多個 Locator 實體，以處理不同的用戶端要求與需求。 這些 Locator 每個都會使用 StartTime 值加上 AccessPolicy 的 DurationInMinutes 值，以判斷可以使用 URL 的時間長度。 如需詳細資訊，請參閱 [定位器](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要接收實際的上傳 URL，請建立 SAS 定位器。 定位器為想要存取資產中之檔案的用戶端定義連線端點的開始時間和類型。 您可以為指定的 AccessPolicy 與 Asset 配對建立多個 Locator 實體，以處理不同的用戶端要求與需求。 這些 Locator 每個都會使用 StartTime 值加上 AccessPolicy 的 DurationInMinutes 值，以判斷可以使用 URL 的時間長度。 有關詳細資訊，請參閱[定位器](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 具有下列格式：
 
@@ -271,7 +271,7 @@ SAS URL 具有下列格式：
 
 * 您一次不能有超過五個唯一定位器與指定的資產相關聯。 
 * 如果您需要立即上傳檔案，您應該將 StartTime 值設為目前時間的五分鐘前。 這是因為用戶端電腦與媒體服務之間可能有時間差。 此外，您的 StartTime 值必須是以下日期時間格式：YYYY-MM-DDTHH:mm:ssZ (例如，"2014-05-23T17:53:50Z")。    
-* 建立 Locator 之後到它可供使用時，中間可能會有 30 到 40 秒的延遲。 此問題同時適用於 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 與原始定位器。
+* 建立 Locator 之後到它可供使用時，中間可能會有 30 到 40 秒的延遲。 此問題適用于[SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)和原點定位器。
 
 下列範例會示範如何建立 SAS URL 定位器，如要求主體中的 Type 屬性所定義 ("1" 代表 SAS 定位器，"2" 代表隨選原始定位器)。 傳回的 **Path** 屬性包含上傳檔案必須使用的 URL。
 
@@ -405,7 +405,7 @@ SAS URL 具有下列格式：
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>將來源檔案編碼為一組調適性位元速率 MP4 檔案
+## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>將原始檔案編碼為一組自我調整位元速率 MP4 檔
 
 將資產內嵌到媒體服務之後，可以先將媒體編碼、轉碼多工處理、加上浮水印等，再傳遞給用戶端。 這些活動會針對多個背景角色執行個體排定和執行，以確保高效能與可用性。 這些活動稱為作業，每個作業包含對資產檔案執行實際工作的不可部分完成的工作 (如需詳細資訊，請參閱[作業](https://docs.microsoft.com/rest/api/media/operations/job)、[工作](https://docs.microsoft.com/rest/api/media/operations/task)說明)。
 
@@ -692,14 +692,14 @@ SAS URL 具有下列格式：
        ]
     }
 
-## <a id="publish_get_urls"></a>使用 REST API 發行資產及取得串流和漸進式下載 URL
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>使用 REST API 發行資產及取得串流和漸進式下載 URL
 
 若要串流處理或下載資產，您必須先建立定位器來「發佈」它。 定位器提供對於資產中包含之檔案的存取。 媒體服務支援兩種類型的定位器：OnDemandOrigin 定位器，用於串流媒體 (例如，MPEG DASH、HLS 或 Smooth Streaming) 和存取簽章 (SAS) 定位器，用來下載媒體檔案。 
 
 建立定位器之後，您便可以建立用來串流或下載檔案的 URL。
 
 >[!NOTE]
->建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
+>創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
 
 Smooth Streaming 的串流 URL 具有下列格式：
 
@@ -724,7 +724,7 @@ MPEG DASH 的串流 URL 具有下列格式：
 * 建立串流內容用的原始 URL
 
 ### <a name="creating-the-accesspolicy-with-read-permission"></a>建立具有讀取權限的 AccessPolicy
-下載或串流任何媒體內容之前，請先定義具有讀取權限的 AccessPolicy，並建立適當的 Locator 實體，指定您想要為用戶端啟用的傳遞機制類型。 如需可用屬性的詳細資訊，請參閱 [AccessPolicy 實體屬性](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)。
+下載或串流任何媒體內容之前，請先定義具有讀取權限的 AccessPolicy，並建立適當的 Locator 實體，指定您想要為用戶端啟用的傳遞機制類型。 如需可用屬性的詳細資訊，請參閱[AccessPolicy 實體屬性](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)。
 
 下列範例示範如何針對指定資產指定讀取權限的 AccessPolicy。
 
@@ -817,7 +817,7 @@ MPEG DASH 的串流 URL 具有下列格式：
 設定 AccessPolicy 與 Locator 之後，您可以使用 Azure 儲存體 REST API 下載檔案。  
 
 > [!NOTE]
-> 您必須將要下載的檔案名稱新增到前一節中所收到的 Locator **Path** 值。 例如， https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? 。 。 。
+> 您必須將要下載的檔案名稱新增到前一節中所收到的 Locator **Path** 值。 例如， https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
 如需使用 Azure 儲存體 blob 的詳細資訊，請參閱 [Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
@@ -910,7 +910,7 @@ MPEG DASH 的串流 URL 具有下列格式：
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a id="play"></a>播放您的內容
+## <a name="play-your-content"></a><a id="play"></a>播放您的內容
 若要串流您的視訊，請使用 [Azure 媒體服務播放器](https://aka.ms/azuremediaplayer)。
 
 若要測試漸進式下載，請將 URL 貼入瀏覽器 (例如，IE、Chrome、Safari)。

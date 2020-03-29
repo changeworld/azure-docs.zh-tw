@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631607"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
 ![警告圖示](./media/storsimple-safety/IC740879.png)
- ![閱讀安全性注意事項圖示](./media/storsimple-safety/IC740885.png) **讀取的安全性和健全狀況資訊**
+![閱讀安全性注意事項圖示](./media/storsimple-safety/IC740885.png) **讀取的安全性和健全狀況資訊**
 
 請閱讀本文中適用於 Microsoft Azure StorSimple 裝置的所有安全性和健全狀況資訊。 保留隨附於 StorSimple 裝置的所有列印指南供日後參考。 無法遵循下列指示並適當地設定、使用和照顧這項產品可能會提高嚴重傷害或人員死亡的風險，或造成裝置的損毀。 [本指南的可下載版本](https://www.microsoft.com/download/details.aspx?id=44233) 也可供使用。
 
@@ -33,7 +33,7 @@ ms.locfileid: "60631607"
 | 圖示 | 描述 |
 |:--- |:--- |
 | ![危險圖示](./media/storsimple-safety/IC740879.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-safety/IC740879.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![警告圖示](./media/storsimple-safety/IC740879.png)**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
 | ![警告圖示](./media/storsimple-safety/IC740879.png) **小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓 |
@@ -90,7 +90,7 @@ ms.locfileid: "60631607"
 * 載入時機架，從下到上填滿機架並從上到下清空。
 * 不要一次從機架滑動超過一個機箱，以避免機架倒塌的危險。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告！**
+![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告！**
 
 減少傷害、電擊或死亡的可能性：
 
@@ -109,7 +109,7 @@ ms.locfileid: "60631607"
 ## <a name="power-cooling-module-pcm-precautions"></a>電源冷卻模組 (PCM) 預防措施
 裝置設計為利用兩個 PCM 運作。 每個 PCM 都具有電源供應器和雙軸風扇。 在嚴苛條件期間，系統會允許其中一個電源供應器失敗，同時繼續正常作業。 兩個 PCM (因此和電源供應器) 必須一律安裝。 單一 PCM 不會提供備援電源。 因此，即使一個 PCM 失敗也可能會導致停機或可能會遺失資料。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告！**
+![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告！**
 
 減少傷害、電擊或死亡的可能性：
 
@@ -135,7 +135,7 @@ ms.locfileid: "60631607"
 ## <a name="battery-disposal-precautions"></a>電池處置預防措施
 電源供應器會使用特殊的電池，以在暫時的短期電源中斷期間保護記憶體的內容。 電池置於 PCM 中。 記住下列電池相關資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) **警告！**
+![警告圖示](./media/storsimple-safety/IC740879.png)**警告！**
 
 減少短路、火災、爆炸、傷害或死亡的風險：
 
@@ -145,7 +145,7 @@ ms.locfileid: "60631607"
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
-以空運運送或搬運電池時，請遵循 IATA 鋰電池指南文件，網址為 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) \(英文\)
+通過空運或以其他方式運輸電池時，請按照 IATA 鋰電池指南文檔操作：：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 

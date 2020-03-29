@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 部署和管理通知中樞
-description: 如何使用 PowerShell 來建立和管理通知中樞以進行自動化
+title: 使用 PowerShell 部署和管理通知中心
+description: 如何使用 PowerShell 創建和管理通知中心實現自動化
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,15 +17,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264639"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 來部署和管理通知中樞
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文將說明如何使用 PowerShell 來建立和管理 Azure 通知中樞。 本文示範下列一般自動化工作。
 
@@ -36,10 +36,10 @@ ms.locfileid: "76264639"
 
 Azure PowerShell 隨附的 Cmdlet 無法直接支援「管理通知中樞」。 從 PowerShell 進行的最佳方法，是參考 Microsoft.Azure.NotificationHubs.dll 組件。 組件隨附於 [Microsoft Azure 通知中樞 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 Azure 是訂閱型平台。 如需取得訂用帳戶的詳細資訊，請參閱[購買選項]、[成員供應項目]或[免費試用版]。
-- 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [安裝並設定 Azure PowerShell]。
+- 具備 Azure PowerShell 的電腦。 如需指示，請參閱[安裝和設定 Azure PowerShell]。
 - 大致了解 PowerShell 指令碼、NuGet 封裝和 .NET Framework。
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包括對服務匯流排之 .NET 組件的參考
@@ -158,8 +158,8 @@ else
 
 [購買選項]: https://azure.microsoft.com/pricing/purchase-options/
 [成員供應項目]: https://azure.microsoft.com/pricing/member-offers/
-[免費試用版]: https://azure.microsoft.com/pricing/free-trial/
-[安裝並設定 Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[免費試用]: https://azure.microsoft.com/pricing/free-trial/
+[安裝和配置 Azure 電源外殼]: /powershell/azureps-cmdlets-docs
 [通知中樞的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace

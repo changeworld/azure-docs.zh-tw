@@ -1,5 +1,5 @@
 ---
-title: 使用虛擬機器擴展集進行自動調整疑難排解
+title: 使用虛擬機器縮放集進行自動縮放故障解答
 description: 針對使用虛擬機器擴展集的自動調整進行疑難排解。 了解所遇到的一般問題和解決方式。
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: manayar
 ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76272421"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
-**問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
+**問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 要考量的事項包括：
@@ -34,19 +34,19 @@ ms.locfileid: "76272421"
     ![稽核記錄][audit]
 * 您的相應縮小和相應放大的臨界值是否有足夠的差異？
   
-    假設您在平均 CPU 於五分鐘後大於 50% 時將規則設為擴增，而在平均 CPU 小於 50% 時將規則設為縮減。 當 CPU 使用量很接近此臨界值時，且調整動作經常增加和減少集合的大小，此設定會導致「flapping」問題。 因為這個設定，自動調整服務會嘗試防止「flapping」，可以表示為未調整。 因此請確定您的相應放大和相應縮小的臨界值有足夠的差異，以便在調整之間容許一些空間。
+    假設您在平均 CPU 於五分鐘後大於 50% 時將規則設為相應放大，而在平均 CPU 小於 50% 時將規則設為相應縮小。 當 CPU 使用量很接近此臨界值時，且調整動作經常增加和減少集合的大小，此設定會導致「flapping」問題。 因為這個設定，自動調整服務會嘗試防止「flapping」，可以表示為未調整。 因此請確定您的相應放大和相應縮小的臨界值有足夠的差異，以便在調整之間容許一些空間。
 * 您是否撰寫自己的 JSON 範本？
   
     很容易發生錯誤，所以請從如上所述已經過證明可以運作的範本開始，並且進行小的增量變更。 
-* 是否可以手動縮減或擴增？
+* 是否可以手動相應縮小或相應放大？
   
-    請嘗試使用不同的「容量」設定重新部署虛擬機器擴展集資源，以手動變更 VM 數目。 範例範本如下： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing - 您可能需要編輯範本以確定它有與您的擴展集所使用的相同機器大小。 如果您可以成功手動變更 VM 數目，則您知道問題與自動調整無關。
+    請嘗試使用不同的「容量」設定重新部署虛擬機器擴展集資源，以手動變更 VM 數目。 範例範本如下：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing - 您可能需要編輯範本以確定它有與您的擴展集所使用的相同機器大小。 如果您可以成功手動變更 VM 數目，則您知道問題與自動調整無關。
 * 請在 [Azure 資源總管](https://resources.azure.com/)中檢查您的 Microsoft.Compute/virtualMachineScaleSet 和 Microsoft.Insights 資源。
   
     Azure 資源總管是向您顯示 Azure Resource Manager 資源的狀態不可或缺的疑難排解工具。 按一下您的訂用帳戶，查看您正在進行疑難排解的資源群組。 在「計算」資源提供者下查看您建立的虛擬機器擴展集，並且檢查執行個體檢視，它會顯示部署的狀態。 也請檢查虛擬機器擴展集中的 VM 執行個體檢視。 然後進入 Microsoft.Insights 資源提供者，並且檢查自動調整規則看起來是否沒有問題。
 * 診斷擴充是否正常運作，而且發出效能資料？
   
-    **更新︰** 已增強 Azure 自動調整，以使用不再需要安裝診斷擴充功能的主機型度量管線。 如果您使用新的管線建立自動調整應用程式，則不再適用於後續幾個段落。 已經轉換為使用主機管線的 Azure 範本範例位於： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
+    **更新︰** 已增強 Azure 自動調整，以使用不再需要安裝診斷擴充功能的主機型度量管線。 如果您使用新的管線建立自動調整應用程式，則不再適用於後續幾個段落。 已經轉換為使用主機管線的 Azure 範本範例位於：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale。 
   
     使用主機型度量進行自動調整較佳，原因如下︰
   

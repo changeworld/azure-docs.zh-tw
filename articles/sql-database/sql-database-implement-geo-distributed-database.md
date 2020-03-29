@@ -1,5 +1,5 @@
 ---
-title: 執行地理位置分散的解決方案
+title: 實現地理分佈解決方案
 description: 了解如何設定您的 Azure SQL 資料庫和應用程式來容錯移轉至複寫資料庫，並測試容錯移轉。
 services: sql-database
 ms.service: sql-database
@@ -11,38 +11,38 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1da977f41add19afa6f84b7e5a3dc99c980ac1cf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 58d5bd4a7f3087e11056354f7534c3c9dbebca3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421133"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067294"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教學課程：實作異地分散式資料庫
 
 設定 Azure SQL 資料庫和應用程式來容錯移轉到遠端區域，並測試您的容錯移轉計畫。 您會了解如何：
 
 > [!div class="checklist"]
-> - 建立[容錯移轉群組](sql-database-auto-failover-group.md)
+> - 創建[容錯移轉組](sql-database-auto-failover-group.md)
 > - 執行 Java 應用程式以查詢 Azure SQL 資料庫
 > - 測試容錯移轉
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
 
 若要完成本教學課程，請確定您已安裝下列項目：
 
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL Database 中的單一資料庫。 若要建立一次使用，
+- [Azure 電源外殼](/powershell/azureps-cmdlets-docs)
+- Azure SQL 資料庫中的單個資料庫。 若要建立一次使用，
   - [入口網站](sql-database-single-database-get-started.md)
-  - [CLI](sql-database-cli-samples.md)
-  - [PowerShell](sql-database-powershell-samples.md)
+  - [Cli](sql-database-cli-samples.md)
+  - [電源外殼](sql-database-powershell-samples.md)
 
   > [!NOTE]
   > 教學課程使用 *AdventureWorksLT* 範例資料庫。
@@ -52,13 +52,13 @@ ms.locfileid: "74421133"
 > [!IMPORTANT]
 > 務必設定防火牆規則，使用您在本教學課程中執行步驟的電腦所用的公用 IP 位址。 資料庫層級防火牆規則將會自動複寫到次要伺服器。
 >
-> 如需資訊，請參閱[建立資料庫層級防火牆規則](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或者，若要判斷對於電腦的伺服器層級防火牆規則所用的 IP 位址，請參閱[建立伺服器層級防火牆](sql-database-server-level-firewall-rule.md)。  
+> 有關詳細資訊，請參閱[創建資料庫級防火牆規則](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)或確定用於電腦伺服器級防火牆規則的 IP 位址，請參閱[創建伺服器級防火牆](sql-database-server-level-firewall-rule.md)。  
 
 ## <a name="create-a-failover-group"></a>建立容錯移轉群組
 
 使用 Azure PowerShell，在現有的 Azure SQL 伺服器與另一個區域的新 Azure SQL 伺服器之間建立[容錯移轉群組](sql-database-auto-failover-group.md)。 然後將範例資料庫新增到容錯移轉群組。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -90,12 +90,12 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
-> 執行 `az login` 以登入 Azure。
+> 運行`az login`以登錄到 Azure。
 
-```powershell
+```azurecli
 $admin = "<adminName>"
 $password = "<password>"
 $resourceGroup = "<resourceGroupName>"
@@ -118,7 +118,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-在 Azure 入口網站中也可以變更異地複寫設定，方法是選取您的資料庫，然後選取 [設定] > [異地複寫]。
+還可以在 Azure 門戶中更改異地複製設置，通過選擇資料庫，然後**選擇"設置** > **異地複製**"。
 
 ![異地複寫設定](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -138,7 +138,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    cd SqlDbSample
    ```
 
-1. 使用您慣用的編輯器，開啟專案資料夾中的 *pom.xml* 檔案。
+1. 使用您最喜愛的編輯器，打開專案資料夾中的*pom.xml*檔。
 
 1. 新增下列 `dependency` 區段，以便新增 Microsoft JDBC Driver for SQL Server 相依性。 相依性必須貼入較大的 `dependencies` 區段內。
 
@@ -150,7 +150,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </dependency>
    ```
 
-1. 在 `properties` 區段之後新增 `dependencies` 區段來指定 Java 版本：
+1. 在 `dependencies` 區段之後新增 `properties` 區段來指定 Java 版本：
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </properties>
    ```
 
-1. 在 `build` 區段之後新增 `properties` 區段來支援資訊清單檔：
+1. 在 `properties` 區段之後新增 `build` 區段來支援資訊清單檔：
 
    ```xml
    <build>
@@ -180,7 +180,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </build>
    ```
 
-1. 儲存並關閉 *pom.xml* 檔案。
+1. 保存並關閉*pom.xml*檔。
 
 1. 開啟位於 ..\SqlDbSample\src\main\java\com\sqldbsamples 中的 *App.java* 檔案，並將內容取代為下列內容：
 
@@ -288,7 +288,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    }
    ```
 
-1. 儲存並關閉 *App.java* 檔案。
+1. 保存並關閉*App.java*檔。
 
 1. 在命令主控台中，執行下列命令：
 
@@ -317,9 +317,9 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 執行下列指令碼，以模擬容錯移轉，並觀察應用程式結果。 請注意，在資料庫移轉期間，一些插入和選取會失敗。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
-您可以使用下列命令，在測試期間檢查損毀修復伺服器的角色：
+您可以在測試期間使用以下命令檢查災害復原伺服器的角色：
 
 ```powershell
 (Get-AzSqlDatabaseFailoverGroup -FailoverGroupName $failoverGroup `
@@ -342,11 +342,11 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-您可以使用下列命令，在測試期間檢查損毀修復伺服器的角色：
+您可以在測試期間使用以下命令檢查災害復原伺服器的角色：
 
-```azure-cli
+```azurecli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
 ```
 
@@ -354,13 +354,13 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 1. 啟動容錯移轉群組的手動容錯移轉：
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
 1. 將容錯移轉群組還原至主要伺服器：
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
    ```
 
@@ -378,4 +378,4 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 請前進到下一個關於如何使用 DMS 進行移轉的教學課程。
 
 > [!div class="nextstepaction"]
-> [使用 DMS 將 SQL Server 遷移至 Azure SQL 資料庫受控執行個體](../dms/tutorial-sql-server-to-managed-instance.md)
+> [使用 DMS 將 SQL 伺服器遷移到 Azure SQL 資料庫託管實例](../dms/tutorial-sql-server-to-managed-instance.md)

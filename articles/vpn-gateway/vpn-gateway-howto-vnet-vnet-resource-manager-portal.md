@@ -1,5 +1,5 @@
 ---
-title: 設定 VNet 對 VNet VPN 閘道連線： Azure 入口網站
+title: 配置 VNet 到 VNet VPN 閘道連接：Azure 門戶
 description: 使用 Resource Manager 和 Azure 入口網站建立 VNet 間的 VPN 閘道連接。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78674173"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
@@ -23,8 +23,8 @@ ms.locfileid: "78674173"
 本文中的步驟適用於 Azure Resource Manager 部署模型並使用 Azure 入口網站。 您可以使用下列文章中所述的選項，透過不同的部署工具或模型來建立這個組態：
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure 門戶](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [電源外殼](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 入口網站 (傳統)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [連線不同的部署模型 - Azure 入口網站](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -65,7 +65,7 @@ ms.locfileid: "78674173"
 
 您可以將 VNet 對 VNet 通訊與多站台組態結合。 這些組態可讓您建立使用內部虛擬網路連線結合跨單位連線的網路拓撲，如下圖所示：
 
-![關於連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "關於連線")
+![關於連線](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "關於連線")
 
 本文說明如何使用 VNet 對 VNet 連線類型來連線 VNet。 練習這些步驟時，您可以使用下列範例設定值。 在範例中，虛擬網路位於相同的訂用帳戶，但在不同的資源群組。 如果您的 Vnet 位於不同的訂用帳戶中，就無法在入口網站中建立連線。 改用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 或 [CLI](vpn-gateway-howto-vnet-vnet-cli.md)。 如需 VNet 對 VNet 連線的詳細資訊，請參閱 [VNet 對 VNet 常見問題集](#vnet-to-vnet-faq)。
 
@@ -75,59 +75,59 @@ ms.locfileid: "78674173"
 
 - **虛擬網路設定**
     - **名稱**： VNet1
-    - **位址空間**：10.1.0.0/16
-    - **訂**用帳戶：選取您要使用的訂用帳戶。
-    - **資源群組**︰TestRG1
-    - **位置**：美國東部
-    - **子網路**
-        - **名稱**：前端
+    - **位址空間**： 10.1.0.0/16
+    - **訂閱**：選擇要使用的訂閱。
+    - **資源組**： TestRG1
+    - **地點**： 美國東部
+    - **子**
+        - **名稱**： 前端
         - **位址範圍**：10.1.0.0/24
-    - **閘道子網路**：
-        - **名稱**： *GatewaySubnet*是自動填入
+    - **閘道子網**：
+        - **名稱**：*自動填滿閘道子網*
         - **位址範圍**： 10.1.255.0/27
 
 - **虛擬網路閘道設定**
     - **名稱**： VNet1GW
-    - 閘道類型︰選取 [VPN]。
-    - **VPN 類型**：選取 [路由型]。
-    - **SKU**：選取您想要使用的閘道 SKU。
-    - **公用 IP 位址名稱**： VNet1GWpip
-    - **[連接]**
+    - 閘道類型****︰選取 [VPN]****。
+    - **VPN 類型**：選取 [路由型]****。
+    - **SKU**： 選擇要使用的閘道 SKU。
+    - **公共 IP 位址名稱**： VNet1GWpip
+    - **連接**
        - **名稱**： VNet1toVNet4
-       - **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
+       - **共用金鑰**：您可以自己創建共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 在本練習中，請使用 abc123。
 
 **VNet4 的值：**
 
 - **虛擬網路設定**
    - **名稱**： VNet4
    - **位址空間**： 10.41.0.0/16
-   - **訂**用帳戶：選取您要使用的訂用帳戶。
-   - **資源群組**： TestRG4
-   - **位置**：美國西部
-   - **子網路** 
-      - **名稱**：前端
+   - **訂閱**：選擇要使用的訂閱。
+   - **資源組**： TestRG4
+   - **地點**： 美國西部
+   - **子** 
+      - **名稱**： 前端
       - **位址範圍**： 10.41.0.0/24
-   - **GatewaySubnet** 
-      - **名稱**： *GatewaySubnet*是自動填入
+   - **閘道子網** 
+      - **名稱**：*自動填滿閘道子網*
       - **位址範圍**： 10.41.255.0/27
 
 - **虛擬網路閘道設定** 
     - **名稱**： VNet4GW
-    - 閘道類型︰選取 [VPN]。
-    - **VPN 類型**：選取 [路由型]。
-    - **SKU**：選取您想要使用的閘道 SKU。
-    - **公用 IP 位址名稱**： VNet4GWpip
-    - **[連接]** 
+    - 閘道類型****︰選取 [VPN]****。
+    - **VPN 類型**：選取 [路由型]****。
+    - **SKU**： 選擇要使用的閘道 SKU。
+    - **公共 IP 位址名稱**： VNet4GWpip
+    - **連接** 
        - **名稱**： VNet4toVNet1
-       - **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
+       - **共用金鑰**：您可以自己創建共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 在本練習中，請使用 abc123。
 
-## <a name="create-and-configure-vnet1"></a>建立及設定 VNet1
+## <a name="create-and-configure-vnet1"></a>創建和配置 VNet1
 如果您已經有 VNet，請驗證設定是否與您的 VPN 閘道設計相容。 請特別注意任何可能與其他網路重疊的子網路。 如果有重疊的子網路，您的連線便無法正常運作。
 
 ### <a name="to-create-a-virtual-network"></a>建立虛擬網路
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-the-vnet1-gateway"></a>建立 VNet1 閘道
+## <a name="create-the-vnet1-gateway"></a>創建 VNet1 閘道
 此步驟將帶您建立 VNet 的虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。 如果您要練習建立此組態，請參閱[範例設定](#example-settings)。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -137,52 +137,52 @@ ms.locfileid: "78674173"
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="create-and-configure-vnet4"></a>建立及設定 VNet4
-設定 VNet1 之後，請重複先前的步驟，並將值取代為 VNet4 值，以建立 VNet4 和 VNet4 閘道。 您不需要等到 VNet1 的虛擬網路閘道建立完成後，再設定 VNet4。 如果您使用自己的值，請確定位址空間沒有與任何您想要連線的 VNet 重疊。
+## <a name="create-and-configure-vnet4"></a>創建和配置 VNet4
+配置 VNet1 後，通過重複上述步驟並將值替換為 VNet4 值來創建 VNet4 和 VNet4 閘道。 在配置 VNet4 之前，無需等到 VNet1 的虛擬網路閘道完成創建。 如果您使用自己的值，請確定位址空間沒有與任何您想要連線的 VNet 重疊。
 
-## <a name="configure-the-vnet1-gateway-connection"></a>設定 VNet1 閘道連線
-當 VNet1 和 VNet4 的虛擬網路閘道完成時，您可以建立虛擬網路閘道連線。 在本節中，您要建立從 VNet1 到 VNet4 的連線。 這些步驟只適用於相同的訂用帳戶中的 VNet。 如果您的 VNet 位於不同的訂用帳戶中，則必須使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 來進行連線。 不過，如果 Vnet 位於相同訂用帳戶中的不同資源群組，您可以使用入口網站將它們連線。
+## <a name="configure-the-vnet1-gateway-connection"></a>配置 VNet1 閘道連接
+VNet1 和 VNet4 的虛擬網路閘道完成後，您可以創建虛擬網路閘道連接。 在本節中，您要建立從 VNet1 到 VNet4 的連線。 這些步驟只適用於相同的訂用帳戶中的 VNet。 如果您的 VNet 在不同的訂閱中，則必須使用[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)進行連接。 不過，如果 Vnet 位於相同訂用帳戶中的不同資源群組，您可以使用入口網站將它們連線。
 
-1. 在 Azure 入口網站中，選取 [所有資源]，在搜尋方塊中輸入「虛擬網路閘道」，然後瀏覽至您 VNet 的虛擬網路閘道。 例如， **VNet1GW**。 選取閘道以開啟 [**虛擬網路閘道**] 頁面。 在 [設定] 下，選取 [連線]。
+1. 在 Azure 入口網站中，選取 [所有資源]****，在搜尋方塊中輸入「虛擬網路閘道」**，然後瀏覽至您 VNet 的虛擬網路閘道。 例如 **，VNet1GW**。 選擇閘道以打開**虛擬網路閘道**頁面。 在 [設定]**** 下，選取 [連線]****。
 
    ![連接頁面](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "連接頁面")
-2. 選取 [ **+ 新增**] 以開啟 [**新增連接**] 頁面。
+2. 選擇 **"添加"** 以打開 **"添加連接**"頁。
 
    ![加入連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "新增連線")
-3. 在 [新增連線] 頁面上，填入您的連線值：
+3. 在 [新增連線]**** 頁面上，填入您的連線值：
 
-   - **名稱**：輸入連接的名稱。 例如， *VNet1toVNet4*。
+   - **名稱**：輸入連接的名稱。 例如 *，VNet1toVNet4*。
 
-   - **連線類型**：從下拉式選單選取 [ **vnet 對 vnet** ]。
+   - **連線類型**：從下拉清單中選擇**VNet 到 VNet。**
 
-   - **第一個虛擬網路閘道**：此域值會自動填入，因為您是從指定的虛擬網路閘道建立此連線。
+   - **第一個虛擬網路閘道**：此欄位值將自動填滿，因為您正在從指定的虛擬網路閘道創建此連接。
 
-   - **第二個虛擬網路閘道**：此欄位是您想要建立連接之 VNet 的虛擬網路閘道。 選取 [選擇另一個虛擬網路閘道]，以開啟 [選擇虛擬網路閘道] 頁面。
+   - **第二個虛擬網路閘道**：此欄位是要創建到的 VNet 的虛擬網路閘道。 選取 [選擇另一個虛擬網路閘道]****，以開啟 [選擇虛擬網路閘道]**** 頁面。
 
      - 檢視此頁面上列出的虛擬網路閘道。 請注意，只會列出您的訂用帳戶中的虛擬網路閘道。 如果想要連線的虛擬網路閘道不在您的訂用帳戶中，請使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)。
 
      - 選取您想要連線的虛擬網路閘道。
 
-     - **共用金鑰（PSK）** ：在此欄位中，輸入連接的共用金鑰。 您可以產生此金鑰，或自行建立此金鑰。 在站對站連線中，您用於內部部署裝置與虛擬網路閘道連線的金鑰完全相同。 此處的概念類似，差別在於是連線到另一個虛擬網路閘道，而不是連線到 VPN 裝置。
+     - **共用金鑰 （PSK）：** 在此欄位中，輸入連接的共用金鑰。 您可以產生此金鑰，或自行建立此金鑰。 在站對站連線中，您用於內部部署裝置與虛擬網路閘道連線的金鑰完全相同。 此處的概念類似，差別在於是連線到另一個虛擬網路閘道，而不是連線到 VPN 裝置。
     
 4. 選取 [ **確定** ] 以儲存變更。
 
-## <a name="configure-the-vnet4-gateway-connection"></a>設定 VNet4 閘道連線
-接下來，建立從 VNet4 到 VNet1 的連接。 在入口網站中，找出與 VNet4 相關聯的虛擬網路閘道。 請遵循上一節中的步驟，將值取代為建立從 VNet4 到 VNet1 的連接。 請確定您使用相同的共用金鑰。
+## <a name="configure-the-vnet4-gateway-connection"></a>配置 VNet4 閘道連接
+接下來，創建從 VNet4 到 VNet1 的連接。 在門戶中，找到與 VNet4 關聯的虛擬網路閘道。 按照上一節的步驟操作，替換值以創建從 VNet4 到 VNet1 的連接。 請確定您使用相同的共用金鑰。
 
 ## <a name="verify-your-connections"></a>確認您的連線
 
 1. 在 Azure 入口網站中找出虛擬網路閘道。 
-2. 在 [虛擬網路閘道] 頁面上，選取 [連線]，以檢視虛擬網路閘道的 [連線] 頁面。 建立連線之後，您會看到 [**狀態**] 值變更為 [**已連接**]。
+2. 在 [虛擬網路閘道]**** 頁面上，選取 [連線]****，以檢視虛擬網路閘道的 [連線]**** 頁面。 建立連接後，您將看到 **"狀態**"值更改為 **"已連接**"。
 
    ![驗證連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "驗證連接")
-3. 在 [**名稱**] 資料行底下，選取其中一個連接以查看詳細資訊。 當資料開始流動時，您會看到 [資料輸入] 和 [資料輸出] 的值。
+3. 在 **"名稱"** 列下，選擇其中一個連接以查看詳細資訊。 當資料開始流動時，您會看到 [資料輸入]**** 和 [資料輸出]**** 的值。
 
    ![狀態](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "狀態")
 
 ## <a name="add-additional-connections"></a>新增其他連線
 
-如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型] 來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]****。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型]**** 來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
 ## <a name="vnet-to-vnet-faq"></a>VNet 對 VNet 常見問題集
 檢視常見問題集詳細資料以取得 VNet 對 VNet 連線的其他資訊。

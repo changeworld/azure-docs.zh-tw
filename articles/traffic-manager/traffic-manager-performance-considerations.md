@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938531"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理員的效能考量
@@ -58,7 +58,7 @@ ms.locfileid: "76938531"
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
-    此網站先前稱為監看式滑鼠檢查網站工具，可讓您同時為您顯示來自多個地理區域的 DNS 解析時間。 輸入 URL 可以看到 DNS 解析時間、連接時間，以及數個地理位置的速度。 使用這項測試，查看在世界各地不同位置哪個裝載的服務會傳回。
+    此網站以前稱為"觀看滑鼠檢查網站"工具，可同時顯示來自多個地理區域的 DNS 解析時間。 輸入 URL 可以看到 DNS 解析時間、連接時間，以及數個地理位置的速度。 使用這項測試，查看在世界各地不同位置哪個裝載的服務會傳回。
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

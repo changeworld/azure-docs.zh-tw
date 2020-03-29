@@ -1,6 +1,6 @@
 ---
-title: 帳戶雙因素驗證的常見問題-Azure AD
-description: 解決一些常見的雙因素驗證問題，以及您的公司或學校帳戶的解決方案。
+title: 帳戶雙重身份驗證的常見問題 - Azure AD
+description: 解決一些更常見的雙因素驗證問題和您的工作或學校帳戶。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,101 +13,101 @@ ms.date: 02/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897734"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的工作或學校帳戶的常見問題
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙重驗證和您的工作或學校帳戶的常見問題
 
-當您的 Azure Active Directory （Azure AD）組織開啟雙因素驗證時，您的工作或學校帳戶登入需要結合您的使用者名稱、密碼和行動裝置或電話。 它比密碼更安全，依賴兩種驗證形式：您知道的東西，以及您所擁有的東西。 雙因素驗證有助於防止惡意駭客偽裝成您，因為即使他們有您的密碼，也有可能不會有您的裝置。
+當 Azure 活動目錄 （Azure AD） 組織啟用雙重驗證時，工作或學校帳戶登錄需要將使用者名、密碼和行動裝置或電話組合在一起。 它比密碼更安全，它依賴于兩種身份驗證形式：您知道的，以及您擁有的東西。 雙重驗證可以説明阻止惡意駭客假裝是您，因為即使他們有您的密碼，他們也沒有您的設備的可能性。
 
 <center>
 
-![的概念驗證方法影像](../authentication/media/concept-mfa-howitworks/methods.png)</center>
+![概念性驗證方法圖](../authentication/media/concept-mfa-howitworks/methods.png)</center>
 
-有一些常見的雙因素驗證問題，似乎會比任何人想要的還要頻繁。 我們已將這篇文章放在一起，以解決最常見的問題和一些可能的修正。
+有一些常見的雙因素驗證問題似乎比我們任何人希望更頻繁地發生。 我們整理了本文，以解決最常見的問題和一些可能的解決方法。
 
 >[!Important]
->如果您是系統管理員，您可以在[Azure AD 檔](https://docs.microsoft.com/azure/active-directory)中找到有關如何設定和管理您的 Azure AD 環境的詳細資訊。
+>如果您是管理員，則可以在[Azure AD 文檔中](https://docs.microsoft.com/azure/active-directory)找到有關如何設置和管理 Azure AD 環境的詳細資訊。
 >
->此內容也僅適用于您的公司或學校帳戶，這是您的組織提供給您的帳戶（例如 alain@contoso.com）。 如果您遇到雙因素驗證和個人 Microsoft 帳戶的問題，也就是您自行設定的帳戶（例如 danielle@outlook.com），請參閱[為您的 Microsoft 帳戶開啟或關閉雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+>此內容也僅用於您的工作或學校帳戶，這是您的組織提供給您的帳戶（例如。 alain@contoso.com 如果您在雙因素驗證和個人 Microsoft 帳戶（例如danielle@outlook.com），您自己設置的帳戶（例如），遇到問題，請參閱為 Microsoft[帳戶打開或關閉雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我沒有我的行動裝置
 
-就會發生這種情況。 您的行動裝置已離開家裡，現在無法使用您的電話來驗證您的身分。 如果您先前新增了另一個方法來登入您的帳戶（例如辦公室電話），您應該能夠立即使用該方法。 如果您從未新增額外的驗證方法，就必須洽詢貴組織的技術支援人員，讓他們協助您取回帳戶。
+它發生。 您將行動裝置留在家中，現在無法使用手機驗證您是誰。 如果您以前添加了另一種方法來登錄到您的帳戶（如辦公室電話），則現在應該能夠使用該方法。 如果您從未添加過其他驗證方法，您必須聯繫組織的説明台，並讓他們説明您重新進入您的帳戶。
 
-### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>使用其他驗證方法登入您的公司或學校帳戶
+### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>使用其他驗證方法登錄到您的工作或學校帳戶
 
-1. 登入您的帳戶，但選取 [**雙因素驗證**] 頁面上的 [**以另一種方式登入**] 連結。
+1. 登錄到您的帳戶，但在 **"雙因素驗證**"頁上選擇 **"以其他方式登錄"** 連結。
 
     ![變更登入驗證方法](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
-    如果您沒有看到 [以另一種方式登入] 的連結，表示您尚未設定任何其他的驗證方法。 您必須連絡系統管理員，請他協助您登入帳戶。
+    如果您沒有看到 [以另一種方式登入]**** 的連結，表示您尚未設定任何其他的驗證方法。 您必須連絡系統管理員，請他協助您登入帳戶。
 
-2. 選擇您的替代驗證方法，並繼續進行雙因素驗證程式。
+2. 選擇替代驗證方法，然後繼續雙因素驗證過程。
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>我的行動裝置遺失或遭竊
+## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>我的行動裝置丟失或被盜
 
-如果您遺失或行動裝置遭竊，您可以使用不同的方法登入，也可以要求貴組織的技術支援人員清除您的設定。 我們強烈建議您讓組織的技術支援人員知道您的手機遺失或遭竊，因此可以對您的帳戶進行適當的更新。 清除您的設定之後，系統會提示您在下一次登入時[註冊雙因素驗證](multi-factor-authentication-end-user-first-time.md)。
+如果您丟失或行動裝置被盜，則可以使用其他方法登錄，也可以要求組織的説明台清除設置。 我們強烈建議讓組織的説明台知道您的手機是否丟失或被盜，以便對您的帳戶進行適當的更新。 清除設置後，系統將提示您下次登錄時[註冊雙因素驗證](multi-factor-authentication-end-user-first-time.md)。
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>我未取得傳送至行動裝置的驗證碼
+## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>我沒有將驗證碼發送到我的行動裝置
 
-未取得您的驗證碼是常見的問題，而且通常與您的行動裝置及其設定相關。 一些可能的嘗試事項：
+未獲取驗證碼是一個常見問題，它通常與您的行動裝置及其設置有關。 一些可能嘗試的事情：
 
-試試這個 | 指引資訊
+試試這個 | 指導資訊
 --------- | ------------
-重新開機您的行動裝置 | 有時您的裝置只需要重新整理。 重新開機裝置會結束目前正在執行的任何背景處理常式或服務，而且可能會造成問題，以及重新整理裝置的核心元件，以在某個時間點損毀的情況下重新開機。
-確認您的安全性資訊正確 | 請確定您的安全性驗證方法資訊正確，尤其是您的電話號碼。 如果您放入錯誤的電話號碼，您所有的警示將會移至不正確的數位。 幸運的是，該使用者將無法對警示執行任何動作，但它也無法協助您登入您的帳戶。 若要確保您的資訊正確無誤，請參閱[管理雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文中的指示。
-確認您的通知已開啟 | 請確定您的行動裝置已開啟通知，而且您已選取允許電話、驗證應用程式和訊息應用程式（用於文字訊息）的通知方法，將顯示的警示通知傳送到您的行動裝置。
-請確定您有裝置信號和網際網路連線 | 請確定您的電話和文字訊息會通過您的行動裝置。 讓朋友打電話給您，並傳送文字訊息給您，以確保您同時收到這兩者。 如果您沒有這麼做，請先檢查以確定您的行動裝置已開啟。 如果您的裝置已開啟，但您仍未收到電話或文字，很可能是您的網路有問題，而且您必須與您的提供者交談。 如果您經常遇到信號相關問題，建議您在行動裝置上安裝並使用[Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)。 驗證器應用程式可以產生用於登入的隨機安全程式碼，而不需要任何資料格信號或網際網路連線。
-關閉請勿打擾 | 請確定您未針對您的行動裝置開啟 [**請勿打擾**] 功能。 開啟這項功能時，不允許通知在您的行動裝置上發出警示。 如需如何關閉此功能的指示，請參閱行動裝置的手冊。
-解除封鎖電話號碼 | 在美國，來自 Microsoft 的語音電話來自下列數位： + 1 （866） 539 4191、+ 1 （855） 330 8653 和 + 1 （877） 668 6536。
-檢查您的電池相關設定 | 此介面在表面上看起來有點奇怪，但如果您已設定電池優化，以停止在背景中從剩餘作用中使用的低應用程式，您的通知系統可能會受到影響。 若要嘗試修正此問題，請關閉驗證應用程式和訊息應用程式的電池優化，然後再次嘗試登入您的帳戶。
+重新開機行動裝置 | 有時您的設備只需要刷新。 重新開機設備將結束當前正在運行的任何後臺進程或服務，並可能導致問題，同時刷新設備的核心元件，重新開機它們以防它們在某個時候崩潰。
+驗證您的安全資訊是否正確 | 確保您的安全驗證方法資訊準確無誤，尤其是電話號碼。 如果您輸入了錯誤的電話號碼，則所有警報都將轉到該不正確的號碼。 幸運的是，該使用者無法對警報執行任何操作，但它也無法説明您登錄您的帳戶。 要確保資訊正確，請參閱[管理雙因素驗證方法設置](multi-factor-authentication-end-user-manage-settings.md)一文中的說明。
+驗證通知已打開 | 確保行動裝置已打開通知，並且已選擇允許撥打電話、身份驗證應用和消息應用（用於短信）的通知方法向行動裝置發送可見警報通知。
+確保您有設備信號和互聯網連接 | 確保您的電話和短信正在發送到您的行動裝置。 讓朋友打電話給你，並向您發送一條短信，以確保您同時收到這兩個消息。 如果沒有，請先檢查以確保行動裝置已打開。 如果設備已打開，但您仍未收到呼叫或短信，則很可能是網路問題，您需要與供應商聯繫。 如果您經常遇到與信號相關的問題，我們建議您在行動裝置上安裝和使用 Microsoft[身份驗證器應用](user-help-auth-app-download-install.md)。 身份驗證器應用可以為登錄生成隨機安全代碼，而無需任何單元信號或互聯網連接。
+關閉 請勿打擾 | 請確保您尚未打開行動裝置的 **"請勿打擾**"功能。 啟用此功能後，不允許通知在行動裝置上提醒您。 有關如何關閉此功能的說明，請參閱行動裝置手冊。
+取消阻止電話號碼 | 在美國，來自 Microsoft 的語音電話來自以下號碼：+1 （866） 539 4191、+1 （855） 330 8653 和 +1 （877） 668 6536。
+檢查電池相關設置 | 從表面上看，這一點似乎有點奇怪，但如果您設置了電池優化，以阻止使用較少的應用在後臺保持活動狀態，則通知系統很可能受到影響。 要嘗試解決此問題，請關閉身份驗證應用和消息應用的電池優化，然後嘗試再次登錄到您的帳戶。
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>我不會收到第二個驗證資訊的提示
+## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>系統不會提示我提供第二個驗證資訊
 
-如果您已使用使用者名稱和密碼登入公司或學校帳戶，但未收到其他安全性驗證資訊的提示，可能是您尚未設定您的裝置。 您的行動裝置必須設定為使用您的特定額外安全性驗證方法。 若要確定您已開啟行動裝置，並可與您的驗證方法搭配使用，請參閱[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文。 如果您知道您尚未設定您的裝置或帳戶，您可以遵循[針對雙步驟驗證設定我的帳戶一](multi-factor-authentication-end-user-first-time.md)文中的步驟來完成。
+如果您已使用使用者名和密碼登錄到工作或學校帳戶，但未提示有關您的其他安全驗證資訊，則可能尚未設置設備。 必須設置行動裝置才能使用特定的附加安全驗證方法。 為了確保已打開行動裝置，並且可以使用驗證方法，請參閱[管理雙因素驗證方法設置](multi-factor-authentication-end-user-manage-settings.md)一文。 如果您知道尚未設置設備或帳戶，則現在可以通過按照["設置我的帳戶進行兩步驗證](multi-factor-authentication-end-user-first-time.md)"一文中的步驟進行設置。
 
-## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>我收到新的電話號碼，我想要將它新增
+## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>我有一個新的電話號碼，我想添加它
 
-如果您已取得新的電話號碼，則必須更新您的安全性驗證方法詳細資料，讓您的驗證提示會移至正確的位置。 若要更新您的驗證方法，請遵循[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)一文中的**新增或變更您的電話號碼**一節中的步驟。
+如果您獲得了新電話號碼，則需要更新安全驗證方法詳細資訊，以便驗證提示轉到正確的位置。 要更新驗證方法，請按照"**添加"或"**[更改雙因素驗證方法設置](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)"一文中的電話號碼部分的步驟進行操作。
 
-## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>我收到新的行動裝置，我想要將它新增
+## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>我有一個新的行動裝置，我想添加它
 
-如果您已取得新的行動裝置，則必須將其設定為使用雙因素驗證。 這是一個多步驟解決方案：
+如果您獲得了新的行動裝置，則需要將其設置為使用雙重驗證。 這是一個多步驟解決方案：
 
-1. 依照[針對雙步驟驗證設定我的帳戶](multi-factor-authentication-end-user-first-time.md)一文中的步驟，設定您的裝置以使用您的工作或學校帳戶。
+1. 按照["設置我的帳戶進行兩步驗證](multi-factor-authentication-end-user-first-time.md)"一文中的步驟，將設備設置為與工作或學校帳戶一起工作。
 
-1. 在 [**其他安全性驗證**] 頁面中更新您的帳戶和裝置資訊，並刪除舊的裝置並新增新的裝置。 如需詳細資訊，請參閱[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文。
+1. 在 **"其他安全驗證**"頁中更新您的帳戶和設備資訊，刪除舊設備並添加新設備。 有關詳細資訊，請參閱[管理雙因素驗證方法設置](multi-factor-authentication-end-user-manage-settings.md)一文。
 
 選擇性步驟：
 
-- 遵循[下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)文章中的步驟，在您的行動裝置上下載、安裝和設定 Microsoft Authenticator 應用程式。
+- 按照["下載並安裝 Microsoft 身份驗證器"應用](user-help-auth-app-download-install.md)文章中的步驟，在行動裝置上下載、安裝和設置 Microsoft 身份驗證器應用。
 
-- 遵循[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中的在**信任的裝置上開啟雙因素驗證提示**一節中的步驟，為信任的裝置開啟雙因素驗證。
+- 按照"打開雙因素驗證[方法設置](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)"一節中的 **"打開雙因素驗證提示"** 中的步驟，為受信任的設備打開雙因素驗證。
 
-## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>我在旅行時登入行動裝置時遇到問題
+## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行時，我在行動裝置上登錄時遇到問題
 
-當您在國際位置時，您可能會發現，使用行動裝置相關的驗證方法（例如文字訊息）就比較不容易。 您的行動裝置也可能會導致您產生漫遊費用。 在此情況下，建議您使用 Microsoft Authenticator 應用程式，並選擇連接到 Wi-fi 熱點。 如需有關如何在您的行動裝置上下載、安裝及設定 Microsoft Authenticator 應用程式的詳細資訊，請參閱[下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)一文。
+當您處於國際位置時，您可能會發現使用行動裝置相關的驗證方法（如短信）更加困難。 您的行動裝置還可能導致您產生漫遊費。 對於這種情況，我們建議您使用 Microsoft 身份驗證器應用，並選擇連接到 Wi-Fi 熱點。 有關如何在行動裝置上下載、安裝和設置 Microsoft 身份驗證器應用的詳細資訊，請參閱[下載並安裝 Microsoft 身份驗證器應用](user-help-auth-app-download-install.md)文章。
 
-## <a name="i-cant-get-my-app-passwords-to-work"></a>我無法讓應用程式密碼正常執行
+## <a name="i-cant-get-my-app-passwords-to-work"></a>我無法使應用密碼正常工作
 
-應用程式密碼會針對不支援雙因素驗證的舊版桌面應用程式，取代您的一般密碼。 請先確定您輸入的密碼正確。 如果無法修正此問題，請嘗試我的應用程式使用[管理應用程式密碼以進行雙步驟驗證](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)一文中的**建立和刪除應用程式**密碼一節中的步驟，為應用程式建立新的應用程式密碼。
+應用密碼將替換不支援雙重驗證的舊桌面應用程式的正常密碼。 請先確定您輸入的密碼正確。 如果這不能修復它，請嘗試使用["管理應用密碼"的"管理應用密碼"](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)部分，為應用創建**和刪除應用密碼**，以執行兩步驗證文章的步驟，從而嘗試為應用創建新的應用密碼。
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>我無法關閉雙因素驗證
 
-如果您使用與公司或學校帳戶的雙因素驗證（例如 alain@contoso.com），則最有可能表示您的組織已決定您必須使用這項新增的安全性功能。 因為您的組織已決定您必須使用此功能，所以您無法個別關閉此功能。 不過，如果您使用具有個人帳戶的雙因素驗證（例如 alain@outlook.com），您就能夠開啟和關閉此功能。 如需如何為您的個人帳戶控制雙因素驗證的指示，請參閱開啟[或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+如果您對工作或學校帳戶（例如alain@contoso.com），使用雙因素驗證，則很可能意味著您的組織已決定必須使用此添加的安全功能。 因為您的組織已決定您必須使用此功能，所以您無法個別關閉此功能。 但是，如果您對個人帳戶（如alain@outlook.com）使用雙重驗證，則可以打開和關閉該功能。 有關如何控制個人帳戶的雙因素驗證的說明，請參閱[為 Microsoft 帳戶打開或關閉雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到我的問題的解答
 
-如果您嘗試了這些步驟，但仍遇到問題，請洽詢貴組織的技術支援人員以尋求協助。
+如果您已嘗試這些步驟，但仍遇到問題，請與組織的説明台聯繫以獲得説明。
 
 ## <a name="related-articles"></a>相關文章
 
 - [管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)
 
-- [設定我的帳戶以進行雙步驟驗證](multi-factor-authentication-end-user-first-time.md)
+- [對我的帳戶進行雙步驟驗證設定](multi-factor-authentication-end-user-first-time.md)
 
 - [Microsoft Authenticator 應用程式常見問題集](user-help-auth-app-faq.md)

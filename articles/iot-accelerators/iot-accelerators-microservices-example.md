@@ -8,19 +8,19 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447580"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自訂和重新部署微服務
 
-本教學課程示範如何編輯遠端監視解決方案中的其中一個[微服務](https://azure.com/microservices)，建置該微服務的映像，將該映像部署到 Docker Hub，然後將它用於遠端監視解決方案。 為了引入此概念，本教學課程會使用基本情節，讓您可在其中呼叫微服務 API，並將狀態訊息從 "Alive and Well" 變更為 "New Edits Made Here!"。
+本教程介紹如何編輯遠端監視解決方案中的微[服務](https://azure.com/microservices)之一、構建微服務映射、將映射部署到 docker 集線器，然後在遠端監視解決方案中使用它。 為了引入此概念，本教學課程會使用基本情節，讓您可在其中呼叫微服務 API，並將狀態訊息從 "Alive and Well" 變更為 "New Edits Made Here!"。
 
 遠端監視解決方案所使用的微服務，是使用提取自 Docker Hub 的 Docker 映像所建置。 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 >[!div class="checklist"]
 > * 在遠端監視解決方案中編輯和建置微服務
@@ -29,7 +29,7 @@ ms.locfileid: "61447580"
 > * 提取新的 Docker 映像
 > * 將變更視覺化 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了依循本教學課程進行操作，您需要：
 
@@ -45,7 +45,7 @@ ms.locfileid: "61447580"
 1. 確定遠端監視解決方案正在您的電腦上以本機方式執行。
 2. 找出您已下載的 Postman 並開啟它。
 3. 在 Postman 中，於 GET 中輸入下列內容：`http://localhost:8080/iothubmanager/v1/status`。
-4. 檢視傳回內容，您應該會看到 "Status":"OK:Alive and Well"。
+4. 檢視傳回內容，您應該會看到 "Status": "OK:Alive and Well"。
 
     ![活躍的 Postman 訊息](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "61447580"
     ```
 
 3. 找出您已下載的 Postman 並開啟它。
-4. 在 Postman 中，於 GET 中輸入下列要求：`http://localhost:8080/iothubmanager/v1/status`。 您現在應該會看到 "Status":"OK:New Edits Made Here!"。
+4. 在 Postman 中，於 GET 中輸入下列要求：`http://localhost:8080/iothubmanager/v1/status`。 您現在應該會看到 "Status": "OK: New Edits Made Here!"。
 
 ![New Edits Made Here 的 Postman 訊息](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>疑難排解
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>疑難排解
 
 如果您在執行時遇到問題，請嘗試移除本機電腦上的 Docker 映像和容器。
 

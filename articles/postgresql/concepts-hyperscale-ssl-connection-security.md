@@ -1,41 +1,41 @@
 ---
-title: SSL-超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
-description: 用於設定適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）和相關聯應用程式以適當使用 SSL 連線的指示和資訊。
+title: SSL - 超大規模（Citus） - 用於後格雷SQL的 Azure 資料庫
+description: 用於為 PostgreSQL - 超大規模 （Citus） 和相關應用程式佈建 Azure 資料庫以正確使用 SSL 連線的說明和資訊。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 3e4ef5d2d6db3a3d4f8923f47079f2484639a751
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973980"
 ---
-# <a name="configure-ssl-in-azure-database-for-postgresql---hyperscale-citus"></a>在適用於 PostgreSQL 的 Azure 資料庫中設定 SSL 超大規模資料庫（Citus）
-超大規模資料庫（Citus）協調器節點的用戶端應用程式連接需要安全通訊端層（SSL）。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將伺服器與應用程式之間的資料流程加密，以協助防止「攔截式」攻擊。
+# <a name="configure-ssl-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure 資料庫中配置 SSL，用於後縮放 - 超大規模（Citus）
+用戶端應用程式連接到超大規模 （Citus） 協調節點需要安全通訊端層 （SSL）。 通過加密伺服器和應用程式之間的資料流程，在資料庫伺服器和用戶端應用程式之間強制實施 SSL 連線，有助於防止"中間人"攻擊。
 
-## <a name="enforcing-ssl-connections"></a>強制執行 SSL 連接
-針對透過 Azure 入口網站布建的所有適用於 PostgreSQL 的 Azure 資料庫伺服器，預設會啟用 [強制執行 SSL 連線]。 
+## <a name="enforcing-ssl-connections"></a>強制使用 SSL 連線
+對於通過 Azure 門戶預配的所有 PostgreSQL 伺服器 Azure 資料庫，預設情況下啟用 SSL 連線的強制。 
 
-同樣地，您在 Azure 入口網站的伺服器下方 [連接字串] 設定中預先定義的連接字串，會包含通用語言使用 SSL 連接到您資料庫伺服器所需的必要參數。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
+同樣地，在 Azure 入口網站中，您的伺服器下方的 [連接字串] 設定中所預先定義的連接字串，也包含通用語言使用 SSL 連線至資料庫伺服器所需的參數。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>確定您的應用程式或架構支援 SSL 連線
-某些針對其資料庫服務使用於 postgresql 的應用程式架構，在安裝期間預設不會啟用 SSL。 如果您的于 postgresql 伺服器強制執行 SSL 連線，但未針對 SSL 設定應用程式，則應用程式可能無法連線到您的資料庫伺服器。 請參閱您的應用程式文件，以了解如何啟用 SSL 連接。
+某些應用程式框架在安裝過程中預設不啟用 SSL， 將 PostgreSQL 用於其資料庫服務。 如果 PostgreSQL 伺服器強制執行 SSL 連線，但應用程式未配置為 SSL，則應用程式可能無法連接到資料庫伺服器。 請參閱您的應用程式文件，以了解如何啟用 SSL 連線。
 
 ## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>需要憑證驗證才能啟用 SSL 連線能力的應用程式
-在某些情況下，應用程式需要從受信任憑證授權單位 (CA) 憑證檔案 (.cer) 所產生的本機憑證檔，才能安全地連接。 用來連接到適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）的憑證位於 https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem 。 下載憑證檔案，並將它儲存到您慣用的位置。
+在某些情況下，應用程式需要從受信任憑證授權單位 (CA) 憑證檔案 (.cer) 所產生的本機憑證檔，才能安全地連接。 連接到 Azure 資料庫的 PostgreSQL- 超大規模 （Citus） 的證書https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem位於 。 下載證書檔並將其保存到您的首選位置。
 
 ### <a name="connect-using-psql"></a>使用 psql 連接
-下列範例顯示如何使用 psql 命令列公用程式連線到您的超大規模資料庫（Citus）協調器節點。 使用 [`sslmode=verify-full` 連接字串] 設定，以強制執行 SSL 憑證驗證。 將本機憑證檔案路徑傳遞至 `sslrootcert` 參數。
+下面的示例演示如何使用 psql 命令列實用程式連接到超大規模 （Citus） 協調器節點。 使用`sslmode=verify-full`連接字串設置強制實施 SSL 憑證驗證。 將本地證書檔路徑傳遞給參數`sslrootcert`。
 
-以下是 psql 連接字串的範例：
+下面是 psql 連接字串的示例：
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemoserver.postgres.database.azure.com dbname=citus user=citus password=your_pass"
 ```
 > [!TIP]
-> 確認傳遞給 `sslrootcert` 的值符合您儲存之憑證的檔案路徑。
+> 確認傳遞給`sslrootcert`的值與保存的證書的檔路徑匹配。
 
 ## <a name="next-steps"></a>後續步驟
-使用[適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）中的防火牆規則](concepts-hyperscale-firewall-rules.md)進一步提升安全性。
+使用 Azure[資料庫中的防火牆規則進一步提高安全性，用於 PostgreSQL- 超大規模 （Citus）。](concepts-hyperscale-firewall-rules.md)

@@ -1,6 +1,6 @@
 ---
-title: 設定常見問題
-description: 取得 Azure App Service 設定和管理問題的常見問題解答。
+title: 配置常見問題解答
+description: 獲取有關 Azure 應用服務的配置和管理問題的常見問題的解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942940"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
@@ -37,7 +37,7 @@ ms.locfileid: "78942940"
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>如何上傳及設定 Web 應用程式的現有 SSL 憑證？
 
-若要瞭解如何上傳和設定現有的自訂 SSL 憑證，請參閱[將 SSL 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
+要瞭解如何上載和設置現有的自訂 SSL 憑證，請參閱[向應用服務應用添加 SSL 憑證](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>如何購買 Web 應用程式的新 SSL 憑證並且在 Azure 中設定？
@@ -59,23 +59,23 @@ ms.locfileid: "78942940"
 
 若要設定 Web 應用程式的伺服器時區：
 
-1. 在 Azure 入口網站的 App Service 訂用帳戶中，移至 [應用程式設定] 功能表。
-2. 在 [應用程式設定] 底下，新增以下設定：
+1. 在 Azure 入口網站的 App Service 訂用帳戶中，移至 [應用程式設定]**** 功能表。
+2. 在 [應用程式設定]**** 底下，新增以下設定：
     * 索引鍵 = WEBSITE_TIME_ZONE
-    * 值 = 您想要的時區
-3. 選取 [儲存]。
+    * 值 = 您想要的時區**
+3. 選取 [儲存]****。
 
-針對在 Windows 上執行的應用程式服務，請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 [**時區**] 資料行以取得接受的值。 針對在 Linux 上執行的應用程式服務，將[TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)設定為時區值。 以下是一個 TZ 資料庫名稱：北美洲/Adak 的範例。
+有關在 Windows 上運行的應用服務，請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 **"時區**"列，瞭解接受的值。 對於在 Linux 上運行的應用程式服務，將[TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)設置為時區值。 下面是 TZ 資料庫名稱的示例：美國/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>為什麼我的持續 WebJobs 有時候會失敗？
 
-根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 在「基本」和「標準」方案中，您可以開啟 [永遠開啟] 設定，讓 Web 應用程式隨時保持載入。 如果您的 Web 應用程式會執行持續的 WebJobs，就應該開啟 [永遠開啟]，否則 WebJobs 可能無法可靠地執行。 如需詳細資訊，請參閱[建立持續執行 WebJob](webjobs-create.md#CreateContinuous)。
+根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 在「基本」和「標準」方案中，您可以開啟 [永遠開啟]**** 設定，讓 Web 應用程式隨時保持載入。 如果您的 Web 應用程式會執行持續的 WebJobs，就應該開啟 [永遠開啟]****，否則 WebJobs 可能無法可靠地執行。 如需詳細資訊，請參閱[建立持續執行 WebJob](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何取得 Web 應用程式的輸出 IP 位址？
 
 若要取得 Web 應用程式的輸出 IP 位址清單：
 
-1. 在 Azure 入口網站的 Web 應用程式刀鋒視窗中，移至 [屬性] 功能表。
+1. 在 Azure 入口網站的 Web 應用程式刀鋒視窗中，移至 [屬性]**** 功能表。
 2. 搜尋**輸出 IP 位址**。
 
 輸出 IP 位址清單隨即出現。
@@ -90,7 +90,7 @@ ms.locfileid: "78942940"
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以將 App Service 憑證匯出以在 Azure 外部使用，例如在其他位置裝載的網站？ 
 
-是，您可以將它們匯出以在 Azure 外部使用。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
+可以，您可以將它們匯出到 Azure 外部。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>是否可以匯出我的 App Service 憑證以與其他 Azure 雲端服務搭配使用？
 
@@ -105,7 +105,7 @@ ms.locfileid: "78942940"
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何從 HTTP 回應移除標題？
 
-若要移除 HTTP 回應中的標頭，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+要從 HTTP 回應中刪除標頭，請更新網站的 Web.config 檔。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service 是否符合 PCI 標準 3.0 和 3.1 的規範？
 
@@ -127,10 +127,10 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 
 1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
 2. 選取 WebJob。
-3. 選取 [切換輸出] 按鈕。
-4. 若要下載輸出檔案，請選取 [下載] 連結。
-5. 針對個別的執行，選取 [個別叫用]。
-6. 選取 [切換輸出] 按鈕。
+3. 選取 [切換輸出]**** 按鈕。
+4. 若要下載輸出檔案，請選取 [下載]**** 連結。
+5. 針對個別的執行，選取 [個別叫用]****。
+6. 選取 [切換輸出]**** 按鈕。
 7. 選取下載連結。
 
 ## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我正在嘗試使用混合式連線與 SQL Server。 為什麼會看到「System.OverflowException：	數學運算導致溢位」訊息？
@@ -145,9 +145,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 
-## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何? 新增 URL 重寫規則？
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重寫規則？
 
-若要新增 URL 重寫規則，請使用**wwwroot**資料夾中的相關設定專案來建立 web.config 檔案。 如需詳細資訊，請參閱[Azure App Services：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+要添加 URL 重寫規則，請創建一個 Web.config 檔，該檔包含**wwwroot**資料夾中的相關配置條目。 有關詳細資訊，請參閱[Azure 應用服務：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制 App Service 的輸入流量？
 
@@ -160,7 +160,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何封鎖 App Service Web 應用程式中的連接埠？
 
-在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 埠4020、4022和4024也可能針對 Visual Studio 遠端偵錯程式開啟。
+在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 埠 4020、4022 和 4024 也可能打開，用於 Visual Studio 遠端偵錯。
 
 在 App Service Environment 中，您對於輸入與輸出流量有完整控制權。 您可以使用網路安全性群組來限制或封鎖特定連接埠。 如需 App Service Environment 的詳細資訊，請參閱[App Service Environment 簡介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 
@@ -175,16 +175,16 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 1. 在 Internet Explorer 中，移至您的網站。 請務必在執行下一個步驟之前登入。 否則，F12 追蹤會擷取敏感性登入資料。
 2. 按下 F12。
-3. 確認 [網路] 索引標籤已選取，然後選取綠色 [播放] 按鈕。
+3. 確認 [網路]**** 索引標籤已選取，然後選取綠色 [播放]**** 按鈕。
 4. 執行重現問題的步驟。
-5. 選取紅色 [停止] 按鈕。
-6. 選取 [儲存] 鈕 (磁片圖示)，並儲存 HAR 檔案 (在 Internet Explorer 和 Microsoft Edge 中) 或者以滑鼠右鍵按一下 HAR 檔案，然後選取 [內容另存為 HAR] \(在 Chrome 中)。
+5. 選取紅色 [停止]**** 按鈕。
+6. 選取 [儲存]**** 鈕 (磁片圖示)，並儲存 HAR 檔案 (在 Internet Explorer 和 Microsoft Edge 中) 或者** 以滑鼠右鍵按一下 HAR 檔案，然後選取 [內容另存為 HAR]**** \(在 Chrome 中)。
 
 ### <a name="f12-console-output"></a>F12 主控台輸出
 
-1. 選取 [主控台] 索引標籤。
-2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選取索引標籤，則當您將游標移離該索引標籤時，索引標籤圖示會是灰色或黑色。
-3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]。
+1. 選取 [主控台]**** 索引標籤。
+2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選擇選項卡，則當您將游標移離選項卡時，選項卡圖示為灰色或黑色。
+3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]****。
 4. 在檔案中貼上複製的文字，然後儲存檔案。
 
 若要檢視 HAR 檔案，您可以使用 [HAR 檢視器](https://www.softwareishard.com/har/viewer/)。
@@ -276,13 +276,13 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 如需 App Service 中驗證和授權的詳細文件，請參閱各種身分識別提供者登入的文件：
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
-* [Google](configure-authentication-provider-google.md)
+* [谷歌](configure-authentication-provider-google.md)
 * [Microsoft 帳戶](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何將預設 *.azurewebsites.net 網域重新導向至我的 Azure Web 應用程式的自訂網域？
 
-當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename.azurewebsites.net 網域會指派至您的網站。 如果您將自訂主機名稱新增至您的網站，而不想讓使用者能夠存取您的預設 *. azurewebsites.net 網域，您可以重新導向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename**.azurewebsites.net 網域會指派至您的網站。 如果將自訂主機名稱添加到您的網站，並且不希望使用者能夠訪問預設的 *.azurewebsites.net 域，則可以重定向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何判斷安裝在 App Service 中的是哪一個版本的 .NET？
 

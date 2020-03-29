@@ -1,6 +1,6 @@
 ---
 title: 將已對應的資料流參數化
-description: 瞭解如何從 data factory 管線參數化對應資料流程
+description: 瞭解如何參數化資料工廠管道的映射資料流程
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,67 +8,67 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760210"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>將已對應的資料流參數化
 
-對應中的資料流程 Azure Data Factory 支援使用參數。 您可以在資料流程定義內定義參數，然後在整個運算式中使用。 參數值可透過「執行資料流程」活動來設定呼叫管線。 您有三個選項可設定 [資料流程] 活動運算式中的值：
+在 Azure 資料工廠中映射資料流程支援參數的使用。 您可以在資料流程定義中定義參數，然後在整個運算式中使用這些參數。 參數值可以通過調用管道通過執行資料流程活動進行設置。 有三個選項用於設置資料流程活動運算式中的值：
 
-* 使用管線控制流程運算式語言來設定動態值
-* 使用資料流程運算式語言來設定動態值
-* 使用任一個運算式語言來設定靜態常值
+* 使用管道控制流運算式語言設置動態值
+* 使用資料流程運算式語言設置動態值
+* 使用任一運算式語言設置靜態文本值
 
-使用此功能可讓您的資料流程程成為一般用途、彈性且可重複使用。 您可以使用這些參數將資料流程設定和運算式參數化。
+使用此功能可使資料流程具有通用性、靈活性和再使用性。 您可以使用這些參數參數化資料流程設置和運算式。
 
-## <a name="create-parameters-in-a-mapping-data-flow"></a>在對應資料流程中建立參數
+## <a name="create-parameters-in-a-mapping-data-flow"></a>在映射資料流程中創建參數
 
-若要將參數加入至您的資料流程，請按一下 [資料流程] 畫布的空白部分，以查看一般屬性。 在 [設定] 窗格中，您會看到名為 [**參數**] 的索引標籤。 選取 [**新增**] 以產生新的參數。 針對每個參數，您必須指派名稱、選取類型，並選擇性地設定預設值。
+要向資料流程添加參數，請按一下資料流程畫布的空白部分以查看常規屬性。 在"設置"窗格中，您將看到一個名為 **"參數**"的選項卡。 選擇 **"新建"** 以生成新參數。 對於每個參數，必須指定名稱、選擇類型，並選擇設置預設值。
 
-![建立資料流程參數](media/data-flow/create-params.png "建立資料流程參數")
+![創建資料流程參數](media/data-flow/create-params.png "創建資料流程參數")
 
-## <a name="use-parameters-in-a-mapping-data-flow"></a>在對應資料流程中使用參數 
+## <a name="use-parameters-in-a-mapping-data-flow"></a>在映射資料流程中使用參數 
 
-可以在任何資料流程運算式中參考參數。 參數是以 $ 開頭，而且是不可變的。 您會在 [**參數**] 索引標籤底下的 [運算式產生器] 中找到可用參數的清單。
+參數可以在任何資料流程運算式中引用。 參數以 $ 開頭，不可變。 您可以在"**參數"** 選項卡下找到運算式產生器內部可用參數的清單。
 
 ![資料流程參數運算式](media/data-flow/parameter-expression.png "資料流程參數運算式")
 
-您可以選取 [**新增參數**] 並指定名稱和類型，以快速新增其他參數。
+您可以通過選擇 **"新建"參數**並指定名稱和類型來快速添加其他參數。
 
 ![資料流程參數運算式](media/data-flow/new-parameter-expression.png "資料流程參數運算式")
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>傳入資料行名稱做為參數
+### <a name="passing-in-a-column-name-as-a-parameter"></a>將列名稱作為參數傳遞
 
-常見的模式是將資料行名稱傳入做為參數值。 若要參考與參數相關聯的資料行，請使用 `byName()` 函數。 請記得使用轉換函數（例如 `toString()`）將資料行轉換成其適當的類型。
+常見的模式是將列名稱作為參數值傳遞。 要引用與參數關聯的列，請使用 函數`byName()`。 請記住，使用強制轉換函數（如`toString()`）將列轉換為其適當類型。
 
-例如，如果您想要根據參數 `columnName`來對應字串資料行，您可以加入等於 `toString(byName($columnName))`的「衍生的資料行」轉換。
+例如，如果要基於參數`columnName`映射字串列，則可以添加等於`toString(byName($columnName))`的派生列變換。
 
-![傳入資料行名稱做為參數](media/data-flow/parameterize-column-name.png "以 paramete 的形式傳入資料行名稱")
+![將列名稱作為參數傳遞](media/data-flow/parameterize-column-name.png "將列名稱作為輔助項傳遞")
 
-## <a name="assign-parameter-values-from-a-pipeline"></a>從管線指派參數值
+## <a name="assign-parameter-values-from-a-pipeline"></a>從管道分配參數值
 
-建立具有參數的資料流程之後，您可以使用「執行資料流程」活動從管線執行它。 將活動新增至管線畫布之後，您將會在活動的 [**參數**] 索引標籤中看到可用的資料流程參數。
+使用參數創建資料流程後，可以使用執行資料流程活動從管道執行資料流程。 將活動添加到管道畫布後，將在活動的 **"參數"** 選項卡中顯示可用資料流程參數。
 
-![設定資料流程參數](media/data-flow/parameter-assign.png "設定資料流程參數")
+![設置資料流程參數](media/data-flow/parameter-assign.png "設置資料流程參數")
 
-如果您的參數資料類型是 [字串]，當您按一下文字方塊來設定參數值時，您可以選擇輸入管線或資料流程運算式。 如果您選擇 [管線運算式]，將會顯示 [管線運算式] 面板。 請務必使用 `'@{<expression>}'`在字串內插補點語法中包含管線函數，例如：
+如果參數資料類型為字串，則當您按一下文字方塊以設置參數值時，可以選擇輸入管道或資料流程運算式。 如果選擇管道運算式，將顯示管道運算式面板。 請確保在字串插值語法中包含管道函數，`'@{<expression>}'`例如：
 
 ```'@{pipeline().RunId}'```
 
-如果您的參數不是字串類型，您一定會看到資料流程運算式產生器。 在這裡，您可以輸入任何您想要的運算式或常值，以符合參數的資料類型。 以下是「運算式產生器」中的「資料流程運算式」和「常值字串」範例：
+如果參數不是類型字串，則始終將顯示資料流程運算式產生器。 在這裡，您可以輸入您希望與參數資料類型匹配的任何運算式或文本值。 下面是資料流程運算式的示例和運算式產生器的字面字串：
 
 * ```toInteger(Role)```
 * ```'this is my static literal string'```
 
-每個對應資料流程可以有管線和資料流程運算式參數的任意組合。 
+每個映射資料流程可以具有管道和資料流程運算式參數的任意組合。 
 
-![資料流程參數範例](media/data-flow/parameter-example.png "資料流程參數範例")
+![資料流程參數示例](media/data-flow/parameter-example.png "資料流程參數示例")
 
 
 
 ## <a name="next-steps"></a>後續步驟
 * [執行資料流程活動](control-flow-execute-data-flow-activity.md)
-* [控制流程運算式](control-flow-expression-language-functions.md)
+* [控制流運算式](control-flow-expression-language-functions.md)

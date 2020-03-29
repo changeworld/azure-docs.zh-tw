@@ -1,5 +1,5 @@
 ---
-title: 在 Service Fabric 網狀應用程式中使用以 Azure 檔案儲存體為基礎的磁片區
+title: 在服務結構網格應用中使用基於 Azure 檔的卷
 description: 了解如何使用 Azure CLI 在服務內裝載以檔案儲存體為基礎的磁碟區，以在 Azure Service Fabric Mesh 應用程式中儲存狀態。
 author: dkkapur
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718815"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以檔案儲存體為基礎的磁碟區 
@@ -21,13 +21,13 @@ ms.locfileid: "76718815"
 
 ## <a name="prerequisites"></a>Prerequisites
 > [!NOTE]
-> **WINDOWS RS5 開發電腦上部署的已知問題：** RS5 Windows 機器上的 Powershell Cmdlet SmbGlobalMapping 有 open bug，可防止掛接 Azurefile 磁片區。 以下是在本機開發電腦上裝載以 AzureFile 為基礎的磁片區時，所遇到的範例錯誤。
+> **Windows RS5 開發電腦上部署的已知問題：** 在 RS5 Windows 電腦上存在 Powershell Cmdlet New-SmbGlobalMapping 的開放錯誤，可防止 Azure 檔卷的安裝。 下面是在本地開發電腦上裝載基於 AzureFile 的卷時遇到的示例錯誤。
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-問題的因應措施是1）以 Powershell 系統管理員身分執行下列命令，2）重新開機電腦。
+此問題的解決方法是 1） 以 Powershell 管理員的身份在命令下方運行，2） 重新開機電腦。
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```
@@ -75,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 您也可以在 [Azure 入口網站](https://portal.azure.com)中尋找這些值：
-* `<storageAccountName>` - 位於 [儲存體帳戶] 下方，這是用來建立檔案共用的儲存體帳戶名稱。
-* `<storageAccountKey>` - 在 [儲存體帳戶] 下方選取您的儲存體帳戶，然後選取 [存取金鑰]，並使用 **key1** 下方的值。
-* `<fileShareName>` - 在 [儲存體帳戶] 下方選取您的儲存體帳戶，然後選取 [檔案]。 要使用的名稱是所建立檔案共用的名稱。
+* `<storageAccountName>` - 位於 [儲存體帳戶]**** 下方，這是用來建立檔案共用的儲存體帳戶名稱。
+* `<storageAccountKey>` - 在 [儲存體帳戶]**** 下方選取您的儲存體帳戶，然後選取 [存取金鑰]****，並使用 **key1** 下方的值。
+* `<fileShareName>` - 在 [儲存體帳戶]**** 下方選取您的儲存體帳戶，然後選取 [檔案]****。 要使用的名稱是所建立檔案共用的名稱。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>宣告磁碟區資源並更新服務資源 (JSON)
 
@@ -195,7 +195,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>宣告磁碟區資源並更新服務資源 (YAML)
 
-在應用程式的「App resources」目錄中新增 volume.yaml 檔案。  指定名稱和提供者 (指定 "SFAzureFile" 可使用以檔案儲存體為基礎的磁碟區)。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是您在上一個步驟中找到的值。
+在應用程式的「App resources」** 目錄中新增 volume.yaml** 檔案。  指定名稱和提供者 (指定 "SFAzureFile" 可使用以檔案儲存體為基礎的磁碟區)。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是您在上一個步驟中找到的值。
 
 ```yaml
 volume:
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-更新「Service Resources」目錄中的 service.yaml 檔案，以在服務中裝載磁碟區。  將 `volumeRefs` 元素新增至 `codePackages` 元素。  `name` 是磁碟區的資源識別碼 (或磁碟區資源的部署範本參數)，以及 volume.yaml 資源檔中所宣告磁碟區的名稱。  `destinationPath` 是要作為磁碟區裝載目的地的本機目錄。
+更新「Service Resources」** 目錄中的 service.yaml** 檔案，以在服務中裝載磁碟區。  將 `volumeRefs` 元素新增至 `codePackages` 元素。  `name` 是磁碟區的資源識別碼 (或磁碟區資源的部署範本參數)，以及 volume.yaml 資源檔中所宣告磁碟區的名稱。  `destinationPath` 是要作為磁碟區裝載目的地的本機目錄。
 
 ```yaml
 ## Service definition ##

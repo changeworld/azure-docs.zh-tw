@@ -1,23 +1,23 @@
 ---
-title: 使用 REST API 建立備份原則
-description: 在本文中，您將瞭解如何使用 REST API 來建立和管理備份原則（排程和保留）。
+title: 使用 REST API 創建備份策略
+description: 在本文中，您將學習如何使用 REST API 創建和管理備份策略（計畫和保留）。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963847"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
 
 [原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)概述為 Azure 復原服務保存庫建立備份原則的步驟。 讓我們使用這份文件作為參考，以建立 Azure VM 備份的原則。
 
-## <a name="create-or-update-a-policy"></a>建立或更新原則
+## <a name="create-or-update-a-policy"></a>創建或更新策略
 
-若要建立或更新 Azure 備份原則，請使用下列 PUT 作業
+若要建立或更新 Azure 備份原則，請使用下列 PUT** 作業
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
@@ -29,10 +29,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要建立 Azure VM 備份的原則，以下是要求本文的元件。
 
-|名稱  |必要項  |類型  |說明  |
+|名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|properties     |   是      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
-|tags     |         | 物件        |  資源標籤       |
+|properties     |   True      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
+|tags     |         | Object        |  資源標籤       |
 
 如需要求本文中的完整定義清單，請參閱[備份原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)。
 
@@ -135,16 +135,16 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 備份原則的建立/更新為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
-它會傳回兩個回應：在建立另一個作業時，202（已接受），然後在該作業完成時傳回200（確定）。
+它返回兩個回應：創建另一個操作時為 202（已接受），當該操作完成時返回 200 （OK）。
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |    [保護 PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  確定       |
+|200 確定     |    [保護 PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  [確定]       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>範例回應
 
-一旦提交 PUT 要求以供建立或更新原則，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
+一旦提交 PUT** 要求以供建立或更新原則，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
 
 ```http
 HTTP/1.1 202 Accepted

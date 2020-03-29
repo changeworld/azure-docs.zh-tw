@@ -1,6 +1,6 @@
 ---
-title: 連接到實驗室的 vnet，在 Azure DevTest Labs 中的環境 |Microsoft Docs
-description: 了解如何環境 （例如 Service Fabric 叢集） 連接到 Azure DevTest Labs 中的實驗室的虛擬網路
+title: 將環境連接到 Azure 開發人員測試實驗室中的實驗室 vnet |微軟文檔
+description: 瞭解如何在 Azure DevTest 實驗室中將環境（如服務交換矩陣群集）連接到實驗室的虛擬網路
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60777163"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>在 Azure DevTest Labs 的實驗室的虛擬網路連線的環境
-Azure DevTest Labs 可讓您輕鬆地在實驗室中建立 Vm[內建網路](devtest-lab-configure-vnet.md)。 它有大量的能力的彈性[建立多個 VM 環境](devtest-lab-test-env.md)。 這篇文章會示範如何連接到實驗室的虛擬網路的環境中的 Vm。 使用這項功能的其中一個案例設定連接到實驗室 VNet 允許測試 Vm 在實驗室中，若要存取它的 SQL Server 資料層的多層式架構應用程式。  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>在 Azure 開發人員測試實驗室中將環境連接到實驗室的虛擬網路
+Azure 開發人員測試實驗室使在具有[內置網路](devtest-lab-configure-vnet.md)的實驗室中輕鬆創建 VM。 它具有很大的靈活性，能夠[創建多 VM 環境](devtest-lab-test-env.md)。 本文介紹如何將環境中的 VM 連接到實驗室虛擬網路。 使用此功能的一個方案是設置一個 N 層應用，該應用具有連接到實驗室 VNet 的 SQL Server 資料層，允許實驗室中的測試 VM 訪問它。  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>使用實驗室 VNet 的範例環境
-以下是簡單的環境範本連接實驗室的子網路。 在此範例中，`DTLSubnetId`參數代表實驗室所在的子網路識別碼。 將它指派給： `$(LabSubnetId)`，這會自動解決的 DevTest Labs 實驗室的子網路識別碼。 **子網路**屬性**網路介面**此定義中的 vm 設定為`DTLSubnetId`以便加入相同的子網路。 
+## <a name="sample-environment-that-uses-lab-vnet"></a>使用實驗室 VNet 的示例環境
+下面是一個連接實驗室子網的簡單環境範本。 在此示例中，參數`DTLSubnetId`表示實驗室存在的子網的 ID。 它分配給： `$(LabSubnetId)`，DevTest 實驗室會自動解析為實驗室子網的 ID。 此定義中 VM**的網路介面**的`DTLSubnetId`**子網**屬性設置為，以便它加入同一個子網。 
 
 ```json
 {
@@ -161,4 +161,4 @@ Azure DevTest Labs 可讓您輕鬆地在實驗室中建立 Vm[內建網路](devt
 ```
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章中的有使用 Azure 入口網站來執行這些作業：[重新啟動 VM](devtest-lab-restart-vm.md)。
+有關使用 Azure 門戶執行這些操作，請參閱以下文章：[重新開機 VM](devtest-lab-restart-vm.md)。

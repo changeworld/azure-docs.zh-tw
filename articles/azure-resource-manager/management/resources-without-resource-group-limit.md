@@ -1,20 +1,20 @@
 ---
-title: 沒有800計數限制的資源
-description: 列出資源群組中可有超過800個實例的 Azure 資源類型。
+title: 沒有 800 計數限制的資源
+description: 列出資源組中可以具有 800 多個實例的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937942"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>每個資源群組的資源不限於800實例
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源組 800 個實例
 
-根據預設，您可以在每個資源群組中部署最多800個資源類型的實例。 不過，某些資源類型會豁免800實例的限制。 本文列出在資源群組中可以有超過800個實例的 Azure 資源類型。 所有其他資源類型的限制為800實例。
+預設情況下，每個資源組中最多可以部署 800 個資源類型的實例。 但是，某些資源類型不受 800 實例限制的約束。 本文列出了資源組中可以具有 800 多個實例的 Azure 資源類型。 所有其他資源類型限制為 800 個實例。
 
-針對某些資源類型，您必須聯絡支援人員以移除800實例的限制。 這篇文章中注明了這些資源類型。
+對於某些資源類型，您需要聯繫支援部門以刪除 800 實例限制。 本文將記錄這些資源類型。
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -26,11 +26,11 @@ ms.locfileid: "76937942"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
-* verificationKeys
+* 驗證金鑰
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* 機器人服務 - 預設情況下，限制為 800 個實例。 可以通過聯繫支援部門來提高這一限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -46,9 +46,9 @@ ms.locfileid: "76937942"
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * registries/buildTasks
-* 登錄/buildTasks/listSourceRepositoryProperties
+* 註冊表/生成任務/清單源存儲庫屬性
 * registries/buildTasks/steps
-* 登錄/buildTasks/步驟/listBuildArguments
+* 註冊表/生成任務/步驟/清單生成參數
 * registries/eventGridFilters
 * registries/replications
 * registries/tasks
@@ -56,19 +56,19 @@ ms.locfileid: "76937942"
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* 伺服器
+* servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* 伺服器
+* servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
-* serverGroups
-* 伺服器
-* serversv2
+* 伺服器組
+* servers
+* 伺服器v2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>微軟.企業知識圖
 
 * 服務
 
@@ -77,18 +77,18 @@ ms.locfileid: "76937942"
 * clusters
 * 命名空間
 
-## <a name="microsoftexperimentation"></a>Microsoft 實驗
+## <a name="microsoftexperimentation"></a>微軟.實驗
 
-* experimentWorkspaces
+* 實驗工作
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
-* autoManagedVmConfigurationProfiles
-* configurationProfileAssignments
+* 自動管理Vm配置設定檔
+* 配置設定檔分配
 * guestConfigurationAssignments
 * software
-* softwareUpdateProfile
-* softwareUpdates
+* 軟體更新設定檔
+* 軟體更新
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
@@ -101,17 +101,17 @@ ms.locfileid: "76937942"
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
-* netAppAccounts
-* netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/磁片區
-* netAppAccounts/capacityPools/磁片區/mountTargets
-* netAppAccounts/capacityPools/磁片區/快照集
+* 淨應用帳戶
+* 淨應用帳戶/容量池
+* 淨應用帳戶/容量池/卷
+* 淨應用帳戶/容量池/卷/裝載目標
+* 淨應用帳戶/容量池/卷/快照
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* applicationGatewayWebApplicationFirewallPolicies
+* 應用程式閘道Web應用程式防火牆策略
 * applicationSecurityGroups
-* bastionHosts
+* 堡壘主機
 * ddosProtectionPlans
 * dnszones
 * dnszones/A
@@ -128,20 +128,20 @@ ms.locfileid: "76937942"
 * dnszones/recordsets
 * networkIntentPolicies
 * networkInterfaces
-* privateDnsZones
-* privateDnsZones/A
-* privateDnsZones/AAAA
-* privateDnsZones/CNAME
-* privateDnsZones/MX
-* privateDnsZones/PTR
-* privateDnsZones/SOA
-* privateDnsZones/SRV
-* privateDnsZones/TXT
-* privateDnsZones/全部
-* privateDnsZones/virtualNetworkLinks
-* privateEndpoints
+* 私有 Dns 區
+* 私有 Dns 區域/A
+* 私有 Dns 區域/AAA
+* 私有 Dns 區域/CNAME
+* 專用 Dns 區域/MX
+* 專用 Dns 區域/PTR
+* 私有 Dns 區域/SOA
+* 專用 Dns 區/SRV
+* 專用 Dns 區域/TXT
+* 私有 Dns 區域/所有
+* 專用 Dns 區域/虛擬網路連結
+* 私有終結點
 * privateLinkServices
-* publicIPAddresses-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* 公共 IP 位址 - 預設情況下，限制為 800 個實例。 可以通過聯繫支援部門來提高這一限制。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -152,7 +152,7 @@ ms.locfileid: "76937942"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* 工作區集合 - 預設情況下，限制為 800 個實例。 可以通過聯繫支援部門來提高這一限制。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -168,7 +168,7 @@ ms.locfileid: "76937942"
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 應用程式
+* 應用程式所需
 * containerGroups
 * gateways
 * networks
@@ -186,4 +186,4 @@ ms.locfileid: "76937942"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需配額和限制的完整清單，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。
+有關配額和限制的完整清單，請參閱[Azure 訂閱和服務限制、配額和約束](azure-subscription-service-limits.md)。

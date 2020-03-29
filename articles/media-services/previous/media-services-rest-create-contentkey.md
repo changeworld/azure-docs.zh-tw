@@ -1,6 +1,6 @@
 ---
 title: 使用 REST 建立內容金鑰 | Microsoft Docs
-description: 本文示範如何建立內容金鑰，以提供資產的安全存取。
+description: 本文演示如何創建提供對資產的安全訪問的內容金鑰。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773633"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 建立內容金鑰
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-create-contentkey.md)
+> * [休息](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
@@ -75,7 +75,7 @@ ms.locfileid: "76773633"
 > 
 > 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
-## <a name="connect-to-media-services"></a>連接到媒體服務
+## <a name="connect-to-media-services"></a>連線到媒體服務
 
 如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "76773633"
     }
 
 
-下列範例示範如何建立 **ContentKey** 且針對儲存體加密設定 **ContentKeyType** ("1")，並將 **ProtectionKeyType** 設定為 "0"，以表示保護金鑰識別碼是 X.509 憑證指紋。  
+下面的示例演示如何使用用於存儲加密**的 ContentKeyType**集創建 ContentKey（"1"）和保護**ContentKey****金鑰類型**設置為"0"以指示保護金鑰識別碼 是 X.509 憑證指紋。  
 
 要求
 

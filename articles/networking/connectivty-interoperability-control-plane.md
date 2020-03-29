@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873840"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 後端連線功能的互通性：控制平面分析
 
-本文說明[測試設定][Setup]的控制平面分析。 您也可以檢查測試設定的[測試設定][Configuration]和[資料平面分析][Data-Analysis]。
+本文說明[測試設定][Setup]的控制平面分析。 您也可以檢閱測試設定的[測試設定組態][Configuration]和[資料平面分析][Data-Analysis]。
 
 控制平面分析基本上會在拓撲中檢查網路間交換的路由。 控制平面分析可協助您了解拓撲中不同網路檢視的差異。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74873840"
 
 ![1][1]
 
-VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 當您設定 ExpressRoute 對等互連時，由於 MSEE 為同儕節點，您應使用 **12076** 作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您檢視 ExpressRoute 路由表時，您會看到 VNet 的首碼為 VNet 的 ExpressRoute 閘道 ASN。 
+VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 配置 ExpressRoute 對等互連時，由於 MSEE 是對等體，因此使用**12076**作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您檢視 ExpressRoute 路由表時，您會看到 VNet 的首碼為 VNet 的 ExpressRoute 閘道 ASN。 
 
 以下顯示 ExpressRoute 路由表範例： 
 
@@ -59,7 +59,7 @@ VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSE
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>透過 ExpressRoute 設定站對站 VPN
 
-您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連，在通道模式中設定站對站 IPsec VPN 的詳細資訊，請參閱透過[Expressroute microsoft 對等互連的站對站 vpn][S2S-Over-ExR]。 
+您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連，來設定通道模式站對站 IPSec VPN 的詳細資訊，請參閱[透過 ExpressRoute Microsoft 對等互連設定站對站 VPN][S2S-Over-ExR]。 
 
 設定使用 Microsoft 對等互連的站對站 VPN 的主要限制是輸送量。 IPSec 通道的輸送量受限於 VPN 閘道容量。 VPN 閘道輸送量低於 ExpressRoute 輸送量。 在此情況下，針對高安全流量使用 IPSec 通道，並針對所有其他流量使用私人對等互連，可協助將 ExpressRoute 頻寬使用量最佳化。
 
@@ -67,13 +67,13 @@ VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSE
 
 ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的 Azure 區域中設定異地備援 ExpressRoute 連線。 如果您想在 Azure 區域中為 ExpressRoute 連線建立容錯移轉路徑，可以透過與測試設定中示範的相同方法使用站對站 VPN。 當 ExpressRoute 和站對站 VPN 顯示相同的首碼時，Azure 將優先選擇 ExpressRoute。 為了避免 ExpressRoute 和站對站 VPN 擁有不對稱的路由，內部部署網路組態也應該在使用站對站 VPN 連線之前使用 ExpressRoute 連線進行回應。
 
-如需有關如何為 ExpressRoute 和站對站 VPN 設定並存連線的詳細資訊，請參閱[expressroute 和站對站共存][ExR-S2S-CoEx]。
+如需如何設定 ExpressRoute 和站對站 VPN 共存連線的詳細資訊，請參閱 [ExpressRoute 和站對站共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>將後端連線擴充至輪輻 VNet 和分支位置
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊，請參閱[在 Azure 中執行中樞輪輻網路拓撲][Hub-n-Spoke]。
+中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊，請參閱[在 Azure 中實作中樞輪輻網路拓撲][Hub-n-Spoke]。
 
 區域中的 VNet 對等互連可讓輪輻 VNet 使用中樞 VNet 閘道 (VPN 和 ExpressRoute 閘道) 與遠端網路通訊。
 
@@ -85,20 +85,20 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解測試設定的[資料平面分析][Data-Analysis]和 Azure 網路監視功能的觀點。
+深入了解[資料平面分析][Data-Analysis]和 Azure 網路監視功能檢視。
 
-請參閱[EXPRESSROUTE 常見問題][ExR-FAQ]：
+請參閱 [ExpressRoute 常見問題集][ExR-FAQ]：
 -   了解可以連線到 ExpressRoute 閘道的 ExpressRoute 線路數量。
 -   了解可以連接到 ExpressRoute 線路的 ExpressRoute 閘道數量。
 -   了解 ExpressRoute 的其他規模限制。
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubView.png "拓撲的中樞和輪輻 VNet 觀點"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "透過 ExpressRoute 1 的位置1和遠端 VNet 拓撲透視圖"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "透過站對站 VPN 的位置1和分支 VNet 拓撲的觀點"
-[4]: ./media/backend-interoperability/Loc2View.png "拓撲的位置2觀點"
-[5]: ./media/backend-interoperability/ExR1-RouteTable.png "ExpressRoute 1 路由表"
+[1]: ./media/backend-interoperability/HubView.png "拓撲的集線器和分支 VNet 透視"
+[2]: ./media/backend-interoperability/Loc1ExRView.png "通過 ExpressRoute 1 對拓撲的位置 1 和遠端 VNet 透視"
+[3]: ./media/backend-interoperability/Loc1VPNView.png "通過網站到網站 VPN 對拓撲的位置 1 和分支 VNet 透視"
+[4]: ./media/backend-interoperability/Loc2View.png "拓撲位置 2 透視"
+[5]: ./media/backend-interoperability/ExR1-RouteTable.png "快速路由 1 路由表"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

@@ -1,6 +1,6 @@
 ---
 title: Team Data Science Process 中個別參與者的工作
-description: 資料科學 team 專案上個別參與者工作的詳細逐步解說。
+description: 資料科學團隊專案各個參與者任務的詳細演練。
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,94 +11,94 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721246"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中個別參與者的工作
 
-本主題概述*個別參與者*在[Team 資料科學](overview.md)程式（TDSP）中設定專案所完成的工作。 目標是在共同作業的小組環境中工作，以在 TDSP 上標準化。 TDSP 的設計是為了協助改善共同作業和小組學習。 如需人員角色及其相關工作的大綱，這些作業是由資料科學小組在 TDSP 上標準化，請參閱[小組資料科學流程角色和](roles-tasks.md)工作。
+本主題概述了*單個參與者*完成的任務，以在[團隊資料科學流程](overview.md)（TDSP） 中設置專案。 目標是在協作團隊環境中工作，在 TDSP 上實現標準化。 TDSP 旨在説明改善協作和團隊學習。 有關由在 TDSP 上標準化的資料科學團隊處理的人員角色及其相關任務的概述，請參閱[團隊資料科學流程角色和任務](roles-tasks.md)。
 
-下圖顯示專案個別參與者（資料科學家）完成以設定其小組環境的工作。 如需如何在 TDSP 下執行資料科學專案的指示，請參閱[資料科學專案的執行](project-execution.md)。 
+下圖顯示了專案單個貢獻者（資料科學家）完成的任務，以設置其團隊環境。 有關如何在 TDSP 下執行資料科學專案的說明，請參閱[資料科學專案的執行](project-execution.md)。 
 
-![個別參與者工作](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
+![個人參與者任務](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
-- **ProjectRepository**是您的專案小組維護來共用專案範本和資產的存放庫。
-- **TeamUtilities**是您的小組特別為小組維護的公用程式存放庫。 
-- **GroupUtilities**是您的群組所維護的存放庫，可在整個群組之間共用有用的公用程式。 
+- **ProjectRepository**是專案團隊維護的存儲庫，用於共用專案範本和資產。
+- **團隊實用程式**是您的團隊專門為您的團隊維護的實用程式存儲庫。 
+- **GroupUtilities**是組維護的存儲庫，用於在整個組中共用有用的實用程式。 
 
 > [!NOTE] 
-> 本文使用 Azure Repos 和資料科學虛擬機器（DSVM）來設定 TDSP 環境，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用其他程式碼裝載或開發平臺，則個別參與者工作會相同，但完成這些工作的方式可能會不同。
+> 本文使用 Azure 存儲庫和資料科學虛擬機器 （DSVM） 來設置 TDSP 環境，因為這是如何在 Microsoft 中實現 TDSP。 如果您的團隊使用其他代碼託管或開發平臺，則各個參與者任務相同，但完成這些任務的方式可能有所不同。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本教學課程假設您的[群組管理員](group-manager-tasks.md)、[小組負責人](team-lead-tasks.md)和[專案負責人](project-lead-tasks.md)已設定下列資源和許可權：
+本教程假定以下資源和許可權已由[小組經理](group-manager-tasks.md)、[團隊主管](team-lead-tasks.md)和[專案主管](project-lead-tasks.md)設置：
 
-- 適用于您的資料科學單位的 Azure DevOps**組織**
-- 專案存放**庫**由您的專案負責人設定，以共用專案範本和資產
-- 由群組管理員和小組負責人設定的**GroupUtilities**和**TeamUtilities**存放庫（如果適用）
-- 針對您的小組或專案，設定適用于共用資產的 Azure 檔案**儲存體**（如果適用）
-- 可供您從專案存放庫複製並推送回的**許可權** 
+- 資料科學單位的 Azure DevOps**組織**
+- 專案設置**的專案存儲庫**導致共用專案範本和資產
+- **集團實用程式**和**團隊實用程式**存儲庫由團隊經理和團隊領導設置（如果適用）
+- 為團隊或專案的共用資產設置的 Azure**檔存儲**（如果適用）
+- 從中克隆並推送回專案存儲庫**的許可權** 
 
-若要複製存放庫及修改本機電腦或 DSVM 上的內容，或將 Azure 檔案儲存體掛接至您的 DSVM，您必須考慮這份檢查清單：
+要克隆存儲庫並修改本地電腦或 DSVM 上的內容，或將 Azure 檔存儲裝載到 DSVM，需要考慮以下檢查表：
 
 - Azure 訂用帳戶。
-- 已在您的電腦上安裝 Git。 如果您使用 DSVM，則會預先安裝 Git。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
-- 如果您想要使用 DSVM，則會在 Azure 中建立並設定 Windows 或 Linux DSVM。 如需詳細資訊和指示，請參閱[資料科學虛擬機器檔](/azure/machine-learning/data-science-virtual-machine/)。
-- 針對安裝在您電腦上的 Windows DSVM， [Git 認證管理員（GCM）](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在*README.md*檔案中，向下卷到 [**下載並安裝**] 區段，然後選取**最新的安裝程式**。 從安裝程式頁面下載 *.exe*安裝程式，並加以執行。 
-- 針對 Linux DSVM，在您的 DSVM 上設定的 SSH 公開金鑰，並新增到 Azure DevOps 中。 如需詳細資訊和指示，請參閱[平臺和工具附錄](platforms-and-tools.md#appendix)中的**建立 SSH 公用金鑰**一節。 
-- 您需要掛接至 DSVM 之任何 Azure 檔案儲存體的 Azure 檔案儲存體資訊。 
+- Git 安裝在您的電腦上。 如果您使用的是 DSVM，則預先安裝 Git。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
+- 如果要使用 DSVM，則在 Azure 中創建和配置 Windows 或 Linux DSVM。 有關詳細資訊和說明，請參閱[資料科學虛擬機器文檔](/azure/machine-learning/data-science-virtual-machine/)。
+- 對於 Windows DSVM，在電腦上安裝了[Git 認證管理員 （GCM）。](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 在*README.md*檔中，向下滾動到 **"下載和安裝**"部分，然後選擇**最新的安裝程式**。 從安裝程式頁面下載 *.exe*安裝程式並運行它。 
+- 對於 Linux DSVM，在 DSVM 上設置並在 Azure DevOps 中添加的 SSH 公開金鑰。 有關詳細資訊和說明，請參閱[平臺和工具附錄](platforms-and-tools.md#appendix)中的 **"創建 SSH 公開金鑰**"部分。 
+- 需要裝載到 DSVM 的任何 Azure 檔存儲的 Azure 檔存儲資訊。 
 
-## <a name="clone-repositories"></a>複製存放庫
+## <a name="clone-repositories"></a>克隆存儲庫
 
-若要在本機使用存放庫，並將您的變更推送至共用的小組和專案存放庫，您必須先將存放庫*複製或複製*到本機電腦。 
+要在本地使用存儲庫並將更改推送到共用團隊和專案存儲庫，請首先將存儲庫複製或*克隆*到本地電腦。 
 
-1. 在 Azure DevOps 中，移至您小組的 [專案摘要] 頁面，網址為 *：\//\<伺服器名稱 >/\<組織名稱 >/\<小組名稱*>，例如**HTTPs：\//dev.azure.com/DataScienceUnit/MyTeam**。
+1. 在 Azure DevOps 中，轉到團隊的專案摘要頁面*HTTPs：\//\<伺服器名稱>/\<組織名稱>/\<團隊名稱>，* 例如**HTTPs：\//dev.azure.com/DataScienceUnit/MyTeam**。
    
-1. 在左側導覽中選取 [**存放庫**]，然後在頁面頂端選取您要複製的存放庫。
+1. 選擇左側導航中的 **"Repos"，** 在頁面頂部選擇要克隆的存儲庫。
    
-1. 在 [存放庫] 頁面上，選取右上方的 [**複製**]。
+1. 在回購頁面上，選擇右上角的 **"克隆**"。
    
-1. 在 [**複製存放庫**] 對話方塊中，針對 HTTP 連線選取 [ **HTTPS** ]，或針對 Ssh 連線選取 [ **ssh** ]，**然後將 [** 複製 URL] 下的 [複製 URL] 複製到剪貼簿。
+1. 在 **"克隆存儲庫"** 對話方塊中，為 HTTP 連接選擇**HTTPS，** 選擇**SSH**連接，並將**命令列**下的克隆 URL 複製到剪貼簿。
    
    ![複製存放庫](./media/project-ic-tasks/clone.png)
    
-1. 在您的本機電腦或 DSVM 上，建立下列目錄：
+1. 在本地電腦或 DSVM 上，創建以下目錄：
    
-   - 針對 Windows： **C:\GitRepos**
-   - 針對 Linux： **$home/gitrepos**
+   - 對於視窗 **：C：\GitRepos**
+   - 對於**Linux：$home/GitRepos**
    
-1. 變更至您所建立的目錄。
+1. 更改為您創建的目錄。
    
-1. 在 Git Bash 中，針對您要複製的每個存放庫執行命令 `git clone <clone URL>`。 
+1. 在 Git Bash 中`git clone <clone URL>`，運行要克隆的每個存儲庫的命令。 
    
-   例如，下列命令會將**TeamUtilities**存放庫複製到本機電腦上的*MyTeam*目錄。 
+   例如，以下命令將**TeamUtilities**存儲庫克隆到本地電腦上的*MyTeam*目錄。 
    
-   **HTTPS 連線：**
+   **HTTPS 連接：**
    
    ```bash
    git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/MyTeam/_git/TeamUtilities
    ```
    
-   **SSH 連線：**
+   **SSH 連接：**
    
    ```bash
    git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
    ```
    
-1. 確認您可以在本機專案目錄中看到複製之存放庫的資料夾。
+1. 確認您可以在本地專案目錄中看到克隆存儲庫的資料夾。
    
-   ![三個本機存放庫資料夾](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
+   ![三個本機存放區庫資料夾](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="mount-azure-file-storage-to-your-dsvm"></a>將 Azure 檔案儲存體掛接至您的 DSVM
+## <a name="mount-azure-file-storage-to-your-dsvm"></a>將 Azure 檔存儲安裝到 DSVM
 
-如果您的小組或專案在 Azure 檔案儲存體中有共用的資產，請將檔案儲存體掛接到本機電腦或 DSVM。 請遵循在[本機電腦或 DSVM 上掛接 Azure 檔案儲存體中](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)的指示。
+如果團隊或專案在 Azure 檔存儲中共用資源，請將檔存儲裝載到本地電腦或 DSVM。 按照[本地電腦或 DSVM 上裝載 Azure 檔存儲](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)的說明進行操作。
 
 ## <a name="next-steps"></a>後續步驟
 
-以下是小組資料科學程式所定義之其他角色和工作的詳細描述連結：
+以下是團隊資料科學流程定義的其他角色和任務的詳細描述的連結：
 
 - [資料科學小組的群組管理員工作](group-manager-tasks.md)
 - [資料科學小組的小組負責人工作](team-lead-tasks.md)

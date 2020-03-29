@@ -1,6 +1,6 @@
 ---
 title: Team Data Science Process 角色和工作
-description: 資料科學群組的主要元件、人員角色和相關工作的大綱。
+description: 資料科學組的關鍵元件、人員角色和相關任務的大綱。
 author: marktab
 manager: marktab
 editor: marktab
@@ -12,118 +12,118 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720005"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和工作
 
-Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結構化的方法來有效率地建立預測性分析解決方案和智慧型應用程式。 本文概述資料科學小組在此程式上標準化的重要人員角色和相關工作。
+團隊資料科學流程 （TDSP） 是 Microsoft 開發的一個框架，它提供了一種結構化方法，用於高效地構建預測分析解決方案和智慧應用程式。 本文概述了資料科學團隊對此過程進行標準化的關鍵人員角色和相關任務。
 
-這篇簡介文章會連結到如何設定 TDSP 環境的教學課程。 這些教學課程提供使用 Azure DevOps Projects、Azure Repos 存放庫和 Azure Boards 的詳細指引。  其動機目標是透過模型化和部署，從概念中移出。
+本介紹性文章連結到有關如何設置 TDSP 環境的教程。 這些教程提供了使用 Azure DevOps 專案、Azure 存儲庫和 Azure 板的詳細指南。  激勵目標是從概念到建模，轉向部署。
 
-教學課程會使用 Azure DevOps，因為這是在 Microsoft 執行 TDSP 的方式。 Azure DevOps 藉由整合以角色為基礎的安全性、工作專案管理和追蹤，以及程式碼裝載、共用和原始檔控制，來促進共同作業。 本教學課程也會使用 Azure[資料科學虛擬機器](https://aka.ms/dsvm)（DSVM）作為分析桌面，其中已預先設定數個熱門的資料科學工具，並與 Microsoft 軟體和 Azure 服務整合。 
+教程使用 Azure DevOps，因為這是如何在 Microsoft 中實現 TDSP。 Azure DevOps 通過集成基於角色的安全性、工作項管理和跟蹤以及代碼託管、共用和原始程式碼管理，促進協作。 這些教程還使用 Azure[資料科學虛擬機器](https://aka.ms/dsvm)（DSVM） 作為分析桌面，其中有幾個流行的資料科學工具預先配置並與 Microsoft 軟體和 Azure 服務集成。 
 
-您可以使用教學課程，利用其他程式碼裝載、agile 規劃和開發工具和環境來執行 TDSP，但是有些功能可能無法使用。
+您可以使用教程使用其他代碼託管、敏捷規劃和開發工具和環境來實現 TDSP，但某些功能可能不可用。
 
-## <a name="structure-of-data-science-groups-and-teams"></a>資料科學群組和小組的結構
+## <a name="structure-of-data-science-groups-and-teams"></a>資料科學組和團隊的結構
 
-企業中的資料科學函數通常會組織成下列階層：
+企業中的資料科學功能通常按以下層次結構組織：
 
-- 資料科學群組
-  - 群組內的資料科學小組
+- 資料科學組
+  - 團隊內的資料科學團隊
 
-在這種結構中，有群組組長和小組負責人。 資料科學專案通常是由資料科學小組所完成。 資料科學小組具有專案管理和治理工作的專案組長，以及個別的資料科學家和工程師來執行專案的資料科學和資料工程部分。 初始專案設定和控管是由群組、小組或專案負責人進行。
+在這樣的結構中，有小組領導和團隊領導。 通常，資料科學專案由資料科學團隊完成。 資料科學團隊擁有專案管理和治理任務的專案主管，以及負責執行專案資料科學和資料工程部分的單個資料科學家和工程師。 初始專案設置和治理由團隊、團隊或專案主管完成。
 
-## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>四個 TDSP 角色的定義和工作
-假設資料科學單位是由群組內的小組組成，TDSP 人員有四個不同的角色：
+## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>四個 TDSP 角色的定義和任務
+假設資料科學部門由團隊中的團隊組成，TDSP 人員有四個不同的角色：
 
-1. **群組管理員**：管理企業中的整個資料科學單位。 資料科學單位可能有多個小組，而每個小組負責不同商業垂直市場中的多個資料科學專案。 團隊管理員可能會將他們的工作委派給代理人，但是與角色相關的工作會改變。
+1. **集團經理**：管理企業中的全部資料科學單元。 資料科學單位可能有多個小組，而每個小組負責不同商業垂直市場中的多個資料科學專案。 團隊管理員可能會將他們的工作委派給代理人，但是與角色相關的工作會改變。
    
-2. **小組負責人**：管理企業資料科學單位中的小組。 小組是由多個資料科學家所組成。 針對小型資料科學單位，群組管理員和小組負責人可能是同一人。
+2. **團隊領導**：管理企業資料科學部門的團隊。 小組是由多個資料科學家所組成。 對於小型資料科學部門，團隊經理和團隊領導可能是同一個人。
    
-3. **專案組長**：管理特定資料科學專案上個別資料科學家的每日活動。
+3. **專案負責人**：管理單個資料科學家對特定資料科學專案的日常活動。
    
-4. **Project 個別參與者**：資料科學家、商務分析師、資料工程師、架構設計人員，以及執行資料科學專案的其他人。
+4. **專案個人貢獻者**：資料科學家、商務分析師、資料工程師、架構師和執行資料科學專案的其他人。
 
 > [!NOTE]
-> 根據企業的結構和大小而定，一個人可能扮演一個以上的角色，或一個以上的人可能會填滿一個角色。
+> 根據企業的結構和規模，一個人可以扮演多個角色，或者多人可以擔任一個角色。
 
-### <a name="tasks-to-be-completed-by-the-four-roles"></a>由四個角色完成的工作
+### <a name="tasks-to-be-completed-by-the-four-roles"></a>由四個角色完成的任務
 
-下圖顯示每個 Team 資料科學流程角色的最上層工作。 針對每個 TDSP 角色，此架構和下列更詳細的工作概述，可協助您根據您的責任選擇所需的教學課程。
+下圖顯示了每個團隊資料科學流程角色的頂級任務。 此架構和以下更詳細的每個 TDSP 角色的任務大綱可以説明您根據職責選擇所需的教程。
 
 ![角色和工作概觀](./media/roles-tasks/overview-tdsp-top-level.png)
 
 ## <a name="group-manager-tasks"></a>群組管理員工作
 
-群組管理員或指定的 TDSP 系統管理員會完成下列工作以採用 TDSP：
+集團經理或指定的 TDSP 系統管理員完成以下任務以採用 TDSP：
 
-- 在組織內建立 Azure DevOps**組織**和群組專案。 
-- 在 Azure DevOps 群組專案中建立**專案範本存放庫**，並從 Microsoft TDSP 小組所開發的專案範本存放庫植入。 Microsoft TDSP 專案範本存放庫提供：
-  - **標準化目錄結構**，包括資料、程式碼和檔的目錄。
-  - 一組**標準化的檔範本**，可引導有效率的資料科學程式。
-- 建立**公用程式存放庫**，並從 Microsoft TDSP 小組所開發的公用程式存放庫植入。 Microsoft 的 TDSP 公用程式存放庫提供一組實用的公用程式，讓資料科學家的工作更有效率。 Microsoft 公用程式存放庫包含互動式資料探索、分析、報告和基準模型化和報告的公用程式。
-- 設定組織帳戶的**安全性控制原則**。
+- 在組織內創建 Azure **DevOps**組織和組專案。 
+- 在 Azure DevOps 組專案中創建**專案範本存儲庫**，並從 Microsoft TDSP 團隊開發的專案範本存儲庫中獲取種子。 Microsoft TDSP 專案範本存儲庫提供：
+  - **標準化的目錄結構**，包括資料、代碼和文檔的目錄。
+  - 一組**標準化文件範本**，用於指導高效的資料科學過程。
+- 創建**一個實用程式存儲庫**，並從 Microsoft TDSP 團隊開發的實用程式存儲庫中播種它。 來自 Microsoft 的 TDSP 實用程式存儲庫提供了一組有用的實用程式，使資料科學家的工作更加高效。 Microsoft 實用程式存儲庫包括用於互動式資料探索、分析、報告以及基線建模和報告的實用程式。
+- 為組織帳戶設置**安全控制策略**。
 
-如需詳細指示，請參閱[資料科學小組的群組管理員](group-manager-tasks.md)工作。
+有關詳細說明，請參閱[資料科學團隊的組經理任務](group-manager-tasks.md)。
 
 ## <a name="team-lead-tasks"></a>小組負責人工作
 
-小組負責人或指定的專案系統管理員完成下列工作，以採用 TDSP：
+團隊主管或指定的專案管理員完成以下任務以採用 TDSP：
 
-- 在群組的 Azure DevOps 組織中建立 team**專案**。
-- 在專案中建立**專案範本存放庫**，並從群組管理員或委派所設定的群組專案範本存放庫植入。
-- 建立**小組公用程式存放庫**，並從群組公用程式存放庫植入，然後將小組特有的公用程式新增至存放庫。
-- 選擇性地建立[Azure 檔案儲存體](https://azure.microsoft.com/services/storage/files/)，為小組儲存有用的資料資產。 其他小組成員可以在其分析桌面上掛接此共用雲端檔案存放區。
-- 選擇性地在小組的**DSVM**上掛接 Azure 檔案儲存體，並在其中新增小組資料資產。
-- 藉由新增小組成員和設定其許可權來設定**安全性控制**。
+- 在組的 Azure DevOps 組織中創建團隊**專案**。
+- 在專案中創建**專案範本存儲庫**，並從組經理或委託設置的組專案範本存儲庫中設置種子。
+- 創建**團隊實用程式存儲庫**，從組實用程式存儲庫中種子它，並將特定于團隊的實用程式添加到存儲庫中。
+- 可選地創建[Azure 檔存儲](https://azure.microsoft.com/services/storage/files/)以存儲團隊的有用資料資產。 其他小組成員可以在其分析桌面上掛接此共用雲端檔案存放區。
+- 可以選擇將 Azure 檔存儲裝載到團隊的**DSVM**上，並將團隊資料資產添加到其中。
+- 通過添加團隊成員並配置其許可權來設置**安全控制**。
 
-如需詳細指示，請參閱[資料科學小組的小組負責人](team-lead-tasks.md)工作。
+有關詳細說明，請參閱[資料科學團隊的團隊領導任務](team-lead-tasks.md)。
 
 
 ## <a name="project-lead-tasks"></a>專案負責人工作
 
-專案負責人會完成下列工作以採用 TDSP：
+專案負責人完成以下任務以採用 TDSP：
 
-- 在 team 專案中建立**專案存放庫**，並從專案範本存放庫植入。
-- 選擇性地建立**Azure 檔案儲存體**來儲存專案的資料資產。
-- 選擇性地將 Azure 檔案儲存體掛接至**DSVM** ，並在其中新增專案資料資產。
-- 藉由新增專案成員和設定其許可權來設定**安全性控制**。
+- 在團隊專案中創建**專案存儲庫**，並從專案範本存儲庫中播種。
+- 可選地創建**Azure 檔存儲**以存儲專案的資料資產。
+- 可以選擇將 Azure 檔存儲裝載到**DSVM**並將專案資料資產添加到其中。
+- 通過添加專案成員並配置其許可權來設置**安全控制**。
 
-如需詳細指示，請參閱[資料科學小組的專案負責人](project-lead-tasks.md)工作。
+有關詳細說明，請參閱[資料科學團隊的專案主管任務](project-lead-tasks.md)。
 
 ## <a name="project-individual-contributor-tasks"></a>專案個別參與者工作
 
-專案個別參與者（通常是資料科學家）會使用 TDSP 來執行下列工作：
+專案個人貢獻者（通常是資料科學家）使用 TDSP 執行以下任務：
 
-- 複製專案負責人所設定的**專案存放庫**。
-- 選擇性地將共用的小組和專案**Azure 檔案儲存體**掛接到其**資料科學虛擬機器**（DSVM）。
+- 克隆專案主管設置**的專案存儲庫**。
+- 可以選擇將共用團隊和專案 Azure**檔存儲**裝載到其**資料科學虛擬機器**（DSVM） 上。
 - 執行專案。
 
-如需在專案上架的詳細指示，請參閱[資料科學小組的專案個別參與者](project-ic-tasks.md)工作。
+有關載入專案的詳細資訊，請參閱[資料科學團隊的專案個人貢獻者任務](project-ic-tasks.md)。
 
-## <a name="data-science-project-execution-workflow"></a>資料科學專案執行工作流程
+## <a name="data-science-project-execution-workflow"></a>資料科學專案執行工作流
 
-藉由遵循相關的教學課程，資料科學家、專案組長和小組主管可以建立工作專案，以追蹤專案從開始到結束的所有工作和階段。 使用 Azure Repos 提升資料科學家之間的共同作業，並確保在專案執行期間產生的成品是由所有專案成員控制和共用的版本。 Azure DevOps 可讓您將 Azure Boards 工作專案與 Azure Repos 存放庫分支連結，並輕鬆地追蹤工作專案已完成的作業。
+通過遵循相關教程，資料科學家、專案主管和團隊主管可以創建工作項，從頭到尾跟蹤專案的所有任務和階段。 使用 Azure Repos 可促進資料科學家之間的協作，並確保專案執行期間生成的專案由所有專案成員控制並共用版本。 Azure DevOps 允許您將 Azure 板的工作項與 Azure 存儲庫存儲庫分支連結，並輕鬆跟蹤對工作項已完成的工作項執行哪些操作。
 
-下圖概述專案執行的 TDSP 工作流程：
+下圖概述了用於專案執行的 TDSP 工作流：
 
-![一般資料科學專案工作流程](./media/roles-tasks/overview-project-execute.png)
+![典型的資料科學專案工作流](./media/roles-tasks/overview-project-execute.png)
 
-工作流程步驟可分為三個活動：
+工作流步驟可以分為三個活動：
 
-- 專案組長進行短期衝刺計畫
-- 資料科學家會在 `git` 分支上開發成品，以解決工作專案
-- 專案負責人或其他小組成員執行程式碼審查，並將工作分支合併到主要分支
+- 專案主管進行衝刺規劃
+- 資料科學家在分支上`git`開發工件以解決工作專案
+- 專案主管或其他團隊成員執行代碼評審並將工作分支合併到主分支
 
-如需專案執行工作流程的詳細指示，請參閱[資料科學專案的敏捷式開發](agile-development.md)。
+有關專案執行工作流的詳細說明，請參閱[資料科學專案的敏捷開發](agile-development.md)。
 
-## <a name="tdsp-project-template-repository"></a>TDSP 專案範本存放庫
+## <a name="tdsp-project-template-repository"></a>TDSP 專案範本存儲庫
 
-使用 Microsoft TDSP 小組的[專案範本存放庫](https://github.com/Azure/Azure-TDSP-ProjectTemplate)來支援有效率的專案執行和共同作業。 存放庫提供您可用於自己的 TDSP 專案的標準化目錄結構和檔範本。
+使用 Microsoft TDSP 團隊的[專案範本存儲庫](https://github.com/Azure/Azure-TDSP-ProjectTemplate)支援高效的專案執行和協作。 存儲庫為您提供了一個標準化的目錄結構和文件範本，可用於您自己的 TDSP 專案。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -132,4 +132,4 @@ Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結
 - [資料科學小組的群組管理員工作](group-manager-tasks.md)
 - [資料科學小組的小組負責人工作](team-lead-tasks.md)
 - [資料科學小組的專案負責人工作](project-lead-tasks.md)
-- [資料科學小組的專案個別參與者工作](project-ic-tasks.md)
+- [資料科學團隊的專案個人貢獻者任務](project-ic-tasks.md)

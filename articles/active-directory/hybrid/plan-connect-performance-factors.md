@@ -14,20 +14,20 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897048"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影響 Azure AD Connect 效能的因素
 
 Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服器是在將使用者身分識別移往雲端時的重要元件。 影響 Azure AD Connect 效能的主要因素如下：
 
-| **設計因素**| **[定義]** |
+| **設計因素**| **定義** |
 |:-|-|
 | 拓撲| Azure AD Connect 必須在網路上管理的端點和元件發佈。 |
-| 擴展性| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |
+| 調整| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |
 | 硬體| Azure AD Connect 的硬體 (實體或虛擬) 以及每個硬體元件 (包括 CPU、記憶體、網路和硬碟組態) 的相依效能容量。 |
 | 組態| Azure AD Connect 處理目錄和資訊的方式。 |
 | 載入| 物件的變更頻率。 一小時、一天或一週期間的負載可能各不相同。 視元件而定，您可能必須針對尖峰負載或平均負載進行設計。 |
@@ -35,7 +35,7 @@ Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服�
 本文件的目的是要說明影響 Azure AD Connect 佈建引擎效能的因素。 大型或複雜的組織 (佈建超過 100,000 個物件的組織) 如果遇到本文件所述的任何效能問題，可使用文件中的建議來獲得最佳的 Azure AD Connect 實作。 Azure AD Connect 的其他元件 (例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)) 和代理程式不在本文件的討論範圍。
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect。 這些動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
+> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect。 這些操作中的任何一個都可能導致 Azure AD 連接同步的不一致或不受支援的狀態。因此，Microsoft 無法為此類部署提供技術支援。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 元件因素
 
@@ -105,7 +105,7 @@ Azure AD Connect 會使用下列臨時區域、規則和程序，來允許從 Ac
 * 匯出也是線性的。
 * 根據參考其他物件的物件數目，同步處理會以指數方式增加。 群組成員資格和巢狀群組會有主要的效能影響，因為其成員會參考使用者物件或其他群組。 必須找到這些參考，且必須參考到 MV 中的實際物件，才能完成同步處理週期。
 
-### <a name="filtering"></a>篩選
+### <a name="filtering"></a>Filtering
 
 您想要匯入的 Active Directory 拓撲大小，是會影響效能和佈建引擎內部元件所需整體時間的首要因素。
 

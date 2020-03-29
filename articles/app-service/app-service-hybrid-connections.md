@@ -1,22 +1,22 @@
 ---
-title: 混合式連接
-description: 瞭解如何在 Azure App Service 中建立及使用混合式連接，以存取不同網路中的資源。
+title: 混合式連線
+description: 瞭解如何在 Azure 應用服務中創建和使用混合連接以訪問不同網路中的資源。
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: fasttrack-edit
-ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047767"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service 混合式連線 #
+# <a name="azure-app-service-hybrid-connections"></a>Azure App Service 混合式連線
 
-混合式連線既是 Azure 服務，也是 Azure App Service 功能。 作為服務時，它具有 App Service 所利用之用途和功能以外的用途和功能。 若要深入瞭解混合式連線及其在 App Service 之外的使用方式，請參閱[Azure 轉送混合][HCService]式連線。
+混合式連線既是 Azure 服務，也是 Azure App Service 功能。 作為服務時，它具有 App Service 所利用之用途和功能以外的用途和功能。 若要深入了解混合式連線及其在 App Service 之外的使用方式，請參閱 [Azure 轉送混合式連線][HCService]。
 
 在 App Service 中，「混合式連線」可用來存取其他網路中的應用程式資源。 它可讓您從應用程式存取應用程式端點。 它不會啟用替代功能來存取應用程式。 和在 App Service 中使用時相同，每個「混合式連線」都會與單一 TCP 主機和連接埠的組合相互關聯。 這意謂著「混合式連線」端點可以位於任何作業系統和任何應用程式上，只要您可以存取 TCP 接聽連接埠即可。 混合式連線不會知道 (或不在意) 應用程式通訊協定為何，或您要存取什麼資源。 它只負責提供網路存取。  
 
@@ -56,20 +56,20 @@ ms.locfileid: "74671515"
 - 支援 LDAP，因為它需要 UDP。
 - 支援 Active Directory，因為您無法將 App Service 背景工作角色加入網域。
 
-### <a name="prerequisites"></a>必要條件 ###
- - 需要 Windows App service。 它只能在 Windows 中使用。  
+### <a name="prerequisites"></a>Prerequisites ###
+ - 需要 Windows 應用服務。 它僅在 Windows 中可用。  
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>在您的應用程式中新增和建立混合式連線 ##
 
-若要建立混合式連線，請移至[Azure 入口網站][portal]並選取您的應用程式。 選取 [網路] > [設定您的混合式連接端點]。 您可以在這裡看到為您應用程式設定的「混合式連線」。  
+若要建立「混合式連線」，請移至 [Azure 入口網站][portal]，然後選取您的應用程式。 選擇 **"網路** > **配置混合連接終結點**"。 您可以在這裡看到為您應用程式設定的「混合式連線」。  
 
 ![混合式連線清單的螢幕擷取畫面][2]
 
-若要新增混合式連線，請選取 [[+] 新增混合式連線]。  您會看見已建立的混合式連線清單。 若要在應用程式中新增其中的一或多個混合式連線，請按一下您想要的混合式連線，然後選取 [新增選取的混合式連線]。  
+若要新增混合式連線，請選取 [[+] 新增混合式連線]****。  您會看見已建立的混合式連線清單。 若要在應用程式中新增其中的一或多個混合式連線，請按一下您想要的混合式連線，然後選取 [新增選取的混合式連線]****。  
 
 ![混合式連線入口網站的螢幕擷取畫面][3]
 
-如果您想要建立新的「混合式連線」，請選取 [建立新的混合式連線]。 指定下列項目： 
+如果您想要建立新的「混合式連線」，請選取 [建立新的混合式連線]****。 指定下列項目： 
 
 - 混合式連線名稱。
 - 端點主機名稱。
@@ -80,7 +80,7 @@ ms.locfileid: "74671515"
 
 每個「混合式連線」都會繫結至一個「服務匯流排」命名空間，而每個「服務匯流排」命名空間都位於 Azure 區域中。 請務必嘗試使用與應用程式位於相同區域的「服務匯流排」命名空間，以避免網路所引發的延遲。
 
-如果您想要移除應用程式中的「混合式連線」，請對它按一下滑鼠右鍵，然後選取 [中斷連線]。  
+如果您想要移除應用程式中的「混合式連線」，請對它按一下滑鼠右鍵，然後選取 [中斷連線]****。  
 
 將「混合式連線」新增至應用程式之後，您只要選取它就可以查看詳細資料。 
 
@@ -100,9 +100,9 @@ ms.locfileid: "74671515"
 | 定價方案 | 方案中可用的混合式連線數目 |
 |----|----|
 | 基本 | 5 |
-| Standard | 25 |
-| 高級 | 200 |
-| 隔離式 | 200 |
+| 標準 | 25 |
+| Premium | 200 |
+| 隔離 | 200 |
 
 App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及由哪些應用程式使用。  
 
@@ -112,17 +112,17 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 
 可用於 App Service 方案的混合式連線端點數目有其上限。 不過，每個使用的混合式連線，則可用於方案中任何數目的應用程式上。 例如，一個在「App Service 方案」中 5 個個別應用程式上使用的「混合式連線」，只算 1 個「混合式連線」。
 
-### <a name="pricing"></a>價格 ###
+### <a name="pricing"></a>定價 ###
 
 除了有 App Service 方案 SKU 的需求，還有使用混合式連線的額外成本。 混合式連線所使用的每個接聽程式皆會產生費用。 接聽程式是混合式連線管理員。 如果由兩個混合式連線管理員支援的混合式連線有五個，那就有 10 個接聽程式。 如需詳細資訊，請參閱[服務匯流排價格][sbpricing]。
 
 ## <a name="hybrid-connection-manager"></a>混合式連線管理員 ##
 
-「混合式連線」功能需要在裝載「混合式連線」端點的網路中有轉送代理程式。 該轉送代理程式稱為混合式連線管理員 (HCM)。 若要從[Azure 入口網站][portal]中的應用程式下載 HCM，請選取 [**網路**] > **設定混合式連接端點**。  
+「混合式連線」功能需要在裝載「混合式連線」端點的網路中有轉送代理程式。 該轉送代理程式稱為混合式連線管理員 (HCM)。 若要下載 HCM，請在 [Azure 入口網站][portal] 中，從您的應用程式選取 [網路]**** > [設定您的混合式連接端點]****。  
 
 此工具可在 Windows Server 2012 和更新版本上執行。 HCM 以服務形式執行，並向外連線到連接埠 443 上的 Azure 轉送。  
 
-在安裝 HCM 之後，您可以執行 HybridConnectionManagerUi.exe 來使用工具的 UI。 此檔案位於混合式連線管理員的安裝目錄下。 在 Windows 10 中，您也可以在搜尋方塊中搜尋「混合式連線管理員 UI」即可。  
+在安裝 HCM 之後，您可以執行 HybridConnectionManagerUi.exe 來使用工具的 UI。 此檔案位於混合式連線管理員的安裝目錄下。 在 Windows 10 中，您也可以在搜尋方塊中搜尋「混合式連線管理員 UI」** 即可。  
 
 ![混合式連線管理員的螢幕擷取畫面][7]
 
@@ -131,15 +131,15 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 若要在 HCM 中新增一或多個混合式連線︰
 
 1. 啟動 HCM UI。
-2. 選取 [設定另一個混合式連線]。
+2. 選取 [設定另一個混合式連線]****。
 ![設定新的混合式連線螢幕擷取畫面][8]
 
-1. 使用您的 Azure 帳戶登入，以取得您的訂閱所提供的混合式連線。 HCM 不會繼續使用您的 Azure 帳戶。 
+1. 使用 Azure 帳戶登錄，使混合連接可用於訂閱。 除此之外，HCM 不會繼續使用 Azure 帳戶。 
 1. 選擇訂用帳戶。
 1. 選取您要讓 HCM 轉送的「混合式連線」。
 ![混合式連線的螢幕擷取畫面][9]
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 現在可以看到您新增的「混合式連線」。 您也可以選取已設定的混合式連線，以查看詳細資料。
 
@@ -155,13 +155,13 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 > 「Azure 轉送」需倚賴「Web 通訊端」來取得連線能力。 此功能只有在 Windows Server 2012 或更新版本上才有提供。 因此，Windows Server 2012 以前的所有版本皆不支援 HCM。
 >
 
-### <a name="redundancy"></a>備援 ###
+### <a name="redundancy"></a>備援性 ###
 
 每個 HCM 都可以支援多個「混合式連線」。 此外，任何指定的「混合式連線」也都可以受到多個 HCM 支援。 預設行為是在任何給定端點所設定的 HCM 之間路由傳送流量。 如果您想要讓來自您網路的「混合式連線」具有高可用性，請在不同電腦上執行多個 HCM。 轉送服務用來將流量散發至 HCM 的負載分配演算法會隨機指派。 
 
 ### <a name="manually-add-a-hybrid-connection"></a>手動新增混合式連線 ###
 
-若要想讓訂用帳戶外的人員裝載指定「混合式連線」的 HCM 執行個體，您可以與他們共用「混合式連線」的閘道連接字串。 您可以在[Azure 入口網站][portal]的混合式連接屬性中查看閘道連接字串。 若要使用該字串，請在 HCM 中選取 [手動輸入]，然後貼上閘道連接字串。
+若要想讓訂用帳戶外的人員裝載指定「混合式連線」的 HCM 執行個體，您可以與他們共用「混合式連線」的閘道連接字串。 您可以在 [Azure 入口網站][portal]中的混合式連線屬性中看到閘道連接字串。 若要使用該字串，請在 HCM 中選取 [手動輸入]****，然後貼上閘道連接字串。
 
 ![手動新增混合式連線][11]
 
@@ -192,7 +192,7 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
       }
     }
 
-使用這項資訊的其中一種方式是使用 armclient，您可以從[armclient][armclient] GitHub 專案取得。 以下是將現有混合式連線連結至應用程式的範例。 根據上述結構描述建立 JSON 檔案，如下所示：
+使用這項資訊的其中一個方法是使用 armclient (可從 [ARMClient][armclient] GitHub 專案中取得)。 以下是將現有混合式連線連結至應用程式的範例。 根據上述結構描述建立 JSON 檔案，如下所示：
 
     {
       "name": "relay-demo-hc",
@@ -214,23 +214,23 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
-## <a name="secure-your-hybrid-connections"></a>保護您的混合式連接 ##
+## <a name="secure-your-hybrid-connections"></a>保護您的混合連接 ##
 
-現有的混合式連接可以新增至具有基礎 Azure 服務匯流排轉送之足夠許可權的任何使用者，以加入其他 App Service Web Apps。 這表示，如果您必須防止其他人重複使用相同的混合式連線（例如，當目標資源是一項服務，但沒有任何額外的安全性措施可防止未經授權的存取）時，您必須鎖定 Azure 的存取權服務匯流排轉送。
+對基礎 Azure 服務匯流排中繼具有足夠許可權的任何使用者都可以將現有的混合連接添加到其他應用服務 Web 應用。 這意味著，如果必須阻止其他人重用同一混合連接（例如，當目標資源是一個服務，沒有任何任何其他安全措施來防止未經授權的訪問時），則必須鎖定對 Azure 的訪問服務匯流排中繼。
 
-具有轉送 `Reader` 存取權的任何人都能夠在 Azure 入口網站中嘗試將其新增至其 Web 應用程式時，_看到_混合式連線，但無法_將其加入_，因為他們缺少取得用來建立轉送連線的連接字串的許可權。 為了成功新增混合式連線，它們必須具有 [`listKeys`] 許可權（`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`）。 在轉送上包含此許可權的 `Contributor` 角色或任何其他角色，可讓使用者使用混合式連線，並將其新增至自己的 Web Apps。
+有權訪問中繼的任何人在嘗試將其添加到 Azure 門戶中的 Web 應用時，將能夠_看到_混合連接，但他們無法添加該連接，因為他們缺少檢索用於建立中繼連接的連接字串的許可權。 _add_ `Reader` 為了成功添加混合連接，他們必須具有`listKeys`許可權 （`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`。 角色`Contributor`或任何其他角色（包括在中繼上具有此許可權）將允許使用者使用混合連接並將其添加到自己的 Web 應用。
 
 ## <a name="troubleshooting"></a>疑難排解 ##
 
-「已連線」狀態意謂著該「混合式連線」至少有一個已設定的 HCM，並且能夠連線至 Azure。 如果「混合式連線」的狀態並未顯示「已連線」，則表示在所有可存取 Azure 的 HCM 上皆未設定該「混合式連線」。
+「已連線」狀態意謂著該「混合式連線」至少有一個已設定的 HCM，並且能夠連線至 Azure。 如果「混合式連線」的狀態並未顯示「已連線」****，則表示在所有可存取 Azure 的 HCM 上皆未設定該「混合式連線」。
 
 用戶端無法連線至其端點的主要原因是，端點在指定時所使用的是 IP 位址而非 DNS 名稱。 如果您的應用程式無法連線到所要的端點，且您使用的是 IP 位址，請改為使用對 HCM 執行所在之主機有效的 DNS 名稱。 也請檢查 HCM 執行所在的主機已正確解析 DNS 名稱。 請確認 HCM 執行所在的主機可連線到「混合式連線」端點。  
 
-在 App Service 中，您可以從 [Advanced Tools （Kudu）] 主控台叫用**tcpping**命令列工具。 這個工具可以指出您是否能夠存取 TCP 端點，但不會指出您是否能夠存取「混合式連線」端點。 當您在主控台中對「混合式連線」端點使用此工具時，您只能確認該端點使用「主機:連接埠」組合。  
+在應用服務中，可以從高級工具 （Kudu） 主控台調用**tcping**命令列工具。 這個工具可以指出您是否能夠存取 TCP 端點，但不會指出您是否能夠存取「混合式連線」端點。 當您在主控台中對「混合式連線」端點使用此工具時，您只能確認該端點使用「主機:連接埠」組合。  
 
-如果您的端點有命令列用戶端，您可以從應用程式主控台測試連線能力。 例如，您可以使用捲曲來測試對 web 伺服器端點的存取。
+如果終結點有命令列用戶端，則可以從應用主控台測試連接。 例如，可以使用 curl 測試對 Web 服務器終結點的訪問。
 
-## <a name="biztalk-hybrid-connections"></a>BizTalk 混合式連接 ##
+## <a name="biztalk-hybrid-connections"></a>BizTalk 混合式連線 ##
 
 此功能的舊有形式稱為「BizTalk 混合式連線」。 此功能的已於 2018 年 5 月 31 日結束服務，並且已停止運作。 BizTalk 混合式連線已從所有應用程式中移除，而且無法透過入口網站或 API 存取。 如果您的混合式連線管理員中仍有這些較舊的連線設定，則您會看到「已中止」狀態，而且底部會顯示服務結束的聲明。
 

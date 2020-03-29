@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple 資料管理員 UI
+title: 微軟 Azure Stor 簡單資料管理器 UI
 description: 描述如何使用 StorSimple 資料管理員服務 UI
 author: alkohli
 ms.service: storsimple
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933747"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>在 Azure 入口網站中管理 StorSimple 資料管理員服務
 
-本文說明如何使用 StorSimple 資料管理員 UI 來轉換 StorSimple 8000 系列裝置上的資料。 轉換後的資料可供其他 Azure 服務使用，例如 Azure 媒體服務、Azure HDInsight、Azure Machine Learning 和 Azure 認知搜尋。
+本文說明如何使用 StorSimple 資料管理員 UI 來轉換 StorSimple 8000 系列裝置上的資料。 然後，轉換後的資料可由其他 Azure 服務（如 Azure 媒體服務、Azure HDInsight、Azure 機器學習和 Azure 認知搜索）使用。
 
 
 ## <a name="use-storsimple-data-transformation"></a>使用 StorSimple 資料轉換
@@ -28,27 +28,27 @@ ms.locfileid: "78933747"
 
 1. 使用您的 Microsoft 帳戶認證以登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 按一下 [+ 建立資源]，然後搜尋 StorSimple 資料管理員。
+2. 按一下 [+ 建立資源]****，然後搜尋 StorSimple 資料管理員。
 
     ![建立 StorSimple 資料管理員服務 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. 按一下 [StorSimple 資料管理員]，然後按一下 [建立]。
+3. 按一下 [StorSimple 資料管理員]，然後按一下 [建立]****。
     
     ![建立 StorSimple 資料管理員服務 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
 3. 對於新的服務，請指定下列項目：
 
-   1. 為您的 StorSimple 資料管理員提供唯一的 [服務名稱]。 這是可以用來識別服務的易記名稱。 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 名稱必須以字母或數字為開頭或結尾。
+   1. 為您的 StorSimple 資料管理員提供唯一的 [服務名稱]****。 這是可以用來識別服務的易記名稱。 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 名稱必須以字母或數字為開頭或結尾。
 
-   2. 從下拉式清單中選擇 [訂用帳戶]。 訂用帳戶會連結到您的帳單帳戶。 如果您只有一個訂用帳戶，此欄位會自動填入該訂用帳戶 (且無法供您選取)。
+   2. 從下拉清單中選擇**訂閱**。 訂用帳戶會連結到您的帳單帳戶。 如果您只有一個訂用帳戶，此欄位會自動填入該訂用帳戶 (且無法供您選取)。
 
    3. 選取現有資源群組或建立新的群組。 如需詳細資訊，請參閱 [Azure 資源群組](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
 
-   4. 為您的服務指定 [位置]，以供存放您的儲存體帳戶和 StorSimple 資料管理員服務。 StorSimple 裝置管理員服務、資料管理員服務和相關聯的儲存體帳戶應該全都位於支援的區域內。
+   4. 為您的服務指定 [位置]****，以供存放您的儲存體帳戶和 StorSimple 資料管理員服務。 StorSimple 裝置管理員服務、資料管理員服務和相關聯的儲存體帳戶應該全都位於支援的區域內。
     
-   5. 若要在儀表板上取得此服務的連結，請選取 [釘選到儀表板]。
+   5. 若要在儀表板上取得此服務的連結，請選取 [釘選到儀表板]****。
     
-   6. 按一下 [建立]。
+   6. 按一下 **[建立]**。
 
       ![建立 StorSimple 資料管理員服務 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "78933747"
 
 執行下列步驟來建立作業定義。
 
-1. 瀏覽至您所建立的服務。 移至 [管理] > [作業定義]。
+1. 瀏覽至您所建立的服務。 移至 [管理] > [作業定義]****。
 
-2. 按一下 [+ 作業定義]。
+2. 按一下 **= 作業定義**。
 
     ![按一下 [+ 作業定義]](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
@@ -70,45 +70,45 @@ ms.locfileid: "78933747"
 
 4. 指定用來執行作業的位置。 此位置可與服務部署所在的位置不同。
 
-5. 按一下 [來源] 以指定來源資料存放庫。
+5. 按一下 [來源]**** 以指定來源資料存放庫。
 
     ![設定來源資料存放庫](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. 由於這是新的資料管理員服務，尚未設定任何資料儲存機制。 在 [設定資料來源] 中，指定 StorSimple 8000 系列裝置的詳細資料和感興趣的資料。
+6. 由於這是新的資料管理員服務，尚未設定任何資料儲存機制。 在 [設定資料來源]**** 中，指定 StorSimple 8000 系列裝置的詳細資料和感興趣的資料。
 
-   若要新增 StorSimple 資料管理員作為資料存放庫，請在資料存放庫下拉式清單中按一下 [新增]，然後按一下 [新增資料存放庫]。
+   若要新增 StorSimple 資料管理員作為資料存放庫，請在資料存放庫下拉式清單中按一下 [新增]****，然後按一下 [新增資料存放庫]****。
 
     ![新增資料存放庫](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. 選擇 [StorSimple 8000 系列管理員] 作為資料存放庫類型。
+   1. 選擇 [StorSimple 8000 系列管理員]**** 作為資料存放庫類型。
     
    2. 為來源資料存放庫輸入易記名稱。
     
    3. 從下拉式清單中，選擇與 StorSimple 裝置管理員服務相關聯的訂用帳戶。
     
-   4. 在 [資源] 中提供 StorSimple 裝置管理員的名稱。
+   4. 在 [資源]**** 中提供 StorSimple 裝置管理員的名稱。
 
-   5. 輸入 StorSimple 裝置管理員服務的 [服務資料加密金鑰]。 
+   5. 輸入 StorSimple 裝置管理員服務的 [服務資料加密金鑰]****。 
 
       ![設定來源資料存放庫 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      完成時按一下 [確定]。 這會儲存您的資料存放庫。 在其他作業定義中重複使用此 StorSimple 裝置管理員，而不需重新輸入這些參數。 按一下 [確定] 後，只要幾秒鐘的時間，新建立的來源資料存放庫就會出現在下拉式清單中。
+      完成時按一下 [確定]****。 這會儲存您的資料存放庫。 在其他作業定義中重複使用此 StorSimple 裝置管理員，而不需重新輸入這些參數。 按一下 [確定]**** 後，只要幾秒鐘的時間，新建立的來源資料存放庫就會出現在下拉式清單中。
 
-7. 從 [資料存放庫] 的下拉式清單中，選取您建立的資料存放庫。 
+7. 從 [資料存放庫]**** 的下拉式清單中，選取您建立的資料存放庫。 
 
    1. 輸入包含感興趣資料的 StorSimple 8000 系列裝置名稱。
 
    2. 指定感興趣資料所在之 StorSimple 裝置上的磁碟區名稱。
 
-   3. 在 [篩選] 子區段中，以 \MyRootDirectory\Data格式輸入感興趣資料所在的根目錄。 系統不支援 \C:\Data 之類的磁碟機代號。 您也可以在這裡新增任何檔案篩選。
+   3. 在 [篩選]**** 子區段中，以 \MyRootDirectory\Data __ 格式輸入感興趣資料所在的根目錄。 系統不支援 \C:\Data__ 之類的磁碟機代號。 您也可以在這裡新增任何檔案篩選。
 
-   4. 資料轉換服務僅適用于推送至 Azure 之資料的最新快照集。
+   4. 資料轉換服務僅適用于推送到 Azure 的資料的最新快照。
 
-   5. 按一下 [確定]。
+   5. 按一下 [確定]****。
 
       ![設定來源資料存放庫 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. 接下來，必須設定目標資料存放庫。 選擇儲存體帳戶，將檔案放入該帳戶中的 blob。 在下拉式清單中，選取 [新增]，然後選取 [進行設定]。
+8. 接下來，必須設定目標資料存放庫。 選擇儲存體帳戶，將檔案放入該帳戶中的 blob。 在下拉式清單中，選取 [新增]****，然後選取 [進行設定]****。
 
 9. 選取想要新增的目標存放庫類型，以及與存放庫相關聯的其他參數。
 
@@ -119,13 +119,13 @@ ms.locfileid: "78933747"
     
 10. 在新增資料存放庫後，請等候幾分鐘的時間。
     
-    1. 從 [目標帳戶名稱] 的下拉式清單中，選取您建立的存放庫作為目標。
+    1. 從 [目標帳戶名稱]**** 的下拉式清單中，選取您建立的存放庫作為目標。
 
-    2. 選擇 [Blob] 或 [檔案] 儲存體類型。 指定已轉換資料所在的儲存體容器名稱。 按一下 [確定]。
+    2. 選擇 [Blob] 或 [檔案] 儲存體類型。 指定已轉換資料所在的儲存體容器名稱。 按一下 [確定]****。
 
         ![設定目標資料存放庫儲存體帳戶](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
-11. 您也可以核取此選項，以在執行作業前顯示預估的作業持續時間。 按一下 [確定] 來建立作業定義。 作業定義現已設定完成。 您可以透過 UI，使用不同的執行階段設定來多次使用此作業定義。
+11. 您也可以核取此選項，以在執行作業前顯示預估的作業持續時間。 按一下 [確定]**** 來建立作業定義。 作業定義現已設定完成。 您可以透過 UI，使用不同的執行階段設定來多次使用此作業定義。
 
     ![完成作業定義](./media/storsimple-data-manager-ui/create-job-definition-13.png)
 
@@ -135,26 +135,26 @@ ms.locfileid: "78933747"
 
 每當您需要將資料從 StorSimple 移至您在作業定義中指定的儲存體帳戶時，您就必須執行作業定義。 在執行階段，可以某些參數指定不同的值。 步驟如下：
 
-1. 選取 StorSimple 資料管理員服務，然後移至 [管理] > [作業定義]。 選取並按一下您要執行的作業定義。
+1. 選取 StorSimple 資料管理員服務，然後移至 [管理] > [作業定義]****。 選取並按一下您要執行的作業定義。
      
      ![啟動作業執行 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. 按一下 **[立即執行]** 。
+2. 按一下"**立即運行**"。
      
      ![啟動作業執行 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. 按一下 [回合設定]，修改您可能想針對這次作業執行來變更的任何設定。 按一下 [確定]，然後按一下 [執行] 來啟動您的作業。
+3. 按一下 [回合設定]****，修改您可能想針對這次作業執行來變更的任何設定。 按一下 [確定]****，然後按一下 [執行]**** 來啟動您的作業。
 
     ![啟動作業執行 3](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-4. 若要監視此作業，請移至 StorSimple 資料管理員中的 [作業]。 除了在 [作業] 刀鋒視窗中監視，您也可以聆聽儲存體佇列，每次有檔案從 StorSimple 移至儲存體帳戶時就會加入訊息。
+4. 若要監視此作業，請移至 StorSimple 資料管理員中的 [作業]****。 除了在 [作業]**** 刀鋒視窗中監視，您也可以聆聽儲存體佇列，每次有檔案從 StorSimple 移至儲存體帳戶時就會加入訊息。
 
     ![啟動作業執行 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
-### <a name="view-logs-after-job-completion"></a>作業完成後查看記錄
+### <a name="view-logs-after-job-completion"></a>作業完成後查看日誌
 
-完成作業之後，您可以查看作業的狀態。 作業狀態可以是 [**成功**]、[**部分成功**] 和 [**失敗**]。 您可以查看已成功複製的檔案清單，以及無法複製的檔案。 這些清單可用於您目標儲存體帳戶中名為 **"joblogs"** 的容器。 在此容器中，您可以尋找名稱與您的作業定義相同的資料夾。 在此情況下，將會為每個包含您清單的工作執行建立一個資料夾。 此資料夾的名稱將會是作業的 GUID，您可以從 [作業詳細資料] 頁面取得。 或者，在大多數情況下，您會在 [作業] 頁面中看到複製記錄的連結。
-您會在此資料夾中看到2組 csv 檔案。 以**copiedfilelist**開頭的所有檔案都會包含成功複製檔案的清單。 以**failedfilelist**開頭的所有檔案都包含無法複製的檔案，以及錯誤訊息。
+完成作業後，您可以查看作業的狀態。 作業狀態可以是**成功**、**部分成功**和**失敗**。 您可以查看成功複製的檔案清單和未能複製的檔的清單。 這些清單在目標存儲帳戶中稱為 **"簡單資料管理器-作業日誌"** 的容器中可用。 在此容器中，可以查找與作業定義同名的資料夾。 在此內，將為包含清單的每個作業運行創建一個資料夾。 此資料夾的名稱將是作業的 GUID，可以從作業詳細資訊頁獲取該作業。 或者，在大多數情況下，您將在作業頁本身中看到複製日誌的連結。
+有 2 組 csv 檔，您將在此資料夾中看到。 以**複製檔案清單**開頭的所有檔... 以**失敗檔案清單**開頭的所有檔...
 
 
 ## <a name="next-steps"></a>後續步驟

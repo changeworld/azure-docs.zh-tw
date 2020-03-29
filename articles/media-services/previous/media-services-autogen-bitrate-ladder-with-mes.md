@@ -1,5 +1,5 @@
 ---
-title: 使用媒體編碼器標準自動產生位元速率階梯-Azure |Microsoft Docs
+title: 使用媒體編碼器標準自動生成位元速率階梯 - Azure |微軟文檔
 description: 本主題說明如何使用媒體編碼器標準 (MES) 根據輸入解析度和位元速率自動產生位元速率階梯。
 services: media-services
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896025"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用媒體編碼器標準自動產生位元速率階梯  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用媒體編碼器標準自動生成位元速率階梯  
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文章說明如何使用媒體編碼器標準 (MES) 根據解析度和位元速率自動產生輸入位元速率階梯 (位元速率解析組)。 自動產生的預設值絕對不會超過輸入解析度和位元速率。 例如，如果輸入是 720p 3 Mbps，則輸出會維持在最多 720p，且速率啟動低於 3 Mbps。
 
 ### <a name="encoding-for-streaming-only"></a>只針對串流編碼
 
-如果您打算只針對串流編碼來源視訊，則您在建立編碼工作時，應該使用 "Adaptive Streaming" (彈性資料流) 預設值。 當使用**彈性資料流**預設值時，MES 編碼器會智慧地覆蓋位元速率階梯。 不過，您將無法控制編碼成本，因為服務會決定要使用多少層以及哪種解析度。 由於本文章結尾使用 **Adaptive Streaming** (彈性資料流) 進行編碼的結果，您可以看到 MES 產生的輸出層範例。 輸出資產包含 MP4 檔案，其中的音訊和視訊為非交錯格式。
+如果您打算只針對串流編碼來源視訊，則您在建立編碼工作時，應該使用 "Adaptive Streaming" (彈性資料流) 預設值。 當使用 **Adaptive Streaming** (彈性資料流) 預設值時，MES 編碼器會智慧地覆蓋位元速率階梯。 不過，您將無法控制編碼成本，因為服務會決定要使用多少層以及哪種解析度。 由於本文章結尾使用 **Adaptive Streaming** (彈性資料流) 進行編碼的結果，您可以看到 MES 產生的輸出層範例。 輸出資產包含 MP4 檔案，其中的音訊和視訊為非交錯格式。
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>針對串流和漸進式下載編碼
 
 如果您打算針對串流以及漸進式下載要產生的 MP4 檔案編碼，則您在建立編碼工作時，應該使用 "Content Adaptive Multiple Bitrate MP4" (內容自適性多位元速率 MP4) 預設值。 使用 **Content Adaptive Multiple Bitrate MP4** (內容自適性多位元速率 MP4) 預設值時，MES 編碼器會套用與先前相同的編碼邏輯，但現在輸出資產會包含 MP4 檔案，其中的音訊和視訊為交錯格式。 您可以使用這些 MP4 檔案的其中一個 (例如最高位元速率的版本) 作為漸進式下載檔案。
 
-## <a id="encoding_with_dotnet"></a>使用媒體服務 .NET SDK 進行編碼
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒體服務 .NET SDK 進行編碼
 
 下列程式碼範例使用媒體服務 .NET SDK 執行下列工作：
 
@@ -47,7 +47,7 @@ ms.locfileid: "74896025"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 
@@ -167,14 +167,14 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>輸出
+## <a name="output"></a><a id="output"></a>輸出
 
 由於編碼與**彈性資料流**預設值，本區段會顯示 MES 所產生的輸出層範例。 
 
 ### <a name="example-1"></a>範例 1
 高度 "1080" 和畫面播放速率 "29.970" 的來源會產生 6 個視訊層︰
 
-|層次|高度|寬度|位元速率 (kbps)|
+|階層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +186,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-2"></a>範例 2
 高度 "720" 和畫面播放速率 "23.970" 的來源會產生 5 個視訊層︰
 
-|層次|高度|寬度|位元速率 (kbps)|
+|階層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +197,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-3"></a>範例 3
 高度 "360" 和畫面播放速率 "29.970" 的來源會產生 3 個視訊層︰
 
-|層次|高度|寬度|位元速率 (kbps)|
+|階層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

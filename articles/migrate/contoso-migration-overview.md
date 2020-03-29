@@ -1,22 +1,22 @@
 ---
-title: Contoso 遷移系列 |Microsoft Docs
+title: Contoso 遷移系列 |微軟文檔
 description: 提供 Contoso 將內部部署資料中心移轉至 Azure 時使用的移轉策略和案例概觀。
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: raynew
 ms.openlocfilehash: d37bee589eb7ee2e6e30c8dcea2531dd1f063481
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78939180"
 ---
 # <a name="contoso-migration-series"></a>Contoso 移轉系列
 
 
-我們有一系列文章，示範虛構的組織 Contoso 如何將內部部署基礎結構遷移至[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)雲端。 
+我們有一系列文章，展示了虛構的組織 Contoso 如何將本地基礎結構遷移到[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)雲。 
 
-整個系列文章中包含資訊以及一些案例，用以說明如何設定基礎結構移轉，以及執行不同類型的移轉。 案例會隨著進度而變得越來越複雜。 這些文章將會說明 Contoso 公司如何完成移轉任務，而一般閱讀要點和具體指示則會在下文完整提供。
+整個系列文章中包含資訊以及一些案例，用以說明如何設定基礎結構移轉，以及執行不同類型的移轉。 隨著方案的進展，其複雜性會增大。 這些文章將會說明 Contoso 公司如何完成移轉任務，而一般閱讀要點和具體指示則會在下文完整提供。
 
 ## <a name="migration-articles"></a>移轉文章
 
@@ -44,5 +44,5 @@ ms.locfileid: "78939180"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [瞭解](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/)雲端遷移。
-- 瞭解[資料庫移轉指南](https://datamigration.microsoft.com/)中其他案例（來源/目標群組）的遷移策略。
+- [瞭解](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/)雲遷移。
+- 在[資料庫移轉指南](https://datamigration.microsoft.com/)中瞭解其他方案（源/目標對）的遷移策略。

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排預先擷取訊息 | Microsoft Docs
-description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。 訊息會在應用程式要求之前，立即提供本機抓取。
+description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。 在應用程式請求消息之前，消息隨時可供本地檢索。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760652"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>預先擷取 Azure 服務匯流排訊息
 
-在任何官方的服務匯流排用戶端上啟用「預先擷取」時，接收者就會以無訊息方式取得更多訊息 (最多可達 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限制)，超出應用程式一開始所要求的範圍。
+在任何官方的服務匯流排用戶端上啟用「預先擷取」** 時，接收者就會以無訊息方式取得更多訊息 (最多可達 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限制)，超出應用程式一開始所要求的範圍。
 
 因此，單一起始的 [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) 或 [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) 呼叫會取得訊息，以便在其成為可用而儘速傳回時立即取用。 接著，用戶端會在背景中取得後續訊息來填滿預先擷取緩衝區。
 
@@ -32,7 +32,7 @@ ms.locfileid: "76760652"
 
 您可以輕鬆地將此設定新增至 [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) \(英文\) 或 [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) \(英文\) 範例設定的接收端，即可在那些內容中看見效果。
 
-當訊息在預先擷取緩衝區中可供使用時，就會從緩衝區中立即履行任何後續的 **Receive**/**ReceiveAsync** 呼叫，而緩衝區會在空間變成可用時於背景中加以補充。 如果沒有任何訊息可供傳遞，接收作業就會如預期般清空緩衝區，然後加以等候或封鎖。
+當消息在預取緩衝區中可用時，任何後續**的接收**/**Async**調用都會立即從緩衝區完成，並且緩衝區在後臺隨著空間變得可用而補充。 如果沒有任何訊息可供傳遞，接收作業就會如預期般清空緩衝區，然後加以等候或封鎖。
 
 預先擷取也會以 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 和 [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API 中的相同方式來運作。
 

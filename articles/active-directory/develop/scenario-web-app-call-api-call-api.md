@@ -1,6 +1,6 @@
 ---
-title: 從 web 應用程式呼叫 web api-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立呼叫 web Api 的 web 應用程式（呼叫受保護的 Web API）
+title: 從 Web 應用程式調用 Web api - 微軟身份平臺 |蔚藍
+description: 瞭解如何構建調用 Web API 的 Web 應用（調用受保護的 Web API）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758966"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web Api 的 web 應用程式：呼叫 Web API
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>調用 Web API 的 Web 應用：調用 Web API
 
-現在您已有權杖，您可以呼叫受保護的 Web API。
+現在您有了權杖，就可以調用受保護的 Web API。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下是 `HomeController`的動作簡化的程式碼。 此程式碼會取得權杖以呼叫 Microsoft Graph。 已新增程式碼，以示範如何呼叫 Microsoft Graph 做為 REST API。 Microsoft Graph API 的 URL 會在 appsettings 中提供，並會讀取名為 `webOptions`的變數：
+下面是 的簡化代碼。 `HomeController` 此代碼獲取一個權杖，稱為 Microsoft 圖形。 已添加代碼以演示如何將 Microsoft 圖形稱為 REST API。 Microsoft 圖形 API 的 URL 在 appsettings.json 檔中提供，並在名為`webOptions`的變數中讀取：
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> 您可以使用相同的原則來呼叫任何 Web API。
+> 您可以使用同一原則調用任何 Web API。
 >
-> 大部分的 Azure web Api 都會提供可簡化呼叫 API 的 SDK。 這也適用于 Microsoft Graph。 在下一篇文章中，您將瞭解哪裡可以找到說明 API 使用的教學課程。
+> 大多數 Azure Web API 都提供了一個 SDK，該 SDK 簡化了調用 API 的 SDK。 微軟圖形也是如此。 在下一篇文章中，您將瞭解在哪裡可以找到說明 API 使用的教程。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移至生產環境](scenario-web-app-call-api-production.md)
+> [移動至生產環境](scenario-web-app-call-api-production.md)

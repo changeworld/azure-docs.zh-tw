@@ -1,6 +1,6 @@
 ---
-title: 瞭解 Azure IoT 裝置布建服務 MQTT 支援 |Microsoft Docs
-description: 開發人員指南-使用 MQTT 通訊協定連接到 Azure IoT 裝置布建服務（DPS）裝置面向端點的裝置支援。
+title: 瞭解 Azure IoT 設備佈建服務 MQTT 支援 |微軟文檔
+description: 開發人員指南 - 支援使用 MQTT 協定連接到 Azure IoT 設備佈建服務 （DPS） 面向設備的終結點。
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
 ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973368"
 ---
-# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定與您的 DPS 通訊
+# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 協定與 DPS 通信
 
-DPS 可讓裝置使用來與 DPS 裝置端點通訊：
+DPS 使設備能夠使用以下方式與 DPS 設備終結點進行通信：
 
-* 埠8883上的[MQTT v 3.1.1](https://mqtt.org/)
-* 埠443上的[MQTT v 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) over WebSocket。
+* 連接埠 8883 上的 [MQTT v3.1.1](https://mqtt.org/)
+* [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127)通過埠 443 上的 WebSocket。
 
-DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1 標準中指定的所有行為。 本文說明裝置可以如何使用支援的 MQTT 行為與 DPS 通訊。
+DPS 不是功能齊全的 MQTT 代理，不支援 MQTT v3.1.1 標準中指定的所有行為。 本文介紹設備如何使用支援的 MQTT 行為與 DPS 通信。
 
-所有與 DPS 的裝置通訊都必須使用 TLS/SSL 來加以保護。 因此，DPS 不支援透過埠1883的非安全連線。
+必須使用 TLS/SSL 保護與 DPS 的所有設備通信。 因此，DPS 不支援通過埠 1883 進行不安全的連接。
 
  > [!NOTE] 
- > DPS 目前不支援在 MQTT 通訊協定上使用 TPM[證明機制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism)的裝置。
+ > DPS 目前不支援在 MQTT 協定上使用 TPM[認證機制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism)的設備。
 
-## <a name="connecting-to-dps"></a>正在連線到 DPS
+## <a name="connecting-to-dps"></a>連接到 DPS
 
-裝置可以使用 MQTT 通訊協定，使用下列任何選項來連接到 DPS。
+設備可以使用 MQTT 協定使用以下任一選項連接到 DPS。
 
-* [Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)布建 sdk 中的程式庫。
-* 直接 MQTT 通訊協定。
+* [Azure IoT 預配 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)中的庫。
+* MQTT 協定直接。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 通訊協定 (作為裝置)
 
-如果裝置無法使用裝置 SDK，它仍可使用連接埠 8883 上的 MQTT 通訊協定連線到公用裝置端點。 在**CONNECT**封包中，裝置應使用下列值：
+如果裝置無法使用裝置 SDK，它仍可使用連接埠 8883 上的 MQTT 通訊協定連線到公用裝置端點。 在**CONNECT**資料包中，設備應使用以下值：
 
-* 在 [ **ClientId** ] 欄位中，使用**registrationId**。
+* 對於**ClientId**欄位，請使用**註冊 Id**。
 
-* 在 [使用者**名稱**] 欄位中，使用 `{idScope}/registrations/{registration_id}/api-version=2019-03-31`，其中 `{idScope}` 是 DPS 的[idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) 。
+* 對於**使用者名**欄位，請使用`{idScope}/registrations/{registration_id}/api-version=2019-03-31`，DPS 的`{idScope}`[idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)是其中的。
 
-* 在 [Password] 欄位中，使用 SAS 權杖。 SAS 權杖的格式與 HTTPS 和 AMQP 通訊協定的格式相同：
+* 在 [Password]**** 欄位中，使用 SAS 權杖。 SAS 權杖的格式與 HTTPS 和 AMQP 通訊協定的格式相同：
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` resourceURI 的格式應為 `{idScope}/registrations/{registration_id}`。 原則名稱應為 `registration`。
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`資源 URI 應採用 格式`{idScope}/registrations/{registration_id}`。 策略名稱應為`registration`。
 
   > [!NOTE]
   > 如果您使用 X.509 憑證驗證，則不需要 SAS 權杖密碼。
 
-  如需如何產生 SAS 權杖的詳細資訊，請參閱[控制 DPS 的存取權](how-to-control-access.md#security-tokens)的安全性權杖一節。
+  有關如何生成 SAS 權杖的詳細資訊，請參閱[對 DPS 的"控制"訪問](how-to-control-access.md#security-tokens)的安全權杖部分。
 
-以下是 DPS 執行特有行為的清單：
+以下是特定于 DPS 實現的行為清單：
 
- * DPS 不支援將**CleanSession**旗標設為**0**的功能。
+ * DPS 不支援將**CleanSession**標誌設置為**0**的功能。
 
- * 當裝置應用程式訂閱具有**QoS 2**的主題時，DPS 會在**SUBACK**封包中授與最大 QoS 層級1。 之後，DPS 會使用 QoS 1 將訊息傳遞至裝置。
+ * 當設備應用訂閱具有**QoS 2**的主題時，DPS 在**SUBACK**資料包中授予最大 QoS 級別 1。 之後，DPS 使用 QoS 1 向設備傳遞消息。
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL 組態
 
-若要直接使用 MQTT 通訊協定，您的用戶端*必須*透過 TLS 1.2 進行連接。 嘗試略過此步驟會因連線錯誤而發生失敗。
+要直接使用 MQTT 協定，用戶端*必須通過*TLS 1.2 進行連接。 嘗試略過此步驟會因連線錯誤而發生失敗。
 
 
 ## <a name="registering-a-device"></a>註冊裝置
 
-若要透過 DPS 註冊裝置，裝置應該使用 `$dps/registrations/res/#` 做為**主題篩選**來進行訂閱。 「主題篩選」中的多層級萬用字元 `#` 僅供用來允許裝置接收主題名稱中的額外屬性。 DPS 不允許使用 `#` 或 `?` 萬用字元來篩選子主題。 因為 DPS 不是一般用途的 pub-sub 訊息代理人，所以它只支援已記載的主題名稱和主題篩選器。
+要通過 DPS 註冊設備，設備應使用`$dps/registrations/res/#`**主題篩選器**訂閱 。 「主題篩選」中的多層級萬用字元 `#` 僅供用來允許裝置接收主題名稱中的額外屬性。 DPS 不允許使用 或`#``?`萬用字元來篩選子主題。 由於 DPS 不是通用的 pub-子消息傳遞代理，因此它僅支援記錄的主題名稱和主題篩選器。
 
-裝置應該使用 `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` 做為**主題名稱**，將註冊訊息發佈至 DPS。 承載應包含 JSON 格式的[裝置註冊](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration)物件。
-在成功的案例中，裝置會收到 `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` 主題名稱的回應，其中 x 是重試後的值（以秒為單位）。 回應的裝載會包含 JSON 格式的[RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus)物件。
+設備應使用`$dps/registrations/PUT/iotdps-register/?$rid={request_id}`**主題名稱**將註冊消息發佈到 DPS。 有效負載應包含 JSON 格式[的設備註冊](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration)物件。
+在成功方案中，設備將收到主題名稱上的回應，`$dps/registrations/res/202/?$rid={request_id}&retry-after=x`其中 x 是秒的重試後值。 回應的有效負載將包含 JSON 格式的[註冊操作狀態](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus)物件。
 
 ## <a name="polling-for-registration-operation-status"></a>輪詢註冊操作狀態
 
-裝置必須定期輪詢服務，以接收裝置註冊作業的結果。 假設裝置已如上面所述，訂閱了 `$dps/registrations/res/#` 主題，它可以將 get operationstatus 訊息發佈至 `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` 主題名稱。 此訊息中的作業識別碼應該是在上一個步驟的 RegistrationOperationStatus 回應訊息中收到的值。 在成功的情況下，服務將會回應 `$dps/registrations/res/200/?$rid={request_id}` 主題。 回應的承載將包含 RegistrationOperationStatus 物件。 如果回應碼在延遲等於重試之後的時間為202，則裝置應持續輪詢服務。 如果服務傳回200狀態碼，裝置註冊作業就會成功。
+設備必須定期輪詢服務以接收設備註冊操作的結果。 假設設備已按上述內容訂閱`$dps/registrations/res/#`了主題，則可以將獲取操作狀態訊息發佈到`$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}`主題名稱。 此消息中的操作 ID 應為上一步驟中的"註冊操作狀態"回應訊息中接收的值。 在成功的情況下，服務將回應該`$dps/registrations/res/200/?$rid={request_id}`主題。 回應的有效負載將包含"註冊操作狀態"物件。 如果回應代碼在延遲等於重試後一段時間後為 202，則設備應繼續輪詢服務。 如果服務返回 200 狀態碼，則設備註冊操作將成功。
 
-## <a name="connecting-over-websocket"></a>透過 Websocket 連接
-透過 Websocket 連線時，請將子通訊協定指定為 `mqtt`。 遵循[RFC 6455](https://tools.ietf.org/html/rfc6455)。
+## <a name="connecting-over-websocket"></a>通過 Web 插座連接
+通過 Websocket 連接時，將子協定`mqtt`指定為 。 遵循[RFC 6455](https://tools.ietf.org/html/rfc6455)。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 MQTT 通訊協定，請參閱[MQTT 檔](https://mqtt.org/documentation)。
+若要深入了解 MQTT 通訊協定，請參閱 [MQTT 文件](https://mqtt.org/documentation)。
 
-若要進一步探索 DPS 的功能，請參閱：
+要進一步探討 DPS 的功能，請參閱：
 
-* [關於 IoT DPS](about-iot-dps.md)
+* [關於物聯網 DPS](about-iot-dps.md)

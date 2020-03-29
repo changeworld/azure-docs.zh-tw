@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Windows VM 上安裝 Symantec Endpoint Protection
+title: 在 Azure 中的 Windows VM 上安裝賽門鐵克終結點保護
 description: 了解如何在以傳統部署模型所建立新的或現有的 Azure VM 上安裝和設定 Symantec Endpoint Protection 安全性延伸模組。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919901"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Azure 建立和處理資源的部署模型有二種： [Resource Manager 和傳統](../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。
+Azure 有兩種不同的部署模型來創建和使用資源：[資源管理器和經典](../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。
 
 本文說明如何在執行 Windows Server 的現有虛擬機器 (VM) 上，安裝和設定 Symantec Endpoint Protection 用戶端。 此完整用戶端包括服務 (例如病毒和間諜軟體防護、防火牆及入侵防禦)。 透過使用 VM 代理程式，用戶端會安裝為安全性延伸模組。
 
-如果您已有 Symantec 的內部部署解決方案現有訂用帳戶，您可以用它來保護 Azure 虛擬機器的安全。 如果您還不是 Symantec 客戶，您可以註冊試用訂用帳戶。 如需此解決方案的詳細資訊，請參閱[Microsoft Azure 平臺上的 Symantec Endpoint Protection][Symantec]。 如果您已經是 Symantec 客戶，此頁面還提供授權資訊的連結，以及安裝用戶端的指示。
+如果您已有 Symantec 的內部部署解決方案現有訂用帳戶，您可以用它來保護 Azure 虛擬機器的安全。 如果您還不是 Symantec 客戶，您可以註冊試用訂用帳戶。 如需此解決方案的詳細資訊，請參閱 [Microsoft Azure 平台上的 Symantec Endpoint Protection][Symantec]。 如果您已經是 Symantec 客戶，此頁面還提供授權資訊的連結，以及安裝用戶端的指示。
 
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>在現有 VM 上安裝 Symantec Endpoint Protection
 在開始之前，您需要下列項目：
@@ -48,7 +48,7 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-如果 **write-host** 命令顯示 **True**，則會安裝 VM 代理程式。 如果顯示**False**，請參閱 Azure Blog 文章[VM 代理程式和延伸模組-第2部分][Agent]中的指示和下載連結。
+如果 **write-host** 命令顯示 **True**，則會安裝 VM 代理程式。 如果顯示 [False]****，請參閱 Azure 部落格文章 [VM 代理程式與擴充功能 - 第 2 部分][Agent]中的指示和下載連結。
 
 如果已安裝 VM 代理程式，請執行下列命令來安裝 Symantec Endpoint Protection 代理程式。
 
@@ -61,9 +61,9 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 
 若要確認 Symantec 安全性延伸模組已安裝且是最新的：
 
-1. 登入虛擬機器。 如需指示，請參閱[如何登入執行 Windows Server 的虛擬機器][Logon]。
-2. 在 Windows Server 2008 R2 中，按一下 [開始] > [Symantec Endpoint Protection]。 在 Windows Server 2012 或 Windows Server 2012 R2 的 [開始] 畫面中，輸入 **Symantec**，然後按一下 [Symantec Endpoint Protection]。
-3. 在 [狀態 - Symantec Endpoint Protection] 視窗的 [狀態] 索引標籤中，套用更新或視需要重新啟動。
+1. 登入虛擬機器。 有關說明，請參閱[如何登錄到運行 Windows 伺服器的虛擬機器][Logon]。
+2. 在 Windows Server 2008 R2 中，按一下 [開始] > [Symantec Endpoint Protection]****。 在 Windows Server 2012 或 Windows Server 2012 R2 的 [開始] 畫面中，輸入 **Symantec**，然後按一下 [Symantec Endpoint Protection]****。
+3. 在 [狀態 - Symantec Endpoint Protection]**** 視窗的 [狀態]**** 索引標籤中，套用更新或視需要重新啟動。
 
 ## <a name="additional-resources"></a>其他資源
 [如何登入執行 Windows Server 的虛擬機器][Logon]

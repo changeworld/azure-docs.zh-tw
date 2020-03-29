@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI-sfctl 是
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理基礎結構的命令清單。
+title: Azure 服務結構 CLI-sfctl 是
+description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於管理基礎結構的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906085"
 ---
 # <a name="sfctl-is"></a>sfctl is
@@ -17,7 +17,7 @@ ms.locfileid: "76906085"
 
 ## <a name="commands"></a>命令
 
-|Command|說明|
+|Command|描述|
 | --- | --- |
 | 命令 | 叫用指定基礎結構服務執行個體上的系統管理命令。 |
 | 查詢 | 叫用指定基礎結構服務執行個體上的唯讀查詢。 |
@@ -29,7 +29,7 @@ ms.locfileid: "76906085"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --command [必要] | 要叫用的命令文字。 命令的內容與基礎結構有關。 |
 | --service-id | 基礎結構服務的識別。 <br><br> 這是不含 'fabric\:' URI 配置的基礎結構服務完整名稱。 只有當叢集中有多個基礎結構服務執行個體正在執行時，才需要提供此參數。 |
@@ -37,7 +37,7 @@ ms.locfileid: "76906085"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -52,7 +52,7 @@ ms.locfileid: "76906085"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --command [必要] | 要叫用的命令文字。 命令的內容與基礎結構有關。 |
 | --service-id | 基礎結構服務的識別。 <br><br> 這是不含 'fabric\:' URI 配置的基礎結構服務完整名稱。 只有當叢集中有多個基礎結構服務執行個體正在執行時，才需要提供此參數。 |
@@ -60,7 +60,7 @@ ms.locfileid: "76906085"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -70,5 +70,5 @@ ms.locfileid: "76906085"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md) Service Fabric CLI。
+- [設置](service-fabric-cli.md)服務結構 CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

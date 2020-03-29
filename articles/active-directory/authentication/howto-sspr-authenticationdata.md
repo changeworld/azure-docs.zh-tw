@@ -1,5 +1,5 @@
 ---
-title: Azure AD SSPR 資料需求-Azure Active Directory
+title: Azure AD SSPR 資料要求 - Azure 活動目錄
 description: Azure AD 自助式密碼重設的資料需求和如何滿足這些需求
 services: active-directory
 ms.service: active-directory
@@ -12,20 +12,20 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74964018"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>部署密碼重設而不需要使用者註冊
 
-若要部署 Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR)，必須要有驗證資料。 有些組織會讓其使用者自行輸入自己的驗證資料。 其他組織會想要與 Active Directory 中已存在的資料進行同步處理。 如果您符合下列需求，這項同步處理的資料就會提供 Azure AD 和 SSPR，而不需要使用者互動。
+若要部署 Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR)，必須要有驗證資料。 有些組織會讓其使用者自行輸入自己的驗證資料。 其他組織更喜歡與活動目錄中已存在的資料同步。 如果滿足以下要求，此同步資料可供 Azure AD 和 SSPR 使用，而無需使用者交互：
 
 * 將您內部部署目錄中的資料正確格式化。
 * [使用快速設定來設定 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
 
-為了正確運作，電話號碼的格式必須是：+國碼 電話號碼，例如 +1 4255551234。
+為了正確運作，電話號碼的格式必須是：+國碼 電話號碼**，例如 +1 4255551234。
 
 > [!NOTE]
 > 國碼 (地區碼) 和電話號碼之間需要空格。
@@ -41,18 +41,18 @@ ms.locfileid: "74964018"
 | telephoneNumber | 辦公室電話 |
 | mobile | 行動電話 |
 
-使用者驗證其行動電話號碼之後，Azure AD 中 [**驗證連絡人資訊**] 底下的 [*電話*] 欄位也會填入該號碼。
+使用者驗證其手機號碼後，Azure AD 中的 **"身份驗證聯繫資訊**"下的 *"電話"* 欄位也會填充該號碼。
 
 ## <a name="authentication-contact-info"></a>驗證聯絡資訊
 
-在 Azure 入口網站中 Azure AD 使用者的 [**驗證方法**] 頁面上，全域管理員可以手動設定驗證連絡人資訊，如下列範例螢幕擷取畫面所示：
+在 Azure 門戶中的 Azure AD 使用者的**身份驗證方法**頁上，全域管理員可以手動設置身份驗證聯繫資訊，如以下示例螢幕截圖所示：
 
-![使用者在 Azure AD 中的驗證連絡人資訊][Contact]
+![在 Azure AD 中驗證使用者的聯繫資訊][Contact]
 
-* 如果 [**電話**] 欄位已填入，且 SSPR 原則中的**行動電話**已啟用，則使用者會在密碼重設註冊頁面上，以及在密碼重設工作流程期間看到該號碼。
-* [**備用電話**] 欄位不會用來重設密碼。
-* 如果 [**電子郵件**] 欄位已填入，且 SSPR 原則中已啟用**電子郵件**，則使用者會在密碼重設註冊頁面上，以及在密碼重設工作流程期間看到該電子郵件。
-* 如果 [**替代電子郵件**] 欄位已填入，且 SSPR 原則中的**電子郵件**已啟用，則使用者在密碼重設註冊頁面上看**不**到該電子郵件，但他們會在密碼重設工作流程期間看到它。
+* 如果在 SSPR 策略中填充了 **"電話"** 欄位並啟用了**行動電話**，則使用者在密碼重設註冊頁上和密碼重設工作流期間看到該號碼。
+* **備用電話**欄位不用於密碼重設。
+* 如果"**電子郵件**"欄位已填充，並在 SSPR 策略中啟用**了電子郵件**，則使用者在密碼重設註冊頁上和密碼重設工作流期間看到該電子郵件。
+* 如果填充了 **"備用電子郵件**"欄位並在 SSPR 策略中啟用**了電子郵件**，則使用者**不會在**密碼重設註冊頁上看到該電子郵件，但他們在密碼重設工作流期間會看到該電子郵件。
 
 ## <a name="security-questions-and-answers"></a>安全性問題和答案
 
@@ -62,11 +62,11 @@ ms.locfileid: "74964018"
 
 當使用者註冊時，註冊頁面會設定下列欄位：
 
-* **驗證電話**
+* **身份驗證電話**
 * **驗證電子郵件**
 * **安全性問題和答案**
 
-如果您已提供 [行動電話] 或 [備用電子郵件] 的值，使用者即使尚未註冊此服務，也可以立即使用這些值來重設其密碼。 此外，使用者會在第一次註冊時看到這些值，並可視需要加以修改。 成功註冊之後，這些值會分別保存在 [**驗證電話**] 和 [**驗證電子郵件**] 欄位中。
+如果您為**行動電話**或**備用電子郵件**提供了值，則使用者可以立即使用這些值重置其密碼，即使他們尚未註冊該服務。 此外，使用者會在第一次註冊時看到這些值，並可視需要加以修改。 成功註冊後，這些值將分別保留在 **"身份驗證電話**"和"**身份驗證電子郵件**"欄位中。
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>透過 PowerShell 設定和讀取驗證資料
 
@@ -106,7 +106,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 #### <a name="read-the-authentication-phone-and-authentication-email-options"></a>讀取 [驗證電話] 和 [驗證電子郵件] 選項
 
-使用 PowerShell 第 1 版時，若要讀取 [驗證電話] 和 [驗證電子郵件]，請使用下列命令：
+使用 PowerShell 第 1 版時，若要讀取 [驗證電話]**** 和 [驗證電子郵件]****，請使用下列命令：
 
 ```PowerShell
 Connect-MsolService
@@ -153,15 +153,15 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 ## <a name="next-steps"></a>後續步驟
 
 * [如何完成 SSPR 成功首度發行？](howto-sspr-deployment.md)
-* [重設或變更您的密碼](../user-help/active-directory-passwords-update-your-own-password.md)
-* [註冊自助式密碼重設](../user-help/active-directory-passwords-reset-register.md)
-* [您有授權問題嗎？](concept-sspr-licensing.md)
+* [重置或更改密碼](../user-help/active-directory-passwords-update-your-own-password.md)
+* [註冊進行自助服務密碼重設](../user-help/active-directory-passwords-reset-register.md)
+* [您是否有許可問題？](concept-sspr-licensing.md)
 * [哪些驗證方法可供使用者使用？](concept-sspr-howitworks.md#authentication-methods)
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
 * [什麼是密碼回寫，且為什麼我需要了解它？](howto-sspr-writeback.md)
 * [如何回報 SSPR 中的活動？](howto-sspr-reporting.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
-* [我認為有些東西已中斷。如何? SSPR 疑難排解？](active-directory-passwords-troubleshoot.md)
+* [我覺得有些東西壞了。如何對 SSPR 進行故障排除？](active-directory-passwords-troubleshoot.md)
 * [在其他某處並未涵蓋我的問題](active-directory-passwords-faq.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "全域系統管理員可以修改使用者的驗證連絡人資訊"

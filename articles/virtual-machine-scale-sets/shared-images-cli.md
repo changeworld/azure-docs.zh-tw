@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共用 VM 映射建立擴展集
+title: 使用共用 VM 映射在 Azure 中創建縮放集
 description: 了解如何使用 Azure CLI 來建立共用 VM 映像，以用來在 Azure 中部署虛擬機器擴展集。
 author: axayjo
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 83b3d5c904a65b28482acf8b685c939493c8c03b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276275"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 為虛擬機器擴展集建立及使用共用映像
@@ -27,7 +27,7 @@ ms.locfileid: "76276275"
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>從自訂 VM 映像建立擴展集
-建立具有[`az vmss create`](/cli/azure/vmss#az-vmss-create)的擴展集。 請勿使用 UbuntuLTS 或 CentOS 這類平台映像，而是指定自訂 VM 映像的名稱。 下列範例會建立名為 myScaleSet 的擴展集，其使用前一步驟中名為 myImage 的自訂映像：
+使用 創建具有[`az vmss create`](/cli/azure/vmss#az-vmss-create)的縮放集。 請勿使用 UbuntuLTS** 或 CentOS** 這類平台映像，而是指定自訂 VM 映像的名稱。 下列範例會建立名為 myScaleSet** 的擴展集，其使用前一步驟中名為 myImage** 的自訂映像：
 
 ```azurecli-interactive
 az vmss create \
@@ -45,7 +45,7 @@ az vmss create \
 
 
 ## <a name="clean-up-resources"></a>清除資源
-若要移除您的擴展集與其他資源，請使用 [az group delete](/cli/azure/group) 刪除資源群組及其所有資源。 `--no-wait` 參數不會等待作業完成，就會將控制項傳回給提示字元。 `--yes` 參數會確認您想要刪除資源，而不另外對您提示將要進行此作業。
+要刪除規模集和其他資源，請刪除資源組及其所有資源，使用[az 組刪除](/cli/azure/group)。 `--no-wait` 參數不會等待作業完成，就會將控制項傳回給提示字元。 `--yes` 參數會確認您想要刪除資源，而不另外對您提示將要進行此作業。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes
@@ -56,7 +56,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
-- [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)

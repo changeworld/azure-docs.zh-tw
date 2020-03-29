@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
 ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60821915"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>事件中樞 .NET Standard API 概觀
 
 本文將摘要列出一些主要 Azure 事件中樞 [.NET Standard 用戶端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 事件中樞目前有兩個 .NET Standard 用戶端程式庫︰
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)：提供所有基本的執行階段作業。
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)：提供所有基本執行階段作業。
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：新增可讓您記錄處理過之事件的額外功能，並且是從事件中樞讀取的最簡單方式。
 
 ## <a name="event-hubs-client"></a>事件中樞用戶端
@@ -48,7 +48,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 
 ### <a name="send-events"></a>傳送事件
 
-若要將事件傳送到事件中樞，請使用 [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) 類別。 主體必須是 `byte` 陣列，或者 `byte` 陣列區段。
+要將事件發送到事件中心，請使用[事件資料](/dotnet/api/microsoft.azure.eventhubs.eventdata)類。 主體必須是 `byte` 陣列，或者 `byte` 陣列區段。
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -185,7 +185,7 @@ public class SimpleEventProcessor : IEventProcessor
 若要深入了解事件中樞案例，請造訪下列連結：
 
 * [Azure 事件中樞是什麼？](event-hubs-what-is-event-hubs.md)
-* [可用的事件中樞 API](event-hubs-api-overview.md)
+* [可用事件中心 ais](event-hubs-api-overview.md)
 
 .NET API 參考如下：
 

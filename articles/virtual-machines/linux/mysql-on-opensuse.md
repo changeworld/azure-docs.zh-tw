@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944582"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中執行 OpenSUSE Linux 的虛擬機器上安裝 MySQL
@@ -22,17 +22,17 @@ ms.locfileid: "78944582"
 [MySQL](https://www.mysql.com) 是一種很受歡迎的開放原始碼 SQL 資料庫。 本教學課程會示範如何建立執行 OpenSUSE Linux 的虛擬機器，然後安裝 MySQL。
 
 
-如果您選擇在本機安裝和使用 CLI，需要 Azure CLI 2.0 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，需要 Azure CLI 2.0 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>建立執行 OpenSUSE Linux 的虛擬機器
 
-首先，建立資源群組。 在此範例中，資源群組的名稱為 mySQSUSEResourceGroup，並且會建立在「美國東部」區域。
+首先，建立資源群組。 在此範例中，資源群組的名稱為 mySQSUSEResourceGroup**，並且會建立在「美國東部」** 區域。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-建立 VM。 在此範例中，VM 的名稱為 myVM，而 VM 的大小為 Standard_D2s_v3，但您應該選擇您認為最適合您工作負載的 [VM 大小](sizes.md)。
+建立 VM。 在此範例中，VM 的名稱為 myVM**，而 VM 的大小為 Standard_D2s_v3**，但您應該選擇您認為最適合您工作負載的 [VM 大小](sizes.md)。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -142,7 +142,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 只有連線到資料庫的指令碼會使用資料庫使用者名稱和密碼。  資料庫使用者帳戶名稱不一定代表系統上的實際使用者帳戶。
 
-啟用從另一部電腦登入。 在此範例中，允許從中登入的電腦 IP 位址是 10.112.113.114。
+啟用從另一部電腦登入。 在此範例中，允許從中登入的電腦 IP 位址是 10.112.113.114**。
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
@@ -156,7 +156,7 @@ quit
 
 
 ## <a name="next-steps"></a>後續步驟
-如需 MySQL 的詳細資料，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。
+如需 MySQL 的詳細資訊，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。
 
 
 

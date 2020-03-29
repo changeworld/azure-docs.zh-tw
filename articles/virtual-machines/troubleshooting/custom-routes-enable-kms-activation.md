@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920156"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制通道案例中的 Windows 啟用失敗
@@ -26,7 +26,7 @@ ms.locfileid: "77920156"
 
 ## <a name="symptom"></a>徵狀
 
-您在 Azure 虛擬網路子網路上啟用[強制通道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以將所有網際網路繫結流量導向回到您的內部部署網路。 在此案例中，執行 Windows 的 Azure 虛擬機器（Vm）無法啟動 Windows。
+您在 Azure 虛擬網路子網路上啟用[強制通道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以將所有網際網路繫結流量導向回到您的內部部署網路。 在這種情況下，運行 Windows 的 Azure 虛擬機器 （VM） 無法啟動 Windows。
 
 ## <a name="cause"></a>原因
 
@@ -38,7 +38,7 @@ Azure Windows VM 需要連接到 Azure KMS 伺服器以進行 Windows 啟用。 
 
 Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS 名稱是 kms.core.windows.net。 如果您使用其他 Azure 平台 (例如 Azure Germany)，則必須使用對應 KMS 伺服器的 IP 位址。 如需詳細資訊，請參閱下列表格：
 
-|平台| KMS DNS|KMS IP|
+|Platform| KMS DNS|KMS IP|
 |------|-------|-------|
 |Azure 全域|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
@@ -53,7 +53,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
  
 
 > [!NOTE] 
-> 啟用會使用公用 IP 位址，並會受到標準 SKU Load Balancer 設定的影響。 請仔細查看[Azure 中的輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，以瞭解需求。
+> 啟動使用公共 IP 位址，並將受到標準 SKU 負載等化器配置的影響。 仔細檢查[Azure 中的出站連接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，以瞭解這些要求。
 
 1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 2. 執行下列命令：

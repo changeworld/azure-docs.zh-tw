@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 部署 Azure SSIS 整合執行時間
+title: 使用 PowerShell 部署 Azure SSIS 集成運行時
 description: 這個 PowerShell 指令碼會建立可在雲端中執行 SSIS 封裝的 Azure-SSIS 整合執行階段。
 services: data-factory
 ms.service: data-factory
@@ -11,10 +11,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929811"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell 指令碼 - 部署 Azure-SSIS 整合執行階段
@@ -46,13 +46,13 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此指令碼會使用下列命令：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
-| [設定-Set-azdatafactoryv2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
-| [設定-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | 建立可在雲端中執行 SSIS 封裝的 Azure-SSIS 整合執行階段 |
-| [開始-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | 啟動 Azure-SSIS 整合執行階段。 |
-| [AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | 取得 Azure-SSIS 整合執行階段的相關資訊。 |
+| [集-阿茲達工廠V2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
+| [設置-阿茲達工廠V2集成運行時](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | 建立可在雲端中執行 SSIS 封裝的 Azure-SSIS 整合執行階段 |
+| [啟動-阿茲達工廠V2集成執行時間](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | 啟動 Azure-SSIS 整合執行階段。 |
+| [獲取阿茲達工廠V2集成執行時間](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | 取得 Azure-SSIS 整合執行階段的相關資訊。 |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||
 

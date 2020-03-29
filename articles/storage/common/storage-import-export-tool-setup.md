@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74979031"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>設定 Azure 匯入/匯出工具
@@ -23,7 +23,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 * 匯入工作完成後，您可以使用此工具來修復損毀、遺漏或與其他 Blob 衝突的任何 Blob。
 * 當您收到已完成的匯出工作中的磁碟機後，您可以使用此工具來修復磁碟機上損毀或遺漏的任何檔案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您正針對匯入作業**準備磁碟機**，就必須符合下列必要條件：
 
@@ -49,7 +49,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 ## <a name="installing-the-azure-importexport-tool"></a>安裝 Azure 匯入/匯出工具
 
-首先，[下載 Azure 匯入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)並解壓縮至您電腦上的目錄，例如 `c:\WAImportExport`。
+首先，[下載 Azure 導入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)並將其提取到電腦上的目錄，例如`c:\WAImportExport`。
 
 Azure 匯入/匯出工具包含下列檔案：
 
@@ -203,9 +203,9 @@ Examples:
 
 ## <a name="next-steps"></a>後續步驟
 
-* [針對匯入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import.md)
+* [為導入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [預覽匯出作業的磁碟機使用量](../storage-import-export-tool-previewing-drive-usage-export-v1.md)
-* [利用複製記錄檔檢閱作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)
-* [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)
+* [使用副本日誌檔查看作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)
+* [修復導入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)
 * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)
-* [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)
+* [排除 Azure 導入/匯出工具的故障](storage-import-export-tool-troubleshooting-v1.md)

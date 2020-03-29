@@ -12,12 +12,13 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b91cc5249b386a465ea98b5e81b199323481a733
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154945"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的應用程式類型
 
@@ -31,11 +32,11 @@ Azure Active Directory (Azure AD) 支援各種新型應用程式架構的驗證�
 
 以下是 Azure AD 支援的五個主要應用程式案例：
 
-- **[單頁應用程式 (SPA)](single-page-application.md)** ：使用者必須登入 Azure AD 所保護的單頁應用程式。
-- **[網頁瀏覽器到 Web 應用程式](web-app.md)** ：使用者必須登入 Azure AD 所保護的 Web 應用程式。
-- **[原生應用程式到 Web API](native-app.md)** ：在手機、平板電腦或電腦上執行的原生應用程式必須驗證使用者，才能從 Azure AD 所保護的 Web API 取得資源。
-- **[Web 應用程式到 Web API](web-api.md)** ：Web 應用程式必須從 Azure AD 所保護的 Web API 取得資源。
-- **[精靈或伺服器應用程式到 Web API](service-to-service.md)** ：無 Web 使用者介面的精靈應用程式或伺服器應用程式，必須從 Azure AD 所保護的 Web API 取得資源。
+- **[單頁應用程式 (SPA)](single-page-application.md)**：使用者必須登入 Azure AD 所保護的單頁應用程式。
+- **[Web 瀏覽器到 Web 應用程式](web-app.md)**：使用者需要登錄到由 Azure AD 保護的 Web 應用程式。
+- **[Web API 的本機應用程式](native-app.md)**：在手機、平板電腦或 PC 上運行的本機應用程式需要對使用者進行身份驗證，以便從 Azure AD 保護的 Web API 獲取資源。
+- **[Web 應用程式到 Web API：Web](web-api.md)** 應用程式需要從 Azure AD 保護的 Web API 獲取資源。
+- **[對 Web API 的守護進程或伺服器應用程式](service-to-service.md)**：守護進程應用程式或沒有 Web 使用者介面的伺服器應用程式需要從 Azure AD 保護的 Web API 獲取資源。
 
 在開始使用程式碼之前，請參考相關連結以深入了解各種類型的應用程式，並了解概要的案例。 您也可以了解在撰寫與 v1.0 端點或 v2.0 端點搭配運作的特定應用程式時所需了解的差異。
 
@@ -50,7 +51,7 @@ Azure Active Directory (Azure AD) 支援各種新型應用程式架構的驗證�
 
 ### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>註冊使用 Azure AD v1.0 端點的應用程式
 
-將驗證外包給 Azure AD 的任何應用程式必須在目錄中註冊。 此步驟涉及向 Azure AD 說明您的應用程式，包括它所在的 URL、驗證之後用來傳送回覆的 URL、用來識別應用程式的 URI 等。 需要這項資訊有幾個主要理由：
+將驗證外包給 Azure AD 的任何應用程式必須在目錄中註冊。 此步驟涉及告訴 Azure AD 有關應用程式的資訊，包括應用程式所在的 URL、身份驗證後發送答覆的 URL、標識應用程式的 URI 等。 需要這項資訊有幾個主要理由：
 
 * Azure AD 處理登入或交換權杖時，需要此項目以與應用程式通訊。 Azure AD 和應用程式之間傳遞的資訊包括以下：
   
@@ -71,11 +72,11 @@ Azure Active Directory (Azure AD) 支援各種新型應用程式架構的驗證�
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>開發單一租用戶或多租用戶應用程式的其他考量
 
-開發多租用戶應用程式，而非單一租用戶應用程式時，有一些其他考量需要注意。 例如，如果要讓您的應用程式供多個目錄中的使用者使用，您需要有機制來判斷他們所在的租用戶。 單一租用戶應用程式只需要在它自己的目錄中查看使用者，但多租用戶應用程式需要從 Azure AD 的所有目錄中識別特定的使用者。 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 針對所有 Azure AD 目錄，這個端點是 https://login.microsoftonline.com/common，而租用戶專用端點可能是 https://login.microsoftonline.com/contoso.onmicrosoft.com。 開發您的應用程式時尤其必須考量共同端點，因為在登入、登出和權杖驗證期間，您需要必要的邏輯來處理多個租用戶。
+開發多租用戶應用程式，而非單一租用戶應用程式時，有一些其他考量需要注意。 例如，如果要使應用程式可供多個目錄中的使用者使用，則需要一種機制來確定他們位於哪個租戶。 單一租用戶應用程式只需要在它自己的目錄中查看使用者，但多租用戶應用程式需要從 Azure AD 的所有目錄中識別特定的使用者。 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 針對所有 Azure AD 目錄，這個端點是 `https://login.microsoftonline.com/common`，而租用戶專用端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。 在開發應用程式時，要考慮公共終結點尤其重要，因為在登錄、登出和權杖驗證期間，您需要必要的邏輯來處理多個租戶。
 
 如果您目前正在開發單一租用戶應用程式，但想要提供給許多組織使用，您可以在 Azure AD 中輕鬆地變更應用程式及其組態，將它變成具備多租用戶功能。 此外，不論您是在單一租用戶或多租用戶應用程式中提供驗證，Azure AD 對所有目錄中的所有權杖都使用相同的簽署金鑰。
 
-本文件列出的每個案例都有一個小節來說明其佈建需求。 如需如何在 Azure AD 中佈建應用程式的深入資訊，並了解單一和多租用戶應用程式之間的差異，請參閱[整合應用程式與 Azure Active Directory](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以取得詳細資訊。 繼續閱讀來了解 Azure AD 中常見的應用程式案例。
+本文件列出的每個案例都有一個小節來說明其佈建需求。 有關在 Azure AD 中預配應用程式以及單租戶和多租戶應用程式之間的差異的詳細資訊，有關詳細資訊，請參閱[將應用程式與 Azure 活動目錄集成](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 繼續閱讀來了解 Azure AD 中常見的應用程式案例。
 
 ## <a name="next-steps"></a>後續步驟
 

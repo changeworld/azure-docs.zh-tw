@@ -9,18 +9,18 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
 ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898552"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 排程器的高可用性和可靠性
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure 邏輯應用](../logic-apps/logic-apps-overview.md)正在替換[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 計畫程式。 要繼續處理在計畫程式中設置的作業，請儘快[遷移到 Azure 邏輯應用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
-> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
+> 計畫程式在 Azure 門戶中不再可用，但[REST API](/rest/api/scheduler)和[Azure 計畫程式 PowerShell Cmdlet](scheduler-powershell-reference.md)此時仍然可用，以便您可以管理作業和作業集合。
 
 Azure 排程器可為作業同時提供[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)和可靠性。 如需詳細資訊，請參閱[排程器 SLA](https://azure.microsoft.com/support/legal/sla/scheduler)。
 
@@ -30,7 +30,7 @@ Azure 排程器高度可用，並且會使用異地備援服務部署和地理�
 
 ### <a name="geo-redundant-service-deployment"></a>地理區域備援服務部署
 
-Azure 排程器可在[現今 azure 支援的幾乎每個地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)中使用。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
+Azure 計畫程式今天幾乎每個[Azure 支援的地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)都可用。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
 
 ### <a name="geo-regional-job-replication"></a>地理區域工作複寫
 

@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968760"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保護 HLS 內容
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 中未添加任何新功能或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 >
 
 Azure 媒體服務可讓您使用下列格式，動態加密您的 HTTP 即時串流 (HLS) 內容︰  
 
 * **AES-128 信封清除金鑰**
 
-    使用 **AES-128 CBC** 模式加密整個區塊。 iOS 和 OS X 播放程式原本就支援資料流解密。 如需詳細資訊，請參閱[使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)。
+    使用 **AES-128 CBC** 模式加密整個區塊。 iOS 和 OS X 播放程式原本就支援資料流解密。 有關詳細資訊，請參閱使用[AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)。
 * **Apple FairPlay**
 
     使用 **AES-128 CBC** 模式加密個別的視訊和音訊範例。 **FairPlay 串流** (FPS) 已整合至裝置工作系統，在 iOS 和 Apple 電視上具有原生支援。 OS X 上的 Safari 使用加密媒體擴充功能 (EME) 介面支援來啟用 FPS。
@@ -51,7 +51,7 @@ Azure 媒體服務可讓您使用下列格式，動態加密您的 HTTP 即時�
 
 以下是使用媒體服務傳遞以 FairPlay 加密的 HLS，以及傳遞 FairPlay 授權時所需的項目：
 
-  * 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+  * 一個 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
   * 媒體服務帳戶。 若要建立一個，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
   * 註冊 [Apple Development Program](https://developer.apple.com/)。
   * Apple 要求內容擁有者必須取得 [部署套件](https://developer.apple.com/contact/fps/)。 說明您已使用媒體服務實作金鑰安全性模組 (KSM)，現在想要求最終的 FPS 套件。 最終 FPS 套件包含相關指示，用以產生憑證和取得應用程式密碼金鑰 (ASK)。 您可使用 ASK 來設定 FairPlay。
@@ -59,7 +59,7 @@ Azure 媒體服務可讓您使用下列格式，動態加密您的 HTTP 即時�
 
 必須在媒體服務金鑰傳遞端設定下列各項︰
 
-  * **應用程式憑證 (AC)** ︰這是包含私密金鑰的 .pfx 檔案。 您可建立這個檔案並以密碼加密。
+  * **應用程式憑證 (AC)**︰這是包含私密金鑰的 .pfx 檔案。 您可建立這個檔案並以密碼加密。
 
        當您設定金鑰傳遞原則時，您必須提供該密碼和 base64 格式的 .pfx 檔案。
 
@@ -78,11 +78,11 @@ Azure 媒體服務可讓您使用下列格式，動態加密您的 HTTP 即時�
   * **應用程式憑證密碼識別碼**︰您必須上傳密碼，做法類似於其上傳其他媒體服務金鑰的方式。 使用 **ContentKeyType.FairPlayPfxPassword** 列舉值來取得媒體服務識別碼。 這是它們要在金鑰傳遞原則選項內使用所需之物。
   * **iv**︰這是 16 位元組的隨機值。 其必須符合資產傳遞原則中的 iv。 您會產生 iv，並將它放在兩個位置︰資產傳遞原則和金鑰傳遞原則選項。
   * **ASK**：當您使用 Apple 開發人員入口網站產生憑證時，會收到此金鑰。 每個開發小組都會收到一個唯一的 ASK。 儲存一份 ASK，並將它存放在安全的地方。 您之後必須將 ASK 設定為媒體服務的 FairPlayAsk。
-  * **ASK 識別碼**︰當您將 ASK 上傳至媒體服務時，會取得這個識別碼。 您必須使用 **ContentKeyType.FairPlayAsk** 列舉值來上傳 ASK。 結果會傳回媒體服務識別碼，設定金鑰傳遞原則選項時應使用此識別碼。
+  * ** ASK 識別碼**︰當您將 ASK 上傳至媒體服務時，會取得這個識別碼。 您必須使用 **ContentKeyType.FairPlayAsk** 列舉值來上傳 ASK。 結果會傳回媒體服務識別碼，設定金鑰傳遞原則選項時應使用此識別碼。
 
 FPS 用戶端必須設定下列各項︰
 
-  * **應用程式憑證 (AC)** ：這是 .cer/.der 檔案，其中包含作業系統用來加密某些承載的公開金鑰。 媒體服務必須了解它，因為播放程式需要它。 金鑰傳遞服務會使用對應的私密金鑰來解密。
+  * **應用程式憑證 (AC)**：這是 .cer/.der 檔案，其中包含作業系統用來加密某些承載的公開金鑰。 媒體服務必須了解它，因為播放程式需要它。 金鑰傳遞服務會使用對應的私密金鑰來解密。
 
 若要播放 FairPlay 加密的資料流，請先取得真正的 ASK，然後產生真正的憑證。 該處理程序會建立所有 3 個部分︰
 
@@ -98,7 +98,7 @@ FPS 用戶端必須設定下列各項︰
 1. 建立資產，並將檔案上傳到資產。
 2. 將包含檔案的資產編碼為自適性位元速率 MP4 集。
 3. 建立內容金鑰並將它與編碼的資產產生關聯。  
-4. 設定內容金鑰的授權原則。 指定下列各項：
+4. 設定內容金鑰的授權原則。 指定下列項目：
 
    * 傳遞方法 (在此例中為 FairPlay)。
    * FairPlay 原則選項組態。 如需有關如何設定 FairPlay 的詳細資訊，請參閱下列範例中的 **ConfigureFairPlayPolicyOptions()** 方法。
@@ -143,13 +143,13 @@ FPS 用戶端必須設定下列各項︰
 * 如果只有一個加密套用到資產，則無須在 URL 中指定加密類型。
 * 加密類型不區分大小寫。
 * 可以指定下列加密類型︰  
-  * **cenc**︰一般加密 (PlayReady 或 Widevine)
+  * **cenc**： 通用加密（播放就緒或寬維文）
   * **cbcs-aapl**：FairPlay
-  * **cbc**：AES 信封加密
+  * **cbc**： AES 信封加密
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-1. 設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+1. 設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 2. 將下列項目新增至 app.config 檔案中定義的 **appSettings**：
 
     ```xml
@@ -164,7 +164,7 @@ FPS 用戶端必須設定下列各項︰
 以本章節中所顯示的程式碼覆寫 Program.cs 檔案中的程式碼。
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 有關詳細資訊，請參閱[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 請務必更新變數，以指向您的輸入檔案所在的資料夾。
 
@@ -557,7 +557,7 @@ namespace DynamicEncryptionWithFairPlay
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps-media-services-learning-paths"></a>後續步驟：媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,31 +1,31 @@
 ---
-title: 適用于 Azure 春季雲端的 CI/CD
-description: 適用于 Azure 春季雲端的 CI/CD
+title: Azure 春雲的 CI/CD
+description: Azure 春雲的 CI/CD
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278520"
 ---
-# <a name="cicd-for-azure-spring-cloud"></a>適用于 Azure 春季雲端的 CI/CD
+# <a name="cicd-for-azure-spring-cloud"></a>Azure 春雲的 CI/CD
 
-持續整合與持續傳遞工具可讓開發人員以最少的方式和風險，快速地將更新部署至現有的應用程式。 Azure DevOps 可協助您組織及控制這些金鑰作業。 Azure 春季雲端目前未提供特定的 Azure DevOps 外掛程式。  不過，您可以使用[Azure CLI](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)工作，將您的春天雲端應用程式與 DevOps 整合。 本文將說明如何使用 Azure 春季雲端的 Azure CLI 工作，與 Azure DevOps 整合。
+持續集成和持續交付工具使開發人員能夠以最小的工作量和風險快速將更新部署到現有應用程式。 Azure DevOps 可説明您組織和控制這些關鍵作業。 目前，Azure 春雲不提供特定的 Azure DevOps 外掛程式。  但是，您可以使用[Azure CLI 任務](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)將春雲應用程式與 DevOps 集成。 本文將介紹如何使用 Azure 春雲的 Azure CLI 任務與 Azure DevOps 集成。
 
-## <a name="create-an-azure-resource-manager-service-connection"></a>建立 Azure Resource Manager 服務連線
+## <a name="create-an-azure-resource-manager-service-connection"></a>創建 Azure 資源管理器服務連接
 
-閱讀[這篇文章](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)，瞭解如何建立 Azure DevOps 專案的 Azure Resource Manager 服務連接。 請務必選取您用於 Azure 春季雲端服務實例的相同訂用帳戶。
+閱讀[本文](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)，瞭解如何創建 Azure 資源管理器服務連接到 Azure DevOps 專案。 請務必選擇與 Azure Spring 雲服務實例相同的訂閱。
 
-## <a name="azure-cli-task-templates"></a>Azure CLI 工作範本
+## <a name="azure-cli-task-templates"></a>Azure CLI 任務範本
 
-### <a name="deploy-artifacts"></a>部署構件
+### <a name="deploy-artifacts"></a>部署成品
 
-您可以使用一系列的 `tasks`來建立及部署專案。 此程式碼片段會先定義用來建立應用程式的 Maven 工作，接著會使用 Azure 春季 Cloud Azure CLI 擴充功能來部署 JAR 檔案的第二個工作。
+您可以使用一系列`tasks`生成和部署專案。 此程式碼片段首先定義 Maven 任務以生成應用程式，然後是使用 Azure SpringCloud Azure CLI 副檔名部署 JAR 檔的第二個任務。
 
 ```yaml
 steps:
@@ -42,9 +42,9 @@ steps:
       # deploy other app
 ```
 
-### <a name="deploy-from-source"></a>從來源部署
+### <a name="deploy-from-source"></a>從源部署
 
-您可以直接部署到 Azure，而不需要個別的組建步驟。
+無需單獨的生成步驟即可直接部署到 Azure。
 
 ```yaml
 - task: AzureCLI@1
