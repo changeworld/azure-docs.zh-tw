@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
 ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70078980"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>在 Azure 中的 Linux 虛擬機器上使用 SAP
@@ -30,9 +30,9 @@ Microsoft 透過 Microsoft Azure 虛擬機器，提供完整的基礎結構即�
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
 ## <a name="sap-netweaver-on-azure-suse-linux-virtual-machines"></a>Azure SUSE Linux 虛擬機器上的 SAP NetWeaver
-標題:在 Microsoft Azure SUSE Linux VM 上測試 SAP NetWeaver
+標題：在 Microsoft Azure SUSE Linux VM 上測試 SAP NetWeaver
 
-摘要：目前在 Azure Linux Vm 上執行 SAP NetWeaver 沒有正式的 SAP 支援。 不過客戶可能想要執行一些測試，或可能考慮在 Azure Linux VM 上執行 SAP 示範或訓練系統，只要不需要連絡 SAP 支援。 本文章應有助於設定執行 SAP 的 Azure SUSE Linux VM，並提供一些基本的提示，以避免常見的潛在問題。
+摘要：目前 Azure Linux VM 上沒有執行 SAP NetWeaver 的正式 SAP 支援。 不過客戶可能想要執行一些測試，或可能考慮在 Azure Linux VM 上執行 SAP 示範或訓練系統，只要不需要連絡 SAP 支援。 本文章應有助於設定執行 SAP 的 Azure SUSE Linux VM，並提供一些基本的提示，以避免常見的潛在問題。
 
 更新日期：2015 年 12 月
 

@@ -1,15 +1,15 @@
 ---
-title: 設定 Azure Service Fabric Reliable Services
-description: 深入瞭解如何在 Azure Service Fabric 應用程式中設定可設定狀態的 Reliable Services，以及單一服務。
+title: 配置 Azure 服務結構可靠服務
+description: 瞭解如何全域在 Azure 服務結構應用程式中為單個服務配置有狀態的可靠服務。
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645509"
 ---
 # <a name="configure-stateful-reliable-services"></a>設定具狀態可靠服務
@@ -22,7 +22,7 @@ ms.locfileid: "75645509"
 | 名稱 | 單位 | 預設值 | 備註 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |KB |8388608 |以核心模式配置給記錄器寫入緩衝區記憶體集區的最小 KB 數。 此記憶體集區用於在寫入至磁碟之前快取狀態資訊。 |
-| WriteBufferMemoryPoolMaximumInKB |KB |無限制 |記錄器寫入緩衝區記憶體集區可以成長的的大小上限。 |
+| WriteBufferMemoryPoolMaximumInKB |KB |沒有限制 |記錄器寫入緩衝區記憶體集區可以成長的的大小上限。 |
 | SharedLogId |GUID |"" |指定用來識別預設共用記錄檔的唯一 GUID，用於叢集中所有節點上的所有 Reliable Services (不會在其服務特定組態中指定 SharedLogId)。 如果有指定 SharedLogId，則也必須指定 SharedLogPath。 |
 | SharedLogPath |完整路徑名稱 |"" |指定完整路徑，其中共用記錄檔用於叢集中所有節點上的所有 Reliable Services (不會在其服務特定組態中指定 SharedLogPath)。 不過，如果有指定 SharedLogPath，則也必須指定 SharedLogId。 |
 | SharedLogSizeInMB |MB |8192 |指定以靜態方式配置給共用記錄檔的磁碟空間 MB 數。 此值必須是 2048 或更大。 |
@@ -61,7 +61,7 @@ SharedLogSizeInMB 會指定要預先配置給所有節點上之預設共用記�
 您可以使用組態封裝 (組態)，或服務實作 (程式碼) 修改具狀態的 Reliable Services 的預設組態。
 
 * **組態** - 您可以藉由變更在 Microsoft Visual Studio 封裝根的 Config 資料夾底下，為應用程式中每個服務產生的 Settings.xml 檔案，來透過組態封裝完成組態。
-* **程式碼** - 您可以使用 ReliableStateManagerConfiguration 物件搭配適當的選項設定來建立 ReliableStateManager，透過程式碼完成設定。
+* **代碼**- 通過代碼配置是通過使用具有相應選項組的可靠狀態管理員物件創建可靠狀態管理員來完成的。
 
 Azure Service Fabric 執行階段預設會在建立基礎執行階段元件時，在 Settings.xml 檔案中尋找預先定義的區段名稱，並使用組態值。
 
@@ -116,7 +116,7 @@ ReplicatorConfig
 | SharedLogPath |完整路徑名稱 |"" |指定建立此複本共用記錄檔的完整路徑。 服務通常不應使用此設定。 不過，如果有指定 SharedLogPath，則也必須指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |設定受控 API 呼叫的監視間隔。 範例︰使用者提供的備份回呼函式。 經過這段間隔後，警告健全狀況報告會傳送到健全狀況管理員。 |
 | LogTruncationIntervalSeconds |秒 |0 |會在每個複本中起始記錄截斷的可設定間隔。 它可用來確保記錄也會根據時間而不只是記錄大小進行截斷。 這項設定也會強制在可靠的字典中清除已刪除的項目。 因此，它可用來確保適時將已刪除的項目清除。 |
-| EnableStableReads |Boolean |否 |啟用穩定讀取會限制次要複本，以傳回已仲裁已確認的值。 |
+| 啟用穩定讀取 |Boolean |False |啟用穩定讀取會限制輔助副本返回已仲裁已解除的值。 |
 
 ### <a name="sample-configuration-via-code"></a>透過程式碼的範例組態
 ```csharp

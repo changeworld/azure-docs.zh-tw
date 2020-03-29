@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery 中的 VMware VM 嚴重損壞修復架構
+title: Azure 網站恢復中的 VMware VM 災害復原體系結構
 description: 本文概述使用 Azure Site Recovery 來設定從內部部署 VMware VM 至 Azure 的災害復原時，所使用的元件和架構
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514862"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 至 Azure 災害復原架構
@@ -23,12 +23,12 @@ ms.locfileid: "76514862"
 
 下表和圖形提供將 VMware 災害復原至 Azure 時所用元件的高層級檢視。
 
-**元件** | **需求** | **詳細資料**
+**元件** | **要求** | **詳細資料**
 --- | --- | ---
-**Azure** | Azure 訂用帳戶、適用于快取的 Azure 儲存體帳戶、受控磁片和 Azure 網路。 | 從內部部署 Vm 複寫的資料會儲存在 Azure 儲存體中。 從內部部署環境容錯移轉至 Azure 時，會以複寫的資料建立 Azure VM。 Azure VM 在建立後會連線到 Azure 虛擬網路。
+**Azure** | Azure 訂閱、緩存的 Azure 存儲帳戶、託管磁片和 Azure 網路。 | 來自本地 VM 的複製資料存儲在 Azure 存儲中。 從內部部署環境容錯移轉至 Azure 時，會以複寫的資料建立 Azure VM。 Azure VM 在建立後會連線到 Azure 虛擬網路。
 **組態伺服器電腦** | 單一的內部部署電腦。 建議您將其當作可從下載的 OVF 範本部署的 VMware VM 來執行。<br/><br/> 此機器會執行所有的內部部署 Site Recovery 元件，包括組態伺服器、處理序伺服器和主要目標伺服器。 | **組態伺服器**：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。<br/><br/> **處理序伺服器**：依預設會安裝在組態伺服器上。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。 處理序伺服器也會在您要複寫的 VM 上安裝 Azure Site Recovery 行動服務，並自動探索內部部署機器。 隨著部署規模擴大，您可以新增額外的個別處理序伺服器，以處理日較大的複寫流量。<br/><br/> **主要目標伺服器**：預設會安裝在組態伺服器上。 負責處理從 Azure 進行容錯回復期間的複寫資料。 針對大型部署，您可以新增額外的個別主要目標伺服器進行容錯回復。
 **VMware 伺服器** | VMware VMs 會裝載於內部部署 vSphere ESXi 伺服器。 我們建議以 vCenter 伺服器管理主機。 | 在 Site Recovery 部署期間，您可將 VMware 伺服器新增至復原服務保存庫。
-**複寫的機器** | 行動服務會安裝在您複寫的每個 VMware VM 上。 | 建議您允許從處理序伺服器自動安裝。 或者，您可以手動安裝服務，或使用自動化部署方法，例如 Configuration Manager。
+**複寫的機器** | 行動服務會安裝在您複寫的每個 VMware VM 上。 | 建議您允許從處理序伺服器自動安裝。 或者，您可以手動安裝服務或使用自動部署方法，如組態管理員。
 
 **VMware 至 Azure 架構**
 
@@ -41,11 +41,11 @@ ms.locfileid: "76514862"
 1. 當您啟用 VM 複寫時，首先會使用指定的複寫原則開始複寫至 Azure 儲存體。 請注意：
     - 如為 VMware VM，複寫程序為區塊層級、幾乎連續性，並會使用在 VM 執行的流動性服務代理程式。
     - 任何複寫原則設定均會套用：
-        - **RPO 閾值**。 此設定不會影響複寫。 其可協助進行監視。 如果目前的 RPO 超過您指定的閾值限制，則系統會引發事件並選擇性傳送電子郵件。
+        - **RPO 閾值**. 此設定不會影響複寫。 其可協助進行監視。 如果目前的 RPO 超過您指定的閾值限制，則系統會引發事件並選擇性傳送電子郵件。
         - **復原點保留**。 發生中斷時，此設定會指定您所希望回溯的時間。 進階儲存體中的保留期上限為 24 小時。 標準儲存體則為 72 小時。 
         - **應用程式一致快照集**。 應用程式快照集會視應用程式的需求每隔 1 至 12 小時拍攝一次。 快照集為標準的 Azure blob 快照集。 在 VM 執行的流動性代理程式會根據此設定要求 VSS 快照集，並在複寫串流中將該時間點標記為應用程式一致時間點。
 
-2. 流量會透過網際網路複寫到 Azure 儲存體的公用端點。 或者，您可以使用 Azure ExpressRoute 搭配[Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 不支援從內部部署網站透過站對站虛擬私人網路 (VPN) 將流量複寫至 Azure。
+2. 流量會透過網際網路複寫到 Azure 儲存體的公用端點。 或者，您可以將 Azure ExpressRoute 與[Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)一起使用。 不支援從內部部署網站透過站對站虛擬私人網路 (VPN) 將流量複寫至 Azure。
 3. 初始複寫完成之後，就會開始將差異變更複寫到 Azure。 機器的追蹤變更會傳送至流程伺服器。
 4. 進行通訊的過程如下：
 
@@ -53,7 +53,7 @@ ms.locfileid: "76514862"
     - 設定伺服器會透過輸出連接埠 HTTPS 443 與 Azure 協調複寫。
     - VM 會透過輸入連接埠 HTTPS 9443 將複寫資料傳送至處理伺服器 (在設定伺服器電腦上執行)。 您可以修改此連接埠。
     - 處理伺服器會透過輸出連接埠 443 接收複寫資料、將其最佳化並加密，然後傳送至 Azure 儲存體。
-5. 複寫資料記錄會先在 Azure 中的快取儲存體帳戶中進行。 系統會處理這些記錄，並將資料儲存在 Azure 受控磁片中（稱為 asr 種子磁片）。 復原點會建立在此磁片上。
+5. 複製資料首先記錄在 Azure 中的緩存存儲帳戶中。 這些日誌將處理，並將資料存儲在 Azure 託管磁片（稱為 asr 種子磁片）中。 復原點在此磁片上創建。
 
 
 

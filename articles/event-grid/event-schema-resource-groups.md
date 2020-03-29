@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561688"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid 資源群組事件結構描述
 
-本文提供資源群組事件的屬性與結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供資源群組事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型與資源變更或動作有關。 主要的差異在於資源群組所發出的事件是針對資源群組內的資源，而 Azure 訂用帳戶發出的事件是針對整個訂用帳戶上的資源。
 
@@ -234,31 +234,31 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 
 事件具有下列的最高層級資料：
 
-| 屬性 | type | 描述 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| topic | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | object | 資源群組事件資料。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| data | 物件 (object) | 資源群組事件資料。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | type | 描述 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| authorization | object | 作業的所要求授權。 |
-| claims | object | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
-| correlationId | string | 用於疑難排解的作業識別碼。 |
-| httpRequest | object | 作業的詳細資料。 更新現有資源或刪除資源時，只會包含這個物件。 |
-| resourceProvider | string | 作業的資源提供者。 |
-| resourceUri | string | 作業中資源的 URI。 |
-| operationName | string | 已採取的作業。 |
-| status | string | 作業狀態。 |
-| subscriptionId | string | 資源的訂用帳戶識別碼。 |
-| tenantId | string | 資源的租用戶識別碼。 |
+| 授權 | 物件 (object) | 作業的所要求授權。 |
+| claims | 物件 (object) | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| correlationId | 字串 | 用於疑難排解的作業識別碼。 |
+| httpRequest | 物件 (object) | 作業的詳細資料。 更新現有資源或刪除資源時，只會包含這個物件。 |
+| resourceProvider | 字串 | 作業的資源提供者。 |
+| resourceUri | 字串 | 作業中資源的 URI。 |
+| operationName | 字串 | 已採取的作業。 |
+| status | 字串 | 作業狀態。 |
+| subscriptionId | 字串 | 資源的訂用帳戶識別碼。 |
+| tenantId | 字串 | 資源的租用戶識別碼。 |
 
 ## <a name="next-steps"></a>後續步驟
 

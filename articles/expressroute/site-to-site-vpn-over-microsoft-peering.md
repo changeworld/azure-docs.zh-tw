@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：透過 Microsoft 對等互連設定 S2S VPN
+title: Azure 快速路由：通過 Microsoft 對等互連配置 S2S VPN
 description: 使用站對站 VPN 閘道，透過 ExpressRoute Microsoft 對等互連線路，設定 IPsec/IKE 與 Azure 的連線。
 services: expressroute
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436803"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>透過 ExpressRoute Microsoft 對等互連，設定站對站 VPN
@@ -26,7 +26,7 @@ ms.locfileid: "75436803"
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a>架構
+## <a name="architecture"></a><a name="architecture"></a>建築
 
 
   ![連線概觀](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
@@ -43,7 +43,7 @@ ms.locfileid: "75436803"
 >
 >
 
-## <a name="workflow"></a>工作流程
+## <a name="workflow"></a><a name="workflow"></a>工作流程
 
 1. 設定 ExpressRoute 線路的 Microsoft 的對等互連。
 2. 透過 Microsoft 對等互連，向內部部署網路通告選取的 Azure 區域公用前置詞。
@@ -53,7 +53,7 @@ ms.locfileid: "75436803"
 6. (選擇性) 在內部部署 VPN 裝置上設定防火牆/篩選。
 7. 測試並驗證 ExpressRoute 線路上的 IPsec 通訊。
 
-## <a name="peering"></a>1. 設定 Microsoft 對等互連
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 配置微軟對等互連
 
 若要設定 ExpressRoute 上的站對站 VPN 連線，您必須利用 ExpressRoute Microsoft 對等互連。
 
@@ -61,25 +61,25 @@ ms.locfileid: "75436803"
 
 * 如果您已經擁有 ExpressRoute 線路，但還未設定 Microsoft 對等互連，請利用[建立和修改 ExpressRoute 線路的對等互連](expressroute-howto-routing-arm.md#msft)一文，設定 Microsoft 對等互連。
 
-一旦您已設定線路及 Microsoft 對等互連，就可以輕鬆地使用 Azure 入口網站中的 [概觀] 頁面來檢視它。
+一旦您已設定線路及 Microsoft 對等互連，就可以輕鬆地使用 Azure 入口網站中的 [概觀]**** 頁面來檢視它。
 
 ![線路](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="routefilter"></a>2. 設定路由篩選
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. 配置路由篩選器
 
-路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 基本上，它是所有 BGP 社區值的允許清單。 
+路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 它本質上是所有 BGP 社區值的允許清單。 
 
 ![路由篩選](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-在此範例中，部署僅在 *Azure 美國西部 2* 區域中。 系統會新增路由篩選規則，以便僅允許 Azure 美國西部 2 區域前置詞的通告，其 BGP 社群值為 *12076:51026*。 您可以選取 [管理規則] 來指定您想要允許的區域前置詞。
+在此範例中，部署僅在 *Azure 美國西部 2* 區域中。 系統會新增路由篩選規則，以便僅允許 Azure 美國西部 2 區域前置詞的通告，其 BGP 社群值為 *12076:51026*。 您可以選取 [管理規則]**** 來指定您想要允許的區域前置詞。
 
-在路由篩選內，您也需要選擇路由篩選要套用的 ExpressRoute 線路。 您可以選取 [新增線路] 來選擇 ExpressRoute 線路。 在上圖中，路由篩選與範例 ExpressRoute 線路相關聯。
+在路由篩選內，您也需要選擇路由篩選要套用的 ExpressRoute 線路。 您可以選取 [新增線路]**** 來選擇 ExpressRoute 線路。 在上圖中，路由篩選與範例 ExpressRoute 線路相關聯。
 
-### <a name="configfilter"></a>2.1 設定路由篩選
+### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2.1 設定路由篩選
 
 設定路由篩選。 如需步驟，請參閱[針對 Microsoft 對等互連設定路由篩選](how-to-routefilter-portal.md)。
 
-### <a name="verifybgp"></a>2.2 驗證 BGP 路由
+### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2.2 驗證 BGP 路由
 
 一旦您已在 ExpressRoute 線路上成功建立 Microsoft 對等互連並讓路由篩選與該線路產生關聯，就可以驗證是否從與 MSEE 對等互連的 PE 裝置上收到來自 MSEE 的 BGP 路由。 驗證命令會根據 PE 裝置的作業系統而有所不同。
 
@@ -91,7 +91,7 @@ ms.locfileid: "75436803"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-下列部分輸出顯示使用 ASN 12076 （MSEE）從鄰近 \*收到68首碼：
+以下部分輸出顯示，從鄰居\*.243.229.34 收到 68 個首碼，ASN 12076 （MSEE）：
 
 ```
 ...
@@ -112,7 +112,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="vpngateway"></a>3. 設定 VPN 閘道和 IPsec 通道
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. 配置 VPN 閘道和 IPsec 隧道
 
 在本節中，Azure VPN 閘道與內部部署 VPN 裝置之間會建立 IPsec VPN 通道。 這些範例會使用 Cisco Cloud Service Router (CSR1000) VPN 裝置。
 
@@ -137,7 +137,7 @@ Get-AzBgpServiceCommunity
 >
 >
 
-### <a name="variables3"></a>3.1 宣告變數
+### <a name="31-declare-the-variables"></a><a name="variables3"></a>3.1 宣告變數
 
 在此範例中，變數宣告對應至範例網路。 宣告變數時，請修改此區段以反映您的環境。
 
@@ -175,7 +175,7 @@ Get-AzBgpServiceCommunity
 },
 ```
 
-### <a name="vnet"></a>3.2 建立虛擬網路 (VNet)
+### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3.2 建立虛擬網路 (VNet)
 
 如果您要讓現有的 VNet 與 VPN 通道產生關聯，可以略過此步驟。
 
@@ -210,7 +210,7 @@ Get-AzBgpServiceCommunity
 },
 ```
 
-### <a name="ip"></a>3.3 將公用 IP 位址指派給 VPN 閘道執行個體
+### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3.3 將公用 IP 位址指派給 VPN 閘道執行個體
  
 為 VPN 閘道的每個執行個體指派一個公用 IP 位址。
 
@@ -237,7 +237,7 @@ Get-AzBgpServiceCommunity
   },
 ```
 
-### <a name="termination"></a>3.4 指定內部部署 VPN 通道終止 (區域網路閘道)
+### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 指定內部部署 VPN 通道終止 (區域網路閘道)
 
 內部部署 VPN 裝置指的是**區域網路閘道**。 下列 json 程式碼片段也會指定遠端 BGP 對等詳細資料：
 
@@ -262,12 +262,12 @@ Get-AzBgpServiceCommunity
 },
 ```
 
-### <a name="creategw"></a>3.5 建立 VPN 閘道
+### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3.5 建立 VPN 閘道
 
 本節的範本使用主動-主動組態所需要的設定來設定 VPN 閘道。 請記住下列需求：
 
 * 使用 **"RouteBased"** VpnType 建立 VPN 閘道。 如果您想要在 VPN 閘道與 VPN 內部部署之間啟用 BGP 路由，則此設定是強制性的。
-* 若要以主動-主動模式在兩個 VPN 閘道執行個體與指定的內部部署裝置之間建立 VPN 通道， **"activeActive"** 參數在 Resource Manager 範本中必須設為 **true**。 若要深入了解高可用性的 VPN 閘道，請參閱[高可用性的 VPN 閘道連線](../vpn-gateway/vpn-gateway-highlyavailable.md)。
+* 若要以主動-主動模式在兩個 VPN 閘道執行個體與指定的內部部署裝置之間建立 VPN 通道，**"activeActive"** 參數在 Resource Manager 範本中必須設為 **true**。 若要深入了解高可用性的 VPN 閘道，請參閱[高可用性的 VPN 閘道連線](../vpn-gateway/vpn-gateway-highlyavailable.md)。
 * 若要在 VPN 通道之間設定 eBGP 工作階段，您必須在任一端指定兩個不同的 ASN。 最好是指定私人 ASN 編號。 如需詳細資訊，請參閱 [BGP 和 Azure VPN 閘道的概觀](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 ```json
@@ -324,7 +324,7 @@ Get-AzBgpServiceCommunity
   },
 ```
 
-### <a name="ipsectunnel"></a>3.6 建立 IPsec 通道
+### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3.6 建立 IPsec 通道
 
 指令碼的最後一個動作會在 Azure VPN 閘道與內部部署 VPN 裝置之間建立 IPsec 通道。
 
@@ -354,7 +354,7 @@ Get-AzBgpServiceCommunity
   }
 ```
 
-## <a name="device"></a>4. 設定內部部署 VPN 裝置
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. 配置本地 VPN 設備
 
 Azure VPN 閘道與許多不同廠商的 VPN 裝置相容。 如需設定資訊以及已經過驗證，可搭配 VPN 閘道使用的裝置，請參閱[關於 VPN 裝置](../vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
@@ -365,7 +365,7 @@ Azure VPN 閘道與許多不同廠商的 VPN 裝置相容。 如需設定資訊�
 
 eBGP 對等通常是直接連線的 (通常透過 WAN 連線)。 不過，當您要透過 ExpressRoute Microsoft 對等互連，在 IPsec VPN 通道上設定 eBGP 時，在 eBGP 對等之間有多個路由網域。 使用 **ebgp-multihop** 命令，在兩個非直接連線的對等之間，建立 eBGP 芳鄰關聯性。 遵循 ebgp-multihop 命令的整數會在 BGP 封包中指定 TTL 值。 **maximum-paths eibgp 2** 命令會針對兩個 BGP 路徑之間的流量，啟用負載平衡。
 
-### <a name="cisco1"></a>Cisco CSR1000 範例
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>思科 CSR1000 示例
 
 下列範例會在當作內部部署 VPN 裝置的 Hyper-V 虛擬機器中，顯示 Cisco CSR1000 的設定：
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="firewalls"></a>5. 設定 VPN 裝置篩選和防火牆（選擇性）
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 配置 VPN 設備篩選和防火牆（可選）
 
 根據您的需求，設定防火牆和篩選。
 
-## <a name="testipsec"></a>6. 測試並驗證 IPsec 通道
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. 測試和驗證 IPsec 隧道
 
 IPsec 通道的狀態可以在 Azure VPN 閘道上，透過 Powershell 命令進行驗證：
 
@@ -597,7 +597,7 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verifye2e"></a>驗證網路內部部署內部與 Azure VNet 之間的端對端連線
+### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>驗證網路內部部署內部與 Azure VNet 之間的端對端連線
 
 如果 IPsec 通道已啟動且靜態路由設定正確，則您應該能夠 Ping 遠端 BGP 對等的 IP 位址：
 
@@ -615,7 +615,7 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verifybgp"></a>透過 IPsec 驗證 BGP 工作階段
+### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>透過 IPsec 驗證 BGP 工作階段
 
 在 Azure VPN 閘道上，驗證 BGP 對等的狀態：
 
@@ -709,6 +709,6 @@ Total number of prefixes 2
 
 ## <a name="next-steps"></a>後續步驟
 
-* [設定 ExpressRoute 線路的網路效能監視器](how-to-npm.md)
+* [設定 ExpressRoute 的網路效能監控](how-to-npm.md)
 
-* [將站對站連線新增至具有現有 VPN 閘道連線的 VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [使用現有 VPN 閘道連接將網站到網站的連接添加到 VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

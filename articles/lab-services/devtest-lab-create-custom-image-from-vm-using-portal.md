@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60868419"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>從 VM 建立自訂映像
@@ -29,27 +29,27 @@ ms.locfileid: "60868419"
 
 您可以從已佈建的 VM 建立自訂映像，之後再使用該自訂映像來建立完全相同的 VM。 下列步驟說明如何從 VM 建立自訂映像︰
 
-1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選取 [所有服務]  ，然後從清單中選取 [DevTest Labs]  。
+1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
-1. 在實驗室的主窗格中，選取 [我的虛擬機器]  。
+1. 在實驗室的主窗格中，選取 [我的虛擬機器]****。
  
-1. 在 [我的虛擬機器]  窗格中，選取要從中建立自訂映像的 VM。
+1. 在 [我的虛擬機器]**** 窗格中，選取要從中建立自訂映像的 VM。
 
-1. 在 VM 的管理窗格中，選取 [建立自訂映像 (VHD)]  。
+1. 在 VM 的管理窗格中，選取 [建立自訂映像 (VHD)]****。
 
     ![建立自訂映像的功能表項目](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. 在 [自訂映像]  窗格中，輸入自訂映像的名稱和描述。 此資訊會在建立 VM 時顯示於基底清單中。 自訂映像將包含作業系統磁碟及所有連結到此虛擬機器的資料磁碟。
+1. 在 [自訂映像]**** 窗格中，輸入自訂映像的名稱和描述。 此資訊會在建立 VM 時顯示於基底清單中。 自訂映像將包含作業系統磁碟及所有連結到此虛擬機器的資料磁碟。
 
     ![[建立自訂映像] 窗格](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
 1. 選取 sysprep 是否在 VM 上執行。 如果 sysprep 未在 VM 上執行，請指定您是否要在自訂映像建立時讓 sysprep 在 VM 上執行。
 
-1. 完成時選取 [確定]  ，以建立自訂映像。
+1. 完成時選取 [確定] **** ，以建立自訂映像。
 
 幾分鐘之後，即會建立自訂映像，並儲存於實驗室的儲存體帳戶內。 當實驗室使用者想要建立新的 VM 時，可在基底映像清單中取得映像。
 

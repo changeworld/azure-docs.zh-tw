@@ -1,46 +1,46 @@
 ---
-title: 設定伺服器參數-Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何透過 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫中設定 Postgres 參數。
+title: 佈建服務器參數 - Azure 門戶 - 後資料庫的 Azure 資料庫 - 單個伺服器
+description: 本文介紹如何通過 Azure 門戶為 PostgreSQL 在 Azure 資料庫中配置 Postgres 參數。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74763669"
 ---
-# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中透過 Azure 入口網站設定伺服器參數 
+# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>在 Azure 資料庫中為 PostgreSQL 佈建服務器參數 - 通過 Azure 門戶配置單個伺服器 
 您可以透過 Azure 入口網站列出、顯示、更新適用於 PostgreSQL 的 Azure 資料庫伺服器的設定參數。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 為了逐步執行本作法指南，您需要︰
-- [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)
+- [後格雷SQL伺服器的 Azure 資料庫](quickstart-create-server-database-portal.md)
 
 ## <a name="viewing-and-editing-parameters"></a>檢視和編輯參數
-1. 開啟 [Azure 入口網站](https://portal.azure.com)。
+1. 打開[Azure 門戶](https://portal.azure.com)。
 
 2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
-3. 在 [設定] 區段下，選取 [伺服器參數]。 頁面會顯示一份參數、值和說明的清單。
+3. 在 [設定]**** 區段下，選取 [伺服器參數]****。 頁面會顯示一份參數、值和說明的清單。
 ![參數的概觀頁面](./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png)
 
 4. 選取**下拉**按鈕可查看列舉型別參數 (如 client_min_messages) 的可能值。
 ![列舉下拉按鈕](./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png)
 
-5. 選取或將滑鼠停留在 [i] (資訊) 按鈕上可查看數值參數 (如 cpu_index_tuple_cost) 的可能值範圍。
+5. 選取或將滑鼠停留在 [i]**** (資訊) 按鈕上可查看數值參數 (如 cpu_index_tuple_cost) 的可能值範圍。
 ![資訊按鈕](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
 
-6. 如有需要，使用 [搜尋方塊] 縮小至特定參數。 搜尋作業是依據參數的名稱和說明。
+6. 如有需要，使用 [搜尋方塊]**** 縮小至特定參數。 搜尋作業是依據參數的名稱和說明。
 ![搜尋結果](./media/howto-configure-server-parameters-in-portal/5-search.png)
 
-7. 變更您想要調整的參數值。 您在工作階段中所做的所有變更都會以紫色顯示。 變更值之後，可以選取 [儲存]。 或者，也可以 [捨棄] 您的變更。
+7. 變更您想要調整的參數值。 您在工作階段中所做的所有變更都會以紫色顯示。 變更值之後，可以選取 [儲存]****。 或者，也可以 [捨棄]**** 您的變更。
 ![儲存或捨棄變更](./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png)
 
-8. 儲存新的參數值後，隨時可以選取 [全部重設為預設值] 回復為所有參數的預設值。
+8. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
 ## <a name="next-steps"></a>後續步驟

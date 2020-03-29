@@ -1,15 +1,15 @@
 ---
-title: Microsoft.network.publicipaddresscombo UI 元素
+title: 公共Ip位址Combo UI元素
 description: 描述 Azure 入口網站的 Microsoft.Network.PublicIpAddressCombo UI 元素。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651913"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
@@ -80,13 +80,13 @@ ms.locfileid: "75651913"
 }
 ```
 
-- 當 `options.hideNone` 指定為 **true** 時，`newOrExistingOrNone` 只會有**新的**或**現有的**值。
-- 當 `options.hideDomainNameLabel` 指定為 **true** 時，`domainNameLabel` 為未宣告。
+- 當`options.hideNone`指定為**true**`newOrExistingOrNone`時，將僅具有**新**值或**現有**值。
+- 當`options.hideDomainNameLabel`指定為**true**`domainNameLabel`時，則未聲明。
 
 ## <a name="remarks"></a>備註
 
 - 如果將 `constraints.required.domainNameLabel` 設為 **true**，使用者在建立新的公用 IP 位址時，就必須提供網域名稱標籤。 無法選取沒有標籤的現有公用 IP 位址。
-- 如果將 `options.hideNone` 設為 **true**，公用 IP 位址的 [無] 選項就會加以隱藏。 預設值為 **false**。
+- 如果將 `options.hideNone` 設為 **true**，公用 IP 位址的 [無]**** 選項就會加以隱藏。 預設值為 **false**。
 - 如果將 `options.hideDomainNameLabel` 設為 **true**，網域名稱標籤的文字方塊就會加以隱藏。 預設值為 **false**。
 - 如果 `options.hideExisting` 為 true，使用者就無法選擇現有的公用 IP 位址。 預設值為 **false**。
 - 對於 `zone`，只能使用指定區域的公用 IP 位址或區域復原公用 IP 位址。

@@ -8,19 +8,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426083"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作業圖表進行資料導向偵錯
 
-在 Azure 入口網站中，[監視] 刀鋒視窗上的作業圖表可協助您將作業流程視覺化。 圖表會顯示輸入、輸出和查詢步驟。 您可以使用作業圖表來檢查每個步驟的計量，以便在進行移難排解時更快速地找出問題來源。
+在 Azure 入口網站中，[監視]**** 刀鋒視窗上的作業圖表可協助您將作業流程視覺化。 圖表會顯示輸入、輸出和查詢步驟。 您可以使用作業圖表來檢查每個步驟的計量，以便在進行移難排解時更快速地找出問題來源。
 
 ## <a name="using-the-job-diagram"></a>使用作業圖表
 
-當串流作業執行時，在 Azure 入口網站中的 [支援+疑難排解] 下選取 [作業圖表]：
+當串流作業執行時，在 Azure 入口網站中的 [支援+疑難排解]**** 下選取 [作業圖表]****：
 
 ![作業圖表與計量 - 位置](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "75426083"
 *   **InputEventsSourcesTotal** 是讀取的資料單位數目。 例如，Blob 的數目。
 *   **InputEventsTotal** 是讀取的事件數目。 此度量適用於每個資料分割。
 *   **InputEventsTotal** 是讀取的位元組數目。
-*   **InputEventsLastArrivalTime** 會更新每個收到事件的加入佇列時間。
+*   **輸入事件Last到達時間**會隨著每個接收事件的排隊時間進行更新。
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>時間是否正在前進？ 若實際事件已讀取，則可能無需加上標點符號。
 
@@ -85,5 +85,5 @@ ms.locfileid: "75426083"
 * [串流分析介紹](stream-analytics-introduction.md)
 * [開始使用串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整串流分析作業](stream-analytics-scale-jobs.md)
-* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

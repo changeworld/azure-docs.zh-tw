@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67059215"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 監視 .NET 的媒體服務作業通知 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 執行作業時，您通常需要設法追蹤作業進度。 您可以使用 Azure Webhook 或 [Azure 佇列儲存體](media-services-dotnet-check-job-progress-with-queues.md)來監視媒體服務作業通知。 本文說明如何使用 Webhook。
 
@@ -42,13 +42,13 @@ ms.locfileid: "67059215"
 
 您可以在[這裡](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) \(英文\) 找到各種媒體服務 .NET Azure Functions 的定義 (包括本文所示的定義)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一個 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
-* 了解[如何使用 Azure Functions](../../azure-functions/functions-overview.md)。 另請檢閱 [Azure Functions HTTP 和 Webhook 繫結](../../azure-functions/functions-bindings-http-webhook.md)。
+* 瞭解如何[使用 Azure 函數](../../azure-functions/functions-overview.md)。 另請檢閱 [Azure Functions HTTP 和 Webhook 繫結](../../azure-functions/functions-bindings-http-webhook.md)。
 
 ## <a name="create-a-function-app"></a>建立函數應用程式
 
@@ -64,16 +64,16 @@ ms.locfileid: "67059215"
 |名稱|定義|範例| 
 |---|---|---|
 |SigningKey |簽署金鑰。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | 一個 webhook 端點位址。 建立您的 Webhook 函式之後，您就可以從 [取得函式 URL]  連結複製 URL。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|WebHookEndpoint | 一個 webhook 端點位址。 建立您的 Webhook 函式之後，您就可以從 [取得函式 URL]**** 連結複製 URL。 | HTTPs：\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g_。|
 
 ## <a name="create-a-function"></a>建立函式
 
 部署函式應用程式之後，您可以在**應用程式服務** Azure Functions 中找到它。
 
-1. 選取您的函式應用程式，然後按一下 [新增函式]  。
-2. 選取 [C#]  程式碼以及 [API 與 Webhook]  案例。 
-3. 選取 [Generic Webhook - C#] (泛型 Webhook - C#)  。
-4. 命名您的 Webhook，然後按 [建立]  。
+1. 選取您的函式應用程式，然後按一下 [新增函式]****。
+2. 選取 [C#]**** 程式碼以及 [API 與 Webhook]**** 案例。 
+3. 選取 [Generic Webhook - C#] \(泛型 Webhook - C#)****。
+4. 命名您的 Webhook，然後按 [建立]****。
 
 ### <a name="files"></a>檔案
 
@@ -379,7 +379,7 @@ internal sealed class NotificationMessage
 本節會顯示將 Webhook 通知新增至工作的程式碼。 您也可以新增作業層級通知，這更適用於具有鏈結工作的作業。  
 
 1. 在 Visual Studio 中，建立新的 C# 主控台應用程式。 依序輸入 [名稱]、[位置] 和 [方案名稱]，然後按一下 [確定]。
-2. 使用 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 來安裝 Azure 媒體服務。
+2. 使用[NuGet](https://www.nuget.org/packages/windowsazure.mediaservices)安裝 Azure 媒體服務。
 3. 使用適當的值來更新 App.config 檔案： 
     
    * Azure 媒體服務連線資訊， 

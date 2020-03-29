@@ -14,17 +14,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65783856"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 應用程式 Proxy 與 Tableau 
 
 Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確保能夠輕鬆使用「應用程式 Proxy」為 Tableau 部署提供遠端存取能力。 本文會說明如何設定此情節。  
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 本文中的情節假設您已完成以下事項：
 
@@ -50,27 +50,27 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 **發佈應用程式**： 
 
 
-1. 登入[Azure 入口網站](https://portal.azure.com)身為應用程式系統管理員。 
+1. 以應用程式管理員身份登錄到[Azure 門戶](https://portal.azure.com)。 
 
-2. 選取 [Azure Active Directory] > [企業應用程式]  。 
+2. 選取 [Azure Active Directory] > [企業應用程式]****。 
 
-3. 在刀鋒視窗頂端選取 [新增]  。 
+3. 在刀鋒視窗頂端選取 [新增]****。 
 
 4. 選取**內部部署應用程式**。 
 
 5. 使用新應用程式的相關資訊填寫必要的欄位。 使用下列指導方針設定︰ 
 
-    - **內部 URL**：此應用程式應該具有就是 Tableau URL 本身的內部 URL。 例如： `https://adventure-works.tableau.com` 。 
+    - **內部 URL**：此應用程式需含有即為真正 Tableau URL 的內部 URL。 例如： `https://adventure-works.tableau.com` 。 
 
-    - **預先驗證方法**：Azure Active Directory (建議使用但非必要)。 
+    - **預先驗證方法**︰Azure Active Directory (建議使用，但非必要)。 
 
-6. 在刀鋒視窗頂端選取 [新增]  。 已新增您的應用程式，快速入門功能表隨即開啟。 
+6. 在刀鋒視窗頂端選取 [新增]****。 已新增您的應用程式，快速入門功能表隨即開啟。 
 
-7. 在 [快速啟動] 功能表中，選取 [指派測試使用者]  ，並將至少一個使用者新增至應用程式。 請確定此測試帳戶可存取內部部署應用程式。 
+7. 在 [快速啟動] 功能表中，選取 [指派測試使用者]****，並將至少一個使用者新增至應用程式。 請確定此測試帳戶可存取內部部署應用程式。 
 
 8. 選取**指派**以儲存測試使用者指派。 
 
-9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]  。 在下拉式功能表中選擇 [整合式 Windows 驗證]  ，然後根據您的 Tableau 設定填妥必要欄位。 選取 [ **儲存**]。 
+9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]****。 
 
  
 

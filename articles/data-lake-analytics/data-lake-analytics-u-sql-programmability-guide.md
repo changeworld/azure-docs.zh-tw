@@ -10,17 +10,17 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162573"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
 
 U-SQL 是為巨量資料類型的工作負載所設計的查詢語言。 U-SQL 的其中一項獨特功能是，可將類 SQL 的宣告式語言與 C# 所提供的擴充性和可程式性結合在一起。 在本指南中，我們將著重於介紹由 C# 所實現的 U-SQL 語言之擴充性和可程式性。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 下載及安裝 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)。
 
@@ -133,7 +133,7 @@ U-SQL 目前使用 .Net Framework 4.5 版。 因此，請確定您自己的組�
 
 每個上傳的組件 DLL 和資源檔，例如不同的執行階段、原生組件或組態檔中，最多可達 400 MB。 已部署資源的大小總計 (透過 DEPLOY RESOURCE 或透過參考組件及其他檔案) 不能超過 3 GB。
 
-最後請注意，每一個 U-SQL 資料庫所包含的任何指定組件只能有一個版本。 例如，如果您同時需要第7版和第8版的 NewtonSoft Json.NET 程式庫，您必須在兩個不同的資料庫中註冊它們。 此外，每個指令碼所參考的指定組件 DLL 只能有一個版本。 在這方面，U-SQL 會遵循 C# 組件的管理和版本設定語意。
+最後請注意，每一個 U-SQL 資料庫所包含的任何指定組件只能有一個版本。 例如，如果需要 NewtonSoft Json.NET庫的版本 7 和版本 8，則需要將它們註冊到兩個不同的資料庫中。 此外，每個指令碼所參考的指定組件 DLL 只能有一個版本。 在這方面，U-SQL 會遵循 C# 組件的管理和版本設定語意。
 
 ## <a name="use-user-defined-functions-udf"></a>使用使用者定義函式：UDF
 U-SQL 使用者定義函數 (簡稱 UDF) 會編寫常式，以接受參數、執行動作 (例如複雜計算)，以及傳回該動作結果的值。 UDF 的傳回值只能是單一純量。 U-SQL UDF 可以和任何其他 C# 純量函式一樣，在 U-SQL 基底指令碼中進行呼叫。
@@ -496,7 +496,7 @@ using System.IO;
 
 * 使用 SqlUserDefinedType 屬性來定義使用者定義類型。
 
-**SqlUserDefinedType** 可用來將組件中的類型定義標示為 U-SQL 中的使用者定義類型 (UDT)。 屬性 (attribute) 上的屬性 (property) 會反映 UDT 的實際特性。 這個類別無法繼承。
+**SqlUserDefinedType** 可用來將組件中的類型定義標示為 U-SQL 中的使用者定義類型 (UDT)。 屬性 (attribute) 上的屬性 (property) 會反映 UDT 的實際特性。 這個類別無法被繼承。
 
 SqlUserDefinedType 是 UDT 定義的必要屬性 (attribute)。
 
@@ -912,9 +912,9 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 ```
 
-**SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 這個類別無法繼承。
+**SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 這個類別無法被繼承。
 
-SqlUserDefinedType 是 UDAGG 定義的**選擇性**屬性。
+SqlUser 定義類型屬性對於 UDAGG 定義是**可選的**。
 
 
 基底類別可讓您傳遞三個抽象參數：其中兩個做為輸入參數，一個做為結果參數。 資料類型會變動，但應該會在繼承類別時進行定義。
@@ -1057,7 +1057,7 @@ U-SQL 指令碼中通常會明確地呼叫 UDO 以做為下列 U-SQL 陳述式�
 
 * EXTRACT
 * OUTPUT
-* 流程
+* PROCESS
 * COMBINE
 * REDUCE
 
@@ -1067,11 +1067,11 @@ U-SQL 指令碼中通常會明確地呼叫 UDO 以做為下列 U-SQL 陳述式�
 ## <a name="use-user-defined-extractors"></a>使用使用者定義擷取器
 U-SQL 可讓您使用 EXTRACT 陳述式來匯入外部資料。 EXTRACT 陳述式可以使用內建的 UDO 擷取器：  
 
-* Extractors.Text()︰可從不同編碼的分隔文字檔進行擷取。
+* Extractors.Text()**︰可從不同編碼的分隔文字檔進行擷取。
 
-* Extractors.Csv()︰可從不同編碼的逗號分隔值 (CSV) 檔案進行擷取。
+* Extractors.Csv()**︰可從不同編碼的逗號分隔值 (CSV) 檔案進行擷取。
 
-* Extractors.Tsv()︰可從不同編碼的定位鍵分隔值 (TSV) 檔案進行擷取。
+* Extractors.Tsv()**︰可從不同編碼的定位鍵分隔值 (TSV) 檔案進行擷取。
 
 它很適合用來開發自訂擷取器。 在匯入資料期間，如果我們想要執行下列任何作業，這會很有幫助：
 
@@ -1093,7 +1093,7 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** 表示類型應該註冊為使用者定義擷取器。 這個類別無法繼承。
+**SqlUserDefinedExtractor** 表示類型應該註冊為使用者定義擷取器。 這個類別無法被繼承。
 
 SqlUserDefinedExtractor 是 UDE 定義的選擇性屬性。 它可用來定義 UDE 物件的 AtomicFileProcessing 屬性。
 
@@ -1102,7 +1102,7 @@ SqlUserDefinedExtractor 是 UDE 定義的選擇性屬性。 它可用來定義 U
 * **true** = 表示此擷取器需要不可部分完成的輸入檔 (JSON、XML ...)
 * **false** = 表示此擷取器可以處理分割/分散式檔案 (CSV、SEQ ...)
 
-主要的 UDE 可程式性物件為「輸入」和「輸出」。 輸入物件用來列舉輸入資料做為 `IUnstructuredReader`。 輸入物件可用來將輸出資料設定為擷取器活動的結果。
+主要的 UDE 可程式性物件為「輸入」**** 和「輸出」****。 輸入物件用來列舉輸入資料做為 `IUnstructuredReader`。 輸入物件可用來將輸出資料設定為擷取器活動的結果。
 
 輸入資料是透過 `System.IO.Stream` 和 `System.IO.StreamReader` 來存取。
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>使用使用者定義輸出器
 使用者定義輸出器是另一個 U-SQL UDO，其可讓您擴充內建的 U-SQL 功能。 和擷取器類似，系統也有數個內建輸出器。
 
-* Outputters.Text()︰將資料寫入不同編碼的分隔文字檔。
-* Outputters.Csv()︰將資料寫入不同編碼的逗號分隔值 (CSV) 檔案。
-* Outputters.Tsv()︰將資料寫入不同編碼的定位鍵分隔值 (TSV) 檔案。
+* Outputters.Text()**︰將資料寫入不同編碼的分隔文字檔。
+* Outputters.Csv()**︰將資料寫入不同編碼的逗號分隔值 (CSV) 檔案。
+* Outputters.Tsv()**︰將資料寫入不同編碼的定位鍵分隔值 (TSV) 檔案。
 
 自訂輸出器可讓您以自訂的定義格式寫入資料。 這可適用於下列工作︰
 
@@ -1271,7 +1271,7 @@ public class MyOutputter : IOutputter
 * 建構函式類別可用來將參數傳遞至使用者定義輸出器。
 * `Close` 可選擇性地覆寫，以釋出耗費資源的狀態或判斷最後一個資料列的寫入時間。
 
-**SqlUserDefinedOutputter** 表示類型應該註冊為使用者定義輸出器。 這個類別無法繼承。
+**SqlUserDefinedOutputter** 表示類型應該註冊為使用者定義輸出器。 這個類別無法被繼承。
 
 SqlUserDefinedOutputter 是使用者定義輸出器之定義的選擇性屬性。 它可用來定義 AtomicFileProcessing 屬性。
 
@@ -1280,7 +1280,7 @@ SqlUserDefinedOutputter 是使用者定義輸出器之定義的選擇性屬性�
 * **true** = 表示此輸出器需要不可部分完成的輸出檔 (JSON、XML ...)
 * **false** = 表示此輸出器可以處理分割/分散式檔案 (CSV、SEQ ...)
 
-主要的可程式性物件為「資料列」和「輸出」。 **列**物件可用來列舉輸出資料做為 `IRow` 介面。 **輸出**用來設定輸出資料至目標檔案。
+主要的可程式性物件為「資料列」**** 和「輸出」****。 **列**物件可用來列舉輸出資料做為 `IRow` 介面。 **輸出**用來設定輸出資料至目標檔案。
 
 輸出資料是透過 `IRow` 介面來存取。 一次會對輸出資料傳遞一個資料列。
 
@@ -1514,11 +1514,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** 表示類型應該註冊為使用者定義處理器。 這個類別無法繼承。
+**SqlUserDefinedProcessor** 表示類型應該註冊為使用者定義處理器。 這個類別無法被繼承。
 
 SqlUserDefinedProcessor 是 UDP 定義的**選擇性**屬性。
 
-主要的可程式性物件為「輸入」和「輸出」。 輸入物件可用來列舉輸入資料欄和輸出，以將輸出資料設定為處理器活動的結果。
+主要的可程式性物件為「輸入」**** 和「輸出」****。 輸入物件可用來列舉輸入資料欄和輸出，以將輸出資料設定為處理器活動的結果。
 
 若要列舉輸入資料行，我們可以使用 `input.Get` 方法。
 
@@ -1635,7 +1635,7 @@ public class ParserApplier : IApplier
 * 會針對外部資料表的每個資料列呼叫 Apply。 它會傳回 `IUpdatableRow` 輸出資料列集。
 * 建構函式類別可用來將參數傳遞至使用者定義套用器。
 
-**SqlUserDefinedApplier** 表示類型應該註冊為使用者定義套用器。 這個類別無法繼承。
+**SqlUserDefinedApplier** 表示類型應該註冊為使用者定義套用器。 這個類別無法被繼承。
 
 **SqlUserDefinedApplier** 是使用者定義套用器定義的**選擇性**。
 
@@ -1847,7 +1847,7 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** 表示類型應該註冊為使用者定義結合器。 這個類別無法繼承。
+**SqlUserDefinedCombiner** 表示類型應該註冊為使用者定義結合器。 這個類別無法被繼承。
 
 **SqlUserDefinedCombiner** 用來定義合併程式模式屬性。 它是使用者定義結合器定義的選擇性屬性。
 
@@ -1873,7 +1873,7 @@ CombinerMode 列舉可以採用下列值︰
         IUpdatableRow output
 ```
 
-輸入資料列集會傳遞做為介面的「左邊」和「右邊」 `IRowset` 類型。 這兩個資料列集必須列舉以進行處理。 您僅可以允許每個介面列舉一次，因此我們必須在必要時加以列舉和快取。
+輸入資料列集會傳遞做為介面的「左邊」**** 和「右邊」**** `IRowset` 類型。 這兩個資料列集必須列舉以進行處理。 您僅可以允許每個介面列舉一次，因此我們必須在必要時加以列舉和快取。
 
 若要快取，我們可以透過執行 LINQ 查詢來建立記憶體結構的 List\<T\> 類型，特別是 List<`IRow`>。 列舉期間也可以使用匿名資料類型。
 
@@ -2107,13 +2107,13 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** 表示類型應該註冊為使用者定義歸納器。 這個類別無法繼承。
+**SqlUserDefinedReducer** 表示類型應該註冊為使用者定義歸納器。 這個類別無法被繼承。
 **SqlUserDefinedReducer** 是使用者定義歸納器之定義的選擇性屬性。 它可用來定義 IsRecursive 屬性。
 
 * bool     IsRecursive    
 * **true** = 表示此歸納器是否為關聯式和交換式
 
-主要的可程式性物件為「輸入」和「輸出」。 輸入物件用來列舉輸入資料列。 輸出用來設定減少活動結果的輸出資料列。
+主要的可程式性物件為「輸入」**** 和「輸出」****。 輸入物件用來列舉輸入資料列。 輸出用來設定減少活動結果的輸出資料列。
 
 若要列舉輸入資料列，我們可以使用 `Row.Get` 方法。
 

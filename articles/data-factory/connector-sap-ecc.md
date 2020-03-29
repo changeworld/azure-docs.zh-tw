@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931180"
 ---
-# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP ECC 複製資料
+# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure 資料工廠從 SAP ECC 複製資料
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Enterprise Central Component （ECC）複製資料。 如需詳細資訊，請參閱[複製活動總覽](copy-activity-overview.md)。
+本文概述了如何使用 Azure 資料工廠中的複製活動從 SAP 企業中央元件 （ECC） 複製資料。 有關詳細資訊，請參閱[複製活動概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含詳細的簡介、comparsion 和指引。
+>要瞭解 ADF 對 SAP 資料整合方案的總體支援，請參閱[使用 Azure 資料工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，並詳細說明介紹、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 SAP ECC 連接器：
+此 SAP ECC 連接器支援以下活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
-- [查閱活動](control-flow-lookup-activity.md)
+- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [查找活動](control-flow-lookup-activity.md)
 
-您可以將資料從 SAP ECC 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源或接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
+您可以將資料從 SAP ECC 複製到任何支援的接收資料存放區。 有關複製活動支援為源或接收器的資料存儲的清單，請參閱[支援資料存儲](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具體而言，此 SAP ECC 連接器支援：
 
-- 在 SAP NetWeaver 7.0 版和更新版本上從 SAP ECC 複製資料。
-- 從 SAP ECC OData 服務所公開的任何物件複製資料，例如：
+- 在 SAP NetWeaver 版本 7.0 及更高版本中從 SAP ECC 複製資料。
+- 從 SAP ECC OData 服務公開的任何物件複製資料，例如：
 
-  - SAP 資料表或 views。
-  - 商務應用程式開發介面 [BAPI] 物件。
-  - 資料擷取器。
-  - 傳送至 SAP 進程整合（PI）的資料或中繼檔（Idoc），可透過相對介面卡以 OData 的形式接收。
+  - SAP 表或視圖。
+  - 業務應用程式開發介面 [BAPI] 物件。
+  - 資料提取器。
+  - 發送到 SAP 流程集成 （PI） 的資料或中間文檔 （IDOC），可通過相對配接器作為 OData 接收。
 
-- 使用基本驗證來複製資料。
+- 使用基本驗證複製資料。
 
 >[!TIP]
->若要透過 SAP 資料表或 view 從 SAP ECC 複製資料，請使用[sap 資料表](connector-sap-table.md)連接器，這會更快速且更具擴充性。
+>要通過 SAP 表或視圖從 SAP ECC 複製資料，請使用[SAP 表](connector-sap-table.md)連接器，該連接器更快、更具可擴充性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 一般而言，SAP ECC 會透過 OData 服務經由 SAP 閘道公開實體。 若要使用此 SAP ECC 連接器，您必須：
 
-- **設定 SAP 閘道**。 針對 SAP NetWeaver 版本超過7.4 的伺服器，已安裝 SAP 閘道。 在舊版中，您必須先安裝內嵌的 SAP 閘道或 SAP 閘道中樞系統，才能透過 OData 服務公開 SAP ECC 資料。 若要設定 SAP 閘道，請參閱[安裝指南](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)。
+- **設定 SAP 閘道**。 對於具有 7.4 晚版本的 SAP NetWeaver 的伺服器，已安裝 SAP 閘道。 對於早期版本，您必須安裝嵌入式 SAP 閘道或 SAP 閘道集線器系統，然後才能通過 OData 服務公開 SAP ECC 資料。 要設置 SAP 閘道，請參閱[安裝指南](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)。
 
-- **啟用和設定 SAP OData 服務**。 您可以透過 TCODE SICF 來啟動 OData 服務（以秒為單位）。 您也可以設定需要公開的物件。 如需詳細資訊，請參閱[逐步指導](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)方針。
+- **啟動和配置 SAP OData 服務**。 您可以通過 TCODE SICF 在幾秒鐘內啟動 OData 服務。 您還可以配置需要公開的物件。 有關詳細資訊，請參閱分步[指南](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -65,19 +65,19 @@ ms.locfileid: "74931180"
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-下列各節提供屬性的相關詳細資料，這些屬性是用來定義 SAP ECC 連接器特定的 Data Factory 實體。
+以下各節提供有關用於定義特定于 SAP ECC 連接器的資料工廠實體的屬性的詳細資訊。
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
-以下是 SAP ECC 已連結服務支援的屬性：
+SAP ECC 連結服務支援以下屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設為 `SapEcc`。 | 是 |
 | `url` | SAP ECC OData 服務的 URL。 | 是 |
-| `username` | 用來連接到 SAP ECC 的使用者名稱。 | 否 |
-| `password` | 用來連接到 SAP ECC 的純文字密碼。 | 否 |
-| `connectVia` | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果您未指定執行時間，則會使用預設的 Azure integration runtime。 | 否 |
+| `username` | 用於連接到 SAP ECC 的使用者名。 | 否 |
+| `password` | 用於連接到 SAP ECC 的純文字密碼。 | 否 |
+| `connectVia` | 用於連接到資料存儲的[集成運行時](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果不指定運行時，將使用預設的 Azure 集成運行時。 | 否 |
 
 ### <a name="example"></a>範例
 
@@ -104,13 +104,13 @@ ms.locfileid: "74931180"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)。 下一節提供 SAP ECC 資料集所支援的屬性清單。
+有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)。 以下部分提供了 SAP ECC 資料集支援的屬性的清單。
 
-若要從 SAP ECC 複製資料，請將資料集的 `type` 屬性設定為 `SapEccResource`。
+要從 SAP ECC 複製資料`type`，請將資料集的屬性設置為`SapEccResource`。
 
 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `path` | SAP ECC OData 實體的路徑。 | 是 |
 
@@ -135,18 +135,18 @@ ms.locfileid: "74931180"
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)。 下一節提供 SAP ECC 來源所支援的屬性清單。
+有關可用於定義活動的節和屬性的完整清單，請參閱[管道](concepts-pipelines-activities.md)。 以下部分提供了 SAP ECC 源支援的屬性的清單。
 
-### <a name="sap-ecc-as-a-source"></a>作為來源的 SAP ECC
+### <a name="sap-ecc-as-a-source"></a>SAP ECC 作為源
 
-若要從 SAP ECC 複製資料，請將複製活動的 [`source`] 區段中的 [`type`] 屬性設定為 [`SapEccSource`]。
+要從 SAP ECC 複製資料`type`，請將複製`source`活動部分中的屬性設置為`SapEccSource`。
 
-複製活動的 [`source`] 區段支援下列屬性：
+複製活動的`source`部分支援以下屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| `type` | 複製活動的 [`source`] 區段的 [`type`] 屬性必須設定為 [`SapEccSource`]。 | 是 |
-| `query` | 用來篩選資料的 OData 查詢選項。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 連接器會從合併的 URL 複製資料：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| `type` | 必須`type`將複製活動部分的屬性`source`設置為`SapEccSource`。 | 是 |
+| `query` | 用於篩選資料的 OData 查詢選項。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 連接器從組合 URL 複製資料：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 ### <a name="example"></a>範例
 
@@ -180,9 +180,9 @@ ms.locfileid: "74931180"
 ]
 ```
 
-## <a name="data-type-mappings-for-sap-ecc"></a>SAP ECC 的資料類型對應
+## <a name="data-type-mappings-for-sap-ecc"></a>SAP ECC 的資料類型映射
 
-當您從 SAP ECC 複製資料時，會使用下列從 SAP ECC 資料的 OData 資料類型對應到 Azure Data Factory 過渡期資料類型的對應。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
+從 SAP ECC 複製資料時，將使用以下映射從用於 SAP ECC 資料的 OData 資料類型到 Azure 資料工廠臨時資料類型。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
 
 | OData 資料類型 | Data Factory 過渡期資料類型 |
 |:--- |:--- |
@@ -203,12 +203,12 @@ ms.locfileid: "74931180"
 | `Edm.DateTimeOffset` | `DateTimeOffset` |
 
 > [!NOTE]
-> 目前不支援複雜資料類型。
+> 當前不支援複雜的資料類型。
 
-## <a name="lookup-activity-properties"></a>查閱活動屬性
+## <a name="lookup-activity-properties"></a>查找活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
+有關 Azure 資料工廠中複製活動支援為源和接收器的資料存儲的清單，請參閱[支援資料存儲](copy-activity-overview.md#supported-data-stores-and-formats)。

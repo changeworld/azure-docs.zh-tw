@@ -1,6 +1,6 @@
 ---
-title: 管理防火牆規則-Azure CLI-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何使用 Azure CLI 命令列來建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的防火牆規則。
+title: 管理防火牆規則 - Azure CLI - 後資料庫 Azure 資料庫 - 單個伺服器
+description: 本文介紹如何使用 Azure CLI 命令列在 Azure 資料庫中創建和管理防火牆規則。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765642"
 ---
-# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中建立和管理防火牆規則
-伺服器層級防火牆規則可用來管理從特定 IP 位址或 IP 位址範圍的適用於 PostgreSQL 的 Azure 資料庫伺服器存取。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 如需適用於 PostgreSQL 的 Azure 資料庫防火牆規則的總覽，請參閱[適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆規則](concepts-firewall-rules.md)。
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>在 Azure 資料庫中創建和管理防火牆規則，用於 PostgreSQL - 使用 Azure CLI 使用單個伺服器
+伺服器級防火牆規則可用於管理從特定 IP 位址或 IP 位址範圍對 PostgreSQL Server Azure 資料庫的訪問。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 有關後格雷SQL防火牆規則的 Azure 資料庫概述，請參閱[Azure 資料庫 PostgreSQL 伺服器防火牆規則](concepts-firewall-rules.md)。
 
-虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure CLI 建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)。
+虛擬網路 （VNet） 規則也可用於保護對伺服器的訪問。 詳細瞭解如何使用[Azure CLI 創建和管理虛擬網路服務終結點和規則](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>必要條件
-若要逐步執行本作法指南，您需要：
+## <a name="prerequisites"></a>Prerequisites
+若要逐步執行本作法指南，您需要︰
 - 安裝 [Azure CLI](/cli/azure/install-azure-cli) 命令列公用程式，或在瀏覽器中使用 Azure Cloud Shell。
 - [「適用於 PostgreSQL 的 Azure 資料庫」伺服器和資料庫](quickstart-create-server-database-azure-cli.md)。
 
@@ -81,5 +81,5 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ## <a name="next-steps"></a>後續步驟
 - 同樣地，您也可以透過網頁瀏覽器，[使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)。
 - 進一步了解[適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆規則](concepts-firewall-rules.md)。
-- 藉由[使用 Azure CLI 建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)，進一步保護您的伺服器存取。
-- 如需連線至「適用於 PostgreSQL 的 Azure 資料庫」伺服器的說明，請參閱[適用於 PostgreSQL 的 Azure 資料庫的連線庫](concepts-connection-libraries.md)。
+- [通過使用 Azure CLI 創建和管理虛擬網路服務終結點和規則，](howto-manage-vnet-using-cli.md)進一步安全地訪問伺服器。
+- 有關連接到 PostgreSQL 伺服器的 Azure 資料庫的説明，請參閱[PostgreSQL Azure 資料庫的連接庫](concepts-connection-libraries.md)。

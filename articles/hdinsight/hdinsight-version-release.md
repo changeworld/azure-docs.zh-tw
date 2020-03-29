@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72901517"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概觀
 
-Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 上的開放原始碼 Apache Hadoop 與 Apache Spark 分析使用。 HDInsight 4.0 是 Apache Hadoop 元件的雲端發佈。 本文提供有關最新 Azure HDInsight 版本及如何升級的資訊。
+Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 上的開放原始碼 Apache Hadoop 與 Apache Spark 分析使用。 HDInsight 4.0 是 Apache Hadoop 元件的雲分佈。 本文提供有關最新 Azure HDInsight 版本及如何升級的資訊。
 
 ## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 有何新功能？
 
@@ -85,18 +85,18 @@ Apache Oozie 4.3.1 隨附於 HDI 4.0，並包含下列變更：
 
 就像使用任何主要版本，在生產環境中實作最新版本之前，請務必徹底測試您的元件。 HDInsight 4.0 可供您用來開始升級程序，但 HDInsight 3.6 是可用來防止意外事故的預設選項。
 
-沒有從舊版 HDInsight 到 HDInsight 4.0 的支援升級路徑。 由於中繼存放區和 blob 資料格式已變更，因此 HDInsight 4.0 與先前的版本不相容。 請務必讓新的 HDInsight 4.0 環境與您目前的生產環境分開。 如果您將 HDInsight 4.0 部署到目前的環境，您的中繼存放區將會升級且無法還原。  
+從早期版本的 HDInsight 到 HDInsight 4.0，沒有支援的升級路徑。 由於 Metastore 和 Blob 資料格式已更改，因此 HDInsight 4.0 與以前的版本不相容。 請務必將新的 HDInsight 4.0 環境與當前生產環境分開。 如果將 HDInsight 4.0 部署到當前環境，您的 Metastore 將被升級，無法反轉。  
 
 ## <a name="limitations"></a>限制
 
-* HDInsight 4.0 不支援 Apache Hive 的 MapReduce。 請改用 Apache Tez。 深入了解 [Apache Tez](https://tez.apache.org/) \(英文\)。
-* HDInsight 4.0 不支援 Apache Storm。
+* HDInsight 4.0 不支援 MapReduce 的 Apache 蜂巢。 請改用 Apache Tez。 深入了解 [Apache Tez](https://tez.apache.org/) \(英文\)。
+* HDInsight 4.0 不支援阿帕奇風暴。
 * HDInsight 4.0 中已不再提供 Hive 檢視。
-* Spark 和互動式查詢叢集不支援 Apache Zeppelin 中的 Shell 解譯器。
-* 您不能「停用」Spark-LLAP 叢集上的 LLAP。 您只能關閉 LLAP。
+* 在 Spark 和互動式查詢群集中不支援 Apache Zeppelin 中的 Shell 解譯器。
+* 您不能「停用」** Spark-LLAP 叢集上的 LLAP。 您只能關閉 LLAP。
 * Azure Data Lake Storage Gen2 無法在 Spark 叢集中儲存 Juypter Notebook。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure HDInsight 文件](index.yml)
+* [Azure HDInsight 文檔](index.yml)
 * [版本資訊](hdinsight-release-notes.md)

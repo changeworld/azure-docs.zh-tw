@@ -1,6 +1,6 @@
 ---
-title: B2B 案例中常見錯誤和問題的解決方案
-description: 針對 Azure Logic Apps 中的 B2B 案例進行疑難排解時，尋找常見錯誤和問題的解決方案
+title: B2B 方案中常見錯誤和問題的解決方案
+description: 在 Azure 邏輯應用中排除 B2B 方案時的常見錯誤和問題查找解決方案
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666681"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps 的 B2B 錯誤與解決方案

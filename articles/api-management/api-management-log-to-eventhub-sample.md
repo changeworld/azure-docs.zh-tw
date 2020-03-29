@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure API 管理、事件中樞和 Moesif 監視 Api
+title: 使用 Azure API 管理、事件中心和莫伊西亞監視 API
 titleSuffix: Azure API Management
 description: 藉由連接「Azure API 管理」、「Azure 事件中樞」和 Moesif 來進行 HTTP 記錄和監視，示範 log-to-eventhub 原則的範例應用程式
 services: api-management
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442532"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>利用 Azure API 管理、事件中樞與 Moesif 監視您的 API
@@ -160,7 +160,7 @@ HTTP 標頭可以轉換成採用簡單索引鍵/值組格式的訊息格式。 �
 `set-variable` 原則會建立一個可供 `<inbound>` 區段和 `<outbound>` 區段中的 `log-to-eventhub` 原則存取的值。
 
 ## <a name="receiving-events-from-event-hubs"></a>從事件中樞接收事件
-使用 [AMQP 通訊協定](https://www.amqp.org/)可從 Azure 事件中樞接收事件。 Microsoft 服務匯流排團隊已提供用戶端程式庫，以便取用事件。 支援兩種不同的方法：一個方法是成為「直接取用者」，另一個方法是使用 `EventProcessorHost` 類別。 在 [事件中樞程式設計指南](../event-hubs/event-hubs-programming-guide.md)中可找到這兩種方法的範例。 簡而言之，差別在於：`Direct Consumer` 給您完整控制權，而 `EventProcessorHost` 會替您做一些繁雜工作，但會假設您將如何處理這些事件。
+使用 [AMQP 通訊協定](https://www.amqp.org/)可從 Azure 事件中樞接收事件。 Microsoft 服務匯流排團隊已提供用戶端程式庫，以便取用事件。 支援兩種不同的方法：一個方法是成為「直接取用者」**，另一個方法是使用 `EventProcessorHost` 類別。 在 [事件中樞程式設計指南](../event-hubs/event-hubs-programming-guide.md)中可找到這兩種方法的範例。 簡而言之，差別在於：`Direct Consumer` 給您完整控制權，而 `EventProcessorHost` 會替您做一些繁雜工作，但會假設您將如何處理這些事件。
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 在此範例中，我們將使用 `EventProcessorHost` 以求簡化，但是它可能不是此特定案例的最佳選擇。 `EventProcessorHost` 會努力確定您不必擔心特定事件處理器類別內的執行緒問題。 不過，在我們的案例中，我們只是將訊息轉換成另一種格式，並使用非同步方法將它傳遞到另一個服務。 不需要更新共用狀態，因此沒有執行緒問題的風險。 在大部分的情況下， `EventProcessorHost` 可能是最佳選擇，當然也是比較容易的選項。
@@ -294,7 +294,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 若要將 HTTP 資料傳送至 Moesif 收集器 API，您需要一個帳戶和一個應用程式識別碼。您可以在[Moesif 的網站](https://www.moesif.com)上建立帳戶，然後移至 -> _應用程式設定_的_右上方功能表_，以取得 Moesif 應用程式識別碼。
+`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 為了將 HTTP 資料發送到 Moesif 收集器 API，您需要一個帳戶和一個應用程式 ID。通過在[Moesif的網站上](https://www.moesif.com)創建一個帳戶，然後轉到_右上角的功能表_ -> _應用程式設定_，你會得到一個Moesif應用程式ID。
 
 ## <a name="complete-sample"></a>完整範例
 範例的[原始程式碼](https://github.com/dgilling/ApimEventProcessor)和測試位於 GitHub 上。 您需要 [API 管理服務](get-started-create-service-instance.md)、[已連線的事件中樞](api-management-howto-log-event-hubs.md)及[儲存體帳戶](../storage/common/storage-create-storage-account.md)，才能自行執行此範例。   
@@ -305,7 +305,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 
 ![示範將要求轉送到 Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 Azure API 管理服務提供了一個理想位置，可供擷取您的 API 的雙向 HTTP 流量。 Azure 事件中樞是一個可高度擴充、低成本的解決方案，用來擷取該流量並將它饋送到次要處理系統中，以便進行記錄、監視和其他複雜的分析。 連線到第三方監視系統 (像是 Moesif) 就像數十行程式碼一樣簡單。
 
 ## <a name="next-steps"></a>後續步驟

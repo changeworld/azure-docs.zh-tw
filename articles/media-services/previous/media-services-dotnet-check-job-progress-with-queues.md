@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64868112"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 佇列儲存體監視 .NET 的媒體服務工作通知 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 執行編碼作業時，您通常需要設法追蹤作業進度。 您可以設定媒體服務，將通知傳遞給 [Azure 佇列儲存體](../../storage/storage-dotnet-how-to-use-queues.md)。 從佇列儲存體取得通知，即可監視作業進度。 
 
@@ -61,13 +61,13 @@ ms.locfileid: "64868112"
 > [!NOTE]
 > 要想監視工作的狀態，建議您接聽通知訊息，如下列範例所示：
 >
-> 或者，使用 **IJob.State** 屬性檢查工作狀態。  在 **IJob** 的狀態設定成 [已完成]  之前，您可能會收到一則有關作業已完成的通知訊息。 **IJob.State** 屬性會延遲片刻再反映正確的狀態。
+> 或者，使用 **IJob.State** 屬性檢查工作狀態。  在**IJob**上的狀態設置為 **"已完成"** 之前，有關作業已完成的通知訊息可能會到達。 **IJob.State** 屬性會延遲片刻再反映正確的狀態。
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-1. 設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+1. 設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 2. 建立新的資料夾 (資料夾可在本機磁碟機上任意處)，並複製您想要編碼和串流處理或漸進式下載的 .mp4 檔案。 在此範例中，使用 "C:\Media" 路徑。
 3. 新增 **System.Runtime.Serialization** 程式庫的參考。
 
@@ -342,7 +342,7 @@ namespace JobNotification
 }
 ```
 
-上述範例會產生下列輸出：您的值會不一樣。
+前述範例會產生下列輸出，您的值可能會不同。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

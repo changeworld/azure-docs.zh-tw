@@ -1,51 +1,51 @@
 ---
-title: 使用 Azure 入口網站將 Azure 公用 IP 移至另一個 Azure 區域
-description: 使用 Azure Resource Manager 範本，使用 Azure 入口網站將 Azure 公用 IP 從一個 Azure 區域移至另一個區域。
+title: 使用 Azure 門戶將 Azure 公共 IP 移動到其他 Azure 區域
+description: 使用 Azure 資源管理器範本使用 Azure 門戶將 Azure 公共 IP 從一個 Azure 區域移動到另一個 Azure 區域。
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75641391"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 入口網站將 Azure 公用 IP 移至另一個區域
+# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 門戶將 Azure 公共 IP 移動到其他區域
 
-在許多情況下，您會想要將現有的 Azure 公用 Ip 從一個區域移至另一個區域。 例如，您可能會想要使用相同的設定和 sku 來建立公用 IP 來進行測試。 您也可以將公用 IP 移至另一個區域，做為嚴重損壞修復計畫的一部分。
+在各種方案中，您希望將現有的 Azure 公共 IP 從一個區域移動到另一個區域。 例如，您可能希望創建具有相同配置和 sKU 以進行測試的公共 IP。 作為災害復原規劃的一部分，您可能還希望將公共 IP 移動到其他區域。
 
-Azure 公用 Ip 是特定區域，無法從一個區域移至另一個區域。 不過，您可以使用 Azure Resource Manager 範本來匯出公用 IP 的現有設定。  接著，您可以將公用 IP 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站來建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 公共 IP 特定于區域，不能從一個區域移動到另一個區域。 但是，可以使用 Azure 資源管理器範本匯出公共 IP 的現有配置。  然後，可以通過將公共 IP 匯出到範本、修改參數以匹配目的地區域，然後將範本部署到新區域，在另一個區域中暫按資源。  有關資源管理器和範本的詳細資訊，請參閱[快速入門：使用 Azure 門戶創建和部署 Azure 資源管理器範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 請確定 Azure 公用 IP 位於您想要移動的 Azure 區域中。
+- 確保 Azure 公共 IP 位於要從其移動的 Azure 區域中。
 
-- Azure 公用 Ip 無法在區域之間移動。  您必須將新的公用 ip 與目的地區域中的資源建立關聯。
+- Azure 公共 IP 不能在區域之間移動。  您必須將新的公共 IP 與目的地區域中的資源相關聯。
 
-- 若要匯出公用 IP 設定並部署範本，以在另一個區域中建立公用 IP，您需要網路參與者角色或更高版本。
+- 要匯出公共 IP 配置並部署範本以在另一個區域創建公共 IP，您需要網路參與者角色或更高版本。
 
-- 識別來源網路配置，以及您目前使用的所有資源。 此配置包括但不限於負載平衡器、網路安全性群組（Nsg）和虛擬網路。
+- 識別來源網路配置，以及您目前使用的所有資源。 此佈局包括但不限於負載等化器、網路安全性群組 （NSG） 和虛擬網路。
 
-- 確認您的 Azure 訂用帳戶可讓您在使用的目的地區域中建立公用 Ip。 請連絡支援人員啟用所需的配額。
+- 驗證 Azure 訂閱是否允許您在使用的目的地區域中創建公共 IP。 請連絡支援人員啟用所需的配額。
 
-- 請確定您的訂用帳戶有足夠的資源，可支援在此程式中新增公用 Ip。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 請確保您的訂閱有足夠的資源來支援為此過程添加公共 IP。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>準備和移動
-下列步驟示範如何使用 Resource Manager 範本來準備設定移動的公用 IP，並使用 Azure 入口網站將公用 IP 設定移至目的地區域。
+以下步驟演示如何使用資源管理器範本為配置移動準備公共 IP，以及使用 Azure 門戶將公共 IP 配置移動到目的地區域。
 
-### <a name="export-the-template-and-deploy-from-a-script"></a>匯出範本並從腳本部署
+### <a name="export-the-template-and-deploy-from-a-script"></a>匯出範本並從腳本中部署
 
-1. 登入[Azure 入口網站](https://portal.azure.com) > **資源群組**。
-2. 找出包含來源公用 IP 的資源群組，然後按一下它。
-3. 選取 [>**設定**] > [**匯出範本**]。
-4. 在 [**匯出範本**] 分頁中，選擇 [**部署**]。
-5. 按一下 [**範本**] > [**編輯參數**]，在線上編輯器中開啟**parameters. json**檔案。
-8. 若要編輯公用 IP 名稱的參數，請將 [**參數**] 底下的屬性 > **值**從來源公用 ip 名稱變更為目標公用 ip 名稱，並確定名稱為引號：
+1. 登錄到[Azure 門戶](https://portal.azure.com) > **資源組**。
+2. 找到包含源公共 IP 的資源組並按一下它。
+3. 選擇>**設置** > **匯出範本**。
+4. 在 **"匯出範本"** 邊欄選項卡中選擇 **"部署**"。
+5. 按一下**TEMPLATE** > **編輯參數**以在連線編輯器中打開**參數.json**檔。
+8. 要編輯公共 IP 名稱的參數，請在**參數** > **值**下的屬性從源公共 IP 名稱更改為目標公共 IP 的名稱，以確保名稱以引號形式：
 
     ```json
             {
@@ -59,11 +59,11 @@ Azure 公用 Ip 是特定區域，無法從一個區域移至另一個區域。 
             }
 
     ```
-8.  按一下編輯器中的 [**儲存**]。
+8.  按一下編輯器中的 **"保存**"。
 
-9.  按一下 [**範本**] > [**編輯範本**]，在線上編輯器中開啟**範本. json**檔案。
+9.  按一下**TEMPLATE** > **編輯範本**以在連線編輯器中打開**範本.json**檔。
 
-10. 若要編輯將移動公用 IP 的目的地區域，請變更 [**資源**] 底下的 [**位置**] 屬性：
+10. 要編輯將移動公共 IP 的目的地區域，請更改**資源**下**的位置**屬性：
 
     ```json
             "resources": [
@@ -89,11 +89,11 @@ Azure 公用 Ip 是特定區域，無法從一個區域移至另一個區域。 
              ]
     ```
 
-11. 若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格的區功能變數名稱稱、**美國中部** = **centralus**。
+11. 要獲取區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的代碼是沒有空格的區功能變數名稱稱，**美國** = **中部中心**。
 
-12. 您也可以根據您的需求，變更範本中的其他參數，而且是選擇性的：
+12. 如果願意，還可以更改範本中的其他參數，並且根據您的要求是可選的：
 
-    * **Sku** -您可以藉由變更**範本. json**檔案中的**sku** > **name**屬性，將設定中的公用 IP sku 從標準變更為基本或基本設定為標準：
+    * **SKU** - 您可以通過更改**範本.json**檔中的**sku** > **名稱**屬性來更改配置中公共 IP 的 sKU 從標準更改為基本或基本到標準：
 
         ```json
           "resources": [
@@ -108,9 +108,9 @@ Azure 公用 Ip 是特定區域，無法從一個區域移至另一個區域。 
             },
         ```
 
-        如需基本和標準 sku 公用 ip 之間差異的詳細資訊，請參閱[建立、變更或刪除公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)：
+        有關基本和標準 sku 公共 ip 之間的差異的詳細資訊，請參閱[創建、更改或刪除公共 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)：
 
-    * **公用 IP 配置方法**和**閒置時間**-您可以在範本中變更這兩個選項，方法是將 [ **PublicIPAllocationMethod** ] 屬性從 [**動態**] 變更為 [**靜態**] 或 [**靜態**] 變更為 [**動態**]。 藉由將**idleTimeoutInMinutes**屬性變更為您想要的數量，可以變更閒置的超時時間。  預設值為**4**：
+    * **公共 IP 分配方法和****空閒超時**- 您可以通過將**公共 IP 分配方法**屬性從 **"動態**"更改為 **"靜態****"更改為****"靜態**"來更改範本中的這兩個選項。 可以通過將**idleTimeoutIn分鐘**屬性更改為所需量來更改空閒超時。  預設值為**4**：
 
         ```json
           "resources": [
@@ -134,34 +134,34 @@ Azure 公用 Ip 是特定區域，無法從一個區域移至另一個區域。 
 
         ```
 
-        如需配置方法和閒置超時值的詳細資訊，請參閱[建立、變更或刪除公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
+        有關分配方法和空閒超時值的詳細資訊，請參閱[創建、更改或刪除公共 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
 
 
-13. 按一下線上編輯器中的 [**儲存**]。
+13. 按一下連線編輯器中的 **"保存**"。
 
-14. 按一下 **基本** > **訂**用帳戶，以選擇將部署目標公用 IP 的訂用帳戶。
+14. 按一下**BASICS** > **訂閱**以選擇將部署目標公共 IP 的訂閱。
 
-15. 按一下 [**基本**] > [**資源群組**]，選擇將部署目標公用 IP 的資源群組。  您可以按一下 [**建立新**的]，為目標公用 IP 建立新的資源群組。  請確定名稱與現有來源公用 IP 的來源資源群組不同。
+15. 按一下**BASICS** > **資源組**以選擇將部署目標公共 IP 的資源組。  可以按一下 **"創建新**"以創建目標公共 IP 的新資源組。  確保名稱與現有源公共 IP 的源資源組不同。
 
-16. 確認 [**基本**] > [**位置**] 設定為您想要部署公用 IP 的目標位置。
+16. 驗證**BASICS** > **位置**設置為您希望部署公共 IP 的目標位置。
 
-17. 確認 [**設定**] 底下的 [名稱] 符合您在上面的 [參數編輯器] 中輸入的名稱。
+17. 在 **"設置"** 下驗證名稱是否與您在上述參數編輯器中輸入的名稱匹配。
 
-18. 勾選 [**條款及條件**] 底下的方塊。
+18. 選中 **"條件"和"條件**"下的核取方塊。
 
-19. 按一下 [**購買**] 按鈕以部署目標公用 IP。
+19. 按一下 **"購買**"按鈕以部署目標公共 IP。
 
 ## <a name="discard"></a>捨棄
 
-如果您想要捨棄目標公用 IP，請刪除包含目標公用 IP 的資源群組。  若要這麼做，請從入口網站的儀表板中選取資源群組，然後選取 [總覽] 頁面頂端的 [**刪除**]。
+如果要放棄目標公共 IP，請刪除包含目標公共 IP 的資源組。  為此，請從門戶中的儀表板中選擇資源組，然後選擇概覽頁頂部的 **"刪除**"。
 
 ## <a name="clean-up"></a>清除
 
-若要認可變更並完成公用 IP 的移動，請刪除來源公用 IP 或資源群組。 若要這麼做，請從入口網站的儀表板中選取公用 IP 或資源群組，然後選取每個頁面頂端的 [**刪除**]。
+要提交更改並完成公共 IP 的移動，請刪除源公共 IP 或資源組。 為此，請從門戶中的儀表板中選擇公共 IP 或資源組，然後在每個頁面頂部選擇 **"刪除**"。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure 公用 IP 從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
+在本教程中，您將 Azure 公共 IP 從一個區域移動到另一個區域並清理了源資源。  要瞭解有關在 Azure 中在區域和災害復原之間移動資源的詳細資訊，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

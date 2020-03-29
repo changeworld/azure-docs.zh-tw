@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756798"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>使用 Azure 入口網站來管理 Azure Data Box Edge 上的頻寬排程  
@@ -21,7 +21,7 @@ ms.locfileid: "60756798"
 
 您可以透過 Azure 入口網站，新增、修改或刪除 Data Box Edge 的頻寬排程。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 新增排程
@@ -33,18 +33,18 @@ ms.locfileid: "60756798"
 
 在 Azure 入口網站中執行下列步驟，以新增排程。
 
-1. 在 Azure 入口網站中，針對您的 Data Box Edge 資源，移至 [頻寬]  。
-2. 在右窗格中，選取 [+ 新增排程]  。
+1. 在 Azure 入口網站中，針對您的 Data Box Edge 資源，移至 [頻寬]****。
+2. 在右窗格中，選取 [+ 新增排程]****。
 
     ![選取頻寬](media/data-box-edge-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. 在 [新增排程]  中： 
+3. 在 [新增排程]**** 中： 
 
-   1. 提供排程的 [開始日期]  、[結束日期]  、[開始時間]  及[結束時間]  。
-   2. 如果此排程應該整天執行，請勾選 [全天]  。
-   3. [頻寬速率]  是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 20 到 1,000,000,007 之間的數目給此欄位。
-   4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]  頻寬。
-   5. 選取 [新增]  。
+   1. 提供排程的 [開始日期]****、[結束日期]****、[開始時間]**** 及[結束時間]****。
+   2. 如果此排程應該整天執行，請勾選 [全天]****。
+   3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 20 到 1,000,000,007 之間的數目給此欄位。
+   4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
+   5. 選取 [加入]****。
 
       ![新增排程](media/data-box-edge-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "60756798"
 
 執行下列步驟來編輯頻寬排程。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [頻寬]  。 
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [頻寬]****。 
 2. 從頻寬排程清單中，選取並選取您想要修改的排程。
     ![選取頻寬排程](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-1.png)
 
@@ -73,9 +73,9 @@ ms.locfileid: "60756798"
 
 執行下列步驟來刪除與 Data Box Edge 裝置相關聯的頻寬排程。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [頻寬]  。  
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [頻寬]****。  
 
-2. 從頻寬排程清單中，選取您想要刪除的排程。 在 [編輯排程]  中，選取 [刪除]  。 系統提示您進行確認時，選取 [是]  。
+2. 從頻寬排程清單中，選取您想要刪除的排程。 在 [編輯排程]**** 中，選取 [刪除]****。 系統提示您確認時，請選取 [是]****。
 
    ![刪除使用者](media/data-box-edge-manage-bandwidth-schedules/delete-schedule-2.png)
 

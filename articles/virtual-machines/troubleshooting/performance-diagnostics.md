@@ -14,22 +14,22 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70080607"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虛擬機器的效能診斷
 
-效能診斷工具可協助您針對可能影響 Windows 或 Linux 虛擬機器 (VM) 的效能問題進行疑難排解。 支援的疑難排解案例包括對已知問題和最佳做法的快速檢查，以及牽涉到 VM 效能變慢或是高 CPU、磁碟空間或記憶體使用量的複雜問題。
+性能診斷工具可説明您解決可能影響 Windows 或 Linux 虛擬機器 （VM） 的性能問題。 支援的疑難排解案例包括對已知問題和最佳做法的快速檢查，以及牽涉到 VM 效能變慢或是高 CPU、磁碟空間或記憶體使用量的複雜問題。
 
 您可以直接從 Azure 入口網站執行效能診斷，並同時在此檢閱見解以及有關各種記錄、豐富設定和診斷資料的報告。 建議您先執行效能診斷並檢閱見解和診斷資料，再連絡 Microsoft 支援人員。
 
 > [!NOTE]
-> 對於 Windows, 目前在已安裝 .NET SDK 4.5 版或更新版本的 Vm 上支援效能診斷。 如需在傳統 VM 上執行效能診斷的步驟，請參閱 [Azure 效能診斷 VM 延伸模組](performance-diagnostics-vm-extension.md)。
+> 對於 Windows，當前支援具有 .NET SDK 版本 4.5 或更高版本安裝的 VM 的性能診斷。 如需在傳統 VM 上執行效能診斷的步驟，請參閱 [Azure 效能診斷 VM 延伸模組](performance-diagnostics-vm-extension.md)。
 
-## <a name="supported-operating-systems"></a>受支援的作業系統
+## <a name="supported-operating-systems"></a>支援的作業系統
 
 ### <a name="windows"></a>Windows
 
@@ -37,26 +37,26 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle-資料庫-Ee 13.8 marketplace 映射), CentOS 6.5 [`*`], 7.6, RHEL 7.2, 7.5, 8.0 [`*`], Ubuntu 14.04, 16.04, 18.04, Debian 8, 9, 10 [`*`], SLES 12 SP4 [`*`]
+Oracle Linux 伺服器 6.10 =`*`7.3， 7.6， 7.5 （Oracle-資料庫-Ee 13.8 市場`*`映射）， CentOS 6.5 * * 7.6， RHEL 7.2， 7.5， 8.0 *`*`， Ubuntu 14.04， 16.04， 18.04， Debian 8， 9， 10 *，`*`SLES 12 SP4 |`*`
 
 >[!Note]
 >[`*`] 請參閱[已知問題](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在您的 VM 上安裝並執行效能診斷
 
-效能診斷會安裝 VM 延伸模組, 以執行名為 PerfInsights 的診斷工具。 PerfInsights 適用于[Windows](https://aka.ms/perfinsights)和[Linux](https://aka.ms/perfinsightslinux)。 若要安裝並執行效能診斷，請遵循下列步驟進行：
+效能診斷會安裝 VM 延伸模組，以執行名為 PerfInsights 的診斷工具。 PerfInsights 同時可用於[Windows](https://aka.ms/perfinsights)和[Linux。](https://aka.ms/perfinsightslinux) 若要安裝並執行效能診斷，請遵循下列步驟進行：
 
-1. 在命令的左欄中，選取 [虛擬機器]。
+1. 在命令的左欄中，選取 [虛擬機器]****。
 1. 從 VM 名稱清單，選取您想要對其執行診斷的 VM。
-1. 在命令的右欄中，選取 [效能診斷]。
+1. 在命令的右欄中，選取 [效能診斷]****。
 
     ![Azure 入口網站的螢幕擷取畫面，其中已醒目提示 [安裝效能診斷] 按鈕](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
-    > 在此螢幕擷取畫面中, 會隱藏 VM 名稱的分頁。
+    > 在此螢幕截圖中，VM 名稱的邊欄選項卡是隱藏的。
 1. 選取儲存體帳戶 (選擇性)
 
-    如果您想要使用單一儲存體帳戶來儲存多個 VM 的效能診斷結果，您可以按一下工具列中的 [設定] 按鈕來選取儲存體帳戶。 選取儲存體帳戶之後，按一下 [確定] 按鈕。
+    如果您想要使用單一儲存體帳戶來儲存多個 VM 的效能診斷結果，您可以按一下工具列中的 [設定]**** 按鈕來選取儲存體帳戶。 選取儲存體帳戶之後，按一下 [確定]**** 按鈕。
 
     如果您未指定儲存體帳戶，預設會建立新的儲存體帳戶。
 
@@ -64,8 +64,8 @@ Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle-資料庫-Ee 13.8 marketpl
 
     ![從 [效能診斷設定] 刀鋒視窗選取儲存體帳戶的螢幕擷取畫面](media/performance-diagnostics/select-storage-account.png)
 
-1. 選取 [安裝效能診斷] 按鈕。
-1. 如果您想要在安裝完成之後執行診斷，請選取 [執行診斷] 核取方塊。 如果您進行這項選取，您將能夠選擇效能分析案例和相關選項。
+1. 選取 [安裝效能診斷]**** 按鈕。
+1. 如果您想要在安裝完成之後執行診斷，請選取 [執行診斷]**** 核取方塊。 如果您進行這項選取，您將能夠選擇效能分析案例和相關選項。
 
     ![效能診斷安裝按鈕的螢幕擷取畫面](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -74,19 +74,19 @@ Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle-資料庫-Ee 13.8 marketpl
 Azure 入口網站提供下列分析案例。 請根據您的效能問題，選取一個分析。 視分析需要，選取持續時間和追蹤選項。
 
 * **快速效能分析**  
-    檢查是否有已知問題、分析最佳做法，並收集診斷資料。 此分析需要幾分鐘的時間來執行。 深入瞭解[Windows](https://aka.ms/perfinsights/quick)或[Linux](https://aka.ms/perfinsightslinux/quick)
+    檢查是否有已知問題、分析最佳做法，並收集診斷資料。 此分析需要幾分鐘的時間來執行。 瞭解更多[Windows](https://aka.ms/perfinsights/quick)或[Linux](https://aka.ms/perfinsightslinux/quick)
 
-* **效能分析**  
-    包括快速效能分析中的所有檢查，並監視高資源耗用量。 使用此版本可針對一般效能問題 (例如高 CPU、記憶體和磁碟使用量) 進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間，視選取的持續時間而定。 深入瞭解[Windows](https://aka.ms/perfinsights/vmslow)或[Linux](https://aka.ms/perfinsightslinux/vmslow)
+* **性能分析**  
+    包括快速效能分析中的所有檢查，並監視高資源耗用量。 使用此版本可針對一般效能問題 (例如高 CPU、記憶體和磁碟使用量) 進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間，視選取的持續時間而定。 瞭解更多[Windows](https://aka.ms/perfinsights/vmslow)或[Linux](https://aka.ms/perfinsightslinux/vmslow)
 
-* **先進的效能分析**`*`  
+* **高級性能分析**`*`  
     包括效能分析中的所有檢查，並收集一或多個追蹤，如下列各節所列示。 使用此案例可針對需要額外追蹤的複雜問題進行疑難排解。 根據所選取的 VM 大小和追蹤選項，執行此案例的時間越長，診斷輸出的整體大小會越大。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](https://aka.ms/perfinsights/advanced)
 
-* **Azure 檔案儲存體分析**`*`  
+* **Azure 檔分析**`*`  
     包括效能分析中的所有檢查，並擷取網路追蹤和 SMB 計數器。 使用此案例可針對 Azure 檔案服務效能進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] 只有在 Windows 上才支援這些分析案例。
+>[`*`] 僅在 Windows 上支援這些分析方案。
 
 ![[效能診斷] 刀鋒視窗中的 [執行診斷] 窗格螢幕擷取畫面](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 分析完成之後，會將下列項目上傳至 Azure 資料表，以及指定儲存體帳戶中的二進位大型物件 (BLOB) 容器：
 
 * 關於執行的所有見解及相關資訊
-* 在 Windows 上的輸出壓縮 (.zip) 檔案 (名為**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff** ), 以及包含記錄檔的 Linux 上的 tar 球檔案 (名為**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff. gz** )
+* Windows 上的輸出壓縮 （.zip） 檔（名為**PerformanceDiagnostics_yyyy-MM-dd_hh-s-fff.zip）** 和 Linux 上的 tar 球檔（名為**PerformanceDiagnostics_yyyy-MM-dd_hh-s-fff.tar.gz），** 其中包含日誌檔
 * HTML 報告
 
 上傳之後，Azure 入口網站中會列出新的診斷報告。
@@ -118,11 +118,11 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 ## <a name="how-to-change-performance-diagnostics-settings"></a>如何變更效能診斷設定
 
-使用 [設定] 工具列按鈕來變更儲存體帳戶，其中可儲存診斷見解和輸出。 您可以將同一個儲存體帳戶用於多個使用效能診斷的 VM。 當您變更儲存體帳戶時，不會刪除舊的報告和見解。 不過，這些項目不會再顯示於 [診斷報告] 清單中。
+使用 [設定]**** 工具列按鈕來變更儲存體帳戶，其中可儲存診斷見解和輸出。 您可以將同一個儲存體帳戶用於多個使用效能診斷的 VM。 當您變更儲存體帳戶時，不會刪除舊的報告和見解。 不過，這些項目不會再顯示於 [診斷報告] 清單中。
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>檢閱見解和效能診斷報告
 
-每個診斷執行都會包含見解和建議清單、受影響的資源、記錄檔，以及收集到的其他豐富診斷資訊，加上離線檢視的報告。 如需所有收集到的診斷資料的完整清單, 請參閱[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的**PerfInsights 所收集的資訊類型**。
+每個診斷執行都會包含見解和建議清單、受影響的資源、記錄檔，以及收集到的其他豐富診斷資訊，加上離線檢視的報告。 有關所有收集的診斷資料的完整清單，請參閱 PerfInsights？ 在[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上**收集了哪些類型的資訊**。
 
 ### <a name="select-a-performance-diagnostics-report"></a>選取效能診斷報告
 
@@ -146,11 +146,11 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下載並檢閱完整的效能診斷報告
 
-您可以使用 [下載報告] 按鈕來下載 HTML 報告，其中包含其他豐富診斷資訊，例如儲存體和網路設定、效能計數器、追蹤、處理序清單和記錄。 其內容取決於選取的分析。 如需進階疑難排解，此報告可能包含有關高 CPU 使用量、高磁碟使用量和過度耗用記憶體之處理序的其他資訊和互動式圖表。 如需效能診斷報告的詳細資訊, 請參閱[Windows](how-to-use-perfinsights.md#review-the-diagnostics-report)或[Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
+您可以使用 [下載報告]**** 按鈕來下載 HTML 報告，其中包含其他豐富診斷資訊，例如儲存體和網路設定、效能計數器、追蹤、處理序清單和記錄。 其內容取決於選取的分析。 如需進階疑難排解，此報告可能包含有關高 CPU 使用量、高磁碟使用量和過度耗用記憶體之處理序的其他資訊和互動式圖表。 有關性能診斷報告的詳細資訊，請參閱[Windows](how-to-use-perfinsights.md#review-the-diagnostics-report)或[Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理效能診斷報告
 
-您可以使用 [刪除報告] 按鈕，刪除一或多個效能診斷報告。
+您可以使用 [刪除報告]**** 按鈕，刪除一或多個效能診斷報告。
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>如何解除安裝效能診斷
 
@@ -160,35 +160,35 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>我的 VM 中儲存診斷資料的位置
+### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>我的 VM 中的診斷資料存儲在何處
 
 所有效能診斷見解和報告都會儲存在您自己的儲存體帳戶中。 見解會儲存在 Azure 資料表中。 報告壓縮檔會儲存在名為 azdiagextnresults 的二進位大型物件 (BLOB) 容器中。
 
 您可以使用工具列上的 [設定] 按鈕來檢視儲存體帳戶資訊。
 
-### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>如何? 與 Microsoft 客戶支援分享此資料
+### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>如何與 Microsoft 客戶支援共用此資料
 
 您可以以多種方式來與 Microsoft 共用診斷報告。
 
-**選項 1：** 自動共用最新的報告  
-當您開啟與 Microsoft 的支援票證時，請務必共用效能診斷報告。 如果您選擇在執行診斷時與 Microsoft 共用這項資訊 (藉由選取 [我同意與 Microsoft 共用診斷資訊] 核取方塊)，Microsoft 將能夠在執行日期起 30 天內，使用輸出 ZIP 檔案的 SAS 連結從您的儲存體帳戶存取報告。 只會提供最近的報告給支援工程師。
+**選項 1：** 自動共用最近的報告  
+當您開啟與 Microsoft 的支援票證時，請務必共用效能診斷報告。 如果您選擇在執行診斷時與 Microsoft 共用這項資訊 (藉由選取 [我同意與 Microsoft 共用診斷資訊]**** 核取方塊)，Microsoft 將能夠在執行日期起 30 天內，使用輸出 ZIP 檔案的 SAS 連結從您的儲存體帳戶存取報告。 只會提供最近的報告給支援工程師。
 
-**選項 2：** 產生診斷報告壓縮檔案的共用存取簽章  
+**選項 2：** 產生診斷報告壓縮檔的共用存取簽章  
 您可以使用共用存取簽章來分享報告壓縮檔的連結。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至儲存診斷資料的儲存體帳戶。
-1. 在 [Blob 服務] 區段下，選取 [Blob]。
+1. 在 [Blob 服務]**** 區段下，選取 [Blob]****。
 1. 選取 **azdiagextnresults** 容器。
 1. 選取您要共用的效能診斷輸出壓縮檔。
-1. 在 [產生 SAS] 索引標籤上，選取共用準則。
-1. 按一下 [產生 Blob SAS 權杖和 URL]。
+1. 在 [產生 SAS]**** 索引標籤上，選取共用準則。
+1. 按一下 [產生 Blob SAS 權杖和 URL]****。
 1. 複製 **Blob SAS URL** 並與支援工程師共用。
 
-**選項 3:** 從儲存體帳戶下載報告
+**選項 3：** 從儲存體帳戶下載報告
 
 您也可以使用選項 2 中的步驟 1-4 來尋找效能診斷報告壓縮檔。 選取以下載檔案，然後透過電子郵件共用，或詢問支援工程師有關上傳檔案的指示。  
 
-### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>如何? 在正確的時間捕捉診斷資料
+### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>如何在正確的時間捕獲診斷資料
 
 每個效能診斷執行具有兩個階段：
 
@@ -201,4 +201,4 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 檢閱效能診斷見解和報告之後，如果您仍無法判斷問題的原因並需要更多協助，您可以開啟與 Microsoft 客戶支援的支援票證。
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/forums/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選擇 **"獲取支援**"。 有關使用 Azure 支援的資訊，請閱讀[Microsoft Azure 支援常見問題解答](https://azure.microsoft.com/support/faq/)。

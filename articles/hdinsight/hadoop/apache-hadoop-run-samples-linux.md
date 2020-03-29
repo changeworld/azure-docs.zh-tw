@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435741"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>執行包含在 HDInsight 中的 MapReduce 範例
@@ -21,52 +21,52 @@ ms.locfileid: "75435741"
 
 了解如何執行隨附於 HDInsight 上 Apache Hadoop 的 MapReduce 範例。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="the-mapreduce-examples"></a>MapReduce 範例
 
-這些範例位於 HDInsight 叢集的 `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`。 這些範例的原始程式碼包含在 HDInsight 叢集的 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`。
+範例位於 HDInsight 叢集上的 `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`。 這些範例的原始程式碼包含在 HDInsight 叢集上，位於 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`。
 
 下列範例都包含在此封存中：
 
-|範例 |說明 |
+|範例 |描述 |
 |---|---|
-|aggregatewordcount|計算輸入檔中的字數。|
-|aggregatewordhist|計算輸入檔中單字的長條圖。|
-|bbp|會使用貝利-Borwein-普 bailey-borwein-plouffe) 來計算 Pi 的確切位數。|
-|dbcount|計算儲存在資料庫中的 pageview 記錄。|
-|distbbp|使用 BBP 類型的公式來計算 Pi 的確切位。|
-|grep|計算輸入中 RegEx 的相符專案。|
-|Join|執行已排序且平均分割之資料集的聯結。|
-|multifilewc 可|從數個檔案計算字數。|
-|pentomino|並排顯示計畫，以尋找 pentomino 問題的解決方案。|
-|pi|使用 Monte Carlo 方法來預估 Pi。|
-|randomtextwriter|針對每個節點寫入 10 GB 的隨機文字資料。|
-|randomwriter|為每個節點寫入 10 GB 的亂數據。|
-|secondarysort|定義 [縮減] 階段的次要排序。|
-|sort|排序隨機寫入器所寫入的資料。|
-|sudoku|數獨解答程式。|
-|teragen|產生用於 TeraSort 的資料。|
-|terasort|執行 TeraSort。|
-|teravalidate|檢查 TeraSort 的結果。|
-|wordcount|計算輸入檔中的字數。|
-|wordmean|計算輸入檔中字詞的平均長度。|
-|wordmedian|計算輸入檔中文字的中位數長度。|
-|wordstandarddeviation|計算輸入檔中字詞長度的標準差。|
+|聚合字計數|計算輸入檔中的單詞。|
+|聚合詞|計算輸入檔中單詞的長條圖。|
+|bbp|使用貝利-博爾韋因-普勞夫計算Pi的確切數位。|
+|dbcount|計算存儲在資料庫中的網頁檢視日誌。|
+|分分|使用 BBP 類型公式計算 Pi 的精確位。|
+|grep|在輸入中計算正則運算式的匹配項。|
+|Join|對已排序的、同樣分區的資料集執行聯接。|
+|多檔|計算多個檔中的單詞。|
+|彭托米諾|瓷磚鋪設程式，以找到解決五氯苯惡症問題的辦法。|
+|pi|使用准蒙特卡羅方法估計 Pi。|
+|隨機文字寫入器|每個節點寫入 10 GB 的隨機文本資料。|
+|隨機寫入器|每個節點寫入 10 GB 的亂數據。|
+|輔助排序|將輔助排序定義到縮減階段。|
+|sort|對隨機編寫器寫入的資料進行排序。|
+|遊戲|數獨解答程式。|
+|特拉根|產生用於 TeraSort 的資料。|
+|泰拉索|執行 TeraSort。|
+|太驗證|檢查 TeraSort 的結果。|
+|字數|計算輸入檔中的單詞。|
+|字位|計算輸入檔中單詞的平均長度。|
+|字中位數|計算輸入檔中單詞的中位長度。|
+|詞標準差|計算輸入檔中單詞長度的標準差。|
 
 ## <a name="run-the-wordcount-example"></a>執行 wordcount 範例
 
-1. 使用 SSH 連線到 HDInsight。 以您叢集的名稱取代 `CLUSTER`，然後輸入下列命令：
+1. 使用 SSH 連線到 HDInsight。 替換為`CLUSTER`群集的名稱，然後輸入以下命令：
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 在 SSH 會話中，使用下列命令來列出範例：
+2. 在 SSH 會話中，使用以下命令列出示例：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -88,7 +88,7 @@ ms.locfileid: "75435741"
 
     此訊息表示您可以為來源文件提供數個輸入路徑。 最後一個路徑是輸出 (來源文件中的字數計數) 的儲存處。
 
-4. 使用下列各項來計算達文西 da Vinci 的筆記本中的所有文字，並以您的叢集作為範例資料來提供：
+4. 使用以下內容計算列奧納多·達·芬奇筆記本中的所有單詞，這些單詞作為示例資料隨群集一起提供：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -154,7 +154,7 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 ## <a name="pi--example"></a>Pi (π) 範例
 
-Pi 範例會使用統計 (擬蒙特卡羅法) 方法來估計 pi 的值。 點隨機放置在單位正方形中。 正方形也包含一個圓形。 點落在圓形中的機率等於圓形的面積，pi/4。 Pi 的值可從 4R 的值來估計。 其中 R 是圓內點數佔正方形內總點數的比例。 使用的樣本點越多，估計越準確。
+Pi 範例會使用統計 (擬蒙特卡羅法) 方法來估計 pi 的值。 點隨機放置在單位正方形中。 正方形也包含一個圓形。 點落在圓內的概率等於圓的面積 pi/4。 Pi 的值可從 4R 的值來估計。 其中 R 是圓內點數佔正方形內總點數的比例。 使用的樣本點越多，估計越準確。
 
 使用以下命令來執行此範例。 此命令會每次使用 16 個對應搭配 10,000,000 個取樣來估計 Pi 的值：
 
@@ -164,11 +164,11 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 此命令傳回的值類似於 **3.14159155000000000000**。 Pi 的前 10 個小數位數是 3.1415926535，供您參考。
 
-## <a name="10-gb-graysort-example"></a>10 GB GraySort 範例
+## <a name="10-gb-graysort-example"></a>10 GB 灰排序示例
 
 GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通常至少為 100 TB) 所達成的排序速率 (TB/分鐘)。
 
-本範例使用不太大的 10 GB 資料，所以執行起來相對較快。 本範例使用由 Owen O'Malley 和 Arun Murthy 共同開發的 MapReduce 應用程式。 這些應用程式會在2009中贏得年度一般用途（"耐力賽"） tb 排序基準測試，速率為 0.578 TB/分鐘（100 TB 為173分鐘）。 如需此和其他排序基準的詳細資訊，請參閱[排序基準](https://sortbenchmark.org/)網站。
+本範例使用不太大的 10 GB 資料，所以執行起來相對較快。 本範例使用由 Owen O'Malley 和 Arun Murthy 共同開發的 MapReduce 應用程式。 這些應用在 2009 年贏得了年度通用（"Daytona"）TB 排序基準，速率為 0.578 TB/min（173 分鐘內為 100 TB）。 有關此和其他排序基準的詳細資訊，請參閱[排序基準](https://sortbenchmark.org/)網站。
 
 本範例使用三組 MapReduce 程式：
 
@@ -210,5 +210,5 @@ GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通�
 
 您已在本文中學到如何執行以 Linux 為基礎的 HDInsight 叢集所隨附的範例。 如需透過 HDInsight 使用 Pig、Hive 和 MapReduce 的教學課程，請參閱下列主題：
 
-* [在 HDInsight 上搭配 Apache Hadoop 使用 Apache Hive](hdinsight-use-hive.md)
+* [在 HDInsight 上將 Apache Hive 與 Apache Hadoop 搭配使用](hdinsight-use-hive.md)
 * [搭配 MapReduce 與 HDInsight 上的 Apache Hadoop](hdinsight-use-mapreduce.md)

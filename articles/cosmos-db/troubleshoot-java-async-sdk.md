@@ -10,14 +10,14 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65519988"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>針對搭配 Azure Cosmos DB SQL API 帳戶使用 Java Async SDK 時所發生的問題進行疑難排解
-此文章涵蓋搭配 Azure Cosmos DB SQL API 帳戶使用 [Java Async SDK](sql-api-sdk-async-java.md) 時的常見問題、因應措施、診斷步驟與工具。
+本文介紹在將[JAVA Async SDK](sql-api-sdk-async-java.md)與 Azure Cosmos DB SQL API 帳戶一起使用時，常見問題、解決方法、診斷步驟和工具。
 Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 
 從此清單開始：
@@ -27,7 +27,7 @@ Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API�
 * 檢閱[效能祕訣](performance-tips-async-java.md)並遵循建議的做法。
 * 如果找不到解決方案，請閱讀本文的其餘部分。 然後提出 [GitHub 問題](https://github.com/Azure/azure-cosmosdb-java/issues)。
 
-## <a name="common-issues-workarounds"></a>常見問題和因應措施
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常見問題和因應措施
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>網路問題, Netty 讀取逾時失敗, 低輸送量, 高延遲
 
@@ -38,7 +38,7 @@ Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API�
 #### <a name="connection-throttling"></a>連線節流
 連線節流的發生原因可能是因為[主機電腦上的連線限制]或 [Azure SNAT (PAT) 連接埠耗盡]。
 
-##### <a name="connection-limit-on-host"></a>主機電腦上的連線限制
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>主機電腦上的連線限制
 某些 Linux 系統 (例如 Red Hat) 具有開啟檔案的總數上限。 Linux 中的通訊端會實作為檔案，因此，這個數字也會限制連線總數。
 執行下列命令。
 
@@ -47,7 +47,7 @@ ulimit -a
 ```
 允許的開啟檔案數目上限 (識別為 "nofile") 必須至少是連線集區大小的兩倍。 如需詳細資訊，請參閱[效能祕訣](performance-tips-async-java.md)。
 
-##### <a name="snat"></a>Azure SNAT (PAT) 連接埠耗盡
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 連接埠耗盡
 
 如果您的應用程式部署於不具公用 IP 位址的 Azure 虛擬機器上，則 [Azure SNAT 連接埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)預設會建立與您 VM 外部任何端點的連線。 從 VM 到 Azure Cosmos DB 端點所允許的連線數目會受到 [Azure SNAT 設定](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)所限制。
 
@@ -58,15 +58,15 @@ ulimit -a
     啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
 * 將公用 IP 指派給您的 Azure VM。
 
-##### <a name="cant-connect"></a>無法連線到服務-防火牆
-``ConnectTimeoutException`` 表示 SDK 無法連線到服務。
-使用直接模式時，您可能會失敗與下面類似：
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法訪問服務 - 防火牆
+``ConnectTimeoutException``指示 SDK 無法訪問服務。
+使用直接模式時，可能會收到類似于以下內容的故障：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果您有防火牆，在您的應用程式的電腦上執行，請開啟 連接埠範圍 10000 到 20000 可供直接存取模式。
-也請遵循[主機電腦上的連線限制](#connection-limit-on-host)。
+如果應用電腦上運行防火牆，則直接模式使用的打開端口範圍為 10，000 到 20，000。
+也遵循[主機上的連接限制](#connection-limit-on-host)。
 
 #### <a name="http-proxy"></a>HTTP Proxy
 
@@ -161,23 +161,23 @@ createObservable
 
 Azure Cosmos DB 模擬器的 HTTPS 憑證是自我簽署的。 針對要與模擬器搭配運作的 SDK，將模擬器憑證匯入到 Java TrustStore。 如需詳細資訊，請參閱[匯出 Azure Cosmos DB 模擬器憑證](local-emulator-export-ssl-certificates.md)。
 
-### <a name="dependency-conflict-issues"></a>相依性衝突問題
+### <a name="dependency-conflict-issues"></a>依賴項衝突問題
 
 ```console
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述的例外狀況會建議您在較舊版本的 RxJava lib (例如 1.2.2) 上的相依性。 我們的 SDK 會依賴 RxJava 1.3.8 包含不適用於舊版 RxJava 的 Api。 
+上述異常表明您依賴于舊版本的 RxJAVA lib（例如，1.2.2）。 我們的 SDK 依賴于 RxJAVA 1.3.8，其 API 在早期版本的 RxJAVA 中不可用。 
 
-因應措施是要找出其相依性的這類 issuses 帶入 RxJava 1.2.2 及排除對 RxJava-1.2.2 的可轉移相依性，並允許 CosmosDB SDK 將較新版本。
+此類 iss 的解決方法是確定哪些其他依賴項帶來了 RxJAVA-1.2.2，並排除了對 RxJAVA-1.2.2 的傳遞依賴項，並允許 CosmosDB SDK 帶來較新版本。
 
-若要識別哪一個程式庫帶入 RxJava 1.2.2 旁您的專案 pom.xml 檔案中執行下列命令：
+要確定哪個庫帶來了 RxJAVA-1.2.2 運行專案 pom.xml 檔旁邊的以下命令：
 ```bash
 mvn dependency:tree
 ```
-如需詳細資訊，請參閱 < [maven 相依性樹狀結構輔助線](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+有關詳細資訊，請參閱[maven 依賴項樹指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-一旦您找出 RxJava 1.2.2 是專案的可轉移相依性的其他相依性，您可以修改相依性它 lib 在您的 pom 檔案和排除 RxJava 可轉移相依性：
+一旦您確定 RxJAVA-1.2.2 是專案的其他依賴項的傳遞依賴項，就可以修改 pom 檔中對該 lib 的依賴項，並排除 RxJAVA 傳遞依賴項：
 
 ```xml
 <dependency>
@@ -193,10 +193,10 @@ mvn dependency:tree
 </dependency>
 ```
 
-如需詳細資訊，請參閱 <<c0> [ 排除可轉移相依性指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+有關詳細資訊，請參閱[排除傳遞依賴項指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
-## <a name="enable-client-sice-logging"></a>啟用用戶端 SDK 記錄
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>啟用用戶端 SDK 記錄
 
 Java Async SDK 會使用 SLF4j 作為記錄外觀，以支援登入到 log4j 和 logback 等熱門記錄架構。
 
@@ -235,7 +235,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 如需詳細資訊，請參閱 [sfl4j 記錄手冊](https://www.slf4j.org/manual.html)。
 
-## <a name="netstats"></a>OS 網路統計資料
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS 網路統計資料
 執行 netstat 命令，以了解有多少個連線處於 `ESTABLISHED` 和 `CLOSE_WAIT` 狀態。
 
 在 Linux上，您可以執行下列命令。
@@ -251,7 +251,7 @@ netstat -nap
  <!--Anchors-->
 [常見問題和因應措施]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[主機電腦上的連線限制]: #connection-limit-on-host
-[Azure SNAT (PAT) 連接埠耗盡]: #snat
+[主機上的連接限制]: #connection-limit-on-host
+[Azure SNAT （PAT） 埠耗盡]: #snat
 
 

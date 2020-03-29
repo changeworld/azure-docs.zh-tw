@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580362"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>透過 StorSimple 裝置管理員變更 StorSimple Virtual Array 裝置系統管理員密碼
@@ -38,17 +38,17 @@ ms.locfileid: "60580362"
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>透過 Azure 入口網站變更裝置系統管理員密碼
 
-1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後按一下在 [管理]  區段內按一下 [裝置]  。 這會開啟 [裝置]  刀鋒視窗來列出您的所有 StorSimple Virtual Array 裝置。
+1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後按一下在 [管理]**** 區段內按一下 [裝置]****。 這會開啟 [裝置]**** 刀鋒視窗來列出您的所有 StorSimple Virtual Array 裝置。
 
-2. 在 [裝置]  刀鋒視窗中，按兩下需要變更密碼的裝置。
+2. 在 [裝置]**** 刀鋒視窗中，按兩下需要變更密碼的裝置。
 
-3. 在裝置的 [設定]  刀鋒視窗中，按一下 [安全性]  。
+3. 在裝置的 [設定]**** 刀鋒視窗中，按一下 [安全性]****。
 
-4. 在 [安全性設定]  刀鋒視窗中，執行下列動作︰
+4. 在 [安全性設定]**** 刀鋒視窗中，執行下列動作︰
    
-   1. 向下捲動至 [ **裝置系統管理員密碼** ] 區段。 提供含有 8 到 15 個字元的系統管理員密碼。
+   1. 向下滾動到**裝置管理員密碼**部分。 提供含有 8 到 15 個字元的系統管理員密碼。
    2. 確認密碼。
-   3. 按一下刀鋒視窗頂端的 [儲存]  。
+   3. 按一下邊欄選項卡頂部的 **"保存**"。
 
 現在已變更裝置系統管理員密碼。 您可以使用修改的密碼在本機存取該裝置。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60580362"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>透過本機 Web UI 變更裝置系統管理員密碼
 
-1. 在本機 Web UI 中，對您的裝置按一下 [維護]   >  [變更密碼]  。
+1. 在本地 Web UI 中，按一下設備的**維護** > **密碼更改**。
    
     ![變更 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. 輸入 **目前的密碼**。
@@ -70,7 +70,7 @@ ms.locfileid: "60580362"
 4. 請重新輸入密碼來加以確認。
    
     ![變更 password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. 在頁面底部，按一下 [套用]  。 現在已套用新的密碼。 如果變更密碼未成功，您會看到下列錯誤：
+5. 在頁面底部，按一下 [套用] ****。 現在已套用新的密碼。 如果變更密碼未成功，您會看到下列錯誤：
    
     ![密碼錯誤](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    

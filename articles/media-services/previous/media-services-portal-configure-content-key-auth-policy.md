@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站設定內容金鑰授權原則 | Microsoft Docs
-description: 本文示範如何設定內容金鑰的授權原則。
+description: 本文演示如何為內容金鑰配置授權策略。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968785"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>設定內容金鑰授權原則
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
  您可以使用 Azure 媒體服務來傳遞受到進階加密標準 (AES) 保護的 MPEG DASH、Smooth Streaming 和 HTTP Live Streaming (HLS) 串流，方法是使用 128 位元加密金鑰或 [PlayReady 數位版權管理 (DRM)](https://www.microsoft.com/playready/overview/)。 使用媒體服務，您還可以傳遞使用 Widevine DRM 加密的 DASH 串流。 PlayReady 和 Widevine 是依照一般加密 (ISO/IEC 23001-7 CENC) 規格加密。
 
 媒體服務也提供金鑰/授權傳遞服務，用戶端可以從該處取得 AES 金鑰或 PlayReady/Widevine 授權，以便播放加密的內容。
@@ -55,9 +55,9 @@ Open 限制表示系統會傳送金鑰給提出金鑰要求的任何人。 這�
 ![OpenPolicy][open_policy]
 
 ### <a name="token-restriction"></a>權杖限制
-若要選擇權杖限制原則，請選取 [權杖] 按鈕。
+若要選擇權杖限制原則，請選取 [權杖]**** 按鈕。
 
-權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援使用簡單 Web 權杖 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 和 JSON Web 權杖 (JWT) 格式的權杖。 如需詳細資訊，請參閱 [JWT 驗證](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
+權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 Web 權杖 （[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)） 和 JSON Web 權杖 （JWT） 格式的權杖。 如需詳細資訊，請參閱 [JWT 驗證](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
 媒體服務不提供 STS。 您可以建立自訂的 STS 來核發權杖。 STS 必須設定為建立使用指定的索引鍵和問題宣告您在權杖限制組態中指定簽署的權杖。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -78,11 +78,11 @@ Open 限制表示系統會傳送金鑰給提出金鑰要求的任何人。 這�
           </LicenseTemplates>
         </PlayReadyLicenseResponseTemplate>
 
-您可以選取 [匯入原則 xml] 按鈕，並提供與[媒體服務 PlayReady 授權範本概觀](media-services-playready-license-template-overview.md)中定義之 XML 結構描述符合的不同 XML。
+您可以選取 [匯入原則 xml]**** 按鈕，並提供與[媒體服務 PlayReady 授權範本概觀](media-services-playready-license-template-overview.md)中定義之 XML 結構描述符合的不同 XML。
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

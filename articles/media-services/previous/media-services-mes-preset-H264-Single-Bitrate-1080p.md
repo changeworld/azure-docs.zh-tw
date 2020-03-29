@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元率 1080p 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本主題提供「H264 單一位元速率 1080p」  工作預設的概觀。
+description: 本主題提供「H264 單一位元速率 1080p」**** 工作預設的概觀。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 04333e54566d8535f3d5ba98f32650d30f5fbfc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463577"
 ---
 # <a name="h264-single-bitrate-1080p"></a>H264 單一位元速率 1080p

@@ -1,6 +1,6 @@
 ---
-title: Azure CDN DDoS 保護功能 |Microsoft Docs
-description: 來自 Microsoft 的 azure CDN 會受到 DDoS 保護基本無需另外付費
+title: Azure CDN DDoS 保護功能 |微軟文檔
+description: 來自 Microsoft 的 Azure CDN 受 DDoS 保護保護，基本不增加成本
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: magattus
 ms.openlocfilehash: 9cd688de861015cc12d1f98ed71e5376e5f574db
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593892"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS 保護
 
-內容傳遞網路可提供 DDoS 保護所設計。 除了全域的容量，以吸收體積型攻擊，Azure CDN 的額外 DDoS 保護如下所述，不需額外費用。
+內容交付網路按設計提供 DDoS 保護。 除了全域容量來吸收批量攻擊外，Azure CDN 還具有如下所述的額外 DDoS 保護，無需額外費用。
 
 ## <a name="azure-cdn-from-microsoft"></a>來自 Microsoft 的 Azure CDN
 
-來自 Microsoft 的 azure CDN 會受到[Azure 的基本 DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。 根據預設，而不需額外成本，它會整合到 Azure CDN 從 Microsoft 平台。 完整規模與功能的 Azure CDN 從 Microsoft 的全球部署網路提供透過永遠可用流量監視和即時安全防護功能的常見網路層攻擊的防禦。 基本的 DDoS 保護也可防止最常見的經常發生的圖層 7 DNS 查詢洪水攻擊和第 3 層和 4 體積型攻擊的目標 CDN 端點。 此服務也已記錄在保護 Microsoft 企業和取用者服務，從大規模攻擊。
+來自微軟的 Azure CDN 受[Azure 基本 DDoS 的保護](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。 預設情況下，它將從 Microsoft 平臺集成到 Azure CDN 中，無需額外費用。 Microsoft 全球部署網路的 Azure CDN 全面規模和容量通過始終打開的流量監控和即時緩解功能，可抵禦常見的網路層攻擊。 基本 DDoS 保護還針對針對 CDN 終結點的最常見、經常發生的第 7 層 DNS 查詢洪流和第 3 層和第 4 層卷攻擊進行防禦。 此服務在保護 Microsoft 的企業和消費者服務免受大規模攻擊方面也有著良好的記錄。
 
 ## <a name="azure-cdn-from-verizon"></a>Azure CDN from Verizon
 
-來自 Verizon 的 azure CDN 會受到 Verzion 的專屬 DDoS 風險降低平台。 它整合到 Azure CDN from Verizon 預設並不需要額外收費。 它提供針對最常見的基本保護經常發生層 7 DNS 查詢洪水攻擊和層級 3 及 4 個的體積型攻擊的目標 CDN 端點。
+來自 Verizon 的 Azure CDN 受 Verzion 專有 DDoS 緩解平臺的保護。 預設情況下，它是從 Verizon 集成到 Azure CDN 中，無需額外費用。 它針對針對 CDN 終結點的最常見、經常發生的第 7 層 DNS 查詢洪水和第 3 層和第 4 層卷攻擊提供基本保護。
 
 ## <a name="azure-cdn-from-akamai"></a>Azure CDN from Akamai
 
-來自 Akamai 的 azure CDN 會受到 Akamai 的專屬 DDoS 風險降低平台。 根據預設，而不需額外成本，它會整合到 Azure CDN from Akamai。 它提供針對最常見的基本保護經常發生層 7 DNS 查詢洪水攻擊和層級 3 及 4 個的體積型攻擊的目標 CDN 端點。
+Akamai 的 Azure CDN 受 Akamai 專有 DDoS 緩解平臺的保護。 預設情況下，它由 Akamai 集成到 Azure CDN 中，無需額外費用。 它針對針對 CDN 終結點的最常見、經常發生的第 7 層 DNS 查詢洪水和第 3 層和第 4 層卷攻擊提供基本保護。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。 
+瞭解有關[Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)的更多。 

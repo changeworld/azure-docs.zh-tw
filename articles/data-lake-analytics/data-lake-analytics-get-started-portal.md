@@ -1,5 +1,5 @@
 ---
-title: 建立 & 查詢 Azure Data Lake Analytics-Azure 入口網站
+title: 創建&查詢 Azure 資料湖分析 - Azure 門戶
 description: 使用 Azure 入口網站來建立 Azure Data Lake Analytics 帳戶和提交 U-SQL 作業。
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,10 +9,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315766"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Analytics
@@ -20,24 +20,24 @@ ms.locfileid: "71315766"
 
 本文說明如何使用 Azure 入口網站建立 Azure Data Lake Analytics 帳戶、在 [U-SQL](data-lake-analytics-u-sql-get-started.md) 中定義作業，以及將作業提交至 Data Lake Analytics 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-開始進行本教學課程之前，您必須擁有 **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+在開始本教程之前，必須具有 Azure**訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-analytics-account"></a>建立 Data Lake Analytics 帳戶
 
 現在，您會同時建立 Data Lake Analytics 和 Azure Data Lake Storage Gen1 帳戶。  這個步驟很簡單，只需要大約 60 秒即可完成。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [建立資源] >  [資料 + 分析] > [Data Lake Analytics]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+2. 按一下"**創建資源** >  **資料 + 分析** > **資料湖分析**"。
 3. 選取下列項目的值︰
-   * **名稱**：命名您的 Data Lake Analytics 帳戶（只允許小寫字母和數位）。
-   * 訂用帳戶：選擇用於分析帳戶的 Azure 訂用帳戶。
-   * **資源群組**。 選取現有的 Azure 資源群組，或建立一個新的群組。
+   * **名稱**：替 Data Lake Analytics 帳戶命名 (只允許小寫字母和數字)。
+   * **訂用帳戶**：選擇用於分析帳戶的 Azure 訂用帳戶。
+   * **資源組**. 選取現有的 Azure 資源群組，或建立一個新的群組。
    * **位置**。 為 Data Lake Analytics 帳戶選取 Azure 資料中心。
-   * **Data Lake Storage Gen1**：遵循指示來建立新的 Data Lake Storage Gen1 帳戶，或選取現有的帳戶。 
+   * **Data Lake Storage Gen1**：請依照指示建立新的 Data Lake Storage Gen1 帳戶，或選取現有的帳戶。 
 4. (選擇性) 選取 Data Lake Analytics 帳戶的定價層。
-5. 按一下 [建立]。 
+5. 按一下 **[建立]**。 
 
 
 ## <a name="your-first-u-sql-script"></a>您的第一個 U-SQL 指令碼
@@ -59,11 +59,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>提交 U-SQL 作業
 
-1. 從 Data Lake Analytics 帳戶中，選取 [新增作業]。
+1. 從 Data Lake Analytics 帳戶中，選取 [新增作業]****。
 2. 貼上前述 U-SQL 指令碼的文字。 為作業命名。 
-3. 選取 [提交] 按鈕以啟動作業。   
-4. 監視作業的 [狀態]，並等候作業狀態變更為 [成功]。
-5. 選取 [資料] 索引標籤，然後選取 [輸出] 索引標籤。選取名為 `data.csv` 的輸出檔案，並檢視輸出資料。
+3. 選取 [提交]**** 按鈕以啟動作業。   
+4. 監視作業的 [狀態]****，並等候作業狀態變更為 [成功]****。
+5. 選擇"**資料**"選項卡，然後選擇 **"輸出"** 選項卡。選擇命名的`data.csv`輸出檔案並查看輸出資料。
 
 ## <a name="see-also"></a>另請參閱
 

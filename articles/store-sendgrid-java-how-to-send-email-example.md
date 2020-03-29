@@ -16,18 +16,18 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876473"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件
-下列範例將說明如何從 Azure 代管的網頁上使用 SendGrid 傳送電子郵件。 產生的應用程式會提示使用者輸入電子郵件值, 如下列螢幕擷取畫面所示。
+下列範例將說明如何從 Azure 代管的網頁上使用 SendGrid 傳送電子郵件。 生成的應用程式將提示使用者輸入電子郵件值，如下圖所示。
 
 ![Email form][emailform]
 
-產生的電子郵件看起來會類似下列螢幕擷取畫面。
+生成的電子郵件將類似于以下螢幕截圖。
 
 ![Email message][emailsent]
 
@@ -205,16 +205,16 @@ ms.locfileid: "67876473"
     </body>
     </html>
 
-除了傳送電子郵件, emailform.jsp 還提供使用者的結果;例如, 下列螢幕擷取畫面:
+除了發送電子郵件外，emailform.jsp 還為使用者提供了結果;因此，電子郵件表單.jsp 還為使用者提供了結果。例如以下螢幕截圖：
 
 ![Send mail result][emailresult]
 
 ## <a name="next-steps"></a>後續步驟
-將您的應用程式部署至計算模擬器，並在瀏覽器中執行 emailform.jsp，輸入表單中的值，按一下 [Send this email]  ，然後在 sendemail.jsp 中檢視結果。
+將您的應用程式部署至計算模擬器，並在瀏覽器中執行 emailform.jsp，輸入表單中的值，按一下 [Send this email] ****，然後在 sendemail.jsp 中檢視結果。
 
-此程式碼可說明如何在 Azure 上的 Java 中使用 SendGrid。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如: 
+此程式碼可說明如何在 Azure 上的 Java 中使用 SendGrid。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如： 
 
-* 您可以使用 Azure 儲存體 Blob 或 SQL Database 來儲存電子郵件地址和電子郵件訊息，而不使用 Web 表單。 如需在 Java 中使用 Azure 儲存體 Blob 的相關資訊，請參閱 [如何從 Java 使用 Blob 儲存體服務](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 如需在 Java 中使用 SQL Database 的相關資訊，請參閱 [在 Java 中使用 SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
+* 您可以使用 Azure 儲存體 Blob 或 SQL Database 來儲存電子郵件地址和電子郵件訊息，而不使用 Web 表單。 如需在 Java 中使用 Azure 儲存體 Blob 的相關資訊，請參閱[如何使用 Java 的 Blob 儲存體服務](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 如需在 Java 中使用 SQL Database 的相關資訊，請參閱[在 Java 中使用 SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
 * 如需在 Java 中使用 SendGrid 的詳細資訊，請參閱 [如何使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email.md)。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245511"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解宣告式佈建運算式
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步處理：了解宣告式佈建運算式
 Azure AD Connect 同步處理是以 Forefront Identity Manager 2010 中最先引進的宣告式佈建為基礎。 它可讓您實作完整的身分識別整合商務邏輯，而不需要撰寫已編譯的程式碼。
 
 宣告式佈建最主要的部分是在屬性流程中使用運算式語言。 使用的語言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 此語言用於 Microsoft Office，而且擁有 VBScript 經驗的使用者也可以辨識它。 宣告式佈建運算式語言只會使用函式，而不是結構化語言。 沒有任何方法或陳述式。 函式會改為巢狀函式來表示程式流程。
@@ -38,7 +38,7 @@ Azure AD Connect 同步處理是以 Forefront Identity Manager 2010 中最先引
 * 參數以百分比符號識別：%ParameterName%
 * 字串常數以引號括住：例如 "Contoso" (注意：必須使用一般引號 ""，而非智慧引號 “”)
 * 數值不加引號，而且必須是十進位。 十六進位值前面會加上 &H。 例如，98052、&HFF
-* 布林值以下列常數表示：True、False。
+* 布林值以兩個常數表示：True、False。
 * 內建常數和常值只以其名稱表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函式
@@ -82,7 +82,7 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 ## <a name="multi-valued-attributes"></a>多重值屬性
 函式可以在單一值和多重值屬性上操作。 對於多重值屬性，函式會在每個值上進行操作並將相同的函式套用到每個值。
 
-例如，  
+例如：  
 `Trim([proxyAddresses])` 在 proxyAddress 屬性中執行每個值的 Trim。  
 `Word([proxyAddresses],1,"@") & "@contoso.com"` 針對每個含有 @-sign 的值，以 @contoso.com 取代網域。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 尋找 SIP 位址並從各值中移除。
@@ -94,10 +94,10 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 
 **概觀主題**
 
-* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 
 **參考主題**
 
-* [Azure AD Connect 同步：函式參考](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同步處理：函式參考](reference-connect-sync-functions-reference.md)
 

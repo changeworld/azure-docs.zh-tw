@@ -1,5 +1,5 @@
 ---
-title: 以 Android 憑證為基礎的驗證-Azure Active Directory
+title: 基於 Android 證書的身份驗證 - Azure 活動目錄
 description: 了解在有 Android 裝置的解決方案中，設定憑證式驗證的支援案例和需求
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848811"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上的 Azure Active Directory 憑證式驗證
@@ -35,16 +35,16 @@ ms.locfileid: "74848811"
 
 | 應用程式 | 支援 |
 | --- | --- |
-| Azure 資訊保護應用程式 |![核取記號表示此應用程式的支援][1] |
-| Intune 公司入口網站 |![核取記號表示此應用程式的支援][1] |
-| Microsoft Teams |![核取記號表示此應用程式的支援][1] |
-| OneNote |![核取記號表示此應用程式的支援][1] |
-| OneDrive |![核取記號表示此應用程式的支援][1] |
-| Outlook |![核取記號表示此應用程式的支援][1] |
-| Power BI |![核取記號表示此應用程式的支援][1] |
-| 商務用 Skype |![核取記號表示此應用程式的支援][1] |
-| Word / Excel / PowerPoint |![核取記號表示此應用程式的支援][1] |
-| Yammer |![核取記號表示此應用程式的支援][1] |
+| Azure 資訊保護應用程式 |![標記表示對此應用程式的支援][1] |
+| Intune 公司入口網站 |![標記表示對此應用程式的支援][1] |
+| Microsoft Teams |![標記表示對此應用程式的支援][1] |
+| OneNote |![標記表示對此應用程式的支援][1] |
+| OneDrive |![標記表示對此應用程式的支援][1] |
+| Outlook |![標記表示對此應用程式的支援][1] |
+| Power BI |![標記表示對此應用程式的支援][1] |
+| 商務用 Skype |![標記表示對此應用程式的支援][1] |
+| Word / Excel / PowerPoint |![標記表示對此應用程式的支援][1] |
+| Yammer |![標記表示對此應用程式的支援][1] |
 
 ### <a name="implementation-requirements"></a>實作需求
 
@@ -66,7 +66,7 @@ ADFS 權杖必須要有下列宣告，Azure Active Directory 才能撤銷用戶�
 
 如需詳細資訊，請參閱[自訂 AD FS 登入頁面](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 應用程式 (已啟用新式驗證) 會在其要求中將 ‘*prompt=login*’ 傳送至 Azure AD。 根據預設，Azure AD 會將對 ADFS 的要求中的 ‘*prompt=login*’ 轉譯成 ‘*wauth=usernamepassworduri*’ (請求 ADFS 進行 U/P 驗證) 和 ‘*wfresh=0*’ (請求 ADFS 忽略 SSO 狀態並進行全新驗證)。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將您的同盟網域設定中的 'PromptLoginBehavior' 設定為 ‘Disabled‘。
+某些 Office 應用程式 (已啟用新式驗證) 會在其要求中將 ‘*prompt=login*’ 傳送至 Azure AD。 根據預設，Azure AD 會將對 ADFS 的要求中的 ‘*prompt=login*’ 轉譯成 ‘*wauth=usernamepassworduri*’ (請求 ADFS 進行 U/P 驗證) 和 ‘*wfresh=0*’ (請求 ADFS 忽略 SSO 狀態並進行全新驗證)。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將您的同盟網域設定中的 'PromptLoginBehavior'** 設定為 ‘Disabled‘**。
 您可以使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作︰
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

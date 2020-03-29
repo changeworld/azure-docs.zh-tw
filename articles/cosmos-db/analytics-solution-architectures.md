@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cosmos DB 中使用全域散發分析的解決方案。
-description: 深入瞭解可使用 Azure Cosmos DB 中的全域分散式分析來建立的解決方案。
+title: 在 Azure Cosmos DB 中使用全域分散式分析的解決方案。
+description: 瞭解可以使用 Azure Cosmos DB 中的全域分散式分析構建的解決方案。
 author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73681798"
 ---
-# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全域散發分析的解決方案
+# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全球分散式分析的解決方案
 
-本文說明可使用 Azure Cosmos DB 中的全域分散式分析來建立的解決方案。
+本文介紹了可以使用 Azure Cosmos DB 中的全域分散式分析構建的解決方案。
 
 ## <a name="retail-and-consumer-goods"></a>零售與消費性商品
 
@@ -65,7 +65,7 @@ Azure Cosmos DB 的內建分析平台可讓您從全球各地的數百萬個裝�
 
 ![建置即時車輛診斷系統的 Azure Cosmos DB Spark 支援](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
-## <a name="gaming"></a>玩遊戲
+## <a name="gaming"></a>遊戲
 
 * 透過內建 Spark 支援，Azure Cosmos DB 可讓您在短短幾分鐘內輕鬆建立、調整及部署進階分析和機器學習模型，以產生最理想的遊戲體驗。
 

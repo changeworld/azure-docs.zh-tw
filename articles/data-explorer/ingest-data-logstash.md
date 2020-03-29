@@ -1,6 +1,6 @@
 ---
 title: 將資料從 Logstash 擷取至 Azure 資料總管
-description: 在本文中，您了解如何 （負載） 資料內嵌至 Azure 從 Logstash 的資料總管
+description: 在本文中，您將瞭解如何從 Logstash 將資料引入（載入）到 Azure 資料資源管理器中
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494533"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>將資料從 Logstash 擷取至 Azure 資料總管
 
-[Logstash](https://www.elastic.co/products/logstash) 是開放原始碼的伺服器端資料處理管線，可同時從許多來源擷取資料、轉換資料，然後將資料傳送至您最愛的「隱藏」。 在本文中，您將該資料傳送至 Azure [資料總管] 中，這是記錄檔和遙測資料的快速又可高度擴充的資料探勘服務。 您將先在測試叢集中建立資料表和資料對應，然後指示 Logstash 將資料傳送至資料表，並驗證結果。
+[Logstash](https://www.elastic.co/products/logstash) 是開放原始碼的伺服器端資料處理管線，可同時從許多來源擷取資料、轉換資料，然後將資料傳送至您最愛的「隱藏」。 在本文中，您將將資料發送到 Azure 資料資源管理器，這是用於日誌和遙測資料的快速且高度可擴展的資料探索服務。 您將先在測試叢集中建立資料表和資料對應，然後指示 Logstash 將資料傳送至資料表，並驗證結果。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * Azure 資料總管[測試叢集和資料庫](create-cluster-database-portal.md)
@@ -108,12 +108,12 @@ output {
 
 | 參數名稱 | 描述 |
 | --- | --- |
-| **path** | Logstash 外掛程式會先將事件寫入至暫存檔，再傳送至 Azure 資料總管。 此參數會包含應寫入檔案的路徑，以及檔案輪替在觸發上傳至 Azure 資料總管服務的動作時所使用的時間運算式。|
+| **路徑** | Logstash 外掛程式會先將事件寫入至暫存檔，再傳送至 Azure 資料總管。 此參數會包含應寫入檔案的路徑，以及檔案輪替在觸發上傳至 Azure 資料總管服務的動作時所使用的時間運算式。|
 | **ingest_url** | 擷取相關通訊的 Kusto 端點。|
 | **app_id**、**app_key** 和 **app_tenant**| 連線至 Azure 資料總管所需的認證。 請務必使用具有擷取權限的應用程式。 |
-| **database**| 要放置事件的資料庫名稱。 |
-| **table** | 要放置事件的目標資料表名稱。 |
-| **對應** | 對應可用來將傳入事件 Json 字串對應至正確的資料列格式 (定義哪個屬性會進入哪個資料行)。 |
+| **資料庫**| 要放置事件的資料庫名稱。 |
+| **表** | 要放置事件的目標資料表名稱。 |
+| **映射** | 對應可用來將傳入事件 Json 字串對應至正確的資料列格式 (定義哪個屬性會進入哪個資料行)。 |
 
 ## <a name="run-logstash"></a>執行 Logstash
 

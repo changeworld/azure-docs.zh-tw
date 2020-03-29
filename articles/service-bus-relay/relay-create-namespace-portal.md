@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站建立轉送命名空間 | Microsoft Docs
-description: 本文提供逐步解說，說明如何使用 Azure 入口網站建立轉送命名空間。
+description: 本文提供了一個演練，演示如何使用 Azure 門戶創建中繼命名空間。
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: b9811ef92aba4891627c20e0269be136582a3304
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514658"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 入口網站建立轉送命名空間
@@ -26,7 +26,7 @@ ms.locfileid: "76514658"
 命名空間是所有 Azure 轉送元件的範圍容器。 多個轉送可以位於單一命名空間，而且命名空間通常會作為應用程式容器。 目前有 2 個不同的方式可建立轉送命名空間：
 
 1. Azure 入口網站 (本文)。
-2. [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本。
+2. [Azure 資源管理器](../azure-resource-manager/management/overview.md)範本。
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 入口網站中建立命名空間
 

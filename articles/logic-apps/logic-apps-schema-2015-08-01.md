@@ -1,5 +1,5 @@
 ---
-title: 八月-1-2015 preview 的架構更新
+title: 2015 年 8 月 1 日預覽的架構更新
 description: Azure Logic Apps 中邏輯應用程式定義的更新後結構描述版本 2015-08-01-preview
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
 ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792852"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure Logic Apps 的結構描述更新 - 2015 年 8 月 1 日預覽
@@ -37,7 +37,7 @@ ms.locfileid: "74792852"
 
 ### <a name="managed-apis"></a>受控 API
 
-Microsoft 會代表您管理某些 API，例如 Office 365、Salesforce、Twitter 和 FTP。 您可以直接使用部分受控 API (例如 Bing 翻譯)，有些則需要設定，也稱為「連線」。
+Microsoft 會代表您管理某些 API，例如 Office 365、Salesforce、Twitter 和 FTP。 您可以直接使用部分受控 API (例如 Bing 翻譯)，有些則需要設定，也稱為「連線」**。
 
 例如，當您使用 Office 365 時，必須建立包含 Office 365 登入權杖的連線。 系統會安全地儲存並重新整理您的權杖，讓您的邏輯應用程式隨時都可呼叫 Office 365 API。 如果想要連線到 SQL 或 FTP 伺服器，便必須建立具有連接字串的連線。 
 
@@ -290,7 +290,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 | 動作屬性 | 描述 |
 | --- | --- |
-| `type` | `Http` 而不是 `APIapp` |
+| `type` | `Http`，而非`APIapp` |
 | `metadata.apiDefinitionUrl` | 若要在邏輯應用程式設計工具中使用此動作，請包含中繼資料端點，它的建構來源是：`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
 | `inputs.uri` | 建構來源：`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` | 一律為 `POST` |

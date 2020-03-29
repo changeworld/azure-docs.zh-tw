@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：對傳遞驗證進行疑難排解 | Microsoft Docs
+title: Azure AD Connect：針對傳遞驗證進行疑難排解 | Microsoft Docs
 description: 本文會說明如何針對 Azure Active Directory (Azure AD) 傳遞驗證進行疑難排解。
 services: active-directory
 keywords: 針對 Azure AD Connect 傳遞驗證進行疑難排解, 安裝 Active Directory, Azure AD, SSO, 單一登入的必要元件
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456121"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
@@ -28,13 +28,13 @@ ms.locfileid: "60456121"
 這篇文章可協助您尋找有關 Azure AD 傳遞驗證常見問題的疑難排解資訊。
 
 >[!IMPORTANT]
->如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 了解如何[新增僅限雲端管理員帳戶 (英文)](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
+>如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何[添加僅雲全域管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
 
 ## <a name="general-issues"></a>一般問題
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>檢查此功能和驗證代理程式的狀態
 
-確定您租用戶上的傳遞驗證功能仍為 [已啟用]  ，而驗證代理程式的狀態會顯示 [作用中]  ，而不是 [非作用中]  。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect]  刀鋒視窗來檢查狀態。
+確定您租用戶上的傳遞驗證功能仍為 [已啟用]****，而驗證代理程式的狀態會顯示 [作用中]****，而不是 [非作用中]****。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect]**** 刀鋒視窗來檢查狀態。
 
 ![Azure Active Directory 管理中心 - Azure AD Connect 刀鋒視窗](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "60456121"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-巡覽至位在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的 **Azure Active Directory** -> [登入]  ，按一下特定使用者的登入活動。 尋找 [登入錯誤碼]  欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+導航到[Azure 活動目錄管理中心](https://aad.portal.azure.com/)上的**Azure 活動目錄** -> **登錄，** 然後按一下特定使用者的登錄活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
 |登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
@@ -67,13 +67,13 @@ ms.locfileid: "60456121"
 | 80002 | 驗證代理程式的密碼驗證要求已逾時。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80003 | 驗證代理程式收到無效的回應。 | 如果有多位使用者發生一樣的問題，請檢查您的 Active Directory 設定。
 | 80004 | 登入要求中使用的使用者主體名稱 (UPN) 不正確。 | 要求使用者以正確的使用者名稱登入。
-| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試。
+| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試一次。
 | 80007 | 驗證代理程式無法連線至 Active Directory。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80010 | 驗證代理程式無法連線將密碼解密。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。 
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。
 
 >[!IMPORTANT]
->藉由呼叫驗證使用者名稱及密碼，向 Active Directory 傳遞驗證代理程式進行驗證的 Azure AD 使用者[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)。 如此一來，如果您已設定的 [登入到] 設定來限制工作站登入存取的 Active Directory 中，您必須新增伺服器裝載傳遞驗證代理程式，以及 [登入到] 的伺服器清單。 無法執行這項操作，將會封鎖從登入 Azure AD 使用者。
+>通過身份驗證代理通過調用[Win32 登錄使用者 API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)來驗證其針對活動目錄的使用者名和密碼，從而驗證 Azure AD 使用者。 因此，如果您在 Active Directory 中設置了"登錄到"設置以限制工作站登錄訪問，則必須將託管直通身份驗證代理的伺服器添加到"登錄到"伺服器清單中。 如果不這樣做，將阻止使用者登錄到 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>驗證代理程式安裝問題
 
@@ -133,7 +133,7 @@ ms.locfileid: "60456121"
 
 ### <a name="detailed-trace-logs"></a>詳細的追蹤記錄
 
-若要針對使用者登入失敗進行疑難排解，請查看追蹤記錄，其位於 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 。 這些記錄包含使用傳遞驗證功能的特定使用者為什麼會登入失敗的原因。 這些錯誤也對應到先前的登入失敗原因資料表中所示的登入失敗原因。 以下是記錄項目範例：
+若要針對使用者登入失敗進行疑難排解，請查看追蹤記錄，其位於 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\**。 這些記錄包含使用傳遞驗證功能的特定使用者為什麼會登入失敗的原因。 這些錯誤也對應到先前的登入失敗原因資料表中所示的登入失敗原因。 以下是記錄項目範例：
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -141,7 +141,7 @@ ms.locfileid: "60456121"
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-您可以開啟命令提示字元並執行下列命令，以取得錯誤 (上述範例為 '1328') 的描述性詳細資料 (注意：請將 '1328' 取代為您在記錄中看到的實際錯誤號碼)：
+您可以開啟命令提示字元並執行下列命令 (注意：請以您在記錄中看到的實際錯誤編號取代 '1328')，以取得錯誤 (前例中為 '1328') 的描述性詳細資料：
 
 `Net helpmsg 1328`
 
@@ -161,7 +161,7 @@ ms.locfileid: "60456121"
 
 ## <a name="performance-monitor-counters"></a>效能監視器計數器
 
-另一種監視驗證代理程式的方法就是，追蹤每個有安裝驗證代理程式之伺服器上的特定效能監視計數器。 使用下列全域計數器 ( **# PTA authentications**、 **#PTA failed authentications** 及 **#PTA successful authentications**) 和錯誤計數器 ( **# PTA authentication errors**)：
+另一種監視驗證代理程式的方法就是，追蹤每個有安裝驗證代理程式之伺服器上的特定效能監視計數器。 使用下列全域計數器 (**# PTA authentications**、**#PTA failed authentications** 及 **#PTA successful authentications**) 和錯誤計數器 (**# PTA authentication errors**)：
 
 ![傳遞驗證效能監視器計數器](./media/tshoot-connect-pass-through-authentication/pta12.png)
 

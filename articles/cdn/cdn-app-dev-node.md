@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594138"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
@@ -46,16 +46,16 @@ ms.locfileid: "67594138"
 
     npm init
 
-然後您會看到一系列用來初始化專案的問題。  本教學課程使用 app.js  做為 *進入點*。  您可以在下列範例中看到我的其他選擇。
+然後您會看到一系列用來初始化專案的問題。  本教學課程使用 app.js **** 做為 *進入點*。  您可以在下列範例中看到我的其他選擇。
 
 ![NPM init 輸出](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-我們的專案現在會使用 packages.json  檔案加以初始化。  我們的專案將使用 NPM 封裝內含的一些 Azure 程式庫。  我們將會針對 Node.js (ms-rest-azure) 使用 Azure 用戶端執行階段，針對 Node.js (azure-arm-cd) 使用 Azure CDN 用戶端程式庫。  讓我們將它們新增至專案做為相依性。
+我們的專案現在會使用 packages.json ** 檔案加以初始化。  我們的專案將使用 NPM 封裝內含的一些 Azure 程式庫。  我們將會針對 Node.js (ms-rest-azure) 使用 Azure 用戶端執行階段，針對 Node.js (azure-arm-cd) 使用 Azure CDN 用戶端程式庫。  讓我們將它們新增至專案做為相依性。
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-封裝完成安裝後，package.json  檔案看起來應該類似此範例 (版本號碼可能不同)：
+封裝完成安裝後，package.json ** 檔案看起來應該類似此範例 (版本號碼可能不同)：
 
 ``` json
 {
@@ -75,10 +75,10 @@ ms.locfileid: "67594138"
 }
 ```
 
-最後，使用文字編輯器來建立空白文字檔，並將它儲存為專案資料夾根目錄中的 app.js  。  我們現在可以開始撰寫程式碼了。
+最後，使用文字編輯器來建立空白文字檔，並將它儲存為專案資料夾根目錄中的 app.js **。  我們現在可以開始撰寫程式碼了。
 
 ## <a name="requires-constants-authentication-and-structure"></a>必要項目、常數、驗證和結構
-在編輯器中開啟 app.js  ，開始撰寫程式的基本結構。
+在編輯器中開啟 app.js ** ，開始撰寫程式的基本結構。
 
 1. 使用下列內容在頂端為我們的 NPM 封裝新增「必要項目」︰
    
@@ -86,7 +86,7 @@ ms.locfileid: "67594138"
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我們必須定義一些我們的方法將用到的常數。  新增下列內容。  務必視需要使用您自己的值來取代預留位置，包括 **&lt;角括號&gt;** 。
+2. 我們必須定義一些我們的方法將用到的常數。  新增下列內容。  請務必根據需要用您自己的值替換預留位置（包括**&lt;角括弧&gt;**）。
    
     ``` javascript
     //Tenant app constants
@@ -119,7 +119,7 @@ ms.locfileid: "67594138"
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    務必使用正確資訊來取代 **&lt;角括號&gt;** 中的項目。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
+    請務必用正確的資訊替換**&lt;角括弧&gt;** 中的物料。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
 4. 我們的 Node.js 主控台應用程式將會採用一些命令列參數。  讓我們驗證看看是否已至少傳遞一個參數。
    
    ```javascript

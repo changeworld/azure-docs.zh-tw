@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756730"
 ---
 # <a name="monitor-your-azure-data-box-edge"></a>監視您的 Azure Data Box Edge
 
 本文說明如何監視您的 Azure Data Box Edge。 若要監視您的裝置，您可以使用 Azure 入口網站或本機 Web UI。 使用 Azure 入口網站來檢視裝置事件、設定及管理警示和檢視計量。 在您的實體裝置上使用本機 Web UI，來檢視各種裝置元件的硬體狀態。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 檢視裝置事件和對應的警示
@@ -36,7 +36,7 @@ ms.locfileid: "60756730"
 在本機 Web UI 中採取下列步驟來檢視您裝置元件的硬體狀態。
 
 1. 連線至您裝置的本機 Web UI 設定。
-2. 移至 [維護] > [硬體狀態]  。 您可以檢視各種裝置元件的健康情況。
+2. 移至 [維護] > [硬體狀態]****。 您可以檢視各種裝置元件的健康情況。
 
     ![檢視硬體狀態](media/data-box-edge-monitor/view-hardware-status.png)
 

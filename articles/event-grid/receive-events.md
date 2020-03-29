@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60803794"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>接收 HTTP 端點的事件
@@ -22,13 +22,13 @@ ms.locfileid: "60803794"
 > [!NOTE]
 > **強烈**建議您在使用事件格線觸發 Azure Function 時使用[事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要具有 HTTP 觸發函式的函數應用程式。
 
 ## <a name="add-dependencies"></a>新增相依性
 
-若您正以 .NET 進行開發，請為 `Microsoft.Azure.EventGrid`[Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)[新增相依性](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)到您的函式。 本文的範例需要 1.4.0 版或更新版本。
+若您正以 .NET 進行開發，請為 `Microsoft.Azure.EventGrid` [Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)[新增相依性](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)到您的函式。 本文的範例需要 1.4.0 版或更新版本。
 
 其他語言的 SDK 可以透過[發行 SDK](./sdk-overview.md#data-plane-sdks) 參考取得。 這些套件包含原生事件類型的模型，例如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`。
 

@@ -18,18 +18,18 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65950906"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的身分識別需求
 設計混合式身分識別解決方案的第一個步驟，是判斷將運用此解決方案的企業組織有何需求。  混合式身分識別一開始是支援的角色 (它可提供驗證而支援所有其他雲端解決方案)，接著會提供新奇有趣的功能，為使用者釋出新的工作負載。  您想要為使用者採用的這些工作負載或服務，會指定混合式身分識別設計的需求。  這些服務和工作負載在內部部署和雲端中都需要運用混合式身分識別。  
 
-我們必須通盤審視企業的各個主要層面，以了解其目前的需求，以及公司對未來的規劃。 如果您不清楚混合式身分識別設計的長期策略，您的解決方案在未來有可能無法隨著企業的成長和變化而進行調整。 下圖顯示的範例，混合式身分識別架構以及要為使用者釋出的工作負載。 此範例只是為了說明所有可透過健全的整合式身分識別策略釋出及提供的新可能性。 
+我們必須通盤審視企業的各個主要層面，以了解其目前的需求，以及公司對未來的規劃。 如果您不清楚混合式身分識別設計的長期策略，您的解決方案在未來有可能無法隨著企業的成長和變化而進行調整。 下圖顯示了混合標識體系結構和為使用者解鎖的工作負載的示例。 此範例只是為了說明所有可透過健全的整合式身分識別策略釋出及提供的新可能性。 
 
-屬於混合式身分識別架構的某些元件![混合式身分識別架構](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+屬於混合標識體系結構![的混合標識體系結構的一些元件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>判斷商務需求
 每家公司都會有不同的需求，即使這些公司屬於相同產業，實際的商務需求仍可能有所不同。 您仍然可以採用業界的最佳作法，但最終引導您定義混合式身分識別設計需求的，仍將是公司的商務需求。 

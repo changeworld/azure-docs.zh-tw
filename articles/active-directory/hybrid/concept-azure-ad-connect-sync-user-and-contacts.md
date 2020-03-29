@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步：了解使用者、群組和連絡人 | Microsoft Docs
+title: Azure AD Connect 同步處理：了解使用者、群組和連絡人 | Microsoft Docs
 description: 說明 Azure AD Connect 同步處理中的使用者、群組和連絡人。
 services: active-directory
 documentationcenter: ''
@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245484"
 ---
-# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解使用者、群組和連絡人
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步處理：了解使用者、群組和連絡人
 您可能有幾種不同的原因，而擁有多個 Active Directory 樹系並且具有幾種不同的部署拓撲。 常見的模型包括合併與收購之後的帳戶-資源部署與 GAL 同步處理的樹系。 雖然有單純的模型，但混合模型也同樣常見。 Azure AD Connect 同步處理中的預設組態不會採用任何特定的模型，但是根據在安裝指南中選取使用者比對的方式，可以觀察到不同的行為。
 
 在本主題中，我們將詳細解說預設組態在某些拓撲中的運作方式。 我們將詳細解說組態，以及可用來查看組態的同步處理規則編輯器。
@@ -51,12 +51,12 @@ ms.locfileid: "60245484"
     
       * proxyAddress 屬性值為 *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* 的 Active Directory 群組在 Azure AD 中不會擁有郵件功能。 該群組沒有 SMTP 位址。
       
-      * ProxyAddress 屬性有值的 Active Directory 群組 *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* 會在 Azure AD 中擁有郵件功能。
+      * 其代理位址屬性具有值*\@{"X500：/0=contoso.com/ou_user/cn_testgroup"，"SMTP：johndoe contoso.com"** 的 Active Directory 組將在 Azure AD 中啟用郵件。
       
-      * ProxyAddress 屬性有值的 Active Directory 群組 *{"X500:/0=contoso.com/ou=users/cn=testgroup"，"smtp:johndoe\@contoso.com"}* 也會在 Azure AD 中擁有郵件功能。
+      * 代理位址屬性具有值*\@[X500：/0=contoso.com/ou_user/cn_testgroup]，"smtp：johndoe contoso.com"]* 的 Active Directory 組也將在 Azure AD 中啟用郵件。
 
 ## <a name="contacts"></a>連絡人
-在合併與收購時使用 GALSync 解決方案橋接兩個或多個 Exchange 樹系之後，常會有多個連絡人代表不同樹系中的某個使用者。 連絡人物件一律從連接器空間使用 mail 屬性加入 Metaverse。 如果已經有具相同郵件地址的連絡人物件或使用者物件，則物件會一起加入。 這設定在規則 **In from AD – Contact Join**中。 另外還有一個名為 **In from AD - Contact Common** 的規則，其屬性流程是使用常數 **Contact** 提供給 Metaverse 屬性 **sourceObjectType**。 此規則的優先順序非常低，因此，如果已將任何使用者物件聯結到同一個 Metaverse 物件，則規則 **In from AD – User Common** 會提供 User 值給這個屬性。 有了這項規則，如果沒有使用者加入，此屬性的值就會是 Contact，如果至少找到了一個使用者，則屬性的值就會是 User。
+在合併與收購時使用 GALSync 解決方案橋接兩個或多個 Exchange 樹系之後，常會有多個連絡人代表不同樹系中的某個使用者。 連絡人物件一律從連接器空間使用 mail 屬性加入 Metaverse。 如果已經有具相同郵件地址的連絡人物件或使用者物件，則物件會一起加入。 這是在規則 **In from AD – Contact Join** 中設定。 還有一個名為 **In from AD – Contact Common** 的規則，其屬性流程指向具有常數 **Contact** 的 Metaverse 屬性 **sourceObjectType**。 此規則的優先順序非常低，如果有任何使用者物件聯結至相同的 Metaverse 物件，則規則 **In from AD – User Common** 會提供值 User 給此屬性。 有了這項規則，如果沒有使用者加入，此屬性的值就會是 Contact，如果至少找到了一個使用者，則屬性的值就會是 User。
 
 當佈建物件到 Azure AD 時，如果 Metaverse 屬性 **sourceObjectType** 設為 **Contact**，輸出規則 **Out to AAD - Contact Join** 就會建立連絡人物件。 如果將此屬性設定為 **User**，則規則 **Out to AAD - User Join** 將改為建立使用者物件。
 當有多個來源 Active Directory 匯入並同步處理時，可以將物件從 Contact 升級為 User。
@@ -71,9 +71,9 @@ ms.locfileid: "60245484"
 這個假設是，如果找到停用的使用者帳戶，我們之後就不會找到另一個使用中的帳戶，而物件會使用找到的 userPrincipalName 和 sourceAnchor 佈建到 Azure AD。 如果有另一個使用中的帳戶加入相同的 Metaverse 物件，則會使用其 userPrincipalName 和 sourceAnchor。
 
 ## <a name="changing-sourceanchor"></a>變更 sourceAnchor
-當物件匯出到 Azure AD 之後，則不允許再變更 sourceAnchor。 當物件匯出之後，Metaverse 屬性 **cloudSourceAnchor** 就會設為 Azure AD 所接受的 **sourceAnchor** 值。 如果 **sourceAnchor** 已變更且不符合 **cloudSourceAnchor**，規則 **Out to AAD - User Join** 將會擲回 **sourceAnchor 屬性已經變更**的錯誤。 在此情況下，必須先更正組態或資料，讓 Metaverse 中再度具有相同的 sourceAnchor，才能再次同步處理物件。
+當物件匯出到 Azure AD 之後，則不允許再變更 sourceAnchor。 當物件匯出之後，Metaverse 屬性 **cloudSourceAnchor** 就會設為 Azure AD 所接受的 **sourceAnchor** 值。 如果 **sourceAnchor** 變更，且不符合 **cloudSourceAnchor**，則規則 **Out to AAD – User Join** 會擲回錯誤 **sourceAnchor attribute has changed**。 在此情況下，必須先更正組態或資料，讓 Metaverse 中再度具有相同的 sourceAnchor，才能再次同步處理物件。
 
 ## <a name="additional-resources"></a>其他資源
-* [Azure AD Connect Sync：自訂同步處理選項](how-to-connect-sync-whatis.md)
+* [Azure AD 連接同步：自訂同步選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 

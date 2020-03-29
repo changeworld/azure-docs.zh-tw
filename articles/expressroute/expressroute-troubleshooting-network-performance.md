@@ -1,5 +1,5 @@
 ---
-title: 針對網路連結效能進行疑難排解： Azure
+title: 排除網路鏈路性能：Azure
 description: 本頁提供測試 Azure 網路連結效能的標準化方法。
 services: expressroute
 author: tracsman
@@ -9,14 +9,14 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74869641"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azure。 大型和小型的客戶可以成功使用站對站 VPN 和 ExpressRoute 等方法，在 Azure 中經營其業務。 但是當效能不符合您預期的情況或先前的經驗時，會發生什麼事？ 本文件可協助您將測試方式標準化，並為您的特定環境制訂基準。
 
 本文件說明如何在兩部主機之間輕鬆且一致地測試網路延遲和頻寬。 本文件也針對查看 Azure 網路的方式提供一些建議，並協助您隔離問題點。 討論的 PowerShell 指令碼和工具在網路上 (要測試之連結的任一端) 需要有兩部主機。 一部主機必須是 Windows 伺服器或桌面，另一部主機則可以是 Windows 或 Linux。 
@@ -41,10 +41,10 @@ Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azur
  - **NIC**：請確定您知道指派給上述 NIC 的私人 IP。
  - **NIC NSG**：可能會有在 NIC 層級套用的特定 NSG，請確定 NSG 規則集適用於您想要通過的流量。 例如，確定已開放連接埠 5201 (用於 iPerf)、3389 (用於 RDP) 或 22 (用於 SSH)，以允許通過測試流量。
  - **VNet 子網路**：NIC 會指派給特定子網路，請確定您知道哪些規則與該子網路相關聯。
- - **子網路 NSG**：就像 NIC 一樣，也可以在子網路套用 NSG。 請確定 NSG 規則集適用於您想要通過的流量 (若是輸入至 NIC 的流量，會先套用子網路 NSG，然後再套用 NIC NSG，相反地，若是從 VM 輸出的流量，則會先套用 NIC NSG，然後子網路 NSG 才派上用場)。
- - **子網路 UDR**：使用者定義的路由可以將流量導向至中繼躍點 (例如，防火牆或負載平衡器)。 請確定您知道是否已經有適用於您流量的 UDR，如果有，則該流量將流向何處，且下一個躍點將會對您的流量採取什麼動作 (例如，防火牆可能會在相同的兩部主機之間通過一些流量，並拒絕一些流量)。
+ - **子網路 NSG**：就像 NIC 一樣，也可以在子網路套用 NSG。 請確定 NSG 規則集適用於您想要通過的流量  (若是輸入至 NIC 的流量，會先套用子網路 NSG，然後再套用 NIC NSG，相反地，若是從 VM 輸出的流量，則會先套用 NIC NSG，然後子網路 NSG 才派上用場)。
+ - **子網路 UDR**：使用者定義的路由可以將流量導向至中繼躍點 (例如，防火牆或負載平衡器)。 請確定您知道是否已經有適用於您流量的 UDR，如果有，則該流量將流向何處，且下一個躍點將會對您的流量採取什麼動作  (例如，防火牆可能會在相同的兩部主機之間通過一些流量，並拒絕一些流量)。
  - **閘道子網路/NSG/UDR**：就像 VM 子網路一樣，閘道子網路可以擁有 NSG 和 UDR。 請確定您知道它們是否在那裡，以及他們對流量的影響。
- - **VNet 閘道 (ExpressRoute)** ：一旦啟用對等互連 (ExpressRoute) 或 VPN 之後，則不會有很多設定可以影響流量如何路由或是否路由。 如果您有多個 ExpressRoute 線路或 VPN 通道連線至相同的 VNet 閘道，您應該了解連線權數設定，因為這個設定會影響連線喜好設定，而且會影響您流量所採用的路徑。
+ - **VNet 閘道 (ExpressRoute)**：一旦啟用對等互連 (ExpressRoute) 或 VPN 之後，則不會有很多設定可以影響流量如何路由或是否路由。 如果您有多個 ExpressRoute 線路或 VPN 通道連線至相同的 VNet 閘道，您應該了解連線權數設定，因為這個設定會影響連線喜好設定，而且會影響您流量所採用的路徑。
  - **路由篩選** (未顯示)：路由篩選僅適用於 ExpressRoute 上的 Microsoft 對等互連 ，但請務必確認您在 Microsoft 對等互連上是否看不到您預期的路由。 
 
 這表示您目前位於連結的 WAN 部分。 此路由網域可以是您的服務提供者、您的公司 WAN 或網際網路。 與這些連結相關的許多躍點、技術和公司都可能會使該路由網域有點難以進行疑難排解。 通常，您要先同時排除 Azure 和您的公司網路，才能跳入這個公司和躍點的集合。
@@ -59,7 +59,7 @@ Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azur
 我已經將這些所有工具和方法都包裝成一個 PowerShell 模組 (AzureCT)，讓您可以安裝並使用。
 
 ### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT：Azure 連線能力工具組
-AzureCT PowerShell 模組有兩個元件[可用性測試][Availability Doc]和[效能測試][Performance Doc]。 本文件僅涉及效能測試，因此，請將注意力放在此 PowerShell 模組中的兩個連結效能命令上。
+AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Availability Doc]和[效能測試][Performance Doc]。 本文件僅涉及效能測試，因此，請將注意力放在此 PowerShell 模組中的兩個連結效能命令上。
 
 使用此工具組進行效能測試有三個基本步驟。 1) 安裝 PowerShell 模組、2) 安裝支援的應用程式 iPerf 和 PSPing、3) 執行效能測試。
 
@@ -144,7 +144,7 @@ AzureCT PowerShell 模組有兩個元件[可用性測試][Availability Doc]和[�
 
 若是 WAN，與您的服務提供者或 ISP 分享您的測試結果可能會協助他們開始著手之處，並避免涵蓋一些已經測試過的相同領域。 但是，如果他們想要自行驗證您得到的結果，請不要不高興。 根據其他人報告的結果進行疑難排解時，「要信任也要查證」是很好的座右銘。
 
-有了 Azure，一旦您盡可能地隔離問題，就可以查看[Azure 網路檔][Network Docs]，如果仍然需要，請[開啟支援票證][Ticket Link]。
+透過 Azure，一旦您盡可能地詳細隔離問題之後，就可以檢閱 [Azure 網路文件][Network Docs]，之後如果仍然需要，[請開啟支援票證][Ticket Link]。
 
 ## <a name="references"></a>參考
 ### <a name="latencybandwidth-expectations"></a>延遲/頻寬期望
@@ -179,7 +179,7 @@ AzureCT PowerShell 模組有兩個元件[可用性測試][Availability Doc]和[�
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Location|Azure<br/>地區|預估<br/>距離 (公里)|延遲|1 個工作階段<br/>Bandwidth|最大值<br/>Bandwidth|
+|ExpressRoute<br/>Location|Azure<br/>區域|預估<br/>距離 (公里)|Latency|1 個工作階段<br/>頻寬|最大值<br/>頻寬|
 | Seattle | 美國西部 2        |    191 公里 |   5 毫秒 | 262.0 Mbits/秒 |  3.74 Gbits/秒 |
 | Seattle | 美國西部          |  1,094 公里 |  18 毫秒 |  82.3 Mbits/秒 |  3.70 Gbits/秒 |
 | Seattle | 美國中部       |  2,357 公里 |  40 毫秒 |  38.8 Mbits/秒 |  2.55 Gbits/秒 |
@@ -198,14 +198,14 @@ AzureCT PowerShell 模組有兩個元件[可用性測試][Availability Doc]和[�
 \* 巴西延遲是不錯的範例，其中的直線距離明顯不同於光纖運行距離。 我本來預期延遲大約為 160 毫秒，但是實際上是 189 毫秒。 與我預期不符的這項差異可能表示某個地方存在網路問題，但最有可能的是光纖運行並不是以直線進入巴西，而是距離西雅圖還超過 1,000 公里左右，才能到達巴西。
 
 ## <a name="next-steps"></a>後續步驟
-1. 從 GitHub 下載 Azure 連線工具組，網址為[https://aka.ms/AzCT][ACT]
-2. 遵循[連結效能測試][Performance Doc]的指示
+1. 從 GitHub 下載 Azure 連接工具組，[https://aka.ms/AzCT][ACT]
+2. 依照指示進行[連結效能測試][Performance Doc]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure 網路元件"
-[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute 疑難排解"
-[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "效能測試環境"
-[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell 輸出"
+[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "快速路由故障排除"
+[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "Perf 測試環境"
+[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "電源殼輸出"
 
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md

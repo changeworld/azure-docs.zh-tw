@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65953134"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>管理 Azure Data Box Edge 上的計算
 
 本文說明如何管理 Azure Data Box Edge 上的計算。 您可以透過 Azure 入口網站或本機 Web UI 來管理計算。 使用 Azure 入口網站來管理模組、觸發程序及計算設定，以及使用本機 Web UI 來管理計算設定。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 管理觸發程序
@@ -30,23 +30,23 @@ ms.locfileid: "65953134"
 
 事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 對於 Data Box Edge，觸發程序可以回應檔案事件或排程。
 
-- **檔案**：這些觸發程序可回應檔案事件，例如建立檔案、修改檔案。
-- **已排程**：這些觸發程序可回應排程，您能定義其開始日期、開始時間及重複間隔。
+- **檔**：這些觸發器用於回應檔事件，如創建檔、修改檔。
+- **計畫**：這些觸發器回應了可以使用開始日期、開始時間和重複間隔定義的計畫。
 
 
 ### <a name="add-a-trigger"></a>新增觸發程序
 
 請在 Azure 入口網站中執行下列步驟，以建立觸發程序。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [觸發程序]  。 選取命令列上的 [+ 新增觸發程序]  。
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [觸發程序]****。 選取命令列上的 [+ 新增觸發程序]****。
 
     ![選取新增觸發程序](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 在 [新增觸發程事]  刀鋒視窗中，提供觸發程序的唯一名稱。
+2. 在 [新增觸發程事]**** 刀鋒視窗中，提供觸發程序的唯一名稱。
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. 選取觸發程序的 [類型]  。 當觸發程序回應檔案事件時，請選擇 [檔案]  。 當您想要觸發程序在定義的時間開始，並以指定的重複間隔執行，請選取 [已排程]  。 根據您的選擇，顯示一組不同的選項。
+3. 選取觸發程序的 [類型]****。 當觸發程序回應檔案事件時，請選擇 [檔案]****。 當您想要觸發程序在定義的時間開始，並以指定的重複間隔執行，請選取 [已排程]****。 根據您的選擇，顯示一組不同的選項。
 
     - **檔案觸發程序** - 從下拉式清單中選擇裝載共用。 在此共用中引發檔案事件時，觸發程序會叫用 Azure 函式。
 
@@ -58,7 +58,7 @@ ms.locfileid: "65953134"
 
         ![新增 NFS 共用](media/data-box-edge-manage-compute/add-scheduled-trigger.png)
 
-4. 選取 [新增]  以建立觸發程序。 觸發程序正在建立時，會顯示通知。 建立觸發程序之後，刀鋒視窗會更新以反映新的觸發程序。
+4. 選取 [新增]**** 以建立觸發程序。 觸發程序正在建立時，會顯示通知。 建立觸發程序之後，刀鋒視窗會更新以反映新的觸發程序。
  
     ![更新的觸發程序清單](media/data-box-edge-manage-compute/add-trigger-2.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "65953134"
 
     ![選取觸發程序](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 按一下滑鼠右鍵，然後選取 [刪除]  。
+2. 按一下滑鼠右鍵，然後選取 [刪除]****。
 
     ![選取 [刪除]](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-3. 系統提示您進行確認時，按一下 [是]  。
+3. 當提示確認時，請按一下 [是]****。
 
     ![Confirm delete](media/data-box-edge-manage-compute/add-trigger-1.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "65953134"
 
 請在 Azure 入口網站中執行下列步驟，以檢視您裝置的計算設定。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [模組]  。 選取命令列上的 [檢視計算]  。
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [模組]****。 選取命令列上的 [檢視計算]****。
 
     ![選取 [檢視計算]](media/data-box-edge-manage-compute/view-compute-1.png)
 
@@ -101,11 +101,11 @@ ms.locfileid: "65953134"
 
 請在 Azure 入口網站中執行下列步驟，以移除您裝置現有的 Edge 計算設定。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [開始使用]  。 選取命令列上的 [移除計算]  。
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [開始使用]****。 選取命令列上的 [移除計算]****。
 
     ![選取 [移除計算]](media/data-box-edge-manage-compute/remove-compute-1.png)
 
-2. 如果您移除計算設定，將必須重新設定裝置，以免您需要再次使用計算。 系統提示您確認時，請選取 [是]  。
+2. 如果您移除計算設定，將必須重新設定裝置，以免您需要再次使用計算。 系統提示您確認時，請選取 [是]****。
 
     ![選取 [移除計算]](media/data-box-edge-manage-compute/remove-compute-2.png)
 
@@ -119,11 +119,11 @@ ms.locfileid: "65953134"
 
 請在 Azure 入口網站中執行下列步驟，以同步您裝置的存取金鑰。
 
-1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [開始使用]  。 選取命令列上的 [重新整理設定]  。
+1. 在 Azure 入口網站中，移至您的 Data Box Edge 資源，然後移至 [Edge 計算] > [開始使用]****。 選取命令列上的 [重新整理設定]****。
 
     ![選取 [重新整理設定]](media/data-box-edge-manage-compute/refresh-configuration-1.png)
 
-2. 系統提示您確認時，請選取 [是]  。
+2. 系統提示您確認時，請選取 [是]****。
 
      ![系統提示時，選取 [是]](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
@@ -131,4 +131,4 @@ ms.locfileid: "65953134"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[管理的 Edge 計算透過 Azure 入口網站的網路](data-box-edge-extend-compute-access-modules.md)。
+- 瞭解如何通過[Azure 門戶管理邊緣計算網路](data-box-edge-extend-compute-access-modules.md)。

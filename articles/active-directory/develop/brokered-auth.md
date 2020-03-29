@@ -1,7 +1,7 @@
 ---
-title: Android 中的代理驗證 |Azure
+title: 在 Android 中進行代理身份驗證 |蔚藍
 titlesuffix: Microsoft identity platform
-description: 瞭解在 Microsoft 身分識別平臺中，適用于 Android 的代理驗證 & 授權
+description: Microsoft 身份平臺中 Android 的代理身份驗證&授權的概述
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697892"
 ---
-# <a name="brokered-authentication-in-android"></a>Android 中的代理驗證
+# <a name="brokered-authentication-in-android"></a>Android 中的代理身份驗證
 
-您必須使用 Microsoft 的其中一個驗證代理程式參與全裝置單一登入（SSO），並符合組織的條件式存取原則。 與 broker 整合可提供下列優點：
+您必須使用 Microsoft 的身份驗證代理之一參與設備範圍的單一登入 （SSO） 並滿足組織條件訪問策略。 與經紀商集成提供以下好處：
 
-- 裝置單一登入
-- 條件式存取：
-  - Intune 應用程式防護
-  - 裝置註冊（Workplace Join）
+- 設備單點登錄
+- 條件訪問：
+  - Intune 應用程式保護
+  - 設備註冊（工作場所加入）
   - 行動裝置管理
-- 全裝置帳戶管理
-  -  透過 Android AccountManager & 帳戶設定
-  - 「工作帳戶」-自訂帳戶類型
+- 設備範圍的帳戶管理
+  -  通過 Android 帳戶管理器&帳戶設置
+  - "工作帳戶" - 自訂帳戶類型
 
-在 Android 上，Microsoft Authentication Broker 是[Microsoft Authenticator 應用程式](https://play.google.com/store/apps/details?id=com.azure.authenticator)隨附的元件， [Intune 公司入口網站](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
+在 Android 上，微軟身份驗證代理是[微軟身份驗證器應用](https://play.google.com/store/apps/details?id=com.azure.authenticator)和[Intune 公司門戶](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)中包含的元件
 
 > [!TIP]
-> 只有一個主控訊息代理程式的應用程式，一次只會使用一個主控制項。 作為訊息代理程式的作用中應用程式是由裝置上的安裝順序所決定。 第一個要安裝的，或裝置上的最後一個會變成作用中的訊息代理程式。
+> 只有一個承載代理的應用程式一次將作為代理處於活動狀態。 哪個應用程式作為代理處於活動狀態取決於設備上的安裝順序。 第一個要安裝的，或設備上的最後一個存在，將成為活動代理。
 
-下圖說明您的應用程式、Microsoft 驗證程式庫（MSAL），以及 Microsoft 的驗證代理程式之間的關聯性。
+下圖說明瞭你的應用、微軟身份驗證庫 （MSAL） 和 Microsoft 身份驗證代理之間的關係。
 
-![Broker 部署圖表](./media/brokered-auth/brokered-deployment-diagram.png)
+![代理部署圖](./media/brokered-auth/brokered-deployment-diagram.png)
 
-## <a name="installing-apps-that-host-a-broker"></a>安裝裝載 broker 的應用程式
+## <a name="installing-apps-that-host-a-broker"></a>安裝承載代理的應用
 
-裝置擁有者可以隨時從其 app store （通常是 Google Play 商店）安裝代理人主控應用程式。 不過，某些 Api （資源）會受到需要裝置的條件式存取原則所保護：
+代理託管應用可以在任何時候由設備擁有者從其應用商店（通常是 Google Play 商店）安裝。 但是，某些 API（資源）受條件訪問策略的保護，這些策略要求設備具有：
 
-- 已註冊（已加入工作場所）和/或
-- 已在裝置管理中註冊，或
-- 已在 Intune 應用程式防護中註冊
+- 註冊（加入工作場所）和/或
+- 註冊在裝置管理或
+- 註冊 Intune 應用保護
 
-如果裝置尚未安裝 broker 應用程式，MSAL 會指示使用者在應用程式嘗試以互動方式取得權杖時，立即安裝一個。 然後，應用程式將需要引導使用者進行步驟，讓裝置符合必要的原則。
+如果設備尚未安裝代理應用，MSAL 會指示使用者在應用嘗試以對話模式獲取權杖時立即安裝代理應用。 然後，應用將需要引導使用者完成使設備符合所需策略的步驟。
 
-## <a name="effects-of-installing-and-uninstalling-a-broker"></a>安裝和卸載 broker 的效果
+## <a name="effects-of-installing-and-uninstalling-a-broker"></a>安裝和卸載代理的效果
 
-### <a name="when-a-broker-is-installed"></a>當代理程式已安裝時
+### <a name="when-a-broker-is-installed"></a>安裝代理時
 
-當代理程式安裝在裝置上時，所有後續的互動式權杖要求（`acquireToken()`的呼叫）都會由訊息代理程式處理，而不是在本機 MSAL。 先前可供 MSAL 使用的任何 SSO 狀態，都無法供訊息代理程式使用。 因此，使用者必須重新驗證，或從裝置已知的現有帳戶清單中選取帳戶。
+當代理安裝在設備上時，所有後續的互動式權杖請求（對`acquireToken()`的調用）都由代理處理，而不是由 MSAL 在本地處理。 以前對 MSAL 可用的任何 SSO 狀態對代理不可用。 因此，使用者需要再次進行身份驗證，或從設備已知的現有帳戶清單中選擇帳戶。
 
-安裝訊息代理程式不需要使用者重新登入。 只有在使用者需要解決 `MsalUiRequiredException` 時，才會將下一個要求移至訊息代理程式。 基於許多原因而擲回 `MsalUiRequiredException`，而且需要以互動方式解決。 以下是一些常見的原因：
+安裝代理不需要使用者重新登錄。 僅當使用者需要解析 時`MsalUiRequiredException`，下一個請求才會轉到代理。 `MsalUiRequiredException`引發的原因有很多，需要以對話模式解決。 以下是一些常見原因：
 
-- 使用者變更了與其帳戶相關聯的密碼。
-- 使用者的帳戶不再符合條件式存取原則。
-- 使用者已撤銷其對應用程式的同意，使其與其帳戶相關聯。
+- 使用者更改了與其帳戶關聯的密碼。
+- 使用者帳戶不再滿足條件訪問策略。
+- 使用者撤銷了對應用與其帳戶關聯的同意。
 
-### <a name="when-a-broker-is-uninstalled"></a>當代理程式卸載時
+### <a name="when-a-broker-is-uninstalled"></a>卸載代理時
 
-如果只有一個已安裝的 broker 主控應用程式，而且已移除，則使用者必須重新登入。 卸載 active broker 會從裝置移除帳戶和相關聯的權杖。
+如果只安裝了一個代理託管應用，並且它被刪除，則使用者將需要再次登錄。 卸載活動代理會從設備中刪除帳戶和關聯的權杖。
 
-如果 Intune 公司入口網站已安裝，而且是以作用中的訊息代理程式操作，而且也已安裝 Microsoft Authenticator，則如果卸載 Intune 公司入口網站（主動代理人），使用者就必須重新登入。 一旦他們再次登入，Microsoft Authenticator 應用程式就會變成作用中的代理人。
+如果 Intune 公司門戶已安裝，並且作為活動代理運行，並且也安裝了 Microsoft 身份驗證器，則如果卸載 Intune 公司門戶（活動代理），使用者將需要再次登錄。 一旦他們再次登錄，微軟身份驗證器應用程式將成為活動代理。
 
-## <a name="integrating-with-a-broker"></a>與 broker 整合
+## <a name="integrating-with-a-broker"></a>與經紀人集成
 
-### <a name="generating-a-redirect-uri-for-a-broker"></a>產生訊息代理程式的重新導向 URI
+### <a name="generating-a-redirect-uri-for-a-broker"></a>為代理生成重定向 URI
 
-您必須註冊與訊息代理程式相容的重新導向 URI。 Broker 的重新導向 URI 必須包含您應用程式的套件名稱，以及應用程式簽章的 base64 編碼標記法。
+您必須註冊與代理相容的重定向 URI。 代理的重定向 URI 需要包括應用的包名稱，以及應用簽名的 base64 編碼表示形式。
 
-重新導向 URI 的格式為： `msauth://<yourpackagename>/<base64urlencodedsignature>`
+重定向 URI 的格式為：`msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-使用您應用程式的簽署金鑰，產生以 Base64 url 編碼的簽章。 以下是一些使用您的偵錯工具簽署金鑰的範例命令：
+使用應用的簽名金鑰生成 Base64 URL 編碼簽名。 下面是一些使用調試簽名金鑰的示例命令：
 
 #### <a name="macos"></a>macOS
 
@@ -92,14 +92,14 @@ keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore |
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-如需簽署應用程式的相關資訊，請參閱[簽署應用程式](https://developer.android.com/studio/publish/app-signing)。
+有關對應用進行簽名的資訊，請參閱[對應用進行簽名](https://developer.android.com/studio/publish/app-signing)。
 
 > [!IMPORTANT]
-> 針對您應用程式的實際執行版本使用您的生產簽署金鑰。
+> 將生產簽名金鑰用於應用的生產版本。
 
-### <a name="configure-msal-to-use-a-broker"></a>將 MSAL 設定為使用訊息代理程式
+### <a name="configure-msal-to-use-a-broker"></a>將 MSAL 配置為使用代理
 
-若要在您的應用程式中使用 broker，您必須證明已設定您的 broker 重新導向。 例如，包含已啟用 broker 的重新導向 URI--並指出您已註冊，方法是在 MSAL 設定檔中包含下列內容：
+要在應用中使用代理，您必須證明已配置了代理重定向。 例如，通過在 MSAL 設定檔中包括以下內容，包括代理啟用的重定向 URI，並指示您註冊了它：
 
 ```javascript
 "redirect_uri" : "<yourbrokerredirecturi>",
@@ -107,18 +107,18 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 ```
 
 > [!TIP]
-> 新的 Azure 入口網站應用程式註冊 UI 可協助您產生 broker 重新導向 URI。 如果您使用舊版體驗註冊應用程式，或使用 Microsoft 應用程式註冊入口網站，您可能需要產生重新導向 URI，並手動更新入口網站中的重新導向 Uri 清單。
+> 新的 Azure 門戶應用註冊 UI 可説明您生成代理重定向 URI。 如果您使用較舊的體驗註冊應用，或者使用 Microsoft 應用註冊門戶註冊了應用，則可能需要生成重定向 URI 並手動更新門戶中的重定向 URI 清單。
 
-### <a name="broker-related-exceptions"></a>Broker 相關的例外狀況
+### <a name="broker-related-exceptions"></a>與經紀人相關的例外
 
-MSAL 會以兩種方式與訊息代理程式通訊：
+MSAL 以兩種方式與經紀商通信：
 
-- 代理程式系結服務
-- Android AccountManager
+- 代理綁定服務
+- 安卓帳戶管理器
 
-MSAL 會先使用代理程式系結服務，因為呼叫此服務不需要任何 Android 許可權。 如果系結至系結服務失敗，MSAL 將會使用 Android AccountManager API。 只有當您的應用程式已被授與 `"READ_CONTACTS"` 許可權時，MSAL 才會這麼做。
+MSAL 首先使用代理綁定服務，因為調用此服務不需要任何 Android 許可權。 如果綁定到綁定服務失敗，MSAL 將使用 Android 帳戶管理器 API。 僅當應用已被授予許可權時，MSAL`"READ_CONTACTS"`才會這樣做。
 
-如果您收到 `MsalClientException`，`"BROKER_BIND_FAILURE"`錯誤碼，則有兩個選項：
+如果得到錯誤代碼`MsalClientException``"BROKER_BIND_FAILURE"`，則有兩個選項：
 
-- 要求使用者停用 Microsoft Authenticator 應用程式和 Intune 公司入口網站的電源優化。
-- 要求使用者授與 `"READ_CONTACTS"` 許可權
+- 要求使用者禁用 Microsoft 身份驗證器應用和 Intune 公司門戶的電源優化。
+- 要求使用者授予`"READ_CONTACTS"`許可權

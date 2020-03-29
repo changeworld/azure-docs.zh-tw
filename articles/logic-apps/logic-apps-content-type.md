@@ -1,16 +1,16 @@
 ---
 title: 處理內容類型
-description: 瞭解如何在設計階段和執行時間的 Azure Logic Apps 中處理工作流程中的各種內容類型
+description: 瞭解如何在設計階段和 Azure 邏輯應用中的執行時間內處理工作流中的各種內容類型
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666868"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 邏輯應用程式中處理內容類型
@@ -28,7 +28,7 @@ ms.locfileid: "75666868"
 
 ## <a name="applicationjson"></a>application/json
 
-Logic Apps 會儲存和處理任何以 application/json 類型內容作為 JavaScript 標記法 (JSON) 物件的要求。 根據預設，您可以剖析 JSON 內容，而不需要任何轉換。 若要剖析具有 "application/json" 內容類型標頭的要求，您可以使用運算式。 此範例會從 `animal-type` 陣列傳回值 `dog`，而不需轉換： 
+Logic Apps 會儲存和處理任何以 application/json** 類型內容作為 JavaScript 標記法 (JSON) 物件的要求。 根據預設，您可以剖析 JSON 內容，而不需要任何轉換。 若要剖析具有 "application/json" 內容類型標頭的要求，您可以使用運算式。 此範例會從 `animal-type` 陣列傳回值 `dog`，而不需轉換： 
  
 `@body('myAction')['animal-type'][0]` 
   
@@ -57,9 +57,9 @@ Logic Apps 可讓您產生方便使用的權杖來表示 JSON 內容中的屬性
   
   如果您沒有結構描述，您可以產生結構描述。 
   
-  1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]。  
+  1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]****。  
   
-  2. 在 [輸入或貼上範例 JSON 承載] 之下，提供範例承載，然後選擇 [完成]。 例如： 
+  2. 在 [輸入或貼上範例 JSON 承載]**** 之下，提供範例承載，然後選擇 [完成]****。 例如： 
 
      ![提供範例 JSON 承載](./media/logic-apps-content-type/request-trigger.png)
 
@@ -140,9 +140,9 @@ Logic Apps 一律會在收到的 HTTP 要求或回應中保留 `Content-Type`。
 * `xml()`：將資料轉換為 `application/xml`
 * `binary()`：將資料轉換為 `application/octet-stream`
 * `string()`：將資料轉換為 `text/plain`
-* `base64()`：將內容轉換為 base64 編碼的字串
-* `base64toString()`：將 base64 編碼的字串轉換成 `text/plain`
-* `base64toBinary()`：將 base64 編碼的字串轉換成 `application/octet-stream`
+* `base64()`：將內容轉換為基64編碼字串
+* `base64toString()`：將基64編碼的字串轉換為`text/plain`
+* `base64toBinary()`：將基64編碼的字串轉換為`application/octet-stream`
 * `dataUri()`：將字串轉換為數據 URI
 * `dataUriToBinary()`：將資料 URI 轉換為二進位字串
 * `dataUriToString()`：將資料 URI 轉換為字串

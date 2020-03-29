@@ -1,6 +1,6 @@
 ---
-title: 處理 Azure 資料總管中的重復資料
-description: 本主題將說明使用 Azure 資料總管時, 處理重復資料的各種方法。
+title: 在 Azure 資料資源管理器中處理重復資料
+description: 本主題將向您展示在使用 Azure 資料資源管理器時處理重復資料的各種方法。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68608222"
 ---
-# <a name="handle-duplicate-data-in-azure-data-explorer"></a>處理 Azure 資料總管中的重復資料
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 資料資源管理器中處理重復資料
 
 將資料傳送至雲端的裝置會維持資料的本機快取。 根據資料大小，本機快取可能會將資料儲存數天或甚至數個月。 您想要保護分析資料庫，以免受到會重新傳送快取資料並造成分析資料庫中資料重複的故障裝置影響。 本主題概述處理這幾種情況下重複資料的最佳做法。
 
@@ -41,13 +41,13 @@ _data
 
 ## <a name="solutions-for-handling-duplicate-data"></a>適用於處理重複資料的解決方案
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>解決方案 1：請勿移除重複的資料
+### <a name="solution-1-dont-remove-duplicate-data"></a>解決方案#1：不要刪除重複的資料
 
 了解您的業務需求和重複資料的容限。 有些資料集可以管理重複資料的百分比。 如果重複資料並沒有重大影響，您可以忽略它的存在。 不移除重複資料的優點就是沒有額外的擷取程序或查詢效能負荷。
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>解決方案 2：在查詢期間處理重複的資料列
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>解決方案#2：在查詢期間處理重複行
 
-另一個選項是在查詢期間篩選出資料中重複的資料列。 [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) 彙總函式可用來篩選出重複的記錄，並根據時間戳記 (或另一個資料行) 傳回最後一筆記錄。 使用此方法的優點是擷取速度更快，因為查詢期間會發生重複資料刪除。 此外，所有記錄 (包括重複項目) 均可供稽核和進行疑難排解。 使用 `arg_max` 函式的缺點是每次查詢資料時有額外的查詢時間和 CPU 負載。 視所查詢的資料量而定，此解決方案可能會變得無法運作或耗用記憶體，而且需要切換至其他選項。
+另一個選項是在查詢期間篩選出資料中重複的資料列。 聚合[`arg_max()`](/azure/kusto/query/arg-max-aggfunction)函數可用於篩選出重複記錄，並根據時間戳記（或其他列）返回最後一條記錄。 使用此方法的優點是擷取速度更快，因為查詢期間會發生重複資料刪除。 此外，所有記錄 (包括重複項目) 均可供稽核和進行疑難排解。 使用 `arg_max` 函式的缺點是每次查詢資料時有額外的查詢時間和 CPU 負載。 視所查詢的資料量而定，此解決方案可能會變得無法運作或耗用記憶體，而且需要切換至其他選項。
 
 在下列範例中，我們會查詢針對一組可判斷唯一記錄的資料行內嵌的最後一筆記錄：
 
@@ -68,9 +68,9 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>解決方案 3：在擷取程序期間篩選重複項目
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>解決方案#3：在引入過程中篩選重複項
 
-另一個解決方案是在擷取程序期間篩選重複項目。 系統會在內嵌 Kusto 資料表時忽略重複的資料。 移除重複的資料列之後，資料會內嵌到暫存資料表中，並複製到另一個資料表。 此解決方案的優點是相較於先前的解決方案，查詢效能大幅改善。 缺點包括增加的擷取時間和其他資料儲存體成本。 Additionaly, 此解決方案只適用于重複問題不會同時內嵌的情況。 如果有多個並行擷取包含重複的記錄, 則可能會內嵌全部, 因為重復資料刪除程式在資料表中找不到任何現有的相符記錄。    
+另一個解決方案是在擷取程序期間篩選重複項目。 系統會在內嵌 Kusto 資料表時忽略重複的資料。 移除重複的資料列之後，資料會內嵌到暫存資料表中，並複製到另一個資料表。 此解決方案的優點是相較於先前的解決方案，查詢效能大幅改善。 缺點包括增加的擷取時間和其他資料儲存體成本。 另外，僅當重複未同時引入時，此解決方案才有效。 如果有多個包含重複記錄的併發引入，則所有記錄都可以被引入，因為重復資料消除過程在表中找不到任何現有的匹配記錄。    
 
 下列範例可說明此方法：
 
@@ -122,4 +122,4 @@ DeviceEventsAll
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [撰寫 Azure 資料總管的查詢](write-queries.md)
+> [為 Azure 資料資源管理器編寫查詢](write-queries.md)

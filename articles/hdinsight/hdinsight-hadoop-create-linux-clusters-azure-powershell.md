@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 3c93eca493275612ac14a995140b2e91cc40fe98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644659"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中建立以 Linux 為基礎的叢集
@@ -23,11 +23,11 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/install-Az-ps)Az 模組。
+[Azure 電源外殼](/powershell/azure/install-Az-ps)阿茲模組。
 
 ## <a name="create-cluster"></a>建立叢集
 
@@ -41,7 +41,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 * 建立 HDInsight 叢集
 
 > [!NOTE]
-> 目前不支援使用 PowerShell 建立具有 Azure Data Lake Storage Gen2 的 HDInsight 叢集。
+> 當前不支援使用 PowerShell 創建具有 Azure 資料湖存儲 Gen2 的 HDInsight 群集。
 
 下列指令碼示範如何建立新叢集：
 
@@ -60,7 +60,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 ## <a name="create-cluster-configuration-object"></a>建立叢集：設定物件
 
-您也可以使用[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) Cmdlet 來建立 HDInsight 設定物件。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，使用[`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) Cmdlet 的 `-Config` 參數來使用設定。
+您還可以使用[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig)Cmdlet 創建 HDInsight 設定物件。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，`-Config`使用 Cmdlet[`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的參數使用配置。
 
 下列指令碼會建立可在 HDInsight 叢集類型上設定 R 伺服器的設定物件。 此設定可啟用邊緣節點、RStudio 和其他儲存體帳戶。
 
@@ -84,12 +84,12 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已成功建立 HDInsight 叢集，請使用下列資源來瞭解如何使用您的叢集。
+現在您已成功創建了 HDInsight 群集，請使用以下資源瞭解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 叢集
 
 * [搭配 HDInsight 使用 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [〈搭配 HDInsight 使用 MapReduce〉](hadoop/hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 叢集
 

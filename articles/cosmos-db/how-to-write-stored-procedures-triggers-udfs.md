@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB 中撰寫預存程式、觸發程式和 Udf
+title: 在 Azure Cosmos DB 中寫入預存程序、觸發器和 UDF
 description: 了解如何在 Azure Cosmos DB 中定義預存程序、觸發程序和使用者定義函式
 author: markjbrown
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441723"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式
 
-Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可讓您撰寫**預存程序**、**觸發程序**和**使用者定義函式 (UDF)** 。 在 Azure Cosmos DB 中使用 SQL API 時，您可以使用 JavaScript 語言定義預存程序預存程序、觸發程序和 UDF。 您可以使用 JavaScript 撰寫邏輯，並在資料庫引擎內加以執行。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 和 [Cosmos DB SQL API 用戶端 SDK](sql-api-dotnet-samples.md)，來建立與執行觸發程序、預存程序及 UDF。 
+Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可讓您撰寫**預存程序**、**觸發程序**和**使用者定義函式 (UDF)**。 在 Azure Cosmos DB 中使用 SQL API 時，您可以使用 JavaScript 語言定義預存程序預存程序、觸發程序和 UDF。 您可以使用 JavaScript 撰寫邏輯，並在資料庫引擎內加以執行。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 和 [Cosmos DB SQL API 用戶端 SDK](sql-api-dotnet-samples.md)，來建立與執行觸發程序、預存程序及 UDF。 
 
 若要呼叫預存程序、觸發程序和使用者定義函式，您必須加以註冊。 如需詳細資訊，請參閱[如何在 Azure Cosmos DB 中使用預存程序、觸發程序、使用者定義函式](how-to-use-stored-procedures-triggers-udfs.md)。
 
@@ -23,9 +23,9 @@ Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可�
 > 對分割容器執行預存程序時，必須在要求選項中提供分割區索引鍵值。 預存程序的範圍一律為分割區索引鍵。 具有不同分割區索引鍵值的項目，將不會對預存程序顯示。 這也適用於觸發程序。
 
 > [!Tip]
-> Cosmos 支援使用預存程式、觸發程式和使用者定義函數來部署容器。 如需詳細資訊，請參閱[使用伺服器端功能建立 Azure Cosmos DB 容器。](manage-sql-with-resource-manager.md#create-sproc)
+> Cosmos 支援部署具有預存程序、觸發器和使用者定義的函數的容器。 有關詳細資訊，請參閱[創建具有伺服器端功能的 Azure Cosmos DB 容器。](manage-sql-with-resource-manager.md#create-sproc)
 
-## <a id="stored-procedures"></a>如何撰寫預存程序
+## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>如何撰寫預存程序
 
 預存程序須以 JavaScript 撰寫，這些程序可建立、更新、讀取、查詢和刪除 Azure Cosmos 容器內的項目。 預存程序會按照集合進行註冊，而且可執行於該集合中現有的文件或附件。
 
@@ -49,13 +49,13 @@ var helloWorldStoredProc = {
 
 撰寫完成後，預存程序必須對集合註冊。 若要深入了解，請參閱[如何在 Azure Cosmos DB 中使用預存程序](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)一文。
 
-### <a id="create-an-item"></a>使用預存程序建立項目
+### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>使用預存程序建立項目
 
-當您使用預存程式建立專案時，會將專案插入 Azure Cosmos 容器中，並傳回新建立之專案的識別碼。 建立項目是非同步作業，並依存於 JavaScript 回呼函式。 此回呼函式有兩個參數 - 一個用於作業失敗時的錯誤物件，一個用於傳回值 (在此案例中為已建立的物件)。 在回呼內，您可以處理例外狀況或擲回錯誤。 如果未提供回呼，而且發生錯誤，則 Azure Cosmos DB 執行階段會擲回錯誤。 
+使用預存程序創建項時，該項將插入到 Azure Cosmos 容器中，並返回新創建的項的 ID。 建立項目是非同步作業，並依存於 JavaScript 回呼函式。 此回呼函式有兩個參數 - 一個用於作業失敗時的錯誤物件，一個用於傳回值 (在此案例中為已建立的物件)。 在回呼內，您可以處理例外狀況或擲回錯誤。 如果未提供回呼，而且發生錯誤，則 Azure Cosmos DB 執行階段會擲回錯誤。 
 
 預存程序也包含用來設定描述的參數，此為布林值。 當此參數設定為 true 時，若沒有描述，則預存程序將會擲回例外狀況。 否則，預存程序的其餘部分會繼續執行。
 
-下列範例預存程式會採用新的 Azure Cosmos 專案做為輸入，將其插入 Azure Cosmos 容器中，並傳回新建立之專案的識別碼。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
+下面的示例預存程序採用新的 Azure Cosmos 項作為輸入，將其插入到 Azure Cosmos 容器中，並返回新創建的項的 ID。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -88,7 +88,7 @@ function sample(arr) {
 }
 ```
 
-### <a id="transactions"></a>預存程序內的交易
+### <a name="transactions-within-stored-procedures"></a><a id="transactions"></a>預存程序內的交易
 
 您可以使用預存程序，對容器內的項目實作交易。 下列範例將在有趣的足球遊戲應用程式內使用交易，透過單一作業讓兩隊互相交易球員。 預存程序嘗試讀取兩個 Azure Cosmos 項目，這兩個項目分別對應於以引數形式傳入的球員識別碼。 如果有找到這兩個球員，則預存程序會藉由交換他們的球隊來更新項目。 如果過程中發生任何錯誤，預存程序會擲回以隱含方式中止交易的 JavaScript 例外狀況。
 
@@ -156,7 +156,7 @@ function tradePlayers(playerId1, playerId2) {
 }
 ```
 
-### <a id="bounded-execution"></a>預存程序內的界限執行
+### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>預存程序內的界限執行
 
 下列範例說明，將項目大量匯入 Azure Cosmos 容器中的預存程序。 預存程序會檢查 `createDocument` 所傳回的布林值來處理界限執行，然後使用每次叫用預存程序時所插入的項目計數，來追蹤和繼續各批次的進度。
 
@@ -211,11 +211,11 @@ function bulkImport(items) {
 }
 ```
 
-## <a id="triggers"></a>如何撰寫觸發程序
+## <a name="how-to-write-triggers"></a><a id="triggers"></a>如何撰寫觸發程序
 
 Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 預先觸發程序會在修改資料庫項目之前執行，而後續觸發程序則在修改資料庫項目執行之後執行。
 
-### <a id="pre-triggers"></a>預先觸發程序
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>預先觸發程序
 
 下列範例說明如何使用預先觸發程序對要建立的 Azure Cosmos 項目驗證屬性。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例，為新增的項目加上時間戳記屬性 (如果還沒有的話)。
 
@@ -244,7 +244,7 @@ function validateToDoItemTimestamp() {
 
 如需如何註冊及呼叫預先觸發程序的範例，請參閱[預先觸發程序](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[後續觸發程序](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
-### <a id="post-triggers"></a>後續觸發程序
+### <a name="post-triggers"></a><a id="post-triggers"></a>後續觸發程序
 
 下列範例說明後續觸發程序。 此觸發程序會查詢中繼資料項目，並使用新建項目的詳細資料加以更新。
 
@@ -286,7 +286,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 
 如需如何註冊及呼叫預先觸發程序的範例，請參閱[預先觸發程序](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[後續觸發程序](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
-## <a id="udfs"></a>如何撰寫使用者定義函式
+## <a name="how-to-write-user-defined-functions"></a><a id="udfs"></a>如何撰寫使用者定義函式
 
 下列範例會建立可為各種收入階層計算所得稅的 UDF。 接著將在查詢內使用這個使用者定義函式。 為了方便此範例的說明，我們假設有名為「收入」的容器，且其屬性顯示如下：
 
@@ -319,7 +319,7 @@ function tax(income) {
 
 ## <a name="logging"></a>記錄 
 
-使用預存程式、觸發程式或使用者定義函數時，您可以使用 `console.log()` 命令來記錄這些步驟。 當 `EnableScriptLogging` 設定為 true （如下列範例所示）時，此命令會將字串集中在進行偵錯工具：
+使用預存程序、觸發器或使用者定義的函數時，可以使用 命令`console.log()`記錄步驟。 此命令將集中一個字串，在`EnableScriptLogging`設置為 true 時進行調試，如以下示例所示：
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(
@@ -338,4 +338,4 @@ Console.WriteLine(response.ScriptLog);
 
 * [在 Azure Cosmos DB 中使用 Azure Cosmos DB 預存程序、觸發程序及使用者定義函式](stored-procedures-triggers-udfs.md)
 
-* [在 Azure Cosmos DB 中使用 JavaScript 語言整合式查詢 API](javascript-query-api.md)
+* [在 Azure Cosmos DB 中使用 JavaScript Language-integrated Query (LINQ) API](javascript-query-api.md)

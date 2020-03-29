@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213185"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
@@ -48,13 +48,13 @@ Azure 通知中樞提供易用、多平台、可調整的基礎結構，用以�
 
 ## <a name="create-a-nodejs-application"></a>建立 Node.js 應用程式
 
-本教學課程的第一個步驟是建立新的空白 Node.js 應用程式。 如需建立 node.js 應用程式的指示，請參閱[建立 node.js 應用程式並將其部署到 Azure 網站][nodejswebsite]、使用 Windows PowerShell 的 Node.js[雲端服務][Node.js Cloud Service]，或[使用 WebMatrix 的網站][webmatrix]。
+本教學課程的第一個步驟是建立新的空白 Node.js 應用程式。 如需有關建立 Node.js 應用程式的指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站][nodejswebsite]、使用 Windows PowerShell 的 [Node.js 雲端服務][Node.js Cloud Service]，或[使用 WebMatrix 的網站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>將應用程式設為使用通知中樞
 
 若要使用 Azur通知中樞，您需要下載並使用 Node.js [azure 封裝](https://www.npmjs.com/package/azure)，這包含一組內建的協助程式庫，能與推播通知 REST 服務通訊。
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node Package Manager (NPM) 取得封裝
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node Package Manager (NPM) 取得套件
 
 1. 使用命令列介面 (例如 **PowerShell** (Windows)、**終端機** (Mac) 或 **Bash** (Linux))，瀏覽至建立空白應用程式所在的資料夾。
 2. 在命令視窗中執行 `npm install azure-sb`。
@@ -81,10 +81,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 藉由執行下列步驟，從 [Azure 入口網站]取得連線 `connectionstring` 值：
 
-1. 在左導覽窗格中，按一下 [瀏覽]。
-2. 選取 [通知中樞]，然後尋找您要用於範例的中樞。 如果您需要建立新通知中樞的協助，您可以參閱[Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)課程。
-3. 選取 [Settings] \(設定)。
-4. 按一下 [存取原則]。 您會看到兩個共用和完整存取連接字串。
+1. 在左導覽窗格中，按一下 [瀏覽] ****。
+2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要創建新通知中心的説明，可以參考[Windows 應用商店入門教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+3. 選取 [設定]****。
+4. 按一下 [存取原則] ****。 您會看到兩個共用和完整存取連接字串。
 
 ![Azure 入口網站 - 通知中樞](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -100,7 +100,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Windows Phone** - 使用可在 `notificationHubService.mpns` 取得的 `MpnsService` 物件
 - **通用 Windows 平台** - 使用可在 `notificationHubService.wns` 取得的 `WnsService` 物件
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>HOW TO：將推播通知傳送至 Android 應用程式
+### <a name="how-to-send-push-notifications-to-android-applications"></a>做法：將推播通知傳送至 Android 應用程式
 
 `GcmService` 物件會提供可用來將推播通知傳送至 Android 應用程式的 `send` 方法。 此 `send` 方法可接受下列參數：
 
@@ -108,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - 訊息的 JSON 或原始字串承載。
 - **Callback** - 回呼函數。
 
-如需裝載格式的詳細資訊，請參閱裝載[檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+有關有效負載格式的詳細資訊，請參閱[有效負載文檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 下列程式碼使用 `NotificationHubService` 所公開的 `GcmService` 執行個體，傳送推播通知至所有已註冊的用戶端。
 
@@ -125,7 +125,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-ios-applications"></a>HOW TO：將推播通知傳送至 iOS 應用程式
+### <a name="how-to-send-push-notifications-to-ios-applications"></a>做法：將推播通知傳送至 iOS 應用程式
 
 與上述的 Android 應用程式一樣，`ApnsService` 物件會提供可用來將推播通知傳送至 iOS 應用程式的 `send` 方法。 此 `send` 方法可接受下列參數：
 
@@ -148,14 +148,14 @@ notificationHubService.apns.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>HOW TO：將推播通知傳送至 Windows Phone 應用程式
+### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>做法：將推播通知傳送至 Windows Phone 應用程式
 
 `MpnsService` 物件提供可用來將推播通知傳送至 Windows Phone 應用程式的 `send` 方法。 此 `send` 方法可接受下列參數：
 
 - **Tags** - 標籤識別碼。 若未提供標籤，通知會傳送至所有用戶端。
 - **Payload** - 訊息的 XML 承載。
-- **TargetName** - 快顯通知的 `toast`。 `token` 代表磚通知。
-- **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)文件的＜HTTP 標頭元素＞一節。
+- **Toast 通知的目標名稱** - `toast`。 `token` 代表磚通知。
+- **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)文件的＜HTTP 標頭元素＞**** 一節。
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。
 
@@ -172,7 +172,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>HOW TO：將推播通知傳送至通用 Windows 平台 (UWP) 應用程式
+### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>做法：將推播通知傳送至通用 Windows 平台 (UWP) 應用程式
 
 `WnsService` 物件會提供可用來將推播通知傳送至「通用 Windows 平台」應用程式的 `send` 方法。  此 `send` 方法可接受下列參數：
 
@@ -232,4 +232,4 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 [webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure 入口網站]: https://portal.azure.com
+[Azure 門戶]: https://portal.azure.com

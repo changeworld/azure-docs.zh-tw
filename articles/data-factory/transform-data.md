@@ -1,5 +1,5 @@
 ---
-title: 資料轉換
+title: 轉換資料
 description: 了解如何使用 Hadoop、Machine Learning 或 Azure Data Lake Analytics 在 Azure Data Factory 中轉換資料或處理資料。
 services: data-factory
 ms.service: data-factory
@@ -11,22 +11,22 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
 ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924303"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
 
 > [!div class="op_single_selector"]
-> * [對應資料流程](data-flow-create.md)
-> * [Hive](transform-data-using-hadoop-hive.md)  
+> * [映射資料流程](data-flow-create.md)
+> * [蜂巢](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
-> * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
+> * [Mapreduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight 串流](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [機器學習服務](transform-data-using-machine-learning.md) 
+> * [機器學習](transform-data-using-machine-learning.md) 
 > * [預存程序](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks Notebook](transform-data-databricks-notebook.md)
@@ -34,24 +34,24 @@ ms.locfileid: "74924303"
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET 自訂](transform-data-using-dotnet-custom-activity.md)
 
-## <a name="overview"></a>概觀
-本文說明 Azure Data Factory 中的資料轉換活動，可讓您用來將原始資料轉換和處理成大規模的預測和深入解析。 轉換活動會在計算環境中執行，例如 Azure Databricks 或 Azure HDInsight。 它會提供每個轉換活動的詳細資訊文章連結。
+## <a name="overview"></a>總覽
+本文介紹 Azure 資料工廠中的資料轉換活動，可用於大規模將原始資料轉換為預測和見解。 轉換活動在計算環境中執行，如 Azure 資料塊或 Azure HDInsight。 它會提供每個轉換活動的詳細資訊文章連結。
 
 Data Factory 支援下列可個別或與其他活動鏈結而加入至 [管線](concepts-pipelines-activities.md) 的資料轉換活動。
 
-## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用資料流程在 Azure Data Factory 中以原生方式轉換
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用資料流程在 Azure 資料工廠進行本機轉換
 
 ### <a name="mapping-data-flows"></a>對應資料流程
 
-對應資料流程會以視覺化方式設計 Azure Data Factory 中的資料轉換。 資料流程可讓資料工程師開發圖形化資料轉換邏輯，而不需要撰寫程式碼。 產生的資料流程會當做使用相應放大 Spark 叢集 Azure Data Factory 管線內的活動來執行。 資料流程活動可以透過現有的 Data Factory 排程、控制、流程和監視功能來運作。 如需詳細資訊，請參閱[對應資料流程](concepts-data-flow-overview.md)。
+映射資料流程是在 Azure 資料工廠中直觀地設計的資料轉換。 資料流程允許資料工程師無需編寫代碼即可開發圖形資料轉換邏輯。 生成的資料流程在 Azure 資料工廠管道中執行，這些活動使用橫向擴展的 Spark 群集。 資料流程活動可以通過現有的資料工廠調度、控制、流和監視功能進行操作。 有關詳細資訊，請參閱[映射資料流程](concepts-data-flow-overview.md)。
 
-### <a name="wrangling-data-flows"></a>整頓資料流程
+### <a name="wrangling-data-flows"></a>旋轉資料流程
 
-Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行無程式碼資料的準備工作。 整頓資料流程會與[Power Query Online](https://docs.microsoft.com/power-query/)整合，並讓 Power Query M 函數可供雲端規模的資料整頓透過 spark 執行。 如需詳細資訊，請參閱[整頓資料流程](wrangling-data-flow-overview.md)。
+通過 Azure 資料工廠中旋轉資料流程，您可以反覆運算雲規模進行無代碼資料準備。 旋轉資料流程與[線上電源查詢](https://docs.microsoft.com/power-query/)集成，並通過火花執行使 Power Query M 函數可用於雲級資料爭鳴。 有關詳細資訊，請參閱[爭論資料流程](wrangling-data-flow-overview.md)。
 
 ## <a name="external-transformations"></a>外部轉換
 
-（選擇性）您可以自行撰寫程式碼轉換和管理外部計算環境。
+或者，您可以自行編寫轉換和管理外部計算環境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活動
 Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hive 查詢。 如需此活動的詳細資料，請參閱 [Hive 活動](transform-data-using-hadoop-hive.md)一文。 
@@ -83,7 +83,7 @@ Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活動
 
-Data Factory 管線中的 Azure Databricks 筆記本活動會在您的 Azure Databricks 工作區中執行 Databricks 筆記本。 Azure Databricks 是用於執行 Apache Spark 的受控平台。 請參閱[執行 Databricks Notebook 來轉換資料](transform-data-databricks-notebook.md)。
+資料工廠管道中的 Azure 資料磚塊筆記本活動在 Azure 資料磚塊工作區中運行資料磚塊筆記本。 Azure Databricks 是用於執行 Apache Spark 的受控平台。 請參閱[執行 Databricks Notebook 來轉換資料](transform-data-databricks-notebook.md)。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar 活動
 
@@ -101,7 +101,7 @@ Data Factory 管線中的 Azure Databricks Python 活動會在 Azure Databricks 
 ### <a name="compute-environments"></a>計算環境
 您需要為計算環境建立連結服務，然後在定義轉換活動時使用該連結服務。 Data Factory 支援兩種類型的資計算環境。 
 
-- **隨選**：在此情況下，運算環境完全受控於 Data Factory。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
+- **隨選**：在此情況下，運算環境完全由 Data Factory 管理。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
 - **攜帶您自己的裝置**：在此情況下，您可以註冊自己的運算環境 (例如 HDInsight 叢集)，做為 Data Factory 中的連結服務。 運算環境由您自行管理，而 Data Factory 會使用它來執行活動。 
 
 如需了解 Data Factory 所支援的計算服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。 

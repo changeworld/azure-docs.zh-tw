@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Logic Apps 連接到 SendGrid
+title: 從 Azure 邏輯應用連接到發送網格
 description: 使用 Azure Logic Apps 將傳送電子郵件和管理 SendGrid 中郵寄清單的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789302"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 傳送電子郵件和管理 SendGrid 中的郵寄清單
@@ -24,20 +24,20 @@ ms.locfileid: "74789302"
 
 您可以在邏輯應用程式中使用 SendGrid 動作以執行這些工作。 您也可以讓其他動作使用 SendGrid 動作的輸出。 
 
-此連接器只提供動作，因此若要啟動邏輯應用程式，請選取個別觸發程序，例如「週期」觸發程序。 例如，如果您要定期地在清單中新增收件者，則可藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，來傳送關於收件者和清單的電子郵件。
-如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+此連接器只提供動作，因此若要啟動邏輯應用程式，請選取個別觸發程序，例如「週期」**** 觸發程序。 例如，如果您要定期地在清單中新增收件者，則可藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，來傳送關於收件者和清單的電子郵件。
+如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * [SendGrid 帳戶](https://www.sendgrid.com/)和 [SendGrid API 金鑰](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
    API 金鑰會授權邏輯應用程式建立連線並存取 SendGrid 帳戶。
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 您要在其中存取 SendGrid 帳戶的邏輯應用程式。 若要使用 SendGrid 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」觸發程序。
+* 您要在其中存取 SendGrid 帳戶的邏輯應用程式。 若要使用 SendGrid 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
 ## <a name="connect-to-sendgrid"></a>連線至 SendGrid
 
@@ -47,18 +47,18 @@ ms.locfileid: "74789302"
 
 1. 選擇路徑： 
 
-   * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]。 
+   * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]****。 
 
      -或-
 
    * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
+   選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
 
 1. 在搜尋方塊中，輸入「sendgrid」作為篩選條件。 在動作清單底下，選取您想要的動作。
 
 1. 為您的連線提供一個名稱。 
 
-1. 輸入 SendGrid API 金鑰，然後選擇 [建立]。
+1. 輸入 SendGrid API 金鑰，然後選擇 [建立]****。
 
 1. 為您選取的動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74789302"
 ## <a name="get-support"></a>取得支援
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

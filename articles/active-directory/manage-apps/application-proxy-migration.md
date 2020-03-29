@@ -17,15 +17,15 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108416"
 ---
 # <a name="compare-remote-access-solutions"></a>比較遠端存取解決方案
 
-Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存取解決方案其中之一。 另一個是 Web 應用程式 Proxy，內部部署版本。 這兩個解決方案取代了 Microsoft 提供的舊版產品：Microsoft Forefront Threat Management Gateway (TMG) 和 Unified Access Gateway (UAG)。 若要了解這四個解決方案之間的比較，可使用這份文件。 若您仍在使用已取代的 TMG 或 UAG 解決方案，使用本文章可協助您規劃移轉至其中一個應用程式 Proxy。 
+Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存取解決方案其中之一。 另一個是 Web 應用程式 Proxy，內部部署版本。 這兩種解決方案取代 Microsoft 提供的舊版產品：Microsoft Forefront Threat Management Gateway (TMG) 和 Unified Access Gateway (UAG)。 若要了解這四個解決方案之間的比較，可使用這份文件。 若您仍在使用已取代的 TMG 或 UAG 解決方案，使用本文章可協助您規劃移轉至其中一個應用程式 Proxy。 
 
 
 ## <a name="feature-comparison"></a>功能比較
@@ -46,17 +46,17 @@ Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存
 | 回應內文連結轉譯 | 是 | 是 | - | 是 | 
 | 使用標頭進行驗證 | - | 是 | - | 是，使用 PingAccess | 
 | 雲端級別安全性 | - | - | - | 是 | 
-| 條件式存取 | - | 是 | - | yes |
-| 周邊網路 (DMZ) 中沒有任何元件 | - | - | - | yes |
+| 條件式存取 | - | 是 | - | 是 |
+| 周邊網路 (DMZ) 中沒有任何元件 | - | - | - | 是 |
 | 沒有輸入連線 | - | - | - | 是 |
 
-大部分的情況下，我們建議 Azure AD 應用程式 Proxy 作為現代化解決方案。 Web 應用程式 Proxy 只建議用在需要 AD FS Proxy 伺服器的情節中，而且您無法使用 Azure Active Directory 中的自訂網域。 
+對於大多數方案，我們建議將 Azure AD 應用程式代理作為現代解決方案。 Web 應用程式 Proxy 只建議用在需要 AD FS Proxy 伺服器的情節中，而且您無法使用 Azure Active Directory 中的自訂網域。 
 
 相較於類似的產品，Azure AD 應用程式 Proxy 提供獨特的優點，包括：
 
 - 將 Azure AD 擴充至內部部署資源
    - 雲端級別安全性和保護
-   - 條件式存取和 Multi-factor Authentication 等功能可輕鬆地啟用
+   - 條件訪問和多重要素驗證等功能易於啟用
 - 周邊網路中沒有任何元件
 - 沒有所需的輸入連線
 - 您的使用者可以使用其所有應用程式的單一存取面板，包括 O365、Azure AD 整合式 SaaS 應用程式，以及您的內部部署 Web 應用程式。 

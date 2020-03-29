@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Logic Apps 連接到 Salesforce
+title: 從 Azure 邏輯應用連接到銷售人員
 description: 使用 Azure Logic Apps 將監視、建立和管理 Salesforce 記錄與作業的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789285"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來監視、建立及管理 Salesforce 資源
@@ -21,17 +21,17 @@ ms.locfileid: "74789285"
 * 監視所建立或變更的記錄。 
 * 建立、取得和管理作業與記錄，包括插入、更新及刪除動作。
 
-您可以使用 Salesforce 觸發程序，以取得 Salesforce 的回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用動作，對 Salesforce 資源執行工作。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用 Salesforce 觸發程序，以取得 Salesforce 的回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用動作，對 Salesforce 資源執行工作。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * [Salesforce 帳戶](https://salesforce.com/)
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 您要在其中存取 Salesforce 帳戶的邏輯應用程式。 若要開始使用 Salesforce 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Salesforce 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」觸發程序。
+* 您要在其中存取 Salesforce 帳戶的邏輯應用程式。 若要開始使用 Salesforce 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Salesforce 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
 ## <a name="connect-to-salesforce"></a>連線至 Salesforce
 
@@ -46,7 +46,7 @@ ms.locfileid: "74789285"
 
      -或-
 
-   * 若是現有的邏輯應用程式，請在想要新增動作的步驟底下，選擇 [新增步驟]。 在搜尋方塊中，輸入「salesforce」作為篩選條件。 在動作清單底下，選取您想要的動作。
+   * 若是現有的邏輯應用程式，請在想要新增動作的步驟底下，選擇 [新增步驟]****。 在搜尋方塊中，輸入「salesforce」作為篩選條件。 在動作清單底下，選取您想要的動作。
 
 1. 如果系統提示您登入 Salesforce，請立即登入並允許存取。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74789285"
 ## <a name="get-support"></a>取得支援
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

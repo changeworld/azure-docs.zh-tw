@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server 的高可用性-Azure Active Directory
+title: Azure MFA 伺服器的高可用性 - Azure 活動目錄
 description: 在設定中部署多個 Azure Multi-Factor Authentication Server 執行個體以提供高可用性。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7b2df4e87dddcfedd10682e4e3ab6c014ad7bbb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848182"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>針對高可用性設定 Azure Multi-Factor Authentication Server
@@ -23,13 +23,13 @@ ms.locfileid: "74848182"
 若要透過 Azure Server MFA 部署達到高可用性，您必須部署多部 MFA Server。 本節提供負載平衡設計的相關資訊，該設計可達到 Azure MFS Server 部署中的高可用性目標。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 將不再為新部署提供 MFA 伺服器。 希望使用者進行多重要素驗證的新客戶應使用基於雲的 Azure 多重要素驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動憑據。
 
 ## <a name="mfa-server-overview"></a>MFA Server 概觀
 
 Azure MFA Server 服務架構包含數個元件，如下圖所示：
 
- ![MFA Server 架構元件](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA 伺服器體系結構元件](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
 MFA Server 是已安裝 Azure Multi-Factor Authentication 軟體的 Windows Server。 MFA Server 執行個體必須透過 Azure MFA 服務啟用才能運作。 您可以在內部部署安裝多部 MFA Server。
 
@@ -39,9 +39,9 @@ MFA Server 是已安裝 Azure Multi-Factor Authentication 軟體的 Windows Serv
 
 向 AD 成功驗證之後，MFA Server 將會與 MFA 服務通訊。 MFA Server 會等候來自 MFA 服務的通知，以允許或拒絕使用者存取應用程式。
 
-如果 MFA 主要伺服器離線，仍可處理驗證，但無法處理需要變更 MFA 資料庫的作業。 （範例包括：新增使用者、自助 PIN 變更、變更使用者資訊或存取使用者入口網站）
+如果 MFA 主要伺服器離線，仍可處理驗證，但無法處理需要變更 MFA 資料庫的作業。 （示例包括：添加使用者、自助 PIN 更改、更改使用者資訊或訪問使用者門戶）
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>部署
 
 請考慮對 Azure MFA Server 及其相關元件進行負載平衡的下列重點。
 

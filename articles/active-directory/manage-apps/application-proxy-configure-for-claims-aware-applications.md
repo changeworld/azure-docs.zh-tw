@@ -16,23 +16,23 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68477247"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在應用程式 Proxy 中使用宣告感知應用程式
 [宣告感知應用程式](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)會執行重新導向至 Security Token Service (STS)。 STS 會向使用者要求認證以交換權杖，然後將使用者重新導向至應用程式。 有幾種方法可以讓應用程式 Proxy 進行這些重新導向。 請按照本文的說明來設定對宣告感知應用程的部署。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 確定宣告感知應用程式重新導向的 STS 可從內部部署網路外部使用。 您可以透過 Proxy 將 STS 公開或是允許外部連接，讓 STS 可供使用。 
 
 ## <a name="publish-your-application"></a>發佈您的應用程式
 
 1. 根據 [使用應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)中的所述指示來發佈您的應用程式。
-2. 瀏覽至入口網站中的應用程式頁面，然後選取 [單一登入]。
-3. 如果您選擇 [Azure Active Directory] 作為您的 [預先驗證方法]，請選取 [Azure AD 單一登入已停用] 作為您的 [內部驗證方法]。 如果您選擇 [傳遞] 作為您的 [預先驗證方法]，則無需進行任何變更。
+2. 瀏覽至入口網站中的應用程式頁面，然後選取 [單一登入]****。
+3. 如果您選擇 [Azure Active Directory]**** 作為您的 [預先驗證方法]****，請選取 [Azure AD 單一登入已停用]**** 作為您的 [內部驗證方法]****。 如果您選擇 [傳遞]**** 作為您的 [預先驗證方法]****，則無需進行任何變更。
 
 ## <a name="configure-adfs"></a>設定 ADFS
 
@@ -45,12 +45,12 @@ ms.locfileid: "68477247"
 ### <a name="option-2-ws-federation"></a>選項 2：WS-同盟
 
 1. 開啟 [ADFS 管理]。
-2. 移至 [信賴憑證者信任]，並在您要使用「應用程式 Proxy 」來發佈的應用程式上按一下滑鼠右鍵，然後選擇 [屬性]。  
+2. 移至 [信賴憑證者信任]****，並在您要使用「應用程式 Proxy 」來發佈的應用程式上按一下滑鼠右鍵，然後選擇 [屬性]****。  
 
    ![信賴憑證者信任 - 以滑鼠右鍵按一下應用程式名稱 - 螢幕擷取畫面](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. 在 [端點] 索引標籤的 [端點類型] 底下，選取 [WS-同盟]。
-4. 在 [信任的 URL] 底下，輸入您在「應用程式 Proxy」的 [外部 URL] 底下輸入的 URL，然後按一下 [確定]。  
+3. 在 [端點]**** 索引標籤的 [端點類型]**** 底下，選取 [WS-同盟]****。
+4. 在 [信任的 URL]**** 底下，輸入您在「應用程式 Proxy」的 [外部 URL]**** 底下輸入的 URL，然後按一下 [確定]****。  
 
    ![新增端點 - 設定 [信任的 URL] 值 - 螢幕擷取畫面](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 

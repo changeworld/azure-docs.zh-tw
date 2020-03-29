@@ -1,5 +1,5 @@
 ---
-title: 使用時態表消費者入門
+title: 開始使用臨時表
 description: 了解如何開始使用 Azure SQL Database 中的時態表。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
 ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820711"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的時態表
@@ -108,7 +108,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>步驟 2：定期執行您的工作負載
 時態表的主要優點是您不需要以任何方式變更或調整您的網站，就可以執行變更追蹤。 一旦建立時態表之後，當您每次對資料進行修改時，便會自動保存先前的資料列版本。 
 
-為了利用此特定案例的自動變更追蹤，讓我們在每次使用者于網站上結束會話時，就更新資料行**pagesvisited 即可**：
+為了利用此特定方案的自動更改跟蹤，讓我們在每次使用者結束其網站上的會話時更新 **"訪問"** 列：
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
@@ -188,13 +188,13 @@ ALTER TABLE dbo.WebsiteUserInfo
 或者，當您連線到資料庫 (線上模式)，或您屬於資料庫專案的一部分 (離線模式) 時，使用最新的 [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) 變更時態表結構描述。
 
 ## <a name="controlling-retention-of-historical-data"></a>控制歷史資料的保留期
-透過系統設定版本的時態表，歷程記錄資料表可以將資料庫大小增加到超過一般資料表。 一個大型且不斷成長的歷程記錄表格可能會因為單純的儲存體成本，以及對時態查詢效能所徵收的稅額而變成一個問題。 因此，開發資料保留原則來管理歷程記錄資料表中的資料是規劃及管理每個時態表生命週期的重要環節。 使用 Azure SQL Database 時，您有下列方法可以管理時態表中的歷史資料︰
+透過系統設定版本的時態表，歷程記錄資料表可以將資料庫大小增加到超過一般資料表。 對於不斷成長的大型歷程記錄資料表來說，單是儲存成本和加諸於時態查詢之上的效能負擔就可能會造成問題。 因此，開發資料保留原則來管理歷程記錄資料表中的資料是規劃及管理每個時態表生命週期的重要環節。 使用 Azure SQL Database 時，您有下列方法可以管理時態表中的歷史資料︰
 
-* [資料表分割](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
+* [表分區](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [自訂清除指令碼](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需有關時態表的詳細資訊，請參閱簽出[時態表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)。
+- 有關時態表的詳細資訊，請參閱簽出[時態表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)。
 - 瀏覽 Channel 9，聽聽[真實客戶的時態表實作成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，並觀看[時態表的即時示範](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 

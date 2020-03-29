@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60630563"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 監視指示器來管理您的裝置
@@ -36,7 +36,7 @@ StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控�
 這篇文章的其餘部分將說明各種監控 LED 指示燈、 LED 在 StorSimple 裝置上的位置，根據 LED 狀態的裝置狀態，以及任何相關聯的有聲警報器。
 
 ## <a name="front-panel-indicator-leds"></a>前端面板 LED 指示燈
-前端面板，也稱為「操作面板」  或「操作面板」  ，其顯示系統中所有模組的彙總狀態。 StorSimple 主要機箱與 EBOD 機箱上的前端面板完全相同，如下圖所示。  
+前端面板，也稱為「操作面板」** 或「操作面板」**，其顯示系統中所有模組的彙總狀態。 StorSimple 主要機箱與 EBOD 機箱上的前端面板完全相同，如下圖所示。  
 
    ![裝置正面面板][1]
 
@@ -48,16 +48,16 @@ StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控�
 4. 邏輯錯誤 LED 指示燈 (開時為紅琥珀色/關)
 5. 單元識別碼顯示  
 
-裝置前端面板 LED 與 EBOD 機箱的前端面板 LED 的主要差異在於 LED 顯示上顯示的「系統單元識別碼」  。 裝置上顯示的預設單位識別碼是 **00**，而 EBOD 機箱上顯示的預設單元識別碼是 **01**。 這可讓您在裝置開啟時，快速區分裝置與 EBOD 機箱。 如果您的裝置已關閉，請使用[啟動新的裝置](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)所提供的資訊來區分裝置與 EBOD 機箱。  
+裝置前端面板 LED 與 EBOD 機箱的前端面板 LED 的主要差異在於 LED 顯示上顯示的「系統單元識別碼」****。 裝置上顯示的預設單位識別碼是 **00**，而 EBOD 機箱上顯示的預設單元識別碼是 **01**。 這可讓您在裝置開啟時，快速區分裝置與 EBOD 機箱。 如果您的裝置已關閉，請使用[啟動新的裝置](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)所提供的資訊來區分裝置與 EBOD 機箱。  
 
 ## <a name="front-panel-led-status"></a>前端面板 LED 狀態
 您可以使用下表，利用裝置前端面板或 EBOD 機箱前端面板上的 LED 來識別所指示的狀態。  
 
 | 系統電源 | 模組錯誤 | 邏輯錯誤 | 警示 | 狀態 |
 | --- | --- | --- | --- | --- |
-| 紅琥珀色 |關 |關 |N/A |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
+| 紅琥珀色 |OFF |OFF |N/A |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
 | 綠色 |開啟 |開啟 |N/A |操作面板電源開啟 (5 秒) 測試狀態 |
-| 綠色 |關 |關 |N/A |電源開啟、所有功能正常 |
+| 綠色 |OFF |OFF |N/A |電源開啟、所有功能正常 |
 | 綠色 |開啟 |N/A |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
 | 綠色 |開啟 |N/A |I/O 模組 LED |任何控制器模組錯誤 |
 | 綠色 |開啟 |N/A |N/A |機箱邏輯錯誤 |
@@ -88,24 +88,24 @@ LED 面板上會指出 PCM 的狀態。 裝置 PCM LED 面板有六個 LED。 �
 ### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>電源供應器與風扇的 PCM LED 指示燈
 | 狀態 | PCM 正常 (綠色) | AC 故障 (琥珀色) | 風扇故障 (琥珀色) | DC 故障 (琥珀色) |
 | --- | --- | --- | --- | --- |
-| 沒有 AC 電源 (機箱) |關 |關 |關 |關 |
-| 沒有 AC 電源 (只有此 PCM) |關 |開啟 |關 |開啟 |
-| 有 AC 且 PCM 開啟 - 正常 |開啟 |關 |關 |關 |
-| PCM 故障 (風扇故障) |關 |關 |開啟 |N/A |
-| PCM 故障 (安培、 電壓、電流過高) |關 |開啟 |開啟 |開啟 |
-| PCM (風扇超出容許範圍) |開啟 |關 |關 |開啟 |
-| 待命模式 |不停閃爍 |關 |關 |關 |
-| PCM 韌體下載 |關 |不停閃爍 |不停閃爍 |不停閃爍 |
+| 沒有 AC 電源 (機箱) |OFF |OFF |OFF |OFF |
+| 沒有 AC 電源 (只有此 PCM) |OFF |開啟 |OFF |開啟 |
+| 有 AC 且 PCM 開啟 - 正常 |開啟 |OFF |OFF |OFF |
+| PCM 故障 (風扇故障) |OFF |OFF |開啟 |N/A |
+| PCM 故障 (安培、 電壓、電流過高) |OFF |開啟 |開啟 |開啟 |
+| PCM (風扇超出容許範圍) |開啟 |OFF |OFF |開啟 |
+| 待命模式 |不停閃爍 |OFF |OFF |OFF |
+| PCM 韌體下載 |OFF |不停閃爍 |不停閃爍 |不停閃爍 |
 
 ### <a name="pcm-indicator-leds-for-the-backup-battery"></a>備份電池的 PCM LED 指示燈
 | 狀態 | 電池良好 (綠色) | 電池故障 (琥珀色) |
 | --- | --- | --- |
-| 沒有電池 |關 |關 |
-| 有電池且已充電 |開啟 |關 |
-| 電池充電中或維護放電 |不停閃爍 |關 |
-| 電池「軟性」故障 (可修復) |關 |不停閃爍 |
-| 電池「硬性」故障 (不可修復) |關 |開啟 |
-| 已卸除電池 |不停閃爍 |關 |
+| 沒有電池 |OFF |OFF |
+| 有電池且已充電 |開啟 |OFF |
+| 電池充電中或維護放電 |不停閃爍 |OFF |
+| 電池「軟性」故障 (可修復) |OFF |不停閃爍 |
+| 電池「硬性」故障 (不可修復) |OFF |開啟 |
+| 已卸除電池 |不停閃爍 |OFF |
 
 ## <a name="pcm-leds-for-the-ebod-enclosure"></a>EBOD 機箱的 PCM LED
 EBOD 機箱有一個 580W PCM，沒有額外電池。 EBOD 機箱的 PCM 面板 LED 指示燈僅適用於電源供應器與風扇。 下圖顯示這些 LED。
@@ -116,14 +116,14 @@ EBOD 機箱有一個 580W PCM，沒有額外電池。 EBOD 機箱的 PCM 面板 
 
 | 狀態 | PCM 正常 (綠色) | AC 故障 (琥珀色) | 風扇故障 (琥珀色) | DC 故障 (琥珀色) |
 | --- | --- | --- | --- | --- |
-| 沒有 AC 電源 (機箱) |關 |關 |關 |關 |
-| 沒有 AC 電源 (只有此 PCM) |關 |開啟 |關 |開啟 |
-| 有 AC 且 PCM 為開 - 正常 |開啟 |關 |關 |關 |
-| PCM 故障 (風扇故障) |關 |關 |開啟 |X |
-| PCM 故障 (安培、 電壓、電流過高) |關 |開啟 |開啟 |開啟 |
-| PCM (風扇超出容許範圍) |開啟 |關 |關 |開啟 |
-| 待命模式 |不停閃爍 |關 |關 |關 |
-| PCM 韌體下載 |關 |不停閃爍 |不停閃爍 |不停閃爍 |
+| 沒有 AC 電源 (機箱) |OFF |OFF |OFF |OFF |
+| 沒有 AC 電源 (只有此 PCM) |OFF |開啟 |OFF |開啟 |
+| 有 AC 且 PCM 為開 - 正常 |開啟 |OFF |OFF |OFF |
+| PCM 故障 (風扇故障) |OFF |OFF |開啟 |X |
+| PCM 故障 (安培、 電壓、電流過高) |OFF |開啟 |開啟 |開啟 |
+| PCM (風扇超出容許範圍) |開啟 |OFF |OFF |開啟 |
+| 待命模式 |不停閃爍 |OFF |OFF |OFF |
+| PCM 韌體下載 |OFF |不停閃爍 |不停閃爍 |不停閃爍 |
 
 ## <a name="controller-module-indicator-leds"></a>控制器模組 LED 指示燈
 StorSimple 裝置包含主要控制器的 LED 與 EBOD 控制器模組的 LED。   
@@ -150,7 +150,7 @@ StorSimple 裝置包含主要控制器的 LED 與 EBOD 控制器模組的 LED。
 > 
 > 
 
-### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>EBOD 的監控 LED (EBOD 機箱)
+### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>EBOD 的監控 LED (EBOD 機箱) 
 每個 6 GB/s SAS EBOD 控制器都有各自的 LED指出其狀態，如下圖所示。  
 
   ![監視 LED 燈 - EBOD 機相][5]
@@ -160,9 +160,9 @@ StorSimple 裝置包含主要控制器的 LED 與 EBOD 控制器模組的 LED。
 ### <a name="ebod-controller-module-indicator-leds"></a>EBOD 控制器模組 LED 指示燈
 | 狀態 | I/O 模組正常 (綠色) | I/O 模組故障 (琥珀色) | 主機連接埠活動 (綠色) |
 | --- | --- | --- | --- |
-| 控制器模組確定 |開啟 |關 |- |
-| 控制器模組錯誤 |關 |開啟 |- |
-| 沒有外部主機連接埠連接 |- |- |關 |
+| 控制器模組確定 |開啟 |OFF |- |
+| 控制器模組錯誤 |OFF |開啟 |- |
+| 沒有外部主機連接埠連接 |- |- |OFF |
 | 外部主機連接埠連接 – 沒有活動 |- |- |開啟 |
 | 外部主機連接埠連接 – 活動 |- |- |不停閃爍 |
 | 控制器模組中繼資料錯誤 |不停閃爍 |- |- |
@@ -179,11 +179,11 @@ StorSimple 裝置的磁碟機可以位於主要機箱與 EBOD 機箱。 每個�
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD 機箱的磁碟機 LED 指示燈
 | 狀態 | 活動正常 LED (綠色) | 錯誤 LED (紅琥珀色) | 相關聯操作面板 LED |
 | --- | --- | --- | --- |
-| 未安裝磁碟機 |關 |關 |None |
+| 未安裝磁碟機 |OFF |OFF |None |
 | 磁碟機已安裝且可運作 |有活動時會不停開/關地閃爍 |X |None |
 | SCSI 機箱服務 (SES) 裝置身分識別已設定 |開啟 |每 2 秒閃爍 1 次 |None |
 | SES 裝置錯誤位元已設定 |開啟 |開啟 |邏輯錯誤 (紅色) |
-| 電源控制電路故障 |關 |開啟 |模組錯誤 (紅色) |
+| 電源控制電路故障 |OFF |開啟 |模組錯誤 (紅色) |
 
 ## <a name="audible-alarms"></a>有聲警報器
 StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器。 有聲警報器位於這兩個機箱的前端面板 (也稱為操作面板)。 有聲警報器會指出發生錯誤狀況。 下列狀況將啟動警報器：  
@@ -203,7 +203,7 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | 警報器狀態 | 動作 | 已按靜音按鈕時的動作 |
 | --- | --- | --- |
 | S0 |標準模式：靜音 |嗶兩聲 |
-| S1 |錯誤模式：第二個關閉 1 秒嗶 1 |轉換至 S2 或 S3 (請參閱注意事項) |
+| S1 |錯誤模式：每 2 秒嗶 1 聲 |轉換至 S2 或 S3 (請參閱注意事項) |
 | S2 |提醒模式：間歇嗶聲 |None |
 | S3 |靜音模式：靜音 |None |
 | S4 |重大錯誤模式：連續警示 |無法使用：未啟用靜音 |
@@ -239,10 +239,10 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | 磁碟機電源控制故障 |警告 – 未失去磁碟機電源 |S1 |模組錯誤 |
 | 磁碟機電源控制故障 |錯誤 – 重大；失去磁碟機電源 |S1 |模組錯誤 |
 | 已卸下磁碟機 |警告 |None |模組錯誤 |
-| 沒有足夠的可用電源 |警告 |None |模組錯誤 |
+| 沒有足夠的可用電源 |警告 |無 |模組錯誤 |
 
 ## <a name="next-steps"></a>後續步驟
-深入了解 [StorSimple 硬體元件與狀態](storsimple-8000-monitor-hardware-status.md)。
+瞭解有關[StorSimple 硬體元件和狀態](storsimple-8000-monitor-hardware-status.md)的更多內容。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png

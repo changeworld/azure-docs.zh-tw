@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元率 720p 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本文提供媒體編碼器標準「H264 單一位元速率720p」工作預設的總覽。
+description: 本文概述了媒體編碼器標準"H264 單位元速率 720p"任務預設。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: e48f0c614ba7a7b4199e6ddf0050de0ae7db063f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74886824"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 單一位元速率 720p

@@ -1,6 +1,6 @@
 ---
 title: H264 多重位元率 4K 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本文概述媒體編碼器標準**H264 多重位元速率 4k**工作預設值。
+description: 本文概述了媒體編碼器標準**H264 多位元率 4K**任務預設。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887012"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 多重位元速率 4K

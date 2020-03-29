@@ -1,5 +1,5 @@
 ---
-title: 連接到 Azure Logic Apps 的時差
+title: 從 Azure 邏輯應用連接到鬆弛
 description: 藉由使用 Azure Logic Apps，讓在 Slack 帳戶中監視檔案及管理通道、群組和訊息的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789166"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 Slack
@@ -23,19 +23,19 @@ ms.locfileid: "74789166"
 * 張貼訊息。
 * 建立群組並設定請勿打擾。
 
-您可以使用觸發程序，從您的 Slack 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Slack 帳戶來執行工作。 您也可以讓其他動作使用 Slack 動作的輸出。 例如，建立新檔案時，您可以使用 Office 365 Outlook 連接器來傳送電子郵件。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用觸發程序，從您的 Slack 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Slack 帳戶來執行工作。 您也可以讓其他動作使用 Slack 動作的輸出。 例如，建立新檔案時，您可以使用 Office 365 Outlook 連接器來傳送電子郵件。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 [Slack](https://slack.com/) (英文) 帳戶和使用者認證
 
   您的認證會授權邏輯應用程式建立連線並存取 Slack 帳戶。
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 您要在其中存取 Slack 帳戶的邏輯應用程式。 若要開始使用 Slack 觸發程序，[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 動作，請使用觸發程序來啟動邏輯應用程式，例如 Slack 觸發程序或其他觸發程序，例如「週期」觸發程序。
+* 您要在其中存取 Slack 帳戶的邏輯應用程式。 若要開始使用 Slack 觸發程序，[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 動作，請使用觸發程序來啟動邏輯應用程式，例如 Slack 觸發程序或其他觸發程序，例如「週期」**** 觸發程序。
 
 ## <a name="connect-to-slack"></a>連線至 Slack
 
@@ -47,12 +47,12 @@ ms.locfileid: "74789166"
 
    -或-
 
-   若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]。 
+   若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]****。 
    在搜尋方塊中，輸入 "slack" 作為篩選條件。 
    在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
+   選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
 
 1. 如果系統提示您登入 Slack，請登入您的 Slack 工作區。 
 
@@ -71,7 +71,7 @@ ms.locfileid: "74789166"
 ## <a name="get-support"></a>取得支援
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

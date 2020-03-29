@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447092"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂格線
@@ -24,7 +24,7 @@ ms.locfileid: "61447092"
 
 本文中的方格範例會顯示來自服務的資料，而[在遠端監視解決方案加速器 Web UI 中新增自訂服務](iot-accelerators-remote-monitoring-customize-service.md)操作說明文章會說明新增方式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -182,7 +182,7 @@ describe('BasicPage Component', () => {
 npm start
 ```
 
-上一個命令會在本機於 [http://localhost:3000/dashboard](http://localhost:3000/dashboard) 執行 UI。 瀏覽至 [範例]  頁面，以查看來自服務的方格顯示資料。
+前面的命令在 本地運行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 瀏覽至 [範例]**** 頁面，以查看來自服務的方格顯示資料。
 
 ## <a name="select-rows"></a>選取資料列
 

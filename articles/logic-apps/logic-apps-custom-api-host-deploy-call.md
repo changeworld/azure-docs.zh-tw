@@ -1,21 +1,21 @@
 ---
-title: 從 Azure Logic Apps 部署和呼叫 web Api & REST Api
-description: 在 Azure Logic Apps 中部署和呼叫 web Api & 適用于系統整合工作流程的 REST Api
+title: 從 Azure 邏輯應用部署和調用 Web API & REST API
+description: 在 Azure 邏輯應用中部署和調用用於系統集成工作流的 & REST API
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790745"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>在 Azure Logic Apps 中從工作流程部署和呼叫自訂 API
 
-在您[建立可在 Logic Apps 工作流程中所使用的自訂 API](./logic-apps-create-api-app.md) 之後，您在呼叫之前必須先部署您的 API。 您可以將 API 部署為 [web 應用程式](../app-service/overview.md)，但請考慮將您的 API 部署為 [API 應用程式](../app-service/app-service-web-tutorial-rest-api.md)，如此一來，當您在雲端中及內部部署建置、裝載並自訂 API 時，可讓您的作業更容易。 您不需要在 API 中變更任何程式碼 - 只需將您的程式碼部署至 API 應用程式。 您可以將您的 API 裝載在 [Azure App Service](../app-service/overview.md) 上，這是一個平台即服務 (PaaS) 供應項目，提供擴充性高且簡便的 API 裝載服務。
+在您[建立可在 Logic Apps 工作流程中所使用的自訂 API](./logic-apps-create-api-app.md) 之後，您在呼叫之前必須先部署您的 API。 您可以將 API 部署為 [web 應用程式](../app-service/overview.md)，但請考慮將您的 API 部署為 [API 應用程式](../app-service/app-service-web-tutorial-rest-api.md)，如此一來，當您在雲端中及內部部署建置、裝載並自訂 API 時，可讓您的作業更容易。 您不需要在 API 中變更任何程式碼 - 只需將您的程式碼部署至 API 應用程式。 您可以將 API 裝載在 [Azure App Service](../app-service/overview.md) 上，這是一個平台即服務 (PaaS) 供應項目，提供擴充性高且簡便的 API 裝載服務。
 
 且雖然您可以從邏輯應用程式呼叫任何 API，但請新增描述您 API 之作業和參數的 [OpenAPI (先前為 Swagger) 中繼資料](https://swagger.io/specification/)以獲得最佳體驗。 OpenAPI 檔案可協助您更輕鬆地整合 API 工作，並改善 Logic Apps。
 
@@ -25,13 +25,13 @@ ms.locfileid: "74790745"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取您的 Web 應用程式或 API 應用程式。
 
-2. 在開啟的應用程式功能表之 [API] 下方，選擇 [API 定義]。 將 [API 定義位置] 設定為 OpenAPI swagger.json 檔案的 URL。
+2. 在開啟的應用程式功能表之 [API]**** 下方，選擇 [API 定義]****。 將 [API 定義位置]**** 設定為 OpenAPI swagger.json 檔案的 URL。
 
    通常，URL 會以這種格式出現：`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![您自訂 API 的 OpenAPI 檔案連結](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. 在 [API] 下，選擇 [CORS]。 將 [允許的來源] 的 CORS 原則設定為 **'*'** (全部允許)。
+3. 在 [API]**** 下，選擇 [CORS]****。 將 [允許的來源]**** 的 CORS 原則設定為 **'*'** (全部允許)。
 
    此設定允許來自 Logic App Designer 的要求。
 

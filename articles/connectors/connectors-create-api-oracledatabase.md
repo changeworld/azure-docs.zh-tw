@@ -1,5 +1,5 @@
 ---
-title: 連接到 Oracle Database
+title: 連接到 Oracle 資料庫
 description: 使用 Oracle Database REST API 和 Azure Logic Apps 插入及管理記錄
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
 ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789421"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>開始使用 Oracle Database 連接器
@@ -23,7 +23,7 @@ ms.locfileid: "74789421"
 
 本文說明如何在邏輯應用程式中使用 Oracle Database 連接器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 支援的 Oracle 版本： 
     * Oracle 9 和更新版本
@@ -32,9 +32,9 @@ ms.locfileid: "74789421"
 * 安裝內部部署資料閘道。 [從邏輯應用程式連線至內部部署資料](../logic-apps/logic-apps-gateway-connection.md)中會列出相關步驟。 您需要閘道或是已安裝 Oracle DB 的 Azure VM，才能連線至內部部署 Oracle Database。 
 
     > [!NOTE]
-    > 內部部署資料閘道的角色如同橋接器，在內部部署資料 (不在雲端中的資料) 和邏輯應用程式之間提供安全的資料傳輸。 相同的閘道可以與多個服務，以及多個資料來源搭配使用。 因此，您可能只需要安裝閘道一次。
+    > 內部部署資料閘道的角色如同橋接器，在內部部署資料 (不在雲端中的資料) 和邏輯應用程式之間提供安全的資料傳輸。 相同的閘道可以與多個服務，以及多個資料來源搭配使用。因此，您只需要安裝一次閘道即可。
 
-* 在您安裝內部部署資料閘道的機器上安裝 Oracle Client。 請務必從 Oracle 安裝適用于 .NET 的64位 Oracle Data Provider：  
+* 在您安裝內部部署資料閘道的機器上安裝 Oracle Client。請務必從 Oracle 安裝 64 位元的 Oracle Data Provider for .NET：  
 
   [適用於 Windows x64 的 64 位元 ODAC 12c 版本 4 (12.1.0.2.4)](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
@@ -47,22 +47,22 @@ ms.locfileid: "74789421"
 > [!IMPORTANT]
 > 此連接器並沒有任何觸發程序。 只有動作。 因此，當您建立邏輯應用程式時，請新增其他觸發程序以啟動您的邏輯應用程式，例如**排程 - 循環**或**要求/回應 - 回應**。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com) 中，建立空白的邏輯應用程式。
+1. 在[Azure 門戶](https://portal.azure.com)中，創建一個空白邏輯應用。
 
 2. 在邏輯應用程式啟動時，選取**要求/回應 - 要求**觸發程序： 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 選取 [儲存]。 當您儲存時，系統會自動生產生一個要求 URL。 
+3. 選取 [儲存]****。 當您儲存時，系統會自動生產生一個要求 URL。 
 
-4. 選取 [新增步驟]，再選取 [新增動作]。 輸入 `oracle` 以查看可用的動作： 
+4. 選取 [新增步驟]****，再選取 [新增動作]****。 輸入 `oracle` 以查看可用的動作： 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 這也是查看連接器可使用的觸發程序和動作最快的方法。 輸入連接器的部分名稱，例如 `oracle`。 設計工具會列出所有觸發程序和動作。 
 
-5. 選取其中一個動作，例如 [Oracle Database - 立即取得]。 選取 [透過內部部署資料閘道連線]。 輸入 Oracle 伺服器名稱、驗證方法、使用者名稱、密碼並選取閘道：
+5. 選取其中一個動作，例如 [Oracle Database - 立即取得]****。 選取 [透過內部部署資料閘道連線]****。 輸入 Oracle 伺服器名稱、驗證方法、使用者名稱、密碼並選取閘道：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "74789421"
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **儲存**您的邏輯應用程式，接著選取 [執行]。 關閉設計工具，接著查看狀態的執行歷程記錄。 如果失敗，請選取失敗的訊息資料列。 設計工具隨即開啟，並顯示失敗的步驟，以及錯誤資訊。 如果成功，您應該會收到一封電子郵件，內含您新增的資訊。
+8. **儲存**您的邏輯應用程式，接著選取 [執行]****。 關閉設計工具，接著查看狀態的執行歷程記錄。 如果失敗，請選取失敗的訊息資料列。 設計工具隨即開啟，並顯示失敗的步驟，以及錯誤資訊。 如果成功，您應該會收到一封電子郵件，內含您新增的資訊。
 
 
 ### <a name="workflow-ideas"></a>工作流程想法
@@ -95,9 +95,9 @@ ms.locfileid: "74789421"
 
 **原因**：內部部署資料閘道無法連線至雲端。 
 
-**風險降低**：確保您的閘道在安裝的內部部署機器中執行，且可連線至網際網路。  我們建議您不要在可能已關閉或睡眠的電腦上安裝閘道。 您也可以重新開機內部部署資料閘道服務（PBIEgwService）。
+**風險降低**：確保您的閘道在安裝的內部部署機器中執行，且可連線至網際網路。我們建議不要在可能關閉或休眠的電腦上安裝閘道。您也可以重新啟動內部部署資料閘道服務 (PBIEgwService)。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**錯誤**：使用的提供者已被取代：'System.Data.OracleClient requires Oracle 用戶端軟體版本 8.1.7 或更高版本。'。 請參閱 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) 來安裝官方提供者。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**錯誤**：使用的提供者已被取代：'System.Data.OracleClient requires Oracle 用戶端軟體版本 8.1.7 或更高版本。'。 請參閱[https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376)安裝官方提供程式。
 
 **原因**：Oracle 用戶端 SDK 並未安裝在內部部署資料閘道執行的機器上。  
 
@@ -123,7 +123,7 @@ ms.locfileid: "74789421"
 
 若要提出問題、回答問題以及查看其他 Logic Apps 使用者的做法，可以前往 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。 
 
-您可以投票並在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 中提交意見，協助改善 Logic Apps 和連接器。 
+您可以通過在 投票和提交您的想法來説明改進邏輯應用和連接器[https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)。 
 
 
 ## <a name="next-steps"></a>後續步驟

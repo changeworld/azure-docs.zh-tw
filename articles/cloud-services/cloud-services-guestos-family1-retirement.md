@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359593"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>客體作業系統系列 1 淘汰通知
@@ -32,7 +32,7 @@ ms.locfileid: "68359593"
 2. 雲端服務之 ServiceConfiguration.cscfg 檔案未明確指定 osFamily 的值。 在本案例中，系統目前使用預設值 "1" 。
 3. Azure 入口網站會將您的客體作業系統系列值列為 "Windows Server 2008"。
 
-若要找出每個雲端服務執行的作業系統系列，您可以在 Azure PowerShell 中執行下列程式碼，但請先[設定 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 如需腳本的詳細資訊, 請[參閱 Azure 虛擬機器作業系統系列1生命週期結束:2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)年6月。
+若要找出每個雲端服務執行的作業系統系列，您可以在 Azure PowerShell 中執行下列程式碼，但請先[設定 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 如需指令碼的詳細資訊，請參閱 [Azure Guest OS Family 1 End of Life: June 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx) (Azure 客體 OS 系列 1 生命週期結束：2014 年 6 月)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

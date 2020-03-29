@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75387015"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>將 Azure 雲端服務角色連接到裝載於 Azure 中的自訂 AD 網域控制站
@@ -27,7 +27,7 @@ ms.locfileid: "75387015"
 雲端服務所參考的網路必須是**傳統虛擬網路**。
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
-您可以使用 Azure 入口網站或 PowerShell 在 Azure 中建立虛擬網路。 本教學課程會使用 PowerShell。 若要使用 Azure 入口網站建立虛擬網路，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。 本文涵蓋建立虛擬網路 (Resource Manager)，但是您必須建立適用於雲端服務的虛擬網路 (傳統)。 若要這樣做，在入口網站中，選取 [建立資源]、在 [搜尋] 方塊中輸入「虛擬網路」，然後按 **Enter**。 在搜尋結果的 [所有項目] 下方，選取 [虛擬網路]。 在 [選取部署模型] 下方，選取 [傳統]，然後選取 [建立]。 您接著可以依照文中的步驟進行。
+您可以使用 Azure 入口網站或 PowerShell 在 Azure 中建立虛擬網路。 本教學課程會使用 PowerShell。 若要使用 Azure 入口網站建立虛擬網路，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。 本文涵蓋建立虛擬網路 (Resource Manager)，但是您必須建立適用於雲端服務的虛擬網路 (傳統)。 若要這樣做，在入口網站中，選取 [建立資源]****、在 [搜尋]**** 方塊中輸入「虛擬網路」**，然後按 **Enter**。 在搜尋結果的 [所有項目]**** 下方，選取 [虛擬網路]****。 在 [選取部署模型]**** 下方，選取 [傳統]****，然後選取 [建立]****。 您接著可以依照文中的步驟進行。
 
 ```powershell
 #Create Virtual Network

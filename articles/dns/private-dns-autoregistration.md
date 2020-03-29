@@ -1,6 +1,6 @@
 ---
-title: 什麼是 Azure DNS 私人區域的自動註冊功能
-description: Azure DNS 私人區域的自動註冊功能總覽
+title: Azure DNS 私人區域的自動註冊功能是什麼
+description: Azure DNS 私人區域自動註冊功能概述
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71961252"
 ---
-# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS 私人區域的自動註冊功能為何
+# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS 私人區域的自動註冊功能是什麼
 
-Azure DNS 私人區域自動註冊功能會讓部署在虛擬網路中的虛擬機器進行 DNS 記錄管理的困難。 當您[連結虛擬網路](./private-dns-virtual-network-links.md)與私人 dns 區域，並啟用所有虛擬機器的自動註冊時，部署在虛擬網路中的虛擬機器 DNS 記錄會自動建立在私人 dns 區域中。 除了向前查詢記錄（A 記錄）之外，也會自動為虛擬機器建立反向對應記錄（PTR 記錄）。
-如果您將更多虛擬機器新增至虛擬網路，則也會在連結的私人 DNS 區域中自動建立這些虛擬機器的 DNS 記錄。
+Azure DNS 私人區域自動註冊功能使部署在虛擬網路中的虛擬機器的 DNS 記錄管理帶來的痛苦。 當您[將虛擬網路](./private-dns-virtual-network-links.md)與專用 DNS 區域連結並對所有虛擬機器啟用自動註冊時，在專用 DNS 區域中自動創建部署在虛擬網路中的虛擬機器的 DNS 記錄。 除了前瞻查找記錄 （A 記錄），還會自動為虛擬機器創建反向對應記錄（PTR 記錄）。
+如果將更多虛擬機器添加到虛擬網路，則這些虛擬機器的 DNS 記錄也會在連結的專用 DNS 區域中自動創建。
 
-當您刪除虛擬機器時，會自動從私人 DNS 區域中刪除虛擬機器的 DNS 記錄。
+刪除虛擬機器時，虛擬機器的 DNS 記錄將自動從專用 DNS 區域中刪除。
 
-您可以在建立虛擬網路連結時，選取 [啟用自動註冊] 選項來啟用自動註冊。
+您可以在創建虛擬網路連結時選擇"啟用自動註冊"選項來啟用自動註冊。
 
 ![啟用自動註冊](./media/privatedns-concepts/enable-autoregistration.png)
 
 ## <a name="restrictions"></a>限制
 
-* 自動註冊僅適用于虛擬機器。 對於內部負載平衡器等所有其他資源，您可以在連結至虛擬網路的私人 DNS 區域中手動建立 DNS 記錄。
-* 只有主要虛擬機器 NIC 會自動建立 DNS 記錄。 如果您的虛擬機器有一個以上的 NIC，您可以手動建立其他網路介面的 DNS 記錄。
-* 不支援 IPv6 的自動註冊（AAAA 記錄）。
+* 自動註冊僅適用于虛擬機器。 對於所有其他資源（如內部負載等化器等），您可以在連結到虛擬網路的專用 DNS 區域中手動創建 DNS 記錄。
+* DNS 記錄僅針對主虛擬機器 NIC 自動創建。 如果您的虛擬機器有多個 NIC，則可以手動為其他網路介面創建 DNS 記錄。
+* 不支援自動註冊 IPv6（AAAA 記錄）。
 
 ## <a name="next-steps"></a>後續步驟
 

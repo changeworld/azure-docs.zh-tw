@@ -1,6 +1,6 @@
 ---
-title: 處理暫時性連接錯誤-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 瞭解如何處理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的暫時性連線錯誤。
+title: 處理瞬態連接錯誤 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
+description: 瞭解如何處理 PostgreSQL - 單伺服器 Azure 資料庫的瞬態連接錯誤。
 keywords: postgresql 連線, 連接字串, 連線問題, 暫時性錯誤, 連線錯誤
 author: jan-eng
 ms.author: janeng
@@ -8,19 +8,19 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768838"
 ---
-# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>處理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的暫時性連接錯誤
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>處理適用於 PostgreSQL 的 Azure 資料庫的暫時性連線錯誤 - 單一伺服器
 
-本文說明如何處理連接到適用於 PostgreSQL 的 Azure 資料庫的暫時性錯誤。
+本文介紹如何處理連接到 Azure 資料庫的 PostgreSQL 瞬態錯誤。
 
 ## <a name="transient-errors"></a>暫時性錯誤
 
-暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 這些錯誤最常顯現在與正在卸除之資料庫伺服器的連線。 此外，與伺服器的新連線也無法開啟。 舉例來說，當發生硬體或網路故障時，就可能發生暫時性錯誤。 另一個原因可能是即將推出的新版本 PaaS 服務。系統會在不到60秒的時間內自動減輕這些事件。 設計及開發雲端應用程式時，最佳做法是將暫時性錯誤納入考量。 假設這些錯誤可能隨時在任何元件發生，並備妥適當的邏輯來處理這些情況。
+暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 這些錯誤最常顯現在與正在卸除之資料庫伺服器的連線。 此外，與伺服器的新連線也無法開啟。 舉例來說，當發生硬體或網路故障時，就可能發生暫時性錯誤。 另一個原因可能是正在推出的 PaaS 服務的新版本。系統可在 60 秒內自動緩解大多數這些事件。 設計及開發雲端應用程式時，最佳做法是將暫時性錯誤納入考量。 假設這些錯誤可能隨時在任何元件發生，並備妥適當的邏輯來處理這些情況。
 
 ## <a name="handling-transient-errors"></a>處理暫時性錯誤
 

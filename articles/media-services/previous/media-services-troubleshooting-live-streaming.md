@@ -1,6 +1,6 @@
 ---
 title: 為即時串流而設的疑難排解指南 | Microsoft Docs
-description: 本文提供有關如何針對 Azure 媒體服務即時串流問題進行疑難排解的建議。
+description: 本文就如何解決 Azure 媒體服務即時流問題提出了建議。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74885597"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>為即時串流而設的疑難排解指南  
@@ -28,11 +28,11 @@ ms.locfileid: "74885597"
 本節提供如何疑難排解內部部署編碼器相關問題的建議，而編碼器的設定是傳送單一位元速率資料流到啟用即時編碼的 AMS 通道。
 
 ### <a name="problem-would-like-to-see-logs"></a>問題：想要查看記錄
-* 潛在問題：找不到可能有助於偵錯問題的編碼器記錄。
+* 潛在問題****：找不到可能有助於偵錯問題的編碼器記錄。
   
   * **Telestream Wirecas**：您通常可以在 C:\Users\{使用者名稱}\AppData\Roaming\Wirecast\ 下找到記錄 
-  * **Elemental Live**︰您可在管理入口網站上找到記錄連結。 依序按一下 [統計] 及 [記錄]。 在 [記錄] 頁面上，您會看到一份所有 LiveEvent 項目的記錄清單，請選取符合您目前工作階段的項目。 
-  * **Flash Media Live Encoder**︰瀏覽至 [編碼記錄檔] 索引標籤即可找到 [記錄檔目錄...]。
+  * **Elemental Live**︰您可在管理入口網站上找到記錄連結。 依序按一下 [統計]**** 及 [記錄]****。 在 [記錄] **** 頁面上，您會看到一份所有 LiveEvent 項目的記錄清單，請選取符合您目前工作階段的項目。 
+  * **Flash Media Live Encoder**︰瀏覽至 [編碼記錄檔]**** 索引標籤即可找到 [記錄檔目錄...]****。
 
 ### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>問題：沒有輸出漸進式資料流的選項
 * **可能的問題**：使用的編碼器不會自動進行非交錯處理。 

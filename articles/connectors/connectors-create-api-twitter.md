@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Logic Apps 連接到 Twitter
+title: 從 Azure 邏輯應用連接到 Twitter
 description: 藉由使用 Azure Logic Apps，讓監視及管理推文，加上從您的 Twitter 帳戶取得跟隨者、您跟隨的使用者、其他使用者、時間軸等等相關資訊的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789081"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來監視及管理 Twitter
@@ -21,19 +21,19 @@ ms.locfileid: "74789081"
 * 監視、貼文和搜尋推文。
 * 取得例如跟隨者、跟隨的使用者、時間軸等等的資料。
 
-您可以使用觸發程序，從您的 Twitter 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Twitter 帳戶來執行工作。 您也可以讓其他動作使用 Twitter 動作的輸出。 例如，當具有特定主題標籤的新推文出現時，您可以使用 Slack 連接器來傳送訊息。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用觸發程序，從您的 Twitter 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Twitter 帳戶來執行工作。 您也可以讓其他動作使用 Twitter 動作的輸出。 例如，當具有特定主題標籤的新推文出現時，您可以使用 Slack 連接器來傳送訊息。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 Twitter 帳戶和使用者認證
 
    您的認證會授權邏輯應用程式建立連線並存取 Twitter 帳戶。
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 您要在其中存取 Twitter 帳戶的邏輯應用程式。 若要開始使用 Twitter 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Twitter 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」觸發程序。
+* 您要在其中存取 Twitter 帳戶的邏輯應用程式。 若要開始使用 Twitter 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Twitter 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
 ## <a name="connect-to-twitter"></a>連接到 Twitter
 
@@ -50,12 +50,12 @@ ms.locfileid: "74789081"
 
    * 針對現有的邏輯應用程式： 
    
-     * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]。 
+     * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]****。 
 
        -或-
 
      * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-     選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
+     選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
      
        在搜尋方塊中，輸入 "twitter" 作為篩選條件。 
        在動作清單底下，選取您想要的動作。
@@ -85,7 +85,7 @@ ms.locfileid: "74789081"
 ## <a name="get-support"></a>取得支援
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

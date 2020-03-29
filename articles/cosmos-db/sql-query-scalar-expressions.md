@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB SQL 查詢中的純量運算式
-description: 瞭解 Azure Cosmos DB 的純量運算式 SQL 語法。 本文也描述如何使用運算子，將純量運算式合併成複雜的運算式。
+title: Azure 宇宙 DB SQL 查詢中的 Scalar 運算式
+description: 瞭解 Azure Cosmos DB 的標量運算式 SQL 語法。 本文還介紹了如何使用運算子將標量運算式合併到複雜運算式中。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870729"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查詢中的純量運算式
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure 宇宙 DB SQL 查詢中的 Scalar 運算式
 
-[SELECT 子句](sql-query-select.md)支援純量運算式。 純量運算式結合了符號及運算子，可以加以評估以取得單一值。 純量運算式的範例包括：常數、屬性參考、陣列元素參考、別名參考或函式呼叫。 純量運算式可以使用運算子結合成複雜運算式。
+[SELECT 子句](sql-query-select.md)支援標量運算式。 純量運算式結合了符號及運算子，可以加以評估以取得單一值。 標量運算式的示例包括：常量、屬性引用、陣列元素引用、別名引用或函式呼叫。 可以使用運算子將 Scalar 運算式組合到複雜的運算式中。
 
 ## <a name="syntax"></a>語法
   
@@ -50,7 +50,7 @@ ms.locfileid: "74870729"
   
 - `<constant>`  
   
-   代表常數值。 如需詳細資料，請參閱[常數](sql-query-constants.md)一節。  
+   代表常數值。 請參閱＜[常數](sql-query-constants.md)＞一節以取得詳細資料。  
   
 - `input_alias`  
   
@@ -59,11 +59,11 @@ ms.locfileid: "74870729"
   
 - `<scalar_expression>.property_name`  
   
-   代表物件屬性值。 如果屬性不存在，或在不是物件的值上參考屬性，則運算式會評估為**未定義**的值。  
+   代表物件屬性值。 如果屬性不存在或屬性在值（該值不是物件）上引用，則運算式將計算為**未定義的**值。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   表示具有陣列索引 `array_index` 之名稱 `property_name` 或陣列元素的屬性值。 若屬性不存在或屬性/陣列索引已在非物件/陣列的值中參考，則運算式會評估為未定義的值。  
+   表示具有陣列索引`property_name``array_index`的名稱或陣列元素的屬性的值。 若屬性不存在或屬性/陣列索引已在非物件/陣列的值中參考，則運算式會評估為未定義的值。  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ ms.locfileid: "74870729"
   
 ## <a name="remarks"></a>備註
   
-  呼叫內建或使用者定義的純量函數時，必須定義所有引數。 若有任何未定義的引數，則不會呼叫函式，同時會產生未定義的結果。  
+  調用內置或使用者定義的標量函數時，必須定義所有參數。 若有任何未定義的引數，則不會呼叫函式，同時會產生未定義的結果。  
   
   建立物件時，會略過任何指派未定義值的屬性，且不會納入已建立的物件中。  
   
@@ -111,7 +111,7 @@ ms.locfileid: "74870729"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-結果為：
+結果如下：
 
 ```json
     [{
@@ -119,14 +119,14 @@ ms.locfileid: "74870729"
     }]
 ```
 
-在下列查詢中，純量運算式的結果是布林值：
+在以下查詢中，標量運算式的結果為布林：
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
     FROM Families f
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -141,6 +141,6 @@ ms.locfileid: "74870729"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Cosmos DB 簡介](introduction.md)
+- [Azure 宇宙 DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [子查詢](sql-query-subquery.md)

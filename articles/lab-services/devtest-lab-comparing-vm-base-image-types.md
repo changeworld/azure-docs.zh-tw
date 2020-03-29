@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64680291"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>比較研發/測試實驗室中的自訂映像和公式
-[自訂映像](devtest-lab-create-template.md)和[公式](devtest-lab-manage-formulas.md)可以當作[建立新 VM](devtest-lab-add-vm.md) 的基礎。 不過，自訂映像與公式的主要差別在於自訂映像只是根據 VHD 的映像，而公式是根據 VHD 的映像以及  具有預先設定的設定 (例如 VM 大小、虛擬網路、子網路及構件)。 這些預先設定的設定是使用預設值所設定，並且可以在建立 VM 時予以覆寫。 本文說明使用自訂映像與使用公式的一些優缺點。
+[自訂映像](devtest-lab-create-template.md)和[公式](devtest-lab-manage-formulas.md)可以當作[建立新 VM](devtest-lab-add-vm.md) 的基礎。 不過，自訂映像與公式的主要差別在於自訂映像只是根據 VHD 的映像，而公式是根據 VHD 的映像以及** 具有預先設定的設定 (例如 VM 大小、虛擬網路、子網路及構件)。 這些預先設定的設定是使用預設值所設定，並且可以在建立 VM 時予以覆寫。 本文說明使用自訂映像與使用公式的一些優缺點。
 
 ## <a name="custom-image-pros-and-cons"></a>自訂映像的優缺點
 自訂映像提供靜態、不可變的方式，從所需的環境中建立 VM。 

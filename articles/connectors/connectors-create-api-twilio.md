@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Logic Apps 連接到 Twilio
+title: 從 Azure 邏輯應用連接到 Twilio
 description: 藉由使用 Azure Logic Apps，讓透過您的 Twilio 帳戶管理全域簡訊、多媒體訊息和 IP 訊息的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789098"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure Logic Apps 管理 Twilio 中的訊息
 
-您可以使用 Azure Logic Apps 和 Twilio 連接器，建立自動化的工作和工作流程，以便取得、傳送及列出 Twilio 中的訊息，其中包含全域簡訊、多媒體訊息及 IP 訊息。 您可以使用這些動作，利用您的 Twilio 帳戶來執行工作。 您也可以讓其他動作使用 Twilio 動作的輸出。 例如，當新訊息送達時，您可以使用 Slack 連接器傳送訊息內容。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用 Azure Logic Apps 和 Twilio 連接器，建立自動化的工作和工作流程，以便取得、傳送及列出 Twilio 中的訊息，其中包含全域簡訊、多媒體訊息及 IP 訊息。 您可以使用這些動作，利用您的 Twilio 帳戶來執行工作。 您也可以讓其他動作使用 Twilio 動作的輸出。 例如，當新訊息送達時，您可以使用 Slack 連接器傳送訊息內容。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 從 [Twilio](https://www.twilio.com/)： 
 
   * 您的 Twilio 帳戶識別碼和[驗證權杖](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them) (英文)，可以在 Twilio 儀表板上找到
 
     您的認證會授權邏輯應用程式建立連線，並且從邏輯應用程式存取 Twilio 帳戶。 
-    如果您是使用 Twilio 試用帳戶，則只能傳送簡訊給「已驗證」的電話號碼。
+    如果您是使用 Twilio 試用帳戶，則只能傳送簡訊給「已驗證」** 的電話號碼。
 
   * 已驗證的 Twilio 電話號碼，以便傳送簡訊
 
   * 已驗證的 Twilio 電話號碼，以便接收簡訊
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 您要在其中存取 Twilio 帳戶的邏輯應用程式。 若要使用 Twilio 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」觸發程序。
+* 您要在其中存取 Twilio 帳戶的邏輯應用程式。 若要使用 Twilio 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
 ## <a name="connect-to-twilio"></a>連線至 Twilio
 
@@ -45,17 +45,17 @@ ms.locfileid: "74789098"
 
 1. 選擇路徑： 
 
-     * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]。 
+     * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]****。 
 
        -或-
 
      * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-     選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
+     選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
      
        在搜尋方塊中，輸入 "twilio" 作為篩選條件。 
        在動作清單底下，選取您想要的動作。
 
-1. 為您的連線提供必要的詳細資料，然後選擇 [建立]：
+1. 提供連接的必要詳細資訊，然後選擇 **"創建**：
 
    * 用於連線的名稱
    * 您的 Twilio 帳戶識別碼 
@@ -70,7 +70,7 @@ ms.locfileid: "74789098"
 ## <a name="get-support"></a>取得支援
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要送出或票選功能構想，請前往 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
+* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

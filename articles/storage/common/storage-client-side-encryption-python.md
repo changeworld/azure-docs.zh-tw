@@ -12,17 +12,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895376"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 的用戶端加密
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 [Azure Storage Client Library for Python (適用於 Python 的 Azure 儲存體用戶端程式庫)](https://pypi.python.org/pypi/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。
 
 > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "74895376"
 
    請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串會做為二進位屬性儲存在服務上，並在解密後轉換回字串 (原始字串，而不是具有 EdmType.STRING 類型的 EntityProperties)。
 
-   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
+   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則加密屬性 A;否則加密屬性 A 和 B。請注意，在讀取或查詢實體時不必提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 單一加密原則適用於批次中的所有資料列。 用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -141,7 +141,7 @@ KEK 必須實作下列方法以成功加密資料︰
   * 叫用金鑰解析程式 (如果指定) 以取得金鑰。 如果已指定解析程式，但沒有金鑰識別碼的對應，則會擲回錯誤。
   * 如果未指定解析程式但指定了金鑰，則如果其識別項符合所需的金鑰識別項，就會使用該金鑰。 如果識別項不符合，則會擲回錯誤。
 
-    Azure 中的加密範例會針對 blob、佇列和資料表，示範更詳細的端對端案例。
+    azure.storage.samples  中的加密範例示範了針對 Blob、佇列及資料表更為詳細的端對端案例。
       KEK 與金鑰解析程式的實作範例已在範例檔案中以 KeyWrapper 和 KeyResolver 的形式個別提供。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式

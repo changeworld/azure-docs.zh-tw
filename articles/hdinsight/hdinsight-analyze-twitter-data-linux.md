@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435605"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>在 HDInsight 上使用 Apache Hive 與 Apache Hadoop 分析 Twitter 資料
 
-了解如何使用 [Apache Hive](https://hive.apache.org/) 來處理 Twitter 資料。 結果是一份傳送了最多包含特定文字之推文的 Twitter 使用者清單。
+瞭解如何使用[Apache Hive](https://hive.apache.org/)來處理 Twitter 資料。 結果是一份傳送了最多包含特定文字之推文的 Twitter 使用者清單。
 
 > [!IMPORTANT]  
 > 本文件中的步驟已在 HDInsight 3.6 上進行過測試。
@@ -28,27 +28,27 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
 
 ### <a name="create-a-twitter-application"></a>建立 Twitter 應用程式
 
-1. 從網頁瀏覽器登入 [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)。 如果您沒有 Twitter 帳戶，請選取 [**立即註冊**] 連結。
+1. 從 Web 瀏覽器登錄到[https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)。 如果您沒有 Twitter 帳戶 **，請選擇"立即註冊"** 連結。
 
-2. 選取 [Create New App] \(建立新的應用程式\)。
+2. 選取 [Create New App]**** \(建立新的應用程式\)。
 
-3. 輸入 [名稱]、[說明]、[網站]。 您可以在 [網站] 欄位中自行設定 URL。 下表列出部分要使用的範例值：
+3. 輸入 [名稱]****、[說明]****、[網站]****。 您可以在 [網站]**** 欄位中自行設定 URL。 下表列出部分要使用的範例值：
 
    | 欄位 | 值 |
    |--- |--- |
    | 名稱 |MyHDInsightApp |
-   | 說明 |MyHDInsightApp |
+   | 描述 |MyHDInsightApp |
    | 網站 |`https://www.myhdinsightapp.com` |
 
-4. 選取 **[是，我同意]** ，然後選取 [**建立您的 Twitter 應用程式**]。
+4. 選擇 **"是"，我同意**，然後選擇 **"創建您的 Twitter 應用程式**"。
 
-5. 選取 [**許可權**] 索引標籤。預設許可權為 [**唯讀**]。
+5. 選擇 **"許可權"** 選項卡。預設許可權為 **"唯讀**"。
 
 6. 選取 [ **金鑰和存取權杖** ] 索引標籤。
 
-7. 選取 [**建立我的存取權杖**]。
+7. 選擇 **"創建我的訪問權杖**"。
 
-8. 選取頁面右上角的 [**測試 OAuth** ]。
+8. 在頁面右上角選擇 **"測試 OAuth"。**
 
 9. 記下**消費者金鑰**、**消費者祕密**、**存取權杖**和**存取權杖祕密**。
 
@@ -59,13 +59,13 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
 > [!NOTE]  
 > 由於已安裝 Python，下列步驟會在 HDInsight 叢集上執行。
 
-1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)連接到群集。 通過將 CLUSTERNAME 替換為群集的名稱來編輯下面的命令，然後輸入以下命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 使用下列命令來安裝[Tweepy](https://www.tweepy.org/)、[進度](https://pypi.python.org/pypi/progressbar/2.2)列和其他必要的套件：
+1. 使用以下命令安裝[Tweepy、](https://www.tweepy.org/)[進度列](https://pypi.python.org/pypi/progressbar/2.2)和其他必需的包：
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -84,7 +84,7 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
    nano gettweets.py
    ```
 
-1. 以您 twitter 應用程式中的相關資訊取代 `Your consumer secret`、`Your consumer key`、`Your access token`和 `Your access token secret`，以編輯以下程式碼。 然後貼入已編輯的程式碼，做為**gettweets.py**檔案的內容。
+1. 通過替換`Your consumer secret`、`Your consumer key``Your access token`和`Your access token secret`使用 twitter 應用程式中的相關資訊編輯下面的代碼。 然後，將編輯的代碼粘貼為**gettweets.py**檔的內容。
 
    ```python
    #!/usr/bin/python
@@ -154,7 +154,7 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
     進度指示器隨即出現。 隨著推文的下載，其進度會推進到 100%。
 
    > [!NOTE]  
-   > 如果需要花費很長的時間來讓進度列往前移動，則您應該變更篩選來追蹤趨勢主題。 當您的篩選中有多個主題的相關推文時，您可以快速取得所需的100推文。
+   > 如果需要花費很長的時間來讓進度列往前移動，則您應該變更篩選來追蹤趨勢主題。 當篩選器中有許多有關該主題的推文時，您可以快速獲得所需的 100 條推文。
 
 ### <a name="upload-the-data"></a>上傳資料
 
@@ -169,7 +169,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="run-the-hiveql-job"></a>執行 HiveQL 工作
 
-1. 使用以下命令建立包含 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 陳述式的檔案：
+1. 使用以下命令創建包含[HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)語句的檔：
 
    ```bash
    nano twitter.hql
@@ -310,7 +310,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="next-steps"></a>後續步驟
 
-您已瞭解如何將非結構化 JSON 資料集轉換成結構化的[Apache Hive](https://hive.apache.org/)資料表。 若要深入了解 HDInsight 上的 Hive，請參閱下列文件：
+您已經瞭解如何將非結構化 JSON 資料集轉換為結構化[的 Apache Hive](https://hive.apache.org/)表。 若要深入了解 HDInsight 上的 Hive，請參閱下列文件：
 
 * [開始使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延誤資料](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

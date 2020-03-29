@@ -1,31 +1,31 @@
 ---
-title: Azure Cosmos DB 中的 SQL 查詢執行
-description: 瞭解如何建立 SQL 查詢，並在 Azure Cosmos DB 中執行。 本文說明如何使用 REST API、.Net SDK、JavaScript SDK 和各種其他 Sdk 來建立和執行 SQL 查詢。
+title: Azure 宇宙 DB 中的 SQL 查詢執行
+description: 瞭解如何創建 SQL 查詢並在 Azure Cosmos DB 中執行它。 本文介紹如何使用 REST API、.Net SDK、JavaScript SDK 和各種其他 SDK 創建和執行 SQL 查詢。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871256"
 ---
-# <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查詢執行
+# <a name="azure-cosmos-db-sql-query-execution"></a>Azure 宇宙資料庫 SQL 查詢執行
 
-任何能夠發出 HTTP/HTTPS 要求的語言都可以呼叫 Cosmos DB REST API。 Cosmos DB 也提供適用于 .NET、node.js、JavaScript 和 Python 程式設計語言的程式設計程式庫。 REST API 和程式庫全都支援透過 SQL 進行查詢，而 .NET SDK 也支援[LINQ 查詢](sql-query-linq-to-sql.md)。
+任何能夠發出 HTTP/HTTPS 請求的語言都可以調用 Cosmos DB REST API。 Cosmos DB 還為 .NET、Node.js、JavaScript 和 Python 程式設計語言提供程式設計庫。 REST API 和庫都支援通過 SQL 進行查詢，.NET SDK 也支援[LINQ 查詢](sql-query-linq-to-sql.md)。
 
-下列範例示範如何建立查詢，並針對 Cosmos 資料庫帳戶進行提交。
+以下示例演示如何創建查詢並針對 Cosmos 資料庫帳戶提交查詢。
 
-## <a id="REST-API"></a>REST API
+## <a name="rest-api"></a><a id="REST-API"></a>REST API
 
-Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型包含一個資料庫帳戶下的一組資源，而 Azure 訂用帳戶會布建該帳戶。 資料庫帳戶是由一組*資料庫*所組成，其中每個都可以包含多個*容器*，而其中又包含*專案*、udf 和其他資源類型。 每個 Cosmos DB 資源都可透過邏輯和穩定 URI 來定址。 一組資源稱為*摘要。* 
+Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型由資料庫帳戶下的一組資源組成，Azure 訂閱提供這些資源。 資料庫帳戶由一組資料庫組成，每個*資料庫*可以包含多個容器，這些*容器*又包含*項*、UF 和其他資源類型。 每個 Cosmos DB 資源都可以使用邏輯和穩定的 URI 進行定址。 一組資源稱為*源*。 
 
-具有這些資源的基本互動模型是透過 HTTP 動詞命令 `GET`、`PUT`、`POST`和 `DELETE`，以及其標準的解讀方式。 使用 `POST` 建立新的資源、執行預存程式，或發出 Cosmos DB 查詢。 查詢一律是唯讀作業，而且沒有任何副作用。
+與這些資源`GET`的基本交互模型是通過 HTTP 謂詞 、`PUT``POST`和`DELETE`，及其標準解釋。 用於`POST`創建新資源、執行預存程序或發出 Cosmos DB 查詢。 查詢一律是唯讀作業，而且沒有任何副作用。
 
-下列範例會針對範例專案顯示 SQL API 查詢的 `POST`。 查詢在 JSON `name` 屬性上有一個簡單的篩選準則。 `x-ms-documentdb-isquery` 和 Content-type： `application/query+json` 標頭表示作業是查詢。 將 `mysqlapicosmosdb.documents.azure.com:443` 取代為您 Cosmos DB 帳戶的 URI。
+以下示例顯示`POST`針對示例項的 SQL API 查詢。 查詢在 JSON`name`屬性上具有一個簡單的篩選器。 和`x-ms-documentdb-isquery`內容類型：`application/query+json`標頭表示操作是查詢。 替換為`mysqlapicosmosdb.documents.azure.com:443`Cosmos DB 帳戶的 URI。
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -41,7 +41,7 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-結果為：
+結果如下：
 
 ```json
     HTTP/1.1 200 Ok
@@ -91,7 +91,7 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-下一個較複雜的查詢會傳回聯結的多個結果：
+下一個更複雜的查詢返回聯接中的多個結果：
 
 ```json
     POST https://https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -112,7 +112,7 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-結果為： 
+結果如下： 
 
 ```json
     HTTP/1.1 200 Ok
@@ -143,19 +143,19 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-如果查詢的結果無法放入單一頁面中，REST API 會透過 `x-ms-continuation-token` 回應標頭傳回接續 token。 用戶端可以在後續的結果中包含標頭，以將結果分頁。 您也可以透過 `x-ms-max-item-count` 數位標頭來控制每頁的結果數目。
+如果查詢的結果不能放入單個頁面，REST API 將通過`x-ms-continuation-token`回應標頭返回延續權杖。 用戶端可以通過在後續結果中包括標頭來分頁結果。 您還可以通過`x-ms-max-item-count`數位標頭控制每頁的結果數。
 
-如果查詢具有 COUNT 之類的彙總函式，則查詢頁面可能只會傳回一頁結果的部分匯總值。 用戶端必須對這些結果執行第二層匯總以產生最終結果。 例如，在個別頁面中傳回的計數加總，以傳回總計數。
+如果查詢具有 COUNT 等彙總函式，則查詢頁可能僅返回一個結果頁上的部分聚合值。 用戶端必須對這些結果執行第二級聚合才能生成最終結果。 例如，對單個頁中返回的計數的總和以返回總計數。
 
-若要管理查詢的資料一致性原則，請使用 `x-ms-consistency-level` 標頭，如同所有 REST API 的要求。 會話一致性也需要在查詢要求中回應最新的 `x-ms-session-token` cookie 標頭。 所查詢容器的編製索引原則也會影響查詢結果的一致性。 使用容器的預設索引編制原則設定時，索引一律是最新的專案內容，而查詢結果會符合針對資料所選擇的一致性。 如需詳細資訊，請參閱 [Azure Cosmos DB 一致性層級] [一致性層級]。
+要管理查詢的資料一致性策略，請使用標頭，`x-ms-consistency-level`就像所有 REST API 請求一樣。 會話一致性還需要在查詢請求中`x-ms-session-token`呼應最新的 Cookie 標頭。 所查詢容器的編製索引原則也會影響查詢結果的一致性。 對於容器的預設索引策略設置，索引始終與項內容保持最新，查詢結果與為數據選擇的一致性匹配。 有關詳細資訊，請參閱 [Azure 宇宙 DB 一致性級別][一致性級別]。
 
-如果容器上設定的編制索引原則無法支援指定的查詢，Azure Cosmos DB 伺服器會傳回400「錯誤的要求」。 此錯誤訊息會針對已從索引中明確排除路徑的查詢傳回。 您可以指定 `x-ms-documentdb-query-enable-scan` 標頭，以允許查詢在無法使用索引時執行掃描。
+如果容器上的配置索引策略不支援指定的查詢，Azure Cosmos DB 伺服器將返回 400 個"錯誤請求"。 對於從索引中明確排除路徑的查詢，此錯誤訊息返回。 您可以指定`x-ms-documentdb-query-enable-scan`標頭以允許查詢在索引無法接通執行掃描。
 
-您可以藉由將 `x-ms-documentdb-populatequerymetrics` 標頭設定為 `true`，來取得查詢執行的詳細計量。 如需詳細資訊，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢計量](sql-api-query-metrics.md)。
+通過將`x-ms-documentdb-populatequerymetrics`標頭設置為`true`，可以獲取有關查詢執行的詳細指標。 如需詳細資訊，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢計量](sql-api-query-metrics.md)。
 
-## <a name="c-net-sdk"></a>C#（.NET SDK）
+## <a name="c-net-sdk"></a>C# （.NET SDK）
 
-.NET SDK 支援 LINQ 和 SQL 查詢。 下列範例示範如何使用 .NET 執行前述的篩選查詢：
+.NET SDK 支援 LINQ 和 SQL 查詢。 下面的示例演示如何使用 .NET 執行前面的篩選器查詢：
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -189,7 +189,7 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-下列範例會比較每個專案中的兩個屬性是否相等，並使用匿名投射。
+下面的示例比較每個專案中的相等性兩個屬性，並使用匿名投影。
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -217,7 +217,7 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-下一個範例會顯示透過 LINQ `SelectMany`表示的聯結。
+下一個示例顯示聯接，通過 LINQ`SelectMany`表示。
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,17 +241,17 @@ Cosmos DB 提供透過 HTTP 的開放 RESTful 程式設計模型。 資源模型
     }
 ```
 
-.NET 用戶端會自動逐一查看 `foreach` 區塊中查詢結果的所有頁面，如先前範例所示。 在 [ [REST API](#REST-API) ] 區段中引進的查詢選項也適用于 .net SDK，其使用 `CreateDocumentQuery` 方法中的 `FeedOptions` 和 `FeedResponse` 類別。 您可以使用 [`MaxItemCount`] 設定來控制頁面的數目。
+.NET 用戶端自動遍通`foreach`所有查詢頁，結果在塊中，如前面的示例所示。 [REST API](#REST-API)部分中引入的查詢選項在 .NET SDK 中也使用`FeedOptions``CreateDocumentQuery`方法`FeedResponse`中的 和 類。 您可以使用`MaxItemCount`該設置控制頁數。
 
-您也可以明確地控制分頁，方法是使用 `IQueryable` 物件建立 `IDocumentQueryable`，然後藉由讀取 `ResponseContinuationToken` 值，然後在 `FeedOptions`中將它們傳回為 `RequestContinuationToken`。 您可以設定 `EnableScanInQuery`，以便在設定的索引編制原則不支援查詢時啟用掃描。 針對已分割的容器，您可以使用 `PartitionKey` 對單一分割區執行查詢，不過 Azure Cosmos DB 可以自動從查詢文字中將其解壓縮。 您可以使用 `EnableCrossPartitionQuery`，對多個分割區執行查詢。
+還可以通過使用`IDocumentQueryable``IQueryable`物件創建，然後`ResponseContinuationToken`讀取值並將其傳遞回`RequestContinuationToken``FeedOptions`頁，從而顯式控制分頁。 您可以設置為`EnableScanInQuery`在配置的索引策略不支援查詢時啟用掃描。 對於分區容器，可以使用`PartitionKey`對單個分區執行查詢，儘管 Azure Cosmos DB 可以從查詢文本中自動提取此查詢。 可用於`EnableCrossPartitionQuery`對多個分區執行查詢。
 
-如需更多查詢的 .NET 範例，請參閱 GitHub 中的[Azure Cosmos DB .net 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
+有關包含查詢的更多 .NET 示例，請參閱 GitHub 中的[Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
 
-## <a id="JavaScript-server-side-API"></a>JavaScript 伺服器端 API
+## <a name="javascript-server-side-api"></a><a id="JavaScript-server-side-API"></a>JavaScript 伺服器端 API
 
-Azure Cosmos DB 提供程式設計模型，可使用預存程式和觸發程式，直接在容器上[執行 JavaScript 型應用程式](stored-procedures-triggers-udfs.md)邏輯。 在容器層級註冊的 JavaScript 邏輯接著可以對指定容器的專案發出資料庫作業，包裝在環境 ACID 交易中。
+Azure Cosmos DB 提供了一個程式設計模型，用於使用預存程序和觸發器直接在容器上[執行基於 JavaScript 的應用程式](stored-procedures-triggers-udfs.md)邏輯。 然後在容器級別註冊的 JavaScript 邏輯可以對包在環境 ACID 事務中的給定容器的項發出資料庫操作。
 
-下列範例顯示如何使用 JavaScript 伺服器 API 中的 `queryDocuments`，從預存程式和觸發程式內進行查詢：
+下面的示例演示如何`queryDocuments`在 JavaScript 伺服器 API 中使用從內部預存程序和觸發器進行查詢：
 
 ```javascript
     function findName(givenName, familyName) {
@@ -287,6 +287,6 @@ Azure Cosmos DB 提供程式設計模型，可使用預存程式和觸發程式�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Cosmos DB 簡介](introduction.md)
+- [Azure 宇宙 DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Azure Cosmos DB 一致性層級](consistency-levels.md)
+- [Azure 宇宙 DB 一致性級別](consistency-levels.md)

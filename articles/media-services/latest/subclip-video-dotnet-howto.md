@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒體服務編碼時，子剪輯影片
-description: 本主題描述如何使用透過 Azure 媒體服務.NET SDK 編碼時，子剪輯影片
+title: 使用 Azure 媒體服務進行編碼時對視頻進行子剪輯
+description: 本主題介紹如何使用 .NET SDK 使用 Azure 媒體服務進行編碼時對視頻進行子剪輯
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67304995"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務-.NET 編碼時，子剪輯影片
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務進行編碼時，對視頻進行子剪輯 - .NET
 
-您可以修剪或編碼方式時，子剪輯影片[作業](https://docs.microsoft.com/rest/api/media/jobs)。 這項功能適用於任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)所建置使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)預設值，或有[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)預設值。
+您可以使用[作業](https://docs.microsoft.com/rest/api/media/jobs)對其進行編碼時修剪或子剪輯視頻。 此功能適用于使用[內置標準編碼預設預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)或[標準編碼預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)構建的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。
 
-下列C#範例會建立修剪資產中的影片，因為它會將編碼工作提交作業。 
+以下 C# 示例創建一個作業，該作業在提交編碼作業時修剪資產中的視頻。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此主題中所述的步驟，您必須：
 
 - [建立 Azure 媒體服務帳戶](create-account-cli-how-to.md)
-- 建立轉換，並且輸入和輸出資產。 您可以了解如何建立轉換，並且在 輸入與輸出資產[上傳、 編碼和串流處理使用.NET 的視訊](stream-files-tutorial-with-api.md)教學課程。
-- 檢閱[編碼概念](encoding-concept.md)主題。
+- 創建轉換以及輸入和輸出資產。 您可以使用 .NET 教程瞭解如何在[上傳、編碼和資料流視頻](stream-files-tutorial-with-api.md)中創建轉換和輸入和輸出資產。
+- 查看[編碼概念](encoding-concept.md)主題。
 
 ## <a name="example"></a>範例
 
@@ -91,4 +91,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>後續步驟
 
-[如何使用自訂的轉換進行編碼](customize-encoder-presets-how-to.md) 
+[如何使用自訂轉換進行編碼](customize-encoder-presets-how-to.md) 

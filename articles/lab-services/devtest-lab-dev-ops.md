@@ -1,6 +1,6 @@
 ---
-title: 整合 Azure DevTest Labs 和 DevOps |Microsoft Docs
-description: 了解如何使用持續整合 (CI) 中的 Azure DevTest Labs 實驗室/持續傳遞 (CD) 管線在企業環境中。
+title: 集成 Azure 開發人員測試實驗室和 DevOps |微軟文檔
+description: 瞭解如何在企業環境中的連續集成 （CI）/連續交付 （CD） 管道中使用 Azure DevTest Labs 的實驗室。
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 62c44bfea28d47d7c32aa7ef440a40d45c314683
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67078920"
 ---
-# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs 與 Azure DevOps 整合
-DevOps 是一種軟體開發方法與營運 (部門 Ops) 系統整合的軟體開發 (Dev)。 此系統可能會在與業務目標對齊提供新功能、 更新和修正程式。 此方法包含無法設計目標、 使用模式和客戶的意見反應; 為基礎的新功能的所有項目若要修正、 復原及強化系統發生問題時。 這種方法輕鬆識別的元件是持續整合 (CI) / 持續傳遞 (CD) 管線。 CI/CD 管線會使用資訊、 程式碼和透過一系列的步驟，包括建置、 測試和部署，以產生系統認可的資源。 本文著重於不同的方式，有效率地使用在企業環境中的 管線內的實驗室。 
+# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>集成 Azure 開發人員測試實驗室和 Azure 開發人員計畫
+DevOps 是一種軟體發展方法，將軟體發展 （Dev） 與系統的操作 （Ops） 集成在一起。 此系統可能會根據業務目標提供新功能、更新和修復。 此方法涵蓋一切，包括根據目標、使用模式和客戶回函設計新功能;修復、恢復和強化系統時出現問題。 此方法的一個易於識別的元件是持續集成 （CI）/ 持續交付 （CD） 管道。 CI/CD 管道通過一系列步驟（包括生成、測試和部署）從提交中獲取資訊、代碼和資源，以生成系統。 本文重點介紹在企業環境中在管道中有效地使用實驗室的不同方法。 
 
-## <a name="benefits-of-using-labs-in-devops-workflow"></a>DevOps 工作流程中使用實驗室的優點 
+## <a name="benefits-of-using-labs-in-devops-workflow"></a>在 DevOps 工作流中使用實驗室的好處 
 
-### <a name="focused-access"></a>具有焦點的存取 
-為元件中使用實驗室可讓特定的生態系統，以一組有限的人員相關聯。 通常，小組或群組使用的常見區域或特定的功能將會有指派給他們的實驗室。   
+### <a name="focused-access"></a>重點訪問 
+使用實驗室作為元件允許特定的生態系統與有限的群體相關聯。 通常，在公共區域或特定功能中工作的團隊或組將為其分配實驗室。   
 
-### <a name="infrastructure-replication-in-the-cloud"></a>在雲端中的基礎結構複寫 
-開發人員可以快速設定一個包含開發人員方塊與原始程式碼和工具的開發生態系統。 開發人員也可以建立幾乎等同於生產環境設定的環境。 它可協助進行更快速的內部迴圈開發。 
+### <a name="infrastructure-replication-in-the-cloud"></a>雲中的基礎架構複製 
+開發人員可以快速設置開發生態系統，其中包含包含原始程式碼和工具的開發框。 開發人員還可以創建與生產配置幾乎相同的環境。 它有助於更快的內環路開發。 
 
-### <a name="pre-production"></a>進入生產階段前 
-CI/CD 管線中具有實驗室讓您更有多個不同的進入生產階段前環境或在非同步測試相同時間執行的機器的工作變得更容易。 可部署和管理實驗室內不同的支援基礎結構，例如組建代理程式。 
+### <a name="pre-production"></a>生產階段前 
+在 CI/CD 管道中建立實驗室可以更輕鬆地讓多個不同的預生產環境或電腦同時運行以進行非同步測試。 可以在實驗室內部署和管理不同的支援基礎結構，如生成代理。 
 
-## <a name="devops-with-devtest-labs"></a>使用 DevTest Labs 的 DevOps 
+## <a name="devops-with-devtest-labs"></a>使用開發人員測試實驗室進行開發 
 
-### <a name="development--operation"></a>開發 / 操作 
-實驗室應該著重在功能區域中運作的小組。 此常見的焦點是用來共用的特定區域的資源，例如工具、 指令碼或 Resource Manager 範本。 它同時又能限制負面的影響較小的群組以允許更快速的變更。 這些共用的資源可讓開發人員建立開發 Vm 具有所有必要的程式碼、 工具和設定。 它們可以是動態建立，或建立自訂的基底映像的系統。 不只可以開發人員建立的 Vm，但也他們可以在其中建立所需的範本，以在實驗室中建立適當的 Azure 資源為基礎的研發/測試實驗室環境。 針對在實驗室環境可以完成 「 任何變更或破壞性的工作 」，而不會影響其他人。 假設產品是客戶的電腦上安裝的獨立系統的位置。 在此案例中，DevTest Labs 已改善，包括安裝其他軟體使用成品及預先建置的程式碼進行更快速的內部迴圈測試的客戶組態建立 VM。 
+### <a name="development--operation"></a>開發/運營 
+實驗室應側重于在要素區域中工作的團隊。 此常見焦點允許共用特定于區域的資源，如工具、腳本或資源管理器範本。 它允許更快的更改，同時將負面影響限制為較小的組。 這些共用資源允許開發人員使用所有必要的代碼、工具和配置創建開發 VM。 它們可以動態創建，也可以有一個系統，使用自訂創建基本映射。 開發人員不僅可以創建 VM，還可以根據必要的範本創建 DevTest Labs 環境，在實驗室中創建適當的 Azure 資源。 任何更改或破壞性工作都可以針對實驗室環境進行，而不會影響其他人。 請考慮產品是安裝在客戶電腦上的獨立系統的情況。 在此方案中，DevTest Labs 改進了 VM 創建，包括使用工件安裝其他軟體，以及預構建客戶配置，以便更快地對代碼進行內部迴圈測試。 
   
-## <a name="cicd-pipeline"></a>CI/CD 管線 
-CI/CD 管線是一個移動從開發人員，提取要求的程式碼整合與現有的程式碼，並將它部署到生產環境生態系統的 DevOps 中的重要元件。 不需要在實驗室內所有資源。 比方說，Jenkins 主機無法設定實驗室之外為多個持續性的資源。 以下是一些特定的範例整合管線中的實驗室。 
+## <a name="cicd-pipeline"></a>CI/CD 管道 
+CI/CD 管道是 DevOps 中的關鍵元件之一，用於從開發人員的拉取請求中移動代碼，將其與現有代碼集成，並將其部署到生產生態系統。 所有資源不需要在實驗室內。 例如，可以在實驗室外部設置 Jenkins 主機，作為更持久的資源。 下面是將實驗室集成到管道中的一些具體示例。 
 
-### <a name="build"></a>建置 
-建置管線著重於建立套件的元件，將測試一起交給發行管線。 實驗室可以做為組建代理程式和其他支援資源的位置是組建管線的一部分。 讓您動態建置的基礎結構可讓更大的控制。 在實驗室中有多個環境的能力，每次建置可以執行以非同步方式同時使用一部分的環境資訊的組建識別碼，來唯一識別特定的組建資源。   
+### <a name="build"></a>Build 
+生成管道的重點是創建一個元件包，這些元件將一起測試，以便移交給發佈管道。 實驗室可以作為生成代理和其他支援資源的位置作為生成管道的一部分。 能夠動態構建基礎結構可以進行更大的控制。 借助在實驗室中具有多個環境的能力，可以在使用生成 ID 作為環境資訊的一部分時非同步運行每個生成，以唯一地標識特定生成的資源。   
 
-組建代理程式，來限制存取實驗室的功能來提高安全性，並減少意外損毀的可能性。  
+對於生成代理，實驗室限制訪問的能力提高了安全性，並減少了意外損壞的可能性。  
 
 ### <a name="test"></a>測試 
-DevTest Labs 可讓 CI/CD 管線，以自動建立的 Azure 資源 （Vm、 環境），且可以用來進行自動化和手動測試。 會使用成品或使用從建置程序的資訊來建立不同的自訂設定所需的測試的公式建立的 Vm。   
+DevTest Labs 允許 CI/CD 管道自動創建可用於自動和手動測試的 Azure 資源（VM、環境）。 VM 將使用使用生成過程中的資訊創建專案或公式來創建測試所需的不同自訂配置。   
 
 ### <a name="release"></a>版本 
-DevTest Labs 常用的 [釋放] 區段中的驗證才部署程式碼。 這就像是測試在建置區段中。 生產資源不應該部署在 DevTest Labs。 
+在部署代碼之前，DevTest Labs 通常用於發佈部分的驗證。 它類似于在"生成"部分中的測試。 生產資源不應部署在 DevTest 實驗室中。 
 
 ### <a name="customization"></a>自訂 
-Azure DevOps 中有現有允許的 Vm 的操作和特定的實驗室環境的工作。 雖然 Azure DevOps 服務是一種方式管理 CI/CD 管線，您可以在任何支援的功能，呼叫 REST Api、 執行 PowerShell 指令碼，或使用 Azure CLI 的系統整合實驗室。 
+在 Azure DevOps 中，存在允許在特定實驗室中操作 VM 和環境的現有任務。 雖然 Azure DevOps 服務是管理 CI/CD 管道的一種方式，但您可以將實驗室集成到支援調用 REST API、執行 PowerShell 腳本或使用 Azure CLI 的任何系統。 
 
-雖然某些 CI/CD 管線管理員有現有的開放原始碼外掛程式，可以管理 Azure 和 DevTest Labs 中的資源。 您可能需要使用一些自訂的指令碼以符合管線的特定需求。  這一點之後，執行工作時，服務主體搭配適當的角色，才能存取實驗室。 服務主體通常需要參與者角色存取實驗室。 如需詳細資訊，請參閱 <<c0> [ 至 Azure 的 DevOps 持續整合和傳遞管線中整合 Azure DevTests Labs](devtest-lab-integrate-ci-cd-vsts.md)。 
+雖然某些 CI/CD 管道管理器具有現有的開源外掛程式，可以管理 Azure 和 DevTest 實驗室中的資源。 您可能需要使用一些自訂腳本來滿足管道的特定需求。  考慮到這一點，在執行任務時，服務主體與適當的角色一起使用，以獲得對實驗室的訪問。 服務主體通常需要對實驗室的參與者角色存取權限。 有關詳細資訊，請參閱將[Azure 開發人員測試實驗室集成到 Azure DevOps 持續集成和交付管道中](devtest-lab-integrate-ci-cd-vsts.md)。 
  

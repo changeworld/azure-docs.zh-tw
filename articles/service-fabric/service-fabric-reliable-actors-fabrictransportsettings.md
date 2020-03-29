@@ -1,15 +1,15 @@
 ---
-title: 變更 FabricTransport 設定
-description: 瞭解如何為不同的動作專案設定設定 Azure Service Fabric 動作專案通訊設定。
+title: 更改結構傳輸設置
+description: 瞭解如何為不同的參與者配置配置 Azure 服務結構參與者通訊設定。
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645577"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>設定 Reliable Actors 的 FabricTransport 設定

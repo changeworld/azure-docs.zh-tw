@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64918449"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的內容管理需求
@@ -28,7 +28,7 @@ ms.locfileid: "64918449"
 
 您的身分識別解決方案是透過不同技術控制項來運用，以便提供內容管理，如下圖所示：
 
-![安全性控制項](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
+![安全控制](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
 **充分運用身分識別管理系統的安全性控制項**
 
@@ -60,7 +60,7 @@ ms.locfileid: "64918449"
 * 貴公司需要強制執行有關特定電子郵件類型的公司原則 (不要全部回覆、不要轉寄) 嗎？
 
 > [!NOTE]
-> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md) 將介紹可用選項，以及每個選項的優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
+> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將超越每個選項的可用選項和優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
 > 
 > 
 

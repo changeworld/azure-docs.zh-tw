@@ -1,6 +1,6 @@
 ---
 title: 轉譯管理員支援 - Azure Batch
-description: 使用 Azure Batch render manager 整合。 瞭解適用于熱門轉譯管理員的內建支援或附加元件。
+description: 使用 Azure 批次處理呈現管理器集成。 瞭解常用渲染管理器的內置支援或載入項。
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449687"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>使用 Azure Batch 搭配轉譯伺服陣列管理員
@@ -26,15 +26,15 @@ Azure 會為受歡迎的轉譯管理員提供內建支援或附加元件。 您�
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure 轉譯中樞
+## <a name="azure-render-hub"></a>Azure 渲染中心
 
-Azure 轉譯中樞可簡化 Azure render 伺服器陣列的建立和管理。  呈現中樞具有 PipelineFx Qube 和期限10的原生支援。  如需詳細資訊和詳細指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 呈現中心簡化了 Azure 呈現場的創建和管理。  渲染中心對管道Fx Qube 和截止時間 10 具有本機支援。  有關詳細資訊和詳細說明，請參閱[GitHub 存儲庫](https://github.com/Azure/azure-render-hub)。
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>使用 Azure 搭配 PipelineFX Qube
 
-Azure Render Hub 支援熱門的轉譯管理員，包括期限。  如需部署和使用轉譯中樞的指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 渲染中心支援常用的渲染管理器，包括截止時間。  有關部署和使用呈現中心的說明，請參閱[GitHub 存儲庫](https://github.com/Azure/azure-render-hub)。
 
-[GitHub 存放庫](https://github.com/Azure/azure-qube)中也提供啟用 Azure Batch 集區 Vm 作為 Qube 背景工作的腳本和指示。
+[GitHub 存儲庫](https://github.com/Azure/azure-qube)中還提供啟用 Azure Batch 池 VM 用作 Qube 輔助器的腳本和說明。
 
 ## <a name="using-azure-with-royal-render"></a>使用 Azure 搭配 Royal Render
 
@@ -44,7 +44,7 @@ Royal Render 已內建 Azure 和 Azure Batch 整合功能，可讓您使用以 A
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>使用 Azure 搭配 Thinkbox Deadline
 
-Azure Render Hub 支援熱門的轉譯管理員，包括期限。  如需部署和使用轉譯中樞的指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 渲染中心支援常用的渲染管理器，包括截止時間。  有關部署和使用呈現中心的說明，請參閱[GitHub 存儲庫](https://github.com/Azure/azure-render-hub)。
 
 ## <a name="next-steps"></a>後續步驟
 

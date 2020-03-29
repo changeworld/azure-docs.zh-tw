@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631632"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>將 StorSimple 5000-7000 系列的資料移轉到 8000 系列裝置
@@ -137,11 +137,11 @@ StorSimple 移轉工具是 UI 型工具，可讓您將 StorSimple 5000-7000 系�
 2. 編輯與索引鍵對應的值，並取代為：
 
     * `UserName` – 登入 Azure 入口網站的使用者名稱。
-    * `SubscriptionName and SubscriptionId` – Azure 訂用帳戶的名稱和識別碼。 在 StorSimple 裝置管理員服務登陸頁面的 [一般]  下，按一下 [屬性]  。 複製與您的服務相關聯的訂用帳戶名稱訂用帳戶識別碼。
+    * `SubscriptionName and SubscriptionId` – Azure 訂用帳戶的名稱和識別碼。 在 StorSimple 裝置管理員服務登陸頁面的 [一般]**** 下，按一下 [屬性]****。 複製與您的服務相關聯的訂用帳戶名稱訂用帳戶識別碼。
     * `ResourceName` – Azure 入口網站中的 StorSimple 裝置管理員服務名稱。 也會顯示在服務屬性之下。
     * `ResourceGroup` – 與 Azure 入口網站的 StorSimple 裝置管理員服務相關聯的資源群組名稱。 也會顯示在服務屬性之下。
     ![檢查目標裝置的服務屬性](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId` – Azure 入口網站中的 Azure Active Directory 租用戶識別碼。 以系統管理員身分登入 Microsoft Azure。 在 Microsoft Azure 入口網站中，按一下 **Azure Active Directory**。 在 [管理]  下，按一下 [屬性]  。 租用戶識別碼會顯示於 [目錄識別碼]  。
+    * `TenantId` – Azure 入口網站中的 Azure Active Directory 租用戶識別碼。 以系統管理員身分登入 Microsoft Azure。 在 Microsoft Azure 入口網站中，按一下 **Azure Active Directory**。 在 [管理]**** 下，按一下 [屬性]****。 租用戶識別碼會顯示於 [目錄識別碼]****。
     ![檢查 Azure Active Directory 的租用戶識別碼](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  儲存對設定檔所做的變更。

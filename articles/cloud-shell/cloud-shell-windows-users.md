@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67204145"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Azure Cloud Shell 中的 PowerShell (適用於 Windows 使用者)
@@ -36,7 +36,7 @@ PowerShell 特有體驗 (如 `tab-completing` Cmdlet 名稱、參數和值) 則�
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell 別名與 Linux 公用程式
 
-某些現有 PowerShell 別名具有與內建 Linux 命令 (例如 `cat`、`ls`、`sort`、`sleep` 等等) 相同的名稱。PowerShell Core 6 已移除與內建 Linux 命令衝突的別名。
+Some existing PowerShell aliases have the same names as built-in Linux commands, such as `cat`,`ls`, `sort`, `sleep`, etc.在 PowerShell Core 6 中，與內置 Linux 命令衝突的別名已被刪除。
 以下是已移除的常見別名以及對等的命令：  
 
 |已移除的別名   |對等命令   |

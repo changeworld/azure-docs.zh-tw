@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64723940"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來登錄 StorSimple Virtual Array 的支援要求
@@ -27,27 +27,27 @@ ms.locfileid: "64723940"
 
 StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的支援要求**。 本文說明如何從入口網站登錄新的支援要求並管理其生命週期。
 
-## <a name="new-support-request"></a>新的支援要求
+## <a name="new-support-request"></a>新增支援要求
 
 視您的[支援方案](https://azure.microsoft.com/support/plans/)而定，您可以直接從 StorSimple 裝置管理員服務摘要刀鋒視窗中，針對 StorSimple Virtual Array 的問題建立支援票證。
 
 #### <a name="to-log-a-new-request"></a>若要登錄新的要求
 
-1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解]  區段，然後按一下 [新增支援要求]  。
+1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解]**** 區段，然後按一下 [新增支援要求]****。
    
     ![新增支援要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
-2. 在 [基本]  刀鋒視窗上，執行下列動作：
+2. 在 [基本]**** 刀鋒視窗上，執行下列動作：
 
-    1. 從 [問題類型]  下拉式清單中，選取 [技術]  。 
+    1. 從 [問題類型]**** 下拉式清單中，選取 [技術]****。 
     
-    2. 自動會選擇目前的 [訂用帳戶]  、[服務]  類型和 [資源]  \(StorSimple 裝置管理員服務)。 
+    2. 自動會選擇目前的 [訂用帳戶]****、[服務]**** 類型和 [資源]**** \(StorSimple 裝置管理員服務)。 
 
     3. 指定一或多個已向服務註冊的有問題裝置。
 
     4. 如果您的訂用帳戶有多個相關聯的方案，請選擇適當的**支援方案**。 您必須已付費購買支援方案，才能啟用技術支援。
 
-3. 在**步驟 2** 中，選擇 [嚴重性]  ，並指定問題是與陣列還是 StorSimple 裝置管理員服務有關。 同時，選擇這個問題的 [類別]  ，並提供問題的其他 [詳細資料]  。
+3. 在**步驟 2** 中，選擇 [嚴重性]****，並指定問題是與陣列還是 StorSimple 裝置管理員服務有關。 同時，選擇這個問題的 [類別]****，並提供問題的其他 [詳細資料]****。
    
     ![新增支援要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
@@ -61,7 +61,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 #### <a name="to-manage-your-support-requests"></a>若要管理支援要求
 
-若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]  。
+若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]****。
 
 ![管理支援要求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 事件方格發佈事件網域的事件
+title: 使用 Azure 事件網格發佈事件域的事件
 description: 顯示如何使用事件網域管理 Azure 事件方格中的大量主題集合，並將事件發佈到這些主題中。
 services: event-grid
 author: banisadr
@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72786546"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
@@ -35,7 +35,7 @@ ms.locfileid: "72786546"
 
 若要管理大量主題集合，請建立事件網域。
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[電源外殼](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -86,7 +86,7 @@ New-AzureRmEventGridDomain `
 
 事件方格有兩個內建角色，可用來將網域中各種主題的存取權指派給特定使用者。 這些角色是 `EventGrid EventSubscription Contributor (Preview)` (可讓您建立和刪除訂閱) 和 `EventGrid EventSubscription Reader (Preview)` (只允許列出事件訂閱)。
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 下列 Azure CLI 命令會限制 `alice@contoso.com` 只能建立和刪除 `demotopic1` 主題的事件訂用帳戶：
 
 ```azurecli-interactive
@@ -96,7 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[電源外殼](#tab/powershell)
 下列 PowerShell 命令會限制 `alice@contoso.com` 只能建立和刪除 `demotopic1` 主題的事件訂用帳戶：
 
 ```azurepowershell-interactive
@@ -117,7 +117,7 @@ New-AzureRmRoleAssignment `
 
 您在上一節中授與存取權的使用者通常會建立訂用帳戶。 若要簡化這篇文章，您可以建立訂用帳戶。 
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[電源外殼](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -146,7 +146,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>將事件發佈到事件方格網域
 
-將事件發佈至網域與[發行至自訂主題](./post-to-custom-topic.md)一樣。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
+將事件發佈到域與[發佈到自訂主題相同](./post-to-custom-topic.md)。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
 
 ```json
 [{
@@ -175,7 +175,7 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 若要透過 Azure CLI 取得網域金鑰，請使用：
 
 ```azurecli-interactive
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[電源外殼](#tab/powershell)
 若要使用 PowerShell 取得網域端點，請使用：
 
 ```azurepowershell-interactive

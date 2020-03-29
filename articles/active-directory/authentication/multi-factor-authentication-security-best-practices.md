@@ -1,5 +1,5 @@
 ---
-title: Azure 多重要素驗證的安全性指引-Azure Active Directory
+title: Azure 多重要素驗證的安全指南 - Azure 活動目錄
 description: 本文件提供搭配 Azure 帳戶使用 Azure MFA 的指引
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846822"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>搭配 Azure AD 帳戶使用 Azure Multi-Factor Authentication 的安全性指引
@@ -24,14 +24,14 @@ ms.locfileid: "74846822"
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>在雲端部署 Azure MFA
 
-有兩種方式可以[為所有使用者啟用 Azure MFA](howto-mfa-getstarted.md)。
+有兩種方法可以[為所有使用者啟用 Azure MFA。](howto-mfa-getstarted.md)
 
 * 為每個使用者購買授權 (Azure MFA、Azure AD Premium 或 Enterprise Mobility + Security)
 * 建立 Multi-Factor Auth Provider，並依每個使用者或每次驗證付費
 
 ### <a name="licenses"></a>授權
 
-![將授權套用至使用者、啟用、通知](./media/multi-factor-authentication-security-best-practices/ems.png)
+![向使用者應用許可證、啟用、通知](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 如果您有 Azure AD Premium 或 Enterprise Mobility + Security 授權，則您已經有 Azure MFA。 您的組織不需要任何其他項目，即可將雙步驟驗證功能延伸到所有使用者。 您只需要將授權指派給使用者，接著就可以開啟 MFA。
 
@@ -43,16 +43,16 @@ ms.locfileid: "74846822"
 
 ### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
 
-![多重要素驗證提供者](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![多重要素驗證提供程式](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-如果沒有包含 Azure MFA 的授權，您可以[建立 MFA 驗證提供者](concept-mfa-authprovider.md)。
+如果您沒有包含 Azure MFA 的許可證，則可以[創建 MFA 身份檢查器提供者](concept-mfa-authprovider.md)。
 
 建立 Auth Provider 時，您必須選取目錄並考慮下列詳細資料：
 
 * 您不需要 Azure AD 目錄即可建立多因素驗證提供者，但如果有則可以獲得更多功能。 將驗證提供者與 Azure AD 目錄相關聯時，將會啟用下列功能︰
   * 將雙步驟驗證延伸到所有使用者
   * 將其他功能提供給全域管理員，例如管理入口網站、自訂問候語和報告。
-* 如果您將內部部署 Active Directory 環境與 Azure AD 目錄同步處理，則需要 DirSync 或 Azure AD 同步。如果您使用未與內部部署 Active Directory 實例同步的 Azure AD 目錄，則不需要 DirSync 或 Azure AD 同步。
+* 如果將本地活動目錄環境與 Azure AD 目錄同步，則需要 DirSync 或 Azure AD 同步。如果使用的 Azure AD 目錄未與活動目錄的本地實例同步，則不需要 DirSync 或 Azure AD 同步。
 * 選擇最適合您企業的使用情況模型。 使用量模型在選取之後，就無法再進行變更。 兩個模型如下︰
   * 每次驗證︰向您收取每次驗證的費用。 如果您想要所有存取特定應用程式的人員都使用雙步驟驗證，請使用這個模型。
   * 每個啟用的使用者︰會針對啟用 Azure MFA 的每個使用者向您數費。 如果您有某些使用者具有 Azure AD Premium 或 Enterprise Mobility Suite 授權，有些則沒有，請使用此模型。
@@ -66,9 +66,9 @@ ms.locfileid: "74846822"
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>內部部署的最佳作法
 
-如果您的公司決定採用自己的基礎結構來啟用 MFA，則您需要[在內部部署中部署 Azure Multi-Factor Authentication Server](howto-mfaserver-deploy.md)。 下圖顯示 MFA Server 元件：
+如果您的公司決定利用自己的基礎結構來啟用 MFA，則需要[在本地部署 Azure 多重要素驗證伺服器](howto-mfaserver-deploy.md)。 下圖顯示 MFA Server 元件：
 
-![預設的 MFA Server 元件](./media/multi-factor-authentication-security-best-practices/server.png) \*預設不會安裝 \**，但預設不會啟用
+![預設 MFA 伺服器](./media/multi-factor-authentication-security-best-practices/server.png)\*元件預設\*未安裝 *已安裝，但預設情況下未啟用
 
 Azure Multi-Factor Authentication Server 可以使用同盟來保護雲端資源和內部部署資源的安全。 您必須擁有 AD FS 並讓它與您的 Azure AD 租用戶同盟。
 設定 Multi-Factor Authentication Server 時，請考慮下列詳細資料：
@@ -94,7 +94,7 @@ Azure Multi-Factor Authentication Server 可以使用同盟來保護雲端資源
 * 應用程式密碼不會遵守內部部署用戶端存取控制設定。
 * 應用程式密碼不適用內部部署驗證記錄/稽核功能。
 * 某些進階架構設計在使用雙步驟驗證時，可能需要搭配使用組織使用者名稱和密碼及應用程式密碼，需視驗證的位置而定。 對於根據內部部署基礎結構進行驗證的用戶端，您可以使用組織使用者名稱和密碼。 對於根據 Azure AD 進行驗證的用戶端，您需要使用應用程式密碼。
-* 根據預設，使用者無法建立應用程式密碼。 如果您需要允許使用者建立應用程式密碼，請選取 [允許使用者建立應用程式密碼以登入非瀏覽器應用程式] 選項。
+* 根據預設，使用者無法建立應用程式密碼。 如果您需要允許使用者建立應用程式密碼，請選取 [允許使用者建立應用程式密碼以登入非瀏覽器應用程式]**** 選項。
 
 ## <a name="additional-considerations"></a>其他考量
 

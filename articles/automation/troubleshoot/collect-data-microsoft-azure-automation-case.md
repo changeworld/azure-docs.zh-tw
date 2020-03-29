@@ -1,6 +1,6 @@
 ---
-title: 當您開啟 Microsoft Azure Automation 的案例時所要收集的資料 |Microsoft Docs
-description: 本文說明在開啟案例 Azure 自動化以 Microsoft Azure 支援之前，您應該先收集的一些基本資訊。
+title: 打開 Microsoft Azure 自動化案例時要收集的資料*微軟文檔
+description: 本文介紹了在使用 Microsoft Azure 支援為 Azure 自動化打開案例之前應收集的一些基本資訊。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -14,96 +14,96 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849372"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>當您開啟 Microsoft Azure 自動化案例時要收集的資料
 
-本文說明在開啟案例 Azure 自動化以 Microsoft Azure 支援之前，您應該先收集的一些基本資訊。 開啟案例不需要這種資訊。 不過，它可以協助 Microsoft 更快速地解決您的問題。 此外，在您開啟案例之後，支援工程師可能會要求您提供這項資料。
+本文介紹了在使用 Microsoft Azure 支援為 Azure 自動化打開案例之前應收集的一些基本資訊。 打開案例不需要此資訊。 但是，它可以説明 Microsoft 更快地解決您的問題。 此外，在打開案例後，支援工程師可能會要求您提供此資料。
 
-## <a name="collect-more-information"></a>收集詳細資訊
+## <a name="collect-more-information"></a>收集更多資訊
 
-在您開啟 Microsoft Azure Automation 支援的案例之前，建議您先收集下列資訊。
+在為 Microsoft Azure 自動化支援打開案例之前，我們建議您收集以下資訊。
 
 ### <a name="basic-data-collection"></a>基本資料收集
 
-收集下列知識庫文章中所述的資料：
+收集以下知識庫文章中描述的資料：
 
-* [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)如何捕獲 Azure 自動化腳本的診斷
+* [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)如何捕獲 Azure 自動化腳本診斷
 
-## <a name="collect-data-depending-on-issue"></a>依據問題收集資料
+## <a name="collect-data-depending-on-issue"></a>根據問題收集資料
  
-### <a name="for-issues-that-affect-update-management-on-linux"></a>針對會影響 Linux 上更新管理的問題
+### <a name="for-issues-that-affect-update-management-on-linux"></a>對於影響 Linux 上更新管理的問題
 
-1. 除了 KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中所列的專案，請執行下列記錄收集工具：
+1. 除了 KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中列出的項外，請運行以下日誌收集工具：
 
-   [OMS Linux 代理程式記錄檔收集器](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
+   [OMS Linux 代理日誌收集器](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. 壓縮下列資料夾的內容，然後將壓縮檔案傳送至 Azure 支援：
+2. 壓縮以下資料夾的內容，然後將壓縮檔發送到 Azure 支援：
 
    ``/var/opt/microsoft/omsagent/run/automationworker/``
  
-3. 確認 OMS Linux 代理程式所報告的工作區識別碼，與受監視更新的工作區相同。
+3. 驗證 OMS Linux 代理報告的工作區 ID 是否與正在監視更新的工作區相同。
 
-### <a name="for-issues-that-affect-update-management-on-windows"></a>對於影響 Windows 更新管理的問題
+### <a name="for-issues-that-affect-update-management-on-windows"></a>對於影響 Windows 上更新管理的問題
 
-除了[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中列出的專案，請執行下列動作：
+除了[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中列出的項外，執行以下操作：
 
-1. 將下列事件記錄檔匯出為 .EVTX 格式：
+1. 將以下事件日誌匯出為 EVTX 格式：
 
-   * System
+   * 系統
    * Application
    * 安全性
    * Operations Manager
-   * Microsoft-SMA/營運
+   * 微軟SMA/運營
 
-2. 確認代理程式所報告的工作區識別碼與 Windows 更新所監視的工作區相同。
+2. 驗證代理報告的工作區 ID 與 Windows 更新監視的工作區相同。
 
-### <a name="for-issues-that-affect-a-job"></a>針對會影響作業的問題
+### <a name="for-issues-that-affect-a-job"></a>對於影響作業的問題
 
-除了[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中列出的專案以外，請收集下列資訊：
+除了[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)中列出的專案外，還收集以下資訊：
 
-1. 收集**JobID**號碼（針對發生問題的工作）：
+1. 收集**JobID**編號（對於遇到問題的作業）：
 
-   1. 在 Azure 入口網站上，移至 [**自動化帳戶**] 分頁。
-   2. 選取您要進行疑難排解的**自動化帳戶**。
-   3. 選取 [**作業**]。
-   4. 選取您要進行疑難排解的作業。
-   5. 在 [**作業摘要**] 下，尋找**作業識別碼**（GUID）。
+   1. 在 Azure 門戶，轉到 **"自動化帳戶"** 邊欄選項卡。
+   2. 選擇要疑難排解的**自動化帳戶**。
+   3. 選擇**作業**。
+   4. 選擇要疑難排解的作業。
+   5. 在**作業摘要**下，查找**作業 ID** （GUID）。
 
-   ![作業摘要窗格中的作業識別碼](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
+   ![作業摘要窗格中的作業 ID](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
 2. 收集帳戶名稱：
 
-   1. 在 Azure 入口網站上，移至 [**自動化帳戶**] 分頁。
-   2. 取得您要進行疑難排解之**自動化帳戶**的名稱。
+   1. 在 Azure 門戶，轉到 **"自動化帳戶"** 邊欄選項卡。
+   2. 獲取正在故障排除的**自動化帳戶**的名稱。
 
-3. 收集您正在執行之腳本的範例。
+3. 收集正在運行的腳本的示例。
 
-4. 收集記錄檔：
+4. 收集日誌檔：
 
-   1. 在 Azure 入口網站上，移至 [**自動化帳戶**] 分頁。
-   2. 選取您要進行疑難排解的**自動化帳戶**。
-   3. 選取 [**作業**]。
-   4. 選取您要進行疑難排解的作業。
-   5. 選取 [**所有記錄**]。
-   6. 在產生的分頁上，收集資料。
+   1. 在 Azure 門戶，轉到 **"自動化帳戶"** 邊欄選項卡。
+   2. 選擇要疑難排解的**自動化帳戶**。
+   3. 選擇**作業**。
+   4. 選擇要疑難排解的作業。
+   5. 選擇**所有日誌**。
+   6. 在生成的邊欄選項卡上，收集資料。
 
-   ![列在 [所有記錄] 底下的資料](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
+   !["所有日誌"下列出的資料](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-### <a name="for-issues-that-affect-modules"></a>適用于影響模組的問題
+### <a name="for-issues-that-affect-modules"></a>對於影響模組的問題
 
-除了 [基本資料收集] 底下的專案，請收集下列資訊：
+除了"基本資料收集"項下的專案外，還收集以下資訊：
 
-* 您所遵循的步驟，可以重現問題。
-* 任何錯誤訊息的螢幕擷取畫面。
-* 目前模組及其版本號碼的螢幕擷取畫面。
+* 您所遵循的步驟，以便重現問題。
+* 任何錯誤訊息的螢幕截圖。
+* 當前模組及其版本號的螢幕截圖。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在本文中有任何需要協助的地方，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。
+如果本文中的任何一點都需要更多説明，請與[MSDN Azure 和堆疊溢位論壇上的](https://azure.microsoft.com/support/forums/)Azure 專家聯繫。
 
-或者，將 Azure 支援事件提出。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
+或者，提交 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。

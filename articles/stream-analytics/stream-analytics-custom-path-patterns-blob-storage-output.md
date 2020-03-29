@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426374"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 串流分析自訂 Blob 輸出資料分割
@@ -25,11 +25,11 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ### <a name="partition-key-options"></a>分割區索引鍵選項
 
-用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分割區索引鍵必須是 NVARCHAR （MAX）。
+用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分區鍵必須為 NVARCHAR（MAX）。
 
 ### <a name="example"></a>範例
 
-假設作業會從連接到視訊遊戲服務的即時使用者工作階段取得輸入資料，其中所擷取的資料包含資料行 **client_id** 以識別工作階段。 若要依 **client_id** 對資料進行分割，請在建立作業時將 [Blob 路徑模式] 欄位設定為在 Blob 輸出屬性中包含分割區權杖 **{client_id}** 。 由於具有各種 **client_id** 值的資料流經串流分析作業，因此輸出資料將根據每個文件夾的單一 **client_id** 值儲存到不同的資料夾中。
+假設作業會從連接到視訊遊戲服務的即時使用者工作階段取得輸入資料，其中所擷取的資料包含資料行 **client_id** 以識別工作階段。 若要依 **client_id** 對資料進行分割，請在建立作業時將 [Blob 路徑模式] 欄位設定為在 Blob 輸出屬性中包含分割區權杖 **{client_id}**。 由於具有各種 **client_id** 值的資料流經串流分析作業，因此輸出資料將根據每個文件夾的單一 **client_id** 值儲存到不同的資料夾中。
 
 ![路徑模式與用戶端識別碼](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
@@ -40,7 +40,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ![REST API 輸出](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-作業開始執行後，用戶端容器可能如下所示：  
+作業開始執行後，用戶端** 容器可能如下所示：  
 
 ![用戶端容器](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
@@ -59,7 +59,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
    * cluster1/{aFieldInMyData}  
    * cluster1/{date}/{time}/{aFieldInMyData} 
    
-2. 分割區索引鍵不區分大小寫，因此 "John" 和 "john" 之類的分割區索引鍵是相等的。 此外，運算式不能作為分割區索引鍵。 例如， **{columnA + columnB}** 無法運作。  
+2. 分割區索引鍵不區分大小寫，因此 "John" 和 "john" 之類的分割區索引鍵是相等的。 此外，運算式不能作為分割區索引鍵。 例如，**{columnA + columnB}** 無法運作。  
 
 3. 當輸入資料流由分割區索引鍵基數低於 8000 的記錄組成時，記錄將附加至現有的 Blob，並且僅在必要時建立新的 Blob。 如果基數超過 8000，則不保證會寫入至現有的 Blob，並且不會為具有相同分割區索引鍵的任意數目的記錄建立新的 Blob。
 
@@ -71,7 +71,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 下列格式規範權杖可以單獨使用，或者合併使用以達成自訂日期時間格式：
 
-|格式規範   |說明   |範例時間 2018-01-02T10:06:08 的結果|
+|格式規範   |描述   |範例時間 2018-01-02T10:06:08 的結果|
 |----------|-----------|------------|
 |{datetime:yyyy}|四位數的年份|2018|
 |{datetime:MM}|從 01 到 12 的月份|01|

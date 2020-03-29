@@ -1,6 +1,6 @@
 ---
-title: 使用適用于 Microsoft Excel 的 Azure 資料總管連接器將資料視覺化
-description: 在本文中，您將瞭解如何使用適用于 Azure 資料總管的 Excel connector。
+title: 使用 Microsoft Excel 的 Azure 資料資源管理器連接器視覺化資料
+description: 在本文中，您將瞭解如何使用 Azure 資料資源管理器的 Excel 連接器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,73 +8,73 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849049"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>使用適用于 Excel 的 Azure 資料總管連接器將資料視覺化
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>使用 Excel 的 Azure 資料資源管理器連接器視覺化資料
 
-Azure 資料總管提供兩個選項來連接到 Excel 中的資料：使用原生連接器，或從 Azure 資料總管匯入查詢。 本文說明如何在 Excel 中使用原生連接器，並連接到 Azure 資料總管叢集，以取得資料並加以視覺化。
+Azure 資料資源管理器提供了兩個用於連接到 Excel 中的資料的選項：使用本機連接器或從 Azure 資料資源管理器導入查詢。 本文介紹如何在 Excel 中使用本機連接器並連接到 Azure 資料資源管理器群集來獲取和視覺化資料。
 
-Azure 資料總管 Excel native connector 提供將查詢結果匯出至 Excel 的功能。 您也可以加入 KQL 查詢做為 Excel 資料來源，以供其他計算或視覺效果使用。
+Azure 資料資源管理器 Excel 本機連接器提供了將查詢結果匯出到 Excel 的能力。 您還可以將 KQL 查詢添加為 Excel 資料來源，用於其他計算或視覺化效果。
 
-## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>將 Kusto 查詢定義為 Excel 資料來源，並將資料載入至 Excel
+## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>將 Kusto 查詢定義為 Excel 資料來源，並將資料載入到 Excel
 
-1. 開啟 **Microsoft Excel**。
-1. 在 [**資料**] 索引標籤中，從 azure**資料總管**選取 [**從 azure** > **取得資料** > ]。
+1. 打開**微軟Excel**。
+1. 在"**資料**"選項卡中，選擇**從 Azure** > **資料資源管理器****獲取資料** > 。
 
     ![從 Azure 資料總管取得資料](media/excel-connector/get-data-from-adx.png)
 
-1. 在 [ **Azure 資料總管（Kusto）** ] 視窗中，完成下欄欄位，然後選取 **[確定]** 。
+1. 在**Azure 資料資源管理器 （Kusto）** 視窗中，完成以下欄位並選擇 **"確定**"。
 
-    ![Azure 資料總管（Kusto）視窗](media/excel-connector/adx-connection-window.png)
+    ![Azure 資料資源管理器（庫托）視窗](media/excel-connector/adx-connection-window.png)
     
     |欄位   |描述 |
     |---------|---------|
-    |**叢集**   |   叢集的名稱（必要）      |    
+    |**集群**   |   群集名稱（必需）      |    
     |**資料庫**     |    資料庫名稱      |    
-    |**資料表名稱或 Azure 資料總管查詢**    |     資料表或 Azure 資料總管查詢的名稱    | 
+    |**表名稱或 Azure 資料資源管理器查詢**    |     表或 Azure 資料資源管理器查詢的名稱    | 
     
-    **Advanced 選項：**
+    **進階選項：**
 
      |欄位   |描述 |
     |---------|---------|
-    |**限制查詢結果記錄號碼**     |     限制載入至 excel 的記錄數目  |    
+    |**限制查詢結果記錄號碼**     |     限制載入到 Excel 中的記錄數  |    
     |**限制查詢結果資料大小（位元組）**    |    限制資料大小      |   
-    |**停用結果集截斷**    |         |      
-    |**其他 Set 語句（以分號分隔）**    |    新增 `set` 語句以套用至資料來源     |   
+    |**禁用結果集截斷**    |         |      
+    |**其他設置語句（以分號分隔）**    |    添加`set`要應用於資料來源的語句     |   
 
-1.  在 [導覽**器**] 窗格中，流覽至正確的資料表。 在 [資料表預覽] 窗格中，選取 [**轉換資料**] 以對您的資料進行變更，或選取 [**載入**] 將其載入至 Excel。
+1.  在 **"導航器"** 窗格中，導航到正確的表。 在"表預覽"窗格中，選擇 **"轉換資料**"以更改資料或選擇 **"載入**"以將其載入到 Excel。
 
-![資料表預覽視窗](media/excel-connector/navigate-table-preview-window.png)
+![表預覽視窗](media/excel-connector/navigate-table-preview-window.png)
 
    > [!TIP]
-   > 如果已指定**資料庫**和/或**資料表名稱或 Azure 資料總管查詢**，將會自動開啟正確的資料表預覽窗格。 
+   > 如果已指定**資料庫**和/或**表名稱或 Azure 資料資源管理器查詢**，則將自動打開正確的表預覽窗格。 
 
-## <a name="analyze-and-visualize-data-in-excel"></a>在 Excel 中分析資料並將其視覺化
+## <a name="analyze-and-visualize-data-in-excel"></a>在 Excel 中分析和視覺化資料
 
-一旦資料載入至 excel，並可在您的 Excel 工作表中使用之後，您就可以建立關聯性和視覺效果來分析、摘要和視覺化資料。 
+一旦資料載入到 Excel 工作表中，並且在 Excel 工作表中可用，您可以通過創建關係和視覺物件來分析、匯總和視覺化資料。 
 
-1.  在 [**資料表設計**] 索引標籤中，選取 [**使用樞紐分析表摘要**]。 在 [**建立樞紐分析表**] 視窗中，選取相關的資料表，然後選取 **[確定]** 。
+1.  在 **"表設計"** 選項卡中，選擇 **"使用樞紐分析表進行匯總**"。 在 **"創建樞紐分析表"** 視窗中，選擇相關表，然後選擇 **"確定**"。
 
-    ![建立樞紐分析表](media/excel-connector/create-pivot-table.png)
+    ![創建樞紐分析表](media/excel-connector/create-pivot-table.png)
 
-1. 在 [**樞紐分析表欄位**] 窗格中，選取相關的資料表資料行來建立摘要資料表。 在下列範例中，會選取 [ **EventId** ] 和 [**狀態**]。
+1. 在 **"樞紐分析表欄位"** 窗格中，選擇相關表列以創建摘要表。 在下面的示例中，選擇了**EventId** **和狀態**。
     
-    ![選取樞紐分析表欄位](media/excel-connector/pivot-table-pick-fields.png)
+    ![選擇樞紐分析表欄位](media/excel-connector/pivot-table-pick-fields.png)
 
-1. 在 [**樞紐分析表分析**] 索引標籤中，選取 [**樞紐分析圖**] 以根據資料表建立視覺效果。 
+1. 在 **"樞紐分析表分析"** 選項卡中，選擇**樞紐分析表**以基於表創建視覺物件。 
 
-    ![樞紐分析表](media/excel-connector/pivot-table-analyze-pivotchart.png)
+    ![樞紐分析圖](media/excel-connector/pivot-table-analyze-pivotchart.png)
 
-1. 在下列範例中，請使用**事件識別碼**、 **StartTime**和執行**專案來查看**氣象事件的其他相關資訊。
+1. 在下面的示例中，使用**事件 ID、****開始時間和****事件種類**來查看有關天氣事件的其他資訊。
 
     ![顯現資料](media/excel-connector/visualize-excel-data.png)
 
-1. 建立完整的儀表板來監視您的資料。
+1. 創建完整的儀表板以監視資料。
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用匯入 Microsoft Excel 的 Azure 資料總管 Kusto 查詢將資料視覺化](excel-blank-query.md)
+[使用導入到 Microsoft Excel 的 Azure 資料資源管理器庫斯托查詢視覺化資料](excel-blank-query.md)

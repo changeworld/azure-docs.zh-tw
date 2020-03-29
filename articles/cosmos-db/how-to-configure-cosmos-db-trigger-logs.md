@@ -1,5 +1,5 @@
 ---
-title: 使用 Cosmos DB 的 Azure Functions 觸發程式來設定和讀取記錄
+title: 使用 Cosmos DB 的 Azure 函數觸發器配置和讀取日誌
 description: 了解在使用 Azure Functions 的 Cosmos DB 觸發程序時，如何將記錄公開至 Azure Functions 記錄管線
 author: ealsur
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441836"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>在使用 Azure Functions 的 Cosmos DB 觸發程序時如何設定和讀取記錄
@@ -39,7 +39,7 @@ Azure Functions 的 Cosmos DB 觸發程序會在內部使用[變更摘要處理�
 }
 ```
 
-在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在所設定的記錄提供者中，于 [`Host.Triggers.CosmosDB`]*類別*底下查看記錄。
+在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在「類別」** `Host.Triggers.CosmosDB` 底下，自己設定的記錄提供者中檢視記錄。
 
 ## <a name="query-the-logs"></a>查詢記錄檔
 

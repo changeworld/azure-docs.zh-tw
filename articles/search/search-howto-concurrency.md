@@ -1,7 +1,7 @@
 ---
-title: 如何管理對資源的並行寫入
+title: 如何管理與資源併發寫入
 titleSuffix: Azure Cognitive Search
-description: 使用開放式平行存取，以避免對 Azure 認知搜尋索引、索引子、資料來源的更新或刪除發生空中衝突。
+description: 使用樂觀併發來避免更新時的空中衝突，或刪除 Azure 認知搜索索引、索引子和資料來源。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792207"
 ---
-# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 認知搜尋中的平行存取
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何在 Azure 認知搜索中管理併發
 
-管理 Azure 認知搜尋資源（例如索引和資料來源）時，請務必安全地更新資源，特別是當應用程式的不同元件同時存取資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了避免這種情況，Azure 認知搜尋提供*開放式平行存取模型*。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
+在管理 Azure 認知搜索資源（如索引和資料來源）時，安全更新資源非常重要，尤其是在應用程式的不同元件同時訪問資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了防止這種情況，Azure 認知搜索提供了一個*樂觀的併發模型*。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
 
 > [!Tip]
-> [範例C#解決方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念程式碼說明並行存取控制在 Azure 認知搜尋中的運作方式。 該程式碼會建立能叫用並行控制的條件。 對於大多數開發人員而言，閱讀[下方的程式碼片段](#samplecode)應該就已經足夠，但如果您想要執行該程式碼片段，請編輯 appsettings.json 以新增服務名稱和系統管理員 API 金鑰。 若服務 URL 為 `http://myservice.search.windows.net`，服務名稱將會是 `myservice`。
+> [示例 C# 解決方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代碼解釋了併發控制項在 Azure 認知搜索中的工作原理。 該程式碼會建立能叫用並行控制的條件。 對於大多數開發人員而言，閱讀[下方的程式碼片段](#samplecode)應該就已經足夠，但如果您想要執行該程式碼片段，請編輯 appsettings.json 以新增服務名稱和系統管理員 API 金鑰。 若服務 URL 為 `http://myservice.search.windows.net`，服務名稱將會是 `myservice`。
 
 ## <a name="how-it-works"></a>運作方式
 
 開放式同步存取的實作方式，是透過對寫入索引、索引子、資料來源及 synonymMap 資源的 API 呼叫進行存取條件檢查。
 
-所有資源都有能提供物件版本資訊的[*實體標記 (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag)。 透過先檢查 ETag 並確保資源的 ETag 符合您的本機複本，將可以避免在一般工作流程 (取得，於本機修改，更新) 中發生同時更新。
+所有資源都有能提供物件版本資訊的[*實體標記 (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag)。 透過先檢查 ETag 並確保資源的 ETag 符合您的本機複本，將可以避免在一般工作流程 (取得，於本機修改，更新) 中發生同時更新。
 
 + REST API 會在要求標頭上使用 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) \(英文\)。
 + .NET SDK 透過 accessCondition 物件設定 ETag，並在資源上設定 [If-Match | If-Match-None 標頭](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) \(英文\)。 繼承自 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) \(英文\) 的任何物件都具有 accessCondition 物件。
@@ -44,7 +44,7 @@ ms.locfileid: "72792207"
 + 如果資源已不存在，則更新失敗
 + 如果資源版本變更，則更新失敗
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>[DotNetETagsExplainer 程式](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) \(英文\) 的範例程式碼
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[DotNetETagsExplainer 程式](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) \(英文\) 的範例程式碼
 
 ```
     class Program
@@ -169,7 +169,7 @@ ms.locfileid: "72792207"
 
 實作開放式同步存取的設計模式應包含重複嘗試存取條件檢查、測試存取條件，並選擇性擷取更新資源，然後再嘗試重新套用變更的迴圈。
 
-此程式碼片段說明如何將 synonymMap 新增至已存在的索引。 這段程式碼來自[Azure C#認知搜尋的同義字範例](search-synonyms-tutorial-sdk.md)。
+此程式碼片段說明如何將 synonymMap 新增至已存在的索引。 此代碼來自[Azure 認知搜索的同義字 C# 示例](search-synonyms-tutorial-sdk.md)。
 
 該程式碼片段會取得 "hotels" 索引，檢查更新作業的物件版本，在條件失敗的情況下擲回例外狀況，然後重試該作業 (最多三次)，並從自伺服器擷取索引以取得最新版本開始。
 
@@ -211,11 +211,11 @@ ms.locfileid: "72792207"
 
 嘗試修改下列任一範例以包含 ETag 或 AccessCondition 物件。
 
-+ [GitHub 上的 REST API 範例](https://github.com/Azure-Samples/search-rest-api-getting-started) (英文)
-+ [GitHub 上的 .NET SDK 範例](https://github.com/Azure-Samples/search-dotnet-getting-started) (英文)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
++ [GitHub 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [GitHub 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[常見 HTTP 要求和回應標頭 (英文)](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 狀態碼 (英文)](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[索引作業 (REST API)(英文)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[常見 HTTP 要求和回應標頭](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[索引操作 （REST API）](https://docs.microsoft.com/rest/api/searchservice/index-operations)

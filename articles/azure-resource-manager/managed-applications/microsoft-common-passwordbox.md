@@ -1,15 +1,15 @@
 ---
-title: PasswordBox UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.PasswordBox UI 元素。 可讓使用者在部署受控應用程式時提供秘密值。
+title: 密碼盒 UI 元素
+description: 描述 Azure 入口網站的 Microsoft.Common.PasswordBox UI 元素。 使使用者能夠在部署託管應用程式時提供機密值。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652303"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 元素

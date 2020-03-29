@@ -1,276 +1,276 @@
 ---
-title: Micro 焦點企業開發人員 4.0 Azure 虛擬機器上設定 Micro 焦點 CICS BankDemo
-description: 在 Azure 虛擬機器 (Vm)，以了解如何使用 Micro Focus Enterprise Server 和企業開發人員執行 Micro 焦點 BankDemo 應用程式。
+title: 為 Azure 虛擬機器上的微焦點企業開發人員 4.0 設置微焦點 CICS BankDemo
+description: 在 Azure 虛擬機器 （VM） 上運行微焦點銀行演示應用程式，以瞭解如何使用微焦點企業伺服器和企業開發人員。
 author: sread
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621342"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>在 Azure 上微焦點企業開發人員 4.0 設定 Micro 焦點 CICS BankDemo
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>為 Azure 上的微焦點企業開發人員 4.0 設置微焦點 CICS 銀行演示
 
-當您設定 Micro 焦點 Enterprise Server 4.0 和在 Azure 上的企業開發人員 4.0 時，您可以測試 IBM z/OS 工作負載的部署。 本文說明如何設定 CICS BankDemo，企業開發人員所隨附的範例應用程式。
+在 Azure 上設置微焦點企業伺服器 4.0 和企業開發人員 4.0 時，可以測試 IBM z/OS 工作負載的部署。 本文演示如何設置 CICS BankDemo，這是企業開發人員附帶的應用程式範例。
 
-CICs 代表客戶資訊控制系統，許多線上的大型電腦應用程式所用的交易平台。 BankDemo 應用程式適合用於學習企業伺服器與企業開發人員的運作方式，以及如何管理和部署實際的應用程式完整的綠色螢幕終端機。
+CIC 代表客戶資訊控制系統，這是許多線上大型機應用程式使用的交易平臺。 BankDemo 應用程式非常適合瞭解企業伺服器和企業開發人員的操作方式以及如何管理和部署使用綠屏終端完成的實際應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 使用的 VM[企業開發人員](set-up-micro-focus-azure.md)。 請記住，企業開發人員會有完整執行個體的企業伺服器上進行開發和測試目的。 這個執行個體是用來示範企業伺服器的執行個體。
+- 具有[企業開發人員的](set-up-micro-focus-azure.md)VM 。 請記住，企業開發人員在它上有一個完整的企業伺服器實例，用於開發和測試目的。 此實例是用於演示的企業伺服器實例。
 
-- [SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express)。 下載並安裝在 Enterprise Developer VM 上。 企業伺服器需要資料庫的 CICS 區域管理，且 BankDemo 應用程式也會使用名為 BANKDEMO 的 SQL Server 資料庫。 這段示範影片，假設您正在使用這兩個資料庫的 「 SQL Server Express。 安裝時，請選取 基本安裝。
+- [SQL 伺服器 2017 快遞版](https://www.microsoft.com/sql-server/sql-server-editions-express). 下載並將其安裝在企業開發人員 VM 上。 企業伺服器需要一個資料庫來管理 CICS 區域，BankDemo 應用程式還使用稱為 BANKDEMO 的 SQL Server 資料庫。 本演示假定您對兩個資料庫都使用 SQL Server Express。 安裝時，選擇基本安裝。
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS)。 SSMS 用來管理資料庫和執行 T-SQL 指令碼中。 下載並安裝在 Enterprise Developer VM 上。
+- [SQL 伺服器管理工作室](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)（SSMS）。 SSMS 用於管理資料庫和運行 T-SQL 腳本。 下載並將其安裝在企業開發人員 VM 上。
 
-- [Visual Studio 2019](https://azure.microsoft.com/downloads/)最新的 service pack 或[Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)，您可以免費下載。
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/)與最新的服務包或[視覺工作室社區](https://visualstudio.microsoft.com/vs/community/)， 你可以免費下載.
 
-- Rumba 桌面或另一個 3270 模擬器。
+- 倫巴桌面或其他3270模擬器。
 
-## <a name="configure-the-windows-environment"></a>設定 Windows 環境
+## <a name="configure-the-windows-environment"></a>配置 Windows 環境
 
-在 VM 上安裝企業開發人員 4.0 之後，您必須設定它隨附的 Enterprise Server 的執行個體。 若要這樣做，您需要安裝一些額外的 Windows 功能，如下所示。
+在 VM 上安裝企業開發人員 4.0 後，必須配置附帶的企業伺服器實例。 為此，您需要安裝一些其他 Windows 功能，如下所示。
 
-1. 您可以使用 RDP 登入您所建立的企業伺服器 4.0 VM。
+1. 使用 RDP 登錄到您創建的企業伺服器 4.0 VM。
 
-2. 按一下 **搜尋**旁的圖示**開始**按鈕並輸入**Windows 功能**。 伺服器管理員新增角色及功能精靈 隨即開啟。
+2. 按一下 **"開始"** 按鈕旁邊的 **"搜索**"圖示，然後鍵入**Windows 功能**。 伺服器管理員添加角色和功能嚮導打開。
 
-3. 選取 **網頁伺服器 (IIS) 角色**，然後核取下列選項：
+3. 選擇**Web 服務器 （IIS） 角色**，然後檢查以下選項：
 
     - Web 管理工具
-    - IIS 6 管理相容性 （選取所有可用的功能）
+    - IIS 6 管理相容性（選擇所有可用功能）
     - IIS 管理主控台
     - IIS 管理指令碼及工具
     - IIS 管理服務
 
-4. 選取  **World Wide Web 服務**，並檢查下列選項：
+4. 選擇**萬維網服務**，並檢查以下選項：
 
      應用程式開發功能：
     - .NET 擴充性
     - ASP.NET
-    - 一般 HTTP 功能：加入所有可用的功能
-    - 健全狀況和診斷：加入所有可用的功能
+    - 常見 HTTP 功能：添加所有可用功能
+    - 運行狀況和診斷：添加所有可用功能
     - 安全性：
         - 基本驗證
         - Windows 驗證
 
-5. 選取  **Windows Process Activation Service**及其所有子系。
+5. 選擇**Windows 進程啟動服務**及其所有子級。
 
-6. 針對**功能**，檢查**Microsoft.NET framework 3.5.1**，並檢查下列選項：
+6. 有關**功能**，請檢查**Microsoft .NET 框架 3.5.1**，並檢查以下選項：
 
-    - Windows Communication Foundation HTTP 啟動
-    - Windows Communication Foundation 非 HTTP 啟動
+    - Windows 通信基礎 HTTP 啟動
+    - Windows 通信基礎非 HTTP 啟動
 
-7. 針對**功能**，檢查**Microsoft.NET framework 4.6**，並檢查下列選項：
+7. 有關**功能**，請檢查**Microsoft .NET 框架 4.6**，並檢查以下選項：
 
-   - 具名的管道啟動
-   - TCP 啟動
+   - 具名管道啟動
+   - TCP 啟用
    - TCP 連接埠共用
 
-     ![新增角色及功能精靈:角色服務](media/01-demo-roles.png)
+     ![添加角色和功能嚮導：角色服務](media/01-demo-roles.png)
 
-8. 當您選取所有選項時，按一下**下一步**安裝。
+8. 選擇所有選項後，按一下 **"下一步**"進行安裝。
 
-9. 之後的 Windows 功能中，移至**控制台中\>系統及安全性\>系統管理工具**，然後選取**服務**。 向下捲動，並確定下列服務正在執行，並將設定為**自動**:
+9. Windows 功能後，轉到**控制台\>系統和安全\>管理工具**，然後選擇 **"服務**"。 向下滾動並確保以下服務正在運行，並設置為**自動**：
 
     - **NetTcpPortSharing**
-    - **Net.Pipe Listener Adapter**
-    - **Net.tcp 接聽程式配接器**
+    - **Net.Pipe 接聽程式配接器**
+    - **Net.tcp 攔截器配接器**
 
-10. 若要設定 IIS 和 WAS 的支援，請從功能表中找到**Micro 焦點企業開發人員命令提示字元 （64 位元）** 並執行為**管理員**。
+10. 要配置 IIS 和 WAS 支援，請從功能表中找到**微焦點企業開發人員命令提示符 （64 位），** 然後以**管理員**身份運行。
 
-11. 型別**wassetup – i**然後按**Enter**。
+11. **類型設置 _i，** 然後按**Enter**。
 
-12. 指令碼執行之後，您可以關閉視窗。
+12. 腳本運行後，可以關閉視窗。
 
-## <a name="configure-the-local-system-account-for-sql-server"></a>設定 SQL Server 的本機系統帳戶
+## <a name="configure-the-local-system-account-for-sql-server"></a>為 SQL 伺服器配置本機系統帳戶
 
-某些企業伺服器處理程序必須能夠登入 SQL Server，並建立資料庫和其他物件。 這些程序會使用本機系統帳戶，因此您必須將該帳戶提供給系統管理員授權單位。
+某些企業伺服器進程需要能夠登錄 SQL Server 並創建資料庫和其他物件。 這些進程使用本機系統帳戶，因此您必須授予該帳戶的系統管理員許可權。
 
-1. 啟動**SSMS**然後按一下**Connect**連接到本機 SQLEXPRESS 伺服器使用 Windows 驗證。 它應該會出現在**伺服器名稱**清單。
+1. 啟動**SSMS，** 然後按一下"**連接**"以使用 Windows 身份驗證連接到本地 SQLEXPRESS 伺服器。 它在 **"伺服器名稱"** 清單中應可用。
 
-2. 在左側，展開**安全性**資料夾，然後選取**登入**。
+2. 在左側，展開**安全**資料夾並選擇 **"登錄"。**
 
-3. 選取  **NT AUTHORITY\\系統**，然後選取**屬性**。
+3. 選擇**NT\\授權系統**並選擇**屬性**。
 
-4. 選取 **伺服器角色**並查看**sysadmin**。
+4. 選擇**伺服器角色**並檢查**系統管理員**。
 
-     ![SSMS 物件總管 視窗中：登入屬性](media/02-demo-explorer.png)
+     ![SSMS 物件資源管理器視窗：登錄屬性](media/02-demo-explorer.png)
 
-## <a name="create-the-bankdemo-database-and-all-its-objects"></a>建立 BankDemo 資料庫及其所有物件
+## <a name="create-the-bankdemo-database-and-all-its-objects"></a>創建 BankDemo 資料庫及其所有物件
 
-1. 開啟**Windows 檔案總管**並瀏覽至**c:\\使用者\\公用\\文件\\Micro Focus\\企業開發人員\\樣本\\大型主機\\CICS\\DotNet\\BankDemo\\SQL**。
+1. 打開**Windows 資源管理器**並導航到**C：\\\\\\\\\\\\\\\\\\\\使用者\\公共文檔微焦點企業開發人員示例主機 CICS DotNet 銀行Demo SQL**.
 
-2. 複製的內容**BankDemoCreateAll.SQL**檔案到您的剪貼簿。
+2. 將**BankDemoCreateAll.SQL**檔的內容複寫到剪貼簿中。
 
-3. 開啟**SSMS**。 在右側，按一下**伺服器**，然後選取**新的查詢**。
+3. 打開**SSMS**。 在右側，按一下 **"伺服器"** 並選擇 **"新建查詢**"。
 
-4. 貼上剪貼簿的內容**新的查詢** 方塊中。
+4. 將剪貼簿的內容粘貼到 **"新建查詢"** 框中。
 
-5. 按一下 執行 SQL **Execute**從**命令**上述查詢的索引標籤。
+5. 通過按一下查詢上方的"**執行"** 選項卡**Command**執行 SQL。
 
-未出現任何錯誤，應該執行查詢。 完成時，您會有 BankDemo 應用程式的範例資料庫。
+查詢應運行時沒有錯誤。 完成後，您擁有 BankDemo 應用程式的示例資料庫。
 
-![SQLQuery1.sql output](media/03-demo-query.png)
+![SQLQuery1.sql 輸出](media/03-demo-query.png)
 
-## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>確認已建立的資料庫資料表和物件
+## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>驗證資料庫表和物件是否已創建
 
-1. 以滑鼠右鍵按一下**BANKDEMO**資料庫，然後選取**重新整理**。
+1. 按右鍵**BANKDEMO**資料庫並選擇 **"刷新**"。
 
-2. 依序展開**資料庫**，然後選取**資料表**。 您應該會看到類似下列的內容。
+2. 展開**資料庫**並選擇**表**。 您應該會看到類似以下內容。
 
-     ![在 [物件總管] 中展開 BANKDEMO 資料表](media/04-demo-explorer.png)
+     ![在物件資源管理器中擴展的 BANKDEMO 表](media/04-demo-explorer.png)
 
-## <a name="build-the-application-in-enterprise-developer"></a>建立企業開發人員應用程式
+## <a name="build-the-application-in-enterprise-developer"></a>在企業開發人員中構建應用程式
 
 1. 開啟 Visual Studio 並登入。
 
-2. 底下**檔案** 功能表選項中，選取**開啟專案/方案**，瀏覽至**c:\\使用者\\公用\\文件\\Micro焦點\\企業開發人員\\樣本\\大型主機\\CICS\\DotNet\\BankDemo**，然後選取**sln**檔案。
+2. 在 **"檔**"功能表選項下，選擇 **"打開專案/解決方案**"，導航到**C：\\使用者\\公共\\文檔\\微\\焦點\\企業開發人員\\\\示例\\\\CICS DotNet BankDemo，** 然後選擇**sln**檔。
 
-3. 需要一些時間來檢查的物件。 COBOL 程式會顯示在 [方案總管] 中，CopyBooks (CPY) 以及 JCL CBL 副檔名。
+3. 花一些時間檢查物件。 COBOL 程式與抄本 （CPY） 和 JCL 一起顯示在解決方案資源管理器中，並帶有 CBL 擴展。
 
-4. 以滑鼠右鍵按一下**BankDemo2**專案，然後選取**設定為啟始專案**。
-
-    > [!NOTE]
-    > BankDemo 專案會使用 HCOSS （主應用程式相容性選項適用於 SQL Server），不會用於這段示範影片。
-
-5. 在 **方案總管**，以滑鼠右鍵按一下**BankDemo2**專案，然後選取**建置**。
+4. 按右鍵**BankDemo2**專案，然後選擇 **"設置為啟動專案**"。
 
     > [!NOTE]
-    > 建置方案層級會導致錯誤，HCOSS 尚未設定。
+    > BankDemo 專案使用 HCOSS（SQL Server 的主機相容性選項），該選項不用於此演示。
 
-6. 建置專案時，檢查**輸出**視窗。 它看起來應該像下列映像。
+5. 在**解決方案資源管理器**中，按右鍵**BankDemo2**專案並選擇 **"生成**"。
 
-     ![輸出視窗會顯示建置成功](media/05-demo-output.png)
+    > [!NOTE]
+    > 在解決方案級別構建會導致錯誤，因為尚未配置 HCOSS。
 
-## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>部署至區域資料庫 BankDemo 應用程式
+6. 生成專案時，請檢查**輸出**視窗。 它應該類似下圖。
 
-1. 以系統管理員身分開啟企業開發人員命令提示字元 （64 位元）。
+     ![顯示成功構建的輸出視窗](media/05-demo-output.png)
 
-2. 瀏覽至 **%公用\\文件\\Micro Focus\\企業開發人員\\範例\\大型主機\\CICS\\DotNet\\BankDemo**。
+## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>將 BankDemo 應用程式部署到區域資料庫
 
-3. 在命令提示字元中，執行**bankdemodbdeploy**和包含的參數，例如部署資料庫：
+1. 打開企業開發人員命令提示符（64 位）作為管理員。
+
+2. 導航到 **%PUBLIC%\\\\文檔微\\焦點企業\\開發人員\\示例主機\\CICS\\\\DotNet 銀行Demo**。
+
+3. 在命令提示符下，執行**bankdemodbdeploy，** 並包含要部署到的資料庫的參數，例如：
 
     ```
     bankdemodbdeploy (local)/sqlexpress
     ```
 
 > [!NOTE]
-> 請務必使用正斜線 （/） 不是反斜線 (\\)。 此指令碼會執行一段時間。
+> 請確保使用向前斜杠 （/） 而不是向後斜杠（）。\\ 此腳本運行一段時間。
 
-![系統管理：企業開發人員命令提示字元 視窗](media/06-demo-cmd.png)
+![管理：企業開發人員命令提示視窗](media/06-demo-cmd.png)
 
-## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>在企業系統管理員 for.NET 建立 BankDemo 區域
+## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>在企業管理員中為 .NET 創建銀行演示區域
 
-1. 開啟**Enterprise Server for.NET 管理**UI。
+1. 打開**企業伺服器 .NET 管理**UI。
 
-2. 若要啟動 [MMC] 嵌入式管理單元中，從 Windows**開始**功能表上，選擇**Micro 焦點企業開發人員\>組態\>Enterprise Server for.NET 管理**。(適用於 Windows Server 中，選擇**Micro 焦點企業開發人員\>Enterprise Server for.NET 管理**)。
+2. 要啟動 MMC 管理單元，請從 Windows**開始**功能表中選擇**微焦點企業\>開發人員\>配置企業伺服器。.NET Admin**。（對於 Windows 伺服器，選擇**用於\>.NET 管理員的微焦點企業開發人員企業伺服器**。
 
-3. 依序展開**地區**中左的窗格，然後以滑鼠右鍵按一下容器**CICS**。
+3. 展開左側窗格中的**區域**容器，然後按右鍵**CICS**。
 
-4. 選取 **定義區域**來建立新的 CICS 區域，稱為**BANKDEMO**、 (local) 的資料庫中託管。
+4. 選擇 **"定義區域**"以創建一個名為**BANKDEMO**的新 CICS 區域，託管在（本地）資料庫中。
 
-5. 提供資料庫伺服器執行個體，請按一下**下一步**，然後輸入 區域名稱**BANKDEMO**。
+5. 提供資料庫伺服器實例，按一下 **"下一步**"，然後輸入區功能變數名稱稱**BANKDEMO**。
 
      ![定義區域對話方塊](media/07-demo-cics.png)
 
-6. 若要選取跨區域資料庫的區域定義檔，找出**地區\_bankdemo\_db.config**中**c:\\使用者\\公用\\文件\\Micro Focus\\企業開發人員\\範例\\大型主機\\CICS\\DotNet\\BankDemo**。
+6. 要選擇跨區域資料庫的區域定義檔，請在 C 中**查找\_區域\_bankdemo db.config：****\\\\使用者\\公共\\文檔微\\焦點企業\\開發人員\\示例主機\\CICS\\\\DotNet BankDemo**。
 
-     ![定義區域的區域名稱：BANKDEMO](media/08-demo-cics.png)
+     ![定義區域 - 區功能變數名稱稱：銀行](media/08-demo-cics.png)
 
-7. 按一下 [完成]  。
+7. 按一下 **[完成]**。
 
-## <a name="create-xa-resource-definitions"></a>建立 XA 資源定義
+## <a name="create-xa-resource-definitions"></a>創建 XA 資源定義
 
-1. 在左窗格中**Enterprise Server for.NET 管理**UI 中，展開**系統**，然後**XA 資源定義**。 此設定會定義區域與企業伺服器及應用程式資料庫的交互操作。
+1. 在**企業伺服器的左側窗格中，用於 .NET 管理**UI，展開**系統**，然後**展開 XA 資源定義**。 此設置定義區域與企業伺服器和應用程式資料庫的交交互操作方式。
 
-2. 以滑鼠右鍵按一下**XA 資源定義**，然後選取**新增的伺服器執行個體**。
+2. 按右鍵**XA 資源定義**並選擇 **"添加伺服器實例**"。
 
-3. 在下拉式清單方塊中，選取**資料庫的服務執行個體**。 它會在本機電腦 SQLEXPRESS。
+3. 在下拉清單中，選擇**資料庫服務實例**。 它將是本地電腦 SQLEXPRESS。
 
-4. 選取下的執行個體**XA 資源定義 (machinename\\sqlexpress)** 容器，然後按一下**新增**。
+4. 從**XA 資源定義（電腦名稱稱\\sqlexpress）** 容器下選擇實例，然後按一下"**添加**"。
 
-5. 選取**資料庫 XA 資源定義**，然後輸入**BANKDEMO** for**名稱**並**區域**。
+5. 選擇**資料庫 XA 資源定義**，然後鍵入**名稱****和地區的** **BANKDEMO。**
 
-     ![新的資料庫 XA 資源定義畫面](media/09-demo-xa.png)
+     ![新的資料庫 XA 資源定義螢幕](media/09-demo-xa.png)
 
-6. 按一下省略符號 ( **...** ) 以顯示 [連接字串] 精靈。 針對**伺服器名稱**，型別 **(local)\\SQLEXPRESS**。 針對**登入**，選取**Windows 驗證**。 資料庫名稱 中輸入**BANKDEMO**
+6. 按一下橢圓 （**...）** 以啟動連接字串嚮導。 對於**伺服器名稱**，鍵入 **（本地）SQLEXPRESS\\**。 對於**登錄**，請選擇**Windows 身份驗證**。 對於資料庫名稱，鍵入**BANKDEMO**
 
-     ![編輯連接字串的畫面](media/10-demo-string.png)
+     ![編輯連接字串螢幕](media/10-demo-string.png)
 
 7. 測試連接。
 
 ## <a name="start-the-bankdemo-region"></a>啟動 BANKDEMO 區域
 
 > [!NOTE]
-> 第一個步驟是很重要：您必須設定要使用您剛才建立的 XA 資源定義的區域。
+> 第一步很重要：必須將地區設定為使用剛剛創建的 XA 資源定義。
 
-1. 瀏覽至**BANDEMO CICS 區域**下方**地區容器**，然後選取**編輯區域啟動檔案**從**動作**窗格。 捲動至 SQL 內容，然後輸入**bankdemo** for **XA 資源名稱**，或使用省略符號來選取它。
+1. 導航到**區域容器**下的**BANDEMO CICS 區域**，然後從 **"操作"** 窗格中選擇 **"編輯區域開機檔案**"。 向下滾動到 SQL 屬性，然後輸入**XA 資源名稱**的**bankdemo，** 或使用省略號來選擇它。
 
-2. 按一下 **儲存**圖示以儲存您的變更。
+2. 按一下 **"保存**"圖示以保存更改。
 
-3. 以滑鼠右鍵按一下**BANKDEMO CICS 區域**中**主控台**窗格，然後選取**啟動/停止區域**。
+3. 按右鍵**主控台**窗格中的**BANKDEMO CICS 區域**，然後選擇 **"開始/停止區域**"。
 
-4. 在底部**啟動/停止區域** 方塊中，會出現在中間窗格中，選取**開始**。 幾秒鐘後，會啟動區域。
+4. 在中間窗格中顯示的 **"開始/停止區域"** 框的底部，選擇 **"開始**"。 幾秒鐘後，區域開始。
 
-     ![SQL 啟動/停止方塊](media/11-demo-sql.png)
+     ![SQL 開始/停止框](media/11-demo-sql.png)
 
-     ![CICS 區域 BANKDEMO-開始使用 畫面](media/12-demo-cics.png)
+     ![CICS 地區銀行 - 啟動畫面](media/12-demo-cics.png)
 
-## <a name="create-a-listener"></a>建立接聽程式
+## <a name="create-a-listener"></a>創建攔截器
 
-TN3270 的工作階段存取 BankDemo 應用程式中建立的接聽程式。
+為訪問 BankDemo 應用程式的 TN3270 會話創建攔截器。
 
-1. 在左窗格中，依序展開**組態編輯器**，然後選取**接聽程式**。
+1. 在左側窗格中，展開 **"配置編輯器"** 並選擇**攔截器**。
 
-2. 按一下 **開啟的檔案**圖示，然後選取**seelistener.exe.config**檔案。 將編輯這個檔案，並每次企業伺服器啟動時載入。
+2. 按一下 **"打開檔"** 圖示並選擇 **"seelistener.exe.config"** 檔。 每次企業伺服器啟動時，都將編輯並載入此檔。
 
-3. 請注意兩個區域，先前定義的 （ESDEMO 和 JCLDEMO）。
+3. 請注意之前定義的兩個區域（ESDEMO 和 JCLDEMO）。
 
-4. 若要建立新的區域 BANKDEMO，以滑鼠右鍵按一下**區域**，然後選取**加入區域**。
+4. 要為 BANKDEMO 創建新區域，請按右鍵 **"區域**"，然後選擇"**添加區域**"。
 
-5. 選取  **BANKDEMO 區域**。
+5. 選擇**銀行區**。
 
-6. 以滑鼠右鍵按一下新增 TN3270 頻道**BANKDEMO 區域**，然後選取**新增頻道**。
+6. 通過按右鍵**BANKDEMO 區域**並選擇 **"添加通道**"添加 TN3270 通道。
 
-7. 針對**名稱**，輸入**TN3270**。 針對**連接埠**，輸入**9024**。 ESDEMO 應用程式會使用連接埠 9230，因此您必須使用不同的連接埠。
+7. 對於**名稱**，輸入**TN3270**。 對於**埠**，輸入**9024**。 ESDEMO 應用程式使用埠 9230，因此您需要使用不同的埠。
 
-8. 若要儲存檔案，按一下**儲存**圖示，或選擇**檔案** \> **儲存**。
+8. 要保存檔，請按一下 **"保存**"圖示或選擇"**檔**\>**保存**"。
 
-9. 若要啟動接聽程式，請按一下**啟動的接聽程式**圖示，或選擇**選項** \> **啟動接聽程式**。
+9. 要啟動攔截器，請按一下 **"開始攔截器"** 圖示或選擇 **"**\>**開始攔截器"** 選項。
 
-     ![接聽程式組態編輯器視窗](media/13-demo-listener.png)
+     ![攔截器配置編輯器視窗](media/13-demo-listener.png)
 
 
-## <a name="configure-rumba-to-access-the-bankdemo-application"></a>設定 Rumba 存取 BankDemo 應用程式
+## <a name="configure-rumba-to-access-the-bankdemo-application"></a>配置倫巴以訪問 BankDemo 應用程式
 
-您需要執行最後一件事是設定 3270 工作階段使用 Rumba，3270 模擬器。 此步驟可讓您存取 BankDemo 應用程式透過您所建立的接聽程式。
+您需要做的最後一件事是使用 3270 模擬器 Rumba 配置 3270 會話。 此步驟使您能夠通過創建的攔截器訪問 BankDemo 應用程式。
 
-1. 從 Windows**啟動**功能表上，啟動 Rumba Desktop。
+1. 從"視窗**開始"** 功能表中啟動 Rumba 桌面。
 
-2. 底下**連線** 功能表項目中，選取**TN3270**。
+2. 在 **"連接"** 功能表項目下，選擇**TN3270**。
 
-3. 按一下 **插入**並輸入**127.0.0.1**的 IP 位址和**9024**使用者定義的連接埠。
+3. 按一下 IP 位址的**插入**和鍵入**127.0.0.1，** 為使用者定義的埠鍵入**9024。**
 
-4. 在對話方塊的底部，按一下**Connect**。 黑色的 CICS 畫面隨即出現。
+4. 在對話方塊的底部，按一下"**連接**"。 將顯示一個黑色 CICS 螢幕。
 
-5. 型別**銀行**顯示初始 3270 畫面 BankDemo 應用程式。
+5. 鍵入**銀行**以顯示 BankDemo 應用程式的初始 3270 螢幕。
 
-6. 使用者識別碼的輸入**B0001**和密碼，輸入任何內容。 第一個畫面 BANK20 隨即開啟。
+6. 對於使用者 ID，鍵入**B0001，** 對於密碼，鍵入任何內容。 第一個螢幕 BANK20 打開。
 
-![大型主機顯示歡迎使用 畫面](media/14-demo.png)
-![大型主機顯示-Rumba-子系統示範畫面](media/15-demo.png)
+![大型機顯示器歡迎畫面](media/14-demo.png)
+![大型機顯示 - 倫巴 - 子系統演示螢幕](media/15-demo.png)
 
-恭喜您！ 您現在已執行的 CICS 應用程式在 Azure 中使用 Micro Focus Enterprise Server。
+恭喜！ 現在，您正在使用微焦點企業伺服器在 Azure 中運行 CICS 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 Azure 上執行 Docker 容器中的企業伺服器](run-enterprise-server-container.md)
-- [大型主機移轉-入口網站](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [在 Azure 上的 Docker 容器中運行企業伺服器](run-enterprise-server-container.md)
+- [大型機遷移 - 門戶](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [虛擬機器](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [揭開大型主機移轉至 Azure 的神秘面紗](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [將大型機與 Azure 遷移解密](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

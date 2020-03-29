@@ -9,10 +9,10 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60616484"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>存取 Azure Data Lake Analytics 的診斷記錄
@@ -25,35 +25,35 @@ ms.locfileid: "60616484"
 
 ## <a name="enable-logging"></a>啟用記錄
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-2. 開啟 Data Lake Analytics 帳戶，然後從 [監視] 區段選取 [診斷記錄]。 接下來，選取 [開啟診斷]。
+2. 開啟 Data Lake Analytics 帳戶，然後從 [監視]____ 區段選取 [診斷記錄]****。 接下來，選取 [開啟診斷]____。
 
     ![開啟診斷以收集稽核和要求記錄](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. 在 [診斷設定] 中，輸入此記錄組態的 [名稱]，然後選取記錄選項。
+3. 在 [診斷設定]____ 中，輸入此記錄組態的 [名稱]____，然後選取記錄選項。
 
     ![開啟診斷以收集稽核和要求記錄](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "啟用診斷記錄")
 
    * 您可以選擇三種不同的資料儲存/處理方法。
 
-     * 選取 [封存至儲存體帳戶] 可將記錄儲存到 Azure 儲存體帳戶。 如果您想要封存資料，請使用此選項。 如果您選取此選項，必須提供用來儲存記錄的 Azure 儲存體帳戶。
+     * 選取 [封存至儲存體帳戶]____ 可將記錄儲存到 Azure 儲存體帳戶。 如果您想要封存資料，請使用此選項。 如果您選取此選項，必須提供用來儲存記錄的 Azure 儲存體帳戶。
 
-     * 選取 [串流至事件中樞] 可將記錄資料串流到 Azure 事件中樞。 如果您有即時分析內送記錄的下游處理管線，請使用此選項。 如果您選取此選項，必須提供要使用的 Azure 事件中樞詳細資料。
+     * 選取 [串流至事件中樞]**** 可將記錄資料串流到 Azure 事件中樞。 如果您有即時分析內送記錄的下游處理管線，請使用此選項。 如果您選取此選項，必須提供要使用的 Azure 事件中樞詳細資料。
 
-     * 選取 __傳送至 Log Analytics__將資料傳送至 Azure 監視器服務。 如果您想要使用 Azure 監視器記錄檔來收集和分析記錄，請使用此選項。
+     * 選擇 __"發送到日誌分析__"以將資料發送到 Azure 監視器服務。 如果要使用 Azure 監視器日誌收集和分析日誌，請使用此選項。
    * 指定要取得稽核記錄、要求記錄或兩者。  要求記錄會擷取每個應用程式開發介面 (API) 的要求。 稽核記錄則會記錄該 API 要求觸發的所有作業。
 
-   * 針對 [封存至儲存體帳戶]，請指定要保留資料的天數。
+   * 針對 [封存至儲存體帳戶]____，請指定要保留資料的天數。
 
-   * 按一下 [檔案]。
+   * 按一下 [儲存]____。
 
         > [!NOTE]
-        > 您必須先選取 [封存至儲存體帳戶]、[串流至事件中樞] 或 [傳送至 Log Analytics]，再按一下 [儲存] 按鈕。
+        > 您必須先選取 [封存至儲存體帳戶]____、[串流至事件中樞]____ 或 [傳送至 Log Analytics]____，再按一下 [儲存]____ 按鈕。
 
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>使用包含記錄資料的 Azure 儲存體帳戶
 
-1. 若要顯示存放記錄資料的 blob 容器，開啟 Data Lake Analytics 記錄所使用的 Azure 儲存體帳戶，然後按一下 [Blob]。
+1. 若要顯示存放記錄資料的 blob 容器，開啟 Data Lake Analytics 記錄所使用的 Azure 儲存體帳戶，然後按一下 [Blob]____。
 
    * 容器 **insights-logs-audit** 包含稽核記錄。
    * 容器 **insights-logs-requests** 包含要求記錄。
@@ -125,28 +125,28 @@ ms.locfileid: "60616484"
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
 
-| 名稱 | type | 描述 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| time |字串 |記錄的時間戳記 (UTC 時間) |
-| resourceId |字串 |執行作業所在資源的識別碼 |
-| category |字串 |記錄類別。 例如， **要求**。 |
-| operationName |字串 |記錄的作業名稱。 例如，GetAggregatedJobHistory。 |
-| resultType |字串 |作業的狀態。例如，200。 |
-| callerIpAddress |字串 |提出要求之用戶端的 IP 位址 |
-| correlationId |字串 |角色的識別碼。 此值可用來群組一組相關的記錄項目。 |
+| time |String |記錄的時間戳記 (UTC 時間) |
+| resourceId |String |執行作業所在資源的識別碼 |
+| category |String |記錄類別。 例如， **要求**。 |
+| operationName |String |記錄的作業名稱。 例如，GetAggregatedJobHistory。 |
+| resultType |String |作業的狀態。例如，200。 |
+| callerIpAddress |String |提出要求之用戶端的 IP 位址 |
+| correlationId |String |角色的識別碼。 此值可用來群組一組相關的記錄項目。 |
 | 身分識別 |Object |產生記錄的身分識別 |
 | properties |JSON |請參閱下一節 (要求記錄檔屬性結構描述) 以取得詳細資訊 |
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
 
-| 名稱 | type | 描述 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| HttpMethod |字串 |作業使用的 HTTP 方法。 例如，GET。 |
-| `Path` |字串 |執行作業的所在路徑 |
+| HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
+| Path |String |執行作業的所在路徑 |
 | RequestContentLength |int |HTTP 要求的內容長度 |
-| ClientRequestId |字串 |可唯一識別此要求的識別碼 |
-| StartTime |字串 |伺服器接收到要求的時間 |
-| EndTime |字串 |伺服器傳送回應的時間 |
+| ClientRequestId |String |可唯一識別此要求的識別碼 |
+| StartTime |String |伺服器接收到要求的時間 |
+| EndTime |String |伺服器傳送回應的時間 |
 
 ### <a name="audit-logs"></a>稽核記錄
 
@@ -177,15 +177,15 @@ ms.locfileid: "60616484"
 
 #### <a name="audit-log-schema"></a>稽核記錄的結構描述
 
-| 名稱 | type | 描述 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| time |字串 |記錄的時間戳記 (UTC 時間) |
-| resourceId |字串 |執行作業所在資源的識別碼 |
-| category |字串 |記錄類別。 例如， **稽核**。 |
-| operationName |字串 |記錄的作業名稱。 例如，JobSubmitted。 |
-| resultType |字串 |作業狀態 (operationName) 的子狀態。 |
-| resultSignature |字串 |作業狀態 (operationName) 的其他詳細資料。 |
-| 身分識別 |字串 |要求作業的使用者。 例如： susan@contoso.com 。 |
+| time |String |記錄的時間戳記 (UTC 時間) |
+| resourceId |String |執行作業所在資源的識別碼 |
+| category |String |記錄類別。 例如， **稽核**。 |
+| operationName |String |記錄的作業名稱。 例如，JobSubmitted。 |
+| resultType |String |作業狀態 (operationName) 的子狀態。 |
+| resultSignature |String |作業狀態 (operationName) 的其他詳細資料。 |
+| 身分識別 |String |要求作業的使用者。 例如： susan@contoso.com 。 |
 | properties |JSON |請參閱下一節 (稽核記錄檔屬性結構描述) 以取得詳細資訊 |
 
 > [!NOTE]
@@ -195,22 +195,22 @@ ms.locfileid: "60616484"
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
 
-| 名稱 | type | 描述 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| JobId |字串 |指派給作業的識別碼 |
-| JobName |字串 |為作業提供的名稱 |
-| JobRunTime |字串 |用來處理作業的執行階段 |
-| SubmitTime |字串 |作業提交時間 (UTC 格式) |
-| StartTime |字串 |作業在提交後開始執行的時間 (UTC 格式) |
-| EndTime |字串 |作業結束時間 |
-| 平行處理原則 |字串 |在提交期間為此作業要求的 Data Lake Analytics 單位數目 |
+| JobId |String |指派給作業的識別碼 |
+| JobName |String |為作業提供的名稱 |
+| JobRunTime |String |用來處理作業的執行階段 |
+| SubmitTime |String |作業提交時間 (UTC 格式) |
+| StartTime |String |作業在提交後開始執行的時間 (UTC 格式) |
+| EndTime |String |作業結束時間 |
+| 平行處理原則 |String |在提交期間為此作業要求的 Data Lake Analytics 單位數目 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime** 和 **Parallelism** 提供作業的相關資訊。 這些項目只會在作業啟動或完成時才包含值。 例如，**SubmitTime** 只會在 **operationName** 具有 **JobSubmitted** 值之後包含值。
 
 ## <a name="process-the-log-data"></a>處理記錄資料
 
-Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 找到範例。
+Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在 中找到示例。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)

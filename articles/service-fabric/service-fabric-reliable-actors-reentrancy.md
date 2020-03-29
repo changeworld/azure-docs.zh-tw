@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 執行者中的重新進入
-description: Service Fabric Reliable Actors 重新進入的簡介，這是一種以邏輯方式根據呼叫內容來避免封鎖的方法。
+title: Azure 服務結構參與者中的重入
+description: Service Fabric 可靠參與者的重入性介紹，這是一種基於調用上下文從邏輯上避免阻塞的方法。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645526"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 重新進入
