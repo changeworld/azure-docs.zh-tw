@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881705"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing 影像搜尋 API 的常見問題集 (FAQ)
@@ -37,7 +37,7 @@ ms.locfileid: "68881705"
 
 若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing 影像搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
 
-您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-image-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (如果尚未安裝)。 在命令提示字元中，輸入下列命令。
+您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-image-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
     npm install -g cors-proxy-server
 
@@ -61,7 +61,7 @@ ms.locfileid: "68881705"
 
 ## <a name="next-steps"></a>後續步驟
 
-您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [User Voice 網站上要求或對它投票](https://cognitive.uservoice.com/forums/555907-bing-search)。
+您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [User Voice 網站](https://cognitive.uservoice.com/forums/555907-bing-search)上要求或對它投票。
 
 ## <a name="see-also"></a>另請參閱
 

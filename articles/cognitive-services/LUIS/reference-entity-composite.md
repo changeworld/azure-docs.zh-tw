@@ -1,7 +1,7 @@
 ---
-title: 複合實體類型-LUIS
+title: 複合實體類型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
+description: 複合實體由其他實體組成，如預構建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695158"
 ---
 # <a name="composite-entity"></a>複合實體 
 
-複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。 
+複合實體由其他實體組成，如預構建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。 
 
-**此實體適用于資料：**
+**當資料有下列特性時，最適用此實體：**
 
 * 彼此相關。 
 * 在語句的內容中彼此相關。
@@ -33,15 +33,15 @@ ms.locfileid: "71695158"
 
 ## <a name="example-json"></a>範例 JSON
 
-請考慮預先建立 `number` 的複合實體，並使用下列語句 `Location::ToLocation`：
+考慮預構建`number`的複合實體，並`Location::ToLocation`具有以下話語：
 
 `book 2 tickets to cairo`
 
-請注意，數字 `2` 與 ToLocation `cairo` 之間有不屬於任何實體的單字。 [LUIS](luis-reference-regions.md) 網站中用於所標示語句的綠色底線表示複合實體。
+請注意，數字 `2` 與 ToLocation `cairo` 之間有不屬於任何實體的單字。 [LUIS](luis-reference-regions.md) 網站中用於所標記語句的綠色底線表示複合實體。
 
 ![複合實體](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 複合實體會在 `compositeEntities` 陣列中傳回，而複合項目內的所有實體則會一併在 `entities` 陣列中傳回：
 
@@ -89,9 +89,9 @@ ms.locfileid: "71695158"
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果在查詢字串中設定 `verbose=false`，這就是 JSON：
+如果在`verbose=false`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ ms.locfileid: "71695158"
 }
 ```
 
-如果在查詢字串中設定 `verbose=true`，這就是 JSON：
+如果在`verbose=true`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -175,8 +175,8 @@ ms.locfileid: "71695158"
 |資料物件|實體名稱|值|
 |--|--|--|
 |預先建置的實體 - number|"builtin.number"|"2"|
-|預先建立的實體-GeographyV2|"Location::ToLocation"|cairo|
+|預構建實體 - 地理V2|"Location::ToLocation"|"開羅"|
 
 ## <a name="next-steps"></a>後續步驟
 
-在本[教學](luis-tutorial-composite-entity.md)課程中，新增**複合實體**以將各種類型的已解壓縮資料組合成單一包含實體。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。
+在[本教程中](luis-tutorial-composite-entity.md)，添加一個**複合實體**，將各種類型的提取資料捆綁到單個包含實體中。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。

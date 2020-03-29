@@ -1,7 +1,7 @@
 ---
 title: 如何使用語音 SDK 選取音訊輸入裝置
 titleSuffix: Azure Cognitive Services
-description: 深入瞭解如何在語音 SDK （C++、 C#、Python、目標-C、JAVA、JavaScript）中選取音訊輸入裝置，方法是取得連接到系統的音訊裝置識別碼。
+description: 通過獲取連接到系統的音訊裝置的 CD，瞭解如何在語音 SDK（C++、C#、Python、Objective-C、JAVA、JavaScript）中選擇音訊輸入裝置。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74109970"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用語音 SDK 選取音訊輸入裝置
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：選擇帶有語音 SDK 的音訊輸入裝置
 
 語音 SDK 1.3.0 版導入了可選取音訊輸入的 API。 本文說明如何取得連線至系統之音訊裝置的識別碼。 隨後，您可以透過 `AudioConfig` 物件設定音訊裝置，以在語音 SDK 中使用這些識別碼：
 
@@ -50,7 +50,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Windows 桌面應用程式上的音訊裝置識別碼
 
-您可以從 Windows 桌面應用程式中的 [](/windows/desktop/CoreAudio/endpoint-id-strings)[ 物件擷取音訊裝置`IMMDevice`端點識別碼字串](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice)。
+您可以從 Windows 桌面應用程式中的 [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) 物件擷取音訊裝置[端點識別碼字串](/windows/desktop/CoreAudio/endpoint-id-strings)。
 
 下列程式碼範例說明如何用它在 C++ 中列舉音訊裝置：
 
@@ -175,7 +175,7 @@ namespace ConsoleApp
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 上的音訊裝置識別碼
 
-在通用 Windows 平台 (UWP) 上，可以使用對應 `Id()`[`DeviceInformation` 物件的 ](/uwp/api/windows.devices.enumeration.deviceinformation) 屬性來取得音訊輸入裝置。
+在通用 Windows 平臺 （UWP） 上，可以使用相應`Id()`[`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation)物件的屬性獲取音訊輸入裝置。
 
 下列程式碼範例說明如何在 C++ 和 C# 中執行此作業：
 
@@ -365,7 +365,7 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>iOS 上的音訊裝置識別碼
 
-iOS 不支援使用語音 SDK 選取音訊裝置的功能。 不過，使用 SDK 的應用程式可透過 [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework 來影響音訊路由。
+iOS 不支援使用語音 SDK 選取音訊裝置的功能。 但是，使用 SDK 的應用可能會影響通過框架的[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)音訊路由。
 
 例如，指令
 

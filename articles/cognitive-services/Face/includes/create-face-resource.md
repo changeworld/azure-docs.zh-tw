@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3886777b283af35e84683480a59097584b537fea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522508"
 ---
-## <a name="create-an-face-resource"></a>建立臉部資源
+## <a name="create-an-face-resource"></a>創建面資源
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 按一下 [[建立**臉部**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)資源]
-1. 輸入所有必要的設定：
+1. 登錄到[Azure 門戶](https://portal.azure.com)
+1. 按一下["創建**面"**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)資源
+1. 輸入所有必需的設置：
 
     |設定|值|
     |--|--|
-    |名稱|想要的名稱（2-64 個字元）|
+    |名稱|所需的名稱 (2-64 個字元)|
     |訂用帳戶|選取適當的訂用帳戶|
-    |位置|選取任何附近和可用的位置|
-    |定價層|`F0`-最低定價層|
+    |Location|選取任何附近和可用的位置|
+    |定價層|`F0` - 最低定價層|
     |資源群組|選取可用的資源群組|
 
-1. 按一下 [**建立**] 並等候資源建立。 建立之後，流覽至 [資源] 頁面
-1. 收集已設定的 `endpoint` 和 API 金鑰：
+1. 按一下 [建立]****，並等待系統建立資源。 創建後，導航到資源頁
+1. 收集已`endpoint`配置的 API 金鑰：
 
-    |入口網站的 [資源] 索引標籤|設定|值|
+    |門戶中的資源選項卡|設定|值|
     |--|--|--|
-    |**概觀**|端點|複製端點。 看起來類似 `https://face.cognitiveservices.azure.com/face/v1.0`|
-    |**金鑰**|API 金鑰|複製這兩個金鑰的1。 它是32英數位元字串，不含空格或連字號，`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
+    |**概觀**|端點|複製終結點。 它看起來類似于`https://face.cognitiveservices.azure.com/face/v1.0`|
+    |**鑰匙**|API 金鑰|複製兩個鍵中的 1 個。 它是一個 32 個字母數位字元字串，沒有空格或破折`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`號。|

@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: dapine
 ms.openlocfilehash: ceb062cc5272fae0030c331ad7c9c6c870763df7
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74829165"
 ---
 > [!NOTE]
-> 測試時，系統會執行轉譯。 這一點很重要，因為每個服務供應專案和訂用帳戶層級的價格各不相同。 請一律參閱官方 Azure 認知服務定價-語音服務，以取得[最新的詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)。
+> 測試時，系統將執行轉錄。 請務必記住，因為定價因服務供應和訂閱級別而異。 有關[最新詳情](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)，請務必參考官方的 Azure 認知服務定價 - 語音服務。

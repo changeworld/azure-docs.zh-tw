@@ -1,7 +1,7 @@
 ---
-title: 聲場專案外掛程式的已知問題
+title: 專案聲學外掛程式已知問題
 titlesuffix: Azure Cognitive Services
-description: 在聲場專案中，您可能會遇到下列已知問題。
+description: 在"專案聲學"中，您可能會遇到以下已知問題。
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,36 +12,36 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: b71b93f271608d946d964f70dae9eefbef77e87b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243030"
 ---
-# <a name="project-acoustics-known-issues"></a>聲場專案的已知問題
-本文說明當您使用聲場專案時可能會遇到的問題。
+# <a name="project-acoustics-known-issues"></a>專案聲學已知問題
+本文介紹了在使用"專案聲學"時可能會遇到的問題。
 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>將場景重新命名時遺失聲場參數
 
-如果您重新命名場景，所有屬於該場景的聲場參數都不會自動傳送至新場景。 但它們仍然存在於舊的資產檔案中。 在您場景檔案旁的*編輯器*目錄中，尋找 *[SceneName] _AcousticParameters 資產*檔案。 將檔案重新命名，以反映新的場景名稱。
+如果重命名場景，則屬於該場景的所有聲學參數不會自動傳輸到新場景。 但它們仍然存在於舊資產檔中。 在場景檔旁邊的*編輯器*目錄中查找 *[SceneName] _AcousticParameters.資產*檔。 重命名檔以反映新的場景名稱。
 
-## <a name="deploy-to-android-bug-from-some-unity-versions"></a>從部分 Unity 版本部署至 Android 的 bug
+## <a name="deploy-to-android-bug-from-some-unity-versions"></a>從某些 Unity 版本部署到安卓錯誤
 
-某些版本的 Unity 在將音訊外掛程式部署至 Android 方面有[bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) 。 請確定您不是使用受此錯誤影響的版本。
+Unity 的某些版本在如何將音訊外掛程式部署到 Android 方面存在[漏洞](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)。 請確保您沒有使用受此 Bug 影響的版本。
 
-## <a name="could-not-find-metadata-file-systemsecuritydll-error"></a>「找不到元資料檔案系統。安全性 .dll」錯誤
+## <a name="could-not-find-metadata-file-systemsecuritydll-error"></a>"找不到元資料檔案系統.安全.dll"錯誤
 
-請確定**Player**設定中的**腳本執行階段版本**是 .net 4.x 對*等*的，然後重新開機 Unity。
+請確保**播放機**設置中的**腳本執行階段版本**為 *.NET 4.x 等效*版本，然後重新開機 Unity。
 
-## <a name="authentication-problems-when-connecting-to-azure"></a>連接到 Azure 時的驗證問題
+## <a name="authentication-problems-when-connecting-to-azure"></a>連接到 Azure 時的身份驗證問題
 
-檢查：
-- 您已使用正確的 Azure 帳號憑證。
-- 您的帳戶支援您在製作中要求的節點類型。
-- 已正確設定您的系統時鐘。
+請檢查︰
+- 對於 Azure 帳戶，您使用了正確的憑據。
+- 您的帳戶支援您在烘焙中請求的節點類型。
+- 系統時鐘設置正確。
 
-## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>取消之後，[製作] 索引標籤仍會顯示 [刪除]
-聲場專案在成功完成或取消之後，清除作業的所有 Azure 資源。 此程式最多可能需要5分鐘的時間。
+## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>取消後，"烘焙"選項卡仍顯示"刪除"
+專案聲學在成功完成或取消後清理作業的所有 Azure 資源。 此過程最多可能需要 5 分鐘。
 
 ## <a name="next-steps"></a>後續步驟
-* 嘗試[Unity](unity-quickstart.md)或[Unreal](unreal-quickstart.md)範例內容。
+* 嘗試[統一](unity-quickstart.md)或[虛幻](unreal-quickstart.md)示例內容。

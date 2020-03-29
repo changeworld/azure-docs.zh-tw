@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60547331"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing 自動建議 API 支援的語言和區域
@@ -30,7 +30,7 @@ ms.locfileid: "60547331"
 | 丹麥文      | `da`          |
 | 荷蘭文 (比利時)       | `nl-BE`          |
 | 荷蘭文 (荷蘭)      | `nl-NL`          |
-| 英文 (澳洲)    | `en-AU`          |
+| 英文 (澳大利亞)    | `en-AU`          |
 | 英文 (加拿大)     | `en-CA`          |
 | 英文 (印度)    | `en-IN`          |
 | 英文 (印尼)     | `en-ID`          |
@@ -64,7 +64,7 @@ ms.locfileid: "60547331"
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure 認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure 認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

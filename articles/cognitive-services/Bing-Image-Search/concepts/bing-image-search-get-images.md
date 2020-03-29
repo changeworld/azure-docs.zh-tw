@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542771"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>使用 Bing 影像搜尋 API 從 Web 取得影像
@@ -31,7 +31,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-使用[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query)查詢參數，您的 url 編碼的搜尋字詞。 例如，如果您輸入 *sailing dinghies*，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
+對 URL 編碼的搜索詞使用[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query)查詢參數。 例如，如果您輸入 *sailing dinghies*，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 > [!IMPORTANT]
 > * 所有要求都必須是從伺服器進行，不能從用戶端進行。
@@ -52,14 +52,14 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
  根據預設，影像搜尋 API 會傳回與查詢相關的所有影像。 如果您想要篩選 Bing 所傳回的影像 (例如，只傳回具有透明背景或特定大小的影像)，請使用下列查詢參數：
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)：依照外觀比例篩選影像 (例如，標準或寬螢幕影像)。
-* [color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)：依照主色或黑白篩選影像。
-* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)：依照存在時間篩選影像 (例如，Bing 在過去一週中探索的影像)。
-* [height](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[width](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)：依照寬度和高度篩選影像。
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)：依照內容篩選影像 (例如只顯示人臉的影像)。
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)：依照類型篩選影像 (例如，美工圖案、動畫 GIF 或透明背景)。
-* [license](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)：依照與網站相關聯的授權類型篩選影像。
-* [size](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)：依照大小篩選影像，例如最大 200 x 200 像素的小型影像。
+* [方面面](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)= 按縱橫比篩選圖像（例如，標準或寬螢幕圖像）。
+* [顏色](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)= 按主導顏色或黑白篩選圖像。
+* [新鮮度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)– 按年齡篩選圖像（例如，必應在過去一周發現的圖像）。
+* [高度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[寬度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)=按寬度和高度篩選圖像。
+* [圖像內容](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)— 按內容篩選圖像（例如，僅顯示人臉的圖像）。
+* [圖像類型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)– 按類型篩選圖像（例如，剪貼畫、動畫 GIF 或透明背景）。
+* [許可證](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)=按與網站關聯的許可證類型篩選圖像。
+* [大小](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)= 按大小篩選圖像，例如高達 200x200 圖元的小圖像。
 
 若要從特定網域取得影像，請使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查詢運算子。
 
@@ -80,7 +80,7 @@ Host: api.cognitive.microsoft.com
 
 > [!NOTE]
 > * 影像必須以回應中提供的順序來顯示。
-> * 因為 URL 格式和參數有變更恕不另行通知，請使用所有的 Url，做為是。 您不應該相依於 URL 格式或除了註明的參數。
+> * 因為 URL 格式和參數可隨時變更而不會另行通知，因此請依原狀使用所有 URL。 除非有註明，否則請勿相依於 URL 格式或參數。
 
 ```json
 {

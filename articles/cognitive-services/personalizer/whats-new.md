@@ -1,7 +1,7 @@
 ---
-title: 新功能-個人化工具
+title: 新增功能 - 個人化
 titleSuffix: Azure Cognitive Services
-description: 本文包含個人化工具的相關新聞。
+description: 本文包含有關個人化程式的新聞。
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -10,41 +10,45 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1ec0c83655574cb09724bcf97be19519e1f6d72f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 450328fecde3be0ee0cead174c9d172bf3ac1000
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155965"
 ---
-# <a name="whats-new-in-personalizer"></a>個人化工具的新功能
+# <a name="whats-new-in-personalizer"></a>個人化器的新增功能
 
-瞭解服務的新功能。 這些專案可能包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。  
+了解該服務的新功能。 這些專案可能包括版本資訊、視頻、博客文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。  
 
 ## <a name="release-notes"></a>版本資訊 
 
-### <a name="november-2019---ignite-conference"></a>2019年11月-Ignite 會議
+### <a name="march-2020"></a>2020 年 3 月
 
-* 個人化工具已正式推出（GA）
-* 包含整個生命週期的 Azure Notebooks[教學](tutorial-use-azure-notebook-generate-loop-data.md)課程
+* TLS 1.2 現在對對此服務的所有 HTTP 要求強制執行。 有關詳細資訊，請參閱[Azure 認知服務安全性](../cognitive-services-security.md)。
 
-### <a name="may-6-2019---build-conference"></a>5月6日，2019-build 會議
+### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - 點火會議
 
-下列預覽功能已于 Build 2019 會議發行：
+* 個人化服務一般可用 （GA）
+* Azure 筆記本[教程](tutorial-use-azure-notebook-generate-loop-data.md)，包含整個生命週期
+
+### <a name="may-2019---build-conference"></a>2019 年 5 月 - //構建會議
+
+以下預覽功能在生成 2019 會議上發佈：
 
 * [排名和獎勵學習迴圈](what-is-personalizer.md)
 
 ## <a name="videos"></a>影片
 
-### <a name="2019-build-videos"></a>2019組建影片
+### <a name="2019-build-videos"></a>2019 構建視頻
 
-* [使用認知服務個人化工具的 Xbox & 內容提供適當的體驗](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [使用認知服務個人化器提供 Xbox &內容等正確體驗](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
 
 ## <a name="service-updates"></a>服務更新
 
-[適用于認知服務的 Azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)
+[認知服務的 Azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：在中建立意見反應迴圈C#](csharp-quickstart-commandline-feedback-loop.md)
+* [快速入門：在 C 中創建回饋迴圈#](csharp-quickstart-commandline-feedback-loop.md)
 * [使用互動式示範](https://personalizationdemo.azurewebsites.net/)

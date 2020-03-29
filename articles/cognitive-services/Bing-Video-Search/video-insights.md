@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500602"
 ---
 # <a name="get-insights-about-a-video"></a>取得影片深入解析
@@ -97,5 +97,5 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [搜尋趨勢影片](trending-videos.md)
+> [搜索熱門視頻](trending-videos.md)
 

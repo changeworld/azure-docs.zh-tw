@@ -1,5 +1,5 @@
 ---
-title: 地理 V2 預建實體-LUIS
+title: 地理 V2 預建實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 此文章包含 Language Understanding (LUIS) 中的 geographyV2 預建實體資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273500"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 GeographyV2 預先建置實體
@@ -35,13 +35,13 @@ ms.locfileid: "78273500"
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 實體解析
 
-系統會針對查詢傳回下列實體物件：
+為查詢返回以下實體物件：
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 會將 `verbose` 參數設定為 `false`：
+以下 JSON 的`verbose`參數設置為`false`：
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ ms.locfileid: "78273500"
 }
 ```
 
-在前面的 JSON 中，`poi` 是**感興趣點**的縮寫。
+在前面的 JSON`poi`中，是**興趣點的**縮寫。
 
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
-下列 JSON 會將 `verbose` 參數設定為 `true`：
+以下 JSON 的`verbose`參數設置為`true`：
 
 ```json
 "entities": {

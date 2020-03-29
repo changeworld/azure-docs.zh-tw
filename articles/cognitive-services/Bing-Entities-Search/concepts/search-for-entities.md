@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221387"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用 Bing 實體 API 搜尋實體
@@ -42,7 +42,7 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 > [!NOTE]
 > 實體回應支援多個市場，但地點回應支援僅美國公司地點。 
 
-`entities` 欄位是包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件清單的 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) 物件 (請參閱 `value` 欄位)。 此清單可能包含單一主控實體、多個去除混淆實體或兩者。 
+`entities` 欄位是包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) 物件清單的 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (請參閱 `value` 欄位)。 此清單可能包含單一主控實體、多個去除混淆實體或兩者。 
 
 當 Bing 認定有符合要求的唯一實體時 (確知哪個實體符合要求，沒有模稜兩可的情況)，就會傳回主控實體。 若可能有多個實體符合要求，清單會包含多個去除混淆實體。 例如，若要求使用電影系列的通用標題，清單可能會包含去除混淆實體。 但若要求指定系列中的特定標題，清單可能會包含單一主控實體。
 
@@ -174,7 +174,7 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 
 ## <a name="find-places"></a>尋找地點
 
-`places` 欄位是包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件清單的 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) 物件 (如需詳細資訊，請參閱 [實體類型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) 欄位)。 清單包含一或多個符合要求的本地實體。
+`places` 欄位是包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) 物件清單的 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (如需詳細資訊，請參閱 [實體類型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) 欄位)。 清單包含一或多個符合要求的本地實體。
 
 地點包含餐廳、旅館或本地商家。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 欄位包含識別本地實體類型的提示。 清單包含地點、本地商家、餐廳等提示清單。 陣列中的每個後續提示都會縮小實體的類型。 如需可能類型的清單，請參閱 [Entity Types](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) (實體類型)
 
@@ -189,7 +189,7 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 > [!NOTE]
 > 實體回應支援多個市場，但地點回應支援僅美國公司地點。 
 
-本地感知實體查詢 (例如「我附近的餐廳」) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 `askUserForLocation`QueryContext[ 的 ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 欄位設定為 **true**。 
+本地感知實體查詢 (例如「我附近的餐廳」**) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 欄位設定為 **true**。 
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: 映射類型偵測-電腦視覺
+title: 圖像類型檢測 - 電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 電腦視覺 API 的影像類別偵測功能相關概念。
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e89fd977129113fa88af1acccd6b05f0bbe90243
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244557"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用電腦視覺偵測影像類型
 
-使用[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API, 電腦視覺可以分析影像的內容類型, 指出影像是否為美工圖案或線條繪圖。
+使用[分析圖像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API，電腦視覺可以分析圖像的內容類型，指示圖像是剪貼畫還是線條圖。
 
 ## <a name="detecting-clip-art"></a>偵測美工圖案
 
@@ -113,6 +113,9 @@ ms.locfileid: "68945219"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="use-the-api"></a>使用 API
 
-若要瞭解如何偵測映射類型, 請參閱[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)參考檔。
+圖像類型檢測功能是[分析圖像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包括在`ImageType`**視覺化功能**查詢參數中。 然後，當您獲得完整的 JSON 回應時，只需分析節的內容的`"imageType"`字串。
+
+* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入門：分析圖像（REST API）](./quickstarts/csharp-analyze.md)

@@ -1,7 +1,7 @@
 ---
-title: 傳回 N-最佳翻譯-翻譯工具文字
+title: 返回 N- 最佳翻譯 - 翻譯文本
 titleSuffix: Azure Cognitive Services
-description: 使用翻譯工具文字 API 傳回 N 個最佳的翻譯。
+description: 使用翻譯人員文本 API 返回 N- 最佳翻譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837250"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何傳回前 N 名最佳翻譯
@@ -39,16 +39,16 @@ Microsoft Translator API 的 GetTranslations() 和 GetTranslationsArray() 方法
 | 參數 | 描述 |
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
-| 文字 | **必要** 一個代表所要翻譯文字的字串。 文字大小不得超過 10000 個字元。|
+| text | **必要** 一個代表所要翻譯文字的字串。 文字大小不得超過 10000 個字元。|
 | 從 | **必要** 一個代表所要翻要文字之語言代碼的字串。 |
-| 收件人 | **必要** 一個代表文字之目標翻譯語言代碼的字串。 |
+| to | **必要** 一個代表文字之目標翻譯語言代碼的字串。 |
 | maxTranslations | **必要** 一個代表要傳回之翻譯數目上限的整數。 |
-| options | **選擇性** 一個包含下列值的 TranslateOptions 物件。 它們都是選擇性項目，且預設為最常見設定。
+| 選項 | **選擇性** 一個包含下列值的 TranslateOptions 物件。 它們都是選擇性項目，且預設為最常見設定。
 
 * Category：唯一支援且為預設值的選項是 "general"。
 * ContentType：唯一支援且為預設值的選項是 "text/plain"。
 * State：協助將要求與回應相互關聯的使用者狀態。 將在回應中傳回相同的內容。
-* IncludeMultipleMTAlternatives：用以決定是否要從 MT 引擎傳回多個替代項目的旗標。 預設為 false，而且只包含 1 個替代項目。
+* IncludeMultipleMTAlternatives：用以決定是否要從 MT 引擎傳回多個替代項目的旗標。 預設值為 false，因此只會包含 1 個替代項目。
 
 ## <a name="ratings"></a>評等
 評分套用如下：最佳自動翻譯的評分為 5。

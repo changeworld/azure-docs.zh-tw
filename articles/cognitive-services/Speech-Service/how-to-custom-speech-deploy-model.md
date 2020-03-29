@@ -1,7 +1,7 @@
 ---
-title: 部署自訂語音語音服務的模型
+title: 為自訂語音 - 語音服務部署模型
 titleSuffix: Azure Cognitive Services
-description: 在本檔中，您將瞭解如何使用自訂語音入口網站來建立和部署端點。
+description: 在本文檔中，您將瞭解如何使用自訂語音門戶創建和部署終結點。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806108"
 ---
 # <a name="deploy-a-custom-model"></a>部署自訂模型
 
-在您上傳和檢查資料、評估精確度，以及定型自訂模型之後，您可以部署自訂端點，以與您的應用程式、工具和產品搭配使用。 在本檔中，您將瞭解如何使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)來建立和部署端點。
+上傳和檢查資料、評估準確性並訓練自訂模型後，可以部署自訂終結點以與應用、工具和產品一起使用。 在本文檔中，您將學習如何使用[自訂語音門戶](https://speech.microsoft.com/customspeech)創建和部署終結點。
 
-## <a name="create-a-custom-endpoint"></a>建立自訂端點
+## <a name="create-a-custom-endpoint"></a>創建自訂終結點
 
-若要建立新的自訂端點，請登入[自訂語音入口網站](https://speech.microsoft.com/customspeech)，然後從頁面頂端的 [自訂語音] 功能表中選取 [**部署**]。 如果這是您第一次執行，您會發現資料表中沒有列出任何端點。 建立端點之後，您將使用此頁面來追蹤每個已部署的端點。
+要創建新的自訂終結點，請登錄到["自訂語音"門戶](https://speech.microsoft.com/customspeech)，然後從頁面頂部的"自訂語音"功能表中選擇 **"部署**"。 如果這是您第一次運行，您會注意到表中未列出終結點。 創建終結點後，將使用此頁跟蹤每個已部署的終結點。
 
-接下來，選取 [**新增端點**]，然後輸入自訂端點的**名稱**和**描述**。 然後選取您想要與此端點產生關聯的自訂模型。 在此頁面中，您也可以啟用記錄功能。 記錄可讓您監視端點流量。 若已停用，則不會儲存流量。
+接下來，選擇 **"添加終結點**"並輸入自訂終結點**的名稱**和**說明**。 然後選擇要與此終結點關聯的自訂模型。 在此頁面中，您還可以啟用日誌記錄。 日誌記錄允許您監視終結點流量。 如果禁用，將不會存儲流量。
 
 ![如何部署模型](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> 別忘了接受使用條款和定價詳細資料。
+> 不要忘記接受使用條款和定價詳細資訊。
 
-接下來，選取 [建立]。 此動作會將您返回 [**部署**] 頁面。 資料表現在包含一個對應至您自訂端點的專案。 端點的狀態會顯示其目前的狀態。 最多可能需要30分鐘的時間，才能使用您的自訂模型來具現化新端點。 當部署的狀態變更為 [**完成**] 時，端點就可供使用。
+接下來，選取 [建立]****。 此操作將返回到 **"部署"** 頁。 該表現在包含一個對應于自訂終結點的條目。 終結點的狀態顯示其目前狀態。 使用自訂模型具現化新終結點最多可能需要 30 分鐘。 當部署的狀態更改為 **"完成"** 時，終結點已準備就緒，可以使用。
 
-部署端點之後，端點名稱會顯示為連結。 按一下連結以顯示端點的特定資訊，例如端點金鑰、端點 URL 和範例程式碼。
+部署終結點後，終結點名稱將顯示為連結。 按一下連結可顯示特定于終結點的資訊，例如終結點金鑰、終結點 URL 和示例代碼。
 
-## <a name="view-logging-data"></a>查看記錄資料
+## <a name="view-logging-data"></a>查看日誌記錄資料
 
-您可以在 [**端點 > 詳細**資料] 底下下載記錄資料。
+日誌記錄資料可在 **"端點>詳細資訊**"下下載。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 搭配使用您的自訂端點與[語音 SDK](speech-sdk.md)
+* 將自訂終結點與語音[SDK](speech-sdk.md)一起使用
 
 ## <a name="additional-resources"></a>其他資源
 
-* [準備和測試您的資料](how-to-custom-speech-test-data.md)
-* [檢查您的資料](how-to-custom-speech-inspect-data.md)
+* [準備和測試資料](how-to-custom-speech-test-data.md)
+* [檢查資料](how-to-custom-speech-inspect-data.md)
 * [評估您的資料](how-to-custom-speech-evaluate-data.md)
-* [訓練您的模型](how-to-custom-speech-train-model.md)
-* [部署您的模型](how-to-custom-speech-deploy-model.md)
+* [定型模型](how-to-custom-speech-train-model.md)
+* [部署模型](how-to-custom-speech-deploy-model.md)

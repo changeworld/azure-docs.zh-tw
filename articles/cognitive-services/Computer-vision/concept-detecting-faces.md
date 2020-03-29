@@ -1,7 +1,7 @@
 ---
-title: 臉部偵測-電腦視覺
+title: 人臉檢測 - 電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 瞭解電腦視覺 API 的臉部偵測功能相關概念。
+description: 瞭解與電腦視覺 API 的人臉檢測功能相關的概念。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945238"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244694"
 ---
 # <a name="face-detection-with-computer-vision"></a>使用電腦視覺的物件偵測
 
@@ -111,6 +111,9 @@ ms.locfileid: "68945238"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="use-the-api"></a>使用 API
 
-如需使用臉部偵測功能之方式的詳細資訊，請參閱[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)參考文件。
+人臉檢測功能是[分析圖像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包括在`Faces`**視覺化功能**查詢參數中。 然後，當您獲得完整的 JSON 回應時，只需分析節的內容的`"faces"`字串。
+
+* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入門：分析圖像（REST API）](./quickstarts/csharp-analyze.md)

@@ -1,7 +1,7 @@
 ---
 title: 共用自訂搜尋 - Bing 自訂搜尋
 titleSuffix: Azure Cognitive Services
-description: 與小組成員共用，輕鬆地讓您的實例共同編輯和測試。
+description: 通過與團隊成員共用實例，輕鬆允許協作編輯和測試實例。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072704"
 ---
 # <a name="share-your-custom-search-instance"></a>共用您的自訂搜尋執行個體
@@ -24,9 +24,9 @@ ms.locfileid: "74072704"
 - 登入[自訂搜尋](https://customsearch.ai) \(英文\)
 - 選取自訂搜尋執行個體
 - 按一下設定圖示 (顯示為齒輪)。 
-- 在 [共用您的執行個體] 下，輸入要與其共用執行個體之共用對象的電子郵件地址，然後按一下 [共用]。 
+- 在 [共用您的執行個體]**** 下，輸入要與其共用執行個體之共用對象的電子郵件地址，然後按一下 [共用]****。 
 
-新增電子郵件地址之後，它會新增至 [共用執行個體的對象] 清單。 針對要與其共用執行個體的每個共用對象都重複執行此程序。 
+新增電子郵件地址之後，它會新增至 [共用執行個體的對象]**** 清單。 針對要與其共用執行個體的每個共用對象都重複執行此程序。 
 
 若要將某個人的電子郵件新增至清單中，他們並不需要自訂搜尋帳戶。 他們必須先註冊自訂搜尋，然後才能進行設定變更。 在您與他人共用執行個體之後，他們將會在其自訂搜尋執行個體清單中看到該執行個體。 同一時間只有一個人可修改執行個體。 如果您嘗試修改其他人正在編輯的執行個體，則會顯示警告。 一個執行個體最多可由 10 個使用者共用。
 

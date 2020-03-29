@@ -1,7 +1,7 @@
 ---
-title: 聲場專案製作解決方案
+title: 專案聲學烘焙解析度
 titlesuffix: Azure Cognitive Services
-description: 此概念總覽說明烘焙聲場時的粗略與精細解析度之間的差異。
+description: 此概念概述描述了烘焙聲學時粗解析度和精細解析度之間的區別。
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,24 +12,24 @@ ms.date: 04/05/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854356"
 ---
-# <a name="project-acoustics-bake-resolution"></a>聲場專案製作解決方案
-此概念總覽說明烘焙聲場時的粗略與精細解析度之間的差異。 您可以在烘焙工作流程的探查步驟期間選擇此設定。
+# <a name="project-acoustics-bake-resolution"></a>專案聲學烘焙解析度
+此概念概述描述了烘焙聲學時粗解析度和精細解析度之間的區別。 在烘焙工作流的"探測"步驟中選擇此設置。
 
-## <a name="Coarse-vs-Fine-Resolution"></a>粗略與精細解析度的比較
+## <a name="coarse-vs-fine-resolution"></a><a name="Coarse-vs-Fine-Resolution"></a>粗糙與精細解析度
 
-[Coarse] \(粗略\) 和 [Fine] \(精細\) 解析度設定之間的唯一差異在於模擬的執行頻率。 [Fine] \(精細\) 所使用的頻率為 [Coarse] \(粗略\) 的兩倍。 這對聲場模擬有一些含意:
+[Coarse] \(粗略\) 和 [Fine] \(精細\) 解析度設定之間的唯一差異在於模擬的執行頻率。 [Fine] \(精細\) 所使用的頻率為 [Coarse] \(粗略\) 的兩倍。 這對聲學模擬具有許多影響：
 
 * [Coarse] \(粗略\) 的波長為 [Fine] \(精細\) 的兩倍，因此體素是兩倍大。
 * 由於聲場模擬時間與體素大小直接相關，因此 [Coarse] \(粗略\) 模擬比 [Fine] \(精細\) 模擬快 16 倍。
-* 不能模擬小於體素大小的入口網站 (例如, 門或 windows)。 粗略的設定可能會導致某些較小的入口網站無法模擬;因此, 它們不會在執行時間傳遞音效。 您可以檢視體素來查看是否會發生這種情況。
+* 無法類比小於體素大小的門戶（例如，門或窗）。 粗糙設置可能會導致某些較小的門戶不被類比;因此，如果設置粗糙，則可能導致某些較小的門戶被類比。因此，它們不會在運行時傳遞聲音。 您可以檢視體素來查看是否會發生這種情況。
 * 模擬頻率越低，在角落和邊緣周圍產生的繞射就越少。
-* 聲音來源不能位於「已填滿」的體素內 (也就是包含幾何的體素)。 這會導致無音效。 較難以放置音效來源, 因此它們不會在較大的體素範圍內, 而不是使用 [微調] 設定。
+* 聲源不能位於"填充"體素（即包含幾何體的體素）內。 這會導致沒有聲音。 放置聲源比使用精細設置時不在較大的粗體內更難放置聲音源。
 * 較大的體素侵入門戶的部分也較大，如下所示。 第一張圖是使用 [Coarse] \(粗略\) 解析度來建立的，第二張圖是相同的門口，但使用 [Fine] \(精細\) 解析度。 如紅色標記所示，使用 [Fine] \(精細\) 設定時，侵入門口的程度較小。 藍線是幾何所定義的門口，紅線則是體素大小所定義的有效聲場門戶。 此入侵狀況在指定的情況下會如何表現，完全取決於體素與門戶幾何的對齊方式，而這又取決於場景中物件的大小和位置。
 
 ![Unreal 中填滿門口的粗略體素螢幕擷取畫面](media/unreal-coarse-bake.png)
@@ -38,4 +38,4 @@ ms.locfileid: "68854356"
 
 ## <a name="next-steps"></a>後續步驟
 
-使用我們的[Unreal](unreal-baking.md)或[Unity](unity-baking.md)外掛程式, 自行嘗試粗略且精細的解決設定。
+使用我們的[虛幻](unreal-baking.md)或[Unity](unity-baking.md)外掛程式自行試用粗糙和精細的解析度設置。

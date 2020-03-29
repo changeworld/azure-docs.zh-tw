@@ -1,5 +1,5 @@
 ---
-title: 自訂及建議的影像搜尋查詢 Bing 影像搜尋 API
+title: 自訂和建議圖像搜索查詢 - 必應圖像搜索 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何自訂傳送至 Bing 影像搜尋 API 的搜尋查詢。
 services: cognitive-services
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542747"
 ---
-# <a name="customize-and-suggest-image-search-queries"></a>自訂及建議的影像搜尋查詢
+# <a name="customize-and-suggest-image-search-queries"></a>自訂和建議圖像搜索查詢
 
-您可以使用本文來了解如何自訂查詢，並建議將傳送至 Bing 影像搜尋 API 的搜尋詞彙。
+使用本文瞭解如何自訂查詢，並建議將搜索詞發送到必應圖像搜索 API。
 
-## <a name="suggest-search-terms"></a>建議的搜尋詞彙
+## <a name="suggest-search-terms"></a>建議搜索詞
 
 如果您的應用程式有用來輸入搜尋字詞的搜尋方塊，您可以使用[Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善體驗。 API 會即時顯示建議的搜尋字詞。 API 會根據部分搜尋字詞和認知服務，傳回建議的查詢字串。
 
 ## <a name="pivot-the-query"></a>樞紐分析查詢
 
-如果 Bing 可以分割原始搜尋查詢，則傳回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `pivotSuggestions` 欄位。 樞紐分析建議能以選用搜尋字詞的形式向使用者呈現。 例如，如果原始查詢為 Microsoft Surface  ，則 Bing 可能會將查詢分割為 Microsoft  和 Surface  ，並提供每個字詞的建議樞紐。 這些建議能以選用查詢自詞的形式向使用者呈現。
+如果 Bing 可以分割原始搜尋查詢，則傳回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `pivotSuggestions` 欄位。 樞紐分析建議能以選用搜尋字詞的形式向使用者呈現。 例如，如果原始查詢為 Microsoft Surface**，則 Bing 可能會將查詢分割為 Microsoft** 和 Surface**，並提供每個字詞的建議樞紐。 這些建議能以選用查詢自詞的形式向使用者呈現。
 
-下列範例示範 Microsoft Surface  的樞紐建議：  
+下列範例示範 Microsoft Surface** 的樞紐建議：  
 
 ```json
 {

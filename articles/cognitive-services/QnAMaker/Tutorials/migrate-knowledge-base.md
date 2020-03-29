@@ -1,26 +1,24 @@
 ---
 title: 遷移知識庫 - Qna Maker
-titleSuffix: Azure Cognitive Services
 description: 遷移知識庫必須先從某個知識庫匯出，再匯入至另一個知識庫。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/25/2020
+ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302554"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258085"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用匯出-匯入移轉知識庫
 
-遷移知識庫必須先從某個知識庫匯出，再匯入至另一個知識庫。
+遷移是從現有知識庫創建新知識庫的過程。 這樣做可能有幾個原因：
+
+* 備份和恢復過程
+* CI/CD 管道
+* 移動區域
+
+遷移知識庫需要從現有知識庫匯出，然後導入到另一個知識庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -29,29 +27,43 @@ ms.locfileid: "78302554"
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>從 QnA Maker 遷移知識庫
 1. 登入 [QnA Maker 入口網站](https://qnamaker.ai)。
-1. 選取您想要遷移的來源知識庫。
+1. 選擇要遷移的原點知識庫。
 
-1. 在 [**設定**] 頁面上，選取 [**匯出知識庫**] 以下載 tsv 檔案，其中包含您的來源知識庫內容-問題、解答、中繼資料、後續提示，以及從中解壓縮它們的資料來源名稱。
+1. 在 **"設置"** 頁上，選擇 **"匯出知識庫**"以下載包含源知識庫內容的 .tsv 檔 - 問題、答案、中繼資料、後續提示以及從中提取它們的資料來源名稱。
 
-1. 從頂端功能表中選取 [**建立知識庫**]，然後建立_空白_的知識庫。 它是空的，因為當您建立它時，不會新增任何 Url 或檔案。 這些會在建立後於匯入步驟期間新增。
+1. 選擇從頂部功能表**創建知識庫**，然後創建_空_知識庫。 它是空的，因為當您創建它時，您不打算添加任何 URL 或檔。 這些在導入步驟期間在創建後添加。
 
-    設定知識庫。 僅設定新的知識庫名稱。 重複的名稱和特殊字元均受支援。
+    配置知識庫。 僅設置新的知識庫名稱。 重複的名稱和特殊字元均受支援。
 
-    請勿選取步驟4中的任何專案，因為當您匯入檔案時，將會覆寫這些值。
+    不要從步驟 4 中選擇任何內容，因為導入檔時這些值將被覆蓋。
 
-1. 在步驟5中，選取 [**建立**]。
+1. 在步驟 5 中，選擇 **"創建**"。
 
-1. 在這個新知識庫中，開啟 [設定] 索引標籤，然後選取 [匯入知識庫]。 這會匯入問題、解答、中繼資料、後續提示，並保留從中解壓縮的資料來源名稱。
+1. 在這個新知識庫中，開啟 [設定]**** 索引標籤，然後選取 [匯入知識庫]****。 這將導入問題、答案、中繼資料、後續提示，並保留從中提取這些問題的資料來源名稱。
 
    > [!div class="mx-imgBorder"]
    > [![匯入知識庫](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. 使用 [測試] 面板來 [測試] 新知識庫。 了解如何[測試知識庫](../How-To/test-knowledge-base.md)。
+1. 使用 [測試] 面板來 [測試]**** 新知識庫。 了解如何[測試知識庫](../How-To/test-knowledge-base.md)。
 
-1. **發佈**知識庫並建立聊天機器人。 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
+1. **發佈**知識庫並創建聊天機器人。 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
+
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>以程式設計方式從 QnA 製造商遷移知識庫
+
+遷移過程使用以下 REST API 以程式設計方式可用：
+
+**匯出**
+
+* [下載知識庫 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+
+[匯入]****
+
+* [替換 API（使用相同的知識庫 ID 重新載入）](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [創建 API（使用新的知識庫 ID 載入）](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+
 
 ## <a name="chat-logs-and-alterations"></a>聊天記錄和變動
-不會自動匯入不區分大小寫的變異形式 (同義字)。 您可以使用[V4 api](https://go.microsoft.com/fwlink/?linkid=2092179) ，在新的知識庫中移動變更。
+不會自動匯入不區分大小寫的變異形式 (同義字)。 使用[V4 API](https://go.microsoft.com/fwlink/?linkid=2092179)在新知識庫中移動更改。
 
 沒有任何方法可移轉聊天記錄，因為新的知識庫會使用 Application Insights 來儲存聊天記錄。
 

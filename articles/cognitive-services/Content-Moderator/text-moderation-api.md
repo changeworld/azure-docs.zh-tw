@@ -1,7 +1,7 @@
 ---
 title: 文字仲裁 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 針對可能不想要的文字、個人資料，以及自訂的字詞清單，使用文字仲裁。
+description: 對可能不需要的文本、個人資料和自訂術語清單使用文本審核。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 5a07f0749b59efc96b67df3ad5ed2fbf353be614
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538833"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
@@ -78,7 +78,7 @@ Content Moderator 的電腦輔助**文字分類功能**支援的語言**僅限�
 
 ## <a name="personal-data"></a>個人資料
 
-「個人資料」功能會偵測這項資訊的可能存在：
+個人資料功能可檢測此資訊的潛在存在：
 
 - 電子郵件地址
 - 美國郵寄地址
@@ -184,4 +184,4 @@ Content Moderator 有提供一個[字詞清單 API](https://westus.dev.cognitive
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[文字仲裁 API 主控台](try-text-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和， C#請同時查看[.net SDK 快速入門](dotnet-sdk-quickstart.md)的文字審核一節。
+試用[文字仲裁 API 主控台](try-text-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 C#，請查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的文本審核部分。

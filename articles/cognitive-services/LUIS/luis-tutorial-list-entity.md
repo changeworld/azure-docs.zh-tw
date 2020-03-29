@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
 ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499483"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用清單實體增加實體偵測 
-本文示範如何使用[清單實體](luis-concept-entity-types.md)來增加實體偵測。 清單實體不需要標籤，因為其與字詞完全相符。  
+本文演示了使用[清單實體](luis-concept-entity-types.md)來增加實體檢測。 清單實體不需要標籤，因為其與字詞完全相符。  
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立清單實體 
 > * 新增正規化的值和同義字
 > * 驗證改善的實體識別
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * 最新版的 [Node.js](https://nodejs.org)
@@ -37,9 +37,9 @@ ms.locfileid: "73499483"
 > * LUIS 應用程式的 [AuthoringKey](luis-concept-keys.md#authoring-key)、[EndpointKey](luis-concept-keys.md#endpoint-key) (如果查詢多次)、應用程式識別碼、版本識別碼和[區域](luis-reference-regions.md)。
 
 > [!Tip]
-> 如果您還沒有訂用帳戶，則可以註冊[免費帳戶](https://azure.microsoft.com/free/)。
+> 若您還沒有訂用帳戶，則可以註冊[免費帳戶](https://azure.microsoft.com/free/)。
 
-本文中的所有程式碼都可在[Azure 範例 GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中取得。 
+本文中的所有代碼都可以在[Azure 示例 GitHub 存儲庫](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中使用。 
 
 ## <a name="use-homeautomation-app"></a>使用 HomeAutomation 應用程式
 HomeAutomation 應用程式可讓您控制許多裝置，例如燈和娛樂系統，以及控制環境，例如升溫或降溫。 這些系統有許多不同名稱，其中可能包含製造商名稱、別名、暱稱、首字母縮寫和俚語。 
@@ -48,7 +48,7 @@ HomeAutomation 應用程式可讓您控制許多裝置，例如燈和娛樂系�
 
 在理想情況下，預先建置的實體 **HomeAutomation.Device** 應能解析下列語句：
 
-|#|語句|識別的實體|分數|
+|#|語句|識別的實體|score|
 |--|--|--|--|
 |1|turn on the ac (開啟冷氣)|HomeAutomation.Device - "ac"|0.8748562|
 |2|turn up the heat (調高溫度)|HomeAutomation.Device - "heat"|0.784990132|
@@ -61,7 +61,7 @@ HomeAutomation.Device 實體最適合用於少數裝置或少數名稱差異。 
 
 **清單實體**十分適用於這類情況，因為辦公大樓和校園中的裝置字詞集合是已知的集合 (即使是大型集合也一樣)。 藉由使用清單實體，LUIS 可以針對控溫器接收集合中的所有可能值，並只會將其解析至單一裝置「控溫器」。 
 
-本文將使用控溫器來建立實體清單。 本文中控溫器的替代名稱是： 
+本文將使用恒溫器創建實體清單。 本文中恒溫器的替代名稱是： 
 
 |控溫器的替代名稱|
 |--|
@@ -93,7 +93,7 @@ npm install && node add-entity-list.js
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>訓練模型
+## <a name="train-the-model"></a>將模型定型
 訓練 LUIS 是為了讓新清單影響查詢結果。 訓練包含兩個部分的訓練程序，然後會在訓練完成時檢查狀態。 有多個模型的應用程式可能需要幾分鐘的時間來訓練。 下列程式碼會訓練應用程式，然後等候訓練成功。 程式碼會使用「等候並重試」策略以避免發生「要求太多」的 429 錯誤。 
 
 建立 Node.js 檔案，並將下列程式碼複製到其中。 變更 authoringKey、appId、versionId 和 region 值。
@@ -214,7 +214,7 @@ node train.js
 
 請嘗試其他兩個語句，您會看到此兩個語句也會傳回控溫器。 
 
-|#|語句|實體|類型|value|
+|#|語句|實體|type|value|
 |--|--|--|--|--|
 |1|turn on the ac (開啟冷氣)| ac | DevicesList | 控溫器|
 |2|turn up the heat (調高溫度)|heat| DevicesList |控溫器|

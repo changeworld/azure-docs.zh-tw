@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
 ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898364"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在範例語句中標記機器學習實體
@@ -41,12 +41,12 @@ ms.locfileid: "78898364"
 
 ## <a name="confirm-predicted-entity"></a>確認預測實體
 
-如果文字範圍周圍有虛線方塊，而且實體名稱高於語句，則表示文字已進行預測，但「尚未標記」。 若要將預測轉換為標記，請選取語句列，然後選取 [確認實體預測]。
+如果文字範圍周圍有虛線方塊，而且實體名稱高於語句，則表示文字已進行預測，但「尚未標記」__。 若要將預測轉換為標記，請選取語句列，然後選取 [確認實體預測]****。
 
 > [!div class="mx-imgBorder"]
 > ![預測完整機器學習實體](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-或者，您可以選取文字上方的實體名稱，然後從出現的功能表中選取 [確認預測]。
+或者，您可以選取文字上方的實體名稱，然後從出現的功能表中選取 [確認預測]****。
 
 > [!div class="mx-imgBorder"]
 > ![以功能表預測完整機器學習實體](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
@@ -72,7 +72,7 @@ ms.locfileid: "78898364"
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>標記機器學習實體的子元件
 
-標記實體中子元件的方式與上層實體的標記方式相同。 選取文字後，快顯視窗中可用的實體會相對於出現文字的內容。 例如，如果您有 5 層級機器學習實體，而您選取的是標記為第 1 層和第 2 層的文字 (在範例語句底下由標記實體名稱表示)，則快顯視窗中可用的實體會限制為第 3 層的元件內容。 若要使用其他實體來標記文字，請選取 [標記為另一個實體] 選項。
+標記實體中子元件的方式與上層實體的標記方式相同。 選取文字後，快顯視窗中可用的實體會相對於出現文字的內容。 例如，如果您有 5 層級機器學習實體，而您選取的是標記為第 1 層和第 2 層的文字 (在範例語句底下由標記實體名稱表示)，則快顯視窗中可用的實體會限制為第 3 層的元件內容。 若要使用其他實體來標記文字，請選取 [標記為另一個實體]**** 選項。
 
 > [!div class="mx-imgBorder"]
 > ![機器學習實體的實體調色盤](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -83,20 +83,20 @@ ms.locfileid: "78898364"
 
 實體角色會使用實體選擇區來標記。
 
-1. 在 [意圖詳細資料] 頁面中，從操作工具列中選取 [實體選擇區]。
+1. 在 [意圖詳細資料] 頁面中，從操作工具列中選取 [實體選擇區]****。
 1. 開啟實體選擇區之後，請從實體清單中選取實體。
-1. 移至 [實體偵測器]，然後選取現有的角色或建立新的角色。
+1. 移至 [實體偵測器]****，然後選取現有的角色或建立新的角色。
 1. 在範例語句文字中，以實體角色標記文字。
 
 ## <a name="unlabel-entities"></a>將實體取消標記
 
-若要將實體取消標記，請選取文字底下的實體名稱，然後選取 [取消標記]。 如果您嘗試取消標記的實體具有已標記的子元件，則子元件必須是先取消標記。
+若要將實體取消標記，請選取文字底下的實體名稱，然後選取 [取消標記]****。 如果您嘗試取消標記的實體具有已標記的子元件，則子元件必須是先取消標記。
 
 ## <a name="editing-labels-using-the-entity-palette"></a>使用實體調色盤編輯標籤
 
 如果您在標記時犯了錯誤，則實體調色盤就是可讓您快速編輯的簡單工具。 例如，如果實體標籤不小心跨越到額外的字組，而且其具有已標記的子元件，則您可以使用實體調色盤，在所需的較短字組範圍上使用筆刷。
 
-例如，
+例如：
 
 1. 「披薩類型 (Pizza Type)」子元件的範圍是 "cheese pizza with"，其中包含額外的錯誤字組 -- "with"
 

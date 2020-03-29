@@ -1,7 +1,7 @@
 ---
-title: 筆墨辨識器 API 的語言和地區的支援
+title: 對墨蹟識別器 API 的語言和地區支援
 titleSuffix: Azure Cognitive Services
-description: 筆墨辨識器 API 所支援的自然語言的清單。
+description: 墨蹟識別器 API 支援的自然語言清單。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721749"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆墨辨識器 API 的語言和地區的支援
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>對墨蹟識別器 API 的語言和地區支援
 
-本文說明適用於手寫辨識器 API 所支援的語言。 寫入下列語言版本的數位筆跡內容可以解譯並處理的 API。
+本文介紹墨蹟識別器 API 支援哪些語言。 使用以下語言編寫的數位筆跡內容可以由 API 解釋和處理。
 
 ## <a name="supported-languages"></a>支援的語言
 
@@ -30,14 +30,14 @@ ms.locfileid: "67721749"
 | 巴斯克文                                     |     `eu-ES`     |
 | 波士尼亞文 (拉丁文)                            | `bs-Latn-BA`    |
 | 卡達隆尼亞文                                    |     `ca-ES`     |
-| 中文 （簡體，中國）                |     `zh-CN`     |
+| 中文 (簡體，中國)                |     `zh-CN`     |
 | 中文 (繁體，台灣)              |     `zh-TW`     |
-| 克羅埃西亞文 （克羅埃西亞）                         |     `hr-HR`     |
+| 克羅埃西亞文 (克羅埃西亞)                         |     `hr-HR`     |
 | 捷克文                                      |     `cs-CZ`     |
 | 丹麥文                                     |     `da-DK`     |
 | 荷蘭文 (比利時)                            |     `nl-BE`     |
 | 荷蘭文 (荷蘭)                        |     `nl-NL`     |
-| 英文 (澳洲)                        |     `en-AU`     |
+| 英文 (澳大利亞)                        |     `en-AU`     |
 | 英文 (加拿大)                           |     `en-CA`     |
 | 英文 (英國)                   |     `en-GB`     |
 | 英文 (印度)                            |     `en-IN`     |
@@ -45,7 +45,7 @@ ms.locfileid: "67721749"
 | 芬蘭文                                    |     `fi-FI`     |
 | 法文 (法國)                            |     `fr-FR`     |
 | 加利西亞文                                   |     `gl-ES`     |
-| 德文 （瑞士）                      |     `de-CH`     |
+| 德語（瑞士）                      |     `de-CH`     |
 | 德文 (德國)                           |     `de-DE`     |
 | 希臘文                                      |     `el-GR`     |
 | Hindi                                      |     `hi-IN`     |
@@ -54,29 +54,29 @@ ms.locfileid: "67721749"
 | 義大利文 (義大利)                            |     `it-IT`     |
 | 日文                                   |     `ja-JP`     |
 | 盧安達文                                |     `rw-RW`     |
-| Svahilština (Keňa)                          |     `sw-KE`     |
+| 史瓦希里文 (肯亞)                          |     `sw-KE`     |
 | 韓文                                     |     `ko-KR`     |
 | 盧森堡文                              |     `lb-LU`     |
-| 馬來文 （汶萊達魯薩蘭）                  |     `ms-BN`     |
-| 馬來文 （馬來西亞）                           |     `ms-MY`     |
+| 馬來文 (汶萊達魯薩蘭)                  |     `ms-BN`     |
+| 馬來文 (馬來西亞)                           |     `ms-MY`     |
 | 毛利文                                      |     `mi-NZ`     |
 | 挪威文 (巴克摩)                         |     `nb-NO`     |
 | 挪威文 (耐諾斯克)                        |     `nn-NO`     |
 | 波蘭文                                     |     `pl-PL`     |
 | 葡萄牙文 (巴西)                        |     `pt-BR`     |
 | 葡萄牙文 (葡萄牙)                      |     `pt-PT`     |
-| 羅馬尼亞文                                    |     `rm-CH`     |
+| 羅曼斯文                                    |     `rm-CH`     |
 | 羅馬尼亞文                                   |     `ro-RO`     |
 | 俄文                                    |     `ru-RU`     |
 | 蘇格蘭蓋爾文                            |     `gd-GB`     |
 | 北索托文                           |    `nso-ZA`     |
 | 塞爾維亞文 (斯拉夫、波士尼亞及赫塞哥維納) |  `sr-Cyrl-BA`   |
-| 塞爾維亞文 （斯拉夫，蒙特內哥羅）             |  `sr-Cyrl-ME`   |
-| 塞爾維亞文 （斯拉夫，塞爾維亞）                 |  `sr-Cyrl-RS`   |
-| 塞爾維亞文 （拉丁，波士尼亞及赫塞哥維納）    |  `sr-Latn-BA`   |
-| 塞爾維亞文 （拉丁，蒙特內哥羅）                |  `sr-Latn-ME`   |
-| 塞爾維亞文 （拉丁，塞爾維亞）                    |  `sr-Latn-RS`   |
-| Setswana （南非）                    |     `tn-ZA`     |
+| 塞爾維亞文（西瑞爾語，黑山）             |  `sr-Cyrl-ME`   |
+| 塞爾維亞文 (斯拉夫，塞爾維亞)                 |  `sr-Cyrl-RS`   |
+| 塞爾維亞文（拉丁語、波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
+| 塞爾維亞文（拉丁語、黑山語）                |  `sr-Latn-ME`   |
+| 塞爾維亞文 (拉丁，塞爾維亞)                    |  `sr-Latn-RS`   |
+| 塞茲瓦納文 (南非)                    |     `tn-ZA`     |
 | 斯洛伐克文                                     |     `sk-SK`     |
 | 斯洛維尼亞文                                  |     `sl-SI`     |
 | 西班牙文 (阿根廷)                        |     `es-AR`     |
@@ -92,4 +92,4 @@ ms.locfileid: "67721749"
 ## <a name="see-also"></a>另請參閱
 
 * [什麼是筆跡辨識器 API？](overview.md)
-* [傳送數位筆墨筆劃，筆墨辨識器 api](concepts/send-ink-data.md)
+* [將數位筆跡描邊發送到墨蹟識別器 API](concepts/send-ink-data.md)

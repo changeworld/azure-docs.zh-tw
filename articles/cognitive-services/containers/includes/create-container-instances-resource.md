@@ -1,7 +1,7 @@
 ---
 title: 容器支援
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何建立 Azure 容器實例資源。
+description: 瞭解如何創建 Azure 容器實例資源。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692524"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>建立 Azure 容器實例資源
+## <a name="create-an-azure-container-instance-resource"></a>創建 Azure 容器實例資源
 
-1. 移至容器實例的 [[建立](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances)] 頁面。
+1. 轉到容器實例的["創建](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances)"頁。
 
-2. 在 [**基本**] 索引標籤上，輸入下列詳細資料：
+2. 在 **"基礎知識"** 選項卡上，輸入以下詳細資訊：
 
     |設定|值|
     |--|--|
-    |訂閱|選取您的訂用帳戶。|
-    |資源群組|選取可用的資源群組，或建立一個新的 [`cognitive-services`]。|
-    |容器名稱|輸入 [名稱]，例如 `cognitive-container-instance`。 名稱必須是小寫。|
-    |位置|選取要部署的區域。|
-    |映像類型|如果您的容器映射儲存在不需要認證的容器登錄中，請選擇 [`Public`]。 如果存取您的容器映射需要認證，請選擇 [`Private`]。 如需容器映射是否 `Public` 或 `Private` （「公開預覽」）的詳細資訊，請參閱[容器存放庫和映射](../../cognitive-services-container-support.md#container-repositories-and-images)。 |
-    |映像名稱|輸入認知服務容器位置。 位置是用來做為 `docker pull` 命令之引數的位置。 請參閱[容器存放庫和映射](../../cognitive-services-container-support.md#container-repositories-and-images)，以取得可用映射名稱及其對應的儲存機制。<br><br>映射名稱必須是完整的指定三個部分。 首先，容器登錄，然後是存放庫，最後是映射名稱： `<container-registry>/<repository>/<image-name>`。<br><br>以下是範例，`mcr.microsoft.com/azure-cognitive-services/keyphrase` 代表 Azure 認知服務存放庫下 Microsoft Container Registry 中的關鍵片語擷取映射。 另一個範例是，`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 代表容器預覽容器登錄的 Microsoft 存放庫中的語音轉換文字映射。 |
+    |訂用帳戶|選取您的訂用帳戶。|
+    |資源群組|選擇可用資源組或創建新的資源組，如`cognitive-services`。|
+    |容器名稱|輸入名稱，如`cognitive-container-instance`。 名稱必須位於下蓋中。|
+    |Location|選擇要部署的區域。|
+    |映像類型|如果您的容器映射存儲在不需要憑據的容器註冊表中，請選擇`Public`。 如果訪問容器映射需要憑據，請選擇`Private`。 有關容器映射是容器映射是`Public`還是`Private`（"公共預覽"）的詳細資訊，請參閱[容器存儲庫和圖像](../../cognitive-services-container-support.md#container-repositories-and-images)。 |
+    |映像名稱|輸入認知服務容器位置。 位置是用作命令參數的內容`docker pull`。 有關可用映射名稱及其相應的存儲庫，請參閱[容器存儲庫和映射](../../cognitive-services-container-support.md#container-repositories-and-images)。<br><br>指定三個部分的圖像名稱必須完全限定。 首先，容器註冊表，然後是存儲庫，最後是映射名稱： `<container-registry>/<repository>/<image-name>`。<br><br>下面是一個示例，`mcr.microsoft.com/azure-cognitive-services/keyphrase`表示 Azure 認知服務存儲庫下的 Microsoft 容器註冊表中的關鍵短語提取映射。 另一個示例`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`是，它將表示容器預覽容器註冊表的 Microsoft 存儲庫中的"語音到文本"映射。 |
     |OS 類型|`Linux`|
-    |大小|針對您特定的認知服務容器，將大小變更為建議的建議：<br>2個 CPU 核心<br>4GB
+    |大小|將大小更改為特定認知服務容器的建議：<br>2 個 CPU 內核<br>4 GB
 
-3. 在 [**網路**功能] 索引標籤上，輸入下列詳細資料：
+3. 在 **"網路"** 選項卡上，輸入以下詳細資訊：
 
     |設定|值|
     |--|--|
-    |連接埠|將 TCP 埠設定為 [`5000`]。 公開端口5000上的容器。|
+    |連接埠|將 TCP 埠`5000`設置為 。 在埠 5000 上公開容器。|
 
-4. 在 [ **Advanced** ] 索引標籤上，為 Azure 容器實例資源的容器帳單設定輸入必要的**環境變數**：
+4. 在 **"高級"** 選項卡上，輸入 Azure 容器實例資源的容器計費設置所需的**環境變數**：
 
-    | 索引鍵 | 值 |
+    | Key | 值 |
     |--|--|
-    |`apikey`|從資源的 [**金鑰**] 頁面複製。 它是32英數位元字串，不含空格或連字號，`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
-    |`billing`|從資源的 [**總覽**] 頁面複製的。|
+    |`apikey`|從資源的 **"金鑰"** 頁複製。 它是一個 32 個字母數位字元字串，沒有空格或破折`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`號。|
+    |`billing`|從資源的 **"概述"** 頁複製。|
     |`eula`|`accept`|
 
-5. 按一下 [**審查並建立**]
-6. 通過驗證之後，按一下 [**建立**] 以完成建立程式
-7. 當資源部署成功時，即已準備就緒
+5. 按一下 **"審閱並創建"**
+6. 驗證通過後，按一下 **"創建"** 以完成創建過程
+7. 成功部署資源後，它已準備就緒

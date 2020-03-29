@@ -1,7 +1,7 @@
 ---
 title: 詞彙 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 當您瞭解如何使用服務時，自訂翻譯詞彙會協助您瞭解文章中使用的詞彙。
+description: 自訂翻譯術語表將説明您瞭解如何使用服務時瞭解文章中使用的術語。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
 ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888131"
 ---
 # <a name="custom-translator-glossary"></a>自訂翻譯工具詞彙

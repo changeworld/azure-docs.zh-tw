@@ -1,7 +1,7 @@
 ---
 title: 品牌偵測 - 電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 本文討論物件偵測的特殊模式;使用電腦視覺 API 的品牌和（或）標誌偵測。
+description: 本文討論了一種專門的物件檢測模式;使用電腦視覺 API 進行品牌和/或徽標檢測。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131743"
 ---
-# <a name="detect-popular-brands-in-images"></a>偵測影像中的熱門品牌
+# <a name="detect-popular-brands-in-images"></a>在圖像中檢測流行品牌
 
 品牌偵測是[物件偵測](concept-object-detection.md)的特製化模式，可使用全球數千個標誌的資料庫識別影像或影片中的商業品牌。 例如，您可以使用這項功能探索哪些品牌在社交媒體最受歡迎或在媒體產品位置中最常見。
 
@@ -74,7 +74,7 @@ ms.locfileid: "73718625"
 
 ## <a name="use-the-api"></a>使用 API
 
-品牌偵測功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 在**visualFeatures**查詢參數中包含 `Brands`。 然後，當您取得完整的 JSON 回應時，只要剖析 `"brands"` 區段內容的字串即可。
+品牌偵測功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包括在`Brands`**視覺化功能**查詢參數中。 然後，當您獲得完整的 JSON 回應時，只需分析節的內容的`"brands"`字串。
 
-* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)
+* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入門：分析圖像（REST API）](./quickstarts/csharp-analyze.md)

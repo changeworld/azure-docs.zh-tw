@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595707"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜尋、編輯和刪除專案
@@ -39,7 +39,7 @@ ms.locfileid: "68595707"
 
 ## <a name="edit-a-project"></a>編輯專案
 
-自訂翻譯讓您能夠編輯專案的名稱和描述。 其他專案中繼資料 (例如類別、來源語言和目的語言) 無法進行編輯。 下列步驟說明如何編輯專案。
+自訂翻譯器使您能夠編輯專案的名稱和說明。 其他專案中繼資料（如類別、來源語言和目的語言）不可用於編輯。 以下步驟描述了如何編輯專案。
 
 1.  按一下您將滑鼠停留在專案上方時出現的鉛筆圖示。
 

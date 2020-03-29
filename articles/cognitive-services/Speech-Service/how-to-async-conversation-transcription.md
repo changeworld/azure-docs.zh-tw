@@ -1,7 +1,7 @@
 ---
-title: 非同步對話轉譯（預覽）-語音服務
+title: 非同步對話轉錄（預覽） - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何使用語音服務來進行非同步對話轉譯。 僅適用于 JAVA。
+description: 瞭解如何使用語音服務使用非同步對話轉錄。 僅適用于 JAVA。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
-ms.openlocfilehash: d20cdb2f37c3da357ca112045a0d2845bbb6df98
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c1f0110c83eb42aaedbd36736946ae3faff58699
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260016"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80366602"
 ---
-# <a name="asynchronous-conversation-transcription-preview"></a>非同步對話轉譯（預覽）
+# <a name="asynchronous-conversation-transcription-preview"></a>非同步對話轉錄（預覽）
 
-在本文中，非同步對話轉譯會使用**RemoteConversationTranscriptionClient** API 來示範。 如果您已設定對話轉譯來執行非同步轉譯，並具有 `conversationId`，您可以使用**RemoteConversationTranscriptionClient** API 來取得與該 `conversationId` 相關聯的轉譯。
+在本文中，使用**遠端對話轉錄用戶端**API 演示非同步對話轉錄。 如果已配置對話轉錄以執行非同步轉錄，並且具有`conversationId`，則可以使用`conversationId`**遠端對話轉錄用戶端**API 獲取與此關聯的轉錄。
 
 ## <a name="asynchronous-vs-real-time--asynchronous"></a>非同步與即時 + 非同步
 
-透過非同步轉譯，您可以串流處理對話音訊，但不需要即時傳回的轉譯。 相反地，在傳送音訊之後，請使用 `Conversation` 的 `conversationId` 來查詢非同步轉譯的狀態。 當非同步轉譯準備就緒時，您會收到 `RemoteConversationTranscriptionResult`。
+使用非同步轉錄，您可以資料流對話音訊，但不需要即時返回轉錄。 相反，在發送音訊後，使用 查詢`conversationId``Conversation`的非同步轉錄的狀態。 當非同步轉錄準備就緒時，您將獲得一個`RemoteConversationTranscriptionResult`。
 
-有了即時加上非同步功能，您可以即時取得轉譯，但也會藉由使用 `conversationId` 來查詢來取得轉譯（類似于非同步案例）。
+使用即時加上非同步，您可以即時獲取轉錄，但也通過查詢`conversationId`（類似于非同步方案）獲得轉錄。
 
-完成非同步轉譯需要兩個步驟。 第一個步驟是上傳音訊，選擇 [僅限非同步] 或 [即時加上非同步]。 第二個步驟是取得轉譯結果。
+完成非同步轉錄需要兩個步驟。 第一步是上傳音訊，選擇僅非同步或即時加非同步。 第二步是獲取轉錄結果。
 
 ## <a name="upload-the-audio"></a>上傳音訊
 
-在執行非同步轉譯之前，您必須使用 Microsoft 認知語音用戶端 SDK （1.8.0 或更新版本）將音訊傳送至對話轉譯服務。
+在可以執行非同步轉錄之前，您需要使用 Microsoft 認知語音用戶端 SDK（版本 1.8.0 或以上）將音訊發送到對話轉錄服務。
 
-此範例程式碼示範如何針對非同步模式建立對話 transcriber。 若要將音訊串流至 transcriber，您必須[使用語音 SDK 來即時](how-to-use-conversation-transcription-service.md)新增衍生自轉譯交談的音訊串流程式碼。 請參閱該主題的**限制**一節，以查看支援的平臺和語言 api。
+此示例代碼演示如何為僅非同步模式創建對話轉錄器。 為了將音訊資料流到轉錄器，您需要[使用語音 SDK 即時添加從轉錄對話](how-to-use-conversation-transcription-service.md)派生的音訊流代碼。 請參閱該主題的 **"限制"** 部分，查看支援的平臺和語言 API。
 
 ```java
 // Create the speech config object
@@ -56,8 +56,8 @@ Conversation conversation = conversationFuture.get();
 
 // Create an audio stream from a wav file or from the default microphone if you want to stream live audio from the supported devices
 // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
-PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16Khz16Bits8channelsOfRecordedPCMAudio.wav");
-// Create an audio stream format assuming the file used above is 16Khz, 16 bits and 8 channel pcm wav file
+PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16kHz16Bits8channelsOfRecordedPCMAudio.wav");
+// Create an audio stream format assuming the file used above is 16kHz, 16 bits and 8 channel pcm wav file
 AudioStreamFormat audioStreamFormat = AudioStreamFormat.getWaveFormatPCM((long)16000, (short)16,(short)8);
 // Create an input stream
 AudioInputStream audioStream = AudioInputStream.createPullStream(wavfilePullStreamCallback, audioStreamFormat);
@@ -101,7 +101,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-如果您想要即時_加上_非同步，請將適當的程式程式碼批註並取消批註，如下所示：
+如果需要即時_加上_非同步，請注釋和取消注釋相應的程式碼，如下所示：
 
 ```java
 // Set the property for asynchronous transcription
@@ -111,17 +111,17 @@ Future<?> future = transcriber.startTranscribingAsync();
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>取得轉譯結果
+## <a name="get-transcription-results"></a>獲取轉錄結果
 
-此步驟會取得非同步轉譯結果，但會假設您可能需要的任何即時處理都是在其他地方完成。 如需詳細資訊，請參閱[使用語音 SDK 即時轉譯對話](how-to-use-conversation-transcription-service.md)。
+此步驟獲取非同步轉錄結果，但假定可能需要的任何即時處理都已完成其他位置。 有關詳細資訊，請參閱[使用語音 SDK 即時轉錄對話](how-to-use-conversation-transcription-service.md)。
 
-針對此處顯示的程式碼，您需要**遠端對話版本 1.8.0**，僅支援 Windows、Linux 和 Android 上的 JAVA （1.8.0 或更新版本）（僅限 API 層級26或以上）。
+對於此處顯示的代碼，您需要**遠端對話版本 1.8.0**，僅支援 Windows、Linux 和 Android 上的 JAVA（1.8.0 或以上）（僅限 API 級別 26 或以上）。
 
-### <a name="obtaining-the-client-sdk"></a>取得用戶端 SDK
+### <a name="obtaining-the-client-sdk"></a>獲取用戶端 SDK
 
-您可以編輯 pom .xml 檔案來取得**遠端交談**，如下所示。
+您可以通過編輯 pom.xml 檔來獲取**遠端對話**，如下所示。
 
-1. 在檔案結尾的結束記號 `</project>`之前，請先建立一個 `repositories` 元素，其中包含適用于語音 SDK 的 Maven 存放庫參考：
+1. 在檔末尾，在結束標記`</project>`之前，創建一個`repositories`元素，其中引用語音 SDK 的 Maven 存儲庫：
 
    ```xml
    <repositories>
@@ -133,7 +133,7 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
    </repositories>
    ```
 
-2. 此外，使用 remoteconversation-client-sdk 1.8.0 作為相依性來新增 `dependencies` 元素：
+2. 還添加一`dependencies`個元素，遠端對話用戶端-sdk 1.8.0作為依賴項：
 
    ```xml
    <dependencies>
@@ -145,11 +145,11 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
    </dependencies>
    ```
 
-3. 儲存變更
+3. 保存更改
 
-### <a name="sample-transcription-code"></a>範例轉譯程式碼
+### <a name="sample-transcription-code"></a>示例轉錄代碼
 
-在您擁有 `conversationId`之後，請在用戶端應用程式建立遠端對話轉譯用戶端**RemoteConversationTranscriptionClient** ，以查詢非同步轉譯的狀態。 使用**RemoteConversationTranscriptionClient**中的**getTranscriptionOperation**方法來取得[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java)物件。 PollerFlux 物件將會有遠端作業狀態**RemoteConversationTranscriptionOperation**和最終結果**RemoteConversationTranscriptionResult**的相關資訊。 作業完成後，請呼叫[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)上的**GetFinalResult**來取得**RemoteConversationTranscriptionResult** 。 在此程式碼中，我們只會將結果內容列印到系統輸出。
+之後，`conversationId`在用戶端應用程式中創建遠端對話轉錄用戶端**RemoteConversation 轉錄用戶端**，以查詢非同步轉錄的狀態。 在**遠端對話腳本用戶端**中使用**get 轉錄操作**方法獲取[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java)物件。 PollerFlux 物件將包含有關遠端操作狀態**遠端對話轉錄操作**和最終結果**遠端對話轉錄結果的資訊**。 操作完成後，通過在[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)上調用**getFinalResult**獲取**遠端對話記錄結果**。 在此代碼中，我們只需將結果內容列印到系統輸出。
 
 ```java
 // Create the speech config object

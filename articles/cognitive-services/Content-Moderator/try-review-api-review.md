@@ -1,7 +1,7 @@
 ---
-title: 使用 REST API 主控台建立仲裁審查-內容仲裁
+title: 使用 REST API 主控台創建審核審核 - 內容檢閱者
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 內容仲裁審核 Api 來建立影像或文字審查，以進行人工審核。
+description: 使用 Azure 內容檢閱者審閱 API 創建圖像或文本審閱以進行人工審核。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757149"
 ---
-# <a name="create-human-reviews-rest"></a>建立人力審查（REST）
+# <a name="create-human-reviews-rest"></a>創建人工評論 （REST）
 
-[審查](./review-api.md#reviews)儲存和顯示內容，供人力仲裁者評估。 當使用者完成審查時，會將結果傳送至指定的回呼端點。 在本指南中，您將瞭解如何透過 API 主控台使用審查 REST Api 來設定評論。 一旦您瞭解 Api 的結構之後，就可以輕鬆地將這些呼叫移植到任何與 REST 相容的平臺。
+[評論](./review-api.md#reviews)存儲和顯示內容，供人工版主評估。 當使用者完成審核時，結果將發送到指定的回檔終結點。 在本指南中，您將瞭解如何使用通過 API 主控台查看 REST API 設置評論。 瞭解 API 的結構後，可以輕鬆地將這些調用移植到任何與 REST 相容的平臺。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 在內容仲裁[審查工具](https://contentmoderator.cognitive.microsoft.com/)網站上登入或建立帳戶。
+- 在內容審閱人[審核工具](https://contentmoderator.cognitive.microsoft.com/)網站上登錄或創建帳戶。
 
 ## <a name="create-a-review"></a>建立審核
 
-若要建立審查，請移至 [ **[審查-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 參考] 頁面，然後選取金鑰區域的按鈕（您可以在 [[審核] 工具](https://contentmoderator.cognitive.microsoft.com/)的 [**認證**] 頁面上的 [端點 URL] 中找到此資訊）。 這會啟動 API 主控台，您可以在其中輕鬆地建立和執行 REST API 呼叫。
+要創建審核，請轉到**["審閱 - 創建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 參考頁"，然後為關鍵區域選擇按鈕（您可以在["審閱"工具](https://contentmoderator.cognitive.microsoft.com/)的 **"憑據"** 頁上的終結點 URL 中找到該按鈕）。 這將啟動 API 主控台，您可以在其中輕鬆構造和運行 REST API 呼叫。
 
-![審查-取得區域選取專案](images/test-drive-region.png)
+![查看 - 獲取區域選擇](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>輸入 REST 呼叫參數
 
-輸入**teamName**的值，以及**Apim-訂**用帳戶金鑰：
+輸入**團隊名稱**和**Ocp-Apim-訂閱金鑰**的值：
 
-- **teamName**：當您設定[審核工具](https://contentmoderator.cognitive.microsoft.com/)帳戶時所建立的小組識別碼（可在審核工具的 [認證] 畫面上的 [**識別碼**] 欄位中找到）。
-- **Ocp-Apim-訂**用帳戶金鑰：您的內容仲裁金鑰。 您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
+- **團隊名稱**：您在設置[審閱工具](https://contentmoderator.cognitive.microsoft.com/)帳戶時創建的團隊 ID（在審閱工具的憑據螢幕上的 **"Id"** 欄位中找到）。
+- **Ocp-Apim-訂閱金鑰**：您的內容檢閱者金鑰。 您可以在["查看"工具](https://contentmoderator.cognitive.microsoft.com)的 **"設置"** 選項卡上找到此內容。
 
-### <a name="enter-a-review-definition"></a>輸入審查定義
+### <a name="enter-a-review-definition"></a>輸入審閱定義
 
-編輯 [**要求**本文] 方塊，以輸入具有下欄欄位的 JSON 要求：
+編輯 **"請求正文**"框以輸入具有以下欄位的 JSON 請求：
 
-- **中繼資料**：要傳回給回呼端點的自訂索引鍵/值組。 如果金鑰是在[審核工具](https://contentmoderator.cognitive.microsoft.com)中定義的簡短程式碼，則會顯示為標記。
-- **內容**：在影像和影片內容的案例中，這是指向內容的 URL 字串。 對於文字內容，這是實際的文字字串。
-- **ContentId**：自訂識別碼字串。 這個字串會傳遞至 API 並透過回呼傳回。 這適用于將內部識別碼或中繼資料與審核作業的結果產生關聯。
-- **CallbackEndpoint**：（選擇性）完成審核時，用來接收回呼資訊的 URL。
+- **中繼資料**：要返回到回檔終結點的自訂鍵值對。 如果該鍵是在["審閱"工具](https://contentmoderator.cognitive.microsoft.com)中定義的短代碼，則該鍵顯示為標記。
+- **內容**：在圖像和視頻內容的情況下，這是指向內容的 URL 字串。 對於文本內容，這是實際的文本字串。
+- **內容 Id**：自訂識別碼字串。 這個字串會傳遞至 API 並透過回呼傳回。 它可用於將內部識別碼或中繼資料與審核作業的結果相關聯。
+- **回檔終結點**：（可選） 審核完成後接收回調資訊的 URL。
 
-預設的要求本文會顯示您可以建立的不同評論類型的範例：
+預設請求正文顯示您可以創建的不同類型的評論的示例：
 
 ```json
 [Image]
@@ -129,27 +129,27 @@ ms.locfileid: "72757149"
 
 ### <a name="submit-your-request"></a>提交您的要求
   
-選取 [傳送]。 如果作業成功，**回應狀態**會是 [`200 OK`]，而 [**回應內容**] 方塊會顯示審核的識別碼。 複製此識別碼以在下列步驟中使用。
+選擇 **"發送**"。 如果操作成功，**回應狀態**為`200 OK`，**回應內容**框將顯示審閱的 ID。 複製此識別碼以在下列步驟中使用。
 
 ![[審查 - 建立] 主控台的 [回應內容] 方塊會顯示審查識別碼](images/test-drive-review-2.PNG)
 
-### <a name="examine-the-new-review"></a>檢查新的評論
+### <a name="examine-the-new-review"></a>檢查新審核
 
-在[審核工具](https://contentmoderator.cognitive.microsoft.com)中，選取 **[審查**]  > **影像**/**文字**/**影片**（視您使用的內容而定）。 您上傳的內容應該會出現，準備好進行人工審核。
+在["審閱"工具](https://contentmoderator.cognitive.microsoft.com)中，選擇 **"查看** > **圖像**/**文本**/**視頻**"（具體取決於您使用的內容）。 應顯示您上傳的內容，以便進行人工審閱。
 
 ![足球的審查工具影像](images/test-drive-review-5.PNG)
 
 ## <a name="get-review-details"></a>取得審核詳細資料
 
-若要取得有關現有評論的詳細資料，請移至 [[審查-取得](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2)API 參考] 頁面，然後選取您的區域（您的金鑰管理所在的區域）的按鈕。
+若要檢索有關現有審核的詳細資訊，請轉到["審核 - 獲取](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2)API 參考頁"並選擇您所在區域的按鈕（管理金鑰的區域）。
 
 ![[工作流程 - 取得] 的區域選取項目](images/test-drive-region.png)
 
-輸入 REST 呼叫參數，如上一節所示。 在此步驟中， **reviewId**是您在建立審核時所收到的唯一識別碼字串。
+輸入上一節中所示的 REST 調用參數。 對於此步驟 **，reviewId**是創建審閱時收到的唯一 ID 字串。
 
 ![審查 - 建立主控台的取得結果](images/test-drive-review-3.PNG)
   
-選取 [傳送]。 如果作業成功，**回應狀態**會是 [`200 OK`]，而 [**回應內容**] 方塊會以 JSON 格式顯示審核詳細資料，如下所示：
+選擇 **"發送**"。 如果操作成功，**回應狀態**為`200 OK`，**回應內容**框以 JSON 格式顯示審閱詳細資訊，如下所示：
 
 ```json
 {  
@@ -184,12 +184,12 @@ ms.locfileid: "72757149"
 }
 ```
 
-請記下回應中的下欄欄位：
+請注意回應中的以下欄位：
 
-- **status**
-- **reviewerResultTags**：如果人工審核小組已手動新增任何標記（顯示**createdBy**欄位），就會出現此情況。
-- **中繼資料**：這會顯示在人工審核小組進行變更之前，一開始在審查中新增的標記。
+- **狀態**
+- **檢閱者結果標籤**：如果人工審閱團隊手動添加了任何標記（顯示**創建 By**欄位），則會出現此標記。
+- **中繼資料**：這顯示了在人工評審團隊進行更改之前最初在審核中添加的標記。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已瞭解如何使用 REST API 來建立內容仲裁審核。 接下來，將審查整合到端對端仲裁案例，例如[電子商務審核](./ecommerce-retail-catalog-moderation.md)教學課程。
+在本指南中，您學習了如何使用 REST API 創建內容審核。 接下來，將評論集成到端到端審核方案中，如[電子商務審核](./ecommerce-retail-catalog-moderation.md)教程。
