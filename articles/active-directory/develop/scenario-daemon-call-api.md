@@ -1,6 +1,6 @@
 ---
-title: 從 daemon 應用程式呼叫 Web API-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立可呼叫 web Api 的 daemon 應用程式
+title: 從守護程式應用調用 Web API - 微軟身份平臺 |蔚藍
+description: 瞭解如何構建調用 Web API 的守護進程應用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,25 +16,25 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76775200"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>呼叫 web Api 的 Daemon 應用程式-從應用程式呼叫 Web API
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>調用 Web API 的守護程式應用 - 從應用調用 Web API
 
-.NET daemon 應用程式可以呼叫 Web API。 .NET daemon 應用程式也可以呼叫數個預先核准的 web Api。
+.NET 守護進程應用可以調用 Web API。 .NET 守護進程應用還可以調用多個預先批准的 Web API。
 
-## <a name="calling-a-web-api-from-a-daemon-application"></a>從 daemon 應用程式呼叫 Web API
+## <a name="calling-a-web-api-from-a-daemon-application"></a>從守護進程應用程式調用 Web API
 
-以下說明如何使用權杖來呼叫 API：
+以下是如何使用權杖調用 API：
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -65,25 +65,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>呼叫數個 Api
+## <a name="calling-several-apis"></a>調用多個 API
 
-對於 daemon 應用程式，您呼叫的 web Api 必須經過預先核准。 沒有 daemon 應用程式的增量同意。 （沒有使用者互動）。租使用者系統管理員必須事先為應用程式和所有 API 許可權提供同意。 如果您想要呼叫數個 Api，則每次呼叫 `AcquireTokenForClient`時，都需要取得每個資源的權杖。 MSAL 會使用應用程式權杖快取來避免不必要的服務呼叫。
+對於守護進程應用，您調用的 Web API 需要預先批准。 守護進程應用沒有增量同意。 （沒有使用者交互。租戶管理員需要提前為應用程式和所有 API 許可權提供同意。 如果要調用多個 API，則需要為每個資源獲取一個權杖，每次調用`AcquireTokenForClient`。 MSAL 將使用應用程式權杖緩存來避免不必要的服務調用。
 
 ## <a name="next-steps"></a>後續步驟
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [守護進程應用 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
-
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [守護進程應用 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+
+# <a name="java"></a>[JAVA](#tab/java)
+
+> [!div class="nextstepaction"]
+> [守護進程應用 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

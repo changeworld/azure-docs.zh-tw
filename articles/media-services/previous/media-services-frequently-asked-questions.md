@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務常見問題
-description: 本文提供有關 Azure 媒體服務常見問題的解答。
+description: 本文回答了有關 Azure 媒體服務的常見問題。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705865"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒體服務 v2 常見問題
@@ -26,7 +26,7 @@ ms.locfileid: "76705865"
 
 ## <a name="general-ams-faqs"></a>一般 AMS 常見問題集
 
-問：如何串流至 Apple iOS 裝置？
+問：如何資料流到 Apple iOS 設備？
 
 答：將 "(format=m3u8-aapl)" 路徑新增至 URL 的 "/Manifest" 部分，來告訴串流原始伺服器傳回 HLS 內容以供在 Apple iOS 原生裝置上取用 (如需詳細資料，請參閱[提供內容](media-services-deliver-content-overview.md))。
 
@@ -36,7 +36,7 @@ ms.locfileid: "76705865"
 
 問：我已上傳、編碼以及發佈視訊。 當我試著串流處理視頻時，為什麼不會播放視頻？
 
-答：其中一個最常見的原因是您沒有嘗試在**執行狀態中播放的串流**端點。  
+答：最常見的原因之一是，您沒有嘗試在 **"運行"** 狀態中播放的流式處理終結點。  
 
 問：我可以編輯即時資料流？
 
@@ -50,19 +50,19 @@ ms.locfileid: "76705865"
 
 答：如果您只想要儲存 JPEG 或 PNG 影像，請儲存至 Azure Blob 儲存體。 除非您想維持影像與視訊或音訊資產之間的關聯，否則將影像保存在媒體服務帳戶中，實際上一點用處也沒有。 或者，當您需要在視訊編碼器中將影像作為重疊時才有必要。媒體編碼器標準支援在視訊上層重疊影像，因此會將 JPEG 和 PNG 列為支援的輸入格式。 如需詳細資訊，請參閱 [建立重疊](media-services-advanced-encoding-with-mes.md#overlay)。
 
-問：如何將資產從一個媒體服務帳戶複製到另一個帳戶？
+問：如何將資產從一個媒體服務帳戶複製到另一個媒體服務帳戶？
 
 答：若要使用 .NET 將資產從某個媒體服務帳戶複製到另一個帳戶，請使用 [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) (Azure 媒體服務 .NET SDK 擴充功能) 儲存機制中可用的 [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) 擴充功能方法。 如需詳細資訊，請參閱 [這個](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) 論壇執行緒。
 
 問：使用 AMS 時，有哪些支援的字元可用來命名檔案？
 
-答：媒體服務在建立串流內容的 Url 時，會使用 IAssetFile.Name 屬性的值（例如，HTTP：//{AMSAccount}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
+答：媒體服務在為流內容構建 URL 時使用IAssetFile.Name屬性的值（例如，HTTP：//AMSAccount_.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/流式處理參數。因此，不允許進行百分比編碼。 **Name**屬性的值不能具有以下[編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)的任何：！*'（））;：&=$，/%*"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
 
 問：如何使用 REST 連線？
 
 答：如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-問：如何在編碼過程中旋轉影片？
+問：如何在編碼過程中旋轉視頻？
 
 答：[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支援 90/180/270 度的旋轉角度。 預設行為是「自動」，此時它會嘗試偵測內送之 MP4/MOV 檔案的旋轉中繼資料並加以補償。 包括以下 **Sources** 元素至[這裡](media-services-mes-presets-overview.md)所定義的其中一個 json 預設項目：
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure DevTest Labs 中調整實驗室的配額和限制 | Microsoft Docs
-description: 本文說明如何在 Azure DevTest Labs 中調整您的實驗室。 查看您的使用量配額和限制，並要求增加。
+description: 本文介紹如何在 Azure 開發人員測試實驗室中擴展實驗室。 查看您的使用配額和限制，並請求增加。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761180"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>在 DevTest Labs 中調整配額和限制
@@ -35,10 +35,10 @@ ms.locfileid: "76761180"
 ## <a name="view-your-usage-and-quotas"></a>檢視使用量和配額
 下列步驟將示範如何檢視訂用帳戶中 Azure 資源的目前配額，以及查看您使用的每個配額百分比。
 
-1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 選取 [更多服務]，然後從清單中選取 [計費]。
+1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 選取 [更多服務]****，然後從清單中選取 [計費]****。
 1. 在 [計費] 刀鋒視窗中選取訂用帳戶。
-4. 選取 [使用量 + 配額]。
+4. 選擇 **"用法+配額**"。
 
    ![使用量和配額按鈕](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
@@ -51,12 +51,12 @@ ms.locfileid: "76761180"
 
 這些步驟為您示範如何透過 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)要求配額增加。
 
-1. 選取 [更多服務]，選取 [計費]，然後選取 [使用量 + 配額]。
-1. 在 [使用量 + 配額] 刀鋒視窗中，選取 [要求增加] 按鈕。
+1. 選取 [更多服務]****，選取 [計費]****，然後選取 [使用量 + 配額]****。
+1. 在 [使用量 + 配額] 刀鋒視窗中，選取 [要求增加]**** 按鈕。
 
    ![要求增加按鈕](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. 若要完成要求並且提交，請在 [新增支援要求] 表單的全部三個索引標籤上填寫必要資訊。
+1. 若要完成要求並且提交，請在 [新增支援要求]**** 表單的全部三個索引標籤上填寫必要資訊。
 
    ![要求增加表單](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 
@@ -67,4 +67,4 @@ ms.locfileid: "76761180"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>後續步驟
-* 瀏覽 [DevTest Labs Azure Resource Manager 快速入門範本資源庫 (英文)](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 流覽[開發人員測試實驗室 Azure 資源管理器快速入門範本庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

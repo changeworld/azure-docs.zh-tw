@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968903"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -34,21 +34,21 @@ deploy.sh 指令碼會建立並設定此架構的 Azure 資源。 該指令碼�
 
 -   針對安裝設定 Azure 上的資源群組、虛擬網路與子網路。
 
--   為環境設定網路安全性群組和 SSH。
+-   為環境設置網路安全性群組和 SSH。
 
--   在共用存放裝置和 DB2 pureScale 虛擬機器上設定多個 Nic。
+-   在共用存儲和 DB2 純Scale虛擬機器上設置多個 NIC。
 
--   建立共用存放裝置虛擬機器。 如果您使用儲存空間直接存取或另一個儲存體解決方案，請參閱[儲存空間直接存取總覽](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
+-   創建共用存儲虛擬機器。 如果使用存儲空間直接或其他存儲解決方案，請參閱[存儲空間直接概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
 
 -   建立 jumpbox 虛擬機器。
 
--   建立 DB2 pureScale 虛擬機器。
+-   創建 DB2 純縮放虛擬機器。
 
--   建立 DB2 pureScale ping 的見證虛擬機器。 如果您的 Db2 pureScale 版本不需要見證，請略過部署的這個部分。
+-   創建 DB2 純標級 ping 的見證虛擬機器。 如果版本的 Db2 pureScale 不需要見證人，請跳過部署的此部分。
 
--   建立要用於測試的 Windows 虛擬機器，但不會在其上安裝任何專案。
+-   創建用於測試的 Windows 虛擬機器，但不會在它上安裝任何內容。
 
-接著，部署指令碼會針對 Azure 上的共用儲存體設定 iSCSI 虛擬存放區域網路 (vSAN)。 在此範例中，iSCSI 會連線到共用存放裝置叢集。 在原始客戶解決方案中，會使用 GlusterFS。 不過，IBM 已不再支援此方法。 若要維護 IBM 的支援，您必須使用支援的 iSCSI 相容檔案系統。 Microsoft 提供儲存空間直接存取（S2D）做為選項。
+接著，部署指令碼會針對 Azure 上的共用儲存體設定 iSCSI 虛擬存放區域網路 (vSAN)。 在此示例中，iSCSI 連接到共用存儲群集。 在原始客戶解決方案中，使用了 GlusterFS。 但是，IBM 不再支援此方法。 要維護 IBM 的支援，您需要使用支援的 iSCSI 相容檔案系統。 微軟提供存儲空間直接 （S2D） 作為一個選項。
 
 此解決方案也為您提供安裝 iSCSI 目標做為單一 Windows 節點的選項。 iSCSI 透過 TCP/IP 提供共用區塊儲存體介面，它允許 DB2 pureScale 安裝程序使用裝置介面來連線到共用儲存體。
 
@@ -56,11 +56,11 @@ deploy.sh 指令碼會建立並設定此架構的 Azure 資源。 該指令碼�
 
 1.  在 Azure 上設定共用儲存體。 此步驟牽涉到至少兩個 Linux 節點。
 
-2.  在目標 Linux 伺服器上設定共用存放裝置叢集的 iSCSI 直接介面。
+2.  在共用存儲群集的目標 Linux 伺服器上設置 iSCSI 直接介面。
 
-3.  在 Linux 虛擬機器上設定 iSCSI 啟動器。 啟動器會使用 iSCSI 目標來存取共用存放裝置叢集。 如需設定詳細資料，請參閱 RootUsers 文件中的[如何在 Linux 中設定 iSCSI 目標與啟動器](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) \(英文\)。
+3.  在 Linux 虛擬機器上設定 iSCSI 啟動器。 發出者將使用 iSCSI 目標訪問共用存儲群集。 如需設定詳細資料，請參閱 RootUsers 文件中的[如何在 Linux 中設定 iSCSI 目標與啟動器](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) \(英文\)。
 
-4.  安裝 iSCSI 介面的共用儲存層。
+4.  安裝 iSCSI 介面的共用存儲層。
 
 在指令碼建立 iSCSI 裝置之後，最終步驟是安裝 DB2 pureScale。 在 DB2 pureScale 安裝期間，會編譯 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (先前稱為 GPFS) 並安裝在ˋ GlusterFS 叢集上。 這個叢集化檔案系統可讓 DB2 pureScale 在執行 Db2 pureScale 引擎的虛擬機器之間共用資料。 如需詳細資訊，請參閱 IBM 網站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文件 \(英文\)。
 
@@ -111,7 +111,7 @@ GitHub 存放庫包括 DB2server.rsp 回應檔 (.rsp)，此檔案可讓您產生
 
 - 安裝程式指令碼會為 iSCSI 磁碟使用別名，因此您可以輕鬆找到實際名稱。
 
-- 當安裝程式指令碼在 d0 上執行時， **/dev/dm-\*** 值在 d1、cf0 與 cf1 上可能會不同。 值的差異並不會影響 DB2 pureScale 設定。
+- 當安裝程式指令碼在 d0 上執行時，**/dev/dm-\*** 值在 d1、cf0 與 cf1 上可能會不同。 值的差異並不會影響 DB2 pureScale 設定。
 
 ## <a name="troubleshooting-and-known-issues"></a>疑難排解與已知問題
 

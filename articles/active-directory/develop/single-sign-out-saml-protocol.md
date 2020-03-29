@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701360"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
@@ -71,9 +71,9 @@ Azure AD 會傳送 `LogoutResponse` 以回應 `LogoutRequest` 元素。 下列�
 Azure AD 會設定 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會將 `InResponseTo` 元素設定為導出回應的 `LogoutRequest` 的 `ID` 屬性值。
 
 ### <a name="issuer"></a>簽發者
-Azure AD 會將此值設定為 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中 \<TenantIdGUID > 是 Azure AD 租使用者的租使用者識別碼。
+Azure AD 將此值`https://login.microsoftonline.com/<TenantIdGUID>/`設置\<到租戶 IdGUID>是 Azure AD 租戶的租戶 ID 的位置。
 
 若要評估 `Issuer` 元素的值，請使用應用程式註冊期間提供的 **應用程式識別碼 URI** 的值。
 
 ### <a name="status"></a>狀態
-Azure AD 使用 `Status` 元素中的 `StatusCode` 元素，來指出登出成功或失敗。當登出嘗試失敗時，`StatusCode` 元素也可以包含自訂錯誤訊息。
+Azure AD`StatusCode`使用元素中`Status`的元素來指示登出的成功或失敗。當登出嘗試失敗時，`StatusCode`該元素還可以包含自訂錯誤訊息。

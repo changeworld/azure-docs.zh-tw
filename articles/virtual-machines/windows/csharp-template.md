@@ -1,5 +1,5 @@
 ---
-title: 使用C#和 Resource Manager 範本部署 VM
+title: 使用 C# 和資源管理器範本部署 VM
 description: 了解如何使用 C# 和 Resource Manager 範本來部署 Azure VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 6d99c5ae91b80b9b6b9af08001b3a7c57bc7ca8f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944520"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>利用 C# 和 Resource Manager 範本來部署 Azure 虛擬機器
@@ -33,15 +33,15 @@ ms.locfileid: "78944520"
 
 在此步驟中，您會確定是否已安裝 Visual Studio，並建立用來部署此範本的主控台應用程式。
 
-1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 分頁上選取 [.NET 桌面開發]，然後按一下 [安裝]。 在摘要中，您可以看到系統自動為您選取 [NET Framework 4 – 4.6 開發工具]。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 .NET 工作負載。
-2. 在 Visual Studio 中，按一下 [檔案] > [新增] > [專案]。
-3. 在 [範本] > [Visual C#] 中，選取 [主控台應用程式 (.NET Framework)]，針對專案名稱輸入 myDotnetProject，選取專案的位置，然後按一下 [確定]。
+1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 分頁上選取 [.NET 桌面開發]****，然後按一下 [安裝]****。 在摘要中，您可以看到系統自動為您選取 [NET Framework 4 – 4.6 開發工具]****。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 .NET 工作負載。
+2. 在視覺化工作室中，按一下 **"檔** > **新專案** > **"。**
+3. 在**範本** > **視覺化 C++** 中，選擇**主控台應用 （.NET 框架），** 輸入*myDotnetProject*以獲取專案名稱，選擇專案的位置，然後按一下"**確定**"。
 
 ## <a name="install-the-packages"></a>安裝套件
 
 NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 若要取得在 Visual Studio 中所需要的程式庫，請執行下列步驟：
 
-1. 按一下 [工具] > [NuGet 套件管理員]，然後按一下 [Package Manager Console]。
+1. 按一下**工具** > **Nuget 包管理器**，然後按一下**包管理器主控台**。
 2. 在主控台中輸入下列命令：
 
     ```powershell
@@ -55,7 +55,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ### <a name="create-the-template-file"></a>建立範本檔案
 
-1. 在 [方案總管] 中，於 [myDotnetProject] 上按一下滑鼠右鍵 > [新增] > [新增項目]，然後選取 [Visual C# 項目] 中的 [文字檔]。 將檔案命名為 *CreateVMTemplate.json*，然後按一下 [新增]。
+1. 在解決方案資源管理器中，按右鍵*myDotnetProject* > **添加新** > **專案**，然後在*視覺化 C# 專案中*選擇**文字檔**。 將檔案命名為 *CreateVMTemplate.json*，然後按一下 [新增]****。
 2. 將此 JSON 程式碼新增到您建立的檔案中：
 
     ```json
@@ -165,9 +165,9 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ### <a name="create-the-parameters-file"></a>建立參數檔案
 
-若要在範本中指定資源參數的值，請建立包含值的參數檔案。
+要指定範本中資源參數的值，請創建包含這些值的參數檔。
 
-1. 在 [方案總管] 中，於 [myDotnetProject] 上按一下滑鼠右鍵 > [新增] > [新增項目]，然後選取 [Visual C# 項目] 中的 [文字檔]。 將檔案命名為 *Parameters.json*，然後按一下 [新增]。
+1. 在解決方案資源管理器中，按右鍵*myDotnetProject* > **添加新** > **專案**，然後在*視覺化 C# 專案中*選擇**文字檔**。 將檔案命名為 *Parameters.json*，然後按一下 [新增]****。
 2. 將此 JSON 程式碼新增到您建立的檔案中：
 
     ```json
@@ -187,7 +187,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 在部署範本之前，請先確定您可以存取 [Active Directory 服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 從服務主體中，您會取得向 Azure Resource Manager 驗證要求的權杖。 您還應該記錄授權檔中所需的應用程式識別碼、驗證金鑰及租用戶識別碼。
 
-1. 在 [方案總管] 中，於 [myDotnetProject] 上按一下滑鼠右鍵 > [新增] > [新增項目]，然後選取 [Visual C# 項目] 中的 [文字檔]。 將檔案命名為 *azureauth.properties*，然後按一下 [新增]。
+1. 在解決方案資源管理器中，按右鍵*myDotnetProject* > **添加新** > **專案**，然後在*視覺化 C# 專案中*選擇**文字檔**。 將檔案命名為 *azureauth.properties*，然後按一下 [新增]****。
 2. 新增下列授權屬性：
 
     ```
@@ -201,10 +201,10 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
     graphURL=https://graph.microsoft.com/
     ```
 
-    以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。
+    將**&lt;訂閱 ID&gt;** 替換為訂閱識別碼，**&lt;將應用程式&gt;ID**替換為 Active Directory 應用程式識別碼，**&lt;使用應用程式金鑰進行身份驗證金鑰&gt;**，將**&lt;租戶 ID&gt;** 替換為租戶識別碼。
 
 3. 儲存 azureauth.properties 檔案。
-4. 設定 Windows 中名為 AZURE_AUTH_LOCATION 的環境變數，以及您所建立之授權檔案的完整路徑，例如，您可以使用下列 PowerShell 命令：
+4. 在名為 AZURE_AUTH_LOCATION 的 Windows 中設置一個環境變數，該變數包含您創建的授權檔的完整路徑，例如，可以使用以下 PowerShell 命令：
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -214,7 +214,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ## <a name="create-the-management-client"></a>建立管理用戶端
 
-1. 開啟您所建立之專案的 Program.cs 檔案。 然後，將這些 using 語句新增至檔案頂端的現有語句：
+1. 打開您創建的專案的Program.cs檔。 然後，將這些使用語句添加到檔頂部的現有語句：
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -325,11 +325,11 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 此主控台應用程式從開始到完成的完整執行應該需要五分鐘左右。 
 
-1. 若要執行主控台應用程式，請按一下 [啟動]。
+1. 若要執行主控台應用程式，請按一下 [啟動]****。
 
 2. 在您按 **Enter** 以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的資源建立情況。 請按一下部署狀態來查看該項部署的相關資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如果部署有問題，下一個步驟就是查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](../../resource-manager-common-deployment-errors.md)。
+* 如果部署出現問題，下一步是查看[Azure 資源管理器中常見的 Azure 部署錯誤。](../../resource-manager-common-deployment-errors.md)
 * 檢閱[使用 C# 來部署 Azure 虛擬機器](csharp.md)，以了解如何部署虛擬機器及支援它的資源。

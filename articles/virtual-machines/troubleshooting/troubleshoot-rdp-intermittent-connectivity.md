@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918218"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中的遠端桌面時常斷線
@@ -34,7 +34,7 @@ ms.locfileid: "77918218"
 
 ## <a name="solution"></a>解決方法
 
-在遵循下列步驟之前，[請擷取受影響虛擬機器作業系統磁碟的快照集](../windows/snapshot-copy-managed-disk.md)作為備份。 
+在按照這些步驟之前，先將受影響 VM 的[OS 磁片快照](../windows/snapshot-copy-managed-disk.md)作為備份。 
 
 若要針對此問題進行疑難排解，請使用「序列控制項」，或藉由將 VM 的 OS 磁碟連結至復原 VM 來[修復離線的 VM](#repair-the-vm-offline)。
 
@@ -87,12 +87,12 @@ ms.locfileid: "77918218"
 
 ### <a name="repair-the-vm-offline"></a>修復離線的 VM
 
-1. [將 OS 磁碟連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
-2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]。 記下指派給已連結 OS 磁碟的磁碟機代號。
+1. [將作業系統磁片附加到恢復 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給已連結 OS 磁碟的磁碟機代號。
 3. 在您連接的 OS 磁碟上，瀏覽至 **\windows\system32\config** 資料夾。 複製此資料夾中的所有檔案作為備份，以在需要復原時使用。
 4. 啟動 [登錄編輯程式] (regedit.exe)。
-5. 選取 [HKEY_LOCAL_MACHINE] 機碼。 在功能表上，選取 [檔案] >  **[載入 Hive]** ：
-6. 在您連結的 OS 磁碟上，瀏覽至 **\windows\system32\config\SYSTEM** 資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE] 機碼下方。 載入 **HKEY_LOCAL_MACHINE** 機碼下的軟體 hive **\windows\system32\config\SOFTWARE**。 針對 Hive 軟體的名稱，輸入 **BROKENSOFTWARE**。 
+5. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上，選擇**檔** > **載入蜂巢**：
+6. 流覽到您連接的作業系統磁片上的 **[windows_system32_config_SYSTEM] 系統**資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。 載入 **HKEY_LOCAL_MACHINE** 機碼下的軟體 hive **\windows\system32\config\SOFTWARE**。 針對 Hive 軟體的名稱，輸入 **BROKENSOFTWARE**。 
 7. 開啟提升權限的命令提示字元視窗 (**以系統管理員身分執行**)，並執行其餘步驟中的命令，以重設 RDP 組態。 
 8. 將 RDP 安全性階層降低至 0，好讓伺服器和用戶端之間的通訊會使用原生 RDP 加密：
 

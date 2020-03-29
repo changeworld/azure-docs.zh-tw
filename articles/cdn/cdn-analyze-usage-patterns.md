@@ -1,6 +1,6 @@
 ---
 title: 來自 Verizon 的核心報告 | Microsoft Docs
-description: 您可以使用下列報告，來檢視 CDN 使用模式：頻寬、 傳輸資料量、 點擊、 快取狀態、 快取點擊率，IPV4/IPV6 傳送的資料。
+description: 您可以使用下列報告檢視 CDN 的使用模式：頻寬、傳輸的資料、點擊、快取狀態、快取點擊率、已傳輸的 IPV4/IPV6 資料。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594150"
 ---
 # <a name="core-reports-from-verizon"></a>來自 Verizon 的核心報告
@@ -35,25 +35,25 @@ ms.locfileid: "67594150"
 * 已轉送的 IPV4/IPV6 資料
 
 ## <a name="accessing-verizon-core-reports"></a>存取 Verizon 核心報告
-1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理]  按鈕。
+1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
    
     ![CDN 設定檔 [管理] 按鈕](./media/cdn-reports/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [分析]  索引標籤上，然後將滑鼠移至 [核心報告]  飛出視窗上。 按一下功能表中的報告。
+2. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [核心報告]**** 飛出視窗上。 按一下功能表中的報告。
    
     ![CDN 管理入口網站 - 核心報告功能表](./media/cdn-reports/cdn-core-reports.png)
 
-3. 針對每個報告，請從 [日期範圍]  清單選取日期範圍。 您可以選取預先定義的日期範圍，例如 [今天]  或 [本週]  ，或者可以選取 [自訂]  並按一下日曆圖示，手動輸入日期範圍。 
+3. 針對每個報告，請從 [日期範圍]**** 清單選取日期範圍。 您可以選取預先定義的日期範圍，例如 [今天]**** 或 [本週]****，或者可以選取 [自訂]**** 並按一下日曆圖示，手動輸入日期範圍。 
 
-4. 選取日期範圍之後，按一下 [執行]  以產生報告。 
+4. 選取日期範圍之後，按一下 [執行]**** 以產生報告。 
 
-4. 如果您需要以 Excel 格式匯出資料，請按一下 [執行]  按鈕上面的 Excel 圖示。
+4. 如果您需要以 Excel 格式匯出資料，請按一下 [執行]**** 按鈕上面的 Excel 圖示。
 
 ## <a name="bandwidth"></a>頻寬
 頻寬報告由圖形和資料表所組成，指出 HTTP 與 HTTPS 在特定期間的 CDN 頻寬使用量 (以 Mbp 為單位)。 您可以跨所有 POP 或針對特定 POP 檢視頻寬使用量。 此報告可讓您檢視流量尖峰和 POP 的分佈。
 
-從 [邊緣節點]  清單中，選取 [所有邊緣節點]  ，從所有節點查看流量，或選擇特定的區域。
+從 [邊緣節點]**** 清單中，選取 [所有邊緣節點]****，從所有節點查看流量，或選擇特定的區域。
 
 報告每五分鐘更新一次。
 
@@ -62,7 +62,7 @@ ms.locfileid: "67594150"
 ## <a name="data-transferred"></a>傳輸的資料
 此報告由圖形和資料表所組成，指出 HTTP 與 HTTPS 在特定期間的 CDN 流量使用量 (以 GB 為單位)。 您可以跨所有 POP 或針對特定 POP 檢視流量使用量。 此報告可讓您檢視整個 POP 的流量尖峰與分佈。
 
-從 [邊緣節點]  清單中，選取 [所有邊緣節點]  ，從所有節點查看流量，或選擇特定的區域。
+從 [邊緣節點]**** 清單中，選取 [所有邊緣節點]****，從所有節點查看流量，或選擇特定的區域。
 
 報告每五分鐘更新一次。
 
@@ -86,27 +86,27 @@ ms.locfileid: "67594150"
 ![快取狀態報告](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>主要的快取狀態包括：
-* TCP_HIT:從 edge server 所提供。 此物件在快取中且不超過其 max-age。
-* TCP_MISS:從原始伺服器提供。 此物件不在快取中，但回應會回到來源。
-* TCP_EXPIRED _MISS:利用來源重新驗證之後從原始伺服器提供。 此物件在快取中但超過其 max-age。 利用來源進行重新驗證會導致來自來源的新回應取代快取物件。
-* TCP_EXPIRED _HIT:利用來源重新驗證之後從邊緣提供。 此物件在快取中但超過其 max-age。 利用原始伺服器進行重新驗證會導致未經修改的快取物件。
+* TCP_HIT：從邊緣伺服器提供。 此物件在快取中且不超過其 max-age。
+* TCP_MISS：從原始伺服器提供。 此物件不在快取中，但回應會回到來源。
+* TCP_EXPIRED_MISS：利用來源重新驗證之後，從原始伺服器提供。 此物件在快取中但超過其 max-age。 利用來源進行重新驗證會導致來自來源的新回應取代快取物件。
+* TCP_EXPIRED _HIT：利用來源重新驗證之後從邊緣提供。 此物件在快取中但超過其 max-age。 利用原始伺服器進行重新驗證會導致未經修改的快取物件。
 
 ### <a name="full-list-of-cache-statuses"></a>快取狀態的完整清單
 * TCP_HIT - 直接從 POP 提供要求給用戶端時會回報此狀態。 當資產在最接近用戶端的 POP 上快取且具有有效的存留時間 (TTL) 時，它會立即由 POP 提供。 TTL 由下列回應標頭決定：
   
   * Cache-Control: s-maxage
   * Cache-Control: max-age
-  * Expires
-* TCP_MISS:這個狀態指出，要求資產的快取的版本已找不到最接近用戶端的 POP 上。 資產會從原始伺服器或原始保護盾伺服器要求。 如果原始伺服器或原始保護盾伺服器傳回資產，它會提供給用戶端並在用戶端及邊緣伺服器上快取。 否則，會傳回非 200 狀態碼 (例如，403 禁止或 404 找不到)。
-* TCP_EXPIRED_HIT:當目標 ttl 過期的資產的要求已直接從 POP 提供給用戶端時，會回報此狀態。 例如，當資產的 max-age 過期時。 
+  * 到期 (Expires)
+* TCP_MISS：這個狀態指出最接近用戶端的 POP 上找不到要求資產的快取版本。 資產會從原始伺服器或原始保護盾伺服器要求。 如果原始伺服器或原始保護盾伺服器傳回資產，它會提供給用戶端並在用戶端及邊緣伺服器上快取。 否則，會傳回非 200 狀態碼 (例如，403 禁止或 404 找不到)。
+* TCP_EXPIRED_HIT：當要求的目標是 TTL 已過期的資產，且該要求會直接從 POP 提供給用戶端時，就會回報此狀態。 例如，當資產的 max-age 過期時。 
   
    過期的要求通常會導致對原始伺服器提出重新驗證要求。 為了讓 TCP_EXPIRED_HIT 狀態發生，原始伺服器必須指出較新版的資產不存在。 這種情況通常會導致更新資產的快取控制項和過期標頭。
-* TCP_EXPIRED_MISS:當較新版本的過期的快取資產從 POP 提供給用戶端時，會回報此狀態。 當快取資產的 TTL 過期 (例如過期的 max-age) 且原始伺服器傳回較新版本的資產時，就會發生此狀態。 新版的資產將提供給用戶端而不是快取版本。 此外，它將會在邊緣伺服器和用戶端上快取。
-* CONFIG_NOCACHE:這個狀態表示，客戶專屬組態邊緣 POP 防止資產被快取。
+* TCP_EXPIRED_MISS：當較新版本的過期快取資產從 POP 提供給用戶端時，就會回報此狀態。 當快取資產的 TTL 過期 (例如過期的 max-age) 且原始伺服器傳回較新版本的資產時，就會發生此狀態。 新版的資產將提供給用戶端而不是快取版本。 此外，它將會在邊緣伺服器和用戶端上快取。
+* CONFIG_NOCACHE：這個狀態指出邊緣 POP 上的客戶專屬組態會防止快取資產。
 * NONE - 這個狀態指出快取內容的有效性檢查並未執行。
-* TCP_CLIENT_REFRESH_MISS:當 HTTP 用戶端，例如瀏覽器，強制邊緣 POP 從原始伺服器擷取新版的過時資產時，會回報此狀態。 根據預設，伺服器可以防止 HTTP 用戶端強制邊緣伺服器從原始伺服器擷取新版的資產。
-* TCP_PARTIAL_HIT:當位元組範圍要求導致部分快取資產的點擊時，會回報此狀態。 要求的位元組範圍會立即從 POP 提供給用戶端。
-* UNCACHEABLE:當資產的就會回報此狀態`Cache-Control`和`Expires`標頭會指出，它應該不會快取在 POP 上或由 HTTP 用戶端。 這些要求類型會由原始伺服器提供。
+* TCP_CLIENT_REFRESH_MISS：當 HTTP 用戶端 (例如瀏覽器) 強制邊緣 POP 從原始伺服器擷取新版的過時資產時，就會傳回此狀態。 根據預設，伺服器可以防止 HTTP 用戶端強制邊緣伺服器從原始伺服器擷取新版的資產。
+* TCP_PARTIAL_HIT：當位元組範圍要求導致部分快取資產的點擊時，就會傳回此狀態。 要求的位元組範圍會立即從 POP 提供給用戶端。
+* UNCACHEABLE：當資產的 `Cache-Control` 和 `Expires` 標頭指出不應該在 POP 上或由 HTTP 用戶端將其快取時，就會傳回此狀態。 這些要求類型會由原始伺服器提供。
 
 ## <a name="cache-hit-ratio"></a>快取點擊率
 此報告指出直接從快取處理的快取要求百分比。
@@ -119,11 +119,11 @@ ms.locfileid: "67594150"
 
 報告不包含：
 
-* 因國家/地區篩選選項而拒絕的要求。
+* 由於國家/地區篩選選項而被拒絕的請求。
 * 資產的要求，其標頭指出他們不應該快取。 例如，`Cache-Control: private`、`Cache-Control: no-cache` 或 `Pragma: no-cache` 標頭可防止資產受到快取。
 * 部分快取內容的位元組範圍要求。
 
-公式是：(TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
+公式為：(TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
 ![快取點擊率報告](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

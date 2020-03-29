@@ -1,5 +1,5 @@
 ---
-title: 適用于 Windows 的 Azure N 系列 GPU 驅動程式設定
+title: 適用于 Windows 的 Azure N 系列 GPU 驅動程式設置
 description: 如何針對 Azure 中執行 Windows Server 或 Windows 的 N 系列虛擬機器設定 NVIDIA GPU 驅動程式
 services: virtual-machines-windows
 author: cynthn
@@ -15,10 +15,10 @@ ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 631266f983886e3ca34d609b425f8a71b808b39f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919391"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式 
@@ -41,7 +41,7 @@ ms.locfileid: "77919391"
 
 ## <a name="verify-driver-installation"></a>確認驅動程式安裝
 
-請注意，只有在安裝方格驅動程式時，才能存取 Nvidia 控制台。 如果您已安裝 CUDA 驅動程式，將不會顯示 Nvidia 控制台。
+請注意，Nvidia 控制台只能通過 GRID 驅動程式安裝進行訪問。 如果已安裝 CUDA 驅動程式，則 Nvidia 控制台將不可見。
 
 您可以在 [裝置管理員] 中確認驅動程式安裝。 下列範例會顯示 Azure NC VM 上成功的 Tesla K80 卡組態。
 
@@ -51,7 +51,7 @@ ms.locfileid: "77919391"
 
 1. 開啟命令提示字元然後變更位置到 **C:\Program Files\NVIDIA Corporation\NVSMI** 目錄中。
 
-2. 執行 `nvidia-smi`。 如果已安裝驅動程式，您會看到類似以下的輸出。 除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util] 會顯示 **0%** 。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
+2. 執行 `nvidia-smi`。 如果已安裝驅動程式，您會看到類似以下的輸出。 除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util]**** 會顯示 **0%**。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
 
 ![NVIDIA 裝置狀態](./media/n-series-driver-setup/smi.png)  
 

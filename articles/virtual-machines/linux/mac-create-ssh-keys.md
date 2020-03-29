@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中建立和使用 Linux Vm 的 SSH 金鑰組
+title: 在 Azure 中為 Linux VM 創建和使用 SSH 金鑰組
 description: 如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組，以改善驗證程序的安全性。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969048"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步驟：在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組
@@ -21,7 +21,7 @@ ms.locfileid: "78969048"
 > [!NOTE]
 > 使用 SSH 金鑰建立的 VM 預設會設定為停用密碼，這會大幅增加暴力密碼破解猜測嘗試的困難度。 
 
-如需詳細的背景和範例，請參閱[建立 SSH 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
+有關更多背景和示例，請參閱[創建 SSH 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
 
 如需在 Windows 電腦上產生及使用 SSH 金鑰的其他方式，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
 
@@ -29,9 +29,9 @@ ms.locfileid: "78969048"
 
 ## <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
 
-使用 `ssh-keygen` 命令來產生 SSH 公開和私密金鑰檔案。 根據預設，這些檔案會建立在 ~/.ssh 目錄中。 您可以指定不同位置和選擇性密碼 (「複雜密碼」) 來存取私密金鑰檔案。 如果指定位置中存在相同名稱的 SSH 金鑰組，則系統會覆寫那些檔案。
+使用 `ssh-keygen` 命令來產生 SSH 公開和私密金鑰檔案。 根據預設，這些檔案會建立在 ~/.ssh 目錄中。 您可以指定不同位置和選擇性密碼 (「複雜密碼」**) 來存取私密金鑰檔案。 如果指定位置中存在相同名稱的 SSH 金鑰組，則系統會覆寫那些檔案。
 
-下列命令會使用 RSA 加密建立 SSH 金鑰組，而位長度為4096：
+以下命令使用 RSA 加密創建 SSH 金鑰組，其位長度為 4096：
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
@@ -48,7 +48,7 @@ az vm create --name VMname --resource-group RGname --generate-ssh-keys
 若要建立使用 SSH 金鑰進行驗證的 Linux VM，請在使用 Azure 入口網站、Azure CLI、Azure Resource Manager 範本或其他方法建立 VM 時，指定您的 SSH 公開金鑰：
 
 * [使用 Azure 入口網站建立 Linux 虛擬機器](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 Azure CLI 建立 Linux 虛擬機器](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure CLI 創建 Linux 虛擬機器](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure 範本建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 如果您不熟悉 SSH 公開金鑰的格式，可以使用下列 `cat` 命令顯示您的公開金鑰，如果需要，將 `~/.ssh/id_rsa.pub` 取代為您自己的公開金鑰檔案的路徑和檔案名稱：
@@ -63,7 +63,7 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-如果您在 Azure 入口網站或 Resource Manager 範本中複製和貼上要使用之公開金鑰檔案的內容，請確定您並未複製任何結尾空白字元。 若要在 macOS 中複製公開金鑰，您可以使用管線將公用金鑰檔案傳送至 `pbcopy`。 同樣地，在 Linux 中，您可以透過管道將公用金鑰檔案傳送至程式，例如 `xclip`。
+如果您在 Azure 入口網站或 Resource Manager 範本中複製和貼上要使用之公開金鑰檔案的內容，請確定您並未複製任何結尾空白字元。 要在 macOS 中複製公開金鑰，可以將公開金鑰檔傳送到`pbcopy`。 同樣，在 Linux 中，可以將公開金鑰檔傳送到程式`xclip`（如 ）
 
 您放置在 Azure 中 Linux VM 上的公開金鑰預設會儲存在 ~/.ssh/id_rsa.pub 中，除非您在建立金鑰組時指定不同的位置。 若要使用 [Azure CLI 2.0](/cli/azure) 搭配現有公開金鑰來建立 VM，可以使用 [az vm create](/cli/azure/vm#az-vm-create) 命令加上 `--ssh-key-values` 選項，來指定這個公開金鑰的值並選擇性地指定位置。 在下列命令中，將 *VMname*、*RGname* 和 *keyFile* 取代為您自己的值：
 
@@ -71,7 +71,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
 ```
 
-如果您想要搭配 VM 使用多個 SSH 金鑰，您可以在以空格分隔的清單中輸入它們，如下列 `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`。
+如果要將多個 SSH 金鑰與 VM 一起使用，則可以在空間分隔清單中輸入它們，如下所示`--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`。
 
 
 ## <a name="ssh-into-your-vm"></a>透過 SSH 連線到您的 VM

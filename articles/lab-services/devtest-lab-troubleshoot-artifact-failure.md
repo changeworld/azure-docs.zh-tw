@@ -1,6 +1,6 @@
 ---
-title: 診斷 Azure DevTest Labs 虛擬機器中的構件失敗
-description: DevTest Labs 提供的資訊可讓您用來診斷構件失敗。 本文說明如何針對成品失敗進行疑難排解。
+title: 診斷 Azure 開發人員測試實驗室虛擬機器中的專案故障
+description: DevTest Labs 提供的資訊可用於診斷專案故障。 本文介紹如何排除專案故障。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760312"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>針對實驗室中的構件失敗進行診斷 
@@ -34,11 +34,11 @@ ms.locfileid: "76760312"
 
 1. 在 Azure 入口網站的資源清單中選取您的實驗室。
 2. 選擇您要調查之構件所在的 Windows VM。
-3. 在左面板的 [一般] 下，選取 [構件]。 與該 VM 相關聯的構件清單隨即出現。 清單中會指出構件的名稱及構件狀態。
+3. 在左面板的 [一般]**** 下，選取 [構件]****。 與該 VM 相關聯的構件清單隨即出現。 清單中會指出構件的名稱及構件狀態。
 
    ![構件狀態](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. 選取顯示 [失敗] 狀態的構件。 構件會隨即開啟。 系統會顯示延伸訊息，其中包含有關構件失敗的詳細資料。
+4. 選取顯示 [失敗]**** 狀態的構件。 構件會隨即開啟。 系統會顯示延伸訊息，其中包含有關構件失敗的詳細資料。
 
    ![構件錯誤訊息](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
@@ -46,13 +46,13 @@ ms.locfileid: "76760312"
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>針對虛擬機器中的構件失敗進行疑難排解
 
 1. 登入您要診斷之構件所在的 VM。
-2. 移至 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 是 Azure 自訂指令碼延伸模組的版本號碼。
+2. 移至 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9** \Status，其中 1.9** 是 Azure 自訂指令碼延伸模組的版本號碼。
 
    ![狀態檔案](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
 3. 開啟**狀態**檔案。
 
-如需有關在**linux** VM 上尋找記錄檔的指示，請參閱下列文章：搭配[Linux 虛擬機器使用 Azure 自訂腳本擴充功能第2版](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+有關在**Linux** VM 上查找日誌檔的說明，請參閱以下文章：將[Azure 自訂腳本擴展版本 2 與 Linux 虛擬機器一起使用](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相關部落格文章

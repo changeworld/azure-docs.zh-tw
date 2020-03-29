@@ -1,5 +1,5 @@
 ---
-title: 規劃從傳統遷移至 Azure Resource Manager
+title: 規劃從經典資源管理器遷移到 Azure 資源管理器
 description: 將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 62cc33b9cfe1a0dc96f0a6a771b753ff48bfb9f4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919544"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 
 > [!IMPORTANT]
-> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 今天，大約 90% 的 IaaS VM 正在使用[Azure 資源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，經典 VM 已被棄用，將于 2023 年 3 月 1 日完全停用。 [詳細瞭解]( https://aka.ms/classicvmretirement)此棄用[及其如何影響您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
 
 雖然 Azure Resource Manager 提供了許多令人讚嘆的功能，但請務必詳加規劃您的移轉作業，以確保一切順利進行。 詳細規劃可確保您在執行移轉活動期間不會遇到問題。
 
@@ -114,9 +114,9 @@ ms.locfileid: "77919544"
 
 - **可用性設定組** - 若要將虛擬網路 (vNet) 移轉到 Azure Resource Manager，傳統部署 (也就是雲端服務) 所包含的 VM 必須全部位在一個可用性設定組中，或是所有 VM 均不能在任何可用性設定組中。 雲端服務中有一個以上的可用性設定組與 Azure Resource Manager 不相容，將會中止移轉。  此外，不能有一些 VM 在可用性設定組中，而一些 VM 則不在可用性設定組中。 若要解決此問題，您必須修復或重新改組雲端服務。  因為這可能會耗費大量時間，請詳細規劃。
 
-- **Web/背景工作角色部署** - 無法將包含 Web 和背景工作角色的雲端服務移轉至 Azure Resource Manager。 若要遷移 web 和背景工作角色的內容，您必須將程式碼本身遷移至較新的 PaaS 應用程式服務（此討論已超出本檔的範圍）。 如果您想要將 web/背景工作角色保持原狀，但將傳統 Vm 遷移至 Resource Manager 部署模型，則必須先從虛擬網路移除 web/背景工作角色，才能開始進行遷移。  一般的解決方法是將 web/背景工作角色實例移至另一個也連結到 ExpressRoute 線路的傳統虛擬網路。 在先前的重新部署案例中，建立新的傳統虛擬網路，將 web/背景工作角色移動/重新部署到新的虛擬網路，然後從要移動的虛擬網路刪除部署。 不需要變更程式碼。 新的[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)功能可用來將包含 Web/背景工作角色的傳統虛擬網路與在相同 Azure 區域中的其他虛擬網路 (例如要移轉的虛擬網路) 形成對等互連 (**在虛擬網路移轉完成之後，因為不能移轉已形成對等互連的虛擬網路**)，因此可提供相同功能，而不會損失效能且沒有延遲/頻寬罰則。 由於新增了[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)，現在可輕鬆地移轉Web/背景工作角色部署，而不會封鎖對 Azure Resource Manager 的移轉。
+- **Web/背景工作角色部署** - 無法將包含 Web 和背景工作角色的雲端服務移轉至 Azure Resource Manager。 要遷移 Web 和輔助角色的內容，您需要將代碼本身遷移到較新的 PaaS 應用服務（此討論超出了本文檔的範圍）。 如果要保留 Web/輔助角色，但要將經典 VM 遷移到資源管理器部署模型，必須先從虛擬網路中刪除 Web/輔助角色，然後才能開始遷移。  典型的解決方案是只需將 Web/輔助角色實例移動到還連結到 ExpressRoute 電路的單獨經典虛擬網路。 在前一個重新部署案例中，創建新的 Classic 虛擬網路，將 Web/輔助角色移動/重新部署到該新虛擬網路，然後從移動的虛擬網路中刪除部署。 不需要變更程式碼。 新的[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)功能可用來將包含 Web/背景工作角色的傳統虛擬網路與在相同 Azure 區域中的其他虛擬網路 (例如要移轉的虛擬網路) 形成對等互連 (**在虛擬網路移轉完成之後，因為不能移轉已形成對等互連的虛擬網路**)，因此可提供相同功能，而不會損失效能且沒有延遲/頻寬罰則。 由於新增了[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)，現在可輕鬆地移轉Web/背景工作角色部署，而不會封鎖對 Azure Resource Manager 的移轉。
 
-- **Azure Resource Manager 配額** - Azure 區域對於傳統和 Azure Resource Manager 有個別的配額/限制。 即使在未取用新硬體的移轉案例中 *(我們正在將現有的 VM 從傳統交換至 Azure Resource Manager)* ，Azure Resource Manager 配額仍必須具有足夠的容量，才可開始進行移轉。 下列是我們發現會造成問題的主要限制。  開啟配額支援票證來提高限制。
+- **Azure Resource Manager 配額** - Azure 區域對於傳統和 Azure Resource Manager 有個別的配額/限制。 即使在未取用新硬體的移轉案例中 *(我們正在將現有的 VM 從傳統交換至 Azure Resource Manager)*，Azure Resource Manager 配額仍必須具有足夠的容量，才可開始進行移轉。 下列是我們發現會造成問題的主要限制。  開啟配額支援票證來提高限制。
 
     > [!NOTE]
     > 必須在與您要移轉的目前環境相同的區域中提高這些限制。
@@ -134,19 +134,19 @@ ms.locfileid: "77919544"
 
 
 
-    **計算** *（核心、可用性設定組）*
+    **計算** *(核心，可用性設定組)*
 
     ```powershell
     Get-AzVMUsage -Location <azure-region>
     ```
 
-    **網路** *（虛擬網路、靜態公用 Ip、公用 Ip、網路安全性群組、網路介面、負載平衡器、路由表）*
+    **網路** *(虛擬網路、靜態公用 IP、公用 IP、網路安全性群組、網路介面、負載平衡器、路由表)*
 
     ```powershell
     Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **儲存體** *（儲存體帳戶）*
+    **儲存體** *(儲存體帳戶)*
 
     ```powershell
     Get-AzStorageUsage
@@ -205,7 +205,7 @@ ms.locfileid: "77919544"
 
 - [角色型存取控制](../../role-based-access-control/overview.md)。
 - [Azure Resource Manager 範本使得部署更容易且更受控制](../../azure-resource-manager/templates/overview.md)。
-- [標籤](../../azure-resource-manager/management/tag-resources.md)。
+- [標記](../../azure-resource-manager/management/tag-resources.md)。
 - [活動控制](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure 原則](../../governance/policy/overview.md)
 

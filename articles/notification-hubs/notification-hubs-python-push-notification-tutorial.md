@@ -1,6 +1,6 @@
 ---
 title: 如何透過 Python 使用通知中樞
-description: 瞭解如何從 Python 應用程式使用 Azure 通知中樞。
+description: 瞭解如何使用 Python 應用程式中的 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76313822"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何透過 Python 使用通知中樞
@@ -301,7 +301,7 @@ hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
 通知中樞傳送要求 HTTP URL 會附加 "test" 查詢字串作為結果。
 
-## <a name="complete-tutorial"></a>完成教學課程
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>完成教學課程
 
 現在您可以透過從 Python 後端傳送通知，來完成開始使用教學課程。
 

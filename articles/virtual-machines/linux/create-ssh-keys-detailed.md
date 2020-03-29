@@ -1,5 +1,5 @@
 ---
-title: 建立 SSH 金鑰組的詳細步驟
+title: 創建 SSH 金鑰組的詳細步驟
 description: 了解在 Azure 中建立和管理 Linux VM 的 SSH 公開和私密金鑰組的詳細步驟。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969544"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰 
@@ -64,7 +64,7 @@ ssh-keygen \
 
 `ssh-keygen` = 用來建立金鑰的程式
 
-`-m PEM` = 將金鑰格式化為 PEM
+`-m PEM`• 將金鑰格式化為 PEM
 
 `-t rsa` = 要建立的金鑰類型，在此案例中採用 RSA 格式
 
@@ -120,7 +120,7 @@ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):`
 
-「強烈」建議您為私密金鑰加上複雜密碼。 若未使用複雜密碼來保護金鑰檔案，任何人只要擁有該檔案，就可以用它登入具有對應公開金鑰的任何伺服器。 新增複雜密碼可提升防護能力，以防有人能夠取得您的私密金鑰檔案，讓您有時間變更金鑰。
+「強烈」** 建議您為私密金鑰加上複雜密碼。 若未使用複雜密碼來保護金鑰檔案，任何人只要擁有該檔案，就可以用它登入具有對應公開金鑰的任何伺服器。 新增複雜密碼可提升防護能力，以防有人能夠取得您的私密金鑰檔案，讓您有時間變更金鑰。
 
 ## <a name="generate-keys-automatically-during-deployment"></a>在部署期間自動產生金鑰
 
@@ -162,7 +162,7 @@ ssh-keygen \
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-如果您在建立金鑰組時提供了複雜密碼，請在登入程序期間出現提示時輸入複雜密碼 (伺服器會新增至 `~/.ssh/known_hosts` 資料夾，而且系統不會要求您重新連線，除非 Azure VM 上的公開金鑰有變更或伺服器名稱已從 `~/.ssh/known_hosts` 中移除)。
+如果您在建立金鑰組時提供了複雜密碼，請在登入程序期間出現提示時輸入複雜密碼  (伺服器會新增至 `~/.ssh/known_hosts` 資料夾，而且系統不會要求您重新連線，除非 Azure VM 上的公開金鑰有變更或伺服器名稱已從 `~/.ssh/known_hosts` 中移除)。
 
 如果 VM 使用 Just-In-Time 存取原則，您必須先要求權限，才能連線到 VM。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
 
@@ -176,7 +176,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 eval "$(ssh-agent -s)"
 ```
 
-現在使用 `ssh-agent` 命令將私密金鑰加入至 `ssh-add`。
+現在使用 `ssh-add` 命令將私密金鑰加入至 `ssh-agent`。
 
 ```bash
 ssh-add ~/.ssh/id_rsa
@@ -236,5 +236,5 @@ ssh myvm
 接下來是使用新的 SSH 公開金鑰建立 Azure Linux VM。 相較於以預設登入方法密碼建立的 VM，以 SSH 公開金鑰作為登入所建立的 Azure VM 比較安全。
 
 * [使用 Azure 入口網站建立 Linux 虛擬機器](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 Azure CLI 建立 Linux 虛擬機器](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure CLI 創建 Linux 虛擬機器](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure 範本建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

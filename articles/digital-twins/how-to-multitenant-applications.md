@@ -1,5 +1,5 @@
 ---
-title: 啟用多租使用者應用程式-Azure 數位 Twins |Microsoft Docs
+title: 啟用多租戶應用程式 - Azure 數位孿生 |微軟文檔
 description: 如何為 Azure Digital Twins 設定多租用戶 Azure Active Directory 應用程式。
 ms.author: alinast
 author: alinamstanciu
@@ -9,21 +9,21 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264928"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure Digital Twins 啟用多租用戶應用程式
 
-在 Azure Digital Twins 上建置解決方案的開發人員，可能會發現他們想要使用單一服務或解決方案來支援多個客戶。 事實上，「多租用戶」應用程式是最常見的 Azure Digital Twins 設定。
+在 Azure Digital Twins 上建置解決方案的開發人員，可能會發現他們想要使用單一服務或解決方案來支援多個客戶。 事實上，「多租用戶」** 應用程式是最常見的 Azure Digital Twins 設定。
 
 本文件描述如何設定 Azure Digital Twins 應用程式，以支援數個 Azure Active Directory 租用戶和客戶。
 
 ## <a name="multitenancy"></a>多租用戶
 
-「多租用戶」資源是可支援多個客戶的單一佈建執行個體。 每個客戶都各自擁有自己的資料和權限。 每個客戶的體驗都彼此隔離，使其應用程式「檢視」皆不同。
+「多租用戶」** 資源是可支援多個客戶的單一佈建執行個體。 每個客戶都各自擁有自己的資料和權限。 每個客戶的體驗都彼此隔離，使其應用程式「檢視」皆不同。
 
 若要深入了解多租用戶，請閱讀 [Azure 中的多租用戶應用程式](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)。
 
@@ -54,14 +54,14 @@ ms.locfileid: "76264928"
 
 - **客戶**的 Azure Active Directory 租用戶管理員必須在 [Azure 入口網站](https://portal.azure.com)上執行下列步驟：
 
-  1. 在頂端**的 Azure**搜尋服務欄位中搜尋訂用帳戶。 選取 **訂用帳戶** 。
+  1. 在頂部 Azure 搜索欄位中搜索**訂閱**。 選擇**訂閱**。
   1. 選取有要用於**開發人員**之應用程式的 Azure Active Directory 租用戶的訂用帳戶。
 
-     [![Azure Active Directory 訂閱](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [![Azure Active Directory 訂用帳戶](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
-  1. 選取 [資源提供者]。
+  1. 選擇**資來源提供者**。
   1. 搜尋 **Microsoft.IoTSpaces**。
-  1. 選取 [註冊]。
+  1. 選取 [註冊]****。
 
      [![Azure Active Directory 資源提供者](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   

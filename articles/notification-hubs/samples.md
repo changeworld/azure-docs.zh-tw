@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中樞範例
-description: 可用的 Azure 通知中樞範例清單。
+title: Azure 通知中心示例
+description: 可用 Azure 通知中心示例的清單。
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263926"
 ---
-# <a name="azure-notification-hubs-samples"></a>Azure 通知中樞範例
+# <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例
 
-本文提供範例的連結，示範 Azure 通知中樞中的主要功能。
+本文提供了指向在 Azure 通知中心中演示關鍵功能的示例的連結。
 
 ## <a name="samples"></a>範例
 
@@ -34,4 +34,4 @@ ms.locfileid: "76263926"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱目錄的**教學**課程一節中的教學課程。
+請參閱**目錄教程部分**中的教程。

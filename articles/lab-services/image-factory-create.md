@@ -1,6 +1,6 @@
 ---
-title: 在 Azure DevTest Labs 中建立映射 factory |Microsoft Docs
-description: 本文說明如何使用 Git 存放庫（Azure DevTest Labs）中提供的範例腳本來設定自訂映射 factory。
+title: 在 Azure 開發人員測試實驗室中創建映射工廠 |微軟文檔
+description: 本文介紹如何使用 Git 存儲庫（Azure DevTest Labs）中提供的示例腳本來設置自訂映射工廠。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,49 +13,49 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c5a44a9505d4a312be521cdc3219c5e4ce95a42
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759443"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中建立自訂映射 factory
-本文說明如何使用[Git 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)中提供的範例腳本來設定自訂映射 factory。
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 開發人員測試實驗室中創建自訂映射工廠
+本文介紹如何使用[Git 存儲庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)中的示例腳本來設置自訂映射工廠。
 
-## <a name="whats-an-image-factory"></a>什麼是映射 factory？
-映射處理站是一種設定即程式碼的解決方案，會定期自動建立和散發影像，並具有所有所需的設定。 映射處理站中的影像一律是最新的，而且在整個程式自動化後，進行中的維護幾乎是零。 而且，由於所有必要的設定都已在映射中，因此在使用基底 OS 建立 VM 之後，會節省手動設定系統的時間。
+## <a name="whats-an-image-factory"></a>什麼是圖像工廠？
+映射工廠是一種按代碼配置的解決方案，它定期使用所有所需的配置自動生成和分發映射。 映射工廠中的圖像始終處於最新狀態，一旦整個過程自動化，持續維護幾乎為零。 而且，由於所有必需的配置都已在映射中，因此在使用基本作業系統創建 VM 後，它節省了手動設定系統的時間。
 
-在 DevTest Labs 中讓開發人員桌面進入就緒狀態的重要加速器，就是使用自訂映射。 自訂映射的缺點在於實驗室中有額外的維護。 例如，產品的試用版會在一段時間後過期（或）不會套用新發行的安全性更新，這會強制我們定期重新整理自訂映射。 使用映射處理站時，您可以在原始程式碼控制中簽入影像的定義，並具有根據定義產生自訂映射的自動化流程。
+在 DevTest Labs 中，將開發人員桌面安裝到就緒狀態的重要加速器是使用自訂映射。 自訂圖像的缺點是實驗室中還有額外的維護功能。 例如，產品試用版會隨著時間的推移過期（或）未應用新發佈的安全更新，這迫使我們定期刷新自訂映射。 使用映射工廠，您將映射的定義簽入到原始程式碼控制，並具有根據定義生成自訂映射的自動化過程。
 
-此解決方案可讓您從自訂映射建立虛擬機器的速度，同時排除額外的持續維護成本。 透過此解決方案，您可以自動建立自訂映射、將其散發給其他 DevTest Labs，以及淘汰舊的映射。 在下列影片中，您將瞭解映射處理站，以及如何使用 DevTest Labs 來實現它。  所有 Azure Powershell 腳本都可以免費使用，位於此處： [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory)。
+該解決方案可實現從自訂映射創建虛擬機器的速度，同時消除額外的持續維護成本。 使用此解決方案，您可以自動創建自訂映射、將其分發到其他 DevTest 實驗室，並停用舊映射。 在下面的視頻中，您將瞭解映射工廠以及如何使用 DevTest Labs 實現映射工廠。  所有 Azure Powershell 腳本都免費提供，並位於[https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory)此處： 。
 
 <br/>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Custom-Image-Factory-with-Azure-DevTest-Labs/player]
 
 
-## <a name="high-level-view-of-the-solution"></a>解決方案的高階觀點
-此解決方案可讓您從自訂映射建立虛擬機器的速度，同時排除額外的持續維護成本。 透過此解決方案，您可以自動建立自訂映射，並將其散發給其他 DevTest Labs。 您可以使用 Azure DevOps （之前稱為 Visual Studio Team Services）做為協調流程引擎，以便將 DevTest Labs 中的所有作業自動化。
+## <a name="high-level-view-of-the-solution"></a>解決方案的高級視圖
+該解決方案可實現從自訂映射創建虛擬機器的速度，同時消除額外的持續維護成本。 使用此解決方案，您可以自動創建自訂映射並將其分發到其他 DevTest 實驗室。 您可以使用 Azure DevOps（以前的視覺化工作室團隊服務）作為業務流程引擎，用於自動執行 DevTest 實驗室中的所有操作。
 
-![解決方案的高階觀點](./media/create-image-factory/high-level-view-of-solution.png)
+![解決方案的高級視圖](./media/create-image-factory/high-level-view-of-solution.png)
 
-有一個[適用于 DevTest Labs 的 VSTS 延伸](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)模組，可讓您執行下列個別步驟：
+DevTest Labs 的[VSTS 擴展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)使您能夠執行以下各個步驟：
 
 - 建立自訂影像
 - 建立 VM
 - 刪除 VM
-- 建立環境
+- 創建環境
 - 刪除環境
-- 填入環境
+- 填充環境
 
-使用 DevTest Labs 延伸模組是一種簡單的方式，可讓您在 DevTest Labs 中自動建立自訂映射。
+使用 DevTest Labs 擴展是在 DevTest 實驗室中自動創建自訂映射的簡便方法。
 
-有一個替代的執行方式，使用 PowerShell 腳本來進行更複雜的案例。 使用 PowerShell，您可以根據可在持續整合和持續傳遞（CI/CD）工具鏈中使用的 DevTest Labs，將映射工廠完全自動化。 此替代解決方案中所遵循的原則包括：
+對於更複雜的方案，使用 PowerShell 腳本有一個備用實現。 使用 PowerShell，您可以完全自動化基於 DevTest Labs 的圖像工廠，該實驗室可用於您的持續集成和連續交付 （CI/CD） 工具鏈。 此備用解決方案遵循的原則是：
 
-- 一般更新不需要變更映射 factory。 （例如，新增新的自訂映射類型、自動淘汰舊的映射、新增「端點」 DevTest Labs 以接收自訂映射等等）。
-- 一般變更受到原始程式碼控制（基礎結構即程式碼）的支援
-- 接收自訂映射的 DevTest Labs 可能不在相同的 Azure 訂用帳戶中（實驗室 span 訂閱）
-- PowerShell 腳本必須可重複使用，因此我們可以視需要啟動其他工廠
+- 常見更新不應對映射工廠進行任何更改。 （例如，添加新類型的自訂映射、自動停用舊映射、添加新的"終結點"DevTest Labs 以接收自訂映射等。
+- 常見更改由原始程式碼控制（基礎結構作為代碼）支援
+- 接收自訂映射的開發人員測試實驗室可能不在同一 Azure 訂閱中（實驗室跨訂閱）
+- PowerShell 腳本必須是可重用的，以便我們可以根據需要啟動其他工廠
 
 ## <a name="next-steps"></a>後續步驟
-繼續閱讀本節的下一篇文章：[從 Azure DevOps 執行映射 factory](image-factory-set-up-devops-lab.md)
+繼續學習本節中的下一篇文章：從[Azure DevOps 運行映射工廠](image-factory-set-up-devops-lab.md)

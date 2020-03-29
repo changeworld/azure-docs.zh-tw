@@ -1,7 +1,7 @@
 ---
-title: 執行 R 腳本：模組參考
+title: 執行 R 腳本：模組引用
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [執行 R 腳本] 模組來執行 R 程式碼。
+description: 瞭解如何在 Azure 機器學習中使用執行 R 腳本模組來運行 R 代碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,31 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79140768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064211"
 ---
 # <a name="execute-r-script"></a>執行 R 指令碼
 
-本文說明如何使用 [**執行 r 腳本**] 模組，在您的 Azure Machine Learning designer （預覽）管線中執行 r 程式碼。
+本文介紹如何使用執行 R**腳本**模組在 Azure 機器學習設計器（預覽）管道中運行 R 代碼。
 
-使用 R，您可以執行現有模組目前不支援的工作，例如： 
+使用 R，您可以執行現有模組當前不支援的任務，例如： 
 - 建立自訂資料轉換
-- 使用您自己的計量來評估預測
-- 使用未在設計工具中實作為獨立模組的演算法來建立模型
+- 使用您自己的指標評估預測
+- 使用設計器中未作為獨立模組實現的演算法構建模型
 
 ## <a name="r-version-support"></a>R 版本支援
 
-Azure Machine Learning 設計工具會使用 R 的 CRAN （全方位 R 封存網路）散發。目前使用的版本是 CRAN 3.5.1。
+Azure 機器學習設計器使用 R 的 CRAN（綜合 R 存檔網路）分發。當前使用的版本為 CRAN 3.5.1。
 
 ## <a name="supported-r-packages"></a>受支援的 R 套件
 
-R 環境已預先安裝了超過100個套件。 如需完整清單，請參閱[預先安裝的 R 套件](#pre-installed-r-packages)一節。
+R 環境預裝了 100 多個套裝軟體。 有關完整清單，請參閱[預先安裝 R 包](#pre-installed-r-packages)部分。
 
-您也可以將下列程式碼新增至任何**執行 R 腳本**模組，並查看已安裝的封裝。
+您還可以將以下代碼添加到任何**執行 R 腳本**模組，並查看已安裝的套裝軟體。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -44,9 +44,9 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>安裝 R 套件
-若要安裝其他 R 套件，請使用 `install.packages()` 方法。 請務必指定 CRAN 存放庫。 封裝會針對每個**執行 r 腳本**模組安裝，而且不會在其他**執行 r 腳本**模組之間共用。
+要安裝其他 R 包，`install.packages()`請使用 方法。 請務必指定 CRAN 存儲庫。 每個執行 R**腳本**模組都安裝了包，並且不會在其他**執行 R 腳本**模組之間共用。
 
-此範例說明如何安裝 Zoo：
+此示例演示如何安裝 Zoo：
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,12 +65,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > 請先檢查套件是否已存在，再加以安裝，以避免重複安裝。 如同上述範例程式碼中的 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重複安裝可能會導致 web 服務要求超時。     
+  > 請在安裝之前檢查包是否已存在，以避免重複安裝。 如`  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`上例代碼所示。 重複安裝可能會導致 Web 服務請求超時。     
 
 ## <a name="upload-files"></a>上傳檔案
-**執行 r 腳本**支援使用 AZURE MACHINE LEARNING R SDK 上傳檔案。
+**執行 R 腳本**支援使用 Azure 機器學習 R SDK 上載檔。
 
-下列範例顯示如何在**執行 R 腳本**中上傳影像檔：
+下面的示例演示如何在**執行 R 腳本**中上載影像檔：
 ```R
 
 # R version: 3.5.1
@@ -97,34 +97,34 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-成功提交管線之後，您可以在模組的右面板中預覽影像
+管道運行完成後，您可以在模組的右側面板中預覽圖像
 
-[!div class="mx-imgBorder"]
-![上傳-影像](media/module/upload-image-in-r-script.png)
+> [!div class="mx-imgBorder"]
+> ![上傳圖像](media/module/upload-image-in-r-script.png)
 
-## <a name="how-to-configure-execute-r-script"></a>如何設定執行 R 腳本
+## <a name="how-to-configure-execute-r-script"></a>如何配置執行 R 腳本
 
-[**執行 R 腳本**] 模組包含可用來做為起點的範例程式碼。 若要設定**執行 R 腳本**模組，請提供一組要執行的輸入和程式碼。
+**執行 R 腳本**模組包含示例代碼，您可以將這些代碼用作起點。 要配置**執行 R 腳本**模組，請提供一組要執行的輸入和代碼。
 
 ![R 模組](media/module/execute-r-script.png)
 
-載入此模組時，會自動將儲存在設計工具中的資料集轉換成 R 資料框架。
+使用此模組載入時，存儲在設計器中的資料集將自動轉換為 R 資料幀。
 
-1.  將 [**執行 R 腳本**] 模組新增至您的管線。
+1.  將**執行 R 腳本**模組添加到管道中。
 
   
 
-1. 連接腳本所需的任何輸入。 輸入是選擇性的，而且可以包含資料和其他 R 程式碼。
+1. 連接腳本所需的任何輸入。 輸入是可選的，可以包括資料和額外的 R 代碼。
 
-    * **Dataset1**：以 `dataframe1`參考第一個輸入。 輸入資料集的格式必須為 CSV、TSV、ARFF，或者您可以連接 Azure Machine Learning 資料集。
+    * **資料集1**：將第一個`dataframe1`輸入引用為 。 輸入資料集必須格式化為 CSV、TSV、ARFF，或者可以連接 Azure 機器學習資料集。
 
-    * **Dataset2**：參考第二個輸入做為 `dataframe2`。 此資料集也必須格式化為 CSV、TSV、ARFF 檔案，或做為 Azure Machine Learning 資料集。
+    * **資料集2**： 將第二`dataframe2`個輸入引用為 。 此資料集還必須格式化為 CSV、TSV、ARFF 檔或 Azure 機器學習資料集。
 
-    * **腳本**配套：第三個輸入接受 ZIP 檔案。 Zip 壓縮檔案可以包含多個檔案和多個檔案類型。
+    * **腳本捆綁**包 ：第三個輸入接受 ZIP 檔。 壓縮的檔可以包含多個檔和多個檔案類型。
 
-1. 在 [ **R 腳本**] 文字方塊中，輸入或貼上有效的 R 腳本。
+1. 在**R 腳本**文字方塊中，鍵入或粘貼有效的 R 腳本。
 
-    為了協助您開始使用，[ **R 腳本**] 文字方塊會預先填入範例程式碼，可供您編輯或取代。
+    為了説明您入門 **，R Script**文字方塊預填充了示例代碼，您可以對其進行編輯或替換。
     
     ```R
     # R version: 3.5.1
@@ -146,50 +146,50 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
- * 腳本必須包含名為 `azureml_main`的函式，這是此模組的進入點。
+ * 腳本必須包含名為 的`azureml_main`函數，該函數是此模組的進入點。
 
- * 進入點函數最多可包含兩個輸入引數： `Param<dataframe1>` 和 `Param<dataframe2>`
+ * 進入點函數最多可以包含兩個輸入參數： `Param<dataframe1>``Param<dataframe2>`
  
    > [!NOTE]
-    > 傳遞至**執行 R 腳本**模組的資料會當做 `dataframe1` 和 `dataframe2`參考，這與 Azure Machine Learning 設計工具（設計工具參考為 `dataset1`，`dataset2`）不同。 請檢查並確定已在您的腳本中正確 referneced 輸入資料。  
+    > 傳遞給執行 R**腳本**模組的資料被引用為`dataframe1`和`dataframe2`，這與 Azure 機器學習設計器（設計器引用為`dataset1` `dataset2`） 不同。 請檢查以確保輸入資料在腳本中正確引用。  
  
     > [!NOTE]
-    >  現有的 R 程式碼可能需要較小的變更，才能在設計工具管線中執行。 例如，您以 CSV 格式提供的輸入資料應該先明確轉換成資料集，您才能在程式碼中使用它。 在 R 語言中使用的資料和資料行類型，在設計工具中使用的資料和資料行類型方面也有不同的差異。
+    >  現有 R 代碼可能需要少量更改才能在設計器管道中運行。 例如，在代碼中使用之前，應顯式將以 CSV 格式提供的輸入資料轉換為資料集。 R 語言中使用的資料和列類型在某些方面也不同于設計器中使用的資料和列類型。
 
-1.  **隨機種子**：輸入要在 R 環境內用來做為隨機種子值的值。 此參數等同於呼叫 R 程式碼中的 `set.seed(value)`。  
+1.  **隨機種子**：鍵入要在 R 環境中用作隨機種子值的值。 此參數等同於呼叫 R 程式碼中的 `set.seed(value)`。  
 
-1. 執行管道。  
+1. 提交管道。  
 
 ## <a name="results"></a>結果
 
-**執行 R 腳本**模組可以傳回多個輸出，但必須以 R 資料框架的形式提供。 資料框架會自動轉換成設計工具中的資料集，以與其他模組相容。
+**執行 R 腳本**模組可以返回多個輸出，但它們必須作為 R 資料幀提供。 資料幀會自動轉換為設計器中的資料集，以便與其他模組相容。
 
-來自 R 的標準訊息和錯誤會傳回給模組的記錄檔。
+來自 R 的標準消息和錯誤將返回到模組的日誌。
 
-如果您需要在 R 腳本中列印結果，可以在模組右側面板中的 **輸出 + 記錄** 索引標籤底下的  **70_driver_log**中找到列印的結果。
+如果需要在 R 腳本中列印結果，可以在模組右側面板的 **"輸出_logs"** 選項卡下的 **"70_driver_log**中找到列印的結果。
 
 ## <a name="sample-scripts"></a>範例指令碼
 
-有許多方法可讓您使用自訂 R 腳本來擴充管線。  本節提供一般工作的範例程式碼。
+可以使用自訂 R 腳本擴展管道的方法有很多種。  本節提供常見任務的示例代碼。
 
 
-### <a name="add-r-script-as-an-input"></a>將 R 腳本新增為輸入
+### <a name="add-r-script-as-an-input"></a>將 R 腳本添加為輸入
 
-[**執行 R 腳本**] 模組支援任意的 r 腳本檔案做為輸入。 若要這麼做，您必須將它們上傳到您的工作區，做為 ZIP 檔案的一部分。
+**執行 R 腳本**模組支援任意 R 指令檔作為輸入。 為此，它們必須作為 ZIP 檔的一部分上載到工作區。
 
-1. 若要將包含 R 程式碼的 ZIP 檔案上傳至工作區，請移至 [**資料集**資產] 頁面，按一下 [**建立資料集**]，然後**選取 [** **從本機**檔案] 和 [檔案資料集類型] 選項。  
+1. 要將包含 R 代碼的 ZIP 檔上載到工作區，請轉到**資料集**資產頁，按一下"**創建資料集**"，然後選擇 **"從本地檔和****檔**資料集類型"選項。  
 
-1. 確認左側模組樹狀目錄中 [**資料集**類別] 下的 [**我的資料集**] 清單中有可壓縮的檔案。
+1. 驗證壓縮檔在左側模組樹中的 **"資料集**"類別下的"**我的資料集"** 清單中是否可用。
 
-1.  將資料集連接至 [**腳本**組合] 輸入埠。
+1.  將資料集連接到**腳本捆綁輸入**埠。
 
-1. ZIP 檔案中包含的所有檔案都可在管線執行時間使用。 
+1. ZIP 檔中包含的所有檔在管道運行時都可用。 
 
-    如果腳本組合檔案包含目錄結構，則會保留結構。 不過，您必須修改程式碼，才能在路徑前面加上 **/Script**組合。
+    如果腳本捆綁檔包含目錄結構，則保留該結構。 但是，您必須更改代碼，以將目錄 **./腳本捆綁包**預置到路徑。
 
 ### <a name="process-data"></a>處理資料
 
-下列範例示範如何調整和標準化輸入資料：
+以下示例演示如何縮放和正常化輸入資料：
 
 ```R
 # R version: 3.5.1
@@ -218,15 +218,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>讀取 ZIP 檔案做為輸入
+### <a name="read-a-zip-file-as-input"></a>將 ZIP 檔讀為輸入
 
-這個範例示範如何使用 ZIP 檔案中的資料集做為**執行 R 腳本**模組的輸入。
+此示例演示如何在 ZIP 檔中使用資料集作為**執行 R 腳本**模組的輸入。
 
-1. 建立 CSV 格式的資料檔案，並將它命名為 "mydatafile"。
-1. 建立 ZIP 檔，並將 CSV 檔案新增至封存。
-1. 將壓縮檔案上傳至您的 Azure Machine Learning 工作區。 
-1. 將產生的資料集連接到**執行 R 腳本**模組的**ScriptBundle**輸入。
-1. 使用下列程式碼從 zip 壓縮檔案讀取 CSV 資料。
+1. 以 CSV 格式創建資料檔案，並將其命名為"mydatafile.csv"。
+1. 創建 ZIP 檔並將 CSV 檔添加到存檔中。
+1. 將壓縮檔上載到 Azure 機器學習工作區。 
+1. 將生成的資料集連接到**執行 R 腳本**模組的**腳本包**輸入。
+1. 使用以下代碼從壓縮檔中讀取 CSV 資料。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -237,9 +237,9 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="replicate-rows"></a>複寫資料列
+### <a name="replicate-rows"></a>複製行
 
-這個範例示範如何在資料集內複寫正向記錄，以平衡範例：
+此示例演示如何複製資料集中的正記錄以平衡示例：
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -256,9 +256,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>在執行 R 腳本模組之間傳遞 R 物件
 
-您可以使用內部序列化機制，在 [執行 R 指令碼] 模組的執行個體之間傳遞 R 物件。 這個範例假設您想要在兩個**執行 r 腳本**模組之間移動名為 `A` 的 R 物件。
+您可以使用內部序列化機制，在 [執行 R 指令碼]**** 模組的執行個體之間傳遞 R 物件。 此示例假定要在兩個執行 R 腳本模組`A`之間移動命名的**R**物件。
 
-1. 將第一個 [**執行 R 腳本**] 模組加入您的管線，然後在 [ **R 腳本**] 文字方塊中輸入下列程式碼，以建立序列化物件 `A` 做為模組輸出資料表中的資料行：  
+1. 將第一個**執行 R 腳本**模組添加到管道中，並在 R **Script**文字方塊中鍵入以下代碼，以在`A`模組的輸出資料表中創建序列化物件作為列：  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -272,11 +272,11 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-    將明確轉換成整數類型是因為序列化函式會以 R `Raw` 格式輸出資料，但設計工具並不支援。
+    顯式轉換為整數類型是因為序列化函數輸出 R`Raw`格式的資料，而設計器不支援 R 格式的資料。
 
-1. 新增 [**執行 R 腳本**] 模組的第二個實例，並將它連接到上一個模組的輸出埠。
+1. 添加**執行 R 腳本**模組的第二個實例，並將其連接到前一個模組的輸出埠。
 
-1. 在 [ **R 腳本**] 文字方塊中輸入下列程式碼，以從輸入資料表中解壓縮物件 `A`。 
+1. 在**R Script**文字方塊中鍵入以下代碼，以便`A`從輸入資料表中提取物件。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -287,16 +287,16 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>預先安裝的 R 套件
+## <a name="pre-installed-r-packages"></a>預先安裝的 R 包
 
-可供使用的預先安裝 R 套件目前清單：
+可使用的預先安裝 R 包的當前清單：
 
 |              |            | 
 |--------------|------------| 
 | Package      | 版本    | 
-| askpass      | 1.1        | 
+| 問票      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| 反向移植    | 1.1.4      | 
+| backports    | 1.1.4      | 
 | base         | 3.5.1      | 
 | base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
@@ -304,21 +304,21 @@ azureml_main <- function(dataframe1, dataframe2){
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
 | boot         | 1.3-22     | 
-| 掃帚        | 0.5.2      | 
+| broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| 插入號        | 6.0-84     | 
+| caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| class        | 7.3-15     | 
+| Class - 類別        | 7.3-15     | 
 | cli          | 1.1.0      | 
-| clipr        | 0.6.0      | 
+| 剪貼機        | 0.6.0      | 
 | 叢集      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
 | 編譯器     | 3.5.1      | 
-| 起來       | 1.3.4      | 
-| 彎曲         | 3.3        | 
-| 資料。資料表   | 1.12.2     | 
+| crayon       | 1.3.4      | 
+| curl         | 3.3        | 
+| data.table   | 1.12.2     | 
 | 資料集     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
@@ -329,40 +329,40 @@ azureml_main <- function(dataframe1, dataframe2){
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| 外部的      | 0.8-71     | 
-| fs           | 1.3.1      | 
+| foreign      | 0.8-71     | 
+| 司 司長           | 1.3.1      | 
 | gdata        | 2.18.0     | 
 | 泛型     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0-18     | 
-| 黏附         | 1.3.1      | 
+| glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
 | 圖形     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
 | 方格 (grid)         | 3.5.1      | 
 | gtable       | 0.3.0      | 
-| gtools       | 3.8.1：      | 
+| gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
 | highr        | 0.8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
 | ipred        | 0.9-9      | 
-| Iterator    | 1.0.10     | 
+| iterators    | 1.0.10     | 
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
 | knitr        | 1.23       | 
-| 標籤     | 0.3        | 
+| labeling     | 0.3        | 
 | lattice      | 0.20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
-| lubridate    | avro-mapred-1.7.4-hadoop2.jar      | 
+| lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
 | markdown     | 1          | 
-| 大規模         | 7.3-51。4   | 
+| MASS         | 7.3-51.4   | 
 | 矩陣       | 1.2-17     | 
-| 方法      | 3.5.1      | 
+| methods      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
 | mime         | 0.7        | 
 | ModelMetrics | 1.2.2      | 
@@ -370,10 +370,10 @@ azureml_main <- function(dataframe1, dataframe2){
 | munsell      | 0.5.0      | 
 | nlme         | 3.1-140    | 
 | nnet         | 7.3-12     | 
-| numDeriv     | 2016.8-1。1 | 
+| numDeriv     | 2016.8-1.1 | 
 | openssl      | 1.4        | 
 | parallel     | 3.5.1      | 
-| 要件       | 1.4.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
@@ -392,7 +392,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | RcppRoll     | 0.3.0      | 
 | readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
-| 等      | 0.1.5      | 
+| recipes      | 0.1.5      | 
 | rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
@@ -403,32 +403,32 @@ azureml_main <- function(dataframe1, dataframe2){
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| 縮放比例       | 1.0.0      | 
-| 選取      | 0.4-1      | 
+| scales       | 1.0.0      | 
+| selectr      | 0.4-1      | 
 | 空間      | 7.3-11     | 
-| 曲線      | 3.5.1      | 
+| splines      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
 | stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
-| 至關重要     | 2.44 秒內-1。1   | 
+| survival     | 2.44-1.1   | 
 | sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| Timedate 時間     | 3043.102   | 
-| tinytex      | 0.13       | 
+| timeDate     | 3043.102   | 
+| 小特克斯      | 0.13       | 
 | 工具        | 3.5.1      | 
 | tseries      | 0.10-47    | 
-| TTR          | lsscsi-0.23-2.el6.x86 64.rpm-4     | 
+| TTR          | 0.23-4     | 
 | utf8         | 1.1.4      | 
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| 須值      | 0.3-2      | 
+| whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
 | xfun         | 0.8        | 
 | xml2         | 1.2.0      | 
@@ -439,4 +439,4 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

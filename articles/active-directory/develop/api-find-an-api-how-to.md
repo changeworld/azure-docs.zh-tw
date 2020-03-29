@@ -1,5 +1,5 @@
 ---
-title: 尋找自訂開發應用程式的 API |Azure
+title: 查找自訂開發應用的 API |蔚藍
 description: 如何在您的自訂開發 Azure AD 應用程式中設定存取特定 API 所需的權限
 services: active-directory
 author: rwike77
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: bc50ec86866b7fe04c549c7fd463b6de4df3444b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76698385"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何尋找自訂開發應用程式所需的特定 API
@@ -24,11 +24,11 @@ ms.locfileid: "76698385"
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>設定資源應用程式以公開 Web API
 
-當您公開 Web API 時，該 API 會在將權限新增到應用程式註冊時顯示於 [選取 API] 清單中。 若要新增存取範圍，請遵循[設定應用程式以公開 Web api](quickstart-configure-app-expose-web-apis.md)中所述的步驟。
+當您公開 Web API 時，該 API 會在將權限新增到應用程式註冊時顯示於 [選取 API]**** 清單中。 要添加訪問範圍，請按照[配置應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)中概述的步驟操作。
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>設定用戶端應用程式以存取 Web API
 
-當您將權限新增到應用程式註冊時，您可以**新增 API 存取**以公開 Web API。 若要存取 web Api，請遵循[設定用戶端應用程式以存取 Web api](quickstart-configure-app-access-web-apis.md)中所述的步驟。
+當您將權限新增到應用程式註冊時，您可以**新增 API 存取**以公開 Web API。 要訪問 Web API，請按照[配置用戶端應用程式以訪問 Web API](quickstart-configure-app-access-web-apis.md)中概述的步驟操作。
 
 ## <a name="next-steps"></a>後續步驟
 

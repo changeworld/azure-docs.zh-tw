@@ -1,6 +1,6 @@
 ---
-title: 使用 Redash 將 Azure 資料總管視覺化
-description: 在本文中，您將瞭解如何使用 Redash native connector 將 Azure 資料總管中的資料視覺化。
+title: 使用重劃線視覺化 Azure 資料資源管理器
+description: 在本文中，您將瞭解如何使用 Redash 本機連接器在 Azure 資料資源管理器中視覺化資料。
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,93 +8,93 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773948"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>在 Redash 中將 Azure 資料總管的資料視覺化
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>在 Redash 中視覺化來自 Azure 資料資源管理器的資料
 
-[Redash](https://redash.io/)會連接和查詢您的資料來源、建立儀表板以將資料視覺化，並與對等共用。 在本文中，您將瞭解如何設定 Azure 資料總管做為 Redash 的資料來源，然後將資料視覺化。
+[Redash](https://redash.io/)連接和查詢資料來源，構建儀表板以視覺化資料並與對等方共用資料。 在本文中，您將瞭解如何將 Azure 資料資源管理器設置為 Redash 的資料來源，然後視覺化資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-1. [建立叢集和資料庫](create-cluster-database-portal.md)。
-1. 內嵌資料，如將[範例資料內嵌至 Azure 資料總管](ingest-sample-data.md)中所述。 如需更多的內嵌選項，請參閱內嵌[總覽](ingest-data-overview.md)。
+1. [創建群集和資料庫](create-cluster-database-portal.md)。
+1. 在[將示例資料引入 Azure 資料資源管理器中](ingest-sample-data.md)所述的引入資料。 有關更多引入選項，請參閱[攝入概述](ingest-data-overview.md)。
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>在 Redash 中建立 Azure 資料總管連接器 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>在 Redash 中創建 Azure 資料資源管理器連接器 
 
-1. 登入[Redash](https://www.redash.io/)。 選取 [**開始**使用] 來建立帳戶。
-1. 在 [**現在就開始**吧] 底下，選取 **[連接資料來源]** 。
+1. 登錄到[Redash。](https://www.redash.io/) 選擇 **"開始"** 以創建帳戶。
+1. 在 **"讓我們開始**"下，選擇"**連接資料來源**"。
 
-    ![連接資料來源](media/redash/connect-data-source.png)
+    ![連線資料來源](media/redash/connect-data-source.png)
 
-1. 在 [**建立新的資料來源**] 視窗中，選取 **[Azure 資料總管（Kusto）** ]，然後選取 [**建立**]。 
+1. 在 **"創建新資料來源"** 視窗中，選擇**Azure 資料資源管理器（庫托），** 然後選擇 **"創建**"。 
 
-    ![選取 Azure 資料總管資料來源](media/redash/select-adx-data-source.png)
+    ![選擇 Azure 資料資源管理器資料來源](media/redash/select-adx-data-source.png)
 
-1. 在 **[Azure 資料總管（Kusto）** ] 視窗中，完成下列表單，然後選取 [**建立**]。
+1. 在**Azure 資料資源管理器（Kusto）** 視窗中，完成以下表單並選擇 **"創建**"。
 
-    ![Azure 資料總管（Kusto） [設定] 視窗](media/redash/adx-settings-window.png)
+    ![Azure 資料資源管理器（庫托）設置視窗](media/redash/adx-settings-window.png)
 
-1. 在 [**設定**] 視窗中，選取 [**儲存**並**測試**連線] 以測試您的**Azure 資料總管（Kusto）** 資料來源連接。
+1. 在 **"設置"** 視窗中，選擇 **"保存**"和"**測試連接**"以測試**Azure 資料資源管理器 （Kusto）** 資料來源連接。
 
-## <a name="create-queries-in-redash"></a>在 Redash 中建立查詢
+## <a name="create-queries-in-redash"></a>在 Redash 中創建查詢
 
-1. 在 Redash 的左上方，選取 [**建立** > **查詢**]。 按一下 [追加**查詢**]，並將查詢重新命名。
+1. 在 Redash 的左上角，選擇 **"創建** > **查詢**"。 按一下 **"新建查詢**"並重命名查詢。
 
     ![建立查詢](media/redash/create-query.png)
 
-1. 在頂端的編輯窗格中輸入查詢，然後選取 [**儲存**並**執行**]。 選取 [**發行**] 以發行查詢以供未來使用。
+1. 在頂部編輯窗格中鍵入查詢，然後選擇 **"保存****和執行**"。 選擇 **"發佈**"以發佈查詢以供將來使用。
 
-    ![儲存並執行查詢](media/redash/save-and-execute-query.png)
+    ![保存和執行查詢](media/redash/save-and-execute-query.png)
 
-    在左窗格中，您可以在下拉式功能表中看到資料來源連接名稱（我們的流程中的**Github 連接器**），以及所選資料庫中的資料表。 
+    在左側窗格中，您可以在下拉式功能表中看到資料來源連接名稱（流中的**Github 連接器**）和所選資料庫中的表。 
 
-1. 在下方的中央窗格中，查看查詢結果。 選取 [**新增視覺效果**] 按鈕，以建立視覺效果來進行查詢。
+1. 在底部中心窗格中查看查詢結果。 通過選擇 **"新建視覺化"** 按鈕，創建與查詢配合使用的視覺化效果。
 
-    ![新增視覺效果](media/redash/new-visualization.png)
+    ![新視覺化](media/redash/new-visualization.png)
 
-1. 在 [視覺效果] 畫面中，選取 [**視覺效果類型**] 和相關欄位，例如 [ **X**資料行] 和 [ **Y 資料行**]。 **儲存**視覺效果。
+1. 在視覺化螢幕中，選擇**視覺化類型**和相關欄位，如 X**列**和**Y 列**。 **保存**視覺化效果。
 
-    ![設定和儲存視覺效果](media/redash/configure-visualization.png)
+    ![配置和保存視覺化效果](media/redash/configure-visualization.png)
 
-### <a name="create-a-query-using-a-parameter"></a>使用參數建立查詢
+### <a name="create-a-query-using-a-parameter"></a>使用參數創建查詢
 
-1. **建立** > **查詢**來建立新的查詢。 使用 {{}} 大括弧將參數新增至其中。 選取 **{{}}** 以開啟 [**新增參數**視窗]。 您也可以選取 [*設定] 圖示*來修改現有參數的屬性，並開啟 [ **< parameter_name >** ] 視窗。 
+1. **創建** > **查詢**以創建新查詢。 使用 [ ]{}捲曲括弧向其添加參數。 選擇**{}[ ]** 以打開 **"添加參數"** 視窗。 您還可以選擇*設置圖示*來修改現有參數的屬性，並打開 **<parameter_name>** 視窗。 
 
     ![插入參數](media/redash/insert-parameter.png)
 
-1. 命名您的參數。 從下拉式功能表選取 [**類型**：以**查詢為基礎的下拉式清單]** 。 選取 [確定]
+1. 具名引數。 選擇 **"類型**：**從下拉式功能表中選擇基於查詢的下拉清單**"。 選取 [確定]****
 
-    ![以查詢為基礎的下拉式清單](media/redash/query-based-dropdown-list.png)
+    ![基於查詢的下拉清單](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > 查詢會使用多個值，因此您必須將下列語法包含 `| where Type in ((split('{{Type}}', ',')))`。 如需詳細資訊，請參閱[in 運算子](/azure/kusto/query/inoperator)。 這會導致[redash 應用程式中有多個查詢參數選項](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > 查詢使用多個值，因此必須包含以下語法`| where Type in ((split('{{Type}}', ',')))`。 有關詳細資訊，請參閱[運算子](/azure/kusto/query/inoperator)。 這將導致[重劃線應用中有多個查詢參數選項](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
 
-## <a name="create-a-dashboard-in-redash"></a>在 Redash 中建立儀表板
+## <a name="create-a-dashboard-in-redash"></a>在 Redash 中創建儀表板
 
-1. 若要建立儀表板，請**建立** > **儀表板**。 或者，選取 [現有儀表板]、[**儀錶**板] > 從清單中選取儀表板。
+1. 要創建儀表板，**請創建** > **儀表板**。 或者，選擇現有儀表板，**儀表板**>從清單中選擇儀表板。
 
     ![建立儀表板](media/redash/create-dashboard.png)
 
-1. 在 [**新儀表板**] 視窗中，將儀表板命名為，然後選取 [**儲存**] 在 **< Dashboard_name >**  視窗中，選取 新增**widget**  以建立新的 widget。 
+1. 在 **"新建儀表板"** 視窗中，命名儀表板並選擇"**保存**"。 在 **<Dashboard_name>** 視窗中，選擇 **"添加小部件**"以創建新的小部件。 
 
-1. 在 [**加入 Widget** ] 視窗中，選取 [查詢名稱]、**選擇 [視覺效果**] 和 [**參數**] 選取 [**新增至儀表板**]
+1. 在 **"添加小部件"** 視窗中，選取查詢名稱、**選擇視覺化**和**參數**。 選擇 **"添加到儀表板"**
 
-   ![選擇視覺效果並新增至儀表板](media/redash/add-widget-window.png)
+   ![選擇視覺化效果並添加到儀表板](media/redash/add-widget-window.png)
 
-1. 選取 [**完成編輯**] 以完成建立儀表板。
+1. 選擇 **"完成編輯**"以完成儀表板創建。
 
-1.  在儀表板編輯模式中，選取 [**使用儀表板層級篩選**]，以使用先前定義的**類型**參數。
+1.  在儀表板編輯模式下，選擇 **"使用儀表板級別篩選器**"以使用以前定義的 **"類型"** 參數。
 
-    ![完成建立儀表板](media/redash/complete-dashboard.png)
+    ![完成儀表板創建](media/redash/complete-dashboard.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [撰寫 Azure 資料總管的查詢](write-queries.md)
+* [為 Azure 資料資源管理器編寫查詢](write-queries.md)
 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720294"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
@@ -20,22 +20,22 @@ ms.locfileid: "76720294"
 本頁面說明輸入連線的常見問題，以及如何進行疑難排解。
 
 ## <a name="input-events-not-received-by-job"></a>作業未收到輸入事件 
-1.  測試連線能力。 針對各個輸入和輸出使用 [測試連線] 按鈕，驗證輸入及輸出的連線能力。
+1.  測試連線能力。 針對各個輸入和輸出使用 [測試連線]**** 按鈕，驗證輸入及輸出的連線能力。
 
 2.  檢查您的輸入資料。
 
     1. 若要驗證輸入資料是否正流入事件中樞，請使用[服務匯流排總管](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)與 Azure 事件中樞連線 (若有使用事件中樞輸入)。
         
-    1. 針對每個輸入使用 [[**範例資料**](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
+    1. 對每個輸入使用[**"示例資料**](stream-analytics-sample-data-input.md)"按鈕。 下載輸入示例資料。
         
-    1. 檢查範例資料以瞭解資料的形式，也就是架構和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+    1. 檢查示例資料以瞭解資料的形狀，即架構和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
 
-3.  請確定您已在輸入預覽中選取時間範圍。 選擇 [**選取時間範圍**]，然後在測試查詢之前輸入取樣持續時間。
+3.  確保在輸入預覽中選擇時間範圍。 選擇 **"選擇時間範圍**"，然後在測試查詢之前輸入示例持續時間。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正確的輸入事件導致還原序列化錯誤 
 當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如，格式錯誤的訊息可能是在 JSON 物件中遺漏括號或遺漏大括號所導致，或是時間欄位中不正確的時間戳記格式所導致。 
  
-當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入] 圖格上會顯示警告符號。 只要作業處於執行中狀態，此警告符號就會存在：
+當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入]**** 圖格上會顯示警告符號。 只要作業處於執行中狀態，此警告符號就會存在：
 
 ![Azure 串流分析輸入圖格](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -74,13 +74,13 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 
 2. 找到您的事件中樞。
 
-3. 選取 [實體] 標題下方的 [事件中樞]。
+3. 選取 [實體]**** 標題下方的 [事件中樞]****。
 
 4. 依名稱選取事件中樞。
 
-5. 在 [事件中樞執行個體] 頁面上，[實體] 標題下方，選取 [取用者群組]。 隨即列出名為 **$Default** 的取用者群組。
+5. 在 [事件中樞執行個體]**** 頁面上，[實體]**** 標題下方，選取 [取用者群組]****。 隨即列出名為 **$Default** 的取用者群組。
 
-6. 選取 [+ 取用者群組] 以新增取用者群組。 
+6. 選取 [+ 取用者群組]**** 以新增取用者群組。 
 
    ![在事件中樞新增取用者群組](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
@@ -139,12 +139,12 @@ FROM data
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

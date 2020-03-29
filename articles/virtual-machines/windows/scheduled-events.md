@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure 中 Windows Vm 的 Scheduled Events
+title: Azure 中 Windows VM 的計畫事件
 description: 針對您的 Windows 虛擬機器，使用 Azure 中繼資料服務排定事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
 ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944479"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
@@ -44,12 +44,12 @@ ms.locfileid: "78944479"
 使用排程的事件，應用程式就可以探索維護所發生的時間，以及限制其影響的觸發工作。 啟用已排定事件可讓您的虛擬機器在執行維護活動之前有最短的時間。 如需詳細資料，請參閱下面的＜事件排程＞一節。
 
 排程的事件會提供下列使用案例中的事件：
-- [平臺起始的維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新開機、即時移轉或保留主機的記憶體更新）
-- 虛擬機器在降級的[主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行，預測即將失敗
+- [平臺啟動維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新開機、即時移轉或主機記憶體保留更新）
+- 虛擬機器在[降級的主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上運行，預計該硬體將很快出現故障
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
-- [找出 VM](spot-vms.md)和[點擴展集](../../virtual-machine-scale-sets/use-spot.md)實例收回
+- [Spot VM](spot-vms.md)和[Spot 比例集](../../virtual-machine-scale-sets/use-spot.md)實例逐出
 
-## <a name="the-basics"></a>基本知識  
+## <a name="the-basics"></a>基本概念  
 
 如果您是使用可由 VM 內存取的 REST 端點來執行虛擬機器，Azure 中繼資料服務會公開這類相關資訊。 這項資訊是透過無法路由傳送的 IP 取得，因此不會在 VM 之外公開。
 
@@ -63,10 +63,10 @@ ms.locfileid: "78944479"
 ### <a name="version-and-region-availability"></a>版本和區域可用性
 排程的事件服務已進行版本設定。 版本是必要項目，且目前版本為 `2019-01-01`。
 
-| 版本 | 發行類型 | 區域 | 版本資訊 | 
+| 版本 | 版本類型 | 區域 | 版本資訊 | 
 | - | - | - | - |
-| 2019-01-01 | 正式運作 | 全部 | <li> 已新增對虛擬機器擴展集「終止」的支援 |
-| 2017-11-01 | 正式運作 | 全部 | <li> 已新增對點 VM 收回事件 ' Preempt ' 的支援<br> | 
+| 2019-01-01 | 正式運作 | 全部 | <li> 添加了對虛擬機器規模集事件種類"終止"的支援 |
+| 2017-11-01 | 正式運作 | 全部 | <li> 添加了對 Spot VM 逐出事件種類"搶佔"的支援<br> | 
 | 2017-08-01 | 正式運作 | 全部 | <li> 已從 IaaS VM 的資源名稱中移除預留底線<br><li>強制所有要求的中繼資料標頭需求 | 
 | 2017-03-01 | 預覽 | 全部 |<li>初始版本 |
 
@@ -85,7 +85,7 @@ ms.locfileid: "78944479"
 
 ## <a name="using-the-api"></a>使用 API
 
-### <a name="headers"></a>標頭
+### <a name="headers"></a>headers
 查詢中繼資料服務時，您必須提供 `Metadata:true` 標頭以免不小心重新導向要求。 所有排程的事件都需要 `Metadata:true` 標頭。 要求中未包含標頭會導致中繼資料服務不正確的要求回應。
 
 ### <a name="query-for-events"></a>查詢事件
@@ -118,8 +118,8 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 ### <a name="event-properties"></a>事件屬性
 |屬性  |  描述 |
 | - | - |
-| 事件識別碼 | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`：虛擬機器已排程暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或開啟的檔案。 <li>`Reboot`：虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`︰虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`：正在刪除點虛擬機器（暫時磁片會遺失）。 <li> `Terminate`：已排程要刪除虛擬機器。 |
+| EventId | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`：虛擬機器計畫暫停幾秒鐘。 CPU 和網路連接可能會掛起，但對記憶體或打開的檔沒有影響。 <li>`Reboot`：虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`︰虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`：正在刪除 Spot 虛擬機器（臨時磁片丟失）。 <li> `Terminate`：計畫刪除虛擬機器。 |
 | ResourceType | 受此事件影響的資源類型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件狀態 | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`︰此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`︰已啟動事件。</ul> 如果未提供任何 `Completed` 或類似的狀態，事件完成時，將不會再傳回事件。
@@ -131,13 +131,13 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 |EventType  | 最短時間通知 |
 | - | - |
 | 凍結| 15 分鐘 |
-| Reboot | 15 分鐘 |
+| 重新啟動 | 15 分鐘 |
 | 重新部署 | 10 分鐘 |
-| Preempt | 30 秒 |
-| Terminate | [可](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)設定的使用者：5到15分鐘 |
+| 搶佔 | 30 秒 |
+| 結束 | [使用者可配置 ：5](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)到 15 分鐘 |
 
 > [!NOTE] 
-> 在某些情況下，Azure 會因為硬體降級而預測主機失敗，並會嘗試藉由排程遷移來減輕服務中斷的影響。 受影響的虛擬機器將會收到具有 `NotBefore` 的排程事件，這通常是未來幾天的時間。 實際的時間會依預測的失敗風險評估而有所不同。 Azure 會在可能的情況下，儘量提供7天的事先通知，但實際的時間會有所不同，如果預測是硬體故障即將的機率很高，可能會較小。 若要將服務的風險降到最低，以免系統起始遷移之前發生硬體故障，建議您儘快自動重新部署虛擬機器。
+> 在某些情況下，Azure 能夠預測由於硬體降級而導致的主機故障，並且將嘗試通過調度遷移來緩解對服務的中斷。 受影響的虛擬機器將收到計畫事件，`NotBefore`事件通常為將來幾天。 實際時間因預測故障風險評估而異。 Azure 嘗試在可能的情況下提前 7 天通知，但如果預測硬體即將出現故障，則實際時間會有所不同，並且可能較小。 為了在系統啟動遷移之前硬體出現故障時將服務風險降至最低，建議儘快自行重新部署虛擬機器。
 
 ### <a name="event-scope"></a>事件範圍     
 排程的事件會傳送到：
@@ -150,7 +150,7 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 
 ### <a name="starting-an-event"></a>啟動事件 
 
-在您得知即將發生的事件，並完成正常關機邏輯之後，即可使用 `POST` 向中繼資料服務進行 `EventId` 呼叫，以核准未處理的事件。 對 Azure 來說，這意謂著它可以將通知時間縮到最短 (可能的話)。 
+在您得知即將發生的事件，並完成正常關機邏輯之後，即可使用 `EventId` 向中繼資料服務進行 `POST` 呼叫，以核准未處理的事件。 對 Azure 來說，這意謂著它可以將通知時間縮到最短 (可能的話)。 
 
 以下是 `POST` 要求本文中必須要有的 json。 要求需包含 `StartRequests` 清單。 每個 `StartRequest` 都包含您需要加速之事件的 `EventId`：
 ```
@@ -234,6 +234,6 @@ foreach($event in $scheduledEvents.Events)
 ## <a name="next-steps"></a>後續步驟 
 
 - 在 Azure Friday 上觀賞[已排定事件示範](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)。 
-- 在 [Azure 執行個體中繼資料已排定事件 GitHub 存放庫](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm) \(英文\) 中檢閱排程的事件程式碼範例
-- 深入了解[執行個體中繼資料服務](instance-metadata-service.md)中提供的 API。
-- 了解 [Azure 中 Windows 虛擬機器預定進行的維修](planned-maintenance.md)。
+- 查看[Azure 實例元通話方案事件 GitHub 存儲庫](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中的計畫事件代碼示例
+- 閱讀有關[實例中繼資料服務](instance-metadata-service.md)中可用的 API 的更多內容。
+- 瞭解[Azure 中 Windows 虛擬機器的計畫維護](planned-maintenance.md)。

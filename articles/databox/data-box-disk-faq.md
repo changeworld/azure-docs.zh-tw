@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918932"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料框磁片：常見問題
 
 Microsoft Azure 資料箱磁碟雲端解決方案可讓您以快速、實惠和可靠的方式，將數 TB 的資料傳送至 Azure。 此常見問題集包含您在 Azure 入口網站中使用資料箱磁碟時可能遇到的問題及其解答。 
 
@@ -68,7 +68,7 @@ A. 如果您遇到任何資料箱磁碟方面的問題，請[連絡 Microsoft �
 A.  否。 您會根據磁碟的資料大小和可用性取得 8 TB 磁碟 (最多 5 個磁碟)。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Q. 如何將資料箱磁碟解除鎖定？ 
-A.  在 Azure 入口網站中，移至您的資料箱磁碟訂單，並瀏覽至 [裝置詳細資料]。 複製通行金鑰。 從 Azure 入口網站下載及擷取您作業系統適用的資料箱磁碟解鎖工具。 在有資料要複製到磁碟的電腦上執行此工具。 請提供用來將磁碟解除鎖定的通行金鑰。 所有磁碟均可用相同的通行金鑰解除鎖定。 
+A.  在 Azure 入口網站中，移至您的資料箱磁碟訂單，並瀏覽至 [裝置詳細資料]****。 複製通行金鑰。 從 Azure 入口網站下載及擷取您作業系統適用的資料箱磁碟解鎖工具。 在有資料要複製到磁碟的電腦上執行此工具。 請提供用來將磁碟解除鎖定的通行金鑰。 所有磁碟均可用相同的通行金鑰解除鎖定。 
 
 如需逐步指示，請移至[解除鎖定 Windows 用戶端上的磁碟](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[解除鎖定 Linux 用戶端上的磁碟](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
 
@@ -87,13 +87,13 @@ A. 是。 您可以將多個資料箱磁碟連線至相同的主機電腦以傳�
 A.  您可以在 Azure 入口網站中追蹤資料箱磁碟訂單的狀態。 當您建立訂單時，系統也會提示您提供通知電子郵件。 如果您有提供的話，您將會透過電子郵件獲知訂單的所有狀態變更。 請取得關於如何[設定通知電子郵件](data-box-portal-ui-admin.md#edit-notification-details)的資訊。
 
 ### <a name="q-how-do-i-return-the-disks"></a>Q. 如何送回磁碟？ 
-A.  Microsoft 會在寄送包裹中提供隨附於資料箱磁碟的出貨標籤。 請將標籤黏貼於寄送包裹，並將密封的包裹投遞到貨運公司地點。 如果標籤受損或遺失，請移至 [概觀] > [下載出貨標籤]，並下載新的寄返標籤。
+A.  Microsoft 會在寄送包裹中提供隨附於資料箱磁碟的出貨標籤。 請將標籤黏貼於寄送包裹，並將密封的包裹投遞到貨運公司地點。 如果標籤受損或遺失，請移至 [概觀] > [下載出貨標籤]****，並下載新的寄返標籤。
 
 ### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>我可以自取我的資料箱磁碟訂單嗎？ 我可以透過我選擇的貨運公司來寄回磁碟嗎？
 A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 當您對資料箱磁碟下訂單時，您可以選擇自助運送選項。 若要自取資料箱磁碟訂單，請執行下列步驟：
     
 1. 在您下訂單之後，我們就會處理訂單並準備磁碟。 當您的訂單可供取貨時，您會收到電子郵件通知。 
-2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀] 刀鋒視窗。 
+2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀]**** 刀鋒視窗。 
 3. 您會在 Azure 入口網站中看到含有代碼的通知。 請傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將代碼提供給他們。 小組會提供位置並安排取貨日期和時間。 收到電子郵件通知之後，您必須在 5 個工作天內連絡小組。
 
 資料複製和驗證完成後，請採取下列步驟來寄回您的磁碟：
@@ -103,7 +103,7 @@ A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 當您對
 
     - 重複使用最初出貨的包裝。 我們建議您使用安全的氣泡片來包裝磁碟。
     - 確保穩固裝入磁碟，以免在箱子內移動。
-3. 在 Azure 入口網站中，移至您訂單的 [概觀] 刀鋒視窗。 您應該會看到含有代碼的通知。
+3. 在 Azure 入口網站中，移至您訂單的 [概觀]**** 刀鋒視窗。 您應該會看到含有代碼的通知。
 4. 請使用該代碼並傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將代碼提供給他們。 他們會提供您交送磁碟的位置和時間。
 
 
@@ -131,7 +131,7 @@ A.  若要加快複製程序：
 - 使用多個工作階段。
 - 不透過網路共用進行複製 (此方式可能會受限於網路速度)，而是一律將資料放置在磁碟所連線到的本機電腦上。
 - 確定您的整個複製程序均使用 USB 3.0 或更新版本。 請下載並使用 [USBView 工具](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)，以識別連線至電腦的 USB 控制器和 USB 裝置。
-- 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品] 索引標籤，然後下載 MSI。
+- 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品]**** 索引標籤，然後下載 MSI。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. 如果來源資料具有小型檔案 (KB 或 MB)，應如何加快資料傳輸速度？
 A.  若要加快複製程序：
@@ -145,16 +145,16 @@ A.  否。 目前僅支援對資料箱磁碟使用一個儲存體帳戶 (一般�
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. 可供我的資料使用的工具箱磁碟工具組是什麼？
 A. 資料箱磁碟隨附的工具組包含三項工具：
- - **資料箱磁碟解除鎖定工具**：使用此工具可將 Microsoft 所附的加密磁片解除鎖定。 使用此工具將磁碟解除鎖定時，您必須提供可從 Azure 入口網站中的資料箱磁碟訂單取得的通行金鑰。 
- - **資料箱磁碟驗證工具**：根據 Azure 命名慣例，使用此工具來驗證大小、格式和 blob 名稱。 它也會為複製的資料產生總和檢查碼，後續可用來驗證上傳至 Azure 的資料。
- - **資料箱磁碟分割複製工具**：當您使用多個磁片時，請使用此工具，並擁有需要分割並複製到所有磁片上的大型資料集。 此工具目前適用於 Windows。 受控磁碟不支援此工具。 這項工具在複製資料時，也會進行驗證，因此您使用此工具時可以略過驗證步驟。
+ - **資料盒磁片解鎖工具**：使用此工具解鎖從微軟發貨的加密磁片。 使用此工具將磁碟解除鎖定時，您必須提供可從 Azure 入口網站中的資料箱磁碟訂單取得的通行金鑰。 
+ - **資料框磁片驗證工具**：使用此工具根據 Azure 命名約定驗證大小、格式和 blob 名稱。 它也會為複製的資料產生總和檢查碼，後續可用來驗證上傳至 Azure 的資料。
+ - **資料盒磁片拆分複製工具**：當您使用多個磁片並且具有需要拆分和複製到所有磁片的大型資料集時，請使用此工具。 此工具目前適用於 Windows。 受控磁碟不支援此工具。 這項工具在複製資料時，也會進行驗證，因此您使用此工具時可以略過驗證步驟。
 
 工具組則同時適用於 Windows 和 Linux。 您可以從下列位置下載工具組：
 - [下載適用於 Windows 的資料箱磁碟工具組](https://aka.ms/databoxdisktoolswin) 
 - [下載適用於 Linux 的資料箱磁碟工具組](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. 是否可以使用資料箱磁碟將資料傳輸至 Azure 檔案儲存體，然後再搭配 Azure 檔案同步來使用資料？ 
-A. Azure 檔案儲存體支援資料箱磁碟，但無法與 Azure 檔案同步搭配運作。如果檔案資料與 Azure 檔案同步搭配使用，則不會保留中繼資料。
+A. 資料框磁片支援 Azure 檔，但不適用於 Azure 檔同步。如果檔資料與 Azure 檔同步一起使用，則不保留中繼資料。
 
 
 ## <a name="verify-and-upload"></a>確認和上傳
@@ -169,7 +169,7 @@ A.  當您在磁碟上的 *BlockBlob* 和 *PageBlob* 資料夾下複製資料後
 A. 如果容器名稱包含大寫字母，這些字母會自動轉換為小寫。 如果名稱在其他方面不符合規範 (特殊字元、其他語言等等)，則會上傳失敗。 如需詳細資訊，請移至 [Azure 命名慣例](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>Q. 如何驗證我複製到多個資料箱磁碟上的資料？
-A.  資料複製完成後，您可以執行 DataBoxDiskImport`DataBoxDiskValidation.cmd`*資料夾中提供的*，以產生驗證的總和檢查碼。 如果您有多個磁碟，您必須為每個磁碟開啟一個命令視窗，並執行此命令。 請記住，此作業可能十分耗時 (數小時)，視資料大小而定。
+A.  資料複製完成後，您可以執行 DataBoxDiskImport** 資料夾中提供的 `DataBoxDiskValidation.cmd`，以產生驗證的總和檢查碼。 如果您有多個磁碟，您必須為每個磁碟開啟一個命令視窗，並執行此命令。 請記住，此作業可能十分耗時 (數小時)，視資料大小而定。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-disks"></a>Q. 在我送回磁碟之後，我的資料將會如何？
 A.  當資料複製到 Azure 之後，磁碟中的資料將會根據 NIST SP 800-88 修訂 1 指導方針安全地清除。  

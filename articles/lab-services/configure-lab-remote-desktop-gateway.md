@@ -1,6 +1,6 @@
 ---
-title: 設定實驗室以使用 Azure DevTest Labs 中的遠端桌面閘道
-description: 瞭解如何使用遠端桌面閘道在 Azure DevTest Labs 中設定實驗室，以確保能夠安全地存取實驗室 Vm，而不需要公開 RDP 埠。
+title: 將實驗室配置為在 Azure 開發人員測試實驗室中使用遠端桌面閘道
+description: 瞭解如何使用遠端桌面閘道在 Azure DevTest 實驗室中配置實驗室，以確保安全訪問實驗室 VM，而無需公開 RDP 埠。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,104 +13,104 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170291"
 ---
-# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>在 Azure DevTest Labs 中設定您的實驗室以使用遠端桌面閘道
-在 Azure DevTest Labs 中，您可以為您的實驗室設定遠端桌面閘道，以確保能夠安全地存取實驗室虛擬機器（Vm），而不需要公開 RDP 埠。 實驗室提供一個集中的位置，讓您的實驗室使用者能夠查看並聯機到他們可以存取的所有虛擬機器。 [**虛擬機器**] 頁面上的 [連線 **]** 按鈕會建立電腦特定的 RDP 檔案，您可以開啟該檔案來連接到電腦。 您可以藉由將您的實驗室連接至遠端桌面閘道，進一步自訂和保護 RDP 連線。 
+# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>在 Azure 開發人員測試實驗室中配置實驗室以使用遠端桌面閘道
+在 Azure DevTest 實驗室中，可以為實驗室配置遠端桌面閘道，以確保安全訪問實驗室虛擬機器 （VM），而無需公開 RDP 埠。 該實驗室為您的實驗室使用者提供了一個中心位置，以便查看和連接到他們有權訪問的所有虛擬機器。 **"虛擬機器**"頁上的 **"連接**"按鈕將創建一個特定于電腦的 RDP 檔，您可以打開該檔以連接到電腦。 通過將實驗室連接到遠端桌面閘道，您可以進一步自訂 RDP 連接並保護 RDP 連接。 
 
-這種方法比較安全，因為實驗室使用者會直接向閘道電腦進行驗證，或在已加入網域的閘道電腦上使用公司認證來連線到其電腦。 實驗室也支援對閘道機器使用權杖驗證，讓使用者可以連線到其實驗室虛擬機器，而不需要將 RDP 埠公開至網際網路。 本文會逐步解說如何設定實驗室，以使用權杖驗證來連線至實驗室電腦的範例。
+此方法更安全，因為實驗室使用者直接對閘道電腦進行身份驗證，或者可以使用域加入的閘道電腦上的公司憑據連接到其電腦。 該實驗室還支援對閘道電腦使用權杖身份驗證，該閘道電腦允許使用者連接到其實驗室虛擬機器，而無需將 RDP 埠暴露給 Internet。 本文介紹了如何設置使用權杖身份驗證連接到實驗室電腦的實驗室的示例。
 
-## <a name="architecture-of-the-solution"></a>解決方案的架構
+## <a name="architecture-of-the-solution"></a>解決方案的體系結構
 
-![解決方案的架構](./media/configure-lab-remote-desktop-gateway/architecture.png)
+![解決方案的體系結構](./media/configure-lab-remote-desktop-gateway/architecture.png)
 
-1. 當您選取 [連線] 按鈕時，會呼叫 [[取得 RDP 檔案內容](/rest/api/dtl/virtualmachines/getrdpfilecontents) **]** 動作。1。 
-1. [取得 RDP 檔案內容] 動作會叫用 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 以要求驗證權杖。
-    1. `{gateway-hostname}` 是在 Azure 入口網站的實驗室 [**實驗室設定**] 頁面上所指定的閘道主機名稱。 
-    1. `{lab-machine-name}` 是您嘗試連線的電腦名稱稱。
-    1. `{port-number}` 是需要建立連接的埠。 此埠通常是3389。 如果實驗室 VM 使用 DevTest Labs 中的[共用 IP](devtest-lab-shared-ip.md)功能，埠會不同。
-1. 遠端桌面閘道會將來自 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 的呼叫延遲到 Azure 函式，以產生驗證權杖。 DevTest Labs 服務會自動在要求標頭中包含函數金鑰。 函式金鑰會儲存在實驗室的金鑰保存庫中。 在實驗室的 [**實驗室設定**] 頁面上，該密碼要顯示為 [**閘道權杖密碼**] 的名稱。
-1. Azure 函式預期會針對閘道機器傳回以憑證為基礎的權杖驗證權杖。  
-1. [取得 RDP 檔案內容] 動作接著會傳回完整的 RDP 檔案，包括驗證資訊。
-1. 您可以使用慣用的 RDP 連線程式來開啟 RDP 檔案。 請記住，並非所有的 RDP 連接程式都支援權杖驗證。 驗證權杖的到期日是由函式應用程式所設定。 在權杖到期之前，建立與實驗室 VM 的連線。
-1. 當遠端桌面閘道機器在 RDP 檔案中驗證權杖之後，連線就會轉送到您的實驗室電腦。
+1. 當您選擇"**連接**"按鈕時，將調用["獲取 RDP 檔內容"](/rest/api/dtl/virtualmachines/getrdpfilecontents)操作。 
+1. 獲取 RDP 檔內容操作調用`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`以請求身份驗證權杖。
+    1. `{gateway-hostname}`是在 Azure 門戶中的**實驗室的"實驗室設置"** 頁上指定的閘道主機名稱。 
+    1. `{lab-machine-name}`是您嘗試連接的電腦的名稱。
+    1. `{port-number}`是需要進行連接的埠。 通常這個埠是3389。 如果實驗室 VM 在 DevTest 實驗室中使用[共用 IP](devtest-lab-shared-ip.md)功能，則埠將不同。
+1. 遠端桌面閘道將調用從`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`Azure 函數延遲到 Azure 函數以生成身份驗證權杖。 DevTest Labs 服務會自動在請求標頭中包含功能金鑰。 功能鍵將保存在實驗室的金鑰保存庫中。 該機密的名稱在實驗室的 **"實驗室設置"** 頁上顯示為**閘道權杖金鑰**。
+1. Azure 函數應返回權杖，用於對閘道電腦進行基於證書的權杖身份驗證。  
+1. 然後，獲取 RDP 檔內容操作返回完整的 RDP 檔，包括身份驗證資訊。
+1. 使用首選 RDP 連接程式打開 RDP 檔。 請記住，並非所有 RDP 連接程式都支援權杖身份驗證。 身份驗證權杖確實具有由函數應用設置的到期日期。 在權杖過期之前與實驗室 VM 建立連接。
+1. 遠端桌面閘道電腦對 RDP 檔中的權杖進行身份驗證後，連接將轉發到實驗室電腦。
 
 ### <a name="solution-requirements"></a>解決方案需求
-若要使用 DevTest Labs 權杖驗證功能，閘道機器、功能變數名稱服務（DNS）和功能有幾個設定需求。
+要使用 DevTest Labs 權杖身份驗證功能，閘道電腦、功能變數名稱服務 （DNS） 和功能有一些配置要求。
 
-### <a name="requirements-for-remote-desktop-gateway-machines"></a>遠端桌面閘道電腦的需求
-- 您必須在閘道電腦上安裝 SSL 憑證，才能處理 HTTPS 流量。 憑證必須符合閘道伺服器陣列負載平衡器的完整功能變數名稱（FQDN），或電腦本身的 FQDN （如果只有一部電腦）。 萬用字元 SSL 憑證無法運作。  
-- 已安裝在閘道電腦上的簽署憑證。 使用[Create-SigningCertificate](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)腳本建立簽署憑證。
-- 安裝支援遠端桌面閘道權杖驗證的[插入式驗證](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模組。 [System Center Virtual Machine Manager （VMM）映射](/system-center/vmm/install-console?view=sc-vmm-1807)隨附 `RDGatewayFedAuth.msi` 這類別模組的其中一個範例。 如需 System Center 的詳細資訊，請參閱[System center 檔](https://docs.microsoft.com/system-center/)和[定價詳細資料](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
-- 閘道伺服器可以處理對 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`提出的要求。
+### <a name="requirements-for-remote-desktop-gateway-machines"></a>遠端桌面閘道電腦的要求
+- 必須在閘道電腦上安裝 SSL 憑證才能處理 HTTPS 流量。 如果只有一台電腦，證書必須匹配閘道伺服器場的負載等化器的完全限定功能變數名稱 （FQDN） 或電腦本身的 FQDN。 萬用字元 SSL 憑證不起作用。  
+- 安裝在閘道電腦上的簽章憑證。 使用[Create-簽章憑證.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)腳本創建簽章憑證。
+- 安裝支援遠端桌面閘道權杖身份驗證[的可插拔身份驗證](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模組。 這種模組的一個示例是`RDGatewayFedAuth.msi`[系統中心虛擬機器管理器 （VMM） 映射](/system-center/vmm/install-console?view=sc-vmm-1807)附帶的一個示例。 有關系統中心的詳細資訊，請參閱[系統中心文檔](https://docs.microsoft.com/system-center/)和[定價詳細資訊](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
+- 閘道伺服器可以處理對`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`發出的請求。
 
-    如果只有一部電腦，則閘道主機名稱為閘道伺服器陣列的負載平衡器 FQDN，或電腦本身的 FQDN。 `{lab-machine-name}` 是您嘗試連線的實驗室機器名稱，而 `{port-number}` 則是將建立連接的埠。  根據預設，此埠是3389。  不過，如果虛擬機器使用 DevTest Labs 中的[共用 IP](devtest-lab-shared-ip.md)功能，埠會不同。
-- Internet Information Server （IIS）的[應用程式路由要求](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)模組可以用來將 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 要求重新導向至 azure 函式，以處理取得權杖以進行驗證的要求。
-
-
-## <a name="requirements-for-azure-function"></a>Azure function 的需求
-Azure function 會處理 `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` 格式的要求，並根據閘道電腦上安裝的相同簽署憑證傳回驗證權杖。 `{function-app-uri}` 是用來存取函數的 uri。 函式金鑰會自動在要求的標頭中傳遞。 如需範例函式，請參閱[https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs)。 
+    閘道主機名稱是閘道伺服器場負載等化器的 FQDN，或者只有一台電腦時電腦本身的 FQDN。 是`{lab-machine-name}`您嘗試連接的實驗室電腦的名稱，`{port-number}`也是將在其上進行連接的埠。  預設情況下，此埠為 3389。  但是，如果虛擬機器在 DevTest 實驗室中使用[共用 IP](devtest-lab-shared-ip.md)功能，則埠將不同。
+- Internet 資訊伺服器 （IIS）[的應用程式路由請求](/iis/extensions/planning-for-arr/using-the-application-request-routing-module)模組可用於將請求重定向`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`到 azure 函數，該函數處理獲取權杖進行身份驗證的請求。
 
 
-## <a name="requirements-for-network"></a>網路的需求
+## <a name="requirements-for-azure-function"></a>Azure 函數的要求
+Azure 函數處理具有 的`https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}`格式的請求，並基於閘道電腦上安裝的相同簽章憑證返回身份驗證權杖。 是`{function-app-uri}`用於訪問函數的 uri。 函數鍵將自動在請求的標頭中傳遞。 有關示例函數，請參閱[https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs)。 
 
-- 與安裝在閘道電腦上的 SSL 憑證相關聯之 FQDN 的 DNS，必須將流量導向閘道電腦伺服器陣列的閘道機器或負載平衡器。
-- 如果實驗室電腦使用私人 Ip，則必須透過共用相同的虛擬網路或使用對等互連的虛擬網路，從閘道機器到實驗室電腦的網路路徑。
 
-## <a name="configure-the-lab-to-use-token-authentication"></a>將實驗室設定為使用權杖驗證 
-本節說明如何設定實驗室，以使用支援權杖驗證的遠端桌面閘道電腦。 本節並未涵蓋如何設定遠端桌面閘道伺服器陣列本身。 如需相關資訊，請參閱本文結尾處的[建立遠端桌面閘道的範例](#sample-to-create-a-remote-desktop-gateway)一節。 
+## <a name="requirements-for-network"></a>網路要求
 
-在您更新實驗室設定之前，請先儲存成功執行函式所需的金鑰，以傳回實驗室金鑰保存庫中的驗證權杖。 您可以在 Azure 入口網站的函式的 [**管理**] 頁面中取得函數金鑰值。 如需有關如何將秘密儲存在金鑰保存庫中的詳細資訊，請參閱[將密碼新增至 Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)。 儲存密碼的名稱以供稍後使用。
+- 與閘道電腦上安裝的 SSL 憑證關聯的 FQDN 的 DNS 必須將流量定向到閘道電腦或閘道電腦伺服器場的負載等化器。
+- 如果實驗室電腦使用專用 IP，則必須有一個網路路徑，從閘道電腦到實驗室電腦，通過共用同一虛擬網路或使用對等虛擬網路。
 
-若要尋找實驗室金鑰保存庫的識別碼，請執行下列 Azure CLI 命令： 
+## <a name="configure-the-lab-to-use-token-authentication"></a>將實驗室配置為使用權杖身份驗證 
+本節演示如何將實驗室配置為使用支援權杖身份驗證的遠端桌面閘道電腦。 本節不介紹如何設置遠端桌面閘道伺服器場本身。 有關此資訊，請參閱本文末尾的示例[以創建遠端桌面閘道](#sample-to-create-a-remote-desktop-gateway)部分。 
+
+在更新實驗設置之前，請存儲成功執行函數以在實驗室金鑰保存庫中返回身份驗證權杖所需的金鑰。 您可以在 Azure 門戶中的函數**的"管理**"頁中獲取函數鍵值。 有關如何在金鑰保存庫中保存機密的詳細資訊，請參閱[向金鑰保存庫添加機密](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)。 保存機密的名稱以供以後使用。
+
+要查找實驗室金鑰保存庫的 ID，運行以下 Azure CLI 命令： 
 
 ```azurecli
 az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' --resource-group {lab-resource-group-name} --query properties.vaultName
 ```
 
-使用下列步驟，將實驗室設定為使用權杖驗證：
+使用以下步驟將實驗室配置為使用權杖身份驗證：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 [所有服務]，然後從清單中選取 [DevTest Labs]。
-1. 從實驗室清單中，選取您的**實驗室**。
-1. 在實驗室的頁面上，選取 [設定**和原則**]。
-1. 在左側功能表的 [**設定**] 區段中，選取 [**實驗室設定**]。
-1. 在 [**遠端桌面**] 區段中，為 [**閘道主機名稱**] 欄位輸入遠端桌面服務閘道電腦或伺服器陣列的完整功能變數名稱（FQDN）或 IP 位址。 此值必須符合閘道電腦上使用的 SSL 憑證 FQDN。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
+1. 從實驗室清單中，選擇您的**實驗室**。
+1. 在實驗室的頁面上，選擇 **"配置"和"策略**"。
+1. 在左側功能表中，在 **"設置"** 部分中，選擇 **"實驗室設置**"。
+1. 在 **"遠端桌面**"部分中，輸入遠端桌面服務閘道電腦或伺服器場的**閘道主機**欄位的完全限定功能變數名稱 （FQDN） 或 IP 位址。 此值必須與閘道電腦上使用的 SSL 憑證的 FQDN 匹配。
 
-    ![實驗室設定中的遠端桌面選項](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
-1. 在 [**遠端桌面**] 區段的 [**閘道權杖**秘密] 中，輸入稍早建立的密碼名稱。 這個值不是函式索引鍵本身，而是實驗室的金鑰保存庫中的秘密名稱，其中保留了函數金鑰。
+    ![實驗室設置中的遠端桌面選項](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
+1. 在 **"遠端桌面**"部分中，對於**閘道權杖**金鑰，請輸入前面創建的秘密的名稱。 此值不是函數鍵本身，而是實驗室金鑰保存庫中保存函數鍵的機密的名稱。
 
-    ![實驗室設定中的閘道權杖秘密](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
-1. **儲存**變更.
+    ![實驗室設置中的閘道權杖金鑰](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
+1. **保存**變化。
 
     > [!NOTE] 
-    > 按一下 [**儲存**]，即表示您同意[遠端桌面閘道的授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 如需遠端閘道的詳細資訊，請參閱[歡迎使用遠端桌面服務](https://aka.ms/rds)並[部署您的遠端桌面環境](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
+    > 通過按一下 **"保存**"，即表示您同意[遠端桌面閘道的許可證條款](https://www.microsoft.com/licensing/product-licensing/products)。 有關遠端閘道的詳細資訊，請參閱[歡迎使用遠端桌面服務](https://aka.ms/rds)並[部署遠端桌面環境](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
 
-如果偏好透過「自動化」設定實驗室，請參閱[Set-DevTestLabGateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) ，以取得範例 PowerShell 腳本來設定**閘道主機名稱**和**閘道權杖秘密**設定。 [Azure DevTest Labs GitHub 存放庫](https://github.com/Azure/azure-devtestlab)也提供 Azure Resource Manager 範本，可使用**閘道主機名稱**和**閘道權杖秘密**設定來建立或更新實驗室。
+如果首選通過自動化配置實驗室，請參閱[Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1)瞭解用於設置**閘道主機名稱**和**閘道權杖金鑰**設置的示例 PowerShell 腳本。 [Azure 開發人員測試實驗室 GitHub 存儲庫](https://github.com/Azure/azure-devtestlab)還提供 Azure 資源管理器範本，該範本使用**閘道主機名稱**和**閘道權杖金鑰**設置創建或更新實驗室。
 
-## <a name="configure-network-security-group"></a>設定網路安全性群組
-若要進一步保護實驗室，可以將網路安全性群組（NSG）新增至實驗室虛擬機器所使用的虛擬網路。 如需如何設定 NSG 的指示，請參閱[建立、變更或刪除網路安全性群組](../virtual-network/manage-network-security-group.md)。
+## <a name="configure-network-security-group"></a>配置網路安全性群組
+為了進一步保護實驗室，可以將網路安全性群組 （NSG） 添加到實驗室虛擬機器使用的虛擬網路中。 有關如何設置 NSG 的說明，請參閱[創建、更改或刪除網路安全性群組](../virtual-network/manage-network-security-group.md)。
 
-以下範例 NSG 僅允許第一次通過閘道的流量到達實驗室機器。 此規則中的來源是單一閘道電腦的 IP 位址，或閘道機器前方的負載平衡器 IP 位址。
+下面是一個僅允許首先通過閘道的流量到達實驗室電腦的 NSG 示例。 此規則中的源是單個閘道電腦的 IP 位址，或閘道電腦前面的負載等化器的 IP 位址。
 
-![網路安全性群組-規則](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
+![網路安全性群組 - 規則](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
 
-## <a name="sample-to-create-a-remote-desktop-gateway"></a>建立遠端桌面閘道的範例
+## <a name="sample-to-create-a-remote-desktop-gateway"></a>創建遠端桌面閘道的示例
 
 > [!NOTE] 
-> 藉由使用範例範本，即表示您同意[遠端桌面閘道的授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 如需遠端閘道的詳細資訊，請參閱[歡迎使用遠端桌面服務](https://aka.ms/rds)並[部署您的遠端桌面環境](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
+> 通過使用示例範本，您同意[遠端桌面閘道的許可證條款](https://www.microsoft.com/licensing/product-licensing/products)。 有關遠端閘道的詳細資訊，請參閱[歡迎使用遠端桌面服務](https://aka.ms/rds)並[部署遠端桌面環境](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
-[Azure DevTest Labs GitHub 存放庫](https://github.com/Azure/azure-devtestlab)提供一些範例，可協助您設定使用權杖驗證和遠端桌面閘道搭配 DevTest Labs 所需的資源。 這些範例包括閘道機器、實驗室設定和函數應用程式的 Azure Resource Manager 範本。
+[Azure 開發人員測試實驗室 GitHub 存儲庫](https://github.com/Azure/azure-devtestlab)提供了一些示例，以説明使用 DevTest Labs 設置使用權杖身份驗證和遠端桌面閘道所需的資源。 這些示例包括用於閘道電腦、實驗室設置和功能應用的 Azure 資源管理器範本。
 
-請遵循下列步驟來設定遠端桌面閘道伺服器陣列的範例解決方案。
+按照以下步驟為遠端桌面閘道伺服器場設置示例解決方案。
 
-1. 建立簽署憑證。  執行[Create-SigningCertificate](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)。 儲存所建立憑證的指紋、密碼和 Base64 編碼。
-2. 取得 SSL 憑證。 與 SSL 憑證相關聯的 FQDN 必須適用于您所控制的網域。 儲存此憑證的指紋、密碼和 Base64 編碼。 若要使用 PowerShell 取得憑證指紋，請使用下列命令。
+1. 創建簽章憑證。  運行[創建簽章憑證.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)。 保存所創建證書的指紋、密碼和 Base64 編碼。
+2. 取得 SSL 憑證。 與 SSL 憑證關聯的 FQDN 必須針對您控制的域。 保存此證書的指紋、密碼和 Base64 編碼。 要使用 PowerShell 獲取指紋，請使用以下命令。
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -118,55 +118,55 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     $hash = $cer.GetCertHashString()
     ```
 
-    若要使用 PowerShell 取得 Base64 編碼，請使用下列命令。
+    要使用 PowerShell 獲取 Base64 編碼，請使用以下命令。
 
     ```powershell
     [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
     ```
 3. 從[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway)下載檔案。
 
-    此範本需要在相同的基底 URI 存取一些其他 Resource Manager 範本和相關資源。 將所有檔案從[https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway)和 RDGatewayFedAuth 複製到儲存體帳戶中的 blob 容器。  
-4. 從[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway)部署**azuredeploy.parameters.json」** 。 此範本會採用下列參數：
-    - adminUsername –必要。  閘道機器的系統管理員使用者名稱。
-    - adminPassword –必要。 閘道電腦之系統管理員帳戶的密碼。
-    - instanceCount –要建立的閘道機器數目。  
-    - alwaysOn-指出是否要將建立的 Azure Functions 應用程式保持在暖狀態。 保留 Azure Functions 應用程式可避免使用者第一次嘗試連線到其實驗室 VM 時延遲，但會有成本上的影響。  
-    - tokenLifetime –建立的權杖生效的時間長度。 格式為 HH： MM： SS。
-    - sslCertificate –閘道電腦的 SSL 憑證 Base64 編碼。
-    - sslCertificatePassword –閘道電腦之 SSL 憑證的密碼。
-    - sslCertificateThumbprint-SSL 憑證的本機憑證存放區中識別的憑證指紋。
-    - signCertificate –閘道機器簽署憑證的 Base64 編碼方式。
-    - signCertificatePassword –閘道電腦簽署憑證的密碼。
-    - signCertificateThumbprint-簽署憑證的本機憑證存放區中識別的憑證指紋。
-    - _artifactsLocation –可以找到所有支援資源的 URI 位置。 此值必須是完整的 UIR，而不是相對路徑。
-    - _artifactsLocationSasToken –如果位置是 Azure 儲存體帳戶，用來存取支援資源的共用存取簽章（SAS）權杖。
+    該範本需要訪問同一基礎 URI 中的一些其他資源管理器範本和相關資源。 將所有檔從[https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway)和 RDGatewayFedAuth.msi 複製到存儲帳戶中的 blob 容器。  
+4. 從[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway)部署**azuredeploy.json。** 該範本採用以下參數：
+    - 管理員使用者名 = 必需。  閘道電腦的管理員使用者名。
+    - 管理員密碼 = 必需。 閘道電腦管理員帳戶的密碼。
+    - 實例計數 = 要創建的閘道電腦數。  
+    - 始終打開 = 指示是否將創建的 Azure 函數應用保持在溫暖狀態。 保留 Azure 函數應用將避免使用者首次嘗試連接到其實驗室 VM 時的延遲，但它確實會產生成本問題。  
+    - 權杖存留期 = 創建權杖將有效的時間長度。 格式為 HH：MM：SS。
+    - ssl 證書 – 閘道電腦 SSL 憑證的 Base64 編碼。
+    - ssl 證書密碼 – 閘道電腦的 SSL 憑證的密碼。
+    - ssl 證書指紋 - SSL 憑證的本地憑證存放區中的標識證書指紋。
+    - 簽章憑證 – 用於閘道電腦簽章憑證的 Base64 編碼。
+    - 簽章憑證密碼 – 閘道電腦簽章憑證的密碼。
+    - 簽章憑證指紋 - 簽章憑證的本地憑證存放區中的標識證書指紋。
+    - _artifactsLocation = URI 位置，可在其中找到所有支援資源。 此值必須是完全限定的 UIR，而不是相對路徑。
+    - _artifactsLocationSasToken = 共用訪問簽名 （SAS） 權杖用於訪問支援資源（如果位置是 Azure 存儲帳戶）。
 
-    您可以使用下列命令，使用 Azure CLI 來部署範本：
+    可以使用以下命令使用 Azure CLI 部署範本：
 
     ```azurecli
     az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
-    以下是參數的描述：
+    以下是參數的說明：
 
-    - 您可以藉由執行 `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`來取得 {storage-account-endpoint}。  {儲存體-帳戶名稱} 是存放您上傳之檔案的儲存體帳戶名稱。  
-    - {Container-name} 是 {storage-「帳戶名稱}」中的容器名稱，其中包含您上傳的檔案。  
-    - 您可以藉由執行 `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`來取得 {sas 權杖}。 
-        - {儲存體-帳戶名稱} 是存放您上傳之檔案的儲存體帳戶名稱。  
-        - {Container-name} 是 {storage-「帳戶名稱}」中的容器名稱，其中包含您上傳的檔案。  
-        - {Utc-逾期-date} 是 SAS 權杖到期的日期，而 SAS 權杖無法再用來存取儲存體帳戶（UTC）。
+    - 可以通過運行`az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`獲取 [存儲帳戶終結點]。  [存儲-acct 名稱] 是存儲帳戶的名稱，該帳戶保存您上載的檔。  
+    - [容器名稱] 是保存您上載的檔的 [存儲-acct 名稱] 中的容器的名稱。  
+    - 可以通過運行`az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`獲得 [sas-token]。 
+        - [存儲-acct 名稱] 是存儲帳戶的名稱，該帳戶保存您上載的檔。  
+        - [容器名稱] 是保存您上載的檔的 [存儲-acct 名稱] 中的容器的名稱。  
+        - [utc 過期日期] 是 SAS 權杖將過期的日期，SAS 權杖不能再用於訪問存儲帳戶。
 
-    從範本部署輸出中記錄 gatewayFQDN 和 gatewayIP 的值。 您也需要儲存新建立之函式的函式金鑰值，這可以在 [[函數應用程式設定](../azure-functions/functions-how-to-use-azure-function-app-settings.md)] 索引標籤中找到。
-5. 設定 DNS，讓 SSL 憑證的 FQDN 從上一個步驟導向至 gatewayIP 的 IP 位址。
+    從範本部署輸出中記錄閘道FQDN和閘道IP的值。 您還需要為新創建的函數保存函數鍵的值，可在["功能應用設置"](../azure-functions/functions-how-to-use-azure-function-app-settings.md)選項卡中找到。
+5. 配置 DNS，以便 SSL 憑證的 FQDN 從上一步直接到閘道IP的 IP 位址。
 
-    建立遠端桌面閘道伺服器陣列並建立適當的 DNS 更新之後，DevTest Labs 中的實驗室就可以使用它。 **閘道主機名稱**和**閘道權杖秘密**設定必須設定為使用您所部署的閘道電腦。 
+    創建遠端桌面閘道伺服器場並進行適當的 DNS 更新後，開發人員測試實驗室中的實驗室就可以使用它了。 閘道**主機名稱**和**閘道權杖金鑰**設置必須配置為使用已部署的閘道電腦。 
 
     > [!NOTE]
-    > 如果實驗室電腦使用私人 Ip，則必須透過共用相同的虛擬網路或使用對等互連的虛擬網路，從閘道機器到實驗室電腦的網路路徑。
+    > 如果實驗室電腦使用專用 IP，則必須有從閘道電腦到實驗室電腦的網路路徑，無論是通過共用同一虛擬網路還是使用對等虛擬網路。
 
-    一旦設定閘道和實驗室，當實驗室使用者按一下連線時所建立的連線檔案，**就會**自動包含使用權杖驗證進行連接所需的資訊。     
+    配置閘道和實驗室後，實驗室使用者按一下**Connect**時創建的連接檔將自動包含使用權杖身份驗證進行連接所需的資訊。     
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章，以深入瞭解遠端桌面服務：[遠端桌面服務檔](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
+請參閱以下文章，瞭解有關遠端桌面服務：[遠端桌面服務文檔](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
 
 

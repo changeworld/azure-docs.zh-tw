@@ -1,6 +1,6 @@
 ---
-title: 使用者定義函式用戶端程式庫參考-Azure 數位 Twins |Microsoft Docs
-description: Azure 數位 Twins 使用者定義函式用戶端程式庫參考檔。
+title: 使用者定義的函數用戶端庫引用 - Azure 數位孿生 |微軟文檔
+description: Azure 數位雙月使用者定義的函數用戶端庫參考文檔。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276822"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>使用者定義函式用戶端程式庫參考
@@ -30,7 +30,7 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 空間識別碼 |
 
@@ -40,7 +40,7 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 感應器識別碼 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | 裝置識別碼 |
 
@@ -60,10 +60,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | 感應器識別碼 |
-| dataType  | `string` | 感應器資料類型 |
+| sensorId**  | `guid` | 感應器識別碼 |
+| *dataType*  | `string` | 感應器資料類型 |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
 
@@ -71,10 +71,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別碼 |
-| valueName | `string` | 空間屬性名稱 |
+| spaceId**  | `guid` | 空間識別碼 |
+| *值名稱* | `string` | 空間屬性名稱 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -82,10 +82,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| sensorId | `guid` | 感應器識別碼 |
-| dataType | `string` | 感應器資料類型 |
+| sensorId** | `guid` | 感應器識別碼 |
+| *dataType* | `string` | 感應器資料類型 |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
 
@@ -93,10 +93,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
-| valueName | `string` | 空間屬性名稱 |
+| spaceId** | `guid` | 空間識別碼 |
+| *值名稱* | `string` | 空間屬性名稱 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -104,9 +104,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
+| spaceId** | `guid` | 空間識別碼 |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -114,9 +114,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
+| spaceId** | `guid` | 空間識別碼 |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -124,9 +124,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
+| spaceId** | `guid` | 空間識別碼 |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -134,9 +134,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| deviceId | `guid` | 裝置識別碼 |
+| *設備 Id* | `guid` | 裝置識別碼 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -144,9 +144,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| childSpaceId | `guid` | 空間識別碼 |
+| childSpaceId** | `guid` | 空間識別碼 |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -154,9 +154,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| childSensorId | `guid` | 感應器識別碼 |
+| childSensorId** | `guid` | 感應器識別碼 |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -164,9 +164,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| childDeviceId | `guid` | 裝置識別碼 |
+| childDeviceId** | `guid` | 裝置識別碼 |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -174,9 +174,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| childSensorId | `guid` | 感應器識別碼 |
+| childSensorId** | `guid` | 感應器識別碼 |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
 
@@ -184,10 +184,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
-| propertyName | `string` | 空間屬性名稱 |
+| spaceId** | `guid` | 空間識別碼 |
+| *屬性名稱* | `string` | 空間屬性名稱 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -195,10 +195,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| sensorId | `guid` | 感應器識別碼 |
-| propertyName | `string` | 感應器屬性名稱 |
+| sensorId** | `guid` | 感應器識別碼 |
+| *屬性名稱* | `string` | 感應器屬性名稱 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -206,10 +206,10 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| deviceId | `guid` | 裝置識別碼 |
-| propertyName | `string` | 裝置屬性名稱 |
+| *設備 Id* | `guid` | 裝置識別碼 |
+| *屬性名稱* | `string` | 裝置屬性名稱 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -217,11 +217,11 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| sensorId | `guid` | 感應器識別碼 |
-| dataType  | `string` | 感應器資料類型 |
-| *value*  | `string` | 值 |
+| sensorId** | `guid` | 感應器識別碼 |
+| *dataType*  | `string` | 感應器資料類型 |
+| *值*  | `string` | 值 |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -229,11 +229,11 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| spaceId | `guid` | 空間識別碼 |
-| dataType | `string` | Data type |
-| *value* | `string` | 值 |
+| spaceId** | `guid` | 空間識別碼 |
+| *dataType* | `string` | 資料類型 |
+| *值* | `string` | 值 |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -241,9 +241,9 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | 要記錄的訊息 |
+| *消息* | `string` | 要記錄的訊息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -251,17 +251,17 @@ ms.locfileid: "76276822"
 
 **種類**：全域函式
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| topologyObjectId  | `guid` | 圖表物件識別碼。 範例如空間、感應器和裝置識別碼。|
-| topologyObjectType  | `string` | 範例如感應器和裝置。|
-| payload  | `string` | 與通知一起傳送的 JSON 承載。 |
+| topologyObjectId**  | `guid` | 圖表物件識別碼。 範例如空間、感應器和裝置識別碼。|
+| topologyObjectType**  | `string` | 範例如感應器和裝置。|
+| *payload*  | `string` | 與通知一起傳送的 JSON 承載。 |
 
 ## <a name="return-types"></a>傳回類型
 
 用戶端參考協助程式方法傳回的回應模型如下所示。
 
-### <a name="space"></a>外太空
+### <a name="space"></a>Space
 
 ```JSON
 {
@@ -292,33 +292,33 @@ ms.locfileid: "76276822"
 
 此函式傳回目前空間的擴充屬性和其值。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 擴充屬性的名稱 |
+| *屬性名稱* | `string` | 擴充屬性的名稱 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
 此函式傳回目前空間的值。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 值的名稱 |
+| *值名稱* | `string` | 值的名稱 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
 此函式傳回目前空間的歷史值。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 值的名稱 |
+| *值名稱* | `string` | 值的名稱 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 此函式傳送具有指定承載的通知。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 JSON 承載 |
+| *payload* | `string` | 要包含在通知中的 JSON 承載 |
 
 ### <a name="device"></a>裝置
 
@@ -352,17 +352,17 @@ ms.locfileid: "76276822"
 
 此函式傳回目前裝置的擴充屬性和其值。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 擴充屬性的名稱 |
+| *屬性名稱* | `string` | 擴充屬性的名稱 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 此函式傳送具有指定承載的通知。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 JSON 承載 |
+| *payload* | `string` | 要包含在通知中的 JSON 承載 |
 
 ### <a name="sensor"></a>感應器
 
@@ -400,9 +400,9 @@ ms.locfileid: "76276822"
 
 此函式傳回目前感應器的擴充屬性和其值。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 擴充屬性的名稱 |
+| *屬性名稱* | `string` | 擴充屬性的名稱 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -416,9 +416,9 @@ ms.locfileid: "76276822"
 
 此函式傳送具有指定承載的通知。
 
-| 參數  | 類型                | 說明  |
+| 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 JSON 承載 |
+| *payload* | `string` | 要包含在通知中的 JSON 承載 |
 
 ### <a name="value"></a>值
 

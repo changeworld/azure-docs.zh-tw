@@ -16,10 +16,10 @@ ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920456"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
@@ -34,9 +34,9 @@ ms.locfileid: "77920456"
 
 - [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure 網路和虛擬網路](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure 儲存體](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure 存儲](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-若要了解有關 SAP NetWeaver 及 Azure 上其他 SAP 元件的詳細資訊，請參閱 [Azure 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)的 [Azure 上的 SAP](https://docs.microsoft.com/azure/)。
+若要了解有關 SAP NetWeaver 及 Azure 上其他 SAP 元件的詳細資訊，請參閱 [Azure 文件](https://docs.microsoft.com/azure/)的 [Azure 上的 SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。
 
 ## <a name="basic-setup-considerations"></a>基本設定考量
 下列各節說明在 Azure VM 上部署 SAP HANA 系統的基本安裝考量。
@@ -67,12 +67,12 @@ ms.locfileid: "77920456"
 您也可以透過 [SAP Cloud Platform](https://cal.sap.com/)，將完整安裝的 SAP Hana 平台部署到 Azure VM 服務上。 [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) 中會敘述安裝程序，或者使用[這裡](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)發行的自動化安裝。
 
 >[!IMPORTANT]
-> 若要使用 M208xx_v2 Vm，您必須小心從 Azure VM 映射庫中選取您的 Linux 映射。 若要閱讀詳細資料，請參閱[記憶體優化的虛擬機器大小](../../mv2-series.md)一文。
+> 為了使用M208xx_v2 VM，您需要小心從 Azure VM 映射庫中選擇 Linux 映射。 為了閱讀詳細資訊，請閱讀文章["記憶體優化虛擬機器大小](../../mv2-series.md)"。
 > 
 
 
-### <a name="storage-configuration-for-sap-hana"></a>SAP Hana 的儲存體設定
-如需在 Azure 中與 SAP Hana 搭配使用的儲存體設定和儲存類型，請參閱[azure 虛擬機器儲存體設定 SAP Hana](./hana-vm-operations-storage.md)檔
+### <a name="storage-configuration-for-sap-hana"></a>SAP HANA 的存儲配置
+有關要在 Azure 中與 SAP HANA 一起使用的存儲配置和存儲類型，請閱讀文檔[SAP HANA Azure 虛擬機器存儲配置](./hana-vm-operations-storage.md)
 
 
 ### <a name="set-up-azure-virtual-networks"></a>設定 Azure 虛擬網路
@@ -95,7 +95,7 @@ ms.locfileid: "77920456"
 >
 >
 
-不過，對於持續進行的部署，您需要在 Azure 中建立虛擬資料中心網路架構。 此架構會建議將連接至內部部署的 Azure VNet 閘道區隔到不同的 Azure VNet。 此個別的 VNet 應裝載離開內部部署或網際網路的所有流量。 這種方法可讓您在此個別的中樞 VNet 部署軟體，稽核和記錄進入 Azure 虛擬資料中心的流量。 因此，您會有一個 VNet，裝載與 Azure 部署的傳入和傳出流量相關的所有軟體和設定。
+不過，對於持續進行的部署，您需要在 Azure 中建立虛擬資料中心網路架構。 此體系結構建議將連接到本地的 Azure VNet 閘道分離到單獨的 Azure VNet 中。 此單獨的 VNet 應承載所有離開本地或互聯網的流量。 這種方法可讓您在此個別的中樞 VNet 部署軟體，稽核和記錄進入 Azure 虛擬資料中心的流量。 因此，您會有一個 VNet，裝載與 Azure 部署的傳入和傳出流量相關的所有軟體和設定。
 
 [Azure 虛擬資料中心：網路觀點](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)與 [Azure 虛擬資料中心和 Enterprise 控制平面](https://docs.microsoft.com/azure/architecture/vdc/)等文章，可為虛擬資料中心方法與相關 Azure VNet 設計提供詳細資訊。
 
@@ -123,34 +123,34 @@ ms.locfileid: "77920456"
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>設定 SAP HANA 相應放大的 Azure 基礎結構
-若要找出已通過 OLAP 相應放大或 S/4HANA 向外延展認證的 Azure VM 類型，請檢查[SAP Hana 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 「群集」資料行中的核取記號表示向外延展支援。 [應用程式類型] 指出是否支援 OLAP 相應放大或 S/4HANA 相應放大。 如需每個 Vm 的向外延展認證節點的詳細資訊，請查看 SAP Hana 硬體目錄中所列之特定 VM SKU 中的專案詳細資料。
+為了找出經過 OLAP 橫向擴展或 S/4HANA 橫向擴展認證的 Azure VM 類型，請查看[SAP HANA 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 列"聚類"中的核取記號表示橫向擴展支援。 應用程式類型指示是否支援 OLAP 橫向擴展或 S/4HANA 橫向擴展。 有關每個 VM 的橫向擴展認證的節點的詳細資訊，請查看 SAP HANA 硬體目錄中列出的特定 VM SKU 中條目的詳細資訊。
 
-在 Azure Vm 中部署向外延展設定的最低 OS 版本，請檢查 SAP Hana 硬體目錄中所列之特定 VM SKU 中的專案詳細資料。 在 n 節點 OLAP 向外延展設定中，一個節點做為主要節點。 其他節點，最高為認證的限制作為背景工作角色節點。 其他待命節點不會計入已認證的節點數目
+用於在 Azure VM 中部署橫向擴展配置的最小作業系統版本，請檢查 SAP HANA 硬體目錄中列出的特定 VM SKU 中條目的詳細資訊。 在 n 節點 OLAP 橫向擴展配置中，一個節點充當主節點。 其他到認證限制的節點充當輔助節點。 其他備用節點不計入經認證的節點數
 
 >[!NOTE]
-> 具有待命節點之 SAP Hana 的 azure VM 向外延展部署，只有在使用[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)儲存體的情況下才有可能。 沒有其他 SAP Hana 認證的 Azure 儲存體可讓您設定 SAP Hana 待命節點
+> 只能通過[Azure NetApp 檔](https://azure.microsoft.com/services/netapp/)存儲進行具有備用節點的 SAP HANA 的 Azure VM 橫向擴展部署。 沒有其他 SAP HANA 認證的 Azure 存儲允許配置 SAP HANA 備用節點
 >
 
-針對/hana/shared，我們也建議使用[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)。 
+對於 /hana/共用，我們還建議使用[Azure NetApp 檔](https://azure.microsoft.com/services/netapp/)。 
 
-在相應放大設定中，單一節點的一般基本設計如下所示：
+橫向擴展配置中單個節點的典型基本設計將如下所示：
 
 ![單一節點的相應放大基本概念](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA 相應放大的 VM 節點基本設定看起來像這樣：
 
-- 針對 **/hana/shared**，您可以使用透過 Azure NetApp Files 提供的原生 NFS 服務。 
-- 所有其他磁片區都不會在不同的節點之間共用，而且不是以 NFS 為基礎。 本檔稍後會進一步說明使用非共用 **/hana/data**和 **/hana/log**向外延展 HANA 安裝的安裝設定和步驟。 如需可使用的 HANA 認證儲存體，請參閱[SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定一文。
+- 對於 **/hana/shared**，您可以使用通過 Azure NetApp 檔提供的本機 NFS 服務。 
+- 所有其他磁片卷不會在不同節點之間共用，也不基於 NFS。 本文檔稍後將提供具有非共用 **/hana/資料和****/hana/log**的橫向擴展 HANA 安裝的安裝配置和步驟。 對於可以使用的 HANA 認證存儲，請查看文章[SAP HANA Azure 虛擬機器存儲配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)。
 
 
-調整磁片區大小，您需要檢查檔[SAP HANA TDI 儲存體需求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，視背景工作節點數目而定，需要的大小。 檔會釋出您需要套用的公式，以取得磁片區所需的容量
+調整卷或磁片的大小，您需要檢查文檔[SAP HANA TDI 存儲要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，具體取決於輔助節點的數量所需的大小。 文檔發佈您需要應用的公式，以獲得卷所需的容量
 
-向外延展 SAP Hana VM 的單一節點設定圖形中所顯示的其他設計準則是 VNet，或較佳的子網設定。 SAP 強烈建議從 HANA 節點間的通訊分隔用戶端/應用程式對應流量。 如圖所示，將兩個不同的 vNIC 附加到 VM，即可達成此目的。 這兩個 vNIC 位在不同的子網路，有兩個不同的 IP 位址。 接著，您可以使用 NSG 或使用者定義的路由，透過路由規則控制流量的流動。
+橫向擴展 SAP HANA VM 的單節點配置圖形中顯示的其他設計條件是 VNet，或者更好的子網配置。 SAP 強烈建議從 HANA 節點間的通訊分隔用戶端/應用程式對應流量。 如圖所示，將兩個不同的 vNIC 附加到 VM，即可達成此目的。 這兩個 vNIC 位在不同的子網路，有兩個不同的 IP 位址。 接著，您可以使用 NSG 或使用者定義的路由，透過路由規則控制流量的流動。
 
 特別是在 Azure 中，無法對特定的 vNIC 強制使用服務品質與配額。 因此，分隔用戶端/應用程式對應流量與節點間通訊，才不會有機會將一個流量串流設定為優先於其他串流。 相反地，仍可以透過分隔來保護相應放大設定的節點間通訊安全。  
 
 >[!NOTE]
->SAP 建議將網路流量與用戶端/應用程式端和節點內部流量分開，如本檔中所述。 因此，建議您將架構放在適當的位置，如最後一個圖形中所示。 也請洽詢您的安全性與合規性小組，以取得偏離建議的需求 
+>SAP 建議將網路流量分離到用戶端/應用程式端和節點內流量，如本文檔所述。 因此，建議將體系結構放在原圖形中所示的位置。 有關偏離建議的要求，請諮詢您的安全和合規團隊 
 >
 
 從網路的觀點來看，最小的必要網路架構如下：
@@ -162,8 +162,8 @@ SAP HANA 相應放大的 VM 節點基本設定看起來像這樣：
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>在 Azure 中安裝 SAP HANA 相應放大
 安裝相應放大 SAP 設定，您需要執行的概略步驟如下：
 
-- 部署新的或適應現有的 Azure VNet 基礎結構
-- 使用以及為基礎的 Azure 受控進階儲存體、Ultra 磁片區和/或 NFS 磁片區來部署新的 Vm
+- 部署新的或調整現有的 Azure VNet 基礎結構
+- 使用基於 ANF 的 Azure 託管高級存儲、超磁片卷和/或 NFS 卷部署新 VM
 - - 採用網路路由以確保像是 VM 之間的節點間通訊不會透過 [NVA](https://azure.microsoft.com/solutions/network-appliances/) 路由傳送。 
 - 安裝 SAP HANA 主要節點。
 - 採用 SAP HANA 主要節點的設定參數
@@ -173,21 +173,21 @@ SAP HANA 相應放大的 VM 節點基本設定看起來像這樣：
 當您部署 Azure VM 基礎結構且所有其他的準備工作都已完成時，您需要以下列步驟安裝 SAP HANA 相應放大設定：
 
 - 根據 SAP 的文件，安裝 SAP HANA 主要節點
-- 如果使用 Azure 進階儲存體或 Ultra 磁片儲存體搭配/hana/data 和/hana/log 的非共用磁片，您需要變更 global.asax 檔案，並將參數 ' basepath_shared = 否 ' 新增至全域 .ini 檔案。 此參數可讓 SAP Hana 在相應放大中執行，而不需要在節點之間進行 ' shared ' **/hana/data**和 **/hana/log**磁片區。 詳細資料記載於 [SAP 附註編號 2080991](https://launchpad.support.sap.com/#/notes/2080991) \(英文\)。 如果您使用以及為/hana/data 和/hana/log 為基礎的 NFS 磁片區，則不需要進行這種變更
-- 在全域 .ini 參數的最終變更之後，重新開機 SAP Hana 實例
+- 如果將 Azure 高級存儲或超磁片存儲與 /hana/資料和 /hana/log 的非共用磁片一起使用，則需要更改 global.ini 檔案，並將參數"basepath_shared = 否"添加到 global.ini 檔案中。 此參數使 SAP HANA 能夠在橫向擴展中運行，而無需節點之間的"共用 **"/hana/資料和** **/hana/log**卷。 詳細資料記載於 [SAP 附註編號 2080991](https://launchpad.support.sap.com/#/notes/2080991) \(英文\)。 如果您使用基於 ANF 的 NFS 卷/哈納/資料和 /哈納/日誌，則無需進行此更改
+- 全域.ini 參數的最終更改後，重新開機 SAP HANA 實例
 - 新增其他背景工作角色節點。 另請參閱 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>。 在安裝期間或安裝後，使用本機 hdblcm 之類，指定用於進行 SAP HANA 內部節點間通訊的內部網路。 如需詳細文件，請參閱 [SAP 附註編號 2183363](https://launchpad.support.sap.com/#/notes/2183363) \(英文\)。 
 
-如需在 SUSE Linux 上使用待命節點設定 SAP Hana 相應放大系統的詳細資訊，請參閱在[SUSE Linux Enterprise Server 上使用 Azure NetApp Files 在 Azure vm 上部署具有待命節點的 SAP Hana 相應放大系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)。 如需 Red Hat 的對等檔，請參閱在[Azure vm 上部署具有待命節點的 SAP Hana 相應放大系統（在 Red Hat Enterprise Linux 上使用 Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)）。 
+在[部署在 Azure VM 上具有備用節點的 SAP HANA 橫向系統的詳細資訊，在 SUSE Linux 企業伺服器上使用 Azure NetApp 檔](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)。 在"[使用紅帽企業 Linux 上的 Azure NetApp 檔"上部署具有 Azure VM 備用節點的 SAP HANA 橫向擴展系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)，可以找到紅帽的等效文檔。 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>適用於 Azure 虛擬機器的 SAP HANA Dynamic Tiering 2.0
 
-除了 Azure M 系列 VM 上的 SAP HANA 認證，Microsoft Azure 也支援 SAP HANA Dynamic Tiering 2.0 (請參閱更底下的 SAP HANA Dynamic Tiering 文件連結)。 安裝或操作此產品時雖沒有任何差異，(例如，透過 Azure 虛擬機器中的 SAP HANA Cockpit)，但是在 Azure 上正式支援有一些必要的重要事項。 以下說明這些關鍵點。 在本文中，將會使用縮寫 "DT 2.0"，而不是完整名稱動態分層2.0。
+除了 Azure M 系列 VM 上的 SAP HANA 認證，Microsoft Azure 也支援 SAP HANA Dynamic Tiering 2.0 (請參閱更底下的 SAP HANA Dynamic Tiering 文件連結)。 安裝或操作此產品時雖沒有任何差異，(例如，透過 Azure 虛擬機器中的 SAP HANA Cockpit)，但是在 Azure 上正式支援有一些必要的重要事項。 以下說明這些關鍵點。 在整個文章中，將使用縮寫"DT 2.0"而不是全名動態分層 2.0。
 
 SAP BW 或 S4HANA 不支援 SAP HANA Dynamic Tiering 2.0。 主要使用案例現在為原生 HANA 應用程式。
 
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 下圖提供有關 Microsoft Azure 上的 DT 2.0 支援概觀。 必須遵循一組必要需求，才能符合正式憑證：
 
@@ -198,7 +198,7 @@ SAP BW 或 S4HANA 不支援 SAP HANA Dynamic Tiering 2.0。 主要使用案例�
 - 必須將多個 Azure 磁碟連結至 DT 2.0 VM
 - 必須利用等量分割於多個 Azure 磁碟來建立軟體 raid/等量磁碟區 (透過 lvm 或 mdadm)
 
-下列各節將說明更多詳細資料。
+更多細節將在以下各節中解釋。
 
 ![SAP HANA DT 2.0 架構概觀](media/hana-vm-operations/hana-data-tiering.png)
 
@@ -236,7 +236,7 @@ SAP HANA 認證 M 系列 VM 與所支援 DT 2.0 VM (M64-32ms 和 E32sv3) 的所�
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>適用於 SAP HANA DT 2.0 的 VM 儲存體
 
-根據 DT 2.0 最佳做法指引，每個實體核心的最小磁碟 IO 輸送量應該是 50 MB/秒。 查看適用于下列兩種 Azure VM 類型的規格，其支援為 DT 2.0，VM 的最大磁片 IO 輸送量限制如下所示：
+根據 DT 2.0 最佳做法指引，每個實體核心的最小磁碟 IO 輸送量應該是 50 MB/秒。 查看兩種 Azure VM 類型的規範，DT 2.0 支援該類型，VM 的最大磁片 IO 輸送量限制如下所示：
 
 - E32sv3：768 MB/sec (未快取) 表示每個實體核心的速率為 48 MB/秒
 - M64-32ms：1000 MB/sec (未快取) 表示每個實體核心的速率為 62.5 MB/秒
@@ -259,7 +259,7 @@ M64-32ms VM 有很多記憶體，因此 IO 負載可能無法達到特別為讀�
 
 特別是在工作負載為密集讀取的情況下，可以提升 IO 效能，進而為資料庫軟體的資料磁碟區開啟 Azure 主機快取「唯讀」 (建議做法)。 而對於交易記錄，Azure 主機磁碟快取必須是「無」。 
 
-就記錄磁碟區的大小而論，建議的起始點為 15% 資料大小的啟發學習法。 根據成本和輸送量需求，使用不同的 Azure 磁碟類型，即可完成記錄磁碟區建立。 針對記錄磁片區，需要高 i/o 輸送量。  在使用 VM 類型 M64-m64-32ms 的情況下，必須啟用[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。 Azure 寫入加速器可為交易記錄提供最佳的磁碟寫入延遲 (僅適用於 M 系列)。 此外，還有一些需要考量的事項，像是每個 VM 類型的磁碟數目上限。 在[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)可以找到寫入加速器的詳細資訊
+就記錄磁碟區的大小而論，建議的起始點為 15% 資料大小的啟發學習法。 根據成本和輸送量需求，使用不同的 Azure 磁碟類型，即可完成記錄磁碟區建立。 對於日誌卷，需要高 I/O 輸送量。  在使用 VM 類型 M64-32ms 時，必須啟用[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。 Azure 寫入加速器可為交易記錄提供最佳的磁碟寫入延遲 (僅適用於 M 系列)。 此外，還有一些需要考量的事項，像是每個 VM 類型的磁碟數目上限。 在[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)可以找到寫入加速器的詳細資訊
 
 
 以下是一些關於調整記錄磁碟區大小的範例：
@@ -290,9 +290,9 @@ M64-32ms VM 有很多記憶體，因此 IO 負載可能無法達到特別為讀�
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Azure VM 上的備份和還原作業
 下列文件說明如何備份及還原您的 SAP HANA 部署：
 
-- [SAP HANA 備份概觀](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA 備份概述](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 - [SAP HANA 檔案層級備份](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP Hana 儲存體快照集基準](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA 存儲快照基準](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>啟動及重新啟動包含 SAP HANA 的 VM
@@ -309,20 +309,20 @@ Azure 公用雲端的重要功能是您僅需支付運算的分鐘數。 例如�
 
 ![不具站台對站台連線能力和 SAProuter 的 SAP Hana 粗略部署結構描述](media/hana-vm-operations/hana-simple-networking-saprouter.png)
 
-請務必在不同的 VM 上安裝 SAPRouter，而非安裝在 Jumpbox VM 上。 不同的 VM 必須有靜態 IP 位址。 若要將您的 SAProuter 連線至 SAP 所裝載的 SAProuter，請連絡 SAP 以索取 IP 位址。 （SAP 所裝載的 SAProuter 是您在 VM 上安裝之 SAProuter 實例的對應項）。使用來自 SAP 的 IP 位址來設定您的 SAProuter 實例。 在組態集中，唯一必要的連接埠是 TCP 通訊埠 3299。
+請務必在不同的 VM 上安裝 SAPRouter，而非安裝在 Jumpbox VM 上。 不同的 VM 必須有靜態 IP 位址。 若要將您的 SAProuter 連線至 SAP 所裝載的 SAProuter，請連絡 SAP 以索取 IP 位址。 （SAP 託管的 SAP 路由器是您在 VM 上安裝的 SAProuter 實例的對應項。使用 SAP 中的 IP 位址配置 SAP 路由器實例。 在組態集中，唯一必要的連接埠是 TCP 通訊埠 3299。
 
 如需有關如何設定和維護透過 SAProuter 的遠端連線詳細資訊，請參閱 [SAP 文件](https://support.sap.com/en/tools/connectivity-tools/remote-support.html)。
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>在 Azure 原生 VM 上具有 SAP Hana 的高可用性
-如果您正在執行 SUSE Linux Enterprise Server 或 Red Hat，您可以使用 STONITH 裝置建立 Pacemaker 叢集。 您可以使用裝置設定 SAP HANA 組態，該組態是使用包含 HANA 系統複寫以及自動容錯移轉的同步複寫。 如需「後續步驟」一節中所列的詳細資訊。
+如果您正在運行 SUSE Linux 企業伺服器或紅帽，則可以使用 STONITH 設備建立起搏器群集。 您可以使用裝置設定 SAP HANA 組態，該組態是使用包含 HANA 系統複寫以及自動容錯移轉的同步複寫。 有關詳細資訊，在"後續步驟"部分中列出。
 
 ## <a name="next-steps"></a>後續步驟
 熟悉列出的文章
-- [SAP Hana Azure 虛擬機器儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- [使用 azure NetApp Files on SUSE Linux Enterprise Server 在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [使用 azure NetApp Files on Red Hat Enterprise Linux 在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- [SUSE Linux Enterprise Server 上的 Azure Vm 上 SAP Hana 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Red Hat Enterprise Linux 上的 Azure Vm 上 SAP Hana 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+- [SAP HANA Azure 虛擬機器儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [在 SUSE Linux 企業伺服器上使用 Azure NetApp 檔，在 Azure VM 上部署具有備用節點的 SAP HANA 橫向擴展系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [使用紅帽企業 Linux 上的 Azure NetApp 檔，在 Azure VM 上部署具有備用節點的 SAP HANA 橫向擴展系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Red Hat Enterprise Linux 上 Azure VM 的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
 
  
 

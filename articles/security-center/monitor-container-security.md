@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 資訊安全中心中監視容器的安全性
-description: 瞭解如何從 Azure 資訊安全中心檢查容器的安全性狀態
+title: 監視 Azure 安全中心中容器的安全性
+description: 瞭解如何從 Azure 安全中心檢查容器的安全狀況
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
 ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919527"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>監視容器的安全性
+# <a name="monitoring-the-security-of-your-containers"></a>監控容器的安全性
 
-此頁面說明如何使用我們的概念一節中[容器安全性一文](container-security.md)所述的容器安全性功能。
+本頁介紹如何使用["容器安全"一文中所述的容器](container-security.md)安全功能。
 
-Azure 資訊安全中心涵蓋容器安全性的下列三個層面：
+Azure 安全中心涵蓋容器安全的以下三個方面：
 
-- **弱點管理**-如果您是在資訊安全中心的標準定價層（請參閱[定價](/azure/security-center/security-center-pricing)），您可以在每次推送新映射時掃描 ARM 型 Azure Container Registry。 掃描器（由 Qualys 提供技術支援）以資訊安全中心建議的形式呈現結果。
-    如需詳細指示，請參閱下方[的掃描容器登錄是否有弱點](#scanning-your-arm-based-container-registries-for-vulnerabilities)。
+- **漏洞管理**- 如果您位於安全中心的標準定價層（請參閱[定價](/azure/security-center/security-center-pricing)），則可以在每次推送新映射時掃描基於 ARM 的 Azure 容器註冊表。 掃描器（由 Qualys 提供支援）將發現作為安全中心的建議。
+    有關詳細說明，請參閱[掃描下面的容器註冊表中的漏洞](#scanning-your-arm-based-container-registries-for-vulnerabilities)。
 
-- **強化容器的 Docker 主機**-資訊安全中心會尋找裝載于 IaaS Linux vm 或其他執行 Docker 之 Linux 電腦上的非受控容器，並持續比較容器的設定與中心，以進行網際網路安全性（CIS） Docker 基準測試。 如果您的容器不符合任何控制項，資訊安全中心會對您發出警示。 持續監視因錯誤而造成的安全性風險，是任何安全性計畫的重要元件。 
-    如需詳細指示，請參閱以下的[強化容器的 Docker 主機](#hardening-your-containers-docker-hosts)。
+- **強化容器的 Docker 主機**- 安全中心發現託管在 IaaS Linux VM 或其他運行 Docker 的 Linux 電腦上的非託管容器，並持續將容器的配置與 Internet 安全中心 （CIS） Docker 基準進行比較。 如果容器不符合任何控制項，安全中心會提醒您。 持續監控配置不當造成的安全風險是任何安全計畫的關鍵組成部分。 
+    有關詳細說明，請參閱[在下面強化容器的 Docker 主機](#hardening-your-containers-docker-hosts)。
 
-- **強化 Azure Kubernetes Service**叢集-資訊安全中心會在 Azure Kubernetes Service 叢集的設定發現弱點時提供建議。 如需可能出現之特定建議的詳細資料，請參閱[Kubernetes 服務建議](recommendations-reference.md#recs-containers)。
+- **強化 Azure 庫伯奈斯服務群集**- 安全中心在發現 Azure 庫伯內斯服務群集配置中的漏洞時提供建議。 有關可能顯示的具體建議的詳細資訊，請參閱[庫伯內斯服務建議](recommendations-reference.md#recs-containers)。
 
-- **執行時間保護**-如果您是資訊安全中心的標準定價層，您將會取得容器化環境的即時威脅防護。 資訊安全中心會在主機和 AKS 叢集層級產生可疑活動的警示。 如需可能出現之相關安全性警示的詳細資訊，請參閱警示參考資料表的 Azure Kubernetes Service 叢集的[警示](alerts-reference.md#alerts-akscluster)和[容器的警示-主機層級](alerts-reference.md#alerts-containerhost)區段。
+- **運行時保護**- 如果您位於安全中心的標準定價層，您將獲得容器化環境的即時威脅保護。 安全中心在主機和 AKS 群集級別生成可疑活動的警報。 有關可能出現的相關安全警報的詳細資訊，請參閱[Azure Kubernetes 服務群集的警報](alerts-reference.md#alerts-akscluster)和[容器的警報 -](alerts-reference.md#alerts-containerhost)警報參考表的主機分級部分。
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>掃描以 ARM 為基礎的容器登錄是否有弱點 
+## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>掃描基於 ARM 的容器註冊表中的漏洞 
 
-1. 若要啟用 Azure Container Registry 映射的弱點掃描：
+1. 要啟用 Azure 容器註冊表映射的漏洞掃描：
 
-    1. 請確定您是 Azure 資訊安全中心的標準定價層。
+    1. 確保您位於 Azure 安全中心的標準定價層。
 
-    1. 從 [**定價 & 設定**] 頁面上，為您的訂用帳戶啟用選用的容器登錄套件組合： ![啟用容器登錄套件組合](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. 在**定價&設置**頁中，為訂閱啟用可選的容器註冊表包：![啟用容器註冊表包](media/monitor-container-security/enabling-container-registries-bundle.png)
 
-        資訊安全中心現在已準備好掃描已推送至登錄的影像。 
+        安全中心現在可以掃描推送到註冊表的圖像。 
 
         >[!NOTE]
-        >這項功能會按映射收費。
+        >此功能按圖像收費。
 
 
-1. 若要觸發映射掃描，請將其推送至您的登錄。 
+1. 要觸發映射的掃描，請將其推送到註冊表。 
 
-    當掃描完成時（通常在大約10分鐘之後），資訊安全中心建議中會提供結果。
+    掃描完成後（通常在大約 10 分鐘後），安全中心建議中提供了調查結果。
     
 
-1. 若要查看結果，請移至 [**建議**] 頁面。 如果發現問題，您將會看到下列建議：
+1. 要查看調查結果，請訪問 **"建議"** 頁面。 如果發現問題，您將看到以下建議：
 
-    ![補救問題的建議 ](media/monitor-container-security/acr-finding.png)
+    ![修復問題的建議 ](media/monitor-container-security/acr-finding.png)
 
 
-1. 選取建議。 
-    [建議詳細資料] 頁面隨即開啟，其中包含其他資訊。 這項資訊包括具有易受攻擊的映射（「受影響的資源」）和補救步驟的登錄清單。 
+1. 選擇建議。 
+    建議詳細資訊頁將打開，並包含其他資訊。 此資訊包括具有易受攻擊映射（"受影響的資源"）的註冊表的清單以及修正步驟。 
 
-1. 選取特定的登錄，以查看其中具有易受攻擊之存放庫的存放庫。
+1. 選擇特定的註冊表以查看其中具有易受攻擊存儲庫的存儲庫。
 
-    ![選取登錄](media/monitor-container-security/acr-finding-select-registry.png)
+    ![選擇註冊表](media/monitor-container-security/acr-finding-select-registry.png)
 
-    [登錄詳細資料] 頁面隨即開啟，其中包含受影響的存放庫清單。
+    註冊表詳細資訊頁將打開，並列出受影響的存儲庫。
 
-1. 選取特定的存放庫，以查看其中具有易受攻擊影像的儲存機制。
+1. 選擇特定存儲庫以查看其中具有易受攻擊映射的存儲庫。
 
     ![選取存放庫](media/monitor-container-security/acr-finding-select-repository.png)
 
-    [存放庫詳細資料] 頁面隨即開啟。 它會列出易受攻擊的映射以及發現嚴重性的評量。
+    將打開存儲庫詳細資訊頁。 它列出了易受攻擊的圖像以及對調查結果嚴重性的評估。
 
-1. 選取特定的映射以查看弱點。
+1. 選擇特定圖像以查看漏洞。
 
-    ![選取影像](media/monitor-container-security/acr-finding-select-image.png)
+    ![選擇圖像](media/monitor-container-security/acr-finding-select-image.png)
 
-    選取之影像的結果清單隨即開啟。
+    將打開所選圖像的發現清單。
 
-    ![發現的清單](media/monitor-container-security/acr-findings.png)
+    ![調查結果清單](media/monitor-container-security/acr-findings.png)
 
-1. 若要深入瞭解尋找，請選取 [尋找]。 
+1. 要瞭解有關查找的更多詳細資訊，請選擇該查找。 
 
-    [發現詳細資料] 窗格隨即開啟。
+    將打開"調查結果詳細資訊"窗格。
 
-    [![發現詳細資料窗格](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![調查結果詳細資訊窗格](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
-    此窗格包含問題的詳細描述，以及外部資源的連結，以協助降低威脅。
+    此窗格包括問題的詳細說明和指向外部資源的連結，以説明緩解威脅。
 
-1. 請遵循此窗格的 [補救] 區段中的步驟。
+1. 按照此窗格的修正部分中的步驟操作。
 
-1. 當您採取補救安全性問題所需的步驟時，請取代您登錄中的映射：
+1. 執行修復安全問題所需的步驟後，請替換註冊表中的映射：
 
-    1. 推送更新的映射。 這會觸發掃描。 
+    1. 推送更新的圖像。 這將觸發掃描。 
     
-    1. 核取 [建議] 頁面中的「應補救 Azure Container Registry 映射中的弱點」建議。 
+    1. 請查看建議頁面，瞭解"應修復 Azure 容器註冊表映射中的漏洞"的建議。 
     
-        如果仍出現建議，而且您已處理的映射仍然出現在易受攻擊的映射清單中，請再次檢查補救步驟。
+        如果建議仍然顯示，並且您處理的圖像仍顯示在易受攻擊圖像清單中，請再次檢查修正步驟。
 
-    1. 當您確定更新的映射已推送、掃描，且不再出現于建議中時，請從您的登錄中刪除「舊的」易受攻擊的映射。
+    1. 當您確定已推送、掃描更新的圖像且不再顯示在建議中時，請從註冊表中刪除"舊"易受攻擊的圖像。
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>強化容器的 Docker 主機
+## <a name="hardening-your-containers-docker-hosts"></a>加固容器的 Docker 主機
 
-資訊安全中心會持續監視 Docker 主機的設定，並產生反映業界標準的安全性建議。
+安全中心不斷監視 Docker 主機的配置，並生成反映行業標準的安全建議。
 
-若要為容器的 Docker 主機查看 Azure 資訊安全中心的安全性建議：
+要查看容器的 Docker 主機的 Azure 安全中心安全建議，
 
-1. 從資訊安全中心導覽列中，開啟 [計算] [ **& 應用程式**]，然後選取 [**容器**] 索引標籤。
+1. 在"安全中心"巡覽列中，打開 **"計算&應用**並選擇 **"容器**"選項卡。
 
-1. （選擇性）將您的容器資源清單篩選至容器主機主機。
+1. 可以選擇將容器資源清單篩選到容器主機。
 
-    ![容器資源篩選](media/monitor-container-security/container-resources-filter.png)
+    ![容器資源篩選器](media/monitor-container-security/container-resources-filter.png)
 
-1. 從您的容器主機電腦清單中，選取其中一個以進一步調查。
+1. 從容器主機清單中，選擇一台以進一步調查。
 
     ![容器主機建議](media/monitor-container-security/container-resources-filtered-to-hosts.png)
 
-    [**容器主機資訊] 頁面**隨即開啟，並提供主機的詳細資料和建議清單。
+    將打開 **"容器主機資訊"頁**，其中包含主機的詳細資訊和建議清單。
 
-1. 從 [建議] 清單中，選取建議以進一步調查。
+1. 從建議清單中，選擇一個建議以進一步調查。
 
     ![容器主機建議清單](media/monitor-container-security/container-host-rec.png)
 
-1. （選擇性）閱讀描述、資訊、威脅和補救步驟。 
+1. 或者，請閱讀說明、資訊、威脅和補救步驟。 
 
-1. 選取頁面底部的 [**採取動作**]。
+1. 選擇頁面底部的 **"執行操作**"。
 
-    [![採取動作 按鈕](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
+    [![執行操作按鈕](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
 
-    Log Analytics 隨即開啟，其中包含準備好執行的自訂作業。 預設的自訂查詢包含所有已評估失敗規則的清單，以及協助您解決問題的指導方針。
+    日誌分析在打開時，自訂操作可供運行。 預設自訂查詢包括評估的所有失敗規則的清單，以及説明您解決問題的準則。
 
-    [![Log Analytics 動作](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
+    [![日誌分析操作](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. 調整查詢參數，並在您確定它已準備好可供您的主機時，選取 [**執行**]。 
+1. 調整查詢參數，並在確定主機準備就緒時選擇 **"運行**"。 
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何使用資訊安全中心的容器安全性功能。 
+在本文中，您學習了如何使用安全中心的容器安全功能。 
 
-如需其他相關內容，請參閱下列頁面： 
+有關其他相關材料，請參閱以下頁面： 
 
-- [適用于容器的資訊安全中心建議](recommendations-reference.md#recs-containers)
-- [AKS 叢集層級的警示](alerts-reference.md#alerts-akscluster)
-- [容器主機層級的警示](alerts-reference.md#alerts-containerhost)
+- [容器安全中心建議](recommendations-reference.md#recs-containers)
+- [AKS 群集級別的警報](alerts-reference.md#alerts-akscluster)
+- [容器主機分級的警報](alerts-reference.md#alerts-containerhost)

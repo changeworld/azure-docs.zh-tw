@@ -1,5 +1,5 @@
 ---
-title: PowerShell-從 Azure 實驗室服務中的 VHD 檔案建立自訂映射
+title: PowerShell - 在 Azure 實驗室服務中從 VHD 檔創建自訂映射
 description: 此 PowerShell 指令碼會從 Azure 實驗室服務中的 VHD 檔案建立自訂映像。
 services: lab-services
 author: spelluru
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 38383462a665ced1ccb6c6a2f062fab0492eee9a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169973"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>使用 PowerShell 從 Azure 實驗室服務中的 VHD 檔案建立自訂映像
@@ -27,7 +27,7 @@ ms.locfileid: "76169973"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **實驗室**。 指令碼需要您擁有現有的實驗室。 
 
 ## <a name="sample-script"></a>範例指令碼
@@ -42,7 +42,7 @@ ms.locfileid: "76169973"
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 取得資源。 |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | 取得 Azure 儲存體帳戶的存取金鑰。 |
-| [新增-New-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | 將 Azure 部署加入資源群組。 |
+| [新-阿茲資源組部署](/powershell/module/az.resources/new-azresourcegroupdeployment) | 將 Azure 部署加入資源群組。 |
 
 ## <a name="next-steps"></a>後續步驟
 

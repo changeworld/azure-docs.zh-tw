@@ -8,10 +8,10 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271091"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(已淘汰) 使用 Helm 在 Kubernetes 叢集部署容器
@@ -24,13 +24,13 @@ ms.locfileid: "76271091"
 [Helm](https://github.com/kubernetes/helm/) 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 Helm 類似於 Apt-get 和 Yum 等 Linux 封裝管理工具，可用於管理 Kubernetes 圖表 (即預先設定的 Kubernetes 資源封裝)。 本文將說明如何在部署於 Azure Container Service 中的 Kubernetes 叢集使用 Helm。
 
 Helm 包含兩個元件︰ 
-* Helm CLI是在本機或雲端執行的用戶端  
+* Helm CLI**** 是在本機或雲端執行的用戶端  
 
-* Tiller是在 Kubernetes 叢集執行的伺服器，管理 Kubernetes 應用程式的生命週期 
+* Tiller**** 是在 Kubernetes 叢集執行的伺服器，管理 Kubernetes 應用程式的生命週期 
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 在 Azure Container Service 中[建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)
+* 在 Azure 容器服務中[創建庫伯奈斯群集](container-service-kubernetes-walkthrough.md)
 
 * 在本機[安裝和設定 `kubectl`](../container-service-connect.md)
 
@@ -143,7 +143,7 @@ sudo mysql –h v1-mariadb
 ```
  
  
-您現在可以使用標準 SQL 命令來建立資料庫、資料表等等。例如，`Create DATABASE testdb1;` 會建立空的資料庫。 
+現在可以使用標準 SQL 命令創建資料庫、表等。例如，`Create DATABASE testdb1;`創建一個空資料庫。 
  
  
  

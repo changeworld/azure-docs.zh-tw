@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: 398575cc5c3dea96aa644533eb6ce8a262d1981c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164486"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虛擬機器的大小
@@ -27,12 +27,12 @@ ms.locfileid: "78164486"
 
 | 類型 | 大小 | 描述 |
 |------|-------|-------------|
-| [一般用途](../sizes-general.md) | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC、DCv2 | CPU 與記憶體的比例平均。 適用於測試和開發、小型至中型資料庫，以及低至中流量 Web 伺服器。 |
+| [一般用途](../sizes-general.md) | B， Dsv3， Dv3， Dasv4， 達夫4， DSv2， Dv2， Av2， DC， DCv2 | CPU 與記憶體的比例平均。 適用於測試和開發、小型至中型資料庫，以及低至中流量 Web 伺服器。 |
 | [計算最佳化](../sizes-compute.md) | Fsv2 | CPU 與記憶體的比例高。 適用於中流量 Web 伺服器、網路設備、批次處理，以及應用程式伺服器。 |
-| [記憶體最佳化](../sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Mv2、M、DSv2、Dv2 | 記憶體與 CPU 的比例高。 適用於關聯式資料庫伺服器、中型至大型快取，以及記憶體內部分析。 |
+| [記憶體優化](../sizes-memory.md) | Esv3， Ev3， Easv4， Eav4， Mv2， M， DSv2， Dv2 | 記憶體與 CPU 的比例高。 適用於關聯式資料庫伺服器、中型至大型快取，以及記憶體內部分析。 |
 | [儲存體最佳化](../sizes-storage.md)  | Lsv2 | 較高的磁碟輸送量和 IO 適用於巨量資料、SQL、NoSQL 資料庫、資料倉儲和大型交易資料庫。  |
-| [GPU](../sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 （預覽）、NV、NVv3、NVv4 | 特製化的虛擬機器，其目標是大量的圖形轉譯和視訊編輯，以及搭配深入學習運作的模型訓練和推斷 (ND)。 有單一或多個 GPU 可供使用。 |
-| [高效能計算](../sizes-hpc.md) | HB、HBv2、HC、H | 速度最快、功能最強的 CPU 虛擬機器，搭載選配的高輸送量網路介面 (RDMA)。 |
+| [GPU](../sizes-gpu.md) | NC、 NCv2、 NCv3、 ND、 NDv2 （預覽）、 NV、 NVv3、 NVv4 | 特製化的虛擬機器，其目標是大量的圖形轉譯和視訊編輯，以及搭配深入學習運作的模型訓練和推斷 (ND)。 有單一或多個 GPU 可供使用。 |
+| [高效能計算](../sizes-hpc.md) | HB， HBv2， HC， H | 速度最快、功能最強的 CPU 虛擬機器，搭載選配的高輸送量網路介面 (RDMA)。 |
 
 - 如需各式大小的定價，請參閱 [虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。
 - 若要查看 Azure VM 的一般限制，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../../azure-subscription-service-limits.md)。
@@ -61,7 +61,7 @@ ms.locfileid: "78164486"
 
 - [一般用途](../sizes-general.md)
 - [計算最佳化](../sizes-compute.md)
-- [記憶體最佳化](../sizes-memory.md)
+- [記憶體優化](../sizes-memory.md)
 - [儲存體最佳化](../sizes-storage.md)
 - [GPU 最佳化](../sizes-gpu.md)
 - [高效能計算](../sizes-hpc.md)

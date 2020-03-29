@@ -1,6 +1,6 @@
 ---
-title: 從桌面應用程式呼叫 web Api-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立會呼叫 web Api 的桌面應用程式
+title: 從桌面應用調用 Web API - 微軟身份平臺 |蔚藍
+description: 瞭解如何構建調用 Web API 的桌面應用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702159"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web Api 的桌面應用程式：呼叫 Web API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>調用 Web API 的桌面應用：調用 Web API
 
-現在您已有權杖，您可以呼叫受保護的 Web API。
+現在您有了權杖，就可以調用受保護的 Web API。
 
 ## <a name="call-a-web-api"></a>呼叫 Web API
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,11 +63,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>針對 iOS 和 macOS 呼叫 MSAL 中的 Web API
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>在 MSAL 中調用 iOS 和 macOS 的 Web API
 
-取得權杖的方法會傳回 `MSALResult` 物件。 `MSALResult` 會公開可用於呼叫 Web API 的 `accessToken` 屬性。 在您進行呼叫以存取受保護的 Web API 之前，請先將存取權杖新增至 HTTP 授權標頭。
+獲取權杖的方法返回物件`MSALResult`。 `MSALResult`公開可用於調用`accessToken`Web API 的屬性。 在調用訪問受保護的 Web API 之前，向 HTTP 授權標頭添加訪問權杖。
 
 Objective-C：
 
@@ -95,9 +95,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>呼叫數個 Api：累加同意和條件式存取
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>調用多個 API：增量同意和條件訪問
 
-若要為相同的使用者呼叫數個 Api，在您取得第一個 API 的權杖之後，請呼叫 `AcquireTokenSilent`。 您會在大部分的時間內，以無訊息方式取得其他 Api 的權杖。
+要為同一使用者調用多個 API，請在第一個 API 的權杖後調用`AcquireTokenSilent`。 大多數時候，您將以靜默方式獲取其他 API 的權杖。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -107,10 +107,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-下列情況需要互動：
+在：
 
-- 使用者同意第一個 API，但現在需要同意更多的範圍。 這種同意稱為「累加式同意」。
-- 第一個 API 不需要多重要素驗證，但下一個則會執行。
+- 使用者同意第一個 API，但現在需要同意更多作用域。 這種同意稱為增量同意。
+- 第一個 API 不需要多重要素驗證，但下一個 API 不需要身份驗證。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -133,4 +133,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移至生產環境](scenario-desktop-production.md)
+> [移動至生產環境](scenario-desktop-production.md)

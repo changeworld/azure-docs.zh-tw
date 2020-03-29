@@ -1,41 +1,76 @@
 ---
-title: 如何設定 Azure 資料總管叢集的受控識別
-description: 瞭解如何設定 Azure 資料總管叢集的受控識別。
+title: 如何為 Azure 資料資源管理器群集配置託管標識
+description: 瞭解如何為 Azure 資料資源管理器群集配置託管標識。
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.date: 03/12/2020
+ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065578"
 ---
-# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>設定 Azure 資料總管叢集的受控識別
+# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>為 Azure 資料資源管理器群集配置託管標識
 
-[Azure Active Directory 的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)可讓您的叢集輕鬆地存取其他受 AAD 保護的資源，例如 Azure Key Vault。 身分識別是由 Azure 平臺所管理，而且不需要布建或輪替任何秘密。 本文說明如何為 Azure 資料總管叢集建立受控識別。 受控識別設定目前僅支援[針對您的叢集啟用客戶管理的金鑰](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)。
+[Azure 活動目錄中的託管標識](/azure/active-directory/managed-identities-azure-resources/overview)允許群集輕鬆訪問其他受 AAD 保護的資源，如 Azure 金鑰保存庫。 標識由 Azure 平臺管理，不需要預配或輪換任何機密。 本文介紹如何為 Azure 資料資源管理器群集創建託管標識。 託管標識配置當前僅支援[為群集啟用客戶託管金鑰](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)。
 
 > [!Note]
-> 如果您的應用程式在訂用帳戶或租使用者之間遷移，Azure 資料總管的受控識別不會如預期般運作。 應用程式必須取得新的身分識別，您可以使用 [[移除身分識別](#remove-an-identity)] 停用並重新啟用功能來完成此作業。 下游資源的存取原則也需要更新，才能使用新的身分識別。
+> 如果應用跨訂閱或租戶遷移，則 Azure 資料資源管理器的託管標識不會按預期方式運行。 應用需要獲取新的標識，這可以通過[禁用](#remove-a-system-assigned-identity)和[重新啟用](#add-a-system-assigned-identity)該功能來完成。 還需要更新下游資源的訪問策略才能使用新標識。
 
-## <a name="add-a-system-assigned-identity"></a>新增系統指派的身分識別
+## <a name="add-a-system-assigned-identity"></a>添加系統分配的標識
+                                                                                                    
+分配與群集關聯的系統分配的標識，如果刪除群集，將被刪除。 群集只能有一個系統分配的標識。 創建具有系統分配的標識的群集需要在群集上設置其他屬性。 系統分配的標識使用 C#、ARM 範本或 Azure 門戶添加，詳情如下。
 
-您的叢集可以指派系結至您叢集的**系統指派身分識別**，並在刪除叢集時刪除。 一個叢集只能有一個系統指派的身分識別。 使用系統指派的身分識別建立叢集時，需要在叢集上設定額外的屬性。
+# <a name="azure-portal"></a>[Azure 門戶](#tab/portal)
 
-### <a name="add-a-system-assigned-identity-using-c"></a>使用新增系統指派的身分識別C#
+### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 門戶添加系統分配的標識
 
-若要使用 Azure 資料總管C#用戶端來設定受控識別，請執行下列動作：
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
 
-* 安裝[Azure 資料總管（Kusto） NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
-* 安裝 Microsoft.identitymodel 的驗證[NuGet 套件](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)。
-* 若要執行下列範例，請建立可存取資源的[Azure AD 應用程式](/azure/active-directory/develop/howto-create-service-principal-portal)和服務主體。 您可以在訂用帳戶範圍中新增角色指派，並取得所需的 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。
+#### <a name="new-azure-data-explorer-cluster"></a>新的 Azure 資料資源管理器群集
 
-#### <a name="create-or-update-your-cluster"></a>建立或更新您的叢集
+1. [創建 Azure 資料資源管理器群集](/azure/data-explorer/create-cluster-database-portal#create-a-cluster) 
+1. 在 **"安全**"選項卡>**系統分配標識**中，選擇 **"打開**"。 要刪除系統分配的標識，請選擇 **"關閉**"。
+2. 選擇 **"下一步："標記>** 或**查看 + 創建**以創建群集。
 
-1. 使用 `Identity` 屬性來建立或更新您的叢集：
+    ![將系統分配的標識添加到新群集](media/managed-identities/system-assigned-identity-new-cluster.png)
+
+#### <a name="existing-azure-data-explorer-cluster"></a>現有 Azure 資料資源管理器群集
+
+1. 打開現有的 Azure 資料資源管理器群集。
+1. 在門戶的左側窗格中選擇 **"設置** > **標識**"。
+1. 在 **"標識**窗格>**系統分配**"選項卡中：
+   1. 將 **"狀態**"滑塊移到 **.**
+   1. 選擇 **"保存"**
+   1. 在快顯視窗中，選擇 **"是**"
+
+    ![添加系統分配的標識](media/managed-identities/turn-system-assigned-identity-on.png)
+
+1. 幾分鐘後，螢幕將顯示： 
+  * **物件識別碼**- 用於客戶託管金鑰 
+  * **角色指派**- 按一下連結分配相關角色
+
+    ![系統分配的身份](media/managed-identities/system-assigned-identity-on.png)
+
+# <a name="c"></a>[C#](#tab/c-sharp)
+
+### <a name="add-a-system-assigned-identity-using-c"></a>使用 C 添加系統分配的標識#
+
+#### <a name="prerequisites"></a>Prerequisites
+
+要使用 Azure 資料資源管理器 C# 用戶端設置託管標識，請使用以下方式設置：
+
+* 安裝[Azure 資料資源管理器 （Kusto） NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安裝[Microsoft.身份模型.用戶端.ActiveDirectory NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)進行身份驗證。
+* [創建可以訪問](/azure/active-directory/develop/howto-create-service-principal-portal)資源的 Azure AD 應用程式和服務主體。 在訂閱範圍內添加角色指派，並獲取所需的`Directory (tenant) ID`和`Application ID`。 `Client Secret`
+
+#### <a name="create-or-update-your-cluster"></a>創建或更新群集
+
+1. 使用`Identity`以下屬性創建或更新群集：
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -52,7 +87,7 @@ ms.locfileid: "77373367"
     {
         SubscriptionId = subscriptionId
     };
-    
+                                                                                                    
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "Central US";
@@ -65,26 +100,28 @@ ms.locfileid: "77373367"
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. 執行下列命令，以檢查您的叢集是否已成功建立或更新為身分識別：
+2. 運行以下命令以檢查群集是否已成功創建或使用標識更新：
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    如果結果包含具有 `Succeeded` 值的 `ProvisioningState`，則會建立或更新叢集，而且應該具有下列屬性：
-   
+    如果結果`ProvisioningState`包含`Succeeded`值，則創建或更新群集，並且應具有以下屬性：
+
     ```csharp
     var principalId = cluster.Identity.PrincipalId;
     var tenantId = cluster.Identity.TenantId;
     ```
 
-    `PrincipalId` 和 `TenantId` 會以 Guid 取代。 `TenantId` 屬性會識別身分識別所屬的 AAD 租使用者。 `PrincipalId` 是叢集新身分識別的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
+`PrincipalId`並`TenantId`替換為 GUID。 屬性`TenantId`標識標識標識所屬的 AAD 租戶。 `PrincipalId`是群集新標識的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
 
-### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本新增系統指派的身分識別
+# <a name="arm-template"></a>[ARM 範本](#tab/arm)
 
-您可以使用 Azure Resource Manager 範本來將 Azure 資源的部署自動化。 若要深入瞭解如何部署至 Azure 資料總管，請參閱[使用 Azure Resource Manager 範本建立 azure 資料總管叢集和資料庫](create-cluster-database-resource-manager.md)。
+### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>使用 Azure 資源管理器範本添加系統分配的標識
 
-新增系統指派的類型，會告訴 Azure 為您的叢集建立及管理身分識別。 對於所有 `Microsoft.Kusto/clusters` 型別的資源來說，您可以在資源定義中加入以下屬性，以建立採用身分識別的資源： 
+您可以使用 Azure Resource Manager 範本來將 Azure 資源的部署自動化。 要瞭解有關部署到 Azure 資料資源管理器的詳細資訊，請參閱[使用 Azure 資源管理器範本創建 Azure 資料資源管理器群集和資料庫](create-cluster-database-resource-manager.md)。
+
+添加系統分配的類型告訴 Azure 創建和管理群集的標識。 對於所有 `Microsoft.Kusto/clusters` 型別的資源來說，您可以在資源定義中加入以下屬性，以建立採用身分識別的資源： 
 
 ```json
 "identity": {
@@ -113,7 +150,7 @@ ms.locfileid: "77373367"
 }
 ```
 
-建立叢集時，它具有下列其他屬性：
+創建群集時，它具有以下其他屬性：
 
 ```json
 "identity": {
@@ -123,11 +160,44 @@ ms.locfileid: "77373367"
 }
 ```
 
-`<TENANTID>` 和 `<PRINCIPALID>` 會以 Guid 取代。 `TenantId` 屬性會識別身分識別所屬的 AAD 租使用者。 `PrincipalId` 是叢集新身分識別的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
+`<TENANTID>`並`<PRINCIPALID>`替換為 GUID。 屬性`TenantId`標識標識標識所屬的 AAD 租戶。 `PrincipalId`是群集新標識的唯一識別碼。 在 AAD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
 
-## <a name="remove-an-identity"></a>移除身分識別
+---
 
-移除系統指派的身分識別，也會將它從 AAD 中刪除。 刪除叢集資源時，系統指派的身分識別也會自動從 AAD 移除。 藉由停用此功能，可以移除系統指派的身分識別：
+## <a name="remove-a-system-assigned-identity"></a>刪除系統分配的標識
+
+刪除系統分配的標識也會將其從 AAD 中刪除。 刪除群集資源時，系統分配的身份也會從 AAD 自動刪除。 可以通過禁用該功能來刪除系統分配的標識。  使用 C#、ARM 範本或 Azure 門戶刪除系統分配的標識，詳情如下。
+
+# <a name="azure-portal"></a>[Azure 門戶](#tab/portal)
+
+### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 門戶刪除系統分配的標識
+
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 在門戶的左側窗格中選擇 **"設置** > **標識**"。
+1. 在 **"標識**窗格>**系統分配**"選項卡中：
+    1. 將 **"狀態"** 滑塊移動到 **"關閉**"。
+    1. 選擇 **"保存"**
+    1. 在快顯視窗中，選擇 **"是**"以禁用系統分配的標識。 **"標識"** 窗格將恢復為與添加系統分配的標識之前相同的條件。
+
+    ![系統分配的身份關閉](media/managed-identities/system-assigned-identity.png)
+
+# <a name="c"></a>[C#](#tab/c-sharp)
+
+### <a name="remove-a-system-assigned-identity-using-c"></a>使用 C 刪除系統分配的標識#
+
+運行以下內容以刪除系統分配的標識：
+
+```csharp
+var identity = new Identity(IdentityType.None);
+var cluster = new Cluster(location, sku, identity: identity);
+await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+```
+
+# <a name="arm-template"></a>[ARM 範本](#tab/arm)
+
+### <a name="remove-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>使用 Azure 資源管理器範本刪除系統分配的標識
+
+運行以下內容以刪除系統分配的標識：
 
 ```json
 "identity": {
@@ -135,9 +205,11 @@ ms.locfileid: "77373367"
 }
 ```
 
+---
+
 ## <a name="next-steps"></a>後續步驟
 
-* [在 Azure 中保護 Azure 資料總管叢集](security.md)
-* 藉由啟用待用加密，[在 Azure 資料總管 Azure 入口網站中保護您](manage-cluster-security.md)的叢集。
- * [使用設定客戶管理的金鑰C#](customer-managed-keys-csharp.md)
- * [使用 Azure Resource Manager 範本設定客戶管理的金鑰](customer-managed-keys-resource-manager.md)
+* [在 Azure 中保護 Azure 資料資源管理器群集](security.md)
+* 通過在靜態啟用加密來保護[Azure 資料資源管理器 - Azure 門戶中的群集](manage-cluster-security.md)。
+ * [使用 C 配置客戶託管金鑰#](customer-managed-keys-csharp.md)
+ * [使用 Azure 資源管理器範本配置客戶託管金鑰](customer-managed-keys-resource-manager.md)

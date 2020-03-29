@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721548"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>針對 Azure Event Grid 張貼到自訂主題
@@ -76,10 +76,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件限制為 64 KB （一般可用性）或 1 MB （預覽）。
+如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件都限制為 64 KB（常規可用性）或 1 MB（預覽）。
 
 > [!NOTE]
-> [公開上市（GA）服務等級協定（SLA）] 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 的事件支援目前為預覽狀態。 超過 64 KB 的事件會以 64-KB 的增量計費。 
+> 通用可用性 （GA） 服務等級協定 （SLA） 涵蓋大小高達 64 KB 的事件。 當前預覽了對大小為 1 MB 的事件的支援。 超過 64 KB 的事件以 64 KB 的增量收費。 
 
 例如，有效的事件資料結構描述為：
 

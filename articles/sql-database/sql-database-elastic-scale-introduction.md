@@ -4,26 +4,23 @@ description: 軟體即服務 (SaaS) 開發人員可以輕鬆地使用這些工�
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44c6147402cbe05e62c091863cb0bd4f9235bfab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061654"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>使用 Azure SQL Database 相應放大
 您可以使用 **彈性資料庫** 工具，輕鬆地向外擴充 Azure SQL 資料庫。 這些工具和功能可讓您使用 **Azure SQL Database** 中的資料庫資源，建立交易式工作負載的解決方案，尤其是軟體即服務 (SaaS) 應用程式。 彈性資料庫功能的組成如下：
 
 * [E彈性資料庫用戶端資料庫](sql-database-elastic-database-client-library.md)：用戶端資料庫這項功能可允許您建立和維護分化資料庫。  請參閱 [開始使用彈性資料庫工具](sql-database-elastic-scale-get-started.md)。
 * [彈性資料庫分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md)︰在分區化資料庫之間移動資料。 在將資料從多租用戶資料庫移到單一租用戶資料庫 (反之亦然) 時，此工具十分實用。 請參閱 [彈性資料庫分割合併工具教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
-* [彈性資料庫工作](elastic-jobs-overview.md)：使用作業來管理大量的 Azure SQL 資料庫。 輕鬆執行系統管理作業，例如結構描述變更、認證管理、參考資料更新、效能資料收集，或使用作業的租用戶 (客戶) 遙測收集。
+* [彈性資料庫作業](elastic-jobs-overview.md)：使用作業管理大量 Azure SQL 資料庫。 輕鬆執行系統管理作業，例如結構描述變更、認證管理、參考資料更新、效能資料收集，或使用作業的租用戶 (客戶) 遙測收集。
 * [彈性資料庫查詢](sql-database-elastic-query-overview.md) (預覽)：可讓您跨多個 Azure SQL 資料庫執行 Transact-SQL 查詢。 這可讓您連線至報告工具，例如 Excel、Power BI、Tableau 等等。
 * [彈性交易](sql-database-elastic-transactions-overview.md)︰這項功能可讓您在 Azure SQL Database 中跨多個資料庫執行交易。 彈性資料庫交易適用於使用 ADO .NET 的 .NET 應用程式，而且與以往熟悉使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx)類別的程式設計經驗整合。
 
@@ -54,17 +51,17 @@ ms.locfileid: "73823608"
 
 ![水平與垂直相應放大][2]
 
-水平縮放指的是加入或移除資料庫來調整容量或整體效能，也稱為「相應放大」。 分區化是常用的水平縮放實作方法，主要是將資料分割到結構相同的一組資料庫上。  
+水準縮放是指添加或刪除資料庫以調整容量或整體性能，也稱為"橫向擴展"。 分區化是常用的水平縮放實作方法，主要是將資料分割到結構相同的一組資料庫上。  
 
-垂直縮放指的是增加或減少個別資料庫的計算大小，也稱為「相應增加」。
+垂直縮放是指增加或減小單個資料庫的計算大小，也稱為"向上擴展"。
 
-大部分雲端級別的資料庫應用程式都採用這些兩種策略的組合。 比方說，軟體即服務應用程式可能使用水平擴充來供應終端客戶，使用垂直縮放來允許每個終端客戶的資料庫隨工作負載所需而擴大或縮減資源。
+大部分雲端級別的資料庫應用程式都採用這些兩種策略的組合。 例如，軟體即服務應用程式可以使用水準擴展來預配新的最終客戶和垂直擴展，以允許每個最終客戶的資料庫根據需要根據工作負載來擴展或縮小資源。
 
 * 水平縮放是透過 [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md)來管理。
 * 垂直縮放是透過 Azure PowerShell Cmdlet 變更服務層級，或將資料庫放入彈性集區中來達成。
 
 ## <a name="sharding"></a>分區化
-分區化是一種將大量相同結構的資料分散在許多獨立資料庫的技術。 為一般客戶或企業建立軟體即服務 (SAAS) 供應項目的開發人員尤其愛用。 這些一般客戶通常稱為「租用戶」。 需要使用分區化可能有各種原因：  
+分區化** 是一種將大量相同結構的資料分散在許多獨立資料庫的技術。 為一般客戶或企業建立軟體即服務 (SAAS) 供應項目的開發人員尤其愛用。 這些最終客戶通常被稱為"租戶"。 需要使用分區化可能有各種原因：  
 
 * 資料總量太大而超出個別資料庫的條件約束
 * 整體工作負載的交易輸送量超過個別資料庫的能力
@@ -76,11 +73,11 @@ ms.locfileid: "73823608"
 當應用程式中的每一筆交易可以限制為單一分區化索引鍵的單一值時，分區化表現最佳。 這可確保所有交易都在特定資料庫的範圍內發生。
 
 ## <a name="multi-tenant-and-single-tenant"></a>多租用戶和單一租用戶
-有些應用程式採用最簡單的方法，為每個租用戶建立個別的資料庫。 這個方法就是**單一租用戶分區化模式**，它會在租用戶的細微層級上提供隔離、備份/還原能力和資源規模調整。 使用單一租用戶分區化時，每個資料庫與特定的租用戶識別碼值 (或客戶索引鍵值) 相關聯，但該索引鍵不一定出現在資料本身。 應用程式必須負責將每個要求遞送至適當的資料庫 - 用戶端程式庫可以簡化此工作。
+有些應用程式採用最簡單的方法，為每個租用戶建立個別的資料庫。 這個方法就是**單一租用戶分區化模式**，它會在租用戶的細微層級上提供隔離、備份/還原能力和資源規模調整。 使用單一租用戶分區化時，每個資料庫與特定的租用戶識別碼值 (或客戶索引鍵值) 相關聯，但該索引鍵不一定出現在資料本身。 應用程式負責將每個請求路由到相應的資料庫，用戶端庫可以簡化此功能。
 
 ![單一租用戶與多租用戶][4]
 
-其他案例將多個租用戶一起放入資料庫中，而不是將它們隔離至個別的資料庫。 這個模式就是典型的**多租用戶分區化模式**，應用程式管理大量的小型租用戶會驅使此情況。 在多租用戶分區化中，資料庫資料表中的資料列都設計成具有索引鍵 (識別租用戶識別碼) 或分區化索引鍵。 同樣地，應用程式層負責將租用戶的要求遞送至適當的資料庫，而彈性資料庫用戶端程式庫支援此功能。 此外，資料列層級安全性可用來篩選每個租用戶可以存取的資料列 - 如需詳細資訊，請參閱[使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)。 使用多租用戶分區化模式時，可能需要在資料庫之間重新分配資料，而彈性資料庫分割合併工具可協助達成此工作。 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
+其他案例將多個租用戶一起放入資料庫中，而不是將它們隔離至個別的資料庫。 這個模式就是典型的**多租用戶分區化模式**，應用程式管理大量的小型租用戶會驅使此情況。 在多租用戶分區化中，資料庫資料表中的資料列都設計成具有索引鍵 (識別租用戶識別碼) 或分區化索引鍵。 同樣，應用程式層負責將租戶的請求路由到相應的資料庫，彈性資料庫用戶端庫可以支援這一點。 此外，資料列層級安全性可用來篩選每個租用戶可以存取的資料列 - 如需詳細資訊，請參閱[使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)。 使用多租用戶分區化模式時，可能需要在資料庫之間重新分配資料，而彈性資料庫分割合併工具可協助達成此工作。 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>將資料從多租用戶資料庫移到單一租用戶資料庫
 當建立 SaaS 應用程式時，通常會提供試用版軟體給潛在客戶。 在此情況下，使用多租用戶資料庫來處理資料較符合成本效益。 不過，當潛在客戶變成真正客戶時，單一租用戶資料庫就比較好，因為提供更好的效能。 如果客戶已在試用期間建立資料，請使用 [分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md) ，將資料從多租用戶資料庫移到新的單一租用戶資料庫。

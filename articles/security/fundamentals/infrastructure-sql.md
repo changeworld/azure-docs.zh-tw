@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942961"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database 安全性功能    
@@ -75,7 +75,7 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 ### <a name="types-of-rules-on-firewalls"></a>防火牆上的規則類型
 規則定義為：
 
-{Src IP、Src 埠、目的地 IP、目的地埠、目的地通訊協定、傳入/傳出、具狀態/無狀態、具狀態流程超時}。
+[Src IP， Src 埠， 目標 IP， 目標埠， 目標協定， 進出， 狀態/無狀態， 狀態流超時] 。
 
 同步閒置字元 (SYN) 封包只有在任何一個規則允許時，才可以輸入或輸出。 針對 TCP，Azure 會使用無狀態規則，原則是只允許所有非 SYN 封包輸入或輸出 VM。 安全性前提是任何主機堆疊具有彈性，如果它先前沒有見過 SYN 封包，則略過非 SYN。 TCP 通訊協定本身具狀態，與無狀態 SYN 型規則搭配，以達成具狀態實作的整體行為。
 
@@ -95,7 +95,7 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)

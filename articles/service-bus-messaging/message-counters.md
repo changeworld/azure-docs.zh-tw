@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排訊息計數
-description: 使用 Azure Resource Manager 和 Azure 服務匯流排 NamespaceManager Api，抓取佇列和訂用帳戶中保留的訊息計數。
+title: Azure 服務匯流排 - 消息計數
+description: 使用 Azure 資源管理器和 Azure 服務匯流排命名空間管理器 API 檢索佇列和訂閱中持有的郵件計數。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756366"
 ---
 # <a name="message-counters"></a>訊息計數器

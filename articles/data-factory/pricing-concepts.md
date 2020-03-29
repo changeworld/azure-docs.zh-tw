@@ -1,5 +1,5 @@
 ---
-title: 透過範例瞭解 Azure Data Factory 定價
+title: 通過示例瞭解 Azure 資料出廠定價
 description: 此文章透過詳細範例說明及示範 Azure Data Factory 的定價模型
 documentationcenter: ''
 author: djpmsft
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76769501"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
@@ -22,7 +22,7 @@ ms.locfileid: "76769501"
 此文章透過詳細範例說明及示範 Azure Data Factory 的定價模型。
 
 > [!NOTE]
-> 下列範例中使用的價格是假設性的，並不是用來表示實際的定價。
+> 以下示例中使用的價格是假設的，並不意味著實際定價。
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>每小時將資料從 AWS S3 複製到 Azure Blob 儲存體
 
@@ -126,21 +126,21 @@ ms.locfileid: "76769501"
   - 管線活動 = $0.00003 (依比例分配 1 分鐘的執行時間。 Azure 整合執行階段上每小時 $0.002 美元)
   - 外部管線活動 = $0.000041 (依比例分配 10 分鐘的執行時間。 Azure 整合執行階段上每小時 0.00025 美元)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>針對一般 workday 使用對應資料流程 debug
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>在正常工作日使用映射資料流程調試
 
-身為數據工程師，您必須負責每天設計、建立和測試對應的資料流程。 您會在早上登入 ADF UI，並啟用資料流程的「偵錯工具」模式。 Debug 會話的預設 TTL 為60分鐘。 您每天的工作時間為8小時，因此您的 Debug 會話永不過期。 因此，您當天的費用將會是：
+作為資料工程師，您每天負責設計、構建和測試映射資料流程。 您可以在早上登錄到 ADF UI，並為數據流啟用偵錯模式。 調試會話的預設 TTL 為 60 分鐘。 您全天工作 8 小時，因此調試會話永遠不會過期。 因此，您當天的費用為：
 
-**8（小時） x 8 （計算優化核心） x $0.193 = $12.35**
+**8 （小時） x 8 （計算優化的內核） x $0.193 = $12.35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>使用對應資料流程轉換 blob 存放區中的資料
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>使用映射資料流程轉換 Blob 存儲中的資料
 
-在此案例中，您想要以每小時的排程，以視覺化方式在 ADF 對應資料流程中轉換 Blob 存放區中的資料。
+在這種情況下，您希望在 ADF 映射資料流程中直觀地轉換 Blob 應用商店中的資料，
 
 若要完成案例，您需要使用下列項目建立管線：
 
 1. 具有轉換邏輯的資料流程活動。
 
-2. Azure 儲存體上資料的輸入資料集。
+2. Azure 存儲上資料的輸入資料集。
 
 3. Azure 儲存體上之資料的輸出資料集。
 
@@ -153,24 +153,24 @@ ms.locfileid: "76769501"
 | 建立管線 | 3 個讀取/寫入實體 (1 個用於建立管線，2 個用於資料集參考) |
 | 取得管線 | 1 個讀取/寫入實體 |
 | 執行管線 | 2 個活動執行 (1 個用於觸發程序執行，1 個用於活動執行) |
-| 資料流程假設：執行時間 = 10 分鐘 + 10 最小 TTL | 10 \* 16 核心的一般計算，TTL 為10 |
+| 資料流程假設：執行時間 = 10 分鐘 = 10 分鐘 TTL | 10 \* 16 個通用計算內核，TTL 為 10 |
 | 監視管線假設：僅發生 1 次執行 | 2 個重試的監視執行記錄 (1 個用於管線執行，1 個用於活動執行) |
 
-**總案例定價： $1.4631**
+**方案總價： $1.4631**
 
 - Data Factory 作業 = **$0.0001**
   - 讀取/寫入 = 10\*00001 = $0.0001 [1 讀取/寫入 = $0.50/50000 = 0.00001]
   - 監視 = 2\*000005 = $0.00001 [1 監視 = $0.25/50000 = 0.000005]
-- 管線協調流程 &amp; 執行 = **$1.463**
+- 管道編排&amp;執行 = **$1.463**
   - 活動執行 = 001\*2 = 0.002 [1 執行 = $1/1000 = 0.001]
-  - 資料流程活動 = $1.461 已按比例計費20分鐘（執行時間為10分鐘，TTL 為10分鐘）。 Azure Integration Runtime 上的 $ 0.274/小時具有16個核心的一般計算
+  - 資料流程活動 = 1.461 美元按比例 20 分鐘（10 分鐘執行時間 = 10 分鐘 TTL）。 Azure 集成運行時的 0.274 美元/小時，具有 16 個核心常規計算
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您了解 Azure Data Factory 的定價，您可以立即開始！
 
-- [使用 Azure Data Factory UI 建立資料處理站](quickstart-create-data-factory-portal.md)
+- [使用 Azure 資料工廠 UI 創建資料工廠](quickstart-create-data-factory-portal.md)
 
 - [Azure Data Factory 簡介](introduction.md)
 
-- [Azure Data Factory 中的視覺化撰寫](author-visually.md)
+- [Azure 資料工廠中的視覺化創作](author-visually.md)

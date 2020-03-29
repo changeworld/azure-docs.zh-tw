@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 11/18/2019
-author: sivethe
-ms.author: sivethe
+ms.date: 03/20/2020
+author: timsander1
+ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: be3fd42f33fd66fe2bf5a773eafafba5d6982706
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184787"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063742"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>將 Node.js Mongoose 應用程式連線至 Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "74184787"
 
 Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Cosmos DB 核心的全域散發和水平調整功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,12 +60,13 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
      > ```--save``` 旗標會將相依性加入到 package.json 檔案。
 
 1. 匯入您 index.js 檔案中的相依性。
+
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. 將您的 Cosmos DB 連接字串和 Cosmos DB 名稱加入到 ```.env``` 檔案。 以您自己的 Cosmos 帳戶名稱和資料庫名稱取代預留位置 {cosmos-account-name} 和 {dbname}，但不含括弧符號。
+1. 將您的 Cosmos DB 連接字串和 Cosmos DB 名稱加入到 ```.env``` 檔案。 將預留位置 [cosmos-帳戶名稱] 和 [dbname] 替換為您自己的 Cosmos 帳戶名稱和資料庫名稱，而不帶大括弧符號。
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
@@ -187,7 +188,7 @@ Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html
 
 1. 現在，移至 Azure 入口網站，您會發現 Cosmos DB 中建立了兩個集合。
 
-    ![Node.js 教學課程-顯示 Azure Cosmos DB 帳戶的 Azure 入口網站螢幕擷取畫面，其中顯示多個集合名稱醒目提示-Node 資料庫][multiple-coll]
+    ![Node.js 教程 - Azure 門戶的螢幕截圖，顯示 Azure Cosmos DB 帳戶，其中突出顯示了多個集合名稱 - 節點資料庫][multiple-coll]
 
 1. 最後，讓我們從 Cosmos DB 讀取資料。 由於我們使用的是預設的 Mongoose 作業模型，讀取作業會和 Mongoose 的其他讀取作業相同。
 
@@ -292,7 +293,7 @@ Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html
 
 1. 現在，如果您返回 Azure 入口網站，您會發現您只有一個稱為 ```alldata``` 的集合，其中含有 'Family' 和 'VacationDestinations' 資料。
 
-    ![Node.js 教學課程-顯示 Azure Cosmos DB 帳戶的 Azure 入口網站螢幕擷取畫面，其中會反白顯示集合名稱-Node 資料庫][alldata]
+    ![Node.js 教程 - Azure 門戶的螢幕截圖，顯示 Azure Cosmos DB 帳戶，集合名稱突出顯示 - 節點資料庫][alldata]
 
 1. 此外，請注意，每個物件有另一個稱為 ```__type``` 的屬性，可協助您區分兩個不同的物件模型。
 

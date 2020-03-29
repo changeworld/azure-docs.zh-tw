@@ -1,6 +1,6 @@
 ---
-title: Azure 流量分析架構更新-2020 年3月 |Microsoft Docs
-description: 流量分析架構中新欄位的範例查詢。
+title: Azure 流量分析架構更新 - 2020 年 3 月 |微軟文檔
+description: 在流量分析架構中使用新欄位的依例查詢。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 0e9d37e3a89473e59b94168f8f8c80e7a6621107
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969068"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的範例查詢（2019年8月架構更新）
+# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>在流量分析架構（2019 年 8 月架構更新）中具有新欄位的依例查詢
 
-已更新使用[分析記錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)以包含下列新欄位： **SrcPublicIPs_s** 、 **DestPublicIPs_s** **NSGRule_s**。 在接下來的幾個月中，下列較舊的欄位將會被取代： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
-新欄位提供來源和目的地 Ip 的相關資訊，並簡化查詢。
+[流量分析日誌架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)已更新，包括以下新欄位：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s ** **。 **NSGRule_s** **SrcPublicIPs_s** 在接下來的幾個月裡，以下老油田將被棄用：VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d。 **NIC_s** **VMIP_s** **Subscription_g** **Region_s** **NSGRules_s** **Subnet_s** **VM_s** **PublicIPs_s** **FlowCount_d**
+新欄位提供有關源和目標 IP 的資訊並簡化查詢。
 
-以下三個範例顯示如何以新的欄位取代舊的欄位。
+下面是三個示例，演示如何用新欄位替換舊欄位。
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>範例 1-VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s、PublicIPs_s
+## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>示例 1 - VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s、PublicIPs_s
 
-我們不需要特別針對 AzurePublic 和 ExternalPublic 流程的 FlowDirection_s 欄位，推斷 Azure 和外部公開流程的來源和目的地案例。 在 NVA （網路虛擬裝置）的情況下，FlowDirection_s 欄位也可能不適合使用。
+我們不必專門推斷 Azure 公共和外部公共流的"Azure"和"外部公共流"的源和目的案例，FlowDirection_s欄位為 Azure 公共和外部公共流。 對於 NVA（網路虛擬裝置），FlowDirection_s欄位也可能不適合使用。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -72,11 +72,11 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 ```
 
 
-## <a name="example-2---nsgrules_s"></a>範例 2-NSGRules_s
+## <a name="example-2---nsgrules_s"></a>示例 2 - NSGRules_s
 
-舊版欄位的格式為： < 索引值0） > | < NSG_RULENAME > |<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+前面的欄位是格式：<索引值 0）>|<NSG_RULENAME>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-我們先前用來匯總 NSG 和 NSGRules 之間的資料。 我們現在不會匯總。 因此 NSGList_s 只會包含一個 NSG，而且 NSGRules_s 也只會用來包含一個規則。 因此，我們已移除這裡的複雜格式，而且可以在其他欄位中找到相同的，如下所述：
+早些時候，我們用於聚合 NSG 和 NSGRules 的資料。 現在我們不聚合。 因此NSGList_s只包含一個 NSG，NSGRules_s也用於僅包含一個規則。 因此，我們在此處刪除了複雜的格式，在以下其他欄位中可以找到相同的格式：
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -101,16 +101,16 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>範例 3-FlowCount_d
+## <a name="example-3---flowcount_d"></a>示例 3 - FlowCount_d
 
-因為我們不會在 NSG 上散佈資料，所以 FlowCount_d 只是 AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d。
-上述4中只有1不會是零，而其餘三項則為0。 而且它會指出在其中捕獲到流程的 NIC 中的狀態和計數。
+由於我們不通過 NSG 將資料進行俱樂部，因此FlowCount_d只是AllowedInFlows_d • DeniedInFlows_d = AllowedOutFlows_d = DeniedOutFlows_d。
+上述 4 中只有 1 個為非零，其餘 3 個為 0。 它將指示捕獲流的 NIC 中的狀態和計數。
 
-如果允許流程，將會填入前面加上「允許」的其中一個欄位。 否則，將會填入一個前面加上「拒絕」的欄位。
-如果流程為輸入，則會填入其中一個欄位，其後面會加上 "\_d"，例如 "InFlows_d" 尾碼欄位。 否則，將會填入 "OutFlows_d"。
+如果允許流，將填充以"允許"為綴的欄位之一。 否則，將填充一個以"已拒絕"為綴的欄位。
+如果流是入站，將填充尾碼為"d"（\_如"InFlows_d"尾碼欄位）的欄位之一。 否則將填充"OutFlows_d"。
 
-視上述2個條件而定，我們知道將會填入4中的哪一個。
+根據上述 2 個條件，我們知道將填充 4 個中的哪一個。
 
 
 ## <a name="next-steps"></a>後續步驟
-若要取得常見問題的解答，請參閱使用[分析常見問題](traffic-analytics-faq.md)以查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)
+要獲取常見問題解答，請參閱[流量分析常見問題解答](traffic-analytics-faq.md)有關功能的詳細資訊，請參閱[流量分析文檔](traffic-analytics.md)

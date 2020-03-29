@@ -1,6 +1,6 @@
 ---
-title: 企業狀態漫遊常見問題-Azure Active Directory
-description: 關於 ESR 的常見問題
+title: 企業狀態漫遊常見問題 - Azure 活動目錄
+description: 有關 ESR 的常見問題
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672383"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定和資料漫遊常見問題集
@@ -30,18 +30,18 @@ ms.locfileid: "78672383"
 * *Internet Explorer 設定*- 包括最近開啟的索引標籤和我的最愛。
 * *Microsoft Edge 瀏覽器設定*- 例如我的最愛和閱讀清單。
 * *密碼*- 包括網際網路密碼、Wi-Fi 設定檔等。
-* *語言喜好*設定，包括鍵盤配置、系統語言、日期和時間等的設定。
+* *語言首選項*，包括鍵盤配置、系統語言、日期和時間等的設置。
 * *輕鬆存取功能*- 例如高對比佈景主題、朗讀程式及放大鏡。
 * *其他 Windows 設定*，例如滑鼠設定。
 
 > [!NOTE]
-> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
+> 本文適用于 2015 年 7 月隨 Windows 10 推出的基於 Windows 10 的基於 Microsoft 邊緣舊版 HTML 的瀏覽器。 本文不適用於 2020 年 1 月 15 日發佈的基於 Microsoft 邊緣鉻的新瀏覽器。 有關新 Microsoft 邊緣的同步行為的詳細資訊，請參閱[文章"Microsoft 邊緣同步](/deployedge/microsoft-edge-enterprise-sync)"。
 
-**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 如需如何開發使用漫遊之通用 Windows 應用程式的詳細資訊，請參閱[appdata 儲存體 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫遊開發人員的 blog](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
+**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 有關如何開發使用漫遊的通用 Windows 應用的詳細資訊，請參閱[應用資料存儲 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 應用資料漫遊開發人員博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帳戶用於設定同步處理？
 
-在 Windows 8.1 中，設定同步處理一律使用取用者 Microsoft 帳戶。 企業使用者可以將 Microsoft 帳戶連線到其 Active Directory 網域帳戶，以取得設定同步處理的存取權。在 Windows 10 中，這項連線的 Microsoft 帳戶功能會以主要/次要帳戶架構取代。
+在 Windows 8.1 中，設定同步處理一律使用取用者 Microsoft 帳戶。 企業使用者能夠將 Microsoft 帳戶連接到其 Active Directory 域帳戶，以訪問設置同步。在 Windows 10 中，此連接的 Microsoft 帳戶功能正在替換為主/輔助帳戶框架。
 
 主要帳戶的定義是用來登入 Windows 的帳戶。 這可以是 Microsoft 帳戶、Azure Active Directory (Azure AD) 帳戶、內部部署 Active Directory 帳戶或本機帳戶。 除了主要帳戶，Windows 10 使用者可以將一或多個次要雲端帳戶新增至他們的裝置。 次要帳戶通常是 Microsoft 帳戶、Azure AD 帳戶或一些像是 Gmail 或 Facebook 的其他帳戶。 這些次要帳戶提供其他服務 (例如單一登入和 Windows 市集) 的存取權，但是無法進行設定同步處理。
 
@@ -50,7 +50,7 @@ ms.locfileid: "78672383"
 裝置上不同使用者帳戶之間的資料永遠不會混合。 有兩個設定可用來同步處理設定：
 
 * Windows 設定一律會使用主要帳戶進行漫遊。
-* 應用程式資料將會利用用來取得應用程式的帳戶來標記。 只有使用主要帳戶標記的應用程式才會同步。應用程式擁有權標記是由透過 Windows Store 或行動裝置管理（MDM）側載應用程式時所決定。
+* 應用程式資料將會利用用來取得應用程式的帳戶來標記。 只有使用主帳戶標記的應用才會同步。當應用通過 Windows 應用商店或行動裝置管理 （MDM） 側載入時，將確定應用擁有權標記。
 
 如果無法識別應用程式的擁有者，它會以主要帳戶漫遊。 如果裝置是從 Windows 8 或 Windows 8.1 升級到 Windows 10，則所有應用程式都會被標記成由 Microsoft 帳戶取得。 這是因為大多數使用者都是透過 Windows 市集取得應用程式，而在 Windows 10 之前，並沒有為 Azure AD 帳戶提供 Windows 市集支援。 如果應用程式是透過離線授權安裝，則會使用裝置上的主要帳戶標記應用程式。
 
@@ -76,9 +76,9 @@ ms.locfileid: "78672383"
 
 當來自不同 Azure AD 租用戶的多個 Azure AD 帳戶位於相同的裝置時，您必須更新裝置的登錄，才能與每個 Azure AD 租用戶的 Azure Rights Management 服務進行通訊。  
 
-1. 尋找每個 Azure AD 租用戶的 GUID。 開啟 Azure 入口網站，然後選取 Azure AD 租用戶。 租用戶的 GUID 是在所選租用戶的 [屬性] 頁面 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) 上，其標示為 [目錄識別碼]。 
-2. 取得 GUID 之後，您必須新增登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<租用戶識別碼 GUID>** 。
-   從「租用戶識別碼 GUID」機碼，建立一個名為 **AllowedRMSServerUrls** 的新多字串值 (REG-MULTI-SZ)。 針對其資料，指定裝置所存取之其他 Azure 租用戶的授權發佈點 URL。
+1. 尋找每個 Azure AD 租用戶的 GUID。 開啟 Azure 入口網站，然後選取 Azure AD 租用戶。 租用戶的 GUID 是在所選租用戶的 [屬性] 頁面 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) 上，其標示為 [目錄識別碼]****。 
+2. 取得 GUID 之後，您必須新增登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<租用戶識別碼 GUID>**。
+   從「租用戶識別碼 GUID」**** 機碼，建立一個名為 **AllowedRMSServerUrls** 的新多字串值 (REG-MULTI-SZ)。 針對其資料，指定裝置所存取之其他 Azure 租用戶的授權發佈點 URL。
 3. 您可以藉由從 AADRM 模組執行 **Get-AadrmConfiguration** Cmdlet 來尋找授權發佈點 URL。 如果 **LicensingIntranetDistributionPointUrl** 與 **LicensingExtranetDistributionPointUrl** 的值不同，則請同時指定這兩個值。 如果值相同，則只要指定值一次。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>適用於現有 Windows 傳統型應用程式的漫遊設定選項有哪些？
@@ -96,7 +96,7 @@ ms.locfileid: "78672383"
 
 在未來，Microsoft 可能會調查讓 UE-V 深度整合到 Windows 及透過 Azure AD 雲端擴充 UE-V 漫遊設定的方式。
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>我可以將同步處理的設定和資料儲存在內部部署嗎？
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>我可以在本機存放區同步的設置和資料嗎？
 
 「企業狀態漫遊」會將所有同步處理的資料儲存在 Microsoft 雲端。 UE-V 提供一個內部部署漫遊解決方案。
 
@@ -112,7 +112,7 @@ Microsoft 致力於保護客戶資料。 企業使用者的設定資料在離開
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>如何啟用或停用漫遊功能？
 
-在 [設定] 應用程式中，移至 [帳戶] > [同步您的設定]。 您可以從這個頁面看見正在使用哪一個帳戶漫遊設定，您可以啟用或停用要漫遊得個別群組設定。
+在 [設定]**** 應用程式中，移至 [帳戶]**** > [同步您的設定]****。 您可以從這個頁面看見正在使用哪一個帳戶漫遊設定，您可以啟用或停用要漫遊得個別群組設定。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Microsoft 對於在 Windows 10 中啟用漫遊功能有什麼建議？
 
@@ -121,7 +121,7 @@ Microsoft 提供數個不同的設定漫遊解決方案可供使用，包括漫�
 使用企業狀態漫遊和 UE-V 時，適用下列規則：
 
 * 企業狀態漫遊是裝置上主要的漫遊代理程式。 UE-V 是用來補充「Win32 間距」。
-* 使用 UE-V 群組原則時，應該停用 Windows 設定和新式 UWP 應用程式資料的 UE-V 漫遊。 「企業狀態漫遊」已經涵蓋這些漫遊。
+* 使用 UE-V 群組原則時，應禁用適用于 Windows 設置和現代 UWP 應用資料的 UE-V 漫遊。 「企業狀態漫遊」已經涵蓋這些漫遊。
 
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>企業狀態漫遊如何支援虛擬桌面基礎結構 (VDI)？
 
@@ -133,8 +133,8 @@ Windows 10 用戶端 SKU 支援「企業狀態漫遊」，但伺服器 SKU 則�
 
 ## <a name="known-issues"></a>已知問題
 
-如需已知問題的清單，請參閱[疑難排解](enterprise-state-roaming-troubleshooting.md)一節中的檔。 
+有關已知問題的清單，請參閱[故障排除](enterprise-state-roaming-troubleshooting.md)部分中的文檔。 
 
 ## <a name="next-steps"></a>後續步驟 
 
-如需概觀，請參閱[企業狀態漫遊概觀](enterprise-state-roaming-overview.md)
+有關概述，請參閱[企業狀態漫遊概述](enterprise-state-roaming-overview.md)

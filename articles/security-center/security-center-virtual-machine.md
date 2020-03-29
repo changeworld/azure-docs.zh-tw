@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921499"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 資訊安全中心和 Azure 虛擬機器
@@ -33,7 +33,7 @@ ms.locfileid: "77921499"
 * 端點保護建議
 * 磁碟加密驗證
 * 弱點評估和補救
-* 威脅防護功能的安全性警示
+* 威脅防護功能的安全警報
 
 除了協助您保護 Azure VM，資訊安全中心也提供雲端服務、應用程式服務、虛擬網路等的安全性監視和管理功能。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "77921499"
 
 * 您需要 Microsoft Azure 訂用帳戶。 請參閱[安全性中心價格](https://azure.microsoft.com/pricing/details/security-center/)，以深入了解資訊安全中心的免費和標準層。
 * 規劃資訊安全中心的採用，請參閱 [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)，以深入了解規劃和作業考量。
-* 如需有關支援的作業系統的詳細資訊，請參閱[Azure 資訊安全中心常見問題（FAQ）](faq-vms.md)。 
+* 有關受支援的作業系統的資訊，請參閱[Azure 安全中心常見問題 （FAQ）。](faq-vms.md) 
 
 ## <a name="set-security-policy"></a>設定安全性原則
 必須啟用資料收集，讓 Azure 資訊安全中心可收集其提供建議所需的資訊，以及根據您所設定之安全性原則所產生的警示。 在下圖中，您可以看到**資料收集**已**開啟**。
@@ -82,7 +82,7 @@ ms.locfileid: "77921499"
 > 
 
 ## <a name="monitor-security-health"></a>監視安全性健康狀態
-在您為訂用帳戶的資源啟用 [安全性原則](tutorial-security-policy.md) 之後，資訊安全中心會分析您資源的安全性狀態，以找出潛在的弱點。  您可以在 [資源安全性健全狀況] 刀鋒視窗中，檢視資源的安全性狀態及任何問題。 當您在 [資源安全性] 健全狀況圖格中按一下 [虛擬機器] 時，會開啟 [虛擬機器] 刀鋒視窗，並提供您 VM 的建議。 
+在您為訂用帳戶的資源啟用 [安全性原則](tutorial-security-policy.md) 之後，資訊安全中心會分析您資源的安全性狀態，以找出潛在的弱點。  您可以在 [資源安全性健全狀況]**** 刀鋒視窗中，檢視資源的安全性狀態及任何問題。 當您在 [資源安全性]**** 健全狀況圖格中按一下 [虛擬機器]**** 時，會開啟 [虛擬機器]**** 刀鋒視窗，並提供您 VM 的建議。 
 
 ![安全性健康狀態](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -96,6 +96,6 @@ ms.locfileid: "77921499"
 ## <a name="see-also"></a>另請參閱
 如要深入了解資訊安全中心，請參閱下列主題：
 
-* [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
-* [常見問題-虛擬機器](faq-vms.md)--尋找有關使用服務的常見問題。
+* [在 Azure 安全中心設置安全性原則](tutorial-security-policy.md)-- 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)-- 瞭解如何管理和回應安全警報。
+* [常見問題 - 虛擬機器](faq-vms.md)-- 查找有關使用服務的常見問題。

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76716772"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 與 Spark 的資料科學
@@ -41,7 +41,7 @@ ms.locfileid: "76716772"
 
 ## <a name="prerequisites"></a>Prerequisites
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] 功能表上設定叢集類型和版本。
+* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] **** 功能表上設定叢集類型和版本。
 
 ![HDInsight 叢集類型組態](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -52,17 +52,17 @@ ms.locfileid: "76716772"
 如需紐約市計程車車程資料的說明以及如何在 Spark 叢集上從 Jupyter Notebook 執行程式碼的指示，請參閱 [在 Azure HDInsight 上使用 Spark 的資料科學概觀](spark-overview.md)中的相關章節。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>在 Spark 叢集上從 Jupyter Notebook 執行 Scala 程式碼
-您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，然後按一下該項目以進入您的叢集管理頁面。 接著按一下 [叢集儀表板]，然後按一下 [Jupyter Notebook] 來開啟與 Spark 叢集相關聯的 Notebook。
+您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，然後按一下該項目以進入您的叢集管理頁面。 接著按一下 [叢集儀表板]****，然後按一下 [Jupyter Notebook]**** 來開啟與 Spark 叢集相關聯的 Notebook。
 
 ![叢集儀表板和 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將 *clustername* 取代為您叢集的名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
+您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將*群集名稱*替換為群集的名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
 
 ![使用叢集名稱移至 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-選取 [Scala] 會看到一個目錄，當中有一些使用 PySpark API 的預先封裝 Notebook 的範例。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)上有使用 Scala.ipynb Notebook 的探勘模型化和評分，其中包含此 Spark 主題套件的程式碼範例。
+選取 [Scala] **** 會看到一個目錄，當中有一些使用 PySpark API 的預先封裝 Notebook 的範例。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)上有使用 Scala.ipynb Notebook 的探勘模型化和評分，其中包含此 Spark 主題套件的程式碼範例。
 
-您可以將 Notebook 直接從 GitHub 上傳至 Spark 叢集上的 Jupyter Notebook 伺服器。 在 Jupyter 首頁上，按一下 [上傳] 按鈕。 在檔案總管中，貼上 Scala Notebook 的 GitHub (原始內容) URL，然後按一下 [開啟]。 下列 URL 有 Scala Notebook 可供使用：
+您可以將 Notebook 直接從 GitHub 上傳至 Spark 叢集上的 Jupyter Notebook 伺服器。 在 Jupyter 首頁上，按一下 [上傳] **** 按鈕。 在檔案總管中，貼上 Scala Notebook 的 GitHub (原始內容) URL，然後按一下 [開啟] ****。 下列 URL 有 Scala Notebook 可供使用：
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -254,13 +254,13 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>資料探索和虛擬化
-將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果匯入資料框架，以使用自動視覺化 Jupyter 功能繪製目標變數和潛在功能以進行視覺檢查。
+將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果導入資料框，使用自動視覺化 Jupyter 功能繪製目標變數和預期要素以進行目視檢查。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本機和 SQL magic 來繪製資料
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
-* **SQL magic** (`%%sql`)。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將會以原生模式提供。
-* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `%%sql` 參數的 `-o` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* **SQL**魔法`%%sql`（ 。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 此設置表示輸出將在本地模式下可用。
+* `%%local` **magic**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
 此查詢會依照費用金額、乘客計數和小費金額擷取計程車車程。
@@ -535,9 +535,9 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二進位分類模型：預測是否應支付小費
 在本節中，您會建立三種類型的二進位分類模型來預測是否應支付小費：
 
-* 使用 Spark ML  **函式的**羅吉斯迴歸模型`LogisticRegression()`
-* 使用 Spark ML  **函式的**隨機樹系分類模型`RandomForestClassifier()`
-* 使用 MLlib  **函式的**梯度推進樹分類模型`GradientBoostedTrees()`
+* 使用 Spark ML `LogisticRegression()` 函式的**羅吉斯迴歸模型**
+* 使用 Spark ML `RandomForestClassifier()` 函式的**隨機樹系分類模型**
+* 使用 MLlib `GradientBoostedTrees()` 函式的**梯度推進樹分類模型**
 
 ### <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 接著，使用 Spark ML `LogisticRegression()` 函式建立羅吉斯迴歸模型。 您會在一系列步驟中建立模型建置程式碼︰
@@ -728,8 +728,8 @@ ROC 曲線夏的領域 = 0.9846895479241554
 ## <a name="regression-model-predict-tip-amount"></a>迴歸模型：預測小費金額
 在本節中，您會建立兩種類型的迴歸模型來預測小費金額︰
 
-* 使用 Spark ML  **函式的**正規化線性迴歸模型`LinearRegression()`。 您將儲存模型，並對測試資料評估模型。
-* 使用 Spark ML  **函式的**梯度推進樹迴歸模型`GBTRegressor()`。
+* 使用 Spark ML `LinearRegression()` 函式的**正規化線性迴歸模型**。 您將儲存模型，並對測試資料評估模型。
+* 使用 Spark ML `GBTRegressor()` 函式的**梯度推進樹迴歸模型**。
 
 ### <a name="create-a-regularized-linear-regression-model"></a>建立正則化線性迴歸模型
     # RECORD THE START TIME
@@ -853,7 +853,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
 ### <a name="create-a-gbt-regression-model"></a>建立 GBT 迴歸模型
 使用 SparkML `GBTRegressor()` 函式建立 GBT 迴歸模型，然後對測試資料評估模型。
 
-漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 會反復定型決策樹，將損失函數降至最低。 您可以使用 GBT 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
+[漸變提升樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是決策樹的合奏。 GBTS 以反覆運算方式訓練決策樹，以儘量減少損失函數。 您可以使用 GBTS 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

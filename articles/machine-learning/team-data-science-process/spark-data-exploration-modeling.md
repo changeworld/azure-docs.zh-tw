@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718628"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 資料探索和模型化
@@ -30,7 +30,7 @@ ms.locfileid: "76718628"
 * [使用 SGD 的線性迴歸](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) 是一種使用隨機梯度下降 (SGD) 方法的線性迴歸模型，並使用最佳化和功能縮放比例來預測支付的小費金額。 
 * [使用 LBFGS 的羅吉斯迴歸](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) 或「對數優劣比」迴歸是使用相依變數來執行資料分類時，可使用的迴歸模型。 LBFGS 是牛頓最佳化演算法，可使用有限的電腦記憶體量來逼近 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 演算法，且廣泛用於機器學習中。
 * [隨機樹系](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) 是整體的決策樹。  隨機樹系結合許多決策樹來降低風險過度膨脹。 隨機樹系適用於迴歸和分類，可處理分類功能，也可擴充至多類別分類設定。 隨機樹系不需要調整功能，而且能夠擷取非線性和功能互動。 隨機樹系是其中一個最成功的分類和迴歸的機器學習模型。
-* 漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 反復定型決策樹，將損失函式降至最低。 GBT 用於回歸和分類，並可處理分類功能、不需要調整功能，而且能夠捕捉非非線性和功能互動。 它們也可用於多類別分類設定。
+* [漸變提升樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是決策樹的合奏。 GBTS 以反覆運算方式訓練決策樹，以儘量減少損失函數。 GBTS 用於回歸和分類，可以處理分類要素，不需要要素縮放，並且能夠捕獲非線性和要素交互。 它們也可用於多類別分類設定。
 
 模型化步驟也包含程式碼來示範如何定型、評估和儲存每類模型。 已使用 Python 來編寫解決方案程式碼，並顯示相關的繪圖。   
 
@@ -52,16 +52,16 @@ ms.locfileid: "76718628"
 ### <a name="spark-20-notebooks"></a>Spark 2.0 Notebook
 使用 Spark 2.0 叢集實作的迴歸和分類工作位於不同的 Notebook，且分類 Notebook 會使用不同的資料集︰
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此檔案使用在[這裡](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)描述的 NYC 計程車車程和費用資料集，提供如何在 Spark 2.0 叢集中執行資料瀏覽、模型化和評分的相關資訊。 Notebook 可能是很好的起點，可快速瀏覽我們針對 Spark 2.0 所提供的程式碼。 如需更多分析 NYC 計程車資料的 Notebook 詳細資訊，請參閱這份清單中的下一個 Notebook。 請參閱這份清單中會比較這些筆記本的附注。 
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此檔案使用在[這裡](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)描述的 NYC 計程車車程和費用資料集，提供如何在 Spark 2.0 叢集中執行資料瀏覽、模型化和評分的相關資訊。 Notebook 可能是很好的起點，可快速瀏覽我們針對 Spark 2.0 所提供的程式碼。 如需更多分析 NYC 計程車資料的 Notebook 詳細資訊，請參閱這份清單中的下一個 Notebook。 請參閱此清單後比較這些筆記本的備註。 
 - [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：這個檔案會顯示如何使用[這裡](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的 NYC 計程車車程和費用資料集，執行資料爭議 (Spark SQL 和資料框架作業)、瀏覽、模型化和評分。
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：這個檔案會顯示如何使用已知的 2011 年和 2012 年航班準時出發資料集，執行資料爭議 (Spark SQL 和資料框架作業)、瀏覽、模型化和評分。 我們已在建立模型之前，將航空公司資料集與機場天氣資料（例如，windspeed、溫度、高度等）整合，因此這些氣象功能可以包含在模型中。
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：這個檔案會顯示如何使用已知的 2011 年和 2012 年航班準時出發資料集，執行資料爭議 (Spark SQL 和資料框架作業)、瀏覽、模型化和評分。 在建模之前，我們將航空公司資料集與機場天氣資料（例如風速、溫度、海拔高度等）集成在一起，因此這些天氣特徵可以包含在模型中。
 
 <!-- -->
 
 > [!NOTE]
 > Spark 2.0 Notebook 中新增了航班資料集，以更清楚地說明使用的分類演算法。 請參閱下列連結，以取得航班準時出發資料集和天氣資料集的相關資訊：
 > 
-> - 航班準時出發資料：[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - 航空公司準時出發資料：[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
 > - 機場天氣資料：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
@@ -129,9 +129,9 @@ Jupyter Notebook 所提供的 PySpark 核心有預設的內容。 因此您不�
 PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 呼叫的特殊命令。 在這些程式碼範例中，就使用了兩個此類型的命令。
 
 * **%%local** 指定後續行所列的程式碼要在本機執行。 程式碼必須是有效的 Python 程式碼。
-* **%% sql-o \<變數名稱 >** 針對 sqlCoNtext 執行 Hive 查詢。 如果傳遞 -o 參數，則查詢的結果會當做 Pandas 資料框架，保存在 %%local Python 內容中。
+* **%%%sql \<-o 變數名稱>** 針對 sqlCoNtext 執行 Hive 查詢。 如果傳遞 -o 參數，則查詢的結果會當做 Pandas 資料框架，保存在 %%local Python 內容中。
 
-如需 Jupyter 筆記本核心和預先定義的 "magic" 的詳細資訊，請參閱[在 hdinsight 上搭配 Hdinsight Spark Linux 叢集使用的核心適用于 Jupyter 筆記本](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)的核心。
+有關聚居機筆記本內核和預定義的"魔力"的更多資訊，請參閱[HDInsight 上帶有 HDInsight Spark Linux 群集的猶太派筆記本的內核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
 ## <a name="data-ingestion-from-public-blob"></a>來自公用 Blob 的資料擷取
 資料科學程序的第一個步驟，是將要分析的資料從其來源位置內嵌到您的資料探索和模型化環境。 在本逐步解說中環境是 Spark。 本節包含程式碼來完成一系列的工作︰
@@ -212,8 +212,8 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>在計程車車程範例中繪製乘客計數頻率的長條圖
 此程式碼與後續程式碼片段使用了 SQL magic 來查詢範例及本機 magic 以繪製資料。
 
-* **SQL magic (`%%sql`)** HDInsight PySpark 核心支援針對 sqlContext 進行簡單的內嵌 HiveQL 查詢。 「-o VARIABLE_NAME」引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 此設定可讓輸出以原生模式提供。
-* **`%%local` magic** 是用來在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 通常您會使用 `%%local` magic 來搭配含有 -o 參數的 `%%sql` magic。 -o 參數會保存本機 SQL 查詢的輸出，然後 %%local magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* **SQL magic (`%%sql`)** HDInsight PySpark 核心支援針對 sqlContext 進行簡單的內嵌 HiveQL 查詢。 「-o VARIABLE_NAME」引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 此設置使輸出在本地模式下可用。
+* ** `%%local`魔術**用於在 Jupyter 伺服器上本地運行代碼，該伺服器是 HDInsight 群集的頭節點。 通常您會使用 `%%local` magic 來搭配含有 -o 參數的 `%%sql` magic。 -o 參數會保存本機 SQL 查詢的輸出，然後 %%local magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 執行完程式碼後，輸出將會自動以視覺化方式呈現。
 
@@ -263,7 +263,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 
 ![按乘客計數排列的車程頻率](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-在 Notebook 內使用 [類型] 功能表按鈕，您可以選擇幾種不同類型的視覺效果 (資料表、圓形圖、折線圖、區域圖或橫條圖)。 橫條圖繪製結果會在此顯示。
+在 Notebook 內使用 [類型] **** 功能表按鈕，您可以選擇幾種不同類型的視覺效果 (資料表、圓形圖、折線圖、區域圖或橫條圖)。 橫條圖繪製結果會在此顯示。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>繪製小費金額，和小費金額如何隨乘客計數和費用金額變化的長條圖。
 使用 SQL 查詢來取樣資料。
@@ -327,7 +327,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 * 將小時納入流量時間值區以建立新特徵
 * 索引並編碼分類功能
 * 建立輸入到 ML 函式的標示點物件
-* 建立資料的隨機取樣，並將它分割成定型集和測試集
+* 創建資料的隨機子採樣並將其拆分為訓練和測試集
 * 調整功能
 * 快取記憶體中的物件
 
@@ -360,7 +360,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>索引並編碼分類功能以輸入模型化函式中
 本節說明如何索引並編碼分類功能，以輸入模型化函式中。 MLlib 的模型化和預測函式需要先執行功能來分類要索引或編碼的分類輸入資料，才能使用這些資料。 根據模型，您需要以不同方式索引或編碼它們︰  
 
-* **樹狀結構型模型化** 需要將類別編碼為數值 (例如，含 3 個類別的特徵可能會使用 0、1、2 編碼)。 此演算法是由 MLlib 的[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)函數所提供。 此函式會將標籤的字串資料行，編碼為標籤頻率所排序的標籤索引的資料行。 雖然使用輸入和資料處理的數值編製索引，仍可指定樹狀結構型演算法，將它們視為類別適當地處理。 
+* **樹狀結構型模型化** 需要將類別編碼為數值 (例如，含 3 個類別的特徵可能會使用 0、1、2 編碼)。 此演算法由 MLlib 的[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)函數提供。 此函式會將標籤的字串資料行，編碼為標籤頻率所排序的標籤索引的資料行。 雖然使用輸入和資料處理的數值編製索引，仍可指定樹狀結構型演算法，將它們視為類別適當地處理。 
 * **羅吉斯和線性迴歸模型**需要一個有效編碼方式，例如，含 3 個類別的一個功能可擴充至 3 個功能資料行，根據觀察的類別，每個資料行包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函式以執行 one-hot 編碼。 此編碼器會將標籤索引資料行對應到二進位向量資料行 (最多有一個單一值)。 這種編碼方式允許將預期數值功能的演算法 (例如羅吉斯迴歸) 套用至分類功能。
 
 以下是要索引及編碼分類功能的程式碼︰
@@ -413,7 +413,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>建立輸入到 ML 函式的標示點物件
 本節包含程式碼，示範如何將分類的文字資料索引為標示點資料類型並加以編碼，以用來訓練及測試 MLlib 羅吉斯迴歸和其他分類模型。 標示點物件是彈性分散式資料集 (RDD)，其格式化成適合 MLlib 中大部分的 ML 演算法的輸入資料。 [標示點](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 是本機向量 (密集或疏鬆)，與標籤/回應相關聯。  
 
-本節所包含的程式碼會示範如何以 [標示點](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 資料類型來為分類的文字資料編製索引並加以編碼，以用來訓練及測試 MLlib 羅吉斯迴歸和其他分類模型。 標示點物件是彈性分散式資料集 (RDD)，由標籤 (目標/回應變數) 和功能變數組成。 這是 MLlib 中許多 ML 演算法輸入時的所需格式。
+本節包含代碼，說明如何將分類文本資料作為[標記點](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)資料類型進行索引並對其進行編碼，以便可用於訓練和測試 MLlib 邏輯回歸和其他分類模型。 標示點物件是彈性分散式資料集 (RDD)，由標籤 (目標/回應變數) 和功能變數組成。 這是 MLlib 中許多 ML 演算法輸入時的所需格式。
 
 以下是要為二進位分類進行索引及編碼文字功能的程式碼。
 
@@ -464,8 +464,8 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>建立資料的隨機取樣，並將它分割成定型集和測試集
-此程式碼會建立隨機取樣資料 (這裡使用 25%)。 雖然您不需要這個範例 (因為資料集的大小)，我們將在這裡示範如何取樣，讓您了解如何在需要時使用它來自行解決問題。 當樣本很大時，取樣可以在定型模型時節省大量時間。 接下來我們將範例分割成訓練部分 (這裡為 75%) 和測試部分 (這裡為 25%)，以便在分類和迴歸模型化中使用。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>創建資料的隨機子採樣並將其拆分為訓練和測試集
+此程式碼會建立隨機取樣資料 (這裡使用 25%)。 雖然您不需要這個範例 (因為資料集的大小)，我們將在這裡示範如何取樣，讓您了解如何在需要時使用它來自行解決問題。 當樣本較大時，採樣可在訓練模型時節省大量時間。 接下來我們將範例分割成訓練部分 (這裡為 75%) 和測試部分 (這裡為 25%)，以便在分類和迴歸模型化中使用。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -503,7 +503,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 
 **輸出：**
 
-執行上述儲存格所花費的時間：0.24 秒
+執行上述儲存格所取的時間：0.24 秒
 
 ### <a name="feature-scaling"></a>調整功能
 調整功能，也稱為資料正規化，以確保具廣泛分散值的功能在目標函式中沒有過多權重。 用於調整功能的程式碼會使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) ，將功能調整至單位變異數。 這是由 MLlib 提供，用於使用隨機梯度下降 (SGD) 的線性迴歸，為訓練廣泛的其他機器學習模型的常用演算法，例如正則化迴歸或支援向量機器 (SVM)。
@@ -577,7 +577,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 
 **輸出：** 
 
-執行上述儲存格所花費的時間：0.15 秒
+執行上述儲存格所取的時間：0.15 秒
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>使用二進位分類模型來預測是否支付小費
 本節說明如何為二進位分類工作使用三個模型，預測是否支付計程車車程的小費。 顯示模型如下︰
@@ -593,7 +593,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
 3. **儲存模型**
 
 ### <a name="classification-using-logistic-regression"></a>使用羅吉斯迴歸分類
-本節的程式碼顯示如何定型、評估及使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 來儲存羅吉斯迴歸模型，可預測是否針對 NYC 計程車車程和費用資料集的某趟車程支付小費。
+本節中的代碼演示如何使用[LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm)訓練、評估和保存邏輯回歸模型，該模型預測紐約市計程車旅行和票價資料集中的行程是否支付小費。
 
 **使用 CV 及超參數掃掠來定型羅吉斯迴歸模型**
 
@@ -700,7 +700,7 @@ F1 分數 = 0.984304060189
 
 **繪製 ROC 曲線。**
 
-predictionAndLabelsDF 已在先前的儲存格中已註冊為 tmp_results 資料表。 tmp_results 可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
+predictionAndLabelsDF** 已在先前的儲存格中已註冊為 tmp_results** 資料表。 tmp_results** 可用來執行查詢，並將結果輸出至 sqlResults 資料框架供繪製之用。 程式碼如下。
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
@@ -1012,9 +1012,9 @@ R-sqr = 0.753835096681
 
 執行上述儲存格所花費的時間︰34.52 秒
 
-**圖**
+**情節**
 
-tmp_results 已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults 資料框架以供繪製之用。 程式碼如下
+tmp_results** 已在先前的儲存格中註冊為 Hive 資料表。 來自資料表的結果已輸出至 sqlResults ** 資料框架以供繪製之用。 程式碼如下
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1080,7 +1080,7 @@ tmp_results 已在先前的儲存格中註冊為 Hive 資料表。 來自資料�
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**OUTPUT**
+**輸出**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1099,5 +1099,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 **模型耗用量︰** 若要瞭解如何評分及評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。
 
-**交叉驗證和超參數掃掠**：如需如何使用交叉驗證和超參數掃掠訓練模型的相關資訊，請參閱 [使用 Spark 進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)
+**交叉驗證和超參數掃描**：請參閱[使用 Spark 的高級資料探索和建模](spark-advanced-data-exploration-modeling.md)，瞭解如何使用交叉驗證和超參數掃描對模型進行訓練
 

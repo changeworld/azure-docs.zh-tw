@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381378"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用 Sync Service Manager 作業索引標籤
@@ -33,7 +33,7 @@ ms.locfileid: "60381378"
 ## <a name="understand-the-information-visible-in-the-operations-tab"></a>了解 [作業] 索引標籤中顯示的資訊
 上半部會依時間順序顯示所有執行。 根據預設，作業記錄會保留最後 7 天的相關資訊，但是您可以利用 [排程器](how-to-connect-sync-feature-scheduler.md)來變更此設定。 若您想要尋找任何未顯示成功狀態的執行。 您可以按一下標頭來變更排序。
 
-[狀態]  欄位是最重要的資訊，並顯示最嚴重的執行問題。 以下快速摘要依照優先順序來調查的最常見狀態 (其中 * 表示數個可能的錯誤字串)。
+[狀態] **** 欄位是最重要的資訊，並顯示最嚴重的執行問題。 以下快速摘要依照優先順序來調查的最常見狀態 (其中 * 表示數個可能的錯誤字串)。
 
 | 狀態 | 註解 |
 | --- | --- |
@@ -43,7 +43,7 @@ ms.locfileid: "60381378"
 | completed-\*-warnings |執行完成，但某些資料並未處於預期的狀態。 如果您遇到錯誤，則此訊息通常只是一個徵狀。 在您解決錯誤之前，不應該調查警告。 |
 | 成功 |沒有問題。 |
 
-當您選取某個資料列時，底部會更新以顯示該執行的詳細資料。 在底部的最左邊，可能會有一份顯示 [步驟 #]  的清單。 如果您的樹系中有多個網域，而每個網域都以一個步驟來代表，則只會顯示此清單。 您可以在 [分割區]  標題下方找到網域名稱。 在 [同步處理統計資料]  下方，您可以找到關於已處理的變更次數詳細資訊。 您可以按一下連結，以取得變更的物件清單。 如果您有物件發生錯誤，這些會顯示於 [同步處理錯誤]  下方。
+當您選取某個資料列時，底部會更新以顯示該執行的詳細資料。 在底部的最左邊，可能會有一份顯示 [步驟 #] **** 的清單。 如果您的樹系中有多個網域，而每個網域都以一個步驟來代表，則只會顯示此清單。 您可以在 [分割區] **** 標題下方找到網域名稱。 在 [同步處理統計資料] **** 下方，您可以找到關於已處理的變更次數詳細資訊。 您可以按一下連結，以取得變更的物件清單。 如果您有物件發生錯誤，這些會顯示於 [同步處理錯誤] **** 下方。
 
 如需詳細資訊，請參閱[針對未同步的物件進行疑難排解](tshoot-connect-object-not-syncing.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排與 Event Grid 的整合概觀 | Microsoft Docs
-description: 本文提供如何 Azure 服務匯流排訊息與 Azure 事件方格整合的說明。
+description: 本文介紹 Azure 服務匯流排消息傳遞如何與 Azure 事件網格集成。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773469"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
@@ -38,7 +38,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>確認您具有參與者存取權
-移至您的服務匯流排命名空間，然後選取 **[存取控制（IAM）** ]，再選取 [**角色指派**] 索引標籤。請確認您具有命名空間的參與者存取權。 
+轉到服務匯流排命名空間，然後選擇**存取控制 （IAM），** 然後選擇**角色指派**選項卡。驗證您是否具有參與者對命名空間的存取權限。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件結構描述
 
@@ -111,7 +111,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ### <a name="use-filters-to-limit-where-you-get-events-from"></a>使用篩選條件來限制您取得事件的來源
 
-如果您只想從命名空間內的一個佇列或一個訂用帳戶取得事件，您可以使用 Event Grid 所提供的「開頭為」或「結尾為」篩選條件。 在某些介面中，篩選條件稱為「前置」和「尾碼」篩選條件。 如果您想取得多個佇列和訂用帳戶 (但並非所有佇列和訂用帳戶) 的事件，您可以建立多個 Event Grid 訂用帳戶並且為每個訂用帳戶提供一個篩選條件。
+如果您只想從命名空間內的一個佇列或一個訂用帳戶取得事件，您可以使用 Event Grid 所提供的「開頭為」** 或「結尾為」** 篩選條件。 在某些介面中，篩選條件稱為「前置」** 和「尾碼」** 篩選條件。 如果您想取得多個佇列和訂用帳戶 (但並非所有佇列和訂用帳戶) 的事件，您可以建立多個 Event Grid 訂用帳戶並且為每個訂用帳戶提供一個篩選條件。
 
 ## <a name="create-event-grid-subscriptions-for-service-bus-namespaces"></a>如何為服務匯流排命名空間建立 Event Grid 訂用帳戶
 
@@ -119,14 +119,14 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 * 在 Azure 入口網站
 * 在 [Azure CLI](#azure-cli-instructions) 中
-* 在 [PowerShell](#powershell-instructions) 中
+* 在[電源外殼中](#powershell-instructions)
 
 ## <a name="azure-portal-instructions"></a>Azure 入口網站指示
 
 若要建立新的 Event Grid 訂用帳戶，請執行下列作業：
 1. 在 Azure 入口網站中，移至您的命名空間。
-2. 在左窗格中，選取 [Event Grid]。 
-3. 選取 [事件訂用帳戶]。  
+2. 在左窗格中，選取 [Event Grid]****。 
+3. 選擇**活動訂閱**。  
 
    下圖顯示一個命名空間，而該命名空間有事件方格訂用帳戶：
 
@@ -138,7 +138,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 指示
 
-首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [Windows + X]，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 選擇**Windows + X**，然後打開具有管理員許可權的新 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 執行以下程式碼：
 
@@ -152,11 +152,11 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-如果您使用 BASH 
+如果您使用的是 BASH 
 
 ## <a name="powershell-instructions"></a>PowerShell 指示
 
-確定您已安裝 Azure PowerShell。 [下載安裝程式](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 選取 [Windows + X]，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+確定您已安裝 Azure PowerShell。 [下載安裝程式](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 選取 [Windows + X]****，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 ```powershell-interactive
 Connect-AzAccount
@@ -179,7 +179,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 * 取得服務匯流排和 Event Grid [範例](service-bus-to-event-grid-integration-example.md)。
 * 深入了解 [Event Grid](https://docs.microsoft.com/azure/event-grid/)。
 * 深入了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
-* 深入了解 [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)。
+* 瞭解有關[邏輯應用](https://docs.microsoft.com/azure/logic-apps/)的更多資訊。
 * 深入了解[服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png

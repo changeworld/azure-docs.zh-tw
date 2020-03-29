@@ -1,7 +1,7 @@
 ---
 title: 使用估算程式將 ML 模型定型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 估計工具類別來執行傳統機器學習和深度學習模型的單一節點和分散式訓練
+description: 瞭解如何使用 Azure 機器學習估算器類對傳統機器學習和深度學習模型執行單節點和分散式培訓
 ms.author: maxluk
 author: maxluk
 services: machine-learning
@@ -12,25 +12,25 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79078488"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>藉由估算器使用 Azure Machine Learning 將模型定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-透過 Azure Machine Learning，您可以使用[RunConfiguration 物件](how-to-set-up-training-targets.md#whats-a-run-configuration)和[ScriptRunConfig 物件](how-to-set-up-training-targets.md#submit)，輕鬆地將定型腳本提交至[各種計算目標](how-to-set-up-training-targets.md#compute-targets-for-training)。 這種模式可提升彈性並達到最大的控制度。
+使用 Azure 機器學習，您可以使用[Run 設定物件](how-to-set-up-training-targets.md#whats-a-run-configuration)和[腳本 RunConfig 物件](how-to-set-up-training-targets.md#submit)輕鬆將訓練腳本提交到[各種計算目標](how-to-set-up-training-targets.md#compute-targets-for-training)。 這種模式可提升彈性並達到最大的控制度。
 
-為協助進行深入的學習模式定型，Azure Machine Learning Python SDK 提供更高層級抽象 (亦即預估器類別)，可供使用者輕鬆地建構回合組態。 您可以建立和使用泛型[估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，以在您選擇的任何計算目標上（例如 scikit-learn），使用您選擇的任何學習架構來提交定型腳本，不論是您的本機電腦、azure 中的單一 VM，或 azure 中的 GPU 叢集。 對於 PyTorch、TensorFlow 和 Chainer 工作，Azure Machine Learning 也會提供個別的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算器，以簡化使用這些架構的作業。
+為協助進行深入的學習模式定型，Azure Machine Learning Python SDK 提供更高層級抽象 (亦即預估器類別)，可供使用者輕鬆地建構回合組態。 您可以創建和使用通用[估計器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，使用您選擇的任何學習框架（如 scikit-learn）在您選擇的任何計算目標上提交訓練腳本，無論是本地電腦、Azure 中的單個 VM 還是 Azure 中的 GPU 群集。 對於 PyTorch、TensorFlow 和鏈子任務，Azure 機器學習還提供各自的[PyTorch、TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[鏈式估計器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)，以簡化使用這些框架。 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)
 
 ## <a name="train-with-an-estimator"></a>使用預估器來定型
 
 建立您的[工作區](concept-workspace.md)並設定您的[開發環境](how-to-configure-environment.md)後，請將 Azure Machine Learning 中的模型定型牽涉到下列步驟：  
 1. 建立[遠端計算目標](how-to-set-up-training-targets.md) (請注意，您也可以使用本機電腦作為計算目標)
 2. 將您的[定型資料](how-to-access-data.md)上傳到資料存放區 (選擇性)
-3. 建立您的[定型指令碼](tutorial-train-models-with-aml.md#create-a-training-script)
+3. 創建[培訓腳本](tutorial-train-models-with-aml.md#create-a-training-script)
 4. 建立 `Estimator` 物件
 5. 將估計器提交到工作區下的實驗物件
 
@@ -38,7 +38,7 @@ ms.locfileid: "79078488"
 
 ### <a name="single-node-training"></a>單一節點定型
 
-使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經建立[計算目標](how-to-set-up-training-targets.md#amlcompute)物件 `compute_target` 和您的[FileDataset](how-to-create-register-datasets.md)物件 `ds`。
+使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經創建了[計算目標](how-to-set-up-training-targets.md#amlcompute)物件`compute_target`和[檔資料集](how-to-create-register-datasets.md)物件`ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -60,15 +60,15 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 參數 | 描述
 --|--
-`source_directory`| 包含定型作業所需之所有程式碼的本機目錄。 此資料夾會從您的本機電腦複製到遠端計算。
-`script_params`| 指定命令列引數的字典，`entry_script`，以 `<command-line argument, value>` 組的形式傳遞給您的定型腳本。 若要在 `script_params`中指定詳細資訊旗標，請使用 `<command-line argument, "">`。
-`compute_target`| 您的定型指令碼執行所在的遠端計算目標，在此案例中為 Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 叢集。 （請注意，即使 AmlCompute 叢集是常用的目標，也可以選擇其他計算目標型別，例如 Azure Vm 或甚至是本機電腦）。
-`entry_script`| 要在遠端計算上執行之定型指令碼的檔案路徑 (相對於 `source_directory`)。 此檔案及其相依的任何其他檔案，都應該位於此資料夾中。
+`source_directory`| 包含定型作業所需之所有程式碼的本機目錄。 此資料夾從本地電腦複製到遠端計算。
+`script_params`| 字典指定命令列參數以對的形式`entry_script``<command-line argument, value>`傳遞給訓練腳本。 要在 中`script_params`指定詳細標誌，請使用`<command-line argument, "">`。
+`compute_target`| 訓練腳本將在其上運行的遠端計算目標，在這種情況下，是 Azure 機器學習計算 （[AmlCompute](how-to-set-up-training-targets.md#amlcompute)） 群集。 （注意即使 AmlCompute 群集是常用的目標，也可以選擇其他計算目標型別，如 Azure VM 甚至本地電腦。
+`entry_script`| 要在遠端計算上執行之定型指令碼的檔案路徑 (相對於 `source_directory`)。 此檔及其所依賴的任何其他檔應位於此資料夾中。
 `conda_packages`| 要透過 Conda 安裝的 Python 套件清單 (其中包含您的定型指令碼所需的套件)。  
 
-此函式具有另一個稱為 `pip_packages` 的參數，您可用於所需的任何 pip 套件。
+建構函式具有另一個參數`pip_packages`，稱為用於任何需要的點包。
 
-您現在已建立 `Estimator` 物件，請透過在您的 `submit`Experiment[ 物件 ](concept-azure-machine-learning-architecture.md#experiments) 上呼叫 `experiment` 函式，提交要在遠端計算上執行的定型作業。 
+您現在已建立 `Estimator` 物件，請透過在您的 [Experiment](concept-azure-machine-learning-architecture.md#experiments) 物件 `experiment` 上呼叫 `submit` 函式，提交要在遠端計算上執行的定型作業。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -112,10 +112,10 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 參數 | 描述 | 預設
 --|--|--
-`custom_docker_image`| 您要使用的映像名稱。 只提供公用 Docker 存放庫 (在此案例中是 Docker Hub) 中可用的映像。 若要使用來自私人 Docker 存放庫的映像，請改為使用建構函式的 `environment_definition` 參數。 [請參閱範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
+`custom_docker_image`| 您要使用的映像名稱。 只提供公用 Docker 存放庫 (在此案例中是 Docker Hub) 中可用的映像。 若要使用來自私人 Docker 存放庫的映像，請改為使用建構函式的 `environment_definition` 參數。 [請參閱示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
 `node_count`| 用於定型作業的節點數目。 | `1`
 `process_count_per_node`| 要在每個節點上執行的處理序 (或「背景工作角色」) 數目。 在此案例中，您會使用每個節點上可用的 `2` 個 GPU。| `1`
-`distributed_training`| 使用 MPI 後端啟動分散式定型的[MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py)物件。  | `None`
+`distributed_training`| [MPI 配置](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py)物件，用於使用 MPI 後端啟動分散式訓練。  | `None`
 
 
 最後，提交定型作業：
@@ -126,28 +126,28 @@ print(run.get_portal_url())
 
 ## <a name="registering-a-model"></a>註冊模型
 
-定型模型之後，您可以將它儲存並註冊到您的工作區。 模型註冊可讓您在工作區中儲存模型並為其建立版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
+訓練模型後，可以將其保存並註冊到工作區。 模型註冊允許您在工作區中存儲和版本模型，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-執行下列程式碼將會向您的工作區註冊模型，並讓它可在遠端計算內容或部署腳本中依名稱參考。 如需詳細資訊和其他參數，請參閱參考檔中的[`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 。
+運行以下代碼會將模型註冊到工作區，並使模型可用於遠端計算上下文或部署腳本中按名稱引用。 有關詳細資訊[`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)和其他參數，請參閱參考文檔。
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
-## <a name="github-tracking-and-integration"></a>GitHub 追蹤與整合
+## <a name="github-tracking-and-integration"></a>GitHub 跟蹤和集成
 
-當您啟動定型回合，其中來原始目錄是本機 Git 存放庫時，儲存機制的相關資訊會儲存在執行歷程記錄中。 如需詳細資訊，請參閱[Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
+當您啟動訓練運行時，原始目錄是本地 Git 存儲庫時，有關存儲庫的資訊存儲在執行歷程記錄中。 有關詳細資訊，請參閱[Azure 機器學習的 Git 集成](concept-train-model-git-integration.md)。
 
 ## <a name="examples"></a>範例
-如需顯示估計工具模式基本概念的筆記本，請參閱：
+對於顯示估計器模式基礎知識的筆記本，請參閱：
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-如需使用估計工具訓練 scikit-learn 學習模型的筆記本，請參閱：
+對於使用估計器訓練學習模型的筆記本，請參閱：
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-如需使用深度學習架構特定估算器的訓練模型筆記本，請參閱：
+有關使用深度學習框架特定估計器的培訓模型的筆記本，請參閱：
 
-* [使用方法-azureml/ml-架構](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
+* [如何使用-azureml/ml 框架](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
@@ -158,4 +158,4 @@ model = run.register_model(model_name='sklearn-sample', model_path=None)
 * [將 TensorFlow 模型定型](how-to-train-tensorflow.md)
 * [調整超參數](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
-* [建立和管理用於定型和部署的環境](how-to-use-environments.md)
+* [創建和管理用於培訓和部署的環境](how-to-use-environments.md)

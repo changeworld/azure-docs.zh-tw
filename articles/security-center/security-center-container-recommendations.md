@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
 ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912355"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 資訊安全中心容器建議
@@ -35,7 +35,7 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 
     ![容器索引標籤](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **即時容器威脅防護**<br> 資訊安全中心使用 AuditD 元件為您的 Linux 電腦上的容器提供即時威脅防護。 警示會找出數個可疑的 Docker 活動，例如在主機上建立特殊權限的容器、在 Docker 容器內執行安全殼層 (SSH) 伺服器的跡象，或使用密碼編譯採礦程式。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+- **即時容器威脅保護**<br> 安全中心為具有 AuditD 元件的 Linux 電腦上容器提供即時威脅保護。 警示會找出數個可疑的 Docker 活動，例如在主機上建立特殊權限的容器、在 Docker 容器內執行安全殼層 (SSH) 伺服器的跡象，或使用密碼編譯採礦程式。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
     ![容器索引標籤](./media/security-center-container-recommendations/docker-threat-detection.png)
 
@@ -44,7 +44,7 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 
 | 建議 | 描述 | 補救 |
 | --- | --- | --- |
-|補救容器安全性設定中的弱點 |根據設定最佳做法，補救容器安全性設定中的弱點。| 補救容器安全性設定中的弱點：<br>1. 檢查失敗規則的清單。<br>2. 根據指定的指示來修正每個規則。|
+|補救容器安全性設定中的弱點 |根據設定最佳做法，補救容器安全性設定中的弱點。| 補救容器安全性設定中的弱點：<br>1. 查看失敗規則的清單。<br>2. 根據指定的說明修復每個規則。|
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -57,5 +57,5 @@ Azure 資訊安全中心提供下列功能協助您保護您的容器：
 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
-* [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
+* [在 Azure 安全中心設置安全性原則](tutorial-security-policy.md)-- 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)-- 瞭解如何管理和回應安全警報。

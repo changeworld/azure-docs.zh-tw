@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60321678"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的硬體元件
@@ -38,7 +38,7 @@ ms.locfileid: "60321678"
 |:--- |:--- |:--- |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
-| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
+| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**謹慎！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-hardware-component-replacement/Electric.png) |**電擊危險** |表示高電壓。 |
 | ![超重圖示](./media/storsimple-hardware-component-replacement/Weight.png) |**超重** | |
@@ -63,14 +63,14 @@ ms.locfileid: "60321678"
 ## <a name="hardware-component-replacement-procedures"></a>硬體元件更換程序
 StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式模組所組成。 8100 具有單一主要機箱，而 8600 是具有主要機箱與 EBOD 機箱的雙重機箱裝置。
 
-下表彙總裝置中的主要硬體元件。 按一下 [更換程序]  資料行中的連結，即可移到相關聯的教學課程。
+下表彙總裝置中的主要硬體元件。 按一下 [更換程序] **** 資料行中的連結，即可移到相關聯的教學課程。
 
 | 元件 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
 | 底座 |1 |否 |[更換 StorSimple 裝置上的底座](storsimple-8000-chassis-replacement.md) |
 | 主要控制器 |2 |是 |[更換 StorSimple 裝置上的控制器模組](storsimple-8000-controller-replacement.md) |
 | 764 瓦電源和冷卻模組 (PCM) |2 |是 |[更換 StorSimple 裝置上的電源和冷卻模組](storsimple-8000-power-cooling-module-replacement.md) |
-| 備用電池 |2 |是 |[更換 StorSimple 裝置上的備用電池模組](storsimple-8000-battery-replacement.md) |
+| 備用電池 |2 |是 |[更換 StorSimple 裝置上的備份電池模組](storsimple-8000-battery-replacement.md) |
 | 磁碟機 |12 |是 |[更換 StorSimple 裝置上的磁碟機](storsimple-8000-disk-drive-replacement.md) |
 
 **表 1** 主要機箱中的硬體元件
@@ -88,11 +88,11 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 裝置上的外掛程式模組會在下列前端和後端圖表中反白顯示。 如果需要更換，您可以使用這些圖表，來判斷各種外掛程式模組的位置。 前端圖表顯示磁碟機，而 EBOD 機箱和主要機箱的後端圖表則顯示外掛程式模組。
 
-![具有磁碟機的裝置前端面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![帶磁片磁碟機的設備前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **圖 1** 裝置正面
 
-| ThisAddIn | 描述 |
+| 標籤 | 描述 |
 |:--- |:--- |
 | 0 - 11 |磁碟機 (總共 12 部) |
 
@@ -102,7 +102,7 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 **圖 2** 主要機箱背面
 
-| ThisAddIn | 描述 |
+| 標籤 | 描述 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -113,7 +113,7 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 **圖 3** EBOD 機箱背面
 
-| ThisAddIn | 描述 |
+| 標籤 | 描述 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -132,7 +132,7 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 * 備用電池模組
 * 機架掛接滑軌套件
 
-請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) ，來訂購任何上述替換單位。
+請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)，以訂購其中任何更換裝置。
 
 ## <a name="next-steps"></a>後續步驟
 請先閱讀所有 [安全資訊](storsimple-safety.md) ，再嘗試更換 StorSimple 硬體元件。

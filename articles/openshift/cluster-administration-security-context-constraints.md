@@ -1,26 +1,26 @@
 ---
-title: 管理 Azure Red Hat OpenShift 中的安全性內容條件約束 |Microsoft Docs
-description: Azure Red Hat OpenShift 叢集系統管理員的安全性內容條件約束
+title: 在 Azure 紅帽開放Shift 中管理安全上下文約束 |微軟文檔
+description: Azure 紅帽開放移位群集管理員的安全上下文約束
 services: container-service
 author: troy0820
-ms.author: jzim
+ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063183"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全性內容條件約束 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure 紅帽開放Shift中管理安全上下文約束 
 
-安全性內容條件約束（SCCs）可讓叢集系統管理員控制 pod 的許可權。 若要深入瞭解此 API 類型，請參閱[SCCs 的架構檔](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 您可以使用 CLI，以一般 API 物件的形式管理實例中的 SCCs。
+安全上下文約束 （ScC） 允許群集管理員控制窗格的許可權。 要瞭解有關此 API 類型的更多資訊，請參閱[ScC 的體系結構文檔](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 您可以使用 CLI 將實例中的 SCC 作為普通 API 物件進行管理。
 
-## <a name="list-security-context-constraints"></a>列出安全性內容條件約束
+## <a name="list-security-context-constraints"></a>列出安全上下文約束
 
-若要取得目前的 SCCs 清單，請使用此命令： 
+要獲取 SCC 的當前清單，請使用此命令： 
 
 ```bash
 $ oc get scc
@@ -35,41 +35,41 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>檢查物件是否有安全性內容條件約束
+## <a name="examine-an-object-for-security-context-constraints"></a>檢查物件的安全上下文約束
 
-若要檢查特定的 SCC，請使用 `oc get`、`oc describe` 或 `oc edit`。  例如，若要檢查**受限制**的 SCC，請使用下列命令：
+要檢查特定的 SCC，請使用`oc get``oc describe`或`oc edit`。  例如，要檢查**受限**SCC，請使用以下命令：
 ```bash
 $ oc describe scc restricted
-Name:                   restricted
-Priority:               <none>
+Name:                    restricted
+Priority:                <none>
 Access:
   Users:                <none>
-  Groups:               system:authenticated
+  Groups:                system:authenticated
 Settings:
-  Allow Privileged:         false
-  Default Add Capabilities:     <none>
-  Required Drop Capabilities:       KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
-  Allowed Capabilities:         <none>
-  Allowed Seccomp Profiles:     <none>
-  Allowed Volume Types:         configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
-  Allow Host Network:           false
-  Allow Host Ports:         false
-  Allow Host PID:           false
-  Allow Host IPC:           false
+  Allow Privileged:            false
+  Default Add Capabilities:        <none>
+  Required Drop Capabilities:        KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+  Allowed Capabilities:            <none>
+  Allowed Seccomp Profiles:        <none>
+  Allowed Volume Types:            configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
+  Allow Host Network:            false
+  Allow Host Ports:            false
+  Allow Host PID:            false
+  Allow Host IPC:            false
   Read Only Root Filesystem:        false
   Run As User Strategy: MustRunAsRange
     UID:                <none>
-    UID Range Min:          <none>
-    UID Range Max:          <none>
+    UID Range Min:            <none>
+    UID Range Max:            <none>
   SELinux Context Strategy: MustRunAs
-    User:               <none>
-    Role:               <none>
-    Type:               <none>
-    Level:              <none>
+    User:                <none>
+    Role:                <none>
+    Type:                <none>
+    Level:                <none>
   FSGroup Strategy: MustRunAs
-    Ranges:             <none>
+    Ranges:                <none>
   Supplemental Groups Strategy: RunAsAny
-    Ranges:             <none>
+    Ranges:                <none>
 ```
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

@@ -1,7 +1,7 @@
 ---
-title: 在自訂原則中定義 SAML 簽發者的技術設定檔
+title: 在自訂策略中為 SAML 頒發者定義技術設定檔
 titleSuffix: Azure AD B2C
-description: 在 Azure Active Directory B2C 的自訂原則中定義安全性聲明標記語言 token （SAML）簽發者的技術設定檔。
+description: 在 Azure 活動目錄 B2C 中的自訂策略中為安全斷言標記語言權杖 （SAML） 頒發者定義技術設定檔。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78967260"
 ---
-# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 權杖簽發者的技術設定檔
+# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure 活動目錄 B2C 自訂策略中為 SAML 權杖頒發者定義技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）會在處理每個驗證流程時發出數種類型的安全性權杖。 SAML 權杖簽發者的技術設定檔會發出傳回給信賴憑證者應用程式（服務提供者）的 SAML 權杖。 此技術設定檔通常是使用者旅程圖中的最後一個協調流程步驟。
+Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發出數種安全性權杖。 SAML 權杖頒發者的技術設定檔發出 SAML 權杖，該權杖將返回到依賴方應用程式（服務提供者）。 此技術設定檔通常是使用者旅程圖中的最後一個協調流程步驟。
 
 ## <a name="protocol"></a>通訊協定
 
@@ -56,7 +56,7 @@ Azure Active Directory B2C （Azure AD B2C）會在處理每個驗證流程時�
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| IssuerUri | 否 | 出現在 SAML 回應中的簽發者名稱。 此值應該與信賴憑證者應用程式中所設定的名稱相同。 |
+| IssuerUri | 否 | 出現在 SAML 回應中的頒發者名稱。 該值應與依賴方應用程式中配置的名稱相同。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -65,15 +65,15 @@ CryptographicKeys 元素包含下列屬性：
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | MetadataSigning | 是 | 用來簽署 SAML 中繼資料的 X509 憑證 (RSA 金鑰組)。 Azure AD B2C 會使用此金鑰來簽署中繼資料。 |
-| SamlMessageSigning| 是| 指定要用來簽署 SAML 訊息的 X509 憑證（RSA 金鑰組）。 Azure AD B2C 使用此金鑰來簽署回應 `<samlp:Response>` 傳送至信賴憑證者。|
+| SamlMessageSigning| 是| 指定 X509 證書（RSA 金鑰集），用於對 SAML 消息進行簽名。 Azure AD B2C 使用此金鑰組發送到`<samlp:Response>`依賴方的回應進行簽名。|
 
 ## <a name="session-management"></a>工作階段管理
 
-若要設定信賴憑證者應用程式之間的 Azure AD B2C SAML 會話，`UseTechnicalProfileForSessionManagement` 元素的屬性，請參考[SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO 會話。
+要在依賴方應用程式之間配置 Azure AD B2C SAML 會話，`UseTechnicalProfileForSessionManagement`該元素的屬性引用[SamlSSOSession 提供程式](custom-policy-reference-sso.md#samlssosessionprovider)SSO 會話。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需使用 SAML 簽發者技術設定檔的範例，請參閱下列文章：
+有關使用 SAML 頒發者技術設定檔的示例，請參閱以下文章：
 
 - [在 Azure AD B2C 中註冊 SAML 應用程式](connect-with-saml-service-providers.md)
 

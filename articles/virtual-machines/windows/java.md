@@ -1,5 +1,5 @@
 ---
-title: 使用 JAVA 建立和管理 Azure 虛擬機器
+title: 使用 JAVA 創建和管理 Azure 虛擬機器
 description: 使用 JAVA 和 Azure Resource Manager 來部署虛擬機器及其所有支援的資源。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944491"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>在 Azure 中使用 JAVA 建立並管理 Windows VM
@@ -39,7 +39,7 @@ ms.locfileid: "78944491"
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
 1. 如果尚未這麼做，請先安裝 [JAVA](https://aka.ms/azure-jdks)。
-2. 安裝 [Maven](https://maven.apache.org/download.cgi)。
+2. 安裝[馬文](https://maven.apache.org/download.cgi)。
 3. 建立新的資料夾和專案：
     
     ```
@@ -133,14 +133,14 @@ ms.locfileid: "78944491"
     graphURL=https://graph.microsoft.com/
     ```
 
-    以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。
+    將**&lt;訂閱 ID&gt;** 替換為訂閱識別碼，**&lt;將應用程式&gt;ID**替換為 Active Directory 應用程式識別碼，**&lt;使用應用程式金鑰進行身份驗證金鑰&gt;**，將**&lt;租戶 ID&gt;** 替換為租戶識別碼。
 
 2. 儲存檔案。
 3. 使用驗證檔案的完整路徑，在殼層中設定名稱為 AZURE_AUTH_LOCATION 的環境變數。
 
 ### <a name="create-the-management-client"></a>建立管理用戶端
 
-1. 在 `App.java` 下開啟 `src\main\java\com\fabrikam` 檔案，並確定此 package 陳述式位於最上方：
+1. 在 `src\main\java\com\fabrikam` 下開啟 `App.java` 檔案，並確定此 package 陳述式位於最上方：
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -188,7 +188,7 @@ ms.locfileid: "78944491"
 
 ### <a name="create-the-resource-group"></a>建立資源群組
 
-所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
+所有資源都必須包含在[資源組中](../../azure-resource-manager/management/overview.md)。
 
 若要指定應用程式的值並建立資源群組，請將以下程式碼新增到 Main 方法中的 try 區塊：
 
@@ -217,7 +217,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-必須要有[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器進行通訊。
+需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通信。
 
 若要為虛擬機器建立公用 IP 位址，請將以下程式碼新增到 Main 方法中的 try 區塊：
 

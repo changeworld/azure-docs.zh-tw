@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 | Microsoft Docs
-description: Azure 媒體內容仲裁媒體處理器可協助偵測影片中潛在的成人和猥褻內容。
+description: Azure 媒體內容檢閱者媒體處理器可説明檢測視頻中潛在的成人和淫穢內容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914308"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 
 
 > [!NOTE]
-> **Azure 媒體內容仲裁**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+> **Azure 媒體內容檢閱者**媒體處理器將停用。 有關停用日期，請參閱[舊元件](legacy-components.md)主題。
 
-## <a name="overview"></a>概觀
-**Azure 媒體內容仲裁**媒體處理器 (MP) 可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
+## <a name="overview"></a>總覽
+**Azure 媒體內容檢閱者**媒體處理器 （MP） 使您能夠對視頻使用電腦輔助的審核。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
 
 **Azure 媒體內容仲裁** MP 目前為預覽功能。
 
@@ -56,7 +56,7 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 | width |輸出影片畫面格的寬度 (以像素為單位)。|
 | height |輸出影片畫面格的高度 (以像素為單位)。|
 | totalDuration |輸入影片的持續時間 (以刻度為單位)。 |
-| [fragments](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
+| [碎片](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 
@@ -65,7 +65,7 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 | start |第一個事件的開始時間 (以「刻度」為單位)。 |
 | duration |片段的長度 (以「刻度」為單位)。 |
 | interval |片段內每個事件項目的間隔 (以「刻度」為單位)。 |
-| [events](#events-json-elements) |每個事件都代表一段畫面剪輯，而每段畫面剪輯都包含該持續時間內偵測和追蹤的主要畫面格。 它是包含事件的陣列。 外部陣列代表一個單位的時間間隔。 內部陣列包含在那個時間點所發生的 0 或多個事件。|
+| [事件](#events-json-elements) |每個事件都代表一段畫面剪輯，而每段畫面剪輯都包含該持續時間內偵測和追蹤的主要畫面格。 它是包含事件的陣列。 外部陣列代表一個單位的時間間隔。 內部陣列包含在那個時間點所發生的 0 或多個事件。|
 
 ### <a name="events-json-elements"></a>Events JSON 元素
 

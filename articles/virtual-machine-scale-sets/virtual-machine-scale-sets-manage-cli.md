@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 管理虛擬機器擴展集
+title: 使用 Azure CLI 管理虛擬機器縮放集
 description: 用於管理虛擬機器擴展集 (例如如何啟動和停止執行個體，或變更擴展集容量) 的一般 Azure CLI 命令。
 author: cynthn
 tags: azure-resource-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275741"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虛擬機器擴展集
@@ -21,7 +21,7 @@ ms.locfileid: "76275741"
 
 
 ## <a name="view-information-about-a-scale-set"></a>檢視擴展集的相關資訊
-若要檢視擴展集的整體資訊，請使用 [az vmss show](/cli/azure/vmss)。 下列範例取得 myResourceGroup 資源群組中 myScaleSet 擴展集的相關資訊。 輸入您自己的名稱，如下所示：
+若要檢視擴展集的整體資訊，請使用 [az vmss show](/cli/azure/vmss)。 下列範例取得 myResourceGroup** 資源群組中 myScaleSet** 擴展集的相關資訊。 輸入您自己的名稱，如下所示：
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -29,7 +29,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>檢視擴展集中的 VM
-若要檢視擴展集中的 VM 執行個體清單，請使用 [az vmss list-instances](/cli/azure/vmss)。 下列範例列出 myResourceGroup 資源群組中，名稱為 myScaleSet 擴展集內的所有虛擬機器執行個體。 針對這些名稱提供您自己的值：
+若要檢視擴展集中的 VM 執行個體清單，請使用 [az vmss list-instances](/cli/azure/vmss)。 下列範例列出 myResourceGroup** 資源群組中，名稱為 myScaleSet** 擴展集內的所有虛擬機器執行個體。 針對這些名稱提供您自己的值：
 
 ```azurecli
 az vmss list-instances \
@@ -38,7 +38,7 @@ az vmss list-instances \
     --output table
 ```
 
-若要檢視特定 VM 執行個體的其他資訊，請將 `--instance-id` 參數新增至 [az vmss get-instance-view](/cli/azure/vmss)，並指定要檢視的執行個體。 下列範例檢視 myScaleSet 擴展集和 myResourceGroup 資源群組中 VM 執行個體 *0* 的相關資訊。 輸入您自己的名稱，如下所示：
+若要檢視特定 VM 執行個體的其他資訊，請將 `--instance-id` 參數新增至 [az vmss get-instance-view](/cli/azure/vmss)，並指定要檢視的執行個體。 下列範例檢視 myScaleSet** 擴展集和 myResourceGroup** 資源群組中 VM 執行個體 *0* 的相關資訊。 輸入您自己的名稱，如下所示：
 
 ```azurecli
 az vmss get-instance-view \
@@ -49,7 +49,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information-for-vms"></a>列出 VM 的連線資訊
-若要連線至擴展集中的 VM，您可以 SSH 或 RDP 到指派的公用 IP 位址和連接埠號碼。 網路位址轉譯 (NAT) 規則預設會新增至 Azure 負載平衡器，以將遠端連線流量轉送給每部虛擬機器。 若要列出連線至擴展集中 VM 執行個體的位址和連接埠，請使用 [az vmss list-instance-connection-info](/cli/azure/vmss)。 下列範例列出 myScaleSet 擴展集和 myResourceGroup 資源群組中虛擬機器執行個體的連線資訊。 針對這些名稱提供您自己的值：
+若要連線至擴展集中的 VM，您可以 SSH 或 RDP 到指派的公用 IP 位址和連接埠號碼。 網路位址轉譯 (NAT) 規則預設會新增至 Azure 負載平衡器，以將遠端連線流量轉送給每部虛擬機器。 要列出要在比例集中連接到 VM 實例的位址和埠，請使用[az vmss 清單實例-連接資訊](/cli/azure/vmss)。 下列範例列出 myScaleSet** 擴展集和 myResourceGroup** 資源群組中虛擬機器執行個體的連線資訊。 針對這些名稱提供您自己的值：
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -61,7 +61,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>變更擴展集的容量
 上述命令顯示您擴展集和 VM 執行個體的相關資訊。 若要增加或減少擴展集中的執行個體數目，您可以變更容量。 擴展集會建立或移除所需的 VM 數目，然後設定接收應用程式流量的 VM。
 
-若要查看擴展集中目前擁有的執行個體數目，請使用 [az vmss show](/cli/azure/vmss)並查詢 sku.capacity：
+若要查看擴展集中目前擁有的執行個體數目，請使用 [az vmss show](/cli/azure/vmss)並查詢 sku.capacity**：
 
 ```azurecli
 az vmss show \
@@ -71,7 +71,7 @@ az vmss show \
     --output table
 ```
 
-然後，您可以使用 [az vmss scale](/cli/azure/vmss)，手動增加或減少擴展集中的虛擬機器數目。 下列範例會將擴展集中的 VM 數目設定為 5：
+然後，您可以使用 [az vmss scale](/cli/azure/vmss)，手動增加或減少擴展集中的虛擬機器數目。 下列範例會將擴展集中的 VM 數目設定為 5**：
 
 ```azurecli
 az vmss scale \
@@ -86,13 +86,13 @@ az vmss scale \
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>停止和啟動擴展集中的 VM
 若要停止擴展集中的一或多個 VM，請使用 [az vmss stop](/cli/azure/vmss#az-vmss-stop)。 `--instance-ids` 參數可讓您指定停止一或多個 VM。 如果您未指定執行個體識別碼，則會停止擴展集中的所有 VM。 若要停止多個 VM，請以空格分隔每個執行個體識別碼。
 
-下列範例停止 myScaleSet 擴展集和 myResourceGroup 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
+下列範例停止 myScaleSet** 擴展集和 myResourceGroup** 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
 
 ```azurecli
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-已停止的 VM 會維持配置，並繼續產生計算費用。 如果您改為想要解除配置 VM，而且只要產生儲存體費用，請使用 [az vmss deallocate](/cli/azure/vmss)。 若要解除配置多個 VM，請以空格分隔每個執行個體識別碼。 下列範例停止和解除配置 myScaleSet 擴展集和 myResourceGroup 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
+已停止的 VM 會維持配置，並繼續產生計算費用。 如果您改為想要解除配置 VM，而且只要產生儲存體費用，請使用 [az vmss deallocate](/cli/azure/vmss)。 若要解除配置多個 VM，請以空格分隔每個執行個體識別碼。 下列範例停止和解除配置 myScaleSet** 擴展集和 myResourceGroup** 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -102,7 +102,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 ### <a name="start-vms-in-a-scale-set"></a>啟動擴展集中的 VM
 若要啟動擴展集中的一或多個 VM，請使用 [az vmss start](/cli/azure/vmss)。 `--instance-ids` 參數可讓您指定啟動一或多個 VM。 如果您未指定執行個體識別碼，則會啟動擴展集中的所有 VM。 若要啟動多個 VM，請以空格分隔每個執行個體識別碼。
 
-下列範例啟動 myScaleSet 擴展集和 myResourceGroup 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
+下列範例啟動 myScaleSet** 擴展集和 myResourceGroup** 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
 
 ```azurecli
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -112,7 +112,7 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 ## <a name="restart-vms-in-a-scale-set"></a>重新啟動擴展集中的 VM
 若要重新啟動擴展集中的一或多個 VM，請使用 [az vmss restart](/cli/azure/vmss)。 `--instance-ids` 參數可讓您指定重新啟動一或多個 VM。 如果您未指定執行個體識別碼，則會重新啟動擴展集中的所有 VM。 若要重新啟動多個 VM，請以空格分隔每個執行個體識別碼。
 
-下列範例重新啟動 myScaleSet 擴展集和 myResourceGroup 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
+下列範例重新啟動 myScaleSet** 擴展集和 myResourceGroup** 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
 
 ```azurecli
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -122,7 +122,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ## <a name="remove-vms-from-a-scale-set"></a>移除擴展集中的 VM
 若要移除擴展集中的一或多個 VM，請使用 [az vmss delete-instances](/cli/azure/vmss)。 `--instance-ids` 參數可讓您指定移除一或多個 VM。 如果您指定 * 表示執行個體識別碼，則會移除擴展集中的所有 VM。 若要移除多個 VM，請以空格分隔每個執行個體識別碼。
 
-下列範例移除 myScaleSet 擴展集和 myResourceGroup 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
+下列範例移除 myScaleSet** 擴展集和 myResourceGroup** 資源群組中的執行個體 *0*。 提供您自己的值，如下所示︰
 
 ```azurecli
 az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --instance-ids 0

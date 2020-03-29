@@ -1,16 +1,16 @@
 ---
 title: Azure 資料目錄中支援的資料來源
-description: 本文列出 Azure 資料目錄目前支援的資料來源規格。
+description: 本文列出了 Azure 資料目錄當前受支援的資料來源的規範。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898154"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 資料目錄中支援的資料來源
@@ -25,11 +25,11 @@ ms.locfileid: "78898154"
        <td><b>API</b></td>
        <td><b>手動輸入</b></td>
        <td><b>註冊工具</b></td>
-       <td><b>開啟工具</b></td>
+       <td><b>開上工具</b></td>
        <td><b>注意</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區目錄（僅限 Gen 1）</td>
+      <td>Azure 資料湖存儲目錄（僅限第 1 代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "78898154"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區檔案（僅限 Gen 1）</td>
+      <td>Azure 資料湖存儲檔（僅限第 1 代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 和更新版本。</td>
+      <td>Oracle 10 及更高版本。</td>
     </tr>
     <tr>
       <td>Oracle 資料庫檢視</td>
@@ -132,7 +132,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 和更新版本。</td>
+      <td>Oracle 10 及更高版本。</td>
     </tr>
     <tr>
       <td>其他 (一般資產)</td>
@@ -164,7 +164,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -172,7 +172,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 量值</td>
@@ -180,7 +180,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 資料表</td>
@@ -188,7 +188,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services 報表</td>
@@ -196,7 +196,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>瀏覽器</td>
-      <td>僅限原生模式伺服器。 不支援 SharePoint 模式。 僅限 SQL Server 2008 和更新版本</td>
+      <td>僅限原生模式伺服器。 不支援 SharePoint 模式。 僅 SQL Server 2008 及更高版本</td>
     </tr>
     <tr>
       <td>SQL Server 資料表</td>
@@ -204,7 +204,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server 資料工具</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server 檢視</td>
@@ -212,7 +212,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server 資料工具</td>
-      <td>SQL Server 2008 和更新版本。</td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>Teradata 資料表</td>
@@ -236,7 +236,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>僅適用于英文。 量值不受支援。</td>
+      <td>只能用英語工作。 不支援措施。</td>
     </tr>
     <tr>
       <td>SAP HANA 檢視</td>
@@ -445,11 +445,11 @@ ms.locfileid: "78898154"
 
 ## <a name="data-source-reference-specification"></a>資料來源參考規格
 > [!NOTE]
-> 下表中的「DSL 結構」資料行僅列出「Azure 資料目錄」所使用「位址」屬性包的連線屬性。 也就是說，「位址」屬性包可以針對 Azure 資料目錄保存但並未使用的資料來源，包含其他連接屬性。
+> 下表中的「DSL 結構」**** 資料行僅列出「Azure 資料目錄」所使用「位址」屬性包的連線屬性。 也就是說，「位址」屬性包可以針對 Azure 資料目錄保存但並未使用的資料來源，包含其他連接屬性。
 
 <table>
     <tr>
-       <td><b>來源類型</b></td>
+       <td><b>源類型</b></td>
        <td><b>資產類型</b></td>
        <td><b>物件類型</b></td>
        <td><b>DSL 結構<b></td>

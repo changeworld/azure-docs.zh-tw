@@ -1,6 +1,6 @@
 ---
 title: 將資料從 Kafka 擷取至 Azure 資料總管
-description: 在本文中，您會學習如何 （負載） 資料內嵌至 Azure 資料總管從 Kafka。
+description: 在本文中，您將瞭解如何從 Kafka 將資料引入（載入）到 Azure 資料資源管理器中。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497274"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>將資料從 Kafka 擷取至 Azure 資料總管
  
 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管會提供從 Kafka 擷取資料 (資料載入) 的功能。 Kafka 是分散式串流平台，可用於建置即時串流資料管線，可靠地在系統或應用程式之間移動資料。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
  
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。 
  
-* [一個測試叢集和資料庫](create-cluster-database-portal.md)。
+* [測試群集和資料庫](create-cluster-database-portal.md)。
  
-* 產生資料並傳送至 Kafka 的[範例應用程式](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
+* 生成資料並將其發送到卡夫卡[的示例應用](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
 
 * 用於執行範例應用程式的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
  
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>建置
+#### <a name="build"></a>Build
 
 使用 Maven 在本機建置，以產生附帶相依性的 `.jar`。
 
@@ -51,7 +51,7 @@ cd ./kafka-sink-azure-kusto/kafka/
 * Maven [下載](https://maven.apache.org/install.html)
  
 
-在根目錄 kafka-sink-azure-kusto  內執行：
+在根目錄 kafka-sink-azure-kusto** 內執行：
 
 ```bash
 mvn clean compile assembly:single
@@ -64,7 +64,7 @@ mvn clean compile assembly:single
 
 [Kafka Connect](https://kafka.apache.org/documentation/#connect) 中有詳細的 Kafka 連接器文件和部署方式 
 
-### <a name="example-configuration"></a>設定範例 
+### <a name="example-configuration"></a>範例設定 
  
 ```config
 name=KustoSinkConnector 
@@ -87,11 +87,11 @@ kusto.sink.flush_size=1000
  
 在 ADX 中建立資料表，讓 Kafka 可將資料傳送至此。 在於**必要條件**中佈建的叢集與資料庫中建立該資料表。
  
-1. 在 Azure 入口網站中瀏覽至您的叢集，然後選取 [查詢]  。
+1. 在 Azure 入口網站中瀏覽至您的叢集，然後選取 [查詢]****。
  
     ![查詢應用程式連結](media/ingest-data-event-hub/query-explorer-link.png)
  
-1. 將下列命令複製到視窗，然後選取 [執行]  。
+1. 將下列命令複製到視窗，然後選取 [執行]****。
  
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -99,7 +99,7 @@ kusto.sink.flush_size=1000
  
     ![執行建立查詢](media/ingest-data-event-hub/run-create-query.png)
  
-1. 將下列命令複製到視窗，然後選取 [執行]  。
+1. 將下列命令複製到視窗，然後選取 [執行]****。
  
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -162,4 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>後續步驟
  
-* [在 Azure 資料總管中查詢資料](web-query-data.md)
+* [Azure 資料資源管理器中的查詢資料](web-query-data.md)

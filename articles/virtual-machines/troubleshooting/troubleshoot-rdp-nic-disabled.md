@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918235"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>因網路介面已停用而無法將遠端桌面連線到 VM
@@ -37,7 +37,7 @@ ms.locfileid: "77918235"
 ### <a name="use-serial-control"></a>使用序列主控台
 
 1. 連線至[序列主控台並開啟 CMD 執行個體](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果未在 VM 上啟用序列主控台，請參閱[重設網路介面](#reset-network-interface)。
+)。 如果 VM 上未啟用串列主控台，請參閱[重置網路介面](#reset-network-interface)。
 2. 檢查網路介面的狀態：
 
         netsh interface show interface

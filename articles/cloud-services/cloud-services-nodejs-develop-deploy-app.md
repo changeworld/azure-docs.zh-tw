@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386182"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
@@ -31,11 +31,11 @@ ms.locfileid: "75386182"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
-* 安裝並設定 [Azure PowerShell]。
+* 安裝和配置[Azure 電源外殼]。
 * 下載並安裝 [Azure SDK for .NET 2.7]。 在安裝過程中，選取：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -43,7 +43,7 @@ ms.locfileid: "75386182"
 ## <a name="create-an-azure-cloud-service-project"></a>建立 Azure 雲端服務專案
 執行下列工作，建立新的 Azure 雲端服務專案以及基本的 Node.js 樣板：
 
-1. 以系統管理員身分執行 **Windows PowerShell**；從 [開始功能表] 或 [開始畫面] 中，搜尋 [Windows PowerShell]。
+1. 以系統管理員身分執行 **Windows PowerShell**；從 [開始功能表]**** 或 [開始畫面]**** 中，搜尋 [Windows PowerShell]****。
 2. [連線 PowerShell] 至您的訂用帳戶。
 3. 輸入下列 PowerShell Cmdlet 來建立專案：
 
@@ -161,7 +161,7 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 
 [Azure 網站、雲端服務與虛擬機器的比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用輕量型 Web 應用程式]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure 電源外殼]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [連線 PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

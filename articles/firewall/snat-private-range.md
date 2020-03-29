@@ -1,53 +1,53 @@
 ---
 title: Azure 防火牆 SNAT 私人 IP 位址範圍
-description: 您可以設定 IP 位址私人範圍，讓防火牆不會對那些 IP 位址進行 SNAT 流量。
+description: 您可以配置 IP 位址專用範圍，以便防火牆不會將 SNAT 流量連接到這些 IP 位址。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 03/20/2020
 ms.author: victorh
-ms.openlocfilehash: b190d07ceadea43ca572f5eb5be3eeeafa616971
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444455"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064802"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火牆 SNAT 私人 IP 位址範圍
 
-當目的地 IP 位址位於每個[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的私人 ip 位址範圍時，Azure 防火牆不會 SNAT。 
+當目標 IP 位址位於[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的私人 IP 位址範圍內時，Azure 防火牆不會使用網路規則進行 SNAT。 應用程式規則始終使用[透明代理](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)應用，而不考慮目標 IP 位址。
 
-如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 不過，您可以將 Azure 防火牆設定為**不**會 SNAT 公用 IP 位址範圍。
+如果您的組織對私人網路絡使用公共 IP 位址範圍，則 Azure 防火牆 SNAT 會將流量訪問 Azure 防火牆 Subnet 中防火牆私人 IP 位址之一。 但是，您可以將 Azure 防火牆配置為**不**將公共 IP 位址範圍 SNAT。
 
-## <a name="configure-snat-private-ip-address-ranges"></a>設定 SNAT 私人 IP 位址範圍
+## <a name="configure-snat-private-ip-address-ranges"></a>配置 SNAT 私人 IP 位址範圍
 
-您可以使用 Azure PowerShell 來指定防火牆不會 SNAT 的 IP 位址範圍。
+可以使用 Azure PowerShell 指定防火牆不會 SNAT 的 IP 位址範圍。
 
 ### <a name="new-firewall"></a>新防火牆
 
-針對新的防火牆，Azure PowerShell 命令為：
+對於新防火牆，Azure PowerShell 命令為：
 
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> IANAPrivateRanges 會擴充至 Azure 防火牆上的目前預設值，而其他範圍則會加入其中。
+> IANAPrivateRanges 擴展為 Azure 防火牆上的當前預設值，同時將其他範圍添加到其中。
 
-如需詳細資訊，請參閱[AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)。
+有關詳細資訊，請參閱新[A 防火牆](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)。
 
-### <a name="existing-firewall"></a>現有的防火牆
+### <a name="existing-firewall"></a>現有防火牆
 
-若要設定現有的防火牆，請使用下列 Azure PowerShell 命令：
+要配置現有防火牆，請使用以下 Azure PowerShell 命令：
 
 ```azurepowershell
 $azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @(“IANAPrivateRanges”,“IPRange1”, “IPRange2”)
+$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ### <a name="templates"></a>範本
 
-您可以將下列內容新增至 `additionalProperties` 區段：
+您可以將以下內容添加到該`additionalProperties`部分：
 
 ```
 "additionalProperties": {

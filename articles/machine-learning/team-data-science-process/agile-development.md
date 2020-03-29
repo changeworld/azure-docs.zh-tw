@@ -1,6 +1,6 @@
 ---
 title: 敏捷式資料科學專案開發 - Team Data Science Process
-description: 使用 Team 資料科學程式，在專案小組中以系統化、版本控制和共同作業的方式執行資料科學專案。
+description: 使用團隊資料科學流程，在專案團隊中以系統、版本控制和協作的方式執行資料科學專案。
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,212 +11,212 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722096"
 ---
 # <a name="agile-development-of-data-science-projects"></a>敏捷式資料科學專案開發
 
-本文件說明開發人員如何藉由使用 [Team Data Science Process](overview.md) (TDSP)，在專案小組中以系統化、版本控制，以及共同作業的方式執行資料科學專案。 TDSP 是由 Microsoft 開發的架構，可提供結構化的活動序列，以有效率地執行雲端式、預測性分析解決方案。 如需在 TDSP 上標準化之資料科學小組所處理的角色和工作的大綱，請參閱[Team 資料科學程式角色和](roles-tasks.md)工作。 
+本文件說明開發人員如何藉由使用 [Team Data Science Process](overview.md) (TDSP)，在專案小組中以系統化、版本控制，以及共同作業的方式執行資料科學專案。 TDSP 是由 Microsoft 開發的一個框架，它提供了結構化的活動序列，以高效地執行基於雲的預測分析解決方案。 有關資料科學團隊在 TDSP 上標準化處理的角色和任務的大綱，請參閱[團隊資料科學流程角色和任務](roles-tasks.md)。 
 
 本文章包含如何執行以下作業的指示： 
 
-- 針對與專案相關的工作專案進行短期*衝刺計畫*。
-- 將*工作專案*加入至短期衝刺。
-- 建立和使用*agile 衍生的工作專案範本*，特別與 TDSP 生命週期階段一致。
+- 為專案涉及的工作項進行*衝刺 （sprint） 規劃*。
+- 將*工作項*添加到衝刺 （sprint） 中。
+- 創建並使用*敏捷派生的工作項範本*，該範本特別與 TDSP 生命週期階段保持一致。
 
-下列指示概述在 Azure DevOps 中使用 Azure Boards 和 Azure Repos 設定 TDSP 小組環境所需的步驟。 這些指示會使用 Azure DevOps，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的群組使用不同的程式碼裝載平臺，小組負責人工作通常不會變更，但是完成工作的方式不同。 例如，連結工作專案與 Git 分支可能不會與 Azure Repos 的 GitHub 相同。
+以下說明概述了在 Azure DevOps 中使用 Azure 板和 Azure 存儲庫設置 TDSP 團隊環境所需的步驟。 這些說明使用 Azure DevOps，因為這是如何在 Microsoft 中實現 TDSP。 如果組使用不同的代碼託管平臺，則團隊領導任務通常不會更改，但完成任務的方式不同。 例如，將工作項與 Git 分支連結可能與 GitHub 不同，與 Azure 存儲庫不同。
 
-下圖說明資料科學專案的典型短期衝刺計畫、編碼和原始檔控制工作流程：
+下圖說明瞭資料科學專案的典型衝刺 （sprint） 規劃、編碼和原始程式碼控制工作流：
 
 ![Team Data Science Process](./media/agile-development/1-project-execute.png)
 
-##  <a name='Terminology-1'></a>工作專案類型
+##  <a name="work-item-types"></a><a name='Terminology-1'></a>工作項類型
 
-在 TDSP 短期衝刺計畫架構中，有四種常用*的工作專案*類型：*功能*、*使用者故事* *、工作*和*bug*。 所有工作專案的待處理專案都是在專案層級，而不是 Git 存放庫層級。 
+在 TDSP 衝刺 （sprint） 規劃框架中，有四種常用*的工作項*類型：*功能*、*使用者情景*、*任務*和*Bug。* 所有工作項的積壓工作都在專案級別，而不是 Git 存儲庫級別。 
 
-以下是工作專案類型的定義：
+以下是工作項類型的定義：
 
-- **功能**：對應至專案參與的功能。 與用戶端的不同合作是不同的功能，因此最好將專案的不同階段視為不同的功能。 如果您選擇架構（例如 *\<ClientName >\<EngagementName >* 來為您的功能命名，您可以輕鬆地辨識專案的內容，並從名稱本身進行參與。
+- **功能**：功能對應于專案參與。 與客戶的不同約定是不同的功能，最好將專案的不同階段視為不同的功能。 如果選擇*\<用戶端名稱>-\<參與名稱>* 等架構來命名您的功能，則可以輕鬆地從名稱本身識別專案的上下文和參與度。
   
-- **使用者案例**：使用者故事是完成功能端對端所需的工作專案。 使用者故事的範例包括：
+- **使用者情景**：使用者情景是端到端完成功能所需的工作項。 使用者情景的示例包括：
   - 取得資料 
   - 探索資料 
-  - 產生功能
+  - 生成功能
   - 建置模型
   - 模型運作 
   - 重新定型模型
   
-- 工作 **：工作**是可指派的工作專案，必須完成才能完成特定的使用者案例。 例如，使用者案例中的工作會*取得資料*：
-  - 取得 SQL Server 認證
-  - 將資料上傳至 SQL 資料倉儲
+- **任務**：任務是完成特定使用者情景所需的可分配工作項。 例如，使用者情景獲取*資料*中的任務可以是：
+  - 獲取 SQL Server 憑據
+  - 將資料上載到 SQL 資料倉儲
   
-- **Bug**： bug 是現有程式碼中的問題，或是必須修正才能完成工作的檔。 如果 Bug 是由遺漏的工作專案所造成，則可以呈報為使用者案例或工作。 
+- **Bug**： Bug 是現有代碼或文檔中的問題，必須修復以完成任務。 如果 Bug 是由缺少的工作項引起的，則 Bug 可能會升級為使用者情景或任務。 
 
-資料科學家可能會覺得使用 agile 範本來取代功能、使用者故事和工作，並使用 TDSP 生命週期階段和階段，來更加熟悉。 若要建立與 TDSP 生命週期階段特別一致的 agile 衍生範本，請參閱[使用 AGILE TDSP 工作範本](#set-up-agile-dsp-6)。
+資料科學家可能感覺更舒適使用敏捷範本，用 TDSP 生命週期階段和子階段替換功能、使用者情景和任務。 要創建與 TDSP 生命週期階段特別一致的敏捷派生範本，請參閱[使用敏捷 TDSP 工作範本](#set-up-agile-dsp-6)。
 
 > [!NOTE]
-> TDSP 會從軟體程式碼管理（SCM）借用功能、使用者故事、工作和 Bug 的概念。 TDSP 概念可能會與傳統 SCM 定義稍有不同。
+> TDSP 從軟體代碼管理 （SCM） 中借用了功能、使用者情景、任務和 Bug 的概念。 TDSP 概念可能與其傳統的 SCM 定義略有不同。
 
-## <a name='SprintPlanning-2'></a>規劃短期衝刺
+## <a name="plan-sprints"></a><a name='SprintPlanning-2'></a>計畫衝刺
 
-許多資料科學家都會參與多個專案，這可能需要數個月的時間才能完成，並在不同的步調中繼續進行。 短期衝刺計劃對於專案優先順序，以及資源規劃和配置相當有用。 在 Azure Boards 中，您可以輕鬆地建立、管理和追蹤專案的工作專案，並進行短期衝刺計畫，以確保專案如預期般向前移動。
+許多資料科學家參與多個專案，這些專案可能需要數月才能完成，並以不同的速度進行。 短期衝刺計劃對於專案優先順序，以及資源規劃和配置相當有用。 在 Azure 板中，可以輕鬆地為專案創建、管理和跟蹤工作項，並執行衝刺 （sprint） 規劃，以確保專案按預期推進。
 
-如需短期衝刺計畫的詳細資訊，請參閱[Scrum 短期衝刺](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint)。 
+有關衝刺 （sprint） 規劃的詳細資訊，請參閱[Scrum 衝刺 。](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint) 
 
-如需 Azure Boards 中短期衝刺計畫的詳細資訊，請參閱[將待處理專案指派給短期衝刺（sprint](/azure/devops/boards/sprints/assign-work-sprint)）。 
+有關 Azure 板中衝刺 （sprint） 規劃的詳細資訊，請參閱[將積壓工作項分配給衝刺 （sprint）](/azure/devops/boards/sprints/assign-work-sprint)。 
 
-## <a name='AddFeature-3'></a>將功能新增至待處理專案 
+## <a name="add-a-feature-to-the-backlog"></a><a name='AddFeature-3'></a>向積壓工作添加功能 
 
-建立專案和專案程式碼存放庫之後，您可以將功能加入至待處理專案（backlog），以表示專案的工作。
+創建專案和專案代碼存儲庫後，可以將功能添加到積壓工作以表示專案的工作。
 
-1. 從您的專案頁面中 **，選取左側** **導覽中的**[面板] > [待辦專案]。 
+1. 從專案頁面中，選擇左側導航中的 **"板** > **積壓工作**"。 
    
-1. 在 [**待辦**專案] 索引標籤上，如果頂端列的工作專案類型是 [**故事**]、[下拉式] 和 [選取**功能**]。 然後選取 [**新增工作專案]。**
+1. 在 **"積壓工作"** 選項卡上，如果頂部欄中的工作項類型是 **"情景**"，請下拉並選擇 **"要素**"。 然後選擇 **"新建工作項"。**
    
-   ![選取 [新增工作專案]](./media/agile-development/2-sprint-team-overview.png)
+   ![選擇"新建工作項"](./media/agile-development/2-sprint-team-overview.png)
    
-1. 輸入功能的 [標題]，通常是您的專案名稱，然後選取 [**新增到頂端**]。 
+1. 輸入功能的標題（通常是專案名稱），然後選擇"**添加到頂部**"。 
    
-   ![輸入標題，然後選取 [新增至頁首]](./media/agile-development/3-sprint-team-add-work.png)
+   ![輸入標題並選擇"添加到頂部"](./media/agile-development/3-sprint-team-add-work.png)
    
-1. 從**待**處理專案清單中，選取並開啟 [新增] 功能。 填寫 [描述]、[指派小組成員] 和 [設定計劃參數]。 
+1. 從 **"積壓工作"** 清單中，選擇並打開新功能。 填寫說明、分配團隊成員並設置規劃參數。 
    
-   您也可以選取 [**開發**] 區段底下的 [**新增] 連結**，將功能連結至專案的 Azure Repos 程式碼存放庫。 
+   還可以通過在 **"開發"** 部分下選擇 **"添加"連結**，將功能連結到專案的 Azure 存儲庫代碼存儲庫。 
    
-   編輯功能之後，請選取 [**儲存 & 關閉**]。
+   編輯要素後，選擇 **"保存&關閉**"。
    
-   ![編輯功能，然後選取 [儲存] & 關閉](./media/agile-development/3a-add-link-repo.png)
+   ![編輯功能並選擇"保存&關閉](./media/agile-development/3a-add-link-repo.png)
 
-## <a name='AddStoryunderfeature-4'></a>將使用者故事新增至功能 
+## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>向功能添加使用者故事 
 
-在此功能下，您可以新增使用者故事來描述完成專案所需的主要步驟。 
+在"功能"下，您可以添加使用者情景來描述完成專案所需的主要步驟。 
 
-若要將新的使用者故事新增至功能：
+要向功能添加新的使用者故事，可以：
 
-1. 在 [**待**處理專案] 索引標籤上，選取功能左邊的 [ **+** ]。 
+1. 在 **"積壓工作"** 選項卡上**+**，選擇"功能"左側。 
    
-   ![在功能下加入新的使用者故事](./media/agile-development/4-sprint-add-story.png)
+   ![在功能下添加新的使用者故事](./media/agile-development/4-sprint-add-story.png)
    
-1. 提供使用者案例的標題，並編輯詳細資料，例如指派、狀態、描述、批註、規劃和優先順序。 
+1. 為使用者故事提供標題，並編輯分配、狀態、說明、注釋、計畫和優先順序等詳細資訊。 
    
-   您也可以選取 [**開發**] 區段底下的 [**新增] 連結**，將使用者故事連結到專案的 Azure Repos 程式碼存放庫的分支。 選取您想要連結工作專案的存放庫和分支，然後選取 **[確定]** 。
+   還可以通過在 **"開發**"部分下選擇 **"添加連結**"，將使用者情景連結到專案的 Azure 存儲庫分支。 選擇要將工作項鍊接到的存儲庫和分支，然後選擇 **"確定**"。
    
    ![新增連結](./media/agile-development/5-sprint-edit-story.png)
    
-1. 當您完成編輯使用者案例時，請選取 [**儲存 & 關閉**]。 
+1. 完成編輯使用者故事後，選擇 **"保存&關閉**"。 
 
-## <a name='AddTaskunderstory-5'></a>將工作新增至使用者案例 
+## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>向使用者情景添加任務 
 
-工作是完成每個使用者案例所需的特定詳細步驟。 當使用者故事的所有工作都完成之後，應該也會完成使用者案例。 
+任務是完成每個使用者情景所需的特定詳細步驟。 完成使用者情景的所有任務後，也應完成使用者情景。 
 
-若要將工作新增至使用者案例，**請選取 [** 使用者故事] 專案旁邊的 [ **+** ]，然後選取 [工作]。 填寫工作中的標題和其他資訊。
+要將任務添加到使用者故事，請選擇"使用者故事**+**"項的旁邊，然後選擇 **"任務**"。 在任務中填寫標題和其他資訊。
 
-![將工作新增至使用者案例](./media/agile-development/7-sprint-add-task.png)
+![向使用者情景添加任務](./media/agile-development/7-sprint-add-task.png)
 
-建立功能、使用者故事和工作之後，您可以在待處理專案（ **backlog** **）或面板**視圖中加以查看，以追蹤其狀態。
+創建功能、使用者情景和任務後，可以在**積壓工作**或**板**視圖中查看它們以跟蹤其狀態。
 
-![待處理專案視圖](./media/agile-development/8-sprint-backlog-view.png)
+![積壓工作視圖](./media/agile-development/8-sprint-backlog-view.png)
 
-![電路板視圖](./media/agile-development/8a-sprint-board-view.png)
+![板視圖](./media/agile-development/8a-sprint-board-view.png)
 
-## <a name='set-up-agile-dsp-6'></a>使用 agile TDSP 工作範本
+## <a name="use-an-agile-tdsp-work-template"></a><a name='set-up-agile-dsp-6'></a>使用敏捷的 TDSP 工作範本
 
-資料科學家可能會覺得使用 agile 範本來取代功能、使用者故事和工作，並使用 TDSP 生命週期階段和階段，來更加熟悉。 在 Azure Boards 中，您可以建立 agile 衍生的範本，以使用 TDSP 生命週期階段來建立和追蹤工作專案。 下列步驟將逐步解說如何設定資料科學特定 agile 流程範本，以及如何根據範本建立資料科學工作專案。
+資料科學家可能感覺更舒適使用敏捷範本，用 TDSP 生命週期階段和子階段替換功能、使用者情景和任務。 在 Azure 板中，您可以創建一個敏捷派生的範本，該範本使用 TDSP 生命週期階段創建和跟蹤工作項。 以下步驟將演練設置特定于資料科學的敏捷流程範本，並根據該範本創建資料科學工作項。
 
-### <a name="set-up-an-agile-data-science-process-template"></a>設定 Agile 資料科學流程範本
+### <a name="set-up-an-agile-data-science-process-template"></a>設置敏捷資料科學流程範本
 
-1. 從您 Azure DevOps 組織的主頁面，選取左側導覽中的 [**組織設定**]。 
+1. 從 Azure DevOps 組織主頁中，從左側導航中選擇 **"組織設置**"。 
    
-1. 在 [**組織設定**] [左側流覽] 的 [面板]**底下，選取**[**處理**]。 
+1. 在 **"組織設置**左側導航"中，**在"板"** 下，選擇 **"進程**"。 
    
-1. 在 [**所有進程**] 窗格中，選取 [ **Agile**] 旁的 [ **...** ]，然後選取 [**建立繼承的進程**]。
+1. 在 **"所有進程"** 窗格中，選擇**敏捷**旁邊的 **...** **Create inherited process**
    
-   ![從 Agile 建立繼承的進程](./media/agile-development/10-settings.png) 
+   ![從敏捷創建繼承的流程](./media/agile-development/10-settings.png) 
    
-1. 在 [**從 Agile 建立繼承的進程**] 對話方塊中，輸入名稱*AgileDataScienceProcess*，然後選取 [**建立進程**]。
+1. 在**從敏捷對話方塊創建繼承的進程中**，輸入*名稱"敏捷資料科學過程*"，然後選擇 **"創建過程**"。
    
-   ![建立 AgileDataScienceProcess 流程](./media/agile-development/11-agileds.png)
+   ![創建敏捷資料科學流程流程](./media/agile-development/11-agileds.png)
    
-1. 在 [**所有進程**] 中，選取新的**AgileDataScienceProcess**。 
+1. **在所有流程**中，選擇新的**敏捷資料科學流程**。 
    
-1. 在 [**工作專案類型**] 索引標籤上，選取每個專案旁邊的 [ **...** ]，然後選取 [**停** **用]，以停**用**長篇**、**功能**、**使用者案例**和工作。 
+1. 在 **"工作項類型"** 選項卡上 **，通過選擇**每個專案**User Story**旁邊的 **...** **Feature** **Task** **Disable** 
    
-   ![停用工作專案類型](./media/agile-development/12-disable.png)
+   ![禁用工作項類型](./media/agile-development/12-disable.png)
    
-1. 在 [**所有進程**] 中，選取 [**待**處理專案] 索引標籤。在 **[組合待處理**專案] 底下，選取 [**長篇（已停用）** ] 旁的 [ **...** ]，然後選取 [**編輯/重新命名**]。 
+1. 在所有**進程中**，選擇 **"積壓工作級別**"選項卡。在 **"專案組合積壓工作**"下，選擇 Epic 旁邊的 **...** **（禁用的），** 然後選擇 **"編輯/重命名**"。 
    
-1. 在 [**編輯待辦專案層級**] 對話方塊中：
-   1. 在 [**名稱**] 底下，將 [**長篇**] 取代為 [ *TDSP 專案*]。 
-   1. 在**此待處理專案層級的 [工作專案類型**] 底下，選取 [**新增工作專案類型**]，輸入*TDSP 專案*，然後選取 [**新增**]。 
-   1. 在 [**預設工作專案類型**] 下，下拉並選取 [ **TDSP 專案**]。 
-   1. 選取 [儲存]。
+1. 在 **"編輯積壓工作級別"** 對話方塊中：
+   1. 在**名稱**下，用*TDSP 專案*替換**Epic。** 
+   1. **在此積壓工作級別的工項類型**下，選擇 **"新建的工作項類型**"，輸入*TDSP 專案*，然後選擇 **"添加**"。 
+   1. 在 **"預設工作項類型**"下，下拉並選擇**TDSP 專案**。 
+   1. 選取 [儲存]****。
    
-   ![設定待辦專案組合層級](./media/agile-development/13-rename.png)  
+   ![設置專案組合積壓工作級別](./media/agile-development/13-rename.png)  
    
-1. 遵循相同的步驟將**功能**重新命名為*TDSP 階段*，並加入下列新的工作專案類型：
+1. 按照相同的步驟將**功能**重命名為*TDSP 階段*，並添加以下新的工作項類型：
    
-   - *了解商務*
-   - *資料取得*
+   - *業務理解*
+   - *資料擷取*
    - *模型化*
    - *部署*
    
-1. 在 [**需求待**處理專案] 底下，將**故事**重新命名為*TDSP 階段*，加入新的工作專案類型*TDSP Substage*，並將預設工作專案類型設定為**TDSP Substage**。
+1. 在 **"要求積壓"** 下，將**情景**重命名為*TDSP 子階段*，添加新的工作項類型*TDSP 子階段*，並將預設工作項類型設置為**TDSP 子階段**。
    
-1. 在 [**反覆運算待**處理專案] 下，加入新的工作專案類型*TDSP Task*，並將它設定為預設的工作專案類型。 
+1. 在**反覆運算積壓工作**項下，添加新的工作項類型*TDSP 任務*，並將其設置為預設工作項類型。 
    
-完成這些步驟之後，待處理專案（backlog）層級看起來應該像這樣：
+完成這些步驟後，積壓工作級別應如下所示：
    
- ![TDSP 範本待處理專案層級](./media/agile-development/14-template.png)  
+ ![TDSP 範本積壓工作級別](./media/agile-development/14-template.png)  
 
-### <a name="create-agile-data-science-process-work-items"></a>建立 Agile 資料科學處理工作專案
+### <a name="create-agile-data-science-process-work-items"></a>創建敏捷資料科學流程工作項
 
-您可以使用資料科學流程範本來建立 TDSP 專案，以及追蹤對應至 TDSP 生命週期階段的工作專案。
+您可以使用資料科學流程範本創建 TDSP 專案並跟蹤對應于 TDSP 生命週期階段的工作項。
 
-1. 從您的 Azure DevOps 組織主要頁面上，選取 [**新增專案**]。 
+1. 從 Azure DevOps 組織主頁中選擇 **"新專案**"。 
    
-1. 在 [**建立新專案**] 對話方塊中，為您的專案提供名稱，然後選取 [ **Advanced**]。 
+1. 在 **"創建新專案"** 對話方塊中，為專案指定名稱，然後選擇 **"高級**"。 
    
-1. 在 [**工作專案流程**] 下，下拉並選取 [ **AgileDataScienceProcess**]，然後選取 [**建立**]。
+1. 在**工作項流程**下，下拉並選擇**敏捷資料科學流程**，然後選擇"**創建**"。
    
    ![建立 TDSP 專案](./media/agile-development/15-newproject.png)
    
-1. 在新建立的專案中，**選取左側**導覽中的 [面板 **] > [** 待處理專案]。
+1. 在新創建的專案中，選擇左側導航中的 **"板** > **積壓工作**"。
    
-1. 若要讓 TDSP 專案可見，請選取 [**設定小組設定**] 圖示。 在 [**設定**] 畫面中，選取 [ **TDSP 專案**] 核取方塊，然後選取 [**儲存並關閉**]。
+1. 要使 TDSP 專案可見，請選擇 **"配置團隊設置**"圖示。 在 **"設置"** 螢幕中，選擇 **"TDSP 專案**"核取方塊，然後選擇 **"保存並關閉**"。
    
-   ![[選取 TDSP 專案] 核取方塊](./media/agile-development/16-enabledsprojects1.png)
+   ![選擇 TDSP 專案核取方塊](./media/agile-development/16-enabledsprojects1.png)
    
-1. 若要建立資料科學特定的 TDSP 專案，請選取頂端列中的 [ **TDSP 專案**]，然後選取 [**新增工作專案**]。 
+1. 要創建特定于資料科學的 TDSP 專案，請在頂部欄中選擇**TDSP 專案**，然後選擇 **"新建工作項**"。 
    
-1. 在快顯視窗中，提供 TDSP 專案工作專案的名稱，然後選取 [**加入至頂端**]。
+1. 在快顯視窗中，為 TDSP 專案工作項指定名稱，然後選擇"**添加到頂部**"。
    
-   ![建立資料科學專案工作專案](./media/agile-development/17-dsworkitems0.png)
+   ![創建資料科學專案工作項](./media/agile-development/17-dsworkitems0.png)
    
-1. 若要在 TDSP 專案下新增工作專案，請選取專案旁邊的 **+** ，然後選取要建立的工作專案類型。 
+1. 要在 TDSP 專案下添加工作項，請選擇**+** 專案的下一個，然後選擇要創建的工作項的類型。 
    
-   ![選取資料科學工作專案類型](./media/agile-development/17-dsworkitems1.png)
+   ![選擇資料科學工作項類型](./media/agile-development/17-dsworkitems1.png)
    
-1. 在新的工作專案中填入詳細資料，然後選取 [**儲存 & 關閉**]。
+1. 在新工作項中填寫詳細資訊，然後選擇 **"保存&關閉**"。
    
-1. 繼續選取 [工作專案] 旁的 **+** 符號，以加入新的 TDSP 階段、階段和工作。 
+1. 繼續選擇工作項**+** 旁邊的符號，以添加新的 TDSP 階段、子階段和任務。 
    
-以下是「資料科學專案」工作專案應該如何出現在待處理專案（ **backlog** ）視圖中的範例：
+下面是資料科學專案工作項應如何在**積壓工作**視圖中顯示的示例：
 
 ![18](./media/agile-development/18-workitems1.png)
 
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 git](collaborative-coding-with-git.md)的共同作業程式碼說明如何使用 git 做為共用程式碼開發架構來進行資料科學專案的協同作業程式碼開發，以及如何將這些編碼活動連結至以 agile 流程規劃的工作。
+[與 Git 的協作編碼](collaborative-coding-with-git.md)描述了如何使用 Git 作為共用代碼開發框架為數據科學專案進行協作代碼開發，以及如何將這些編碼活動與敏捷流程計畫的工作聯繫起來。
 
-[範例](walkthroughs.md)逐步解說會列出特定案例的逐步解說，其中包含連結和縮圖描述。 連結的案例說明如何將雲端和內部部署工具和服務組合成工作流程或管線，以建立智慧型應用程式。
+[示例演練](walkthroughs.md)列出了特定方案的演練，包含連結和縮略圖說明。 連結的方案說明了如何將雲和本地工具和服務合併到工作流或管道中以創建智慧應用程式。
   
-Agile 流程上的其他資源：
+有關敏捷流程的其他資源：
 
-- [Agile 流程](/azure/devops/boards/work-items/guidance/agile-process)
+- [敏捷流程](/azure/devops/boards/work-items/guidance/agile-process)
   
-- [Agile 流程工作專案類型和工作流程](/azure/devops/boards/work-items/guidance/agile-process-workflow)
+- [敏捷流程工作項類型和工作流](/azure/devops/boards/work-items/guidance/agile-process-workflow)
 

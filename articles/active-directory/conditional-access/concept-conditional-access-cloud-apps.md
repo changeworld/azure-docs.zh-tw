@@ -1,6 +1,6 @@
 ---
-title: 條件式存取原則中的雲端應用程式或動作-Azure Active Directory
-description: 什麼是 Azure AD 條件式存取原則中的雲端應用程式或動作
+title: 條件訪問策略中的雲應用或操作 - Azure 活動目錄
+description: Azure AD 條件訪問策略中的雲應用或操作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,46 +12,46 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671938"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
+# <a name="conditional-access-cloud-apps-or-actions"></a>條件訪問：雲應用或操作
 
-雲端應用程式或動作是條件式存取原則中的關鍵信號。 條件式存取原則可讓系統管理員將控制項指派給特定的應用程式或動作。
+雲應用或操作是條件訪問策略中的關鍵信號。 條件訪問策略允許管理員將控制項分配給特定應用程式或操作。
 
-- 系統管理員可以從包含內建 Microsoft 應用程式的應用程式清單，以及任何[Azure AD 整合式應用](../manage-apps/what-is-application-management.md)程式（包括資源庫、非資源庫和透過[應用程式 Proxy](../manage-apps/what-is-application-proxy.md)發佈的應用程式）中進行選擇。
-- 系統管理員可以選擇根據雲端應用程式，但在使用者動作上定義原則。 唯一支援的動作是 [註冊安全性資訊（預覽）]，可讓條件式存取強制執行[結合安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)的控制項。
+- 管理員可以從包含內置 Microsoft 應用程式的應用程式清單和任何[Azure AD 集成應用程式](../manage-apps/what-is-application-management.md)（包括庫、非庫和通過[應用程式代理](../manage-apps/what-is-application-proxy.md)發佈的應用程式）中進行選擇。
+- 管理員可以選擇定義策略，而不是基於雲應用程式，而是基於使用者操作。 唯一支援的操作是註冊安全資訊（預覽），允許條件訪問強制實施圍繞[組合安全資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)的控制。
 
-![定義條件式存取原則並指定雲端應用程式](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
+![定義條件訪問策略並指定雲應用](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft 雲端應用程式
 
-許多現有的 Microsoft 雲端應用程式都包含在您可以選取的應用程式清單中。 
+許多現有的 Microsoft 雲應用程式都包含在可以選擇的應用程式清單中。 
 
-系統管理員可以將條件式存取原則指派給 Microsoft 的下列雲端應用程式。 某些應用程式（例如 Office 365 （預覽）和 Microsoft Azure 管理）包含多個相關的子應用程式或服務。 下列清單並不完整，而且可能會變更。
+管理員可以將條件訪問策略分配給 Microsoft 的以下雲應用。 某些應用（如 Office 365（預覽版）和 Microsoft Azure 管理包括多個相關的子應用或服務。 以下清單並非詳盡無遺，可能會更改。
 
-- [Office 365 （預覽）](#office-365-preview)
+- [辦公室 365 （預覽版）](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database 和資料倉儲](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- Microsoft Application Insights 分析
+- 微軟應用程式洞察分析
 - [Microsoft Azure 資訊保護](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure 管理](#microsoft-azure-management)
-- Microsoft Azure 訂用帳戶管理
+- 微軟 Azure 訂閱管理
 - Microsoft Cloud App Security
-- Microsoft Commerce Tools 存取控制入口網站
-- Microsoft Commerce 工具驗證服務
+- 微軟商務工具存取控制門戶
+- 微軟商務工具認證服務
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune 註冊](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
 - Microsoft PowerApps
-- Bing 中的 Microsoft 搜尋
+- 微軟搜索在必應
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -59,7 +59,7 @@ ms.locfileid: "78671938"
 - Office 365 SharePoint Online
 - Office 365 Yammer
 - Office Delve
-- Office Sway
+- 辦公室斯威
 - Outlook Groups
 - Power BI 服務
 - Project Online
@@ -67,15 +67,15 @@ ms.locfileid: "78671938"
 - 虛擬私人網路 (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 （預覽）
+### <a name="office-365-preview"></a>辦公室 365 （預覽版）
 
-Office 365 提供以雲端為基礎的生產力和共同作業服務，例如 Exchange、SharePoint 和 Microsoft 團隊。 Office 365 雲端服務已緊密整合，以確保順暢且共同作業的體驗。 這項整合可能會在建立原則時造成混淆，因為某些應用程式（例如 Microsoft 小組）與其他人（例如 SharePoint 或 Exchange）有相依性。
+Office 365 提供基於雲的生產力和協作服務，如 Exchange、SharePoint 和 Microsoft 團隊。 Office 365 雲服務深度集成，可確保流暢和協作的體驗。 在創建策略（如 Microsoft Teams）等應用依賴于其他應用（如 SharePoint 或 Exchange）時，此集成可能會導致混淆。
 
-Office 365 （預覽）應用程式可讓您一次將這些服務設為目標。 我們建議使用新的 Office 365 （預覽）應用程式，而不是以個別雲端應用程式為目標。 以此應用程式群組為目標，有助於避免因原則和相依性不一致而可能發生的問題。
+Office 365（預覽版）應用可以同時定位這些服務。 我們建議使用新的 Office 365（預覽）應用，而不是針對單個雲應用。 定位此應用程式組有助於避免由於策略和依賴項不一致而可能出現的問題。
 
-如果您想要加入 Office 365 （預覽）應用程式，並排除其在原則中選擇的特定應用程式，系統管理員可以選擇從原則中排除特定應用程式。
+如果管理員願意，可以選擇從策略中排除特定應用，包括 Office 365（預覽版）應用，並在策略中排除自己選擇的特定應用。
 
-Office 365 （預覽）用戶端應用程式中所包含的主要應用程式：
+Office 365（預覽）用戶端應用中包含的關鍵應用程式：
 
    - Microsoft Flow
    - Microsoft Forms
@@ -84,10 +84,10 @@ Office 365 （預覽）用戶端應用程式中所包含的主要應用程式：
    - Microsoft Teams
    - Office 365 Exchange Online
    - Office 365 SharePoint Online
-   - Office 365 搜尋服務
+   - 辦公室 365 搜索服務
    - Office 365 Yammer
    - Office Delve
-   - Office Online
+   - Office Online 
    - Office.com
    - OneDrive
    - PowerApps
@@ -96,35 +96,35 @@ Office 365 （預覽）用戶端應用程式中所包含的主要應用程式：
 
 ### <a name="microsoft-azure-management"></a>Microsoft Azure 管理
 
-Microsoft Azure 管理應用程式包含多個基礎服務。 
+Microsoft Azure 管理應用程式包括多個基礎服務。 
 
    - Azure 入口網站
-   - Azure Resource Manager 提供者
-   - 傳統部署模型 Api
+   - Azure 資源管理器提供程式
+   - 經典部署模型 API
    - Azure PowerShell
-   - Visual Studio 訂閱系統管理員入口網站
+   - 視覺化工作室訂閱管理員門戶
    - Azure DevOps
-   - Azure Data Factory 入口網站
+   - Azure 資料工廠門戶
 
 > [!NOTE]
-> Microsoft Azure 管理應用程式適用于 Azure PowerShell，其會呼叫 Azure Resource Manager API。 它並不適用于呼叫 Microsoft Graph 的 Azure AD PowerShell。
+> Microsoft Azure 管理應用程式應用於 Azure PowerShell，後者調用 Azure 資源管理器 API。 不適用於呼叫 Microsoft Graph 的Azure AD PowerShell。
 
 ## <a name="other-applications"></a>其他應用程式
 
-除了 Microsoft 應用程式之外，系統管理員還可以將任何 Azure AD 註冊的應用程式新增至條件式存取原則。 這些應用程式可能包括： 
+除了 Microsoft 應用之外，管理員還可以將任何 Azure AD 註冊的應用程式添加到條件訪問策略。 這些應用程式可能包括： 
 
-- 透過[Azure AD 應用程式 Proxy](../manage-apps/what-is-application-proxy.md)發佈的應用程式
-- [從資源庫新增的應用程式](../manage-apps/add-application-portal.md)
-- [不在資源庫中的自訂應用程式](../manage-apps/add-non-gallery-app.md)
-- [透過應用程式傳遞控制器和網路發佈的繼承應用程式](../manage-apps/secure-hybrid-access.md)
+- 通過[Azure AD 應用程式代理髮布的應用程式](../manage-apps/what-is-application-proxy.md)
+- [從庫中添加的應用程式](../manage-apps/add-application-portal.md)
+- [不在庫中的自訂應用程式](../manage-apps/add-non-gallery-app.md)
+- [通過應用交付控制器和網路發佈的舊應用程式](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>使用者動作
 
-使用者動作是可由使用者執行的工作。 目前唯一支援的動作是 [**註冊安全性資訊（預覽）** ]，這可讓條件式存取原則在啟用合併註冊的使用者嘗試註冊其安全性資訊時強制執行。 如需詳細資訊，請參閱[結合安全性資訊註冊（預覽）](../authentication/concept-registration-mfa-sspr-combined.md)一文。
+使用者操作是使用者可以執行的任務。 當前唯一支援的操作是**註冊安全資訊（預覽），** 它允許條件訪問策略在啟用合併註冊的使用者嘗試註冊其安全資訊時強制執行。 更多資訊請參閱文章，[組合安全資訊註冊（預覽）。](../authentication/concept-registration-mfa-sspr-combined.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件式存取：條件](concept-conditional-access-conditions.md)
+- [條件訪問：條件](concept-conditional-access-conditions.md)
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
-- [用戶端應用程式相依性](service-dependencies.md)
+- [條件訪問通用策略](concept-conditional-access-policy-common.md)
+- [用戶端應用程式依賴項](service-dependencies.md)

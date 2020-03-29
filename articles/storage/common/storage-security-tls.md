@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET 啟用安全的 TLS
+title: 使用 .NET 啟用安全 TLS
 titleSuffix: Azure Storage
-description: 瞭解如何使用適用于 Azure 儲存體的 .NET 用戶端程式庫來啟用 TLS 1.2。
+description: 瞭解如何通過使用 .NET 用戶端庫實現 Azure 存儲啟用 TLS 1.2。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371797"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>為 Azure 儲存體用戶端啟用安全的 TLS
@@ -77,7 +77,7 @@ $listOfContainers
 
 ![在 Fiddler 中驗證 TLS 版本的螢幕擷取畫面](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [傳輸層安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
 * [TLS 上的 PCI 合規性](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)

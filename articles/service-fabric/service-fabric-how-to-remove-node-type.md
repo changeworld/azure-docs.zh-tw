@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
 ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969413"
 ---
-# <a name="how-to-remove-a-service-fabric-node-type"></a>如何移除 Service Fabric 節點類型
+# <a name="how-to-remove-a-service-fabric-node-type"></a>如何刪除服務結構節點類型
 此文章說明如何透過將現有的節點類型從叢集移除，來調整 Azure Service Fabric 叢集的規模。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以透過移除節點類型 (虛擬機器擴展集) 與其所有節點，來水平調整叢集規模。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
 
 > [!WARNING]
-> 不建議經常使用此方法從生產環境叢集移除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
+> 不建議經常使用此方法從生產群集中刪除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
 
 ## <a name="durability-characteristics"></a>持久性特性
-使用 Remove-azservicefabricnodetype 時，安全性的優先順序高於速度。 節點類型必須是銀級或金級[持久性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)，因為：
+使用"刪除-AzServiceFabricNodeType"時，安全性優先于速度。 節點類型必須是銀級或金級[持久性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)，因為：
 - 銅級不提供關於儲存狀態資訊的任何保證。
 - 銀級和金級持久性可以攔截對擴展集的任何變更。
 - 金級也可提供您對擴展集下 Azure 更新的控制。
 
-Service Fabric 會「協調」基礎結構變更和更新，如此資料就不會遺失。 不過，當您移除具有銅級耐久性的節點類型時，可能會遺失狀態資訊。 如果您要移除主要節點類型，而您的應用程式是無狀態，則可接受銅級。 當您在生產環境中執行具狀態工作負載時，最低設定應該是銀級。 同樣地，針對生產環境案例，主要節點類型應該一律為銀級或金級。
+Service Fabric 會「協調」基礎結構變更和更新，如此資料就不會遺失。 但是，當您刪除具有青銅持久性的節點類型時，可能會丟失狀態資訊。 如果要刪除主節點類型，並且應用程式處於無狀態狀態，則"銅牌"是可以接受的。 當您在生產環境中執行具狀態工作負載時，最低設定應該是銀級。 同樣地，針對生產環境案例，主要節點類型應該一律為銀級或金級。
 
 ### <a name="more-about-bronze-durability"></a>深入了解銅級持久性
 
@@ -33,35 +33,35 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
 
 ## <a name="remove-a-node-type"></a>移除節點類型
 
-1. 開始進行此程式之前，請先處理此必要條件。
+1. 在開始此過程之前，請注意此先決條件。
 
-    - 叢集狀況良好。
-    - 移除節點類型後，仍然會有足夠的容量，例如 要放置所需複本計數的節點數目。
+    - 群集是正常運行的。
+    - 刪除節點類型後，仍有足夠的容量，例如。 要放置所需副本計數的節點數。
 
-2. 移動具有放置條件約束的所有服務，以使用節點類型關閉節點類型。
+2. 將所有具有放置約束的服務從節點類型中移出節點類型。
 
-    - 修改應用程式/服務資訊清單，以不再參考該節點類型。
-    - 部署變更。
+    - 修改應用程式/服務清單以不再引用節點類型。
+    - 部署更改。
 
     然後驗證：
-    - 上面修改的所有服務都不再于屬於節點類型的節點上執行。
-    - 所有服務都狀況良好。
+    - 上面修改的所有服務不再在屬於節點類型的節點上運行。
+    - 所有服務都是健康的。
 
-3. 取消標示節點類型為非主要節點（略過非主要節點類型）
+3. 取消將節點類型標記為非主節點類型（為非主節點類型跳過）
 
-    - 找出用於部署的 Azure Resource Manager 範本。
-    - 在 [Service Fabric] 區段中，尋找與節點類型相關的區段。
-    - 將 isPrimary 屬性變更為 false。 \* * 請勿移除與此工作中的節點類型相關的區段。
-    - 部署已修改的 Azure Resource Manager 範本。 \* * 視叢集設定而定，此步驟可能需要一些時間。
+    - 查找用於部署的 Azure 資源管理器範本。
+    - 在"服務結構"部分中查找與節點類型相關的部分。
+    - 將主要屬性更改為 false。 • 不要刪除與此任務中的節點類型相關的部分。
+    - 部署修改後的 Azure 資源管理器範本。 • 根據群集配置，此步驟可能需要一段時間。
     
     然後驗證：
-    - 入口網站中的 Service Fabric 區段表示叢集已就緒。
-    - 叢集狀況良好。
-    - 屬於節點類型的節點都不會標示為種子節點。
+    - 門戶中的服務結構部分指示群集已準備就緒。
+    - 群集是健康的。
+    - 不屬於節點類型的節點均未標記為種子節點。
 
-4. 停用節點類型的資料。
+4. 禁用節點類型的資料。
 
-    使用 PowerShell 連接到叢集，然後執行下列步驟。
+    使用 PowerShell 連接到群集，然後運行以下步驟。
     
     ```powershell
     $nodeType = "" # specify the name of node type
@@ -78,12 +78,12 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     }
     ```
 
-    - 針對銅級持久性，等待所有節點進入停用狀態
-    - 對於銀級和金級耐久性，某些節點會進入停用狀態，而其餘節點則會處於停用狀態。 檢查處于停用狀態之節點的 [詳細資料] 索引標籤，如果它們全都停滯在確保基礎結構服務分割區的仲裁，則可以安全地繼續進行。
+    - 對於青銅持久性，請等待所有節點進入禁用狀態
+    - 對於白銀和黃金的持久性，某些節點將處於禁用狀態，其餘節點將處於禁用狀態。 檢查處于禁用狀態的節點的詳細資訊選項卡，如果它們都停留在確保基礎結構服務分區的仲裁上，則可以安全地繼續。
 
 5. 停止節點類型的資料。
 
-    使用 PowerShell 連接到叢集，然後執行下列步驟。
+    使用 PowerShell 連接到群集，然後運行以下步驟。
     
     ```powershell
     foreach($node in $nodes)
@@ -97,11 +97,11 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     }
     ```
     
-    等到節點類型的所有節點都標示為關閉為止。
+    等待，直到節點類型的所有節點都標記為"向下"。
     
-6. 移除節點類型的資料。
+6. 刪除節點類型的資料。
 
-    使用 PowerShell 連接到叢集，然後執行下列步驟。
+    使用 PowerShell 連接到群集，然後運行以下步驟。
     
     ```powershell
     foreach($node in $nodes)
@@ -115,14 +115,14 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     }
     ```
 
-    等候所有節點都已從叢集移除。 節點不應顯示在 SFX 中。
+    等待，直到從群集中刪除所有節點。 節點不應顯示在 SFX 中。
 
-7. 從 Service Fabric 區段移除節點類型。
+7. 從服務結構部分刪除節點類型。
 
-    - 找出用於部署的 Azure Resource Manager 範本。
-    - 在 [Service Fabric] 區段中，尋找與節點類型相關的區段。
-    - 移除對應于節點類型的區段。
-    - 僅適用于銀級和更高的耐久性叢集，請更新範本中的叢集資源，並將健康原則設定為忽略 fabric：/系統應用程式健康狀態，方法是在 叢集資源 `properties` 下新增 `applicationDeltaHealthPolicies`，如下所示。 下列原則應忽略現有的錯誤，但不允許新的健全狀況錯誤。 
+    - 查找用於部署的 Azure 資源管理器範本。
+    - 在"服務結構"部分中查找與節點類型相關的部分。
+    - 刪除與節點類型對應的部分。
+    - 僅適用于 Silver 和更高持久性群集，更新範本中的群集資源，並將運行狀況策略配置為忽略結構：/系統應用程式運行狀況，只需在下面`applicationDeltaHealthPolicies`給出的群集`properties`資源下添加。 以下策略應忽略現有錯誤，但不允許出現新的運行狀況錯誤。 
  
  
      ```json
@@ -158,17 +158,17 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     },
     ```
 
-    - 部署已修改的 Azure Resource Manager 範本。 \* * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下 `forceRestart` 會被忽略。 
-    參數 `upgradeReplicaSetCheckTimeout` 指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。
-    參數 `upgradeTimeout` 的值可以縮短為6小時，但應使用最大安全12小時。
+    - 部署修改後的 Azure 資源管理器範本。 • 此步驟需要一段時間，通常長達兩個小時。 此升級將更改基礎結構服務的設置，因此需要重新開機節點。 在這種情況下`forceRestart`將被忽略。 
+    該參數`upgradeReplicaSetCheckTimeout`指定 Service Fabric 等待分區處於安全狀態（如果不是尚未處於安全狀態）的最大時間。 一旦對節點上的所有分區進行安全檢查，Service Fabric 將繼續升級該節點。
+    參數`upgradeTimeout`的值可以減小到 6 小時，但為了最大安全，應使用 12 小時。
 
     然後驗證：
-    - 入口網站中的 Service Fabric 資源會顯示 [就緒]。
+    - 門戶中的服務結構資源已準備就緒。
 
-8. 移除與節點類型相關之資源的所有參考。
+8. 刪除對與節點類型相關的資源的所有引用。
 
-    - 找出用於部署的 Azure Resource Manager 範本。
-    - 從範本中移除虛擬機器擴展集和與節點類型相關的其他資源。
+    - 查找用於部署的 Azure 資源管理器範本。
+    - 從範本中刪除虛擬機器縮放集以及與節點類型相關的其他資源。
     - 部署變更。
 
     然後：

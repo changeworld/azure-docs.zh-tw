@@ -1,22 +1,22 @@
 ---
-title: 在 Linux 叢集上設定加密憑證
+title: 在 Linux 群集上設置加密證書
 description: 了解如何設定加密憑證，並在 Linux 叢集上將祕密加密。
 author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969024"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>設定加密憑證，並在 Linux 叢集上將祕密加密
-本文書名如何設定加密憑證，並在 Linux 叢集上將祕密加密。 若為 Windows 叢集，請參閱[設定加密憑證和在 windows 叢集上將秘密加密][secret-management-windows-specific-link]。
+本文書名如何設定加密憑證，並在 Linux 叢集上將祕密加密。 針對 Windows 叢集，請參閱[設定加密憑證，並在 Windows 叢集上將祕密加密][secret-management-windows-specific-link]。
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>取得資料加密憑證
-資料加密憑證是嚴格用來加密和解密服務之設定中的[參數][parameters-link]。 xml 和服務 ServiceManifest 中的[環境變數][environment-variables-link]。 它不是用來驗證或簽署密碼文字。 憑證必須符合下列要求：
+資料編密憑證只會用於服務的 Settings.xml 中[參數][parameters-link]，以及服務的 ServiceManifest.xml 中[環境變數][environment-variables-link]的加密與解密。 它不是用來驗證或簽署密碼文字。 憑證必須符合下列要求：
 
 * 憑證必須包含私密金鑰。
 * 憑證的金鑰使用法必須包含資料編密 (10)，而且不應該包含伺服器驗證或用戶端驗證。
@@ -45,7 +45,7 @@ user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der 
 ```
 
 ## <a name="next-steps"></a>後續步驟
-瞭解如何[在應用程式中指定加密的秘密。][secret-management-specify-encrypted-secrets-link]
+了解如何[指定應用程式中已加密的祕密][secret-management-specify-encrypted-secrets-link]。
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

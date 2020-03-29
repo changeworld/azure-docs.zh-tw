@@ -1,6 +1,6 @@
 ---
 title: 透過 Azure 入口網站管理串流端點 | Microsoft Docs
-description: 本文示範如何使用 Azure 入口網站來管理串流端點。
+description: 本文演示如何使用 Azure 門戶管理流式處理終結點。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900889"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站管理串流端點 
@@ -36,7 +36,7 @@ ms.locfileid: "74900889"
 若要開始管理您帳戶的串流端點，請執行下列作業。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 在 [設定] 刀鋒視窗中，選取 [串流端點]。
+2. 在 [設定]**** 刀鋒視窗中，選取 [串流端點]****。
    
     ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -50,17 +50,17 @@ ms.locfileid: "74900889"
 
 若要使用 Azure 入口網站來新增或移除串流端點，以執行下列作業：
 
-1. 若要新增串流端點，請按一下頁面頂端的 [+端點] 。 
+1. 若要新增串流端點，請按一下頁面頂端的 [+端點] **** 。 
 
     如果您打算有不同的 CDN 或一個 CDN 和直接存取，您可能需要有多個串流端點。
 
-2. 若要刪除串流端點，請按下 [刪除] 按鈕。      
-3. 按一下 [啟動] 按鈕以啟動串流端點。
+2. 若要刪除串流端點，請按下 [刪除] **** 按鈕。      
+3. 按一下"**開始"** 按鈕以啟動流式處理終結點。
    
     ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>設定串流端點
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>設定串流端點
 串流端點可讓您設定下列屬性：
 
 * 存取控制
@@ -75,7 +75,7 @@ ms.locfileid: "74900889"
 若要設定串流端點，請執行以下作業：
 
 1. 選取您想要設定的串流端點。
-2. 按一下 [設定]。
+2. 按一下 [設定]****。
 
 隨時顯示簡要的欄位說明。
 
@@ -87,9 +87,9 @@ ms.locfileid: "74900889"
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>調整您的進階串流端點
 
-如需詳細資訊，請參閱[本篇文章](media-services-portal-scale-streaming-endpoints.md)。
+有關詳細資訊，請參閱[此](media-services-portal-scale-streaming-endpoints.md)文章。
 
-## <a id="enable_cdn"></a>啟用 Azure CDN 整合
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>啟用 Azure CDN 整合
 
 當您建立新的帳戶時，依預設會啟用預設串流端點 Azure CDN 整合。
 
@@ -97,7 +97,7 @@ ms.locfileid: "74900889"
 
 中國和聯邦政府區域除外，其他所有 Azure 資料中心都啟用 CDN 整合。
 
-啟用後，[存取控制]、 ** [自訂主機名稱]和 [Akamai 簽章驗證] 設定就會停用。
+啟用後，**存取控制**、*自訂主機名稱和 Akamai**簽名身份驗證**配置將禁用。
  
 > [!IMPORTANT]
 > 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 如需 Azure CDN 功能的詳細資訊，請參閱 [CDN 概觀](../../cdn/cdn-overview.md)。
@@ -111,7 +111,7 @@ ms.locfileid: "74900889"
 
 ## <a name="configure-cdn-profile"></a>設定 CDN 設定檔
 
-您可以選取頂端的 [管理 CDN] 按鈕來設定 CDN 設定檔。
+您可以選取頂端的 [管理 CDN]**** 按鈕來設定 CDN 設定檔。
 
 ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 

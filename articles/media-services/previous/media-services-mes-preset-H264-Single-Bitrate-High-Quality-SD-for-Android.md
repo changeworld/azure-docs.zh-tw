@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元速率高品質 SD (適用於 Android) | Microsoft Docs
-description: 本主題提供 **H264 單一位元速率高品質 SD (適用於 Android)** 工作預設的概觀。
+description: 本主題概述了適用于 Android 任務預設的**H264 單位元速率高品質 SD。**
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 217c4874f0375aeb4d80162af1b8453a3f7f625f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463509"
 ---
 # <a name="h264-single-bitrate-high-quality-sd-for-android"></a>H264 單一位元速率高品質 SD (適用於 Android)

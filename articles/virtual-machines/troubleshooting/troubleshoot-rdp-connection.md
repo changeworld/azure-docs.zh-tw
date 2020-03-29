@@ -16,16 +16,16 @@ ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.openlocfilehash: cbca8e631da8b99aa0ea4bdc6d099f3dbd2ed9b1
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77916603"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>針對 Azure 虛擬機器的遠端桌面連線進行疑難排解
 有各式各樣的原因可能導致 Windows 型 Azure 虛擬機器 (VM) 的遠端桌面通訊協定 (RDP) 連線失敗，讓您無法存取您的 VM。 問題可能與 VM 上的遠端桌面服務、網路連線或主機電腦上的遠端桌面用戶端有關。 本文將引導您完成一些可解決 RDP 連線問題的最常見方法。 
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
 
  
 
@@ -46,7 +46,7 @@ ms.locfileid: "77916603"
 如果您需要更詳細的步驟與說明，請繼續閱讀。 請確認區域網路設備 (例如路由器和防火牆) 沒有封鎖輸出 TCP 連接埠 3389，如[詳細的 RDP 疑難排解案例](detailed-troubleshoot-rdp.md)中所述。
 
 > [!TIP]
-> 如果 VM 的 [連接] 按鈕呈現灰色，而且您未透過 [Express Route](../../expressroute/expressroute-introduction.md) 或 [網站間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 連線來連接 Azure，您就必須先建立 VM 並為其指派公用 IP 位址，才能使用 RDP。 您可以深入了解 [Azure 中的公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+> 如果 VM 的 [連接]**** 按鈕呈現灰色，而且您未透過 [Express Route](../../expressroute/expressroute-introduction.md) 或 [網站間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 連線來連接 Azure，您就必須先建立 VM 並為其指派公用 IP 位址，才能使用 RDP。 您可以深入了解 [Azure 中的公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>針對 RDP 問題進行疑難排解的方法
@@ -64,10 +64,10 @@ ms.locfileid: "77916603"
 
 1. **重設您的 RDP 連線**。 當遠端連線已停用或 Windows 防火牆規則封鎖 RDP 時，此疑難排解步驟可重設 RDP 組態。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [重設密碼] 按鈕。 將 [模式] 設定為 [只重設組態]，然後按一下 [更新] 按鈕︰
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下**重置密碼**按鈕。 將**模式**設置為**僅重置配置**，然後按一下 **"更新**"按鈕：
    
     ![在 Azure 入口網站中重設 RDP 組態](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **確認網路安全性群組規則**。 使用 [IP 流量驗證](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的輸入或輸出流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+2. **確認網路安全性群組規則**。 使用[IP 流驗證](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)以確認網路安全性群組中的規則是否阻止進出虛擬機器的流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 有關詳細資訊，請參閱[使用有效的安全規則來排除 VM 流量的故障](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 3. **檢閱 VM 開機診斷**。 此疑難排解步驟可檢閱 VM 主控台記錄，以判斷 VM 是否報告問題。 並非所有 VM 都已啟用開機診斷，所以此疑難排解步驟可能是選擇性的。
    
@@ -76,22 +76,22 @@ ms.locfileid: "77916603"
 4. **重設 VM 的 NIC**。 如需詳細資訊，請參閱[如何重設 Azure Windows VM 的 NIC](../windows/reset-network-interface.md)。
 5. **檢查 VM 資源健康狀態**。 此疑難排解步驟可確認 Azure 平台沒有任何可能影響 VM 連線的已知問題。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [資源健康狀態] 按鈕。 狀況良好的 VM 會報告為 [可用]：
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下 **"資源運行狀況**"按鈕。 狀況良好的 VM 會報告為 [可用]****：
    
     ![在 Azure 入口網站中檢查 VM 資源健康狀態](./media/troubleshoot-rdp-connection/check-resource-health.png)
 6. **重設使用者認證**。 當您不確定或忘了認證時，此疑難排解步驟可重設本機系統管理員帳戶的密碼。  您登入 VM 後，應重設該使用者的密碼。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [重設密碼] 按鈕。 確定 [模式] 已設為 [重設密碼]，然後輸入您的使用者名稱和新密碼。 最後，按一下 [更新] 按鈕：
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下**重置密碼**按鈕。 確定 [模式]**** 已設為 [重設密碼]****，然後輸入您的使用者名稱和新密碼。 最後，按一下 [更新]**** 按鈕：
    
     ![在 Azure 入口網站中重設使用者認證](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **重新啟動您的 VM**。 此疑難排解步驟可以修正 VM 本身具有的任何基礎問題。
    
-    在 Azure 入口網站中選取您的 VM，然後按一下 [**總覽**] 索引標籤。按一下 [**重新開機**] 按鈕：
+    在 Azure 門戶中選擇 VM，然後按一下 **"概述"** 選項卡。按一下 **"重新開機**"按鈕：
    
     ![在 Azure 入口網站中重新啟動 VM](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **重新部署您的 VM**。 此疑難排解步驟可將您的 VM 重新部署至 Azure 內的另一部主機，以更正任何基礎平台或網路問題。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [重新部署] 按鈕，然後再按一下 [重新部署]：
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下 [重新部署]**** 按鈕，然後再按一下 [重新部署]****：
    
     ![在 Azure 入口網站中重新部署 VM](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
@@ -115,7 +115,7 @@ ms.locfileid: "77916603"
 
 1. **重設您的 RDP 連線**。 當遠端連線已停用或 Windows 防火牆規則封鎖 RDP 時，此疑難排解步驟可重設 RDP 組態。
    
-    下列範例會在位於 `myVM` 且名為 `WestUS` 的資源群組中名為 `myResourceGroup` 的 VM 上重設 RDP 連線：
+    下列範例會在位於 `WestUS` 且名為 `myResourceGroup` 的資源群組中名為 `myVM` 的 VM 上重設 RDP 連線：
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -123,7 +123,7 @@ ms.locfileid: "77916603"
     ```
 2. **確認網路安全性群組規則**。 此疑難排解步驟可確認您有可允許 RDP 流量的網路安全性群組規則。 RDP 的預設連接埠是 TCP 連接埠 3389。 當您建立您的 VM 時，可能不會自動建立可允許 RDP 流量的規則。
    
-    首先，將網路安全性群組的所有組態資料指派給 `$rules` 變數。 下列範例會在名為 `myNetworkSecurityGroup` 的資源群組中取得名為 `myResourceGroup` 的網路安全性群組相關資訊：
+    首先，將網路安全性群組的所有組態資料指派給 `$rules` 變數。 下列範例會在名為 `myResourceGroup` 的資源群組中取得名為 `myNetworkSecurityGroup` 的網路安全性群組相關資訊：
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
@@ -163,7 +163,7 @@ ms.locfileid: "77916603"
     $cred=Get-Credential
     ```
    
-    現在，更新 VM 上的認證。 下列範例會在位於 `myVM` 且名為 `WestUS` 的資源群組中名為 `myResourceGroup` 的 VM 上更新認證：
+    現在，更新 VM 上的認證。 下列範例會在位於 `WestUS` 且名為 `myResourceGroup` 的資源群組中名為 `myVM` 的 VM 上更新認證：
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -173,14 +173,14 @@ ms.locfileid: "77916603"
     ```
 4. **重新啟動您的 VM**。 此疑難排解步驟可以修正 VM 本身具有的任何基礎問題。
    
-    下列範例會重新啟動名為 `myVM` 的資源群組中名為 `myResourceGroup` 的 VM：
+    下列範例會重新啟動名為 `myResourceGroup` 的資源群組中名為 `myVM` 的 VM：
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **重新部署您的 VM**。 此疑難排解步驟可將您的 VM 重新部署至 Azure 內的另一部主機，以更正任何基礎平台或網路問題。
    
-    下列範例會重新部署位於 `myVM` 且名為 `WestUS` 的資源群組中名為 `myResourceGroup` 的 VM：
+    下列範例會重新部署位於 `WestUS` 且名為 `myResourceGroup` 的資源群組中名為 `myVM` 的 VM：
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -201,12 +201,12 @@ ms.locfileid: "77916603"
 
 1. **重設您的 RDP 連線**。 當遠端連線已停用或 Windows 防火牆規則封鎖 RDP 時，此疑難排解步驟可重設 RDP 組態。
    
-    在 Azure 入口網站中選取您的 VM。 按一下 [...更多] 按鈕，然後按一下 [重設遠端存取]：
+    在 Azure 入口網站中選取您的 VM。 按一下 [...更多]**** 按鈕，然後按一下 [重設遠端存取]****：
    
     ![在 Azure 入口網站中重設 RDP 組態](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **確認雲端服務端點**。 此疑難排解步驟可確認您的雲端服務中有可允許 RDP 流量的端點。 RDP 的預設連接埠是 TCP 連接埠 3389。 當您建立您的 VM 時，可能不會自動建立可允許 RDP 流量的規則。
    
-   在 Azure 入口網站中選取您的 VM。 按一下 [端點] 按鈕，以檢視目前為您的 VM 設定的端點。 確認存在可允許 TCP 連接埠 3389 上 RDP 流量的端點。
+   在 Azure 入口網站中選取您的 VM。 按一下 [端點]**** 按鈕，以檢視目前為您的 VM 設定的端點。 確認存在可允許 TCP 連接埠 3389 上 RDP 流量的端點。
    
    下列範例顯示可允許 RDP 流量的有效端點：
    
@@ -218,17 +218,17 @@ ms.locfileid: "77916603"
     特定疑難排解步驟已超出本文的範圍，但可能指出會影響 RDP 連線的更廣問題。 如需有關檢閱主控台記錄和 VM 螢幕擷取畫面的詳細資訊，請參閱 [VM 的開機診斷](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)。
 4. **檢查 VM 資源健康狀態**。 此疑難排解步驟可確認 Azure 平台沒有任何可能影響 VM 連線的已知問題。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [資源健康狀態] 按鈕。 狀況良好的 VM 會報告為 [可用]：
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下 [資源健康狀態]**** 按鈕。 狀況良好的 VM 會報告為 [可用]****：
    
     ![在 Azure 入口網站中檢查 VM 資源健康狀態](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **重設使用者認證**。 當您不確定或忘了認證時，此疑難排解步驟可重設您指定之本機系統管理員帳戶的密碼。  您登入 VM 後，應重設該使用者的密碼。
    
-    在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [重設密碼] 按鈕。 輸入您的使用者名稱和新密碼。 最後，按一下 [儲存] 按鈕：
+    在 Azure 入口網站中選取您的 VM。 向下滾動設置窗格到清單底部附近的 **"支援與故障排除**"部分。 按一下**重置密碼**按鈕。 輸入您的使用者名稱和新密碼。 最後，按一下 **"保存"** 按鈕：
    
     ![在 Azure 入口網站中重設使用者認證](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **重新啟動您的 VM**。 此疑難排解步驟可以修正 VM 本身具有的任何基礎問題。
    
-    在 Azure 入口網站中選取您的 VM，然後按一下 [**總覽**] 索引標籤。按一下 [**重新開機**] 按鈕：
+    在 Azure 門戶中選擇 VM，然後按一下 **"概述"** 選項卡。按一下 **"重新開機**"按鈕：
    
     ![在 Azure 入口網站中重新啟動 VM](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
@@ -239,10 +239,10 @@ ms.locfileid: "77916603"
 ## <a name="troubleshoot-specific-rdp-errors"></a>針對特定 RDP 錯誤進行疑難排解
 嘗試透過 RDP 連接到您的 VM 時，您可能會遇到特定的錯誤訊息。 以下是最常見的錯誤訊息：
 
-* [遠端工作階段中斷，因為沒有提供授權的遠端桌面授權伺服器可以使用](troubleshoot-specific-rdp-errors.md#rdplicense)。
+* [遠端會話已中斷連線，因為沒有可用的遠端桌面許可證伺服器來提供許可證](troubleshoot-specific-rdp-errors.md#rdplicense)。
 * [遠端桌面找不到電腦「名稱」](troubleshoot-specific-rdp-errors.md#rdpname)。
 * [發生驗證錯誤。無法連絡本機安全性授權](troubleshoot-specific-rdp-errors.md#rdpauth)。
-* [Windows 安全性錯誤：您的認證無法運作](troubleshoot-specific-rdp-errors.md#wincred)。
+* [Windows 安全錯誤：您的憑據不起作用](troubleshoot-specific-rdp-errors.md#wincred)。
 * [這部電腦無法連線到遠端電腦](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>其他資源

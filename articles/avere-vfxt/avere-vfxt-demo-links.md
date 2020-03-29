@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153695"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT 示範專案
@@ -19,13 +19,13 @@ ms.locfileid: "76153695"
 
 ## <a name="video-rendering"></a>影片轉譯
 
-* [使用 Azure Batch 和 Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)的轉譯-60 分鐘專案，示範如何使用 Autodesk Maya 搭配 Azure Batch 和 Avere vFXT 叢集來產生動畫電影
+* [使用 Azure 批次處理和 Avere vFXT 進行渲染](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)- 演示如何將 Autodesk Maya 與 Azure 批次處理和 Avere vFXT 群集一起使用以生成動畫影片的 60 分鐘專案
 
-* [為什麼要使用 Avere vFXT 進行轉譯？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -此示範會比較網路連接儲存裝置的轉譯時間與不含 Avere vFXT 叢集
+* [為什麼要使用 Avere vFXT 進行轉譯？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) - 比較網路連接存儲的渲染時間與 Avere vFXT 群集相比的演示
 
 ## <a name="high-performance-computing"></a>高效能運算
 
-* [改善 Azure 虛擬機器（VM）開機時間的最佳做法](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)-一種可重現的測試，使用 Avere vFXT for Azure 在快速啟動數千個計算用戶端時改善開機時間
+* [改進 Azure 虛擬機器 （VM） 啟動時間的最佳做法](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)- 使用 Avere vFXT 進行 Azure 的可重現測試，用於快速旋轉數千個計算用戶端時縮短啟動時間
 
 ## <a name="vfxt-performance"></a>vFXT 效能
 

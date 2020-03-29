@@ -1,6 +1,6 @@
 ---
-title: JavaScript 單一頁面應用程式案例-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何使用 Microsoft 身分識別平臺來建立單一頁面應用程式（案例總覽）。
+title: JavaScript 單頁應用方案 - 微軟身份平臺 |蔚藍
+description: 瞭解如何使用 Microsoft 標識平臺構建單頁應用程式（方案概述）。
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,46 +15,46 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b430778bed811656b5c8aadc75ba3cf35917f737
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701870"
 ---
-# <a name="scenario-single-page-application"></a>案例：單一頁面應用程式
+# <a name="scenario-single-page-application"></a>方案：單頁應用程式
 
-瞭解您所需的一切，以建立單一頁面應用程式（SPA）。
+瞭解構建單頁應用程式 （SPA） 所需的一切。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>開始使用
 
-您可以遵循 JavaScript SPA 快速入門來建立第一個應用程式：
+您可以按照 JavaScript SPA 快速入門創建第一個應用程式：
 
 > [!div class="nextstepaction"]
-> [快速入門：單一頁面應用程式](./quickstart-v2-javascript.md)
+> [快速入門：單頁應用程式](./quickstart-v2-javascript.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-許多新式 web 應用程式都是以用戶端單一頁面應用程式的形式建立。 開發人員可以使用 JavaScript 或 SPA 架構（例如，角度、Vue 和回應 .js）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，並具有與傳統伺服器端 web 應用程式不同的驗證特性。 
+許多現代 Web 應用程式都是作為用戶端單頁應用程式構建的。 開發人員使用 JavaScript 或 SPA 框架（如 Angular、Vue.js 和 React.js）來編寫它們。 這些應用程式在 Web 瀏覽器上運行，具有不同于傳統伺服器端 Web 應用程式的身份驗證特徵。 
 
-Microsoft 身分識別平臺可讓單一頁面應用程式登入使用者並取得權杖，以使用[OAuth 2.0 隱含流程](./v2-oauth2-implicit-grant-flow.md)來存取後端服務或 web api。 隱含流程可讓應用程式取得識別碼權杖，以代表已驗證的使用者，也會存取呼叫受保護 Api 所需的權杖。
+微軟身份平臺允許單頁應用程式登錄使用者，並通過[OAuth 2.0隱式流](./v2-oauth2-implicit-grant-flow.md)獲取權杖來訪問後端服務或Web API。 隱式流允許應用程式獲取 ID 權杖來表示經過身份驗證的使用者，還可以訪問調用受保護的 API 所需的權杖。
 
 ![單頁應用程式](./media/scenarios/spa-app.svg)
 
-此驗證流程不包括使用跨平臺 JavaScript 架構的應用程式案例，例如 Electron 和回應原生。 它們需要進一步的功能來與原生平臺互動。
+此身份驗證流不包括使用跨平臺 JavaScript 框架（如 Electron 和 React-本機）的應用程式方案。 它們需要進一步的功能來與本機平臺交互。
 
-## <a name="specifics"></a>瞭解
+## <a name="specifics"></a>細節
 
-若要為您的應用程式啟用此案例，您需要：
+要為應用程式啟用此方案，您需要：
 
-* 使用 Azure Active Directory （Azure AD）註冊應用程式。 此註冊牽涉到啟用隱含流程，並設定要傳回權杖的重新導向 URI。
-* 具有已註冊應用程式屬性的應用程式設定，例如 [應用程式識別碼]。
-* 使用 Microsoft 驗證程式庫（MSAL）來執行驗證流程以登入和取得權杖。
+* 使用 Azure 活動目錄 （Azure AD） 的應用程式註冊。 此註冊涉及啟用隱式流和設置重定向 URI，將權杖返回。
+* 具有已註冊應用程式屬性的應用程式佈建，如應用程式 ID。
+* 使用 Microsoft 身份驗證庫 （MSAL） 執行身份驗證流以登錄和獲取權杖。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [應用程式註冊](scenario-spa-app-registration.md)
+> [應用註冊](scenario-spa-app-registration.md)

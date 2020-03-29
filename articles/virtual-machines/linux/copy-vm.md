@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969589"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
@@ -21,7 +21,7 @@ ms.locfileid: "78969589"
 
 ## <a name="prerequisites"></a>Prerequisites
 
--   安裝 [Azure CLI](/cli/azure/install-az-cli2)。
+-   安裝[Azure CLI](/cli/azure/install-az-cli2)。
 
 -   使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure 帳戶。
 
@@ -125,4 +125,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>後續步驟
 
-以瞭解如何使用[共用映射資源庫](shared-images.md)來管理 VM 映射。
+瞭解如何使用[共用映射庫](shared-images.md)來管理 VM 映射。

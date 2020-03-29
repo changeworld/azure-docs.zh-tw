@@ -1,64 +1,65 @@
 ---
 title: 內嵌歷程記錄遙測資料
-description: 本文說明如何內嵌歷程記錄遙測資料。
+description: 本文介紹如何引入歷史遙測資料。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064459"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
-本文說明如何將歷史感應器資料內嵌到 Azure FarmBeats。
+本文介紹如何將歷史感應器資料引入 Azure FarmBeats。
 
-內嵌裝置和感應器等物聯網（IoT）資源中的歷程記錄資料，是 FarmBeats 的常見案例。 您會建立裝置和感應器的中繼資料，然後以標準格式將歷程記錄資料內嵌至 FarmBeats。
+從物聯網 （IoT） 資源（如設備和感應器）中引入歷史資料是 FarmBeats 中的常見方案。 為設備和感應器創建中繼資料，然後以標準格式將歷史資料引入 FarmBeats。
 
 ## <a name="before-you-begin"></a>開始之前
 
-繼續進行本文之前，請確定您已從 IoT 裝置安裝 FarmBeats 和收集的歷程記錄資料。 您也需要啟用合作夥伴存取權，如下列步驟所述。
+在繼續本文之前，請確保您已安裝 FarmBeats 並從 IoT 設備收集歷史資料。 您還需要啟用合作夥伴訪問，如以下步驟所述。
 
-## <a name="enable-partner-access"></a>啟用合作夥伴存取
+## <a name="enable-partner-access"></a>啟用合作夥伴存取權限
 
-您必須啟用 Azure FarmBeats 實例的合作夥伴整合。 此步驟會建立可存取您的 Azure FarmBeats 實例作為裝置合作夥伴的用戶端，並提供後續步驟中所需的下列值：
+您需要啟用與 Azure FarmBeats 實例的合作夥伴集成。 此步驟將創建一個用戶端，該用戶端可作為設備合作夥伴訪問 Azure FarmBeats 實例，並為您提供後續步驟中所需的以下值：
 
-- API 端點：這是 Datahub URL，例如 HTTPs://\<Datahub >. net
+- API 終結點：這是 Datahub URL，例如，HTTPs://\<資料中心>.azure網站.net
 - 租用戶識別碼
 - 用戶端識別碼
 - 用戶端密碼
-- EventHub 連接字串
+- 事件Hub連接字串
 
 請遵循下列步驟：
 
->[!NOTE]
-> 您必須是系統管理員，才能執行下列步驟。
+> [!NOTE]
+> 您必須是管理員才能執行以下步驟。
 
-1. 下載[zip](https://aka.ms/farmbeatspartnerscriptv2)檔案，並將它解壓縮到您的本機磁片磁碟機。 Zip 檔案中將會有一個檔案。
-2. 登入 https://portal.azure.com/ 並移至**Azure Active Directory** > **應用程式註冊**。
+1. 下載[ZIP 檔案](https://aka.ms/farmbeatspartnerscriptv2)，並將其提取到您的本地磁碟機。 ZIP 檔案內將有一個檔。
 
-3. 選取在 FarmBeats 部署過程中建立的**應用程式註冊**。 它的名稱會與您的 FarmBeats Datahub 相同。
+2. 登錄到https://portal.azure.com/並轉到 Azure**活動目錄** > **應用註冊**。
 
-4. 選取 [**公開 API** ] > 選取 [**新增用戶端應用程式**]，然後輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**並檢查**授權範圍**。 這會授與 Azure CLI （Cloud Shell）的存取權，以執行下列步驟：
+3. 選擇作為伺服器場節拍部署的一部分創建**的應用註冊**。 它將具有與您的伺服器場節拍資料hub相同的名稱。
 
-5. 開啟 Cloud Shell。 此選項可在 Azure 入口網站右上角的工具列上取得。
+4. 選擇**公開 API** >**選擇添加用戶端應用程式**並輸入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**並檢查**授權範圍**。 這將授予 Azure CLI（雲外殼）以執行以下步驟的存取權限：
 
-    ![Azure 入口網站工具列](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+5. 開啟 Cloud Shell。 此選項在 Azure 門戶右上角的工具列上可用。
 
-6. 請確定環境已設定為**PowerShell**。 根據預設，它會設定為 Bash。
+    ![Azure 門戶工具列](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![PowerShell 工具列設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+6. 確保環境設置為**PowerShell**。 預設情況下，它設置為 Bash。
 
-7. 上傳 Cloud Shell 實例中步驟1的檔案。
+    ![PowerShell 工具列設置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+
+7. 從雲殼實例中的步驟 1 上載檔。
 
     ![上傳工具列按鈕](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. 移至上傳檔案的目錄。 根據預設，檔案會上傳至使用者名稱底下的主目錄。
+8. 轉到上載檔的目錄。 預設情況下，檔會以使用者名上載到主目錄。
 
-9. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從**Azure Active Directory** > 的 **[總覽] 頁面**取得。
+9. 執行下列指令碼。 該腳本要求使用租戶 ID，可以從**Azure 活動目錄** > **概述頁**獲取該 ID。
 
     ```azurepowershell-interactive
 
@@ -66,83 +67,84 @@ ms.locfileid: "79298762"
 
     ```
 
-10. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
-## <a name="create-device-or-sensor-metadata"></a>建立裝置或感應器中繼資料
+10. 按照螢幕上的說明捕獲**API 終結點**、**租戶 ID、****用戶端 ID、****用戶端金鑰**和**事件Hub連接字串**的值。
 
- 現在您已有必要的認證，您可以定義裝置和感應器。 若要這麼做，請呼叫 FarmBeats Api 來建立中繼資料。 請務必呼叫 Api，做為您在上一節中建立的用戶端應用程式。
+## <a name="create-device-or-sensor-metadata"></a>創建設備或感應器中繼資料
 
- FarmBeats Datahub 具有下列 Api，可讓您建立及管理裝置或感應器中繼資料。
+ 現在，您已經擁有了所需的憑據，您可以定義設備和感應器。 為此，請通過調用 FarmBeats API 創建中繼資料。 請確保將 API 稱為您在上述部分中創建的用戶端應用。
+
+ FarmBeats Datahub 具有以下 API，用於創建和管理設備或感應器中繼資料。
 
  > [!NOTE]
- > 身為合作夥伴，您只能存取讀取、建立和更新中繼資料; **[刪除] 選項僅限於合作夥伴。**
+ > 作為合作夥伴，您只能讀取、創建和更新中繼資料;**刪除選項僅限於合作夥伴。**
 
-- /**devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
-- /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
-- /**SensorModel**： SensorModel 對應于感應器的中繼資料，例如製造商、感應器類型，也就是類比或數位，以及感應器測量，例如環境溫度和壓力。
-- /**感應器**：感應器會對應到記錄值的實體感應器。 感應器通常會連接到裝置識別碼為的裝置。  
+- /**設備模型**：設備模型對應于設備的中繼資料，例如製造商和裝置類型，即閘道或節點。
+- /**設備**：設備對應于伺服器場上存在的物理設備。
+- /**感應器模型**：感應器模型對應于感應器的中繼資料，如製造商、類比或數位感應器的類型以及感應器測量（如環境溫度和壓力）。
+- /**感應器**：感應器對應于記錄值的物理感應器。 感應器通常連接到具有裝置識別碼 的設備。  
 
 
 |        DeviceModel   |  建議   |
 | ------- | -------             |
-|     類型（節點、閘道）        |          裝置節點或閘道的類型      |
-|          製造商            |         製造商的名稱    |
-|  ProductCode                    |  裝置產品代碼或型號名稱或數位。 例如，EnviroMonitor # 6800。  |
-|            連接埠          |     埠名稱和類型，也就是數位或類比。
-|     名稱                 |  用來識別資源的名稱。 例如，模型名稱或產品名稱。
-      描述     | 提供模型的有意義描述。
-|    屬性          |    製造商提供的其他屬性。   |
+|     類型（節點、閘道）        |          裝置類型 - 節點或閘道      |
+|          製造商            |         製造商名稱    |
+|  產品代碼                    |  設備產品代碼或型號名稱或編號。 例如，環境監視器#6800。  |
+|            連接埠          |     埠名稱和類型，即數位或類比。
+|     名稱                 |  名稱以標識資源。 例如，型號名稱或產品名稱。
+      描述     | 提供模型的有意義的描述。
+|    屬性          |    製造商的其他屬性。   |
 |    **裝置**             |                      |
-|   DeviceModelId     |     相關聯裝置型號的識別碼。  |
-|  HardwareId          | 裝置的唯一識別碼，例如 MAC 位址。
+|   設備模型 Id     |     關聯設備型號的 ID。  |
+|  硬體 Id          | 設備的唯一 ID，如 MAC 位址。
 |  ReportingInterval        |   報告間隔（以秒為單位）。
-|  Location            |  裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。   
-|ParentDeviceId       |    此裝置所連接之父裝置的識別碼。 例如，連接到閘道的節點。 節點已 parentDeviceId 為閘道。  |
-|    名稱            | 用來識別資源的名稱。 裝置合作夥伴必須傳送與合作夥伴端上的裝置名稱一致的名稱。 如果合作夥伴裝置名稱是 [使用者定義]，則相同的使用者定義名稱應傳播至 FarmBeats。|
-|     描述       |      提供有意義的描述。 |
-|     屬性    |  製造商提供的其他屬性。
-|     **SensorModel**        |          |
-|       類型（類比、數位）          |      感應器的類型，不論是類比或數位。       |
+|  Location            |  設備緯度（-90 至 +90）、經度（-180 至 180）和高程（以米為單位）。   
+|父設備 Id       |    此設備連接到的父設備的 ID。 例如，連接到閘道的節點。 節點具有父設備 Id 作為閘道。  |
+|    名稱            | 用於標識資源的名稱。 設備合作夥伴必須發送與合作夥伴端的設備名稱一致的名稱。 如果合作夥伴設備名稱是使用者定義的，則同一使用者定義的名稱應傳播到 FarmBeats。|
+|     描述       |      提供有意義的說明。 |
+|     屬性    |  製造商的其他屬性。
+|     **感應器模型**        |          |
+|       類型（類比、數位）          |      感應器的類型，無論是類比的還是數位的。       |
 |          製造商            |       感應器的製造商。     |
-|     ProductCode| 產品代碼或型號名稱或數位。 例如，RS-CO2-N01。 |
-|       SensorMeasures > 名稱       | 感應器量值的名稱。 僅支援小寫。 如需不同深度的測量，請指定深度。 例如，soil_moisture_15cm。 此名稱必須與遙測資料一致。  |
-|          SensorMeasures > DataType       |遙測資料類型。 目前支援 double。|
-|    SensorMeasures > 類型    |感應器遙測資料的測量類型。 系統定義的類型為 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、壓力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要新增更多，請參閱/ExtendedType API。|
-|        SensorMeasures > 單位              | 感應器遙測資料的單位。 系統定義的單位為 NoUnit、攝氏、華氏、開氏、Rankine、Pascal、水星、PSI、毫米、釐米、計量、英寸、墊腳、英里、公里、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、學位、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、升、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour 若要新增更多，請參閱/ExtendedType API。|
-|    SensorMeasures > AggregationType    |  值可以是 none、average、maximum、下限或 StandardDeviation。  |
-|          名稱            | 用來識別資源的名稱。 例如，模型名稱或產品名稱。  |
-|    描述        | 提供模型的有意義描述。  |
-|   屬性       |  製造商提供的其他屬性。  |
+|     產品代碼| 產品代碼或型號名稱或編號。 例如，RS-CO2-N01。 |
+|       感應器測量>名稱       | 感應器測量值的名稱。 僅支援小寫。 對於不同深度的測量，請指定深度。 例如，soil_moisture_15cm。 此名稱必須與遙測資料一致。  |
+|          感應器測量>資料類型       |遙測資料類型。 目前，支援雙精度值。|
+|    感應器測量>類型    |感應器遙測資料的測量類型。 系統定義的類型是環境溫度、CO2、深度、電導性、葉濕性、長度、液位、硝酸鹽、O2、PH、磷酸鹽、點InTime、鉀、壓力、雨量計、相對濕度、鹽度、土壤水分、土壤溫度，太陽輻射，狀態，時間持續時間，紫外線輻射，紫外線指數，體積，風向，風潤，風速，蒸發，PAR。 要添加更多，請參閱 /擴展類型 API。|
+|        感應器測量>單元              | 感應器遙測資料單位。 系統定義的單位為無單位、攝氏度、華氏、開爾文、蘭金、 帕斯卡、汞、PSI、米數、釐米、米、英寸、英尺、英里、千米、英里珀小時、英里珀秒、KMPERhour、KMperper秒、米佩爾小時、米佩爾秒、度、瓦尺、千瓦珀平米、毫瓦佩爾平米、米千瓦百萬計、體積水含量、百分比、零件百萬、微摩爾、微摩爾、百萬千瓦、微摩爾、微摩爾、百萬計、千里珀珀米、千瓦位、百萬計、千米、百萬計、千米、百萬計、千里尺、百萬計、千米、百萬計、千米、百萬計、千米、百萬計、千米、百萬計、十億位元、千里珀爾、千兆克、百萬元、千兆克、十億位元、千萬體、百萬計、千米計、千米、百萬計、千里尺、百萬元、千尺MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、體積成分、升、毫升、秒、UnixTimestamp、微摩爾PerMeterSquaredPer秒、英寸PerHour添加更多內容，請參閱/擴展類型 API。|
+|    感應器測量>聚合類型    |  值可以是無、平均值、最大值、最小值或標準差。  |
+|          名稱            | 名稱以標識資源。 例如，型號名稱或產品名稱。  |
+|    描述        | 提供模型的有意義的描述。|
+|   屬性       |  製造商的其他屬性。|
 |    **感應器**      |          |
-| HardwareId          |   製造商所設定之感應器的唯一識別碼。 |
-|  SensorModelId     |    相關聯感應器型號的識別碼。   |
-| Location          |  感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。|
-|   埠 > 名稱        |  裝置上感應器連線的埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。 |
-|    裝置識別碼  |    感應器所連接之裝置的識別碼。     |
-| 名稱            |   用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
-|    描述      | 提供有意義的描述。 |
-|    屬性        |製造商提供的其他屬性。 |
+| 硬體 Id          |   製造商設置的感應器的唯一 ID。|
+|  感應器模型Id     |    關聯感應器型號的 ID。|
+| Location          |  感應器緯度（-90 至 +90）、經度（-180 至 180）和高程（以米為單位）。|
+|   埠>名稱        |  感應器在設備上連接到的埠的名稱和類型。 這需要與設備模型中定義的名稱相同。|
+|    裝置識別碼  |    感應器連接到的裝置識別碼。 |
+| 名稱            |   名稱以標識資源。 例如，感應器名稱或產品名稱、型號或產品代碼。|
+|    描述      | 提供有意義的說明。|
+|    屬性        |製造商的其他屬性。|
 
-如需物件的詳細資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+有關物件的詳細資訊，請參閱[斯瓦格](https://aka.ms/FarmBeatsDatahubSwagger)。
 
-### <a name="api-request-to-create-metadata"></a>建立中繼資料的 API 要求
+### <a name="api-request-to-create-metadata"></a>創建中繼資料的 API 請求
 
-若要提出 API 要求，請將 HTTP （POST）方法、API 服務的 URL，以及用來查詢、提交資料至、建立或刪除要求的資源的 URI 結合在一起。 然後，您可以新增一或多個 HTTP 要求標頭。 API 服務的 URL 是 API 端點，也就是 Datahub URL （HTTPs://\<yourdatahub >. azurewebsites. net）。  
+要發出 API 請求，請將 HTTP （POST） 方法、API 服務的 URL 和 URI 合併到資源以查詢、將資料提交到請求、創建或刪除請求。 然後添加一個或多個 HTTP 要求標頭。 API 服務的 URL 是 API 終結點，即 Datahub URL（HTTPs://\<您的資料中心>.azure網站.net）。  
 
 ### <a name="authentication"></a>驗證
 
-FarmBeats Datahub 會使用持有人驗證，其需要在上一節中產生的下列認證：
+FarmBeats Datahub 使用無記名身份驗證，這需要上一節中生成的以下憑據：
 
 - 用戶端識別碼
 - 用戶端密碼
 - 租用戶識別碼
 
-呼叫者可以使用這些認證來要求存取權杖。 在後續的 API 要求中，必須在標頭區段中傳送權杖，如下所示：
+使用這些憑據，調用方可以請求訪問權杖。 權杖必須在後續 API 請求中（標頭部分）中發送，如下所示：
 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-下列 Python 程式碼範例會提供存取權杖，可用於後續對 FarmBeats 的 API 呼叫： 
+以下示例 Python 代碼提供了訪問權杖，可用於對 FarmBeats 的後續 API 呼叫： 
 
 ```python
 import azure 
@@ -163,16 +165,15 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 access_token = token_response.get('accessToken') 
 ```
 
-
 **HTTP 要求標頭**
 
-以下是您對 FarmBeats Datahub 進行 API 呼叫時，必須指定的最常見要求標頭：
+以下是對 FarmBeats Datahub 進行 API 呼叫時必須指定的最常見請求標頭：
 
-- **內容類型**： application/json
-- **授權**：持有人 < 存取權杖 >
-- **Accept**： application/json
+- **內容類型**： 應用程式 /json
+- **授權**： 承載<訪問權杖>
+- **接受**：應用程式/json
 
-### <a name="input-payload-to-create-metadata"></a>用來建立中繼資料的輸入承載
+### <a name="input-payload-to-create-metadata"></a>輸入有效負載以創建中繼資料
 
 DeviceModel
 
@@ -222,7 +223,7 @@ DeviceModel
 }
 ```
 
-SensorModel
+感應器模型
 
 ```json
 {
@@ -276,7 +277,8 @@ SensorModel
   }
 }
 ```
-下列範例要求會建立裝置。 此要求具有輸入 JSON 做為要求主體的承載。
+
+以下示例請求創建設備。 此請求具有將 JSON 作為請求正文的有效負載。
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -286,13 +288,14 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
-以下是 Python 中的範例程式碼。 此範例中使用的存取權杖，與驗證期間所收到的相同。
+下面是 Python 中的示例代碼。 此示例中使用的訪問權杖與身份驗證期間接收的訪問權杖相同。
 
 ```python
 import requests
 import json
 
 # Got access token - Calling the Device Model API
+
 headers = {
     "Authorization": "Bearer " + access_token,
     "Content-Type" : "application/json"
@@ -301,23 +304,22 @@ payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "por
 response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
 ```
 
-
 > [!NOTE]
-> Api 會針對每個建立的實例傳回唯一的識別碼。 您必須保留識別碼，才能傳送對應的遙測訊息。
+> API 返回所創建的每個實例的唯一 ID。 您必須保留指示，才能發送相應的遙測消息。
 
 ### <a name="send-telemetry"></a>傳送遙測
 
-現在您已在 FarmBeats 中建立裝置和感應器，可以傳送相關聯的遙測訊息。
+現在，您已經創建了 FarmBeats 中的設備和感應器，您可以發送關聯的遙測消息。
 
-### <a name="create-a-telemetry-client"></a>建立遙測用戶端
+### <a name="create-a-telemetry-client"></a>創建遙測用戶端
 
-您必須將遙測傳送至 Azure 事件中樞以進行處理。 Azure 事件中樞是一種服務，可讓您從連線的裝置和應用程式內嵌即時資料（遙測）。 若要將遙測資料傳送至 FarmBeats，請建立用戶端，將訊息傳送至 FarmBeats 中的事件中樞。 如需有關傳送遙測的詳細資訊，請參閱[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
+您必須將遙測發送到 Azure 事件中心進行處理。 Azure 事件中心是一種服務，它支援從連接的設備和應用程式引入即時資料（遙測）。 要向 FarmBeats 發送遙測資料，請創建一個用戶端，該用戶端將消息發送到 FarmBeats 中的事件中心。 有關發送遙測的詳細資訊，請參閱 Azure[事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
 
-### <a name="send-a-telemetry-message-as-the-client"></a>以用戶端的身分傳送遙測訊息
+### <a name="send-a-telemetry-message-as-the-client"></a>將遙測消息作為用戶端發送
 
-建立事件中樞用戶端的連線之後，您可以將訊息傳送至事件中樞做為 JSON。
+建立作為事件中心用戶端的連接後，可以將消息作為 JSON 發送到事件中心。
 
-以下的範例 Python 程式碼會將遙測當做用戶端傳送至指定的事件中樞：
+下面是將遙測作為用戶端發送到指定事件中心的示例 Python 代碼：
 
 ```python
 import azure
@@ -336,7 +338,7 @@ write_client.stop()
 
 ```
 
-將歷程感應器資料格式轉換為 Azure FarmBeats 瞭解的標準格式。 標準訊息格式如下所示：
+將歷史感應器資料格式轉換為 Azure FarmBeats 所理解的標準格式。 規範消息格式如下：
 
 ```json
 {
@@ -361,9 +363,9 @@ write_client.stop()
 }
 ```
 
-新增對應的裝置和感應器之後，請取得遙測訊息中的裝置識別碼和感應器識別碼，如上一節中所述。
+添加相應的設備和感應器後，在遙測消息中獲取裝置識別碼 和感應器 ID，如上一節所述。
 
-以下是遙測訊息的範例：
+下面是遙測消息的示例：
 
 
  ```json
@@ -404,17 +406,17 @@ write_client.stop()
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法查看遙測資料
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器引入歷史/流資料後無法查看遙測資料
 
-**徵兆**：已部署裝置或感應器，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或查看 FarmBeats 上的遙測資料。
+**症狀**：設備或感應器已部署，您已創建 FarmBeats 上的設備/感應器，並將遙測資料引入到 EventHub，但無法獲取或查看 FarmBeats 上的遙測資料。
 
-矯正**措施：**
+**糾正措施**：
 
-1. 請確定您已完成適當的合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API、執行 Get 並檢查是否已註冊夥伴，以檢查此項。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
+1. 確保已完成適當的合作夥伴註冊 - 您可以通過訪問資料庫搖曳器、導航到 /合作夥伴 API、執行獲取並檢查合作夥伴是否已註冊來檢查此情況。 如果沒有，請按照[此處的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作夥伴。
 
-2. 請確定您已使用合作夥伴用戶端認證建立中繼資料（Devicemodel 傳遞、裝置、SensorModel、感應器）。
+2. 確保已使用合作夥伴用戶端憑據創建了中繼資料（設備模型、設備、感應器模型、感應器）。
 
-3. 請確定您已使用正確的遙測訊息格式（如下所示）：
+3. 確保使用了正確的遙測消息格式（如下文所述）：
 
 ```json
 {
@@ -439,7 +441,6 @@ write_client.stop()
 }
 ```
 
-
 ## <a name="next-steps"></a>後續步驟
 
-如需以 REST API 為基礎的整合詳細資料的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。
+有關基於 REST API 的集成詳細資訊的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。

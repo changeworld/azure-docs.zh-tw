@@ -1,32 +1,32 @@
 ---
-title: 在本機上對 PowerShell Azure Functions 進行調試
-description: 瞭解如何使用 PowerShell 開發函式。
+title: 在本地調試 PowerShell Azure 函數
+description: 瞭解如何使用 PowerShell 開發功能。
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163755"
 ---
-# <a name="debug-powershell-azure-functions-locally"></a>在本機上對 PowerShell Azure Functions 進行調試
+# <a name="debug-powershell-azure-functions-locally"></a>在本地調試 PowerShell Azure 函數
 
-Azure Functions 可讓您將函式開發為 PowerShell 腳本。
+Azure 函數允許您將函數開發為 PowerShell 腳本。
 
-您可以使用下列標準開發工具，在本機對 PowerShell 函式進行程式碼調試：
+您可以使用以下標準開發工具在本地調試 PowerShell 函數，就像使用以下標準開發工具一樣調試任何 PowerShell 腳本：
 
-* [Visual Studio Code](https://code.visualstudio.com/)： Microsoft 的免費、輕量和開放原始碼的文字編輯器，提供 powershell 延伸模組，可提供完整的 powershell 開發體驗。
-* PowerShell 主控台：使用與您用來對任何其他 PowerShell 進程進行的相同命令進行的偵錯工具。
+* [視覺化工作室代碼](https://code.visualstudio.com/)：微軟的免費、輕量和開源文字編輯器，帶有 PowerShell 擴展，提供完整的 PowerShell 開發體驗。
+* PowerShell 主控台：使用用於調試任何其他 PowerShell 進程的命令進行調試。
 
-[Azure Functions Core Tools](functions-run-local.md)支援 Azure Functions 的本機調試，包括 PowerShell 函數。
+[Azure 函數核心工具](functions-run-local.md)支援 Azure 函數的本地調試，包括 PowerShell 函數。
 
-## <a name="example-function-app"></a>範例函數應用程式
+## <a name="example-function-app"></a>示例函數應用
 
-本文中使用的函式應用程式具有單一的 HTTP 觸發函式，並具有下列檔案：
+本文中使用的函數應用具有單個 HTTP 觸發功能，並且具有以下檔：
 
 ```
 PSFunctionApp
@@ -38,9 +38,9 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函式應用程式類似于您在完成[PowerShell 快速入門](functions-create-first-function-powershell.md)時所取得的功能。
+此函數應用程式類似于您完成[PowerShell 快速啟動](functions-create-first-function-powershell.md)時得到的應用程式。
 
-`run.ps1` 中的函式程式碼看起來像下列腳本：
+中的`run.ps1`函數代碼如下所示：
 
 ```powershell
 param($Request)
@@ -62,11 +62,11 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 })
 ```
 
-## <a name="set-the-attach-point"></a>設定附加點
+## <a name="set-the-attach-point"></a>設置附加點
 
-若要進行任何 PowerShell 函式的調試，必須停止函式，才能附加偵錯工具。 `Wait-Debugger` Cmdlet 會停止執行，並等候偵錯工具。
+要調試任何 PowerShell 函數，該函數需要停止才能附加調試器。 `Wait-Debugger` Cmdlet 停止執行並等待調試器。
 
-您只需要在 `if` 語句的正上方新增對 `Wait-Debugger` Cmdlet 的呼叫，如下所示：
+您只需向`Wait-Debugger``if`語句上方的 Cmdlet 添加調用，如下所示：
 
 ```powershell
 param($Request)
@@ -83,103 +83,103 @@ if($name) {
 # ...
 ```
 
-調試開始于 `if` 語句。 
+調試從語句`if`開始。 
 
-`Wait-Debugger` 備妥之後，您現在可以使用 Visual Studio Code 或 PowerShell 主控台來對函式進行調試。
+就`Wait-Debugger`位，您現在可以使用 Visual Studio 代碼或 PowerShell 主控台調試函數。
 
-## <a name="debug-in-visual-studio-code"></a>Visual Studio Code 中的 Debug
+## <a name="debug-in-visual-studio-code"></a>視覺化工作室代碼中的調試
 
-若要在 Visual Studio Code 中進行 PowerShell 函式的偵錯工具，您必須安裝下列各項：
+要在視覺化工作室代碼中調試 PowerShell 功能，您必須安裝以下內容：
 
-* [適用于 Visual Studio Code 的 PowerShell 擴充功能](/powershell/scripting/components/vscode/using-vscode)
+* [Visual Studio 代碼的 PowerShell 擴展](/powershell/scripting/components/vscode/using-vscode)
 * [適用於 Visual Studio Code 的 Azure Functions 擴充功能](functions-create-first-function-vs-code.md)
-* [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
+* [PowerShell 核心 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安裝這些相依性之後，請載入現有的 PowerShell 函數專案，或[建立您的第一個 powershell](functions-create-first-function-powershell.md)函式專案。
+安裝這些依賴項後，載入現有的 PowerShell 函數專案，或[創建第一個 PowerShell 函數專案](functions-create-first-function-powershell.md)。
 
 >[!NOTE]
-> 如果您的專案沒有所需的設定檔，系統會提示您加以新增。
+> 如果專案沒有所需的設定檔，系統將提示您添加這些檔。
 
-### <a name="set-the-powershell-version"></a>設定 PowerShell 版本
+### <a name="set-the-powershell-version"></a>設置 PowerShell 版本
 
-PowerShell Core 會與 Windows PowerShell 並存安裝。 將 PowerShell Core 設定為 PowerShell 版本，以搭配適用于 Visual Studio Code 的 PowerShell 擴充功能使用。
+PowerShell 核心與 Windows PowerShell 並排安裝。 將 PowerShell Core 設置為 PowerShell 版本，以便與 Visual Studio 代碼的 PowerShell 擴展版一起使用。
 
-1. 按 F1 以顯示命令託盤，然後搜尋 `Session`。
+1. 按 F1 顯示命令託盤，然後搜索`Session`。
 
-1. 選擇 [ **PowerShell：顯示會話] 功能表**。
+1. 選擇**電源外殼：顯示會話功能表**。
 
-1. 如果您**目前的會話**不是**powershell core 6**，請選擇 [**切換到： powershell core 6**]。
+1. 如果您的**當前會話**不是**PowerShell 核心 6，** 請選擇 **"切換到：PowerShell 核心 6**"。
 
-當您開啟 PowerShell 檔案時，您會在視窗右下角看到以綠色顯示的版本。 選取此文字也會顯示 [會話] 功能表。 若要深入瞭解，請參閱[選擇要搭配擴充功能使用的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
+打開 PowerShell 檔後，可以看到視窗右下角以綠色顯示的版本。 選擇此文本還會顯示會話功能表。 要瞭解更多資訊，請參閱[選擇要使用的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
 
-### <a name="start-the-function-app"></a>啟動函數應用程式
+### <a name="start-the-function-app"></a>啟動函數應用
 
-確認是否已在您要附加偵錯工具的函式中設定 `Wait-Debugger`。  新增 `Wait-Debugger` 之後，您就可以使用 Visual Studio Code 來對函式應用程式進行 debug。
+驗證`Wait-Debugger`在要附加調試器的函數中設置的。  添加`Wait-Debugger`後，您可以使用 Visual Studio 代碼調試函數應用。
 
-選擇 [ **Debug** ] 窗格，然後 [**附加至 PowerShell 函數**]。
+選擇**調試**窗格，然後**附加到 PowerShell 函數**。
 
 ![偵錯工具](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
-您也可以按 F5 鍵開始進行調試。
+您還可以按 F5 鍵開始調試。
 
-開始調試作業會執行下列工作：
+啟動調試操作執行以下任務：
 
-* 在終端機中執行 `func extensions install`，以安裝函數應用程式所需的任何 Azure Functions 延伸模組。
-* 在終端機中執行 `func host start`，以在函式主機中啟動函數應用程式。
-* 將 PowerShell 偵錯工具附加至函式執行時間內的 PowerShell 執行時間。
+* 在`func extensions install`終端中運行以安裝函數應用所需的任何 Azure 函數擴展。
+* 在`func host start`終端中運行以在函數主機中啟動函數應用。
+* 將 PowerShell 調試器附加到函數運行時內的 PowerShell 運行空間。
 
 >[!NOTE]
-> 您必須確保 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試過程。 這是預設值。
+> 您需要確保 PSWorkerInProcConininSToBound 設置為 1，以確保在視覺化工作室代碼中獲得正確的調試體驗。 這是預設值。
 
-在執行函數應用程式的情況下，您需要個別的 PowerShell 主控台來呼叫 HTTP 觸發的函式。
+運行函數應用後，您需要單獨的 PowerShell 主控台來調用 HTTP 觸發功能。
 
-在此情況下，PowerShell 主控台就是用戶端。 `Invoke-RestMethod` 是用來觸發函式。
+在這種情況下，PowerShell 主控台是用戶端。 `Invoke-RestMethod`用於觸發函數。
 
-在 PowerShell 主控台中，執行下列命令：
+在 PowerShell 主控台中，運行以下命令：
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-您會發現回應不會立即傳回。 這是因為 `Wait-Debugger` 已附加偵錯工具，而 PowerShell 執行會儘快進入中斷模式。 這是因為[BreakAll 概念](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place)，稍後會加以說明。 當您按下 [`continue`] 按鈕之後，偵錯工具就會在 `Wait-Debugger`之後，立即在該行上中斷。
+您會注意到不會立即返回回應。 這是因為`Wait-Debugger`已經附加了調試器，PowerShell 執行盡可能快地進入中斷模式。 這是因為[BreakAll的概念](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place)，這是稍後解釋。 按下該`continue`按鈕後，調試器現在在 之後的`Wait-Debugger`行上中斷。
 
-此時會附加偵錯工具，而且您可以執行所有的一般偵錯工具作業。 如需在 Visual Studio Code 中使用偵錯工具的詳細資訊，請參閱[官方檔](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)。
+此時，調試器已連接，您可以執行所有正常的調試器操作。 有關在 Visual Studio 代碼中使用調試器的詳細資訊，請參閱[官方文檔](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)。
 
-在您繼續並完全叫用腳本之後，您會注意到：
+繼續並完全調用腳本後，您會注意到：
 
-* 執行 `Invoke-RestMethod` 的 PowerShell 主控台傳回結果
-* Visual Studio Code 中的 PowerShell 整合式主控台正在等候執行腳本
+* 已返回`Invoke-RestMethod`結果的 PowerShell 主控台
+* 視覺化工作室代碼中的 PowerShell 集成主控台正在等待腳本執行
 
-稍後當您叫用相同的函式時，PowerShell 擴充功能中的偵錯工具會在 `Wait-Debugger`之後中斷。
+稍後，當您調用同一函數時，PowerShell 擴展中的調試器將在`Wait-Debugger`之後中斷。
 
-## <a name="debugging-in-a-powershell-console"></a>在 PowerShell 主控台中進行調試
+## <a name="debugging-in-a-powershell-console"></a>在 PowerShell 主控台中調試
 
 >[!NOTE]
-> 本節假設您已閱讀[Azure Functions Core Tools](functions-run-local.md)檔，並瞭解如何使用 `func host start` 命令來啟動函數應用程式。
+> 本節假定您已閱讀[Azure 函數核心工具文檔](functions-run-local.md)，並知道如何使用 命令`func host start`啟動函數應用。
 
-開啟主控台，`cd` 至函式應用程式的目錄，然後執行下列命令：
+打開主控台，`cd`進入函數應用的目錄中，並運行以下命令：
 
 ```sh
 func host start
 ```
 
-當函式應用程式正在執行且 `Wait-Debugger` 就緒時，您可以附加至進程。 您需要兩個以上的 PowerShell 主控台。
+在函數應用運行並`Wait-Debugger`到位後，您可以附加到進程。 您確實需要兩個 PowerShell 主控台。
 
-其中一個主控台會作為用戶端。 從這個，您可以呼叫 `Invoke-RestMethod` 來觸發函式。 例如，您可以執行下列命令：
+其中一個主控台充當用戶端。 從中，您調用`Invoke-RestMethod`以觸發函數。 例如，您可以運行以下命令：
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-您會發現它不會傳迴響應，這是 `Wait-Debugger`的結果。 PowerShell 運行時現在正在等候附加偵錯工具。 讓我們取得附加的。
+您會注意到它不會返回回應，這是 的結果`Wait-Debugger`。 PowerShell 運行空間正在等待連接調試器。 讓我們附上它。
 
-在其他 PowerShell 主控台中，執行下列命令：
+在其他 PowerShell 主控台中，運行以下命令：
 
 ```powershell
 Get-PSHostProcessInfo
 ```
 
-此 Cmdlet 會傳回看起來類似下列輸出的資料表：
+此 Cmdlet 返回類似于以下輸出的表：
 
 ```output
 ProcessName ProcessId AppDomainName
@@ -194,9 +194,9 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-請記下資料表中具有 `ProcessName` 為 `dotnet`之專案的 `ProcessId`。 此程式是您的函數應用程式。
+記下`ProcessId`表中的項的`ProcessName`。 `dotnet` 此過程是您的函數應用。
 
-接下來，執行下列程式碼片段：
+接下來，運行以下程式碼片段：
 
 ```powershell
 # This enters into the Azure Functions PowerShell process.
@@ -207,7 +207,7 @@ Enter-PSHostProcess -Id $ProcessId
 Debug-Runspace 1
 ```
 
-啟動之後，偵錯工具會中斷並顯示類似下列輸出的內容：
+啟動後，調試器將中斷並顯示類似以下輸出的內容：
 
 ```
 Debugging Runspace: Runspace1
@@ -220,29 +220,29 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-此時，您會在[PowerShell 偵錯工具](/powershell/module/microsoft.powershell.core/about/about_debuggers)中的中斷點停止。 從這裡，您可以執行所有常見的 debug 作業、不進入、跳到、繼續、結束，以及其他專案。 若要查看主控台提供的一組完整的調試命令，請執行 `h` 或 `?` 命令。
+此時，您將在[PowerShell 調試器](/powershell/module/microsoft.powershell.core/about/about_debuggers)中的中斷點處停止。 從這裡，您可以執行所有常見的調試操作、單一步驟、單一步驟、繼續、退出等操作。 要查看主控台中可用的完整調試命令集，請運行 。 `h` `?`
 
-您也可以使用 `Set-PSBreakpoint` Cmdlet 來設定此層級的中斷點。
+您還可以在此級別使用`Set-PSBreakpoint`Cmdlet 設置中斷點。
 
-當您繼續並完全叫用您的腳本之後，您會注意到：
+繼續並完全調用腳本後，您會注意到：
 
-* 您在其中執行 `Invoke-RestMethod` 的 PowerShell 主控台現在會傳回結果。
-* 執行 `Debug-Runspace` 的 PowerShell 主控台會等候執行腳本。
+* 執行的 PowerShell 主控台`Invoke-RestMethod`現已返回結果。
+* 執行的 PowerShell 主控台`Debug-Runspace`正在等待腳本執行。
 
-您可以再次叫用相同的函式（例如，使用 `Invoke-RestMethod`），然後偵錯工具會在 `Wait-Debugger` 命令之後中斷。
+您可以再次調用相同的函數（例如使用`Invoke-RestMethod`），調試器在`Wait-Debugger`命令後就會中斷。
 
-## <a name="considerations-for-debugging"></a>偵錯工具的考慮
+## <a name="considerations-for-debugging"></a>調試注意事項
 
-請注意，在偵錯工具代碼時，會發生下列問題。
+調試函數代碼時，請記住以下問題。
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` 可能會導致偵錯工具在非預期的位置中斷
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`可能導致調試器在意外位置中斷
 
-PowerShell 延伸模組會使用 `Debug-Runspace`，而這會依賴 PowerShell 的 `BreakAll` 功能。 這項功能會指示 PowerShell 在執行的第一個命令停止。 此行為可讓您在已調試的運行空間內設定中斷點。
+PowerShell 擴展使用`Debug-Runspace`，這反過來又依賴于 PowerShell 的功能`BreakAll`。 此功能告訴 PowerShell 停止執行的第一個命令。 此行為使您能夠在調試的運行空間中設置中斷點。
 
-Azure Functions 執行時間會在實際叫用您的 `run.ps1` 腳本之前執行幾個命令，因此偵錯工具可能會在 `Microsoft.Azure.Functions.PowerShellWorker.psm1` 或 `Microsoft.Azure.Functions.PowerShellWorker.psd1`內中斷。
+Azure 函數運行時在實際調用`run.ps1`腳本之前運行一些命令，因此調試器最終可能在`Microsoft.Azure.Functions.PowerShellWorker.psm1`或`Microsoft.Azure.Functions.PowerShellWorker.psd1`中分解。
 
-若發生這種中斷，請執行 `continue` 或 `c` 命令以略過此中斷點。 您接著會在預期的中斷點停止。
+如果發生此中斷，請運行`continue``c`或 命令跳過此中斷點。 然後，在預期的中斷點停止。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何使用 PowerShell 開發函式，請參閱[Azure Functions powershell 開發人員指南](functions-reference-powershell.md)。
+要瞭解有關使用 PowerShell 開發函數的更多內容，請參閱[Azure 函數 PowerShell 開發人員指南](functions-reference-powershell.md)。

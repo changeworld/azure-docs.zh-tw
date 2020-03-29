@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968717"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>將應用程式移轉至 Azure Active Directory 的資源
@@ -32,6 +32,6 @@ ms.locfileid: "78968717"
 | [部署方案：從 AD FS 移轉至傳遞驗證](https://aka.ms/ADFSTOPTADPDownload) \(英文\)|Azure AD 傳遞驗證可協助使用者以相同的密碼，同時登入內部部署和雲端式應用程式。 此功能可為使用者提供更好的體驗，因為可以少記一個密碼。 因為當使用者只需要記住一個密碼時，就比較不會忘記如何登入，所以也能降低 IT 技術服務人員的成本。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。|
 | [部署方案：使用 Azure AD 啟用單一登入至 SaaS 應用程式](https://aka.ms/SSODPDownload) \(英文\) | 單一登入 (SSO) 可協助您只使用單一使用者帳戶登入一次，然後就能夠存取所有進行工作所需的應用程式和資源。 例如，在使用者登入之後，使用者可以從 Microsoft Office 移至 SalesForce、Box，而不需要二次驗證 (例如輸入密碼)。 
 | [部署方案：使用應用程式 Proxy 將應用程式延伸到 Azure AD](https://aka.ms/AppProxyDPDownload) \(英文\)| 傳統上，提供從員工的膝上型電腦和其他裝置存取內部部署應用程式的權限會涉及虛擬私人網路 (VPN) 或周邊網路 (DMZ)。 這些解決方案不僅複雜且難以確保安全，而且設定及管理成本也很高。 Azure AD 應用程式 Proxy 可讓存取內部部署應用程式變得更輕鬆。 |
-| [部署方案](../fundamentals/active-directory-deployment-plans.md) | 尋找更多部署方案來部署功能，例如多重要素驗證、條件式存取、使用者布建、無縫 SSO、自助式密碼重設等等！ |
+| [部署方案](../fundamentals/active-directory-deployment-plans.md) | 查找更多部署功能的部署計畫，如多因素身份驗證、條件訪問、使用者預配、無縫 SSO、自助服務密碼重設等！ |
 
 
