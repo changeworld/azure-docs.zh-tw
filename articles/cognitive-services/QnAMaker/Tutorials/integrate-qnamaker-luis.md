@@ -12,10 +12,10 @@ ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71802801"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>使用 QnA Maker 與 LUIS 的 Bot 來散發您的知識庫
@@ -27,23 +27,23 @@ ms.locfileid: "71802801"
 
 ## <a name="architecture"></a>架構
 
-![Language Understanding 架構的 QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![帶有語言理解架構的 QnA 製造商](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 在上述情況中，QnA Maker 會先從 LUIS 模型時取得內送問題的意圖，然後使用該意圖將問題傳送到正確的 QnA Maker 知識庫。
 
 ## <a name="create-a-luis-app"></a>建立 LUIS 應用程式
 
-1. 登入 [LUIS](https://www.luis.ai/) 入口網站。
-1. [建立應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
+1. 登錄到[LUIS](https://www.luis.ai/)門戶。
+1. [創建應用](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
 1. 針對每個 QnA Maker 知識庫[新增意圖](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)。 範例語句應對應到 QnA Maker 知識庫中的問題。
 1. [訓練 LUIS 應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)並[發行 LUIS 應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)您的 LUIS 應用程式。
-1. 在 [**管理**] 區段中，記下您的 LUIS 應用程式識別碼、LUIS 端點金鑰和[自訂功能變數名稱](../../cognitive-services-custom-subdomains.md)。 您稍後將需要這些值。 
+1. 在 **"管理"** 部分中，記下 LUIS 應用 ID、LUIS 終結點金鑰和[自訂功能變數名稱](../../cognitive-services-custom-subdomains.md)。 您稍後將需要這些值。 
 
 ## <a name="create-qna-maker-knowledge-bases"></a>建立 QnA Maker 知識庫
 
-1. 登入 [QnA Maker](https://qnamaker.ai)。
+1. 登錄到[QnA 製造商](https://qnamaker.ai)。
 1. 針對 LUIS 應用程式中的每個意圖[建立](https://www.qnamaker.ai/Create)知識庫。
-1. 測試並發佈知識庫。 當您發佈每個 KB 時，請記下 KB 識別碼、資源名稱（自訂子域 before _. azurewebsites.net/qnamaker_）和授權端點金鑰。 您稍後將需要這些值。 
+1. 測試並發佈知識庫。 發佈每個 KB 時，請注意 KB ID、資源名稱 _（.azurewebsites.net/qnamaker_之前的自訂子域）和授權終結點金鑰。 您稍後將需要這些值。 
 
     本文假設 KB 全部都建立在相同的 Azure QnA Maker 訂用帳戶中。
 
@@ -51,17 +51,17 @@ ms.locfileid: "71802801"
 
 ## <a name="web-app-bot"></a>Web 應用程式 Bot
 
-1. 建立會自動包含 LUIS 應用程式的「[基本」 Web 應用程式 bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) 。 選取C# [程式設計語言]。
+1. 創建自動包含 LUIS 應用的["基本"Web 應用機器人](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)。 選擇 C# 程式設計語言。
 
 1. 建立 Web 應用程式 Bot 之後，在 Azure 入口網站中選取 Web 應用程式 Bot。
-1. 在 Web 應用程式 Bot 服務導覽中選取 [應用程式設定]，然後向下捲動至可用設定的 [應用程式設定] 區段。
-1. 將 **LuisAppId** 變更為前一節中建立 LUIS 應用程式的值，然後選取 [儲存]。
+1. 在 Web 應用程式 Bot 服務導覽中選取 [應用程式設定]****，然後向下捲動至可用設定的 [應用程式設定]**** 區段。
+1. 將 **LuisAppId** 變更為前一節中建立 LUIS 應用程式的值，然後選取 [儲存]****。
 
 
 ## <a name="change-code-in-basicluisdialogcs"></a>變更 BasicLuisDialog.cs 中的程式碼
-1. 在 Azure 入口網站的 Web 應用程式 Bot 導覽 [Bot 管理] 區段中，選取 [建置]。
-2. 選取 [開啟線上程式碼編輯器]。 隨即會開啟新瀏覽器索引標籤與線上編輯環境。 
-3. 在 [WWWROOT] 區段中，選取 [Dialogs] 目錄，然後開啟 **BasicLuisDialog.cs**。
+1. 在 Azure 入口網站的 Web 應用程式 Bot 導覽 [Bot 管理]**** 區段中，選取 [建置]****。
+2. 選取 [開啟線上程式碼編輯器]****。 隨即會開啟新瀏覽器索引標籤與線上編輯環境。 
+3. 在 [WWWROOT]**** 區段中，選取 [Dialogs]**** 目錄，然後開啟 **BasicLuisDialog.cs**。
 4. 將相依性加入至 **BasicLuisDialog.cs** 檔案的頂端：
 
     ```csharp
@@ -155,7 +155,7 @@ ms.locfileid: "71802801"
     ```
 
 
-7. 修改 BasicLuisDialog 類別。 每個 LUIS 意圖都應該有使用 **LuisIntent** 裝飾的方法。 裝飾的參數是實際的 LUIS 意圖名稱。 裝飾的方法名稱應該是 LUIS 意圖名稱以利閱讀和維護，但在設計或執行階段時不一定要一樣。  
+7. 修改 BasicLuisDialog 類別。 每個 LUIS 意圖都應該有使用 **LuisIntent** 裝飾的方法。 裝飾的參數是實際的 LUIS 意圖名稱。 裝飾的方法名稱應該是__ LUIS 意圖名稱以利閱讀和維護，但在設計或執行階段時不一定要一樣。  
 
     ```csharp
     [Serializable]
@@ -224,16 +224,16 @@ ms.locfileid: "71802801"
 
 
 ## <a name="build-the-bot"></a>建置 Bot
-1. 在程式碼編輯器中，以滑鼠右鍵按一下 [`build.cmd`] 並選取 [從主控台執行]。
+1. 在程式碼編輯器中，於 `build.cmd` 上按一下滑鼠右鍵，然後選取 [從主控台執行]****。
 
     ![從主控台執行](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. 程式碼檢視畫面會改換成顯示組建進度和結果的終端機視窗。
+2. 程式碼檢視畫面會改換成顯示建置進度和結果的終端機視窗。
 
     ![主控台組建](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>測試聊天機器人
-在 Azure 入口網站中，選取 [Test in Web Chat]\(在網路聊天中測試\) 以測試 Bot。 鍵入不同意圖的訊息，以便取得對應的知識庫之中的回應。
+## <a name="test-the-bot"></a>測試 Bot
+在 Azure 入口網站中，選取 [Test in Web Chat]\(在網路聊天中測試\)**** 以測試 Bot。 鍵入不同意圖的訊息，以便取得對應的知識庫之中的回應。
 
 ![Web 交談測試](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 

@@ -1,7 +1,7 @@
 ---
-title: 語音拼音集合-語音服務
+title: 語音語音集 - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解語音服務拼音字母如何對應至國際語音字母（.IPA），以及使用哪一組的時機。
+description: 瞭解如何將語音服務拼音字母映射到國際拼音字母表 （IPA），以及何時使用該設置。
 services: cognitive-services
 author: zhaoyunED
 manager: junwg
@@ -11,394 +11,394 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675334"
 ---
-# <a name="speech-service-phonetic-sets"></a>語音服務拼音設定
+# <a name="speech-service-phonetic-sets"></a>語音服務語音集
 
-語音服務會定義以七種語言組成的語音字母（簡稱「電話組」）;`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`。 語音服務電話集通常會對應到<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母（.ipa） <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 語音服務電話組會與[語音合成標記語言（SSML）](speech-synthesis-markup.md)搭配使用，做為文字轉換語音服務供應專案的一部分。 在本文中，您將瞭解這些電話集合的對應方式，以及使用哪一個電話組的時機。
+語音服務定義語音字母表（簡稱"電話集"），由七種語言組成;`en-US`、、、、、、、、、、、、、、、、、、、、、、、、、、 `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` `zh-TW` 語音服務電話集通常映射到<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母表 （IPA）。 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 語音服務電話集與[語音合成標記語言 （SSML）](speech-synthesis-markup.md)結合使用，作為文本到語音服務服務的一部分。 在本文中，您將瞭解如何映射這些電話組以及何時使用哪個電話組。
 
-# <a name="en-us"></a>[en-us](#tab/en-US)
+# <a name="en-us"></a>[en-US](#tab/en-US)
 
-### <a name="english-suprasegmentals"></a>英文 suprasegmentals
+### <a name="english-suprasegmentals"></a>英語超分段
 
-| 範例1（適用于輔音的萌芽，為母音的單字初始） | 範例2（適用于輔音的 Intervocalic、適用于母音的單字字詞系統核心） | 範例3（適用于輔音的 Coda，適用于母音的單字 final） | 註解 |
+| 示例 1（為輔音啟動，母音的單詞首字母） | 示例 2（輔音的交音，母音的單詞中音核） | 示例 3（輔音 Coda，母音單詞"最終"） | 註解 |
 |--|--|--|--|
-| 漢堡一起享用/b er **1** r-g ax r/ | falafel/f ax-l aa **1** -f ax l/ | 吉他/g ih-t aa **1** r/ | 語音服務電話集合在高負荷音節的母音之後放置壓力 |
-| 不適當/ih **2** -n aa-p ax r-t uw 1 n/ | dissimilarity/d ih-s ih **2**-m ax-l eh 1-r ax-t iy/ | 工作人力/w er 1 r k-f ao **2** r s/ | 語音服務電話設定將壓力放在子功能音節的母音之後 |
+| 漢堡 /b er **1** r - g ax r/ | 法拉費爾 /f 斧 - l aa **1** - f ax l/ | 吉他 /g ih - t aa **1** r/ | 語音服務電話集在應力音節的母音後放置壓力 |
+| inopportune /ih **2** - n aa - p ax r - t uw 1 n/ | 異位 /d ih - s ih **2**- m 斧 - l eh 1 - r ax - t iy/ | 工作力 /w er 1 r k - f ao **2** r s/ | 語音服務電話集在子應力音節的母音後放置應力 |
 
-### <a name="english-vowels"></a>英文母音
+### <a name="english-vowels"></a>英語母音
 
 | `sapi` | `ipa` | 範例 1     | 範例 2 | 範例 3                   |
 |--------|-------|---------------|-----------|-----------------------------|
-| iy     | `i`   | **ea**t       | f**ee**l  | vall**安永**                  |
-| ih     | `ɪ`   | **i**f        | f**i**ll  |                             |
-| 安永     | `eɪ`  | **a**te       | g**a**te  | d**ay**                     |
-| 吧     | `ɛ`   | **e**非常     | p**e**t   | m**eh** （罕見字 finally） |
-| ae     | `æ`   | **現用**    | c**a**t   | n**ah** （罕見字 finally） |
-| aa     | `ɑ`   | **o**bstinate | p**o**ppy | r**ah** （罕見字 finally） |
-| ao     | `ɔ`   | **o**範圍    | c**au**se | 未通過的**ah**                    |
-| 噢     | `ʊ`   | b**oo**k      |           |                             |
-| 允許     | `oʊ`  | **o**ld       | cl**o**ne | g**o**                      |
-| uw     | `u`   | **U**ber      | b**oo**st | t**oo**                     |
-| 啊     | `ʌ`   | **u**ncle     | c**u**t   |                             |
-| ay     | `aɪ`  | **i**ce       | b**i**te  | fl**y**                     |
-| aw     | `aʊ`  | **ou**t       | s**ou**第一 | c**允許**                     |
+| 伊伊     | `i`   | **ea**t       | f**ee l**  | 瓦爾**伊**                  |
+| Ih     | `ɪ`   | **i**f        | f**我**  |                             |
+| 伊伊     | `eɪ`  | **a**te       | g**a**te  | d**ay**                     |
+| 嗯     | `ɛ`   | **e**非常     | p**e**t   | m**eh** （最後罕見單詞） |
+| ae     | `æ`   | **一個**c-ctive    | c**a**t   | n**啊**（最後是稀有的單詞） |
+| aa     | `ɑ`   | **o**bstinate | **p o**py | r**啊**（最後是稀有的單詞） |
+| ao     | `ɔ`   | **o**範圍    | c**au**se | Ut**啊**                    |
+| 呃     | `ʊ`   | b**oo**k      |           |                             |
+| ow     | `oʊ`  | **o**ld       | cl**o**ne | g**o**                      |
+| 微波     | `u`   | **U**貝爾      | b**oo**st | t**oo**                     |
+| 啊     | `ʌ`   | **ncle**     | c**u**t   |                             |
+| 哎     | `aɪ`  | **i**ce       | b**i**te  | fl**y**                     |
+| aw     | `aʊ`  | **ou**t       | **s ou**th | c**ow**                     |
 | oy     | `ɔɪ`  | **oi**l       | j**oi**n  | t**oy**                     |
-| y uw   | `ju`  | **Yu**ma      | h**u**man | f**new**                     |
-| 限於     | `ə`   | **a**go       | wom**n** | 是                    |
+| y uw   | `ju`  | **余**馬      | **h u**人 | f**ew**                     |
+| 斧頭     | `ə`   | **去**       | wom**a**n | **是一個**                    |
 
-### <a name="english-r-colored-vowels"></a>英文 R-彩色母音
+### <a name="english-r-colored-vowels"></a>英語 R 色母音
 
 | `sapi` | `ipa` | 範例 1    | 範例 2      | 範例 3  |
 |--------|-------|--------------|----------------|------------|
-| ih r   | `ɪɹ`  | **ear**     | t**ir**amisu   | n**耳**   |
-| eh r   | `ɛɹ`  | **空氣**平面 | 應用程式**ar**ently | sc**ar**e  |
-| 糟糕 r   | `ʊɹ`  |              |                | c**您的**e   |
-| ay r   | `aɪɹ` | **即刻到期 i**土地  | f**ir**取代  | ch**oir**  |
-| aw r   | `aʊɹ` | **小時**s    | p**ower**規格   | s   |
-| ao r   | `ɔɹ`  | **或**範圍   | m**或**al      | s**oar**   |
-| aa r   | `ɑɹ`  | **ar**tist   | st**ar**t      | c**ar**    |
-| er r   | `ɝ`   | **ear**第一    | b**ir**d       | f    |
-| ax r   | `ɚ`   |              | 所有的**er**gy    | 抑制**er** |
+| ih r   | `ɪɹ`  | **耳朵**     | t**ir**amisu   | n**耳**   |
+| eh r   | `ɛɹ`  | **飛機** | 應用程式**ar** | sc**ar**e  |
+| 呃 r   | `ʊɹ`  |              |                | c**您的**e   |
+| ay r   | `aɪɹ` | **艾裡**土地  | f**ir**eplace  | 喬 **·奧伊爾**  |
+| aw r   | `aʊɹ` | **小時**s    | p**欠債**ful   | **是我們的**   |
+| ao r   | `ɔɹ`  | **或**安吉   | m**或**al      | **槳**   |
+| aa r   | `ɑɹ`  | **阿爾**蒂斯特   | st**ar**t      | c**ar**    |
+| er r   | `ɝ`   | **耳朵**    | b**ir**d       | **f 您的**    |
+| ax r   | `ɚ`   |              | 所有**er**gy    | 蘇普**呃** |
 
-### <a name="english-semivowels"></a>英文 Semivowels
+### <a name="english-semivowels"></a>英語半音
 
 | `sapi` | `ipa` | 範例 1           | 範例 2  | 範例 3 |
 |--------|-------|---------------------|------------|-----------|
-| w      | `w`   | **w**，s**ue**de | al**w**ays |           |
-| y      | `j`   | **y**ard，f**e**w   | 開啟**時**  |           |
+| w      | `w`   | **w**ith，** ** | 阿爾**w**ays |           |
+| y      | `j`   | **y**ard， f**e**w   | 上**我**上  |           |
 
-### <a name="english-aspirated-oral-stops"></a>英文 aspirated 口頭停止
+### <a name="english-aspirated-oral-stops"></a>英語吸氣口服停止
 
 | `sapi` | `ipa` | 範例 1 | 範例 2   | 範例 3  |
 |--------|-------|-----------|-------------|------------|
-| p      | `p`   | **p**   | ha**pp**en  | fla**p**   |
-| b      | `b`   | **b**ig   | num**b**er  | cra**b**   |
-| t      | `t`   | **t**alk  | capi**t**al | sough**t** |
-| d      | `d`   | **d**ig   | 已執行**d**om  | ro**d**    |
-| k      | `k`   | **c**未通過   | sla**ck**er | Ira**q**   |
-| g      | `g`   | **g**o    | **g**o     | dra**g**   |
+| p      | `p`   | **p**ut   | 哈**普**恩  | fla**p**   |
+| b      | `b`   | **b**ig   | 數位**b**er  | 克拉**b**   |
+| t      | `t`   | **t**alk  | 卡皮**特**阿爾 | sough**t** |
+| d      | `d`   | **d**ig   | 運行**d**om  | ro**d**    |
+| K      | `k`   | **c**ut   | 斯拉**克**爾 | 伊拉**克**   |
+| g      | `g`   | **g**o    | a**g**o     | 德拉**g**   |
 
-### <a name="english-nasal-stops"></a>英文 Nasal 停止
+### <a name="english-nasal-stops"></a>英國鼻停止
 
 | `sapi` | `ipa` | 範例 1        | 範例 2  | 範例 3   |
 |--------|-------|------------------|------------|-------------|
-| m      | `m`   | **m**at、smash   | ca**m**紀元 | roo**m**    |
-| n      | `n`   | **n**o、s**n**允許 | te**n**t   | chicke**n** |
-| ng     | `ŋ`   |                  | li**n**k   | s**ing**    |
+| m      | `m`   | **我在**，粉碎   | 卡**m**時代 | 羅**姆**    |
+| n      | `n`   | **n**o，**s n**ow | t**n**t   | 雞**鳴 n** |
+| 議員     | `ŋ`   |                  | 利**n**k   | s**ing**    |
 
-### <a name="english-fricatives"></a>英文 fricatives
+### <a name="english-fricatives"></a>英語裝飾
 
 | `sapi` | `ipa` | 範例 1   | 範例 2        | 範例 3  |
 |--------|-------|-------------|------------------|------------|
-| f      | `f`   | **f**ork    | le**f**t         | hal**f**   |
-| v      | `v`   | **v**alue   | e**v**ent        | lo**v**e   |
-| th     | `θ`   | **第**    | empa**第**y      | **第**一週一  |
-| 不對     | `ð`   | **第**en    | **第**一次 er       | smoo**th** |
-| s      | `s`   | **s**it     | ri**s**k         | 事實**s**  |
-| z      | `z`   | **z**ap     | bu**s**y         | 小孩   |
-| sh     | `ʃ`   | **sh** e    | abbrevia**ti**開啟于 | ru**sh**   |
-| zh     | `ʒ`   | **J**acques | **s**u     | gara**g**e |
-| h      | `h`   | **h**elp    | en**h**ance      | a-**h**a！  |
+| f      | `f`   | **f**ork    | le**f**t         | 哈爾**夫**   |
+| v      | `v`   | **v**阿盧   | e**v**ent        | lo**v**e   |
+| th     | `θ`   | **th**在    | empa**th y**      | 蒙**特**  |
+| Dh     | `ð`   | **th**    | 莫爾**th**       | 斯莫**th** |
+| s      | `s`   | **s**     | ri**s**k         | 事實**s**  |
+| z      | `z`   | **z**ap     | 布**s**y         | 兒童**s**   |
+| sh     | `ʃ`   | **sh** e    | 縮寫**ti** | 魯**什**   |
+| zh     | `ʒ`   | **J**acques | 認罪**尿**     | 加拉**g**e |
+| h      | `h`   | **h**埃爾普    | en**h**安切      | **a-h**a！  |
 
-### <a name="english-affricates"></a>英文 affricates
+### <a name="english-affricates"></a>英語親和力
 
 | `sapi` | `ipa` | 範例 1 | 範例 2    | 範例 3  |
 |--------|-------|-----------|--------------|------------|
-| 頻道     | `tʃ`  | 中的**ch**  | fu**t**u   | atta**ch** |
-| jh     | `dʒ`  | **j**oy   | ori**g**inal | oran**g**e |
+| ch     | `tʃ`  | **ch**in  | 福**圖**烏雷   | 阿塔**奇** |
+| Jh     | `dʒ`  | **j**oy   | 奧裡**g**inal | 猩**猩 g**e |
 
-### <a name="english-approximants"></a>英文 approximants
+### <a name="english-approximants"></a>英語近似值
 
 | `sapi` | `ipa` | 範例 1          | 範例 2  | 範例 3 |
 |--------|-------|--------------------|------------|-----------|
-| l      | `l`   | **l**識別碼、g**l**ad  | pa**l**ace | 卡**ll** |
-| r      | `ɹ`   | **r**ed、b**r**ing | bo**rr**允許 | ta**r**   |
+| l      | `l`   | **l**id， g**l**廣告  | pa**l**王牌 | 奇**爾** |
+| r      | `ɹ`   | **r**ed，**b r ing** | bo**rr**ow | 塔**r**   |
 
 # <a name="fr-fr"></a>[fr-FR](#tab/fr-FR)
 
-### <a name="french-suprasegmentals"></a>法文 suprasegmentals
+### <a name="french-suprasegmentals"></a>法國超段
 
-不過，語音服務電話集會將壓力放在大量音節的母音之後;`fr-FR` 語音服務電話集不支援 .IPA substress ' ˌ '。 如果需要 .IPA substress，您應該直接使用 .IPA。
+然而，語音服務電話集在強調音節的母音之後造成壓力;`fr-FR`語音服務電話集不支援 IPA 子壓力 ""。""。""。""。""。""。""。""。""。""。""。""。""。""。""。""。""。""。"表示""。"表示""。"表示" 如果需要 IPA 子應力，應直接使用 IPA。
 
-### <a name="french-vowels"></a>法文母音
+### <a name="french-vowels"></a>法語母音
 
 | `sapi` | `ipa` | 範例 1     | 範例 2       | 範例 3 |
 |--------|-------|---------------|-----------------|-----------|
-| a      | `a`   | **rbre**     | p**a**tte       | ir**a**   |
-| aa     | `ɑ`   |               | p **-** te        | p**a**s   |
-| aa ~   | `ɑ̃`  | **en**fant    | enf**en**t      | t**em**ps |
-| 限於     | `ə`   |               | p**e**tite      | l**e**    |
-| 吧     | `ɛ`   | **e**lle      | p**e**rdu       | ét**ai**t |
-| eu     | `ø`   | **œu**fs      | cr**eu**ser     | qu**eu**  |
-| 安永     | `e`   | ému           | crétin          | ôté       |
-| eh ~   | `ɛ̃`  | **im**portant | p**ein**true    | **中的**材料 |
-| iy     | `i`   | **我**dée      | 寵物**我**      | 我**是**   |
-| oe     | `œ`   | **œu**f       | p**eu**r        |           |
-| 糟糕     | `ɔ`   | **o**bstacle  | c**o**rps       |           |
-| 哦 ~   | `ɔ̃`  | **on**ze      | deur**上的**r     | b**開啟**   |
-| 允許     | `o`   | **au**diteur  | b**eau**coup    | p**ô**    |
-| oe ~   | `œ̃ ` | **取消**        | l**un**di       | br**un**  |
-| uw     | `u`   | **ou**trage   | intr**ou**vable | **/ou**    |
-| uy     | `y`   | **u**ne       | p**u**nir       | él**u**   |
+| a      | `a`   | **一個**rbre     | p**a**tte       | ir**a**   |
+| aa     | `ɑ`   |               | p **=** te        | p**a**s   |
+| aa =   | `ɑ̃`  | **恩**幻想    | enf**en**t      | t**em**ps |
+| 斧頭     | `ə`   |               | p**e**tite      | l**e**    |
+| 嗯     | `ɛ`   | **e**lle      | **p e**rdu       | _t**ai**t |
+| 歐盟     | `ø`   | **_u**fs      | cr**eu**ser     | qu**eu**  |
+| 伊伊     | `e`   | _mu           | 克雷丁          | *       |
+| 嗯 |   | `ɛ̃`  | **im**波特 | p**ein**ture    | 墊**在** |
+| 伊伊     | `i`   | **i**dée      | 寵物**i**te      | **我**   |
+| Oe     | `œ`   | **_u**f       | p**eu**r        |           |
+| 哦     | `ɔ`   | **o**bstacle  | c**o**rps       |           |
+| 哦 ~   | `ɔ̃`  | **在**澤      | r 在 deur**上**     | b**上**   |
+| ow     | `o`   | **奧**迪特爾  | b**au**政變    | p *****    |
+| oe |   | `œ̃ ` | **聯合國**        | l**un**di       | br**un**  |
+| 微波     | `u`   | **烏**·拉格   | intr**ou**可 | **ou**    |
+| 烏伊     | `y`   | **u**ne       | p**u**尼       | _l**u**   |
 
-### <a name="french-consonants"></a>法文子音
+### <a name="french-consonants"></a>法語輔音
 
 | `sapi` | `ipa` | 範例 1   | 範例 2     | 範例 3                        |
 |--------|-------|-------------|---------------|----------------------------------|
-| b      | `b`   | **b**ête    | ha**b**ille   | ro**b**e                         |
-| d      | `d`   | **d**即刻到期 i    | ron**d**歐元   | chau**d**e                       |
-| f      | `f`   | **f**emme   | su**ff**ixe   | bo**f**                          |
-| g      | `g`   | **g**auche  | 日**g**ale     | ba**gu**e                        |
-| ng     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)公園 |
-| hy     | `ɥ`   | h**u**ile   | n**u**即刻到期 i     |                                  |
-| k      | `k`   | **c**arte   | 日**c**aille   | 是**c**                          |
-| l      | `l`   | **l**ong    | 日**l**即刻到期 i     | ba**l**                          |
-| m      | `m`   | **m**adame  | ai**m**er     | po**mm**e                        |
-| n      | `n`   | **n**個 ou    | te**n**ir     | bo**nn**e                        |
-| 新澤西     | `ɲ`   |             |               | pei**gn**e                       |
-| p      | `p`   | **p**atte   | 將**p**重新做為     | ca**p**                          |
-| r      | `ʁ`   | **r**于     | cha**r**iot   | senti**r**                       |
-| s      | `s`   | **s**ourir  | **ss**ez     | pa**ss**e                        |
-| sh     | `ʃ`   | **ch**anter | ma**ch**ine   | po**ch**e                        |
-| t      | `t`   | **t**ête    | ô**t**er      | ne**t**                          |
-| v      | `v`   | **v**ent    | 在**v**enter 中  | rê**v**e                         |
+| b      | `b`   | **b**_ te    | 哈 **·布**·伊勒   | ro**b**e                         |
+| d      | `d`   | **d**ire    | 羅恩 **·德**·eur   | chau**d**e                       |
+| f      | `f`   | **f**emme   | 蘇**伊夫**·ix埃   | 博**f**                          |
+| g      | `g`   | **g**奧切  | ***g**阿萊     | 巴**古**e                        |
+| 議員     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)**停車場** |
+| Hy     | `ɥ`   | h**u**ile   | **n u**ire     |                                  |
+| K      | `k`   | **c**藝術   | ***c**艾勒   | 是**c**                          |
+| l      | `l`   | **l**ong    | l**l**ire     | 巴**l**                          |
+| m      | `m`   | **姆**阿達姆  | 艾**姆**呃     | po**mm**e                        |
+| n      | `n`   | **n**ous    | te**n**ir     | bo**nn**e                        |
+| 新澤西州     | `ɲ`   |             |               | 佩 **·格恩**                       |
+| p      | `p`   | **p**atte   | re**p**作為     | ca**p**                          |
+| r      | `ʁ`   | **r**在     | 查 **·伊**奧特   | 森蒂**r**                       |
+| s      | `s`   | **是我們的**  | **ss**ez     | pa**ss e**                        |
+| sh     | `ʃ`   | **ch**安特 | 馬**奇**因   | 波**奇**e                        |
+| t      | `t`   | **t**_ te    | **\t**er      | ne**t**                          |
+| v      | `v`   | **v**ent    | 在**v**輸入  | ré**v**e                         |
 | w      | `w`   | **ou**i     | f**ou**ine    |                                  |
-| y      | `j`   | **y**od     | p**i**étiner  | Marse**ille**                    |
-| z      | `z`   | \* * z * * éro   | rai**s**onner | ro**s**e                         |
-| zh     | `ʒ`   | **j**ardin  | man**g**er    | piè**g**e                        |
-|        | `n‿`  |             |               | u**n** arbre                     |
-|        | `t‿`  |             |               | quan**d**                        |
+| y      | `j`   | **y**od     | p**i**_tiner  | 馬賽 **·伊耶**                    |
+| z      | `z`   | _z _ro   | 萊 **·斯**翁納 | ro**s**e                         |
+| zh     | `ʒ`   | **j**阿爾丁  | 男子**g**er    | 皮埃**格**                        |
+|        | `n‿`  |             |               | **n 阿爾**佈雷                     |
+|        | `t‿`  |             |               | 泉**d**                        |
 |        | `z‿`  |             |               | di**x**                          |
 
 <a id="fr-1"></a>
-**1** *僅適用于部分外部文字。*
+**1** *僅適用于一些外來詞。*
 
 > [!TIP]
-> `fr-FR` 語音服務電話組不支援下列法文 liasions、`n‿`、`t‿`和 `z‿`。 如果需要，您應該考慮直接使用 .IPA。
+> 語音`fr-FR`服務電話集不支援以下法語，`n‿`和`t‿`。 `z‿` 如果需要，應考慮直接使用 IPA。
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
-### <a name="german-suprasegmentals"></a>德文 suprasegmentals
+### <a name="german-suprasegmentals"></a>德國超段
 
-| 範例1（適用于輔音的萌芽，為母音的單字初始） | 範例2（適用于輔音的 Intervocalic、適用于母音的單字字詞系統核心） | 範例3（適用于輔音的 Coda，適用于母音的單字 final） | 註解 |
+| 示例 1（為輔音啟動，母音的單詞首字母） | 示例 2（輔音的交音，母音的單詞中音核） | 示例 3（輔音 Coda，母音單詞"最終"） | 註解 |
 |--|--|--|--|
-| anders/a **1** n-1 ax r s/ | Multiplikationszeichen/m 噢 l-t iy-p l iy-k a-ts y 允許**1** n s-ts ay-c n/ | Biologie/b iy-允許-l 允許-g iy **1**/ | 語音服務電話集合在高負荷音節的母音之後放置壓力 |
-| Allgemeinwissen/a **2** l-g ax-m ay 1 n-v ih-s n/ | Abfallentsorgungsfirma/a 1 p-f a l-^ eh n t-z 哦**2** ax r-g 啊 ng s-f ih ax r-m a/ | Computertomographie/k 哦 m-p y uw 1-t ax r-t 允許-m 允許-g r a-f iy **2**/ | 語音服務電話設定將壓力放在子功能音節的母音之後 |
+| 安德斯 /a **1** n - d ax r s/ | 多普列克澤琴 /m uh l - t iy - p l iy - k a - ts y ow **1** ns - ts ay - c n/ | 生物 /b iy - ow - l ow - g iy **1**/ | 語音服務電話集在應力音節的母音後放置壓力 |
+| Allgemeinwissen / **2** l - g ax - m ay 1 n - v ih - s n/ | Abfallentsorgssfirma /a 1 p - f a l - = eh n t - z 哦**2** ax r - g ng s - f ih ax r - m a/ | 電腦學 /k oh m - p y uw 1 - t ax r - t ow - m ow - g r a - f iy **2**/ | 語音服務電話集在子應力音節的母音後放置應力 |
 
-### <a name="german-vowels"></a>德文母音
+### <a name="german-vowels"></a>德語母音
 
 | `sapi` | `ipa`     | 範例 1                             | 範例 2     | 範例 3                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
-| a:     | `aː`      | **Ber**                              | Maßst**a**b   | 架構**a**                         |
-| a      | `a`       | **Bfall**                            | B**a**ch      | Agath**a**                         |
-| 糟糕     | `ɔ`       | **O**sten                             | Pf**o**sten   |                                    |
-| 吧    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1</sup>](#de-v-1)Fasci**ae** |
-| 吧     | `ɛ`       | **ä**ndern                            | Proz**e**nt   | Amygdal**ae**                      |
-| 限於     | `ə`       | [<sup>2</sup>](#de-v-2)' v**e**rstauen | Aach**e**n    | 片段**e**                          |
-| iy     | `iː`      | **我**執行                              | abb**ie**gt   | Relativitätstheor**ie**            |
-| ih     | `ɪ`       | **我**nnung                            | s**i**ngen    | 木材**y**                          |
-| eu     | `øː`      | **Ö**sen                              | abl**ö**sten  | Malm**ö**                          |
-| 允許     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**允許**                        |
-| oe     | `œ`       | **Ö**ffnung                           | bef**ö**rdern |                                    |
-| 安永     | `e`, `eː` | **E**berhard                          | .abf**e**gt    | b                                  |
-| uw     | `uː`      | **U**do                               | H**u**t       | Akk**u**                           |
-| 噢     | `ʊ`       | **U**nterschiedes                     | b**u**nt      |                                    |
-| 專色     | `yː`      | **Ü**bermut                           | default.pfl**ü**gt    | 男性**ü**                           |
-| uy     | `ʏ`       | **ü**ppig                             | S**y**莖    |                                    |
+| a:     | `aː`      | **一個**啤酒                              | 馬斯特**a**b   | 舍姆**a**                         |
+| a      | `a`       | **一個**失敗                            | B**a**ch      | 阿加思**a**                         |
+| 哦     | `ɔ`       | **O**sten                             | Pf**o**sten   |                                    |
+| 嗯：    | `ɛː`      | **·** 赫利希基特                       | B **+** r       | [<sup>1</sup>](#de-v-1)法西 **·艾** |
+| 嗯     | `ɛ`       | **·** 恩德恩                            | Proz**e**nt   | 艾米格達爾 **·艾**                      |
+| 斧頭     | `ə`       | [<sup>2</sup>](#de-v-2)'v**e**rstauen | Aach**e**n    | 弗拉格**e**                          |
+| 伊伊     | `iː`      | **我**跑了                              | abb**ie gt**   | 相對主義者**ie**            |
+| Ih     | `ɪ`       | **我**年                            | **s i**ngen    | 木材**y**                          |
+| 歐盟     | `øː`      | ***** 森                              | abl **+** 斯滕  | 瑪律姆 *****                          |
+| ow     | `o`, `oː` | **o**hne                              | 巴爾克**o**n    | 特雷普特**ow**                        |
+| Oe     | `œ`       | ***** ffnung                           | 貝夫 **·** 勒德恩 |                                    |
+| 伊伊     | `e`, `eː` | **E**貝爾哈德                          | abf**e**gt    | b                                  |
+| 微波     | `uː`      | **U**do                               | H**u**t       | Akk**u**                           |
+| 呃     | `ʊ`       | **尤**恩特謝德斯                     | b**u**nt      |                                    |
+| Ue     | `yː`      | **•** 貝爾穆特                           | pfl **@** gt    | 男士 **|**                           |
+| 烏伊     | `ʏ`       | **•** ppig                             | S**y**莖    |                                    |
 
-<a id="de-v-1"></a> *只在外部來源的單字中 
-1，例如： Fasci**ae**。*<br>
+<a id="de-v-1"></a>
+**1** *僅在外國血統的詞語中，例如：法西**艾**。*<br>
 <a id="de-v-2"></a>
-**2** *個單字 intially，僅限外部來源的單字，例如 ppointment。音節-一開始： ' v**e**rstauen。*
+**2** *字內僅在外來詞中，如**點**綴。可音節最初在：'v**e**rstauen。*
 
-### <a name="german-diphthong"></a>德文 diphthong
+### <a name="german-diphthong"></a>德國迪普通
 
 | `sapi` | `ipa`       | 範例 1    | 範例 2          | 範例 3 |
 |--------|-------------|--------------|--------------------|-----------|
-| ay     | `ai`        | **ei**nsam   | Unabhängigk**ei**t | Abt**ei** |
-| aw     | `au`        | **au**ßen    | abb**au**st        | St**au**  |
-| oy     | `ɔy`, `ɔʏ̯` | **Eu**phorie | tr**äu**mt         | .sch**eu** |
+| 哎     | `ai`        | **伊·** 恩薩姆   | 恩塔本**吉格** | 阿卜特 **·伊** |
+| aw     | `au`        | **奧**·奧·埃恩    | 阿巴**奧**斯特        | 聖**奧**  |
+| oy     | `ɔy`, `ɔʏ̯` | **歐**·菲裡 | tr **_u**mt         | 施**尤** |
 
-### <a name="german-semivowels"></a>德文 semivowels
+### <a name="german-semivowels"></a>德國半母音
 
 | `sapi` | `ipa` | 範例 1 | 範例 2    | 範例 3  |
 |--------|-------|-----------|--------------|------------|
-| ax r   | `ɐ`   |           | abänd**er**n | 鎖定**er** |
+| ax r   | `ɐ`   |           | 阿比恩德 **·埃爾**恩 | 鎖**er** |
 
-### <a name="german-consonants"></a>德文子音
+### <a name="german-consonants"></a>德國輔音
 
 | `sapi` | `ipa` | 範例 1 | 範例 2 | 範例 3 |
 |--|--|--|--|--|
-| b | `b` | **B**ank |  | [<sup>1</sup>](#de-c-1)Pu**b** |  |
-| c | `ç` | **Ch**emie | mögli**ch**st | [<sup>2</sup>](#de-c-2)i**ch** |
-| d | `d` | **d**anken | [<sup>3</sup>](#de-c-3)Len**d**l | [<sup>4</sup>](#de-c-4)Clau**d**e |  |
-| jh | `ʤ` | **J**eff | gemana**g**t | [<sup>5</sup>](#de-c-5)Chan**g**e |
-| f | `f` | **F**ahrtdauer | angri**ff**slustig | abbruchrei**f** |  |
-| g | `g` | **g** |  | [<sup>6</sup>](#de-c-6)Gre**g** |  |
-| h | `h` | **H**ausanbau |  |  |  |
-| y | `j` | **J**od | Reakt**i** | hu**i** |  |
-| k | `k` | **K**oma-uri | Aspe**k**t | Flec**k** |  |
-| l | `l` | **l**au | ähne**l**n | zuvie**l** |  |
-| m | `m` | **M**個 | **M**t | Leh**m** |  |
-| n | `n` | **n**取消 | u**n**d | 那是**n** |  |
-| ng | `ŋ` | [<sup>7</sup>](#de-c-7)**Ng**uyen | Schwa**nk.bin** | R**ing** |  |
-| p | `p` | **P**夥伴 | abru**p**t | Ti**p** |  |
-| pf | `pf` | **Pf**erd | dam**pf**t | 至**pf** |  |
-| r | `ʀ`、`r`、`ʁ` | **R**eise | knu**rr**t | Haa**r** |  |
-| s | `s` | [<sup>8</sup>](#de-c-8)**S**taccato | bi**s**t | mie**s** |  |
-| sh | `ʃ` | **.Sch**規則 u) | mi **.sch**t | lappi **.sch** |  |
-| t | `t` | **T**raum | S**t**raße | Mu**t** |  |
-| ts | `ts` | **Z**ug | Ar**z**t | Wit**z** |  |
-| 頻道 | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
-| v | `v` | **w**inken | 問**u**全部 | [<sup>9</sup>](#de-c-9)Gr**oo**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`，[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12)Ba**ch**erach | Ma**ch**t mögli**ch**st | 結構**ch** ' i**ch** |
-| z | `z` | **s**uper |  |  |  |
-| zh | `ʒ` | **G**enre | B**重新**ezinski | Edvi**g**e |
+| b | `b` | **B**安克 |  | [<sup>1</sup>](#de-c-1)普**b** |  |
+| c | `ç` | **查韋斯** | 梅格利**赫**斯特 | [<sup>2</sup>](#de-c-2)i**ch** |
+| d | `d` | **德**安肯 | [<sup>3</sup>](#de-c-3)倫**d**l | [<sup>4</sup>](#de-c-4)克勞**德** |  |
+| Jh | `ʤ` | **J**eff | 傑馬納**g**t | [<sup>5</sup>](#de-c-5)陳**g**e |
+| f | `f` | **弗**·阿赫特道爾 | 憤怒**ff**slustig | 阿布布魯赫雷**夫** |  |
+| g | `g` | **g**ut |  | [<sup>6</sup>](#de-c-6)格雷**g** |  |
+| h | `h` | **H·** 烏桑博 |  |  |  |
+| y | `j` | **J**od | 雷克特**我**上 | 胡**伊** |  |
+| K | `k` | **K**奧馬 | 阿斯佩**k**t | 弗萊克**克** |  |
+| l | `l` | **l**au | \hne**l**n | 祖維**l** |  |
+| m | `m` | **M**ut | **一個 m**t | 勒姆**m** |  |
+| n | `n` | **n**un | **n**d | Huh**n** |  |
+| 議員 | `ŋ` | [<sup>7</sup>](#de-c-7)**吳**恩 | 施瓦**恩克** | R**ing** |  |
+| p | `p` | **P**阿特納 | 阿布魯**p**t | 提**普** |  |
+| 普夫 | `pf` | **Pf**erd | 水壩**pf**t | 到**pf** |  |
+| r | `ʀ`, `r`, `ʁ` | **瑞**塞 | 克努**rr**t | 哈**r** |  |
+| s | `s` | [<sup>8</sup>](#de-c-8)**S**塔卡托 | bi**s**t | 米**斯** |  |
+| sh | `ʃ` | **舒**萊 | mi**sch**t | 拉皮**施** |  |
+| t | `t` | **T**raum | S**t**raée | Mu**t** |  |
+| ts | `ts` | **Z**ug | Ar**z**t | 維特**茲** |  |
+| ch | `tʃ` | **奇**·埃欽 | 阿夫格普**茨**特 | 聯邦**tsch** |  |
+| v | `v` | **w**因肯 | Q**u**alle | [<sup>9</sup>](#de-c-9)格**勞烏** |  |
+| x | [<sup>10</sup>](#de-c-10)`x`，[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12)巴**赫**·拉赫 | 馬**赫**特·梅格利**赫**斯特 | 施馬**奇**'i**ch** |
+| z | `z` | **向上** |  |  |  |
+| zh | `ʒ` | **G**enre | **B·雷**津斯基 | 埃德維**g**e |
 
-<a id="de-c-1"></a> *只在外部來源的單字中 
-1，例如： Pu**b**。*<br>
-<a id="de-c-2"></a> *在 "e" 和 "i" 之後 
-2 個軟性 "ch"*<br>
-<a id="de-c-3"></a> *只有在外部來源的單字中 
-3，例如： Len**d**l。*<br>
-<a id="de-c-4"></a> *僅在外部來源的單字中 
-4，例如： Clau**d**e。*<br>
-<a id="de-c-5"></a>*只有外部來源的單字（例如： Chan**g**e）才*
-**5** 。<br>
+<a id="de-c-1"></a>
+**1** *僅在外國血統的詞語中，例如：Pu**b**。*<br>
+<a id="de-c-2"></a>
+**2** *"e"和"i"之後的軟"ch"*<br>
+<a id="de-c-3"></a>
+**3** *僅在外國血統的詞語中，例如：Len**d**l。*<br>
+<a id="de-c-4"></a>
+**4** *僅在外國血統的詞語中，例如：Clau**d**e。*<br>
+<a id="de-c-5"></a>
+**5** *只用外國血統的詞，如：陳**g**e。*<br>
 <a id="de-c-6"></a>
-**6** *單字-僅 terminally 在外部來源的單字，例如 Gre**g**。*<br>
-<a id="de-c-7"></a> *僅在外部來源的單字中 
-7，例如： **Ng**uyen。*<br>
+**6** *字終端僅在外國來源的單詞，如Gre**g**。*<br>
+<a id="de-c-7"></a>
+**7** *僅在外國血統的詞語中，如 **：Ng**uyen。*<br>
 <a id="de-c-8"></a>
-**8** *僅適用于外部來源的單字，例如： **S**taccato。*<br>
+**8** *僅在外國血統的單詞中，如 **：S**taccato。*<br>
 <a id="de-c-9"></a>
-**9** *僅用於外部來源的單字，例如： Gr**oo**ve。*<br>
+**9** *只用外國血統的詞語，如：Gr**oo**ve。*<br>
 <a id="de-c-10"></a>
-**10** *.ipa `x` 在所有非 front 母音（a、aa、哦、允許、啊、uw 和 diphthong aw）之後，都是硬式*的「ch」。<br>
+**10** *IPA`x`是所有非正面母音（a，aa，哦，哦，嗯，uw和diphthong aw）之後，是一個硬的"ch"。*<br>
 <a id="de-c-11"></a>
-**11** *.ipa `ç` 是前母音後面的「ch」軟性（ih、iy、eh、ae、uy、ue、oe、歐盟也在 diphthongs ay、oy）和子音*<br>
+**11** *IPA`ç`是一個軟的'ch'後前母音 （ih， iy， eh， ae， uy， ue， eu 也在 diphthongs ay， oy） 和輔音*<br>
 <a id="de-c-12"></a>
-**12** *單字-一開始只會在外部來源的單字中，例如： **J**uan。音節-一開始也會在像是： Ba**ch**erach 的文字中。*<br>
+**12** *單詞最初隻在外來詞中，例如 **：J**uan。音節最初也用諸如：巴**切**拉赫這樣的詞。*<br>
 
-### <a name="german-oral-consonants"></a>德文口頭子音
+### <a name="german-oral-consonants"></a>德國口服輔音
 
 | `sapi` | `ipa` | 範例 1                                  |
 |--------|-------|--------------------------------------------|
-| ^      | `ʔ`   | beachtlich/b ax-^ a 1 x t-l ih c/ |
+| ^      | `ʔ`   | 比奇利奇 /b 斧 - = 1 x t - l ih c/ |
 
 > [!NOTE]
-> 我們需要在兩個不同的母音之間新增 [gs\] 電話，但這兩個母音是一種正版 diphthong。 這個口頭輔音是一種喉塞音符。如需詳細資訊，請參閱 <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">的喉塞音符 <span class="docon docon-navigate-external x-hidden-focus"></a></a>。
+> 我們需要在兩個不同的母音之間\]添加一個_gs電話，除了兩個母音是一個真正的二母音。 這個口腔輔音是一個腺停止，欲瞭解更多資訊，見<a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">格洛塔停止。 <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>
 
-# <a name="es-es"></a>[es](#tab/es-ES)
+# <a name="es-es"></a>[es-ES](#tab/es-ES)
 
 ### <a name="spanish-vowels"></a>西班牙文母音
 
 | `sapi` | `ipa` | 範例 1    | 範例 2     | 範例 3    |
 |--------|-------|--------------|---------------|--------------|
-| a      | `a`   | **lto**     | c**a**ntar    | ca**a**     |
-| i      | `i`   | **我**bérica  | av**i**spa    | 稅金**i**     |
-| e      | `e`   | **e**lefante | 在**e**n    | elefant**e** |
-| o      | `o`   | **o**caso    | enc**o**ntrar | ocasenc**o** |
-| u      | `u`   | **u**sted    | p**u**nta     | Juanl**u**   |
+| a      | `a`   | **一個**lto     | c**ntar**    | cas**a**     |
+| i      | `i`   | **伊**·貝裡卡  | av**i**spa    | 稅**i**     |
+| e      | `e`   | **埃**勒凡特 | 在**e**nto    | 埃萊凡特**e** |
+| o      | `o`   | **o**卡索    | 恩克 **·奧**恩特拉 | ocasenc**o** |
+| u      | `u`   | **u**sted    | p**u**nta     | 胡安爾**u**   |
 
-### <a name="spanish-consonants"></a>西班牙文子音
+### <a name="spanish-consonants"></a>西班牙輔音
 
 | `sapi` | `ipa`      | 範例 1  | 範例 2      | 範例 3      |
 |--------|------------|------------|----------------|----------------|
-| b      | `b`        | **b**aobab |                | am**b**        |
-|        | `β`        |            | bao**b**ab     | baoba**b**     |
-| 頻道     | `tʃ`       | **ch**eque | 共**ch**e      | Marraque**ch** |
-| d      | `d`        | **d**艾鬥文   |                | portlan**d**   |
-|        | `ð`        |            | de**d**o       | verda**d**     |
-| f      | `f`        | **f**ácil  | ele**f**加緊   | pu**f**        |
-| g      | `g`        | **g**anga  |                | dópin**g**     |
-|        | `ɣ`        |            | **g**ua       | tuare**g**     |
-| j      | `j`        | **我**odo   | cal**i**ente   | 重做**y**        |
-| jj     | `j.j` `jj` |            | vi**ll**a      |                |
-| k      | `k`        | **c**oche  | bo**c**a       | titáni**c**    |
-| l      | `l`        | **l**ápiz  | a**l**a        | corde**l**     |
-| ll     | `ʎ`        | **ll**  | desarro**ll**o |                |
-| m      | `m`        | **m**順序 | **m**ar       | álbu**m**      |
-| n      | `n`        | **n**ada   | ce**n**a       | rató**n**      |
-| 新澤西     | `ɲ`        | **-** aña   | ara **-** azo    |                |
-| p      | `p`        | **p**oca   | 至**p**o       | 停止**p**       |
-| r      | `ɾ`        |            | ca**r**a       | abri**r**      |
-| rr     | `r`        | **r**adio  | co**rr**e      | pu**rr**       |
-| s      | `s`        | **s**aco   | va**s**o       | pelo**s**      |
-| t      | `t`        | **t**oldo  | a**t**ar       | disque**t**    |
-| th     | `θ`        | **z**ebra  | **z**ul       | lápi**z**      |
-| w      | `w`        | h**u**eso  | ag**u**a       | gua**u**       |
-| x      | `x`        | **j**ota   | **j**o        | relo**j**      |
+| b      | `b`        | **b**奧巴布 |                | am**b**        |
+|        | `β`        |            | 寶**b**ab     | 保巴**b**     |
+| ch     | `tʃ`       | **查韋斯** | co**ch**e      | 馬拉克**奇** |
+| d      | `d`        | **d**edo   |                | 波特蘭**d**   |
+|        | `ð`        |            | **德·德**奧       | 韋爾**達 d**     |
+| f      | `f`        | **f**_cil  | ele**f**ante   | 普**f**        |
+| g      | `g`        | **g**安加  |                | 多平**g**     |
+|        | `ɣ`        |            | a**g**ua       | 圖加爾**g**     |
+| j      | `j`        | **i**odo   | 卡爾 **·伊**·恩特   | re**y**        |
+| Jj     | `j.j` `jj` |            | vi**ll**a      |                |
+| K      | `k`        | **c**奧切  | 波**c**a       | 蒂蒂尼**c**    |
+| l      | `l`        | **l**_piz  | a**l**a        | 線**l**     |
+| ll     | `ʎ`        | **ll**ave  | 德薩羅 **·洛奧** |                |
+| m      | `m`        | **m**順序 | 一**個 m**ar       | 阿爾布**姆**      |
+| n      | `n`        | **n**ada   | ce**n**a       | 拉特內**n**      |
+| 新澤西州     | `ɲ`        | **_aía**   | 阿拉 **·阿**佐    |                |
+| p      | `p`        | **p**奧卡   | 到**p**o       | 斯托**普**       |
+| r      | `ɾ`        |            | ca**r**a       | 阿布裡**r**      |
+| Rr     | `r`        | **r**adio  | co**rr**e      | 普**rr**       |
+| s      | `s`        | **s**aco   | va**s**o       | 佩洛**s**      |
+| t      | `t`        | **t**Oldo  | a**t**ar       | disque**t**    |
+| th     | `θ`        | **茲**埃布拉  | a**z**ul       | 萊皮**茲**      |
+| w      | `w`        | **h u**eso  | ag**u**a       | 瓜**烏**       |
+| x      | `x`        | **j**奧塔   | a**j**o        | 雷洛**j**      |
 
 > [!TIP]
-> `es-ES` 語音服務電話組不支援下列西班牙文 .IPA、`β`、`ð`和 `ɣ`。 如果需要，您應該考慮直接使用 .IPA。
+> 語音`es-ES`服務電話集不支援以下西班牙文 IPA`β`和`ð`。 `ɣ` 如果需要，應考慮直接使用 IPA。
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-`zh-CN` 的語音服務電話集合是以原生電話<a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">拼音<span class="docon docon-navigate-external x-hidden-focus"></span> </a>集為基礎。
+的`zh-CN`語音服務電話集基於本機電話<a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">拼音<span class="docon docon-navigate-external x-hidden-focus"></span></a>集。
 
 ### <a name="tone"></a>色調
 
-| 拼音音調 | `sapi` | 字元範例 |
+| 拼音 | `sapi` | 字元示例 |
 |-------------|--------|-------------------|
-| mā          | ma 1  | 媽                 |
-| 則          | ma 2  | 麻                 |
-| mǎ          | ma 3  | 馬                 |
-| mà          | ma 4  | 罵                 |
-| 碩士          | ma 5  | 嘛                 |
+| mé          | ma 1  | ·                 |
+| mé          | ma 2  | •                 |
+| mmm          | 馬 3  | *                 |
+| mé          | 馬 4  | ·                 |
+| ma          | 馬 5  | ·                 |
 
 #### <a name="example"></a>範例
 
 | 字元 | 語音服務                |
 |-----------|-------------------------------|
-| 組織關係      | zu 3-zhi 1-guan 1-xi 5 |
-| 累進        | lei 3-金4                 |
-| 西宅巷       | xi 1-zhai 2-xiang 4      |
+| •      | zu 3 - 志 1 - 關 1 - xi 5 |
+| 累进        | 雷 3 -津 4                 |
+| ·       | Xi 1 - Zhai 2 - 翔 4      |
 
-# <a name="zh-tw"></a>[zh-幼圓](#tab/zh-TW)
+# <a name="zh-tw"></a>[日-TW](#tab/zh-TW)
 
-`zh-TW` 的語音服務電話集合是以原生電話<a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">注音<span class="docon docon-navigate-external x-hidden-focus"></span> </a>集為基礎。
+語音`zh-TW`服務電話集基於本機電話<a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo<span class="docon docon-navigate-external x-hidden-focus"></span></a>集。
 
 ### <a name="tone"></a>色調
 
-| 語音服務音調 | 注音音調 | 範例（word） | 語音服務電話 | 符號 | 拼音（拼音） |
+| 語音服務音 | 波波莫沃語調 | 示例（單詞） | 語音服務電話 | 博波莫沃 | 拼音 （*） |
 |---------------------|---------------|----------------|-----------------------|----------|-------------|
-| ˉ                   | empty         | 偵              | ㄓㄣˉ                   | ㄓㄣ       | zhēn        |
-| ˊ                   | ˊ             | 察              | ㄔㄚˊ                   | ㄔㄚˊ      | chá         |
-| ˇ                   | ˇ             | 打              | ㄉㄚˇ                   | ㄉㄚˇ      | dǎ          |
-| ˋ                   | ˋ             | 望              | ㄨㄤˋ                   | ㄨㄤˋ      | wàng        |
-| ˙                   | ˙             | 影子             | 一ㄥˇㄗ̇               | 一ㄥˇㄗ̇  | yǐng zi    |
+| ·                   | empty         | ·              | ·                   | ·       | 日恩        |
+| ·                   | ·             | ·              | ·                   | ·      | ché         |
+| ·                   | ·             | *              | ·                   | ·      | d=          |
+| ·                   | ·             | ·              | ·                   | ·      | 旺昂        |
+| ˙                   | ˙             | ·             | [ ]               | [ ]  | y 翁子    |
 
 #### <a name="example"></a>範例
 
 | 字元 | `sapi`   |
 |-----------|----------|
-| 狗         | ㄍㄡˇ      |
-| 然後        | ㄖㄢˊㄏㄡˋ   |
-| 剪掉        | ㄐㄧㄢˇㄉㄧㄠˋ |
+| *         | ·      |
+| ·        | ·   |
+| ·        | · |
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-`ja-JP` 的語音服務電話集合是以原生電話<a href="https://en.wikipedia.org/wiki/Kana" target="_blank">假名<span class="docon docon-navigate-external x-hidden-focus"></span> </a>組為基礎。
+的`ja-JP`語音服務電話集基於本機電話<a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana<span class="docon docon-navigate-external x-hidden-focus"></span></a>集。
 
-### <a name="stress"></a>過重
+### <a name="stress"></a>應力
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ` mainstress |
-| `+`    | `ˌ` substress  |
+| `ˈ`    | `ˈ`主應力 |
+| `+`    | `ˌ`子應力  |
 
 #### <a name="example"></a>範例
 
 | 字元 | `sapi`  | `ipa`       |
 |-----------|---------|-------------|
-| 合成        | ゴ'ウセ    | go 今天 wɯseji   |
-| 擁有者       | ショュ'ウ?ャ | ɕjojɯ今天 wɯɕja |
-| 最適化       | サィテキカ +  | sajitecikaˌ |
+| ·        | *    | 戈瓦塞吉   |
+| ·       | ショュ'ウ?ャ | [joj_w_ja |
+| ·       | [ ]  | 薩吉特基卡 |
 
 ***

@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851987"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入門：使用 Java 在 QnA Maker 中建立知識庫
@@ -17,17 +17,17 @@ ms.locfileid: "78851987"
 本快速入門會逐步引導您以程式設計方式建立 QnA Maker 知識庫範例。 QnA Maker 會從[資料來源](../Concepts/knowledge-base.md)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
 
 本快速入門會呼叫 QnA Maker API：
-* [建立 KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [取得作業詳細資料](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[參考文件](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+[參考文檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [JAVA 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Go 1.10.1](https://golang.org/dl/)
-* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]。
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 
 針對適用於 Java 的 QnA Maker，您可在 GitHub 存放庫上取得其[範例程式碼](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "78851987"
 ## <a name="add-the-required-constants"></a>新增必要的常數
 在上述必要的相依性後面，將必要的常數新增至 `CreateKB` 類別以存取 QnA Maker。
 
-您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中選取 QnA Maker 資源的 [快速入門]。
+您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中選取 QnA Maker 資源的 [快速入門]****。
 
 設定下列值：
 
@@ -117,7 +117,7 @@ ms.locfileid: "78851987"
 ```
 
 ## <a name="add-a-main-method"></a>新增 Main 方法
-Main 方法會建立 KB，然後輪詢狀態。 作業識別碼會在 POST 回應標頭欄位 [位置] 中傳回，然後在 GET 要求中作為路由的一部分。 `while` 迴圈會重試未完成的狀態。
+Main 方法會建立 KB，然後輪詢狀態。 作業識別碼會在 POST 回應標頭欄位 [位置]**** 中傳回，然後在 GET 要求中作為路由的一部分。 `while` 迴圈會重試未完成的狀態。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

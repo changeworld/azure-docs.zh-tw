@@ -1,7 +1,7 @@
 ---
 title: 字元計數 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 本文說明 Azure 認知服務翻譯工具文字 API 如何計算字元，讓您可以瞭解它內嵌內容的方式。
+description: 本文介紹 Azure 認知服務翻譯文本 API 如何計算字元，以便您可以瞭解它如何引入內容。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888150"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>翻譯工具文字 API 如何計算字元
@@ -26,14 +26,14 @@ ms.locfileid: "73888150"
 * 要求主體中傳遞至翻譯工具文字 API 的文字
    * 使用翻譯、音譯和字典查閱方法時，會計算 `Text`
    * 使用字典範例方法時，會計算 `Text` 和 `Translation`
-* 所有標記：要求主體的文字欄位內的 HTML、XML 標記等。 用來建置要求的 JSON 表示法 (例如 "Text:") 則不會計入。
+* 所有標記：請求正文的文字欄位中的 HTML、XML 標記等。 用來建置要求的 JSON 表示法 (例如 "Text:") 則不會計入。
 * 個別字母
 * 標點符號
 * 空格、定位字元、標記和任何種類的空白字元
 * 以 Unicode 定義的每個字碼指標
 * 重複的翻譯，即使您先前已翻譯過相同文字亦然
 
-對於以中文和日文漢字等表意文字為基礎的指令碼，翻譯工具文字 API 仍會計算 Unicode 字碼指標的數目，每一個表意文字計為一個字元。 例外狀況： Unicode 代理的計數為兩個字元。
+對於以中文和日文漢字等表意文字為基礎的指令碼，翻譯工具文字 API 仍會計算 Unicode 字碼指標的數目，每一個表意文字計為一個字元。 例外情況：Unicode 代理項計為兩個字元。
 
 要求、字組、位元組或句子的數目與字元計數無關。
 

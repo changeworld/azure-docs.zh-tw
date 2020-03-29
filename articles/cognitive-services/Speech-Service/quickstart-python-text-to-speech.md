@@ -1,7 +1,7 @@
 ---
 title: 將文字轉換為語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將瞭解如何使用 Python 和文字轉語音 REST API，將文字轉換成語音。 本指南中所包含的範例文字已建構為語音合成標記語言 (SSML)。 這可讓您選擇語音回應的語音和語言。
+description: 在本文中，您將學習如何使用 Python 和文本到語音 REST API 將文本轉換為語音。 本指南中所包含的範例文字已建構為語音合成標記語言 (SSML)。 這可讓您選擇語音回應的語音和語言。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365787"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 將文字轉換為語音
 
-在本文中，您將瞭解如何使用 Python 和文字轉語音 REST API，將文字轉換成語音。 本指南中的要求本文已結構化為[語音合成標記語言 (SSML)](speech-synthesis-markup.md)，這可讓您選擇回應的語音和語言。
+在本文中，您將學習如何使用 Python 和文本到語音轉換 REST API 將文本轉換為語音。 本指南中的要求本文已結構化為[語音合成標記語言 (SSML)](speech-synthesis-markup.md)，這可讓您選擇回應的語音和語言。
 
-本文需要具有語音服務資源的[Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
+本文需要具有語音[服務資源的 Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)，或您最愛的文字編輯器
@@ -99,7 +99,7 @@ def get_token(self):
 然後，使用語音合成標記語言 (SSML) 建構要求本文。 此範例會定義結構，並使用您稍早建立的 `tts` 輸入。
 
 >[!NOTE]
-> 此範例會使用 `Guy24KRUS` 語音音調。 如需 Microsoft 提供的完整語音/語言清單，請參閱[語言支援](language-support.md)。
+> 此範例會使用 `Guy24kRUS` 語音音調。 如需 Microsoft 提供的完整語音/語言清單，請參閱[語言支援](language-support.md)。
 > 如果您想要為品牌建立獨特可辨識的語音，請參閱[建立自訂語音音調](how-to-customize-voice-font.md)。
 
 最後，您會對服務提出要求。 如果要求成功，且傳回狀態碼 200，則語音回應會寫入到有時間戳記的檔案。
@@ -122,7 +122,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -172,5 +172,5 @@ python tts.py
 
 * [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [使用 Python 和語音 SDK 將文字轉換為語音](quickstarts/speech-to-text-from-microphone.md)
-* [建立自訂語音調](how-to-customize-voice-font.md)
+* [建立客製化聲音音調](how-to-customize-voice-font.md)
 * [錄製語音樣本來建立自訂語音](record-custom-voice-samples.md)

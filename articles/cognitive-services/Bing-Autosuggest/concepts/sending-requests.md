@@ -1,7 +1,7 @@
 ---
 title: 將要求傳送至 Bing 自動建議 API
 titleSuffix: Azure Cognitive Services
-description: Bing 自動建議 API 會根據搜尋方塊中的部分查詢字串，傳回建議的查詢清單。 深入瞭解傳送要求。
+description: Bing 自動建議 API 會根據搜尋方塊中的部分查詢字串，傳回建議的查詢清單。 瞭解有關發送請求的更多資訊。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
 ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072855"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>將要求傳送至 Bing 自動建議 API。
@@ -25,7 +25,7 @@ ms.locfileid: "74072855"
 
 **Bing 自動建議 API** 內含一個端點，會根據部份搜尋字詞傳回建議的查詢清單。
 
-若要使用 Bing API 取得建議的查詢，請傳送 `GET` 要求到下列端點。 使用標頭和 URL 參數以定義進一步的規格。
+若要使用 Bing API 取得建議的查詢，請傳送 `GET` 要求到下列端點。 使用標頭和 URL 參數以進一步定義規格。
 
 **端點：** 以 JSON 結果的形式，傳回根據 `?q=""` 之定義與使用者輸入內容相關的搜尋建議。
 
@@ -35,7 +35,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 如需標頭、參數、市場代碼、回應物件、錯誤等詳細資料，請參閱 [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) (英文)。
 
-**Bing** API 支援根據類型傳回結果的搜尋動作。 所有搜尋端點都會以 JSON 回應物件的形式傳回結果。
+**Bing** API 支援根據類型傳回結果的搜尋動作。所有搜尋端點會傳回作為 JSON 回應物件的結果。
 所有端點均可支援依照經度、緯度和搜尋半徑傳回特定語言及/或位置的查詢。
 
 如需每個端點支援的參數完整相關資訊，請參閱每種類型的參考頁面。
@@ -46,14 +46,14 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 > [!NOTE]
 > * 對 Bing 自動建議 API 的要求必須使用 HTTPS 通訊協定。
 
-我們建議所有要求均應來自伺服器。 將金鑰作為用戶端應用程式的一部份散佈，會讓惡意第三方有更多機會存取金鑰。 此外，從伺服器進行呼叫，未來就能以單一升級點進行更新。
+建議讓所有要求來自伺服器。 將金鑰作為用戶端應用程式的一部份散佈，會讓惡意第三方有更多機會存取金鑰。 此外，從伺服器進行呼叫，未來就能以單一升級點進行更新。
 
-要求必須指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查詢參數，其包含使用者的部份搜尋字詞。 雖是選擇性，但請在要求中指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查詢參數，其可識別您希望從哪個市場取得結果。 如需選用查詢參數的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。
+要求必須指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查詢參數，其包含使用者的部份搜尋字詞。 雖是選擇性，但請在要求中指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查詢參數，其可識別您希望從哪個市場取得結果。 有關可選查詢參數的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。
 
 要求必須指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭：
 
-- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
-- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
+- [使用者代理](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [X-MSEdge-用戶端ID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
@@ -78,7 +78,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
     cors-proxy-server
 
-當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開之 [HTTP 標頭] 區段的搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
+當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 
 要求應該包含所有建議的查詢參數和標頭。 
 

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: e77e61fc977231effb098c1cbe80cf2e6666c489
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943817"
 ---
-處理壓縮的音訊會使用[GStreamer](https://gstreamer.freedesktop.org)來執行。 基於授權原因，GStreamer 二進位檔不會使用語音 SDK 進行編譯和連結。 相反地，您必須使用預建的 Android 二進位檔。 若要下載預先建立的程式庫，請參閱[安裝 Android 開發](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
+使用[GStreamer](https://gstreamer.freedesktop.org)實現處理壓縮音訊。 出於許可原因，GStreamer 二進位檔案未編譯並與語音 SDK 連結。 相反，您需要為 Android 使用預構建的二進位檔案。 要下載預構建的庫，請參閱[安裝 Android 開發](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 
-需要 `libgstreamer_android.so`。 請確定您的 GStreamer 外掛程式已連結 `libgstreamer_android.so`。
+`libgstreamer_android.so` 是必要的。 請確保您的 GStreamer 外掛程式已連結在`libgstreamer_android.so`中。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-以下提供範例 `Android.mk` 和 `Application.mk` 檔案。 請遵循下列步驟來建立 `gstreamer` 共用物件：`libgstreamer_android.so`。
+下面提供了`Android.mk`一`Application.mk`個示例和檔。 按照以下步驟創建`gstreamer`共用物件：`libgstreamer_android.so`。
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-您可以使用下列命令在 Ubuntu 16.04 或18.04 上建立 `libgstreamer_android.so`。 下列命令列只有針對使用[ANDROID NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)的[Gstreamer android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)進行測試。
+您可以使用以下命令`libgstreamer_android.so`在 Ubuntu 16.04 或 18.04 上生成。 以下命令列僅測試[Gstreamer Android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)與[Android NDK b16b。](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-一旦建立共用物件（`libgstreamer_android.so`）之後，應用程式開發人員必須將共用物件放在 Android 應用程式中，讓語音 SDK 可以載入它。
+構建共用物件 （`libgstreamer_android.so`） 後，應用程式開發人員需要將共用物件放在 Android 應用程式中，以便可以通過語音 SDK 載入該物件。

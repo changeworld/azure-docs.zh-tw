@@ -1,7 +1,7 @@
 ---
-title: 模式語法參考-LUIS
+title: 模式語法引用 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 建立實體以從 Language Understanding （LUIS）應用程式中的使用者語句，將重要資料解壓縮。 用戶端應用程式會使用已解壓縮的資料。
+description: 創建實體以從語言理解 （LUIS） 應用中的使用者話語中提取關鍵資料。 提取的資料由用戶端應用程式使用。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221281"
 ---
 # <a name="pattern-syntax"></a>模式語法
@@ -22,57 +22,57 @@ ms.locfileid: "79221281"
 模式語法是語句的範本。 此範本應該包含您要比對的字組和實體，以及您要忽略的字組和標點符號。 它**不是**一個規則運算式。
 
 > [!CAUTION]
-> 模式只包含機器學習的實體父系，而非子元件。
+> 模式僅包括機器學習的實體父級，不包括子元件。
 
-模式中的實體是用大括弧 `{}` 括住。 模式可以包含實體，以及具有角色的實體。 [Pattern。 any](luis-concept-entity-types.md#patternany-entity)是僅用於模式的實體。
+模式中的實體是用大括弧 `{}` 括住。 模式可以包含實體，以及具有角色的實體。 [模式.any](luis-concept-entity-types.md#patternany-entity)是僅在模式中使用的實體。
 
-模式語法支援下列語法：
+模式語法支援以下語法：
 
 |函式|語法|巢狀層級|範例|
 |--|--|--|--|
-|實體| {}-大括弧|2|其中的格式為 {entity-name}？|
-|選用|[]-方括弧<BR><BR>任何選擇性和群組組合的嵌套層級上有3個限制 |2|問號是選擇性的 [？]|
-|群組|（）-括弧|2|為（a \| b）|
-|或| \|-分隔號（管線）<br><br>在一個群組中的分隔號（或）上有2個限制 |-|其中的格式為（{格式名稱-簡短} &#x7c; {表單名稱-long} &#x7c; {表單編號}）|
-|語句的開始和/或結束|^-插入號|-|^ 開始語句<br>語句已完成 ^<br>具有 {number} 個實體 ^ 的整個語句之 ^ strict 常值比對|
+|實體| {}- 捲曲括弧|2|表單 [機構名稱] 在哪裡？|
+|選用|* - 方括弧<BR><BR>可選和分組任意組合的嵌套級別限制為 3 |2|問號是可選的 [？]|
+|群組|（） - 括弧|2|是 （a \| b）|
+|或| \|- 分隔號（管）<br><br>一組中的分隔號（Or）有 2 的限制 |-|表單（表單名稱-短） &#x7c; [形式名稱長] &#x7c; [表單編號]）|
+|話語的開始和/或結束|• - 小心|-|*開始話語<br>話語完成。<br>[整個話語與 [數位] 實體的嚴格文本匹配|
 
 ## <a name="nesting-syntax-in-patterns"></a>在模式中嵌套語法
 
-**選擇性**的語法（以方括弧括住）可以嵌套兩個層級。 例如： `[[this]is] a new form` 。 這個範例允許下列語句：
+**可選**語法（帶方括弧）可以嵌套兩個級別。 例如：`[[this]is] a new form`。 此示例允許以下表述：
 
-|Nested 選擇性語句範例|說明|
+|嵌套可選話語示例|說明|
 |--|--|
-|這是新的表單|符合模式中的所有文字|
-|是新的表單|符合模式中的外部選擇性單字和非選擇性單字|
-|新表單|僅符合必要的單字|
+|這是一個新的形式|匹配模式中的所有單詞|
+|是一種新的形式|在模式中匹配外部可選單詞和非可選單詞|
+|新表單|僅匹配所需單詞|
 
-使用括弧的**群組**語法可以嵌套兩個層級。 例如： `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )` 。 這項功能可讓三個實體中的任何一個相符。
+具有括弧的**分組**語法可以嵌套兩個級別。 例如：`(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`。 此功能允許匹配三個實體中的任何一個。
 
-如果 Entity1 是具有「來源」（西雅圖）和「目的地」（Cairo）等角色的位置，而「實體2」是來自清單實體（RedWest）的已知建築物名稱，則下列語句會對應到此模式：
+如果 Entity1 是具有源（西雅圖）和目標（開羅）和實體 2 等角色的位置，則實體 2 是從清單實體 （RedWest-C） 的已知建築名稱，則以下陳述將映射到此模式：
 
-|嵌套群組語句範例|說明|
+|嵌套分組陳述示例|說明|
 |--|--|
-|RedWest-C|符合外部群組實體|
-|Seattle|符合其中一個內部群組實體|
-|Cairo|符合其中一個內部群組實體|
+|紅色西-C|匹配外部分組實體|
+|Seattle|匹配其中一個內部分組實體|
+|Cairo|匹配其中一個內部分組實體|
 
-## <a name="nesting-limits-for-groups-with-optional-syntax"></a>使用選擇性語法為群組嵌套限制
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>具有可選語法的組的嵌套限制
 
-使用**選擇性**語法**分組**的組合具有3個嵌套層級的限制。
+**分組**與**可選**語法的組合具有 3 個嵌套級別的限制。
 
 |允許|範例|
 |--|--|
-|是|（[（test1 &#x7c; test2）] &#x7c; test3）|
-|否|（[（[test1] &#x7c; test2）] &#x7c; test3）|
+|是|（ 測試1&#x7c;測試2 ） = &#x7c;測試3 ）|
+|否|（ [ ] 測試1 [ &#x7c;測試2 ） [ &#x7c;測試3 ）|
 
-## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>使用 or-ing 語法來嵌套群組的限制
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>使用 or ing 語法的組的嵌套限制
 
-**群組**與**或-ing**語法的組合具有2個分隔號的限制。
+與**or-ing**語法**組合**的組合限制為 2 個分隔號形。
 
 |允許|範例|
 |--|--|
-|是|（test1 &#x7c; test2 &#x7c; （test3 &#x7c; test4））|
-|否|（test1 &#x7c; test2 &#x7c; test3 &#x7c; （test4 &#x7c; test5）） |
+|是|（ 測試1 &#x7c;測試2 &#x7c; （ 測試3 &#x7c;測試4 ） ）|
+|否|（ test1 &#x7c;測試2 &#x7c;測試3 &#x7c; （ 測試4 &#x7c;測試5 ） ） |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>將實體新增至模式範本的語法
 若要將實體新增至模式範本，請用大括弧括住實體名稱，例如 `Who does {Employee} manage?`。
@@ -103,14 +103,14 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 |How much does **ask** cost and what format is it available in?|
 |How much does **The Curious Incident of the Dog in the Night-Time** cost and what format is it available in?|
 
-書籍標題的單字不會對 LUIS 造成混淆，因為 LUIS 會根據模式來知道書名的結尾。任何實體。
+書名的字詞對 LUIS 並不感到困惑，因為 LUIS 知道書名的結尾位置，基於 Pattern.任何實體。
 
 ## <a name="explicit-lists"></a>明確清單
 
-透過撰寫 API 建立[明確清單](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，以便在下列情況中允許例外狀況：
+通過創作 API 創建[顯式清單](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，以便在以下時間允許異常：
 
-* 您的模式包含[模式。](luis-concept-entity-types.md#patternany-entity)
-* 而且該模式語法允許根據語句來進行不正確的實體解壓縮。
+* 您的模式包含一個[模式。](luis-concept-entity-types.md#patternany-entity)
+* 並且，這種模式語法允許基於陳述的錯誤實體提取的可能性。
 
 例如，假設您有一個模式，其包含選用語法 `[]` 和實體語法 `{}`，且以錯誤擷取資料的方式合併在一起。
 
@@ -123,26 +123,26 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|
 
-在上表中，主旨應該是 `the man from La Mancha` （書名），但因為主旨包含選擇性的 word `from`，所以不會正確預測標題。
+在上表中，主題應為`the man from La Mancha`（書名），但由於主題包含可選詞`from`，因此對標題的預測不正確。
 
-若要修正模式的這個例外狀況，請使用`the man from la mancha`撰寫明確清單的 API[，新增 ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 作為符合 {subject} 實體的明確清單。
+若要修正模式的這個例外狀況，請使用[撰寫明確清單的 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，新增 `the man from la mancha` 作為符合 {subject} 實體的明確清單。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>在範本語句中標記選用文字的語法
 您可以使用規則運算式的方括弧語法 `[]`，在語句中標記選用文字。 選用文字最多只能在方括弧中套嵌兩個大括弧。
 
 |模式與選用文字|意義|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find` 和 `from {person}` 是選擇性的|
-|' 可以協助我 [？]|標點符號是選擇性的|
+|`[find] email about {subject} [from {person}]`|`find`是`from {person}`可選的|
+|"你能幫我嗎？|標點符號是可選的|
 
-應該忽略標點符號（`?`、`!`、`.`），而且您必須在模式中使用方括弧語法來忽略它們。
+標點符號`?`（，）`.``!`應忽略，您需要在模式中使用方括弧語法忽略它們。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解模式：
+瞭解有關模式的更多詳細資訊：
 
-* [如何新增模式](luis-how-to-model-intent-pattern.md)
-* [如何新增模式。任何實體](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [如何添加模式](luis-how-to-model-intent-pattern.md)
+* [如何添加模式. 任何實體](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式概念](luis-concept-patterns.md)
 
-瞭解如何在 json 回應中傳回[情感](luis-reference-prebuilt-sentiment.md)。
+瞭解在 .json 回應中如何返回[情緒](luis-reference-prebuilt-sentiment.md)。

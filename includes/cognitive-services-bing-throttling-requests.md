@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: 1d8340054ace25a0cdc36eef9c3d5b4238a6f99b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174263"
 ---
 服務與您的訂用帳戶類型將決定您所適用的每秒查詢數目 (QPS)。 請確定您的應用程式包含維持在配額範圍內所需的邏輯。 如果已達到或超過 QPS 限制，要求即會失敗，且會傳回 HTTP 429 狀態碼。 回應會包含 `Retry-After` 標頭，指出您必須等待多久後才能傳送另一個要求。

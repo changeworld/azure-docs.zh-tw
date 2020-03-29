@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881911"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing 影像搜尋 API 支援的語言和區域
 
 Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，主要是為了根據該國家/地區的興趣，縮小搜尋結果範圍。 此外，結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
+若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」**** 表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
 
 或者，您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` HTTP 標頭指定一或多個語言代碼。 支援的語言視國家/地區而異；「市場」表格中提供針對每個國家/地區支援的語言。
 
@@ -34,14 +34,14 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/地區|程式碼|
+|國家/區域|程式碼|
 |-------|----|
 |阿根廷|AR|
-|澳洲|AU|
+|澳大利亞|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
-|加拿大|CA|
+|Canada|CA|
 |智利|CL|
 |丹麥|DK|
 |芬蘭|FI|
@@ -49,7 +49,7 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|id|
+|印尼|ID|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -70,22 +70,22 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|CH|
 |台灣|TW|
 |土耳其|TR|
-|英國|GB|
+|United Kingdom|GB|
 |美國|US|
 
 
 ## <a name="markets"></a>市場
 
-|國家/地區|語言|市場代碼|
+|國家/區域|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳洲|英文|en-AU|
+|澳大利亞|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|加拿大|英文|en-CA|
-|加拿大|法文|fr-CA|
+|Canada|英文|en-CA|
+|Canada|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
@@ -114,7 +114,7 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|英國|英文|en-GB|
+|United Kingdom|英文|en-GB|
 |美國|英文|zh-TW|
 |美國|西班牙文|es-US|
 

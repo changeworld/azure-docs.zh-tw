@@ -1,5 +1,5 @@
 ---
-title: 在 Kubernetes 服務中執行語言偵測容器
+title: 在庫伯內斯服務中運行語言檢測容器
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 將語言偵測容器以及執行範例部署到 Azure Kubernetes Service，並在網頁瀏覽器中進行測試。
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399178"
 ---
-# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>將文字分析語言偵測容器部署至 Azure Kubernetes Service
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>將文本分析語言檢測容器部署到 Azure 庫伯奈斯服務
 
 了解如何部署語言偵測容器。 此程序示範如何建立本機的 Docker 容器、將容器推送至私人容器登錄、在 Kubernetes 叢集中執行容器，並在網頁瀏覽器中進行測試。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。
 
@@ -29,14 +29,14 @@ ms.locfileid: "78399178"
 * [Git](https://git-scm.com/downloads) 適用於您的作業系統，因此您可以複製此程序中使用的[範例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)，並驗證 Docker CLI 可在主控台視窗中運作。
-* [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
+* [庫布克特爾](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * 具有正確定價層的 Azure 資源。 並非所有的定價層都會使用這個容器︰
   * 只有 F0 或標準定價層的**文字分析**資源。
   * 有 S0 定價層的**認知服務**資源。
 
 ## <a name="running-the-sample"></a>執行範例
 
-此程序會載入並執行語言偵測的認知服務容器範例。 此範例有兩個容器，一個用於用戶端應用程式，一個用於認知服務容器。 我們會將這兩個映射推送到 Azure Container Registry。 當這些映像出現在您自己的登錄之後，請建立 Azure Kubernetes Service 來存取這些映像並執行容器。 容器執行時，使用 **kubectl** CLI 來監看容器效能。 使用 HTTP 要求存取用戶端應用程式，並查看結果。
+此程序會載入並執行語言偵測的認知服務容器範例。 此範例有兩個容器，一個用於用戶端應用程式，一個用於認知服務容器。 我們將將這兩個映射推送到 Azure 容器註冊表。 當這些映像出現在您自己的登錄之後，請建立 Azure Kubernetes Service 來存取這些映像並執行容器。 容器執行時，使用 **kubectl** CLI 來監看容器效能。 使用 HTTP 要求存取用戶端應用程式，並查看結果。
 
 ![執行範例容器的概念](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "78399178"
 
     若要追蹤容器登錄庫的版本，請將標記加入版本格式，例如 `v1`。
 
-1. 將映像推送至容器登錄。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它
+1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -152,7 +152,7 @@ ms.locfileid: "78399178"
 
 ## <a name="get-language-detection-docker-image"></a>取得語言偵測 Docker 映像
 
-1. 將最新版 Docker 映像提取到本機電腦。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
+1. 將最新版 Docker 映像提取到本機電腦。 這可能需要幾分鐘的時間。 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -164,7 +164,7 @@ ms.locfileid: "78399178"
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. 將映像推送至容器登錄。 這會花費幾分鐘的時間。您可以在裝置註冊至公司入口網站的期間繼續使用它
+1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -180,7 +180,7 @@ ms.locfileid: "78399178"
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    對於步驟 3 中的受託人參數 `appId` 儲存結果 `<appId>` 值。 對於下一個區段的 client-secret 參數 `password` 儲存 `<client-secret>`。
+    對於步驟 3 中的受託人參數 `<appId>` 儲存結果 `appId` 值。 對於下一個區段的 client-secret 參數 `<client-secret>` 儲存 `password`。
 
     ```output
     {

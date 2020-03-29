@@ -1,21 +1,21 @@
 ---
 title: 翻譯工具文字 API 翻譯方法
 titleSuffix: Azure Cognitive Services
-description: 瞭解 Azure 認知服務翻譯工具文字 API 轉譯方法來翻譯文字的參數、標頭和主體訊息。
+description: 瞭解 Azure 認知服務翻譯器文本 API 翻譯方法的參數、標題和正文消息，以翻譯文本。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052400"
 ---
 # <a name="translator-text-api-30-translate"></a>翻譯工具文字 API 3.0 翻譯
 
@@ -31,7 +31,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 ## <a name="request-parameters"></a>要求參數
 
-在查詢字串上傳遞的要求參數如下：
+在查詢字串上傳遞的要求參數為：
 
 ### <a name="required-parameters"></a>必要參數
 
@@ -40,11 +40,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必要參數。<br/>用戶端要求的 API 版本。 值必須為 <code>3.0</code>。</td>
+    <td>必要參數<em></em>。<br/>用戶端要求的 API 版本。 值必須為 <code>3.0</code>。</td>
   </tr>
   <tr>
-    <td>更新成</td>
-    <td>必要參數。<br/>指定輸出文字的語言。 目標語言必須是 <code>translation</code> 範圍內包含的<a href="./v3-0-languages.md">支援語言</a>之一。 例如，使用 <code>to=de</code> 翻譯為德文。<br/>在查詢字串中重複參數，可能會同時翻譯為多種語言。 例如，使用 <code>to=de&to=it</code> 翻譯為德文和義大利文。</td>
+    <td>to</td>
+    <td>必要參數<em></em>。<br/>指定輸出文字的語言。 目標語言必須是 <code>translation</code> 範圍內包含的<a href="./v3-0-languages.md">支援語言</a>之一。 例如，使用 <code>to=de</code> 翻譯為德文。<br/>在查詢字串中重複參數，可能會同時翻譯為多種語言。 例如，使用 <code>to=de&to=it</code> 翻譯為德文和義大利文。</td>
   </tr>
 </table>
 
@@ -54,48 +54,48 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th width="20%">查詢參數</th>
   <th>描述</th>
   <tr>
-    <td>from</td>
-    <td>選擇性參數。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能時，您必須使用 <code>from</code> 參數，而不是自動偵測。</td>
+    <td>從</td>
+    <td><em>可選參數</em>。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能<code>from</code>時，必須使用 參數而不是自動檢測。</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td>選擇性參數。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為：<code>plain</code> (預設) 或 <code>html</code>。</td>
+    <td><em>可選參數</em>。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為：<code>plain</code> (預設) 或 <code>html</code>。</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>選擇性參數。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資料</a>中的分類識別碼新增至這個參數，以使用您已部署的自訂系統。 預設值為：<code>general</code>。</td>
+    <td><em>可選參數</em>。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資訊</a>中的類別 ID 添加到此參數，以使用已部署的自訂系統。 預設值為：<code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>選擇性參數。<br/>指定如何處理翻譯中的粗話。 可能的值為：<code>NoAction</code> (預設)、<code>Marked</code> 或 <code>Deleted</code>。 若要了解處理粗話的方式，請參閱<a href="#handle-profanity">粗話處理</a>。</td>
+    <td><em>可選參數</em>。<br/>指定如何處理翻譯中的粗話。 可能的值為：<code>NoAction</code> (預設)、<code>Marked</code> 或 <code>Deleted</code>。 若要了解處理粗話的方式，請參閱<a href="#handle-profanity">粗話處理</a>。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>選擇性參數。<br/>指定如何在翻譯中標示粗話。 可能的值為：<code>Asterisk</code> (預設) 或 <code>Tag</code>。 若要了解處理粗話的方式，請參閱<a href="#handle-profanity">粗話處理</a>。</td>
+    <td><em>可選參數</em>。<br/>指定如何在翻譯中標示粗話。 可能的值為：<code>Asterisk</code> (預設) 或 <code>Tag</code>。 若要了解處理粗話的方式，請參閱<a href="#handle-profanity">粗話處理</a>。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>選擇性參數。<br/>指定是否包括從來源文字到翻譯文字的對齊方式投影。 可能的值為：<code>true</code> 或 <code>false</code> (預設)。 </td>
+    <td><em>可選參數</em>。<br/>指定是否包括從來源文字到翻譯文字的對齊方式投影。 可能的值為：<code>true</code> 或 <code>false</code> (預設)。 </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>選擇性參數。<br/>指定是否包括輸入文字和翻譯文字的句子界限。 可能的值為：<code>true</code> 或 <code>false</code> (預設)。</td>
+    <td><em>可選參數</em>。<br/>指定是否包括輸入文字和翻譯文字的句子界限。 可能的值為：<code>true</code> 或 <code>false</code> (預設)。</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>選擇性參數。<br/>指定無法識別輸入文字語言時的後援語言。 省略 <code>from</code> 參數時，會套用語言自動偵測。 若偵測失敗，則會採用 <code>suggestedFrom</code> 語言。</td>
+    <td><em>可選參數</em>。<br/>指定無法識別輸入文字語言時的後援語言。 省略 <code>from</code> 參數時，會套用語言自動偵測。 若偵測失敗，則會採用 <code>suggestedFrom</code> 語言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>選擇性參數。<br/>指定輸入文字的指令碼。</td>
+    <td><em>可選參數</em>。<br/>指定輸入文字的指令碼。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>選擇性參數。<br/>指定翻譯文字的指令碼。</td>
+    <td><em>可選參數</em>。<br/>指定翻譯文字的指令碼。</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>選擇性參數。<br/>指出服務可在自訂系統不存在時，回復為一般系統。 可能的值為：<code>true</code> (預設) 或 <code>false</code>。<br/><br/><code>allowFallback=false</code> 會指出翻譯只應該使用針對要求所指定的 <code>category</code> 而進行訓練的系統。 如果從語言 X 翻譯為語言 Y 需要透過樞紐語言 E 來鏈結，則鏈結中的所有系統 (X->E 和 E->Y) 都必須是自訂的，且具有相同類別。 如果沒有找到具有特定類別的系統，則要求會傳回 400 狀態碼。 <code>allowFallback=true</code> 會指出服務可在自訂系統不存在時，回復為一般系統。
+    <td><em>可選參數</em>。<br/>指出服務可在自訂系統不存在時，回復為一般系統。 可能的值為：<code>true</code> (預設) 或 <code>false</code>。<br/><br/><code>allowFallback=false</code> 會指出翻譯只應該使用針對要求所指定的 <code>category</code> 而進行訓練的系統。 如果從語言 X 翻譯為語言 Y 需要透過樞紐語言 E 來鏈結，則鏈結中的所有系統 (X->E 和 E->Y) 都必須是自訂的，且具有相同類別。 如果沒有找到具有特定類別的系統，則要求會傳回 400 狀態碼。 <code>allowFallback=true</code> 會指出服務可在自訂系統不存在時，回復為一般系統。
 </td>
   </tr>
 </table> 
@@ -106,20 +106,20 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th width="20%">headers</th>
   <th>描述</th>
   <tr>
-    <td>驗證標頭</td>
-    <td>必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td>身份驗證標頭</td>
+    <td>必要的要求標頭<em></em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必要的要求標頭。<br/>指定承載的內容類型。<br/> 接受的值為 <code>application/json; charset=UTF-8</code>。</td>
+    <td>必要的要求標頭<em></em>。<br/>指定承載的內容類型。<br/> 接受的值為<code>application/json; charset=UTF-8</code>。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必要的要求標頭。<br/>要求本文的長度。</td>
+    <td>必要的要求標頭<em></em>。<br/>要求本文的長度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>選用</em>。<br/>用戶端產生用以唯一識別要求的 GUID。 若您使用名為 <code>ClientTraceId</code> 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。</td>
+    <td><em>選擇項</em>。<br/>用於識別唯一要求的 GUID，由用戶端產生。 若您使用名為 <code>ClientTraceId</code> 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。</td>
   </tr>
 </table> 
 
@@ -142,7 +142,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 成功的回應是輸入陣列的每個字串各有一個結果的 JSON 陣列。 結果物件包含下列屬性：
 
-  * `detectedLanguage`：物件，透過下列屬性描述偵測到語言：
+  * `detectedLanguage`：物件，透過下列屬性描述偵測到的語言：
 
       * `language`：字串，代表偵測到語言的代碼。
 
@@ -164,7 +164,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
     若未進行音譯，則不會包括 `transliteration` 物件。
 
-    * `alignment`：單一字串屬性名為 `proj` 的物件，以將輸入文字對應至翻譯文字。 只有在要求參數 `includeAlignment` 是 `true` 時，才會提供對齊方式資訊。 對齊方式會以下列格式的字串值傳回：`[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  冒號區隔開始與結束索引、虛線區隔語言，而空格區隔字組。 一個字組可能符合另一種語言的零、一或多個字組，而且符合的字組可能未連續。 沒有對齊方式資訊可用時，對齊方式項目會空白。 如需範例和限制，請參閱[取得對齊資訊](#obtain-alignment-information)。
+    * `alignment`：單一字串屬性名為 `proj` 的物件，以將輸入文字對應至翻譯文字。 只有在要求參數 `includeAlignment` 是 `true` 時，才會提供對齊方式資訊。 對齊方式會以下列格式的字串值傳回：`[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  冒號區隔開始與結束索引、虛線區隔語言，而空格區隔字組。 一個單字可能會與另一種語言中的零個、一個或多個單字對齊，而對齊的單字可能不連續。 沒有對齊方式資訊可用時，對齊方式項目會空白。 如需範例和限制，請參閱[取得對齊資訊](#obtain-alignment-information)。
 
     * `sentLen`：物件，傳回輸入和輸出文字中的句子界限。
 
@@ -222,15 +222,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
+    <td>伺服器拒絕請求，因為用戶端已超過請求限制。</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>發生意外錯誤。 如果錯誤仍然存在，請回報以下資訊：失敗的日期和時間、回應標頭 <code>X-RequestId</code> 中的要求識別碼、要求標頭 <code>X-ClientTraceId</code> 中的用戶端識別碼。</td>
+    <td>發生意外錯誤。 若錯誤仍然存在，請回報：失敗的日期和時間、來自回應標頭 <code>X-RequestId</code> 的要求識別碼，以及來自要求標頭 <code>X-ClientTraceId</code> 的用戶端識別碼。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>暫時無法使用伺服器。 重試要求。 如果錯誤仍然存在，請回報以下資訊：失敗的日期和時間、回應標頭 <code>X-RequestId</code> 中的要求識別碼、要求標頭 <code>X-ClientTraceId</code> 中的用戶端識別碼。</td>
+    <td>暫時無法使用伺服器。 重試要求。 若錯誤仍然存在，請回報：失敗的日期和時間、來自回應標頭 <code>X-RequestId</code> 的要求識別碼，以及來自要求標頭 <code>X-ClientTraceId</code> 的用戶端識別碼。</td>
   </tr>
 </table> 
 
@@ -363,7 +363,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>行動</th>
+  <th>動作</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>此為預設行為。 粗話會從來源傳遞到目標。<br/><br/>
@@ -383,7 +383,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
     <td>不雅字眼會取代為輸出中的標記。 標記取決於 <code>ProfanityMarker</code> 參數。<br/><br/>
 對於 <code>ProfanityMarker=Asterisk</code>，不雅字眼會取代為 <code>***</code>：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
-    <strong>範例翻譯 (英文)</strong>：He is a \*\*\*.<br/><br/>
+    <strong>翻譯（英語）：</strong>他是一個\*\*\*。<br/><br/>
 對於 <code>ProfanityMarker=Tag</code>，不雅字眼會括上 XML 標籤 &lt;profanity&gt; 和 &lt;/profanity&gt;：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
     <strong>範例翻譯 (英文)</strong>：He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
@@ -479,14 +479,15 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 對齊方式資訊開始於 `0:2-0:1`，表示來源文字中的前三個字元 (`The`) 對應至翻譯文字中的前兩個字元 (`La`)。
 
 #### <a name="limitations"></a>限制
-請注意下列限制：
+獲取對齊資訊是一項實驗功能，我們已啟用該功能，用於原型設計和具有潛在短語映射的經驗。 我們將來可能會選擇停止支援這一點。 以下是不支援對齊的一些值得注意的限制：
 
-* HTML 格式的文字無法使用對齊方式，例如，textType = html
+* 對齊不適用於 HTML 格式的文本，即文本類型_html
 * 只會傳回一部分語言組的對齊方式：
   - 從英文到任何其他語言；
   - 從任何其他語言到英文，但從簡體中文、繁體中文和拉脫維亞文到英文除外；
   - 從日文到韓文，或從韓文到日文。
 * 若句子是已定義的翻譯，則您收不到對齊方式。 已定義的翻譯範例是 "This is a test"、"I love you" 和其他高頻率出現句子。
+* 應用任何方法防止翻譯時，對齊方式不可用，[如下所述](../prevent-translation.md)
 
 ### <a name="obtain-sentence-boundaries"></a>取得句子界限
 
@@ -514,7 +515,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用動態字典翻譯
 
-若您已經知道您想要套用至字組或片語的翻譯，則可以提供它作為要求內的標記。 動態字典僅適用於正確名稱和產品名稱這類複合名詞。
+如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用於專有名稱和產品名稱這類複合名詞。
 
 要提供的標記會使用下列語法。
 
@@ -540,4 +541,4 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 ]
 ```
 
-此功能的運作方式與 `textType=text` 或 `textType=html` 相同。 應該謹慎使用此功能。 自訂翻譯的適當且最適合方式是使用 Custom Translator。 Custom Translator 會完全利用內容和統計機率。 若您有或可以建立內容中顯示您工作或片語的訓練資料，則會取得較好的效果。 [深入了解 Custom Translator](../customization.md)。
+此功能的運作方式與 `textType=text` 或 `textType=html` 相同。 應該謹慎使用此功能。 自訂翻譯的適當且最適合方式是使用 Custom Translator。 Custom Translator 會完全利用內容和統計機率。 如果您已經或能夠建立定型資料，以便在上下文中顯示您的單字或片語，則會得到更好的結果。 [深入了解 Custom Translator](../customization.md)。

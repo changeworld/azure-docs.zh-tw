@@ -1,7 +1,7 @@
 ---
-title: 機器學習的實體類型-LUIS
+title: 機器學習的實體類型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 機器學習實體是用來建立 LUIS 應用程式的慣用實體。
+description: 機器學習的實體是構建 LUIS 應用程式的首選實體。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75551993"
 ---
 # <a name="machine-learned-entity"></a>已採用機器學習的實體
 
-機器學習實體是用來建立 LUIS 應用程式的慣用實體。
+機器學習的實體是構建 LUIS 應用程式的首選實體。
 
 
 ## <a name="example-json"></a>範例 JSON
 
-假設應用程式接受比薩訂單，例如[分解 entity 教學](tutorial-machine-learned-entity.md)課程。 每個訂單都可以包含數個不同的比薩，包括不同的大小。
+假設應用程式採取比薩餅訂單，如[可分解實體教程](tutorial-machine-learned-entity.md)。 每個訂單可以包括幾個不同的比薩餅，包括不同的尺寸。
 
 語句範例包括：
 
-|比薩應用程式的範例語句|
+|披薩應用程式的示例陳述|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,15 +36,15 @@ ms.locfileid: "75551993"
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 預測端點回應](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-因為機器學習的實體可以有許多具有條件約束和描述項的子元件，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
+由於機器學習的實體可以具有許多具有約束和描述項的子元件，因此這只是一個示例。 它應被視為實體將返回的指南。
 
-請考慮下列查詢：
+請考慮查詢：
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-如果在查詢字串中設定 `verbose=false`，這就是 JSON：
+如果在`verbose=false`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ ms.locfileid: "75551993"
 
 ```
 
-如果在查詢字串中設定 `verbose=true`，這就是 JSON：
+如果在`verbose=true`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -341,13 +341,13 @@ ms.locfileid: "75551993"
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 預測端點回應](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
-此實體在 V2 預測執行時間中無法使用。
+此實體在 V2 預測運行時不可用。
 * * *
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解機器學習的實體，包括[教學](tutorial-machine-learned-entity.md)課程、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
+詳細瞭解機器學習的實體，包括[教程](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
 
 瞭解[清單](reference-entity-list.md)實體和[正則運算式](reference-entity-regular-expression.md)實體。

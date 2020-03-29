@@ -1,7 +1,7 @@
 ---
-title: 跨訂用帳戶遷移臉部資料-臉部
+title: 跨訂閱遷移面部資料 - 人臉
 titleSuffix: Azure Cognitive Services
-description: 本指南說明如何將已儲存的臉部資料從一個臉部訂用帳戶遷移至另一個。
+description: 本指南演示如何將存儲的面資料從一個面容訂閱遷移到另一個面容訂閱。
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
 ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169819"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>將您的臉部資料移轉至其他臉部訂用帳戶
 
-本指南說明如何將臉部資料（例如具有臉部的已儲存 PersonGroup 物件）移至不同的 Azure 認知服務臉部訂用帳戶。 若要移動資料，您可以使用快照集功能。 如此一來，您就不需要在移動或擴充作業時，重複建立和定型 PersonGroup 或 FaceList 物件。 例如，您可能是使用免費試用訂用帳戶建立了 PersonGroup 物件，而現在想要將它遷移至您的付費訂用帳戶。 或者，您可能需要針對大型企業作業，跨不同區域中的訂用帳戶同步處理臉部資料。
+本指南演示如何將面資料（如已保存的具有面的 PersonGroup 物件）移動到其他 Azure 認知服務面訂閱。 要移動資料，請使用快照功能。 這樣，在移動或展開操作時，您就不必重複構建和訓練 PersonGroup 或 FaceList 物件。 例如，您可能使用免費試用訂閱創建了 PersonGroup 物件，現在想要將其遷移到付費訂閱。 或者，對於大型企業操作，您可能需要跨不同區域的訂閱同步人臉資料。
 
-這種相同的遷移策略也適用于 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱[臉部辨識概念](../concepts/face-recognition.md)指南中的定義。 本指南使用臉部 .NET 用戶端程式庫C#搭配。
+相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱[面識別概念](../concepts/face-recognition.md)指南中的定義。 本指南使用帶有 C# 的面 .NET 用戶端庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-您需要下列專案：
+您需要以下專案：
 
-- 兩個臉部訂用帳戶金鑰，一個包含現有的資料，另一個則用來進行遷移。 若要訂閱臉部服務並取得您的金鑰，請遵循[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示。
-- 對應至目標訂用帳戶的臉部訂用帳戶識別碼字串。 若要尋找它，請選取 Azure 入口網站中的**總覽**。 
-- 任何 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 版本。
+- 兩個面容訂閱金鑰，一個帶有現有資料，一個要遷移到。 要訂閱 Face 服務並獲得金鑰，請按照[創建認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的說明操作。
+- 與目標訂閱對應的面容訂閱 ID 字串。 要查找它，請在 Azure 門戶中選擇 **"概述**"。 
+- 任何版本的[視覺工作室2015或2017](https://www.visualstudio.com/downloads/)年。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
-本指南使用簡單的主控台應用程式來執行臉部資料移轉。 如需完整的執行方式，請參閱 GitHub 上的[臉部快照集範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
+本指南使用簡單的主控台應用來運行人臉資料移轉。 有關完整實現，請參閱 GitHub 上的["人臉"快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
 
-1. 在 Visual Studio 中，建立新的主控台應用程式 .NET Framework 專案。 將它命名為**FaceApiSnapshotSample**。
-1. 取得必要的 NuGet 套件。 以滑鼠右鍵按一下方案總管中的專案，然後選取 [**管理 NuGet 套件**]。 選取 [**流覽**] 索引標籤，然後選取 [**包含發行**前版本]。 尋找並安裝下列套件：
+1. 在視覺化工作室中，創建新的主控台應用 .NET 框架專案。 將其命名為**FaceApi 快照示例**。
+1. 取得必要的 NuGet 套件。 在解決方案資源管理器中按右鍵專案，然後選擇 **"管理 NuGet 包**"。 選擇"**流覽**"選項卡，然後選擇 **"包括預發行**"。 查找並安裝以下套裝軟體：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) \(英文\)
 
 ## <a name="create-face-clients"></a>建立臉部用戶端
 
-在*Program.cs*的**Main**方法中，為您的來源和目標訂用帳戶建立兩個[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)實例。 這個範例會使用東亞區域中的臉部訂用帳戶做為來源，而「美國西部」訂用帳戶作為目標。 此範例示範如何將資料從一個 Azure 區域遷移至另一個區域。 
+在 *Program.cs* 的 **Main** 方法中，為您的來源和目標訂用帳戶建立兩個 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 執行個體。 本示例使用東亞區域的 Face 訂閱作為源，將西美國訂閱作為目標。 此示例演示如何將資料從一個 Azure 區域遷移到另一個 Azure 區域。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -57,21 +57,21 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
     };
 ```
 
-針對您的來源和目標訂用帳戶，填入訂用帳戶金鑰值和端點 Url。
+填寫源和目標訂閱的訂閱鍵值和終結點 URL。
 
 
 ## <a name="prepare-a-persongroup-for-migration"></a>備妥移轉的 PersonGroup
 
-您需要來源訂用帳戶中的 PersonGroup 識別碼，才能將其遷移至目標訂用帳戶。 使用[PersonGroupOperationsExtensions. metrics.listasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet)方法來抓取 PersonGroup 物件的清單。 然後取得[PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId)屬性。 此程式會根據您擁有的 PersonGroup 物件而有所不同。 在本指南中，來源 PersonGroup 識別碼會儲存在 `personGroupId`中。
+若要將您來源訂用帳戶中的 PersonGroup 移轉到目標訂用帳戶，您會需要它的識別碼。 使用[PersonGroup 操作擴展.ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet)方法檢索人員組物件的清單。 然後獲取[PersonGroup.PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId)屬性。 此過程根據您擁有的人員組物件看起來不同。 在本指南中，源人員組 ID 存儲在`personGroupId`中。
 
 > [!NOTE]
-> [範例程式碼](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)會建立並訓練要遷移的新 PersonGroup。 在大部分情況下，您應該已經有要使用的 PersonGroup。
+> [示例代碼](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)創建並訓練要遷移的新人員組。 在大多數情況下，您應該已經使用人員組。
 
-## <a name="take-a-snapshot-of-a-persongroup"></a>製作 PersonGroup 的快照集
+## <a name="take-a-snapshot-of-a-persongroup"></a>拍攝人員組的快照
 
-快照集是某些臉部資料類型的暫時性遠端儲存體。 將資料從一個訂用帳戶複製到另一個訂用帳戶時，它的功能是類似剪貼簿。 首先，您會建立來源訂用帳戶中資料的快照集。 然後將它套用到目標訂用帳戶中的新資料物件。
+快照是某些 Face 資料類型的臨時遠端存放。 將資料從一個訂用帳戶複製到另一個訂用帳戶時，它的功能是類似剪貼簿。 首先，在源訂閱中拍攝資料的快照。 然後，將其應用於目標訂閱中的新資料物件。
 
-使用來源訂用帳戶的 FaceClient 實例來建立 PersonGroup 的快照集。 使用[TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet)搭配 PersonGroup 識別碼和目標訂用帳戶的識別碼。 如果您有多個目標訂閱，請在第三個參數中將它們新增為數組專案。
+使用源訂閱的 FaceClient 實例拍攝 PersonGroup 的快照。 將["帶Async"](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet)與人員組 ID 和目標訂閱的 ID 一起使用。 如果您有多個目標訂閱，則將它們添加為第三個參數中的陣列條目。
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -81,18 +81,18 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> 採用和套用快照集的程式並不會中斷對來源或目標 Persongroup 或 Facelist 的任何定期呼叫。 請勿進行同時呼叫來變更來源物件，例如[FaceList 管理呼叫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)或[PersonGroup 訓練](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)呼叫。 快照集作業可能會在這些作業之前或之後執行，或可能會發生錯誤。
+> 拍攝和應用快照的過程不會中斷對源或目標人員組或 Facelists 的任何常規調用。 不要同時進行更改源物件的調用，例如[FaceList 管理調用](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)或[PersonGroup 培訓](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)呼叫。 快照操作可能在這些操作之前或之後運行，或者可能會遇到錯誤。
 
-## <a name="retrieve-the-snapshot-id"></a>取出快照集識別碼
+## <a name="retrieve-the-snapshot-id"></a>檢索快照 ID
 
-用來製作快照集的方法是非同步，因此您必須等候其完成。 無法取消快照集作業。 在此程式碼中，`WaitForOperation` 方法會監視非同步呼叫。 它會每隔100毫秒檢查一次狀態。 在作業完成之後，藉由剖析 `OperationLocation` 欄位來取出作業識別碼。 
+用於拍攝快照的方法是非同步，因此必須等待其完成。 無法取消快照操作。 在此代碼中，`WaitForOperation`該方法監視非同步調用。 它每 100 毫秒檢查一次狀態。 操作完成後，通過分析`OperationLocation`欄位檢索操作 ID。 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-一般的 `OperationLocation` 值看起來像這樣：
+典型`OperationLocation`值如下所示：
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
@@ -127,21 +127,21 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-在作業狀態顯示 `Succeeded`之後，藉由剖析所傳回 OperationStatus 實例的 `ResourceLocation` 欄位來取得快照集識別碼。
+顯示操作狀態後`Succeeded`，通過分析返回的操作狀態實例的`ResourceLocation`欄位獲取快照 ID。
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-一般的 `resourceLocation` 值看起來像這樣：
+典型`resourceLocation`值如下所示：
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
 ```
 
-## <a name="apply-a-snapshot-to-a-target-subscription"></a>將快照集套用至目標訂用帳戶
+## <a name="apply-a-snapshot-to-a-target-subscription"></a>將快照應用於目標訂閱
 
-接下來，使用隨機產生的識別碼，在目標訂用帳戶中建立新的 PersonGroup。 然後使用目標訂用帳戶的 FaceClient 實例，將快照集套用至此 PersonGroup。 傳入快照集識別碼和新的 PersonGroup 識別碼。
+接下來，使用隨機生成的 ID 在目標訂閱中創建新的 PersonGroup。 然後，使用目標訂閱的 FaceClient 實例將快照應用於此 PersonGroup。 傳遞快照 ID 和新的人員組 ID。
 
 ```csharp
 var newPersonGroupId = Guid.NewGuid().ToString();
@@ -150,15 +150,15 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 
 
 > [!NOTE]
-> 快照集物件只適用于48小時。 如果您想要在不久後立即使用快照集來進行資料移轉，請只建立快照集。
+> 快照物件僅有效 48 小時。 僅當打算在不久後將其用於資料移轉時，才拍攝快照。
 
-快照集套用要求會傳回另一個作業識別碼。 若要取得此識別碼，請剖析所傳回 applySnapshotResult 實例的 `OperationLocation` 欄位。 
+快照應用請求返回另一個操作 ID。 要獲取此 ID，請分析`OperationLocation`返回的 applySnapshotResult 實例的欄位。 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-快照集應用程式進程也是非同步，因此，再次使用 `WaitForOperation` 等待它完成。
+快照應用程式過程也是非同步，因此再次使用它`WaitForOperation`等待它完成。
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -166,9 +166,9 @@ operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
 
 ## <a name="test-the-data-migration"></a>測試資料移轉
 
-套用快照集之後，目標訂用帳戶中的新 PersonGroup 會填入原始臉部資料。 根據預設，也會複製定型結果。 新的 PersonGroup 已準備好進行臉部辨識呼叫，而不需要重新定型。
+應用快照後，目標訂閱中的新 PersonGroup 將填充原始面資料。 預設情況下，也會複製訓練結果。 新的 PersonGroup 已準備好進行面部識別呼叫，無需再培訓。
 
-若要測試資料移轉，請執行下列作業，並將它們所列印的結果與主控台進行比較：
+要測試資料移轉，請運行以下操作並將它們列印的結果與主控台進行比較：
 
 ```csharp
 await DisplayPersonGroup(FaceClientEastAsia, personGroupId);
@@ -216,13 +216,13 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 }
 ```
 
-現在您可以在目標訂用帳戶中使用新的 PersonGroup。 
+現在，您可以在目標訂閱中使用新的 PersonGroup。 
 
-若要在未來再次更新目標 PersonGroup，請建立新的 PersonGroup 以接收快照集。 若要這麼做，請依照本指南中的步驟進行。 單一 PersonGroup 物件只能套用一次快照集。
+要將來再次更新目標人員組，請創建新的人員組以接收快照。 為此，請按照本指南中的步驟操作。 單個 PersonGroup 物件只能對它應用一次快照。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在您完成資料移轉之後，請手動刪除快照集物件。
+完成遷移人臉資料後，手動刪除快照物件。
 
 ```csharp
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
@@ -230,10 +230,10 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，請參閱相關的 API 參考檔、探索使用快照集功能的範例應用程式，或遵循操作指南開始使用此處所述的其他 API 作業：
+接下來，請參閱相關的 API 參考文檔，流覽使用快照功能的示例應用，或按照操作指南開始使用此處提到的其他 API 操作：
 
 - [快照集參考文件 (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [臉部快照集範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [人臉快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [新增臉部](how-to-add-faces.md)
-- [偵測影像中的臉部](HowtoDetectFacesinImage.md)
+- [檢測圖像中的人臉](HowtoDetectFacesinImage.md)
 - [識別影像中的臉部](HowtoIdentifyFacesinImage.md)

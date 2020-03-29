@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500605"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>使用 Bing 影片搜尋 API 來取得發燒影片 
@@ -39,7 +39,7 @@ Host: api.cognitive.microsoft.com
 
 下列市場支援發燒影片。  
  
--   en-AU (英文，澳大利亞)  
+-   en-AU (英文，澳洲)  
 -   en-CA (英文，加拿大)  
 -   en-GB (英文，英國)  
 -   en-ID (英文，印尼)  

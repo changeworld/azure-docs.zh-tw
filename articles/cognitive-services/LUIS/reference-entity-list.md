@@ -1,33 +1,33 @@
 ---
-title: 列出實體類型-LUIS
-description: 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用 [建議] 功能，根據目前的清單查看新單字的建議。
+title: 清單實體類型 - LUIS
+description: 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用建議功能，以根據目前的清單查看適用於新字組的建議。
 ms.topic: reference
 ms.date: 03/12/2020
 ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297232"
 ---
 # <a name="list-entity"></a>清單實體
 
 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
 
-清單實體不是機器學習。 它是全文相符的項目。 LUIS 會將與任何清單中項目相符的項目，在回應中標示為實體。
+清單實體不是機器學習實體。 它是全文相符的項目。 LUIS 會將與任何清單中項目相符的項目，在回應中標示為實體。
 
-**當文字資料時，實體就很適合：**
+**當文字資料有下列特性時，最適用此實體：**
 
 * 是已知的組合。
-* 不常變更。 如果您需要經常變更清單，或想要讓清單自我展開，使用片語清單提升的簡單實體是較好的選擇。
+* 不會經常改變。 如果需要經常更改清單或希望清單進行自我擴展，則使用片語清單提升的簡單實體是一個更好的選擇。
 * 此組合不會超過此實體類型的最大 LUIS [界限](luis-boundaries.md)。
-* 語句中的文字是與同義字或標準名稱不區分大小寫的相符項。 LUIS 不會使用比對的清單。 不會使用清單實體解析模糊比對、詞幹分析、複數和其他變化。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
+* 話語中的文本與同義字或正式名稱不區分大小寫。 LUIS 不會使用超出匹配範圍的清單。 模糊比對、詞幹、複數和其他變體不會使用清單實體解析。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
 
 ![清單實體](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>要匯入到清單實體的範例 json
+## <a name="example-json-to-import-into-list-entity"></a>要導入清單實體的示例 .json
 
-  您可以使用下列 json 格式，將值匯入到現有的清單實體：
+  您可以使用以下 .json 格式將值導入現有清單實體：
 
   ```JSON
   [
@@ -57,7 +57,7 @@ ms.locfileid: "79297232"
 |清單項目|項目同義字|
 |---|---|
 |`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
@@ -84,7 +84,7 @@ ms.locfileid: "79297232"
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 
-如果在查詢字串中設定 `verbose=false`，這就是 JSON：
+如果在`verbose=false`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ ms.locfileid: "79297232"
 }
 ```
 
-如果在查詢字串中設定 `verbose=true`，這就是 JSON：
+如果在`verbose=true`查詢字串中設置，則這是 JSON：
 
 ```json
 "entities": {
@@ -127,9 +127,9 @@ ms.locfileid: "79297232"
 
 |資料物件|實體名稱|值|
 |--|--|--|
-|列出實體|`Cities`|`paris`|
+|清單實體|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本[教學](tutorial-list-entity.md)課程中，您將瞭解如何使用**清單實體**，從已知專案清單中解壓縮完全相符的文字。
+在[本教程](tutorial-list-entity.md)中，瞭解如何使用**清單實體**從已知項清單中提取文本的精確匹配。

@@ -1,7 +1,7 @@
 ---
 title: 在 Azure 容器實例上部署 LUIS 容器
 titleSuffix: Azure Cognitive Services
-description: 將 LUIS 容器部署至 Azure 容器實例，並在網頁瀏覽器中進行測試。
+description: 將 LUIS 容器部署到 Azure 容器實例，並在 Web 瀏覽器中測試它。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: dapine
 ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75689462"
 ---
-# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>將 Language Understanding （LUIS）容器部署至 Azure 容器實例
+# <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>將語言理解 （LUIS） 容器部署到 Azure 容器實例
 
-瞭解如何將認知服務[LUIS](luis-container-howto.md)容器部署至 Azure[容器實例](https://docs.microsoft.com/azure/container-instances/)。 此程式示範如何建立異常偵測器資源。 然後，我們會討論如何提取相關聯的容器映射。 最後，我們強調了從瀏覽器執行這兩個協調流程的能力。 使用容器可以將開發人員的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
+瞭解如何將認知服務[LUIS](luis-container-howto.md)容器部署到 Azure[容器實例](https://docs.microsoft.com/azure/container-instances/)。 此過程演示了異常檢測器資源的創建。 然後，我們討論拉關聯的容器映射。 最後，我們強調從瀏覽器執行兩者業務流程的能力。 使用容器可以將開發人員的注意力從管理基礎結構轉移到專注于應用程式開發上。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 
@@ -27,16 +27,16 @@ ms.locfileid: "75689462"
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 
-LUIS 容器需要在執行時間提取的 `.gz` 模型檔案。 容器必須能夠透過容器實例的磁片區掛接來存取此模型檔案。 如需建立 Azure 檔案共用的相關資訊，請參閱[建立檔案共用](../../storage/files/storage-how-to-create-file-share.md)。 記下 [Azure 儲存體帳戶名稱]、[金鑰] 和 [檔案共用名稱]，因為您稍後需要用到它們。
+LUIS 容器需要在`.gz`運行時拉取的模型檔。 容器必須能夠通過容器實例的卷裝載訪問此模型檔。 有關創建 Azure 檔共用的資訊，請參閱[創建檔共用](../../storage/files/storage-how-to-create-file-share.md)。 記下 Azure 存儲帳戶名稱、金鑰和檔共用名稱稱，因為稍後將需要它們。
 
-### <a name="export-and-upload-packaged-luis-app"></a>匯出和上傳已封裝的 LUIS 應用程式
+### <a name="export-and-upload-packaged-luis-app"></a>匯出和上傳打包的 LUIS 應用程式
 
-若要將 LUIS 模型（已封裝應用程式）上傳至 Azure 檔案共用，您必須<a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">先<span class="docon docon-navigate-external x-hidden-focus"></span>從 LUIS 入口網站匯出它</a>。 在 Azure 入口網站中，流覽至儲存體帳戶資源的 [**總覽**] 頁面，然後選取 [檔案**共用**]。 選取您最近建立的檔案共用名稱，然後選取 [**上傳**] 按鈕。
+要將 LUIS 模型（打包應用）上載到 Azure 檔共用，您需要<a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">首先<span class="docon docon-navigate-external x-hidden-focus"></span>從 LUIS 門戶匯出它</a>。 從 Azure 門戶導航到存儲帳戶資源的 **"概述"** 頁，然後選擇 **"檔共用**"。 選擇您最近創建的檔共用名稱稱，然後選擇 **"上傳**"按鈕。
 
 > [!div class="mx-imgBorder"]
-> ![上傳至檔案共用](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+> ![上載到檔共用](media/luis-how-to-deploy-to-aci/upload-file-share.png)
 
-上傳 LUIS 模型檔案。
+上傳 LUIS 模型檔。
 
 [!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 

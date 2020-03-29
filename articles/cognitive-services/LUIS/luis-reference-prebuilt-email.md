@@ -1,5 +1,5 @@
 ---
-title: LUIS 預先建立的實體電子郵件參考
+title: LUIS 預構建實體電子郵件引用
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 email 實體資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273473"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的電子郵件預先建置實體
@@ -23,13 +23,13 @@ ms.locfileid: "78273473"
 
 ## <a name="resolution-for-prebuilt-email"></a>解析預先建置的電子郵件
 
-系統會針對查詢傳回下列實體物件：
+為查詢返回以下實體物件：
 
 `please send the information to patti@contoso.com`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 會將 `verbose` 參數設定為 `false`：
+以下 JSON 的`verbose`參數設置為`false`：
 
 ```json
 "entities": {
@@ -40,7 +40,7 @@ ms.locfileid: "78273473"
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
-下列 JSON 會將 `verbose` 參數設定為 `true`：
+以下 JSON 的`verbose`參數設置為`true`：
 
 ```json
 "entities": {

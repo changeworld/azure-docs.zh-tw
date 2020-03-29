@@ -1,7 +1,7 @@
 ---
 title: Bing 深入解析的範例 - Bing 圖像式搜尋
 titleSuffix: Azure Cognitive Services
-description: 本文包含的範例會示範 Bing 圖像式搜尋如何在 Bing.com 上使用和顯示影像深入解析。
+description: 本文包含必應視覺化搜索如何使用和顯示Bing.com的圖像見解的示例。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111647"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 深入解析使用方式的範例
@@ -23,29 +23,29 @@ ms.locfileid: "74111647"
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding 深入解析範例
 
-以下顯示第一個網頁的連結，並可讓使用者展開和折迭包含影像的其他網頁清單：
+下面顯示指向第一個網頁的連結，並允許使用者展開和折疊包含圖像的其他網頁的清單：
 
 ![展開的頁面包括](./media/pages-including.PNG)
 
 ## <a name="shoppingsources-insight-example"></a>ShoppingSources 深入解析範例
 
-以下顯示 Bing 可能如何顯示影像中所示產品的購物來源：
+下面顯示了必應如何顯示圖片中看到的產品的購物源：
 
 ![購物來源](./media/shopping-sources.PNG)
 
 ## <a name="visualsearch-insight-example"></a>VisualSearch 深入解析範例
 
-以下顯示 Bing 如何顯示以視覺效果相似的影像（請參閱範例中的**相關影像**）：
+下面顯示了必應如何顯示視覺上相似的圖像（請參閱示例中**的相關圖像**）：
 
 ![在視覺效果上類似的影像](./media/similar-images.PNG)
 
 ## <a name="recipes-insight-example"></a>Recipes 深入解析範例
 
-以下顯示 Bing 對於影像顯示的食物如何顯示食譜。 此範例可讓使用者知道有可用的配方：
+以下顯示 Bing 對於影像顯示的食物如何顯示食譜。 該示例讓使用者知道有可用的配方：
 
 ![食譜和頁面包括](./media/recipes-pages-including.PNG)
 
- 和會在使用者展開清單時提供食譜的連結：
+ 並在使用者展開清單時提供指向配方的連結：
 
 ![展開的食譜頁面包括](./media/expanded-recipes-pages-including.PNG)
 
@@ -57,7 +57,7 @@ ms.locfileid: "74111647"
 
 ## <a name="entity-insight-example"></a>Entity 深入解析範例
 
-以下顯示 Bing 如何顯示影像顯示的實體 (人、地、事) 相關的資訊。 如果使用者按一下實體連結，使用者會進入實體的 [Bing.com 搜尋結果] 頁面：
+以下顯示 Bing 如何顯示影像顯示的實體 (人、地、事) 相關的資訊。 如果使用者按一下實體連結，則使用者將被帶到實體的Bing.com搜尋結果頁：
 
 ![影像中顯示的實體](./media/entity.PNG)
 
@@ -69,13 +69,13 @@ ms.locfileid: "74111647"
 
 ## <a name="bounding-boxes-and-hot-spots"></a>週框方塊和作用點
 
-非預設標記包含識別標籤套用的影像之中關切區域的週框方塊。 如果週框方塊並未識別整個影像，可使用週框方塊在影像上建立作用點。 使用者可以按一下作用點取得在作用點 (或矩形) 之下找到的內容有關的資訊。 例如，如果影像是高風格影像，則結果可能會包含影像中所顯示之配件的標籤（和周框方塊），例如錢包、珠寶、圍巾等等。 下列範例顯示影像中所顯示之太陽眼鏡的熱點矩形：
+非預設標記包含識別標籤套用的影像之中關切區域的週框方塊。 如果週框方塊並未識別整個影像，可使用週框方塊在影像上建立作用點。 使用者可以按一下作用點取得在作用點 (或矩形) 之下找到的內容有關的資訊。 例如，如果圖像是高時尚圖像，則結果可能包含圖像中顯示的附件的標籤（和邊界框），例如錢包、珠寶、圍巾等。 下面的示例顯示了圖像中顯示的太陽鏡的熱點矩形：
 
 ![週框方塊和作用點](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用您的第一個要求，請參閱[C#](quickstarts/csharp.md)快速入門： | [JAVA](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+要開始使用第一個請求，請參閱快速入門[：C#](quickstarts/csharp.md) | [JAVA](quickstarts/java.md) | [節點.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

@@ -1,59 +1,58 @@
 ### YamlMime:Landing
 title: 對話情節文件
-summary: 探索各種對話案例、交談轉譯或多裝置交談。
+summary: 流覽各種對話方案。 瞭解如何在會議方案中使用對話轉錄或多設備對話，並在話務中心方案中使用轉錄。
 metadata:
-  title: 交談案例檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  title: 對話方案文檔 - 教程，API 參考 - Azure 認知服務 |微軟文檔
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: dapine
-  ms.openlocfilehash: 0df2992564dcf90f6b927b5a917993caec18af45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75254b0b0b3afb391006a422300c0d4cb9d27fdb
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365763"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79479683"
 landingContent:
-- title: 關於對話轉譯
+- title: 關於對話轉錄（會議場景）
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是對話轉譯？
+    - text: 什麼是會議中的對話轉錄？
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: 處理客服中心案例
-      url: call-center-transcription.md
-    - text: 即時對話轉譯
+    - text: 即時對話轉錄
       url: how-to-use-conversation-transcription.md
     - text: 非同步對話轉譯
       url: how-to-async-conversation-transcription.md
-  - linkListType: reference
-    links:
-    - text: 對話轉譯語言支援
-      url: conversation-transcription.md#language-support
-- title: 關於多裝置交談
+- title: 關於多設備對話（會議方案）
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是多裝置對話？
+    - text: 什麼是多設備對話？
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: 開始和加入對話
       url: quickstarts/multi-device-conversation.md
-  - linkListType: reference
+- title: 話務中心轉錄（自訂/代理方案）
+  linkLists:
+  - linkListType: overview
     links:
-    - text: 多重裝置交談語言支援
-      url: multi-device-conversation.md#language-support
-- title: 參考
+    - text: 處理客服中心案例
+      url: call-center-transcription.md
+- title: 參考資料
   linkLists:
   - linkListType: reference
     links:
-    - text: 語音轉譯定價
+    - text: 對話轉錄語言支援
+      url: conversation-transcription.md#language-support
+    - text: 多設備會話語言支援
+      url: multi-device-conversation.md#language-support
+    - text: 語音轉錄定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

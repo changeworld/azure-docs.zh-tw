@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70274599"
 ---
-## <a name="configure-an-environment-variable-for-authentication"></a>設定環境變數以進行驗證
+## <a name="configure-an-environment-variable-for-authentication"></a>配置用於身份驗證的環境變數
 
-應用程式需要驗證其所使用之認知服務的存取權。 若要進行驗證，我們建議您建立環境變數來儲存 Azure 資源的金鑰。 
+應用程式需要驗證對它們使用的認知服務的存取權限。 要進行身份驗證，我們建議創建一個環境變數來存儲 Azure Resources 的鍵。 
 
-擁有金鑰之後，請在執行應用程式的本機電腦上，將它寫入新的環境變數。 若要設定環境變數，請開啟主控台視窗，並遵循您的作業系統所適用的指示。 將`your-key`取代為您資源的其中一個金鑰。
+獲得金鑰後，將其寫入運行應用程式的本地電腦上的新環境變數。 若要設定環境變數，請開啟主控台視窗，並遵循您的作業系統所適用的指示。 替換為`your-key`資源中的一個鍵。
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx COGNITIVE_SERVICE_KEY "your-key"
@@ -25,7 +25,7 @@ setx COGNITIVE_SERVICE_KEY "your-key"
 
 新增環境變數之後，您可能需要重新啟動任何需要讀取環境變數的執行中程式，包括主控台視窗。 例如，如果您使用 Visual Studio 做為編輯器，請在執行範例前重新啟動 Visual Studio。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export COGNITIVE_SERVICE_KEY=your-key
@@ -33,7 +33,7 @@ export COGNITIVE_SERVICE_KEY=your-key
 
 新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 編輯 .bash_profile，然後新增環境變數：
 

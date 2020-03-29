@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390128"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名顯示 Bing Web 搜尋 API 結果  
@@ -30,7 +30,7 @@ ms.locfileid: "66390128"
 
 使用識別碼會較為容易，因為您只需要比對排名識別碼與答案或其中一個結果的識別碼即可。 如果回應物件包含 `id` 欄位，則會同時顯示回應的所有結果。 例如，如果 `News` 物件包含 `id` 欄位，則會同時顯示所有新聞發行項。 如果 `News` 物件未包含 `id` 欄位，則每個新聞發行項都會包含 `id` 欄位，且排名回應會混合新聞發行項與其他答案的結果。  
 
-使用 `answerType` 和 `resultIndex` 會稍微複雜一點。 您會使用 `answerType` 來識別哪個答案包含要顯示的結果。 然後，您會使用 `resultIndex` 為答案的結果編製索引，以顯示結果。 (`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 物件中的欄位名稱)。如果您應該同時顯示回應的所有結果，排名回應項目不會包含 `resultIndex` 欄位。  
+使用 `answerType` 和 `resultIndex` 會稍微複雜一點。 您會使用 `answerType` 來識別哪個答案包含要顯示的結果。 然後，您會使用 `resultIndex` 為答案的結果編製索引，以顯示結果。 （該`answerType`值是["搜索回應"](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse)物件中的欄位的名稱。如果要將所有答案的結果一起顯示，則排名回應項不包括該`resultIndex`欄位。  
 
 ## <a name="ranking-response-example"></a>排名回應範例
 

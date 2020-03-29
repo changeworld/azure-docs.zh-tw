@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221485"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
@@ -30,10 +30,10 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| Language |Locale  |  預建網域 | 預建實體 | 片語清單建議 | \**[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| 語言 |Locale  |  預建網域 | 預建實體 | 片語清單建議 | **[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 美式英文 |`en-US` | ✔ | ✔  |✔|✔|
-| 阿拉伯文（預覽-現代化標準阿拉伯文） |`ar-AR`|-|-|-|-|
+| 阿拉伯文（預覽 - 現代標準阿拉伯文） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷蘭文 |`nl-NL` |✔|  -   |-|✔|
 | 法文 (法國) |`fr-FR` |✔| ✔ |✔ |✔|
@@ -41,7 +41,7 @@ LUIS 可理解下列語言的語句：
 | 德文 |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
 | 義大利文 |`it-IT` |✔| ✔ |✔|✔|
-| *[日文](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|僅限關鍵片語|
+| *[日語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|僅限關鍵片語|
 | 韓文 |`ko-KR` |✔|   -   |-|僅限關鍵片語|
 | 葡萄牙文 (巴西) |`pt-BR` |✔| ✔ |✔ |並非所有的次文化特性|
 | 西班牙文 (西班牙) |`es-ES` |✔| ✔ |✔|✔|
@@ -77,7 +77,7 @@ LUIS 可理解下列語言的語句：
 ## <a name="tokenization"></a>Token 化
 為了執行機器學習，LUIS 根據文化特性將語句分成數個[語彙基元](luis-glossary.md#token)。
 
-|Language|  每個空格或特殊字元 | 字元層級|複合字組|[傳回的 Token 化實體](luis-concept-data-extraction.md#tokenized-entity-returned)
+|語言|  每個空格或特殊字元 | 字元層級|複合字組|[傳回的 Token 化實體](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |阿拉伯文|||||
 |中文||✔||✔|
@@ -94,16 +94,16 @@ LUIS 可理解下列語言的語句：
 |西班牙文 (es-ES)|✔||||
 |西班牙文 (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>自訂 tokenizer 版本
+### <a name="custom-tokenizer-versions"></a>自訂標記器版本
 
-下列文化特性具有自訂 tokenizer 版本：
+以下區域性具有自訂權杖器版本：
 
 |文化特性|版本|目的|
 |--|--|--|
-|德文<br>`de-de`|1.0.0|使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合單字細分成單一元件，以 token 化單字。<br>如果使用者輸入 `Ich fahre einen krankenwagen` 做為語句，就會變成 `Ich fahre einen kranken wagen`。 允許標記 `kranken`，並獨立 `wagen` 為不同的實體。|
-|德文<br>`de-de`|1.0.2|藉由在空間上分割來 token 化單字。<br> 如果使用者輸入 `Ich fahre einen krankenwagen` 做為語句，它會保持為單一權杖。 因此 `krankenwagen` 會標示為單一實體。 |
+|德文<br>`de-de`|1.0.0|使用基於機器學習的標記器將單詞拆分，嘗試將複合詞分解為單個元件，從而標記單詞。<br>如果使用者以話語身份`Ich fahre einen krankenwagen`輸入，則將其翻到`Ich fahre einen kranken wagen`。 允許將和`wagen`單獨`kranken`標記為不同的實體。|
+|德文<br>`de-de`|1.0.2|通過在空格上拆分單詞來標記單詞。<br> 如果使用者以話語身份`Ich fahre einen krankenwagen`輸入，則仍為單個權杖。 因此`krankenwagen`，被標記為單個實體。 |
 
-### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之間遷移
+### <a name="migrating-between-tokenizer-versions"></a>在標記器版本之間遷移
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
@@ -206,6 +206,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Token 化會在應用層級發生。 不支援版本層級 token 化。
+權杖化發生在應用級別。 不支援版本級權杖化。
 
-將檔案匯[入為新的應用程式](luis-how-to-start-new-app.md)，而不是版本。 此動作表示新的應用程式具有不同的應用程式識別碼，但使用檔案中指定的 tokenizer 版本。
+[將檔導入為新應用](luis-how-to-start-new-app.md)，而不是版本。 此操作意味著新應用具有不同的應用 ID，但使用檔中指定的標記器版本。

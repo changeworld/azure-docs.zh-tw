@@ -1,7 +1,7 @@
 ---
 title: 呼叫文字分析 API
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何呼叫 Azure 認知服務文字分析 REST API 和 Postman。
+description: 本文介紹如何調用 Azure 認知服務文本分析 REST API 和 Postman。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221203"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
@@ -42,8 +42,8 @@ ms.locfileid: "79221203"
 | 元素 | 有效值 | 必要項？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
-|`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../text-analytics-supported-languages.md)。 |
-|`language` | 適用於[支援語言](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)的 2 個字元 [ISO 639-1](../text-analytics-supported-languages.md) 代碼 | 不定 | 針對情感分析、關鍵片語擷取及實體連結為必要，針對語言偵測為選擇性。 排除它將不會產生錯誤，但分析的效果會因此而減弱。 語言代碼應該對應至您提供的 `text`。 |
+|`text` | 非結構化原始文本，最多 5，120 個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../text-analytics-supported-languages.md)。 |
+|`language` | 適用於[支援語言](../text-analytics-supported-languages.md)的 2 個字元 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代碼 | 不定 | 針對情感分析、關鍵片語擷取及實體連結為必要，針對語言偵測為選擇性。 排除它將不會產生錯誤，但分析的效果會因此而減弱。 語言代碼應該對應至您提供的 `text`。 |
 
 如需限制的詳細資訊，請參閱[文字分析概觀 > 資料限制](../overview.md#data-limits)。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "79221203"
 
 1. 在 Postman 中：
 
-   + 選擇 [Post] 作為要求類型。
+   + 選擇 [Post]**** 作為要求類型。
    + 將您從入口網站頁面所複製的端點貼上。
    + 附加資源。
 
@@ -74,7 +74,7 @@ ms.locfileid: "79221203"
 
    ![具有端點和標頭的要求螢幕擷取畫面](../media/postman-request-keyphrase-1.png)
 
-4. 按一下 [Body] \(主體\) 並選擇 [raw] \(未經處理\) 作為格式。
+4. 按一下 [Body]**** \(主體\) 並選擇 [raw]**** \(未經處理\) 作為格式。
 
    ![具有 [body] \(主體\) 設定的要求螢幕擷取畫面](../media/postman-request-body-raw.png)
 
@@ -83,19 +83,19 @@ ms.locfileid: "79221203"
   + [語言偵測](text-analytics-how-to-language-detection.md)  
   + [關鍵片語擷取](text-analytics-how-to-keyword-extraction.md)  
   + [情感分析](text-analytics-how-to-sentiment-analysis.md)  
-  + [實體辨識](text-analytics-how-to-entity-linking.md)  
+  + [實體識別](text-analytics-how-to-entity-linking.md)  
 
 
-6. 按一下 [Send] \(傳送\) 以提交要求。 請參閱總覽中的[資料限制](../overview.md#data-limits)一節，以取得您每分鐘和第二次可以傳送的要求數目的相關資訊。
+6. 按一下 [Send]**** \(傳送\) 以提交要求。 有關每分鐘每秒可發送的請求數的資訊，請參閱概述中[的資料限制](../overview.md#data-limits)部分。
 
    在 Postman 中，回應會以單一 JSON 文件的形式顯示在下一個視窗中，且在要求中所提供的每個文件識別碼都會有一個項目。
 
 ## <a name="see-also"></a>另請參閱 
 
- [文字分析概觀](../overview.md)  
- [常見問題集 (FAQ)](../text-analytics-resource-faq.md)
+ [文本分析概述](../overview.md)  
+ [常見問題 （FAQ）](../text-analytics-resource-faq.md)
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [偵測語言](text-analytics-how-to-language-detection.md)
+> [偵測語言種類](text-analytics-how-to-language-detection.md)

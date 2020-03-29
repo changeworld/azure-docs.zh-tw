@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: pafarley
 ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754164"
 ---
 # <a name="video-moderation-with-human-review"></a>使用人工審核進行影片仲裁
 
-使用內容仲裁的電腦輔助[影片審核](video-moderation-api.md)和[人工審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人（明確）和猥褻（暗示性）內容的影片和文字記錄，以取得您企業的最佳結果。
+使用內容管理員的機器輔助[視頻審核](video-moderation-api.md)和[人工審閱工具](Review-Tool-User-Guide/human-in-the-loop.md)，對成人（顯式）和淫穢（暗示性）內容的視頻和腳本進行適度，以獲得最適合您業務的效果。
 
 ## <a name="video-trained-classifier-preview"></a>經過影片訓練的分類器 (預覽)
 
@@ -94,7 +94,7 @@ ms.locfileid: "72754164"
 
 ![影片審查工具畫面檢視](images/video-review-frames-view-apply-tags.PNG)
 
-## <a name="transcript-moderation"></a>文字記錄審核
+## <a name="transcript-moderation"></a>文字記錄審查
 
 對於帶有語音的影片，通常也需要對具冒犯性的語音進行審查。 您可使用 Azure 媒體索引器服務將語音轉換成文字，並使用 Content Moderator 的審查 API 來提交文字記錄，以便在審查工具內進行文字審核。
 

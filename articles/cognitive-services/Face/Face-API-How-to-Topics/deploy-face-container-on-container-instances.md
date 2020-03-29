@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 容器實例中執行臉部容器
+title: 在 Azure 容器實例中運行面容器
 titleSuffix: Azure Cognitive Services
-description: 將臉部容器部署至 Azure 容器實例，並在網頁瀏覽器中進行測試。
+description: 將面容器部署到 Azure 容器實例，並在 Web 瀏覽器中測試它。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 4f8a08697443ec6920b3fa73de19a950e54e7f40
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76716254"
 ---
-# <a name="deploy-the-face-container-to-azure-container-instances"></a>將臉部容器部署至 Azure 容器實例
+# <a name="deploy-the-face-container-to-azure-container-instances"></a>將面容器部署到 Azure 容器實例
 
-瞭解如何將認知服務[臉部](../face-how-to-install-containers.md)容器部署至 Azure[容器實例](https://docs.microsoft.com/azure/container-instances/)。 此程式示範如何建立 Azure 臉部資源。 然後，我們會討論如何提取相關聯的容器映射。 最後，我們強調了從瀏覽器執行這兩個協調流程的能力。 使用容器可以將開發人員的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
+瞭解如何將認知服務[面](../face-how-to-install-containers.md)容器部署到 Azure[容器實例](https://docs.microsoft.com/azure/container-instances/)。 此過程演示了創建 Azure 面資源。 然後，我們討論拉關聯的容器映射。 最後，我們強調從瀏覽器執行兩者業務流程的能力。 使用容器可以將開發人員的注意力從管理基礎結構轉移到專注于應用程式開發上。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 

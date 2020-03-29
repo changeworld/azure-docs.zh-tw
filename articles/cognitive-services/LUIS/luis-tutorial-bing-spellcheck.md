@@ -1,5 +1,5 @@
 ---
-title: 更正拼錯的文字-LUIS
+title: 更正拼寫錯誤的單詞 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 將 Bing 拼字檢查 API V7 新增至 LUIS 端點查詢，可更正語句中拼錯的字組。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74225454"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用 Bing 拼字檢查更正拼錯的字組
@@ -38,7 +38,7 @@ ms.locfileid: "74225454"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 在左上角選取 [建立資源]。
+2. 在左上角選取 [建立資源]****。
 
 3. 在搜尋方塊中，輸入 `Bing Spell Check API V7`。
 
@@ -46,17 +46,17 @@ ms.locfileid: "74225454"
 
 4. 選取此服務。 
 
-5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立] 開始訂用帳戶建立程序。 
+5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立]**** 開始訂用帳戶建立程序。 
 
 6. 在下一個面板中，輸入您的服務設定。 等候服務建立程序完成。
 
     ![輸入服務設定](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. 選取左側導覽列上 [我的最愛] 標題底下的 [所有資源]。
+7. 選取左側導覽列上 [我的最愛]**** 標題底下的 [所有資源]****。
 
-8. 選取新服務。 其類型為 [認知服務] 且位置為 [全域]。 
+8. 選取新服務。 其類型為 [認知服務]**** 且位置為 [全域]****。 
 
-9. 在主面板中，選取 [金鑰] 以查看新的金鑰。
+9. 在主面板中，選取 [金鑰]**** 以查看新的金鑰。
 
     ![擷取金鑰](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
@@ -96,12 +96,12 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼字錯誤
 
-如果您不想要使用 Bing 拼寫檢查 API v7 服務，則必須新增正確和不正確的拼寫。 
+如果不想使用必應拼寫檢查 API v7 服務，則需要添加正確且不正確的拼寫。 
 
-有兩種解決方案：
+兩種解決方案是：
 
-* 標籤範例語句，其中包含所有不同的拼寫，讓 LUIS 可以學習正確的拼寫及打字錯誤。 相較於使用拼字檢查工具，此選項需要更多標記工作。
-* 建立包含單字所有變化的片語清單。 透過此解決方案，您不需要在範例語句中標記單字變化。 
+* 標記具有所有不同拼寫的示例陳述，以便 LUIS 可以學習正確的拼寫以及拼寫錯誤。 相較於使用拼字檢查工具，此選項需要更多標記工作。
+* 創建包含單詞所有變體的片語清單。 使用此解決方案，您無需在示例陳述中標記單詞變體。 
 
 ## <a name="publishing-page"></a>發佈頁面
 [發佈](luis-how-to-publish-app.md) 頁面具有 **啟用 Bing 拼字檢查工具** 核取方塊。 這方便於建立金鑰並理解如何變更端點 URL。 您仍然必須使用正確的端點參數，以便更正每個語句的拼字。 

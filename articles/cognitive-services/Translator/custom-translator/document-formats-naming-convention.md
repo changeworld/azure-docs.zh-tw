@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595861"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文件格式和命名慣例指引
@@ -22,7 +22,7 @@ ms.locfileid: "68595861"
 
 下表包含所有可供您自行建置翻譯系統的支援檔案格式：
 
-| 格式            | 延伸模組   | 描述                                                                                                                                                                                                                                                                    |
+| [格式]            | 延伸模組   | 描述                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 平行文件格式，翻譯記憶體系統的匯出。 使用的語言定義於檔案內。                                                                                                                                                              |
 | TMX               | .TMX         | 平行文件格式，翻譯記憶體系統的匯出。 使用的語言定義於檔案內。                                                                                                                                                              |
@@ -31,13 +31,13 @@ ms.locfileid: "68595861"
 | Microsoft Word    | .DOCX        | Microsoft Word 文件                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat 可攜式文件                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML 文件                                                                                                                                                                                                                                                                  |
-| 文字檔         | .TXT         | UTF-16 或 UTF-8 編碼的文字檔。 檔案名不能包含日文字元。                                                                                                                                                                                        |
+| 文字檔         | .TXT         | UTF-16 或 UTF-8 編碼文字檔。 檔案名不能包含日語字元。                                                                                                                                                                                        |
 | 對齊的文字檔 | .ALIGN       | 副檔名 `.ALIGN` 是一種特殊的副檔名，可供您在確知文件組中的句子已適當對齊時使用。 如果您提供 `.ALIGN` 檔案，自訂翻譯工具就不會為您對齊句子。 |
 | Excel 檔案        | .XLSX        | Excel 檔案 (2013 或更新版本)。 試算表的第一行/列應為語言代碼。                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>字典格式
 
-針對字典, 自訂翻譯支援定型集支援的所有檔案格式。 如果您使用 Excel 字典, 試算表的第一行/列應為語言代碼。
+對於字典，自訂翻譯器支援訓練集支援的所有檔案格式。 如果使用 Excel 字典，試算表的第一行/行應該是語言代碼。
 
 ## <a name="zip-file-formats"></a>ZIP 檔案格式
 

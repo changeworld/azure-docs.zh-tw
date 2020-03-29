@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 530a8848eceecb1a15d14ce1fef2aa58a3ef5908
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f8d19ded32f7f4a90b23106b6cec53418eef407e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221375"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458030"
 ---
-# <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
+# <a name="install-and-run-read-containers-preview"></a>安裝並運行讀取容器（預覽）
 
-容器可讓您在自己的環境中執行電腦視覺 Api。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將瞭解如何下載、安裝及執行電腦視覺容器。
+容器使您能夠在您自己的環境中運行電腦視覺 API。 容器非常適合特定的安全和資料治理要求。 在本文中，您將學習如何下載、安裝和運行電腦視覺容器。
 
-單一 Docker 容器 [*讀取*] 可供電腦視覺。 *讀取*容器可讓您從具有不同表面和背景的各種物件影像中偵測及解壓縮*印刷文字*，例如收據、海報和名片。 此外，*讀取*容器會偵測影像中的*手寫文字*，並提供 PDF、TIFF 和多分頁檔案支援。 如需詳細資訊，請參閱[讀取](concept-recognizing-text.md#read-api)API 檔。
+單個 Docker 容器*Read*可用於電腦視覺。 *"讀取"* 容器允許您從不同表面和背景的各種物件（如收據、海報和名片）的圖像中檢測和提取*列印的文本*。 此外，*讀取*容器可檢測圖像中的*手寫文本*，並提供 PDF、TIFF 和多頁檔支援。 有關詳細資訊，請參閱[讀取](concept-recognizing-text.md#read-api)API 文檔。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-使用容器之前，您必須符合下列必要條件：
+在使用容器之前，必須滿足以下先決條件：
 
 |必要|目的|
 |--|--|
-|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
+|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
-|電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure**電腦視覺**資源和相關聯的 API 金鑰端點 URI。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有才能啟動容器。<br><br>**{API_KEY}** ： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}** ： [**總覽**] 頁面上所提供的端點|
+|電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure**電腦視覺**資源和關聯的 API 鍵端點 URI。 這兩個值都可以在資源的"概述"和"鍵"頁上使用，並且需要啟動容器。<br><br>**[API_KEY]**：**金鑰**頁上的兩個可用資源鍵之一<br><br>**[ENDPOINT_URI]**：**概述**頁上提供的終結點|
 
 ## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
 
@@ -46,15 +46,15 @@ ms.locfileid: "79221375"
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension 支援
+### <a name="advanced-vector-extension-support"></a>高級向量擴展支援
 
-**主**電腦是執行 docker 容器的電腦。 主機*必須支援*「[先進向量延伸](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)」（AVX2）。 您可以使用下列命令來檢查 Linux 主機上的 AVX2 支援：
+**主機**是運行 Docker 容器的電腦。 主機*必須支援*[高級向量擴展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)（AVX2）。 可以使用以下命令檢查 Linux 主機上的 AVX2 支援：
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> *必須*要有主機電腦，才能支援 AVX2。 如果沒有 AVX2 支援，容器*將無法*正確運作。
+> 支援 AVX2*需要*主機。 如果沒有 AVX2 支援，容器*將不能*正常工作。
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
@@ -62,15 +62,15 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 取得容器映像
 
-有可供讀取的容器映射。
+可供讀取的容器映射可用。
 
-| 容器 | Container Registry/存放庫/映射名稱 |
+| 容器 | 容器註冊表 / 存儲庫 / 映射名稱 |
 |-----------|------------|
 | 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下載容器映像。
+使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令下載容器映射。
 
-### <a name="docker-pull-for-the-read-container"></a>讀取容器的 Docker pull
+### <a name="docker-pull-for-the-read-container"></a>讀取容器的 Docker 拉拔
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
@@ -82,14 +82,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 容器位於[主機電腦](#the-host-computer)上時，請透過下列程序來使用容器。
 
-1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 [ 命令有相關](computer-vision-resource-container-config.md)範例`docker run`可供參考。 
-1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。 
+1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](computer-vision-resource-container-config.md)可供參考。 
+1. [查詢容器的預測終結點](#query-the-containers-prediction-endpoint)。 
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 有關如何獲取 和`{ENDPOINT_URI}``{API_KEY}`值的詳細資訊，請參閱[收集所需的參數](#gathering-required-parameters)。
 
-`docker run` 命令的[範例](computer-vision-resource-container-config.md#example-docker-run-commands)可供使用。
+[命令的示例可用。](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -101,12 +101,12 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 從容器映射執行讀取容器。
-* 配置8個 CPU 核心和 16 gb 的記憶體。
-* 公開 TCP 埠5000，並為容器配置虛擬 TTY。
+* 從容器映射運行讀取容器。
+* 分配 8 個 CPU 內核和 16 GB 的記憶體。
+* 公開 TCP 埠 5000 並為容器分配偽 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-[ 命令有相關](./computer-vision-resource-container-config.md#example-docker-run-commands)範例`docker run`可供參考。 
+`docker run` 命令有相關[範例](./computer-vision-resource-container-config.md#example-docker-run-commands)可供參考。 
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
@@ -125,13 +125,13 @@ ApiKey={API_KEY}
 
 ### <a name="asynchronous-read"></a>非同步讀取
 
-您可以使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 作業，以非同步方式讀取影像，類似于電腦視覺服務如何使用這些對應的 REST 作業。 非同步 POST 方法會傳回用來做為 HTTP GET 要求之識別碼的 `operationId`。
+可以協同使用`POST /vision/v2.0/read/core/asyncBatchAnalyze`和`GET /vision/v2.0/read/operations/{operationId}`操作非同步讀取圖像，類似于電腦視覺服務使用這些相應的 REST 操作的方式。 非同步 POST 方法將用作`operationId`識別器的 將 返回到 HTTP GET 請求。
 
-從 swagger UI 中選取 `asyncBatchAnalyze`，以在瀏覽器中展開。 然後選取 [立即**試用**] > **選擇 [** 檔案]。 在此範例中，我們將使用下列影像：
+從搖曳的 UI 中，`asyncBatchAnalyze`選擇 在瀏覽器中展開它。 然後選擇 **"嘗試"選擇** > **檔**。 在此示例中，我們將使用以下圖像：
 
-![索引標籤與空格](media/tabs-vs-spaces.png)
+![選項卡 vs 空格](media/tabs-vs-spaces.png)
 
-當非同步 POST 順利執行時，它會傳回**HTTP 202**狀態碼。 作為回應的一部分，會有一個 `operation-location` 標頭，其中包含要求的結果端點。
+當非同步 POST 成功運行時，它將返回**HTTP 202**狀態碼。 作為回應的一部分，有一個`operation-location`標頭保存請求的結果終結點。
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ ApiKey={API_KEY}
  server: Kestrel
 ```
 
-`operation-location` 是完整的 URL，並可透過 HTTP GET 來存取。 以下是從上一個影像執行 `operation-location` URL 的 JSON 回應：
+是`operation-location`完全限定的 URL，可通過 HTTP GET 進行訪問。 以下是從前一個映射執行`operation-location`URL 的 JSON 回應：
 
 ```json
 {
@@ -186,7 +186,7 @@ ApiKey={API_KEY}
 
 ### <a name="synchronous-read"></a>同步讀取
 
-您可以使用 `POST /vision/v2.0/read/core/Analyze` 作業，以同步方式讀取影像。 當影像完整讀取時，只有，API 才會傳回 JSON 回應。 唯一的例外狀況是如果發生錯誤。 當發生錯誤時，會傳回下列 JSON：
+可以使用 該`POST /vision/v2.0/read/core/Analyze`操作同步讀取圖像。 當圖像完整讀取時，API 才會返回 JSON 回應。 唯一的例外是如果發生錯誤。 發生錯誤時，返回以下 JSON：
 
 ```json
 {
@@ -194,7 +194,7 @@ ApiKey={API_KEY}
 }
 ```
 
-JSON 回應物件與非同步版本具有相同的物件圖形。 如果您是 JavaScript 使用者，而且想要型別安全，可以使用下列類型，將 JSON 回應轉換為 `AnalyzeResult` 物件。
+JSON 回應物件與非同步版本具有相同的物件圖。 如果您是 JavaScript 使用者，並且想要型別安全，可以使用以下類型將 JSON 回應轉換為`AnalyzeResult`物件。
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,7 +241,7 @@ export interface Word {
 }
 ```
 
-如需範例使用案例，請參閱<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">這裡<span class="docon docon-navigate-external x-hidden-focus"></span>的 TypeScript 沙箱</a>，然後選取 [**執行**] 以視覺化其便於使用。
+有關示例用例，請參閱<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此處<span class="docon docon-navigate-external x-hidden-focus"></span>的 TypeScript 沙箱</a>，然後選擇 **"運行"** 以視覺化其易用性。
 
 ## <a name="stop-the-container"></a>停止容器
 
@@ -255,7 +255,7 @@ export interface Word {
 
 ## <a name="billing"></a>計費
 
-認知服務容器會使用您 Azure 帳戶上的對應資源，將帳單資訊傳送至 Azure。
+認知服務容器使用 Azure 帳戶上的相應資源向 Azure 發送計費資訊。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -265,14 +265,14 @@ export interface Word {
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行電腦視覺容器的概念和工作流程。 摘要說明：
 
-* 電腦視覺提供適用于 Docker 的 Linux 容器，封裝讀取。
-* 容器映射是從 Azure 中的「容器預覽」容器登錄下載。
+* 電腦視覺為 Docker 提供 Linux 容器，封裝讀取。
+* 容器映射從 Azure 中的"容器預覽"容器註冊表下載。
 * 容器映像是在 Docker 中執行。
-* 您可以藉由指定容器的主機 URI，使用 REST API 或 SDK 來呼叫讀取容器中的作業。
+* 通過指定容器的主機 URI，可以使用 REST API 或 SDK 在讀取容器中叫用作業。
 * 將容器具現化時，您必須指定帳單資訊。
 
 > [!IMPORTANT]

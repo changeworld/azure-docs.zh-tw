@@ -1,7 +1,7 @@
 ---
 title: 列出文字轉語音的語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將瞭解如何使用 Python 取得區域/端點的標準和類神經語音完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。
+description: 在本文中，您將學習如何使用 Python 獲取區域/終結點的標準語音和神經語音的完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77119804"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 取得文字轉語音的語音清單
 
-在本文中，您將瞭解如何使用 Python 取得區域/端點的標準和類神經語音完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。 如需支援區域的清單，請參閱[區域](regions.md)。
+在本文中，您將學習如何使用 Python 獲取區域/終結點的標準語音和神經語音的完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。 如需支援區域的清單，請參閱[區域](regions.md)。
 
-本文需要具有語音服務資源的[Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
+本文需要具有語音[服務資源的 Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)，或您最愛的文字編輯器
@@ -135,5 +135,5 @@ python get-voices.py
 ## <a name="see-also"></a>另請參閱
 
 * [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [建立自訂語音調](how-to-customize-voice-font.md)
+* [建立客製化聲音音調](how-to-customize-voice-font.md)
 * [錄製語音樣本來建立自訂語音](record-custom-voice-samples.md)

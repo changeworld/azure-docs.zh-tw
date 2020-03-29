@@ -6,34 +6,34 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78852005"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入門：使用C#搭配 REST 在 QnA Maker 中建立知識庫
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入門：使用帶有 REST 的 C# 在 QnA 製造商中創建知識庫
 
 本快速入門會逐步引導您以程式設計方式建立及發佈範例 QnA Maker 知識庫。 QnA Maker 會從[資料來源](../Concepts/knowledge-base.md)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
 
 本快速入門會呼叫 QnA Maker API：
-* [建立 KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [取得作業詳細資料](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[參考文件](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[參考文檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* 您必須有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]。
+* [.NET 核心](https://dotnet.microsoft.com/download/dotnet-core)的當前版本 。
+* 您必須有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
 在您慣用的編輯器或 IDE 中，建立新的 .NET Core 應用程式。
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `qna-maker-quickstart` 的新主控台應用程式。 此命令會建立一個簡單的「 C# Hello World」專案，其中包含單一來源檔案： *Program.cs*。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `qna-maker-quickstart` 的新主控台應用程式。 此命令創建一個簡單的"Hello World" C# 專案，該專案具有單個原始檔案 *：Program.cs*。
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
@@ -138,7 +138,7 @@ Build succeeded.
 
 ## <a name="add-createkb-method"></a>新增 CreateKB 方法
 
-下列方法會建立 KB，並重複檢查狀態。  _建立_**作業識別碼**會在 POST 回應標頭欄位 [位置] 中傳回，然後在 GET 要求中作為路由的一部分。 因為 KB 建立可能需要一些時間，您必須重複呼叫來檢查狀態，直到狀態為成功或失敗。 當作業成功時，會在 **resourceLocation** 中傳回 KB 識別碼。
+下列方法會建立 KB，並重複檢查狀態。  _建立_ **作業識別碼**會在 POST 回應標頭欄位 [位置]**** 中傳回，然後在 GET 要求中作為路由的一部分。 因為 KB 建立可能需要一些時間，您必須重複呼叫來檢查狀態，直到狀態為成功或失敗。 當作業成功時，會在 **resourceLocation** 中傳回 KB 識別碼。
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 

@@ -1,7 +1,7 @@
 ---
 title: 沉浸式讀取器 SDK 參考
 titleSuffix: Azure Cognitive Services
-description: 沉浸式讀取器 SDK 包含 JavaScript 程式庫，可讓您將沉浸式讀取器整合到您的應用程式中。
+description: 沉浸式閱讀器 SDK 包含一個 JavaScript 庫，允許您將沉浸式閱讀器集成到應用程式中。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156398"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>沉浸式讀取器 SDK 參考指南
+# <a name="immersive-reader-sdk-reference-guide"></a>沉浸式讀卡機 SDK 參考指南
 
-沉浸式讀取器 SDK 包含 JavaScript 程式庫，可讓您將沉浸式讀取器整合到您的應用程式中。
+沉浸式閱讀器 SDK 包含一個 JavaScript 庫，允許您將沉浸式閱讀器集成到應用程式中。
 
 ## <a name="functions"></a>函式
 
-SDK 會公開函式：
+SDK 公開功能：
 
 - [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
 
@@ -31,9 +31,9 @@ SDK 會公開函式：
 
 - [`ImmersiveReader.renderButtons(options)`](#renderbuttons)
 
-## <a name="launchasync"></a>launchAsync
+## <a name="launchasync"></a>發射Async
 
-在 web 應用程式中的 `iframe` 內啟動沉浸式讀取器。
+在 Web 應用程式中啟動`iframe`沉浸式閱讀器。
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,38 +41,38 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>參數
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD 驗證 token。 |
-| `subdomain` | string | Azure 中您的沉浸式讀取器資源的自訂子域。 |
-| `content` | [內容](#content) | 物件，包含要在沉浸式讀取器中顯示的內容。 |
-| `options` | [選項](#options) | 設定沉浸式讀取器特定行為的選項。 選擇性。 |
+| `token` | 字串 | Azure AD 身份驗證權杖。 |
+| `subdomain` | 字串 | Azure 中沉浸式讀取器資源的自訂子域。 |
+| `content` | [內容](#content) | 包含要在沉浸式閱讀器中顯示的內容的物件。 |
+| `options` | [選項](#options) | 用於配置沉浸式讀取器的某些行為的選項。 選擇性。 |
 
 ### <a name="returns"></a>傳回值
 
-傳回 `Promise<LaunchResponse>`，這會在載入沉浸式讀取器時解析。 `Promise` 會解析為[`LaunchResponse`](#launchresponse)物件。
+返回`Promise<LaunchResponse>`一個，該解析在載入沉浸式讀取器時。 對`Promise`[`LaunchResponse`](#launchresponse)物件的解析。
 
 ### <a name="exceptions"></a>例外狀況
 
-如果無法載入沉浸式讀取器，傳回的 `Promise` 將會遭到拒絕，並具有[`Error`](#error)物件。 如需詳細資訊，請參閱[錯誤碼](#error-codes)。
+如果沉`Promise`浸式讀取器無法[`Error`](#error)載入，則返回的物件將被拒絕。 有關詳細資訊，請參閱[錯誤代碼](#error-codes)。
 
 ## <a name="close"></a>關閉
 
 關閉沉浸式讀取器。
 
-此函式的範例使用案例是在 [[選項](#options)] 中設定 ```hideExitButton: true``` 來隱藏 [結束] 按鈕。 然後，另一個按鈕（例如，行動電話標頭的上一頁箭號）可以在按一下時呼叫這個 ```close``` 函式。
+此函數的示例用例是，如果退出按鈕通過在```hideExitButton: true```[選項](#options)中設置而隱藏。 然後，當按一下該按鈕時，可以調用其他```close```按鈕（例如移動標頭的後箭頭）。
 
 ```typescript
 close(): void;
 ```
 
-## <a name="renderbuttons"></a>renderButtons
+## <a name="renderbuttons"></a>渲染按鈕
 
-此函式會將檔的樣式和更新內容， 如果提供 ```options.elements```，則此函式會在 ```options.elements```內呈現按鈕。 否則，按鈕將會呈現在具有類別 ```immersive-reader-button```的檔元素內。
+此功能可樣式並更新文檔的沉浸式讀取器按鈕元素。 如果```options.elements```提供，則此函數將在 中```options.elements```呈現按鈕。 否則，按鈕將在具有 類```immersive-reader-button```的文件項目中呈現。
 
-當視窗載入時，SDK 會自動呼叫此函式。
+當視窗載入時，SDK 會自動調用此功能。
 
-如需更多呈現選項，請參閱[選擇性屬性](#optional-attributes)。
+有關更多渲染選項[，請參閱可選屬性](#optional-attributes)。
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
@@ -80,15 +80,15 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>參數
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 設定 renderButtons 函數之特定行為的選項。 選擇性。 |
+| `options` | [渲染按鈕選項](#renderbuttonsoptions) | 用於配置呈現按鈕函數的某些行為的選項。 選擇性。 |
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
 ### <a name="content"></a>內容
 
-包含要顯示在沉浸式讀取器中的內容。
+包含要在沉浸式閱讀器中顯示的內容。
 
 ```typescript
 {
@@ -99,7 +99,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="chunk"></a>區塊
 
-資料的單一區塊，會傳遞給沉浸式讀取器的內容。
+單個資料塊，將傳遞到沉浸式讀取器的內容中。
 
 ```typescript
 {
@@ -109,9 +109,9 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
-### <a name="launchresponse"></a>LaunchResponse
+### <a name="launchresponse"></a>啟動回應
 
-包含 `ImmersiveReader.launchAsync`呼叫的回應。
+包含從調用 到`ImmersiveReader.launchAsync`的回應。
 
 ```typescript
 {
@@ -120,9 +120,9 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
-### <a name="cookiepolicy-enum"></a>CookiePolicy 列舉
+### <a name="cookiepolicy-enum"></a>Cookie 政策枚舉
 
-用來為沉浸式讀取器的 cookie 使用方式設定原則的列舉。 請參閱[選項](#options)。
+用於設置沉浸式閱讀器 Cookie 使用策略的枚舉。 請參閱[選項](#options)。
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -130,27 +130,27 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>支援的 MIME 類型
 
-| MIME 類型 | 說明 |
+| MIME 類型 | 描述 |
 | --------- | ----------- |
 | text/plain | 純文字。 |
 | text/html | HTML 內容。 [深入了解](#html-support)|
-| application/mathml + xml | 數學標記語言（MathML）。 [深入了解](./how-to/display-math.md)。
-| 應用程式/application. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml 檔 | Microsoft Word .docx 格式檔。
+| 應用程式/mathml_xml | 數學標記語言（數學ML）。 [深入了解](./how-to/display-math.md)。
+| 應用程式/vnd.openxml 格式-辦公室文檔.文書處理ml.document | 微軟 Word .docx 格式文檔。
 
 ### <a name="html-support"></a>HTML 支援
 
 | HTML | 支援的內容 |
 | --------- | ----------- |
-| 字型樣式 | 粗體、斜體、底線、程式碼、刪除線、上標、下標 |
-| 未排序的清單 | 光碟、圓形、正方形 |
-| 排序清單 | 十進位、上 Alpha、小寫、英數位元、上下羅馬字母、小寫 |
-| 超連結 | 即將登場 |
+| 字體樣式 | 粗體、斜體、底線、代碼、打擊、超編、下標 |
+| 未排序清單 | 光碟， 圓， 方形， 圓， 圓， 圓， 圓， 圓， 圓 |
+| 已訂購清單 | 十進位， 上阿爾法， 下阿爾法， 上羅馬， 下羅馬 |
+| 超連結 | 敬請期待 |
 
-不支援的標記會以同等方式呈現。 目前不支援影像和資料表。
+不支援的標記將呈現比較。 當前不支援圖像和表。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
-包含屬性，可設定沉浸式讀取器的特定行為。
+包含配置沉浸式讀取器某些行為的屬性。
 
 ```typescript
 {
@@ -166,9 +166,9 @@ enum CookiePolicy { Disable, Enable }
 }
 ```
 
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+### <a name="renderbuttonsoptions"></a>渲染按鈕選項
 
-呈現沉浸式讀取器按鈕的選項。
+用於渲染沉浸式讀取器按鈕的選項。
 
 ```typescript
 {
@@ -178,7 +178,7 @@ enum CookiePolicy { Disable, Enable }
 
 ### <a name="error"></a>錯誤
 
-包含錯誤的相關資訊。
+包含有關錯誤的資訊。
 
 ```typescript
 {
@@ -189,34 +189,34 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="error-codes"></a>錯誤碼
 
-| 程式碼 | 說明 |
+| 程式碼 | 描述 |
 | ---- | ----------- |
-| BadArgument | 提供的引數無效。如需詳細資料，請參閱 `message`。 |
-| 逾時 | 沉浸式讀取器無法在指定的超時時間內載入。 |
+| BadArgument | 提供的參數無效，請參閱`message`詳細資訊。 |
+| 逾時 | 沉浸式讀取器無法在指定的超時內載入。 |
 | TokenExpired | 提供的權杖已過期。 |
-| 調整執行速度 | 已超過呼叫率限制。 |
+| 調整執行速度 | 已超出呼叫速率限制。 |
 
-## <a name="launching-the-immersive-reader"></a>啟動沉浸式讀取器
+## <a name="launching-the-immersive-reader"></a>啟動沉浸式閱讀器
 
-SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 請使用 `immersive-reader-button` 類別屬性來啟用此樣式。 如需詳細資訊，請參閱 [這篇文章](./how-to-customize-launch-button.md) 。
+SDK 為啟動沉浸式讀取器的按鈕提供預設樣式。 使用`immersive-reader-button`類屬性啟用此樣式。 有關詳細資訊，請參閱[此文章](./how-to-customize-launch-button.md)。
 
 ```html
 <div class='immersive-reader-button'></div>
 ```
 
-### <a name="optional-attributes"></a>選擇性屬性
+### <a name="optional-attributes"></a>可選屬性
 
-使用下列屬性來設定按鈕的外觀與風格。
+使用以下屬性配置按鈕的外觀。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --------- | ----------- |
-| `data-button-style` | 設定按鈕的樣式。 可以是 `icon`、`text` 或 `iconAndText`。 預設為 `icon`。 |
-| `data-locale` | 設定地區設定。 例如，`en-US` 或 `fr-FR`。 預設為英文 `en`。 |
-| `data-icon-px-size` | 設定圖示的大小（以圖元為單位）。 預設為20px。 |
+| `data-button-style` | 設置按鈕的樣式。 可以是 `icon`、`text` 或 `iconAndText`。 預設為 `icon`。 |
+| `data-locale` | 設置地區設定。 例如，`en-US` 或 `fr-FR`。 預設為英語`en`。 |
+| `data-icon-px-size` | 設置以圖元為單位的圖示大小。 預設值為 20px。 |
 
 ## <a name="browser-support"></a>瀏覽器支援
 
-使用下列瀏覽器的最新版本，取得沉浸式讀取器的最佳體驗。
+使用以下瀏覽器的最新版本，獲得沉浸式閱讀器的最佳體驗。
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -227,4 +227,4 @@ SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 請使用 `imme
 ## <a name="next-steps"></a>後續步驟
 
 * 探索 [GitHub 上的沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [快速入門：建立可啟動沉浸式讀取器的 webC#應用程式（）](./quickstart.md)
+* [快速入門：創建啟動沉浸式閱讀器 （C#） 的 Web 應用](./quickstart.md)

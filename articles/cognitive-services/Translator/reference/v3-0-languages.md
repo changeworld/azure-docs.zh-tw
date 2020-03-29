@@ -1,7 +1,7 @@
 ---
 title: 翻譯工具文字 API 語言方法
 titleSuffix: Azure Cognitive Services
-description: 語言方法會取得翻譯工具文字 API 的其他作業目前支援的語言集合。
+description: 語言方法獲取翻譯文本 API 的其他操作當前支援的語言集。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73835839"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0：語言
@@ -37,11 +37,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td><em>必要參數</em>。<br/>用戶端要求的 API 版本。 值必須是 `3.0`。</td>
+    <td>必要參數<em></em>。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>選擇性參數。<br/>以逗號分隔的名稱列表，用於定義要傳回的語言群組。 允許的群組名稱為：`translation`、`transliteration` 和 `dictionary`。 如果未提供任何範圍，則會傳回所有群組，相當於傳遞 `scope=translation,transliteration,dictionary`。 若想要決定哪一組支援語言適合您的案例使用，請參閱[回應物件](#response-body)的說明。</td>
+    <td>*可選參數*。<br/>以逗號分隔的名稱列表，用於定義要傳回的語言群組。 允許的群組名稱為：`translation`、`transliteration` 和 `dictionary`。 如果未提供任何範圍，則會傳回所有群組，相當於傳遞 `scope=translation,transliteration,dictionary`。 若想要決定哪一組支援語言適合您的案例使用，請參閱[回應物件](#response-body)的說明。</td>
   </tr>
 </table> 
 
@@ -52,7 +52,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
-    <td>*選擇性要求標頭*。<br/>用於使用者介面字串的語言。 回應中的某些欄位是語言名稱或區域名稱。 您可以使用此參數來定義傳回這些名稱的語言。 語言是透過提供語式正確的 BCP 47 語言標記來指定的。 例如，使用值 `fr` 要求法文名稱，或使用值 `zh-Hant` 要求繁體中文名稱。<br/>未指定目標語言或無法進行當地語系化時，會提供英文名稱。
+    <td>*選擇性要求標頭*。<br/>用於使用者介面字串的語言。 回應中的某些欄位是語言名稱或區域名稱。 您可以使用此參數來定義傳回這些名稱的語言。 提供語式正確的的 BCP 47 語言標記即可指定語言。 舉例而言，值 `fr` 可要求傳回法文名稱，使用值 `zh-Hant` 則可要求繁體中文的名稱。<br/>未指定目標語言或無法進行當地語系化時，會提供英文名稱。
     </td>
   </tr>
   <tr>
@@ -224,7 +224,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 如果 API 版本沒有任何變更，回應物件的結構也不會變更。 至於相同版本的 API，因為 Microsoft Translator 會持續增加其服務所支援的語言清單，可用的語言清單可能會隨時間變更。
 
-支援的語言清單不會經常變更。 若要節省網路頻寬並改善回應能力，用戶端應用程式可考慮快取處理語言資源和對應的實體標記 (`ETag`)。 然後，用戶端應用程式可以定期 (例如每隔 24 小時一次) 查詢服務，以擷取最新的支援語言集。 傳遞 `ETag` 標頭欄位中目前的 `If-None-Match` 值，可讓服務達到最佳化的回應。 如果資源未經修改，服務會傳回狀態碼 304 和空的回應本文。
+支援的語言清單不會經常變更。 若要節省網路頻寬並改善回應能力，用戶端應用程式可考慮快取處理語言資源和對應的實體標記 (`ETag`)。 然後，用戶端應用程式可以定期 (例如每隔 24 小時一次) 查詢服務，以擷取最新的支援語言集。 傳遞 `If-None-Match` 標頭欄位中目前的 `ETag` 值，可讓服務達到最佳化的回應。 如果資源未經修改，服務會傳回狀態碼 304 和空的回應本文。
 
 ## <a name="response-headers"></a>回應標頭
 
@@ -233,7 +233,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>ETag</td>
-    <td>所要求之支援語言群組的實體標記目前的值。 為了使後續要求更有效率，用戶端可以在 `ETag` 標頭欄位中傳送 `If-None-Match` 值。
+    <td>所要求之支援語言群組的實體標記目前的值。 為了使後續要求更有效率，用戶端可以在 `If-None-Match` 標頭欄位中傳送 `ETag` 值。
     </td>
   </tr>
   <tr>
@@ -244,7 +244,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 ## <a name="response-status-codes"></a>回應狀態碼
 
-以下是要求可能會傳回的 HTTP 狀態碼。 
+以下是要求傳回的可能 HTTP 狀態碼。 
 
 <table width="100%">
   <th width="20%">狀態碼</th>
@@ -259,11 +259,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數或無效。 請先修正要求參數再重試。</td>
+    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
+    <td>伺服器拒絕請求，因為用戶端已超過請求限制。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -271,7 +271,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>503</td>
-    <td>伺服器暫時無法使用。 重試要求。 若錯誤仍然存在，請回報：失敗的日期和時間、來自回應標頭 `X-RequestId` 的要求識別碼，以及來自要求標頭 `X-ClientTraceId` 的用戶端識別碼。</td>
+    <td>暫時無法使用伺服器。 重試要求。 若錯誤仍然存在，請回報：失敗的日期和時間、來自回應標頭 `X-RequestId` 的要求識別碼，以及來自要求標頭 `X-ClientTraceId` 的用戶端識別碼。</td>
   </tr>
 </table> 
 

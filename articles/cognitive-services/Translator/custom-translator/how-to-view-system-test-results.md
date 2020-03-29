@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595611"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
@@ -26,7 +26,7 @@ ms.locfileid: "68595611"
 
 測試索引標籤會顯示：
 
-1.  **系統測試結果:** 定型中的測試程式結果。 測試程序會產生 BLEU 分數。
+1.  **系統測試結果：** 培訓中的測試過程的結果。 測試程序會產生 BLEU 分數。
 
     **句子計數：** 在測試集中使用了多少個平行句子。
 
@@ -54,11 +54,11 @@ ms.locfileid: "68595611"
 
 這個下載的 ZIP 封存檔包含三個檔案。
 
-1.  **custom.mt.txt：** 此檔案包含以使用者的資料定型的模型對來源語言句子所做的目標語言機器翻譯。
+1.  **自訂.mt.txt：** 此檔包含由使用使用者資料訓練的模型執行的目的語言來源語言句子的電腦翻譯。
 
-2.  **ref.txt：** 此檔案包含使用者以目標語言為來源語言句子提供的翻譯。
+2.  **ref.txt：** 此檔包含使用者提供的目的語言來源語言句子的翻譯。
 
-3.  **source.txtref.txt：** 此檔案包含來源語言的句子。
+3.  **源.txt：** 此檔包含來源語言中的句子。
 
     ![下載系統測試結果](media/how-to/how-to-download-system-test.png)
 
@@ -73,32 +73,32 @@ ms.locfileid: "68595611"
     ![部署模型](media/how-to/how-to-deploy-model.png)
 
 3.  按一下 [部署]。
-4.  針對您要部署模型的區域選取 [已部署]  ，然後按一下 [儲存]。 您可以對多個區域選取 [已部署]  。
+4.  針對您要部署模型的區域選取 [已部署]****，然後按一下 [儲存]。 您可以對多個區域選取 [已部署]****。
 
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
 5.  您可以在 [狀態] 資料行中檢視模型的狀態。
 
 >[!Note]
->自訂翻譯在任何時間點都支援工作區中10個已部署的模型。
+>自訂轉換器支援工作區中任意時間點的 10 個已部署模型。
 
 ## <a name="update-deployment-settings"></a>更新部署設定
 
 若要更新部署設定：
 
-1.  選取專案，然後移至 [模型]  索引標籤。
+1.  選取專案，然後移至 [模型]**** 索引標籤。
 
-2. 針對成功部署的模型會顯示 [更新]  按鈕。
+2. 針對成功部署的模型會顯示 [更新]**** 按鈕。
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  選取 [更新]  。
-4.  對您想要部署或解除部署模型的區域選取 [已部署]  或 [已解除部署]  ，然後按一下 [儲存]  。
+3.  選擇 **"更新**"。
+4.  對您想要部署或解除部署模型的區域選取 [已部署]**** 或 [已解除部署]****，然後按一下 [儲存]****。
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
->如果您對所有區域選取 [已解除部屬]  ，則模型會從所有區域中解除部署，並進入已解除部署的狀態。 現在無法使用。
+>如果您對所有區域選取 [已解除部屬]****，則模型會從所有區域中解除部署，並進入已解除部署的狀態。 現在無法使用。
 
 ## <a name="next-steps"></a>後續步驟
 

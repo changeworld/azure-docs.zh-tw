@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66388571"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing 自訂搜尋 API 支援的語言和區域
@@ -23,20 +23,20 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 雖然是選用項目，但要求應指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) 查詢參數，此參數可識別您希望結果來自哪個市場。 如需選用查詢參數的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` 標頭指定一或多個語言代碼。 支援的語言視國家/地區而異；[市場]  表格中提供針對每個國家/地區支援的語言。
+您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` 標頭指定一或多個語言代碼。 支援的語言因國家/地區而異;它們在**市場**表中為每個國家或地區提供。
 
 `Accept-Language` 標頭和 `setLang` 查詢參數彼此互斥 — 請勿同時指定。 如需詳細資料，請參閱 [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)。
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/區域|代碼|
+|國家/區域|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
-|加拿大|CA|
+|Canada|CA|
 |智利|CL|
 |丹麥|DK|
 |芬蘭|FI|
@@ -44,7 +44,7 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|id|
+|印尼|ID|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -65,7 +65,7 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|CH|
 |台灣|TW|
 |土耳其|TR|
-|英國|GB|
+|United Kingdom|GB|
 |美國|US|
 
 
@@ -79,14 +79,14 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|加拿大|英文|en-CA|
-|加拿大|法文|fr-CA|
+|Canada|英文|en-CA|
+|Canada|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
 |法國|法文|fr-FR|
 |德國|德文|de-DE|
-|中國香港特別行政區|繁體中文|zh-HK|
+|香港特區|繁體中文|zh-HK|
 |印度|英文|en-IN|
 |印尼|英文|en-ID|
 |義大利|義大利文|it-IT|
@@ -110,6 +110,6 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|英國|英文|en-GB|
-|美國|英文|en-US|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
 |美國|西班牙文|es-US|

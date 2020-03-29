@@ -1,5 +1,5 @@
 ---
-title: 編號預先建立的實體-LUIS
+title: 編號預構建實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 number 實體資訊。
 services: cognitive-services
@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273455"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的數字預先建置實體
 數值用來量化、表達及描述各項資訊的方式眾多。 本文只涵蓋部分可能的範例。 LUIS 可解譯使用者語句的變化，並傳回一致的數值。 因為此實體已經定型，所以您不需要將包含數字的範例語句加入應用程式意圖。
 
 ## <a name="types-of-number"></a>數字類型
-數字可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub 存放庫管理
+編號從[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml)GitHub 存儲庫進行管理
 
 ## <a name="examples-of-number-resolution"></a>數字解析範例
 
@@ -38,17 +38,17 @@ ms.locfileid: "78273455"
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS 會在所傳回 JSON 回應的  **欄位中，包含 `builtin.number`** `resolution` 實體的辨識值。
+LUIS 在它返回的**`builtin.number`** JSON`resolution`回應欄位中包括實體的確認值。
 
 ## <a name="resolution-for-prebuilt-number"></a>解析預先建置的數字
 
-系統會針對查詢傳回下列實體物件：
+為查詢返回以下實體物件：
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 會將 `verbose` 參數設定為 `false`：
+以下 JSON 的`verbose`參數設置為`false`：
 
 ```json
 "entities": {
@@ -59,7 +59,7 @@ LUIS 會在所傳回 JSON 回應的  **欄位中，包含 `builtin.number`** `re
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
-下列 JSON 會將 `verbose` 參數設定為 `true`：
+以下 JSON 的`verbose`參數設置為`true`：
 
 ```json
 "entities": {

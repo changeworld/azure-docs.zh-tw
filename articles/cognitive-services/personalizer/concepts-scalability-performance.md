@@ -1,5 +1,5 @@
 ---
-title: 擴充性和效能-個人化工具
+title: 可擴充性和性能 - 個人化
 titleSuffix: Azure Cognitive Services
 description: 高效能且高流量的網站和應用程式有兩個考慮使用個人化工具以獲得延展性和效能的主要因素：延遲和訓練輸送量。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490785"
 ---
 # <a name="scalability-and-performance"></a>延展性和效能
@@ -24,11 +24,11 @@ ms.locfileid: "73490785"
 * 進行排名 API 呼叫時保持低延遲
 * 確定訓練輸送量能跟上事件輸入的速度
 
-個人化可以快速傳回順位，而且大部分的呼叫持續時間都是透過 REST API 進行通訊。 Azure 會自動調整能力，以快速回應要求。
+個人化可以快速返回排名，大多數呼叫持續時間都專用於通過 REST API 進行通信。 Azure 會自動調整能力，以快速回應要求。
 
 ##  <a name="low-latency-scenarios"></a>低延遲案例
 
-傳回排名時，有些應用程式需要低延遲。 需要低延遲：
+傳回排名時，有些應用程式需要低延遲。 低延遲是必需的：
 
 * 讓使用者在顯示已排名的內容之前，不需等候很久的時間。
 * 協助遇到大量流量的伺服器避免受限於不足的計算時間和網路連線。
@@ -51,4 +51,4 @@ ms.locfileid: "73490785"
 
 ## <a name="next-steps"></a>後續步驟
 
-[建立和設定個人化工具](how-to-settings.md)。
+[創建和配置個人化程式](how-to-settings.md)。

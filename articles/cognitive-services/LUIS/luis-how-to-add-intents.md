@@ -1,5 +1,5 @@
 ---
-title: 新增意圖-LUIS
+title: 添加意圖 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 將意圖新增至 LUIS 應用程式，以識別具有相同用意的問題或命令群組。
 services: cognitive-services
@@ -12,75 +12,75 @@ ms.date: 11/08/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 66a3350dee60772ce706af8995179dcd8c485b64
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904333"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>新增意圖以判斷語句的使用者用意
 
 將[意圖](luis-concept-intent.md)新增至 LUIS 應用程式，以識別具有相同用意的問題或命令群組。 
 
-從上方導覽列的 [建置] 區段，然後從左側面板的 [意圖] 管理意圖。 
+從上方導覽列的 [建置]**** 區段，然後從左側面板的 [意圖]**** 管理意圖。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-intent"></a>新增意圖
 
-1. 在[LUIS preview 入口網站](https://preview.luis.ai)中，選取 [**組建**] 以查看意圖。 
-1. 在 [**意圖**] 頁面上，選取 [ **+ 建立**]。
-1. 在 [**建立新的意圖**] 對話方塊中，輸入意圖名稱（例如 `ModifyOrder`），然後選取 [**完成**]。
+1. 在[LUIS 預覽門戶](https://preview.luis.ai)中，選擇 **"生成"** 以查看意圖。 
+1. 在 **"意向"** 頁上，選擇 **"創建**"。
+1. 在 **"創建新意向"** 對話方塊中，輸入意向名稱，例如`ModifyOrder`，然後選擇 **"完成**"。
 
     > [!div class="mx-imgBorder"]
-    > ![新增意圖](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
+    > ![添加意圖](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    意圖需要範例語句。
+    意圖需要示例陳述。
 
 ## <a name="add-an-example-utterance"></a>新增範例語句
 
-範例語句是使用者問題或命令的文字範例。 若要教 Language Understanding （LUIS）何時預測此意圖，您需要將範例語句新增至意圖。 LUIS 需要介於15到30個範例語句的範圍內，才能開始瞭解意圖。 請勿在 bulk 中新增範例語句。 應謹慎選擇每個語句，以瞭解其與意圖中的範例有何不同。 
+範例語句是使用者問題或命令的文字範例。 要教導語言理解 （LUIS） 何時預測此意圖，您需要向意圖添加示例陳述。 LUIS 需要 15 到 30 個示例陳述來開始理解意圖。 不要大量新增示例陳述。 每個陳述都應仔細選擇，因為它與意圖中已有的示例如何不同。 
 
-1. 在 [意圖詳細資料] 頁面上，輸入您預期來自使用者的相關語句，例如意圖名稱底下文字方塊中的 `Deliver a large cheese pizza`，然後按 Enter。
+1. 在意向詳細資訊頁上，輸入您希望使用者提供的相關陳述，例如`Deliver a large cheese pizza`在意向名稱下方的文字方塊中，然後按 Enter。
  
     > [!div class="mx-imgBorder"]
-    > ![[意圖詳細資料] 頁面的螢幕擷取畫面，其中反白顯示語句](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    > ![意圖詳細資料頁面的螢幕擷取畫面 (已醒目提示語句)](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    LUIS 會將所有語句轉換成小寫，並在[權杖](luis-language-support.md#tokenization)前後加上空格，例如連字號。
+    LUIS 將所有陳述轉換為小寫，並在[代號](luis-language-support.md#tokenization)（如連字號）周圍添加空格。
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
 ## <a name="intent-prediction-errors"></a>意圖預測錯誤 
 
-意圖中的範例語句可能會在範例語句目前所在的意圖和定型期間決定的意圖之間有意圖預測錯誤。 
+意圖中的示例陳述在示例陳述當前的意圖與訓練期間確定的意圖之間可能存在意圖預測錯誤。 
 
-若要尋找語句預測錯誤並加以修正，請使用 [不正確且不清楚] 的**篩選**選項與 [**詳細視圖**] 的 [ **view** ] 選項結合。 
+要查找陳述預測錯誤並修復它們，請使用"不正確和不明確"的 **"篩選器"** 選項與 **"詳細視圖**"的 **"視圖"** 選項結合使用。 
 
-![若要尋找語句預測錯誤並加以修正，請使用 [篩選] 選項。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![要查找陳述預測錯誤並修復它們，請使用"篩選"選項。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-套用篩選和視圖，而且有範例語句出現錯誤時，[範例語句] 清單會顯示語句和問題。
+應用篩選器和視圖，並且存在具有錯誤的示例陳述時，示例陳述清單將顯示陳述和問題。
 
 > [!div class="mx-imgBorder"]
-> ![！[套用篩選準則和視圖時，如果有範例語句出現錯誤，則範例語句清單會顯示語句和問題。]（./media/luis-how-to-add-intents/find-errors-in-utterances.png）](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+> ![!{當應用篩選器和視圖，並且存在具有錯誤的示例陳述時，示例陳述清單將顯示陳述和問題。（./媒體/luis-如何添加意圖/查找錯誤在話語中.png）](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-每個資料列都會顯示語句範例的目前定型分數，這是最接近的競爭對手分數，這就是這兩個分數的差異。 
+每行顯示示例陳述的當前訓練預測分數，即最接近的對手的分數，即這兩個分數的差異。 
 
-### <a name="fixing-intents"></a>修正意圖
+### <a name="fixing-intents"></a>修復意圖
 
-若要瞭解如何修正意圖預測錯誤，請使用 [[摘要] 儀表板](luis-how-to-use-dashboard.md)。 [摘要] 儀表板會提供作用中版本最後一次訓練的分析，並提供修正模型的最佳建議。  
+要瞭解如何修復意圖預測錯誤，請使用["摘要儀表板](luis-how-to-use-dashboard.md)"。 摘要儀表板提供活動版本上次培訓的分析，並提供修復模型的一些建議。  
 
 ## <a name="using-the-contextual-toolbar"></a>使用內容相關的工具列
 
-內容工具列提供其他動作：
+上下文工具列提供其他操作：
 
-* 編輯或刪除範例語句
-* 將範例語句重新指派至不同的意圖
-* 篩選和查看：只顯示包含篩選實體的語句或 view 選擇性的詳細資料
-* 搜尋範例語句
+* 編輯或刪除示例陳述
+* 將示例陳述重新分配給其他意圖
+* 篩選器和視圖：僅顯示包含篩選實體或查看可選詳細資訊的表述
+* 搜索示例陳述
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>在利用意圖變更模型後訓練您的應用程式
 
-在您新增、編輯或移除意圖之後，[訓練](luis-how-to-train.md)並[發佈](luis-how-to-publish-app.md)您的應用程式，變更才會套用到端點查詢。 請不要在每次單一變更後訓練。 在一組變更之後進行定型。 
+在您新增、編輯或移除意圖之後，[訓練](luis-how-to-train.md)並[發佈](luis-how-to-publish-app.md)您的應用程式，變更才會套用到端點查詢。 每一次更換後都不要訓練。 一組更改後進行培訓。 
 
 ## <a name="next-steps"></a>後續步驟
 

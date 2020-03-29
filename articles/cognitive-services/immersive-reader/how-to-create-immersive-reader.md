@@ -1,7 +1,7 @@
 ---
 title: 建立沉浸式讀取器資源
 titleSuffix: Azure Cognitive Services
-description: 本文將說明如何使用自訂子域建立新的沉浸式讀取器資源，然後在您的 Azure 租使用者中設定 Azure AD。
+description: 本文將向您展示如何使用自訂子域創建新的沉浸式讀取器資源，然後在 Azure 租戶中配置 Azure AD。
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
 ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330714"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>建立沉浸式讀取器資源並設定 Azure Active Directory 驗證
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>創建沉浸式讀取器資源並配置 Azure 活動目錄身份驗證
 
-在本文中，我們提供的腳本會建立沉浸式讀取器資源，並設定 Azure Active Directory （Azure AD）驗證。 每次建立沉浸式讀取器資源時，不論是使用此腳本或在入口網站中，也必須以 Azure AD 許可權來設定它。 此腳本將協助您進行此程式。
+在本文中，我們將提供一個腳本，該腳本將創建沉浸式讀取器資源並配置 Azure 活動目錄 （Azure AD） 身份驗證。 每次創建沉浸式讀取器資源時，無論是使用此腳本還是在門戶中，都必須使用 Azure AD 許可權配置它。 此腳本將説明您。
 
-此腳本的設計目的是要在一個步驟中，為您建立並設定所有必要的沉浸式讀取器和 Azure AD 資源。 不過，您也可以只針對現有的沉浸式讀取器資源設定 Azure AD 驗證，例如，您在 Azure 入口網站中已建立一個。
+該腳本旨在一步創建和配置所有必要的沉浸式讀取器和 Azure AD 資源。 但是，您也可以為現有的沉浸式讀取器資源配置 Azure AD 身份驗證（例如，如果恰好已在 Azure 門戶中創建了一個身份驗證）。
 
-對於某些客戶，可能需要為開發與生產環境，或可能針對您的服務部署所在的多個不同區域建立多個沉浸式讀取器資源。 在這些情況下，您可以返回並使用腳本多次來建立不同的沉浸式讀取器資源，並將其設定為 Azure AD 的許可權。
+對於某些客戶，可能需要創建多個沉浸式讀取器資源，用於開發與生產，或者對於服務部署在多個不同區域。 對於這些情況，您可以返回並使用腳本多次創建不同的沉浸式讀取器資源，並使用它們配置 Azure AD 許可權。
 
-腳本是設計成有彈性的。 它會先尋找您訂用帳戶中現有的沉浸式讀取器和 Azure AD 資源，並在必要時才建立它們（如果尚未存在的話）。 如果這是您第一次建立沉浸式讀取器資源，腳本會執行您所需的一切。 如果您只想要使用它來設定在入口網站中建立的現有沉浸式讀取器資源 Azure AD，它也會這麼做。 它也可以用來建立和設定多個沉浸式讀取器資源。
+該腳本設計為靈活。 它將首先在訂閱中查找現有的沉浸式讀取器和 Azure AD 資源，並且僅在它們不存在時才根據需要創建這些資源。 如果這是您第一次創建沉浸式閱讀器資源，腳本將執行所需的一切操作。 如果只想使用它為門戶中創建的現有沉浸式讀取器資源配置 Azure AD，它也將執行此操作。 它還可用於創建和配置多個沉浸式讀取器資源。
 
-## <a name="set-up-powershell-environment"></a>設定 PowerShell 環境
+## <a name="set-up-powershell-environment"></a>設置 PowerShell 環境
 
-1. 從開啟[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)開始。 確定 cloud shell 已設定為左上角下拉式清單中的 PowerShell，或輸入 `pwsh`。
+1. 首先打開[Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/overview)。 確保雲外殼設置為左上角下拉或鍵入`pwsh`PowerShell。
 
-1. 將下列程式碼片段複製並貼到 shell 中。
+1. 複製以下程式碼片段並將其粘貼到 shell 中。
 
     ```azurepowershell-interactive
     function Create-ImmersiveReaderResource(
@@ -141,7 +141,7 @@ ms.locfileid: "78330714"
     }
     ```
 
-1. 執行函式 `Create-ImmersiveReaderResource`，並視需要提供參數。
+1. 運行函數`Create-ImmersiveReaderResource`，根據需要提供參數。
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -159,18 +159,18 @@ ms.locfileid: "78330714"
 
     | 參數 | 註解 |
     | --- | --- |
-    | SubscriptionName |要用於您的沉浸式讀取器資源的 Azure 訂用帳戶名稱。 您必須擁有訂用帳戶，才能建立資源。 |
-    | ResourceName |  必須是英數位元，而且可以包含 '-'，前提是 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。|
-    | ResourceSubdomain |您的沉浸式讀取器資源需要自訂子域。 當呼叫沉浸式讀取器服務來啟動讀取器時，SDK 會使用子域。 子域必須是全域唯一的。 子域必須是英數位元，而且可以包含 '-'，前提是 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。 如果資源已經存在，此參數是選擇性的。 |
-    | ResourceSKU |選項： `S0`。 請流覽我們的[認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，以深入瞭解每個可用的 SKU。 如果資源已經存在，此參數是選擇性的。 |
-    | ResourceLocation |選項： `eastus`、`eastus2`、`southcentralus`、`westus`、`westus2`、`australiaeast`、`southeastasia`、`centralindia`、`japaneast`、`northeurope`、`uksouth`、`westeurope`。 如果資源已經存在，此參數是選擇性的。 |
-    | resourceGroupName |資源會建立在訂用帳戶內的資源群組中。 提供現有資源群組的名稱。 如果資源群組不存在，則會建立一個具有這個名稱的新群組。 |
-    | ResourceGroupLocation |如果您的資源群組不存在，您必須提供要在其中建立群組的位置。 若要尋找位置的清單，請執行 `az account list-locations`。 在傳回的結果中使用*name*屬性（不含空格）。 如果您的資源群組已經存在，此參數是選擇性的。 |
-    | AADAppDisplayName |Azure Active Directory 應用程式顯示名稱。 如果找不到現有的 Azure AD 應用程式，則會建立一個具有這個名稱的新的。 如果 Azure AD 應用程式已存在，則此參數為選擇性。 |
-    | AADAppIdentifierUri |Azure AD 應用程式的 URI。 如果找不到現有的 Azure AD 應用程式，將會建立一個具有此 URI 的新應用程式。 例如： `https://immersivereaderaad-mycompany` 。 |
-    | AADAppClientSecret |您所建立的密碼，會在您取得權杖以啟動沉浸式讀取器時用來進行驗證。 密碼長度至少必須有16個字元，至少包含1個特殊字元，且至少包含1個數字字元。 |
+    | SubscriptionName |用於沉浸式讀取器資源的 Azure 訂閱的名稱。 您必須具有訂閱才能創建資源。 |
+    | ResourceName |  必須為字母數位，並且可能包含"-"，只要"-"不是第一個或最後一個字元。 長度不得超過 63 個字元。|
+    | 資源子域 |沉浸式閱讀器資源需要自訂子域。 SDK 在調用沉浸式讀取器服務以啟動讀取器時使用子域。 子域必須全域唯一。 子域必須是字母數位，並且可能包含"-"，只要"-"不是第一個或最後一個字元。 長度不得超過 63 個字元。 如果資源已存在，則此參數是可選的。 |
+    | 資源庫 |選項： `S0`. 請訪問我們的[認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，瞭解有關每個可用的 SKU 的更多資訊。 如果資源已存在，則此參數是可選的。 |
+    | ResourceLocation |選項： `eastus` `eastus2`、 `southcentralus` `westus`、 `westus2` `australiaeast`、 `southeastasia` `centralindia`、 `japaneast` `northeurope`、 `uksouth` `westeurope`、 、 、 、 、 、 、 、 、 、 如果資源已存在，則此參數是可選的。 |
+    | resourceGroupName |資源在訂閱中的資源組中創建。 提供現有資源組的名稱。 如果資源組不存在，將創建具有此名稱的新資源組。 |
+    | ResourceGroupLocation |如果資源組不存在，則需要提供一個位置來創建該組。 要查找位置清單，運行`az account list-locations`。 使用返回的結果*的名稱*屬性（無空格）。 如果資源組已存在，則此參數是可選的。 |
+    | AADApp顯示名稱 |Azure 活動目錄應用程式顯示名稱。 如果未找到現有的 Azure AD 應用程式，將創建具有此名稱的新應用程式。 如果 Azure AD 應用程式已存在，則此參數是可選的。 |
+    | AADApp識別碼 |Azure AD 應用的 URI。 如果未找到現有的 Azure AD 應用，將創建具有此 URI 的新應用。 例如： `https://immersivereaderaad-mycompany` 。 |
+    | AADAppClient秘密 |您創建的密碼，稍後將用於獲取權杖以啟動沉浸式讀取器時進行身份驗證。 密碼必須至少為 16 個字元長，至少包含 1 個特殊字元，並且至少包含 1 個數字字元。 |
 
-1. 將 JSON 輸出複製到文字檔，以供稍後使用。 輸出應該看起來如下所示。
+1. 將 JSON 輸出複製到文字檔中，供以後使用。 輸出應該看起來如下所示。
 
     ```json
     {
@@ -185,7 +185,7 @@ ms.locfileid: "78330714"
 
 * 檢視 [Node.js 快速入門](./quickstart-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 檢視 [Python 教學課程](./tutorial-python.md)，以查看您還可以使用 Python 透過沈浸式閱讀程式 SDK 執行哪些作業
-* 觀看[swift 教學](./tutorial-ios-picture-immersive-reader.md)課程，以瞭解如何使用 Swift 的沉浸式讀取器 SDK 來執行其他工作
+* 查看[Swift 教程](./tutorial-ios-picture-immersive-reader.md)，瞭解使用 Swift 的沉浸式讀取器 SDK 還可以執行哪些操作
 * 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](./reference.md)
 
 

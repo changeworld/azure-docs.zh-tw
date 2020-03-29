@@ -1,7 +1,7 @@
 ---
-title: 建立 LUIS 應用程式的最佳作法
+title: 構建 LUIS 應用的最佳做法
 titleSuffix: Azure Cognitive Services
-description: 瞭解最佳作法，以取得 LUIS 應用程式模型的最佳結果。
+description: 瞭解最佳實踐，以便從 LUIS 應用的模型中獲得最佳結果。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280917"
 ---
-# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>建立語言理解（LUIS）應用程式的最佳作法
-使用應用程式撰寫流程來建立 LUIS 應用程式： 
+# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>構建語言理解 （LUIS） 應用的最佳做法
+使用應用創作過程生成 LUIS 應用： 
 
-* 組建語言模型（意圖和實體）
-* 新增幾個定型範例語句（每個意圖15-30 個）
-* 發佈至端點
+* 構建語言模型（意圖和實體）
+* 添加一些培訓示例陳述（每個意圖 15-30 個）
+* 發佈到終結點
 * 從端點測試 
 
-[發佈](luis-how-to-publish-app.md)您的應用程式之後，請使用開發生命週期，從端點新增功能、發佈和測試。 請不要藉由新增更多範例語句來開始下一個撰寫週期，因為這不會讓 LUIS 以真實世界的使用者語句來學習您的模型。 
+[發佈](luis-how-to-publish-app.md)應用後，請使用開發生命週期從終結點添加功能、發佈和測試。 不要通過添加更多示例陳述來開始下一個創作週期，因為這不會讓 LUIS 使用真實使用者陳述瞭解您的模型。 
 
-請不要展開語句，直到範例和端點語句的目前集合傳回自信的高預測分數。 使用[主動式學習](luis-concept-review-endpoint-utterances.md)來改善分數。 
+在當前示例和終結點陳述集返回自信、高預測分數之前，不要展開陳述。 使用[主動學習](luis-concept-review-endpoint-utterances.md)提高分數。 
 
 
 
@@ -36,15 +36,15 @@ ms.locfileid: "74280917"
 ## <a name="do-and-dont"></a>建議事項和避免事項
 以下清單包含 LUIS 應用程式的最佳做法：
 
-|建議事項|避免事項|
+|要做的事|不要做的事|
 |--|--|
-|[定義不同的意圖](#do-define-distinct-intents)<br>[將描述項新增至意圖](#do-add-descriptors-to-intents) |[將許多範例語句新增至意圖](#dont-add-many-example-utterances-to-intents)<br>[使用幾個或簡單的實體](#dont-use-few-or-simple-entities) |
+|[定義不同的意圖](#do-define-distinct-intents)<br>[向意圖添加描述項](#do-add-descriptors-to-intents) |[將許多範例語句新增至意圖](#dont-add-many-example-utterances-to-intents)<br>[使用很少或簡單的實體](#dont-use-few-or-simple-entities) |
 |[找出每個意圖的太攏統與太特定之間的最佳點](#do-find-sweet-spot-for-intents)|[使用 LUIS 作為定型平台](#dont-use-luis-as-a-training-platform)|
-|[使用版本反復組建您的應用程式](#do-build-your-app-iteratively-with-versions)<br>[模型分解的組建實體](#do-build-for-model-decomposition)|[新增許多相同格式的範例語句而忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[在稍後的反復專案中新增模式](#do-add-patterns-in-later-iterations)|[混合意圖和實體的定義](#dont-mix-the-definition-of-intents-and-entities)|
-|[讓您的語句在所有意圖之間達到平衡](#balance-your-utterances-across-all-intents)，除了 None 意圖之外。<br>[將範例語句新增至 None 意圖](#do-add-example-utterances-to-none-intent)|[建立具有所有可能值的描述項](#dont-create-descriptors-with-all-the-possible-values)|
+|[使用版本反覆運算構建應用](#do-build-your-app-iteratively-with-versions)<br>[生成實體進行模型分解](#do-build-for-model-decomposition)|[新增許多相同格式的範例語句而忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[在以後的反覆運算中添加模式](#do-add-patterns-in-later-iterations)|[混合意圖和實體的定義](#dont-mix-the-definition-of-intents-and-entities)|
+|[讓您的語句在所有意圖之間達到平衡](#balance-your-utterances-across-all-intents)，除了 None 意圖之外。<br>[將範例語句新增至 None 意圖](#do-add-example-utterances-to-none-intent)|[創建具有所有可能值的描述項](#dont-create-descriptors-with-all-the-possible-values)|
 |[利用主動式學習的建議功能](#do-leverage-the-suggest-feature-for-active-learning)|[新增太多模式](#dont-add-many-patterns)|
-|[使用批次測試來監視應用程式的效能](#do-monitor-the-performance-of-your-app)|[新增每一個範例語句都進行定型和發佈](#dont-train-and-publish-with-every-single-example-utterance)|
+|[通過批次處理測試監控應用的性能](#do-monitor-the-performance-of-your-app)|[新增每一個範例語句都進行定型和發佈](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>請務必定義不同的意圖
 請確定每個意圖的詞彙都僅適用於該意圖，而未與不同的意圖重疊。 例如，如果您想要有一個處理旅遊安排 (例如航班和飯店) 的應用程式，則可以選擇讓這些主體區域成為語句內具有特定資料實體的個別意圖或相同意圖。
@@ -58,49 +58,49 @@ ms.locfileid: "74280917"
 |預訂班機|
 |預訂飯店|
 
-`Book a flight` 和 `Book a hotel` 使用相同的 `book a `詞彙。 此格式相同，因此它應該是使用不同單字 `flight` 的相同意圖，並 `hotel` 為已解壓縮的實體。 
+`Book a flight`並使用`Book a hotel`相同的詞彙`book a `。 此格式相同，因此與`flight`和`hotel`提取的實體的不同單詞應具有相同的意圖。 
 
-## <a name="do-add-descriptors-to-intents"></a>將描述項新增至意圖
+## <a name="do-add-descriptors-to-intents"></a>確實向意圖添加描述項
 
-描述項有助於說明意圖的功能。 描述項可以是對該意圖而言非常重要的單字片語清單，或是對該意圖很重要的實體。 
+描述項有助於描述意圖的功能。 描述項可以是對該意圖很重要的單詞的片語清單，也可以是該意圖重要的實體。 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>請務必找出意圖的最佳點
 請使用來自 LUIS 的預測資料來判斷您的意圖是否重疊。 重疊的意圖會混淆 LUIS。 結果會造成最高分的意圖太接近另一個意圖。 由於 LUIS 不會每次都使用完全相同的資料路徑來進行定型，因此重疊的意圖有可能在定型中成為第一或第二。 您會希望每個意圖的語句分數都儘量拉開，以便避免發生這類不確定情況。 良好的意圖區別應該每次都產生預期的最高分意圖。 
  
 <a name="#do-build-the-app-iteratively"></a>
 
-## <a name="do-build-your-app-iteratively-with-versions"></a>使用版本反復建立您的應用程式
+## <a name="do-build-your-app-iteratively-with-versions"></a>使用版本反覆運算構建應用
 
 每個撰寫循環都應該在新[版本](luis-concept-version.md) (從現有版本複製) 之內。 
 
-## <a name="do-build-for-model-decomposition"></a>執行模型分解的組建
+## <a name="do-build-for-model-decomposition"></a>為模型分解進行生成
 
-模型分解具有一般的處理常式：
+模型分解的典型過程是：
 
-* 根據用戶端應用程式的使用者意圖建立**意圖**
-* 根據真實世界使用者輸入新增15-30 範例語句
-* 在範例語句中標記最上層資料概念
-* 將資料概念分成子元件
-* 將描述項（功能）新增至子元件
-* 將描述項（功能）新增至意圖 
+* 基於用戶端應用的使用者意圖創建**意圖**
+* 根據實際使用者輸入添加 15-30 個示例陳述
+* 在示例陳述中標注頂級資料概念
+* 將資料概念分解為子元件
+* 向子元件添加描述項（功能）
+* 向意圖添加描述項（功能） 
 
-當您建立意圖並新增範例語句之後，下列範例會說明實體分解。 
+創建意圖並添加示例陳述後，下面的示例將描述實體分解。 
 
-一開始先找出您想要在語句中解壓縮的完整資料概念。 這是您機器學習的實體。 然後將片語分解成其部分。 這包括識別子元件（做為實體），以及描述項和條件約束。 
+首先確定要在話語中提取的完整資料概念。 這是您的機器學習實體。 然後將短語分解為其部分。 這包括標識子元件（作為實體），以及描述項和約束。 
 
-例如，如果您想要解壓縮位址，則可以 `Address`呼叫最上層機器學習的實體。 建立位址時，請識別其部分子元件，例如街道位址、城市、州和郵遞區號。 
+例如，如果要提取位址，可以調用`Address`頂部機器學習實體。 創建位址時，請標識其某些子元件，如街道位址、城市、州和郵遞區號。 
 
-藉由將郵遞區號**限制**為正則運算式，繼續分解這些元素。 將街道位址分解成街道號碼的幾個部分（使用預先建立的號碼）、街道名稱和街道類型。 街道類型可**與描述項清單（** 例如，路、圓形、道路和 lane）一併說明。
+通過將郵遞區號**約束**為正則運算式，繼續分解這些元素。 將街道位址分解為街道編號（使用預建編號）、街道名稱和街道類型的部分。 街道類型可以使用**描述項**清單（如大道、圓形、道路和車道）來描述。
 
-V3 撰寫 API 允許模型分解。 
+V3 創作 API 允許模型分解。 
 
-## <a name="do-add-patterns-in-later-iterations"></a>在稍後的反復專案中新增模式
+## <a name="do-add-patterns-in-later-iterations"></a>在以後的反覆運算中添加模式
 
-在新增[模式](luis-concept-patterns.md)之前，您應該先瞭解應用程式的運作方式，因為模式的加權會高於範例語句，而且會扭曲信賴度。 
+在添加模式之前，您應該瞭解應用的表[率](luis-concept-patterns.md)，因為模式的權重比示例陳述更重，並且會扭曲置信度。 
 
-一旦您瞭解應用程式的行為，請新增其適用于您應用程式的模式。 您不需要在每個[反復](luis-concept-app-iteration.md)專案中加入它們。 
+瞭解應用的去向後，在應用應用於應用時添加模式。 您無需在每個[反覆運算](luis-concept-app-iteration.md)中添加它們。 
 
-在您的模型設計開始時，並不會有任何傷害，但是在使用語句測試模型之後，會更容易看到每個模式如何變更模型。 
+在模型設計開始時添加它們沒有任何壞處，但在使用話語測試模型後，更容易看到每個模式如何更改模型。 
  
 <!--
 
@@ -129,7 +129,7 @@ For more information:
 
 <a name="balance-your-utterances-across-all-intents"></a>
 
-## <a name="do-balance-your-utterances-across-all-intents"></a>跨所有意圖平衡您的語句
+## <a name="do-balance-your-utterances-across-all-intents"></a>在所有意圖中平衡你的話語
 
 為了讓 LUIS 預測能正確，每個意圖的範例語句數量必須相對相等 (None 意圖除外)。 
 
@@ -137,7 +137,7 @@ For more information:
 
 ## <a name="do-add-example-utterances-to-none-intent"></a>請務必將範例語句新增至 None 意圖
 
-此意圖是回溯意圖，表示您應用程式以外的所有專案。 請在您 LUIS 應用程式的其餘部分，每 10 個範例語句中，便將一個範例語句新增至 None 意圖。
+此意圖是回退意圖，指示應用程式外部的所有內容。 請在您 LUIS 應用程式的其餘部分，每 10 個範例語句中，便將一個範例語句新增至 None 意圖。
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>請務必利用主動式學習的建議功能
 
@@ -147,15 +147,15 @@ For more information:
 
 請使用[批次測試](luis-concept-batch-test.md)集合來監視預測準確性。 
 
-保留一組不是用來作為[範例語句](luis-concept-utterance.md)或端點語句的個別語句。 持續針對測試集改善應用程式。 調適測試集以反映真實的使用者語句。 使用此測試集來評估應用程式的每個反覆項目或版本。 
+保留一組不用作[示例陳述](luis-concept-utterance.md)或終結點陳述的單獨陳述。 持續針對測試集改善應用程式。 調適測試集以反映真實的使用者語句。 使用此測試集來評估應用程式的每個反覆項目或版本。 
 
 ## <a name="dont-add-many-example-utterances-to-intents"></a>請勿將許多範例語句新增至意圖
 
-應用程式發佈之後，只會在開發生命週期程式中新增來自主動式學習的語句。 如果語句太類似，則請新增模式。 
+發佈應用後，僅在開發生命週期過程中添加來自活動學習的話語。 如果語句太類似，則請新增模式。 
 
-## <a name="dont-use-few-or-simple-entities"></a>不使用幾個或簡單的實體
+## <a name="dont-use-few-or-simple-entities"></a>不要使用很少或簡單的實體
 
-實體是針對資料的提取和預測所建立。 每個意圖都必須具有機器學習的實體來描述意圖中的資料，這點很重要。 即使您的用戶端應用程式不需要使用已解壓縮的實體，這也有助於 LUIS 預測意圖。 
+實體是為數據提取和預測而構建的。 每個意圖都有機器學習的實體來描述意圖中的資料，這一點很重要。 這有助於 LUIS 預測意圖，即使您的用戶端應用程式不需要使用提取的實體。 
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>請勿使用 LUIS 作為定型平台
 
@@ -175,11 +175,11 @@ LUIS 會預期意圖的語句中有所變化。 語句可以在改變的同時�
 
 請針對您 Bot 將執行的任何動作建立意圖。 使用實體作為促成該動作的參數。 
 
-若為將會預訂航班的 bot，請建立**BookFlight**意圖。 請勿為每個航空公司或每個目的地都建立意圖。 請使用這些資料片段作為[實體](luis-concept-entity-types.md)，然後在範例語句中標示它們。 
+對於將預訂航空公司航班的機器人，創建**BookFlight**意向。 請勿為每個航空公司或每個目的地都建立意圖。 請使用這些資料片段作為[實體](luis-concept-entity-types.md)，然後在範例語句中標示它們。 
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>請勿建立具有所有可能值的描述項
+## <a name="dont-create-descriptors-with-all-the-possible-values"></a>不要創建具有所有可能值的描述項
 
-提供描述項[片語清單](luis-concept-feature.md)中的幾個範例，而不是每個字組。 LUIS 會將內容一般化並納入考量。 
+在描述項[片語清單中](luis-concept-feature.md)提供幾個示例，但並不是每個單詞。 LUIS 會將內容一般化並納入考量。 
 
 ## <a name="dont-add-many-patterns"></a>請勿新增許多模式
 

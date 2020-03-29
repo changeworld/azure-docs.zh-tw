@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883435"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用 Bing 影像搜尋 API 取得影像見解
@@ -216,10 +216,10 @@ Host: api.cognitive.microsoft.com
 
 矩形的值相對於原始影像的高度與寬度，且是在 0.0 到 1.0 之間的範圍。 例如，如果影像是 300x200，且區域的左上角位於點 (10, 20)，右下角位於點 (290, 150)，則正規化的矩形是：  
 
--   左：10 / 300 = 0.03333...  
--   上：20 / 200 = 0.1  
--   右：290 / 300 = 0.9667...  
--   下：150 / 200 = 0.75  
+-   Left: 10 / 300 = 0.03333...  
+-   Top:  20 / 200 = 0.1  
+-   Right: 290 / 300 = 0.9667...  
+-   Bottom: 150 / 200 = 0.75  
 
 您可以使用 Bing 在後續見解呼叫中傳回的區域。 例如，針對已辨識的實體取得在視覺效果上類似的影像。 如需詳細資訊，請參閱裁剪影像以使用視覺效果類似和實體辨識模組。 以下顯示區域欄位和您用來裁剪影像的查詢參數之間的對應。  
 
@@ -374,7 +374,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>尋找在視覺效果上類似的產品  
 
-若要尋找包含視覺效果類似于原始影像中找到之產品的影像, 請將 [[模組](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)] 查詢參數設定為 [SimilarProducts]。  
+要查找包含視覺上與原始映射中找到的產品類似的產品的圖像，請將[模組](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)查詢參數設置為"相似產品"。  
 
 下列要求會示範如何取得視覺效果類似之產品的影像。 要求會使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數來識別前一個要求中傳回的原始影像。 若要改善相關性，您應該包含使用者的查詢字串。  
 

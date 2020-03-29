@@ -1,7 +1,7 @@
 ---
-title: 使用語音 SDK 開發應用程式-語音服務
+title: 使用語音 SDK - 語音服務開發應用
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何在支援的平臺上部署使用語音 SDK 的應用程式。
+description: 瞭解如何在受支援的平臺上部署使用語音 SDK 的應用程式。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 01/30/2020
 ms.author: dapine
 ms.custom: seodec18
 ms.openlocfilehash: 9507428e63b337b3d8419a833d03d081d494c522
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330799"
 ---
 # <a name="ship-an-application"></a>交付應用程式
@@ -28,7 +28,7 @@ ms.locfileid: "78330799"
 
 測試認知語音 SDK 會在 Windows 10 和 Windows Server 2016 上進行測試。
 
-認知服務語音 SDK 需要系統上的[Microsoft C++ Visual 可轉散發套件，才能 Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) 。 您可以在此下載最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 的安裝程式：
+認知服務語音 SDK 要求[Microsoft 視覺C++可轉散布，適用于系統上的 Visual Studio 2019。](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) 您可以在此下載最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 的安裝程式：
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,10 +45,10 @@ ms.locfileid: "78330799"
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | 受控部署所需                      |
 
 > [!NOTE]
-> 從 release 1.3.0 開始，不再需要檔案 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` （在先前的版本中隨附）。 此功能現在已整合到 core SDK 中。
+> 從版本 1.3.0 開始，`Microsoft.CognitiveServices.Speech.csharp.bindings.dll`不再需要檔（在以前的版本中提供）。 該功能現已集成到核心 SDK 中。
 
 > [!NOTE]
-> 針對 Windows Forms 應用程式（.NET Framework） C#專案，請確定程式庫已包含在專案的部署設定中。 您可以在 [`Properties -> Publish Section`] 底下進行檢查。 按一下 [`Application Files`] 按鈕，並從 [向下] 清單尋找對應的程式庫。 請確定 [值] 設定為 [`Included`]。 當發行/部署專案時，Visual Studio 將會包含該檔案。
+> 對於 Windows 表單應用 （.NET Framework） C# 專案，請確保庫包含在專案的部署設置中。 您可以在 下`Properties -> Publish Section`檢查此。 按一下該`Application Files`按鈕並從向下滾動清單中查找相應的庫。 確保該值設置為`Included`。 視覺化工作室將在專案發佈/部署時包含該檔。
 
 ## <a name="linux"></a>Linux
 
@@ -57,7 +57,7 @@ ms.locfileid: "78330799"
 確定您選取與您的應用程式相符的版本 (x86、x64)。 視 Linux 版本而定，您可能也需要包含下列相依性：
 
 - GNU C 程式庫的共用程式庫 (包括 POSIX 執行緒程式設計程式庫 `libpthreads`)
-- OpenSSL 程式庫（`libssl.so.1.0.0` 或 `libssl.so.1.0.2`）
+- OpenSSL 庫`libssl.so.1.0.0`（`libssl.so.1.0.2`或 ）
 - ALSA 應用程式的共用程式庫 (`libasound.so.2`)
 
 在 Ubuntu 上，預設應該已安裝 GNU C 程式庫。 使用下列命令可以安裝最後三項：
@@ -67,7 +67,7 @@ sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-在 Debian 9 上，安裝下列套件：
+在 Debian 9 上安裝這些套裝軟體：
 
 ```sh
 sudo apt-get update
@@ -82,7 +82,7 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，請遵循[如何設定 OpenSSL For Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)的指示。
+> 在 RHEL/CentOS 8 上，請按照有關如何[為 Linux 配置 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)的說明進行操作。
 
 ## <a name="next-steps"></a>後續步驟
 

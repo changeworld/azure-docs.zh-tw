@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68423910"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名來顯示實體搜尋結果  
@@ -29,7 +29,7 @@ ms.locfileid: "68423910"
 |`answerType` 和 `resultIndex` | `answerType` 會識別回應 (實體或位置)，而 `resultIndex` 會識別回應內的結果 (例如一個實體)。 索引從 0 開始。|
 |`value`    | `value` 包含的識別碼會符合回應或回應內結果的識別碼。 回應或結果其中一個 (而非兩者) 會包含識別碼。 |
   
-使用 `answerType` 和 `resultIndex` 是一個兩步驟程序。 先使用 `answerType` 來識別哪個回應包含要顯示的結果。 然後使用 `resultIndex` 為回應的結果編製索引，以顯示結果。 (`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 物件中的欄位名稱)。如果您應該同時顯示回應的所有結果，排名回應項目不會包含 `resultIndex` 欄位。
+使用 `answerType` 和 `resultIndex` 是一個兩步驟程序。 先使用 `answerType` 來識別哪個回應包含要顯示的結果。 然後使用 `resultIndex` 為回應的結果編製索引，以顯示結果。 （該`answerType`值是["搜索回應"](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse)物件中的欄位的名稱。如果要將所有答案的結果一起顯示，則排名回應項不包括該`resultIndex`欄位。
 
 使用識別碼需要您比對排名識別碼與回應或其中一個結果的識別碼。 如果回應物件包含 `id` 欄位，則會同時顯示回應的所有結果。 例如，如果 `Entities` 物件包含 `id` 欄位，則會同時顯示所有實體發行項。 如果 `Entities` 物件不包含 `id` 欄位，則每個實體會包含 `id` 欄位，且排名回應會混合實體與位置結果。  
   

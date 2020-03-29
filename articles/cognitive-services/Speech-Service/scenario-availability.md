@@ -1,7 +1,7 @@
 ---
-title: 案例可用性-語音服務
+title: 方案可用性 - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音 SDK 具有各種不同程式設計語言和環境的多種案例。 並非所有的案例都適用于所有的程式設計語言或所有環境。 以下列出每個案例的可用性。
+description: 語音 SDK 具有跨各種程式設計語言和環境的許多方案。 並非所有方案都適用于所有程式設計語言或所有環境。 下面列出了每種方案的可用性。
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
 ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76264198"
 ---
-# <a name="scenario-availability"></a>案例可用性
+# <a name="scenario-availability"></a>方案可用性
 
-語音 SDK 具有各種不同程式設計語言和環境的多種案例。 並非所有的案例都適用于所有的程式設計語言或所有環境。 以下列出每個案例的可用性。
+語音 SDK 具有跨各種程式設計語言和環境的許多方案。 並非所有方案都適用于所有程式設計語言或所有環境。 下面列出了每種方案的可用性。
 
-- **語音辨識（SR）、片語清單、意圖、翻譯和內部部署容器**
-  - 具有箭號連結的所有程式設計語言/環境 <img src="media/index/link.jpg" height="15" width="15"></img> 在[這裡](https://aka.ms/csspeech)的快速入門表中。
-- **文字轉換語音（TTS）**
-  - C++/Windows & Linux
-  - C#/Windows & UWP & Unity
-  - JAVA （Jre 和 Android）
+- **語音辨識 （SR）、片語清單、意圖、翻譯和本地容器**
+  - 所有有箭頭連結的程式設計語言/環境 <img src="media/index/link.jpg" height="15" width="15"></img> [在快速](https://aka.ms/csspeech)入門表中。
+- **文本到語音 （TTS）**
+  - C++/視窗&Linux
+  - C#/視窗& UWP &統一
+  - JAVA（Jre 和安卓）
   - Python
   - Swift
   - Objective-C
-  - TTS REST API 可以在其他所有情況下使用。
-- **關鍵字找出（KWS.TABLE）**
-  - C++/Windows & Linux
-  - C#/Windows & Linux
-  - Python/Windows & Linux
-  - JAVA/Windows & Linux & Android （語音裝置 SDK）
-  - 關鍵字找出（KWS.TABLE）功能可能適用于任何麥克風類型，但官方 KWS.TABLE 支援目前僅限於在 Azure Kinect DK 硬體或語音裝置 SDK 中找到的麥克風陣列
+  - TTS REST API 可用於其他所有情況。
+- **關鍵字識別 （KWS）**
+  - C++/視窗&Linux
+  - C#/視窗&Linux
+  - Python/視窗&Linux
+  - JAVA/Windows&Linux&安卓（語音設備SDK）
+  - 關鍵字發現 （KWS） 功能可能適用于任何麥克風類型，但官方 KWS 支援目前僅限於 Azure Kinect DK 硬體或語音設備 SDK 中的麥克風陣列
 - **語音助理**
-  - C++/Windows & Linux & macOS
+  - C++/視窗&linux&macOS
   - C#/Windows
-  - JAVA/Windows & Linux & macOS & Android （語音裝置 SDK）
+  - JAVA/Windows&Linux& macOS & Android（語音設備 SDK）
 - **對話轉譯**
-  - C++/Windows & Linux
-  - C#（Framework & .NET Core）/Windows & UWP & Linux
-  - JAVA/Windows & Linux & Android （語音裝置 SDK）
+  - C++/視窗&Linux
+  - C# （框架& .NET 核心）/Windows & UWP & Linux
+  - JAVA/Windows&Linux&安卓（語音設備SDK）
 - **多裝置交談**
-  - C++/Windows
-  - C#（Framework & .NET Core）/Windows
-- **撥打電話中心轉譯**
-  - REST API 和可以在任何情況下使用
-- **編解碼器壓縮的音訊輸入**
+  - C++/窗戶
+  - C# （框架& .NET 核心）/視窗
+- **話務中心轉錄**
+  - REST API，可在任何情況下使用
+- **編解碼器壓縮音訊輸入**
   - C++/Linux
   - C#/Linux
-  - JAVA/Linux、Android 和 iOS
+  - JAVA/Linux、安卓和iOS

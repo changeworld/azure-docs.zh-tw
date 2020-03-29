@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73044106"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解影像仲裁概念
@@ -45,7 +45,7 @@ ms.locfileid: "73044106"
 
 **光學字元辨識 (OCR)** 作業會預測影像中是否存在文字內容，並擷取文字內容以進行文字仲裁及其他用途。 您可以指定語言。 如果您未指定語言，偵測會預設為英文。
 
-回應中包含下列資訊：
+回應包含下列資訊：
 - 原始文字。
 - 偵測到的文字項目及其信賴分數。
 
@@ -66,7 +66,7 @@ ms.locfileid: "73044106"
 
 ## <a name="detecting-faces"></a>偵測臉部
 
-偵測臉部有助於偵測個人資料，例如影像中的臉部。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
+檢測人臉有助於檢測個人資料，如圖像中的人臉。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
 
 回應包含下列資訊：
 
@@ -139,12 +139,12 @@ ms.locfileid: "73044106"
     ....
     }
 
-## <a name="human-review-tool"></a>人工審核工具
+## <a name="human-review-tool"></a>人工檢閱工具
 
 如需詳細資訊，請使用內容仲裁的[檢閱工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API，以便為人工仲裁在檢閱中呈現仲裁結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
 
-![給人工審核者的影像檢閱](images/moderation-reviews-quickstart-dotnet.PNG)
+![給人工仲裁的影像檢閱](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和， C#請同時查看[.net SDK 快速入門](dotnet-sdk-quickstart.md)的「影像仲裁」一節。
+試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 C#，請查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的映射審核部分。

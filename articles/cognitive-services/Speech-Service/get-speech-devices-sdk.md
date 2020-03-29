@@ -1,7 +1,7 @@
 ---
 title: 取得語音裝置 SDK
 titleSuffix: Azure Cognitive Services
-description: 語音服務可與各種裝置和音訊來源搭配運作。 您現在可以利用相符的硬體和軟體，將語音應用程式提升至下一個層級。 在本文中，您將瞭解如何取得語音裝置 SDK 的存取權，並開始進行開發。
+description: 語音服務適用于各種設備和音訊源。 您現在可以利用相符的硬體和軟體，將語音應用程式提升至下一個層級。 在本文中，您將學習如何訪問語音設備 SDK 並開始開發。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: f8c1500dbbd9135a850e145199de8fea68cc4630
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221427"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>取得認知服務語音裝置 SDK
 
-語音裝置 SDK 是一種 pretuned 程式庫，其設計目的是要與特定用途的開發工具組搭配使用，以及改變麥克風陣列設定。
+語音設備 SDK 是一個預調諧的庫，旨在使用專用的開發套件和不同的麥克風陣列配置。
 
 ## <a name="choose-a-development-kit"></a>選擇開發工具組
 
 |裝置|規格|描述|案例|
 |--|--|--|--|
-|[Roobo 智慧型音訊開發工具組](https://ddk.roobo.com)<br>[安裝](speech-devices-sdk-roobo-v1.md) / [快速入門](speech-devices-sdk-android-quickstart.md)![Roobo 智慧型音訊開發工具組](media/speech-devices-sdk/device-roobo-v1.jpg)|7個 Mic 陣列、ARM SOC、WIFI、音訊輸出、IO。 <br>[Android](speech-devices-sdk-android-quickstart.md)|第一個語音裝置 SDK，用於調整 Microsoft Mic Array 和 front 處理 SDK，以用於開發高品質的轉譯和語音案例|對話轉譯，智慧型說話者，語音代理程式，穿戴式|
-|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[安裝程式](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [快速入門](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic 陣列 RGB 和深度相機。 <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|一種開發人員套件，具備先進的人工智慧（AI）感應器，可用於建立精密的電腦視覺和語音模型。 它結合了頂尖的空間麥克風陣列和深度相機與攝影機和方向感應器，全都在一個小型裝置上，具有多個模式、選項和 Sdk，以容納一系列的計算類型。|對話轉譯、機器人、智慧建築|
-|Roobo 智慧型音訊開發工具組2<br>[安裝程式](speech-devices-sdk-roobo-v2.md)<br>![Roobo 智慧型音訊開發工具組 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7個 Mic 陣列、ARM SOC、WIFI、藍牙、IO。 <br>Linux|第2代語音裝置 SDK，可在符合成本效益的參考設計中提供替代的作業系統和更多功能。|對話轉譯，智慧型說話者，語音代理程式，穿戴式|
-|URbetter T11 開發面板![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7個 Mic 陣列、ARM SOC、WIFI、Ethernet、HDMI、USB 攝影機。 <br>Linux|一種業界層級的語音裝置 SDK，可調整 Microsoft Mic 陣列並支援擴充的 i/o，例如 HDMI/Ethernet 和更多 USB 週邊設備|對話轉譯、教育、醫院、機器人、OTT Box、語音代理程式、磁片磁碟機|
+|[羅博智慧音訊開發套件](https://ddk.roobo.com)<br>[設置](speech-devices-sdk-roobo-v1.md) / [快速入門](speech-devices-sdk-android-quickstart.md)![羅博智慧音訊開發套件](media/speech-devices-sdk/device-roobo-v1.jpg)|7 麥克風陣列，ARM SOC，WIFI，音訊出，IO。 <br>[Android](speech-devices-sdk-android-quickstart.md)|首款用於調整 Microsoft Mic 陣列和前端處理 SDK 的語音設備 SDK，用於開發高品質的轉錄和語音場景|對話轉錄， 智慧揚聲器， 語音代理， 可穿戴|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[設置](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [快速入門](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic 陣列 RGB 和深度攝像機。 <br>[視窗](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|一個帶有高級人工智慧 （AI） 感應器的開發人員套件，用於構建複雜的電腦視覺和語音模型。 它將一流的空間麥克風陣列和深度攝像機與攝像機和方向感應器相結合，所有設備都位於一個小型設備中，具有多種模式、選項和 SDK，以適應各種計算類型。|對話轉錄，機器人，智慧建築|
+|羅博智慧音訊開發套件 2<br>[設置](speech-devices-sdk-roobo-v2.md)<br>![羅博智慧音訊開發套件 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 麥克風陣列，ARM SOC，WIFI，藍牙，IO。 <br>Linux|第二代語音設備 SDK，在經濟高效的參考設計中提供替代作業系統和更多功能。|對話轉錄， 智慧揚聲器， 語音代理， 可穿戴|
+|URbetter T11 開發委員會![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 麥克風陣列，ARM SOC，WIFI，乙太網，HDMI，USB攝像機。 <br>Linux|行業級語音設備 SDK，可調整 Microsoft 麥克風陣列並支援擴展 I/O，如 HDMI/乙太網和更多 USB 週邊設備|對話轉錄， 教育， 醫院， 機器人， OTT 盒， 語音代理， 磁碟機 Thru|
 
 ## <a name="download-the-speech-devices-sdk"></a>下載語音裝置 SDK
 
-下載[語音裝置 SDK](https://aka.ms/sdsdk-download)。
+下載[語音設備 SDK](https://aka.ms/sdsdk-download)。
 
 ## <a name="next-steps"></a>後續步驟
 

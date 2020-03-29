@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68882680"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web 搜尋 API 支援的語言和區域
 
 Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，有助於根據該國家/地區的興趣，縮小搜尋結果範圍。 結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-您可以使用 `cc` 查詢參數指定國家/地區。 若指定了國家/地區，則必須使用 [`Accept-Language` 標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一或多個語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
+您可以使用 `cc` 查詢參數指定國家/地區。 指定國家或地區時，必須使用[`Accept-Language`標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一個或多個語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
 
 或者，您也可以使用 `mkt` 查詢參數和**市場**資料表的代碼來指定市場。 指定市場同時會指定國家/地區和慣用的語言。 您可以使用 `setLang` 查詢參數明確設定語言。
 
-## <a name="countriesregions"></a>國家/地區
+## <a name="countriesregions"></a>國家/區域
 
-|國家/地區|程式碼|
+|國家/區域|程式碼|
 |-------|----|
 |阿根廷|AR|
-|澳洲|AU|
+|澳大利亞|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
-|加拿大|CA|
+|Canada|CA|
 |智利|CL|
 |丹麥|DK|
 |芬蘭|FI|
@@ -42,7 +42,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|id|
+|印尼|ID|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -63,21 +63,21 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |瑞士|CH|
 |台灣|TW|
 |土耳其|TR|
-|英國|GB|
+|United Kingdom|GB|
 |美國|US|
 
 ## <a name="markets"></a>市場
 
-|國家/地區|語言|市場代碼|
+|國家/區域|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳洲|英文|en-AU|
+|澳大利亞|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|加拿大|英文|en-CA|
-|加拿大|法文|fr-CA|
+|Canada|英文|en-CA|
+|Canada|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
@@ -107,7 +107,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|英國|英文|en-GB|
+|United Kingdom|英文|en-GB|
 |美國|英文|zh-TW|
 |美國|西班牙文|es-US|
 

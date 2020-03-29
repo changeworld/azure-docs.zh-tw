@@ -1,5 +1,5 @@
 ---
-title: 審查使用者語句-LUIS
+title: 查看使用者話語 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用主動式學習，您可檢閱端點語句中正確的意圖和實體。 LUIS 會選擇不確定的端點語句。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: diberry
 ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221319"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>檢閱端點語句以啟用主動式學習的概念
@@ -37,11 +37,11 @@ ms.locfileid: "79221319"
 檢閱建議的語句不需要每天進行，但應屬於 LUIS 定期維護的一部分。
 
 ## <a name="delete-review-items-programmatically"></a>以程式設計方式刪除檢閱項目
-使用 [ **[刪除未標記的語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** API]。 先 **[匯出記錄檔來備份這些語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)** ，然後再進行刪除。
+使用**[刪除未標記的話語 API。](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** 先**[匯出記錄檔來備份這些語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**，然後再進行刪除。
 
-## <a name="enable-active-learning"></a>啟用主動式學習
+## <a name="enable-active-learning"></a>啟用主動學習
 
-若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有 `log=true` querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成。
+要啟用活動學習，必須記錄使用者查詢。 這是通過使用查詢字串參數和值調用[終結點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來實現的`log=true`。
 
 ## <a name="next-steps"></a>後續步驟
 

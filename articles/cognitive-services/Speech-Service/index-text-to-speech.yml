@@ -1,25 +1,24 @@
 ### YamlMime:Landing
 title: 文字轉換語音文件
-summary: 語音服務中的文字轉換語音可讓您的應用程式、工具或裝置將文字轉換成類似人類的合成語音。
+summary: 語音服務中的文本到語音轉換使應用程式、工具或設備能夠將文本轉換為類似人類的合成語音。
 metadata:
-  title: 文字轉換語音檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  title: 文本到語音文檔 - 教程，API 參考 - Azure 認知服務 |微軟文檔
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 82499c16b6ad8cd8c1adfe27eeb7a0c842e37d1e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370401"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052809"
 landingContent:
-- title: 關於文字轉換語音
+- title: 關於文本到語音
   linkLists:
   - linkListType: overview
     links:
@@ -33,14 +32,12 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: 使用長格式音訊合成語音
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: 使用文字轉換語音進行開發
+- title: 使用文本到語音進行開發
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 使用 SSML 改善合成
       url: speech-synthesis-markup.md
-    - text: 使用自訂語音改善合成
-      url: how-to-custom-voice.md
     - text: 取得使用 REST 的語音清單 (Python)
       url: quickstart-python-get-text-to-speech-voices.md
     - text: 使用 REST 將文字轉換為語音 (Python)
@@ -53,15 +50,15 @@ landingContent:
       url: how-to-custom-voice-create-voice.md
     - text: 自訂語音的管制
       url: concepts-gating-overview.md
-- title: 參考
+- title: 參考資料
   linkLists:
   - linkListType: reference
     links:
     - text: 標準語音支援
       url: language-support.md#standard-voices
-    - text: 類神經語音支援
+    - text: 神經語音支援
       url: language-support.md#neural-voices
-    - text: SSML 拼音集合
+    - text: SSML 拼音集
       url: speech-ssml-phonetic-sets.md
-    - text: 文字轉換語音定價
+    - text: 文本到語音轉換定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

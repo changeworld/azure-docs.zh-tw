@@ -9,94 +9,94 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211412"
 ---
-## <a name="general-entity-types"></a>一般實體類型：
+## <a name="general-entity-types"></a>常規實體類型：
 
 ### <a name="person"></a>個人
 
-辨識文字中的人員名稱。
+在文本中識別人員姓名。
 
 語言：
-* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
+* 公共預覽： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
 
-| 子類型名稱 | 描述                                                      | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                      | 可從模型版本開始 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| N/A          | 辨識的人員名稱，例如 `Bill Gates`，`Marie Curie` | `2019-10-01`                          | 
+| N/A          | 識別人員姓名，例如`Bill Gates`，`Marie Curie` | `2019-10-01`                          | 
 
-### <a name="persontype"></a>PersonType
-人員所持有的作業類型或角色。
+### <a name="persontype"></a>人員類型
+工作類型或人員擔任的角色。
 
 語言：
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                                                                | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                                                | 可從模型版本開始 |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 工作類型，例如 `civil engineer`、`salesperson`、`chef`、`librarian`、`nursing aide` | `2020-02-01`                           |
+| N/A          | 作業類型，例如`civil engineer` `salesperson`， `chef` `librarian`， ， 、 、 、`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Location
 
-自然和人為地標、結構、地理功能和地緣政治實體。
+自然和人為的地標、結構、地理特徵和地緣政治實體。
 
 語言：
 
-* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
+* 公共預覽： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
 
-| 子類型名稱              | 描述                                                                              | 從模型版本開始提供 |
+| 子類型名稱              | 描述                                                                              | 可從模型版本開始 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A                       | 位置，例如 `Atlantic Ocean`、`library`、`Eiffel Tower`、`Statue of Liberty`  | `2019-10-01`                           |
-| 地緣政治實體（GPE）-僅限英文| 城市、國家/地區、狀態，例如 `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo` | `2020-02-01`                           |
+| N/A                       | 位置，例如`Atlantic Ocean`， `library` `Eiffel Tower`，`Statue of Liberty`  | `2019-10-01`                           |
+| 地緣政治實體 （GPE） - 僅限英語| 城市、國家/地區、州`Seattle`等`Pennsylvania` `South Africa`， 、`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>組織  
 
-已辨識的組織、公司、機構和其他人員群組。 例如：公司、政治群組、音樂波段、運動俱樂部、政府機構和公用組織。 Nationalities 和 religions 不包含在此實體類型中。 
+公認的組織、公司、機構和其他群體。 例如：公司、政治團體、樂隊、體育俱樂部、政府機構和公共組織。 民族和宗教不包括在此實體類型中。 
 
 語言： 
 
-* 公開預覽： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
+* 公共預覽： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
 
-| 子類型名稱 | 描述                                                                                             | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                                                             | 可從模型版本開始 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 例如 `Microsoft`、`NASA`、`National Oceanic and Atmospheric Administration`、`VOA` 的組織 | `2019-10-01`                           |
+| N/A          | 組織，例如`Microsoft`， `NASA` `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>事件  
 
-歷史、社交和自然發生的事件。  
+歷史、社會和自然事件。  
 
 語言： 
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                                            | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                            | 可從模型版本開始 |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 事件，例如 `wedding`、`hurricane`、`car accident`、`solar eclipse`、`American Revolution` | `2020-02-01`                           |
+| N/A          | 事件，如`wedding` `hurricane`， `car accident` `solar eclipse`， ，`American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Products  
 
-各種類別目錄的實體物件。  
+不同類別的物理物件。  
 
 語言： 
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                                                        | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                                        | 可從模型版本開始 |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 例如，`Microsoft Surface laptop`、`sunglasses`、`motorcycle`、`bag`、`Xbox` | `2020-02-01`                           |
+| N/A          | `Microsoft Surface laptop`例如， `sunglasses`、 `motorcycle`、 `bag`、 、`Xbox` | `2020-02-01`                           |
 | 運算    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>技能  
 
-描述功能或專業知識的實體。  
+描述能力或專業知識的實體。  
 
 語言： 
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                                                 | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                                                 | 可從模型版本開始 |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
 | N/A          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
@@ -106,11 +106,11 @@ ms.locfileid: "77211412"
 
 語言：
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                    | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                    | 可從模型版本開始 |
 |--------------|------------------------------------------------|----------------------------------------|
-| N/A          | 美國電話號碼，例如 `(312) 555-0176` | `2019-10-01`                           |
+| N/A          | 美國電話號碼，例如`(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>電子郵件
 
@@ -118,45 +118,45 @@ ms.locfileid: "77211412"
 
 語言：
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                      | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                      | 可從模型版本開始 |
 |--------------|--------------------------------------------------|----------------------------------------|
-| N/A          | 電子郵件地址，例如 `support@contoso.com` | `2019-10-01`                           |
+| N/A          | 電子郵件地址，例如`support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>URL
 
-網際網路 Url。
+互聯網網址。
 
 語言：
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                                          | 從模型版本開始提供 |
+| 子類型名稱 | 描述                                          | 可從模型版本開始 |
 |--------------|------------------------------------------------------|----------------------------------------|
-| N/A          | 網站的 Url，例如 `https://www.bing.com` | `2019-10-01`                           |
+| N/A          | 網址到網站，例如`https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP 位址
 
-網際網路通訊協定位址
+互聯網協定位址
 
 語言：
 
-* 公開預覽： `English`
+* 公共預覽：`English`
 
-| 子類型名稱 | 描述                              | 從模型版本開始提供 |
+| 子類型名稱 | 描述                              | 可從模型版本開始 |
 |--------------|------------------------------------------|----------------------------------------|
-| N/A          | 例如 `10.0.0.101` 的網路位址 | `2019-10-01`                           |
+| N/A          | 例如網路位址`10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>Datetime
 
 日期和時間實體。 
 
-* 從模型版本開始提供 `2019-10-01`
+* 可從模型版本開始`2019-10-01`
 
 語言：
 
-* 公開預覽： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
+* 公共預覽： `Chinese-Simplified` `English`、 `French` `German` 、 和`Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|
@@ -166,17 +166,17 @@ ms.locfileid: "77211412"
 | 日期範圍    | `August 2nd to August 5th`         |
 | 時間範圍   | `4-6PM`, `10:00AM to Noon`          |
 | Duration | `2.5 minutes`, `one and a half hours`         |
-| Set | `every Saturday`         |
+| 設定 | `every Saturday`         |
 
 ###  <a name="quantity"></a>數量
 
-數位和數值數量。 
+數位和數位數量。 
 
-* 從模型版本開始提供 `2019-10-01`
+* 可從模型版本開始`2019-10-01`
 
 語言：
 
-* 公開預覽： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
+* 公共預覽： `Chinese-Simplified` `English`、 `French` `German` 、 和`Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|

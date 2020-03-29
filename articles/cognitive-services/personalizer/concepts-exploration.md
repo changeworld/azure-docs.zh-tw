@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490814"
 ---
 # <a name="exploration-and-exploitation"></a>探索 (Exploration) 和利用 (Exploitation)
@@ -25,11 +25,11 @@ ms.locfileid: "73490814"
 * 使用「利用」來根據目前的機器學習模型，以最可能的使用者行為做比對。
 * 使用「探索」，不以排名中機率最高的動作最比對。
 
-個人化工具目前使用稱為 "epsilon greedy" 的演算法來進行探索。 
+個人化工具目前使用稱為 "epsilon greedy"** 的演算法來進行探索。 
 
 ## <a name="choosing-an-exploration-setting"></a>選擇探索設定
 
-您可以在個人化工具的 Azure 入口網站 [設定 **] 頁面中**，設定用於探索的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
+在 Azure 門戶的"個人化配置 **"** 頁中配置用於流覽的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
 
 個人化工具會決定是否要探索或利用每個排名呼叫上的此機率。 這有別於某些 A/B 架構中的行為，也就是鎖定特定使用者識別碼上的處理方式。
 

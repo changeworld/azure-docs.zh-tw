@@ -1,23 +1,22 @@
 ### YamlMime:Landing
 title: 語音翻譯文件
-summary: 語音服務的語音翻譯可讓您即時、多語言的語音轉換語音和語音轉換文字轉譯音訊串流
+summary: 語音服務的語音翻譯支援音訊流的即時、多語言語音語音和語音到文本的翻譯
 metadata:
-  title: 語音翻譯檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  title: 語音翻譯文檔 - 教程，API 參考 - Azure 認知服務 |微軟文檔
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367970"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415320"
 landingContent:
 - title: 關於語音翻譯
   linkLists:
@@ -33,17 +32,17 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 翻譯語音轉換語音
       url: quickstarts/translate-speech-to-speech.md
-- title: 使用語音翻譯進行開發
+- title: 通過語音翻譯進行開發
   linkLists:
   - linkListType: learn
     links:
-    - text: 即時轉譯語音
+    - text: 即時翻譯語音
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: 使用 REST Api 轉譯和合成文字
+    - text: 使用 REST API 翻譯和合成文本
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
-- title: 參考
+- title: 參考資料
   linkLists:
   - linkListType: reference
     links:

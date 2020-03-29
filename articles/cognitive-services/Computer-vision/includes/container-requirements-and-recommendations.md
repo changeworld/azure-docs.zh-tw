@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 09/20/2019
 ms.author: dapine
 ms.openlocfilehash: 2fa97a3a18741f506e10e5e4d61da286db3f744c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73481751"
 ---
 > [!NOTE]
-> 需求和建議是以每秒單一要求的基準測試為基礎，使用包含29行且總計為803個字元的掃描商務信件的 8 MB 影像。
+> 要求和建議基於每秒一個請求的基準，使用包含 29 行和總共 803 個字元的掃描業務信函的 8 MB 圖像。
 
-下表描述每個讀取容器的資源的最低和建議配置。
+下表描述了每個 Read 容器的最小和建議的資源配置。
 
-| 容器 | 最小值 | 建議 |本<br>（最小值，最大值）|
+| 容器 | 最小值 | 建議 |Tps<br>（最小，最大）|
 |-----------|---------|-------------|--|
-| 讀取 | 1個核心，8 GB 記憶體，0.24 TPS | 8核心，16 GB 記憶體，1.17 TPS | 0.24、1.17 |
+| 讀取 | 1 個內核，8 GB 記憶體，0.24 TPS | 8 個內核，16-GB 記憶體，1.17 TPS | 0.24, 1.17 |
 
 * 每個核心必須至少 2.6 GHz 或更快。
-* TP-每秒交易數。
+* TPS - 每秒事務。
 
 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，用來作為 `docker run` 命令的一部分。

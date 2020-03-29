@@ -1,5 +1,5 @@
 ---
-title: 貨幣預先建立的實體-LUIS
+title: 貨幣預構建實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 currency 實體資訊。
 services: cognitive-services
@@ -12,23 +12,23 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270772"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的貨幣預先建置實體
-預先建立的貨幣實體會偵測許多面額和國家/地區的貨幣，而不論 LUIS 應用程式文化特性為何。 因為此實體已經定型，所以您不需要將包含貨幣的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 currency 實體。
+預構建的貨幣實體檢測許多面額和國家/地區的貨幣，而不管 LUIS 應用區域性如何。 因為此實體已經定型，所以您不需要將包含貨幣的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 currency 實體。
 
 ## <a name="types-of-currency"></a>貨幣類型
-貨幣可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub 存放庫管理
+貨幣從[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26)GitHub 存儲庫進行管理
 
 ## <a name="resolution-for-currency-entity"></a>解析 currency 實體
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 會將 `verbose` 參數設定為 `false`：
+以下 JSON 的`verbose`參數設置為`false`：
 
 ```json
 "entities": {
@@ -41,7 +41,7 @@ ms.locfileid: "78270772"
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-下列 JSON 會將 `verbose` 參數設定為 `true`：
+以下 JSON 的`verbose`參數設置為`true`：
 
 ```json
 "entities": {

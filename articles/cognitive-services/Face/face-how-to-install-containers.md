@@ -1,7 +1,7 @@
 ---
-title: 安裝和執行容器-臉部
+title: 安裝和運行容器 - 面
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何在本逐步解說教學課程中下載、安裝及執行臉部的容器。
+description: 本文在本演練教程中演示如何下載、安裝和運行 Face 容器。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76165985"
 ---
-# <a name="install-and-run-face-containers-preview"></a>安裝和執行臉部容器（預覽）
+# <a name="install-and-run-face-containers-preview"></a>安裝和運行面容器（預覽）
 
-Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影像中的人臉。 它也會識別屬性，包括臉部地標（例如鼻子和眼睛）、性別、年齡及其他機器預測的臉部特徵。 除了偵測以外，臉部也可以使用信賴分數來檢查相同影像或不同影像中的兩張臉部是否相同。 臉部也可以比較臉部與資料庫，以查看是否已存在外觀相似或相同的臉部。 它也可以使用共用視覺特性，將類似的臉部組織成群組。
+Azure 認知服務面為 Docker 提供了一個標準化的 Linux 容器，用於檢測圖像中的人臉。 它還識別屬性，包括面部地標，如鼻子和眼睛、性別、年齡和其他機器預測的面部特徵。 除了檢測之外，Face 還可以使用置信度分數檢查同一圖像中的兩個面或不同的圖像是否相同。 面還可以將面與資料庫進行比較，以查看是否存在相似外觀或相同面。 它還可以使用共用的視覺特徵將相似的面孔組織成組。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-使用臉部服務容器之前，您必須符合下列必要條件。
+在使用 Face 服務容器之前，必須滿足以下先決條件。
 
-|必要項|目的|
+|必要|目的|
 |--|--|
-|Docker 引擎| Docker 引擎必須安裝在[主機電腦](#the-host-computer)上。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> 在 Windows 上，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
-|熟悉 Docker | 您需要對 Docker 概念（例如登錄、存放庫、容器和容器映射）的基本瞭解。 您也需要基本 `docker` 命令的知識。| 
-|臉部資源 |若要使用容器，您必須具有：<br><br>Azure**臉部**資源和相關聯的 API 金鑰和端點 URI。 這兩個值都可在資源的 [**總覽**] 和 [**金鑰**] 頁面上取得。 您必須啟動容器。<br><br>**{API_KEY}** ： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}** ： [**總覽**] 頁面上所提供的端點
+|Docker 引擎| Docker 引擎必須安裝在[主機](#the-host-computer)上。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> 在 Windows 上，還必須將 Docker 配置為支援 Linux 容器。<br><br>|
+|熟悉 Docker | 您需要對 Docker 概念（如註冊表、存儲庫、容器和容器映射）的基本瞭解。 您還需要基本`docker`命令的知識。| 
+|人臉資源 |要使用容器，您必須具有：<br><br>Azure**面**資源以及關聯的 API 金鑰和終結點 URI。 這兩個值都可以在資源的 **"概述**"和 **"鍵"** 頁上使用。 他們需要啟動容器。<br><br>**[API_KEY]**：**金鑰**頁上的兩個可用資源鍵之一<br><br>**[ENDPOINT_URI]**：**概述**頁上提供的終結點
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -46,20 +46,20 @@ Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影�
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
-下表說明要為每個臉部服務容器配置的最低和建議 CPU 核心和記憶體。
+下表描述了為每個 Face 服務容器分配的最小和推薦的 CPU 內核和記憶體。
 
-| 容器 | 最小值 | 建議 | 每秒交易數<br>（最小值，最大值）|
+| 容器 | 最小值 | 建議 | 每秒交易<br>（最小，最大）|
 |-----------|---------|-------------|--|
-|臉部 | 1核心，2 GB 記憶體 | 1核心，4 GB 記憶體 |10, 20|
+|臉部 | 1 個內核，2 GB 記憶體 | 1 核，4 GB 記憶體 |10, 20|
 
-* 每個核心必須至少有 2.6 GHz 或更快的速度。
-* 每秒交易數（TP）。
+* 每個內核必須至少為 2.6 GHz 或更快。
+* 每秒事務 （TPS）。
 
 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，用來作為 `docker run` 命令的一部分。
 
-## <a name="get-the-container-image-with-docker-pull"></a>取得具有 docker pull 的容器映射
+## <a name="get-the-container-image-with-docker-pull"></a>使用碼頭拉取容器映射
 
-臉部服務的容器映射可供使用。 
+面服務的容器映射可用。 
 
 | 容器 | Repository |
 |-----------|------------|
@@ -75,16 +75,16 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="use-the-container"></a>使用容器
 
-在容器位於[主機電腦](#the-host-computer)上之後，請使用下列程式來處理容器。
+容器位於[主機](#the-host-computer)上後，使用以下過程處理容器。
 
-1. 使用必要的帳單設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](./face-resource-container-config.md#example-docker-run-commands)可供參考。 
-1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。 
+1. 使用所需的計費設置[運行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](./face-resource-container-config.md#example-docker-run-commands)可供參考。 
+1. [查詢容器的預測終結點](#query-the-containers-prediction-endpoint)。 
 
-## <a name="run-the-container-with-docker-run"></a>使用 docker run 執行容器
+## <a name="run-the-container-with-docker-run"></a>使用 Docker 運行運行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 有關如何獲取 和`{ENDPOINT_URI}``{API_KEY}`值的詳細資訊，請參閱[收集所需的參數](#gathering-required-parameters)。
 
-命令的[範例](face-resource-container-config.md#example-docker-run-commands)可供使用。`docker run`
+[命令的示例可用。](face-resource-container-config.md#example-docker-run-commands) `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -96,15 +96,15 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 從容器映射執行臉部容器。
-* 配置一個 CPU 核心和 4 GB 的記憶體。
-* 公開 TCP 埠5000，並為容器配置虛擬 TTY。
+* 從容器映射運行面容器。
+* 分配一個 CPU 內核和 4 GB 記憶體。
+* 公開 TCP 埠 5000 並為容器分配偽 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。 
 
 `docker run` 命令有相關[範例](./face-resource-container-config.md#example-docker-run-commands)可供參考。 
 
 > [!IMPORTANT]
-> 您必須指定 [`Eula`]、[`Billing`] 和 [`ApiKey`] 選項，才能執行容器，否則容器將不會啟動。 如需詳細資訊，請參閱[帳單](#billing)。
+> 必須`Eula`指定`Billing`和`ApiKey`選項才能運行容器，否則容器將無法啟動。 如需詳細資訊，請參閱[帳單](#billing)。
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -126,13 +126,13 @@ ApiKey={API_KEY}
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您執行具有輸出[裝載](./face-resource-container-config.md#mount-settings)的容器，而且已啟用記錄，則容器會產生記錄檔，有助於疑難排解您啟動或執行容器時所發生的問題。
+如果啟用了輸出[裝載](./face-resource-container-config.md#mount-settings)和日誌記錄運行容器，則容器將生成日誌檔，這些檔有助於解決啟動或運行容器時出現的問題。
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>計費
 
-臉部服務容器會使用您 Azure 帳戶上的臉部資源，將帳單資訊傳送至 Azure。 
+面服務容器通過使用 Azure 帳戶上的面資源向 Azure 發送計費資訊。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -142,21 +142,21 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
-在本文中，您已瞭解如何下載、安裝及執行臉部服務容器的概念和工作流程。 摘要說明：
+在本文中，您學習了如何下載、安裝和運行 Face 服務容器的概念和工作流。 摘要說明：
 
-* 容器映射會從 Azure Container Registry 下載。
+* 容器映射從 Azure 容器註冊表下載。
 * 容器映像是在 Docker 中執行。
-* 您可以藉由指定容器的主機 URI，使用 REST API 或 SDK 來呼叫臉部服務容器中的作業。
-* 當您具現化容器時，您必須指定帳單資訊。
+* 可以使用 REST API 或 SDK 通過指定容器的主機 URI 來調用 Face 服務容器中的操作。
+* 具現化容器時必須指定計費資訊。
 
 > [!IMPORTANT]
-> 認知服務容器不會在未連線至 Azure 以進行計量的情況下執行授權。 客戶必須讓容器隨時與計量服務溝通帳單資訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
+> 認知服務容器未獲得運行許可，無需連接到 Azure 進行計量。 客戶必須使容器能夠隨時與計量服務通信計費資訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需設定，請參閱[設定容器](face-resource-container-config.md)。
-* 若要深入瞭解如何偵測和識別臉部，請參閱[臉部總覽](Overview.md)。
-* 如需容器所支援之方法的詳細資訊，請參閱[臉部 API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
-* 若要使用更認知服務的容器，請參閱[認知服務容器](../cognitive-services-container-support.md)。
+* 有關配置設置，請參閱[配置容器](face-resource-container-config.md)。
+* 要瞭解有關如何檢測和識別人臉的詳細資訊，請參閱[人臉概述](Overview.md)。
+* 有關容器支援的方法的資訊，請參閱[面 API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
+* 要使用更多認知服務容器，請參閱[認知服務容器](../cognitive-services-container-support.md)。

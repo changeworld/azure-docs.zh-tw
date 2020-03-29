@@ -1,15 +1,15 @@
 ---
-title: 快速入門：發佈知識庫、REST、 C# -QnA Maker
+title: 快速入門：發佈知識庫、REST、C# - QnA 製造商
 description: 這個以 C# REST 為基礎的快速入門會發佈您的知識庫，並建立可在應用程式或聊天機器人中呼叫的端點。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851965"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>快速入門：使用 C# 在 QnA Maker 中發佈知識庫
@@ -19,10 +19,10 @@ ms.locfileid: "78851965"
 本快速入門會呼叫 QnA Maker API：
 * [發佈](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - 此 API 不需要在要求主體中有任何資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 最新 [**Visual Studio Community 版本**](https://www.visualstudio.com/downloads/)。
-* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]。
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 * QnA Maker 知識庫 (KB) 識別碼可以在 `kbid` 查詢字串參數中的 URL 找到，如下所示。
 
     ![QnA Maker 知識庫識別碼](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -30,7 +30,7 @@ ms.locfileid: "78851965"
     如果您還沒有知識庫，可以建立要用於本快速入門的範例知識庫：[建立新的知識庫](create-new-kb-csharp.md)。
 
 > [!NOTE]
-> 從 [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)可取得完整的解決方案檔。
+> 完整的解決方案檔可從[**Azure 示例/認知服務-qnamaker-csharp** GitHub 存儲庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)中獲取。
 
 ## <a name="create-knowledge-base-project"></a>建立知識庫專案
 
@@ -45,7 +45,7 @@ ms.locfileid: "78851965"
 
 ## <a name="add-required-constants"></a>新增必要的常數
 
-在 [程式] 類別中，新增必要常數以存取 QnA Maker。
+在 [程式]**** 類別中，新增必要常數以存取 QnA Maker。
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=8-34 "Add the required constants")]
 

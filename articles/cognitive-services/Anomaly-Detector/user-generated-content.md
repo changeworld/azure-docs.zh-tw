@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
 ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74012015"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Anomaly Detector API 中由使用者產生的主要內容
 
-使用本文探索其他客戶對 Anomaly Detector API 的看法和使用情形。 下列資源由 Anomaly Detector 的使用者社群所建立。 其中包括開放原始碼專案，以及由 Microsoft 和協力廠商使用者所建立的其他投稿。 以下有部分連結裝載於 Microsoft 外部的網站上，Microsoft 對其內容概不負責。 參考這些資源時請多加留意。
+使用本文探索其他客戶對 Anomaly Detector API 的看法和使用情形。 下列資源由 Anomaly Detector 的使用者社群所建立。 它們包括開源專案，以及 Microsoft 和協力廠商使用者創建的其他貢獻。 以下有部分連結裝載於 Microsoft 外部的網站上，Microsoft 對其內容概不負責。 參考這些資源時請多加留意。
 
 ## <a name="technical-blogs"></a>技術部落格
 
-* [試用認知服務：異常偵測器 API （日文）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
+* [嘗試認知服務：異常檢測器 API（日語）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>開放原始碼專案
 

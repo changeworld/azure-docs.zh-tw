@@ -1,7 +1,7 @@
 ---
 title: Bing 新聞搜尋端點
 titleSuffix: Azure Cognitive Services
-description: 本文提供新聞搜尋 API 端點的摘要;新聞、熱門新聞和趨勢新聞。
+description: 本文提供了新聞搜索 API 終結點的摘要;新聞、頂級新聞和趨勢新聞。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111494"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing 新聞搜尋 API 端點
 
 **新聞搜尋 API** 會傳回新聞文章、網頁、影像、影片和[實體](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 實體包含人員、地點或主題的摘要資訊。
 
-## <a name="endpoints"></a>Endpoints
+## <a name="endpoints"></a>端點
 
 若要使用「Bing 新聞搜尋 API」取得新聞搜尋結果，請將 `GET` 要求傳送至下列其中一個端點。 標頭和 URL 參數可定義進一步的規格。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74111494"
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-根據搜尋查詢傳回新聞項目。 如果搜尋查詢是空的，則 API 將傳回不同類別的熱門新聞文章。 傳送查詢，做法是將搜尋字詞進行 url 編碼，然後將 `q=""` 參數加上該字詞。 如需瞭解可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-search-endpoint)。
+根據搜尋查詢傳回新聞項目。 如果搜尋查詢是空的，則 API 將傳回不同類別的熱門新聞文章。 傳送查詢，做法是將搜尋字詞進行 url 編碼，然後將 `q=""` 參數加上該字詞。 有關可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-search-endpoint)。
 
 ### <a name="top-news-items-by-category"></a>依類別的熱門新聞項目
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-依照類別傳回熱門新聞項目。 您可以使用 `category=business``category=sports` 或 `category=entertainment`，特別要求熱門商業、運動或娛樂文章。  `category` 參數只能與 `/news` URL 搭配使用。 指定類別時有一些正式需求；請參閱`category`查詢參數[文件中的 ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)。 傳送查詢，做法是將搜尋字詞進行 url 編碼，然後將 `q=""` 參數加上該字詞。 如需瞭解可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-endpoint)。
+依照類別傳回熱門新聞項目。 您可以使用 `category=business``category=sports` 或 `category=entertainment`，特別要求熱門商業、運動或娛樂文章。 `category` 參數只能搭配 `/news` URL 使用。 指定類別時有一些正式需求；請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)文件中的 `category`。 傳送查詢，做法是將搜尋字詞進行 url 編碼，然後將 `q=""` 參數加上該字詞。 有關可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-endpoint)。
 
 ### <a name="trending-news-topics"></a>趨勢新聞主題 
 
@@ -47,7 +47,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-傳回社交網路上目前的趨勢新聞主題。 若包含 `/trendingtopics` 選項，Bing 搜尋會忽略其他幾個參數，例如 `freshness` 和 `?q=""`。 如需瞭解可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-trending-endpoint)。
+傳回社交網路上目前的趨勢新聞主題。 若包含 `/trendingtopics` 選項，Bing 搜尋會忽略其他幾個參數，例如 `freshness` 和 `?q=""`。 有關可用性，請參閱[支援的國家/地區和市場](language-support.md#supported-markets-for-news-trending-endpoint)。
 
 ## <a name="next-steps"></a>後續步驟
 

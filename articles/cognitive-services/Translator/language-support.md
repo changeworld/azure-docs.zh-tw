@@ -1,7 +1,7 @@
 ---
 title: 語言支援 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 翻譯工具文字 API 支援下列使用類神經機器翻譯（NMT）之文字到文字翻譯的語言。
+description: 翻譯器文本 API 支援使用神經機翻譯 （NMT） 進行文本到文本翻譯的以下語言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77206118"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>翻譯工具文字 API 支援的語言和區域
@@ -28,19 +28,19 @@ ms.locfileid: "77206118"
 **V2 Translator API**
 
 > [!NOTE]
-> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以利用在 V3 中專門提供的新功能。
+> V2 于 2018 年 4 月 30 日棄用。 請將應用程式遷移到 V3，以便利用 V3 中獨有功能。
 
-* 僅限統計：此語言沒有可用的類神經系統。
-* 可用的類神經：可用的類神經系統。 使用 `category=generalnn` 參數來存取類神經系統。
-* 類神經預設值：類神經是預設的轉譯系統。 使用 `category=smt` 參數存取搭配 Microsoft Translator Hub 使用的統計系統。
-* 僅類神經：僅可使用類神經轉譯。
+* 僅統計：沒有神經網路可用於此語言。
+* 神經可用：有一個神經系統可用。 使用 `category=generalnn` 參數來存取類神經系統。
+* 神經預設值：神經是預設翻譯系統。 使用 `category=smt` 參數存取搭配 Microsoft Translator Hub 使用的統計系統。
+* 僅限神經：僅提供神經翻譯。
 
 **V3 Translator API** V3 Translator API 預設為類神經架構，而統計系統僅適用於沒有類神經系統存在時。
 
 > [!NOTE]
-> 目前，類神經語言的子集可在自訂翻譯中使用，我們會逐漸新增其他類神經語言。 [觀看自訂翻譯中目前可用的語言](#customization)。
+> 目前，自訂翻譯器中提供了神經語言的子集，並且我們正在逐步添加其他語言。 [查看當前在自訂翻譯器中提供的語言](#customization)。
 
-|Language|  語言代碼|  V3 API|
+|語言|  語言代碼|  V3 API|
 |:-----|:-----:|:-----|
 |南非荷蘭文| `af`|   類神經|
 |阿拉伯文|    `ar`    |   類神經|
@@ -114,13 +114,13 @@ ms.locfileid: "77206118"
 |猶加敦馬雅文|  `yua`   |   統計|
 
 > [!NOTE]
-> 語言代碼 `pt` 會預設為 `pt-br`、葡萄牙文（巴西）。
+> 語言代碼`pt`將預設為`pt-br`葡萄牙文（巴西）。
 
 ## <a name="transliteration"></a>轉換
 
 轉換方法支援以下語言。 在「至/自」列中，「<-->」表示該語言後方所列的兩種文字可相互轉換。 「-->」表示該語言只能從某種文字轉寫成另一種文字。
 
-| Language    | 語言代碼 | 指令碼 | 至/自 | 指令碼|
+| 語言    | 語言代碼 | 指令碼 | 至/自 | 指令碼|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 |孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
@@ -147,7 +147,7 @@ ms.locfileid: "77206118"
 
 字典支援使用查閱與範例方法來查詢下列語言的英文譯文，或英文的下列語言譯文。
 
-| Language    | 語言代碼 |
+| 語言    | 語言代碼 |
 |:----------- |:-------------:|
 | 南非荷蘭文      | `af`          |
 | 阿拉伯文       | `ar`          |
@@ -202,7 +202,7 @@ ms.locfileid: "77206118"
 
 ## <a name="detect"></a>Detect
 
-翻譯工具文字 API 會偵測所有可用於轉譯和音譯的語言。
+翻譯文本 API 檢測所有可用於翻譯和音譯的語言。
 
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>以程式設計方式存取翻譯工具文字 API 的語言清單
@@ -213,9 +213,9 @@ ms.locfileid: "77206118"
 
 ## <a name="customization"></a>自訂
 
-下列語言可使用[自訂翻譯](https://aka.ms/CustomTranslator)自訂或英文。
+以下語言可用於自訂[翻譯](https://aka.ms/CustomTranslator)器的英語或英語自訂。
 
-| Language    | 語言代碼 |
+| 語言    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文       | `ar`          |
 | 孟加拉文      | `bn`          |

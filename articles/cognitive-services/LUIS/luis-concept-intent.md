@@ -1,7 +1,7 @@
 ---
-title: 意圖和實體-LUIS
+title: 意向和實體 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 單一意圖代表使用者想要執行的工作或動作。 它是使用者語句中表達的目的或目標。 請定義一組與使用者想要在您應用程式中執行之動作對應的意圖。
+description: 單個意圖表示使用者要執行的任務或操作。 它是使用者語句中表達的目的或目標。 請定義一組與使用者想要在您應用程式中執行之動作對應的意圖。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221507"
 ---
-# <a name="intents-in-your-luis-app"></a>LUIS 應用程式中的意圖
+# <a name="intents-in-your-luis-app"></a>LUIS 應用中的意圖
 
-意圖代表使用者想要執行的工作或動作。 它是使用者[語句](luis-concept-utterance.md)中表達的目的或目標。
+意圖代表使用者想要執行的工作或動作。 它是使用者[話語](luis-concept-utterance.md)中表達的目的或目標。
 
 請定義一組與使用者想要在您應用程式中執行之動作對應的意圖。 例如，旅遊應用程式會定義數個意圖：
 
 旅遊應用程式意圖   |   範例語句   | 
 ------|------|
  BookFlight     |   「幫我預訂下週到里約的班機」 <br/> 「24 日讓我飛到里約」 <br/> 「我需要一張下週日到里約熱內盧的機票」    |
- Greeting     |   「嗨」 <br/>「您好」 <br/>「早安」  |
+ Greeting     |   「嗨」 <br/>"Hello" <br/>「早安」  |
  CheckWeather | 「波士頓的天氣如何？」 <br/> 「顯示本週的預測」 |
  None         | 「給我餅乾食譜」<br>「湖人隊贏了嗎？」 |
 
-所有應用程式都有預先定義的意圖 "[None](#none-intent)"，這是回溯意圖。 
+所有應用程式都附帶預定義的意圖，"[無](#none-intent)"，這是回退意圖。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>預先建置的定義域會提供意圖
-除了您定義的意圖之外，您還可以從其中一個預先建立的[定義域](luis-how-to-use-prebuilt-domains.md)使用預先建立的意圖。 
+除了定義的意圖之外，還可以使用預[構建的域](luis-how-to-use-prebuilt-domains.md)之一的預構建意圖。 
 
 ## <a name="return-all-intents-scores"></a>傳回所有意圖的分數
-您會指派語句給單一意圖。 當 LUIS 接收到端點上的語句時，根據預設，它會傳回該語句的最高意圖。 
+您會指派語句給單一意圖。 預設情況下，當 LUIS 收到終結點上的話語時，它將返回該陳述的最高意圖。 
 
-如果您想要語句的所有意圖分數，您可以在預測 API 的查詢字串上提供旗標。 
+如果希望說出所有意圖的分數，則可以在預測 API 的查詢字串上提供標誌。 
 
 |預測 API 版本|旗標|
 |--|--|
@@ -47,38 +47,38 @@ ms.locfileid: "79221507"
 |V3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>意圖與實體的比較
-意圖代表應用程式應該為使用者採取的動作，而且是以整個語句為基礎。 一個語句只能有一個最高分的意圖，但可以有許多個實體。 
+意圖表示應用程式應該對使用者執行的操作，並且基於整個陳述。 一個語句只能有一個最高分的意圖，但可以有許多個實體。 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-當_使用者想要_在您的用戶端應用程式中觸發動作時（例如呼叫 checkweather （）函式），建立意圖。 然後建立實體來代表執行動作所需的參數。 
+ 當使用者的「意圖」__ 會觸發用戶端應用程式中的動作 (例如對 checkweather() 函式的呼叫) 時，請建立意圖。 然後創建實體以表示執行操作所需的參數。 
 
 |Intent   | 單位 | 範例語句   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | `Seattle` `tomorrow`有哪些氣象？ |
+| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | 天氣`Seattle``tomorrow`怎麼樣？ |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend` | 
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>預先建置的定義域意圖
 
-[預先](luis-how-to-use-prebuilt-domains.md)建立的網域提供語句的意圖。 
+[預構建的域](luis-how-to-use-prebuilt-domains.md)提供具有陳述的意圖。 
 
 ## <a name="none-intent"></a>None 意圖
 
 系統會建立 **None** 但刻意保留空白。 **None** 意圖是必要意圖，您無法將其刪除或重新命名。 請以您定義域外的語句填入它。
 
-「**無**」意圖是「回溯」意圖，在每個應用程式中都很重要，而且應該有10% 的總語句。 它可用來教導 LUIS 在應用程式定義域 (主題區域) 中不重要的語句。 如果您沒有為 **None** 意圖新增任何語句，LUIS 就會強制讓定義域外的某個語句變成其中一個定義域意圖。 這會教導 LUIS 錯誤的語句意圖而扭曲預測分數。 
+**"無**"意圖是回退意圖，在每個應用中都很重要，並且應具有總陳述的 10%。 它可用來教導 LUIS 在應用程式定義域 (主題區域) 中不重要的語句。 如果您沒有為 **None** 意圖新增任何語句，LUIS 就會強制讓定義域外的某個語句變成其中一個定義域意圖。 這會教導 LUIS 錯誤的語句意圖而扭曲預測分數。 
 
-當語句預測為 [無] 意圖時，用戶端應用程式可以提出更多問題或提供功能表，將使用者引導至有效的選擇。 
+當陳述被預測為"無"意圖時，用戶端應用程式可以提出更多問題或提供功能表以引導使用者選擇有效選項。 
 
 ## <a name="negative-intentions"></a>負面意圖 
 如果您想要判斷負面或正面意圖，例如「我**想要**一輛車」和「我**不**想要一輛車」，您可以建立兩個意圖 (一個正面，一個負面)，然後為每個意圖新增適當的語句。 或者，您也可以建立單一意圖，並標示兩個不同的正面和負面字詞作為實體。  
 
 ## <a name="intents-and-patterns"></a>意圖和模式
 
-如果您有範例語句（可在部分或整體中定義為正則運算式），請考慮使用與[模式](luis-concept-patterns.md)配對的[正則運算式實體](luis-concept-entity-types.md#regular-expression-entity)。 
+如果您有示例陳述（可以作為正則運算式在部分或整體中定義），請考慮使用與[模式](luis-concept-patterns.md)配對的[正則運算式實體](luis-concept-entity-types.md#regular-expression-entity)。 
 
-使用正則運算式實體可保證資料解壓縮，以符合模式。 模式比對保證會傳回確切的意圖。 
+使用正則運算式實體可以保證資料提取，以便匹配模式。 模式匹配保證返回確切的意圖。 
 
 ## <a name="intent-balance"></a>意圖平衡
 應用程式定義域應該讓各個意圖之間的語句平衡。 請勿讓一個意圖有 10 個語句，而另一個意圖有 500 個語句。 這樣會造成不平衡。 如果您有這種情況，請檢閱有 500 個語句的意圖，看看是否可以將許多意圖都重新組織成[模式](luis-concept-patterns.md)。 

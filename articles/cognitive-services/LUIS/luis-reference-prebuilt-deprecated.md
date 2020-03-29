@@ -1,5 +1,5 @@
 ---
-title: 已淘汰的預建實體-LUIS
+title: 已棄用的預構建實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中已取代的預先建置實體資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270667"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>在 LUIS 應用程式中已遭取代的預先建置實體

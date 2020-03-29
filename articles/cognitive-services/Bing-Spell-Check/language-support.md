@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390171"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing 拼字檢查 API 支援的語言和區域
@@ -32,7 +32,7 @@ Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 | 丹麥文      | `da`          |
 | 荷蘭文 (比利時)       | `nl-BE`          |
 | 荷蘭文 (荷蘭)      | `nl-NL`          |
-| 英文 (澳洲)    | `en-AU`          |
+| 英文 (澳大利亞)    | `en-AU`          |
 | 英文 (加拿大)     | `en-CA`          |
 | 英文 (印度)    | `en-IN`          |
 | 英文 (印尼)     | `en-ID`          |
@@ -66,7 +66,7 @@ Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

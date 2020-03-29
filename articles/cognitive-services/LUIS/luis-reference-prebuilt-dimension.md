@@ -1,5 +1,5 @@
 ---
-title: 維度預先建立的實體-LUIS
+title: 維度預構建實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 dimension 實體資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270641"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的維度預先建置實體
@@ -23,17 +23,17 @@ ms.locfileid: "78270641"
 
 ## <a name="types-of-dimension"></a>維度類型
 
-維度是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)的 GitHub 存放庫進行管理。
+維度由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)GitHub 存儲庫管理。
 
 ## <a name="resolution-for-dimension-entity"></a>解析 dimension 實體
 
-系統會針對查詢傳回下列實體物件：
+為查詢返回以下實體物件：
 
 `10 1/2 miles of cable`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 會將 `verbose` 參數設定為 `false`：
+以下 JSON 的`verbose`參數設置為`false`：
 
 ```json
 "entities": {
@@ -46,7 +46,7 @@ ms.locfileid: "78270641"
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-下列 JSON 會將 `verbose` 參數設定為 `true`：
+以下 JSON 的`verbose`參數設置為`true`：
 
 ```json
 "entities": {

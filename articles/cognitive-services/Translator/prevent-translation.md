@@ -8,23 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: 15a36451c18d65df6667f24284f3f69f3d1c06b8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052475"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用 Translator Text API 防止翻譯內容
 
 Translator Text API 可讓您標記內容，使其不要翻譯。 例如，您可以標記程式碼、品牌名稱，或當地語系化後沒有意義的字組/片語。
 
 ## <a name="methods-for-preventing-translation"></a>防止翻譯的方法
-1. 逸出至 Twitter 標籤 @somethingtopassthrough 或 #somethingtopassthrough。 在翻譯後取消逸出。 這是有效 twitter 標記的正則運算式： `\B@[A-Za-z]+[A-Za-z0-9_]+)`。 標記的開頭應為 "@" 符號，後面接著一個字元，後面接著一個或多個字元、數位或底線。 建議您將標記保持簡短，而且開頭標記前面必須加上空格。
 
-2. 使用 `notranslate` 標記您的內容。 這是設計的，只有在輸入 textType 設定為 HTML 時才會運作。
+1. 使用 `notranslate` 標記您的內容。 設計上，只有當輸入文本類型設置為 HTML 時，才有效
 
    範例：
 
@@ -38,11 +37,11 @@ Translator Text API 可讓您標記內容，使其不要翻譯。 例如，您�
    <div>This will be translated. </div>
    ```
 
-3. 使用[動態字典](dynamic-dictionary.md)來規定特定翻譯。
+2. 使用[動態字典](dynamic-dictionary.md)來規定特定翻譯。
 
-4. 請勿將字串傳遞至 Translator Text API 進行翻譯。
+3. 請勿將字串傳遞至 Translator Text API 進行翻譯。
 
-5. 自訂翻譯：使用[自訂翻譯中的字典](custom-translator/what-is-dictionary.md)來規定以100% 機率轉譯的片語。
+4. 自訂翻譯人員：使用[自訂翻譯器中的字典](custom-translator/what-is-dictionary.md)來規定概率為 100% 的短語的翻譯。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,7 +1,7 @@
 ---
-title: 片語清單-語音服務
+title: 片語清單 - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何使用 `PhraseListGrammar` 物件，以片語清單提供語音服務，以改善語音轉換文字辨識結果。
+description: 瞭解如何使用`PhraseListGrammar`物件為語音服務提供片語清單，以改善語音到文本的識別結果。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560842"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>語音轉換文字的片語清單
+# <a name="phrase-lists-for-speech-to-text"></a>語音到文本的片語清單
 
-藉由提供語音服務與片語清單，您可以改善語音辨識的精確度。 片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。
+通過向語音服務提供片語清單，可以提高語音辨識的準確性。 片語清單用於標識音訊資料中的已知短語，如人員姓名或特定位置。
 
-例如，如果您有一個命令「移至」，而且可能會讀出「Ward」的目的地，您可以新增「移至 Ward」的專案。 新增片語會增加可辨識「移至 Ward」的音訊，而不是「移至」的可能性。
+例如，如果您有一個命令"移動到"和"Ward"的可能目的地，則可以添加"移動到"的條目。 添加短語會增加當音訊被識別時，將識別"移動到病房"而不是"向"的可能性。
 
-可以將單一單字或完整片語新增至片語清單。 在辨識期間，如果與整個片語完全相符，則會使用片語清單中的專案，以個別的片語形式包含在音訊中。 如果找不到與片語完全相符的情況，就不會協助辨識。
+單字或完整短語可以添加到片語清單。 在識別過程中，如果整個短語的完全符合作為單獨的短語包含在音訊中，則使用片語清單中的條目。 如果未找到與短語完全符合，則不協助識別。
 
 >[!Note]
-> 目前，片語清單僅支援英文的語音轉換文字。
+> 目前，片語清單僅支援語音到文本的英語。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用片語清單
 
-下列範例說明如何使用 `PhraseListGrammar` 物件來建立片語清單。
+下面的示例說明了如何使用`PhraseListGrammar`物件構建片語清單。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> 語音服務將用來比對語音的片語清單數目上限為1024個片語。
+> 語音服務用於匹配語音的最大片語清單數為 1024 個短語。
 
-您也可以藉由呼叫 clear （），清除與 `PhraseListGrammar` 相關聯的片語。
+您還可以通過調用 clear（） 清除`PhraseListGrammar`與 關聯的短語。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,8 +134,8 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> `PhraseListGrammar` 物件的變更會在下一次辨識或重新連線到語音服務之後生效。
+> 對`PhraseListGrammar`物件的更改將生效于下一個識別或重新連接到語音服務之後。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [語音 SDK 參考檔](speech-sdk.md)
+* [語音 SDK 參考文檔](speech-sdk.md)

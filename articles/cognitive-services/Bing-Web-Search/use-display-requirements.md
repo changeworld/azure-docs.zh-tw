@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60499880"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing 搜尋 API 使用和顯示需求
@@ -37,7 +37,7 @@ ms.locfileid: "60499880"
 |詞彙  |描述  |
 |---------|---------|
 |Answer     | 回應中所傳回的結果類別。 例如，來自 Bing 網路搜尋 API 的回應可能包含網頁結果、映像、影片、視覺物件和新聞類別中的解答。 |
-|Response     | 搜尋 API 的單一呼叫回應中所收到的所有及任何解答和相關聯的資料。 |
+|回應     | 搜尋 API 的單一呼叫回應中所收到的所有及任何解答和相關聯的資料。 |
 |結果    | 解答中資訊的項目。 例如，與單一新聞文章連線的資料集是新聞回應中的結果。 |
 |搜尋 API    | 統稱 Bing 自訂搜尋、實體搜尋、影像搜尋、新聞搜尋、影片搜尋、圖像式搜尋、本地商家搜尋及網路搜尋 API。 |
 

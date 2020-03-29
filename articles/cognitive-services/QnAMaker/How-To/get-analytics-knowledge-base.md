@@ -1,5 +1,5 @@
 ---
-title: 知識庫上的分析-QnA Maker
+title: 知識庫分析 - QnA 製造商
 titleSuffix: Azure Cognitive Services
 description: 如果您在 QnA Maker 服務建立期間啟用 App Insights，QnA Maker 會儲存所有交談記錄和其他遙測。 執行範例查詢，從 App Insights 取得您的交談記錄。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: e769bde39bc796b5b598109328b468b15385f38a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650396"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>取得知識庫的分析
@@ -26,7 +26,7 @@ ms.locfileid: "77650396"
 
     ![選取您的 Application Insights 資源](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. 選取 [Log Analytics]。 您可以查詢 QnA Maker 遙測的新視窗隨即開啟。
+2. 選擇**日誌（分析）。** 您可以查詢 QnA Maker 遙測的新視窗隨即開啟。
 
 3. 貼上並執行下列查詢。
 
@@ -44,9 +44,9 @@ ms.locfileid: "77650396"
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    選取 [執行] 執行查詢。
+    選取 [執行]**** 執行查詢。
 
-    [![執行查詢，以判斷使用者的問題、解答和分數](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![執行查詢以確定使用者的問題、答案和分數](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>對於 QnA Maker 知識庫執行其他分析的查詢
 
@@ -99,7 +99,7 @@ requests
 | summarize count() by performanceBucket, KbId
 ```
 
-### <a name="unanswered-questions"></a>未解答的問題
+### <a name="unanswered-questions"></a>未回答的問題
 
 ```kusto
 // Unanswered questions
@@ -121,4 +121,4 @@ traces | extend id = operation_ParentId
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [選擇 capactiy](./improve-knowledge-base.md)
+> [選擇冠狀](./improve-knowledge-base.md)

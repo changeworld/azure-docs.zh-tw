@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: wolfma
 ms.openlocfilehash: c8e6c11771ae4cd216b3b1e43f3db7924dca81cd
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168165"
 ---
 | [地理位置] | 區域 | 區域識別碼 |
@@ -30,7 +30,7 @@ ms.locfileid: "77168165"
 | 亞太地區 | 日本東部 | `japaneast` |
 | 亞太地區 | 日本西部 | `japanwest` |
 | 亞太地區 | 南韓中部 | `koreacentral` |
-| 歐洲 | 歐洲北部 | `northeurope` |
-| 歐洲 | 歐洲西部 | `westeurope` |
+| 歐洲 | 北歐 | `northeurope` |
+| 歐洲 | 西歐 | `westeurope` |
 | 歐洲 | 法國中部 | `francecentral` |
 | 歐洲 | 英國南部 | `uksouth` |

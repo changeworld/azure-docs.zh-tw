@@ -1,46 +1,46 @@
 ---
-title: 從資料來源匯入-QnA Maker
-description: QnA Maker 知識庫是由一組問答集（QnA）集以及與每個 QnA 配對相關聯的選用中繼資料所組成。
+title: 從資料來源導入 - QnA 製造商
+description: QnA Maker 知識庫由一組問答 （QnA） 集和與每個 QnA 對關聯的可選中繼資料組成。
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221273"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457816"
 ---
 # <a name="importing-from-data-sources"></a>從資料來源匯入
 
-知識庫是由公用 Url 和檔案引入的問題和答案集所組成。
+知識庫由公共 URL 和檔帶來的問答集組成。
 
 ## <a name="data-source-locations"></a>資料來源位置
 
-內容會從資料來源帶入知識庫中。 資料來源位置是**公用 url 或**檔案，不需要驗證。
+內容從資料來源引入知識庫。 資料來源位置是**公共 URL 或檔**，不需要身份驗證。
 
-使用驗證保護的[SharePoint](../how-to/add-sharepoint-datasources.md)檔案是例外狀況。 SharePoint 資源必須是檔案，而不是網頁。 如果 URL 的結尾是 web 延伸模組，例如。ASPX，它不會從 SharePoint 匯入 QnA Maker。
+[共用點檔](../how-to/add-sharepoint-datasources.md)（通過身份驗證保護）是例外。 SharePoint 資源必須是檔，而不是網頁。 如果 URL 以 Web 副檔名（如 ） 結尾。ASPX，它將不會從SharePoint導入QnA製造商。
 
-## <a name="chit-chat-content"></a>閒聊聊天內容
+## <a name="chit-chat-content"></a>Chit 聊天內容
 
-閒聊 chat QnA 內容集是以數種語言和交談樣式提供的完整內容資料來源。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。 瞭解[如何將](../how-to/chit-chat-knowledge-base.md)此內容集新增至您的知識庫。
+Chit 聊天 QnA 內容集以多種語言和會話樣式作為完整的內容資料來源提供。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。 [瞭解如何將](../how-to/chit-chat-knowledge-base.md)此內容集添加到知識庫。
 
 ## <a name="structured-data-format-through-import"></a>透過匯入的結構化資料格式
 
-匯入知識庫後，將會取代現有知識庫的內容。 匯入需要包含問題和答案的結構化 `.tsv` 檔案。 此資訊可協助 QnA Maker 將問答集分組，並將其屬性設定為特定的資料來源。
+匯入知識庫後，將會取代現有知識庫的內容。 導入需要包含問題和`.tsv`答案的結構化檔。 此資訊可説明 QnA Maker 對問題答案集進行分組，並將其歸為特定的資料來源。
 
-| 問題  | Answer  | 來源| 中繼資料（1個索引鍵：1個值） |
+| 問題  | Answer  | 來源| 中繼資料（1 個鍵：1 個值） |
 |-----------|---------|----|---------------------|
 | 問題 1 | 解答 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 問題 2 | 解答 2 | 編輯|    `Key:Value`       |
 
-## <a name="structured-multi-turn-format-through-import"></a>透過匯入的結構化多回合格式
+## <a name="structured-multi-turn-format-through-import"></a>通過導入構建多轉格式
 
-您可以使用 `.tsv` 檔案格式來建立多回合交談。 此格式可讓您藉由分析先前的聊天記錄（與其他進程，而不是使用 QnA Maker）來建立多回合交談，然後透過自動化建立 `.tsv` 檔案。 匯入檔案以取代現有的知識庫。
+您可以以`.tsv`檔案格式創建多轉對話。 該格式使您能夠通過分析以前的聊天日誌（與其他進程一起，不使用 QnA Maker）創建多圈對話，然後通過自動化創建`.tsv`檔。 導入檔以替換現有知識庫。
 
 > [!div class="mx-imgBorder"]
-> ![三個多回合問題層級的概念模型](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
+> ![3級多轉問題的概念模型](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-多重回合 `.tsv`的資料行，則會**提示**您指定多回合。 範例 `.tsv`（如 Excel 所示）顯示要包含的資訊，以定義多回合子系：
+多轉`.tsv`的列，特定于多轉是 **"提示**"。 Excel`.tsv`中顯示的示例顯示要包括用於定義多轉子級的資訊：
 
 ```JSON
 [
@@ -49,14 +49,16 @@ ms.locfileid: "79221273"
 ]
 ```
 
-**DisplayOrder**是數值，**而文字類型則是不應**包含 markdown 的文字。
+**顯示順序**是數位，**顯示文本**是不應包含標記的文本。
 
 > [!div class="mx-imgBorder"]
-> ![如 Excel 所示的多回合問題範例](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
+> ![多轉題示例，如 Excel 所示](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-## <a name="export-as-example"></a>匯出為範例
+## <a name="export-as-example"></a>匯出為示例
 
-如果您不確定如何在 `.tsv` 檔案中代表您的 QnA 集，請在 QnA Maker 入口網站中建立集合、儲存，然後匯出知識庫，以取得如何呈現該集合的範例。
+如果您不確定如何在`.tsv`檔中表示 QnA 集：
+* 使用[GitHub 的此可下載示例](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
+* 或者在 QnA Maker 門戶中創建集，保存，然後匯出知識庫，以瞭解如何表示集的示例。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -65,14 +67,14 @@ ms.locfileid: "79221273"
 
 ## <a name="see-also"></a>另請參閱
 
-使用 QnA Maker 的[Markdown 參考](../reference-markdown-format.md)，協助您設定答案的格式。
+使用 QnA 製造商[標記標記引用](../reference-markdown-format.md)可説明您設置答案的格式。
 
 [QnA Maker 概觀](../Overview/overview.md)
 
-使用下列方式建立和編輯知識庫：
+創建和編輯知識庫：：
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-使用下列程式產生答案：
+生成答案：
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

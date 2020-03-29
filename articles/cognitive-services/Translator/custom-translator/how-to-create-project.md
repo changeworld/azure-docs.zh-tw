@@ -1,7 +1,7 @@
 ---
-title: 如何建立專案-自訂翻譯
+title: 如何創建專案 - 自訂轉換器
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何在 Azure 認知服務自訂翻譯中建立和管理專案。
+description: 本文介紹如何在 Azure 認知服務自訂轉換器中創建和管理專案。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836572"
 ---
 # <a name="create-a-project"></a>建立專案
@@ -32,7 +32,7 @@ ms.locfileid: "73836572"
 
     a.  專案名稱 (必要)：為您的專案提供唯一且有意義的名稱。 您不需要在標題中提到語言。
 
-    b.這是另一個 C# 主控台應用程式。  描述：專案的簡短摘要。 此描述並不會影響自訂翻譯工具或所產生自訂系統的行為，但可協助您區分不同專案。
+    b.  描述：專案的簡短摘要。 此描述並不會影響自訂翻譯工具或所產生自訂系統的行為，但可協助您區分不同專案。
 
     c.  語言組 (必要)：選取要翻譯的原始語言和目標語言。
 
@@ -40,11 +40,11 @@ ms.locfileid: "73836572"
 
     e.  類別描述：使用此欄位來更明確地描述您要翻譯的特定領域或產業。 比方說，如果您的類別是醫學，您可能會新增手術或小兒科等方面的特定文件。 此描述並不會影響自訂翻譯工具或所產生自訂系統的行為。
 
-    f.  專案標籤：[專案標籤](workspace-and-project.md#project-labels)可區分具有相同語言組和類別的專案。 最佳做法是「只」在您打算為相同語言組和相同類別建置多個專案，並且想以不同 CategoryID 來存取這些專案時，再使用標籤。 如果您只要為一個類別建置系統，請勿使用此欄位。 區別語言組不需使用專案標籤，而且也沒幫助。 您可以對多個專案使用相同標籤。
+    f.  專案標籤：[專案標籤](workspace-and-project.md#project-labels)可區分具有相同語言組和類別的專案。 最佳做法是「只」** 在您打算為相同語言組和相同類別建置多個專案，並且想以不同 CategoryID 來存取這些專案時，再使用標籤。 如果您只要為一個類別建置系統，請勿使用此欄位。 區別語言組不需使用專案標籤，而且也沒幫助。 您可以對多個專案使用相同標籤。
 
     ![建立專案對話方塊](media/how-to/how-to-create-project-dialog.png)
 
-3.  Click Create
+3.  按一下 [建立專案]。
 
 ## <a name="view-project-details"></a>檢視專案詳細資料
 

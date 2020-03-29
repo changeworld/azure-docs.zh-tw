@@ -1,5 +1,5 @@
 ---
-title: 傳送和使用 API 查詢和回應-Bing 當地企業搜尋
+title: 發送和使用 API 查詢和回應 - 必應本地業務搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本文了解如何使用 Bing 當地商家搜尋 API 來傳送和使用搜尋查詢。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74326729"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>傳送並使用 Bing 當地商家搜尋 API 查詢和回應
@@ -57,14 +57,14 @@ Bing 當地商家搜尋 API 的 JSON 回應包含 `SearchResponse` 物件。 API
 API 所傳回的 JSON 結果會包含下列屬性：
 
 * _type
-* 位址
+* address
 * entityPresentationInfo
 * 地區
 * id
-* 名稱
+* NAME
 * routeablePoint
 * telephone
-* URL
+* url
 
 如需關於標頭、參數、市場代碼、回應物件、錯誤的一般資訊，請參閱 [Bing 當地搜尋 API v7](local-search-reference.md) 參考。
 
@@ -148,6 +148,6 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 ## <a name="next-steps"></a>後續步驟
 - [當地商家搜尋快速入門](quickstarts/local-quickstart.md)
-- [當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)
-- [當地商家搜尋 Node 快速入門](quickstarts/local-search-node-quickstart.md)
+- [本地業務搜索 JAVA 快速入門](quickstarts/local-search-java-quickstart.md)
+- [本地業務搜索節點快速啟動](quickstarts/local-search-node-quickstart.md)
 - [當地商家搜尋 Python 快速入門](quickstarts/local-search-python-quickstart.md)

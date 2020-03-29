@@ -1,7 +1,7 @@
 ---
-title: 如何使用語音 SDK 滿足用戶端的命令
+title: 如何使用語音 SDK 實現來自用戶端的命令
 titleSuffix: Azure Cognitive Services
-description: 在本文中，我們會說明如何使用語音 SDK 來處理用戶端上的自訂命令活動。
+description: 在本文中，我們將解釋如何使用語音 SDK 處理用戶端上的自訂命令活動。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: donkim
 ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367733"
 ---
-# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>使用語音 SDK 滿足用戶端的命令（預覽）
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>使用語音 SDK 實現來自用戶端的命令（預覽）
 
-若要使用自訂命令應用程式來完成工作，您可以將自訂承載傳送至已連線的用戶端裝置。
+要使用自訂命令應用程式完成任務，可以將自訂負載發送到已連接的用戶端設備。
 
-在本文中，您將會：
+在本文中，您將：
 
-- 從您的自訂命令應用程式定義和傳送自訂 JSON 承載
-- 從C# UWP 語音 SDK 用戶端應用程式接收並視覺化自訂 JSON 承載內容
+- 定義自訂 JSON 負載，並從自訂命令應用程式
+- 從 C# UWP 語音 SDK 用戶端應用程式接收和視覺化自訂 JSON 有效負載內容
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- 適用于語音服務的 Azure 訂用帳戶金鑰
-  - [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
-- 先前建立的自訂命令應用程式
-  - [快速入門：使用參數來建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
+- [視覺工作室 2019](https://visualstudio.microsoft.com/downloads/)
+- 語音服務的 Azure 訂閱金鑰
+  - [免費獲取一個](get-started.md)或在[Azure 門戶](https://portal.azure.com)上創建
+- 以前創建的自訂命令應用
+  - [快速入門：使用參數創建自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
 - 啟用語音 SDK 的用戶端應用程式
-  - [快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽）](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽版）](./quickstart-custom-speech-commands-speech-sdk.md)
 
-## <a name="optional-get-started-fast"></a>選擇性：快速入門
+## <a name="optional-get-started-fast"></a>可選：快速入門
 
-本文會逐步說明如何讓用戶端應用程式與您的自訂命令應用程式交談。 如果您想要深入瞭解，您可以在[語音 SDK 範例](https://aka.ms/csspeech/samples)中取得本文中使用的完整、可立即編譯的原始程式碼。
+本文將逐步介紹如何使用戶端應用程式與自訂命令應用程式進行對話。 如果您喜歡直接潛入，本文中使用的完整、即用即用的原始程式碼可在[語音 SDK 示例](https://aka.ms/csspeech/samples)中。
 
-## <a name="fulfill-with-json-payload"></a>使用 JSON 承載完成
+## <a name="fulfill-with-json-payload"></a>使用 JSON 有效負載實現
 
-1. 從[語音 Studio](https://speech.microsoft.com/)開啟您先前建立的自訂命令應用程式
-1. 請檢查 [**完成規則**] 區段，以確定您先前建立的規則會回應給使用者
-1. 若要將承載直接傳送至用戶端，請使用「傳送活動」動作建立新的規則
+1. 從[語音工作室](https://speech.microsoft.com/)打開以前創建的自訂命令應用程式
+1. 檢查 **"完成規則"** 部分，以確保您擁有以前創建的規則，該規則已回應使用者
+1. 要將有效負載直接發送到用戶端，請使用"發送活動"操作創建新規則
 
    > [!div class="mx-imgBorder"]
-   > ![傳送活動完成規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
+   > ![發送活動完成規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
    | 設定 | 建議的值 | 描述 |
    | ------- | --------------- | ----------- |
-   | 規則名稱 | UpdateDeviceState | 描述規則用途的名稱 |
-   | 條件 | 必要參數-`OnOff` 和 `SubjectDevice` | 判斷規則何時可執行檔條件 |
-   | 動作 | `SendActivity` （請參閱下文） | 規則條件為 true 時要採取的動作 |
+   | 規則名稱 | 更新設備狀態 | 描述規則目的的名稱 |
+   | 條件 | 所需參數`OnOff`- 和`SubjectDevice` | 確定規則何時可以運行的條件 |
+   | 動作 | `SendActivity`（見下文） | 規則條件為 true 時要執行的操作 |
 
    > [!div class="mx-imgBorder"]
-   > ![傳送活動承載](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
+   > ![發送活動有效負載](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
 
    ```json
    {
@@ -67,11 +67,11 @@ ms.locfileid: "79367733"
    }
    ```
 
-## <a name="create-visuals-for-device-on-or-off-state"></a>建立裝置開啟或關閉狀態的視覺效果
+## <a name="create-visuals-for-device-on-or-off-state"></a>為設備打開或關閉狀態創建視覺物件
 
-在[快速入門：使用語音 sdk （預覽）連接到自訂命令應用程式](./quickstart-custom-speech-commands-speech-sdk.md)中，您建立了處理命令的語音 SDK 用戶端應用程式，例如 `turn on the tv`、`turn off the fan`。 現在新增一些視覺效果，讓您可以查看這些命令的結果。
+在[快速入門中：使用語音 SDK（預覽）連接到自訂命令應用程式，](./quickstart-custom-speech-commands-speech-sdk.md)您創建了一個語音 SDK 用戶端應用程式，該應用程式`turn on the tv`處理`turn off the fan`命令，如 。 現在添加一些視覺物件，以便可以看到這些命令的結果。
 
-使用新增至 `MainPage.xaml.cs` 的下列 XML，加入標示為**開啟**或**關閉**之文字的標記方塊
+使用以下 XML 添加帶有文本指示 **"開****"或"關"** 的標籤框`MainPage.xaml.cs`
 
 ```xml
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
@@ -90,14 +90,14 @@ ms.locfileid: "79367733"
 </StackPanel>
 ```
 
-## <a name="handle-customizable-payload"></a>處理可自訂的承載
+## <a name="handle-customizable-payload"></a>處理可自訂的有效負載
 
-既然您已建立 JSON 承載，您可以加入[JSON.NET](https://www.newtonsoft.com/json)程式庫的參考來處理還原序列化。
+現在，您已經創建了 JSON 有效負載，您可以添加對[JSON.NET](https://www.newtonsoft.com/json)庫的引用來處理反序列化。
 
 > [!div class="mx-imgBorder"]
-> ![傳送活動承載](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
+> ![發送活動有效負載](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
 
-在 `InitializeDialogServiceConnector` 將下列專案新增至您的 `ActivityReceived` 事件處理常式。 額外的程式碼會從活動中解壓縮承載，並據此變更電視或風扇的視覺狀態。
+在`InitializeDialogServiceConnector`將以下內容添加到事件`ActivityReceived`處理常式中。 附加代碼將從活動中提取有效負載，並相應地更改電視或風扇的可視狀態。
 
 ```C#
 connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
@@ -134,12 +134,12 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="try-it-out"></a>試做
 
 1. 啟動應用程式
-1. 選取 [啟用麥克風]
-1. 選取 [交談] 按鈕
-1. 假設 `turn on the tv`
-1. 電視的視覺狀態應該變更為「開啟」
+1. 選擇啟用麥克風
+1. 選擇"通話"按鈕
+1. 說`turn on the tv`
+1. 電視的視覺狀態應更改為"打開"
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何：將驗證新增至自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)
+> [如何：將驗證添加到自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)
