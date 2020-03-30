@@ -1,5 +1,5 @@
 ---
-title: 使用範本在 Azure 監視器中收集 Windows 擴展集計量
+title: 使用範本在 Azure 監視器中收集 Windows 縮放集指標
 description: 使用 Windows 虛擬機器擴展集的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 author: anirudhcavale
 services: azure-monitor
@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 24f83e4f6285d045e67bdaef431ebcff2345ef84
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663887"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虛擬機器擴展集的 Azure Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
@@ -22,23 +22,23 @@ ms.locfileid: "77663887"
 
 此文章說明將 Windows 虛擬機器擴展集的客體作業系統效能計量傳送至 Azure 監視器資料存放區的程序。 從 Windows Azure 診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 藉由將計量儲存在此位置，您就可以存取平台計量適用的相同動作。 動作包括近乎即時的警示、圖表、路由、從 REST API 存取以及更多功能。 在過去，Windows Azure 診斷擴充功能會寫入到 Azure 儲存體，而不是 Azure 監視器資料存放區。  
 
-如果您剛開始使用 Resource Manager 範本，請了解[範本部署](../../azure-resource-manager/management/overview.md)與其結構和語法。  
+如果您是資源管理器範本的新增功能，則瞭解[範本部署](../../azure-resource-manager/management/overview.md)及其結構和語法。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
+- 您的訂閱必須註冊到[Microsoft.Insights.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure)，或可以使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 
 
-- 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
+- 您的 VM 資源必須位於[支援自訂指標的區域](metrics-custom-overview.md#supported-regions)。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>設定 Azure 監視器作為資料接收器 
-Azure 診斷擴充功能會使用稱為**資料接收器**的功能，將計量與記錄路由傳送至不同的位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。 
+Azure 診斷擴展使用稱為**資料接收器的功能**將指標和日誌路由到不同位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。 
 
 ## <a name="author-a-resource-manager-template"></a>撰寫 Resource Manager 範本 
-針對此範例，您可以使用公開提供的[範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)：  
+在此示例中，可以使用公開可用的[示例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)：  
 
-- **Azuredeploy.json** 是預先設定的 Resource Manager 範本，可用於部署虛擬機器擴展集。
+- **Azuredeploy.json**是一個預配置的資源管理器範本，用於部署虛擬機器規模集。
 
 - **Azuredeploy.parameters.json** 是參數檔案，儲存您要為 VM 設定的使用者名稱與密碼等資訊。 在部署期間，Resource Manager 範本會使用此檔案中設定的參數。 
 
@@ -55,7 +55,7 @@ Azure 診斷擴充功能會使用稱為**資料接收器**的功能，將計量�
 
 
 ###  <a name="modify-azuredeployjson"></a>修改 azuredeploy.json
-開啟 **azuredeploy.json** 檔案。 
+打開**azuredeploy.json**檔。 
 
 新增變數來儲存 Resource Manager 範本中的儲存體帳戶資訊。 診斷設定檔中指定的任何記錄或效能計數器，都會寫入 Azure 監視器計量存放區和此處指定的儲存體帳戶： 
 
@@ -65,7 +65,7 @@ Azure 診斷擴充功能會使用稱為**資料接收器**的功能，將計量�
 "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]", 
 ```
  
-在 resources 區段中找到虛擬機器擴展集定義，然後將 **identity** 區段新增至設定。 此新增作業可確保 Azure 對其指派系統身分識別。 這個步驟也可確保擴展集中的 VM 可對 Azure 監視器發出與本身相關的客體計量：  
+在資源部分查找虛擬機器縮放集定義，並將**標識**部分添加到配置中。 此新增作業可確保 Azure 對其指派系統身分識別。 這個步驟也可確保擴展集中的 VM 可對 Azure 監視器發出與本身相關的客體計量：  
 
 ```json
     { 
@@ -197,7 +197,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 ```
 
 
-為儲存體帳戶新增 **dependsOn**，確保它會以正確的順序建立： 
+為存儲帳戶添加**dependsOn，** 以確保按正確的順序創建： 
 
 ```json
 "dependsOn": [ 
@@ -232,7 +232,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 ## <a name="deploy-the-resource-manager-template"></a>部署 Resource Manager 範本 
 
 > [!NOTE]  
-> 您必須執行 Azure 診斷擴充功能 1.5 版或更新版本，**並且**將 Resource Manager 範本中的 **autoUpgradeMinorVersion:** 屬性集合設定為 **true**。 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。 
+> 您必須運行 Azure 診斷擴展版本 1.5 或更高版本 **，並在**資源管理器範本中將**自動升級 MinorVersion：** 屬性設置為**true。** 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。 
 
 
 請使用 Azure PowerShell 來部署 Resource Manager 範本：  
@@ -273,19 +273,19 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 
 1. 登入 Azure 入口網站。 
 
-1. 在左側功能表中，選取 [監視]。 
+1. 在左側功能表中，選取 [監視]****。 
 
-1. 在 [監視] 頁面上，選取 [計量]。 
+1. 在 [監視]**** 頁面上，選取 [計量]****。 
 
    ![監視 - 計量頁面](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 
-1. 將彙總期間變更為 [過去 30 分鐘]。  
+1. 將彙總期間變更為 [過去 30 分鐘]****。  
 
 1. 在 [資源] 下拉式功能表中，選取您建立的虛擬機器擴展集。  
 
-1. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**。 
+1. 在命名空間下拉式功能表中，選擇**azure.vm.windows.guest**. 
 
-1. 在 [計量] 下拉式功能表中，選取 [記憶體**認可的位元組 (使用中)\]\%** 。  
+1. 在 [計量] 下拉式功能表中，選取 [記憶體\%認可的位元組 (使用中)\]****。  
 
 接著，您也可以選擇使用這個計量上的維度，為特定 VM 繪製圖表，或對擴展集中的每個 VM 繪製圖表。 
 

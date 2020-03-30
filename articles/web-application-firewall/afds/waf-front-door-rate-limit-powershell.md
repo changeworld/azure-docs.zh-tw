@@ -1,6 +1,6 @@
 ---
-title: 設定 Front 門板的 WAF 速率限制規則-Azure PowerShell
-description: 瞭解如何設定現有 Front 入口端點的速率限制規則。
+title: 為前門配置 WAF 速率限制規則 - Azure 電源外殼
+description: 瞭解如何為現有前門終結點配置速率限制規則。
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
@@ -8,31 +8,31 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649359"
 ---
-# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 設定 Web 應用程式防火牆速率限制規則
-Azure Front 門板的 Azure Web 應用程式防火牆（WAF）速率限制規則會控制用戶端在一分鐘內允許的要求數。
-本文說明如何設定 WAF 速率限制規則，以控制從用戶端到使用 Azure PowerShell 的 URL 中包含 */promo*的 web 應用程式所允許的要求數目。
+# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 應用程式防火牆速率限制規則
+Azure 前門的 Azure Web 應用程式防火牆 （WAF） 速率限制規則控制在一分鐘內從用戶端允許的請求數。
+本文演示如何配置 WAF 速率限制規則，該規則控制從用戶端允許的請求數到使用 Azure PowerShell 在 URL 中包含 */促銷*的 Web 應用程式的請求數。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
-開始設定速率限制原則之前，請先設定您的 PowerShell 環境，並建立 Front profile。
+在開始設置速率限制策略之前，請設置 PowerShell 環境並創建前門設定檔。
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell module。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 按照頁面上的說明操作，使用 Azure 憑據登錄，然後安裝 Az PowerShell 模組。
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式對話方塊來登入，以連線至 Azure
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用登錄的互動式對話方塊連接到 Azure
 ```
 Connect-AzAccount
 
 ```
-安裝 Front 門板模組之前，請確定已安裝最新版本的 PowerShellGet。 執行下列命令，然後重新開啟 PowerShell。
+安裝前門模組之前，請確保安裝了當前版本的 PowerShellGet。 運行以下命令並重新打開 PowerShell。
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
@@ -44,11 +44,11 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>建立 Front Door 設定檔
-遵循[快速入門：建立 Front 門板設定檔](../../frontdoor/quickstart-create-front-door.md)中所述的指示，建立 front 設定檔
+按照["快速入門：創建前門設定檔](../../frontdoor/quickstart-create-front-door.md)"中所述的說明創建前門設定檔
 
-## <a name="define-url-match-conditions"></a>定義 url 比對條件
-使用[AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)定義 url 比對條件（url 包含/promo）。
-下列範例會將 */promo*與*RequestUri*變數的值進行比對：
+## <a name="define-url-match-conditions"></a>定義 URL 匹配條件
+使用[New-AzFrontDoorWafMatch條件物件](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)定義 URL 匹配條件（URL 包含 /促銷）。
+以下示例將 */促銷*匹配為*RequestUri*變數的值：
 
 ```powershell-interactive
    $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -56,8 +56,8 @@ Install-Module -Name Az.FrontDoor
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
-## <a name="create-a-custom-rate-limit-rule"></a>建立自訂速率限制規則
-使用[AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)設定速率限制。 在下列範例中，限制設定為1000。 在一分鐘內，從任何用戶端到促銷1000頁面的要求都會遭到封鎖，直到下一分鐘開始為止。
+## <a name="create-a-custom-rate-limit-rule"></a>創建自訂速率限制規則
+使用[新阿茲門沃夫自訂規則物件](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)設置速率限制。 在下面的示例中，限制設置為 1000。 從任何用戶端到促銷頁面在一分鐘內超過 1000 的請求將被阻止，直到下一分鐘開始。
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
@@ -69,13 +69,13 @@ Install-Module -Name Az.FrontDoor
 ```
 
 
-## <a name="configure-a-security-policy"></a>設定安全性原則
+## <a name="configure-a-security-policy"></a>配置安全性原則
 
-使用 `Get-AzureRmResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用包含 Front 設定檔之指定資源群組中的[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) ，以自訂速率限制規則設定安全性原則。
+使用 `Get-AzureRmResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用包含前門設定檔的指定資源組中[的 New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)配置具有自訂速率限制規則的安全性原則。
 
-下列範例會使用資源組名*myResourceGroupFD1* ，並假設您已使用[快速入門：建立 front 門](../../frontdoor/quickstart-create-front-door.md)文章中提供的指示來建立 front 設定檔。
+下面的示例使用資源組名稱*myResourceGroupFD1，* 假定您已使用["快速入門：創建前門"](../../frontdoor/quickstart-create-front-door.md)一文中提供的說明創建了前門設定檔。
 
- 使用[新的-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
+ 使用[新阿茲門沃夫政策](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -85,11 +85,11 @@ Install-Module -Name Az.FrontDoor
      -Mode Prevention `
      -EnabledState Enabled
 ```
-## <a name="link-policy-to-a-front-door-front-end-host"></a>將原則連結到 Front 前端主機
-將安全性原則物件連結到現有的 Front 前端主機，並更新 Front 門板屬性。 請先使用[AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)命令來抓取 Front 物件。
-接下來，使用[AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)命令，將前端*WebApplicationFirewallPolicyLink*屬性設定為上一個步驟中所建立之「$ratePolicy」的*resourceId* 。 
+## <a name="link-policy-to-a-front-door-front-end-host"></a>將策略連結到前門前端主機
+將安全性原則物件連結到現有的前門前端主機並更新前門屬性。 首先使用[Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)命令檢索前門物件。
+接下來，將前端 Web*應用程式防火牆策略連結*屬性設置為使用[Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)命令在上一步中創建的"$ratePolicy"*的資源 Id。* 
 
-下列範例會使用資源組名*myResourceGroupFD1* ，並假設您已使用[快速入門：建立 front 門](../../frontdoor/quickstart-create-front-door.md)文章中提供的指示來建立 front 設定檔。 此外，在下列範例中，將 $frontDoorName 取代為您 Front 設定檔的名稱。 
+下面的示例使用資源組名稱*myResourceGroupFD1，* 假定您已使用["快速入門：創建前門"](../../frontdoor/quickstart-create-front-door.md)一文中提供的說明創建了前門設定檔。 此外，在下面的示例中，將$frontDoorName替換為前門設定檔的名稱。 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -100,10 +100,10 @@ Install-Module -Name Az.FrontDoor
  ```
 
 > [!NOTE]
-> 您只需要設定*WebApplicationFirewallPolicyLink*屬性一次，即可將安全性原則連結到 front 前端。 後續的原則更新會自動套用至前端。
+> 您只需設置一次*Web 應用程式防火牆策略連結*屬性，就將安全性原則連結到前門前端。 後續策略更新將自動應用於前端。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[Front](../../frontdoor/front-door-overview.md)。 
+- 瞭解有關[前門](../../frontdoor/front-door-overview.md)的更多。 
 
 

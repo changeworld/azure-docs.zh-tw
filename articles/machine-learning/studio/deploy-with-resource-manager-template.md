@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure Resource Manager 部署 Studio （傳統）工作區
+title: 使用 Azure 資源管理器部署工作室（經典）工作區
 titleSuffix: ML Studio (classic) - Azure
-description: 如何使用 Azure Resource Manager 範本部署 Azure Machine Learning Studio （傳統）的工作區
+description: 如何使用 Azure 資源管理器範本為 Azure 機器學習工作室（經典）部署工作區
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,22 +11,22 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
 ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218122"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure Resource Manager 部署 Azure Machine Learning Studio （傳統）工作區
+# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 資源管理器部署 Azure 機器學習工作室（經典）工作區
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-使用 Azure Resource Manager 部署範本提供了可擴充的方式來部署具有驗證和重試機制的互連元件，為您節省時間。 例如，若要設定 Azure Machine Learning Studio （傳統）工作區，您必須先設定 Azure 儲存體帳戶，然後再部署您的工作區。 假想您要對數百個工作區手動進行此動作。 較簡單的替代方案是使用 Azure Resource Manager 範本來部署 Studio （傳統）工作區及其所有相依性。 這篇文章會帶領您逐步完成此程序。 如需 Azure Resource Manager 的詳細概觀，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
+使用 Azure Resource Manager 部署範本提供了可擴充的方式來部署具有驗證和重試機制的互連元件，為您節省時間。 例如，要設置 Azure 機器學習工作室（經典）工作區，需要先配置 Azure 存儲帳戶，然後部署工作區。 假想您要對數百個工作區手動進行此動作。 更簡單的替代方法是使用 Azure 資源管理器範本來部署 Studio（經典）工作區及其所有依賴項。 這篇文章會帶領您逐步完成此程序。 如需 Azure Resource Manager 的詳細概觀，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>逐步說明：建立 Machine Learning 工作區
-我們將建立 Azure 資源群組，然後使用 Resource Manager 範本來部署新的 Azure 儲存體帳戶和新的 Azure Machine Learning Studio （傳統）工作區。 部署完成之後，我們會印出所建立的工作區的重要資訊 (主索引鍵、工作區識別碼和工作區的 URL)。
+我們將創建 Azure 資源組，然後使用資源管理器範本部署新的 Azure 存儲帳戶和新的 Azure 機器學習工作室（經典）工作區。 部署完成之後，我們會印出所建立的工作區的重要資訊 (主索引鍵、工作區識別碼和工作區的 URL)。
 
 ### <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
 
@@ -114,7 +114,7 @@ $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central
 $rg
 ```
 
-請確認資源群組已正確佈建。 **ProvisioningState**應該是 "Succeeded"。
+請確認資源群組已正確佈建。 **預配狀態**應為"成功"。
 範本會使用資源群組名稱來產生儲存體帳戶名稱。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。
 
 ![資源群組](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
@@ -133,13 +133,13 @@ $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworks
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-另一種取得現有工作區權杖的方法是使用 AzResourceAction 命令。 例如，您可以列出所有工作區的主要和次要權杖。
+檢索現有工作區權杖的另一種方法是使用 Invoke-AzResourceAction 命令。 例如，您可以列出所有工作區的主要和次要權杖。
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-布建工作區之後，您也可以使用[適用于 Azure Machine Learning Studio （傳統）的 PowerShell 模組](https://aka.ms/amlps)，將許多 Azure Machine Learning Studio （傳統）工作自動化。
+預配工作區後，還可以使用[Azure 機器學習工作室的 PowerShell 模組（經典）](https://aka.ms/amlps)自動執行許多 Azure 機器學習工作室（經典）任務。
 
 ## <a name="next-steps"></a>後續步驟
 

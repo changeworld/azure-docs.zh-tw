@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器視圖設計工具至活頁簿轉換指南
+title: Azure 監視器視圖設計器到活頁簿過渡指南
 description: ''
 author: austonli
 ms.author: aul
@@ -7,62 +7,62 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658688"
 ---
-# <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure 監視器視圖設計工具至活頁簿轉換指南
-「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們會被淘汰，並取代為提供額外功能的活頁簿。 本文概要說明將現有的視圖轉換成活頁簿的程式。
+# <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure 監視器視圖設計器到活頁簿過渡指南
+[視圖設計器](view-designer.md)是 Azure 監視器的一項功能，允許您創建自訂視圖，以説明您在日誌分析工作區中視覺化資料，包括圖表、清單和時間表。 它們正在逐步淘汰，代之以提供額外功能的活頁簿。 本文概述了將現有視圖轉換為活頁簿的過程。
 
-## <a name="workbooks-overview"></a>活頁簿總覽
-活頁[簿](../insights/vminsights-workbooks.md)將文字、 [記錄查詢](../log-query/query-language.md)、計量和參數結合成豐富的互動式報表。 具有相同 Azure 資源存取權的小組成員也能夠編輯活頁簿。
+## <a name="workbooks-overview"></a>活頁簿概述
+[活頁簿](../insights/vminsights-workbooks.md)將文本、 [日誌查詢](../log-query/query-language.md)、指標和參數合併為豐富的互動式報表。 對 Azure 資源具有相同存取權限的團隊成員也可以編輯活頁簿。
 
-活頁簿有助於下列案例：
+活頁簿適用于以下方案：
 
--   當您事先不知道感興趣的度量時，探索虛擬機器的使用量： CPU 使用率、磁碟空間、記憶體、網路相依性等等。不同于其他流量分析工具，活頁簿可讓您結合多種視覺效果和分析，使其更適合這種自由形式探索。
--   藉由顯示金鑰計數器和其他記錄事件的計量，向您的小組說明最近布建的 VM 的執行方式。
--   將 VM 調整大小實驗的結果與小組的其他成員共用。 您可以使用文字來說明實驗的目標，然後顯示用來評估實驗的每個使用計量和分析查詢，以及每個計量高於或低於目標的清除呼叫。
--   報告您的 VM 使用量中斷的影響、結合資料、文字說明，以及後續步驟的討論，以避免未來發生中斷。
-
-
-## <a name="why-convert-view-designer-dashboards-to-workbooks"></a>為什麼要將 view designer 儀表板轉換成活頁簿？
-
-視圖設計工具可讓您產生不同的查詢型視圖和視覺效果。 不過，許多高階自訂仍然會受到限制，例如格式化格線和磚配置，或選取替代圖形來代表您的資料。 View designer 限制為總共9個不同的磚，以代表您的資料。
-
-Workbooks 是一種可讓您的資料充分發揮潛能的平臺。 活頁簿不僅會保留所有的功能，還支援透過文字、計量、參數和其他更多功能的其他功能。 例如，活頁簿可讓使用者合併密集的格線，並加入搜尋列，輕鬆地篩選和分析資料。 
-
-### <a name="advantages-of-using-workbooks-over-view-designer"></a>使用活頁簿流覽設計工具的優點
-
-* 支援記錄和計量。
-* 允許個人檢視進行個別的存取控制和共用的活頁簿流覽。
-* 具有索引標籤、調整大小和縮放控制項的自訂版面配置選項。
-* 跨多個 Log Analytics 工作區、Application Insights 應用程式和訂用帳戶的查詢支援。
-* 啟用動態更新相關聯圖表和視覺效果的自訂參數。
-* 來自公用 GitHub 的範本庫支援。
-
-雖然本指南提供簡單的步驟來直接重新建立數個常用的視圖設計工具視圖，但活頁簿可讓使用者自由地建立及設計自己的自訂視覺效果和計量。 下列螢幕擷取畫面是來自 [[工作區使用](https://go.microsoft.com/fwlink/?linkid=874159&resourceId=Azure%20Monitor&featureName=Workbooks&itemId=community-Workbooks%2FAzure%20Monitor%20-%20Workspaces%2FWorkspace%20Usage&workbookTemplateName=Workspace%20Usage&func=NavigateToPortalFeature&type=workbook)方式] 範本，並顯示活頁簿能夠建立的範例：
+-   當您事先不知道感興趣的指標時，探索虛擬機器的使用：CPU 利用率、磁碟空間、記憶體、網路依賴關係等。與其他使用方式分析工具不同，活頁簿允許您組合多種視覺化和分析，使其成為這種自由形式的探索的絕佳去。
+-   通過顯示關鍵計數器和其他日誌事件的指標，向您的團隊解釋最近預配的 VM 的性能。
+-   與團隊的其他成員共用 VM 大小調整實驗的結果。 您可以使用文本解釋實驗的目標，然後顯示用於評估實驗的每個使用指標和分析查詢，以及每個指標是否高於或低於目標的明確呼出。
+-   報告中斷對 VM 使用的影響，將資料、文本說明和討論防止將來停機的後續步驟結合起來。
 
 
-![活頁簿應用程式範例](media/view-designer-conversion-overview/workbook-template-example.jpg)
+## <a name="why-convert-view-designer-dashboards-to-workbooks"></a>為什麼要將視圖設計器儀表板轉換為活頁簿？
+
+視圖設計器提供了生成不同基於查詢的視圖和視覺化效果的能力。 不過，許多高階自訂仍然會受到限制，例如格式化格線和磚配置，或選取替代圖形來代表您的資料。 視圖設計器僅限於總共九個不同的切片來表示資料。
+
+Workbooks 是一種可讓您的資料充分發揮潛能的平臺。 活頁簿不僅保留了所有功能，而且還通過文本、指標、參數等支援其他功能。 例如，活頁簿允許使用者合併密集網格並添加搜索欄以輕鬆篩選和分析資料。 
+
+### <a name="advantages-of-using-workbooks-over-view-designer"></a>使用活頁簿優於視圖設計器的優勢
+
+* 支援日誌和指標。
+* 允許個人檢視用於個人存取控制和共用活頁簿視圖。
+* 具有選項卡、大小調整和縮放控制項的自訂佈局選項。
+* 支援跨多個日誌分析工作區、應用程式見解應用程式和訂閱進行查詢。
+* 啟用動態更新關聯圖表和視覺化效果的自訂參數。
+* 來自公共 GitHub 的範本庫支援。
+
+雖然本指南提供了直接重新創建幾個常用視圖設計器視圖的簡單步驟，但活頁簿允許使用者自由創建和設計任何自己的自訂視覺化效果和指標。 以下螢幕截圖來自[工作區使用範本](https://go.microsoft.com/fwlink/?linkid=874159&resourceId=Azure%20Monitor&featureName=Workbooks&itemId=community-Workbooks%2FAzure%20Monitor%20-%20Workspaces%2FWorkspace%20Usage&workbookTemplateName=Workspace%20Usage&func=NavigateToPortalFeature&type=workbook)，顯示了活頁簿能夠創建的示例：
+
+
+![活頁簿應用程式示例](media/view-designer-conversion-overview/workbook-template-example.jpg)
 
 
 ## <a name="how-to-start-using-workbooks"></a>如何開始使用活頁簿
-在 Log Analytics 工作區中，開啟活頁簿中的活頁簿，做為側邊導覽列中的專案，直接在 view designer 位置下啟用。
+在日誌分析工作區中，在視圖設計器位置正下方的側巡覽列中，將啟用活頁簿中的打開活頁簿作為專案。
 
-![活頁簿導覽](media/view-designer-conversion-overview/workbooks-nav.png)
+![活頁簿導航](media/view-designer-conversion-overview/workbooks-nav.png)
 
-選取之後，系統會顯示資源庫，列出您工作區的所有已儲存的活頁簿和範本。
+選中後，將顯示一個庫，列出工作區保存的所有活頁簿和範本。
 
-![活頁簿圖庫](media/view-designer-conversion-overview/workbooks-gallery.png)
+![活頁簿庫](media/view-designer-conversion-overview/workbooks-gallery.png)
 
-若要啟動新的活頁簿，您可以選取 [**快速啟動**] 底下的**空白**範本，或上方導覽列中的 [**新增**] 圖示。 若要查看範本或回到儲存的活頁簿，請從資源庫中選取專案，或在搜尋列中搜尋名稱。
+要啟動新的活頁簿，您可以在 **"快速啟動"** 下選擇 **"空**"範本，或選擇頂部巡覽列中的 **"新建**"圖示。 要查看範本或返回到保存的活頁簿，請從庫中選擇專案或在搜索欄中搜索名稱。
 
-若要儲存活頁簿，您必須使用特定的標題、訂用帳戶、資源群組和位置來儲存報表。
-活頁簿會自動填入與 LA 工作區相同的設定，且具有相同的訂用帳戶、資源群組，但使用者可能會變更這些報表設定。 活頁簿預設會儲存到*我的報表*，只有個別使用者可以存取。 它們也可以直接儲存到共用報表，或稍後共用。
+要保存活頁簿，您需要使用特定標題、訂閱、資源組和位置保存報表。
+活頁簿將自動填滿到與 LA 工作區相同的設置，使用相同的訂閱資源組，但是，使用者可以更改這些報表設置。 活頁簿預設保存到 *"我的報告"，* 僅由單個使用者訪問。 它們也可以直接保存到共用報表或稍後共用。
 
-![活頁簿儲存](media/view-designer-conversion-overview/workbooks-save.png)
+![活頁簿保存](media/view-designer-conversion-overview/workbooks-save.png)
 
 ## <a name="next-steps"></a>後續步驟
 

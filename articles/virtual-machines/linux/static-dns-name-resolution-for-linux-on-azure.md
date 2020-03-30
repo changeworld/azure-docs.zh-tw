@@ -1,5 +1,5 @@
 ---
-title: 使用內部 DNS 進行 VM 名稱解析與 Azure CLI
+title: 使用內部 DNS 解決與 Azure CLI 的 VM 名稱解析
 description: 如何搭配 Azure CLI 在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
 ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034736"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
@@ -28,7 +28,7 @@ ms.locfileid: "74034736"
 
 這些需求包括：
 
-* [一個 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)
+* [Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)
 * [SSH 公開金鑰和私密金鑰檔案](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>快速命令
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>部署 VM 並連接 vNic
-使用 [az vm create](/cli/azure/vm) 來建立 VM。 在部署至 Azure 的期間，`--nics` 旗標會將 vNic 連接到 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
+創建具有[az vm 的](/cli/azure/vm)VM。 在部署至 Azure 的期間，`--nics` 旗標會將 vNic 連接到 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -70,7 +70,7 @@ Azure 上完整的連續整合和連續部署 (CiCd) 基礎結構需要特定的
 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 `myResourceGroup`、`myNic` 和 `myVM`。
 
 ## <a name="create-the-resource-group"></a>建立資源群組
-首先，使用 [az group create](/cli/azure/group)建立資源群組。 下列範例會在 `myResourceGroup` 位置建立名為 `westus` 的資源群組：
+首先，使用 [az group create](/cli/azure/group)建立資源群組。 下列範例會在 `westus` 位置建立名為 `myResourceGroup` 的資源群組：
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>將 VM 部署至虛擬網路基礎結構
 我們現在有一個虛擬網路和子網路、一個作為防火牆而會封鎖所有輸入流量 (用於 SSH 的連接埠 22 除外) 來保護子網路的「網路安全性群組」，以及一個 vNic。 您現在可以在這個現有的網路基礎結構內部署 VM。
 
-使用 [az vm create](/cli/azure/vm) 來建立 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
+創建具有[az vm 的](/cli/azure/vm)VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -165,4 +165,4 @@ az vm create \
 
 ## <a name="next-steps"></a>後續步驟
 * [直接使用 Azure CLI 命令，建立自訂的 Linux VM 環境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用範本在 Azure 上建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用範本在 Azure 上創建 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

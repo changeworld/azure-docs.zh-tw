@@ -4,10 +4,10 @@ description: 使用 Application Insights 分析 Windows 傳統型應用程式的
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670826"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
@@ -20,17 +20,17 @@ ms.locfileid: "77670826"
 3. 在 Visual Studio 中，編輯應用程式專案的 NuGet 封裝，並新增 Microsoft.ApplicationInsights.WindowsServer。 (或選擇 Microsoft.ApplicationInsights，如果您只想要單純的 API，而不需要標準遙測集合模組。)
 4. 在程式碼中設定檢測金鑰︰
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "`*您的金鑰*`";`
+    您的金鑰`TelemetryConfiguration.Active.InstrumentationKey = "` ** `";`
    
     或在 ApplicationInsights.config 中設定檢測金鑰 (如果您已安裝其中一個標準遙測封裝)︰
    
-    `<InstrumentationKey>`您的金鑰`</InstrumentationKey>` 
+    `<InstrumentationKey>`*您的鑰匙*`</InstrumentationKey>` 
    
-    如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製]。
+    如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製] ****。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。
-6. 執行您的應用程式，並查看您在 Azure 入口網站中建立之資源的遙測。
+6. 運行應用，並在 Azure 門戶中創建的資源中查看遙測資料。
 
-## <a name="telemetry"></a>程式碼範例
+## <a name="example-code"></a><a name="telemetry"></a>示例代碼
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>覆寫電腦名稱稱的儲存空間
+## <a name="override-storage-of-computer-name"></a>覆蓋電腦名稱稱的存儲
 
-根據預設，此 SDK 會收集並儲存發出遙測之系統的電腦名稱稱。 若要覆寫集合，您必須使用遙測初始化運算式：
+預設情況下，此 SDK 將收集和存儲發出遙測的系統的電腦名稱稱。 要覆蓋集合，您需要使用遙測初始化器：
 
-**撰寫自訂 TelemetryInitializer，如下所示。**
+**編寫如下自訂遙測初始化程式。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-在下列 `Program.cs` 中，將初始化運算式具現化 `Main()` 方法設定檢測金鑰：
+在下面設置檢測鍵`Program.cs``Main()`的方法中具現化初始化器：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -108,7 +108,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="next-steps"></a>後續步驟
 * [建立儀表板](../../azure-monitor/app/overview-dashboard.md)
-* [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
+* [診斷搜索](../../azure-monitor/app/diagnostic-search.md)
 * [探索度量](../../azure-monitor/app/metrics-explorer.md)
 * [撰寫分析查詢](../../azure-monitor/app/analytics.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器中的先進查詢 |Microsoft Docs
+title: Azure 監視器中的高級查詢 |微軟文檔
 description: 本文提供教學課程來說明如何使用 Analytics 入口網站在 Azure 監視器中撰寫查詢。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670282"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure 監視器中撰寫進階查詢
 
 > [!NOTE]
-> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)和[開始使用查詢](get-started-queries.md)，再完成此課程。
+> 在完成本課程之前，應完成[Azure 監視器日誌分析](get-started-portal.md)入門和[開始查詢](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -68,8 +68,8 @@ Event
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
 
-## <a name="print"></a>Print
-`print` 將會傳回具有單欄與單列的表格，顯示計算的結果。 當您需要簡單的計算時，通常會使用這種方式。 例如，尋找太平洋標準時間 (PST) 的目前時間並加上美國東部標準時間 (EST) 欄：
+## <a name="print"></a>列印
+`print` 將會傳回具有單欄與單列的表格，顯示計算的結果。 這通常用於需要簡單計算的情況。 例如，尋找太平洋標準時間 (PST) 的目前時間並加上美國東部標準時間 (EST) 欄：
 
 ```Kusto
 print nowPst = now()-8h
@@ -126,7 +126,7 @@ SecurityEvent
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
+- [日期與時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)
