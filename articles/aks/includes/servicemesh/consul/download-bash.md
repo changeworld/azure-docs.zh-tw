@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: a6b915e2735b45ac876ca98d279a15e4a371fbfd
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594231"
 ---
-在 Linux 上的 bash 型 shell 中，適用于 Linux 或 MacOS 的[Windows 子系統][install-wsl]，請使用 `curl` 下載 Consul Helm 圖表版本，如下所示：
+在 Linux、適用于 Linux 或 MacOS[的 Windows 子系統][install-wsl]上的`curl`基於 bash 的 shell 中，用於下載領事 Helm 圖表版本，如下所示：
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

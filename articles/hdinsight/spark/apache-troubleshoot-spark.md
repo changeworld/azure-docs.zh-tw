@@ -1,5 +1,5 @@
 ---
-title: 針對 Azure HDInsight 中的 Apache Spark 進行疑難排解
+title: 在 Azure HDInsight 中排除阿帕奇火花故障
 description: 取得有關使用 Apache Spark 和 Azure HDInsight 的常見問題解答。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,47 +9,47 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271937"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Spark 進行疑難排解
 
-瞭解在[Apache Ambari](https://ambari.apache.org/)中使用 Apache Spark 承載時最常發生的問題及其解決方法。
+瞭解在[阿帕奇安巴里](https://ambari.apache.org/)使用阿帕奇火花有效載荷時的首要問題及其解決方案。
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何使用 Apache Ambari 在叢集上設定 Apache Spark 應用程式？
 
-Spark 設定值可以微調，協助避免 Apache Spark 應用程式 `OutofMemoryError` 例外狀況。 下列步驟顯示 Azure HDInsight 中的預設 Spark 設定值：
+可以調整 Spark 配置值，説明避免 Apache `OutofMemoryError` Spark 應用程式異常。 以下步驟在 Azure HDInsight 中顯示預設 Spark 配置值：
 
-1. 使用您的叢集認證，登入位於 `https://CLUSTERNAME.azurehdidnsight.net` 的 Ambari。 初始畫面會顯示 [總覽] 儀表板。 HDInsight 3.6 和4.0 之間有些微的表面差異。
+1. `https://CLUSTERNAME.azurehdidnsight.net`使用群集憑據登錄到 Ambari。 初始螢幕顯示概覽儀表板。 HDInsight 3.6 和 4.0 之間的化妝品差異很小。
 
-1. 流覽至**Spark2** > **的**[進行中]。
+1. 導航到**Spark2** > **配置**。
 
     ![選取 [設定] 索引標籤](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. 在設定清單中，選取並展開 [**自訂-spark2-預設值**]。
+1. 在配置清單中，選擇並展開**自訂 spark2 預設值**。
 
-1. 尋找需要調整的設定值，例如 **spark.executor.memory**。 在此情況下， **9728m**的值太高。
+1. 尋找需要調整的設定值，例如 **spark.executor.memory**。 在這種情況下 **，9728m**的值太高。
 
     ![選取 [Custom-spark2-defaults]](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. 將值設為建議的設定。 這項設定的建議值為 **2048m**。
 
-1. 儲存此值，然後儲存設定。 選取 [儲存]。
+1. 儲存此值，然後儲存設定。 選取 [儲存]****。
 
     ![將值變更為 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    註記設定變更，然後選取 [儲存]。
+    註記設定變更，然後選取 [儲存]****。
 
     ![輸入所做變更的附註內容](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]。
+    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]****。
 
     ![選取 [仍要繼續]](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]。
+1. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]****。
 
     ![選取 [重新啟動]](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,7 +61,7 @@ Spark 設定值可以微調，協助避免 Apache Spark 應用程式 `OutofMemor
 
     ![檢閱執行中的處理序](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]，然後選取 [新增屬性]。
+1. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]****，然後選取 [新增屬性]****。
 
     ![選取 [新增屬性]](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
@@ -105,12 +105,12 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* [Spark 記憶體管理總覽](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
+* [火花記憶體管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
-* [在 HDInsight 叢集上進行 Spark 應用程式的偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
+* [在 HDInsight 群集上調試 Spark 應用程式](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 通過[Azure 社區支援](https://azure.microsoft.com/support/community/)從 Azure 專家那裡獲得答案。
 
-* 與[@AzureSupport](https://twitter.com/azuresupport)進行連接-官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 與[@AzureSupport](https://twitter.com/azuresupport)- 用於改善客戶體驗的官方 Microsoft Azure 帳戶連接。 將 Azure 社區連接到正確的資源：答案、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多説明，可以從[Azure 門戶](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援請求。 從功能表列中選擇 **"支援"** 或打開 **"説明 + 支援**中心"。 有關詳細資訊，請查看[如何創建 Azure 支援請求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 訂閱中包含對訂閱管理和計費支援的訪問，並且通過[Azure 支援計畫](https://azure.microsoft.com/support/plans/)之一提供技術支援。

@@ -1,101 +1,101 @@
 ---
-title: 使用診斷設定收集 Azure 活動記錄-Azure 監視器 |Microsoft Docs
-description: 使用診斷設定，將 Azure 活動記錄轉送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
+title: 使用診斷設置收集 Azure 活動日誌 - Azure 監視器 |微軟文檔
+description: 使用診斷設置將 Azure 活動日誌轉發到 Azure 監視器日誌、Azure 存儲或 Azure 事件中心。
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096903"
 ---
-# <a name="update-to-azure-activity-log-collection-and-export"></a>更新至 Azure 活動記錄收集和匯出
-[Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 將活動記錄專案傳送到[事件中樞或儲存體帳戶](activity-log-export.md)或[log Analytics 工作區](activity-log-collect.md)的方法，已變更為使用[診斷設定](diagnostic-settings.md)。 本文說明方法之間的差異，以及如何在準備變更為診斷設定時清除舊版設定。
+# <a name="update-to-azure-activity-log-collection-and-export"></a>更新到 Azure 活動日誌集合和匯出
+[Azure 活動日誌](platform-logs-overview.md)是一個[平臺日誌](platform-logs-overview.md)，用於深入瞭解 Azure 中發生的訂閱級事件。 將活動日誌條目發送到[事件中心或存儲帳戶](activity-log-export.md)或[日誌分析工作區](activity-log-collect.md)的方法已更改為使用[診斷設置](diagnostic-settings.md)。 本文介紹了方法之間的區別以及如何清除舊版設置，以準備更改為診斷設置。
 
 
 ## <a name="differences-between-methods"></a>方法之間的差異
 
 ### <a name="advantages"></a>優點
-使用診斷設定與目前的方法相比有下列優點：
+與當前方法不同，使用診斷設置具有以下優點：
 
-- 收集所有平臺記錄的一致方法。
-- 跨多個訂用帳戶和租使用者收集活動記錄。
-- 篩選集合，只收集特定類別的記錄。
-- 收集所有活動記錄類別。 某些分類不會使用舊版方法收集。
-- 記錄內嵌的延遲較快。 先前的方法大約會有15分鐘的延遲，而診斷設定只會加上1分鐘。
+- 收集所有平臺日誌的一致方法。
+- 跨多個訂閱和租戶收集活動日誌。
+- 篩選集合以僅收集特定類別的日誌。
+- 收集所有活動日誌類別。 某些類別不會使用舊方法收集。
+- 日誌引入的延遲更快。 前一種方法的延遲約為 15 分鐘，而診斷設置僅添加約 1 分鐘。
 
 ### <a name="considerations"></a>考量
-啟用這項功能之前，請先考慮使用診斷設定的下列活動記錄收集詳細資料。
+在啟用此功能之前，請考慮使用診斷設置收集活動日誌的以下詳細資訊。
 
-- 已移除將活動記錄收集至 Azure 儲存體的保留設定，這表示資料會無限期地儲存，直到您將其移除為止。
-- 目前，您只能使用 Azure 入口網站來建立訂用帳戶層級的診斷設定。 若要使用其他方法（例如 PowerShell 或 CLI），您可以建立 Resource Manager 範本。
+- 將活動日誌收集到 Azure 存儲的保留設置已被刪除，這意味著資料將無限期存儲，直到您刪除它。
+- 目前，您只能使用 Azure 門戶創建訂閱級別的診斷設置。 要使用其他方法（如 PowerShell 或 CLI），可以創建資源管理器範本。
 
 
-### <a name="differences-in-data"></a>資料的差異
-診斷設定會收集與先前用來收集活動記錄的方法相同的資料，但目前的差異如下：
+### <a name="differences-in-data"></a>資料差異
+診斷設置收集的資料與以前用於收集活動日誌的方法相同的資料，但當前存在差異：
 
-已移除下列資料行。 這些資料行的取代格式不同，因此您可能需要修改使用它們的記錄查詢。 您可能還是會看到 [已移除] 架構中的資料行，但不會填入資料。
+已刪除以下列。 這些列的替換採用不同的格式，因此您可能需要修改使用它們的日誌查詢。 您仍然可以在架構中看到已刪除的列，但它們不會被資料填充。
 
-| 已移除資料行 | 取代資料行 |
+| 刪除的列 | 替換列 |
 |:---|:---|
-| ActivityStatus    | ActivityStatusValue    |
-| ActivitySubstatus | ActivitySubstatusValue |
-| OperationName     | OperationNameValue     |
-| ResourceProvider  | ResourceProviderValue  |
+| 活動狀態    | ActivityStatusValue    |
+| 活動子級狀態 | 活動子狀態值 |
+| OperationName     | 操作名稱值     |
+| ResourceProvider  | 資源提供者價值  |
 
-已加入下列資料行：
+已添加以下列：
 
 - Authorization_d
 - Claims_d
 - Properties_d
 
 > [!IMPORTANT]
-> 在某些情況下，這些資料行中的值可能全部大寫。 如果您有包含這些資料行的查詢，您應該使用[= ~ 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
+> 在某些情況下，這些列中的值可能在所有大寫中。 如果查詢包含這些列，則應使用[* 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)執行不區分大小寫的比較。
 
-## <a name="work-with-legacy-settings"></a>使用舊版設定
-如果您不選擇將取代為診斷設定，則收集活動記錄的舊版設定會繼續工作。 使用下列方法來管理訂用帳戶的記錄檔設定檔。
+## <a name="work-with-legacy-settings"></a>使用舊版設置
+如果不選擇使用診斷設置替換，則用於收集活動日誌的舊設置將繼續工作。 使用以下方法管理訂閱的日誌設定檔。
 
-1. 從 Azure 入口網站的 [ **Azure 監視器**] 功能表中，選取 [**活動記錄**]。
-3. 按一下 [診斷設定]。
+1. 從 Azure 門戶中的**Azure 監視器**功能表中，選擇**活動日誌**。
+3. 按一下 **"診斷設置**"。
 
    ![診斷設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. 按一下 [紫色] 橫幅以取得舊版體驗。
+4. 按一下紫色橫幅即可獲得舊體驗。
 
-    ![舊版體驗](media/diagnostic-settings-subscription/legacy-experience.png)
-
-
-如需使用舊版收集方法的詳細資訊，請參閱下列文章。
-
-- [在 Azure 監視器的 Log Analytics 工作區中收集並分析 Azure 活動記錄](activity-log-collect.md)
-- [將 Azure 活動記錄收集到 Azure Active Directory 租使用者之間的 Azure 監視器](activity-log-collect-tenants.md)
-- [將 Azure 活動記錄匯出至儲存體或 Azure 事件中樞](activity-log-export.md)
-
-## <a name="disable-existing-settings"></a>停用現有的設定
-您應該停用現有的活動集合，再使用診斷設定加以啟用。 啟用這兩個可能會導致重複的資料。
-
-### <a name="disable-collection-into-log-analytics-workspace"></a>停用收集到 Log Analytics 工作區
-
-1. 開啟 Azure 入口網站中的  **Log Analytics 工作區** 功能表，然後選取要收集活動記錄的工作區。
-2. 在工作區功能表的 [**工作區資料來源**] 區段中，選取 [ **Azure 活動記錄**]。
-3. 按一下您要中斷連線的訂用帳戶。
-4. 按一下 **[中斷連線]** ，**然後在系統**要求您確認您的選擇時才會出現。
-
-### <a name="disable-log-profile"></a>停用記錄檔設定檔
-
-1. 使用 [使用[舊版設定](#work-with-legacy-settings)] 中所述的程式來開啟舊版設定。
-2. 停用儲存體或事件中樞的任何目前集合。
+    ![傳統體驗](media/diagnostic-settings-subscription/legacy-experience.png)
 
 
+有關使用舊集合方法的詳細資訊，請參閱以下文章。
 
-## <a name="activity-log-monitoring-solution"></a>活動記錄監視解決方案
-Azure Log Analytics 監視解決方案包含多個記錄查詢和視圖，可用於分析 Log Analytics 工作區中的活動記錄檔記錄。 此解決方案會使用 Log Analytics 工作區中收集的記錄資料，如果您使用診斷設定收集活動記錄，則不需要任何變更即可繼續工作。 如需此解決方案的詳細資訊，請參閱[活動記錄分析監視解決方案](activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
+- [在 Azure 監視器中的日誌分析工作區中收集和分析 Azure 活動日誌](activity-log-collect.md)
+- [跨 Azure 活動目錄租戶將 Azure 活動日誌收集到 Azure 監視器中](activity-log-collect-tenants.md)
+- [將 Azure 活動日誌匯出到存儲或 Azure 事件中心](activity-log-export.md)
+
+## <a name="disable-existing-settings"></a>禁用現有設置
+在使用診斷設置啟用活動之前，應禁用活動的現有集合。 同時啟用這兩個功能可能會導致資料重複。
+
+### <a name="disable-collection-into-log-analytics-workspace"></a>禁用日誌分析工作區中的集合
+
+1. 在 Azure 門戶中打開**日誌分析工作區**功能表，然後選擇工作區以收集活動日誌。
+2. 在工作區功能表的**工作區資料來源**部分中，選擇**Azure 活動日誌**。
+3. 按一下要斷開連接的訂閱。
+4. 當被要求確認您的選擇時，按一下 **"斷開連接****"，** 然後按一下"是"。
+
+### <a name="disable-log-profile"></a>禁用日誌設定檔
+
+1. 使用[舊版設置](#work-with-legacy-settings)中描述的過程打開舊版設置。
+2. 禁用存儲或事件中心的任何當前集合。
+
+
+
+## <a name="activity-log-monitoring-solution"></a>活動日誌監視解決方案
+Azure 日誌分析監視解決方案包括多個日誌查詢和視圖，用於分析日誌分析工作區中的活動日誌記錄。 此解決方案使用日誌分析工作區中收集的日誌資料，如果您使用診斷設置收集活動日誌，則將繼續工作，無需進行任何更改。 有關此解決方案的詳細資訊，請參閱[活動日誌分析監視解決方案](activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入了解活動記錄](../../azure-resource-manager/management/view-activity-logs.md)
-* [深入瞭解診斷設定](diagnostic-settings.md)
+* [瞭解有關活動日誌的更多內容](../../azure-resource-manager/management/view-activity-logs.md)
+* [瞭解有關診斷設置的更多資訊](diagnostic-settings.md)

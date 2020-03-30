@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 將資料磁片連結至 Azure 中的 Windows VM
+title: 使用 PowerShell 將資料磁片附加到 Azure 中的 Windows VM
 description: 如何使用 PowerShell 搭配 Resource Manager 部署模型，將新的或現有的資料磁碟連結至 Windows VM。
 author: roygara
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267751"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 將資料磁碟連結至 Windows VM
@@ -23,7 +23,7 @@ ms.locfileid: "79267751"
 * 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需相關資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 若要使用進階 SSD，您將需要[已啟用進階儲存體的 VM 類型](sizes-memory.md)，例如 DS 系列或 GS 系列的虛擬機器。
 
-本文會在[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)內使用 PowerShell，這會持續更新為最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
+本文在[Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/overview)中使用 PowerShell，該雲外殼會不斷更新到最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]****。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>將空的資料磁碟新增至虛擬機器
 
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>在可用性區域中使用受控磁碟
 
-若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1 建立磁碟。
+若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1** 建立磁碟。
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -117,4 +117,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以使用範本來部署受控磁片。 如需詳細資訊，請參閱[在 Azure Resource Manager 範本中使用受控磁碟或用](using-managed-disks-template-deployments.md)來部署多個資料磁片的[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)。
+您還可以使用範本部署託管磁片。 有關詳細資訊，請參閱在[Azure 資源管理器範本中使用託管磁片](using-managed-disks-template-deployments.md)或用於部署多個資料磁片[的快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)。

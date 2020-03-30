@@ -1,5 +1,5 @@
 ---
-title: 建立 StorSimple 8000 系列的支援票證或案例
+title: 為 StorSimple 8000 系列創建支援票證或案例
 description: 了解如何記錄支援要求和在 StorSimple 8000 系列裝置上啟動支援工作階段。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254985"
 ---
 # <a name="contact-microsoft-support"></a>連絡 Microsoft 支援服務
@@ -29,35 +29,35 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 #### <a name="to-create-a-support-request"></a>建立支援要求
 
-1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解] 區段，然後按一下 [新增支援要求]。
+1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解]**** 區段，然後按一下 [新增支援要求]****。
      
     ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. 在 [新增支援要求] 刀鋒視窗中，選取 [基本]。 在 [基本] 刀鋒視窗中，執行下列步驟：
-   1. 從 [問題類型] 下拉式清單中，選取 [技術]。
-   2. 自動會選擇目前的 [訂用帳戶]、[服務] 類型和 [資源] \(StorSimple 裝置管理員服務)。 
+2. 在 [新增支援要求]**** 刀鋒視窗中，選取 [基本]****。 在 [基本]**** 刀鋒視窗中，執行下列步驟：
+   1. 從 [問題類型]**** 下拉式清單中，選取 [技術]****。
+   2. 自動會選擇目前的 [訂用帳戶]****、[服務]**** 類型和 [資源]**** \(StorSimple 裝置管理員服務)。 
    3. 如果您的訂用帳戶有多個相關聯的方案，請從下拉式清單選取**支援方案**。 您必須已付費購買支援方案，才能啟用技術支援。
-   4. 按 [下一步]。
+   4. 按 [下一步]****。
 
        ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. 在 [新增支援要求] 刀鋒視窗中，選取 [步驟 2 問題]。 在 [問題] 刀鋒視窗中，執行下列步驟：
+3. 在 [新增支援要求]**** 刀鋒視窗中，選取 [步驟 2 問題]****。 在 [問題]**** 刀鋒視窗中，執行下列步驟：
     
-    1. 選擇 [嚴重性]。
+    1. 選擇 [嚴重性]****。
     2. 指定問題是與設備還是 StorSimple 裝置管理員服務有關。
-    3. 選擇這個問題的 [類別]，並提供問題的其他 [詳細資料]。
+    3. 選擇這個問題的 [類別]****，並提供問題的其他 [詳細資料]****。
     4. 提供問題開始日期與時間。
-    5. 在 [檔案上傳] 中，按一下資料夾圖示，即可瀏覽至您的支援封裝。
-    6. 勾選 [共用診斷資訊]。
-    7. 按 [下一步]。
+    5. 在 [檔案上傳]**** 中，按一下資料夾圖示，即可瀏覽至您的支援封裝。
+    6. 勾選 [共用診斷資訊]****。
+    7. 按 [下一步]****。
 
        ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. 在 [新增支援要求] 刀鋒視窗中，按一下 [步驟 3 連絡人資訊]。 在 [連絡人資訊] 刀鋒視窗中，執行下列步驟：
+4. 在 [新增支援要求]**** 刀鋒視窗中，按一下 [步驟 3 連絡人資訊]****。 在 [連絡人資訊]**** 刀鋒視窗中，執行下列步驟：
 
-   1. 在 [連絡人選項] 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
-   2. 在 [連絡人資訊] 中，提供您的姓名、電子郵件、選用連絡人、國家/地區。 選取 [儲存連絡人變更以供未來的支援要求使用] 核取方塊。
-   3. 按一下 **[建立]** 。
+   1. 在 [連絡人選項]**** 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
+   2. 在聯繫資訊中，提供您的姓名、電子郵件、可選連絡人、國家/地區。 選取 [儲存連絡人變更以供未來的支援要求使用] **** 核取方塊。
+   3. 按一下 **[建立]**。
    
        ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -70,15 +70,15 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 #### <a name="to-manage-your-support-requests"></a>若要管理支援要求
 
-1. 若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]。
+1. 若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]****。
 
     ![管理支援要求](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. [說明 + 支援] 刀鋒視窗中會以表格式清單列出全部的支援要求。
+2. [說明 + 支援]**** 刀鋒視窗中會以表格式清單列出全部的支援要求。
 
     ![管理支援要求](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. 選取並按一下支援要求。 您可以檢視此要求的狀態與詳細資料。 如果您想要追蹤此要求，請按一下 [+ New message]\(+ 新訊息\)。
+3. 選取並按一下支援要求。 您可以檢視此要求的狀態與詳細資料。 如果您想要追蹤此要求，請按一下 [+ New message]\(+ 新訊息\)****。
 
     ![管理支援要求](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
@@ -92,7 +92,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 1. 從遠端電腦使用序列主控台或透過 telnet 工作階段，直接存取裝置。 如果要這樣做，請依照 [使用 PuTTY 來連接至裝置序列主控台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步驟進行。
 2. 在開啟的工作階段中，按 **Enter** 鍵來取得命令提示字元。
-3. 在序列主控台功能表中，選取選項 1 [使用完整存取權登入]。
+3. 在序列主控台功能表中。選取選項 1 [以完整存取權限登入]****。
 4. 在提示字元中輸入下列密碼：
    
     `Password1`

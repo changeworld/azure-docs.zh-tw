@@ -1,7 +1,7 @@
 ---
 title: 匯出或刪除工作區資料
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning studio、CLI、SDK 及已驗證的 REST Api 來匯出或刪除您的工作區。
+description: 瞭解如何使用 Azure 機器學習工作室、CLI、SDK 和經過身份驗證的 REST API 匯出或刪除工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ ms.author: laobri
 ms.date: 03/06/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218278"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料
@@ -30,7 +30,7 @@ ms.locfileid: "79218278"
 
 ## <a name="control-your-workspace-data"></a>控制您的工作區資料
 
-Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learning studio、CLI、SDK 及已驗證的 REST Api 進行匯出和刪除。 透過 Azure 隱私權入口網站可以存取遙測資料。 
+Azure 機器學習存儲的產品內資料可通過 Azure 機器學習工作室、CLI、SDK 和經過身份驗證的 REST API 進行匯出和刪除。 透過 Azure 隱私權入口網站可以存取遙測資料。 
 
 在 Azure Machine Learning 中，個人資料會包含執行歷程記錄文件中的使用者資訊，以及使用者與服務部分互動的遙測記錄。
 
@@ -38,7 +38,7 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 為了刪除資料，可以使用 HTTP DELETE 動詞來進行下列 API 呼叫。 這些可透過在要求中指定 `Authorization: Bearer <arm-token>` 標頭來進行授權，其中 `<arm-token>` 是 `https://management.core.windows.net/` 端點的 AAD 存取權杖。  
 
-若要瞭解如何取得此權杖及呼叫 Azure 端點，請參閱[使用 REST 來管理 ML 資源](how-to-manage-rest.md)和[azure REST API 檔](https://docs.microsoft.com/rest/api/azure/)。  
+要瞭解如何獲取此權杖並調用 Azure 終結點，請參閱[使用 REST 來管理 ML 資源和](how-to-manage-rest.md)Azure REST API[文檔](https://docs.microsoft.com/rest/api/azure/)。  
 
 在下列範例中，請以決定相關資源的執行個體名稱取代 {} 中的文字。
 
@@ -94,7 +94,7 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 為了匯出資料，可以使用 HTTP GET 動詞來進行下列 API 呼叫。 這些可透過在要求中指定 `Authorization: Bearer <arm-token>` 標頭來進行授權，其中 `<arm-token>` 是 `https://management.core.windows.net/` 端點的 AAD 存取權杖  
 
-若要瞭解如何取得此權杖及呼叫 Azure 端點，請參閱[使用 REST 來管理 ML 資源](how-to-manage-rest.md)和[azure REST API 檔](https://docs.microsoft.com/rest/api/azure/)。   
+要瞭解如何獲取此權杖並調用 Azure 終結點，請參閱[使用 REST 來管理 ML 資源和](how-to-manage-rest.md)Azure REST API[文檔](https://docs.microsoft.com/rest/api/azure/)。   
 
 在下列範例中，請以決定相關資源的執行個體名稱取代 {} 中的文字。
 
@@ -236,28 +236,28 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-assets-in-the-designer"></a>在設計工具中刪除資產
+## <a name="delete-assets-in-the-designer"></a>刪除設計器中的資產
 
-在您建立實驗的設計工具中，刪除個別資產：
+在創建實驗的設計器中，刪除單個資產：
 
-1. 移至設計工具
+1. 轉到設計師
 
     ![刪除資產](./media/how-to-export-delete-data/delete-experiment.png)
 
-1. 在清單中，選取要刪除的個別管線草稿。
+1. 在清單中，選擇要刪除的單個管道草稿。
 
-1. 選取 [刪除]。
+1. 選擇 **"刪除**"。
 
-### <a name="delete-datasets-in-the-designer"></a>在設計工具中刪除資料集
+### <a name="delete-datasets-in-the-designer"></a>刪除設計器中的資料集
 
-若要刪除設計工具中的資料集，請使用 Azure 入口網站或儲存體總管流覽至已連線的儲存體帳戶，並刪除其中的資料集。 在設計工具中取消註冊資料集，只會移除儲存體中的參考點。
+要刪除設計器中的資料集，請使用 Azure 門戶或存儲資源管理器導航到連接的存儲帳戶，並刪除那裡的資料集。 在設計器中取消註冊資料集只會刪除存儲中的參考點。
 
-## <a name="export-data-in-the-designer"></a>在設計工具中匯出資料
+## <a name="export-data-in-the-designer"></a>匯出設計器中的資料
 
-在您建立實驗的設計工具中，匯出您已新增的資料：
+在創建實驗的設計器中，匯出已添加的資料：
 
-1. 在左側選取 [**資料集**]。
+1. 在左側，選擇**資料集**。
 
-1. 在清單中，選取要匯出的資料集
+1. 在清單中，選擇要匯出的資料集
 
     ![下載資料](./media/how-to-export-delete-data/unregister-dataset.png)

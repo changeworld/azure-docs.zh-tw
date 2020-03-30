@@ -1,14 +1,14 @@
 ---
-title: 準備輸入 IP 位址變更
+title: 準備入站 IP 位址更改
 description: 如果您的輸入 IP 位址即將變更，請了解該怎麼做，以讓您的應用程式可在變更後繼續運作。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672425"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何為輸入 IP 位址變更進行準備
@@ -29,15 +29,15 @@ ms.locfileid: "74672425"
 
 提供給您應用程式的新輸入 IP 位址是位於入口網站的**虛擬 IP 位址**欄位。 這個新 IP 位址和舊 IP 位址現在都會連線到您的應用程式，稍後舊位址將會中斷連線。
 
-1.  開啟 [Azure 入口網站](https://portal.azure.com)。
+1.  打開[Azure 門戶](https://portal.azure.com)。
 
-2.  在左側導覽功能表中選取 [應用程式服務]。
+2.  在左側導覽功能表中選取 [應用程式服務]****。
 
 3.  從清單中選取 App Service 應用程式。
 
 1.  若該應用程式為函式應用程式，請參閱[函式應用程式輸入 IP 位址](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)。
 
-4.  在 [設定] 標題底下，按一下左側導覽中的 [屬性]，並找到標示為 [虛擬 IP 位址] 的區段。
+4.  在 [設定]**** 標題底下，按一下左側導覽中的 [屬性]****，並找到標示為 [虛擬 IP 位址]**** 的區段。
 
 5. 複製 IP 位址，並重新設定您的網域記錄或 IP 機制。
 

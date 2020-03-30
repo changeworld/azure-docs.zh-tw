@@ -1,19 +1,19 @@
 ---
-title: 保護 Azure Service Fabric 叢集
+title: 保護 Azure 服務結構群集
 description: 深入了解 Azure Service Fabric 叢集的安全性情節，以及可用來加以實作的各種技術。
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
 ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258677"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 
-Azure Service Fabric 叢集是您擁有的資源。 保護叢集是您的責任，從而協助避免未經授權的使用者與它們連線。 在叢集上執行生產工作負載時，安全的叢集尤其重要。 您可以建立不安全的叢集，但如果叢集向公用網際網路公開管理端點，匿名使用者就可以連接到該叢集。 不支援將不安全的叢集用作生產工作負載。 
+Azure Service Fabric 叢集是您擁有的資源。 保護叢集是您的責任，從而協助避免未經授權的使用者與它們連線。 在叢集上執行生產工作負載時，安全的叢集尤其重要。 可以創建不安全的群集，但是，如果群集將管理終結點公開到公共 Internet，匿名使用者可以連接到該群集。 不支援將不安全的叢集用作生產工作負載。 
 
 本文是 Azure 叢集和獨立式叢集的安全性情節的概觀，以及可用來實作它們的各種技術：
 
@@ -53,7 +53,7 @@ Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X
 
 ### <a name="client-to-node-certificate-security"></a>用戶端對節點憑證安全性
 
-建立叢集時，可在 Azure 入口網站中，使用 Resource Manager 範本或使用獨立 JSON 範本來設定用戶端對節點憑證安全性。 若要建立憑證，請指定管理員用戶端憑證或使用者用戶端憑證。 您指定的系統管理用戶端憑證和使用者用戶端憑證，應不同於您針對[節點對節點安全性](#node-to-node-security)指定的主要和次要憑證，以作為最佳做法。 叢集憑證具有與用戶端系統管理員憑證相同的許可權。 不過，它們只能由叢集使用，而非由系統管理使用者用來做為安全性最佳作法。
+建立叢集時，可在 Azure 入口網站中，使用 Resource Manager 範本或使用獨立 JSON 範本來設定用戶端對節點憑證安全性。 若要建立憑證，請指定管理員用戶端憑證或使用者用戶端憑證。 您指定的系統管理用戶端憑證和使用者用戶端憑證，應不同於您針對[節點對節點安全性](#node-to-node-security)指定的主要和次要憑證，以作為最佳做法。 群集證書具有與用戶端管理證書相同的許可權。 但是，它們只能由群集使用，而不應由管理使用者用作安全最佳實踐。
 
 用戶端如果是使用系統管理憑證來連接到叢集，就會擁有管理功能的完整存取權。 用戶端如果是使用唯讀使用者用戶端憑證來連接到叢集，則只會擁有管理功能的唯讀存取權。 這些憑證是用於我們在本文稍後所述的 RBAC。
 
@@ -63,7 +63,7 @@ Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Azure 上的用戶端對節點 Azure Active Directory 安全性
 
-Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。 應用程式分成具有 Web 型登入 UI 的應用程式，以及具有原生用戶端體驗的應用程式。 如果您尚未建立租使用者，請從閱讀[如何取得 Azure Active Directory 租][active-directory-howto-tenant]使用者開始。
+Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。 應用程式分成具有 Web 型登入 UI 的應用程式，以及具有原生用戶端體驗的應用程式。 如果您尚未建立租用戶，請從閱讀[如何取得 Azure Active Directory 租用戶][active-directory-howto-tenant]開始進行。
 
 Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio])。 因此，您將建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 Web 應用程式和一個原生應用程式。
 
@@ -103,7 +103,7 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 需有這些憑證 (一個主要憑證和選擇性次要憑證) 以便保護叢集，並避免未經授權的存取。 這些憑證會提供叢集和伺服器驗證。
 
-叢集驗證會驗證叢集同盟的節點對節點通訊。 只有可使用此憑證提供其身分識別的節點可以加入叢集。 伺服器驗證會向管理用戶端驗證叢集管理端點，管理用戶端就能知道它正在交談的對象是真正的叢集，而非「中間人 (man in the middle)」。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 使用的 Service Fabric Explorer 提供 SSL。 當用戶端或節點驗證節點時，其中一項初始檢查是 [主體] 欄位中的一般名稱值。 此一般名稱或其中一個憑證主體別名 (SAN) 必須存在於允許的一般名稱清單中。
+叢集驗證會驗證叢集同盟的節點對節點通訊。 只有可使用此憑證提供其身分識別的節點可以加入叢集。 伺服器驗證會向管理用戶端驗證叢集管理端點，管理用戶端就能知道它正在交談的對象是真正的叢集，而非「中間人 (man in the middle)」。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 使用的 Service Fabric Explorer 提供 SSL。 當用戶端或節點驗證節點時，其中一項初始檢查是 [主體]**** 欄位中的一般名稱值。 此一般名稱或其中一個憑證主體別名 (SAN) 必須存在於允許的一般名稱清單中。
 
 憑證必須符合下列要求：
 
@@ -113,10 +113,10 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 需考量的其他事項：
 
-* [主體] 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是**CN** （針對*一般名稱*）;例如， **CN = www\.contoso.com**。
-* [主體] 欄位可以是空白。
-* 如果選擇性 [主體別名] 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些會以 **DNS 名稱**值輸入。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
-* 憑證的 [預定目的] 欄位值應包含適當的值，例如**伺服器驗證**或**用戶端驗證**。
+* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化為**CN（** 對於*通用名稱*）;例如 **，CN =\.www contoso.com**。
+* [主體]**** 欄位可以是空白。
+* 如果選擇性 [主體別名]**** 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些值輸入為**DNS 名稱**值。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
+* 證書**的"預期用途"** 欄位的值應包括適當的值，如**伺服器身份驗證**或**用戶端身份驗證**。
 
 ### <a name="application-certificates-optional"></a>應用程式憑證 (選用)
 

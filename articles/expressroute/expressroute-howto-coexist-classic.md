@@ -1,5 +1,5 @@
 ---
-title: 設定 ExpressRoute 和 S2S VPN 並存連接：傳統
+title: 配置快速路由和 S2S VPN 共存連接：經典
 description: 本文會引導您針對傳統部署模型設定可以並存的 ExpressRoute 和站對站 VPN 連線。
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272925"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>設定 ExpressRoute 和站對站並存連線 (傳統)
@@ -81,7 +81,7 @@ ms.locfileid: "79272925"
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="new"></a>建立新的虛擬網路和並存的連線
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>建立新的虛擬網路和並存的連線
 此程序會引導您建立 VNet，並建立將並存的站對站和 ExpressRoute 連線。
 
 1. 您必須安裝最新版的 Azure PowerShell Cmdlet。 如需如何安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 請注意，您將針對此組態使用的 Cmdlet 可能與您熟悉的 Cmdlet 有些微不同。 請務必使用這些指示中指定的 Cmdlet。 
@@ -187,7 +187,7 @@ ms.locfileid: "79272925"
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="add"></a>為已經存在的 VNet 設定並存的連線
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>為已經存在的 VNet 設定並存的連線
 如果您有現有的虛擬網路，請檢查閘道器子網路大小。 如果閘道器子網路是/28 或/29，您必須先刪除虛擬網路閘道器，並增加閘道器子網路大小。 本節中的步驟將示範如何執行該作業。
 
 如果閘道器子網路是/27 以上且虛擬網路是透過 ExpressRoute 連線，則可以略過下列步驟，並且繼續進行上一節中的 [「步驟 6 - 建立站對站 VPN 閘道」](#vpngw) 。
@@ -214,7 +214,7 @@ ms.locfileid: "79272925"
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
-5. 如果您先前的閘道是站對站 VPN，則也必須將連線類型變更為 [專用]。
+5. 如果您先前的閘道是站對站 VPN，則也必須將連線類型變更為 [專用] ****。
    
                  <Gateway>
                   <ConnectionsToLocalNetwork>
@@ -226,5 +226,5 @@ ms.locfileid: "79272925"
 6. 此時，您必須使用沒有閘道器的 VNet。 若要建立新的閘道器並完成連接，您可以繼續進行 [步驟 4 - 建立 ExpressRoute 閘道器](#gw)(您可以在先前的步驟組中找到)。
 
 ## <a name="next-steps"></a>後續步驟
-如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)
+有關快速路由的詳細資訊，請參閱[快速路由常見問題解答](expressroute-faqs.md)
 

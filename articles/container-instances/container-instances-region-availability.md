@@ -1,19 +1,19 @@
 ---
-title: 依區域的資源可用性
+title: 資源可用性（按區域）
 description: Azure 容器執行個體服務的計算和記憶體資源在不同 Azure 區域中的可用性。
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247133"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
-本文詳細說明 azure 容器實例的計算、記憶體和儲存體資源在 Azure 區域中的可用性，以及目標作業系統。 
+本文詳細介紹了 Azure 區域和目標作業系統中 Azure 容器實例計算、記憶體和存儲資源的可用性。 
 
 顯示的值為每個[容器群組](container-instances-container-groups.md)部署可用的最大資源。 以下是本文章發行時的值。 
 
@@ -24,39 +24,39 @@ ms.locfileid: "79247133"
 
 ## <a name="availability---general"></a>可用性 - 一般
 
-下欄區域和最大資源可供具有 Linux 和[支援](container-instances-faq.md#what-windows-base-os-images-are-supported)的 Windows Server 2016 容器的容器群組使用。
+以下區域和最大資源可用於具有 Linux[和支援的](container-instances-faq.md#what-windows-base-os-images-are-supported)基於 Windows Server 2016 的容器組。
 
-| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| 區域 | OS | 最大 CPU | 最大記憶體 （GB） | 儲存體 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| 巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、美國東部2、歐洲北部、美國中南部、東南亞、印度南部、英國南部、西歐、美國西部、美國西部2 | Linux | 4 | 16 | 50 |
+| 巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、美國東部 2、北歐、美國中南部、東南亞、南印度、英國南部、西歐、美國西部、美國西部 2 | Linux | 4 | 16 | 50 |
 | 澳大利亞東部、日本東部 | Linux | 2 | 8 | 50 |
 | 美國中北部 | Linux | 2 | 3.5 | 50 |
-| 巴西南部、日本東部、西歐 | Windows | 4 | 16 | 20 |
+| 巴西 南部、日本東部、西歐 | Windows | 4 | 16 | 20 |
 | 美國東部、美國西部 | Windows | 4 | 14 | 20 |
-| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部2、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、美國西部2 | Windows | 2 | 3.5 | 20 |
+| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部 2、美國中北部、北歐、美國中南部、東南亞、南印度、英國南部、美國西部 2 | Windows | 2 | 3.5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809年部署 (預覽)
 
-下欄區域和最大資源可供具有 Windows Server 2019 容器（預覽）的容器群組使用。
+以下區域和最大資源可用於基於 Windows Server 2019 的容器組（預覽）。
 
-| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| 區域 | OS | 最大 CPU | 最大記憶體 （GB） | 儲存體 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| 澳大利亞東部、巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、日本東部、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、西歐 | Windows | 4 | 16 | 20 |
-| 美國東部2、美國西部2 | Windows | 2 | 3.5 | 20 |
+| 澳大利亞東部、巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、日本東部、美國中北部、北歐、美國中南部、東南亞、南印度、英國南部、西歐 | Windows | 4 | 16 | 20 |
+| 美國東部 2， 西美國 2 | Windows | 2 | 3.5 | 20 |
 
 
-## <a name="availability---virtual-network-deployment"></a>可用性-虛擬網路部署
+## <a name="availability---virtual-network-deployment"></a>可用性 - 虛擬網路部署
 
-[Azure 虛擬網路](container-instances-vnet.md)中部署的容器群組可使用下欄區域和資源上限。
+部署在[Azure 虛擬網路中](container-instances-vnet.md)的容器組可以使用以下區域和最大資源。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 資源 (預覽)
 
-下欄區域和最大資源可供使用[GPU 資源](container-instances-gpu.md)（預覽）部署的容器群組使用。
+使用[GPU 資源](container-instances-gpu.md)部署的容器組可以使用以下區域和最大資源（預覽）。
 
 > [!IMPORTANT]
-> 只有在要求時，才可以使用 GPU 資源。 若要要求存取 GPU 資源，請提交[Azure 支援要求][azure-support]。
+> GPU 資源僅應要求可用。 要請求訪問 GPU 資源，請提交[Azure 支援請求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258937"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -30,7 +30,7 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 | CLI 版本   | 支援的執行階段版本 |
 |---------------|---------------------------|
-| 最新（~ = 9）  | 最新 (~=7)              |
+| 最新 （+9）  | 最新 (~=7)              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -61,9 +61,9 @@ pip install -I sfctl==1.1.0
 
 2. 開始安裝程式。
 
-3. 在提示字元的底部，選取 [將 Python 3.7 新增至路徑]。
+3. 在提示字元的底部，選取 [將 Python 3.7 新增至路徑]****。
 
-4. 選取 [立即安裝]，並完成安裝。
+4. 選取 [立即安裝]****，並完成安裝。
 
 現在您可以開啟新的命令視窗，並取得 Python 和 pip 的版本。
 
@@ -99,7 +99,7 @@ sfctl -h
 
 `sfctl: command not found`
 
-請確定可從 `~/.local/bin` 存取 `$PATH`：
+請確定可從 `$PATH` 存取 `~/.local/bin`：
 
 ```bash
 export PATH=$PATH:~/.local/bin
@@ -258,7 +258,7 @@ sfctl application create -h
 
 ## <a name="updating-the-service-fabric-cli"></a>更新 Service Fabric CLI 
 
-若要更新 Service Fabric CLI，請執行下列命令 (以 `pip` 取代 `pip3`，取決於您在原始安裝期間的選擇)：
+若要更新 Service Fabric CLI，請執行下列命令 (以 `pip3` 取代 `pip`，取決於您在原始安裝期間的選擇)：
 
 ```shell
 pip uninstall sfctl

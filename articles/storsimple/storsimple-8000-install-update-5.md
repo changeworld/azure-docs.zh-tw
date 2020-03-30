@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267881"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝 Update 5
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程說明如何透過 Azure 入口網站及使用 Hotfix 方法，在執行舊軟體版本的 StorSimple 裝置上安裝 Update 5。 當您嘗試在執行 Update 3 之前版本的裝置上安裝 Update 5 時，會使用 Hotfix 方法。 當閘道器是在 StorSimple 裝置之 DATA 0 以外的網路介面上設定的，且您要嘗試從 Update 1 之前的軟體版本更新時，也會使用 Hotfix 方法。
 
@@ -47,7 +47,7 @@ Update 5 包含裝置軟體、Storport 和 Spaceport、OS 安全性更新和 OS 
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update5-via-portal.md)]
 
-確認您的裝置是否正在執行 **StorSimple 8000 系列 Update 5 (6.3.9600.17845)** 。 [上次更新日期] 應該已修改。
+確認您的裝置是否正在執行 **StorSimple 8000 系列 Update 5 (6.3.9600.17845)**。 [上次更新日期]**** 應該已修改。
 
 您會看到有可用的維護模式更新 (此訊息可能會在您安裝更新之後繼續顯示長達 24 小時)。 下一節會詳細說明安裝維護模式更新的步驟。
 

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251033"
 ---
-# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用通道，從內部部署編碼器接收多位元率即時串流
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用從本地編碼器接收多位元率即時流的通道
 
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="overview"></a>概觀
-在 Azure 媒體服務中，通道代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
+## <a name="overview"></a>總覽
+在 Azure 媒體服務中，通道** 代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
 
 * 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的通道。 內嵌的串流會通過通道，而不需任何進一步處理。 此方法稱為 *傳遞*。 即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 媒體服務會將串流傳遞給要求的客戶。
 
@@ -45,13 +45,13 @@ ms.locfileid: "79251033"
 > [!NOTE]
 > 本文討論未啟用而無法執行即時編碼的通道屬性。 如需使用已啟用執行即時編碼通道的相關資訊，請參閱 [使用 Azure 媒體服務建立多位元速率串流的即時串流](media-services-manage-live-encoder-enabled-channels.md)。
 >
->如需有關建議的內部部署編碼器的詳細資訊，請參閱[建議的內部部署編碼器](media-services-recommended-encoders.md)。
+>有關建議在本地編碼器上使用的資訊，請參閱[建議在本地編碼器上](media-services-recommended-encoders.md)。
 
 下圖顯示一個即時串流工作流程，這個流程利用內部部署即時編碼器以多位元速率 RTMP 或 Fragmented MP4 (Smooth Streaming) 串流做為輸出。
 
 ![即時工作流程][live-overview]
 
-## <a id="scenario"></a>常見即時串流案例
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見即時串流案例
 下列步驟描述當我們建立一般即時串流應用程式時，會涉及到的各種工作。
 
 1. 將攝影機連接到電腦。 啟動並設定內部部署即時編碼器，讓它以多位元速率 RTMP 或 Fragmented MP4 (Smooth Streaming) 串流做為輸出。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。
@@ -73,7 +73,7 @@ ms.locfileid: "79251033"
 6. 發行與程式相關聯的資產。   
 
     >[!NOTE]
-    >建立 Azure 媒體服務帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 您想要串流內容的串流端點必須處於 [執行中] 狀態。
+    >建立 Azure 媒體服務帳戶時，**預設**串流端點會新增至 [已停止]**** 狀態的帳戶。 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
 
 7. 當您準備好開始串流和封存時，請啟動程式。
 
@@ -83,9 +83,9 @@ ms.locfileid: "79251033"
 
 10. 刪除程式 (並選擇性地刪除資產)。     
 
-## <a id="channel"></a>通道和其相關元件的說明
-### <a id="channel_input"></a>頻道輸入 (內嵌) 組態
-#### <a id="ingest_protocols"></a>嵌入串流通訊協定
+## <a name="description-of-a-channel-and-its-related-components"></a><a id="channel"></a>通道和其相關元件的說明
+### <a name="channel-input-ingest-configurations"></a><a id="channel_input"></a>頻道輸入 (內嵌) 組態
+#### <a name="ingest-streaming-protocol"></a><a id="ingest_protocols"></a>嵌入串流通訊協定
 媒體服務會使用多位元速率分散 MP4 和多位元速率 RTMP 做為串流通訊協定來支援內嵌即時摘要。 選取 RTMP 內嵌串流通訊協定時，會為通道建立兩個 ingest(input) 端點：
 
 * **主要 URL**：指定通道主要 RTMP 內嵌端點的完整 URL。
@@ -114,7 +114,7 @@ ms.locfileid: "79251033"
 
 您可以選擇透過 SSL 連線來內嵌 Fragmented MP4 (Smooth Streaming) 即時資料流。 若要透過 SSL 擷取，請務必將擷取 URL 更新為 HTTPS。 目前，您無法內嵌 RTMP over SSL。
 
-#### <a id="keyframe_interval"></a>主要畫面格間隔
+#### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>主要畫面格間隔
 當您使用內部部署即時編碼器來產生多位元速率資料流時，主要畫面格間隔會指定圖片群組 (GOP) 持續期間以供該外部編碼器使用。 在通道收到此內送串流之後，您可以再將即時串流傳遞至下列任一形式的用戶端播放應用程式：Smooth Streaming、HTTP 動態調適性串流 (DASH) 及 HTTP 即時串流 (HLS)。 在執行即時資料流時，會一律動態封裝 HLS。 依預設，媒體服務會根據從即時編碼器收到的主要畫面格間隔，自動計算 HLS 區段封裝比例 (每一個區段的片段)。
 
 下表顯示如何計算區段持續時間：
@@ -173,7 +173,7 @@ ms.locfileid: "79251033"
 
 即使在停止並刪除程式之後，使用者還是可以視需求將封存的內容串流為視訊，直到您未刪除資產。 如果想要保留封存的內容，但不要讓它可進行串流處理，請刪除串流定位器。
 
-## <a id="states"></a>通道狀態和計費
+## <a name="channel-states-and-billing"></a><a id="states"></a>通道狀態和計費
 通道目前狀態的可能值包括︰
 
 * **已停止**：這是通道建立後的初始狀態。 在此狀態下，通道屬性可以更新，但是不允許串流。
@@ -186,12 +186,12 @@ ms.locfileid: "79251033"
 
 | 通道狀態 | 入口網站 UI 指標 | 是否計費？ |
 | --- | --- | --- |
-| **啟動中** |**啟動中** |無 (暫時性狀態) |
-| **執行中** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |是 |
+| **開始** |**開始** |無 (暫時性狀態) |
+| **正在執行** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |是 |
 | **停止中** |**停止中** |無 (暫時性狀態) |
-| **Stopped** |**Stopped** |否 |
+| **停止** |**停止** |否 |
 
-## <a id="cc_and_ads"></a>隱藏式字幕和廣告插入
+## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>隱藏式字幕和廣告插入
 下表示範支援的隱藏式字幕和廣告插入標準。
 
 | 標準 | 注意 |
@@ -200,7 +200,7 @@ ms.locfileid: "79251033"
 | .ismt 裡面附帶字幕 (Smooth Streaming 文字播放軌) |媒體服務動態封裝功能可讓您的用戶端傳送以下任何格式的內容：DASH、HLS 或 Smooth Streaming。 不過，如果您內嵌 Fragmented MP4 (Smooth Streaming) 而且在 .ismt 裡面附帶字幕 (Smooth Streaming 文字播放軌)，您就只能將資料流傳遞至 Smooth Streaming 用戶端。 |
 | SCTE-35 |SCTE-35 是數位訊號系統，可用來提示廣告插入。 下游接收端會使用信號並根據分配的時間，將廣告切割成資料流。 SCTE 35 必須以鬆散播放軌的形式傳送至輸入資料流中。<p><p>目前，唯一支援附帶廣告訊號的輸入資料流格式是 Fragmented MP4 (Smooth Streaming)。 唯一支援的輸出格式也是 Smooth Streaming。 |
 
-## <a id="considerations"></a>考量
+## <a name="considerations"></a><a id="considerations"></a>考量
 使用內部部署即時編碼器並將多位元速率資料流傳送到通道時，請注意以下限制：
 
 * 確定您的網際網路速度夠快，足以將資料傳送至內嵌點。
@@ -229,7 +229,7 @@ ms.locfileid: "79251033"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相關主題
-[建議的內部部署編碼器](media-services-recommended-encoders.md)
+[建議在本地編碼器上使用](media-services-recommended-encoders.md)
 
 [Azure 媒體服務的分散 MP4 即時內嵌規格](../media-services-fmp4-live-ingest-overview.md)
 

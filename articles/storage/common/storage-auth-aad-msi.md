@@ -1,7 +1,7 @@
 ---
-title: 使用受控識別來授權存取資料
+title: 使用託管標識授權訪問資料
 titleSuffix: Azure Storage
-description: 瞭解如何使用適用于 Azure 資源的受控識別，從 Azure 虛擬機器、函數應用程式、虛擬機器擴展集和其他專案中執行的應用程式，授權存取 blob 和佇列資料。
+description: 瞭解如何為 Azure 資源使用託管標識來授權訪問 Azure 虛擬機器、函數應用、虛擬機器縮放集和其他應用程式中的 Blob 和佇列資料。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,61 +11,61 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255336"
 ---
-# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 資源的受控識別來授權 blob 和佇列資料的存取
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 資源的託管標識授權訪問 Blob 和佇列資料
 
-Azure Blob 和佇列儲存體支援使用 [Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來進行 Azure Active Directory (Azure AD) 驗證。 適用于 Azure 資源的受控識別可以使用 Azure 虛擬機器（Vm）中執行的應用程式、函式應用程式、虛擬機器擴展集和其他服務的 Azure AD 認證，來授權 blob 和佇列資料的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。  
+Azure Blob 和佇列儲存體支援使用 [Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來進行 Azure Active Directory (Azure AD) 驗證。 Azure 資源的託管標識可以使用 Azure 虛擬機器 （VM）、功能應用、虛擬機器縮放集和其他服務中運行的應用程式使用 Azure AD 憑據訪問 Blob 和佇列資料。 通過將 Azure 資源的託管標識與 Azure AD 身份驗證一起使用，可以避免將憑據存儲在雲中運行的應用程式。  
 
-本文說明如何使用 Azure 資源的受控識別，來授權從 Azure VM 存取 blob 或佇列資料。 它也會說明如何在開發環境中測試您的程式碼。
+本文演示如何使用 Azure 資源的託管標識授權訪問 Azure VM 中的 Blob 或佇列資料。 它還介紹了如何在開發環境中測試代碼。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
 
-您必須先在 VM 上啟用 Azure 資源的受控識別，才可以使用 Azure 資源的受控識別來授與 VM 的存取權。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
+在可以使用 Azure Resources 的託管標識授權從 VM 訪問 Blob 和佇列之前，必須首先在 VM 上為 Azure 資源啟用託管標識。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
 
-- [Azure 入口網站](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure 門戶](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure 電源外殼](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager 範本](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager 用戶端程式庫](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure 資源管理器範本](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure 資源管理器用戶端庫](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-如需受控識別的詳細資訊，請參閱[適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
+有關託管標識的詳細資訊，請參閱 Azure[資源的託管標識](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="authenticate-with-the-azure-identity-library"></a>使用 Azure 身分識別程式庫進行驗證
+## <a name="authenticate-with-the-azure-identity-library"></a>使用 Azure 標識庫進行身份驗證
 
-Azure 身分識別用戶端程式庫提供 azure [SDK](https://github.com/Azure/azure-sdk)的 azure Azure AD 權杖驗證支援。 適用于 .NET、JAVA、Python 和 JavaScript 的 Azure 儲存體用戶端程式庫的最新版本，會與 Azure 身分識別程式庫整合，以提供簡單且安全的方法來取得 OAuth 2.0 權杖，以進行 Azure 儲存體要求的授權。
+Azure 標識用戶端庫為[Azure SDK](https://github.com/Azure/azure-sdk)提供 Azure Ad 權杖身份驗證支援。 .NET、JAVA、Python 和 JavaScript 的 Azure 存儲用戶端庫的最新版本與 Azure 標識庫集成，以提供獲取 OAuth 2.0 權杖以授權 Azure 存儲請求的簡單安全方法。
 
-Azure 身分識別用戶端程式庫的優點是，它可讓您使用相同的程式碼來驗證您的應用程式是在開發環境中或在 Azure 中執行。 適用于 .NET 的 Azure 身分識別用戶端程式庫會驗證安全性主體。 當您的程式碼在 Azure 中執行時，安全性主體是適用于 Azure 資源的受控識別。 在開發環境中，受控識別不存在，因此用戶端程式庫會驗證使用者或服務主體，以供測試之用。
+Azure 標識用戶端庫的優點是，它使您能夠使用相同的代碼來驗證應用程式是在開發環境還是 Azure 中運行。 .NET 的 Azure 標識用戶端庫對安全主體進行身份驗證。 當代碼在 Azure 中運行時，安全主體是 Azure 資源的託管標識。 在開發環境中，託管標識不存在，因此用戶端庫對使用者或服務主體進行身份驗證以進行測試。
 
-驗證之後，Azure 身分識別用戶端程式庫會取得權杖認證。 然後，此權杖認證會封裝在您建立來對 Azure 儲存體執行作業的服務用戶端物件中。 程式庫會藉由取得適當的權杖認證，順暢地為您處理這種情況。
+身份驗證後，Azure 標識用戶端庫將獲得權杖憑據。 然後，此權杖憑據封裝在您為執行針對 Azure 存儲的操作而創建的服務用戶端物件中。 庫通過獲取適當的權杖憑據來無縫地為您處理此問題。
 
-如需適用于 .NET 的 Azure Identity client 程式庫的詳細資訊，請參閱[適用于 .net 的 azure 身分識別用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 如需 Azure 身分識別用戶端程式庫的參考檔，請參閱[azure 身分識別命名空間](/dotnet/api/azure.identity)。
+有關 .NET 的 Azure 標識用戶端庫的詳細資訊，請參閱[.NET 的 Azure 標識用戶端庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 有關 Azure 標識用戶端庫的參考文檔，請參閱[Azure.標識命名空間](/dotnet/api/azure.identity)。
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>指派角色型存取控制（RBAC）角色以存取資料
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>分配基於角色的存取控制 （RBAC） 角色以訪問資料
 
-當 Azure AD 安全性主體嘗試存取 blob 或佇列資料時，該安全性主體必須擁有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 RBAC 角色指派給安全性主體，以授與 Azure 儲存體中 blob 或佇列資料的存取權。 如需透過 RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中的 <<c0>指派存取權限的 RBAC 角色一節。
+當 Azure AD 安全主體嘗試訪問 Blob 或佇列資料時，該安全主體必須具有對資源的許可權。 無論安全主體是 Azure 中的託管標識還是開發環境中運行代碼的 Azure AD 使用者帳戶，都必須為安全主體分配一個 RBAC 角色，該角色授予對 Azure 存儲中的 Blob 或佇列資料的訪問。 有關通過 RBAC 分配許可權的資訊，請參閱標題為 **"分配 RBAC 角色以使用** [Azure 活動目錄 訪問 Azure blob 和佇列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)"中的存取權限的部分。
 
-### <a name="authenticate-the-user-in-the-development-environment"></a>在開發環境中驗證使用者
+### <a name="authenticate-the-user-in-the-development-environment"></a>在開發環境中對使用者進行身份驗證
 
-當您的程式碼在開發環境中執行時，可能會自動處理驗證，或視您使用的工具而定，可能需要瀏覽器登入。 例如，Microsoft Visual Studio 支援單一登入（SSO），使 active Azure AD 使用者帳戶自動用於驗證。 如需 SSO 的詳細資訊，請參閱[單一登入應用程式](../../active-directory/manage-apps/what-is-single-sign-on.md)。
+當您的代碼在開發環境中運行時，身份驗證可能會自動處理，或者可能需要瀏覽器登錄，具體取決於您使用的工具。 例如，Microsoft Visual Studio 支援單一登入 （SSO），以便活動 Azure AD 使用者帳戶自動用於身份驗證。 有關 SSO 的詳細資訊，請參閱[對應用程式的單一登入](../../active-directory/manage-apps/what-is-single-sign-on.md)。
 
-其他開發工具可能會提示您透過網頁瀏覽器登入。
+其他開發工具可能會提示您通過 Web 瀏覽器登錄。
 
 ### <a name="authenticate-a-service-principal-in-the-development-environment"></a>在開發環境中驗證服務主體
 
-如果您的開發環境不支援透過網頁瀏覽器進行單一登入或登入，則您可以使用服務主體從開發環境進行驗證。
+如果開發環境不支援單一登入或通過 Web 瀏覽器登錄，則可以使用服務主體從開發環境進行身份驗證。
 
 #### <a name="create-the-service-principal"></a>建立服務主體
 
-若要使用 Azure CLI 建立服務主體並指派 RBAC 角色，請呼叫[az ad sp create for rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令。 提供 Azure 儲存體資料存取角色，以指派給新的服務主體。 此外，請提供角色指派的範圍。 如需有關 Azure 儲存體提供之內建角色的詳細資訊，請參閱[Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+要使用 Azure CLI 創建服務主體並分配 RBAC 角色，請調用[az ad sp 創建 rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令。 提供 Azure 存儲資料訪問角色以分配給新的服務主體。 此外，提供角色指派的範圍。 有關為 Azure 存儲提供的內置角色的詳細資訊，請參閱 Azure[資源的內置角色](../../role-based-access-control/built-in-roles.md)。
 
-如果您沒有足夠的許可權可將角色指派給服務主體，您可能需要要求帳戶擁有者或系統管理員執行角色指派。
+如果您沒有足夠的許可權將角色指派給服務主體，則可能需要要求帳戶擁有者或管理員執行角色指派。
 
-下列範例會使用 Azure CLI 建立新的服務主體，並使用帳戶範圍將**儲存體 Blob 資料讀取器**角色指派給它
+下面的示例使用 Azure CLI 創建新的服務主體，並將**存儲 Blob 資料讀取器**角色指派給具有帳戶範圍的服務主體
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -74,7 +74,7 @@ az ad sp create-for-rbac \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-`az ad sp create-for-rbac` 命令會以 JSON 格式傳回服務主體屬性的清單。 複製這些值，讓您可以在下一個步驟中使用它們來建立必要的環境變數。
+該`az ad sp create-for-rbac`命令返回 JSON 格式的服務主體屬性的清單。 複製這些值，以便可以使用它們在下一步中創建必要的環境變數。
 
 ```json
 {
@@ -87,28 +87,28 @@ az ad sp create-for-rbac \
 ```
 
 > [!IMPORTANT]
-> RBAC 角色指派可能需要幾分鐘的時間才能傳播。
+> RBAC 角色指派可能需要幾分鐘才能傳播。
 
 #### <a name="set-environment-variables"></a>設定環境變數
 
-Azure 身分識別用戶端程式庫會在執行時間讀取來自三個環境變數的值，以驗證服務主體。 下表描述要針對每個環境變數設定的值。
+Azure 標識用戶端庫在運行時從三個環境變數讀取值以對服務主體進行身份驗證。 下表描述了要為每個環境變數設置的值。
 
 |環境變數|值
 |-|-
-|`AZURE_CLIENT_ID`|服務主體的應用程式識別碼
-|`AZURE_TENANT_ID`|服務主體的 Azure AD 租使用者識別碼
-|`AZURE_CLIENT_SECRET`|為服務主體產生的密碼
+|`AZURE_CLIENT_ID`|服務主體的應用 ID
+|`AZURE_TENANT_ID`|服務主體的 Azure AD 租戶 ID
+|`AZURE_CLIENT_SECRET`|為服務主體生成的密碼
 
 > [!IMPORTANT]
-> 設定環境變數之後，請關閉並重新開啟主控台視窗。 如果您使用 Visual Studio 或其他開發環境，您可能需要重新開機開發環境，才能讓它註冊新的環境變數。
+> 設置環境變數後，關閉並重新打開主控台視窗。 如果使用 Visual Studio 或其他開發環境，則可能需要重新開機開發環境，以便註冊新的環境變數。
 
-如需詳細資訊，請參閱[在入口網站中建立 Azure 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md)的身分識別。
+有關詳細資訊，請參閱[在門戶中為 Azure 應用創建標識](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 程式碼範例：建立區塊 Blob
 
-將下列 `using` 指示詞新增至您的程式碼，以使用 Azure 身分識別和 Azure 儲存體用戶端程式庫。
+將以下`using`指令添加到代碼中，以使用 Azure 標識和 Azure 存儲用戶端庫。
 
 ```csharp
 using Azure;
@@ -120,7 +120,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-若要取得權杖認證，讓您的程式碼可以用來授權 Azure 儲存體的要求，請建立[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)類別的實例。 下列程式碼範例示範如何取得已驗證的權杖認證，並使用它來建立服務用戶端物件，然後使用服務用戶端來上傳新的 blob：
+要獲取代碼可用於授權對 Azure 存儲的請求的權杖憑據，請創建[預設 Azure 憑據](/dotnet/api/azure.identity.defaultazurecredential)類的實例。 以下代碼示例演示如何獲取經過身份驗證的權杖憑據並使用它創建服務用戶端物件，然後使用服務用戶端上載新的 Blob：
 
 ```csharp
 async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
@@ -158,10 +158,10 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 ```
 
 > [!NOTE]
-> 若要使用 Azure AD 來授權對 blob 或佇列資料的要求，您必須針對這些要求使用 HTTPS。
+> 要使用 Azure AD 授權針對 Blob 或佇列資料的請求，必須對這些請求使用 HTTPS。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 RBAC 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)。
-- 搭配[使用 Azure AD 與儲存體應用程式](storage-auth-aad-app.md)。
-- [執行 Azure CLI 或具有 Azure AD 認證的 PowerShell 命令，以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。
+- [使用 RBAC 管理存儲資料的存取權限](storage-auth-aad-rbac.md)。
+- [將 Azure AD 與存儲應用程式一起](storage-auth-aad-app.md)使用 。
+- [使用 Azure AD 憑據運行 Azure CLI 或 PowerShell 命令以訪問 Blob 或佇列資料](authorize-active-directory-powershell.md)。

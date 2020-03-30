@@ -1,15 +1,15 @@
 ---
-title: 建立 UI 定義函式
+title: 創建 UI 定義函數
 description: 描述建構 Azure 受控應用程式的 UI 定義時要使用的函式
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248446"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函式
@@ -48,7 +48,7 @@ ms.locfileid: "79248446"
 ### <a name="steps"></a>steps
 傳回在指定步驟中定義之元素的輸出值。 若要取得 Basics 步驟中元素的輸出值，請改用 `basics()`。
 
-下列範例會傳回名為 `bar` 之步驟中，名為 `foo` 之元素的輸出︰
+下列範例會傳回名為 `foo` 之步驟中，名為 `bar` 之元素的輸出︰
 
 ```json
 "[steps('foo').bar]"
@@ -462,7 +462,7 @@ ms.locfileid: "79248446"
 ```
 
 ### <a name="not"></a>否
-如果參數評估為 `true`，則傳回 `false`。 此函式只支援布林值類型的參數。
+如果參數評估為 `false`，則傳回 `true`。 此函式只支援布林值類型的參數。
 
 下列範例會傳回 `true`：
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663040"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解決方案中的檢視 (預覽)
@@ -18,18 +18,18 @@ ms.locfileid: "77663040"
 > 這是建立管理解決方案 (目前處於預覽狀態) 的預備文件。 以下所述的任何結構描述可能會有所變更。    
 
 
-[管理解決方案](solutions.md)通常包含一或多個檢視，以將資料視覺化。  本文說明如何匯出[檢視設計工具](../../azure-monitor/platform/view-designer.md)所建立的檢視並將它納入管理解決方案中。  
+[管理解決方案](solutions.md)通常包括一個或多個視圖來視覺化資料。  本文介紹如何匯出[視圖設計器創建的視圖](../../azure-monitor/platform/view-designer.md)並將其包含在管理解決方案中。  
 
 > [!NOTE]
 > 本文中的範例使用管理解決方案所需或通用的參數和變數，如[在 Azure 中設計和建置管理解決方案](solutions-creating.md)所述。
 >
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已經熟悉如何[建立管理解決方案](solutions-creating.md)和方案檔的結構。
 
-## <a name="overview"></a>概觀
-若要在管理解決方案中納入檢視，您可在**方案檔**中建立其[資源](solutions-creating.md)。  說明檢視詳細組態的 JSON 通常很複雜，典型方案作者無法以手動方式建立。  最常見的方法是使用[檢視設計工具](../../azure-monitor/platform/view-designer.md)建立檢視、加以匯出，然後將其詳細組態新增至方案。
+## <a name="overview"></a>總覽
+若要在管理解決方案中納入檢視，您可在[方案檔](solutions-creating.md)中建立其**資源**。  說明檢視詳細組態的 JSON 通常很複雜，典型方案作者無法以手動方式建立。  最常見的方法是使用[檢視設計工具](../../azure-monitor/platform/view-designer.md)建立檢視、加以匯出，然後將其詳細組態新增至方案。
 
 將檢視新增至方案的基本步驟如下所示。  下列各節會進一步詳細說明每個步驟。
 

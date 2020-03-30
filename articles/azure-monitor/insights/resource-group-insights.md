@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663533"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure 監視器監視資源群組 (預覽)
@@ -20,9 +20,9 @@ ms.locfileid: "77663533"
 
 ## <a name="access-insights-for-resource-groups"></a>存取資源群組的深入解析
 
-1. 從左側導覽列中選取 [資源群組]。
+1. 從左側導覽列中選取 [資源群組]****。
 2. 選擇其中一個您想要探索的資源群組。 (如果您有大量的資源群組，則依訂用帳戶篩選有時可能會有幫助。)
-3. 若要存取資源群組的深入解析，請按一下任何資源群組左側功能表中的 [深入解析]。
+3. 若要存取資源群組的深入解析，請按一下任何資源群組左側功能表中的 [深入解析]****。
 
 ![資源群組深入解析概觀頁面螢幕擷取畫面](./media/resource-group-insights/0001-overview.png)
 
@@ -34,11 +34,11 @@ ms.locfileid: "77663533"
 
 ### <a name="azure-resource-health"></a>Azure 資源健康狀態
 
-若要顯示「Azure 資源健康狀態」，請勾選表格上方的 [顯示 Azure 資源健康狀態]。 此欄預設為隱藏，以幫助頁面快速載入。
+若要顯示「Azure 資源健康狀態」，請勾選表格上方的 [顯示 Azure 資源健康狀態]****。 此欄預設為隱藏，以幫助頁面快速載入。
 
 ![資源健康狀態圖表已新增螢幕擷取畫面](./media/resource-group-insights/0003-overview.png)
 
-依預設，資源會依應用程式層與資源類型分組。 [應用程式層] 是資源類型的簡單分類，只存在於資源群組深入解析概觀頁面的內容中。 還有與應用程式程式碼、運算基礎結構、網路功能、儲存體 + 資料庫相關的資源類型。 管理工具會取得自己的應用程式層，每個其他資源會歸類為屬於 [其他] 應用程式層。 此群組可幫助您快速了解應用程式的哪些子系統是健康與不健康的。
+依預設，資源會依應用程式層與資源類型分組。 [應用程式層]**** 是資源類型的簡單分類，只存在於資源群組深入解析概觀頁面的內容中。 還有與應用程式程式碼、運算基礎結構、網路功能、儲存體 + 資料庫相關的資源類型。 管理工具會取得自己的應用程式層，每個其他資源會歸類為屬於 [其他]**** 應用程式層。 此群組可幫助您快速了解應用程式的哪些子系統是健康與不健康的。
 
 ## <a name="diagnose-issues-in-your-resource-group"></a>診斷您資源群組中的問題
 
@@ -46,22 +46,22 @@ ms.locfileid: "77663533"
 
    |         |          |
    | ---------------- |:-----|
-   | [**警示**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  檢視、建立與管理警示。 |
+   | [**警報**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  檢視、建立與管理警示。 |
    | [**計量**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | 視覺化與探索以計量為基礎的資料。    |
-   | [**活動記錄**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | 發生在 Azure 的訂用帳戶層級事件。  |
+   | [**活動日誌**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | 發生在 Azure 的訂用帳戶層級事件。  |
    | [**應用程式對應**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | 瀏覽分散式應用程式的拓撲，以找出效能瓶頸或失敗熱點。 |
 
 ## <a name="failures-and-performance"></a>失敗與效能
 
 如果您注意到應用程式執行速度緩慢，或使用者回報錯誤，該怎麼辦？ 要搜尋所有資源以隔離問題，是相當耗時的。
 
-[效能] 與 [失敗] 索引標籤會將許多常見資源類型的效能與失敗診斷檢視結合在一起，讓搜尋程序簡化。
+[效能]**** 與 [失敗]**** 索引標籤會將許多常見資源類型的效能與失敗診斷檢視結合在一起，讓搜尋程序簡化。
 
 大多數的資源類型會開啟「Azure 監視器活頁簿」範本資源庫。 您建立的每個資源庫都能加以自訂、儲存、與您的小組共用，並能在未來重新使用以診斷類似的問題。
 
 ### <a name="investigate-failures"></a>調查失敗
 
-若要測試 [失敗] 索引標籤，請選取左側功能表中 [調查] 下方的 [失敗]。
+若要測試 [失敗] 索引標籤，請選取左側功能表中 [調查]**** 下方的 [失敗]****。
 
 在您做出選擇之後，左側功能表列會變更，以提供新的選項。
 
@@ -81,11 +81,11 @@ ms.locfileid: "77663533"
 
 活頁簿會將建立自訂報告與視覺效果的困難工作抽出，成為可輕鬆取用的格式。 雖然某些使用者可能只想要調整預先建置的參數，但活頁簿是完全可自訂的。
 
-若要了解此活頁簿內部運作的方式，請選取頂端列中的 [編輯]。
+若要了解此活頁簿內部運作的方式，請選取頂端列中的 [編輯]****。
 
 ![其他編輯選項螢幕擷取畫面](./media/resource-group-insights/0008-failure-edit.png)
 
-活頁簿各種元素的附近有一些 [編輯] 方塊。 選取作業表格下方的 [編輯] 方塊。
+活頁簿各種元素的附近有一些 [編輯]**** 方塊。 選取作業表格下方的 [編輯]**** 方塊。
 
 ![編輯方塊螢幕擷取畫面](./media/resource-group-insights/0009-failure-edit-graph.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "77663533"
 
 適用於資源群組的 Azure 監視器仰賴 Azure 監視器「警示管理」系統來擷取警示狀態。 每個資源群組和訂用帳戶預設並未設定警示管理，只能由擁有者或參與者角色啟用。 可透過下列任一方式啟用：
 * 針對訂用帳戶中的資源群組，開啟適用於資源群組的 Azure 監視器。
-* 或者前往訂用帳戶，按一下 [Resource Providers (資源提供者)]，然後按一下 [Register for Alerts.Management (註冊 Alerts.Management)]。
+* 或者前往訂用帳戶，按一下 [Resource Providers (資源提供者)]****，然後按一下 [Register for Alerts.Management (註冊 Alerts.Management)]****。
 
 ## <a name="next-steps"></a>後續步驟
 

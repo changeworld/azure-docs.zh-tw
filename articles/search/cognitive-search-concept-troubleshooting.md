@@ -1,7 +1,7 @@
 ---
-title: AI 擴充設計的秘訣
+title: AI 濃縮設計提示
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋中設定 AI 擴充管線的秘訣和疑難排解。
+description: 在 Azure 認知搜索中設置 AI 擴充管道的提示和故障排除。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245482"
 ---
-# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充秘訣
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜索中 AI 擴充提示
 
-本文包含秘訣和訣竅清單，可讓您在開始使用 Azure 認知搜尋中的 AI 擴充功能時進行移動。 
+本文包含一系列提示和技巧，用於在 Azure 認知搜索中開始使用 AI 擴充功能時保持移動。 
 
-如果您尚未這麼做，請逐步執行[教學課程：瞭解如何呼叫 ai 擴充 api](cognitive-search-quickstart-blob.md) ，以瞭解將 ai 擴充套用至 blob 資料來源的作法。
+如果尚未這樣做，請逐步完成[教程：瞭解如何調用 AI 擴充 API](cognitive-search-quickstart-blob.md)以練習將 AI 擴充應用於 Blob 資料來源。
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>秘訣 1：從小型資料集開始著手
 想要快速找出問題，最理想的方式是加快修正問題的速度。 而要想縮短編製索引的時間，最好是藉由減少要編製索引的文件數目來著手。 
@@ -30,7 +30,7 @@ ms.locfileid: "79245482"
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>秘訣 2：確定您的資料來源認證是正確的
 在您定義使用資料來源連線的索引子之前，該連線將沒有效用。 如果您發現有任何錯誤指出索引子無法取得資料，請確定：
-- 您的連接字串正確無誤。 特別是當您建立 SAS 權杖時，請務必使用 Azure 認知搜尋所預期的格式。 請參閱[如何指定認證](
+- 您的連接字串正確無誤。 尤其是在創建 SAS 權杖時，請確保使用 Azure 認知搜索預期的格式。 請參閱[如何指定認證](
 https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)一節，以了解不同的支援格式。
 - 您在索引子中的容器名稱是正確的。
 
@@ -81,7 +81,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 內容遺失可能是由於文件在索引編製期間遭到捨棄所致。 免費和基本層的文件大小限制較低。 任何超過限制的檔案在索引編製期間都會被捨棄。 您可以在 Azure 入口網站中查看遭到捨棄的文件。 請在搜尋服務儀表板中按兩下索引子圖格。 檢閱成功編製索引的文件比率。 如果不是 100%，您可以按一下該比例以取得更多詳細資料。 
 
-如果問題與檔案大小相關，您可能會看到類似如下的錯誤：「blob \<檔案名 >」大小為 \<檔案大小 > 位元組，超過目前服務層級的檔解壓縮大小上限。」 如需關於索引子限制的詳細資訊，請參閱[服務限制](search-limits-quotas-capacity.md)。
+如果問題與檔案大小有關，您可能會看到這樣的錯誤："blob\<檔案名>"的大小為\<檔案大小>位元組，超過了當前服務層的文檔提取的最大大小。 如需關於索引子限制的詳細資訊，請參閱[服務限制](search-limits-quotas-capacity.md)。
 
 無法顯示內容的另一個原因，可能與輸入/輸出對應錯誤有關。 例如，輸出目標名稱為 "People"，但索引欄位名稱為小寫的 "people"。 系統可能會為整個管線傳回 201 成功訊息，因此您認為索引編製成功，而事實上欄位卻是空白的。 
 
@@ -91,10 +91,10 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 執行時間上限會依層而有所不同：在免費層上只有幾分鐘，而在計費層則有 24 小時的索引編製時間。 如果隨需處理無法在 24 小時的期間內完成，請切換至排程，讓索引子從中斷之處繼續處理。 
 
-對於排程的索引子，索引編製將會依排程從最後一份已知的正常文件繼續進行。 藉由使用週期性的排程，索引子將可持續處理影像待辦項目達數小時或數天，直到所有未處理的影像皆處理完成為止。 如需排程語法的詳細資訊，請參閱[步驟3：建立索引子](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+對於排程的索引子，索引編製將會依排程從最後一份已知的正常文件繼續進行。 藉由使用週期性的排程，索引子將可持續處理影像待辦項目達數小時或數天，直到所有未處理的影像皆處理完成為止。 有關計畫語法的詳細資訊，請參閱步驟[3：創建索引子](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)，或[瞭解如何為 Azure 認知搜索安排索引子](search-howto-schedule-indexers.md)。
 
 > [!NOTE]
-> 如果索引子設定為特定排程，但每次執行時重複地在同一份檔上失敗，則索引子將會以較不頻繁的間隔（最多每24小時至少一次）開始執行，直到成功進行進度 aga在.  如果您相信您已修正導致索引子停滯在某個時間點的任何問題，您可以依需求執行索引子，如果該作業成功，則索引子會再次回到其設定的排程間隔。
+> 如果索引子設置為特定計劃，但每次運行時都會重複失敗，則索引子將開始以不太頻繁的間隔（最多每 24 小時運行一次），直到它成功取得進展再次。  如果您認為已修復導致索引子卡在某個點的任何問題，則可以執行索引子的按需運行，如果成功取得進展，索引子將再次返回到其設置的計畫間隔。
 
 對於以入口網站為基礎的索引編製 (如快速入門所說明)，選擇 [執行一次] 索引子選項，會將處理時間限制為 1 小時 (`"maxRunTime": "PT1H"`)。 您可以延長處理時間範圍。
 
@@ -104,8 +104,8 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 如需詳細資訊，請參閱[為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
 ## <a name="see-also"></a>另請參閱
-+ [快速入門：在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)
-+ [教學課程：瞭解 AI 擴充 REST Api](cognitive-search-tutorial-blob.md)
++ [快速入門：在門戶中創建 AI 擴充管道](cognitive-search-quickstart-blob.md)
++ [教程：學習 AI 濃縮 REST API](cognitive-search-tutorial-blob.md)
 + [指定資料來源認證](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

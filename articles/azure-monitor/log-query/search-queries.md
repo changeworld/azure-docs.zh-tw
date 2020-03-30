@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660235"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure 監視器記錄中的搜尋查詢
@@ -29,7 +29,7 @@ search "error"
 未界定範圍的查詢 (如上述查詢) 雖然容易使用，但效率卻很差，並且可能會傳回許多不相關的結果。 比較好的做法是在相關資料表或甚至特定資料行中進行搜尋。
 
 ### <a name="table-scoping"></a>界定資料表範圍
-若要在特定資料表中搜尋字詞，請在 `in (table-name)`search**運算子正後方新增**：
+若要在特定資料表中搜尋字詞，請在 **search** 運算子正後方新增 `in (table-name)`：
 
 ```Kusto
 search in (Event) "error"
@@ -43,7 +43,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>界定資料表和資料行的範圍
-根據預設，**search** 會評估資料集內的所有資料行。 若只要在下列範例中搜尋特定資料行（名為*Source* ），請使用下列語法：
+根據預設，**search** 會評估資料集內的所有資料行。 要僅搜索特定列（在下面的示例中命名為*Source），* 請使用以下語法：
 
 ```Kusto
 search in (Event) Source:"error"
@@ -51,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> 如果您使用 `==` 而非 `:`，結果中會包含 *Source* 資料行具有確切值「error」、且在這個確切案例中的記錄。 使用 '： ' 將會包含*來源*具有 "錯誤碼 404" 或 "error" 等值的記錄。
+> 如果您使用 `==` 而非 `:`，結果中會包含 *Source* 資料行具有確切值「error」、且在這個確切案例中的記錄。 使用"："將包括*源*具有"錯誤代碼 404"或"錯誤"等值的記錄。
 
 ## <a name="case-sensitivity"></a>區分大小寫
 根據預設，字詞搜尋不會區分大小寫，因此，搜尋 "dns" 可能會產生 "DNS"、"dns" 或 "Dns" 等結果。 若要讓搜尋區分大小寫，請使用 `kind` 選項：
@@ -94,7 +94,7 @@ search in (Event) "corp*.com"
 > [!TIP]
 > 雖然您可以使用 `search *` 來取得每個資料表中的每個資料行，但建議您一律將查詢範圍界定在特定資料表。 未界定範圍的查詢可能需要一段時間才能完成，而且可能會傳回太多結果。
 
-## <a name="add-and--or-to-search-queries"></a>新增*和*/*或*搜尋查詢
+## <a name="add-and--or-to-search-queries"></a>對搜尋查詢新增 and* or* / **
 使用 **and** 可搜尋包含多個字詞的記錄：
 
 ```Kusto
@@ -119,7 +119,7 @@ search in (Event) "error" and ("register" or "marshal*")
 此範例的結果中所含有的記錄，會包含「error」字詞且同時包含「register」或以「marshal」開頭的字詞。
 
 ## <a name="pipe-search-queries"></a>垂直線搜尋查詢
-和任何其他命令一樣，**search** 也可以使用垂直線，以便對搜尋結果進行篩選、排序和彙總。 例如，若要取得包含「win」的 Event 記錄數目：
+和任何其他命令一樣，**search** 也可以使用垂直線，以便對搜尋結果進行篩選、排序和彙總。 例如，若要取得包含「win」的 Event** 記錄數目：
 
 ```Kusto
 search in (Event) "win"

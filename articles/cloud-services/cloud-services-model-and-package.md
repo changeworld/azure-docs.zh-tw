@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247484"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什麼是雲端服務模型？如何封裝？
-雲端服務是從三個元件建立的，也就是服務定義 (.csdef)、服務組態 (.cscfg) 和服務封裝 (.cspkg)。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 這兩個檔案是以 XML 為基礎，描述雲端服務的結構及其設定方式，統稱為模型。 **ServicePackage.cspkg** 是從 **ServiceDefinition.csdef** 產生的 zip 檔案，此外，包含所有必要的二進位型相依性。 Azure 會從 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 建立雲端服務。
+雲端服務是從三個元件建立的，也就是服務定義 (.csdef)**、服務組態 (.cscfg)** 和服務封裝 (.cspkg)**。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 這兩個檔案是以 XML 為基礎，描述雲端服務的結構及其設定方式，統稱為模型。 **ServicePackage.cspkg** 是從 **ServiceDefinition.csdef** 產生的 zip 檔案，此外，包含所有必要的二進位型相依性。 Azure 會從 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 建立雲端服務。
 
 一旦雲端服務在 Azure 中執行之後，您就可以透過 **ServiceConfig.cscfg** 檔案重新設定它，但您無法改變定義。
 
@@ -24,10 +24,10 @@ ms.locfileid: "79247484"
 * 我已經了解，請給我 [一些範例](#next-steps) ，讓我可以設定。
 * 我想要建立 [ServicePackage.cspkg](#cspkg)。
 * 我打算使用 Visual Studio，而我想要...
-  * [建立雲端服務][vs_create]
+  * [創建雲服務][vs_create]
   * [重新設定現有的雲端服務][vs_reconfigure]
   * [部署雲端服務專案][vs_deploy]
-  * [從遠端桌面進入雲端服務實例][remotedesktop]
+  * [從遠端桌面進入雲端服務執行個體][remotedesktop]
 
 <a name="csdef"></a>
 
@@ -83,31 +83,31 @@ ms.locfileid: "79247484"
 </ServiceDefinition>
 ```
 
-您可以參考[服務定義結構描述](/previous-versions/azure/reference/ee758711(v=azure.100))，進一步了解此處所使用的 XML 結構描述，不過，以下是某些元素的簡短說明：
+您可以參考[服務定義架構](/previous-versions/azure/reference/ee758711(v=azure.100))，以便更好地瞭解此處使用的 XML 架構，但是，下面是一些元素的快速說明：
 
-**Sites**  
-包含 IIS7 中所裝載的網站或 Web 應用程式的定義。
+**網站**  
+ 包含 IIS7 中所裝載的網站或 Web 應用程式的定義。
 
 **InputEndpoints**  
-包含用來連絡雲端服務的端點的定義。
+ 包含用來連絡雲端服務的端點的定義。
 
 **InternalEndpoints**  
-包含角色執行個體用來彼此通訊的端點的定義。
+ 包含角色執行個體用來彼此通訊的端點的定義。
 
 **ConfigurationSettings**  
-包含特定角色功能的設定定義。
+ 包含特定角色功能的設定定義。
 
-**憑證**  
-包含角色所需的憑證的定義。 上述程式碼範例顯示用於設定 Azure Connect 的憑證。
+**證書**  
+ 包含角色所需的憑證的定義。 上述程式碼範例顯示用於設定 Azure Connect 的憑證。
 
 **LocalResources**  
-包含本機儲存資源的定義。 本機儲存資源是執行中角色執行個體所在之虛擬機器的檔案系統上的保留目錄。
+ 包含本機儲存資源的定義。 本機儲存資源是執行中角色執行個體所在之虛擬機器的檔案系統上的保留目錄。
 
 **Imports**  
-包含匯入的模組的定義。 上述程式碼範例顯示遠端桌面連線與 Azure Connect 的模組。
+ 包含匯入的模組的定義。 上述程式碼範例顯示遠端桌面連線與 Azure Connect 的模組。
 
 **Startup**  
-包含角色啟動時執行的工作。 這些工作是在 .cmd 或可執行檔中定義。
+ 包含角色啟動時執行的工作。 這些工作是在 .cmd 或可執行檔中定義。
 
 <a name="cscfg"></a>
 
@@ -136,19 +136,19 @@ ms.locfileid: "79247484"
 
 您可以參考 [服務組態結構描述](/previous-versions/azure/reference/ee758710(v=azure.100)) ，進一步了解此處所使用的 XML 結構描述，不過，以下是元素的簡短說明：
 
-**Instances**  
-設定執行中角色執行個體的數目。 為防止您的雲端服務在升級期間可能變成無法使用，建議您部署多個 Web 對向角色執行個體。 部署多個執行個體的做法符合 [Azure 計算服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/)中的指導方針，當您為服務部署兩個或更多個角色執行個體時，此等級協定可保證網際網路對向角色有 99.95% 的外部連線能力。
+**實例**  
+ 設定執行中角色執行個體的數目。 為防止您的雲端服務在升級期間可能變成無法使用，建議您部署多個 Web 對向角色執行個體。 部署多個執行個體的做法符合 [Azure 計算服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/)中的指導方針，當您為服務部署兩個或更多個角色執行個體時，此等級協定可保證網際網路對向角色有 99.95% 的外部連線能力。
 
 **ConfigurationSettings**  
-設定執行中角色執行個體的設定。 `<Setting>` 元素的名稱必須符合服務定義檔中的設定定義。
+ 設定執行中角色執行個體的設定。 `<Setting>` 元素的名稱必須符合服務定義檔中的設定定義。
 
-**憑證**  
-設定服務所使用的憑證。 上述程式碼範例顯示如何定義 RemoteAccess 模組的憑證。 *thumbprint* 屬性的值必須設定為要使用的憑證的指紋。
+**證書**  
+ 設定服務所使用的憑證。 上述程式碼範例顯示如何定義 RemoteAccess 模組的憑證。 *thumbprint* 屬性的值必須設定為要使用的憑證的指紋。
 
 <p/>
 
 > [!NOTE]
-> 您可以使用文字編輯器，將憑證指紋新增至組態檔。 或者，在 Visual Studio 中，也可以在角色 [屬性] 頁面的 [憑證] 索引標籤上新增值。
+> 您可以使用文字編輯器，將憑證指紋新增至組態檔。 或者，在 Visual Studio 中，也可以在角色 [屬性]**** 頁面的 [憑證]**** 索引標籤上新增值。
 > 
 > 
 
@@ -217,11 +217,11 @@ Azure 對於 Web 角色，僅允許一個進入點。 這表示所有流量都�
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 > [!NOTE]
-> 可部署的套件大小上限為600MB
+> 可部署的最大包大小為 600MB
 
 若要將應用程式部署為 Azure 中的雲端服務，您必須先使用適當的格式封裝應用程式。 您可以使用 **CSPack** 命令列工具 (隨 [Azure SDK](https://azure.microsoft.com/downloads/)安裝) 做為 Visual Studio 的替代方案，以建立封裝檔案。
 
-**CSPack** 會使用服務定義檔和服務組態檔的內容，定義封裝的內容。 **CSPack** 會產生應用程式封裝檔案 (.cspkg)，您可以使用 [Azure 入口網站](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)，將其上傳至 Azure。 根據預設，套件的名稱為 `[ServiceDefinitionFileName].cspkg`，但是您可以使用 `/out`CSPack**的** 選項指定不同的名稱。
+**CSPack** 會使用服務定義檔和服務組態檔的內容，定義封裝的內容。 **CSPack** 會產生應用程式封裝檔案 (.cspkg)，您可以使用 [Azure 入口網站](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)，將其上傳至 Azure。 根據預設，套件的名稱為 `[ServiceDefinitionFileName].cspkg`，但是您可以使用 **CSPack** 的 `/out` 選項指定不同的名稱。
 
 **CSPack** 位於  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -276,7 +276,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 ## <a name="next-steps"></a>後續步驟
 我打算建立雲端服務封裝，而且我想要...
 
-* [設定雲端服務實例的遠端桌面][remotedesktop]
+* [設定雲端服務執行個體的遠端桌面][remotedesktop]
 * [部署雲端服務專案][deploy]
 
 我打算使用 Visual Studio，而我想要...
@@ -284,7 +284,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 * [建立新的雲端服務][vs_create]
 * [重新設定現有的雲端服務][vs_reconfigure]
 * [部署雲端服務專案][vs_deploy]
-* [設定雲端服務實例的遠端桌面][vs_remote]
+* [設定雲端服務執行個體的遠端桌面][vs_remote]
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md

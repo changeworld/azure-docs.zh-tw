@@ -1,6 +1,6 @@
 ---
-title: 設定 Azure ExpressRoute v1
-description: 使用 Azure ExpressRoute 的 PowerApps App Service 環境的網路設定。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+title: 配置 Azure 快速路由 v1
+description: 使用 Azure ExpressRoute 為電源應用應用服務環境的網路設定。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
@@ -8,15 +8,15 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243870"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>搭配 Azure ExpressRoute 之 PowerApps 的 App Service 環境網路設定詳細資料
 
-客戶可以將[Azure ExpressRoute][ExpressRoute]線路連線至其虛擬網路基礎結構，以將其內部部署網路擴充至 Azure。 App Service 環境是建立在[虛擬網路][virtualnetwork]基礎結構的子網中。 在「App Service 環境」上執行的應用程式會針對只能透過 ExpressRoute 連線存取的後端資源，建立安全連線。  
+客戶可以將 [Azure ExpressRoute][ExpressRoute] 線路連接至其虛擬網路基礎結構，以將其內部部署網路延伸至 Azure。 「App Service 環境」會建立在[虛擬網路][virtualnetwork]基礎結構的子網路中。 在「App Service 環境」上執行的應用程式會針對只能透過 ExpressRoute 連線存取的後端資源，建立安全連線。  
 
 您可以在下列案例中建立「App Service 環境」：
 - Azure Resource Manager 虛擬網路。
@@ -49,11 +49,11 @@ ms.locfileid: "79243870"
 
 * 連出網路路徑不可經過內部公司 Proxy，也不可在內部部署環境使用強制通道。 這些動作會變更來自「App Service 環境」的有效連出網路流量 NAT 位址。 變更「App Service 環境」連出網路流量的 NAT 位址會導致許多端點的連線失敗。 「App Service 環境」的建立會失敗。 所有現有的「App Service 環境」都會標示為狀況不良。
 
-* 必須允許透過連入網路存取「App Service 環境」的必要連接埠。 如需詳細資訊，請參閱[如何控制 App Service 環境的輸入流量][requiredports]。
+* 必須允許透過連入網路存取「App Service 環境」的必要連接埠。 如需詳細資料，請參閱[如何控制 App Service 環境的連入流量][requiredports]。
 
-為了符合 DNS 需求，請務必為虛擬網路設定及維護有效的 DNS 基礎結構。 如果 DNS 設定在建立「App Service 環境」後已變更，開發人員可以強制「App Service 環境」套用新的 DNS 設定。 您可以使用[Azure 入口網站][NewPortal]的 [App Service 環境管理] 底下的 [**重新開機**] 圖示，來觸發輪流環境重新開機。 此重新啟動會讓環境套用新的 DNS 設定。
+為了符合 DNS 需求，請務必為虛擬網路設定及維護有效的 DNS 基礎結構。 如果 DNS 設定在建立「App Service 環境」後已變更，開發人員可以強制「App Service 環境」套用新的 DNS 設定。 您可以在 [Azure 入口網站][NewPortal]中，使用「App Service 環境」管理底下的 [重新啟動]**** 圖示，來觸發輪流的環境重新啟動。 此重新啟動會讓環境套用新的 DNS 設定。
 
-若要滿足輸入網路存取需求，請在 App Service 環境子網上設定[網路安全性群組（NSG）][NetworkSecurityGroups] 。 NSG 允許必要的存取權[控制輸入流量以 App Service 環境][requiredports]。
+為了符合連入網路存取需求，請在「App Service 環境」子網路上設定[網路安全性群組 (NSG)][NetworkSecurityGroups]。 NSG 可允許必要的存取權以[控制 App Service 環境的連入流量][requiredports]。
 
 ## <a name="outbound-network-connectivity"></a>連出網路連線
 
@@ -77,9 +77,9 @@ ms.locfileid: "79243870"
 > 
 > 
 
-如需使用者定義路由的背景資訊，請參閱[虛擬網路流量路由][UDROverview]。  
+如需有關使用者定義路由的背景資訊，請參閱[虛擬網路流量路由][UDROverview]。  
 
-若要瞭解如何建立及設定使用者定義的路由，請參閱[使用 PowerShell 來路由傳送具有路由表的網路流量][UDRHowTo]。
+若要了解如何建立及設定使用者定義的路由，請參閱[使用 PowerShell 以路由表路由傳送網路流量][UDRHowTo]。
 
 ## <a name="udr-configuration"></a>UDR 設定
 
@@ -87,20 +87,20 @@ ms.locfileid: "79243870"
 
 ### <a name="prerequisites"></a>Prerequisites
 
-* 從[Azure 下載頁面][AzureDownloads]安裝 Azure PowerShell。 選擇日期為 2015 年 6 月或之後的下載項目。 在 [命令列工具] > [Windows PowerShell] 底下，選取 [安裝] 以安裝最新的 PowerShell Cmdlet。
+* 從 [Azure 下載頁面][AzureDownloads]安裝 Azure PowerShell。 選擇日期為 2015 年 6 月或之後的下載項目。 在**命令列工具** > **Windows PowerShell**下，選擇 **"安裝**"以安裝最新的 PowerShell Cmdlet。
 
 * 建立一個專供「App Service 環境」使用的唯一子網路。 唯一子網路可確保套用至子網路的 UDR 只會為「App Service 環境」開放連出流量。
 
 > [!IMPORTANT]
 > 請只在完成設定步驟之後才部署「App Service 環境」。 這些步驟可確保在您嘗試部署「App Service 環境」之前，連出網路連線已可供使用。
 
-### <a name="step-1-create-a-route-table"></a>步驟1：建立路由表
+### <a name="step-1-create-a-route-table"></a>步驟 1：創建路由表
 
 在「美國西部」Azure 區域建立一個名為 **DirectInternetRouteTable** 的路由表，如以下程式碼片段所示：
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>步驟2：在資料表中建立路由
+### <a name="step-2-create-routes-in-the-table"></a>步驟 2：在表中創建路由
 
 將路由新增至路由表以啟用連出網際網路存取。  
 
@@ -110,7 +110,7 @@ ms.locfileid: "79243870"
 
 0.0.0.0/0 是一個廣泛的位址範圍。 此範圍會由 ExpressRoute 所通告的更明確位址範圍所覆寫。 具有 0.0.0.0/0 路由的 UDR 應該與只通告 0.0.0.0/0 的 ExpressRoute 設定搭配使用。 
 
-或者，您也可以下載 Azure 目前所使用的完整 CIDR 範圍清單。 您可以從[Microsoft 下載中心][DownloadCenterAddressRanges]取得所有 Azure IP 位址範圍的 XML 檔案。  
+或者，您也可以下載 Azure 目前所使用的完整 CIDR 範圍清單。 您可以從 [Microsoft 下載中心][DownloadCenterAddressRanges]取得所有 Azure IP 位址範圍的 XML 檔案。  
 
 > [!NOTE]
 >
@@ -119,13 +119,13 @@ ms.locfileid: "79243870"
 > 單一 UDR 的預設上限為 100 個路由。 您必須「摘要」Azure IP 位址範圍，以不超出 100 個路由的限制。 UDR 定義的路由必須比 ExpressRoute 連線所通告的路由更明確。
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>步驟3：將資料表與子網建立關聯
+### <a name="step-3-associate-the-table-to-the-subnet"></a>步驟 3：將表關聯到子網
 
 將路由表與您要部署「App Service 環境」的子網路建立關聯。 此命令會將 **DirectInternetRouteTable** 路由表與將包含「App Service 環境」的 **ASESubnet** 子網路建立關聯。
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>步驟4：測試並確認路由
+### <a name="step-4-test-and-confirm-the-route"></a>第 4 步：測試和確認路線
 
 將路由表繫結至子網路之後，請測試並確認路由。
 
@@ -140,7 +140,7 @@ ms.locfileid: "79243870"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用 PowerApps 的 App Service 環境，請參閱[App Service 環境簡介][IntroToAppServiceEnvironment]。
+若要開始使用「適用於 PowerApps 的 App Service 環境」，請參閱 [App Service 環境簡介][IntroToAppServiceEnvironment]。
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

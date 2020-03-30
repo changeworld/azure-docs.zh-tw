@@ -1,7 +1,7 @@
 ---
-title: 自動定型時間序列預測模型
+title: 自動訓練時間序列預測模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning，使用自動化機器學習來定型時間序列預測回歸模型。
+description: 瞭解如何使用 Azure 機器學習使用自動機器學習訓練時間序列預測回歸模型。
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -11,60 +11,60 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081840"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>自動定型時間序列預測模型
+# <a name="auto-train-a-time-series-forecast-model"></a>自動訓練時間序列預測模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何使用 Azure Machine Learning 中的自動化機器學習來定型時間序列預測回歸模型。 設定預測模型類似于使用自動化機器學習來設定標準回歸模型，但有一些特定的設定選項和前置處理步驟可用於處理時間序列資料。 下列範例示範如何：
+在本文中，您將瞭解如何在 Azure 機器學習中使用自動機器學習訓練時間序列預測回歸模型。 配置預測模型類似于使用自動機器學習設置標準回歸模型，但存在某些配置選項和預處理步驟，用於使用時間序列資料。 以下示例演示如何：
 
-* 準備資料以進行時間序列模型化
-* 在[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中設定特定的時間序列參數
-* 使用時間序列資料執行預測
+* 準備時間序列建模資料
+* 在[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中配置特定的時間序列參數
+* 使用時間序列資料運行預測
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-您可以使用自動化 ML 結合技術和方法，並取得建議的高品質時間序列預測。 自動化的時間序列實驗會被視為多變數回歸問題。 過去的時間序列值會「切換」為回歸輸入變數的其他維度與其他預測指標。
+您可以使用自動 ML 組合技術和方法，並獲得推薦的高品質時間序列預測。 自動時間序列實驗被視為多變數回歸問題。 過去的時間序列值被"透視"，成為回歸者與其他預測變數的其他維度。
 
-與傳統時間序列方法不同的是，這種方法的優點是在定型期間自然結合多個內容變數及其關聯性。 在真實世界的預測應用程式中，有多個因素會影響預測。 例如，當預測銷售時，歷程記錄趨勢的互動、匯率和價格全都會共同推動銷售結果。 另一個優點是回歸模型中所有最近的創新都適用于預測。
+與傳統的時間序列方法不同，這種方法具有在訓練期間自然地合併多個上下文變數及其相互關係的優點。 在實際預測應用中，多種因素會影響預測。 例如，在預測銷售時，歷史趨勢、匯率和價格的相互作用共同推動銷售結果。 另一個好處是，回歸模型的所有近期創新立即應用於預測。
 
-您可以[設定](#config)預測未來應延伸的時間（預測範圍），以及延遲和更多。 自動化 ML 會針對資料集和預測視野中的所有專案學習單一但通常會在內部分支的模型。 因此，有更多的資料可用於估計模型參數，而一般化的數列則會變成可行的。
+您可以[配置](#config)預測在未來應擴展的有多遠（預測範圍）以及滯後等。 自動 ML 為資料集和預測視野中的所有項學習單個但通常是內部分支模型。 因此，有更多的資料可用於估計模型參數，並可以對看不見的系列進行概括。
 
-從定型資料中解壓縮的功能扮演重要的角色。 而且，自動化 ML 會執行標準的前置處理步驟，並產生額外的時間序列功能來捕捉季節性效果並最大化預測準確度。
+從訓練資料中提取的功能起著至關重要的作用。 此外，自動 ML 執行標準預處理步驟並生成其他時間序列功能，以捕獲季節性影響並最大限度地提高預測準確性。
 
 ## <a name="time-series-and-deep-learning-models"></a>時間序列和深度學習模型
 
 
-自動化 ML 會為使用者提供原生時間序列和深度學習模型，做為建議系統的一部分。 這些學習工具組括：
-+ Prophet
+自動 ML 為使用者提供本機時間序列和深度學習模型，作為推薦系統的一部分。 這些學員包括：
++ 先知
 + 自動 ARIMA
-+ ForecastTCN
++ 預測TCN
 
-自動化 ML 的深度學習可讓您預測單一變數和多變數時間序列資料。
+自動 ML 的深入學習允許預測單變數和多變數時間序列資料。
 
-深度學習模型有三種內建功能：
-1. 他們可以從輸入到輸出的任意對應學習
+深度學習模型具有三種內在功能：
+1. 他們可以從從輸入到輸出的任意映射中學習
 1. 它們支援多個輸入和輸出
-1. 它們可以自動將跨長序列的輸入資料中的模式解壓縮
+1. 他們可以自動提取跨越長序列的輸入資料中的模式
 
-針對較大的資料，深度學習模型（例如 Microsoft 的 ForecastTCN）可以改善產生之模型的分數。 
+給定更大的資料，深度學習模型（如 Microsoft 的預測TCN）可以提高結果模型的分數。 
 
-原生時間序列學習工具也會提供做為自動化 ML 的一部分。 Prophet 最適合用於具有強烈季節性效果的時間序列，以及數個季節的歷程記錄資料。 Prophet 是正確的 & 快速、健全的極端值、遺漏的資料，以及您的時間序列中的顯著變更。 
+本機時間序列學員也作為自動 ML 的一部分提供。 先知最適合具有強烈季節性效果和幾個季節的歷史資料的時間序列。 先知是準確的&快速，強健的離群值，缺少的資料，和戲劇性的變化，在你的時間序列。 
 
-自動回歸整合式移動平均（ARIMA）是時間序列預測的熱門統計方法。 這項預測技術通常用於短期預測案例中，其中資料會顯示迴圈的辨識項，例如週期，這可能會造成無法預測，且難以建立模型或預測。 自動 ARIMA 會將您的資料轉換成固定資料，以接收一致且可靠的結果。
+自動回歸綜合移動平均線（ARIMA）是時間序列預測的常用統計方法。 這種預測技術通常用於短期預測方案，其中資料顯示了週期等趨勢的證據，這些趨勢可能是不可預測的，難以建模或預測。 自動 ARIMA 將資料轉換為固定資料，以接收一致、可靠的結果。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
-* 本文假設您對設定自動化機器學習實驗的基本概念十分熟悉。 依照[教學](tutorial-auto-train-models.md)課程或[如何](how-to-configure-auto-train.md)操作來查看基本的自動化機器學習實驗設計模式。
+* Azure Machine Learning 工作區。 要創建工作區，請參閱[創建 Azure 機器學習工作區](how-to-manage-workspace.md)。
+* 本文假定對設置自動機器學習實驗基本熟悉。 請按照[教程](tutorial-auto-train-models.md)或[操作操作瞭解如何](how-to-configure-auto-train.md)查看基本的機器學習實驗設計模式。
 
 ## <a name="preparing-data"></a>準備資料
 
-自動化機器學習服務中的預測回歸工作類型和回歸工作類型之間最重要的差異，包括資料中代表有效時間序列的功能。 一般時間序列具有定義完善且一致的頻率，而且在連續時間範圍內的每個取樣點都有一個值。 請考慮下列檔案 `sample.csv`快照集。
+自動機器學習中預測回歸任務類型和回歸任務類型之間的最重要的區別是在資料中包含表示有效時間序列的功能。 常規時間序列具有定義良好且一致的頻率，並且具有連續時間跨度中每個採樣點的值。 請考慮檔的`sample.csv`以下快照。
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -78,7 +78,7 @@ ms.locfileid: "79081840"
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-此資料集是公司每日銷售資料的簡單範例，其中有兩個不同的商店 A 和 B。此外，還有一項 `week_of_year` 的功能，可讓模型偵測每週季節性。 欄位 `day_datetime` 代表具有每日頻率的清除時間序列，而欄位 `sales_quantity` 是執行預測的目標資料行。 將資料讀取至 Pandas 資料框架，然後使用 `to_datetime` 函數來確保時間序列是 `datetime` 類型。
+此資料集是具有兩個不同商店 A 和 B 的公司每日銷售資料的簡單示例。 此外，還有一項功能`week_of_year`，允許模型檢測每週的季節性。 該欄位`day_datetime`表示具有每日頻率的乾淨時間序列，該欄位`sales_quantity`是運行預測的目標列。 將資料讀取到 Pandas 資料框中，然後使用`to_datetime`函數確保時間序列是一`datetime`種類型。
 
 ```python
 import pandas as pd
@@ -86,7 +86,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-在此情況下，資料已經以 `day_datetime`的時間欄位昇冪排序。 不過，在設定實驗時，請確定所需的時間資料行是以遞增順序排序，以建立有效的時間序列。 假設資料包含1000記錄，並在資料中進行具決定性的分割，以建立定型和測試資料集。 識別 [標籤] 資料行名稱，並將它設定為 [標籤]。 在此範例中，標籤將會 `sales_quantity`。 然後，將 標籤 欄位與 `test_data` 分隔，以形成 `test_target` 集。
+在這種情況下，資料已按時間欄位`day_datetime`排序昇冪。 但是，在設置實驗時，請確保按昇冪對所需的時間列進行排序以生成有效的時間序列。 假設資料包含 1，000 條記錄，並在資料中進行確定性拆分以創建訓練和測試資料集。 標識標籤列名稱並將其設置為標籤。 在此示例中，標籤將為`sales_quantity`。 然後從中分離標籤欄位`test_data`以形成`test_target`集。
 
 ```python
 train_data = data.iloc[:950]
@@ -98,33 +98,33 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!NOTE]
-> 定型模型以預測未來的值時，請確定在針對您想要的水準執行預測時，可以使用定型中使用的所有功能。 例如，建立需求預測時，包括目前股價的功能可能會大幅增加定型準確度。 不過，如果您想要長期預測，可能無法精確地預測未來時間序列點對應的未來股價，而且模型精確度可能會受到影響。
+> 在訓練預測未來值的模型時，請確保在為預期視點運行預測時可以使用訓練中使用的所有功能。 例如，在創建需求預測時，包括當前股票價格的功能可能會大大提高培訓的準確性。 但是，如果您打算以長視距進行預測，則可能無法準確預測與未來時間序列點對應的未來股票價值，並且模型準確性可能會受到影響。
 
 <a name="config"></a>
-## <a name="configure-and-run-experiment"></a>設定及執行實驗
+## <a name="configure-and-run-experiment"></a>配置和運行實驗
 
-針對預測工作，自動化機器學習會使用時間序列資料特有的前置處理和估計步驟。 將會執行下列前置處理步驟：
+對於預測任務，自動化機器學習使用特定于時間序列資料的預處理和估計步驟。 將執行以下預處理步驟：
 
-* 偵測時間序列取樣頻率（例如，每小時、每天、每週），並建立不存在時間點的新記錄，讓數列持續進行。
-* 插補目標中的遺漏值（透過向前填滿）和特徵資料行（使用中位數的資料行值）
-* 建立以細微性為基礎的功能，以啟用跨不同數列的固定效果
-* 建立以時間為基礎的功能，以協助學習季節性模式
-* 將類別變數編碼為數值數量
+* 檢測時間序列採樣頻率（例如，每小時、每天、每週），並為缺勤時間點創建新記錄，以使序列連續。
+* 在目標（通過前位填充）和要素列（使用中位列值）中，估計缺失值
+* 創建基於顆粒的功能，以跨不同系列實現固定效果
+* 創建基於時間的功能，以説明學習季節性模式
+* 將分類變數編碼為數值數量
 
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)物件會定義自動化機器學習工作所需的設定和資料。 類似于回歸問題，您可以定義標準訓練參數，例如工作類型、反復專案數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 下表說明每個參數和其使用方式。
+該[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)物件定義自動機器學習任務所需的設置和資料。 與回歸問題類似，您可以定義標準訓練參數，如任務類型、反覆運算次數、訓練資料和交叉驗證數。 對於預測任務，必須設置影響實驗的其他參數。 下表解釋了每個參數及其用法。
 
 | 參數&nbsp;名稱 | 描述 | 必要 |
 |-------|-------|-------|
-|`time_column_name`|用來指定輸入資料中用來建立時間序列並推斷其頻率的日期時間資料行。|✓|
-|`grain_column_names`|在輸入資料中定義個別數列群組的名稱。 如果未定義細微性，則會假設資料集為一個時間序列。||
-|`max_horizon`|以時間序列頻率的單位，定義所需的預測範圍上限。 單位是以定型資料的時間間隔為基礎，例如，每月、每週 forecaster 應預測。|✓|
-|`target_lags`|要根據資料頻率延後目標值的資料列數目。 Lag 會以清單或單一整數來表示。 當獨立變數與相依變數之間的關聯性預設不相符或相互關聯時，應該使用 Lag。 例如，當您嘗試預測產品的需求時，任何月份的需求可能取決於之前3個月的特定商品價格。 在此範例中，您可能會想要讓目標（需求）對3個月造成負面的延遲，讓模型在正確的關聯性上定型。||
-|`target_rolling_window_size`|*n*要用來產生預測值的歷程記錄期間，< = 定型集大小。 如果省略，則*n*是完整的定型集大小。 當您只想要在定型模型時考慮特定數量的歷程記錄時，請指定此參數。||
-|`enable_dnn`|啟用預測 Dnn。||
+|`time_column_name`|用於在用於生成時間序列和推斷其頻率的輸入資料中指定日期時間列。|✓|
+|`grain_column_names`|名稱）在輸入資料中定義單個系列組。 如果未定義顆粒，則假定資料集為一個時間序列。||
+|`max_horizon`|以時間序列頻率單位定義所需的最大預測視點。 單位基於訓練資料的時間間隔，例如，預測員應預測的每月、每週。|✓|
+|`target_lags`|根據資料頻率滯後目標值的行數。 滯後表示為清單或單個整數。 當獨立變數和因變數之間的關係在預設情況下不匹配或關聯時，應使用延遲。 例如，在嘗試預測產品需求時，任何月份的需求都可能取決於 3 個月前特定商品的價格。 在此示例中，您可能希望將目標（需求）負延遲 3 個月，以便模型正在訓練正確的關係。||
+|`target_rolling_window_size`|*n*用於生成預測值的歷史記錄期間，<= 訓練集大小。 如果省略 *，n*是完整的訓練集大小。 在訓練模型時只想考慮一定數量的歷史記錄時，指定此參數。||
+|`enable_dnn`|啟用預測 DNN。||
 
-如需詳細資訊，請參閱[參考檔](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。
+有關詳細資訊，請參閱[參考文檔](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。
 
-將時間序列設定建立為 dictionary 物件。 將 [`time_column_name`] 設定為資料集內的 [`day_datetime`] 欄位。 定義 `grain_column_names` 參數，確保針對資料建立**兩個不同的時間序列群組**：一個用於儲存 A 和 B。最後，將 `max_horizon` 設定為50，以便預測整個測試集。 使用 `target_rolling_window_size`將 [預測] 視窗設定為10個週期，並在 [`target_lags`] 參數前面指定兩個週期的目標值的單一 lag。 建議將 `max_horizon`、`target_rolling_window_size` 和 `target_lags` 設定為 [自動]，這會自動為您偵測這些值。 在下列範例中，這些參數已使用「自動」設定。 
+將時間序列設置創建為字典物件。 將`time_column_name`設置為資料集`day_datetime`中的欄位。 定義`grain_column_names`參數以確保為數據創建**兩個單獨的時間序列組**;一個用於存儲 A 和 B。`max_horizon`最後，將 設置為 50 以預測整個測試集。 使用 將預測視窗設置為 10`target_rolling_window_size`個期間，並在`target_lags`參數之前的兩個期間指定目標值的單個延遲。 建議設置`max_horizon``target_rolling_window_size`和`target_lags`"自動"，這將自動檢測這些值。 在下面的示例中，這些參數使用了"自動"設置。 
 
 ```python
 time_series_settings = {
@@ -140,9 +140,9 @@ time_series_settings = {
 > [!NOTE]
 > 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
 
-藉由定義上述程式碼片段中的 `grain_column_names`，AutoML 會建立兩個不同的時間序列群組，也稱為多個時間序列。 如果未定義任何細微性，則 AutoML 會假設資料集為單一時間序列。 若要深入瞭解單一時間序列，請參閱[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
+通過在上面的代碼`grain_column_names`段中定義，AutoML 將創建兩個單獨的時間序列組，也稱為多個時間序列。 如果未定義顆粒，AutoML 將假定資料集是單個時間序列。 要瞭解有關單一時間序列的更多詳細資訊，請參閱[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
 
-現在建立標準 `AutoMLConfig` 物件，指定 `forecasting` 工作類型，並提交實驗。 在模型完成之後，請抓取最佳的執行反復專案。
+現在創建一個`AutoMLConfig`標準物件，`forecasting`指定任務類型，並提交實驗。 模型完成後，檢索最佳運行反覆運算。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -167,35 +167,35 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-如需先進預測設定的詳細程式碼範例，請參閱[預測範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)，包括：
+有關高級預測配置的詳細代碼示例，請參閱[預測示例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)，包括：
 
-* [假日偵測和特徵化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [復原原始的交叉驗證](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [可設定延遲](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [滾動視窗匯總功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+* [假日檢測和壯舉](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [滾動源交叉驗證](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [可配置延遲](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [滾動視窗聚合功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [平台](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
-### <a name="configure-a-dnn-enable-forecasting-experiment"></a>設定 DNN 啟用預測實驗
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>配置 DNN 啟用預測實驗
 
 > [!NOTE]
-> 自動化 Machine Learning 中預測的 DNN 支援處於預覽狀態，且不支援本機執行。
+> 對自動機器學習中預測的 DNN 支援處於預覽狀態，不支援本地運行。
 
-為了利用 Dnn 進行預測，您必須將 AutoMLConfig 中的 `enable_dnn` 參數設定為 true。 
+為了利用 DN 進行預測，您需要將自動MLConfig`enable_dnn`中的參數設置為 true。 
 
-建議您使用 AML 計算叢集搭配 GPU Sku，並使用至少兩個節點做為計算目標。 若要讓 DNN 訓練有足夠的時間完成，建議您將實驗超時設定為至少幾個小時。
-如需有關 AML 計算和包含 GPU 之 VM 大小的詳細資訊，請參閱[AML 計算檔](how-to-set-up-training-targets.md#amlcompute)和[GPU 優化虛擬機器大小檔](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
+我們建議使用具有 GPU SKU 和至少兩個節點的 AML 計算群集作為計算目標。 為了留出足夠的時間完成 DNN 培訓，我們建議將實驗超時設置為至少幾個小時。
+有關包括 GPU 的 AML 計算和 VM 大小的詳細資訊，請參閱[AML 計算文檔](how-to-set-up-training-targets.md#amlcompute)和[GPU 優化的虛擬機器大小文檔](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
 
-如需運用 Dnn 的詳細程式碼範例，請參閱[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
+查看[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)，瞭解利用 DN 的詳細代碼示例。
 
-### <a name="view-feature-engineering-summary"></a>視圖功能工程摘要
+### <a name="view-feature-engineering-summary"></a>查看要素工程摘要
 
-如需自動化機器學習服務中的時間序列工作類型，您可以從功能工程處理常式中查看詳細資料。 下列程式碼會顯示每個原始功能以及下列屬性：
+對於自動機器學習中的時間序列任務類型，您可以查看要素工程流程的詳細資訊。 以下代碼顯示每個原始特徵以及以下屬性：
 
-* 原始功能名稱
-* 從這個原始功能形成的工程功能數目
-* 偵測到的類型
-* 是否已卸載功能
-* 原始功能的功能轉換清單
+* 原始要素名稱
+* 由此原始功能形成的工程特徵數量
+* 檢測到的類型
+* 是否刪除功能
+* 原始要素的功能轉換清單
 
 ```python
 fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
@@ -203,16 +203,16 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 ## <a name="forecasting-with-best-model"></a>使用最佳模型進行預測
 
-使用最佳模型反復專案來預測測試資料集的值。
+使用最佳模型反覆運算預測測試資料集的值。
 
 ```python
 predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-或者，您可以使用 `forecast()` 函式，而不是 `predict()`，這會允許預測應該啟動的規格。 在下列範例中，您會先將 `y_pred` 中的所有值取代為 `NaN`。 在此情況下，預測來源會在定型資料的結尾，這通常是使用 `predict()`時。 不過，如果您只以 `NaN`取代後半個 `y_pred`，則函式會將前半個未修改的數值保留，但在後半部中預測 `NaN` 的值。 函式會傳回預測的值和對齊的功能。
+或者，您可以使用 函數`forecast()`而不是`predict()`，這將允許預測何時開始。 在下面的示例中，您首先將 中`y_pred`的所有值替換為`NaN`。 在這種情況下，預測源將在培訓資料結束時，就像使用`predict()`時一樣。 但是，如果僅替換`y_pred``NaN`的後半部分，函數將保留前半部分的數值未修改，但預測下半年`NaN`的值。 函數返回預測值和對齊的要素。
 
-您也可以使用 `forecast()` 函數中的 `forecast_destination` 參數，在指定的日期之前預測值。
+您還可以使用函數`forecast_destination`中的`forecast()`參數預測值，直到指定日期。
 
 ```python
 label_query = test_labels.copy().astype(np.float)
@@ -221,7 +221,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-在 `actual_labels` 實際值和 `predict_labels`中的預測值之間計算 RMSE （根平均平方誤差）。
+計算`actual_labels`實際值和 中`predict_labels`的預測值之間的 RMSE（根均方位誤差）。
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -231,18 +231,18 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-現在已決定整體模型精確度，最實際的下一個步驟是使用模型來預測未知的未來值。 以與測試集相同的格式提供資料集 `test_data` 但未來日期時間，而產生的預測集則是每個時間序列步驟的預測值。 假設資料集內的最後一個時間序列記錄是12/31/2018。 若要預測下一天的需求（或需要預測的期間數，請 < = `max_horizon`），為每個商店建立單一時間序列記錄01/01/2019。
+現在，總體模型精度已經確定，最現實的下一步是使用模型預測未知的未來值。 以與測試集`test_data`相同的格式提供資料集，但提供將來的日期時間，生成的預測集是每個時間序列步驟的預測值。 假設資料集中的最後一個時間序列記錄為 2018 年 12 月 31 日。 要預測第二天的需求（或需要預測的多個期間，<= `max_horizon`），請為 2019 年 1 月 1 日為每個商店創建單個時間序列記錄。
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-重複必要的步驟，將未來的資料載入至資料框架，然後執行 `best_run.predict(test_data)` 以預測未來的值。
+重複必要的步驟，將將來的資料載入到資料幀中，然後運行`best_run.predict(test_data)`以預測未來值。
 
 > [!NOTE]
-> 無法預測大於 `max_horizon`的期間數的值。 模型必須以較大的範圍重新定型，以預測目前範圍以外的未來值。
+> 對於大於 的`max_horizon`期間數，無法預測值。 模型必須重新訓練，具有更大的視野，以預測當前地平線以外的未來值。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請遵循[本教學](tutorial-auto-train-models.md)課程，以瞭解如何使用自動化機器學習來建立實驗。
-* 查看[適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)參考檔。
+* 請按照[本教程](tutorial-auto-train-models.md)瞭解如何使用自動機器學習創建實驗。
+* 查看[Azure 機器學習 SDK 以查看 Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)參考文檔。

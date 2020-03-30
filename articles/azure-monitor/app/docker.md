@@ -4,13 +4,13 @@ description: Docker 效能計數器、事件和例外狀況可以與來自容器
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669602"
 ---
-# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在應用程式見解中監視 Docker 應用程式（已棄用）
 
 > [!NOTE]
 > 此解決方案已被取代。 若要深入了解我們目前對於容器監視所做的投資，建議查看[適用於容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
@@ -27,7 +27,7 @@ ms.locfileid: "77669602"
 
 ## <a name="set-up-your-application-insights-resource"></a>設定您的 Application Insights 資源
 
-1. 登入 [Microsoft Azure 入口網站](https://azure.com)，然後開啟您應用程式的 Application Insights 資源；或[建立新的資源](../../azure-monitor/app/create-new-resource.md )。 
+1. 登錄到[Microsoft Azure 門戶](https://azure.com)並打開應用的應用程式見解資源;或[創建新 。](../../azure-monitor/app/create-new-resource.md ) 
    
     *我應該使用哪種資源？* 如果您在主機上執行的應用程式是由其他人所開發，則您需要[建立新的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [一般])。
    
@@ -35,7 +35,7 @@ ms.locfileid: "77669602"
    
     第三種情況是您已開發大部分應用程式，但想要使用不同的資源來顯示其遙測。 在這種情況下，您可能也需要為 Docker 資料建立不同的資源。
 
-2. 按一下 [程式集] 下拉式清單，然後複製檢測金鑰。 您將會使用這個項目以告知 SDK 傳送遙測的位置。
+2. 按一下 [程式集] **** 下拉式清單，然後複製檢測金鑰。 您將會使用這個項目以告知 SDK 傳送遙測的位置。
 
 保持該瀏覽器視窗就緒，因為您稍後即會返回以查看您的遙測。
 
@@ -92,7 +92,7 @@ ms.locfileid: "77669602"
 
 * 在應用程式中安裝 Application Insights SDK。 針對下列項目深入了解：[Java Web 應用程式](../../azure-monitor/app/java-get-started.md)、[Windows Web 應用程式](../../azure-monitor/app/asp-net.md)。
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

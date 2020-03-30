@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253607"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
@@ -28,7 +28,7 @@ ms.locfileid: "79253607"
 屬性會依相關的 Azure AD App 來分組。
 
 ## <a name="attributes-to-synchronize"></a>要同步處理的屬性
-常見的問題是同步處理的最少屬性清單為何。 建議的預設方法是保留預設屬性，這樣可以在雲端建構完整的 GAL (全域通訊清單)，並取得 Office 365 工作負載的所有功能。 在某些情況下，貴組織會有某些不想同步處理至雲端的屬性，因為這些屬性包含機密或 PII (個人識別資訊) 資料，如以下範例所示：  
+常見的問題是同步處理的最少屬性清單為何 **。 建議的預設方法是保留預設屬性，這樣可以在雲端建構完整的 GAL (全域通訊清單)，並取得 Office 365 工作負載的所有功能。 在某些情況下，貴組織會有某些不想同步處理至雲端的屬性，因為這些屬性包含機密或 PII (個人識別資訊) 資料，如以下範例所示：  
 ![不正確的屬性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
 在此情況下，請從本主題中的屬性清單著手，然後識別出包含機密或 PII 資料而不能同步處理的屬性。 接著，在安裝期間使用 [Azure AD 應用程式和屬性篩選](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)將這些屬性取消選取。
@@ -252,11 +252,11 @@ ms.locfileid: "79253607"
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |機械屬性。 使用者的國家/地區
-。 用於授權指派。 |
+. 用於授權指派。 |
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="teams-and-skype-for-business-online"></a>小組與商務用 Skype Online
+## <a name="teams-and-skype-for-business-online"></a>線上業務團隊和 Skype
 | 屬性名稱 | User | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
@@ -411,7 +411,7 @@ ms.locfileid: "79253607"
 | operatingSystemVersion |X |也稱為 deviceOSVersion。 |
 | userCertificate |X | |
 
-下列「使用者」 屬性是您已選取的其他應用程式以外的屬性。  
+下列「使用者」 **** 屬性是您已選取的其他應用程式以外的屬性。  
 
 | 屬性名稱 | User | 註解 |
 | --- |:---:| --- |
@@ -420,7 +420,7 @@ ms.locfileid: "79253607"
 | msDS-KeyCredentialLink |X |一旦使用者在 Windows Hello 企業版中註冊後。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合回寫
-當您選擇啟用「Exchange 混合」時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
+當您選擇啟用「Exchange 混合」 **** 時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
 
 | 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |---|
@@ -430,12 +430,12 @@ ms.locfileid: "79253607"
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |篩選：從用戶端回寫內部部署篩選及線上安全和已封鎖的寄件者資料。 |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |篩選：從用戶端回寫內部部署篩選及線上安全和已封鎖的寄件者資料。 |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |啟用整合通訊 (UM) - 線上語音信箱：供 Microsoft Lync Server 整合用來向 Lync Server 內部部署表示使用者在線上服務中有語音信箱。 |
-| msExchUserHoldPolicies| Ms-exch-assistant-name-UserHoldPolicies |X | | |訴訟資料暫留：啟用雲端服務來識別哪些使用者正處於訴訟資料暫留狀態。 |
+| msExchUserHoldPolicies| ms-Exch-使用者保留原則 |X | | |訴訟資料暫留：啟用雲端服務來識別哪些使用者正處於訴訟資料暫留狀態。 |
 | proxyAddresses| proxyAddresses |X |X |X |只會插入 Exchange Online 的 x500 位址。 |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |將 Exchange Online 信箱的 SendOnBehalfTo 權限授與使用內部部署 Exchange 信箱的使用者。 需要 Azure AD Connect 1.1.552.0 組建版本或更新版本。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange 郵件公用資料夾
-當您選擇啟用 [Exchange 郵件公用資料夾] 時，系統會將內部部署 Active Directory 的這些屬性同步到 Azure AD。
+當您選擇啟用 [Exchange 郵件公用資料夾]**** 時，系統會將內部部署 Active Directory 的這些屬性同步到 Azure AD。
 
 | 屬性名稱 | 公用資料夾 | 註解 |
 | --- | :---:| --- |

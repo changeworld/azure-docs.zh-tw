@@ -1,6 +1,6 @@
 ---
-title: Azure AD Domain Services 的管理概念 |Microsoft Docs
-description: 瞭解如何管理 Azure Active Directory Domain Services 受控網域，以及使用者帳戶和密碼的行為
+title: Azure AD 域服務的管理概念 |微軟文檔
+description: 瞭解如何管理 Azure 活動目錄域服務託管域以及使用者帳戶和密碼的行為
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264228"
 ---
-# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
+# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure 活動目錄域服務中使用者帳戶、密碼和管理的管理概念
 
-當您建立並執行 Azure Active Directory Domain Services （AD DS）受控網域時，相較于傳統內部部署 AD DS 環境，其行為會有一些差異。 您使用 Azure AD DS 中的相同系統管理工具作為自我管理的網域，但是您無法直接存取網域控制站（DC）。 根據使用者帳戶建立的來源而定，密碼原則和密碼雜湊的行為也有一些差異。
+創建和運行 Azure 活動目錄域服務 （AD DS） 託管域時，與傳統本地 AD DS 環境相比，其行為存在一些差異。 在 Azure AD DS 中使用與自託管域相同的管理工具，但不能直接存取網域控制站 （DC）。 密碼原則和密碼雜湊的行為也存在一些差異，具體取決於使用者帳戶創建的來源。
 
-此概念性文章詳述如何管理 Azure AD DS 受控網域，以及使用者帳戶的不同行為（視其建立方式而定）。
+此概念文章詳細介紹了如何管理 Azure AD DS 託管域以及使用者帳戶的不同行為，具體取決於其創建方式。
 
 ## <a name="domain-management"></a>網域管理
 
-在 Azure AD DS 中，包含所有資源（例如使用者和群組、認證和原則）的網域控制站（Dc）是受控服務的一部分。 針對冗余，會建立兩個 Dc 做為 Azure AD DS 受控網域的一部分。 您無法登入這些 Dc 來執行管理工作。 相反地，您會建立已加入 Azure AD DS 受控網域的管理 VM，然後安裝一般的 AD DS 管理工具。 例如，您可以使用 Active Directory 管理中心或 Microsoft Management Console （MMC）嵌入式管理單元（如 DNS）或群組原則物件。
+在 Azure AD DS 中，包含所有資源（如使用者和組、憑據和策略）的網域控制站 （DC） 是託管服務的一部分。 對於冗余，將創建兩個 DC 作為 Azure AD DS 託管域的一部分。 您無法登錄到這些 DC 以執行管理工作。 相反，您可以創建一個已加入 Azure AD DS 託管域的管理 VM，然後安裝常規的 AD DS 管理工具。 例如，您可以使用活動目錄管理中心或 Microsoft 管理主控台 （MMC） 管理主控台 （MMC） 管理單元（如 DNS 或群組原則物件）。
 
-## <a name="user-account-creation"></a>建立使用者帳戶
+## <a name="user-account-creation"></a>使用者帳戶創建
 
-您可以透過多種方式，在 Azure AD DS 中建立使用者帳戶。 大部分的使用者帳戶會在中從 Azure AD 同步處理，也可以包含從內部部署 AD DS 環境同步處理的使用者帳戶。 您也可以直接在 Azure AD DS 中手動建立帳戶。 某些功能（例如初始密碼同步處理或密碼原則）的行為會根據建立使用者帳戶的方式和位置而有所不同。
+可以在 Azure AD DS 中以多種方式創建使用者帳戶。 大多數使用者帳戶從 Azure AD 同步，Azure AD 還可以包括從本地 AD DS 環境同步的使用者帳戶。 您還可以直接在 Azure AD DS 中手動創建帳戶。 某些功能（如初始密碼同步或密碼原則）的行為方式和位置不同。
 
-* 使用者帳戶可以從 Azure AD 同步處理。 這包括直接在 Azure AD 中建立的僅限雲端使用者帳戶，以及使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的混合式使用者帳戶。
-    * Azure AD DS 中的大部分使用者帳戶都是透過 Azure AD 的同步處理常式來建立。
-* 使用者帳戶可以在 Azure AD DS 受控網域中手動建立，而且不存在於 Azure AD 中。
-    * 如果您需要為只在 Azure AD DS 中執行的應用程式建立服務帳戶，您可以在受控網域中手動建立它們。 由於同步處理是從 Azure AD 的一種方式，因此在 Azure AD DS 中建立的使用者帳戶不會同步處理回 Azure AD。
+* 可以從 Azure AD 同步使用者帳戶。 這包括直接在 Azure AD 中創建的僅雲使用者帳戶，以及使用 Azure AD Connect 從本地 AD DS 環境同步的混合使用者帳戶。
+    * Azure AD DS 中的大多數使用者帳戶都是通過 Azure AD 的同步過程創建的。
+* 使用者帳戶可以在 Azure AD DS 託管域中手動創建，並且在 Azure AD 中不存在。
+    * 如果需要為僅在 Azure AD DS 中運行的應用程式創建服務帳戶，則可以在託管域中手動創建它們。 由於同步是 Azure AD 的一種方式，因此在 Azure AD DS 中創建的使用者帳戶不會同步回 Azure AD。
 
 ## <a name="password-policy"></a>密碼原則
 
-Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使用期限和密碼複雜度等專案的設定。 帳戶鎖定原則之類的設定會套用至 Azure AD DS 中的所有使用者，而不論上一節中所述的使用者建立方式為何。 一些設定（例如最小密碼長度和密碼複雜度）僅適用于直接在 Azure AD DS 中建立的使用者。
+Azure AD DS 包括預設密碼原則，用於定義帳戶鎖定、最大密碼期限和密碼複雜性等設置。 帳戶鎖定策略等設置適用于 Azure AD DS 中的所有使用者，而不考慮上一節中概述的使用者創建方式。 少數設置（如最小密碼長度和密碼複雜性）僅適用于直接在 Azure AD DS 中創建的使用者。
 
-您可以建立自己的自訂密碼原則，以覆寫 Azure AD DS 中的預設原則。 然後，這些自訂原則就可以視需要套用到特定的使用者群組。
+您可以創建自己的自訂密碼原則來覆蓋 Azure AD DS 中的預設策略。 然後，這些自訂策略可以根據需要應用於特定的使用者組。
 
-如需有關如何根據使用者建立的來源套用密碼原則之差異的詳細資訊，請參閱[受控網域上的密碼和帳戶鎖定原則][password-policy]。
+有關密碼原則的應用方式因使用者創建來源而異的詳細資訊，請參閱[託管域上的密碼和帳戶鎖定策略][password-policy]。
 
 ## <a name="password-hashes"></a>密碼雜湊
 
@@ -50,63 +50,63 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 
 對於僅限雲端的使用者帳戶，使用者必須變更其密碼，才能使用 Azure AD DS。 此密碼變更程序會在 Azure AD 中產生並儲存 Kerberos 和 NTLM 驗證的密碼雜湊。
 
-針對使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的使用者，[啟用密碼雜湊的同步][hybrid-phs]處理。
+對於使用 Azure AD 連接從本地 AD DS 環境同步的使用者，[啟用密碼雜湊的同步][hybrid-phs]。
 
 > [!IMPORTANT]
-> Azure AD Connect 只有在為 Azure AD 租使用者啟用 Azure AD DS 時，才會同步處理舊版密碼雜湊。 如果您只使用 Azure AD Connect 來同步處理內部部署 AD DS 環境與 Azure AD，則不會使用舊版密碼雜湊。
+> Azure AD 連接僅在為 Azure AD 租戶啟用 Azure AD DS 時同步舊密碼雜湊。 如果僅使用 Azure AD 連接將本地 AD DS 環境與 Azure AD 同步，則不使用舊密碼雜湊。
 >
-> 如果您的繼承應用程式未使用 NTLM 驗證或 LDAP 簡單系結，我們建議您停用 Azure AD DS 的 NTLM 密碼雜湊同步處理。 如需詳細資訊，請參閱[停用弱式加密套件和 NTLM 認證雜湊同步][secure-domain]處理。
+> 如果舊應用程式不使用 NTLM 身份驗證或 LDAP 簡單綁定，我們建議您禁用 Azure AD DS 的 NTLM 密碼雜湊同步。 有關詳細資訊，請參閱[禁用弱密碼套件和 NTLM 憑據雜湊同步][secure-domain]。
 
-一旦正確設定之後，可用的密碼雜湊就會儲存在 Azure AD DS 受控網域中。 如果您刪除 Azure AD DS 受控網域，此時儲存的任何密碼雜湊也會一併刪除。 如果您稍後建立 Azure AD DS 受控網域，則 Azure AD 中同步處理的認證資訊無法重複使用-您必須重新設定密碼雜湊同步處理，以再次儲存密碼雜湊。 先前加入網域的 VM 或使用者將無法立即進行驗證 - Azure AD 需要在新的 Azure AD DS 受控網域中產生並儲存密碼雜湊。 如需詳細資訊，請參閱 [Azure AD DS 和 Azure AD Connect 的密碼雜湊同步程序][azure-ad-password-sync]。
+一旦正確設定之後，可用的密碼雜湊就會儲存在 Azure AD DS 受控網域中。 如果您刪除 Azure AD DS 受控網域，此時儲存的任何密碼雜湊也會一併刪除。 如果以後創建 Azure AD DS 託管域，則無法重複使用 Azure AD 中的同步憑據資訊 - 必須重新配置密碼雜湊同步以再次存儲密碼雜湊。 先前加入網域的 VM 或使用者將無法立即進行驗證 - Azure AD 需要在新的 Azure AD DS 受控網域中產生並儲存密碼雜湊。 如需詳細資訊，請參閱 [Azure AD DS 和 Azure AD Connect 的密碼雜湊同步程序][azure-ad-password-sync]。
 
 > [!IMPORTANT]
 > Azure AD Connect 應該只會為了與內部部署 AD DS 環境同步處理而安裝和設定。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
 
 ## <a name="forests-and-trusts"></a>樹系和信任
 
-*樹*系是 Active Directory Domain Services （AD DS）用來將一或多個*網域*分組的邏輯結構。 然後，網域會儲存使用者或群組的物件，並提供驗證服務。
+*林*是活動目錄域服務 （AD DS） 用於對一個或多個*域*進行分組的邏輯構造。 然後，域為使用者或組存儲物件，並提供身份驗證服務。
 
-在 Azure AD DS 中，樹系僅包含一個網域。 內部部署 AD DS 樹系通常包含許多網域。 在大型組織中，尤其是在合併和收購之後，您最後可能會有多個內部部署樹系，每個樹系都包含多個網域。
+在 Azure AD DS 中，林只包含一個域。 本地 AD DS 林通常包含許多域。 在大型組織中，尤其是在合併和收購之後，您最終可能會擁有多個本地林，每個林都包含多個域。
 
-根據預設，系統會將 Azure AD DS 受控網域建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接針對 Azure AD DS 受控網域進行驗證，例如登入已加入網域的 VM。 使用者樹系適用于可以同步處理密碼雜湊，而使用者不使用獨佔式登入方法（例如智慧卡驗證）的情況。
+預設情況下，Azure AD DS 託管域將作為*使用者*林創建。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接針對 Azure AD DS 託管域進行身份驗證，例如登錄到加入域的 VM。 當使用者林可以同步密碼雜湊，並且使用者不使用專用登錄方法（如智慧卡身份驗證）時，使用者林將起作用。
 
-在 Azure AD DS*資源*樹系中，使用者會從其內部部署 AD DS 對單向樹系*信任*進行驗證。 使用此方法時，使用者物件和密碼雜湊不會同步處理至 Azure AD DS。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中的資源和應用程式平臺，而這些是依賴傳統驗證（例如 LDAPS、Kerberos 或 NTLM），但會移除任何驗證問題或考慮。 Azure AD DS 資源樹系目前為預覽狀態。
+在 Azure AD DS*資源*林中，使用者通過本地 AD DS 的單向林*信任*進行身份驗證。 使用此方法，使用者物件和密碼雜湊不會同步到 Azure AD DS。 使用者物件和憑據僅存在於本地 AD DS 中。 此方法允許企業在 Azure 中託管依賴于經典身份驗證（如 LDAPS、Kerberos 或 NTLM）的資源和應用程式平臺，但刪除了任何身份驗證問題或疑慮。 Azure AD DS 資源林當前處於預覽狀態。
 
-如需有關 Azure AD DS 中樹系類型的詳細資訊，請參閱[什麼是資源][concepts-forest]樹系？和[樹系信任在 Azure AD DS 中如何運作？][concepts-trust]
+有關 Azure AD DS 中的林類型的詳細資訊，請參閱[什麼是資源林？][concepts-forest]和[在 Azure AD DS 中，林信任如何工作？][concepts-trust]
 
-## <a name="azure-ad-ds-skus"></a>Azure AD DS Sku
+## <a name="azure-ad-ds-skus"></a>Azure AD DS SKU
 
-在 Azure AD DS 中，可用的效能和功能是以 SKU 為基礎。 當您建立受控網域時，您會選取 SKU，而且您可以在部署受控網域之後，隨著業務需求變更來切換 Sku。 下表列出可用的 Sku 和兩者之間的差異：
+在 Azure AD DS 中，可用的性能和功能基於 SKU。 創建託管域時選擇 SKU，並且可以在部署託管域後業務需求發生變化時切換 SKU。 下表概述了可用的 SKU 及其之間的差異：
 
-| SKU 名稱   | 物件計數上限 | 備份頻率 | 輸出樹系信任的最大數目 |
+| SKU 名稱   | 最大物件計數 | 備份頻率 | 出站林信任的最大數量 |
 |------------|----------------------|------------------|----|
 | 標準   | 無限制            | 每7天     | 0  |
 | Enterprise | 無限制            | 每3天     | 5  |
 | Premium    | 無限制            | 每日            | 10 |
 
-在這些 Azure AD DS Sku 之前，會使用以 Azure AD DS 受控網域中的物件數目（使用者和電腦帳戶）為基礎的計費模型。 根據受控網域中的物件數目，不再有可變的定價。
+在這些 Azure AD DS SKU 之前，使用了基於 Azure AD DS 託管域中物件數（使用者和電腦帳戶）的計費模型。 不再根據託管域中的物件數進行可變定價。
 
-如需詳細資訊，請參閱[AZURE AD DS 定價頁面][pricing]。
+有關詳細資訊，請參閱 Azure [AD DS 定價頁][pricing]。
 
-### <a name="managed-domain-performance"></a>受控網域效能
+### <a name="managed-domain-performance"></a>託管域性能
 
-網域效能會根據應用程式的驗證方式而有所不同。 額外的計算資源可能有助於改善查詢回應時間，並縮短同步作業所花費的時間。 隨著 SKU 層級的增加，適用于受控網域的計算資源也會增加。 監視應用程式的效能，並規劃所需的資源。
+域性能因應用程式實現身份驗證的方式而異。 其他計算資源可能有助於縮短查詢回應時間並減少同步操作所花費的時間。 隨著 SKU 級別的增加，託管域可用的計算資源也會增加。 監視應用程式的性能並規劃所需的資源。
 
-如果您的商務或應用程式需求變更，而您需要 Azure AD DS 受控網域的額外計算能力，您可以切換到不同的 SKU。
+如果業務或應用程式需要更改，並且 Azure AD DS 託管域需要額外的計算能力，則可以切換到其他 SKU。
 
 ### <a name="backup-frequency"></a>備份頻率
 
-備份頻率會決定採用受控網域的快照集的頻率。 備份是由 Azure 平臺管理的自動化程式。 如果您的受控網域發生問題，Azure 支援可協助您從備份進行還原。 由於同步處理只會*從*Azure AD 發生，因此 Azure AD DS 管理的網域中的任何問題都不會影響 Azure AD 或內部部署 AD DS 環境和功能。
+備份頻率確定獲取託管域快照的頻率。 備份是由 Azure 平臺管理的自動化過程。 如果託管域出現問題，Azure 支援可以説明您從備份中還原。 由於同步僅*從*Azure AD 單向發生，因此 Azure AD DS 託管域中的任何問題都不會影響 Azure AD 或本地 AD DS 環境和功能。
 
-隨著 SKU 層級的增加，這些備份快照的頻率也會增加。 請檢查您的業務需求和復原點目標（RPO），以判斷受控網域所需的備份頻率。 如果您的商務或應用程式需求變更，而您需要更頻繁的備份，您可以切換到不同的 SKU。
+隨著 SKU 級別的增加，這些備份快照的頻率也會增加。 查看您的業務要求和復原點目標 （RPO），以確定託管域所需的備份頻率。 如果業務或應用程式要求發生變化，並且需要更頻繁的備份，則可以切換到其他 SKU。
 
-### <a name="outbound-forests"></a>輸出樹系
+### <a name="outbound-forests"></a>出站林
 
-上一節詳述的單向輸出樹系信任從 Azure AD DS 受控網域到內部部署 AD DS 環境（目前處於預覽階段）。 SKU 會決定您可以為 Azure AD DS 受控網域建立的樹系信任數目上限。 請檢查您的商務和應用程式需求，以判斷您實際需要多少信任，並挑選適當的 Azure AD DS SKU。 同樣地，如果您的業務需求變更，而您需要建立額外的樹系信任，您可以切換到不同的 SKU。
+上一節詳細介紹了從 Azure AD DS 託管域到本地 AD DS 環境（當前處於預覽狀態）的單向出站林信任。 SKU 確定可以為 Azure AD DS 託管域創建的最大林信任數。 查看業務和應用程式要求以確定實際需要的信任數，並選擇相應的 Azure AD DS SKU。 同樣，如果您的業務需求發生變化，並且需要創建其他林信任，則可以切換到其他 SKU。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請[建立 AZURE AD DS 受控網域][create-instance]。
+要開始，[請創建 Azure AD DS 託管域][create-instance]。
 
 <!-- INTERNAL LINKS -->
 [password-policy]: password-policy.md

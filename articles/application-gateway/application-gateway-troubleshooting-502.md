@@ -1,6 +1,6 @@
 ---
-title: 針對不正確的閘道錯誤進行疑難排解-Azure 應用程式閘道
-description: 瞭解如何針對應用程式閘道 Server 錯誤進行疑難排解： 502-網頁伺服器作為閘道或 proxy 伺服器時收到不正確回應。
+title: 排除錯誤閘道錯誤 - Azure 應用程式閘道
+description: 瞭解如何排除應用程式閘道伺服器錯誤：502 - Web 服務器在充當閘道或代理伺服器時收到無效回應。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,45 +8,45 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130481"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>疑難排解應用程式閘道中閘道不正確的錯誤
 
-瞭解如何疑難排解使用 Azure 應用程式閘道時所收到的錯誤閘道（502）錯誤。
+瞭解如何解決使用 Azure 應用程式閘道時收到的錯誤閘道 （502） 錯誤。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
-設定應用程式閘道之後，您可能會看到的其中一個錯誤是「伺服器錯誤： 502-網頁伺服器作為閘道或 proxy 伺服器時收到不正確回應」。 發生此錯誤的主要原因如下：
+配置應用程式閘道後，您可能會看到一個錯誤是"伺服器錯誤：502 - Web 服務器在充當閘道或代理伺服器時收到無效回應"。 發生此錯誤的原因如下：
 
-* NSG、UDR 或自訂 DNS 封鎖後端集區成員的存取。
-* 虛擬機器擴展集的後端 Vm 或實例未回應預設健康情況探查。
+* NSG、UDR 或自訂 DNS 正在阻止對後端池成員的訪問。
+* 後端 VM 或虛擬機器規模集的實例未回應預設運行狀況探測。
 * 無效或不適當的自訂健全狀況探查組態。
-* Azure 應用程式閘道的[後端集區未設定或空白](#empty-backendaddresspool)。
+* Azure 應用程式閘道的[後端池未配置或清空](#empty-backendaddresspool)。
 * [虛擬機器擴展集的虛擬機器或執行個體都不是良好健康情況](#unhealthy-instances-in-backendaddresspool)。
-* 使用者要求發生[要求逾期或連線能力問題](#request-time-out)。
+* [請求超時或使用者請求的連接問題](#request-time-out)。
 
 ## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>網路安全性群組、使用者定義的路由或自訂 DNS 問題
 
 ### <a name="cause"></a>原因
 
-如果因為 NSG、UDR 或自訂 DNS 而封鎖對後端的存取，應用程式閘道實例就無法連線到後端集區。 這會導致探查失敗，並產生502錯誤。
+如果由於 NSG、UDR 或自訂 DNS 而阻止對後端的訪問，則應用程式閘道實例無法訪問後端池。 這將導致探測失敗，導致 502 個錯誤。
 
-NSG/UDR 可能會出現在應用程式閘道子網中，或是應用程式 Vm 部署所在的子網中。
+NSG/UDR 可以存在於應用程式閘道子網或部署應用程式 VM 的子網中。
 
-同樣地，VNet 中是否有自訂 DNS 也可能會造成問題。 使用者為 VNet 設定的 DNS 伺服器可能無法正確解析用於後端集區成員的 FQDN。
+同樣，VNet 中存在自訂 DNS 也可能導致問題。 用於後端池成員的 FQDN 可能無法由 VNet 的使用者配置的 DNS 伺服器正確解析。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 透過下列步驟來驗證 NSG、UDR 和 DNS 設定：
 
-* 檢查與應用程式閘道子網相關聯的 Nsg。 確定不會封鎖對後端的通訊。
-* 檢查與應用程式閘道子網相關聯的 UDR。 請確定 UDR 不會將流量從後端子網導向出去。 例如，檢查網路虛擬裝置的路由，或透過 ExpressRoute/VPN 向應用程式閘道子網通告的預設路由。
+* 檢查與應用程式閘道子閘道聯的 NSG。 確保後端的通信未被阻止。
+* 檢查與應用程式閘道子閘道聯的 UDR。 確保 UDR 不會將流量從後端子網定向到。 例如，檢查路由到網路虛擬裝置或預設路由通過 ExpressRoute/VPN 通告到應用程式閘道子網。
 
 ```azurepowershell
 $vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
@@ -70,17 +70,17 @@ DhcpOptions            : {
                            ]
                          }
 ```
-如果存在，請確定 DNS 伺服器可正確解析後端集區成員的 FQDN。
+如果存在，請確保 DNS 伺服器可以正確解析後端池成員的 FQDN。
 
 ## <a name="problems-with-default-health-probe"></a>預設健全狀況探查的問題
 
 ### <a name="cause"></a>原因
 
-502錯誤也可能是預設健康情況探查無法連線到後端 Vm 的頻繁指示器。
+502 錯誤也可以是預設運行狀況探測無法到達後端 VM 的頻繁指示器。
 
-布建應用程式閘道實例時，它會使用 BackendHttpSetting 的屬性，自動設定每個 BackendAddressPool 的預設健康情況探查。 設定此探查時不需任何使用者輸入。 具體而言，設定負載平衡規則時，會在 BackendHttpSetting 和 BackendAddressPool 之間建立關聯。 預設探查會針對每個關聯設定，而應用程式閘道會在 BackendHttpSetting 元素所指定的埠上，啟動 BackendAddressPool 中每個實例的定期健全狀況檢查連接。 
+預配應用程式閘道實例時，它使用後端Http設置的屬性自動將預設運行狀況探測配置為每個後端位址集區。 設定此探查時不需任何使用者輸入。 具體而言，配置負載平衡規則時，後端Http設置和後端位址集區之間將建立關聯。 為每個關聯配置預設探測，應用程式閘道在後端Http設置元素中指定的埠的後端位址集區中啟動到每個實例的定期運行狀況檢查連接。 
 
-下表列出與預設健全狀況探查相關聯的值：
+下表列出了與預設運行狀況探測關聯的值：
 
 | 探查屬性 | 值 | 描述 |
 | --- | --- | --- |
@@ -89,52 +89,52 @@ DhcpOptions            : {
 | 逾時 |30 |探查逾時 (秒) |
 | 狀況不良臨界值 |3 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 * 確定預設網站已設定且正於 127.0.0.1 上進行接聽。
 * 如果 BackendHttpSetting 指定了 80 以外的連接埠，則應將預設網站設定為在該連接埠上進行接聽。
-* 對 `http://127.0.0.1:port` 的呼叫應該會傳回 HTTP 結果碼 200。 這應該會在30秒的超時期間內傳回。
-* 請確定設定的埠已開啟，而且沒有防火牆規則或 Azure 網路安全性群組，這會封鎖所設定埠上的傳入或傳出流量。
-* 如果 Azure 傳統 Vm 或雲端服務與 FQDN 或公用 IP 搭配使用，請確認對應的[端點](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)已開啟。
-* 如果 VM 是透過 Azure Resource Manager 設定，而且位於應用程式閘道部署所在的 VNet 外部，則必須將[網路安全性群組](../virtual-network/security-overview.md)設定為允許在所需的埠上進行存取。
+* 對 `http://127.0.0.1:port` 的呼叫應該會傳回 HTTP 結果碼 200。 應在 30 秒超時期間返回。
+* 確保配置的埠處於打開狀態，並且沒有防火牆規則或 Azure 網路安全性群組，這些防火牆規則或 Azure 網路安全性群組阻止配置的埠上的傳入或傳出流量。
+* 如果 Azure 經典 VM 或雲服務與 FQDN 或公共 IP 一起使用，請確保打開相應的[終結點](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
+* 如果 VM 是通過 Azure 資源管理器配置的，並且位於部署應用程式閘道的 VNet 之外，則必須將[網路安全性群組](../virtual-network/security-overview.md)配置為允許在所需的埠上進行訪問。
 
 ## <a name="problems-with-custom-health-probe"></a>自訂健全狀況探查的問題
 
 ### <a name="cause"></a>原因
 
-自訂的健全狀況探查能夠對於預設探查行為提供更多彈性。 當您使用自訂探查時，您可以設定探查間隔、URL、要測試的路徑，以及將後端集區實例標示為狀況不良之前，要接受的失敗回應次數。
+自訂的健全狀況探查能夠對於預設探查行為提供更多彈性。 使用自訂探測時，可以將探測間隔、URL、要測試的路徑以及要接受的回應失敗數配置為不健康飲食。
 
-新增下列其他屬性：
+添加了以下其他屬性：
 
 | 探查屬性 | 描述 |
 | --- | --- |
 | 名稱 |探查的名稱。 此名稱用來在後端 HTTP 設定中指出探查。 |
 | 通訊協定 |用來傳送探查的通訊協定。 探查會使用後端 HTTP 設定中定義的通訊協定 |
-| Host |用來傳送探查的主機名稱。 僅適用于在應用程式閘道上設定多網站時。 這與 VM 主機名稱不同。 |
+| Host |用來傳送探查的主機名稱。 僅適用于在應用程式閘道上配置多網站時。 這與 VM 主機名稱不同。 |
 | Path |探查的相對路徑。 有效路徑的開頭為 '/'。 探查會傳送到 \<通訊協定\>://\<主機\>:\<連接埠\>\<路徑\> |
 | 間隔 |探查間隔 (秒)。 這是兩個連續探查之間的時間間隔。 |
-| 逾時 |探查逾時 (秒)。 如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。 |
+| 逾時 |探查逾時 (秒)。 如果在此超時期間未收到有效的回應，則探測器將標記為失敗。 |
 | 狀況不良臨界值 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 確認已按照上述資料表正確設定 [自訂健全狀態探查]。 除了上述的疑難排解步驟，也請確定下列各項：
 
 * 確定已根據 [指南](application-gateway-create-probe-ps.md)正確指定探查。
-* 如果已針對單一網站設定應用程式閘道，則預設應將主機名稱指定為 `127.0.0.1`，除非在自訂探查中另有設定。
+* 如果應用程式閘道配置為單個網站，則預設情況下，主機名稱稱應指定為`127.0.0.1`，除非在自訂探測中另行配置。
 * 確定對 http://\<主機\>:\<連接埠\>\<路徑\> 的呼叫會傳回 HTTP 結果碼 200。
-* 確定 Interval、Timeout 和 UnhealtyThreshold 都在可接受的範圍內。
+* 確保間隔、超時和取消修復閾值在可接受的範圍內。
 * 若使用 HTTPS 探查，請在後端伺服器本身設定後援憑證，以確定後端伺服器不會要求您提供 SNI。
 
 ## <a name="request-time-out"></a>要求逾時
 
 ### <a name="cause"></a>原因
 
-收到使用者要求時，應用程式閘道會將已設定的規則套用至要求，並將其路由傳送至後端集區實例。 其會等候一段可設定的時間間隔以接收來自後端應用程式的回應。 根據預設，此間隔為**20**秒。 如果應用程式閘道未在此間隔內收到來自後端應用程式的回應，則使用者要求會得到502錯誤。
+收到使用者請求時，應用程式閘道會將配置的規則應用於請求並將其路由到後端池實例。 其會等候一段可設定的時間間隔以接收來自後端應用程式的回應。 預設情況下，此間隔為**20**秒。 如果應用程式閘道在此間隔內未收到來自後端應用程式的回應，則使用者請求將出現 502 錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
-應用程式閘道可讓您透過 BackendHttpSetting 設定此設定，然後將它套用至不同的集區。 不同的後端集區可以有不同的 BackendHttpSetting，並已設定不同的要求超時。
+應用程式閘道允許您通過後端Http設置配置此設置，然後可以將其應用於不同的池。 不同的後端池可以有不同的後端Http設置，並配置不同的請求超時。
 
 ```azurepowershell
     New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
@@ -144,17 +144,17 @@ DhcpOptions            : {
 
 ### <a name="cause"></a>原因
 
-如果應用程式閘道沒有在後端位址集區中設定的 Vm 或虛擬機器擴展集，它就無法路由傳送任何客戶要求，也不會送出錯誤的閘道錯誤。
+如果應用程式閘道在後端位址集區中沒有配置 VM 或虛擬機器規模集，則無法路由任何客戶請求併發送錯誤的閘道錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
-請確定後端位址集區不是空的。 這可透過 PowerShell、CLI 或入口網站來完成。
+確保後端位址集區不為空。 這可透過 PowerShell、CLI 或入口網站來完成。
 
 ```azurepowershell
 Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-前述 Cmdlet 的輸出應包含非空白的後端位址集區。 下列範例顯示針對後端 Vm 使用 FQDN 或 IP 位址設定的兩個集區。 BackendAddressPool 的佈建狀態必須是 'Succeeded'。
+前述 Cmdlet 的輸出應包含非空白的後端位址集區。 下面的示例顯示返回的兩個池，它們配置了 FQDN 或後端 VM 的 IP 位址。 BackendAddressPool 的佈建狀態必須是 'Succeeded'。
 
 BackendAddressPoolsText：
 
@@ -186,13 +186,13 @@ BackendAddressPoolsText：
 
 ### <a name="cause"></a>原因
 
-如果 BackendAddressPool 的所有實例都狀況不良，則應用程式閘道不會有任何後端將使用者要求路由傳送至。 當後端實例狀況良好，但未部署必要的應用程式時，也可能會發生這種情況。
+如果後端位址集區的所有實例都不正常，則應用程式閘道沒有任何後端將使用者請求路由到。 當後端實例正常但未部署所需的應用程式時，也會出現這種情況。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
-確定執行個體的狀況良好且已正確設定應用程式。 檢查後端實例是否可以從相同 VNet 中的另一個 VM 回應 ping。 如果設定了公用端點，請確定對 web 應用程式的瀏覽器要求可供維修。
+確定執行個體的狀況良好且已正確設定應用程式。 檢查後端實例是否可以回應來自同一 VNet 中另一個 VM 的 ping。 如果使用公共終結點進行配置，請確保對 Web 應用程式的瀏覽器請求是可維修的。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果上述步驟無法解決問題，請開啟[支援票證](https://azure.microsoft.com/support/options/)。
+如果上述步驟無法解決問題，則打開[支援票證](https://azure.microsoft.com/support/options/)。
 

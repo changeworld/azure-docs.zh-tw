@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668378"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警示管理方案
@@ -18,17 +18,17 @@ ms.locfileid: "77668378"
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure 監視器現在支援[大規模管理警示](https://aka.ms/azure-alerts-overview)的增強功能，包括[System Center Operations Manager、Zabbix 或 Nagios 等監視工具](https://aka.ms/managing-alerts-other-monitoring-services)所產生的功能。
+>  Azure 監視器現在支援大規模[管理警報的](https://aka.ms/azure-alerts-overview)增強功能，包括由[系統中心操作管理器、Zabbix 或 Nagios 等監視工具](https://aka.ms/managing-alerts-other-monitoring-services)生成的功能。
 >  
 
 
 警示管理解決方案可協助您分析 Log Analytics 儲存機制中的所有警示。  這些警示可能來自各種來源，包括[由 Log Analytics 所建立](../../azure-monitor/platform/alerts-overview.md)或[從 Nagios 或 Zabbix 匯入](../../azure-monitor/learn/quick-collect-linux-computer.md)的來源。 此解決方案也會從所有[連線的 System Center Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md)匯入警示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 此解決方案將會使用 Log Analytics 中類型為**警示**的所有記錄，因此您必須執行收集這些記錄所需的所有設定。
 
 - 針對 Log Analytics 警示，[建立警示規則](../../azure-monitor/platform/alerts-overview.md)，以直接在儲存機制中建立警示記錄。
-- 針對 Nagios 和 Zabbix 警示，[設定這些伺服器](../../azure-monitor/learn/quick-collect-linux-computer.md)，以將警示傳送至 Log Analytics。
+- 針對 Nagios 和Zabbix 警示，[設定這些伺服器](../../azure-monitor/learn/quick-collect-linux-computer.md)以將警示傳送至 Log Analytics。
 - 針對 System Center Operations Manager 警示，[將 Operations Manager 管理群組連線到 Log Analytics 工作區](../../azure-monitor/platform/om-agents.md)。  在 System Center Operations Manager 中建立的任何警示會匯入至記錄分析。  
 
 ## <a name="configuration"></a>組態
@@ -57,18 +57,18 @@ ms.locfileid: "77668378"
 - 警示資料每 3 分鐘從 Operations Manager 管理群組傳送至 Log Analytics。  
 
 ## <a name="using-the-solution"></a>使用解決方案
-當您將警示管理解決方案新增至 Log Analytics 工作區時，[警示管理] 圖格會新增至儀表板。  此圖格會顯示過去 24 小時內產生的目前作用中警示數目的計數和圖形表示。  您無法變更此時間範圍。
+當您將警示管理解決方案新增至 Log Analytics 工作區時，[警示管理]**** 圖格會新增至儀表板。  此圖格會顯示過去 24 小時內產生的目前作用中警示數目的計數和圖形表示。  您無法變更此時間範圍。
 
 ![Alert Management tile](media/alert-management-solution/tile.png)
 
-按一下 [警示管理] 圖格以開啟 [警示管理] 儀表板。  此儀表板包含下表中的資料行。  每個資料行依計數列出前 10 個警示，這幾個警示符合該資料行中指定範圍和時間範圍的準則。  您可以按一下資料行底部的 [查看全部] ，或按一下資料行標頭，以執行記錄搜尋來提供完整清單。
+按一下 [警示管理]**** 圖格以開啟 [警示管理]**** 儀表板。  此儀表板包含下表中的資料行。  每個資料行依計數列出前 10 個警示，這幾個警示符合該資料行中指定範圍和時間範圍的準則。  您可以按一下資料行底部的 [查看全部] **** ，或按一下資料行標頭，以執行記錄搜尋來提供完整清單。
 
 | 資料行 | 描述 |
 |:--- |:--- |
 | 重大警示 |嚴重性為「重大」的所有警示 (依警示名稱分組)。  按一下警示名稱來執行記錄搜尋，以傳回該警示的所有記錄。 |
 | 警告警示 |嚴重性為「警告」的所有警示 (依警示名稱分組)。  按一下警示名稱來執行記錄搜尋，以傳回該警示的所有記錄。 |
-| 作用中 System Center Operations Manager 警示 |來自 Operations Manager 且狀態不為 [已關閉] 的所有警示，並依產生此警示的來源分組。 |
-| 所有作用中警示 |具有任何嚴重性的所有警示 (依警示名稱分組)。 只包含 [已關閉] 以外任何狀態的 Operations Manager 警示。 |
+| 活動系統中心操作管理器警報 |來自 Operations Manager 且狀態不為 [已關閉]** 的所有警示，並依產生此警示的來源分組。 |
+| 所有作用中警示 |具有任何嚴重性的所有警示 (依警示名稱分組)。 只包含 [已關閉]** 以外任何狀態的 Operations Manager 警示。 |
 
 如果您向右捲動，儀表板會列出數個常見的查詢，按一下即可執行警示資料的[記錄搜尋](../../azure-monitor/log-query/log-query-overview.md)。
 

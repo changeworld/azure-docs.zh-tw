@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 資訊安全中心套用系統更新 | Microsoft Docs
-description: 本文件說明如何實作 Azure 資訊安全中心建議的「套用系統更新」和「在系統更新之後重新開機」。
+description: 本文件說明如何實作 Azure 資訊安全中心建議的「套用系統更新」**** 和「在系統更新之後重新開機」****。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,25 +14,25 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604547"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 資訊安全中心套用系統更新
 Azure 資訊安全中心每日監視 Windows 和 Linux 虛擬機器 (VM) 和電腦是否有遺漏的作業系統更新。 資訊安全中心會根據 Windows 電腦上設定的服務，從 Windows Update 或 Windows Server Update Services (WSUS) 擷取可用的安全性和重大更新清單。 資訊安全中心也會檢查 Linux 系統中的最新更新。 如果您的 VM 或電腦遺漏系統更新，資訊安全中心會建議您套用系統更新。
 
 ## <a name="implement-the-recommendation"></a>實作建議
-套用系統更新會以建議的形式在資訊安全中心中呈現。 如果您的 VM 或電腦遺漏系統更新，這項建議會出現在 [建議] 和 [計算] 下方。  選取建議即會開啟 [套用系統更新] 儀表板。
+套用系統更新會以建議的形式在資訊安全中心中呈現。 如果您的 VM 或電腦遺漏系統更新，這項建議會出現在 [建議]**** 和 [計算]**** 下方。  選取建議即會開啟 [套用系統更新]**** 儀表板。
 
-在此範例中，我們使用 [計算]。
+在此範例中，我們使用 [計算]****。
 
-1. 在 [資訊安全中心] 主功能表下選取 [計算]。
+1. 在 [資訊安全中心] 主功能表下選取 [計算]****。
 
    ![選取 [計算]][1]
 
-2. 在 [計算] 下方，選取 [遺漏系統更新]。 [套用系統更新] 儀表板隨即開啟。
+2. 在 [計算]**** 下方，選取 [遺漏系統更新]****。 [套用系統更新]**** 儀表板隨即開啟。
 
    ![[套用系統更新] 儀表板][2]
 
@@ -62,23 +62,23 @@ Azure 資訊安全中心每日監視 Windows 和 Linux 虛擬機器 (VM) 和電�
 
    ![遺漏的安全性更新][3]
 
-4. 選取頂端功能區中的 [搜尋] 圖示。  隨即開啟 Azure 監視器記錄搜尋查詢，並篩選出缺少更新的電腦。
+4. 選取頂端功能區中的 [搜尋]**** 圖示。  Azure 監視器日誌搜索查詢將篩選到缺少更新的電腦。
 
-   ![Azure 監視器記錄檔搜尋][4]
+   ![Azure 監視器日誌搜索][4]
 
 5. 從清單中選取電腦以了解更多資訊。 會出現僅針對該電腦篩選出的其他搜尋結果。
 
-    ![Azure 監視器記錄檔搜尋][5]
+    ![Azure 監視器日誌搜索][5]
 
 ## <a name="next-steps"></a>後續步驟
 如要深入了解資訊安全中心，請參閱下列主題：
 
-* [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
-* [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md) -- 了解建議如何協助您保護您的 Azure 資源。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) -- 了解如何監視 Azure 資源的健全狀況。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
+* [在 Azure 安全中心設置安全性原則](tutorial-security-policy.md)-- 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+* [在 Azure 安全中心管理安全建議](security-center-recommendations.md)-- 瞭解建議如何説明保護 Azure 資源。
+* [Azure 安全中心中的安全運行狀況監視](security-center-monitoring.md)-- 瞭解如何監視 Azure 資源的運行狀況。
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)-- 瞭解如何管理和回應安全警報。
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) -- 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) -- 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)-- 查找有關 Azure 安全性和合規性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png

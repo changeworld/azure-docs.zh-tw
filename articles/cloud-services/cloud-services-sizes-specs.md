@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247471"
 ---
 # <a name="sizes-for-cloud-services"></a>雲端服務的大小
@@ -38,7 +38,7 @@ ms.locfileid: "79247471"
 
 * A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些大小的硬體是針對計算密集型和網路密集型應用程式 (包括高效能運算 (HPC) 叢集應用程式)、模型化及模擬而設計及最佳化的。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，而 H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。 如需有關使用這些大小的詳細資訊與考量，請參閱[高效能計算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * Dv3 系列、Dv2 系列、D 系列和 G 系列是要求更快速的 CPU、更好的本機磁碟效能，或有更高記憶體需求之應用程式的最佳選擇。 它們為許多企業級應用程式提供了強大的組合。
-* Azure 資料中心的某些實體主機可能不支援較大的虛擬機器大小，例如 A5-A11。 因此，您可能會在將現有的虛擬機器調整為新的大小、在 2013 年 4 月 16 日之前建立的虛擬網路中建立新的虛擬機器，或將新的虛擬機器新增至現有雲端服務時，看到錯誤訊息：**無法設定虛擬機器 {machine name}** 或**無法建立虛擬機器 {machine name}** 。 請參閱支援論壇上 [錯誤：「無法設定虛擬機器」](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) ，以查看每個部署案例的因應措施。
+* Azure 資料中心的某些實體主機可能不支援較大的虛擬機器大小，例如 A5-A11。 因此，您可能會在將現有的虛擬機器調整為新的大小、在 2013 年 4 月 16 日之前建立的虛擬網路中建立新的虛擬機器，或將新的虛擬機器新增至現有雲端服務時，看到錯誤訊息：**無法設定虛擬機器 {machine name}** 或**無法建立虛擬機器 {machine name}**。 請參閱支援論壇上 [錯誤：「無法設定虛擬機器」](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) ，以查看每個部署案例的因應措施。
 * 您的訂用帳戶也可能會限制您可以在特定大小系列中部署的核心數目。 若要增加配額，請連絡 Azure 支援服務。
 
 ## <a name="performance-considerations"></a>效能考量
@@ -53,7 +53,7 @@ ms.locfileid: "79247471"
 
 | SKU 系列 | ACU/核心 |
 | --- | --- |
-| [ExtraSmall](#a-series) |50 |
+| [特小型](#a-series) |50 |
 | [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
@@ -214,7 +214,7 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 了解 [Azure 訂用帳戶和服務限制、配額與限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+* 瞭解[Azure 訂閱和服務限制、配額和約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 進一步了解 HPC 工作負載的[有關高效能計算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

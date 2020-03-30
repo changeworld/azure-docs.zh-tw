@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670605"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>在 Azure 監視器中，從 Linux 代理程式上的 CollectD 收集資料
@@ -63,7 +63,7 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
     </filter>
 
 > [!NOTE]
-> CollectD 預設會設定為以10秒的[間隔](https://collectd.org/wiki/index.php/Interval)讀取值。 因為這會直接影響傳送至 Azure 監視器記錄的資料量，所以您可能需要在 CollectD 設定中微調此間隔，以在監視需求和相關成本與 Azure 監視器記錄的使用量之間取得良好平衡。
+> 預設情況下，CollectD 設置為在 10 秒[間隔](https://collectd.org/wiki/index.php/Interval)內讀取值。 由於這直接影響發送到 Azure 監視器日誌的資料量，您可能需要在 CollectD 配置中調整此間隔，才能在監視要求與 Azure 監視器日誌的相關成本和使用方式之間取得良好的平衡。
 
 ## <a name="versions-supported"></a>支援的版本
 - Azure 監視器目前支援 CollectD 4.8 版和更新版本。
@@ -108,12 +108,12 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
 | CollectD 計量欄位 | [Azure 監視器] 欄位 |
 |:--|:--|
 | `host` | 電腦 |
-| `plugin` | 無 |
-| `plugin_instance` | 執行個體名稱<br>If **plugin_instance** is *null* then InstanceName=" *_Total*" |
+| `plugin` | None |
+| `plugin_instance` | 執行個體名稱<br>If **plugin_instance** is *null* then InstanceName="*_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>If **type_instance** is *null* then CounterName=**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | 無 |
+| `dstypes` | None |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>後續步驟

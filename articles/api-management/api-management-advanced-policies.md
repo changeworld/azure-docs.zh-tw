@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266165"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理進階原則
 
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-## <a name="AdvancedPolicies"></a>進階原則
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>高級策略
 
 -   [控制流程](api-management-advanced-policies.md#choose) - 根據布林值[運算式](api-management-policy-expressions.md)的評估結果，有條件地套用原則陳述式。
 -   [轉寄要求](#ForwardRequest) - 將要求轉寄至後端服務。
@@ -38,14 +38,14 @@ ms.locfileid: "79266165"
 -   [設定要求方法](#SetRequestMethod) - 允許您變更要求的 HTTP 方法。
 -   [設定狀態碼](#SetStatus) - 將 HTTP 狀態碼變更為指定的值。
 -   [設定變數](api-management-advanced-policies.md#set-variable) - 保存具名[內容](api-management-policy-expressions.md#ContextVariables)變數中的值，供日後存取使用。
--   [追蹤](#Trace)-將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、Application Insights 遙測和診斷記錄中。
--   [等候](#Wait) - 等候括住的 [Send 要求](api-management-advanced-policies.md#SendRequest)、[取得快取的值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流程](api-management-advanced-policies.md#choose)原則完成後再繼續。
+-   [跟蹤](#Trace)- 將自訂跟蹤添加到[API 檢查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、應用程式見解遙測和診斷日誌中。
+-   [等待](#Wait)- 等待隨附的[發送請求](api-management-advanced-policies.md#SendRequest)、[從緩存獲取值](api-management-caching-policies.md#GetFromCacheByKey)，或[控制流](api-management-advanced-policies.md#choose)策略在繼續之前完成。
 
-## <a name="choose"></a>控制流程
+## <a name="control-flow"></a><a name="choose"></a>控制流
 
 `choose` 原則會根據布林運算式 (類似於 if-then-else 或程式語言中的參數建構) 的評估結果套用括住的原則陳述式。
 
-### <a name="ChoosePolicyStatement"></a>原則陳述式
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>原則陳述式
 
 ```xml
 <choose>
@@ -61,19 +61,19 @@ ms.locfileid: "79266165"
 </choose>
 ```
 
-控制流程原則至少必須包含一個 `<when/>` 元素。 `<otherwise/>` 則是選擇性元素。 `<when/>` 元素中的條件會依其在原則內的出現順序進行評估。 系統會套用條件屬性等於 `<when/>` 的第一個 `true` 元素內所括住的原則陳述式。 如果所有 `<otherwise/>` 元素的條件屬性都是 `<when/>`，則會套用 `false` 元素內所括住的原則 (如果有的話)。
+控制流程原則至少必須包含一個 `<when/>` 元素。 `<otherwise/>` 則是選擇性元素。 `<when/>` 元素中的條件會依其在原則內的出現順序進行評估。 系統會套用條件屬性等於 `true` 的第一個 `<when/>` 元素內所括住的原則陳述式。 如果所有 `<when/>` 元素的條件屬性都是 `false`，則會套用 `<otherwise/>` 元素內所括住的原則 (如果有的話)。
 
 ### <a name="examples"></a>範例
 
-#### <a name="ChooseExample"></a> 範例
+#### <a name="example"></a><a name="ChooseExample"></a>例子
 
-下列範例會示範 [set-variable](api-management-advanced-policies.md#set-variable) 原則和兩個控制流程原則。
+下列範例示範一個 [set-variable](api-management-advanced-policies.md#set-variable) 原則和兩個控制流程原則。
 
-設定變數原則位於 inbound 區段中，並且會在 `isMobile` 要求標頭包含文字 [ 或 ](api-management-policy-expressions.md#ContextVariables) 時，建立設為 true 的 `User-Agent` 布林`iPad`內容`iPhone`變數。
+設定變數原則位於輸入區段中，並建立 `isMobile` 布林值[內容](api-management-policy-expressions.md#ContextVariables)變數，如果 `User-Agent` 要求標頭包含文字 `iPad` 或 `iPhone`，此變數會設為 true。
 
-第一個控制流程原則也位於 inbound 區段中，並且會按照條件，根據 [ 內容變數的值套用兩個](api-management-transformation-policies.md#SetQueryStringParameter)設定查詢字串參數`isMobile`原則的其中一個。
+第一個控制流程原則也位於 inbound 區段中，並且會按照條件，根據 `isMobile` 內容變數的值套用兩個[設定查詢字串參數](api-management-transformation-policies.md#SetQueryStringParameter)原則的其中一個。
 
-第二個控制流程原則位於 outbound 區段中，並且會按照條件，在 [ 設為 ](api-management-transformation-policies.md#ConvertXMLtoJSON) 時套用`isMobile`將 XML 轉換為 JSON`true` 原則。
+第二個控制流程原則位於 outbound 區段中，並且會按照條件，在 `isMobile` 設為 `true` 時套用[將 XML 轉換為 JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) 原則。
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ ms.locfileid: "79266165"
 
 #### <a name="example"></a>範例
 
-這個範例示範如何在使用 `Starter` 產品時，移除「從後端服務收到的回應」中的資料元素，藉此執行內容篩選。 如需設定和使用此原則的示範，請觀賞 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)，快轉到 34:30。 從31:50 開始，以查看用於此示範的[深天空預測 API](https://developer.forecast.io/) 。
+這個範例示範如何在使用 `Starter` 產品時，移除「從後端服務收到的回應」中的資料元素，藉此執行內容篩選。 如需設定和使用此原則的示範，請觀賞 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)，快轉到 34:30。 從 31：50 開始查看用於此演示的黑暗[天空預測 API](https://developer.forecast.io/)的概述。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -129,7 +129,7 @@ ms.locfileid: "79266165"
 | 元素   | 描述                                                                                                                                                                                                                                                               | 必要 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | 根元素。                                                                                                                                                                                                                                                             | 是      |
-| when      | 要用於 `if` 原則之 `ifelse` 或 `choose` 組件的條件。 如果 `choose` 原則有多個 `when` 區段，則會依序評估這些區段。 一旦 when 元素的 `condition` 評估為 `true` 後，就不會再評估後面的 `when` 條件。 | 是      |
+| when      | 要用於 `choose` 原則之 `if` 或 `ifelse` 組件的條件。 如果 `choose` 原則有多個 `when` 區段，則會依序評估這些區段。 一旦 when 元素的 `condition` 評估為 `true` 後，就不會再評估後面的 `when` 條件。 | 是      |
 | otherwise | 內含沒有任何 `when` 條件評估為 `true` 時，所要使用的原則片段。                                                                                                                                                                               | 否       |
 
 ### <a name="attributes"></a>屬性
@@ -138,7 +138,7 @@ ms.locfileid: "79266165"
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="Boolean expression &#124; Boolean constant" | 所包含之 `when` 原則陳述式受到評估時，所要評估的布林運算式或常數。 | 是      |
 
-### <a name="ChooseUsage"></a>使用方式
+### <a name="usage"></a><a name="ChooseUsage"></a>使用
 
 此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
 
@@ -146,9 +146,9 @@ ms.locfileid: "79266165"
 
 -   **原則範圍：** 所有範圍
 
-## <a name="ForwardRequest"></a>轉送要求
+## <a name="forward-request"></a><a name="ForwardRequest"></a>轉發請求
 
-`forward-request` 原則會將內送要求轉送給要求[內容](api-management-policy-expressions.md#ContextVariables)中指定的後端服務。 後端服務 URL 會在 API[設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，並可使用[設定後端服務](api-management-transformation-policies.md)原則來變更。
+`forward-request` 原則會將內送要求轉送給要求[內容](api-management-policy-expressions.md#ContextVariables)中指定的後端服務。 後端服務 URL 在 API[設置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，可以使用[設置的後端服務](api-management-transformation-policies.md)策略進行更改。
 
 > [!NOTE]
 > 移除此原則會導致要求不會轉送到後端服務中，而且當 inbound 區段中的原則一順利完成，就會立即評估 outbound 區段中的原則。
@@ -163,7 +163,7 @@ ms.locfileid: "79266165"
 
 #### <a name="example"></a>範例
 
-下列 API 層級原則會將所有 API 要求轉送到後端服務，並將逾時間隔設為60秒。
+以下 API 級別策略將所有 API 請求轉發到後端服務，超時間隔為 60 秒。
 
 ```xml
 <!-- api level -->
@@ -203,7 +203,7 @@ ms.locfileid: "79266165"
 
 #### <a name="example"></a>範例
 
-此作業層級原則會明確地將所有要求轉送至後端服務 (逾時值為 120)，且不會繼承父 API 層級的後端原則。 如果後端服務回應的錯誤狀態碼為400到599（含），則會觸發「[錯誤](api-management-error-handling-policies.md)」區段。
+此作業層級原則會明確地將所有要求轉送至後端服務 (逾時值為 120)，且不會繼承父 API 層級的後端原則。 如果後端服務以錯誤狀態碼從 400 到 599（包括）回應，則將觸發[錯誤時](api-management-error-handling-policies.md)部分。
 
 ```xml
 <!-- operation level -->
@@ -252,10 +252,10 @@ ms.locfileid: "79266165"
 
 | 屬性                                     | 描述                                                                                                                                                                                                                                                                                                    | 必要 | 預設 |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout="integer"                             | 等待後端服務傳回 HTTP 回應標頭的時間長度（以秒為單位），然後才引發逾時錯誤。 最小值為0秒。 無法接受大於240秒的值，因為基礎網路基礎結構在這段時間之後可以卸載閒置連線。 | 否       | None    |
-| 跟隨-重新導向 = " &#124; false true"          | 指定來自後端服務的重新導向會由閘道遵循或傳回給呼叫者。                                                                                                                                                                                                    | 否       | false   |
-| 緩衝區-要求-主體 = "false &#124; true"       | 當設定為 "true" 時，要求會經過緩衝處理，並會在[重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | 否       | false   |
-| 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設定為 true 時，會針對範圍從400到599（含）的回應碼觸發[錯誤](api-management-error-handling-policies.md)區段。                                                                                                                                                                      | 否       | false   |
+| timeout="integer"                             | 在引發逾時錯誤之前，等待後端服務返回 HTTP 回應標頭的時間（以秒為單位）。 最小值為 0 秒。 大於 240 秒的值可能無法得到遵守，因為基礎網路基礎結構可能會在此時間之後丟棄空閒連接。 | 否       | None    |
+| 後續重定向="假&#124;真"          | 指定來自後端服務的重新導向會由閘道遵循或傳回給呼叫者。                                                                                                                                                                                                    | 否       | false   |
+| 緩衝區請求正文="假&#124;真"       | 當設置為"true"時，請求將被緩衝，並將在[重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | 否       | false   |
+| 錯誤失敗狀態碼="假&#124;真" | 當設置為 true 觸發器[錯誤時](api-management-error-handling-policies.md)，回應代碼的範圍為 400 到 599（包括）。                                                                                                                                                                      | 否       | false   |
 
 ### <a name="usage"></a>使用量
 
@@ -264,11 +264,11 @@ ms.locfileid: "79266165"
 -   **原則區段︰** 後端
 -   **原則範圍：** 所有範圍
 
-## <a name="LimitConcurrency"></a> 限制並行
+## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a> 限制並行
 
 `limit-concurrency` 原則可防止超過指定數目的要求在任何時間執行括住的原則。 超出該數目時，新的要求會立即失敗，並產生「429 太多要求」狀態碼。
 
-### <a name="LimitConcurrencyStatement"></a>原則陳述式
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>原則陳述式
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -305,7 +305,7 @@ ms.locfileid: "79266165"
 | 屬性 | 描述                                                                                        | 必要 | 預設 |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | 索引鍵       | 字串。 允許的運算式。 指定並行範圍。 可由多個原則共用。 | 是      | N/A     |
-| max-count | {1}整數。{2} 指定允許輸入原則的要求數目上限。           | 是      | N/A     |
+| max-count | 整數。 指定允許輸入原則的要求數目上限。           | 是      | N/A     |
 
 ### <a name="usage"></a>使用量
 
@@ -315,7 +315,7 @@ ms.locfileid: "79266165"
 
 -   **原則範圍：** 所有範圍
 
-## <a name="log-to-eventhub"></a>記錄到事件中樞
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>記錄到事件中樞
 
 `log-to-eventhub` 原則會將指定格式的訊息傳送至記錄器實體所定義的事件中樞。 此原則正如其名，可用來儲存選取的要求或回應內容資訊，以進行線上或離線分析。
 
@@ -333,7 +333,7 @@ ms.locfileid: "79266165"
 
 ### <a name="example"></a>範例
 
-任何字串皆可做為值來記錄到事件中樞內。 在此範例中，所有輸入呼叫的日期和時間、部署服務名稱、要求識別碼、IP 位址和作業名稱都會記錄到以 `contoso-logger` 識別碼註冊的事件中樞記錄器
+任何字串皆可做為值來記錄到事件中樞內。 在此示例中，所有入站呼叫的日期和時間、部署服務名稱、請求 ID、IP 位址和操作名稱都記錄到註冊為`contoso-logger`ID 的事件中心記錄器
 
 ```xml
 <policies>
@@ -357,7 +357,7 @@ ms.locfileid: "79266165"
 
 | 屬性     | 描述                                                               | 必要                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| logger-id     | 已向您的 API 管理服務註冊的記錄器識別碼。         | 是                                                                  |
+| logger-id     | 在 API 管理服務中註冊的記錄器的 ID。         | 是                                                                  |
 | partition-id  | 指定訊息傳送目的地的資料分割索引。             | 選擇性。 如果使用 `partition-key`，就不能使用這個屬性。 |
 | partition-key | 指定在傳送訊息時，用來指派資料分割的值。 | 選擇性。 如果使用 `partition-id`，就不能使用這個屬性。  |
 
@@ -369,7 +369,7 @@ ms.locfileid: "79266165"
 
 -   **原則範圍：** 所有範圍
 
-## <a name="mock-response"></a> Mock 回應
+## <a name="mock-response"></a><a name="mock-response"></a> Mock 回應
 
 如名稱所示，`mock-response` 是用來模擬 API 和作業。 它會中止正常的管線執行，並將模擬回應傳回給呼叫者。 原則一律會嘗試傳回最高精確度的回應。 它偏好使用回應內容範例 (若可使用)。 當提供結構描述而無提供範例時，它會從結構描述產生範例回應。 如果沒有找到範例或結構描述，則會傳回沒有內容的回應。
 
@@ -413,9 +413,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="Retry"></a>重試
+## <a name="retry"></a><a name="Retry"></a>重試
 
-`retry` 原則會執行其子原則一次，然後重試其執行，直到重試 `condition` 變成 `false` 或重試 `count` 已耗盡為止。
+策略`retry`執行其子策略一次，然後重試其執行，直到重試`condition`變為`false`或重試`count`已用盡。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -466,7 +466,7 @@ status code and media type. If no example or schema found, the content is empty.
 | interval         | 以秒為單位的正數，指定重試嘗試之間的等待間隔。                                                                 | 是      | N/A     |
 | max-interval     | 以秒為單位的正數，指定重試嘗試之間的最大等待間隔。 此屬性可用來實作指數重試演算法。 | 否       | N/A     |
 | delta            | 以秒為單位的正數，指定等待間隔的增量。 此屬性可用來實作線性和指數的重試演算法。             | 否       | N/A     |
-| first-fast-retry | 如果設定為 `true`，則會立即執行第一次重試嘗試。                                                                                  | 否       | `false` |
+| first-fast-retry | 如果設置為`true`，則立即執行第一次重試嘗試。                                                                                  | 否       | `false` |
 
 > [!NOTE]
 > 當只有指定 `interval` 時，會執行**固定**間隔的重試。
@@ -481,7 +481,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="ReturnResponse"></a>傳回回應
+## <a name="return-response"></a><a name="ReturnResponse"></a>傳回回應
 
 `return-response` 原則會中止管線的執行，並將預設或自訂的回應傳回給呼叫者。 預設回應是 `200 OK`，且沒有本文。 透過內容變數或原則陳述式即可指定自訂回應。 若同時提供兩者，原則陳述式會先修改內容變數中包含的回應，再傳回給呼叫者。
 
@@ -531,7 +531,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="SendOneWayRequest"></a>傳送單向要求
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>傳送單向要求
 
 `send-one-way-request` 原則會將所提供的要求傳送到指定的 URL，無須等待回應。
 
@@ -595,7 +595,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string" | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新增      |
 | NAME          | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
-| exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
+| exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> - 覆蓋 - 替換現有標頭的值。<br />- 跳過 - 不替換現有標頭值。<br />- 追加 - 將值追加到現有標頭值。<br />- 刪除 - 從請求中刪除標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
 ### <a name="usage"></a>使用量
 
@@ -605,7 +605,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="SendRequest"></a>傳送要求
+## <a name="send-request"></a><a name="SendRequest"></a>傳送要求
 
 `send-request` 原則會將所提供的要求傳送至指定的 URL，等候時間不會超過所設定的逾時值。
 
@@ -678,11 +678,11 @@ status code and media type. If no example or schema found, the content is empty.
 | 屬性                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必要 | 預設  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新增      |
-| response-variable-name="string" | 將會收到回應物件之內容變數的名稱。 如果變數不存在，就會在原則成功執行時建立，且將可透過 [`context.Variable`](api-management-policy-expressions.md#ContextVariables) 集合存取。                                                                                                                                                                                                                                                                                                                          | 是      | N/A      |
+| response-variable-name="string" | 將會收到回應物件之內容變數的名稱。 如果變數不存在，它將在策略成功執行後創建，並通過[`context.Variable`](api-management-policy-expressions.md#ContextVariables)集合進行訪問。                                                                                                                                                                                                                                                                                                                          | 是      | N/A      |
 | timeout="integer"               | 以秒為單位的逾時間隔，URL 的呼叫在經過此間隔後便會失敗。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 否       | 60       |
-| ignore-error                    | 如果為 true，則要求會導致錯誤︰<br /><br /> -如果已指定回應變數名稱，則會包含 null 值。<br />-如果未指定回應變數名稱，則為 coNtext。將不會更新要求。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | false    |
+| ignore-error                    | 如果為 true，則要求會導致錯誤︰<br /><br /> - 如果指定了回應變數名稱，它將包含一個空值。<br />- 如果未指定回應變數名稱，則為上下文。請求將不會更新。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | false    |
 | NAME                            | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
-| exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
+| exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> - 覆蓋 - 替換現有標頭的值。<br />- 跳過 - 不替換現有標頭值。<br />- 追加 - 將值追加到現有標頭值。<br />- 刪除 - 從請求中刪除標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
 ### <a name="usage"></a>使用量
 
@@ -692,7 +692,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="SetHttpProxy"></a> 設定 HTTP Proxy
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> 設定 HTTP Proxy
 
 `proxy` 原則可讓您透過 HTTP Proxy 將要求路由轉送至後端。 在閘道與 Proxy 之間僅支援 HTTP (不是 HTTPS)。 僅限基本和 NTLM 驗證。
 
@@ -734,7 +734,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="SetRequestMethod"></a>設定要求方法
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a>設定要求方法
 
 `set-method` 原則允許您變更要求的 HTTP 要求方法。
 
@@ -789,7 +789,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="SetStatus"></a>設定狀態碼
+## <a name="set-status-code"></a><a name="SetStatus"></a>設定狀態碼
 
 `set-status` 原則會將 HTTP 狀態碼設為指定值。
 
@@ -838,19 +838,19 @@ status code and media type. If no example or schema found, the content is empty.
 -   **原則區段︰** 輸出、後端、錯誤
 -   **原則範圍：** 所有範圍
 
-## <a name="set-variable"></a>設定變數
+## <a name="set-variable"></a><a name="set-variable"></a>設置變數
 
 `set-variable` 原則會宣告[內容](api-management-policy-expressions.md#ContextVariables)變數，並對其指派透過[運算式](api-management-policy-expressions.md)或字串常值指定的值。 包含常值的運算式會轉換成字串，且值的類型為 `System.String`。
 
-### <a name="set-variablePolicyStatement"></a>原則陳述式
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>原則陳述式
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="set-variableExample"></a> 範例
+### <a name="example"></a><a name="set-variableExample"></a>例子
 
-下列範例會示範 inbound 區段中的設定變數原則。 此設定變數原則會在 `isMobile` 要求標頭包含文字 [ 或 ](api-management-policy-expressions.md#ContextVariables) 時，建立設為 true 的 `User-Agent` 布林`iPad`內容`iPhone`變數。
+下列範例會示範 inbound 區段中的設定變數原則。 此設定變數原則建立 `isMobile` 布林值[內容](api-management-policy-expressions.md#ContextVariables)變數，如果 `User-Agent` 要求標頭包含文字 `iPad` 或 `iPhone`，此變數會設為 true。
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -876,7 +876,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 -   **原則範圍：** 所有範圍
 
-### <a name="set-variableAllowedTypes"></a>允許的類型
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>允許的類型
 
 `set-variable` 原則中使用的運算式必須傳回下列其中一個基本類型。
 
@@ -912,13 +912,13 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?
 -   System.DateTime?
 
-## <a name="Trace"></a>追蹤
+## <a name="trace"></a><a name="Trace"></a>跟蹤
 
-`trace` 原則會將自訂追蹤新增至 API 偵測器輸出、Application Insights 遙測和/或診斷記錄中。
+該`trace`策略將自訂跟蹤添加到 API 檢查器輸出、應用程式見解遙測和/或診斷日誌中。
 
--   此原則會在觸發追蹤時，將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出，亦即 `Ocp-Apim-Trace` 要求標頭存在且設定為 true，且 `Ocp-Apim-Subscription-Key` 要求標頭存在，並保留允許追蹤的有效金鑰。
--   當[Application Insights 整合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)已啟用，且原則中指定的 `severity` 層級高於或高於診斷設定中指定的 `verbosity` 層級時，原則就會在 Application Insights 中建立[追蹤](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遙測。
--   啟用[診斷記錄](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)時，原則會在記錄專案中新增一個屬性，而在原則中指定的嚴重性層級為或高於 [診斷] 設定中指定的詳細資訊層級。
+-   觸發跟蹤時，策略向[API 檢查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出添加自訂跟蹤，即`Ocp-Apim-Trace`請求標頭存在並設置為 true，並且`Ocp-Apim-Subscription-Key`請求標頭存在，並持有允許跟蹤的有效金鑰。
+-   當啟用[了應用程式見解集成](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)且策略中指定的`severity`級別達到或高於診斷設置中指定的`verbosity`級別時，該策略會在應用程式見解中創建[跟蹤](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遙測。
+-   啟用[診斷日誌](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)且策略中指定的嚴重性級別達到或高於診斷設置中指定的詳細級別時，策略會在日誌條目中添加屬性。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -931,7 +931,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="traceExample"></a> 範例
+### <a name="example"></a><a name="traceExample"></a>例子
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -946,14 +946,14 @@ status code and media type. If no example or schema found, the content is empty.
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | 追蹤    | 根元素。                                                                                                                                        | 是      |
 | message  | 要記錄的字串或運算式。                                                                                                                 | 是      |
-| 中繼資料 | 將自訂屬性新增至 Application Insights 的[追蹤](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遙測。 | 否       |
+| 中繼資料 | 將自訂屬性添加到應用程式見解[跟蹤](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遙測。 | 否       |
 
 ### <a name="attributes"></a>屬性
 
 | 屬性 | 描述                                                                                                               | 必要 | 預設 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | 對追蹤檢視器有意義，並指定了訊息來源的字串常值。                                   | 是      | N/A     |
-| severity  | 指定追蹤的嚴重性層級。 允許的值為 `verbose`、`information``error` （從最低到最高）。 | 否       | 「詳細資訊」 |
+| severity  | 指定跟蹤的嚴重性級別。 允許的值是`verbose` `information`，（`error`從最低到最高）。 | 否       | 「詳細資訊」 |
 | NAME      | 屬性的名稱。                                                                                                     | 是      | N/A     |
 | value     | 屬性的值。                                                                                                    | 是      | N/A     |
 
@@ -965,7 +965,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **原則範圍：** 所有範圍
 
-## <a name="Wait"></a>等候
+## <a name="wait"></a><a name="Wait"></a>等
 
 `wait` 原則會以平行方式執行其直屬子原則，並等候其所有或其中一個直屬子原則完成後再完成。 等候原則可擁有做為其直屬子原則[傳送要求](api-management-advanced-policies.md#SendRequest)、[從快取取得值](api-management-caching-policies.md#GetFromCacheByKey)和[控制流程](api-management-advanced-policies.md#choose)原則。
 
@@ -981,7 +981,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>範例
 
-在下列範例中，有兩個 `choose` 原則做為 `wait` 原則的直屬子原則。 在這些 `choose` 原則中，每一個都會以平行方式執行。 每個 `choose` 原則都會嘗試擷取快取的值。 如果有快取遺漏，便會呼叫後端服務以提供值。 在此範例中，因為 `wait` 屬性設為 `for`，所以要等到其所有直屬子原則完成後，`all` 原則才會完成。 在此範例中，內容變數 (`execute-branch-one`、`value-one`、`execute-branch-two` 和 `value-two`) 會在此範例原則的範圍之外進行宣告。
+在下列範例中，有兩個 `choose` 原則做為 `wait` 原則的直屬子原則。 在這些 `choose` 原則中，每一個都會以平行方式執行。 每個 `choose` 原則都會嘗試擷取快取的值。 如果有快取遺漏，便會呼叫後端服務以提供值。 在此範例中，因為 `for` 屬性設為 `all`，所以要等到其所有直屬子原則完成後，`wait` 原則才會完成。 在此範例中，內容變數 (`execute-branch-one`、`value-one`、`execute-branch-two` 和 `value-two`) 會在此範例原則的範圍之外進行宣告。
 
 ```xml
 <wait for="all">
@@ -1025,7 +1025,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 屬性 | 描述                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
+| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />- 任何 - 等待任何即時子策略完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
 
 ### <a name="usage"></a>使用量
 

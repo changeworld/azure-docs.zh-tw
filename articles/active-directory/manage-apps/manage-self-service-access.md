@@ -1,6 +1,6 @@
 ---
 title: 如何設定自助式應用程式指派 | Microsoft Docs
-description: 啟用自助應用程式存取以允許使用者尋找其應用程式
+description: 啟用自助應用程式存取以允許使用者尋找自己的應用程式
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 10/23/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbeb25f1190754b4264cfbab9d8a03a6b65c4dff
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895972"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409111"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何設定自助應用程式指派
 
-您必須針對想要允許使用者進行自助探索並要求存取權的所有應用程式啟用「自助應用程式存取」，使用者才能從其存取面板進行應用程式自助探索。 這種功能適用于從[Azure AD 資源庫](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)新增的應用程式、 [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ，或透過[使用者或系統管理員同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)新增。 
+在使用者可以從其"我的應用"訪問面板中自行發現應用程式之前，您需要啟用**自助服務應用程式**對您希望允許使用者自行發現和請求訪問的任何應用程式的存取權限。 此功能可用於從[Azure AD 庫](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)[、Azure AD 應用程式代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)添加或通過[使用者或管理員同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)添加的應用程式。 
 
 此功能極有助於節省 IT 群組的時間和成本，非常建議在搭配 Azure Active Directory 進行現代化應用程式部署時使用。
 
 您可以使用這項功能︰
 
--   讓使用者不需要 IT 群組的協助，即可從[應用程式存取面板](https://myapps.microsoft.com/)自行探索應用程式。
+-   允許使用者從["我的應用"訪問面板](https://myapps.microsoft.com/)中自行發現應用程式，而無需打擾 IT 組。
 
 -   將那些使用者新增至預先設定的群組，以便您可以查看哪些人要求存取權、移除存取權，以及管理指派給他們的角色。
 
@@ -42,53 +42,41 @@ ms.locfileid: "72895972"
 
 -   可選擇自動將自助式指派的使用者直接指派至應用程式角色。
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>啟用自助應用程式存取以允許使用者尋找其應用程式
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>啟用自助應用程式存取以允許使用者尋找自己的應用程式
 
-自助應用程式存取是讓使用者自行探索應用程式的絕佳方式，還可讓商務群組核准對那些應用程式的存取。 您可以讓商務群組直接從其存取面板，管理指派給「密碼單一登入應用程式」使用者的認證。
+自助服務應用程式訪問是允許使用者自行發現應用程式以及允許業務組批准對這些應用程式的訪問的好方法。 對於應用程式上的密碼單一簽名，您還可以允許業務組管理從他們自己的"我的應用"訪問面板分配給這些使用者的憑據。
 
 若要啟用對應用程式的自助存取，請依照下列步驟執行：
 
-1.  開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
+1. 以全域管理員身份登錄到[Azure 門戶](https://portal.azure.com)。
 
-2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+2. 選擇**Azure 活動目錄**。 在左側導航功能表中，選擇**企業應用程式**。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+3. 從清單中選擇應用程式。 如果看不到應用程式，請開始在搜索框中鍵入其名稱。 或者使用篩選器控制項選擇應用程式類型、狀態或可見度，然後選擇 **"應用**"。
 
-4.  從 Azure Active Directory 左邊瀏覽功能表，按一下 [企業應用程式]。
+4. 在左側導航功能表中，選擇**自助服務**。
 
-5.  按一下 [所有應用程式] 以檢視所有應用程式的清單。
+5. 若要啟用此應用程式的自助式應用程式存取，請將 [要允許使用者要求此應用程式的存取權嗎?]**** 切換開關切換為 [是]****。
 
-    * 若在這裡沒看到您要的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
-
-6.  從該清單選取您要啟用自助存取的應用程式。
-
-7.  應用程式載入之後，按一下應用程式左邊瀏覽功能表中的 [自助]。
-
-8.  若要啟用此應用程式的自助式應用程式存取，請將 [要允許使用者要求此應用程式的存取權嗎?] 切換開關切換為 [是]。
-
-9.  接著，若要為要求存取此應用程式的使用者指派群組，請按一下 [要將指派的使用者新增至哪個群組呢?] 標籤旁的選取控制項，然後選取一個群組。
+6. 旁邊**應向哪個組分配使用者？** **Select group** 選擇組，然後按一下 **"選擇**"。 當使用者的請求獲得批准時，他們將被添加到此組。 查看此組的成員身份時，您將能夠看到誰已被授予通過自助服務訪問訪問應用程式。
   
     > [!NOTE]
-    > 針對要求存取此應用程式的使用者，不支援將其新增至從內部部署同步處理的群組。
-  
-10. **選擇性：** 若要將使用者設定為必須經過商務核准才能存取應用程式，請將 [需要核准才能授予此應用程式的存取權嗎?] 切換開關設定為 [是]。
+    > 此設置不支援從本地同步的組。
 
-11. **選擇性：對於只使用密碼單一登入的應用程式，** 若要讓那些商務核准者為核准的使用者指定傳送給此應用程式的密碼，請將 [要允許核准者為此應用程式設定使用者的密碼嗎?] 切換開關設定為 [是]。
+7. **可選：** 要在允許使用者訪問之前需要業務批准，請先在**授予對此應用程式存取權限之前設置"需要審批"？** 切換為 **"是**"。
 
-12. **選擇性：** 若要指定商務核准者以核准此應用程式存取權，請按一下 [哪些人員可核准此應用程式的存取權?] 標籤旁的選取控制項以選取最多 10 個商務核准者。
+8. **可選：對於僅使用密碼單一符號的應用程式，** 允許業務核准者為已批准的使用者指定發送到此應用程式的密碼，請設置 **"允許核准者"以為此應用程式設定使用者的密碼？** **Yes**
 
-     > [!NOTE]
-     > 不支援群組。
-     >
-     >
+9. **可選：** 要指定允許批准訪問此應用程式的業務審批人，請在**允許誰批准訪問此應用程式旁邊，** 按一下 **"選擇核准者**"，然後選擇最多 10 個單獨的業務核准者。 然後按一下 [選取] ****。
 
-13. **選擇性：** **對於公開角色的應用程式**，若要將已獲得自助存取核准的使用者指派給角色，請按一下 [在此應用程式中應為使用者指派的角色為?] 旁的選取控制項，以選取要為這些使用者指派的角色。
+    >[!NOTE]
+    >不支援群組。 您最多可以選擇 10 個單獨的業務審批人。 如果指定多個審批人，則任何單個審批人都可以批准訪問請求。
 
-14. 按一下刀鋒視窗頂端的 [儲存] 按鈕以完成此動作。
+10. **可選：****對於公開角色的應用程式**，要將自助服務批准的使用者分配給角色，**在此應用程式中應分配使用者到哪個角色旁邊？，** 按一下 **"選擇角色**"，然後選擇這些使用者應為其分配的角色。 然後按一下 [選取] ****。
 
-完成自助應用程式設定之後，使用者可以瀏覽到其[應用程式存取面板](https://myapps.microsoft.com/)並按一下 [+新增] 按鈕以尋找您已啟用自助存取的應用程式。 商務核准者在其[應用程式存取面板](https://myapps.microsoft.com/)中也會看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。 
+11. 按一下窗格頂端的 [儲存]**** 按鈕以完成此動作。
 
-這些核准只支援單一核准工作流程，這表示若您指定多個核准者，任何核准者都可以核准應用程式存取。
+完成自助服務應用程式佈建後，使用者可以導航到其["我的應用"訪問面板](https://myapps.microsoft.com/)，然後按一下"**添加自助服務應用"** 按鈕，以查找通過自助服務訪問啟用的應用。 業務核准者還會在其["我的應用"訪問面板](https://myapps.microsoft.com/)中看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。
 
 ## <a name="next-steps"></a>後續步驟
 [設定 Azure Active Directory 進行自助服務群組管理](../users-groups-roles/groups-self-service-management.md)

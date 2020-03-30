@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面的資料位置-Azure
-description: 簡要介紹哪些位置 Windows 虛擬桌面的資料和中繼資料儲存在中。
+title: Windows 虛擬桌面的資料位置 - Azure
+description: Windows 虛擬桌面的資料和中繼資料存儲在哪些位置的簡要概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,20 +9,20 @@ ms.date: 09/27/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5f48586f38c310c77c61f470d3e2fbc819c33f71
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128050"
 ---
 # <a name="data-locations-for-windows-virtual-desktop"></a>Windows 虛擬桌面的資料位置
 
-Windows 虛擬桌面目前適用于所有地理位置。 一開始，服務中繼資料只能儲存在美國（US）地理位置。 系統管理員可以在建立主機集區虛擬機器和相關聯的服務（例如檔案伺服器）時，選擇要儲存使用者資料的位置。 深入瞭解 azure[資料中心地圖](https://azuredatacentermap.azurewebsites.net/)上的 azure 地理位置。
+Windows 虛擬桌面當前適用于所有地理位置。 最初，服務中繼資料只能存儲在美國 （美國）地理中。 管理員可以選擇在創建主機池虛擬機器和相關服務（如檔案伺服器）時存儲使用者資料的位置。 在[Azure 資料中心映射](https://azuredatacentermap.azurewebsites.net/)中瞭解有關 Azure 地理位置的更多詳細資訊。
 
 >[!NOTE]
->Microsoft 不會控制或限制您或您的使用者可以存取您的使用者和應用程式特定資料的區域。
+>Microsoft 不控制或限制您或您的使用者可以訪問使用者和應用特定資料的區域。
 
 >[!IMPORTANT]
->Windows 虛擬桌面會在位於美國的資料中心儲存像是租使用者名稱、主機集區名稱、應用程式組名和使用者主體名稱之類的全域中繼資料資訊。 儲存的中繼資料會在待用時加密，而異地多餘的鏡像則會保留在美國。 所有客戶資料（例如應用程式設定和使用者資料）都位於客戶選擇的位置，而不是由服務所管理。
+>Windows 虛擬桌面將全域中繼資料資訊（如租戶名稱、主機池名稱、應用組名稱和使用者主體名稱）存儲在位於美國的資料中心中。 存儲的中繼資料在靜態時加密，並且地理冗余鏡像在美國境內維護。 所有客戶資料（如應用設置和使用者資料）都駐留在客戶選擇的位置，並且不受服務管理。
 
-服務中繼資料會在美國複寫，以供嚴重損壞修復之用。
+出於災害復原目的，服務中繼資料將在美國複製。

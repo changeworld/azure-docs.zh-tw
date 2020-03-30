@@ -1,35 +1,35 @@
 ---
-title: Azure 應用程式 Insights 代理程式 API 參考
-description: Application Insights 代理程式 API 參考。 ApplicationInsightsMonitoringStatus。 在不重新部署網站的情況下監視網站效能。 使用裝載於內部部署、VM 中或 Azure 上的 ASP.NET Web 應用程式。
+title: Azure 應用程式見解代理 API 引用
+description: 應用程式見解代理 API 引用。 獲取應用程式見解監視狀態。 在不重新部署網站的情況下監控網站性能。 使用裝載於內部部署、VM 中或 Azure 上的 ASP.NET Web 應用程式。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671251"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights 代理程式 API： ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>應用程式見解代理 API：獲取應用程式見解監視狀態
 
-本文說明的 Cmdlet 是[ApplicationMonitor PowerShell 模組](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成員。
+本文介紹了一個 Cmdlet，它是[Az.應用程式監視器 PowerShell 模組](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成員。
 
 ## <a name="description"></a>描述
 
-此 Cmdlet 提供有關狀態監視器的疑難排解資訊。
-使用此 Cmdlet 來調查監視狀態、PowerShell 模組的版本，以及檢查執行中的進程。
-此 Cmdlet 會報告版本資訊，以及監視所需之金鑰檔的相關資訊。
+此 Cmdlet 提供有關狀態監視器的故障排除資訊。
+使用此 Cmdlet 可調查 PowerShell 模組的監視狀態和版本，並檢查正在運行的進程。
+此 Cmdlet 將報告版本資訊和有關監視所需的關鍵檔案的資訊。
 
 > [!IMPORTANT] 
-> 此 Cmdlet 需要具有系統管理員許可權的 PowerShell 會話。
+> 此 Cmdlet 需要具有管理員許可權的 PowerShell 會話。
 
 ## <a name="examples"></a>範例
 
-### <a name="example-application-status"></a>範例：應用程式狀態
+### <a name="example-application-status"></a>示例：應用程式狀態
 
-執行命令 `Get-ApplicationInsightsMonitoringStatus`，以顯示網站的監視狀態。
+運行該命令`Get-ApplicationInsightsMonitoringStatus`以顯示網站的監視狀態。
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -65,17 +65,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-在此範例中為;
-- [**機器識別碼**] 是用來唯一識別您的伺服器的匿名識別碼。 如果您建立支援要求，我們將需要此識別碼來尋找伺服器的記錄。
-- IIS 中的**預設網站**已停止
-- **DemoWebApp111**已在 IIS 中啟動，但未收到任何要求。 此報表顯示沒有執行中的進程（ProcessId：找不到）。
-- **DemoWebApp222**正在執行，且正在進行監視（已檢測： true）。 根據使用者設定，檢測金鑰 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxx123 與此網站相符。
-- **DemoWebApp333**已使用 Application Insights SDK 手動進行檢測。 狀態監視器偵測到 SDK，且不會監視此網站。
+在此示例中;在此示例中，
+- **電腦識別碼**是用於唯一標識伺服器的匿名 ID。 如果您創建支援請求，我們需要此 ID 才能查找伺服器的日誌。
+- **預設網站**在 IIS 中停止
+- **DemoWebApp111**已在 IIS 中啟動，但尚未收到任何請求。 此報告顯示沒有正在運行的進程（ProcessId：未找到）。
+- **DemoWebApp222**正在運行並正在監視（儀器：true）。 根據使用者配置，為此網站匹配了檢測金鑰 xxxxxxxxx-xxxxxx-xxxxxx-xxxxxxxxx123。
+- 使用應用程式見解 SDK 手動檢測**DemoWebApp333。** 狀態監視器檢測到 SDK，不會監視此網站。
 
 
-### <a name="example-powershell-module-information"></a>範例： PowerShell 模組資訊
+### <a name="example-powershell-module-information"></a>示例：PowerShell 模組資訊
 
-執行命令 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`，以顯示目前模組的相關資訊：
+運行命令`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`以顯示有關當前模組的資訊：
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -127,11 +127,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>範例：執行時間狀態
+### <a name="example-runtime-status"></a>示例：運行時狀態
 
-您可以檢查檢測電腦上的處理常式，以查看是否已載入所有 Dll。 如果監視運作正常，則至少應載入12個 Dll。
+您可以在檢測的電腦上檢查該過程，以查看是否載入了所有 DLL。 如果監視工作，應至少載入 12 個 DLL。
 
-執行命令 `Get-ApplicationInsightsMonitoringStatus -InspectProcess`：
+運行命令`Get-ApplicationInsightsMonitoringStatus -InspectProcess`：
 
 
 ```
@@ -169,33 +169,33 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>（無參數）
 
-根據預設，此 Cmdlet 會報告 web 應用程式的監視狀態。
-使用此選項來檢查您的應用程式是否已成功檢測。
-您也可以檢查哪一個檢測金鑰符合您的網站。
+預設情況下，此 Cmdlet 將報告 Web 應用程式的監視狀態。
+使用此選項可檢查應用程式是否已成功檢測。
+您還可以查看與網站匹配的檢測金鑰。
 
 
-### <a name="-powershellmodule"></a>-PowerShellModule
-**選擇性**。 使用此參數來報告監視所需的 Dll 版本號碼和路徑。
-如果您需要識別任何 DLL 的版本，包括 Application Insights SDK，請使用此選項。
+### <a name="-powershellmodule"></a>-電源外殼模組
+**選擇項**。 使用此開關可以報告監視所需的 DLL 的版本號和路徑。
+如果需要標識任何 DLL 的版本（包括應用程式見解 SDK），請使用此選項。
 
-### <a name="-inspectprocess"></a>-InspectProcess
+### <a name="-inspectprocess"></a>-檢測過程
 
-**選擇性**。 使用此參數來報告 IIS 是否正在執行。
-它也會下載外部工具，以判斷必要的 Dll 是否已載入 IIS 執行時間。
+**選擇項**。 使用此開關可以報告 IIS 是否正在運行。
+它還將下載外部工具，以確定是否將必要的 DLL 載入到 IIS 運行時。
 
 
-如果此程式因任何原因而失敗，您可以手動執行下列命令：
-- iisreset/status
-- [handle64 .exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 ApplicationInsights
-- [listdlls64 .exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp.exe |findstr/I "InstrumentationEngine AI ApplicationInsights"
+如果此過程由於任何原因失敗，您可以手動運行這些命令：
+- iisreset.exe /狀態
+- [手柄64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp |發現/I"儀器引擎AI。 應用洞察"
+- [清單dlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp |發現/I "儀器引擎 AI 應用程式見解"
 
 
 ### <a name="-force"></a>-Force
 
-**選擇性**。 只能搭配 InspectProcess 使用。 使用此參數來略過在下載其他工具之前出現的使用者提示。
+**選擇項**。 僅與檢查過程一起使用。 使用此開關可跳過下載其他工具之前顯示的使用者提示。
 
 
 ## <a name="next-steps"></a>後續步驟
 
- 使用 Application Insights 代理程式執行更多工具：
- - 使用我們的指南來[疑難排解](status-monitor-v2-troubleshoot.md)Application Insights 代理程式。
+ 使用應用程式見解代理執行更多操作：
+ - 使用我們的指南對應用程式見解代理[進行故障排除](status-monitor-v2-troubleshoot.md)。

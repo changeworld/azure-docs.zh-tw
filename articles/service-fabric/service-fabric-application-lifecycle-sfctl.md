@@ -1,15 +1,15 @@
 ---
-title: 使用 sfctl 管理 Azure Service Fabric 應用程式
+title: 使用 sfctl 管理 Azure 服務結構應用程式
 description: 了解如何使用 Azure Service Fabric CLI 在 Azure Service Fabric 叢集中部署和移除應用程式
 author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259067"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI 來管理 Azure Service Fabric 應用程式 (sfctl)
@@ -22,7 +22,7 @@ ms.locfileid: "79259067"
 
 * 備妥 Service Fabric 應用程式封裝以供部署。 如需有關如何撰寫及封裝應用程式的詳細資訊，請參閱 [Service Fabric 應用程式模型](service-fabric-application-model.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要部署新應用程式，請完成下列步驟：
 
@@ -112,7 +112,7 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-狀況良好的服務和應用程式的 `HealthState` 值是 `Ok`。
+狀況良好的服務和應用程式的 `Ok` 值是 `HealthState`。
 
 ## <a name="remove-an-existing-application"></a>移除現有的應用程式
 

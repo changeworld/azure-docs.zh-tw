@@ -1,6 +1,6 @@
 ---
-title: 從 Azure Cloud Shell 使用 Terraform 部署 |Microsoft Docs
-description: 使用 Terraform 從 Azure Cloud Shell 部署
+title: 使用 Azure 雲殼的 Terraform 部署 |微軟文檔
+description: 使用 Azure 雲外殼使用 Terraform 進行部署
 services: Azure
 documentationcenter: ''
 author: tomarchermsft
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: f5939251729905d349b79a94411cf87e3873b279
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742071"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458149"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中從 Bash 使用 Terraform 進行部署
-本文逐步引導您使用 [Terraform AzureRM 提供者](https://www.terraform.io/docs/providers/azurerm/index.html)建立資源群組。 
+本文逐步引導您使用 [Terraform AzureRM 提供者](https://www.terraform.io/docs/providers/azurerm/index.html)建立資源群組。
 
-[Hashicorp Terraform](https://www.terraform.io/) 是開放原始碼工具，可將 API 制訂到宣告式組態檔，以便與小組成員共用，供其編輯、檢閱和設定版本。 透過 AzureRM API，Microsoft AzureRM 提供者可用來與 Azure Resource Manager 所支援的資源互動。 
+[Hashicorp Terraform](https://www.terraform.io/) 是開放原始碼工具，可將 API 制訂到宣告式組態檔，以便與小組成員共用，供其編輯、檢閱和設定版本。 透過 AzureRM API，Microsoft AzureRM 提供者可用來與 Azure Resource Manager 所支援的資源互動。
 
 ## <a name="automatic-authentication"></a>自動驗證
 根據預設，Terraform 會安裝在 Cloud Shell 的 Bash 中。 此外，Cloud Shell 會自動驗證預設的 Azure CLI 訂用帳戶，以透過 Terraform Azure 模組部署資源。
@@ -126,7 +126,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-[terraform plan 命令](https://www.terraform.io/docs/commands/plan.html)可用來建立執行計畫。 Terraform 會執行重新整理 (除非明確停用)，然後判斷必須執行哪些動作才能達成組態檔中指定的所需狀態。 該計畫可使用 -out 來儲存，然後提供給 terraform apply 以確保只會執行預先計畫的動作。
+[terraform plan 命令](https://www.terraform.io/docs/commands/plan.html) \(英文\) 是用來建立執行計畫。 Terraform 會執行重新整理 (除非明確停用)，然後判斷必須執行哪些動作才能達成組態檔中指定的所需狀態。 該計畫可使用 -out 來儲存，然後提供給 terraform apply 以確保只會執行預先計畫的動作。
 
 ### <a name="terraform-apply"></a>Terraform apply
 使用 `terraform apply` 佈建 Azure 資源。
@@ -147,7 +147,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ### <a name="verify-deployment-with-azure-cli"></a>使用 Azure CLI 確認部署
 執行 `az group show -n myRgName` 以確認該資源已成功佈建。
 
-```azcliinteractive
+```azurecli-interactive
 az group show -n myRgName
 ```
 

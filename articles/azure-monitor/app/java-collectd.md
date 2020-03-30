@@ -4,10 +4,10 @@ description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 J
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660728"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
@@ -15,9 +15,9 @@ ms.locfileid: "77660728"
 
 若要在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中瀏覽 Linux 系統效能度量，請安裝 [collectd](https://collectd.org/) 以及其 Application Insights 外掛程式。 這個開放原始碼解決方案會收集各種系統和網路統計資料。
 
-如果您已使用[Application Insights 檢測 JAVA web 服務][java]，通常會使用 collectd。 提供給您更多資料來幫助您增強應用程式的效能或診斷問題。 
+如果您已[使用 Application Insights 檢測您的 Java Web 服務][java]，通常您會使用 collectd。 提供給您更多資料來幫助您增強應用程式的效能或診斷問題。 
 
-## <a name="get-your-instrumentation-key"></a>取得檢測設備機碼
+## <a name="get-your-instrumentation-key"></a>取得檢測金鑰
 在 [Microsoft Azure 入口網站](https://portal.azure.com)中，開啟您要顯示資料的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 資源。 (或[建立新的資源](../../azure-monitor/app/create-new-resource.md )。)
 
 取得一份可識別資源的檢測金鑰。
@@ -82,7 +82,7 @@ ms.locfileid: "77660728"
 根據其 [手冊](https://collectd.org/wiki/index.php/First_steps)重新啟動 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>在 Application Insights 中檢視資料
-在您的 Application Insights 資源中，開啟 [[計量] 和 [新增圖表][metrics]]，從 [自訂] 類別選取您想要查看的度量。
+在應用程式見解資源中，打開[指標並添加圖表][metrics]，從"自訂"類別中選擇要查看的指標。
 
 根據預設，會對收集度量來源的所有主機電腦彙總度量。 若要檢視每一主機的度量，在圖表的 [詳細資料] 刀鋒視窗中，開啟 [群組]，然後選擇依 CollectD-Host 群組。
 
@@ -94,17 +94,17 @@ ms.locfileid: "77660728"
 * 編輯組態檔。 
 * 在 `<Plugin ApplicationInsightsWriter>`中，加入指示詞行，如下所示：
 
-| Directive | 效果 |
+| 指示詞 | 效果 |
 | --- | --- |
 | `Exclude disk` |排除 `disk` 外掛程式所收集的所有資料 |
-| `Exclude disk:read,write` |排除來自 `read` 外掛程式名為 `write` 和 `disk` 的來源。 |
+| `Exclude disk:read,write` |排除來自 `disk` 外掛程式名為 `read` 和 `write` 的來源。 |
 
 以新行分隔個別指示詞。
 
 ## <a name="problems"></a>有問題嗎？
 *我在入口網站中看不到任何資料*
 
-* 開啟 [[搜尋][diagnostic]]，以查看原始事件是否已抵達。 有時需要較長的時間才會在計量瀏覽器中顯示。
+* 開啟[搜尋][diagnostic]以查看原始事件是否已抵達。 有時需要較長的時間才會在計量瀏覽器中顯示。
 * 您可能需要 [設定輸出資料的防火牆例外狀況](../../azure-monitor/app/ip-addresses.md)
 * 在 Application Insights 外掛程式中啟用追蹤。 在 `<Plugin ApplicationInsightsWriter>`內加入這一行：
   * `SDKLogger true`
@@ -115,7 +115,7 @@ ms.locfileid: "77660728"
 
 Application Insights 的「寫入」外掛程式與某些「讀取」外掛程式不相容。 有些外掛程式有時會在 Application Insights 外掛程式預期要有浮點數的位置傳送 "NaN"。
 
-徵兆： collectd 記錄檔會顯示錯誤，其中包括「AI： .。。SyntaxError：未預期的 token N」。
+症狀：收集的日誌顯示的錯誤，包括"AI：...語法錯誤：意外權杖 N"。
 
 因應措施：排除有問題的「寫入」外掛程式所收集的資料。 
 

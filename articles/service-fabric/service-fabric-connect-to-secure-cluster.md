@@ -1,13 +1,13 @@
 ---
-title: 安全地連接到 Azure Service Fabric 叢集
+title: 安全地連接到 Azure 服務結構群集
 description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以及如何保護用戶端與叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258573"
 ---
 # <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
@@ -76,7 +76,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>使用 Azure Active Directory 連線到安全的叢集
 
-若要連接至使用 Azure Active Directory 來授權叢集系統管理員存取權的安全叢集，請提供叢集憑證指紋，並使用 AzureActiveDirectory 旗標。  
+若要連接至使用 Azure Active Directory 來授權叢集系統管理員存取權的安全叢集，請提供叢集憑證指紋，並使用 AzureActiveDirectory** 旗標。  
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -155,7 +155,7 @@ Service Fabric SDK 會提供叢集管理的 [FabricClient](https://docs.microsof
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-針對在叢集 (例如，Reliable Service) 內執行的程式碼，建立 FabricClient 且不指定叢集位址。 FabricClient 連接到目前正在執行程式碼之節點上的本機管理閘道，避免額外的網路躍點。
+針對在叢集 (例如，Reliable Service) 內執行的程式碼，建立 FabricClient 且不** 指定叢集位址。 FabricClient 連接到目前正在執行程式碼之節點上的本機管理閘道，避免額外的網路躍點。
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -163,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用用戶端憑證連線到安全的叢集
 
-叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 上設定的 [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
+叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上設定的 [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
 
 ```csharp
 using System.Fabric;
@@ -344,7 +344,7 @@ Azure 入口網站的叢集基本資訊窗格中也會提供完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系統會自動提示您使用 AAD 登入。
+系統會自動提示您使用 AAD 登錄。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用用戶端憑證連線到安全的叢集
 
@@ -381,7 +381,7 @@ Azure 入口網站的叢集基本資訊窗格中也會提供完整 URL。
 ## <a name="next-steps"></a>後續步驟
 
 * [Service Fabric 叢集升級程序與您的期望](service-fabric-cluster-upgrade.md)
-* [在 Visual Studio 中管理 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
+* [在視覺化工作室管理服務交換矩陣應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric 健康情況模型簡介](service-fabric-health-introduction.md)
 * [應用程式安全性及 RunAs](service-fabric-application-runas-security.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)

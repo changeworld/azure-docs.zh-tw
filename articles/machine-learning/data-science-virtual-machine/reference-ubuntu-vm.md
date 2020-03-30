@@ -1,7 +1,7 @@
 ---
-title: 參考： Ubuntu 資料科學虛擬機器
+title: 參考： 烏本圖資料科學虛擬機器
 titleSuffix: Azure Data Science Virtual Machine
-description: Ubuntu 資料科學虛擬機器中包含的工具詳細資料
+description: Ubuntu 資料科學虛擬機器中包含的工具的詳細資訊
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,15 +9,15 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525816"
 ---
-# <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu （Linux）資料科學虛擬機器
+# <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu（Linux） 資料科學虛擬機器
 
-如需 Ubuntu 資料科學虛擬機器上可用的工具清單，請參閱下文。 
+有關 Ubuntu 資料科學虛擬機器上的可用工具清單，請參閱下文。 
 
 ## <a name="deep-learning-libraries"></a>深度學習程式庫
 
@@ -32,7 +32,7 @@ cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
 cntk configFile=lr_bs.cntk makeMode=false command=Train
 ```
 
-如需詳細資訊，請參閱 [GitHub](https://github.com/Microsoft/CNTK) 上的 CNTK 章節以及 [CNTK Wiki](https://github.com/Microsoft/CNTK/wiki)。
+有關詳細資訊，請參閱[GitHub](https://github.com/Microsoft/CNTK)的 CNTK 部分和[CNTK wiki](https://github.com/Microsoft/CNTK/wiki)。
 
 ### <a name="caffe"></a>Caffe
 
@@ -66,7 +66,7 @@ MXNet 是兼具效率和彈性的深入學習架構。 它在 DSVM 中包含了 
 
 NVIDIA 深度學習 GPU 訓練系統 (名為 DIGITS) 是一個可簡化常見深度學習工作的系統。 這些工作包括管理資料、設計和訓練 GPU 系統上的神經網路，以及使用進階視覺效果即時監視效能。
 
-DIGITS 以服務的形式提供 (名為 *digits*)。 啟動此服務並瀏覽至 http://localhost:5000 以開始使用。
+DIGITS 作為稱為*數位*的服務可用。 啟動此服務並瀏覽至 http://localhost:5000 以開始使用。
 
 DIGITS 也會安裝為 Conda 根環境中的 Python 模組。
 
@@ -96,7 +96,7 @@ Machine Learning Server 可讓您在 Web 服務中調整和運作 R 模型。 �
 
 ## <a name="python"></a>Python
 
-Anaconda Python 是隨著 Python 2.7 和 3.5 環境一起安裝。 2\.7 環境稱為 _root_，而 3.5 環境稱為 _py35_。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
+Anaconda Python 是隨著 Python 2.7 和 3.5 環境一起安裝。 2.7 環境稱為 _root_，而 3.5 環境稱為 _py35_。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
 
 py35 環境是預設環境。 若要啟用根 (2.7) 環境，請使用下列命令：
 
@@ -137,23 +137,23 @@ conda install <package> -n py35
 
 Jupyter Notebook 中也隨附 Anaconda 散發套件，這是一個共用程式碼與分析的環境。 Jupyter 筆記本是透過 JupyterHub 來存取。 您可以使用本機 Linux 使用者名稱和密碼來登入。
 
-Jupyter 筆記本伺服器已使用 Python 2、Python 3 及 R 核心進行預先設定。 請使用 **Jupyter Notebook** 桌面圖示開啟瀏覽器，並存取 Notebook 伺服器。 如果您透過 SSH 或 X2Go 用戶端進入 VM，您也可以經由 [https://localhost:8000/](https://localhost:8000/) 來存取 Jupyter Notebook 伺服器。
+Jupyter 筆記本伺服器已使用 Python 2、Python 3 及 R 核心進行預先設定。 請使用 **Jupyter Notebook** 桌面圖示開啟瀏覽器，並存取 Notebook 伺服器。 如果您通過 SSH 或 X2Go 用戶端在 VM 上，您也可以在 訪問[https://localhost:8000/](https://localhost:8000/)Jupyter 筆記本電腦伺服器。
 
 > [!NOTE]
 > 如果您收到任何憑證警告，請繼續。
 
-您可以從任何主機存取 Jupyter Notebook 伺服器。 請輸入 **https://\<VM DNS 名稱或 IP 位址\>:8000/** 。
+您可以從任何主機存取 Jupyter Notebook 伺服器。 請輸入 **https://\<VM DNS 名稱或 IP 位址\>:8000/**。
 
 > [!NOTE]
 > 在佈建 VM 時，防火牆預設會開啟連接埠 8000。 
 
-我們已封裝範例 Notebook -- 一個用於 Python，另一個用於 R。當您使用本機 Linux 使用者名稱和密碼向 Jupyter Notebook 進行驗證後，您將可在 Notebook 的首頁上看到範例的連結。 選取 [新增]，然後選取適當的語言核心，便可建立新的 Notebook。 若未看到 [新增] 按鈕，請選取左上方的 **Jupyter** 圖示，以移至 Notebook 伺服器的首頁。
+我們已封裝範例 Notebook -- 一個用於 Python，另一個用於 R。當您使用本機 Linux 使用者名稱和密碼向 Jupyter Notebook 進行驗證後，您將可在 Notebook 的首頁上看到範例的連結。 選取 [新增]****，然後選取適當的語言核心，便可建立新的 Notebook。 若未看到 [新增]**** 按鈕，請選取左上方的 **Jupyter** 圖示，以移至 Notebook 伺服器的首頁。
 
 ## <a name="apache-spark-standalone"></a>獨立 Apache Spark
 
 Apache Spark 的獨立執行個體已預先安裝在 Linux DSVM，可協助您先在本機開發 Spark 應用程式，再於大型叢集上進行測試及部署。 
 
-您可以透過 Jupyter 核心執行 PySpark 程式。 當您開啟 Jupyter 時，請選取 [新增] 按鈕，您應該會看到可用核心的清單。 **Spark - Python** 是 PySpark 核心，可讓您使用 Python 語言建置 Spark 應用程式。 您也可以使用像是 PyCharm 或 Spyder 的 Python IDE 來建置 Spark 程式。 
+您可以透過 Jupyter 核心執行 PySpark 程式。 當您開啟 Jupyter 時，請選取 [新增]**** 按鈕，您應該會看到可用核心的清單。 **Spark - Python** 是 PySpark 核心，可讓您使用 Python 語言建置 Spark 應用程式。 您也可以使用像是 PyCharm 或 Spyder 的 Python IDE 來建置 Spark 程式。 
 
 在此獨立執行個體中，Spark 堆疊會在呼叫用戶端程式中執行。 相較於在 Spark 叢集上進行開發，此功能可更輕鬆快速地對問題進行疑難排解。
 
@@ -199,17 +199,17 @@ SQuirrel SQL 是一個圖形化 SQL 用戶端，可連線至多種不同的資�
 
 第一次使用之前，請設定驅動程式和資料庫別名。 JDBC 驅動程式位於 /usr/share/java/jdbcdrivers 中。
 
-如需詳細資訊，請參閱 [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
+有關詳細資訊，請參閱[SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
 
 ### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>存取 Microsoft SQL Server 用的命令列工具
 
 SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
-- **bcp**： bcp 工具會在 Microsoft SQL Server 實例和使用者指定格式的資料檔案之間大量複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
+- **bcp**： bcp 工具批量複製 Microsoft SQL Server 實例和使用者指定格式的資料檔案之間的資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
 
   如需詳細資訊，請參閱 [連接 bcp](https://msdn.microsoft.com/library/hh568446.aspx)。
 
-- **sqlcmd**：您可以使用 sqlcmd 工具輸入 transact-sql 語句。 您也可以在命令提示字元中輸入系統程序和指令檔。 此工具會使用 ODBC 執行 Transact-SQL 批次。
+- **sqlcmd**：您可以使用 sqlcmd 工具輸入 Transact-SQL 語句。 您也可以在命令提示字元中輸入系統程序和指令檔。 此工具會使用 ODBC 執行 Transact-SQL 批次。
 
   如需詳細資訊，請參閱 [使用 sqlcmd 連接](https://msdn.microsoft.com/library/hh568447.aspx)。
 
@@ -227,21 +227,21 @@ SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
 VM 上安裝了下列 Azure 工具：
 
-* **Azure CLI**：您可以在 azure 中使用命令列介面，透過 shell 命令來建立和管理 azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Azure 儲存體總管**： Azure 儲存體總管是一種圖形化工具，可讓您用來流覽已儲存在 azure 儲存體帳戶中的物件，以及上傳和下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
-* **Azure 程式庫**：以下是一些預先安裝的程式庫。
+* **Azure CLI**：可以使用 Azure 中的命令列介面通過 shell 命令創建和管理 Azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
+* **Azure 存儲資源管理器**：Azure 存儲資源管理器是一種圖形工具，可用於流覽已存儲在 Azure 存儲帳戶中的物件，以及將資料上載和從 Azure Blob 上載和下載。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
+* **Azure 庫**：以下是一些預先安裝的庫。
   
-  * **Python**： python 中的 azure 相關連結庫為*azure*、 *azureml*、 *pydocumentdb*和*pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
-  * **R**： r 中的 Azure 相關連結庫為 AZUREML 和 RODBC。
-  * **JAVA**：您可以在 VM 的目錄/dsvm/sdk/azuresdkjava 中中找到 Azure JAVA 程式庫的清單。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
+  * **Python**： Python 中與 Azure 相關的庫是*azure、azureml、pydocumentdb*和*pyodbc*。 *azure* *pydocumentdb* 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
+  * **R**： R 中的 Azure 相關庫是 AzureML 和 RODBC。
+  * **Java**︰Azure Java 程式庫清單位於 VM 上的 /dsvm/sdk/AzureSDKJava 目錄中。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
 
 您可以從預先安裝的 Firefox 瀏覽器存取 [Azure 入口網站](https://portal.azure.com) 。 在 Azure 入口網站中，您可以建立、管理和監視 Azure 資源。
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部署及共用預測性分析解決方案。 您可以從 Azure Machine Learning Studio （傳統）建立您的實驗和模型。 您可以瀏覽 [Microsoft Azure Machine Learning](https://studio.azureml.net)，從資料科學虛擬機器上的網頁瀏覽器加以存取。
+Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部署及共用預測性分析解決方案。 您可以通過 Azure 機器學習工作室（經典）構建實驗和模型。 您可以瀏覽 [Microsoft Azure Machine Learning](https://studio.azureml.net)，從資料科學虛擬機器上的網頁瀏覽器加以存取。
 
-登入 Azure Machine Learning Studio （傳統）之後，您可以使用實驗畫布來建立機器學習演算法的邏輯流程。 您也可以存取裝載于 Azure Machine Learning 的 Jupyter 筆記本，並可順暢地與 Azure Machine Learning Studio （傳統）中的實驗搭配使用。 
+登錄到 Azure 機器學習工作室（經典版）後，可以使用實驗畫布為機器學習演算法構建邏輯流。 您還可以訪問託管在 Azure 機器學習上的 Jupyter 筆記本，並可以無縫地與 Azure 機器學習工作室（經典）中的實驗配合使用。 
 
 讓您建置的機器學習模型能夠運作，方法是將它們包裝在 Web 服務介面中。 讓機器學習模型能夠運作，使用任何語言撰寫的用戶端就能夠從這些模型叫用預測。 如需詳細資訊，請參閱 [機器學習文件](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -261,7 +261,7 @@ VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演�
 * **Rattle**：以 R 為基礎的圖形化工具，可輕鬆地進行資料瀏覽和模組化。
 * **Python**：Anaconda Python 會與含有像是 Scikit-learn 的程式庫的機器學習演算法進行配套。 您可以使用 `pip install` 程式庫。
 * **LightGBM**︰以決策樹演算法為基礎的一種快速、分散式的高效能漸層提升架構。
-* **R**：有豐富的機器學習功能程式庫可供 R 使用。預先安裝的程式庫包括 lm、Glm、randomForest 和 rpart。 您可以執行下列命令來安裝其他程式庫：
+* **R**： 機器學習函數的豐富庫可用於 R. 預先安裝的庫，包括 lm、glm、隨機林和 rpart。 您可以執行下列命令來安裝其他程式庫：
   
         install.packages(<lib name>)
 
@@ -315,7 +315,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle （ **R** **A**nalytical **t**ool **t**o **L**贏得**E**asily）會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
+Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
 
 若要執行 Rattle，您必須位於圖形化桌面登入工作階段。 在終端機上輸入 **R**，以開啟 R 環境。 在 R 提示字元中輸入下列命令：
 
@@ -327,22 +327,22 @@ rattle()
 現在，將會開啟具有一組索引標籤的圖形化介面。 請使用下列快速入門步驟，在 Rattle 中使用範例天氣資料集並建置模型。 在部分步驟中，系統會提示您自動安裝並載入一些系統上還沒有的必要 R 套件。
 
 > [!NOTE]
-> 如果您無權存取系統目錄 (預設) 中的套件，您可能會在 R 主控台視窗上看到提示，詢問是否要將套件安裝至您的個人程式庫。 如果您看到這些提示，請回答 「是」 。
+> 如果您無權存取系統目錄 (預設) 中的套件，您可能會在 R 主控台視窗上看到提示，詢問是否要將套件安裝至您的個人程式庫。 如果您看到這些提示，請回答 「是」 **** 。
 
-1. 選取 [執行]。
-1. 此時會出現一個對話方塊，詢問您是否要使用範例天氣資料集。 請選取 [是] 以載入範例。
-1. 選取 [模型] 索引標籤。
-1. 選取 [執行] 以建置決策樹。
-1. 選取 [繪圖] 以顯示決策樹。
-1. 選取 [樹系] 選項，然後選取 [執行] 以建置隨機樹系。
-1. 選取 [評估] 索引標籤。
-1. 選取 [風險] 選項，然後選取 [執行] 以顯示兩個 [風險 (累積)] 效能繪圖。
-1. 選取 [記錄] 索引標籤，以顯示針對先前的作業產生的 R 程式碼。
-   (由於目前的 Rattle 版本中有錯誤，您必須在記錄的文字中，於 **Export this log# 前面插入**  字元。)
-1. 選取 [匯出] 按鈕，將名為 weather_script.R 的 R 指令檔儲存到主資料夾。
+1. 選取 [執行] ****。
+1. 此時會出現一個對話方塊，詢問您是否要使用範例天氣資料集。 請選取 [是]**** 以載入範例。
+1. 選取 [模型]**** 索引標籤。
+1. 選取 [執行]**** 以建置決策樹。
+1. 選取 [繪圖]**** 以顯示決策樹。
+1. 選取 [樹系]**** 選項，然後選取 [執行]**** 以建置隨機樹系。
+1. 選取 [評估]**** 索引標籤。
+1. 選取 [風險]**** 選項，然後選取 [執行]**** 以顯示兩個 [風險 (累積)]**** 效能繪圖。
+1. 選取 [記錄]**** 索引標籤，以顯示針對先前的作業產生的 R 程式碼。
+   （由於 Rattle 當前版本中存在 Bug，您需要在日誌文本中**#****匯出此日誌**前面插入一個字元。
+1. 選取 [匯出]**** 按鈕，將名為 weather_script.R** 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 
 ## <a name="next-steps"></a>後續步驟
 
-有其他問題嗎？ 請考慮建立[支援票證](https://azure.microsoft.com/support/create-ticket/)。
+仍有其他問題嗎？ 請考慮創建[支援票證](https://azure.microsoft.com/support/create-ticket/)。

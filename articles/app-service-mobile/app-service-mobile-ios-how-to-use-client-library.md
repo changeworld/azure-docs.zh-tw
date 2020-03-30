@@ -7,22 +7,22 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249343"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用適用於 Azure Mobile Apps 的 iOS 用戶端程式庫
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-## <a name="overview"></a>概觀
-本指南會教您如何使用最新的[Azure Mobile Apps IOS SDK][1]來執行常見案例。 如果您是 Azure Mobile Apps 的新手，請先完成 [Azure Mobile Apps 快速啟動] 以建立後端、建立資料表及下載預先建置的 iOS Xcode 專案。 在本指南中，我們會著重於用戶端 iOS SDK。 若要深入了解後端的伺服器端 SDK，請參閱伺服器 SDK 做法。
+## <a name="overview"></a>總覽
+本指南說明如何使用最新的 [Azure Mobile Apps iOS SDK][1] 執行常見案例。 如果您是 Azure Mobile Apps 的新手，請先完成 [Azure Mobile Apps 快速入門] 以建立後端、建立資料表及下載預先建置的 iOS Xcode 專案。 在本指南中，我們會著重於用戶端 iOS SDK。 若要深入了解後端的伺服器端 SDK，請參閱伺服器 SDK 做法。
 
 ## <a name="reference-documentation"></a>參考文件
 
-IOS 用戶端 SDK 的參考檔位於此處： [Azure Mobile Apps IOS 用戶端參考][2]。
+iOS 用戶端 SDK 的參考文件位於此處：[Azure Mobile Apps iOS 用戶端參考資料][2]。
 
 ## <a name="supported-platforms"></a>支援的平台
 
@@ -31,11 +31,11 @@ iOS SDK 支援 Objective-C 專案、Swift 2.2 專案，以及適用於 iOS 8.0 �
 「伺服器流程」驗證在呈現的 UI 中使用 WebView。  如果裝置無法呈現 WebView UI，您需要本產品無法提供的其他驗證方法。  
 因此，此 SDK 不適用於手錶類型或受到類似限制的裝置。
 
-## <a name="Setup"></a>設定和必要條件
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>設定和必要條件
 
 本指南假設您已建立包含資料表的後端。 本指南假設資料表的結構描述與這些教學課程中的資料表相同。 本指南也假設您在程式碼中，參考了 `MicrosoftAzureMobile.framework` 並匯入了 `MicrosoftAzureMobile/MicrosoftAzureMobile.h`。
 
-## <a name="create-client"></a>作法：建立用戶端
+## <a name="how-to-create-client"></a><a name="create-client"></a>作法：建立用戶端
 
 若要在專案中存取 Azure Mobile Apps 後端，請建立 `MSClient`。 以應用程式 URL 取代 `AppUrl` 。 您可以將 `gatewayURLString` 和 `applicationKey` 留白。 如果您設定驗證的閘道器，請將 `gatewayURLString` 填入閘道器 URL。
 
@@ -45,13 +45,13 @@ iOS SDK 支援 Objective-C 專案、Swift 2.2 專案，以及適用於 iOS 8.0 �
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>作法：建立資料表參考
+## <a name="how-to-create-table-reference"></a><a name="table-reference"></a>作法：建立資料表參考
 
 若要存取或更新資料，請建立後端資料表的參考。 以您的資料表名稱取代 `TodoItem`
 
@@ -61,13 +61,13 @@ let client = MSClient(applicationURLString: "AppUrl")
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>作法：查詢資料
+## <a name="how-to-query-data"></a><a name="querying"></a>作法：查詢資料
 
 若要建立資料庫查詢，請查詢 `MSTable` 物件。 下列查詢會取得 `TodoItem` 中的所有項目並記錄每個項目的文字。
 
@@ -85,7 +85,7 @@ let table = client.tableWithName("TodoItem")
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 table.readWithCompletion { (result, error) in
@@ -99,7 +99,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>作法：篩選傳回的資料
+## <a name="how-to-filter-returned-data"></a><a name="filtering"></a>作法：篩選傳回的資料
 
 若要篩選結果，有許多可用的選項。
 
@@ -122,7 +122,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 // Create a predicate that finds items where complete is false
@@ -139,7 +139,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>作法：使用 MSQuery
+## <a name="how-to-use-msquery"></a><a name="query-object"></a>作法：使用 MSQuery
 
 若要執行複雜的查詢 (包括排序和分頁)，請使用述詞直接建立 `MSQuery` 物件：
 
@@ -150,7 +150,7 @@ MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let query = table.query()
@@ -166,9 +166,9 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 * 在要求中指定自訂查詢字串參數
 * 套用其他函式
 
-在物件上呼叫 `MSQuery` 以執行 `readWithCompletion` 查詢。
+在物件上呼叫 `readWithCompletion` 以執行 `MSQuery` 查詢。
 
-## <a name="sorting"></a>做法：使用 MSQuery 排序資料
+## <a name="how-to-sort-data-with-msquery"></a><a name="sorting"></a>做法：使用 MSQuery 排序資料
 
 我們來看一下範例如何排序結果。 若要根據 'text' 欄位依照遞增順序排序，然後再根據 'complete' 欄位依照遞減順序排序，請叫用 `MSQuery` ，如下所示︰
 
@@ -188,7 +188,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 query.orderByAscending("text")
@@ -204,7 +204,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>作法：使用 MSQuery 限制欄位和展開查詢字串參數
+## <a name="how-to-limit-fields-and-expand-query-string-parameters-with-msquery"></a><a name="selecting"></a><a name="parameters"></a>作法：使用 MSQuery 限制欄位和展開查詢字串參數
 
 若要限制在查詢中傳回的欄位，請在 **selectFields** 屬性中指定欄位的名稱。 本範例僅會傳回文字和已完成欄位：
 
@@ -214,7 +214,7 @@ query.readWithCompletion { (result, error) in
 query.selectFields = @[@"text", @"complete"];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 query.selectFields = ["text", "complete"]
@@ -231,13 +231,13 @@ query.parameters = @{
 };
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>如何：設定頁面大小
+## <a name="how-to-configure-page-size"></a><a name="paging"></a>如何：設定頁面大小
 
 使用 Azure Mobile Apps，頁面大小會控制從後端資料表一次提取的記錄數目。 然後對 `pull`資料的呼叫會根據此頁面大小將資料分批，直到沒有更多要提取的記錄為止。
 
@@ -263,7 +263,7 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
                            }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let pullSettings = MSPullSettings(pageSize: 3)
@@ -274,7 +274,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>作法：插入資料
+## <a name="how-to-insert-data"></a><a name="inserting"></a>如何：插入資料
 
 若要插入新的資料表資料列，請建立 `NSDictionary` 並叫用 `table insert`。 如果[動態結構描述]已啟用，Azure App Service 行動後端會根據 `NSDictionary` 自動產生新的資料欄。
 
@@ -295,7 +295,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
@@ -308,7 +308,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>作法：修改資料
+## <a name="how-to-modify-data"></a><a name="modifying"></a>如何：修改資料
 
 若要更新現有的資料列，請修改項目並呼叫 `update`：
 
@@ -326,7 +326,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
@@ -355,7 +355,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
@@ -369,7 +369,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 進行更新時，至少必須設定 `id` 屬性。
 
-## <a name="deleting"></a>作法：刪除資料
+## <a name="how-to-delete-data"></a><a name="deleting"></a>如何：刪除資料
 
 若要刪除項目，請叫用 `delete` 搭配項目：
 
@@ -385,7 +385,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
@@ -411,7 +411,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
@@ -425,11 +425,11 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 進行刪除時，至少必須設定 `id` 屬性。
 
-## <a name="customapi"></a>如何：呼叫自訂 API
+## <a name="how-to-call-custom-api"></a><a name="customapi"></a>如何：呼叫自訂 API
 
 使用自訂 API，您可以公開任何後端功能。 它不必對應至資料表作業。 您不僅能進一步控制訊息，甚至還可以讀取或設定標頭，並變更回應內文格式。
 
-若要呼叫自訂 API，請呼叫 `MSClient.invokeAPI`。 要求和回應內容會被視為 JSON。 若要使用其他媒體類型，請[使用 `invokeAPI`的其他][5]多載。  若要提出 `GET` 要求，而不是 `POST` 要求，請將參數 `HTTPMethod` 設定為 `"GET"`，並將參數 `body` 設為 `nil` （因為 GET 要求沒有訊息內文）。如果您的自訂 API 支援其他 HTTP 動詞命令，請適當地變更 `HTTPMethod`。
+若要呼叫自訂 API，請呼叫 `MSClient.invokeAPI`。 要求和回應內容會被視為 JSON。 若要使用其他媒體類型，[請使用 `invokeAPI`][5] 的其他多載。  `GET`要發出請求而不是`POST`請求，請將`HTTPMethod``"GET"`參數設置為 和`body``nil`參數（因為 GET 請求沒有郵件內文）。如果您的自訂 API 支援其他 HTTP 謂`HTTPMethod`詞，請相應地更改。
 
 **Objective-C**：
 
@@ -448,7 +448,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
             }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 client.invokeAPI("sendEmail",
@@ -466,7 +466,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>作法：註冊推送範本以傳送跨平台通知
+## <a name="how-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="templates"></a>作法：註冊推送範本以傳送跨平台通知
 
 若要註冊範本，請在用戶端應用程式中利用 **client.push registerDeviceToken** 方法傳遞範本。
 
@@ -480,7 +480,7 @@ client.invokeAPI("sendEmail",
 }];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
@@ -498,19 +498,19 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-所有標記都將因安全性而移除。  若要在安裝中將標記新增至安裝或範本，請參閱 [使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK][4]。  若要使用這些已註冊的範本來傳送通知，請使用[通知中樞 api][3]。
+所有標記都將因安全性而移除。  要向安裝或安裝中的範本委任標記，請參閱[使用 Azure 移動應用的 .NET 後端伺服器 SDK][4]。  若要使用這些已註冊的範本來傳送通知，請使用[通知中樞 API][3]。
 
-## <a name="errors"></a>作法：處理錯誤
+## <a name="how-to-handle-errors"></a><a name="errors"></a>操作方法：處理錯誤
 
 呼叫 Azure App Service行動後端時，completion 區塊會包含 `NSError` 參數。 發生錯誤時，此參數便會傳回非 Nil。 您應檢查程式碼中的此參數，並視需要處理錯誤，如上述的程式碼片段所示。
 
-檔案[`<WindowsAzureMobileServices/MSError.h>`][6]會定義常數 `MSErrorResponseKey`、`MSErrorRequestKey`和 `MSErrorServerItemKey`。 若要取得與錯誤相關的詳細資料︰
+該檔[`<WindowsAzureMobileServices/MSError.h>`][6]定義常量`MSErrorResponseKey`，`MSErrorRequestKey`和`MSErrorServerItemKey`。 若要取得與錯誤相關的詳細資料︰
 
 **Objective-C**：
 
@@ -518,7 +518,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 let serverItem = error.userInfo[MSErrorServerItemKey]
@@ -532,17 +532,17 @@ let serverItem = error.userInfo[MSErrorServerItemKey]
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>如何：使用 Active Directory Authentication Library 驗證使用者
+## <a name="how-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>如何：使用 Active Directory Authentication Library 驗證使用者
 
 您可以使用 Active Directory Authentication Library (ADAL)，利用 Azure Active Directory 將使用者登入應用程式。 相較於使用 `loginWithProvider:completion:` 方法，較建議使用身分識別提供者 SDK 的用戶端流程驗證。  用戶端流程驗證能提供較原生的 UX 風格，並允許進行其他自訂。
 
-1. 依照 [如何設定 App Service 來進行 Active Directory 登入][7] 教學課程的說明，設定您的行動應用程式後端來進行 AAD 登入。 請務必完成註冊原生用戶端應用程式的選擇性步驟。 若是 iOS，我們建議採用 `<app-scheme>://<bundle-id>` 形式的重新導向 URI。 如需詳細資訊，請參閱[ADAL iOS 快速入門][8]。
+1. 依照[如何設定 App Service 來進行 Active Directory 登入][7]教學課程的說明，設定您的行動應用程式後端來進行 AAD 登入。 請務必完成註冊原生用戶端應用程式的選擇性步驟。 若是 iOS，我們建議採用 `<app-scheme>://<bundle-id>` 形式的重新導向 URI。 如需詳細資訊，請參閱 [ADAL iOS 快速入門][8]。
 2. 使用 Cocoapods 安裝 ADAL。 編輯您的 Podfile 以納入下列定義，並以您的 Xcode 專案名稱取代 **YOUR-PROJECT** ：
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -557,9 +557,9 @@ if (error.code == MSErrorPreconditionFailed) {
 4. 根據您使用的語言，將下列程式碼新增至您的應用程式。 取代每個程式碼的以下項目：
 
    * 以您佈建應用程式的租用戶名稱取代 **INSERT-AUTHORITY-HERE** 。 格式應為 https://login.microsoftonline.com/contoso.onmicrosoft.com。 您可以從 [Azure 入口網站]之 Azure Active Directory 的 [網域] 索引標籤中複製這個值。
-   * 以您行動應用程式後端的用戶端識別碼取代 INSERT-RESOURCE-ID-HERE 。 您可以從入口網站 [Azure Active Directory 設定] 底下的 [進階] 索引標籤取得用戶端識別碼。
-   * 以您從原生用戶端應用程式中複製的用戶端識別碼取代 INSERT-CLIENT-ID-HERE 。
-   * 使用 HTTPS 配置，以您網站的 **/.auth/login/done** 端點取代 *INSERT-REDIRECT-URI-HERE* 。 此值應該類似 *https://contoso.azurewebsites.net/.auth/login/done* 。
+   * 以您行動應用程式後端的用戶端識別碼取代 INSERT-RESOURCE-ID-HERE **** 。 您可以從入口網站 [Azure Active Directory 設定]**** 底下的 [進階]**** 索引標籤取得用戶端識別碼。
+   * 以您從原生用戶端應用程式中複製的用戶端識別碼取代 INSERT-CLIENT-ID-HERE **** 。
+   * 使用 HTTPS 配置，以您網站的 **/.auth/login/done** 端點取代 *INSERT-REDIRECT-URI-HERE* 。 此值應類似于*https://contoso.azurewebsites.net/.auth/login/done*。
 
 **Objective-C**：
 
@@ -597,7 +597,7 @@ if (error.code == MSErrorPreconditionFailed) {
 }
 ```
 
-**Swift**：
+**斯威夫特**：
 
 ```swift
 // add the following imports to your bridging header:
@@ -625,12 +625,12 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>作法：使用 Facebook SDK for iOS 來驗證使用者
+## <a name="how-to-authenticate-users-with-the-facebook-sdk-for-ios"></a><a name="facebook-sdk"></a>作法：使用 Facebook SDK for iOS 來驗證使用者
 
 您可以使用 Facebook SDK for iOS，利用 Facebook 將使用者登入應用程式。  相較於使用 `loginWithProvider:completion:` 方法，較建議使用用戶端流程驗證。  用戶端流程驗證能提供較原生的 UX 風格，並允許進行其他自訂。
 
-1. 遵循[如何設定 App Service 進行 facebook 登][9]入教學課程的說明，設定您的行動應用程式後端來進行 facebook 登入。
-2. 遵循[適用于 ios 的 FACEBOOK sdk-消費者入門][10]檔來安裝 facebook Sdk for ios。 您可以在現有註冊中新增 iOS 平台，而不必建立應用程式。
+1. 依照[如何設定 App Service 來進行 Facebook 登入][9]教學課程的說明，設定您的行動應用程式後端來進行 Facebook 登入。
+2. 依照 [Facebook SDK for iOS - 開始使用][10]文件來安裝 Facebook SDK for iOS。 您可以在現有註冊中新增 iOS 平台，而不必建立應用程式。
 3. Facebook 的文件包含應用程式委派中的某些 Objective-C 程式碼。 如果您要使用 **Swift**，您可以使用 AppDelegate.swift 的下列轉譯：
 
     ```swift
@@ -680,7 +680,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-    **Swift**：
+    **斯威夫特**：
 
     ```swift
     // Add the following imports to your bridging header:
@@ -704,7 +704,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-## <a name="twitter-fabric"></a>作法：使用 Twitter Fabric for iOS 來驗證使用者
+## <a name="how-to-authenticate-users-with-twitter-fabric-for-ios"></a><a name="twitter-fabric"></a>作法：使用 Twitter Fabric for iOS 來驗證使用者
 
 您可以使用 Fabric for iOS，利用 Twitter 將使用者登入應用程式。 與使用 `loginWithProvider:completion:` 方法相比，較建議使用用戶端流程驗證，因為它提供更原生的 UX 風格，並可允許進行其他自訂。
 
@@ -731,7 +731,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-    **Swift**：
+    **斯威夫特**：
 
     ```swift
     import Fabric
@@ -768,7 +768,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-    **Swift**：
+    **斯威夫特**：
 
     ```swift
     import TwitterKit
@@ -786,7 +786,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-## <a name="google-sdk"></a>作法：使用 Google Sign-In SDK for iOS 來驗證使用者
+## <a name="how-to-authenticate-users-with-the-google-sign-in-sdk-for-ios"></a><a name="google-sdk"></a>作法：使用 Google Sign-In SDK for iOS 來驗證使用者
 
 您可以使用 Google Sign-In SDK for iOS，利用 Google 帳戶將使用者登入應用程式。  近期內，Google 宣布他們的 OAuth 安全性原則變更。  這些原則變更要求您未來必須使用 Google SDK。
 
@@ -806,7 +806,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }];
     ```
 
-    **Swift**：
+    **斯威夫特**：
 
     ```swift
     let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
@@ -823,7 +823,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
     ```
 
-     **Swift**：
+     **斯威夫特**：
 
     ```swift
     GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
@@ -844,7 +844,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
     }
     ```
 
-   **Swift**：
+   **斯威夫特**：
 
     ```swift
     // ...
@@ -892,13 +892,13 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure 入口網站]: https://portal.azure.com/
+[Azure 門戶]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[動態結構描述]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
+[動態架構]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965

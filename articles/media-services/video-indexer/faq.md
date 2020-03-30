@@ -1,7 +1,7 @@
 ---
 title: 關於影片索引器的常見問題集 - Azure
 titleSuffix: Azure Media Services
-description: 本文提供 Azure 媒體服務影片索引子的常見問題解答。
+description: 本文回答了有關 Azure 媒體服務視頻索引子的常見問題。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619885"
 ---
-# <a name="video-indexer-frequently-asked-questions"></a>影片索引子的常見問題
+# <a name="video-indexer-frequently-asked-questions"></a>視頻索引子常見問題
 
 本文將回答有關影片索引器的常見問題集。
 
@@ -34,7 +34,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 * 識別並擷取語音，以及識別說話者。
 * 識別並擷取影片中的螢幕上文字。
 * 在影片檔案中偵測物件。
-* 從音訊曲目和影片中的螢幕上文字識別品牌（例如： Microsoft）。
+* 從視頻中的音軌和螢幕文本中識別品牌（例如：微軟）。
 * 根據名人的資料庫和使用者定義的臉部資料庫偵測並辨識臉部。
 * 擷取所討論的主題，但不一定要在音訊和視訊內容中明確提及。
 * 從音訊曲目建立隱藏式輔助字幕或字幕。
@@ -71,19 +71,19 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以建立自訂工作流程以將影片索引器的程序自動化？
 
-是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/services/logic-apps/) \(英文\) 找到適用於影片索引器的 [Logic App](https://flow.microsoft.com/en-us/) 和 [Flow](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) 連接器的詳細資料。 
+是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 找到適用於影片索引器的 [Logic App](https://azure.microsoft.com/services/logic-apps/) 和 [Flow](https://flow.microsoft.com/en-us/) 連接器的詳細資料。 
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>哪些 Azure 區域提供影片索引器？
 
 您可以在[區域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)頁面上查看哪些 Azure 區域提供影片索引器。
 
-### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>我可以針對我的特定使用案例自訂影片索引子模型嗎？ 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>我可以為特定用例自訂視頻索引子模型嗎？ 
 
-是。 在影片索引子中，您可以自訂一些可用的模型，以更符合您的需求。 
+是。 在視頻索引子中，您可以自訂一些可用的模型，以更好地滿足您的需求。 
 
-例如，我們的人員模型支援名人辨識的現成1000000臉部，但您也可以將其定型，以辨識不在該資料庫中的其他臉部。 
+例如，我們的 Person 模型支援開箱即用的 1，000，000 張名人識別人臉，但您也可以訓練它識別該資料庫中不的其他人臉。 
 
-如需詳細資訊，請參閱自訂[人員](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[語言](customize-language-model-overview.md)模型的相關文章。 
+有關詳細資訊，請參閱有關自訂[人員](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[語言](customize-language-model-overview.md)模型的文章。 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>影片索引器的 SLA 為何？
 
@@ -119,7 +119,7 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 是，內容和其見解都會保留在 Azure 區域內，除非您在 Azure 訂用帳戶中具有使用多個 Azure 區域的手動設定。 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>影片索引子的隱私權原則為何？
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>視頻索引子的隱私政策是什麼？
 
 影片索引器在 [Microsoft 隱私權聲明](https://privacy.microsoft.com/privacystatement)的涵蓋範圍內。 隱私權聲明會說明 Microsoft 處理的個人資料、Microsoft 處理該資料的方式，以及 Microsoft 處理該資料的目的。 若要深入了解隱私權，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trustcenter)。
 
@@ -127,20 +127,20 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 影片索引器目前有 SOC 認證。 若要檢閱影片索引器的認證，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)。
 
-### <a name="what-is-the-difference-between-private-and-public-videos"></a>私用和公用影片之間有何差異？ 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>私人視頻和公共視頻有什麼區別？ 
 
-當影片上傳到影片索引子時，您可以從兩種隱私權設定中進行選擇： [私人] 和 [公用]。 所有人都可以存取公用影片，包括匿名和無法識別的使用者。 私人帳戶僅限於帳戶成員。 
+將視頻上載到視頻索引子時，您可以從兩種隱私設置中進行選擇：私有設置和公共設置。 任何人（包括匿名和身份不明的使用者）均可訪問公共視頻。 私人帳戶成員僅限於帳戶成員。 
 
-### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>我嘗試將影片上傳為公用，並標示為不適當或冒犯的內容，這代表什麼意思？ 
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>我試圖上傳一個視頻作為公共，它被標記為不當或冒犯性的內容，這意味著什麼？ 
 
-將影片上傳到影片索引子時，會透過演算法和模型來進行自動內容分析，以確保不會公開任何不當的內容。 如果找到的影片可疑于包含明確內容，就無法將其設定為公用。 不過，帳戶成員仍然可以將其當做私人影片存取（觀看、下載深入解析和已解壓縮的成品，以及執行其他可供帳戶成員使用的作業）。   
+將視頻上載到視頻索引子時，演算法和模型會自動進行內容分析，以確保不會公開顯示任何不適當的內容。 如果發現視頻可疑，即包含顯式內容，則無法將其設置為公共內容。 但是，帳戶成員仍可以以專用視頻形式訪問它（查看該視頻、下載見解和提取的工件，並執行可供帳戶成員使用的其他操作）。   
 
-為了設定公用存取的影片，您可以： 
+為了設置視頻供公眾訪問，您可以： 
 
-* 建立您自己的介面層（例如應用程式或網站），並使用它來與影片索引子服務互動。 如此一來，影片會在入口網站中保持私用，而您的使用者可以透過您的介面與它互動。 例如，您仍然可以取得深入解析，或允許在自己的介面中觀看影片。 
-* 要求內容的人工審核，這會導致移除限制，假設內容不是明確的。 
+* 構建您自己的介面層（如應用或網站），並使用它與視頻索引子服務進行交互。 這樣，視頻在我們的門戶中保持私密性，您的使用者可以通過您的介面與之交互。 例如，您仍然可以獲取見解或允許在您自己的介面中觀看視頻。 
+* 要求對內容進行人工審閱，這將導致刪除限制，前提是內容不明確。 
 
-    如果您的使用者直接使用影片索引子網站做為介面層，以及用於公用（未經驗證）的查看，就可以探索此選項。 
+    如果使用者直接使用視頻索引子網站作為介面層，並且用於公共（未經身份驗證的）查看，則可以探索此選項。 
 
 ## <a name="api-questions"></a>API 問題
 
@@ -180,11 +180,11 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 ### <a name="how-much-does-video-indexer-cost"></a>影片索引器的費用是多少？
 
-影片索引器會使用簡單的隨用隨付定價模型，其以您編製索引之內容輸入的持續時間為基礎。 對於編碼、資料流、儲存體、網路使用量和媒體保留單元，可能須支付額外的費用。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)頁面。
+影片索引器會使用簡單的隨用隨付定價模型，其以您編製索引之內容輸入的持續時間為基礎。 對於編碼、資料流、儲存體、網路使用量和媒體保留單元，可能須支付額外的費用。 有關詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)頁面。
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>使用影片索引子的計費時間為何？
+### <a name="when-am-i-billed-for-using-video-indexer"></a>何時使用視頻索引子收費？
 
-傳送要編制索引的影片時，使用者會將索引定義為影片分析、音訊分析或兩者。 這會決定要向哪個 Sku 收費。 如果在處理期間發生嚴重層級錯誤，將會傳回錯誤碼作為回應。 在這種情況下，不會產生任何費用。  嚴重錯誤可能是因為我們的程式碼中的 bug，或服務所擁有的內部相依性嚴重失敗所造成。 錯誤的識別或深入解析解壓縮不會視為關鍵，而且會傳迴響應。 在傳回有效（非錯誤碼）回應的任何情況下，都會進行計費。
+發送要編制索引的視頻時，使用者將索引定義為視頻分析、音訊分析或兩者。 這將確定將收取哪些 SKU。 如果處理過程中存在嚴重級別錯誤，則錯誤代碼將作為回應返回。 在這種情況下，不會發生計費。  嚴重錯誤可能由代碼中的 Bug 或服務的內部依賴項中的嚴重故障引起。 錯誤（如錯誤識別或透視提取）不被視為嚴重錯誤，並返回回應。 在任何情況下，如果返回有效的（非錯誤代碼）回應，就會發生計費。
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>影片索引器是否提供免費試用版？
 

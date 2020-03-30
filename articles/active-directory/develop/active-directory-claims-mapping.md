@@ -1,5 +1,5 @@
 ---
-title: 自訂 Azure AD 租使用者應用程式宣告（PowerShell）
+title: 自訂 Azure AD 租戶應用聲明（PowerShell）
 titleSuffix: Microsoft identity platform
 description: 此頁面說明 Azure Active Directory 宣告對應。
 services: active-directory
@@ -14,10 +14,10 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263188"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>操作說明：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
@@ -36,7 +36,7 @@ ms.locfileid: "79263188"
 
 ## <a name="claims-mapping-policy-type"></a>宣告對應原則類型
 
-在 Azure AD 中，**原則**物件代表個別應用程式或組織中的所有應用程式上強制執行的一組規則。 每個類型的原則都具有包含一組屬性的獨特結構，這些屬性會接著套用至它們已被指派的物件。
+在 Azure AD 中，**策略**物件表示在單個應用程式或組織中的所有應用程式上強制執行的一組規則。 每個類型的原則都具有包含一組屬性的獨特結構，這些屬性會接著套用至它們已被指派的物件。
 
 宣告對應原則是一種**原則**物件，會修改針對特定應用程式所核發之權杖所發出的宣告。
 
@@ -293,15 +293,15 @@ ms.locfileid: "79263188"
 | User | mail | 電子郵件地址 |
 | User | userprincipalname | 使用者主體名稱 |
 | User | department|department|
-| User | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
+| User | onpremisessamaccountname | 本地 SAM 帳戶名稱 |
 | User | netbiosname| NetBios 名稱 |
 | User | dnsdomainname | DNS 網域名稱 |
-| User | onpremisesecurityidentifier | 內部部署安全識別碼 |
+| User | onpremisesecurityidentifier | 本地安全識別碼 |
 | User | companyname| 組織名稱 |
 | User | streetaddress | 街道地址 |
 | User | postalcode | 郵遞區號 |
 | User | preferredlanguange | 慣用語言 |
-| User | onpremisesuserprincipalname | 內部部署 UPN |
+| User | onpremisesuserprincipalname | 本地 UPN |
 | User | mailNickname | 郵件暱稱 |
 | User | extensionattribute1 | 擴充屬性 1 |
 | User | extensionattribute2 | 擴充屬性 2 |
@@ -334,7 +334,7 @@ ms.locfileid: "79263188"
 
 - 此元素必須符合 **ClaimsTransformation** 屬性 (會定義如何產生此宣告的資料) 中轉換項目的識別碼元素。
 
-**宣告類型：** **JwtClaimType** 和 **SamlClaimType** 元素會定義此宣告結構描述項目是參考哪個宣告。
+**宣告類型：****JwtClaimType** 和 **SamlClaimType** 元素會定義此宣告結構描述項目是參考哪個宣告。
 
 - JwtClaimType 必須包含要在 JWT 中發出的宣告名稱。
 - SamlClaimType 必須包含要在 SAML 權杖中發出的宣告 URI。
@@ -415,9 +415,9 @@ ms.locfileid: "79263188"
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
 
-您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet `new-azureadapplicationkeycredential`，為您的應用程式物件建立對稱金鑰認證。 如需此 Azure PowerShell Cmdlet 的詳細資訊，請參閱[AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 為了添加自訂簽名金鑰，可以使用 Azure PowerShell Cmdlet`new-azureadapplicationkeycredential`為應用程式物件創建對稱金鑰憑據。 有關此 Azure PowerShell Cmdlet 的詳細資訊，請參閱[新 AzureAD 應用程式金鑰憑據](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
-已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其[OpenID connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，藉以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 元資料檔案格式： 
+啟用了宣告對應的應用必須通過追加`appid={client_id}`到其[OpenID Connect 中繼資料請求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)來驗證其權杖簽名金鑰。 下面是您應該使用的 OpenID 連接中繼資料文檔的格式： 
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -437,11 +437,11 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 #### <a name="prerequisites"></a>Prerequisites
 
-在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您是 Azure AD 的新手，建議您[先了解如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)，然後再參考範例繼續操作。
+在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您是 Azure AD 的新增產品，我們建議您在繼續執行這些示例之前[瞭解如何獲取 Azure AD 租戶](quickstart-create-new-tenant.md)。
 
 若要開始使用，請執行下列步驟：
 
-1. 下載最新的 [Azure AD PowerShell 模組公開預覽版本](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下載最新的[Azure AD PowerShell 模組公共預覽版](https://www.powershellgallery.com/packages/AzureADPreview)。
 1. 執行 Connect 命令以登入您的 Azure AD 管理帳戶。 您每次啟動新的工作階段時執行此命令。
 
    ``` powershell
@@ -453,7 +453,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>範例：建立並指派原則，以省略簽發給服務主體之權杖的基本宣告
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>示例：創建並分配策略以省略從頒發給服務主體的權杖中的基本聲明
 
 在此範例中，您將會建立原則，以從核發給連結之服務主體的權杖中移除基本宣告集。
 
@@ -469,7 +469,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
-   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 要查看組織的所有服務主體，可以[查詢 Microsoft 圖形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 圖形資源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登錄到 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -493,7 +493,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 要查看組織的所有服務主體，可以[查詢 Microsoft 圖形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 圖形資源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登錄到 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -517,7 +517,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以[查詢 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
+   1. 要查看組織的所有服務主體，可以[查詢 Microsoft 圖形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 圖形資源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登錄到 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰ 
      
       ``` powershell
@@ -526,4 +526,4 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 ## <a name="see-also"></a>另請參閱
 
-若要瞭解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對企業應用程式自訂 saml 權杖中發出的宣告](active-directory-saml-claims-customization.md)
+要瞭解如何自訂通過 Azure 門戶在 SAML 權杖中發出的聲明，請參閱[如何：自訂在企業應用程式的 SAML 權杖中發出的聲明](active-directory-saml-claims-customization.md)

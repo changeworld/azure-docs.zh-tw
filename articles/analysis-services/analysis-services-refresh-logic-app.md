@@ -1,119 +1,119 @@
 ---
-title: 使用 Azure Analysis Services 模型的 Logic Apps 進行重新整理 |Microsoft Docs
-description: 本文說明如何使用 Azure Logic Apps 為 Azure Analysis Services 進行非同步重新整理程式碼。
+title: 使用 Azure 分析服務模型的邏輯應用刷新 |微軟文檔
+description: 本文介紹如何使用 Azure 邏輯應用為 Azure 分析服務編寫非同步刷新代碼。
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126970"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
 
-藉由使用 Logic Apps 和 REST 呼叫，您可以在 Azure 分析方格式模型上執行自動化資料重新整理作業，包括查詢向外延展的唯讀複本同步處理。
+通過使用邏輯應用和 REST 調用，可以在 Azure 分析方格模型上執行自動資料刷新操作，包括查詢橫向擴展的唯讀副本的同步。
 
-若要深入瞭解如何搭配 Azure Analysis Services 使用 REST Api，請參閱[使用 REST API 進行非同步](analysis-services-async-refresh.md)重新整理。
+要瞭解有關將 REST API 與 Azure 分析服務一起使用的更多資訊，請參閱[使用 REST API 進行非同步刷新](analysis-services-async-refresh.md)。
 
 ## <a name="authentication"></a>驗證
 
-所有呼叫都必須使用有效的 Azure Active Directory （OAuth 2）權杖進行驗證。  本文中的範例將使用服務主體（SPN）向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有調用都必須使用有效的 Azure 活動目錄 （OAuth 2） 權杖進行身份驗證。  本文中的示例將使用服務主體 （SPN） 對 Azure 分析服務進行身份驗證。 要瞭解詳細資訊，請參閱[使用 Azure 門戶創建服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-## <a name="design-the-logic-app"></a>設計邏輯應用程式
+## <a name="design-the-logic-app"></a>設計邏輯應用
 
 > [!IMPORTANT]
-> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在 Azure Analysis Services 防火牆中將要求啟動器的公用 IP 位址列入允許清單。 若要深入瞭解每個區域 Azure Logic Apps IP 範圍，請參閱[Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
+> 以下示例假定 Azure 分析服務防火牆已禁用。 如果啟用了防火牆，則必須在 Azure 分析服務防火牆中白名單請求開始器的公共 IP 位址。 要瞭解有關每個區域的 Azure 邏輯應用 IP 範圍的詳細資訊，請參閱[Azure 邏輯應用的限制和配置資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
 ### <a name="prerequisites"></a>Prerequisites
 
-#### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
+#### <a name="create-a-service-principal-spn"></a>創建服務主體 （SPN）
 
-若要瞭解如何建立服務主體，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
+要瞭解如何創建服務主體，請參閱使用[Azure 門戶創建服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="configure-permissions-in-azure-analysis-services"></a>在 Azure Analysis Services 中設定許可權
+#### <a name="configure-permissions-in-azure-analysis-services"></a>在 Azure 分析服務中配置許可權
  
-您所建立的服務主體必須具有伺服器的伺服器管理員許可權。 若要深入了解，請參閱[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。
+您創建的服務主體必須具有伺服器上的伺服器管理員許可權。 若要深入了解，請參閱[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。
 
-### <a name="configure-the-logic-app"></a>設定邏輯應用程式
+### <a name="configure-the-logic-app"></a>配置邏輯應用
 
-在此範例中，邏輯應用程式是設計來在收到 HTTP 要求時觸發。 這將可讓您使用協調流程工具（例如 Azure Data Factory）來觸發 Azure Analysis Services 模型重新整理。
+在此示例中，邏輯應用旨在在收到 HTTP 要求時觸發。 這將啟用使用業務流程工具（如 Azure 資料工廠）來觸發 Azure 分析服務模型刷新。
 
-建立邏輯應用程式之後：
+創建邏輯應用後：
 
-1. 在邏輯應用程式設計工具中，選擇**收到 HTTP 要求時**的第一個動作。
+1. 在邏輯應用設計器中，選擇第**一個操作作為"何時收到 HTTP 要求**"。
 
-   ![新增 HTTP 收到的活動](./media/analysis-services-async-refresh-logic-app/1.png)
+   ![添加 HTTP 接收的活動](./media/analysis-services-async-refresh-logic-app/1.png)
 
-此步驟會在邏輯應用程式儲存後填入 HTTP POST URL。
+保存邏輯應用後，此步驟將使用 HTTP POST URL 填充。
 
-2. 新增新的步驟並搜尋**HTTP**。  
+2. 添加新步驟並搜索**HTTP**。  
 
-   ![新增 HTTP 活動](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![添加 HTTP 活動](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![新增 HTTP 活動](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![添加 HTTP 活動](./media/analysis-services-async-refresh-logic-app/10.png)
 
-3. 選取 [ **HTTP** ] 以新增此動作。
+3. 選擇**HTTP**以添加此操作。
 
-   ![新增 HTTP 活動](./media/analysis-services-async-refresh-logic-app/2.png)
+   ![添加 HTTP 活動](./media/analysis-services-async-refresh-logic-app/2.png)
 
-設定 HTTP 活動，如下所示：
+按如下方式配置 HTTP 活動：
 
 |屬性  |值  |
 |---------|---------|
 |**方法**     |POST         |
-|**URI**     | HTTPs://*您的伺服器區域*/servers/ *.aas 伺服器名稱*/models/*您的資料庫名稱*對/refreshes <br /> <br /> 例如： HTTPs：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**標頭**     |   內容類型、應用程式/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
-|**本文**     |   若要深入瞭解如何形成要求主體，請參閱[使用 REST API 張貼對/refreshes 的非同步](analysis-services-async-refresh.md#post-refreshes)重新整理。 |
-|**驗證**     |Active Directory OAuth         |
-|**出租**     |填入您的 Azure Active Directory TenantId         |
-|**目標對象**     |HTTPs：//*. asazure. net         |
-|**用戶端識別碼**     |輸入您的服務主體名稱 ClientID         |
-|**認證類型**     |祕密         |
-|**祕密**     |輸入您的服務主體名稱秘密         |
+|**URI**     | HTTPs://*伺服器區域*/伺服器 */as 伺服器名稱*/模型/*資料庫名稱*/刷新 <br /> <br /> 例如： HTTPs：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
+|**標頭**     |   內容類型，應用程式/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**內文**     |   要瞭解有關形成請求正文的更多資訊，請參閱使用[REST API - POST /refresh 的非同步刷新](analysis-services-async-refresh.md#post-refreshes)。 |
+|[驗證]****     |Active Directory OAuth         |
+|**租戶**     |填寫 Azure 活動目錄租戶 Id         |
+|**觀眾**     |HTTPs：//.asazure.windows.net         |
+|**用戶端 ID**     |輸入服務主體名稱用戶端 ID         |
+|**憑據類型**     |祕密         |
+|**秘密**     |輸入服務主體名稱機密         |
 
 範例：
 
-![完成的 HTTP 活動](./media/analysis-services-async-refresh-logic-app/7.png)
+![已完成的 HTTP 活動](./media/analysis-services-async-refresh-logic-app/7.png)
 
-現在測試邏輯應用程式。  在邏輯應用程式設計工具中，按一下 [**執行**]。
+現在測試邏輯應用。  在邏輯應用設計器中，按一下"**運行**"。
 
 ![測試邏輯應用程式](./media/analysis-services-async-refresh-logic-app/8.png)
 
-## <a name="consume-the-logic-app-with-azure-data-factory"></a>使用邏輯應用程式搭配 Azure Data Factory
+## <a name="consume-the-logic-app-with-azure-data-factory"></a>使用 Azure 資料工廠的邏輯應用
 
-儲存邏輯應用程式之後，請檢查 [**收到 HTTP 要求時**] 活動，然後複製現在產生的**HTTP POST URL** 。  這是可由 Azure Data Factory 用來進行非同步呼叫以觸發邏輯應用程式的 URL。
+保存邏輯應用後，查看**何時收到 HTTP 要求**的活動，然後複製現在生成的 HTTP POST **URL。**  這是 Azure 資料工廠可用於進行非同步調用以觸發邏輯應用的 URL。
 
-以下是執行此動作 Azure Data Factory Web 活動的範例。
+下面是執行此操作的 Azure 資料工廠 Web 活動示例。
 
-![Data Factory Web 活動](./media/analysis-services-async-refresh-logic-app/11.png)
+![資料工廠 Web 活動](./media/analysis-services-async-refresh-logic-app/11.png)
 
-## <a name="use-a-self-contained-logic-app"></a>使用獨立的邏輯應用程式
+## <a name="use-a-self-contained-logic-app"></a>使用自包含的邏輯應用
 
-如果您不打算使用協調流程工具（例如 Data Factory）來觸發模型重新整理，您可以將邏輯應用程式設定為根據排程觸發重新整理。
+如果您不打算使用業務流程工具（如資料工廠）來觸發模型刷新，則可以設置邏輯應用以基於計畫觸發刷新。
 
-使用上述範例，刪除第一個活動，並將它取代為**排程**活動。
+使用上面的示例，刪除第一個活動並將其替換為**計畫**活動。
 
-![排程活動](./media/analysis-services-async-refresh-logic-app/12.png)
+![計畫活動](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![排程活動](./media/analysis-services-async-refresh-logic-app/13.png)
+![計畫活動](./media/analysis-services-async-refresh-logic-app/13.png)
 
-這個範例會使用**週期**。
+此示例將使用 **"重複"。**
 
-新增活動之後，設定 [間隔] 和 [頻率]，然後新增參數並選擇 [**在這些小時**]。
+添加活動後，配置間隔和頻率，然後添加新參數，然後選擇 **"在這些時間**"。
 
-![排程活動](./media/analysis-services-async-refresh-logic-app/16.png)
+![計畫活動](./media/analysis-services-async-refresh-logic-app/16.png)
 
-選取所需的時數。
+選擇想要的小時數。
 
-![排程活動](./media/analysis-services-async-refresh-logic-app/15.png)
+![計畫活動](./media/analysis-services-async-refresh-logic-app/15.png)
 
-儲存邏輯應用程式。
+保存邏輯應用。
 
 ## <a name="next-steps"></a>後續步驟
 
-[範例](analysis-services-samples.md)  
+[樣品](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

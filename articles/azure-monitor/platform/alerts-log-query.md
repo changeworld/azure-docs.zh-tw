@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667783"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure 監視器中的記錄警示查詢
 [以 Azure 監視器記錄為基礎的警示規則](alerts-unified-log.md)會定期執行，因此您應該確定已撰寫規則將額外負荷和延遲降至最低。 這篇文章對於撰寫記錄警示的有效查詢以及轉換現有查詢的程序提供建議。 
 
 ## <a name="types-of-log-queries"></a>記錄查詢類型
-[Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)是以資料表或[搜尋](/azure/kusto/query/searchoperator)或聯[集](/azure/kusto/query/unionoperator)運算子為開頭。
+[Azure 監視器中的日誌查詢](../log-query/log-query-overview.md)從表或[搜索](/azure/kusto/query/searchoperator)或[聯合](/azure/kusto/query/unionoperator)運算子開始。
 
 例如，下列查詢只限於 _SecurityEvent_ 資料表，而且搜尋特定事件識別碼。 這是查詢必須處理的唯一資料表。
 
@@ -50,7 +50,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->新的 [scheduledQueryRules API](../log-query/cross-workspace-query.md) 支援記錄警示中的[跨資源查詢](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[適用於 scheduledQueryRules API 的 ARM 範本](../log-query/cross-workspace-query.md)建立[跨資源查詢](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)記錄警示規則而無需進行切換 – 但此警示規則可透過 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 進行管理，而不是 Azure 入口網站。
+>新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的[跨資源查詢](../log-query/cross-workspace-query.md)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[適用於 scheduledQueryRules API 的 ARM 範本](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)建立[跨資源查詢](../log-query/cross-workspace-query.md)記錄警示規則而無需進行切換 – 但此警示規則可透過 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 進行管理，而不是 Azure 入口網站。
 
 ## <a name="examples"></a>範例
 下列範例包含使用 `search` 和 `union` 的記錄檔查詢，並提供您可用來修改這些查詢以便搭配警示規則使用的步驟。

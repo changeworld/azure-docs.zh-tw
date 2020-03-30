@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 設定每個網站的 WAF 原則
+title: 使用 PowerShell 配置每個網站的 WAF 策略
 titleSuffix: Azure Web Application Firewall
-description: 瞭解如何使用 Azure PowerShell 在應用程式閘道上設定各個網站的 Web 應用程式防火牆原則。
+description: 瞭解如何使用 Azure PowerShell 在應用程式閘道上配置每個網站的 Web 應用程式防火牆策略。
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,34 +9,34 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: a04b850857b6abd81934430a05086477acd058d6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444689"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 設定每個網站的 WAF 原則
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每個網站 WAF 策略
 
-Web 應用程式防火牆（WAF）設定包含在 WAF 原則中，若要變更 WAF 設定，您可以修改 WAF 原則。
+Web 應用程式防火牆 （WAF） 設置包含在 WAF 策略中，要更改 WAF 配置，請修改 WAF 策略。
 
-當與您的應用程式閘道相關聯時，原則和所有設定會全域反映出來。 因此，如果您的 WAF 有五個網站，則所有五個網站都會受到相同 WAF 原則的保護。 如果您的每個網站都需要相同的安全性設定，這就很好用。 但您也可以將 WAF 原則套用至個別的接聽程式，以允許網站特定的 WAF 設定。
+與應用程式閘道關聯時，策略和所有設置將全域反映。 因此，如果您的 WAF 後面有五個網站，則所有五個網站都受同一 WAF 策略的保護。 如果您需要每個網站的相同安全設置，這很棒。 但是，您也可以將 WAF 策略應用於單個攔截器，以允許特定于網站的 WAF 配置。
 
-藉由將 WAF 原則套用至接聽程式，您可以設定個別網站的 WAF 設定，而不會影響每個網站的變更。 最特定的原則會採用先前的。 如果有全域原則和每個網站原則（與接聽程式相關聯的 WAF 原則），則每個網站的原則會覆寫該接聽程式的全域 WAF 原則。 沒有自己原則的其他接聽程式只會受到全域 WAF 原則的影響。
+通過將 WAF 策略應用於攔截器，可以為各個網站配置 WAF 設置，而無需更改影響每個網站。 最具體的政策是先例。 如果存在全域原則和每個網站策略（與攔截器關聯的 WAF 策略），則每個網站策略將覆蓋該攔截器的全域 WAF 策略。 沒有自己策略的其他攔截器將僅受全域 WAF 策略的影響。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 設定網路
 > * 建立 WAF 原則
 > * 建立已啟用 WAF 的應用程式閘道
-> * 全域、每個網站和個 URI 套用 WAF 原則
+> * 全域、每個網站和每個 URI 應用 WAF 策略
 > * 建立虛擬機器擴展集
 > * 建立儲存體帳戶並設定診斷
 > * 測試應用程式閘道
 
 ![Web 應用程式防火牆範例](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源 
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 建立名為 myBackendSubnet 和 myAGSubnet 的子網路設定。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 搭配子網路設定來建立名為 *myVNet* 的虛擬網路。 最後，使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 來建立名為 *myAGPublicIPAddress* 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 建立名為 myBackendSubnet** 和 myAGSubnet** 的子網路設定。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 搭配子網路設定來建立名為 *myVNet* 的虛擬網路。 最後，使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 來建立名為 *myAGPublicIPAddress* 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -84,9 +84,9 @@ $pip = New-AzPublicIpAddress `
 
 在此節中，您會建立支援應用程式閘道的資源，最後會建立應用程式閘道和 WAF。 您所建立的資源包括：
 
-- IP 組態和前端連接埠 - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
-- 預設集區 - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
-- 預設接聽程式和規則 - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
+- IP 組態和前端連接埠** - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
+- 預設集區** - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
+- 預設接聽程式和規則** - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
@@ -132,11 +132,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-two-waf-policies"></a>建立兩個 WAF 原則
+### <a name="create-two-waf-policies"></a>創建兩個 WAF 策略
 
-建立兩個 WAF 原則，一個全域和一個每個網站，並新增自訂規則。 
+創建兩個 WAF 策略，每個網站一個全域原則和一個策略，並添加自訂規則。 
 
-每個網站的原則會將檔案上傳限制限制為 5 MB。 其他一切都相同。
+每個網站的策略將檔上載限制限制限制為 5 MB。 其他一切都是一樣的。
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -227,7 +227,7 @@ $frontendRuleSite = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-waf"></a>建立包含 WAF 的應用程式閘道
 
-您已經建立必要的支援資源，接著請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 指定應用程式閘道的參數。 使用 [New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy) 來指定防火牆原則。 然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 建立名為 myAppGateway 的應用程式閘道。
+您已經建立必要的支援資源，接著請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 指定應用程式閘道的參數。 使用 [New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy) 來指定防火牆原則。 然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 建立名為 myAppGateway** 的應用程式閘道。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>套用每個 URI 的原則
+### <a name="apply-a-per-uri-policy"></a>應用每個 URI 策略
 
-若要套用每個 URI 原則，只要建立新的原則，並將它套用至路徑規則設定即可。 
+要應用每個 URI 策略，只需創建新策略並將其應用於路徑規則配置即可。 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -372,7 +372,7 @@ Update-AzVmss `
 
 ### <a name="create-the-storage-account"></a>建立儲存體帳戶
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 建立名為 myagstore1 的儲存體帳戶。
+使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 建立名為 myagstore1** 的儲存體帳戶。
 
 ```azurepowershell-interactive
 $storageAccount = New-AzStorageAccount `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 
-您可使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 來取得應用程式閘道的公用 IP 位址。 然後使用此 IP 位址來進行捲曲（取代如下所示的1.1.1.1）。 
+您可使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 來取得應用程式閘道的公用 IP 位址。 然後使用此 IP 位址捲曲（替換如下所示的 1.1.1.1）。 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

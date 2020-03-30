@@ -1,5 +1,5 @@
 ---
-title: 在遷移之後管理單一和集區資料庫
+title: 遷移後管理單個資料庫和池資料庫
 description: 了解如何在移轉至 Azure SQL Database 之後管理資料庫。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256181"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>雲端中的新 DBA - 在 Azure SQL Database 中管理您的單一和集區資料庫
@@ -28,7 +28,7 @@ ms.locfileid: "79256181"
 
 本文將討論以 Azure SQL Database 作為平台的一些核心特性，以便您可以在使用彈性集區中的單一資料庫和集區資料庫時充分運用。 這些特性如下所示：
 
-- 使用 Azure 入口網站監視資料庫
+- 使用 Azure 門戶監視資料庫
 - 業務持續性和災害復原 (BCDR)
 - 安全性與合規性
 - 智慧型資料庫監視和維護
@@ -39,18 +39,18 @@ ms.locfileid: "79256181"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 入口網站監視資料庫
 
-在[Azure 入口網站](https://portal.azure.com/)中，您可以選取您的資料庫，然後按一下 [**監視**] 圖表，來監視個別資料庫的使用率。 如此會帶出您可變更的 [度量] 視窗，只要按一下 [編輯圖表] 按鈕即可。 新增下列度量：
+在[Azure 門戶](https://portal.azure.com/)中，可以通過選擇資料庫並按一下**監視**圖表來監視各個資料庫的利用率。 如此會帶出您可變更的 [度量]**** 視窗，只要按一下 [編輯圖表]**** 按鈕即可。 新增下列度量：
 
 - CPU 百分比
 - DTU 百分比
 - 資料 IO 百分比
 - 資料庫大小百分比
 
-新增這些計量之後，您就能在 [計量] 視窗上含有詳細資訊的 [監視] 圖表中繼續檢視它們。 這四個度量都會顯示與資料庫 **DTU** 相對的平均使用率百分比。 如需服務層的相關詳細資訊，請參閱[以 DTU 為基礎的購買模型](sql-database-service-tiers-dtu.md)和[以虛擬核心為基礎的購買模型](sql-database-service-tiers-vcore.md)文章。  
+添加這些指標後，可以繼續在 **"監視"** 圖表中查看這些指標，並瞭解有關 **"指標"** 視窗的詳細資訊。 這四個度量都會顯示與資料庫 **DTU** 相對的平均使用率百分比。 如需服務層的相關詳細資訊，請參閱[以 DTU 為基礎的購買模型](sql-database-service-tiers-dtu.md)和[以虛擬核心為基礎的購買模型](sql-database-service-tiers-vcore.md)文章。  
 
 ![資料庫效能的服務層監視。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
-您也可以在效能度量中設定警示。 按一下 [度量] 視窗中的 [新增警示] 按鈕。 遵循精靈的指示以設定警示。 您可以選擇在度量超出或低於特定臨界值時發出警示。
+您也可以在效能度量中設定警示。 按一下 [度量]**** 視窗中的 [新增警示]**** 按鈕。 遵循精靈的指示以設定警示。 您可以選擇在度量超出或低於特定臨界值時發出警示。
 
 例如，如果您預期資料庫中的工作負載會成長，可以選擇設定電子郵件警示，以便在資料庫的任何效能度量達到 80% 時收到警示。 您可以使用此警示作為早期警告，協助您判斷何時需要切換至更高的計算大小。
 
@@ -91,7 +91,7 @@ ms.locfileid: "79256181"
 
 SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層級與平台層級提供安全性，而分成數個層時最易於了解。 您可以在每個層進行控制，並為應用程式提供最佳的安全性。 這些層為：
 
-- 身分識別 & 驗證（[SQL 驗證和 Azure Active Directory [AAD] 驗證](sql-database-manage-logins.md)）。
+- 身份&身份驗證[（SQL 身份驗證和 Azure 活動目錄 [AAD] 身份驗證](sql-database-manage-logins.md)）。
 - 監視活動 ([稽核](sql-database-auditing.md)和[威脅偵測](sql-database-threat-detection.md))。
 - 保護實際資料 ([透明資料加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)和 [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 控制對於敏感和特殊權限資料 ([資料列層級安全性](/sql/relational-databases/security/row-level-security)和[動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)) 的存取權。
@@ -100,14 +100,14 @@ SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層�
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database 提供哪些使用者驗證方法
 
-SQL Database 提供兩種驗證方法：
+SQL Database 提供兩個驗證方法：
 
 - [Azure Active Directory 驗證](sql-database-aad-authentication.md)
-- [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [SQL 身份驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支援傳統 Windows 驗證。 Azure Active Directory (AD) 是集中式身分識別和存取管理服務。 利用此服務，您可以非常輕鬆地為組織中的所有人員提供單一登入存取 (SSO)。 這表示認證會在所有 Azure 服務間共用，以簡化驗證。 AAD 支援 [MFA (多重要素驗證)](sql-database-ssms-mfa-authentication.md)，[只要按幾下滑鼠](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 即可與 Windows Server Active Directory 整合。 SQL 驗證的運作方式正如同您過去使用它的方式。 您提供使用者名稱/密碼，而您可以向指定 SQL Database 伺服器上的任何資料庫驗證使用者。 這也可讓 SQL Database 和 SQL 資料倉儲提供多重要素驗證和 Azure AD 網域內的來賓使用者帳戶。 如果您已經有內部部署 Active Directory，您可以使目錄與 Azure Active Directory 結成同盟，將您的目錄延伸至 Azure。
 
-|**如果您...**|**SQL Database/SQL 資料倉儲**|
+|**如果你...**|**SQL Database/SQL 資料倉儲**|
 |---|---|
 |不想在 Azure 中使用 Azure Active Directory (AD)|使用 [SQL 驗證](sql-database-security-overview.md)|
 |已在內部部署 SQL Server 上使用 AD|[使 AD 與 Azure AD 結成同盟](../active-directory/hybrid/whatis-hybrid-identity.md)，並使用 Azure AD 驗證。 如此一來，您即可使用單一登入。|
@@ -130,11 +130,11 @@ SQL Database 提供兩種驗證方法：
 
 藉由僅允許特定實體存取您的 SQL Database 伺服器，防火牆可防止外部實體存取您的伺服器。 預設將禁止 SQL Database 伺服器內的所有連線和資料庫，除非連線是來自其他 Azure 服務。 利用防火牆規則，您可以僅對核准的實體 (例如，開發人員電腦) 開放對伺服器的存取，方法是允許該電腦的 IP 位址通過防火牆。 也可讓您指定想要允許存取 SQL Database 伺服器的某個範圍 IP。 比方說，可以在 [防火牆設定] 頁面中指定範圍，一次新增您組織中開發人員電腦的 IP 位址。
 
-您可以在伺服器層級或資料庫層級建立防火牆規則。 可以使用 Azure 入口網站或 SSMS 建立伺服器層級 IP 防火牆規則。 如需瞭解如何設定伺服器層級和資料庫層級防火牆規則的詳細資訊，請參閱：[在 SQL Database 中建立 IP 防火牆規則](sql-database-security-tutorial.md#create-firewall-rules)。
+您可以在伺服器層級或資料庫層級建立防火牆規則。 可以使用 Azure 入口網站或 SSMS 建立伺服器層級 IP 防火牆規則。 有關如何設置伺服器級和資料庫級防火牆規則的詳細資訊，請參閱：[在 SQL 資料庫中創建 IP 防火牆規則](sql-database-security-tutorial.md#create-firewall-rules)。
 
 #### <a name="service-endpoints"></a>服務端點
 
-根據預設，SQL 資料庫會設定為 [允許 Azure 服務存取伺服器]；這表示 Azure 中之任何虛擬機器都可以嘗試連線到您的資料庫。 這些嘗試仍需要取得驗證。 不過，如果您不想要資料庫可供任何 Azure IP 存取，則可以停用 [允許 Azure 服務存取伺服器]。 此外，您可以設定 [VNet 服務端點](sql-database-vnet-service-endpoint-rule-overview.md)。
+根據預設，SQL 資料庫會設定為 [允許 Azure 服務存取伺服器]；這表示 Azure 中之任何虛擬機器都可以嘗試連線到您的資料庫。 這些嘗試仍需要取得驗證。 不過，如果您不想要資料庫可供任何 Azure IP 存取，則可以停用 [允許 Azure 服務存取伺服器]。 此外，您可以配置[VNet 服務終結點](sql-database-vnet-service-endpoint-rule-overview.md)。
 
 服務端點 (SE) 可讓您僅對自己在 Azure 中的私人虛擬網路公開您的重要 Azure 資源。 如此一來，基本上可排除對您的資源的公用存取。 您的虛擬網路與 Azure 之間的流量會保持在 Azure 骨幹網路上。 若沒有 SE，則會強制執行通道封包路由。 您的虛擬網路會強制對您的組織的網際網路流量與 Azure 服務流量通過相同的路由。 利用服務端點，您可以將此最佳化，因為封包會直接從您的虛擬網路通往 Azure 骨幹網路上的服務。
 
@@ -142,7 +142,7 @@ SQL Database 提供兩種驗證方法：
 
 #### <a name="reserved-ips"></a>保留的 IP
 
-另一個選項是為您的 Vm 布建[保留](../virtual-network/virtual-networks-reserved-public-ip.md)的 ip，並在伺服器防火牆設定中新增這些特定的 VM IP 位址。 藉由指派保留的 IP，即可免去必須以不斷變更的 IP 位址更新防火牆規則的麻煩。
+另一個選項是為 VM 預配[預留的 IP，](../virtual-network/virtual-networks-reserved-public-ip.md)並在伺服器防火牆設置中添加這些特定的 VM IP 位址。 藉由指派保留的 IP，即可免去必須以不斷變更的 IP 位址更新防火牆規則的麻煩。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>我會透過哪個連接埠連接到 SQL Database
 
@@ -152,11 +152,11 @@ SQL Database 提供兩種驗證方法：
 
 #### <a name="sql-database-auditing"></a>SQL Database 稽核
 
-使用 SQL Database，您可以將稽核開啟以追蹤資料庫事件。 [SQL Database 稽核](sql-database-auditing.md)會追記錄料庫事件並將事件寫入您 Azure 儲存體帳戶中的稽核記錄檔。 如果您想要深入瞭解潛在的安全性和原則違規、維護法規合規性等，則此功能特別有用。它可讓您定義及設定您認為需要進行審核的特定事件類別，並根據您可以取得預先設定的報表和儀表板來取得資料庫上發生之事件的總覽。 您可以在資料庫層級或伺服器層級套用這些稽核原則。 如需有關如何為您的伺服器/資料庫開啟稽核的指南，請參閱：[啟用 SQL Database 稽核](sql-database-security-tutorial.md#enable-security-features)。
+使用 SQL Database，您可以將稽核開啟以追蹤資料庫事件。 [SQL Database 稽核](sql-database-auditing.md)會追記錄料庫事件並將事件寫入您 Azure 儲存體帳戶中的稽核記錄檔。 如果您打算深入瞭解潛在的安全和違反政策行為，保持合規性等，審核尤其有用。它允許您定義和配置某些類別的事件，您認為需要審核，並基於您可以獲取預配置的報告和儀表板，以獲得資料庫上發生的事件的概覽。 您可以在資料庫層級或伺服器層級套用這些稽核原則。 如需有關如何為您的伺服器/資料庫開啟稽核的指南，請參閱：[啟用 SQL Database 稽核](sql-database-security-tutorial.md#enable-security-features)。
 
 #### <a name="threat-detection"></a>威脅偵測
 
-利用[威脅偵測](sql-database-threat-detection.md)，您就能非常輕鬆地因應稽核所探索到的安全性或原則違規。 您不需要是安全性專家，也能解決您的系統中的潛在威脅或違規。 威脅偵測也有一些內建的功能，例如 SQL 插入式攻擊偵測。 SQL 插入式攻擊是一種變更或危害資料的嘗試，並且通常是攻擊資料庫應用程式的很常見方式。 威脅偵測會執行多組演算法，以偵測潛在弱點和 SQL 插入式攻擊，以及異常資料庫存取模式 (例如從不尋常的位置存取或由不熟悉的主體存取)。 如果在資料庫上偵測到威脅，安全性人員或其他指定的管理員會收到一封電子郵件通知。 每個通知都會提供可疑活動的詳細資料，以及建議如何進一步調查並減輕威脅。 若要瞭解如何開啟威脅偵測，請參閱：[啟用威脅偵測](sql-database-security-tutorial.md#enable-security-features)。
+利用[威脅偵測](sql-database-threat-detection.md)，您就能非常輕鬆地因應稽核所探索到的安全性或原則違規。 您不需要是安全性專家，也能解決您的系統中的潛在威脅或違規。 威脅偵測也有一些內建的功能，例如 SQL 插入式攻擊偵測。 SQL 插入式攻擊是一種變更或危害資料的嘗試，並且通常是攻擊資料庫應用程式的很常見方式。 威脅偵測會執行多組演算法，以偵測潛在弱點和 SQL 插入式攻擊，以及異常資料庫存取模式 (例如從不尋常的位置存取或由不熟悉的主體存取)。 如果在資料庫上偵測到威脅，安全性人員或其他指定的管理員會收到一封電子郵件通知。 每個通知都會提供可疑活動的詳細資料，以及建議如何進一步調查並減輕威脅。 要瞭解如何打開威脅檢測，請參閱：[啟用威脅檢測](sql-database-security-tutorial.md#enable-security-features)。
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般而言，我如何在 SQL Database 上保護資料
 
@@ -168,7 +168,7 @@ SQL Database 提供兩種驗證方法：
 依預設，在 SQL Database 中，儲存子系統上的資料和記錄檔中的待用資料是完整且一律會透過[透明資料加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 加密。 也會加密您的備份。 利用 TDE，存取此資料的應用程式端不需進行任何變更。 加密與解密會透明地進行，因此以此為名。
 為了保護您的執行中和待用敏感性資料，SQL Database 提供稱為 [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 的功能。 AE 是一種用戶端加密形式，會將您資料庫中的敏感性資料行加密 (所以它們會在資料庫管理員和未經授權使用者的加密文字中)。 伺服器會接收加密的資料來開始處理。 Always Encrypted 金鑰也會儲存在用戶端，因此只有獲得授權的用戶端可以將敏感性資料行解密。 伺服器和資料管理員無法查看敏感性資料，因為加密金鑰存放在用戶端上。 AE 會加密端對端資料表中的敏感性資料行，從未經授權的用戶端至實體磁碟。 AE 目前支援相等比較，所以 DBA 可以繼續在其 SQL 命令中查詢加密的資料行。 Always Encrypted 可以搭配各種金鑰存放區選項使用，例如 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 憑證存放區和本機硬體安全性模組。
 
-|**特性**|**一律加密**|**透明資料加密**|
+|**特性**|**始終加密**|**透明資料加密**|
 |---|---|---|
 |**加密範圍**|端對端|待用資料|
 |**資料庫伺服器可以存取敏感性資料**|否|是，因為加密用於待用資料|
@@ -179,7 +179,7 @@ SQL Database 提供兩種驗證方法：
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何才能限制存取我資料庫中的敏感性資料
 
-每個應用程式的資料庫中會有某些敏感性資料需要加以保護，不讓每個人都看見。 組織內的特定人員可能需要檢視此資料，但其他人卻不應該能夠檢視此資料。 其中一個範例是員工薪資。 管理員需要存取其直屬員工的工資資訊，但個別小組成員則不應擁有其對等的薪資資訊存取權。 另一個案例是可能會在開發階段或測試期間與敏感性資料互動的資料開發人員，例如，客戶的 SSN。 重申，此資訊不需公開給開發人員。 在這種情況下，可能需要將您的敏感性資料遮罩，或完全不公開。 SQL Database 提供兩個這類方法來防止未經授權的使用者檢視敏感性資料：
+每個應用程式的資料庫中會有某些敏感性資料需要加以保護，不讓每個人都看見。 組織內的特定人員可能需要檢視此資料，但其他人卻不應該能夠檢視此資料。 其中一個範例是員工薪資。 經理需要訪問其直接下屬的工資資訊，但是，各個團隊成員不應訪問其同事的工資資訊。 另一個案例是可能會在開發階段或測試期間與敏感性資料互動的資料開發人員，例如，客戶的 SSN。 重申，此資訊不需公開給開發人員。 在這種情況下，可能需要將您的敏感性資料遮罩，或完全不公開。 SQL Database 提供兩個這類方法來防止未經授權的使用者檢視敏感性資料：
 
 [動態資料遮罩](sql-database-dynamic-data-masking-get-started.md)是一項資料遮罩功能，藉由將敏感性資料進行遮罩處理，使得應用程式層上不具權限的使用者看不見這些資料來限制資料的公開方式。 您可以定義可以建立遮罩模式的遮罩規則 (例如，只顯示國民身分證 SSN 的最後四位數字並將其大部分標示為 X：XXX-XX-0000)，並識別可以從遮罩規則中排除的使用者。 遮罩會快速發生，並且有各種不同遮罩函數可供各種資料類別使用。 動態資料遮罩可讓您自動偵測資料庫中的敏感性資料，並對其套用遮罩。
 
@@ -222,11 +222,11 @@ Express Route 也可讓您高載至所購買的頻寬限制最多 2 倍，不額
 
 - [Express Route 簡介](../expressroute/expressroute-introduction.md)
 - [必要條件](../expressroute/expressroute-prerequisites.md)
-- [工作流程](../expressroute/expressroute-workflows.md)
+- [流程](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database 是否符合任何法規需求，以及這對於自己組織的合規性有何幫助
 
-SQL Database 符合一系列的法規 compliancies。 若要查看 SQL Database 符合的最新 compliancies，請造訪[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，並向下切入您組織的重要 compliancies，以查看符合規範的 Azure 服務是否包含 SQL Database。 請務必注意，雖然 SQL Database 可能被公認為合規的服務，這有助於您組織的服務合規性，但不自動保證這點。
+SQL 資料庫符合一系列監管法規。 要查看 SQL 資料庫滿足的最新一組比較，請訪問[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，並深入瞭解對組織重要的比較，以查看 SQL 資料庫是否包含在合規 Azure 服務下。 請務必注意，雖然 SQL Database 可能被公認為合規的服務，這有助於您組織的服務合規性，但不自動保證這點。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>移轉之後的智慧型資料庫監視及維護
 
@@ -280,11 +280,11 @@ SQL Azure 平台會分析伺服器中不同資料庫的使用量歷程記錄，�
 
 ![查詢效能深入解析](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure 監視器記錄中的 Azure SQL 分析（預覽）
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure 監視器日誌中的 Azure SQL 分析（預覽）
 
-[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)可讓您收集和視覺化主要的 Azure sql database 效能計量，每個工作區最多支援150000個 sql 資料庫和5000個 sql 彈性集區。 您可以使用它來監視和收到通知。 您可以監視跨多個 Azure 訂用帳戶和彈性集區的 SQL Database 和彈性集區計量，並可用來識別應用程式堆疊的各層問題。
+[Azure 監視器日誌](../azure-monitor/insights/azure-sql.md)允許您收集和視覺化關鍵的 Azure SQL 資料庫性能指標，每個工作區最多支援 150，000 個 SQL 資料庫和 5，000 個 SQL 彈性池。 您可以使用它來監視和收到通知。 您可以監視跨多個 Azure 訂用帳戶和彈性集區的 SQL Database 和彈性集區計量，並可用來識別應用程式堆疊的各層問題。
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到效能問題：我的 SQL Database 疑難排解方法與 SQL Server 有何不同
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到性能問題：我的 SQL 資料庫故障排除方法與 SQL Server 有何不同
 
 您用來診斷查詢和進行資料庫效能問題的疑難排解技術的主要部分維持不變。 畢竟雲端是使用相同的 SQL Server 引擎技術。 不過，平台 - Azure SQL DB 具有內建的「智慧」。 它可以協助您更輕鬆地進行疑難排解及診斷效能問題。 它也可以代表您執行其中某些修正動作，並且，在某些情況下，自動地、主動地修正。
 
@@ -292,7 +292,7 @@ SQL Azure 平台會分析伺服器中不同資料庫的使用量歷程記錄，�
 
 對效能進行疑難排解時，請務必找出影響應用程式效能的是否只是應用程式或是後端資料庫。 往往效能問題會出在應用程式層。 可能是架構或資料存取模式。 例如，假設您有對網路延遲敏感的交談應用程式。 在此情況下，因為在應用程式與伺服器之間有許多往返傳送的簡短要求 (「交談」)，而在網路壅塞時，這些來回會快速增加，使得您的應用程式遭遇困境。 若要改善此情況下的效能，您可以使用[批次查詢](sql-database-performance-guidance.md#batch-queries)。 使用批次對您大有幫助，因為現在系統會以批次處理您的要求，因此可協助您減少來回延遲，並改善您的應用程式效能。
 
-此外，如果您發現資料庫整體效能降低，您可以監視 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 動態管理檢視，以便了解 CPU、IO 和記憶體耗用量。 您的效能可能受到影響，因為您的資料庫極需要資源。 您可能需要根據成長和縮減的工作負載需求來變更計算大小和/或服務層級。
+此外，如果您注意到資料庫的整體性能下降，則可以監視[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)動態管理檢視，以便了解 CPU、IO 和記憶體消耗。 您的效能可能受到影響，因為您的資料庫極需要資源。 您可能需要根據成長和縮減的工作負載需求來變更計算大小和/或服務層級。
 
 如需一組完整的調整效能問題相關建議，請參閱[微調資料庫](sql-database-performance-guidance.md#tune-your-database)。
 
@@ -303,13 +303,13 @@ SQL Database 提供三個服務層級：基本、標準和進階。 在每個服
 |**服務層**|**常見的使用案例**|
 |---|---|
 |**基本**|應用程式具有少數使用者與一個資料庫，沒有高度並行能力、規模和效能需求。 |
-|**Standard**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
-|**高級**|應用程式具有許多並行使用者、高度 CPU/記憶體和高度 IO 要求。 高度並行能力、高輸送量和對延遲敏感的應用程式可以利用高級層級。 |
+|**標準**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
+|**溢價**|應用程式具有許多並行使用者、高度 CPU/記憶體和高度 IO 要求。 高度並行能力、高輸送量和對延遲敏感的應用程式可以利用高級層級。 |
 |||
 
 若要確定您已採用正確的計算大小，您可以透過上述「如何在 SQL Database 中監視效能和資源使用量？」中之其中一個方式來監視您的查詢和資料庫資源耗用量。 如果您發現您的查詢/資料庫持續耗用 CPU/記憶體等，可以考慮向上增加至更高的計算大小。 同樣地，如果您發現即使在尖峰時刻也未使用一樣多的資源，請考慮從目前的計算大小向下縮減。
 
-如果您有 SaaS 應用程式模式或資料庫彙總情節，為了成本最佳化，請考慮使用彈性集區。 彈性集區是達到資料庫合併和成本最佳化的好方法。 若要閱讀使用彈性集區管理多個資料庫的詳細資訊，請參閱：管理集區[和資料庫](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。
+如果您有 SaaS 應用程式模式或資料庫彙總情節，為了成本最佳化，請考慮使用彈性集區。 彈性集區是達到資料庫合併和成本最佳化的好方法。 要瞭解有關使用彈性池管理多個資料庫的資訊，請參閱：[管理池和資料庫](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>我必須為我的資料庫執行資料庫完整性檢查的頻率為何
 

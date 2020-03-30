@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623108"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>使用 Apache Hive 作為擷取、 轉換和載入 (ETL) 工具
@@ -21,9 +21,9 @@ ms.locfileid: "77623108"
 
 ## <a name="use-case-and-model-overview"></a>使用案例和模型概觀
 
-下圖提供 ETL 自動化使用案例和模型的概觀。 輸入資料會經過轉換來產生適當的輸出。  在轉換期間，資料可以變更變更形狀、資料類型，甚至是語言。  ETL 程序可以將英制轉換成公制、變更時區及提升精準度，來與目的地中現有的資料正確相符。  ETL 程式也可以將新資料與現有資料結合，以持續報告最新狀態，或提供現有資料的進一步見解。  接著，應用程式 (例如報告工具和服務) 便能以所需的格式取用此資料。
+下圖提供 ETL 自動化使用案例和模型的概觀。 輸入資料會經過轉換來產生適當的輸出。  在轉換期間，資料可以變更變更形狀、資料類型，甚至是語言。  ETL 程序可以將英制轉換成公制、變更時區及提升精準度，來與目的地中現有的資料正確相符。  ETL 流程還可以將新資料與現有資料相結合，以保持最新報告，或進一步深入瞭解現有資料。  接著，應用程式 (例如報告工具和服務) 便能以所需的格式取用此資料。
 
-![做為 ETL 架構 Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+![阿帕奇蜂巢作為ETL架構](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
 通常在會匯入大量文字檔 (例如 CSV) 或數量較少但經常變更之文字檔或上述兩者兼具的 ETL 程序中，會使用 Hadoop。  Hive 是一個絕佳的工具，可在將資料載入至資料目的地前，先備妥資料。  Hive 可讓您在 CSV 上建立結構描述，然後使用類似 SQL 的語言來產生與資料互動的 MapReduce 程式。
 
@@ -73,7 +73,7 @@ ms.locfileid: "77623108"
 * Excel。
 * Azure 資料表和 Blob 儲存體。
 * 要求將資料處理成特定格式或處理成包含特定類型之資訊結構的應用程式或服務。
-* JSON 檔存放區，例如[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
+* JSON 文檔存儲（如[Azure 宇宙資料庫](https://azure.microsoft.com/services/cosmos-db/)）。
 
 ## <a name="considerations"></a>考量
 
@@ -81,9 +81,9 @@ ms.locfileid: "77623108"
 
 * 將資料流資料或大量半結構化或非結構化資料，從外部來源載入至現有的資料庫或資訊系統。
 * 在載入資料之前，也許透過叢集使用多個轉換階段先清理、轉換及驗證資料。
-* 產生定期更新的報表和視覺效果。 例如，如果在日間產生報表耗時太長，您可以排定在夜間執行報表。 若要自動執行 Hive 查詢，您可以使用[Azure Logic Apps](../../logic-apps/logic-apps-overview.md)和 PowerShell。
+* 產生定期更新的報表和視覺效果。 例如，如果在日間產生報表耗時太長，您可以排定在夜間執行報表。 要自動運行 Hive 查詢，可以使用[Azure 邏輯應用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
-如果資料的目標不是資料庫，您可以在查詢內以適當的格式產生檔案，例如 CSV。 接著，便可將此檔案匯入至 Excel 或 Power BI。
+如果資料的目標不是資料庫，則可以在查詢中以適當的格式生成檔，例如 CSV。 接著，便可將此檔案匯入至 Excel 或 Power BI。
 
 如果您需要在 ETL 程序中對資料執行數個作業，請考量要如何管理它們。 如果是由外部程式來控制作業，而不是以解決方案內的工作流程來控制作業，您便需要判斷某些作業是否可以平行執行，並且偵測每項作業何時完成。 與使用外部指令碼或自訂程式來嘗試協調一系列作業相比，使用工作流程機制 (例如 Hadoop 內的 Oozie) 可能較簡單。 如需有關 Oozie 的詳細資訊，請參閱[工作流程和作業協調流程](https://msdn.microsoft.com/library/dn749829.aspx) \(英文\)。
 

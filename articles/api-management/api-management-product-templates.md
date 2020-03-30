@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243922"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的產品範本
@@ -37,7 +37,7 @@ ms.locfileid: "79243922"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>產品清單  
+##  <a name="product-list"></a><a name="ProductList"></a>產品清單  
  **清單**範本可讓您自訂開發人員入口網站中產品清單頁面的主體。  
   
  ![產品清單](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -70,12 +70,12 @@ ms.locfileid: "79243922"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分頁控制](api-management-page-controls.md#paging-control)  
   
--   [search-control](api-management-page-controls.md#search-control)  
+-   [搜索控制](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
@@ -123,10 +123,10 @@ ms.locfileid: "79243922"
 }  
 ```  
   
-##  <a name="Product"></a>Product  
+##  <a name="product"></a><a name="Product"></a>產品  
  **產品**範本可讓您自訂開發人員入口網站的產品頁面主體。  
   
- ![開發人員入口網站產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![開發人員門戶產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -197,10 +197,10 @@ ms.locfileid: "79243922"
 {% endif %}  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [subscribe-button](api-management-page-controls.md#subscribe-button)  
+-   [訂閱按鈕](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>資料模型  
   

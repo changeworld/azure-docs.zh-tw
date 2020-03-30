@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 資料箱磁碟安全性功能 |資料中的 Microsoft Docs
-description: 說明為 Azure 資料箱磁碟所實行的安全性功能，這是可讓您將大量資料傳輸至 Azure 的雲端解決方案
+title: 微軟 Azure 資料盒磁片安全功能 |微軟資料文檔
+description: 描述為 Azure 資料盒磁片實現的安全功能，該雲解決方案使您能夠將大量資料傳輸到 Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117294"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure 資料箱磁碟安全性和資料保護
@@ -26,7 +26,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - **在 Azure 中託管的 Azure 資料箱服務** – 可供您用來建立磁碟訂單、設定磁碟，然後追蹤訂單直到完成的管理服務。
 - **資料箱磁碟** – 寄送給您的實體磁碟，可供您將內部部署資料匯入 Azure。 
 - **連線至磁碟的用戶端/主機** – 在基礎結構中，透過 USB 連線至資料箱磁碟、並產生需受保護資料的用戶端。
-- **雲端儲存體** – Azure 雲端中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
+- **雲端儲存體** – Azure 中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
 
 下圖表示透過 Azure 資料箱磁碟解決方案從內部部署至 Azure 的資料流程。
 

@@ -1,7 +1,7 @@
 ---
-title: 解決常見安全性需求的腳本 |Microsoft Docs
+title: 解決常見安全要求的劇本 |微軟文檔
 titleSuffix: Azure SQL Database
-description: 本文提供 Azure SQL Database 中常見的安全性需求和最佳作法。
+description: 本文在 Azure SQL 資料庫中提供了常見的安全要求和最佳實踐。
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
@@ -10,58 +10,58 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
 ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77506222"
 ---
-# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL Database 解決常見安全性需求的腳本
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL 資料庫解決常見安全要求的劇本
 
 > [!NOTE]
-> 本檔提供如何解決常見安全性需求的最佳作法。 並非所有的需求都適用于所有環境，而且您應該向資料庫和安全性小組諮詢要執行的功能。
+> 本文檔提供了有關如何解決常見安全要求的最佳做法。 並非所有要求都適用于所有環境，您應該諮詢資料庫和安全團隊，以便實現哪些功能。
 
-## <a name="solving-common-security-requirements"></a>解決常見的安全性需求
+## <a name="solving-common-security-requirements"></a>解決常見的安全要求
 
-本檔提供有關如何使用 Azure SQL Database 來解決新的或現有應用程式的一般安全性需求的指引。 它是依高階安全性區域來組織。 如需解決特定威脅，請參閱[常見的安全性威脅和可能](#common-security-threats-and-potential-mitigations)的緩和措施一節。 雖然某些呈現的建議適用于將應用程式從內部部署遷移至 Azure 時，但遷移案例並不是本檔的重點。
+本文檔提供有關如何使用 Azure SQL 資料庫解決新或現有應用程式的常見安全要求的指導。 它由高級安全區域組織。 有關特定威脅，請參閱[共同安全威脅和潛在緩解部分](#common-security-threats-and-potential-mitigations)。 儘管在將應用程式從本地遷移到 Azure 時，某些建議適用，但遷移方案不是本文檔的重點。
 
-### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>本指南中涵蓋的 Azure SQL Database 部署優惠
+### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>本指南仲介紹的 Azure SQL 資料庫部署產品
 
-- [SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-index)： [Azure SQL Database 伺服器](sql-database-servers.md)中的[單一資料庫](sql-database-single-database.md)和[彈性](sql-database-elastic-pool.md)集區
-- [受控實例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-index)[：Azure SQL 資料庫伺服器](sql-database-servers.md)中的[單個資料庫](sql-database-single-database.md)和[彈性池](sql-database-elastic-pool.md)
+- [受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
 
-### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>本指南未涵蓋的 SQL 部署優惠
+### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>本指南未介紹的 SQL 部署功能
 
 - Azure SQL 資料倉儲
-- Azure SQL Vm （IaaS）
+- Azure SQL VM （IaaS）
 - 內部部署的 SQL Server
 
 ### <a name="audience"></a>適用對象
 
-本指南的目標物件是有關如何保護 Azure SQL Database 的客戶問題。 對這個最佳做法文章感興趣的角色包括（但不限於）：
+本指南的預期受眾是面臨有關如何保護 Azure SQL 資料庫的問題的客戶。 對本最佳實踐文章感興趣的角色包括但不限於：
 
-- 安全性架構設計人員
-- 安全性管理員
-- 合規性主管
-- 隱私權主管
-- 安全性工程師
+- 安全架構師
+- 安全經理
+- 合規官
+- 隱私官
+- 安全工程師
 
-### <a id="using"></a>使用本指南
+### <a name="using-this-guide"></a><a id="using"></a>使用本指南
 
-本檔旨在做為現有[Azure SQL Database 安全性](sql-database-security-overview.md)檔的隨附。
+本文檔旨在作為我們現有的 Azure SQL[資料庫安全](sql-database-security-overview.md)文檔的配套。
 
-除非另有說明，否則建議您遵循每一節中所列的所有最佳作法，以達成個別的目標或需求。 為了符合特定的安全性合規性標準或最佳作法，重要的法規合規性控制會列在 [需求] 或 [目標] 區段的任何適當位置。 以下是本文所提及的安全性標準和法規：
+除非另有說明，我們建議您遵循每個部分中列出的所有最佳實踐，以實現相應的目標或要求。 為滿足特定的安全合規性標準或最佳實踐，在適用的情況下，在"要求"或"目標"部分下列出了重要的法規遵從性控制。 以下是本文中引用的安全標準和法規：
 
-- [FedRAMP](https://www.fedramp.gov/documents/)： ac-04、ac-06
-- [SOC](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html)： CM-3，SDL-3
-- [ISO/IEC 27001](https://www.iso27001security.com/html/27001.html)：存取控制、密碼編譯
-- [Microsoft 營運安全性保證（OSA）作法](https://www.microsoft.com/en-us/securityengineering/osa/practices)：練習 #1-6 和 #9
-- [NIST 特殊發行集800-53 安全性控制](https://nvd.nist.gov/800-53)： ac-5、ac-6
-- [PCI DSS](https://www.pcisecuritystandards.org/document_library)：6.3.2、6.4。2
+- [FedRAMP](https://www.fedramp.gov/documents/)： AC-04， AC-06
+- [SOC](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html)： CM-3， SDL-3
+- [ISO/IEC 27001](https://www.iso27001security.com/html/27001.html)： 存取控制， 加密
+- [微軟操作安全保障 （OSA） 實踐](https://www.microsoft.com/en-us/securityengineering/osa/practices)： 練習#1-6 和#9
+- [NIST 特別出版物 800-53 安全控制](https://nvd.nist.gov/800-53)： AC-5， AC-6
+- [PCI DSS](https://www.pcisecuritystandards.org/document_library)： 6.3.2， 6.4.2
 
 ### <a name="feedback"></a>意見反應
 
-我們打算繼續更新此處所列的建議和最佳作法。 請使用本文底部的**意見**反應連結，為此檔提供輸入或任何更正。
+我們計畫繼續更新此處列出的建議和最佳實踐。 使用本文底部**的回饋**連結為本文檔提供輸入或任何更正。
 
 ## <a name="authentication"></a>驗證
 
@@ -71,725 +71,725 @@ ms.locfileid: "77506222"
 - Azure Active Directory 驗證
 
 > [!NOTE]
-> 所有工具和協力廠商應用程式可能不支援 Azure Active Directory 驗證。
+> 並非所有工具和協力廠商應用程式都支援 Azure 活動目錄身份驗證。
 
-### <a name="central-management-for-identities"></a>身分識別的集中管理
+### <a name="central-management-for-identities"></a>身份的中央管理
 
-中央身分識別管理提供下列優點：
+中央身份管理提供以下好處：
 
-- 管理群組帳戶及控制使用者權限，而不需要跨 Azure SQL Database 伺服器和資料庫複製登入。
-- 簡化且彈性的版權管理。
+- 管理群組帳戶並控制使用者許可權，而無需跨 Azure SQL 資料庫伺服器和資料庫複製登錄名。
+- 簡化和靈活的版權管理。
 - 大規模管理應用程式。
 
-**如何執行**：
+**如何實現**：
 
-- 使用 Azure Active Directory （Azure AD）驗證來進行集中式身分識別管理。
+- 使用 Azure 活動目錄 （Azure AD） 身份驗證進行集中式標識管理。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 建立 Azure AD 租使用者，並[建立使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)來代表人類的使用者，並建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md)來代表應用程式、服務和自動化工具。 服務主體相當於 Windows 和 Linux 中的服務帳戶。 
+- 創建 Azure AD 租戶並[創建使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)以表示人工使用者並創建[服務主體](../active-directory/develop/app-objects-and-service-principals.md)以表示應用、服務和自動化工具。 服務主體等效于 Windows 和 Linux 中的服務帳戶。 
 
-- 透過群組指派將資源的存取權限指派給 Azure AD 主體：建立 Azure AD 群組、授與群組的存取權，以及將個別成員新增至群組。 在您的資料庫中，建立對應 Azure AD 群組的自主資料庫使用者。 若要在資料庫內指派許可權，請將使用者放在具有適當許可權的資料庫角色中。
-  - 請參閱文章：[使用 Sql 設定及管理 Azure Active Directory 驗證](sql-database-aad-authentication-configure.md)和[使用 AZURE AD 以使用 sql 進行驗證](sql-database-aad-authentication.md)。
+- 通過組分配向 Azure AD 主體分配資源存取權限：創建 Azure AD 組、授予對組的許可權以及向組添加單個成員。 在資料庫中，創建映射 Azure AD 組的包含資料庫使用者。 要在資料庫中分配許可權，請將使用者置於具有相應許可權的資料庫角色中。
+  - 請參閱文章，[使用 SQL 配置和管理 Azure 活動目錄身份驗證](sql-database-aad-authentication-configure.md)，[並使用 Azure AD 進行 SQL 身份驗證](sql-database-aad-authentication.md)。
   > [!NOTE]
-  > 在受控實例中，您也可以建立對應到 master 資料庫中 Azure AD 主體的登入。 請參閱[CREATE LOGIN （transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+  > 在託管實例中，還可以創建映射到主資料庫中的 Azure AD 主體的登錄名。 請參閱[創建登錄（轉用 SQL）。](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)
 
-- 使用 Azure AD 群組可簡化版權管理和群組擁有者，而資源擁有者可以在群組中新增/移除成員。 
+- 使用 Azure AD 組可簡化版權管理和組擁有者，並且資源擁有者可以添加/刪除組成員。 
 
-- 為 SQL DB 伺服器的 Azure AD 系統管理員建立個別的群組。
+- 為 SQL DB 伺服器為 Azure AD 管理員創建單獨的組。
 
-  - 請參閱[為您的 Azure SQL Database 伺服器布建 Azure Active Directory 系統管理員一](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)文。
+  - 請參閱文章"[為 Azure SQL 資料庫伺服器預配 Azure 活動目錄管理員](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)"。
 
-- 使用 Azure AD audit 活動報告監視 Azure AD 群組成員資格變更。 
+- 使用 Azure AD 審核活動報告監視 Azure AD 組成員身份更改。 
 
-- 若為受控實例，則需要個別的步驟來建立 Azure AD 系統管理員。 
-  - 請參閱[為您的受控實例布建 Azure Active Directory 系統管理員一](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)文。 
+- 對於託管實例，創建 Azure AD 管理員需要單獨的步驟。 
+  - 請參閱文章"[為託管實例預配 Azure 活動目錄管理員](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)"。 
 
 > [!NOTE]
-> - Azure AD 驗證會記錄在 Azure SQL audit 記錄檔中，但不會在 Azure AD 登入記錄中。
-> - 在 Azure 中授與的 RBAC 許可權不會套用至 Azure SQL DB 許可權。 這類許可權必須使用現有的 SQL 許可權，以手動方式在 SQL DB 中建立/對應。
-> - 在用戶端上 Azure AD 驗證需要存取網際網路，或透過使用者定義的路由（UDR）存取 VNet。
-> - Azure AD 存取權杖會在用戶端快取，且其存留期取決於權杖設定。 請參閱[Azure Active Directory 中可設定的權杖存留期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)文章
-> - 如需疑難排解 Azure AD 驗證問題的指引，請參閱下列 blog： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+> - Azure AD 身份驗證記錄在 Azure SQL 稽核記錄中，但不記錄在 Azure AD 登錄日誌中。
+> - 在 Azure 中授予的 RBAC 許可權不適用於 Azure SQL DB 許可權。 此類許可權必須在 SQL DB 中使用現有 SQL 許可權手動創建/映射。
+> - 在用戶端 Azure AD 身份驗證上，需要訪問 Internet 或通過使用者定義的路由 （UDR） 訪問 VNet。
+> - Azure AD 訪問權杖緩存在用戶端上，其存留期取決於權杖配置。 請參閱文章["Azure 活動目錄中的可配置權杖存留期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)"
+> - 有關解決 Azure AD 身份驗證問題的解決方案，請參閱以下博客：<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 
-> 提及于： OSA 實務 #2，ISO 存取控制（AC）
+> 在： OSA 實踐#2， ISO 存取控制 （AC）
 
-Azure 多重要素驗證（MFA）藉由要求多種形式的驗證來提供額外的安全性。
+Azure 多重要素驗證 （MFA） 通過需要多種形式的身份驗證説明提供其他安全性。
 
-**如何執行**：
+**如何實現**：
 
-- 使用條件式存取在 Azure AD 中[啟用 MFA](../active-directory/authentication/concept-mfa-howitworks.md) ，並使用互動式驗證。 
+- 使用條件訪問在 Azure AD 中[啟用 MFA](../active-directory/authentication/concept-mfa-howitworks.md)並使用互動式身份驗證。 
 
-- 替代方式是針對整個 Azure AD 或 AD 網域啟用 MFA。
+- 另一種方法是為整個 Azure AD 或 AD 域啟用 MFA。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 啟用 Azure AD 中的條件式存取（需要 Premium 訂用帳戶）。 
-  - 請參閱[Azure AD 中的條件式存取](../active-directory/conditional-access/overview.md)一文。  
+- 在 Azure AD 中啟動條件訪問（需要高級訂閱）。 
+  - 請參閱文章["Azure AD 中的條件訪問](../active-directory/conditional-access/overview.md)"。  
 
-- 使用 Azure AD 條件式存取，為選取的群組建立 Azure AD 群組並啟用 MFA 原則。 
-  - 請參閱[規劃條件式存取部署](../active-directory/conditional-access/plan-conditional-access.md)一文。 
+- 使用 Azure AD 條件訪問創建 Azure AD 組並為選定的組啟用 MFA 策略。 
+  - 請參閱文章"[計畫條件訪問部署](../active-directory/conditional-access/plan-conditional-access.md)"。 
 
-- 您可以針對整個 Azure AD 或與 Azure AD 同盟的整個 Active Directory 啟用 MFA。 
+- 可以為整個 Azure AD 或與 Azure AD 聯合的整個活動目錄啟用 MFA。 
 
-- 針對 SQL DB 使用 Azure AD 互動式驗證模式，其中會以互動方式要求密碼，然後進行 MFA 驗證：      
-  - 在 SSMS 中使用通用驗證。 請參閱[使用多因素 AAD 驗證搭配 Azure SQL Database 和 Azure SQL 資料倉儲（適用于 MFA 的 SSMS 支援）](sql-database-ssms-mfa-authentication.md)一文。
-  - SQL Server Data Tools （SSDT）中支援使用互動式驗證。 請參閱[SQL Server Data Tools 中的 Azure Active Directory 支援（SSDT）](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)一文。
+- 在 SQL DB 中使用 Azure AD 互動式身份驗證模式，其中以對話模式請求密碼，然後進行 MFA 身份驗證：      
+  - 在 SSMS 中使用通用身份驗證。 請參閱本文，[將多重 AAD 身份驗證與 Azure SQL 資料庫和 Azure SQL 資料倉儲（對 MFA 的 SSMS 支援）結合](sql-database-ssms-mfa-authentication.md)使用。
+  - 使用 SQL 伺服器資料工具 （SSDT） 中支援的互動式身份驗證。 請參閱 SQL[伺服器資料工具 （SSDT） 中的 Azure 活動目錄支援](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)一文。
   - 使用支援 MFA 的其他 SQL 工具。 
-    - SSMS Wizard 對匯出/解壓縮/部署資料庫的支援  
-    - [sqlpackage .exe](https://docs.microsoft.com/sql/tools/sqlpackage)：選項 '/ua ' 
-    - [Sqlcmd 公用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)：選項-G （互動式）
-    - [Bcp 公用程式](https://docs.microsoft.com/sql/tools/bcp-utility)：選項-G （互動式） 
+    - SSMS 嚮導對匯出/提取/部署資料庫的支援  
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)： 選項 "/ua" 
+    - [sqlcmd 實用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)： 選項 -G （互動式）
+    - [bcp 實用程式](https://docs.microsoft.com/sql/tools/bcp-utility)： 選項 -G （互動式） 
 
-- 使用具有 MFA 支援的互動式驗證，來執行您的應用程式以連接到 Azure SQL Database。 
-  - 請參閱[使用 Azure 多重要素驗證連接到 Azure SQL Database 一](active-directory-interactive-connect-azure-sql-db.md)文。 
+- 實現應用程式，使用 MFA 支援的互動式身份驗證連接到 Azure SQL 資料庫。 
+  - 請參閱文章"[使用 Azure 多重要素驗證連接到 Azure SQL 資料庫](active-directory-interactive-connect-azure-sql-db.md)"。 
   > [!NOTE]
-  > 此驗證模式需要以使用者為基礎的身分識別。 在使用可略過個別 Azure AD 使用者驗證（例如使用 Azure 資源的受控識別）的信任身分識別模型的情況下，不適用 MFA。
+  > 此身份驗證模式需要基於使用者的身份。 如果使用的受信任標識模型繞過單個 Azure AD 使用者身份驗證（例如，對 Azure 資源使用託管標識），則 MFA 不適用。
 
-### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>將使用者密碼型驗證的使用降至最低
+### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>儘量減少使用者使用基於密碼的身份驗證
 
-> 提及于： OSA 實務 #4，ISO 存取控制（AC）
+> 在： OSA 實踐#4， ISO 存取控制 （AC）
 
-以密碼為基礎的驗證方法是較弱的驗證形式。 認證可能會遭到入侵或錯誤地提供。
+基於密碼的身份驗證方法是一種較弱的身份驗證形式。 憑據可能會洩露或誤贈送。
 
-**如何執行**：
+**如何實現**：
 
-- 使用 Azure AD 的整合式驗證，以避免使用密碼。
+- 使用 Azure AD 集成身份驗證，禁止使用密碼。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 使用 Windows 認證的單一登入驗證。 將內部部署 AD 網域與 Azure AD 同盟，並使用整合式 Windows 驗證（適用于具有 Azure AD 的已加入網域的電腦）。
-  - 請參閱[Azure AD 整合式驗證的 SSMS 支援](sql-database-aad-authentication-configure.md#active-directory-integrated-authentication)一文。
+- 使用 Windows 憑據使用單一登入身份驗證。 將本地 AD 域與 Azure AD 聯合使用，並使用集成 Windows 身份驗證（對於具有 Azure AD 的域聯接電腦）。
+  - 請參閱文章[，SSMS 支援 Azure AD 集成身份驗證](sql-database-aad-authentication-configure.md#active-directory-integrated-authentication)。
 
-### <a name="minimize-the-use-of-password-based-authentication-for-applications"></a>將以密碼為基礎的驗證應用程式的使用降至最低 
+### <a name="minimize-the-use-of-password-based-authentication-for-applications"></a>儘量減少對應用程式使用基於密碼的身份驗證 
 
-> 提及于： OSA 實務 #4，ISO 存取控制（AC）
+> 在： OSA 實踐#4， ISO 存取控制 （AC）
 
-**如何執行**：
+**如何實現**：
 
-- 啟用 Azure 受控識別。 您也可以使用整合式或以憑證為基礎的驗證。 
+- 啟用 Azure 託管標識。 您還可以使用集成身份驗證或基於證書的身份驗證。 
 
-**最佳做法**：
+**最佳實踐**：
 
-- 使用[適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
-  - [系統指派的受控識別](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md) 
-  - [使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
-  - [使用具有受控識別的 app service Azure SQL Database （不需變更程式碼）](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
+- [對 Azure 資源使用託管標識](../active-directory/managed-identities-azure-resources/overview.md)。
+  - [系統分配的託管標識](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md) 
+  - [使用者分配的託管標識](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+  - [使用具有託管標識的應用服務（不更改代碼）的應用服務中使用 Azure SQL 資料庫](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
 
-- 針對應用程式使用以憑證為基礎的驗證。 
-  - 請參閱此程式[代碼範例](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token)。 
+- 對應用程式使用基於證書的身份驗證。 
+  - 請參閱此[代碼示例](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token)。 
 
-- 針對整合式同盟網域和已加入網域的電腦使用 Azure AD 驗證（請參閱上面的一節）。
-  - 請參閱[整合式驗證的範例應用程式](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/integrated)。
+- 對集成的聯合域和域聯接電腦使用 Azure AD 身份驗證（請參閱上面的部分）。
+  - 有關[集成身份驗證，請參閱應用程式範例](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/integrated)。
 
-### <a name="protect-passwords-and-secrets"></a>保護密碼和秘密
+### <a name="protect-passwords-and-secrets"></a>保護密碼和機密
 
-針對不肇因密碼的情況，請確定其受到保護。
+對於密碼不可避免的情況，請確保密碼是安全的。
 
-**如何執行**：
+**如何實現**：
 
-- 使用 Azure Key Vault 來儲存密碼和秘密。 適用時，請將 MFA 用於具有 Azure AD 使用者的 Azure SQL Database。
+- 使用 Azure 金鑰保存庫存儲密碼和機密。 如果適用，請使用 MFA 進行 Azure SQL 資料庫與 Azure AD 使用者。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 如果無法避免密碼或秘密，請將使用者密碼和應用程式秘密儲存在 Azure Key Vault 中，並透過 Key Vault 存取原則來管理存取權。 
+- 如果無法避免密碼或機密，請將使用者密碼和應用程式機密存儲在 Azure 金鑰保存庫中，並通過金鑰保存庫訪問策略管理訪問。 
 
-- 各種不同的應用程式開發架構也可以提供架構特定的機制來保護應用程式中的秘密。 例如： [ASP.NET 核心應用程式](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows)。
+- 各種應用開發框架也可能提供特定于框架的機制來保護應用中的秘密。 例如[：ASP.NET核心應用程式](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows)。
 
-### <a name="use-sql-authentication-for-legacy-applications"></a>針對繼承應用程式使用 SQL 驗證 
+### <a name="use-sql-authentication-for-legacy-applications"></a>對繼承應用程式使用 SQL 身份驗證 
 
-SQL 驗證是指使用使用者名稱和密碼連接到 Azure SQL Database 時的驗證。 必須在每個 SQL Database 伺服器或受控實例中建立登入，並在每個資料庫中建立一個使用者。
+SQL 身份驗證是指使用使用者名和密碼連接到 Azure SQL 資料庫時使用者的身份驗證。 需要在每個 SQL 資料庫伺服器或託管實例中創建登錄名，並在每個資料庫中創建一個使用者。
 
-**如何執行**：
+**如何實現**：
 
-- 使用 SQL 驗證。
+- 使用 SQL 身份驗證。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 以伺服器管理員的身分，建立登入和使用者。 除非使用含有密碼的自主資料庫使用者，否則所有密碼都會儲存在 master 資料庫中。
-  - 請參閱[控制和授與資料庫存取權的 SQL Database 和 SQL 資料倉儲](sql-database-manage-logins.md)一文。
+- 作為伺服器管理員，創建登錄名和使用者。 除非使用包含的資料庫使用者使用密碼，否則所有密碼都存儲在主資料庫中。
+  - 請參閱文章，[控制和授予資料庫對 SQL 資料庫和 SQL 資料倉儲的訪問](sql-database-manage-logins.md)。
 
 ## <a name="access-management"></a>存取管理
 
-存取管理是控制和管理授權使用者的存取權和許可權以 Azure SQL Database 的程式。
+訪問管理是控制和管理授權使用者對 Azure SQL 資料庫的存取權限和許可權的過程。
 
-### <a name="implement-principle-of-least-privilege"></a>執行最低許可權原則
+### <a name="implement-principle-of-least-privilege"></a>實現最低特權原則
 
-> 在中所述： FedRamp 控制 AC-06、NIST： AC-6、OSA 實務 #3
+> 在中提及： FedRamp 控制 AC-06， NIST： AC-6， OSA 實踐#3
 
-最低許可權的原則規定使用者不應擁有比完成其工作所需更多的許可權。 如需詳細資訊，請參閱[這](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview)篇文章：足夠的系統管理。
+最低特權原則規定，使用者不應擁有比完成任務所需的更多許可權。 有關詳細資訊，請參閱文章["剛到足夠的管理](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview)"。
 
-**如何執行**：
+**如何實現**：
 
-只指派必要的[許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)以完成必要的工作：
+僅分配完成所需任務所需的[許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)：
 
 - 在 SQL 資料平面中： 
-    - 使用細微許可權和使用者定義資料庫角色（或 MI 中的伺服器角色）： 
-        1. 建立所需的角色
+    - 使用細微性許可權和使用者定義的資料庫角色（或 MI 中的伺服器角色）： 
+        1. 創建所需的角色
             - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
-            - [建立伺服器角色](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
-        1. 建立必要的使用者
-            - [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
-        1. 將使用者新增為角色的成員 
+            - [CREATE SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
+        1. 創建所需的使用者
+            - [創建使用者](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
+        1. 將使用者作為成員添加到角色 
             - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
-            - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
-        1. 然後將許可權指派給角色。 
-            - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
-    - 請務必不要將使用者指派給不必要的角色。
+            - [更改伺服器角色](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
+        1. 然後為角色指派許可權。 
+            - [授予](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
+    - 確保不要將使用者分配給不必要的角色。
 
-- 在 Azure Resource Manager：
-  - 使用內建角色（如果有的話）或自訂 RBAC 角色，並指派必要的許可權。
-    - [Azure 的內建角色](../role-based-access-control/built-in-roles.md) 
+- 在 Azure 資源管理器中：
+  - 如果可用或自訂 RBAC 角色，請使用內置角色，並分配必要的許可權。
+    - [Azure 的內置角色](../role-based-access-control/built-in-roles.md) 
     - [適用於 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)
 
-**最佳做法**：
+**最佳實踐**：
 
-下列最佳作法是選擇性的，但會導致安全性策略的管理能力和支援性較佳： 
+以下最佳實踐是可選的，但將更好地管理和支援您的安全性原則： 
 
-- 可能的話，請從最低可能的許可權集開始，並在有真正的必要（和理由）時，逐一新增許可權，而不是相反的方法：逐步採取許可權。 
+- 如果可能，從盡可能少的許可權集開始，如果確實存在必要（和理由），則開始逐個添加許可權，而不是相反的方法：一步一步地取消許可權。 
 
-- 避免將許可權指派給個別使用者。 請改用一致的角色（資料庫或伺服器角色）。 角色有助於對報告和疑難排解許可權有很大的説明。 （Azure RBAC 僅支援透過角色指派的許可權）。 
+- 避免向單個使用者分配許可權。 而是一致地使用角色（資料庫或伺服器角色）。 角色對報告和故障排除許可權有很大説明。 （Azure RBAC 僅支援通過角色指派許可權。 
 
-- 以所需的確切許可權建立和使用自訂角色。 實務中使用的一般角色： 
-  - 安全性部署 
+- 創建和使用具有所需確切許可權的自訂角色。 實際使用的典型角色： 
+  - 安全部署 
   - 系統管理員 
   - 開發人員 
   - 支援人員 
   - 稽核員 
-  - 自動化進程 
+  - 自動化流程 
   - 終端使用者 
   
-- 只有當角色的許可權符合使用者所需的許可權時，才使用內建角色。 您可以將使用者指派給多個角色。 
+- 僅當角色的許可權與使用者所需的許可權完全符合時，才使用內置角色。 您可以將使用者分配給多個角色。 
 
-- 請記住，SQL Server 資料庫引擎中的許可權可套用至下列範圍。 範圍越小，授與許可權的影響就越小： 
-  - Azure SQL Database server （master 資料庫中的特殊角色） 
+- 請記住，SQL Server 資料庫引擎中的許可權可以應用於以下作用域。 範圍越小，授予的許可權的影響越小： 
+  - Azure SQL 資料庫伺服器（主資料庫中的特殊角色） 
   - 資料庫 
   - 結構描述
-      - 最佳做法是使用架構來授與資料庫內的許可權。 （另請參閱：[適用于 SQL Server 的架構設計：建議在考慮安全性的架構設計](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
-  - 物件（資料表、view、procedure 等） 
+      - 最佳做法是使用架構授予資料庫中的許可權。 （另請參閱[：SQL Server 的架構設計：考慮到安全性的架構設計建議](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
+  - 物件（表、視圖、過程等） 
   > [!NOTE]
-  > 不建議在物件層級上套用許可權，因為此層級會在整體的執行中增加不必要的複雜度。 如果您決定使用物件層級的許可權，則應該清楚地記載。 同樣的，也適用于資料行層級許可權，因為相同的原因，這是較少的建議。 也請注意，根據預設，資料表層級的[DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)不會覆寫資料行層級的授與。 這需要啟用[通用條件合規性伺服器](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)設定。
+  > 不建議在物件級別應用許可權，因為此級別會增加整個實現不必要的複雜性。 如果您決定使用物件級許可權，則應清楚地記錄這些許可權。 這同樣適用于列級許可權，由於同樣的原因，這些許可權更不可推薦。 還要注意，預設情況下，表級[DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)不會覆蓋列級 GRANT。 這將需要啟動[符合伺服器配置的通用條件](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)。
 
-- 使用[弱點評定（VA）](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)執行定期檢查，以測試是否有太多許可權。
+- 使用[漏洞評估 （VA）](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)執行定期檢查，以測試許可權過多。
 
 ### <a name="implement-separation-of-duties"></a>實行職責分離
 
-> 在中所述： FedRamp： AC-04、NIST： AC-5、ISO： A. 6.1.2、PCI 6.4.2、SOC： CM-3、SDL-3
+> 中提到的： FedRamp： AC-04， NIST： AC-5， ISO： A.6.1.2， PCI 6.4.2， SOC： CM-3， SDL-3
 
-責任區隔（也稱為「責任劃分」）說明將敏感性工作分割成多個指派給不同使用者的工作的需求。 區分責任有助於防止資料缺口。
+職責分離，也稱為職責分離，描述了將敏感任務拆分為分配給不同使用者的多個任務的要求。 職責分離有助於防止資料洩露。
 
-**如何執行**：
+**如何實現**：
 
-- 識別所需的責任分隔層級。 範例： 
-  - 開發/測試與生產環境之間 
-  - 安全性取向的敏感性工作與資料庫管理員（DBA）管理層級工作與開發人員工作。 
-    - 範例：審核員，建立角色層級安全性（RLS）的安全性原則，使用 DDL 許可權來執行 SQL Database 物件。
+- 確定職責分離的必要級別。 範例： 
+  - 在開發/測試和生產環境之間 
+  - 安全敏感任務與資料庫管理員 （DBA） 管理級別任務與開發人員任務。 
+    - 示例：審核員、創建角色級安全 （RLS） 安全性原則、使用 DDL 許可權實現 SQL 資料庫物件。
 
-- 識別存取系統的完整使用者（和自動化進程）階層。
+- 確定訪問系統的使用者（和自動化進程）的全面層次結構。
 
-- 根據所需的使用者群組建立角色，並將許可權指派給角色。 
-  - 針對 Azure 入口網站中的管理層級工作，或透過 PowerShell-自動化會使用 RBAC 角色。 尋找符合需求的內建角色，或使用可用的許可權建立自訂的 RBAC 角色 
-  - 在受控實例中建立伺服器範圍工作（建立新的登入、資料庫）的伺服器角色。 
-  - 建立資料庫層級工作的資料庫角色。
+- 根據所需的使用者組創建角色，並將許可權分配給角色。 
+  - 對於 Azure 門戶中的管理級任務或通過 PowerShell 自動化使用 RBAC 角色。 找到符合要求的內置角色，或使用可用許可權創建自訂 RBAC 角色 
+  - 為託管實例中的伺服器範圍任務（創建新登錄名、資料庫）創建伺服器角色。 
+  - 為資料庫級任務創建資料庫角色。
 
-- 針對某些敏感性工作，請考慮建立由憑證簽署的特殊預存程式，以代表使用者執行工作。 
-  - 範例：[教學課程：使用憑證簽署預存程式](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
+- 對於某些敏感任務，請考慮創建由證書簽名的特殊預存程序，以代表使用者執行任務。 
+  - 示例：[教程：使用證書對預存程序進行簽名](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
-- 在 Azure Key Vault 中使用客戶管理的金鑰來執行透明資料加密（TDE），以便在資料擁有者和安全性擁有者之間區分責任。 
-  - 請參閱將[客戶管理的金鑰設定為從 Azure 入口網站 Azure 儲存體加密](../storage/common/storage-encryption-keys-portal.md)一文。 
+- 在 Azure 金鑰保存庫中使用客戶管理的金鑰實施透明資料加密 （TDE），以便在資料擁有者和安全擁有者之間實現職責分離。 
+  - 請參閱文章"[從 Azure 門戶配置 Azure 存儲加密的客戶管理金鑰](../storage/common/storage-encryption-keys-portal.md)"。 
 
-- 若要確保 DBA 無法看到視為高度敏感的資料，而且仍然可以執行 DBA 工作，您可以使用 Always Encrypted 與角色隔離。 
-  - 請參閱下列文章： [Always Encrypted 的金鑰管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)、[具有角色隔離的金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)布建，以及[使用角色分離的資料行主要金鑰輪替](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。 
+- 為了確保 DBA 看不到被視為高度敏感但仍可以執行 DBA 任務的資料，可以使用"始終加密"與角色分離。 
+  - 請參閱文章[，"始終加密的金鑰管理概述](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)"，[使用角色分離進行金鑰配置](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)，以及[具有角色分離的列主金鑰輪換](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。 
 
-- 如果在不可行的情況下，可能會造成系統無法使用的重大成本和工作，則可以利用補償控制項來進行危害，例如： 
-  - 程式中的人為介入。 
-  - Audit 線索–如需有關審核的詳細資訊，請參閱[審核重大安全性事件](#audit-critical-security-events)。
+- 如果至少如果沒有可能導致系統幾乎無法使用的重大成本和努力，則至少不可行，則可以通過使用補償控制（如： 
+  - 進程中的人工干預。 
+  - 審核跟蹤 – 有關審核的詳細資訊，請參閱[審核關鍵安全事件](#audit-critical-security-events)。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 請確定開發/測試和生產環境使用不同的帳戶。 不同的帳戶有助於符合測試 & 生產系統的分離。
+- 確保不同的帳戶用於開發/測試和生產環境。 不同的帳戶有助於遵守測試&生產系統的分離。
 
-- 避免將許可權指派給個別使用者。 請改用一致的角色（資料庫或伺服器角色）。 擁有角色有助於大幅提供報告和疑難排解許可權。
+- 避免向單個使用者分配許可權。 而是一致地使用角色（資料庫或伺服器角色）。 具有角色對報告和故障排除許可權有很大説明。
 
-- 當權限完全符合所需的許可權時，請使用內建角色–如果多個內建角色的擁有權限聯集導致100% 相符，您也可以同時指派多個角色。 
+- 當權限與所需的許可權完全符合時，請使用內置角色 - 如果多個內置角色的擁有權限聯合導致 100% 匹配，也可以同時分配多個角色。 
 
-- 當內建角色授與太多許可權或許可權不足時，建立及使用自訂角色。 
+- 當內置角色授予的許可權過多或許可權不足時，創建和使用自訂角色。 
 
-- 角色指派也可以暫時完成，也就是在 T-sql 的 SQL 代理程式作業步驟中，或使用適用于 RBAC 角色的 Azure PIM，以動態方式區分責任（DSD）。 
+- 角色指派也可以臨時完成，也稱為動態職責分離 （DSD），無論是在 T-SQL 中的 SQL 代理作業步驟中，還是使用 Azure PIM 執行 RBAC 角色。 
 
-- 請確定 Dba 無法存取加密金鑰或金鑰存放區，而且具有金鑰存取權的安全性系統管理員不會再存取資料庫。 
+- 確保 DBA 無權訪問加密金鑰或金鑰存儲，並且有權訪問金鑰的安全管理員反過來無法訪問資料庫。 
 
-- 請一律確定有安全性相關動作的審核記錄。 
+- 始終確保具有與安全相關的操作的審核跟蹤。 
 
-- 您可以取得內建 RBAC 角色的定義，以查看所使用的許可權，並根據這些透過 PowerShell 的摘錄和 cumulations 建立自訂角色。
+- 您可以檢索內置 RBAC 角色的定義，以查看使用的許可權，並根據這些角色的摘錄和累積內容通過 PowerShell 創建自訂角色。
 
-- 由於 db_owner 資料庫角色的任何成員都可以變更透明資料加密（TDE）之類的安全性設定，或變更 SLO，因此應該謹慎授與此成員資格。 不過，有許多工需要 db_owner 許可權。 變更任何資料庫設定（例如變更 DB 選項）之類的工作。 「審核」在任何解決方案中扮演著重要的角色。
+- 由於db_owner資料庫角色的任何成員都可以更改安全設置（如透明資料加密 （TDE））或更改 SLO，因此應謹慎授予此成員資格。 但是，有許多工需要db_owner特權。 任務，如更改任何資料庫設置，如更改資料庫選項。 審核在任何解決方案中都起著關鍵作用。
 
-- 您無法限制 db_owner 的許可權，因此可防止系統管理帳戶查看使用者資料。 如果資料庫中有高度敏感的資料，Always Encrypted 可以用來安全地防止 db_owners 或任何其他 DBA 看到它。
+- 無法限制db_owner的許可權，因此無法阻止管理帳戶查看使用者資料。 如果資料庫中有高度敏感的資料，則"始終加密"可用於安全地防止db_owners或任何其他 DBA 查看資料。
 
 > [!NOTE]
-> 達成責任區分（SoD）是安全性相關或疑難排解工作的挑戰。 其他領域（例如開發和終端使用者角色）更容易隔離。 大部分的合規性相關控制項都允許在其他解決方案不可行時，使用替代的控制函數，例如進行審核。
+> 實現職責分離 （SoD） 對於安全相關或故障排除任務具有挑戰性。 其他領域（如開發和最終使用者角色）更易於隔離。 大多數合規性相關控制項允許在其他解決方案不可行時使用備用控制功能，如審核。
 
-對於想要深入瞭解 SoD 的讀者，建議您採用下列資源： 
+對於想要深入瞭解 SoD 的讀者，我們建議提供以下資源： 
 
 - 針對 Azure SQL Database：  
-  - [控制和授與資料庫存取權給 SQL Database 和 SQL 資料倉儲](sql-database-manage-logins.md)
-  - [應用程式開發人員職責的引擎分離](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
+  - [控制及授與 SQL Database 和 SQL 資料倉儲的資料庫存取權](sql-database-manage-logins.md)
+  - [應用程式開發人員的發動機職責分離](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [SQL Server 2014 中的職責分離](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [在 SQL Server 中簽署預存程式](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [在 SQL Server 中簽署預存程序](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
-- 針對 Azure 資源管理：
-  - [Azure 的內建角色](../role-based-access-control/built-in-roles.md) 
+- 對於 Azure 資源管理：
+  - [Azure 的內置角色](../role-based-access-control/built-in-roles.md) 
   - [適用於 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)
-  - [使用 Azure AD Privileged Identity Management 提升存取權](https://www.microsoft.com/en-us/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
+  - [使用 Azure AD 特權標識管理進行提升訪問](https://www.microsoft.com/en-us/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
-### <a name="perform-regular-code-reviews"></a>執行一般程式碼審查
+### <a name="perform-regular-code-reviews"></a>執行定期代碼評審
 
-> 于： PCI：6.3.2、SOC： SDL-3 中提及 
+> 在中提及： PCI： 6.3.2， SOC： SDL-3 
 
-責任區隔不限於資料庫中的資料，但包含應用程式代碼。 惡意程式碼可能會規避安全性控制措施。 將自訂程式碼部署到生產環境之前，必須先檢查部署的內容。
+職責分離並不限於資料庫中的資料，還包括應用程式代碼。 惡意程式碼可能會繞過安全控制。 在將自訂代碼部署到生產中之前，必須查看正在部署的內容。
 
-**如何執行**：
+**如何實現**：
 
-- 使用支援原始檔控制的資料庫工具，例如 Azure Data Studio。 
+- 使用支援原始程式碼管理的 Azure 資料工作室等資料庫工具。 
 
-- 執行隔離的程式碼部署程式。
+- 實施隔離的代碼部署過程。
 
-- 在認可至主要分支之前，個人（程式碼本身以外的人）必須檢查程式碼是否有潛在的許可權提升風險，以及惡意的資料修改以防止詐騙和 rogue 存取。 這可以使用原始檔控制機制來完成。
+- 在提交到主分支之前，人員（代碼本身的作者之外）必須檢查代碼中的許可權風險的潛在提升以及惡意資料修改，以防止欺詐和惡意訪問。 這可以使用原始程式碼管理機制來完成。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 標準化：它可協助您執行標準程式，以遵循任何程式碼更新。 
+- 標準化：它有助於實現任何代碼更新應遵循的標準過程。 
 
-- 弱點評估包含的規則會檢查是否有過多的許可權、使用舊的加密演算法，以及資料庫架構中的其他安全性問題。 
+- 漏洞評估包含檢查許可權過大、使用舊加密演算法以及資料庫架構中的其他安全問題的規則。 
 
-- 您可以在 QA 或測試環境中，使用先進的威脅防護來進行進一步的檢查，掃描是否容易遭受 SQL 插入式攻擊的程式碼。
+- 可以使用高級威脅保護在 QA 或測試環境中執行進一步檢查，該保護可以掃描易受 SQL 注入攻擊的代碼。
 
-- 應注意的範例： 
-  - 從自動化的 SQL 程式碼更新部署內建立使用者或變更安全性設定。 
-  - 預存程式，視提供的參數而定，會以不符合標準的方式更新資料格中的貨幣值。 
+- 需要查找哪些示例： 
+  - 在自動 SQL 代碼更新部署中創建使用者或更改安全設置。 
+  - 預存程序，根據提供的參數，以不符合項的方式更新儲存格中的貨幣值。 
 
-- 請確定執行審核的人員是原始程式碼作者以外的個人，並熟悉程式碼審查和安全編碼。
+- 確保執行審核的人員是原始代碼作者以外的個人，並且精通代碼評審和安全編碼。
 
-- 請務必瞭解程式碼的所有來源-變更。 程式碼可以在 T-sql 腳本中。 它可以是要執行的臨機操作命令，或是以視圖、函數、觸發程式和預存程式的形式來部署。 它可以是 SQL 代理程式作業定義的一部分（步驟）。 也可以從 SSIS 封裝、Azure Data Factory 和其他服務中執行。
+- 請務必瞭解代碼更改的所有來源。 代碼可以位於 T-SQL 腳本中。 它可以是臨時命令，以視圖、函數、觸發器和預存程序的形式執行或部署。 它可以是 SQL 代理作業定義（步驟）的一部分。 也可以在 SSIS 包、Azure 資料工廠和其他服務中執行它。
 
 ## <a name="data-protection"></a>資料保護
 
-資料保護是一組保護重要資訊免于受到加密或混淆的功能。
+資料保護是一組功能，用於保護重要資訊免受加密或混淆的影響。
 
 > [!NOTE]
-> Microsoft 證明 Azure SQL Database 為符合 FIPS 140-2 層級1的規範。 這項作業是在確認嚴格使用 FIPS 140-2 層級1可接受的演算法和 FIPS 140-2 層級1驗證的演算法實例之後完成，包括需要的金鑰長度、金鑰管理、金鑰產生和金鑰儲存的一致性。 此證明旨在讓我們的客戶回應在處理資料或傳遞系統或應用程式時，使用 FIPS 140-2 Level 1 驗證實例的需求或需求。 在上述的語句中，我們定義了「FIPS 140-2 層級1符合規範」和「FIPS 140-2 層級1合規性」的條款，以示範其對美國和加拿大政府使用不同詞彙「FIPS 140-2 層級1驗證」的預期適用性。 
+> Microsoft 證明 Azure SQL 資料庫符合 FIPS 140-2 級別 1 標準。 這是在驗證了嚴格使用 FIPS 140-2 級 1 級可接受演算法和 FIPS 1 級 1 級驗證的這些演算法實例後完成的，包括與所需的金鑰長度、金鑰管理、金鑰生成和金鑰存儲的一致性。 此證明旨在讓我們的客戶回應在資料處理或系統或應用程式交付中使用 FIPS 140-2 級 1 級驗證實例的需求或要求。 我們定義了上述聲明中使用的"符合 FIPS 140-2 級別 1"和"FIPS 140-2 等級 1 符合性"等術語，以證明它們有意適用于美國和加拿大政府使用不同的術語"FIPS 140-2 級別 1 驗證"。 
 
 
 ### <a name="encrypt-data-in-transit"></a>加密傳輸中的資料
 
-> 于中所述： OSA 實務 #6，ISO 控制系列：密碼編譯
+> 在： OSA 實踐#6， ISO 控制系列： 加密
 
-在您的用戶端與伺服器之間移動資料時，保護您的資料。 請參閱[網路安全性](#network-security)。
+在用戶端和伺服器之間移動資料時保護資料。 請參閱[網路安全](#network-security)。
 
 ### <a name="encrypt-data-at-rest"></a>加密待用資料
 
-> 于中所述： OSA 實務 #6，ISO 控制系列：密碼編譯
+> 在： OSA 實踐#6， ISO 控制系列： 加密
 
-待用加密是保存在資料庫、記錄檔和備份檔案中的資料密碼編譯保護。
+靜態加密是資料在資料庫、日誌和備份檔案中保留時的加密保護。
 
-**如何執行**：
+**如何實現**：
 
-- 預設會針對 Azure SQL Database 中2017之後所建立的任何資料庫，啟用具有服務管理金鑰的[透明資料庫加密（TDE）](transparent-data-encryption-azure-sql.md) 。
-- 在受控實例中，如果使用內部部署伺服器從還原作業建立資料庫，則會接受原始資料庫的 TDE 設定。 如果原始資料庫未啟用 TDE，建議您針對受控實例手動開啟 TDE。
+- 預設情況下，對於 Azure SQL 資料庫中 2017 年之後創建的任何資料庫，將啟用具有服務託管金鑰的[透明資料庫加密 （TDE）。](transparent-data-encryption-azure-sql.md)
+- 在託管實例中，如果資料庫是使用本機伺服器從還原操作創建的，則原始資料庫的 TDE 設置將得到遵守。 如果原始資料庫未啟用 TDE，我們建議手動為託管實例打開 TDE。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 請勿在 master 資料庫中儲存需要待用加密的資料。 Master 資料庫無法以 TDE 加密。
+- 不要將需要靜態加密的資料存儲在主資料庫中。 主資料庫不能使用 TDE 加密。
 
-- 如果您需要更高的透明度，並更精細地控制 TDE 保護，請在 Azure Key Vault 中使用客戶管理的金鑰。 Azure Key Vault 允許隨時撤銷許可權，以使資料庫無法存取。 您可以使用 Azure Key Vault，集中管理 TDE 保護裝置以及其他金鑰，或依自己的排程旋轉 TDE 保護裝置。
+- 如果需要提高透明度和對 TDE 保護進行精細控制，請使用 Azure 金鑰保存庫中的客戶管理金鑰。 Azure 金鑰保存庫允許隨時撤銷許可權，使資料庫無法訪問。 您可以與其他金鑰一起集中管理 TDE 保護程式，或使用 Azure 金鑰保存庫按照自己的計畫輪換 TDE 保護程式。
 
-- 如果您是在 Azure Key Vault 中使用客戶管理的金鑰，請遵循下列文章：使用[Azure Key Vault 設定 TDE 的指導方針](transparent-data-encryption-byok-azure-sql.md#recommendations-when-configuring-akv)，以及[如何使用 AZURE KEY VAULT 設定異地 DR](transparent-data-encryption-byok-azure-sql.md#geo-dr-and-customer-managed-tde)。
+- 如果在 Azure 金鑰保存庫中使用客戶管理的金鑰，請按照以下文章：[使用 Azure 金鑰保存庫配置 TDE 的指南](transparent-data-encryption-byok-azure-sql.md#recommendations-when-configuring-akv)以及如何[使用 Azure 金鑰保存庫配置 Geo-DR。](transparent-data-encryption-byok-azure-sql.md#geo-dr-and-customer-managed-tde)
 
-### <a name="protect-sensitive-data-in-use-from-high-privileged-unauthorized-users"></a>保護使用中的機密資料免于高許可權、未經授權的使用者
+### <a name="protect-sensitive-data-in-use-from-high-privileged-unauthorized-users"></a>保護使用中的敏感性資料免受高特權、未經授權的使用者的攻擊
 
-使用中的資料是在 SQL 查詢執行期間，儲存在資料庫系統記憶體中的資料。 如果您的資料庫儲存機密資料，您的組織可能需要確保高許可權的使用者無法在資料庫中查看敏感性資料。 高許可權使用者（例如組織中的 Microsoft 操作員或 Dba）應該能夠管理資料庫，但防止從 SQL Server 程式的記憶體中或藉由查詢資料庫來查看及可能 exfiltrating 敏感性資料。
+正在使用的資料是在 SQL 查詢執行期間存儲在資料庫系統記憶體中的資料。 如果資料庫存儲敏感性資料，則可能需要組織確保阻止高特權使用者查看資料庫中的敏感性資料。 高特權使用者（如組織中的 Microsoft 運算子或 DBA）應該能夠管理資料庫，但阻止查看和可能從 SQL Server 進程記憶體中滲透敏感性資料或查詢資料庫。
 
-決定哪些資料是機密的原則，以及敏感性資料是否必須在記憶體中加密，而且不能由純文字中的系統管理員存取，是專屬於您的組織和您必須遵守的合規性法規。 請參閱相關的需求：[識別並標記敏感性資料](#identify-and-tag-sensitive-data)。
+確定哪些資料是敏感的，以及敏感性資料是否必須在記憶體中加密，管理員不能以純文字方式訪問的策略特定于您的組織和需要遵守的合規性法規。 請參閱相關要求：[識別和標記敏感性資料](#identify-and-tag-sensitive-data)。
 
-**如何執行**：
+**如何實現**：
 
-- 使用[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)確保機密資料不會在 Azure SQL Database 中以純文字公開，即使在記憶體/使用中也一樣。 Always Encrypted 保護來自資料庫管理員（Dba）和雲端系統管理員（或可以模擬高許可權但未經授權的使用者）的資料，並讓您更充分掌控誰可以存取您的資料。
+- 使用["始終加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)"可確保敏感性資料不會在 Azure SQL 資料庫中以純文字形式公開，即使在記憶體/正在使用中也是如此。 始終加密可保護資料免受資料庫管理員 （DBA） 和雲管理員（或可能類比高特權但未經授權的使用者的不法分子）的攻擊，並使您能夠對誰可以訪問您的資料進行更多控制。
 
-**最佳做法**：
+**最佳實踐**：
 
-- Always Encrypted 不是用來加密待用資料（TDE）或傳輸（SSL/TLS）的替代方式。 Always Encrypted 不應用於非敏感性資料，以將效能和功能的影響降至最低。 建議使用 Always Encrypted 搭配 TDE 和傳輸層安全性（TLS），以全面保護待用、傳輸中和使用中的資料。 
+- 始終加密不能替代加密靜態資料 （TDE） 或傳輸中的資料 （SSL/TLS）。 應始終加密不應用於非敏感性資料，以儘量減少性能和功能影響。 建議將"始終加密"與 TDE 和傳輸層安全 （TLS） 結合使用，以便全面保護靜態、在途和在用中的資料。 
 
-- 在生產資料庫中部署 Always Encrypted 之前，請先評估加密已識別之敏感性資料行的影響。 一般來說，Always Encrypted 會減少加密資料行上查詢的功能，而且有其他限制，列于[Always Encrypted 功能詳細資料](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)中。 因此，您可能需要重新架構應用程式，以便在用戶端或/上重新執行功能，而不支援查詢，包括預存程式、函數、視圖和觸發程式的定義。 如果現有的應用程式不符合 Always Encrypted 的限制和限制，則可能無法使用加密的資料行。 雖然 Microsoft 工具的生態系統、支援 Always Encrypted 的產品和服務日益成長，但其中有一些無法與加密的資料行搭配使用。 加密資料行可能也會影響查詢效能，端視工作負載的特性而定。 
+- 在生產資料庫中部署"始終加密"之前，評估加密已識別的敏感性資料列的影響。 通常，"始終加密"會減少加密列查詢的功能，並存在其他限制，如["始終加密 - 功能詳細資訊](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)"。 因此，您可能需要重新構建應用程式以在用戶端或/重構資料庫架構（包括預存程序、函數、視圖和觸發器的定義）上重新實現該功能、查詢不支援的功能。 如果現有應用程式不符合"始終加密"的限制和限制，則它們可能無法使用加密列。 雖然支援"始終加密"的 Microsoft 工具、產品和服務的生態系統正在增長，但其中一些工具的生態系統不適用於加密列。 加密列也會影響查詢性能，具體取決於工作負荷的特徵。 
 
-- 如果您使用 Always Encrypted 來保護來自惡意 Dba 的資料，請使用角色隔離來管理 Always Encrypted 金鑰。 使用角色隔離時，安全性系統管理員會建立實體金鑰。 DBA 會在資料庫中建立資料行主要金鑰和資料行加密金鑰中繼資料物件，以描述實體金鑰。 在此過程中，安全性系統管理員不需要存取資料庫，而且 DBA 不需要存取純文字格式的實體金鑰。 
-  - 如需詳細資訊，請參閱[使用角色隔離管理金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)一文。 
+- 如果使用"始終加密"保護資料免受惡意 DBA 的攻擊，請使用角色分離管理始終加密的金鑰。 通過角色分離，安全管理員將創建物理金鑰。 DBA 在資料庫中創建列主金鑰和列加密金鑰中繼資料物件，描述物理金鑰。 在此過程中，安全管理員不需要訪問資料庫，並且 DBA 不需要以純文字形式訪問物理金鑰。 
+  - 有關詳細資訊，請參閱文章"[使用角色分離管理金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)"。 
 
-- 將您的資料行主要金鑰儲存在 Azure Key Vault 中，以方便管理。 避免使用 Windows 憑證存放區（通常是分散式金鑰存放區解決方案，而不是集中金鑰管理解決方案），讓金鑰管理更為困難。 
+- 將列主金鑰存儲在 Azure 金鑰保存庫中，便於管理。 避免使用使金鑰管理困難的 Windows 憑證存放區（以及一般分發金鑰存儲解決方案，而不是中央金鑰管理解決方案）。 
 
-- 請仔細考慮使用多個金鑰（資料行主要金鑰或資料行加密金鑰）的取捨。 將金鑰數目保持為小型，以降低金鑰管理成本。 每個資料庫的一個資料行主要金鑰和一個資料行加密金鑰，通常在穩定狀態的環境中就已足夠（而不是在金鑰輪替的過程中）。 如果您有不同的使用者群組，您可能需要額外的金鑰，每個都使用不同的金鑰並存取不同的資料。  
+- 仔細考慮使用多個金鑰（列主金鑰或列加密金鑰）的權衡。 保持金鑰數量小，以降低金鑰管理成本。 每個資料庫的一列主金鑰和一列加密金鑰通常在穩態環境中就足夠了（不在金鑰輪換的中間）。 如果具有不同的使用者組（每個使用者組使用不同的金鑰並訪問不同的資料）則可能需要其他金鑰。  
 
-- 依據您的合規性需求，輪替資料行主要金鑰。 如果您也需要輪替資料行加密金鑰，請考慮使用線上加密來將應用程式停機時間降到最低。 
-  - 請參閱[效能和可用性考慮](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)一文。 
+- 根據您的合規性要求旋轉列主鍵。 如果還需要輪換列加密金鑰，請考慮使用連線加密來最小化應用程式停機時間。 
+  - 請參閱文章"[性能和可用性注意事項](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)"。 
 
-- 如果需要支援資料的計算（相等），請使用決定性加密。 否則，請使用隨機加密。 請避免針對低熵資料集或具有公開已知散發的資料集使用決定性加密。 
+- 如果需要支援對資料的計算（相等），請使用確定性加密。 否則，請使用隨機加密。 避免對低熵資料集或具有已知分佈的資料集使用確定性加密。 
 
-- 如果您擔心在未經您同意的情況下，合法存取資料的協力廠商，請確定可存取純文字中之金鑰和資料的所有應用程式和工具都是在 Microsoft Azure 雲端外部執行。 若沒有金鑰的存取權，協力廠商將無法解密資料，除非其略過加密。
+- 如果您擔心未經您的同意合法訪問資料，請確保所有有權訪問純文字金鑰和資料的應用程式和工具都在 Microsoft Azure 雲之外運行。 如果沒有對金鑰的訪問，協力廠商將無法解密資料，除非他們繞過加密。
 
-- Always Encrypted 不容易支援授與金鑰的暫時存取權（和受保護的資料）。 例如，如果您需要與 DBA 共用金鑰，讓 DBA 能夠對機密和加密資料進行一些清理作業。 若要從 DBA 撤銷資料的存取權，唯一的方法就是輪替資料行加密金鑰和資料行主要金鑰，以保護資料，這是一項昂貴的作業。 
+- 始終加密不容易支援授予對金鑰（和受保護資料）的臨時存取權限。 例如，如果需要與 DBA 共用金鑰，以便 DBA 對敏感和加密資料執行一些清理操作。 可靠性從 DBA 撤銷對資料的訪問的唯一方法是輪換列加密金鑰和保護資料的列主金鑰，這是一項昂貴的操作。 
 
-- 若要存取加密資料行中的純文字值，使用者必須能夠存取保護資料行的 CMK，這是在保存 CMK 的金鑰存放區中設定。 使用者也必須擁有**VIEW ANY COLUMN MASTER KEY definition**和**VIEW ANY COLUMN ENCRYPTION KEY definition**資料庫許可權。
+- 要訪問加密列中的純文字值，使用者需要有權訪問保護列的 CMK，該列在保存 CMK 的金鑰存儲中配置。 使用者還需要具有 **"查看任何"主金鑰定義**"並**查看任何"控制金鑰定義"** 資料庫許可權。
 
-### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>透過加密控制應用程式使用者對敏感性資料的存取
+### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>通過加密控制應用程式使用者對敏感性資料的訪問
 
-加密可做為確保只有可存取密碼編譯金鑰的特定應用程式使用者可以查看或更新資料。
+加密可用作確保只有有權訪問加密金鑰的特定應用程式使用者才能查看或更新資料的一種方式。
 
-**如何執行**：
+**如何實現**：
 
-- 使用資料格層級加密（CLE）。 如需詳細資訊，請參閱[資料行加密一](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data)文。 
-- 請使用 Always Encrypted，但請留意其限制。 限制如下所示。
+- 使用單元級加密 （CLE）。 有關詳細資訊，請參閱文章["加密資料列](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data)"。 
+- 使用始終加密，但要注意其局限性。 限制如下。
 
-**最佳做法**
+**最佳作法**
 
 使用 CLE 時：
 
-- 透過 SQL 許可權和角色控制金鑰的存取權。 
+- 通過 SQL 許可權和角色控制對金鑰的訪問。 
 
-- 使用 AES （建議採用 AES 256）進行資料加密。 諸如 RC4、DES 和 TripleDES 等演算法已淘汰，因此不應使用，因為已知的弱點。 
+- 使用 AES（建議使用 AES 256）進行資料加密。 演算法（如 RC4、DES 和 TripleDES）被棄用，不應由於已知漏洞而使用。 
 
-- 使用非對稱金鑰/憑證（不是密碼）保護對稱金鑰，以避免使用3DES。 
+- 使用非對稱金鑰/證書（不是密碼）保護對稱金鑰，以避免使用 3DES。 
 
-- 使用資料格層級加密透過匯出/匯入（bacpac 檔案）來遷移資料庫時，請務必小心。 
-  - 如需如何避免在遷移資料時遺失金鑰的建議事項，請參閱在[Azure SQL Database 中使用資料格層級加密的建議](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)一文，以及其他最佳作法指引。
+- 通過匯出/導入（bacpac 檔）使用單元級加密遷移資料庫時要小心。 
+  - 有關如何在遷移資料時防止丟失金鑰，請參閱文章["在 Azure SQL 資料庫中使用單元級加密的建議](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)"，以及其他最佳實踐指南。
 
-請記住，Always Encrypted 主要是用來保護從 Azure SQL Database 的高許可權使用者使用的敏感性資料（雲端操作員、Dba）-請參閱[保護使用中的敏感性資料，使其免于具有高許可權的未經授權使用者](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)。 使用 Always Encrypted 保護來自應用程式使用者的資料時，請注意下列挑戰：
+請記住，始終加密主要是為了保護 Azure SQL 資料庫的高特權使用者（雲運算子、DBA） 中的敏感性資料，請參閱[保護正在使用的敏感性資料免受高特權、未經授權的使用者](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)的攻擊。 使用"始終加密"保護資料免受應用程式使用者的影響時，請注意以下挑戰：
 
-- 根據預設，所有支援 Always Encrypted 的 Microsoft 用戶端驅動程式都會維護資料行加密金鑰的全域（每個應用程式一個）快取。 一旦用戶端驅動程式藉由聯繫持有資料行主要金鑰的金鑰存放區來取得純文字資料行加密金鑰，就會快取純文字資料行加密金鑰。 這會讓多使用者應用程式的使用者隔離資料。 如果您的應用程式在與金鑰存放區（例如 Azure Key Vault）互動時模擬使用者，則在使用者的查詢使用資料行加密金鑰填入快取之後，需要相同金鑰但由另一位使用者觸發的後續查詢，將會使用快取的索引鍵。 驅動程式不會呼叫金鑰存放區，也不會檢查第二個使用者是否具有存取資料行加密金鑰的許可權。 因此，即使使用者沒有金鑰的存取權，使用者也可以看到加密的資料。 若要在多使用者應用程式中達成使用者隔離，您可以停用資料行加密金鑰快取。 停用快取會導致額外的效能負擔，因為驅動程式將需要連線到金鑰存放區，以進行每項資料加密或解密操作。
+- 預設情況下，支援"始終加密"的所有 Microsoft 用戶端驅動程式都維護列加密金鑰的全域（每個應用程式一個）緩存。 一旦用戶端驅動程式通過聯繫持有列主金鑰的金鑰存儲獲取純文字列加密金鑰，便緩存純文字列加密金鑰。 這使得從多使用者應用程式的使用者隔離資料具有挑戰性。 如果應用程式在與金鑰存儲（如 Azure 金鑰保存庫）交互時類比最終使用者，則在使用者的查詢使用列加密金鑰填充緩存後，需要相同金鑰但由其他使用者觸發的後續查詢將使用緩存的金鑰。 驅動程式不會調用金鑰存儲，也不會檢查第二個使用者是否具有訪問列加密金鑰的許可權。 因此，即使使用者無法訪問金鑰，使用者也可以看到加密的資料。 要在多使用者應用程式中實現使用者隔離，可以禁用列加密金鑰緩存。 禁用緩存將導致額外的性能開銷，因為驅動程式需要為每個資料加密或解密操作與金鑰存儲聯繫。
 
-### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>保護資料免于應用程式使用者未經授權的流覽，同時保留資料格式
-防止未經授權的使用者查看資料的另一種方法是，將資料模糊或遮罩，同時保留資料類型和格式，以確保使用者應用程式可以繼續處理和顯示資料。
+### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>保護資料免受應用程式使用者未經授權的查看，同時保留資料格式
+防止未經授權的使用者查看資料的另一種方法是混淆或遮罩資料，同時保留資料類型和格式，以確保使用者應用程式可以繼續處理和顯示資料。
 
-**如何執行**：
+**如何實現**：
 
-- 使用[動態資料遮罩](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)來模糊處理資料表資料行。
-
-> [!NOTE]
-> Always Encrypted 無法與動態資料遮罩搭配使用。 您無法將相同的資料行加密並加上遮罩，這表示您必須設定保護使用中資料的優先順序，以及透過動態資料遮罩將應用程式使用者的資料加上遮罩。
-
-**最佳做法**：
+- 使用[動態資料掩蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)可混淆表列。
 
 > [!NOTE]
-> 動態資料遮罩無法用來保護高許可權使用者的資料。 遮罩原則不適用於具有系統管理存取權的使用者，例如 db_owner。
+> 始終加密不適用於動態資料遮罩。 無法加密和遮罩同一列，這意味著您需要優先保護正在使用的資料，而不是通過動態資料遮罩為應用使用者遮罩資料。
 
-- 不允許應用程式使用者執行臨機操作查詢（因為他們可能能夠解決動態資料遮罩）。  
-  - 如需詳細資訊，請參閱[略過使用推斷的遮罩或暴力密碼破解技術一](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)文。  
+**最佳實踐**：
 
-- 使用適當的存取控制原則（透過 SQL 許可權、角色、RLS），以限制使用者在遮罩資料行中進行更新的許可權。 在資料行上建立遮罩，並不會防止更新該資料行。 當使用者在查詢遮罩資料行時接收到已遮罩的資料時，可以更新資料（如果有寫入權限的話）。    
+> [!NOTE]
+> 動態資料掩蔽不能用於保護資料免受高特權使用者。 遮罩策略不適用於具有管理存取權限（如db_owner的使用者。
 
--  動態資料遮罩不會保留遮罩值的統計屬性。 這可能會影響查詢結果（例如，包含篩選述詞的查詢或遮罩資料上的聯結）。
+- 不允許應用使用者運行臨時查詢（因為他們可能能夠處理動態資料遮罩）。  
+  - 請參閱文章，[使用推理或暴力技術繞過掩蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)以瞭解詳細資訊。  
+
+- 使用適當的存取控制策略（通過 SQL 許可權、角色、RLS）來限制使用者許可權以在遮罩列中進行更新。 在列上創建遮罩不會阻止對該列的更新。 查詢蒙版列時接收蒙版資料的使用者可以更新資料（如果他們具有寫入權限）。    
+
+-  動態資料掩蔽不會保留蒙版值的統計屬性。 這可能會影響查詢結果（例如，包含篩選謂詞或蒙版資料上的聯接的查詢）。
 
 ## <a name="network-security"></a>網路安全性
-網路安全性是指存取控制和最佳作法，以保護傳輸中的資料以 Azure SQL Database。
+網路安全是指存取控制和最佳做法，用於保護在傳輸到 Azure SQL 資料庫中的資料。
 
-### <a name="configure-my-client-to-connect-securely-to-azure-sql-database"></a>設定我的用戶端安全地連接到 Azure SQL Database 
-有關如何防止具有已知弱點的用戶端電腦和應用程式（例如，使用舊版 TLS 通訊協定和加密套件）連接到 Azure SQL Database 的最佳做法。
+### <a name="configure-my-client-to-connect-securely-to-azure-sql-database"></a>將用戶端配置為安全地連接到 Azure SQL 資料庫 
+有關如何防止具有已知漏洞的用戶端電腦和應用程式（例如，使用較舊的 TLS 協定和密碼套件）連接到 Azure SQL 資料庫的最佳做法。
 
-**如何執行**：
+**如何實現**：
 
-- 確定連接到 Azure SQL Database 的用戶端電腦使用[傳輸層安全性（TLS）](sql-database-security-overview.md#transport-layer-security-tls-encryption-in-transit)。
+- 確保連接到 Azure SQL 資料庫的用戶端電腦使用[傳輸層安全性 （TLS）。](sql-database-security-overview.md#transport-layer-security-tls-encryption-in-transit)
 
-**最佳做法**：
+**最佳實踐**：
 
-- 設定所有應用程式和工具，以在啟用加密的情況下連接到 SQL DB 
-  - Encrypt = On、TrustServerCertificate = Off （或等同于非 Microsoft 驅動程式）。 
+- 配置所有應用和工具，以啟用加密連接到 SQL DB 
+  - 加密 = 打開、信任伺服器憑證 = 關閉（或與非 Microsoft 驅動程式等效）。 
 
-- 如果您的應用程式使用不支援 TLS 的驅動程式，或支援較舊版本的 TLS，請盡可能更換驅動程式。 如果無法這麼做，請仔細評估安全性風險。 
+- 如果應用使用的驅動程式不支援 TLS 或支援舊版本的 TLS，請盡可能更換該驅動程式。 如果不可能，請仔細評估安全風險。 
 
-- 藉由在連線到每個[傳輸層安全性（TLS）登錄設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10)Azure SQL Database 的用戶端電腦上停用 ssl 2.0、ssl 3.0、tls 1.0 和 tls 1.1 中的弱點，來減少攻擊媒介。 
+- 通過在用戶端電腦上禁用每個[傳輸層安全 （TLS） 註冊表設置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10)連接到 Azure SQL 資料庫的用戶端電腦上，通過 SSL 2.0、SSL 3.0、TLS 1.0 和 TLS 1.1 中的漏洞來減少攻擊媒介。 
 
-- 檢查用戶端上可用的加密套件： [TLS/SSL （安全通道 SSP）中的加密套件](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具體而言，請停用每個設定[TLS 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)的3des。 
+- 檢查用戶端上可用的密碼套件[：TLS/SSL （S通道 SSP） 中的密碼套件](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具體來說，禁用 3DES 每個[配置 TLS 密碼套件訂單](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)。 
 
-- 針對 Azure SQL Database，會針對 Proxy 和重新導向連線類型強制執行加密。 如果您使用受控實例，請使用**Proxy**連線類型（預設值），因為這會從伺服器端強制加密。 重新**導向**連線類型目前不支援加密強制，而且僅適用于私人 IP 連接。 
+- 對於 Azure SQL 資料庫，對代理和重定向連線類型強制執行加密。 如果使用託管實例，請使用**代理**連線類型（預設），因為這將強制從伺服器端進行加密。 **重定向**連線類型當前不支援加密強制，並且僅在專用 IP 連接上可用。 
 
-- 如需詳細資訊，請參閱[AZURE SQL 連線架構-連線原則](sql-database-connectivity-architecture.md#connection-policy)。
+- 有關詳細資訊，請參閱[Azure SQL 連接體系結構 - 連接策略](sql-database-connectivity-architecture.md#connection-policy)。
 
 
-### <a name="minimize-attack-surface"></a>將受攻擊面降至最低
-將惡意使用者可能會遭受攻擊的功能數目降至最低。 執行 Azure SQL Database 的網路存取控制。
+### <a name="minimize-attack-surface"></a>最小化攻擊面
+儘量減少惡意使用者可以攻擊的功能數量。 為 Azure SQL 資料庫實施網路訪問控制項。
 
-> 提及于： OSA 實務 #5
+> 在： OSA 實踐#5
 
-**如何執行**：
+**如何實現**：
 
-在 Azure SQL Database 伺服器（包含單一資料庫或彈性集區）中：
-- 將 [允許存取 Azure 服務] 設定為 [關閉]。
+在 Azure SQL 資料庫伺服器（包含單例資料庫或彈性池）：
+- 設置允許訪問 Azure 服務到 OFF。
 
-- 使用 VNet 服務端點和 VNet 防火牆規則。
+- 使用 VNet 服務終結點和 VNet 防火牆規則。
 
-- 使用私人連結（預覽）。
+- 使用專用連結（預覽）。
 
-在受控實例中：
-- 遵循[網路需求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)中的指導方針。 
+在託管實例中：
+- 遵循[網路要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)中的準則。 
 
-**最佳做法**：
+**最佳實踐**：
 
-- 藉由在私用端點上連接來限制 Azure SQL Database 的存取（例如，使用私用資料路徑）： 
-  - 受控實例可以在 VNet 內隔離，以避免外部存取。 位於相同區域或對等互連 VNet 中的應用程式和工具都可以直接存取。 不同區域中的應用程式和工具可以使用 VNet 對 VNet 連線或 ExpressRoute 線路對等互連來建立連接。 客戶應該使用網路安全性群組（NSG），將僅限埠1433的存取限制為需要存取受控實例的資源 
-  - 針對 SQL Database 伺服器（包含單一資料庫或彈性集區），請使用[私人連結](sql-database-private-endpoint-overview.md)功能，為 VNet 內的 SQL Database 伺服器提供專用的私人 IP。 您也可以使用[Vnet 服務端點搭配 Vnet 防火牆規則](sql-database-vnet-service-endpoint-rule-overview.md)，來限制 SQL Database 伺服器的存取權。
-  - 行動使用者應使用點對站 VPN 連線，透過資料路徑進行連線。
-  - 連線到其內部部署網路的使用者應該使用站對站 VPN 連線或 ExpressRoute 來透過資料路徑進行連接。
+- 通過連接專用終結點（例如，使用專用資料路徑）限制對 Azure SQL 資料庫的訪問： 
+  - 可以在 VNet 中隔離託管實例，以防止外部訪問。 位於同一區域中的相同或對等 VNet 中的應用程式和工具可以直接存取它。 位於不同區域的應用和工具可以使用 VNet 到 VNet 連接或 ExpressRoute 電路對等互連來建立連接。 客戶應使用網路安全性群組 （NSG） 僅將埠 1433 的訪問限制為需要訪問託管實例的資源 
+  - 對於 SQL 資料庫伺服器（包含單個資料庫或彈性池），請使用[專用連結](sql-database-private-endpoint-overview.md)功能，該功能為 VNet 內的 SQL 資料庫伺服器提供專用專用 IP。 您還可以使用[VNet 服務終結點與 VNet 防火牆規則一起](sql-database-vnet-service-endpoint-rule-overview.md)限制對 SQL 資料庫伺服器的訪問。
+  - 移動使用者應使用點對點 VPN 連接通過資料路徑進行連接。
+  - 連接到其本地網路的使用者應使用網站到網站 VPN 連接或 ExpressRoute 通過資料路徑進行連接。
 
-- 您可以藉由連接到公用端點（例如，使用公用資料路徑）來存取 Azure SQL Database。 應考慮下列最佳作法： 
-  - 若為 SQL Database 伺服器，請使用[IP 防火牆規則](sql-database-firewall-configure.md)來限制只有授權的 IP 位址才能存取。
-  - 若為受控實例，請使用網路安全性群組（NSG），將透過埠3342的存取限制為所需的資源。 如需詳細資訊，請參閱透過[公用端點安全地使用 Azure SQL Database 受控實例](sql-database-managed-instance-public-endpoint-securely.md)。 
+- 您可以通過連接到公共終結點（例如，使用公共資料路徑）訪問 Azure SQL 資料庫。 應考慮以下最佳做法： 
+  - 對於 SQL 資料庫伺服器，使用[IP 防火牆規則](sql-database-firewall-configure.md)限制僅訪問授權的 IP 位址。
+  - 對於託管實例，使用網路安全性群組 （NSG） 僅將埠 3342 的訪問限制為所需的資源。 有關詳細資訊，請參閱將[Azure SQL 資料庫託管實例安全地用於公共終結點](sql-database-managed-instance-public-endpoint-securely.md)。 
 
 > [!NOTE]
-> 受控實例公用端點預設不會啟用，而且必須明確啟用。 如果公司原則不允許使用公用端點，請使用[Azure 原則](../governance/policy/overview.md)來避免在一開始就啟用公用端點。
+> 預設情況下，未啟用託管實例公共終結點，並且必須顯式啟用該終結點。 如果公司策略不允許使用公共終結點，請使用[Azure 策略](../governance/policy/overview.md)首先防止啟用公共終結點。
 
-- 設定 Azure 網路元件： 
-  - 遵循[適用于網路安全性的 Azure 最佳作法](../security/fundamentals/network-best-practices.md)。
-  - 規劃[Azure 虛擬網路常見問題（FAQ）](../virtual-network/virtual-networks-faq.md)和方案中所述的每個最佳作法的虛擬網路（VNet）設定。 
-  - 將 VNet 分割成多個子網，並將類似角色的資源指派給相同的子網（例如，前端與後端資源）。
-  - 使用[網路安全性群組（nsg）](../virtual-network/security-overview.md)來控制 Azure VNet 界限內子網之間的流量。
-  - 為您的訂用帳戶啟用[Azure 網路監看員](../network-watcher/network-watcher-monitoring-overview.md)，以監視輸入和輸出網路流量。
+- 設置 Azure 網路元件： 
+  - 遵循[Azure 網路安全的最佳做法](../security/fundamentals/network-best-practices.md)。
+  - 根據 Azure 虛擬網路中概述的最佳做法規劃虛擬網路 （VNet） 配置[，常見問題解答和](../virtual-network/virtual-networks-faq.md)計畫。 
+  - 將 VNet 分段到多個子網中，並將資源配置給同一子網（例如前端與後端資源）。
+  - 使用[網路安全性群組 （NSG）](../virtual-network/security-overview.md)控制 Azure VNet 邊界內子網之間的流量。
+  - 為訂閱啟用[Azure 網路觀察程式](../network-watcher/network-watcher-monitoring-overview.md)以監視入站和出站網路流量。
 
-### <a name="configure-power-bi-for-secure-connections-to-azure-sql-database"></a>設定 Power BI 以 Azure SQL Database 的安全連線
+### <a name="configure-power-bi-for-secure-connections-to-azure-sql-database"></a>為連接到 Azure SQL 資料庫的安全連線配置電源 BI
 
-**最佳做法**：
+**最佳實踐**：
 
-- 如 Power BI Desktop，請盡可能使用私用資料路徑。 
+- 對於 Power BI 桌面，盡可能使用私有資料路徑。 
 
-- 根據[傳輸層安全性（TLS）](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)登錄設定，在用戶端電腦上設定登錄機碼，以確定 POWER BI DESKTOP 使用 TLS 1.2 連接。 
+- 根據[傳輸層安全 （TLS）](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)註冊表設置，通過在用戶端電腦上設置登錄機碼，確保 Power BI 桌面使用 TLS1.2 進行連接。 
 
-- 透過 Power BI 的資料[列層級安全性（RLS）](https://docs.microsoft.com/power-bi/service-admin-rls)來限制特定使用者的資料存取。 
+- 使用 Power BI 通過[行級安全 （RLS）](https://docs.microsoft.com/power-bi/service-admin-rls)限制特定使用者的資料訪問。 
 
-- 針對 Power BI 服務，請使用[內部部署資料閘道](https://docs.microsoft.com/power-bi/service-gateway-onprem)，[並記住限制和考慮](https://docs.microsoft.com/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)。
+- 對於 Power BI 服務，請使用[本地資料閘道](https://docs.microsoft.com/power-bi/service-gateway-onprem)，牢記[限制和注意事項](https://docs.microsoft.com/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)。
 
-### <a name="configure-app-service-for-secure-connections-to-azure-sql-database"></a>設定 App Service 以 Azure SQL Database 的安全連線
+### <a name="configure-app-service-for-secure-connections-to-azure-sql-database"></a>配置應用服務以安全連線到 Azure SQL 資料庫
 
-**最佳做法**：
+**最佳實踐**：
 
-- 若是簡單的 Web 應用程式，必須將 [**允許 Azure 服務**] 設定為 [開啟]，才能透過公用端點連接。 
+- 對於簡單的 Web 應用，通過公共終結點進行連接需要設置 **"允許 Azure 服務**到 ON"。 
 
-- 將[您的應用程式與 Azure 虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md)，以取得與受控實例的私人資料路徑連線。 （選擇性）您也可以使用[App Service 環境（ASE）](../app-service/environment/intro.md)部署 Web 應用程式。 
+- [將應用與 Azure 虛擬網路集成，](../app-service/web-sites-integrate-with-vnet.md)以便與託管實例進行專用資料路徑連接。 或者，您還可以部署具有[應用服務環境 （ASE） 的](../app-service/environment/intro.md)Web 應用。 
 
-- 針對使用 ASE 或 VNet 整合式 Web 應用程式連線到 SQL Database server 中的資料庫的 Web 應用程式，您可以使用[Vnet 服務端點和 Vnet 防火牆規則](sql-database-vnet-service-endpoint-rule-overview.md)來限制來自特定 VNet 和子網的存取。 然後將 [**允許 Azure 服務**] 設為 [關閉]。 您也可以透過私人資料路徑，將 ASE 連線到受控實例。  
+- 對於具有連接到 SQL 資料庫伺服器中的資料庫的 ASE 或 VNet 集成 Web 應用的 Web 應用，可以使用[VNet 服務終結點和 VNet 防火牆規則](sql-database-vnet-service-endpoint-rule-overview.md)限制從特定 VNet 和子網的訪問。 然後設置**允許 Azure 服務**關閉。 您還可以通過專用資料路徑將 ASE 連接到託管實例。  
 
-- 請確定您的 Web 應用程式已根據文章中的設定，[使用 Azure App Service 保護 PaaS Web 和行動應用程式的最佳作法](../security/security-paas-applications-using-app-services.md)。 
+- 確保 Web 應用已根據文章（使用[Azure 應用服務保護 PaaS Web 和移動應用程式的最佳做法](../security/security-paas-applications-using-app-services.md)）進行配置。 
 
-- 安裝[Web 應用程式防火牆（WAF）](../application-gateway/waf-overview.md) ，以保護您的 web 應用程式免于遭遇常見的攻擊和弱點。
+- 安裝[Web 應用程式防火牆 （WAF）](../application-gateway/waf-overview.md)以保護 Web 應用免受常見漏洞和漏洞的攻擊。
 
-### <a name="configure-azure-vm-hosting-for-secure-connections-to-azure-sql-database"></a>為 Azure SQL Database 的安全連線設定 Azure VM 裝載
+### <a name="configure-azure-vm-hosting-for-secure-connections-to-azure-sql-database"></a>配置 Azure VM 託管以安全連線到 Azure SQL 資料庫
 
-**最佳做法**：
+**最佳實踐**：
 
-- 在 Azure Vm 的 Nsg 上使用允許和拒絕規則的組合，以控制可從 VM 存取的區域。
+- 在 Azure VM 的 NSG 上使用"允許"和"拒絕"規則的組合來控制可以從 VM 訪問哪些區域。
 
-- 請確定您的 VM 已根據[Azure 中 IaaS 工作負載的安全性最佳作法](../security/azure-security-iaas.md)一文進行設定。
+- 確保根據[Azure 中的 IaaS 工作負荷的安全最佳做法](../security/azure-security-iaas.md)一文配置 VM。
 
-- 確定所有 Vm 都與特定的 VNet 和子網相關聯。 
+- 確保所有 VM 都與特定的 VNet 和子網相關聯。 
 
-- 根據[關於強制通道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md#about-forced-tunneling)的指導方針，評估您是否需要預設路由 0.0.0.0/網際網路。 
-  - 如果是（例如，前端子網），則保留預設路由。
-  - 如果為 [否] （例如，仲介層或後端子網），則啟用 [強制通道]，讓流量無法透過網際網路連線到內部部署（a. k. 跨單位）。 
+- 根據[有關強制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md#about-forced-tunneling)的指南，評估是否需要預設路由 0.0.0.0/Internet。 
+  - 如果是 - 例如前端子網 - 則保留預設路由。
+  - 如果沒有（例如，中介層或後端子網），則啟用強制隧道，以便 Internet 上的流量不會到達本地（即跨界）。 
 
-- 如果您使用對等互連或連線至內部部署，請執行[選用的預設路由](../virtual-network/virtual-networks-udr-overview.md#optional-default-routes)。 
+- 如果使用對等互連或連接到本地，則實現[可選的預設路由](../virtual-network/virtual-networks-udr-overview.md#optional-default-routes)。 
 
-- 如果您需要將 VNet 中的所有流量傳送至網路虛擬裝置以進行封包檢查，請執行[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)。 
+- 如果需要將 VNet 中的所有流量發送到網路虛擬裝置以進行資料包檢查，請實施[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)。 
 
-- 使用[VNet 服務端點](sql-database-vnet-service-endpoint-rule-overview.md)來安全存取 PaaS 服務，例如透過 Azure 骨幹網路的 Azure 儲存體。 
+- 使用[VNet 服務終結點](sql-database-vnet-service-endpoint-rule-overview.md)通過 Azure 骨幹絡安全訪問 PaaS 服務（如 Azure 存儲）。 
 
-### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>防止分散式阻斷服務（DDoS）攻擊
-分散式阻斷服務（DDoS）攻擊是由惡意使用者嘗試傳送大量網路流量給 Azure SQL Database，其目標是讓 Azure 基礎結構變得龐大，並導致它拒絕有效的登入和工作負載。
+### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>防止分散式阻斷服務 （DDoS） 攻擊
+分散式阻斷服務 （DDoS） 攻擊是惡意使用者嘗試向 Azure SQL 資料庫發送大量網路流量，目的是使 Azure 基礎結構不堪重負，並導致其拒絕有效的登錄和工作負載。
 
-> 提及于： OSA 實務 #9
+> 在： OSA 實踐#9
 
-**如何執行**：
+**如何實現**：
 
-「DDoS 保護」會在 Azure 平臺中自動啟用。 其中包括 alwayson 流量監視，以及即時緩和公用端點上的網路層級攻擊。 
+DDoS 保護作為 Azure 平臺的一部分自動啟用。 它包括始終打開的流量監視和對公共終結點的網路級攻擊的即時緩解。 
 
-- 使用[Azure DDoS 保護](../virtual-network/ddos-protection-overview.md)來監視與 vnet 中所部署資源相關聯的公用 IP 位址。
+- 使用[Azure DDoS 保護](../virtual-network/ddos-protection-overview.md)監視與 VNet 中部署的資源關聯的公共 IP 位址。
 
-- 使用[Advanced 威脅防護來進行 Azure SQL Database](sql-database-threat-detection-overview.md) ，以偵測對資料庫的拒絕服務（DoS）攻擊。
+- [對 Azure SQL 資料庫使用高級威脅保護](sql-database-threat-detection-overview.md)來檢測對資料庫的拒絕服務 （DoS） 攻擊。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 請遵循[最小化攻擊面](#minimize-attack-surface)中所述的作法，協助將 DDoS 攻擊威脅降至最低。 
+- 遵循["最小化攻擊面"](#minimize-attack-surface)中描述的實踐，有助於最大限度地減少 DDoS 攻擊威脅。 
 
-- Advanced 威脅防護**暴力密碼破解 SQL 認證**警示有助於偵測暴力密碼破解攻擊。 在某些情況下，警示甚至可以區分滲透測試工作負載。 
+- 高級威脅防護**暴力 SQL 憑據**警報有助於檢測暴力攻擊。 在某些情況下，警報甚至可以區分滲透測試工作負載。 
 
-- 針對連接到 SQL Database 的 Azure VM 裝載應用程式： 
-  - 遵循建議，透過 Azure 資訊安全中心中的網際網路面向端點來限制存取。 
-  - 使用虛擬機器擴展集在 Azure Vm 上執行應用程式的多個實例。 
-  - 停用來自網際網路的 RDP 和 SSH，以防止暴力密碼破解攻擊。 
+- 對於連接到 SQL 資料庫的 Azure VM 託管應用程式： 
+  - 按照建議限制 Azure 安全中心中面向 Internet 的終結點的訪問。 
+  - 使用虛擬機器縮放集在 Azure VM 上運行應用程式的多個實例。 
+  - 禁用互聯網上的 RDP 和 SSH，以防止暴力攻擊。 
 
-## <a name="monitoring-logging-and-auditing"></a>監視、記錄和審核  
-本節所指的功能可協助您偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。 它也會說明設定資料庫審核來追蹤和捕捉資料庫事件的最佳作法。
+## <a name="monitoring-logging-and-auditing"></a>監視、日誌記錄和審核  
+本節引用的功能可説明您檢測異常活動，指示訪問或利用資料庫的異常和潛在有害嘗試。 它還介紹了設定資料庫審核以跟蹤和捕獲資料庫事件的最佳做法。
 
-### <a name="protect-databases-against-attacks"></a>保護資料庫免于遭受攻擊 
-「先進的威脅防護」可讓您藉由提供異常活動的安全性警示，偵測並回應潛在威脅。
+### <a name="protect-databases-against-attacks"></a>保護資料庫免受攻擊 
+高級威脅防護使您能夠通過針對異常活動提供安全警報來檢測和回應潛在威脅的發生。
 
-**如何執行**：
+**如何實現**：
 
-- 使用[適用于 SQL 的先進威脅防護](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)，來偵測存取或惡意探索資料庫的異常且可能有害的嘗試，包括：
-  - SQL 插入式攻擊。
-  - 竊取/洩漏認證。
-  - 許可權濫用。
-  - 資料外泄。
+- 使用[SQL 的高級威脅防護](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)來檢測訪問或利用資料庫的異常和潛在有害嘗試，包括：
+  - SQL 注入攻擊。
+  - 憑據被盜/洩露。
+  - 特權濫用。
+  - 資料滲漏。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 針對特定 SQL Database 伺服器或受控實例的 Azure SQL Database 設定「[先進資料安全性」（ADS）](sql-database-advanced-data-security.md#getting-started-with-ads) 。 您也可以藉由切換至[Azure 資訊安全中心標準層](../security-center/security-center-pricing.md)，為訂用帳戶中的所有 SQL Database 伺服器和受控實例設定廣告。 
+- 為 Azure SQL 資料庫配置特定 SQL 資料庫伺服器或託管實例[的高級資料安全 （ADS）。](sql-database-advanced-data-security.md#getting-started-with-ads)   還可以通過切換到[Azure 安全中心標準層](../security-center/security-center-pricing.md)，為訂閱中的所有 SQL 資料庫伺服器和託管實例配置 ADS。 
 
-- 如需完整的調查體驗，建議您啟用 [SQL Database 的審核](sql-database-auditing.md)。 使用審核功能，您可以追蹤資料庫事件，並將它們寫入 Azure 儲存體帳戶或 Azure Log Analytics 工作區中的 audit 記錄。 
+- 為了獲得完整的調查體驗，建議啟用 [SQL 資料庫審核](sql-database-auditing.md)。 通過審核，可以跟蹤資料庫事件並將其寫入 Azure 存儲帳戶或 Azure 日誌分析工作區中的稽核記錄。 
 
-### <a name="audit-critical-security-events"></a>審核重大安全性事件
-追蹤資料庫事件可協助您瞭解資料庫活動。 您可以深入瞭解可能指出業務疑慮或可疑安全性違規的不一致和異常。 它也會啟用並促進遵循合規性標準。 
+### <a name="audit-critical-security-events"></a>審核關鍵安全事件
+跟蹤資料庫事件可説明您瞭解資料庫活動。 您可以深入瞭解可能指示業務問題或可疑安全違規的差異和異常。 它還支援和促進遵守合規性標準。 
 
-**如何執行**：
+**如何實現**：
 
-- 啟用 [SQL Database 審核](sql-database-auditing.md)來追蹤資料庫事件，並將它們寫入您 Azure 儲存體帳戶、log Analytics 工作區（預覽）或事件中樞（預覽）中的 audit 記錄。 
+- 啟用 [SQL 資料庫審核](sql-database-auditing.md)以跟蹤資料庫事件並將其寫入 Azure 存儲帳戶、日誌分析工作區（預覽）或事件中心（預覽）中的稽核記錄。 
 
-- 您可以使用事件中樞，將 Audit 記錄寫入 Azure 儲存體帳戶、Log Analytics 工作區，以供 Azure 監視器記錄取用，或用於事件中樞以供耗用量。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。 
+- 稽核記錄可以寫入 Azure 存儲帳戶、日誌分析工作區供 Azure 監視器日誌使用，也可以寫入事件中心使用事件中心。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。 
 
-**最佳做法**：
+**最佳實踐**：
 
-- 藉由在資料庫伺服器上設定[SQL Database 審核](sql-database-auditing.md)來審核事件，將會審核該伺服器上所有現有和新建立的資料庫。
-- 根據預設，稽核原則會針對資料庫包含所有動作（查詢、預存程式、成功和失敗的登入），而這可能會導致大量的 audit 記錄。 建議客戶[使用 PowerShell 來設定不同類型動作和動作群組的審核](sql-database-auditing.md#subheading-7)。 設定此項將有助於控制已審核的動作數目，並將事件遺失的風險降到最低。 [自訂審核設定] 可讓客戶只捕捉所需的 audit 資料。
-- 您可以直接在[Azure 入口網站](https://portal.azure.com/)中，或從已設定的儲存位置取用 Audit 記錄。 
+- 通過在資料庫伺服器上配置[SQL 資料庫審核](sql-database-auditing.md)以審核事件，將審核該伺服器上的所有現有和新創建的資料庫。
+- 預設情況下，稽核原則包括針對資料庫的所有操作（查詢、預存程序以及成功和失敗的登錄），這可能導致大量稽核記錄。 建議客戶[使用 PowerShell 為不同類型的操作和操作組配置審核](sql-database-auditing.md#subheading-7)。 配置此操作將有助於控制審核操作的數量，並將事件丟失的風險降至最低。 自訂審核配置允許客戶僅捕獲所需的審核資料。
+- 稽核記錄可以直接在[Azure 門戶](https://portal.azure.com/)中使用，也可以直接從配置的存儲位置使用。 
 
 
 > [!NOTE]
-> 啟用 Log Analytics 的審核會根據內嵌速率產生成本。 請留意使用此[選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本，或考慮將 audit 記錄儲存在 Azure 儲存體帳戶中。 
+> 啟用對日誌分析的審核將產生基於引入率的成本。 請注意使用[此選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本，或者考慮將稽核記錄存儲在 Azure 存儲帳戶中。 
 
-**其他資源**：
+**更多資源**：
 
-- [SQL 資料庫稽核](sql-database-auditing.md)
+- [SQL 資料庫審核](sql-database-auditing.md)
 - [SQL Server 稽核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) 
 
-### <a name="secure-audit-logs"></a>安全的審核記錄
-限制對儲存體帳戶的存取，以支援責任分離，並將 DBA 與審計員分開。 
+### <a name="secure-audit-logs"></a>安全稽核記錄
+限制對存儲帳戶的訪問，以支援職責分離，並將 DBA 與審核員分開。 
 
-**如何執行**：
+**如何實現**：
 
-- 將 Audit 記錄檔儲存到 Azure 儲存體時，請確定儲存體帳戶的存取權僅限於最低安全性原則。 控制可存取儲存體帳戶的人員。
-    - 如需詳細資訊，請參閱[授權存取 Azure 儲存體](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- 將稽核記錄保存到 Azure 存儲時，請確保對存儲帳戶的訪問僅限於最低安全原則。 控制誰有權訪問存儲帳戶。
+    - 有關詳細資訊，請參閱[授權訪問 Azure 存儲](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 控制審核目標的存取是將 DBA 與審計員分開的重要概念。 
+- 控制對審核目標的訪問是將 DBA 與審核員分開的一個關鍵概念。 
 
-- 在審核敏感性資料的存取權時，請考慮使用資料加密來保護資料安全，以避免資訊洩漏給審核員。 如需詳細資訊，請參閱[保護使用中的敏感性資料，從具有高許可權的未經授權的使用者](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)。
+- 在審核對敏感性資料的訪問時，請考慮使用資料加密來保護資料，以避免資訊洩露給審核員。 有關詳細資訊，請參閱["保護來自高特權、未經授權的使用者正在使用的敏感性資料](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)"一節。
 
 ## <a name="security-management"></a>安全性管理
 
-本節說明管理資料庫安全性狀態的不同層面和最佳作法。 其中包含最佳作法，可確保您的資料庫設定為符合安全性標準，以探索及分類和追蹤資料庫中可能敏感性資料的存取權。 
+本節介紹管理資料庫安全狀態的不同方面和最佳實踐。 它包括確保資料庫配置為符合安全標準、發現以及分類和跟蹤資料庫中潛在敏感性資料訪問的最佳做法。 
 
-### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>確定已設定資料庫以符合安全性最佳做法 
+### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>確保資料庫配置為滿足安全最佳實踐 
 
-藉由探索並修復潛在的資料庫弱點，主動改善您的資料庫安全性。
+通過發現和修復潛在的資料庫漏洞，主動提高資料庫安全性。
 
-**如何執行**：
+**如何實現**：
 
-- 啟用[SQL 弱點評定](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)（VA）來掃描您的資料庫是否有安全性問題，並在您的資料庫上定期自動執行。
+- 啟用[SQL 漏洞評估](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)（VA） 以掃描資料庫的安全問題，並在資料庫上自動運行。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 一開始，請在您的資料庫上執行 VA，並藉由修復相比安全性最佳做法的失敗檢查來逐一查看。 設定可接受設定的基準，直到掃描_結束，或_所有檢查都已通過為止。  
+- 最初，在資料庫上運行 VA，並通過修復反對安全最佳實踐的失敗檢查來反覆運算。 為可接受的配置設置基線，直到掃描_乾淨_，或者所有檢查都已通過。  
 
-- 將週期性週期性掃描設定為每週執行一次，並設定相關人員以接收摘要電子郵件。 
+- 將定期定期掃描配置為每週運行一次，並將相關人員配置為接收摘要電子郵件。 
 
-- 檢查每個每週掃描後的 VA 摘要。 針對找到的任何弱點，評估先前掃描結果的漂移，並判斷是否應解決此檢查。 檢查是否有合理的設定變更原因。   
+- 查看每次每週掃描後的 VA 摘要。 對於任何發現的漏洞，請評估從以前的掃描結果漂移，並確定是否應解決檢查。 查看配置更改是否有合法原因。   
 
-- 解決檢查並更新相關的基準。 建立用於解析動作的票證專案，並在解決後加以追蹤。 
+- 解決檢查並更新相關基線。 創建用於解決操作的票證項，並跟蹤這些操作，直到它們得到解決。 
 
-**其他資源**：
+**更多資源**：
 
 - [SQL 漏洞評量](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) 
-- [SQL 弱點評定服務可協助您識別資料庫弱點](sql-vulnerability-assessment.md)
+- [SQL 弱點評量服務可協助您識別資料庫弱點](sql-vulnerability-assessment.md)
 
-### <a name="identify-and-tag-sensitive-data"></a>識別及標記敏感性資料 
+### <a name="identify-and-tag-sensitive-data"></a>識別和標記敏感性資料 
 
-探索可能包含敏感性資料的資料行。 所謂的敏感性資料主要取決於客戶、合規性法規等，而且需要由使用者負責評估該資料。 分類資料行，以使用先進的敏感性式審核和保護案例。 
+發現可能包含敏感性資料的列。 被視為敏感性資料的內容在很大程度上取決於客戶、合規性法規等，需要由負責該資料的使用者進行評估。 對列進行分類以使用基於高級的基於靈敏度的審核和保護方案。 
 
-**如何執行**：
+**如何實現**：
 
-- 使用[SQL 資料探索和分類](sql-database-data-discovery-and-classification.md)來探索、分類、標記和保護資料庫中的敏感性資料。 
-  - 在 [SQL 資料探索與分類] 儀表板中，查看自動探索所建立的分類建議。 接受相關分類，讓您的機密資料持續以分類標籤標記。 
-  - 針對自動機制未探索到的任何其他機密資料欄位，手動加入分類。 
-- 如需詳細資訊，請參閱[SQL 資料探索 & 分類](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)。
+- 使用[SQL 資料發現和分類](sql-database-data-discovery-and-classification.md)來發現、分類、標記和保護資料庫中的敏感性資料。 
+  - 在 SQL 資料發現和分類儀表板中查看自動探索創建的分類建議。 接受相關分類，以便您的敏感性資料持續使用分類標籤進行標記。 
+  - 手動添加自動機制未發現的任何其他敏感資料欄位的分類。 
+- 有關詳細資訊，請參閱[SQL 資料發現&分類](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)。
 
-**最佳做法**：
+**最佳實踐**：
 
-- 定期監視 [分類] 儀表板，以精確評估資料庫的分類狀態。 您可以匯出或列印資料庫分類狀態的報表，以進行合規性和審核目的。
+- 定期監視分類儀表板，以便準確評估資料庫的分類狀態。 可以匯出或列印有關資料庫分類狀態的報告，以便出於合規性和審核目的共用。
 
-- 持續監視 SQL 弱點評定中的建議敏感性資料狀態。 追蹤敏感性資料探索規則，並找出建議的資料行中的任何漂移以進行分類。  
+- 持續監視 SQL 漏洞評估中建議的敏感性資料的狀態。 跟蹤敏感性資料發現規則，並標識建議分類列中的任何漂移。  
 
-- 以針對貴組織特定需求量身打造的方式來使用分類。 在 Azure 資訊安全中心的[SQL 資訊保護](../security-center/security-center-info-protection-policy.md)原則中，自訂您的資訊保護原則（敏感度標籤、資訊類型、探索邏輯）。 
+- 以適合組織特定需求的方式使用分類。 在 Azure 安全中心的[SQL 資訊保護](../security-center/security-center-info-protection-policy.md)策略中自訂資訊保護原則（敏感度標籤、資訊類型、發現邏輯）。 
 
-### <a name="track-access-to-sensitive-data"></a>追蹤機密資料的存取權 
-監視存取機密資料的人員，並在 audit 記錄中捕捉機密資料的查詢。
+### <a name="track-access-to-sensitive-data"></a>跟蹤對敏感性資料的訪問 
+監視誰訪問敏感性資料並捕獲稽核記錄中敏感性資料的查詢。
 
-**如何執行**：
+**如何實現**：
 
-- 使用 SQL Audit 和資料分類組合。 
-  - 在您的[SQL Database Audit](sql-database-auditing.md)記錄檔中，您可以特別追蹤敏感性資料的存取權。 您也可以查看資訊，例如存取的資料，以及其敏感度標籤。 如需詳細資訊，請參閱對[敏感性資料的存取進行審核](sql-database-data-discovery-and-classification.md#subheading-3)。 
+- 將 SQL 審核和資料分類組合使用。 
+  - 在[SQL 資料庫審核](sql-database-auditing.md)日誌中，您可以專門跟蹤對敏感性資料的訪問。 您還可以查看資訊，如訪問的資料及其敏感度標籤。 有關詳細資訊，請參閱[審核對敏感性資料的訪問](sql-database-data-discovery-and-classification.md#subheading-3)。 
 
-**最佳做法**：
+**最佳實踐**：
 
-- 請參閱「審核和資料分類」章節的最佳做法： 
-  - [審核重大安全性事件](#audit-critical-security-events) 
-  - [識別及標記敏感性資料](#identify-and-tag-sensitive-data) 
+- 請參閱審核和資料分類部分的最佳做法： 
+  - [審核關鍵安全事件](#audit-critical-security-events) 
+  - [識別和標記敏感性資料](#identify-and-tag-sensitive-data) 
 
-### <a name="visualize-security-and-compliance-status"></a>將安全性和合規性狀態視覺化 
+### <a name="visualize-security-and-compliance-status"></a>視覺化安全性和合規性狀態 
 
-使用統一的基礎結構安全性管理系統，可強化資料中心的安全性狀態（包括 SQL 資料庫）。 查看有關資料庫安全性和合規性狀態的建議清單。
+使用統一的基礎架構安全管理系統來增強資料中心（包括 SQL 資料庫）的安全狀態。 查看有關資料庫安全性和合規性狀態的建議清單。
 
-**如何執行**：
+**如何實現**：
 
-- 在[Azure 資訊安全中心](https://azure.microsoft.com/documentation/services/security-center/)中監視 SQL 相關的安全性建議和作用中的威脅。
+- 監視[Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)中與 SQL 相關的安全建議和活動威脅。
 
-## <a name="common-security-threats-and-potential-mitigations"></a>常見的安全性威脅和可能的緩和措施
+## <a name="common-security-threats-and-potential-mitigations"></a>常見的安全威脅和潛在緩解措施
 
-本節可協助您找出安全性措施，以防範特定的攻擊媒介。 您必須遵循上述一或多個安全性指導方針，來達成大部分的緩和措施。
+本節可説明您找到安全措施來抵禦某些攻擊媒介。 預計大多數緩解措施都可以通過遵循上述一個或多個安全準則來實現。
 
-### <a name="security-threat-data-exfiltration"></a>安全性威脅：資料外泄
+### <a name="security-threat-data-exfiltration"></a>安全威脅：資料滲漏
 
-資料外泄是指從電腦或伺服器進行未經授權的複製、傳送或抓取資料。 查看維琪百科上[外泄的資料](https://en.wikipedia.org/wiki/Data_exfiltration)定義。
+資料洩露是未經授權從電腦或伺服器複製、傳輸或檢索資料。 請參閱維琪百科上[資料滲出](https://en.wikipedia.org/wiki/Data_exfiltration)的定義。
 
-透過公用端點連接到 Azure SQL Database server，會呈現資料外泄風險，因為它需要客戶將其防火牆開啟至公用 Ip。  
+通過公共終結點連接到 Azure SQL 資料庫伺服器會帶來資料洩露風險，因為它要求客戶向公共 IP 打開防火牆。  
 
-**案例 1**： Azure VM 上的應用程式會連接到 Azure SQL Database 伺服器中的資料庫。 Rogue 執行者會取得 VM 的存取權，並加以危害。 在此案例中，資料外泄表示使用 rogue VM 的外部實體會連線到資料庫、複製個人資料，並將其儲存在不同訂用帳戶中的 blob 儲存體或不同的 SQL Database。
+**方案 1**：Azure VM 上的應用程式連接到 Azure SQL 資料庫伺服器中的資料庫。 惡意執行元件可以訪問 VM 並危及 VM。 在這種情況下，資料滲漏意味著使用惡意 VM 的外部實體連接到資料庫，複製個人資料，並將其存儲在 Blob 存儲中或其他 SQL 資料庫中。
 
-**案例 2**：有 rouge DBA。 這種情況通常是由受管制產業的安全性敏感性客戶所引發。 在此案例中，高許可權使用者可能會將資料從 Azure SQL Database 複製到不是由資料擁有者控制的另一個訂用帳戶。
+**方案 2**：紅色 DBA。 此方案通常由來自受監管行業的安全敏感客戶提出。 在這種情況下，高許可權使用者可能會將資料從 Azure SQL 資料庫複製到資料擁有者無法控制的另一個訂閱。
 
-**可能**的緩和措施：
+**潛在的緩解措施**：
 
-目前，Azure SQL Database 提供下列技術來減輕資料外泄威脅： 
+如今，Azure SQL 資料庫提供了以下技術來緩解資料滲漏威脅： 
 
-- 在 Azure Vm 的 Nsg 上使用允許和拒絕規則的組合，以控制可從 VM 存取的區域。 
-- 如果使用 Azure SQL Database 伺服器（包含單一資料庫或彈性集區），請設定下列選項：
+- 在 Azure VM 的 NSG 上使用"允許"和"拒絕"規則的組合來控制可以從 VM 訪問哪些區域。 
+- 如果使用 Azure SQL 資料庫伺服器（包含單例資料庫或彈性池），則設置以下選項：
   - 允許 Azure 服務關閉。
-  - 藉由設定 VNet 防火牆規則，僅允許來自包含您 Azure VM 之子網的流量。
-  - 使用[私人連結](sql-database-private-endpoint-overview.md)
-- 針對受控實例，預設使用私人 IP 存取可解決 rogue VM 的第一個資料外泄問題。 開啟子網上的子網委派功能，以在受控實例子網上自動設定限制最嚴格的原則。
-- 惡意的 DBA 顧慮會更容易受到受控實例的攻擊，因為它具有較大的介面區，而且客戶可以看到網路需求。 為此，最佳的緩和措施就是套用本安全性指南中的所有實務，以避免發生 Rogue DBA 案例（而不只是針對資料外泄）。 Always Encrypted 是用來保護機密資料的方法之一，就是將其加密並讓 DBA 無法存取金鑰。
+  - 僅通過設置 VNet 防火牆規則，允許來自包含 Azure VM 的子網的流量。
+  - 使用[專用連結](sql-database-private-endpoint-overview.md)
+- 對於託管實例，預設情況下使用專用 IP 訪問解決了惡意 VM 的第一個資料洩露問題。 打開子網上的子網委派功能，自動設置託管實例子網上限制最大的策略。
+- Rogue DBA 問題更多地暴露了託管實例，因為它具有更大的表面積，並且客戶可以看到網路要求。 最好的緩解措施是應用本安全指南中的所有實踐，首先防止惡意 DBA 方案（而不僅僅是資料滲漏）。 始終加密是一種通過加密敏感性資料並保持 DBA 無法訪問金鑰來保護敏感性資料的方法。
 
-## <a name="security-aspects-of-business-continuity-and-availability"></a>商務持續性和可用性的安全性層面
+## <a name="security-aspects-of-business-continuity-and-availability"></a>業務連續性和可用性的安全方面
 
-大部分的安全性標準都會以營運持續性的角度來處理資料可用性，並藉由執行冗余和損毀修復功能來避免單一失敗點。 在嚴重損壞狀況中，經常備份資料和記錄檔是常見的作法。 下一節提供 Azure 內建功能的高階總覽。 它也會提供其他選項，讓您可以設定以符合特定需求： 
+大多數安全標準都通過實現冗余和容錯移轉功能來處理操作連續性方面的資料可用性，以避免單點故障。 對於災難場景，通常的做法是保留資料和日誌檔的備份。以下部分提供了內置於 Azure 中的功能的高級概述。 它還提供了可配置為滿足特定需求的其他選項： 
 
-- Azure 提供內建的高可用性：[高可用性和 Azure SQL Database](sql-database-high-availability.md) 
+- Azure 提供內置的高可用性：[高可用性和 Azure SQL 資料庫](sql-database-high-availability.md) 
 
-- 「業務關鍵層」包含容錯移轉群組、多可用性區域、完整和差異記錄備份，以及預設啟用的時間點還原備份：  
-  - [高可用性和 Azure SQL Database 區域的冗余設定](sql-database-high-availability.md#zone-redundant-configuration)
+- 業務關鍵型層包括容錯移轉組、多可用性區域、完整和差異記錄備份以及預設情況下啟用的時間點還原備份：  
+  - [高可用性和 Azure SQL 資料庫 - 區域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)
   - [自動備份](sql-database-automated-backups.md)
-  - [使用自動資料庫備份來復原 Azure SQL Database-時間點還原](sql-database-recovery-using-backups.md#point-in-time-restore)
+  - [使用自動資料庫備份恢復 Azure SQL 資料庫 - 時間點還原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- 其他商務持續性功能（例如跨不同 Azure 地區的自動容錯移轉群組）可以設定如下所述：[使用 Azure SQL Database 的商務持續性總覽](sql-database-business-continuity.md)
+- 可以按照此處所述配置其他業務連續性功能，如跨不同 Azure 地理位置的自動容錯移轉組[：Azure SQL 資料庫的業務連續性概述](sql-database-business-continuity.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 查看[Azure SQL Database 安全性功能的總覽](sql-database-security-overview.md)
+- 請參閱[Azure SQL 資料庫安全功能概述](sql-database-security-overview.md)

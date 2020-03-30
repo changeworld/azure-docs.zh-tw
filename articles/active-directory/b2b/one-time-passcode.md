@@ -1,5 +1,5 @@
 ---
-title: 適用于 B2B 來賓使用者的單次密碼驗證-Azure AD
+title: B2B 來賓使用者的一次性密碼身份驗證 - Azure AD
 description: 如何無需 Microsoft 帳戶而使用電子郵件的單次密碼來驗證 B2B 來賓使用者。
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263370"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子郵件單次密碼驗證 (預覽版)
@@ -26,7 +26,7 @@ ms.locfileid: "79263370"
 | 電子郵件單次密碼是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
-本文說明如何為 B2B 來賓使用者啟用電子郵件單次密碼驗證。 當無法透過如 Azure AD、Microsoft 帳戶 (MSA) 或 Google 同盟等方式驗證 B2B 來賓使用者時，可使用電子郵件單次密碼功能來驗證。 使用單次密碼驗證時，不需要建立 Microsoft 帳戶。 當來賓使用者兌換邀請或存取共用資源時，他們可以要求一個暫時性驗證碼，此驗證碼會傳送到他們的電子郵件地址。 之後，他們便可輸入此驗證碼繼續登入。
+本文介紹如何為 B2B 來賓使用者啟用電子郵件一次性密碼身份驗證。 當無法透過如 Azure AD、Microsoft 帳戶 (MSA) 或 Google 同盟等方式驗證 B2B 來賓使用者時，可使用電子郵件單次密碼功能來驗證。 使用單次密碼驗證時，不需要建立 Microsoft 帳戶。 當來賓使用者兌換邀請或存取共用資源時，他們可以要求一個暫時性驗證碼，此驗證碼會傳送到他們的電子郵件地址。 之後，他們便可輸入此驗證碼繼續登入。
 
 此功能目前可供預覽 (請參閱下方的[選擇加入預覽版](#opting-in-to-the-preview))。 預覽結束後，這項功能預設會對所有租用戶開啟。
 
@@ -34,13 +34,13 @@ ms.locfileid: "79263370"
 > 單次密碼使用者必須使用包含租用戶內容的連結 (例如 `https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，如果是已驗證的網域，則為 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`) 來登入。 應用程式和資源的直接連結只要包含租用戶內容，也可有同樣作用。 來賓使用者目前無法使用沒有租用戶內容的端點來登入。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或小組通用端點將會導致錯誤。 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>單次密碼來賓使用者的使用者體驗
-使用單次密碼驗證時，來賓使用者可以兌換您的邀請，方法是按一下直接連結，或使用邀請電子郵件。 無論是哪一種方法，瀏覽器中會顯示訊息，指出驗證碼將傳送到來賓使用者的電子郵件地址。 來賓使用者可選取 [傳送驗證碼]：
+使用單次密碼驗證時，來賓使用者可以兌換您的邀請，方法是按一下直接連結，或使用邀請電子郵件。 無論是哪一種方法，瀏覽器中會顯示訊息，指出驗證碼將傳送到來賓使用者的電子郵件地址。 來賓使用者可選取 [傳送驗證碼]****：
  
-   ![顯示 [傳送程式碼] 按鈕的螢幕擷取畫面](media/one-time-passcode/otp-send-code.png)
+   ![顯示"發送代碼"按鈕的螢幕截圖](media/one-time-passcode/otp-send-code.png)
  
 密碼會傳送到使用者的電子郵件地址。 使用者可從電子郵件中擷取該密碼，並在瀏覽器視窗中輸入：
  
-   ![顯示 [輸入代碼] 頁面的螢幕擷取畫面](media/one-time-passcode/otp-enter-code.png)
+   ![顯示"輸入代碼"頁的螢幕截圖](media/one-time-passcode/otp-enter-code.png)
  
 來賓使用者現在已通過驗證，可看見共用資源或繼續登入。 
 
@@ -56,31 +56,31 @@ ms.locfileid: "79263370"
 
 邀請時，不會指出您邀請的使用者將使用單次密碼驗證。 但當來賓使用者登入時，如果沒有其他驗證方法可使用，單次密碼驗證將作為後援方法。 
 
-您可以檢視在 Azure 入口網站中使用單次密碼驗證的來賓使用者，方法是前往 [Azure Active Directory] > [組織關係] > [其他組織的使用者]。
+您可以通過訪問**Azure 活動目錄** > **組織關係** > （**來自其他組織的）** 來查看在 Azure 門戶中使用一次性密碼進行身份驗證的來賓使用者。
 
-![螢幕擷取畫面，其中顯示具有 OTP 來源值的單次密碼使用者](media/one-time-passcode/otp-users.png)
+![顯示具有 OTP 源值的一次性密碼使用者的螢幕截圖](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > 當使用者兌換單次密碼，並稍後取得 MSA、Azure AD 帳戶或其他同盟帳戶時，系統仍會繼續使用單次密碼進行驗證。 如果您想要更新驗證方法，您可以刪除來賓使用者帳戶，然後重新邀請他們。
 
 ### <a name="example"></a>範例
-邀請來賓使用者 alexdoe@gmail.com 到 Fabrikam，該使用者尚未設定 Google 同盟。 Alex 沒有 Microsoft 帳戶。 他們會收到一次性密碼以進行驗證。
+邀請來賓使用者 alexdoe@gmail.com 到 Fabrikam，該使用者尚未設定 Google 同盟。 Alex 沒有 Microsoft 帳戶。 他們將收到一次性密碼進行身份驗證。
 
 ## <a name="opting-in-to-the-preview"></a>選擇加入預覽版 
 選擇加入可能需要數分鐘的時間才會生效。 生效後，只有剛獲邀且符合上述條件的使用者可使用單次密碼驗證。 先前已兌換邀請的來賓使用者將繼續使用其相同的驗證方法。
 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站選擇加入
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
-2.  在導覽窗格中，選取 [Azure Active Directory]。
-3.  在 [管理] 下方，選取 [組織關係]。
-4.  選取 [Settings] \(設定)。
-5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)] 下方，選取 [是]。
+2.  在導覽窗格中，選取 [Azure Active Directory]****。
+3.  在 [管理]**** 下方，選取 [組織關係]****。
+4.  選取 [設定]****。
+5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)]**** 下方，選取 [是]****。
  
 ### <a name="to-opt-in-using-powershell"></a>使用 PowerShell 選擇加入
 
 首先，您必須安裝最新版的 Azure AD PowerShell for Graph 模組 (AzureADPreview)。 然後，您須判定 B2B 原則是否已經存在，並執行適當的命令。
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>必要條件：安裝最新的 AzureADPreview 模組
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>先決條件：安裝最新的 AzureAD 預覽模組
 首先，檢查您已安裝哪些模組。 請以已提高權限的使用者身分 (以系統管理員身分執行) 開啟 Windows PowerShell，然後執行下列命令：
  
 ```powershell  
@@ -138,13 +138,13 @@ $currentpolicy -ne $null
 
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站關閉預覽版
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
-2.  在導覽窗格中，選取 [Azure Active Directory]。
-3.  在 [管理] 下方，選取 [組織關係]。
-4.  選取 [Settings] \(設定)。
-5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)] 下方，選取 [否]。
+2.  在導覽窗格中，選取 [Azure Active Directory]****。
+3.  在 [管理]**** 下方，選取 [組織關係]****。
+4.  選取 [設定]****。
+5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)]**** 下方，選取 [否]****。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>使用 PowerShell 關閉預覽版
-如果您還沒有最新的 AzureADPreview 模組，請加以安裝（請參閱上面[的必要條件：安裝最新的 AzureADPreview 模組](#prerequisite-install-the-latest-azureadpreview-module)）。 接著，執行下列內容確認單次密碼預覽原則目前存在：
+如果尚未安裝最新的 AzureAD 預覽模組（請參閱[先決條件：安裝上面最新的 AzureAD 預覽模組](#prerequisite-install-the-latest-azureadpreview-module)）。 接著，執行下列內容確認單次密碼預覽原則目前存在：
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD Domain Services 中建立及使用密碼原則 |Microsoft Docs
-description: 瞭解如何以及為何要使用更細緻的密碼原則來保護及控制 Azure AD DS 受控網域中的帳戶密碼。
+title: 在 Azure AD 域服務中創建和使用密碼原則 |微軟文檔
+description: 瞭解如何以及為什麼使用細細微性密碼原則來保護和控制 Azure AD DS 託管域中的帳戶密碼。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,122 +12,122 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613206"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>受控網域上的密碼和帳戶鎖定原則
 
-若要管理 Azure Active Directory Domain Services （Azure AD DS）中的使用者安全性，您可以定義更細緻的密碼原則，以控制帳戶鎖定設定或最小密碼長度和複雜度。 系統會建立預設的更細緻密碼原則，並將其套用至 Azure AD DS 受控網域中的所有使用者。 若要提供更細微的控制，並符合特定的商務或合規性需求，可以建立額外的原則，並將其套用至特定的使用者群組。
+要管理 Azure 活動目錄域服務 （Azure AD DS） 中的使用者安全性，可以定義控制帳戶鎖定設置或最小密碼長度和複雜性的細細微性密碼原則。 將創建預設細細微性密碼原則，並將其應用於 Azure AD DS 託管域中的所有使用者。 為了提供精細控制並滿足特定業務或合規性需求，可以創建其他策略並將其應用於特定的使用者組。
 
-本文說明如何使用 Active Directory 管理中心在 Azure AD DS 中建立及設定更細緻的密碼原則。
+本文介紹如何使用活動目錄管理中心在 Azure AD DS 中創建和配置細細微性密碼原則。
 
 > [!NOTE]
-> 密碼原則僅適用于使用 Resource Manager 部署模型建立的 Azure AD DS 受控網域。 針對使用傳統建立的較舊受控網域，請[從傳統虛擬網路模型遷移至 Resource Manager][migrate-from-classic]。
+> 密碼原則僅適用于使用資源管理器部署模型創建的 Azure AD DS 託管域。 對於使用經典創建的較舊的託管域，[從經典虛擬網路模型遷移到資源管理器][migrate-from-classic]。
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您需要下列資源和許可權：
+要完成本文，您需要以下資源和特權：
 
 * 有效的 Azure 訂用帳戶。
   * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
   * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-  * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 實例][create-azure-ad-ds-instance]。
-  * Azure AD DS 實例必須已使用 Resource Manager 部署模型建立。 如有需要，請[從傳統虛擬網路模型遷移至 Resource Manager][migrate-from-classic]。
-* 已加入 Azure AD DS 受控網域的 Windows Server 管理 VM。
-  * 如有需要，請完成教學課程以[建立管理 VM][tutorial-create-management-vm]。
-* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員群組成員的使用者帳戶。
+  * 如果需要，請完成創建[和配置 Azure 活動目錄域服務實例][create-azure-ad-ds-instance]的教程。
+  * Azure AD DS 實例必須使用資源管理器部署模型創建。 如果需要，[從經典虛擬網路模型遷移到資源管理器][migrate-from-classic]。
+* 加入到 Azure AD DS 託管域的 Windows 伺服器管理 VM。
+  * 如果需要，請完成教程以創建[管理 VM][tutorial-create-management-vm]。
+* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員** 群組成員的使用者帳戶。
 
-## <a name="default-password-policy-settings"></a>預設密碼原則設定
+## <a name="default-password-policy-settings"></a>預設密碼原則設置
 
-更細緻的密碼原則（Fgpp）可讓您將密碼和帳戶鎖定原則的特定限制套用到網域中的不同使用者。 例如，若要保護特殊許可權帳戶，您可以套用比一般非特殊許可權帳戶更嚴格的帳戶鎖定設定。 您可以在 Azure AD DS 受控網域內建立多個 Fgpp，並指定優先順序來將它們套用至使用者。
+細細微性密碼原則 （FGP） 允許您對域中的不同使用者應用密碼和帳戶鎖定策略的特定限制。 例如，要保護特權帳戶，您可以應用比常規非特權帳戶更嚴格的帳戶鎖定設置。 您可以在 Azure AD DS 託管域中創建多個 FGP，並指定優先順序順序以將其應用於使用者。
 
-原則是透過 Azure AD DS 受控網域中的群組關聯來散發，而您所做的任何變更都會在下次使用者登入時套用。 變更原則並不會解除鎖定已鎖定的使用者帳戶。
+策略通過 Azure AD DS 託管域中的組關聯分發，所做的任何更改都應用於下一個使用者登錄。 更改策略不會解鎖已鎖定的使用者帳戶。
 
-密碼原則的行為稍有不同，取決於建立使用者帳戶的方式。 有兩種方式可以在 Azure AD DS 中建立使用者帳戶：
+密碼原則的行為略有不同，具體取決於它們應用於的使用者帳戶的創建方式。 在 Azure AD DS 中創建使用者帳戶有兩種方式：
 
-* 使用者帳戶可以從 Azure AD 同步處理。 這包括直接在 Azure 中建立的僅限雲端使用者帳戶，以及使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的混合式使用者帳戶。
-    * Azure AD DS 中的大部分使用者帳戶都是透過 Azure AD 的同步處理常式來建立。
-* 使用者帳戶可以在 Azure AD DS 受控網域中手動建立，而且不存在於 Azure AD 中。
+* 可以從 Azure AD 同步使用者帳戶。 這包括直接在 Azure 中創建的僅雲使用者帳戶，以及使用 Azure AD Connect 從本地 AD DS 環境同步的混合使用者帳戶。
+    * Azure AD DS 中的大多數使用者帳戶都是通過 Azure AD 的同步過程創建的。
+* 使用者帳戶可以在 Azure AD DS 託管域中手動創建，並且在 Azure AD 中不存在。
 
-所有使用者無論建立的方式為何，都具有下列 Azure AD DS 中的預設密碼原則所套用的帳戶鎖定原則：
+所有使用者，無論其創建方式如何，都應用了 Azure AD DS 中的預設密碼原則應用的以下帳戶鎖定策略：
 
 * **帳戶鎖定持續時間：** 30
-* **允許的失敗登入嘗試次數：** 5
-* **重設失敗的登入嘗試次數：** 30 分鐘
-* **密碼最長使用期限（存留期）：** 90 天
+* **允許的失敗登錄嘗試次數：** 5
+* **重置失敗登錄嘗試計數後：** 30 分鐘
+* **最大密碼期限（存留期）：90**天
 
-使用這些預設設定，如果在2分鐘內使用5個不正確密碼，使用者帳戶就會被鎖定30分鐘。 30 分鐘後，帳戶會自動解除鎖定。
+使用這些預設設置，如果在 2 分鐘內使用 5 個無效密碼，使用者帳戶將鎖定 30 分鐘。 30 分鐘後，帳戶會自動解除鎖定。
 
-帳戶鎖定只會發生在受控網域中。 使用者帳戶只會在 Azure AD DS 中被鎖定，而且只會因為對受控網域的登入嘗試失敗而受到限制。 從 Azure AD 或內部部署環境中同步處理的使用者帳戶，不會在其來原始目錄中被鎖定，只會在 Azure AD DS 中遭到封鎖。
+帳戶鎖定僅在託管域中發生。 使用者帳戶僅在 Azure AD DS 中鎖定，並且僅由於針對託管域的登錄嘗試失敗。 從 Azure AD 或本地同步的使用者帳戶不會鎖定在其原始目錄中，僅在 Azure AD DS 中。
 
-如果您的 Azure AD 密碼原則指定超過90天的密碼最長使用期限，則會將密碼使用期限套用至 Azure AD DS 中的預設原則。 您可以設定自訂密碼原則，在 Azure AD DS 中定義不同的密碼最長使用期限。 如果 Azure AD DS 密碼原則中所設定的密碼最長使用期限比 Azure AD 或內部部署 AD DS 環境還短，請小心。 在該案例中，使用者的密碼可能會在 Azure AD DS 中到期，然後系統會提示他們在 Azure AD 或內部部署 AD DS 環境中進行變更。
+如果 Azure AD 密碼原則指定最大密碼期限大於 90 天，則該密碼期限將應用於 Azure AD DS 中的預設策略。 可以配置自訂密碼原則，以在 Azure AD DS 中定義不同的最大密碼期限。 如果 Azure AD DS 密碼原則中配置的最大密碼期限比 Azure AD 或本地 AD DS 環境中的密碼期限短，請小心。 在這種情況下，使用者的密碼可能會在 Azure AD DS 中過期，然後再提示他們在 Azure AD 或本地 AD DS 環境中進行更改。
 
-針對在 Azure AD DS 受控網域中手動建立的使用者帳戶，也會從預設原則套用下列額外的密碼設定。 這些設定不適用於從 Azure AD 同步處理的使用者帳戶，因為使用者無法直接在 Azure AD DS 中更新其密碼。
+對於在 Azure AD DS 託管域中手動創建的使用者帳戶，也會從預設策略中應用以下附加密碼設置。 這些設置不適用於從 Azure AD 同步的使用者帳戶，因為使用者無法直接在 Azure AD DS 中更新其密碼。
 
-* **密碼長度下限（字元數）：** 7
+* **最小密碼長度（字元）：** 7
 * **密碼必須符合複雜性需求**
 
-您無法修改預設密碼原則中的帳戶鎖定或密碼設定。 相反地， *AAD DC 系統管理員*群組的成員可以建立自訂密碼原則，並將它設定為覆寫（優先于）預設的內建原則，如下一節所示。
+無法修改預設密碼原則中的帳戶鎖定或密碼設置。 相反 *，AAD DC 管理員*組的成員可以創建自訂密碼原則，並將其配置為覆蓋（優先于）預設的內置策略，如下一節所示。
 
-## <a name="create-a-custom-password-policy"></a>建立自訂密碼原則
+## <a name="create-a-custom-password-policy"></a>創建自訂密碼原則
 
-當您在 Azure 中建立並執行應用程式時，您可能會想要設定自訂密碼原則。 例如，您可以建立原則來設定不同的帳戶鎖定原則設定。
+在 Azure 中生成和運行應用程式時，可能需要配置自訂密碼原則。 例如，您可以創建策略來設置不同的帳戶鎖定策略設置。
 
-自訂密碼原則會套用至 Azure AD DS 受控網域中的群組。 此設定會有效覆寫預設原則。
+自訂密碼原則應用於 Azure AD DS 託管域中的組。 此配置有效地覆蓋預設策略。
 
-若要建立自訂密碼原則，您可以使用來自已加入網域之 VM 的 Active Directory 系統管理工具。 此 Active Directory 管理中心可讓您在 Azure AD DS 受控網域（包括 Ou）中，查看、編輯和建立資源。
+要創建自訂密碼原則，請使用加入域的 VM 中的 Active Directory 管理工具。 活動目錄管理中心允許您在 Azure AD DS 託管域（包括 OEM）中查看、編輯和創建資源。
 
 > [!NOTE]
-> 若要在 Azure AD DS 受控網域中建立自訂密碼原則，您必須登入屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
+> 要在 Azure AD DS 託管域中創建自訂密碼原則，必須登錄到*屬於 AAD DC 管理員*組成員的使用者帳戶。
 
-1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 已安裝在教學課程中的可用管理工具清單，以[建立管理 VM][tutorial-create-management-vm]。
-1. 若要建立和管理 Ou，請從系統管理工具清單中選取 [ **Active Directory 管理中心**]。
-1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。
-1. 開啟 [**系統**] 容器，然後按 [**密碼設定容器**]。
+1. 在"開始"螢幕中，選擇 **"管理工具**"。 在本教程中顯示了用於[創建管理 VM][tutorial-create-management-vm]的可用管理工具的清單。
+1. 要創建和管理 O，請從管理工具清單中選擇**活動目錄管理中心**。
+1. 在左側窗格中，選擇 Azure AD DS 託管域，如*aaddscontoso.com*。
+1. 打開**系統**容器，然後打開**密碼設定容器**。
 
-    隨即顯示 Azure AD DS 受控網域的內建密碼原則。 您無法修改此內建原則。 相反地，請建立自訂密碼原則來覆寫預設原則。
+    將顯示 Azure AD DS 託管域的內置密碼原則。 無法修改此內置策略。 而是創建自訂密碼原則以覆蓋預設策略。
 
-    ![在 Active Directory 管理中心中建立密碼原則](./media/password-policy/create-password-policy-adac.png)
+    ![在活動目錄管理中心創建密碼原則](./media/password-policy/create-password-policy-adac.png)
 
-1. **在右側的 [工作]** 面板中，選取 [新增] > [**密碼設定**]。
-1. 在 [**建立密碼設定**] 對話方塊中，輸入原則的名稱，例如*MyCustomFGPP*。
-1. 當有多個密碼原則時，具有最高優先順序或優先順序的原則會套用至使用者。 編號愈低，優先順序愈高。 預設密碼原則的優先順序為*200*。
+1. 在右側的 **"任務"** 面板中，選擇 **"新>密碼設置**"。
+1. 在 **"創建密碼設置"** 對話方塊中，輸入策略的名稱，如*MyCustomFGPP*。
+1. 如果存在多個密碼原則，則具有最高優先順序或優先順序的策略將應用於使用者。 編號愈低，優先順序愈高。 預設密碼原則的優先順序為*200*。
 
-    設定自訂密碼原則的優先順序以覆寫預設值，例如*1*。
+    將自訂密碼原則的優先順序設置為覆蓋預設值，例如*1*。
 
-1. 視需要編輯其他密碼原則設定。 請記住下列重點：
+1. 根據需要編輯其他密碼原則設置。 記住以下要點：
 
-    * 只有手動在 Azure AD DS 受控網域中建立之使用者的密碼複雜性、存留期或到期時間等設定。
-    * 帳戶鎖定設定會套用至所有使用者，但只會在受控網域中生效，而不會在 Azure AD 本身中生效。
+    * 密碼複雜性、期限或過期時間等設置僅對在 Azure AD DS 託管域中手動創建的使用者進行設置。
+    * 帳戶鎖定設置適用于所有使用者，但僅在託管域中生效，而不是在 Azure AD 本身中生效。
 
-    ![建立自訂的更細緻密碼原則](./media/how-to/custom-fgpp.png)
+    ![創建自訂細細微性密碼原則](./media/how-to/custom-fgpp.png)
 
-1. 取消核取 [**防止意外刪除**]。 如果選取此選項，您就無法儲存 FGPP。
-1. 在 [**直接套用至**] 區段中，選取 [**新增**] 按鈕。 在 [**選取使用者或群組**] 對話方塊中，選取 [**位置**] 按鈕。
+1. 取消選中**防止意外刪除**。 如果選擇了此選項，則無法保存 FGPP。
+1. 在"**直接應用於"** 部分中，選擇"**添加**"按鈕。 在 **"選擇使用者或組**"對話方塊中，選擇"**位置**"按鈕。
 
-    ![選取要套用密碼原則的使用者和群組](./media/how-to/fgpp-applies-to.png)
+    ![選擇要將密碼原則應用於](./media/how-to/fgpp-applies-to.png)
 
-1. 密碼原則只能套用至群組。 在 [**位置**] 對話方塊中，展開功能變數名稱，例如*aaddscontoso.com*，然後選取 OU，例如**AADDC Users**。 如果您有一個自訂 OU，其中包含您想要套用的使用者群組，請選取該 OU。
+1. 密碼原則只能應用於組。 在 **"位置"** 對話方塊中，展開功能變數名稱（如*aaddscontoso.com*，然後選擇 OU，如**AADDC 使用者**。 如果您有一個自訂 OU，其中包含要應用的一組使用者，請選擇該 OU。
 
-    ![選取群組所屬的 OU](./media/how-to/fgpp-container.png)
+    ![選擇組所屬的 OU](./media/how-to/fgpp-container.png)
 
-1. 輸入您想要套用原則的組名，然後選取 [**檢查名稱**] 以驗證該群組是否存在。
+1. 鍵入要應用策略的組的名稱，然後選擇 **"檢查名稱"** 以驗證該組是否存在。
 
-    ![搜尋並選取要套用 FGPP 的群組](./media/how-to/fgpp-apply-group.png)
+    ![搜索並選擇要應用 FGPP 的組](./media/how-to/fgpp-apply-group.png)
 
-1. 在 [**直接套用至**] 區段中，使用您所選取的組名，選取 **[確定]** 儲存您的自訂密碼原則。
+1. 使用您現在選擇的組的名稱顯示在 **"直接應用於"** 部分中，選擇 **"確定"** 以保存自訂密碼原則。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需密碼原則和使用 Active Directory 系統管理中心的詳細資訊，請參閱下列文章：
+有關密碼原則和使用活動目錄管理中心的詳細資訊，請參閱以下文章：
 
-* [深入瞭解更細緻的密碼原則](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
-* [使用 AD 系統管理中心設定更細緻的密碼原則](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
+* [瞭解細細微性密碼原則](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [使用 AD 管理中心配置細細微性密碼原則](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

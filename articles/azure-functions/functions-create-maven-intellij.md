@@ -1,5 +1,5 @@
 ---
-title: 使用 JAVA 和 IntelliJ 建立 Azure 函數
+title: 使用 JAVA 和 IntelliJ 創建 Azure 函數
 description: 了解如何使用 Java 和 IntelliJ 在 Azure 上建立及發佈簡單的 HTTP 觸發無伺服器應用程式。
 author: jeffhollan
 ms.topic: conceptual
@@ -7,13 +7,13 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136845"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 建立您的第一個 Azure 函式
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 創建第一個 Azure 函數
 
 本文說明：
 - 如何使用 IntelliJ IDEA 和 Apache Maven 建立[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)函式專案
@@ -28,7 +28,7 @@ ms.locfileid: "79136845"
 
 若要使用 Java 和 IntelliJ 開發函式，請安裝下列軟體：
 
-- [Java Developer Kit](https://www.azul.com/downloads/zulu/) (JDK) 第 8 版
+- [JAVA 開發人員工具組](https://www.azul.com/downloads/zulu/)（JDK），版本 8
 - [Apache Maven](https://maven.apache.org) 3.0 版或更高版本
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download) Community 或 Ultimate 版 (含 Maven)
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
@@ -40,18 +40,18 @@ ms.locfileid: "79136845"
 
 ## <a name="create-a-functions-project"></a>建立 Functions 專案
 
-1. 在 IntelliJ IDEA 中，選取 [建立新專案]。  
-1. 在 [新增專案] 視窗中，從左窗格選取 [Maven]。
-1. 選取 [從 Archetype 建立] 核取方塊，並針對 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 選取 [新增 Archetype]。
-1. 在 [新增 Archetype] 視窗中，完成如下欄位：
-    - GroupId：com.microsoft.azure
-    - ArtifactId：azure-functions-archetype
-    - _版本_：檢查並使用[中央存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新版本
-    ![從 IntelliJ 的原型建立 Maven 專案](media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. 依序選取 [確定] 和 [下一步]。
-1. 輸入目前專案的詳細資料，然後選取 [完成]。
+1. 在 IntelliJ IDEA 中，選取 [建立新專案]****。  
+1. 在 [新增專案]**** 視窗中，從左窗格選取 [Maven]****。
+1. 選取 [從 Archetype 建立]**** 核取方塊，並針對 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 選取 [新增 Archetype]****。
+1. 在 [新增 Archetype]**** 視窗中，完成如下欄位：
+    - GroupId__：com.microsoft.azure
+    - ArtifactId__：azure-functions-archetype
+    - _版本_： 檢查並使用[來自中央存儲庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![的最新版本 從 IntelliJ IDEA 中的原型創建 Maven 專案](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+1. 選擇 **"確定**"，然後選擇 **"下一步**"。
+1. 輸入目前專案的詳細資料，然後選取 [完成]****。
 
-Maven 會在和 [ArtifactId] 值具有相同名稱的新資料夾中建立專案檔。 專案所產生的程式碼是 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)的簡單函式，此函式會回應觸發 HTTP 要求的本文。
+Maven 會在和 [ArtifactId]__ 值具有相同名稱的新資料夾中建立專案檔。 專案所產生的程式碼是 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)的簡單函式，此函式會回應觸發 HTTP 要求的本文。
 
 ## <a name="run-functions-locally-in-the-ide"></a>在 IDE 中本機執行函式
 
@@ -59,9 +59,9 @@ Maven 會在和 [ArtifactId] 值具有相同名稱的新資料夾中建立專案
 > 若要在本機執行函式並進行偵錯，請確定您已安裝 [Azure Functions Core Tools 第 2 版](functions-run-local.md#v2)。
 
 1. 手動匯入變更，或啟用[自動匯入](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)。
-1. 開啟 [Maven 專案] 工具列。
-1. 展開 [生命週期]，然後開啟 [套件]。 解決方案會建置並封裝在新建立的目標目錄中。
-1. 展開 [外掛程式] > [azure-functions]，然後開啟 [azure-functions:run] 以啟動 Azure Functions 本機執行階段。  
+1. 開啟 [Maven 專案]**** 工具列。
+1. 展開 [生命週期]****，然後開啟 [套件]****。 解決方案會建置並封裝在新建立的目標目錄中。
+1. 展開**外掛程式** > **azure 函數**和打開的 Azure**函數：運行**以啟動 Azure 函數本地運行時。  
   ![適用於 Azure Functions 的 Maven 工具列](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
 1. 當您完成測試函式時，關閉執行對話方塊。 一次只能有一個函式主機是作用中且在本機執行。
@@ -76,22 +76,22 @@ Maven 會在和 [ArtifactId] 值具有相同名稱的新資料夾中建立專案
 
    此命令會讓函式主機開啟 5005 偵錯連接埠。
 
-1. 在 [執行] 功能表中選取 [編輯組態]。
-1. 選取 **(+)** 以新增 [遠端]。
-1. 完成 [名稱] 和 [設定] 欄位，然後選取 [確定] 以儲存組態。
-1. 設定完成後，選取 [對 <遠端組態名稱> 進行偵錯] 或在鍵盤上按 Shift+F9 來開始偵錯。
+1. 在 [執行]**** 功能表中選取 [編輯組態]****。
+1. 選取 **(+)** 以新增 [遠端]****。
+1. 完成 [名稱]__ 和 [設定]__ 欄位，然後選取 [確定]**** 以儲存組態。
+1. 設定完成後，選取 [對 <遠端組態名稱> 進行偵錯]**** 或在鍵盤上按 Shift+F9 來開始偵錯。
 
 1. 完成時，停止偵錯工具和執行中處理序。 一次只能有一個函式主機是作用中且在本機執行。
 
 ## <a name="deploy-the-function-to-azure"></a>將函式部署到 Azure
 
-1. 在您將函式部署至 Azure 之前，您必須[使用 Azure CLI 來登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+1. 在將函數部署到 Azure 之前，必須[使用 Azure CLI 登錄](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
    ``` azurecli
    az login
    ```
 
-1. 使用 `azure-functions:deploy` Maven 目標將程式碼部署到新的函式。 您也可以在 [Maven 專案] 視窗中選取 [azure-functions:deploy] 選項。
+1. 使用 `azure-functions:deploy` Maven 目標將程式碼部署到新的函式。 您也可以在 [Maven 專案] 視窗中選取 [azure-functions:deploy]**** 選項。
 
    ```
    mvn azure-functions:deploy

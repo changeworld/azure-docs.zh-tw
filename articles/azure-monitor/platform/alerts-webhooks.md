@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 監視器中呼叫具有傳統計量警示的 webhook
+title: 在 Azure 監視器中使用經典指標警報調用 Webhook
 description: 了解如何重設 Azure 計量警示的路徑到其他非 Azure 系統。
 author: harelbr
 ms.author: harelbr
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248979"
 ---
-# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure 監視器中呼叫具有傳統計量警示的 webhook
+# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure 監視器中使用經典指標警報調用 Webhook
 
 您可以使用 Webhook 將 Azure 警示通知路由到其他系統以進行後處理或自訂動作。 您可以針對警示使用 Webhook，以將警示路由到會傳送簡訊、記錄錯誤、透過聊天或傳訊服務通知小組，或進行其他許多動作的服務。 
 
@@ -22,7 +22,7 @@ ms.locfileid: "79248979"
 Azure 警示會使用 HTTP POST 將警示內容以 JSON 格式傳送到您在建立警示時提供的 Webhook URI。 稍後在本文中會定義結構描述。 該 URI 必須是有效的 HTTP 或 HTTPS 端點。 當警示啟動時，Azure 會針對每個要求張貼一個項目。
 
 ## <a name="configure-webhooks-via-the-azure-portal"></a>透過 Azure 入口網站設定 Webhook
-若要在 [Azure 入口網站](https://portal.azure.com/)中新增或更新 Webhook URI，請移至 [建立/更新警示]。
+若要在 [Azure 入口網站](https://portal.azure.com/)中新增或更新 Webhook URI，請移至 [建立/更新警示]****。
 
 ![新增警示規則窗格](./media/alerts-webhooks/Alertwebhook.png)
 
@@ -95,12 +95,12 @@ POST 作業對於所有以計量為基礎的警示會包含下列 JSON 承載和
 | properties |N |選用 |一組索引鍵/值組，具有事件的詳細資料。 例如： `Dictionary<String, String>` 。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，使用者可以輸入可透過承載傳遞的索引鍵/值。 另一種將自訂屬性傳回給 Webhook 的替代方式是透過 Webhook URI 本身 (做為查詢參數)。 |
 
 > [!NOTE]
-> 您只能使用 **Azure 監視器 REST API** \(英文\) 來設定 [properties](https://msdn.microsoft.com/library/azure/dn933805.aspx)欄位。
+> 您只能使用 [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) \(英文\) 來設定 **properties**欄位。
 >
 >
 
 ## <a name="next-steps"></a>後續步驟
-* 請觀賞 [使用 PagerDuty 整合 Azure 警示](https://go.microsoft.com/fwlink/?LinkId=627080) \(英文\) 影片以深入了解 Azure 警示與 Webhook。
+* 在視頻中瞭解有關 Azure 警報和網路掛號的更多內容[，將 Azure 警報與 PagerDuty 集成](https://go.microsoft.com/fwlink/?LinkId=627080)。
 * 深入了解如何[對 Azure 警示執行 Azure 自動化指令碼 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081) \(英文\)。
 * 深入了解如何[使用邏輯應用程式透過 Twilio 從 Azure 警示傳送簡訊](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) \(英文\)。
 * 深入了解如何[使用邏輯應用程式從 Azure 警示傳送 Slack 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app) \(英文\)。

@@ -12,15 +12,15 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
 ms.openlocfilehash: b0452d51dc472e100ef52536d8e3814ff395292b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214169"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>尋找和套用效能建議
 
-您可以使用 Azure 入口網站，找出可最佳化 Azure SQL Database 的效能建議，或修正在工作負載中找到的一些問題。 您可以在 Azure 入口網站中的 [效能建議] 頁面找到根據潛在影響所提出排名最前面的建議。
+您可以使用 Azure 入口網站，找出可最佳化 Azure SQL Database 的效能建議，或修正在工作負載中找到的一些問題。 您可以在 Azure 入口網站中的 [效能建議]**** 頁面找到根據潛在影響所提出排名最前面的建議。
 
 ## <a name="viewing-recommendations"></a>檢視建議
 
@@ -28,9 +28,9 @@ ms.locfileid: "79214169"
 
 使用下列步驟在 Azure 入口網站上尋找效能建議：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 移至 [所有服務] > [SQL Database]，然後選取您的資料庫。
-3. 瀏覽至 [效能建議] 來檢視適用於所選資料庫的可用建議。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+2. 轉到**所有服務** > **SQL 資料庫**，然後選擇資料庫。
+3. 瀏覽至 [效能建議]**** 來檢視適用於所選資料庫的可用建議。
 
 資料表中顯示的效能建議類似於下圖：
 
@@ -45,9 +45,9 @@ ms.locfileid: "79214169"
 | 低 |低影響建議比沒有建議時提供更好的效能，但改善可能不顯著。 |
 
 > [!NOTE]
-> Azure SQL Database 必須至少監視活動一整天，才能找出一些建議。 相較於隨機蹦出的零星活動，一致的查詢模式更有利於 Azure SQL Database 最佳化。 如果 [效能建議] 頁面中目前沒有可用的建議，該頁面會提供訊息說明原因。
+> Azure SQL Database 必須至少監視活動一整天，才能找出一些建議。 相較於隨機蹦出的零星活動，一致的查詢模式更有利於 Azure SQL Database 最佳化。 如果 [效能建議] **** 頁面中目前沒有可用的建議，該頁面會提供訊息說明原因。
 
-您也可以檢視歷程記錄作業的狀態。 選取建議或狀態以查看詳細資訊。
+您也可以檢視歷程記錄作業的狀態。 選擇建議或狀態以查看詳細資訊。
 
 以下是 Azure 入口網站中「建立索引」建議的範例。
 
@@ -61,7 +61,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 * 啟用自動調整功能，以自動套用建議。
 * 若要手動實作建議，請針對您的資料庫執行建議的 T-SQL 指令碼。
 
-選取任何建議來檢視其詳細資料，然後按一下 [檢視指令碼] 來檢閱將如何建立建議的確切詳細資料。
+選取任何建議來檢視其詳細資料，然後按一下 [檢視指令碼] **** 來檢閱將如何建立建議的確切詳細資料。
 
 套用建議時，資料庫仍保持連線 -- 使用效能建議或自動調整功能不會使資料庫離線。
 
@@ -69,8 +69,8 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 您可以一次檢閱並接受一個建議。
 
-1. 選取 [建議] 頁面上的某個建議。
-2. 在 [詳細資料] 頁面上按一下 [套用] 按鈕。
+1. 選取 [建議]**** 頁面上的某個建議。
+2. 在 [詳細資料]**** 頁面上按一下 [套用]**** 按鈕。
 
    ![套用建議](./media/sql-database-advisor-portal/apply.png)
 
@@ -80,14 +80,14 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 如果建議的清單中包含您想從清單中移除的項目，您可以捨棄該建議：
 
-1. 在 [建議]清單中選取建議，以開啟詳細資料。
-2. 在 [詳細資料] 頁面上按一下 [捨棄]。
+1. 在 [建議] **** 清單中選取建議，以開啟詳細資料。
+2. 在 [詳細資料]**** 頁面上按一下 [捨棄]****。
 
 如有需要，您可以將捨棄的項目加回到 **建議** 清單：
 
-1. 在 [建議] 頁面上按一下 [檢視已捨棄]。
+1. 在 [建議]**** 頁面上按一下 [檢視已捨棄]****。
 2. 從清單中選取捨棄的項目以檢視其詳細資料。
-3. (選擇性) 按一下 [復原捨棄]，將索引加回到**建議**的主要清單。
+3. (選擇性) 按一下 [復原捨棄]****，將索引加回到**建議**的主要清單。
 
 > [!NOTE]
 > 請注意，如果啟用 SQL Database [自動微調](sql-database-automatic-tuning.md)，且您以手動方式捨棄清單中的建議，就永遠不會自動套用這類建議。 捨棄建議是一個便利的方式，可在要求不得套用特定建議時，讓使用者可以啟用自動調整。
@@ -97,7 +97,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 您可以將 Azure SQL Database 設為自動實作建議。 當建議可供使用時會自動套用建議。 因為所有建議都由服務管理，所以若對效能產生負面影響，就會還原該建議。
 
-1. 在 [建議] 頁面上按一下 [自動化]：
+1. 在 [建議]**** 頁面上按一下 [自動化]****：
 
    ![建議程式設定](./media/sql-database-advisor-portal/settings.png)
 2. 選取要自動執行的動作：
@@ -109,18 +109,18 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 選取所需的組態後，按一下 [套用]。
 
-### <a name="manually-apply-recommendations-through-t-sql"></a>透過 T-sql 手動套用建議
+### <a name="manually-apply-recommendations-through-t-sql"></a>通過 T-SQL 手動應用建議
 
-選取任何建議，然後按一下 [檢視指令碼]。 對資料庫執行這個指令碼，以手動套用建議。
+選取任何建議，然後按一下 [檢視指令碼] ****。 對資料庫執行這個指令碼，以手動套用建議。
 
-，因此建議您在建立這些索引之後監視索引，以確認它們能夠提高效能，且於必要時調整或刪除它們。 如需有關建立索引的詳細資訊，請參閱 [CREATE INDEX (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)。 此外，手動套用的建議將維持作用中狀態，並顯示在建議的24-48 小時清單中。 系統自動將其收回之前。 如果您想要更快移除建議，可以手動將它捨棄。
+** ，因此建議您在建立這些索引之後監視索引，以確認它們能夠提高效能，且於必要時調整或刪除它們。 如需有關建立索引的詳細資訊，請參閱 [CREATE INDEX (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)。 此外，手動應用的建議將保持活動狀態，並顯示在24-48小時的建議清單中。 在系統自動撤回它們之前。 如果要儘早刪除建議，可以手動丟棄它。
 
 ### <a name="canceling-recommendations"></a>取消建議
 
 可以取消處於**擱置中**、**驗證中**或**成功**狀態的建議。 狀態為 **執行中** 的建議無法取消。
 
-1. 在 [調整歷程記錄] 區域中選取建議，以開啟 [建議詳細資料] 頁面。
-2. 按一下 [取消] 以中止套用建議的程序。
+1. 在 [調整歷程記錄]**** 區域中選取建議，以開啟 [建議詳細資料]**** 頁面。
+2. 按一下 [取消] **** 以中止套用建議的程序。
 
 ## <a name="monitoring-operations"></a>監視作業
 
@@ -144,8 +144,8 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 如果您使用效能建議來套用建議 (表示您未手動執行 T-SQL 指令碼)，如果建議程式發現會對效能造成負面影響，它將會自動還原變更。 如果您因為任何原因想要還原建議，您可以執行以下步驟：
 
-1. 在 [調整歷程記錄] 區域中選取已成功套用的建議。
-2. 在 [建議詳細資料] 頁面上按一下 [還原]。
+1. 在 [調整歷程記錄] **** 區域中選取已成功套用的建議。
+2. 在 [建議詳細資料]**** 頁面上按一下 [還原]****。
 
 ![建議的索引](./media/sql-database-advisor-portal/details.png)
 
@@ -155,7 +155,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 ![監視效能影響](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 Azure SQL Database 會提供可改善 SQL 資料庫效能的建議。 藉由提供 T-SQL 指令碼，您會獲得最佳化資料庫的協助，並最終改善查詢效能。
 
@@ -171,4 +171,4 @@ Azure SQL Database 會提供可改善 SQL 資料庫效能的建議。 藉由提�
 
 * [查詢存放區](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [角色型存取控制](../role-based-access-control/overview.md)
+* [基於角色的存取控制](../role-based-access-control/overview.md)

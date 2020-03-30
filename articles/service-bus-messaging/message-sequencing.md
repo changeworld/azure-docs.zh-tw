@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排訊息排序和時間戳記 | Microsoft 文件
-description: 本文說明如何保留 Azure 服務匯流排訊息的排序和排序（含時間戳記）。
+description: 本文介紹如何保留 Azure 服務匯流排消息的順序和排序（帶時間戳記）。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261654"
 ---
 # <a name="message-sequencing-and-timestamps"></a>訊息排序和時間戳記

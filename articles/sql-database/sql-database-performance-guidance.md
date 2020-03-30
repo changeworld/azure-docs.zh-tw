@@ -1,6 +1,6 @@
 ---
-title: 應用程式和資料庫的效能微調指導方針
-description: 瞭解如何在 Azure SQL Database 中微調資料庫應用程式和資料庫的效能。
+title: 應用程式和資料庫的性能調優指南
+description: 瞭解如何調整資料庫應用程式和資料庫以在 Azure SQL 資料庫中進行性能調整。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,13 +12,13 @@ ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255947"
 ---
-# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>在 Azure SQL Database 中調整應用程式和資料庫的效能
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>調整應用程式和資料庫以在 Azure SQL 資料庫中執行性能
 
 在您發現 SQL Database 的效能問題後，這篇文章可協助您：
 
@@ -37,9 +37,9 @@ ms.locfileid: "79255947"
 
 - **因為「多對話」行為而使效能變差的應用程式**
 
-  多對話應用程式會產生過多對網路延遲敏感的資料存取作業。 您可能需要修改這類應用程式以減少 SQL Database 的資料存取作業數目。 例如，您可以使用像是批次處理臨機操作查詢或將查詢移至預存程式等技術，來改善應用程式效能。 如需詳細資訊，請參閱 [批次查詢](#batch-queries)。
+  多對話應用程式會產生過多對網路延遲敏感的資料存取作業。 您可能需要修改這類應用程式以減少 SQL Database 的資料存取作業數目。 例如，可以使用批次處理臨時查詢或將查詢移動到預存程序等技術來提高應用程式性能。 如需詳細資訊，請參閱 [批次查詢](#batch-queries)。
 
-- **無法由整部單一電腦支援之具有大量工作負載的資料庫**
+- **具有整個單台電腦無法支援的密集型工作負載的資料庫**
 
    超過最高進階計算大小資源的資料庫可能會受益於相應放大工作負載。 如需詳細資訊，請參閱[跨資料庫分區化](#cross-database-sharding)和[功能資料分割](#functional-partitioning)。
 
@@ -232,9 +232,9 @@ ORDER BY start_time DESC
 
 如果工作負載具有一組重複的查詢，擷取並驗證您計劃選項的最適化通常是合理的，因為這會讓主控資料庫所需的資源大小單位降到最低。 在驗證之後，請偶爾重新檢查計劃以確保它們不會降級。 您可以深入了解 [查詢提示 (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)。
 
-### <a name="very-large-database-architectures"></a>非常大型的資料庫架構
+### <a name="very-large-database-architectures"></a>非常大的資料庫體系結構
 
-在 Azure SQL Database 的單一資料庫的[超大規模資料庫](sql-database-service-tier-hyperscale.md)服務層發行之前，客戶會用來達到個別資料庫的容量限制。 這些容量限制仍然存在於彈性集區中的集區資料庫和受控實例中的實例資料庫。 下列兩節會討論兩個選項，以解決當您無法使用超大規模資料庫服務層級時，Azure SQL Database 中非常大型資料庫的問題。
+在 Azure SQL 資料庫中單個資料庫發佈[超大規模](sql-database-service-tier-hyperscale.md)服務層之前，客戶曾用於達到單個資料庫的容量限制。 這些容量限制仍然存在，用於彈性池中的池資料庫和託管實例中的實例資料庫。 以下兩節將討論兩個選項，用於在無法使用超大規模服務層時解決 Azure SQL 資料庫中非常大的資料庫的問題。
 
 ### <a name="cross-database-sharding"></a>跨資料庫分區化
 

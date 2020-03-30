@@ -1,5 +1,5 @@
 ---
-title: 使用 Application Insights 來分析即時 Azure Service Fabric 應用程式
+title: 使用應用程式見解設定檔即時 Azure 服務結構應用
 description: 針對 Service Fabric 應用程式啟用 Profiler
 ms.topic: conceptual
 author: cweining
@@ -7,17 +7,17 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671608"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 來分析即時 Azure Service Fabric 應用程式
 
 您也可以在這些服務上部署 Application Insights Profiler：
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 雲端服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 雲服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="set-up-the-environment-deployment-definition"></a>設定環境部署定義
@@ -26,7 +26,7 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
 
 若要設定環境，請採取下列動作：
 
-1. Profiler 支援 .NET Framework 和 .Net Core。 如果您使用 .NET Framework，請確定您使用的是[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 確認部署的作業系統已 `Windows Server 2012 R2` 或更新版本已足夠。 Profiler 支援 .NET Core 2.1 和更新版本的應用程式。
+1. 探測器支援 .NET 框架和 .Net 核心。 如果您使用的是 .NET 框架，請確保使用的是[.NET 框架 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更高版本。 這足以確認已部署的作業系統是`Windows Server 2012 R2`或更高版本。 探測器支援 .NET Core 2.1 和更新的應用程式。
 
 1. 在部署範本檔案中搜尋 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)擴充功能。
 
@@ -49,7 +49,7 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
   如果設定全都正確，就會在安裝 Azure 診斷擴充功能時，安裝並啟用 Application Insights Profiler。 
 
 1. 在 Service Fabric 應用程式中新增 Application Insights。  
-  若要讓 Profiler 收集要求的設定檔，您的應用程式必須使用 Application Insights 追蹤作業。 針對無狀態 Api，您可以參考[追蹤要求以進行分析](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)的指示。 如需在其他類型的應用程式中追蹤自訂作業的詳細資訊，請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
+  對於探測器收集請求的設定檔，應用程式必須使用應用程式見解跟蹤操作。 對於無狀態 API，您可以引用有關[跟蹤分析請求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)的說明。 有關跟蹤其他類型的應用中的自訂操作的詳細資訊，請參閱[使用應用程式見解 .NET SDK 跟蹤自訂操作](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
 
 1. 重新部署應用程式。
 
@@ -57,5 +57,5 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
 ## <a name="next-steps"></a>後續步驟
 
 * 產生應用程式的流量 (例如，啟動[可用性測試](monitor-web-app-availability.md))。 然後，等待 10 到 15 分鐘，讓追蹤開始傳送到 Application Insights 執行個體。
-* 請參閱 Azure 入口網站中的 [Profiler 追蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json)。
+* 請參閱 Azure 門戶中的[探測器跟蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json)。
 * 如需 Profiler 問題的疑難排解說明，請參閱 [Profiler 疑難排解](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。

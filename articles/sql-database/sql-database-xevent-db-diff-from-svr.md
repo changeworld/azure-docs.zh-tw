@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213952"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database 中的擴充事件
@@ -31,14 +31,14 @@ ms.locfileid: "79213952"
 
 如需有關 Azure SQL Database 和 Microsoft SQL Server 之擴充事件的其他資訊，請參閱：
 
-- [Quick Start: Extended events in SQL Server (快速入門：SQL Server 中的擴充事件)](https://msdn.microsoft.com/library/mt733217.aspx)
-- [擴充事件](https://msdn.microsoft.com/library/bb630282.aspx)
+- [快速入門：SQL Server 中的擴展事件](https://msdn.microsoft.com/library/mt733217.aspx)
+- [擴展活動](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本主題假設您已經有一些下列項目的知識：
 
-- [Azure SQL Database 服務](https://azure.microsoft.com/services/sql-database/)。
+- [Azure SQL 資料庫服務](https://azure.microsoft.com/services/sql-database/)。
 - [Extended events](https://msdn.microsoft.com/library/bb630282.aspx) 。
 
 - 我們的大部分文件是關於適用於 SQL Server 和 SQL Database 的擴充事件。
@@ -89,7 +89,7 @@ ms.locfileid: "79213952"
 | **sys.database_event_session_targets** |傳回事件工作階段中每一個事件目標的資料列。 |
 | **sys.database_event_sessions** |針對 SQL Database 資料庫中的每個事件工作階段傳回資料列。 |
 
-在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_ *\_* 而不是 .database *\_* 的名稱。 名稱模式類似 **sys.server_event_%** 。
+在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_\_** 而不是 .database\_** 的名稱。 名稱模式類似 **sys.server_event_%**。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新的動態管理檢視 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -100,12 +100,12 @@ Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](https:
 | **sys.dm_xe_database_session_event_actions** |傳回有關事件工作階段動作的資訊。 |
 | **sys.dm_xe_database_session_events** |傳回有關工作階段事件的資訊。 |
 | **sys.dm_xe_database_session_object_columns** |顯示繫結至工作階段之物件的組態值。 |
-| **sys.dm_xe_database_session_targets** |會傳回工作階段目標的相關資訊。 |
+| **系統dm_xe_database_session_targets** |會傳回工作階段目標的相關資訊。 |
 | **sys.dm_xe_database_sessions** |針對範圍為目前資料庫的每個事件工作階段傳回資料列。 |
 
-在 Microsoft SQL Server 中，類似的目錄檢視名稱不含 *database\_* 名稱部分，例如：
+在 Microsoft SQL Server 中，在沒有名稱的*\_資料庫*部分的情況下命名類似的目錄檢視，例如：
 
-- **sys.dm_xe_sessions**，而不是<br/>**sys.dm_xe_database_sessions** 名稱。
+- **sys.dm_xe_sessions**，而不是<br/>**系統dm_xe_database_sessions**。
 
 ### <a name="dmvs-common-to-both"></a>兩者通用的 DMV
 對於擴充事件，有通用於 Azure SQL Database 和 Microsoft SQL Server 的其他 DMV：
@@ -190,7 +190,7 @@ SELECT
 
 ## <a name="related-links"></a>相關連結
 
-- [搭配 Azure 儲存體使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md)
+- [將 Azure PowerShell 與 Azure 存儲一起使用](../storage/common/storage-powershell-guide-full.md)。
 - [Azure 儲存體 Cmdlet](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [搭配 Azure 儲存體使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md) - 提供 PowerShell 和 Azure 儲存體服務的完整資訊。
 - [如何使用 .NET 的 Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
