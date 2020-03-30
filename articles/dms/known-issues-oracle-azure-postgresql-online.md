@@ -1,10 +1,10 @@
 ---
-title: 已知問題：從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫
+title: 已知問題：從 Oracle 遷移到 Azure 資料庫，用於 PostgreSQL
 titleSuffix: Azure Database Migration Service
-description: 瞭解使用 Azure 資料庫移轉服務從 Oracle 線上遷移到適用於 PostgreSQL 的 Azure 資料庫單一伺服器的已知問題和遷移限制。
+description: 瞭解使用 Azure 資料庫移轉服務從 Oracle 到 Azure 資料庫的連線遷移的已知問題和遷移限制，以便 PostgreSQL-Single 伺服器使用 PostgreSQL-Single 伺服器。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,61 +12,61 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 6ab1050290119a53ee0fb674e6939938a3b855e0
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235251"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>從 Oracle 線上遷移至適用于于 postgresql 的 Azure DB 的已知問題/遷移限制-單一伺服器
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>從 Oracle 到 Azure DB 的連線遷移對 PostgreSQL 單一伺服器的已知問題/遷移限制
 
-從 Oracle 線上遷移到適用於 PostgreSQL 的 Azure 資料庫單一伺服器相關的已知問題和限制，將在下列各節中說明。
+以下各節介紹了與從 Oracle 到 Azure 資料庫的 PostgreSQL 單一伺服器連線遷移相關的已知問題和限制。
 
-## <a name="oracle-versions-supported-as-a-source-database"></a>支援做為源資料庫的 Oracle 版本
+## <a name="oracle-versions-supported-as-a-source-database"></a>作為源資料庫支援的 Oracle 版本
 
-Azure 資料庫移轉服務支援連接至：
+Azure 資料庫移轉服務支援連接到：
 
-- Oracle 版本的10g、11g 和12c。
-- Oracle Enterprise、Standard、Express 和 Personal Edition。
+- 甲骨文版本 10g、11g 和 12c。
+- Oracle 企業版、標準版、快速版和個人版。
 
-Azure 資料庫移轉服務不支援連接到多租使用者容器資料庫（CDBs）。
+Azure 資料庫移轉服務不支援連接到多租戶容器資料庫 （CDB）。
 
-## <a name="postgresql-versions-supported-as-a-target-database"></a>支援做為目標資料庫的于 postgresql 版本
+## <a name="postgresql-versions-supported-as-a-target-database"></a>作為目標資料庫支援的 PostgreSQL 版本
 
-Azure 資料庫移轉服務支援遷移至適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.5、9.6、10和11。 如需適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中版本支援的最新資訊，請參閱[支援的于 postgresql 資料庫版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
+Azure 資料庫移轉服務支援遷移到 Azure 資料庫，用於 PostgreSQL 單一伺服器版本 9.5、9.6、10 和 11。 有關 PostgreSQL 單一伺服器 Azure 資料庫中版本支援的當前資訊，請參閱文章["支援 PostgreSQL 資料庫版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)"。
 
 ## <a name="datatype-limitations"></a>資料類型限制
 
-下列資料類型**不**會被遷移：
+**以下資料類型不會**遷移：
 
 - BFILE
 - ROWID
 - REF
 - UROWID
-- ANYDATA
+- 任何資料
 - SDO_GEOMETRY
 - 巢狀資料表
 - 使用者定義資料類型
 - 注意
-- 虛擬資料行
-- 根據 ROWID 資料行的具體化視圖
+- 虛擬列
+- 基於 ROWID 列的具體視圖
 
-此外，空的 BLOB/CLOB 資料行在目標上會對應到 Null。
+此外，空 BLOB/CLOB 列映射到目標上的 Null。
 
 ## <a name="lob-limitations"></a>LOB 限制
 
-- 啟用有限大小的 LOB 模式時，Oracle 來源上的空 Lob 會複寫為 Null 值。
-- 不支援長物件名稱（超過30個位元組）。
-- 長時間和較長的原始資料行中的資料不能超過64k。 超過64k 的任何資料都會遭到截斷。
-- 在 Oracle 12 中，對 LOB 資料行所做的任何變更都不受支援（遷移）。
-- 不支援 XMLTYPE 和 LOB 資料行的更新（遷移）。
+- 啟用有限大小的 LOB 模式後，Oracle 源上的空 LOB 將複製為 Null 值。
+- 不支援長物件名稱（超過 30 位元組）。
+- 長列和長 RAW 列中的資料不能超過 64k。 超過 64k 的任何資料將被截斷。
+- 僅在 Oracle 12 中，不支援對 LOB 列的任何更改（遷移）。
+- 不支援（遷移）到 XMLTYPE 和 LOB 列的 UPDAT。
 
 ## <a name="known-issues-and-limitations"></a>已知問題和限制
 
-- 客戶必須使用 SYSDBA 來連接到 Oracle。
-- 分割區/子分割區作業（ADD、DROP、EXCHANGE 和截斷）所產生的資料變更不會遷移，而且可能會造成下列錯誤：
-  - 針對加入作業，已新增資料的更新和刪除可能會傳回「0個受影響資料列」警告。
-  - 對於卸載和截斷作業，新的插入可能會導致「重複」錯誤。
-  - 對於 EXCHANGE 作業，可能會發生「0個數據列受影響」警告和「重複」錯誤。
-- 無法複寫名稱包含撇號的資料表。
+- 客戶必須使用 SYSDBA 連接到 Oracle。
+- 分區/分區操作（ADD、DROP、EXCHANGE 和 TRUNCATE）導致的資料更改不會遷移，並可能導致以下錯誤：
+  - 對於 ADD 操作，對添加的資料的更新和刪除可能會返回"受影響的 0 行"警告。
+  - 對於 DROP 和 TRUNCATE 操作，新插入可能會導致"重複"錯誤。
+  - 對於 EXCHANGE 操作，可能會出現"0 行受影響的"警告和"重複"錯誤。
+- 名稱包含撇號的表無法複製。

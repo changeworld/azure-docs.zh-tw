@@ -1,57 +1,57 @@
 ---
-title: 監視 Azure Vm 上的效能-Azure 應用程式深入資訊
-description: Azure VM 和 Azure 虛擬機器擴展集的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
+title: 監視 Azure VM 上的性能 - Azure 應用程式見解
+description: Azure VM 和 Azure 虛擬機器縮放集的應用程式效能監控。 圖表載入和回應時間、依賴項資訊以及設置性能警報。
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661323"
 ---
-# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器擴展集上部署 Azure 監視器 Application Insights 代理程式
+# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器縮放集上部署 Azure 監視器應用程式見解代理
 
-現在，在[azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)和[azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)上執行的 .net web 應用程式上啟用監視比以往更容易。 取得使用 Application Insights 而不修改程式碼的所有優點。
+現在，在[Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)和[Azure 虛擬機器縮放集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)上運行的基於 .NET 的 Web 應用程式啟用監視現在比以往任何時候都更容易。 無需修改代碼即可獲得使用應用程式見解的所有好處。
 
-本文會逐步引導您使用 Application Insights 代理程式來啟用 Application Insights 監視，並提供將大規模部署程式自動化的初步指引。
+本文將引導您使用應用程式見解代理啟用應用程式見解監視，並提供大規模部署過程自動化的初步指導。
 
 > [!IMPORTANT]
-> 適用于 .NET 的 Azure 應用程式 Insights 代理程式目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 某些功能可能不受支援，有些可能會有限制的功能。
+> .NET 的 Azure 應用程式見解代理當前處於公共預覽版中。
+> 此預覽版本在沒有服務等級協定的情況下提供，我們不建議用於生產工作負載。 某些功能可能不受支援，有些功能可能受限。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="enable-application-insights"></a>啟用 Application Insights
 
-有兩種方式可針對 Azure 虛擬機器和 Azure 虛擬機器擴展集託管應用程式啟用應用程式監視：
+有兩種方法可以為 Azure 虛擬機器和 Azure 虛擬機器縮放集託管應用程式啟用應用程式監視：
 
-* 透過 Application Insights 代理程式的**無程式碼**
-    * 這個方法最容易啟用，而且不需要任何 advanced 設定。 這通常稱為「執行時間」監視。
+* 通過應用程式洞察代理**無代碼**
+    * 此方法是最容易啟用的，不需要高級配置。 它通常被稱為"運行時"監視。
 
-    * 針對 Azure 虛擬機器和 Azure 虛擬機器擴展集，我們建議您至少啟用此層級的監視。 之後，根據您的特定案例，您可以評估是否需要手動檢測。
+    * 對於 Azure 虛擬機器和 Azure 虛擬機器縮放集，我們建議至少啟用此級別的監視。 之後，根據您的特定方案，您可以評估是否需要手動檢測。
 
-    * Application Insights 代理程式會自動收集與 .NET SDK 相同的預設相依性信號。 若要深入瞭解，請參閱相依性[自動收集](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)。
+    * 應用程式見解代理自動收集與 .NET SDK 相同的依賴項信號。 請參閱[依賴項自動收集](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)以瞭解更多資訊。
         > [!NOTE]
-        > 目前僅支援 .Net IIS 裝載的應用程式。 使用 SDK 來檢測裝載于 Azure 虛擬機器和虛擬機器擴展集上的 ASP.NET Core、JAVA 和 node.js 應用程式。
+        > 目前僅支援 .Net IIS 託管的應用程式。 使用 SDK 檢測 ASP.NET在 Azure 虛擬機器和虛擬機器縮放集上託管的酷睿、JAVA 和 Node.js 應用程式。
 
-* 以**程式碼為基礎的**via SDK
+* 通過 SDK**基於代碼**
 
-    * 這種方法更容易自訂，但需要[在 APPLICATION INSIGHTS SDK NuGet 套件上新增](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)相依性。 這種方法也表示您必須自行管理最新版本套件的更新。
+    * 此方法更具可自訂性，但它需要[添加對應用程式見解 SDK NuGet 包的依賴項](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)。 此方法還意味著您必須自己管理最新版本的包的更新。
 
-    * 如果您需要進行自訂 API 呼叫來追蹤預設不是以代理程式為基礎所捕捉的事件/相依性，則必須使用此方法。 若要深入瞭解，請參閱[自訂事件和計量的 API 一文](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)。
-
-> [!NOTE]
-> 如果偵測到以代理程式為基礎的監視和以手動 SDK 為基礎的檢測，則只會接受手動檢測設定。 這是為了防止傳送重複的資料。 若要深入瞭解，請參閱下面的[疑難排解一節](#troubleshooting)。
-
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 管理 Azure 虛擬機器上的 .NET 應用程式 Application Insights 代理程式
+    * 如果需要進行自訂 API 呼叫來跟蹤預設情況下未通過基於代理的監視捕獲的事件/依賴項，則需要使用此方法。 請查看[API 中的自訂事件和指標文章](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)以瞭解更多資訊。
 
 > [!NOTE]
-> 在安裝 Application Insights 代理程式之前，您需要連接字串。 [建立新的 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)，或從現有的 application Insights 資源複製連接字串。
+> 如果檢測到兩個基於代理的監視和基於手動 SDK 的檢測，則僅遵守手動檢測設置。 這是為了防止發送重復資料。 要瞭解有關此詳細資訊，請查看下面的[故障排除部分](#troubleshooting)。
+
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 在 Azure 虛擬機器上管理 .NET 應用程式的應用程式見解代理
 
 > [!NOTE]
-> 不熟悉 powershell 嗎？ 請參閱開始使用[指南](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)。
+> 在安裝應用程式見解代理之前，您需要一個連接字串。 [創建新的應用程式見解資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)或從現有應用程式見解資源複製連接字串。
 
-安裝或更新 Application Insights 代理程式做為 Azure 虛擬機器的擴充功能
+> [!NOTE]
+> 權力殼的新鮮？ 查看入門[指南](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)。
+
+安裝或更新應用程式見解代理作為 Azure 虛擬機器的擴展
 ```powershell
 $publicCfgJsonString = '
 {
@@ -77,19 +77,19 @@ Set-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" 
 ```
 
 > [!NOTE]
-> 您可以使用 Powershell 迴圈，將 Application Insights 代理程式安裝或更新為跨多個虛擬機器的延伸模組。
+> 您可以使用 Powershell 迴圈安裝或更新應用程式見解代理，作為跨多個虛擬機器規模的擴展。
 
-從 Azure 虛擬機器卸載 Application Insights 代理程式擴充功能
+從 Azure 虛擬機器卸載應用程式見解代理擴展
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name "ApplicationMonitoring"
 ```
 
-Azure 虛擬機器的查詢 Application Insights 代理程式延伸模組狀態
+Azure 虛擬機器的查詢應用程式見解代理擴展狀態
 ```powershell
 Get-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name ApplicationMonitoring -Status
 ```
 
-取得 Azure 虛擬機器的已安裝擴充功能清單
+獲取 Azure 虛擬機器的已安裝擴展清單
 ```powershell
 Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions"
 
@@ -99,14 +99,14 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-您也可以在入口網站的 [ [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)] 分頁中，看到已安裝的延伸模組。
+您還可以在門戶中的[Azure 虛擬機器邊欄選項卡](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)中查看已安裝的擴展。
 
 > [!NOTE]
-> 在與您用來部署 Application Insights 代理程式擴充功能的連接字串相關聯的 Application Insights 資源中，按一下即時計量資料流，以確認安裝。 如果您從多個虛擬機器傳送資料，請選取 [伺服器名稱] 下的 [目標 Azure 虛擬機器]。 最多可能需要一分鐘的時間，資料才會開始流動。
+> 通過按一下與用於部署應用程式見解代理擴展的連接字串關聯的應用程式見解資源中的即時指標流來驗證安裝。 如果要從多個虛擬機器發送資料，請在"伺服器名稱"下選擇目標 Azure 虛擬機器。 資料可能需要一分鐘才能開始流動。
 
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>使用 powershell 管理 Azure 虛擬機器擴展集上的 .NET 應用程式 Application Insights 代理程式
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>使用電源外殼在 Azure 虛擬機器縮放集中管理 .NET 應用程式的應用程式見解代理
 
-安裝或更新 Application Insights 代理程式做為 Azure 虛擬機器擴展集的擴充功能
+安裝或更新應用程式見解代理作為 Azure 虛擬機器縮放集的擴展
 ```powershell
 $publicCfgHashtable =
 @{
@@ -136,7 +136,7 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-從 Azure 虛擬機器擴展集卸載應用程式監視擴充功能
+從 Azure 虛擬機器縮放集卸載應用程式監視擴展
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
@@ -147,12 +147,12 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Azure 虛擬機器擴展集的查詢應用程式監視延伸模組狀態
+Azure 虛擬機器縮放集的查詢應用程式監視擴展狀態
 ```powershell
 # Not supported by extensions framework
 ```
 
-取得 Azure 虛擬機器擴展集已安裝的擴充功能清單
+獲取 Azure 虛擬機器縮放集的已安裝擴展清單
 ```powershell
 Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions
 
@@ -165,10 +165,10 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 
 ## <a name="troubleshooting"></a>疑難排解
 
-針對在 Azure 虛擬機器和虛擬機器擴展集上執行的 .NET 應用程式，尋找 Application Insights Monitoring Agent 擴充功能的疑難排解秘訣。
+查找在 Azure 虛擬機器和虛擬機器規模集中運行的 .NET 應用程式的應用程式見解監視代理擴展的故障排除提示。
 
 > [!NOTE]
-> 只有 Azure 虛擬機器和 Azure 虛擬機器擴展集才支援 .NET Core、JAVA 和 node.js 應用程式，透過手動以 SDK 為基礎的檢測，因此下列步驟不適用於這些案例。
+> .NET Core、JAVA 和 Node.js 應用程式僅支援 Azure 虛擬機器和 Azure 虛擬機器縮放集，通過基於 SDK 的手動檢測，因此以下步驟不適用於這些方案。
 
 延伸模組執行輸出會記錄至下列目錄中的檔案：
 ```Windows
@@ -176,5 +176,5 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWi
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何將[應用程式部署至 Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)。
-* [設定可用性 web 測試](monitor-web-app-availability.md)，以在您的端點關閉時收到警示。
+* 瞭解如何[將應用程式部署到 Azure 虛擬機器縮放集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)。
+* [設置可用性 Web 測試](monitor-web-app-availability.md)，以便終結點關閉時收到警報。

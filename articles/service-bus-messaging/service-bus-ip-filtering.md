@@ -1,5 +1,5 @@
 ---
-title: Azure 服務匯流排防火牆規則 | Microsoft Docs
+title: 為 Azure 服務匯流排配置 IP 防火牆規則
 description: 如何使用「防火牆規則」允許從特定 IP 位址連線至「Azure 服務匯流排」。
 services: service-bus
 documentationcenter: ''
@@ -11,54 +11,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9887d5448eabd272ab2528e4fc758265f2ada977
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475938"
 ---
-# <a name="azure-service-bus---use-firewall-rules"></a>Azure 服務匯流排-使用防火牆規則
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>為 Azure 服務匯流排配置 IP 防火牆規則
+預設情況下，只要請求附帶有效的身份驗證和授權，服務匯流排命名空間即可從 Internet 訪問。 使用 IP 防火牆，您可以進一步將其限制為[CIDR（無類域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 IPv4 位址或 IPv4 位址範圍。
 
-針對應該只能從特定已知網站存取「Azure 服務匯流排」的情況，防火牆規則可讓您設定規則來接受源自特定 IPv4 位址的流量。 例如，這些位址可能是企業 NAT 閘道的位址。
+此功能在 Azure 服務匯流排應僅從某些已知網站訪問的情況下非常有用。 防火牆規則使您能夠配置規則以接受來自特定 IPv4 位址的流量。 例如，如果將服務匯流排與 Azure[快速路由][express-route]一起使用 ，則可以創建**防火牆規則**，僅允許來自本地基礎結構 IP 位址或公司 NAT 閘道位址的流量。 
 
-## <a name="when-to-use"></a>When to use
+## <a name="ip-firewall-rules"></a>IP 防火牆規則
+IP 防火牆規則在服務匯流排命名空間級別應用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「服務匯流排」命名空間上的允許 IP 規則，系統就會將它視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
-如果想要設定「服務匯流排」，讓它應該只接收來自某個指定範圍 IP 位址的流量，並拒絕所有其他流量，您可以利用「防火牆規則」封鎖來自其他其他 IP 位址的服務匯流排端點。 例如，您使用服務匯流排搭配[Azure Express Route][express-route]來建立內部部署基礎結構的私人連線。 
+## <a name="use-azure-portal"></a>使用 Azure 入口網站
+本節介紹如何使用 Azure 門戶為服務匯流排命名空間創建 IP 防火牆規則。 
 
-## <a name="how-filter-rules-are-applied"></a>篩選器規則的套用方式
+1. 導航到[Azure 門戶](https://portal.azure.com)中的**服務匯流排命名空間**。
+2. 在左側功能表上，選擇 **"網路**"選項。 預設情況下，選擇"**所有網路**"選項。 服務匯流排命名空間接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
-IP 篩選規則會套用在服務匯流排命名空間層級上。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。
+    ![防火牆 - 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. 選擇頁面頂部的 **"選定網路**"選項。 在 **"防火牆"** 部分中，按照以下步驟操作：
+    1. 選擇 **"添加用戶端 IP 位址**"選項，使當前用戶端 IP 有權訪問命名空間。 
+    2. 對於**位址範圍**，在 CIDR 標記法中輸入特定的 IPv4 位址或 IPv4 位址範圍。 
+    3. 指定是否要**允許受信任的 Microsoft 服務繞過此防火牆**。 
 
-任何來自某個 IP 位址的連線嘗試，只要不符合「服務匯流排」命名空間上的允許 IP 規則，系統就會將它視為未經授權而予以拒絕。 回應則不涉及 IP 規則。
+        ![防火牆 - 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. 選擇 **"在**工具列上保存"以保存設置。 等待幾分鐘，確認顯示在門戶通知上。
 
-## <a name="default-setting"></a>預設設定
-
-根據預設，服務匯流排入口網站中的 **IP 篩選**方格是空的。 此預設設定表示您的命名空間可接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
-
-## <a name="ip-filter-rule-evaluation"></a>IP 篩選器規則評估
-
-IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定接受或拒絕動作。
-
->[!WARNING]
-> 實作「防火牆」規則可防止其他 Azure 服務與「服務匯流排」進行互動。
->
-> 實作「IP 篩選」(防火牆規則) 時，不支援受信任的 Microsoft 服務，但很快就會提供這項支援。
->
-> 無法與「IP 篩選」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 串流分析
-> - 與 Azure 事件方格的整合
-> - Azure IoT 中樞路由
-> - Azure IoT Device Explorer
->
-> 虛擬網路上必須有下列 Microsoft 服務
-> - Azure App Service
-> - Azure Functions
-
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>利用 Azure Resource Manager 範本來建立虛擬網路和防火牆規則
+## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
+本節具有創建虛擬網路和防火牆規則的示例 Azure 資源管理器範本。
 
 > [!IMPORTANT]
-> 只有**服務匯流排的進**階層才支援防火牆和虛擬網路。
+> 防火牆和虛擬網路僅在**服務**匯流排的高級層中支援。
 
 下列 Resource Manager 範本可讓您將虛擬網路規則新增至現有的服務匯流排命名空間。
 
@@ -67,7 +54,7 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
 - **ipMask** 是單一 IPv4 位址或以 CIDR 標記法表示的 IP 位址區塊。 例如，在 CIDR 標記法中，70.37.104.0/24 表示從 70.37.104.0 開始，到 70.37.104.255 為止，總共 256 個 IPv4 位址，而 24 則表示該範圍內的顯著前置詞位元。
 
 > [!NOTE]
-> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
+> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"**。
 > 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
 > 
 > 從
@@ -133,6 +120,7 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -141,13 +129,13 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
   }
 ```
 
-若要部署範本，請遵循[Azure Resource Manager][lnk-deploy]的指示。
+若要部署範本，請依照 [Azure Resource Manager][lnk-deploy] 適用的指示執行。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要將對服務匯流排的存取限定為 Azure 虛擬網路，請參閱下列連結：
 
-- [虛擬網路服務匯流排的服務端點][lnk-vnet]
+- [服務匯流排的虛擬網路服務端點][lnk-vnet]
 
 <!-- Links -->
 

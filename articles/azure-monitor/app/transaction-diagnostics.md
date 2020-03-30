@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671132"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
@@ -66,9 +66,9 @@ ms.locfileid: "77671132"
 
 [Application Insights 分析工具](../../azure-monitor/app/profiler.md)或[快照集偵錯工具](snapshot-debugger.md)能協助您從程式碼層級診斷效能和失敗問題。 透過這項體驗，只要按一下按鈕，您就可以查看任何元件的分析工具追蹤或快照集。
 
-如果您無法讓 Profiler 運作，請與**serviceprofilerhelp\@microsoft.com**
+如果您無法讓探測器工作，請聯繫**服務探查員\@説明microsoft.com**
 
-如果您無法快照偵錯工具運作，請聯繫**snapshothelp\@microsoft.com**
+如果無法使快照調試器正常工作，請聯繫**快照説明\@microsoft.com**
 
 ![分析工具整合](media/transaction-diagnostics/profilerTraces.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "77671132"
 
 如果您擁有存取權限，而且元件是由最新的 Application Insights SDK 進行檢測，請透過右上角的意見反應管道告訴我們。
 
-*我看到相依性有重複的資料列。這是預期的嗎？*
+*我看到依賴項的重複行。這是預料之中的嗎？*
 
 現階段我們會分別顯示輸出相依性呼叫和輸入要求。 這兩項呼叫看起來通常會一樣，唯一的差異在於持續時間值會因網路來回時間而有所不同。 主要圖示和樣式分明的持續時間橫條有助於區分兩者。 用這樣的方法呈現資料是否會混淆？ 請提供意見給我們！
 
@@ -94,4 +94,4 @@ ms.locfileid: "77671132"
 
 *為什麼新體驗遺漏大部分的相關項目查詢？*
 
-這是設計的做法。 左側 (上方和下方區段) 已有全部元件的所有相關項目。 新體驗的左側未涵蓋兩項相關項目：此事件前後五分鐘的所有遙測資料和使用者時間軸。
+這是原廠設定。 左側 (上方和下方區段) 已有全部元件的所有相關項目。 新體驗的左側未涵蓋兩項相關項目：此事件前後五分鐘的所有遙測資料和使用者時間軸。

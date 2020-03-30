@@ -1,24 +1,23 @@
 ---
-title: 適用于 Azure Marketplace 的 Dynamics 365 Business Central 供應專案
-description: 已取代並連結至對應的電腦文章;was 「說明如何在 Cloud Partner 入口網站中建立 Dynamics 365 Business Central 供應專案」。
-services: Dynamics 365 Business Central, AppSource Marketplace,
-author: ChJenk
+title: 適用于 Azure 應用商店的動態 365 業務中心產品
+description: 棄用並連結到相應的 PC 文章;是"說明如何在雲合作夥伴門戶中創建動態 365 業務中心產品。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: 772f96f4e8d5c3c87c2e62cd01500075a5327210
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d791a2e3d9e393c876c1f519dc9cd700428e9810
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276133"
 ---
 # <a name="dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 供應項目
 
-[Cloud Partner 入口網站](https://cloudpartner.azure.com/)不再支援建立和管理 Dynamics 365 Business Central 供應專案。 相反地，此功能已移至 Microsoft[合作夥伴中心入口網站](https://partner.microsoft.com/)。 如需詳細資訊，請參閱[建立新的 Dynamics 365 Business Central 供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)專案。
+[雲合作夥伴門戶](https://cloudpartner.azure.com/)不再支援創建和管理 Dynamics 365 業務中心產品/ 相反，此功能已移動到 Microsoft[合作夥伴中心門戶](https://partner.microsoft.com/)。 有關詳細資訊，請參閱[創建新的 Dynamics 365 業務中心產品/](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)
 
 ## <a name="next-steps"></a>後續步驟
 
-建立新的 Dynamics 365 Business Central 供應專案之前，您應該先閱讀[建立合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然後開啟 [[商業 Marketplace] 儀表板](https://partner.microsoft.com/dashboard/directory)，並選取 [**總覽**] 頁面。 請依照[建立新的 Dynamics 365 Business Central 供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)專案中的指示來建立您的供應專案。
+在創建新的 Dynamics 365 商業中心產品/服務之前，應閱讀["創建合作夥伴中心"帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然後在選中 **"概覽"** 頁後打開["商業市場"儀表板](https://partner.microsoft.com/dashboard/directory)。 按照[創建新動態 365 商業中心產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)中的說明創建您的產品/服務。

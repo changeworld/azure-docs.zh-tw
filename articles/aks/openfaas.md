@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: e684aee1469f855ec651567b805262c71aaf32e5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2605489f73063cb16a588d4714955704482327ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473637"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas]是一種架構，可讓您透過使用容器來建立無伺服器函式。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
+[OpenFaaS][open-faas]是一個框架，用於使用容器構建無伺服器函數。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -26,11 +26,13 @@ ms.locfileid: "77594918"
 * 在您的開發系統上安裝 Azure CLI。
 * 在您的系統上安裝 Git 命令列工具。
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>新增 OpenFaaS helm 圖表存放庫
+## <a name="add-the-openfaas-helm-chart-repo"></a>添加 OpenFaaS 掌舵圖回購
 
-OpenFaaS 會維護它自己的 helm 圖，以隨時掌握最新的變更。
+轉到[https://shell.azure.com](https://shell.azure.com)在瀏覽器中打開 Azure 雲外殼。
 
-```azurecli-interactive
+OpenFaaS 維護自己的掌舵人排行榜，以跟上所有最新變化。
+
+```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
@@ -39,15 +41,15 @@ helm repo update
 
 好的做法是 OpenFaaS 和 OpenFaaS 函式應該儲存在自己的 Kubernetes 命名空間中。
 
-建立 OpenFaaS 系統和函式的命名空間：
+為 OpenFaaS 系統和功能創建命名空間：
 
-```azurecli-interactive
+```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-產生 OpenFaaS UI 入口網站和 REST API 的密碼：
+為 OpenFaaS UI 門戶和 REST API 生成密碼：
 
-```azurecli-interactive
+```console
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
 
@@ -56,13 +58,13 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-您可以使用 `echo $PASSWORD`取得密碼的值。
+您可以使用 獲取機密的值`echo $PASSWORD`。
 
-Helm 圖表會使用我們在此處建立的密碼來啟用 OpenFaaS 閘道上的基本驗證，這是透過雲端 LoadBalancer 向網際網路公開。
+我們在這裡創建的密碼將由掌舵圖用於在 OpenFaaS 閘道上啟用基本驗證，該閘道通過雲負載平衡器向 Internet 公開。
 
 複製的存放庫中包含適用於 OpenFaaS 的 Helm 圖表。 使用此圖表來將 OpenFaaS 部署至 AKS 叢集。
 
-```azurecli-interactive
+```console
 helm upgrade openfaas --install openfaas/openfaas \
     --namespace openfaas  \
     --set basic_auth=true \
@@ -72,7 +74,7 @@ helm upgrade openfaas --install openfaas/openfaas \
 
 輸出：
 
-```
+```output
 NAME:   openfaas
 LAST DEPLOYED: Wed Feb 28 08:26:11 2018
 NAMESPACE: openfaas
@@ -92,7 +94,7 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-建立了用於存取 OpenFaaS 閘道的公用 IP 位址。 若要取出此 IP 位址，請使用[kubectl get service][kubectl-get]命令。 將 IP 位址指派給服務可能需要一些時間。
+建立了用於存取 OpenFaaS 閘道的公用 IP 位址。 若要擷取此 IP 位址，請使用 [kubectl get service][kubectl-get] 命令。 將 IP 位址指派給服務可能需要一些時間。
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
@@ -100,27 +102,27 @@ kubectl get service -l component=gateway --namespace openfaas
 
 輸出。
 
-```console
+```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
 gateway            ClusterIP      10.0.156.194   <none>         8080/TCP         7m
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系統會提示您登入。 若要提取您的密碼，請輸入 `echo $PASSWORD`。
+若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系統將提示您登錄。 要獲取密碼，請輸入`echo $PASSWORD`。
 
 ![OpenFaaS 使用者介面](media/container-service-serverless/openfaas.png)
 
-最後，安裝 OpenFaaS CLI。 這個範例使用 brew，如需更多選項，請參閱[OPENFAAS CLI 檔][open-faas-cli]。
+最後，安裝 OpenFaaS CLI。 此範例使用 brew，如需更多選項請參閱 [OpenFaaS CLI 文件][open-faas-cli]。
 
 ```console
 brew install faas-cli
 ```
 
-將 `$OPENFAAS_URL` 設定為上面找到的公用 IP。
+設置為`$OPENFAAS_URL`上面找到的公共 IP。
 
-使用 Azure CLI 登入：
+使用 Azure CLI 登錄：
 
-```azurecli-interactive
+```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
@@ -129,19 +131,19 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 現在，OpenFaaS 已可正常運作，請使用 OpenFaas 入口網站建立函式。
 
-按一下 [部署新函式]，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]。
+按一下 [部署新函式]****，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]****。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
 使用 curl 叫用此函式。 將下列範例中的 IP 位址取代為您的 OpenFaas 閘道。
 
-```azurecli-interactive
+```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
 輸出：
 
-```console
+```output
  _   _      _ _            _
 | | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
@@ -194,34 +196,34 @@ COSMOS=$(az cosmosdb list-connection-strings \
 
 使用 *mongoimport* 工具載入包含資料的 CosmosDB 執行個體。
 
-視需要安裝 MongoDB 工具。 下列範例會使用 brew 來安裝這些工具，如需其他選項，請參閱[MongoDB 檔][install-mongo]。
+視需要安裝 MongoDB 工具。 下列範例會使用 brew 安裝這些工具，如需其他選項請參閱 [MongoDB 文件][install-mongo]。
 
-```azurecli-interactive
+```console
 brew install mongodb
 ```
 
 將資料載入資料庫。
 
-```azurecli-interactive
+```console
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
 輸出：
 
-```console
+```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
 執行下列命令建立函式。 將 `-g` 引數的值更新成您的 OpenFaaS 閘道位址。
 
-```azurecli-interctive
+```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
 部署完成之後，您應該會看到您剛為函式建立的 OpenFaaS 端點。
 
-```console
+```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
@@ -244,7 +246,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以透過一組實際操作實驗室繼續學習 OpenFaaS 研討會，其中涵蓋的主題包括如何建立您自己的 GitHub bot、取用秘密、查看計量和自動調整。
+您可以通過一組動手實驗繼續通過 OpenFaaS 研討會學習，這些實驗室涵蓋如何創建自己的 GitHub 機器人、使用機密、查看指標和自動縮放等主題。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

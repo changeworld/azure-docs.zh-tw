@@ -1,139 +1,139 @@
 ---
-title: 在對應資料流程中壓平合併轉換
-description: 使用壓平合併轉換來反正規化階層式資料
+title: 映射資料流程中的扁平轉換
+description: 使用拼合轉換使分層資料非正常化
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 74f6df1fbc749a5ec015afb954ca6b12cbe0f18f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246631"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>在對應資料流程中壓平合併轉換
+# <a name="flatten-transformation-in-mapping-data-flow"></a>映射資料流程中的扁平轉換
 
-使用「簡維」轉換，在階層式結構（例如 JSON）內接受陣列值，並將其展開為個別的資料列。 此程式稱為「反正規化」。
+使用拼合變換在分層結構（如 JSON）中獲取陣列值，並將其展開到單獨的行中。 此過程稱為非正常化。
 
 ## <a name="configuration"></a>組態
 
-簡維轉換包含下列設定
+扁平轉換包含以下配置設置
 
-![簡維設定](media/data-flow/flatten1.png "簡維設定")
+![拼合設置](media/data-flow/flatten1.png "拼合設置")
 
 ### <a name="unroll-by"></a>展開者
 
-選取要展開的陣列。 每個陣列中的每個專案都會有一個資料列。 如果輸入資料列中的展開 by 陣列是 null 或空白，則會有一個輸出資料列的 unrolled 值為 null。
+選擇要展開的陣列。 每個陣列中每個項的輸出資料將具有一行。 如果輸入行中的按陣列展開為空，則將有一個輸出行，其中未滾動的值為空。
 
-### <a name="unroll-root"></a>展開根目錄
+### <a name="unroll-root"></a>展開根
 
-根據預設，簡維轉換會將陣列 unrolls 到它所在階層的最上層。 您可以選擇性地選取陣列作為展開根目錄。 展開根必須是複雜物件的陣列，而這些物件可能是或包含由陣列所展開的。 如果選取了展開根目錄，則輸出資料在展開根目錄中的每個專案都至少會包含一個資料列。 如果輸入資料列在展開根目錄中沒有任何專案，則會從輸出資料中予以卸載。 選擇展開根時，一律會輸出小於或等於預設行為的資料列數目。
+預設情況下，拼合轉換將陣列解壓到它存在的層次結構的頂部。 您可以選擇陣列作為展開根。 展開根必須是複雜物件的陣列，這些物件是或包含按陣列展開的。 如果選擇了未卷根，則輸出資料將包含卷根中每個項至少包含一行。 如果輸入行在未滾動根中沒有任何項，它將從輸出資料中刪除。 選擇未卷根始終輸出的行數小於或等於預設行為。
 
-### <a name="flatten-mapping"></a>壓平合併對應
+### <a name="flatten-mapping"></a>拼合映射
 
-類似于 [選取] 轉換，請從傳入欄位和反正規化陣列選擇新結構的投影。 如果對應的不反正規化陣列，輸出資料行將會與陣列具有相同的資料類型。 如果展開 by 陣列是包含 subarrays 的複雜物件陣列，則對應該 subarry 的專案將會輸出陣列。
+與選擇轉換類似，從傳入欄位和非正常化陣列中選擇新結構的投影。 如果映射了非正常化陣列，則輸出列將與陣列的資料類型相同。 如果按陣列展開是包含子陣列的複雜物件的陣列，則映射該 subarry 的項將輸出陣列。
 
-請參閱 [檢查] 索引標籤和 [資料預覽]，以驗證您的對應輸出。
+請參閱檢查選項卡和資料預覽以驗證映射輸出。
 
 ## <a name="examples"></a>範例
 
-請參閱下列 JSON 物件，以取得下面的簡維轉換範例
+有關壓平變換的以下示例，請參閱以下 JSON 物件
 
 ``` json
-[{
+{
   "name":"MSFT","location":"Redmond", "satellites": ["Bay Area", "Shanghai"],
   "goods": {
     "trade":true, "customers":["government", "distributer", "retail"],
     "orders":[
         {"orderId":1,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":2}]}},
         {"orderId":2,"orderTotal":323.34,"shipped":{"orderItems":[{"itemName":"Mice","itemQty":2},{"itemName":"Keyboard","itemQty":1}]}}
-    ]}},
+    ]}}
 {"name":"Company1","location":"Seattle", "satellites": ["New York"],
   "goods":{"trade":false, "customers":["store1", "store2"],
   "orders":[
       {"orderId":4,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":3}]}},
       {"orderId":5,"orderTotal":343.24,"shipped":{"orderItems":[{"itemName":"Chair","itemQty":4},{"itemName":"Lamp","itemQty":2}]}}
-    ]}},
+    ]}}
 {"name": "Company2", "location": "Bellevue",
-  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}},
-{"name": "Company3", "location": "Kirkland"}]
+  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}}
+{"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>沒有具有字串陣列的展開根目錄
+### <a name="no-unroll-root-with-string-array"></a>沒有帶字串陣列的解卷根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根 | 投射 |
 | --------- | ----------- | ---------- |
-| 貨物。客戶 | None | NAME <br> 客戶 = 商品。客戶 |
+| 貨物.客戶 | None | NAME <br> 客戶 = 貨物。 |
 
 #### <a name="output"></a>輸出
 
 ```
-{ 'MSFT', 'government'},
-{ 'MSFT', 'distributer'},
-{ 'MSFT', 'retail'},
-{ 'Company1', 'store'},
-{ 'Company1', 'store2'},
-{ 'Company2', 'Bank'},
+{ 'MSFT', 'government'}
+{ 'MSFT', 'distributer'}
+{ 'MSFT', 'retail'}
+{ 'Company1', 'store'}
+{ 'Company1', 'store2'}
+{ 'Company2', 'Bank'}
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>沒有具有複雜陣列的展開根
+### <a name="no-unroll-root-with-complex-array"></a>沒有具有複雜陣列的卷根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根 | 投射 |
 | --------- | ----------- | ---------- |
-| 貨品。 orderItems 的貨物。 | None | NAME <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
+| 貨物.訂單.發貨.訂單專案 | None | NAME <br> 訂單 Id = 貨物.訂單.訂單Id <br> 專案名稱 = 貨物.訂單.發貨.訂單專案.專案名稱 <br> 物料數量 = 貨物.訂單.發貨.訂單專案.專案數量 <br> 位置 = 位置 |
 
 #### <a name="output"></a>輸出
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
-{ 'Company2', 4, null, null, 'Bellevue'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
+{ 'Company2', 4, null, null, 'Bellevue'}
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>與展開陣列相同的根
+### <a name="same-root-as-unroll-array"></a>與卷外卷陣列相同的根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根 | 投射 |
 | --------- | ----------- | ---------- |
-| 貨物。訂單 | 貨物。訂單 | NAME <br> 貨品。 orderItems。 <br> 貨物。客戶 <br> location |
+| 貨物.訂單 | 貨物.訂單 | NAME <br> 貨物.訂單.發貨.訂單專案.專案名稱 <br> 貨物.客戶 <br> location |
 
 #### <a name="output"></a>輸出
 
 ```
-{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'},
-{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'},
-{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'},
-{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'},
+{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'}
+{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'}
+{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'}
+{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'}
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>具有複雜陣列的展開根目錄
+### <a name="unroll-root-with-complex-array"></a>使用複雜陣列展開根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根 | 投射 |
 | --------- | ----------- | ---------- |
-| 貨品。 orderItem 的貨物。 | 貨物。訂單 |NAME <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
+| 貨物.訂單.發貨.訂單專案 | 貨物.訂單 |NAME <br> 訂單 Id = 貨物.訂單.訂單Id <br> 專案名稱 = 貨物.訂單.發貨.訂單專案.專案名稱 <br> 物料數量 = 貨物.訂單.發貨.訂單專案.專案數量 <br> 位置 = 位置 |
 
 #### <a name="output"></a>輸出
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
 { 'Company2', 4, null, null, 'Bellevue'}
 ```
 
@@ -169,5 +169,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用 [[樞紐分析表] 轉換](data-flow-pivot.md)來將資料列資料行。
-* 使用「 [Unpivot」轉換](data-flow-unpivot.md)，將資料行樞紐分析表。
+* 使用[資料透視轉換](data-flow-pivot.md)將行透視到列。
+* 使用["取消透視"轉換](data-flow-unpivot.md)將列透視到行。

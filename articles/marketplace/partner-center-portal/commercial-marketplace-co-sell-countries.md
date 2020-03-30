@@ -1,46 +1,45 @@
 ---
-title: 共同銷售國家/地區和地區代碼 |Azure Marketplace
-description: 在供應專案的共同銷售頁面上提供連絡人資訊時，請使用這兩個字母的國家/地區代碼。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 共同銷售國家和地區代碼 |Azure 應用商店
+description: 在優惠的共同銷售頁面上提供聯繫資訊時，請使用這些兩個字母的國家/地區代碼。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277051"
 ---
-# <a name="co-sell-country-and-region-codes"></a>共同銷售國家/地區和地區代碼
+# <a name="co-sell-country-and-region-codes"></a>共同銷售領域代碼
 
-在[供應專案的共同銷售頁面上提供連絡人資訊](commercial-marketplace-co-sell.md)時，請使用這兩個字母的國家/地區代碼。
+[在優惠的共同銷售頁面上提供聯繫資訊](commercial-marketplace-co-sell.md)時，請使用這些兩個字母的國家/地區代碼。
 
-如果連絡人涵蓋所有國家/地區，請使用三個字母代碼「OOO 序列」。
+如果連絡人覆蓋所有國家/地區，請使用三個字母代碼"OOO"。
 
-如果連絡人涵蓋一個以上的國家/地區，請輸入以逗號分隔的兩個字母代碼（例如，輸入 "US，CA，FR" 而不加引號）。
+如果連絡人覆蓋多個國家/地區，請輸入用逗號分隔的兩個字母代碼中的每個字母代碼（例如，輸入"美國、CA、FR"而不帶引號）。
 
-## <a name="countryregion-table"></a>國家/地區資料表
+## <a name="countryregion-table"></a>國家/地區表
 
 |   國家/地區名稱               |   ISO-2   |
 |-------------------------------------|-----------|
-| 全球連絡人                     | OOO 序列       |
+| 全球連絡人                     | Ooo       |
 | 阿富汗                         | AF        |
-| 奧蘭群島                       | 限於        |
+| 奧蘭島                       | 斧頭        |
 | 阿爾巴尼亞                             | AL        |
 | 阿爾及利亞                             | DZ        |
 | 美屬薩摩亞                      | AS        |
 | 安道爾                             | AD        |
 | 安哥拉                              | AO        |
-| 南極大陸                          | AQ        |
+| 南極洲                          | AQ        |
 | 安地卡及巴布達                 | AG        |
 | 阿根廷                           | AR        |
 | 亞美尼亞                             | AM        |
-| 阿路巴                               | AW        |
-| 澳洲                           | AU        |
+| 荷屬阿魯巴                               | AW        |
+| 澳大利亞                           | AU        |
 | 奧地利                             | AT        |
 | 亞塞拜然                          | AZ        |
 | 巴哈馬                             | BS        |
@@ -59,8 +58,8 @@ ms.locfileid: "75934343"
 | 波札那                            | BW        |
 | 布威島                       | BV        |
 | 巴西                              | BR        |
-| 英屬印度洋領土      | IO        |
-| 英屬維爾京群島              | VG        |
+| 英屬印度洋領地      | IO        |
+| 英屬維京群島              | VG        |
 | 汶萊                              | BN        |
 | 保加利亞                            | BG        |
 | 布吉納法索                        | BF        |
@@ -68,7 +67,7 @@ ms.locfileid: "75934343"
 | 維德角                          | CV        |
 | 柬埔寨                            | KH        |
 | 喀麥隆                            | CM        |
-| 加拿大                              | CA        |
+| Canada                              | CA        |
 | 開曼群島                      | KY        |
 | 中非共和國            | CF        |
 | 查德                                | TD        |
@@ -80,14 +79,14 @@ ms.locfileid: "75934343"
 | 哥倫比亞                            | CO        |
 | 葛摩                             | KM        |
 | 剛果                               | CG        |
-| 剛果民主共和國 (DRC)                         | CD        |
-| 柯克群島                        | CK        |
+| 剛果民主共和國                         | CD        |
+| 庫克群島                        | CK        |
 | 哥斯大黎加                          | CR        |
 | 象牙海岸                       | CI        |
-| 克羅埃西亞                             | 人力資源        |
+| 克羅埃西亞                             | HR        |
 | 古巴                                | CU        |
-| 古拉果                             | 順        |
-| 賽普勒斯                              | CY        |
+| 古拉果                             | 連續        |
+| 賽浦路斯                              | CY        |
 | 丹麥                             | DK        |
 | 吉布地                            | DJ        |
 | 多米尼克                            | DM        |
@@ -98,7 +97,7 @@ ms.locfileid: "75934343"
 | 赤道幾內亞                   | GQ        |
 | 厄利垂亞                             | ER        |
 | 愛沙尼亞                             | EE        |
-| eSwatini                            | SZ        |
+| 埃斯瓦蒂尼                            | SZ        |
 | 衣索比亞                            | ET        |
 | 法羅群島                       | FO        |
 | 斐濟                                | FJ        |
@@ -107,7 +106,7 @@ ms.locfileid: "75934343"
 | 法屬圭亞那                       | GF        |
 | 法屬玻里尼西亞                    | PF        |
 | 法屬南部屬地         | TF        |
-| 加彭                               | 正式上市        |
+| 加彭                               | GA        |
 | 甘比亞                              | GM        |
 | 喬治亞                             | GE        |
 | 德國                             | DE        |
@@ -144,10 +143,10 @@ ms.locfileid: "75934343"
 | 哈薩克                          | KZ        |
 | 肯亞                               | KE        |
 | 吉里巴斯                            | KI        |
-| 韓國（南部）                       | KR        |
+| 韓國（韓國）                       | KR        |
 | 科威特                              | KW        |
 | 吉爾吉斯                          | KG        |
-| 寮國                                | 洛杉磯        |
+| 寮國                                | LA        |
 | 拉脫維亞                              | LV        |
 | 黎巴嫩                             | LB        |
 | 賴索托                             | LS        |
@@ -174,7 +173,7 @@ ms.locfileid: "75934343"
 | 摩納哥                              | MC        |
 | 蒙古                            | MN        |
 | 蒙特內哥羅                          | ME        |
-| 蒙特色拉特島                          | MS        |
+| 蒙哲臘                          | MS        |
 | 摩洛哥                             | MA        |
 | 莫三比克                          | MZ        |
 | 緬甸                             | MM        |
@@ -187,7 +186,7 @@ ms.locfileid: "75934343"
 | 尼加拉瓜                           | NI        |
 | 尼日                               | NE        |
 | 奈及利亞                             | NG        |
-| 紐威島                                | NU        |
+| 紐埃島                                | NU        |
 | 諾福克島                      | NF        |
 | 北韓                         | KP        |
 | 北馬利安納群島            | MP        |
@@ -200,9 +199,9 @@ ms.locfileid: "75934343"
 | 巴拿馬                              | PA        |
 | 巴布亞紐幾內亞                    | PG        |
 | 巴拉圭                            | PY        |
-| 秘魯                                | PE        |
+| 祕魯                                | PE        |
 | 菲律賓                         | PH        |
-| 皮特康群島                    | PN        |
+| 皮特康群島                    | Pn        |
 | 波蘭                              | PL        |
 | 葡萄牙                            | PT        |
 | 波多黎各                         | PR        |
@@ -214,8 +213,8 @@ ms.locfileid: "75934343"
 | 聖巴瑟米                    | BL        |
 | 聖克里斯多福及尼維斯               | KN        |
 | 聖露西亞                         | LC        |
-| 法屬聖馬丁                        | MF        |
-| 聖皮埃與密克隆群島           | PM        |
+| 法屬聖馬丁                        | Mf        |
+| 聖皮埃與密克隆群島           | 下午        |
 | 聖文森及格瑞那丁    | VC        |
 | 薩摩亞                               | WS        |
 | 聖馬利諾                          | SM        |
@@ -226,17 +225,17 @@ ms.locfileid: "75934343"
 | 塞席爾                          | SC        |
 | 獅子山                        | SL        |
 | 新加坡                           | SG        |
-| 荷屬聖馬丁                        | X        |
+| 荷屬聖馬丁                        | Sx        |
 | 斯洛伐克                            | SK        |
 | 斯洛維尼亞                            | SI        |
 | 索羅門群島                     | SB        |
 | 索馬利亞                             | SO        |
 | 南非                        | ZA        |
-| 南喬治亞與南三明治群島 | GS    |
+| 南喬治亞島和南桑威奇群島 | GS    |
 | 南蘇丹                         | SS        |
 | 西班牙                               | ES        |
 | 斯里蘭卡                           | LK        |
-| 聖赫勒拿、阿森松、特裡斯坦達庫尼亞群島 | SH     |
+| 聖赫勒拿， 阿森松， 特裡斯坦達庫尼亞 | SH     |
 | 蘇丹                               | SD        |
 | 蘇利南                            | SR        |
 | 挪威屬斯瓦巴                            | SJ        |
@@ -249,7 +248,7 @@ ms.locfileid: "75934343"
 | 泰國                            | 二四        |
 | 東帝汶                         | TL        |
 | 多哥                                | TG        |
-| 托克勞群島                             | TK        |
+| 托克勞                             | TK        |
 | 東加                               | TO        |
 | 千里達及托巴哥                 | TT        |
 | 突尼西亞                             | TN        |
@@ -260,10 +259,10 @@ ms.locfileid: "75934343"
 | 烏干達                              | UG        |
 | 烏克蘭                             | UA        |
 | 阿拉伯聯合大公國                | AE        |
-| 英國                      | GB        |
-| 美國                       | 美國        |
+| United Kingdom                      | GB        |
+| 美國                       | US        |
 | 烏拉圭                             | UY        |
-| 美國外島               | UM        |
+| 美國離島               | UM        |
 | 美屬維爾京群島                 | VI        |
 | 烏茲別克                          | UZ        |
 | 萬那杜                             | VU        |
@@ -278,4 +277,4 @@ ms.locfileid: "75934343"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[合作夥伴中心內的共同銷售選項](./commercial-marketplace-co-sell.md)。
+- 瞭解[合作夥伴中心中的共同銷售選項](./commercial-marketplace-co-sell.md)。

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238706"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory 中的 If Condition 活動
 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。 
@@ -63,10 +63,10 @@ If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | If-Condition 活動的名稱。 | String | 是
-type | 必須設為 [IfCondition] | String | 是
+type | 必須設為 [IfCondition]**** | String | 是
 expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | 是
 ifTrueActivities | 會在運算式評估為 `true` 時執行的一系列活動。 | Array | 是
 ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動。 | Array | 是
@@ -182,7 +182,7 @@ ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
@@ -289,7 +289,7 @@ $result.Error -join "`r`n"
 請參閱 Data Factory 支援的其他控制流程活動： 
 
 - [執行管道活動](control-flow-execute-pipeline-activity.md)
-- [For Each 活動](control-flow-for-each-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [對於每個活動](control-flow-for-each-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [Web 活動](control-flow-web-activity.md)

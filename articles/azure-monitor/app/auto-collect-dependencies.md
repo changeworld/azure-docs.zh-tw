@@ -7,10 +7,10 @@ ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665811"
 ---
 # <a name="dependency-auto-collection"></a>相依性自動收集
@@ -41,17 +41,17 @@ ms.locfileid: "77665811"
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>應用程式架構</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9+<sup>*</sup> |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9€<sup>*</sup> |
 | Java Servlet | 3.1+ |
-| <b>通訊程式庫</b> |  |
-| [Apache HTTP 用戶端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3+<sup>†</sup> |
+| <b>通信庫</b> |  |
+| [Apache HTTP 用戶端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3°<sup>|</sup> |
 | <b>儲存體用戶端</b> | |
-| [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1+<sup>†</sup> |
-| [于 postgresql （搶鮮版（Beta）支援）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
-| [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1+<sup>†</sup> |
-| [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1+<sup>†</sup> |
+| [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1°<sup>|</sup> |
+| [後SQL（測試版支援）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
+| [甲骨文]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1°<sup>|</sup> |
+| [Mysql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1°<sup>|</sup> |
 | <b>記錄程式庫</b> | |
-| [Logback](https://logback.qos.ch/) | 1+ |
+| [日誌](https://logback.qos.ch/) | 1+ |
 | [Log4j](https://logging.apache.org/log4j/) | 1.2+ |
 | <b>計量程式庫</b> |  |
 | JMX | 1.0+ |
@@ -64,17 +64,17 @@ ms.locfileid: "77665811"
 
 | 通訊程式庫 | 版本 |
 | ------------------------|----------|
-| [HTTP](https://nodejs.org/api/http.html)、[HTTPS](https://nodejs.org/api/https.html) | 0.10+ |
+| [HTTP](https://nodejs.org/api/http.html)， [HTTPS](https://nodejs.org/api/https.html) | 0.10+ |
 | <b>儲存體用戶端</b> | |
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
-| [MongoDb](https://www.npmjs.com/package/mongodb)、[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x-3。x |
-| [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0-2.16. x |
-| [PostgreSql](https://www.npmjs.com/package/pg); | 6.x-7. x |
-| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x-2. x |
+| [MongoDb](https://www.npmjs.com/package/mongodb)、[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x - 3.x |
+| [Mysql](https://www.npmjs.com/package/mysql) | 2.0.0 - 2.16.x |
+| [後格雷Sql](https://www.npmjs.com/package/pg); | 6.x - 7.x |
+| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x - 2.x |
 | <b>記錄程式庫</b> | |
 | [console](https://nodejs.org/api/console.html) | 0.10+ |
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
-| [Winston](https://www.npmjs.com/package/winston) | 2.x-3。x |
+| [Winston](https://www.npmjs.com/package/winston) | 2.x - 3.x |
 
 ## <a name="javascript"></a>JavaScript
 
@@ -86,7 +86,7 @@ ms.locfileid: "77665811"
 
 - 設定 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 的自訂相依性追蹤。
 - 設定 [Java](../../azure-monitor/app/java-agent.md) 的自訂相依性追蹤。
-- 設定[OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)的自訂相依性追蹤。
+- 為[OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)設置自訂依賴項跟蹤。
 - [撰寫自訂相依性遙測](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](../../azure-monitor/app/data-model.md)。
 - 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。

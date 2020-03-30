@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670588"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure 監視器中的自訂記錄
@@ -23,7 +23,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 
 - 記錄檔必須是每行一個項目，或在每個項目開頭使用符合下列其中一種格式的時間戳記。
 
-    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
+    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - 記錄檔不得使用會以新的項目覆寫檔案的循環記錄或記錄輪替。
 - 記錄檔必須使用 ASCII 或 UTF-8 編碼。  不支援其他格式，例如 UTF-16。
@@ -41,7 +41,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 >
 
 >[!IMPORTANT]
->自訂記錄檔收集要求撰寫記錄檔的應用程式會定期將記錄內容排清到磁片。 這是因為自訂記錄檔集合會依賴所追蹤記錄檔的檔案系統變更通知。
+>自訂日誌收集要求編寫日誌檔的應用程式定期將日誌內容刷新到磁片。 這是因為自訂日誌集合依賴于要跟蹤的日誌檔的檔案系統更改通知。
 
 ## <a name="defining-a-custom-log"></a>定義自訂記錄檔
 使用下列程序來定義自訂記錄檔。  如需新增自訂記錄檔之範例的逐步解說，請捲動到本文結尾處。
@@ -49,10 +49,10 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 ### <a name="step-1-open-the-custom-log-wizard"></a>步驟 1： 開啟自訂記錄檔精靈
 自訂記錄檔精靈會在 Azure 入口網站中執行，並可讓您定義要收集的新自訂記錄檔。
 
-1. 在 Azure 入口網站中，選取 [Log Analytics 工作區] > 您的工作區 > [進階設定]。
-2. 按一下 [資料] > [自訂記錄]。
+1. 在 Azure 入口網站中，選取 [Log Analytics 工作區]**** > 您的工作區 > [進階設定]****。
+2. 按一下**資料** > **自訂日誌**。
 3. 根據預設，所有組態變更都會自動發送給所有代理程式。 若是 Linux 代理程式，組態檔會傳送給 Fluentd 資料收集器。
-4. 按一下 [新增+] 開啟自訂記錄檔精靈。
+4. 按一下 [新增+] **** 開啟自訂記錄檔精靈。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>步驟 2： 上傳和剖析範例記錄檔
 一開始您要上傳自訂記錄檔的範例。  精靈會剖析並顯示此檔案中的項目以供您驗證。  Azure 監視器會使用您指定的分隔符號來識別每一筆記錄。
@@ -61,11 +61,11 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 
 如果使用時間戳記分隔符號，則儲存在 Azure 監視器中的每一筆記錄的 TimeGenerated 屬性將會填入針對記錄檔中的該項目指定的日期/時間。  如果使用新行字元分隔符號，則 TimeGenerated 會填入 Azure 監視器收集項目的日期和時間。
 
-1. 按一下 [瀏覽] 並瀏覽至範例檔案。  請注意，在某些瀏覽器中，這個按鈕可能標示為 [選擇檔案] 。
-2. 按 [下一步]。
+1. 按一下 [瀏覽] **** 並瀏覽至範例檔案。  請注意，在某些瀏覽器中，這個按鈕可能標示為 [選擇檔案] **** 。
+2. 按 [下一步]****。
 3. 自訂記錄檔精靈會上傳檔案並列出其識別的記錄。
 4. 變更用來識別新記錄的分隔符號，並選取最能識別記錄檔中的記錄的分隔符號。
-5. 按 [下一步]。
+5. 按 [下一步]****。
 
 ### <a name="step-3-add-log-collection-paths"></a>步驟 3： 新增記錄檔收集路徑
 您必須在代理程式上定義一個或多個它可以在其中找到自訂記錄檔的路徑。  您可以提供該記錄檔的特定路徑和名稱，或者您可以使用萬用字元為該名稱指定路徑。 這可支援每天會建立一個新檔案的應用程式或在一個檔案到達特定大小時提供支援。 您也可以為單一記錄檔提供多個路徑。
@@ -74,7 +74,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 
 下表提供可用來指定不同記錄檔的有效模式範例。
 
-| 描述 | 路徑 |
+| 描述 | Path |
 |:--- |:--- |
 | Windows 代理程式上的 *C:\Logs* 中，副檔名為 .txt 的所有檔案 |C:\Logs\\\*.txt |
 | Windows 代理程式上的 *C:\Logs* 中，名稱開頭為 log 且副檔名為 .txt 的所有檔案 |C:\Logs\log\*.txt |
@@ -82,20 +82,20 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 | Linux 代理程式上的 */var/log/audit* 中，名稱開頭為 log 且副檔名為 .txt 的所有檔案 |/var/log/audit/log\*.txt |
 
 1. 選取 Windows 或 Linux 以指定您要新增的路徑格式。
-2. 輸入路徑並按一下 [+] **+** 按鈕。
+2. 鍵入路徑並按一下該**+** 按鈕。
 3. 針對任何其他路徑重複此程序。
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步驟 4： 提供記錄檔的名稱和描述
 您指定的名稱將用於如上所述的記錄檔類型。  它一定會以 _CL 結尾以將自己辨別為自訂記錄檔。
 
-1. 輸入記錄檔的名稱。  **\__CL** 尾碼會自動提供。
-2. 新增選擇性的 [描述]。
-3. 按 [下一步] 來儲存自訂記錄檔的定義。
+1. 輸入記錄檔的名稱。  ** \_CL**尾碼將自動提供。
+2. 新增選擇性的 [描述] ****。
+3. 按 [下一步] **** 來儲存自訂記錄檔的定義。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步驟 5。 驗證會收集自訂記錄
 最多可能需要一小時的時間，新的自訂記錄檔中的初始資料才會出現在 Azure 監視器中。  從您定義自訂記錄之後，它就會開始從您指定的路徑中所找到的記錄收集項目。  它不會保留您在建立自訂記錄檔期間上傳的項目，但它會收集它所找出之記錄檔中既有的項目。
 
-一旦 Azure 監視器開始從自訂記錄檔收集，就能透過記錄檔查詢取得其記錄。  請使用您提供給自訂記錄檔的名稱來做為查詢中的 [類型] 。
+一旦 Azure 監視器開始從自訂記錄檔收集，就能透過記錄檔查詢取得其記錄。  請使用您提供給自訂記錄檔的名稱來做為查詢中的 [類型] **** 。
 
 > [!NOTE]
 > 如果查詢中缺少 RawData 屬性，您可能需要先關閉再重新開啟瀏覽器。
@@ -106,8 +106,8 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 ## <a name="removing-a-custom-log"></a>移除自訂記錄
 在 Azure 入口網站中使用下列程序來移除您先前定義的自訂記錄。
 
-1. 從工作區 [進階設定] 的 [資料] 功能表中，選取 [自訂記錄] 以列出所有自訂記錄。
-2. 按一下要移除之自訂記錄旁邊的 [移除]。
+1. 從工作區 [進階設定]**** 的 [資料]**** 功能表中，選取 [自訂記錄]**** 以列出所有自訂記錄。
+2. 按一下要移除之自訂記錄旁邊的 [移除]****。
 
 ## <a name="data-collection"></a>資料收集
 Azure 監視器會從每個自訂記錄檔收集新的項目，間隔大約為每 5 分鐘一次。  代理程式會記錄它在從中收集項目的每個記錄檔中的位置。  如果代理程式離線一段時間，Azure 監視器即會從上次停止的地方收集項目，即使這些項目是在代理程式離線時所建立亦同。
@@ -140,17 +140,17 @@ Azure 監視器會從每個自訂記錄檔收集新的項目，間隔大約為�
 ![上傳和剖析範例記錄檔](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>新增記錄檔收集路徑
-記錄將位於 *C:\MyApp\Logs*。  每一天都會建立一個新檔案，且其名稱中包括「appYYYYMMDD.log」模式的日期。  此記錄的完整模式為 *C:\MyApp\Logs\\\*.log*。
+記錄將位於 *C:\MyApp\Logs*。  每一天都會建立一個新檔案，且其名稱中包括「appYYYYMMDD.log」 ** 模式的日期。  此日誌的足夠模式是*\\\*C：\MyApp_Logs .log*。
 
 ![記錄檔收集路徑](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>提供記錄檔的名稱和描述
-我們使用 *MyApp_CL* 這個名稱並輸入 [描述]。
+我們使用 *MyApp_CL* 這個名稱並輸入 [描述]****。
 
 ![記錄檔名稱](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>驗證會收集自訂記錄
-我們使用*MyApp_CL*的簡單查詢，從收集的記錄檔傳回所有記錄。
+我們使用*MyApp_CL*的簡單查詢來從收集的日誌返回所有記錄。
 
 ![無自訂欄位的記錄檔查詢](media/data-sources-custom-logs/query-01.png)
 

@@ -1,19 +1,19 @@
 ---
-title: 使用即時計量資料流 Azure 應用程式見解進行診斷
+title: 使用即時指標流診斷 - Azure 應用程式見解
 description: 透過自訂計量即時監視您的 Web 應用程式，並透過失敗、追蹤和事件的即時摘要診斷問題。
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670095"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>即時計量資料流︰以 1 秒的延遲進行監視與診斷
 
-使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的即時計量資料流，探查您即時生產環境 Web 應用程式中的活動訊號。 選取並篩選要即時監看的計量和效能計數器，而不會對您的服務造成任何干擾。 檢查失敗要求和例外狀況範例中的堆疊追蹤。 與[Profiler](../../azure-monitor/app/profiler.md)、[快照偵錯工具](../../azure-monitor/app/snapshot-debugger.md)搭配使用。 即時計量資料流為您的即時網站提供強大且非侵入性的診斷工具。
+使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的即時計量資料流，探查您即時生產環境 Web 應用程式中的活動訊號。 選取並篩選要即時監看的計量和效能計數器，而不會對您的服務造成任何干擾。 檢查失敗要求和例外狀況範例中的堆疊追蹤。 與[探測器](../../azure-monitor/app/profiler.md)一起，[快照調試器](../../azure-monitor/app/snapshot-debugger.md)。 即時指標流為您的即時網站提供了強大且非侵入性的診斷工具。
 
 您可以使用即時計量資料流：
 
@@ -25,15 +25,15 @@ ms.locfileid: "77670095"
 * 即時監看任何 Windows 效能計數器。
 * 輕鬆識別有問題的伺服器，並將所有 KPI/即時摘要篩選到只有該伺服器。
 
-[![即時計量資料流影片](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![即時指標流視頻](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-目前支援 ASP.NET、ASP.NET Core、Azure Functions、JAVA 和 node.js 應用程式的即時計量。
+當前支援ASP.NET、ASP.NET核心、Azure 函數、JAVA 和 Node.js 應用的即時指標。
 
 ## <a name="get-started"></a>開始使用
 
 1. 如果您尚未在 Web 應用程式中[安裝 Application Insights](../../azure-monitor/azure-monitor-app-hub.yml)，請立即安裝。
 2. 除了標準 Application Insights 套件之外，還需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)，才能啟用「即時計量」串流。
-3. **更新至最新版本**的 Application Insights 套件。 在 Visual Studio 中，以滑鼠右鍵按一下專案，然後選擇 [管理 Nuget 套件]。 開啟 [更新] 索引標籤，然後選取所有 Microsoft.ApplicationInsights.* 套件。
+3. **更新至最新版本**的 Application Insights 套件。 在 Visual Studio 中，以滑鼠右鍵按一下專案，然後選擇 [管理 Nuget 套件]****。 開啟 [更新]**** 索引標籤，然後選取所有 Microsoft.ApplicationInsights.* 套件。
 
     重新部署您的應用程式。
 
@@ -49,12 +49,12 @@ ms.locfileid: "77670095"
 
 | |即時資料流 | 計量瀏覽器和分析 |
 |---|---|---|
-|延遲|在一秒內顯示資料|在幾分鐘後進行彙總|
+|Latency|在一秒內顯示資料|在幾分鐘後進行彙總|
 |沒有保留|資料在圖表上就會保存，之後便會捨棄該資料|[資料會保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |隨選|當您開啟即時計量時會串流處理資料|每當安裝並啟用 SDK 時都會傳送資料|
 |免費|即時資料流資料免費|依[價格](../../azure-monitor/app/pricing.md)付費
 |取樣|傳輸所有選取的計量和計數器。 取樣失敗和堆疊追蹤。 不會套用 TelemetryProcessors。|可能[取樣](../../azure-monitor/app/api-filtering-sampling.md)事件|
-|控制通道|篩選控制項訊號會傳送至 SDK。 建議您保護這個通道。|通訊是以單向方式前往入口網站|
+|控制通道|篩選控制項訊號會傳送至 SDK。 建議您保護這個通道。|溝通是單向的，到門戶|
 
 ## <a name="select-and-filter-your-metrics"></a>選取並篩選您的計量
 
@@ -83,7 +83,7 @@ ms.locfileid: "77670095"
 
 請注意︰目前針對以例外狀況訊息為基礎的準則，請使用最外部的例外狀況訊息。 在上述範例中，若要使用內部例外狀況訊息 (後接 "<--" 分隔符號)「用戶端中斷連線。」將良性的例外狀況篩選掉， 請使用不包含「讀取要求內容時發生錯誤」準則的訊息。
 
-按一下即時摘要中的項目，以查看它的詳細資料。 您可以按一下 [暫停] 或只向下捲動，或是按一下項目來將摘要暫停。 在您捲動回到頂端後，或是按一下暫停時所收集到的項目計數器，即時摘要就會繼續進行。
+按一下即時摘要中的項目，以查看它的詳細資料。 您可以按一下 [暫停]**** 或只向下捲動，或是按一下項目來將摘要暫停。 在您捲動回到頂端後，或是按一下暫停時所收集到的項目計數器，即時摘要就會繼續進行。
 
 ![取樣的即時失敗](./media/live-stream/live-metrics-eventdetail.png)
 
@@ -149,11 +149,11 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure 函式應用程式
 
-針對 Azure 函式應用程式（v2），可以使用環境變數來使用 API 金鑰來保護通道。
+對於 Azure 函數應用 （v2），可以使用環境變數完成使用 API 金鑰保護通道。
 
-請從 Application Insights 資源內部建立 API 金鑰，然後前往您「函數應用程式」的 [應用程式設定]。 選取 [新增設訂]，然後輸入名稱 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 及與您 API 金鑰對應的值。
+請從 Application Insights 資源內部建立 API 金鑰，然後前往您「函數應用程式」的 [應用程式設定]****。 選取 [新增設訂]****，然後輸入名稱 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 及與您 API 金鑰對應的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET核心（需要應用程式洞察ASP.NET核心 SDK 2.3.0 或更高）
 
 修改您的 startup.cs 檔案，如下所示：
 
@@ -177,33 +177,33 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >我們強烈建議您在篩選條件準則中輸入潛在的機密資訊 (例如 CustomerID) 之前，先設定驗證的頻道。
 >
 
-## <a name="supported-features-table"></a>支援的功能資料表
+## <a name="supported-features-table"></a>支援的功能表
 
-| 語言                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
+| 語言                         | 基本指標       | 效能度量 | 自訂篩選    | 示例遙測    | CPU 按進程拆分 |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +）  |
-| .NET Core （target =. NET Framework）| 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +）  |
-| .NET Core （target =. NET Core）     | 支援（V 2.4.1 +） | 支援*          | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | **不支援**    |
+| .NET                             | 支援 （V2.7.2+） | 支援 （V2.7.2+） | 支援 （V2.7.2+） | 支援 （V2.7.2+） | 支援 （V2.7.2+）  |
+| .NET 核心（目標=.NET 框架）| 支援 （V2.4.1+） | 支援 （V2.4.1+） | 支援 （V2.4.1+） | 支援 （V2.4.1+） | 支援 （V2.4.1+）  |
+| .NET 核心（目標=.NET 核心）     | 支援 （V2.4.1+） | 支援*          | 支援 （V2.4.1+） | 支援 （V2.4.1+） | **不支援**    |
 | Azure Functions v2               | 支援           | 支援           | 支援           | 支援           | **不支援**    |
-| Java                             | 支援（V 2.0.0 +） | 支援（V 2.0.0 +） | **不支援**   | **不支援**   | **不支援**    |
-| Node.js                          | 支援（V 1.3.0 +） | 支援（V 1.3.0 +） | **不支援**   | 支援（V 1.3.0 +） | **不支援**    |
+| Java                             | 支援 （V2.0.0+） | 支援 （V2.0.0+） | **不支援**   | **不支援**   | **不支援**    |
+| Node.js                          | 支援 （V1.3.0+） | 支援 （V1.3.0+） | **不支援**   | 支援 （V1.3.0+） | **不支援**    |
 
-基本計量包括要求、相依性和例外狀況速率。 效能計量（效能計數器）包含記憶體和 CPU。 範例遙測會顯示失敗要求和相依性、例外狀況、事件和追蹤的詳細資訊串流。
+基本指標包括請求、依賴項和異常率。 性能指標（效能計數器）包括記憶體和 CPU。 示例遙測顯示失敗請求和依賴項、異常、事件和跟蹤的詳細資訊流。
 
- \* PerfCounters 支援在不是以 .NET Framework 為目標的 .NET Core 版本上稍微不同：
+ \*PerfCounters 支援因不針對 .NET 框架的 .NET Core 版本略有不同：
 
-- 在 Windows Azure App Service 中執行時，支援 PerfCounters 度量。 （AspNetCore SDK Version 2.4.1 或更高版本）
-- 當應用程式在任何 Windows 機器（VM、雲端服務或內部內部部署等）中執行時，會支援 PerfCounters。（AspNetCore SDK Version 2.7.1 或更高版本），但適用于以 .NET Core 2.0 或更新版本為目標的應用程式。
-- 當應用程式在最新的搶鮮版（Linux、Windows、適用于 Linux 的 app service、容器等）中執行時，會支援 PerfCounters （亦即 AspNetCore SDK Version 2.8.0-Beta1 或更高版本），但適用于以 .NET Core 2.0 或更新版本為目標的應用程式。
+- 在 Windows 的 Azure 應用服務中運行時，支援 PerfCounters 指標。 （AspNetCore SDK 版本 2.4.1 或更高版本）
+- 當應用在任何 Windows 電腦（VM 或雲服務或上部電腦等）中運行時，支援 PerfCounter（AspNetCore SDK 版本 2.7.1 或更高版本），但適用于面向 .NET Core 2.0 或更高版本的應用。
+- 在最新的測試版（即，即 AspNetCore SDK 版本 2.8.0-Beta1 或更高版本），但適用于面向 .NET Core 2.0 或更高版本的應用。
 
-根據預設，會停用 node.js SDK 中的即時計量。 若要啟用即時計量，請在初始化 SDK 時，將 `setSendLiveMetrics(true)` 新增至您的設定[方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
+預設情況下，在 Node.js SDK 中禁用即時指標。 要啟用即時指標，請在初始`setSendLiveMetrics(true)`化 SDK 時添加到[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)中。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-沒有資料？ 如果您的應用程式位於受保護的網路中：即時計量資料流使用與其他 Application Insights 遙測不同的 IP 位址。 請確定[這些 IP 位址](../../azure-monitor/app/ip-addresses.md)在您的防火牆中為開啟狀態。
+沒有資料？ 如果應用程式處於受保護的網路中：即時指標流使用與其他應用程式見解遙測不同的 IP 位址。 請確定[這些 IP 位址](../../azure-monitor/app/ip-addresses.md)在您的防火牆中為開啟狀態。
 
 ## <a name="next-steps"></a>後續步驟
 * [使用 Application Insights 監視使用情況](../../azure-monitor/app/usage-overview.md)
 * [使用診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
-* [分析工具](../../azure-monitor/app/profiler.md)
-* [快照集偵錯工具](../../azure-monitor/app/snapshot-debugger.md)
+* [分析器](../../azure-monitor/app/profiler.md)
+* [快照調試器](../../azure-monitor/app/snapshot-debugger.md)

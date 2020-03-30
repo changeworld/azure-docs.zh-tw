@@ -1,13 +1,13 @@
 ---
-title: 在 Azure 應用程式深入解析中分隔遙測
+title: 在 Azure 應用程式見解中分離遙測
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671455"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>區分開發、測試及生產環境的遙測
@@ -18,7 +18,7 @@ ms.locfileid: "77671455"
 
 ## <a name="about-resources-and-instrumentation-keys"></a>關於資源和檢測金鑰
 
-在為 Web 應用程式設定 Application Insights 監視時，您會在 Microsoft Azure 中建立 Application Insights 資源。 您可以在 Azure 入口網站開啟此資源，以便查看並分析從應用程式中收集到的遙測資料。 透過「檢測金鑰」(iKey) 即可識別資源。 當您安裝 Application Insights 套件來監視應用程式時，您必須為它設定檢測金鑰，以便讓它知道要將遙測資料傳送到哪裡。
+在為 Web 應用程式設定 Application Insights 監視時，您會在 Microsoft Azure 中建立 Application Insights 資源**。 您可以在 Azure 入口網站開啟此資源，以便查看並分析從應用程式中收集到的遙測資料。 透過「檢測金鑰」**(iKey) 即可識別資源。 當您安裝 Application Insights 套件來監視應用程式時，您必須為它設定檢測金鑰，以便讓它知道要將遙測資料傳送到哪裡。
 
 在不同情況下，您一般可以選擇使用不同資源或單一的共用資源︰
 
@@ -28,7 +28,7 @@ ms.locfileid: "77671455"
 * A | B 測試 - 使用單一資源。 建立 TelemetryInitializer 即可在遙測中新增屬性來識別變體。
 
 
-## <a name="dynamic-ikey"></a> 動態檢測金鑰
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
 
 若要能夠在程式碼歷經不同生產階段時更輕鬆地變更 ikey，請將 ikey 設定在程式碼中 (而不是設定在組態檔中)。
 
@@ -46,8 +46,8 @@ ms.locfileid: "77671455"
 
 在此範例中，不同資源的 ikeys 會放置在不同版本的 Web 組態檔中。 交換 Web 組態檔 (您可以在發行指令碼中進行) 將會交換目標資源。
 
-### <a name="web-pages"></a>Web 網頁
-在您的應用程式網頁中，此 iKey 也會用於[您從快速入門](../../azure-monitor/app/javascript.md)分頁所得到的腳本中。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
+### <a name="web-pages"></a>網頁
+iKey 也用於應用的網頁，以及[從快速入門邊欄選項卡中得到的腳本](../../azure-monitor/app/javascript.md)。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
 
 *Razor 中的 JavaScript*
 
@@ -69,15 +69,15 @@ ms.locfileid: "77671455"
 
 ![按一下 [新增]，然後按一下 [Application Insights]](./media/separate-resources/01-new.png)
 
-* **應用程式類型** 會影響您在 [概觀] 刀鋒視窗中看到的內容，以及 [計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中提供的屬性。 如果沒有看到您的應用程式類型，請針對網頁選擇其中一個 Web 類型。
-* **資源群組** 可讓您輕鬆管理屬性，例如 [存取控制](../../azure-monitor/app/resources-roles-access-control.md)。 您可以對開發、測試和生產環境使用不同的資源群組。
+* **應用程式類型**會影響您在 [概觀] 刀鋒視窗中看到的內容，以及[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中提供的屬性。 如果沒有看到您的應用程式類型，請針對網頁選擇其中一個 Web 類型。
+* **資源組**是管理訪問[控制](../../azure-monitor/app/resources-roles-access-control.md)等屬性的便利。 您可以對開發、測試和生產環境使用不同的資源群組。
 * **訂用帳戶** 是您在 Azure 中的付款帳戶。
 * **位置** 是我們保留您資料的地方。 目前無法變更位置。 
 * **新增至儀表板** 可在 Azure 首頁上放置資源的快速存取圖格。 
 
 建立資源需要幾秒鐘。 完成時，您會看到警示。
 
-(您可以撰寫 [PowerShell 指令碼](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)來自動建立資源)。
+（您可以編寫[PowerShell 腳本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)來自動創建資源。
 
 ### <a name="getting-the-instrumentation-key"></a>取得檢測金鑰
 檢測金鑰會識別您所建立的資源。 
@@ -123,14 +123,14 @@ ms.locfileid: "77671455"
     </PropertyGroup>
     ```
 
-    這會產生名為*yourProjectName*的檔案。Buildinfo.config。發佈程式會將它重新命名為 Buildinfo.config。
+    這將生成名為*ProjectName*的檔。發佈過程將其重命名為 BuildInfo.config。
 
     當您使用 Visual Studio 建置時，組建標籤會包含預留位置 (AutoGen_...)。 但是當使用 MSBuild 建立時，則會填入正確的版本號碼。
 
     若要允許 MSBuild 產生版本號碼，請在 AssemblyReference.cs 中設定類似 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和版次追蹤
-若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在您的 `.csproj` 檔案中，新增：  
+若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在檔中`.csproj`，添加：  
 
 ```XML
 
@@ -141,7 +141,7 @@ ms.locfileid: "77671455"
 
 當它有組建資訊時，Application Insights Web 模組會自動新增 **應用程式版本** ，做為每個遙測項目的屬性。 如此可讓您在執行[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)或在[探索計量](../../azure-monitor/app/metrics-explorer.md)時，依據版本來篩選。
 
-不過，請注意，組建版本號碼只會由 Microsoft Build Engine 產生，而不是由 Visual Studio 的開發人員組建產生。
+但是，請注意，生成版本號僅由 Microsoft 生成引擎生成，而不是由 Visual Studio 的開發人員生成。
 
 ### <a name="release-annotations"></a>版本註解
 如果您使用 Azure DevOps，您可以[取得註解標記](../../azure-monitor/app/annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 下圖顯示此標記的顯示方式。

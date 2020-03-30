@@ -4,17 +4,17 @@ description: 自動化 Application Insights 的組態以取得有關度量變更
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669840"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以在 [Application Insights](../../azure-monitor/app/alerts.md) 中自動設定[警示](../../azure-monitor/app/app-insights-overview.md)的組態。
+您可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自動設定[警示](../../azure-monitor/app/alerts.md)的組態。
 
 此外，您可以[設定 webhook 以自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。
 

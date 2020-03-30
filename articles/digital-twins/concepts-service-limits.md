@@ -1,6 +1,6 @@
 ---
-title: 公開預覽服務限制-Azure 數位 Twins |Microsoft Docs
-description: 瞭解 Azure 數位 Twins 的公開預覽服務、訂用帳戶、實例和速率限制。
+title: 公共預覽服務限制 - Azure 數位孿生 |微軟文檔
+description: 瞭解 Azure 數位孿生的公共預覽服務、訂閱、實例和速率限制。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,17 +9,17 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370369"
 ---
 # <a name="public-preview-service-limits"></a>公開預覽服務限制
 
 [!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-在公開預覽期間，針對現有的客戶，Azure 數位 Twins 具有下列暫時的訂用帳戶、實例和速率限制。 這些條件約束的存在有助於簡化新服務和其許多功能的學習，並會在公開上市（GA）時增加或移除。
+在公共預覽期間，Azure 數位孿生具有以下現有客戶的臨時訂閱、實例和費率限制。 存在這些限制有助於簡化有關新服務及其許多功能的學習，並且將通過通用 （GA） 增加或刪除。
 
 ## <a name="per-subscription-limits"></a>每個訂用帳戶的限制
 
@@ -52,7 +52,7 @@ Azure Digital Twins 管理 API 的要求比率限制如下：
 對於可對您 Azure Digital Twins 執行個體發出的所有使用者定義函式呼叫總數，其限制如下：
 
 - 每秒 400 個用戶端程式庫呼叫
-- 每秒 100 次 **SendNotification** 呼叫
+- 每秒 100**個發送通知**呼叫
 
 > [!NOTE]
 > 下列動作可能會產生要暫時套用的額外比率限制：
@@ -64,8 +64,8 @@ Azure Digital Twins 管理 API 的要求比率限制如下：
 
 下列限制是裝置可傳送至 Azure Digital Twins 執行個體的所有訊息總數上限：
 
-- 所有裝置上每秒100個訊息
--    每個裝置每秒25則訊息
+- 所有設備每秒 100 條消息
+-    每台設備每秒 25 條消息
 
 ## <a name="next-steps"></a>後續步驟
 

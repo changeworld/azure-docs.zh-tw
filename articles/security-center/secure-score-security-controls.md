@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心中增強的安全分數（預覽）
-description: Azure 資訊安全中心中增強的安全分數（預覽）和安全性控制項的描述
+title: Azure 安全中心的安全分數
+description: Azure 安全中心安全得分及其安全控制的描述
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,125 +11,125 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 03/10/2020
 ms.author: memildin
-ms.openlocfilehash: ad0d8e751e79a23b2e7ac7b9da934f141ca9aa55
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d7eea9cd83e72b6ffeaae319a8e87c065015e6b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086523"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415807"
 ---
-# <a name="the-enhanced-secure-score-preview"></a>增強的安全分數（預覽） 
-
-本文介紹加強的安全分數（目前處於預覽狀態）、隨附的安全性控制，以及它們帶來的優點。 它也會說明如何計算分數。
+# <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Azure 安全中心增強的安全分數（預覽）
 
 ## <a name="introduction-to-secure-score"></a>安全分數簡介
 
-Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全性情況，並協助您有效率且有效地改善安全性。 可讓您達成這些目標的資訊安全中心中央層面是安全分數。
+Azure 安全中心有兩個主要目標：説明您瞭解當前的安全狀況，並説明您高效有效地提高安全性。 安全中心的核心方面是安全得分，使您能夠實現這些目標。
 
-資訊安全中心持續評估資源、訂用帳戶和組織的安全性問題。 接著，它會將所有的發現匯總成一個分數，讓您可以立即得知目前的安全性情況：分數越高，識別的風險層級越低。 使用分數來追蹤組織中的安全性工作和專案。 
+安全中心持續評估您的資源、訂閱和組織安全問題。 然後，它將所有發現聚合到單個分數中，以便您可以一目了然地判斷您當前的安全情況：分數越高，識別的風險級別越低。 使用分數跟蹤組織中的安全工作和專案。 
 
-*加強*的安全分數（目前處於預覽狀態）是以**攻擊面為主**，並帶來三個優點：
+安全中心的安全分數頁包括：
 
-- **安全性控制項**-安全性建議現在會分組成邏輯集，以更清楚地反映易受攻擊面。 如需詳細資訊，請參閱下面[的「安全分數」的計算方式](secure-score-security-controls.md#how-the-secure-score-is-calculated)。
+- **分數**- 安全分數顯示為百分比值，但基礎值也很清楚：
 
-- **整體分數較佳反映**了在建議層級的整體狀態分數。 透過這項增強功能，您的分數只會在您修復控制項內單一資源的*所有*建議時才會改善。 這表示當資源的安全性改善時，您的分數只會改善。 
+    [![安全分數顯示為百分比值，基礎數位也清晰](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
 
-- **個別攻擊面的安全性狀態會**顯示 [每個安全性控制的分數]，而 [安全分數] 頁面會變成讓您深入瞭解組織保護各個受攻擊面的程度。
+- **安全控制**- 每個控制項都是一組相關的安全建議，並反映易受攻擊的攻擊面。 控制項是一組安全建議，其中包含可説明您實現這些建議的說明。 僅當修復控制項中單個資源*的所有*建議時，您的分數才會提高。
 
-增強的安全分數會顯示為百分比，如下列螢幕擷取畫面所示：
+    要立即查看您的組織保護每個攻擊面的能力，請查看每個安全控制的分數。
 
-[![增強的安全分數（預覽）現在包含百分比](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+    有關詳細資訊，請參閱下面[如何計算安全分數](secure-score-security-controls.md#how-the-secure-score-is-calculated)。 
 
 
-## <a name="locating-your-secure-score"></a>找出您的安全分數
+>[!TIP]
+> 早期版本的安全中心在推薦級別授予分數：當您對單個資源進行修正時，您的安全分數會提高。 如今，只有修復控制項中單個資源*的所有*建議，您的分數才會提高。 因此，只有在提高資源的安全性時，您的分數才會提高。
+> 雖然此增強版本仍處於預覽階段，但早期安全分數體驗可從 Azure 門戶作為選項提供。 
 
-資訊安全中心會醒目顯示您的分數：這是 [總覽] 頁面中顯示的第一件事。 如果您按一下 [專用安全分數] 頁面，您會看到依訂用帳戶細分的分數。 按一下單一訂用帳戶，以查看優先順序建議的詳細清單，以及補救它們對訂用帳戶分數的潛在影響。
+
+## <a name="locating-your-secure-score"></a>找到您的安全分數
+
+安全中心顯著顯示您的分數：這是"概述"頁中顯示的第一件事。 如果您按一下專用安全分數頁，您將看到按訂閱細分的分數。 按一下單個訂閱以查看優先建議的詳細清單以及修復這些建議對訂閱分數的潛在影響。
 
 ## <a name="how-the-secure-score-is-calculated"></a>如何計算安全分數 
 
-在此預覽之前，資訊安全中心個別考慮每個建議，並根據其嚴重性指派值給它。 負責改善其安全性狀態的安全性小組，必須根據結果的完整清單，設定回應資訊安全中心建議的優先順序。 每次您補救單一資源的建議時，即表示您的安全分數已改良。
+建議頁面上清楚地顯示了每個安全控制對總體安全分數的貢獻。
 
-做為安全分數增強的一部分，建議現在會分組為**安全性控制項**。 控制項是一組安全性建議，以及可協助您執行這些建議的指示。 控制項是相關建議的邏輯群組。 不會再以建議層級來獎勵點數。 相反地，您的分數只會在您針對控制項中的單一資源補救*所有*建議時才會改善。
+[![增強的安全分數引入了安全控制](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-每個安全性控制對整體安全分數的貢獻，會清楚地顯示在 [建議] 頁面上。
+要獲取安全控制的所有可能點，所有資源都必須符合安全控制中的所有安全建議。 例如，安全中心對如何保護管理埠提出了多項建議。 過去，您可以修復其中一些相關和相互依賴的建議，同時使其他建議未解決，您的安全分數將得到改善。 客觀地看，很容易說，你的安全沒有改善，直到你解決了所有問題。 現在，您必須修復所有，以改變您的安全分數。
 
-[![增強的安全分數（預覽）引進了安全性控制](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
+例如，稱為"應用系統更新"的安全控制的最大分數為 6 分，您可以在工具提示中看到控制項的潛在增加值：
 
-若要取得安全性控制的所有可能點，您所有的資源都必須符合安全性控制措施中的所有安全性建議。 例如，資訊安全中心有多個關於如何保護管理埠的建議。 在過去，您可以補救一些相關和相互依存的建議，同時讓其他人 unsolved，而您的安全分數也會改善。 在客觀的情況下，您可以輕鬆地認為您的安全性已經過改善，直到全部解決為止。 現在，您必須補救所有專案，以與您的安全分數產生差異。
+[![安全控制"應用系統更新"](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-例如，名為「套用系統更新」的安全性控制項的分數上限為六個點，您可以在工具提示中看到控制項的可能增加值：
+上圖中安全控制"應用系統更新"的可能性顯示"2%（1 點）"。 這意味著，如果修復此控制項中的所有建議，您的分數將增加 2%（在這種情況下，一個點）。 為簡單起見，建議清單中的"潛在增加"列中的值四捨五入為整數。 工具提示顯示精確值：
 
-[![安全性控制 [套用系統更新]](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
+* **最大分數**- 通過在控制項內完成所有建議，您可以獲得的最大分數數。 控制項的最大分數指示該控制項的相對顯著性。 使用最大分數值來分診要首先處理哪些問題。 
+* **潛在增加**- 控制項內可供您使用的剩餘點。 要將這些分數添加到安全分數中，請修復控制項的所有建議。 在上面的示例中，控制項顯示的一個點實際上是 0.96 點。
+* **當前分數**- 此控制項的當前分數。 每個控制項都會對總分做出貢獻。 在此示例中，控制項對總計貢獻 5.04 點。 
 
-上述螢幕擷取畫面中的「套用系統更新」安全性控制可能會顯示「2% （1點）」。 這表示，如果您補救此控制項中的所有建議，您的分數會增加2% （在此案例中為一個點）。 為了簡單起見，建議清單中 [可能增加] 資料行的值會舍入為整數。 工具提示會顯示精確的值：
+### <a name="calculations---understanding-your-score"></a>計算 - 瞭解您的分數
 
-* **最大分數**-完成控制項內的所有建議可獲得的點數上限。 控制項的最大分數表示該控制項的相對重要性。 使用 [最大分數] 值來分級要優先處理的問題。 
-* **可能的增加**-您可以在控制項內使用的剩餘點數。 若要將這些點新增至您的安全分數，請修復所有控制項的建議。 在上述範例中，控制項所顯示的一個點實際上是0.96 點。
-* **目前分數**-此控制項的目前分數。 每個控制項都有貢獻總分數。 在此範例中，控制項會對總計貢獻5.04 點。 
-
-### <a name="calculations---understanding-your-score"></a>計算-瞭解您的分數
-
-|計量|公式和範例|
+|計量|公式和示例|
 |-|-|
-|**安全性控制項的目前分數**|<br>用來計算安全性控制項目前分數的 ![方程式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每個個別的安全性控制都會貢獻安全性分數。 受此控制項中的建議影響的每個資源，都是針對控制項的目前分數。 每個控制項的目前分數是控制項*內*資源狀態的量值。<br>![工具提示，顯示在計算安全性控制項的目前分數時所使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此範例中，最大分數6會除以78，因為這是狀況良好和狀況不良資源的總和。<br>6/78 = 0.0769<br>乘以狀況良好的資源數目（4）會導致目前的分數：<br>0.0769 * 4 = **0.31**<br><br>|
-|**安全分數**<br>單一訂用帳戶|<br>![用於計算目前安全分數的方程式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![已啟用所有控制項的單一訂用帳戶安全分數](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此範例中，會有單一訂用帳戶，其中包含所有可用的安全性控制項（可能的最大分數為60點）。 分數顯示可能60的28點，其餘的32點會反映在安全性控制項的「潛在分數增加」圖中。<br>![控制項清單和可能的分數增加](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**安全分數**<br>多重訂閱|<br>新增所有訂用帳戶中所有資源的目前分數，然後計算會與單一訂用帳戶相同<br><br>在查看多個訂用帳戶時，安全分數會評估所有已啟用原則中的所有資源，並將其對每個安全性控制的最大分數所造成的影響<br>為已啟用所有控制項的多個訂用帳戶 ![安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合的分數**不**是平均值;而是所有訂用帳戶上所有資源狀態的評估狀態。<br>在這裡，如果您移至 [建議] 頁面並加上可能的可用點，您會發現這是目前分數（24）和可用的最大分數（60）之間的差異。|
+|**安全控制當前得分**|<br>![計算安全控制當前分數的方程](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每個單獨的安全控制都有助於提高安全分數。 受控制項內建議影響的每個資源都有助於控制當前的得分。 每個控制項的當前分數是控制項*內*資源狀態的度量。<br>![顯示計算安全控制當前分數時使用的值的工具提示](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，6 的最大值將除以 78，因為這是健康和不正常資源的總和。<br>6 / 78 = 0.0769<br>乘以健康資源數 （4） 可生成當前分數：<br>0.0769 × 4 × **0.31**<br><br>|
+|**安全分數**<br>單一訂用帳戶|<br>![用於計算當前安全分數的方程](media/secure-score-security-controls/secure-score-equation.png)<br><br>![啟用所有控制項的單次訂閱安全分數](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此示例中，有一個訂閱，所有安全控制都可用（潛在最高分數為 60 分）。 得分顯示28分的可能60和剩餘的32分反映在"潛在分數增加"的數位的安全控制。<br>![控制項清單和潛在分數增加](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**安全分數**<br>多重訂閱|<br>添加所有訂閱中所有資源的當前分數，然後計算與單個訂閱相同<br><br>查看多個訂閱時，安全分數會評估所有啟用的策略中的所有資源，並對其進行組合影響，以影響每個安全控制的最大分數。<br>![啟用所有控制項後，為多個訂閱的安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>合併分數不是平均值;因此，合併分數**不是**平均值。而是評估所有訂閱中所有資源的狀態。<br>在這裡，如果您轉到建議頁面並添加可用的潛在分數，您會發現當前分數 （24） 和可用最大分數 （60） 之間的差異。|
 ||||
 
-## <a name="improving-your-secure-score"></a>提升您的安全分數
+## <a name="improving-your-secure-score"></a>提高您的安全分數
 
-若要改善您的安全分數，請從建議清單中補救安全性建議。 您可以針對每個資源，或使用**快速修正**來手動補救每個建議！ 選項（如果有的話）會快速將建議的補救套用至資源群組。 如需詳細資訊，請參閱[補救建議](security-center-remediate-recommendations.md)。
+要提高安全分數，請從建議清單中修復安全建議。 您可以為每個資源手動修復每個建議，或者使用**快速修復！** 選項（如果可用）可快速將建議的修正應用於一組資源。 有關詳細資訊，請參閱[修正建議](security-center-remediate-recommendations.md)。
 
-只有內建建議會影響安全分數。
+>[!IMPORTANT]
+> 只有內置建議才會對安全分數產生影響。
 
-## <a name="security-controls-and-their-recommendations"></a>安全性控制項及其建議
+## <a name="security-controls-and-their-recommendations"></a>安全控制及其建議
 
-下表列出 Azure 資訊安全中心中的安全性控制項。 針對每個控制項，如果您針對*所有*資源補救控制項中列出的*所有*建議，您可以看到可新增至安全分數的最大點數。 
+下表列出了 Azure 安全中心中的安全控制項。 對於每個控制項，如果修復控制項中列出的*所有*資源*的所有*建議，則可以查看可添加到安全分數的最大點數。 
 
 > [!TIP]
-> 如果您想要以不同的方式篩選或排序這份清單，請將其複製並貼到 Excel 中。
+> 如果要以不同方式篩選或排序此清單，請將其複製並粘貼到 Excel 中。
 
-|安全性控制|最大安全分數點|建議|
+|安全控制|最大安全分數|建議|
 |----------------|:-------------------:|---------------|
-|**啟用 MFA**|10|-應在訂用帳戶上具有擁有者許可權的帳戶上啟用 MFA<br>-MFA 應在訂用帳戶上具有讀取權限的帳戶上啟用<br>-MFA 應為您訂用帳戶上具有寫入權限的帳戶啟用|
-|**保護管理埠**|8|-即時網路存取控制應套用在虛擬機器上<br>-虛擬機器應該與網路安全性群組相關聯<br>-管理埠應在您的虛擬機器上關閉|
-|**套用系統更新**|6|-監視代理程式健康情況問題應在您的電腦上解決<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式應該安裝在您的電腦上<br>-應針對您的雲端服務角色更新 OS 版本<br>-應安裝虛擬機器擴展集上的系統更新<br>-系統更新應該安裝在您的電腦上<br>-應重新開機您的電腦以套用系統更新<br>-Kubernetes 服務應該升級為不容易受攻擊的 Kubernetes 版本<br>-監視代理程式應該安裝在您的虛擬機器上|
-|**修復弱點**|6|-應在您的 SQL server 上啟用 Advanced data security<br>-應補救 Azure Container Registry 映射中的弱點（預覽）<br>-應補救 SQL 資料庫上的弱點<br>-弱點評估解決方案應補救弱點<br>-應在您的 SQL 受控實例上啟用弱點評估<br>-應在您的 SQL server 上啟用弱點評估<br>-弱點評估解決方案應該安裝在您的虛擬機器上|
-|**啟用待用加密**|4|-應在虛擬機器上套用磁片加密<br>-應啟用 SQL 資料庫上的透明資料加密<br>-自動化帳戶變數應加密<br>-Service Fabric 叢集應將 ClusterProtectionLevel 屬性設定為 EncryptAndSign<br>-應使用您自己的金鑰來加密 SQL server TDE 保護裝置|
-|**加密傳輸中的資料**|4|-API 應用程式應該只能透過 HTTPS 存取<br>-函數應用程式只能透過 HTTPS 存取<br>-只應啟用 Redis 快取的安全連線<br>-應啟用儲存體帳戶的安全傳輸<br>-Web 應用程式應該只能透過 HTTPS 存取|
-|**管理存取權和許可權**|4|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除已淘汰的帳戶<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-應從您的訂用帳戶移除具有寫入權限的外部帳戶<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
-|**修復安全性設定**|4|-Pod 安全性原則應定義于 Kubernetes Services （預覽）<br>-應補救容器安全性設定中的弱點<br>-應補救您電腦上安全性設定中的弱點<br>-應補救虛擬機器擴展集上安全性設定中的弱點<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式健康情況問題應在您的電腦上解決|
-|**限制未經授權的網路存取**|4|-您的虛擬機器上的 IP 轉送應停用<br>-已授權的 IP 範圍應定義于 Kubernetes Services （預覽）<br>-（已淘汰）應限制應用程式服務的存取（預覽）<br>-（已淘汰）應強化 IaaS Nsg 上 web 應用程式的規則<br>-虛擬機器應該與網路安全性群組相關聯<br>-CORS 不應允許每個資源存取您的 API 應用程式<br>-CORS 不應允許每個資源存取您的函數應用程式<br>-CORS 不應允許每個資源存取您的 Web 應用程式<br>-API 應用程式的遠端偵測應關閉<br>-應關閉函數應用程式的遠端偵錯程式<br>-應關閉 Web 應用程式的遠端偵錯程式<br>-應限制與網際網路對向 Vm 的寬鬆網路安全性群組<br>-應強化網際網路面向虛擬機器的網路安全性群組規則|
-|**套用適應性應用程式控制**|3|-應在虛擬機器上啟用彈性應用程式控制<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式健康情況問題應在您的電腦上解決|
-|**套用資料分類**|2|-SQL 資料庫中的機密資料應分類（預覽）|
-|**保護應用程式免于遭受 DDoS 攻擊**|2|-應啟用 DDoS 保護標準|
-|**啟用 endpoint protection**|2|-應在虛擬機器擴展集上補救端點保護健康情況失敗<br>-應在您的電腦上解決端點保護健康情況問題<br>-端點保護解決方案應該安裝在虛擬機器擴展集上<br>-在虛擬機器上安裝端點保護解決方案<br>-監視代理程式健康情況問題應在您的電腦上解決<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在您的虛擬機器上<br>-在您的電腦上安裝 endpoint protection 解決方案|
-|**啟用審核和記錄**|1|-應啟用 SQL server 上的審核<br>-應啟用應用程式服務中的診斷記錄<br>-應啟用 Azure Data Lake 存放區中的診斷記錄<br>-應啟用 Azure 串流分析中的診斷記錄<br>-應啟用 Batch 帳戶中的診斷記錄<br>-應啟用 Data Lake Analytics 中的診斷記錄<br>-應啟用事件中樞的診斷記錄<br>-應啟用 IoT 中樞中的診斷記錄<br>-應啟用 Key Vault 中的診斷記錄<br>-應啟用 Logic Apps 中的診斷記錄<br>-搜尋服務中的診斷記錄應該啟用<br>-應啟用服務匯流排中的診斷記錄<br>-應啟用虛擬機器擴展集中的診斷記錄<br>-應設定 Batch 帳戶上的計量警示規則<br>-SQL 審核設定應設定動作群組來捕獲重要活動<br>-SQL server 應設定為超過90天的審核保留天數。|
-|**實行安全性最佳做法**|0|-應限制具有防火牆和虛擬網路設定的儲存體帳戶存取權<br>-應該從事件中樞命名空間移除 RootManageSharedAccessKey 以外的所有授權規則<br>-應針對 SQL server 布建 Azure Active Directory 系統管理員<br>-應定義事件中樞實例上的授權規則<br>-儲存體帳戶應遷移至新的 Azure Resource Manager 資源<br>-虛擬機器應該遷移至新的 Azure Resource Manager 資源<br>-SQL server 的 Advanced data security 設定應該包含用來接收安全性警示的電子郵件地址<br>-您應該在受控實例上啟用 Advanced data security<br>-所有先進的威脅防護類型都應該在 SQL 受控實例的 advanced data security 設定中啟用<br>-系統管理員和訂用帳戶擁有者的電子郵件通知應該在 SQL server advanced data security 設定中啟用<br>-SQL server Advanced Data Security 設定中的 [先進的威脅防護類型] 應該設定為 [全部]<br>-子網應與網路安全性群組相關聯<br>-所有先進的威脅防護類型都應該在 SQL server advanced data security 設定中啟用|
+|**啟用 MFA**|10|- 應在具有訂閱擁有者許可權的帳戶上啟用 MFA<br>- 應在訂閱上具有讀取權限的帳戶上啟用 MFA<br>- 應啟用具有訂閱寫入權限的 MFA 帳戶|
+|**安全管理埠**|8|- 應在虛擬機器上應用即時網路存取控制<br>- 虛擬機器應與網路安全性群組關聯<br>- 應在虛擬機器上關閉管理埠|
+|**套用系統更新**|6|- 監控代理運行狀況問題應在您的電腦上解決<br>- 監視代理應安裝在虛擬機器規模集中<br>- 監控代理應安裝在您的電腦上<br>- 應針對雲服務角色更新作業系統版本<br>- 應安裝虛擬機器規模集的系統更新<br>- 系統更新應安裝在您的電腦上<br>- 應重新開機電腦以應用系統更新<br>- 庫伯內斯服務應升級到非易受攻擊的庫伯內斯版本<br>- 監視代理應安裝在虛擬機器上|
+|**修復弱點**|6|- 應在 SQL 伺服器上啟用高級資料安全性<br>- 應修復 Azure 容器註冊表映射中的漏洞<br>- 應修復 SQL 資料庫上的漏洞<br>- 漏洞應通過漏洞評估解決方案進行補救<br>- 應在 SQL 託管實例上啟用漏洞評估<br>- 應在 SQL 伺服器上啟用漏洞評估<br>- 漏洞評估解決方案應安裝在虛擬機器上|
+|**在靜止時啟用加密**|4|- 磁片加密應用於虛擬機器<br>- 應啟用 SQL 資料庫上的透明資料加密<br>- 應加密自動化帳戶變數<br>- 服務結構群集應將群集保護層級屬性設置為加密和簽名<br>- SQL 伺服器 TDE 保護器應使用您自己的金鑰進行加密|
+|**加密傳輸中的資料**|4|- API 應用程式應僅通過 HTTPS 訪問<br>- 功能應用程式應僅通過 HTTPS 訪問<br>- 應僅啟用與 Redis 緩存的安全連線<br>- 應啟用安全轉移到存儲帳戶<br>- Web 應用程式只能通過 HTTPS 訪問|
+|**管理存取權限和許可權**|4|- 應為您的訂閱指定最多 3 個擁有者<br>- 應從訂閱中刪除已棄用的帳戶（預覽版）<br>- 應從訂閱中刪除具有擁有者許可權的已棄用帳戶（預覽版）<br>- 應從訂閱中刪除具有擁有者許可權的外部帳戶（預覽版）<br>- 應從訂閱中刪除具有讀取權限的外部帳戶<br>- 應從訂閱中刪除具有寫入權限的外部帳戶（預覽版）<br>- 應有多個擁有者分配給您的訂閱<br>- 基於角色的存取控制 （RBAC） 應在庫伯奈斯服務（預覽版）上使用<br>- 服務結構群集應僅使用 Azure 活動目錄進行用戶端身份驗證|
+|**修復安全配置**|4|- 應在庫伯內斯服務上定義 Pod 安全性原則<br>- 應修復容器安全配置中的漏洞<br>- 應修復電腦安全性配置中的漏洞<br>- 應修復虛擬機器規模集中的安全配置漏洞<br>- 監視代理應安裝在虛擬機器上<br>- 監控代理應安裝在您的電腦上<br>- 監視代理應安裝在虛擬機器規模集中<br>- 監控代理運行狀況問題應在您的電腦上解決|
+|**限制未經授權的網路訪問**|4|- 應禁用虛擬機器上的 IP 轉發<br>- 授權 IP 範圍應在庫伯奈斯服務（預覽）上定義<br>- （取消）應用服務訪問應受到限制（預覽）<br>- （解密） IaaS NSG 上的 Web 應用程式規則應強化<br>- 虛擬機器應與網路安全性群組關聯<br>- CORS 不應允許每個資源訪問您的 API 應用<br>- CORS 不應允許每個資源訪問您的功能應用<br>- CORS 不應允許每個資源訪問您的 Web 應用程式<br>- 應關閉 API 應用的遠端偵錯<br>- 應關閉函數應用的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 對於具有面向 Internet 的 VM 的允許性網路安全性群組，應限制訪問<br>- 應強化面向互聯網的虛擬機器的網路安全性群組規則|
+|**應用自我調整應用程式控制**|3|- 應在虛擬機器上啟用自我調整應用程式控制<br>- 監視代理應安裝在虛擬機器上<br>- 監控代理應安裝在您的電腦上<br>- 監控代理運行狀況問題應在您的電腦上解決|
+|**應用資料分類**|2|- 應對 SQL 資料庫中的敏感性資料進行分類（預覽）|
+|**保護應用程式免受 DDoS 攻擊**|2|- 應啟用 DDoS 保護標準|
+|**啟用端點保護**|2|- 應在虛擬機器規模集中修復端點保護運行狀況故障<br>- 應在電腦上解決端點保護運行狀況問題<br>- 端點保護解決方案應安裝在虛擬機器規模集中<br>- 在虛擬機器上安裝端點保護解決方案<br>- 監控代理運行狀況問題應在您的電腦上解決<br>- 監視代理應安裝在虛擬機器規模集中<br>- 監控代理應安裝在您的電腦上<br>- 監視代理應安裝在虛擬機器上<br>- 在電腦上安裝端點保護解決方案|
+|**啟用審核和日誌記錄**|1|- 應啟用 SQL 伺服器上的審核<br>- 應啟用應用服務中的診斷日誌<br>- 應啟用 Azure 資料湖存儲中的診斷日誌<br>- 應啟用 Azure 流分析中的診斷日誌<br>- 應啟用批次處理帳戶中的診斷日誌<br>- 應啟用資料湖分析中的診斷日誌<br>- 應啟用事件中心中的診斷日誌<br>- 應啟用 IoT 中心中的診斷日誌<br>- 應啟用金鑰保存庫中的診斷日誌<br>- 應啟用邏輯應用中的診斷日誌<br>- 應啟用搜索服務中的診斷日誌<br>- 應啟用服務匯流排中的診斷日誌<br>- 應啟用虛擬機器規模集中的診斷日誌<br>- 應在批次處理帳戶上配置指標警報規則<br>- SQL 審核設置應配置操作組以捕獲關鍵活動<br>- SQL 伺服器應配置審核保留天數大於 90 天。|
+|**實施安全最佳實踐**|0|- 應限制使用防火牆和虛擬網路配置訪問存儲帳戶<br>- 應從事件中心命名空間中刪除除根管理共用訪問金鑰之外的所有授權規則<br>- 應為 SQL 伺服器預配 Azure 活動目錄管理員<br>- 應定義事件中心實例上的授權規則<br>- 存儲帳戶應遷移到新的 Azure 資源管理器資源<br>- 虛擬機器應遷移到新的 Azure 資源管理器資源<br>- SQL 伺服器的高級資料安全設置應包含電子郵件地址以接收安全警報<br>- 應在託管實例上啟用高級資料安全性<br>- 應在 SQL 託管實例高級資料安全設置中啟用所有高級威脅保護類型<br>- 應在 SQL 伺服器高級資料安全設置中啟用發送給管理員和訂閱擁有者的電子郵件通知<br>- 高級威脅保護類型應在 SQL 伺服器高級資料安全設置中設置為"全部"<br>- 子網應與網路安全性群組關聯<br>- 應在 SQL 伺服器高級資料安全設置中啟用所有高級威脅防護類型|
 ||||
 
-## <a name="secure-score-faq"></a>安全分數常見問題
+## <a name="secure-score-faq"></a>安全分數常見問題解答
 
-### <a name="why-has-my-secure-score-gone-down"></a>為什麼我的安全分數已經關閉？
-隨著此增強的安全分數所引進的變更，您必須解決資源對接收點的所有建議。 分數也會變更為0-10 的比例。
+### <a name="why-has-my-secure-score-gone-down"></a>為什麼我的安全分數下降了？
+安全中心已切換到增強的安全分數（當前處於預覽狀態），其中包括分數計算方式的更改。 現在，您必須解決資源接收點的所有建議。 分數也更改為 0-10。
 
-### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果我只在安全性控制中處理四個建議中的三個，我的安全分數是否會改變？
-不要在您修復單一資源的所有建議之前，它不會變更。 若要取得控制項的最大分數，您必須針對所有資源補救所有建議。
+### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果我只處理安全控制中四分之三的建議，我的安全分數是否會更改？
+否。 在修復單個資源的所有建議之前，它不會更改。 要獲取控制項的最大分數，必須修復所有資源的所有建議。
 
-### <a name="will-this-enhanced-secure-score-replace-the-existing-secure-score"></a>這個增強的安全分數會取代現有的安全分數嗎？ 
-是，但一段時間，它們會並存執行，以減輕轉換。
+### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>安全分數的先前體驗是否仍然可用？ 
+是。 有一段時間，他們將並排運行，以緩解過渡。 預期以前的模型會及時淘汰。 
 
-### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中將它停用，我的安全性控制是否會完成，而且我的安全分數也會更新？
-是。 建議您在環境中不適用時停用建議。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
+### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，並且我在策略中禁用了它，我的安全控制是否會得到滿足並更新我的安全分數？
+是。 當建議不適用於您的環境時，我們建議禁用這些建議。 有關如何禁用特定建議的說明，請參閱[禁用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
 
-### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>如果安全性控制提供給我安全分數的零點，我應該忽略它嗎？
-在某些情況下，您會看到控制項的最大分數大於零，但影響是零。 當修正資源的累加分數可以忽略時，會四捨五入為零。 請勿忽略這些建議，因為它們仍然會帶來安全性改進。 唯一的例外是「其他最佳作法」控制項。 補救這些建議並不會增加您的分數，但它會增強您的整體安全性。
+### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>如果安全控制為我的安全分數提供零點，我應該忽略它嗎？
+在某些情況下，您將看到控制項最大值大於零，但影響為零。 當修復資源的增量分數可以忽略不計時，則四捨五入為零。 不要忽視這些建議，因為它們仍然會帶來安全改進。 唯一的例外是"其他最佳實踐"控制項。 修復這些建議不會提高您的分數，但它會提高您的整體安全性。
 
 ## <a name="next-steps"></a>後續步驟
 
-本文說明增強的安全分數和其引進的新安全性控制。 如需相關內容，請參閱下列文章：
+本文介紹了安全分數及其引入的安全控制。 有關相關材料，請參閱以下文章：
 
 - [瞭解建議的不同元素](security-center-recommendations.md)
 - [瞭解如何修復建議](security-center-remediate-recommendations.md)

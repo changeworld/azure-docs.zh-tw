@@ -1,6 +1,6 @@
 ---
-title: 密集彈性集區中的資源管理 |Microsoft Docs
-description: 管理具有許多資料庫的 Azure SQL 彈性集區中的計算資源。
+title: 密集彈性池中的資源管理 |微軟文檔
+description: 管理具有許多資料庫的 Azure SQL 彈性池中的計算資源。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -10,90 +10,95 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 11/18/2019
-ms.openlocfilehash: 4ce00743f6b77e6ac3e672e0ebce1e5eafc8235d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 03/13/2019
+ms.openlocfilehash: 014f9edca1706c39930c6e48bb64cd8873bcace9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473722"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>密集彈性集區中的資源管理
 
-Azure SQL Database[彈性](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)集區是一種符合成本效益的解決方案，可讓您以不同的資源使用量來管理許多資料庫。 彈性集區中的所有資料庫會共用相同的資源配置（例如 CPU、記憶體、背景工作執行緒、儲存空間、tempdb），假設集區中只有一個資料庫子集會在任何指定時間使用計算資源。 這種假設可讓彈性集區符合成本效益。 客戶不需支付每個個別資料庫可能需要的所有資源，而是針對集區中的所有資料庫共用一組較小的資源來支付費用。
+Azure SQL 資料庫[彈性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)是一種經濟高效的解決方案，用於管理資源使用不同的許多資料庫。 彈性池中的所有資料庫共用相同的資源配置，如 CPU、記憶體、工作執行緒、存儲空間、tempdb，前提是**只有池中的資料庫子集將在任何給定時間使用計算資源**。 此假設允許彈性池具有成本效益。 客戶無需為每個資料庫可能可能需要的所有資源付費，而是為池中所有資料庫之間共用的少量資源付費。
 
 ## <a name="resource-governance"></a>資源管理
 
-資源分享會要求系統仔細控制資源使用方式，將「雜訊鄰近」的效果降到最低，其中具有高資源耗用量的資料庫會影響相同彈性集區中的其他資料庫。 同時，系統必須針對高可用性和嚴重損壞修復（HADR）、備份與還原、監視、查詢存放區及自動調整等功能，提供足夠的資源，以可靠地運作。
+資源分享要求系統仔細控制資源使用方式，以儘量減少"嘈雜鄰居"效應，其中資源消耗高的資料庫會影響同一彈性池中的其他資料庫。 同時，系統必須為高可用性和災害復原 （HADR）、備份和恢復、監視、查詢存儲、自動調優等功能提供足夠的資源，才能可靠地運行。
 
-Azure SQL Database 使用多個資源管理機制達到這些目標，包括程式層級資源管理的 Windows[工作物件](https://docs.microsoft.com/windows/win32/procthread/job-objects)、用於儲存配額管理的 Windows[檔案伺服器 Resource Manager （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) ，以及 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)的已修改和擴充版本，可在 SQL Server 中執行的每個 Azure SQL Database 實例內進行資源管理。
+Azure SQL 資料庫通過使用多個資源治理機制實現這些目標，包括用於進程級資源的治理的 Windows[工作物件](https://docs.microsoft.com/windows/win32/procthread/job-objects)、用於存儲配額管理的 Windows[檔案伺服器資源管理員 （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)以及用於在 Azure SQL 資料庫中運行的每個 SQL Server 實例中實現資源治理的修訂和擴展版本的 SQL Server[資源管理器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)。
 
-彈性集區的主要設計目標是符合成本效益。 基於這個理由，系統會刻意允許客戶建立_密集_集區，其中包含接近或達到允許上限的資料庫數目，但具有一般的計算資源配置。 基於相同的理由，系統不會為其內部程式保留所有可能需要的資源，但允許內部進程和使用者工作負載之間的資源分享。
+彈性池的主要設計目標是具有成本效益。 因此，系統有意允許客戶創建_密集的_池，即資料庫數接近或達到允許的最大池，但計算資源配置適中。 出於同樣的原因，系統不為其內部進程保留所有可能需要的資源，但允許內部進程和使用者工作負載之間的資源分享。
 
-這種方法可讓客戶使用密集的彈性集區，以達到適當的效能和主要成本節約。 不過，如果針對密集集區中的資料庫所進行的工作負載夠密集，資源爭用就會變得很重要。 資源爭用會降低使用者工作負載的效能，而且可能會對內部進程造成負面影響。
+這種方法允許客戶使用密集的彈性池，以實現足夠的性能和重大成本節約。 但是，如果密集池中許多資料庫的工作負載足夠密集，則資源爭用將變得十分嚴重。 資源爭用會會降低使用者工作負載性能，並可能對內部進程產生負面影響。
 
-當密集封裝集區中發生資源爭用時，客戶可以選擇下列一個或多個動作來減輕此問題：
-- 調整查詢工作負載以減少資源耗用量。
-- 將一些資料庫移至另一個集區，或將其設為獨立資料庫，以降低集區密度。
-- 相應增加集區以取得更多資源。
+> [!IMPORTANT]
+> 在具有許多活動資料庫的密集池中，將池中的資料庫數量增加到[DTU](sql-database-dtu-resource-limits-elastic-pools.md)和[vCore](sql-database-vcore-resource-limits-elastic-pools.md)彈性池記錄的最大資料庫數可能不可行。
+> 
+> 放置在密集池中而不引起資源爭用和性能問題的資料庫數取決於併發活動資料庫的數量以及每個資料庫中使用者工作負載的資源消耗。 此數位可能會隨著使用者工作負載的變化而變化。
 
-如需如何執行最後兩個動作的建議，請參閱本文稍後的[操作建議](#operational-recommendations)。 減少資源爭用會同時受益于使用者工作負載和內部進程，並可讓系統可靠地維護預期的服務層級。
+當資源爭用發生在密集擁擠的池中時，客戶可以選擇以下一個或多個操作來緩解這種情況：
+- 調整查詢工作負載以減少資源消耗，或隨著時間的推移跨多個資料庫分散資源消耗。
+- 通過將某些資料庫移動到其他池，或者使它們成為獨立資料庫來降低池密度。
+- 向上擴展池以獲取更多資源。
 
-## <a name="monitoring-resource-consumption"></a>監視資源耗用量
+有關如何實現最後兩個操作的建議，請參閱本文後面的[操作建議](#operational-recommendations)。 減少資源爭用既有利於使用者工作負載和內部進程，也使系統能夠可靠地保持預期的服務等級。
 
-為避免因為資源競爭而降低效能，使用密集彈性集區的客戶應該主動監視資源耗用量，並在增加資源爭用開始影響工作負載時，及時採取行動。 持續監視很重要，因為集區中的資源使用量會隨著使用者工作負載的變更、資料量和散發中的變更、集區密度的變更，以及 SQL Server 資料庫引擎中的變更而變更。 
+## <a name="monitoring-resource-consumption"></a>監視資源消耗
 
-Azure SQL Database 提供數個與這種監視相關的計量。 超過每個度量的建議平均值表示集區中的資源爭用，應使用先前所述的其中一個動作來解決。
+為了避免資源爭用導致性能下降，使用密集彈性池的客戶應主動監視資源消耗，並在資源爭用增加時及時採取行動，從而影響工作負載。 持續監視很重要，因為由於使用者工作負荷的變化、資料卷和分佈的變化、池密度的變化以及 Azure SQL 資料庫服務的變化，池中的資源使用量會隨時間而變化。 
 
-|度量名稱|描述|建議的平均值| 
+Azure SQL 資料庫提供了與此類監視相關的幾個指標。 超過每個指標的建議平均值表示池中的資源爭用，應使用前面提到的操作之一進行解決。
+
+|度量名稱|描述|推薦平均值| 
 |----------|--------------------------------|------------|
-|`avg_instance_cpu_percent`|與彈性集區相關聯之 SQL Server 進程的 CPU 使用率（由基礎作業系統測量）。 適用于每個資料庫的[sys.databases dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖，以及 `master` 資料庫的[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中。 此計量也會發出至 Azure 監視器，其[名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`sqlserver_process_core_percent`，並可在 Azure 入口網站中查看。 相同彈性集區中的每個資料庫都有相同的此值。|低於70%。 可能可以接受最多90% 的偶爾短尖峰。|
-|`max_worker_percent`|[工作者執行緒]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide)使用率。 針對集區中的每個資料庫以及集區本身提供。 資料庫層級的背景工作執行緒數目和集區層級有不同的限制，因此建議您在這兩個層級監視此計量。 適用于每個資料庫的[sys.databases dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖，以及 `master` 資料庫的[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中。 此計量也會發出至 Azure 監視器，其[名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`workers_percent`，並可在 Azure 入口網站中查看。|低於80%。 最多100% 的尖峰會導致連接嘗試和查詢失敗。|
-|`avg_data_io_percent`|讀取和寫入實體 IO 的 IOPS 使用率。 針對集區中的每個資料庫以及集區本身提供。 資料庫層級的 IOPS 數目和集區層級上有不同的限制，因此建議您在這兩個層級監視此計量。 適用于每個資料庫的[sys.databases dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖，以及 `master` 資料庫的[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中。 此計量也會發出至 Azure 監視器，其[名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`physical_data_read_percent`，並可在 Azure 入口網站中查看。|低於80%。 可能可以接受最多100% 的偶爾短尖峰。|
-|`avg_log_write_percent`|交易記錄寫入 IO 的輸送量使用率。 針對集區中的每個資料庫以及集區本身提供。 資料庫層級的記錄輸送量有不同的限制，並且在集區層級，因此建議在這兩個層級監視此計量。 適用于每個資料庫的[sys.databases dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)視圖，以及 `master` 資料庫的[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中。 此計量也會發出至 Azure 監視器，其[名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`log_write_percent`，並可在 Azure 入口網站中查看。 當此度量接近100% 時，所有資料庫修改（INSERT、UPDATE、DELETE、MERGE 語句、SELECT 。 INTO、BULK INSERT 等等）會變慢。|低於90%。 可能可以接受最多100% 的偶爾短尖峰。|
-|`oom_per_second`|彈性集區中記憶體不足（OOM）錯誤的速率，這是記憶體壓力的指標。 可在[sys.databases dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current)視圖中取得。 如需計算此度量的範例查詢，請參閱[範例](#examples)。|0|
-|`avg_storage_percent`|彈性集區層級的儲存空間使用量。 可在 `master` 資料庫的 [ [elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ] 視圖中取得。 此計量也會發出至 Azure 監視器，其[名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`storage_percent`，並可在 Azure 入口網站中查看。|低於80%。 對於沒有資料成長的集區，可以使用100%。|
-|`tempdb_log_used_percent`|`tempdb` 資料庫中的交易記錄空間使用量。 即使在某個資料庫中建立的暫存物件不會顯示在相同彈性集區中的其他資料庫中，但 `tempdb` 是相同集區中所有資料庫的共用資源。 `tempdb` 從集區中的一個資料庫啟動的長時間執行或閒置交易，可能會耗用大量的交易記錄檔，並導致相同集區中其他資料庫的查詢失敗。 可在[sys.databases dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql)視圖中取得。 此計量也會發出至 Azure 監視器，並可在 Azure 入口網站中查看。 請參閱範例查詢[範例](#examples)，以傳回此度量的目前值。|低於50%。 最多可接受80% 的偶爾尖峰。|
+|`avg_instance_cpu_percent`|與彈性池關聯的 SQL Server 進程的 CPU 利用率，由基礎作業系統衡量。 在每個資料庫中的[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖中以及`master`資料庫中的[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中可用。 此指標也會發送到 Azure 監視器，其中[命名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`sqlserver_process_core_percent`，可以在 Azure 門戶中查看。 此值對於同一彈性池中的每個資料庫都相同。|低於70%。 偶爾短峰值高達 90% 可能是可以接受的。|
+|`max_worker_percent`|[輔助執行緒]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide)利用率。 為池中的每個資料庫以及池本身提供。 資料庫級別和池級別對輔助執行緒的數量有不同的限制，因此建議在這兩個級別監視此指標。 在每個資料庫中的[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖中以及`master`資料庫中的[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中可用。 此指標也會發送到 Azure 監視器，其中[命名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`workers_percent`，可以在 Azure 門戶中查看。|低於80%。 峰值高達 100% 將導致連接嘗試和查詢失敗。|
+|`avg_data_io_percent`|讀取和寫入物理 IO 的 IOPS 利用率。 為池中的每個資料庫以及池本身提供。 資料庫級別和池級別對 IOPS 的數量有不同的限制，因此建議在這兩個級別監視此指標。 在每個資料庫中的[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖中以及`master`資料庫中的[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中可用。 此指標也會發送到 Azure 監視器，其中[命名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`physical_data_read_percent`，可以在 Azure 門戶中查看。|低於80%。 偶爾短峰值高達 100% 是可以接受的。|
+|`avg_log_write_percent`|事務日誌寫入 IO 的輸送量利用率。 為池中的每個資料庫以及池本身提供。 資料庫級別和池級別的日誌輸送量存在不同的限制，因此建議在這兩個級別監視此指標。 在每個資料庫中的[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)視圖中以及`master`資料庫中的[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中可用。 此指標也會發送到 Azure 監視器，其中[命名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`log_write_percent`，可以在 Azure 門戶中查看。 當此指標接近 100% 時，所有資料庫修改（插入、更新、刪除、合併語句、選擇 ... 進、裝插入等）會變慢。|低於90%。 偶爾短峰值高達 100% 是可以接受的。|
+|`oom_per_second`|彈性池中記憶體不足 （OOM） 錯誤的速度，這是記憶體壓力的指示器。 可在[dm_resource_governor_resource_pools_history_ex 視圖中](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current)使用。 有關依例查詢的示例，請參閱[示例](#examples)查詢以計算此指標。|0|
+|`avg_storage_percent`|彈性池級別的存儲空間利用率。 在`master`資料庫中的[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中可用。 此指標也會發送到 Azure 監視器，其中[命名為](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)`storage_percent`，可以在 Azure 門戶中查看。|低於80%。 對於沒有資料增長的池，可以接近 100%。|
+|`tempdb_log_used_percent`|`tempdb`資料庫中的事務日誌空間利用率。 儘管在一個資料庫中創建的臨時物件在同一彈性池中的其他資料庫中不可見，`tempdb`但是同一池中所有資料庫的共用資源。 從池中的一個資料庫啟動`tempdb`的長運行或空閒事務可能會佔用大部分事務日誌，並導致同一池中其他資料庫中的查詢失敗。 可在[系統dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql)視圖中。 此指標也會發送到 Azure 監視器，並且可以在 Azure 門戶中查看。 有關依例查詢的示例，請參閱[示例](#examples)查詢以返回此指標的當前值。|低於50%。 偶爾的峰值高達 80% 是可以接受的。|
 |||
 
-除了這些計量以外，Azure SQL Database 提供的視圖會傳回實際的資源治理限制，以及傳回資源集區層級和工作負載群組層級之資源使用率統計資料的視圖。
+除了這些指標之外，Azure SQL 資料庫還提供一個視圖，該視圖返回實際資源治理限制，以及返回資源池級別和工作負載組級別的資源利用率統計資訊的其他視圖。
 
-|視圖名稱|描述|  
+|檢視表名稱|描述|  
 |-----------------|--------------------------------|  
-|[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|傳回目前資料庫或彈性集區中資源管理機制所使用的實際設定和容量設定。|
-|[sys.dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|傳回目前資源集區狀態、資源集區的目前設定，以及累計資源集區統計資料的相關資訊。|
-|[sys.dm_resource_governor_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-transact-sql)|傳回累計工作負載群組統計資料和工作負載群組的目前設定。 此視圖可以與 `pool_id` 資料行上的 sys.databases 聯結 dm_resource_governor_resource_pools，以取得資源集區資訊。|
-|[sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)|傳回過去32分鐘的資源集區使用率統計資料。 每個資料列都代表20秒的間隔。 `delta_` 的資料行會在間隔期間傳回每個統計資料的變更。|
-|[sys. dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)|傳回過去32分鐘的工作負載群組使用率統計資料。 每個資料列都代表20秒的間隔。 `delta_` 的資料行會在間隔期間傳回每個統計資料的變更。|
+|[系統dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|返回當前資料庫或彈性池中資源治理機制使用的實際配置和容量設置。|
+|[sys.dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|返回有關當前資源池狀態、資源池當前配置和累積資源池統計資訊的資訊。|
+|[sys.dm_resource_governor_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-transact-sql)|返回累積工作負載組統計資訊和工作負載組的當前配置。 此視圖可以與`pool_id`列上的 sys.dm_resource_governor_resource_pools聯接，以獲取有關資源池資訊的資訊。|
+|[sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)|返回過去 32 分鐘的資源池利用率統計資訊。 每行表示 20 秒間隔。 列`delta_`在間隔內返回每個統計值中的更改。|
+|[sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)|返回過去 32 分鐘的工作負載組利用率統計資訊。 每行表示 20 秒間隔。 列`delta_`在間隔內返回每個統計值中的更改。|
 |||
 
-這些 views 可以用來監視資源使用率，並以近乎即時的方式對資源競爭進行疑難排解。 主要和可讀取次要複本（包括異地複本）上的使用者工作負載會分類為 `SloSharedPool1` 資源集區和 `UserPrimaryGroup.DBId[N]` 工作負載群組，其中 `N` 代表資料庫識別碼值。
+這些視圖可用於監視資源利用率，並近乎即時地排除資源爭用問題。 主副本和可讀輔助副本（包括地理副本）上的使用者工作負荷被分類到`SloSharedPool1`資源池和`UserPrimaryGroup.DBId[N]`工作負載組中，其中`N`代表資料庫 ID 值。
 
-除了監視目前的資源使用率以外，使用密集集區的客戶也可以在個別的資料存放區中維護歷程記錄資源使用量資料。 這項資料可用於預測性分析，以根據歷程記錄和季節性趨勢主動管理資源使用率。
+除了監視當前資源利用率外，使用密集池的客戶還可以在單獨的資料存儲中維護歷史資源利用率資料。 這些資料可用於預測分析，以便根據歷史和季節趨勢主動管理資源利用率。
 
-## <a name="operational-recommendations"></a>操作建議
+## <a name="operational-recommendations"></a>業務建議
 
-**保留足夠的資源空間**。 如果發生資源爭用和效能降低的情況，風險降低可能牽涉到將一些資料庫移出受影響的彈性集區，或相應增加集區（如先前所述）。 不過，這些動作需要額外的計算資源才能完成。 特別是，對於 Premium 和商務關鍵集區，這些動作需要針對要移動的資料庫，或針對彈性集區中的所有資料庫（如果已相應增加）來傳送所有資料。 資料傳輸是長時間執行且需要大量資源的作業。 如果集區已在高資源壓力之下，則緩和作業本身將會降低效能。 在極端情況下，可能無法透過資料庫移動或集區相應增加來解決資源爭用，因為所需的資源無法使用。 在此情況下，暫時減少受影響彈性集區上的查詢工作負載可能是唯一的解決方案。
+**留出足夠的資源空間**。 如果發生資源爭用和性能下降，緩解可能涉及將某些資料庫移出受影響的彈性池，或向上擴展池，如前面所述。 但是，這些操作需要額外的計算資源才能完成。 特別是，對於高級池和業務關鍵型池，這些操作需要傳輸要移動的資料庫的所有資料，或者如果擴展池，則傳輸彈性池中的所有資料庫的所有資料。 資料傳輸是一項長時間運行且資源密集型的操作。 如果池已經處於高資源壓力下，緩解操作本身將進一步降低性能。 在極端情況下，可能無法通過資料庫移動或池擴展來解決資源爭用，因為所需的資源不可用。 在這種情況下，暫時減少受影響的彈性池上的查詢工作負載可能是唯一的解決方案。
 
-使用密集集區的客戶應該仔細監視先前所述的資源使用率趨勢，並在計量保留在建議範圍內，且彈性集區中仍有足夠的資源時，採取緩和措施。
+使用密集池的客戶應如前面所述，密切監視資源利用率趨勢，並在指標保持在建議範圍內且彈性池中仍有足夠資源時採取緩解措施。
 
-資源使用率取決於每個資料庫和每個彈性集區會隨著時間而變更的多個因素。 在密集集區中達到最佳的價格/效能比例需要持續監視和重新平衡，將資料庫從更充分利用的集區移至較少使用的集區，並視需要建立新的集區來配合增加的工作負載。
+資源利用率取決於每個資料庫和每個彈性池隨時間變化的多個因素。 在密集池中實現最佳性價比需要持續監控和再平衡，即將資料庫從利用率更高的池遷移到利用率較低的池，並根據需要創建新池，以適應增加的工作負載。
 
-**請勿移動「熱」資料庫**。 如果集區層級的資源爭用主要是由少量高度使用的資料庫所造成，則將這些資料庫移至較低使用量的集區，或將它們設為獨立資料庫可能會很有吸引力。 不過，不建議在資料庫保持高度使用的情況下執行這項操作，因為移動作業會進一步降低效能，這兩者都是針對要移動的資料庫和整個集區進行。 相反地，請等到 [高使用率] contosoconcerthall，或移動較少使用的資料庫，以減輕集區層級的資源壓力。 但是，在這種情況下移動具有極低使用率的資料庫並不會提供任何好處，因為它不會在集區層級上大幅降低資源使用率。
+**不要移動"熱"資料庫**。 如果池級別的資源爭用主要是由少數高度利用的資料庫引起的，則將這些資料庫移動到利用率較低的池或使它們成為獨立資料庫可能很誘人。 但是，不建議在資料庫仍然高度使用時執行此操作，因為移動操作將進一步降低移動資料庫和整個池的性能。 相反，請等到高利用率降低，或者移動利用率較低的資料庫，以緩解池級別的資源壓力。 但是，在這種情況下，移動利用率極低的資料庫不會帶來任何好處，因為它不會實質性地降低池級別的資源利用率。
 
-**在「隔離」集區中建立新的資料庫**。 在經常建立新資料庫的情況下（例如，使用每個資料庫的租使用者模型的應用程式），將新的資料庫放入現有的彈性集區會造成意外耗用大量資源，並影響其他資料庫的風險。和集區中的內部進程。 若要降低此風險，請建立個別的「隔離」集區，並配置足夠的資源。 針對新的資料庫使用此集區，但資源耗用量模式不明。 一旦資料庫在此集區中保持為商務週期（例如一周或一個月），且其資源耗用量已知，就可以移至具有足夠容量的集區，以容納這項額外的資源使用量。
+**在"隔離"池中創建新資料庫**。 在頻繁創建新資料庫（例如使用每個資料庫的租戶應用程式）的情況下，現有彈性池中的新資料庫可能會意外消耗大量資源並影響其他資料庫和池中的內部進程。 為了減輕這種風險，創建一個單獨的"隔離"池，並分配充足的資源。 對於具有未知資源消耗模式的新資料庫，使用此池。 一旦資料庫在此池中停留了一段時間（例如一周或一個月）並且其資源消耗已知，就可以將其移動到具有足夠容量的池中，以適應此額外的資源使用方式。
 
-**避免過度密集的邏輯伺服器**。 Azure SQL Database[支援](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)每個邏輯伺服器最多5000個資料庫。 使用具有數千個資料庫的彈性集區的客戶可以考慮將多個彈性集區放在單一伺服器上，並將資料庫總數設定為支援的限制。 不過，具有數千個資料庫的邏輯伺服器會建立營運挑戰。 需要列舉伺服器上所有資料庫的作業（例如，在入口網站中查看資料庫）將會變慢。 操作錯誤（例如不正確的伺服器層級登入或防火牆規則修改）將會影響更多的資料庫。 意外刪除邏輯伺服器需要協助 Microsoft 支援服務復原已刪除伺服器上的資料庫，而且會導致所有受影響的資料庫發生長時間中斷。
+**避免邏輯伺服器過於密集**。 Azure SQL 資料庫[支援](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)每個邏輯伺服器最多 5000 個資料庫。 使用具有數千個資料庫的彈性池的客戶可以考慮在單個伺服器上放置多個彈性池，資料庫總數達到支援的限制。 但是，具有數千個資料庫的邏輯伺服器會帶來操作挑戰。 需要枚舉伺服器上的所有資料庫的操作（例如查看門戶中的資料庫）將較慢。 操作錯誤（如伺服器級登錄名或防火牆規則的不正確修改）將影響大量資料庫。 意外刪除邏輯伺服器需要 Microsoft 支援的説明來恢復已刪除的伺服器上的資料庫，並且將導致所有受影響的資料庫長時間中斷。
 
-建議您將每個邏輯伺服器的資料庫數目限制為小於支援的最大值的數目。 在許多情況下，每個伺服器最多使用1000-2000 個資料庫是最佳做法。 若要降低意外刪除伺服器的可能性，建議您在邏輯伺服器或其資源群組上放置[刪除鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+我們建議將每個邏輯伺服器的資料庫數限制為低於支援的最大資料庫數。 在許多情況下，每個伺服器最多使用 1000-2000 個資料庫是最佳選擇。 為了減少意外刪除伺服器的可能性，我們建議在邏輯伺服器或其資源組上放置[刪除鎖](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
-在過去，牽涉到在相同邏輯伺服器上的彈性集區中移動資料庫的特定案例，速度比在邏輯伺服器之間移動資料庫時更快。 目前，所有資料庫移動都是以相同的速度執行，不論來源和目的地邏輯伺服器為何。
+過去，某些涉及在同一邏輯伺服器上的彈性池中、外或之間的彈性池中移動資料庫的情況比在邏輯伺服器之間移動資料庫時要快。 目前，無論源伺服器和目標邏輯伺服器如何，所有資料庫移動都以相同的速度執行。
 
 ## <a name="examples"></a>範例
 
-### <a name="monitoring-memory-utilization"></a>監視記憶體使用量
+### <a name="monitoring-memory-utilization"></a>監視記憶體利用率
 
-此查詢會計算過去32分鐘內每個資源集區的 `oom_per_second` 度量。 此查詢可以在彈性集區中的任何資料庫中執行。
+此查詢計算每個資源`oom_per_second`池的指標，在過去 32 分鐘中。 此查詢可以在彈性池中的任何資料庫中執行。
 
 ```
 SELECT pool_id,
@@ -104,9 +109,9 @@ FROM sys.dm_resource_governor_resource_pools_history_ex
 GROUP BY pool_id, name
 ORDER BY pool_id;
 ```
-### <a name="monitoring-tempdb-log-space-utilization"></a>監視 `tempdb` 記錄空間使用量
+### <a name="monitoring-tempdb-log-space-utilization"></a>監視`tempdb`日誌空間利用率
 
-此查詢會傳回 `tempdb_log_used_percent` 度量的目前值。 此查詢可以在彈性集區中的任何資料庫中執行。
+此查詢返回指標的`tempdb_log_used_percent`當前值。 此查詢可以在彈性池中的任何資料庫中執行。
 
 ```
 SELECT used_log_space_in_percent AS tempdb_log_used_percent
@@ -115,5 +120,5 @@ FROM tempdb.sys.dm_db_log_space_usage;
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需彈性集區的簡介，請參閱彈性集區[可協助您管理及調整多個 AZURE SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)。
-* 如需微調查詢工作負載以減少資源使用率的詳細資訊，請參閱[監視和微調]( https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-tuning-index)，以及[監視和效能調整](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview)。
+* 有關彈性池的簡介，請參閱[彈性池可説明您管理和擴展多個 Azure SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)。
+* 有關調整查詢工作負載以減少資源利用率的資訊，請參閱[監視和調優]( https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-tuning-index)以及[監視和性能調優](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview)。

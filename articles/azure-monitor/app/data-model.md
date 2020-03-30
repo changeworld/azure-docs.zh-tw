@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671829"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遙測資料模型
@@ -38,7 +38,7 @@ Application Insights 針對自訂遙測提供三種其他資料類型：
 * [事件](data-model-event-telemetry.md)：通常用於擷取使用者與您服務的互動，藉以分析使用模式。
 * [計量](data-model-metric-telemetry.md)：用於報告定期的純量測量。
 
-每個遙測專案都可以定義[內容資訊](data-model-context.md)，例如應用程式版本或使用者會話識別碼。「內容」（CoNtext）是一組強型別字段，會解除封鎖某些案例。 正確初始化應用程式版本之後，Application Insights 可以偵測與重新部署相互關聯的應用程式行為中是否有新模式。 工作階段識別碼可用來計算中斷或某個問題對使用者造成的影響。 計算特定失敗相依性、錯誤追蹤或重大例外狀況之工作階段識別碼值的相異計數，即可充分了解影響。
+每個遙測項都可以定義[上下文資訊](data-model-context.md)，如應用程式版本或使用者會話 ID。上下文是一組強型別欄位，可取消阻止某些方案。 正確初始化應用程式版本之後，Application Insights 可以偵測與重新部署相互關聯的應用程式行為中是否有新模式。 工作階段識別碼可用來計算中斷或某個問題對使用者造成的影響。 計算特定失敗相依性、錯誤追蹤或重大例外狀況之工作階段識別碼值的相異計數，即可充分了解影響。
 
 Application Insights 遙測模型會定義將遙測與其所屬作業[相互關聯](../../azure-monitor/app/correlation.md)的方式。 例如，要求會發出 SQL Database 呼叫，並記錄診斷資訊。 針對會往回繫結至要求遙測的遙測項目，您可以設定這些遙測項目的相互關聯內容。
 
@@ -50,7 +50,7 @@ Application Insights 資料模型是簡單且基本但功能強大的方式，�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [撰寫自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)
+- [編寫自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)
 - 了解如何[擴充和篩選遙測](../../azure-monitor/app/api-filtering-sampling.md)。
 - 使用[取樣](../../azure-monitor/app/sampling.md)，根據資料模型將遙測量降到最低。
 - 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。

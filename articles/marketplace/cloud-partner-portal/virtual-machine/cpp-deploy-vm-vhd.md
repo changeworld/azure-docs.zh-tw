@@ -1,19 +1,18 @@
 ---
-title: 從您的 Vhd 部署 Azure Marketplace 的 VM
+title: 從 VHD 為 Azure 應用商店部署 VM
 description: 說明如何從部署的 Azure VHD 註冊 VM。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: evansma
-ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277934"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>從您的 VHD 部署 VM
 
@@ -24,7 +23,7 @@ ms.locfileid: "73813406"
 若要深入了解 VM 映像，請參閱下列部落格文章：
 
 - [VM 映像](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM 映像 PowerShell 使用說明](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/) (英文)
+- [VM 映射電源外殼"如何"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -32,7 +31,7 @@ ms.locfileid: "73813406"
 
 如果尚未設定，請依照下列指示安裝 Azure PowerShell 和 Azure CLI：
 
-- [安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [安裝 Azure 電源外殼](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 - [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
@@ -46,26 +45,26 @@ ms.locfileid: "73813406"
 
 VM 部署完成後，您就準備好來[認證您的 VM 映像](./cpp-certify-vm.md)。
 
-1. 按一下 [新增] 並搜尋**範本部署**，然後選取 [在編輯器中建置自己的範本]。  <br/>
+1. 按一下 [新增]**** 並搜尋**範本部署**，然後選取 [在編輯器中建置自己的範本]****。  <br/>
    ![在 Microsoft Azure 入口網站建置 VHD 部署範本](./media/publishvm_021.png)
 
-1. 複製並將此 [JSON 範本](./cpp-deploy-json-template.md)貼上至編輯器，然後按一下 [儲存]。 <br/>
+1. 複製並將此 [JSON 範本](./cpp-deploy-json-template.md)貼上至編輯器，然後按一下 [儲存]****。 <br/>
    ![將 VHD 部署範本儲存於 Microsoft Azure 入口網站](./media/publishvm_022.png)
 
 1. 為顯示的**自訂部署**屬性頁面提供參數值。
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **參數**              |   **說明**                                                            |
+   |  **參數**              |   **描述**                                                            |
    |  -------------              |   ---------------                                                            |
    | 儲存體帳戶名稱   | 一般化 VHD 所在的儲存體帳戶名稱                    |
    | 輸入儲存體容器名稱 | 一般化 VHD 所在的容器名稱                          |
-   | 公用 IP 的 DNS 名稱      | 公用 IP DNS 名稱。 DNS 名稱是 VM，一旦部署供應專案之後，您就會在 Azure 入口網站中定義此專案。  |
+   | 公用 IP 的 DNS 名稱      | 公共 IP DNS 名稱。 DNS 名稱是 VM 的，在部署產品/服務後，您將在 Azure 門戶中定義此名稱。  |
    | 管理員使用者名稱             | 新 VM 系統管理員帳戶的使用者名稱                                  |
    | 管理員密碼              | 新 VM 管理員帳戶密碼                                  |
-   | OS 類型                     | VM 作業系統：`Windows` \| `Linux`                                    |
+   | OS 類型                     | VM 作業系統： `Windows` \|`Linux`                                    |
    | 訂用帳戶識別碼             | 讓選取的訂用帳戶取得安全性建議                                      |
-   | 位置                    | 部署的地理位置                                        |
+   | Location                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如`Standard_A2` |
    | 公用 IP 位址      | 您的公用 IP 位址名稱                                               |
    | 虛擬機器名稱                     | 新 VM 名稱                                                           |
@@ -74,9 +73,9 @@ VM 部署完成後，您就準備好來[認證您的 VM 映像](./cpp-certify-vm
    | VHD URL                     | 完整的 OS 磁碟 VHD URL                                                     |
    |  |  |
             
-1. 在您提供這些數值後，請按一下 [採購]。 
+1. 在您提供這些數值後，請按一下 [採購]****。 
 
-Azure 會開始部署： 它會建立新的 VM，附上指定的非受控 VHD，存放於指定的儲存體帳戶路徑中。  您可以在 Microsoft Azure 入口網站中按一下左側的 [虛擬機器] 來追蹤進度。  建立 VM 後，狀態會從`Starting`變更為`Running`。 
+Azure 會開始部署： 它會建立新的 VM，附上指定的非受控 VHD，存放於指定的儲存體帳戶路徑中。  您可以在 Microsoft Azure 入口網站中按一下左側的 [虛擬機器]**** 來追蹤進度。  建立 VM 後，狀態會從`Starting`變更為`Running`。 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>從 PowerShell 部署 VM
