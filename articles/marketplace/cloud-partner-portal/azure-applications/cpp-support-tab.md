@@ -1,19 +1,18 @@
 ---
-title: 設定 Azure 應用程式支援 |Azure Marketplace
+title: 配置 Azure 應用程式支援 |Azure 應用商店
 description: 在 Azure Marketplace 上設定供應項目的 Azure 應用程式支援。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818191"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289017"
 ---
 # <a name="azure-application-support-tab"></a>Azure 應用程式支援索引標籤
 
@@ -25,20 +24,20 @@ ms.locfileid: "73818191"
 
   ![供應項目的支援表單](./media/azureapp-support-tab.png)
 
-1. 在 [工程連絡人] 底下，提供下列欄位的資訊：
+1. 在 [工程連絡人]**** 底下，提供下列欄位的資訊：
 
-   - **名稱\*** -輸入應用程式的工程連絡人名稱。 這名連絡人將收到來自 Microsoft 的技術通訊。
-   - **電子郵件\*** -輸入工程連絡人的電子郵件地址。
-   - **電話\*** -輸入工程連絡人的電話號碼。
+   - **名稱\***- 輸入應用的工程連絡人的名稱。 這名連絡人將收到來自 Microsoft 的技術通訊。
+   - **電子郵件\***- 輸入工程連絡人的電子郵件地址。
+   - **電話\***- 輸入工程連絡人的電話號碼。
   
-2. 在 [支援連絡人] 底下，提供下列欄位的資訊：
+2. 在 [支援連絡人]**** 底下，提供下列欄位的資訊：
 
-   - **名稱\*** -輸入您的應用程式支援連絡人的名稱。 這名連絡人將收到來自 Microsoft 的支援相關通訊。
-   - **電子郵件\*** -輸入您的應用程式支援連絡人的電子郵件地址。
-   - **電話\*** -輸入支援連絡人的電話號碼。
+   - **名稱\***- 輸入應用的支援連絡人的名稱。 這名連絡人將收到來自 Microsoft 的支援相關通訊。
+   - **電子郵件\***- 輸入應用的支援連絡人的電子郵件地址。
+   - **電話\***- 輸入支援連絡人的電話號碼。
  
-3. 在 [支援 URL] 底下，提供當客戶開啟支援票證時，Microsoft 將使用的適當支援 URL。 這些 URL 將適用於公用 Azure 或 Azure Government Cloud。
-4. 當您完成時，請選取 [**儲存**]。
+3. 在 [支援 URL]**** 底下，提供當客戶開啟支援票證時，Microsoft 將使用的適當支援 URL。 這些 URL 將適用於公用 Azure 或 Azure Government Cloud。
+4. 完成後選擇 **"保存**"。
 
 ## <a name="next-steps"></a>後續步驟
 

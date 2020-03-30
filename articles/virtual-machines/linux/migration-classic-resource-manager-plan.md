@@ -1,5 +1,5 @@
 ---
-title: 規劃從傳統遷移至 Azure Resource Manager
+title: 規劃從經典資源管理器遷移到 Azure 資源管理器
 description: 將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 services: virtual-machines-linux
 author: tanmaygore
@@ -9,17 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0b9c5b17b993afdd64cd2cbd8a15cbd6dd53f5ca
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066666"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃
 
 > [!IMPORTANT]
-> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 今天，大約 90% 的 IaaS VM 正在使用[Azure 資源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，經典 VM 已被棄用，將于 2023 年 3 月 1 日完全停用。 [詳細瞭解]( https://aka.ms/classicvmretirement)此棄用[及其如何影響您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
 
 雖然 Azure Resource Manager 提供了許多令人讚嘆的功能，但請務必詳加規劃您的移轉作業，以確保一切順利進行。 詳細規劃可確保您在執行移轉活動期間不會遇到問題。
 
@@ -106,7 +106,7 @@ ms.locfileid: "78944660"
 
 - **Web/背景工作角色部署** - 無法將包含 Web 和背景工作角色的雲端服務移轉至 Azure Resource Manager。 開始移轉之前，必須先從虛擬網路移除 Web/背景工作角色。  典型的解決方案是只將 Web/背景工作角色執行個體移至也與 ExpressRoute 線路連結的不同傳統虛擬網路，或是將程式碼移轉至較新的 PaaS 應用程式服務 (此討論已超出本文件的範圍)。 在先前的重新部署案例中，建立新的傳統虛擬網路、將 Web/背景工作角色移動/重新部署至該新虛擬網路，然後從要移動的虛擬網路中刪除部署。 不需要變更程式碼。 新的[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)功能可用來將包含 Web/背景工作角色的傳統虛擬網路與在相同 Azure 區域中的其他虛擬網路 (例如要移轉的虛擬網路) 形成對等互連 (**在虛擬網路移轉完成之後，因為不能移轉已形成對等互連的虛擬網路**)，因此可提供相同功能，而不會損失效能且沒有延遲/頻寬罰則。 由於新增了[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)，現在可輕鬆地移轉Web/背景工作角色部署，而不會封鎖對 Azure Resource Manager 的移轉。
 
-- **Azure Resource Manager 配額** - Azure 區域對於傳統和 Azure Resource Manager 有個別的配額/限制。 即使在未取用新硬體的移轉案例中 *(我們正在將現有的 VM 從傳統交換至 Azure Resource Manager)* ，Azure Resource Manager 配額仍必須具有足夠的容量，才可開始進行移轉。 下列是我們發現會造成問題的主要限制。  開啟配額支援票證來提高限制。
+- **Azure Resource Manager 配額** - Azure 區域對於傳統和 Azure Resource Manager 有個別的配額/限制。 即使在未取用新硬體的移轉案例中 *(我們正在將現有的 VM 從傳統交換至 Azure Resource Manager)*，Azure Resource Manager 配額仍必須具有足夠的容量，才可開始進行移轉。 下列是我們發現會造成問題的主要限制。  開啟配額支援票證來提高限制。
 
     > [!NOTE]
     > 必須在與您要移轉的目前環境相同的區域中提高這些限制。
@@ -122,21 +122,21 @@ ms.locfileid: "78944660"
 
     您可以透過最新版本的 Azure CLI，使用下列命令來檢查您目前的 Azure Resource Manager 配額。
 
-    **計算** *（核心、可用性設定組）*
+    **計算** *(核心，可用性設定組)*
 
-    ```bash
+    ```azurecli
     az vm list-usage -l <azure-region> -o jsonc
     ```
 
-    **網路** *（虛擬網路、靜態公用 Ip、公用 Ip、網路安全性群組、網路介面、負載平衡器、路由表）*
+    **網路** *(虛擬網路、靜態公用 IP、公用 IP、網路安全性群組、網路介面、負載平衡器、路由表)*
 
-    ```bash
+    ```azurecli
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **儲存體** *（儲存體帳戶）*
+    **儲存體** *(儲存體帳戶)*
 
-    ```bash
+    ```azurecli
     az storage account show-usage
     ```
 
@@ -144,9 +144,9 @@ ms.locfileid: "78944660"
 
 - **佈建逾時 VM 狀態** - 如果任何 VM 的狀態為**佈建逾時**，這個問題必須在移轉前解決。 您只能利用停機時間解除佈建/重新佈 VM (刪除、保留磁碟，並重新建立 VM)。
 
-- **RoleStateUnknown VM 狀態** - 如果因為出現 [角色狀態未知] 錯誤訊息而使得移轉中止，請使用入口網站檢查 VM，並確定它正在執行中。 此錯誤通常會在幾分鐘之後自行消失 (不需補救)，而且是虛擬機器**啟動**、**停止**、**重新啟動**作業期間經常會看到的暫時性類型。 **建議做法：** 幾分鐘後再重試移轉。
+- **RoleStateUnknown VM 狀態** - 如果因為出現 [角色狀態未知]**** 錯誤訊息而使得移轉中止，請使用入口網站檢查 VM，並確定它正在執行中。 此錯誤通常會在幾分鐘之後自行消失 (不需補救)，而且是虛擬機器**啟動**、**停止**、**重新啟動**作業期間經常會看到的暫時性類型。 **建議做法：** 幾分鐘後再重試移轉。
 
-- **Fabric 叢集不存在** - 在某些情況下，某些 VM 由於各種奇怪的原因而無法移轉。 其中一種已知的情況為，如果是最近才建立 VM (在過去一個星期內左右)，然後在尚無法因應 Azure Resource Manager 工作負載的 Azure 叢集登陸時會發生此情況。  您會收到 [網狀架構叢集不存在] 錯誤訊息，且無法移轉 VM。 通常等候幾天就可解決此特定問題，因為叢集很快就會啟用 Azure Resource Manager。 不過，有一個立即的解決方法是對 VM `stop-deallocate`，然後再繼續進行移轉，並且在移轉之後，於 Azure Resource Manager 中啟動 VM 備份。
+- **Fabric 叢集不存在** - 在某些情況下，某些 VM 由於各種奇怪的原因而無法移轉。 其中一種已知的情況為，如果是最近才建立 VM (在過去一個星期內左右)，然後在尚無法因應 Azure Resource Manager 工作負載的 Azure 叢集登陸時會發生此情況。  您會收到 [網狀架構叢集不存在]**** 錯誤訊息，且無法移轉 VM。 通常等候幾天就可解決此特定問題，因為叢集很快就會啟用 Azure Resource Manager。 不過，有一個立即的解決方法是對 VM `stop-deallocate`，然後再繼續進行移轉，並且在移轉之後，於 Azure Resource Manager 中啟動 VM 備份。
 
 ### <a name="pitfalls-to-avoid"></a>要避免的陷阱
 
@@ -192,7 +192,7 @@ ms.locfileid: "78944660"
 
 - [角色型存取控制](../../role-based-access-control/overview.md)。
 - [Azure Resource Manager 範本使得部署更容易且更受控制](../../azure-resource-manager/templates/overview.md)。
-- [標籤](../../azure-resource-manager/management/tag-resources.md)。
+- [標記](../../azure-resource-manager/management/tag-resources.md)。
 - [活動控制](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure 原則](../../governance/policy/overview.md)
 

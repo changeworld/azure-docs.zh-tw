@@ -8,10 +8,10 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 3492f35d54dd3ee61ab8d29a3af06e4998bbd477
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277790"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(已淘汰) 透過 Marathon REST API 的 DC/OS 容器管理
@@ -20,7 +20,7 @@ ms.locfileid: "76277790"
 
 DC/OS 提供環境來部署及調整叢集工作負載，同時將基礎硬體抽象化。 在 DC/OS 之上有架構會管理排程和執行計算工作負載。 雖然許多常見的工作負載都有可用的架構，但這份文件只能讓您使用 Marathon REST API 來開始建立及調整容器部署。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在練習這些範例之前，您需要 Azure 容器服務中設定的 DC/OS 叢集。 您也需要有此叢集的遠端連線。 如需這些項目的詳細資訊，請參閱下列文章。
 
@@ -28,7 +28,7 @@ DC/OS 提供環境來部署及調整叢集工作負載，同時將基礎硬體�
 * [連接到 Azure 容器服務叢集](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>存取 DC/OS API
-連線到 Azure Container Service 叢集之後，您可以透過 HTTP：\//localhost： local-port 來存取 DC/OS 和相關的 REST Api。 本文件中的範例假設您的通道為連接埠 80。 例如，可以在以 HTTP：\//localhost/marathon/v2/. 開頭的 Uri 上到達 Marathon 端點 
+連接到 Azure 容器服務群集後，可以通過 HTTP：\//本地主機：本地埠訪問 DC/OS 和相關 REST API。 本文件中的範例假設您的通道為連接埠 80。 例如，可以在 URI 到達馬拉松終點，以 HTTP：\//本地主機/馬拉松/v2/開頭。 
 
 如需各種 API 的詳細資訊，請參閱 [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) 和 [Chronos API](https://mesos.github.io/chronos/docs/api.html) 的 Mesosphere 文件，以及 [Mesos 排程器 API](https://mesos.apache.org/documentation/latest/scheduler-http-api/) 的 Apache 文件。
 
@@ -112,16 +112,16 @@ Nginx 伺服器的輸出大致如下：
 
 
 ## <a name="scale-your-containers"></a>調整容器的大小
-您也可以使用 Marathon API 來擴增或縮減應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
+您也可以使用 Marathon API 來相應放大或相應縮小應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
 
 ```json
 { "instances": 3 }
 ```
 
-從通道連線執行下列命令來擴增應用程式。
+從通道連線執行下列命令來相應放大應用程式。
 
 > [!NOTE]
-> URI 是 HTTP：\//localhost/marathon/v2/apps/，後面接著要調整之應用程式的識別碼。 如果您使用此處提供的 Nginx 範例，則 URI 會是 HTTP：\//localhost/marathon/v2/apps/nginx。
+> URI 是 HTTP：\//本地主機/馬拉松/v2/應用程式/後跟要擴展的應用程式 ID。 如果您使用的是此處提供的 Nginx 示例，URI 將是 HTTP：/\/本地主機/馬拉松/v2/應用程式/nginx。
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -169,16 +169,16 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-您也可以使用 Marathon API 來擴增或縮減應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
+您也可以使用 Marathon API 來相應放大或相應縮小應用程式部署。 在前面的範例中，您已部署一個應用程式執行個體。 讓我們將其相應放大為三個應用程式執行個體。 若要這樣做，請使用下列 JSON 文字建立 JSON 檔案，並將它儲存在可存取的位置。
 
 ```json
 { "instances": 3 }
 ```
 
-執行下列命令來擴增應用程式：
+執行下列命令來相應放大應用程式：
 
 > [!NOTE]
-> URI 是 HTTP：\//localhost/marathon/v2/apps/，後面接著要調整之應用程式的識別碼。 如果您使用這裡提供的 Nginx 範例，則 URI 會是 HTTP：\//localhost/marathon/v2/apps/nginx。
+> URI 是 HTTP：\//本地主機/馬拉松/v2/應用程式/後跟要擴展的應用程式 ID。 如果您使用的是此處提供的 Nginx 示例，URI 將是 HTTP：/\/本地主機/馬拉松/v2/應用程式/nginx。
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

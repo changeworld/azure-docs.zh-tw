@@ -1,13 +1,13 @@
 ---
-title: 保留的資源名稱錯誤
+title: 保留資源名稱錯誤
 description: 說明當提供的資源名稱包含保留字時應如何解決錯誤。
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477625"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>解決保留資源名稱的錯誤
@@ -39,7 +39,7 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 * DOTNET
 * DYNAMICS
 * EXCEL
-* EXCHANGE
+* EXCHANGE 
 * FOREFRONT
 * GROOVE
 * HOLOLENS
@@ -66,6 +66,6 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 * WINDOWS
 * XBOX
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 提供名稱時，不要使用任何一個保留字。

@@ -1,6 +1,6 @@
 ---
 title: 使用連線的處理站儀表板 - Azure | Microsoft Docs
-description: 本文說明如何使用連線處理站儀表板的功能來監視和管理您的工業 IoT 裝置。
+description: 本文介紹如何使用連接工廠儀表板的功能來監視和管理工業 IoT 設備。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820168"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用連線處理站儀表板的功能
@@ -29,64 +29,64 @@ ms.locfileid: "73820168"
 
     [![連線的處理站解決方案加速器篩選條件](./media/iot-accelerators-connected-factory-dashboard/filterpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterpanel-expanded.png#lightbox)
 
-1. 選擇您需要的篩選條件，然後按一下 [套用]。 您也可以在篩選條件欄位中輸入任意文字。
+1. 選擇您需要的篩選條件，然後按一下 [套用] ****。 您也可以在篩選條件欄位中輸入任意文字。
 
 1. 然後會套用篩選條件。 額外的漏斗圖示表示已套用篩選條件：
 
-    [![連線的處理站解決方案加速器篩選條件已套用](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
+    [![應用了連接出廠解決方案加速器篩檢程式](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
 
     > [!NOTE]
     > 使用中的篩選條件不會影響已顯示的 OEE 和 KPI 值，它只會篩選清單內容。
 
-1. 若要清除篩選條件，請按一下漏斗圖示並按一下篩選內容面板中的 [清除]。
+1. 若要清除篩選條件，請按一下漏斗圖示並按一下篩選內容面板中的 [清除]****。
 
 ## <a name="browse-an-opc-ua-server"></a>瀏覽 OPC UA 伺服器
 
 當您部署解決方案加速器時，會自動佈建一組可從儀表板瀏覽的模擬 OPC UA 伺服器。 模擬伺服器可讓您輕鬆對解決方案加速器進行實驗，而不需要部署真實的伺服器。
 
-1. 按一下儀表板導覽列中的 [瀏覽器圖示]：
+1. 按一下儀表板導覽列中的 [瀏覽器圖示]****：
 
-    [![連線的處理站解決方案加速器伺服器瀏覽器](./media/iot-accelerators-connected-factory-dashboard/browser-inline.png)](./media/iot-accelerators-connected-factory-dashboard/browser-expanded.png#lightbox)
+    [![連接出廠解決方案加速器伺服器瀏覽器](./media/iot-accelerators-connected-factory-dashboard/browser-inline.png)](./media/iot-accelerators-connected-factory-dashboard/browser-expanded.png#lightbox)
 
 1. 在解決方案加速器中，從為您所部署的伺服器清單中，選擇其中一個伺服器：
 
-    [![連線的處理站解決方案加速器伺服器清單](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
+    [![連接出廠解決方案加速器伺服器清單](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
 
-1. 按一下 [連線]，[安全性] 對話方塊隨即顯示。 若要進行模擬，您可以放心按一下 [繼續]。
+1. 按一下 [連線]****，[安全性] 對話方塊隨即顯示。 若要進行模擬，您可以放心按一下 [繼續]****。
 
 1. 若要展開伺服器樹狀目錄中的任何節點，請按一下該節點。 正在發佈遙測的節點旁邊有勾號：
 
-    [![連線的處理站解決方案加速器伺服器樹狀目](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
+    [![連接出廠解決方案加速器伺服器樹](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
 
 1. 以滑鼠右鍵按一下要讀取、寫入、發佈或呼叫該節點的項目。 您可使用的動作取決於您的節點權限和屬性。 讀取選項會顯示一個內容面板，以顯示特定節點的值。 寫入選項會顯示一個內容面板，您可以在此輸入新值。 呼叫選項會顯示一個節點，您可以在此輸入呼叫的參數。
 
 ## <a name="publish-a-node"></a>發佈節點
 
-當您瀏覽*模擬的 OPC UA 伺服器*時，也可以選擇發佈新的節點。 您可以分析解決方案中這些節點的遙測資料。 這些「模擬的 OPC UA 伺服器」可讓您輕鬆對解決方案加速器進行實驗，而不需要部署真實的裝置：
+當您瀏覽*模擬的 OPC UA 伺服器*時，也可以選擇發佈新的節點。 您可以分析解決方案中這些節點的遙測資料。 這些「模擬的 OPC UA 伺服器」** 可讓您輕鬆對解決方案加速器進行實驗，而不需要部署真實的裝置：
 
 1. 瀏覽至 OPC UA 伺服器瀏覽器樹狀目錄中您想要發佈的節點。
 
-1. 以滑鼠右鍵按一下節點。 按一下 [發佈]：
+1. 以滑鼠右鍵按一下節點。 按一下 [發佈]****：
 
-    [![連線的處理站解決方案加速器發佈節點](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
+    [![連接出廠解決方案加速器發佈節點](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 
 1. 隨即顯示一個內容面板，告訴您發佈成功。 此節點會出現在站區層級檢視中，且旁邊有核取記號：
 
-    [![連線的處理站解決方案加速器發佈成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
+    [![互聯工廠解決方案加速器發佈成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
 
 ## <a name="command-and-control"></a>命令與控制
 
-連線的處理站可讓您直接從雲端指揮及控制您的企業裝置。 您可以使用這項功能來回應裝置所產生的警示。 例如，您可以將命令傳送到裝置來打開壓力釋放閥。 您可以在 OPC UA 伺服器瀏覽器樹狀目錄的 **StationCommands** 節點中找到可用的命令。 在此情節中，您會開啟慕尼黑生產線的裝配站上的洩壓閥。 若要使用命令與控制功能，您必須具備解決方案加速器部署的 [系統管理員] 角色：
+連線的處理站可讓您直接從雲端指揮及控制您的企業裝置。 您可以使用這項功能來回應裝置所產生的警示。 例如，您可以將命令傳送到裝置來打開壓力釋放閥。 您可以在 OPC UA 伺服器瀏覽器樹狀目錄的 **StationCommands** 節點中找到可用的命令。 在此情節中，您會開啟慕尼黑生產線的裝配站上的洩壓閥。 若要使用命令與控制功能，您必須具備解決方案加速器部署的 [系統管理員]**** 角色：
 
 1. 瀏覽至 OPC UA 瀏覽器樹狀結構中的 **StationCommands** 節點，找出慕尼黑、生產線 0、裝配站。
 
-1. 選擇您想要使用的命令。 在 **OpenPressureReleaseValve** 節點上按滑鼠右鍵。 按一下 [呼叫]：
+1. 選擇您想要使用的命令。 在 **OpenPressureReleaseValve** 節點上按滑鼠右鍵。 按一下 [呼叫]****：
 
-    [![連線的處理站解決方案加速器呼叫命令](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
+    [![連接出廠解決方案加速器調用命令](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
 
-1. 隨即顯示一個內容面板，告知您即將呼叫的方法以及參數詳細資料。 按一下 [呼叫]：
+1. 隨即顯示一個內容面板，告知您即將呼叫的方法以及參數詳細資料。 按一下 [呼叫]****：
 
-    [![連線的處理站解決方案加速器呼叫參數](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
+    [![連接出廠解決方案加速器調用參數](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
 
 1. 內容面板會進行更新，告知您方法呼叫成功。 您可以讀取因為呼叫而更新的壓力節點值，藉此確認呼叫成功。
 
@@ -96,7 +96,7 @@ ms.locfileid: "73820168"
 
 當您部署解決方案加速器時，部署程序會在您選取的 Azure 訂用帳戶中建立多個資源。 您可以在 Azure[入口網站](https://portal.azure.com)中檢視這些資源。 部署程序會建立 **資源群組** ，其名稱是以您為解決方案加速器選擇的名稱為基礎︰
 
-[![連線的處理站解決方案加速器資源群組](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-inline.png)](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-expanded.png#lightbox)
+[![連接出廠解決方案加速器資源組](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-inline.png)](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-expanded.png#lightbox)
 
 選取資源群組中的資源清單中的資源，即可檢視該資源的設定。
 

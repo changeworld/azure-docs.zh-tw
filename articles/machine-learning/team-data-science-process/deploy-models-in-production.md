@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722232"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>將模型部署到生產環境以便在進行業務決策時扮演主動角色
@@ -25,9 +25,9 @@ ms.locfileid: "76722232"
 
 有許多方法和平台可將模型置入生產環境。 以下提供一些選項：
 
-- [使用 Azure Machine Learning 部署模型的位置](../how-to-deploy-and-where.md)
+- [使用 Azure 機器學習部署模型的位置](../how-to-deploy-and-where.md)
 - [在 SQL-Server 中部署模型](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [微軟機器學習伺服器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >在部署之前，必須確保模型計分的延遲夠低，以便在生產環境中使用。
@@ -39,7 +39,7 @@ ms.locfileid: "76722232"
 
 ## <a name="ab-testing"></a>A/B 測試
 
-當生產環境中有多個模型時，可以使用[A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型效能。 
+當多個模型在生產中時，可以使用[A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型性能。 
  
 ## <a name="next-steps"></a>後續步驟
 

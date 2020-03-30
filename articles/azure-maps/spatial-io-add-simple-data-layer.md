@@ -1,122 +1,31 @@
 ---
-title: 新增簡單的資料層 |Microsoft Azure 對應
-description: 瞭解如何使用 Azure 地圖服務 Web SDK 所提供的空間 IO 模組來新增簡單的資料層。
-author: farah-alyasari
-ms.author: v-faalya
+title: 添加簡單的資料層 |微軟 Azure 地圖
+description: 瞭解如何使用 Azure 地圖 Web SDK 提供的空間 IO 模組添加簡單的資料層。
+author: philmea
+ms.author: philmea
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3fa54e3227496c11fcafc2f42e980daa5c716365
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7671d07a468a9f67a4851ec828fe18896d7a6c66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334269"
 ---
-# <a name="add-a-simple-data-layer"></a>新增簡單的資料層
+# <a name="add-a-simple-data-layer"></a>添加簡單的資料層
 
-空間 IO 模組提供 `SimpleDataLayer` 類別。 這個類別可讓您輕鬆地在地圖上轉譯樣式化功能。 它甚至可以呈現具有樣式屬性的資料集，以及包含混合 geometry 類型的資料集。 簡單的資料層會藉由包裝多個轉譯層和使用樣式表達式來達到這項功能。 樣式表達式會在這些已包裝的圖層內搜尋功能的通用樣式屬性。 `atlas.io.read` 函式和 `atlas.io.write` 函式會使用這些屬性，將樣式讀寫成支援的檔案格式。 將屬性加入至支援的檔案格式之後，檔案就可以用於各種用途。 例如，檔案可以用來顯示地圖上的樣式化功能。
+空間 IO 模組提供`SimpleDataLayer`類。 此類使在地圖上渲染樣式要素變得容易。 它甚至可以渲染具有樣式屬性的資料集和包含混合幾何類型的資料集。 簡單資料層通過包裝多個呈現圖層並使用樣式表達式來實現此功能。 樣式表達式搜索這些包裝圖層內要素的常見樣式屬性。 函數`atlas.io.read`和`atlas.io.write`函數使用這些屬性將樣式讀取和寫入受支援的檔案格式。 將屬性添加到受支援的檔案格式後，該檔可用於各種用途。 例如，該檔可用於在地圖上顯示樣式特徵。
 
-除了設定功能的樣式之外，`SimpleDataLayer` 還會提供具有快顯範本的內建快顯視窗功能。 按一下功能時，快顯視窗會顯示。 如有需要，可以停用預設的快顯視窗功能。 這一層也支援叢集資料。 當您按一下叢集時，對應將會縮放到叢集，並將它展開為個別的點和 subclusters。
+除了樣式功能外，還提供`SimpleDataLayer`帶有彈出範本的內置快顯視窗功能。 按一下要素時，將顯示快顯視窗。 如果需要，可以禁用預設快顯視窗功能。 此層還支援群集資料。 按一下群集時，地圖將放大到群集中，並將其擴展到單個點和子群集中。
 
-`SimpleDataLayer` 類別主要用於具有許多 geometry 類型的大型資料集，以及在功能上套用的許多樣式。 使用時，此類別會增加包含樣式表達式的六個層級的額外負荷。 因此，在某些情況下，使用核心轉譯層會更有效率。 例如，使用核心層來轉譯幾個 geometry 類型，以及一些功能上的一些樣式
-
-## <a name="default-supported-style-properties"></a>預設支援的樣式屬性
-
-如先前所述，簡單資料層會包裝數個核心轉譯層：反升、符號、折線圖、多邊形和已拉伸多邊形。 然後，它會使用運算式來搜尋個別功能的有效樣式屬性。
-
-Azure 地圖服務和 GitHub 樣式屬性是兩個主要的支援屬性名稱集合。 不同 azure 地圖服務層選項的大部分屬性名稱都支援為簡單資料層中功能的樣式屬性。 運算式已新增至一些圖層選項，以支援 GitHub 常用的樣式屬性名稱。 這些屬性名稱是由[GitHub 的 GeoJSON 對應支援](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)所定義，而且是用來為平臺中儲存和轉譯的 GeoJSON 檔案樣式。 除了 `marker-symbol` 樣式屬性以外，簡單資料層支援所有 GitHub 的樣式屬性。
-
-如果讀取器遇到較不常用的樣式屬性，則會將它轉換成最接近的 Azure 地圖服務 style 屬性。 此外，您可以使用簡單資料層的 `getLayers` 功能來覆寫預設樣式表達式，並更新任何圖層上的選項。
-
-下一節提供有關簡單資料層所支援之預設樣式屬性的詳細資訊。 支援的屬性名稱順序也是屬性的優先順序。 如果針對相同的圖層選項定義兩個樣式屬性，則清單中的第一個會具有較高的優先順序。
-
-## <a name="simple-data-layer-options"></a>簡單資料層選項
-
-### <a name="bubble-layer-style-properties"></a>反升層樣式屬性
-
-如果某項功能是 `Point` 或 `MultiPoint`，而且該功能沒有 `image` 屬性，而它會做為自訂圖示來將點轉譯為符號，則會使用 `BubbleLayer`來轉譯此功能。
-
-| 圖層選項 | 支援的屬性名稱 | 預設值 |
-|--------------|----------------------------|---------------|
-| `color` | `color`, `marker-color` | `'#1A73AA'` |
-| `radius` | `size`<sup>1</sup>，`marker-size`<sup>2</sup>，`scale`<sup>1</sup> | `8` |
-| `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
-
-\[1\] `size` 和 `scale` 值會視為純量值，而且會乘以 `8`
-
-\[2\] 如果指定了 GitHub `marker-size` 選項，則 radius 會使用下列值。
-
-| 標記大小 | 半徑 |
-|-------------|--------|
-| `small`     | `6`    |
-| `medium`    | `8`    |
-| `large`     | `12`   |
-
-群集也會使用反升層來轉譯。 根據預設，叢集的 radius 會設定為 `16`。 叢集的色彩會根據叢集中的點數數目而有所不同，如下所示：
-
-| 點數 | Color    |
-|-------------|----------|
-| &gt;= 100   | `red`    |
-| &gt;= 10    | `yellow` |
-| &lt; 10     | `green`  |
-
-### <a name="symbol-style-properties"></a>符號樣式屬性
-
-如果某個功能是 `Point` 或 `MultiPoint`，而且該功能的 `image` 屬性會當做自訂圖示來轉譯為符號，則會使用 `SymbolLayer`來轉譯此功能。
-
-| 圖層選項 | 支援的屬性名稱 | 預設值 |
-|--------------|----------------------------|---------------|
-| `image` | `image` | ``none`` |
-| `size` | `size`，`marker-size`<sup>1</sup> | `1` |
-| `rotation` | `rotation` | `0` |
-| `offset` | `offset` | `[0, 0]` |
-| `anchor` | `anchor` | `'bottom'` |
-
-\[1\] 如果指定了 GitHub `marker-size` 選項，則會將下列值用於 [圖示大小] 選項。
-
-| 標記大小 | 符號大小 |
-|-------------|-------------|
-| `small`     | `0.5`       |
-| `medium`    | `1`         |
-| `large`     | `2`         |
-
-如果點功能是叢集，`point_count_abbreviated` 屬性會轉譯為文字標籤。 將不會呈現任何影像。
-
-### <a name="line-style-properties"></a>線條樣式屬性
-
-如果功能是 `LineString`、`MultiLineString`、`Polygon`或 `MultiPolygon`，則此功能將會使用 `LineLayer`來呈現。
-
-| 圖層選項 | 支援的屬性名稱 | 預設值 |
-|--------------|----------------------------|---------------|
-| `strokeColor` | `strokeColor`, `stroke` | `'#1E90FF'` |
-| `strokeWidth` | `strokeWidth`、`stroke-width`、`stroke-thickness` | `3` |
-| `strokeOpacity` | `strokeOpacity`, `stroke-opacity` | `1` |
-
-### <a name="polygon-style-properties"></a>多邊形樣式屬性
-
-如果功能是 `Polygon` 或 `MultiPolygon`，而且該功能沒有 `height` 屬性，或 `height` 屬性為零，則會使用 `PolygonLayer`來轉譯此功能。
-
-| 圖層選項 | 支援的屬性名稱 | 預設值 |
-|--------------|----------------------------|---------------|
-| `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
-| `fillOpacity` | `fillOpacity`，'`fill-opacity` | `0.5` |
-
-### <a name="extruded-polygon-style-properties"></a>已拉伸的多邊形樣式屬性
-
-如果功能是 `Polygon` 或 `MultiPolygon`，而且具有大於0值的 `height` 屬性，則會使用 `PolygonExtrusionLayer`來轉譯此功能。
-
-| 圖層選項 | 支援的屬性名稱 | 預設值 |
-|--------------|----------------------------|---------------|
-| `base` | `base` | `0` |
-| `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
-| `height` | `height` | `0` |
+該`SimpleDataLayer`類用於具有許多幾何類型和許多應用於要素樣式的大型資料集。 使用時，此類會增加六個包含樣式表達式的圖層的開銷。 因此，在某些情況下，使用核心呈現圖層的效率更高。 例如，使用核心圖層在要素上呈現幾個幾何類型和幾個樣式
 
 ## <a name="use-a-simple-data-layer"></a>使用簡單的資料層
 
-使用 `SimpleDataLayer` 類別，就像使用其他呈現層一樣。 下列程式碼顯示如何在地圖中使用簡單的資料層：
+類`SimpleDataLayer`的使用類似于使用其他呈現圖層。 下面的代碼顯示了如何在地圖中使用簡單的資料圖層：
 
 ```javascript
 //Create a data source and add it to the map.
@@ -128,7 +37,7 @@ var layer = new atlas.layer.SimpleDataLayer(datasource);
 map.layers.add(layer);
 ```
 
-將功能加入至資料來源。 然後，簡單的資料層將會找出呈現功能的最佳方式。 個別功能的樣式可以設定為功能上的屬性。 下列程式碼顯示 `color` 屬性設為 `red`的 GeoJSON 點功能。 
+向資料來源添加要素。 然後，簡單的資料層將找出如何最好地呈現要素。 單個要素的樣式可以設置為要素上的屬性。 以下代碼顯示內容設置為`color``red`的 GeoJSON 點要素。 
 
 ```json
 {
@@ -143,36 +52,133 @@ map.layers.add(layer);
 }
 ```
 
-下列程式碼會使用簡單的資料層來轉譯上述的點功能。 
+以下代碼使用簡單的資料層呈現上述點要素。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用簡單的資料層" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 請參閱<a href='https://codepen.io'>CodePen</a>上的「畫筆<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用簡單資料層</a>Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）」。
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用簡單資料層" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 請參閱筆 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用簡單資料圖層</a>。
 </iframe>
 
-簡單資料層的真正威力在於：
+當出現以下情況時，簡單資料層的真正功能就來了：
 
-- 資料來源中有幾種不同類型的功能：或
-- 資料集中的功能會個別設定數個樣式屬性;或
-- 您不確定資料集完全包含哪些內容。
+- 資料來源中有幾種不同類型的功能;或
+- 資料集中的要素具有多個樣式屬性，分別設置它們;或
+- 您不確定資料集包含的內容。
 
-例如，剖析 XML 資料摘要時，您可能不知道功能的確切樣式和幾何類型。 下列範例會呈現 KML 檔案的功能，藉以顯示簡單資料層的威力。 它也會示範簡單資料層類別所提供的各種選項。
+例如，在分析 XML 資料摘要時，您可能不知道要素的確切樣式和幾何類型。 下面的示例通過呈現 KML 檔的功能來顯示簡單資料層的強大功能。 它還演示了簡單資料層類提供的各種選項。
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="簡單資料層選項" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的「畫筆<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>簡單資料層」選項</a>。
+<iframe height="700" style="width: 100%;" scrolling="no" title="簡單的資料層選項" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 在<a href='https://codepen.io'>CodePen</a>上按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 查看筆<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>簡單資料圖層選項</a>。
 </iframe>
 
+
+> [!NOTE]
+> 此簡單資料層使用[彈出範本](map-add-popup.md#add-popup-templates-to-the-map)類將 KML 氣球或要素屬性顯示為表。 預設情況下，快顯視窗中呈現的所有內容都將作為安全功能在 iframe 內部裝沙箱。 但是，存在限制：
+>
+> - 禁用所有腳本、表單、指標鎖定和頂部導航功能。 按一下時，允許在新選項卡中打開連結。 
+> - 不支援 iframe 上`srcdoc`參數的舊瀏覽器將僅限於呈現少量內容。
+> 
+> 如果您信任載入到快顯視窗中的資料，並且可能希望載入到快顯視窗中的這些腳本能夠訪問您的應用程式，則可以通過將快顯視窗範本`sandboxContent`選項設置為 false 來禁用此功能。 
+
+## <a name="default-supported-style-properties"></a>預設支援的樣式屬性
+
+如前所述，簡單資料圖層環繞多個核心呈現圖層：氣泡、符號、線、面和拉伸多邊形。 然後，它使用運算式在單個要素上搜索有效的樣式屬性。
+
+Azure 映射和 GitHub 樣式屬性是兩種主要受支援的屬性名稱集。 不同 Azure 地圖圖層選項的大多數屬性名稱都支援為簡單資料圖層中要素的樣式屬性。 運算式已添加到某些圖層選項中，以支援 GitHub 常用的樣式屬性名稱。 這些屬性名稱由[GitHub 的 GeoJSON 地圖支援](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)定義，它們用於設置在平臺中存儲和呈現的 GeoJSON 檔樣式。 除了`marker-symbol`樣式屬性外，簡單資料層中支援 GitHub 的所有樣式屬性。
+
+如果讀取器遇到不太常見的樣式屬性，它將將其轉換為最近的 Azure 地圖樣式屬性。 此外，可以使用`getLayers`簡單資料圖層的功能並更新任何圖層上的選項來重寫預設樣式表達式。
+
+以下各節提供有關簡單資料層支援的預設樣式屬性的詳細資訊。 支援的屬性名稱的順序也是屬性的優先順序。 如果為同一圖層選項定義了兩個樣式屬性，則清單中的第一個樣式屬性具有更高的優先順序。
+
+### <a name="bubble-layer-style-properties"></a>氣泡圖層樣式屬性
+
+如果要素`Point`為 或`MultiPoint`，並且該要素沒有用作自訂圖示以將`image`點呈現為符號的屬性，則該要素將使用 呈現`BubbleLayer`。
+
+| 圖層選項 | 支援的屬性名稱 | 預設值 |
+|--------------|----------------------------|---------------|
+| `color` | `color`, `marker-color` | `'#1A73AA'` |
+| `radius` | `size`<sup>1</sup> `marker-size` <sup> </sup>， `scale`2 ， <sup>1</sup> | `8` |
+| `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
+
+\[1\] `size`和`scale`值被視為標量值，它們將乘以`8`
+
+\[2\]如果指定了`marker-size`GitHub 選項，則半徑將使用以下值。
+
+| 標記大小 | 半徑 |
+|-------------|--------|
+| `small`     | `6`    |
+| `medium`    | `8`    |
+| `large`     | `12`   |
+
+群集也使用氣泡圖層呈現。 預設情況下，群集的半徑設置為`16`。 群集的顏色因群集中的點數而異，如下所示：
+
+| 積分 | Color    |
+|-------------|----------|
+| &gt;= 100   | `red`    |
+| &gt;= 10    | `yellow` |
+| &lt;10     | `green`  |
+
+### <a name="symbol-style-properties"></a>符號樣式屬性
+
+如果要素`Point`為 或`MultiPoint`，並且要素具有用作自訂圖示以`image`將點呈現為符號的屬性，則該要素將使用 呈現`SymbolLayer`。
+
+| 圖層選項 | 支援的屬性名稱 | 預設值 |
+|--------------|----------------------------|---------------|
+| `image` | `image` | ``none`` |
+| `size` | `size`， `marker-size` <sup>1</sup> | `1` |
+| `rotation` | `rotation` | `0` |
+| `offset` | `offset` | `[0, 0]` |
+| `anchor` | `anchor` | `'bottom'` |
+
+\[1\]如果指定了`marker-size`GitHub 選項，則以下值將用於圖示大小選項。
+
+| 標記大小 | 符號樣式 |
+|-------------|-------------|
+| `small`     | `0.5`       |
+| `medium`    | `1`         |
+| `large`     | `2`         |
+
+如果點要素是群集，則`point_count_abbreviated`該屬性將呈現為文字標籤。 不會渲染任何圖像。
+
+### <a name="line-style-properties"></a>線條樣式屬性
+
+如果要素`LineString`為 、、`MultiLineString``Polygon`或`MultiPolygon`，則該要素將使用 呈現。 `LineLayer`
+
+| 圖層選項 | 支援的屬性名稱 | 預設值 |
+|--------------|----------------------------|---------------|
+| `strokeColor` | `strokeColor`, `stroke` | `'#1E90FF'` |
+| `strokeWidth` | `strokeWidth`, `stroke-width`, `stroke-thickness` | `3` |
+| `strokeOpacity` | `strokeOpacity`, `stroke-opacity` | `1` |
+
+### <a name="polygon-style-properties"></a>多邊形樣式屬性
+
+`Polygon`如果要素為 或`MultiPolygon`，並且要素沒有`height`屬性，或者`height`該屬性為零，則該要素將使用 呈現。 `PolygonLayer`
+
+| 圖層選項 | 支援的屬性名稱 | 預設值 |
+|--------------|----------------------------|---------------|
+| `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
+| `fillOpacity` | `fillOpacity`, '`fill-opacity` | `0.5` |
+
+### <a name="extruded-polygon-style-properties"></a>拉伸多邊形樣式屬性
+
+如果要素`Polygon`為 或`MultiPolygon`，並且具有值大於`height`0 的屬性，則該要素將使用 呈現`PolygonExtrusionLayer`。
+
+| 圖層選項 | 支援的屬性名稱 | 預設值 |
+|--------------|----------------------------|---------------|
+| `base` | `base` | `0` |
+| `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
+| `height` | `height` | `0` |
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [簡單資料層](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [簡單資料清單選項](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
@@ -180,13 +186,13 @@ map.layers.add(layer);
 > [讀取和寫入空間資料](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [新增 OGC 地圖圖層](spatial-io-add-ogc-map-layer.md)
+> [添加 OGC 地圖圖層](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [連接到工作流程服務](spatial-io-connect-wfs-service.md)
+> [連接到 WFS 服務](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [利用核心作業](spatial-io-core-operations.md)
+> [利用核心業務](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [支援的資料格式詳細資料](spatial-io-supported-data-format-details.md)
+> [支援的資料格式詳細資訊](spatial-io-supported-data-format-details.md)

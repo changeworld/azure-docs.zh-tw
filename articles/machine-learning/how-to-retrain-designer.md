@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368157"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389030"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ ms.locfileid: "79368157"
    在此示例中，資料存儲在[Azure 資料存儲](how-to-access-data.md)中。 如果還沒有資料存儲，則可以現在通過選擇 **"新建資料存儲**"來創建一個資料存儲。
 
 1. 指定資料的路徑。 您還可以選擇 **"流覽路徑"** 以流覽到資料存儲。 
-1. 選擇"在畫布頂部**運行**"。
+1. 在畫布頂部選擇 **"提交**"。
     
    > [!NOTE]
    > 如果已為此管道草稿設置預設計算，則管道將自動運行。 否則，您可以按照設置窗格上的提示立即設置設置。
 
 ### <a name="find-your-trained-model"></a>查找您訓練的模型
 
-設計器將所有管道輸出（包括經過訓練的模型）保存到預設存儲帳戶。 您還可以直接在設計器中訪問經過訓練的模型：
+設計器將所有管道輸出（包括經過訓練的模型）保存到預設存儲帳戶。 但是，您也可以直接在設計器中訪問經過訓練的模型：
 
 1. 等待管道完成運行。
 1. 選取 **訓練模型** 模組。

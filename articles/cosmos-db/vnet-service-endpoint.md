@@ -1,5 +1,5 @@
 ---
-title: 使用虛擬網路服務端點來保護 Azure Cosmos DB 帳戶的存取
+title: 使用虛擬網路服務終結點安全訪問 Azure Cosmos DB 帳戶
 description: 本文件說明關於 Azure Cosmos 帳戶的虛擬網路和子網路存取控制。
 author: kanshiG
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444627"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>從虛擬網路 (VNet) 存取 Azure Cosmos DB
@@ -40,20 +40,20 @@ ms.locfileid: "75444627"
 
 在子網路上啟用 Azure Cosmos DB 的服務端點後，送到帳戶的流量來源就會從公用 IP 切換至虛擬網路和子網路。 如果您的 Azure Cosmos 帳戶只有 IP 型防火牆，來自已啟用服務之子網路的流量將不再符合 IP 防火牆規則，因此會遭到拒絕。 請執行步驟以順暢地從 IP 型防火牆移轉至虛擬網路型存取控制。
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>具有 VNET 服務端點的 Azure Cosmos 帳戶需要額外的 RBAC 許可權嗎？
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>具有 VNET 服務終結點的 Azure Cosmos 帳戶是否需要其他 RBAC 許可權？
 
-將 VNet 服務端點新增至 Azure Cosmos 帳戶之後，若要對帳戶設定進行任何變更，您需要存取 Azure Cosmos 帳戶上設定的所有 Vnet 的 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 動作。 這是必要的許可權，因為授權程式會先驗證資源（例如資料庫和虛擬網路資源）的存取權，再評估任何屬性。
+將 VNet 服務終結點添加到 Azure Cosmos 帳戶後，要對帳戶設置進行任何更改，則需要訪問 Azure Cosmos 帳戶上配置的所有 VNET`Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action`的操作。 此許可權是必需的，因為授權過程在評估任何屬性之前驗證對資源（如資料庫和虛擬網路資源）的訪問。
  
-即使使用者未使用 Azure CLI 指定 VNET Acl，授權還是會驗證 VNet 資源動作的許可權。 目前，Azure Cosmos 帳戶的控制平面支援設定 Azure Cosmos 帳戶的完整狀態。 控制平面呼叫的其中一個參數是 `virtualNetworkRules`。 如果未指定此參數，Azure CLI 會進行取得資料庫呼叫來抓取 `virtualNetworkRules`，並在 update 呼叫中使用此值。
+即使使用者未使用 Azure CLI 指定 VNET ACL，授權也會驗證 VNet 資源操作的許可權。 目前，Azure Cosmos 帳戶的控制平面支援設置 Azure Cosmos 帳戶的完整狀態。 控制平面調用的參數之一是`virtualNetworkRules`。 如果未指定此參數，Azure CLI 將執行 get 資料庫調用以檢索`virtualNetworkRules`並在更新調用中使用此值。
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>對等互連的虛擬網路也可以存取 Azure Cosmos 帳戶嗎？ 
 只有新增至 Azure Cosmos 帳戶的虛擬網路和其子網路可以存取。 只有將對等互連之虛擬網路內的子網路新增到帳戶之後，其對等互連的 VNet 才能存取帳戶。
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>允取存取單一 Cosmos 帳戶的子網路數目上限為何？ 
-目前，您最多可以有64個子網供 Azure Cosmos 帳戶使用。
+目前，Azure Cosmos 帳戶最多隻能有 64 個子網。
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>可以啟用來自 VPN 和 Express Route 的存取嗎？ 
-若要透過 Express route 從內部部署存取 Azure Cosmos 帳戶，您必須啟用 Microsoft 對等互連。 一旦制訂 IP 防火牆或虛擬網路存取規則，就可以新增公用 IP 位址 (用於您 Azure Cosmos 帳戶 IP 防火牆上的 Microsoft 對等互連)，以允許內部部署服務存取 Azure Cosmos 帳戶。 
+要從內部通過快速路由訪問 Azure Cosmos 帳戶，需要啟用 Microsoft 對等互連。 一旦制訂 IP 防火牆或虛擬網路存取規則，就可以新增公用 IP 位址 (用於您 Azure Cosmos 帳戶 IP 防火牆上的 Microsoft 對等互連)，以允許內部部署服務存取 Azure Cosmos 帳戶。 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>我需要更新網路安全性群組 (NSG) 規則嗎？ 
 NSG 規則可用來限制子網路和虛擬網路的往返連線。 當您將 Azure Cosmos DB 的服務端點新增至子網路時，不需要在 NSG 中針對您的 Azure Cosmos 帳戶開啟輸出連線。 
@@ -62,7 +62,7 @@ NSG 規則可用來限制子網路和虛擬網路的往返連線。 當您將 Az
 否，只有 Azure Resource Manager 虛擬網路可以啟用服務端點。 傳統虛擬網路不支援服務端點。
 
 ### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>啟用 Azure Cosmos DB 的服務端點存取時，我可以「接受來自公用 Azure 資料中心內的連線」嗎？  
-只有當您想要讓您的 Azure Cosmos DB 帳戶可供其他 Azure 第一方服務（例如 Azure Data factory、Azure 認知搜尋或在指定的 Azure 區域中部署的任何服務）存取時，才需要此項。
+僅當希望 Azure Cosmos DB 帳戶被其他 Azure 第一方服務（如 Azure 資料工廠、Azure 認知搜索或部署在給定 Azure 區域中的任何服務）訪問時，才需要這樣做。
 
 
 ## <a name="next-steps"></a>後續步驟

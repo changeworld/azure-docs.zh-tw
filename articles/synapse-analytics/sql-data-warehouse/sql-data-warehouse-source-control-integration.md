@@ -1,21 +1,21 @@
 ---
 title: 原始檔控制整合
 description: 適用於 SQL 集區的企業級資料庫 DevOps 體驗，並搭配使用 Azure Repos (Git 和 GitHub) 的原生原始檔控制整合。
-services: sql-data-warehouse
+services: synapse-analytics
 author: kevinvngo
 manager: craigg
-ms.service: sql-data-warehouse
+ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: integration
+ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 28ce56675b8ba6b0f699b93af4411d360e1e582d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80148057"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350097"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL 集區的原始檔控制整合
 

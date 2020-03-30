@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72789738"
 ---
 物聯網 (IoT) 使得全球企業面臨獨特的安全性、隱私權及相容性挑戰。 不同於傳統網路技術 (這類問題是以軟體及其實作方式為中心)，IoT 在意的是當網路與實體世界交會時會發生什麼事。 保護 IoT 解決方案要求確保安全佈建裝置，保護這些裝置與雲端之間的連接，以及在處理和儲存期間保護雲端中資料保護的安全。 但是，會針對這類功能運作的是資源受限的裝置、根據地理位置分佈的部署，以及解決方案中的大量裝置。
@@ -31,13 +31,13 @@ ms.locfileid: "72789738"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>徹底保護基礎結構的安全
 
-[Microsoft Cloud](https://azure.microsoft.com)基礎結構支援127個國家/地區中超過1000000000個客戶。 利用 Microsoft 數十年來建置企業軟體，以及在世界各地執行一些大型線上服務的經驗，相較於多數客戶可自行實現的部分，Microsoft Cloud 提供更高層級的增強安全性、隱私權、相容性及威脅減輕做法。
+[Microsoft 雲](https://azure.microsoft.com)基礎架構為 127 個國家/地區的 10 億多個客戶提供服務。 利用 Microsoft 數十年來建置企業軟體，以及在世界各地執行一些大型線上服務的經驗，相較於多數客戶可自行實現的部分，Microsoft Cloud 提供更高層級的增強安全性、隱私權、相容性及威脅減輕做法。
 
 [安全性開發週期 (SDL)](https://www.microsoft.com/sdl/) 可提供必要的全公司開發程序，將安全性需求嵌入整個軟體週期。 為了協助確保營運活動會遵循相同層級的安全性做法，SDL 會使用 Microsoft 的營運安全性保證 (OSA) 程序中所列出的嚴謹安全性指導方針。 Microsoft 也會與第三方稽核公司合作，持續驗證其是否符合法律遵循義務，並且 Microsoft 會透過建立卓越的中心 (包括 Microsoft 數位犯罪防治中心、Microsoft 安全性回應中心及 Microsoft 惡意程式碼防護中心)，致力於產生廣泛的安全性成果。
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - 適用於貴公司的安全 IoT 基礎結構
 
-Microsoft Azure 提供完整的雲端解決方案，其中結合了持續成長的整合式雲端服務 (分析、機器學習服務、儲存體、安全性、網路功能及 Web) 集合，透過業界領先的承諾來為您的資料提供保護與隱私權。 Microsoft 的[模擬缺口](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) 策略會透過由軟體安全性專家組成的專屬「紅隊」，來模擬攻擊、測試要偵測的 Azure 能力、防範新興威脅，以及從缺口中復原。 Microsoft 的[全域事件回應](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)小組夜以繼日地工作，能夠減緩攻擊與惡意活動所產生的影響。 此小組會遵循事件管理、通訊及復原所建立的程序，並與內部和外部夥伴合作來使用可探索且可預測的介面。
+Microsoft Azure 提供完整的雲端解決方案，其中結合了持續成長的整合式雲端服務 (分析、機器學習服務、儲存體、安全性、網路功能及 Web) 集合，透過業界領先的承諾來為您的資料提供保護與隱私權。 Microsoft 的[模擬缺口](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) 策略會透過由軟體安全性專家組成的專屬「紅隊」**，來模擬攻擊、測試要偵測的 Azure 能力、防範新興威脅，以及從缺口中復原。 Microsoft 的[全域事件回應](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)小組夜以繼日地工作，能夠減緩攻擊與惡意活動所產生的影響。 此小組會遵循事件管理、通訊及復原所建立的程序，並與內部和外部夥伴合作來使用可探索且可預測的介面。
 
 Microsoft 的系統能提供持續的入侵偵測與防護、阻斷服務攻擊防護、一般滲透測試，以及可協助識別及緩解威脅的法務工具。 [Multi-Factor Authentication](../articles/active-directory/authentication/multi-factor-authentication.md) 可為存取網路的使用者提供額外的安全性層級。 此外，針對應用程式和主機提供者，Microsoft 會提供存取控制、監視、反惡意程式碼、弱點掃描、修補程式及組態管理。
 
@@ -107,8 +107,8 @@ IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體�
 
 * [**Azure 串流分析**](https://azure.microsoft.com/services/stream-analytics/)：雲端中處理的即時串流讓您能夠快速開發並部署低成本的分析方案，以在第一時間提供裝置、感應器、基礎結構與應用程式的深入剖析資料。 來自這個完全受控服務的資料可調整為任何數量，但仍可達到高輸送量、低遲性和恢復功能。
 
-* [**Azure App Service**](https://azure.microsoft.com/services/app-service/)：一個雲端平台，可供建置功能強大的 Web 和行動應用程式來連接各地的資料；不論是在雲端還是內部部署環境內。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
+* [**Azure 應用服務**](https://azure.microsoft.com/services/app-service/)：構建強大的 Web 和移動應用的雲平臺，可隨時隨地連接到資料;在雲或本地。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
 
-* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/)：Azure App Service 的 Logic Apps 功能可協助您將 IoT 解決方案整合到現有的企業營運系統並自動化工作流程處理。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
+* [**邏輯應用**](https://azure.microsoft.com/services/app-service/logic/)：Azure 應用服務的邏輯應用功能有助於將 IoT 解決方案集成到現有業務線系統，並自動執行工作流流程。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
 
-* [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/)：可靠且符合經濟效益的雲端儲存體，適用於裝置要傳送到雲端的資料。
+* [**Azure Blob 存儲**](https://azure.microsoft.com/services/storage/)：設備發送到雲的資料的可靠、經濟的雲存儲。

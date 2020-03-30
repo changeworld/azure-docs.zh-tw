@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Factory 從 Amazon Redshift 移動資料
+title: 使用 Azure 資料工廠從 Amazon 紅移移動資料
 description: 了解如何使用 Azure Data Factory 複製活動從 Amazon Redshift 移動資料。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260523"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](data-factory-amazon-redshift-connector.md)
+> * [版本 1](data-factory-amazon-redshift-connector.md)
 > * [第 2 版 (目前的版本)](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -43,7 +43,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 建立管線的最簡單方式就是使用「Azure Data Factory 複製精靈」。 如需使用複製精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您也可以使用 Visual Studio、Azure PowerShell 或其他工具來建立管線。 Azure Resource Manager 範本、.NET API 或 REST API 也可以用來建立管線。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您還可以使用視覺化工作室、Azure PowerShell 或其他工具創建管道。 Azure Resource Manager 範本、.NET API 或 REST API 也可以用來建立管線。 有關使用複製活動創建管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
@@ -51,7 +51,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 2. 建立資料集，代表複製作業的輸入和輸出資料。
 3. 建立管線，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。
 
-使用複製精靈時，精靈會自動為您建立 Data Factory 實體的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義資料處理站實體。 JSON 範例：將資料從 Amazon Redshift 複製到 Azure Blob 儲存體顯示用來從 Amazon Redshift 資料存放區複製資料之 Data Factory 實體的 JSON 定義。
+使用複製精靈時，精靈會自動為您建立 Data Factory 實體的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義資料處理站實體。 JSON 範例：將資料從 Amazon Redshift 複製到 Azure Blob 儲存體顯示用來從 Amazon Redshift 資料存放區複製資料的 Data Factory 實體本身的 JSON 定義。
 
 下列各節描述 JSON 屬性，這些屬性是用來定義 Amazon Redshift 的 Data Factory 實體。
 
@@ -61,12 +61,12 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **type** |屬性必須設為 **AmazonRedshift**。 |是 |
+| **型別** |屬性必須設為 **AmazonRedshift**。 |是 |
 | **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
-| **port** |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否 (預設值為 5439) |
-| **database** |Amazon Redshift 資料庫的名稱。 |是 |
-| **username** |可存取資料庫之使用者的名稱。 |是 |
-| **password** |使用者帳戶的密碼。 |是 |
+| **港口** |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否 (預設值為 5439) |
+| **資料庫** |Amazon Redshift 資料庫的名稱。 |是 |
+| **使用者** |可存取資料庫之使用者的名稱。 |是 |
+| **密碼** |使用者帳戶的密碼。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -76,17 +76,17 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **tableName** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
+| **表名稱** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需定義活動的區段和屬性清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 **name** **description**、**inputs** 資料表、**outputs** 資料表和 **policy** 屬性適用於所有活動。 **typeProperties** 區段中的可用屬性，會因為活動類型不同而有所差異。 就複製活動而言，屬性會根據資料來源和接收的類型而有所不同。
+如需定義活動的區段和屬性清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 **name****description**、**inputs** 資料表、**outputs** 資料表和 **policy** 屬性適用於所有活動。 **typeProperties** 區段中的可用屬性，會因為活動類型不同而有所差異。 就複製活動而言，屬性會根據資料來源和接收的類型而有所不同。
 
 對於複製活動，當來源類型為 **AmazonRedshiftSource** 時，**typeProperties** 區段中可使用下列屬性：
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **query** | 使用自訂查詢來讀取資料。 |否 (如果已指定資料集的 **tableName** 屬性) |
+| **查詢** | 使用自訂查詢來讀取資料。 |否 (如果已指定資料集的 **tableName** 屬性) |
 | **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | 否 |
 | **s3LinkedServiceName** | 要作為暫時存放區的 Amazon S3。 連結服務是使用類型為 **AwsAccessKey** 的 Azure Data Factory 名稱來指定。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
 | **bucketName** | 表示要用來儲存暫時資料的 Amazon S3 貯體。 如果未提供此屬性，複製活動會自動產生貯體。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
@@ -95,7 +95,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **query** |使用自訂查詢來讀取資料。 | 否 (如果已指定資料集的 **tableName** 屬性) |
+| **查詢** |使用自訂查詢來讀取資料。 | 否 (如果已指定資料集的 **tableName** 屬性) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>使用 UNLOAD 複製 Amazon Redshift 中的資料
 
@@ -142,11 +142,11 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 
 此範例具有下列 Data Factory 實體：
 
-* [AmazonRedshift](#linked-service-properties) 類型的連結服務
+* [亞馬遜紅移](#linked-service-properties)類型的連結服務
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-* [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)
-* [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)
-* 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 屬性之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)
+* [關係表](#dataset-properties)類型的輸入[資料集](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)
+* 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 屬性之複製活動的[管線](data-factory-create-pipelines.md)
 
 此範例會每個小時將資料從 Amazon Redshift 中的查詢結果複製到 Blob。 實體定義後面的各節會說明範例中使用的 JSON 屬性。
 
@@ -170,7 +170,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 }
 ```
 
-**Azure Blob 儲存體連結服務**
+**Azure Blob 存儲連結服務**
 
 ```json
 {
@@ -183,7 +183,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
   }
 }
 ```
-**Amazon Redshift 輸入資料集**
+**亞馬遜紅移輸入資料集**
 
 將 **external** 設定成 "true" 會通知 Data Factory 服務該資料集是 Data Factory 外部的資料集。 此屬性設定指出該資料集不是由資料處理站中的活動產生。 在不是由管線中的活動所產生的輸入資料集上，請將此屬性設定為 true。
 

@@ -1,5 +1,5 @@
 ---
-title: 架構更新6月-1-2016
+title: 架構更新 2016 年 6 月 1 日
 description: Azure Logic Apps 中邏輯應用程式定義的更新後結構描述版本 2016-06-01
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792887"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps 的結構描述更新 - 2016 年 6 月 1 日
@@ -103,25 +103,25 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 
 1. 在 Azure 入口網站中，開啟邏輯應用程式。
 
-2. 移至**概觀**。 在邏輯應用程式工具列上，選擇 [更新結構描述]。
+2. 移至**概觀**。 在邏輯應用程式工具列上，選擇 [更新結構描述]****。
    
    ![選擇 [更新結構描述]][1]
    
    會傳回升級的定義，您可以將其複製並貼到資源定義 (如有必要)。 
 
    > [!IMPORTANT]
-   > 「請確定」您會選擇 [另存新檔]，如此一來，所有連線參考都會在已升級的邏輯應用程式中保持有效狀態。
+   > 「請確定」** 您會選擇 [另存新檔]****，如此一來，所有連線參考都會在已升級的邏輯應用程式中保持有效狀態。
 
-3. 在升級的刀鋒視窗工具列中，選擇 [另存新檔]。
+3. 在升級的刀鋒視窗工具列中，選擇 [另存新檔]****。
 
-4. 輸入邏輯名稱和狀態。 若要部署已升級的邏輯應用程式，選擇 [建立]。
+4. 輸入邏輯名稱和狀態。 若要部署已升級的邏輯應用程式，選擇 [建立]****。
 
 5. 確認升級的邏輯應用程式如預期般運作。
    
    > [!NOTE]
    > 如果您要使用手動或要求觸發程序，新的邏輯應用程式中的回呼 URL 將會變更。 測試新的 URL 以確定端對端經驗運作。 若要保留先前的 URL，您可以在現有邏輯應用程式上複製。
 
-6. 選擇性 若要使用新的結構描述版本覆寫先前的邏輯應用程式，請在工具列上選擇 [更新結構描述] 旁的 [複製]。 如果您想要保留邏輯應用程式的相同資源識別碼，或要求觸發程序 URL，此步驟才有必要。
+6. 選擇性** 若要使用新的結構描述版本覆寫先前的邏輯應用程式，請在工具列上選擇 [更新結構描述]**** 旁的 [複製]****。 如果您想要保留邏輯應用程式的相同資源識別碼，或要求觸發程序 URL，此步驟才有必要。
 
 ## <a name="upgrade-tool-notes"></a>升級工具注意事項
 
@@ -175,7 +175,7 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 ## <a name="next-steps"></a>後續步驟
 
 * [建立邏輯應用程式的工作流程定義](../logic-apps/logic-apps-author-definitions.md)
-* [自動化邏輯應用程式部署](logic-apps-azure-resource-manager-templates-overview.md)
+* [將邏輯應用程式部署自動化](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

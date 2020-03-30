@@ -17,42 +17,42 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162305"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
 您可以檢視 Azure 事件中樞的兩種記錄類型：
 
-* **[活動記錄](../azure-monitor/platform/platform-logs-overview.md)** ：這些記錄包含對作業執行的操作相關資訊。 系統一律會啟用這些記錄。
-* **[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)** ：您可以設定診斷記錄，以深入檢視隨著作業發生的所有事件。 診斷記錄涵蓋從建立工作到刪除工作期間的活動，包括工作執行時發生的更新與活動。
+* **[活動記錄](../azure-monitor/platform/platform-logs-overview.md)**：這些記錄包含對作業執行的操作相關資訊。 系統一律會啟用這些記錄。
+* **[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)**：您可以設定診斷記錄，以深入檢視隨著作業發生的所有事件。 診斷記錄涵蓋從建立工作到刪除工作期間的活動，包括工作執行時發生的更新與活動。
 
 ## <a name="enable-diagnostic-logs"></a>啟用診斷記錄
 
 診斷記錄預設為停用。 若要啟用診斷記錄，請依照下列步驟操作：
 
-1.  在 [Azure 入口網站](https://portal.azure.com)的 [監視 + 管理] 下，按一下 [診斷記錄]。
+1.  在 [Azure 入口網站](https://portal.azure.com)的 [監視 + 管理]**** 下，按一下 [診斷記錄]****。
 
     ![瀏覽到診斷記錄的窗格](./media/event-hubs-diagnostic-logs/image1.png)
 
 2.  按一下您想要監視的資源。
 
-3.  按一下 [開啟診斷]。
+3.  按一下 [開啟診斷]****。
 
     ![開啟診斷記錄](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  針對 [狀態]，按一下 [開啟]。
+4.  針對 [狀態]****，按一下 [開啟]****。
 
     ![變更診斷記錄的狀態](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  設定您想要的封存目標;例如，儲存體帳戶、事件中樞或 Azure 監視器記錄。
+5.  設置所需的存檔目標;例如，存儲帳戶、事件中心或 Azure 監視器日誌。
 
 6.  儲存新的診斷設定。
 
-新的設定大約會在 10 分鐘內生效。 之後，記錄就會在 [診斷記錄] 窗格內的已設定封存目標中顯示。
+新的設定大約會在 10 分鐘內生效。 之後，記錄就會在 [診斷記錄]**** 窗格內的已設定封存目標中顯示。
 
 如需設定診斷的詳細資訊，請參閱 [Azure 診斷記錄概觀](../azure-monitor/platform/platform-logs-overview.md)。
 
@@ -140,9 +140,9 @@ Example:
 
 ## <a name="next-steps"></a>後續步驟
 - [事件中樞簡介](event-hubs-what-is-event-hubs.md)
-- [事件中樞 API 概觀](event-hubs-api-overview.md)
+- [事件中心 API 概述](event-hubs-api-overview.md)
 - 開始使用事件中心
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
+    - [JAVA](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [JAVAscript](get-started-java-send-v2.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064071"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388979"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,8 +136,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 當您提交管道運行時並停留在創作頁中時，可以找到為每個模組生成的日誌檔。
 
 1. 選擇創作畫布中的任何模組。
-1. 在模組的右側窗格中，轉到 **"輸出\ogs"** 選項卡。
-1. 選擇日誌檔`70_driver_log.txt`
+1. 在模組的右側窗格中，轉到 **"輸出 + 日誌"** 選項卡。
+1. 選擇日誌檔`70_driver_log.txt`。
 
     ![創作頁面模組日誌](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 1. 選擇在設計器中創建的管道運行。
     ![管道運行頁](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. 選擇預覽窗格中的任何模組。
-1. 在模組的右側窗格中，轉到 **"輸出\ogs"** 選項卡。
-1. 選擇日誌檔`70_driver_log.txt`
+1. 在模組的右側窗格中，轉到 **"輸出 + 日誌"** 選項卡。
+1. 選擇日誌檔`70_driver_log.txt`。
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>在應用程式見解中調試和故障排除
 有關以這種方式使用 OpenCensus Python 庫的詳細資訊，請參閱本指南：[在應用程式見解中調試和排除機器學習管道](how-to-debug-pipelines-application-insights.md)

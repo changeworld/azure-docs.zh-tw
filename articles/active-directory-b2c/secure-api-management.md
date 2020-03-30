@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory B2C 保護 Azure API 管理 API
-description: 瞭解如何使用 Azure Active Directory B2C 所簽發的存取權杖來保護 Azure API 管理 API 端點。
+title: 使用 Azure 活動目錄 B2C 保護 Azure API 管理 API
+description: 瞭解如何使用 Azure 活動目錄 B2C 頒發的訪問權杖來保護 Azure API 管理 API 終結點。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,89 +11,89 @@ ms.date: 08/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186925"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
 
-瞭解如何將 Azure API 管理（APIM） API 的存取權，限制為已使用 Azure Active Directory B2C （Azure AD B2C）進行驗證的用戶端。 請遵循本文中的步驟，在 APIM 中建立及測試輸入原則，以限制只有包含有效 Azure AD B2C 發行存取權杖的要求才能存取。
+瞭解如何將 Azure API 管理 （APIM） API 的訪問限制為已使用 Azure 活動目錄 B2C （Azure AD B2C） 進行身份驗證的用戶端。 按照本文中的步驟在 APIM 中創建和測試入站策略，該策略僅限制對包含有效 Azure AD B2C 頒發的訪問權杖的請求的訪問。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在繼續進行本文中的步驟之前，您必須先準備好下列資源：
+在繼續執行本文中的步驟之前，您需要提供以下資源：
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
 * 您租用戶中[註冊的應用程式](tutorial-register-applications.md)
 * 您租用戶中[建立的使用者流程](tutorial-create-user-flows.md)
 * Azure API 管理中[已發佈的 API](../api-management/import-and-publish.md)
-* [Postman](https://www.getpostman.com/)以測試安全存取（選擇性）
+* [郵遞員](https://www.getpostman.com/)測試安全訪問（可選）
 
-## <a name="get-azure-ad-b2c-application-id"></a>取得 Azure AD B2C 應用程式識別碼
+## <a name="get-azure-ad-b2c-application-id"></a>獲取 Azure AD B2C 應用程式 ID
 
-當您使用 Azure AD B2C 保護 Azure API 管理中的 API 時，您需要在 APIM 中建立的[輸入原則](../api-management/api-management-howto-policies.md)有數個值。 首先，記錄您先前在 Azure AD B2C 租使用者中建立之應用程式的應用程式識別碼。 如果您使用的是您在必要條件中所建立的應用程式，請使用*webbapp1*的應用程式識別碼。
+使用 Azure API 管理中保護 API 時，需要在 APIM 中創建的[入站策略](../api-management/api-management-howto-policies.md)中具有多個值。 首先，記錄以前在 Azure AD B2C 租戶中創建的應用程式的應用程式 ID。 如果您正在使用在先決條件中創建的應用程式，請使用*webbapp1*的應用程式 ID。
 
-您可以使用目前的**應用程式**體驗或我們新的統一**應用程式註冊（預覽）** 體驗來取得應用程式識別碼。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+您可以使用當前**的應用程式**體驗或我們新的統一**應用註冊（預覽）** 體驗來獲取應用程式 ID。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
 
 #### <a name="applications"></a>[應用程式](#tab/applications/)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 在 [**管理**] 底下，選取 [**應用程式**]。
-1. 記錄*webapp1*的 [**應用程式識別碼**] 資料行中的值，或您先前建立的另一個應用程式。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶]**** 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]****。 或者，選取 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
+1. 在 **"管理**"下，選擇 **"應用程式**"。
+1. 在*Webapp1*或其他以前創建的應用程式的 **"應用 ID"** 列中記錄該值。
 
 #### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 選取 [**應用程式註冊（預覽）** ]，然後選取 [**擁有的應用程式**] 索引標籤。
-1. 記錄*webapp1*的 [**應用程式（用戶端）識別碼**] 資料行中的值，或您先前建立的另一個應用程式。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶]**** 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]****。 或者，選取 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
+1. 選擇**應用註冊（預覽），** 然後選擇 **"擁有的應用程式**"選項卡。
+1. 在*Webapp1*或其他以前創建的應用程式 **（用戶端）ID**列中記錄該值。
 
 * * *
 
-## <a name="get-token-issuer-endpoint"></a>取得權杖簽發者端點
+## <a name="get-token-issuer-endpoint"></a>獲取權杖頒發者終結點
 
-接下來，取得您其中一個 Azure AD B2C 使用者流程的知名設定 URL。 您也需要您想要在 Azure API 管理中支援的權杖簽發者端點 URI。
+接下來，獲取 Azure AD B2C 使用者流的已知配置 URL。 您還需要要在 Azure API 管理中支援的權杖頒發者終結點 URI。
 
-1. 流覽至您在[Azure 入口網站](https://portal.azure.com)中的 Azure AD B2C 租使用者。
-1. 在 [**原則**] 底下，選取 **[使用者流程（原則）** ]。
-1. 選取現有的原則，例如*B2C_1_signupsignin1*，然後選取 [**執行使用者流程**]。
-1. 將 URL 記錄在頁面頂端附近 [**執行使用者流程**] 標題底下的超連結中。 此 URL 是使用者流程的 OpenID Connect 知名探索端點，當您在 Azure API 管理中設定輸入原則時，您會在下一節中使用它。
+1. 流覽到[Azure 門戶](https://portal.azure.com)中的 Azure AD B2C 租戶。
+1. 在**策略**下，選擇**使用者流（策略）。**
+1. 選擇現有策略（例如*B2C_1_signupsignin1，* 然後選擇 **"運行使用者流**"。
+1. 在頁面頂部附近的 **"運行使用者流**"標題下顯示的超連結中記錄 URL。 此 URL 是使用者流的 OpenID Connect 已知發現終結點，在 Azure API 管理中配置入站策略時，在下一節中使用它。
 
-    ![Azure 入口網站的 [立即執行] 頁面中的知名 URI 超連結](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
+    ![Azure 門戶的"立即運行"頁中的已知 URI 超連結](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
 
-1. 選取超連結以流覽至 OpenID Connect 的知名設定頁面。
-1. 在瀏覽器中開啟的頁面上，記錄 `issuer` 的值，例如：
+1. 選擇要流覽到 OpenID 連接已知配置頁的超連結。
+1. 在瀏覽器中打開的頁面中，記錄`issuer`該值，例如：
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-    當您在 Azure API 管理中設定 API 時，會在下一節中使用此值。
+    在 Azure API 管理中配置 API 時，在下一節中使用此值。
 
-您現在應該已記錄兩個 Url，以便在下一節中使用： OpenID Connect 知名設定端點 URL 和簽發者 URI。 例如，
+現在，您應該記錄兩個 URL，以便在下一節中使用：OpenID 連接眾所周知的配置終結點 URL 和頒發者 URI。 例如：
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
 https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 ```
 
-## <a name="configure-inbound-policy-in-azure-api-management"></a>在 Azure API 管理中設定輸入原則
+## <a name="configure-inbound-policy-in-azure-api-management"></a>在 Azure API 管理中配置入站策略
 
-您現在已準備好在 Azure API 管理中新增輸入原則，以驗證 API 呼叫。 藉由新增[JWT 驗證](../api-management/api-management-access-restriction-policies.md#ValidateJWT)原則來驗證存取權杖中的物件和簽發者，您可以確保只接受具有有效權杖的 API 呼叫。
+現在，您已準備好在 Azure API 管理中添加用於驗證 API 呼叫的入站策略。 通過添加[JWT 驗證](../api-management/api-management-access-restriction-policies.md#ValidateJWT)策略來驗證訪問權杖中的訪問群體和頒發者，可以確保僅接受具有有效權杖的 API 呼叫。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的 Azure API 管理執行個體。
-1. 選取 [API]。
-1. 選取您想要使用 Azure AD B2C 保護的 API。
-1. 選取 [設計] 索引標籤。
-1. 在 [**輸入處理**] 底下，選取 [ **\</] \>** 開啟 [原則程式碼編輯器]。
-1. 將下列 `<validate-jwt>` 標記放在 `<inbound>` 原則內。
+1. 選取 [API]****。
+1. 選擇要使用 Azure AD B2C 保護的 API。
+1. 選取 [設計]**** 索引標籤。
+1. 在 **"入站處理**"**\</** 下，選擇以打開策略代碼編輯器。
+1. 將以下`<validate-jwt>`標記放在策略中`<inbound>`。
 
-    1. 使用您的原則知名設定 URL，更新 `<openid-config>` 元素中的 `url` 值。
-    1. 使用您先前在 B2C 租使用者中建立之應用程式的應用程式識別碼（例如*webapp1*），更新 `<audience>` 元素。
-    1. 使用您稍早記錄的權杖簽發者端點來更新 `<issuer>` 元素。
+    1. 使用策略`url`的已知配置`<openid-config>`URL 更新元素中的值。
+    1. 使用以前`<audience>`在 B2C 租戶中創建的應用程式的應用程式 ID 更新元素（例如 *，Webapp1*）。
+    1. 使用前面`<issuer>`記錄的權杖頒發終結點更新元素。
 
     ```xml
     <policies>
@@ -115,61 +115,61 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
     </policies>
     ```
 
-## <a name="validate-secure-api-access"></a>驗證安全 API 存取
+## <a name="validate-secure-api-access"></a>驗證安全 API 訪問
 
-若要確保只有經過驗證的呼叫端可以存取您的 API，您可以使用[Postman](https://www.getpostman.com/)呼叫 API 來驗證您的 Azure API 管理設定。
+為了確保只有經過身份驗證的調用方才能訪問 API，可以通過使用[Postman](https://www.getpostman.com/)調用 API 來驗證 Azure API 管理配置。
 
-若要呼叫 API，您需要 Azure AD B2C 所簽發的存取權杖，以及 APIM 的訂用帳戶金鑰。
+要調用 API，需要 Azure AD B2C 頒發的訪問權杖和 APIM 訂閱金鑰。
 
 ### <a name="get-an-access-token"></a>取得存取權杖
 
-您首先需要 Azure AD B2C 所簽發的權杖，以在 Postman 的 `Authorization` 標頭中使用。 您可以使用您的註冊/登入使用者流程的 [**立即執行**] 功能來取得一個，您應該已建立為其中一個必要條件。
+首先需要由 Azure AD B2C 頒發的權杖才能在`Authorization`Postman 中的標頭中使用。 您可以使用您應該創建的註冊/登錄使用者流的 **"立即運行"** 功能作為先決條件之一獲得。
 
-1. 流覽至您在[Azure 入口網站](https://portal.azure.com)中的 Azure AD B2C 租使用者。
-1. 在 [**原則**] 底下，選取 **[使用者流程（原則）** ]。
-1. 選取現有的註冊/登入使用者流程，例如*B2C_1_signupsignin1*。
-1. 針對 [**應用程式**]，選取 [ *webapp1*]。
-1. 在 [**回復 URL**] 中，選擇 [`https://jwt.ms`]。
-1. 選取 [執行使用者流程]。
+1. 流覽到[Azure 門戶](https://portal.azure.com)中的 Azure AD B2C 租戶。
+1. 在**策略**下，選擇**使用者流（策略）。**
+1. 選擇現有的註冊/登錄使用者流，例如*B2C_1_signupsignin1*。
+1. 對於**應用程式**，選擇*Webapp1*。
+1. 對於**回復 URL，** 請選擇`https://jwt.ms`。
+1. 選擇 **"運行使用者流**"。
 
-    ![[執行使用者流程] 頁面，以在 Azure 入口網站中註冊登入使用者流程](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
+    ![運行使用者流頁以在 Azure 門戶中註冊登錄使用者流](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. 完成登入程序。 您應該會被重新導向到 `https://jwt.ms`。
-1. 記錄您的瀏覽器中顯示的編碼權杖值。 您會在 Postman 中使用此權杖值作為 Authorization 標頭。
+1. 完成登入程序。 您應該重定向到`https://jwt.ms`。
+1. 記錄瀏覽器中顯示的編碼權杖值。 對於 Postman 中的"授權"標頭，使用此權杖值。
 
-    ![Jwt.ms 上顯示的編碼權杖值](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
+    ![jwt.ms上顯示的編碼權杖值](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
 
-### <a name="get-api-subscription-key"></a>取得 API 訂用帳戶金鑰
+### <a name="get-api-subscription-key"></a>獲取 API 訂閱金鑰
 
-呼叫已發佈 API 的用戶端應用程式（在此案例中為 Postman）必須在其對 API 的 HTTP 要求中包含有效的 API 管理訂用帳戶金鑰。 若要取得要包含在 Postman HTTP 要求中的訂用帳戶金鑰：
+調用已發佈 API 的用戶端應用程式（本例中為 Postman）必須在其對 API 的 HTTP 要求中包含有效的 API 管理訂閱金鑰。 要獲取要包含在郵遞員 HTTP 要求中的訂閱金鑰，請進行以下操作：
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 Azure API 管理服務實例。
-1. 選取 **訂用帳戶** 。
-1. 選取 [**產品：無限制**] 的省略號，然後選取 [**顯示/隱藏金鑰**]。
-1. 記錄產品的**主要金鑰**。 您會在 Postman 中的 HTTP 要求中使用此金鑰做為 `Ocp-Apim-Subscription-Key` 標頭。
+1. 流覽到[Azure 門戶](https://portal.azure.com)中的 Azure API 管理服務實例。
+1. 選擇**訂閱**。
+1. 選擇 **"產品"** 的省略號：無限制，然後選擇 **"顯示/隱藏鍵**"。
+1. 記錄產品的**初級金鑰**。 在 Postman 中的`Ocp-Apim-Subscription-Key`HTTP 要求中，對於標頭使用此金鑰。
 
-![已在 Azure 入口網站中選取 [顯示/隱藏金鑰] 的 [訂用帳戶金鑰] 頁面](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
+![在 Azure 門戶中選擇顯示/隱藏鍵的訂閱金鑰頁](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
-### <a name="test-a-secure-api-call"></a>測試安全的 API 呼叫
+### <a name="test-a-secure-api-call"></a>測試安全 API 呼叫
 
-記錄存取權杖和 APIM 訂用帳戶金鑰後，您就可以開始測試是否已正確設定對 API 的安全存取。
+通過記錄訪問權杖和 APIM 訂閱金鑰，現在可以測試您是否正確配置了對 API 的安全訪問。
 
-1. 在[Postman](https://www.getpostman.com/)中建立新的 `GET` 要求。 針對 [要求 URL]，指定您發佈為其中一個必要條件之 API 的喇叭清單端點。 例如，
+1. 在`GET`[郵遞員](https://www.getpostman.com/)中創建新請求。 對於請求 URL，指定您發佈的 API 的揚聲器清單終結點作為先決條件之一。 例如：
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
-1. 接下來，新增下列標頭：
+1. 接下來，添加以下標頭：
 
     | Key | 值 |
     | --- | ----- |
-    | `Authorization` | 您先前記錄的編碼權杖值，前面加上 `Bearer ` （在「持有人」後面加上空格） |
-    | `Ocp-Apim-Subscription-Key` | 您稍早記錄的 APIM 訂用帳戶金鑰 |
+    | `Authorization` | 您之前錄製的編碼權杖值（`Bearer `包括"承載"後的空間） |
+    | `Ocp-Apim-Subscription-Key` | 您之前錄製的 APIM 訂閱金鑰 |
 
-    您的**GET**要求 URL 和**標頭**應如下所示：
+    您的**GET**請求 URL 和**標頭**應類似于：
 
-    ![顯示 GET 要求 URL 和標頭的 Postman UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
+    ![顯示 GET 請求 URL 和標頭的郵遞員 UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
 
-1. 選取 Postman 中的 [**傳送**] 按鈕以執行要求。 如果您已正確設定所有專案，您應該會看到具有一組會議喇叭的 JSON 回應（此處顯示已截斷）：
+1. 選擇"郵遞員 **"中的"發送**"按鈕以執行請求。 如果配置了所有內容正確，則應顯示 JSON 回應，其中有會議演講者的集合（此處顯示截斷）：
 
     ```JSON
     {
@@ -198,13 +198,13 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ### <a name="test-an-insecure-api-call"></a>測試不安全的 API 呼叫
 
-既然您已成功完成要求，請測試失敗案例，以確保以*無效*的權杖呼叫 API 時，會如預期般遭到拒絕。 執行測試的其中一種方式是在權杖值中新增或變更幾個字元，然後執行與之前相同的 `GET` 要求。
+現在您已成功發出請求，請測試失敗情況，以確保按預期拒絕對具有*無效*權杖的 API 的調用。 執行測試的一種方法是在權杖值中添加或更改幾個字元，然後執行與以前相同的`GET`請求。
 
-1. 將數個字元新增至 token 值，以模擬不正確 token。 例如，將「無效」新增至權杖值：
+1. 向權杖值添加多個字元以類比不正確權杖。 例如，向權杖值添加"INVALID"：
 
-    ![Postman UI 的標頭區段，其中顯示已新增至權杖的無效](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
+    ![郵遞員 UI 的標題部分，顯示添加到權杖的 INVALID](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
 
-1. 選取 [**傳送**] 按鈕以執行要求。 使用不正確權杖時，預期的結果會是 `401` 未經授權的狀態碼：
+1. 選擇 **"發送**"按鈕以執行請求。 使用無效權杖時，預期結果是`401`未經授權的狀態碼：
 
     ```JSON
     {
@@ -213,11 +213,11 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
     }
     ```
 
-如果您看到 `401` 狀態碼，表示您已確認只有具備 Azure AD B2C 所發行之有效存取權杖的呼叫者，才能夠對您的 Azure API 管理 API 提出成功的要求。
+如果看到`401`狀態碼，則已驗證只有具有 Azure AD B2C 頒發的有效訪問權杖的調用方才能向 Azure API 管理 API 發出成功請求。
 
-## <a name="support-multiple-applications-and-issuers"></a>支援多個應用程式和簽發者
+## <a name="support-multiple-applications-and-issuers"></a>支援多個應用程式和頒發者
 
-數個應用程式通常會與單一 REST API 互動。 若要讓您的 API 接受適用于多個應用程式的權杖，請將其應用程式識別碼新增至 APIM 輸入原則中的 `<audiences>` 元素。
+多個應用程式通常與單個 REST API 進行交互。 要使 API 能夠接受用於多個應用程式的權杖，請將其應用程式權杖添加到 APIM 入`<audiences>`站策略中的元素。
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -227,7 +227,7 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 </audiences>
 ```
 
-同樣地，若要支援多個權杖簽發者，請將其端點 Uri 新增至 APIM 輸入原則中的 `<issuers>` 元素。
+同樣，要支援多個權杖頒發者，將其終結點 URI 添加到`<issuers>`APIM 入站策略中的元素。
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -237,17 +237,17 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 </issuers>
 ```
 
-## <a name="migrate-to-b2clogincom"></a>遷移至 b2clogin.com
+## <a name="migrate-to-b2clogincom"></a>遷移到b2clogin.com
 
-如果您的 APIM API 會驗證舊版 `login.microsoftonline.com` 端點所簽發的權杖，您應該遷移 API 和呼叫它的應用程式，以使用[b2clogin.com](b2clogin.md)所簽發的權杖。
+如果您有一個 APIM API 來驗證由舊終結點`login.microsoftonline.com`頒發的權杖，則應遷移 API 和調用它的應用程式，以使用[b2clogin.com](b2clogin.md)頒發的權杖。
 
-您可以遵循此一般程式來執行分段遷移：
+您可以按照此常規過程執行暫存遷移：
 
-1. 針對 b2clogin.com 和 login.microsoftonline.com 所發行的權杖，在您的 APIM 輸入原則中新增支援。
-1. 一次更新一個應用程式，以從 b2clogin.com 端點取得權杖。
-1. 一旦您的所有應用程式都正確地從 b2clogin.com 取得權杖，請從 API 移除對 login.microsoftonline.com 發行之權杖的支援。
+1. 在 APIM 入站策略中添加對 b2clogin.com和login.microsoftonline.com頒發的權杖的支援。
+1. 一次更新一個應用程式，從b2clogin.com終結點獲取權杖。
+1. 一旦所有應用程式都正確從b2clogin.com獲取權杖，請從 API 中刪除對login.microsoftonline.com頒發的權杖的支援。
 
-下列範例 APIM 輸入原則說明如何接受 b2clogin.com 和 login.microsoftonline.com 所簽發的權杖。 此外，它也支援來自兩個應用程式的 API 要求。
+下面的示例 APIM 入站策略說明了如何接受b2clogin.com和login.microsoftonline.com頒發的權杖。 此外，它還支援來自兩個應用程式的 API 請求。
 
 ```XML
 <policies>
@@ -273,6 +273,6 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure API 管理原則的其他詳細資料，請參閱[APIM 原則參考索引](../api-management/api-management-policies.md)。
+有關 Azure API 管理原則的其他詳細資訊，請參閱[APIM 策略參考索引](../api-management/api-management-policies.md)。
 
-您可以在將[OWIN 為基礎的 Web API 遷移至 b2clogin.com](multiple-token-endpoints.md)中，找到將 OWIN 型 web api 及其應用程式遷移至 b2clogin.com 的相關資訊。
+您可以找到有關將基於 OWIN 的 Web API 及其應用程式遷移到b2clogin.com遷移[基於 OWIN 的 Web API 的資訊b2clogin.com。](multiple-token-endpoints.md)

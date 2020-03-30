@@ -3,7 +3,7 @@ title: Azure 背書的散發套件
 description: 了解在 Azure 背書散發套件上的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的準則。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: mimckitt
-ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: cc2fedcd4816b55aaed3573ce2593919770a4152
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062648"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>Azure 上背書的 Linux 散發套件
+# <a name="endorsed-linux-distributions-on-azure"></a>Azure 上支援的 Linux 發行版本
 合作夥伴會在 Azure Marketplace 中提供 Linux 映像。 我們與各個 Linux 社群合作，以便為經背書的發佈清單新增更多版本選項。 在此同時，針對 Marketplace 未提供的發佈，您一律可以將自己的 Linux 帶入，方法是遵循[建立和上傳包含 Linux 作業系統的虛擬硬碟](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)中的指導方針。
 
 ## <a name="supported-distributions-and-versions"></a>支援的發佈和版本
-下表列出 Azure 上支援的 Linux 散發套件和版本。 如需 Azure 中 Linux 和開放原始碼技術支援的詳細資訊，請參閱[Microsoft Azure 中的 linux 映射支援](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。
+下表列出 Azure 上支援的 Linux 散發套件和版本。 有關 Azure 中支援 Linux 和開源技術的詳細資訊，請參閱[Microsoft Azure 中對 Linux 映射的支援](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。
 
 適用於 Hyper-V 和 Azure 的 Linux Integration Services (LIS) 驅動程式是核心模組，Microsoft 會直接提供給上游 Linux Kernel。  根據預設，有些 LIS 驅動程式會建置到發佈的核心。 以 Red Hat Enterprise (RHEL)/CentOS 作為基礎的較舊分佈可用在[適用於 Hyper-V 和 Azure 的 Linux 整合服務 4.2 版](https://www.microsoft.com/download/details.aspx?id=55106)作為個別下載。 如需關於 LIS 驅動程式的詳細資訊，請參閱 [Linux 核心需求](create-upload-generic.md#linux-kernel-requirements)。
 
@@ -34,34 +34,34 @@ Azure Linux 代理程式已預先安裝於 Azure Marketplace 映像上，而且�
 
 | 散發 | 版本 | 驅動程式 | 代理程式 |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3 +、7.0 +、8.0 + |CentOS 6.3：[LIS 下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝：在 [repo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) 中，"WALinuxAgent" 的下方 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |在核心中 |原始程式碼：[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7.9 +、8.2 +、9、10 |在核心中 |套件：在「waagent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+、7.0+ |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7 +、7.1 +、8.0 + |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3°、7.0°、8.0° |CentOS 6.3： [LIS 下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |包：在"WALinux代理"下[進行回購](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [科雷諾斯](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |在核心中 |原始程式碼：[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| Debian |Debian 7.9°， 8.2°， 9， 10 |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4+、7.0+ |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7°、 7.1°、 8.0° |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |在核心中 |套件：在「WALinuxAgent」下的儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>** ubuntu 12.04 和14.04 擴充支援的相關資訊可在以下位置找到： [Ubuntu 擴充安全性維護](https://www.ubuntu.com/esm)。
+  - **<sup>1</sup>** 有關 Ubuntu 12.04 和 14.04 的擴展支援的資訊，請參閱此處[：Ubuntu 擴展安全維護](https://www.ubuntu.com/esm)。
 
 
-## <a name="image-update-cadence"></a>映射更新步調
-Azure 要求經背書的 Linux 散發套件發行者定期以最新的修補程式和安全性修正程式更新其映射 Azure Marketplace，每季或更快的步調。 Azure Marketplace 中的已更新映射會自動提供給客戶，做為映射 SKU 的新版本。 有關如何尋找 Linux 映射的詳細資訊：[在 Azure Marketplace 中尋找 LINUX VM 映射](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)。
+## <a name="image-update-cadence"></a>圖像更新節奏
+Azure 要求支援 Linux 發行版本的發行者定期在 Azure 應用商店中更新其映射，並按季度或更快的節奏更新其映射，併發布最新的修補程式和安全修補程式。 Azure 應用商店中更新的圖像將自動作為映射 SKU 的新版本提供給客戶。 有關如何查找 Linux 映射的詳細資訊：[在 Azure 應用商店中查找 Linux VM 映射](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)。
 
 ### <a name="additional-links"></a>其他連結
- - [SUSE 公用雲端映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+ - [SUSE 公共雲映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
 
-## <a name="azure-tuned-kernels"></a>Azure 微調的核心
+## <a name="azure-tuned-kernels"></a>Azure 調諧內核
 
-Azure 與各種經背書的 Linux 散發套件密切合作，將其發佈至 Azure Marketplace 的映射優化。 此共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件來提供。 Azure 微調的核心結合了新功能和效能改進，而且相較于散發所提供的預設或一般核心，速度更快（通常是每季）。
+Azure 與各種認可的 Linux 發行版本密切合作，以優化它們發佈到 Azure 應用商店的圖像。 此協作的一個方面是開發針對 Azure 平臺優化的"調諧"Linux 內核，這些內核作為 Linux 發行版本的完全支援元件提供。 Azure-Tuned 內核集成了新功能和性能改進，與分發中可用的預設內核或通用內核相比，其節奏更快（通常是季度）。
 
-在大部分情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射上，因此 Azure 客戶將立即獲得這些優化核心的優點。 這些 Azure 微調核心的詳細資訊可在下列連結中找到：
+在大多數情況下，您會發現這些內核預先安裝在 Azure 應用商店中的預設映射上，因此 Azure 客戶將立即從這些優化內核中獲益。 有關這些 Azure 調諧內核的詳細資訊，請參閱以下連結：
 
- - CentOS 透過 CentOS 虛擬化 SIG 提供的 Azure 微調核心-[詳細資訊](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
- - Debian 雲端核心-在 Azure 上提供 Debian 10 和 Debian 9 "反向移植" 映射-[詳細資訊](https://wiki.debian.org/Cloud/MicrosoftAzure)
- - SLES Azure 微調的核心-[詳細資訊](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
- - Ubuntu Azure 微調的核心-[詳細資訊](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+ - CentOS Azure 調諧內核 - 可通過 CentOS 虛擬化 SIG 提供 -[更多資訊](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian 雲內核 - 隨 Debian 10 和 Debian 9 在 Azure 上的"後埠"映射提供 -[更多資訊](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES Azure 調諧內核 -[更多資訊](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu Azure 調諧內核 -[更多資訊](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>合作夥伴

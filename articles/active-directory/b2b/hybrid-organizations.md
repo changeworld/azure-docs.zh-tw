@@ -1,5 +1,5 @@
 ---
-title: 適用于混合式組織的 B2B 共同作業-Azure AD
+title: 用於混合組織的 B2B 協作 - Azure AD
 description: 透過 Azure AD B2B 共同作業對夥伴提供內部部署和雲端資源的存取權。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272476"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>混合式組織的 Azure Active Directory B2B 共同作業
@@ -48,6 +48,6 @@ Azure Active Directory (Azure AD) B2B 共同作業可讓您輕鬆地對外部夥
 ## <a name="next-steps"></a>後續步驟
 
 - [對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權](hybrid-cloud-to-on-premises.md)
-- [使用 Azure AD B2B 共同作業對本機管理的夥伴帳戶授與雲端資源的存取權](hybrid-on-premises-to-cloud.md)
+- [使用 Azure AD B2B 協作授予本地管理的合作夥伴帳戶對雲資源的訪問](hybrid-on-premises-to-cloud.md)
 
 

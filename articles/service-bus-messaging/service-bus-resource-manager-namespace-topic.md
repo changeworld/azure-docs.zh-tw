@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: ad81ca75638b9510064b7f2c319d9429881c60d1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79475921"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384869"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立服務匯流排命名空間與主題和訂用帳戶
 
@@ -38,8 +38,6 @@ ms.locfileid: "79475921"
 > * [建立服務匯流排命名空間與主題、訂用帳戶和規則](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > 若要檢查最新的範本，請造訪 [Azure 快速入門範本][Azure Quickstart Templates]資源庫，並搜尋**服務匯流排**。
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>您要部署什麼？
 
@@ -58,6 +56,7 @@ ms.locfileid: "79475921"
 範本會定義下列參數：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要建立的服務匯流排命名空間名稱。
 
 ```json
@@ -67,6 +66,7 @@ ms.locfileid: "79475921"
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 在服務匯流排命名空間中建立的主題名稱。
 
 ```json
@@ -76,6 +76,7 @@ ms.locfileid: "79475921"
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 在服務匯流排命名空間中建立的訂用帳戶名稱。
 
 ```json
@@ -85,6 +86,7 @@ ms.locfileid: "79475921"
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 範本的服務匯流排 API 版本。
 
 ```json
@@ -95,7 +97,9 @@ ms.locfileid: "79475921"
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>要部署的資源
+
 建立 **訊息**類型的標準服務匯流排命名空間與主題和訂用帳戶。
 
 ```json
@@ -134,19 +138,23 @@ ms.locfileid: "79475921"
 若要了解 JSON 語法和屬性，請參閱[命名空間](/azure/templates/microsoft.servicebus/namespaces)、[主題](/azure/templates/microsoft.servicebus/namespaces/topics)和[訂用帳戶](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)。
 
 ## <a name="commands-to-run-deployment"></a>執行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 az group deployment create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 現在您已使用 Azure Resource Manager 建立並部署資源，請檢視這些文件，了解如何管理這些資源︰
 
 * [使用 PowerShell 管理服務匯流排](service-bus-manage-with-ps.md)

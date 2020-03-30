@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7465ec4ef717f709aacb5e543a8f1cf4fa37bfb5
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139006"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366377"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
@@ -31,11 +31,11 @@ ms.locfileid: "79139006"
 
 1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)。
 
-1. 在 [機器 - Azure Arc] 頁面上，選取左上角的 [新增]，或選取中間窗格底部的 [建立機器 - Azure Arc] 選項。 
+1. 在 [機器 - Azure Arc]**** 頁面上，選取左上角的 [新增]****，或選取中間窗格底部的 [建立機器 - Azure Arc]**** 選項。 
 
-1. 在 [選取方法] 頁面上，選取 [使用互動式指令碼新增機器] 圖格，然後選取 [產生指令碼]。
+1. 在 [選取方法]**** 頁面上，選取 [使用互動式指令碼新增機器]**** 圖格，然後選取 [產生指令碼]****。
 
-1. 在 [產生指令碼] 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。
+1. 在 [產生指令碼]**** 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。
 
     >[!NOTE]
     >適用於伺服器的 Azure Arc (預覽) 僅支援下欄區域：
@@ -43,38 +43,43 @@ ms.locfileid: "79139006"
     >- WestEurope
     >- WestAsia
     >
-    >在 [總覽][文章中選取區域時，請](overview.md#supported-regions)參閱其他考慮。
+    >在"概述"一文中[在此處](overview.md#supported-regions)選擇區域時，請查看其他注意事項。
 
-1. 在 [產生指令碼] 頁面的 [作業系統] 下拉式清單中，選取要作為指令碼執行平台的作業系統。
+1. 在 [產生指令碼]**** 頁面的 [作業系統]**** 下拉式清單中，選取要作為指令碼執行平台的作業系統。
 
-1. 如果電腦透過 proxy 伺服器進行通訊以連線到網際網路，請選取 **[下一步： Proxy 伺服器]** 。 
-1. 在 [Proxy 伺服器] 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。 
-1. 選取 [檢閱 + 產生]。
+1. 如果電腦正在通過代理伺服器進行通信以連接到互聯網，請選擇"**下一步：代理伺服器**"。 
+1. 在 [Proxy 伺服器]**** 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。 
+1. 選取 [檢閱 + 產生]****。
 
-1. 在 [檢閱 + 產生] 索引標籤上檢閱摘要資訊，然後選取 [下載]。 如果您還需要變更，請選取 [上一步]。
+1. 在 [檢閱 + 產生]**** 索引標籤上檢閱摘要資訊，然後選取 [下載]****。 如果您還需要變更，請選取 [上一步]****。
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>在 Windows 上安裝和驗證代理程式
 
 ### <a name="install-manually"></a>手動安裝
 
-您可以執行 Windows Installer 套件「AzureConnectedMachineAgent.msi」來手動安裝 Azure Connected Machine 代理程式。 
+您可以執行 Windows Installer 套件「AzureConnectedMachineAgent.msi」** 來手動安裝 Azure Connected Machine 代理程式。 
 
 > [!NOTE]
-> * 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」權限。
+> * 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」** 權限。
 > * 您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用的網路資料夾執行此動作。 如果您在執行此安裝程式套件時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
 
 如果機器需要透過 Proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行本文稍後所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。
 
-下表將強調說明命令列中適用於代理程式的安裝程式所支援的參數。
+如果您不熟悉 Windows 安裝程式包的命令列選項，請查看[Msiexec 標準命令列選項](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令列選項](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
 
-| 參數 | 描述 |
-|:--|:--|
-| /? | 傳回命令列選項的清單。 |
-| /S | 執行無訊息安裝，而不需要與使用者互動。 |
+例如，使用`/?`參數運行安裝程式以查看説明和快速參考選項。 
 
-例如，若要使用 `/?` 參數來執行安裝程式，請輸入 `msiexec.exe /i AzureConnectedMachineAgent.msi /?`。
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /?
+```
 
-Connected Machine 代理程式的檔案預設會安裝在「C:\Program Files\AzureConnectedMachineAgent」。 如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
+要靜默安裝代理並在資料夾中創建設置日誌檔，`C:\Support\Logs`請運行以下命令。
+
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+```
+
+預設情況下，已連接的電腦代理的檔安裝在*C：*程式檔_Azure連接電腦代理*中。 如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」**。
 
 ### <a name="install-with-the-scripted-method"></a>使用指令碼方法來安裝
 
@@ -149,60 +154,8 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="clean-up"></a>清除
-
-若要中斷機器與適用於伺服器的 Azure Arc (預覽) 的連線，請執行下列動作：
-
-1. 移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)來開啟適用於伺服器的 Azure Arc (預覽)。
-
-1. 依序選取清單中的機器、省略號 ( **...** ) 和 [刪除]。
-
-1. 若要從機器解除安裝 Windows 代理程式，請執行下列動作：
-
-    a. 使用具有系統管理員權限的帳戶登入電腦。  
-    b. 在 [控制台] 中，選取 [程式和功能]。  
-    c. 在 [程式和功能] 中，依序選取 [Azure Connected Machine 代理程式]、[解除安裝] 和 [是]。  
-
-    >[!NOTE]
-    > 您也可以連按兩下 **AzureConnectedMachineAgent.msi** 安裝程式套件來執行代理程式安裝精靈。
-
-    如果您想要編寫移除代理程式的腳本，您可以使用下列範例，它會抓取產品代碼，並使用 Msiexec 命令列 `msiexec /x {Product Code}`來卸載代理程式。 若要這樣做：  
-    
-    a. 開啟登錄編輯程式。  
-    b. 在登錄機碼 `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` 底下，尋找並複製產品代碼 GUID。  
-    c. 然後，您可以使用 Msiexec 來解除安裝代理程式。
-
-    下列範例示範如何解除安裝代理程式：
-
-    ```powershell
-    Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-    Get-ItemProperty | `
-    Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-    ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
-    ```
-
-1. 若要卸載 Linux 代理程式，要使用的命令取決於 Linux 作業系統。
-
-    - 若是 Ubuntu，請執行下列命令：
-
-      ```bash
-      sudo apt purge azcmagent
-      ```
-
-    - 針對 RHEL、CentOS 和 Amazon Linux，請執行下列命令：
-
-      ```bash
-      sudo yum remove azcmagent
-      ```
-
-    - 針對 SLES，執行下列命令：
-
-      ```bash
-      sudo zypper remove azcmagent
-      ```
-
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用[Azure 原則](../../governance/policy/overview.md)來管理您的機器，例如 VM[來賓](../../governance/policy/concepts/guest-configuration.md)設定、確認機器回報至預期的 Log Analytics 工作區、使用[vm 的 Azure 監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)來啟用監視等功能。
+- 瞭解如何使用[Azure 策略](../../governance/policy/overview.md)管理電腦，用於 VM[來賓配置](../../governance/policy/concepts/guest-configuration.md)、驗證電腦是否報告到預期的日誌分析工作區、使用 VM 啟用 Azure[監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)等操作。
 
-- 深入瞭解[Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+- 瞭解有關[日誌分析代理](../../azure-monitor/platform/log-analytics-agent.md)的更多資訊。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

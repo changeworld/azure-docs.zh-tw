@@ -1,6 +1,6 @@
 ---
-title: azcopy 登入 |Microsoft Docs
-description: 本文提供 azcopy login 命令的參考資訊。
+title: 茲比貝登錄 |微軟文檔
+description: 本文為 azcopy 登錄命令提供了參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,118 +8,118 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295413"
 ---
 # <a name="azcopy-login"></a>azcopy 登入
 
-登入以存取 Azure 儲存體資源 Azure Active Directory。
+登錄到 Azure 活動目錄以訪問 Azure 存儲資源。
 
-## <a name="synopsis"></a>摘要
+## <a name="synopsis"></a>概要
 
-登入 Azure Active Directory 以存取 Azure 儲存體資源。
+登錄到 Azure 活動目錄以訪問 Azure 存儲資源。
 
-若要獲得 Azure 儲存體帳戶的授權，您必須在儲存體帳戶、父資源群組或父訂用帳戶的內容中，將**儲存體 Blob 資料參與者**角色指派給您的使用者帳戶。
+要授權到 Azure 存儲帳戶，必須在存儲帳戶、父資源組或父訂閱的上下文中將**存儲 Blob 資料參與者**角色指派給使用者帳戶。
 
-此命令會使用作業系統內建機制，為目前的使用者快取加密的登入資訊。
+此命令將使用作業系統內置機制緩存當前使用者的加密登錄資訊。
 
-如需詳細資訊，請參閱範例。
+有關詳細資訊，請參閱示例。
 
 > [!IMPORTANT]
-> 如果您使用命令列設定環境變數，該變數將可在您的命令列歷程記錄中讀取。 請考慮從您的命令列歷程記錄中清除包含認證的變數。 若要讓變數不會出現在歷程記錄中，您可以使用腳本來提示使用者輸入其認證，並設定環境變數。
+> 如果使用命令列設置環境變數，則該變數將在命令列歷史記錄中可讀。 請考慮清除包含命令列歷史記錄中憑據的變數。 要防止變數出現在歷史記錄中，可以使用腳本提示使用者輸入其憑據，並設置環境變數。
 
 ```azcopy
 azcopy login [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>相關的概念性文章
+## <a name="related-conceptual-articles"></a>相關概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存儲傳輸資料](storage-use-azcopy-blobs.md)
 - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>範例
 
-以互動方式使用預設 AAD 租使用者識別碼設定為 [一般] 來登入：
+使用預設 AAD 租戶 ID 設置為公共的互動式登入：
 
 ```azcopy
 azcopy login
 ```
 
-使用指定的租使用者識別碼，以互動方式登入：
+使用指定的租戶 ID 以對話模式登錄：
 
 ```azcopy
 azcopy login --tenant-id "[TenantID]"
 ```
 
-使用虛擬機器（VM）的系統指派身分識別登入：
+使用虛擬機器 （VM） 的系統分配標識登錄：
 
 ```azcopy
 azcopy login --identity
 ```
 
-使用 VM 的使用者指派身分識別和服務識別的用戶端識別碼來登入：
+使用 VM 的使用者分配標識和服務標識的用戶端 ID 登錄：
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-使用 VM 的使用者指派身分識別和服務身分識別的物件識別碼來登入：
+使用 VM 的使用者分配標識和服務標識的物件識別碼 登錄：
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-使用 VM 的使用者指派身分識別和服務識別的資源識別碼來登入：
+使用 VM 的使用者分配標識和服務標識的資源識別碼 登錄：
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-使用用戶端密碼，以服務主體的身分登入。 將環境變數 AZCOPY_SPA_CLIENT_SECRET 設定為以密碼為基礎的服務主體驗證的用戶端密碼。
+使用用戶端機密作為服務主體登錄。 將環境變數AZCOPY_SPA_CLIENT_SECRET到用戶端機密，以便進行基於機密的服務主體 auth。
 
 ```azcopy
 azcopy login --service-principal
 ```
 
-使用憑證和密碼，以服務主體的身分登入。 針對以憑證為基礎的服務主體授權，將環境變數 AZCOPY_SPA_CERT_PASSWORD 設定為憑證的密碼。
+使用證書和密碼作為服務主體登錄。 將環境變數AZCOPY_SPA_CERT_PASSWORD證書的密碼，以便獲得基於證書的服務主體授權。
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert
 ```
 
-請務必將/path/to/my/cert 視為 PEM 或 PKCS12 檔案的路徑。 AzCopy 不會到達系統憑證存放區來取得您的憑證。
+請確保將 /path/to/my/cert 視為 PEM 或 PKCS12 檔的路徑。 AzCopy 不會進入系統憑證存放區以獲取證書。
 
---執行以憑證為基礎的服務主體驗證時，憑證路徑是強制的。
+--在進行基於證書的服務主體 auth 時，憑證路徑是必需的。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
-|選項|說明|
+|選項|描述|
 |--|--|
-|--aad-端點|要使用的 Azure Active Directory 端點。 預設值（適用于公用 Azure 雲端的 [https://login.microsoftonline.com) ] 是正確的。 在國家雲端中進行驗證時，請設定此參數。 請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
-受控服務識別不需要此旗標。|
-|--應用程式識別碼字串|使用者指派之身分識別的應用程式識別碼。 服務主體驗證所需。|
-|--憑證-路徑字串|SPN 驗證的憑證路徑。 以憑證為基礎的服務主體驗證所需。|
-|-h, --help|顯示登入命令的說明內容。|
-|--identity|使用虛擬機器的身分識別（也稱為受控服務識別（MSI））進行登入。|
-|--identity-用戶端識別碼字串|使用者指派之身分識別的用戶端識別碼。|
-|--identity-物件識別碼字串|使用者指派之身分識別的物件識別碼。|
-|--identity-資源識別碼字串|使用者指派之身分識別的資源識別碼。|
-|--服務-主體|使用憑證或秘密，透過 SPN （服務主體名稱）登入。 用戶端密碼或憑證密碼必須放在適當的環境變數中。 輸入 `AzCopy env`，以查看環境變數的名稱和描述。|
-|--租使用者識別碼字串| 用於 OAuth 裝置互動式登入的 Azure active directory 租使用者識別碼。|
+|--aad-端點|要使用的 Azure 活動目錄終結點。 預設 （`https://login.microsoftonline.com`） 對於公共 Azure 雲是正確的。 在國家雲中進行身份驗證時設置此參數。 請參閱[Azure AD 身份驗證終結點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+託管服務標識不需要此標誌。|
+|--應用程式 id 字串|使用者分配標識的應用程式 ID。 服務主體 auth 所需的。|
+|--憑證路徑字串|SPN 身份驗證憑證的路徑。 基於證書的服務主體 auth 需要。|
+|-h, --help|顯示登錄命令的説明內容。|
+|--身份|使用虛擬機器標識（也稱為託管服務標識 （MSI） 登錄。|
+|--身份用戶端-id 字串|使用者分配標識的用戶端 ID。|
+|--標識-物件-id 字串|使用者分配標識的物件識別碼。|
+|--標識資源-id 字串|使用者分配標識的資源識別碼。|
+|--服務主體|使用證書或機密通過 SPN（服務主體名稱）登錄。 用戶端金鑰或證書密碼必須放置在相應的環境變數中。 鍵入`AzCopy env`以查看環境變數的名稱和說明。|
+|--租戶 id 字串| 用於 OAuth 設備互動式登入的 Azure 活動目錄租戶 ID。|
 
-## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
+## <a name="options-inherited-from-parent-commands"></a>從父命令繼承的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
-|--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
-|--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--蓋-mbps uint32|以每秒百萬位元表示傳輸速率上限。 逐時輸送量可能與上限略有不同。 如果此選項設置為零，或者省略此選項，則輸送量不會上限。|
+|--輸出類型字串|命令輸出的格式。 選項包括：文本，json。 預設值為"文本"。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [azcopy](storage-ref-azcopy.md)
+- [阿茲比貝](storage-ref-azcopy.md)

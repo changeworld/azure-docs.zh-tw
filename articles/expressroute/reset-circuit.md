@@ -1,5 +1,5 @@
 ---
-title: 重設失敗的電路-ExpressRoute： PowerShell： Azure |Microsoft Docs
+title: 重置故障電路 - 快速路由：電源外殼：Azure |微軟文檔
 description: 本文可協助您重設處於失敗狀態的 ExpressRoute 電路。
 services: expressroute
 author: anzaman
@@ -9,10 +9,10 @@ ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
 ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748099"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重設失敗的 ExpressRoute 電路

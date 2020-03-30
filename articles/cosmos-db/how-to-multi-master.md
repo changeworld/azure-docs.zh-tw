@@ -1,16 +1,16 @@
 ---
 title: 如何在 Azure Cosmos DB 中設定多重主機
-description: 瞭解如何在 Azure Cosmos DB 中使用不同的 Sdk，為您的應用程式設定多宿主。
+description: 瞭解如何在 Azure Cosmos DB 中使用不同的 SDK 為應用程式佈建多主機。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873636"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的應用程式中設定多重主機
@@ -20,7 +20,7 @@ ms.locfileid: "74873636"
 > [!Note]
 > 最初設定為單一寫入區域的 Cosmos 帳戶，可以設定為多個寫入區域 (也就是多重主機) 而不會產生停機時間。 若要深入了解，請參閱[設定多重寫入區域](how-to-manage-database-account.md#configure-multiple-write-regions)
 
-## <a id="netv2"></a>.NET SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
 若要在應用程式中啟用多重主機，請將 `UseMultipleWriteLocations` 設定為 `true`。 此外，將 `SetCurrentLocation` 設定為要在其中部署應用程式的區域，以及複寫 Azure Cosmos DB 的所在區域：
 
@@ -34,7 +34,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
 若要在應用程式中啟用多重主機，請將 `ApplicationRegion` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域：
 
@@ -55,7 +55,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a id="java"></a>Java Async SDK
+## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
 
 若要在應用程式中啟用多重主機，請設定 `policy.setUsingMultipleWriteLocations(true)`，並將 `policy.setPreferredLocations` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域：
 
@@ -72,7 +72,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js、JavaScript 及 TypeScript SDK
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js、JavaScript 及 TypeScript SDK
 
 若要在應用程式中啟用多重主機，請將 `connectionPolicy.UseMultipleWriteLocations` 設定為 `true`。 此外，將 `connectionPolicy.PreferredLocations` 設定為要在其中部署應用程式的區域，以及複寫 Cosmos DB 的所在區域：
 
@@ -89,7 +89,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a id="python"></a>Python SDK
+## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
 若要在應用程式中啟用多重主機，請將 `connection_policy.UseMultipleWriteLocations` 設定為 `true`。 此外，將 `connection_policy.PreferredLocations` 設定為要在其中部署應用程式的區域，以及複寫 Cosmos DB 的所在區域。
 
@@ -109,9 +109,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [使用工作階段權杖在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
 * [Azure Cosmos DB 中的衝突類型和解決原則](conflict-resolution-policies.md)
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
-* [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
+* [Azure 宇宙 DB 中的一致性級別](consistency-levels.md)
 * [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中一致性、可用性和效能的取捨](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB 中的一致性、可用性和性能權衡](consistency-levels-tradeoffs.md)
 * [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
 * [全域調整佈建的輸送量](scaling-throughput.md)
-* [全域散發：幕後](global-dist-under-the-hood.md)
+* [全球分銷：引擎蓋下](global-dist-under-the-hood.md)

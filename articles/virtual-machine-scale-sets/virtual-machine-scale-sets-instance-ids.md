@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure VM 擴展集 VM 的執行個體識別碼
-description: 瞭解 Azure VM 擴展集虛擬機器的實例識別碼，以及它們所呈現的各種方式。
+description: 瞭解 Azure VM 規模設置虛擬機器的實例標識及其顯示的各種方式。
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 99ad4249a4134bcc1b1cf5aba92b8a95a034db33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250760"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534417"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
 本文說明擴展集的執行個體識別碼和它們呈現的各種方式。
@@ -26,7 +26,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 Powershell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (如需詳細資訊，請參閱 [Powershell 文件](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm) \(英文\))
 
-CLI：`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (如需詳細資訊，請參閱 [CLI 文件](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest) \(英文\))。
+CLI：（`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`有關詳細資訊，請參閱[CLI 文檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 您可以列出擴展集中的所有執行個體，以取得執行個體識別碼的清單：
 
@@ -34,14 +34,17 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 Powershell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (如需詳細資訊，請參閱 [Powershell 文件](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) \(英文\))
 
-CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (如需詳細資訊，請參閱 [CLI 文件](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest) \(英文\))。
+CLI：（`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`有關詳細資訊，請參閱[CLI 文檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 您也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 來列出擴展集中的 VM。
 
 確切的輸出呈現內容取決於您提供給命令的選項，但以下有一些來自 CLI 的範例輸出：
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -70,7 +73,7 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 如果您從擴展集 VM 內查詢[執行個體中繼資料](../virtual-machines/windows/instance-metadata-service.md)，您會在輸出中看到 "name":
 
-```
+```output
 {
   "compute": {
     "location": "westus",

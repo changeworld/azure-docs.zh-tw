@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257936"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388894"
 ---
 # <a name="about-migration"></a>關於移轉
 
 請閱讀本文，了解 [Azure Site Recovery](site-recovery-overview.md) 服務如何協助您移轉機器的快速概觀。 
+
+> [!TIP]
+> 現在，應使用 Azure 遷移服務將 VM 和伺服器遷移到 Azure，而不是 Azure 網站恢復服務。 [深入了解](../migrate/migrate-services-overview.md)。
+
 
 以下是您可以使用 Site Recovery 移轉的項目：
 

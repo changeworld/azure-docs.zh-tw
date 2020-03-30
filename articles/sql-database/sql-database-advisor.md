@@ -1,6 +1,6 @@
 ---
-title: 適用于單一和集區資料庫的 Database advisor 效能建議
-description: Azure SQL Database 提供單一和集區資料庫的建議，可改善 Azure SQL Database 中的查詢效能。
+title: 針對單個資料庫和池資料庫的資料庫顧問性能建議
+description: Azure SQL 資料庫為單個資料庫和池資料庫提供建議，這些資料庫可以提高 Azure SQL 資料庫中的查詢性能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,59 +12,59 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: bd7473813722fd413947535413b98d493058634a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214143"
 ---
-# <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>Database Advisor 單一和集區資料庫的效能建議
+# <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>針對單個資料庫和池資料庫的資料庫顧問性能建議
 
-Azure SQL Database 會學習及適應您的應用程式。 針對單一和集區資料庫，SQL Database 有許多資料庫顧問，可提供可讓您將效能最大化的自訂建議。 這些資料庫顧問會持續評估和分析使用歷程記錄，並根據有助於改善效能的工作負載模式提供建議。
+Azure SQL Database 會學習及適應您的應用程式。 對於單個資料庫和池資料庫，SQL 資料庫具有許多資料庫顧問，這些顧問提供自訂建議，使您能夠最大限度地提高性能。 這些資料庫顧問持續評估和分析使用歷史記錄，並根據有助於提高性能的工作負載模式提供建議。
 
-## <a name="performance-overview"></a>效能總覽
+## <a name="performance-overview"></a>性能概述
 
-效能總覽提供資料庫效能的摘要，並協助您進行效能微調和疑難排解。
+性能概述提供資料庫性能摘要，並説明您進行性能調整和故障排除。
 
-![Azure SQL Database 的效能總覽](./media/sql-database-performance/performance-overview-annotated.png)
+![Azure SQL 資料庫的性能概述](./media/sql-database-performance/performance-overview-annotated.png)
 
-- [建議] 圖格會提供適用於資料庫的微調建議分解 (如果有多個建議，則會顯示前三個)。 按一下此磚會帶您前往 [ **[效能建議] 選項](sql-database-advisor-portal.md#viewing-recommendations)** 。
-- [微調活動] 圖格會提供資料庫進行中和已完成微調動作的摘要，讓您快速檢視調整活動的歷程記錄。 按一下此圖格會帶您前往您的資料庫的完整微調記錄檢視。
-- **自動調整**圖格會顯示資料庫的 **[自動調整](sql-database-automatic-tuning-enable.md)** 設定（自動套用至資料庫的微調選項）。 按一下此圖格會開啟 [自動化組態] 對話方塊。
-- [資料庫查詢] 圖格會顯示資料庫的查詢效能摘要 (整體 DTU 使用量和排名最前面的資源取用查詢)。 按一下此圖格，即會帶您前往 [**查詢效能深入解析[]](sql-database-query-performance.md)** 。
+- [建議]**** 圖格會提供適用於資料庫的微調建議分解 (如果有多個建議，則會顯示前三個)。 按一下此磁貼將帶您到**[性能建議選項](sql-database-advisor-portal.md#viewing-recommendations)**。
+- [微調活動] **** 圖格會提供資料庫進行中和已完成微調動作的摘要，讓您快速檢視調整活動的歷程記錄。 按一下此圖格會帶您前往您的資料庫的完整微調記錄檢視。
+- **"自動調整"** 磁貼顯示資料庫**[的自動調優配置](sql-database-automatic-tuning-enable.md)**（自動應用於資料庫的調優選項）。 按一下此圖格會開啟 [自動化組態] 對話方塊。
+- [資料庫查詢]**** 圖格會顯示資料庫的查詢效能摘要 (整體 DTU 使用量和排名最前面的資源取用查詢)。 按一下此圖格，即會帶您前往 [[查詢效能深入解析](sql-database-query-performance.md)]****。
 
-## <a name="performance-recommendation-options"></a>效能建議選項
+## <a name="performance-recommendation-options"></a>性能建議選項
 
-Azure SQL Database 中適用于單一和集區資料庫的效能建議選項如下：
+適用于 Azure SQL 資料庫中的單個資料庫和池資料庫的性能建議選項包括：
 
-| 效能建議 | 單一資料庫和集區資料庫支援 | 實例資料庫支援 |
+| 業績建議 | 單一資料庫和集區資料庫支援 | 實例資料庫支援 |
 | :----------------------------- | ----- | ----- |
-| **建立索引建議**-建議建立可改善工作負載效能的索引。 | 是 | 否 |
-| 卸載**索引建議**-建議每天移除多餘和重複的索引，但不包括唯一索引，以及長時間未使用的索引（> 90 天）。 請注意，此選項與使用分割區切換和索引提示的應用程式不相容。 高階和商務關鍵服務層級不支援卸載未使用的索引。 | 是 | 否 |
-| **參數化查詢建議（預覽）** -建議當您有一或多個查詢不斷重新編譯，但最後有相同的查詢執行計畫時，強制參數化。 | 是 | 否 |
-| **修正架構問題建議（預覽）** -當 SQL Database 服務注意到 sql 資料庫上發生架構相關 SQL 錯誤數目的異常時，會顯示架構更正的建議。 Microsoft 即將淘汰「修正結構描述問題」的建議。 | 是 | 否 |
+| **創建索引建議**- 建議創建可能提高工作負載性能的索引。 | 是 | 否 |
+| **刪除索引建議**- 建議每天刪除冗余和重複索引，但唯一索引除外，以及長時間未使用的索引（>90 天）。 請注意，此選項與使用分割區切換和索引提示的應用程式不相容。 高級服務和業務關鍵型服務層不支援刪除未使用的索引。 | 是 | 否 |
+| **參數化查詢建議（預覽）** - 建議強制參數化的情況下，你有一個或多個查詢不斷重新編譯，但最終具有相同的查詢執行計畫。 | 是 | 否 |
+| **修復架構問題建議（預覽）** - 當 SQL 資料庫服務注意到 SQL 資料庫上發生的與架構相關的 SQL 錯誤數出現異常時，將顯示架構更正建議。 Microsoft 即將淘汰「修正結構描述問題」的建議。 | 是 | 否 |
 
-![Azure SQL Database 的效能建議](./media/sql-database-performance/performance-recommendations-annotated.png)
+![Azure SQL 資料庫的性能建議](./media/sql-database-performance/performance-recommendations-annotated.png)
 
-若要套用效能建議，請參閱套用[建議](sql-database-advisor-portal.md#applying-recommendations)。 若要查看建議的狀態，請參閱[監視作業](sql-database-advisor-portal.md#monitoring-operations)。
+要應用績效建議，請參閱[應用建議](sql-database-advisor-portal.md#applying-recommendations)。 要查看建議的狀態，請參閱[監視操作](sql-database-advisor-portal.md#monitoring-operations)。
 
 您也可以找到過去所套用微調動作的完整歷程記錄。
 
 ## <a name="create-index-recommendations"></a>建立索引建議
 
-SQL Database 會持續監視正在執行的查詢，並找出可改善效能的索引。 確信遺漏特定索引之後，就會建立新的 [建立索引] 建議。
+SQL Database 會持續監視正在執行的查詢，並找出可改善效能的索引。 確信遺漏特定索引之後，就會建立新的 [建立索引]**** 建議。
 
 評估一段時間之後，Azure SQL Database 會確定索引所能提升的效能。 根據評估的顯現效能，將建議分類為高、中或低。
 
-使用建議建立的索引一律會標記為自動建立的索引。 您可以藉由查看[sys.databases 視圖](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)，查看哪些索引是自動建立的。 自動建立的索引不會封鎖 ALTER/RENAME 命令。
+使用建議建立的索引一律會標記為自動建立的索引。 通過查看[sys.index 視圖](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)，可以查看自動創建哪些索引。 自動創建的索引不會阻止 ALTER/RENAME 命令。
 
 如果您嘗試卸除有自動建立之索引的資料行。 自動建立的索引會隨該命令卸除。 一般索引會對已編製索引的資料行封鎖 ALTER/RENAME 命令。
 
-套用索引建立建議之後，Azure SQL Database 會比較基準效能和查詢效能。 如果新索引改善了效能，建議就會標示為成功並可取得影響報告。 如果索引沒有改善效能，則會自動還原。 SQL Database 會使用此程序來確保建議可改善資料庫效能。
+套用索引建立建議之後，Azure SQL Database 會比較基準效能和查詢效能。 如果新索引改善了效能，建議就會標示為成功並可取得影響報告。 如果索引沒有提高性能，則會自動還原。 SQL Database 會使用此程序來確保建議可改善資料庫效能。
 
 任何**建立索引**建議都有輪詢原則，如果資料庫或集區的資源使用量很高時不允許套用建議。 輪詢原則會將 CPU、資料 IO、記錄 IO 和可用儲存體列入考慮。
 
-如果 CPU、資料 IO 或記錄 IO 在過去30分鐘內高於80%，則建立索引建議會延遲。 如果在建立索引後，可用的儲存體低於 10%，則建議會進入錯誤狀態。 如果幾天後，自動調整仍認為該索引有所幫助，則程序會重新開始。
+如果 CPU、資料 IO 或日誌 IO 在前 30 分鐘內高於 80%，則創建索引建議將延遲。 如果在建立索引後，可用的儲存體低於 10%，則建議會進入錯誤狀態。 如果幾天後，自動調整仍認為該索引有所幫助，則程序會重新開始。
 
 此程序會重複進行，直到有足夠的儲存體可用來建立索引，或直到索引不再是有所幫助的狀態為止。
 
@@ -87,7 +87,7 @@ SQL Database 會持續監視正在執行的查詢，並找出可改善效能的�
 
 重新編譯執行計畫的程序會使用資料庫資源，增加查詢持續時間，以及造成計畫快取溢位。 而這些事件會導致系統從快取中回收計畫。 在資料庫上設定強制參數化選項，可以改變此 SQL Server 行為。
 
-為了協助您評估此建議的影響，我們提供了實際 CPU 使用量和預計 CPU 使用量 (如同已套用建議) 之間的比較。 這項建議可協助您節省 CPU 資源。 也可以協助您減少計畫快取的查詢持續時間和負擔，這表示多個計畫可以留在快取中並加以重複使用。 您可以按一下 [套用] 命令，快速套用此建議。
+為了協助您評估此建議的影響，我們提供了實際 CPU 使用量和預計 CPU 使用量 (如同已套用建議) 之間的比較。 這項建議可協助您節省 CPU 資源。 也可以協助您減少計畫快取的查詢持續時間和負擔，這表示多個計畫可以留在快取中並加以重複使用。 您可以按一下 [套用]**** 命令，快速套用此建議。
 
 套用此建議之後，即可在幾分鐘內於資料庫上啟用強制參數化。 它會啟動可持續約 24 小時的監視程序。 經過這段期間之後，您即可看到驗證報告。 此報告顯示資料庫在套用建議前後 24 小時的 CPU 使用量。 SQL Database 建議程式有一項安全機制，會在偵測到效能衰退時，自動還原所套用的建議。
 
@@ -98,13 +98,13 @@ SQL Database 會持續監視正在執行的查詢，並找出可改善效能的�
 
 當 SQL Database 服務注意到 SQL 資料庫上發生結構描述數目異常相關的 SQL 錯誤時，即會出現**修正結構描述問題**建議。 您的資料庫在一小時內遇到多個結構描述相關的錯誤時 (無效的資料行名稱、無效的物件名稱等)，通常會出現此建議。
 
-「架構問題」是 SQL Server 中的語法錯誤類別。 當 SQL 查詢定義與資料庫結構描述定義不符時，就會發生這類問題。 例如，查詢預期的其中一個資料行可能在目標資料表中遺失，反之亦然。
+"架構問題"是 SQL Server 中的一類語法錯誤。 當 SQL 查詢定義與資料庫結構描述定義不符時，就會發生這類問題。 例如，查詢預期的其中一個資料行可能在目標資料表中遺失，反之亦然。
 
-當 Azure SQL Database 服務注意到 SQL 資料庫上發生的架構相關 SQL 錯誤數目異常時，就會出現「修正架構問題」建議。 下表顯示與結構描述問題相關的錯誤：
+當 Azure SQL 資料庫服務注意到 SQL 資料庫上發生的與架構相關的 SQL 錯誤數出現異常時，將顯示"修復架構問題"建議。 下表顯示與結構描述問題相關的錯誤：
 
 | SQL 錯誤碼 | 訊息 |
 | --- | --- |
-| 201 |程序或函數 '' 必須有參數 ''，但未提供。 |
+| 201 |程序或函數 '' 必須有參數 '**'，但未提供。 |
 | 207 |無效的資料行名稱 '*'。 |
 | 208 |無效的物件名稱 '*'。 |
 | 213 |資料行名稱或提供的數值數量與資料表定義不相符。 |
@@ -113,7 +113,7 @@ SQL Database 會持續監視正在執行的查詢，並找出可改善效能的�
 
 ## <a name="custom-applications"></a>自訂應用程式
 
-開發人員可能會考慮使用 Azure SQL Database 的效能建議來開發自訂應用程式。 您可以透過[AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API 來存取資料庫的入口網站中所列的所有建議。
+開發人員可能考慮使用 Azure SQL 資料庫的性能建議開發自訂應用程式。 可通過[Get-AzSql資料庫推薦操作](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)API 訪問資料庫門戶中列出的所有建議。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 針對無法連線至 titleSuffix 的 Azure 站對站 VPN 連線進行疑難排解： Azure VPN 閘道
+title: 排除無法連接標題Suffix的 Azure 網站到網站 VPN 連接：Azure VPN 閘道
 description: 了解如何針對突然停止運作且無法重新連線的站對站 VPN 連線進行疑難排解。
 services: vpn-gateway
 author: chadmath
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862572"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>疑難排解：Azure 站對站 VPN 連線無法連線並停止運作
@@ -28,9 +28,9 @@ ms.locfileid: "75862572"
 
 檢查 Azure VPN 閘道的類型。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。
+1. 轉到[Azure 門戶](https://portal.azure.com)。
 
-2. 檢查 VPN 閘道的 [概觀] 頁面來取得類型資訊。
+2. 檢查 VPN 閘道的 [概觀]**** 頁面來取得類型資訊。
     
     ![閘道概觀](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
@@ -46,15 +46,15 @@ ms.locfileid: "75862572"
 
 若要檢視 Azure VPN 連線的共用金鑰，請使用下列其中一個方法：
 
-**Azure 入口網站**
+**Azure 門戶**
 
 1. 移至您建立的 VPN 閘道站對站連線。
 
-2. 在 [設定] 區段中，按一下 [共用金鑰]。
+2. 在 **"設置"** 部分中，按一下"**共用鍵**"。
     
     ![共用金鑰](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
-**Azure PowerShell**
+**Azure 電源外殼**
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "75862572"
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>步驟 3： 確認 VPN 對等互連 IP
 
--   Azure 中「區域網路閘道」物件內的 IP 定義應與內部部署裝置 IP 相符合。
+-   Azure 中「區域網路閘道」**** 物件內的 IP 定義應與內部部署裝置 IP 相符合。
 -   內部部署裝置上設定的 Azure 閘道 IP 定義應與 Azure 閘道 IP 相符合。
 
 ### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>步驟 4： 檢查閘道子網路上的 UDR 和 NSG
@@ -106,5 +106,5 @@ ms.locfileid: "75862572"
 
 ## <a name="next-steps"></a>後續步驟
 
--   [設定對虛擬網路的站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [配置與虛擬網路的網站到網站的連接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [設定站對站 VPN 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)

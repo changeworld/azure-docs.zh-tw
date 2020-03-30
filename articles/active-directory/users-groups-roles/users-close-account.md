@@ -1,6 +1,6 @@
 ---
-title: 關閉非受控 Azure AD 目錄中的工作或學校帳戶
-description: 如何在非受控 Azure Active Directory 中關閉您的公司或學校帳戶。
+title: 關閉非託管 Azure AD 目錄中的工作或學校帳戶
+description: 如何在非託管 Azure 活動目錄中關閉工作或學校帳戶。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,47 +14,47 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73815729"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>關閉非受控目錄中的工作或學校帳戶
+# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>關閉非託管目錄中的工作或學校帳戶
 
-如果您是非受控 Azure Active Directory （Azure AD）組織中的使用者，且不再需要使用該組織的應用程式或維護其任何關聯，您可以隨時關閉您的帳戶。 非受控目錄沒有全域管理員。 非受控目錄中的使用者可以自行關閉其帳戶，而不需要洽詢系統管理員。
+如果您是非託管 Azure 活動目錄 （Azure AD） 組織中的使用者，並且不再需要使用該組織中的應用或維護與它的任何關聯，則可以隨時關閉帳戶。 非託管目錄沒有全域管理員。 非託管目錄中的使用者可以自行關閉其帳戶，而無需與管理員聯繫。
 
-在自助式註冊期間，通常會建立非受控目錄中的使用者。 其中一個範例可能是註冊免費服務之組織中的資訊工作者。 如需自助式註冊的詳細資訊，請參閱[什麼是適用于 Azure Active Directory 的自助式註冊？](directory-self-service-signup.md)。
+非託管目錄中的使用者通常在自助服務註冊期間創建。 例如，組織中的資訊工作者註冊了免費服務。 有關自助服務註冊的詳細資訊，請參閱[Azure 活動目錄的自助服務註冊是什麼？](directory-self-service-signup.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
-在關閉帳戶之前，您應該確認下列專案：
+在關閉帳戶之前，應確認以下專案：
 
-* 請確定您是非受控 Azure AD 目錄的使用者。 如果您屬於受控目錄，就無法關閉您的帳戶。 如果您屬於受控目錄，而且想要關閉您的帳戶，您必須洽詢您的系統管理員。 如需如何判斷您是否屬於非受控目錄的詳細資訊，請參閱[從非受控租使用者中刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
+* 請確保您是非託管 Azure AD 目錄的使用者。 如果您屬於託管目錄，則無法關閉帳戶。 如果您屬於託管目錄並希望關閉您的帳戶，則必須與管理員聯繫。 有關如何確定是否屬於非託管目錄的資訊，請參閱[從非託管租戶中刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
 
-* 儲存您想要保留的任何資料。 如需如何提交匯出要求的相關資訊，請參閱[存取和匯出非受控租使用者的系統產生記錄](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)檔。
+* 保存要保留的任何資料。 有關如何提交匯出請求的資訊，請參閱[訪問和匯出非託管租戶的系統生成的日誌](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)。
 
 > [!WARNING]
-> 關閉您的帳戶是無法復原的。 當您關閉帳戶時，將會移除所有個人資料。 您將無法再存取您的帳戶和與您帳戶相關聯的資料。
+> 關閉您的帳戶是不可逆的。 當您關閉帳戶時，所有個人資料都將被刪除。 您將不再有權訪問您的帳戶和與您的帳戶關聯的資料。
 
 ## <a name="close-your-account"></a>關閉您的帳戶
 
-若要關閉非受控公司或學校帳戶，請遵循下列步驟：
+要關閉非託管工作或學校帳戶，請按照以下步驟操作：
 
-1. 使用您想要關閉的帳戶登入，以[關閉您的帳戶](https://go.microsoft.com/fwlink/?linkid=873123)。
+1. 使用要關閉的帳戶登錄以[關閉您的帳戶](https://go.microsoft.com/fwlink/?linkid=873123)。
 
-1. 在 [**我的資料要求**] 上，選取 [**關閉帳戶**]。
+1. 在 **"我的資料請求"** 上，選擇 **"關閉帳戶**"。
 
-    ![我的資料要求-關閉帳戶](./media/users-close-account/close-account.png)
+    ![我的資料請求 - 關閉帳戶](./media/users-close-account/close-account.png)
 
-1. 檢查確認訊息，然後選取 **[是]** 。
+1. 查看確認訊息，然後選擇 **"是**"。
 
-    ![我的資料要求-確認關閉](./media/users-close-account/confirm-close.png)
+    ![我的資料請求 - 確認關閉](./media/users-close-account/confirm-close.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure Active Directory 的自助式註冊？](directory-self-service-signup.md)
-- [從非受控租使用者刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [存取和匯出非受控租使用者的系統產生記錄檔](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [什麼是 Azure 活動目錄的自助服務註冊？](directory-self-service-signup.md)
+- [從非受控租用戶刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [存取和匯出非受控租用戶的系統產生記錄檔](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

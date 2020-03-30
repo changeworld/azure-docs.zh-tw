@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67448642"
 ---
-在適當的 SSL 憑證可確保您要到正確的伺服器傳送加密的資訊。 除了加密，憑證也用來驗證。 您可以上傳您自己受信任的 SSL 憑證，透過裝置的 PowerShell 介面。
+正確的 SSL 憑證可確保向正確的伺服器發送加密資訊。 除了加密之外，證書還允許進行身份驗證。 您可以通過設備的 PowerShell 介面上傳您自己的可信 SSL 憑證。
 
-1. [連線到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Set-HcsCertificate`cmdlet 來上傳的憑證。 出現提示時，提供下列參數：
+1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
+2. 使用`Set-HcsCertificate`Cmdlet 上載證書。 當出現提示時，提供以下參數：
 
-   - `CertificateFilePath` -包含中的憑證檔案的共用路徑 *.pfx*格式。
-   - `CertificatePassword` -用來保護憑證的密碼。
-   - `Credentials` -存取的共用，包含憑證的使用者名稱。 提供當系統提示您的網路共用的密碼。
+   - `CertificateFilePath`- 以 *.pfx*格式包含證書檔的共用的路徑。
+   - `CertificatePassword`- 用於保護證書的密碼。
+   - `Credentials`- 訪問包含證書的共用的使用者名。 提示時向網路共用提供密碼。
 
-     下列範例會示範這個指令程式的使用方式：
+     下面的示例顯示了此 Cmdlet 的用法：
 
      ```
      Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username"

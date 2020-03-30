@@ -1,5 +1,5 @@
 ---
-title: 將面板新增至遠端監視解決方案 UI-Azure |Microsoft Docs
+title: 在遠端監視解決方案 UI 中新增面板 - Azure | Microsoft Docs
 description: 本文說明如何在遠端監視解決方案加速器 Web UI 中的儀表板新增面板。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447058"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中的儀表板上新增自訂面板
@@ -24,7 +24,7 @@ ms.locfileid: "61447058"
 
 本文中的面板範例會顯示於現有儀表板頁面上。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -90,7 +90,7 @@ import {
 npm start
 ```
 
-上一個命令會在本機於 [http://localhost:3000/dashboard](http://localhost:3000/dashboard) 執行 UI。 瀏覽至 [儀表板]  頁面以檢視新的面板。
+前面的命令在 本地運行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 瀏覽至 [儀表板]**** 頁面以檢視新的面板。
 
 ## <a name="next-steps"></a>後續步驟
 
