@@ -1,18 +1,18 @@
 ---
 title: 在開發人員中心註冊 | Azure
 description: 如何在開發人員中心 (Dev Center) 註冊。
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 9f3dc149c74864878209a59fc5d10f62912902c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62e25a252d6a4981bddd50361d01110ec10a6e2c
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281471"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387660"
 ---
 # <a name="register-in-dev-center"></a>在開發人員中心註冊  
 為了協助確認您尚未登入個人瀏覽器帳戶，請開啟新的 Internet Explorer InPrivate 或 Chrome Incognito 瀏覽工作階段。  

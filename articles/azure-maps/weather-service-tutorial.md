@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料 | Microsoft Azure 地圖服務
 description: 本教學課程說明如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77208024"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333484"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 

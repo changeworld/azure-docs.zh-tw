@@ -1,5 +1,5 @@
 ---
-title: 滾動應用程式升級
+title: 進行應用程式升級
 description: 了解如何使用 Azure SQL Database 異地複寫以支援雲端應用程式的線上升級。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 9c627c3e597fdcd3859ce02ea208fc7a8b5d612b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822866"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL Database 主動式異地複寫管理雲端應用程式的輪流升級
@@ -91,7 +91,7 @@ ms.locfileid: "73822866"
 
 1. 在主要區域中部署 Web 應用程式的預備環境 (6)。
 2. 在主要區域中建立次要資料庫 (7)。 設定 Web 應用程式的預備環境以連線到該環境。 
-3. 複寫主要區域中的次要資料庫，在備份區域中建立另一個異地備援次要資料庫 (8)。 (這個方法稱為「鏈結異地複寫」) (8)。
+3. 複寫主要區域中的次要資料庫，在備份區域中建立另一個異地備援次要資料庫 (8)。 (這個方法稱為「鏈結異地複寫」**) (8)。
 4. 在備份區域中部署 Web 應用程式執行個體的預備環境 (9)，並將它設定為連線在 (8) 建立的異地備援次要資料庫。
 
 > [!NOTE]
@@ -109,7 +109,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. 中斷次要資料庫的連線以終止異地複寫（11）。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下列範例使用 Transact-sql，但也提供[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) 。 
+2. 通過斷開輔助 （11） 終止異地複製。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下面的示例使用 Transact-SQL，但[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0)也可用。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -144,14 +144,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 主要的取捨是它需要每個應用程式元件的雙重備援，因此會產生較高的金額成本。 它也涉及更複雜的工作流程。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文中所描述的兩種升級方法有不同的複雜度與金額成本，但它們都著重於將使用者受限為唯讀作業的時間降到最低。 該時間由升級指令碼的期間直接定義。 時間不會取決於資料庫大小、您選擇的服務層級、網站設定，或其他您無法輕鬆控制的因素。 所有準備步驟會與升級步驟分離，且不會影響生產應用程式。 升級指令的效率是決定升級期間使用者的體驗的重要因素。 因此改進該體驗的最佳方式，舊是將工作焦點放在盡可能提高升級指令碼的效率。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](sql-database-business-continuity.md)。
-* 若要了解 Azure SQL Database 主動式異地複寫，請參閱[使用主動式異地複寫建立可讀取的次要資料庫](sql-database-active-geo-replication.md)。
+* 有關業務連續性概述和方案，請參閱[業務連續性概述](sql-database-business-continuity.md)。
+* 要瞭解 Azure SQL 資料庫的活動異地複製，請參閱[使用活動異地複製創建可讀的次要資料庫](sql-database-active-geo-replication.md)。
 * 若要了解 Azure SQL Database 自動容錯移轉群組，請參閱[使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉](sql-database-auto-failover-group.md)。
 * 若要了解 Azure App Service 中的預備環境，請參閱[在 Azure App Service 中設定預備環境](../app-service/deploy-staging-slots.md)。
 * 若要了解 Azure 流量管理員設定檔，請參閱[管理 Azure 流量管理員設定檔](../traffic-manager/traffic-manager-manage-profiles.md)。

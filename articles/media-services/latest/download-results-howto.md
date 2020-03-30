@@ -1,6 +1,6 @@
 ---
-title: 下載作業的結果-Azure 媒體服務
-description: 本文示範如何下載作業的結果。
+title: 下載作業結果 - Azure 媒體服務
+description: 本文演示如何下載作業的結果。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,18 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 0c81523d43fd316c3dc65cc2a5b34557f24014b5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303404"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346309"
 ---
-# <a name="download-the-results-of-a-job"></a>下載作業的結果
+# <a name="download-the-results-of-a-job"></a>下載作業結果
 
-在 Azure 媒體服務中，處理您的影片時（例如，編碼或分析），您必須建立輸出[資產](assets-concept.md)來儲存[作業](transforms-jobs-concept.md)的結果。 接著，您可以使用媒體服務和儲存體 Api，將這些結果下載到本機資料夾。 
+在 Azure 媒體服務中，在處理視頻（例如編碼或分析）時，需要創建輸出[資產](assets-concept.md)來存儲[作業](transforms-jobs-concept.md)的結果。 然後，您可以使用媒體服務和存儲 API 將這些結果下載到本地資料夾。 
 
-本文示範如何使用 JAVA 和 .NET Sdk 來下載結果。
+本文演示如何使用 JAVA 和 .NET SDK 下載結果。
+
+## <a name="prerequisites"></a>Prerequisites 
+
+審核[管理資產](manage-asset-concept.md)。
 
 ## <a name="java"></a>Java
 
@@ -67,7 +71,7 @@ private static void downloadResults(MediaManager manager, String resourceGroup, 
 }
 ```
 
-請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+請參閱完整的代碼示例：[使用預定義預設進行編碼](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -116,8 +120,8 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+請參閱完整的代碼示例：[使用預定義預設進行編碼](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>後續步驟
 
-[從 HTTPS URL 建立工作輸入](job-input-from-http-how-to.md)。
+[從 HTTPS URL 創建作業輸入](job-input-from-http-how-to.md)。

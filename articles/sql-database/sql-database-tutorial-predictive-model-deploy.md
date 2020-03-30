@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596765"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346329"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署預測模型
 
 在這個三部分教學課程的第三部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署以 R 開發的預測模型。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 您將使用內嵌的 R 指令碼建立預存程序，以使用模型進行預測。 您的模型執行於 Azure SQL 資料庫中，因此能夠根據儲存在資料庫中的資料輕易定型。
 

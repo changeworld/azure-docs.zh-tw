@@ -1,44 +1,44 @@
 ---
-title: 將推播通知新增至您的 UWP 應用程式
+title: 向 UWP 應用添加推送通知
 description: 了解如何使用 Azure App Service Mobile Apps 與 Azure 通知中樞，將推播通知傳送至通用 Windows 平台 (UWP) 應用程式。
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f200e9649a00bfe890d46f86e62404f1a7e844f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461414"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366293"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>將推播通知加入至 Windows 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，您會將推播通知新增至 [Windows 快速入門](app-service-mobile-windows-store-dotnet-get-started.md)專案，以便在每次插入一筆記錄時傳送推播通知至裝置。
 
 如果您不要使用下載的快速入門伺服器專案，將需要推播通知擴充套件。 如需詳細資訊，請參閱[使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="configure-hub"></a>設定通知中樞
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>設定通知中樞
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>針對推播通知註冊應用程式
 
-您需要將應用程式提交至 Microsoft Store，然後設定您的伺服器專案，以與 [Windows 通知服務 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 整合來傳送推播。
+您需要將應用提交到 Microsoft 應用商店，然後將伺服器專案配置為與[Windows 推送通知服務 （WNS）](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)集成以發送推送。
 
-1. 在 Visual Studio 方案總管中，以滑鼠右鍵按一下 UWP 應用程式專案，然後按一下 [市集] >  [將應用程式與市集建立關聯...]。
+1. 在視覺化工作室解決方案資源管理器中，按右鍵 UWP 應用專案，按一下 **"使用** > **應用商店的應用商店關聯應用程式..."。**
 
     ![將應用程式與 Microsoft Store 建立關聯](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. 在精靈中按 [下一步]，使用 Microsoft 帳戶登入，在 [保留新的應用程式名稱] 中輸入您應用程式的名稱，然後按一下 [保留]。
-3. 成功建立應用程式註冊之後，選取新的應用程式名稱，按 [下一步]，然後按一下 [關聯]。 這會將所需的 Microsoft Store 註冊資訊新增至應用程式資訊清單。
+2. 在精靈中按 [下一步]****，使用 Microsoft 帳戶登入，在 [保留新的應用程式名稱]**** 中輸入您應用程式的名稱，然後按一下 [保留]****。
+3. 成功建立應用程式註冊之後，選取新的應用程式名稱，按 [下一步]****，然後按一下 [關聯]****。 這會將所需的 Microsoft Store 註冊資訊新增至應用程式資訊清單。
 4. 瀏覽至 [應用程式註冊入口網站](https://apps.dev.microsoft.com/)，並使用您的 Microsoft 帳戶登入。 按一下您在上一個步驟中關聯的 Windows 市集應用程式。
-5. 在註冊頁面中，記下 [應用程式祕密] 和 [套件 SID] 底下的值，以在接下來用來設定您的行動應用程式後端。
+5. 在註冊頁面中，記下 [應用程式祕密]**** 和 [套件 SID]**** 底下的值，以在接下來用來設定您的行動應用程式後端。
 
     ![將應用程式與 Microsoft Store 建立關聯](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
@@ -51,14 +51,14 @@ ms.locfileid: "77461414"
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>更新伺服器以傳送推播通知
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>更新伺服器以傳送推播通知
 
 使用下列符合您後端專案類型的程序 &mdash;[.NET 後端](#dotnet)或 [Node.js 後端](#nodejs)。
 
-### <a name="dotnet"></a>.NET 後端專案
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET 後端專案
 
-1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案並按一下 [管理 NuGet 套件]，搜尋 Microsoft.Azure.NotificationHubs，然後按一下 [安裝]。 這會安裝通知中樞用戶端程式庫。
-2. 展開 [Controllers]，開啟 [TodoItemController.cs]，然後新增下列 using 陳述式：
+1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案並按一下 [管理 NuGet 套件]****，搜尋 Microsoft.Azure.NotificationHubs，然後按一下 [安裝]****。 這會安裝通知中樞用戶端程式庫。
+2. 展開 [Controllers] ****，開啟 [TodoItemController.cs]，然後新增下列 using 陳述式：
 
     ```csharp
     using System.Collections.Generic;
@@ -106,8 +106,8 @@ ms.locfileid: "77461414"
 
 4. 發佈伺服器專案。
 
-### <a name="nodejs"></a>Node.js 後端專案
-1. 設定您的後端專案。
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js 後端專案
+1. 設置後端專案。
 2. 在 todoitem.js 檔案中，以下列程式碼取代現有的程式碼：
 
     ```javascript
@@ -156,17 +156,17 @@ ms.locfileid: "77461414"
 
 3. 當您在本機電腦上編輯檔案時，請重新發佈伺服器專案。
 
-## <a id="update-app"></a>將推播通知新增至應用程式
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>將推播通知新增至應用程式
 接下來，您的應用程式必須在啟動時註冊推播通知。 當您已啟用驗證時，請確定使用者在嘗試註冊推播通知之前已登入。
 
-1. 開啟 **App.xaml.cs** 專案檔案，並新增下列 `using` 陳述式：
+1. 打開**App.xaml.cs**專案檔案並添加以下`using`語句：
 
     ```csharp
     using System.Threading.Tasks;
     using Windows.Networking.PushNotifications;
     ```
 
-2. 在相同檔案中，將下列 **InitNotificationsAsync** 方法定義新增至 [應用程式] 類別：
+2. 在相同檔案中，將下列 **InitNotificationsAsync** 方法定義新增至 [應用程式]**** 類別：
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -197,11 +197,11 @@ ms.locfileid: "77461414"
 
 4. 重建 UWP 應用程式專案。 您的應用程式現在已能夠接收快顯通知。
 
-## <a id="test"></a>在應用程式中測試推播通知
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>在應用程式中測試推播通知
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>後續步驟
+## <a name="next-steps"></a><a id="more"></a>後續步驟
 
 進一步了解推播通知︰
 

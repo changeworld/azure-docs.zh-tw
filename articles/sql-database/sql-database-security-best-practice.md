@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506222"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387643"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL 資料庫解決常見安全要求的劇本
 
@@ -657,7 +657,7 @@ DDoS 保護作為 Azure 平臺的一部分自動啟用。 它包括始終打開�
 **最佳實踐**：
 
 - 通過在資料庫伺服器上配置[SQL 資料庫審核](sql-database-auditing.md)以審核事件，將審核該伺服器上的所有現有和新創建的資料庫。
-- 預設情況下，稽核原則包括針對資料庫的所有操作（查詢、預存程序以及成功和失敗的登錄），這可能導致大量稽核記錄。 建議客戶[使用 PowerShell 為不同類型的操作和操作組配置審核](sql-database-auditing.md#subheading-7)。 配置此操作將有助於控制審核操作的數量，並將事件丟失的風險降至最低。 自訂審核配置允許客戶僅捕獲所需的審核資料。
+- 預設情況下，稽核原則包括針對資料庫的所有操作（查詢、預存程序以及成功和失敗的登錄），這可能導致大量稽核記錄。 建議客戶[使用 PowerShell 為不同類型的操作和操作組配置審核](sql-database-auditing.md#manage-auditing)。 配置此操作將有助於控制審核操作的數量，並將事件丟失的風險降至最低。 自訂審核配置允許客戶僅捕獲所需的審核資料。
 - 稽核記錄可以直接在[Azure 門戶](https://portal.azure.com/)中使用，也可以直接從配置的存儲位置使用。 
 
 

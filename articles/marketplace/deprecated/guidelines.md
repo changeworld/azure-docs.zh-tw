@@ -2,18 +2,18 @@
 title: Azure Marketplace 和 AppSource 發行者指導方針 | Azure
 description: 適用於應用程式與服務發行者的 Azure Marketplace 和 AppSource 指導方針
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: dsindona
-ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9156126ff2a3dbe936dc426c6f5097c6bba7b7b7
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281522"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387595"
 ---
 # <a name="guidelines"></a>指導方針  
 
