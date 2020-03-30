@@ -1,6 +1,6 @@
 ---
-title: 為自我裝載的 Azure API 管理閘道設定自訂功能變數名稱 |Microsoft Docs
-description: 本主題說明為自我裝載的 Azure API 管理閘道設定自訂功能變數名稱的步驟。
+title: 為自託管 Azure API 管理閘道配置自訂功能變數名稱 |微軟文檔
+description: 本主題介紹為自託管 Azure API 管理閘道配置自訂功能變數名稱的步驟。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,21 +11,21 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 1df2cce04021c1cd14c356311df921dd1c0298e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335939"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
-當您布[建自我裝載的 AZURE API 管理閘道](self-hosted-gateway-overview.md)時，它不會指派主機名稱，且必須由其 IP 位址參考。 本文說明如何將現有的自訂 DNS 名稱（也稱為主機名稱）對應到自我裝載的閘道。
+預配[自託管的 Azure API 管理閘道](self-hosted-gateway-overview.md)時，不會為其分配主機名稱，並且必須由其 IP 位址引用。 本文演示如何映射現有的自訂 DNS 名稱（也稱為主機名稱）自託管閘道。
 
 > [!NOTE]
-> 自我裝載閘道功能目前為預覽狀態。 在預覽期間，自我裝載閘道僅適用于開發人員和進階層，不需要額外付費。 開發人員層僅限於單一自我裝載的閘道部署。
+> 自託管閘道功能處於預覽狀態。 在預覽期間，自託管閘道僅在開發人員和高級層中可用，無需支付額外費用。 開發人員層僅限於單個自託管閘道部署。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -34,35 +34,35 @@ ms.locfileid: "73513805"
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   API 管理實例。 如需詳細資訊，請參閱[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
-- 自我裝載的閘道。 如需詳細資訊，請參閱[如何布建自我裝載閘道](api-management-howto-provision-self-hosted-gateway.md)
--   您或您的組織所擁有的自訂功能變數名稱。 本主題不提供如何購買自訂功能變數名稱的指示。
--   Dns 伺服器上裝載的 DNS 記錄，可將自訂功能變數名稱對應至自我裝載閘道的 IP 位址。 本主題不提供如何裝載 DNS 記錄的指示。
--   您必須具備一個含有公開和私密金鑰的有效憑證 (.PFX)。 主體或主體別名（SAN）必須符合功能變數名稱（這可讓 API 管理實例透過 SSL 安全地公開 Url）。
+- 自託管閘道。 有關詳細資訊，請參閱[如何預配自託管閘道](api-management-howto-provision-self-hosted-gateway.md)
+-   您或您的組織擁有的自訂功能變數名稱。 本主題不提供有關如何獲取自訂功能變數名稱的說明。
+-   託管在 DNS 伺服器上的 DNS 記錄，該記錄將自訂功能變數名稱映射到自託管閘道的 IP 位址。 本主題不提供有關如何託管 DNS 記錄的說明。
+-   您必須具備一個含有公開和私密金鑰的有效憑證 (.PFX)。 主題或主題替代名稱 （SAN） 必須與功能變數名稱匹配（這使 API 管理實例能夠通過 TLS 安全地公開 URL）。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>將自訂網域憑證新增至您的 API 管理服務
+## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>將自訂域證書添加到 API 管理服務
 
-1. 從 [**安全性**] 底下選取 [**憑證**]。
-2. 選取 [+ 新增]。
-3. 在 [**識別碼**] 欄位中輸入 [憑證的資源名稱]。
-4. 選取包含憑證的檔案（。PFX），方法是選取 [**憑證**] 欄位或其旁邊的資料夾圖示。
-5. 在 [**密碼**] 欄位中輸入憑證的密碼。
-6. 選取 [**建立**]，將憑證新增至您的 API 管理服務。
+1. 從 **"安全"** 下選擇**證書**。
+2. 選擇 **= 添加**。
+3. 在**Id**欄位中輸入證書的資源名稱。
+4. 選擇包含證書的檔 （。通過選擇 **"證書"** 欄位或它旁邊的資料夾圖示，PFX）。
+5. 在 **"密碼"** 欄位中輸入證書的密碼。
+6. 選擇 **"創建**"以將證書添加到 API 管理服務。
 
-## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>使用 Azure 入口網站設定自我裝載閘道的自訂功能變數名稱
+## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>使用 Azure 門戶為自託管閘道設置自訂功能變數名稱
 
-1. 從 [**設定**] 底下選取**閘道**。
-2. 選取您想要為其設定功能變數名稱的自我裝載閘道。
-3. 選取 [**設定**] 底下的 [**主機名稱**]。
-4. 選取 [+ 新增]
-5. 在 [**名稱**] 欄位中輸入主機名稱的資源名稱。
-6. 在 [**主機名稱**] 欄位中輸入功能變數名稱。
-7. 從 [**憑證**] 下拉式清單中選取憑證。
-8. 如果任何透過此閘道公開的 Api 使用用戶端憑證驗證，請選取 [**協商用戶端憑證**] 核取方塊。
+1. 從 **"設置"** 下選擇**閘道**。
+2. 選擇要為其配置功能變數名稱的自託管閘道。
+3. 在 **"設置"** 下選擇**主機名稱**。
+4. 選取 [+ 新增]****
+5. 在 **"名稱"** 欄位中輸入主機名稱的資源名稱。
+6. 在 **"主機名稱"** 欄位中輸入功能變數名稱。
+7. 從證書下拉清單中選擇**證書**。
+8. 如果通過此閘道公開的任何 API 使用用戶端憑證身份驗證，請選擇**協商用戶端憑證**核取方塊。
     > [!WARNING]
-    > 這項設定是由針對閘道設定的所有功能變數名稱所共用。
-9. 選取 [**新增**]，將自訂功能變數名稱指派給選取的自我裝載閘道。
+    > 此設置由為閘道配置的所有功能變數名稱共用。
+9. 選擇 **"添加"** 可將自訂功能變數名稱分配給選定的自託管閘道。
 
 ## <a name="next-steps"></a>後續步驟
 

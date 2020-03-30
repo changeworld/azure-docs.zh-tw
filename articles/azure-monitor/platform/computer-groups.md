@@ -7,14 +7,14 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274771"
 ---
-# <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure 監視器記錄檔查詢中的電腦群組
-Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-query-overview.md)範圍限於一組特定的電腦。  使用您所定義的查詢，或從不同來源匯入群組，將電腦填入每個群組中。  當記錄查詢包含群組時，結果就僅限於與群組中的電腦相符的記錄。
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure 監視器日誌查詢中的電腦群組
+Azure 監視器中的電腦群組允許您將[日誌查詢](../log-query/log-query-overview.md)限定為一組特定的電腦。  使用您所定義的查詢，或從不同來源匯入群組，將電腦填入每個群組中。  當記錄查詢包含群組時，結果就僅限於與群組中的電腦相符的記錄。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,7 +26,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 | 記錄檔查詢 |建立記錄查詢來傳回電腦清單。 |
 | 記錄檔搜尋 API |使用記錄搜尋 API，根據記錄查詢結果，以程式設計方式建立電腦群組。 |
 | Active Directory |自動掃描屬於 Active Directory 網域的任何代理程式電腦的群組成員資格，並為每個安全性群組在 Azure 監視器中建立一個群組。 (僅限 Windows 機器)|
-| 組態管理員 | 從 Microsoft 端點 Configuration Manager 匯入集合，並在 Azure 監視器中為每個建立群組。 |
+| 組態管理員 | 從 Microsoft 終結點組態管理員導入集合，並在 Azure 監視器中為每個集合創建一個組。 |
 | Windows Server Update Services |自動掃描 WSUS 伺服器或用戶端來找出目標群組，並為每個群組在 Azure 監視器中建立一個群組。 |
 
 ### <a name="log-query"></a>記錄檔查詢
@@ -38,11 +38,11 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 
 使用下列程序在 Azure 入口網站中透過記錄搜尋建立電腦群組。
 
-1. 在 Azure 入口網站中的 [Azure 監視器] 功能表按一下 [記錄]。
+1. 在 Azure 入口網站中的 [Azure 監視器]**** 功能表按一下 [記錄]****。
 1. 建立並執行查詢，該查詢會傳回您在群組中想要的電腦。
-1. 按一下畫面頂端的 [儲存]。
-1. 將 [另存新檔] 變更為 [函式]，並選取 [將此查詢儲存為電腦群組]。
-1. 為電腦群組的每個屬性提供表格內所述的值，並按一下 [儲存]。
+1. 按一下畫面頂端的 [儲存]****。
+1. 將 [另存新檔]**** 變更為 [函式]****，並選取 [將此查詢儲存為電腦群組]****。
+1. 為電腦群組的每個屬性提供表格內所述的值，並按一下 [儲存]****。
 
 下表描述定義電腦群組的屬性。
 
@@ -59,7 +59,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 > [!NOTE]
 > 所匯入的 Active Directory 群組只包含 Windows 機器。
 
-您可以在 Azure 入口網站中，將 Azure 監視器設定為從 Log Analytics 工作區的 [進階設定] 匯入 Active Directory 安全性群組。  依序選取 [電腦群組]、[Active Directory] 和 [從電腦匯入 Active Directory 群組成員資格]。  不需要進一步的組態。
+您可以在 Azure 入口網站中，將 Azure 監視器設定為從 Log Analytics 工作區的 [進階設定]**** 匯入 Active Directory 安全性群組。  依序選取 [電腦群組]****、[Active Directory]**** 和 [從電腦匯入 Active Directory 群組成員資格]****。  不需要進一步的組態。
 
 ![來自 Active Directory 的電腦群組](media/computer-groups/configure-activedirectory.png)
 
@@ -68,7 +68,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 當您設定 Azure 監視器匯入 WSUS 群組成員資格時，它會針對裝有 Log Analytics 代理程式的任何電腦分析目標群組成員資格。  如果您使用用戶端目標，則任何連線至 Azure 監視器且屬於任何 WSUS 目標群組的電腦，其群組成員資格都會匯入至 Azure 監視器。 如果您使用伺服器端目標，則 WSUS 伺服器上應該安裝 Log Analytics 代理程式，才能將群組成員資格資訊匯入至 Azure 監視器。  此成員資格持續地每 4 小時更新一次。 
 
-您可以在 Azure 入口網站中，將 Azure 監視器設定為從 Log Analytics 工作區的 [進階設定] 匯入 WSUS 群組。  依序選取 [電腦群組]、[WSUS] 和 [匯入 WSUS 群組成員資格]。  不需要進一步的組態。
+您可以在 Azure 入口網站中，將 Azure 監視器設定為從 Log Analytics 工作區的 [進階設定]**** 匯入 WSUS 群組。  依序選取 [電腦群組]****、[WSUS]**** 和 [匯入 WSUS 群組成員資格]****。  不需要進一步的組態。
 
 ![來自 WSUS 的電腦群組](media/computer-groups/configure-wsus.png)
 
@@ -84,9 +84,9 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 匯入集合後，此功能表會列出已偵測到群組成員資格的電腦數目，以及匯入的群組數目。  您可以按一下任一連結，以連同此資訊傳回 **ComputerGroup** 記錄。
 
 ## <a name="managing-computer-groups"></a>管理電腦群組
-您可以從 Azure 入口網站 Log Analytics 工作區中的 [進階設定]，檢視透過記錄查詢或記錄搜尋 API 所建立的電腦群組。  依序選取 [電腦群組] 和 [已儲存的群組]。  
+您可以從 Azure 入口網站 Log Analytics 工作區中的 [進階設定]****，檢視透過記錄查詢或記錄搜尋 API 所建立的電腦群組。  依序選取 [電腦群組]**** 和 [已儲存的群組]****。  
 
-按一下 [移除] 欄的 [x] 來刪除電腦群組。  按一下群組的 [檢視成員] 圖示，以執行群組的記錄檔搜尋來傳回其成員。  您無法修改電腦群組，而是必須先加以刪除再以修改後的設定重建。
+按一下 [移除]**** 欄的 [x]**** 來刪除電腦群組。  按一下群組的 [檢視成員]**** 圖示，以執行群組的記錄檔搜尋來傳回其成員。  您無法修改電腦群組，而是必須先加以刪除再以修改後的設定重建。
 
 ![已儲存的電腦群組](media/computer-groups/configure-saved.png)
 

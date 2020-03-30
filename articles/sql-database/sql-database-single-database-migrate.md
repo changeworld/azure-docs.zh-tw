@@ -1,5 +1,5 @@
 ---
-title: SQL Server 資料庫移轉至單一/集區資料庫
+title: SQL Server 資料庫移轉到單個/池資料庫
 description: 了解將 SQL Server 資料庫移轉至 Azure SQL Database 中單一資料庫或彈性集區的相關做法。
 keywords: database migration,sql server database migration,database migration tools,migrate database,migrate sql database,資料庫移轉,sql server 資料庫移轉,資料庫移轉工具,移轉資料庫,移轉 sql database
 services: sql-database
@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268609"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>將 SQL Server 資料庫移轉至 Azure SQL Database
@@ -40,7 +40,7 @@ ms.locfileid: "79268609"
 
   ![VSSSDT 移轉圖表](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. 使用最新版的 [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) \(英文\) 來[評估](https://www.microsoft.com/download/details.aspx?id=53595) \(英文\) 資料庫的相容性。
+1. 使用最新版的 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) \(英文\) 來[評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) \(英文\) 資料庫的相容性。
 2. 準備 Transact-SQL 指令碼形式的任何必要修正。
 3. 針對要移轉的來源資料庫建立交易一致性複本，或是在進行移轉時，防止在來源資料庫中進行新交易。 完成後面這個選項的方法包括停用用戶端連線或建立[資料庫快照集](https://msdn.microsoft.com/library/ms175876.aspx)。 移轉之後，您可能能夠使用異動複寫來更新所移轉的資料庫，以反映在移轉截止點之後所發生的變更。 請參閱[使用異動移轉來進行移轉](sql-database-single-database-migrate.md#method-2-use-transactional-replication)。  
 4. 部署 Transact-SQL 指令碼，將修正套用至資料庫複本。
@@ -84,14 +84,14 @@ ms.locfileid: "79268609"
 
 1. 設定散發套件
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
 
 2. 建立發佈
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
 3. 建立訂閱
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
 一些秘訣和移轉至 SQL Database 的差異
 
@@ -108,8 +108,8 @@ ms.locfileid: "79268609"
 
 - [Azure SQL Database 中不支援的 SQL Server 資料庫功能](sql-database-transact-sql-information.md)
 - [SQL Server 2016 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [SQL Server 2014 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [SQL Server 2012 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
+- [SQL Server 2014 中已停用的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
+- [SQL Server 2012 中已停用的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
 - [SQL Server 2008 R2 中已終止的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 中已終止的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 

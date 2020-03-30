@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260185"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料箱閘道系統需求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料盒閘道系統要求
 
 本文會針對 Microsoft Azure 資料箱閘道解決方案以及連線至 Azure 資料箱閘道的用戶端，說明其各自的重要系統需求。 建議您先仔細檢閱此資訊再部署資料箱閘道，之後在進行部署和後續作業期間若有必要，也請回頭查閱。
 
@@ -69,7 +69,7 @@ ms.locfileid: "79260185"
 
 ## <a name="networking-port-requirements"></a>網路連接埠需求
 
-下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 Out 或 outbound 指的是資料箱閘道裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
+下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 Out** 或 outbound** 指的是資料箱閘道裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -85,7 +85,7 @@ ms.locfileid: "79260185"
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-azure-government"></a>Azure Government 的 URL 模式
+### <a name="url-patterns-for-azure-government"></a>Azure 政府的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 

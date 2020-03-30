@@ -1,76 +1,76 @@
 ---
-title: 使用 Azure 監視器（預覽）監視 Python 應用程式 |Microsoft Docs
-description: 提供將 OpenCensus Python 與 Azure 監視器連線的指示
+title: 使用 Azure 監視器（預覽）監視 Python 應用程式 |微軟文檔
+description: 提供使用 Azure 監視器連接 OpenCensus Python 的說明
 ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 61fdc2a4694405d4f56600b2d2b71e9e37232a7a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943254"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537103"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>設定 Python 應用程式的 Azure 監視器
+# <a name="set-up-azure-monitor-for-your-python-application"></a>為 Python 應用程式設定 Azure 監視器
 
-Azure 監視器透過與[OpenCensus](https://opencensus.io)的整合，支援 Python 應用程式的分散式追蹤、度量集合和記錄。 本文將逐步引導您完成設定 Python 的 OpenCensus，以及將您的監視資料傳送至 Azure 監視器的程式。
+Azure 監視器通過與[OpenCensus](https://opencensus.io)集成支援 Python 應用程式的分散式跟蹤、指標收集和日誌記錄。 本文將引導您完成為 Python 設置 OpenCensus 並將監視資料發送到 Azure 監視器的過程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- Python 安裝。 本文使用[Python 3.7.0](https://www.python.org/downloads/)，但較舊的版本可能會處理次要變更。
+- Python 安裝。 本文使用[Python 3.7.0](https://www.python.org/downloads/)，但早期版本可能會處理細微的更改。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https://portal.azure.com/)。
+登錄到 Azure[門戶](https://portal.azure.com/)。
 
-## <a name="create-an-application-insights-resource-in-azure-monitor"></a>在 Azure 監視器中建立 Application Insights 資源
+## <a name="create-an-application-insights-resource-in-azure-monitor"></a>在 Azure 監視器中創建應用程式見解資源
 
-首先，您必須在 Azure 監視器中建立 Application Insights 資源，這會產生檢測金鑰（ikey）。 然後，ikey 會用來設定 OpenCensus SDK，以將遙測資料傳送至 Azure 監視器。
+首先，您必須在 Azure 監視器中創建應用程式見解資源，這將生成檢測金鑰 （ikey）。 然後，ikey 用於配置 OpenCensus SDK 以將遙測資料發送到 Azure 監視器。
 
-1. 選取 [建立資源] > [開發人員工具] > [Application Insights]。
+1. 選擇 **"創建資源** > **開發人員工具** > **應用程式見解**"。
 
-   ![新增 Application Insights 資源](./media/opencensus-python/0001-create-resource.png)
+   ![添加應用程式見解資源](./media/opencensus-python/0001-create-resource.png)
 
-1. [設定] 方塊隨即出現。 使用下表來填寫輸入欄位。
+1. 將顯示一個配置框。 使用下表填寫輸入欄位。
 
    | 設定        | 值           | 描述  |
    | ------------- |:-------------|:-----|
-   | **名稱**      | 全域唯一值 | 用來識別您所監視之應用程式的名稱 |
-   | **資源群組**     | myResourceGroup      | 要裝載 Application Insights 資料之新資源群組的名稱 |
-   | **位置** | 美國東部 | 您附近或接近應用程式裝載位置附近的位置 |
+   | **名稱**      | 全球獨特價值 | 用來識別您所監視之應用程式的名稱 |
+   | **資源組**     | myResourceGroup      | 承載應用程式見解資料的新資源組的名稱 |
+   | **位置** | 美國東部 | 您附近的位置或應用託管位置附近 |
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>使用適用于 Azure 監視器的 OpenCensus Python SDK 進行檢測
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>具有用於 Azure 監視器的 OpenCensus Python SDK 的儀器
 
-安裝 OpenCensus Azure 監視器匯出工具：
+安裝 OpenCensus Azure 監視器匯出器：
 
 ```console
 python -m pip install opencensus-ext-azure
 ```
 
-如需封裝和整合的完整清單，請參閱[OpenCensus 套件](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)。
+有關包和集成的完整清單，請參閱[OpenCensus 包](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)。
 
 > [!NOTE]
-> `python -m pip install opencensus-ext-azure` 命令會假設您已設定 Python 安裝的 `PATH` 環境變數。 如果您尚未設定此變數，您必須提供 Python 可執行檔所在位置的完整目錄路徑。 結果會是如下所示的命令： `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
+> 該`python -m pip install opencensus-ext-azure`命令假定您為 Python`PATH`安裝設置了環境變數。 如果尚未配置此變數，則需要為 Python 可執行檔所在的位置提供完整的目錄路徑。 結果是這樣的命令： `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
 
-SDK 會使用三個 Azure 監視器匯出工具，將不同類型的遙測傳送至 Azure 監視器：追蹤、計量和記錄。 如需這些遙測類型的詳細資訊，請參閱[資料平臺總覽](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)。 使用下列指示，透過這三個匯出工具傳送這些遙測類型。
+SDK 使用三個 Azure 監視器匯出器向 Azure 監視器發送不同類型的遙測資料：跟蹤、指標和日誌。 有關這些遙測類型的詳細資訊，請參閱[資料平臺概述](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)。 使用以下說明通過三個匯出器發送這些遙測類型。
 
-## <a name="telemetry-type-mappings"></a>遙測類型對應
+## <a name="telemetry-type-mappings"></a>遙測類型映射
 
-OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到的遙測類型。
+以下是 OpenCensus 提供的匯出器，映射到將在 Azure 監視器中看到的遙測類型。
 
-![將遙測類型從 OpenCensus 對應至 Azure 監視器的螢幕擷取畫面](./media/opencensus-python/0012-telemetry-types.png)
+![從 OpenCensus 到 Azure 監視器的遙測類型映射螢幕截圖](./media/opencensus-python/0012-telemetry-types.png)
 
 ### <a name="trace"></a>追蹤
 
 > [!NOTE]
-> OpenCensus 中的 `Trace` 是指[分散式追蹤](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 `AzureExporter` 會將 `requests` 和 `dependency` 遙測傳送至 Azure 監視器。
+> `Trace`在 OpenCensus 中是指[分散式跟蹤](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 向`AzureExporter` `requests` Azure`dependency`監視器發送和遙測。
 
-1. 首先，讓我們在本機產生一些追蹤資料。 在 [Python 閒置] 或您選擇的編輯器中，輸入下列程式碼。
+1. 首先，讓我們在本地生成一些跟蹤資料。 在 Python IDLE 或您選擇的編輯器中，輸入以下代碼。
 
     ```python
     from opencensus.trace.samplers import ProbabilitySampler
@@ -91,7 +91,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-2. 執行程式碼會重複提示您輸入值。 在每個專案中，值都會列印到 shell，而 OpenCensus Python 模組會產生對應的 `SpanData`片段。 OpenCensus 專案會將[追蹤定義為範圍的樹狀結構](https://opencensus.io/core-concepts/tracing/)。
+2. 執行程式碼會重複提示您輸入值。 使用每個條目時，該值將列印到 shell，OpenCensus Python 模組將生成相應的 部分`SpanData`。 OpenCensus 專案會[將追蹤定義為範圍樹狀結構](https://opencensus.io/core-concepts/tracing/)。
     
     ```
     Enter a value: 4
@@ -105,7 +105,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 雖然輸入值對於示範用途很有説明，但我們還是會想要發出 `SpanData` 以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 儘管輸入值有助於演示目的，但最終我們希望向 Azure 監視器發出`SpanData`。 將連接字串直接傳遞到匯出器，也可以在環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根據以下代碼示例從上一步修改代碼：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -132,24 +132,24 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-4. 現在，當您執行 Python 腳本時，仍然應該提示您輸入值，但只會在 shell 中列印該值。 建立的 `SpanData` 將會傳送至 Azure 監視器。 您可以在 `dependencies`下找到發出的 span 資料。 如需連出要求的詳細資訊，請參閱[OpenCensus Python 相依](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)性。
-如需連入要求的詳細資訊，請參閱 OpenCensus Python [requests](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)。
+4. 現在，當您運行 Python 腳本時，仍應提示您輸入值，但僅在 shell 中列印該值。 創建的`SpanData`將發送到 Azure 監視器。 您可以在 下`dependencies`找到發出的跨距資料。 有關傳出請求的更多詳細資訊，請參閱 OpenCensus Python[依賴項](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)。
+有關傳入請求的更多詳細資訊，請參閱 OpenCensus Python[請求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)。
 
 #### <a name="sampling"></a>取樣
 
-如需在 OpenCensus 中取樣的詳細資訊，請參閱[OpenCensus 中的取樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+有關開放Census中採樣的資訊，請查看[OpenCensus 中的採樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
 
-#### <a name="trace-correlation"></a>追蹤相互關聯
+#### <a name="trace-correlation"></a>跟蹤關聯
 
-如需追蹤資料中遙測相互關聯的詳細資訊，請參閱 OpenCensus Python[遙測相互關聯](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+有關跟蹤資料中的遙測相關性的詳細資訊，請查看 OpenCensus Python[遙測相關性](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
 #### <a name="modify-telemetry"></a>修改遙測
 
-如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有關如何在將跟蹤遙測發送到 Azure 監視器之前對其進行修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
-### <a name="metrics"></a>度量
+### <a name="metrics"></a>計量
 
-1. 首先，讓我們來產生一些本機計量資料。 我們將建立一個簡單的計量，以追蹤使用者按下 Enter 的次數。
+1. 首先，讓我們生成一些本地指標資料。 我們將創建一個簡單的指標來跟蹤使用者按 Enter 的次數。
 
     ```python
     from datetime import datetime
@@ -189,7 +189,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     if __name__ == "__main__":
         main()
     ```
-2. 執行程式碼會重複提示您按下 Enter 鍵。 建立度量以追蹤按下 Enter 鍵的次數。 在每個專案中，值會遞增，而計量資訊會顯示在主控台中。 此資訊包括目前的值，以及計量更新時的目前時間戳記。
+2. 運行代碼將反復提示您按 Enter。 創建指標以跟蹤按下 Enter 的次數。 使用每個條目時，該值將遞增，指標資訊將顯示在主控台中。 該資訊包括更新指標時的當前值和目前時間戳。
 
     ```
     Press enter.
@@ -200,7 +200,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 雖然輸入值有助於示範用途，但最終我們會想要發出計量資料以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 儘管輸入值有助於演示目的，但最終我們希望向 Azure 監視器發出指標資料。 將連接字串直接傳遞到匯出器，也可以在環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根據以下代碼示例從上一步修改代碼：
 
     ```python
     from datetime import datetime
@@ -248,11 +248,11 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-4. 匯出程式會以固定間隔將計量資料傳送至 Azure 監視器。 預設值為每15秒。 我們會追蹤單一計量，因此此計量資料（包含其內含的任何值和時間戳記）會每隔一段時間傳送。 您可以在 [`customMetrics`] 下找到資料。
+4. 匯出器將在固定時間間隔內向 Azure 監視器發送指標資料。 預設值為每 15 秒一次。 我們正在跟蹤單個指標，因此此指標資料（包含任何值和時間戳記）將每隔一段時間發送。 您可以在 下`customMetrics`找到資料。
 
-#### <a name="standard-metrics"></a>標準計量
+#### <a name="standard-metrics"></a>標準指標
 
-根據預設，計量匯出工具會將一組標準計量傳送至 Azure 監視器。 若要停用此功能，您可以將 `enable_standard_metrics` 旗標設定為計量匯出程式之函式中的 `False`。
+預設情況下，指標匯出器將向 Azure 監視器發送一組標準指標。 您可以通過在`enable_standard_metrics`指標匯出器的建構函式中`False`設置標誌來禁用此功能。
 
     ```python
     ...
@@ -261,24 +261,25 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
       connection_string='InstrumentationKey=<your-instrumentation-key-here>')
     ...
     ```
-以下是目前已傳送的標準計量清單：
+以下是當前發送的標準指標清單：
 
-- 可用的記憶體（位元組）
+- 可用記憶體（位元組）
 - CPU 處理器時間（百分比）
-- 傳入要求速率（每秒）
-- 連入要求平均執行時間（毫秒）
-- 傳出要求速率（每秒）
-- 進程 CPU 使用量（百分比）
-- 進程私用位元組（位元組）
+- 傳入請求率（每秒）
+- 傳入請求平均執行時間（毫秒）
+- 傳出請求率（每秒）
+- 進程 CPU 使用率（百分比）
+- 處理專用位元組（位元組）
 
-您應該能夠在 `performanceCounters`中看到這些計量。 傳入要求速率會在 `customMetrics`之下。
+您應該能夠在 中`performanceCounters`看到這些指標。 傳入請求率將低於`customMetrics`。 有關詳細資訊，請參閱[效能計數器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。
+
 #### <a name="modify-telemetry"></a>修改遙測
 
-如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有關如何在將跟蹤遙測發送到 Azure 監視器之前對其進行修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
-### <a name="logs"></a>記錄檔
+### <a name="logs"></a>記錄
 
-1. 首先，讓我們來產生一些本機記錄資料。
+1. 首先，讓我們生成一些本地日誌資料。
 
     ```python
     import logging
@@ -297,7 +298,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-2.  程式碼會持續要求輸入的值。 會針對每個輸入的值發出記錄專案。
+2.  代碼將不斷要求輸入值。 為每個輸入的值發出日誌條目。
 
     ```
     Enter a value: 24
@@ -310,7 +311,7 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
     90
     ```
 
-3. 雖然輸入值有助於示範用途，但最後我們會想要發出記錄資料以 Azure 監視器。 直接將連接字串傳遞至匯出工具，或者您可以在環境變數中指定 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 根據下列程式碼範例，修改上一個步驟中的程式碼：
+3. 儘管輸入值有助於演示目的，但最終我們希望向 Azure 監視器發出日誌資料。 將連接字串直接傳遞到匯出器，也可以在環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`中指定它。 根據以下代碼示例從上一步修改代碼：
 
     ```python
     import logging
@@ -335,12 +336,12 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-4. 匯出程式會將記錄資料傳送至 Azure 監視器。 您可以在 [`traces`] 下找到資料。 
+4. 匯出器將向 Azure 監視器發送日誌資料。 您可以在 下`traces`找到資料。 
 
 > [!NOTE]
-> 此內容中的 `traces` 與 `Tracing`不同。 `traces` 是指使用 `AzureLogHandler`時，您會在 Azure 監視器中看到的遙測類型。 `Tracing` 是指 OpenCensus 中的概念，並與[分散式追蹤](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相關。
+> `traces`在此上下文中與`Tracing`不同。 `traces`指在使用 時將在 Azure 監視器中看到的遙測類型`AzureLogHandler`。 `Tracing`指 OpenCensus 中的概念，與[分散式跟蹤](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)有關。
 
-5. 若要設定記錄訊息的格式，您可以使用內建 Python[記錄 API](https://docs.python.org/3/library/logging.html#formatter-objects)中的 `formatters`。
+5. 要設置日誌消息的格式，可以在內置`formatters`的 Python 日誌記錄[API](https://docs.python.org/3/library/logging.html#formatter-objects)中使用 。
 
     ```python
     import logging
@@ -369,9 +370,9 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
         main()
     ```
 
-6. 您也可以使用 [custom_dimensions] 欄位，將自訂屬性新增至您的記錄訊息中的*額外*關鍵字引數。 在 Azure 監視器的 `customDimensions` 中，這些會以索引鍵/值組的形式顯示。
+6. 您還可以使用custom_dimensions欄位將自訂屬性添加到*額外*關鍵字參數中的日誌消息。 這些將在 Azure 監視器中`customDimensions`顯示為鍵值對。
 > [!NOTE]
-> 若要讓這項功能正常執行，您必須將字典傳遞至 custom_dimensions 欄位。 如果您傳遞任何其他類型的引數，記錄器將會忽略它們。
+> 要此功能正常工作，您需要將字典傳遞給custom_dimensions欄位。 如果傳遞任何其他類型的參數，記錄器將忽略它們。
 
     ```python
     import logging
@@ -388,51 +389,71 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="sending-exceptions"></a>發送異常
+
+OpenCensus Python 不會自動跟蹤和`exception`發送遙測資料。 它們`AzureLogHandler`通過使用 Python 日誌記錄庫使用異常通過 發送。 您可以像使用普通日誌記錄一樣添加自訂屬性。
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
 
     # Use properties in exception logs
     try:
         result = 1 / 0  # generate a ZeroDivisionError
     except Exception:
-    logger.exception('Captured an exception.', extra=properties)
+        logger.exception('Captured an exception.', extra=properties)
     ```
+由於必須顯式記錄異常，因此使用者應如何記錄未處理的異常。 OpenCensus 不會限制使用者想要執行此操作的方式，只要他們顯式記錄異常遙測資料。
+
 #### <a name="sampling"></a>取樣
 
-如需在 OpenCensus 中取樣的詳細資訊，請參閱[OpenCensus 中的取樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+有關開放Census中採樣的資訊，請查看[OpenCensus 中的採樣](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
 
 #### <a name="log-correlation"></a>記錄相互關聯
 
-如需如何使用追蹤內容資料來擴充記錄檔的詳細資訊，請參閱 OpenCensus Python[記錄整合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+有關如何使用跟蹤上下文資料豐富日誌的詳細資訊，請參閱 OpenCensus Python[日誌集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
 
 #### <a name="modify-telemetry"></a>修改遙測
 
-如需如何在將已追蹤的遙測傳送至 Azure 監視器之前加以修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+有關如何在將跟蹤遙測發送到 Azure 監視器之前對其進行修改的詳細資訊，請參閱 OpenCensus Python[遙測處理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
-## <a name="view-your-data-with-queries"></a>使用查詢來查看您的資料
+## <a name="view-your-data-with-queries"></a>使用查詢查看資料
 
-您可以透過 [**記錄（分析）** ] 索引標籤來查看您的應用程式所傳送的遙測資料。
+您可以通過 **"日誌（分析）"** 選項卡查看從應用程式發送的遙測資料。
 
-![[總覽] 窗格的螢幕擷取畫面，其中選取了紅色方塊中的 [記錄（分析）]](./media/opencensus-python/0010-logs-query.png)
+![在紅色框中選中的"日誌（分析）"概覽窗格的螢幕截圖](./media/opencensus-python/0010-logs-query.png)
 
-在 [作用中] 底下的清單**中：**
+在 **"活動"** 下的清單中：
 
-- 針對使用 Azure 監視器追蹤匯出工具傳送的遙測，傳入要求會顯示在 [`requests`] 之下。 傳出或同進程要求會出現在 `dependencies`之下。
-- 針對與 Azure 監視器計量匯出工具一起傳送的遙測，傳送的度量會顯示在 `customMetrics`之下。
-- 針對使用 Azure 監視器記錄匯出工具傳送的遙測，記錄會出現在 `traces`之下。 例外狀況會出現在 `exceptions`之下。
+- 對於隨 Azure 監視器跟蹤匯出器一起發送的遙測，`requests`傳入請求將顯示在 下。 傳出或進程內請求顯示在 下`dependencies`。
+- 對於隨 Azure 監視器指標匯出器一起發送的遙測，發送的`customMetrics`指標將顯示在 下。
+- 對於隨 Azure 監視器日誌匯出器一起發送的遙測`traces`資料，日誌將顯示在 下。 異常顯示在 下`exceptions`。
 
-如需如何使用查詢和記錄的詳細資訊，請參閱[Azure 監視器中的記錄](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)。
+有關如何使用查詢和日誌的詳細資訊，請參閱[Azure 監視器 中的日誌](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)。
 
-## <a name="learn-more-about-opencensus-for-python"></a>深入瞭解適用于 Python 的 OpenCensus
+## <a name="learn-more-about-opencensus-for-python"></a>瞭解有關 Python 開放Census 的更多詳細資訊
 
-* [在 GitHub 上 OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
+* [在 GitHub 上打開 Census Python](https://github.com/census-instrumentation/opencensus-python)
 * [自訂](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [GitHub 上的 Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
-* [OpenCensus 整合](https://github.com/census-instrumentation/opencensus-python#extensions)
-* [Azure 監視器範例應用程式](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
+* [GitHub 上的 Azure 監視器匯出器](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [開放普查集成](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure 監視器應用程式範例](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [追蹤連入要求](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [追蹤不進入的要求](./../../azure-monitor/app/opencensus-python-request.md)
+* [跟蹤傳入請求](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [跟蹤外出請求](./../../azure-monitor/app/opencensus-python-request.md)
 * [應用程式對應](./../../azure-monitor/app/app-map.md)
 * [端對端效能監視](./../../azure-monitor/learn/tutorial-performance.md)
 
@@ -440,4 +461,4 @@ OpenCensus 提供的匯出工具會對應至您將在 Azure 監視器中看到�
 
 * [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)：建立測試，以確保網路上看得見您的網站。
 * [智慧型診斷](../../azure-monitor/app/proactive-diagnostics.md)︰這些測試會自動執行，您不需要採取任何動作來設定它們。 它們會讓您知道應用程式是否有不尋常的失敗要求率。
-* 計量[警示](../../azure-monitor/app/alerts.md)：設定警示，在計量超出臨界值時警告您。 您可以在撰寫於程式碼中的自訂度量上設定它們。
+* [指標警報](../../azure-monitor/app/alerts.md)：設置警報，以便在指標超過閾值時發出警告。 您可以在撰寫於程式碼中的自訂度量上設定它們。

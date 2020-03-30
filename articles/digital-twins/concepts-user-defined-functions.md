@@ -1,5 +1,5 @@
 ---
-title: 資料處理和使用者定義函數-Azure 數位 Twins |Microsoft Docs
+title: 資料處理和使用者定義的功能 - Azure 數位雙子星*微軟文檔
 description: Azure Digital Twins 的資料處理、比對器和使用者定義函式的概觀。
 ms.author: alinast
 author: alinamstanciu
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265177"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>資料處理與各項使用者定義功能
@@ -21,9 +21,9 @@ Azure Digital Twins 提供進階計算功能。 開發人員可定義自訂函�
 
 ## <a name="data-processing-flow"></a>資料處理流程
 
-裝置將遙測資料傳送至 Azure Digital Twins 後，開發人員可依四階段處理資料：*驗證*、*比對*、*計算*和*分派*。
+在設備向 Azure 數位孿生髮送遙測資料後，開發人員可以分四個階段處理資料：*驗證*、*匹配*、*計算*和*調度*。
 
-[![Azure 數位 Twins 資料處理流程](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[![Azure Digital Twins 資料處理流程](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. 驗證階段會將傳入的遙測訊息轉換為一般認知的[資料轉送物件](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)格式。 此階段也會執行裝置和感應器驗證。
 1. 比對階段會尋找適當的使用者定義函式並加以執行。 預先定義的比對器會根據傳入的遙測訊息中包含的裝置、感應器和空間資訊，來尋找使用者定義函式。
@@ -32,9 +32,9 @@ Azure Digital Twins 提供進階計算功能。 開發人員可定義自訂函�
 
 ## <a name="data-processing-objects"></a>資料處理物件
 
-Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比對器*、*使用者定義函式*和*角色指派*。
+Azure 數位孿生中的資料處理包括定義三個物件：*匹配器*、*使用者定義的函數*和*角色指派*。
 
-[![Azure 數位 Twins 資料處理物件](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[![Azure Digital Twins 資料處理物件](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>比對器
 
@@ -42,9 +42,9 @@ Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比�
 
 - datatype **Temperature** 的所有感應器是由逸出字串值 `\"Temperature\"` 表示
 - 在其連接埠中具有 `01`
-- 所屬裝置具有設為逸出字串值 **的擴充屬性索引鍵**Manufacturer`\"Contoso\"`
+- 所屬裝置具有設為逸出字串值 `\"Contoso\"` 的擴充屬性索引鍵 **Manufacturer**
 - 它們屬於逸出字串 `\"Venue\"` 所指定之類型的空格
-- 這是父**SpaceId**的子系 `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- 屬於父系 **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` 的子系
 
 ```JSON
 {
@@ -104,7 +104,7 @@ Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比�
 - 建立傳入的感應器讀數符合特定條件時所發出的通知。
 - 在傳送通知之前將圖形中繼資料附加至感應器讀數。
 
-如需詳細資訊，請參閱[如何使用使用者定義的函數](./how-to-user-defined-functions.md)。
+有關詳細資訊，請閱讀[如何使用使用者定義的函數](./how-to-user-defined-functions.md)。
 
 #### <a name="examples"></a>範例
 
@@ -114,7 +114,7 @@ Azure Digital Twins 中的資料處理由三個物件的定義所組成：*比�
 
 ### <a name="role-assignment"></a>角色指派
 
-使用者定義函式的動作會受限於 Azure Digital Twins 的[角色型存取控制](./security-role-based-access-control.md)，以保護服務內的資料。 角色指派定義哪些使用者定義函式具有與空間圖及其實體互動的適當權限。 例如，使用者定義函式可能具有在給定空間下*建立*、*讀取*、*更新*或*刪除*圖形資料的能力與權限。 當使用者定義函式要求資料的圖形或嘗試執行動作時，系統會檢查使用者定義函式的存取層級。 如需詳細資訊，請參閱[角色型存取控制](./security-create-manage-role-assignments.md)。
+使用者定義函式的動作會受限於 Azure Digital Twins 的[角色型存取控制](./security-role-based-access-control.md)，以保護服務內的資料。 角色指派定義哪些使用者定義函式具有與空間圖及其實體互動的適當權限。 例如，使用者定義函式可能具有在給定空間下*建立*、*讀取*、*更新*或*刪除*圖形資料的能力與權限。 當使用者定義函式要求資料的圖形或嘗試執行動作時，系統會檢查使用者定義函式的存取層級。 有關詳細資訊，請閱讀[基於角色的存取控制](./security-create-manage-role-assignments.md)。
 
 比對器有可能觸發沒有任何角色指派的使用者定義函式。 在此情況下，使用者定義函式無法讀取圖形中的任何資料。
 

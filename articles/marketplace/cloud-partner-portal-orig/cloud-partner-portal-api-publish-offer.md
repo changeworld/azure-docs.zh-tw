@@ -1,19 +1,18 @@
 ---
-title: 發行供應專案 |Azure Marketplace
+title: 發佈產品/服務 |Azure 應用商店
 description: 用來發佈指定供應項目的 API。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280519"
 ---
 <a name="publish-an-offer"></a>發佈供應項目
 ================
@@ -25,18 +24,18 @@ ms.locfileid: "73819648"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**      |    **說明**                               |  **資料類型** |
+|  **名稱**      |    **描述**                               |  **資料類型** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | 發行者識別碼，例如 `contoso`      |   字串       |
-|  offerId       | 供應項目識別碼                                 |   字串       |
-|  api-version   | 最新版的 API                        |   日期         |
+|  publisherId   | 發行者識別碼，例如 `contoso`      |   String       |
+|  offerId       | 供應項目識別碼                                 |   String       |
+|  api-version   | API 的最新版本                        |   Date         |
 |  |  |
 
 
 <a name="header"></a>頁首
 ------
 
-|  **名稱**        |    **值**          |
+|  **名稱**        |    **價值**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授權   |  `Bearer YOUR_TOKEN`  |
@@ -59,7 +58,7 @@ ms.locfileid: "73819648"
 
 ### <a name="request-body-properties"></a>要求本文屬性
 
-|  **名稱**               |   **說明**                                                                                 |
+|  **名稱**               |   **描述**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 以逗號分隔的電子郵件地址清單；系統會向這些地址傳送發佈作業進度通知。 |
 |  |  |
@@ -72,7 +71,7 @@ ms.locfileid: "73819648"
 
 ### <a name="response-header"></a>回應標頭
 
-|  **名稱**             |    **值**                                                                 |
+|  **名稱**             |    **價值**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | 可查詢以判斷作業目前狀態的 URL。    |
 |  |  |
@@ -80,7 +79,7 @@ ms.locfileid: "73819648"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼** |  **說明**                                                                                                                           |
+| **代碼** |  **描述**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted`：已順利接受要求。 回應包含可用來追蹤已啟動之作業的位置。 |
 | 400   | `Bad/Malformed request`：錯誤回應本文可能會提供更多資訊。                                                               |

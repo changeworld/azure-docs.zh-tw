@@ -1,59 +1,59 @@
 ---
-title: 要求即時傳輸資料 |Microsoft Azure 對應
-description: 使用 Microsoft Azure Maps 行動服務來要求即時資料。
-author: farah-alyasari
-ms.author: v-faalya
+title: 請求即時傳輸資料 |微軟 Azure 地圖
+description: 使用 Microsoft Azure 地圖移動服務請求即時資料。
+author: philmea
+ms.author: philmea
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3145181a863bf8188dd0b0bb52cd2efc662ce2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209897"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335473"
 ---
-# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務來要求即時資料
+# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖移動服務請求即時資料
 
-本文說明如何使用 Azure 地圖服務[行動服務](https://aka.ms/AzureMapsMobilityService)來要求即時傳輸資料。
+本文介紹如何使用 Azure 地圖[移動服務](https://aka.ms/AzureMapsMobilityService)請求即時傳輸資料。
 
 在本文中，您將了解如何：
 
 
- * 針對抵達給定停止的所有行要求下一次即時抵達
- * 要求指定自行車銜接站的即時資訊。
+ * 請求下一個即時到達到達給定停靠點的所有線路
+ * 請求給定自行車塢站的即時資訊。
 
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須先擁有 Azure 地圖服務帳戶和訂用帳戶金鑰，才能對 Azure 地圖服務公用傳輸 Api 進行任何呼叫。 如需相關資訊，請遵循[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示來建立 Azure 地圖服務帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
+首先需要具有 Azure 地圖帳戶和訂閱金鑰，才能對 Azure 映射公共交通 API 進行任何調用。 有關詳細資訊，請按照[創建帳戶中的](quick-demo-map-app.md#create-an-account-with-azure-maps)說明創建 Azure 地圖帳戶。 按照[獲取主金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)的步驟獲取帳戶的主金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 
 本文使用 [Postman 應用程式](https://www.getpostman.com/apps)來建置 REST 呼叫。 您可以使用您偏好的任何 API 開發環境。
 
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>要求停止的即時抵達
+## <a name="request-real-time-arrivals-for-a-stop"></a>要求即時到達，以便停車
 
-為了要求特定公用傳輸的即時抵達資料停止，您必須向 Azure 地圖服務[行動服務](https://aka.ms/AzureMapsMobilityService)的[即時抵達 API](https://aka.ms/AzureMapsMobilityRealTimeArrivals)提出要求。 您將需要**metroID**和**stopID**才能完成要求。 若要深入瞭解如何要求這些參數，請參閱我們的指南，瞭解如何[要求公用傳輸路由](https://aka.ms/AMapsHowToGuidePublicTransitRouting)。 
+為了請求特定公共交通站的即時到達資料，您需要向 Azure 地圖[移動服務](https://aka.ms/AzureMapsMobilityService)[的即時到達 API](https://aka.ms/AzureMapsMobilityRealTimeArrivals)發出請求。 您需要**metroID**和**stopID**才能完成請求。 要瞭解有關如何請求這些參數的更多資訊，請參閱我們的指南，瞭解如何[請求公共交通路線](https://aka.ms/AMapsHowToGuidePublicTransitRouting)。 
 
-讓我們使用 "522" 作為我們的 metro 識別碼，也就是「西雅圖– Tacoma – Bellevue，WA」區域的 metro 識別碼。 使用 "522---2060603" 做為停止識別碼，此匯流排停止是在 "Ne 24 日 St & 162nd 中 Ne，Bellevue WA"。 若要要求接下來的五個即時抵達資料，在此停止所有下一次即時抵達時，請完成下列步驟：
+讓我們使用"522"作為我們的地鐵 ID，這是"華盛頓州西雅圖-塔科馬-貝爾維尤"地區的地鐵 ID。 使用"522---2060603"作為停車ID，此巴士站位於"Ne 24街&162大道內，貝爾維尤WA"。 要請求接下來的五個即時到達資料，對於在此停靠點的所有下一個即時到達者，請完成以下步驟：
 
-1. 開啟 Postman 應用程式，讓我們建立集合來儲存要求。 在 Postman 應用程式頂端附近，選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**集合**]。  將集合命名為，然後選取 [**建立**] 按鈕。
+1. 打開 Postman 應用，讓我們創建一個集合來存儲請求。 在郵遞員應用的頂部附近，選擇 **"新建**"。 在 **"創建新"** 視窗中，選擇 **"集合**"。  命名集合併選擇"**創建**"按鈕。
 
-2. 若要建立要求，請再次選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**要求**]。 輸入要求的 [**要求名稱**]。 選取您在上一個步驟中建立的集合，做為用來儲存要求的位置。 然後選取 [儲存]。
+2. 要創建請求，請再次選擇 **"新建**"。 在 **"創建新"** 視窗中，選擇 **"請求**"。 輸入請求**的請求名稱**。 選擇您在上一步中創建的集合，作為保存請求的位置。 然後，選擇 **"保存**"。
 
-    ![在 Postman 中建立要求](./media/how-to-request-transit-data/postman-new.png)
+    ![在郵遞員中創建請求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 選取 [建立器] 索引標籤上的 [**取得**HTTP] 方法，然後輸入下列 URL 來建立 GET 要求。 使用您的 Azure 地圖服務主要金鑰取代 `{subscription-key}`。
+3. 選擇產生器選項卡上的**GET** HTTP 方法，然後輸入以下 URL 以創建 GET 請求。 使用`{subscription-key}`Azure 映射主鍵替換 。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. 成功要求之後，您會收到下列回應。  請注意，參數 ' scheduleType ' 會定義預估抵達時間是否以即時或靜態資料為基礎。
+4. 成功請求後，您將收到以下回應。  請注意，參數"計畫類型"定義估計到達時間是基於即時資料還是靜態資料。
 
     ```JSON
     {
@@ -119,26 +119,26 @@ ms.locfileid: "77209897"
     ```
 
 
-## <a name="real-time-data-for-bike-docking-station"></a>自行車銜接站的即時資料
+## <a name="real-time-data-for-bike-docking-station"></a>自行車塢站的即時資料
 
-「[取得傳輸 Dock」資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)可讓使用者要求靜態和即時資訊。 例如，使用者可以要求自行車或機車銜接站的可用性和空缺資訊。 [取得傳輸 Dock 資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)也是 Azure 地圖服務[行動服務](https://aka.ms/AzureMapsMobilityService)的一部分。
+[獲取傳輸停靠資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)允許使用者請求靜態和即時資訊。 例如，使用者可以請求自行車或滑板車塢站的可用性和空置資訊。 [獲取傳輸停靠站資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)也是 Azure 地圖[移動服務的](https://aka.ms/AzureMapsMobilityService)一部分。
 
-為了向「[取得傳輸」 Dock 資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)提出要求，您需要該工作站的**dockId** 。 您可以使用指派給 "bikeDock" 的**objectType**參數向「[取得附近傳輸 API](https://aka.ms/AzureMapsMobilityNearbyTransit) 」提出搜尋要求，以取得 dock 識別碼。 請遵循下列步驟，取得適用于自行車的銜接站的即時資料。
+為了向[獲取傳輸停靠站資訊 API](https://aka.ms/AzureMapsMobilityTransitDock)發出請求，您需要該網站的**dockId。** 您可以通過向["獲取附近的傳輸 API"](https://aka.ms/AzureMapsMobilityNearbyTransit)發出搜索請求，將**物件類型**參數分配給"bikeDock"來獲取銜接站 ID。 按照以下步驟獲取自行車塢的即時資料。
 
 
-### <a name="get-dock-id"></a>取得停駐識別碼
+### <a name="get-dock-id"></a>獲取停靠 ID
 
-若要取得**dockID**，請遵循下列步驟向「取得附近傳輸」 API 提出要求：
+要獲取**dockID，** 請按照以下步驟向"獲取附近的傳輸 API"發出請求：
 
-1. 在 Postman 中，按一下 **新增要求** | **取得要求**，並將它命名為 **取得 dock 識別碼**。
+1. 在郵遞員中，按一下 **"新請求** | **GET"請求**並將其命名為 **"獲取停靠 ID**"。
 
-2.  在 [建立器] 索引標籤上，選取 [**取得**HTTP 方法]，輸入下列要求 URL，然後按一下 [**傳送**]。
+2.  在"產生器"選項卡上，選擇**GET** HTTP 方法，輸入以下請求 URL，然後按一下"**發送**"。
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
     ```
 
-3. 成功要求之後，您會收到下列回應。 請注意，在回應中現在會有**識別碼**，稍後可在取得傳輸 DOCK 資訊 API 的要求中，將其用作查詢參數。
+3. 成功請求後，您將收到以下回應。 請注意，我們現在在回應中具有**ID，** 稍後可以在獲取傳輸停靠資訊 API 的請求中用作查詢參數。
 
     ```JSON
     {
@@ -175,19 +175,19 @@ ms.locfileid: "77209897"
     ```
 
 
-### <a name="get-real-time-bike-dock-status"></a>取得即時自行車 dock 狀態
+### <a name="get-real-time-bike-dock-status"></a>獲取即時自行車停靠站狀態
 
-請遵循下列步驟向「取得傳輸 Dock」資訊 API 提出要求，以取得所選 Dock 的即時資料。
+按照以下步驟向獲取傳輸停靠站資訊 API 發出請求，以獲得所選銜接站的即時資料。
 
-1. 在 Postman 中，按一下 **新增要求** | **取得要求**，並將其命名為**取得即時 dock 資料**。
+1. 在郵遞員中，按一下 **"新請求** | **GET 請求**"並命名它**獲取即時停靠資料**。
 
-2.  在 [建立器] 索引標籤上，選取 [**取得**HTTP 方法]，輸入下列要求 URL，然後按一下 [**傳送**]。
+2.  在"產生器"選項卡上，選擇**GET** HTTP 方法，輸入以下請求 URL，然後按一下"**發送**"。
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
     ```
 
-3. 成功要求之後，您會收到下列結構的回應：
+3. 請求成功後，您將收到以下結構的回應：
 
     ```JSON
     {
@@ -208,12 +208,12 @@ ms.locfileid: "77209897"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用行動服務要求傳輸資料：
+瞭解如何使用移動服務請求傳輸資料：
 
 > [!div class="nextstepaction"]
-> [如何要求傳輸資料](how-to-request-transit-data.md)
+> [如何請求傳輸資料](how-to-request-transit-data.md)
 
-探索 Azure 地圖服務行動服務 API 檔：
+流覽 Azure 地圖移動服務 API 文檔：
 
 > [!div class="nextstepaction"]
-> [行動服務 API 檔](https://aka.ms/AzureMapsMobilityService)
+> [移動服務 API 文檔](https://aka.ms/AzureMapsMobilityService)

@@ -1,35 +1,46 @@
 ---
-title: 封鎖舊版驗證-Azure Active Directory
-description: 瞭解如何藉由使用 Azure AD 條件式存取來封鎖舊版驗證，以改善您的安全性狀態。
+title: 阻止舊版身份驗證 - Azure 活動目錄
+description: 瞭解如何通過使用 Azure AD 條件訪問阻止舊版身份驗證來改進安全狀態。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158b3b34bf433c1da0d1c4bdc851fd99e5bd54d2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331918"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖舊版驗證 Azure AD   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件訪問阻止對 Azure AD 的舊身份驗證   
 
-為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure Active Directory (Azure AD) 支援多種驗證通訊協定，包括舊式驗證。 不過，舊版通訊協定不支援多重要素驗證（MFA）。 在許多環境中，MFA 都是防止身分識別遭竊的常用工具。 
+為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure Active Directory (Azure AD) 支援多種驗證通訊協定，包括舊式驗證。 但是，舊協定不支援多重要素驗證 （MFA）。 在許多環境中，MFA 都是防止身分識別遭竊的常用工具。 
 
-如果您的環境已準備好封鎖舊版驗證以改善租使用者的保護，您可以使用條件式存取來達成此目標。 本文說明如何設定條件式存取原則，以封鎖您租使用者的舊版驗證。
+Microsoft 身份安全總監 Alex Weinert 在 2020 年 3 月 12 日博客文章"[阻止組織中的舊版身份驗證的新工具](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#)"中強調為什麼組織應阻止舊版身份驗證以及 Microsoft 為完成此任務提供了哪些其他工具：
 
-## <a name="prerequisites"></a>必要條件
+> 要使 MFA 有效，還需要阻止舊版身份驗證。 這是因為 POP、SMTP、IMAP 和 MAPI 等遺留身份驗證協定無法強制實施 MFA，使它們成為攻擊組織的對手的首選進入點...
+> 
+>...從 Azure 活動目錄 （Azure AD） 流量分析中遺留下來的身份驗證數位是明顯的：
+> 
+> - 超過 99% 的密碼噴霧攻擊使用舊版身份驗證協定
+> - 超過 97% 的憑據填充攻擊使用舊版身份驗證
+> - 禁用舊版身份驗證的組織中的 Azure AD 帳戶比啟用舊版身份驗證的帳戶的危害減少 67%
+>
+
+如果環境已準備好阻止舊版身份驗證以改進租戶的保護，則可以通過條件訪問實現此目標。 本文介紹如何配置阻止租戶舊版身份驗證的條件訪問策略。
+
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已熟悉以下各項： 
 
-- Azure AD 條件式存取的[基本概念](overview.md) 
-- 在 Azure 入口網站中設定條件式存取原則的[最佳作法](best-practices.md)
+- Azure AD 條件訪問[的基本概念](overview.md) 
+- 在 Azure 門戶中配置條件訪問策略的[最佳做法](best-practices.md)
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -40,50 +51,52 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 在現今的環境中，單一要素驗證 (例如，使用者名稱和密碼) 已不敷使用。 密碼的缺點在於容易被猜到，且一般人不太懂得如何選擇理想的密碼。 密碼也很容易遭受各種攻擊，例如網路釣魚和密碼噴濺。 要防範密碼威脅，最簡單的方式就是實作 MFA。 透過 MFA，即便攻擊者取得使用者的密碼，單靠密碼本身仍不足以成功進行驗證並存取資料。
 
-如何防止使用舊式驗證的應用程式存取您租用戶的資源？ 建議您只使用條件式存取原則來封鎖它們。 如有必要，您可以僅允許特定使用者和特定網路位置使用以舊式驗證為基礎的應用程式。
+如何防止使用舊式驗證的應用程式存取您租用戶的資源？ 建議只是使用條件訪問策略來阻止它們。 如有必要，您可以僅允許特定使用者和特定網路位置使用以舊式驗證為基礎的應用程式。
 
 完成第一個要素驗證之後，即會強制執行條件式存取原則。 因此，條件式存取不適合作為拒絕服務 (DoS) 攻擊之類情節的第一道防線，但是可以利用來自這些事件的訊號 (例如登入風險層級、要求位置等等) 來決定存取權。
 
 ## <a name="implementation"></a>實作
 
-本節說明如何設定條件式存取原則，以封鎖舊版驗證。 
+本節介紹如何配置條件訪問策略以阻止舊版身份驗證。 
 
 ### <a name="legacy-authentication-protocols"></a>舊版驗證通訊協定
 
-下列選項視為舊版驗證通訊協定
+以下選項被視為舊身份驗證協定
 
-- 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
-- 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
-- Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
-- Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
-- IMAP4-供 IMAP 電子郵件客戶程式使用。
-- MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
-- 離線通訊錄（OAB）-Outlook 下載並使用的地址清單集合複本。
-- Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 和更早版本使用。
-- Outlook 服務-適用于 Windows 10 的電子郵件和行事曆應用程式。
-- POP3-由 POP 電子郵件客戶程式使用。
-- 報表 Web 服務-用來在 Exchange Online 中取出報表資料。
-- 其他用戶端-識別為利用舊版驗證的其他通訊協定。
+- 經過身份驗證的 SMTP - POP 和 IMAP 用戶端用於發送電子郵件。
+- 自動探索 - Outlook 和 EAS 用戶端用於在"線上交換"中查找和連接到郵箱。
+- 交換線上電源外殼 - 用於與遠端 PowerShell 連接到線上交換。 如果阻止 Exchange 線上 PowerShell 的基本驗證，則需要使用 Exchange 線上 PowerShell 模組進行連接。 有關說明，請參閱[使用多重要素驗證連接到交換線上 PowerShell。](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)
+- 交換 Web 服務 （EWS） - Outlook、Mac Outlook 和協力廠商應用使用的程式設計介面。
+- IMAP4 - IMAP 電子郵件用戶端使用。
+- 通過 HTTP（MAPI/HTTP） 的 MAPI - 由 Outlook 2010 及更高版本使用。
+- 離線通訊錄 （OAB） - Outlook 下載和使用的地址清單集合的副本。
+- 隨時隨地的 Outlook（HTTP 的 RPC） - 由 Outlook 2016 及更早版本使用。
+- Outlook 服務 - 由 Windows 10 的郵件和日曆應用使用。
+- POP3 - 由 POP 電子郵件用戶端使用。
+- 報告 Web 服務 - 用於在"連線交換"中檢索報表資料。
+- 其他用戶端 - 標識為使用舊版身份驗證的其他協定。
 
-### <a name="identify-legacy-authentication-use"></a>識別舊版驗證使用
+有關這些身份驗證協定和服務的詳細資訊，請參閱[Azure 活動目錄門戶中的登錄活動報告](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities)。
 
-您必須先瞭解您的使用者是否有使用舊版驗證的應用程式，以及它如何影響您的整體目錄，才可以在目錄中封鎖舊版驗證。 Azure AD 登入記錄可以用來瞭解您是否使用舊版驗證。
+### <a name="identify-legacy-authentication-use"></a>確定舊版身份驗證使用方式
 
-1. 流覽至**Azure 入口網站** > **Azure Active Directory** > 登**入**。
-1. 新增 [用戶端應用程式] 資料行，如果未顯示，請按一下 [ > **用戶端應用程式**的資料**行**]。
-1.  > **用戶端應用程式** **新增篩選**> 選取所有舊版驗證通訊協定，然後**按一下 [** 套用]。
+在阻止目錄中的舊版身份驗證之前，首先需要瞭解使用者是否具有使用舊版身份驗證的應用，以及它如何影響整個目錄。 Azure AD 登錄日誌可用於瞭解是否使用舊版身份驗證。
 
-篩選只會顯示舊版驗證通訊協定所進行的登入嘗試。 按一下每個個別的登入嘗試，將會顯示其他詳細資料。 [**基本資訊**] 索引標籤下的 [**用戶端應用程式**] 欄位會指出所使用的舊版驗證通訊協定。
+1. 導航到**Azure 門戶** > **Azure 活動目錄** > **登錄**。
+1. 如果未通過按一下 **"用戶端應用列"** > 顯示用戶端應用列，則添加該**列**。
+1. **添加篩選器** > **用戶端應用**>選擇所有舊身份驗證協定，然後按一下"**應用**"。
 
-這些記錄會指出哪些使用者仍會根據傳統驗證，以及哪些應用程式使用舊版通訊協定來提出驗證要求。 對於不會出現在這些記錄中且已確認不會使用舊版驗證的使用者，請只為這些使用者執行條件式存取原則。
+篩選將僅顯示由舊身份驗證協定進行的登錄嘗試。 按一下每個單獨的登錄嘗試將顯示其他詳細資訊。 **"基本資訊**"選項卡下的 **"用戶端應用**"欄位將指示使用了哪些舊版身份驗證協定。
+
+這些日誌將指示哪些使用者仍然依賴于舊版身份驗證，以及哪些應用程式使用舊協定來發出身份驗證請求。 對於未出現在這些日誌中且已確認不使用舊版身份驗證的使用者，僅為這些使用者實施條件訪問策略。
 
 ### <a name="block-legacy-authentication"></a>封鎖舊式驗證 
 
-在條件式存取原則中，您可以設定與用來存取資源的用戶端應用程式相關聯的條件。 用戶端應用程式條件可讓您針對 [行動裝置應用程式和桌面用戶端] 選取 [其他用戶端]，讓使用舊式驗證的應用程式能夠縮減其範圍。
+在條件訪問策略中，可以設置與用於訪問資源的用戶端應用綁定的條件。 用戶端應用程式條件可讓您針對 [行動裝置應用程式和桌面用戶端]**** 選取 [其他用戶端]****，讓使用舊式驗證的應用程式能夠縮減其範圍。
 
 ![其他用戶端](./media/block-legacy-authentication/01.png)
 
-若要封鎖這些應用程式的存取，您必須選取 [封鎖存取]。
+若要封鎖這些應用程式的存取，您必須選取 [封鎖存取]****。
 
 ![封鎖存取](./media/block-legacy-authentication/02.png)
 
@@ -97,7 +110,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 ![指派](./media/block-legacy-authentication/03.png)
 
-Azure 有一項安全性功能，可防止您建立這類原則，因為此設定違反條件式存取原則的[最佳作法](best-practices.md)。
+Azure 具有一個安全功能，可阻止您創建這樣的策略，因為此配置違反了條件訪問策略的[最佳做法](best-practices.md)。
  
 ![不支援原則設定](./media/block-legacy-authentication/04.png)
 
@@ -106,6 +119,8 @@ Azure 有一項安全性功能，可防止您建立這類原則，因為此設�
 ![不支援原則設定](./media/block-legacy-authentication/05.png)
 
 您可以從原則中排除一個使用者，以符合這項安全功能的需求。 在理想情況下，您應定義幾個 [Azure AD 中的緊急存取系統管理帳戶](../users-groups-roles/directory-emergency-access.md)，並將其從您的原則中排除。
+
+啟用策略阻止舊版身份驗證時，使用[僅報告模式](concept-conditional-access-report-only.md)為您的組織提供了一個監視策略影響的機會。
 
 ## <a name="policy-deployment"></a>原則部署
 
@@ -118,15 +133,15 @@ Azure 有一項安全性功能，可防止您建立這類原則，因為此設�
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
 
-使用**其他用戶端**封鎖存取也會使用基本驗證來封鎖 Exchange Online PowerShell 和 Dynamics 365。
+使用**其他用戶端**阻止訪問還會阻止使用基本 au.
 
 為**其他用戶端**設定原則會讓整個組織封鎖特定用戶端，例如 SPConnect。 之所以執行此封鎖，是因為舊版用戶端以非預期的方式進行驗證。 主要的 Office 應用程式 (例如，較舊的 Office 用戶端) 不會有這個問題。
 
 原則最慢可能需要 24 小時才會生效。
 
-您可以為**其他用戶端**條件選取所有可用的授與控制項;不過，終端使用者體驗一律是相同的封鎖存取。
+可以為其他用戶端條件選擇所有可用的授予控制項;但是，您可以選擇**其他用戶端**條件。但是， 最終使用者體驗始終相同 - 阻止訪問。
 
-如果您使用**其他用戶端**條件封鎖舊版驗證，您也可以設定裝置平臺和位置條件。 例如，如果您只想要封鎖行動裝置的舊版驗證，請選取下列項目來設定**裝置平台**條件：
+如果使用**其他用戶端**條件阻止舊版身份驗證，也可以設置設備平臺和位置條件。 例如，如果您只想要封鎖行動裝置的舊版驗證，請選取下列項目來設定**裝置平台**條件：
 
 - Android
 - iOS
@@ -136,5 +151,6 @@ Azure 有一項安全性功能，可防止您建立這類原則，因為此設�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您還不熟悉如何設定條件式存取原則，請參閱[使用 Azure Active Directory 條件式存取來要求特定應用程式的 MFA](app-based-mfa.md) ，以取得範例。
-- 如需新式驗證支援的詳細資訊，請參閱[office 2013 和 office 2016 用戶端應用程式的新式驗證運作方式](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- [使用僅條件訪問報告模式確定影響](howto-conditional-access-report-only.md)
+- 如果您還不熟悉配置條件訪問策略，請參閱[使用 Azure 活動目錄條件訪問的特定應用需要 MFA](app-based-mfa.md)作為示例。
+- 有關現代身份驗證支援的詳細資訊，請參閱[Office 2013 和 Office 2016 用戶端應用的現代身份驗證的工作原理](/office365/enterprise/modern-auth-for-office-2013-and-2016) 

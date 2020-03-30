@@ -1,18 +1,18 @@
 ---
-title: Azure IoT 中樞裝置的客戶資料要求
-description: Azure IoT 中樞中管理的大部分裝置都不是個人，但有些則是。 本文討論管理員能夠從裝置匯出或刪除個人資料。
+title: Azure IoT 中心設備的客戶資料請求
+description: Azure IoT 中心管理的大多數設備不是個人設備，但有些設備是個人設備。 本文介紹管理員能夠從設備匯出或刪除個人資料。
 author: robinsh
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889474"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499325"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
 
@@ -36,17 +36,17 @@ Azure IoT 中樞是 REST API 型的雲端服務，目標是企業客戶，它能
 
 租用戶系統管理員可以利用 Azure 入口網站中，Azure IoT 中樞擴充功能的 IoT 裝置刀鋒視窗來刪除裝置，這樣會刪除與該裝置相關聯的資料。
 
-也可以使用 REST API 執行裝置的刪除作業。 如需詳細資訊，請參閱[服務 - 刪除裝置](/rest/api/iothub/service/deletedevice)。
+也可以使用 REST API 執行裝置的刪除作業。 如需詳細資訊，請參閱[服務 - 刪除裝置](/rest/api/iothub/service/registrymanager/deletedevice)。
 
 ## <a name="exporting-customer-data"></a>匯出客戶資料
 
-租使用者系統管理員可以在 Azure 入口網站中 Azure IoT 中樞延伸模組的 [IoT 裝置] 窗格內，使用複製並貼上，以匯出與裝置相關聯的資料。
+租戶管理員可以利用 Azure 門戶中 Azure IoT 中心副檔名的 IoT 設備窗格中複製和粘貼來匯出與設備關聯的資料。
 
-也可以使用 REST API 執行裝置的匯出作業。 如需詳細資訊，請參閱[服務 - 取得裝置](/rest/api/iothub/service/getdevice)。
+也可以使用 REST API 執行裝置的匯出作業。 如需詳細資訊，請參閱[服務 - 取得裝置](/rest/api/iothub/service/registrymanager/getdevice)。
 
 > [!NOTE]
 > 當您使用 Microsoft 的企業服務時，Microsoft 會產生一些資訊，稱為系統所產生的記錄。 租用戶系統管理員無法存取或匯出部分 Azure IoT 中樞系統所產生的記錄。 這些記錄可視為在與個人裝置相關的服務和診斷資料中，所進行的實際動作。
 
 ## <a name="links-to-additional-documentation"></a>其他文件的連結
 
-Azure IoT 中樞服務 API 的完整文件可於 [IoT 中樞服務 API](https://docs.microsoft.com/rest/api/iothub/service) 中找到。
+Azure IoT 中樞服務 API 的完整文件可於 [IoT 中樞服務 API](https://docs.microsoft.com/rest/api/iothub/service/configuration) 中找到。

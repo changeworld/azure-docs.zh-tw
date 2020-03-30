@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中選取 Windows VM 映射
+title: 在 Azure 中選擇 Windows VM 映射
 description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者、供應項目、SKU 及版本。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266802"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像
@@ -121,7 +121,7 @@ advantys
 ...
 ```
 
-針對 MicrosoftWindowsServer 發佈者：
+針對 MicrosoftWindowsServer** 發佈者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -138,7 +138,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-針對 WindowsServer 供應項目：
+針對 WindowsServer** 供應項目：
 
 ```powershell
 $offerName="WindowsServer"
@@ -176,7 +176,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-現在您可以將選取的發行者、供應項目、SKU 和版本結合為 URN (以 : 分隔的值)。 當您使用 `--image`New-AzVM[ \(英文\) Cmdlet 建立 VM 時，請傳遞此 URN 與 ](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 參數。 您可以視需要以 "latest" 取代 URN 中的版本號碼，以取得最新版的映像。
+現在您可以將選取的發行者、供應項目、SKU 和版本結合為 URN (以 : 分隔的值)。 當您使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) \(英文\) Cmdlet 建立 VM 時，請傳遞此 URN 與 `--image` 參數。 您可以視需要以 "latest" 取代 URN 中的版本號碼，以取得最新版的映像。
 
 如果您使用 Resource Manager 範本來部署 VM，則需在 `imageReference` 屬性中個別設定映像參數。 請參閱[範本參考](/azure/templates/microsoft.compute/virtualmachines)。
 
@@ -212,7 +212,7 @@ DataDiskImages   : []
 
 ```
 
-以下範例針對「資料科學虛擬機器 - Windows 2016」映像顯示類似的命令，其中包含下列 `PurchasePlan` 屬性：`name`、`product` 及 `publisher`。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
+下面的示例顯示了*資料科學虛擬機器 - Windows 2016*`PurchasePlan`映射的類似命令，該映射具有以下屬性： `name`、`product`和`publisher`。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -325,6 +325,6 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 
 
-請參閱 PowerShell 指令碼範例來[建立完整設定的虛擬機器](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
+請參閱 PowerShell 腳本示例以創建[完全配置的虛擬機器](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
 
 

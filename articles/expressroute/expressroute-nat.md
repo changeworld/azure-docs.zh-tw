@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：線路的 NAT 需求
+title: Azure 快速路由：電路的 NAT 要求
 description: 此頁面提供為 ExpressRoute 線路設定和管理 NAT 的詳細需求。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272964"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 需求
@@ -20,7 +20,7 @@ ms.locfileid: "79272964"
 如需不同路由網域的概觀，請檢閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md) 頁面。 為了符合 Azure 公用和 Microsoft 對等的公用 IP 位址需求，建議在您的網路與 Microsoft 之間設定 NAT。 本節提供您需要設定的 NAT 基礎結構的詳細描述。
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 對等的 NAT 需求
-Microsoft 對等路徑可讓您連接到不支援透過 Azure 公用對等路徑存取的 Microsoft 雲端服務。 服務清單包括 Office 365 服務，例如 Exchange Online、SharePoint Online 和商務用 Skype。 Microsoft 預計在 Microsoft 對等上支援雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 從 Microsoft 雲端服務送到您的網路的流量，必須在網際網路邊緣經過 SNAT 轉譯，才可防止[非對稱式路由](expressroute-asymmetric-routing.md)。 下圖提供如何為 Microsoft 對等設定 NAT 的高階圖片。
+Microsoft 對等路徑可讓您連接到不支援透過 Azure 公用對等路徑存取的 Microsoft 雲端服務。 服務清單包括 Office 365 服務，如線上交換、共用點線上和 Skype 業務服務。 Microsoft 預計在 Microsoft 對等上支援雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 從 Microsoft 雲端服務送到您的網路的流量，必須在網際網路邊緣經過 SNAT 轉譯，才可防止[非對稱式路由](expressroute-asymmetric-routing.md)。 下圖提供如何為 Microsoft 對等設定 NAT 的高階圖片。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -70,7 +70,7 @@ Azure 公用對等路徑可讓您連接到裝載於 Azure 中的所有服務的�
 * 如需工作流程資訊，請參閱 [ExpressRoute 線路佈建工作流程和線路狀態](expressroute-workflows.md)。
 * 設定 ExpressRoute 連線。
   
-  * [建立 ExpressRoute 線路](expressroute-howto-circuit-portal-resource-manager.md)
+  * [創建快速路由電路](expressroute-howto-circuit-portal-resource-manager.md)
   * [設定路由](expressroute-howto-routing-portal-resource-manager.md)
   * [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)
 

@@ -1,14 +1,14 @@
 ---
-title: 在 Linux 上設定應用程式的憑證
+title: 為 Linux 上的應用程式佈建證書
 description: 在 Linux 叢集上為您的應用程式設定用於 Service Fabric 執行階段的憑證
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282571"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 叢集上的憑證和安全性
@@ -17,7 +17,7 @@ ms.locfileid: "79282571"
 
 ## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Linux 節點上 X.509 憑證的位置與格式
 
-對於 Service Fabric，X.509 憑證通常會出現在 Linux 叢集節點上的 */var/lib/sfcerts* 目錄中。 這適用于叢集憑證、用戶端憑證等。在某些情況下，您可以為憑證指定*var/lib/sfcerts*資料夾以外的位置。 例如，針對使用 Service Fabric Java SDK 的 Reliable Services，您可以透過某些應用程式專用憑證的組態套件 (Settings.xml) 指定不同的位置。 若要深入了解，請參閱[組態套件 (Settings.xml) 中參考的憑證](#certificates-referenced-in-the-configuration-package-settingsxml)。
+對於 Service Fabric，X.509 憑證通常會出現在 Linux 叢集節點上的 */var/lib/sfcerts* 目錄中。 群集證書、用戶端憑證等也是如此。在某些情況下，您可以為證書指定*var/lib/sfcerts*資料夾以外的位置。 例如，針對使用 Service Fabric Java SDK 的 Reliable Services，您可以透過某些應用程式專用憑證的組態套件 (Settings.xml) 指定不同的位置。 若要深入了解，請參閱[組態套件 (Settings.xml) 中參考的憑證](#certificates-referenced-in-the-configuration-package-settingsxml)。
 
 針對 Linux 叢集，Service Fabric 的憑證通常會以包含憑證和私密金鑰的 .pem 檔案形式提供，或以包含憑證的 .crt 檔案和包含私密金鑰的 .key 檔案個別提供。 所有檔案均應為 PEM 格式。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "79282571"
 
 ### <a name="using-x509-securitycredentialstype"></a>使用 X509 SecurityCredentialsType
 
-透過 .NET 或 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509**。 此類型對應於 `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) 的 `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 類型。
+透過 .NET 或 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509**。 這`X509Credentials`對應于`SecurityCredentials`（[.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[JAVA](https://docs.microsoft.com/java/api/system.fabric.x509credentials)） 的類型 （[.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[JAVA](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)）。
 
 **X509** 參考可將憑證定位於憑證存放區中。 下列 XML 顯示用來指定憑證位置的參數：
 
@@ -43,7 +43,7 @@ ms.locfileid: "79282571"
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-對於在 Linux 上執行的服務，**LocalMachine**/**My** 會指向憑證的預設位置，即 */var/lib/sfcerts* 目錄。 對於 Linux，**CertificateStoreLocation** 和 **CertificateStoreName** 的任何其他組合皆不會定義。 
+對於在 Linux 上運行的服務，**本地電腦**/**"我的**"指向證書的預設位置 */var/lib/sfcerts*目錄。 對於 Linux，**CertificateStoreLocation** 和 **CertificateStoreName** 的任何其他組合皆不會定義。 
 
 請一律將 **CertificateStoreLocation** 參數指定為 **LocalMachine**。 您不需要指定 **CertificateStoreName** 參數，因為該參數預設為 "My"。 使用 **X509** 參考時，憑證檔案必須位於叢集節點的 */var/lib/sfcerts* 目錄中。  
 
@@ -64,7 +64,7 @@ ms.locfileid: "79282571"
 
 ### <a name="using-x509_2-securitycredentialstype"></a>使用 X509_2 SecurityCredentialsType
 
-透過 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509_2**。 此類型對應於 `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) 的 `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 類型。 
+透過 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509_2**。 此類型對應於 `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 的 `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) 類型。 
 
 使用 **X509_2** 參考時，您會指定路徑參數，因此可將憑證定位於 */var/lib/sfcerts* 以外的目錄中。  下列 XML 顯示用來指定憑證位置的參數： 
 
@@ -73,7 +73,7 @@ ms.locfileid: "79282571"
      <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
 ```
 
-下列 XML 將根據此形式顯示 **TransportSettings** 區段。
+以下 XML 顯示了基於此樣式**的傳輸設置**部分。
 
 ```xml
 <!--Section name should always end with "TransportSettings".-->
@@ -94,7 +94,7 @@ ms.locfileid: "79282571"
 
 Service Fabric SDK 可讓您與 Service Fabric 執行階段 API 通訊以使用平台。 當您在安全 Linux 叢集上執行任何使用此功能的應用程式時，都必須設定應用程式，使其具有可用來對 Service Fabric 執行階段進行驗證的憑證。 應用程式若包含使用 .NET Core 或 Java SDK 撰寫的 Service Fabric Reliable Service 服務，則必須進行此設定。 
 
-若要設定應用程式，請在 [憑證][**標記下新增**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element)SecretsCertificate 元素；該標記位於 **ApplicationManifest.xml** 檔案中的 *ApplicationManifest* 標記下方。 下列 XML 顯示依憑證的指紋參考的憑證： 
+若要設定應用程式，請在 [憑證]**** 標記下新增 [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 元素；該標記位於 *ApplicationManifest.xml* 檔案中的 **ApplicationManifest** 標記下方。 下列 XML 顯示依憑證的指紋參考的憑證： 
 
 ```xml
    <Certificates>

@@ -1,43 +1,42 @@
 ---
-title: Azure Marketplace 的 Cloud Partner 入口網站中的 [虛擬機器 Marketplace] 索引標籤
+title: Azure 應用商店雲合作夥伴門戶中的虛擬機器應用商店選項卡
 description: 說明用來建立 Microsoft Azure Marketplace 虛擬機器供應項目的 Marketplace 索引標籤。
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: dsindona
+ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277716"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虛擬機器 Marketplace 索引標籤
 
-在 [新增供應項目] 頁面的 [Marketplace] 索引標籤上，可提供行銷、銷售和法律方面的資訊與合約給您的潛在客戶，並管理 Marketplace 產生的潛在客戶。 這個長表單分成四個區段：**概觀**、**行銷成品**、**潛在客戶管理**和**法律聲明**。
+在 [新增供應項目]**** 頁面的 [Marketplace]**** 索引標籤上，可提供行銷、銷售和法律方面的資訊與合約給您的潛在客戶，並管理 Marketplace 產生的潛在客戶。 這個長表單分成四個區段：**概觀**、**行銷成品**、**潛在客戶管理**和**法律聲明**。
 
 
 ## <a name="overview-section"></a>概觀區段
 在本區段中，可以輸入 Azure Marketplace Offer 的一般資訊。  欄位名稱上附加星號 (*) 表示為必填欄位。
 
-![虛擬機器的 [Marketplace] 索引標籤的 [總覽] 區段](./media/publishvm_008.png)
+![虛擬機器的應用商店選項卡的概述部分](./media/publishvm_008.png)
 
 下表說明這些欄位的用途和內容。 必要欄位由星號 (*) 標示。
 
-|  **欄位**                |     **說明**                                                          |
+|  **領域**                |     **描述**                                                          |
 |  ---------                |     ---------------                                                          |
 | **標題\***                 | 供應項目的標題，通常是較長的正式名稱。 這個標題會醒目顯示在 Marketplace 中。  長度上限為 50 個字元。 |
-| **摘要\***               | 解決方案功能的簡短用途。  長度上限是 100 個字元。 |
+| **總結\***               | 解決方案功能的簡短用途。  長度上限是 100 個字元。 |
 | **長摘要\***          | 解決方案功能的用途。  長度上限為 256 個字元。 |
-| **說明\***           | 解決方案說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。 |
-| **Microsoft CSP 轉銷商頻道\*** | 雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。  如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](../../cloud-solution-providers.md)。 |
+| **描述\***           | 解決方案說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。 |
+| **微軟CSP轉銷商管道\*** | 雲解決方案供應商 （CSP） 合作夥伴管道加入宣告現已可用。  有關通過 Microsoft CSP 合作夥伴管道行銷產品/服務的更多資訊[，請參閱雲解決方案供應商](../../cloud-solution-providers.md)。 |
 | **行銷識別碼\***  | 與本供應項目相關聯的唯一不重複網址，通常會包含您的組織與解決方案名稱，長度上限是 50 個字元。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **預覽訂用帳戶識別碼\*** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
+| **預覽訂閱代碼\*** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
 | **實用連結**          | 新增文件、版本資訊、常見問題等等的 URL。 |
-| **建議的類別\*** | 最多可選取兩個（2）類別，包括主要和次要類別（選擇性）。 針對每個主要和/或次要類別目錄選取最多兩個（2）子類別。 如果未選取任何子類別，您仍然可以在選取的類別上找到您的供應專案。 |
+| **建議類別\*** | 最多選擇兩 （2） 個類別，包括主類別和輔助類別（可選）。 為每個主類別和/或輔助類別最多選擇兩 （2） 個子類別。 如果未選擇子類別，則僅在所選類別上仍可發現您提供的產品。 |
 |  |  |
 
 
@@ -49,19 +48,19 @@ ms.locfileid: "75762887"
 
 下表說明這些欄位的用途和內容。 必要欄位由星號 (*) 標示。
 
-|  **欄位**                |     **說明**                                                          |
+|  **領域**                |     **描述**                                                          |
 |  ---------                |     ---------------                                                          |
 | *標誌*  |  |
 | **小型\***                 | 40x40 像素 .ico 點陣圖                                                      |
 | **中型\***                | 90x90 像素 .ico 點陣圖                                                      |
-| **大型\***                 | 115x115 像素 .ico 點陣圖                                                   |
+| **大\***                 | 115x115 像素 .ico 點陣圖                                                   |
 | **寬\***                  | 255x115 像素 .ico 點陣圖                                                    |
 | **主圖**                  | 815 x 290 點陣圖。  (選擇性) 主圖圖示一旦上傳，即無法刪除。 |
 | *螢幕擷取畫面*  | (選擇性) 每個 SKU 的螢幕擷取畫面上限為五個。 |
-| **名稱**                  | 名稱或標題 <!-- TODO - max char length? none specified in UI -->                               |
-| **映像**                 | 螢幕擷取映像，533x324 像素                                         |
+| **名稱**                  | 名稱或標題  <!-- TODO - max char length? none specified in UI -->                               |
+| **影像**                 | 螢幕擷取映像，533x324 像素                                         |
 | *影片*  |  |
-| **名稱**                  | 名稱或標題  <!-- TODO - max char length? -->                              |
+| **名稱**                  | 名稱或標題   <!-- TODO - max char length? -->                              |
 | **連結**                  | 裝載於 YouTube 或 Vimeo 的影片 URL                                        |
 | **縮圖**             | 533x324 點陣圖                                                               |
 |   |   |
@@ -117,13 +116,13 @@ Cloud Partner 入口網站中所上傳的所有標誌都應該遵循指導方針
 
 ## <a name="legal-section"></a>法律聲明區段
 
-最後一個區段可讓您提供每個供應專案所需的必要法律檔。  
+最後一部分使您能夠提供每個報價所需的法律檔。  
 
-|  **欄位**                    |     **說明**                                        |
+|  **領域**                    |     **描述**                                        |
 |  ---------                    |     ---------------                                        |
 | **隱私權原則 URL\***      | 張貼隱私權原則的 URL                          |
-| **使用標準合約嗎？\***  |   |
-| **使用規定\***            | 純文字或簡單 HTML 原則。                       |
+| **使用標準合同？\***  |   |
+| **使用條款\***            | 純文字或簡單 HTML 原則。                       |
 |  |  |
 
 

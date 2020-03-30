@@ -1,13 +1,13 @@
 ---
-title: Web 應用程式效能監視-Azure 應用程式深入資訊
+title: Web 應用效能監控 - Azure 應用程式見解
 description: Application Insights 如何融入 DevOps 循環
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669687"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
@@ -124,7 +124,7 @@ Web 系統中的失敗通常是由組態問題或其許多元件之間的互動�
 * 針對特定使用者追蹤工作階段與回應時間，讓支援和營運團隊能夠提供即時客戶支援。
 * 判斷常用的應用程式功能來回答應優先考慮的功能問題。
 
-客戶 DNN 說：「Application Insights 為我們提供了方程式中遺漏的部分，以便我們能夠視需要結合、排序、查詢及篩選資料。 讓我們的團隊可以使用他們自己的創意和體驗，利用功能強大的查詢語言來尋找資料，讓我們能夠得到相關見解，並解決我們甚至不曾知道我們發生的問題。 許多有趣的答案都是來自開頭為『我想知道如果...』的問題。」
+客戶 DNN 說：「Application Insights 為我們提供了方程式中遺漏的部分，以便我們能夠視需要結合、排序、查詢及篩選資料。 讓我們的團隊可以使用他們自己的創意和體驗，利用功能強大的查詢語言來尋找資料，讓我們能夠得到相關見解，並解決我們甚至不曾知道我們發生的問題。 許多有趣的答案都是來自開頭為『我想知道如果...』** 的問題。」
 
 ## <a name="development-tools-integration"></a>開發工具整合
 ### <a name="configuring-application-insights"></a>設定 Application Insights
@@ -150,14 +150,14 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 * [價格](../../azure-monitor/app/pricing.md) - 您可以開始免費使用，當您處於低用量期間可繼續使用。
 
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>後續步驟
 開始使用 Application Insights 很簡單。 主要選項包括：
 
-* [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，也適用于[Azure App Service](../../azure-monitor/app/app-insights-overview.md)。
+* [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，以及[Azure 應用服務](../../azure-monitor/app/app-insights-overview.md)。
 * 在開發期間檢測您的專案。 您可以針對 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 應用程式，以及 [Node.js](../../azure-monitor/app/nodejs.md) 和許多[其他類型](../../azure-monitor/app/platforms.md)執行此動作。 
 * 藉由新增簡短的程式碼片段來檢測 [任何網頁](../../azure-monitor/app/javascript.md) 。
 

@@ -7,10 +7,10 @@ ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275837"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中記錄型和預先彙總的計量
@@ -19,7 +19,7 @@ ms.locfileid: "79275837"
 
 ## <a name="log-based-metrics"></a>記錄型計量
 
-到目前為止，Application Insights 中的應用程式監視遙測資料模型僅以少數預先定義的事件種類為基礎，例如要求、例外狀況、相依性呼叫、頁面流覽數等等。開發人員可以使用 SDK 來手動發出這些事件（藉由撰寫明確叫用 SDK 的程式碼），或者可以依賴自動檢測的自動收集事件。 在任一情況下，Application Insights 後端會將所有收集的事件儲存為記錄，而 Azure 入口網站中的 Application Insights 刀鋒視窗會作為分析與診斷工具，以視覺化方式呈現記錄中以事件為基礎的資料。
+直到最近，應用程式監視應用程式見解中的遙測資料模型僅基於少量預定義的事件種類，如請求、異常、依賴項調用、網頁檢視等。開發人員可以使用 SDK 手動發出這些事件（通過編寫顯式調用 SDK 的代碼），也可以依賴自動檢測事件自動集合。 在任一情況下，Application Insights 後端會將所有收集的事件儲存為記錄，而 Azure 入口網站中的 Application Insights 刀鋒視窗會作為分析與診斷工具，以視覺化方式呈現記錄中以事件為基礎的資料。
 
 使用記錄來保留一組完整的事件，可以帶來絕佳的分析與診斷價值。 例如，您可以取得特定 URL 的確切要求計數，以及進行這些呼叫的不同使用者數目。 您也可以取得詳細的診斷追蹤，包括任何使用者工作階段的例外狀況和相依性呼叫。 擁有此類型的資訊可大幅改善應用程式健康狀態和使用量的可見性，進而縮短診斷應用程式問題所需的時間。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "79275837"
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>建立圖表並探索記錄型和標準預先彙總的計量
 
-使用[Azure 監視器計量瀏覽器](../platform/metrics-getting-started.md)，從預先匯總和以記錄為基礎的計量繪製圖表，並以圖表撰寫儀表板。 選取所需的 Application Insights 資源之後，使用命名空間選擇器在標準 (預覽) 與記錄型計量之間切換，或選取自訂計量命名空間：
+使用[Azure 監視器指標資源管理器](../platform/metrics-getting-started.md)從預聚合和基於日誌的指標繪製圖表，並使用圖表創作儀表板。 選取所需的 Application Insights 資源之後，使用命名空間選擇器在標準 (預覽) 與記錄型計量之間切換，或選取自訂計量命名空間：
 
 ![計量命名空間](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

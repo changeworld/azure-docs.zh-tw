@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77179103"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335059"
 ---
-| 資源 | 預設限制 |
+| 資源 | 限制 |
 | --- | :--- |
-| 每個訂用帳戶的群集上限 | 100 |
-| 具有虛擬機器可用性設定組和基本 Load Balancer SKU 之每個叢集的節點數目上限  | 100 |
-| 每個叢集的節點數目上限，虛擬機器擴展集和[STANDARD LOAD BALANCER SKU][standard-load-balancer] | 1000（每個[節點集][node-pool]區100個節點） |
-| 每個節點的最大 pod 數：使用 Kubenet 的[基本網路][basic-networking]功能 | 110 |
-| 每個節點的最大 pod 數：使用 Azure 容器網路介面的[Advanced 網路][advanced-networking] | Azure CLI 部署：30<sup>1</sup><br />Azure Resource Manager 範本： 30<sup>1</sup><br />入口網站部署：30 |
+| 每個訂閱的最大群集數 | 100 |
+| 具有虛擬機器可用性集和基本負載等化器 SKU 的每個群集的最大節點  | 100 |
+| 具有虛擬機器縮放集和[標準負載等化器 SKU][standard-load-balancer]的每個群集的最大節點 | 1000 （每個節點池 100[個節點][node-pool]） |
+| 每個節點的最大窗格：與 Kubenet[的基本網路][basic-networking] | 110 |
+| 每個節點的最大窗格：使用 Azure 容器[網路介面的高級網路][advanced-networking] | Azure CLI 部署：30<sup>1</sup><br />Azure 資源管理器範本： 30<sup>1</sup><br />入口網站部署：30 |
 
-<sup>1</sup>當您使用 Azure CLI 或 Resource Manager 範本部署 Azure Kubernetes Service （AKS）叢集時，此值最多可設定為每個節點250個 pod。 您無法在已部署 AKS 叢集之後，或使用 Azure 入口網站部署叢集時，設定每個節點的最大 pod 數。<br />
+<sup>1</sup>使用 Azure CLI 或資源管理器範本部署 Azure 庫伯奈斯服務 （AKS） 群集時，此值每個節點最多可配置 250 個 pod。 在部署 AKS 群集後，或者如果您使用 Azure 門戶部署群集，則無法配置每個節點的最大窗格。<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

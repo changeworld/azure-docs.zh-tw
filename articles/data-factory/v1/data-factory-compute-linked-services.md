@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281544"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
@@ -29,15 +29,15 @@ ms.locfileid: "79281544"
 | 計算環境                      | 活動                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [隨選 Azure HDInsight 叢集](#azure-hdinsight-on-demand-linked-service)或[您自己的 HDInsight 叢集](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 串流](data-factory-hadoop-streaming-activity.md) |
-| [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning 活動︰批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |
-| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
+| [Azure Batch](#azure-batch-linked-service) | [點網](data-factory-use-custom-activities.md) |
+| [Azure 機器學習](#azure-machine-learning-linked-service) | [Machine Learning 活動︰批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure 資料湖分析](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service)、[Azure SQL 資料倉儲](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [預存程序活動](data-factory-stored-proc-activity.md) |
 
-## <a name="supported-hdinsight-versions-in-azure-data-factory"></a>Data Factory 中支援的 HDInsight 版本
+## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>Data Factory 中支援的 HDInsight 版本
 Azure HDInsight 支援多個可供您隨時部署的 Hadoop 叢集版本。 每一個支援版本都會建立特定版本的 Hortonworks Data Platform (HDP) 散發套件，以及該散發套件的一組元件。 
 
-Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDInsight 支援版本清單。 如需詳細資訊，請參閱[支援的 HDInsight 版本](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)。
+Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDInsight 支援版本清單。 有關詳細資訊，請參閱支援的[HDInsight 版本](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
 > [!IMPORTANT]
 > 以 Linux 為基礎的 HDInsight 3.3 版已於 2017 年 7 月 31 日淘汰。 我們已讓 Data Factory 第 1 版隨選 HDInsight 連結服務客戶在 2017 年 12 月 15 日之前測試並升級到較新版的 HDInsight。 以 Windows 為基礎的 HDInsight 則將於 2018 年 7 月 31 日淘汰。
@@ -81,10 +81,10 @@ Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDIn
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 隨選連結服務
 Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選 HDInsight 叢集來處理資料。 叢集建立所在的區域，就是與叢集相關聯之儲存體帳戶所在的區域。 請使用 JSON **linkedServiceName** 屬性來建立叢集。
 
-請注意下列有關隨選 HDInsight 連結服務的重點：
+請注意下列有關隨選 HDInsight 連結服務的重點**：
 
 * Azure 訂用帳戶中不會出現隨選 HDInsight 叢集。 Data Factory 服務會代您管理隨選 HDInsight 叢集。
-* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料] 窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
+* 系統會將隨選 HDInsight 叢集上所執行之作業的記錄，複製到與 HDInsight 叢集相關聯的儲存體帳戶。 若要存取這些記錄，請在 Azure 入口網站中移至 [活動執行詳細資料]**** 窗格。 如需詳細資訊，請參閱[監視與管理管線](data-factory-monitor-manage-pipelines.md)。
 * 您只需要就 HDInsight 叢集啟動並執行作業的時間來付費。
 
 > [!IMPORTANT]
@@ -112,7 +112,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 > [!IMPORTANT]
-> HDInsight 叢集會在您於 JSON *linkedServiceName* 屬性中指定的 Azure Blob 儲存體內建立「預設容器」。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
+> HDInsight 叢集會在您於 JSON **linkedServiceName** 屬性中指定的 Azure Blob 儲存體內建立「預設容器」**。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
 >
 > 隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<your Data Factory name>-<linked service name>-<date and time>`。 您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com/) 之類的工具來刪除 Blob 儲存體中的容器。
 >
@@ -123,11 +123,11 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 將 type 屬性設定為 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 叢集中背景工作角色和資料節點的數目。 除了您為此屬性指定的背景工作節點數目外，所建立的 HDInsight 叢集還會有 2 個前端節點。 節點的大小為 Standard_D3，具有 4 個核心。 4 個背景工作節點的叢集會使用 24 個核心 (4\*4 = 16 個核心用於背景工作節點，加上 2\*4 = 8 個核心用於前端節點)。 如需 Standard_D3 層的詳細資料，請參閱[在 HDInsight 中建立以 Linux 為基礎的 Hadoop 叢集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
-| timeToLive                   | 隨選 HDInsight 叢集允許的閒置時間。 指定當活動執行完成時，如果叢集中沒有其他作用中的作業，隨選 HDInsight 叢集要保持運作多久。<br /><br />例如，如果活動執行花費 6 分鐘，而 **timeToLive** 設為 5 分鐘，叢集會在花費 6 分鐘處理活動執行之後保持運作 5 分鐘。 如果 6 分鐘期間內有另一個活動執行需要執行，則會由同一個叢集來處理。<br /><br />建立隨選 HDInsight 叢集的作業成本很高 (因為可能需要一些時間)。 請視需要使用此設定，藉由重複使用隨選 HDInsight 叢集來提升資料處理站的效能。<br /><br />如果您將 **timeToLive** 值設定為 **0**，則系統會在活動執行完成後立即刪除叢集。 不過，如果您設定較高的值，叢集可能會有不必要的閒置而導致成本提高。 請務必根據您的需要設定適當的值。<br /><br />如果 **timeToLive** 值有適當設定，多個管線便可以共用隨選 HDInsight 叢集的執行個體。 | 是      |
+| timeToLive                   | 隨選 HDInsight 叢集允許的閒置時間。 指定當活動執行完成時，如果叢集中沒有其他作用中的作業，隨選 HDInsight 叢集要保持運作多久。<br /><br />例如，如果活動運行需要 6 分鐘，並且**TimeToLive**設置為 5 分鐘，則群集在處理活動運行 6 分鐘後保持活動狀態 5 分鐘。 如果 6 分鐘期間內有另一個活動執行需要執行，則會由同一個叢集來處理。<br /><br />建立隨選 HDInsight 叢集的作業成本很高 (因為可能需要一些時間)。 請視需要使用此設定，藉由重複使用隨選 HDInsight 叢集來提升資料處理站的效能。<br /><br />如果您將 **timeToLive** 值設定為 **0**，則系統會在活動執行完成後立即刪除叢集。 不過，如果您設定較高的值，叢集可能會有不必要的閒置而導致成本提高。 請務必根據您的需要設定適當的值。<br /><br />如果 **timeToLive** 值有適當設定，多個管線便可以共用隨選 HDInsight 叢集的執行個體。 | 是      |
 | version                      | HDInsight 叢集的版本。 如需允許的 HDInsight 版本，請參閱[支援的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，則會使用[最新的 HDI 預設版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
 | linkedServiceName            | 隨選叢集用於儲存及處理資料的 Azure 儲存體連結服務。 HDInsight 叢集會和這個儲存體帳戶建立在相同的區域。<p>您目前無法建立以 Azure Data Lake Store 作為儲存體的隨選 HDInsight 叢集。 如果您想要在 Data Lake Store 中儲存 HDInsight 處理的結果資料，請使用複製活動將 Blob 儲存體的資料複製到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 指定 HDInsight 連結服務的其他儲存體帳戶。 Data Factory 會代您註冊儲存體帳戶。 這些儲存體帳戶必須和 HDInsight 叢集位於同一個區域。 HDInsight 叢集建立所在的區域，和 **linkedServiceName** 屬性所指定之儲存體帳戶所在的區域相同。 | 否       |
-| osType                       | 作業系統的類型。 允許的值為 **Linux** 和 **Windows**。 如果未指定此值，則會使用 **Linux**。  <br /><br />強烈建議您使用以 Linux 為基礎的 HDInsight 叢集。 Windows 上 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
+| osType                       | 作業系統的類型。 允許的值是**Linux**和**Windows**。 如果未指定此值，則會使用 **Linux**。  <br /><br />強烈建議您使用以 Linux 為基礎的 HDInsight 叢集。 Windows 上 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 資料庫的 Azure SQL 連結服務名稱。 系統會以 SQL 資料庫作為中繼存放區來建立隨選 HDInsight 叢集。 | 否       |
 
 #### <a name="example-linkedservicenames-json"></a>範例：LinkedServiceNames JSON
@@ -197,9 +197,9 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | 設定前端節點的大小。 預設值為 **Standard_D3**。 如需詳細資料，請參閱[指定節點大小](#specify-node-sizes)。 | 否       |
-| dataNodeSize      | 設定資料節點的大小。 預設值為 **Standard_D3**。 | 否       |
-| zookeeperNodeSize | 設定 ZooKeeper 節點的大小。 預設值為 **Standard_D3**。 | 否       |
+| headNodeSize      | 設定前端節點的大小。 預設值為**Standard_D3**。 如需詳細資料，請參閱[指定節點大小](#specify-node-sizes)。 | 否       |
+| dataNodeSize      | 設定資料節點的大小。 預設值為**Standard_D3**。 | 否       |
+| zookeeperNodeSize | 設定 ZooKeeper 節點的大小。 預設值為**Standard_D3**。 | 否       |
 
 #### <a name="specify-node-sizes"></a>指定節點大小
 如需必須為上一節所述屬性指定的字串值，請參閱[虛擬機器大小](../../virtual-machines/linux/sizes.md)。 這些值必須符合[虛擬機器大小](../../virtual-machines/linux/sizes.md)中所指出的 Cmdlet 和 API。 大型 (預設) 資料節點大小有 7 GB 記憶體。 這可能不足以供您的案例使用。 
@@ -289,7 +289,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 }
 ```
 
-至於 **accountName** 屬性，請於批次帳戶名稱後面附加 **.\<區域名稱\>** 。 例如：
+至於 **accountName** 屬性，請於批次帳戶名稱後面附加 **.\<區域名稱\>**。 例如：
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -390,7 +390,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
-| 授權 | 在 Data Factory 編輯器中，選取 [授權] 按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
+| 授權 | 在 Data Factory 編輯器中，選取 [授權]**** 按鈕。 輸入會將自動產生的授權 URL 指派給這個屬性的認證。 | 是      |
 | sessionID     | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用 Data Factory 編輯器時便會自動產生此設定。 | 是      |
 
 **範例：使用者認證授權**
@@ -412,7 +412,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 ```
 
 #### <a name="token-expiration"></a>權杖到期
-您選取 [授權] 按鈕所產生的授權碼會在一定時間後到期。 
+您選取 [授權]**** 按鈕所產生的授權碼會在一定時間後到期。 
 
 當驗證權杖到期時，您可能會看見下列錯誤訊息： 
 
@@ -422,10 +422,10 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 | 使用者類型                                | 到期時間                            |
 | :--------------------------------------- | :--------------------------------------- |
-| 「不受」Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
-| 「受」Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
+| 「不受」** Azure AD 管理的使用者帳戶 (Hotmail、Live 等等) | 12 小時。                                 |
+| 「受」** Azure AD 管理的使用者帳戶 | 最後一次執行配量後的 14 天。 <br /><br />如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
 
-若要避免或解決此錯誤，請在權杖到期時選取 [授權] 按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId 和 authorization 屬性的值：
+若要避免或解決此錯誤，請在權杖到期時選取 [授權]**** 按鈕來重新授權。 然後，重新部署連結服務。 您也可以使用下列程式碼，以程式設計方式產生 sessionId **** 和 authorization**** 屬性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

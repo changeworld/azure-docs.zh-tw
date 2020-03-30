@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297715"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列軟體、高可用性和網路需求
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -81,7 +81,7 @@ ms.locfileid: "79267660"
 <sup>3</sup> StorSimple 裝置上的控制器固定 IP 必須可路由傳送，且能夠直接連線到網際網路或透過設定的 Web Proxy。 固定 IP 位址用來為裝置更新提供服務和記憶體回收。 如果裝置控制器無法透過固定 IP 連線到網際網路，您將無法更新 StorSimple 裝置，而且記憶體回收將不會正常運作。
 
 > [!IMPORTANT]
-> 請確定防火牆不會修改或解密 StorSimple 裝置和 Azure 之間的任何 SSL 流量。
+> 確保防火牆不會修改或解密 StorSimple 設備和 Azure 之間的任何 TLS 流量。
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火牆規則的 URL 模式
@@ -141,15 +141,15 @@ ms.locfileid: "79267660"
 
 * 雲端流量透過網路介面路由的順序為：
   
-    Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5
+    Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5**
   
     這也可以由下列範例來說明。
   
     請考慮具有兩個已啟用雲端網路介面 (Data 0 和 Data 5) 的 StorSimple 裝置。 Data 1 到 Data 4 已停用雲端，但是具有已設定的閘道器。 針對此裝置路由流量的順序為：
   
-    Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)
+    Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)**
   
-    以括號括住的數字表示個別的路由度量。
+    以括號括住的數字表示個別的路由度量。**
   
     如果 Data 0 失敗，雲端流量將會透過 Data 5 路由。 假設已在其他所有網路上設定閘道器，如果 Data 0 和 Data 5 失敗，則雲端流量會通過 Data 1。
 * 如果已啟用雲端網路介面失敗，則會重試 3 次 (有 30 秒的延遲) 以連線到介面。 如果所有重試失敗，會將流量路由至路由資料表決定的下一個可用已啟用雲端介面。 如果所有已啟用雲端網路介面失敗，則裝置將容錯移轉至另一個控制器 (在此案例中無需重新開機)。
@@ -223,7 +223,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * 如果 SSD 或 HDD 失敗或需要替代品，請確定您只移除了需要替代品的 SSD 或 HDD。
 * 請勿於任何時間從系統移除一個以上的 SSD 或 HDD。
   特定類型 (HDD、SSD) 的 2 個以上的磁碟失敗或在短時間範圍內的連續失敗可能會導致系統故障和潛在資料遺失。 如果發生這種情況，請 [連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md) 尋求協助。
-* 在更換期間，請在 [硬體健康狀態] 刀鋒視窗中的 [共用元件] 監視 SSD 和 HDD 中的磁碟機。 綠色核取狀態表示磁碟狀況良好或確定，而紅色驚嘆號點則表示失敗的 SSD 或 HDD。
+* 在更換期間，請在 [硬體健康狀態]**** 刀鋒視窗中的 [共用元件]**** 監視 SSD 和 HDD 中的磁碟機。 綠色核取狀態表示磁碟狀況良好或確定，而紅色驚嘆號點則表示失敗的 SSD 或 HDD。
 * 建議您設定所有需要保護之磁碟區的雲端快照集，以防系統失敗。
 
 #### <a name="ebod-enclosure"></a>EBOD 機箱
@@ -233,7 +233,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * 請隨時確定這兩個 EBOD 機箱控制器模組，兩條 SAS 纜線，以及所有硬碟都已安裝。
 * 如果 EBOD 機箱控制器模組故障，請立即要求替代品。
 * 如果一個 EBOD 機箱控制器模組失敗，請先確定另一個控制器模組處於主動狀態，才取代失敗的模組。 若要確認控制器為作用中，請移至 [識別您裝置上的作用中控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。
-* 在更換 EBOD 控制器模組期間，請存取 [監視] > [硬體健康狀態]，持續監視 StorSimple 裝置管理員服務中的元件狀態。
+* 在 EBOD 控制器模組更換期間，通過訪問**監視器** > **硬體運行狀況**，持續監視 StorSimple 裝置管理員服務中元件的狀態。
 * 如果 SAS 纜線失敗或需要替代品 (Microsoft 支援應涉入這類決定)，請確定您只移除了需要替代品的 SAS 纜線。
 * 請勿於任何時間同時從系統移除兩條 SAS 纜線。
 
@@ -241,7 +241,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 
 仔細檢閱這些最佳作法，以確保連接至 StorSimple 裝置之主機的高可用性。
 
-* 以[兩個節點的檔案伺服器][1]叢集設定來設定 StorSimple。 藉由移除失敗的單點，以及在主機端上建置備援，整個解決方案會變得高度可用。
+* 使用[二節點檔案伺服器叢集組態][1]設定 StorSimple。 藉由移除失敗的單點，以及在主機端上建置備援，整個解決方案會變得高度可用。
 * 使用 Windows Server 2012 (SMB 3.0) 持續可用的 (CA) 共用，以在儲存體控制器的容錯移轉期間獲得高可用性。 如需設定檔案伺服器叢集和 Windows Server 2012 持續可用的共用之其他資訊，請參閱此 [影片示範](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
 ## <a name="next-steps"></a>後續步驟

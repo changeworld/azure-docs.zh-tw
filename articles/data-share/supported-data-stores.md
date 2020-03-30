@@ -1,42 +1,42 @@
 ---
-title: Azure 資料共用中支援的資料存放區
-description: 瞭解支援使用 Azure 資料共用的資料存放區。
+title: Azure 資料共用中受支援的資料存儲
+description: 瞭解支援使用 Azure 資料共用的資料存儲。
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501800"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Azure 資料共用中支援的資料存放區
+# <a name="supported-data-stores-in-azure-data-share"></a>Azure 資料共用中受支援的資料存儲
 
-Azure 資料共用提供開放且彈性的資料共用，包括能夠從和到不同的資料存放區共用。 資料提供者可以共用一種資料存放區的資料，而且其資料取用者可以選擇要接收資料的資料存放區。 
+Azure 資料共用提供開放和靈活的資料共用，包括從不同資料存儲共用和共用的能力。 資料提供程式可以共用來自一種類型的資料存儲的資料，並且其資料消費者可以選擇接收資料到哪個資料存儲。 
 
-在本文中，您將瞭解 Azure 資料共用中支援的一組豐富 Azure 資料存放區。 您也可以找到資料提供者和資料取用者可利用的資料存放區組合的相關資訊。 
+在本文中，您將瞭解 Azure 資料共用中支援的豐富的 Azure 資料存儲集。 您還可以找到資料供應商和資料消費者可以利用的資料存儲組合的資訊。 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Azure 資料共用支援哪些資料存放區？ 
+## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Azure 資料共用中支援哪些資料存儲？ 
 
-下表詳細說明 Azure 資料共用支援的資料來源。 
+下表詳細介紹了 Azure 資料共用的支援資料來源。 
 
-| 資料存放區 | 以快照集為基礎的共用 | 就地共用 
+| 資料存放區 | 基於快照的共用 | 就地共用 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob 儲存體 |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Database |公開預覽 | |
-| Azure Synapse 分析（先前稱為 Azure SQL DW） |公開預覽 | |
+| Azure 突觸分析（以前的 Azure SQL DW） |公開預覽 | |
 | Azure 資料總管 | |公開預覽 |
 
-## <a name="data-store-support-matrix"></a>資料存放區支援矩陣
+## <a name="data-store-support-matrix"></a>資料存儲支援矩陣
 
-Azure 資料共用可在決定資料存放區以接受中的資料時，為數據取用者提供彈性。 例如，從 Azure SQL Database 共用的資料可以接收到 Azure Data Lake 存放區 Gen2、Azure SQL Database 或 Azure Synapse 分析。 客戶可以在設定接收的資料共用時，選擇要接收資料的格式。 
+Azure 資料共用在決定使用資料存儲以接受 中的資料時，為數據消費者提供了靈活性。 例如，可以從 Azure SQL 資料庫共用的資料可以接收到 Azure 資料存儲第 2 代、Azure SQL 資料庫或 Azure 突觸分析中。 客戶可以選擇在配置接收的資料共用時接收資料的格式。 
 
-下表詳細說明資料取用者在接受和設定其資料共用時所擁有的不同組合和選擇。 如需如何設定資料集對應的詳細資訊，請參閱[如何設定資料集](how-to-configure-mapping.md)對應。
+下表詳細介紹了資料消費者在接受和配置其資料共用時的不同組合和選擇。 有關如何配置資料集映射的詳細資訊，請參閱[如何配置資料集映射](how-to-configure-mapping.md)。
 
 |  | Azure Blob 儲存體 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -44,20 +44,26 @@ Azure 資料共用可在決定資料存放區以接受中的資料時，為數�
 | Azure Data Lake Storage Gen1 | ✓ | | ✓|
 | Azure Data Lake Storage Gen2 | ✓ | | ✓|
 | Azure SQL Database | ✓ | | ✓| ✓| ✓|
-| Azure Synapse 分析（先前稱為 Azure SQL DW） | ✓ | | ✓| ✓| ✓|
+| Azure 突觸分析（以前的 Azure SQL DW） | ✓ | | ✓| ✓| ✓|
 
-## <a name="share-from-a-storage-account"></a>從儲存體帳戶共用
-Azure 資料共用支援從 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當資料夾是以快照集為基礎的共用共用時，資料取用者可以選擇建立共用資料的完整複本，或利用增量快照集功能來只複製新的或更新的檔案。 將會覆寫具有相同名稱的現有檔案。
+## <a name="share-from-a-storage-account"></a>從存儲帳戶共用
+Azure 資料共用支援共用來自 Azure 資料湖第 1 代和 Azure 資料湖 Gen2 的檔、資料夾和檔案系統。 它還支援共用 Azure Blob 存儲中的 Blob、資料夾和容器。 當前僅支援塊 Blob。 當資料夾在基於快照的共用中共用時，資料消費者可以選擇創建共用資料的完整副本，或者利用增量快照功能僅複製新檔或更新的檔。 同名的現有檔將被覆蓋。
 
-## <a name="share-from-a-sql-based-source"></a>從以 SQL 為基礎的來源共用
-Azure 資料共用支援從 Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL DW）共用資料表或 views。 資料取用者可以選擇接受 Azure Data Lake Storage Gen2 或 Azure Blob 儲存體的資料，作為 csv 或 parquet 檔案。 完整快照集會覆寫目標檔案的內容。 或者，資料取用者可以接受資料到 SQL 資料表中。 如果目標 SQL 資料表無法在資料取用者端使用，Azure 資料共用會建立具有來源架構的 SQL 資料表。 完整快照集會將來源資料表的內容附加至目標 SQL 資料表。 目前不支援增量快照集。
+## <a name="share-from-a-sql-based-source"></a>從基於 SQL 的源共用
+Azure 資料共用支援共用來自 Azure SQL 資料庫和 Azure 突觸分析（以前的 Azure SQL DW）的表或視圖。 資料消費者可以選擇將資料作為 csv 或鑲木地板檔接受資料到 Azure 資料湖存儲 Gen2 或 Azure Blob 存儲中。 請注意，預設情況下，檔案格式為 csv。 如果需要，資料消費者可以選擇以鑲木地板格式接收資料。 這可以在接收資料時在資料集映射設置中完成。 
+
+當接受資料到 Azure 資料湖存儲 Gen2 或 Azure Blob 存儲時，完整快照將覆蓋目的檔案的內容。 
+
+資料消費者可以選擇將資料接收到自己選擇的表中。 在這種情況下，如果目標表不存在，Azure 資料共用將創建具有源架構的 SQL 表。 如果目標表已存在同名，則將刪除該表，並覆蓋最新的完整快照。 映射目標表時，可以指定替代架構和表名稱。 當前不支援增量快照。 
+
+從基於 SQL 的源共用具有與防火牆規則和許可權相關的先決條件。 有關詳細資訊，請參閱[共用資料](share-your-data.md)教程的先決條件部分。
 
 ## <a name="share-from-azure-data-explorer"></a>從 Azure 資料總管共用
-Azure 資料共用支援從 Azure 資料總管叢集就地共用資料庫的功能。 資料提供者可以在資料庫或叢集層級共用。 當在資料庫層級共用時，資料取用者將只能存取資料提供者所共用的特定資料庫。 在叢集層級共用時，資料取用者可以從提供者的叢集中存取所有資料庫，包括資料提供者所建立的任何未來資料庫。
+Azure 資料共用支援從 Azure 資料資源管理器群集就地共用資料庫的功能。 資料提供程式可以在資料庫或群集級別共用。 在資料庫級別共用時，資料消費者將只能訪問資料提供程式共用的特定資料庫。 在群集級別共用時，資料消費者可以從提供程式的群集訪問所有資料庫，包括資料提供程式創建的任何將來資料庫。
 
-若要存取共用資料庫，資料取用者必須有自己的 Azure 資料總管叢集。 資料取用者的 Azure 資料總管叢集必須在與資料提供者的 Azure 資料總管叢集相同的 Azure 資料中心內尋找。 建立共用關聯性時，Azure 資料共用會在提供者和取用者的 Azure 資料總管叢集之間建立符號連結。
+要訪問共用資料庫，資料消費者需要有自己的 Azure 資料資源管理器群集。 資料消費者的 Azure 資料資源管理器群集需要定位在與資料提供程式的 Azure 資料資源管理器群集相同的 Azure 資料中心中。 建立共用關係時，Azure 資料共用會在提供程式和消費者的 Azure 資料資源管理器群集之間創建符號連結。
 
-Azure 資料總管支援兩種資料內嵌模式：批次和串流。 在共用資料庫中從批次收到的資料，將會出現在資料取用者端幾秒鐘到幾分鐘的時間。 從串流接收的資料最多可能需要24小時才會出現在資料取用者端。 
+Azure 資料資源管理器支援兩種資料引入模式：批次處理和流式處理。 從共用資料庫中的批次處理接收的資料將在資料消費者端出現幾秒鐘到幾分鐘之間。 從流中接收的資料最多可能需要 24 小時才能顯示在資料消費者端。 
 
 ## <a name="next-steps"></a>後續步驟
 

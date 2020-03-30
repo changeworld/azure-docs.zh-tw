@@ -1,6 +1,6 @@
 ---
-title: 建立區塊 blob 儲存體帳戶-Azure 儲存體 |Microsoft Docs
-description: 說明如何建立具有 premium 效能特性的 Azure BlockBlobStorage 帳戶。
+title: 創建塊 Blob 存儲帳戶 - Azure 存儲 |微軟文檔
+description: 演示如何創建具有高級性能特徵的 Azure BlockBlob 存儲帳戶。
 author: tamram
 services: storage
 ms.service: storage
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6dd5d98b559d49656c44b75e86398a017d923203
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371081"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536899"
 ---
-# <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
+# <a name="create-a-blockblobstorage-account"></a>創建塊 Blob 存儲帳戶
 
-BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊 blob。 這種類型的儲存體帳戶已針對具有高交易率或需要極快速存取時間的工作負載優化。 本文說明如何使用 [Azure 入口網站]、[Azure CLI] 或 [Azure PowerShell] 來建立 BlockBlobStorage 帳戶。
+BlockBlob 存儲帳戶類型允許您創建具有高級性能特徵的塊 Blob。 這種類型的存儲帳戶針對事務速率高或存取時間非常快的工作負載進行了優化。 本文演示如何使用 Azure 門戶、Azure CLI 或 Azure PowerShell 創建塊 Blob 存儲帳戶。
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
-如需 BlockBlobStorage 帳戶的詳細資訊，請參閱[Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+有關塊 Blob 存儲帳戶的詳細資訊，請參閱[Azure 存儲帳戶概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,30 +31,30 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 無。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
-本操作說明文章需要 Azure PowerShell 模組 Az version 1.2.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+此"執行"文章需要 Azure PowerShell 模組 Az 版本 1.2.0 或更高版本。 執行 `Get-Module -ListAvailable Az` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 您可以登入 Azure，並且以下列兩種方式之一執行 Azure CLI 命令：
 
-- 您可以從 Azure 入口網站的 Azure Cloud Shell 中執行 CLI 命令。
-- 您可以安裝 CLI，並在本機執行 CLI 命令。
+- 您可以在 Azure 雲外殼中從 Azure 門戶中運行 CLI 命令。
+- 您可以安裝 CLI 並在本地運行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 已預先安裝並設定為與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
+Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 已預先安裝並配置為與您的帳戶一起使用。 按一下 Azure 門戶右上角功能表中的 **"雲殼"** 按鈕：
 
 [![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-按鈕會啟動互動式 shell，讓您用來執行本操作說明文章中所述的步驟：
+該按鈕將啟動一個互動式外殼，可用於運行本操作操作文章中概述的步驟：
 
-[![顯示 Cloud Shell 視窗的螢幕擷取畫面](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![顯示門戶中的雲殼視窗的螢幕截圖](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
-您也可以在本機安裝及使用 Azure CLI。 本操作說明文章需要您執行 Azure CLI 版本2.0.46 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+您也可以在本機安裝及使用 Azure CLI。 此"執行"文章要求您運行 Azure CLI 版本 2.0.46 或更高版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ---
 
@@ -62,9 +62,9 @@ Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網�
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-登入 [Azure 入口網站](https://portal.azure.com)。
+登錄到 Azure[門戶](https://portal.azure.com)。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 使用 `Connect-AzAccount` 命令登入 Azure 訂用帳戶，並遵循畫面上的指示進行驗證。
 
@@ -74,70 +74,70 @@ Connect-AzAccount
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要啟動 Azure Cloud Shell，請登入[Azure 入口網站](https://portal.azure.com)。
+要啟動 Azure 雲外殼，請登錄到[Azure 門戶](https://portal.azure.com)。
 
-若要登入您的本機安裝 CLI，請執行[az login](/cli/azure/reference-index#az-login)命令：
+要登錄到 CLI 的本地安裝，請運行[az 登錄](/cli/azure/reference-index#az-login)命令：
 
-```cli
+```azurecli
 az login
 ```
 
 ---
 
-## <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
+## <a name="create-a-blockblobstorage-account"></a>創建塊 Blob 存儲帳戶
 
 ## <a name="portal"></a>[入口網站](#tab/azure-portal)
-若要在 Azure 入口網站中建立 BlockBlobStorage 帳戶，請遵循下列步驟：
+要在 Azure 門戶中創建塊 Blob 存儲帳戶，請按照以下步驟操作：
 
-1. 在 [Azure 入口網站中，選取 [**所有服務**] >**儲存體**類別目錄 >**儲存體帳戶**]。
+1. 在 Azure 門戶中，選擇存儲類別**Storage**>**存儲帳戶**>**所有服務**。
 
-1. 在 [**儲存體帳戶**] 底下，選取 [**新增**]。
+1. 在 **"存儲帳戶**"下，選擇 **"添加**"。
 
-1. 在 [**訂閱**] 欄位中，選取要在其中建立儲存體帳戶的訂用帳戶。
+1. 在 **"訂閱"** 欄位中，選擇要在其中創建存儲帳戶的訂閱。
 
-1. 在 [**資源群組**] 欄位中，選取現有的資源群組 **，或**選取 [新建]，然後輸入新資源群組的名稱。
+1. 在 **"資源組"** 欄位中，選擇現有資源組或選擇 **"創建新**"，然後輸入新資源組的名稱。
 
-1. 在 [**儲存體帳戶名稱**] 欄位中，輸入帳戶的名稱。 請注意下列指導方針：
+1. 在 **"存儲帳戶名稱**"欄位中，輸入帳戶的名稱。 請注意以下準則：
 
    - 此名稱在整個 Azure 中必須是唯一的。
-   - 名稱的長度必須介於3到24個字元之間。
-   - 名稱只能包含數位和小寫字母。
+   - 名稱必須長在 3 到 24 個字元之間。
+   - 名稱只能包括數位和小寫字母。
 
-1. 在 [**位置**] 欄位中，選取儲存體帳戶的位置，或使用預設位置。
+1. 在 **"位置"** 欄位中，為存儲帳戶選擇位置或使用預設位置。
 
-1. 針對其餘的設定，請設定下列各項：
+1. 對於其餘設置，請配置以下內容：
 
    |欄位     |值  |
    |---------|---------|
-   |**效能**    |  選取 [ **Premium**]。   |
-   |**帳戶類型**    | 選取 [ **BlockBlobStorage**]。      |
-   |**複寫**    |  保留 [**本機-多餘儲存體（LRS）** ] 的預設設定。      |
+   |**效能**    |  選擇 **"高級**"。   |
+   |**帳戶類型**    | 選擇**塊 Blob 存儲**。      |
+   |**複製**    |  保留**本地冗余存儲 （LRS） 的**預設設置。      |
 
-   ![顯示用來建立區塊 blob 儲存體帳戶的入口網站 UI](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
+   ![顯示門戶 UI 以創建塊 Blob 存儲帳戶](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. 選取 [**審查 + 建立**] 以查看儲存體帳戶設定。
+1. 選擇 **"查看 + 創建**"以查看存儲帳戶設置。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
-## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Azure 電源外殼](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-1. 開啟提升許可權的 Windows PowerShell 會話（以系統管理員身分執行）。
+1. 打開提升的 Windows PowerShell 會話（以管理員身份運行）。
 
-1. 執行下列命令，確定已安裝最新版本的 `Az` PowerShell 模組。
+1. 運行以下命令以確保安裝了`Az`最新版本的 PowerShell 模組。
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. 開啟新的 PowerShell 主控台，並使用您的 Azure 帳戶登入。
+1. 打開新的 PowerShell 主控台，然後使用 Azure 帳戶登錄。
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. 如有需要，請建立新的資源群組。 取代引號中的值，然後執行下列命令。
+1. 如果需要，請創建新的資源組。 替換引號中的值，並運行以下命令。
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +145,7 @@ az login
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. 建立 BlockBlobStorage 帳戶。 取代引號中的值，然後執行下列命令。
+1. 創建塊 Blob 存儲帳戶。 替換引號中的值，並運行以下命令。
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -157,7 +157,7 @@ az login
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 建立區塊 blob 帳戶，您必須先安裝 Azure CLI v。 2.0.46 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+要使用 Azure CLI 創建塊 Blob 帳戶，必須首先安裝 Azure CLI v。 2.0.46 或更高版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 登入您的 Azure 訂用帳戶。
 
@@ -165,7 +165,7 @@ az login
    az login
    ```
 
-1. 如有需要，請建立新的資源群組。 以方括弧（包括括弧）取代值，然後執行下列命令。
+1. 如果需要，請創建新的資源組。 替換括弧中的值（包括括弧），並運行以下命令。
 
    ```azurecli
    az group create \
@@ -173,7 +173,7 @@ az login
     --location "<location>"
    ```
 
-1. 建立 BlockBlobStorage 帳戶。 以方括弧（包括括弧）取代值，然後執行下列命令。
+1. 創建塊 Blob 存儲帳戶。 替換括弧中的值（包括括弧），並運行以下命令。
 
    ```azurecli
    az storage account create \
@@ -190,4 +190,4 @@ az login
 
 - 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-- 如需有關資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+- 有關資源組的詳細資訊，請參閱[Azure 資源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。

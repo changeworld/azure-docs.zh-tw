@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281830"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>災害復原至 Azure 後的 VMware VM 容錯回復
@@ -24,7 +24,7 @@ ms.locfileid: "79281830"
 如果您已容錯移轉 VMware 虛擬機器，在它仍存在的前提下，您可以將它容錯回復到相同的來源內部部署虛擬機器。 在此案例中，系統只會將變更複寫回來。 此案例稱為**原始位置復原**。 如果內部部署虛擬機器不存在，則此案例為**替代位置復原**。
 
 > [!NOTE]
-> 您只能容錯回復至原始的 vCenter 和設定伺服器。 您無法部署新的設定伺服器，並使用它進行容錯回復。 此外，您無法將新的 vCenter 新增至現有設定伺服器並容錯回復至新的 vCenter。
+> 您只能故障回原始 vCenter 和佈建服務器。 您無法部署新的設定伺服器，並使用它進行容錯回復。 此外，您無法將新的 vCenter 新增至現有設定伺服器並容錯回復至新的 vCenter。
 
 ## <a name="original-location-recovery-olr"></a>原始位置復原 (OLR)
 如果您選擇容錯回復至原始虛擬機器，就必須符合下列條件：

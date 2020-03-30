@@ -1,6 +1,6 @@
 ---
 title: 保護 Azure 物聯網 (IoT) 部署 | Microsoft Docs
-description: 本文詳細說明如何保護您的 Azure IoT 部署。 它會連結到設定及部署每個元件的實作層級詳細資料。
+description: 本文詳細介紹了如何保護 Azure IoT 部署。 它會連結到設定及部署每個元件的實作層級詳細資料。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f0fbb1214015c088e7e1585840213faba06b59f3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284768"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>保護您的物聯網 (IoT) 部署

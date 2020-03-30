@@ -1,26 +1,26 @@
 ---
-title: 指定 Service Fabric 服務端點
+title: 指定服務交換矩陣服務終結點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282155"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 服務資訊清單可宣告/變更服務使用的資源，且不需變更已編譯的程式碼。 Azure Service Fabric 支援針對服務的端點資源組態。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ## <a name="endpoints"></a>端點
 在服務資訊清單中定義端點資源時，若沒有明確指定連接埠，Service Fabric 會從保留的應用程式連接埠範圍指派連接埠。 例如，請看本段落之後提供的資訊清單片段中所指定的端點 *ServiceEndpoint1* 。 此外，服務也可以在資源中要求特定連接埠。 不同的連接埠號碼可以指派給在不同叢集節點上執行的服務複本，而在同一節點上執行的服務複本可以共用連接埠。 然後服務複本就可以在需要時使用這些連接埠進行複寫和接聽用戶端要求。
 
 > [!WARNING] 
-> 依照設計，靜態埠不應該與 ClusterManifest 中指定的應用程式埠範圍重迭。 如果您指定靜態通訊埠，請在應用程式埠範圍外指派它，否則會導致埠衝突。 在 release 6.5 CU2 中，我們會在偵測到這類衝突時發出**健全狀況警告**，但讓部署繼續與隨附的6.5 行為同步。 不過，我們可能會防止應用程式部署到下一個主要版本。
+> 根據設計，靜態埠不應與 ClusterManifest 中指定的應用程式埠範圍重疊。 如果指定靜態埠，請將其分配到應用程式埠範圍之外，否則將導致埠衝突。 使用版本 6.5CU2 時，我們將在檢測到此類衝突時發出**運行狀況警告**，但允許部署繼續與已發貨的 6.5 行為同步。 但是，我們可能會阻止應用程式部署從下一個主要版本。
 >
-> 在7.0 版中，我們會在偵測到應用程式埠範圍的使用量超過 HostingConfig：： ApplicationPortExhaustThresholdPercentage （預設80%）時發出**健康情況警告**。
+> 使用版本 7.0 時，我們將發出**運行狀況警告**，當我們檢測到應用程式埠範圍使用方式超出託管配置：：應用程式波特Exhaust閾值百分比（預設 80%）時。
 >
 
 ```xml
@@ -33,7 +33,7 @@ ms.locfileid: "79282155"
 </Resources>
 ```
 
-如果單一服務套件中有多個程式碼套件，則也需要在 [端點] 區段中參考程式碼套件。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是來自參考不同程式碼套件之相同服務套件的端點，則對應至每個端點的程式碼套件釐清如下：
+如果單一服務套件中有多個程式碼套件，則也需要在 [端點]**** 區段中參考程式碼套件。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是來自參考不同程式碼套件之相同服務套件的端點，則對應至每個端點的程式碼套件釐清如下：
 
 ```xml
 <Resources>
@@ -96,7 +96,7 @@ Service Fabric 會自動將 HTTP 端點處理為 ACL。
 ```
 
 ## <a name="example-specifying-an-https-endpoint-for-your-service"></a>範例：指定服務的 HTTPS 端點
-HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器通訊。 若要在 Service Fabric 服務上啟用 HTTPS，請在服務資訊清單的 [資源] -> [端點] -> [端點] 區段指定通訊協定，如先前針對 *ServiceEndpoint3* 端點所示。
+HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器通訊。 若要在 Service Fabric 服務上啟用 HTTPS，請在服務資訊清單的 [資源] -> [端點] -> [端點]** 區段指定通訊協定，如先前針對 *ServiceEndpoint3* 端點所示。
 
 > [!NOTE]
 > 服務的通訊協定不能在應用程式升級期間變更。 如果它在升級期間變更，將會發生中斷變更。
@@ -209,4 +209,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 且應用程式參數的 Port1 和 Protocol1 值是 Null 或空白。 連接埠仍是由 ServiceFabric 決定。 且通訊協定將 tcp。
 
-假設您指定錯誤的值。 就像針對埠所指定的字串值為 "Foo"，而不是 int。 Remove-servicefabricapplication 命令將會失敗並出現錯誤：區段 ' ResourceOverrides ' 中名為 ' ServiceEndpoint1 ' 屬性 ' Port1 ' 的覆寫參數無效。 指定的值是 'Foo'，而所需為 'int'。
+假設您指定錯誤的值。 與 Port 一樣，您指定了字串值"Foo"而不是 int。 New-ServiceFabric應用程式命令將失敗，但出現錯誤："資源覆蓋"部分中名稱為"服務終結點1"屬性"Port1"的覆蓋參數無效。 指定的值是 'Foo'，而所需為 'int'。

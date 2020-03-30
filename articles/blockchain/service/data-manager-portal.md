@@ -1,40 +1,40 @@
 ---
-title: 使用 Azure 入口網站設定區塊鏈資料管理員-Azure 區塊鏈 Service
-description: 使用 Azure 入口網站建立和管理 Azure 區塊鏈服務的區塊鏈資料管理員。
+title: 使用 Azure 門戶配置區塊鏈資料管理器 - Azure 區塊鏈服務
+description: 使用 Azure 門戶創建和管理 Azure 區塊鏈服務的區塊鏈資料管理器。
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273159"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 入口網站設定區塊鏈資料管理員
 
-設定 Azure 區塊鏈 Service 的區塊鏈資料管理員來捕獲區塊鏈資料，並將其傳送至 Azure 事件方格主題。
+為 Azure 區塊鏈服務配置區塊鏈資料管理器，以捕獲區塊鏈資料並將其發送到 Azure 事件網格主題。
 
-若要設定區塊鏈資料管理員實例，您可以：
+要配置區塊鏈資料管理器實例，您需要：
 
-* 建立 Azure 區塊鏈 Service 交易節點的區塊鏈資料管理員實例
-* 新增您的區塊鏈應用程式
+* 為 Azure 區塊鏈服務事務節點創建區塊鏈資料管理器實例
+* 添加區塊鏈應用程式
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 完成[快速入門：使用 Azure 入口網站或快速入門建立區塊鏈成員](create-member.md) [：使用 Azure CLI 建立 Azure 區塊鏈 Service 區塊鏈成員](create-member-cli.md)
-* 建立[事件方格主題](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* 完全[快速入門：使用 Azure 門戶或快速入門創建區塊鏈成員](create-member.md)[：使用 Azure CLI 創建 Azure 區塊鏈服務區塊鏈成員](create-member-cli.md)
+* 創建[事件網格主題](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件方格中的事件處理常式](../../event-grid/event-handlers.md)
 
 ## <a name="create-instance"></a>建立執行個體
 
-區塊鏈資料管理員執行個體都連線至 Azure 區塊鏈服務交易節點，並加以監視。 只有具有交易節點存取權的使用者才能建立連線。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。
+區塊鏈資料管理員執行個體都連線至 Azure 區塊鏈服務交易節點，並加以監視。 只有有權訪問事務節點的使用者才能創建連接。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。
 
-輸出連線會將區塊鏈資料傳送至 Azure 事件方格。 您在建立執行個體時，會設定單一輸出連線。 區塊鏈資料管理員會針對任何指定的區塊鏈資料管理員執行個體，支援多個事件方格主題輸出連線。 您可將區塊鏈資料傳送至單一目的地，或將區塊鏈資料傳送至多個目的地。 若要加入另一個目的地，只要將額外的輸出連線加入實例。
+輸出連線會將區塊鏈資料傳送至 Azure 事件方格。 您在建立執行個體時，會設定單一輸出連線。 區塊鏈資料管理員會針對任何指定的區塊鏈資料管理員執行個體，支援多個事件方格主題輸出連線。 您可將區塊鏈資料傳送至單一目的地，或將區塊鏈資料傳送至多個目的地。 要添加其他目標，只需向實例添加其他出站連接。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 移至您想要連接到區塊鏈資料管理員的 Azure 區塊鏈服務成員。 選取 [區塊鏈資料管理員]。
-1. 選取 [新增]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 轉到要連接到區塊鏈資料管理器的 Azure 區塊鏈服務成員。 選取 [區塊鏈資料管理員]****。
+1. 選取 [加入]****。
 
     ![新增區塊鏈資料管理員](./media/data-manager-portal/add-instance.png)
 
@@ -42,35 +42,35 @@ ms.locfileid: "79273159"
 
     設定 | 描述
     --------|------------
-    名稱 | 為已連線的區塊鏈資料管理員輸入唯一名稱。 區塊鏈資料管理員名稱可包含小寫字母和數位，最大長度為20個字元。
-    交易節點 | 選擇交易節點。 只會列出您擁有讀取權限的交易節點。
+    名稱 | 為已連線的區塊鏈資料管理員輸入唯一名稱。 區塊鏈資料管理器名稱可以包含小寫字母和數位，最大長度為 20 個字元。
+    交易節點 | 選擇事務節點。 僅列出具有讀取存取許可權的事務節點。
     連接名稱 | 為用來傳送區塊鏈交易資料的輸出連線輸入唯一名稱。
-    事件方格端點 | 在與區塊鏈資料管理員實例相同的訂用帳戶中，選擇事件方格主題。
+    事件方格端點 | 在與區塊鏈資料管理器實例相同的訂閱中選擇事件網格主題。
 
-1. 選取 [確定]。
+1. 選取 [確定]****。
 
-    區塊鏈資料管理員執行個體不到一分鐘即可建立。 執行個體在部署後將會自動啟動。 執行中的區塊鏈資料管理員實例會從交易節點中捕捉區塊鏈事件，並將資料傳送至輸出連線。
+    區塊鏈資料管理員執行個體不到一分鐘即可建立。 執行個體在部署後將會自動啟動。 正在運行的區塊鏈資料管理器實例從事務節點捕獲區塊鏈事件，並將資料發送到出站連接。
 
-    新的實例會出現在 Azure 區塊鏈服務成員的區塊鏈資料管理員實例清單中。
+    新實例將顯示在 Azure 區塊鏈服務成員的區塊鏈資料管理器實例清單中。
 
-    ![區塊鏈資料成員實例的清單](./media/data-manager-portal/instance-list.png)
+    ![區塊鏈資料成員實例清單](./media/data-manager-portal/instance-list.png)
 
-## <a name="add-blockchain-application"></a>新增區塊鏈應用程式
+## <a name="add-blockchain-application"></a>添加區塊鏈應用程式
 
-如果您新增區塊鏈應用程式，區塊鏈資料管理員會將應用程式的事件和屬性狀態解碼。 否則，只會傳送原始區塊和原始交易資料。 區塊鏈資料管理員也會在部署合約時探索合約位址。 您可以將多個區塊鏈應用程式新增至區塊鏈資料管理員實例。
+如果您添加區塊鏈應用程式，區塊鏈資料管理器會解碼應用程式的事件和屬性狀態。 否則，僅發送原始塊和原始交易資料。 區塊鏈資料管理器還會在部署合同時發現合約地址。 您可以將多個區塊鏈應用程式添加到區塊鏈資料管理器實例中。
 
 > [!IMPORTANT]
-> 目前，不完全支援宣告密度[陣列類型](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays)或[對應類型](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types)的區塊鏈應用程式。 宣告為數組或對應類型的屬性將不會在*ContractPropertiesMsg*或*DecodedContractEventsMsg*訊息中解碼。
+> 目前，聲明實體陣列[類型](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays)或[映射類型的](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types)區塊鏈應用程式並不完全受支援。 聲明為數組或映射類型的屬性不會在*合同屬性Msg*或*解碼合同事件Mg*消息中解碼。
 
-區塊鏈資料管理員需要智慧型合約 ABI 並部署的位元組程式碼檔案，才能新增應用程式。
+區塊鏈資料管理器需要智慧合約 ABI 和部署的位元組碼檔來添加應用程式。
 
-### <a name="get-contract-abi-and-bytecode"></a>取得合約 ABI 和位元組碼
+### <a name="get-contract-abi-and-bytecode"></a>獲取合同 ABI 和位元組碼
 
 合約 ABI 會定義智慧型合約的介面。 此介面會說明如何與智慧型合約互動。 您可以使用[適用於 Ethereum 的 Azure 區塊鏈服務開發套件擴充功能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)，將合約 ABI 複製到剪貼簿。
 
 1. 在 Visual Studio Code 總管窗格中，展開 Solidity 專案的 **build/contracts** 資料夾。
 1. 以滑鼠右鍵按一下合約中繼資料 JSON 檔案。 檔案名稱是智慧型合約名稱再加上 **.json** 副檔名。
-1. 選取 [複製合約 ABI]。
+1. 選取 [複製合約 ABI]****。
 
     ![Visual Studio Code 窗格，已選取 [複製合約 ABI]](./media/data-manager-portal/abi-devkit.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "79273159"
 
 1. 在 Visual Studio Code 總管窗格中，展開 Solidity 專案的 **build/contracts** 資料夾。
 1. 以滑鼠右鍵按一下合約中繼資料 JSON 檔案。 檔案名稱是智慧型合約名稱再加上 **.json** 副檔名。
-1. 選取 [複製交易位元組程式碼]。
+1. 選取 [複製交易位元組程式碼]****。
 
     ![Visual Studio Code 窗格，已選取 [複製交易位元組程式碼]](./media/data-manager-portal/bytecode-devkit.png)
 
@@ -104,41 +104,41 @@ ms.locfileid: "79273159"
 
 #### <a name="upload-contract-files"></a>上傳合約檔案
 
-1. 為儲存體帳戶建立新的容器。 選取 [容器] > [容器]。
+1. 為儲存體帳戶建立新的容器。 選取 [容器] > [容器]****。
 
     ![建立儲存體帳戶容器](./media/data-manager-portal/create-container.png)
 
     | 欄位 | 描述 |
     |-------|-------------|
     | 名稱  | 為容器命名。 例如 *smartcontract* |
-    | 公用存取層級 | 選擇 [私人 (沒有匿名存取)] |
+    | 公用存取層級 | 選擇 [私人 (沒有匿名存取)]** |
 
-1. 選取 [確定] 以建立容器。
-1. 選取容器，然後選取 [上傳]。
+1. 選取 [確定]**** 以建立容器。
+1. 選取容器，然後選取 [上傳]****。
 1. 選擇您在[取得合約 ABI 和位元組程式碼](#get-contract-abi-and-bytecode)一節中所建立的兩個 JSON 檔案。
 
     ![上傳 Blob](./media/data-manager-portal/upload-blobs.png)
 
-    選取 [上傳]。
+    選取 [上傳]****。
 
 #### <a name="generate-url"></a>產生 URL
 
 為每個 Blob 分別產生一個共用存取簽章。
 
 1. 選取 ABI JSON Blob。
-1. 選取 [產生 SAS]
-1. 設定所需的存取簽章到期日，然後選取 [產生 Blob SAS 權杖和 URL]。
+1. 選取 [產生 SAS]****
+1. 設定所需的存取簽章到期日，然後選取 [產生 Blob SAS 權杖和 URL]****。
 
     ![產生 SAS Token](./media/data-manager-portal/generate-sas.png)
 
 1. 複製 **Blob SAS URL** 並加以儲存，以供下一節使用。
 1. 針對位元組程式碼 JSON Blob，重複[產生 URL](#generate-url) 步驟。
 
-### <a name="add-application-to-instance"></a>將應用程式新增至實例
+### <a name="add-application-to-instance"></a>將應用程式添加到實例
 
 1. 從執行個體清單中，選取您的區塊鏈資料管理員執行個體。
-1. 選取 [區塊鏈應用程式]。
-1. 選取 [新增]。
+1. 選取 [區塊鏈應用程式]****。
+1. 選取 [加入]****。
 
     ![新增區塊鏈應用程式](./media/data-manager-portal/add-application.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "79273159"
     合約 ABI | 合約 ABI 檔案的 URL 路徑。 如需詳細資訊，請參閱[建立合約 ABI 和位元組程式碼 URL](#create-contract-abi-and-bytecode-url)。
     合約位元組程式碼 | 位元組程式碼檔案的 URL 路徑。 如需詳細資訊，請參閱[建立合約 ABI 和位元組程式碼 URL](#create-contract-abi-and-bytecode-url)。
 
-1. 選取 [確定]。
+1. 選取 [確定]****。
 
     應用程式建立後，應用程式會出現在區塊鏈應用程式清單中。
 
@@ -160,15 +160,15 @@ ms.locfileid: "79273159"
 
 ## <a name="stop-instance"></a>停止實例
 
-當您想要停止捕獲區塊鏈事件並將資料傳送到輸出連線時，請停止區塊鏈 Manager 實例。 當實例停止時，區塊鏈資料管理員不會產生任何費用。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/blockchain-service)。
+當您要停止捕獲區塊鏈事件並將資料發送到出站連接時，停止區塊鏈管理器實例。 當實例停止時，區塊鏈資料管理器不收取任何費用。 有關詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
-1. 移至 **[總覽**]，然後選取 [**停止**]。
+1. 轉到 **"概述"** 並選擇 **"停止**"。
 
     ![停止實例](./media/data-manager-portal/stop-instance.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-請嘗試下一個教學課程使用區塊鏈資料管理員和 Azure Cosmos DB 建立區塊鏈交易訊息瀏覽器。
+嘗試使用區塊鏈資料管理器和 Azure Cosmos DB 創建區塊鏈事務消息資源管理器的下一教程。
 
 > [!div class="nextstepaction"]
 > [使用區塊鏈資料管理員將資料傳送至 Azure Cosmos DB](data-manager-cosmosdb.md)

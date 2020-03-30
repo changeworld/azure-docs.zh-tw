@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271079"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
 
-實作「Azure IoT 中樞」的企業會期望其資源有可靠的效能。 為了協助您維護作業的密切監看，IoT 中樞完全與[Azure 監視器](../azure-monitor/index.yml)和[Azure 資源健康狀態](../service-health/resource-health-overview.md)整合。 這兩項服務可提供您所需的資料，讓您的 IoT 解決方案以狀況良好的狀態運作並執行。
+實作「Azure IoT 中樞」的企業會期望其資源有可靠的效能。 為了協助您對作業維持密切的監看，「IoT 中樞」已與 [Azure 監視器](../azure-monitor/index.yml)和 [Azure 資源健康狀態](../service-health/resource-health-overview.md)完全整合。 這兩種服務旨在為您提供所需的資料，使 IoT 解決方案處於正常運行狀態。
 
-「Azure 監視器」是您所有 Azure 服務之監視和記錄功能的單一來源。 您可以將 Azure 監視器產生的診斷記錄傳送至自訂處理 Azure 監視器記錄、事件中樞或 Azure 儲存體。 Azure 監視器的計量和診斷設定可讓您檢視資源的效能。 請繼續閱讀本文來了解如何搭配您的 IoT 中樞來[使用 Azure 監視器](#use-azure-monitor)。 
+「Azure 監視器」是您所有 Azure 服務之監視和記錄功能的單一來源。 您可以將 Azure 監視器生成的診斷日誌發送到 Azure 監視器日誌、事件中心或 Azure 存儲，以便進行自訂處理。 Azure 監視器的計量和診斷設定可讓您檢視資源的效能。 請繼續閱讀本文來了解如何搭配您的 IoT 中樞來[使用 Azure 監視器](#use-azure-monitor)。 
 
 > [!IMPORTANT]
 > 不保證使用 Azure 監視器診斷記錄透過 IoT 中樞服務發出的事件是可靠的或按順序的。 某些事件可能會遺失，或未按順序傳遞。 診斷記錄也不是即時的，而且它可能需要幾分鐘的時間才能將事件記錄到您所選擇的目的地。
 
-Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您的資源時取得支援。 儀表板會為您的每個 IoT 中樞提供目前和過去的健全狀況狀態。 請繼續閱讀本文底部的一節，以瞭解如何搭配您的 IoT 中樞[使用 Azure 資源健康狀態](#use-azure-resource-health)。 
+Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您的資源時取得支援。 儀表板為每個 IoT 中心提供當前和過去的運行狀況。 繼續訪問本文底部的部分，瞭解如何將[Azure 資源運行狀況與](#use-azure-resource-health)IoT 中心一起使用。 
 
-「IoT 中樞」也提供自己的計量，可供您用來了解 IoT 資源的狀態。 若要深入瞭解，請參閱[瞭解 IoT 中樞計量](iot-hub-metrics.md)。
+「IoT 中樞」也提供自己的計量，可供您用來了解 IoT 資源的狀態。 若要深入了解，請參閱[了解 IoT 中樞計量](iot-hub-metrics.md)。
 
 ## <a name="use-azure-monitor"></a>使用 Azure 監視器
 
 「Azure 監視器」提供 Azure 資源的診斷資訊，這意謂著您可以監視在 IoT 中樞內進行的作業。
 
-「Azure 監視器」的診斷設定會取代「IoT 中樞」作業監視器。 如果您目前使用作業監視，則應該移轉您的工作流程。 如需詳細資訊，請參閱[從作業監視遷移至診斷設定](iot-hub-migrate-to-diagnostics-settings.md)。
+「Azure 監視器」的診斷設定會取代「IoT 中樞」作業監視器。 如果您目前使用作業監視，則應該移轉您的工作流程。 如需詳細資訊，請參閱[從作業監視移轉至診斷設定](iot-hub-migrate-to-diagnostics-settings.md)。
 
-若要深入瞭解 Azure 監視器監看的特定計量和事件，請參閱[支援的計量，其中包含 Azure 監視器](../azure-monitor/platform/metrics-supported.md)和[支援的服務、架構和 Azure 診斷記錄的類別](../azure-monitor/platform/diagnostic-logs-schema.md)。
+若要深入了解「Azure 監視器」所監視的特定計量和事件，請參閱 [Azure 監視器支援的計量](../azure-monitor/platform/metrics-supported.md)和[Azure 診斷記錄支援的服務、結構描述和類別](../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -47,7 +47,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 連線類別會追蹤來自 IoT 中樞的裝置連線和中斷連線事件以及錯誤。 此類別對於識別未經授權的連線嘗試，及/或在遺失裝置連線時發出警示非常有用。
 
 > [!NOTE]
-> 針對可靠的裝置線上狀態，請檢查[裝置的心跳](iot-hub-devguide-identity-registry.md#device-heartbeat)。
+> 針對可靠的裝置連線狀態，勾選 [裝置活動訊號](iot-hub-devguide-identity-registry.md#device-heartbeat)。
 
 ```json
 {
@@ -312,9 +312,9 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 #### <a name="distributed-tracing-preview"></a>分散式追蹤 (預覽)
 
-分散式追蹤類別會追蹤相互關聯識別碼，以尋找帶有追蹤內容標頭的訊息。 若要完整啟用這些記錄，必須更新用戶端程式代碼，方法如下：[使用 IoT 中樞分散式追蹤（預覽），以端對端分析及診斷 IoT 應用程式](iot-hub-distributed-tracing.md)。
+分散式追蹤類別會追蹤相互關聯識別碼，以尋找帶有追蹤內容標頭的訊息。 要完全啟用這些日誌，必須通過以下[分析和診斷 IoT 應用程式與 IoT 中心分散式跟蹤（預覽）](iot-hub-distributed-tracing.md)來更新用戶端代碼。
 
-請注意，`correlationId` 符合[W3C 追蹤內容](https://github.com/w3c/trace-context)提案，其中包含 `trace-id` 和 `span-id`。
+請注意，`correlationId`它符合[W3C 跟蹤上下文](https://github.com/w3c/trace-context)方案，其中它包含`trace-id`和 。 `span-id`
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT 中樞 D2C (裝置到雲端) 記錄
 
@@ -345,8 +345,8 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | 整數 | 裝置到雲端訊息的大小 (以位元組為單位) |
-| deviceId | 由 ASCII 7 位元英數字元組成的字串 | 裝置的身分識別 |
+| **messageSize** | 整數  | 裝置到雲端訊息的大小 (以位元組為單位) |
+| **設備 Id** | 由 ASCII 7 位元英數字元組成的字串 | 裝置的身分識別 |
 | **callerLocalTimeUtc** | UTC 時間戳記 | 裝置本機時鐘所報告的訊息建立時間 |
 | **calleeLocalTimeUtc** | UTC 時間戳記 | IoT 中樞服務端時鐘所報告、訊息抵達 IoT 中樞閘道的時間 |
 
@@ -375,7 +375,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 }
 ```
 
-在 [`properties`] 區段中，此記錄檔包含有關訊息輸入的其他資訊。
+在本`properties`節中，此日誌包含有關消息入口的其他資訊。
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -407,17 +407,17 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 }
 ```
 
-在 [`properties`] 區段中，此記錄檔包含有關訊息輸入的其他資訊。
+在本`properties`節中，此日誌包含有關消息入口的其他資訊。
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | String | 路由端點的名稱 |
-| **endpointType** | String | 路由端點的類型 |
+| **終結點名稱** | String | 路由端點的名稱 |
+| **端點類型** | String | 路由端點的類型 |
 | **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
 #### <a name="configurations"></a>組態
 
-IoT 中樞設定記錄檔會追蹤自動裝置管理功能集的事件和錯誤。
+IoT 中心配置日誌跟蹤自動裝置管理功能集的事件和錯誤。
 
 ```json
 {
@@ -439,9 +439,9 @@ IoT 中樞設定記錄檔會追蹤自動裝置管理功能集的事件和錯誤�
 }
 ```
 
-### <a name="device-streams-preview"></a>裝置串流（預覽）
+### <a name="device-streams-preview"></a>設備流（預覽）
 
-[裝置串流] 類別會追蹤傳送給個別裝置的要求-回應互動。
+設備流類別跟蹤發送到各個設備的請求-回應交互。
 
 ```json
 {
@@ -536,19 +536,19 @@ class Program
 
 使用「Azure 資源健康狀態」來監視您的 IoT 中樞是否已啟動並執行。 您也可以了解區域性服務中斷是否對您的 IoT 中樞造成影響。 若要了解有關您「Azure IoT 中樞」健全狀態的特定詳細資料，建議您[使用 Azure 監視器](#use-azure-monitor)。
 
-「Azure IoT 中樞」會指出區域層級的健康情況。 如果有區域性服務中斷影響到您的 IoT 中樞，健全狀態就會顯示為 [不明]。 若要深入瞭解，請參閱[Azure 資源健康狀態中的資源類型和健康情況檢查](../service-health/resource-health-checks-resource-types.md)。
+「Azure IoT 中樞」會指出區域層級的健康情況。 如果有區域性服務中斷影響到您的 IoT 中樞，健全狀態就會顯示為 [不明]****。 若要深入了解，請參閱 [Azure 資源健康狀態中的資源類型和健康狀態檢查](../service-health/resource-health-checks-resource-types.md)。
 
 若要檢查您 IoT 中樞的健康情況，請依照下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-2. 瀏覽至 [服務健全狀況] > [資源健康狀態]。
+2. 導航到**服務運行狀況** > **資源運行狀況**。
 
-3. 從下拉式方塊中選取您的訂用帳戶，然後選取 [ **IoT 中樞**] 作為 [資源類型]。
+3. 從下拉清單中，選擇訂閱，然後選擇**IoT 中心**作為資源類型。
 
-若要深入瞭解如何解讀健康情況資料，請參閱[Azure 資源健康狀態總覽](../service-health/resource-health-overview.md)。
+要瞭解有關如何解釋運行狀況資料的詳細資訊，請參閱[Azure 資源運行狀況概述](../service-health/resource-health-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解 IoT 中樞計量](iot-hub-metrics.md)
-* [透過 Azure Logic Apps 連線 iot 中樞和信箱的 IoT 遠端監視和通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [了解 IoT 中樞計量](iot-hub-metrics.md)
+* [搭配連接 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

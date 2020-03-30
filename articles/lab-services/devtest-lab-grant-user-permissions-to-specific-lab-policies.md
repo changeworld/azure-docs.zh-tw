@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284209"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>將特定實驗室原則的權限授與使用者
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文說明如何使用 PowerShell 將特定實驗室原則的權限授與使用者。 這樣便可根據每個使用者的需求來套用權限。 例如，您可能想要將變更 VM 原則設定 (而非成本原則) 的能力授與特定的使用者。
 
 ## <a name="policies-as-resources"></a>原則即資源
@@ -30,12 +30,12 @@ ms.locfileid: "79284209"
 
 在研發/測試實驗室中，原則是一種可啟用 RBAC 動作 **Microsoft.DevTestLab/labs/policySets/policies/** 的資源類型。 每個實驗室原則都是「原則」資源類型中的資源，並且可被指派成某個 RBAC 角色的範圍。
 
-例如，為了將**允許的 VM 大小**原則的讀取/寫入權限授與使用者，您可以建立與**microsoft.devtestlab/labs/policySets/原則/** 動作搭配運作的自訂角色，然後將適當的使用者指派給**microsoft.devtestlab/labs/policySets/policy/AllowedVmSizesInLab**範圍內的這個自訂角色。
+例如，為了向使用者授予**允許的 VM 大小策略**的讀取/寫入權限，您可以創建一個適用于 Microsoft 的自訂角色 **。DevTestLab/labs/策略集/策略/** 操作，然後在**Microsoft.DevTestLab/labs/策略/策略/允許VmSizesInLab**的範圍內將適當的使用者分配給此自訂角色。
 
 若要深入了解 RBAC 中的自訂角色，請參閱[自訂角色存取控制](../role-based-access-control/custom-roles.md)。
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>使用 PowerShell 建立實驗室自訂角色
-為了開始進行，您必須[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 
+要開始，您需要[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 
 
 設定完 Azure PowerShell Cmdlet 之後，您便可執行下列工作：
 
@@ -62,7 +62,7 @@ ms.locfileid: "79284209"
     $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>使用自訂角色將特定原則的權限指派給使用者
-定義自訂角色之後，您便可以將它們指派給使用者。 為了將自訂角色指派給使用者，您必須先取得代表該使用者的 **ObjectId** 。 若要這麼做，請使用**AzADUser** Cmdlet。
+定義自訂角色之後，您便可以將它們指派給使用者。 為了將自訂角色指派給使用者，您必須先取得代表該使用者的 **ObjectId** 。 為此，請使用**獲取-阿達德User** Cmdlet。
 
 在下列範例中， **SomeUser** 使用者的 *ObjectId* 是 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3。
 
@@ -72,7 +72,7 @@ ms.locfileid: "79284209"
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-一旦擁有使用者的**ObjectId**和自訂角色名稱之後，您就可以使用**new-azroleassignment**指令程式，將該角色指派給使用者：
+獲得使用者的**ObjectId**和自訂角色名稱後，可以使用**New-AzRoleAssign** Cmdlet 將該角色指派給使用者：
 
     PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
@@ -89,8 +89,8 @@ ms.locfileid: "79284209"
 將特定實驗室原則的權限授與使用者之後，以下是一些需要考量的後續步驟：
 
 * [安全存取實驗室](devtest-lab-add-devtest-user.md)
-* [設定實驗室原則](devtest-lab-set-lab-policy.md)
-* [建立實驗室範本](devtest-lab-create-template.md)
-* [為您的 VM 建立自訂成品](devtest-lab-artifact-author.md)
+* [設置實驗室策略](devtest-lab-set-lab-policy.md)
+* [創建實驗室範本](devtest-lab-create-template.md)
+* [為 VM 創建自訂專案](devtest-lab-artifact-author.md)
 * [將 VM 新增至實驗室](devtest-lab-add-vm.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用共用資源庫共用 VM 映射
+title: 與共享庫共用 VM 映射
 description: 了解如何使用共用映像資源庫，跨組織共用 VM 映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: b79abeffffd7dc1bb54e828823aa909216508496
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267127"
 ---
 # <a name="shared-image-galleries-overview"></a>共用映像資源庫概觀

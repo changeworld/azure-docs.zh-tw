@@ -1,19 +1,18 @@
 ---
-title: 取消作業 API |Azure Marketplace
+title: 取消操作 API |Azure 應用商店
 description: 取消作業。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819777"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280536"
 ---
 # <a name="cancel-operation"></a>取消作業 
 
@@ -26,18 +25,18 @@ ms.locfileid: "73819777"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**    |      **說明**                                  |    **資料類型**  |
+|  **名稱**    |      **描述**                                  |    **資料類型**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  發行者識別碼，例如 `contoso`         |   字串          |
-| offerId      |  供應項目識別碼                                     |   字串          |
-| api-version  |  API 目前的版本                               |    日期           |
+| publisherId  |  發行者識別碼，例如 `contoso`         |   String          |
+| offerId      |  供應項目識別碼                                     |   String          |
+| api-version  |  API 目前的版本                               |    Date           |
 |  |  |  |
 
 
 <a name="header"></a>頁首
 ------
 
-|  **名稱**              |  **值**         |
+|  **名稱**              |  **價值**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
 |  授權         |  Bearer 您的權杖 |
@@ -59,7 +58,7 @@ ms.locfileid: "73819777"
 
 ### <a name="request-body-properties"></a>要求本文屬性
 
-|  **名稱**                |  **說明**                                               |
+|  **名稱**                |  **描述**                                               |
 |  --------                |  ---------------                                               |
 |  notification-emails     | 以逗號分隔的電子郵件識別碼清單，這些電子郵件識別碼將會收到關於發行作業進度的通知。 |
 |  |  |
@@ -72,7 +71,7 @@ ms.locfileid: "73819777"
 
 ### <a name="response-header"></a>回應標頭
 
-|  **名稱**             |    **值**                       |
+|  **名稱**             |    **價值**                       |
 |  ---------            |    ----------                      |
 | Operation-Location    | URL，可進行查詢以判斷作業的目前狀態。 |
 |  |  |
@@ -80,7 +79,7 @@ ms.locfileid: "73819777"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼**  |  **說明**                                                                       |
+| **代碼**  |  **描述**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
 |  200      | 正常。 已成功處理要求，並同步取消作業。 |
 |  202      | 已接受。 已成功處理要求，而且正在取消該作業。 取消作業的位置會在回應標頭中傳回。 |

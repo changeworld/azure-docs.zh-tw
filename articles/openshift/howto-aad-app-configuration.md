@@ -1,126 +1,126 @@
 ---
-title: Azure Red Hat OpenShift 的 Azure Active Directory 整合
-description: 瞭解如何建立 Azure AD 安全性群組和使用者，以在您的 Microsoft Azure Red Hat OpenShift 叢集上測試應用程式。
+title: Azure 紅帽開放移位的 Azure 活動目錄集成
+description: 瞭解如何創建 Azure AD 安全性群組和使用者以在 Microsoft Azure 紅帽 OpenShift 群集上測試應用。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280530"
 ---
-# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的 Azure Active Directory 整合
+# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure 紅帽開放移位的 Azure 活動目錄集成
 
-如果您尚未建立 Azure Active Directory （Azure AD）租使用者，請遵循[建立 Azure Red Hat OpenShift 的 Azure AD 租](howto-create-tenant.md)使用者中的指示，再繼續進行這些指示。
+如果尚未創建 Azure 活動目錄 （Azure AD） 租戶，請按照[Azure 紅帽 OpenShift 創建 Azure AD 租戶](howto-create-tenant.md)的說明操作，然後再繼續這些說明。
 
-Microsoft Azure Red Hat OpenShift 需要代表您的叢集執行工作的許可權。 如果您的組織還沒有 Azure AD 使用者、Azure AD 安全性群組或 Azure AD 應用程式註冊，以做為服務主體，請遵循這些指示來建立它們。
+Microsoft Azure 紅帽 OpenShift 需要代表群集執行任務的許可權。 如果您的組織還沒有 Azure AD 使用者、Azure AD 安全性群組或 Azure AD 應用註冊用作服務主體，請按照這些說明創建它們。
 
 ## <a name="create-a-new-azure-active-directory-user"></a>建立新的 Azure Active Directory 使用者
 
-在  [Azure 入口網站](https://portal.azure.com)中，確定您的租使用者出現在入口網站右上方的 [使用者名稱] 底下：
+在[Azure 門戶](https://portal.azure.com)中，確保租戶顯示在門戶右上角的使用者名下：
 
-![在右上方列出的租使用者螢幕擷取畫面](./media/howto-create-tenant/tenant-callout.png) 如果顯示錯誤的租使用者，請在右上方按一下您的使用者名稱，然後按一下 [**切換目錄**]，再從 [**所有目錄**] 清單中選取正確的租使用者。
+![右上角列出租戶的門戶螢幕截圖](./media/howto-create-tenant/tenant-callout.png)如果顯示了錯誤的租戶，請按一下右上角的使用者名，然後按一下 **"切換目錄**"，然後從 **"所有目錄"** 清單中選擇正確的租戶。
 
-建立新的 Azure Active Directory 全域管理員使用者以登入您的 Azure Red Hat OpenShift 叢集。
+創建新的 Azure 活動目錄全域管理員使用者以登錄到 Azure 紅帽 OpenShift 群集。
 
-1. 移至 [[使用者-所有使用者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)] 分頁。
-2. 按一下 [ **+ 新增使用者**] 以開啟 [**使用者**] 窗格。
-3. 輸入此使用者的 [**名稱**]。
-4. 根據您所建立的租使用者名稱建立**使用者名稱**，並在結尾附加 `.onmicrosoft.com`。 例如： `yourUserName@yourTenantName.onmicrosoft.com` 。 記下此使用者名稱。 您需要它才能登入您的叢集。
-5. 按一下 **目錄角色** 以開啟 目錄角色 窗格，選取 **全域管理員**然後按一下窗格底部的**確定** 。
-6. 在 [**使用者**] 窗格中，按一下 [**顯示密碼**] 並記錄暫時密碼。 第一次登入之後，系統會提示您重設它。
-7. 在窗格底部，按一下 [**建立**] 以建立使用者。
+1. 轉到["使用者-所有使用者"](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)邊欄選項卡。
+2. 按一下 **"新建使用者**"以打開 **"使用者"** 窗格。
+3. 輸入此使用者**的名稱**。
+4. 基於您創建的租戶的名稱創建**使用者名**，並在末尾`.onmicrosoft.com`追加。 例如： `yourUserName@yourTenantName.onmicrosoft.com` 。 記下此使用者名。 您需要它才能登錄到群集。
+5. 按一下 **"目錄"角色**以打開目錄角色窗格，然後選擇**全域管理員**，然後按一下窗格底部的 **"確定**"。
+6. 在 **"使用者"** 窗格中，按一下"**顯示密碼"** 並記錄臨時密碼。 首次登錄後，系統將提示您重置它。
+7. 在窗格的底部，按一下"**創建**"以創建使用者。
 
-## <a name="create-an-azure-ad-security-group"></a>建立 Azure AD 安全性群組
+## <a name="create-an-azure-ad-security-group"></a>創建 Azure AD 安全性群組
 
-若要授與叢集系統管理員存取權，Azure AD 安全性群組中的成員資格會同步至 OpenShift 群組「osa-客戶-管理員」。 如果未指定，則不會授與任何叢集系統管理員存取權。
+要授予群集管理員存取權限，Azure AD 安全性群組中的成員身份將同步到 OpenShift 組"osa-客戶管理員"。 如果未指定，將不會授予群集管理員存取權限。
 
-1. 開啟 [ [Azure Active Directory 群組](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups)] 分頁。
-2. 按一下 [ **+ 新增群組**]。
-3. 提供 [組名] 和 [描述]。
-4. 將 [**群組類型**] 設定為 [**安全性**]。
-5. 將**成員資格類型**設定為 [**已指派**]。
+1. 打開[Azure 活動目錄組邊](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups)欄選項卡。
+2. 按一下 **"新群組**"。
+3. 提供組名稱和說明。
+4. 將**組類型**設置為 **"安全**"。
+5. 將**成員資格類型**設置為**已分配**。
 
-    將您在先前步驟中建立的 Azure AD 使用者新增到此安全性群組。
+    將在前面的步驟中創建的 Azure AD 使用者添加到此安全性群組。
 
-6. 按一下 [**成員**] 以開啟 [**選取成員**] 窗格。
-7. 在 [成員] 清單中，選取您在上面建立的 Azure AD 使用者。
-8. 在入口網站底部，依序按一下 [**選取**] 和 [**建立**] 以建立安全性群組。
+6. 按一下 **"成員**"以打開 **"選擇成員**"窗格。
+7. 在成員清單中，選擇上面創建的 Azure AD 使用者。
+8. 在門戶底部，按一下"**選擇"** 然後**創建**以創建安全性群組。
 
-    記下 [群組識別碼] 值。
+    記下組 ID 值。
 
-9. 建立群組時，您會在 [所有群組] 清單中看到它。 按一下 [新增] 群組。
-10. 在出現的頁面上，複製 [**物件識別碼**]。 在[建立 Azure Red Hat OpenShift](tutorial-create-cluster.md)叢集教學課程中，我們會將此值稱為 `GROUPID`。
+9. 創建組時，您將在所有組清單中看到它。 按一下新組。
+10. 在顯示的頁面上，向下複製物件**ID**。 我們將引用此值，如`GROUPID`創建 Azure[紅帽 OpenShift 群集](tutorial-create-cluster.md)教程。
 
 > [!IMPORTANT]
-> 若要將此群組與 osa-customer-admins OpenShift 群組同步，請使用 Azure CLI 來建立叢集。 Azure 入口網站目前缺少設定此群組所需的欄位。
+> 要將此組與 osa-客戶管理員 OpenShift 組同步，請使用 Azure CLI 創建群集。 Azure 門戶當前缺少一個欄位來設置此組。
 
-## <a name="create-an-azure-ad-app-registration"></a>建立 Azure AD 應用程式註冊
+## <a name="create-an-azure-ad-app-registration"></a>創建 Azure AD 應用註冊
 
-您可以在 `az openshift create` 命令中省略 `--aad-client-app-id` 旗標，以在建立叢集時自動建立 Azure Active Directory （Azure AD）應用程式註冊用戶端。 本教學課程會示範如何建立 Azure AD 應用程式註冊以進行完整性。
+通過將標誌省略到命令，`--aad-client-app-id`可以自動創建 Azure 活動目錄 （Azure AD） 應用註冊用戶端，作為創建群集`az openshift create`的一部分。 本教程演示如何創建 Azure AD 應用註冊以獲得完整性。
 
-如果您的組織還沒有 Azure Active Directory （Azure AD）應用程式註冊以作為服務主體，請遵循這些指示來建立一個。
+如果您的組織尚未註冊 Azure 活動目錄 （Azure AD） 應用註冊用作服務主體，請按照這些說明創建一個。
 
-1. 開啟 [[應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)] 分頁，然後按一下 [ **+ 新增註冊**]。
-2. 在 [**註冊應用程式**] 窗格中，輸入應用程式註冊的名稱。
-3. 請確定在 [**支援的帳戶類型**] 下，只選取 [**此組織目錄中的帳戶**]。 這是最安全的選擇。
-4. 我們會在我們知道叢集的 URI 之後，稍後再新增重新導向 URI。 按一下 [**註冊**] 按鈕，以建立 Azure AD 應用程式註冊。
-5. 在出現的頁面上，複製**應用程式（用戶端）識別碼**。 在[建立 Azure Red Hat OpenShift](tutorial-create-cluster.md)叢集教學課程中，我們會將此值稱為 `APPID`。
+1. 打開[應用註冊邊欄選項卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，然後按一下 **"新建註冊**"。
+2. 在 **"註冊應用程式**"窗格中，輸入應用程式註冊的名稱。
+3. 確保根據 **"支援"科目類型**，**僅選中此組織目錄中的帳戶**。 這是最安全的選擇。
+4. 稍後，我們將在知道群集 URI 後添加重定向 URI。 按一下 **"註冊"** 按鈕可創建 Azure AD 應用程式註冊。
+5. 在顯示的頁面上，向下複製**應用程式（用戶端）ID**。 我們將引用此值，如`APPID`創建 Azure[紅帽 OpenShift 群集](tutorial-create-cluster.md)教程。
 
-![[應用程式物件] 頁面的螢幕擷取畫面](./media/howto-create-tenant/get-app-id.png)
+![應用物件頁面的螢幕截圖](./media/howto-create-tenant/get-app-id.png)
 
 ### <a name="create-a-client-secret"></a>建立用戶端密碼
 
-產生用戶端密碼，以驗證您的應用程式以 Azure Active Directory。
+生成用戶端金鑰，用於將應用驗證為 Azure 活動目錄。
 
-1. 在 [應用程式註冊] 頁面的 [**管理**] 區段中，按一下 [**憑證 & 密碼**]。
-2. 在 [**憑證 & 秘密**] 窗格中，按一下 [ **+ 新增用戶端密碼**]。  [**新增用戶端密碼**] 窗格隨即出現。
-3. 提供**描述**。
-4. 將 [**到期**] 設為您偏好的持續時間，例如**2 年**。
-5. 按一下 [**新增**]，[金鑰] 值就會出現在頁面的 [**用戶端密碼**] 區段中。
-6. 複製機碼值。 在[建立 Azure Red Hat OpenShift](tutorial-create-cluster.md)叢集教學課程中，我們會將此值稱為 `SECRET`。
+1. 在應用註冊頁的 **"管理**"部分中，按一下 **"證書&機密**"。
+2. 在 **"證書&機密**"窗格中，按一下 **"新用戶端機密**"。  將顯示 **"添加用戶端機密**"窗格。
+3. 提供**說明**。
+4. 設置為**您**喜歡的持續時間，例如 **，在 2 年內**。
+5. 按一下"**添加**"，鍵值將顯示在頁面的 **"用戶端機密**"部分中。
+6. 向下複製鍵值。 我們將引用此值，如`SECRET`創建 Azure[紅帽 OpenShift 群集](tutorial-create-cluster.md)教程。
 
-![[憑證和密碼] 窗格的螢幕擷取畫面](./media/howto-create-tenant/create-key.png)
+![證書和機密窗格的螢幕截圖](./media/howto-create-tenant/create-key.png)
 
-如需 Azure 應用程式物件的詳細資訊，請參閱[Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
+有關 Azure 應用程式物件的詳細資訊，請參閱[Azure 活動目錄中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
 
-如需建立新 Azure AD 應用程式的詳細資訊，請參閱[使用 Azure Active Directory v1.0 端點註冊應用](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)程式。
+有關創建新 Azure AD 應用程式的詳細資訊，請參閱[使用 Azure 活動目錄 v1.0 終結點註冊應用](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)。
 
 ## <a name="add-api-permissions"></a>新增 API 權限
 
-[//]: # (請勿變更為 Microsoft Graph。它無法與 Microsoft Graph 搭配使用。)
-1. 在 [**管理**] 區段中，按一下 [ **API 許可權**]
-2. 按一下 [**新增許可權**]，然後依序選取 [ **Azure Active Directory 圖形]** 和 [**委派許可權**]
+[//]: # (不要更改為微軟圖形。它不適用於微軟圖形。)
+1. 在 **"管理**"部分中按一下**API 許可權**
+2. 按一下 **"添加許可權**"並選擇**Azure 活動目錄圖**，然後**委派許可權**。
 > [!NOTE]
-> 請確定您已選取 [Azure Active Directory 圖形]，而不是 [Microsoft Graph] 磚。
+> 請確保選擇了"Azure 活動目錄圖"，而不是"Microsoft 圖形"磁貼。
 
-3. 在下列清單中展開 [**使用者**]，並啟用 [**讀取**] 許可權。 如果依預設會啟用 [**讀取**]，請確定它是**Azure Active Directory Graph**許可權**使用者。請參閱**。
-4. 向上快移並選取 [**應用程式許可權**]。
-5. 展開下列清單中的 [**目錄**]，並啟用 [ **ReadAll**]。
-6. 按一下 [**新增許可權**] 以接受變更。
-7. [API 許可權] 面板現在應該會顯示 [*使用者. 讀取*] 和 [*目錄] ReadAll*。 請注意 [ *ReadAll*] 旁的 [**管理員同意**] 欄位中的警告。
-8. 如果您是*Azure 訂用帳戶管理員*，請在下方按一下 **[授與系統管理員同意*訂*** 用帳戶名稱]。 如果您不是*Azure 訂用帳戶管理員*，請向您的系統管理員要求同意。
+3. 展開下面的清單中**的使用者**並啟用**使用者.閱讀**許可權。 如果預設情況下啟用**了 User.Read，** 請確保它是 Azure**活動目錄圖形**許可權 **"使用者"。**
+4. 向上滾動並選擇**應用程式許可權**。
+5. 展開下面清單中的**目錄**並啟用**目錄。閱讀全部**。
+6. 按一下"**添加許可權**"以接受更改。
+7. API 許可權面板現在應同時顯示*User.Read*和*目錄。ReadAll*。 請注意*目錄*旁邊的 **"管理員同意"** 列中的警告。
+8. 如果您是 Azure*訂閱管理員*，請按一下下面的 **"授予管理員同意*訂閱名稱***"。 如果您不是 Azure*訂閱管理員*，請要求管理員的同意。
 
-![[API 許可權] 面板的螢幕擷取畫面。 使用者。已新增 ReadAll 許可權，目錄需要系統管理員同意。 ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+![API 許可權面板的螢幕截圖。 使用者.閱讀和目錄.閱讀添加的擁有權限，管理員同意目錄.閱讀所有](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> 只有在授與同意之後，叢集系統管理員群組的同步處理才會生效。 您會在 [*需要管理員同意*] 資料行中看到具有核取記號的綠色圓圈和「已授與訂用帳戶*名稱*」訊息。
+> 群集管理員組的同步僅在獲得同意後才起作用。 在 *"管理員同意"要求*列中，您將看到一個綠色圓圈，其中帶有核取記號和消息"訂閱*名稱*授予"。
 
-如需管理系統管理員和其他角色的詳細資訊，請參閱[新增或變更 Azure 訂](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)用帳戶管理員。
+有關管理管理員和其他角色的詳細資訊，請參閱[添加或更改 Azure 訂閱管理員](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)。
 
 ## <a name="resources"></a>資源
 
-* [Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [快速入門：使用 Azure Active Directory v1.0 端點註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Azure 活動目錄中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [快速入門：向 Azure Active Directory v1.0 端點註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您已符合所有[Azure Red Hat OpenShift 必要條件](howto-setup-environment.md)，就可以開始建立您的第一個叢集！
+如果您滿足所有[Azure 紅帽 OpenShift 先決條件](howto-setup-environment.md)，則可以創建第一個群集！
 
-嘗試教學課程：
+請嘗試本教程：
 > [!div class="nextstepaction"]
 > [建立 Azure Red Hat OpenShift 叢集](tutorial-create-cluster.md)

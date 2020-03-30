@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441548"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240440"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 
@@ -20,17 +20,17 @@ Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不
 
 ## <a name="automatic-and-online-backups"></a>自動的線上備份
 
-有了 Azure Cosmos DB，不只您的資料，還有資料的備份都一併具有高度備援性，可針對區域性災害進行復原。 下列步驟顯示 Azure Cosmos DB 如何執行資料備份：
+有了 Azure Cosmos DB，不只您的資料，還有資料的備份都一併具有高度備援性，可針對區域性災害進行復原。 以下步驟顯示了 Azure Cosmos DB 如何執行資料備份：
 
 * Azure Cosmos DB 會每隔 4 小時 (在任何時間點) 自動備份資料庫一次，只會儲存最新的 2 個備份。 不過，如果容器或資料庫已刪除，Azure Cosmos DB 只會將指定容器或資料庫的現有快照集保留 30 天。
 
-* Azure Cosmos DB 會將這些備份儲存在 Azure Blob 儲存體中，而實際的資料會在 Azure Cosmos DB 中的本機位置。
+* Azure Cosmos DB 將這些備份存儲在 Azure Blob 存儲中，而實際資料駐留在 Azure Cosmos DB 中。
 
-*  若要保證低延遲，您的備份快照集會儲存在 Azure Blob 儲存體中，該區域與目前的寫入區域（或其中一個寫入區域，如果您有多宿主設定）相同。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 只有在起始了備份還原時，Azure Cosmos DB 才會使用此備份。
+*  為保證低延遲，備份的快照存儲在 Azure Cosmos 資料庫帳戶的當前寫入區域（或其中一個寫入區域，如果具有多主配置）的同一區域中的 Azure Blob 存儲中。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 只有在起始了備份還原時，Azure Cosmos DB 才會使用此備份。
 
 * 備份的進行不會影響應用程式的效能或可用性。 Azure Cosmos DB 會在背景中執行資料備份，既不會取用任何另外佈建的輸送量 (RU)，也不會影響資料庫的效能和可用性。
 
-* 如果您不小心刪除或損毀您的資料，應該在8小時內與[Azure 支援](https://azure.microsoft.com/support/options/)聯繫，讓 Azure Cosmos DB 團隊可以協助您從備份還原資料。
+* 如果意外刪除或損壞了資料，則應在 8 小時內聯繫[Azure 支援部門](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 團隊可以説明您從備份中還原資料。
 
 下圖顯示三個主要實體分割區都在美國西部的 Azure Cosmos 容器，會備份到美國西部的遠端 Azure Blob 儲存體帳戶，然後再複寫到美國東部：
 
@@ -58,28 +58,28 @@ Azure Cosmos DB 會每四個小時擷取一次資料的快照集。 任何時候
 
 * 一或多個 Azure Cosmos 容器遭到刪除
 
-* 容器內的 Azure Cosmos 項目 (例如，文件) 遭到刪除或修改。 這種特定情況一般稱為「資料損毀」。
+* 容器內的 Azure Cosmos 項目 (例如，文件) 遭到刪除或修改。 此特定案例通常稱為"資料損壞"。
 
 * 共用供應項目資料庫或其內的容器遭到刪除或損毀
 
-Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原程序一律會建立新的 Azure Cosmos 帳戶，以容納還原的資料。 新帳戶的名稱 (若未指定) 會有此格式：`<Azure_Cosmos_account_original_name>-restored1`。 如果嘗試了多次還原，末尾的數字會遞增。 您無法將資料還原至預先建立好的 Azure Cosmos 帳戶。
+Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原程序一律會建立新的 Azure Cosmos 帳戶，以容納還原的資料。 新帳戶的名稱 (若未指定) 會有此格式：`<Azure_Cosmos_account_original_name>-restored1`。 如果嘗試了多次還原，末尾的數字會遞增。 無法將資料還原到預先創建的 Azure Cosmos 帳戶。
 
-當 Azure Cosmos 帳戶遭到刪除時，我們可以將資料還原至有相同名稱的帳戶 (前提是該帳戶名稱無人使用)。 在這類情況下，建議您不要重新建立已刪除的帳戶，因為這麼做不只會讓還原的資料無法使用相同名稱，還會讓您更加難以知道該從哪個正確帳戶還原。 
+當 Azure Cosmos 帳戶遭到刪除時，我們可以將資料還原至有相同名稱的帳戶 (前提是該帳戶名稱無人使用)。 在這種情況下，建議在刪除後不要重新創建帳戶，因為它不僅阻止還原的資料使用相同的名稱，而且還使發現正確的帳戶以更輕鬆地還原。 
 
 Azure Cosmos 資料庫遭到刪除時，您可以還原整個資料庫，也可以只還原該資料庫中的部分容器。 此外，還能跨資料庫選取容器來加以還原，而且所還原的資料全都會放在新的 Azure Cosmos 帳戶中。
 
-當容器內的一或多個項目不小心遭到刪除或變更 (即資料損毀案例)，您必須指定要還原到哪個時間點。 時間是此案例的關鍵。 因為容器處於運作狀態，所以備份仍在執行，如果您等候超過保留期間 (預設值為八小時) 才還原，系統將會覆寫備份。 在遭到刪除的案例中，因為備份週期不會覆寫資料，所以資料不會再儲存起來。 針對已遭到刪除的資料庫或容器，其備份會儲存 30 天。
+當容器內的一或多個項目不小心遭到刪除或變更 (即資料損毀案例)，您必須指定要還原到哪個時間點。 時間是此案例的關鍵。 因為容器處於運作狀態，所以備份仍在執行，如果您等候超過保留期間 (預設值為八小時) 才還原，系統將會覆寫備份。 在刪除的情況下，您的資料不再存儲，因為它們不會被備份週期覆蓋。 針對已遭到刪除的資料庫或容器，其備份會儲存 30 天。
 
 如果您在資料庫層級佈建輸送量 (也就是一組容器會共用所佈建的輸送量)，則在此案例中，系統會在整個資料庫層級 (而非個別的容器層級) 進行備份和還原程序。 在這類案例中，您無法選取一部分的容器來還原。
 
 ## <a name="migrating-data-to-the-original-account"></a>將資料遷移至原始帳戶
 
-資料還原的主要目標是提供方法供您復原不小心刪除或修改的任何資料。 因此，建議您先檢查所復原資料的內容，以確保所含資料符合您的預期。 然後，著手將資料遷移回到主要帳戶。 雖然您可以將還原的帳戶作為運作中的帳戶，但如果您有生產工作負載，則不建議這麼做。  
+資料還原的主要目標是提供方法供您復原不小心刪除或修改的任何資料。 因此，建議您先檢查所復原資料的內容，以確保所含資料符合您的預期。 然後，著手將資料遷移回到主要帳戶。 儘管可以使用還原的帳戶作為即時帳戶，但如果具有生產工作負載，則不推薦使用該選項。  
 
 下列不同方法可供您將資料遷移回到原始的 Azure Cosmos 帳戶：
 
 * 使用 [Cosmos DB 資料移轉工具](import-data.md)
-* 使用 [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
+* 使用[Azure 資料工廠]( ../data-factory/connector-azure-cosmos-db.md)
 * 在 Azure Cosmos DB 中使用[變更摘要](change-feed.md) 
 * 撰寫自訂程式碼
 

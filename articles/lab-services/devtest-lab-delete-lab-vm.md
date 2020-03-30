@@ -1,6 +1,6 @@
 ---
 title: 在 Azure DevTest Labs 的實驗室中刪除實驗室或 VM
-description: 本文說明如何使用 Azure 入口網站（Azure DevTest Labs）刪除實驗室或刪除實驗室中的 VM。
+description: 本文演示如何使用 Azure 門戶（Azure 開發人員測試實驗室）在實驗室中刪除實驗室或刪除 VM。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270806"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 的實驗室中刪除實驗室或 VM
@@ -31,17 +31,17 @@ ms.locfileid: "79270806"
 
 若要刪除實驗室，請執行下列動作： 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 從左側功能表中選取 [所有資源]，選取 [DevTest Labs] 作為類型服務，然後選取實驗室。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+2. 從左側功能表中選取 [所有資源]****，選取 [DevTest Labs]**** 作為類型服務，然後選取實驗室。
 
     ![選取您的實驗室](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. 在 [DevTest Lab] 頁面上，按一下工具列上的 [刪除]。 
+3. 在 [DevTest Lab]**** 頁面上，按一下工具列上的 [刪除]****。 
 
     ![刪除按鈕](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. 在 [確認] 頁面上，輸入您實驗室的**名稱**，然後選取 [刪除]。 
+4. 在 [確認]**** 頁面上，輸入您實驗室的**名稱**，然後選取 [刪除]****。 
 
     ![確認](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. 若要查看作業狀態，請選取 [通知] 圖示 (鈴鐺)。 
+5. 若要查看作業狀態，請選取 [通知]**** 圖示 (鈴鐺)。 
 
     ![通知](media/devtest-lab-delete-lab-vm/delete-status.png)
 
@@ -56,17 +56,17 @@ ms.locfileid: "79270806"
 
 若要刪除實驗室中的 VM，請執行下列動作： 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 從左側功能表中選取 [所有資源]，選取 [DevTest Labs] 作為類型服務，然後選取實驗室。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+2. 從左側功能表中選取 [所有資源]****，選取 [DevTest Labs]**** 作為類型服務，然後選取實驗室。
 
     ![選取您的實驗室](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. 在 VM 清單中選取 VM 的 **... (省略符號)** ，然後選取 [刪除]。 
+3. 在 VM 清單中選取 VM 的 **... (省略符號)**，然後選取 [刪除]****。 
 
     ![在功能表中刪除 VM](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
-4. 在**確認**對話方塊上，選取 [確定]。 
-5. 若要查看作業狀態，請選取 [通知] 圖示 (鈴鐺)。 
+4. 在**確認**對話方塊上，選取 [確定]****。 
+5. 若要查看作業狀態，請選取 [通知]**** 圖示 (鈴鐺)。 
 
-若要從 [虛擬機器] 頁面中刪除 VM，請選取工具列中的 [刪除]，如下圖所示：
+若要從 [虛擬機器] 頁面**** 中刪除 VM，請選取工具列中的 [刪除]****，如下圖所示：
 
 ![從 VM 頁面刪除 VM](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 

@@ -1,73 +1,73 @@
 ---
-title: Azure Functions 的儲存體考慮
-description: 瞭解 Azure Functions 的儲存體需求，以及如何加密儲存的資料。
+title: Azure 函數的存儲注意事項
+description: 瞭解 Azure 函數的存儲要求和加密存儲的資料。
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276578"
 ---
-# <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存體考慮
+# <a name="storage-considerations-for-azure-functions"></a>Azure 函數的存儲注意事項
 
-當您建立函數應用程式實例時，Azure Functions 需要 Azure 儲存體帳戶。 您的函數應用程式可能會使用下列儲存體服務：
+創建函數應用實例時，Azure 函數需要 Azure 存儲帳戶。 您的功能應用可以使用以下存儲服務：
 
 
-|儲存體服務  | 函數使用方式  |
+|存儲服務  | 函數使用  |
 |---------|---------|
-| [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)     | 維護系結狀態和功能金鑰。  <br/>[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞也會使用此功能。 |
-| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用[方案](functions-scale.md#consumption-plan)中儲存和執行函式應用程式程式碼的檔案共用。 |
-| [Azure 佇列儲存體](../storage/queues/storage-queues-introduction.md)     | 由[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞使用。   |
-| [Azure 資料表儲存體](../storage/tables/table-storage-overview.md)  |  由[Durable Functions 中](durable/durable-functions-task-hubs.md)的工作中樞使用。       |
+| [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)     | 維護綁定狀態和功能鍵。  <br/>也由[持久函數中的任務中心](durable/durable-functions-task-hubs.md)使用。 |
+| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用於在[消耗計畫中](functions-scale.md#consumption-plan)存儲和運行函數應用代碼的檔共用。 |
+| [Azure 佇列存儲](../storage/queues/storage-queues-introduction.md)     | 由[持久函數中的任務中心](durable/durable-functions-task-hubs.md)使用。   |
+| [Azure 資料表儲存體](../storage/tables/table-storage-overview.md)  |  由[持久函數中的任務中心](durable/durable-functions-task-hubs.md)使用。       |
 
 > [!IMPORTANT]
 > 當使用「使用情況主控方案」時，您的函式程式碼和繫結組態檔會儲存在主要儲存體帳戶中的 Azure 檔案儲存體中。 當您刪除主要儲存體帳戶時，會刪除此內容且無法復原。
 
 ## <a name="storage-account-requirements"></a>儲存體帳戶的需求
 
-建立函數應用程式時，您必須建立或連結至支援 Blob、佇列和資料表儲存體的一般用途 Azure 儲存體帳戶。 這是因為函式依賴 Azure 儲存體進行作業，例如管理觸發程式和記錄函數執行。 有些儲存體帳戶不支援佇列和資料表。 這些帳戶包括僅限 blob 的儲存體帳戶、Azure 進階儲存體，以及具有 ZRS 複寫的一般用途儲存體帳戶。 建立函數應用程式時，會從 [儲存體帳戶] 分頁中篩選出這些不受支援的帳戶。
+創建函數應用時，必須創建或連結到支援 Blob、佇列和表存儲的通用 Azure 存儲帳戶。 這是因為函數依賴于 Azure 存儲來執行諸如管理觸發器和日誌記錄函數執行等操作。 某些存儲帳戶不支援佇列和表。 這些帳戶包括僅 Blob 存儲帳戶、Azure 高級存儲和具有 ZRS 複製的通用存儲帳戶。 創建函數應用時，這些不支援的帳戶將從"存儲帳戶"邊欄選項卡中篩選出來。
 
-若要深入了解儲存體帳戶類型，請參閱 [Azure 儲存體服務簡介](../storage/common/storage-introduction.md#azure-storage-services)。 
+要瞭解有關存儲帳戶類型詳細資訊，請參閱[介紹 Azure 存儲服務](../storage/common/storage-introduction.md#azure-storage-services)。 
 
-雖然您可以在函式應用程式中使用現有的儲存體帳戶，但您必須確定它符合這些需求。 在函式應用程式建立流程中建立的儲存體帳戶，保證會符合這些儲存體帳戶的需求。  
+雖然您可以將現有存儲帳戶用於函數應用，但必須確保它滿足這些要求。 作為功能應用創建流的一部分創建的存儲帳戶保證滿足這些存儲帳戶要求。  
 
-## <a name="storage-account-guidance"></a>儲存體帳戶指引
+## <a name="storage-account-guidance"></a>存儲帳戶指南
 
-每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶遭到刪除，您的函式應用程式將不會執行。 若要針對儲存體相關的問題進行疑難排解，請參閱[如何針對儲存體相關的問題進行疑難排解](functions-recover-storage-account.md)。 下列其他考慮適用于函數應用程式所使用的儲存體帳戶。
+每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶已刪除，則函數應用將無法運行。 要排除與存儲相關的問題，請參閱[如何解決與存儲相關的問題](functions-recover-storage-account.md)。 以下其他注意事項適用于功能應用使用的存儲帳戶。
 
-### <a name="storage-account-connection-setting"></a>儲存體帳戶連接設定
+### <a name="storage-account-connection-setting"></a>存儲帳戶連接設置
 
-儲存體帳戶連線會保留在[AzureWebJobsStorage 應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中。 
+存儲帳戶連接在[AzureWeb作業存儲應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中維護。 
 
-當您重新產生儲存體金鑰時，必須更新儲存體帳戶連接字串。 [在這裡閱讀更多關於儲存體金鑰管理的資訊](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+重新生成存儲金鑰時，必須更新存儲帳戶連接字串。 [在此處閱讀有關存儲金鑰管理的更多內容](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
 
-### <a name="shared-storage-accounts"></a>共用的儲存體帳戶
+### <a name="shared-storage-accounts"></a>共用存儲帳戶
 
-有可能會有多個函式應用程式共用相同的儲存體帳戶，而不會有任何問題。 例如，在 Visual Studio 您可以使用 Azure 儲存體模擬器開發多個應用程式。 在此情況下，模擬器的作用就像單一儲存體帳戶。 您的函數應用程式所使用的相同儲存體帳戶也可以用來儲存您的應用程式資料。 不過，在生產環境中，這種方法不一定是好主意。
+多個功能應用可以共用同一個存儲帳戶，沒有任何問題。 例如，在視覺化工作室中，可以使用 Azure 存儲模擬器開發多個應用。 在這種情況下，模擬程式的作用類似于單個存儲帳戶。 功能應用使用的相同存儲帳戶也可用於存儲應用程式資料。 但是，這種方法在生產環境中並不總是一個好主意。
 
-### <a name="optimize-storage-performance"></a>將儲存體效能優化
+### <a name="optimize-storage-performance"></a>將儲存體效能最佳化
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
-## <a name="storage-data-encryption"></a>儲存體資料加密
+## <a name="storage-data-encryption"></a>存儲資料加密
 
-Azure 儲存體會加密待用儲存體帳戶中的所有資料。 如需詳細資訊，請參閱待用[資料的加密 Azure 儲存體](../storage/common/storage-service-encryption.md)。
+Azure 存儲在靜態存儲帳戶中加密所有資料。 有關詳細資訊，請參閱[靜態資料的 Azure 存儲加密](../storage/common/storage-service-encryption.md)。
 
-根據預設，資料會使用 Microsoft 管理的金鑰進行加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰，以用於加密 blob 和檔案資料。 這些金鑰必須存在於 Azure Key Vault 中，函式才能存取儲存體帳戶。 若要深入瞭解，請參閱[使用 Azure 入口網站設定 Azure Key Vault 的客戶管理金鑰](../storage/common/storage-encryption-keys-portal.md)。  
+預設情況下，資料使用 Microsoft 管理的金鑰進行加密。 為了對加密金鑰進行其他控制，可以提供客戶管理的金鑰，用於加密 Blob 和檔資料。 這些金鑰必須存在於 Azure 金鑰保存庫中，以便函數能夠訪問存儲帳戶。 要瞭解更多資訊，請參閱[使用 Azure 門戶使用 Azure 金鑰保存庫配置客戶管理金鑰](../storage/common/storage-encryption-keys-portal.md)。  
 
-## <a name="mount-file-shares-linux"></a>掛接檔案共用（Linux）
+## <a name="mount-file-shares-linux"></a>裝載檔共用（Linux）
 
-您可以將現有的 Azure 檔案儲存體共用掛接至 Linux 函數應用程式。 藉由將共用裝載至您的 Linux 函式應用程式，您可以利用現有的機器學習模型或函式中的其他資料。 您可以使用[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add)命令，將現有的共用掛接至您的 Linux 函式應用程式。 
+您可以將現有的 Azure 檔共用裝載到 Linux 函數應用。 通過將共用安裝到 Linux 函數應用，您可以利用函數中的現有機器學習模型或其他資料。 可以使用 命令[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add)將現有共用裝載到 Linux 函數應用。 
 
-在此命令中，`share-name` 是現有 Azure 檔案儲存體共用名稱，而 `custom-id` 可以是在裝載至函式應用程式時，可唯一定義共用的任何字串。 此外，`mount-path` 是在函數應用程式中存取共用的路徑。 `mount-path` 的格式必須是 `/dir-name`，而且開頭不能是 `/home`。
+在此命令中，`share-name`是現有 Azure 檔共用的名稱，`custom-id`可以是裝載到函數應用時唯一定義共用的任何字串。 此外，`mount-path`在函數應用中訪問共用的路徑。 `mount-path`必須採用格式`/dir-name`，並且不能從`/home`開始。
 
-如需完整範例，請參閱[建立 Python 函式應用程式和掛接 Azure 檔案儲存體共用](scripts/functions-cli-mount-files-storage-linux.md)中的腳本。 
+有關完整示例，請參閱創建 Python[函數應用中的腳本並裝載 Azure 檔共用](scripts/functions-cli-mount-files-storage-linux.md)。 
 
-目前僅支援 `AzureFiles` 的 `storage-type`。 您只能將五個共用掛接至指定的函式應用程式。 若儲存體帳戶位於不同的區域，掛接檔案共用可能會使冷啟動時間增加至少 200-300 毫秒，或甚至更多。
+目前，僅支援`storage-type``AzureFiles`的 一個。 您只能將五個共用裝載到給定的函數應用。 安裝檔共用可能會將冷啟動時間至少增加 200-300 毫秒，或者當存儲帳戶位於其他區域時甚至更多。
 
-裝載的共用可供您的函式程式碼在指定的 `mount-path` 使用。 例如，當 `mount-path` `/path/to/mount`時，您可以透過檔案系統 Api 存取目標目錄，如下列 Python 範例所示：
+裝載的共用在指定的功能代碼處`mount-path`可用。 例如，何時`mount-path`是`/path/to/mount`，可以通過檔案系統 API 訪問目標目錄，如以下 Python 示例所示：
 
 ```python
 import os
@@ -78,9 +78,9 @@ files_in_share = os.listdir("/path/to/mount")
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure Functions 裝載選項。
+詳細瞭解 Azure 函數託管選項。
 
 > [!div class="nextstepaction"]
-> [Azure Functions 的級別和裝載](functions-scale.md)
+> [Azure Functions 的規模調整和主控](functions-scale.md)
 
 

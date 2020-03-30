@@ -1,15 +1,15 @@
 ---
-title: 使用 Windows Azure 診斷的事件匯總
+title: 具有 Windows Azure 診斷的事件聚合
 description: 了解如何使用 WAD 彙總及收集事件，來監視和診斷 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282493"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Windows Azure 診斷的事件彙總和收集
@@ -21,7 +21,7 @@ ms.locfileid: "79282493"
 
 當您執行 Azure Service Fabric 叢集時，最好從中央位置的所有節點收集記錄。 將記錄集中在中央位置，可協助您分析並針對叢集或該叢集中執行之應用程式與服務的問題進行疑難排解。
 
-上傳和收集記錄的其中一種方式就是使用「Windows Azure 診斷 (WAD)」延伸模組，此延伸模組可將記錄上傳到「Azure 儲存體」，也可以選擇將記錄傳送至 Azure Application Insights 或「事件中樞」。 您也可以使用外部進程來讀取儲存體中的事件，並將它們放在分析平台產品中，例如[Azure 監視器記錄](../log-analytics/log-analytics-service-fabric.md)或其他記錄剖析解決方案。
+上傳和收集記錄的其中一種方式就是使用「Windows Azure 診斷 (WAD)」延伸模組，此延伸模組可將記錄上傳到「Azure 儲存體」，也可以選擇將記錄傳送至 Azure Application Insights 或「事件中樞」。 您還可以使用外部進程從存儲中讀取事件並將其放置在分析平台產品中，例如[Azure 監視器日誌](../log-analytics/log-analytics-service-fabric.md)或其他日誌分析解決方案。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "79282493"
 ## <a name="prerequisites"></a>Prerequisites
 本文中使用下列工具：
 
-* [Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager 範本](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure 資源管理器](../azure-resource-manager/management/overview.md)
+* [Azure 電源外殼](/powershell/azure/overview)
+* [Azure 資源管理器範本](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
 Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics-event-generation-infra.md)，其使用擴充功能預先設定下列通道，將監視和診斷資料傳送至儲存體資料表或其他位置：
@@ -43,15 +43,15 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 收集記錄的第一個步驟是將診斷擴充功能部署在 Service Fabric 叢集中的虛擬機器擴展集節點上。 診斷擴充功能會收集每個 VM 上的記錄，並將它們上傳至您指定的儲存體帳戶。 下列步驟概述如何透過 Azure 入口網站和 Azure Resource Manager 範本對新的和現有叢集完成此操作。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>透過 Azure 入口網站建立叢集時部署診斷延伸模組
-建立您的叢集時，在叢集組態步驟中展開選用設定，並確定已將 [診斷] 設定為 [開啟] (預設值)。
+建立您的叢集時，在叢集組態步驟中展開選用設定，並確定已將 [診斷] 設定為 [開啟]**** (預設值)。
 
 ![入口網站中用於建立叢集的 Azure 診斷設定](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-在最後一個步驟中，我們強烈建議您下載範本，然後再**按一下 [建立]** 。 如需詳細資訊，請參閱[使用 Azure Resource Manager 範本來設定 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)。 您需要範本來變更要從中收集資料的通道 (如上方所列)。
+在最後一個步驟中，我們強烈建議您下載範本，然後再**按一下 [建立]**。 如需詳細資訊，請參閱[使用 Azure Resource Manager 範本來設定 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)。 您需要範本來變更要從中收集資料的通道 (如上方所列)。
 
 ![叢集範本](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-既然您正在匯總 Azure 儲存體中的事件，請[設定 Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)以取得見解，並在 Azure 監視器記錄入口網站中進行查詢
+現在，您正在 Azure 存儲中彙總事件，[請設置 Azure 監視器日誌](service-fabric-diagnostics-oms-setup.md)以獲取見解並在 Azure 監視器日誌門戶中查詢它們
 
 >[!NOTE]
 >目前沒有任何方法可以篩選或清理已傳送至資料表的事件。 如果不實作從資料表移除事件的處理序，資料表將會繼續成長 (預設上限為 50 GB)。 如何變更此項目的指示會在[本文下方詳述](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota)。 此外，我們可以提供具有 [Watchdog 範例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中所執行資料清理服務的範例，除非您必須儲存超過 30 或 90 天時間範圍的記錄，否則建議您自行撰寫資料清理服務。
@@ -63,7 +63,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>建立具有診斷擴充功能的叢集
 若要使用 Resource Manager 建立叢集，您必須將診斷設定 JSON 新增至完整的 Resource Manager 範本。 我們在 Resource Manager 範本範例中提供一個五 VM 叢集 Resource Manager 範本，且已在其中加入診斷設定。 您可以在 Azure 資源庫中的這個位置看到它： [具有診斷 Resource Manager 範本範例的五節點叢集](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。
 
-若要查看 Resource Manager 範本中的 [診斷] 設定，請開啟 azuredeploy.json 檔案，並搜尋 **IaaSDiagnostics**。 若要使用這個範本建立叢集，請選取上一個連結所提供的 [部署到 Azure] 按鈕。
+若要查看 Resource Manager 範本中的 [診斷] 設定，請開啟 azuredeploy.json 檔案，並搜尋 **IaaSDiagnostics**。 若要使用這個範本建立叢集，請選取上一個連結所提供的 [部署到 Azure]**** 按鈕。
 
 或者，您也可以下載資源管理員範例，對它進行變更，然後在 Azure PowerShell 視窗中使用 `New-AzResourceGroupDeployment` 命令來使用修改過的範本建立叢集。 針對您傳遞給命令的參數，請參閱以下程式碼。 如需如何使用 PowerShell 部署資源群組的詳細資訊，請參閱[使用 Azure Resource Manager 範本部署資源群組](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -89,7 +89,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 },
 ```
 
- 接下來，新增至參數區段中儲存體帳戶定義之後的位置，位於 `supportLogStorageAccountName` 之間。 以您偏好的儲存體帳戶名稱取代預留位置文字 storage account name goes here。
+ 接下來，新增至參數區段中儲存體帳戶定義之後的位置，位於 `supportLogStorageAccountName` 之間。 將預留位置文字*存儲帳戶名稱*替換為您希望的存儲帳戶的名稱。
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -193,7 +193,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
 ### <a name="update-storage-quota"></a>更新儲存體配額
 
-因為由擴充功能填入的表格可成長到達到配額限制，因此建議您考慮降低配額大小。 預設值是 50 GB，並可在 `overallQuotaInMB` 下方，從 `DiagnosticMonitorConfiguration` 欄位下的範本中設定
+因為由擴充功能填入的表格可成長到達到配額限制，因此建議您考慮降低配額大小。 預設值是 50 GB，並可在 `DiagnosticMonitorConfiguration` 下方，從 `overallQuotaInMB` 欄位下的範本中設定
 
 ```json
 "overallQuotaInMB": "50000",
@@ -202,7 +202,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 ## <a name="log-collection-configurations"></a>記錄收集設定
 來自其他通道的記錄也可供收集，以下是一些您可以在適用於 Azure 中執行之叢集的範本中進行的最常見設定。
 
-* 操作通道-基底：預設為啟用，Service Fabric 和叢集執行的高階作業，包括即將發生的節點、正在部署的新應用程式，或升級復原等的事件。如需事件清單，請參閱[操作通道事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)。
+* 操作通道 - 基本：預設情況下啟用了 Service Fabric 和群集執行的高級操作，包括即將啟動的節點的事件、正在部署的新應用程式或升級回滾等。有關事件清單，請參閱[操作通道事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)。
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
@@ -229,7 +229,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 >此通道具有非常大量的事件，允許從這個詳細通道收集事件會導致快速產生大量追蹤，而會消耗儲存體容量。 請只在絕對必要時才開啟此功能。
 
 
-若要啟用**基礎操作通道** (建議啟用以獲得雜訊最少的完整記錄)，在您的範本中，`EtwManifestProviderConfiguration` 的 `WadCfg` 會顯示如下：
+若要啟用**基礎操作通道** (建議啟用以獲得雜訊最少的完整記錄)，在您的範本中，`WadCfg` 的 `EtwManifestProviderConfiguration` 會顯示如下：
 
 ```json
   "WadCfg": {
@@ -282,7 +282,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
 若要更新診斷以從新的 EventSource 通道 (代表您將要部署的新應用程式) 收集記錄，請執行先前所述的相同步驟，以針對現有叢集設定診斷。
 
-在您使用 `EtwEventSourceProviderConfiguration` PowerShell 命令套用組態更新之前，請先更新 template.json 檔案中的 `New-AzResourceGroupDeployment` 區段，以新增 EventSource 通道的項目。 在 Visual Studio 產生的 ServiceEventSource.cs 檔案中，事件來源的名稱定義為程式碼的一部分。
+在您使用 `New-AzResourceGroupDeployment` PowerShell 命令套用組態更新之前，請先更新 template.json 檔案中的 `EtwEventSourceProviderConfiguration` 區段，以新增 EventSource 通道的項目。 在 Visual Studio 產生的 ServiceEventSource.cs 檔案中，事件來源的名稱定義為程式碼的一部分。
 
 例如，如果您的事件資源名稱是 My-Eventsource，新增下列程式碼以將來自 My-Eventsource 的事件置於名稱為 MyDestinationTableName 的資料表中。
 
@@ -300,7 +300,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
 ## <a name="collect-performance-counters"></a>收集效能計數器
 
-若要收集叢集中的效能計量，請在叢集的 Resource Manager 範本中將效能計數器新增至 "WadCfg > DiagnosticMonitorConfiguration"。 如需修改 [ 以收集特定效能計數器的步驟，請參閱](service-fabric-diagnostics-perf-wad.md)使用 WAD 進行效能監視`WadCfg`。 如需我們建議收集的效能計數器清單，請參閱 [Service Fabric 效能計數器](service-fabric-diagnostics-event-generation-perf.md)。
+若要收集叢集中的效能計量，請在叢集的 Resource Manager 範本中將效能計數器新增至 "WadCfg > DiagnosticMonitorConfiguration"。 如需修改 `WadCfg` 以收集特定效能計數器的步驟，請參閱[使用 WAD 進行效能監視](service-fabric-diagnostics-perf-wad.md)。 如需我們建議收集的效能計數器清單，請參閱 [Service Fabric 效能計數器](service-fabric-diagnostics-event-generation-perf.md)。
   
 如果您要使用 Application Insights 接收 (如下節所述)，而且想要將這些計量顯示在 Application Insights 中，則請確定在 "sinks" 區段中新增接收名稱 (如上所示)。 這會將個別設定的效能計數器自動傳送至 Application Insights 資源。
 
@@ -312,7 +312,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 >[!NOTE]
 >目前這僅適用於 Windows 叢集。
 
-有兩種主要方式可將資料從 WAD 傳送至 Azure 應用程式深入解析，這是透過 Azure 入口網站或透過 Azure Resource Manager 範本，將 Application Insights 接收新增至 WAD 設定來達成。
+有兩種主要方法將資料從 WAD 發送到 Azure 應用程式見解，這可以通過將應用程式見解接收器添加到 WAD 配置、通過 Azure 門戶或通過 Azure 資源管理器範本來實現。
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 入口網站中建立叢集時新增 Application Insights 檢測金鑰
 
@@ -338,7 +338,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
     ```
 
-2. 在 `DiagnosticMonitorConfiguration` 中包含接收，方法是在 `DiagnosticMonitorConfiguration` 的 `WadCfg` 中新增下列行 (在 `EtwProviders` 宣告之前)：
+2. 在 `DiagnosticMonitorConfiguration` 中包含接收，方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中新增下列行 (在 `EtwProviders` 宣告之前)：
 
     ```json
     "sinks": "applicationInsights"
@@ -346,20 +346,20 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
 上面這兩個程式碼片段都使用 "applicationInsights" 名稱來描述接收。 這不是需求，而是只要在「接收」中包含接收的名稱，就可以在任何字串設定該名稱。
 
-目前，叢集中的記錄會顯示為 Application Insights 記錄檢視器中的**追蹤**。 由於大部分來自平臺的追蹤都是「資訊」層級，因此您也可以考慮將接收設定變更為僅傳送「警告」或「錯誤」類型的記錄。 只要將「通道」新增至接收器即可，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
+目前，叢集中的記錄會顯示為 Application Insights 記錄檢視器中的**追蹤**。 由於來自平臺的大多數跟蹤都是"資訊"級別，因此您還可以考慮將接收器配置更改為僅發送類型為"警告"或"錯誤"的日誌。 只要將「通道」新增至接收器即可，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
 
 >[!NOTE]
 >如果您在入口網站或 Resource Manager 範本中使用不正確的 Application Insights 金鑰，您就必須手動變更金鑰，並更新/重新部署叢集。
 
 ## <a name="next-steps"></a>後續步驟
 
-正確設定 Azure 診斷之後，您會從 ETW 和 EventSource 記錄中看到「儲存體」資料表中的資料。 如果您選擇使用 Azure 監視器記錄、Kibana，或未直接在 Resource Manager 範本中設定的任何其他資料分析和視覺效果平臺，請務必設定您選擇的平臺，以讀取這些儲存體資料表中的資料。 針對 Azure 監視器記錄進行這項操作相當簡單，而且會在[事件和記錄分析](service-fabric-diagnostics-event-analysis-oms.md)中說明。 也就是說，Application Insights 是特殊案例，因為它可以在設定診斷延伸模組時設定；因此，如果您選擇使用 AI，則請參閱[適當的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
+正確設定 Azure 診斷之後，您會從 ETW 和 EventSource 記錄中看到「儲存體」資料表中的資料。 如果選擇使用 Azure 監視器日誌、Kibana 或任何其他未直接在資源管理器範本中配置的資料分析和視覺化平臺，請確保設置選擇的平臺以從這些存儲表中讀取資料。 對於 Azure 監視器日誌執行此操作相對來說微不足道，在[事件和日誌分析](service-fabric-diagnostics-event-analysis-oms.md)中對此進行了說明。 也就是說，Application Insights 是特殊案例，因為它可以在設定診斷延伸模組時設定；因此，如果您選擇使用 AI，則請參閱[適當的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
 
 >[!NOTE]
 >目前沒有任何方法可以篩選或清理已傳送至資料表的事件。 如果不實作從資料表移除事件的處理序，資料表將會繼續成長。 目前，我們可以提供具有 [Watchdog 範例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中所執行資料清理服務的範例，除非您必須儲存超過 30 或 90 天時間範圍的記錄，否則建議您自行撰寫資料清理服務。
 
 * [了解如何使用診斷擴充功能收集效能計數器或記錄](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 Application Insights 進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Azure 監視器日誌的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)
 * [使用 Application Insights 進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Azure 監視器日誌的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)
