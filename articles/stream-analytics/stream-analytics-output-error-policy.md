@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431618"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 串流分析輸出錯誤原則
 本文說明可以在 Azure 串流分析中設定的輸出資料錯誤處理原則。
 
-輸出資料錯誤處理原則僅適用於當串流分析作業所產生的輸出事件不符合目標接收器的結構描述時所發生的資料轉換錯誤。 您可以選擇 [重試] 或 [卸除] 來設定此原則。 當串流分析作業執行時，在 Azure 入口網站的 [設定] 下選取 [錯誤原則]，以進行選取。
+輸出資料錯誤處理原則僅適用於當串流分析作業所產生的輸出事件不符合目標接收器的結構描述時所發生的資料轉換錯誤。 您可以選擇 [重試]**** 或 [卸除]**** 來設定此原則。 當串流分析作業執行時，在 Azure 入口網站的 [設定]**** 下選取 [錯誤原則]****，以進行選取。
 
 ![Azure 串流分析輸出錯誤原則位置](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 

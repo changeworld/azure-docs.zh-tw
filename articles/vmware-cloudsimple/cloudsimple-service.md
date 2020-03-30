@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（AVS）-服務
-description: 提供 AVS 服務和概念的總覽。
+title: Azure VMware 解決方案（按雲簡單 ） 服務
+description: 提供雲簡單服務和概念的概述。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d09c8c34093e7d33122f934138ff9fdf4842508e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024944"
 ---
-# <a name="avs-service-overview"></a>AVS 服務總覽
+# <a name="cloudsimple-service-overview"></a>雲簡單服務概述
 
-AVS 服務可讓您使用 AVS 的 Azure VMware 解決方案。 建立服務可讓您購買節點、保留節點，以及建立 AVS 私人雲端。 您會在可使用 AVS 服務的每個 Azure 區域中建立 AVS 服務。 服務會定義由 AVS 組成的 Azure VMware 解決方案 edge 網路。 Edge 網路支援包含 VPN、ExpressRoute 和網際網路連線到您的 AVS 私人雲端的服務。
+雲簡單服務允許您使用 Azure VMware 解決方案（按雲簡單。  通過創建服務，您可以購買節點、保留節點和創建私有雲。  您可以在雲簡單服務可用的每個 Azure 區域創建雲簡單服務。 該服務通過雲簡單定義 Azure VMware 解決方案的邊緣網路。 邊緣網路支援包括 VPN、ExpressRoute 和 Internet 連接到私有雲的服務。
 
 ## <a name="gateway-subnet"></a>閘道器子網路
 
-每個 AVS 服務都需要閘道子網，而且對其建立所在的區域而言是唯一的。 建立 edge 網路時，會使用閘道子網，而且需要/28 CIDR 區塊。 閘道子網位址空間必須是唯一的。 它不得與任何與 AVS 環境通訊的網路重迭。 與 AVS 通訊的網路包含內部部署網路和 Azure 虛擬網路。 建立閘道子網之後，就無法刪除它。 刪除服務時，會移除閘道子網。
+每個 CloudSimple 服務都需要閘道子網，並且對於創建閘道子網的區域是唯一的。 創建邊緣網路時使用閘道子網，並且需要 /28 CIDR 塊。  閘道子網位址空間必須是唯一的。 它不得與任何與 CloudSimple 環境通信的網路重疊。 與 CloudSimple 通信的網路包括本地網路和 Azure 虛擬網路。  創建閘道子網後無法刪除該子網。  刪除服務時，將刪除閘道子網。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[在 Azure 上建立 AVS 服務](quickstart-create-cloudsimple-service.md)。
+* 瞭解如何在[Azure 上創建雲簡單服務](quickstart-create-cloudsimple-service.md)。

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153713"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>將資料移至 vFXT 叢集 - 平行資料擷取
 
-建立新的 vFXT 叢集之後，您的第一項工作可能是將資料移至 Azure 中的新儲存體磁片區。 不過，如果您一般移動資料的方法是從一個用戶端發出簡單的複製命令，您可能會發現複製效能很差。 將資料複製到 Avere vFXT 叢集的後端儲存體時，單一執行緒複製並不是個好選項。
+創建新的 vFXT 群集後，您的第一個任務可能是將資料移動到 Azure 中的新存儲卷。 不過，如果您一般移動資料的方法是從一個用戶端發出簡單的複製命令，您可能會發現複製效能很差。 單線程複製不是將資料複製到 Avere vFXT 群集後端存儲的好選擇。
 
-因為 Avere vFXT for Azure 叢集是可擴充的多用戶端快取，所以將資料複製到其中的最快速且最有效率的方式是使用多個用戶端。 此技術會平行處理資料與物件的擷取。
+由於 Azure 群集的 Avere vFXT 是可擴展的多用戶端緩存，因此將資料複製到該緩存的最快、最有效的方法是使用多個用戶端。 此技術會平行處理資料與物件的擷取。
 
 ![顯示多用戶端、多執行緒資料移動的圖表：左上方有一個內部部署硬體儲存體的圖示，其中有多個來自它的箭頭。 這些箭頭指向四部用戶端機器。 從每部用戶端機器都有三個箭頭指向 Avere vFXT。 從 Avere vFXT，有多個箭頭指向 Blob 儲存體。](media/avere-vfxt-parallel-ingest.png)
 
@@ -25,12 +25,12 @@ ms.locfileid: "76153713"
 
 本文說明建立多用戶端、多執行緒檔案複製系統以將資料移至 Avere vFXT 叢集的策略。 它說明檔案傳輸概念和決策點，這些可用來以多個用戶端和簡單的複製命令進行有效率的資料複製。
 
-此外，也說明一些能夠提供幫助的公用程式。 ``msrsync`` 公用程式可以用來將資料集分割成值區和使用 ``rsync`` 命令的部分自動化。 ``parallelcp`` 指令碼是另一個公用程式，可自動讀取來源目錄並發出複製命令。 此外，``rsync`` 工具也可以在兩個階段中使用，以提供更快速的複本，但仍能提供資料一致性。
+此外，也說明一些能夠提供幫助的公用程式。 該``msrsync``實用程式可用於部分自動執行將資料集劃分為存儲桶和使用``rsync``命令的過程。 ``parallelcp`` 指令碼是另一個公用程式，可自動讀取來源目錄並發出複製命令。 此外，``rsync``該工具可以分兩個階段使用，以提供仍然提供資料一致性的更快副本。
 
 按一下連結來跳至某個小節：
 
 * [手動複製範例](#manual-copy-example) - 一個使用複製命令的完整說明
-* [兩階段 rsync 範例](#use-a-two-phase-rsync-process)
+* [兩相 rsync 示例](#use-a-two-phase-rsync-process)
 * [部分自動化 (msrsync) 範例](#use-the-msrsync-utility)
 * [平行複製範例](#use-the-parallel-copy-script)
 
@@ -44,12 +44,12 @@ GitHub 上有提供 Resource Manager 範本，此範本可藉由本文中所提�
 
 ## <a name="strategic-planning"></a>策略規劃
 
-在設計同時複製資料的策略時，您應該瞭解檔案大小、檔案計數和目錄深度的取捨。
+在設計並行複製資料的策略時，應瞭解檔案大小、檔計數和目錄深度的權衡。
 
 * 當檔案較小時，攸關的計量是每秒檔案數。
 * 當檔案較大 (10 MiBi 或更大) 時，攸關的計量是每秒位元組數。
 
-每個複製處理序都有輸送量速率和檔案傳輸速率，藉由對複製命令的長度進行計時及分解檔案大小和檔案計數，即可測量這些速率。 說明如何測量費率不在本檔的討論範圍內，但請務必瞭解您是否要處理小型或大型檔案。
+每個複製處理序都有輸送量速率和檔案傳輸速率，藉由對複製命令的長度進行計時及分解檔案大小和檔案計數，即可測量這些速率。 解釋如何測量費率不在本文檔的範圍之內，但瞭解是處理小檔還是大型檔非常重要。
 
 ## <a name="manual-copy-example"></a>手動複製範例
 
@@ -113,7 +113,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ### <a name="when-to-add-mount-points"></a>新增掛接點的時機
 
-在您有足夠的平行執行緒針對單一目的地檔案系統掛接點執行之後，會遇到一個新增更多執行緒也不會提升輸送量的瓶頸點。 （輸送量將根據您的資料類型，以每秒的檔案數或位元組/秒來測量）。或更糟的是，過度執行緒有時可能會導致輸送量降低。
+在您有足夠的平行執行緒針對單一目的地檔案系統掛接點執行之後，會遇到一個新增更多執行緒也不會提升輸送量的瓶頸點。 （輸送量將以檔/秒或位元組/秒為單位進行測量，具體取決於資料類型。或者更糟的是，過執行緒有時會導致輸送量下降。
 
 當發生這種情況時，您可以使用相同的遠端檔案系統掛接路徑，將用戶端掛接點新增至其他 vFXT 叢集 IP 位址：
 
@@ -240,7 +240,7 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-還有六個 ...。視需要推斷。
+而對於六個...根據需要進行推斷。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
@@ -258,44 +258,44 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 
 目標是要在多個用戶端上以平行方式同時為每個用戶端執行這些指令碼的多個執行緒。
 
-## <a name="use-a-two-phase-rsync-process"></a>使用兩階段 rsync 流程
+## <a name="use-a-two-phase-rsync-process"></a>使用兩相 rsync 過程
 
-標準 ``rsync`` 公用程式不適合透過 Avere vFXT for Azure 系統填入雲端存放裝置，因為它會產生大量的檔案建立和重新命名作業，以確保資料完整性。 不過，如果您遵循檢查檔案完整性的第二次執行，則可以安全地使用 ``--inplace`` 選項搭配 ``rsync`` 略過更小心的複製程式。
+標準``rsync``實用程式不能很好地通過 Azure 系統的 Avere vFXT 填充雲存儲，因為它會生成大量檔創建和重命名操作，以確保資料完整性。 但是，如果按照第二次運行``--inplace``來檢查``rsync``檔完整性，則可以安全地使用 該選項跳過更仔細的複製過程。
 
-標準 ``rsync`` 複製作業會建立暫存檔案，並在其中填入資料。 如果資料傳輸成功完成，則暫存檔案會重新命名為原始的檔案名。 即使在複製期間存取檔案，這個方法還是會保證一致性。 但此方法會產生更多寫入作業，因而減緩透過快取移動檔案的速度。
+標準``rsync``複製操作創建暫存檔案並填充資料。 如果資料傳輸成功完成，暫存檔案將重命名為原始檔案名。 此方法可確保一致性，即使檔在複製期間被訪問。 但是此方法會產生更多的寫入操作，這會減慢檔在緩存中的移動速度。
 
-選項 ``--inplace`` 會將新檔案直接寫入其最終位置。 在傳輸期間，檔案不保證是一致的，但如果您要預備儲存系統以供稍後使用，則這不重要。
+該選項``--inplace``直接將新檔寫入其最終位置。 檔在傳輸期間不保證一致，但如果準備存儲系統供以後使用，則這並不重要。
 
-第二個 ``rsync`` 作業可作為第一個作業的一致性檢查。 因為檔案已經複製，所以第二個階段是快速掃描，以確保目的地上的檔案符合來源上的檔案。 如果有任何檔案不相符，則會重新複製這些檔案。
+第二``rsync``個操作用作對第一個操作的一致性檢查。 由於檔已被覆制，因此第二階段是快速掃描，以確保目標上的檔與源上的檔匹配。 如果任何檔不匹配，則複製這些檔。
 
-您可以在一個命令中同時發出這兩個階段：
+您可以在一個命令中同時發出兩個階段：
 
 ```bash
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-這個方法是一種簡單且有效的方法，適用于資料集，最多可達內部目錄管理員可以處理的檔案數目。 （這通常是3個節點叢集的200000000檔案、六個節點叢集的500000000檔案等）。
+此方法是一種簡單且節省時間的方法，適用于資料集，最多包括內部目錄管理器可以處理的檔數。 （這通常是 3 節點群集的 2 億個檔，六節點群集的 5 億個檔，等等。
 
-## <a name="use-the-msrsync-utility"></a>使用 msrsync 公用程式
+## <a name="use-the-msrsync-utility"></a>使用 msrsync 實用程式
 
-``msrsync`` 工具也可以用來將資料移至 Avere 叢集的後端核心檔案管理工具。 此工具的設計目的是要藉由執行多個平行的 ``rsync`` 處理序，將頻寬使用情況最佳化。 您可以從 GitHub 取得它，網址為 <https://github.com/jbd/msrsync>。
+該工具``msrsync``還可用於將資料移動到 Avere 群集的後端核心檔案伺服器。 此工具的設計目的是要藉由執行多個平行的 ``rsync`` 處理序，將頻寬使用情況最佳化。 您可以從 GitHub 取得它，網址為 <https://github.com/jbd/msrsync>。
 
 ``msrsync`` 會將來源目錄分解成個別的「貯體」，然後在每個貯體上執行個別的 ``rsync`` 處理序。
 
 使用四核心 VM 的初步測試在使用 64 個處理序時所顯示的效率最佳。 請使用 ``msrsync`` 選項 ``-p`` 將處理序數目設定為 64。
 
-您也可以使用 ``--inplace`` 引數搭配 ``msrsync`` 命令。 如果您使用此選項，請考慮執行第二個命令（如同上面所述的[rsync](#use-a-two-phase-rsync-process)），以確保資料完整性。
+您還可以使用 參數``--inplace``與``msrsync``命令。 如果使用此選項，請考慮運行第二個命令（如上文所述[的 rsync），](#use-a-two-phase-rsync-process)以確保資料完整性。
 
-``msrsync`` 只能在本機磁片區中寫入和。 來源和目的地必須在叢集的虛擬網路中可作為本機掛接來存取。
+``msrsync``只能寫入本地卷和本地卷。 來源和目的地必須在叢集的虛擬網路中可作為本機掛接來存取。
 
-若要使用 ``msrsync`` 來填入具有 Avere 叢集的 Azure 雲端磁片區，請遵循下列指示：
+要使用``msrsync``Avere 群集填充 Azure 雲卷，請按照以下說明操作：
 
-1. 安裝 ``msrsync`` 及其必要條件（rsync 和 Python 2.6 或更新版本）
+1. 安裝``msrsync``及其先決條件（rsync 和 Python 2.6 或更高版本）
 1. 決定要複製的檔案和目錄總數。
 
-   例如，使用 Avere 公用程式 ``prime.py`` 搭配引數 ```prime.py --directory /path/to/some/directory``` （可透過下載 url <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>取得）。
+   例如，將 Avere 實用程式``prime.py``與參數```prime.py --directory /path/to/some/directory```一起使用（可通過下載<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>URL 提供）。
 
-   如果未使用 ``prime.py``，您可以使用 GNU ``find`` 工具來計算專案數，如下所示：
+   如果不使用``prime.py``，則可以使用 GNU``find``工具計算專案數，如下所示：
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -305,13 +305,13 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 
 1. 將項目數除以 64 以決定每一處理序的項目數。 當您執行命令時，請將此數目與 ``-f`` 選項搭配使用來設定貯體的大小。
 
-1. 發出 ``msrsync`` 命令以複製檔案：
+1. 發出複製``msrsync``檔的命令：
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   如果使用 ``--inplace``，請新增第二次執行，而不選取檢查是否已正確複製資料的選項：
+   如果使用``--inplace``，則添加第二次執行，而不選擇檢查資料是否正確複製：
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
@@ -323,7 +323,7 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 
 ## <a name="use-the-parallel-copy-script"></a>使用平行複製指令碼
 
-``parallelcp`` 腳本也有助於將資料移至 vFXT 叢集的後端儲存體。
+該``parallelcp``腳本還可用於將資料移動到 vFXT 群集的後端存儲。
 
 下方指令碼會新增 `parallelcp` 可執行檔。 (此指令碼是專為 Ubuntu 而設計的；如果使用另一個散發套件，則必須個別安裝 ``parallel``)。
 

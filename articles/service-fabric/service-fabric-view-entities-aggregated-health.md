@@ -1,15 +1,15 @@
 ---
-title: 如何查看 Azure Service Fabric 實體的匯總健康情況
+title: 如何查看 Azure 服務結構實體的聚合運行狀況
 description: 說明如何透過健康情況查詢和一般查詢，來查詢、檢視和評估 Azure Service Fabric 實體的彙總健康情況。
 author: oanapl
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464122"
 ---
 # <a name="view-service-fabric-health-reports"></a>檢視 Service Fabric 健康狀態報告
@@ -58,7 +58,7 @@ Service Fabric 總管提供叢集的視覺化檢視。 在下圖中，您可以�
 Service Fabric 會針對每種支援的 [實體類型](service-fabric-health-introduction.md#health-entities-and-hierarchy)公開健康情況查詢。 您可透過 API (在 [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上使用方法)、PowerShell Cmdlet 和 REST 來存取查詢。 這些查詢會傳回實體的完整健康情況資訊：彙總健康情況、實體健康事件、子系健康情況 (如果適用)、狀況不佳評估 (當實體狀況不佳時)，以及子系健康情況統計資料 (如果適用)。
 
 > [!NOTE]
-> 當健康狀態存放區中完全填滿一個健全狀況實體時，將會傳回此健全狀況實體。 實體必須是作用中 (未刪除)，並且具有系統報告。 階層鏈結上其父實體也必須有系統報告。 如果不符合上述任何條件，則健康情況查詢會傳回具有[FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` 的[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) ，顯示為何不會傳回實體。
+> 當健康狀態存放區中完全填滿一個健全狀況實體時，將會傳回此健全狀況實體。 實體必須是作用中 (未刪除)，並且具有系統報告。 階層鏈結上其父實體也必須有系統報告。 如果無法達成上述任何條件，健康情況查詢會傳回具有 [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` 的 [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)，以顯示為何不傳回實體。
 >
 >
 
@@ -1044,7 +1044,7 @@ ApplicationHealthStateChunks :
   * PowerShell：Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 有些查詢會傳回已分頁的結果。 這些查詢的傳回是衍生自[PagedList\<t >](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)的清單。 如果結果不符合訊息，只會傳回頁面，且 ContinuationToken 會追蹤列舉停止之處。 繼續呼叫相同的查詢，並從先前的查詢傳入接續權杖以取得後續結果。
+> 有些查詢會傳回已分頁的結果。 這些查詢的返回是從[pagedList\<T 派生>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)的清單。 如果結果不符合訊息，只會傳回頁面，且 ContinuationToken 會追蹤列舉停止之處。 繼續呼叫相同的查詢，並從先前的查詢傳入接續權杖以取得後續結果。
 
 ### <a name="examples"></a>範例
 以下程式碼會取得叢集中健全狀況不佳的應用程式：
@@ -1093,9 +1093,9 @@ HealthState            : Error
 ## <a name="cluster-and-application-upgrades"></a>叢集和應用程式升級
 叢集與應用程式的受監視升級期間，Service Fabric 會檢查健康情況，以確保一切都能維持在健康情況良好的狀態。 如果實體藉由使用已設定的健康狀況原則評估為狀況不良，升級會套用升級特定原則來決定下一個動作。 升級可能會暫停，以允許使用者互動 (例如修正錯誤條件或變更原則)，或是它會自動回復成先前的良好版本。
 
-在叢集 升級期間，您可以取得叢集升級狀態。 升級狀態包括狀況不良的評估，指向叢集中狀況不良的項目。 如果因為健全狀況問題導致升級回復，升級狀態會記住最後的狀況不良原因。 升級回復或停止之後，這項資訊可協助系統管理員調查問題出在哪裡。
+在叢集 ** 升級期間，您可以取得叢集升級狀態。 升級狀態包括狀況不良的評估，指向叢集中狀況不良的項目。 如果因為健全狀況問題導致升級回復，升級狀態會記住最後的狀況不良原因。 升級回復或停止之後，這項資訊可協助系統管理員調查問題出在哪裡。
 
-同樣地，在應用程式 升級期間，應用程式升級狀態也會包含任何狀況不良的評估。
+同樣地，在應用程式 ** 升級期間，應用程式升級狀態也會包含任何狀況不良的評估。
 
 以下顯示修改後的 fabric:/WordCount 應用程式的應用程式升級狀態。 監視程式回報了它其中一個複本的錯誤。 因為健康情況檢查未通過，所以會將升級回復。
 

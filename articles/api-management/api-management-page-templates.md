@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249538"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的頁面範本
@@ -38,10 +38,10 @@ ms.locfileid: "79249538"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a> 登入  
- 「登入」範本可讓您自訂開發人員入口網站中的登入頁面。  
+##  <a name="sign-in"></a><a name="SignIn"></a>登錄  
+ 「登入」**** 範本可讓您自訂開發人員入口網站中的登入頁面。  
   
- ![登入頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登入頁面開發人員入口網站範本")  
+ ![登錄頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登錄頁面開發人員門戶範本")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -99,12 +99,12 @@ ms.locfileid: "79249538"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
   
--   [提供者](api-management-page-controls.md#providers)  
+-   [供應商](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>資料模型  
  [使用者登入](api-management-template-data-model-reference.md#UseSignIn)實體。  
@@ -137,10 +137,10 @@ ms.locfileid: "79249538"
 }
 ```  
   
-##  <a name="SignUp"></a> 註冊  
- 「註冊」範本可讓您自訂開發人員入口網站中的註冊頁面。  
+##  <a name="sign-up"></a><a name="SignUp"></a>登記  
+ 「註冊」**** 範本可讓您自訂開發人員入口網站中的註冊頁面。  
   
- ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員入口網站範本")  
+ ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員門戶範本")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -158,7 +158,7 @@ ms.locfileid: "79249538"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
 -   [sign-up](api-management-page-controls.md#sign-up)  
@@ -185,10 +185,10 @@ ms.locfileid: "79249538"
 }  
 ```  
   
-##  <a name="PageNotFound"></a> 找不到頁面  
- 「找不到頁面」範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> 找不到頁面  
+ 「找不到頁面」**** 範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
   
- ![找不到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到頁面開發人員入口網站範本")  
+ ![未找到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "未找到頁面開發人員門戶範本的 APIM")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -222,7 +222,7 @@ ms.locfileid: "79249538"
 </p>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能不使用任何[頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  

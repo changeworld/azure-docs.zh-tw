@@ -1,5 +1,5 @@
 ---
-title: 多個租使用者互動的特性-Azure AD |Microsoft Docs
+title: 多個租戶交互的特徵 - Azure AD |微軟文檔
 description: 了解您的目錄為完全獨立的資源，以管理 Azure Active Directory 租用戶
 services: active-tenant
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562253"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>了解多個 Azure Active Directory 租用戶如何互動
@@ -43,10 +43,10 @@ ms.locfileid: "77562253"
 * Azure Active Directory Connector for Forefront Identity Manager：可與一或多個內部部署樹系和/或非 Azure AD 資料來源同步處理資料。
 
 ## <a name="add-an-azure-ad-tenant"></a>新增 Azure AD 租用戶
-若要在 Azure 入口網站中新增 Azure AD 租用戶，請使用 Azure AD 全域管理員的帳戶登入[Azure 入口網站](https://portal.azure.com)，並且在左邊選取 [新增]。
+若要在 Azure 入口網站中新增 Azure AD 租用戶，請使用 Azure AD 全域管理員的帳戶登入[Azure 入口網站](https://portal.azure.com)，並且在左邊選取 [新增]****。
 
 > [!NOTE]
-> 與其他 Azure 資源不同，您的租用戶並非 Azure 訂用帳戶的子資源。 如果您的 Azure 訂用帳戶已取消或過期，您仍然可以使用 Azure PowerShell、Microsoft Graph API 或 Microsoft 365 系統管理中心來存取您的租使用者資料。 您也可以[將另一個訂用帳戶與租用戶建立關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+> 與其他 Azure 資源不同，您的租用戶並非 Azure 訂用帳戶的子資源。 如果 Azure 訂閱已取消或過期，您仍可以使用 Azure PowerShell、Microsoft 圖形 API 或 Microsoft 365 管理中心訪問租戶資料。 您也可以[將另一個訂用帳戶與租用戶建立關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 >
 
 ## <a name="next-steps"></a>後續步驟

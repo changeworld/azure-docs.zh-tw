@@ -16,10 +16,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790627"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 佈建 SQL Server 虛擬機器
@@ -32,7 +32,7 @@ ms.locfileid: "74790627"
 
 ## <a name="configure-your-subscription"></a>設定您的訂用帳戶
 
-1. 開啟 PowerShell 並執行 **Connect-AzAccount** 來建立您的 Azure 帳戶存取權限。
+1. 開啟 PowerShell，然後執行 **Connect-AzAccount** 命令來建立存取您 Azure 帳戶的權限。
 
    ```powershell
    Connect-AzAccount
@@ -337,7 +337,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 > 如果您收到有關開機診斷的錯誤，則可以忽略它。 由於針對虛擬機器磁碟所指定的儲存體帳戶是進階儲存體帳戶，因此系統會針對開機診斷建立標準儲存體帳戶。
 
 ## <a name="install-the-sql-iaas-agent"></a>安裝 SQL IaaS 代理程式
-SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](virtual-machines-windows-sql-server-agent-extension.md)支援自動化管理功能。 若要在新的 VM 上安裝代理程式，並向資源提供者註冊，請在建立虛擬機器之後，執行[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的授權類型，並透過[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)選擇 [隨用隨付] 或 [自備授權]。 如需授權的詳細資訊，請參閱[授權模型](virtual-machines-windows-sql-ahb.md)。 
+SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](virtual-machines-windows-sql-server-agent-extension.md)支援自動化管理功能。 要在新 VM 上安裝代理並將其註冊到資來源提供者，請在創建虛擬機器後運行[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的許可證類型，通過[Azure 混合權益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自帶許可證之間進行選擇。 有關許可的詳細資訊，請參閱[許可模型](virtual-machines-windows-sql-ahb.md)。 
 
 
    ```powershell
@@ -429,7 +429,7 @@ New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Locat
 
 - 使用 RDP 連線到虛擬機器
 - 在入口網站中為您的虛擬機器設定 SQL Server，包括：
-   - [儲存體設定](virtual-machines-windows-sql-server-storage-configuration.md) 
+   - [存儲設置](virtual-machines-windows-sql-server-storage-configuration.md) 
    - [自動化的管理工作](virtual-machines-windows-sql-server-agent-extension.md)
 - [設定連線能力](virtual-machines-windows-sql-connect.md)
 - 將用戶端與應用程式連線至新的 SQL Server 執行個體

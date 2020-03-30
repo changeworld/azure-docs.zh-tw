@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174005"
 ---
-## <a name="AdditionalServices"></a>操作說明：使用其他 Twilio 服務
+## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>如何：使用其他 Twilio 服務
 除了此處所示的範例以外，Twilio 還提供網頁式 API，方便您從 Azure 應用程式中充份利用其他 Twilio 功能。 如需完整詳細資料，請參閱 [Twilio API 文件][twilio_api_documentation]。
 
-## <a name="NextSteps"></a>接續步驟
+## <a name="next-steps"></a><a name="NextSteps"></a>後續步驟
 了解基本的 Twilio 服務之後，請參考下列連結以取得更多資訊：
 
 * [Twilio 安全性方針][twilio_security_guidelines]

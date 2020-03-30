@@ -2,43 +2,41 @@
 title: 在 Azure Kubernetes Service (AKS) 上使用 GPU
 description: 了解如何在 Azure Kubernetes Service (AKS) 上使用 GPU 處理高效能計算或大量圖形的工作負載
 services: container-service
-author: zr-msft
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: zarhoads
-ms.openlocfilehash: 9179d8bbf16913b89f7384fcee7519f8a205012b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/27/2020
+ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595581"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383985"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
-圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 如需可用的已啟用 GPU Vm 的詳細資訊，請參閱[Azure 中的 gpu 優化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6。
+圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 若要深入了解已啟用 GPU 的可用 VM，請參閱 [Azure 中的 GPU 最佳化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6**。
 
 > [!NOTE]
 > 已啟用 GPU 的 VM 包含特定硬體，該特定硬體受限於較高的定價和區域可用性。 如需詳細資訊，請參閱[定價][azure-pricing]工具和[區域可用性][azure-availability]。
 
-目前，使用已啟用 GPU 的節點集區僅適用于 Linux 節點集區。
+目前，使用啟用 GPU 的節點池僅適用于 Linux 節點池。
 
 ## <a name="before-you-begin"></a>開始之前
 
 本文假設您的現有 AKS 叢集具有支援 GPU 的節點。 您的 AKS 叢集必須執行 Kubernetes 1.10 或更新版本。 如果您需要符合這些需求的 AKS 叢集，請參閱本文的第一節：[建立 AKS 叢集](#create-an-aks-cluster)。
 
-您也需要安裝並設定 Azure CLI 版本2.0.64 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您還需要 Azure CLI 版本 2.0.64 或更高版本安裝和配置。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
-如果您需要符合最低需求的 AKS 叢集 (已啟用 GPU 的節點和使用 Kubernetes 1.10 或更新版本)，請完成下列步驟。 如果您已經有符合這些需求的 AKS 叢集，請[跳到下一節](#confirm-that-gpus-are-schedulable)。
+如果您需要符合最低需求的 AKS 叢集 (已啟用 GPU 的節點和使用 Kubernetes 1.10 或更新版本)，請完成下列步驟。 如果您已經有滿足這些要求的 AKS 群集，[請跳到下一節](#confirm-that-gpus-are-schedulable)。
 
-首先，使用[az group create][az-group-create]命令來建立叢集的資源群組。 下列範例會在 eastus 地區建立名為 myResourceGroup 的資源群組：
+首先，使用 [az group create][az-group-create] 命令來建立 叢集的資源群組。 下列範例會在 eastus** 地區建立名為 myResourceGroup** 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，使用[az AKS create][az-aks-create]命令來建立 AKS 叢集。 下列範例會建立一個叢集，其中的單一節點大小 `Standard_NC6`：
+現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下面的示例創建具有單個大小`Standard_NC6`節點的群集：
 
 ```azurecli-interactive
 az aks create \
@@ -48,31 +46,34 @@ az aks create \
     --node-count 1
 ```
 
-使用[az AKS get-認證][az-aks-get-credentials]命令取得 AKS 叢集的認證：
+使用 [az aks get-credentials][az-aks-get-credentials] 命令取得 AKS 叢集的認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>安裝 nVidia 驅動程式
+## <a name="install-nvidia-drivers"></a>安裝 NVIDIA 驅動程式
 
-您必須先為 NVIDIA 裝置外掛程式部署 DaemonSet，才可以使用節點中的 Gpu。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
+在可以使用節點中的 GPU 之前，必須為 NVIDIA 設備外掛程式部署守護進程集。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
 
-首先，使用[kubectl create namespace][kubectl-create]命令建立命名空間，例如*gpu 資源*：
+首先，使用 [kubectl create namespace][kubectl-create] 命令建立命名空間，例如 gpu-resources**：
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-建立名為 nvidia-device-plugin-ds.yaml 的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為[Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分提供。
+建立名為 nvidia-device-plugin-ds.yaml** 的檔案，並貼上下列 YAML 資訊清單。 此清單是作為[Kubernetes 專案的 NVIDIA 設備外掛程式][nvidia-github]的一部分提供的。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
   namespace: gpu-resources
 spec:
+  selector:
+    matchLabels:
+      name: nvidia-device-plugin-ds
   updateStrategy:
     type: RollingUpdate
   template:
@@ -109,7 +110,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-現在，使用[kubectl apply][kubectl-apply]命令來建立 DaemonSet，並確認已成功建立 nVidia 裝置外掛程式，如下列範例輸出所示：
+現在使用[kubectl 應用][kubectl-apply]命令創建守護進程並確認成功創建 NVIDIA 設備外掛程式，如以下示例輸出所示：
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -119,7 +120,7 @@ daemonset "nvidia-device-plugin" created
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>確認 GPU 可進行排程
 
-建好 AKS 叢集後，請確認 GPU 可在 Kubernetes 中進行排程。 首先，使用[kubectl 取得節點][kubectl-get]命令來列出叢集中的節點：
+建好 AKS 叢集後，請確認 GPU 可在 Kubernetes 中進行排程。 首先，使用 [kubectl get nodes][kubectl-get] 命令列出您叢集中的節點：
 
 ```console
 $ kubectl get nodes
@@ -128,9 +129,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-現在使用 [ [kubectl 描述] 節點][kubectl-describe]命令來確認 gpu 可排程。 在 [容量] 區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
+現在，使用 [kubectl describe node][kubectl-describe] 命令確認 GPU 可進行排程。 在 [容量]** 區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
 
-下列精簡範例顯示名為 aks-nodepool1-18821093-0 的節點上有 GPU：
+下列精簡範例顯示名為 aks-nodepool1-18821093-0** 的節點上有 GPU：
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -182,12 +183,12 @@ Non-terminated Pods:         (9 in total)
 
 ## <a name="run-a-gpu-enabled-workload"></a>執行已啟用 GPU 的工作負載
 
-若要查看運作中的 GPU，請使用適當的資源要求對已啟用 GPU 的工作負載進行排程。 在此範例中，我們要針對 [MNIST 資料集](https://www.tensorflow.org/)執行 [Tensorflow](http://yann.lecun.com/exdb/mnist/) 作業。
+若要查看運作中的 GPU，請使用適當的資源要求對已啟用 GPU 的工作負載進行排程。 在此範例中，我們要針對 [MNIST 資料集](http://yann.lecun.com/exdb/mnist/)執行 [Tensorflow](https://www.tensorflow.org/) 作業。
 
-建立名為 samples-tf-mnist-demo.yaml 的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
+建立名為 samples-tf-mnist-demo.yaml** 的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
 
 > [!NOTE]
-> 如果您在呼叫至驅動程式時，收到版本不符的錯誤 (例如，CUDA 驅動程式版本並不足以執行 CUDA 執行階段版本)，請檢閱 nVidia 驅動程式矩陣相容性圖表 - [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> 如果在調用驅動程式時收到版本不匹配錯誤，例如，CUDA 驅動程式版本不足以用於 CUDA 執行階段版本，請查看 NVIDIA 驅動程式矩陣相容性圖表 -[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -213,7 +214,7 @@ spec:
       restartPolicy: OnFailure
 ```
 
-使用[kubectl apply][kubectl-apply]命令來執行作業。 此命令會剖析資訊清單檔，並建立已定義的 Kubernetes 物件：
+使用 [kubectl apply][kubectl-apply] 命令來執行作業。 此命令會剖析資訊清單檔，並建立已定義的 Kubernetes 物件：
 
 ```console
 kubectl apply -f samples-tf-mnist-demo.yaml
@@ -221,7 +222,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>檢視已啟用 GPU 的工作負載狀態和輸出
 
-使用[kubectl get jobs][kubectl-get]命令搭配 `--watch` 引數，監視作業的進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [*完成*] 資料行顯示*1/1*時，表示作業已成功完成。 使用*ctrl-c*結束 `kubetctl --watch` 命令：
+使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 *"完成"* 列顯示*1/1*時，作業已成功完成。 使用`kubetctl --watch` *Ctrl-C*退出命令 ：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -232,7 +233,7 @@ samples-tf-mnist-demo   0/1           3m29s      3m29s
 samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-若要查看已啟用 GPU 的工作負載輸出，請先使用[kubectl get][kubectl-get] pod 命令取得 pod 的名稱：
+要查看啟用 GPU 的工作負載的輸出，首先獲取帶有[kubectl 獲取 pod 命令][kubectl-get]的 pod 的名稱：
 
 ```console
 $ kubectl get pods --selector app=samples-tf-mnist-demo
@@ -241,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-現在，使用[kubectl logs][kubectl-logs]命令來查看 pod 記錄。 下列 Pod 記錄範例會確認已探索到適當的 GPU 裝置 `Tesla K80`。 提供自有 Pod 的名稱：
+現在，使用 [kubectl logs][kubectl-logs] 命令來檢視 Pod 記錄。 下列 Pod 記錄範例會確認已探索到適當的 GPU 裝置 `Tesla K80`。 提供自有 Pod 的名稱：
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -320,7 +321,7 @@ Adding run metadata for 499
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若要移除本文中建立的相關聯 Kubernetes 物件，請使用[kubectl 刪除作業][kubectl delete]命令，如下所示：
+若要移除本文中建立的相關 Kubernetes 物件，請使用 [kubectl delete job][kubectl delete] 命令，如下所示：
 
 ```console
 kubectl delete jobs samples-tf-mnist-demo
@@ -330,7 +331,7 @@ kubectl delete jobs samples-tf-mnist-demo
 
 若要執行 Apache Spark 作業，請參閱[在 AKS 上執行 Apache Spark 作業][aks-spark]。
 
-如需在 Kubernetes 上執行機器學習（ML）工作負載的詳細資訊，請參閱[Kubeflow Labs][kubeflow-labs]。
+如需有關在 Kubernetes 上執行機器學習 (ML) 工作負載的詳細資訊，請參閱 [Kubeflow 實驗室][kubeflow-labs]。
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

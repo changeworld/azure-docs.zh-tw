@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71211865"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>使用 ASP.NET 來註冊目前使用者以取得推播通知
@@ -36,19 +36,19 @@ ms.locfileid: "71211865"
 
 1. 在您的 MainStoryboard_iPhone.storyboard 中，從物件程式庫新增下列元件：
 
-   * **標籤**︰"Push to User with Notification Hubs"
-   * **標籤**︰"InstallationId"
-   * **標籤**︰"User"
-   * **文字欄位**："User"
-   * **標籤**︰"Password"
-   * **文字欄位**："Password"
-   * **按鈕**："Login"
+   * **標籤**：「使用通知中樞推播給使用者」
+   * **標籤**：「安裝 ID」
+   * **標籤**：「使用者」
+   * **文字欄位**：「使用者」
+   * **標籤**：「密碼」
+   * **文字欄位**：「密碼」
+   * **按鈕**：「登入」
 
      此時，您的腳本如下所示：
 
      ![][0]
 
-2. 在輔助編輯器中，為所有切換的控制項建立出口並加以呼叫、使用檢視控制器 (委派) 連接文字欄位，然後為 [登入] 按鈕建立 [動作]。
+2. 在輔助編輯器中，為所有切換的控制項建立出口並加以呼叫、使用檢視控制器 (委派) 連接文字欄位，然後為 [登入]**** 按鈕建立 [動作]****。
 
     ![][1]
 
@@ -246,7 +246,7 @@ ms.locfileid: "71211865"
     }];
     ```
 
-    此方法會建立推播通知的裝置權杖，並將其連同裝置類型傳送至會在通知中心建立註冊的自訂 API 方法。 此 Web API 定義於[使用通知中心來通知使用者]中。
+    This method gets both an installation ID and channel for push notifications and sends it, along with the device type, to the authenticated Web API method that creates a registration in Notification Hubs. 此 Web API 定義於[使用通知中心來通知使用者]中。
 
 現在，用戶端應用程式已更新，請回到 [使用通知中心來通知使用者] ，並更新行動服務，以使用通知中心傳送通知。
 

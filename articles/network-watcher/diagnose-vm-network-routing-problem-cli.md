@@ -1,5 +1,5 @@
 ---
-title: 診斷 VM 網路路由問題-Azure CLI
+title: 診斷 VM 網路路由問題 - Azure CLI
 titleSuffix: Azure Network Watcher
 description: 在本文章中，您將了解如何使用 Azure 網路監看員的下一個躍點功能，以診斷虛擬機器網路路由問題。
 services: network-watcher
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: bf4c5e364b7f18b363f9915f54e43c7ea54c33c4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834666"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382897"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>診斷虛擬機器網路路由問題 - Azure CLI
 
@@ -32,17 +32,17 @@ ms.locfileid: "76834666"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本文章中的 CLI 命令會經過格式化以在 Bash 殼層中執行。
+如果選擇在本地安裝和使用 Azure CLI，則本文要求您運行 Azure CLI 版本 2.0.28 或更高版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本後，`az login`運行以創建與 Azure 的連接。 本文中的 Azure CLI 命令格式化為在 Bash 外殼中運行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
-您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVm 的 VM：
+創建具有[az vm 的](/cli/azure/vm#az-vm-create)VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下面的示例創建名為*myVm 的 VM*：
 
 ```azurecli-interactive
 az vm create \
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-建立 VM 需要幾分鐘的時間。 在建立 VM 且 CLI 傳回輸出之前，請勿繼續進行其餘步驟。
+建立 VM 需要幾分鐘的時間。 在創建 VM 並返回輸出之前，不要繼續執行其餘步驟。
 
 ## <a name="test-network-communication"></a>測試網路通訊
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-幾秒之後，輸出會通知您 [nextHopType] 是 [網際網路]，而 [routeTableId] 是 [系統路由]。 此結果可讓您知道通往目的地的路由是有效的。
+幾秒鐘後，輸出會通知您**下一個HopType**是**Internet，** 並且**路由TableId**是**系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
 
 測試從 VM 輸出至 172.31.0.100 的通訊：
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-傳回的輸出會通知您 [nextHopType] 是 [無]，而 [routeTableId] 也是 [系統路由]。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
+返回的輸出通知您 **"無**"是**下一個 HopType，** 並且**路由 TableId**也是**系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
 
 ## <a name="view-details-of-a-route"></a>檢視路由的詳細資料
 
@@ -113,7 +113,7 @@ az network nic show-effective-route-table \
 
 傳回的輸出中包含下列文字：
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +133,7 @@ az network nic show-effective-route-table \
 
 但是當您使用 `az network watcher show-next-hop` 命令測試輸出至 172.31.0.100 的通訊時，結果收到通知指出您已沒有下一個躍點類型。 您也會在傳回的輸出中看到下列文字：
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -149,7 +149,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-如同來自 `az network watcher nic show-effective-route-table` 命令的輸出中所示，雖然有通往 172.16.0.0/12 前置詞的預設路由，且其中包含 172.31.0.100 位址，但 [nextHopType] 是 [無]。 Azure 會建立通往 172.16.0.0/12 的預設路由，但不會指定下一個躍點類型，除非有理由這麼做。 例如，如果您將 172.16.0.0/12 位址範圍新增至虛擬網路的位址空間，則 Azure 會將此路由的 **nextHopType** 變更為 **Virtual network**。 執行檢查就會看到 **Virtual network** 顯示為 **nextHopType**。
+如同來自 `az network watcher nic show-effective-route-table` 命令的輸出中所示，雖然有通往 172.16.0.0/12 前置詞的預設路由，且其中包含 172.31.0.100 位址，但 [nextHopType]**** 是 [無]****。 Azure 會建立通往 172.16.0.0/12 的預設路由，但不會指定下一個躍點類型，除非有理由這麼做。 例如，如果您將 172.16.0.0/12 位址範圍新增至虛擬網路的位址空間，則 Azure 會將此路由的 **nextHopType** 變更為 **Virtual network**。 執行檢查就會看到 **Virtual network** 顯示為 **nextHopType**。
 
 ## <a name="clean-up-resources"></a>清除資源
 

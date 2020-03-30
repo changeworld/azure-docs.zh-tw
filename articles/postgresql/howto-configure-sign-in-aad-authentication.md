@@ -1,131 +1,131 @@
 ---
-title: 使用 Azure Active Directory 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 瞭解如何設定 Azure Active Directory （AAD）以適用於 PostgreSQL 的 Azure 資料庫單一伺服器進行驗證
+title: 使用 Azure 活動目錄 - Azure 資料庫用於後格雷SQL - 單個伺服器
+description: 瞭解如何設置 Azure 活動目錄 （AAD） 以便使用 Azure 資料庫進行 PostgreSQL - 單伺服器身份驗證
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299272"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384393"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向于 postgresql 進行驗證
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure 活動目錄使用 PostgreSQL 進行身份驗證
 
-本文將逐步引導您完成如何使用適用於 PostgreSQL 的 Azure 資料庫設定 Azure Active Directory 存取的步驟，以及如何使用 Azure AD token 來連接。
+本文將介紹如何使用 Azure 資料庫為 PostgreSQL 配置 Azure 活動目錄訪問以及如何使用 Azure AD 權杖進行連接的步驟。
 
 > [!IMPORTANT]
-> 適用於 PostgreSQL 的 Azure 資料庫的 Azure AD 驗證目前為公開預覽狀態。
+> 用於 PostgreSQL 的 Azure 資料庫的 Azure AD 身份驗證當前處於公共預覽版中。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="setting-the-azure-ad-admin-user"></a>設定 Azure AD 系統管理員使用者
+## <a name="setting-the-azure-ad-admin-user"></a>設置 Azure AD 管理員使用者
 
-只有 Azure AD 的系統管理員使用者可以建立/啟用以 Azure AD 為基礎之驗證的使用者。 若要建立並 Azure AD 系統管理員使用者，請遵循下列步驟
+只有 Azure AD 管理員使用者可以創建/啟用使用者才能進行基於 Azure AD 的身份驗證。 要創建和 Azure AD 管理員使用者，請按照以下步驟操作
 
-1. 在 Azure 入口網站中，選取您想要為 Azure AD 啟用的適用於 PostgreSQL 的 Azure 資料庫實例。
-2. 在 [設定] 下，選取 [Active Directory 管理員]：
+1. 在 Azure 門戶中，選擇要為 Azure AD 啟用的 PostgreSQL 的 Azure 資料庫實例。
+2. 在"設置"下，選擇活動目錄管理員：
 
-![設定 azure ad 系統管理員][2]
+![設置 Azure 廣告管理員][2]
 
-3. 請在客戶租使用者中選取有效的 Azure AD 使用者，以 Azure AD 系統管理員。
+3. 在客戶租戶中選擇有效的 Azure AD 使用者，作為 Azure AD 管理員。
 
 > [!IMPORTANT]
-> 設定系統管理員時，會將新的使用者新增至具有完整系統管理員許可權的適用於 PostgreSQL 的 Azure 資料庫伺服器。 適用於 PostgreSQL 的 Azure 資料庫中的 Azure AD 系統管理使用者會擁有 `azure_ad_admin`角色。
+> 設置管理員時，新使用者將添加到具有完全管理員許可權的 PostgreSQL 伺服器的 Azure 資料庫中。 Azure 資料庫中的 Azure Ad 管理員使用者將具有 該角色`azure_ad_admin`。
 
-每個于 postgresql 伺服器只能建立一個 Azure AD 系統管理員，選擇另一個則會覆寫為伺服器所設定的現有 Azure AD 管理員。 您可以指定 Azure AD 群組，而不是個別使用者，以擁有多個系統管理員。 請注意，您接著會使用組名登入，以供管理之用。
+每個 PostgreSQL 伺服器只能創建一個 Azure AD 管理員，而另一個伺服器的選擇將覆蓋為伺服器配置的現有 Azure AD 管理員。 您可以指定 Azure AD 組，而不是單個使用者，以具有多個管理員。 請注意，您隨後將使用組名稱登錄以進行管理。
 
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>在適用於 PostgreSQL 的 Azure 資料庫中建立 Azure AD 使用者
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>在 Azure 資料庫中為 PostgreSQL 創建 Azure AD 使用者
 
-若要將 Azure AD 使用者新增至您的適用於 PostgreSQL 的 Azure 資料庫資料庫，請在連線之後執行下列步驟（請參閱稍後的如何連接的章節）：
+要將 Azure AD 使用者添加到用於 PostgreSQL 資料庫的 Azure 資料庫，請在連接後執行以下步驟（請參閱後面有關如何連接的部分）：
 
-1. 請先確定 Azure AD 使用者 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租使用者中的有效使用者。
-2. 以 Azure AD 系統管理員使用者身分登入您的適用於 PostgreSQL 的 Azure 資料庫實例。
-3. 在適用於 PostgreSQL 的 Azure 資料庫中建立角色 `<user>@yourtenant.onmicrosoft.com`。
-4. 使 `<user>@yourtenant.onmicrosoft.com` 成為角色 azure_ad_user 的成員。 這必須僅提供給 Azure AD 使用者。
+1. 首先，確保 Azure AD`<user>@yourtenant.onmicrosoft.com`使用者是 Azure AD 租戶中的有效使用者。
+2. 以 Azure AD 管理員使用者身份登錄到 Azure 資料庫以獲取 PostgreSQL 實例。
+3. 在`<user>@yourtenant.onmicrosoft.com`Azure 資料庫中為 PostgreSQL 創建角色。
+4. 成為`<user>@yourtenant.onmicrosoft.com`角色的成員azure_ad_user。 這只能提供給 Azure AD 使用者。
 
-**範例︰**
+**例子：**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
 > [!NOTE]
-> 透過 Azure AD 驗證使用者不會提供使用者任何許可權來存取適用於 PostgreSQL 的 Azure 資料庫資料庫內的物件。 您必須手動授與使用者必要的許可權。
+> 通過 Azure AD 對使用者進行身份驗證不會授予使用者訪問 PostgreSQL 資料庫 Azure 資料庫中的物件的任何許可權。 您必須手動授予使用者所需的許可權。
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>在適用於 PostgreSQL 的 Azure 資料庫中建立 Azure AD 群組
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>在 Azure 資料庫中為 PostgreSQL 創建 Azure AD 組
 
-若要啟用 Azure AD 群組來存取您的資料庫，請使用與使用者相同的機制，但改為指定組名：
+要啟用 Azure AD 組以訪問資料庫，請使用與使用者相同的機制，而是指定組名稱：
 
-**範例︰**
+**例子：**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
-登入時，群組的成員會使用其個人存取權杖，但會以指定為使用者名稱的組名簽署。
+登錄時，組成員將使用其個人訪問權杖，但使用指定為使用者名的組名稱進行簽名。
 
-## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>使用 Azure AD 連接到適用於 PostgreSQL 的 Azure 資料庫
+## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>使用 Azure AD 連接到 Azure 資料庫以進行 PostgreSQL
 
-下列高階圖表摘要說明搭配適用於 PostgreSQL 的 Azure 資料庫使用 Azure AD 驗證的工作流程：
+以下高級關係圖總結了使用 Azure 資料庫進行 Azure AD 身份驗證的工作流，
 
-![驗證流程][1]
+![身份驗證流][1]
 
-我們設計了 Azure AD 整合來處理常見的于 postgresql 工具，例如 psql，這並不 Azure AD 感知，而且只支援在連接到于 postgresql 時指定使用者名稱和密碼。 我們會以密碼的形式傳遞 Azure AD token，如上圖所示。
+我們設計了 Azure AD 集成，以便使用常見的 PostgreSQL 工具（如 psql），這些工具不了解 Azure AD，並且僅在連接到 PostgreSQL 時支援指定使用者名和密碼。 我們將 Azure AD 權杖作為密碼傳遞，如上圖所示。
 
-我們目前已測試過下列用戶端：
+我們目前已經測試了以下客戶：
 
-- psql 命令列（利用 PGPASSWORD 變數來傳遞權杖，請參閱下文）
-- Azure Data Studio （使用於 postgresql 擴充功能）
-- 其他以 libpq 為基礎的用戶端（例如常見的應用程式架構和 Orm）
+- psql 命令列（利用 PGPASSWORD 變數傳遞權杖，見下文）
+- Azure 資料工作室（使用 PostgreSQL 擴展）
+- 其他基於 libpq 的用戶端（例如通用應用程式框架和 ORM）
 
 > [!NOTE]
-> 請注意，目前不支援搭配 pgAdmin 使用 Azure AD token，因為它的密碼具有256個字元的硬式編碼限制（權杖超過）。
+> 請注意，當前不支援將 Azure AD 權杖與 pgAdmin 一起使用，因為它對密碼的硬編碼限制為 256 個字元（權杖超過）。
 
-以下是使用者/應用程式將需要使用 Azure AD 進行驗證的步驟，如下所述：
+以下是使用者/應用程式需要執行以下描述的 Azure AD 身份驗證的步驟：
 
-### <a name="step-1-authenticate-with-azure-ad"></a>步驟1：使用 Azure AD 進行驗證
+### <a name="step-1-authenticate-with-azure-ad"></a>第 1 步：使用 Azure AD 進行身份驗證
 
-請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+確保安裝了 Azure [CLI。](/cli/azure/install-azure-cli)
 
-叫用 Azure CLI 工具，以向 Azure AD 進行驗證。 您需要提供 Azure AD 的使用者識別碼和密碼。
+調用 Azure CLI 工具以使用 Azure AD 進行身份驗證。 它要求您提供 Azure AD 使用者 ID 和密碼。
 
-```
+```azurecli-interactive
 az login
 ```
 
-此命令將會啟動瀏覽器視窗至 Azure AD 驗證頁面。
+此命令將啟動到 Azure AD 身份驗證頁的瀏覽器視窗。
 
 > [!NOTE]
-> 您也可以使用 Azure Cloud Shell 來執行這些步驟。
-> 請注意，在 Azure Cloud Shell 中抓取 Azure AD 存取權杖時，您必須明確地呼叫 `az login` 並再次登入（在使用程式碼的另一個視窗中）。 在該登入之後，`get-access-token` 命令就會如預期般運作。
+> 您還可以使用 Azure 雲外殼執行這些步驟。
+> 請注意，在 Azure 雲外殼中檢索 Azure AD 訪問權杖時，需要顯式調用`az login`並重新登錄（在帶有代碼的單獨視窗中）。 該登錄後，`get-access-token`命令將按預期工作。
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>步驟2：取出 Azure AD 存取權杖
+### <a name="step-2-retrieve-azure-ad-access-token"></a>第 2 步：檢索 Azure AD 訪問權杖
 
-叫用 Azure CLI 工具，以取得步驟1中 Azure AD 已驗證使用者的存取權杖，以存取適用於 PostgreSQL 的 Azure 資料庫。
+調用 Azure CLI 工具以從步驟 1 獲取 Azure AD 身份驗證使用者的訪問權杖，以訪問 PostgreSQL 的 Azure 資料庫。
 
-範例（適用于公用雲端）：
+示例（公共雲）：
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-上述資源值必須完全依照所示指定。 針對其他雲端，可以使用下列內容來查閱資源值：
+上述資源值必須完全按照所示指定。 對於其他雲，可以使用以下情況來查看資源值：
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
-針對 Azure CLI version 2.0.71 和更新版本，您可以針對所有雲端，在下列更方便的版本中指定命令：
+對於 Azure CLI 版本 2.0.71 及更高版本，可以在以下更方便版本中為所有雲指定該命令：
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
-驗證成功之後，Azure AD 將會傳回存取權杖：
+身份驗證成功後，Azure AD 將返回訪問權杖：
 
 ```json
 {
@@ -137,73 +137,73 @@ az account get-access-token --resource-type oss-rdbms
 }
 ```
 
-Token 是基底64字串，會將所有已驗證使用者的相關資訊編碼，並以適用於 PostgreSQL 的 Azure 資料庫服務為目標。
+權杖是一個 Base 64 字串，用於編碼有關經過身份驗證的使用者的所有資訊，該字串針對 PostgreSQL 服務的 Azure 資料庫。
 
 > [!NOTE]
-> 存取權杖的有效性介於5分鐘到60分鐘之間。 建議您在起始登入以適用於 PostgreSQL 的 Azure 資料庫之前，先取得存取權杖。
+> 訪問權杖的有效期在 5 分鐘到 60 分鐘之間。 我們建議您在啟動 PostgreSQL 的 Azure 資料庫登錄之前獲取訪問權杖。
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>步驟3：使用權杖做為使用於 postgresql 登入的密碼
+### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>第 3 步：使用權杖作為密碼使用 PostgreSQL 登錄
 
-連接時，您必須使用存取權杖作為于 postgresql 使用者密碼。
+連接時，您需要使用訪問權杖作為 PostgreSQL 使用者密碼。
 
-使用 `psql` 命令列用戶端時，必須透過 `PGPASSWORD` 環境變數傳遞存取權杖，因為存取權杖超出了 `psql` 可以直接接受的密碼長度：
+使用`psql`命令列用戶端時，需要通過`PGPASSWORD`環境變數傳遞訪問權杖，因為訪問權杖超過可以直接接受的`psql`密碼長度：
 
-Windows 範例：
+視窗示例：
 
 ```shell
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Linux/macOS 範例：
+Linux/macOS 示例：
 
 ```shell
 export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-現在您可以使用適用於 PostgreSQL 的 Azure 資料庫起始連線，如下所示：
+現在，您可以像通常一樣啟動與 Azure 資料庫的連接， 以便進行 PostgreSQL：
 
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
-您現在已使用 Azure AD authentication 來驗證您的于 postgresql 伺服器。
+現在，使用 Azure AD 身份驗證對 PostgreSQL 伺服器進行身份驗證。
 
 ## <a name="token-validation"></a>權杖驗證
 
-適用於 PostgreSQL 的 Azure 資料庫中的 Azure AD 驗證可確保使用者存在於于 postgresql 伺服器中，並藉由驗證權杖的內容來檢查權杖的有效性。 會執行下列權杖驗證步驟：
+Azure 資料庫中的 Azure AD 身份驗證用於 PostgreSQL 可確保使用者存在於 PostgreSQL 伺服器中，並且它通過驗證權杖的內容來檢查權杖的有效性。 執行以下權杖驗證步驟：
 
--   權杖是由 Azure AD 簽署，而且尚未遭到篡改
--   已針對與伺服器相關聯的租使用者 Azure AD 發出權杖
--   Token 尚未過期
--   Token 適用于適用於 PostgreSQL 的 Azure 資料庫資源（而不是其他 Azure 資源）
+- 權杖由 Azure AD 簽名，未被篡改
+- 權杖由 Azure AD 頒發給與伺服器關聯的租戶
+- 權杖尚未過期
+- 權杖用於 PostgreSQL 資源的 Azure 資料庫（而不是另一個 Azure 資源）
 
-## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>將現有的于 postgresql 使用者遷移至以 Azure AD 為基礎的驗證
+## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>將現有 PostgreSQL 使用者遷移到基於 Azure AD 的身份驗證
 
-您可以為現有的使用者啟用 Azure AD 驗證。 有兩種情況需要考慮：
+您可以為現有使用者啟用 Azure AD 身份驗證。 有兩種情況需要考慮：
 
-### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>案例1：于 postgresql username 符合 Azure AD 的使用者主體名稱
+### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>案例 1：PostgreSQL 使用者名與 Azure AD 使用者主體名稱匹配
 
-如果您現有的使用者已經符合 Azure AD 的使用者名稱，您可以將 `azure_ad_user` 角色授與它們，以便 Azure AD 驗證：
+如果現有使用者已匹配 Azure AD 使用者名，則可以將`azure_ad_user`角色授予他們，以便啟用它們進行 Azure AD 身份驗證：
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 ```
 
-他們現在能夠以 Azure AD 認證登入，而不是使用先前設定的于 postgresql 使用者密碼。
+他們現在將能夠使用 Azure AD 憑據登錄，而不是使用以前配置的 PostgreSQL 使用者密碼。
 
-### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>案例2：于 postgresql username 與 Azure AD 使用者主體名稱不同
+### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>案例 2：PostgreSQL 使用者名不同于 Azure AD 使用者主體名稱
 
-如果于 postgresql 使用者不存在 Azure AD 或具有不同的使用者名稱，您可以使用 Azure AD 群組來以此于 postgresql 使用者身分進行驗證。 您可以使用符合于 postgresql 使用者的名稱來建立 Azure AD 群組，然後將角色 azure_ad_user 授與現有的于 postgresql 使用者，以將現有適用於 PostgreSQL 的 Azure 資料庫使用者遷移至 Azure AD：
+如果 PostgreSQL 使用者在 Azure AD 中不存在或具有其他使用者名，則可以使用 Azure AD 組作為此 PostgreSQL 使用者進行身份驗證。 通過創建名稱與 PostgreSQL 使用者匹配的 Azure AD 組，然後將角色azure_ad_user授予現有 PostgreSQL 使用者，可以將現有用於 PostgreSQL 使用者的現有 Azure 資料庫移轉到 Azure AD：
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";
 ```
 
-這會假設您已在 Azure AD 中建立「DBReadUser」群組。 屬於該群組的使用者現在將能夠以這種使用者的身分登入資料庫。
+這假定您在 Azure AD 中創建了一個組"DBReadUser"。 屬於該組的使用者現在可以作為此使用者登錄到資料庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 回顧[適用於 PostgreSQL 的 Azure 資料庫-單一伺服器的 Azure Active Directory 驗證](concepts-aad-authentication.md)的整體概念
+* [使用 Azure 資料庫查看 Azure 活動目錄身份驗證的總體概念，用於 PostgreSQL - 單個伺服器](concepts-aad-authentication.md)
 
 <!--Image references-->
 

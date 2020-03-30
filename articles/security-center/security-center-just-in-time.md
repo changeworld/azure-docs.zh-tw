@@ -9,194 +9,194 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603979"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>使用及時存取保護您的管理埠
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>通過及時訪問保護管理埠
 
-如果您是資訊安全中心的標準定價層（請參閱[定價](/azure/security-center/security-center-pricing)），您可以使用即時（JIT）虛擬機器（VM）存取來鎖定 Azure vm 的輸入流量。 這可減少攻擊的風險，並在需要時輕鬆地連接到 Vm。
+如果您位於安全中心的標準定價層（請參閱[定價](/azure/security-center/security-center-pricing)），則可以使用及時 （JIT） 虛擬機器 （VM） 存取權限鎖定 Azure VM 的入站流量。 這減少了受到攻擊的風險，同時提供了在需要時輕鬆連接到 VM 的訪問。
 
 > [!NOTE]
 > 資訊安全中心 Just-In-Time VM 存取目前僅支援透過 Azure Resource Manager 部署的 VM。 若要深入了解傳統部署和資源管理員部署的模型，請參閱 [Azure Resource Manager 與傳統部署](../azure-resource-manager/management/deployment-models.md)。
 
 [!INCLUDE [security-center-jit-description](../../includes/security-center-jit-description.md)]
 
-## <a name="configure-jit-on-a-vm"></a>在 VM 上設定 JIT
+## <a name="configure-jit-on-a-vm"></a>在 VM 上配置 JIT
 
-有三種方式可在 VM 上設定 JIT 原則：
+在 VM 上配置 JIT 策略有三種方法：
 
-- [在 Azure 資訊安全中心中設定 JIT 存取](#jit-asc)
-- [在 Azure VM 頁面中設定 JIT 存取](#jit-vm)
-- [以程式設計方式在 VM 上設定 JIT 原則](#jit-program)
+- [在 Azure 安全中心配置 JIT 訪問](#jit-asc)
+- [在 Azure VM 頁中配置 JIT 訪問](#jit-vm)
+- [以程式設計方式在 VM 上配置 JIT 策略](#jit-program)
 
-## <a name="configure-jit-in-azure-security-center"></a>在 Azure 資訊安全中心中設定 JIT
+## <a name="configure-jit-in-azure-security-center"></a>在 Azure 安全中心配置 JIT
 
-從資訊安全中心，您可以使用 JIT 原則來設定 JIT 原則，並要求存取 VM
+從安全中心，您可以配置 JIT 策略，並使用 JIT 策略請求對 VM 的訪問
 
-### 在資訊安全中心的 VM 上設定 JIT 存取<a name="jit-asc"></a>
+### <a name="configure-jit-access-on-a-vm-in-security-center"></a>在安全中心的 VM 上配置 JIT 存取權限<a name="jit-asc"></a>
 
-1. 開啟 [資訊安全中心] 儀表板。
+1. 開啟 [資訊安全中心]**** 儀表板。
 
-1. 在左窗格中，選取 [Just-in-Time VM 存取]。
+1. 在左窗格中，選取 [Just-in-Time VM 存取]****。
 
     ![[Just-In-Time VM 存取] 圖格](./media/security-center-just-in-time/just-in-time.png)
 
-    [**即時 VM 存取**] 視窗隨即開啟，並顯示您 vm 狀態的資訊：
+    "**即時 VM 訪問**"視窗將打開並顯示有關 VM 狀態的資訊：
 
-    - [已設定] - 已設定為支援 Just-In-Time VM 存取的 VM。 其會提供過去一週的資料，包含每個 VM 核准的要求數量、上次存取的日期和時間、以及最後一位使用者。
-    - **建議**-可支援即時 vm 存取但尚未設定為的 vm。 建議您啟用這些 VM 的 Just-In-Time VM 存取控制。
-    - [不建議] - 可能會導致不建議 VM 進行設定的原因如下：
+    - [已設定]**** - 已設定為支援 Just-In-Time VM 存取的 VM。 其會提供過去一週的資料，包含每個 VM 核准的要求數量、上次存取的日期和時間、以及最後一位使用者。
+    - **推薦**- 支援即時 VM 存取權限但尚未配置為的 VM 的 VM。 建議您啟用這些 VM 的 Just-In-Time VM 存取控制。
+    - [不建議]**** - 可能會導致不建議 VM 進行設定的原因如下：
       - 缺少 NSG - Just-In-Time 解決方案需要 NSG。
       - 傳統 VM - 資訊安全中心 Just-In-Time VM 存取目前僅支援透過 Azure Resource Manager 部署的 VM。 Just-In-Time 解決方案不支援傳統部署。 
-      - 其他-如果在訂用帳戶或資源群組的安全性原則中，即時解決方案已關閉，或 VM 缺少公用 IP，且未備妥 NSG，則 VM 會在此類別中。
+      - 其他 - 如果訂閱或資源組的安全性原則中關閉了及時解決方案，或者 VM 缺少公共 IP 並且沒有 NSG，則 VM 屬於此類別。
 
-1. 選取 [建議] 索引標籤。
+1. 選取 [建議]**** 索引標籤。
 
-1. 在 [**虛擬機器**] 下，按一下您想要啟用的 vm。 這會讓 VM 旁邊顯示核取記號。
+1. 在 **"虛擬電腦"** 下，按一下要啟用的 VM。 這會讓 VM 旁邊顯示核取記號。
 
       ![啟用 Just-In-Time 存取](./media/security-center-just-in-time/enable-just-in-time.png)
 
-1. 按一下 [**在 vm 上啟用 JIT**]。 窗格隨即開啟，顯示 Azure 資訊安全中心所建議的預設埠：
+1. 按一下**在 VM 上啟用 JIT。** 將打開一個窗格，顯示 Azure 安全中心建議的預設埠：
     - 22 - SSH
     - 3389 - RDP
     - 5985 - WinRM 
     - 5986 - WinRM
-1. （選擇性）您可以將自訂埠新增至清單：
+1. 或者，您可以將自訂埠添加到清單中：
 
-      1. 按一下 [新增]。 [**新增埠**設定] 視窗隨即開啟。
-      1. 針對您選擇要設定的每個埠（預設和自訂），您可以自訂下列設定：
+      1. 按一下 **[新增]**。 將打開 **"添加埠配置**"視窗。
+      1. 對於選擇配置的每個埠（預設埠和自訂埠），可以自訂以下設置：
             - **通訊協定類型** - 核准要求時在此連接埠上允許的通訊協定。
             - **允許的來源 IP 位址** - 核准要求時在此連接埠上允許的 IP 範圍。
             - **要求時間上限** - 可開啟特定連接埠的時間範圍上限。
 
-     1. 按一下 [確定]。
+     1. 按一下 [確定]****。
 
-1. 按一下 [檔案]。
+1. 按一下 [儲存]****。
 
 > [!NOTE]
->啟用 VM 的 JIT VM 存取時，Azure 資訊安全中心會在與 Azure 防火牆相關聯的網路安全性群組中，為選取的埠建立「拒絕所有輸入流量」規則。 如果已針對選取的埠建立其他規則，則現有的規則會優先于新的「拒絕所有輸入流量」規則。 如果選取的埠上沒有現有的規則，則新的「拒絕所有輸入流量」規則會優先使用網路安全性群組和 Azure 防火牆。
+>為 VM 啟用 JIT VM 訪問後，Azure 安全中心會為與之關聯的網路安全性群組中的選定埠及其 Azure 防火牆創建"拒絕所有入站流量"規則。 如果為所選埠創建了其他規則，則現有規則優先于新的"拒絕所有入站流量"規則。 如果所選埠上沒有現有規則，則新的"拒絕所有入站流量"規則將在網路安全性群組和 Azure 防火牆中佔據最高優先順序。
 
 
-## <a name="request-jit-access-via-security-center"></a>透過資訊安全中心要求 JIT 存取
+## <a name="request-jit-access-via-security-center"></a>通過安全中心請求 JIT 訪問
 
-若要透過資訊安全中心要求存取 VM：
+要通過安全中心請求訪問 VM：
 
-1. 在 [Just-In-Time VM 存取] 下方，選取 [已設定] 索引標籤。
+1. 在 [Just-In-Time VM 存取]**** 下方，選取 [已設定]**** 索引標籤。
 
-1. 在 [**虛擬機器**] 下，按一下您想要要求存取的 vm。 這會在 VM 旁加上核取記號。
+1. 在 **"虛擬機器"** 下，按一下要請求訪問的 VM。 這會在 VM 旁邊放置一個核取記號。
 
-    - [**連接詳細資料**] 欄位中的圖示會指出 NSG 或 FW 上是否已啟用 JIT。 如果兩者都已啟用，則只會顯示防火牆圖示。
+    - "**連接詳細資訊"** 列中的圖示指示是否在 NSG 或 FW 上啟用了 JIT。 如果兩者都啟用了，則僅顯示防火牆圖示。
 
-    - [連線**詳細資料**] 欄位提供連接 VM 所需的資訊，以及其開啟的埠。
+    - "**連接詳細資訊"** 列提供連接 VM 及其打開端口所需的資訊。
 
       ![要求 Just-In-Time 存取](./media/security-center-just-in-time/request-just-in-time-access.png)
 
-1. 按一下 [**要求存取**]。 [**要求存取**] 視窗隨即開啟。
+1. 按一下 **"請求訪問**"。 將打開 **"請求訪問**"視窗。
 
-      ![JIT 詳細資料](./media/security-center-just-in-time/just-in-time-details.png)
+      ![JIT 詳細資訊](./media/security-center-just-in-time/just-in-time-details.png)
 
-1. 在 [要求存取] 下方，對於每個虛擬機器，設定要開啟的連接埠，以及對連接埠開放的來源 IP 位址和開啟連接埠的時間範圍。 只有在即時原則中設定的埠，才可以要求存取。 每個連接埠都具有衍生自 Just-In-Time 原則的許可時間上限。
+1. 在 [要求存取]**** 下方，對於每個虛擬機器，設定要開啟的連接埠，以及對連接埠開放的來源 IP 位址和開啟連接埠的時間範圍。 只能請求訪問在即時策略中配置的埠。 每個連接埠都具有衍生自 Just-In-Time 原則的許可時間上限。
 
-1. 按一下 [**開啟埠**]。
+1. 按一下 **"打開端口**"。
 
 > [!NOTE]
-> 如果要求存取的使用者位於 Proxy 後方，[我的 IP] 選項可能無法運作。 您可能需要定義組織的完整 IP 位址範圍。
+> 如果要求存取的使用者位於 Proxy 後方，[我的 IP]**** 選項可能無法運作。 您可能需要定義組織的完整 IP 位址範圍。
 
 
 
-## <a name="edit-a-jit-access-policy-via-security-center"></a>透過資訊安全中心編輯 JIT 存取原則
+## <a name="edit-a-jit-access-policy-via-security-center"></a>通過安全中心編輯 JIT 訪問策略
 
 可以藉由新增和設定一個對 VM 保護的新連接埠，或是變更與受保護的連接埠相關的其他任何設定，來變更該 VM 現有的 Just-In-Time 原則。
 
 若要編輯虛擬機器的現有 Just-In-Time 原則：
 
-1. 在 [設定] 索引標籤的 [虛擬機器] 下方，按一下該虛擬機器列中的三點圖示，選取要新增連接埠的虛擬機器。 
+1. 在 [設定]**** 索引標籤的 [虛擬機器]**** 下方，按一下該虛擬機器列中的三點圖示，選取要新增連接埠的虛擬機器。 
 
-1. 選取 [編輯]。
+1. 選取 [編輯]****。
 
-1. 在 [JIT VM 存取設定] 下方，您可以對於已經保護的連接埠編輯現有設定，也可以新增自訂連接埠。 
+1. 在 [JIT VM 存取設定]**** 下方，您可以對於已經保護的連接埠編輯現有設定，也可以新增自訂連接埠。 
   ![JIT VM 存取](./media/security-center-just-in-time/edit-policy.png)
 
 
 
-## <a name="audit-jit-access-activity-in-security-center"></a>資訊安全中心中的審核 JIT 存取活動
+## <a name="audit-jit-access-activity-in-security-center"></a>審核安全中心的 JIT 訪問活動
 
 您可以使用記錄搜尋來深入了解 VM 活動。 若要檢視記錄：
 
-1. 在 [Just-In-Time VM 存取] 下方，選取 [已設定] 索引標籤。
-2. 在 [ **vm**] 下，按一下該 vm 資料列內的三個點，然後從功能表中選取 [**活動記錄**]，即可選取要查看其相關資訊的 vm。 [**活動記錄**] 隨即開啟。
+1. 在 [Just-In-Time VM 存取]**** 下方，選取 [已設定]**** 索引標籤。
+2. 在**VM**下，通過按一下該 VM 行中的三個點來查看有關的資訊，並從功能表中選擇 **"活動日誌**"。 活動**日誌**將打開。
 
    ![選取活動記錄](./media/security-center-just-in-time/select-activity-log.png)
 
-   [活動記錄] 可提供篩選過的檢視，列出該 VM 先前的作業，以及時間、日期和訂用帳戶。
+   [活動記錄]**** 可提供篩選過的檢視，列出該 VM 先前的作業，以及時間、日期和訂用帳戶。
 
-選取 [按一下這裡，將所有項目下載為 CSV 格式] 即可下載記錄資訊。
+選取 [按一下這裡，將所有項目下載為 CSV 格式]**** 即可下載記錄資訊。
 
-修改篩選準則，然後**按一下 [** 套用] 以建立搜尋和記錄。
+修改篩選器，然後按一下 **"應用"** 以創建搜索和日誌。
 
 
 
-## 從 Azure VM 的頁面設定 JIT 存取<a name="jit-vm"></a>
+## <a name="configure-jit-access-from-an-azure-vms-page"></a>從 Azure VM 的頁面配置 JIT 存取權限<a name="jit-vm"></a>
 
-為了方便起見，您可以在資訊安全中心的 VM 頁面中直接使用 JIT 連接到 VM。
+為方便起見，您可以使用 JIT 直接從安全中心中的 VM 頁面連接到 VM。
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>透過 Azure VM 頁面在 VM 上設定 JIT 存取
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>通過 Azure VM 頁面在 VM 上配置 JIT 存取權限
 
 若要在所有 VM 上輕鬆地推出 Just-In-Time 存取，您可以將 VM 設定為只允許直接從 VM 進行 Just-In-Time 存取。
 
-1. 從 [ [Azure 入口網站](https://ms.portal.azure.com)] 中，搜尋並選取 [**虛擬機器**]。 
-2. 選取您想要限制為即時存取的虛擬機器。
-3. 在功能表中 **，選取 [** 設定]。
-4. 在 [**即時存取**] 底下，選取 [**立即啟用**]。 
+1. 從[Azure 門戶](https://ms.portal.azure.com)中，搜索並選擇**虛擬機器**。 
+2. 選擇要限制為即時訪問的虛擬機器。
+3. 在功能表中，選擇 **"配置**"。
+4. 在"及時**訪問**"下，選擇 **"及時啟用**"。 
 
 這可為使用下列設定的 VM 啟用 Just-In-Time 存取：
 
 - Windows 伺服器：
     - RDP 連接埠 3389
-    - 允許存取上限的三個小時
-    - 允許的來源 IP 位址設定為任何
+    - 最多允許訪問三小時
+    - 允許的源 IP 位址設置為"任意"
 - Linux 伺服器：
     - SSH 連接埠 22
-    - 允許存取上限的三個小時
-    - 允許的來源 IP 位址設定為任何
+    - 最多允許訪問三小時
+    - 允許的源 IP 位址設置為"任意"
      
 如果 VM 已經啟用 Just-In-Time，當您移至其組態頁面時，您就能夠看到 Just-In-Time 已啟用，而且您可使用此連結在 Azure 資訊安全中心開啟原則，以檢視和變更設定。
 
 ![jit config in vm](./media/security-center-just-in-time/jit-vm-config.png)
 
-### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>透過 Azure VM 的頁面要求對 VM 的 JIT 存取
+### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>通過 Azure VM 的頁面請求對 VM 的 JIT 存取權限
 
 在 Azure 入口網站中，您嘗試連線到虛擬機器時，Azure 會檢查您是否已經在該虛擬機器上設定 Just-In-Time 存取原則。
 
-- 如果您已在 VM 上設定 JIT 原則，則可以按一下 [**要求存取**權]，以根據 vm 設定的 jit 原則來授與存取權。 
+- 如果在 VM 上配置了 JIT 策略，則可以按一下"**請求存取權限**"，根據為 VM 設置的 JIT 策略授予存取權限。 
 
-  >![jit 要求](./media/security-center-just-in-time/jit-request.png)
+  >![jit 請求](./media/security-center-just-in-time/jit-request.png)
 
-  使用下列預設參數來要求存取：
+  使用以下預設參數請求訪問：
 
-  - **來源 IP**： ' Any ' （*）（無法變更）
-  - **時間範圍**：三小時（無法變更） <!--Isn't this set in the policy-->
-  - **埠號碼**Windows/埠22（適用于 Linux）的 RDP 埠3389（可以變更）
+  - **源 IP**： "任何"（*） （無法更改）
+  - **時間範圍**：三小時（無法更改） <!--Isn't this set in the policy-->
+  - **埠號**用於 Windows 的 RDP 埠 3389 / 適用于 Linux 的埠 22（可更改）
 
     > [!NOTE]
-    > 針對受 Azure 防火牆保護的 VM 核准要求之後，資訊安全中心會為使用者提供適當的連線詳細資料（DNAT 資料表的埠對應），以用來連線至 VM。
+    > 批准受 Azure 防火牆保護的 VM 的請求後，安全中心為使用者提供了用於連接到 VM 的正確連接詳細資訊（DNAT 表的埠映射）。
 
-- 如果您未在 VM 上設定 JIT，系統會提示您在其上設定 JIT 原則。
+- 如果未在 VM 上配置 JIT，系統將提示您配置其上的 JIT 策略。
 
   ![JIT 提示](./media/security-center-just-in-time/jit-prompt.png)
 
-## 以程式設計方式在 VM 上設定 JIT 原則<a name="jit-program"></a>
+## <a name="configure-a-jit-policy-on-a-vm-programmatically"></a>以程式設計方式在 VM 上配置 JIT 策略<a name="jit-program"></a>
 
 您可以透過 REST API 和透過 PowerShell 設定和使用 Just-In-Time。
 
-### <a name="jit-vm-access-via-rest-apis"></a>透過 REST Api 的 JIT VM 存取
+### <a name="jit-vm-access-via-rest-apis"></a>通過 REST API 進行 JIT VM 訪問
 
 Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使用。 您可以透過此 API 取得已設定 VM 的相關資訊、新增 VM、要求存取 VM，以及更多作業。 請參閱 [JIT 網路存取原則](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)，以深入了解 Just-In-Time REST API。
 
-### <a name="jit-vm-access-via-powershell"></a>透過 PowerShell 存取 JIT VM
+### <a name="jit-vm-access-via-powershell"></a>通過 PowerShell 進行 JIT VM 訪問
 
 若要透過 PowerShell 使用 Just-In-Time 虛擬機器存取解決方案，請使用官方 Azure 安全性中心 PowerShell Cmdlet，尤其是 `Set-AzJitNetworkAccessPolicy`。
 
@@ -232,7 +232,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
-### <a name="request-access-to-a-vm-via-powershell"></a>透過 PowerShell 要求存取 VM
+### <a name="request-access-to-a-vm-via-powershell"></a>通過 PowerShell 請求對 VM 的訪問
 
 在下列範例中，您可以看到對特定虛擬機器發出的 Just-In-Time 虛擬機器存取要求，其中要求連接埠 22 對特定 IP 位址開啟具體的一段時間：
 
@@ -252,17 +252,17 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
-如需詳細資訊，請參閱[PowerShell Cmdlet 檔](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)。
+有關詳細資訊，請參閱[PowerShell Cmdlet 文檔](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)。
 
 
-## <a name="automatic-cleanup-of-redundant-jit-rules"></a>自動清除多餘的 JIT 規則 
+## <a name="automatic-cleanup-of-redundant-jit-rules"></a>自動清理冗余 JIT 規則 
 
-每當您更新 JIT 原則時，清除工具就會自動執行，以檢查整個規則集的有效性。 此工具會尋找您的原則中的規則與 NSG 中的規則之間的不符之處。 如果清除工具發現不相符的問題，它會判斷原因，而當安全地移除不需要的內建規則。 清理程式永遠不會刪除您已建立的規則。
+每當更新 JIT 策略時，都會自動運行清理工具以檢查整個規則集的有效性。 該工具查找策略中的規則與 NSG 中的規則不匹配。 如果清理工具發現不匹配，它會確定原因，並在安全的情況下刪除不再需要的內置規則。 清理程式永遠不會刪除您創建的規則。
 
-清理程式可能會移除內建規則的範例案例：
+當清理程式可能刪除內置規則時，示例：
 
-- 當有兩個具有相同定義的規則存在，而且其中一個具有高於另一個的優先權時（亦即永遠不會使用較低的優先順序規則）
-- 當規則描述包含不符合規則中目的地 IP 的 VM 名稱時 
+- 當存在兩個定義相同的規則，並且一個規則具有高於另一個規則（這意味著，將永遠不會使用低優先順序規則）
+- 當規則描述包含與規則中的目標 IP 不匹配的 VM 的名稱時 
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -271,6 +271,6 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
 如要深入了解資訊安全中心，請參閱下列主題：
 
-- [設定安全性原則](tutorial-security-policy.md) — 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
-- [管理安全性建議](security-center-recommendations.md) — 了解建議如何協助保護您的 Azure 資源。
+- [設置安全性原則](tutorial-security-policy.md)– 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+- [管理安全建議](security-center-recommendations.md)– 瞭解建議如何説明保護 Azure 資源。
 - [安全性健康情況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健康清況。

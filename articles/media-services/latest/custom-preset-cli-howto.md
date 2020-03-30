@@ -1,6 +1,6 @@
 ---
-title: 編碼自訂的轉換使用媒體服務 v3 CLI-Azure |Microsoft Docs
-description: 本主題說明如何使用 Azure 媒體服務 v3 來編碼使用 CLI 的自訂轉換。
+title: 使用媒體服務 v3 Azure CLI 對自訂轉換進行編碼 |微軟文檔
+description: 本主題演示如何使用 Azure 媒體服務 v3 使用 Azure CLI 對自訂轉換進行編碼。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,39 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 42b7c2d86525c428253137b424fe58bb61edba70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762015"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382948"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>如何使用自訂的轉換-CLI 進行編碼
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何使用自訂轉換進行編碼 - Azure CLI
 
-當使用 Azure 媒體服務編碼，您可以快速開始使用其中一個建議的內建預設值，根據業界最佳作法，如所示[串流檔案](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding)快速入門。 您也可以建置自訂預設值為目標的特定案例或裝置需求。
+使用 Azure 媒體服務進行編碼時，您可以根據行業最佳實踐快速啟動推薦的內置預設之一快速入門，如[流式處理檔](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding)快速入門所示。 您還可以構建自訂預設，以定位特定方案或設備要求。
 
 ## <a name="considerations"></a>考量
 
-在建立自訂的預設設定時，適用下列考量：
+創建自訂預設時，需要考慮以下因素：
 
-* 高度和寬度 AVC 內容上的所有值必須都是 4 的倍數。
-* Azure 媒體服務 v3 中所有的編碼位元速率是每秒位元。 這是我們使用千位元/秒為單位的 v2 Api 與預設值不同。 比方說，如果 （kb/秒） 指定在 v2 中的位元速率為 128，v3 中它會設 128000 （位元/秒）。
+* AVC 內容上的高度和寬度的所有值必須為 4 的倍數。
+* 在 Azure 媒體服務 v3 中，所有編碼位元速率均以每秒位表示。 這與 v2 API 的預設不同，後者使用千位/秒作為單元。 例如，如果 v2 中的位元速率指定為 128 （千位/秒），則 v3 中它將設置為 128000（位/秒）。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites
 
-[建立媒體服務帳戶](create-account-cli-how-to.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+[創建媒體服務帳戶](create-account-cli-how-to.md)。
+
+請務必記住資源群組名稱和「媒體服務」帳戶名稱。
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>定義自訂的預設值
+## <a name="define-a-custom-preset"></a>定義自訂預設
 
-下列範例會定義新的轉換的要求主體。 我們會定義一組我們想要使用這項轉換時產生的輸出。 
+下面的示例定義新轉換的請求正文。 我們定義一組要在使用此轉換時生成的輸出。
 
-在此範例中，我們先新增 AacAudio 層的音訊的編碼方式和兩個 H264Video 層進行視訊編碼。 在視訊層中，我們會指派標籤，以便它們可以用於輸出檔案名稱。 接下來，我們想要輸出也包含 縮圖。 在下列範例中，我們會指定產生在 50%的輸入視訊的解析度和三個時間戳記-{25%、 50%、 75} 長度的輸入視訊的 PNG 格式中的映像。 最後，我們會指定輸出檔案-一個用於視訊 + 音訊格式，另一個用於縮圖。 由於我們有多個 H264Layers，我們必須使用巨集，產生唯一的名稱，每一層級。 我們可以使用`{Label}`或`{Bitrate}`巨集，此範例示範先前的功能。
+在此示例中，我們首先為音訊編碼添加 AacAudio 圖層，為視頻編碼添加兩個 H264 視頻圖層。 在視頻圖層中，我們分配標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出還包括縮略圖。 在下面的示例中，我們指定以 PNG 格式生成的圖像，以輸入視頻的 50% 解析度生成，並在輸入視頻長度的三個時間戳記中生成圖像 - [25%、50%、75]。 最後，我們指定輸出檔案的格式 - 一個用於視頻 + 音訊，另一個用於縮略圖。 由於我們擁有多個 H264Layers，因此我們必須使用每個圖層生成唯一名稱的宏。 我們可以使用 或`{Label}``{Bitrate}`宏，示例顯示前者。
 
-我們會在檔案中儲存這項轉換。 在此範例中，我們將檔案命名為`customPreset.json`。 
+我們將在此轉換中保存。 在此示例中，我們命名檔`customPreset.json`。
 
 ```json
 {
@@ -120,25 +122,24 @@ ms.locfileid: "65762015"
         }
     ]
 }
-
 ```
 
-## <a name="create-a-new-transform"></a>建立新的轉換  
+## <a name="create-a-new-transform"></a>創建新的轉換  
 
-在此範例中，我們會建立**轉換**我們稍早定義的自訂預設值為基礎。 時建立轉換，您應該先檢查是否其中一個已經存在。 如果轉換已存在，則重複使用它。 下列`show`命令會傳回`customTransformName`轉換若有的話：
+在此示例中，我們創建一個基於我們前面定義的自訂預設的**轉換**。 創建 Transform 時，應首先檢查是否存在轉換。 如果存在轉換，請重複使用它。 如果轉換`show`存在，`customTransformName`以下命令將返回該轉換：
 
-```cli
+```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-下列 CLI 命令會建立自訂的預設值 （稍早定義） 為基礎的轉換。 
+以下 Azure CLI 命令基於自訂預設（定義于前面）創建轉換。
 
-```cli
+```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-若要將轉換套用至指定的視訊或音訊的媒體服務，您需要提交作業，以在該轉換。 如需示範如何提交下轉型作業的完整範例，請參閱[快速入門：Stream 視訊檔案-CLI](stream-files-cli-quickstart.md)。
+對於媒體服務要將轉換應用於指定的視頻或音訊，您需要根據該轉換提交作業。 有關演示如何在轉換下提交作業的完整示例，請參閱[快速入門：流視頻檔 - Azure CLI](stream-files-cli-quickstart.md)。
 
 ## <a name="see-also"></a>另請參閱
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

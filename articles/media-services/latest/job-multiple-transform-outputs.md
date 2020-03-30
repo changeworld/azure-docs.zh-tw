@@ -1,6 +1,6 @@
 ---
-title: 建立具有多個轉換輸出的 Azure 媒體服務作業
-description: 本主題示範如何建立具有多個轉換輸出的 Azure 媒體服務作業。
+title: 創建具有多個轉換輸出的 Azure 媒體服務作業
+description: 本主題演示如何創建具有多個轉換輸出的 Azure 媒體服務作業。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
 ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77563137"
 ---
-# <a name="create-a-job-with-multiple-transform-outputs"></a>建立具有多個轉換輸出的作業
+# <a name="create-a-job-with-multiple-transform-outputs"></a>創建具有多個轉換輸出的作業
 
-本主題說明如何建立具有兩個轉換輸出的轉換。 第一個呼叫會使用內建的[AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset)預設值，針對自動調整位元速率串流的輸入進行編碼。 第二個會呼叫輸入影片中的音訊信號，以使用[AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)進行處理。 建立轉換之後，您可以提交將會據以處理影片的作業。 因為在此範例中，我們會指定兩個轉換輸出，所以我們必須指定兩個作業輸出。 您可以選擇將這兩個作業輸出導向相同的資產（如下所示），也可以將結果寫入不同的資產。
+本主題演示如何創建具有兩個轉換輸出的轉換。 第一個調用輸入編碼，以便使用內置自我調整流預設進行自我調整位元速率[流。](encoding-concept.md#builtinstandardencoderpreset) 第二個要求使用[音訊分析器預設](analyzing-video-audio-files-concept.md#built-in-presets)處理輸入視頻中的音訊信號。 創建轉換後，您可以提交將相應地處理視頻的作業。 由於在此示例中，我們指定兩個轉換輸出，因此必須指定兩個作業輸出。 您可以選擇將兩個作業輸出定向到同一資產（如下所示），也可以將結果寫入單獨的資產。
  
 
 > [!TIP]
-> 在您開始開發之前，請先參閱[使用媒體服務 V3 api 進行開發](media-services-apis-overview.md)（包含存取 api、命名慣例等的資訊）。
+> 在開始開發之前，請查看[使用媒體服務 v3 API 進行開發](media-services-apis-overview.md)（包括有關訪問 API、命名約定等的資訊）
 
 ## <a name="create-a-transform"></a>建立轉換
 
-下列程式碼顯示如何建立會產生兩個輸出的轉換。
+以下代碼演示如何創建生成兩個輸出的轉換。
 
 ```csharp
 private static async Task<Transform> GetOrCreateTransformAsync(
@@ -67,7 +67,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
 ```
 ## <a name="submit-a-job"></a>提交作業
 
-建立具有 HTTPS URL 輸入和兩個作業輸出的作業。
+使用 HTTPS URL 輸入和兩個作業輸出創建作業。
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -135,4 +135,4 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 .NET Azure 媒體服務 v3 範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 
+[使用 .NET 的 Azure 媒體服務 v3 示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

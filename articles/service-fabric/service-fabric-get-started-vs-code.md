@@ -1,15 +1,15 @@
 ---
-title: 具有 VS Code 消費者入門的 Azure Service Fabric
+title: 具有 VS 代碼入門的 Azure 服務結構
 description: 本文是使用 Visual Studio Code 建立 Service Fabric 應用程式的概觀。
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258482"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
@@ -25,7 +25,7 @@ ms.locfileid: "79258482"
 
 必須在所有環境上安裝下列必要條件。
 
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [視覺工作室代碼](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
 * [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
@@ -43,20 +43,20 @@ ms.locfileid: "79258482"
 
 * [Java SDK](https://aka.ms/azure-jdks) (1.8 版)
 * [Gradle](https://gradle.org/install/)
-* [適用於 Java VS Code 擴充功能的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)，需要該工具才能針對 Java 服務進行偵錯。 針對 Java 服務進行偵錯只在 Linux 上受到支援。 您可以藉由在 VS Code 中的 [活動列] 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
+* [適用於 Java VS Code 擴充功能的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)，需要該工具才能針對 Java 服務進行偵錯。 針對 Java 服務進行偵錯只在 Linux 上受到支援。 您可以藉由在 VS Code 中的 [活動列]**** 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
 
 必須針對 .NET Core/C# 開發安裝下列必要條件：
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (版本 2.0.0 或更新版本)
-* [適用於 Visual Studio Code 的 C# (由 OmniSharp 驅動) VS Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)，需要該擴充功能才能針對 C# 服務進行偵錯。 您可以藉由在 VS Code 中的 [活動列] 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
+* [適用於 Visual Studio Code 的 C# (由 OmniSharp 驅動) VS Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)，需要該擴充功能才能針對 C# 服務進行偵錯。 您可以藉由在 VS Code 中的 [活動列]**** 按一下[擴充功能] 圖示並搜尋擴充功能來安裝，或者從 VS Code 市集安裝。
 
 ## <a name="setup"></a>安裝程式
 
 1. 開啟 VS Code。
-2. 按一下 VS Code 左側 [活動列] 上的 [擴充功能] 圖示。 搜尋 "Service Fabric"。 針對 Service Fabric Reliable Services 擴充功能按一下 [安裝]。
+2. 按一下 VS Code 左側 [活動列]**** 上的 [擴充功能] 圖示。 搜尋 "Service Fabric"。 針對 Service Fabric Reliable Services 擴充功能按一下 [安裝]****。
 
 ## <a name="commands"></a>命令
-適用於 VS Code 的 Service Fabric Reliable Services 擴充功能提供許多命令，可以協助開發人員建立及部署 Service Fabric 專案。 您可以按下 **、將命令名稱鍵入到輸入列中，然後從提示清單選取想要的命令，從 [命令選擇區]** `(Ctrl + Shift + p)` 中呼叫命令。 
+適用於 VS Code 的 Service Fabric Reliable Services 擴充功能提供許多命令，可以協助開發人員建立及部署 Service Fabric 專案。 您可以按下 `(Ctrl + Shift + p)`、將命令名稱鍵入到輸入列中，然後從提示清單選取想要的命令，從 [命令選擇區]**** 中呼叫命令。 
 
 * Service Fabric: Create Application 
 * Service Fabric: Publish Application 
@@ -69,7 +69,7 @@ ms.locfileid: "79258482"
 
 **Service Fabric: Create Application** 命令會在您目前的工作區中建立全新 Service Fabric 應用程式。 根據開發機器上安裝的是哪個 Yeoman 產生器，您可以建立數種類型的 Service Fabric 應用程式，包括 Java、C#、容器及客體專案。 
 
-1.  選取 [ **Service Fabric：建立應用程式**] 命令
+1.  選擇**服務結構：創建應用程式**命令
 2.  選取新 Service Fabric 應用程式的類型。 
 3.  輸入您想要建立的應用程式名稱
 3.  選取您想要新增到 Service Fabric 應用程式中的服務類型。 
@@ -80,7 +80,7 @@ ms.locfileid: "79258482"
 ### <a name="service-fabric-add-service"></a>Service Fabric: Add Service
 **Service Fabric: Add Service** 命令會將新服務新增至現有的 Service Fabric 應用程式中。 服務要新增至其中的應用程式，必須位於工作區的根目錄中。 
 
-1.  選取 **Service Fabric: Add Service** 命令。
+1.  選擇 **"服務結構：添加服務**"命令。
 2.  選取目前 Service Fabric 應用程式的類型。 
 3.  選取您想要新增到 Service Fabric 應用程式中的服務類型。 
 4.  遵循提示來為服務命名。 
@@ -98,7 +98,7 @@ ms.locfileid: "79258482"
 **Service Fabric: Deploy Application** 命令會在本機叢集上部署您的 Service Fabric 應用程式。 在使用命令之前，請先確定您的本機叢集正在執行。 
 
 1. 選取 **Service Fabric: Deploy Application** 命令
-2. 使用 Service Fabric Explorer （HTTP：\//localhost： 19080/Explorer）來查看本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
+2. 使用 Service Fabric 資源管理器（HTTP：\//localhost：19080/資源管理器）查看本地群集，以確認應用程式已安裝。 這可能需要一些時間，請耐心等候。
 3. 您也可以於未在 Cloud.json 檔案中設定參數時使用 **Service Fabric: Publish Application** 命令，以部署到本機叢集。
 
 > [!NOTE]
@@ -111,7 +111,7 @@ ms.locfileid: "79258482"
 2.  使用 Service Fabric Explorer 檢視叢集，確認應用程式是否已移除。 這可能需要一些時間，請耐心等候。
 
 ### <a name="service-fabric-build-application"></a>Service Fabric: Build Application
-**Service Fabric： Build Application**命令可以建立 JAVA 或C# Service Fabric 應用程式。 
+**服務結構：生成應用程式**命令可以生成 JAVA 或 C# 服務結構應用程式。 
 
 1.  在執行此命令之前，請先確定您是在應用程式根資料夾中。 命令會識別應用程式類型 (C# 或 Java)，並且據以建置您的應用程式。
 2.  選取 **Service Fabric: Build Application** 命令。

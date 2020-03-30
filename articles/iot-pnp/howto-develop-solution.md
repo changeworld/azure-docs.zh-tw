@@ -4,17 +4,17 @@ description: 身為解決方案開發人員，請了解如何使用服務 SDK �
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159212"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>連線至 IoT 隨插即用預覽版裝置並與其互動
 
@@ -52,7 +52,7 @@ npm install
 
 * `AZURE_IOT_MODEL_REPOSITORY_CONNECTION_STRING`
 
-您可以使用 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)，在**公司存放庫**的 [連接字串]  索引標籤上中找到此連接字串。
+您可以使用 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)，在**公司存放庫**的 [連接字串]**** 索引標籤上中找到此連接字串。
 
 連接字串會如下列範例所示：
 
@@ -87,11 +87,11 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 若要建立數位對應項路由：
 
 1. 在 Azure 入口網站中，移至您的 IoT 中樞資源。
-1. 選取 [訊息路由]  。
-1. 在 [路由]  索引標籤上，選取 [新增]  。
-1. 在 [名稱]  欄位中輸入值，然後選擇 [端點]  。 如果您尚未設定端點，請選取 [新增端點]  。
-1. 在 [資料來源]  下拉式清單中，選取 [數位對應項變更事件]  。
-1. 選取 [儲存]  。
+1. 選取 [訊息路由]****。
+1. 在 [路由]**** 索引標籤上，選取 [新增]****。
+1. 在 [名稱]**** 欄位中輸入值，然後選擇 [端點]****。 如果您尚未設定端點，請選取 [新增端點]****。
+1. 在 [資料來源]**** 下拉式清單中，選取 [數位對應項變更事件]****。
+1. 選取 [儲存]****。
 
 下列 JSON 顯示數位對應項變更事件的範例：
 

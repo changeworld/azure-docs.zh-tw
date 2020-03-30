@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033554"
 ---
 # <a name="download-the-template-for-a-vm"></a>下載 VM 的範本
@@ -26,10 +26,10 @@ ms.locfileid: "74033554"
 
 ## <a name="download-the-template-using-the-portal"></a>使用入口網站下載範本
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在左側功能表上，選取 [虛擬機器]。
+2. 在左側功能表上，選取 [虛擬機器]****。
 3. 然後從清單中選取虛擬機器。
-4. 選取 [匯出範本]。
-5. 從上方的功能表選取 [下載]，然後將 .zip 檔案儲存到本機電腦。
+4. 選取 [匯出範本]****。
+5. 從上方的功能表選取 [下載]****，然後將 .zip 檔案儲存到本機電腦。
 6. 開啟 .zip 檔，並將檔案解壓縮至資料夾。 此.zip 檔案包含：
    
    * parameters.json

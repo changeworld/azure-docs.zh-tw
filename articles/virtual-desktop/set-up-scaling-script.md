@@ -1,87 +1,87 @@
 ---
-title: 調整工作階段主機 Azure 自動化-Azure
-description: 如何使用 Azure 自動化自動調整 Windows 虛擬桌面工作階段主機。
+title: 縮放會話承載 Azure 自動化 - Azure
+description: 如何使用 Azure 自動化自動縮放 Windows 虛擬桌面工作階段主機。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 03/26/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 3a853dc32f8716f3f2ba32896a7a4a239efcc5bd
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127532"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349873"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機規模
+# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化擴展工作階段主機
 
-您可以藉由調整您的虛擬機器（Vm），降低總 Windows 虛擬桌面部署成本。 這表示關閉和解除配置工作階段主機 Vm 期間的離峰使用時數，然後將它們重新開啟，並在尖峰時間重新配置它們。
+您可以通過擴展虛擬機器 （VM） 來降低 Windows 虛擬桌面部署總成本。 這意味著在非高峰使用時間內關閉和釋放工作階段主機 VM，然後在尖峰時間重新打開並重新分配它們。
 
-在本文中，您將瞭解以 Azure 自動化和 Azure Logic Apps 為基礎的調整工具，其會自動調整 Windows 虛擬桌面環境中的工作階段主機虛擬機器。 若要瞭解如何使用調整工具，請直接跳至[必要條件](#prerequisites)。
+在本文中，您將瞭解使用 Azure 自動化和 Azure 邏輯應用構建的縮放工具，該工具將自動縮放 Windows 虛擬桌面環境中的工作階段主機虛擬機器。 要瞭解如何使用縮放工具，請跳到[先決條件](#prerequisites)。
 
-## <a name="how-the-scaling-tool-works"></a>調整工具的運作方式
+## <a name="how-the-scaling-tool-works"></a>縮放工具的工作原理
 
-調整工具為想要優化其工作階段主機 VM 成本的客戶提供低成本的自動化選項。
+擴展工具為希望優化其工作階段主機 VM 成本的客戶提供了低成本的自動化選項。
 
-您可以使用調整工具來執行下列動作：
+您可以使用縮放工具：
  
-- 根據尖峰和離峰上班時間，排程要啟動和停止的 Vm。
-- 根據每個 CPU 核心的會話數目相應放大 Vm。
-- 在離峰時段相應縮小 Vm，使工作階段主機 Vm 的最小數目維持在執行狀態。
+- 根據高峰和非高峰上班時間安排 VM 啟動和停止。
+- 根據每個 CPU 內核的會話數橫向擴展 VM。
+- 在非高峰時間以 VM 進行縮放，使工作階段主機 VM 的最小數量處於運行狀態。
 
-調整工具會使用 Azure 自動化 PowerShell runbook、webhook 和 Azure Logic Apps 的組合來運作。 當此工具執行時，Azure Logic Apps 會呼叫 webhook 來啟動 Azure 自動化 runbook。 Runbook 接著會建立作業。
+縮放工具使用 Azure 自動化 PowerShell 運行簿、Webhook 和 Azure 邏輯應用的組合來運行。 該工具運行時，Azure 邏輯應用調用 Webhook 以啟動 Azure 自動化運行簿。 然後，Runbook 創建一個作業。
 
-在尖峰使用時間期間，作業會檢查目前會話的數目，以及每個主機集區目前正在執行之工作階段主機的 VM 容量。 它會使用此資訊來計算執行中的工作階段主機 Vm 是否可以根據針對**createazurelogicapp**檔案所定義的*SessionThresholdPerCPU*參數來支援現有會話。 如果工作階段主機 Vm 無法支援現有的會話，此作業會啟動主機集區中的其他工作階段主機 Vm。
-
->[!NOTE]
->*SessionThresholdPerCPU*不會限制 VM 上的會話數目。 此參數只會決定何時需要啟動新的 Vm，以對連線進行負載平衡。 若要限制會話數目，您必須遵循 RdsHostPool 的指示，以適當地[設定](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) *MaxSessionLimit*參數。
-
-在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，此作業將會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出後，此作業將會關閉 VM。
-
-如果您將*LimitSecondsToForceLogOffUser*參數設定為零，此作業將會允許指定群組原則中的會話設定，處理登出使用者會話。 若要查看這些群組原則，請移至 **電腦**設定 > **原則** > **系統管理範本** > **Windows 元件** > 終端機**服務** > **終端機伺服器** > **會話時間限制**。 如果工作階段主機 VM 上有任何使用中會話，此作業會讓工作階段主機 VM 繼續執行。 如果沒有作用中的會話，此作業將會關閉工作階段主機 VM。
-
-作業會根據設定的週期間隔定期執行。 您可以根據 Windows 虛擬桌面環境的大小來變更此間隔，但請記住，啟動和關閉虛擬機器可能需要一些時間，因此請記得考慮延遲。 建議您將週期間隔設定為每15分鐘一次。
-
-不過，此工具也有下列限制：
-
-- 此解決方案只適用于集區工作階段主機 Vm。
-- 此解決方案會管理任何區域中的 Vm，但只能在與您的 Azure 自動化帳戶和 Azure Logic Apps 相同的訂用帳戶中使用。
+在高峰使用期間，作業會檢查每個主機池的當前正在運行的工作階段主機的當前會話數和 VM 容量。 它使用此資訊計算正在運行的工作階段主機 VM 是否可以基於為**createazurelogicapp.ps1**檔定義的*會話閾值PerCPU*參數支援現有會話。 如果工作階段主機 VM 不支援現有會話，作業將在主機池中啟動其他工作階段主機 VM。
 
 >[!NOTE]
->調整工具可控制要調整之主機集區的負載平衡模式。 它會將其設定為尖峰和離峰時段的廣度優先負載平衡。
+>*會話閾值PerCPU*不限制 VM 上的會話數。 此參數僅確定何時需要啟動新 VM 來負載平衡連接。 要限制會話數，您需要按照說明["設置-RdsHostPool"](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)相應地配置*MaxSessionLimit*參數。
+
+在非高峰使用時間內，作業根據*最小數量RDSH*參數確定應關閉的工作階段主機 VM。 作業將工作階段主機 VM 設置為耗盡模式，以防止連接到主機的新會話。 如果將 *"限制秒秒到ForceLogOffUser"* 參數設置為非零正值，作業將通知當前登錄的任何使用者保存其工作，等待配置的時間量，然後強制使用者登出。一旦工作階段主機 VM 上的所有使用者會話都已登出，作業將關閉 VM。
+
+如果將 *"限制秒秒到ForceLogOffUser"* 參數設置為零，作業將允許指定群組原則中的會話配置設置來處理登出使用者會話。 要查看這些群組原則，請訪問**電腦配置** > **策略** > **管理範本** > **Windows 元件** > **終端服務** > **終端伺服器** > **會話時間限制**。 如果工作階段主機 VM 上有任何活動會話，則作業將使工作階段主機 VM 保持運行。 如果沒有活動會話，作業將關閉工作階段主機 VM。
+
+作業根據設置的定期間隔定期運行。 您可以根據 Windows 虛擬桌面環境的大小更改此間隔，但請記住，啟動和關閉虛擬機器可能需要一些時間，因此請記住考慮延遲。 我們建議將定期間隔設置為每 15 分鐘一次。
+
+但是，該工具也有以下限制：
+
+- 此解決方案僅適用于池工作階段主機 VM。
+- 此解決方案管理任何區域中的 VM，但只能在與 Azure 自動化帳戶和 Azure 邏輯應用相同的訂閱中使用。
+
+>[!NOTE]
+>縮放工具控制正在縮放的主機池的負載平衡模式。 它將其設置為高峰和非尖峰時間的廣度優先負載平衡。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始設定調整工具之前，請確定您已備妥下列專案：
+在開始設置縮放工具之前，請確保已準備好以下事項：
 
-- [Windows 虛擬桌面租使用者和主機集](create-host-pools-arm-template.md)區
-- 已設定並向 Windows 虛擬桌面服務註冊的工作階段主機集區 Vm
-- 具有 Azure 訂用帳戶之[參與者存取權](../role-based-access-control/role-assignments-portal.md)的使用者
+- [Windows 虛擬桌面租戶和主機池](create-host-pools-arm-template.md)
+- 在 Windows 虛擬桌面服務中配置和註冊的工作階段主機池 VM
+- 在 Azure 訂閱上具有[參與者存取權限](../role-based-access-control/role-assignments-portal.md)的使用者
 
-您用來部署工具的機器必須具備： 
+用於部署該工具的電腦必須具有： 
 
-- Windows PowerShell 5.1 或更新版本
-- Microsoft Az PowerShell 模組
+- Windows PowerShell 5.1 或更高版本
+- 微軟 Az PowerShell 模組
 
-如果一切就緒，讓我們開始吧。
+如果你已經做好了一切準備，那就讓我們開始吧。
 
 ## <a name="create-an-azure-automation-account"></a>建立 Azure 自動化帳戶
 
-首先，您需要 Azure 自動化帳戶來執行 PowerShell runbook。 以下說明如何設定您的帳戶：
+首先，您需要一個 Azure 自動化帳戶來運行 PowerShell 運行簿。 以下是設置帳戶的方式：
 
 1. 以系統管理員身分開啟 Windows PowerShell。
-2. 執行下列 Cmdlet 來登入您的 Azure 帳戶。
+2. 運行以下 Cmdlet 以登錄到 Azure 帳戶。
 
      ```powershell
      Login-AzAccount
      ```
 
      >[!NOTE]
-     >您的帳戶必須具有您想要部署調整工具之 Azure 訂用帳戶的參與者許可權。
+     >您的帳戶必須具有要在 Azure 訂閱上部署縮放工具的參與者許可權。
 
-3. 執行下列 Cmdlet 來下載用來建立 Azure 自動化帳戶的腳本：
+3. 運行以下 Cmdlet 以下載用於創建 Azure 自動化帳戶的腳本：
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -89,47 +89,47 @@ ms.locfileid: "79127532"
      Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
-4. 執行下列 Cmdlet 來執行腳本，並建立 Azure 自動化帳戶：
+4. 運行以下 Cmdlet 以執行腳本並創建 Azure 自動化帳戶：
 
      ```powershell
      .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
      ```
 
-5. Cmdlet 的輸出會包含 webhook URI。 請務必保留 URI 的記錄，因為當您設定 Azure 邏輯應用程式的執行排程時，會使用它做為參數。
+5. Cmdlet 的輸出將包括一個 webhook URI。 請確保保留 URI 的記錄，因為在為 Azure 邏輯應用設置執行計畫時，會將其用作參數。
 
-設定 Azure 自動化帳戶之後，請登入您的 Azure 訂用帳戶，並檢查以確定您的 Azure 自動化帳戶和相關的 runbook 已出現在您指定的資源群組中，如下圖所示：
+6. 設置 Azure 自動化帳戶後，請登錄到 Azure 訂閱並進行檢查，以確保 Azure 自動化帳戶和相關 Runbook 已顯示在指定的資源組中，如下圖所示：
 
-![Azure 總覽頁面的影像，其中顯示新建立的自動化帳戶和 runbook。](media/automation-account.png)
+   ![顯示新創建的自動化帳戶和 Runbook 的 Azure 概覽頁的圖像。](media/automation-account.png)
 
-若要檢查您的 webhook 是否應為其所在位置，請移至畫面左側的 [資源] 清單，然後選取 [ **webhook**]。
+  要檢查 Webhook 是否位於其應該的位置，請選擇 Runbook 的名稱。 接下來，轉到 Runbook 的資源部分並選擇**Webhook。**
 
-## <a name="create-an-azure-automation-run-as-account"></a>建立 Azure 自動化執行身分帳戶
+## <a name="create-an-azure-automation-run-as-account"></a>創建 Azure 自動化作為帳戶運行
 
-現在您已有 Azure 自動化帳戶，您也必須建立 Azure 自動化執行身分帳戶，才能存取您的 Azure 資源。
+現在，您已經擁有了 Azure 自動化帳戶，還需要創建 Azure 自動化運行為帳戶來訪問 Azure 資源。
 
-[Azure 自動化執行身分帳戶](../automation/manage-runas-account.md)會使用 azure Cmdlet 提供驗證來管理 azure 中的資源。 當您建立執行身分帳戶時，它會在 Azure Active Directory 中建立新的服務主體使用者，並在訂用帳戶層級將參與者角色指派給服務主體使用者，Azure 執行身分帳戶是用來安全地進行驗證的絕佳方式憑證和服務主體名稱，而不需要將使用者名稱和密碼儲存在認證物件中。 若要深入瞭解執行身分驗證，請參閱[限制執行身分帳戶許可權](../automation/manage-runas-account.md#limiting-run-as-account-permissions)。
+[Azure 自動化運行為帳戶](../automation/manage-runas-account.md)提供用於使用 Azure Cmdlet 管理 Azure 中的資源的身份驗證。 創建"運行為"帳戶時，它會在 Azure 活動目錄中創建新的服務主體使用者，並在訂閱級別將參與者角色分配給服務主體使用者，Azure 運行作為帳戶是使用證書和服務主體名稱，無需在憑據物件中存儲使用者名和密碼。 要瞭解有關"作為身份驗證運行"的更多內容，請參閱[限制"作為帳戶運行"許可權](../automation/manage-runas-account.md#limiting-run-as-account-permissions)。
 
-任何身為訂用帳戶管理員角色成員和訂閱共同管理員的使用者，都可以遵循下一節的指示來建立執行身分帳戶。
+任何作為訂閱管理員角色的成員和訂閱共同管理員的使用者都可以按照下一節的說明創建"運行為"帳戶。
 
-若要在您的 Azure 帳戶中建立執行身分帳戶：
+要在 Azure 帳戶中創建"運行"帳戶，請執行如下設置：
 
-1. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中，輸入並選取 [**自動化帳戶**]。
+1. 在 Azure 門戶中，選擇 **"所有服務**"。 在資源清單中，輸入並選擇 **"自動化帳戶**"。
 
-2. 在 [**自動化帳戶**] 頁面上，選取自動化帳戶的名稱。
+2. 在 **"自動化帳戶"** 頁上，選擇自動化帳戶的名稱。
 
-3. 在視窗左側的窗格中，選取 [帳戶設定] 區段下的 [**執行身分帳戶**]。
+3. 在視窗左側的窗格中，在"帳戶設置"部分下選擇 **"以帳戶身份運行**"。
 
-4. 選取 [ **Azure 執行身分帳戶**]。 當 [**新增 Azure 執行身分帳戶**] 窗格出現時，請參閱總覽資訊，然後選取 [**建立**] 以開始帳戶建立程式。
+4. 選擇**Azure 以帳戶身份運行**。 當"**添加 Azure 運行為帳戶"** 窗格出現時，查看概覽資訊，然後選擇 **"創建"** 以啟動帳戶創建過程。
 
-5. 請稍候幾分鐘，讓 Azure 建立執行身分帳戶。 您可以在 [通知] 底下的功能表中追蹤建立進度。
+5. 等待幾分鐘，Azure 創建"以運行為帳戶"。" 您可以在"通知"下跟蹤功能表中的創建進度。
 
-6. 當程式完成時，它會在指定的自動化帳戶中建立名為 AzureRunAsConnection 的資產。 連接資產會保存應用程式識別碼、租使用者識別碼、訂用帳戶識別碼和憑證指紋。 請記住 [應用程式識別碼]，因為您稍後將會用到它。
+6. 該過程完成後，它將在指定的自動化帳戶中創建名為 AzureRunAsConnect 的資產。 連接資產包含應用程式 ID、租戶 ID、訂閱 ID 和證書指紋。 請記住應用程式 ID，因為稍後將使用它。
 
 ### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>在 Windows 虛擬桌面中建立角色指派
 
-接下來，您必須建立角色指派，讓 AzureRunAsConnection 可以與 Windows 虛擬桌面互動。 請務必使用 PowerShell，以有權建立角色指派的帳戶登入。
+接下來，您需要創建角色指派，以便 AzureRunAsConnect 可以與 Windows 虛擬桌面進行交互。 請確保使用 PowerShell 使用具有創建角色指派許可權的帳戶登錄。
 
-首先，下載並匯入[Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
+首先，下載並導入[Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以便如果您尚未在 PowerShell 會話中使用。 執行下列 PowerShell Cmdlet 以連線至 Windows 虛擬桌面並顯示您的租用戶。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -137,37 +137,37 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-當您找到您想要調整之主機集區的租使用者時，請遵循[建立 Azure 自動化帳戶](#create-an-azure-automation-account)中的指示，並使用您從上一個 Cmdlet 取得的租使用者名稱來建立角色指派：
+當您找到具有要縮放的主機池的租戶時，請按照[創建 Azure 自動化帳戶](#create-an-azure-automation-account)中的說明操作，並使用以下 Cmdlet 中以前的 Cmdlet 中的租戶名稱創建角色指派：
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
 ```
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>建立 Azure 邏輯應用程式和執行排程
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>創建 Azure 邏輯應用和執行計畫
 
-最後，您必須建立 Azure 邏輯應用程式，並為新的調整工具設定執行排程。
+最後，您需要創建 Azure 邏輯應用並為新的縮放工具設置執行計畫。
 
-1.  以系統管理員身分開啟 Windows PowerShell
+1.  以管理員身份打開 Windows 電源外殼
 
-2.  執行下列 Cmdlet 來登入您的 Azure 帳戶。
+2.  運行以下 Cmdlet 以登錄到 Azure 帳戶。
 
      ```powershell
      Login-AzAccount
      ```
 
-3. 執行下列 Cmdlet，以在本機電腦上下載 createazurelogicapp 腳本檔案。
+3. 運行以下 Cmdlet 以在本地電腦上下載 createazurelogicapp.ps1 指令檔。
 
      ```powershell
      Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
      ```
 
-4. 執行下列 Cmdlet，以具有 RDS 擁有者或 RDS 參與者許可權的帳戶登入 Windows 虛擬桌面。
+4. 運行以下 Cmdlet 以使用具有 RDS 擁有者或 RDS 參與者許可權的帳戶登錄到 Windows 虛擬桌面。
 
      ```powershell
      Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
      ```
 
-5. 執行下列 PowerShell 腳本，以建立 Azure 邏輯應用程式和執行排程。
+5. 運行以下 PowerShell 腳本以創建 Azure 邏輯應用和執行計畫。
 
      ```powershell
      $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
@@ -229,30 +229,34 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
        -MaintenanceTagName $maintenanceTagName
      ```
 
-     執行腳本之後，邏輯應用程式應該會出現在資源群組中，如下圖所示。
+     運行腳本後，邏輯應用應顯示在資源組中，如下圖所示。
 
-     ![範例 Azure 邏輯應用程式的 [總覽] 頁面影像。](media/logic-app.png)
+     ![示例 Azure 邏輯應用的概覽頁的圖像。](media/logic-app.png)
 
-若要對執行排程進行變更（例如變更週期間隔或時區），請移至自動調整排程器並選取 [**編輯**]，移至 [Logic Apps 設計工具]。
+要更改執行計畫（如更改定期間隔或時區），請轉到自動縮放計畫程式並選擇 **"編輯"** 以轉到邏輯應用設計器。
 
-![Logic Apps 設計工具的影像。 可讓使用者編輯週期和 webhook 檔案的 [週期] 和 [Webhook] 功能表開啟。](media/logic-apps-designer.png)
+![邏輯應用設計器的圖像。 允許使用者編輯重複次數和 Webhook 檔打開的定期和 Webhook 功能表。](media/logic-apps-designer.png)
 
-## <a name="manage-your-scaling-tool"></a>管理您的調整工具
+## <a name="manage-your-scaling-tool"></a>管理縮放工具
 
-既然您已建立調整工具，就可以存取其輸出。 本節說明一些您可能會覺得有用的功能。
+現在，您已經創建了縮放工具，您可以訪問其輸出。 本節介紹您可能認為有用的一些功能。
 
 ### <a name="view-job-status"></a>檢視作業狀態
 
-您可以在 Azure 入口網站中查看所有 runbook 作業的摘要狀態，或查看更深入的特定 runbook 作業狀態。
+您可以查看所有 Runbook 作業的匯總狀態，或在 Azure 門戶中查看特定 Runbook 作業的更深入狀態。
 
-在您選取的自動化帳戶右側的 [作業統計資料] 底下，您可以查看所有 runbook 作業的摘要清單。 開啟視窗左側的 [**作業**] 頁面，會顯示目前的工作狀態、開始時間和完成時間。
+在所選自動化帳戶的右側"作業統計資訊"下，您可以查看所有 Runbook 作業的摘要清單。 打開視窗左側的**作業**頁將顯示當前作業狀態、開始時間和完成時間。
 
-![[作業狀態] 頁面的螢幕擷取畫面。](media/jobs-status.png)
+![作業狀態頁的螢幕截圖。](media/jobs-status.png)
 
-### <a name="view-logs-and-scaling-tool-output"></a>查看記錄和調整工具輸出
+### <a name="view-logs-and-scaling-tool-output"></a>查看日誌和縮放工具輸出
 
-您可以藉由開啟 runbook 並選取您的作業名稱，來查看向外延展和相應縮小操作的記錄。
+您可以通過打開 Runbook 並選擇作業的名稱來查看橫向擴展和擴展操作的日誌。
 
-在裝載 Azure 自動化帳戶的資源群組中，流覽至 runbook （預設名稱是 WVDAutoScaleRunbook），然後選取 **[總覽**]。 在 [總覽] 頁面上，選取 [最近使用的作業] 底下的作業，以查看其調整工具輸出，如下圖所示。
+導航到託管 Azure 自動化帳戶的資源組中的 Runbook（預設名稱為 WVDAutoScaleRunbook），然後選擇 **"概述**"。 在概覽頁上，選擇"最近作業"下的作業以查看其縮放工具輸出，如下圖所示。
 
-![縮放工具的輸出視窗影像。](media/tool-output.png)
+![縮放工具的輸出視窗的圖像。](media/tool-output.png)
+
+## <a name="report-issues"></a>報告問題
+
+如果縮放工具遇到任何問題，可以在[RDS GitHub 頁](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)中報告這些問題。

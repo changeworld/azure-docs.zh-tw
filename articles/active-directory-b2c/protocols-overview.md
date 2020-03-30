@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183900"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：驗證通訊協定
@@ -24,11 +24,11 @@ Azure Active Directory B2C (Azure AD B2C) 支援 OpenID Connect 與 OAuth 2.0 �
 
 <!-- TODO: Need link to libraries above -->
 
-## <a name="the-basics"></a>基本知識
+## <a name="the-basics"></a>基本概念
 使用 Azure AD B2C 的每個 app 都必須在 [Azure 入口網站](https://portal.azure.com)內您的 B2C 目錄中註冊。 App 註冊處理序會收集與指派一些值給您的 app：
 
 * 可唯一識別應用程式的 **應用程式識別碼** 。
-* 可將回應導回至應用程式的**重新導向 URI**或**套件識別碼**。
+* 可用於將回應定向回應用的**重定向 URI**或**包識別碼**。
 * 其他幾個狀況特定的值。 如需詳細資訊，請了解[如何註冊您的應用程式](tutorial-register-applications.md)。
 
 註冊您的應用程式之後，它會傳送要求給端點，藉此與 Azure Active Directory (Azure AD) 通訊：
@@ -44,11 +44,11 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 
 * **授權伺服器**是 Azure AD 端點。 它會安全地處理與使用者資訊和存取相關的任何項目。 它也會處理流程中合作對象之間的信任關係。 其負責驗證使用者的身分識別、授與及撤銷資源存取權，以及核發權杖。 它亦稱為身分識別提供者。
 
-* **資源擁有者** 通常是使用者。 其是擁有資料的一方，而且有權允許第三方存取該資料或資源。
+* **資源擁有者**通常是最終使用者。 其是擁有資料的一方，而且有權允許第三方存取該資料或資源。
 
 * **OAuth 用戶端** 是您的應用程式。 它是透過其應用程式識別碼來識別。 它通常是使用者互動的合作對象。 它也會向授權伺服器要求權杖。 資源擁有者必須授與用戶端者授權，才能存取資源。
 
-* **資源伺服器** 是資源或資料所在位置。 它會信任授權伺服器，以便安全地驗證和授權 OAuth 用戶端。 它也會使用持有人存取權杖，以確保可授與資源的存取權。
+* **資源伺服器**是資源或資料所在的位置。 它會信任授權伺服器，以便安全地驗證和授權 OAuth 用戶端。 它也會使用持有人存取權杖，以確保可授與資源的存取權。
 
 ## <a name="policies-and-user-flows"></a>原則和使用者流程
 Azure AD B2C 原則可視為服務的最重要功能。 Azure AD B2C 藉由引進原則來延伸標準的 OAuth 2.0 和 OpenID Connect 通訊協定。 這些原則讓 Azure AD B2C 能夠執行簡單驗證與授權以外的更多操作。
