@@ -1,5 +1,5 @@
 ---
-title: 多租使用者應用程式範例-Wingtip SaaS
+title: 多租戶應用示例 - 翼尖 SaaS
 description: 藉由使用採用 Azure SQL Database (Wingtip SaaS 範例) 的範例多租用戶應用程式來學習
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 46cdcd5f768278dbc729f48e450c68a63be604be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256493"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>搭配 SQL Database 使用每一租用戶一個資料庫模式的多租用戶 SaaS 應用程式簡介
@@ -45,10 +45,10 @@ Wingtip SaaS 應用程式會使用每一租用戶一個資料庫的模型。 它
 |[部署及探索 Wingtip SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)|  使用您的 Azure 訂用帳戶來部署及探索 Wingtip SaaS 應用程式。 |
 |[佈建租用戶並在目錄中註冊](saas-dbpertenant-provision-and-catalog.md)| 了解應用程式如何使用目錄資料庫來連線至租用戶，以及目錄如何將租用戶對應至其資料。 |
 |[監視及管理效能](saas-dbpertenant-performance-monitoring.md)| 了解如何使用 SQL Database 的監視功能，以及設定超過效能閾值時的警示。 |
-|[使用 Azure 監視器記錄進行監視](saas-dbpertenant-log-analytics.md) | 瞭解如何使用[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)來監視跨多個集區的大量資源。 |
+|[使用 Azure 監視器記錄進行監視](saas-dbpertenant-log-analytics.md) | 瞭解如何使用[Azure 監視器日誌](../log-analytics/log-analytics-overview.md)監視跨多個池的大量資源。 |
 |[還原單一租用戶](saas-dbpertenant-restore-single-tenant.md)| 了解如何將租用戶資料庫還原到先前的時間點。 此外，也了解如何還原到平行資料庫，這會讓現有的租用戶資料庫維持上線狀態。 |
 |[管理租用戶資料庫結構描述](saas-tenancy-schema-management.md)| 了解如何更新結構描述，以及更新跨所有租用戶資料庫的參考資料。 |
-|[執行跨租用戶分散式查詢](saas-tenancy-cross-tenant-reporting.md) | 建立臨機操作分析資料庫，並跨所有租使用者執行即時分散式查詢。  |
+|[執行跨租用戶分散式查詢](saas-tenancy-cross-tenant-reporting.md) | 創建臨時分析資料庫，並在所有租戶之間運行即時分散式查詢。  |
 |[根據擷取的租用戶資料執行分析](saas-tenancy-tenant-analytics.md) | 將租用戶資料擷取到分析資料庫或資料倉儲中，以便執行離線分析查詢。 |
 
 

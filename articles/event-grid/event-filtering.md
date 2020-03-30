@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390183"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解適用於事件格線訂用帳戶的事件篩選
@@ -43,7 +43,7 @@ ms.locfileid: "70390183"
 
 將事件發佈至自訂主題時，為您的事件建立主旨，以便訂閱者輕鬆地了解他們是否對該事件感興趣。 訂閱者使用主旨屬性以篩選和路由事件。 請考慮新增事件發生之位置的路徑，以便訂閱者可以根據該路徑的區段進行篩選。 該路徑可讓訂閱者縮小或放大篩選事件的範圍。 如果您在主旨中提供三區段路徑 (例如 `/A/B/C`)，訂閱者可根據第一個區段 `/A` 進行篩選，以取得一組廣泛的事件。 這些訂閱者可使用 `/A/B/C` 或 `/A/D/E` 之類的主旨來取得事件。 其他訂閱者可以根據 `/A/B` 篩選以取得一組範圍較小的事件。
 
-依照主旨篩選的 JSON 語法為：
+按主題篩選的 JSON 語法是：
 
 ```json
 "filter": {
@@ -61,7 +61,7 @@ ms.locfileid: "70390183"
 * 索引鍵 - 事件資料中用來進行篩選的欄位。 它可以是數字、布林值或字串。
 * 一或多個值 - 要和索引鍵比較的一或多個值。
 
-如果您指定具有多個值的單一篩選，則會執行**或**作業，因此索引鍵欄位的值必須是下列值之一。 請看以下範例：
+如果指定具有多個值的單個篩選器，則執行**OR**操作，因此鍵欄位的值必須是這些值之一。 範例如下：
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ ms.locfileid: "70390183"
 ]
 ```
 
-如果您指定多個不同的篩選器，就會執行**和**作業，因此必須符合每個篩選準則。 請看以下範例： 
+如果指定多個不同的篩選器，則執行**AND**操作，因此必須滿足每個篩選器條件。 範例如下： 
 
 ```json
 "advancedFilters": [
@@ -124,9 +124,9 @@ ms.locfileid: "70390183"
 
 針對事件格線結構描述中的事件，請使用下列值作為索引鍵：
 
-* id
+* ID
 * 主題
-* Subject
+* 主體
 * EventType
 * DataVersion
 * 事件資料 (例如 Data.key1)
@@ -134,7 +134,7 @@ ms.locfileid: "70390183"
 針對雲端事件結構描述中的事件，請使用下列值作為索引鍵：
 
 * EventId
-* Source
+* 來源
 * EventType
 * EventTypeVersion
 * 事件資料 (例如 Data.key1)
@@ -143,12 +143,12 @@ ms.locfileid: "70390183"
 
 ### <a name="values"></a>值
 
-值可以是：
+其值可能是：
 
 * number
-* string
+* 字串
 * boolean
-* 陣列
+* array
 
 ### <a name="limitations"></a>限制
 

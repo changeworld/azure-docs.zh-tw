@@ -1,5 +1,5 @@
 ---
-title: 在多租使用者 SaaS 應用程式中還原資料庫
+title: 在多租戶 SaaS 應用中還原資料庫
 description: 了解如何在不小心刪除資料之後還原單一租用戶 SQL 資料庫
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
 ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818518"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>使用每一租用戶一個資料庫的 SaaS 應用程式還原單一租用戶
@@ -36,7 +36,7 @@ ms.locfileid: "73818518"
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip SaaS 應用程式。 若要在 5 分鐘內完成部署，請參閱[部署及探索 Wingtip SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)。
+* 已部署 Wingtip SaaS 應用程式。 要在五分鐘內部署，請參閱[部署和流覽 Wingtip SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)。
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>SaaS 租用戶還原模式簡介
@@ -63,7 +63,7 @@ ms.locfileid: "73818518"
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>開啟事件應用程式以檢閱目前的事件
 
-1. 開啟 [事件中樞] \(http://events.wtp.&lt;user&gt;.trafficmanager.net)，然後選取 [Contoso Concert Hall]。
+1. 打開活動中心 （;http://events.wtp.&lt使用者&gt;.trafficmanager.net），然後選擇**Contoso 音樂廳**。
 
    ![事件中樞](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "73818518"
 
 1. 在 PowerShell ISE 中開啟 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1*，然後設定下列值：
 
-   * **$DemoScenario** = **1**，*刪除最後一個事件 (沒有銷售門票)* 。
+   * **$DemoScenario** = **1** *，刪除最後一個事件（沒有門票銷售）。*
 2. 按 F5 以執行指令碼，並刪除最後一個事件。 隨即出現下列確認訊息：
 
    ```Console
@@ -83,43 +83,43 @@ ms.locfileid: "73818518"
    Deleted event 'Seriously Strauss' from Contoso Concert Hall venue.
    ```
 
-3. Contoso 事件頁面隨即開啟。 請向下捲動並確認該事件已消失。 如果該事件仍在清單中，請選取 [重新整理] 並確認它已消失。
+3. Contoso 事件頁面隨即開啟。 請向下捲動並確認該事件已消失。 如果該事件仍在清單中，請選取 [重新整理]**** 並確認它已消失。
    ![移除的最後一個事件](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>將租用戶資料庫以與生產環境資料戶平行的方式還原
 
 此練習會將 Contoso Concert Hall 資料庫還原到刪除事件前的時間點。 此案例假設您需要在平行資料庫中檢閱已刪除的資料。
 
- Restore-TenantInParallel.ps1 指令碼會建立一個名為 ContosoConcertHall*old\_* 的平行租用戶資料庫，以及一個平行目錄項目。 此復原模式最適用於從較不嚴重的資料遺失進行復原。 如果您需要就合規性或稽核用途檢閱資料，也可以使用此模式。 當您使用的是[主動式異地複寫](sql-database-active-geo-replication.md)時，這是建議採用的方法。
+ Restore-TenantInParallel.ps1** 指令碼會建立一個名為 ContosoConcertHall\_old** 的平行租用戶資料庫，以及一個平行目錄項目。 此復原模式最適用於從較不嚴重的資料遺失進行復原。 如果您需要就合規性或稽核用途檢閱資料，也可以使用此模式。 當您使用的是[主動式異地複寫](sql-database-active-geo-replication.md)時，這是建議採用的方法。
 
 1. 完成[模擬租用戶不小心刪除資料的情況](#simulate-a-tenant-accidentally-deleting-data)一節。
 2. 在 PowerShell ISE 中開啟 ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_。
-3. 設定 **$DemoScenario** = **2**，平行還原租用戶。
+3. 設置 **$DemoScenario** = **2**，*並行還原租戶*。
 4. 若要執行指令碼，請按 F5。
 
-此指令碼會將租用戶資料庫還原到刪除事件前的時間點。 資料庫會還原至名為 _ContosoConcertHall\_old_ 的新資料庫。 系統會將存在於還原資料庫中的目錄中繼資料刪除，並使用從 ContosoConcertHall*old\_* 名稱建構的索引鍵將資料庫新增至目錄。
+此指令碼會將租用戶資料庫還原到刪除事件前的時間點。 資料庫會還原至名為 _ContosoConcertHall\_old_ 的新資料庫。 系統會將存在於還原資料庫中的目錄中繼資料刪除，並使用從 ContosoConcertHall\_old** 名稱建構的索引鍵將資料庫新增至目錄。
 
-此示範指令碼會在瀏覽器中開啟此租用戶資料庫的事件頁面。 請注意 URL：```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```，此頁面顯示的資料來自所還原的資料庫，其中在名稱新增了 _old。
+此示範指令碼會在瀏覽器中開啟此租用戶資料庫的事件頁面。 請注意 URL：```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```，此頁面顯示的資料來自所還原的資料庫，其中在名稱新增了 _old**。
 
 請捲動瀏覽器中列出的事件，以確認在上一節中刪除的事件已經還原。
 
 將已還原的租用戶公開作為額外的租用戶 (具有自己的「事件」應用程式)，不太可能是您將所還原資料的存取權提供給租用戶的方式。 它可用來說明還原模式。 一般而言，您可以提供舊資料的唯讀存取權，以及只依據一段定義的期間來保留已還原的資料庫。 在此範例中，在您完成作業之後，即可執行_移除已還原的租用戶_案例來刪除已還原的租用戶項目。
 
-1. 設定 **$DemoScenario** = **4**，「移除已還原的租用戶」。
+1. 設置 **$DemoScenario** = **4** *，刪除還原的租戶*。
 2. 若要執行指令碼，請按 F5。
 3. *ContosoConcertHall\_old* 項目現在已從目錄中刪除。 請在您的瀏覽器中關閉此租用戶的事件頁面。
 
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>就地還原租用戶，取代現有的租用戶資料庫
 
-此練習會將 Contoso Concert Hall 租用戶還原到刪除事件前的時間點。 Restore-TenantInPlace 指令碼會將租用戶資料庫還原到新的資料庫，並刪除原始資料庫。 此復原模式最適用於從嚴重的資料損毀進行復原，以及租用戶可能必須對重大資料遺失有所考慮的情況。
+此練習會將 Contoso Concert Hall 租用戶還原到刪除事件前的時間點。 Restore-TenantInPlace** 指令碼會將租用戶資料庫還原到新的資料庫，並刪除原始資料庫。 此復原模式最適用於從嚴重的資料損毀進行復原，以及租用戶可能必須對重大資料遺失有所考慮的情況。
 
 1. 在 PowerShell ISE 中開啟 **Demo-RestoreTenant.ps1** 檔案。
-2. 設定 **$DemoScenario** = **5**，就地還原租用戶。
+2. 設置 **$DemoScenario** = **5**，*將租戶還原到位*。
 3. 若要執行指令碼，請按 F5。
 
 此指令碼會將租用戶資料庫還原到刪除事件前的時間點。 其會先使 Contoso Concert Hall 租用戶離線，以避免有進一步的更新。 然後，藉由從還原點進行還原，來平行建立資料庫。 已還原的資料庫會以時間戳記命名，確保資料庫名稱不會與現有的租用戶資料庫名稱衝突。 接著，會刪除舊的租用戶資料庫，並將已還原的資料庫重新命名成原始資料庫名稱。 最後，會讓 Contoso Concert Hall 上線以允許應用程式存取已還原的資料庫。
 
-您已成功地將資料庫還原到刪除事件前的時間點。 開啟 [事件] 頁面時，請確認最後一個事件已還原。
+您已成功地將資料庫還原到刪除事件前的時間點。 開啟 [事件]**** 頁面時，請確認最後一個事件已還原。
 
 在還原資料庫後，還需要 10 到 15 分鐘的時間進行第一次完整備份，以用於再次還原。
 

@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 Azure Active Directory 設定 Visitly 來自動布建使用者 |Microsoft Docs
-description: 瞭解如何設定 Azure Active Directory 將使用者帳戶自動布建和取消布建至 Visitly。
+title: 教程：使用 Azure 活動目錄自動設定訪問源， |微軟文檔
+description: 瞭解如何將 Azure 活動目錄配置為自動預配和取消將使用者帳戶預配為"訪問"。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,150 +16,150 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063141"
 ---
-# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>教學課程：設定 Visitly 來自動布建使用者
+# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>教程：為自動使用者預配配置訪問
 
-本教學課程的目的是要示範您在 Visitly 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者或群組至 Visitly。
+本教程的目的是演示您在訪問和 Azure 活動目錄 （Azure AD） 中執行的步驟，以將 Azure AD 配置為自動預配和取消將使用者或組預配為"訪問"。
 
 > [!NOTE]
-> 本教學課程說明建立在 Azure AD 使用者布建服務之上的連接器。 如需此服務的用途、運作方式和常見問題的重要詳細資料，請參閱[使用 Azure Active Directory 將使用者布建和取消布建至軟體即服務（SaaS）應用程式](../app-provisioning/user-provisioning.md)。
+> 本教程介紹在 Azure AD 使用者預配服務之上構建的連接器。 有關此服務的作用、工作方式以及常見問題的重要詳細資訊，請參閱[使用 Azure 活動目錄 自動使用者預配和取消預配軟體即服務 （SaaS） 應用程式](../app-provisioning/user-provisioning.md)。
 >
-> 此連接器目前為公開預覽版。 如需預覽功能之一般 Microsoft Azure 使用規定的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+> 此連接器目前為公開預覽版。 有關預覽功能的一般 Microsoft Azure 使用條款的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * Azure AD 租用戶
-* [Visitly 租使用者](https://www.visitly.io/pricing/)
-* Visitly 中具有系統管理員許可權的使用者帳戶
+* [訪問租戶](https://www.visitly.io/pricing/)
+* 具有管理員許可權的訪問中的使用者帳戶
 
-## <a name="assign-users-to-visitly"></a>將使用者指派給 Visitly 
+## <a name="assign-users-to-visitly"></a>將使用者分配到訪問 
 
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
+Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收對選定應用的存取權限。 在自動使用者預配的上下文中，只有分配給 Azure AD 中應用程式的使用者或組才會同步。
 
-在您設定並啟用自動使用者布建之前，請先決定 Azure AD 中的哪些使用者或群組需要存取 Visitly。 然後遵循此處的指示，將這些使用者或群組指派給 Visitly：
+在配置和啟用自動使用者預配之前，請決定 Azure AD 中的哪些使用者或組需要訪問訪問。 然後按照此處的說明將這些使用者或組指定為"訪問"：
 * [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-visitly"></a>將使用者指派給 Visitly 的重要秘訣 
+## <a name="important-tips-for-assigning-users-to-visitly"></a>將使用者分配到訪問的重要提示 
 
-* 建議您將單一 Azure AD 使用者指派給 Visitly，以測試自動使用者布建設定。 稍後可以指派其他使用者或群組。
+* 我們建議您為訪問點分配單個 Azure AD 使用者以測試自動使用者預配配置。 稍後可以分配其他使用者或組。
 
-* 當您將使用者指派給 Visitly 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有預設存取角色的使用者會從布建中排除。
+* 將使用者分配給"訪問"時，必須在分配對話方塊中選擇任何有效的特定于應用程式的角色（如果可用）。 具有預設存取角色的使用者會從佈建中排除。
 
-## <a name="set-up-visitly-for-provisioning"></a>設定 Visitly 以提供布建
+## <a name="set-up-visitly-for-provisioning"></a>為預配設置訪問
 
-在您設定 Visitly 以 Azure AD 自動布建使用者之前，您必須啟用 [系統] 以在 Visitly 上進行跨網域身分識別管理（SCIM）布建。
+在使用 Azure AD 自動設定訪問之前，需要在訪問時啟用跨域標識管理系統 （SCIM） 預配。
 
-1. 登入[Visitly](https://app.visitly.io/login)。 選取 [整合] > **主機同步**處理。
+1. 登錄[訪問。](https://app.visitly.io/login) 選擇**集成** > **主機同步**。
 
-    ![主機同步處理](media/Visitly-provisioning-tutorial/login.png)
+    ![主機同步](media/Visitly-provisioning-tutorial/login.png)
 
-2. 選取 [ **Azure AD** ] 區段。
+2. 選擇**Azure AD**部分。
 
-    ![Azure AD 區段](media/Visitly-provisioning-tutorial/integration.png)
+    ![Azure AD 部分](media/Visitly-provisioning-tutorial/integration.png)
 
-3. 複製**API 金鑰**。 這些值會在 Azure 入口網站中 Visitly 應用程式的 [布**建] 索引**標籤上的 [**秘密權杖**] 方塊中輸入。
+3. 複製**API 金鑰**。 這些值在 Azure 門戶中訪問應用程式"**預配**"選項卡上的 **"秘密權杖"** 框中輸入。
 
     ![API 金鑰](media/Visitly-provisioning-tutorial/token.png)
 
 
-## <a name="add-visitly-from-the-gallery"></a>從資源庫新增 Visitly
+## <a name="add-visitly-from-the-gallery"></a>從圖庫中添加訪問
 
-若要使用 Azure AD 設定 Visitly 來自動布建使用者，請從 Azure AD 應用程式資源庫將 Visitly 新增至受控 SaaS 應用程式清單。
+要使用 Azure AD 自動設定訪問，請將"訪問"從 Azure AD 應用程式庫添加到託管 SaaS 應用程式清單中。
 
-若要從 Azure AD 應用程式庫新增 Visitly，請遵循下列步驟。
+要從 Azure AD 應用程式庫添加訪問，請按照以下步驟操作。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側流覽窗格中，選取 [ **Azure Active Directory**]。
+1. 在[Azure 門戶](https://portal.azure.com)中，在左側功能窗格中，選擇**Azure 活動目錄**。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 移至 [企業應用程式]，然後選取 [所有應用程式]。
+2. 轉到**企業應用程式**，然後選擇 **"所有應用程式**"。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
+3. 要添加新應用程式，請選擇窗格頂部的 **"新建應用程式**"按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入**Visitly**，在結果面板中選取 [ **Visitly** ]，然後選取 [**新增**] 以新增應用程式。
+4. 在搜索框中，在"**訪問"** 中輸入"訪問"，在結果面板中選擇 **"訪問"，** 然後選擇 **"添加"** 以添加應用程式。
 
     ![結果清單中的 Visitly](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-visitly"></a>設定自動使用者布建至 Visitly 
+## <a name="configure-automatic-user-provisioning-to-visitly"></a>將自動使用者預配配置為訪問 
 
-本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者或群組指派，在 Visitly 中建立、更新和停用使用者或群組。
+本節將指導您完成將 Azure AD 預配服務配置為根據 Azure AD 中的使用者或組分配創建、更新和禁用訪問中的使用者或組的步驟。
 
 > [!TIP]
-> 若要啟用 Visitly 的 SAML 型單一登入，請遵循[Visitly 單一登入教學](Visitly-tutorial.md)課程中的指示。 單一登入可以與自動使用者布建分開設定，雖然這兩個功能彼此互補。
+> 要啟用基於 SAML 的單登錄訪問，請按照[訪問單登錄教程](Visitly-tutorial.md)中的說明進行操作。 單一登入可以獨立于自動使用者預配進行配置，儘管這兩個功能相輔相成。
 
-### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>在 Azure AD 中設定自動使用者布建以進行 Visitly
+### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>在 Azure AD 中為訪問配置自動使用者預配
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**] > [**所有應用程式**]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式** > **所有應用程式**。
 
     ![所有應用程式](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Visitly]。
+2. 在應用程式清單中，選取 [Visitly]****。
 
     ![應用程式清單中的 Visitly 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選擇 **"預配"** 選項卡。
 
-    ![布建索引標籤](common/provisioning.png)
+    ![預配選項卡](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將**預配模式**設置為 **"自動**"。
 
-    ![[布建模式] 設定為 [自動]](common/provisioning-automatic.png)
+    ![預配模式設置為"自動"](common/provisioning-automatic.png)
 
-5. 在 [管理員認證] 區段下，分別輸入先前在 [**租使用者 URL** ] 和 [**秘密權杖**] 中抓取的 `https://api.visitly.io/v1/usersync/SCIM` 和**API 金鑰**值。 選取 [**測試連接**] 以確保 Azure AD 可以連接到 Visitly。 如果連線失敗，請確定您的 Visitly 帳戶具有系統管理員許可權，然後再試一次。
+5. 在"管理員憑據"部分下，`https://api.visitly.io/v1/usersync/SCIM`分別輸入**在租戶 URL**和**秘密權杖**中檢索的 和**API 金鑰**值。 選擇 **"測試連接**"以確保 Azure AD 可以以訪問方式連接到。 如果連接失敗，請確保您的存取帳戶具有管理員許可權，然後重試。
 
-    ![租使用者 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
+    ![租戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 在 [**通知電子郵件**] 方塊中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址。 選取 [**發生失敗時傳送電子郵件通知**] 核取方塊。
+6. 在 **"通知電子郵件"** 框中，輸入應接收預配錯誤通知的個人或組的電子郵件地址。 選中"**在發生故障時發送電子郵件通知**"核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Visitly**]。
+8. 在 **"映射**"部分下，選擇 **"同步 Azure 活動目錄使用者以訪問**"。
 
-    ![Visitly 使用者對應](media/visitly-provisioning-tutorial/usermapping.png)
+    ![訪問使用者映射](media/visitly-provisioning-tutorial/usermapping.png)
 
-9. 在 [**屬性**對應] 區段中，檢查從 Azure AD 同步處理到 Visitly 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Visitly 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
+9. 在**屬性對應**部分中查看從 Azure AD 同步到訪問的使用者屬性。 選擇為 **"匹配屬性"** 的屬性用於與"訪問"中的使用者帳戶匹配以進行更新操作。 選取 [儲存]**** 認可任何變更。
 
-    ![Visitly 使用者屬性](media/visitly-provisioning-tutorial/userattribute.png)
+    ![訪問使用者屬性](media/visitly-provisioning-tutorial/userattribute.png)
 
-10. 若要設定範圍篩選準則，請遵循[範圍篩選教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
+10. 要配置範圍篩選器，請按照[範圍篩選器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的說明進行操作。
 
-11. 若要啟用 Visitly 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
+11. 要啟用 Azure AD 預配服務以訪問，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
 
-    ![布建狀態已切換為開啟](common/provisioning-toggle-on.png)
+    ![預配狀態切換打開](common/provisioning-toggle-on.png)
 
-12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Visitly 的使用者或群組。
+12. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義要預配到訪問的使用者或組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要布建時，請選取 [**儲存**]。
+13. 準備好預配時，請選擇"**保存**"。
 
-    ![正在儲存布建設定](common/provisioning-configuration-save.png)
+    ![保存預配配置](common/provisioning-configuration-save.png)
 
-這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者或群組的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需使用者或群組布建多久時間的詳細資訊，請參閱布建[使用者需要](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)多久時間？。
+此操作將開始**在"設置"** 部分中定義"**範圍"** 中定義的所有使用者或組的初始同步。 初始同步執行的時間比後續同步長。 有關使用者或組預配需要多長時間的詳細資訊，請參閱[預配使用者需要多長時間？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
 
-您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Visitly 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
+可以使用"**目前狀態**"部分監視進度並遵循指向預配活動報告的連結，該報表描述 Azure AD 預配服務在訪問時執行的所有操作。 有關詳細資訊，請參閱[檢查使用者預配的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 要讀取 Azure AD 預配日誌，請參閱[報告自動使用者帳戶預配](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>連接器限制
 
-Visitly 不支援實刪除。 所有專案只會進行虛刪除。
+訪問不支援實刪除。 一切都是虛刪除的。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

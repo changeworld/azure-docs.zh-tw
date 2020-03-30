@@ -1,5 +1,5 @@
 ---
-title: 開始使用 .NET MVC 專案中的 Azure AD |Azure
+title: 在 .NET MVC 專案中開始使用 Azure AD |蔚藍
 description: 使用 Visual Studio 連線服務連線至 Azure AD 或建立 Azure AD 後，如何在 .NET MVC 專案中開始使用 Azure Active Directory
 author: ghogen
 manager: jillfra
@@ -12,19 +12,19 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159483"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>開始使用 Azure Active Directory (ASP.NET MVC 專案)
 
 > [!div class="op_single_selector"]
 > - [快速入門](vs-active-directory-dotnet-getting-started.md)
-> - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
+> - [發生了什麼事](vs-active-directory-dotnet-what-happened.md)
 
-本文提供您在透過 Visual Studio 的 [專案] > [連線服務] 命令將 Active Directory 新增至 ASP.NET MVC 專案之後所需的其他指引。 如果您尚未將服務新增至專案，您可以隨時執行此動作。
+本文提供您在透過 Visual Studio 的 [專案] > [連線服務]**** 命令將 Active Directory 新增至 ASP.NET MVC 專案之後所需的其他指引。 如果您尚未將服務新增至專案，您可以隨時執行此動作。
 
 請參閱[我的 MVC 專案發生什麼情形？](vs-active-directory-dotnet-what-happened.md)，了解您的專案在新增連線服務時所做的變更。
 
@@ -83,5 +83,5 @@ ms.locfileid: "77159483"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Active Directory 的驗證案例](authentication-scenarios.md)
+- [Azure 活動目錄的身份驗證方案](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

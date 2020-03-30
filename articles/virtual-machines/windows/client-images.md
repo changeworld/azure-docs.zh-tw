@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039507"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
@@ -26,8 +26,8 @@ ms.locfileid: "74039507"
 ![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 針對 Azure 資源庫中的 Windows 10 專業版和 Windows 10 Pro N 映像，請參閱[如何使用多租用戶主機權限在 Azure 上部署 Windows 10](windows-desktop-multitenant-hosting-deployment.md)
->![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-pro-images.png) 
+> 有關 Azure 庫中的 Windows 10 專業版和 Windows 10 專業版 N 映射，請參閱[如何在 Azure 上部署 Windows 10，以及](windows-desktop-multitenant-hosting-deployment.md)
+>![Azure 門戶中的多租戶託管許可權專業映射詳細資訊](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>訂用帳戶資格
@@ -52,11 +52,11 @@ ms.locfileid: "74039507"
 ## <a name="check-your-azure-subscription"></a>檢查您的 Azure 訂用帳戶
 如果您不知道您的供應項目識別碼，您可以透過 Azure 入口網站以下列兩種方式取得：  
 
-- 在 [訂用帳戶] 視窗上︰
+- 在 [訂用帳戶]** 視窗上︰
 
   ![Azure 入口網站中的供應項目識別碼詳細資料](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，按一下 [計費]，然後按一下訂用帳戶識別碼。 供應項目識別碼隨即會出現在 [計費] 視窗中。
+- 或者，按一下 [計費]****，然後按一下訂用帳戶識別碼。 供應項目識別碼隨即會出現在 [計費]** 視窗中。
 
 您也可以從 Azure 帳戶入口網站的 [[訂用帳戶] 索引標籤](https://account.windowsazure.com/Subscriptions) 檢視供應項目識別碼︰
 

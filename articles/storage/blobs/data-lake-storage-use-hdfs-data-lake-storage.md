@@ -10,22 +10,22 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992208"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>使用 HDFS CLI 搭配 Data Lake Storage Gen2
 
-您可以使用命令列介面來存取和管理儲存體帳戶中的資料, 就像使用[Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 本文提供一些可協助您開始使用的範例。
+您可以使用命令列介面訪問和管理存儲帳戶中的資料，就像使用[Hadoop 分散式檔案系統 （HDFS） 一](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)樣。 本文提供了一些示例，可説明您入門。
 
-HDInsight 提供本機連接至計算節點之分散式容器的存取權。 您可以使用直接與 HDFS 和 Hadoop 支援的其他檔案系統互動的 shell 來存取此容器。
+HDInsight 提供對本地附加到計算節點的分散式容器的訪問。 您可以使用直接與 HDFS 和 Hadoop 支援的其他檔案系統交互的 shell 訪問此容器。
 
-如需 HDFS CLI 的詳細資訊, 請參閱[官方檔](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[hdfs 許可權指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+有關 HDFS CLI 的詳細資訊，請參閱[官方文檔](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[HDFS 許可權指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果您使用 Azure Databricks 而非 HDInsight, 而且想要使用命令列介面與資料互動, 您可以使用 Databricks CLI 與 Databricks 檔案系統互動。 請參閱[DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+>如果使用 Azure 資料磚而不是 HDInsight，並且希望使用命令列介面與資料進行交互，則可以使用 DataBRICKS CLI 與 Databricks 檔案系統進行交互。 請參閱[資料磚 CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上搭配使用 HDFS CLI 和 HDInsight Hadoop 叢集
 
@@ -48,7 +48,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* 以您想要提供給容器的名稱取代預留位置。`<container-name>`
+* 請將 `<container-name>` 預留位置取代為您要為容器指定的名稱。
 
 * 使用您的儲存體帳戶名稱取代 `<storage-account-name>` 預留位置。
 
@@ -56,17 +56,17 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -ls <path>
 
-`<path>`將預留位置取代為容器或容器檔案夾的 URI。
+將`<path>`預留位置替換為容器或容器檔案夾的 URI。
 
-例如：`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+例如： `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>建立目錄
 
     hdfs dfs -mkdir [-p] <path>
 
-`<path>`將預留位置取代為根容器名稱或容器中的資料夾。
+將`<path>`預留位置替換為容器中的根容器名稱或資料夾。
 
-例如：`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>刪除檔案或目錄
 
@@ -74,7 +74,7 @@ hdfs dfs -mkdir /samplefolder
 
 將 `<path>` 預留位置取代為您想要刪除之檔案或資料夾的 URI。
 
-例如：`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+例如： `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>顯示檔案和目錄的存取控制清單 (ACL)
 
@@ -120,4 +120,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [在 Azure Databricks 中使用具有 Azure Data Lake Storage Gen2 功能的帳戶](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [瞭解檔案和目錄的存取控制清單](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [瞭解檔和目錄中的存取控制清單](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

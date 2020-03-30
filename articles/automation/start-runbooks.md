@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252645"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自動化中啟動 Runbook
@@ -18,25 +18,25 @@ ms.locfileid: "79252645"
 
 | **方法** | **特性** |
 | --- | --- |
-| [Azure 入口網站](#start-a-runbook-with-the-azure-portal) |<li>互動式使用者介面的最簡單方法。<br> <li>提供簡單參數值的表單。<br> <li>輕鬆追蹤工作狀態。<br> <li>使用 Azure 登入資訊驗證存取。 |
+| [Azure 門戶](#start-a-runbook-with-the-azure-portal) |<li>互動式使用者介面的最簡單方法。<br> <li>提供簡單參數值的表單。<br> <li>輕鬆追蹤工作狀態。<br> <li>使用 Azure 登入資訊驗證存取。 |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>使用 Windows PowerShell Cmdlet 從命令列呼叫。<br> <li>可以包含在具有多個步驟的自動化解決方案中。<br> <li>使用憑證或 OAuth 使用者主體/服務主體來驗證要求。<br> <li>提供簡單和複雜的參數值。<br> <li>追蹤工作狀態。<br> <li>支援 PowerShell Cmdlet 所需的用戶端。 |
-| [Azure 自動化 API](/rest/api/automation/) |<li>最有彈性的方法，但也最複雜。<br> <li>從任何可提出 HTTP 要求的自訂程式碼呼叫。<br> <li>使用憑證或 OAuth 使用者主體/服務主體來驗證要求。<br> <li>提供簡單和複雜的參數值。 如果您使用 API 呼叫 Python Runbook，則必須將 JSON 承載序列化。<br> <li>追蹤工作狀態。 |
-| [Webhook](automation-webhooks.md) |<li>從單一 HTTP 要求啟動 Runbook。<br> <li>在 URL 中使用安全性權杖進行驗證。<br> <li>用戶端無法覆寫在建立 Webhook 時指定的參數值。 Runbook 可以定義填入了 HTTP 要求詳細資料的單一參數。<br> <li>無法透過 Webhook URL 追蹤工作狀態。 |
+| [Azure 自動化 API](/rest/api/automation/) |<li>最有彈性的方法，但也最複雜。<br> <li>從任何可提出 HTTP 要求的自訂程式碼呼叫。<br> <li>使用憑證或 OAuth 使用者主體/服務主體來驗證要求。<br> <li>提供簡單和複雜的參數值。 如果您使用 API 呼叫 Python Runbook，則必須將 JSON 承載序列化。**<br> <li>追蹤工作狀態。 |
+| [網鉤](automation-webhooks.md) |<li>從單一 HTTP 要求啟動 Runbook。<br> <li>在 URL 中使用安全性權杖進行驗證。<br> <li>用戶端無法覆寫在建立 Webhook 時指定的參數值。 Runbook 可以定義填入了 HTTP 要求詳細資料的單一參數。<br> <li>無法透過 Webhook URL 追蹤工作狀態。 |
 | [回應 Azure 警示](../log-analytics/log-analytics-alerts.md) |<li>啟動 Runbook 以回應 Azure 警示。<br> <li>設定 Runbook 的 Webhook 以及警示的連結。<br> <li>在 URL 中使用安全性權杖進行驗證。 |
-| [[排程]](automation-schedules.md) |<li>每小時、每天、每週或每月排程，自動啟動 Runbook。<br> <li>透過 Azure 入口網站、PowerShell Cmdlet 或 Azure API 操縱排程。<br> <li>提供參數值來搭配排程使用。 |
+| [附表](automation-schedules.md) |<li>每小時、每天、每週或每月排程，自動啟動 Runbook。<br> <li>透過 Azure 入口網站、PowerShell Cmdlet 或 Azure API 操縱排程。<br> <li>提供參數值來搭配排程使用。 |
 | [另一個 Runbook](automation-child-runbooks.md) |<li>在另一個 Runbook 中使用 Runbook 作為活動。<br> <li>對多個 Runbook 使用的功能很有用。<br> <li>提供參數值給子 Runbook，並在父 Runbook 中使用輸出。 |
 
-下圖說明 Runbook 的生命週期的詳細逐步程序。 它包含了 Runbook 在 Azure 自動化中啟動的不同方式、Hybrid Runbook Worker 執行 Azure 自動化 Runbook 所需的元件，以及不同元件之間的互動。 若要了解如何在您的資料中心執行自動化 Runbook，請參閱 [混合式 Runbook 背景工作](automation-hybrid-runbook-worker.md)
+下圖說明 Runbook 的生命週期的詳細逐步程序。 它包含了 Runbook 在 Azure 自動化中啟動的不同方式、Hybrid Runbook Worker 執行 Azure 自動化 Runbook 所需的元件，以及不同元件之間的互動。 要瞭解如何在資料中心中執行自動化[Runbook，請參閱混合 Runbook 工作人員](automation-hybrid-runbook-worker.md)
 
 ![Runbook 架構](media/automation-starting-runbook/runbooks-architecture.png)
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>使用 Azure 入口網站啟動 Runbook
 
-1. 在 Azure 入口網站中，選取 [自動化]，然後按一下自動化帳戶的名稱。
-2. 在 [中樞] 功能表中，選取 [Runbook]。
-3. 在 [Runbook] 頁面中，選取 Runbook，然後按一下 [啟動]。
+1. 在 Azure 入口網站中，選取 [自動化]****，然後按一下自動化帳戶的名稱。
+2. 在 [中樞] 功能表中，選取 [Runbook]****。
+3. 在 [Runbook]**** 頁面中，選取 Runbook，然後按一下 [啟動]****。
 4. 如果 Runbook 有參數，系統會針對每個參數，以文字方塊提示您提供值。 如需參數的詳細資訊，請參閱以下的 [Runbook 參數](#runbook-parameters)。
-5. 在 [作業] 頁面中，您可以檢視 Runbook 作業的狀態。
+5. 在 [作業]**** 頁面中，您可以檢視 Runbook 作業的狀態。
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 啟動 Runbook
 
@@ -80,7 +80,7 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 
 ### <a name="named-values"></a>具名值
 
-如果參數是資料類型 [object]，則您可以使用下列 JSON 格式，對它傳送具名值清單：{Name1:'Value1', Name2:'Value2', Name3:'Value3'}。 這些值必須是簡單型別。 Runbook 會接收參數作為 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)，其具有每個具名值的對應屬性。
+如果參數是資料類型 [object]，則您可以使用下列 JSON 格式，對它傳送具名值清單：{Name1:'Value1', Name2:'Value2', Name3:'Value3'} **。 這些值必須是簡單型別。 Runbook 會接收參數作為 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)，其具有每個具名值的對應屬性。
 
 請考慮可接受稱為 user 的參數的下列測試 Runbook。
 
@@ -117,9 +117,9 @@ Smith
 
 ### <a name="arrays"></a>陣列
 
-如果參數是陣列，例如 [array] 或 [string[]]，則您可以使用下列 JSON 格式對其傳送值清單：[Value1, Value2, Value3]。 這些值必須是簡單型別。
+如果參數是陣列，例如 [array] 或 [string[]]，則您可以使用下列 JSON 格式對其傳送值清單：[Value1, Value2, Value3]**。 這些值必須是簡單型別。
 
-請考慮可接受稱為 *user*的參數的下列測試 Runbook。
+請考量下列可接受參數 *user* 的測試 Runbook。
 
 ```powershell
 Workflow Test-Parameters
@@ -173,7 +173,7 @@ Workflow Test-Parameters
 My Credential
 ```
 
-假設認證中的使用者名稱是 jsmith，這會導致下列輸出：
+假設認證中的使用者名稱是 jsmith**，這會導致下列輸出：
 
 ```output
 jsmith
@@ -183,4 +183,4 @@ jsmith
 
 * 目前文件中的 Runbook 架構提供在 Azure 中管理資源的 Runbook 整體概觀，並利用 Hybrid Runbook Worker 進行內部部署。 若要了解如何在您的資料中心執行自動化 Runbook，請參閱 [混合式 Runbook 背景工作](automation-hybrid-runbook-worker.md)。
 * 若要深入了解如何建立模組化 Runbook，以供其他 Runbook 用於特定或一般函式，請參閱 [子 Runbook](automation-child-runbooks.md)。
-* 如需 PowerShell 的詳細資訊（包括語言參考和學習模組），請參閱[powershell](https://docs.microsoft.com/powershell/scripting/overview)檔。
+* 有關 PowerShell 的更多資訊（包括語言參考和學習模組），請參閱[PowerShell 文檔](https://docs.microsoft.com/powershell/scripting/overview)。

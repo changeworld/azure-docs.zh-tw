@@ -1,6 +1,6 @@
 ---
-title: 從 [安全性資訊（預覽）] 頁面建立應用程式密碼-Azure AD
-description: 建立自動產生的密碼（應用程式密碼），以用於任何非瀏覽器應用程式，或在您的組織中不支援雙因素驗證的任何應用程式。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
+title: 從安全資訊（預覽）頁面創建應用密碼 - Azure AD
+description: 創建自動生成的密碼（應用密碼），以便用於組織中的任何非瀏覽器應用或任何不支援雙重驗證的應用。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064065"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>從 [安全性資訊（預覽）] 頁面建立應用程式密碼
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>從"安全資訊（預覽）"頁面創建應用密碼
 
 某些應用程式 (例如 Outlook 2010) 不支援雙步驟驗證。 缺乏支援的意思就是，如果您在組織中使用雙步驟驗證，應用程式會無法運作。 若要解決此問題，您可以建立自動產生的密碼來與每個非瀏覽器應用程式搭配使用，此密碼與您的一般密碼不同。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->您的系統管理員可能不允許您使用應用程式密碼。 如果沒有看到 [應用程式密碼]的選項，即是無法在貴組織使用此功能。
+>您的系統管理員可能不允許您使用應用程式密碼。 如果沒有看到 [應用程式密碼] **** 的選項，即是無法在貴組織使用此功能。
 
 使用應用程式密碼時，請務必記住：
 
-- 應用程式密碼會自動產生，且應針對每個應用程式建立並輸入一次。
+- 應用密碼是自動生成的，應創建並輸入每個應用一次。
 
 - 每位使用者的密碼以 40 組為限。 如果您在到達該限制之後嘗試建立一個密碼，系統就會提示您先刪除現有的密碼，然後才能建立新密碼。
 
@@ -38,7 +38,7 @@ ms.locfileid: "77064065"
 
 ## <a name="create-new-app-passwords"></a>建立新的應用程式密碼
 
-如果您搭配公司或學校帳戶使用雙步驟驗證，而且您的系統管理員已開啟安全性資訊體驗，您就可以使用 [安全性資訊]頁面來建立和刪除應用程式密碼。
+如果您搭配公司或學校帳戶使用雙步驟驗證，而且您的系統管理員已開啟安全性資訊體驗，您就可以使用 [安全性資訊] **** 頁面來建立和刪除應用程式密碼。
 
 >[!Note]
 >如果您的系統管理員尚未開啟安全性資訊體驗，您就必須遵循[管理應用程式密碼以進行雙步驟驗證](multi-factor-authentication-end-user-app-passwords.md)一節中的指示和資訊。
@@ -49,19 +49,19 @@ ms.locfileid: "77064065"
 
     ![[我的設定檔] 頁面，顯示醒目提示的 [安全性資訊] 連結](media/security-info/securityinfo-myprofile-page.png)
 
-2. 以左側瀏覽窗格或是 [安全性資訊] 區塊中的連結選取 [安全性資訊]，然後在 [安全性資訊] 頁面選取 [新增方法]。
+2. 以左側瀏覽窗格或是 [安全性資訊]**** 區塊中的連結選取 [安全性資訊]****，然後在 [安全性資訊]**** 頁面選取 [新增方法]****。
 
     ![醒目提示 [新增方法] 選項的 [安全性資訊] 頁面](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在 [新增方法] 頁面上，從下拉式清單中選取 [應用程式密碼]，然後選取 [新增]。
+3. 在 [新增方法]**** 頁面上，從下拉式清單中選取 [應用程式密碼]****，然後選取 [新增]****。
 
     ![已選取 [應用程式密碼] 的 [新增方法] 方塊](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. 輸入需要應用程式密碼的應用程式名稱，然後選取 [下一步]。
+4. 輸入需要應用程式密碼的應用程式名稱，然後選取 [下一步]****。
 
     ![上有應用程式名稱的 [應用程式密碼] 頁面](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. 複製 [密碼] 欄位的文字，在應用程式的密碼區域貼上密碼 (本範例為 Outlook 2010)，然後選取 [完成]。
+5. 複製 [密碼]**** 欄位的文字，在應用程式的密碼區域貼上密碼 (本範例為 Outlook 2010)，然後選取 [完成]****。
 
     ![上有應用程式名稱的 [應用程式密碼] 頁面](media/security-info/securityinfo-myprofile-password-copytext.png)
 
@@ -76,12 +76,12 @@ ms.locfileid: "77064065"
 
 ### <a name="to-delete-an-app-password"></a>刪除應用程式密碼
 
-1. 請在 [安全性資訊] 頁面上，選取指定應用程式的 [應用程式密碼] 選項旁的 [刪除] 連結。
+1. 請在 [安全性資訊]**** 頁面上，選取指定應用程式的 [應用程式密碼]**** 選項旁的 [刪除]**** 連結。
 
     ![刪除安全性資訊中應用程式密碼方法的連結](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. 在確認方塊中選取 [是]，即會刪除 [應用程式密碼]。 刪除應用程式密碼之後，該應用程式密碼就會從您的安全性資訊中移除，並且從 [安全性資訊] 頁面上消失。
+2. 在確認方塊中選取 [是]****，即會刪除 [應用程式密碼]****。 刪除應用程式密碼之後，該應用程式密碼就會從您的安全性資訊中移除，並且從 [安全性資訊]**** 頁面上消失。
 
 ## <a name="for-more-information"></a>取得詳細資訊
 
-- 如需進一步瞭解 [安全性資訊] 頁面以及其設定方式，請參閱[安全性資訊概觀](user-help-security-info-overview.md)
+- 如需進一步瞭解 [安全性資訊]**** 頁面以及其設定方式，請參閱[安全性資訊概觀](user-help-security-info-overview.md)

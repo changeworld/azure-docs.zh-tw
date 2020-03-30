@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 驗證管理操作參考指南
-description: 此操作參考指南說明保護驗證管理時應採取的檢查和動作
+title: Azure 活動目錄身份驗證管理操作參考指南
+description: 此操作參考指南描述為確保身份驗證管理而應採取的檢查和操作
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,383 +12,383 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368052"
 ---
-# <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 驗證管理操作參考指南
+# <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure 活動目錄身份驗證管理操作參考指南
 
-[Azure AD 作業參考指南](active-directory-ops-guide-intro.md)的這一節說明您應該採取哪些檢查和動作來保護和管理認證、定義驗證體驗、委派指派、測量使用量，以及根據企業安全性狀態定義存取原則。
+Azure AD[操作參考指南](active-directory-ops-guide-intro.md)的這一部分介紹了為保護和管理認證、定義身份驗證體驗、委派分配、測量使用方式和根據企業安全狀態定義訪問策略而應採取的檢查和操作。
 
 > [!NOTE]
-> 這些建議是在發行日期之後的最新版本，但可能會隨著時間而改變。 組織應持續評估其身分識別實務，因為 Microsoft 產品和服務會隨著時間而演進。
+> 這些建議自發布之日起是最新的，但可能會隨時間而變化。 隨著 Microsoft 產品和服務隨時間推移而變化，組織應持續評估其身份實踐。
 
-## <a name="key-operational-processes"></a>關鍵操作程式
+## <a name="key-operational-processes"></a>關鍵操作流程
 
-### <a name="assign-owners-to-key-tasks"></a>將擁有者指派給主要工作
+### <a name="assign-owners-to-key-tasks"></a>將擁有者分配給要徑任務
 
-管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
+管理 Azure 活動目錄需要持續執行關鍵操作任務和進程，這些任務和進程可能不是推出專案的一部分。 設置這些任務以優化環境仍然很重要。 要徑任務及其推薦的擁有者包括：
 
 | Task | 擁有者 |
 | :- | :- |
-| 管理 Azure AD 中單一登入（SSO）設定的生命週期 | IAM 作業小組 |
-| 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構團隊 |
-| 封存 SIEM 系統中的登入活動 | InfoSec 營運小組 |
-| 封存 SIEM 系統中的風險事件 | InfoSec 營運小組 |
-| 分級和調查安全性報告 | InfoSec 營運小組 |
-| 分級和調查風險事件 | InfoSec 營運小組 |
-| 分級和調查從 Azure AD Identity Protection 標示有風險和弱點報告的使用者 | InfoSec 營運小組 |
+| 在 Azure AD 中管理單一登入 （SSO） 配置的生命週期 | IAM 運營團隊 |
+| 為 Azure AD 應用程式設計條件訪問策略 | InfoSec 架構團隊 |
+| 在 SIEM 系統中存檔登錄活動 | InfoSec 運營團隊 |
+| 在 SIEM 系統中存檔風險事件 | InfoSec 運營團隊 |
+| 會審並調查安全報告 | InfoSec 運營團隊 |
+| 會審並調查風險事件 | InfoSec 運營團隊 |
+| 對標記為 Azure AD 標識保護的風險和漏洞報告的使用者進行會審並調查 | InfoSec 運營團隊 |
 
 > [!NOTE]
-> Azure AD Identity Protection 需要 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較 Azure AD Free 和 Azure AD Premium 版本的正式推出功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+> Azure AD 標識保護需要 Azure AD 高級 P2 許可證。 要查找適合您要求的許可，請參閱比較 [Azure AD 免費版和 Azure AD 高級版的基本可用功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-當您檢查清單時，您可能會發現需要為遺漏擁有者的工作指派擁有者，或為擁有者未與上述建議一致的工作調整擁有權。
+在查看清單時，您可能會發現需要為缺少擁有者的任務分配擁有者，或者調整擁有者與上述建議不一致的任務的擁有權。
 
-#### <a name="owner-recommended-reading"></a>擁有者建議閱讀
+#### <a name="owner-recommended-reading"></a>業主推薦閱讀
 
 - [在 Azure Active Directory 中指派系統管理員角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [在 Azure 中控管](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure 中的治理](https://docs.microsoft.com/azure/security/governance-in-azure)
 
 ## <a name="credentials-management"></a>認證管理
 
 ### <a name="password-policies"></a>密碼原則
 
-安全地管理密碼是身分識別和存取管理其中一個最重要的部分，通常是攻擊的最大目標。 Azure AD 支援數個可協助防止攻擊成功的功能。
+安全管理密碼是身份和訪問管理中最重要的部分之一，通常也是攻擊的最大目標。 Azure AD 支援一些功能，可説明防止攻擊成功。
 
-使用下表來尋找建議的解決方案，以減輕需要解決的問題：
+使用下表查找緩解需要解決的問題的建議解決方案：
 
 | 問題 | 建議 |
 | :- | :- |
-| 沒有任何機制可防範弱式密碼 | 啟用 Azure AD[自助式密碼重設（SSPR）](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)和[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) |
-| 沒有偵測到洩漏密碼的機制 | 啟用[密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)處理（PHS）以取得見解 |
-| 使用 AD FS 且無法移至受控驗證 | 啟用[AD FS 外部網路智慧鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)和/或[Azure AD 智慧鎖定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) |
-| 密碼原則會使用以複雜度為基礎的規則，例如長度、多個字元集或過期 | 請重新考慮[Microsoft 建議做法](https://aka.ms/passwordguidance)，並將您的方法切換至密碼管理，並部署[Azure AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。 |
-| 使用者未註冊為使用多重要素驗證（MFA） | [註冊所有使用者的安全性資訊](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy)，以便用來驗證使用者身分識別及其密碼的機制 |
-| 不會根據使用者風險撤銷密碼 | 部署 Azure AD [Identity Protection 使用者風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)，以使用 SSPR 強制對洩漏的認證進行密碼變更 |
-| 沒有任何智慧型鎖定機制可保護來自已識別 IP 位址的錯誤執行者的惡意驗證 | 使用密碼雜湊同步處理或[傳遞驗證](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)（PTA）部署雲端管理的驗證 |
+| 沒有防止弱密碼的機制 | 啟用 Azure AD[自助服務密碼重設 （SSPR）](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)和[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) |
+| 沒有檢測洩露密碼的機制 | 啟用[密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)（PHS） 以獲得見解 |
+| 使用 AD FS，無法移動到託管身份驗證 | 啟用[AD FS 外聯網智慧鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)和/或[Azure AD 智慧鎖定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) |
+| 密碼原則使用基於複雜性的規則，如長度、多個字元集或過期 | 重新考慮微軟[推薦的做法](https://aka.ms/passwordguidance)，並切換到密碼管理的方法，並部署 Azure [AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。 |
+| 使用者未註冊使用多重要素驗證 （MFA） | [註冊所有使用者的安全資訊](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy)，以便將其用作驗證使用者身份及其密碼的機制 |
+| 沒有根據使用者風險吊銷密碼 | 部署 Azure AD[標識保護使用者風險策略](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)，以使用 SSPR 強制更改洩漏的憑據的密碼 |
+| 沒有智慧鎖定機制來保護惡意身份驗證免受來自已識別 IP 位址的不良參與者的攻擊 | 使用密碼雜湊同步或[直通身份驗證](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)（PTA） 部署雲託管身份驗證 |
 
-#### <a name="password-policies-recommended-reading"></a>建議的密碼原則閱讀
+#### <a name="password-policies-recommended-reading"></a>密碼原則建議讀取
 
-- [Azure AD 和 AD FS 最佳做法：防禦密碼噴灑攻擊-Enterprise Mobility + Security](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)
+- [Azure AD 和 AD FS 最佳實踐：防禦密碼噴霧攻擊 - 企業移動性和安全性](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)
 
-### <a name="enable-self-service-password-reset-and-password-protection"></a>啟用自助式密碼重設和密碼保護
+### <a name="enable-self-service-password-reset-and-password-protection"></a>啟用自助服務密碼重設和密碼保護
 
-需要變更或重設其密碼的使用者，是大量和服務台呼叫成本的最大來源之一。 除了成本之外，將密碼變更為降低使用者風險的工具是改善組織安全性狀態的基本步驟。
+需要更改或重置密碼的使用者是説明台呼叫的最大數量和成本來源之一。 除了成本之外，更改密碼作為降低使用者風險的工具是改善組織安全狀況的基本步驟。
 
-建議您至少部署 Azure AD[自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)（SSPR）和內部部署[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)以完成下列動作：
+至少，建議您部署 Azure AD[自助服務密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)（SSPR） 和本地[密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)，以實現：
 
-- 轉移服務台電話。
-- 取代暫時密碼的使用。
-- 取代任何依賴內部部署解決方案的現有自助式密碼管理解決方案。
-- [排除](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)組織中的弱式密碼。
+- 轉移説明台呼叫。
+- 替換使用臨時密碼。
+- 替換任何依賴于本地解決方案的現有自助服務密碼管理解決方案。
+- [消除組織中的弱密碼](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。
 
 > [!NOTE]
-> 針對具有 Azure AD Premium P2 訂用帳戶的組織，建議您部署 SSPR，並將其作為身分[識別保護使用者風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)的一部分。
+> 對於具有 Azure AD 高級 P2 訂閱的組織，建議部署 SSPR 並將其用作[身份保護使用者風險策略](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)的一部分。
 
-### <a name="strong-credential-management"></a>強式認證管理
+### <a name="strong-credential-management"></a>強大的憑據管理
 
-密碼本身的保護不足以防止不良的執行者取得您的環境的存取權。 具有特殊許可權帳戶的任何使用者至少必須啟用多重要素驗證（MFA）。 在理想的情況下，您應該啟用[合併的註冊](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，並要求所有使用者註冊 MFA 和 SSPR，並使用[結合的註冊體驗](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)。 最後，我們建議您採用策略來[提供復原能力](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)，以降低因未預期的情況而鎖定的風險。
+密碼本身不夠安全，無法阻止不良參與者訪問您的環境。 至少，必須啟用具有特權帳戶的任何使用者進行多重要素驗證 （MFA）。 理想情況下，您應該啟用[合併註冊](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，並要求所有使用者使用[合併註冊體驗](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)註冊 MFA 和 SSPR。 最終，我們建議您採用一種策略，[提供彈性](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)，以降低因不可預見的情況而鎖定的風險。
 
-![結合的使用者體驗流程](./media/active-directory-ops-guide/active-directory-ops-img4.png)
+![組合使用者體驗流程](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
-### <a name="on-premises-outage-authentication-resiliency"></a>內部部署中斷驗證復原
+### <a name="on-premises-outage-authentication-resiliency"></a>本地中斷身份驗證恢復能力
 
-除了簡單性的優點並啟用洩漏的認證偵測之外，Azure AD 密碼雜湊同步處理（PHS）和 Azure MFA 可讓使用者存取 SaaS 應用程式和 Office 365，而不論內部部署中斷是因為網路攻擊之類的[NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)。 您也可以啟用 PHS，同時與同盟搭配使用。 啟用 PHS 可在同盟服務無法使用時，允許驗證回退。
+除了簡單性和啟用洩露憑據檢測的好處外，Azure AD 密碼雜湊同步 （PHS） 和 Azure MFA 允許使用者訪問 SaaS 應用程式和 Office 365，儘管由於[非 Petya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)等網路攻擊導致本地中斷。 也可以在與聯合結合時啟用 PHS。 啟用 PHS 允許在識別身分同盟服務無法接通備份身份驗證。
 
-如果您的內部部署組織缺少中斷復原策略，或其中一個未與 Azure AD 整合，您應該部署 Azure AD PHS，並定義包含 PHS 的嚴重損壞修復計畫。 啟用 Azure AD PHS 可讓使用者在您的內部部署 Active Directory 無法使用時，針對 Azure AD 進行驗證。
+如果本機群組織缺少中斷恢復能力策略或具有未與 Azure AD 集成的策略，則應部署 Azure AD PHS 並定義包含 PHS 的災害復原計畫。 啟用 Azure AD PHS 將允許使用者在本地活動目錄無法接通針對 Azure AD 進行身份驗證。
 
-![密碼雜湊同步處理流程](./media/active-directory-ops-guide/active-directory-ops-img5.png)
+![密碼雜湊同步流](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-若要進一步瞭解您的驗證選項，請參閱[為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。
+要更好地瞭解身份驗證選項，請參閱為[Azure Active Directory 混合標識解決方案選擇正確的身份驗證方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。
 
-### <a name="programmatic-usage-of-credentials"></a>以程式設計方式使用認證
+### <a name="programmatic-usage-of-credentials"></a>憑據的程式設計使用
 
-Azure AD 使用 PowerShell 的腳本或使用 Microsoft Graph API 的應用程式，都需要安全驗證。 執行這些腳本和工具的認證管理不佳，會增加認證竊取的風險。 如果您使用的腳本或應用程式依賴硬式編碼的密碼或密碼提示，您應該先複習 config 檔案或原始程式碼中的密碼，然後取代這些相依性，並使用 Azure 受控識別、整合式 Windows 驗證或[憑證](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)（如果可能的話）。 針對不可能發生先前解決方案的應用程式，請考慮使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+使用 PowerShell 的 Azure AD 腳本或使用 Microsoft 圖形 API 的應用程式需要安全身份驗證。 執行這些腳本和工具的憑據管理不當會增加憑據被盜的風險。 如果使用的腳本或應用程式依賴于硬式編碼密碼或密碼提示，應首先查看設定檔或原始程式碼中的密碼，然後替換這些依賴項，並盡可能使用 Azure 託管標識、集成 Windows 身份驗證或[證書](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)。 對於無法使用以前的解決方案的應用程式，請考慮使用[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)。
 
-如果您判斷有具有密碼認證的服務主體，而且不確定腳本或應用程式如何保護這些密碼認證，請洽詢應用程式的擁有者，以進一步瞭解使用模式。
+如果您確定有具有密碼憑據的服務主體，並且不確定這些密碼憑據如何由腳本或應用程式保護，請與應用程式的擁有者聯繫，以更好地瞭解使用模式。
 
-Microsoft 也建議您洽詢應用程式擁有者，以瞭解使用模式（如果有具有密碼認證的服務主體）。
+Microsoft 還建議您聯繫應用程式擁有者以瞭解使用模式（如果有具有密碼憑據的服務主體）。
 
-## <a name="authentication-experience"></a>驗證體驗
+## <a name="authentication-experience"></a>身份驗證體驗
 
-### <a name="on-premises-authentication"></a>內部部署驗證
+### <a name="on-premises-authentication"></a>本地身份驗證
 
-使用整合式 Windows 驗證（IWA）或無縫單一登入（SSO）管理驗證搭配密碼雜湊同步處理或傳遞驗證的同盟驗證，是在公司網路內具有的最佳使用者體驗可供內部部署網域控制站看見。 它可將認證提示疲勞降至最低，並降低使用者遭受受害者到網路釣魚攻擊的風險。 如果您已使用 PHS 或 PTA 雲端管理的驗證，但使用者在內部部署驗證時仍需要輸入密碼，則您應該立即[部署無縫 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)。 相反地，如果您目前與計畫同盟，最終會遷移至雲端管理的驗證，則您應該在遷移專案中執行無縫 SSO。
+使用集成 Windows 身份驗證 （IWA） 或無縫單一登入 （SSO） 託管身份驗證（具有密碼雜湊同步或直通身份驗證）的識別身分同盟是商業網路內部的最佳使用者體驗。本地網域控制站的視線。 它最大限度地減少了認證提示疲勞，並降低了使用者成為網路釣魚攻擊的犧牲品的風險。 如果您已經在使用與小靈通或 PTA 進行雲託管身份驗證，但使用者在本地身份驗證時仍需要鍵入其密碼，則應立即[部署無縫 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)。 另一方面，如果您當前與最終遷移到雲託管身份驗證的計畫聯合，則應在遷移專案中實現無縫 SSO。
 
-### <a name="device-trust-access-policies"></a>裝置信任存取原則
+### <a name="device-trust-access-policies"></a>設備信任訪問策略
 
-就像是貴組織中的使用者，裝置是您想要保護的核心身分識別。 您可以使用裝置的身分識別，隨時隨地保護您的資源。 驗證裝置和其信任類型的帳戶處理，可透過下列方式來改善安全性狀態和可用性：
+就像是貴組織中的使用者，裝置是您想要保護的核心身分識別。 您可以使用裝置的身分識別，隨時隨地保護您的資源。通過以下方法，對設備進行身份驗證並考慮其信任類型可提高您的安全狀態和可用性：
 
-- 當裝置受信任時，使用 MFA 避免摩擦
-- 封鎖不受信任裝置的存取
-- 針對 Windows 10 裝置，請[以順暢的單一登入來提供內部部署資源](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)。
+- 避免摩擦，例如，當設備受信任時，使用 MFA
+- 阻止對不受信任的設備的訪問
+- 對於 Windows 10 設備，[無縫地為本地資源提供單一登入](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)。
 
-您可以使用下列其中一種方法，在 Azure AD 中導入裝置身分識別並加以管理，藉此達成此目標：
+通過使用以下方法之一，可以將設備標識在 Azure AD 中管理，從而實現此目標：
 
-- 組織可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理裝置及強制執行合規性政策、證明裝置健康情況，並根據裝置是否符合規範設定條件式存取原則。 Microsoft Intune 可以管理 iOS 裝置、Mac 桌面（透過 JAMF 整合）、Windows 桌面（原生使用適用于 Windows 10 的行動裝置管理，以及與 Microsoft 端點 Configuration Manager 的共同管理）和 Android 行動裝置。
-- [混合式 Azure AD join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains)可讓您在具有 Active Directory 已加入網域的電腦裝置的環境中，使用群組原則或 Microsoft 端點 Configuration Manager 進行管理。 組織可以透過 PHS 或 PTA 使用無縫 SSO 部署受管理的環境。 讓您的裝置 Azure AD 透過 SSO 在雲端和內部部署資源中達到最大的使用者生產力，同時使用 [條件式存取](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) 同時保護對雲端和內部部署資源的存取。
+- 組織可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理設備並強制實施合規性策略，證明設備運行狀況，並根據設備是否符合標準設定條件訪問策略。 Microsoft Intune 可以管理 iOS 設備、Mac 桌面（通過 JAMF 集成）、Windows 桌面（本機使用 Windows 10 的行動裝置管理，並與 Microsoft 端點組態管理員共同管理）和 Android 行動裝置。
+- [混合 Azure AD 聯接](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains)在具有 Active Directory 域加入電腦設備的環境中提供群組原則或 Microsoft 終結點組態管理員的管理。 組織可以通過小靈通或具有無縫 SSO 的 PTA 部署託管環境。 將設備帶到 Azure AD 可跨雲和本地資源的 SSO 最大限度地提高使用者工作效率，同時使您能夠通過 [條件訪問](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) 同時安全地訪問雲和本地資源。
 
-如果您有未在雲端註冊的已加入網域 Windows 裝置，或是已在雲端中註冊但沒有條件式存取原則的已加入網域 windows 裝置，則您應該註冊未註冊的裝置，並在任何一種情況下，在條件式存取原則中[使用混合式 Azure AD join 做為控制項](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)。
+如果域加入的 Windows 設備未在雲中註冊，或者域加入的 Windows 設備在雲中註冊，但沒有條件訪問策略，則應註冊未註冊的設備，並在這兩種情況下，在條件訪問策略中使用[混合 Azure AD 聯接作為控制項](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)。
 
-![在需要混合式裝置的條件式存取原則中授與的螢幕擷取畫面](./media/active-directory-ops-guide/active-directory-ops-img6.png)
+![需要混合設備的條件訪問策略中的授予螢幕截圖](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-如果您使用 MDM 或 Microsoft Intune 來管理裝置，但未在條件式存取原則中使用裝置控制項，則建議使用 [[要求裝置必須標記為符合規範](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant)] 這些原則中的控制項。
+如果您使用 MDM 或 Microsoft Intune 管理設備，但在條件訪問策略中不使用設備控制項，則建議使用["要求設備](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant)"在這些政策中標記為符合控制項。
 
-![條件式存取原則中的授與要求裝置合規性的螢幕擷取畫面](./media/active-directory-ops-guide/active-directory-ops-img7.png)
+![需要設備合規性的條件訪問策略中的授予螢幕截圖](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
-#### <a name="device-trust-access-policies-recommended-reading"></a>建議閱讀的裝置信任存取原則
+#### <a name="device-trust-access-policies-recommended-reading"></a>設備信任訪問策略建議讀取
 
-- [如何：規劃混合式 Azure Active Directory 聯結執行](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [如何：規劃混合 Azure 活動目錄聯接實現](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 - [身分識別與裝置存取設定](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello 企業版
 
-在 Windows 10 中， [Windows Hello 企業版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)會以電腦上的強式雙因素驗證取代密碼。 Windows Hello 企業版可為使用者提供更流暢的 MFA 體驗，並減少您對密碼的相依性。 如果您尚未開始推出 Windows 10 裝置，或只有部分部署，建議您升級至 Windows 10，並在所有裝置上[啟用 Windows Hello 企業版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)。
+在 Windows 10[中，適用于企業的 Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)在 PC 上使用強的雙重身份驗證替換密碼。 適用于企業的 Windows Hello 為使用者提供了更簡化的 MFA 體驗，並減少了您對密碼的依賴。 如果您尚未開始推出 Windows 10 設備，或者僅部分部署它們，我們建議您升級到 Windows 10，並在所有設備上[啟用適用于企業的 Windows Hello。](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
 
-如果您想要深入瞭解無密碼 authentication，請參閱[不含密碼的全球 Azure Active Directory](https://aka.ms/passwordlessdoc)。
+如果要瞭解有關無密碼身份驗證的更多內容，請參閱[沒有密碼的 Azure 活動目錄 的世界](https://aka.ms/passwordlessdoc)。
 
-## <a name="application-authentication-and-assignment"></a>應用程式驗證和指派
+## <a name="application-authentication-and-assignment"></a>應用程式身份驗證和分配
 
-### <a name="single-sign-on-for-apps"></a>應用程式的單一登入
+### <a name="single-sign-on-for-apps"></a>應用的單一登入
 
-為整個企業提供標準化的單一登入機制，對於最佳使用者體驗、降低風險、回報和治理的能力非常重要。 如果您使用的應用程式支援具有 Azure AD 的 SSO，但目前設定為使用本機帳戶，您應該重新設定這些應用程式，以搭配 Azure AD 使用 SSO。 同樣地，如果您使用的任何應用程式支援具有 Azure AD 的 SSO，但使用其他身分識別提供者，您應該將這些應用程式重新設定為使用 SSO 搭配 Azure AD。 針對不支援同盟通訊協定但支援以表單為基礎之驗證的應用程式，建議您將應用程式設定為使用[密碼](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)保存庫搭配 Azure AD 應用程式 Proxy。
+為整個企業提供標準化的單一登入機制對於最佳使用者體驗、降低風險、報告能力和治理至關重要。 如果使用支援 SSO 與 Azure AD 的應用程式，但當前配置為使用本地帳戶，則應將這些應用程式重新配置為將 SSO 與 Azure AD 一起使用。 同樣，如果使用 Azure AD 支援 SSO 但正在使用其他標識提供程式的任何應用程式，則應將這些應用程式重新配置為在 Azure AD 中使用 SSO。 對於不支援聯合協定但支援基於表單的身份驗證的應用程式，我們建議您將應用程式佈建為使用 Azure AD 應用程式代理使用[密碼保管](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)。
 
-![AppProxy 以密碼為基礎的登入](./media/active-directory-ops-guide/active-directory-ops-img8.png)
-
-> [!NOTE]
-> 如果您沒有任何機制可探索組織中的非受控應用程式，我們建議使用雲端存取安全性代理人解決方案（CASB）（例如[Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)）來執行探索流程。
-
-最後，如果您有 Azure AD 應用程式資源庫，並使用支援與 Azure AD SSO 的應用程式，我們建議您[在應用程式庫中列出應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)。
-
-#### <a name="single-sign-on-recommended-reading"></a>建議使用單一登入閱讀
-
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-
-### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>將 AD FS 應用程式遷移至 Azure AD
-
-[將應用程式從 AD FS 遷移至 Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure)可在安全性、更一致的管理性和更好的共同作業體驗方面提供額外的功能。 如果您在 AD FS 中設定應用程式以支援 Azure AD 的 SSO，則您應該將這些應用程式重新設定為使用 SSO 搭配 Azure AD。 如果您在 AD FS 中設定應用程式，但 Azure AD 不支援罕見設定，您應洽詢應用程式擁有者，瞭解特殊設定是否為應用程式的絕對需求。 如果不是必要的，您應該將應用程式重新設定為使用 SSO 搭配 Azure AD。
-
-![作為主要身分識別提供者 Azure AD](./media/active-directory-ops-guide/active-directory-ops-img9.png)
+![基於 AppProxy 密碼的登錄](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
-> [ADFS 的 Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)可用來收集每個可能遷移至 Azure AD 之應用程式的設定詳細資料。
+> 如果您沒有機制來發現組織中的非託管應用程式，我們建議您使用雲訪問安全代理解決方案 （CASB）（如[Microsoft 雲應用安全](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)）實現發現過程。
 
-### <a name="assign-users-to-applications"></a>將使用者指派給應用程式
+最後，如果您有 Azure AD 應用庫並使用支援 SSO 的應用程式與 Azure AD 一起，我們建議您[在應用庫中列出應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)。
 
-將[使用者指派給應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)最適合使用群組來對應，因為它們可提供更大的彈性和大規模管理能力。 使用群組的優點包括以[屬性為基礎的動態群組成員資格](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)，以及[對應用程式擁有](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners)者的委派。 因此，如果您已經在使用和管理群組，建議您採取下列動作來改善大規模管理：
+#### <a name="single-sign-on-recommended-reading"></a>單一登入推薦閱讀
 
-- 委派群組管理和治理給應用程式擁有者。
-- 允許對應用程式進行自助存取。
-- 如果使用者屬性可以一致地判斷應用程式的存取權，請定義動態群組。
-- 使用[Azure AD 的存取權審查](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)，對用於應用程式存取權的群組執行證明。
+- [什麼是應用程式訪問和 Azure 活動目錄的單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-另一方面，如果您發現有指派給個別使用者的應用程式，請務必針對這些應用程式執行[治理](https://docs.microsoft.com/azure/active-directory/governance/index)。
+### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>將 AD FS 應用程式遷移到 Azure AD
 
-#### <a name="assign-users-to-applications-recommended-reading"></a>將使用者指派給應用程式建議的閱讀
+[將應用從 AD FS 遷移到 Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure)可實現安全性、更一致的可管理性和更好的協作體驗的其他功能。 如果在 AD FS 中配置了支援 Azure AD 的 SSO 的應用程式，則應將這些應用程式重新配置為將 SSO 與 Azure AD 一起使用。 如果在 AD FS 中配置了 Azure AD 不支援的不常見配置的應用程式，則應與應用擁有者聯繫以瞭解特殊配置是否屬於應用程式的絕對要求。 如果不需要，則應將應用程式重新配置為將 SSO 與 Azure AD 一起使用。
 
-- [在 Azure Active Directory 中將使用者和群組指派給應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
-- [在 Azure Active Directory 中委派應用程式註冊許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
+![Azure AD 作為主標識提供程式](./media/active-directory-ops-guide/active-directory-ops-img9.png)
+
+> [!NOTE]
+> [ADFS 的 Azure AD 連接運行狀況](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)可用於收集有關可能遷移到 Azure AD 的每個應用程式的配置詳細資訊。
+
+### <a name="assign-users-to-applications"></a>將使用者分配給應用程式
+
+最好使用組映射[使用者，](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)因為它們允許更大的靈活性和大規模管理的能力。 使用組的好處包括[基於屬性的動態組成員身份](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)和[委派給應用擁有者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners)。 因此，如果您已經在使用和管理組，我們建議您採取以下操作來大規模改進管理：
+
+- 將組管理和治理委派給應用程式擁有者。
+- 允許自助訪問應用程式。
+- 定義動態組，如果使用者屬性可以一致地確定對應用程式的訪問。
+- 使用[Azure AD 訪問審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)對用於應用程式訪問的組實施證明。
+
+另一方面，如果您發現具有分配給單個使用者的應用程式，請確保圍繞這些應用程式實現[治理](https://docs.microsoft.com/azure/active-directory/governance/index)。
+
+#### <a name="assign-users-to-applications-recommended-reading"></a>將使用者分配給建議讀取的應用程式
+
+- [將使用者和群組指派至 Azure Active Directory 中的應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
+- [在 Azure 活動目錄中委派應用註冊許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
 - [Azure Active Directory 中群組的動態成員資格規則](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
 
 ## <a name="access-policies"></a>存取原則
 
 ### <a name="named-locations"></a>具名位置
 
-在 Azure AD 中使用[已命名的位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)時，您可以為組織中的受信任 IP 位址範圍加上標籤。 Azure AD 使用具名位置來：
+借助 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)，可以在組織中標記受信任的 IP 位址範圍。 Azure AD 使用具名位置來：
 
-- 避免風險事件中的誤報。 從信任的網路位置登入，會降低使用者的登入風險。
-- 設定[位置型條件式存取](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
+- 防止風險事件中出現誤報。 從受信任的網路位置登錄可降低使用者的登錄風險。
+- 配置[基於位置的條件訪問](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
 
 ![具名位置](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
-根據優先順序，使用下表來尋找最符合貴組織需求的建議解決方案：
+根據優先順序，使用下表查找最符合組織需求的建議解決方案：
 
 | **優先順序** | **案例** | **建議** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1 | 如果您使用 PHS 或 PTA，而且尚未定義命名位置 | 定義已命名的位置以改善風險事件的偵測 |
-| 2 | 如果您是同盟的，但未使用 "insideCorporateNetwork" 宣告和命名位置，則尚未定義 | 定義已命名的位置以改善風險事件的偵測 |
-| 3 | 如果您未在條件式存取原則中使用已命名的位置，而且條件式存取原則中沒有任何風險或裝置控制項 | 設定條件式存取原則以包含命名位置 |
-| 4 | 如果您是同盟的，請使用 "insideCorporateNetwork" 宣告和未定義的命名位置 | 定義已命名的位置以改善風險事件的偵測 |
-| 5 | 如果您使用具有 MFA 的信任 IP 位址，而不是指定的位置，並將它們標示為受信任 | 定義已命名的位置，並將它們標示為受信任，以改善風險事件的偵測 |
+| 1 | 如果您使用 PHS 或 PTA，並且尚未定義命名位置 | 定義命名位置以改善風險事件的檢測 |
+| 2 | 如果您是聯合的，並且不使用"內部公司網路"聲明，並且尚未定義命名位置 | 定義命名位置以改善風險事件的檢測 |
+| 3 | 如果在條件訪問策略中不使用命名位置，並且條件訪問策略中沒有風險或設備控制項 | 將條件訪問策略配置為包括命名位置 |
+| 4 | 如果您聯合使用"內部公司網路"聲明，並且尚未定義命名位置 | 定義命名位置以改善風險事件的檢測 |
+| 5 | 如果使用具有 MFA 的可信 IP 位址，而不是指定位置，並將其標記為受信任 | 定義命名位置並將其標記為受信任位置，以改進風險事件的檢測 |
 
-### <a name="risk-based-access-policies"></a>以風險為基礎的存取原則
+### <a name="risk-based-access-policies"></a>基於風險的訪問策略
 
-Azure AD 可以計算每個登入和每個使用者的風險。 在存取原則中使用風險作為準則，可以提供更好的使用者體驗，例如，較少的驗證提示，以及更佳的安全性，例如，只在需要時提示使用者，並將回應和修復自動化。
+Azure AD 可以計算每個登錄和每個使用者的風險。 在訪問策略中使用風險作為標準可以提供更好的使用者體驗，例如，減少身份驗證提示，提高安全性，例如，僅在需要使用者時提示使用者，並自動執行回應和補救。
 
 ![登入風險原則](./media/active-directory-ops-guide/active-directory-ops-img11.png)
 
-如果您已擁有支援在存取原則中使用風險的 Azure AD Premium P2 授權，但不會使用它們，我們強烈建議您將風險新增至您的安全性狀態。
+如果您已經擁有支援在訪問策略中使用風險的 Azure AD 高級 P2 許可證，但未使用它們，我們強烈建議為您的安全狀況增加風險。
 
-#### <a name="risk-based-access-policies-recommended-reading"></a>以風險為基礎的存取原則建議閱讀
+#### <a name="risk-based-access-policies-recommended-reading"></a>建議閱讀基於風險的訪問策略
 
 - [如何：設定登入風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
 - [如何：設定使用者風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
 
-### <a name="client-application-access-policies"></a>用戶端應用程式存取原則
+### <a name="client-application-access-policies"></a>用戶端應用程式訪問策略
 
-Microsoft Intune 應用程式管理（MAM）可讓您將資料保護控制項（例如儲存體加密、PIN、遠端存放裝置清除等）推送至相容的用戶端行動應用程式，例如 Outlook Mobile。 此外，您可以建立條件式存取原則，以限制來自已核准或相容應用程式的雲端服務（例如 Exchange Online）的[存取權](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。
+Microsoft Intune 應用程式管理 （MAM） 能夠將資料存儲加密、PIN、遠端存放清理等資料保護控制推送到相容的用戶端移動應用程式（如 Outlook Mobile）。 此外，還可以創建條件訪問策略，[以限制](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)從已批准或相容的應用訪問雲服務（如 Exchange Online）。
 
-如果您的員工安裝支援 MAM 的應用程式（例如 Office mobile 應用程式）來存取公司資源（例如 Exchange Online 或 SharePoint Online），而且您也支援 BYOD （攜帶您自己的裝置），我們建議您部署應用程式 MAM 原則來管理在個人擁有但沒有 MDM 註冊的裝置中的應用程式設定，然後更新您的條件式存取原則，只允許來自支援 MAM 的用戶端存取。
+如果您的員工安裝支援 MAM 的應用程式（如 Office 移動應用）來訪問公司資源（如線上交換或 SharePoint Online），並且您也支援 BYOD（自帶設備），我們建議您部署應用程式 MAM 策略來管理個人擁有的設備中的應用程式佈建，無需 MDM 註冊，然後更新條件訪問策略，以僅允許來自支援 MAM 的用戶端的訪問。
 
-![條件式存取授與控制](./media/active-directory-ops-guide/active-directory-ops-img12.png)
+![條件訪問授予控制](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-員工是否應針對公司資源安裝支援 MAM 的應用程式，並在受 Intune 管理的裝置上限制存取，然後您應該考慮部署應用程式 MAM 原則來管理個人裝置的應用程式設定，以及更新條件式存取原則，只允許從支援 MAM 的用戶端存取。
+如果員工針對公司資源安裝支援 MAM 的應用程式，並且訪問受限於 Intune 託管設備上，則應考慮部署應用程式 MAM 策略來管理個人設備的應用程式佈建，以及更新條件訪問策略，以僅允許來自支援 MAM 的用戶端進行訪問。
 
-### <a name="conditional-access-implementation"></a>條件式存取執行
+### <a name="conditional-access-implementation"></a>條件訪問實現
 
-條件式存取是改善組織安全性狀態的基本工具。 因此，請務必遵循下列最佳作法：
+條件訪問是改善組織安全狀態的重要工具。 因此，遵循以下最佳實踐非常重要：
 
-- 確定所有 SaaS 應用程式都已套用至少一個原則
-- 避免將 [**所有應用程式**] 篩選器與**封鎖**控制項結合，以避免鎖定的風險
-- 避免使用 [**所有使用者**] 做為篩選準則，並不小心新增**來賓**
-- **將所有「舊版」原則遷移至 Azure 入口網站**
-- 攔截使用者、裝置和應用程式的所有準則
-- 使用條件式存取原則來[執行 mfa](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)，而不是使用**每個使用者的 mfa**
-- 具有一組可套用至多個應用程式的小型核心原則
-- 定義空的例外狀況群組，並將其新增至原則以具有例外狀況策略
-- 規劃無 MFA 控制項的[中斷玻璃](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)帳戶
-- 確保跨 Office 365 用戶端應用程式的一致體驗，例如小組、商務用 OneDrive、Outlook 等。）藉由為 Exchange Online 和 Sharepoint Online 等服務執行一組相同的控制項
-- 應透過群組（而非個人）來執行原則指派
-- 定期審查原則中所使用的例外狀況群組，以限制使用者超出安全性狀態的時間。 如果您擁有 Azure AD P2，則可以使用存取權審查來自動化程式
+- 確保所有 SaaS 應用程式至少應用了一個策略
+- 避免將 **"所有應用**"篩選器與**塊**控制相結合，以避免鎖定風險
+- 避免使用**所有使用者**作為篩選器，並無意中添加**來賓**
+- **將所有"遺留"策略遷移到 Azure 門戶**
+- 捕獲使用者、設備和應用程式的所有條件
+- 使用條件訪問策略[實現 MFA，](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)而不是使用**每個使用者的 MFA**
+- 具有一小組可應用於多個應用程式的核心策略
+- 定義空異常組並將它們添加到策略中，使其具有異常策略
+- 規劃沒有 MFA 控制的[碎玻璃](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)帳戶
+- 確保跨 Office 365 用戶端應用程式（例如團隊、業務 OneDrive、Outlook 等）獲得一致的體驗。通過為服務（如線上交換和共用點線上）實現同一組控制項
+- 政策分配應通過小組而不是個人執行
+- 定期檢查策略中使用的異常組，以限制使用者退出安全狀態的時間。 如果您擁有 Azure AD P2，則可以使用訪問審核來自動執行該過程
 
-#### <a name="conditional-access-recommended-reading"></a>條件式存取建議閱讀
+#### <a name="conditional-access-recommended-reading"></a>條件訪問建議讀取
 
-- [Azure Active Directory 中的條件式存取最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+- [Azure 活動目錄中的條件訪問最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
 - [身分識別與裝置存取設定](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Azure Active Directory 條件式存取設定參考](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
+- [Azure 活動目錄條件訪問設置引用](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [一般條件式存取原則](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
-## <a name="access-surface-area"></a>存取介面區
+## <a name="access-surface-area"></a>訪問表面積
 
 ### <a name="legacy-authentication"></a>舊版驗證
 
-強式認證（例如 MFA）無法使用舊版驗證通訊協定來保護應用程式，這使得它成為惡意執行者慣用的攻擊媒介。 鎖定舊版驗證對於改善存取安全性狀態非常重要。
+強大的憑據（如 MFA）無法使用舊版身份驗證協定保護應用，這使得它成為惡意參與者的首選攻擊媒介。 鎖定舊版身份驗證對於改善訪問安全狀態至關重要。
 
-舊版驗證是指應用程式所使用的驗證通訊協定，如下所示：
+舊版身份驗證是一個術語，指應用使用的身份驗證協定，例如：
 
-- 不使用新式驗證的舊版 Office 用戶端（例如，Office 2010 用戶端）
-- 使用郵件通訊協定的用戶端，例如 IMAP/SMTP/POP
+- 不使用現代身份驗證的舊 Office 用戶端（例如，Office 2010 用戶端）
+- 使用郵件協定（如 IMAP/SMTP/POP）的用戶端
 
-攻擊者強烈偏好這些通訊協定，事實上，幾乎[100% 的密碼噴灑攻擊](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)會使用舊版驗證通訊協定！ 駭客會使用舊版驗證通訊協定，因為它們不支援互動式登入，這是額外的安全性挑戰所需的，例如多重要素驗證和裝置驗證。
+攻擊者非常喜歡這些協定 - 事實上，近[100% 的密碼噴霧攻擊](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)使用舊版身份驗證協定！ 駭客使用舊版身份驗證協定，因為他們不支援互動式登入，這是其他安全挑戰（如多重要素驗證和設備身份驗證）所必需的。
 
-如果您的環境中廣泛使用舊版驗證，您應該計畫儘快將舊版用戶端遷移至支援[新式驗證](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)的用戶端。 在相同的權杖中，如果您有一些使用者已經使用新式驗證，但其他人仍使用舊版驗證，則您應該採取下列步驟來鎖定舊版驗證用戶端：
+如果遺留身份驗證在環境中廣泛使用，則應計畫儘快將舊版用戶端遷移到支援[現代身份驗證](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)的用戶端。 在同一權杖中，如果某些使用者已經使用現代身份驗證，但其他使用者仍使用舊身份驗證，則應執行以下步驟來鎖定舊身份驗證用戶端：
 
-1. 使用登[入活動報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)來識別仍在使用舊版驗證和計畫補救的使用者：
+1. 使用[登錄活動報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)標識仍在使用舊版身份驗證的使用者並計畫修正：
 
-   a. 將可支援新式驗證的用戶端升級至受影響的使用者。
+   a. 升級到支援現代身份驗證的用戶端到受影響的使用者。
    
-   b. 規劃轉換的時間範圍，以根據下列步驟進行鎖定。
+   b. 計畫一個截止時間範圍，以鎖定以下步驟。
    
-   c. 識別哪些繼承應用程式對舊版驗證有困難的相依性。 請參閱下面的步驟3。
+   c. 確定哪些舊應用程式對舊版身份驗證具有硬依賴性。 請參閱下面的步驟 3。
 
-2. 針對未使用舊版驗證的使用者，停用來源的舊版通訊協定（例如 Exchange 信箱），以避免產生更多風險。
-3. 對於其餘帳戶（最好是非人類身分識別，例如服務帳戶），請使用[條件式存取來限制舊版通訊協定](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Conditional-Access-support-for-blocking-legacy-auth-is/ba-p/245417)的驗證後。
+2. 為不使用舊版 aus 的使用者禁用源（例如 Exchange 郵箱）的舊協定，以避免更多曝光。
+3. 對於其餘帳戶（理想情況下是非人工標識（如服務帳戶），使用[條件訪問限制身份驗證後的舊協定](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Conditional-Access-support-for-blocking-legacy-auth-is/ba-p/245417)。
 
-#### <a name="legacy-authentication-recommended-reading"></a>建議閱讀的舊版驗證
+#### <a name="legacy-authentication-recommended-reading"></a>建議讀取舊身份驗證
 
-- [啟用或停用 Exchange Server 中信箱的 POP3 或 IMAP4 存取](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [啟用或禁用 POP3 或 IMAP4 對 Exchange 伺服器中郵箱的訪問](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
 
-### <a name="consent-grants"></a>同意授權
+### <a name="consent-grants"></a>同意授予
 
-在違法的同意授與攻擊中，攻擊者會建立一個 Azure AD 註冊的應用程式，以要求存取連絡人資訊、電子郵件或檔等資料。 當登陸惡意網站時，使用者可能會透過網路釣魚攻擊，將同意授與惡意應用程式。
+在非法同意授予攻擊中，攻擊者創建 Azure AD 註冊應用程式，請求訪問資料，如聯繫資訊、電子郵件或文檔。 使用者在登陸惡意網站時，可能會通過網路釣魚攻擊授予惡意應用程式的同意。
 
-以下是您可能想要對 Microsoft 雲端服務進行的許可權的應用程式清單：
+以下是具有 Microsoft 雲服務許可權的應用清單：
 
-- 具有應用程式或委派 \*的應用程式。ReadWrite 許可權
-- 具有委派許可權的應用程式可以代表使用者讀取、傳送或管理電子郵件
-- 使用下列許可權授與的應用程式：
+- 具有應用或委派\*的應用。讀取寫入權限
+- 具有委派許可權的應用可以代表使用者讀取、發送或管理電子郵件
+- 使用以下許可權授予 的應用：
 
 | 資源 | 權限 |
 | :- | :- |
-| Office 365 Exchange Online | 符合.AccessAsUser。 |
-| | EWS.AccessAsUser。 |
-| | Mail. 讀取 |
-| Microsoft Graph API | Mail. 讀取 |
-| | 郵件. 讀取。共用 |
-| | Mail. ReadWrite |
+| Office 365 Exchange Online | 大通。訪問使用者.所有 |
+| | EWS.訪問使用者.所有 |
+| | Mail.Read |
+| Microsoft Graph API | Mail.Read |
+| | 郵件.閱讀.共用 |
+| | 郵件.閱讀寫作 |
 
-- 已授與完整使用者模擬登入使用者的應用程式。 例如：
+- 應用授予已登錄使用者的完整使用者類比。 例如：
 
 |資源 | 權限 |
 | :- | :- |
-| Microsoft Graph API| 目錄. AccessAsUser. 全部 |
+| Microsoft Graph API| Directory.AccessAsUser.All |
 | Azure REST API | user_impersonation |
 
-若要避免這種情況，您應該參閱[在 Office 365 中偵測並補救違法的同意](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)授與，以找出並修正具有非法授與的應用程式，或具有超出所需授權的應用程式。 接下來，[完全移除自助服務](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)，並[建立治理程式](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。 最後，排程應用程式許可權的定期檢查，並在不需要時予以移除。
+為了避免這種情況，您應該參考[Office 365 中檢測和修復非法同意授予](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)，以識別和修復任何具有非法贈款或具有超過必要授權的應用程式的應用程式。 其次，[完全取消自助服務](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)，[建立治理程式](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。 最後，安排對應用許可權的定期審核，並在不需要時將其刪除。
 
-#### <a name="consent-grants-recommended-reading"></a>同意授與建議的閱讀
+#### <a name="consent-grants-recommended-reading"></a>同意授予建議閱讀
 
-- [Microsoft Graph API 許可權](https://docs.microsoft.com/graph/permissions-reference)
+- [微軟圖形 API 許可權](https://docs.microsoft.com/graph/permissions-reference)
 
-### <a name="user-and-group-settings"></a>使用者和群組設定
+### <a name="user-and-group-settings"></a>使用者和組設置
 
-以下是在沒有明確的商務需求時，可以鎖定的使用者和群組設定：
+下面是如果沒有明確業務需求，可以鎖定的使用者和組設置：
 
 #### <a name="user-settings"></a>使用者設定
 
-- **外部使用者**-在企業中使用小組、Power BI、Sharepoint Online 和 Azure 資訊保護等服務，可能會發生外部共同作業。 如果您有明確的限制，可控制使用者起始的外部共同作業，建議您使用[Azure AD 權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)或受控制的作業（例如透過技術支援中心）來啟用外部使用者。 如果您不想要允許服務的有機外部共同作業，您可以[封鎖成員完全邀請外部使用者](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations)。 或者，您也可以[允許或封鎖](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list)外部使用者邀請中的特定網域。
-- **應用程式註冊**-啟用應用程式註冊時，終端使用者可以將應用程式上架，並授與其資料的存取權。 應用程式註冊的典型範例是讓 Outlook 外掛程式或語音助理（例如 Alexa 和 Siri）讀取其電子郵件和行事曆，或代表他們傳送電子郵件的使用者。 如果客戶決定關閉應用程式註冊，則 InfoSec 和 IAM 小組必須納入例外狀況的管理（根據商務需求所需的應用程式註冊），因為他們需要使用系統管理員帳戶來註冊應用程式。而且很可能需要設計處理常式來讓程式。
-- 系統**管理入口網站**-組織可以鎖定 Azure 入口網站的 [Azure AD] 分頁，讓非系統管理員無法存取 Azure 入口網站中的 Azure AD 管理，並使其感到困惑。 移至 Azure AD 管理入口網站中的使用者設定，以限制存取：
+- **外部使用者**- 外部協作可以通過團隊、Power BI、線上共用點和 Azure 資訊保護等服務在企業中有機地進行。 如果您有用於控制使用者啟動的外部協作的顯式約束，建議使用[Azure AD 授權管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)或控制操作（如通過説明台）啟用外部使用者。 如果不想允許為服務進行有機外部協作，則可以[阻止成員完全邀請外部使用者](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations)。 或者，您還可以在外部使用者邀請中[允許或阻止特定域](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list)。
+- **應用註冊**- 啟用應用註冊時，最終使用者可以自行註冊應用程式並授予對其資料的許可權。 應用註冊的典型示例是啟用 Outlook 外掛程式的使用者，或者啟用 Alexa 和 Siri 等語音助理，以便閱讀其電子郵件和日曆或代表他們發送電子郵件。 如果客戶決定關閉應用註冊，InfoSec 和 IAM 團隊必須參與異常管理（根據業務需求需要的應用註冊），因為他們需要向管理員帳戶註冊應用程式，並且很可能需要設計一個流程來操作流程。
+- **監管中心**- 組織可以鎖定 Azure 門戶中的 Azure AD 邊欄選項卡，以便非管理員無法訪問 Azure 門戶中的 Azure AD 管理並感到困惑。 轉到 Azure AD 監管中心中的使用者設置以限制訪問：
 
-![系統管理入口網站限制存取](./media/active-directory-ops-guide/active-directory-ops-img13.png)
+![監管中心受限訪問](./media/active-directory-ops-guide/active-directory-ops-img13.png)
 
 > [!NOTE]
-> 非管理員仍然可以透過命令列和其他程式設計介面來存取 Azure AD 管理介面。
+> 非管理員仍可以通過命令列和其他程式設計介面訪問 Azure AD 管理介面。
 
 #### <a name="group-settings"></a>群組設定
 
-**自助群組管理/使用者可以建立安全性群組/O365 群組。** 如果雲端中沒有任何目前的自助服務方案，客戶可能會決定將其關閉，直到他們準備好使用這項功能為止。
+**自助服務組管理/使用者可以創建安全性群組/O365 組。** 如果雲中的組當前沒有自助服務方案，客戶可能會決定將其關閉，直到他們準備好使用此功能。
 
-#### <a name="groups-recommended-reading"></a>建議閱讀的群組
+#### <a name="groups-recommended-reading"></a>組建議閱讀
 
 - [什麼是 Azure Active Directory B2B 共同作業？](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-- [整合應用程式與 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- [Azure Active Directory 中的應用程式、許可權和同意。](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
-- [在 Azure Active Directory 中使用群組來管理資源的存取權](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-- [在 Azure Active Directory 中設定自助式應用程式存取管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
+- [將應用程式與 Azure 活動目錄集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+- [Azure 活動目錄中的應用、許可權和同意。](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+- [使用組管理對 Azure 活動目錄中資源的訪問](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
+- [在 Azure 活動目錄中設置自助服務應用程式訪問管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
 
-### <a name="traffic-from-unexpected-locations"></a>來自非預期位置的流量
+### <a name="traffic-from-unexpected-locations"></a>來自意外位置的流量
 
-攻擊者來自世界各地的各個部分。 使用條件式存取原則搭配 location 作為條件來管理此風險。 條件式存取原則的[位置條件](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)可讓您封鎖從無法進行登入的商業理由存取位置。
+攻擊者來自世界各地。 通過使用以位置為條件的條件訪問策略來管理此風險。 條件訪問策略[的位置條件](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)使您能夠阻止對沒有業務原因從中登錄的位置進行訪問。
 
-![建立新的命名位置](./media/active-directory-ops-guide/active-directory-ops-img14.png)
+![創建新命名位置](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-如果有的話，請使用安全性資訊和事件管理（SIEM）解決方案來分析和尋找跨區域的存取模式。 如果您不使用 SIEM 產品，或它不會從 Azure AD 內嵌驗證資訊，建議您使用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)來識別跨區域的存取模式。
+如果可用，請使用安全資訊和事件管理 （SIEM） 解決方案來分析和查找跨區域的訪問模式。 如果不使用 SIEM 產品，或者它未從 Azure AD 中引入身份驗證資訊，我們建議您使用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)來標識跨區域的訪問模式。
 
-## <a name="access-usage"></a>存取使用方式
+## <a name="access-usage"></a>訪問使用方式
 
-### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>Azure AD 記錄封存並與事件回應計畫整合
+### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>Azure AD 日誌已存檔並與事件回應計畫集成
 
-有權存取登入活動、Azure AD 的審核和風險事件，對於疑難排解、流量分析和辯論調查都很重要。 Azure AD 透過具有有限保留期限的 REST Api，提供這些來源的存取權。 安全性資訊和事件管理（SIEM）系統或同等的封存技術，是長期儲存的審核和支援能力的關鍵。 若要啟用 Azure AD 記錄的長期儲存，您必須將它們新增至現有的 SIEM 解決方案，或使用[Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor)。 封存記錄檔，可用於事件回應計畫和調查的一部分。
+Azure AD 的登錄活動、審核和風險事件對於故障排除、使用方式分析和取證調查至關重要。 Azure AD 通過保留期有限的 REST API 提供對這些源的訪問。 安全資訊和事件管理 （SIEM） 系統或等效存檔技術是長期存儲審核和支援的關鍵。 要啟用 Azure AD 日誌的長期存儲，必須將它們添加到現有的 SIEM 解決方案或使用 Azure[監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor)。 可用作事件回應計畫和調查的一部分的存檔日誌。
 
-#### <a name="logs-recommended-reading"></a>記錄建議的讀取
+#### <a name="logs-recommended-reading"></a>日誌建議讀取
 
-- [Azure Active Directory audit API 參考](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
+- [Azure Active Directory 稽核 API 參考](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
 - [Azure Active Directory 登入活動報告 API 參考](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference)
 - [使用 Azure AD 報告 API 搭配憑證來取得資料](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
-- [Azure Active Directory Identity Protection 的 Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
+- [用於 Azure 活動目錄標識保護的 Microsoft 圖形](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Office 365 管理活動 API 參考](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 內容套件](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
-安全身分識別基礎結構有12個層面。 這份清單可協助您進一步保護和管理認證、定義驗證體驗、委派指派、測量使用方式，以及根據企業安全性狀態定義存取原則。
+安全標識基礎結構有 12 個方面。 此清單將説明您進一步保護和管理認證、定義身份驗證體驗、委派分配、測量使用方式以及根據企業安全狀態定義訪問策略。
 
-- 將擁有者指派給主要工作。
-- 執行解決方案來偵測弱式或洩露的密碼、改善密碼管理和保護，以及進一步保護使用者對資源的存取。
-- 管理裝置的身分識別，以在任何時間和任何位置保護您的資源。
-- 執行無密碼 authentication。
+- 將擁有者分配給要徑任務。
+- 實施解決方案以檢測弱密碼或洩露的密碼，改進密碼管理和保護，並進一步保護使用者訪問資源。
+- 管理設備標識，隨時保護您的資源，不受任何位置的影響。
+- 實現無密碼身份驗證。
 - 在整個組織中提供標準化的單一登入機制。
-- 將應用程式從 AD FS 遷移至 Azure AD，以提供更佳的安全性和更一致的管理性。
-- 使用群組將使用者指派給應用程式，以提供更大的彈性和大規模管理能力。
-- 設定以風險為基礎的存取原則。
-- 鎖定舊版驗證通訊協定。
-- 偵測並補救違法的同意授權。
-- 鎖定使用者和群組設定。
-- 啟用 Azure AD 記錄的長期儲存，以進行疑難排解、使用方式分析和辯論調查。
+- 將應用從 AD FS 遷移到 Azure AD，以實現更好的安全性和更一致的可管理性。
+- 通過使用組將使用者分配給應用程式，以允許更大的靈活性和大規模管理的能力。
+- 配置基於風險的訪問策略。
+- 鎖定舊版身份驗證協定。
+- 發現並補救非法同意授予。
+- 鎖定使用者和組設置。
+- 啟用 Azure AD 日誌的長期存儲，以便進行故障排除、使用方式分析和取證調查。
 
 ## <a name="next-steps"></a>後續步驟
 
-開始進行身分[識別管理操作檢查和動作](active-directory-ops-guide-govern.md)。
+開始使用[標識治理操作檢查和操作](active-directory-ops-guide-govern.md)。

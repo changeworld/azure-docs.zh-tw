@@ -1,5 +1,5 @@
 ---
-title: 遷移至新的彈性資料庫作業
+title: 遷移到新的彈性資料庫作業
 description: 移轉至新的彈性資料庫作業。
 services: sql-database
 ms.service: sql-database
@@ -12,26 +12,26 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 5a7ed254de7b7ea32f2fb357d860354693e46e92
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827224"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>移轉至新的彈性資料庫作業
 
 升級版本的[彈性資料庫作業](elastic-jobs-overview.md)可供使用。
 
-如果您有現有的客戶託管版本的彈性資料庫作業，則會提供遷移 Cmdlet 和腳本，以便輕鬆地遷移至最新版本。
+如果您具有現有客戶裝載版本的彈性資料庫作業，其中會提供移轉 Cmdlet 和指令碼，讓您可輕鬆地移轉至最新版本。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 升級版本的彈性資料庫作業具有一組新的 PowerShell Cmdlet，可以在移轉期間使用。 這些新的 Cmdlet 會將您所有的現有作業認證、目標 (包括資料庫、伺服器、自訂集合)、作業觸發程序、作業排程、作業內容及作業傳輸至新的彈性資料庫代理程式。
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>安裝最新的彈性作業 Cmdlet
 
-如果您還沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果尚未具有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
 安裝 **Az.Sql** 1.1.1 預覽模組，以取得最新的彈性作業 Cmdlet。 在 PowerShell 中以系統管理存取權執行下列命令。
 
@@ -70,7 +70,7 @@ $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 
 ### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>安裝舊的彈性資料庫作業 Cmdlet
 
-移轉需要使用一些「舊的」彈性作業 Cmdlet，因此，如果您尚未安裝，請執行下列命令。
+移轉需要使用一些「舊的」** 彈性作業 Cmdlet，因此，如果您尚未安裝，請執行下列命令。
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -90,9 +90,9 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>移轉
 
-既然已初始化舊的和新的彈性作業 Cmdlet，請將認證、目標及作業移轉至新的「作業資料庫」。
+既然已初始化舊的和新的彈性作業 Cmdlet，請將認證、目標及作業移轉至新的「作業資料庫」**。
 
-### <a name="setup"></a>設定
+### <a name="setup"></a>安裝程式
 
 ```powershell
 $ErrorActionPreference = "Stop";
@@ -604,7 +604,7 @@ Job job4
 
 ## <a name="migration-complete"></a>移轉完成
 
-「作業資料庫」現在應該會有所有的作業認證、目標、作業觸發程序、作業排程、作業內容，及移轉過來的作業。
+「作業資料庫」** 現在應該會有所有的作業認證、目標、作業觸發程序、作業排程、作業內容，及移轉過來的作業。
 
 若要確認所有項目都已正確移轉，請使用下列指令碼：
 
@@ -629,5 +629,5 @@ $jobs | Set-AzSqlElasticJob -Enable
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 PowerShell 建立及管理彈性作業](elastic-jobs-powershell.md)
+- [使用 PowerShell 創建和管理彈性作業](elastic-jobs-powershell.md)
 - [使用 Transact-SQL (T-SQL) 來建立及管理彈性作業](elastic-jobs-tsql.md)

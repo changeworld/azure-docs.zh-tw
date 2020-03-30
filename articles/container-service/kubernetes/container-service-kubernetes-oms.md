@@ -8,10 +8,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371149"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(已淘汰) 使用 Log Analytics 監視 Azure Container Service 叢集
@@ -63,7 +63,7 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>使用Log Analytics 監視容器
 
-Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管理並保護內部部署和雲端基礎結構。 容器解決方案是 Log Analytics 中的解決方案，可協助您在單一位置中查看容器清查、效能和記錄。 您可以在集中式位置檢視記錄以稽核、對容器進行疑難排解，並尋找壟斷及佔用過量主機資源的容器。
+Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管理並保護內部部署和雲端基礎結構。容器解決方案是 Log Analytics 中的解決方案，可協助您在單一位置檢視容器詳細目錄、效能和記錄。 您可以在集中式位置檢視記錄以稽核、對容器進行疑難排解，並尋找壟斷及佔用過量主機資源的容器。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -73,7 +73,7 @@ Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管
 
 ### <a name="obtain-your-workspace-id-and-key"></a>取得您的工作區識別碼和金鑰
 為了使 Log Analytics 代理程式能與服務溝通，必須使用工作區識別碼和工作區金鑰來設定它。 若要取得工作區識別碼和金鑰，您必須在 <https://mms.microsoft.com> 建立帳戶。
-請依步驟指示建立帳戶。 當您完成建立帳戶之後，可以按一下 [Log Analytics] 刀鋒視窗，然後按一下您的工作區名稱，來取得識別碼和金鑰。 接著，依序在 [進階設定]、[連接的來源] 及 [Linux 伺服器] 下方，您將可找到所需的資訊，如下所示。
+請依步驟指示建立帳戶。 當您完成建立帳戶之後，可以按一下 [Log Analytics]**** 刀鋒視窗，然後按一下您的工作區名稱，來取得識別碼和金鑰。 接著，依序在 [進階設定]****、[連接的來源]**** 及 [Linux 伺服器]**** 下方，您將可找到所需的資訊，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -81,7 +81,7 @@ Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管
 DaemonSet 是 Kubernetes 用來在叢集中每個主機上執行容器的單一執行個體。
 它們非常適合用來執行監視代理程式。
 
-這是 [DaemonSet YAML 檔案](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)。 將它儲存到名為 `oms-daemonset.yaml` 的檔案，並將檔案中的 `WSID` 和 `KEY` 預留位置值取代為您的工作區識別碼和金鑰。
+這裡是[守護進程YAML檔](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)。 將它儲存到名為 `oms-daemonset.yaml` 的檔案，並將檔案中的 `WSID` 和 `KEY` 預留位置值取代為您的工作區識別碼和金鑰。
 
 當您將工作區識別碼和金鑰新增至 DaemonSet 設定之後，就可以在您的叢集上使用 `kubectl` 命令列工具安裝 Log Analytics 代理程式：
 
@@ -92,7 +92,7 @@ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 秘密安裝 Log Analytics 代理程式
 若要保護您的 Log Analytics 工作區識別碼和金鑰，您可以使用 Kubernetes 秘密作為 DaemonSet YAML 檔案的一部分。
 
-- 複製指令碼、秘密範本檔案、DaemonSet YAML 檔案 (從[存放庫](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes))，並確定它們位於相同的目錄。
+- 複製腳本、機密範本檔和守護進程 YAML 檔（來自[存儲庫](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），並確保它們位於同一目錄中。
   - 秘密產生指令碼 - secret-gen.sh
   - 祕密範本 - secret-template.yaml
     - DaemonSet YAML 檔案 - omsagent-ds-secrets.yaml
@@ -132,7 +132,7 @@ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 執行下列程式來建立您的 omsagent daemon：
+  - 通過運行以下內容創建 omsagent 守護進程集：
   
   ```console
   kubectl create -f omsagent-ds-secrets.yaml

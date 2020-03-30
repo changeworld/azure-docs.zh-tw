@@ -4,28 +4,28 @@ description: Azure Functions 支援多個執行階段版本。 了解如何指�
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77151950"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何設定 Azure Functions 執行階段目標版本
 
-函式應用程式可在特定版本的 Azure Functions 執行階段中執行。 主要版本有三個：1.x [、2.x 及](functions-versions.md)3.x。 根據預設，函數應用程式會在2.x 版的執行時間中建立。 本文說明如何在 Azure 中設定要在您選擇的版本上執行的函式應用程式。 如需如何為特定版本設定本機開發環境的相關資訊，請參閱[在本機進行 Azure Functions 的程式碼編寫和測試](functions-run-local.md)。
+函式應用程式可在特定版本的 Azure Functions 執行階段中執行。 有三個主要版本[：1.x、2.x 和 3.x](functions-versions.md)。 預設情況下，函數應用在運行時的版本 2.x 中創建。 本文說明如何在 Azure 中設定要在您選擇的版本上執行的函式應用程式。 如需如何為特定版本設定本機開發環境的相關資訊，請參閱[在本機進行 Azure Functions 的程式碼編寫和測試](functions-run-local.md)。
 
 ## <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新
 
-Azure Functions 可讓您在函式應用程式中使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定，以特定版本的執行時間為目標。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。
+Azure 函數允許您通過在函數應用中使用`FUNCTIONS_EXTENSION_VERSION`應用程式設定來定位特定版本的運行時。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。
 
-如果您只指定主要版本，則函式應用程式會在執行時間可供使用時，自動更新為新的次要版本。 新的次要版本不應引進重大變更。 如果您指定次要版本 (例如 "2.0.12345")，則函式應用程式會釘選到該特定版本，直到您明確地變更它。
+如果僅指定主要版本，則函數應用在運行時可用時會自動更新為新的次要版本。 新的次要版本不應引入重大更改。 如果您指定次要版本 (例如 "2.0.12345")，則函式應用程式會釘選到該特定版本，直到您明確地變更它。
 
 > [!NOTE]
-> 如果您釘選到特定版本的 Azure Functions，然後嘗試使用 Visual Studio 來發行至 Azure，則會顯示對話方塊視窗，提示您更新至最新版本或取消發行。 若要避免這個情況，請在您的 `.csproj` 檔案中新增 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 屬性。
+> 如果固定到 Azure 函數的特定版本，然後嘗試使用 Visual Studio 發佈到 Azure，則會彈出一個對話方塊視窗，提示您更新到最新版本或取消發佈。 為了避免這種情況，請在`<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>`檔中`.csproj`添加該屬性。
 
 有新版本公開發行時，入口網站會提示您向上移至該版本。 移至新版本之後，您隨時可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定移回舊版。
 
-下表顯示每個主要版本的 `FUNCTIONS_EXTENSION_VERSION` 值，以啟用自動更新：
+下表顯示了`FUNCTIONS_EXTENSION_VERSION`每個主要版本的值，以啟用自動更新：
 
 | 主要版本 | `FUNCTIONS_EXTENSION_VERSION` 值 |
 | ------------- | ----------------------------------- |
@@ -37,7 +37,7 @@ Azure Functions 可讓您在函式應用程式中使用 `FUNCTIONS_EXTENSION_VER
 
 ## <a name="view-and-update-the-current-runtime-version"></a>檢視並更新目前的執行階段版本
 
-您可以變更函數應用程式所使用的執行階段版本。 由於可能會有重大變更，您只能在函式應用程式中建立任何函式之前，變更執行階段版本。 
+您可以更改函數應用使用的執行階段版本。 由於可能會中斷更改，因此只能在函數應用中創建任何函數之前更改執行階段版本。 
 
 > [!IMPORTANT]
 > 雖然執行階段版本取決於 `FUNCTIONS_EXTENSION_VERSION` 設定，但您應該在 Azure 入口網站中進行這項變更，而不是直接變更該設定。 這是因為入口網站會驗證您的變更，並視需要進行其他相關變更。
@@ -47,9 +47,9 @@ Azure Functions 可讓您在函式應用程式中使用 `FUNCTIONS_EXTENSION_VER
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
-> 使用 Azure 入口網站，您無法變更已包含函式之函式應用程式的執行階段版本。
+> 使用 Azure 門戶，無法更改已包含函數的函數應用的執行階段版本。
 
-### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>從 Azure CLI
+### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>從 Azure CLI
 
 您也可以從 Azure CLI 檢視並設定 `FUNCTIONS_EXTENSION_VERSION`。
 
@@ -100,7 +100,7 @@ az functionapp config appsettings set --name <function_app> \
 
 以函式應用程式的名稱取代 `<function_app>`。 還要以函式應用程式的資源群組名稱取代 `<my_resource_group>`。 此外，將 `<version>` 取代為有效的 1.x 執行階段版本取代為 `~2` (代表 2.x 版本)。
 
-您可以選擇上述程式碼範例中的 [試試看]，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
+您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
 
 
 

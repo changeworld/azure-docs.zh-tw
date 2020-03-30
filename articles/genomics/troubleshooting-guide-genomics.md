@@ -1,7 +1,7 @@
 ---
 title: 疑難排解指南
 titleSuffix: Microsoft Genomics
-description: 瞭解使用 Microsoft Genomics 的疑難排解策略，包括錯誤訊息和解決方法。
+description: 瞭解使用 Microsoft 基因組學的故障排除策略，包括錯誤訊息以及如何解決這些問題。
 keywords: 疑難排解, 錯誤, 偵錯
 services: genomics
 author: ruchir
@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73486008"
 ---
 # <a name="troubleshooting-guide"></a>疑難排解指南
@@ -30,7 +30,7 @@ ms.locfileid: "73486008"
 1. 使用命令列並輸入 `msgen status`
 2. 檢查 standardoutput.txt 的內容。
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令列 `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令列`msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -43,7 +43,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基底 URI
 * KEY - Genomics 帳戶的存取金鑰
-    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理] 標題之下，選擇 [存取金鑰]。 您可以看到 API URL 以及存取金鑰。
+    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
 
   
 * ID - 工作流程識別碼
@@ -82,7 +82,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查 standardoutput 的內容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查標準輸出的內容.txt 
 找出有問題之工作流程的輸出容器。 MSGEN 會在每個工作流程執行之後建立 `[workflowfilename].logs.zip` 資料夾。 將資料夾解壓縮以檢視其內容：
 
 * outputFileList.txt - 工作流程期間所產生輸出檔案的清單

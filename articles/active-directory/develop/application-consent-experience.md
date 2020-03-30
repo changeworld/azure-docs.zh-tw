@@ -1,5 +1,5 @@
 ---
-title: Azure AD 應用程式同意體驗
+title: Azure AD 應用同意體驗
 titleSuffix: Microsoft identity platform
 description: 深入了解 Azure AD 同意的運作方式，以了解如何在管理和開發搭配 Azure AD 執行的應用程式時使用它
 services: active-directory
@@ -15,10 +15,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484497"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
@@ -84,4 +84,4 @@ ms.locfileid: "77484497"
 ## <a name="next-steps"></a>後續步驟
 - 取得有關 [Azure AD 同意架構如何實作同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的逐步概觀。
 - 深入了解[多租用戶應用程式如何使用同意架構](active-directory-devhowto-multi-tenant-overview.md)來實作「使用者」與「系統管理員」同意，進而支援更進階的多層應用程式模式。
-- 瞭解[如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。
+- [瞭解如何配置應用程式的發行者域](howto-configure-publisher-domain.md)。

@@ -1,30 +1,30 @@
 ---
-title: Azure IoT 中樞 TLS 支援
-description: 使用安全 TLS 連線進行裝置和服務與 IoT 中樞通訊的最佳做法
+title: Azure IoT 中心 TLS 支援
+description: 為與 IoT 中心通信的設備和服務使用安全 TLS 連接的最佳做法
 services: iot-hub
 author: rezasherafat
 ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 244a71d400493a2029e831b729c63bc0b0dfe559
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049640"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409488"
 ---
-# <a name="tls-support-in-iot-hub"></a>IoT 中樞中的 TLS 支援
+# <a name="tls-support-in-iot-hub"></a>IoT 中心中的 TLS 支援
 
-IoT 中樞使用傳輸層安全性（TLS）來保護來自 IoT 裝置和服務的連線。 目前支援三種 TLS 通訊協定版本，亦即版本1.0、1.1 和1.2。
+IoT 中心使用傳輸層安全 （TLS） 來保護來自 IoT 設備和服務的連接。 當前支援 TLS 協定的三個版本，即版本 1.0、1.1 和 1.2。
 
-TLS 1.0 和1.1 被視為舊版，並已規劃要淘汰。 如需詳細資訊，請參閱[淘汰 TLS 1.0 和 1.1 for IoT 中樞](iot-hub-tls-deprecating-1-0-and-1-1.md)。 強烈建議您在連接到 IoT 中樞時，使用 TLS 1.2 做為慣用的 TLS 版本。
+TLS 1.0 和 1.1 被視為遺留的，並計畫棄用。 有關詳細資訊，請參閱為[IoT 中心棄用 TLS 1.0 和 1.1](iot-hub-tls-deprecating-1-0-and-1-1.md)。 強烈建議您在連接到 IoT 中心時使用 TLS 1.2 作為首選 TLS 版本。
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>限制 IoT 中樞資源中的 TLS 1.2 連線
+## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>在 IoT 中心資源中限制到 TLS 1.2 的連接
 
-為了增加安全性，建議您將 IoT 中樞設定為*只*允許使用 TLS 1.2 版的用戶端連線，並強制使用[建議的密碼](#recommended-ciphers)。
+為了增加安全性，建議將 IoT 中心配置為*僅*允許使用 TLS 版本 1.2 的用戶端連接，並強制使用[推薦的密碼](#recommended-ciphers)。
 
-基於此目的，請在任何[支援的區域](#supported-regions)中布建新的 IoT 中樞，並將 `minTlsVersion` 屬性設定為 Azure Resource Manager 範本的 IoT 中樞資源規格中的 `1.2`：
+為此，在任何[受支援的區域](#supported-regions)中預配新的 IoT 中心，`minTlsVersion`並將該屬性設置為 Azure`1.2`資源管理器範本的 IoT 中心資源規範中：
 
 ```json
 {
@@ -49,44 +49,46 @@ TLS 1.0 和1.1 被視為舊版，並已規劃要淘汰。 如需詳細資訊，�
 }
 ```
 
-使用此設定建立的 IoT 中樞資源將會拒絕嘗試使用 TLS 版本1.0 和1.1 連線的裝置和服務用戶端。 同樣地，如果用戶端 HELLO 訊息不會列出任何[建議](#recommended-ciphers)的加密，TLS 交握也會遭到拒絕。
+使用此配置創建的 IoT 中心資源將拒絕嘗試使用 TLS 版本 1.0 和 1.1 進行連接的設備和服務用戶端。 同樣，如果用戶端 HELLO 消息未列出任何[推薦的密碼](#recommended-ciphers)，TLS 握手將被拒絕。
 
 > [!NOTE]
-> `minTlsVersion` 屬性是唯讀的，一旦建立 IoT 中樞資源之後就無法變更。 因此，您必須適當地測試並驗證您的*所有*IoT 裝置和服務都與 TLS 1.2 相容，以及預先[建議的密碼](#recommended-ciphers)。
+> 該`minTlsVersion`屬性是唯讀的，在創建 IoT 中心資源後無法更改。 因此，您必須提前正確測試和驗證*所有*IoT 設備和服務是否與 TLS 1.2 和[建議的密碼](#recommended-ciphers)相容。
 
 ### <a name="supported-regions"></a>支援區域
 
-需要使用 TLS 1.2 的 IoT 中樞可以在下欄區域中建立：
+需要在以下區域創建需要使用 TLS 1.2 的 IoT 中心：
 
 * 美國東部
 * 美國中南部
 * 美國西部 2
+* US Gov 亞利桑那州
+* US Gov 維吉尼亞州
 
 > [!NOTE]
-> 容錯移轉之後，您 IoT 中樞的 `minTlsVersion` 屬性會在容錯移轉後的地理配對區域中維持有效。
+> 容錯移轉後，IoT`minTlsVersion`中心的屬性將在容錯移轉後的地理配對區域中保持有效。
 
-### <a name="recommended-ciphers"></a>建議的密碼
+### <a name="recommended-ciphers"></a>推薦的密碼
 
-設定為只接受 TLS 1.2 的 IoT 中樞也會強制使用下列建議的密碼：
+配置為僅接受 TLS 1.2 的 IoT 中心也將強制使用以下推薦的密碼：
 
 * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>在您的 IoT 中樞 Sdk 中使用 TLS 1。2
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>在 IoT 中心 SDK 中使用 TLS 1.2
 
-使用下列連結，在 IoT 中樞用戶端 Sdk 中設定 TLS 1.2 和允許的密碼。
+使用以下連結配置 TLS 1.2，並允許在 IoT 中心用戶端 SDK 中使用密碼。
 
-| Language | 支援 TLS 1.2 的版本 | 文件 |
+| 語言 | 支援 TLS 1.2 的版本 | 文件 |
 |----------|------------------------------------|---------------|
-| C        | 標記2019-12-11 或更新版本            | [連結](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | 2\.0.0 或更新版本             | [連結](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | 1\.21.4 或更新版本            | [連結](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | 1\.19.0 或更新版本            | [連結](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | 1\.12.2 或更新版本            | [連結](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | 標籤 2019-12-11 或更新            | [連結](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | 版本 2.0.0 或更新             | [連結](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | 版本 1.21.4 或更新版本            | [連結](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | 版本 1.19.0 或更新版本            | [連結](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | 版本 1.12.2 或更新版本            | [連結](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT Edge 安裝程式中使用 TLS 1。2
+### <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT 邊緣設置中使用 TLS 1.2
 
-IoT Edge 裝置可以設定為在與 IoT 中樞通訊時使用 TLS 1.2。 基於此目的，請使用[IoT Edge 檔頁面](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)。
+在與 IoT 中心通信時，IoT 邊緣設備可配置為使用 TLS 1.2。 為此，請使用[IoT 邊緣文檔頁](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)。

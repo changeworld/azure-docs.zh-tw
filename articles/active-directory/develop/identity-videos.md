@@ -1,6 +1,6 @@
 ---
-title: Microsoft 身分識別平臺影片 |Azure
-description: 關於 Microsoft 身分識別平臺的影片清單
+title: 微軟身份平臺視頻 |蔚藍
+description: 有關 Microsoft 標識平臺的視頻清單
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085188"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 身分識別平台影片
 
-深入瞭解 Microsoft 身分識別平臺和 Microsoft 驗證程式庫（MSAL）。 通常是1-2 分鐘的時間。
+瞭解 Microsoft 標識平臺和 Microsoft 身份驗證庫 （MSAL）。 它們通常有1-2分鐘長。
 
-## <a name="microsoft-identity-platform-basics"></a>Microsoft 身分識別平臺基本概念
+## <a name="microsoft-identity-platform-basics"></a>微軟身份平臺基礎知識
 
-**瞭解 Microsoft 身分識別平臺的基本概念**
+**瞭解基本的 Microsoft 身份平臺概念**
 
 :::row:::
     :::column:::
-        Microsoft 身分識別平臺總覽
+        微軟身份平臺概述
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -41,13 +41,13 @@ ms.locfileid: "77085188"
 :::row-end:::
 :::row:::
     :::column:::
-        MSAL 程式庫簡介
+        MSAL 庫簡介
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        MSAL 如何讓驗證變得更容易
+        MSAL 如何簡化身份驗證
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -55,13 +55,13 @@ ms.locfileid: "77085188"
 :::row-end:::
 :::row:::
     :::column:::
-        說明的範圍
+        解釋的範圍
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        什麼是訊息代理程式
+        什麼是經紀人
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -69,13 +69,13 @@ ms.locfileid: "77085188"
 :::row-end:::
 :::row:::
     :::column:::
-        哪些重新導向 Uri
+        重定向 URI 功能
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        租使用者說明
+        租戶解釋
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -83,13 +83,13 @@ ms.locfileid: "77085188"
 :::row-end:::
 :::row:::
     :::column:::
-        Azure AD 的角色
+        Azure AD 的作用
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
     :::column:::
-        Azure AD 應用程式物件的角色
+        Azure AD 應用物件的角色
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
@@ -103,26 +103,26 @@ ms.locfileid: "77085188"
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        SPA 和 web 應用程式差異
+        SPA 和網路應用差異
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2。0
+## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移到 v2.0
 
-**瞭解如何遷移至最新版本的 Microsoft 身分識別平臺**
+**瞭解如何遷移到最新版本的 Microsoft 標識平臺**
 
 :::row:::
     :::column:::
-        端點和移至 v2.0 的優點
+        端點和移動到 v2.0 的好處
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        將您的 ADAL 程式碼基底遷移至 MSAL
+        將 ADAL 代碼庫遷移到 MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -130,13 +130,13 @@ ms.locfileid: "77085188"
 :::row-end:::
 :::row:::
     :::column:::
-        為何要從 ADAL 遷移至 MSAL
+        為什麼從 ADAL 遷移到 MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        透過 ADAL 的 MSAL 優點
+        MSAL 優於 ADAL 的優勢
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
