@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning 中的模型 interpretability
+title: Azure 機器學習中的模型可解釋性
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning SDK 來說明您的模型為何會進行預測。 它可以在定型和推斷期間用來瞭解模型如何進行預測。
+description: 瞭解如何解釋模型為何使用 Azure 機器學習 SDK 進行預測。 它可以在訓練和推理期間使用，以瞭解模型如何進行預測。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,108 +10,108 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b68d2a72dc18f683f2203429908a536db1b5124a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063991"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning 中的模型 interpretability
+# <a name="model-interpretability-in-azure-machine-learning"></a>Azure 機器學習中的模型可解釋性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-## <a name="overview-of-model-interpretability"></a>模型 interpretability 總覽
+## <a name="overview-of-model-interpretability"></a>模型可解釋性概述
 
-Interpretability 對資料科學家和商務決策者而言非常重要，這是為了確保符合公司政策、業界標準和政府法規：
-+ 資料科學家需要能夠向主管和專案關係人說明其模型，讓他們能夠瞭解其發現的價值和精確度 
-+ 商務決策者必須安心地提供透明功能，讓使用者能夠取得及維護其信任
+可解釋性對於資料科學家和業務決策者來說都至關重要，以確保符合公司政策、行業標準和政府法規：
++ 資料科學家需要能夠向高管和利益相關者解釋他們的模型，以便他們能夠瞭解其發現的價值和準確性 
++ 業務決策者需要高枕無憂的能力，為最終使用者提供透明度，以獲得和維護其信任
 
-在模型開發的兩個主要階段中，啟用說明機器學習模型的功能非常重要：
-+ 在機器學習模型開發週期的訓練階段。 模型設計師和評估人員可以使用模型的 interpretability 輸出來驗證假設，並與專案關係人建立信任關係。 它們也會使用模型中的深入解析來進行偵錯工具、驗證模型行為是否符合其目標，以及檢查偏差或不重要的功能。
-+ 在推斷階段中，由於已部署模型的透明度，讓主管能夠瞭解模型的運作方式，以及其決定如何在真實生活中進行處理和影響人員。 
+在模型開發兩個主要階段，啟用解釋機器學習模型的能力非常重要：
++ 在機器學習模型開發週期的培訓階段。 模型設計人員和評估者可以使用模型的解釋性輸出來驗證假設並與利益相關者建立信任。 他們還使用對模型的見解進行調試，驗證模型行為與其目標相匹配，並檢查偏差或無足輕重的功能。
++ 在推斷階段，由於在部署的模型周圍具有透明度，使管理人員能夠瞭解"部署時"模型的工作原理，以及其決策在現實生活中如何對待和影響員工。 
 
-## <a name="interpretability-with-azure-machine-learning"></a>具有 Azure Machine Learning 的 Interpretability
+## <a name="interpretability-with-azure-machine-learning"></a>Azure 機器學習的可解釋性
 
-在本文中，您將瞭解如何在 SDK 中執行模型 interpretability 概念。
+在本文中，您將瞭解如何在 SDK 中實現模型可解釋性概念。
 
-使用 SDK 中的類別和方法，您可以取得：
-+ 原始和工程功能的功能重要性值
-+ 在定型和推斷期間，大規模 Interpretability 真實世界的資料集。
-+ 互動式視覺效果可協助您探索資料中的模式，以及定型時間的說明
+使用 SDK 中的類和方法，您可以獲得：
++ 原始和工程要素的功能重要性值
++ 在訓練和推理期間，對實際資料集進行大規模解釋。
++ 互動式視覺化，説明您在培訓時發現資料模式和說明
 
 
-在機器學習中，**功能**是用來預測目標資料點的資料欄位。 例如，若要預測信用風險，可能會使用年齡、帳戶大小和帳戶存留期的資料欄位。 在此情況下，年齡、帳戶大小和帳戶存留期都是**功能**。 功能重要性告訴您每個資料欄位如何影響模型的預測。 例如，當帳戶大小和年齡不會大幅影響預測精確度時，在預測中可能會耗用大量時間。 此程式可讓資料科學家說明產生的預測，讓專案關係人能夠看到模型中最重要的資料點。
+在機器學習中，**功能**是用於預測目標資料點的資料欄位。 例如，為了預測信用風險，可以使用年齡、帳戶大小和帳戶年齡的資料欄位。 在這種情況下，年齡、帳戶大小和帳戶年齡是**功能**。 要素重要性告訴您每個資料欄位如何影響模型的預測。 例如，在預測中可能大量使用年齡，而帳戶大小和年齡不會對預測準確性產生顯著影響。 此過程允許資料科學家解釋結果預測，以便專案關係人能夠瞭解模型中最重要的資料點。
 
-使用這些工具，您可以使用簡單易用且可調整的方式，在**所有資料上**或在**特定資料點上**，以最先進的技術來說明機器學習模型。
+使用這些工具，您可以**解釋全球所有資料上的**機器學習模型，或者使用最先進的技術**在特定的資料點上**以便於使用和可擴展的方式在本地解釋機器學習模型。
 
-Interpretability 類別可透過多個 SDK 套件取得。 瞭解如何[安裝適用于 Azure Machine Learning 的 SDK 套件](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+可解釋性類可通過多個 SDK 包提供。 瞭解如何為[Azure 機器學習安裝 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
-* `azureml.interpret`是主要套件，其中包含 Microsoft 支援的功能。
+* `azureml.interpret`，包含微軟支援的功能。
 
-* 您可以嘗試的 `azureml.contrib.interpret`、預覽和實驗性功能。
+* `azureml.contrib.interpret`，預覽和實驗功能，你可以嘗試。
 
-* 用來解讀自動化機器學習模型的 `azureml.train.automl.automlexplainer` 套件。
+* `azureml.train.automl.automlexplainer`用於解釋自動機器學習模型的套裝軟體。
 
 > [!IMPORTANT]
-> 未完全支援 `contrib` 命名空間中的內容。 當實驗性功能變得成熟時，它們會逐漸移至主要命名空間。
+> 命名空間中`contrib`的內容不完全受支援。 隨著實驗功能的成熟，它們將逐步轉移到主命名空間。
 
-## <a name="how-to-interpret-your-model"></a>如何解讀您的模型
+## <a name="how-to-interpret-your-model"></a>如何解釋模型
 
-您可以套用 interpretability 類別和方法，以瞭解模型的全域行為或特定的預測。 前者稱為「全域說明」，後者稱為「本機說明」。
+您可以應用可解釋性類和方法來瞭解模型的全域行為或特定預測。 前者稱為全域解釋，後者稱為局部解釋。
 
-方法也可以根據該方法是模型中立或模型特定來分類。 某些方法會以特定類型的模型為目標。 例如，SHAP 的樹狀說明僅適用于以樹狀結構為基礎的模型。 某些方法會將模型視為黑色方塊，例如模擬說明或 SHAP 的核心說明。 `interpret` 套件會根據資料集、模型類型和使用案例，來運用這些不同的方法。
+這些方法也可以根據該方法是模型無關或特定于模型進行分類的。 某些方法針對某些類型的模型。 例如，SHAP 的樹解譯器僅適用于基於樹的模型。 某些方法將模型視為黑盒，例如類比解譯器或 SHAP 的內核解譯器。 該`interpret`包根據資料集、模型類型和用例利用這些不同的方法。
 
 輸出是一組有關給定模型如何進行預測的資訊，例如：
-* 全域/本機相對功能重要性
-* 全域/本機功能和預測關聯性
+* 全域/本地相對特徵重要性
+* 全域/局部特徵和預測關係
 
-### <a name="explainers"></a>Explainers
+### <a name="explainers"></a>解說員
 
-此套件使用在[解讀-社區](https://github.com/interpretml/interpret-community/)中開發的 interpretability 技術，這是用來定型可解譯模型並協助說明黑箱 AI 系統的開放原始碼 python 套件。 [解讀-社區](https://github.com/interpretml/interpret-community/)作為此 SDK 支援 explainers 的主機，目前支援下列 interpretability 技術：
+此套裝軟體使用[解釋社區](https://github.com/interpretml/interpret-community/)開發的解釋性技術，這是一個開源 python 包，用於訓練可解釋模型並説明解釋黑盒 AI 系統。 [解釋社區](https://github.com/interpretml/interpret-community/)充當此 SDK 支援的解譯器的主機，目前支援以下可解釋性技術：
 
-* **SHAP Tree 說明**： [SHAP](https://github.com/slundberg/shap)的樹狀結構說明，著重于多項式時間快速 SHAP 針對樹狀結構和整體樹狀結構所特有的值估計演算法。
-* **SHAP Deep 說明**：根據[SHAP](https://github.com/slundberg/shap)的說明，deep 說明 "是一種高速的近似值演算法，可在深度學習模型中，根據 SHAP [DeepLIFT 論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)中所述的 SHAP 連接來 NIPS 值。 支援使用 TensorFlow 後端的 TensorFlow 模型和 Keras 模型（也有 PyTorch 的初步支援）」。
-* **SHAP 線性說明**： [SHAP](https://github.com/slundberg/shap)的線性說明會計算線性模型的 SHAP 值，並選擇性地會計入功能間的相互關聯。
+* **SHAP樹解譯器**[：SHAP](https://github.com/slundberg/shap)的樹解譯器，它側重于多聚時間快速SHAP值估計演算法，特定于樹和樹的合奏。
+* **SHAP深度解譯器**：基於[SHAP](https://github.com/slundberg/shap)的解釋，深度解譯器"是深度學習模型中SHAP值的高速近似演算法，它建立在[SHAPNIPS論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)中描述的深度LIFT的連接之上。 支援使用 TensorFlow 後端的 TensorFlow 模型和 Keras 模型（也有對 PyTorch 的初步支援）"。
+* **SHAP 線性解譯器**[：SHAP](https://github.com/slundberg/shap)的線性解譯器計算線性模型的 SHAP 值，可以選擇考慮特徵間相關性。
 
-* **SHAP 核心說明**： [SHAP](https://github.com/slundberg/shap)的核心說明會使用特殊加權的區域線性回歸來估計任何模型的 SHAP 值。
-* 模擬**說明**：模擬說明是以定型[全域代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來模擬黑箱模型的概念為基礎。 全域代理模型是一個本質上的可解譯模型，它會定型以盡可能精確地大致估計黑色方塊模型的預測。 資料科學家可以解讀代理模型，以繪製有關黑色箱模型的結論。 您可以使用下列其中一個可解譯模型做為您的代理模型： LightGBM （LGBMExplainableModel）、線性回歸（LinearExplainableModel）、隨機梯度下降 explainable 模型（SGDExplainableModel）和決策樹（DecisionTreeExplainableModel).
-
-
-* **排列功能重要性說明**：排列功能重要性是用來說明[Breiman 的隨機](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)樹系紙張所能啟發的分類和回歸模型的技術（請參閱第10節）。 概括而言，它的運作方式是針對整個資料集，一次隨機亂數據一項功能，並計算感利率的效能計量有多大的變化。 變更愈大，該特性愈重要。
-
-* **酸橙說明**（`contrib`）：根據有[酸](https://github.com/marcotcr/lime)的酸橙色說明，會使用最新的本機可解譯模型中立說明（酸）演算法來建立本機代理模型。 不同于全域代理模型，「酸」會著重于訓練本機代理模型來說明個別的預測。
-* **漢字文字說明**（`contrib`）：漢字文字說明會使用階層式的注意網路，從文字資料取得給定黑色方塊文字模型的模型說明。 它會在指定的黑色方塊模型預測輸出上訓練漢字代理模型。 在文字主體上全域定型之後，它會為特定檔新增微調步驟，以改善說明的正確性。 漢字使用雙向 RNN 和兩個注意層，以進行句子和單字注意。 一旦 DNN 在黑色方塊模型上進行定型，並在特定檔上進行微調，使用者就可以從注意層中解壓縮 importances 一字。 漢字的顯示比文字資料的酸綠色或 SHAP 更精確，但是在定型時間方面也會更昂貴。 已改善，可讓使用者選擇使用手套 word 內嵌來初始化網路，以減少定型時間。 藉由在遠端 Azure GPU VM 上執行漢字，可以大幅改善定型時間。 漢字的執行會在「[檔分類的階層式注意網路（最強烈 et al，2016）](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)」中說明。
+* **SHAP 內核解譯器**： [SHAP](https://github.com/slundberg/shap)的內核解譯器使用特殊加權的局部線性回歸來估計任何模型的 SHAP 值。
+* **模仿解譯器**：模仿解譯器是基於訓練[全球代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來類比黑盒模型的想法。 全域代理模型是一種內在可解釋的模型，經過訓練，可以盡可能準確地近似黑盒模型的預測。 資料科學家可以解釋代理模型，得出關於黑盒模型的結論。 您可以將以下可解釋模型之一用作代理模型：LightGBM （LGBM 可解釋模型）、線性回歸（線性可解釋模型）、隨機梯度下降可解釋模型 （SGD 可解釋模型）和決策樹 （決策樹可解釋模型）。
 
 
-* **表格式說明**： `TabularExplainer` 採用下列邏輯來叫用 Direct [SHAP](https://github.com/slundberg/shap) Explainers：
+* **排列特徵重要性解譯器**：排列特徵重要性是一種技術，用於解釋分類和回歸模型，靈感來自[佈雷曼的隨機林論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)（見第10節）。 在高級別上，其工作方式是隨機對整個資料集一次隨機洗牌一個要素，並計算興趣的性能指標變化程度。 變更愈大，該特性愈重要。
 
-    1. 如果它是以樹狀結構為基礎的模型，請將 SHAP `TreeExplainer`，否則
-    2. 如果它是 DNN 模型，請套用 SHAP `DeepExplainer`，否則
-    3. 如果它是線性模型，請將 SHAP `LinearExplainer`，否則
-    3. 將它視為黑色箱模型並套用 SHAP `KernelExplainer`
+* **LIME解譯器**`contrib`（）： 基於[LIME，](https://github.com/marcotcr/lime)LIME 解譯器使用最先進的本地可解釋模型無關解釋 （LIME） 演算法來創建本地代理模型. 與全域代理模型不同，LIME 側重于訓練本地代理模型來解釋單個預測。
+* **HAN 文本解譯器**（`contrib`）： HAN 文本解譯器使用分層注意網路從給定黑盒文本模型的文本資料獲取模型說明。 它在給定黑盒模型的預測輸出上訓練 HAN 代理模型。 在整個文本語料庫進行全球培訓後，它會為特定文檔添加微調步驟，以提高解釋的準確性。 HAN 使用具有兩個注意層的雙向 RNN，用於句子和單詞關注。 一旦對 DNN 進行了黑盒模型的培訓，並針對特定文檔進行了微調，使用者就可以從注意層中提取單詞重要性。 對於文本資料，HAN 比 LIME 或 SHAP 更準確，但在培訓時間方面也更昂貴。 已進行了改進，使使用者可以選擇使用 GloVe 字嵌入初始化網路，以減少培訓時間。 通過在遠端 Azure GPU VM 上運行 HAN 可以顯著提高培訓時間。 HAN 的實現在["文檔分類的分層關注網路（Yang 等人，2016 年）"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)中進行了描述。
 
 
-`TabularExplainer` 也對直接 SHAP Explainers 進行了重大的功能和效能增強：
+* **表格解譯器**：`TabularExplainer`使用以下邏輯調用直接[SHAP](https://github.com/slundberg/shap)解譯器：
 
-* **初始化資料集的摘要**。 在說明速度最重要的情況下，我們會摘要初始設定資料集，並產生一小組代表性的範例，以加速全域和本機的說明。
-* **取樣評估資料集**。 如果使用者傳入大量的評估範例，但實際上並不需要進行評估，則可以將取樣參數設定為 true，以加速全域說明。
-
-下圖顯示直接和中繼 explainers 的目前結構。
-
-[![Machine Learning Interpretability 架構](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
+    1. 如果是基於樹的模型，請應用 SHAP `TreeExplainer`，否則
+    2. 如果是 DNN 模型，請應用 SHAP `DeepExplainer`，否則
+    3. 如果是線性模型，請應用 SHAP `LinearExplainer`，否則
+    3. 將其視為黑盒模型，並應用 SHAP`KernelExplainer`
 
 
-### <a name="models-supported"></a>支援的模型
+`TabularExplainer`還對直接 SHAP 解譯器進行了顯著的功能和性能增強：
 
-以 Python 中的資料集定型的任何模型 `numpy.array`、`pandas.DataFrame`、`iml.datatypes.DenseData`或 `scipy.sparse.csr_matrix` 格式，都受到 SDK 的 interpretability `explain` 套件支援。
+* **初始化資料集的匯總**。 在解釋速度最重要的情況下，我們將初始化資料集匯總並生成一小組具有代表性的樣本，從而加快全域和本地解釋。
+* **採樣評估資料集**。 如果使用者傳遞了一組大量評估樣本，但實際上並不需要對其進行所有評估，則可以將採樣參數設置為 true 以加快全域解釋。
 
-說明函式接受模型和管線做為輸入。 如果提供了模型，模型就必須 `predict` 或符合 Scikit-learn 慣例的 `predict_proba` 來實作為預測函數。 如果提供管線（管線腳本的名稱），說明函式會假設執行中的管線腳本傳回預測。 我們支援透過 PyTorch、TensorFlow 和 Keras 深度學習架構訓練的模型。
+下圖顯示了直接解譯器和元解譯器的當前結構。
 
-### <a name="local-and-remote-compute-target"></a>本機和遠端計算目標
+[![機器學習可解釋性體系結構](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
 
-`explain` 套件是設計來搭配本機和遠端計算目標使用。 如果在本機執行，SDK 函式將不會與任何 Azure 服務連線。 您可以在 Azure Machine Learning 計算中從遠端執行說明，並將說明資訊記錄到 Azure Machine Learning 執行歷程記錄服務。 記錄這項資訊之後，說明中的報告和視覺效果就會立即在 Azure Machine Learning 工作區上提供，供使用者分析之用。
+
+### <a name="models-supported"></a>支援模型
+
+任何`numpy.array`在 Python 、、`pandas.DataFrame`或`iml.datatypes.DenseData``scipy.sparse.csr_matrix`格式中訓練資料集的模型都受 SDK 的解釋`explain`包的支援。
+
+解釋函數接受模型和管道作為輸入。 如果提供了模型，則模型必須實現預測函數`predict`或`predict_proba`符合 Scikit 約定。 如果提供了管道（管道腳本的名稱），則解釋函數假定正在運行的管道腳本返回預測。 我們支援通過 PyTorch、TensorFlow 和 Keras 深度學習框架培訓的模型。
+
+### <a name="local-and-remote-compute-target"></a>本地和遠端計算目標
+
+該`explain`包旨在同時處理本地和遠端計算目標。 如果在本地運行，SDK 函數將不會與任何 Azure 服務聯繫。 您可以在 Azure 機器學習計算上遠端運行說明，並將說明資訊記錄到 Azure 機器學習執行歷程記錄服務中。 記錄此資訊後，在 Azure 機器學習工作區上隨時提供解釋中的報表和視覺化效果，以便進行使用者分析。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[如何](how-to-machine-learning-interpretability-aml.md)在本機和 Azure Machine Learning 遠端計算資源上啟用模型定型的 interpretability。 如需其他案例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
+請參閱如何[為](how-to-machine-learning-interpretability-aml.md)本地和 Azure 機器學習遠端計算資源定型的模型啟用可解釋性。 有關其他方案[，請參閱示例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。

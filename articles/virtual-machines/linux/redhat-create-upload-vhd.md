@@ -3,7 +3,7 @@ title: 建立及上傳 Red Hat Enterprise Linux VHD 以在 Azure 中使用
 description: 了解如何建立及上傳包含 Red Hat Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: mimckitt
-ms.openlocfilehash: a8a0c64a4a68827c77ba54e7f64ecefd7d1ab8af
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: cd0a71c60930e3eb659255a23cdb03360730f2a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251632"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060721"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 Red Hat 型虛擬機器
-在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱[Azure 映射](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)產生器。
+在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有關自動生成 RHEL 映射的方法，請參閱[Azure 映射產生器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 Red Hat 型虛擬機器
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 本節假設您已經從 Red Hat 網站取得 ISO 檔案並將 RHEL 映像安裝至虛擬硬碟 (VHD)。 如需有關如何使用 Hyper-V 管理員來安裝作業系統映像的詳細資訊，請參閱[安裝 Hyper-V 角色和設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **RHEL 安裝注意事項**
 
-* Azure 不支援 VHDX 格式。 Azure 只支援固定 VHD。 您可以使用 Hyper-V 管理員將磁碟轉換為 VHD 格式，或者使用 convert-vhd Cmdlet。 如果您使用 VirtualBox，請選取 [固定大小]，而不是預設在建立磁碟時動態配置的選項。
-* Azure 支援 Gen1 （BIOS 開機） & Gen2 （UEFI 開機）虛擬機器。
+* Azure 不支援 VHDX 格式。 Azure 只支援固定 VHD。 您可以使用 Hyper-V 管理員將磁碟轉換為 VHD 格式，或者使用 convert-vhd Cmdlet。 如果您使用 VirtualBox，請選取 [固定大小] ****，而不是預設在建立磁碟時動態配置的選項。
+* Azure 支援第 1 代（BIOS 啟動）&第 2 代 （UEFI 啟動） 虛擬機器。
 * 允許的 VHD 大小上限為 1,023 GB。
 * 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。
 * 需要掛接通用磁碟格式 (UDF) 檔案系統的核心支援。 在 Azure 上第一次開機時，連結至客體的 UDF 格式媒體會將佈建組態傳遞至 Linux 虛擬機器。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統，才能讀取其組態並佈建虛擬機器。
@@ -41,9 +41,9 @@ ms.locfileid: "78251632"
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 6 虛擬機器
 
-1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
+1. 在 Hyper-V 管理員中，選取虛擬機器。
 
-1. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
+1. 按一下 [連接]**** ，以開啟虛擬機器的主控台視窗。
 
 1. 在 RHEL 6 中，NetworkManager 可能會對 Azure Linux 代理程式造成干擾。 執行下列命令以將此套件解除安裝：
    
@@ -109,7 +109,7 @@ ms.locfileid: "78251632"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一個步驟安裝 Azure Linux 代理程式後，請在 /etc/waagent.conf 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -131,14 +131,14 @@ ms.locfileid: "78251632"
 
         # logout
 
-1. 在 Hyper-V 管理員中，按一下 [動作] > [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
+1. 按一下"在超 V 管理器中**關閉****操作** > "。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 7 虛擬機器
 
-1. 在 [Hyper-V 管理員] 中，選取虛擬機器。
+1. 在 Hyper-V 管理員中，選取虛擬機器。
 
-1. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
+1. 按一下 [連接]**** ，以開啟虛擬機器的主控台視窗。
 
 1. 建立或編輯 `/etc/sysconfig/network` 檔案，然後新增下列文字：
    
@@ -154,7 +154,7 @@ ms.locfileid: "78251632"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT = 是 NM_CONTROLLED = 是
+    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
 
 1. 若要確保開機時會啟動網路服務，可執行下列命令：
 
@@ -164,7 +164,7 @@ ms.locfileid: "78251632"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -194,7 +194,7 @@ ms.locfileid: "78251632"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -216,7 +216,7 @@ ms.locfileid: "78251632"
 
         # logout
 
-1. 在 Hyper-V 管理員中，按一下 [動作] > [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
+1. 按一下"在超 V 管理器中**關閉****操作** > "。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>從 KVM 準備 Red Hat 型虛擬機器
@@ -318,7 +318,7 @@ ms.locfileid: "78251632"
 
         # chkconfig waagent on
 
-1. Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 **/etc/waagent.conf** 中適當修改下列參數：
+1. Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一步驟中安裝 Azure Linux 代理後，請相應地修改 **/etc/waagent.conf**中的以下參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -408,7 +408,7 @@ ms.locfileid: "78251632"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT = 是 NM_CONTROLLED = 是
+    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
 
 1. 若要確保開機時會啟動網路服務，可執行下列命令：
 
@@ -418,7 +418,7 @@ ms.locfileid: "78251632"
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要進行此設定，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要進行此設定，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -469,7 +469,7 @@ ms.locfileid: "78251632"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -523,12 +523,12 @@ ms.locfileid: "78251632"
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>從 VMware 準備 Red Hat 型虛擬機器
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 本節假設您已在 VMware 中安裝 RHEL 虛擬機器。 如需有關如何在 VMware 中安裝作業系統的詳細資訊，請參閱 [VMware 客體作業系統安裝指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 安裝 Linux 作業系統時，我們建議您使用標準磁碟分割而不是 LVM (這通常是許多安裝的預設設定)。 這可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部虛擬機器時。 如果願意，您可以在資料磁碟上使用 LVM 或 RAID。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式以在暫存資源磁碟上建立交換檔。 您可以在以下步驟中找到與此相關的詳細資訊。
-* 建立虛擬硬碟時，請選取 [將虛擬磁碟儲存為單一檔案]。
+* 建立虛擬硬碟時，請選取 [將虛擬磁碟儲存為單一檔案] ****。
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>從 VMWare 準備 RHEL 6 虛擬機器
 1. 在 RHEL 6 中，NetworkManager 可能會對 Azure Linux 代理程式造成干擾。 執行下列命令以將此套件解除安裝：
@@ -568,7 +568,7 @@ ms.locfileid: "78251632"
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -600,7 +600,7 @@ ms.locfileid: "78251632"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -666,7 +666,7 @@ ms.locfileid: "78251632"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT = 是 NM_CONTROLLED = 是
+    PERSISTENT_DHCLIENT=是的NM_CONTROLLED=是的
 
 1. 若要確保開機時會啟動網路服務，可執行下列命令：
 
@@ -676,7 +676,7 @@ ms.locfileid: "78251632"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如，
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -716,7 +716,7 @@ ms.locfileid: "78251632"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本地資源磁片是臨時磁片，如果取消預配虛擬機器，可能會清空它。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -883,7 +883,7 @@ ms.locfileid: "78251632"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-    PERSISTENT_DHCLIENT = 是 NM_CONTROLLED = 是 EOF
+    PERSISTENT_DHCLIENT_是NM_CONTROLLED=是 EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
@@ -892,11 +892,11 @@ ms.locfileid: "78251632"
 
 1. 將 kickstart 檔案放在可存取它的安裝系統。
 
-1. 在 Hyper-V 管理員中建立新的虛擬機器。 在 [連線虛擬硬碟] 頁面上，選取 [稍後連接虛擬硬碟]，並完成 [新增虛擬機器精靈]。
+1. 在 Hyper-V 管理員中建立新的虛擬機器。 在 [連線虛擬硬碟]**** 頁面上，選取 [稍後連接虛擬硬碟]****，並完成 [新增虛擬機器精靈]。
 
 1. 開啟虛擬機器設定：
 
-    a.  將新的虛擬硬碟連結至虛擬機器。 請務必選取 [VHD 格式] 和 [固定大小]。
+    a.  將新的虛擬硬碟連結至虛擬機器。 請務必選取 [VHD 格式]**** 和 [固定大小]****。
 
     b.  將安裝 ISO 連接到 DVD 光碟機。
 
@@ -913,7 +913,7 @@ ms.locfileid: "78251632"
 
 在某些情況下，Linux 安裝程式可能不會在初始 RAM 磁碟 (initrd 或 initramfs) 中包含 Hyper-V 的驅動程式，除非 Linux 偵測到自己在 Hyper-V 環境中執行。
 
-當您使用不同的虛擬化系統（也就是 VirtualBox、Xen 等）來準備您的 Linux 映射時，可能需要重建 initrd，以確保初始 RAM 磁碟上至少有 hv_vmbus 和 hv_storvsc 核心模組可供使用。 目前至少已知在以上游 Red Hat 散發套件為基礎的系統上有此問題。
+當您使用不同的虛擬化系統（即 VirtualBox、Xen 等）來準備 Linux 映射時，您可能需要重新生成 initrd，以確保初始 RAM 磁碟上至少hv_vmbus和hv_storvsc內核模組可用。 目前至少已知在以上游 Red Hat 散發套件為基礎的系統上有此問題。
 
 若要解決這個問題，請將 Hyper-V 模組新增至 initramfs 並加以重建︰
 
@@ -930,4 +930,4 @@ ms.locfileid: "78251632"
 ## <a name="next-steps"></a>後續步驟
 * 您現在可以開始使用您的 Red Hat Enterprise Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 * 如需已通過認證可執行 Red Hat Enterprise Linux 之 Hypervisor 的詳細資訊，請參閱 [Red Hat 網站](https://access.redhat.com/certified-hypervisors)。
-* 若要深入瞭解如何使用已準備好用於生產環境的 RHEL BYOS 映射，請移至[BYOS](../workloads/redhat/byos.md)的檔頁面。
+* 要瞭解有關使用生產就緒 RHEL BYOS 映射的更多詳細資訊，請訪問[BYOS](../workloads/redhat/byos.md)的文檔頁。

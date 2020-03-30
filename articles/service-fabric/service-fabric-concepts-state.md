@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Service Fabric 服務中管理狀態
-description: 瞭解 Azure Service Fabric 中的狀態，包括如何在 Service Fabric 服務中定義和管理服務狀態。
+title: 管理 Azure 服務交換矩陣服務中的狀態
+description: 瞭解 Azure 服務結構中的狀態，包括如何在服務結構服務中定義和管理服務狀態。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614565"
 ---
 # <a name="service-state"></a>服務狀態
-「服務狀態」係指服務正常運作所需的記憶體或磁碟資料。 例如，其包括可以讓服務讀取及寫入，以執行工作的資料結構及成員變數。 根據服務的架構方式而定，它可能還包括儲存在磁碟上的檔案或其他資源。 例如，資料庫要用於儲存資料和交易記錄的檔案。
+「服務狀態」**** 係指服務正常運作所需的記憶體或磁碟資料。 例如，其包括可以讓服務讀取及寫入，以執行工作的資料結構及成員變數。 根據服務的架構方式而定，它可能還包括儲存在磁碟上的檔案或其他資源。 例如，資料庫要用於儲存資料和交易記錄的檔案。
 
 作為範例服務，讓我們考慮計算機。 基本計算機服務會採用兩個數字並傳回其總和。 執行這項計算不會牽涉任何成員變數或其他資訊。
 

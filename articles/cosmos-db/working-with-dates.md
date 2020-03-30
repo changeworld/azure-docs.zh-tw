@@ -1,27 +1,27 @@
 ---
 title: 使用 Azure Cosmos DB 中的日期
-description: 瞭解如何在 Azure Cosmos DB 中儲存、編制索引及查詢 DataTime 物件
+description: 瞭解如何在 Azure Cosmos DB 中存儲、索引和查詢 DataTime 物件
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273193"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 
 Azure Cosmos DB 透過原生 [JSON](https://www.json.org) 資料模型，提供結構描述的彈性和豐富的索引編製功能。 所有 Azure Cosmos DB 資源 (包括資料庫、容器、文件及預存程序) 都會建立模型，並以 JSON 文件的形式儲存。 為了滿足可攜性需求，JSON (和 Azure Cosmos DB) 僅支援一小組基本類型︰字串、數字、布林值、陣列、物件及 Null。 不過，JSON 具有彈性，讓開發人員和架構可以使用這些基本類型及加以組合為物件或陣列，來表示更複雜的類型。
 
-除了基本類型以外，許多應用程式都需要 DateTime 類型來代表日期和時間戳記。 此文章說明開發人員如何使用 .NET SDK 來儲存、擷取、查詢 Azure Cosmos DB 中的日期。
+除了基本類型，許多應用程式需要 DateTime 類型來表示日期和時間戳記。 此文章說明開發人員如何使用 .NET SDK 來儲存、擷取、查詢 Azure Cosmos DB 中的日期。
 
 ## <a name="storing-datetimes"></a>儲存 DateTimes
 
-Azure Cosmos DB 支援 JSON 類型，例如-string、number、boolean、null、array、object。 它不會直接支援 DateTime 類型。 目前，Azure Cosmos DB 不支援日期的當地語系化。 因此，您必須將日期時間儲存為字串。 Azure Cosmos DB 中的日期時間字串建議格式為遵循 ISO 8601 UTC 標準的 `YYYY-MM-DDThh:mm:ss.sssZ`。 建議將所有日期以 UTC 格式儲存在 Azure Cosmos DB 中。 將日期字串轉換成此格式將允許排序日期詞典編纂。 如果儲存非 UTC 日期，則邏輯必須在用戶端處理。 若要將本機日期時間轉換成 UTC，必須將位移視為 JSON 中的屬性，而且用戶端可以使用 offset 來計算 UTC 日期時間值。
+Azure Cosmos DB 支援 JSON 類型，如字串、數位、布林、空、陣列、物件。 它不直接支援日期時間類型。 目前，Azure Cosmos DB 不支援日期當地語系化。 因此，您需要將 DateTimes 存儲為字串。 Azure Cosmos DB 中 DateTime 字串`YYYY-MM-DDThh:mm:ss.sssZ`的建議格式遵循 ISO 8601 UTC 標準。 建議將 Azure Cosmos DB 中的所有日期存儲為 UTC。 將日期字串轉換為此格式將允許按字典順序對日期進行排序。 如果存儲了非 UTC 日期，則必須在用戶端處理邏輯。 要將本地日期時間轉換為 UTC，偏移量必須已知/存儲為 JSON 中的屬性，並且用戶端可以使用偏移量計算 UTC DateTime 值。
 
 大部分應用程式可以使用 DateTime 的預設字串表示法，原因如下︰
 
@@ -67,23 +67,23 @@ Azure Cosmos DB 支援 JSON 類型，例如-string、number、boolean、null、a
 
 ## <a name="querying-datetimes-in-linq"></a>用 LINQ 查詢 DateTime
 
-SQL .NET SDK 會自動支援透過 LINQ 查詢儲存在 Azure Cosmos DB 中的資料。 例如，下列程式碼片段顯示的 LINQ 查詢會篩選過去三天內出貨的訂單：
+SQL .NET SDK 會自動支援透過 LINQ 查詢儲存在 Azure Cosmos DB 中的資料。 例如，以下程式碼片段顯示 LINQ 查詢，該查詢篩選最近三天內發貨的訂單：
 
 ```csharp
     IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
 ```
 
-已轉譯為下列 SQL 語句，並在 Azure Cosmos DB 上執行：
+已轉換為以下 SQL 語句並在 Azure Cosmos DB 上執行：
 
 ```sql
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 ```
 
-在[linq 中查詢 Cosmos DB](sql-query-linq-to-sql.md)，可以深入瞭解 AZURE COSMOS DB 的 SQL 查詢語言和 linq 提供者。
+您可以在[LINQ 中查詢 Cosmos DB](sql-query-linq-to-sql.md)中的 LINQ 資料庫，瞭解有關 Azure Cosmos DB 的 SQL 查詢語言和 LINQ 提供程式的更多資訊。
 
 ## <a name="indexing-datetimes-for-range-queries"></a>索引 DateTime 以進行範圍查詢
 
-查詢對日期時間值是常見的。 若要有效率地執行這些查詢，您必須在查詢篩選中的任何屬性上定義索引。
+查詢與日期時間值是常見的。 要有效地執行這些查詢，必須在查詢篩選器中的任何屬性上定義索引。
 
 您可以參閱 [Azure Cosmos DB 索引編製原則](index-policy.md)，來深入了解如何設定索引編製原則。 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory 中的連結服務
-description: 深入瞭解 Data Factory 中的連結服務。 已連結的服務會將計算/資料存放區連結至資料處理站。
+description: 瞭解資料工廠中的連結服務。 已連結的服務會將計算/資料存放區連結至資料處理站。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,27 +12,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75563526"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory 中的連結服務
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](v1/data-factory-create-datasets.md)
-> * [目前的版本](concepts-linked-services.md)
+> * [版本 1](v1/data-factory-create-datasets.md)
+> * [當前版本](concepts-linked-services.md)
 
-本文說明連結的服務是什麼、如何以 JSON 格式定義它們，以及如何在 Azure Data Factory 管線中使用它們。
+本文介紹了連結服務是什麼，如何以 JSON 格式定義它們，以及如何在 Azure 資料工廠管道中使用它們。
 
 如果您不熟悉 Data Factory，請參閱 [Azure Data Factory 簡介](introduction.md)來概略了解。
 
-## <a name="overview"></a>概觀
-資料處理站可以有一或多個管線。 「管線」是一起執行某個工作的「活動」所組成的邏輯群組。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需有關管線和活動的詳細資訊，請參閱 Azure Data Factory 中的[管線和活動](concepts-pipelines-activities.md)。
+## <a name="overview"></a>總覽
+資料處理站可以有一或多個管線。 **管道**是共同執行任務**的活動**的邏輯分組。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需有關管線和活動的詳細資訊，請參閱 Azure Data Factory 中的[管線和活動](concepts-pipelines-activities.md)。
 
-現在，「資料集」是一個具名的資料檢視，指向或參考您想要在「活動」中用來作為輸入或輸出的資料。
+現在，「資料集」**** 是一個具名的資料檢視，指向或參考您想要在「活動」**** 中用來作為輸入或輸出的資料。
 
-在您建立資料集之前，您必須建立一個「已連結的服務」，以將資料存放區連結到資料處理站。 已連結的服務非常類似連接字串，可定義 Data Factory 連接到外部資源所需的連線資訊。 這麼說吧：資料集代表已連結之資料存放區內的資料結構，而已連結的服務則定義與資料來源的連線。 例如，「Azure 儲存體」已連結服務會將儲存體帳戶連結到 Data Factory。 Azure Blob 資料集代表該 Azure 儲存體帳戶內包含要處理之輸入 Blob 的 Blob 容器和資料夾。
+在您建立資料集之前，您必須建立一個「已連結的服務」****，以將資料存放區連結到資料處理站。 已連結的服務非常類似連接字串，可定義 Data Factory 連接到外部資源所需的連線資訊。 這麼說吧：資料集代表已連結之資料存放區內的資料結構，而已連結的服務則定義與資料來源的連線。 例如，「Azure 儲存體」已連結服務會將儲存體帳戶連結到 Data Factory。 Azure Blob 資料集代表該 Azure 儲存體帳戶內包含要處理之輸入 Blob 的 Blob 容器和資料夾。
 
 以下是一個範例案例。 若要將資料從 Blob 儲存體複製到 SQL 資料庫，您需建立兩個已連結的服務：「Azure 儲存體」和 Azure SQL Database。 接著，建立兩個資料集：Azure Blob 資料集 (此資料集參考「Azure 儲存體」已連結服務) 和「Azure SQL 資料表」資料集 (此資料集參考 Azure SQL Database 已連結服務)。 「Azure 儲存體」和 Azure SQL Database 已連結服務包含 Data Factory 在執行階段分別用來連接到「Azure 儲存體」和 Azure SQL Database 的連接字串。 Azure Blob 資料集會指定包含 Blob 儲存體中輸入 Blob 的 Blob 容器和 Blob 資料夾。 「Azure SQL 資料表」資料集會指定作為資料複製目的地的 SQL Database 中 SQL 資料表。
 
@@ -61,7 +61,7 @@ Data Factory 中的連結服務會以 JSON 格式定義如下：
 
 下表描述上述 JSON 的屬性：
 
-屬性 | 說明 | 必要項 |
+屬性 | 描述 | 必要 |
 -------- | ----------- | -------- |
 NAME | 連結服務的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
 type | 連結服務的類型。 例如：AzureStorage (資料存放區) 或 AzureBatch (計算)。 請參閱 typeProperties 的描述。 | 是 |
@@ -89,13 +89,13 @@ connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-in
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-您可以使用下列其中一個工具或 Sdk 來建立連結服務： [.NET API](quickstart-create-data-factory-dot-net.md)、 [PowerShell](quickstart-create-data-factory-powershell.md)、 [REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager 範本，以及 Azure 入口網站
+您可以使用這些工具或 SDK 之一創建連結的服務[：.NET](quickstart-create-data-factory-dot-net.md)API、PowerShell、REST [PowerShell](quickstart-create-data-factory-powershell.md) [API、Azure](quickstart-create-data-factory-rest-api.md)資源管理器範本和 Azure 門戶
 
-## <a name="data-store-linked-services"></a>資料存放區連結服務
-您可以從[連接器總覽](copy-activity-overview.md#supported-data-stores-and-formats)一文中，找到 Data Factory 所支援的資料存放區清單。 按一下資料存放區，以瞭解支援的連接屬性。
+## <a name="data-store-linked-services"></a>資料存儲連結服務
+您可以在[連接器概述](copy-activity-overview.md#supported-data-stores-and-formats)文章中找到資料工廠支援的資料存儲清單。 按一下資料存儲以瞭解支援的連接屬性。
 
-## <a name="compute-linked-services"></a>計算已連結的服務
-如需您可以從資料處理站和不同設定連線的不同計算環境詳細資料，請參閱[支援的計算環境](compute-linked-services.md)。
+## <a name="compute-linked-services"></a>計算連結服務
+有關可以從資料工廠連接到的不同計算環境以及不同配置的詳細資訊，[都支援引用計算環境](compute-linked-services.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需使用上述其中一個工具或 SDK 來建立管線和資料集的逐步指示，請參閱下列教學課程。
@@ -103,4 +103,4 @@ connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-in
 - [快速入門：使用 .NET 來建立資料處理站](quickstart-create-data-factory-dot-net.md)
 - [快速入門：使用 PowerShell 來建立資料處理站](quickstart-create-data-factory-powershell.md)
 - [快速入門：使用 REST API 來建立資料處理站](quickstart-create-data-factory-rest-api.md)
-- [快速入門：使用 Azure 入口網站建立 data factory](quickstart-create-data-factory-portal.md)
+- [快速入門：使用 Azure 入口網站來建立資料處理站](quickstart-create-data-factory-portal.md)

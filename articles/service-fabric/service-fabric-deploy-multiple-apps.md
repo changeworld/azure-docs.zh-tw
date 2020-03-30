@@ -1,30 +1,30 @@
 ---
-title: 部署使用 MongoDB 的 node.js 應用程式
+title: 部署使用 MongoDB 的 Node.js 應用程式
 description: 如何封裝多個來賓可執行檔以部署至 Azure Service Fabric 叢集的逐步解說
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4538efc8a2426fc20dd20d1a85edaf6f76bfc649
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614463"
 ---
-# <a name="deploy-multiple-guest-executables"></a>部署多個客體可執行檔
+# <a name="deploy-multiple-guest-executables"></a>部署多個來賓可執行檔
 本文說明如何封裝多個來賓可執行檔並部署至 Azure Service Fabric。 若要建置和部署單一 Service Fabric 套件，請閱讀如何[將來賓可執行檔部署至 Service Fabric](service-fabric-deploy-existing-app.md)。
 
 雖然本逐步解說示範的是如何部署使用 MongoDB 做為資料存放區並具有 Node.js 前端的應用程式，但是您可以將這些步驟套用到任何與另一個應用程式具有相依性的應用程式。   
 
-您可以使用 Visual Studio 來產生包含多個來賓可執行檔的應用程式套件。 請參閱[使用 Visual Studio 封裝現有應用程式](service-fabric-deploy-existing-app.md)。 新增第一個來賓可執行檔之後，在應用程式專案上按一下滑鼠右鍵，然後選取 [新增] -> [新的 Service Fabric 服務] 將第二個來賓可執行檔專案新增至方案。 請注意：如果您選擇在 Visual Studio 專案中連結來源，則建置 Visual Studio 方案將可確保應用程式封裝是最新的，並且含有來源中的變更。 
+您可以使用 Visual Studio 來產生包含多個來賓可執行檔的應用程式套件。 請參閱[使用 Visual Studio 封裝現有應用程式](service-fabric-deploy-existing-app.md)。 新增第一個來賓可執行檔之後，在應用程式專案上按一下滑鼠右鍵，然後選取 [新增] -> [新的 Service Fabric 服務]**** 將第二個來賓可執行檔專案新增至方案。 請注意：如果您選擇在 Visual Studio 專案中連結來源，則建置 Visual Studio 方案將可確保應用程式封裝是最新的，並且含有來源中的變更。 
 
 ## <a name="samples"></a>範例
 * [封裝和部署來賓可執行檔的範例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [兩個客體可執行檔 (C# 和 nodejs) 使用 REST 透過命名服務進行通訊的範例](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>手動封裝多個來賓可執行檔應用程式
-或者，您可以手動封裝來賓可執行檔。 如需詳細資訊，請參閱[手動封裝和部署現有的可執行檔](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)。
+或者，您可以手動封裝來賓可執行檔。 有關詳細資訊，請參閱[手動打包並部署現有可執行檔](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)。
 
 ### <a name="packaging-the-nodejs-application"></a>封裝 Node.js 應用程式
 本文假設 Service Fabric 叢集中的節點上未安裝 Node.js。 因此，您需要在封裝之前，先將 Node.exe 新增至您節點應用程式的根目錄。 Node.js 應用程式 (使用 Express Web 架構和 Jade 範本引擎) 的目錄結構看起來應該與以下類似：
@@ -195,7 +195,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-成功將應用程式發行至本機叢集之後，您就可以在我們于 node.js 應用程式的服務資訊清單中輸入的埠（例如 HTTP：\//localhost：3000）存取 node.js 應用程式。
+成功將應用程式發佈到本地群集後，可以訪問我們在 Node.js 應用程式的服務清單中輸入的埠上的 Node.js 應用程式，例如 HTTP：\//localhost：3000。
 
 在本教學課程中，您已看到如何輕鬆地將兩個現有應用程式封裝成一個 Service Fabric 應用程式。 您也會了解如何將其部署到 Service Fabric，以便讓它能夠從一些 Service Fabric 功能 (例如高可用性和健康情況系統整合) 獲益。
 

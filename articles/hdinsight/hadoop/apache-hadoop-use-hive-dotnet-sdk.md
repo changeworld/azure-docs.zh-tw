@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552486"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 執行 Apache Hive 查詢
@@ -24,7 +24,7 @@ ms.locfileid: "75552486"
 > [!NOTE]  
 > 此文章中的步驟必須從 Windows 用戶端執行。 如需搭配 Linux、OS X 或 Unix 用戶端使用 Hive 的資訊，請使用本文頂端顯示的索引標籤選取器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始閱讀本文之前，您必須有下列各項：
 
@@ -33,7 +33,7 @@ ms.locfileid: "75552486"
     > [!IMPORTANT]  
     > 2017 年 9 月 15 起，HDInsight.NET SDK 僅支援從 Microsoft Azure 儲存體帳戶傳回的 Hive 查詢結果。 如果您使用此範例，並搭配將 Azure Data Lake Store 用作主要儲存體的 HDInsight 叢集使用，您無法擷取使用 .NET SDK 的搜尋結果。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 和以上。 至少應該安裝工作負載 **.net 桌面開發**。
+* [視覺工作室](https://visualstudio.microsoft.com/vs/community/)2013 及以後。 至少應安裝工作負載 **.NET 桌面開發**。
 
 ## <a name="run-a-hive-query"></a>執行 Hive 查詢
 
@@ -45,7 +45,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. 編輯以下的程式碼，以初始化變數的值： `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`。 然後使用修改過的程式碼作為 Visual Studio 中**Program.cs**的完整內容。
+1. 編輯下面的代碼以初始化變數的值： `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`。 然後，使用修訂後的代碼作為視覺工作室**中Program.cs**的全部內容。
 
     ```csharp
     using System.Collections.Generic;
@@ -132,15 +132,15 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
     }
     ```
 
-1. 按 **F5** 鍵執行應用程式。
+1. 按**F5**以運行應用程式。
 
-應用程式的輸出應該類似：
+應用程式的輸出應類似于：
 
 ![HDInsight Hadoop Hive 作業輸出](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何使用 HDInsight .NET SDK 提交 Apache Hive 查詢。 如需詳細資訊，請參閱下列文章：
+在本文中，您學習了如何使用 HDInsight .NET SDK 提交 Apache Hive 查詢。 如需詳細資訊，請參閱下列文章：
 
 * [開始使用 Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中建立 Apache Hadoop 叢集](../hdinsight-hadoop-provision-linux-clusters.md)

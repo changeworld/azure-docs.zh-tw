@@ -1,6 +1,6 @@
 ---
-title: 使用C# -AZURE 時間序列深入解析管理 GA 環境中的參考資料 |Microsoft Docs
-description: 瞭解如何藉由建立以C#撰寫的自訂應用程式，來管理 GA 環境的參考資料。
+title: 使用 C# - Azure 時間序列見解管理 GA 環境中的參考資料 |微軟文檔
+description: 瞭解如何通過創建用 C# 編寫的自訂應用程式來管理 GA 環境的參考資料。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,70 +12,70 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961994"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用管理 Azure 時間序列深入解析環境的 GA 參考資料C#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用 C 管理 Azure 時間序列見解環境的 GA 參考資料#
 
-本文示範如何合併C#、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，以對 Azure 時間序列深入解析 GA[參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)提出程式設計 api 要求。
+本文演示如何將 C#、MSAL.NET[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure 活動目錄組合起來，以便向 Azure 時間序列見解 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)發出程式設計 API 請求。
 
 > [!TIP]
-> 在[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C#查看 GA 程式代碼範例。
+> 在 上[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)查看 GA C# 代碼示例。
 
 ## <a name="summary"></a>總結
 
-下面的範例程式碼示範下列功能：
+下面的示例代碼演示了以下功能：
 
-* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**取得存取權杖。
-* 針對 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的順序建立、讀取、更新和刪除作業。
-* 常見的回應碼，包括[一般錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
+* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)**公共用戶端應用程式**獲取訪問權杖。
+* 針對 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)進行順序創建、讀取、更新和刪除操作。
+* 常見回應代碼，包括[常見錯誤代碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
     
-    參考資料管理 API 會個別處理每個專案，而有一個專案的錯誤則無法防止其他人成功完成。 例如，如果您的要求有100個專案，而其中一個專案發生錯誤，則會寫入99個專案，而其中一個會遭到拒絕。
+    參考資料管理 API 單獨處理每個專案，一個專案出錯不會阻止其他項成功完成。 例如，如果請求有 100 個專案，並且一個專案有錯誤，則寫入 99 個專案，拒絕其中一個專案。
 
-## <a name="prerequisites-and-setup"></a>必要條件和設定
+## <a name="prerequisites-and-setup"></a>先決條件和設置
 
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
-1. 布建[GA Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [預配 GA Azure 時間序列見解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 )環境。
 
-1. 在您的環境中[建立參考資料集](time-series-insights-add-reference-data-set.md)。 使用下列參考資料配置：
+1. [在環境中創建參考資料集](time-series-insights-add-reference-data-set.md)。 使用以下參考資料方案：
 
    | 機碼名稱 | 類型 |
    | --- | --- |
    | uuid | String | 
 
-1. 如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述，設定您的 Azure 時間序列深入解析環境以進行 Azure Active Directory。 使用 `http://localhost:8080/` 做為重新**導向 URI**。
+1. 為 Azure 活動目錄配置 Azure 時間序列見解環境，如[身份驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 用作`http://localhost:8080/`重定向**URI**。
 
-1. 安裝必要的專案相依性。
+1. 安裝所需的專案依賴項。
 
-1. 以適當的環境識別碼取代每個 **#PLACEHOLDER #** ，以編輯下面的範例程式碼。
+1. 通過將每個 **#PLACEHOLDER#** 替換為相應的環境識別碼，編輯下面的示例代碼。
 
-1. 在專案的根目錄中執行 `dotnet run`。 出現提示時，請使用您的使用者設定檔來登入 Azure。 
+1. 在`dotnet run`專案的根目錄中運行。 出現提示時，請使用使用者設定檔登錄到 Azure。 
 
 ## <a name="project-dependencies"></a>專案相依性
 
-建議使用最新版本的 Visual Studio 和**NETCore**：
+建議您使用最新版本的 Visual Studio 和**NETCore.app**：
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -版本 16.4.2 +
-* [NETCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -版本 v2.2.8-preview
+* [視覺工作室 2019](https://visualstudio.microsoft.com/vs/) - 版本 16.4.2*
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) - 版本 2.2.8
 
-範例程式碼有兩個必要的相依性：
+示例代碼有兩個必需的依賴項：
 
-* MSAL.NET [4.7.1 套件。](https://www.nuget.org/packages/Microsoft.Identity.Client/)
-* [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3 package。
+* MSAL.NET[微軟.身份.用戶端](https://www.nuget.org/packages/Microsoft.Identity.Client/)- 4.7.1 包。
+* [牛頓軟.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 封裝。
 
-使用[NuGet 2.12](https://www.nuget.org/)新增封裝 +：
+使用[NuGet 2.12+](https://www.nuget.org/)添加包 ：
 
 * `dotnet add package Newtonsoft.Json --version 12.0.3`
 * `dotnet add package Microsoft.Identity.Client --version 4.7.1`
 
 或：
 
-1. 宣告 `csharp-tsi-msal-ga-sample.csproj` 檔案：
+1. 聲明`csharp-tsi-msal-ga-sample.csproj`檔：
 
     ```XML
     <Project Sdk="Microsoft.NET.Sdk">
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)參考檔。
+- 閱讀 GA[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)參考文檔。

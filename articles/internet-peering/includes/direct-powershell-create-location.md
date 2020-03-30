@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86d768db7a31c634bdaca6c93f633c7bbaf10a65
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774285"
 ---
-PowerShell Cmdlet **AzPeeringLocation**會傳回具有強制參數 `Kind`的對等互連位置清單，在稍後的步驟中將會用到：
+PowerShell Cmdlet **Get-AzPeeringLocation**返回具有強制參數`Kind`的對等位置清單，您將在後面的步驟中使用該參數：
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
 ```
 
-直接的對等互連位置包含下欄欄位：
-* PeeringLocation 
-* 國家/地區
-* PeeringDBFacilityId
-* PeeringDBFacilityLink
-* BandwidthOffers
+直接對等位置包含以下欄位：
+* 對等位置 
+* Country
+* 對等資料庫設施Id
+* 對等DB設施連結
+* 頻寬提供
 
-藉由參考[PeeringDB](https://w www.peeringdb.com)，驗證您是否存在於所需的對等設備上。
+通過引用[對等互連資料庫](https://wwww.peeringdb.com)，驗證您是否在所需的對等設施中。
 
-以下範例顯示如何使用西雅圖做為對等互連位置，以建立直接對等互連：
+下面是一個示例，演示如何使用西雅圖作為對等位置來創建直接對等互連：
 
 ```powershell
 $peeringLocations = Get-AzPeeringLocation -Kind Direct

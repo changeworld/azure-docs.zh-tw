@@ -1,17 +1,17 @@
 ---
 title: 準備 Debian Linux VHD
-description: 瞭解如何在 Azure 中建立 VM 部署的 Debian VHD 映射。
-author: mimckitt
+description: 瞭解如何為 Azure 中的 VM 部署創建 Debian VHD 映射。
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: mimckitt
-ms.openlocfilehash: f17759fb65cec1609298d34b29829e895526e080
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066720"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>準備適用於 Azure 的 Debian VHD
 ## <a name="prerequisites"></a>Prerequisites
@@ -19,13 +19,13 @@ ms.locfileid: "78970259"
 
 ## <a name="installation-notes"></a>安裝注意事項
 * 如需有關針對 Azure 準備 Linux 的更多秘訣，另請參閱[一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
-* Azure 不支援較新的 VHDX 格式。 您可以使用 Hyper-V 管理員或 **convert-vhd** Cmdlet，將磁碟轉換為 VHD 格式。
-* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* Azure 不支援較新的 VHDX 格式。 您可以使用 Hyper-V 管理器或**轉換 vhd** Cmdlet 將磁片轉換為 VHD 格式。
+* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，可以在資料磁片上使用[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[RAID。](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Azure Linux 代理程式，以在暫存資源磁碟上建立交換檔。 如需更多詳細資料，請參閱以下步驟。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>使用 Azure-Manage 建立 Debian VHD
-有一些工具可用來產生適用於 Azure 的 Debian VHD，例如 [Credativ](https://github.com/credativ/azure-manage) 中的 [azure-manage](https://www.credativ.com/) 指令碼。 若不想從頭建立映像，建議採用此方法。 例如，若要建立 Debian 8 VHD，請執行下列命令以下載 `azure-manage` 公用程式 (和相依性)，並執行 `azure_build_image` 指令碼︰
+有可用於生成 Azure 的 Debian VHD 的工具，例如來自[Credativ](https://www.credativ.com/)[的 azure 管理](https://github.com/credativ/azure-manage)腳本。 若不想從頭建立映像，建議採用此方法。 例如，若要建立 Debian 8 VHD，請執行下列命令以下載 `azure-manage` 公用程式 (和相依性)，並執行 `azure_build_image` 指令碼︰
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -41,8 +41,8 @@ ms.locfileid: "78970259"
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手動準備 Debian VHD
 1. 在 Hyper-V 管理員中，選取虛擬機器。
-2. 按一下 [連接] ，以開啟虛擬機器的主控台視窗。
-3. 如果您使用 ISO 安裝作業系統，則在 `deb cdrom` 中註解排除與 "`/etc/apt/source.list`" 相關的任一行。
+2. 按一下 [連接]**** ，以開啟虛擬機器的主控台視窗。
+3. 如果您使用 ISO 安裝作業系統，則在 `/etc/apt/source.list` 中註解排除與 "`deb cdrom`" 相關的任一行。
 
 4. 依照以下方法編輯 `/etc/default/grub` 檔案及修改 **GRUB_CMDLINE_LINUX** 參數，以納入用於 Azure 的其他核心參數。
    
@@ -96,7 +96,7 @@ ms.locfileid: "78970259"
         # export HISTSIZE=0
         # logout
 
-10. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
+10. 按一下 **"操作**->在超 V 管理器中關閉。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ## <a name="next-steps"></a>後續步驟
 您現在可以開始使用您的 Debian 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

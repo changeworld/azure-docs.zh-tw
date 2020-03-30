@@ -1,5 +1,5 @@
 ---
-title: 設定跨不同區域的可用性群組
+title: 跨不同區域配置可用性組
 description: 本文說明如何在於不同區域中有複本的 Azure 虛擬機器上設定 SQL Server 可用性群組。
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8ca871a6f525d4e68ce70060e6faddbcfc8e1f3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060120"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在不同區域中的 Azure SQL Server 虛擬機器上設定可用性群組
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在不同區域的 Azure SQL Server 虛擬機器上配置可用性組
 
 本文說明如何在遠端 Azure 位置的「Azure 虛擬機器」上設定「SQL Server Always On 可用性群組」複本。 您可以使用此組態來支援災害復原。
 
@@ -63,7 +63,7 @@ ms.locfileid: "76772730"
 
 1. [在新區域中建立虛擬網路](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。
 
-1. [使用 Azure 入口網站設定 VNet 對 VNet 連接](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
+1. [使用 Azure 門戶配置 VNet 到 VNet 連接](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
 
    >[!NOTE]
    >在某些情況下，您可能需要使用 PowerShell 來建立 VNet 對 VNet 連接。 例如，如果您使用不同的 Azure 帳戶，您就無法在入口網站中設定該連線。 在此情況下，請參閱[使用 Azure 入口網站設定 VNet 對 VNet 連接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
@@ -93,26 +93,26 @@ ms.locfileid: "76772730"
 
 1. [將新的 SQL Server 新增到 Windows Server 容錯移轉叢集](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)。
 
-1. 將 IP 位址資源新增至叢集。
+1. 向群集添加 IP 位址資源。
 
-   您可以在「容錯移轉叢集管理員」中建立 IP 位址資源。 選取叢集的名稱，然後以滑鼠右鍵按一下 [叢集**核心資源**] 底下的叢集名稱，然後選取 [**屬性**]： 
+   您可以在「容錯移轉叢集管理員」中建立 IP 位址資源。 選擇群集的名稱，然後按右鍵**群集核心資源**下的群集名稱，然後選擇**屬性**： 
 
    ![叢集屬性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
 
-   在 [**屬性**] 對話方塊中，選取 [ **IP 位址**] 底下的 [**新增**]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址**] 對話方塊中選取 **[確定]** ，然後在 [叢集**內容] 對話方塊**中再次選取 **[確定**]，以儲存新的 IP 位址。 
+   在"**屬性"** 對話方塊中，選擇"在**IP 位址**下**添加**"，然後從遠端網路區域添加群集名稱的 IP 位址。 在 **"IP 位址"** 對話方塊中選擇 **"確定**"，然後在 **"群集屬性**"對話方塊中再次選擇 **"確定"** 以保存新的 IP 位址。 
 
-   ![新增叢集 IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+   ![添加群集 IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
 
 
-1. 將 IP 位址新增為核心叢集名稱的相依性。
+1. 將 IP 位址添加為核心群集名稱的依賴項。
 
-   再開啟一次叢集屬性，然後選取 [相依**性] 索引**標籤。設定兩個 IP 位址的或相依性： 
+   再次打開群集屬性，然後選擇**依賴項**選項卡。為兩個 IP 位址配置 OR 依賴項： 
 
    ![叢集屬性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
 
-1. 將 IP 位址資源新增至叢集中的可用性群組角色。 
+1. 將 IP 位址資源添加到群集中的可用性組角色。 
 
-   以滑鼠右鍵按一下容錯移轉叢集管理員中的 [可用性群組] 角色，選取 [**新增資源**]、[**更多資源**]，然後選取 [ **IP 位址**]。
+   按右鍵容錯移轉叢集管理器中的可用性組角色，選擇 **"添加資源**"，**更多資源**，然後選擇**IP 位址**。
 
    ![建立 IP 位址](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "76772730"
    >[!IMPORTANT]
    >叢集資源群組同時包含兩個 IP位址。 這兩個 IP 位址都是接聽程式用戶端存取點的相依性。 在叢集相依性組態中，請使用 **OR** 運算子。
 
-1. [在 PowerShell 中設定叢集參數](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)。
+1. [在 PowerShell 中設置群集參數](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)。
 
 使用您在新區域中負載平衡器上設定的叢集網路名稱、IP 位址及探查連接埠來執行 PowerShell 指令碼。
 
@@ -162,27 +162,27 @@ ms.locfileid: "76772730"
 
 建議您更新用戶端連接字串以設定 `MultiSubnetFailover=Yes`。 請參閱[使用 MultiSubnetFailover 進行連接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果您無法修改連接字串，您可以設定名稱解析快取功能。 請參閱[逾時錯誤，且無法連接到多重子網環境中的 SQL Server 2012 AlwaysOn 可用性群組](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)接聽程式。
+如果您無法修改連接字串，您可以設定名稱解析快取功能。 請參閱[逾時錯誤，並且無法連接到多子網環境中的 SQL Server 2012 AlwaysOn 可用性組攔截器](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
 ## <a name="fail-over-to-remote-region"></a>容錯移轉至遠端區域
 
 若要測試對遠端區域的接聽程式連線能力，您可以將複本容錯移轉至遠端區域。 當複本是非同步複本時，容錯移轉容易導致潛在的資料遺失。 若要容錯移轉又不遺失資料，請將可用性模式變更為同步，並將容錯移轉模式設定為自動。 使用下列步驟：
 
-1. 在 [物件總管] 中，連接到裝載主要複本的 SQL Server 執行個體。
-1. 在 [AlwaysOn 可用性群組]、[可用性群組] 底下，於您的可用性群組上按一下滑鼠右鍵，然後按一下 [屬性]。
-1. 在 [一般] 頁面上的 [可用性複本] 底下，將 DR 站台中的次要複本設定成使用 [同步認可] 模式和 [自動] 容錯移轉模式。
-1. 如果您在與主要複本相同的站台中有次要複本以支援高可用性，請將此複本設定為 [非同步認可] 和 [手動]。
+1. 在 [物件總管]**** 中，連接到裝載主要複本的 SQL Server 執行個體。
+1. 在 [AlwaysOn 可用性群組]****、[可用性群組]**** 底下，於您的可用性群組上按一下滑鼠右鍵，然後按一下 [屬性]****。
+1. 在 [一般]**** 頁面上的 [可用性複本]**** 底下，將 DR 站台中的次要複本設定成使用 [同步認可]**** 模式和 [自動]**** 容錯移轉模式。
+1. 如果您在與主要複本相同的站台中有次要複本以支援高可用性，請將此複本設定為 [非同步認可]**** 和 [手動]****。
 1. 按一下 [確定]。
-1. 在 [物件總管] 中，於可用性群組上按一下滑鼠右鍵，然後按一下 [顯示儀表板]。
+1. 在 [物件總管]**** 中，於可用性群組上按一下滑鼠右鍵，然後按一下 [顯示儀表板]****。
 1. 在儀表板上，確認 DR 站台上的複本已同步。
-1. 在**物件總管**中，以滑鼠右鍵按一下可用性群組，然後按一下 [**容錯移轉**...]。SQL Server Management 工作室會開啟嚮導來故障切換 SQL Server。  
-1. 按 [下一步]，然後選取 DR 站台中的 SQL Server 執行個體。 再按一下 [下一步] 。
-1. 連接到 DR 站台中的 SQL Server 執行個體，然後按 [下一步]。
-1. 在 [摘要] 頁面上確認設定，然後按一下 [完成]。
+1. 在**物件資源管理器**中，按右鍵可用性組，然後按一下 **"容錯移轉..."。** SQL 伺服器管理工作室打開一個嚮導以容錯移轉 SQL 伺服器。  
+1. 按 [下一步]****，然後選取 DR 站台中的 SQL Server 執行個體。 再按一下 [下一步] **** 。
+1. 連接到 DR 站台中的 SQL Server 執行個體，然後按 [下一步]****。
+1. 在 [摘要]**** 頁面上確認設定，然後按一下 [完成]****。
 
 測試完連線之後，請將主要複本移回到您的主要資料中心，並將可用性模式設定回其一般作業設定。 下表顯示本文件所述架構的一般作業設定：
 
-| 位置 | 伺服器執行個體 | 角色 | 可用性模式 | 容錯移轉模式
+| Location | 伺服器執行個體 | 角色 | 可用性模式 | 容錯移轉模式
 | ----- | ----- | ----- | ----- | -----
 | 主要資料中心 | SQL-1 | Primary | 同步 | 自動
 | 主要資料中心 | SQL-2 | 次要 | 同步 | 自動
@@ -193,7 +193,7 @@ ms.locfileid: "76772730"
 
 如需詳細資訊，請參閱下列主題：
 
-- [執行可用性群組的已規劃手動容錯移轉 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [執行可用性組（SQL Server）的計畫手動容錯移轉](https://msdn.microsoft.com/library/hh231018.aspx)
 - [執行可用性群組的強制手動容錯移轉 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>其他連結

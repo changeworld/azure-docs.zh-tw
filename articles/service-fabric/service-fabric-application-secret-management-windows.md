@@ -1,24 +1,24 @@
 ---
-title: 在 Windows 叢集上設定加密憑證
+title: 在 Windows 群集上設置加密證書
 description: 了解如何設定加密憑證，並在 Windows 叢集上將祕密加密。
 author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: d9413a37be221adc375836719dc1f467a5571fa0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610177"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>設定加密憑證，並在 Windows 叢集上將祕密加密
-本文書名如何設定加密憑證，並在 Windows 叢集上將祕密加密。 針對 Linux 叢集，請參閱[設定加密憑證和在 linux 叢集上將秘密加密。][secret-management-linux-specific-link]
+本文書名如何設定加密憑證，並在 Windows 叢集上將祕密加密。 對於 Linux 叢集，請參閱[在 Linux 叢集上設定加密憑證並將祕密加密。][secret-management-linux-specific-link]
 
-[Azure Key Vault][key-vault-get-started]在這裡用來作為憑證的安全儲存位置，以及取得在 Azure 中的 Service Fabric 叢集上安裝憑證的方法。 如果您沒有要部署至 Azure，您不需要使用金鑰保存庫管理 Service Fabric 應用程式中的密碼。 不過，應用程式中的密碼「使用」 是由平台驗證，讓應用程式可部署至裝載在任何位置的叢集。 
+[Azure Key Vault][key-vault-get-started] 在此是當做憑證的安全儲存位置，以及讓憑證安裝在 Azure 中的 Service Fabric 叢集上的方法。 如果您沒有要部署至 Azure，您不需要使用金鑰保存庫管理 Service Fabric 應用程式中的密碼。 但是，在應用程式中*使用*機密與雲平臺無關，允許將應用程式部署到任何位置託管的群集。 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>取得資料加密憑證
-資料加密憑證是嚴格用來加密和解密服務之設定中的[參數][parameters-link]。 xml 和服務 ServiceManifest 中的[環境變數][environment-variables-link]。 它不是用來驗證或簽署密碼文字。 憑證必須符合下列要求：
+資料編密憑證只會用於服務的 Settings.xml 中[參數][parameters-link]，以及服務的 ServiceManifest.xml 中[環境變數][environment-variables-link]的加密與解密。 它不是用來驗證或簽署密碼文字。 憑證必須符合下列要求：
 
 * 憑證必須包含私密金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
@@ -31,7 +31,7 @@ ms.locfileid: "75610177"
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在叢集中安裝憑證
-此憑證必須安裝在叢集中的每個節點上。 如需安裝指示，請參閱[如何使用 Azure Resource Manager 建立][service-fabric-cluster-creation-via-arm]叢集。 
+此憑證必須安裝在叢集中的每個節點上。 請參閱[如何使用 Azure Resource Manager][service-fabric-cluster-creation-via-arm] 建立叢集的安裝指示。 
 
 ## <a name="encrypt-application-secrets"></a>加密應用程式密碼
 下列 PowerShell 命令會用來加密密碼。 此命令只會將值加密；並**不會**簽署密碼文字。 您必須使用安裝在叢集中相同的編密憑證，以產生密碼值的加密文字︰
@@ -43,7 +43,7 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 產生的 Base-64 編碼字串同時包含密碼的加密文字，以及用來對其加密的憑證相關資訊。
 
 ## <a name="next-steps"></a>後續步驟
-瞭解如何[在應用程式中指定加密的秘密。][secret-management-specify-encrypted-secrets-link]
+了解如何[指定應用程式中已加密的祕密][secret-management-specify-encrypted-secrets-link]。
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-overview.md

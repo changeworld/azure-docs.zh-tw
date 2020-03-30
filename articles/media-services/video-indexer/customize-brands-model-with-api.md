@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 影片索引器自訂品牌模型
+title: 使用視頻索引子 API 自訂品牌模型
 titleSuffix: Azure Media Services
-description: 本文示範如何使用 Azure 影片索引子自訂品牌模型。
+description: 瞭解如何使用視頻索引子 API 自訂品牌模型。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127999"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用影片索引器 API 自訂品牌模型
 
-影片索引器支援在視訊和音訊內容的編製索引及重新編製索引期間，從語音和視覺文字偵測品牌。 品牌偵測功能可識別 Bing 的品牌資料庫建議所提及的產品、服務以及公司。 例如，如果在視訊或音訊內容中提及 Microsoft，或者視訊或音訊內容出現在視訊的視覺文字中，影片索引器會將其偵測為內容中的品牌。 自訂品牌模型可讓您從偵測到的品牌中排除特定品牌，並包含應該是您模型的一部分，但可能不在 Bing 品牌資料庫中的品牌。
+影片索引器支援在視訊和音訊內容的編製索引及重新編製索引期間，從語音和視覺文字偵測品牌。 品牌偵測功能可識別 Bing 的品牌資料庫建議所提及的產品、服務以及公司。 例如，如果視頻或音訊內容中提到 Microsoft，或者在視頻中以可視文本顯示，視頻索引子會將其檢測為內容中的品牌。 自訂品牌模型可讓您從偵測到的品牌中排除特定品牌，並包含應該是您模型的一部分，但可能不在 Bing 品牌資料庫中的品牌。
 
 如需詳細概觀，請參閱[概觀](customize-brands-model-overview.md)。
 
@@ -27,15 +27,15 @@ ms.locfileid: "76289912"
 
 ## <a name="create-a-brand"></a>建立品牌
 
-[建立品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)API 會建立新的自訂品牌，並將其新增至指定帳戶的自訂品牌模型。 
+[創建品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)API 創建新的自訂品牌，並將其添加到指定帳戶的自訂品牌模型中。
 
 > [!NOTE]
-> 將 [**已啟用**] （在本文中）設定為 [true] 會將品牌置於影片索引子的 [*包含*] 清單中，以偵測。 將 **enabled** 設為 false，則可將品牌置於 [排除] 清單，如此影片索引器將不會偵測該品牌。
+> 將`enabled`（在正文中）設置為 true 將品牌置於"*包含*"清單中，以便視頻索引子進行檢測。 設置為`enabled`false 將品牌置於 *"排除"* 清單中，因此視頻索引子無法檢測到它。
 
-您可以在本文中設定的一些其他參數：
+可以在正文中設置的一些其他參數：
 
-* **referenceUrl** 值可以是品牌的任何參考網站，例如其維基百科頁面的連結。
-* **tags** 值是品牌標籤的清單。 這在影片索引器網站中，會出現在品牌的 [分類] 欄位內。 例如，您可以將品牌 "Azure" 標記或分類為「雲端」。
+* 該`referenceUrl`值可以是該品牌的任何參考網站，例如指向其維琪百科頁面的連結。
+* 該`tags`值是品牌的標籤清單。 此標記顯示在視頻索引子網站上的品牌*類別*欄位中。 例如，您可以將品牌 "Azure" 標記或分類為「雲端」。
 
 ### <a name="response"></a>回應
 
@@ -61,15 +61,15 @@ ms.locfileid: "76289912"
 
 ## <a name="delete-a-brand"></a>刪除品牌
 
-「[刪除品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)API」會從指定之帳戶的自訂品牌模型中移除品牌。 帳戶是使用 **accountId** 參數指定的。 一旦呼叫成功之後，該品牌將不再位於 [包含] 或 [排除] 品牌清單中。
+[刪除品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)API 會從指定帳戶的自訂品牌模型中刪除品牌。 該帳戶在`accountId`參數中指定。 一旦呼叫成功之後，該品牌將不再位於 [包含]** 或 [排除]** 品牌清單中。
 
 ### <a name="response"></a>回應
 
-成功刪除品牌時，沒有任何傳回的內容。
+成功刪除品牌時，不會返回任何內容。
 
 ## <a name="get-a-specific-brand"></a>取得特定品牌
 
-[取得品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)API 可讓您使用品牌識別符，在指定帳戶的自訂品牌模型中搜尋品牌的詳細資料。
+[獲取品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)API 允許您使用品牌 ID 搜索自訂品牌模型中品牌的詳細資訊。
 
 ### <a name="response"></a>回應
 
@@ -94,11 +94,11 @@ ms.locfileid: "76289912"
 ```
 
 > [!NOTE]
-> **enabled** 設為 **true** 時，表示品牌位於要偵測之影片索引器的 [包含] 清單，**enabled** 為 false 時，則表示品牌位於 [排除] 清單，因此影片索引器將不會偵測該品牌。
+> `enabled`設置為`true`表示品牌位於"視頻索引子要檢測的*包含"* 清單中，並且`enabled`false 表示品牌位於 *"排除"* 清單中，因此視頻索引子不會檢測到它。
 
 ## <a name="update-a-specific-brand"></a>更新特定品牌
 
-[更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)API 可讓您使用品牌識別符，在指定帳戶的自訂品牌模型中搜尋品牌的詳細資料。
+[通過更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)API，您可以使用品牌 ID 搜索自訂品牌模型中品牌的詳細資訊。
 
 ### <a name="response"></a>回應
 
@@ -124,7 +124,7 @@ ms.locfileid: "76289912"
 
 ## <a name="get-all-of-the-brands"></a>取得所有品牌
 
-不論品牌是否要位於 [*包含*或*排除*品牌] 清單中，「[取得所有品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)」 API 都會針對指定的帳號傳回自訂品牌模型中的所有品牌。
+[獲取所有品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)API 返回指定帳戶的自訂品牌模型中的所有品牌，無論該品牌是要在 *"包含"* 還是 *"排除*品牌"清單中。
 
 ### <a name="response"></a>回應
 
@@ -160,11 +160,11 @@ ms.locfileid: "76289912"
 ```
 
 > [!NOTE]
-> 名稱為 *Example* 的品牌位於要偵測之影片索引器的 [包含] 清單中，而名稱為 *Example2* 的品牌則位於 [排除] 清單中，因此影片索引器將不會偵測該品牌。
+> 名為 *"示例"* 的品牌位於"視頻索引子要檢測的*包含"* 清單中，而名為*示例 2*的品牌位於 *"排除"* 清單中，因此視頻索引子不會檢測到它。
 
 ## <a name="get-brands-model-settings"></a>取得品牌模型設定
 
-[取得品牌設定](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)API 會傳回指定帳戶中的品牌模型設定。 品牌模型設定表示是否已從 Bing 品牌資料庫中啟用偵測。 如果未啟用 Bing 品牌，影片索引器將只會從指定之帳戶的自訂品牌模型中偵測品牌。
+[獲取品牌設置](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)API 返回指定帳戶中的品牌模型設置。 品牌模型設定表示是否已從 Bing 品牌資料庫中啟用偵測。 如果未啟用必應品牌，視頻索引子將僅檢測指定帳戶的自訂品牌模型中的品牌。
 
 ### <a name="response"></a>回應
 
@@ -178,17 +178,17 @@ ms.locfileid: "76289912"
 ```
 
 > [!NOTE]
-> **useBuiltIn** 設為 true 時，表示已啟用 Bing 品牌。 如果 *useBuiltin* 為 false，則會停用 Bing 品牌。 **state** 值可以忽略，因為它已被取代。
+> `useBuiltIn`設置為 true 表示必應品牌已啟用。 如果`useBuiltin`為 false，則禁用必應品牌。 可以`state`忽略該值，因為它已被棄用。
 
 ## <a name="update-brands-model-settings"></a>更新品牌模型設定
 
-[更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)會更新指定之帳戶中的品牌模型設定。 品牌模型設定表示是否已從 Bing 品牌資料庫中啟用偵測。 如果未啟用 Bing 品牌，影片索引器將只會從指定之帳戶的自訂品牌模型中偵測品牌。
+[更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)API 更新指定帳戶中的品牌模型設置。 品牌模型設定表示是否已從 Bing 品牌資料庫中啟用偵測。 如果未啟用必應品牌，視頻索引子將僅檢測指定帳戶的自訂品牌模型中的品牌。
 
-**UseBuiltIn**旗標設為 true 時，表示已啟用 Bing 品牌。 如果 *useBuiltin* 為 false，則會停用 Bing 品牌。
+設置為`useBuiltIn`true 的標誌表示必應品牌已啟用。 如果`useBuiltin`為 false，則禁用必應品牌。
 
 ### <a name="response"></a>回應
 
-成功更新品牌模型設定時，沒有任何傳回的內容。
+成功更新品牌模型設置時，沒有返回的內容。
 
 ## <a name="next-steps"></a>後續步驟
 

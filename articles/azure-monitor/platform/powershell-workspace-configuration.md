@@ -1,21 +1,21 @@
 ---
-title: 使用 PowerShell 建立和設定 Log Analytics 工作區 | Microsoft Docs
-description: Azure 監視器中的 Log Analytics 工作區會將資料從您的內部部署或雲端基礎結構中的伺服器儲存。 您可以在 Azure 診斷產生電腦資料時，從 Azure 儲存體加以收集。
+title: 使用 PowerShell 創建&配置日誌分析
+description: Azure 監視器中的日誌分析工作區存儲來自本地或雲基礎結構中的伺服器的資料。 您可以在 Azure 診斷產生電腦資料時，從 Azure 儲存體加以收集。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054699"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure 監視器中的 Log Analytics 工作區
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure 監視器中管理日誌分析工作區
 
-您可以使用[Log Analytics PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/) ，從命令列或腳本的一部分，在 Azure 監視器的 Log analytics 工作區上執行各種功能。  您可以使用 PowerShell 執行的工作範例包括︰
+可以使用[日誌分析 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)從命令列或作為腳本的一部分在 Azure 監視器中的日誌分析工作區上執行各種功能。  您可以使用 PowerShell 執行的工作範例包括︰
 
 * 建立工作區
 * 新增或移除方案
@@ -36,8 +36,8 @@ ms.locfileid: "77659267"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
-這些範例適用于 Microsoft.operationalinsights 模組的1.0.0 版或更新版本。
+## <a name="prerequisites"></a>Prerequisites
+這些示例與 Az.運營見解模組的版本 1.0.0 或更高版本一起工作。
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>建立及設定 Log Analytics 工作區
@@ -158,7 +158,7 @@ New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -Worksp
 Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Perf
-New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
 Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
@@ -178,7 +178,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> 定義自訂記錄檔設定的**CustomLogRawJson**參數格式可能會很複雜。 使用[AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0)來取得現有自訂記錄檔的設定。 **Properties**屬性是**CustomLogRawJson**參數所需的設定。
+> **自訂 LogRawJson**參數定義自訂日誌配置的格式可能很複雜。 使用[Get-Az操作見解資料來源](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0)檢索現有自訂日誌的配置。 **屬性**是**自訂日誌 RawJson**參數所需的配置。
 
 在上述範例中，regexDelimiter 已定義為用於換行的 "\\n"。 記錄分隔符號也可能是時間戳記。  以下是支援的格式：
 
@@ -196,10 +196,10 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> 其中 + 是 + 或 - <br> zzzz 是時間位移 | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是常值的字母 T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>設定 Log Analytics 以傳送 Azure 診斷
-若要以無代理程式的方式監視 Azure 資源，資源需要啟用 Azure 診斷並將其設定為寫入至 Log Analytics 工作區。 這種方法會將資料直接傳送到工作區，而不需要將資料寫入儲存體帳戶。 支援的資源包括：
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>配置日誌分析以發送 Azure 診斷
+若要以無代理程式的方式監視 Azure 資源，資源需要啟用 Azure 診斷並將其設定為寫入至 Log Analytics 工作區。 此方法將資料直接發送到工作區，並且不需要將資料寫入存儲帳戶。 支援的資源包括：
 
-| 資源類型 | 記錄檔 | 度量 |
+| 資源類型 | 記錄 | 計量 |
 | --- | --- | --- |
 | 應用程式閘道    | 是 | 是 |
 | 自動化帳戶     | 是 | |
@@ -217,12 +217,12 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | 搜尋服務         | 是 | 是 |
 | 服務匯流排命名空間   |     | 是 |
 | SQL (v12)               |     | 是 |
-| Web Sites               |     | 是 |
+| 網站               |     | 是 |
 | Web 伺服器陣列        |     | 是 |
 
 如需可用度量的詳細資訊，請參閱[支援 Azure 監視器的度量](../../azure-monitor/platform/metrics-supported.md)。
 
-如需可用記錄的詳細資料，請參閱[支援的服務和資源記錄的架構](../../azure-monitor/platform/diagnostic-logs-schema.md)。
+有關可用日誌的詳細資訊，請參閱[資源日誌的受支援服務和架構](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -235,15 +235,15 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 您也可以使用前述 Cmdlet，來收集不同訂用帳戶中之資源的記錄。 因為您會提供建立記錄之資源和記錄所傳送至之工作區這兩個項目的識別碼，因此這個 Cmdlet 可跨訂用帳戶運作。
 
 
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>設定 Log Analytics 工作區以從儲存體收集 Azure 診斷
-若要從傳統雲端服務或 Service Fabric 叢集的執行中執行個體內收集記錄檔資料，您必須先將資料寫入 Azure 儲存體。 接著會設定 Log Analytics 工作區，以從儲存體帳戶收集記錄。 支援的資源包括：
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>配置日誌分析工作區以從存儲收集 Azure 診斷
+若要從傳統雲端服務或 Service Fabric 叢集的執行中執行個體內收集記錄檔資料，您必須先將資料寫入 Azure 儲存體。 然後，將日誌分析工作區配置為從存儲帳戶收集日誌。 支援的資源包括：
 
 * 傳統雲端服務 (Web 和背景工作角色)
 * Service Fabric 叢集
 
 下列範例示範如何執行：
 
-1. 列出工作區將為其編制索引資料的現有儲存體帳戶和位置
+1. 列出工作區將從中索引資料的現有存儲帳戶和位置
 2. 建立組態以讀取儲存體帳戶
 3. 更新新建立的組態以檢索其他位置的資料
 4. 刪除新建立的組態

@@ -16,10 +16,10 @@ ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c8314b04c05e2ecba2715b807171b5c1a2fa988a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646858"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>將 SQL Server 資料庫移轉至 Azure VM 中的 SQL Server
@@ -30,7 +30,7 @@ ms.locfileid: "75646858"
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
   > [!NOTE]
-  > SQL Server 2008 和 SQL Server 2008 R2 已接近內部部署實例的[支援生命週期結尾](https://www.microsoft.com/sql-server/sql-server-2008)。 若要擴充支援，您可以將 SQL Server 實例遷移至 Azure VM，或購買擴充的安全性更新以將其保留在內部部署。 如需詳細資訊，請參閱[使用 Azure 擴充 SQL Server 2008 和 2008 R2 的支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
+  > SQL Server 2008 和 SQL Server 2008 R2 即將[結束其本地實例的支援生命週期](https://www.microsoft.com/sql-server/sql-server-2008)。 要擴展支援，可以將 SQL Server 實例遷移到 Azure VM，或者購買擴展安全更新以將其保存在本地。 有關詳細資訊，請參閱使用[Azure 擴展對 SQL Server 2008 和 2008 R2 的支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>主要的移轉方法有哪些？
 主要的移轉方法如下：
@@ -68,7 +68,7 @@ ms.locfileid: "75646858"
 | [使用新增 Azure 複本精靈](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 或更新版本 |SQL Server 2012 或更新版本 |[Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |可將停機時間縮到最短，請在您有內部部署的 AlwaysOn 部署時使用 |
 | [使用 SQL Server 異動複寫](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 或更新版本 |SQL Server 2005 或更新版本 |[Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |請在您需要將停機時間縮到最短且沒有內部部署的 AlwaysOn 部署時使用 |
 
-## <a name="backup-and-restore"></a>備份及還原
+## <a name="backup-and-restore"></a>備份與還原
 備份壓縮的資料庫，並將備份複製到 VM，接著還原資料庫。 如果您的備份檔案大於 1 TB，您必須等量磁碟區，因為 VM 磁碟的大小上限為 1 TB。 您可以使用下列一般步驟，使用此手動方法來移轉使用者資料庫：
 
 1. 執行完整資料庫備份至內部部署位置。

@@ -1,5 +1,5 @@
 ---
-title: 遷移至 MSAL.NET
+title: 遷移到MSAL.NET
 titleSuffix: Microsoft identity platform
 description: 了解適用於 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 與適用於 .NET 的 Azure AD 驗證程式庫 (ADAL.NET) 之間的差異，以及如何遷移至 MSAL.NET。
 services: active-directory
@@ -13,25 +13,25 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cccb886e13482292e8ab9afa2b34bd9dd2c3229b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050314"
 ---
 # <a name="migrating-applications-to-msalnet"></a>將應用程式遷移至 Azure
 
 適用於 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 和適用於 .NET 的 Azure AD 驗證程式庫 (ADAL.NET) 都用來驗證 Azure AD 實體以及向 Azure AD 要求權杖。 到目前為止，大多數開發人員都已使用 Azure AD 驗證程式庫 (ADAL) 要求權杖，進而使用開發人員適用的 Azure AD 平台 (v1.0) 驗證 Azure AD 身分識別 (公司和學校帳戶)。 使用 MSAL：
 
-- 您可以使用 Microsoft 身分識別平臺端點，驗證更廣泛的 Microsoft 身分識別集（Azure AD 身分識別和 Microsoft 帳戶，以及透過 Azure AD B2C 的社交和本機帳戶）。
-- 您的使用者將獲得最佳的單一登入體驗。
-- 您的應用程式可以啟用累加式同意，而且支援條件式存取變得更容易
-- 您可以從創新中獲益。
+- 在使用 Microsoft 標識平臺終結點時，可以通過 Azure AD B2C 對更廣泛的 Microsoft 標識（Azure AD 標識和 Microsoft 帳戶以及社交和本地帳戶）進行身份驗證，
+- 您的使用者將獲得最佳的單點登錄體驗。
+- 您的應用程式可以啟用增量同意，並且支援條件訪問更容易
+- 您從創新中獲益。
 
-**MSAL.NET 現在是建議用於 Microsoft 身分識別平臺的驗證程式庫**。 在 ADAL.NET 上不會執行任何新功能。 致力於改善 MSAL。
+**MSAL.NET現在是推薦的auth庫與微軟身份平臺一起使用**。 ADAL.NET不會實現任何新功能。 這些努力的重點是改進MSAL。
 
-本文說明適用于 .net 的 Microsoft 驗證程式庫（MSAL.NET）和適用于 .NET 的 Azure AD 驗證程式庫（ADAL.NET）之間的差異，並協助您遷移至 MSAL。  
+本文介紹了 .NET 的 Microsoft 身份驗證庫 （MSAL.NET） 和 .NET （ADAL.NET） 的 Azure AD 身份驗證庫之間的差異，並説明您遷移到 MSAL。  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 與 MSAL 應用程式之間的差異
 
@@ -39,7 +39,7 @@ ms.locfileid: "78299878"
 
 如果您已熟悉開發人員適用的 Azure AD (v1.0) 端點 (和 ADAL.NET)，您可以閱讀 [Microsoft 身分識別平台 (v2.0) 端點有何不同？](active-directory-v2-compare.md)。
 
-不過，如果您的應用程式需要使用舊版的 [Active Directory 同盟服務 (ADFS)](/windows-server/identity/active-directory-federation-services) 登入使用者，您仍然需要使用 ADAL.NET。 如需詳細資訊，請參閱[ADFS 支援](https://aka.ms/msal-net-adfs-support)。
+不過，如果您的應用程式需要使用舊版的 [Active Directory 同盟服務 (ADFS)](/windows-server/identity/active-directory-federation-services) 登入使用者，您仍然需要使用 ADAL.NET。 有關詳細資訊，請參閱[ADFS 支援](https://aka.ms/msal-net-adfs-support)。
 
 下圖摘要說明 ADAL.NET 與 MSAL.NET 之間的一些差異：![並排顯示程式碼](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
@@ -51,7 +51,7 @@ ADAL.NET 取用自 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www
 
 ### <a name="scopes-not-resources"></a>範圍，而非資源
 
-ADAL.NET 可取得「資源」的權杖，但 MSAL.NET 可取得「範圍」的權杖。 有些 MSAL.NET AcquireToken 覆寫需要名為 scopes 的參數 (`IEnumerable<string> scopes`)。 此參數是簡單的字串清單，其宣告所需的權限和要求的資源。 知名的範圍是 [Microsoft Graph 範圍](/graph/permissions-reference)。
+ADAL.NET 可取得「資源」** 的權杖，但 MSAL.NET 可取得「範圍」** 的權杖。 有些 MSAL.NET AcquireToken 覆寫需要名為 scopes 的參數 (`IEnumerable<string> scopes`)。 此參數是簡單的字串清單，其宣告所需的權限和要求的資源。 知名的範圍是 [Microsoft Graph 範圍](/graph/permissions-reference)。
 
 此外，也可以在 MSAL.NET 中存取 v1.0 資源。 請參閱 [v1.0 應用程式範圍](#scopes-for-a-web-api-accepting-v10-tokens)中的詳細資料。 
 
@@ -59,7 +59,7 @@ ADAL.NET 可取得「資源」的權杖，但 MSAL.NET 可取得「範圍」的�
 
 - ADAL.NET 使用 [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) 作為您透過授權單位連線至 Security Token Service (STS) 或授權伺服器的表示法。 相反地，MSAL.NET 的設計是以[用戶端應用程式](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)為主。 其提供兩個不同的類別：`PublicClientApplication` 和 `ConfidentialClientApplication`
 
-- 取得權杖： ADAL.NET 和 MSAL.NET 具有相同的驗證呼叫（`AcquireTokenAsync` 和 `AcquireTokenSilentAsync` 用於 ADAL.NET，而 `AcquireTokenInteractive` 和 `AcquireTokenSilent` 在 MSAL.NET 中），但需要不同的參數。 其中一項差異就是在 MSAL.NET 中，您不必再於每次 AcquireTokenXX 呼叫中傳入應用程式的 `ClientID`。 建置 `ClientID` 或 `IPublicClientApplication` 時，`IConfidentialClientApplication` 確實只會設定一次。
+- 獲取權杖：ADAL.NET和MSAL.NET具有相同的身份驗證調用`AcquireTokenAsync`（對於`AcquireTokenSilentAsync`ADAL.NET，以及`AcquireTokenInteractive``AcquireTokenSilent`MSAL.NET），但需要不同的參數。 其中一項差異就是在 MSAL.NET 中，您不必再於每次 AcquireTokenXX 呼叫中傳入應用程式的 `ClientID`。 建置 `IPublicClientApplication` 或 `IConfidentialClientApplication` 時，`ClientID` 確實只會設定一次。
 
 ### <a name="iaccount-not-iuser"></a>IAccount，而非 IUser
 
@@ -88,7 +88,7 @@ catch(AdalException exception)
 
 請參閱使用 ADAL.NET [取得權杖的建議模式](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token#recommended-pattern-to-acquire-a-token)中的詳細資料。
 
-使用 MSAL.NET 時，您會如 `MsalUiRequiredException`AcquireTokenSilent[ 所述攔截 ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token)。
+使用 MSAL.NET 時，您會如 [AcquireTokenSilent](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token) 所述攔截 `MsalUiRequiredException`。
 
 ```csharp
 catch(MsalUiRequiredException exception)
@@ -123,7 +123,7 @@ MSAL.NET 和 v2.0 端點尚未支援所有的授與。 以下摘要說明 ADAL.N
 互動式 | [互動式驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以互動方式取得權杖](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 整合式 Windows 驗證 | [Windows (Kerberos) 上的整合式驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [整合式 Windows 驗證](msal-authentication-flows.md#integrated-windows-authentication)
 使用者名稱/密碼 | [以使用者名稱和密碼取得權杖](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [使用者名稱密碼驗證](msal-authentication-flows.md#usernamepassword)
-裝置程式碼流程 | [裝置 (不具網頁瀏覽器) 的裝置設定檔](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [裝置程式碼流程](msal-authentication-flows.md#device-code)
+裝置程式碼流程 | [裝置 (不具網頁瀏覽器) 的裝置設定檔](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [設備代碼流](msal-authentication-flows.md#device-code)
 
 #### <a name="confidential-client-applications"></a>機密用戶端應用程式
 
@@ -137,15 +137,15 @@ Web 應用程式 | 授權碼 | [在採用 ADAL.NET 的 Web 應用程式上取得
 
 ### <a name="cache-persistence"></a>快取持續性
 
-ADAL.NET 可讓您使用 `TokenCache` 和 `BeforeAccess` 方法擴充 `BeforeWrite` 類別，以在沒有安全儲存體的平台 (.NET Framework 和 .NET Core) 上實作所需的持續性功能。 如需詳細資訊，請參閱 [ADAL.NET 中的權杖快取序列化](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)。
+ADAL.NET 可讓您使用 `BeforeAccess` 和 `BeforeWrite` 方法擴充 `TokenCache` 類別，以在沒有安全儲存體的平台 (.NET Framework 和 .NET Core) 上實作所需的持續性功能。 如需詳細資訊，請參閱 [ADAL.NET 中的權杖快取序列化](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)。
 
 MSAL.NET 讓權杖快取成為密封類別，並移除其擴充功能。 因此，您的權杖快取持續性實作必須為協助程式類別的形式，其可與密封權杖快取進行互動。 [MSAL.NET 中的權杖快取序列化](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization)會說明此種互動。
 
 ## <a name="signification-of-the-common-authority"></a>常見授權單位的意義
 
-在 v1.0 中，如果您使用 https://login.microsoftonline.com/common 授權單位，即可讓使用者使用任何 AAD 帳戶 (適用於任何組織) 登入。 請參閱 [ADAL.NET 中的授權單位驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
+在 v1.0 中，如果您使用 `https://login.microsoftonline.com/common` 授權單位，即可讓使用者使用任何 AAD 帳戶 (適用於任何組織) 登入。 請參閱 [ADAL.NET 中的授權單位驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-如果您在 v2.0 中使用 https://login.microsoftonline.com/common 授權單位，即可讓使用者使用任何 AAD 組織或 Microsoft 個人帳戶 (MSA) 登入。 在 MSAL.NET 中，如果您想要將登入限制為任何 AAD 帳戶 (與 ADAL.NET 相同的行為)，您需要使用 https://login.microsoftonline.com/organizations。 如需詳細資訊，請參閱`authority`公用用戶端應用程式[中的 ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication) 參數。
+如果您在 v2.0 中使用 `https://login.microsoftonline.com/common` 授權單位，即可讓使用者使用任何 AAD 組織或 Microsoft 個人帳戶 (MSA) 登入。 在 MSAL.NET 中，如果您想要將登入限制為任何 AAD 帳戶 (與 ADAL.NET 相同的行為)，您需要使用 `https://login.microsoftonline.com/organizations`。 如需詳細資訊，請參閱[公用用戶端應用程式](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)中的 `authority` 參數。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 權杖
 
@@ -155,7 +155,7 @@ MSAL.NET 讓權杖快取成為密封類別，並移除其擴充功能。 因此�
 
 v1.0 端點 (由 ADAL 使用) 只會發出 v1.0 權杖。
 
-不過，v2.0 端點 (由 MSAL 使用) 會發出 Web API 接受的權杖版本。 Web API 的應用程式資訊清單屬性可讓開發人員選擇要接受哪個版本的權杖。 請參閱`accessTokenAcceptedVersion`應用程式資訊清單[參考文件中的 ](reference-app-manifest.md)。
+不過，v2.0 端點 (由 MSAL 使用) 會發出 Web API 接受的權杖版本。 Web API 的應用程式資訊清單屬性可讓開發人員選擇要接受哪個版本的權杖。 請參閱[應用程式資訊清單](reference-app-manifest.md)參考文件中的 `accessTokenAcceptedVersion`。
 
 如需 v1.0 和 v2.0 權杖的詳細資訊，請參閱 [Azure Active Directory 存取權杖](access-tokens.md)。
 
@@ -165,7 +165,7 @@ OAuth2 權限是 v1.0 Web API (資源) 應用程式公開給用戶端應用程�
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>要求存取 v1.0 應用程式特定 OAuth2 權限的範圍
 
-如果您想要取得接受 v1.0 權杖之應用程式的權杖（例如， https://graph.microsoft.com)的 Microsoft Graph API，您必須將所需的資源識別碼與該資源的所需 OAuth2 許可權串連，以建立 `scopes`。
+如果要為接受 v1.0 權杖的應用程式獲取權杖（例如 Microsoft 圖形 API，即https://graph.microsoft.com)，您需要通過將所需的資源識別碼與該資源的所需`scopes`OAuth2 許可權串聯來創建。
 
 比方說，若要以使用者名稱存取應用程式識別碼 URI 為 `ResourceId` 的 v1.0 Web API，您可以使用：
 
@@ -173,14 +173,14 @@ OAuth2 權限是 v1.0 Web API (資源) 應用程式公開給用戶端應用程�
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-如果您想要使用 Microsoft Graph API （ https://graph.microsoft.com/)來讀取和寫入 MSAL.NET Azure Active Directory，您會建立範圍的清單，如下列程式碼片段所示：
+如果要使用 Microsoft 圖形 API 使用 MSAL.NET Azure 活動目錄進行https://graph.microsoft.com/)讀取和寫入（，將創建作用域清單，如以下程式碼片段所示：
 
 ```csharp
 ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
-#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告：如果您在與 v1.0 Web API 對應的範圍中有一或兩個斜線，
+#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告： 如果範圍中應與 v1.0 Web API 對應一個或兩個斜杠
 
 如果您想要寫入對應至 Azure Resource Manager API (https://management.core.windows.net/) 的範圍，則必須要求下列範圍 (請注意有兩個斜線) 
 
@@ -196,7 +196,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Azure AD 所用的邏輯如下所示：
 - 若為具有 v1.0 存取權杖 (唯一可能) 的 ADAL (v1.0) 端點，則 aud=resource
 - 若為要求資源存取權杖並接受 v2.0 權杖的 MSAL (v2.0 端點)，則 aud=resource.AppId
-- 對於要求資源存取權杖並接受 v1.0 存取權杖 (上述案例) 的 MSAL (v2.0 端點)，Azure AD 會採用最後一個斜線之前的一切並以它作為資源識別碼，藉此剖析要求範圍中的所需對象。 因此，如果 https:\//database.windows.net 預期的對象為 "https://database.windows.net/"，您必須要求 https:\//database.windows.net//.default 的範圍。 另請參閱問題 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗 #747
+- 對於要求資源存取權杖並接受 v1.0 存取權杖 (上述案例) 的 MSAL (v2.0 端點)，Azure AD 會採用最後一個斜線之前的一切並以它作為資源識別碼，藉此剖析要求範圍中的所需對象。 因此，如果 https:\//database.windows.net 預期的對象為 "https://database.windows.net/"，您必須要求 https:\//database.windows.net//.default 的範圍。 另請參閱問題 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)： 省略資源 URL 的尾隨斜杠，這會導致 sql auth 故障#747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>要求存取 v1.0 應用程式所有權限的範圍
@@ -210,7 +210,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>在用戶端認證流程 / 精靈應用程式案例中要求的範圍
 
-在用戶端認證流程案例中，要傳遞的範圍也會是 `/.default`。 此範圍會告訴 Azure AD：「系統管理員在應用程式註冊中已同意的所有應用層級許可權。
+在用戶端認證流程案例中，要傳遞的範圍也會是 `/.default`。 此範圍告訴 Azure AD："管理員在應用程式註冊中同意的所有應用級許可權。
 
 ## <a name="adal-to-msal-migration"></a>MSAL 至 ADAL 的移轉
 
@@ -218,9 +218,9 @@ var scopes = new [] {  ResourceId+"/.default"};
 * 長時間執行的服務，其執行的動作包括代表使用者重新整理儀表板，然而使用者不再連線。 
 * Web 伺服陣列案例，可讓用戶端將 RT 帶至 Web 服務 (快取是在用戶端進行 (加密的 cookie)，而不是在伺服器端進行)
 
-基於安全性理由，MSAL.NET 不會公開重新整理權杖： MSAL 會為您處理重新整理權杖。 
+出於安全原因，MSAL.NET不會公開刷新權杖：MSAL 會為您處理刷新權杖。 
 
-幸運的是，MSAL.NET 現在有一個 API，可讓您將先前的重新整理權杖（使用 ADAL 取得）遷移到 `IConfidentialClientApplication`：
+幸運的是，MSAL.NET現在有一個 API，允許您將以前的刷新權杖（使用 ADAL 獲取）遷移到 ： `IConfidentialClientApplication`
 
 ```csharp
 /// <summary>
@@ -238,7 +238,7 @@ IByRefreshToken.AcquireTokenByRefreshToken(IEnumerable<string> scopes, string re
  
 使用這個方法，您可提供先前所用的重新整理權杖，以及您所需的任何範圍 (資源)。 此重新整理權杖會換成新的重新整理權杖，並快取到您的應用程式中。  
 
-由於這個方法主要用於非典型案例，若未先將它轉換為 `IConfidentialClientApplication`，則無法使用 `IByRefreshToken` 立即存取。
+由於這個方法主要用於非典型案例，若未先將它轉換為 `IByRefreshToken`，則無法使用 `IConfidentialClientApplication` 立即存取。
 
 此程式碼片段顯示機密用戶端應用程式中的一些移轉程式碼。 `GetCachedRefreshTokenForSignedInUser` 會擷取由舊版應用程式存放於某個儲存體的重新整理權杖，而該權杖用來運用 ADAL 2.x。 `GetTokenCacheForSignedInUser` 會將已登入使用者的快取還原序列化 (因為機密用戶端應用程式的每位使用者都應該有一個快取)。
 

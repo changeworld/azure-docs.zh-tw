@@ -1,15 +1,15 @@
 ---
-title: 以動作專案為基礎的 Azure Service Fabric 執行者中的事件
-description: 瞭解 Service Fabric Reliable Actors 的事件，這是在動作專案與用戶端之間進行通訊的有效方式。
+title: 基於參與者的 Azure 服務結構參與者中的事件
+description: 瞭解服務結構可靠參與者的事件，這是參與者和用戶端之間溝通的有效方式。
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639661"
 ---
 # <a name="actor-events"></a>動作項目事件
@@ -100,9 +100,9 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 
 
 ## <a name="next-steps"></a>後續步驟
-* [動作項目重新進入](service-fabric-reliable-actors-reentrancy.md)
+* [演員重入](service-fabric-reliable-actors-reentrancy.md)
 * [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [JAVA 示例代碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)

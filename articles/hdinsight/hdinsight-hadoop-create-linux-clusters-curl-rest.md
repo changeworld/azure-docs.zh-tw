@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435535"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239927"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
 
@@ -28,9 +28,9 @@ Azure REST API 可讓您對裝載於 Azure 平台的服務執行管理作業，�
 
 ## <a name="create-a-template"></a>建立範本
 
-Azure Resource Manager 範本是描述**資源群組**和其中所有資源（例如 HDInsight）的 JSON 檔。這個以範本為基礎的方法可讓您在一個範本中定義 HDInsight 所需的資源。
+Azure 資源管理器範本是 JSON 文檔，用於描述**資源組**及其中的所有資源（如 HDInsight）。此基於範本的方法允許您在一個範本中定義 HDInsight 所需的資源。
 
-以下 JSON 文件是 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 提供的範本和參數檔合併工具，它會使用密碼來建立以 Linux 為基礎的叢集，以保護 SSH 使用者帳戶。
+以下 JSON 文檔是從 的範本和參數檔合併，[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)它使用密碼創建基於 Linux 的群集來保護 SSH 使用者帳戶。
 
    ```json
    {
@@ -205,14 +205,14 @@ Azure Resource Manager 範本是描述**資源群組**和其中所有資源（�
    }
    ```
 
-本文件中的步驟引用此範例。 使用您叢集的值來取代 **Parameters** 區段中的範例值。
+本文件中的步驟引用此範例。 使用您叢集的值來取代 **Parameters** 區段中的範例值**。
 
 > [!IMPORTANT]  
 > 本範本使用 HDInsight 叢集的背景工作節點預設數目 (4)。 如果您規劃 32 個以上的背景工作節點，則必須選取具有至少 8 個核心和 14 GB RAM 的前端節點大小。
 >
 > 如需節點大小和相關成本的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="sign-in-to-your-azure-subscription"></a>登入您的 Azure 訂用帳戶
+## <a name="sign-in-to-your-azure-subscription"></a>登入您的 Azure 訂用帳戶：
 
 請依照[開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) 所述的步驟操作，並使用 `az login` 命令連接到您的訂用帳戶。
 
@@ -223,7 +223,7 @@ Azure Resource Manager 範本是描述**資源群組**和其中所有資源（�
 
 1. 從命令列中，使用下列命令列出您的 Azure 訂用帳戶。
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -231,7 +231,7 @@ Azure Resource Manager 範本是描述**資源群組**和其中所有資源（�
 
 2. 使用以下命令，在 Azure Active Directory 中建立應用程式。
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
@@ -244,7 +244,7 @@ Azure Resource Manager 範本是描述**資源群組**和其中所有資源（�
 
 3. 使用下列命令以 **App ID** 建立服務主體。
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -252,7 +252,7 @@ Azure Resource Manager 範本是描述**資源群組**和其中所有資源（�
 
 4. 使用 **Object ID** 值將 **Owner** 角色指派給服務主體。 使用稍早取得的**訂用帳戶 ID** 。
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -347,12 +347,12 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已成功建立 HDInsight 叢集，請使用下列各項來瞭解如何使用您的叢集。
+現在您已成功創建了 HDInsight 群集，請使用以下內容瞭解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 叢集
 
 * [搭配 HDInsight 使用 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [〈搭配 HDInsight 使用 MapReduce〉](hadoop/hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 叢集
 

@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure 虛擬機器的常見 PowerShell 命令
+title: Azure 虛擬機器的通用 PowerShell 命令
 description: 可讓您在 Azure 中開始建立及管理 Windows VM 的常用 PowerShell 命令。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 1d66908d956f60ec894af50c45fd64387639addf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981284"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>用於建立及管理 Azure 虛擬機器的常用 PowerShell 命令
 
-本文涵蓋一些 Azure PowerShell 命令，您可用來建立及管理您的 Azure 訂用帳戶中的虛擬機器。  如需特定命令列參數和選項的詳細說明，您可以使用**get-help** *命令*。
+本文涵蓋一些 Azure PowerShell 命令，您可用來建立及管理您的 Azure 訂用帳戶中的虛擬機器。  如需特定命令列參數和選項的詳細說明，您可以使用 **Get-Help** *命令*。
 
  
 
@@ -37,7 +37,7 @@ ms.locfileid: "75981284"
 
 | Task | Command |
 | ---- | ------- |
-| 建立簡易 VM | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -命名 $myVM <BR></BR><BR></BR> New-AzVM 有一組「已簡化」的參數，其只需要單一名稱。 -Name 的值會用來作為所有建立新 VM 所需資源的名稱。 您可以指定多個，但這是唯一必要的值。|
+| 建立簡易 VM | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -命名 $myVM <BR></BR><BR></BR> New-AzVM 有一組「已簡化」** 的參數，其只需要單一名稱。 -Name 的值會用來作為所有建立新 VM 所需資源的名稱。 您可以指定多個，但這是唯一必要的值。|
 | 從自訂映像建立 VM | New-AzVm -ResourceGroupName $myResourceGroup -Name $myVM ImageName "myImage" -Location $location  <BR></BR><BR></BR>您必須已建立自己的[受控映像](capture-image-resource.md)。 您可以使用映像來建立多個相同的 VM。 |
 
 

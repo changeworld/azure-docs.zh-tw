@@ -9,10 +9,10 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174512"
 ---
 此工作的步驟會根據下列組態參考清單中的值來使用 VNet。 其他設定和名稱也會概述於這份清單中。 雖然我們會根據這份清單中的值加入變數，但不會在任何步驟中直接使用這份清單。 您可以複製清單以供參考，並使用您自己的值來取代其中的值。
@@ -22,9 +22,9 @@ ms.locfileid: "67174512"
 * 資源群組 = "TestRG"
 * Subnet1 名稱 = "FrontEnd" 
 * Subnet1 位址空間 = "192.168.1.0/24"
-* 閘道子網路名稱："GatewaySubnet"，您必須一律將閘道器子網路命名為 *GatewaySubnet*。
+* 閘道器子網路名稱："GatewaySubnet"，您必須一律將閘道器子網路命名為 *GatewaySubnet*。
 * 閘道子網路位址空間 = "192.168.200.0/26"
-* 區域 = "East US"
+* 區域 = "美國東部"
 * 閘道名稱 = "GW"
 * 閘道 IP 名稱 = "GWIP"
 * 閘道 IP 組態名稱 = "gwipconf"

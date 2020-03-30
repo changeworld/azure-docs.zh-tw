@@ -1,64 +1,64 @@
 ---
-title: 通用介面-IoT 隨插即用預覽 |Microsoft Docs
-description: IoT 隨插即用開發人員通用介面的描述
+title: 通用介面 - IoT 隨插即用預覽 |微軟文檔
+description: 物聯網隨插即用開發人員通用介面的說明
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234695"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 隨插即用預覽通用介面
 
-所有 IoT 隨插即用裝置都應該執行一些通用介面。 通用介面可受益于 IoT 解決方案，因為它們提供一致的功能。 [認證](tutorial-build-device-certification.md)需要您的裝置執行數個通用介面。 您可以從公用模型存放庫取得通用介面定義。
+所有 IoT 隨插即用裝置都有望實現一些通用介面。 通用介面使 IoT 解決方案受益，因為它們提供了一致的功能。 [認證](tutorial-build-device-certification.md)要求您的設備實現多個通用介面。 可以從公共模型存儲庫檢索通用介面定義。
 
-## <a name="summary-of-common-interfaces"></a>通用介面的摘要
+## <a name="summary-of-common-interfaces"></a>常見介面摘要
 
-| 名稱 | ID | 說明 | 由 Azure IoT SDK 實行 | 必須在功能模型中宣告 |
+| 名稱 | ID | 描述 | 由 Azure IoT SDK 實現 | 必須在功能模型中聲明 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| 模型資訊 | urn： azureiot： ModelDiscovery： ModelInformation：1 | 用於宣告功能模型識別碼和介面的裝置。 所有 IoT 隨插即用裝置都需要。 | 是 | 否 |
-| 數位對應項用戶端 SDK 資訊 | urn： azureiot： Client： SDKInformation：1 | 用來將裝置連接到 Azure 的用戶端 SDK。 [認證](tutorial-build-device-certification.md)所需 | 是 | 否 |
-| 裝置資訊 | urn： azureiot：： DeviceInformation：1 | 裝置的硬體和作業系統相關資訊。 [認證](tutorial-build-device-certification.md)所需 | 否 | 是 |
-| 模型定義 | urn： azureiot： ModelDiscovery： ModelDefinition：1 | 適用于裝置，以宣告其功能模型和介面的完整定義。 當模型定義不是裝載于模型存放庫中時，必須執行。 | 否 | 是 |
-| 數位對應項 | urn： azureiot： ModelDiscovery： DigitalTwin：1 | 供解決方案開發人員取得數位對應項的功能模型識別碼和介面識別碼。 IoT 隨插即用裝置不會宣告或執行此介面。 | 否 | 否 |
+| 模型資訊 | urn：azureiot：模型發現：模型資訊：1 | 供設備聲明功能型號 ID 和介面。 所有 IoT 隨插即用裝置都需要。 | 是 | 否 |
+| 數位雙用戶端 SDK 資訊 | urn：azureiot：用戶端：SDK資訊：1 | 用於將設備與 Azure 連接的用戶端 SDK。 [認證](tutorial-build-device-certification.md)所需的 | 是 | 否 |
+| 裝置資訊 | urn：azureiot：裝置管理：設備資訊：1 | 有關設備的硬體和作業系統資訊。 [認證](tutorial-build-device-certification.md)所需的 | 否 | 是 |
+| 模型定義 | urn：azureiot：模型發現：模型定義：1 | 供設備聲明其功能模型和介面的完整定義。 當模型定義未託管在模型存儲庫中時，必須實現。 | 否 | 是 |
+| 數位分身 | urn：azureiot：模型發現：數位孿生：1 | 供解決方案開發人員檢索數位孿生的功能模型 ID 和介面 ID。 此介面不是由 IoT 隨插即用裝置聲明或實現的。 | 否 | 否 |
 
-- 由 Azure IoT SDK 實行-Azure IoT SDK 是否會執行介面中宣告的功能。 使用 Azure IoT SDK 的 IoT 隨插即用裝置不需要執行此介面。
-- 必須在功能模型中宣告-如果為 [是]，則必須在此 IoT 隨插即用裝置的裝置功能模型 `"implements":` 區段內宣告此介面。
+- 由 Azure IoT SDK 實現 - Azure IoT SDK 是否實現在介面中聲明的功能。 使用 Azure IoT SDK 的 IoT 隨插即用裝置不需要實現此介面。
+- 必須在功能模型中聲明 - 如果為"是"，則必須在此 IoT`"implements":`隨插即用裝置的裝置功能模型部分中聲明此介面。
 
-## <a name="retrieve-interface-definitions-from-the-public-repository"></a>從公用存放庫取出介面定義
+## <a name="retrieve-interface-definitions-from-the-public-repository"></a>從公共存儲庫檢索介面定義
 
 ### <a name="cli"></a>CLI
 
-您可以使用適用于 Azure CLI 的 Azure IoT 擴充功能，從公用模型存放庫中取出通用介面。
+可以使用 Azure CLI 的 Azure IoT 擴展從公共模型存儲庫檢索公共介面。
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {InterfaceID}
 ```
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {ModelID}
 ```
 
-### <a name="vs-code"></a>VS Code
+### <a name="vs-code"></a>VS 程式碼
 
 1. 使用 **Ctrl+Shift+P** 開啟命令選擇區。
 
-1. 輸入**隨插即用**然後選取 [ **IoT 隨插即用：開啟模型存放庫**] 命令。 選擇 [**公用存放庫**]。 公用模型存放庫會在 VS Code 中開啟。
+1. 輸入**隨插即用**，然後選擇**IoT 隨插即用：打開模型存儲庫**命令。 選擇**公共存儲庫**。 公用模型存放庫會在 VS Code 中開啟。
 
-1. 在公用模型存放庫中，于 [搜尋] 欄位中輸入介面名稱。
+1. 在公共模型存儲庫中，在搜索欄位中輸入介面名稱。
 
-1. 若要建立介面的本機複本，請在搜尋結果中選取該複本，然後選取 [**下載**]。
+1. 要創建介面的本機複本，請在搜尋結果中選擇它，然後選擇 **"下載**"。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解一般介面，以下是一些額外的資源：
+現在，您已經瞭解了通用介面，下面是一些其他資源：
 
-- [數位對應項定義語言（DTDL）](https://aka.ms/DTDL)
+- [數位雙定義語言 （DTDL）](https://aka.ms/DTDL)
 - [C 裝置 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [物聯網 REST API](https://docs.microsoft.com/rest/api/iothub/device)

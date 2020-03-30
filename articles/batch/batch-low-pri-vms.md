@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 12/05/2019
-ms.author: markscu
+ms.date: 03/19/2020
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: dfd79bc9cfd8e897cdbb18127deaf8da4922ef3a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023713"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053919"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>使用低優先順序的 VM 搭配 Batch
 
@@ -29,18 +29,18 @@ Azure Batch 提供低優先順序的虛擬機器 (VM)，可降低 Batch 工作�
 低優先順序的 VM 比起專用的 VM，能以大幅降低的價格提供。 如需定價詳細資料，請參閱 [Batch 定價](https://azure.microsoft.com/pricing/details/batch/)。
 
 > [!NOTE]
-> [點 vm](https://azure.microsoft.com/pricing/spot/)現在適用于[單一實例 vm](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms)和[VM 擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)。 「找出 Vm」是低優先順序 Vm 的演進，但不同之處在于該定價可能有所不同，而且在配置「點」 Vm 時，可以設定選擇性的最大價格。
+> [Spot VM](https://azure.microsoft.com/pricing/spot/)現在可用於[單個實例 VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms)和 VM[規模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)。 競價 VM 是低優先順序 VM 的演變，但不同的是定價可能有所不同，在分配 Spot VM 時可以設置可選的最高價格。
 >
-> Azure Batch 集區會在2020的第一季使用新版本的[Batch api 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)開始支援點 vm。 低優先順序的 Vm 將會繼續受到支援（使用目前的 API 和工具版本）至少12個月，以讓您有足夠的時間可供遷移來找出 Vm。 
+> Azure 批次處理池將在 Spot VM 普遍可用後的幾個月內開始支援 Spot VM，並推出[新版本的批次處理 API 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)。 Spot VM 支援可用後，低優先順序 VM 將被棄用 - 將繼續使用當前 API 和工具版本支援它們至少 12 個月，以便有足夠的時間遷移到 Spot VM。 
 >
-> [雲端服務](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)設定集區將不支援「找不到」 vm。 若要使用點 Vm，必須將雲端服務集區遷移至[虛擬機器](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)設定集區。
+> [雲服務配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)池不支援 Spot VM。 要使用 Spot VM，雲服務池將需要遷移到[虛擬機器配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)池。
 
 
 ## <a name="use-cases-for-low-priority-vms"></a>低優先順序 VM 的使用案例
 
 如果有低優先順序的 VM 的特性，哪些工作負載可以使用和無法使用它們？ 一般情況下，批次處理工作負載就很適合，因為作業會區分成許多平行的工作，或是會將許多作業相應放大並分散於許多 VM。
 
--   若要充分使用 Azure 中的剩餘容量，可將適當的作業擴增。
+-   若要充分使用 Azure 中的剩餘容量，可將適當的作業相應放大。
 
 -   VM 偶爾可能會無法使用或被優先佔用，這會導致作業容量降低，且可能會導致工作中斷及重新執行。 因此，作業在可使用的時間內必須是有彈性的，才會將作業加以執行。
 
@@ -150,7 +150,7 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 -   您可以取得服務定義之 **$CurrentLowPriorityNodes** 變數的值。
 
 -   您可以取得服務定義之 **$PreemptedNodeCount** 變數的值。 
-    此變數會傳回優先佔用狀態中的節點數目，並可依無法使用的優先佔用節點數目，將您的專用節點數目擴大或縮減。
+    此變數會傳回優先佔用狀態中的節點數目，並可依無法使用的優先佔用節點數目，將您的專用節點數目相應增加或相應減少。
 
 ## <a name="jobs-and-tasks"></a>工作 (Job) 和工作 (Task)
 
@@ -168,7 +168,7 @@ VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行�
 -   優先佔用的 VM 都會將其狀態更新為**優先佔用**。
 -   如果工作是在優先佔用的節點 VM 上執行，就會將這些工作重新排入佇列並再次執行。
 -   VM 實際上會被刪除，導致遺失在 VM 上本機儲存的任何資料。
--   集區會繼續嘗試觸達可用的低優先順序節點之目標數目。 找到取代容量時，節點會保留其識別碼，但在可供工作排程使用之前，會先重新初始化，逐步變成**建立中**和**啟動中**狀態。
+-   集區會繼續嘗試觸達可用的低優先順序節點之目標數目。 找到替換容量後，節點將保留其已保留的 I，但會重新初始化，在可用於任務計畫之前，通過 **"創建****"和"啟動"** 狀態。
 -   優先佔用計數會在 Azure 入口網站中作為計量提供使用。
 
 ## <a name="metrics"></a>計量
@@ -182,8 +182,8 @@ VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行�
 若要檢視 Azure 入口網站中的計量：
 
 1. 在入口網站中瀏覽至您的 Batch 帳戶，並檢視 Batch 帳戶的設定。
-2. 從 [監視] 區段選取 [計量]。
-3. 從 [可用的計量] 清單中選取您所需的計量。
+2. 從 [監視]**** 區段選取 [計量]****。
+3. 從 [可用的計量]**** 清單中選取您所需的計量。
 
 ![低優先順序節點的計量](media/batch-low-pri-vms/low-pri-metrics.png)
 
@@ -191,4 +191,4 @@ VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行�
 
 * 請參閱 [適用於開發人員的 Batch 功能概觀](batch-api-basics.md)，這是任何準備使用 Batch 的人員不可或缺的資訊。 本文包含 Batch 服務資源 (例如集區、節點、作業和工作) 的詳細資訊，以及在建置 Batch 應用程式時可使用的許多 API 功能。
 * 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。
-* 開始規劃從低優先順序 Vm 移動到找出 Vm。 如果您使用低優先順序的 Vm 搭配**雲端服務**設定集區，請規劃移至**虛擬機器**設定集區。
+* 開始計畫從低優先順序 VM 到 Spot VM 的遷移。 如果將低優先順序 VM 與**雲服務配置**池一起使用，則計畫遷移到**虛擬機器配置**池。
