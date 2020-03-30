@@ -9,17 +9,17 @@ ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359919"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>使用 Azure PowerShell 以應用程式閘道管理網路流量
 
 針對您維護的伺服器，可以使用應用程式閘道來管理及保護其網路流量。 您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，它使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作為後端伺服器以管理網路流量。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 設定網路
@@ -28,7 +28,7 @@ ms.locfileid: "68359919"
 
 如果您想要的話，可以使用 [Azure CLI](tutorial-manage-web-traffic-cli.md) 完成此程序。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -76,9 +76,9 @@ $pip = New-AzPublicIpAddress `
 
 在本節中，您會建立支援應用程式閘道的資源，並在最後建立應用程式閘道。 您所建立的資源包括：
 
-- IP 組態和前端連接埠 - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
-- 預設集區 - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
-- 預設接聽程式和規則 - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
+- IP 組態和前端連接埠** - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
+- 預設集區** - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
+- 預設接聽程式和規則** - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
@@ -240,7 +240,7 @@ Update-AzVmss `
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 
-使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 來取得應用程式閘道的公用 IP 位址。 將公用 IP 位址複製並貼到您瀏覽器的網址列。
+使用[Get-AzPublicIP 位址](/powershell/module/az.network/get-azpublicipaddress)獲取應用程式閘道的公共 IP 位址。 將公用 IP 位址複製並貼到您瀏覽器的網址列。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

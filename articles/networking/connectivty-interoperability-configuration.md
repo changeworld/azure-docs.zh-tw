@@ -1,5 +1,5 @@
 ---
-title: Azure 後端連線功能的互通性：組態詳細資料 | Microsoft Docs
+title: Azure 後端連線功能的互通性：組態詳細資料 |Microsoft Docs
 description: 本文說明您可用來分析互通性 (ExpressRoute、站對站 VPN 和在 Azure 中對等互連的虛擬網路之間) 之測試設定的組態詳細資料。
 documentationcenter: na
 services: networking
@@ -11,23 +11,23 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68335938"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
 
-本文說明[測試設定的設定][Setup]詳細資料。 測試設定可協助您分析 Azure 網路服務如何在控制平面層級和資料平面層級進行相互操作。
+本文將介紹[測試設定][Setup]的組態詳細資料。 測試設定可協助您分析 Azure 網路服務如何在控制平面層級和資料平面層級進行相互操作。
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要瞭解如何設定兩個 Vnet 之間的對等互連, 請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]。
+下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]****。
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您想要讓中樞 VNet 允許輪輻 VNet 使用中樞的閘道, 請選取 [**允許閘道傳輸**]。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果希望中心 VNet 允許分支 VNet 使用集線器的閘道，請選擇"**允許閘道傳輸**"。
 
 [![2]][2]
 
@@ -51,7 +51,7 @@ ms.locfileid: "68335938"
 
 [![5]][5]
 
-下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 (Cisco ASR1000 路由器在測試設定中作為 CE 路由器使用。)當平行設定站對站 VPN 和 ExpressRoute 線路，以將內部部署網路連線至 Azure 時，Azure 將預設優先選擇 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
+下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 （Cisco ASR1000 路由器在測試設定中用作 CE 路由器。當並行配置網站到網站 VPN 和 ExpressRoute 電路以將本地網路連接到 Azure 時，Azure 預設優先處理 ExpressRoute 電路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure
@@ -166,7 +166,7 @@ ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>透過 ExpressRoute 設定站對站 VPN
 
-您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連, 在通道模式中設定站對站 IPsec VPN 的詳細資訊, 請參閱透過[Expressroute microsoft 對等互連的站對站 vpn][S2S-Over-ExR]。 
+您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連，來設定通道模式站對站 IPSec VPN 的詳細資訊，請參閱[透過 ExpressRoute Microsoft 對等互連設定站對站 VPN][S2S-Over-ExR]。 
 
 設定使用 Microsoft 對等互連的站對站 VPN 的主要限制是輸送量。 IPSec 通道的輸送量受限於 VPN 閘道容量。 VPN 閘道輸送量低於 ExpressRoute 輸送量。 在此情況下，針對高安全流量使用 IPSec 通道，並針對所有其他流量使用私人對等互連，可協助將 ExpressRoute 頻寬使用量最佳化。
 
@@ -174,13 +174,13 @@ ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 
 
 ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的 Azure 區域中設定異地備援 ExpressRoute 連線。 如果您想在 Azure 區域中為 ExpressRoute 連線建立容錯移轉路徑，可以透過與測試設定中示範的相同方法使用站對站 VPN。 當 ExpressRoute 和站對站 VPN 顯示相同的首碼時，Azure 將優先選擇 ExpressRoute。 為了避免 ExpressRoute 和站對站 VPN 擁有不對稱的路由，內部部署網路組態也應該在使用站對站 VPN 連線之前使用 ExpressRoute 連線進行回應。
 
-如需有關如何為 ExpressRoute 和站對站 VPN 設定並存連線的詳細資訊, 請參閱[expressroute 和站對站共存][ExR-S2S-CoEx]。
+如需如何設定 ExpressRoute 和站對站 VPN 共存連線的詳細資訊，請參閱 [ExpressRoute 和站對站共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>將後端連線擴充至輪輻 VNet 和分支位置
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊, 請參閱[在 Azure 中執行中樞輪輻網路拓撲][Hub-n-Spoke]。
+中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊，請參閱[在 Azure 中實作中樞輪輻網路拓撲][Hub-n-Spoke]。
 
 區域中的 VNet 對等互連可讓輪輻 VNet 使用中樞 VNet 閘道 (VPN 和 ExpressRoute 閘道) 與遠端網路通訊。
 
@@ -188,15 +188,15 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 您可能希望分支 VNet (位於不同區域) 和內部部署網路透過中樞 VNet 與彼此通訊。 此設定的原生 Azure 解決方案是使用 VPN 的站對站 VPN 連線。 替代方式是使用網路虛擬設備 (NVA) 在中樞中進行路由。
 
-如需詳細資訊, 請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
+如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解測試設定的[控制平面分析][Control-Analysis], 以及拓撲中不同 Vnet 或 vlan 的觀點。
+了解測試設定的[控制平面分析][Control-Analysis]以及拓撲中不同 VNet 或 VLAN 的檢視。
 
-瞭解測試設定的[資料平面分析][Data-Analysis]和 Azure 網路監視功能的觀點。
+深入了解[資料平面分析][Data-Analysis]和 Azure 網路監視功能檢視。
 
-請參閱[EXPRESSROUTE 常見問題][ExR-FAQ]:
+請參閱 [ExpressRoute 常見問題集][ExR-FAQ]：
 -   了解可以連線到 ExpressRoute 閘道的 ExpressRoute 線路數量。
 -   了解可以連接到 ExpressRoute 線路的 ExpressRoute 閘道數量。
 -   了解 ExpressRoute 的其他規模限制。

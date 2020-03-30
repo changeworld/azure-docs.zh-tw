@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中樞 .NET Framework API 概觀 | Microsoft Docs
-description: 本文提供一些金鑰事件中樞的摘要，.NET Framework 用戶端 Api （管理和執行時間）。
+description: 本文概述了一些關鍵事件中心 .NET 框架用戶端 API（管理和運行時）。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
 ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137606"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中樞 .NET Framework API 概觀

@@ -16,28 +16,28 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: b8fad566b54ab645660011ad3188394b6f8190b0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728079"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>安全框架︰例外狀況管理 |緩和措施 
-| 產品/服務 | 文章 |
+# <a name="security-frame-exception-management--mitigations"></a>安全性架構︰例外狀況管理 | 風險降低 
+| 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **WCF** | <ul><li>[WCF - 請勿在組態檔中包含 serviceDebug 節點](#servicedebug)</li><li>[WCF - 請勿在組態檔中包含 serviceMetadata 節點](#servicemetadata)</li></ul> |
-| **Web API** | <ul><li>[確定已在 ASP.NET Web API 中完成適當的例外狀況處理](#exception)</li></ul> |
-| **Web 應用程式** | <ul><li>[不要在錯誤訊息中公開安全性詳細資料](#messages)</li><li>[[執行預設錯誤處理] 頁面](#default)</li><li>[設定要在 IIS 中零售的部署方法](#deployment)</li><li>[例外狀況應安全地失敗](#fail)</li></ul> |
+| **WCF** | <ul><li>[WCF- 在設定檔中不包含服務調試節點](#servicedebug)</li><li>[WCF- 在設定檔中不包含服務中繼資料節點](#servicemetadata)</li></ul> |
+| **Web API** | <ul><li>[確保在 Web API 中執行正確的異常處理ASP.NET](#exception)</li></ul> |
+| **Web 應用程式** | <ul><li>[不要在錯誤訊息中公開安全詳細資訊](#messages)</li><li>[實現預設錯誤處理頁](#default)</li><li>[將部署方法設置為 IIS 中的零售](#deployment)</li><li>[異常應安全失敗](#fail)</li></ul> |
 
-## <a id="servicedebug"></a>WCF - 請勿在組態檔中包含 serviceDebug 節點
+## <a name="wcf--do-not-include-servicedebug-node-in-configuration-file"></a><a id="servicedebug"></a>WCF - 請勿在組態檔中包含 serviceDebug 節點
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
+| **引用**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **步驟** | Windows Communication Framework (WCF) 服務可以設定為公開偵錯資訊。 偵錯資訊不應用於生產環境。 `<serviceDebug>` 標籤可定義是否啟用 WCF 服務的偵錯資訊功能。 如果屬性 includeExceptionDetailInFaults 設為 true，來自應用程式的例外狀況資訊會傳回給用戶端。 攻擊者可以利用他們從偵錯輸出取得的其他資訊，裝載以架構、資料庫或應用程式所用其他資源做為目標的攻擊。 |
 
 ### <a name="example"></a>範例
@@ -53,26 +53,26 @@ ms.locfileid: "68728079"
 ```
 停用服務中的偵錯資訊。 這可藉由從應用程式組態檔移除 `<serviceDebug>` 標籤來完成。 
 
-## <a id="servicemetadata"></a>WCF - 請勿在組態檔中包含 serviceMetadata 節點
+## <a name="wcf--do-not-include-servicemetadata-node-in-configuration-file"></a><a id="servicemetadata"></a>WCF - 請勿在組態檔中包含 serviceMetadata 節點
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 泛型、NET Framework 3 |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
+| **引用**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **步驟** | 對外公開的服務相關資訊可提供重要見解給攻擊者，讓其了解如何利用服務。 `<serviceMetadata>` 標籤會啟用中繼資料發佈功能。 服務中繼資料可能包含不應開放存取的敏感性資訊。 至少，請只允許受信任使用者存取中繼資料，並確定不會公開不必要的資訊。 最好是完全停用發佈中繼資料的功能。 安全的 WCF 組態不會包含 `<serviceMetadata>` 標籤。 |
 
-## <a id="exception"></a>確定有在 ASP.NET Web API 中正確處理例外狀況
+## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>確定有在 ASP.NET Web API 中正確處理例外狀況
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | MVC 5、MVC 6 |
 | **屬性**              | N/A  |
-| **參考**              | [ASP.NET Web API 中的例外狀況處理](https://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API 中的模型驗證](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **引用**              | [ASP.NET Web API 中的例外狀況處理](https://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API 中的模型驗證](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **步驟** | 根據預設，ASP.NET Web API 中大多數未攔截到的例外狀況會轉譯成狀態碼為 `500, Internal Server Error` 的 HTTP 回應|
 
 ### <a name="example"></a>範例
@@ -180,50 +180,50 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-請參閱參考一節中的連結, 以取得有關中的異常處理和模型驗證的其他詳細資料 ASP.NET Web API 
+有關ASP.NET Web API 中異常處理和模型驗證的其他詳細資訊，請查看參考部分中的連結 
 
-## <a id="messages"></a>請勿在錯誤訊息中公開安全性詳細資料
+## <a name="do-not-expose-security-details-in-error-messages"></a><a id="messages"></a>請勿在錯誤訊息中公開安全性詳細資料
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | N/A  |
+| **引用**              | N/A  |
 | **步驟** | <p>泛型錯誤訊息會直接提供給使用者，但不會包含敏感性應用程式資料。 敏感性資料的範例包括︰</p><ul><li>伺服器名稱</li><li>連接字串</li><li>使用者名稱</li><li>密碼</li><li>SQL 程序</li><li>動態 SQL 失敗的詳細資料</li><li>堆疊追蹤和程式碼行</li><li>儲存在記憶體中的變數</li><li>磁碟機和資料夾的位置</li><li>應用程式的安裝點</li><li>主機組態設定</li><li>其他內部應用程式詳細資料</li></ul><p>捕捉應用程式中的所有錯誤並提供泛型錯誤訊息，以及啟用 IIS 中的自訂錯誤，將有助於避免資訊外洩。 除了錯誤處理架構外，SQL Server 資料庫和 .NET 例外狀況處理尤其詳盡，非常適合用於在應用程式中分析惡意使用者。 請勿直接顯示衍生自 .NET 例外狀況類別的類別內容，並確定您有適當的例外狀況處理手段，以便不會直接對使用者意外產生非預期的例外狀況。</p><ul><li>直接提供泛型錯誤訊息給使用者，此訊息是從直接在例外狀況/錯誤訊息中找到的特定詳細資料所抽離出來</li><li>請勿直接向使用者顯示 .NET 例外狀況類別的內容</li><li>捕捉所有錯誤訊息，並在情況允許時，透過傳送至應用程式用戶端的泛型錯誤訊息通知使用者</li><li>請勿直接對使用者顯示例外狀況類別的內容，特別是來自 `.ToString()` 的傳回值，或是 Message 或 StackTrace 屬性的值。 安全地記錄這項資訊，並向使用者顯示較無害的訊息</li></ul>|
 
-## <a id="default"></a>實作預設的錯誤處理頁面
+## <a name="implement-default-error-handling-page"></a><a id="default"></a>實作預設的錯誤處理頁面
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [編輯 ASP.NET 錯誤頁面設定對話方塊](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步驟** | <p>當 ASP.NET 應用程式失敗並造成 HTTP/1.x 500 內部伺服器錯誤時，或當功能組態 (例如要求篩選) 避免顯示頁面時，就會產生錯誤訊息。 系統管理員可以選擇應用程式應該對用戶端顯示容易理解的訊息、對用戶端顯示詳細的錯誤訊息，或只對本機主機顯示詳細的錯誤訊息。 web.config 中的 `<customErrors>` 標籤有三種模式︰</p><ul><li>**的**指定已啟用自訂錯誤。 如果未指定任何 defaultRedirect 屬性，則使用者會看到泛型錯誤。 自訂錯誤會顯示給遠端用戶端和本機主機</li><li>**停止**指定停用自訂錯誤。 詳細的 ASP.NET 錯誤會顯示給遠端用戶端和本機主機</li><li>**RemoteOnly**指定自訂錯誤只會顯示給遠端用戶端, 而 ASP.NET 錯誤會顯示在本機主機上。 這是預設值</li></ul><p>開啟應用程式/網站的 `web.config` 檔案，並確定標籤已定義 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **引用**              | [編輯 ASP.NET 錯誤頁面設定對話方塊](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **步驟** | <p>當 ASP.NET 應用程式失敗並造成 HTTP/1.x 500 內部伺服器錯誤時，或當功能組態 (例如要求篩選) 避免顯示頁面時，就會產生錯誤訊息。 系統管理員可以選擇應用程式應該對用戶端顯示容易理解的訊息、對用戶端顯示詳細的錯誤訊息，或只對本機主機顯示詳細的錯誤訊息。 web.config 中的 `<customErrors>` 標籤有三種模式︰</p><ul><li>**開啟︰** 指定要啟用自訂錯誤。 如果未指定任何 defaultRedirect 屬性，則使用者會看到泛型錯誤。 自訂錯誤會顯示給遠端用戶端和本機主機</li><li>**關閉︰** 指定要停用自訂錯誤。 詳細的 ASP.NET 錯誤會顯示給遠端用戶端和本機主機</li><li>**RemoteOnly：** 指定自訂錯誤只顯示給遠端用戶端，而將 ASP.NET 錯誤顯示給本機主機。 這是預設值。</li></ul><p>開啟應用程式/網站的 `web.config` 檔案，並確定標籤已定義 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
-## <a id="deployment"></a>設定要在 IIS 中零售的部署方法
+## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>設定要在 IIS 中零售的部署方法
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [部署元素 (ASP.NET 設定結構描述)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **引用**              | [部署元素 (ASP.NET 設定結構描述)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
 | **步驟** | <p>`<deployment retail>` 參數是要供生產 IIS 伺服器使用。 這個參數可用來協助應用程式以最佳效能和最低安全性資訊外洩可能性來執行，方法是停用應用程式對頁面產生追蹤輸出的能力、停用對使用者顯示詳細錯誤訊息的能力，以及停用偵錯參數。</p><p>在開發期間，經常會啟用專供開發人員使用的參數和選項，例如失敗要求追蹤和偵錯。 建議您將任何生產伺服器上的部署方法設為零售。 開啟 machine.config 檔，並確定 `<deployment retail="true" />` 維持設定為 true。</p>|
 
-## <a id="fail"></a>例外狀況應安全地失敗
+## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>例外狀況應安全地失敗
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
-| **SDL 階段**               | 建置 |  
+| **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [安全地失敗](https://www.owasp.org/index.php/Fail_securely) |
+| **引用**              | [安全地失敗](https://www.owasp.org/index.php/Fail_securely) |
 | **步驟** | 應用程式應安全地失敗。 任何會傳回布林值的方法 (根據所做出的特定決策) 皆應小心地建立例外狀況區塊。 若草率撰寫例外狀況區塊，會因為不知不覺潛入的安全性問題而產生許多邏輯錯誤。|
 
 ### <a name="example"></a>範例

@@ -1,5 +1,5 @@
 ---
-title: 設定通知和電子郵件範本
+title: 配置通知和電子郵件範本
 titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中設定通知和電子郵件範本。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244065"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中設定通知和電子郵件範本
@@ -30,10 +30,10 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"></a>設定通知
+## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>設定通知
 
-1.  選取您的 [API 管理] 執行個體。
-2.  按一下 [通知] 以檢視可用的通知。
+1.  選擇**API 管理**實例。
+2.  按一下 [通知]**** 以檢視可用的通知。
 
     ![Publisher notifications][api-management-publisher-notifications]
 
@@ -48,7 +48,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
     -   **接近訂用帳戶配額限制** - 當訂用帳戶使用量接近使用量配額時，下列電子郵件收件者和使用者會收到電子郵件通知。
 
         > [!NOTE]
-        > 只有[訂用](api-management-access-restriction-policies.md#SetUsageQuota)帳戶原則會根據配額觸發通知。 [依金鑰原則的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不會產生通知。
+        > 通知僅[由訂閱策略的配額](api-management-access-restriction-policies.md#SetUsageQuota)觸發。 [按鍵策略的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不會生成通知。
 
     針對每一個事件，您可以使用電子郵件地址文字方塊來指定電子郵件地址，或從清單中選取使用者。
 
@@ -56,9 +56,9 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
     ![Notification recipients][api-management-email-addresses]
 
-4.  按 [新增]。
+4.  按 [新增] ****。
 
-## <a name="email-templates"></a>設定通知範本
+## <a name="configure-notification-templates"></a><a name="email-templates"> </a>設定通知範本
 
 對於管理和使用服務期間傳送的電子郵件訊息，API 管理提供通知件範本。 提供的電子郵件範本如下。
 
@@ -75,7 +75,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 可依需要修改這些範本。
 
-若要檢視並設定您的 API 管理執行個體的電子郵件範本，請按一下 [通知範本]。
+若要檢視並設定您的 API 管理執行個體的電子郵件範本，請按一下 [通知範本]****。
 
 ![Email templates][api-management-email-templates]
 
@@ -83,12 +83,12 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 ![Email template editor][api-management-email-template]
 
-[參數] 清單包含一份參數清單，當插入至主旨或本文時，則會在傳送電子郵件時取代為指定的值。 若要插入參數，請將游標移至您要放置參數的地方，然後按一下參數名稱左邊的箭頭。
+[參數] **** 清單包含一份參數清單，當插入至主旨或本文時，則會在傳送電子郵件時取代為指定的值。 若要插入參數，請將游標移至您要放置參數的地方，然後按一下參數名稱左邊的箭頭。
 
 > [!NOTE]
 > 預覽或傳送測試時，不會以實際值來取代參數。
 
-若要儲存電子郵件範本的變更，請按一下 [儲存]，若要取消變更，請按一下 [捨棄]。
+若要儲存電子郵件範本的變更，請按一下 [儲存]****，若要取消變更，請按一下 [捨棄]****。
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253828"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
@@ -42,7 +42,7 @@ ms.locfileid: "79253828"
 
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 這些設定或動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
+> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 這些配置或操作中的任何一種都可能導致 Azure AD 連接同步出現不一致或不受支援的狀態。因此，Microsoft 無法為此類部署提供技術支援。
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
@@ -60,11 +60,11 @@ ms.locfileid: "79253828"
 
 許多組織都有包含多個內部部署 Active Directory 樹系的環境。 擁有多個內部部署 Active Directory 的原因有很多。 常見的範例如包含帳戶資源樹系，和合併或收購的結果。
 
-當您擁有多個樹系，所有樹系必須可由單一 Azure AD Connect 同步處理伺服器連線。 伺服器必須加入網域。 如有必要觸達所有的樹系，您可以將伺服器放置於周邊網路 (也稱為 DMZ及遮蔽式子網路)。
+當您擁有多個樹系，所有樹系必須可由單一 Azure AD Connect 同步處理伺服器連線。 伺服器必須加入域。 如有必要觸達所有的樹系，您可以將伺服器放置於周邊網路 (也稱為 DMZ及遮蔽式子網路)。
 
-Azure AD Connect 安裝精靈會提供數個選項以合併多個樹系中表示的使用者。 目標是使用者只會在 Azure AD 中顯示一次。 有一些常見的拓撲，您可以在安裝精靈中的自訂安裝路徑中設定。 在 [專門識別您的使用者] 頁面上，選取表示拓撲的對應選項。 只對使用者設定合併。 重複群組不會和預設組態合併。
+Azure AD Connect 安裝精靈會提供數個選項以合併多個樹系中表示的使用者。 目標是使用者只會在 Azure AD 中顯示一次。 有一些常見的拓撲，您可以在安裝精靈中的自訂安裝路徑中設定。 在 [專門識別您的使用者]**** 頁面上，選取表示拓撲的對應選項。 只對使用者設定合併。 重複群組不會和預設組態合併。
 
-常見的拓撲將在個別拓撲、[完整網狀](#multiple-forests-full-mesh-with-optional-galsync)和[帳戶資源拓撲](#multiple-forests-account-resource-forest)相關章節中討論。
+有關單獨的拓撲、[全網格](#multiple-forests-full-mesh-with-optional-galsync)和[帳戶資源拓撲](#multiple-forests-account-resource-forest)的部分將討論常見拓撲。
 
 Azure AD Connect 同步處理中的預設組態假設：
 
@@ -113,7 +113,7 @@ Azure AD Connect 同步處理中的預設組態假設：
 
 ![多個樹系的帳戶資源樹系拓撲](./media/plan-connect-topologies/MultiForestAccountResource.png)
 
-在帳戶資源樹系拓撲中，您會有一個以上的*帳戶*樹系內含作用中的使用者帳戶。 您也會有一或多個*資源*樹系具有停用的帳戶。
+在帳戶資源樹系拓撲中，您會有一個以上的*帳戶*樹系內含作用中的使用者帳戶。 您還有一個或多個具有禁用帳戶*的資源*林。
 
 在此案例中，一個 (或多個) 資源樹系信任所有帳戶樹系。 此資源樹系通常具有擴充的 Active Directory 結構描述與 Exchange 和 Lync。 所有的 Exchange 和 Lync 服務以及其他共用的服務都位於此樹系。 使用者在此樹系中擁有停用的使用者帳戶，而信箱會連結至帳戶樹系。
 
@@ -130,7 +130,7 @@ Azure AD Connect 同步處理中的預設組態假設：
 ## <a name="staging-server"></a>預備伺服器
 ![在拓撲中的預備伺服器](./media/plan-connect-topologies/MultiForestStaging.png)
 
-Azure AD Connect 支援以「預備模式」安裝第二部伺服器。 此模式中的伺服器會讀取所有已連接目錄中的資料，但是不會將任何資料寫入已連接的目錄。 它使用一般的同步處理循環，因此也有身分識別資料的更新複本。
+Azure AD Connect 支援以「預備模式」** 安裝第二部伺服器。 此模式中的伺服器會讀取所有已連接目錄中的資料，但是不會將任何資料寫入已連接的目錄。 它使用一般的同步處理循環，因此也有身分識別資料的更新複本。
 
 在主要伺服器失敗的災害中，您可以容錯移轉到預備伺服器。 您在 Azure AD Connect 精靈中執行這項操作。 第二部伺服器可以位於不同的資料中心，因為沒有和主要伺服器共用基礎結構。 您必須手動將主要伺服器上進行的任何組態變更複製到第二部伺服器。
 
@@ -197,4 +197,4 @@ Azure AD 租用戶在設計上是隔離的。 下列工作不受支援：
 
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
-深入了解[將內部部署身分識別與 Azure Active Directory 整合](whatis-hybrid-identity.md)。
+詳細瞭解[將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。

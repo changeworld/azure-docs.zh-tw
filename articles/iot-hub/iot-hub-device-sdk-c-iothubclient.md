@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.openlocfilehash: fd3e02101f206ebdb183da87089eadcbc9619b33
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883167"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解 IoTHubClient
 
-[適用於 C 的 Azure IoT 裝置 SDK](iot-hub-device-sdk-c-intro.md) 是這個系列第一篇介紹**適用於 C 的 Azure IoT 裝置 SDK** 的文章。該文章已說明 SDK 中有兩個架構層。 其基礎為 **IoTHubClient** 程式庫，可直接管理與 IoT 中樞之間的通訊。 還有 **序列化程式** 庫，此程式庫建置於其頂部以提供序列化服務。 在本文中，我們將提供其他有關於 **IoTHubClient** 程式庫的詳細資料。
+[C 的 Azure IoT 設備 SDK](iot-hub-device-sdk-c-intro.md)是本系列仲介紹 C 的**Azure IoT 設備 SDK**的第一篇文章。本文解釋說，SDK 中有兩個體系結構層。 其基礎為 **IoTHubClient** 程式庫，可直接管理與 IoT 中樞之間的通訊。 還有 **序列化程式** 庫，此程式庫建置於其頂部以提供序列化服務。 在本文中，我們將提供有關**IoTHubClient**庫的其他詳細資訊。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-前一篇文章描述如何使用 **IoTHubClient** 程式庫傳送事件到 IoT 中樞及接收訊息。 本文將向您介紹「較低層級 API」，以說明如何更精確地管理傳送和接收資料的「時機」來延伸該討論。 我們也將說明如何使用 **IoTHubClient** 程式庫中的屬性處理功能，將屬性附加到事件 (並從訊息將其擷取)。 最後，我們將提供其他說明，以不同的方式來處理從 IoT 中樞接收的訊息。
+前一篇文章描述如何使用 **IoTHubClient** 程式庫傳送事件到 IoT 中樞及接收訊息。 本文將向您介紹「較低層級 API」****，以說明如何更精確地管理傳送和接收資料的「時機」** 來延伸該討論。 我們也將說明如何使用 **IoTHubClient** 程式庫中的屬性處理功能，將屬性附加到事件 (並從訊息將其擷取)。 最後，我們將提供其他說明，以不同的方式來處理從 IoT 中樞接收的訊息。
 
 本文以涵蓋幾個其他主題 (包括更多有關裝置認證及如何透過組態選項變更 **IoTHubClient** 行為的資訊) 做總結。
 
@@ -64,9 +64,9 @@ IoTHubClient_Destroy(iotHubClientHandle);
 * IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_LL\_Destroy
 
-這些函式都在 API 名稱中包含了 **LL**。 除了名稱的 **LL** 部份之外，每個函式的參數都與非 LL 的函式相同。 不過，這些函式的行為有一個重要的差異。
+這些函數都包括 API 名稱中的**LL。** 除了名稱的 **LL** 部份之外，每個函式的參數都與非 LL 的函式相同。 不過，這些函式的行為有一個重要的差異。
 
-當您呼叫 **IoTHubClient\_CreateFromConnectionString** 時，基礎程式庫會建立在背景中執行的新執行緒。 此執行緒會將事件傳送到 IoT 中樞以及接收其訊息。 使用 **LL** API 時不會建立這類執行緒。 背景執行緒的建立是為了方便開發人員。 您完全不必擔心要明確地將事件傳送到 IoT 中樞以及從中接收訊息 -- 此動作會在背景中自動進行。 相對地，**LL** API 可讓您明確控制與 IoT 中樞的通訊 (如果您需要的話)。
+當您呼叫 **IoTHubClient\_CreateFromConnectionString** 時，基礎程式庫會建立在背景中執行的新執行緒。 此執行緒會將事件傳送到 IoT 中樞以及接收其訊息。 使用**LL** API 時不會創建此類執行緒。 背景執行緒的建立是為了方便開發人員。 您完全不必擔心要明確地將事件傳送到 IoT 中樞以及從中接收訊息 -- 此動作會在背景中自動進行。 相反，**如果需要，LL** API 可以顯式控制與 IoT 中心的通信。
 
 若要深入了解這個概念，讓我們看看一個範例：
 
@@ -74,7 +74,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 同樣地，當您使用 **IoTHubClient\_SetMessageCallback** 來註冊訊息的回呼函式時，即是在指示 SDK 讓背景執行緒在收到訊息時叫用回呼函式 (不受主執行緒影響)。
 
-**LL** API 不會建立背景執行緒。 而是必須呼叫新的 API 明確地與 IoT 中樞之間傳送和接收資料。 下列範例就將此進行示範。
+**LL** API 不創建後臺執行緒。 而是必須呼叫新的 API 明確地與 IoT 中樞之間傳送和接收資料。 下列範例就將此進行示範。
 
 SDK 中隨附的 **iothub\_client\_sample\_http** 應用程式會示範較低層級的 API。 在該範例中，我們會使用類似以下的程式碼，將事件傳送給「IoT 中樞」︰
 
@@ -102,7 +102,7 @@ while (1)
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-迴圈中經常呼叫 **IoTHubClient\_LL\_DoWork** 的原因是每次呼叫它時，它都會將「一些」緩衝的事件傳送到「IoT 中樞」，並為裝置擷取加入佇列的「下一個」訊息。 每次呼叫都不保證會傳送所有緩衝的事件或擷取所有加入佇列的訊息。 如果您想要傳送緩衝區中的所有事件，並繼續進行其他處理程序，您可以使用如下程式碼來取代此迴圈：
+迴圈中經常呼叫 **IoTHubClient\_LL\_DoWork** 的原因是每次呼叫它時，它都會將「一些」** 緩衝的事件傳送到「IoT 中樞」，並為裝置擷取加入佇列的「下一個」** 訊息。 每次呼叫都不保證會傳送所有緩衝的事件或擷取所有加入佇列的訊息。 如果您想要傳送緩衝區中的所有事件，並繼續進行其他處理程序，您可以使用如下程式碼來取代此迴圈：
 
 ```C
 IOTHUB_CLIENT_STATUS status;
@@ -156,7 +156,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 我們從呼叫 **IoTHubMessage\_Properties** 開始著手，然後將訊息的控制代碼傳遞給它。 我們得到的回應是 **MAP\_HANDLE** 參考，這可讓我們開始新增屬性。 後者可透過呼叫 **Map\_AddOrUpdate** 來完成，這會參考 MAP\_HANDLE、屬性名稱和屬性值。 利用此 API，我們可以依意願新增應用程式。
 
-從「事件中樞」讀取事件時，接收者可以列舉屬性並擷取其對應的值。 例如，在 .NET 中，這可藉由存取 [EventData 物件上的屬性集合](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)來完成。
+從「事件中樞」**** 讀取事件時，接收者可以列舉屬性並擷取其對應的值。 例如，在 .NET 中，這可藉由存取 [EventData 物件上的屬性集合](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)來完成。
 
 在上述範例中，我們會將屬性附加至我們傳送給 IoT 中樞的事件。 屬性也可以附加至從 IoT 中樞接收的訊息。 如果我們想要從訊息擷取屬性，可以在訊息回呼函式中使用如下的程式碼：
 
@@ -235,9 +235,9 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-此字串中有四個資訊片段:IoT 中樞名稱、IoT 中樞尾碼、裝置識別碼和共用存取金鑰。 當您在 Azure 入口網站中建立 IoT 中樞執行個體時，可以取得 IoT 中樞的完整網域名稱 (FQDN) - 這可為您提供 IoT 中樞名稱 (FQDN 的第一個部分) 和 IoT 中樞尾碼 (FQDN 的其餘部分)。 您會在使用 IoT 中樞註冊裝置時，取得裝置識別碼和共用存取金鑰 (如[前一篇文章](iot-hub-device-sdk-c-intro.md)所述)。
+這個字串中包含四項資訊：IoT 中樞名稱、IoT 中樞尾碼、裝置識別碼和共用存取金鑰。 當您在 Azure 入口網站中建立 IoT 中樞執行個體時，可以取得 IoT 中樞的完整網域名稱 (FQDN) - 這可為您提供 IoT 中樞名稱 (FQDN 的第一個部分) 和 IoT 中樞尾碼 (FQDN 的其餘部分)。 當您向 IoT 中心註冊設備時，您將獲得裝置識別碼 和共用訪問金鑰（如[上一篇文章中](iot-hub-device-sdk-c-intro.md)所述）。
 
-**IoTHubClient\_CreateFromConnectionString** 提供您一個方法來初始化程式庫。 喜歡的話，您也可以使用這些個別的參數 (而不是裝置連接字串) 建立新的 **IOTHUB\_CLIENT\_HANDLE**。 做法是以下列程式碼：
+**IoTHubClient\_CreateFromConnectionString** 提供您一個方法來初始化程式庫。 喜歡的話，您也可以使用這些個別的參數 (而不是裝置連接字串) 建立新的 **IOTHUB\_CLIENT\_HANDLE**。 使用下列程式碼即可達成：
 
 ```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -251,7 +251,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientCo
 
 其作用與 **IoTHubClient\_CreateFromConnectionString** 相同。
 
-顯而易見，您會想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是這個較冗長的初始化方法。 但請記住，當您在 IoT 中樞註冊裝置時，您得到的是裝置識別碼和裝置金鑰 (不是連接字串)。 [前一篇文章](iot-hub-device-sdk-c-intro.md)介紹的「裝置總管」SDK 工具會使用 **Azure IoT 服務 SDK** 中的程式庫，從裝置識別碼、裝置金鑰及 IoT 中樞主機名稱建立裝置連接字串。 因此，呼叫 **IoTHubClient\_LL\_Create** 可能是較慣用的做法，因為它可以為您省下產生連接字串的步驟。 使用任何方法都很方便。
+顯而易見，您會想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是這個較冗長的初始化方法。 但請記住，當您在 IoT 中樞註冊裝置時，您得到的是裝置識別碼和裝置金鑰 (不是連接字串)。 [前一篇文章](iot-hub-device-sdk-c-intro.md)介紹的「裝置總管」** SDK 工具會使用 **Azure IoT 服務 SDK** 中的程式庫，從裝置識別碼、裝置金鑰及 IoT 中樞主機名稱建立裝置連接字串。 因此，呼叫 **IoTHubClient\_LL\_Create** 可能是較慣用的做法，因為它可以為您省下產生連接字串的步驟。 使用任何方法都很方便。
 
 ## <a name="configuration-options"></a>設定選項
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 有一些常用的選項：
 
-* **SetBatching** (bool) - 如果為 **true**，則傳送到「IoT 中樞」的資料會以批次傳送。 如果為 **false**，就表示訊息會個別傳送。 預設值為 **false**。 支援在 AMQP/AMQP-WS 上批次處理, 以及在 D2C 訊息上新增系統屬性。
+* **SetBatching** (bool) - 如果為 **true**，則傳送到「IoT 中樞」的資料會以批次傳送。 如果為 **false**，就表示訊息會個別傳送。 預設值為**false**。 支援通過 AMQP / AMQP-WS 進行批次處理，以及在 D2C 消息上添加系統屬性。
 
 * **Timeout** (unsigned int) - 這個值會以毫秒為單位表示。 如果傳送 HTTPS 要求或接收回應所花費的時間超過這個時間，連線就會逾時。
 
@@ -272,7 +272,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 ## <a name="next-steps"></a>後續步驟
 
-本文詳細說明「適用於 C 的 Azure IoT 裝置 SDK」中所發現 **IoTHubClient** 程式庫的行為。利用這項資訊，您應可充分了解 **IoTHubClient** 程式庫的功能。 這個系列的第二篇文章[適用於 C 的 Azure IoT 裝置 SDK - 序列化程式](iot-hub-device-sdk-c-serializer.md)提供了關於 程式庫的相似詳細資料。
+本文詳細介紹了**在 Azure IoT 設備 SDK 中**找到的**IoTHubClient**庫的行為。有了這些資訊，您應該能夠很好地瞭解**IoTHubClient**庫的功能。 這個系列的第二篇文章[適用於 C 的 Azure IoT 裝置 SDK - 序列化程式](iot-hub-device-sdk-c-serializer.md)提供了關於 **** 程式庫的相似詳細資料。
 
 若要深入了解如何開發 IoT 中樞，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

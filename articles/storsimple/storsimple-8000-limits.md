@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68963379"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 系列的系統有何限制？
@@ -38,8 +38,8 @@ StorSimple 提供您的資料中心的擴充性和彈性儲存體。 不過，�
 | 固定在本機的磁碟區的數目上線 |32 | |
 | 每個頻寬範本之排程的數目上限 |168 |每週每天 (24*7)、每小時的排程。 |
 | 實體裝置上之分層磁碟區的大小上限 |64 TB (適用於 8100 和 8600) |8100 和 8600 為實體裝置。 |
-| Azure 中的虛擬裝置上之分層磁碟區的大小上限 |30 TB (適用於 8010) <br></br> 64 TB (適用於 8020) |8010 和 8020 為 Azure 中的虛擬裝置，分別使用了「標準儲存體」和「進階儲存體」。 |
-| 實體裝置上之固定在本機的磁碟區的大小上限 |8.5 TB (適用於 8100) <br></br> 22.5 TB (適用於 8600) |8100 和 8600 為實體裝置。 |
+| Azure 中的虛擬裝置上之分層磁碟區的大小上限 |30 TB (適用於 8010)  <br></br>  64 TB (適用於 8020) |8010 和 8020 為 Azure 中的虛擬裝置，分別使用了「標準儲存體」和「進階儲存體」。 |
+| 實體裝置上之固定在本機的磁碟區的大小上限 |8.5 TB (適用於 8100) <br></br>  22.5 TB (適用於 8600) |8100 和 8600 為實體裝置。 |
 | iSCSI 連線的數目上限 |512 | |
 | 從起始端之 iSCSI 連線的數目上限 |512 | |
 | 每個裝置的存取控制記錄的數目上限 |64 | |

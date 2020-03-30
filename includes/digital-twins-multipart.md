@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/07/2020
 ms.custom: include file
 ms.openlocfilehash: 0e7cb7e4aaa9862a2b4af51593c29793ea54dd14
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111245"
 ---
 > [!NOTE]
@@ -21,7 +21,7 @@ ms.locfileid: "77111245"
 > * **Content-Type** 標頭：
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * **Content-Disposition**：
+> * **內容處置**：
 >   * `form-data; name="metadata"`
 > * 要上傳的檔案內容
 >

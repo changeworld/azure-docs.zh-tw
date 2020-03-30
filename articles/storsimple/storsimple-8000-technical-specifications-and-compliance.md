@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965279"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>適用於 StorSimple 裝置的技術規格和相容性
@@ -39,11 +39,11 @@ EBOD 機箱使用 580 W PCM，而主要機箱會使用 764 W PCM。 下表列出
 | --- | --- | --- |
 | 最大輸出電力 |580 W |764 |
 | 頻率 |50/60 Hz |50/60 Hz |
-| 選取電壓範圍 |自動範圍:90– 264 V AC, 47/63 Hz |自動範圍:90-264 V AC, 47/63 Hz |
+| 選取電壓範圍 |自動設定範圍：90 - 264 V AC、47/63 Hz |自動設定範圍：90 - 264 V AC、47/63 Hz |
 | 最大瞬間電流 |20 A |20 A |
 | 功率因素校正 |> 95% 額定輸入電壓 |> 95% 額定輸入電壓 |
 | 諧波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
-| Output |5V 待機電壓 \@ 2.0 A |5V 待機電壓 \@ 2.7 A |
+| 輸出 |5V 待機電壓 \@ 2.0 A |5V 待機電壓 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | 隨插即用 |是 |是 |
@@ -83,7 +83,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 | 可用容量總計* |~ 15 TB |~ 38 TB |
 | 解決方案的最大容量 (含雲端) |200 TB |500 TB |
 
-<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料及緩衝區使用的容量。您可以在 8100 裝置上佈建最多 8.5 TB 的本機固定磁碟區，或者在較大的 8600 裝置上佈建最多 22.5 TB 的磁碟區。如需詳細資訊，請移至 [StorSimple 本機固定磁碟區](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *總可用容量包括可用於資料、中繼資料和緩衝區的容量。您可以在 8100 設備上預配本地固定卷，最多為 8100 TB，在較大的 8600 設備上預配高達 22.5 TB 的卷。有關詳細資訊，請訪問[StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>機箱尺寸和重量規格
 
@@ -106,7 +106,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 視設定而定，完全裝載的主要機箱重量從 21 至 33 公斤，需要兩個人才能搬動。
 
-| 機箱 | 重量 |
+| 機箱 | Weight |
 | --- | --- |
 | 最大重量 (取決於設定) |30 kg - 33 kg |
 | 空的 (未裝入磁碟機) |21 - 23 kg |
@@ -151,8 +151,8 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 您的 Microsoft Azure StorSimple 裝置符合下列安全分級：
 
-* 系統產品類型核准:UL、cUL、CE
-* 安全合規性:UL 60950、IEC 60950、EN 60950
+* 系統產品類型核可：UL、cUL、CE
+* 安全法規遵循：UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC 法規遵循
 
@@ -162,8 +162,8 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 此裝置符合傳導和輻射放射性層級的 EMC 標準。
 
-* 進行中的排放限制層級:CFR 47 元件15B 列出類別 A EN55022 類別 A CISPR Class A
-* 輻射排放限制層級:CFR 47 元件15B 列出類別 A EN55022 類別 A CISPR Class A
+* 傳導放射性限制層級：CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
+* 輻射放射性限制層級：CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
 
 ### <a name="harmonics-and-flicker"></a>諧波和變動
 
@@ -175,7 +175,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 ## <a name="ac-power-cord-compliance"></a>AC 電源線相容性
 
-插頭和完整電源線元件必須符合適用于使用裝置之國家/地區的標準, 而且必須具有該國家/地區可接受的安全核准。 下表列出適用於美國和歐洲的標準。
+插頭和完整的電源線元件必須符合適用于設備使用的國家/地區的標準，並且必須具有該國家/地區可接受的安全批准。 下表列出適用於美國和歐洲的標準。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC 電源線 - 美國 (必須由 NRTL 列名)
 
@@ -190,7 +190,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 | 元件 | 規格 |
 | --- | --- |
 | 電源線類型 |諧波，H05-VVF-3G1.0 |
-| 通訊端 |IEC 320 C-13、250 V、10 A |
+| 插座 |IEC 320 C-13、250 V、10 A |
 
 ## <a name="supported-network-cables"></a>支援的網路纜線
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906050"
 ---
 # <a name="azure-database-security-overview"></a>Azure 資料庫安全性概觀
@@ -63,13 +63,13 @@ SQL Database 透過提供加密來協助您保護資料：
 
 當資料會來回「傳輸」到資料庫時，Azure SQL Database 的所有連線永遠都需要加密 (TLS/SSL)。 SQL Database 會使用 TLS/SSL 來驗證伺服器和用戶端，然後使用它來將已驗證對象之間的訊息加密。 
 
-在應用程式連接字串中，您必須指定參數來將連線加密，而不是信任伺服器憑證 (如果您從 Azure 入口網站複製出連接字串，即會為您完成此動作)。否則，連線將不會驗證伺服器的身分識別，而且將受到「攔截式」攻擊。 例如，對於 ADO.NET 驅動程式，這些連接字串參數為 `Encrypt=True` 和 `TrustServerCertificate=False`。
+在應用程式連接字串中，您必須指定參數來將連線加密，而不是信任伺服器憑證 （如果將連接字串從 Azure 門戶中複製，則這樣做。否則，連接將不驗證服務器的身份，並且容易受到"中間人"攻擊。 例如，對於 ADO.NET 驅動程式，這些連接字串參數為 `Encrypt=True` 和 `TrustServerCertificate=False`。
 
 ### <a name="encryption-at-rest"></a>待用加密
 
 您可以採取幾個預防措施來協助保護資料庫。 例如，設計安全的系統、將機密資產加密，以及在資料庫伺服器周圍建置防火牆。 但是，在實體媒體 (例如磁碟機或備份磁帶) 遭竊的案例中，惡意人士可能會直接還原或連結資料庫，然後瀏覽資料。
 
-其中一個解決方案就是將資料庫中的敏感性資料加密，然後使用憑證來保護用來加密資料的金鑰。 這個解決方案可防止所有沒有金鑰的人使用該資料，但這種保護必須予以規劃。
+一個解決方案是加密資料庫中的敏感性資料，並使用憑證來保護用來加密資料的金鑰。 這個解決方案可防止所有沒有金鑰的人使用該資料，但這種保護必須予以規劃。
 
 為了解決這個問題，SQL Server 和 SQL Database 支援[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017)。 透明資料加密會將 SQL Server 和 SQL Database 資料檔案加密，也稱為待用資料加密。
 
@@ -77,9 +77,9 @@ SQL Database 透過提供加密來協助您保護資料：
 
 透明資料加密會使用稱為資料庫加密金鑰的對稱金鑰，來將整個資料庫的儲存體加密。 在 SQL Database 中，資料庫加密金鑰是由內建伺服器憑證保護。 內建伺服器憑證對每個 SQL Database 伺服器都是唯一的。
 
-如果資料庫處於異地災害復原關聯性中，則會由每部伺服器上的不同金鑰來保護。 如果兩個資料庫連線到相同的伺服器，則會共用同一個內建憑證。 Microsoft 至少每 90 天會自動替換這些憑證。 
+如果資料庫處於異地災害復原關聯性中，則會由每部伺服器上的不同金鑰來保護。 如有兩個資料庫同時連線到同一部伺服器，則這兩個資料庫會共用同一個內建憑證。 Microsoft 會每隔 90 天自動輪換這些憑證。 
 
-如需詳細資訊，請參閱[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption-tde)。
+有關詳細資訊，請參閱[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption-tde)。
 
 ### <a name="encryption-in-use-client"></a>使用中加密 (用戶端)
 
@@ -107,7 +107,7 @@ Always Encrypted 可將擁有資料 (且可加以檢視) 的人員與管理資�
 
 #### <a name="firewall-and-firewall-rules"></a>防火牆與防火牆規則
 
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 可為 Azure 和其他網際網路型應用程式提供關聯式資料庫服務。 為了協助保護您的資料，防火牆會防止對您的資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 此防火牆會根據每一個要求的來源 IP 位址來授與資料庫存取權。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆規則概觀](/azure/sql-database/sql-database-firewall-configure)。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 可為 Azure 和其他網際網路型應用程式提供關聯式資料庫服務。 為了協助保護您的資料，防火牆會防止對您的資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 此防火牆會根據每一個要求的來源 IP 位址來授與資料庫存取權。 有關詳細資訊，請參閱[Azure SQL 資料庫防火牆規則的概述](/azure/sql-database/sql-database-firewall-configure)。
 
 Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的電腦存取 SQL 資料庫，請務必確認您的用戶端電腦防火牆允許 TCP 連接埠 1433 上的連出 TCP 通訊。 如果其他應用程式不需要連入連線，請在 TCP 通訊埠 1433 上封鎖它們。
 
@@ -115,8 +115,8 @@ Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的�
 
 「驗證」是指連線到資料庫時如何證明身分識別。 SQL Database 支援兩種驗證類型：
 
--   **SQL Server 驗證**：建立名為 SQL Database 訂戶帳戶的邏輯 SQL 執行個體時，會建立單一登入帳戶。 此帳戶會使用 [SQL Server 驗證](/azure/sql-database/sql-database-security-overview) (使用者名稱和密碼) 來連線。 此帳戶是邏輯伺服器執行個體和附加至該執行個體之所有使用者資料庫的系統管理員。 無法限制訂閱者帳戶的權限。 只有其中一個帳戶可以存在。
--   **Azure Active Directory 驗證**：[Azure AD 驗證](/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的身分識別來連線到 Azure SQL Database 和 Azure SQL 資料倉儲的機制。 您可以使用它來集中管理資料庫使用者的身分識別。
+-   **SQL Server 驗證**：建立名為 SQL Database 訂閱者帳戶的邏輯 SQL 執行個體時，會建立單一登入帳戶。 此帳戶會使用 [SQL Server 驗證](/azure/sql-database/sql-database-security-overview) (使用者名稱和密碼) 來連線。 此帳戶是邏輯伺服器執行個體和附加至該執行個體之所有使用者資料庫的系統管理員。 無法限制訂閱者帳戶的權限。 只有其中一個帳戶可以存在。
+-   **Azure Active Directory 驗證**：[Azure AD 驗證](/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的身分識別連線到 Azure SQL Database 和 Azure SQL 資料倉儲的機制。 您可以使用它來集中管理資料庫使用者的身分識別。
 
 ![使用 SQL Database 的 Azure AD 驗證](./media/database-security-overview/azure-database-fig2.png)
 
@@ -126,7 +126,7 @@ Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的�
   - 您可以使用外部 (Azure AD) 群組來管理資料庫權限。
   - 它可以透過啟用整合式 Windows 驗證和 Azure AD 支援的其他形式驗證來減少密碼儲存需求。
 
-#### <a name="authorization"></a>Authorization
+#### <a name="authorization"></a>授權
 
 [授權](/azure/sql-database/sql-database-manage-logins)是指使用者可在 Azure SQL 資料庫內執行的動作。 它是由您使用者帳戶的資料庫[角色成員資格](https://msdn.microsoft.com/library/ms189121)和[物件層級權限](https://msdn.microsoft.com/library/ms191291.aspx)來控制的。 授權是決定主體可存取哪些安全性實體資源，以及可對這些資源執行哪些作業的程序。
 
@@ -144,7 +144,7 @@ Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的�
 
 [SQL Database 動態資料遮罩](/azure/sql-database/sql-database-dynamic-data-masking-get-started)可藉由遮罩處理，使不具權限的使用者無法看見敏感性資料。 Azure SQL Database V12 版可支援動態資料遮罩。
 
-[動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)可讓您在應用程式層級受到最小影響的情況下指定要顯示多少敏感性資料，而協助防止未經授權者存取敏感性資料。 它是以原則為基礎的安全性功能，可針對指定的資料庫欄位隱藏查詢結果集中的機密資料，而不變更資料庫中的資料。
+[動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)使您能夠指定要顯示的敏感性資料量，從而對應用程式層的影響最小，從而有助於防止對敏感性資料的未授權訪問。 這項原則式安全性功能會將機密資料隱藏在指定資料庫欄位的查詢結果集內，而資料庫中的資料則不會變更。
 
 > [!Note]
 > 動態資料遮罩可由　Azure 資料庫管理員、伺服器管理員或安全性主管人員等角色來設定。
@@ -155,13 +155,13 @@ Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的�
 
 ![允許使用者透過用戶端應用程式存取資料表中資料列的資料列層級安全性](./media/database-security-overview/azure-database-fig4.png)
 
-存取限制邏輯位於資料庫層，而不是遠離另一個應用程式層中的資料。 資料庫系統會在每次嘗試從任何層存取該資料時套用存取限制。 這可藉由縮小安全性系統的接觸區，讓安全性系統更加可靠和健全。
+存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫系統會在每次於任何層嘗試存取該資料時套用存取限制。 這可藉由縮小安全性系統的接觸區，讓安全性系統更加可靠和健全。
 
 資料列層級安全性引進述詞型存取控制。 它提供彈性的集中式評估，可將系統管理員認定適當的中繼資料或任何其他準則列入考量。 此述詞會當做準則來使用，以根據使用者屬性，來判斷使用者是否具有資料的適當存取權限。 您可以使用述詞型存取控制來實作標籤型存取控制。
 
 ## <a name="proactive-monitoring"></a>主動監視
 
-SQL Database 可透過提供「稽核」和「威脅偵測」功能，協助保護您的資料。
+SQL Database 可透過提供「稽核」** 和「威脅偵測」** 功能，協助保護您的資料。
 
 ### <a name="auditing"></a>稽核
 
@@ -177,8 +177,8 @@ SQL Database 稽核會追蹤資料庫事件，並將它們寫入至您 Azure 儲
 
 稽核方法有兩種：
 
--   **Blob 稽核**：記錄會寫入 Azure Blob 儲存體。 這是較新的稽核方法。 此方法可提供更高效能、支援細微度更高的物件層級稽核，且更符合成本效益。
--   **資料表稽核**：記錄會寫入至 Azure Blob 儲存體。
+-   **Blob 稽核**：記錄會寫入至 Azure Blob 儲存體。 這是較新的稽核方法。 此方法可提供更高效能、支援細微度更高的物件層級稽核，且更符合成本效益。
+-   **資料表稽核**：記錄會寫入至 Azure 資料表儲存體。
 
 ### <a name="threat-detection"></a>威脅偵測
 
@@ -188,8 +188,8 @@ SQL Database 稽核會追蹤資料庫事件，並將它們寫入至您 Azure 儲
 
 SQL 進階威脅防護 (ATP) 提供一組進階的 SQL 安全性功能，包括資料探索與分類、弱點評估及威脅偵測。 
 
-- [資料探索與分類](/azure/sql-database/sql-database-data-discovery-and-classification)
-- [弱點評估](/azure/sql-database/sql-vulnerability-assessment)  
+- [資料發現&分類](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [漏洞評估](/azure/sql-database/sql-vulnerability-assessment)  
 - [威脅偵測](/azure/sql-database/sql-database-threat-detection)
 
 [「適用於 PostgreSQL 的 Azure 資料庫」進階威脅防護](/azure/postgresql/concepts-data-access-and-security-threat-protection)能提供一層新的安全性，藉由提供異常活動的安全性警示，讓您能夠在潛在威脅發生時偵測到它們並做出回應。 當有可疑的資料庫活動、潛在弱點，以及異常的資料庫存取和查詢模式發生時，使用者就會收到警示。 「適用於 PostgreSQL 的 Azure 資料庫」的進階威脅防護會將警示與 Azure 資訊安全中心整合。 警示類型包括：
@@ -233,4 +233,4 @@ Azure Marketplace 將 Microsoft Azure 合作夥伴生態系統結合成整合的
 - [保護 Azure SQL 資料庫](/azure/sql-database/sql-database-security-tutorial)
 - [Azure 資訊安全中心和 Azure SQL Database 服務](/azure/security-center/security-center-sql-database)
 - [SQL Database 威脅偵測](/azure/sql-database/sql-database-threat-detection)
-- [改善 SQL 資料庫效能](/azure/sql-database/sql-database-performance-tutorial)
+- [提高 SQL 資料庫性能](/azure/sql-database/sql-database-performance-tutorial)

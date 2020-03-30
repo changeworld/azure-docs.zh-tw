@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 建立 ContentKeys
-description: 本文示範如何建立內容金鑰，以提供資產的安全存取。
+description: 本文演示如何創建提供對資產的安全訪問的內容金鑰。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251150"
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 建立 ContentKeys 
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-create-contentkey.md)
+> * [休息](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
@@ -70,7 +70,7 @@ ms.locfileid: "79251150"
     }
 ```
 
-## <a id="envelope_contentkey"></a>建立信封類型 ContentKey
+## <a name="create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>建立信封類型 ContentKey
 下列程式碼片段會建立信封加密類型的內容金鑰。 然後建立金鑰與所指定資產的關聯。
 
 ```csharp
@@ -108,7 +108,7 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>建立一般類型 ContentKey
+## <a name="create-common-type-contentkey"></a><a id="common_contentkey"></a>建立一般類型 ContentKey
 下列程式碼片段會建立一般加密類型的內容金鑰。 然後建立金鑰與所指定資產的關聯。
 
 ```csharp

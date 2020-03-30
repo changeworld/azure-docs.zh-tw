@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70067492"
 ---
 # <a name="add-a-forwarded-header"></a>新增 Forwarded 標頭
@@ -25,7 +25,7 @@ ms.locfileid: "70067492"
 
 ## <a name="code"></a>程式碼
 
-將程式碼貼至 [輸入] 區塊。
+將程式碼貼至 [輸入]**** 區塊。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 

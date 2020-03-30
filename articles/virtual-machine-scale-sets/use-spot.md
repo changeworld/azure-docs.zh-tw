@@ -1,6 +1,6 @@
 ---
-title: 建立使用 Azure 點 Vm 的擴展集（預覽）
-description: 瞭解如何建立使用點 Vm 的 Azure 虛擬機器擴展集，以節省成本。
+title: 創建使用 Azure Spot VM 的比例集（預覽）
+description: 瞭解如何創建使用 Spot VM 節省成本的 Azure 虛擬機器縮放集。
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162679"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>預覽：適用于虛擬機器擴展集的 Azure 位置 Vm 
+# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>預覽：虛擬機器縮放集的 Azure Spot VM 
 
-在擴展集上使用 Azure 位置可讓您以可觀的成本節約，利用我們未使用的容量。 Azure 基礎結構會在任何時間點回復此容量，以收回點實例。 因此，點實例適用于可處理中斷的工作負載，例如批次處理作業、開發/測試環境、大型計算工作負載等。
+在規模集中使用 Azure Spot 使您能夠利用我們未使用的容量，從而顯著節省成本。 在 Azure 需要返回容量的任何時間點，Azure 基礎結構將驅逐 Spot 實例。 因此，Spot 實例非常適合處理批次處理作業、開發/測試環境、大型計算工作負載等中斷的工作負載。
 
-可用容量的數量可能會因大小、區域、時間和更多而有所不同。 在擴展集上部署點實例時，只有在有可用容量的情況下，Azure 才會配置實例，但這些實例沒有 SLA。 「點」擴展集會部署在單一容錯網域中，且不提供高可用性保證。
+可用容量的數量可能因大小、區域、一天中的時間等而異。 在規模集中部署 Spot 實例時，Azure 僅在存在可用容量但這些實例沒有 SLA 時才會分配實例。 Spot 比例集部署在單個容錯域中，並且不提供高可用性保證。
 
 > [!IMPORTANT]
-> 點實例目前處於公開預覽狀態。
-> 此預覽版本不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 競價實例當前處於公共預覽版中。
+> 不建議生產工作負載使用此預覽版本。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
-「點」實例的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定價。 
-
-
-有了可變的定價，您可以選擇使用最多5個小數位數來設定最大價格（以美元（美元）為單位）。 例如，`0.98765`的值是每小時 $0.98765 美元的最大價格。 如果您將最大價格設定為 `-1`，實例將不會根據價格來收回。 實例的價格將會是標準實例的目前價格或價格（這種情況較少），只要有可用的容量和配額即可。
-
-## <a name="eviction-policy"></a>收回原則
-
-建立「點」擴展集時，您可以將收回原則設定為*解除配置*（預設值）或*刪除*。 
-
-*解除配置*原則會將您收回的實例移至已停止（已解除配置）狀態，讓您重新部署已收回的實例。 不過，不保證配置會成功。 已解除配置的 VM 會依擴展集執行個體配額計算，您將需要支付您的基礎磁碟費用。 
-
-如果您想要在您的位置擴展集中刪除實例，當它們被收回時，您可以將收回原則設定為 [*刪除*]。 收回原則設定為刪除的情況下，您可以藉由增加擴展集執行個體計數屬性來建立新的 VM。 Azure 會一同刪除已收回的 VM 與其基礎磁碟，因此您將不需要支付此儲存體的費用。 您也可以使用擴展集的自動調整功能，自動嘗試和補償收回的 VM，不過不保證配置會成功。 建議您在將收回原則設定為 [刪除] 時，只在「點」擴展集上使用自動調整功能，以避免您的磁片成本並達到配額限制。 
-
-使用者可以選擇透過[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間完成任何作業，並在收回前執行關閉工作。 
+基於區域和 SKU 的 Spot 實例定價是可變的。 有關詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定價。 
 
 
-## <a name="deploying-spot-vms-in-scale-sets"></a>在擴展集中部署點 Vm
+使用可變定價，您可以選擇使用最多 5 個小數位設置最高價格（美元 （USD）。 例如，該值`0.98765`將是每小時 0.98765 美元的最高價格。 如果將最高價格設置為`-1`，則實例不會根據價格被逐出。 實例的價格將是 Spot 的當前價格或標準實例的價格，只要有容量和配額可用，價格就更少。
 
-若要在擴展集上部署點 Vm，您可以將新的*優先權*旗標設定為 [*點*]。 擴展集中的所有 Vm 都將設定為 [點]。 若要建立具有點 Vm 的擴展集，請使用下列其中一種方法：
-- [Azure 入口網站](#portal)
+## <a name="eviction-policy"></a>驅逐政策
+
+創建 Spot 比例集時，可以將逐出策略設置為 *"取消分配*"（預設 *）或刪除*。 
+
+*"取消分配"* 策略會將被逐出的實例移動到已停止的已停止的已轉移狀態，從而允許您重新部署已展開的實例。 不過，不保證配置會成功。 已解除配置的 VM 會依擴展集執行個體配額計算，您將需要支付您的基礎磁碟費用。 
+
+如果希望在 Spot 比例集中的實例在被逐出時刪除它們，則可以將逐出策略設置為*刪除*。 收回原則設定為刪除的情況下，您可以藉由增加擴展集執行個體計數屬性來建立新的 VM。 Azure 會一同刪除已收回的 VM 與其基礎磁碟，因此您將不需要支付此儲存體的費用。 您也可以使用擴展集的自動調整功能，自動嘗試和補償收回的 VM，不過不保證配置會成功。 建議您僅在將刪除策略設置為刪除時才在 Spot 比例集上使用自動縮放功能，以避免磁片的成本並達到配額限制。 
+
+使用者可以加入宣告通過[Azure 計畫事件](../virtual-machines/linux/scheduled-events.md)接收 VM 內通知。 如果 VM 被逐出，您將通知您，並且在驅逐之前，您將有 30 秒的時間完成任何作業並執行關閉任務。 
+
+
+## <a name="deploying-spot-vms-in-scale-sets"></a>在比例集中部署 Spot VM
+
+要在比例集中部署 Spot VM，可以將新的*優先順序*標誌設置為 *"Spot*"。 縮放集中的所有 VM 都將設置為"Spot"。 要使用 Spot VM 創建比例集，請使用以下方法之一：
+- [Azure 門戶](#portal)
 - [Azure CLI](#azure-cli)
-- [Azure PowerShell](#powershell)
+- [Azure 電源外殼](#powershell)
 - [Azure 資源管理員範本](#resource-manager-templates)
 
 ## <a name="portal"></a>入口網站
 
-建立使用點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-portal.md)中所述的流程相同。 當您部署擴展集時，您可以選擇設定「點」旗標和「收回原則」： ![建立具有「點」 Vm 的擴展集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+創建使用 Spot VM 的比例集的過程與[入門文章中](quick-create-portal.md)詳述的過程相同。 部署比例集時，可以選擇設置"Spot"標誌和逐出策略：![使用 Spot VM 創建比例集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-建立具有點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-cli.md)中所述的流程相同。 只要新增 [--Priority 位置]，然後加入 `--max-price`。 在此範例中，我們使用 `--max-price` 的 `-1`，因此不會根據價格來收回實例。
+使用 Spot VM 創建比例集的過程與[入門文章中](quick-create-cli.md)詳述的過程相同。 只需添加"-優先順序點"，然後添加`--max-price`。 在此示例中，我們使用`-1`，`--max-price`以便實例不會根據價格被逐出。
 
 ```azurecli
 az vmss create \
@@ -75,8 +75,8 @@ az vmss create \
 
 ## <a name="powershell"></a>PowerShell
 
-建立具有點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-powershell.md)中所述的流程相同。
-只要新增「-優先順序點」，然後將 `-max-price` 提供給[new-azvmssconfig](/powershell/module/az.compute/new-azvmssconfig)。
+使用 Spot VM 創建比例集的過程與[入門文章中](quick-create-powershell.md)詳述的過程相同。
+只需添加"-優先順序點"，然後向`-max-price`[New-AzVmsConfig 提供](/powershell/module/az.compute/new-azvmssconfig)。
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -90,9 +90,9 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager 範本
 
-建立使用點 Vm 之擴展集的程式，與適用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的使用者入門文章中所述的流程相同。 
+創建使用 Spot VM 的比例集的過程與[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)入門文章中詳述的過程相同。 
 
-若是點範本部署，請使用`"apiVersion": "2019-03-01"` 或更新版本。 將 `priority`、`evictionPolicy` 和 `billingProfile` 屬性新增至範本中的 `"virtualMachineProfile":` 區段： 
+對於 Spot 範本部署，`"apiVersion": "2019-03-01"`請使用或更高版本。 將`priority`和`evictionPolicy``billingProfile`屬性添加到範本`"virtualMachineProfile":`中的部分： 
 
 ```json
                 "priority": "Spot",
@@ -102,76 +102,76 @@ $vmssConfig = New-AzVmssConfig `
                 }
 ```
 
-若要在收回實例之後將它刪除，請將 `evictionPolicy` 參數變更為 `Delete`。
+要在實例被逐出後將其刪除，請將`evictionPolicy`參數更改為`Delete`。
 
 ## <a name="faq"></a>常見問題集
 
-**問：** 建立後，它是一個與標準實例相同的點實例嗎？
+**問：** 創建後，Spot 實例是否與標準實例相同？
 
-**答：** 是，但沒有適用于點 Vm 的 SLA，而且可以隨時收回。
-
-
-**問：** 當您收回但仍需要容量時，該怎麼辦？
-
-**答：** 如果您需要立即使用容量，建議您使用標準 Vm，而不是找出 Vm。
+**答：** 是，除了 Spot VM 沒有 SLA，它們可以隨時被逐出。
 
 
-**問：** 如何管理適用于點的配額？
+**問：** 當您被逐出時該怎麼辦，但仍需要容量？
 
-**答：** 點實例和標準實例會有不同的配額集區。 點配額會在 Vm 與擴展集實例之間共用。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
-
-
-**問：** 我可以要求額外的時間配額嗎？
-
-**答：** 是，您可以提交要求以增加您的配額，以透過[標準配額要求](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)程式來找出您的 vm。
+**答：** 如果您需要容量，我們建議您使用標準 VM 而不是 Spot VM。
 
 
-**問：** 我可以將現有的擴展集轉換成點擴展集嗎？
+**問：** 如何管理 Spot 的配額？
 
-**答：** 否，只有在建立時才支援設定 `Spot` 旗標。
-
-
-**問：** 如果我使用低優先順序擴展集的 `low`，我是否需要改為開始使用 `Spot`？
-
-**答：** 目前，`low` 和 `Spot` 都可以使用，但您應該使用 `Spot`開始轉換成。
+**答：** 競價實例和標準實例將具有單獨的配額池。 競價配額將在 VM 和縮放設置實例之間共用。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 
-**問：** 我可以同時建立具有一般 Vm 和點 Vm 的擴展集嗎？
+**問：** 我可以申請 Spot 的額外配額嗎？
 
-**答：** 否，擴展集不能支援一種以上的優先順序類型。
-
-
-**問：** 我可以搭配使用自動調整與點擴展集嗎？
-
-**答：** 是，您可以在您的位置擴展集上設定自動調整規則。 如果您的 Vm 已收回，自動調整可以嘗試建立新的點 Vm。 請記住，不保證容量足夠。 
+**答：** 是的，您將能夠通過[標準配額請求流程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)提交請求，以增加 Spot VM 的配額。
 
 
-**問：** 自動調整會同時使用收回原則（解除配置和刪除）嗎？
+**問：** 是否可以將現有比例集轉換為"點"比例集？
 
-**答：** 建議您在使用自動調整時，將收回原則設定為 [刪除]。 這是因為解除配置執行個體是按照擴展集的容量計數進行計算。 使用自動調整時，由於已解除配置收回的執行個體，可能會很快達到目標執行個體計數。 
+**答：** 否，`Spot`僅在創建時支援設置標誌。
 
 
-**問：** 哪些通道支援找出 Vm 的位置？
+**問：** 如果我用於`low`低優先順序縮放集，是否需要開始使用`Spot`？
 
-**答：** 請參閱下表中的點機可用性。
+**答：** 現在，兩`low``Spot`者都工作，但您應該開始過渡到使用`Spot`。
+
+
+**問：** 是否可以創建具有常規 VM 和 Spot VM 的縮放集？
+
+**答：** 否，比例集不能支援多個優先順序類型。
+
+
+**問：** 是否可以將自動縮放與競量縮放集一起使用？
+
+**答：** 可以，您可以在"競量"比例集中設置自動縮放規則。 如果 VM 被逐出，自動縮放可以嘗試創建新的 Spot VM。 請記住，不保證容量足夠。 
+
+
+**問：** 自動縮放是否同時適用于逐出策略（取消分配和刪除）？
+
+**答：** 建議您在使用自動縮放時將逐出策略設置為刪除。 這是因為解除配置執行個體是按照擴展集的容量計數進行計算。 使用自動調整時，由於已解除配置收回的執行個體，可能會很快達到目標執行個體計數。 
+
+
+**問：** 哪些通道支援 Spot VM？
+
+**答：** 有關 Spot VM 可用性，請參閱下表。
 
 <a name="channel"></a>
 
-| Azure 頻道               | Azure 點 Vm 可用性       |
+| Azure 通道               | Azure Spot VM 可用性       |
 |------------------------------|-----------------------------------|
 | Enterprise 合約         | 是                               |
 | 隨用隨付                | 是                               |
-| 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| 雲端服務提供者 (CSP) | [聯繫您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | 優點                     | 無法使用                     |
-| 商                    | 無法使用                     |
+| 贊助                    | 無法使用                     |
 | 免費試用                   | 無法使用                     |
 
 
-**問：** 我可以在何處張貼問題？
+**問：** 我在哪裡可以發佈問題？
 
-**答：** 您可以使用[Q & A 的](https://docs.microsoft.com/answers/topics/azure-spot.html)`azure-spot` 來張貼和標記您的問題。 
+**答：** 您可以在[Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)`azure-spot`上發佈和標記您的問題。 
 
 ## <a name="next-steps"></a>後續步驟
-現在您已建立具有點 Vm 的擴展集，請嘗試使用「位置」部署我們的[自動調整範本](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)。
+現在，您已經使用 Spot VM 創建了比例集，請嘗試使用 Spot 部署我們的[自動縮放範本](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)。
 
 如需定價詳細資料，請參閱[虛擬機器擴展集定價網頁](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)。

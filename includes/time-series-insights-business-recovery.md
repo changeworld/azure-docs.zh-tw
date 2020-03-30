@@ -6,70 +6,70 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 6a3837d01815306e469a684404ab76506f547f43
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77013890"
 ---
 ## <a name="business-disaster-recovery"></a>業務災害復原
 
-本節說明可讓應用程式和服務繼續執行的 Azure 時間序列深入解析功能，即使發生嚴重損壞（稱為「*商務*嚴重損壞修復」）也一樣。
+本節介紹 Azure 時間序列見解的功能，即使發生災難（稱為*業務災害復原*），也能保持應用和服務的運行。
 
 ### <a name="high-availability"></a>高可用性
 
-身為 Azure 服務，時間序列深入解析使用 Azure 區域層級的冗余來提供特定的*高可用性*功能。 例如，Azure 支援透過 Azure 的*跨區域可用性*功能的嚴重損壞修復功能。
+作為 Azure 服務，時序見解通過使用 Azure 區域級別的冗余提供某些*高可用性*功能。 例如，Azure 通過 Azure*的跨區域可用性*功能支援災害復原功能。
 
-透過 Azure 提供的額外高可用性功能（也適用于任何時間序列深入解析實例）包括：
+通過 Azure 提供的其他高可用性功能（以及任何時間序列見解實例都可用）包括：
 
-- **容錯移轉**： Azure 提供[異地複寫和負載平衡](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。
-- **資料還原**和**儲存體**復原： Azure 提供[數個選項來保留及復原資料](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)。
-- **Azure Site Recovery**： Azure 會透過[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)提供 Site Recovery 功能。
-- **Azure 備份**： [Azure 備份](https://docs.microsoft.com/azure/backup/backup-architecture)同時支援 Azure vm 的內部部署和雲端備份。
+- **容錯移轉**：Azure 提供[異地複製和負載平衡](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。
+- **資料恢復**和**存儲恢復**：Azure 提供了[幾個選項來保存和恢復資料](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)。
+- **Azure 網站恢復**：Azure 通過[Azure 網站恢復](https://docs.microsoft.com/azure/site-recovery/)提供網站恢復功能。
+- **Azure 備份** [：Azure 備份](https://docs.microsoft.com/azure/backup/backup-architecture)支援 Azure VM 的本地備份和雲內備份。
 
-請確定您已啟用相關的 Azure 功能，為您的裝置和使用者提供全域、跨區域的高可用性。
+確保啟用相關的 Azure 功能，以便為設備和使用者提供全域的跨區域高可用性。
 
 > [!NOTE]
-> 如果 Azure 設定為啟用跨區域可用性，Azure 時間序列深入解析不需要額外的跨區域可用性設定。
+> 如果 Azure 配置為啟用跨區域可用性，則 Azure 時間序列見解中不需要其他跨區域可用性配置。
 
-### <a name="iot-and-event-hubs"></a>IoT 和事件中樞
+### <a name="iot-and-event-hubs"></a>IoT 和事件中心
 
-某些 Azure IoT 服務也包含內建的商務嚴重損壞修復功能：
+某些 Azure IoT 服務還包括內置的業務災害復原功能：
 
-- [Azure IoT 中樞高可用性嚴重損壞修復](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)，其中包括區域內冗余
-- [Azure 事件中樞原則](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure IoT 中心高可用性災害復原](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)，包括區域內冗余
+- [Azure 事件中心策略](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure 存儲冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
-將時間序列深入解析與其他服務整合，可提供額外的嚴重損壞修復機會。 例如，傳送至事件中樞的遙測可能會保存到備份 Azure Blob 儲存體資料庫。
+將時間序列見解與其他服務集成提供了額外的災害復原機會。 例如，發送到事件中心的遙測資料可能會保存到備份的 Azure Blob 存儲資料庫。
 
-### <a name="time-series-insights"></a>Time Series Insights
+### <a name="time-series-insights"></a>時間序列深入解析
 
-有數種方式可讓您的時間序列深入解析資料、應用程式和服務保持執行狀態，即使它們已中斷。 
+有幾種方法可以保持時間序列見解資料、應用和服務的運行，即使它們已中斷也是如此。 
 
-不過，基於下列目的，您可能也會決定需要 Azure 時間序列環境的完整備份複本：
+但是，出於以下目的，您可以確定還需要 Azure 時間系列環境的完整備份副本：
 
-- 作為*容錯移轉實例*，專門用於時間序列深入解析將資料和流量重新導向至
+- 作為故障*轉移實例*，專門用於時間序列見解，用於將資料和流量重定向到
 - 保留資料和審核資訊
 
-一般來說，複製時間序列深入解析環境的最佳方式，是在備份 Azure 區域中建立第二個時間序列深入解析環境。 事件也會從您的主要事件來源傳送到此次要環境。 請確定您使用的是第二個專用取用者群組。 遵循該來源的商務嚴重損壞修復指導方針，如先前所述。
+通常，複製時間序列見解環境的最佳方法是在備份 Azure 區域中創建第二個時間序列見解環境。 事件也會從主事件源發送到此輔助環境。 請確保使用第二個專用消費者組。 按照該源的業務災害復原指南進行操作，如前面所述。
 
-若要建立重複的環境：
+要創建重複的環境，請進行：
 
-1. 在第二個區域中建立環境。 如需詳細資訊，請參閱[在 Azure 入口網站中建立新的時間序列深入解析環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)。
+1. 在第二個區域中建立環境。 有關詳細資訊，請閱讀[Azure 門戶中創建新的時序見解環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)。
 1. 建立您事件來源的第二個專用取用者群組。
-1. 將該事件來源連線到新環境。 請確定您指定的是第二個專用取用者群組。
-1. 請參閱時間序列深入解析[IoT 中樞](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)和[事件中樞](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)檔。
+1. 將該事件來源連線到新環境。 請確保指定第二個專用消費者組。
+1. 查看時間序列見解[IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)中心和[事件中心](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)文檔。
 
 如果發生事件：
 
 1. 如果您的主要區域在災害事件期間受到影響，請將作業重新路由傳送到備份時間序列深入解析環境。
-1. 使用您的第二個區域來備份和復原所有時間序列深入解析遙測和查詢資料。
+1. 使用第二個區域備份和恢復所有時間序列見解遙測和查詢資料。
 
 > [!IMPORTANT]
 > 如果發生容錯移轉：
 > 
-> * 可能也會發生延遲。
-> * 當作業被重新路由時，可能會發生訊息處理的瞬間尖峰。
+> * 也可能發生延遲。
+> * 由於操作重新路由，消息處理可能會出現暫態峰值。
 > 
-> 如需詳細資訊，請參閱[減緩時間序列深入解析中的延遲](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)。
+> 有關詳細資訊，請閱讀["時間序列見解"中緩解延遲](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)。
 

@@ -1,6 +1,6 @@
 ---
-title: 針對遠端桌面用戶端 Windows 虛擬桌面進行疑難排解-Azure
-description: 如何解決在 Windows 虛擬桌面租使用者環境中設定用戶端連線時的問題。
+title: 排除遠端桌面用戶端 Windows 虛擬桌面 - Azure
+description: 在 Windows 虛擬桌面租戶環境中設置用戶端連接時，如何解決問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,19 +9,19 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127501"
 ---
-# <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
+# <a name="troubleshoot-the-remote-desktop-client"></a>排除遠端桌面用戶端故障
 
-本文說明遠端桌面用戶端的常見問題，以及如何修正這些問題。
+本文介紹了遠端桌面用戶端的常見問題以及如何解決這些問題。
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>適用于 Windows 7 或 Windows 10 的遠端桌面用戶端停止回應或無法開啟
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>適用于 Windows 7 或 Windows 10 的遠端桌面用戶端停止回應或無法打開
 
-使用下列 PowerShell Cmdlet 來清除頻外（OOB）用戶端登錄。
+使用以下 PowerShell Cmdlet 清理帶外 （OOB） 用戶端註冊表。
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -33,13 +33,13 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-流覽至 **%AppData%\RdClientRadc**並刪除所有內容。
+導航到 **%AppData%*RdClientRadc**並刪除所有內容。
 
-卸載並重新安裝適用于 Windows 7 和 Windows 10 的遠端桌面用戶端。
+卸載並重新安裝 Windows 7 和 Windows 10 的遠端桌面用戶端。
 
-## <a name="web-client-wont-open"></a>Web 用戶端不會開啟
+## <a name="web-client-wont-open"></a>Web 用戶端無法打開
 
-首先，在瀏覽器中開啟另一個網站，以測試您的網際網路連線;例如， [www.bing.com](https://www.bing.com)。
+首先，通過在瀏覽器中打開另一個網站來測試您的互聯網連接;例如[，www.bing.com](https://www.bing.com)。
 
 使用**nslookup**確認 DNS 可以解析 FQDN：
 
@@ -47,47 +47,47 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 nslookup rdweb.wvd.microsoft.com
 ```
 
-請嘗試與其他用戶端連線，例如適用于 Windows 7 或 Windows 10 的遠端桌面用戶端，並檢查您是否可以開啟網頁用戶端。
+嘗試與其他用戶端（如 Windows 7 或 Windows 10 的遠端桌面用戶端）連接，並檢查是否可以打開 Web 用戶端。
 
-### <a name="opening-another-site-fails"></a>開啟另一個網站失敗
+### <a name="opening-another-site-fails"></a>打開其他網站失敗
 
-這通常是因網路連線問題或網路中斷所造成。 我們建議您洽詢網路支援。
+這通常是由網路連接問題或網路中斷引起的。 我們建議您聯繫網路支援。
 
 ### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup 無法解析名稱
 
-這通常是因網路連線問題或網路中斷所造成。 我們建議您洽詢網路支援。
+這通常是由網路連接問題或網路中斷引起的。 我們建議您聯繫網路支援。
 
-### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>您的用戶端無法連線，但您網路上的其他用戶端可以連接
+### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>用戶端無法連接，但網路上的其他用戶端可以連接
 
-如果您的瀏覽器在使用 web 用戶端時開始作用或停止運作，請遵循下列指示進行疑難排解：
+如果您的瀏覽器在使用 Web 用戶端時開始啟動或停止工作，請按照以下說明進行故障排除：
 
-1. 重新開機瀏覽器。
-2. 清除瀏覽器 cookie。 請參閱[如何刪除 Internet Explorer 中的 cookie](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)檔案。
-3. 清除瀏覽器快取。 請參閱[清除瀏覽器的瀏覽器](https://binged.it/2RKyfdU)快取。
-4. 以私用模式開啟瀏覽器。
+1. 重新啟動瀏覽器。
+2. 清除瀏覽器 Cookie。 請參閱[如何刪除互聯網資源管理器中的 Cookie 檔](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
+3. 清除瀏覽器快取。 請參閱[瀏覽器的透明瀏覽器緩存](https://binged.it/2RKyfdU)。
+4. 在專用模式下打開瀏覽器。
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Web 用戶端停止回應或中斷連線
+## <a name="web-client-stops-responding-or-disconnects"></a>Web 用戶端停止回應或斷開連接
 
-嘗試使用另一個瀏覽器或用戶端進行連接。
+請嘗試使用其他瀏覽器或用戶端進行連接。
 
-### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>其他瀏覽器和用戶端也會故障或無法開啟
+### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>其他瀏覽器和用戶端也出現故障或無法打開
 
-如果即使在切換瀏覽器之後仍然發生問題，問題可能不在您的瀏覽器中，而是在您的網路上。 我們建議您洽詢網路支援。
+如果問題即使在您切換瀏覽器後仍然存在，問題可能不是您的瀏覽器，而是您的網路。 我們建議您聯繫網路支援。
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Web 用戶端會持續提示輸入認證
+## <a name="web-client-keeps-prompting-for-credentials"></a>Web 用戶端不斷提示憑據
 
-如果 Web 用戶端持續提示輸入認證，請遵循下列指示：
+如果 Web 用戶端不斷提示憑據，請按照以下說明操作：
 
-1. 確認 web 用戶端 URL 是否正確。
-2. 確認您所使用的認證適用于與 URL 系結的 Windows 虛擬桌面環境。
-3. 清除瀏覽器 cookie。 如需詳細資訊，請參閱[如何刪除 Internet Explorer 中的 cookie](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)檔案。
-4. 清除瀏覽器快取。 如需詳細資訊，請參閱[清除瀏覽器的瀏覽器](https://binged.it/2RKyfdU)快取。
-5. 以私用模式開啟瀏覽器。
+1. 確認 Web 用戶端 URL 正確。
+2. 確認您使用的憑據適用于與 URL 關聯的 Windows 虛擬桌面環境。
+3. 清除瀏覽器 Cookie。 有關詳細資訊，請參閱如何在[Internet 資源管理器中刪除 Cookie 檔](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
+4. 清除瀏覽器快取。 有關詳細資訊，請參閱[清除瀏覽器的瀏覽器緩存](https://binged.it/2RKyfdU)。
+5. 在專用模式下打開瀏覽器。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
-- 若要針對在 Windows 虛擬桌面環境中建立租使用者和主機集區的問題進行疑難排解，請參閱[建立租使用者和主機集](troubleshoot-set-up-issues.md)區。
-- 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
-- 若要針對搭配 Windows 虛擬桌面使用 PowerShell 時的問題進行疑難排解，請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
+- 有關 Windows 虛擬桌面和升級跟蹤的故障排除概述，請參閱[故障排除概述、回饋和支援](troubleshoot-set-up-overview.md)。
+- 要在 Windows 虛擬桌面環境中創建租戶和主機池時解決問題，請參閱[租戶和主機池創建](troubleshoot-set-up-issues.md)。
+- 要在 Windows 虛擬桌面中配置虛擬機器 （VM） 時解決問題，請參閱[工作階段主機虛擬機器配置](troubleshoot-vm-configuration.md)。
+- 要解決在 Windows 虛擬桌面中使用 PowerShell 時的問題，請參閱[Windows 虛擬桌面電源外殼](troubleshoot-powershell.md)。
+- 要完成疑難排解教程，請參閱[教程：解決資源管理器範本部署的疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

@@ -4,21 +4,21 @@ description: 瞭解如何使用 Azure PowerShell，以建立包含 URL 路徑型
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/14/2019
+ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: tutorial
-ms.openlocfilehash: 04cd390681d0492dc28308c3304753a6ecaf1c3c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: c577859f6e8a44dd3573537aecadba638a5f6fa6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059392"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 以建立包含 URL 路徑型重新導向的應用程式閘道
 
-您可以使用 Azure PowerShell，在建立[應用程式閘道](application-gateway-introduction.md)時設定 [URL 型路由規則](application-gateway-url-route-overview.md)。 在本教學課程中，您可以使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)來建立後端集區。 然後，您可以建立 URL 路由規則，確保 Web 流量會重新導向到適當的後端集區。
+您可以使用 Azure PowerShell，在建立[應用程式閘道](application-gateway-introduction.md)時設定 [URL 型路由規則](application-gateway-url-route-overview.md)。 在本文中，您將使用[虛擬機器縮放集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)創建後端池。 然後，您可以建立 URL 路由規則，確保 Web 流量會重新導向到適當的後端集區。
 
-在本教學課程中，您會了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 設定網路
@@ -30,7 +30,7 @@ ms.locfileid: "74047616"
 
 ![URL 路由範例](./media/tutorial-url-redirect-powershell/scenario.png)
 
-如果您想要，您可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成本教學課程。
+如果您想要的話，可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成此程序。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "74047616"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 PowerShell，本教學課程會要求使用 Azure PowerShell 模組 1.0.0 版或更新版本。 若要尋找版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+如果選擇在本地安裝和使用 PowerShell，此過程需要 Azure PowerShell 模組版本 1.0.0 或更高版本。 若要尋找版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -79,9 +79,9 @@ New-AzPublicIpAddress `
 
 在本節中，您會建立支援應用程式閘道的資源，並在最後建立應用程式閘道。 您所建立的資源包括：
 
-- IP 組態和前端連接埠  - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
-- 預設集區  - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
-- 預設接聽程式和規則  - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
+- IP 組態和前端連接埠** - 將您先前建立的子網路與應用程式閘道產生關聯，並且指派用來存取它的連接埠。
+- 預設集區** - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
+- 預設接聽程式和規則** - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
@@ -129,7 +129,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>建立預設接聽程式和規則
 
-需要有接聽程式，才能讓應用程式閘道將流量適當地路由到後端集區。 在本教學課程中，您將建立多個接聽程式。 第一個基本的接聽程式會預期位於根 URL 的流量。 其他接聽程式則會預期特定 URL 的流量，例如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`。
+需要有接聽程式，才能讓應用程式閘道將流量適當地路由到後端集區。 在本文中，您將創建多個攔截器。 第一個基本的接聽程式會預期位於根 URL 的流量。 其他接聽程式則會預期特定 URL 的流量，例如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`。
 
 使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配您先前建立的前端設定和前端連接埠，來建立名為 *defaultListener* 的接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
 
@@ -391,7 +391,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1  、myvmss2  和 myvmss3  。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
+在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1**、myvmss2** 和 myvmss3**。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

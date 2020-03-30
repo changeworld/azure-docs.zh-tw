@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727158"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure 基礎結構監視   
@@ -52,12 +52,12 @@ Microsoft 會實作安全性事件管理程序，以便在發生事件時協調�
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
-- [Azure 資訊系統元件和界限](infrastructure-components.md)
+- [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL Database 安全性功能](infrastructure-sql.md)
+- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)
 - [Azure 客戶資料保護](protection-customer-data.md)

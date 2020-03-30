@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883088"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>使用 Azure IoT SDK 開發行動裝置
@@ -29,7 +29,7 @@ Azure IoT 中樞 C SDK 是以 C99 撰寫，因此擁有極大的可攜性，適�
 
 這些文件逐步解說如何在 iOS 裝置上開發裝置應用程式或服務應用程式：
 
-* [快速入門：將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-ios.md)  
+* [快速入門：將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-ios.md)  
 * [使用 IoT 中樞將訊息從雲端傳送至裝置](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>使用 Azure IoT 中樞 CocoaPod 程式庫開發
@@ -47,8 +47,8 @@ Azure IoT 中樞 Java SDK 支援 Android 平台。  如需特定已測試 API �
 
 這些文件逐步解說如何使用 Gradle 和 Android Studio 開發 Android 裝置上的裝置應用程式或服務應用程式：
 
-* [快速入門：將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-android.md)  
-* [快速入門：控制裝置](quickstart-control-device-android.md) 
+* [快速入門：將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-android.md)  
+* [快速入門：控制設備](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,21 +15,21 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154198"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 
 
 本文說明如何使用事件識別碼對無法透過遠端桌面通訊協定 (RDP) 連線至 Azure 虛擬機器 (VM) 的問題進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您嘗試使用遠端桌面通訊協定 (RDP) 工作階段連線至 Azure VM。 在您輸入認證後，連線失敗，並出現下列錯誤訊息：
 
-**這部電腦無法連線到遠端電腦。請再次嘗試連線。如果繼續發生問題，請連絡遠端電腦的擁有者或您的網路系統管理員。**
+**此電腦無法連接到遠端電腦。如果問題仍然存在，請嘗試再次連接，請與遠端電腦的擁有者或網路系統管理員聯繫。**
 
 若要對此問題進行疑難排解，請檢閱 VM 上的事件記錄，並參考下列案例。
 
@@ -43,7 +43,7 @@ ms.locfileid: "71154198"
 
 若要從遠端連線到 VM，請使用[如何使用遠端工具對 Azure VM 問題進行疑難排解](remote-tools-troubleshoot-azure-vm-issues.md)中的其中一個方法。
 
-## <a name="scenario-1"></a>案例 1
+## <a name="scenario-1"></a>實例 1
 
 ### <a name="event-logs"></a>事件記錄
 
@@ -54,38 +54,38 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**記錄名稱：**    系統 <br />
-**來源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日誌名稱：**     系統 <br />
+**來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
-**事件識別碼：**    1058 <br />
-**工作類別：** None <br />
-**等級：**       Error <br />
-**關鍵字：**    傳統 <br />
-**使用者：**        N/A <br />
+**事件識別碼：**      1058 <br />
+**任務類別：** 沒有 <br />
+**級別：**        錯誤 <br />
+**關鍵字：**     經典 <br />
+**使用者：**         不適用 <br />
 **電腦：**      *電腦* <br />
-**說明：** RD 工作階段主機伺服器無法取代 SSL 連線的 RD 工作階段主機伺服器驗證所使用的自我簽署憑證 (已過期)。 相關的狀態碼為「存取遭到拒絕」。
+**描述：** RD 工作階段主機伺服器無法取代 SSL 連線的 RD 工作階段主機伺服器驗證所使用的自我簽署憑證 (已過期)。 相關的狀態碼為「存取遭到拒絕」。
 
-**記錄名稱：**    系統 <br />
-**來源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日誌名稱：**     系統 <br />
+**來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
-**事件識別碼：**    1058 <br />
-**工作類別：** None <br />
-**等級：**       Error <br />
-**關鍵字：**    傳統 <br />
-**使用者：**        N/A <br />
+**事件識別碼：**      1058 <br />
+**任務類別：** 沒有 <br />
+**級別：**        錯誤 <br />
+**關鍵字：**     經典 <br />
+**使用者：**         不適用 <br />
 **電腦：**      *電腦* <br />
-**說明：** RD 工作階段主機伺服器無法建立新的自我簽署憑證以用於 SSL 連線的 RD 工作階段主機伺服器驗證，相關的狀態碼為「物件已存在」。
+**描述：** RD 工作階段主機伺服器無法建立新的自我簽署憑證以用於 SSL 連線的 RD 工作階段主機伺服器驗證，相關的狀態碼為「物件已存在」。
 
-**記錄名稱：**    系統 <br />
-**來源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日誌名稱：**     系統 <br />
+**來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
-**事件識別碼：**    1057 <br />
-**工作類別：** None <br />
-**等級：**       Error <br />
-**關鍵字：**    傳統 <br />
-**使用者：**        N/A <br />
+**事件識別碼：**      1057 <br />
+**任務類別：** 沒有 <br />
+**級別：**        錯誤 <br />
+**關鍵字：**     經典 <br />
+**使用者：**         不適用 <br />
 **電腦：**      *電腦* <br />
-**說明：** RD 工作階段主機伺服器無法建立新的自我簽署憑證，以用於 SSL 連線的 RD 工作階段主機伺服器驗證。 相關的狀態碼為「金鑰集不存在」
+**描述：** RD 工作階段主機伺服器無法建立新的自我簽署憑證，以用於 SSL 連線的 RD 工作階段主機伺服器驗證。 相關的狀態碼為「金鑰集不存在」
 
 您也可以執行下列命令，以檢查是否有 SCHANNEL 錯誤事件 36872 和 36870：
 
@@ -94,16 +94,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**記錄名稱：**    系統 <br />
-**來源：**      Schannel <br />
+**日誌名稱：**     系統 <br />
+**來源：**        Schannel <br />
 **日期：**          — <br />
-**事件識別碼：**    36870 <br />
-**工作類別：** None <br />
-**等級：**       Error <br />
-**關鍵字：**       <br />
-**使用者：**        系統 <br />
+**事件識別碼：**      36870 <br />
+**任務類別：** 沒有 <br />
+**級別：**        錯誤 <br />
+**關鍵 字：**       <br />
+**使用者：**          SYSTEM <br />
 **電腦：**      *電腦* <br />
-**說明：** 嘗試存取 SSL 伺服器認證私密金鑰時發生嚴重錯誤。 從密碼編譯模組傳回的錯誤碼為 0x8009030D。  <br />
+**描述：** 嘗試存取 SSL 伺服器認證私密金鑰時發生嚴重錯誤。 從密碼編譯模組傳回的錯誤碼為 0x8009030D。  <br />
 內部錯誤狀態為 10001。
 
 ### <a name="cause"></a>原因
@@ -113,7 +113,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 2. RSA 金鑰損毀或遺失。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 若要對此問題進行疑難排解，您必須依照下列步驟為 RDP 憑證設定正確的權限。
 
@@ -156,23 +156,23 @@ Start-Service -Name "SessionEnv"
 
 如果您無法更新憑證，請依照下列步驟嘗試刪除憑證：
 
-1. 在相同 VNET 中的另一個 VM 上開啟 [執行] 方塊，並輸入 **mmc**，然後按 [確定]。 
+1. 在相同 VNET 中的另一個 VM 上開啟 [執行]**** 方塊，並輸入 **mmc**，然後按 [確定]****。 
 
-2. 在 [檔案] 功能表上，選取 [新增/移除嵌入式管理單元]。
+2. 在 [檔案]**** 功能表上，選取 [新增/移除嵌入式管理單元]****。
 
-3. 在 [可用的嵌入式管理單元] 清單中選取 [憑證]，然後選取 [新增]。
+3. 在 [可用的嵌入式管理單元]**** 清單中選取 [憑證]****，然後選取 [新增]****。
 
-4. 選取 [電腦帳戶]，然後選取 [下一步]。
+4. 選取 [電腦帳戶]****，然後選取 [下一步]****。
 
-5. 選取 [其他電腦]，然後針對有問題 VM 新增 IP 位址。
+5. 選取 [其他電腦]****，然後針對有問題 VM 新增 IP 位址。
    >[!Note]
    >請嘗試使用內部網路，以避免使用虛擬 IP 位址。
 
-6. 選取 [完成]，然後選取 [確定]。
+6. 選取 [完成]****，然後選取 [確定]****。
 
    ![選取電腦](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. 展開憑證，移至 Remote Desktop\Certificates 資料夾，以滑鼠右鍵按一下憑證，然後選取 [刪除]。
+7. 展開憑證，移至 Remote Desktop\Certificates 資料夾，以滑鼠右鍵按一下憑證，然後選取 [刪除]****。
 
 8. 重新啟動遠端桌面組態服務：
 
@@ -216,22 +216,22 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RD
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**記錄名稱：**    系統 <br />
-**來源：**      Schannel <br />
+**日誌名稱：**     系統 <br />
+**來源：**        Schannel <br />
 **日期：**          — <br />
-**事件識別碼：**    36871 <br />
-**工作類別：** None <br />
-**等級：**       Error <br />
-**關鍵字：**       <br />
-**使用者：**        系統 <br />
+**事件識別碼：**      36871 <br />
+**任務類別：** 沒有 <br />
+**級別：**        錯誤 <br />
+**關鍵 字：**       <br />
+**使用者：**          SYSTEM <br />
 **電腦：**      *電腦* <br />
-**說明：** 建立 TLS 伺服器認證時發生嚴重錯誤。 內部錯誤狀態為 10013。
+**描述：** 建立 TLS 伺服器認證時發生嚴重錯誤。 內部錯誤狀態為 10013。
  
 ### <a name="cause"></a>原因
 
 此問題由安全性原則所導致。 當較舊版本的 TLS (例如 1.0) 停用時，RDP 存取會失敗。
 
-### <a name="resolution"></a>解析度
+### <a name="resolution"></a>解決方案
 
 RDP 使用 TLS 1.0 作為預設通訊協定。 不過，您可以將此通訊協定變更為已成為新標準的 TLS 1.1。
 
@@ -246,36 +246,36 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**記錄名稱：**    Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**來源：**      Microsoft-Windows-TerminalServices-SessionBroker <br />
+**記錄名稱：**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**來源：**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **日期：**          *時間* <br />
-**事件識別碼：**    2056 <br />
-**工作類別：** (109) <br />
-**等級：**       Error <br />
-**關鍵字：**       <br />
-**使用者：**        NETWORK SERVICE <br />
+**事件識別碼：**      2056 <br />
+**工作類別：**(109) <br />
+**級別：**        錯誤 <br />
+**關鍵 字：**       <br />
+**使用者：**          NETWORK SERVICE <br />
 **電腦：**      *電腦 FQDN* <br />
-**說明：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker 的事件識別碼 2056 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。 <br />
+**描述：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker 的事件識別碼 2056 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。 <br />
 如果該事件源自於另一部電腦，則必須將顯示資訊連同事件一起儲存。 <br />
 該事件隨附了下列資訊： <br />
 NULL <br />
 NULL <br />
 更新資料庫失敗。
 
-**記錄名稱：**    Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
-**來源：**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**記錄名稱：**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**來源：**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **日期：**          *時間* <br />
-**事件識別碼：**    1296 <br />
-**工作類別：** (104) <br />
-**等級：**       Error <br />
-**關鍵字：**       <br />
-**使用者：**        NETWORK SERVICE <br />
+**事件識別碼：**      1296 <br />
+**工作類別：**(104) <br />
+**級別：**        錯誤 <br />
+**關鍵 字：**       <br />
+**使用者：**          NETWORK SERVICE <br />
 **電腦：**      *電腦 FQDN* <br />
-**說明：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker-Client 的事件識別碼 1296 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。
+**描述：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker-Client 的事件識別碼 1296 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。
 如果該事件源自於另一部電腦，則必須將顯示資訊連同事件一起儲存。
 該事件隨附了下列資訊：  <br />
-*text* <br />
-*text* <br />
+*文字* <br />
+*文字* <br />
 遠端桌面連線代理人尚未就緒，無法用於 RPC 通訊。
 
 ### <a name="cause"></a>原因
@@ -284,7 +284,7 @@ NULL <br />
 
 主機名稱具有 Windows 內部資料庫的項目和相依性，而這是遠端桌面服務伺服器陣列的正常運作所不可或缺的。 在伺服器陣列建置之後變更主機名稱將造成許多錯誤，並且可能導致代理人伺服器停止運作。
 
-### <a name="resolution"></a>解析度 
+### <a name="resolution"></a>解決方案 
 
 若要修正此問題，必須重新安裝遠端桌面連線代理人角色與 Windows 內部資料庫。
 

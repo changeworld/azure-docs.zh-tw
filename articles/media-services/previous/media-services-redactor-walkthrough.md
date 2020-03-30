@@ -16,31 +16,31 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69997683"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒體分析修訂臉部逐步解說
 
 ## <a name="overview"></a>總覽
 
-**Azure 媒體修訂器** 是 [Azure 媒體分析](media-services-analytics-overview.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-redactor/)部落格。
+**Azure 媒體修訂器** 是 [Azure 媒體分析](media-services-analytics-overview.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 有關詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
 如需 **Azure 媒體修訂器**的詳細資訊，請參閱[臉部修訂概觀](media-services-face-redaction.md)主題。
 
 本主題逐步說明如何使用 Azure 媒體服務總管 (AMSE) 和 Azure 媒體修訂器視覺化檢視 (開放原始碼工具) 來執行完整的修訂工作流程。
 
-如需詳細資訊，請參閱 [此部落格](https://azure.microsoft.com/blog/redaction-preview-available-globally) 。
+有關詳細資訊，請參閱[此](https://azure.microsoft.com/blog/redaction-preview-available-globally)博客。
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure 媒體服務總管工作流程
 
-開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併) 模式執行簡單的工作流程。
+開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併)**** 模式執行簡單的工作流程。
 
 ### <a name="download-and-setup"></a>下載及安裝
 
-1. 從[這裡](https://aka.ms/amseforv2)下載 AMSE for AMS v2 工具。
+1. [從這裡](https://aka.ms/amseforv2)下載AMSE的AMSEv2工具。
 1. 使用您的服務金鑰登入您的媒體服務帳戶。
 
     若要取得帳戶名稱和金鑰資訊，請移至 [Azure 入口網站](https://portal.azure.com/)，然後選取 AMS 帳戶。 選取 [Settings] \(設定) > [Keys] \(金鑰)。 [管理金鑰] 視窗會顯示帳戶名稱以及主要和次要金鑰。 複製帳戶名稱和主要金鑰的值。
@@ -72,7 +72,7 @@ ms.locfileid: "69997683"
     ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (選擇性) 編輯 annotations.json 檔案，例如增加周框方塊界限。 
-4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂) 模式執行。 
+4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂)**** 模式執行。 
 
     ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 

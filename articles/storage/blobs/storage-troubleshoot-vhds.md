@@ -4,16 +4,17 @@ description: 提供針對 Azure 虛擬機器虛擬硬碟 (VHD) 的資源進行�
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rogarana
 ms.reviewer: wmgries
-ms.openlocfilehash: c00fdf3ad02edc1faf0d3257d3836a1c2f44d682
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b81c0947327dc8e84c5d3fbbecde3aa31313cc70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061191"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>針對連結至 Azure VM 的磁碟進行疑難排解 
 
@@ -23,12 +24,12 @@ ms.locfileid: "65150774"
 
 在某些情況下，如果資源管理員部署中的 VM 包含連結的 VHD，則刪除儲存體資源時可能會發生錯誤。 如需解決此問題的說明，請參閱下列其中一篇文章： 
 
-  * 在 Linux Vm:[Resource Manager 部署中的儲存體刪除錯誤](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * 在 Windows Vm:[Resource Manager 部署中的儲存體刪除錯誤](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Linux VM：[資源管理員部署中的儲存體刪除錯誤](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Windows VM：[資源管理員部署中的儲存體刪除錯誤](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
 ## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>針對包含連結 VHD 的 VM 非預期重新開機進行疑難排解
 
 如果您遇到包含大量連結 VHD 的 VM 非預期重新開機，請參閱下列其中一篇文章：
 
-  * 在 Linux Vm:[包含連結 VHD 的 VM 非預期重新開機](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * 在 Windows Vm:[包含連結 VHD 的 VM 非預期重新開機](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Linux VM：[包含連結 VHD 的 VM 非預期重新開機](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Windows VM：[包含連結 VHD 的 VM 非預期重新開機](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

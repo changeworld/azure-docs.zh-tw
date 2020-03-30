@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726698"
 ---
 # <a name="the-azure-production-network"></a>Azure 生產網路
@@ -55,16 +55,16 @@ Azure 會在各種層級實作強固的軟體安全性和防火牆功能，以�
 ### <a name="azure-security-features"></a>Azure 安全性功能
 Azure 會在生產網路內實作以主機為基礎的軟體防火牆。 核心 Azure 環境內有數個核心安全性和防火牆功能。 這些安全性功能反映出 Azure 環境中的深度防禦策略。 Azure 中的客戶資料會受到下列防火牆保護：
 
-**Hypervisor 防火牆 (封包篩選)** ：此防火牆會在 Hypervisor 中實作，並由網狀架構控制器 (FC) 代理程式設定。 此防火牆會保護在 VM 內執行的租用戶，以防止未經授權的存取。 根據預設，系統在 VM 建立時會封鎖所有流量，然後 FC 代理程式會在篩選器中新增規則及例外狀況，以允許經過授權的流量。
+**Hypervisor 防火牆 (封包篩選器)**：此防火牆會在 Hypervisor 中實作，並由網狀架構控制器 (FC) 代理程式設定。 此防火牆會保護在 VM 內執行的租用戶，以防止未經授權的存取。 根據預設，系統在 VM 建立時會封鎖所有流量，然後 FC 代理程式會在篩選器中新增規則及例外狀況，以允許經過授權的流量。
 
 系統在此會設定兩種類型的規則：
 
-- **機器組態或基礎結構規則**：根據預設，會封鎖所有通訊。 有存在例外狀況，可允許 VM 傳送和接收動態主機設定通訊協定 (DHCP) 通訊及 DNS 資訊，並將傳送至「公用」網際網路的流量輸出到 FC 叢集內的其他 VM 和 OS 啟用伺服器。 由於 VM 的連出目的地允許清單不包含 Azure 路由器子網路和其他 Microsoft 屬性，因此這些規則會作為其防禦層。
-- **角色組態檔規則**：根據租用戶的服務模型定義輸入 ACL。 例如，如果租用戶在特定 VM 的連接埠 80 上有 Web 前端，則系統會對所有 IP 位址開放連接埠 80。 如果 VM 有執行中的背景工作角色，則系統只會對相同租用戶內的 VM 開放該背景工作角色。
+- **機器配置或基礎結構規則**：預設情況下，所有通信都被阻止。 有存在例外狀況，可允許 VM 傳送和接收動態主機設定通訊協定 (DHCP) 通訊及 DNS 資訊，並將傳送至「公用」網際網路的流量輸出到 FC 叢集內的其他 VM 和 OS 啟用伺服器。 由於 VM 的連出目的地允許清單不包含 Azure 路由器子網路和其他 Microsoft 屬性，因此這些規則會作為其防禦層。
+- **角色設定檔規則**：這會根據租用戶的服務模型定義輸入 ACL。 例如，如果租用戶在特定 VM 的連接埠 80 上有 Web 前端，則系統會對所有 IP 位址開放連接埠 80。 如果 VM 有執行中的背景工作角色，則系統只會對相同租用戶內的 VM 開放該背景工作角色。
 
 **原生主機防火牆**：Azure 服務網狀架構和 Azure 儲存體會在沒有 Hypervisor 的原生 OS 上執行，因此系統會使用上述兩組規則來設定 Windows 防火牆。
 
-**主機防火牆**：主機防火牆會保護執行 Hypervisor 的主機分割區。 規則設計成僅允許 FC，並以跳躍方式在特定連接埠上與主機分割區通訊。 其他例外狀況則會允許 DHCP 回應與 DNS 回覆。 Azure 會使用機器設定檔，該檔案具有主機分割區的防火牆規則範本。 同時也存在主機防火牆例外狀況，能允許 VM 透過特定通訊協定/連接埠來與主機元件、線路伺服器和中繼資料伺服器通訊。
+**主機防火牆**：主機防火牆保護運行虛擬機器管理程式的主機分區。 規則設計成僅允許 FC，並以跳躍方式在特定連接埠上與主機分割區通訊。 其他例外狀況則會允許 DHCP 回應與 DNS 回覆。 Azure 會使用機器設定檔，該檔案具有主機分割區的防火牆規則範本。 同時也存在主機防火牆例外狀況，能允許 VM 透過特定通訊協定/連接埠來與主機元件、線路伺服器和中繼資料伺服器通訊。
 
 **客體防火牆**：客體 OS 的 Windows 防火牆片段，可由客戶在客戶 VM 和儲存體上進行設定。
 
@@ -81,11 +81,11 @@ Azure 會在生產網路內實作以主機為基礎的軟體防火牆。 核心 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
-- [Azure 資訊系統元件和界限](infrastructure-components.md)
+- [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
-- [Azure SQL Database 安全性功能](infrastructure-sql.md)
+- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

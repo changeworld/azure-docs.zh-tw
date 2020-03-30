@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965125"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
@@ -32,7 +32,7 @@ StorSimple 使用 [儲存體分層](#automatic-storage-tiering) 管理各種儲�
 
 除了儲存體管理外，StorSimple 資料保護功能可讓您建立依需求和排程的備份，然後將其儲存在本機或雲端中。 備份採用累加快照的形式，這表示建立及還原備份更快速。 雲端快照在災害復原案例中至關重要，因為這些快照會取代次要儲存體系統 (例如磁帶備份)，並讓您將資料還原到資料中心或在必要時還原至其他網站。
 
-![影片圖示](./media/storsimple-overview/video_icon.png) 觀賞 Microsoft Azure StorSimple 的快速簡介影片。
+![影片圖示](./media/storsimple-overview/video_icon.png)  觀賞 Microsoft Azure StorSimple 的快速簡介影片。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
@@ -95,7 +95,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 * 您可以在雲端中建立無限量的雲端設備，視需要將其開啟和關閉。
 * 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。
 
-StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 (在本機層中，Azure 進階儲存體會將資料儲存在 SSD 上，而標準儲存體會將資料儲存在 HDD 上。)請注意，您必須具有 Azure 進階儲存體帳戶才能使用進階儲存體。
+StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 （在本地層中，Azure 高級存儲在 SSD 上存儲資料，而標準存儲存儲 HDD 上的資料。請注意，您必須具有 Azure 高級存儲帳戶才能使用高級存儲。
 
 如需 StorSimple 雲端設備的詳細資訊，請移至[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -156,7 +156,7 @@ Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，其為可�
 除了專用的 StorSimple 裝置、虛擬裝置和其他元件以外，Microsoft Azure StorSimple 還會使用下列軟體技術來提供資料的快速存取，並減少儲存體使用：
 
 * [自動儲存體分層](#automatic-storage-tiering) 
-* [精簡佈建](#thin-provisioning) 
+* [精簡資源調配](#thin-provisioning) 
 * [重複資料刪除和壓縮](#deduplication-and-compression) 
 
 ### <a name="automatic-storage-tiering"></a>自動儲存體分層
@@ -208,19 +208,19 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作負載摘要
 下表顯示所支援 StorSimple 工作負載的摘要。
 
-| 狀況 | 工作負載 | 支援 | 限制 | Version |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 共同作業 |檔案共用 |是 | |所有版本 |
-| 協同合作 |分散式檔案共用 |是 | |所有版本 |
-| 協同合作 |SharePoint |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
+| 共同作業 |分散式檔案共用 |是 | |所有版本 |
+| 共同作業 |SharePoint |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 封存 |簡易檔案封存 |是 | |所有版本 |
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| 備份 |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| 備份 |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup  |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup  |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。
+是&#42; - 應套用解決方案指導方針和限制。**
 
 StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorSimple，這些工作負載將導致產生不支援的組態。
 
@@ -235,15 +235,15 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 以下是 StorSimple 支援的基礎結構元件清單。
 
-| 狀況 | 工作負載 | 支援 | 限制 | Version |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
-| 一般 |快速路由 |是 | |所有版本 |
+| 一般 |ExpressRoute |是 | |所有版本 |
 | 一般 |DataCore FC |是* |使用 DataCore SANsymphony 時支援 |所有版本 |
 | 一般 |DFSR |是* |只有使用固定在本機的磁碟區時才支援 |所有版本 |
 | 一般 |編製索引 |是* |階層式磁碟區，僅支援中繼資料索引 (無資料)。<br>針對固定在本機的磁碟區，支援完整索引。 |所有版本 |
 | 一般 |防毒 |是* |針對階層式磁碟區，只支援在開啟和關閉時進行掃描。<br> 針對固定在本機的磁碟區，支援完整掃描。 |所有版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。
+是&#42; - 應套用解決方案指導方針和限制。**
 
 以下是與 StorSimple 搭配使用來建立解決方案的其他軟體清單。
 
@@ -252,7 +252,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 備份目標 |Veeam |Veeam v 9 及更新版本 |[使用 StorSimple 做為 Veeam 的備份目標](storsimple-configure-backup-target-veeam.md)|
 | 備份目標 |Veritas Backup Exec |Backup Exec 16 及更新版本 |[使用 StorSimple 做為 Backup Exec 的備份目標](storsimple-configure-backup-target-using-backup-exec.md)|
 | 備份目標 |Veritas NetBackup |NetBackup 7.7.x 及更新版本  |[使用 StorSimple 做為 NetBackup 的備份目標](storsimple-configure-backuptarget-netbackup.md)|
-| 通用檔案共用 <br></br> 協同合作 |Talon  |[StorSimple 搭配 Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| 通用檔案共用 <br></br> 共同作業 |Talon  |[StorSimple 搭配 Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple 詞彙
 在部署 Microsoft Azure StorSimple 解決方案，我們建議您檢閱下列詞彙和定義。
@@ -300,7 +300,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 服務註冊金鑰 |可協助向 StorSimple 裝置管理員服務註冊 StorSimple 裝置的金鑰，以使該裝置能夠出現在 Azure 入口網站中，讓您能夠採取進一步的管理動作。 |
 | Small Computer System Interface (SCSI) |一組實際連接電腦並在它們之間傳送資料的標準。 |
 | 固態硬碟 (SSD) |沒有包含任何移動組件的磁碟；例如，快閃磁碟機。 |
-| 儲存體帳戶 |一組針對給定的雲端服務提供者連結至您的儲存體帳戶的存取認證。 |
+| storage account |一組針對給定的雲端服務提供者連結至您的儲存體帳戶的存取認證。 |
 | StorSimple Adapter for SharePoint |一種 Microsoft Azure StorSimple 元件，其可將 StorSimple 儲存體和資料保護明確延伸至 SharePoint 伺服器陣列。 |
 | StorSimple 裝置管理員服務 |Azure 入口網站的延伸模組，可讓您管理您的 Azure StorSimple 內部部署和虛擬裝置。 |
 | StorSimple Snapshot Manager |一種 Microsoft Management Console (MMC) 嵌入式管理單元，用於管理 Microsoft Azure StorSimple 中的備份和還原作業。 |

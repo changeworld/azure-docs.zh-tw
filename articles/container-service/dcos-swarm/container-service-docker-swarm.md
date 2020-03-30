@@ -10,10 +10,10 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136222"
 ---
 # <a name="deprecated-container-management-with-docker-swarm"></a>(已淘汰) 使用 Docker Swarm 管理容器
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>使用 Docker Compose 來部署容器
 您可以使用 Docker Compose 來自動部署和設定多個容器。 若要這麼做，請確定已建立安全殼層 (SSH) 通道，並已設定 DOCKER_HOST 變數 (請參閱上述的必要元件)。
 
-在您的本機系統上建立 docker-compose.yml 檔案。 若要這麼做，請使用此範例：
+在您的本機系統上建立 docker-compose.yml 檔案。 為此，請使用此示例：
 
 ```dockerfile
 web:

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79138530"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
@@ -42,7 +42,7 @@ ms.locfileid: "79138530"
 
 ## <a name="scoping-filter-construction"></a>範圍篩選器建構
 
-範圍篩選條件包含一個或多個「子句」。 子句會評估每個使用者的屬性，以決定哪些使用者可以通過範圍篩選條件。 例如，您可能有一個子句規定使用者的 "State" 屬性必須等於 "New York"，因此只會將 New York 使用者佈建到應用程式。 
+範圍篩選條件包含一個或多個「子句」**。 子句會評估每個使用者的屬性，以決定哪些使用者可以通過範圍篩選條件。 例如，您可能有一個子句規定使用者的 "State" 屬性必須等於 "New York"，因此只會將 New York 使用者佈建到應用程式。 
 
 單一子句可定義單一屬性值的單一條件。 如果在單一範圍篩選條件中建立多個子句，則會使用 "AND" 邏輯一起評估這些子句。 也就是說，所有子句都必須評估為 "true"，才能佈建使用者。
 
@@ -65,23 +65,23 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 系統會針對每個 Azure AD 使用者佈建連接器，將範圍篩選器設定為屬性對應的一部分。 下列程序假設您已經針對[其中一個支援的應用程式](../saas-apps/tutorial-list.md)設定自動佈建，而現在要新增範圍篩選條件。
 
 ### <a name="create-a-scoping-filter"></a>建立範圍篩選條件
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 [Azure Active Directory] > [企業應用程式] > [所有應用程式] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 [Azure Active Directory]**** > [企業應用程式]**** > [所有應用程式]**** 區段。
 
 2. 選取您已設定自動佈建的應用程式：例如，"ServiceNow"。
 
-3. 選取 [佈建] 索引標籤。
+3. 選擇 **"預配"** 選項卡。
 
-4. 在 [對應] 區段中，選取您想要設定範圍篩選條件的對應：例如，[將 Azure Active Directory 使用者同步至 ServiceNow]。
+4. 在 [對應]**** 區段中，選取您想要設定範圍篩選條件的對應：例如，[將 Azure Active Directory 使用者同步至 ServiceNow]。
 
-5. 選取 [來源物件範圍] 功能表。
+5. 選取 [來源物件範圍]**** 功能表。
 
-6. 選取 [新增範圍篩選器]。
+6. 選取 [新增範圍篩選器]****。
 
-7. 依序選取要比對的來源 [屬性名稱]、[運算子] 和 [屬性值]，來定義子句。 支援下列運算子：
+7. 依序選取要比對的來源 [屬性名稱]****、[運算子]**** 和 [屬性值]****，來定義子句。 支援下列運算子：
 
-   a. **EQUALS**。 如果評估的屬性完全符合輸入字串值 (區分大小寫)，子句會傳回 "true"。
+   a. **EQUALS**. 如果評估的屬性完全符合輸入字串值 (區分大小寫)，子句會傳回 "true"。
 
-   b. **NOT EQUALS**。 如果評估的屬性不符合輸入字串值 (區分大小寫)，子句會傳回 "true"。
+   b. **不等於**。 如果評估的屬性不符合輸入字串值 (區分大小寫)，子句會傳回 "true"。
 
    c. **IS TRUE**。 如果評估的屬性包含布林值 true，子句會傳回 "true"。
 
@@ -95,44 +95,44 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
    h. **NOT REGEX MATCH**。 如果評估的屬性不符合規則運算式模式，子句會傳回 "true"。
    
-   i. **Greater_Than。** 如果評估的屬性大於值，子句會傳回 "true"。 範圍篩選器上指定的值必須是整數，而使用者上的屬性必須是整數 [0，1，2,...]。 
+   i. **Greater_Than** 如果計算的屬性大於值，子句返回"true"。 在範圍篩選器上指定的值必須是整數，使用者的屬性必須是整數 [0，1，2,...]。 
    
-   j. **Greater_Than_OR_EQUALS。** 如果評估的屬性大於或等於值，子句會傳回 "true"。 範圍篩選器上指定的值必須是整數，而使用者上的屬性必須是整數 [0，1，2,...]。 
+   j. **Greater_Than_OR_EQUALS** 如果計算的屬性大於或等於值，則子句返回"true"。 在範圍篩選器上指定的值必須是整數，使用者的屬性必須是整數 [0，1，2,...]。 
    
-   k. **包含.** 如果評估的屬性包含字串值（區分大小寫），子句會傳回 "true"，如[這裡](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
+   k. **包括。** 如果計算的屬性包含字串值（區分大小寫），則子句返回"true"，[此處](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
 
 
 >[!IMPORTANT] 
-> - 目前不支援 IsMemberOf 篩選。
-> - 多重值屬性不支援 EQUALS 和 NOT EQUALS
+> - 當前不支援 Is"成員"篩選器。
+> - 多值屬性不支援 EQUALS 和"不 EQUALS"
 
 9. (選擇性) 重複步驟 7-8，新增更多範圍子句。
 
-10. 在 [範圍篩選器標題] 中，新增您範圍篩選器的名稱。
+10. 在 [範圍篩選器標題]**** 中，新增您範圍篩選器的名稱。
 
-11. 選取 [確定]。
+11. 選取 [確定]****。
 
-12. 在 [範圍篩選條件] 畫面上，再次選取 [確定]。 (選擇性) 重複步驟 6-11，新增另一個範圍篩選條件。
+12. 在 [範圍篩選條件]**** 畫面上，再次選取 [確定]****。 (選擇性) 重複步驟 6-11，新增另一個範圍篩選條件。
 
-13. 在 [屬性對應] 畫面上，選取 [儲存]。 
+13. 在 [屬性對應]**** 畫面上，選取 [儲存]****。 
 
 >[!IMPORTANT] 
-> 儲存新的範圍篩選器會為應用程式觸發新的完整同步處理，其中來源系統中的所有使用者都會根據新的範圍篩選器，再次進行估。 如果應用程式中的使用者先前在佈建範圍內，但已落在範圍外，則其帳戶在應用程式中會停用或解除佈建。 若要覆寫此預設行為，請參閱[略過刪除超出範圍的使用者帳戶](../app-provisioning/skip-out-of-scope-deletions.md)。
+> 儲存新的範圍篩選器會為應用程式觸發新的完整同步處理，其中來源系統中的所有使用者都會根據新的範圍篩選器，再次進行估。 如果應用程式中的使用者先前在佈建範圍內，但已落在範圍外，則其帳戶在應用程式中會停用或解除佈建。 要重寫此預設行為，請參閱[跳過刪除超出作用域的使用者帳戶](../app-provisioning/skip-out-of-scope-deletions.md)。
 
 
-## <a name="common-scoping-filters"></a>通用範圍篩選器
+## <a name="common-scoping-filters"></a>常見範圍篩選器
 | 目標屬性| 運算子 | 值 | 描述|
 |----|----|----|----|
-|userPrincipalName|REGEX MATCH|.\*@domain.com |具有 userPrincipal 網域 @domain.com 的所有使用者將會在布建範圍內|
-|userPrincipalName|不符合 REGEX|.\*@domain.com|具有 userPrincipal 網域 @domain.com 的所有使用者，將不會超出布建的範圍|
-|department|EQUALS|sales|銷售部門的所有使用者都在布建範圍內|
-|workerID|REGEX MATCH|(1[0-9][0-9][0-9][0-9][0-9][0-9])| WorkerIDs 介於1000000和2000000之間的所有員工都在布建範圍內。|
+|userPrincipalName|REGEX 匹配|.\*@domain.com |具有域@domain.com的使用者主體的所有使用者都將在預配範圍內|
+|userPrincipalName|不是正則運算式匹配|.\*@domain.com|具有域@domain.com的使用者主體的所有使用者都將退出預配範圍|
+|department|EQUALS|sales|銷售部門的所有使用者都在預配範圍內|
+|工人ID|REGEX 匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 所有員工在 1000000 到 2000000 之間都有工作需要調配的餘地。|
 
 ## <a name="related-articles"></a>相關文章
-* [SaaS 應用程式的自動化使用者佈建和解除佈建](../app-provisioning/user-provisioning.md)
+* [自動向 SaaS 應用程式預配和取消預配](../app-provisioning/user-provisioning.md)
 * [自訂使用者佈建的屬性對應](../app-provisioning/customize-application-attributes.md)
 * [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
 * [帳戶佈建通知](../app-provisioning/user-provisioning.md)
 * [使用 SCIM 以啟用將使用者和群組從 Azure Active Directory 自動佈建到應用程式](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-* [如何整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)
+* [有關如何集成 SaaS 應用的教程清單](../saas-apps/tutorial-list.md)
 

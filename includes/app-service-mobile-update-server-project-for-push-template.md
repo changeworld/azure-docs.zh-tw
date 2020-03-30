@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68857340"
 ---
 在本節中，您會更新現有 Mobile Apps 後端專案中的程式碼，以在每次新增項目時傳送推播通知。 此程序是由 Azure 通知中樞的[範本](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能所提供，可啟用跨平台推播。 各種用戶端會使用範本來註冊推播通知，而單一通用推播即可送達所有的用戶端平台。
 
 請選擇下列其中一個符合您後端專案類型(&mdash;[.NET 後端](#dotnet)或 [Node.js 後端](#nodejs))的程序。
 
-### <a name="dotnet"></a>.NET 後端專案
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET 後端專案
 
-1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案。 然後選取 [管理 NuGet 套件]。 搜尋 `Microsoft.Azure.NotificationHubs`，然後選取 [安裝]。 此程序會安裝通知中樞程式庫，以便從後端傳送通知。
-2. 在伺服器專案中，開啟 [控制器]**Controllers** > [TodoItemController.cs]。 然後新增下列 using 陳述式：
+1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案。 然後選取 [管理 NuGet 套件] ****。 搜尋 `Microsoft.Azure.NotificationHubs`，然後選取 [安裝]****。 此程序會安裝通知中樞程式庫，以便從後端傳送通知。
+2. 在伺服器專案中，打開**控制器** > **TodoItemController.cs**。 然後新增下列 using 陳述式：
 
     ```csharp
     using System.Collections.Generic;
@@ -68,9 +68,9 @@ ms.locfileid: "68857340"
 
 4. 發佈伺服器專案。
 
-### <a name="nodejs"></a>Node.js 後端專案
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js 後端專案
 
-1. 設定您的後端專案。
+1. 設置後端專案。
 2. 在 todoitem.js 中，以下列程式碼取代現有的程式碼：
 
     ```javascript

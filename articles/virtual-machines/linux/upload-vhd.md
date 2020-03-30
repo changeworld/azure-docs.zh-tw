@@ -1,5 +1,5 @@
 ---
-title: 上傳或複製具有 Azure CLI 的自訂 Linux VM
+title: 使用 Azure CLI 上載或複製自訂 Linux VM
 description: 使用 Resource Manager 部署模型與 Azure CLI 來上傳或複製自訂虛擬機器
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b5063c8037a763c1919d2172a81c8abbbd406ace
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060154"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 從自訂磁碟建立 Linux VM
 
@@ -40,7 +40,7 @@ ms.locfileid: "79267101"
 
 - 一部已準備好用於 Azure 中的 Linux 虛擬機器。 本文的[準備 VM](#prepare-the-vm) 一節將說明如何尋找關於安裝 Azure Linux 代理程式 (waagent) 的發行版本特有資訊，您需要有此資訊，才能使用 SSH 連線到至 VM。
 - 以 VHD 格式從現有[經 Azure 背書的 Linux 發行版本](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (或者，請參閱[非背書發行版本的資訊](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) 到虛擬磁碟的 VHD 檔案。 有多項工具可用來建立 VM 和 VHD：
-  - 安裝和設定 [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) 或 [KVM](https://www.linux-kvm.org/page/RunningKVM)，並小心使用 VHD 做為您的映像格式。 如有需要，您可以使用 [ 來](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)轉換映像`qemu-img convert` \(英文\)。
+  - 安裝和設定 [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) 或 [KVM](https://www.linux-kvm.org/page/RunningKVM)，並小心使用 VHD 做為您的映像格式。 如有需要，您可以使用 `qemu-img convert` 來[轉換映像](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) \(英文\)。
   - 您也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
 > [!NOTE]
@@ -51,7 +51,7 @@ ms.locfileid: "79267101"
 
 - 確定您已安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並且已使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure 帳戶。
 
-在下列範例中，以您自己的值（例如 `myResourceGroup`、`mystorageaccount`和 `mydisks`）取代範例參數名稱。
+在以下示例中，將示例參數名稱替換為您自己的值，如`myResourceGroup`。`mystorageaccount`和`mydisks`。
 
 <a id="prepimage"> </a>
 
@@ -67,30 +67,30 @@ Azure 支援各種 Linux 散發套件 (請參閱 [背書的散發套件](endorse
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [其他：非背書的發行版本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-如需更多為 Azure 準備 Linux 映像的一般秘訣，另請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
+如需有關為 Azure 準備 Linux 映像的更多一般秘訣，另請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 > [!NOTE]
-> 只有在搭配[經 Azure 背書之 Linux 發行版本](https://azure.microsoft.com/support/legal/sla/virtual-machines/)中＜支援的版本＞下指定的設定詳細資料來使用其中一個經背書的發行版本時，[Azure 平台 SLA](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 才適用於執行 Linux 的 VM。
+> 只有在搭配[經 Azure 背書之 Linux 發行版本](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中＜支援的版本＞下指定的設定詳細資料來使用其中一個經背書的發行版本時，[Azure 平台 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 才適用於執行 Linux 的 VM。
 > 
 > 
 
 ## <a name="option-1-upload-a-vhd"></a>選項 1：上傳 VHD
 
-您現在可以直接將 VHD 上傳至受控磁片。 如需指示，請參閱[使用 Azure CLI 將 VHD 上傳至 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
+您現在可以將 VHD 直接上載到託管磁片。 有關說明，請參閱[使用 Azure CLI 將 VHD 上載到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
 
 ## <a name="option-2-copy-an-existing-vm"></a>選項 2：複製現有的 VM
 
-您可以也在 Azure 中建立自訂的 VM，然後複製 OS 磁碟並將它連結到新的 VM，以建立另一個複本。 這適合用來測試，但如果您想要使用現有的 Azure VM 作為多個新 VM 的模型，請建立「映像」。 如需如何從現有 Azure VM 建立映像的詳細資訊，請參閱[使用 CLI 建立 Azure VM 的自訂映像](tutorial-custom-images.md)。
+您可以也在 Azure 中建立自訂的 VM，然後複製 OS 磁碟並將它連結到新的 VM，以建立另一個複本。 這適合用來測試，但如果您想要使用現有的 Azure VM 作為多個新 VM 的模型，請建立「映像」**。 如需如何從現有 Azure VM 建立映像的詳細資訊，請參閱[使用 CLI 建立 Azure VM 的自訂映像](tutorial-custom-images.md)。
 
-如果您想要將現有的 VM 複製到另一個區域，您可能會想要使用 azcopy 來[建立另一個區域中的磁片複本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
+如果要將現有 VM 複製到其他區域，可能需要使用 azcopy 創建[另一個區域中的磁片副本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
 
-否則，您應該製作 VM 的快照集，然後從快照集建立新的 OS VHD。
+否則，應拍攝 VM 的快照，然後從快照創建新的 OS VHD。
 
 ### <a name="create-a-snapshot"></a>建立快照集
 
-這個範例會在名為 myResourceGroup 資源群組中建立名為 myVM 的 VM 快照集，並建立名為 osDiskSnapshot 的快照集。
+這個範例會在名為 myResourceGroup** 資源群組中建立名為 myVM** 的 VM 快照集，並建立名為 osDiskSnapshot** 的快照集。
 
-```azure-cli
+```azurecli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 az snapshot create \
     -g myResourceGroup \
@@ -101,15 +101,15 @@ az snapshot create \
 
 從快照集建立新的受控磁碟。
 
-取得快照集的識別碼。 在此範例中，快照集的名稱為 osDiskSnapshot 且位於 myResourceGroup 資源群組中。
+取得快照集的識別碼。 在此範例中，快照集的名稱為 osDiskSnapshot** 且位於 myResourceGroup** 資源群組中。
 
-```azure-cli
+```azurecli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
 建立受控磁碟。 在此範例中，我們將從快照集中建立名為 *myManagedDisk* 的受控磁碟，此磁碟位於標準儲存體且大小為 128 GB。
 
-```azure-cli
+```azurecli
 az disk create \
     --resource-group myResourceGroup \
     --name myManagedDisk \

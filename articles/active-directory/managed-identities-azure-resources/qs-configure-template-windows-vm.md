@@ -1,5 +1,5 @@
 ---
-title: 使用範本在 Azure VM 上設定受控識別-Azure AD
+title: 使用範本在 Azure VM 上配置託管標識 - Azure AD
 description: 使用 Azure Resource Manager 範本在 Azure VM 上設定 Azure 資源的受控識別相關的逐步指示。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972155"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用範本在 Azure VM 上設定 Azure 資源的受控識別
@@ -30,16 +30,16 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 在本文中，藉由使用 Azure Resource Manager 部署範本，您將了解如何在 Azure VM 上執行 Azure 資源作業的下列受控識別：
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)** 。
+- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
-## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 範本
+## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
 如同 Azure 入口網站和指令碼，[Azure Resource Manager](../../azure-resource-manager/management/overview.md) 範本可讓您部署由 Azure 資源群組所定義的最新或已修改資源。 範本編輯和部署有幾個選項可用 (在本機和入口網站)，包括：
 
-   - 使用 Azure Marketplace 中的[自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或以現有的通用或[快速入門範本](https://azure.microsoft.com/documentation/templates/)作為基礎。
+   - 使用[Azure 應用商店中的自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，它允許您從頭開始創建範本，或者將其基於現有的通用或[快速入門範本](https://azure.microsoft.com/documentation/templates/)。
    - 衍生自現有的資源群組，方法是從[原始部署](../../azure-resource-manager/templates/export-template-portal.md)，或從[部署的目前狀態](../../azure-resource-manager/templates/export-template-portal.md)匯出範本。
    - 使用本機 [JSON 編輯器 (例如 VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)，然後使用 PowerShell 或 CLI 上傳和部署。
    - 使用 Visual Studio 的 [Azure 資源群組專案](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)來建立和部署範本。  
@@ -346,4 +346,4 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [適用於 Azure 資源的受控識別概觀](overview.md)。
+- [Azure 資源概述的託管標識](overview.md)。

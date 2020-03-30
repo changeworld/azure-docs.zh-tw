@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure AI 資源庫資料
+title: 管理 Azure AI 庫資料
 titleSuffix: ML Studio (classic) - Azure
 description: 您可以使用介面或 AI 資源庫目錄 API，從 Azure AI 資源庫匯出和刪除產品中的使用者資料。 本文將說明如何做到。
 services: machine-learning
@@ -12,10 +12,10 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204540"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>從 Azure AI 資源庫檢視和刪除產品中的使用者資料
@@ -60,8 +60,8 @@ ms.locfileid: "79204540"
 1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
 2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
 3.    按 F12 來開啟瀏覽器的 [開發人員工具] 窗格、選取 [網路] 索引標籤，然後重新整理頁面。 
-4. 在 [篩選條件] 文字方塊中輸入「目錄」字串來對該字串篩選要求。
-5.    在 [要求 URL] `https://catalog.cortanaanalytics.com/entities`中，尋找 GET 要求，然後選取 [*標頭*] 索引標籤。向下移至 [*要求標頭*] 區段。
+4. 在 [篩選條件] 文字方塊中輸入「目錄」** 字串來對該字串篩選要求。
+5.    在 URL 請求`https://catalog.cortanaanalytics.com/entities`中，查找 GET 請求並選擇 *"標題*"選項卡。向下滾動到 *"請求標題"* 部分。
 6.    `DataLabAccessToken`　標頭下方是英數字元權杖。 為了讓資料保持安全，請勿共用此權杖。
 
 ### <a name="view-user-information"></a>檢視使用者資訊
