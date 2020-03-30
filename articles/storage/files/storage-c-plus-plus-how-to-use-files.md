@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699791"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 開發 Azure 檔案服務
@@ -41,7 +41,7 @@ ms.locfileid: "68699791"
 若要安裝適用於 C++ 的 Azure 儲存體用戶端 2.4.0，您可以使用下列其中一個方法：
 
 * **Linux：** 遵循 [Azure Storage Client Library for C++ 讀我檔案](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) 頁面中提供的指示進行。
-* **Windows：** 在 Visual Studio 中，按一下 [工具]&gt;[NuGet 套件管理員]&gt;[套件管理員主控台]。 在 [NuGet 套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 中輸入下列命令，然後按下 **Enter**。
+* **Windows：** 在 Visual Studio 中，按一下 [工具]&gt;[NuGet 套件管理員]&gt;[套件管理員主控台]****。 在 [NuGet 套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 中輸入下列命令，然後按下 **Enter**。
   
 
 ```powershell
@@ -69,7 +69,7 @@ storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_sto
 
 ## <a name="connecting-to-an-azure-storage-account"></a>連接到 Azure 儲存體帳戶
 
-您可以使用 **cloud_storage_account** 類別來代表儲存體帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
+您可以使用**cloud_storage_account**類來表示存儲帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -107,7 +107,7 @@ if (share.create_if_not_exists()) {
 
 ## <a name="delete-an-azure-file-share"></a>刪除 Azure 檔案共用
 
-刪除共用可以藉由在 cloud_file_share 物件上呼叫 **delete_if_exists** 方法來完成。 以下是執行該作業的範例程式碼。
+刪除共用是通過在cloud_file_share物件上調用**delete_if_exists**方法來完成的。 以下是執行該作業的範例程式碼。
 
 ```cpp
 // Get a reference to the share.
@@ -189,7 +189,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 
 Azure 檔案共用至少包含根目錄，檔案可以放置其中。 在本節中，您將學習如何從本機儲存體將檔案上傳至共用的根目錄。
 
-上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 您可以藉由呼叫共用物件的 **get_root_directory_reference** 方法來完成此作業。
+上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 為此，調用共用物件的**get_root_directory_reference**方法。
 
 ```cpp
 //Get a reference to the root directory for the share.
@@ -220,9 +220,9 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 
 ## <a name="download-a-file"></a>下載檔案
 
-若要下載檔案，請先擷取檔案參考，然後呼叫 **download_to_stream** 方法將檔案內容傳輸到您可接著保留在本機檔案的串流物件。 或者，您可以使用 **download_to_file** 方法，將檔案內容下載到本機檔案。 您可以使用 **download_text** 方法，將檔案內容當成文字字串下載。
+若要下載檔案，請先檢索檔引用，然後調用**download_to_stream**方法將檔內容傳輸到流物件，然後可以保存到本地檔。 或者，您可以使用 **download_to_file** 方法，將檔案內容下載到本機檔案。 您可以使用 **download_text** 方法，將檔案內容當成文字字串下載。
 
-下列範例使用 **download_to_stream** 和 **download_text** 方法，示範如何下載前幾節中所建立的檔案。
+下面的示例使用**download_to_stream**和**download_text**方法來演示下載檔案，這些檔在前幾節中創建。
 
 ```cpp
 // Download as text
@@ -369,5 +369,5 @@ if (share.exists())
 
 * [Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp)
 * [C++ 中的 Azure 儲存體檔案服務範例](https://github.com/Azure-Samples/storage-file-cpp-getting-started) \(英文\)
-* [Azure 儲存體總管](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
-* [Azure 儲存體文件](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure 存儲資源管理器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 存儲文檔](https://azure.microsoft.com/documentation/services/storage/)

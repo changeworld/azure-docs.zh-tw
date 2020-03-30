@@ -1,7 +1,7 @@
 ---
-title: 評分模型：模組參考
+title: 分數模型：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [評分模型] 模組，利用定型的分類或回歸模型來產生預測。
+description: 瞭解如何使用 Azure 機器學習中的分數模型模組使用經過訓練的分類或回歸模型生成預測。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,47 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138182"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364185"
 ---
 # <a name="score-model-module"></a>Score Model module
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文介紹 Azure 機器學習設計器（預覽）中的模組。
 
-使用此模組可使用定型的分類或回歸模型來產生預測。
+使用此模組使用經過訓練的分類或回歸模型生成預測。
 
 ## <a name="how-to-use"></a>使用方式
 
-1. 將 [**評分模型**] 模組新增至您的管線。
+1. 將**分數模型**模組添加到管道中。
 
-2. 附加定型的模型和包含新輸入資料的資料集。 
+2. 附加已訓練的模型和包含新輸入資料的資料集。 
 
-    資料的格式應該與您所使用的定型模型類型相容。 輸入資料集的架構通常也應該符合用來定型模型之資料的架構。
+    資料應採用與您使用的已訓練模型類型相容的格式。 輸入資料集的架構通常還應與用於訓練模型的資料的架構匹配。
 
-3. 執行管道。
+3. 提交管道。
 
 ## <a name="results"></a>結果
 
-使用[計分模型](./score-model.md)產生一組分數之後：
+使用[分數模型](./score-model.md)生成一組分數後：
 
-+ 產生一組用來評估模型精確度的計量（效能）。  您可以連接評分資料集來[評估模型](./evaluate-model.md)， 
-+ 以滑鼠右鍵按一下模組，然後選取 [**視覺化**] 以查看結果的範例。
-+ 將結果儲存至資料集。
++ 要生成一組用於評估模型準確性（性能）的指標，可以將評分資料集連接到[評估模型](./evaluate-model.md)， 
++ 按右鍵模組並選擇 **"視覺化"** 以查看結果示例。
+<!-- + To Save the results to a dataset. -->
 
-分數（或預測值）可以有許多不同的格式，視模型和您的輸入資料而定：
+分數或預測值可以採用許多不同的格式，具體取決於模型和輸入資料：
 
-- 針對分類模型，[計分模型](./score-model.md)會輸出類別的預測值，以及預測值的機率。
-- 針對回歸模型，[計分模型](./score-model.md)只會產生預測的數值。
+- 對於分類模型，[分數模型](./score-model.md)輸出類的預測值以及預測值的概率。
+- 對於回歸模型，[分數模型](./score-model.md)僅生成預測的數值。
 
 
-## <a name="publish-scores-as-a-web-service"></a>將分數發佈為 web 服務
+## <a name="publish-scores-as-a-web-service"></a>將分數發佈為 Web 服務
 
-計分的常見用法是將輸出當做預測性 web 服務的一部分傳回。 如需詳細資訊，請參閱本教學課程，瞭解如何在 Azure Machine Learning 中根據管線建立 web 服務：
+評分的常見用途是將輸出作為預測 Web 服務的一部分返回。 有關詳細資訊，請參閱有關如何基於 Azure 機器學習設計器中的管道部署即時終結點的[教程](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

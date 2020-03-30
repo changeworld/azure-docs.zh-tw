@@ -1,16 +1,16 @@
 ---
 title: App Service 方案
-description: 瞭解 App Service 方案如何在 Azure App Service 中工作、如何向客戶收費，以及如何根據您的需求進行調整。
+description: 瞭解應用服務方案在 Azure 應用服務中的工作方式、向客戶計費的方式以及如何根據需求擴展它們。
 keywords: App Service, Azure App Service, 級別, 可調整, 延展性, App Service 方案, App Service 成本
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
 ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482338"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service 方案概觀
@@ -22,13 +22,13 @@ ms.locfileid: "77482338"
 - 區域 (美國西部、美國東部等)
 - 虛擬機器執行個體的數目
 - 虛擬機器執行個體的大小 (小、中、大)
-- 定價層（免費、共用、基本、標準、Premium、PremiumV2、獨立）
+- 定價層（免費、共用、基本、標準、高級、高級V2、獨立）
 
 App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，以及為該方案支付多少費用。 定價層有幾個類別：
 
 - **共用計算**：**免費**和**共用**，這兩個基底層會在與其他 App Service 應用程式相同的 Azure VM 上執行應用程式，包括其他客戶的應用程式。 這些層會將 CPU 配額配置到在共用資源上執行的每個應用程式，而且該資源無法向外延展。
 - **專用計算**：**基本**、**標準**、**進階**和 **PremiumV2** 層會在專用的 Azure VM 上執行應用程式。 只有位於同個 App Service 方案中的應用程式，才會共用相同的計算資源。 層越高，可用於向外延展的 VM 執行個體就越多。
-- **隔離**：這一層會在專用的 Azure 虛擬網路上執行專用的 azure vm。 它會在計算隔離的基礎上提供網路隔離給您的應用程式。 它提供了最大的向外延展能力。
+- **隔離**：此層在專用 Azure 虛擬網路上運行專用 Azure VM。 它在計算隔離的基礎上提供與應用的網路隔離。 它提供了最大的向外延展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -51,7 +51,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 
 ## <a name="how-does-my-app-run-and-scale"></a>我的應用程式如何執行及調整縮放？
 
-在**免費**和**共用**層中，應用程式會收到共用 VM 實例上的 CPU 分鐘數，且無法相應放大。在其他層中，應用程式會執行並調整，如下所示。
+在 **"免費**"和 **"共用**"層中，應用在共用 VM 實例上接收 CPU 分鐘數，並且無法橫向擴展。在其他層中，應用運行並縮放如下。
 
 當您在 App Service 中建立應用程式時，該應用程式會置入 App Service 方案。 當應用程式執行時，會在 App Service 方案中設定的所有 VM 執行個體上執行。 如果有多個應用程式位於相同的 App Service 方案，它們會共用相同的 VM 執行個體。 如果一個應用程式有多個部署位置，所有部署位置也會在相同的 VM 執行個體上執行。 如果您啟用診斷記錄、執行備份，或執行 WebJob，它們也會使用這些 VM 執行個體上的 CPU 週期和記憶體。
 
@@ -68,7 +68,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 除了**免費**層以外，App Service 方案會根據其每小時使用的計算資源計費。
 
 - 在**共用**層，每個應用程式會收到 CPU 分鐘數的配額，因此_每個應用程式_會針對 CPU 配額每小時計費。
-- 在專用計算層（**基本**、**標準**、 **Premium**、 **PremiumV2**）中，APP SERVICE 方案會定義應用程式調整的 VM 實例數目，因此 App Service 方案中的_每個 vm 實例_都有每小時的費用。 無論有多少個應用程式在 VM 執行個體上執行，這些 VM 執行個體皆採相同收費。 為了避免產生非預期的費用，請參閱[清除 App Service 方案](app-service-plan-manage.md#delete)。
+- 在專用計算層（**基本**、**標準**、**高級**、**高級V2）** 中，應用服務方案定義應用縮放到的 VM 實例數，因此應用服務方案中的_每個 VM 實例_都有每小時的費用。 無論有多少個應用程式在 VM 執行個體上執行，這些 VM 執行個體皆採相同收費。 為了避免產生非預期的費用，請參閱[清除 App Service 方案](app-service-plan-manage.md#delete)。
 - 在**隔離**層，App Service 環境會定義執行您應用程式的隔離背景工作角色數目，且_每個背景工作角色_會每小時計費。 此外，執行 App Service 環境本身也有每小時的基本費用。
 
 使用可用的 App Service 功能 (設定自訂網域、SSL 憑證、部署位置、備份等等) 不會向您收取費用。 例外狀況為：
@@ -84,11 +84,11 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>如果我的應用程式需要更多的功能？
 
-可以隨時相應增加和相應減少您的 App Service 方案。 這與更改方案的定價層一樣簡單。 一開始，您可以選擇較低的定價層，當您之後需要更多 App Service 功能時，再擴大。
+可以隨時相應增加和相應減少您的 App Service 方案。 這與更改方案的定價層一樣簡單。 一開始，您可以選擇較低的定價層，當您之後需要更多 App Service 功能時，再相應增加。
 
-例如，您可以開始測試**免費** App Service 方案中的 Web 應用程式，無須支付任何費用。 當您想要將[自訂 DNS 名稱](app-service-web-tutorial-custom-domain.md) 加入 Web 應用程式時，只要將您的方案相應增加至**共用**層即可。 之後，當您想要[建立 SSL](configure-ssl-bindings.md)系結時，請將您的方案相應增加至**基本**層。 當您想要有[預備環境](deploy-staging-slots.md)時，相應增加至**標準**層。 當您需要更多核心、記憶體或儲存體時，可以在同一層中擴大到較大的 VM 大小。
+例如，您可以開始測試**免費** App Service 方案中的 Web 應用程式，無須支付任何費用。 當您想要將[自訂 DNS 名稱](app-service-web-tutorial-custom-domain.md) 加入 Web 應用程式時，只要將您的方案相應增加至**共用**層即可。 稍後，當您要創建[SSL 綁定時](configure-ssl-bindings.md)，將計畫向上縮放到**基本**層。 當您想要有[預備環境](deploy-staging-slots.md)時，相應增加至**標準**層。 當您需要更多核心、記憶體或儲存體時，可以在同一層中相應增加到較大的 VM 大小。
 
-反向的運作方式也是一樣。 當您覺得不再需要更高層的功能時，可以縮小到較低層，這樣可以節省費用。
+反向的運作方式也是一樣。 當您覺得不再需要更高層的功能時，可以相應減少到較低層，這樣可以節省費用。
 
 如需有關相應增加 App Service 方案的詳細資訊，請參閱[在 Azure 中相應增加應用程式](manage-scale-up.md)。
 
@@ -101,7 +101,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 如果有下列情況，請將您的應用程式隔離至新的 App Service 方案中：
 
 - 應用程式會耗用大量資源。
-- 您想要從現有方案中的其他應用程式獨立調整應用程式。
+- 您希望獨立于現有計劃中的其他應用擴展應用。
 - 應用程式需要不同地理區域中的資源。
 
 這樣可讓您為應用程式配置一組新的資源，更充分掌控您的應用程式。

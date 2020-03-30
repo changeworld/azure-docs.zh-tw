@@ -1,24 +1,24 @@
 ---
-title: 範本函式-邏輯
+title: 範本函數 - 邏輯
 description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函式。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156305"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的邏輯函式
+# <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函數
 
-Resource Manager 提供了幾個用來在範本中進行比較的函式。
+資源管理器提供了多個功能，用於在 Azure 資源管理器 （ARM） 範本中進行比較。
 
-* [and](#and)
+* [和](#and)
 * [bool](#bool)
 * [if](#if)
-* [not](#not)
-* [or](#or)
+* [否](#not)
+* [或](#or)
 
 ## <a name="and"></a>和
 
@@ -136,7 +136,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| condition (條件) |是 |boolean |要檢查其是否為 true 或 false 的值。 |
+| condition (條件) |是 |boolean |要檢查它是真還是假的值。 |
 | trueValue |是 | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
 | falseValue |是 | 字串、int、物件或陣列 |條件為 false 時，傳回的值。 |
 
@@ -146,7 +146,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ### <a name="remarks"></a>備註
 
-當條件為**true**時，只會評估真正的值。 當條件為**false**時，只會評估 false 值。 使用**if**函式時，您可以包含只有條件式有效的運算式。 例如，您可以參考存在於某個條件下但不在其他條件下的資源。 下一節會顯示有條件地評估運算式的範例。
+當條件為**True**時，僅計算真實值。 當條件為**False**時，僅計算 false 值。 使用**if**函數，可以包含僅有條件有效的運算式。 例如，可以引用在一個條件下存在但另一個條件下不存在的資源。 有條件地計算運算式的示例如下節所示。
 
 ### <a name="examples"></a>範例
 
@@ -183,7 +183,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 | noOutput | String | 否 |
 | objectOutput | Object | { "test": "value1" } |
 
-下列[範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)顯示如何使用此函式搭配僅有條件地有效的運算式。
+以下[示例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示如何將此函數與僅有條件有效的運算式一起使用。
 
 ```json
 {
@@ -357,8 +357,8 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
+* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
+* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
+* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 應用程式組態最佳做法 |Microsoft Docs
-description: 瞭解如何充分利用 Azure 應用程式組態
+title: Azure 應用配置最佳實踐 |微軟文檔
+description: 瞭解如何最好地使用 Azure 應用配置
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 37f93099027f810e8089119536e089e07080d0bc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898643"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348666"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳做法
+# <a name="azure-app-configuration-best-practices"></a>Azure 應用配置最佳實踐
 
-本文討論使用 Azure 應用程式組態時的常見模式和最佳作法。
+本文討論使用 Azure 應用配置時的常見模式和最佳做法。
 
-## <a name="key-groupings"></a>按鍵分組
+## <a name="key-groupings"></a>關鍵分組
 
-應用程式組態提供兩個組織索引鍵的選項：
+應用配置提供了兩個用於組織金鑰的選項：
 
-* 金鑰首碼
+* 鍵首碼
 * 標籤
 
-您可以使用其中一種或兩個選項來分組您的金鑰。
+您可以使用一個或兩個選項對金鑰進行分組。
 
-*金鑰首碼*是索引鍵的開頭部分。 您可以使用名稱中的相同前置詞，以邏輯方式分組一組索引鍵。 前置詞可以包含多個以分隔符號連接的元件（例如 `/`，類似于 URL 路徑）以構成命名空間。 當您要在一個應用程式組態存放區中儲存許多應用程式、元件服務和環境的金鑰時，這類階層會很有用。
+*鍵首碼*是鍵的開頭部分。 在一組鍵的名稱中使用相同的首碼，可以邏輯地對一組鍵進行分組。 首碼可以包含由分隔符號連接的多個元件，例如`/`，類似于 URL 路徑，以形成命名空間。 當您在一個應用配置存儲中存儲許多應用程式、元件服務和環境的金鑰時，此類層次結構非常有用。
 
-要記住的重要事項是，您的應用程式程式碼會參考這些金鑰來抓取對應設定的值。 金鑰不應變更，否則您必須在每次發生時修改程式碼。
+需要記住的一個重要問題是，鍵是應用程式代碼引用的，用於檢索相應設置的值。 金鑰不應更改，否則每次更改時都必須修改代碼。
 
-*標籤*是索引鍵上的屬性。 它們是用來建立索引鍵的變體。 例如，您可以將標籤指派給多個版本的金鑰。 版本可能是反復專案、環境或一些其他內容相關資訊。 您的應用程式可以藉由指定另一個標籤來要求一組完全不同的索引鍵值。 因此，所有的索引鍵參考在您的程式碼中都會保持不變。
+*標籤*是鍵上的屬性。 它們用於創建金鑰的變體。 例如，您可以將標籤分配給金鑰的多個版本。 版本可以是反覆運算、環境或其他上下文資訊。 應用程式可以通過指定另一個標籤請求一組完全不同的鍵值。 因此，代碼中的所有金鑰引用都保持不變。
 
-## <a name="key-value-compositions"></a>索引鍵/值組合
+## <a name="key-value-compositions"></a>鍵值組合
 
-應用程式組態會將與它一起儲存的所有金鑰視為獨立的實體。 應用程式組態不會嘗試推斷索引鍵之間的任何關聯性，或根據其階層繼承索引鍵值。 不過，您可以匯總多組索引鍵，方法是使用標籤與應用程式程式碼中適當的設定堆疊結合。
+應用配置將與其一起存儲的所有金鑰視為獨立實體。 應用配置不會嘗試推斷鍵之間的任何關係或基於其層次結構繼承鍵值。 但是，通過使用標籤與應用程式代碼中的正確配置堆疊相結合，可以聚合多組金鑰。
 
-讓我們看看以下範例。 假設您有一個名為**Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為「開發」的標籤。 在第一個標籤中，您會放入**Asset1**的預設值，並在後者中放置「開發」的特定值。
+讓我們看看以下範例。 假設您有一個名為**Asset1**的設置，其值可能因開發環境而異。 創建名為"Asset1"的鍵，該鍵的標籤為空標籤，標籤名為"開發"。 在第一個標籤中，您將**Asset1**的預設值，並在後者中放置"開發"的特定值。
 
-在您的程式碼中，您會先取出索引鍵值，而不使用任何標籤，然後再以「開發」標籤第二次抓取相同的索引鍵值組。 當您第二次取得值時，會覆寫先前的索引鍵值。 .NET Core 設定系統可讓您將多組設定資料「堆疊」在彼此之上。 如果索引鍵存在於一個以上的集合中，則會使用包含它的最後一組。 使用現代化的程式設計架構（例如 .NET Core）時，如果您使用原生設定提供者來存取應用程式組態，就可以免費取得這項堆疊功能。 下列程式碼片段會示範如何在 .NET Core 應用程式中執行堆疊：
+在代碼中，首先檢索沒有任何標籤的鍵值，然後使用"開發"標籤第二次檢索同一組鍵值。 第二次檢索值時，將覆蓋鍵的先前值。 .NET Core 配置系統允許您相互"堆疊"多組配置資料。 如果多個集中存在一個金鑰，則使用包含該鍵的最後一個集。 使用現代程式設計框架（如 .NET Core），如果您使用本機配置提供程式訪問應用配置，則可以免費獲得此堆疊功能。 以下程式碼片段顯示了如何在 .NET Core 應用程式中實現堆疊：
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
@@ -56,20 +56,36 @@ configBuilder.AddAzureAppConfiguration(options => {
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>應用程式組態啟動程式
+[使用標籤為不同的環境啟用不同的配置](./howto-labels-aspnet-core.md)提供了一個完整的示例。
 
-若要存取應用程式組態存放區，您可以使用它在 Azure 入口網站中提供的連接字串。 由於連接字串包含認證資訊，因此會將它們視為秘密。 這些秘密必須儲存在 Azure Key Vault 中，而您的程式碼必須向 Key Vault 進行驗證，才能取得它們。
+## <a name="app-configuration-bootstrap"></a>應用配置引導
 
-較好的選項是使用 Azure Active Directory 中的受控識別功能。 使用受控識別時，您只需要應用程式組態端點 URL，就能啟動應用程式組態存放區的存取權。 您可以將 URL 內嵌在應用程式代碼中（例如，在*appsettings*中）。 如需詳細資訊，請參閱[與 Azure 受控識別整合](howto-integrate-azure-managed-service-identity.md)。
+要訪問應用配置存儲，可以使用其連接字串，該字串在 Azure 門戶中可用。 由於連接字串包含憑據資訊，因此它們被視為機密。 這些機密需要存儲在 Azure 金鑰保存庫中，並且代碼必須對金鑰保存庫進行身份驗證才能檢索它們。
 
-## <a name="app-or-function-access-to-app-configuration"></a>應用程式組態的應用程式或函數存取
+更好的選項是在 Azure 活動目錄中使用託管標識功能。 使用託管標識時，只需應用配置終結點 URL 來引導對應用配置存儲的訪問。 您可以將 URL 嵌入到應用程式代碼中（例如，在*應用程式設定.json*檔中）。 有關詳細資訊[，請參閱與 Azure 託管標識集成](howto-integrate-azure-managed-service-identity.md)。
 
-您可以使用下列任何方法，為 web 應用程式或函式提供應用程式組態的存取權：
+## <a name="app-or-function-access-to-app-configuration"></a>應用或功能對應用配置的訪問
 
-* 透過 Azure 入口網站在 App Service 的 [應用程式設定] 中，輸入應用程式組態存放區的連接字串。
-* 將連接字串儲存在 Key Vault 中的應用程式組態存放區，並[從 App Service 加以參考](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)。
-* 使用 Azure 受控識別來存取應用程式組態存放區。 如需詳細資訊，請參閱[與 Azure 受控識別整合](howto-integrate-azure-managed-service-identity.md)。
-* 將設定從應用程式組態推送至 App Service。 應用程式組態提供匯出函式（在 Azure 入口網站和 Azure CLI 中），可將資料直接傳送到 App Service。 使用此方法時，您完全不需要變更應用程式程式碼。
+您可以使用以下任一方法為 Web 應用或功能提供對應用配置的訪問：
+
+* 通過 Azure 門戶，在應用服務的應用程式設定中輸入到應用配置存儲的連接字串。
+* 將連接字串存儲在金鑰保存庫中的應用配置存儲，並從[應用服務中引用它](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)。
+* 使用 Azure 託管標識訪問應用配置存儲。 有關詳細資訊，請參閱與[Azure 託管標識集成](howto-integrate-azure-managed-service-identity.md)。
+* 將配置從應用配置推送到應用服務。 應用配置提供一個匯出功能（在 Azure 門戶和 Azure CLI 中），該功能將資料直接發送到應用服務。 使用此方法，您根本不需要更改應用程式代碼。
+
+## <a name="reduce-requests-made-to-app-configuration"></a>減少對應用配置的請求
+
+對應用配置的過多請求可能會導致限制或超額收費。 要減少請求數，
+
+* 增加刷新超時，尤其是在配置值不頻繁更改時。 使用[`SetCacheExpiration`方法](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)指定新的刷新超時。
+
+* 觀看單個*哨點鍵*，而不是觀看單個鍵。 僅當哨點鍵發生更改時，才刷新所有配置。 有關示例[，請參閱在ASP.NET核心應用中使用動態配置](enable-dynamic-configuration-aspnet-core.md)。
+
+* 使用 Azure 事件網格在配置更改時接收通知，而不是經常輪詢任何更改。 有關詳細資訊[，請參閱將 Azure 應用配置事件路由到 Web 終結點](./howto-app-configuration-event.md)
+
+## <a name="importing-configuration-data-into-app-configuration"></a>將配置資料導入應用配置
+
+應用配置提供了使用 Azure 門戶或 CLI 從當前設定檔批量[導入](https://aka.ms/azconfig-importexport1)配置設置的選項。 您還可以使用相同的選項從應用設定匯出值，例如在相關商店之間。 如果您想設置與 GitHub 存儲庫的持續同步，您可以使用我們的[GitHub 操作](https://aka.ms/azconfig-gha2)，以便您可以繼續使用現有的原始程式碼管理實踐，同時獲得應用配置的好處。
 
 ## <a name="next-steps"></a>後續步驟
 

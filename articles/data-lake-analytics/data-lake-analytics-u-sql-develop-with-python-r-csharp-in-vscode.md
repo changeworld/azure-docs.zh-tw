@@ -1,5 +1,5 @@
 ---
-title: 在 Python、R 和C# -Azure Data Lake Analytics 中執行 U-SQL 作業
+title: 在 Python、R 和 C# 中運行 U-SQL 作業 - Azure 資料湖分析
 description: 了解如何將程式碼後置與 Python、R 和 C# 搭配使用，以在 Azure Data Lake 中提交作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
 ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309697"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>針對 Visual Studio Code 中的 Azure Data Lake Analytics 使用 Python、R 和 C# 開發 U-SQL
@@ -24,10 +24,10 @@ ms.locfileid: "71309697"
 ## <a name="prerequisites-for-python-and-r"></a>Python 和 R 的必要條件
 為您的 ADL 帳戶註冊 Python 和 R 擴充功能組件。 
 1. 在入口網站開啟您的帳戶。
-   - 選取 [概觀]。 
-   - 按一下 [範例指令碼]。
-2. 按一下 [更多]。
-3. 選取 [安裝 U-SQL 擴充功能]。 
+   - 選取 [概觀]****。 
+   - 按一下 [範例指令碼]****。
+2. 按一下 [其他]****。
+3. 選取 [安裝 U-SQL 擴充功能]****。 
 4. 安裝 U-SQL 擴充功能之後，會顯示確認訊息。 
 
    ![設定 Python 與 R 的環境](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
@@ -36,7 +36,7 @@ ms.locfileid: "71309697"
    > 為了在 Python 與 R 語言服務方面獲得最佳體驗，請安裝 VSCode Python 與 R 擴充功能。 
 
 ## <a name="develop-python-file"></a>開發 Python 檔案
-1. 在您的工作區中按一下 [新增檔案]。
+1. 在您的工作區中按一下 [新增檔案]****。
 2. 在 U-SQL 中撰寫程式碼。 以下是程式碼範例。
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
@@ -58,7 +58,7 @@ ms.locfileid: "71309697"
         USING Outputters.Csv();
     ```
     
-3. 在腳本檔案上按一下滑鼠右鍵，然後選取 **[ADL]：產生 Python 程式碼後**置檔案。 
+3. 在指令檔上按一下滑鼠右鍵，然後選取 [ADL: Generate Python Code Behind File]****。 
 4. 工作資料夾中會隨即產生 **xxx.usql.py** 檔案。 在 Python 檔案中撰寫程式碼。 以下是程式碼範例。
 
     ```Python
@@ -72,10 +72,10 @@ ms.locfileid: "71309697"
         del df['tweet']
         return df
     ```
-5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼] 或 [提交作業] 即可執行作業。
+5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼]**** 或 [提交作業]**** 即可執行作業。
 
 ## <a name="develop-r-file"></a>開發 R 檔案
-1. 在您的工作區中按一下 [新增檔案]。
+1. 在您的工作區中按一下 [新增檔案]****。
 2. 在 U-SQL 檔案中撰寫程式碼。 以下是程式碼範例。
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
@@ -115,19 +115,19 @@ ms.locfileid: "71309697"
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. 以滑鼠右鍵按一下 [ **script.usql**檔案]，然後**選取 [ADL]：產生 R 程式碼後**置檔案。 
+3. 以滑鼠右鍵按一下 **USQL** 檔案，然後選取 [ADL: Generate R Code Behind File]****。 
 4. 工作資料夾中會隨即產生 **xxx.usql.y** 檔案。 在 R 檔案中撰寫程式碼。 以下是程式碼範例。
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼] 或 [提交作業] 即可執行作業。
+5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼]**** 或 [提交作業]**** 即可執行作業。
 
 ## <a name="develop-c-file"></a>開發 C# 檔案
-程式碼後置檔案是與單一 U-SQL 指令碼關聯的 C# 檔案。 您可以在程式碼後置檔案中定義專用於 UDO、UDA、UDT 和 UDF 的指令碼。 UDO、UDA、UDT 和 UDF 可以直接在指令碼中使用，而不需要先註冊組件。 程式碼後置檔案會放在與其對等互連 U-SQL 指令碼檔案相同的資料夾中。 如果指令碼名稱為 xxx.usql，程式碼後置就會被命名為 xxx.usql.cs。 如果您手動刪除該程式碼後置檔案，系統就會停用其相關聯之 U-SQL 指令碼的程式碼後置功能。 如需撰寫 u-sql 腳本之客戶程式碼的詳細資訊[，請參閱在 sql-dmo 中撰寫和使用自訂程式碼：使用者定義函數]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)。
+程式碼後置檔案是與單一 U-SQL 指令碼關聯的 C# 檔案。 您可以在程式碼後置檔案中定義專用於 UDO、UDA、UDT 和 UDF 的指令碼。 UDO、UDA、UDT 和 UDF 可以直接在指令碼中使用，而不需要先註冊組件。 程式碼後置檔案會放在與其對等互連 U-SQL 指令碼檔案相同的資料夾中。 如果指令碼名稱為 xxx.usql，程式碼後置就會被命名為 xxx.usql.cs。 如果您手動刪除該程式碼後置檔案，系統就會停用其相關聯之 U-SQL 指令碼的程式碼後置功能。 如需撰寫 U-SQL 指令碼之客戶程式碼的詳細資訊，請參閱[在 U-SQL 中撰寫並使用自訂程式碼：使用者定義函式]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/) (英文)。
 
-1. 在您的工作區中按一下 [新增檔案]。
+1. 在您的工作區中按一下 [新增檔案]****。
 2. 在 U-SQL 檔案中撰寫程式碼。 以下是程式碼範例。
     ```U-SQL
     @a = 
@@ -157,7 +157,7 @@ ms.locfileid: "71309697"
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. 以滑鼠右鍵按一下 [ **script.usql**檔案]，然後**選取 [ADL]：產生 CS 程式碼後**置檔案。 
+3. 以滑鼠右鍵按一下 **USQL** 檔案，然後選取 [ADL: Generate CS Code Behind File]****。 
 4. 工作資料夾中會隨即產生 **xxx.usql.cs** 檔案。 在 CS 檔案中撰寫程式碼。 以下是程式碼範例。
 
     ```CS
@@ -176,7 +176,7 @@ ms.locfileid: "71309697"
         }
     }
     ```
-5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼] 或 [提交作業] 即可執行作業。
+5. 以滑鼠右鍵按一下 **USQL** 檔案，按一下 [編譯指令碼]**** 或 [提交作業]**** 即可執行作業。
 
 ## <a name="next-steps"></a>後續步驟
 * [使用 Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

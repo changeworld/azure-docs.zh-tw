@@ -1,17 +1,17 @@
 ---
-title: 設定和管理 Azure Cosmos DB 中的存留時間
-description: 瞭解如何設定和管理容器中的存留時間和 Azure Cosmos DB 中的專案
+title: 配置和管理在 Azure 宇宙 DB 中生存的時間
+description: 瞭解如何配置和管理在 Azure Cosmos DB 中使用容器和專案的時間
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 55f94257b604a87460caa279fc0995f1434ac92c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/27/2020
+ms.author: anfeldma
+ms.openlocfilehash: 72653a3b28181316a2bf7dd7e73f2685c3afcf73
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441788"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384257"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
 
@@ -21,18 +21,18 @@ ms.locfileid: "75441788"
 
 您可以使用下列步驟，在容器上啟用存留時間 (無到期時間)。 啟用此選項可讓您能夠在項目層級覆寫 TTL。 您也可以輸入非零值的秒數，以設定 TTL。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
 
 2. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
-3. 開啟 [資料總管] 窗格。
+3. 開啟 [資料總管]**** 窗格。
 
 4. 選取現有容器，加以展開並修改下列值：
 
-   * 開啟 [規模與設定] 視窗。
-   * 在 [設定] 底下，尋找 [存留時間]。
-   * 選取 [開啟 (無預設值)]，或選取 [開啟] 並設定 TTL 值
-   * 按一下 [儲存] 儲存變更。
+   * 開啟 [規模與設定]**** 視窗。
+   * 在 [設定]**** 底下，尋找 [存留時間]****。
+   * 選取 [開啟 (無預設值)]****，或選取 [開啟]**** 並設定 TTL 值
+   * 按一下 **[儲存]**，儲存變更。
 
    ![在 Azure 入口網站中設定存留時間](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
@@ -40,16 +40,16 @@ ms.locfileid: "75441788"
 * 當 DefaultTimeToLive 為 -1 時，存留時間會開啟 (無預設值)
 * 當 DefaultTimeToLive 具有任何其他整數值 (0 除外)，存留時間設定會開啟
 
-## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 在容器上啟用存留時間
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 使時間在容器上生存
 
-若要在容器上建立或啟用 TTL，請參閱
+要在容器上創建或啟用 TTL，請參閱，
 
-* [使用 Azure CLI 建立具有 TTL 的容器](manage-with-cli.md#create-a-container-with-ttl)
-* [使用 Powershell 建立具有 TTL 的容器](manage-with-powershell.md#create-container-unique-key-ttl)
+* [使用 Azure CLI 使用 TTL 創建容器](manage-with-cli.md#create-a-container-with-ttl)
+* [使用 PowerShell 使用 TTL 創建容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上啟用存留時間
 
-### <a id="dotnet-enable-noexpiry"></a>.NET SDK V2 （Microsoft. Azure DocumentDB）
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK V2（微軟.Azure.文檔資料庫）
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -63,7 +63,7 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition);
 ```
 
-### <a id="dotnet-enable-noexpiry"></a>.NET SDK V3 （Cosmos）
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK V3（微軟.Azure.宇宙）
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -75,11 +75,33 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 });
 ```
 
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+CosmosAsyncContainer container;
+
+// Create a new container with TTL enabled and without any expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.setDefaultTimeToLiveInSeconds(-1);
+container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+CosmosContainer container;
+
+// Create a new container with TTL enabled and without any expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.defaultTimeToLive(-1);
+container = database.createContainerIfNotExists(containerProperties, 400).block().container();
+```
+
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上設定存留時間
 
 若要在容器上設定存留時間，您必須提供零以外的正數，來指出以秒為單位的時間週期。 根據所設定的 TTL 值，容器中時間在 `_ts` 項目上次修改時間戳記之後的所有項目都會遭到刪除。
 
-### <a id="dotnet-enable-withexpiry"></a>.NET SDK V2 （Microsoft. Azure DocumentDB）
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK V2（微軟.Azure.文檔資料庫）
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -93,7 +115,7 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition;
 ```
 
-### <a id="dotnet-enable-withexpiry"></a>.NET SDK V3 （Cosmos）
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK V3（微軟.Azure.宇宙）
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -105,7 +127,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 });
 ```
 
-### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+### <a name="nodejs-sdk"></a><a id="nodejs-enable-withexpiry"></a>NodeJS SDK
 
 ```javascript
 const containerDefinition = {
@@ -119,6 +141,28 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 }
 ```
 
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+CosmosAsyncContainer container;
+
+// Create a new container with TTL enabled with default expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
+container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+CosmosContainer container;
+
+// Create a new container with TTL enabled with default expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.defaultTimeToLive(90 * 60 * 60 * 24);
+container = database.createContainerIfNotExists(containerProperties, 400).block().container();
+```
+
 ## <a name="set-time-to-live-on-an-item"></a>在項目上設定存留時間
 
 除了在容器上設定預設存留時間外，您還可以為項目設定存留時間。 在項目層級設定存留時間，將會覆寫該容器中項目的預設 TTL。
@@ -129,24 +173,24 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 * 如果已在容器層級停用 TTL，則會忽略項目上的 TTL 欄位，直到在容器上重新啟用 TTL 為止。
 
-### <a id="portal-set-ttl-item"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure 入口網站
 
 使用下列步驟，在項目上啟用存留時間：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
 
 2. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
-3. 開啟 [資料總管] 窗格。
+3. 開啟 [資料總管]**** 窗格。
 
 4. 選取現有容器，加以展開並修改下列值：
 
-   * 開啟 [規模與設定] 視窗。
-   * 在 [設定] 底下，尋找 [存留時間]。
-   * 選取 [開啟 (無預設)]，或選取 [開啟] 並設定 TTL 值。 
-   * 按一下 [儲存] 儲存變更。
+   * 開啟 [規模與設定]**** 視窗。
+   * 在 [設定]**** 底下，尋找 [存留時間]****。
+   * 選擇 **"打開"（無預設值）** 或選擇 **"打開"** 並設置 TTL 值。 
+   * 按一下 **[儲存]**，儲存變更。
 
-5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]。 
+5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]****。 
 
    ```json
    {
@@ -160,7 +204,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
    }
    ```
 
-### <a id="dotnet-set-ttl-item"></a>.NET SDK （任何）
+### <a name="net-sdk-any"></a><a id="dotnet-set-ttl-item"></a>.NET SDK（任何）
 
 ```csharp
 // Include a property that serializes to "ttl" in JSON
@@ -185,7 +229,7 @@ SalesOrder salesOrder = new SalesOrder
 };
 ```
 
-### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+### <a name="nodejs-sdk"></a><a id="nodejs-set-ttl-item"></a>NodeJS SDK
 
 ```javascript
 const itemDefinition = {
@@ -196,11 +240,81 @@ const itemDefinition = {
         };
 ```
 
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+// Include a property that serializes to "ttl" in JSON
+public class SalesOrder
+{
+    private String id;
+    private String customerId;
+    private Integer ttl;
+
+    public SalesOrder(String id, String customerId, Integer ttl) {
+        this.id = id;
+        this.customerId = customerId;
+        this.ttl = ttl;
+    }
+
+    public String getId() {return this.id;}
+    public void setId(String new_id) {this.id = new_id;}
+    public String getCustomerId() {return this.customerId;}
+    public void setCustomerId(String new_cid) {this.customerId = new_cid;}
+    public Integer getTtl() {return this.ttl;}
+    public void setTtl(Integer new_ttl) {this.ttl = new_ttl;}
+
+    //...
+}
+
+// Set the value to the expiration in seconds
+SalesOrder salesOrder = new SalesOrder(
+    "SO05",
+    "CO18009186470",
+    60 * 60 * 24 * 30  // Expire sales orders in 30 days
+);
+
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+// Include a property that serializes to "ttl" in JSON
+public class SalesOrder
+{
+    private String id;
+    private String customerId;
+    private Integer ttl;
+
+    public SalesOrder(String id, String customerId, Integer ttl) {
+        this.id = id;
+        this.customerId = customerId;
+        this.ttl = ttl;
+    }
+
+    public String id() {return this.id;}
+    public void id(String new_id) {this.id = new_id;}
+    public String customerId() {return this.customerId;}
+    public void customerId(String new_cid) {this.customerId = new_cid;}
+    public Integer ttl() {return this.ttl;}
+    public void ttl(Integer new_ttl) {this.ttl = new_ttl;}
+
+    //...
+}
+
+// Set the value to the expiration in seconds
+SalesOrder salesOrder = new SalesOrder(
+    "SO05",
+    "CO18009186470",
+    60 * 60 * 24 * 30  // Expire sales orders in 30 days
+);
+
+```
+
 ## <a name="reset-time-to-live"></a>重設存留時間
 
 您可以在項目上執行寫入或更新作業，以重設項目上的存留時間。 寫入或更新作業會將 `_ts` 設定為目前的時間，並重新開始項目的到期 TTL。 如果您想要變更項目的 TTL，則可以如同更新任何其他欄位一樣地更新此欄位。
 
-### <a id="dotnet-extend-ttl-item"></a>.NET SDK V2 （Microsoft. Azure DocumentDB）
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK V2（微軟.Azure.文檔資料庫）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -214,7 +328,7 @@ readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a id="dotnet-extend-ttl-item"></a>.NET SDK V3 （Cosmos）
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK V3（微軟.Azure.宇宙）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -225,11 +339,42 @@ itemResponse.Resource.ttl = 60 * 30 * 30; // update time to live
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+// This examples leverages the Sales Order class above.
+// Read a document, update its TTL, save it.
+CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", new PartitionKey("CO18009186470"), SalesOrder.class)
+        .flatMap(readResponse -> {
+            SalesOrder salesOrder = readResponse.getItem();
+            salesOrder.setTtl(60 * 30 * 30);
+            return container.createItem(salesOrder);
+}).block();
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+// This examples leverages the Sales Order class above.
+// Read a document, update its TTL, save it.
+container.getItem("SO05", new PartitionKey("CO18009186470")).read()
+        .flatMap(readResponse -> {
+            SalesOrder salesOrder = null;
+            try {
+                salesOrder = readResponse.properties().getObject(SalesOrder.class);
+            } catch (Exception err) {
+
+            }
+            salesOrder.ttl(60 * 30 * 30);
+            return container.createItem(salesOrder);
+}).block();
+```
+
 ## <a name="turn-off-time-to-live"></a>關閉存留時間
 
 如果項目上已設定存留時間，而您不再希望該項目會到期，則可以取得該項目、移除 TTL 欄位，然後取代伺服器上的項目。 當項目中移除了 TTL 欄位時，指派給容器的預設 TTL 值便會套用至該項目。 將 TTL 值設定為 -1 可避免項目到期，且不會從容器繼承 TTL 值。
 
-### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK V2 （Microsoft. Azure DocumentDB）
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK V2（微軟.Azure.文檔資料庫）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -244,7 +389,7 @@ readDocument.ttl = null; // inherit the default TTL of the container
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK V3 （Cosmos）
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK V3（微軟.Azure.宇宙）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -255,11 +400,42 @@ itemResponse.Resource.ttl = null; // inherit the default TTL of the container
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+// This examples leverages the Sales Order class above.
+// Read a document, update its TTL, save it.
+CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", new PartitionKey("CO18009186470"), SalesOrder.class)
+        .flatMap(readResponse -> {
+            SalesOrder salesOrder = readResponse.getItem();
+            salesOrder.setTtl(null);
+            return container.createItem(salesOrder);
+}).block();
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+// This examples leverages the Sales Order class above.
+// Read a document, update its TTL, save it.
+container.getItem("SO05", new PartitionKey("CO18009186470")).read()
+        .flatMap(readResponse -> {
+            SalesOrder salesOrder = null;
+            try {
+                salesOrder = readResponse.properties().getObject(SalesOrder.class);
+            } catch (Exception err) {
+
+            }
+            salesOrder.ttl(null);
+            return container.createItem(salesOrder);
+}).block();
+```
+
 ## <a name="disable-time-to-live"></a>停用存留時間
 
 若要在容器上停用存留時間，並阻止背景處理程序檢查到期的項目，則應刪除容器上的 `DefaultTimeToLive` 屬性。 刪除此屬性與將它設定為 -1 不同。 當您將它設定為 -1 時，新增至容器的新項目將會永遠存在，不過，您可以在容器中的特定項目上覆寫此值。 當您從容器中移除 TTL 屬性時，項目將永遠不會過期，即使這些項目已明確覆寫先前預設的 TTL 值也是一樣。
 
-### <a id="dotnet-disable-ttl"></a>.NET SDK V2 （Microsoft. Azure DocumentDB）
+### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-disable-ttl"></a>.NET SDK V2（微軟.Azure.文檔資料庫）
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -269,7 +445,7 @@ collection.DefaultTimeToLive = null;
 await client.ReplaceDocumentCollectionAsync(collection);
 ```
 
-### <a id="dotnet-disable-ttl"></a>.NET SDK V3 （Cosmos）
+### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-disable-ttl"></a>.NET SDK V3（微軟.Azure.宇宙）
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -277,6 +453,29 @@ ContainerResponse containerResponse = await client.GetContainer("database", "con
 // Disable TTL
 containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
+```
+
+### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>JAVA SDK V4（Maven com.azure：：azure-宇宙）
+
+```java
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+// Disable TTL
+containerProperties.setDefaultTimeToLiveInSeconds(null);
+// Update container settings
+container.replace(containerProperties).block();
+```
+
+### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>JAVA SDK V3（Maven com.microsoft.azure：：azure-宇宙）
+
+```java
+CosmosContainer container;
+
+// Create a new container with TTL enabled and without any expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+// Disable TTL
+containerProperties.defaultTimeToLive(null);
+// Update container settings
+container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
 
 ## <a name="next-steps"></a>後續步驟

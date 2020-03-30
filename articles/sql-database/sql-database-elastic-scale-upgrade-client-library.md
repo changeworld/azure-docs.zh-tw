@@ -1,5 +1,5 @@
 ---
-title: 升級至最新的彈性資料庫用戶端程式庫
+title: 升級到最新的彈性資料庫用戶端庫
 description: 使用 Nuget 升級彈性資料庫用戶端程式庫。
 services: sql-database
 ms.service: sql-database
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823499"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>將應用程式升級以使用最新的彈性資料庫用戶端程式庫
 
-新版本的[彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md)可透過 nuget 和 Visual Studio 中的 Nuget 套件管理員介面取得。 升級包含用戶端程式庫的錯誤修正以及對新功能的支援。
+[彈性資料庫用戶端庫](sql-database-elastic-database-client-library.md)的新版本可通過 Visual Studio 中的 NuGet 和 NuGet 包管理器介面獲得。 升級包含用戶端程式庫的錯誤修正以及對新功能的支援。
 
 **如需最新版本** ：請瀏覽 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
@@ -30,19 +30,19 @@ ms.locfileid: "73823499"
 
 ## <a name="upgrade-steps"></a>升級步驟
 
-**1.升級您的應用程式。** 在 Visual Studio 中，將最新的用戶端程式庫版本下載到您所有使用程式庫的開發專案中，並加以參照；然後重新建置及部署。
+**1.升級您的應用程式。**  在 Visual Studio 中，將最新的用戶端程式庫版本下載到您所有使用程式庫的開發專案中，並加以參照；然後重新建置及部署。
 
-* 在您的 Visual Studio 解決方案中，依序選取 [工具] -->  [NuGet 套件管理員]  -->  [管理解決方案的 NuGet 套件]。
-* (Visual Studio 2013) 在左邊面板中，選取 [更新]，然後在視窗中顯示的 [Azure SQL Database Elastic Scale 用戶端程式庫]套件上選取 [更新]按鈕。
-* (Visual Studio 2015) 設定篩選方塊為 [可升級]。 選取要更新的套件，然後按一下 [更新] 按鈕。
-* (Visual Studio 2017) 在對話方塊頂端，選取 [更新]。 選取要更新的套件，然後按一下 [更新] 按鈕。
+* 在視覺化工作室解決方案中，選擇**工具** --> **NuGet 包管理器** -->  **管理 NuGet 包的解決方案**。
+* (Visual Studio 2013) 在左邊面板中，選取 [更新]****，然後在視窗中顯示的 [Azure SQL Database Elastic Scale 用戶端程式庫]**** 套件上選取 [更新]**** 按鈕。
+* (Visual Studio 2015) 設定篩選方塊為 [可升級] ****。 選取要更新的套件，然後按一下 [更新] **** 按鈕。
+* (Visual Studio 2017) 在對話方塊頂端，選取 [更新]****。 選取要更新的套件，然後按一下 [更新] **** 按鈕。
 * 建置並部署。
 
-**2. 升級您的腳本。** 如果您是使用 **PowerShell** 指令碼來管理分區，請[下載新的程式庫版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)並將它複製到您從中執行指令碼的目錄。
+**2. 升級腳本。** 如果您是使用 **PowerShell** 指令碼來管理分區，請[下載新的程式庫版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)並將它複製到您從中執行指令碼的目錄。
 
-**3. 升級您的分割合併服務。** 如果您使用彈性資料庫分割合併工具來重新安排分區資料，請[下載並部署最新版本的工具](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)。 服務的詳細升級步驟可以在[這裡](sql-database-elastic-scale-overview-split-and-merge.md)找到。
+**3. 升級拆分合併服務。** 如果您使用彈性資料庫分割合併工具來重新安排分區資料，請[下載並部署最新版本的工具](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)。 服務的詳細升級步驟可以在[這裡](sql-database-elastic-scale-overview-split-and-merge.md)找到。
 
-**4. 升級您的分區對應管理員資料庫**。 升級支援您 Azure SQL Database 中之分區對應的中繼資料。  您可以使用 PowerShell 或 C# 來完成此作業。 下面會說明這兩個選項。
+**4. 升級分片圖管理器資料庫**。 升級支援您 Azure SQL Database 中之分區對應的中繼資料。  您可以使用 PowerShell 或 C# 來完成此作業。 下面會說明這兩個選項。
 
 ***選項 1：使用 PowerShell 升級中繼資料***
 
@@ -69,7 +69,7 @@ ms.locfileid: "73823499"
 
 這些中繼資料升級技巧可以套用多次且不會造成損害。 例如，如果較舊的用戶端版本在您已經更新之後意外建立分區，您可以在所有分區上再次執行升級，以確保您的整個基礎結構都擁有最新的中繼資料版本。
 
-**注意：** 至今發佈的新版本用戶端程式庫可以繼續和 Azure SQL DB 上的舊版分區對應管理員中繼資料搭配使用，反之亦然。   但是，若要使用最新用戶端中的部分新功能，則必須升級中繼資料。   請注意，中繼資料升級將不會影響任何使用者資料或應用程式特定資料，只會影響分區對應管理員所建立及使用的物件。  而且應用程式會繼續透過上述的升級順序運作。
+**注：** 到目前為止發佈的用戶端庫的新版本繼續與 Azure SQL DB 上的分片映射管理器中繼資料的早期版本一起使用，反之亦然。   但是，若要使用最新用戶端中的部分新功能，則必須升級中繼資料。   請注意，中繼資料升級將不會影響任何使用者資料或應用程式特定資料，只會影響分區對應管理員所建立及使用的物件。  而且應用程式會繼續透過上述的升級順序運作。
 
 ## <a name="elastic-database-client-version-history"></a>彈性資料庫用戶端版本歷程記錄
 

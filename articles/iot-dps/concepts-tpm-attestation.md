@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞裝置佈建服務 - TPM 證明
-description: 本文提供使用 IoT 裝置布建服務（DPS）的 TPM 證明流程概念總覽。
+description: 本文提供了使用 IoT 設備佈建服務 （DPS） 的 TPM 認證流的概念概述。
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975273"
 ---
 # <a name="tpm-attestation"></a>TPM 證明
@@ -21,11 +21,11 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 本文將說明使用 [TPM](./concepts-device.md) 時的識別證明程序。 TPM 代表的是「信賴平台模組 (Trusted Platform Module)」，而且是一種硬體安全模組 (HSM)。 本文假設您使用的是個別、韌體或整合式 TPM。 模擬軟體的 TPM 非常適合用來建立原型或測試，但是其不提供與個別、韌體或整合式 TPM 相同的安全性等級。 我們不建議將軟體 TPM 用在生產環境中。 如需 TPM 類型的詳細資訊，請參閱 [TPM 簡短介紹](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)。
 
-本文僅與使用 TPM 2.0 及具有 HMAC 金鑰支援的裝置和其簽署金鑰有關。 不適用於使用 X.509 憑證進行驗證的裝置。 TPM 是來自受信任運算群組的業界全系列 ISO 標準，您可以在[完整的 tpm 2.0 規格](https://trustedcomputinggroup.org/tpm-library-specification/)或[ISO/IEC 11889 規格](https://www.iso.org/standard/66510.html)閱讀更多 tpm 的相關資訊。本文也假設您已熟悉公開和私密金鑰組，以及如何使用它們來進行加密。
+本文僅與使用 TPM 2.0 及具有 HMAC 金鑰支援的裝置和其簽署金鑰有關。 不適用於使用 X.509 憑證進行驗證的裝置。 TPM 是全行業、來自可信計算組的 ISO 標準，您可以在[完整的 TPM 2.0 規範](https://trustedcomputinggroup.org/tpm-library-specification/)或[ISO/IEC 11889 規範](https://www.iso.org/standard/66510.html)下閱讀更多有關 TPM 的規範。本文還假定您熟悉公開金鑰和私密金鑰對，以及它們如何用於加密。
 
 裝置佈建服務的裝置 SDK 會為您處理本文所述的所有項目。 如果您在裝置上使用 SDK，那麼您就不需要實作其他任何項目。 本文可協助您在概念上了解 TPM 安全性晶片在裝置佈建時的作用，以及為什麼它如此安全。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 TPM 會使用所謂的簽署金鑰 (EK) 作為安全的信任根。 EK 對 TPM 而言是唯一的，而且改變 EK 等於是從本質上將裝置變成一個新的裝置。
 

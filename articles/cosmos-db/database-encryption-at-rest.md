@@ -2,23 +2,23 @@
 title: Azure Cosmos DB 中的待用加密
 description: 了解 Azure Cosmos DB 如何提供加密待用資料，以及其實作方式。
 author: markjbrown
-ms.author: sngun
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548096"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062590"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料加密 
 
 「待用加密」是一個用來描述加密靜態儲存裝置 (例如固態硬碟 (SSD) 和硬碟 (HDD)) 上資料的常見用語。 Cosmos DB 會在 SSD 上儲存其主要資料庫。 其媒體附件和備份會儲存在通常由 HDD 備份的 Azure Blob 儲存體中。 在針對 Cosmos DB 發行待用加密之後，您所有的資料庫、媒體附件及備份都會進行加密。 您的資料現在會在傳輸過程 (透過網路) 和待用 (位於靜態儲存裝置上) 期間進行加密，提供您端對端的加密。
 
-Cosmos DB 是一種 PaaS 服務，使用起來非常容易。 由於儲存在 Cosmos DB 中的所有使用者資料都會在待用和傳輸過程期間進行加密，因此您不必採取任何動作。 換句話說，待用加密預設便會「開啟」。 沒有關閉或開啟的控制項。 Azure Cosmos DB 在執行帳戶的所有區域上使用 AES-256 加密。 在提供這項功能的同時，我們會繼續符合[可用性和效能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。
+Cosmos DB 是一種 PaaS 服務，使用起來非常容易。 由於儲存在 Cosmos DB 中的所有使用者資料都會在待用和傳輸過程期間進行加密，因此您不必採取任何動作。 換句話說，待用加密預設便會「開啟」。 沒有關閉或開啟的控制項。 Azure Cosmos DB 對帳戶運行的所有區域使用 AES-256 加密。 在提供這項功能的同時，我們會繼續符合[可用性和效能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Azure Cosmos DB 待用加密實作
 
@@ -46,7 +46,7 @@ Cosmos DB 是一種 PaaS 服務，使用起來非常容易。 由於儲存在 Co
 答：Microsoft 針對加密金鑰輪替有一套 Cosmos DB 會遵循的內部方針。 不會發佈特定方針。 Microsoft 會發佈[安全性開發週期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，這會視為內部指導方針的子集，其中包含對開發人員很實用的最佳做法。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>問︰我是否可以使用自己的加密金鑰？
-答：是的，現在這項功能適用于新的 cosmos 帳戶，這應該在建立帳戶時完成。 如需詳細資訊，請流覽[客戶管理的金鑰](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)檔。
+答：是的，現在此功能可用於新的宇宙帳戶，這應該在帳戶創建時完成。 有關詳細資訊，請流覽[客戶託管的金鑰](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)文檔。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>問：有哪些區域已開啟加密？
 答：所有的 Azure Cosmos DB 區域皆已針對所有使用者資料開啟加密。
@@ -59,5 +59,5 @@ Cosmos DB 是一種 PaaS 服務，使用起來非常容易。 由於儲存在 Co
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Cosmos DB 安全性和最新改進功能的總覽，請參閱[Azure Cosmos 資料庫安全性](database-security.md)。
+有關 Cosmos DB 安全性和最新改進的概述，請參閱[Azure Cosmos 資料庫安全性](database-security.md)。
 如需 Microsoft 認證的詳細資訊，請參閱 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

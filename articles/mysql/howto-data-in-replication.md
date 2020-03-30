@@ -1,23 +1,25 @@
 ---
-title: 設定資料傳入複寫-適用於 MySQL 的 Azure 資料庫
+title: 配置資料內複製 - MySQL 的 Azure 資料庫
 description: 本文將說明如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/27/2020
+ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774291"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382761"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
 在本文中，您將了解如何透過設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫服務中設定「資料輸入複寫」。 「資料輸入複寫」可讓您將來自在內部部署執行的主要 MySQL 伺服器、虛擬機器中或由其他雲端提供者所代管的資料庫服務的資料，同步處理到適用於 MySQL 的 Azure 資料庫服務中的複本。 
 
 本文假設您先前已具備一些使用 MySQL 伺服器和資料庫的經驗。
+
+在執行本文中的步驟之前，請查看資料內複製[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>建立 MySQL 伺服器做為複本
 
@@ -33,10 +35,21 @@ ms.locfileid: "74774291"
 
    使用者帳戶不會從主要伺服器複寫到複本伺服器。 如果您預計提供複本伺服器存取權給使用者，則必須在此新建的適用於 MySQL 伺服器的 Azure資料庫中，手動建立所有帳戶及對應權限。
 
-## <a name="configure-the-master-server"></a>設定主要伺服器
-下列步驟會針對裝載在內部部署的 MySQL 伺服器、虛擬機器中的 MySQL 伺服器或由其他雲端提供者所代管的資料庫服務，準備及設定資料帶入複寫。 此伺服器是「資料輸入複寫」中的「主要」伺服器。 
+3. 將主伺服器的 IP 位址添加到副本的防火牆規則中。 
 
-1. 開啟二進位記錄
+   使用 [Azure 入口網站](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md) 更新防火牆規則。
+
+## <a name="configure-the-master-server"></a>設定主要伺服器
+下列步驟會針對裝載在內部部署的 MySQL 伺服器、虛擬機器中的 MySQL 伺服器或由其他雲端提供者所代管的資料庫服務，準備及設定資料帶入複寫。 此伺服器是「資料輸入複寫」中的「主要」伺服器。
+
+
+1. 在繼續操作之前，請查看[主伺服器要求](concepts-data-in-replication.md#requirements)。 
+
+   例如，確保主伺服器允許埠 3306 上的入站和出站流量，並且主伺服器具有公共**IP 位址**、DNS 是可公開訪問的，或者具有完全限定的功能變數名稱 （FQDN）。 
+   
+   嘗試從工具（如在另一台電腦上託管的 MySQL 命令列或 Azure 門戶中可用的[Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/overview)）進行連接，以測試與主伺服器的連接 
+
+2. 開啟二進位記錄
 
    執行下列命令，以檢查主要伺服器是否已啟用二進位記錄： 
 
@@ -44,11 +57,11 @@ ms.locfileid: "74774291"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果變數 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) 傳回的值是 “ON"，表示伺服器上的二進位記錄已啟用。 
+   如果變數[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)返回的值"ON"，則在伺服器上啟用二進位日誌記錄。 
 
-   如果 `log_bin` 傳回 “OFF” 值，請開啟二進位記錄，方法是編輯 my.cnf 以確保 `log_bin=ON`，然後將伺服器重新開機使變更生效。
+   如果`log_bin`返回的值"OFF"，請通過編輯 my.cnf 檔打開二進位日誌記錄，`log_bin=ON`以便重新開機伺服器，使更改生效。
 
-2. 主要伺服器設定
+3. 主要伺服器設定
 
    「資料輸入複寫」要求主要伺服器和複本伺服器之間的參數 `lower_case_table_names` 一致。 此參數在適用於 MySQL 的 Azure 資料庫中預設為 1。 
 
@@ -56,7 +69,7 @@ ms.locfileid: "74774291"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. 建立新的複寫角色並設定權限
+4. 建立新的複寫角色並設定權限
 
    在使用複寫權限設定的主要伺服器上建立使用者帳戶。 此作業可透過 SQL 命令或 MySQL Workbench 等工具完成。 考慮是打算否使用 SSL 進行複寫，因為此設定必須在建立使用者時指定。 請參閱 MySQL 文件，了解如何在主要伺服器中[新增使用者帳戶](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
 
@@ -84,20 +97,20 @@ ms.locfileid: "74774291"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中建立複寫角色，請從 [管理] 面板開啟 [使用者和權限] 面板。 接著，按一下 [新增帳戶]。 
+   若要在 MySQL Workbench 中建立複寫角色，請從 [管理]**** 面板開啟 [使用者和權限]**** 面板。 接著，按一下 [新增帳戶]****。 
  
    ![使用者和權限](./media/howto-data-in-replication/users_privileges.png)
 
-   在 [登入名稱] 欄位中輸入使用者名稱。 
+   在 [登入名稱]**** 欄位中輸入使用者名稱。 
 
    ![同步處理使用者](./media/howto-data-in-replication/syncuser.png)
  
-   按一下 [管理角色] 面板，然後從 [全域權限] 清單選取 [複寫從屬]。 然後按一下 [套用] 以建立複寫角色。
+   按一下 [管理角色]**** 面板，然後從 [全域權限]**** 清單選取 [複寫從屬]****。 然後按一下 [套用]**** 以建立複寫角色。
 
    ![複寫從屬](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. 將主要伺服器設為唯讀模式
+5. 將主要伺服器設為唯讀模式
 
    開始傾印資料庫之前，伺服器必須處於唯讀模式。 處於唯讀模式時，主要伺服器無法處理任何寫入交易。 必要時可評估對業務的影響，並為巔峰和離峰時間排程唯讀時段。
 
@@ -106,9 +119,9 @@ ms.locfileid: "74774291"
    SET GLOBAL read_only = ON;
    ```
 
-5. 取得二進位記錄檔的檔案名稱和位移
+6. 取得二進位記錄檔的檔案名稱和位移
 
-   執行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令，以判斷目前二進位記錄檔的檔案名稱和位移。
+   運行該[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令以確定當前二進位日誌檔案名稱和偏移量。
     
    ```sql
    show master status;
@@ -153,13 +166,13 @@ ms.locfileid: "74774291"
    - master_password：主要伺服器的密碼
    - master_log_file：執行 `show master status` 產生的二進位記錄檔的名稱
    - master_log_pos：執行 `show master status` 產生的二進位記錄檔的位置
-   - master_ssl_ca：CA 憑證的內容。 如果不使用 SSL，請傳入空字串。
+   - master_ssl_ca：CA 憑證的上下文。 如果不使用 SSL，請傳入空字串。
        - 建議將此參數以變數形式傳遞。 請參閱下列範例，以取得詳細資訊。
 
 > [!NOTE]
 > 若主要伺服器裝載於 Azure 虛擬機器，將「允許存取 Azure 服務」設定為「開啟」，讓主要伺服器與複本伺服器能彼此溝通。 於**連線安全性**選項可以變更此項設定。 請參閱[使用入口網站管理防火牆規則](howto-manage-firewall-using-portal.md)取得更多資訊。
 
-   *範例*
+   **範例**
 
    *使用 SSL 的複寫*
 
@@ -167,18 +180,18 @@ ms.locfileid: "74774291"
 
    ```sql
    SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
    -----END CERTIFICATE-----'
    ```
 
-   在主要伺服器 (裝載於 “companya.com” 網域) 和複本伺服器 (裝載於適用於 MySQL 的 Azure 資料庫) 之間設定「使用 SSL 的複寫」。 此已儲存的程序可在複本伺服器上執行。 
+   使用 SSL 進行複製是在託管在域"companya.com"的主伺服器和 MySQL Azure 資料庫中託管的副本伺服器之間設置的。 此已儲存的程序可在複本伺服器上執行。 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
    *不使用 SSL 的複寫*
 
-   在主要伺服器 (裝載於 “companya.com” 網域) 和複本伺服器 (裝載於適用於 MySQL 的 Azure 資料庫) 之間設定「不使用 SSL 的複寫」。 此已儲存的程序可在複本伺服器上執行。
+   在沒有 SSL 的複製在託管在域"companya.com"的主伺服器和 MySQL Azure 資料庫中託管的副本伺服器之間設置。 此已儲存的程序可在複本伺服器上執行。
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
@@ -194,13 +207,13 @@ ms.locfileid: "74774291"
 
 1. 檢查複寫狀態
 
-   在複本伺服器上呼叫 [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) 命令，以檢視複寫狀態。
+   調用[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)副本伺服器上的命令以查看複製狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 的狀態為「是」，且 `Seconds_Behind_Master` 的值是 “0”，則複寫可順利運作。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
+   如果 和`Slave_IO_Running``Slave_SQL_Running`的狀態為"是"，值`Seconds_Behind_Master`為"0"，則複製工作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
 
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 

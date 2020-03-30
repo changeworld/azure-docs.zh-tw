@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409944"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387864"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 資料庫和 Azure 突觸分析的資料發現&分類
 
@@ -89,17 +89,11 @@ ms.locfileid: "79409944"
 
 4. 若要下載 Excel 格式的報表，請按一下視窗頂端功能表中的 [匯出]**** 選項。
 
-   ![匯出至 Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>若要開始分類資料，請按一下視窗頂端的 [分類]**** 索引標籤。
-
-    ![分類您的資料](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. 分類引擎掃描資料庫，以尋找包含潛在敏感性資料的列，並提供**建議的列分類**清單。 檢視並套用分類建議：
 
-   - 若要檢視建議的資料行分類清單，請按一下視窗底部的建議面板：
-
-      ![分類您的資料](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - 要查看建議的列分類清單，請按一下視窗底部的建議面板
 
    - 檢閱建議清單：若要接受針對特定資料行的建議，請選取相關資料列左側資料行中的核取方塊。 您也可以核取建議資料表標頭中的核取方塊，以將「所有建議」** 標記為已接受。
 
@@ -107,21 +101,15 @@ ms.locfileid: "79409944"
 
    - 若要套用選取的建議，請按一下藍色的 [Accept selected recommendations]\(接受選取的建議)**** 按鈕。若要套用選取的建議，請按一下藍色的 接受選取的建議按鈕。
 
-      ![套用建議](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. 您也可以**手動分類**資料行作為 (以及) 建議分類的替代方法：
 
    - 按一下視窗上方功能表中的 [新增分類]****。
-
-      ![手動新增分類](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - 在開啟的內容視窗中，選取結構描述 > 資料表 > 您想要分類的資料行，以及資訊類型和敏感度標籤。 然後按一下內容視窗底部的藍色 [新增分類]**** 按鈕。
 
       ![選取要分類的資料行](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. 若要完成您的分類，並使用新的分類中繼資料持續標示 (標記) 資料庫資料行，請按一下視窗上方功能表中的 [儲存]****。
-
-   ![儲存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>對敏感性資料的存取進行稽核
 
@@ -183,7 +171,7 @@ ms.locfileid: "79409944"
 
 ## <a name="next-steps"></a><a id="subheading-6"></a>後續步驟
 
-- 深入了解[進階資料安全性](sql-database-advanced-data-security.md)。
+- 瞭解有關[高級資料安全性](sql-database-advanced-data-security.md)的更多。
 - 請考慮設定 [Azure SQL Database 稽核](sql-database-auditing.md)，以監視和稽核對已分類敏感性資料的存取。
 - 有關包含資料發現&分類的 YouTube 演示文稿，請參閱[發現、分類、標記&保護 SQL 資料 |資料暴露](https://www.youtube.com/watch?v=itVi9bkJUNc)。
 

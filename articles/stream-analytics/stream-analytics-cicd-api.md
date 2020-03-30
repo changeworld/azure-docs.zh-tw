@@ -1,5 +1,5 @@
 ---
-title: 使用 REST Api 來執行 CI/CD 以進行 Azure IoT Edge 串流分析
+title: 使用 REST API 在 IoT 邊緣執行 AZURE 流分析的 CI/CD
 description: 了解如何使用 REST API 實作適用於 Azure 串流分析的持續整合和部署管線。
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426407"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292012"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>為 IoT Edge 串流分析實作 CI/CD
 
@@ -57,7 +57,7 @@ echo $response
 
 |方法|要求 URL|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview|
+|PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
 使用 **curl** 的命令範例：
 
@@ -144,7 +144,7 @@ JSON 中的要求本文範例：
 
 |方法|要求 URL|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview|
+|POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
 這個非同步作業會傳回狀態 202，直到作業已成功發佈為止。 位置回應標頭包含用來取得程序狀態的 URI。 在程序執行期間呼叫位置標頭中的 URI，會傳回狀態 202。 程序完成後，位置標頭中的 URI 會傳回狀態 200。 
 

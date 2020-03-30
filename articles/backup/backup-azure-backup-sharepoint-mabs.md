@@ -1,16 +1,16 @@
 ---
-title: 使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
+title: 使用 MABS 將 SharePoint 伺服器場備份到 Azure
 description: 使用 Azure 備份伺服器來備份和還原 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673130"
 ---
-# <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
+# <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 將 SharePoint 伺服器場備份到 Azure
 
 您可以使用 Microsoft Azure 備份伺服器 (MABS)，將 SharePoint 伺服器陣列備份到 Microsoft Azure，其方法與備份其他資料來源極為類似。 Azure 備份提供靈活的備份排程來建立每日、每週、每月或每年備份點，並可讓您針對各種備份點執行保留原則選項。 它也可以讓您儲存本機磁碟複本來快速達成復原時間目標 (RTO)，以及將複本儲存到 Azure 來進行經濟實惠的長期保留。
 
@@ -20,13 +20,13 @@ DPM 的 Azure 備份支援下列案例：
 
 | 工作負載 | 版本 | SharePoint 部署 | 保護和復原 |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |部署為實體伺服器或 Hyper-V/VMware 虛擬機器的 SharePoint <br> -------------- <br> SQL AlwaysOn | 保護 SharePoint 伺服器陣列復原選項：來自磁碟復原點的復原伺服器陣列、資料庫及檔案或清單項目  來自 Azure 復原點的伺服器陣列和資料庫復原。 |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |部署為實體伺服器或 Hyper-V/VMware 虛擬機器的 SharePoint  <br> -------------- <br>  SQL AlwaysOn | 保護 SharePoint 伺服器陣列復原選項：來自磁碟復原點的復原伺服器陣列、資料庫及檔案或清單項目  來自 Azure 復原點的伺服器陣列和資料庫復原。 |
 
 ## <a name="before-you-start"></a>開始之前
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 繼續之前，請確定您已[安裝並備妥 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)來保護工作負載。
 
@@ -36,7 +36,7 @@ Azure 備份代理程式必須安裝在執行 SharePoint 的伺服器、執行 S
 
 ### <a name="sharepoint-farm"></a>SharePoint 伺服器陣列
 
-針對伺服器陣列中每 1000 萬個項目，必須有至少 2 GB 的磁碟區空間來放置 MABS 資料夾。 此空間對目錄產生是必要的。 若要讓 MABS 復原特定項目 (網站集合、網站、清單、文件庫、資料夾、個別的文件與清單項目)，目錄產生會建立一份包含在每個內容資料庫內的 URL 清單。 您可以在 [MABS 系統管理員主控台] 的 [復原] 工作區中，檢視 [可復原的項目] 窗格中的 URL 清單。
+針對伺服器陣列中每 1000 萬個項目，必須有至少 2 GB 的磁碟區空間來放置 MABS 資料夾。 此空間對目錄產生是必要的。 若要讓 MABS 復原特定項目 (網站集合、網站、清單、文件庫、資料夾、個別的文件與清單項目)，目錄產生會建立一份包含在每個內容資料庫內的 URL 清單。 您可以在 [MABS 系統管理員主控台] 的 [復原]**** 工作區中，檢視 [可復原的項目] 窗格中的 URL 清單。
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -46,7 +46,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
 
 ### <a name="sharepoint-server"></a>SharePoint Server
 
-雖然效能取決於許多因素，例如 SharePoint 伺服器陣列的大小，但一般指引一 MABS 可以保護 25 TB 的 SharePoint 伺服器陣列。
+雖然性能取決於許多因素，如 SharePoint 伺服器場的大小，但通常指導一個 MABS 可以保護 25 TB SharePoint 伺服器場。
 
 ### <a name="whats-not-supported"></a>不支援的內容
 
@@ -63,12 +63,12 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
 
 1. 在 WFE 伺服器上，在命令提示字元中移至 [MABS 安裝位置]\bin\
 2. 輸入 ConfigureSharePoint -EnableSharePointProtection
-3. 輸入伺服器陣列系統管理員認證。 此帳戶應該是 WFE 伺服器上本機系統管理員群組的成員。 如果伺服器陣列系統管理員不是本機管理員，請在 WFE 伺服器上授與下列許可權：
+3. 輸入伺服器陣列系統管理員認證。 這個帳戶應該是 WFE 伺服器上本機 Administrator 群組的成員。 如果伺服陣列管理員不是本機系統管理員，請授與 WFE 伺服器上的下列權限：
    * 授與 WSS_Admin_WPG 群組 DPM 資料夾 (%Program Files%\Microsoft Azure Backup\DPM) 的完整控制權。
    * 將 DPM 登錄機碼的讀取權授與 WSS_Admin_WPG 群組 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager)。
 
 > [!NOTE]
-> 每當 SharePoint 伺服器陣列系統管理員認證有變更時，您就必須重新執行 Configuresharepoint.exe。
+> 每當 SharePoint 伺服器場管理員憑據發生更改時，都需要重新回合組態 SharePoint.exe。
 >
 >
 
@@ -78,12 +78,12 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
 
 ### <a name="to-protect-a-sharepoint-farm"></a>保護 SharePoint 伺服器陣列
 
-1. 從 [MABS 系統管理員主控台] 的 [保護] 索引標籤中，按一下 [新增]。
+1. 從 [MABS 系統管理員主控台] 的 [保護]**** 索引標籤中，按一下 [新增]****。
     ![[新增保護] 索引標籤](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. 在 [建立新保護群組] 精靈的 [選擇保護群組類型] 頁面上，選取 [伺服器]，然後按 [下一步]。
+2. 在 [建立新保護群組]**** 精靈的 [選擇保護群組類型]**** 頁面上，選取 [伺服器]****，然後按 [下一步]****。
 
     ![選擇保護群組類型](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. 在 [選擇群組成員] 畫面上，選取您想要保護的 SharePoint 伺服器的核取方塊，然後按 [下一步]。
+3. 在 [選擇群組成員]**** 畫面上，選取您想要保護的 SharePoint 伺服器的核取方塊，然後按 [下一步]****。
 
     ![選擇群組成員](./media/backup-azure-backup-sharepoint/select-group-members2.png)
 
@@ -91,7 +91,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
    > 若已安裝保護代理程式，您就能在精靈中看到該伺服器。 MABS 也會顯示其結構。 由於已執行 ConfigureSharePoint.exe，MABS 會與 SharePoint VSS 寫入器服務及其對應的 SQL Server 資料庫通訊，並辨識 SharePoint 伺服器陣列結構、相關聯的內容資料庫和任何對應的項目。
    >
    >
-4. 在 [選擇資料保護方式] 頁面上，輸入**保護群組**的名稱，然後選取您偏好的*保護方式*。 按 [下一步]。
+4. 在 [選擇資料保護方式]**** 頁面上，輸入**保護群組**的名稱，然後選取您偏好的*保護方式*。 按 [下一步]****。
 
     ![選擇資料保護方式](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -99,7 +99,7 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
    > 磁碟保護方法有助於達成短暫的復原時間目標。
    >
    >
-5. 在 [指定短期目標] 頁面上，選取您偏好的**保留範圍**，然後識別您想要進行備份的時間。
+5. 在 [指定短期目標]**** 頁面上，選取您偏好的**保留範圍**，然後識別您想要進行備份的時間。
 
     ![指定短期目標](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
@@ -107,8 +107,8 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
    > 由於復原大部分是針對少於五天的資料進行，因此我們針對此範例選取磁碟上五天保留範圍，並確保在非生產時段進行備份。
    >
    >
-6. 檢閱為保護群組配置的存放集區磁碟空間，然後按 [下一步]。
-7. 針對每個保護群組，MABS 會配置磁碟空間來儲存和管理複本。 此時，MABS 必須建立所選資料的複本。 選取您希望建立複本的方式和時間，然後按 [下一步]。
+6. 檢閱為保護群組配置的存放集區磁碟空間，然後按 [下一步] ****。
+7. 針對每個保護群組，MABS 會配置磁碟空間來儲存和管理複本。 此時，MABS 必須建立所選資料的複本。 選取您希望建立複本的方式和時間，然後按 [下一步] ****。
 
     ![選擇複本的建立方式](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
 
@@ -116,18 +116,18 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
    > 若要確保不影響網路流量，請選取生產時段之外的時間。
    >
    >
-8. MABS 可為複本執行一致性檢查，以確保資料完整性。 有兩個可用的選項。 您可以定義執行一致性檢查的排程，DPM 也可以在複本變得不一致時自動執行一致性檢查。 選取您慣用的選項，然後按 [下一步]。
+8. MABS 可為複本執行一致性檢查，以確保資料完整性。 有兩個可用的選項。 您可以定義執行一致性檢查的排程，DPM 也可以在複本變得不一致時自動執行一致性檢查。 選取您慣用的選項，然後按 [下一步] ****。
 
     ![一致性檢查](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. 在 [指定線上保護資料] 頁面上，選取您想要保護的 SharePoint 伺服器陣列，然後按 [下一步]。
+9. 在 [指定線上保護資料]**** 頁面上，選取您想要保護的 SharePoint 伺服器陣列，然後按 [下一步]****。
 
     ![DPM SharePoint Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. 在 [指定線上備份排程] 頁面上，選取您慣用的排程，然後按 [下一步]。
+10. 在 [指定線上備份排程]**** 頁面上，選取您慣用的排程，然後按 [下一步]****。
 
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS 可以從當時可用的最新磁碟備份點開始，為 Azure 最多提供兩個每日備份。 Azure 備份也可以使用[Azure 備份網路節流](backup-windows-with-mars-agent.md#enable-network-throttling)，控制尖峰和離峰時間可用於備份的 WAN 頻寬數量。
+    > MABS 可以從當時可用的最新磁碟備份點開始，為 Azure 最多提供兩個每日備份。 Azure 備份還可以通過使用[Azure 備份網路限制](backup-windows-with-mars-agent.md#enable-network-throttling)來控制可用於高峰和非高峰時間備份的 WAN 頻寬量。
     >
     >
 11. 依選取的備份排程，請在 [ **指定線上保留原則** ] 頁面上，選取每日、每週、每月和每年備份點的保留原則。
@@ -138,46 +138,46 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
     > MABS 會使用 grandfather-father-son 保留配置，可讓您為不同的備份時間點選擇不同的保留原則。
     >
     >
-12. 類似於磁碟，需要在 Azure 中建立初始參考點複本。 選取用於在 Azure 中建立初始備份複本的慣用選項，然後按 [下一步]。
+12. 類似於磁碟，需要在 Azure 中建立初始參考點複本。 選取用於在 Azure 中建立初始備份複本的慣用選項，然後按 [下一步] ****。
 
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. 在 [摘要] 頁面上檢閱您選取的設定，然後按一下 [建立群組]。 建立保護群組之後，您會看到成功訊息。
+13. 在 [摘要]**** 頁面上檢閱您選取的設定，然後按一下 [建立群組]****。 建立保護群組之後，您會看到成功訊息。
 
-    ![摘要](./media/backup-azure-backup-sharepoint/summary.png)
+    ![總結](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>使用 MABS 從磁碟還原 SharePoint 項目
 
 在下列範例中， *Recovering SharePoint item* 已被意外刪除，而需要復原。
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. 開啟 [DPM 管理主控台]。 DPM 保護的所有 SharePoint 伺服器陣列都會顯示在 [保護] 索引標籤中。
+1. 開啟 [DPM 管理主控台] ****。 DPM 保護的所有 SharePoint 伺服器陣列都會顯示在 [保護] **** 索引標籤中。
 
     ![MABS SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
-2. 若要開始復原項目，請選取 [復原] 索引標籤。
+2. 若要開始復原項目，請選取 [復原] **** 索引標籤。
 
     ![MABS SharePoint Protection5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
 3. 您可以使用萬用字元型搜尋，在復原點範圍內搜尋 SharePoint 中的 *Recovering SharePoint item* 。
 
     ![MABS SharePoint Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
-4. 從搜尋結果中選取適當的復原點，以滑鼠右鍵按一下項目，然後選取 [復原]。
-5. 您也可以瀏覽不同的復原點，並選取要復原的資料庫或項目。 選取 [日期] > [復原時間]，然後選取正確的 [資料庫] > [SharePoint 伺服器陣列] > [復原點] > [項目]。
+4. 從搜尋結果中選取適當的復原點，以滑鼠右鍵按一下項目，然後選取 [復原]****。
+5. 您也可以瀏覽不同的復原點，並選取要復原的資料庫或項目。 選取 [日期] > [復原時間]****，然後選取正確的 [資料庫] > [SharePoint 伺服器陣列] > [復原點] > [項目]****。
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 在該項目上按一下滑鼠右鍵，然後選取 [復原] 以開啟 [復原精靈]。 按 [下一步]。
+6. 在該項目上按一下滑鼠右鍵，然後選取 [復原]**** 以開啟 [復原精靈]****。 按 [下一步]****。
 
     ![檢閱復原選項](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. 選取您想要執行的復原類型，然後按 [下一步]。
+7. 選取您想要執行的復原類型，然後按 [下一步] ****。
 
     ![復原類型](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
    > [!NOTE]
-   > 範例中選取的 [復原到原始] 會將項目復原到原始的 SharePoint 網站。
+   > 範例中選取的 [復原到原始]**** 會將項目復原到原始的 SharePoint 網站。
    >
    >
-8. 選取您想要使用的 [復原程序] 。
+8. 選取您想要使用的 [復原程序] **** 。
 
-   * 如果 SharePoint 伺服器陣列並未變更，並且與正在還原的復原點相同，請選取 [不使用復原伺服器陣列執行復原] 。
-   * 如果 SharePoint 伺服器陣列自建立復原點後已變更，請選取 [使用復原伺服器陣列執行復原] 。
+   * 如果 SharePoint 伺服器陣列並未變更，並且與正在還原的復原點相同，請選取 [不使用復原伺服器陣列執行復原] **** 。
+   * 如果 SharePoint 伺服器陣列自建立復原點後已變更，請選取 [使用復原伺服器陣列執行復原] **** 。
 
      ![復原程序](./media/backup-azure-backup-sharepoint/recovery-process.png)
 9. 提供暫時復原資料庫的預備 SQL Server 執行個體位置，並在要復原項目的 MABS 和執行 SharePoint 的伺服器上提供預備檔案共用。
@@ -187,18 +187,18 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
     MABS 會將裝載 SharePoint 項目的內容資料庫連接至暫存 SQL Server 執行個體。 它會從內容資料庫復原項目，並將它放在 MABS 上的預備檔案位置。 位於預備位置上的復原項目，現在需要匯出至 SharePoint 伺服器陣列上的預備位置。
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. 選取 [指定復原選項]，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步]。
+10. 選取 [指定復原選項] ****，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步]****。
 
-    ![復原選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
+    ![修復選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
     > [!NOTE]
     > 您可以選擇調節網路頻寬使用量。 這會對生產時段的生產伺服器產生最小的影響。
     >
     >
-11. 檢閱摘要資訊，然後按一下 [復原] 以開始復原檔案。
+11. 檢閱摘要資訊，然後按一下 [復原] **** 以開始復原檔案。
 
     ![復原摘要](./media/backup-azure-backup-sharepoint/recovery-summary.png)
-12. 現在，在 [MABS 系統管理員主控台] 中選取 [監視] 索引標籤，以檢視復原的**狀態**。
+12. 現在，在 [MABS 系統管理員主控台]**** 中選取 [監視]**** 索引標籤，以檢視復原的**狀態**。
 
     ![復原狀態](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
 
@@ -218,18 +218,18 @@ Azure 備份伺服器會以 LocalSystem 帳戶執行。 若要備份 SQL Server 
    > 由於 SharePoint 伺服器陣列在 Azure 中受到長期保留保護，因此 MABS 上沒有可用的目錄資訊 (中繼資料)。 如此一來，每當需要復原時間點 SharePoint 內容資料庫，您就需要重新編目 SharePoint 伺服器陣列。
    >
    >
-3. 按一下 [重新編目]。
+3. 按一下 [重新編目] ****。
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    [雲端重新編目] 狀態視窗隨即會開啟。
+    [雲端重新編目] **** 狀態視窗隨即會開啟。
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功]。 按一下 **關閉**。
+    完成編目後，狀態會變更為 [成功] **。 按一下 **關閉**。
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. 按一下 MABS [復原] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原]。
+4. 按一下 MABS [復原]**** 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原] ****。
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此時，依照本文前述的復原步驟，從磁碟復原 SharePoint 內容資料庫。

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266971"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
@@ -31,15 +31,15 @@ ms.locfileid: "79266971"
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
-**發生驗證錯誤。無法連絡本地安全機構。**
+**發生了身份驗證錯誤。無法連絡當地安全機構。**
 
 ### <a name="error-message-2"></a>錯誤訊息 2
 
-**您嘗試連線的遠端電腦需要網路層級驗證（NLA），但無法連線到您的 Windows 網域控制站來執行 NLA。如果您是遠端電腦上的系統管理員，您可以使用 [系統內容] 對話方塊的 [遠端] 索引標籤上的選項來停用 NLA。**
+**您嘗試連接到的遠端電腦需要網路級身份驗證 （NLA），但無法連絡 Windows 網域控制站以執行 NLA。如果您是遠端電腦上的管理員，則可以使用"系統屬性"對話方塊的"遠端"選項卡上的選項禁用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>錯誤訊息 3 (一般連線錯誤)
 
-**這部電腦無法連接到遠端電腦。再次嘗試連線，如果問題持續發生，請洽詢遠端電腦的擁有者或您的網路系統管理員。**
+**此電腦無法連接到遠端電腦。如果問題仍然存在，請嘗試再次連接，請與遠端電腦的擁有者或網路系統管理員聯繫。**
 
 ## <a name="cause"></a>原因
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > 請從 SCHANNEL 錯誤相關「客體 OS 記錄」取得 SSH/TLS 版本 x.x。
 
-#### <a name="fips-compliant"></a> 檢查符合 FIPS 規範的演算法連線
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> 檢查符合 FIPS 規範的演算法連線
 
 您可以強制遠端桌面只使用符合 FIPS 規範的演算法連線。 使用登錄機碼即可進行此設定。 若要這樣做，請開啟已提升權限的命令提示字元視窗，然後查詢下列機碼：
 

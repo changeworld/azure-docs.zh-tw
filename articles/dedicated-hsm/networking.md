@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881280"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 專用 HSM 網路
@@ -39,7 +39,7 @@ Azure 專用 HSM 需要高度安全的網路環境。 無論是從 Azure 雲端�
 
 ### <a name="subnets"></a>子網路
 
-子網路會將虛擬網路分割成位址空間，供放在其中的 Azure 資源使用。 專用 HSM 會部署至虛擬網路中的子網路。 客戶子網路中部署的每個專用 HSM 裝置會收到來自該子網路的私人 IP 位址。 您必須將部署「硬體安全模組」(HSM) 裝置的子網路明確委派給服務：Microsoft.HardwareSecurityModules/dedicatedHSMs。 如此會將特定的權限授予 HSM 服務，以便部署到子網路中。 專用 HSM 的委派會在子網路上實行某些原則限制。 目前委派的子網路上不支援網路安全性群組 (NSG) 和使用者定義路由 (UDR)。 因此，一旦將子網路委派給專用 HSM，就只能用於部署 HSM 資源。 將其他客戶資源部署至子網路均會失敗。
+子網路會將虛擬網路分割成位址空間，供放在其中的 Azure 資源使用。 專用 HSM 會部署至虛擬網路中的子網路。 客戶子網路中部署的每個專用 HSM 裝置會收到來自該子網路的私人 IP 位址。 部署 HSM 裝置的子網路需要明確委派至服務：Microsoft.HardwareSecurityModules/dedicatedHSMs。 如此會將特定的權限授予 HSM 服務，以便部署到子網路中。 專用 HSM 的委派會在子網路上實行某些原則限制。 目前委派的子網路上不支援網路安全性群組 (NSG) 和使用者定義路由 (UDR)。 因此，一旦將子網路委派給專用 HSM，就只能用於部署 HSM 資源。 將其他客戶資源部署至子網路均會失敗。
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute 閘道
@@ -60,7 +60,7 @@ Azure 專用 HSM 需要高度安全的網路環境。 無論是從 Azure 雲端�
 
 ### <a name="site-to-site-vpn"></a>站對站 VPN
 
-站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這麼做的原因是，HSM 的內部部署有一個備份功能，而且需要兩個連線才能執行備份。
+站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這樣做的一個原因是為 HSM 的本地提供了備份設施，並且需要兩者之間的連接才能運行備份。
 
 ## <a name="connecting-virtual-networks"></a>連線虛擬網路
 
@@ -90,6 +90,6 @@ HSM 裝置可透過軟體程式庫，將流量重新導向其他 HSM。 如果�
 - [常見問題集](faq.md)
 - [支援能力](supportability.md)
 - [高可用性](high-availability.md)
-- [實體安全性](physical-security.md)
-- [監視](monitoring.md)
+- [物理安全](physical-security.md)
+- [監測](monitoring.md)
 - [部署架構](deployment-architecture.md) (英文)

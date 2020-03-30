@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 入口網站中布建記錄（預覽） |Microsoft Docs
-description: 在 Azure Active Directory 入口網站中布建活動報告的簡介
+title: Azure 活動目錄門戶中的預配日誌（預覽） |微軟文檔
+description: Azure 活動目錄門戶中預配活動報表簡介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,104 +18,104 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73612805"
 ---
-# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報告（預覽）
+# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure 活動目錄門戶中預配報表（預覽）
 
 Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
-    - **稽核記錄** - [稽核記錄](concept-audit-logs.md)可提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
-    - 布建**記錄**-提供有關 Azure AD 布建服務所布建之使用者、群組和角色的系統活動。 
+    - **稽核記錄** - [稽核記錄](concept-audit-logs.md)提供有關使用者和組管理、託管應用程式和目錄活動的系統活動資訊。
+    - **預配日誌**- 提供有關 Azure AD 預配服務預配的使用者、組和角色的系統活動。 
 
 - **安全性** 
-    - **有風險的登入** - [有風險的登入](concept-risky-sign-ins.md)表示非使用者帳戶合法擁有者的某人嘗試登入。
-    - **標幟為有風險的使用者** - [有風險的使用者](concept-user-at-risk.md)表示可能被盜用的使用者帳戶。
+    - **風險**登錄 -[風險登錄](concept-risky-sign-ins.md)是登錄嘗試的指示器，該嘗試可能由不是使用者帳戶的合法擁有者的人員執行。
+    - **標記為風險的使用者**-[風險使用者](concept-user-at-risk.md)是可能已洩露的使用者帳戶的指示器。
 
-本主題提供布建報告的總覽。
+本主題概述了預配報告。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
-* 安全性系統管理員、安全性讀取者、報告讀取者、應用程式系統管理員和雲端應用程式系統管理員角色中的使用者
+* 安全管理員、安全讀取器、報表閱讀器、應用程式管理員和雲應用程式管理員角色中的使用者
 * 全域系統管理員
 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>您需要哪些 Azure AD 授權才能存取布建活動？
+### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>訪問預配活動需要哪些 Azure AD 許可證？
 
-您的租使用者必須有相關聯的 Azure AD Premium 授權，才能查看所有布建活動報告。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 
+租戶必須具有與其關聯的 Azure AD 高級許可證才能查看所有向上預配活動報告。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 
 
 ## <a name="provisioning-logs"></a>佈建記錄
 
-布建記錄提供下列問題的解答：
+預配日誌提供以下問題的答案：
 
-* 已成功在 ServiceNow 中建立哪些群組？
-* 如何從 Amazon Web Services 匯入角色？
-* DropBox 中未成功建立的使用者為何？
+* 在 ServiceNow 中成功創建哪些組？
+* 如何從亞馬遜 Web 服務導入角色？
+* 在 DropBox 中未成功創建哪些使用者？
 
-您可以在[Azure 入口網站](https://portal.azure.com)的 [ **Azure Active Directory** ] 分頁的 [**監視**] 區段中，選取 [布建**記錄**] 來存取布建記錄。 可能需要最多兩個小時的時間，才能在入口網站中顯示某些布建記錄。
+通過在[Azure 門戶](https://portal.azure.com)中的**Azure 活動目錄**邊欄選項卡的**監視**部分中選擇**預配日誌**，可以訪問預配日誌。 某些預配記錄最多可能需要兩個小時才能顯示在門戶中。
 
-![布建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
+![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
 
 
-布建記錄檔具有預設清單視圖，顯示：
+預配日誌具有預設清單視圖，該視圖顯示：
 
-- 身分識別
-- 動作
-- 來源系統
+- 標識
+- 操作
+- 源系統
 - 目標系統
 - 狀態
 - 日期
 
 
-![預設資料行](./media/concept-provisioning-logs/default-columns.png "預設資料行")
+![預設列](./media/concept-provisioning-logs/default-columns.png "預設列")
 
-您可以按一下工具列中的 [資料行] 來自訂清單檢視。
+您可以通過按一下工具列中的**列**來自訂清單視圖。
 
-![資料行選擇器](./media/concept-provisioning-logs/column-chooser.png "資料行選擇器")
+![欄選取器](./media/concept-provisioning-logs/column-chooser.png "欄選取器")
 
 這可讓您顯示其他欄位，或移除已顯示的欄位。
 
-![可用的資料行](./media/concept-provisioning-logs/available-columns.png "可用的資料行")
+![可用列](./media/concept-provisioning-logs/available-columns.png "可用的資料行")
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
 ![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
 
 
-## <a name="filter-provisioning-activities"></a>篩選布建活動
+## <a name="filter-provisioning-activities"></a>篩選器預配活動
 
-若要將報告的資料縮小至適合您的層級，您可以使用下列預設欄位篩選布建資料。 請注意，篩選中的值會根據您的租使用者動態填入。 例如，如果您的租使用者中沒有任何建立事件，就不會有 [建立] 的篩選選項。
+要將報告的資料縮小到適合您的水準，可以使用以下預設欄位篩選預配資料。 請注意，篩選器中的值會根據您的租戶動態填充。 例如，如果租戶中沒有任何創建事件，則創建時沒有篩選器選項。
 
 - 身分識別
-- 行動
+- 動作
 - 來源系統
 - 目標系統
 - 狀態
-- 日期
+- Date
 
 
-![Filter](./media/concept-provisioning-logs/filter.png "Filter")
+![篩選器](./media/concept-provisioning-logs/filter.png "Filter")
 
-[身分**識別**] 篩選準則可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建到 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在 [標識] 資料行中。 一律會有一個識別碼。 
+通過 **"標識"** 篩選器，您可以指定您關心的名稱或標識。 此標識可以是使用者、組、角色或其他物件。 您可以按物件的名稱或 ID 進行搜索。 ID 因方案而異。 例如，將物件從 Azure AD 預配到 SalesForce 時，源 ID 是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的 ID。 從工作日預配到活動目錄時，源 ID 是工作日員工 ID。 請注意，使用者的姓名可能並不總是存在於"標識"列中。 始終有一個 ID。 
 
-[**來源系統**] 篩選準則可讓您指定要從何處布建身分識別。 例如，從 Azure AD 將物件布建到 ServiceNow 時，會 Azure AD 來源系統。 
+"**源系統**"篩選器使您能夠指定從何處預配標識。 例如，將物件從 Azure AD 預配到 ServiceNow 時，源系統是 Azure AD。 
 
-[**目標系統**] 篩選準則可讓您指定要將身分識別布建至何處。 例如，從 Azure AD 將物件布建到 ServiceNow 時，目標系統是 ServiceNow。 
+目標**系統**篩選器使您能夠指定標識預配到的位置。 例如，將物件從 Azure AD 預配到 ServiceNow 時，目標系統是 ServiceNow。 
 
-[狀態] 篩選條件可讓您選取︰
+[狀態]**** 篩選條件可讓您選取︰
 
 - 全部
-- 成功
+- Success
 - 失敗
-- Skipped
+- 已略過
 
-**動作**篩選準則可讓您篩選：
+"**操作"** 篩選器允許您篩選：
 
 - 建立 
 - 更新
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 停用
 - 其他
 
-[日期] 篩選條件可讓您定義傳回資料的時間範圍。  
+[日期]**** 篩選條件可讓您定義傳回資料的時間範圍。  
 可能的值包括：
 
 - 1 個月
@@ -132,106 +132,106 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 24 小時
 - 自訂時間間隔
 
-當您選取自訂時間範圍時，可以設定 [開始日期] 和 [結束日期]。
+選擇自訂時間範圍時，可以配置開始日期和結束日期。
 
 
-除了預設欄位，選取此選項時，您也可以在篩選中包含下欄欄位：
+除了預設欄位之外，在選中時，還可以在篩選器中包括以下欄位：
 
-- **作業識別碼**-唯一的作業識別碼會與您已啟用布建的每個應用程式相關聯。   
+- **作業 ID** - 與已為其啟用預配的每個應用程式相關聯的唯一作業 ID。   
 
-- **週期識別碼**-唯一識別布建週期。 您可以共用此識別碼以支援查詢發生此事件的週期。
+- **週期 ID** - 唯一標識預配週期。 您可以共用此 ID 以支援查找發生此事件的週期。
 
-- **變更 ID** -布建事件的唯一識別碼。 您可以共用此識別碼以支援查詢布建事件。   
+- **更改 ID** - 預配事件的唯一識別碼。 您可以共用此 ID 以支援查找預配事件。   
 
 
 
   
 
-## <a name="provisioning-details"></a>布建詳細資料 
+## <a name="provisioning-details"></a>預配詳細資訊 
 
-當您在 [布建清單] 視圖中選取專案時，您會取得此專案的更多詳細資料。
-詳細資料會根據下列分類進行分組：
+在預配清單視圖中選擇專案時，將獲取有關此項的更多詳細資訊。
+詳細資訊根據以下類別進行分組：
 
 - 步驟
 
-- 疑難排解和建議
+- 故障排除和建議
 
-- 修改過的屬性
+- 修改的屬性
 
-- 摘要
+- 總結
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "卡")
+![篩選器](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
 
 
 
 ### <a name="steps"></a>步驟
 
-[**步驟**] 索引標籤會列出布建物件所採取的步驟。 布建物件可包含四個步驟： 
+"**步驟**"選項卡概述了預配物件的步驟。 預配物件可以包含四個步驟： 
 
-- 匯入物件
-- 判斷物件是否在範圍內
-- 來源與目標之間的相符物件
-- 布建物件（採取動作-這可能是 [建立]、[更新]、[刪除] 或 [停用]）
-
-
-
-![Filter](./media/concept-provisioning-logs/steps.png "Filter")
+- 導入物件
+- 確定物件是否在作用域中
+- 在源和目標之間匹配物件
+- 預配物件（執行操作 - 這可能是創建、更新、刪除或禁用）
 
 
-### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
+
+![篩選器](./media/concept-provisioning-logs/steps.png "Filter")
 
 
-[**疑難排解和建議**] 索引標籤會提供錯誤碼和原因。 錯誤資訊僅適用于失敗的情況。 
+### <a name="troubleshoot-and-recommendations"></a>故障排除和建議
 
 
-### <a name="modified-properties"></a>修改過的屬性
-
-**修改後的屬性**會顯示舊值和新值。 在沒有舊值的情況下，[舊值] 資料行是空白的。 
+**疑難排解和建議**選項卡提供錯誤代碼和原因。 錯誤資訊僅在發生故障時可用。 
 
 
-### <a name="summary"></a>摘要
+### <a name="modified-properties"></a>修改的屬性
 
-[**摘要**] 索引標籤可讓您大致瞭解來源和目標系統中物件的發生狀況和識別碼。 
+**修改後的屬性**顯示舊值和新值。 如果沒有舊值，則舊值列為空。 
+
+
+### <a name="summary"></a>總結
+
+**摘要**選項卡提供源和目標系統中物件的已發生的情況和識別碼的概述。 
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
 
-- 如果您有 premium edition 和7天的免費版本，Azure 入口網站會將報告的布建資料儲存30天。
+- Azure 門戶存儲 30 天的預配資料（如果有高級版）和 7 天（如果有免費版本）。
 
-- 您可以使用變更 ID 屬性作為唯一識別碼。 例如，當與產品支援互動時，這會很有説明。
+- 您可以將更改 ID 屬性用作唯一識別碼。 例如，在與產品支援交互時，這很有説明。
 
-- 目前沒有任何選項可下載布建資料。
+- 當前沒有下載預配資料的選項。
 
-- 目前不支援 log analytics。
+- 目前不支援日誌分析。
 
-- 當您從應用程式的內容存取布建記錄時，它不會自動將事件篩選至特定應用程式，而不會有 audit 記錄的執行方式。
+- 當您從應用的上下文中訪問預配日誌時，它不會自動將事件篩選到特定應用，就像稽核記錄那樣。
 
 ## <a name="error-codes"></a>錯誤碼
 
-使用下表進一步瞭解如何解決您在布建記錄檔中可能會發現的錯誤。 如需任何遺失的錯誤碼，請使用此頁面底部的連結來提供意見反應。 
+使用下表更好地瞭解如何解決在預配日誌中可能發現的錯誤。 對於缺少的任何錯誤代碼，請使用此頁面底部的連結提供回饋。 
 
-|錯誤碼|說明|
+|錯誤碼|描述|
 |---|---|
-|衝突，EntryConflict|請更正 Azure AD 或應用程式中衝突的屬性值，如果衝突的使用者帳戶應該比對並接管，請檢查您的相符屬性設定。 如需設定相符屬性的詳細資訊，請參閱下列[檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。|
-|TooManyRequests|目標應用程式已拒絕此嘗試更新使用者，因為它已多載，並收到太多要求。 不需要執行任何動作。 這次嘗試將會自動淘汰。 Microsoft 也已收到此問題的通知。|
-|InternalServerError |目標應用程式傳回未預期的錯誤。 目標應用程式可能發生服務問題，導致無法運作。 這項嘗試會在40分鐘後自動停用。|
-|InsufficientRights、MethodNotAllowed、NotPermitted、未經授權| Azure AD 能夠向目標應用程式進行驗證，但未獲授權執行更新。 請查看目標應用程式和個別應用程式[教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程所提供的任何指示。|
-|UnprocessableEntity|目標應用程式傳回未預期的回應。 目標應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。|
-|WebExceptionProtocolError |連接到目標應用程式時發生 HTTP 通訊協定錯誤。 不需要執行任何動作。 這項嘗試會在40分鐘後自動停用。|
-|InvalidAnchor|先前建立或與布建服務相符的使用者已不存在。 檢查以確認使用者存在。 若要強制重新符合所有使用者，請使用 MS 圖形 API[重新開機工作](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 請注意，重新開機布建將會觸發初始迴圈，這可能需要一些時間才能完成。 它也會刪除布建服務用來操作的快取，這表示租使用者中的所有使用者和群組都必須再次評估，而且可能會卸載某些布建事件。|
-|NotImplemented | 目標應用程式傳回未預期的回應。 應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。 請查看目標應用程式和個別應用程式[教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程所提供的任何指示。 |
-|MandatoryFieldsMissing, MissingValues |無法建立使用者，因為遺漏必要的值。 更正來源記錄中遺漏的屬性值，或檢查您的相符屬性設定，以確保不會省略必要的欄位。 [深入瞭解](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)如何設定相符的屬性。|
-|SchemaAttributeNotFound |無法執行作業，因為指定的屬性不存在於目標應用程式中。 請參閱有關屬性自訂的[檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，並確定您的設定正確無誤。|
-|InternalError |Azure AD 布建服務內發生內部服務錯誤。 不需要執行任何動作。 這項嘗試會在40分鐘後自動重試。|
-|InvalidDomain |因為屬性值包含不正確功能變數名稱，所以無法執行此操作。 更新使用者的功能變數名稱，或將其新增至目標應用程式中的允許清單。 |
-|逾時 |無法完成作業，因為目標應用程式回應時間太長。 不需要執行任何動作。 這項嘗試會在40分鐘後自動重試。|
-|LicenseLimitExceeded|無法在目標應用程式中建立使用者，因為此使用者沒有可用的授權。 針對目標應用程式購買額外的授權，或檢查您的使用者指派和屬性對應設定，以確保使用正確的屬性來指派正確的使用者。|
-|DuplicateTargetEntries  |無法完成作業，因為找到目標應用程式中有一個以上的使用者具有已設定的相符屬性。 從目標應用程式移除重複的使用者，或重新設定屬性對應，如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述。|
-|DuplicateSourceEntries | 無法完成作業，因為找到一個以上具有所設定相符屬性的使用者。 請移除重複的使用者，或重新設定屬性對應，如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述。|
+|衝突，進入衝突|更正 Azure AD 或應用程式中的衝突屬性值，或者如果衝突使用者帳戶應匹配並接管，則查看匹配的屬性配置。 有關配置匹配屬性的詳細資訊，請查看以下[文檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。|
+|TooManyRequests|目標應用拒絕此更新使用者嘗試，因為它超載並接收了太多請求。 沒什麼可做的。 此嘗試將自動停用。 微軟也被告知此問題。|
+|InternalServerError |目標應用返回了意外錯誤。 目標應用程式可能存在阻止此功能的工作的服務問題。 此嘗試將在 40 分鐘內自動停用。|
+|權利不足、方法不允許、不允許、未經授權| Azure AD 能夠對目標應用程式進行身份驗證，但無權執行更新。 請查看目標應用程式以及相應的應用程式[教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)提供的任何說明。|
+|不可處理實體|目標應用程式返回了意外回應。 目標應用程式的配置可能不正確，或者目標應用程式可能存在阻止此功能的工作的服務問題。|
+|Web 例外協定錯誤 |連接到目標應用程式時發生 HTTP 協定錯誤。 沒什麼可做的。 此嘗試將在 40 分鐘內自動停用。|
+|無效錨定|以前由預配服務創建或匹配的使用者不再存在。 檢查以確保使用者存在。 要強制重新匹配所有使用者，請使用 MS 圖形 API[重新開機作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 請注意，重新開機預配將觸發初始週期，這可能需要時間才能完成。 它還刪除預配服務用於操作的緩存，這意味著租戶中的所有使用者和組都必須再次進行評估，並且可能會刪除某些預配事件。|
+|NotImplemented | 目標應用返回了意外回應。 應用的配置可能不正確，或者目標應用可能存在服務問題，無法解決此問題。 請查看目標應用程式以及相應的應用程式[教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)提供的任何說明。 |
+|必要欄位缺失，缺失值 |無法創建使用者，因為缺少所需的值。 更正源記錄中缺少的屬性值，或查看匹配的屬性配置以確保不省略所需的欄位。 [瞭解有關](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)配置匹配屬性的更多詳細資訊。|
+|未找到架構屬性 |無法執行操作，因為指定了目標應用程式中不存在的屬性。 請參閱有關屬性自訂[的文檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，並確保配置正確。|
+|InternalError |Azure AD 預配服務中發生了內部服務錯誤。 沒什麼可做的。 此嘗試將在 40 分鐘內自動重試。|
+|InvalidDomain |由於包含無效功能變數名稱的屬性值，無法執行該操作。 更新使用者的功能變數名稱或將其添加到目標應用程式中的允許清單中。 |
+|逾時 |無法完成該操作，因為目標應用程式需要很長時間才能回應。 沒什麼可做的。 此嘗試將在 40 分鐘內自動重試。|
+|超出許可證限制|無法在目標應用程式中創建使用者，因為此使用者沒有可用的許可證。 為目標應用程式獲取其他許可證，或者查看使用者分配和屬性對應配置，以確保使用正確的屬性分配正確的使用者。|
+|重複目標條目  |無法完成該操作，因為使用已配置的匹配屬性找到了目標應用程式中的多個使用者。 從目標應用程式中刪除重複的使用者，或者按照[此處](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述重新配置屬性對應。|
+|重複源條目 | 無法完成該操作，因為使用已配置的匹配屬性找到多個使用者。 刪除重複使用者，或按照[此處](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述重新配置屬性對應。|
 
 ## <a name="next-steps"></a>後續步驟
 
-* [檢查使用者布建的狀態](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
-* [設定 Azure AD 資源庫應用程式的使用者布建時發生問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [檢查使用者預配的狀態](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
+* [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
 
 
