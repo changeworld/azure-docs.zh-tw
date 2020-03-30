@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: dc334932bfd57bc81a58314ee68f02aeed520f41
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670945"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遙測
@@ -40,17 +40,17 @@ Web 應用程式的程式碼方法可透過遙測資料來標註出執行階段�
 若要查看更多詳細資料，請按一下例外狀況 CodeLens 指標︰
 
 * 最近 24 小時 (相對於前 24 小時) 內例外狀況數目的百分比變化
-* 選擇 [移至程式碼] 可瀏覽至擲回例外狀況之函數的原始程式碼
-* 選擇 [搜尋] 可查詢過去 24 小時內發生此例外狀況的所有執行個體
-* 選擇 [趨勢] 可檢視過去 24 小時內此例外狀況的發生次數的趨勢視覺效果
-* 選擇 [檢視此應用程式中的所有例外狀況] 可查詢過去 24 小時內發生的所有例外狀況
-* 選擇 [探索例外狀況區域] 可檢視過去 24 小時內發生的所有例外狀況的趨勢視覺效果。 
+* 選擇 [移至程式碼] **** 可瀏覽至擲回例外狀況之函數的原始程式碼
+* 選擇 [搜尋] **** 可查詢過去 24 小時內發生此例外狀況的所有執行個體
+* 選擇 [趨勢] **** 可檢視過去 24 小時內此例外狀況的發生次數的趨勢視覺效果
+* 選擇 [檢視此應用程式中的所有例外狀況] **** 可查詢過去 24 小時內發生的所有例外狀況
+* 選擇 [探索例外狀況區域] **** 可檢視過去 24 小時內發生的所有例外狀況的趨勢視覺效果。 
 
 > [!TIP]
-> 如果您在 CodeLens 中看到「0 個例外狀況」，但您知道應該有例外狀況，請檢查並確定已在 CodeLens 中選取正確的 Application Insights 資源。 若要選取其他資源，請在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選擇 [Application Insights] > [選擇遙測來源]。 CodeLens 只會顯示過去 24 小時內您的應用程式中 15 個最頻繁發生的例外狀況，所以如果某例外狀況的發生頻率是第 16 位或更不常發生，您將會看到「0 個例外狀況」。 ASP.NET 檢視中的例外狀況可能不會出現在產生這些檢視的控制器方法上。
+> 如果您在 CodeLens 中看到「0 個例外狀況」，但您知道應該有例外狀況，請檢查並確定已在 CodeLens 中選取正確的 Application Insights 資源。 若要選取其他資源，請在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選擇 [Application Insights] > [選擇遙測來源]****。 CodeLens 只會顯示過去 24 小時內您的應用程式中 15 個最頻繁發生的例外狀況，所以如果某例外狀況的發生頻率是第 16 位或更不常發生，您將會看到「0 個例外狀況」。 ASP.NET 檢視中的例外狀況可能不會出現在產生這些檢視的控制器方法上。
 > 
 > [!TIP]
-> 如果您在 CodeLens 中看到「？ 個例外狀況」，您需要建立您的 Azure 帳戶與 Visual Studio 的關聯，否則您的 Azure 帳戶認證可能會過期。 在任一種情況下，按一下「？ 個例外狀況」，然後選擇 [新增帳戶...] 以輸入認證。
+> 如果您在 CodeLens 中看到「？ 個例外狀況」，您需要建立您的 Azure 帳戶與 Visual Studio 的關聯，否則您的 Azure 帳戶認證可能會過期。 在任一種情況下，按一下「？ 個例外狀況」，然後選擇 [新增帳戶...] **** 以輸入認證。
 > 
 > 
 
@@ -63,11 +63,11 @@ Web 應用程式的程式碼方法可透過遙測資料來標註出執行階段�
 
 * 過去 24 小時 (相較於前 24 小時) 內要求數目、失敗的要求或平均回應時間的絕對值和百分比變更
 * 方法的可靠性，該值的計算方式為過去 24 小時內未失敗的要求百分比
-* 選擇 [搜尋] 要求或失敗的要求，以查詢過去 24 小時內發生的所有 (失敗) 要求
-* 選擇 [趨勢] 可檢視過去 24 小時內要求、失敗的要求或平均回應時間的趨勢視覺效果。
+* 選擇 [搜尋] **** 要求或失敗的要求，以查詢過去 24 小時內發生的所有 (失敗) 要求
+* 選擇 [趨勢] **** 可檢視過去 24 小時內要求、失敗的要求或平均回應時間的趨勢視覺效果。
 * 選擇 CodeLens 詳細資料檢視左上角的 Application Insights 資源名稱，以變更哪個資源是 CodeLens 資料的來源。
 
-## <a name="next"></a>後續步驟
+## <a name="next-steps"></a><a name="next"></a>後續步驟
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 |![以滑鼠右鍵按一下專案，然後選擇 [Application Insights]、[搜尋]](./media/visual-studio-codelens/34.png) |

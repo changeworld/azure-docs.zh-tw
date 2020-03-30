@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671710"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
@@ -19,11 +19,11 @@ ms.locfileid: "77671710"
 
 了解在使用 [Application Insights ](../../azure-monitor/app/app-insights-overview.md) 時，即時 Web 應用程式的每個方法各使用了多少時間。 Application Insights Profiler 現在可在 Azure App Service 上供裝載於 Linux 中的 ASP.NET Core Web 應用程式使用。 本指南提供逐步指示，說明如何針對 ASP.NET Core Linux Web 應用程式收集分析工具追蹤。
 
-完成此逐步解說之後，您的應用程式可以收集分析工具追蹤，例如圖中所示的追蹤。 在此範例中，分析工具追蹤會指出特定的 Web 要求變慢是因為將時間花在等候上。 程式碼中使應用程式變慢的「最忙碌路徑」之前會加上火焰圖示。 **HomeController** 區段中的 **About** 方法使 Web 應用程式速度變慢，因為此方法呼叫 **Thread.Sleep** 函式。
+完成此逐步解說之後，您的應用程式可以收集分析工具追蹤，例如圖中所示的追蹤。 在此範例中，分析工具追蹤會指出特定的 Web 要求變慢是因為將時間花在等候上。 程式碼中使應用程式變慢的「最忙碌路徑」** 之前會加上火焰圖示。 **HomeController** 區段中的 **About** 方法使 Web 應用程式速度變慢，因為此方法呼叫 **Thread.Sleep** 函式。
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -47,7 +47,7 @@ ms.locfileid: "77671710"
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. 啟用 Program.cs 中的 Application Insights：
+1. 在Program.cs中啟用應用程式見解：
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -56,7 +56,7 @@ ms.locfileid: "77671710"
             .UseStartup<Startup>();
     ```
     
-1. 在 Startup.cs 中啟用 Profiler：
+1. Startup.cs啟用探測器：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -150,7 +150,7 @@ ms.locfileid: "77671710"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>新增 Application Insights 以監視您的 Web 應用程式
 
-1. [建立 Application Insights 資源](./../../azure-monitor/app/create-new-resource.md )。
+1. [創建應用程式見解資源](./../../azure-monitor/app/create-new-resource.md )。
 
 2. 複製 Application Insights 資源的 **iKey** 值，並在您的 Web 應用程式中進行下列設定：
 
@@ -160,18 +160,18 @@ ms.locfileid: "77671710"
 
     應用程式的設定變更時，網站會自動重新啟動。 一旦套用新的設定後，分析工具會立即執行 2 分鐘。 之後，分析工具會每小時執行兩分鐘。
 
-3. 產生一些流向網站的流量。 您可以重新整理網站的 [關於] 網頁幾次以產生流量。
+3. 產生一些流向網站的流量。 您可以重新整理網站的 [關於]**** 網頁幾次以產生流量。
 
 4. 等待 2-5 分鐘，讓事件彙總至 Application Insights。
 
-5. 在 Azure 入口網站中瀏覽至 Application Insights [效能] 窗格。 您可以檢視在窗格右下角的分析工具追蹤。
+5. 在 Azure 入口網站中瀏覽至 Application Insights [效能]**** 窗格。 您可以檢視在窗格右下角的分析工具追蹤。
 
     ![檢視分析工具追蹤](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>已知問題
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Linux Profiler 的 [立即分析] 按鈕無法使用
-Linux 版本的 App Insights profiler 尚未使用 [立即設定檔] 按鈕來支援點播分析。
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>現在設定檔按鈕對 Linux 探測器不起作用
+Linux 版本的應用見解探測器還不支援使用"立即設定檔"按鈕進行按需分析。
 
 
 ## <a name="next-steps"></a>後續步驟

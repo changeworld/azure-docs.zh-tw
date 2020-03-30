@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670316"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>從 Azure 監視器記錄查詢建立圖表
@@ -35,7 +35,7 @@ Heartbeat
 
 ![Table](media/charts/table-display.png)
 
-若要取的更好的檢視，請選取 [圖表]，然後選擇 [圓形圖] 選項以將結果視覺化：
+若要取的更好的檢視，請選取 [圖表]****，然後選擇 [圓形圖]**** 選項以將結果視覺化：
 
 ![圓形圖](media/charts/charts-and-diagrams-pie.png)
 
@@ -50,7 +50,7 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-選取 [折線圖] 圖表顯示選項：
+選擇**折線**圖顯示選項：
 
 ![折線圖](media/charts/charts-and-diagrams-multiSeries.png)
 
@@ -69,7 +69,7 @@ Perf
 ![參考線](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多維度
-`by` 之 `summarize` 子句中的多個運算式會在結果中建立多列，每個值組合都各有一列。
+`summarize` 之 `by` 子句中的多個運算式會在結果中建立多列，每個值組合都各有一列。
 
 ```Kusto
 SecurityEvent
@@ -89,7 +89,7 @@ SecurityEvent
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
+- [日期與時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)

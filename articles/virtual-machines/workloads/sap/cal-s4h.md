@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616214"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
@@ -35,7 +35,7 @@ ms.locfileid: "77616214"
 
 以下螢幕擷取畫面的順序會示範如何使用 SAP CAL 在 Azure 上部署 S/4HANA。 對於 BW/4 HANA 等其他解決方案，此程序的運作方式相同。
 
-[解決方案] 頁面會顯示 Azure 上可用的某些 SAP CAL HANA 型解決方案。 **SAP S/4HANA 1610 FPS01, Fully-Activated Appliance** 位於中間的資料列：
+[解決方案]**** 頁面會顯示 Azure 上可用的某些 SAP CAL HANA 型解決方案。 **SAP S/4HANA 1610 FPS01, Fully-Activated Appliance** 位於中間的資料列：
 
 ![SAP CAL 解決方案](./media/cal-s4h/s4h-pic-1c.png)
 
@@ -49,9 +49,9 @@ ms.locfileid: "77616214"
     c. 賦予 SAP CAL 部署到 Azure 訂用帳戶的權限。
 
    > [!NOTE]
-   >  接下來的步驟會示範如何針對 Resource Manager 部署建立 SAP CAL 帳戶。 如果您已有連結至傳統部署模型的 SAP CAL 帳戶，則您「必須」遵循下列步驟來建立新的 SAP CAL 帳戶。 新的 SAP CAL 帳戶必須以 Resource Manager 模式部署。
+   >  接下來的步驟會示範如何針對 Resource Manager 部署建立 SAP CAL 帳戶。 如果您已有連結至傳統部署模型的 SAP CAL 帳戶，則您「必須」** 遵循下列步驟來建立新的 SAP CAL 帳戶。 新的 SAP CAL 帳戶必須以 Resource Manager 模式部署。
 
-1. 建立新的 SAP CAL 帳戶。 [帳戶] 頁面會顯示三個適用於 Azure 的選項： 
+1. 建立新的 SAP CAL 帳戶。 [帳戶]**** 頁面會顯示三個適用於 Azure 的選項： 
 
     a. **Microsoft Azure (傳統)** 是傳統部署模型，目前不再建議使用。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77616214"
 
     c. **Windows Azure operated by 21Vianet** 是為中國提供的選項，此選項使用傳統部署模型。
 
-    若要在 Resource Manager 模型中部署，請選取 [Microsoft Azure]。
+    若要在 Resource Manager 模型中部署，請選取 [Microsoft Azure]****。
 
     ![SAP CAL 帳戶詳細資料](./media/cal-s4h/s4h-pic-2a.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "77616214"
 
    ![SAP CAL 帳戶](./media/cal-s4h/s4h-pic3c.png)
 
-1. 若要授權 SAP CAL 部署到您所定義的 Azure 訂用帳戶，請按一下 [授權]。 瀏覽器索引標籤中會出現下列頁面：
+1. 若要授權 SAP CAL 部署到您所定義的 Azure 訂用帳戶，請按一下 [授權]****。 瀏覽器索引標籤中會出現下列頁面：
 
    ![Internet Explorer 雲端服務登入](./media/cal-s4h/s4h-pic4c.png)
 
@@ -75,15 +75,15 @@ ms.locfileid: "77616214"
 
    ![Internet Explorer 雲端服務確認](./media/cal-s4h/s4h-pic5a.png)
 
-1. 按一下 [接受]。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
+1. 按一下"**接受**"。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
 
-1. 若要將新建立的 SAP CAL 帳戶指派給您的使用者，請在右邊的文字方塊中輸入您的 [使用者識別碼]，然後按一下 [新增]。
+1. 若要將新建立的 SAP CAL 帳戶指派給您的使用者，請在右邊的文字方塊中輸入您的 [使用者識別碼]****，然後按一下 [新增]****。
 
    ![帳戶與使用者的關聯](./media/cal-s4h/s4h-pic8a.png)
 
-1. 若要讓您的帳戶與您用來登入 SAP CAL 的使用者產生關聯，請按一下 [檢閱]。 
+1. 若要讓您的帳戶與您用來登入 SAP CAL 的使用者產生關聯，請按一下 [檢閱]****。 
  
-1. 若要在使用者與新建立的 SAP CAL 帳戶之間建立關聯，請按一下 [建立]。
+1. 若要在使用者與新建立的 SAP CAL 帳戶之間建立關聯，請按一下 [建立]****。
 
    ![使用者與 SAP CAL 帳戶的關聯](./media/cal-s4h/s4h-pic9b.png)
 
@@ -102,34 +102,34 @@ ms.locfileid: "77616214"
 
 ### <a name="deploy-a-solution"></a>部署解決方案
 
-讓我們從 SAP CAL 的 [解決方案] 頁面部署解決方案。 SAP CAL 有兩個部署順序：
+讓我們從 SAP CAL 的 [解決方案]**** 頁面部署解決方案。 SAP CAL 有兩個部署順序：
 
 - 基本順序會使用一個頁面來定義要部署的系統
 - 進階順序則會有某些 VM 大小可供您選擇 
 
 在此我們會示範基本部署路徑。
 
-1. 在 [帳戶詳細資料] 頁面上，您需要：
+1. 在 [帳戶詳細資料]**** 頁面上，您需要：
 
-    a. 選取 SAP CAL 帳戶 (使用與以 Resource Manager 部署模型來進行部署相關聯的帳戶)。
+    a. 選取 SAP CAL 帳戶  (使用與以 Resource Manager 部署模型來進行部署相關聯的帳戶)。
 
     b. 輸入執行個體**名稱**。
 
-    c. 選取 Azure **區域**。 SAP CAL 會建議一個區域。 如果您需要其他 Azure 區域，而且您沒有 SAP CAL 訂用帳戶，您必須向 SAP 訂購 CAL 訂用帳戶。
+    c. 選擇 Azure**區域**。 SAP CAL 會建議一個區域。 如果您需要其他 Azure 區域，而且您沒有 SAP CAL 訂用帳戶，您必須向 SAP 訂購 CAL 訂用帳戶。
 
     d. 為解決方案輸入主要**密碼**，此密碼要有 8 或 9 個字元。 此密碼會用於不同元件的系統管理員。
 
    ![SAP CAL 基本模式：建立執行個體](./media/cal-s4h/s4h-pic10a.png)
 
-1. 按一下 [建立]，並在出現的訊息方塊中，按一下 [確定]。
+1. 按一下 [建立]****，並在出現的訊息方塊中，按一下 [確定]****。
 
    ![SAP CAL 支援的 VM 大小](./media/cal-s4h/s4h-pic10b.png)
 
-1. 在 [私密金鑰] 對話方塊中，按一下 [儲存] 以將私密金鑰儲存在 SAP CAL 中。 若要對私密金鑰使用密碼保護，請按一下 [下載]。 
+1. 在 [私密金鑰]**** 對話方塊中，按一下 [儲存]**** 以將私密金鑰儲存在 SAP CAL 中。 若要對私密金鑰使用密碼保護，請按一下 [下載]****。 
 
    ![SAP CAL 私密金鑰](./media/cal-s4h/s4h-pic10c.png)
 
-1. 閱讀 SAP CAL 的**警告**訊息，然後按一下 [確定]。
+1. 閱讀 SAP CAL 的**警告**訊息，然後按一下 [確定]****。
 
    ![SAP CAL 警告](./media/cal-s4h/s4h-pic10d.png)
 
@@ -139,11 +139,11 @@ ms.locfileid: "77616214"
 
    ![部署在新入口網站中的 SAP CAL 物件](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. 在 SAP CAL 入口網站上，狀態會顯示為 [作用中]。 若要連線到此解決方案，請按一下 [連線]。 此解決方案中會部署連線到不同元件的不同選項。
+1. 在 SAP CAL 入口網站上，狀態會顯示為 [作用中]****。 若要連線到此解決方案，請按一下 [連線]****。 此解決方案中會部署連線到不同元件的不同選項。
 
    ![SAP CAL 執行個體](./media/cal-s4h/active_solution.png)
 
-1. 請先按一下 [開始使用指南]，之後您才能使用其中一個選項來連線至已部署的系統。 
+1. 請先按一下 [開始使用指南]****，之後您才能使用其中一個選項來連線至已部署的系統。 
 
    ![連線到執行個體](./media/cal-s4h/connect_to_solution.png)
 

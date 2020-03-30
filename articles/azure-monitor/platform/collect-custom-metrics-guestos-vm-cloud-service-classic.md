@@ -1,6 +1,6 @@
 ---
-title: 將傳統雲端服務計量傳送至 Azure 監視器計量資料庫
-description: 說明將 Azure 傳統雲端服務的來賓 OS 效能計量傳送至 Azure 監視器計量存放區的程式。
+title: 將經典雲服務指標發送到 Azure 監視器指標資料庫
+description: 介紹將 Azure 經典雲服務的來賓 OS 性能指標發送到 Azure 監視器指標存儲的過程。
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655784"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>將客體作業系統計量傳送至 Azure 監視器計量存放區的傳統雲端服務 
@@ -26,21 +26,21 @@ ms.locfileid: "77655784"
 
 本文中所述的程序僅適用於 Azure 雲端服務中的效能計數器。 不適合用於其他自訂計量。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
+- 您必須是 Azure 訂閱上的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
+- 您的訂閱必須註冊到[Microsoft.Insights.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
-- 您的雲端服務必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
+- 您的雲服務必須位於[支援自訂指標的區域](metrics-custom-overview.md#supported-regions)。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>佈建雲端服務與儲存體帳戶 
 
 1. 建立及部署傳統雲端服務。 您可以在[開始使用 Azure 雲端服務和 ASP.NET](../../cloud-services/cloud-services-dotnet-get-started.md) 找到範例傳統雲端服務應用程式和部署。 
 
-2. 您可以使用現有的儲存體帳戶或部署新的儲存體帳戶。 儲存體帳戶最好能與您建立的傳統雲端服務位於相同的區域中。 在 Azure 入口網站中，移至 [儲存體帳戶] 資源刀鋒視窗，然後選取 [金鑰]。 記下儲存體帳戶名稱和儲存體帳戶金鑰。 稍後的步驟將會需要這項資訊。
+2. 您可以使用現有的儲存體帳戶或部署新的儲存體帳戶。 儲存體帳戶最好能與您建立的傳統雲端服務位於相同的區域中。 在 Azure 入口網站中，移至 [儲存體帳戶]**** 資源刀鋒視窗，然後選取 [金鑰]****。 記下儲存體帳戶名稱和儲存體帳戶金鑰。 稍後的步驟將會需要這項資訊。
 
    ![儲存體帳戶金鑰](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "77655784"
 - 為此應用程式建立新用戶端密碼。  
 - 儲存金鑰與用戶端識別碼，以便在稍後的步驟中使用。  
 
-針對您希望發出計量的資源，將其「監視計量發行者」權限授與在上一個步驟中建立的應用程式。 如果您計劃使用該應用程式對許多資源發出自訂計量，您可以在資源群組或訂用帳戶層級上授與這些權限。  
+針對您希望發出計量的資源，將其「監視計量發行者」** 權限授與在上一個步驟中建立的應用程式。 如果您計劃使用該應用程式對許多資源發出自訂計量，您可以在資源群組或訂用帳戶層級上授與這些權限。  
 
 > [!NOTE]
 > 診斷擴充功能會使用服務主體，對 Azure 監視器驗證，並發出雲端服務的計量。
@@ -123,7 +123,7 @@ ms.locfileid: "77655784"
     </PerformanceCounters>
 ```
 
-最後，在私人設定中，新增 [Azure 監視器帳戶] 區段。 輸入先前建立的服務主體用戶端識別碼和密碼。 
+最後，在私人設定中，新增 [Azure 監視器帳戶]** 區段。 輸入先前建立的服務主體用戶端識別碼和密碼。 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -175,15 +175,15 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
    ![計量 Azure 入口網站](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. 在左側功能表上，選取 [監視]。
+2. 在左側功能表上，選擇 **"監視器"。**
 
-3. 在 [監視] 刀鋒視窗上，選取 [計量預覽] 索引標籤。
+3. 在 [監視]**** 刀鋒視窗上，選取 [計量預覽]**** 索引標籤。
 
 4. 在 [資源] 下拉式功能表中，選取您的傳統雲端服務。
 
-5. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**。 
+5. 在命名空間下拉式功能表中，選擇**azure.vm.windows.guest**. 
 
-6. 在 [計量] 下拉式功能表中，選取 [記憶體\認可的位元組 (使用中)]。 
+6. 在指標下拉式功能表中，選擇 **"正在使用的記憶體_已提交位元組**"。 
 
 您可使用維度篩選與分割功能，檢視特定角色或角色執行個體所使用的記憶體總數。 
 

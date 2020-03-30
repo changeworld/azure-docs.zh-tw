@@ -5,27 +5,27 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596397"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中手動建立和使用 Azure 檔案共用的磁碟區
 
-容器型應用程式常常需要存取和保存外部資料磁碟區中的資料。 如果多個 pod 需要平行存取相同的存放磁片區，您可以使用 Azure 檔案儲存體，以使用[伺服器訊息區（SMB）通訊協定][smb-overview]進行連接。 本文會示範如何手動建立 Azure 檔案共用，並將其連結到 AKS 中的 Pod。
+容器型應用程式常常需要存取和保存外部資料磁碟區中的資料。 如果有多個 Pod 需要並行存取相同的儲存體磁碟區，您可以透過[伺服器訊息區 (SMB) 通訊協定][smb-overview]來使用 Azure 檔案服務進行連線。 本文會示範如何手動建立 Azure 檔案共用，並將其連結到 AKS 中的 Pod。
 
-如需有關 Kubernetes 磁片區的詳細資訊，請參閱[AKS 中應用程式的儲存體選項][concepts-storage]。
+有關 Kubernets 卷的詳細資訊，請參閱[AKS 中應用程式的存儲選項][concepts-storage]。
 
 ## <a name="before-you-begin"></a>開始之前
 
-此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您還需要 Azure CLI 版本 2.0.59 或更高版本安裝和配置。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 
-在使用 Azure 檔案服務作為 Kubernetes 磁碟區之前，您必須建立 Azure 儲存體帳戶與檔案共用。 下列命令會建立名為*myAKSShare*的資源群組、儲存體帳戶，以及名為*aksshare*的檔案共用：
+在使用 Azure 檔案服務作為 Kubernetes 磁碟區之前，您必須建立 Azure 儲存體帳戶與檔案共用。 以下命令創建名為*myAKSShare*的資源組、存儲帳戶和名為*aksshare*的檔共用：
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -58,9 +58,9 @@ echo Storage account key: $STORAGE_KEY
 
 ## <a name="create-a-kubernetes-secret"></a>建立 Kubernetes 祕密
 
-Kubernetes 必須要有認證才能存取前面步驟中建立的檔案共用。 這些認證會儲存在[Kubernetes 秘密][kubernetes-secret]中，這會在您建立 Kubernetes pod 時參考。
+Kubernetes 必須要有認證才能存取前面步驟中建立的檔案共用。 這些認證會儲存在 [Kubernetes 祕密][kubernetes-secret]，並在建立 Kubernetes Pod 時加以參考。
 
-使用 `kubectl create secret` 命令建立秘密。 下列範例會建立名為 azure-secret 的共用，並填入前面步驟中的 azurestorageaccountname 和 azurestorageaccountkey。 若要使用現有的 Azure 儲存體帳戶，請提供帳戶名稱和金鑰。
+使用 `kubectl create secret` 命令建立秘密。 下列範例會建立名為 azure-secret** 的共用，並填入前面步驟中的 azurestorageaccountname** 和 azurestorageaccountkey**。 若要使用現有的 Azure 儲存體帳戶，請提供帳戶名稱和金鑰。
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
@@ -68,7 +68,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>將檔案共用掛接為磁碟區
 
-若要將 Azure 檔案儲存體共用掛接至您的 pod，請在容器規格中設定磁片區。請使用下列內容建立名為 `azure-files-pod.yaml` 的新檔案。 如果您變更了檔案共用或祕密的名稱，請更新 shareName 和 secretName。 若有需要，請更新 `mountPath`，這是 Pod 中檔案共用掛接所在的路徑。 若是 Windows Server 容器（目前在 AKS 中處於預覽狀態），請使用 Windows 路徑慣例指定*mountPath* ，例如「 *d：* 」。
+要將 Azure 檔共用裝入窗格，請配置容器規範中的卷。創建一個命名`azure-files-pod.yaml`包含以下內容的新檔。 如果您變更了檔案共用或祕密的名稱，請更新 shareName** 和 secretName**。 若有需要，請更新 `mountPath`，這是 Pod 中檔案共用掛接所在的路徑。 對於 Windows 伺服器容器（當前在 AKS 中預覽），使用 Windows 路徑約定（如 *"D："）* 指定*裝載路徑*。
 
 ```yaml
 apiVersion: v1
@@ -103,7 +103,7 @@ spec:
 kubectl apply -f azure-files-pod.yaml
 ```
 
-您現在已有一個 Azure 檔案共用掛接在 /mnt/azure 的執行中 Pod。 您可以使用 `kubectl describe pod mypod` 來驗證是否已成功掛接共用。 下列扼要範例輸出顯示容器中掛接的磁碟區：
+您現在已有一個 Azure 檔案共用掛接在 /mnt/azure** 的執行中 Pod。 您可以使用 `kubectl describe pod mypod` 來驗證是否已成功掛接共用。 下列扼要範例輸出顯示容器中掛接的磁碟區：
 
 ```
 Containers:
@@ -132,7 +132,7 @@ Volumes:
 
 ## <a name="mount-options"></a>掛接選項
 
-*適用于*Kubernetes 版本1.9.1 和以上的*dirMode*的預設值為*0755* 。 如果使用 Kuberetes version 1.8.5 版或更高版本的叢集，並以靜態方式建立持續性磁片區物件，則必須在*PersistentVolume*物件上指定掛接選項。 下列範例會設定 0777：
+對於 Kubernetes 版本 1.9.1 及以上，*檔案模式*和*dirMode*的預設值為*0755。* 如果使用具有 Kuberetes 版本 1.8.5 或更大且靜態創建持久卷物件的群集，則需要在*PersistentVolume*物件上指定裝載選項。 下列範例會設定 0777**：
 
 ```yaml
 apiVersion: v1
@@ -158,9 +158,9 @@ spec:
   - nobrl
 ```
 
-如果您是使用 1.8.0-1.8.4 版的叢集，可將 runAsUser 值設定為 0 來指定資訊安全內容。 如需 Pod 安全性內容的詳細資訊，請參閱[設定安全性內容][kubernetes-security-context]。
+如果您是使用 1.8.0-1.8.4 版的叢集，可將 runAsUser** 值設定為 0** 來指定資訊安全內容。 如需關於 Pod 資訊安全內容的詳細資訊，請參閱[設定資訊安全內容][kubernetes-security-context]。
 
-若要更新您的掛接選項，請使用*PersistentVolume*建立*azurefile-掛接-選項-yaml*檔案。 例如：
+要更新裝載選項，請使用*持久卷*創建*Azure 檔安裝選項-pv.yaml*檔。 例如：
 
 ```yaml
 apiVersion: v1
@@ -186,7 +186,7 @@ spec:
   - nobrl
 ```
 
-建立*azurefile yaml*檔案，其中包含使用*PersistentVolume*的*PersistentVolumeClaim* 。 例如：
+使用使用*持久卷的持久卷聲明*創建*Azure 檔安裝選項-pvc.yaml*檔*PersistentVolume*。 例如：
 
 ```yaml
 apiVersion: v1
@@ -202,14 +202,14 @@ spec:
       storage: 5Gi
 ```
 
-使用 `kubectl` 命令來建立*PersistentVolume*和*PersistentVolumeClaim*。
+使用命令`kubectl`創建*持久卷*和*持久卷聲明*。
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-確認您的*PersistentVolumeClaim*已建立並系結至*PersistentVolume*。
+驗證您的*持久卷索賠*已創建並綁定到*持久卷*。
 
 ```console
 $ kubectl get pvc azurefile
@@ -218,7 +218,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-更新您的容器規格以參考您的*PersistentVolumeClaim* ，並更新您的 pod。 例如：
+更新容器規格以引用*持久卷索賠*並更新您的窗格。 例如：
 
 ```yaml
 ...
@@ -230,9 +230,9 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 
 ## <a name="next-steps"></a>後續步驟
 
-如需相關的最佳作法，請參閱[AKS 中儲存和備份的最佳作法][operator-best-practices-storage]。
+有關相關的最佳實踐，請參閱[AKS 中存儲和備份的最佳做法][operator-best-practices-storage]。
 
-如需 AKS 叢集與 Azure 檔案儲存體互動的詳細資訊，請參閱[Azure 檔案儲存體的 Kubernetes 外掛程式][kubernetes-files]。
+如需有關 AKS 叢集與 Azure 檔案服務互動的詳細資訊，請參閱[適用於 Azure 檔案服務的 Kubernetes 外掛程式][kubernetes-files]。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

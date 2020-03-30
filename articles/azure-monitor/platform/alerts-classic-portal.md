@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668310"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
@@ -20,27 +20,27 @@ ms.locfileid: "77668310"
 
 1. 在[入口網站](https://portal.azure.com/)中，找出您想要監視的資源，然後選取它。
 
-2. 選取 [監視] 區段底下的 [警示 (傳統)]。 不同資源的文字和圖示會有些許不同。 如果在此處找不到 [警示 (傳統)]，可能會位在 [警示] 或 [警示規則] 中。
+2. 選取 [監視]**** 區段底下的 [警示 (傳統)]****。 不同資源的文字和圖示會有些許不同。 如果在此處找不到 [警示 (傳統)]****，可能會位在 [警示]**** 或 [警示規則]**** 中。
 
     ![監視](media/alerts-classic-portal/AlertRulesButton.png)
 
-3. 選取 [新增計量警示 (傳統)] 命令，然後填寫各欄位。
+3. 選取 [新增計量警示 (傳統)]**** 命令，然後填寫各欄位。
 
     ![新增警示](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. **命名**警示規則。 然後選擇也會顯示在電子郵件通知中的 [描述]。
+4. **命名**警示規則。 然後選擇也會顯示在電子郵件通知中的 [描述]****。
 
-5. 選取您想要監視的**計量**。 然後選擇計量的**條件**和**閾值**。 同時選擇警示觸發程序之前，計量規則必須滿足的 [期間]。 例如，如果您使用「超過最後 5 分鐘」期間，且您的警示會尋找高於 80% 的 CPU，當 CPU 已持續 5 分鐘高於 80%，警示就會觸發。 發生第一次觸發之後，它會在 CPU 持續 5 分鐘低於 80 % 時再次觸發。 系統每分鐘會測量一次 CPU 計量。
+5. 選取您想要監視的**計量**。 然後選擇計量的**條件**和**閾值**。 同時選擇警示觸發程序之前，計量規則必須滿足的 [期間]****。 例如，如果您使用「超過最後 5 分鐘」期間，且您的警示會尋找高於 80% 的 CPU，當 CPU 已持續 5 分鐘高於 80%，警示就會觸發。 發生第一次觸發之後，它會在 CPU 持續 5 分鐘低於 80 % 時再次觸發。 系統每分鐘會測量一次 CPU 計量。
 
-6. 如果您想要讓系統管理員和共同管理員在警示引發時收到電子郵件通知，請選取 [電子郵件的擁有者...]。
+6. 如果您想要讓系統管理員和共同管理員在警示引發時收到電子郵件通知，請選取 [電子郵件的擁有者...] ****。
 
-7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件] 欄位中新增。 以分號分隔多個電子郵件，格式如下：*電子郵件\@contoso .com; email2\@contoso.com*
+7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以以下格式分隔多封分號電子郵件：*\@電子郵件\@contoso.com;email2 contoso.com*
 
-8. 如果您想在警示引發時呼叫 Webhook，在 [Webhook] 欄位中放入有效的 URI。
+8. 如果您想在警示引發時呼叫 Webhook，在 [Webhook] **** 欄位中放入有效的 URI。
 
 9. 如果您使用 Azure 自動化，可以選取警示引發時執行的 Runbook。
 
-10. 選取 [確定] 可建立警示。
+10. 選取 [確定]**** 可建立警示。
 
 在幾分鐘之內，警示會開始作用，且先前所述觸發。
 
@@ -88,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 此節示範如何使用 PowerShell 命令建立、檢視及管理傳統計量警示。文章中的範例說明針對傳統計量警示使用 Azure 監視器 Cmdlet 的方式。
 
-1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
+1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 有關詳細資訊，請參閱[如何安裝和配置 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
 
 2. 首先，登入您的 Azure 訂用帳戶。
 
@@ -126,7 +126,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. 無法再透過 PowerShell 建立傳統的警示規則。 若要建立警示規則，您必須使用新的[' AzMetricAlertRule '](/powershell/module/az.monitor/add-azmetricalertrule)命令。
+8. 無法再透過 PowerShell 建立傳統的警示規則。 要創建警報規則，您需要使用新的["添加-AzMetricAlertRule"命令](/powershell/module/az.monitor/add-azmetricalertrule)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 和概觀儀表板的功能監控
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669891"
 ---
 # <a name="application-insights-overview-dashboard"></a>Azure Application Insights 概觀儀表板
@@ -26,7 +26,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ![時間範圍](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-整體效能已大幅提升。 只要按一下，就能存取常用功能，例如**搜尋**和**分析**。 預設的每個動態更新 KPI 圖格均可讓您了解對應的 Application Insights 功能。 若要深入了解失敗的要求，請選取 [調查] 標題下的 [失敗]：
+整體效能已大幅提升。 只要按一下，就能存取常用功能，例如**搜尋**和**分析**。 預設的每個動態更新 KPI 圖格均可讓您了解對應的 Application Insights 功能。 若要深入了解失敗的要求，請選取 [調查]**** 標題下的 [失敗]****：
 
 ![失敗](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -34,7 +34,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 應用程式儀表板會使用 Azure 中現有的儀表板技術，提供可完全自訂的單一窗格，讓您檢視應用程式的健康情況和效能。
 
-若要使用預設儀表板，請選取左上角的 [應用程式儀表板]。
+若要使用預設儀表板，請選取左上角的 [應用程式儀表板]__。
 
 ![儀表板檢視](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
@@ -53,7 +53,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您選取 [設定**磚設定**]，並將自訂的時間範圍設為超過31天，則您的儀表板不會顯示超過31天的資料，即使預設資料保留期為90天。 這種行為目前沒有任何因應措施。
+如果選擇 **"配置磁貼設置**"並設置超過 31 天的自訂時間範圍，則儀表板將不會顯示超過 31 天的資料，即使預設資料保留 90 天也是如此。 此行為當前沒有解決方法。
 
 ## <a name="next-steps"></a>後續步驟
 

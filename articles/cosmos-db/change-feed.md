@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Cosmos DB 中的變更摘要支援
-description: 使用 Azure Cosmos DB 變更摘要支援來追蹤檔中的變更、以事件為基礎的處理（例如觸發程式），以及讓快取和分析系統保持在最新狀態
+description: 使用 Azure Cosmos DB 更改源支援來跟蹤文檔中的更改、基於事件的處理（如觸發器）以及使緩存和分析系統保持最新
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368123"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的變更摘要 - 概觀
@@ -33,7 +33,7 @@ Azure Cosmos DB 中的變更摘要可讓您針對每一個模式建置有效率�
 
 此功能目前受到下列 Cosmos DB API 和用戶端 SDK 支援。
 
-| **用戶端驅動程式** | **Azure CLI** | **SQL API** | **Azure Cosmos DB 的 Cassandra API** | **適用於 MongoDB 的 Azure Cosmos DB API** | **Gremlin API**|**資料表 API** |
+| **用戶端驅動程式** | **Azure CLI** | **SQL API** | **Azure 宇宙 DB 的卡珊多拉 API** | **Azure 宇宙 DB 的蒙戈DB API** | **格雷姆林 API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | 是 | 是 | 是 | 是 | 否 |
 |Java|NA|是|是|是|是|否|
@@ -42,15 +42,15 @@ Azure Cosmos DB 中的變更摘要可讓您針對每一個模式建置有效率�
 
 ## <a name="change-feed-and-different-operations"></a>變更摘要和不同的作業
 
-現在，您會看到變更摘要中的所有作業。 可讓您控制變更摘要的功能還無法使用，只能執行特定作業，例如更新，無法執行像插入等作業。 在變更摘要中處理專案時，您可以在專案上新增「軟標記」以進行更新和篩選。 目前變更摘要不會記錄刪除。 您可以像先前的範例那樣，在正在刪除的項目上新增軟標記，可以在項目中新增稱為 "deleted" 的屬性，並將它設定為 "true"，然後在項目上設定 TTL，讓它可以被自動刪除。 您可以讀取歷程記錄專案的變更摘要（對應至專案的最新變更，不包括中繼變更），例如五年前新增的專案。 如果項目未刪除，您可以讀取至原始容器的變更摘要。
+現在，您會看到變更摘要中的所有作業。 可讓您控制變更摘要的功能還無法使用，只能執行特定作業，例如更新，無法執行像插入等作業。 您可以在專案上添加"軟標記"以進行更新，並在處理更改源中的項時基於該標記進行篩選。 當前更改源不會記錄刪除。 您可以像先前的範例那樣，在正在刪除的項目上新增軟標記，可以在項目中新增稱為 "deleted" 的屬性，並將它設定為 "true"，然後在項目上設定 TTL，讓它可以被自動刪除。 您可以讀取歷史專案的更改源（與專案對應的最新更改，不包括中間更改），例如，五年前添加的專案。 如果項目未刪除，您可以讀取至原始容器的變更摘要。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>變更摘要中項目的排序順序
 
-變更摘要項目會按修改時間順序排列。 每個邏輯分割區索引鍵可保證此排序次序。
+變更摘要項目會按修改時間順序排列。 此排序次序保證每個邏輯分區鍵。
 
-### <a name="consistency-level"></a>一致性層級
+### <a name="consistency-level"></a>一致性級別
 
-使用最終一致性層級中的變更摘要時，可能會有重複的事件（在後續的變更摘要讀取作業之間）（其中一個讀取作業的最後一個事件會顯示為下一個）。
+在"最終一致性"級別使用更改源時，後續更改源讀取操作之間可能存在重複事件（一個讀取操作的最後一個事件顯示為下一個讀取操作中的第一個事件）。
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>多重區域 Azure Cosmos 帳戶中的變更摘要
 
@@ -62,7 +62,7 @@ Azure Cosmos DB 中的變更摘要可讓您針對每一個模式建置有效率�
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>變更摘要和 _etag、_lsn 或 _ts
 
-_etag 格式是作為內部之用，因為該格式可以隨時變更，請別依賴它。 _ts 是修改或建立時間戳記。 您可以使用 _ts，依時間順序進行比較。 _lsn 是僅針對變更摘要新增的批次識別碼;它代表交易識別碼。 許多項目可能有相同的 _lsn。 FeedResponse 上的 ETag 與您在項目上看到的 _etag 不同。 _etag 是內部識別碼，而且用於並行控制，它會指示項目版本，而使用 ETag 來排序摘要。
+_etag 格式是作為內部之用，因為該格式可以隨時變更，請別依賴它。 _ts 是修改或建立時間戳記。 您可以使用 _ts，依時間順序進行比較。 _lsn是僅為更改源添加的批次處理 ID;它表示事務 ID。 許多項目可能有相同的 _lsn。 FeedResponse 上的 ETag 與您在項目上看到的 _etag 不同。 _etag 是內部識別碼，而且用於並行控制，它會指示項目版本，而使用 ETag 來排序摘要。
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>變更摘要使用個案和案例
 
@@ -98,7 +98,7 @@ _etag 格式是作為內部之用，因為該格式可以隨時變更，請別�
 您可以搭配變更摘要使用下列選項：
 
 * [搭配使用變更摘要與 Azure Functions](change-feed-functions.md)
-* [搭配變更摘要處理器使用變更摘要](change-feed-processor.md) 
+* [將更改饋送與更改饋送處理器一起使用](change-feed-processor.md) 
 
 容器內每個邏輯分割區索引鍵都可使用變更摘要，因此可以配送給一或多個取用者以進行平行處理，如下圖所示。
 
@@ -112,7 +112,7 @@ _etag 格式是作為內部之用，因為該格式可以隨時變更，請別�
 
 * 變更摘要包含對容器內項目進行的插入與更新作業。 您可以擷取刪除項目，方法是在您的項目 (例如文件) 內設定「虛刪除」旗標來取代刪除動作。 或者，您可以使用 [TTL 功能](time-to-live.md)為項目設定有限的逾期期限。 例如 24 小時，並使用該屬性的值擷取刪除項目。 使用此解決方案，您必須在比 TTL 逾期期限更短的時間間隔內處理變更。 
 
-* 對項目所做的每項變更皆會在變更摘要中出現一次，且用戶端必須管理檢查點邏輯。 如果您想要避免管理檢查點的複雜性，變更摘要處理器會提供自動檢查點和「至少一次」的語義。 請參閱搭配[變更摘要處理器使用變更](change-feed-processor.md)摘要。
+* 對項目所做的每項變更皆會在變更摘要中出現一次，且用戶端必須管理檢查點邏輯。 如果要避免管理檢查點的複雜性，更改饋送處理器提供自動檢查點和"至少一次"語義。 請參閱[將更改進給與更改饋送處理器一起使用](change-feed-processor.md)。
 
 * 變更記錄檔中只會包含指定項目的最新變更。 中繼變更可能無法使用。
 
@@ -122,13 +122,13 @@ _etag 格式是作為內部之用，因為該格式可以隨時變更，請別�
 
 * Azure Cosmos 容器所有邏輯分割區索引鍵的變更都是以平行方式提供使用。 這項功能可讓大型容器的變更由多個取用者平行處理。
 
-* 應用程式可以在相同的容器上同時要求多個變更摘要。 ChangeFeedOptions.StartTime 可用來提供初始的開始點。 例如，尋找與指定時鐘時間相對應的接續權杖。 ContinuationToken 如經指定，會優先於 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精確度為 5 秒內。 
+* 應用程式可以同時請求同一容器上的多個更改源。 ChangeFeedOptions.StartTime 可用來提供初始的開始點。 例如，尋找與指定時鐘時間相對應的接續權杖。 ContinuationToken 如經指定，會優先於 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精確度為 5 秒內。 
 
-## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>變更 Cassandra 和 MongoDB Api 中的摘要
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>更改卡珊多拉和蒙戈DB的 API 中源
 
-變更摘要功能會呈現為 MongoDB API 中的變更資料流程，並在 Cassandra API 中使用述詞進行查詢。 若要深入瞭解 MongoDB API 的執行詳細資料，請參閱[適用于 mongodb 的 AZURE COSMOS DB API 中的變更串流](mongodb-change-streams.md)。
+更改源功能在 MongoDB API 中顯示為更改流，在 Cassandra API 中使用謂詞顯示。 要瞭解有關 MongoDB API 的實現詳細資訊的詳細資訊，請參閱[MongoDB 的 Azure Cosmos DB API 中的更改流](mongodb-change-streams.md)。
 
-原生 Apache Cassandra 提供變更資料捕獲（CDC），這是一種機制，用來標示特定資料表的封存，並在達到可設定的 CDC 記錄大小磁片時拒絕這些資料表的寫入。 Azure Cosmos DB API for Cassandra 中的變更摘要功能可增強透過 CQL 查詢具有述詞之變更的能力。 若要深入瞭解執行詳細資料，請參閱[Cassandra 的 AZURE COSMOS DB API 中的變更](cassandra-change-feed.md)摘要。
+本機 Apache Cassandra 提供更改資料捕獲 （CDC），這是一種機制，用於標記存檔的特定表，以及在達到 CDC 日誌的可配置磁片大小後拒絕對這些表的寫入。 Cassandra 的 Azure Cosmos DB API 中的更改源功能增強了通過 CQL 使用謂詞查詢更改的能力。 要瞭解有關實現詳細資訊的詳細資訊，請參閱[Cassandra 的 Azure Cosmos DB API 中的更改源](cassandra-change-feed.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

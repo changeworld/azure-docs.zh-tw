@@ -1,5 +1,5 @@
 ---
-title: 在自訂原則中新增宣告並自訂使用者輸入
+title: 在自訂策略中添加聲明並自訂使用者輸入
 titleSuffix: Azure AD B2C
 description: 了解如何自訂使用者輸入並向 Azure Active Directory B2C 中的註冊或登錄旅程中新增宣告。
 services: active-directory-b2c
@@ -8,48 +8,51 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
-ms.translationtype: HT
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473671"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在本文中，您會在 Azure Active Directory B2C （Azure AD B2C）中的註冊旅程期間收集新的屬性。 您將取得使用者的城市、將其設定為下拉式記錄，以及定義是否必須提供。
+在本文中，您可以在 Azure 活動目錄 B2C （Azure AD B2C） 中的註冊過程中收集新屬性。 您將獲取使用者的城市，將其配置為下拉清單，並定義是否需要提供它。
 
-您可以使用註冊或登入使用者旅程圖，收集使用者的初始資料。 其他宣告則可在稍後透過使用設定檔編輯使用者旅程圖來收集。 每當 Azure AD B2C 以互動方式直接從使用者收集資訊時，Identity Experience Framework 就會使用其[自我判斷技術設定檔](self-asserted-technical-profile.md)。 在此範例中，您會：
+> [!NOTE]
+> 此示例使用內置聲明"城市"。 相反，您可以選擇受支援的[Azure AD B2C 內置屬性](user-profile-attributes.md)之一或自訂屬性。 要使用自訂屬性，請[在策略中啟用自訂屬性](custom-policy-custom-attributes.md)。 要使用其他內置屬性或自訂屬性，請將"城市"替換為您選擇的屬性，例如內置屬性*作業Title*或自訂屬性（如*extension_loyaltyId*）。  
 
-1. 定義「城市」宣告。
-1. 詢問使用者的城市。
-1. 將城市保存在 Azure AD B2C 目錄中的使用者設定檔。
-1. 從每次登入時的 Azure AD B2C 目錄中讀取 city 宣告。
-1. 在登入或註冊之後，將 city 傳回給您的信賴憑證者應用程式。  
+您可以使用註冊或登錄使用者旅程從使用者那裡收集初始資料。 其他宣告則可在稍後透過使用設定檔編輯使用者旅程圖來收集。 每當 Azure AD B2C 以對話模式直接從使用者那裡收集資訊時，身份體驗框架就使用其[自斷言的技術設定檔](self-asserted-technical-profile.md)。 在此示例中，您可以：
 
-## <a name="prerequisites"></a>必要條件
+1. 定義"城市"聲明。 
+1. 向使用者詢問他們的城市。
+1. 將城市保存到 Azure AD B2C 目錄中的使用者設定檔。
+1. 從每個登錄的 Azure AD B2C 目錄中讀取城市聲明。
+1. 登錄或註冊後，將城市返回到您的依賴方應用程式。  
 
-完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您應該擁有可運作的自訂原則，以便使用社交和本機帳戶註冊和登入。
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="define-a-claim"></a>定義宣告
+完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您應該有一個工作自訂策略，用於使用社交帳戶和本地帳戶進行註冊和登錄。
 
-宣告會在 Azure AD B2C 原則執行期間，提供資料的暫時儲存。 [宣告架構](claimsschema.md)是您宣告宣告的位置。 下列元素用來定義宣告：
+## <a name="define-a-claim"></a>定義聲明
+
+聲明在 Azure AD B2C 策略執行期間提供臨時資料存儲。 [聲明架構](claimsschema.md)是聲明聲明的位置。 下列元素用來定義宣告：
 
 - **DisplayName** - 一個字串，會定義使用者端的「標籤」。
-- [DataType](claimsschema.md#datatype) -宣告的類型。
+- [資料類型](claimsschema.md#datatype)- 聲明的類型。
 - **UserHelpText** - 可協助使用者了解所需項目。
-- [UserInputType](claimsschema.md#userinputtype) -輸入控制項的類型，例如文字方塊、選項按鈕、下拉式清單或多個選取專案。
+- [使用者輸入類型](claimsschema.md#userinputtype)- 輸入控制項的類型，如文字方塊、無線電選擇、下拉清單或多個選擇。
 
-開啟原則的擴充檔案。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。
+打開策略的擴展檔。 例如， <em> `SocialAndLocalAccounts/` </em>.
 
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
-1. 找出[ClaimsSchema](claimsschema.md)元素。 如果此元素不存在，請加以新增。
-1. 將 city 宣告新增至**ClaimsSchema**元素。  
+1. 找到[聲明架構](claimsschema.md)元素。 如果此元素不存在，請加以新增。
+1. 將城市聲明添加到**聲明架構**元素。  
 
 ```xml
 <ClaimType Id="city">
@@ -64,15 +67,15 @@ ms.locfileid: "79079884"
 </ClaimType>
 ```
 
-## <a name="add-a-claim-to-the-user-interface"></a>將宣告新增至使用者介面
+## <a name="add-a-claim-to-the-user-interface"></a>向使用者介面添加聲明
 
-下列技術設定檔是[自我](self-asserted-technical-profile.md)判斷的，會在使用者預期提供輸入時叫用：
+以下技術設定檔是自[斷言的](self-asserted-technical-profile.md)，在使用者應提供輸入時調用：
 
-- **LocalAccountSignUpWithLogonEmail** -本機帳戶註冊流程。
-- **SelfAsserted-** 聯盟帳戶第一次使用者登入。
-- **SelfAsserted-selfasserted-profileupdate** -編輯設定檔流程。
+- **本地帳戶簽名與登錄電子郵件**- 本地帳戶註冊流。
+- **自我斷言 - 社交**- 聯合帳戶首次使用者登錄。
+- **自我斷言-設定檔更新**- 編輯設定檔流。
 
-若要在註冊期間收集 city 宣告，必須將其新增為 `LocalAccountSignUpWithLogonEmail` 技術設定檔的輸出宣告。 覆寫擴充檔中的此技術設定檔。 指定輸出宣告的完整清單，以控制宣告呈現在螢幕上的順序。 尋找 **ClaimsProviders** 元素。 新增新的 ClaimsProviders，如下所示：
+要在註冊期間收集城市聲明，必須將其添加為技術設定檔中的`LocalAccountSignUpWithLogonEmail`輸出聲明。 覆蓋擴展檔中的此技術設定檔。 指定整個輸出聲明清單，以控制聲明在螢幕上顯示的順序。 尋找 **ClaimsProviders** 元素。 添加新的聲明提供程式，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -95,7 +98,7 @@ ms.locfileid: "79079884"
 <ClaimsProvider>
 ```
 
-若要在使用同盟帳戶初始登入後收集 city 宣告，必須將其新增為 `SelfAsserted-Social` 技術設定檔的輸出宣告。 若要讓本機和同盟帳戶使用者稍後能夠編輯其設定檔資料，請將輸出宣告新增至 `SelfAsserted-ProfileUpdate` 技術設定檔。 覆寫延伸模組檔案中的這些技術設定檔。 指定輸出宣告的完整清單，以控制宣告呈現在螢幕上的順序。 尋找 **ClaimsProviders** 元素。 新增新的 ClaimsProviders，如下所示：
+要在使用聯合帳戶進行初始登錄後收集城市聲明，必須將其添加為技術設定檔中的`SelfAsserted-Social`輸出聲明。 對於本地帳戶和聯合帳戶使用者以後能夠編輯其設定檔資料，請將輸出聲明添加到`SelfAsserted-ProfileUpdate`技術設定檔。 覆蓋擴展檔中的這些技術設定檔。 指定輸出聲明的整個清單，以控制聲明在螢幕上顯示的順序。 尋找 **ClaimsProviders** 元素。 添加新的聲明提供程式，如下所示：
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -122,12 +125,12 @@ ms.locfileid: "79079884"
 </ClaimsProvider>
 ```
 
-## <a name="read-and-write-a-claim"></a>讀取和寫入宣告
+## <a name="read-and-write-a-claim"></a>閱讀和寫入索賠
 
-下列技術設定檔是[Active Directory 的技術設定檔](active-directory-technical-profile.md)，可將資料讀取和寫入至 Azure Active Directory。  
-使用 `PersistedClaims` 將資料寫入使用者設定檔，並 `OutputClaims` 從個別 Active Directory 技術設定檔中的使用者設定檔讀取資料。
+以下技術設定檔是[活動目錄技術設定檔](active-directory-technical-profile.md)，用於讀取資料並將其寫入 Azure 活動目錄。  
+用於`PersistedClaims`將資料寫入使用者設定檔，並從`OutputClaims`相應的 Active Directory 技術設定檔中的使用者設定檔中讀取資料。
 
-覆寫延伸模組檔案中的這些技術設定檔。 尋找 **ClaimsProviders** 元素。  新增新的 ClaimsProviders，如下所示：
+覆蓋擴展檔中的這些技術設定檔。 尋找 **ClaimsProviders** 元素。  添加新的聲明提供程式，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -167,9 +170,9 @@ ms.locfileid: "79079884"
 </ClaimsProvider>
 ```
 
-## <a name="include-a-claim-in-the-token"></a>在權杖中包含宣告 
+## <a name="include-a-claim-in-the-token"></a>在權杖中包含聲明 
 
-若要將 city 宣告傳回給信賴憑證者應用程式，請將輸出宣告新增至<em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> 檔案。 在使用者旅程成功之後，輸出宣告將會新增至權杖，並將傳送至應用程式。 修改 [信賴憑證者] 區段內的 [技術設定檔] 元素，將城市新增為輸出宣告。
+要將城市聲明返回到依賴方應用程式，請向<em>`SocialAndLocalAccounts/`</em>檔添加輸出聲明。 輸出聲明將在使用者成功訪問後添加到權杖中，並將發送到應用程式。 修改依賴方部分中的技術設定檔元素，將城市添加為輸出聲明。
  
 ```xml
 <RelyingParty>
@@ -194,15 +197,15 @@ ms.locfileid: "79079884"
 
 ## <a name="test-the-custom-policy"></a>測試自訂原則
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄，以確定您使用的是包含 Azure AD 租使用者的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
-4. 選取 [識別體驗架構]。
-5. 選取 [上傳自訂原則]，然後上傳您所變更的兩個原則檔案。
-2. 選取您上傳的註冊或登入原則，按一下 [立即執行] 按鈕。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+2. 通過在頂部功能表中選擇**目錄 + 訂閱**篩選器並選擇包含 Azure AD 租戶的目錄，請確保使用的目錄包含 Azure AD 租戶。
+3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [應用程式註冊]****。
+4. 選取 [識別體驗架構]****。
+5. 選取 [上傳自訂原則]****，然後上傳您所變更的兩個原則檔案。
+2. 選取您上傳的註冊或登入原則，按一下 [立即執行]**** 按鈕。
 3. 您應該可以使用電子郵件地址註冊。
 
-註冊畫面看起來應該類似下列螢幕擷取畫面：
+註冊螢幕應類似于以下螢幕截圖：
 
 ![修改過的註冊選項螢幕擷取畫面](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
@@ -234,5 +237,5 @@ ms.locfileid: "79079884"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 IEF 參考中的[ClaimsSchema](claimsschema.md)元素。
-- 瞭解如何[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。
+- 瞭解有關 IEF 引用中[聲明架構](claimsschema.md)元素的更多內容。
+- 瞭解如何[在自訂設定檔編輯策略中使用自訂屬性](custom-policy-custom-attributes.md)。
