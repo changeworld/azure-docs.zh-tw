@@ -1,5 +1,5 @@
 ---
-title: 可使用 Azure 媒體服務 v3 的雲端和區域
+title: Azure 媒體服務 v3 可用的雲和區域
 description: 本文會討論可使用 Azure 媒體服務 v3 的 Azure 雲端和區域。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310557"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382965"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
 
@@ -24,7 +24,7 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 雲端中的功能可用性
 
-| 功能|全域 Azure 區域 | Azure 政府機構|Azure 德國|Azure China 21Vianet|
+| 功能|全域 Azure 區域 | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 無法使用 | 無法使用 | 無法使用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 無法使用 | 無法使用 | 無法使用 |
@@ -35,13 +35,13 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 
 ## <a name="regionsgeographieslocations"></a>區域/地理位置/位置
 
-[部署 Azure 媒體服務服務的區域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[部署 Azure 媒體服務的區域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>區域碼名稱 
+### <a name="region-code-name"></a>區域碼名稱
 
 如果需要提供**位置**參數，則需要提供區域代碼名稱作為**位置**值。 若要取得您帳戶所在且應該路由傳送呼叫之區域的代碼名稱，您可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中執行下面這一行
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -66,21 +66,21 @@ az account list-locations
 
 ### <a name="global-azure"></a>全域 Azure
 
-|端點 ||
-| --- | --- | 
+|端點||
+| --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| 驗證 | `https://login.microsoftonline.com/` | 
+| 驗證 | `https://login.microsoftonline.com/` |
 | 權杖對象 | `https://management.core.windows.net/` |
 
-### <a name="azure-government"></a>Azure 政府機構
+### <a name="azure-government"></a>Azure Government
 
 |端點||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| 驗證 | `https://login.microsoftonline.us/` | 
+| 驗證 | `https://login.microsoftonline.us/` |
 | 權杖對象 | `https://management.core.usgovcloudapi.net/` |
 
-### <a name="azure-germany"></a>Azure 德國
+### <a name="azure-germany"></a>Azure Germany
 
 | 端點 ||
 | --- | --- |  
@@ -91,12 +91,12 @@ az account list-locations
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |端點||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 驗證 | `https://login.chinacloudapi.cn/` |
 | 權杖對象 |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)

@@ -1,25 +1,25 @@
 ---
-title: Azure 應用程式 Insights 覆寫預設 SDK 端點
-description: 針對 Azure Government 之類的區域，修改預設 Azure 監視器 Application Insights SDK 端點。
+title: Azure 應用程式見解覆蓋預設 SDK 終結點
+description: 修改 Azure 政府等區域的預設 Azure 監視器應用程式見解 SDK 終結點。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298327"
 ---
-# <a name="application-insights-overriding-default-endpoints"></a>覆寫預設端點 Application Insights
+# <a name="application-insights-overriding-default-endpoints"></a>應用程式見解覆蓋預設終結點
 
-若要從 Application Insights 將資料傳送到特定區域，您必須覆寫預設端點位址。 每個 SDK 都需要稍微不同的修改，這全都會在本文中說明。 這些變更需要調整範例程式碼，並將 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address`和 `Profile_Query_Endpoint_address` 的預留位置值取代為特定區域的實際端點位址。 本文結尾包含需要此設定之區域的端點位址連結。
+要將資料從應用程式見解發送到某些區域，您需要覆蓋預設終結點位址。 每個 SDK 都需要稍有不同的修改，本文將介紹所有這些修改。 這些更改需要調整示例代碼，並將`QuickPulse_Endpoint_Address`的預留位置值替換為`TelemetryChannel_Endpoint_Address`，`Profile_Query_Endpoint_address`並將 替換為特定區域的實際終結點位址。 本文末尾包含指向需要此配置的區域的終結點位址的連結。
 
-## <a name="sdk-code-changes"></a>SDK 程式碼變更
+## <a name="sdk-code-changes"></a>SDK 代碼更改
 
-### <a name="net-with-applicationinsightsconfig"></a>具有 applicationinsights 的 .NET
+### <a name="net-with-applicationinsightsconfig"></a>.NET 與應用程式見解.config
 
 > [!NOTE]
-> 每當執行 SDK 升級時，就會自動覆寫 applicationinsights。 執行 SDK 升級之後，請務必重新輸入區域特定的端點值。
+> 應用程式 insights.config 檔在進行 SDK 升級時會自動覆蓋。 執行 SDK 升級後，請確保重新輸入區域特定的終結點值。
 
 ```xml
 <ApplicationInsights>
@@ -43,7 +43,7 @@ ms.locfileid: "77671982"
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 
-如下所示修改專案中的 appsettings，以調整主要端點：
+修改專案中的應用設置.json 檔，如下所示以調整主終結點：
 
 ```json
 "ApplicationInsights": {
@@ -54,7 +54,7 @@ ms.locfileid: "77671982"
   }
 ```
 
-即時計量和設定檔查詢端點的值只能透過程式碼來設定。 若要透過程式碼覆寫所有端點值的預設值，請在 `Startup.cs` 檔案的 `ConfigureServices` 方法中進行下列變更：
+只能通過代碼設置即時指標和設定檔查詢終結點的值。 要通過代碼覆蓋所有終結點值的`ConfigureServices`預設值，請對`Startup.cs`檔的方法進行以下更改：
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -69,15 +69,15 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
 
-### <a name="azure-functions-v2x"></a>Azure Functions v2. x
+### <a name="azure-functions-v2x"></a>Azure 函數 v2.x
 
-在您的函式專案中安裝下列套件：
+在函數專案中安裝以下包：
 
-- ApplicationInsights 版本2.10。0
-- ApplicationInsights. Microsoft.applicationinsights.perfcountercollector 版本2.10。0
-- ApplicationInsights. WindowsServer. TelemetryChannel version 2.10。0
+- 微軟.應用程式洞察版本 2.10.0
+- 微軟.應用程式見解.PerfCounterCollector版本2.10.0
+- 微軟.應用程式洞察.WindowsServer.遙測頻道版本2.10.0
 
-然後，為您的函式應用程式新增（或修改）啟動程式碼：
+然後，添加（或修改）函數應用程式的啟動代碼：
 
 ```csharp
 [assembly: WebJobsStartup(typeof(Example.Startup))]
@@ -122,7 +122,7 @@ namespace Example
 
 ### <a name="java"></a>Java
 
-修改 applicationinsights，以變更預設的端點位址。
+修改應用程式 insights.xml 檔以更改預設終結點位址。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -149,7 +149,7 @@ namespace Example
 
 ### <a name="spring-boot"></a>Spring Boot
 
-修改 `application.properties` 檔案並新增：
+修改檔`application.properties`並添加：
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -166,7 +166,7 @@ appInsights.defaultClient.config.quickPulseHost = "QuickPulse_Endpoint_Address";
 appInsights.Configuration.start();
 ```
 
-您也可以透過環境變數來設定端點：
+終結點也可以通過環境變數進行配置：
 
 ```
 Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
@@ -187,21 +187,25 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-## <a name="regions-that-require-endpoint-modification"></a>需要修改端點的區域
+### <a name="python"></a>Python
 
-目前只有要求端點修改的區域會[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和[Azure 中國](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+有關修改開放census-python SDK 的引入終結點的指導，請參閱[開放census-python 回購。](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+
+## <a name="regions-that-require-endpoint-modification"></a>需要端點修改的區域
+
+目前，唯一需要端點修改的區域是[Azure 政府和](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) [Azure 中國。](https://docs.microsoft.com/azure/china/resources-developer-guide)
 
 |區域 |  端點名稱 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中國 | 遙測通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure 中國 | QuickPulse （即時計量） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure 中國 | 快速脈衝（即時指標） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
 | Azure 中國 | 設定檔查詢 |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
 | Azure Government | 遙測通道 |`https://dc.applicationinsights.us/v2/track` |
-| Azure Government | QuickPulse （即時計量） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | 快速脈衝（即時指標） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | 設定檔查詢 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-如果您目前使用的是通常透過 ' api.applicationinsights.io ' 存取的[Application Insights REST API](https://dev.applicationinsights.io/
-) ，您將需要使用區域的本機端點：
+如果您當前使用應用程式[見解 REST API（](https://dev.applicationinsights.io/
+)通常通過"api.applicationinsights.io"訪問，則需要使用您所在區域的終結點：
 
 |區域 |  端點名稱 | 值 |
 |-----------------|:------------|:-------------|
@@ -209,9 +213,9 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 | Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
-> 在這些區域中，**目前不支援**無程式碼以代理程式/擴充功能為基礎的 Azure App 服務監視。 一旦推出此功能，將會更新本文。
+> 這些區域**當前不支援**Azure 應用服務的無代碼代理/擴展監視。 一旦此功能可用，本文將更新。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解 Azure Government 的自訂修改，請參閱[Azure 監視和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)的詳細指導方針。
-- 若要深入瞭解 Azure 中國，請參閱[Azure 中國](https://docs.microsoft.com/azure/china/)腳本。
+- 要瞭解有關 Azure 政府自訂修改的詳細資訊，請參閱[Azure 監視和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)的詳細指南。
+- 要瞭解有關 Azure 中國的更多詳細資訊，請參閱[Azure 中國行動手冊](https://docs.microsoft.com/azure/china/)。

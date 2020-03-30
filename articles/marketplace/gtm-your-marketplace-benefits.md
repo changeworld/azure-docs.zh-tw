@@ -1,74 +1,73 @@
 ---
-title: 進入市場服務-您的商業 marketplace 權益 |Azure
+title: 上市服務 - 您的商業市場優勢 |蔚藍
 description: Go-To-Market 服務 - 本節描述了發行者可以使用的 Microsoft 資源。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: MaggiePucciEvans
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.author: evansma
-ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.author: dsindona
+ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286229"
 ---
-# <a name="your-commercial-marketplace-benefits"></a>您的商業 marketplace 權益
+# <a name="your-commercial-marketplace-benefits"></a>您的商業市場優勢
 
-您已發佈至 marketplace，現在您想要查看您的供應專案是否成功。 我們會為您提供權益-銷售、技術和行銷-您需要加速供應專案的成長。
+您已發佈到市場，現在您希望看到您的產品/服務成功。 我們為您提供銷售、技術和行銷等優勢，説明您加快產品/服務的增長。
 
-當您上線供應專案時，Marketplace 報酬小組會開始與您合作，以符合您的合格權益。 Marketplace 獎勵權益會根據您的商業 marketplace 參與和銷售而累積。 您參與的越多，就越多越好。
+當您使用優惠時，市場獎勵團隊將聯繫您，開始與您合作制定符合條件的優惠。 市場獎勵優惠基於您的商業市場參與度和銷售而累積。 你參與得越多，你回來的就越多。
 
 ## <a name="marketplace-rewards"></a>Marketplace 獎勵
 
-Marketplace 報酬的設計是為了在您的特定成長階段支援您，從認知活動開始，以協助您取得第一位客戶。 隨著您在 marketplace 成長，您可以將新的權益解除鎖定，以協助您轉換客戶和關閉交易。 
+市場獎勵旨在支援您在特定的成長階段，從提高認識活動開始，説明您獲得第一批客戶。 隨著您通過市場的發展，您可以解鎖新的權益，旨在説明您轉換客戶和達成交易。 
 
-此程式會建立一個正面的意見反應迴圈：每個成長階段的優點是設計為讓您進入下一個階段，以透過 Microsoft 的領域來拓展您的企業與 Microsoft 的客戶，並利用作為平臺的商業 marketplace。 
+該計畫創建了一個積極的回饋迴圈：每個階段的增長優勢旨在推動您進入下一階段，使您能夠通過 Microsoft 領域的業務拓展業務，並通過 Microsoft 管道商業市場作為您的平臺。 
 
-您的權益會根據您的供應專案是[清單、試用或交易](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)而有所不同。
+您的權益根據您的優惠是["清單、試用"還是"交易"](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)而有所區別。
 
-當您的供應專案上線時，系統會根據您的資格，與您的獎勵小組成員聯繫。 
+獎勵團隊成員將在您的優惠上線時聯繫您，具體取決於您的資格。 
 
-針對交易合作夥伴，當您透過 marketplace 平臺成長計費的銷售時，每一層就能發揮更多的權益。 
+對於 Transact 合作夥伴，當您通過市場平臺擴大計費銷售額時，您可以解鎖每個層的更大權益。 
 
-在店面中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，這些權益都適用于所有合作夥伴。 每個合作夥伴都能夠透過 marketplace 以平臺的形式拓展業務。 
+在網店中發佈的最低要求是 MPNID，因此，無論 MPN 能力狀態或合作夥伴類型如何，這些權益均可提供給所有合作夥伴。 每個合作夥伴都有權通過市場作為平臺發展業務。 
 
-您將取得了解可供您使用的資源，以及執行最佳做法的支援，您也可以[自行進行檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。 
+您將在瞭解可用的資源以及實施最佳實踐方面獲得支援，您也可以[自行查看](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。 
 
-所有方案權益的詳細描述可在[Marketplace 獎勵計畫](https://aka.ms/marketplacerewards)中找到。
+所有計劃福利的詳細說明可以在[市場獎勵計畫甲板上](https://aka.ms/marketplacerewards)找到。
 
-開始使用的步驟很簡單：
+您入門的步驟非常簡單：
 
-1. 請在 Microsoft AppSource 或 Azure Marketplace 中發佈供應專案。
-2. 小組會針對每個 marketplace 供應專案，到達「擁有者」或「主要連絡人」。 最佳做法是輸入您定期檢查的個人或別名：傳送至別名的訊息（例如 info@company.com 通常會遺失）。
-
->[!Note]
->如果您的供應專案已上線超過四周，而且您未收到訊息，請查看 Cloud Partner 入口網站或在合作夥伴中心，檢查您的組織中是否有問題的擁有者。 他們應該具有通訊和後續步驟。 <br> <br> 如果您無法判斷擁有者，或擁有者已離開您的公司，您可以在 https://aka.ms/marketplacepublishersupport提出支援票證。
-
-隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有清單都會收到基本層級的優化建議和升級，做為資源和最佳作法的自助電子郵件的一部分。
-
-## <a name="list-trial-and-consulting-benefits"></a>清單、試用版和諮詢權益
-
-如果您發佈試用版或諮詢證明、實施或研討會，將會在三個月內獲指派 engagement 經理，協助引導您成功進入市場計畫。 每次發佈新的供應專案時，您都可以重複此三個月的參與，協助您每個新的服務都能成功開始。
-
-下表摘要說明清單和試用版供應專案的資格需求：
-
-![進入市場優勢](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
-
-如需所有這些權益的詳細說明，請參閱[Marketplace 獎勵方案組](https://aka.ms/marketplacerewards)。
-
-## <a name="marketplace-rewards-for-transact-partners"></a>交易合作夥伴的 Marketplace 獎勵
-
-當您使用 Azure Marketplace 或 Microsoft AppSource 中的 transactable 供應專案時，您可以在成長透過商業 Marketplace 銷售的計費交易或基座時，存取額外的權益。 
+1. 在 Microsoft 應用商店或 Azure 應用商店中發佈產品/服務。
+2. 團隊根據市場報價向"擁有者"或"主要連絡人"聯繫。 最佳做法是輸入您定期檢查的個人或別名：發送到別名（如經常丟失）info@company.com的郵件。
 
 >[!Note]
->基座銷售閾值僅適用于 Microsoft 365 應用程式（與 Microsoft 小組、Office、Outlook 或 SharePoint 整合的 SaaS 應用程式），而且必須在2020年6月30日完成權益。
+>如果您的優惠已活了四周以上，但您尚未收到消息，請在組織內查看相關產品/服務的擁有者，請查看雲合作夥伴門戶或合作夥伴中心。 他們應該有溝通和後續步驟。 <br> <br> 如果您無法確定擁有者，或者擁有者已離開您的公司，則可以在 上https://aka.ms/marketplacepublishersupport升起支援票證。
 
-這些權益是專為支援行銷、銷售和技術活動而設計，可協助您取得更多的訪客、接收更多潛在客戶，以及轉換更多業務。
+隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有清單都會收到基本級別的優化建議和促銷，作為資源和最佳實踐自助服務電子郵件的一部分。
 
-所有具有即時供應專案的合作夥伴，都能與專屬的 engagement 經理合作，為您的 marketplace 優惠組合選擇最高價值的活動。 這項參與是每個供應專案的最長時間，這表示您可以選擇您的活動和這些活動的時機，以符合貴公司更廣泛的行銷和銷售策略的時機。 
+## <a name="list-trial-and-consulting-benefits"></a>清單、試用和諮詢權益
+
+如果您發佈概念、實施或研討會的試用或諮詢證明，您將被指派一名參與經理三個月，該經理將説明您成功進入市場計畫。 每次發佈新產品/服務時，您都可以重複此為期三個月的活動，以説明讓您的每個新優惠都成功啟動。
+
+下表匯總了清單和試用產品的資格要求：
+
+![上市優惠](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+
+所有這些福利的詳細描述可以在[市場獎勵計畫甲板上](https://aka.ms/marketplacerewards)找到。
+
+## <a name="marketplace-rewards-for-transact-partners"></a>交易合作夥伴的市場獎勵
+
+當您在 Azure 應用商店或 Microsoft AppSource 中使用可交易產品/服務時，您可以在增長計費的銷售交易或通過商業市場銷售的座位時獲得其他權益。 
+
+>[!Note]
+>銷售的座位閾值僅適用于 Microsoft 365 應用（與 Microsoft 團隊、Office、Outlook 或 SharePoint 集成的 SaaS 應用程式），權益必須在 2020 年 6 月 30 日前完成。
+
+這些優勢旨在支援您在行銷、銷售和技術活動中，從而説明您獲得更多的訪問者、獲得更多潛在客戶和轉換更多業務。
+
+所有擁有即時優惠的合作夥伴都可與專門的參與經理合作，為您的市場優惠組合選擇最有價值的活動。 此參與度是每個報價的常青，這意味著您可以選擇您的活動和這些活動的時間，以符合您公司更廣泛的行銷和銷售戰略的時機。 
 
 ![行銷優勢](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -76,43 +75,43 @@ Marketplace 報酬的設計是為了在您的特定成長階段支援您，從�
 
 ![技術權益](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\* 基座銷售閾值僅適用于 Microsoft 365 應用程式（與 Microsoft 小組、Office、Outlook 或 SharePoint 整合的 SaaS 應用程式）和權益必須在2020年6月30日完成。
+\*銷售的座位閾值僅適用于 Microsoft 365 應用（與 Microsoft 團隊、Office、Outlook 或 SharePoint 集成的 SaaS 應用程式），權益必須在 2020 年 6 月 30 日前完成。
 
-如需所有這些權益的詳細說明，請參閱[Marketplace 獎勵方案組](https://aka.ms/marketplacerewards)。
+所有這些福利的詳細描述可以在[市場獎勵計畫甲板上](https://aka.ms/marketplacerewards)找到。
 
-除了報酬優勢，使用 Dynamics 供應專案發佈至 Microsoft AppSource 的商務應用程式合作夥伴也會透過[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)提供補充的程式設計。 這包括專為商務應用程式合作夥伴需求而特製化的技術、行銷和銷售支援。
+除了獎勵優惠外，向 Microsoft AppSource 發佈的 Dynamics 優惠的商務應用程式合作夥伴還通過[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)為他們提供補充程式設計。 這包括專門滿足商務應用程式合作夥伴需求的技術、行銷和銷售支援。
 
-## <a name="marketplace-rewards-requirements-and-restrictions"></a>Marketplace 獎勵需求和限制
+## <a name="marketplace-rewards-requirements-and-restrictions"></a>市場獎勵要求和限制
 
-### <a name="publisher-agreement"></a>發行者合約
+### <a name="publisher-agreement"></a>發佈商協定
 
-本頁面所述的所有活動均由[marketplace 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)所涵蓋，並遵循商業權益方案的增補條款。
+本頁描述的所有活動均受[市場發佈商協定](https://go.microsoft.com/fwlink/?LinkID=699560)覆蓋，並符合商業福利計畫附錄。
 
 ### <a name="cancellation-policy"></a>取消原則
 
-[清單和試用版](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)發行者可以加入宣告或退出每個供應專案發行的活動。 合作夥伴隨時都可以退出宣告任何參與。 
+[清單和試用](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)版發行者可以加入宣告或退出宣告每個產品/服務發佈的活動。 合作夥伴可隨時退出宣告任何參與。 
 
-Microsoft 保留撤銷並終止 Marketplace 獎勵權益的權利，讓發行者能夠： 
+Microsoft 保留撤銷和終止市場獎勵權益的權利，以便發行者： 
 
-* 使用其 marketplace 清單參與不合法的活動。
-* 會從商業 marketplace 中取消列出。 
-* 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
-* 違反[azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）使用 azure 贊助資金來進行自己的內部作業或比特幣的發掘。 
+* 利用其市場清單從事非法活動。
+* 從商業市場退市。 
+* 使用其優惠顯示違反版權或商標法的行銷或其他內容。
+* 違反[Azure 贊助計畫](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限於使用 Azure 贊助資金進行自己的內部操作或比特幣挖掘。 
 
-### <a name="offer-availability"></a>供應專案可用性
+### <a name="offer-availability"></a>供貨情況
 
-這項供應專案是以英文針對具有 Azure Marketplace 或 Microsoft AppSource 之 live 供應專案的所有合作夥伴來進行。
+此優惠以英文方式針對 Azure 應用商店或 Microsoft AppSource 中具有即時優惠的所有合作夥伴。
 
-經證實為詐騙的交易將不會計入發行者的[計費銷售計畫層](https://aka.ms/marketplacepublisherrewards)，如[清單、試用版、諮詢](#list-trial-and-consulting-benefits)一節、[交易合作夥伴權益](#marketplace-rewards-for-transact-partners)一節和[詳細的程式](https://aka.ms/marketplacepublisherrewards)。 在移除詐騙之後，Microsoft 會根據實際的計費銷售，將合作夥伴配置給資格層。 
+事實證明是欺詐的交易不會計入出版商的[計費銷售計畫層](https://aka.ms/marketplacepublisherrewards)，如[清單、試用、諮詢部分、](#list-trial-and-consulting-benefits)[交易合作夥伴權益](#marketplace-rewards-for-transact-partners)部分和[詳細計畫層](https://aka.ms/marketplacepublisherrewards)中所述。 在刪除欺詐後，Microsoft 將根據合作夥伴的實際計費銷售將合作夥伴分配到資格級別。 
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您已在[Cloud Partner 入口網站](https://cloudpartner.azure.com)中建立供應專案，請登入以建立或設定您的供應專案。
+如果您在[雲合作夥伴門戶](https://cloudpartner.azure.com)中創建了產品/服務，請登錄以創建或配置產品/服務。
 
-如果您已在[合作夥伴中心](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)建立供應專案，請登入以建立或設定您的供應專案。
+如果您在[合作夥伴中心](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)創建產品/服務，請登錄以創建或配置產品/服務。
 
-請參閱[您可以使用的自助資源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
+查看[可供您使用的自我服務資源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-註冊[Microsoft AppSource 並 Azure Marketplace 社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)，並瞭解相關主題或加入討論。
+註冊 Microsoft [AppSource 和 Azure 應用商店社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)，瞭解相關主題或加入討論。
 
 ---

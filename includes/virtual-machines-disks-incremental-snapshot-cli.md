@@ -8,17 +8,14 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69be71a58c3aed4f52b77e63c9ddf12365301b08
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80343040"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
-
-### <a name="supported-regions"></a>支援區域
-[!INCLUDE [virtual-machines-disks-incremental-snapshots-regions](virtual-machines-disks-incremental-snapshots-regions.md)]
 
 ## <a name="restrictions"></a>限制
 
@@ -26,17 +23,17 @@ ms.locfileid: "79299146"
 
 ## <a name="cli"></a>CLI
 
-您可以使用 Azure CLI 建立增量快照集，您將需要最新版的 Azure CLI。 
+您可以使用 Azure CLI 創建增量快照，則需要最新版本的 Azure CLI。 
 
-在 Windows 中，下列命令會將您現有的安裝安裝或更新為最新版本：
+在 Windows 上，以下命令將安裝或更新現有安裝到最新版本：
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-在 Linux 上，CLI 安裝會根據作業系統版本而有所不同。  請參閱安裝特定 Linux 版本[的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 。
+在 Linux 上，CLI 安裝將因作業系統版本而異。  請參閱為特定 Linux 版本[安裝 Azure CLI。](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-若要建立增量快照集，請使用[az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create)搭配 `--incremental` 參數。
+要創建增量快照，請使用使用[az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create)參數`--incremental`創建的 az 快照。
 
-下列範例會建立增量快照集、以您自己的值取代 `<yourDesiredSnapShotNameHere>`、`<yourResourceGroupNameHere>`、`<exampleDiskName>`和 `<exampleLocation>`，然後執行範例：
+下面的示例`<yourDesiredSnapShotNameHere>`創建增量快照，替換 、`<yourResourceGroupNameHere>``<exampleDiskName>`和 使用`<exampleLocation>`您自己的值，然後運行示例：
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -48,13 +45,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-您可以使用 `SourceResourceId` 和快照的 `SourceUniqueId` 屬性，從相同的磁片識別增量快照集。 `SourceResourceId` 是父磁片的 Azure Resource Manager 資源識別碼。 `SourceUniqueId` 是從磁片的 `UniqueId` 屬性繼承而來的值。 如果您要刪除磁片，然後使用相同的名稱建立新的磁片，`UniqueId` 屬性的值就會變更。
+您可以使用 快照`SourceResourceId`的屬性和快照`SourceUniqueId`的屬性標識同一磁片中的增量快照。 `SourceResourceId`是父磁片的 Azure 資源管理器資源識別碼。 `SourceUniqueId`是從磁片`UniqueId`屬性繼承的值。 如果要刪除磁片，然後創建同名的新磁片，`UniqueId`則屬性的值將更改。
 
-您可以使用 `SourceResourceId` 和 `SourceUniqueId`，建立與特定磁片相關聯的所有快照集清單。 下列範例會列出與特定磁片相關聯的所有增量快照集，但它需要進行一些設定。
+可以使用`SourceResourceId`和`SourceUniqueId`創建與特定磁片關聯的所有快照的清單。 下面的示例將列出與特定磁片關聯的所有增量快照，但需要一些設置。
 
-這個範例會使用 jq 來查詢資料。 若要執行範例，您必須[安裝 jq](https://stedolan.github.io/jq/download/)。
+此示例使用 jq 查詢資料。 要運行該示例，必須[安裝 jq](https://stedolan.github.io/jq/download/)。
 
-以您的值取代 `<yourResourceGroupNameHere>` 和 `<exampleDiskName>`，然後您就可以使用下列範例來列出現有的增量快照集，只要您已安裝 jq：
+替換`<yourResourceGroupNameHere>`並使用`<exampleDiskName>`值替換和值，然後可以使用以下示例列出現有的增量快照，只要您也安裝了 jq：
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -68,7 +65,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager 範本
 
-您也可以使用 Azure Resource Manager 範本來建立增量快照集。 您必須確定 apiVersion 設定為**2019-03-01** ，而且累加屬性也設定為 true。 下列程式碼片段是如何使用 Resource Manager 範本建立增量快照集的範例：
+您還可以使用 Azure 資源管理器範本創建增量快照。 您需要確保 apiVersion 設置為**2019-03-01，** 並且增量屬性也設置為 true。 以下程式碼片段是如何使用資源管理器範本創建增量快照的示例：
 
 ```json
 {
@@ -104,4 +101,4 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您想要查看示範增量快照集差異功能的範例程式碼，請使用 .NET，請參閱[將 Azure 受控磁碟備份複製到具有增量快照差異功能的另一個區域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。
+如果要查看示例代碼，演示使用 .NET 的增量快照的差分功能，請參閱[將 Azure 託管磁片備份複製到具有增量快照差異功能的另一個區域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。

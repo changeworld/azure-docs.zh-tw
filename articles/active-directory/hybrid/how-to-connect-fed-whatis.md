@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350485"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331533"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和同盟
 Azure Active Directory (Azure AD) Connect 可讓您使用內部部署 Active Directory 同盟服務 (AD FS) 與 Azure AD 來設定同盟。 使用同盟登入，您可以讓使用者使用他們的內部部署密碼登入 Azure AD 服務，並且在使用公司網路時，無須再次輸入密碼就可登入服務。 您可以藉由使用具備 AD FS 的同盟選項來部署新安裝的 AD FS，或者您可以在 Windows Server 2012 R2 伺服器陣列中指定現有的安裝。
@@ -36,13 +36,13 @@ Azure Active Directory (Azure AD) Connect 可讓您使用內部部署 Active Dir
 | **使用 Azure AD Connect 安裝 AD FS** | |
 | [必要條件](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |請查看透過 Azure AD Connect 成功安裝 AD FS 安裝的必要條件。 |
 | [設定 AD FS 伺服器陣列](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |使用 Azure AD Connect 安裝新的 AD FS 伺服器陣列。 |
-| [使用替代登入識別碼與 Azure AD 建立同盟](how-to-connect-fed-management.md#alternateid) | 使用替代登入識別碼設定同盟  |
+| [使用備用登入識別碼 與 Azure AD 聯合](how-to-connect-fed-management.md#alternateid) | 使用替代登入識別碼設定同盟  |
 | **修改 AD FS 組態** | |
 | [修復信任](how-to-connect-fed-management.md#repairthetrust) |修復內部部署 AD FS 和 Office 365/Azure 之間目前的信任。 |
 | [新增 AD FS 伺服器](how-to-connect-fed-management.md#addadfsserver) |在初始安裝之後，增加 AD FS 伺服器來擴充 AD FS 伺服器陣列。 |
 | [新增 AD FS WAP 伺服器](how-to-connect-fed-management.md#addwapserver) |在初始安裝之後，增加 Web 應用程式 Proxy (WAP) 伺服器來擴充 AD FS 伺服器陣列。 |
 | [新增新的同盟網域](how-to-connect-fed-management.md#addfeddomain) |新增要與 Azure AD 同盟的其他網域。 |
-| [更新 SSL 憑證](how-to-connect-fed-ssl-update.md)| 更新 AD FS 伺服器陣列的 SSL 憑證。 |
+| [更新 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)| 更新 AD FS 場的 TLS/SSL 憑證。 |
 | [更新 Office 365 和 Azure AD 的同盟憑證](how-to-connect-fed-o365-certs.md)|使用 Azure AD 來更新 O365 憑證。|
 | **其他同盟組態** | |
 | [將多個 Azure AD 執行個體與單一 AD FS 執行個體同盟](how-to-connect-fed-single-adfs-multitenant-federation.md) | 將多個 Azure AD 和單一 AD FS 伺服器陣列建立同盟關係| 

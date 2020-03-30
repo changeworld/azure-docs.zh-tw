@@ -1,129 +1,132 @@
 ---
-title: 在您的應用程式中內嵌影片索引子小工具
+title: 在應用中嵌入視頻索引子小部件
 titleSuffix: Azure Media Services
-description: 本文示範如何在您的應用程式中內嵌 Azure 媒體服務影片索引子小工具。
+description: 瞭解如何在應用中嵌入視頻索引子小部件。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336822"
 ---
-# <a name="embed-video-indexer-widgets-in-your-applications"></a>在您的應用程式中內嵌影片索引子小工具
+# <a name="embed-video-indexer-widgets-in-your-apps"></a>在應用中嵌入視頻索引子小部件
 
-本文說明如何在您的應用程式中內嵌影片索引子小工具。 影片索引子支援在您的應用程式中嵌入三種類型的 widget：*認知深入*解析、*播放機*和*編輯器*。 
+本文演示如何在應用中嵌入視頻索引子小部件。 視頻索引子支援將三種類型的小部件嵌入到你的應用程式中：*認知見解*、*播放機*和*編輯器*。
 
-從第2版開始，小工具基底 URL 會包含指定帳戶的區域。 例如，美國西部區域中的帳戶會產生：`https://wus2.videoindexer.ai/embed/insights/...`。
+從版本 2 開始，小部件基本 URL 包括指定帳戶的區域。 例如，美國西部區域中的帳戶會產生：`https://wus2.videoindexer.ai/embed/insights/...`。
 
 ## <a name="widget-types"></a>小工具類型
 
 ### <a name="cognitive-insights-widget"></a>認知深入解析小工具
 
-認知深入解析 widget 包含所有從您的影片編制索引程式中解壓縮的視覺深入解析。 認知深入解析小工具支援下列選擇性 URL 參數。
+認知深入解析小工具包含從您的影片索引編製程序中擷取的所有視覺化深入解析。 認知見解微件支援以下可選 URL 參數：
 
-|名稱|定義|說明|
+|名稱|定義|描述|
 |---|---|---|
-|`widgets`|以逗號分隔的字串|可讓您控制要呈現的見解。 <br/> 範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只轉譯人員和品牌 UI 深入解析。<br/>可用的選項：人員、關鍵字、註解、品牌、情緒、文字記錄、搜尋。<br/>請注意，在第2版中不支援 `widgets` URL 參數。<br/>|
-|`locale`|簡短的語言代碼|控制 insights 語言。 預設值是 `en`。 <br/> 範例： `locale=de`.|
-|`tab`|預設選取的索引標籤|控制預設呈現的 [**深入**解析] 索引標籤。 <br/> 範例： `tab=timeline` 呈現已選取 [**時間軸**] 索引標籤的見解。|
+|`widgets` | 以逗號分隔的字串 | 允許您控制要呈現的見解。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`僅呈現人和關鍵字 UI 見解。<br/>可用選項：人物、動畫人物、關鍵字、標籤、情感、情感、主題、關鍵幀、腳本、ocr、揚聲器、場景和命名實體。|
+|`controls`|以逗號分隔的字串|允許您控制要呈現的控制項。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`僅呈現搜索選項和下載按鈕。<br/>可用選項：搜索、下載、預設、語言。|
+|`language`|短語言代碼（語言名稱）|控制見解語言。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`locale` | 短語言代碼 | 控制 UI 的語言。 預設值是 `en`。 <br/>範例： `locale=de`.|
+|`tab` | 預設選擇選項卡 | 控制預設情況下呈現的 **"見解"** 選項卡。 <br/>示例：`tab=timeline`在選擇 **"時間軸"** 選項卡時呈現見解。|
 
 ### <a name="player-widget"></a>播放器小工具
 
-您可以使用 [播放程式] 小工具，透過調適型位元速率來串流影片。 播放工具 widget 支援下列選擇性 URL 參數。
+您可以使用播放機小部件使用自我調整位元速率資料流視頻。 播放機小部件支援以下可選 URL 參數。
 
-|名稱|定義|說明|
+|名稱|定義|描述|
 |---|---|---|
-|`t`|開始的秒數|讓玩家從指定的時間點開始播放。<br/> 範例： `t=60`.|
-|`captions`|語言代碼|在 widget 載入時，以指定的語言提取標題，以供 [**標題**] 功能表使用。<br/> 範例： `captions=en-US`.|
-|`showCaptions`|布林值|可讓播放器載入已啟用的標題。<br/> 範例： `showCaptions=true`.|
-|`type`||啟動音訊播放機面板（影片部分已移除）。<br/> 範例： `type=audio`.|
-|`autoplay`|布林值|表示播放者是否應該在載入時開始播放影片。 預設值是 `true`。<br/> 範例： `autoplay=false`.|
-|`language`|語言代碼|控制播放機語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
+|`t` | 從開始開始的秒數 | 使玩家從指定的時間點開始播放。<br/> 範例： `t=60`. |
+|`captions` | 語言代碼 | 在小部件載入期間以指定語言獲取標題，以在 **"字幕"** 功能表上可用。<br/> 範例： `captions=en-US`. |
+|`showCaptions` | 布林值 | 可讓播放器載入已啟用的標題。<br/> 範例： `showCaptions=true`. |
+|`type`| | 啟動音訊播放機外觀（視頻部分被刪除）。<br/> 範例： `type=audio`. |
+|`autoplay` | 布林值 | 指示播放機在載入時是否應開始播放視頻。 預設值是 `true`。<br/> 範例： `autoplay=false`. |
+|`language` | 語言代碼 | 控制玩家語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
 
-### <a name="editor-widget"></a>編輯器 widget
+### <a name="editor-widget"></a>編輯器小部件
 
-您可以使用編輯器 widget 來建立新的專案，以及管理影片的深入解析。 編輯器 widget 支援下列選擇性 URL 參數。
+您可以使用編輯器小部件創建新專案並管理視頻的見解。 編輯器小部件支援以下可選 URL 參數。
 
-|名稱|定義|說明|
+|名稱|定義|描述|
 |---|---|---|
-|`accessToken`<sup>*</sup>|String|提供只在用來內嵌 widget 之帳戶中的影片存取。<br> 編輯器 widget 需要 `accessToken` 參數。|
-|`language`|語言代碼|控制播放機語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
-|`locale`|簡短的語言代碼|控制 insights 語言。 預設值是 `en`。<br/>範例： `language=de`.|
+|`accessToken`<sup>*</sup> | String | 提供對僅用於嵌入小部件的帳戶中的視頻的訪問。<br> 編輯器小部件需要參數`accessToken`。 |
+|`language` | 語言代碼 | 控制玩家語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`. |
+|`locale` | 短語言代碼 | 控制見解語言。 預設值是 `en`。<br/>範例： `language=de`. |
 
-<sup>*</sup>擁有者應謹慎提供 `accessToken`。
+<sup>*</sup>業主應`accessToken`謹慎。
 
 ## <a name="embedding-public-content"></a>內嵌公用內容
 
-1. 登入[影片索引子](https://www.videoindexer.ai/)網站。
-2. 選取您想要使用的影片。
-3. 選取顯示在影片底下的 [**內嵌**] 按鈕。
+1. 登錄[視頻索引子](https://www.videoindexer.ai/)網站。
+2. 選擇要使用的視頻。
+3. 選擇視頻下方顯示的 **"嵌入"** 按鈕。
 
-    ![小工具](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+    ![視頻索引子中的嵌入按鈕](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
-    選取 [**內嵌**] 按鈕之後，您可以選取要在應用程式中內嵌的 widget。 
-4. 選取您想要的 widget 類型（[**認知深入**解析]、[**播放**程式] 或 [**編輯器**]）。
+    選擇 **"嵌入"** 按鈕後，可以選擇要嵌入應用的小部件。
+4. 選擇您想要的小部件類型（**認知見解**、**播放機**或**編輯器**）。
  
-5. 複製內嵌程式碼，然後將它新增至您的應用程式。 
+5. 複製嵌入代碼，然後將其添加到應用。
 
-    ![小工具](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+    ![嵌入應用程式代碼_視頻索引子](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> 如果您在共用影片 Url 時發生問題，請將 `location` 參數新增至連結。 參數應該設定為[影片索引子所在的 Azure 區域](regions.md)。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+> 如果您在共用視頻 URL 時出現問題，請將`location`參數添加到連結中。 參數應設置為[存在視頻索引子的 Azure 區域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
 
 ## <a name="embedding-private-content"></a>內嵌私人內容
 
-若要內嵌私用影片，您必須在 iframe 的**src**屬性中傳遞存取權杖：
+要嵌入專用視頻，必須在 iframe`src`的屬性中傳遞訪問權杖：
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-若要取得認知深入解析小工具內容，請使用下列其中一項：<br/>
-- [取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API。<br/>
-- [取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 將它當做查詢參數新增至 URL。 將此 URL 指定為 iframe 的**src**值，如先前所示。
+要獲取認知見解小部件內容，請使用以下方法之一：
 
-若要在內嵌 widget 中提供編輯見解功能，您必須傳遞包含編輯許可權的存取權杖。 使用 [[取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) ] 或 [使用 `&allowEdit=true`[取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?)]。 
+- [獲取見解小工具](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)API。<br/>
+- [獲取視頻訪問權杖](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 將其作為查詢參數添加到 URL。 指定此 URL`src`作為 iframe 的值，如前面所示。
+
+要在嵌入式小部件中提供編輯見解功能，必須傳遞包含編輯許可權的訪問權杖。 使用[獲取見解小工具](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)或[獲取視頻訪問權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?)與`&allowEdit=true`。
 
 ## <a name="widgets-interaction"></a>小工具互動
 
-認知深入解析小工具可與您應用程式上的影片互動。 本節說明如何進行此互動。
+"認知見解"微件可以與應用上的視頻進行交互。 本節說明如何進行此互動。
 
-![小工具](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+![認知見解小部件視頻索引子](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>跨來源通訊
 
-若要讓影片索引子 widget 與其他元件通訊，影片索引子服務：
+要讓視頻索引子小部件與其他元件通信，視頻索引子服務：
 
-- 使用跨原始來源通訊 HTML5 方法**postMessage**。 
-- 驗證 VideoIndexer.ai 來源之間的訊息。 
+- 使用跨源通信HTML5方法`postMessage`。
+- 驗證 VideoIndexer.ai 來源之間的訊息。
 
-如果您執行自己的播放機程式碼，並與認知深入解析小工具整合，您必須負責驗證來自 VideoIndexer.ai 的訊息來源。
+如果您實現自己的播放機代碼並與認知見解小部件集成，您有責任驗證來自VideoIndexer.ai的消息的來源。
 
-### <a name="embed-widgets-in-your-application-or-blog-recommended"></a>將小工具內嵌至您的應用程式或 blog （建議選項） 
+### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>在應用或博客中嵌入小部件（推薦）
 
-本節說明如何在兩個影片索引子 widget 之間達成互動，以便在使用者選取應用程式上的深入解析控制項時，player 會跳到相關的時間。
+本節演示如何實現兩個視頻索引子小部件之間的交互，以便當使用者選擇應用上的見解控制項時，播放機將跳轉到相關時刻。
 
-1. 複製播放程式 widget 內嵌程式碼。
-2. 複製認知深入解析內嵌程式碼。
-3. 新增[中繼程式](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js)檔案來處理兩個小工具之間的通訊：<br/> 
+1. 複製播放器小工具的內嵌程式碼。
+2. 複製認知深入解析的內嵌程式碼。
+3. 新增[中繼程序檔案](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js)以處理兩個小工具之間的通訊：<br/> 
 `<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
-現在當使用者選取應用程式上的深入解析控制項時，player 會跳到相關的時間。
+現在，當使用者選擇應用上的見解控制項時，播放機將跳轉到相關時刻。
 
-如需詳細資訊，請參閱[影片索引子-內嵌這兩個小工具示範](https://codepen.io/videoindexer/pen/NzJeOb)。
+有關詳細資訊，請參閱[視頻索引子 - 嵌入兩個小工具演示](https://codepen.io/videoindexer/pen/NzJeOb)。
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>內嵌認知深入解析小工具，並使用 Azure 媒體播放器來播放內容
 
-本節說明如何使用[AMP 外掛程式](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)來達成認知深入解析 widget 與 Azure 媒體播放機實例之間的互動。
- 
-1. 新增適用于 AMP 播放程式的影片索引子外掛程式：<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
-2. 使用影片索引子外掛程式來具現化 Azure 媒體播放機。
+本節演示如何使用[AMP 外掛程式](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)實現認知見解微件和 Azure 媒體播放機實例之間的交互。
+
+1. 為 AMP 播放機添加視頻索引子外掛程式：<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
+2. 使用視頻索引子外掛程式具現化 Azure 媒體播放機。
 
         // Init the source.
         function initSource() {
@@ -167,19 +170,19 @@ ms.locfileid: "76988714"
             initSource.call(this);
         });
 
-3. 複製認知深入解析內嵌程式碼。
+3. 複製認知深入解析的內嵌程式碼。
 
-您現在應該能夠與 Azure 媒體播放機通訊。
+您現在可以與 Azure 媒體播放機進行通信。
 
-如需詳細資訊，請參閱[Azure 媒體播放機 + VI 深入解析示範](https://codepen.io/videoindexer/pen/rYONrO)。
+有關詳細資訊，請參閱 Azure[媒體播放機 + VI 見解演示](https://codepen.io/videoindexer/pen/rYONrO)。
 
-### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>內嵌影片索引子認知深入解析小工具，並使用不同的影片播放機
+### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>嵌入視頻索引子認知見解小部件，並使用其他視頻播放機
 
-如果您使用 Azure 媒體播放機以外的影片播放機，您必須手動操作影片播放機以達成通訊。 
+如果使用 Azure 媒體播放機以外的視頻播放機，則必須手動操作視頻播放機以實現通信。
 
 1. 插入影片播放器。
 
-    例如，標準 HTML5 播放程式：
+    例如，標準 HTML5 播放機：
 
         <video id="vid1" width="640" height="360" controls autoplay preload>
            <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
@@ -218,26 +221,26 @@ ms.locfileid: "76988714"
         
         </script>
 
-如需詳細資訊，請參閱[Azure 媒體播放機 + VI 深入解析示範](https://codepen.io/videoindexer/pen/YEyPLd)。
+有關詳細資訊，請參閱 Azure[媒體播放機 + VI 見解演示](https://codepen.io/videoindexer/pen/YEyPLd)。
 
 ## <a name="adding-subtitles"></a>新增字幕
 
-如果您使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)內嵌影片索引子深入解析，您可以使用**GetVttUrl**方法來取得隱藏式輔助字幕（字幕）。 您也可以從影片索引子 AMP 外掛程式**getSubtitlesUrl**呼叫 JavaScript 方法（如先前所示）。 
+如果使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)嵌入視頻索引子見解，則可以使用 方法`GetVttUrl`獲取隱藏字幕（字幕）。 您還可以從視頻索引子 AMP 外掛程式`getSubtitlesUrl`調用 JavaScript 方法（如前面所示）。
 
 ## <a name="customizing-embeddable-widgets"></a>自訂可內嵌的小工具
 
 ### <a name="cognitive-insights-widget"></a>認知深入解析小工具
 
-您可以選擇您想要的深入解析類型。 若要執行這項操作，請將它們指定為下列 URL 參數的值，這會新增至您取得的內嵌程式碼（從 API 或 web 應用程式）： `&widgets=<list of wanted widgets>`。
+您可以選擇所需的見解類型。 為此，請將它們指定為添加到您獲取的嵌入代碼（從 API 或 Web 應用）的以下 URL 參數的值： `&widgets=<list of wanted widgets>`。
 
-可能的值為：**人員**、**關鍵字**、**情緒**、文字**記錄**和**搜尋**。
+可能的價值觀是：**人**，**關鍵字**，**情緒**，**成績單**和**搜索**。
 
-例如，如果您想要內嵌僅包含人員和搜尋深入解析的 widget，iframe 內嵌 URL 看起來會像這樣：
+例如，如果要嵌入僅包含人員並搜索見解的小部件，iframe 嵌入 URL 如下所示：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它會自訂 HTML \<標題 > 值）。
-    
+iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它自訂 HTML\<標題>值）。
+
 例如，若您想要為您的 iframe 視窗指定標題 "MyInsights"，URL w看起來會像這樣：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -252,38 +255,38 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
-根據預設，影片索引子播放程式會根據影片的文字記錄，自動產生隱藏式輔助字幕。 文字記錄是從影片中，使用影片上傳時所選取的來源語言進行解壓縮。
+預設情況下，視頻索引子播放機已基於視頻腳本自動生成隱藏字幕。 使用上傳視頻時選擇的來源語言從視頻中提取腳本。
 
-如果您想要使用不同的語言來內嵌，可以將 `&captions=< Language | "all" | "false" >` 新增至 [內嵌播放機 URL]。 如果您想要所有可用語言的標題中的標題，請使用 `all`的值。 如果您想要依預設顯示標題，您可以傳入 `&showCaptions=true`。
+如果要使用其他語言進行嵌入，可以添加到`&captions=< Language | "all" | "false" >`嵌入播放機 URL。 如果需要所有可用語言的標題，請使用 值`all`。 如果您想要依預設顯示標題，您可以傳入 `&showCaptions=true`。
 
-內嵌 URL 將顯示如下︰ 
+內嵌 URL 將顯示如下︰
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-如果您想要停用標題，您可以將 `captions` 參數值當做 `false`傳遞。
+如果要禁用標題，可以將`captions`參數值傳遞給`false`。
 
-#### <a name="autoplay"></a>播放
-根據預設，播放程式會開始播放影片。 您可以將 `&autoplay=false` 傳遞至先前的內嵌 URL，以選擇不進行。
+#### <a name="autoplay"></a>自動播放
+預設情況下，播放機將開始播放視頻。 您可以選擇不通過傳遞到`&autoplay=false`前面的嵌入 URL。
 
 ## <a name="code-samples"></a>程式碼範例
 
-請參閱程式[代碼範例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)存放庫，其中包含影片索引子 API 和小工具的範例：
+請參閱包含視頻索引子 API 和小工具示例[的代碼示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)回購：
 
-| 檔案/資料夾                       | 說明                                |
+| 檔案/資料夾                       | 描述                                |
 |-----------------------------------|--------------------------------------------|
-| `azure-media-player`              | 在自訂 Azure 媒體播放機中載入影片索引子影片                        |
-| `azure-media-player-vi-insights`  | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析                             |
-| `control-vi-embedded-player`      | 內嵌 VI Player 並從外部加以控制                                    |
-| `custom-index-location`           | 從自訂的外部位置內嵌 VI 深入解析（可以是客戶的 blob）     |
-| `embed-both-insights`             | VI 深入解析播放機和深入解析的基本使用方式                            |
-| `embed-insights-with-AMP`         | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析 widget                      |
-| `customize-the-widgets`           | 使用自訂選項內嵌 VI widget                                     |
-| `embed-both-widgets`              | 內嵌 VI 播放程式和見解，並在其間進行通訊                      |
-| `url-generator`                   | 根據使用者指定的選項產生 widget 自訂內嵌 url             |
-| `html5-player`                    | 使用預設的 HTML5 影片播放機內嵌 VI 深入解析                            |
+| `azure-media-player`              | 在自訂 Azure 媒體播放機中載入視頻索引子視頻。                        |
+| `azure-media-player-vi-insights`  | 使用自訂 Azure 媒體播放機嵌入 VI 見解。                             |
+| `control-vi-embedded-player`      | 嵌入 VI 播放機並從外部控制它。                                    |
+| `custom-index-location`           | 從自訂外部位置嵌入 VI 見解（可以是客戶 Blob）。     |
+| `embed-both-insights`             | VI 洞察的基本用法包括玩家和見解。                            |
+| `embed-insights-with-AMP`         | 使用自訂 Azure 媒體播放機嵌入 VI 見解小部件。                      |
+| `customize-the-widgets`           | 嵌入六個小部件與自訂選項。                                     |
+| `embed-both-widgets`              | 嵌入 VI 播放機和見解，並在他們之間進行溝通。                      |
+| `url-generator`                   | 根據使用者指定的選項生成小部件自訂嵌入 URL。             |
+| `html5-player`                    | 使用預設 HTML5 視頻播放機嵌入 VI 見解。                           |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何觀看和編輯影片索引子深入解析的相關資訊，請參閱[觀看和編輯影片索引子深入](video-indexer-view-edit.md)解析。
+有關如何查看和編輯視頻索引子見解的資訊，請參閱[查看和編輯視頻索引子見解](video-indexer-view-edit.md)。
 
-此外，請參閱[影片索引子 CodePen](https://codepen.io/videoindexer/pen/eGxebZ)。
+此外，請查看[視頻索引子代碼筆](https://codepen.io/videoindexer/pen/eGxebZ)。

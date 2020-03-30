@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace 和 AppSource 發行指南
 description: 適用於應用程式與服務發行者的 Azure Marketplace 和 Microsoft AppSource 概觀。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 368cb4fdce23e695c074b4893dcdc314c974dd54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288388"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace 和 AppSource 發行指南
 
@@ -31,7 +30,7 @@ Marketplace 發行指南的目的是協助新的與現有的發行者了解如�
 
 本指南內含技術和商務資訊，會逐步說明您在列出應用程式和服務之前所需執行的步驟。 請使用目錄來移至本指南的不同小節，並直接前往重要主題。
 
-若有 Azure Marketplace 和 AppSource 的相關問題，請以 [問題類型] > [Marketplace 上線] 類型傳送訊息給我們。  我們的 Marketplace 發行者上線團隊很樂意提供協助！ 
+有關 Azure 應用商店和 AppSource 的問題，請向我們發送 **"問題類型** > **應用商店入職"下**的消息。 我們的 Marketplace 發行者上線團隊十分樂意提供協助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>參與 Marketplace 的優點 
 
@@ -53,7 +52,7 @@ Marketplace 是與 Microsoft 共同舉辦上市活動的跳板，有助於促進
 
 透過 Marketplace 提供的見解和分析，了解產品系列的績效表現。 可進一步了解行銷活動績效、訂單與支出，並了解如何讓解決方案的行銷活動發揮最大效益。
 
-### <a name="commercial-marketplace-benefits"></a>商業 marketplace 權益 
+### <a name="commercial-marketplace-benefits"></a>商業市場優勢 
 
 新刊登在 Marketplace 中的商品會享有多樣化的免費權益，以協助合作夥伴在 Marketplace 中拓展業務。 這些權益分為以下類別： 
 
@@ -63,9 +62,9 @@ Marketplace 是與 Microsoft 共同舉辦上市活動的跳板，有助於促進
 
 *   共同銷售：展開您的旅程或加快腳步，透過 Marketplace 與 Microsoft 合作銷售您的產品。 可取用各種方案與支援，與 Microsoft 團隊一同推動聯合銷售。
 
-[提交解決方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。  如需詳細資訊，請參閱[如何建立合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+[提交解決方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。  有關詳細資訊[，請參閱如何創建合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-深入瞭解您的[商業 marketplace 權益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
+瞭解更多關於您的[商業市場優勢](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>後續步驟
 

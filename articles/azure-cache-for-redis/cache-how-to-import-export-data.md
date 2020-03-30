@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278086"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
@@ -36,19 +36,19 @@ ms.locfileid: "79278086"
 >
 >
 
-1. 若要匯入一或多個匯出的快取 Blob，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表] 按一下 [匯入資料]。
+1. 若要匯入一或多個匯出的快取 Blob，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表]**** 按一下 [匯入資料]****。
 
     ![匯入資料](./media/cache-how-to-import-export-data/cache-import-data.png)
-2. 按一下 [選擇 Blob] ，然後選取包含要匯入之資料的儲存體帳戶。
+2. 按一下 [選擇 Blob] **** ，然後選取包含要匯入之資料的儲存體帳戶。
 
     ![Choose storage account](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. 按一下包含要匯入之資料的容器。
 
     ![選擇容器](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
-4. 按一下 blob 名稱左側的區域以選取一或多個 blob，即可加以匯入，然後按一下 [選取]。
+4. 按一下 blob 名稱左側的區域以選取一或多個 blob，即可加以匯入，然後按一下 [選取] ****。
 
     ![選擇 blob](./media/cache-how-to-import-export-data/cache-import-choose-blobs.png)
-5. 按一下 [匯入] 開始匯入程序。
+5. 按一下 [匯入] **** 開始匯入程序。
 
    > [!IMPORTANT]
    > 快取用戶端無法在匯入程序期間存取快取，而且在快取中的所有現有資料都會刪除。
@@ -64,20 +64,20 @@ ms.locfileid: "79278086"
 ## <a name="export"></a>匯出
 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在進行匯出程序的期間，會在裝載 Azure Cache for Redis 伺服器執行個體的 VM 上建立暫存檔案，然後將檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
 
-1. 若要將目前的快取內容匯出至儲存體，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表] 按一下 [匯出資料]。
+1. 若要將目前的快取內容匯出至儲存體，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表]**** 按一下 [匯出資料]****。
 
     ![選擇儲存體容器](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
-2. 按一下 [選擇儲存體容器] ，然後選取所需的儲存體帳戶。 儲存體帳戶必須與您的快取位於相同的訂用帳戶和區域中。
+2. 按一下 [選擇儲存體容器] **** ，然後選取所需的儲存體帳戶。 儲存體帳戶必須與您的快取位於相同的訂用帳戶和區域中。
 
    > [!IMPORTANT]
    > 匯出使用分頁 Blob，傳統和 Resource Manager 儲存體帳戶支援這些 Blob，但 Blob 儲存體帳戶目前不支援。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
    >
 
     ![儲存體帳戶](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
-3. 選擇所需的 blob 容器，然後按一下 [選取]。 若要使用新的容器，請按一下 [新增容器] 先加以新增，然後從清單中選取它。
+3. 選擇所需的 blob 容器，然後按一下 [選取] ****。 若要使用新的容器，請按一下 [新增容器] **** 先加以新增，然後從清單中選取它。
 
     ![選擇儲存體容器](./media/cache-how-to-import-export-data/cache-export-data-container.png)
-4. 輸入 [Blob 名稱前置詞]，然後按一下 [匯出] 以啟動匯出程序。 Blob 名稱前置詞可用來做為此匯出作業所產生之檔案名稱的前置詞。
+4. 輸入 [Blob 名稱前置詞]****，然後按一下 [匯出]**** 以啟動匯出程序。 Blob 名稱前置詞可用來做為此匯出作業所產生之檔案名稱的前置詞。
 
     ![匯出](./media/cache-how-to-import-export-data/cache-export-data.png)
 
@@ -140,7 +140,7 @@ Azure Cache for Redis 持續性讓您將儲存在 Redis 快取中的資料存留
 可以。如需 PowerShell 指示，請參閱[匯入 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-import-an-azure-cache-for-redis) 和[匯出 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-export-an-azure-cache-for-redis)。
 
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>我在匯入/匯出作業期間收到逾時錯誤。 這代表什麼意思？
-如果您在初始化作業之前停留在 [匯入資料] 或 [匯出資料] 刀鋒視窗超過 15 分鐘，您會收到類似下列範例錯誤訊息的錯誤：
+如果您在初始化作業之前停留在 [匯入資料]**** 或 [匯出資料]**** 刀鋒視窗超過 15 分鐘，您會收到類似下列範例錯誤訊息的錯誤：
 
     The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 

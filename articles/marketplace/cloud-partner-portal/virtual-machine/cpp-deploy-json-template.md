@@ -1,19 +1,18 @@
 ---
-title: Azure VHD 部署範本 |Azure Marketplace
+title: Azure VHD 部署範本 |Azure 應用商店
 description: 列出從使用者虛擬硬碟部署新的 Azure 虛擬機器所需的 Azure Resource Manager 範本。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821418"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277866"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>虛擬硬碟部署範本 
 

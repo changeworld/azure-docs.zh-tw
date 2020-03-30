@@ -1,20 +1,18 @@
 ---
-title: 新增銀行和稅務資訊 |Azure Marketplace
+title: 添加銀行和稅務資訊 |Azure 應用商店
 description: 將銀行和稅務資訊新增至您的「開發人員中心」帳戶。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: blevens
-ms.openlocfilehash: e9ad4841d805b604d0f44a9e0dc08eed15aa9c1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 40a73e386ce618d7254ec7cb1f95dcde6f82d65a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431998"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286654"
 ---
 # <a name="add-bank-and-tax-information"></a>新增銀行和稅務資訊  
 
@@ -22,7 +20,7 @@ ms.locfileid: "75431998"
 
 ## <a name="partner-center"></a>合作夥伴中心
 
-現在會在合作夥伴中心內管理銀行和稅務資訊。 您可以在[管理合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)的 [商業 Marketplace 總覽] 頁面中找到設定這些設定的指示。
+銀行和稅務資訊現在在合作夥伴中心內管理。 有關配置這些設置的說明，請參閱[管理合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)的"商業市場概述"頁面。
 
 
 ## <a name="next-steps"></a>後續步驟

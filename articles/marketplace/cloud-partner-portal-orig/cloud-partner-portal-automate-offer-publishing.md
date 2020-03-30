@@ -1,19 +1,18 @@
 ---
-title: 自動化供應專案發行 |Azure Marketplace
+title: 自動發佈產品/Azure 應用商店
 description: 說明如何以程式設計方式，將虛擬機器發佈工作流程自動化。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6464c8354c9d56092380e4b76c1ea962f5102c72
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280332"
 ---
 <a name="automate-offer-publishing"></a>自動發佈供應項目
 =========================

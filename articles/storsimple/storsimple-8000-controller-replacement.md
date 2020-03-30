@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267920"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的控制器模組
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何取下並更換 StorSimple 裝置中的一個或兩個控制器模組。 它也會討論單一和雙重控制器更換案例的基礎邏輯。
 
 > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "79267920"
 當 Microsoft Azure StorSimple 裝置上的兩個控制器之一故障、無法運作或遺漏時，您必須更換單一控制器。
 
 ### <a name="single-controller-replacement-logic"></a>單一控制器更換邏輯
-在單一控制器更換中，您應該先取下故障的控制器。 （裝置中的其餘控制器是作用中的控制器。）當您插入更換控制器時，會發生下列動作：
+在單一控制器更換中，您應該先取下故障的控制器。 （設備中的剩餘控制器是活動控制器。插入更換控制器時，將執行以下操作：
 
 1. 更換控制器立即開始與 StorSimple 裝置進行通訊。
 2. 作用中控制器的虛擬硬碟 (VHD) 快照會複製在更換控制器上。
@@ -78,8 +78,8 @@ ms.locfileid: "79267920"
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>若要取下單一故障的控制器模組
-1. 在 Azure 入口網站中，移至 StorSimple 裝置管理員服務，按一下 [裝置]，然後按一下您想要監視的裝置名稱。
-2. 移至 [監視] > [硬體健康狀態]。 控制器 0 或控制器 1 的狀態應該是紅色，表示故障。
+1. 在 Azure 入口網站中，移至 StorSimple 裝置管理員服務，按一下 [裝置]****，然後按一下您想要監視的裝置名稱。
+2. 移至 [監視] > [硬體健康狀態]****。 控制器 0 或控制器 1 的狀態應該是紅色，表示故障。
    
    > [!NOTE]
    > 單一控制器更換中的故障控制器一律為待命控制器。
@@ -100,7 +100,7 @@ ms.locfileid: "79267920"
 5. 依照[取下控制器](#remove-a-controller)中的步驟，取下故障的控制器。
 6. 在取下故障控制器的同一插槽中安裝原廠更換品。 這樣會觸發單一控制器更換邏輯。 如需詳細資訊，請參閱[單一控制器更換邏輯](#single-controller-replacement-logic)。
 7. 當單一控制器更換邏輯在背景中進行時，請重新連接纜線。 請完全依照更換之前連接纜線的相同方式，小心地連接所有纜線。
-8. 在控制器重新啟動之後，請檢查 Azure 入口網站中的 [控制器狀態] 和 [叢集狀態]，以確認控制器回到良好的狀態且處於待命模式。
+8. 在控制器重新啟動之後，請檢查 Azure 入口網站中的 [控制器狀態]**** 和 [叢集狀態]****，以確認控制器回到良好的狀態且處於待命模式。
 
 > [!NOTE]
 > 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表呈現時，您便知道更換已完成。 如果功能表未在啟動控制器更換的兩個小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
@@ -120,7 +120,7 @@ ms.locfileid: "79267920"
    2. 它是否為叢集的一部分？
    3. 對等控制器是否執行中並構成叢集？
       
-      如果上述狀況無一成立，則控制器會尋找最新的每日備份 (位於磁碟機 S 上的 **nonDOMstorage** )。 控制器會從備份複製 VHD 的最新快照。
+      如果上述條件皆不成立，則控制器會尋找最近的每日備份 (位於磁碟機 S 上的 **nonDOMstorage** 中)。 控制器會從備份複製 VHD 的最新快照。
 2. 在位置 0 的控制站會使用快照集映像本身。
 3. 同時，插槽 1 中的控制器會等到控制器 0 完成映像和啟動。
 4. 在控制器 0 啟動之後，控制器 1 會偵測到控制器 0 所建立的叢集，這會觸發單一控制器更換邏輯。 如需詳細資訊，請參閱[單一控制器更換邏輯](#single-controller-replacement-logic)。
@@ -153,7 +153,7 @@ ms.locfileid: "79267920"
    4. 在第一個控制器重新啟動並處於狀況良好的狀態之後，系統就會執行。
       
       > [!NOTE]
-      > 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表出現時，您便知道更換已完成。 如果功能表未在啟動控制器更換的 2.5 個小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
+      > 如果您是透過序列主控台監視裝置，則可能會在控制器從更換程序中復原時看到多次重新啟動。 當序列主控台功能表出現時，您便知道更換已完成。 如果功能表未在控制器開始更換的 2.5 小時內出現，請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
      
 ## <a name="remove-a-controller"></a>取下控制器
 請使用下列程序，從 StorSimple 裝置中取下故障的控制器模組。
@@ -195,7 +195,7 @@ ms.locfileid: "79267920"
    > [!NOTE]
    > 最多可能需要 5 分鐘，控制器和 LED 即會啟動。
   
-5. 若要確認更換成功，請在 Azure 入口網站中，瀏覽至 [監視] > [硬體健康狀態]，並確定控制器 0 及控制器 1 兩者都狀況良好 (狀態為綠色)。
+5. 要驗證替換是否成功，在 Azure 門戶中，轉到設備，然後導航到**監視器** > **硬體運行狀況**，並確保控制器 0 和控制器 1 都正常（狀態為綠色）。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>識別您裝置上的作用中控制器
 有許多情況，例如第一次裝置註冊或控制器更換，會要求您在 StorSimple 裝置上找出作用中控制器。 作用中控制器會處理所有磁碟韌體和網路作業。 您可以使用下列任一方法來識別作用中控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "79267920"
 接著說明上述各程序。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 入口網站來識別作用中控制器
-在 Azure 入口網站中，瀏覽至您的裝置，並移至 [監視] > [硬體健康狀態]，捲動至 [控制器]區段。 在這裡您可以確認哪一個控制站作用中。
+在 Azure 門戶中，導航到設備，然後**監視** > **硬體運行狀況**，然後滾動到 **"控制器"** 部分。 在這裡您可以確認哪一個控制站作用中。
 
 ![識別 Azure 入口網站中的作用中控制器](./media/storsimple-controller-replacement/IC752072.png)
 

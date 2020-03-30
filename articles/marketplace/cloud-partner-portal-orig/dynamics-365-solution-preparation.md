@@ -1,20 +1,18 @@
 ---
 title: Dynamics 365 解決方案準備
 description: 用於封裝、安裝和解除安裝元件的架構
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricarod.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bcb3bb63f305aeb98efda3baf0f6661bd7f67a7c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824237"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278581"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 解決方案準備
 
@@ -26,7 +24,7 @@ Dynamics 365 解決方案系統是用於封裝、安裝和解除安裝元件的�
 
 _**注意：** 在接下來的套件範例中，我們會假設方案名稱是 "SampleSolution.zip"_
 
-若您是新的 ISV，您前往此處獲得關於建立解決方案的詳細資料：[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
+如果您是新的 ISV，您可以在此處獲取有關創建解決方案的更多詳細資訊：[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 
 如果您的解決方案需要支援的資料：
 

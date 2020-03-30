@@ -1,7 +1,7 @@
 ---
-title: 新增資料行：模組參考
+title: 添加列：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [新增資料行] 模組來串連兩個資料集。
+description: 瞭解如何在 Azure 機器學習中使用"添加列"模組串聯兩個資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,41 +9,41 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 55fe3a2a4fd0f45b0873e47f29b7ea013558be40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456773"
 ---
-# <a name="add-columns-module"></a>新增資料行模組
+# <a name="add-columns-module"></a>添加列模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文介紹 Azure 機器學習設計器（預覽）中的模組。
 
-使用此模組來串連兩個資料集。 您可以將指定為輸入的兩個資料集的所有資料行結合，以建立單一資料集。 如果您需要串連兩個以上的資料集，請使用多個**新增資料行**的實例。
+使用此模組可以串聯兩個資料集。 合併指定為輸入的兩個資料集中的所有列以創建單個資料集。 如果需要串聯兩個以上資料集，請使用 **"添加列**"的多個實例。
 
 
 
-## <a name="how-to-configure-add-columns"></a>如何設定新增資料行
-1. 將 [**新增資料行**] 模組新增至您的管線。
+## <a name="how-to-configure-add-columns"></a>如何配置"添加列"
+1. 將 **"添加列"** 模組添加到管道中。
 
-2. 連接您想要串連的兩個資料集。 如果您想要合併兩個以上的資料集，您可以結合數個**加入欄**的組合。
+2. 連接要串聯的兩個資料集。 如果要合併兩個以上資料集，可以將 **"添加列**"的多個組合連結在一起。
 
-    - 您可以結合兩個具有不同資料列數目的資料行。 輸出資料集會以較小來源資料行中每一個資料列的遺漏值填補。
+    - 可以合併兩個行數不同的列。 輸出資料集將填充較小的源列中每行缺少值。
 
-    - 您無法選擇要新增的個別資料行。 當您使用 [**加入資料行**] 時，會串連每個資料集的所有資料行。 因此，如果您只想要加入資料行的子集，請使用 [選取資料集中的資料行]，以您想要的資料行來建立資料集。
+    - 您不能選擇要添加的單個列。 使用 **"添加列**"時，將串聯每個資料集中的所有列。 因此，如果只想添加列的子集，請使用"資料集中選擇列"使用所需的列創建資料集。
 
-3. 執行管道。
+3. 提交管道。
 
 ### <a name="results"></a>結果
-執行管線之後：
+管道運行後：
 
-- 若要查看新資料集的前幾個資料列，請以滑鼠右鍵按一下 [**加入**資料行] 模組，然後選取 [視覺化]。 或者，選取模組並切換至右窗格中的 [**輸出**] 索引標籤，按一下**埠輸出**中的長條圖圖示，將結果視覺化。
+- 要查看新資料集的第一行，請按右鍵 **"添加列"** 模組並選擇"視覺化"。 或者選擇模組並切換到右側面板中的 **"輸出"** 選項卡，按一下 **"埠輸出**"中的長條圖圖示以視覺化結果。
 
 新資料集的資料行數目等於兩個輸入資料集的資料行總和。
 
-如果輸入資料集內有兩個數據行具有相同的名稱，則會將數值尾碼加入至資料行的名稱。 例如，如果有兩個名為 TargetOutcome 的資料行實例，則會將左資料行重新命名 TargetOutcome_1 而且會將右邊的資料行重新命名為 TargetOutcome_2。
+如果輸入資料集中有兩個具有相同名稱的列，則將數位尾碼添加到列的名稱中。 例如，如果一個名為 Target結果的列有兩個實例，則左列將重命名TargetOutcome_1，右列將重命名TargetOutcome_2。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

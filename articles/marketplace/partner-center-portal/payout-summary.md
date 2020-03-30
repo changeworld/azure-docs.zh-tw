@@ -1,179 +1,178 @@
 ---
-title: 商業 marketplace 支出摘要 |Azure Marketplace
-description: '[付款摘要] 會顯示您在供應專案中所獲得之金錢的詳細資料。 此外，它也可讓您知道何時會收到付款，以及您要支付多少費用。'
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 商業市場支付摘要 |Azure 應用商店
+description: "\"付款\"摘要可顯示有關您通過優惠賺取的資金的詳細資訊。 也可以讓您了解何時會收到付款與付款金額。"
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269896"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288694"
 ---
-# <a name="payout-reporting"></a>支出報告
+# <a name="payout-reporting"></a>支付報告
 
-[付款[**摘要**](https://docs.microsoft.com/windows/uwp/publish/payout-summary)] 會顯示您在 Microsoft 所獲得之金錢的詳細資料。 此外，它也可讓您知道何時會收到付款，以及您要支付多少費用。
+[**"付款"摘要**](https://docs.microsoft.com/windows/uwp/publish/payout-summary)顯示您在 Microsoft 賺取的資金的詳細資訊。 也可以讓您了解何時會收到付款與付款金額。
 
-如果您在 Azure Marketplace 中銷售供應專案，您也會在付款**摘要**中看到成功支出的資訊。 如需有關 Azure Marketplace 付款的詳細資訊，請參閱[Microsoft Azure Marketplace 參與原則](https://go.microsoft.com/fwlink/p/?LinkId=722436)和[Microsoft Azure Marketplace 發行者合約](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
+如果在 Azure 應用商店中銷售產品，您還將在 **"付款摘要**"中看到有關成功付款的資訊。 有關 Azure 應用商店付款的詳細資訊，請參閱[Microsoft Azure 應用商店參與策略](https://go.microsoft.com/fwlink/p/?LinkId=722436)和[Microsoft Azure 應用商店發行者協定](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
 
 > [!NOTE]
-> 若要符合付款資格，您的繼續作業必須達到 $50 的[付款閾值](payment-thresholds-methods-timeframes.md)。 如需付款閾值的詳細資訊，請參閱此頁面並回顧[Microsoft Azure Marketplace 發行者合約](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
+> 要有資格獲得付款，您的收益必須達到 50 美元的[付款閾值](payment-thresholds-methods-timeframes.md)。 有關付款閾值的詳細資訊，請參閱此頁面並查看[Microsoft Azure 應用商店發佈商協定](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
 
-- [存取支出報表的角色和許可權](#roles-and-permission-to-access-the-payout-report)
-- [支出報表： Cloud Partner 入口網站與合作夥伴中心之間的差異](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
+- [訪問支出報告的角色和許可權](#roles-and-permission-to-access-the-payout-report)
+- [付款報告：雲合作夥伴門戶和合作夥伴中心之間的差異](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
 - [客戶類型](#customer-types)
-- [支出和使用量之間的 Corelation](#corelation-between-payout-and-usage)
-- [交易記錄下載](#transaction-history-download-export)
-- [帳單問題與支援](#billing-questions-and-support)
+- [付款和使用之間的共同關係](#corelation-between-payout-and-usage)
+- [交易歷史記錄下載](#transaction-history-download-export)
+- [計費問題和支援](#billing-questions-and-support)
 
-## <a name="roles-and-permission-to-access-the-payout-report"></a>存取支出報表的角色和許可權
+## <a name="roles-and-permission-to-access-the-payout-report"></a>訪問支出報告的角色和許可權
 
-| 報表/頁面    | 帳戶擁有者    | Manager  | 開發人員 | 商務參與者 |  財務參與者 | 市場行銷人員 |
+| 報告/頁面    | 帳戶擁有者    | Manager  | 開發人員 | 業務貢獻者 |  財務貢獻者 | 行銷人員 |
 |------------------|------------------|----------|-----------|----|----|-----|
-| 取得報告（包括近乎即時的資料） | 可查看 | 可查看 | 不允許存取 | 不允許存取 | 可查看 | 不允許存取 |
-| 意見反應報告/回應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 可以查看和傳送意見反應 | 不允許存取 | 不允許存取 | 可以查看和傳送意見反應 |
-| 健康情況報告（包括近乎即時的資料） | 可查看 | 可查看 | 可查看 | 可查看 | 不允許存取 | 不允許存取 |
-| 使用方式報表 | 可查看 | 可查看 | 可查看 | 可查看 | 不允許存取 | 不允許存取 |
-| 支出帳戶 | 可以更新 | 不允許存取 | 不允許存取 | 不允許存取 | 可以更新 | 不允許存取 |
-| 稅務設定檔 | 可以更新 | 不允許存取 | 不允許存取 | 不允許存取 | 可以更新 | 不允許存取 |
-| 支出摘要 | 可查看 | 不允許存取 | 不允許存取 | 不允許存取 | 可查看 | 不允許存取 |
+| 採集報告（包括近即時資料） | 可檢視 | 可檢視 | 沒有存取權 | 沒有存取權 | 可檢視 | 沒有存取權 |
+| 意見反應報告/回應 | 可檢視和傳送意見反應 | 可檢視和傳送意見反應 | 可檢視和傳送意見反應 | 沒有存取權 | 沒有存取權 | 可檢視和傳送意見反應 |
+| 健康報告（包括近即時資料） | 可檢視 | 可檢視 | 可檢視 | 可檢視 | 沒有存取權 | 沒有存取權 |
+| 使用方式報告 | 可檢視 | 可檢視 | 可檢視 | 可檢視 | 沒有存取權 | 沒有存取權 |
+| 支付帳戶 | 可更新 | 沒有存取權 | 沒有存取權 | 沒有存取權 | 可更新 | 沒有存取權 |
+| 稅金設定檔 | 可更新 | 沒有存取權 | 沒有存取權 | 沒有存取權 | 可更新 | 沒有存取權 |
+| 支出摘要 | 可檢視 | 沒有存取權 | 沒有存取權 | 沒有存取權 | 可檢視 | 沒有存取權 |
 
-## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>支出報表： Cloud Partner 入口網站與合作夥伴中心之間的差異
+## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>付款報告：雲合作夥伴門戶和合作夥伴中心之間的差異
 
-| | 雲端合作夥伴入口網站 | 夥伴中心 |
+| | 雲端合作夥伴入口網站 | 合作夥伴中心 |
 |---------|---------|---------|
 | 連結 | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)和[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| 導覽 | 深入解析支出中提供的支出報告 | 合作夥伴中心提供的支出報告-支出圖示 |
-| 影響範圍 | <ul> <li>針對進行中、收集和付費的集合，可以看到每行專案的交易 </li> <li>報表-顯示訂單建立後的所有明細專案，包括進行中的收集和進行中的帳單，以及尚未符合資格的收集狀態和明細專案。 </li> </ul> | <ul> <li>會在專案被視為合格收益後顯示。</li> <li>客戶必須先支付給 Microsoft，然後 Isv 才會看到付款報告開始。</li> <li>支出報表將不會顯示收集進行中，且正在進行計費。  </li> </ul>  |
-| 交易尚未就緒，無法支付支出 | 計費進行中 | 下一個估計付款：支出狀態為 [未處理] 狀態。  |
-| 支出狀態 |  | 尚未 <br> 收益符合付款資格。 如獎勵計畫的程式指南中所定義，它會維持在此狀態的冷卻期間。 <br> <br> 提交 <br> 付款順序-在處理付款之前產生暫止的內部評論。 <br> <br> 寄件日期： <br> 付款已傳送到您的銀行。 |
+| 導覽 | 在見解支付中提供的付款報告 | 合作夥伴中心提供的付款報告 – 付款圖示 |
+| 影響範圍 | <ul> <li>每行交易記錄可見，用於正在進行的收集、收集和支付 </li> <li>報告 = 在創建採購訂單後顯示所有行專案，包括正在進行的收集和正在進行的計費，以及尚未有資格付款的集合狀態和行專案。 </li> </ul> | <ul> <li>一旦專案被視為合格收入，則顯示它們。</li> <li>客戶先向微軟付款，然後 ISV 可以看到開始付款報告。</li> <li>付款報告不會顯示正在進行的集合和正在進行的計費。  </li> </ul>  |
+| 交易未準備好付款 | 正在進行的計費 | 下一個估計付款：付款狀態處於未處理狀態。  |
+| 付款狀態 |  | 未處理： <br> 收入有資格獲得付款。 它在激勵計畫計劃指南中定義的冷卻期間保持此狀態。 <br> <br> 即將 到來： <br> 付款單生成的待定內部審核，然後處理付款。 <br> <br> 寄件日期： <br> 付款已發送到您的銀行。 |
 
 ## <a name="customer-types"></a>客戶類型
 
-### <a name="enterprise-agreement"></a>Enterprise 合約
+### <a name="enterprise-agreement"></a>企業協定
 
 系統會針對市集軟體授權，向沒有 Enterprise 合約的客戶每月計費。 系統會透過每季呈現的發票，向有 Enterprise 合約的客戶計費。
 
 ### <a name="credit-cards-and-monthly-invoice"></a>信用卡和每月發票
 
-客戶也可以使用信用卡和每月發票來付款。 在此情況下，您的軟體授權費用將以每月計費。
+客戶也可以使用信用卡和每月發票來付款。 在這種情況下，您的軟體許可費將按月計費。
 
 ### <a name="csp-and-direct-pay-users"></a>CSP 和直接付費使用者
 
 例如，如果客戶使用信用卡購買。
 
-## <a name="corelation-between-payout-and-usage"></a>支出和使用量之間的 Corelation
+## <a name="corelation-between-payout-and-usage"></a>付款和使用之間的共同關係
 
-|描述    |    Date  | 訂單/使用量  | 支付 |
+|描述    |    Date  | 訂單/使用方式  | 支付 |
 |----------|----------|-----------|-------------|
-|訂單期間   | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單 ID</li> <li>CustomerId</li> </ul> <br> **使用量** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> |  |
-|期間結束 (月)   | 2019年8月30日 | | |
+|訂單期間   | 8 月 15， 2019 - 8 月 30， 2019 | **關聯屬性訂單** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>（使用參考）採購記錄Id/行專案Id</li> <li> 估計延長費用 <br> 預估付款 (PC) </li> </ul> |  |
+|期間結束 (月)   | 8 月 30， 2019 | | |
 |計費日期 | 2019年9月1日 | | |
 |客戶付款日期 | 2019年9月1日 | | |
-|委付期間 (僅信用卡，30 天) | 2019年9月1日-2019 年9月30日 | | **相互關聯屬性訂單：** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 尚未 |
+|委付期間 (僅信用卡，30 天) | 九月 1， 2019 - 九月 30， 2019 | | **關聯屬性訂單：** <br> <ul><li>資產 Id</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用** <br> <ul> <li>資產 Id</li> <li>CustomerId</li> <li>客戶名稱</li> <li>OrderId</li> <li>行專案Id</li> <li>交易金額</li> <li>收入金額 最後支付貨幣</li> </ul> <br> **付款狀態：** 未處理 |
 |收帳期間開始 | 2019年9月1日 | | |
 |收帳期間結束 (最大值，30 天) | 2019年9月30日 | | |
-|付款計算日期 (每月第 15 日) | 2019年10月1日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li>客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 提交 |
-|付款日期 | 2019年10月15日 | | **相互關聯屬性** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送付款 |
+|付款計算日期 (每月第 15 日) | 2019年10月1日 | | **相關屬性** <br> <ul><li>資產 Id</li> <li>客戶識別碼</li> <li>客戶名稱</li> </ul> <br> **使用** <br> <ul> <li>資產 Id</li> <li>CustomerId</li> <li>客戶名稱</li> <li>OrderId</li> <li>行專案Id</li> <li>交易金額</li> <li>收入金額 最後支付貨幣</li> </ul> <br> **付款狀態：** 即將 到來 |
+|付款日期 | 2019年10月15日 | | **相關屬性** <br> <ul><li>資產 Id</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用** <br> <ul> <li>資產 Id</li> <li>CustomerId</li> <li>客戶名稱</li> <li>OrderId</li> <li>行專案Id</li> <li>交易金額</li> <li>收入金額 最後支付貨幣</li> </ul> <br> **付款狀態：** 已發送付款 |
 
-### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enterprise 合約（每季/每月客戶）
+### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企業協定（季度/月度客戶）
 
 | 描述 |    Date  | 使用量 | 支付 |
 |----------|----------|---------|-----------|
-|訂單期間 | 2019年8月15日-8 月30日-2019 | **相互關聯屬性訂單** <br> <ul> <li>訂單 ID</li> <li>CustomerId</li> </ul> <br> **使用方式報表** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>(UsageReference)發票/LineItemId</li> <li> 預估的延伸費用 <br> 預估付款 (PC) </li> </ul> | |
+|訂單期間 | 8 月 15， 2019 - 8 月 30， 2019 | **關聯屬性訂單** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用方式報告** <br> <ul> <li>CustomerId </li> <li>客戶名稱</li> <li>（使用參考）採購記錄Id/行專案Id</li> <li> 估計延長費用 <br> 預估付款 (PC) </li> </ul> | |
 |期間結束 (季) | 2019年9月30日 | | |
 |計費日期 | 2019年10月15日 | | |
 |委付期間 (僅信用卡，30 天) | n/a | | |
 |收帳期間開始 | 2019年10月15日 | | |
-|僅信用卡，30天 | 2019年11月1日至2019年11月30日 | | |
+|僅限信用卡，30 天 | 2019年11月1日 - 2019年11月30日 | | |
 |收帳期間結束 (最大值，90 天) | 2020年1月15日 | | |
 |客戶付款日期 | 2019年12月30日 | | |
-|支出計算 | 2020年1月15日 | | |
-|付款日期 | 2020年2月15日 | | **以季為基礎的客戶** <br> <br> **訂單報表** <br> <ul><li>AssetId</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用量** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客戶名稱</li> <li>訂單 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出狀態：** 已傳送 |
+|付款計算 | 2020年1月15日 | | |
+|付款日期 | 2 月 15， 2020 | | **對於基於季度的客戶** <br> <br> **訂單報告** <br> <ul><li>資產 Id</li> <li>客戶識別碼</li> <li> 客戶名稱</li> </ul> <br> **使用** <br> <ul> <li>資產 Id</li> <li>CustomerId</li> <li>客戶名稱</li> <li>OrderId</li> <li>行專案Id</li> <li>交易金額</li> <li>收入金額 最後支付貨幣</li> </ul> <br> **付款狀態：** 已發送 |
 
 ## <a name="transaction-history-download-export"></a>交易記錄下載匯出
 
-此選項會提供您在 [交易歷程記錄] 頁面中看到的每個賺取明細專案的下載、賺取類型、日期、相關聯的交易金額、客戶、產品，以及適用于獎勵計畫的其他交易詳細資料。
+此選項提供您在交易記錄頁中看到的每個收益行專案的下載、收入類型、日期、關聯交易金額、客戶、產品和其他適用于獎勵計畫的交易詳細資訊。
 
 | 資料行名稱     | 描述    |
 |-------------|-------------------------------|
-| earningId                      | 每個收益的唯一識別碼                                                                                                       |
-| participantId                  | 方案下合作夥伴賺取的主要身分識別                                                                            |
-| participantIdType              | 如果是商店程式和 Azure Marketplace，則大多是獎勵計畫和賣方的程式識別碼                                          |
-| participantName                | 收益合作夥伴的名稱                                                                                                              |
-| partnerCountryCode             | 賺取合作夥伴的地點/國家/地區                                                                                                  |
-| programName                    | 獎勵/商店計畫名稱                                                                                                             |
-| transactionId                  | 交易的唯一識別碼                                                                                                    |
-| transactionCurrency            | 原始客戶交易發生的貨幣（不是合作夥伴位置貨幣）                                     |
-| transactionDate                | 交易的日期。 適用于許多交易貢獻給一個收益的程式                                           |
-| transactionExchangeRate        | 用來顯示對應交易美元金額的匯率                                                                 |
-| transactionAmount              | 原始交易貨幣中的交易數量（根據產生的收益）                                              |
-| transactionAmountUSD           | 交易金額（美元）                                                                                                                |
-| 向上                          | 表示獲得收益的商務規則                                                                                                  |
-| earningRate                    | 交易金額所套用的獎勵率，以產生收益                                                                      |
-| quantity                       | 根據程式而有所不同。 表示交易式程式的計費數量                                                            |
-| quantityType                   | 表示數量的類型，例如：計費的數量、MAU                                                                                     |
-| earningType                    | 指出是否為費用、退款、合作基金、銷售等。                                                                                          |
-| earningAmount                  | 原始交易貨幣中的賺取金額                                                                                      |
-| earningAmountUSD               | 賺取金額（美元）                                                                                                                    |
-| earningDate                    | 賺取的日期                                                                                                                      |
-| calculationDate                | 在系統中計算賺取的日期                                                                                            |
-| earningExchangeRate            | 用來顯示對應美元量的匯率                                                                                  |
-| exchangeRateDate               | 用來計算 EarningAmount 美元的匯率日期                                                                                   |
-| paymentAmountWOTax             | 僅限「已傳送」付款的貨幣金額（不含稅）                                                                 |
-| paymentCurrency                | 付款設定檔中由合作夥伴選擇的貨幣付款。 僅針對已傳送的付款顯示                                                   |
-| paymentExchangeRate            | 使用 ExchangeRateDate 計算付款貨幣中 paymentAmountWOTax 的匯率                                            |
-| paymentId            | 付款的唯一識別碼。 這個數位會顯示在您的 bank 語句中                                            |
-| paymentStatus            | 付款狀態                                            |
-| paymentStatusDescription            | 付款狀態的易記描述                                            |
-| Id                     | 永遠為空白                                                                                                                     |
-| customerName                   | 永遠為空白                                                                                                                     |
-| partNumber                     | 永遠為空白                                                                                                                     |
-| productName                    | 連結至交易的產品名稱                                                                                                       |
-| productId                      | 唯一的產品識別碼                                                                                                                |
-| parentProductId                | 唯一的父系產品識別碼。 注意：如果交易沒有父產品，則為 [父系產品識別碼 = 產品識別碼]。 |
-| parentProductName              | 父產品的名稱。 注意：如果交易沒有父產品，則為 [父系產品名稱 = 產品名稱]。   |
-| productType                    | 產品的類型（例如應用程式、附加元件、遊戲等等）                                                                                        |
-| invoiceNumber                  | 發票編號（僅適用于 EA）                                                                                                  |
-| resellerId                     | 轉售商識別碼                                                                                                                      |
-| resellerName                   | 轉售商名稱                                                                                                                            |
-| transactionType                | 交易類型（例如購買、退款、反轉、退款等等）                                                               |
-| localProviderSeller            | 記錄的本機提供者/賣方                                                                                                          |
-| taxRemitted                    | 已匯款的稅額（銷售、使用或 加值稅/GST 稅金）。                                                                                   |
-| taxRemitModel                  | 負責支付稅金（銷售、使用或 加值稅/GST 稅金）的合作物件。                                                                    |
-| storeFee                       | Microsoft 保留的金額，讓應用程式或附加元件可以在商店中使用。                                            |
-| transactionPaymentMethod       | 用於交易的客戶付款條件（例如卡片、行動貨運公司帳單、PayPal 等等）                                |
-| tpan                           | 表示協力廠商 ad 網路                                                                                                     |
-| Customercountrycomparer                | 客戶國家/地區                                                                                                                         |
-| customerCity                   | 客戶城市                                                                                                                            |
-| customerState                  | 客戶狀態                                                                                                                           |
-| customerZip                    | 客戶郵遞區號                                                                                                                 |
+| 盈利 Id                      | 每個收入的唯一識別碼                                                                                                       |
+| 參與者Id                  | 根據計畫賺取的合作夥伴的主要身份                                                                            |
+| 參與者 IdType              | 主要用於激勵計畫和商店計畫和 Azure 應用商店的賣家 IF 的程式 ID                                          |
+| 參與者姓名                | 收入合作夥伴的姓名                                                                                                              |
+| 合作夥伴國家代碼             | 賺取合作夥伴的位置/國家/地區                                                                                                  |
+| 程式名稱                    | 獎勵/商店計畫名稱                                                                                                             |
+| transactionId                  | 事務的唯一識別碼                                                                                                    |
+| 交易貨幣            | 發生原始客戶交易記錄的貨幣（不是合作夥伴位置貨幣）                                     |
+| 交易日期                | 交易記錄的日期。 適用于許多交易有助於一次收益的程式                                           |
+| 交易匯率        | 用於顯示相應交易美元金額的匯率                                                                 |
+| 交易金額              | 基於生成賺取的原始交易幣種的交易金額                                              |
+| 交易金額           | 以美元為單位的交易金額                                                                                                                |
+| 杠杆                          | 指示收益的商務規則                                                                                                  |
+| 賺取率                    | 對交易金額施加的激勵率以產生收益                                                                      |
+| quantity                       | 因計畫而異。 指示交易程式的計費數量                                                            |
+| 數量類型                   | 指示數量類型，例如：計費數量、MAU                                                                                     |
+| 收入類型                    | 指示是否收費、返利、合作、銷售等。                                                                                          |
+| 收入金額                  | 以原始交易貨幣賺取金額                                                                                      |
+| 賺取金額               | 以美元計價的賺取金額                                                                                                                    |
+| 賺取日期                    | 賺取日期                                                                                                                      |
+| 計算日期                | 在系統中計算收入的日期                                                                                            |
+| 賺取匯率            | 用於顯示相應美元金額的匯率                                                                                  |
+| exchangeRateDate               | 用於計算賺取金額美元的匯率日期                                                                                   |
+| 支付金額WO稅             | 僅"已發送"付款的賺取金額（不含稅款） 以付款到貨幣                                                                 |
+| 付款貨幣                | 支付合作夥伴在付款設定檔中選擇的貨幣。 僅顯示已發送付款                                                   |
+| 付款匯率            | 匯率用於計算使用匯率日期以支付貨幣計算付款金額                                            |
+| 付款 ID            | 付款的唯一識別碼。 此號碼在銀行對帳單中可見                                            |
+| 付款狀態            | [付款狀態]                                            |
+| 付款狀態描述            | 付款狀態的友好描述                                            |
+| customerId                     | 將永遠為空                                                                                                                     |
+| customerName                   | 將永遠為空                                                                                                                     |
+| partNumber                     | 將永遠為空                                                                                                                     |
+| productName                    | 連結到交易記錄的產品名稱                                                                                                       |
+| productId                      | 唯一產品識別碼                                                                                                                |
+| parentProductId                | 唯一的父系產品識別碼。 注意：如果交易記錄沒有父產品，則父產品識別碼 = 產品識別碼。 |
+| 父產品名稱              | 父系產品的名稱。 注意：如果事務沒有父產品，則父產品名稱 = 產品名稱。   |
+| productType                    | 產品類型 (例如應用程式、附加元件、遊戲等等)                                                                                        |
+| 發票編號                  | 發票編號（僅適用于 EA）                                                                                                  |
+| 轉銷商Id                     | 轉銷商識別碼                                                                                                                      |
+| 轉銷商名稱                   | 轉售商名稱                                                                                                                            |
+| 事務類型                | 交易類型 (例如購買、退貨、作廢、退款等等)                                                               |
+| 本地供應商賣方            | 本地供應商/記錄銷售商                                                                                                          |
+| 稅務匯出                    | 免稅金額 (銷售、使用或 VAT/GST 稅額)。                                                                                   |
+| 稅務分類模型                  | 負責代繳稅額之一方 (銷售、使用或 VAT/GST 稅額)。                                                                    |
+| 商店費                       | Microsoft 保留的金額，作為在應用商店中提供應用或載入項的費用。                                            |
+| 交易付款條件       | 交易使用的客戶付款方式 (例如，卡片、行動裝置電信業者帳單、PayPal 等)。                                |
+| 特潘                           | 指示協力廠商廣告網路                                                                                                     |
+| 客戶國家                | 客戶國家/地區                                                                                                                         |
+| 客戶城市                   | 客戶城市                                                                                                                            |
+| 客戶國                  | 客戶狀態                                                                                                                           |
+| 客戶Zip                    | 客戶郵遞區號                                                                                                                 |
 | TenantID                       |                                                                                                                                          |
-| externalReferenceId            | 程式的唯一識別碼                                                                                                        |
-| externalReferenceIdLabel       | 唯一識別碼標籤                                                                                                                  |
-| transactionCountryCode       | 發生交易的國家/地區代碼                                                                                                                  |
-| taxCountry       | 銷售給客戶國家/地區                                                                                                                  |
-| taxState       | 銷售給客戶狀態                                                                                                                  |
-| taxCity       | 銷售給客戶城市                                                                                                                  |
-| taxZipCode       | 銷售給客戶 Zip                                                                                                                  |
-| LicensingProgramName       |                                                                                                                   |
-| 程式碼       | 要與程式名稱對應的字串                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | 在最後一個付款貨幣中的賺取金額（如果未支付先前付款，欄位將會是空的）                                                                                                                   |
-| lastPaymentCurrency       | [上次付款貨幣] （如果未支付先前付款，欄位將會是空的）                                                                                                                   |
-| AssetId       | Marketplace 服務客戶訂單的唯一識別碼。  它代表交易的採購明細專案。 可以有多個資產。                                                                                                                   |
-| 訂單 ID       | 與客戶的發票相關                                                                                                                   |
-| LineItemId       | 客戶發票中的個別線條                                                                                                                   |
-| 客戶國家/地區       | 客戶提供的國家/地區名稱。  這可能與客戶的 Azure 訂用帳戶中的國家/地區不同。                                                                                                                   |
-| 客戶 EmailAddress       | 終端客戶所提供的電子郵件地址。  這可能與客戶的 Azure 訂用帳戶中的電子郵件地址不同。                                                                                                                   |
-| SkuId       | 發佈期間定義的 SKU 識別碼。 供應專案可能有許多 Sku，但 SKU 只能與單一供應專案相關聯。                                                                                                                   |
+| 外部參考 Id            | 程式的唯一識別碼                                                                                                        |
+| 外部參考IdLabel       | 唯一識別碼標籤                                                                                                                  |
+| 交易國家代碼       | 發生交易的國家/地區代碼                                                                                                                  |
+| 稅務國家       | 銷售給客戶國家/地區                                                                                                                  |
+| 稅務國家       | 已銷售到客戶狀態                                                                                                                  |
+| 稅務城       | 出售給客戶城市                                                                                                                  |
+| 稅務代碼       | 出售給客戶 Zip                                                                                                                  |
+| 許可計畫名稱       |                                                                                                                   |
+| 程式碼       | 使用程式名稱映射的字串                                                                                                                   |
+| 賺取金額 最後支付貨幣       | 以最後付款貨幣賺取金額（如果沒有支付預付款，欄位將為空）                                                                                                                   |
+| 最後支付貨幣       | 上次付款貨幣（欄位將為空，如果未支付預付款）                                                                                                                   |
+| 資產 Id       | 市場服務的客戶訂單的唯一識別碼。  它表示已交易的採購行物料。 可以有多個資產。                                                                                                                   |
+| OrderId       | 與客戶的發票有關                                                                                                                   |
+| 行專案Id       | 客戶發票中的單個行                                                                                                                   |
+| 客戶國家/地區       | 客戶提供的國家/地區名稱。  這可能與客戶 Azure 訂閱中的國家/地區不同。                                                                                                                   |
+| 客戶電子郵件地址       | 最終客戶提供的電子郵件地址。  這可能與客戶 Azure 訂閱中的電子郵件地址不同。                                                                                                                   |
+| SkuId       | 發佈期間定義的 SKU ID。 供應項目可以有多個 SKU，但 SKU 只能與單一供應項目相關聯。                                                                                                                   |
 
 >[!Note]
->您可以透過合作夥伴中心的 Cloud Partner 入口網站或分析 區段的 見解 區段，取得交易發行選項的所有報告和深入解析。
+>交易發佈選項的所有報告和見解均可通過合作夥伴中心的雲合作夥伴門戶或分析部分的"見解"部分獲得。
 
 ## <a name="billing-questions-and-support"></a>計費問題和支援
 
-若要取得有關帳單問題的說明，請洽詢[商業 marketplace 發行者支援](https://aka.ms/marketplacepublishersupport)。
+要獲取有關計費問題的説明，請聯繫[商業市場發佈商支援](https://aka.ms/marketplacepublishersupport)。

@@ -1,5 +1,5 @@
 ---
-title: 在自訂原則中定義 Azure AD 技術設定檔
+title: 在自訂策略中定義 Azure AD 技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔。
 services: active-directory-b2c
@@ -8,27 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79078857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330377"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使用者管理的支援。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。
+Azure 活動目錄 B2C（Azure AD B2C）支援 Azure 活動目錄使用者管理。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。
 
 ## <a name="protocol"></a>通訊協定
 
 **Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **handler** 屬性必須包含通訊協定處理常式組件的完整名稱 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
-遵循[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)Azure AD 技術設定檔包含**AAD 通用**技術設定檔。 Azure AD 技術設定檔未指定通訊協定，因為已在**AAD 通用**技術設定檔中設定通訊協定：
+遵循[自訂策略初學者包](custom-policy-get-started.md#custom-policy-starter-pack)Azure AD 技術設定檔包括**AAD 通用**技術設定檔。 Azure AD 技術設定檔未指定協定，因為協定在**AAD 通用**技術設定檔中配置：
  
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目錄中尋找社交帳戶。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 建立新的社交帳戶。
@@ -58,13 +58,13 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 
 ## <a name="inputclaims"></a>InputClaims
 
-InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建立一個新的。 在所有 Azure AD 技術設定檔的輸入宣告集合中，必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
+InputClaim 元素包含一個聲明，用於查找目錄中的帳戶或創建新帳戶。 所有 Azure AD 技術設定檔的輸入聲明集合中必須有一個輸入聲明元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
 
-若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是在 Azure AD 目錄中唯一識別帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **signInNames. emailAddress**、signInNames、 **userName**或**alternativeSecurityId**。 
+要讀取、更新或刪除現有使用者帳戶，輸入聲明是一個金鑰，用於唯一標識 Azure AD 目錄中的帳戶。 例如 **，objectid、****使用者主名稱**、**登錄名稱.email位址**、**登錄名稱.使用者名**或**替代安全ID。** 
 
-若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **signInNames. emailAddress**或**signInNames. userName**。 針對同盟帳戶： **alternativeSecurityId**。
+要創建新使用者帳戶，輸入聲明是唯一標識本地或聯合帳戶的金鑰。 例如，本地帳戶：**簽名名稱.電子郵件地址**，或**登錄名稱.使用者名**。 對於聯合帳戶：**替代安全Id**。
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
+[InputClaim 轉換](technicalprofiles.md#inputclaimstransformations)元素可能包含用於修改輸入聲明或生成新聲明的輸入聲明轉換元素的集合。
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -92,7 +92,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims**元素包含的所有值，應由原則中的[ClaimsSchema](claimsschema.md)區段內已定義的宣告類型和 Azure AD 屬性名稱之間的可能對應資訊 Azure AD 來保存。
+**持久聲明元素**包含 Azure AD 應保留的所有值，以及策略中聲明[架構](claimsschema.md)部分中已定義的聲明類型和 Azure AD 屬性名稱之間可能映射的資訊。
 
 **AAD-UserWriteUsingLogonEmail** 技術設定檔，可建立新的本機帳戶，持續使用下列宣告：
 
@@ -115,6 +115,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 ## <a name="requirements-of-an-operation"></a>作業需求
 
 - 所有 Azure AD 技術設定檔的宣告包中，只能有一個 **InputClaim** 元素。
+- [使用者設定檔屬性文章](user-profile-attributes.md)介紹支援的 Azure AD B2C 使用者設定檔屬性，可用於輸入聲明、輸出聲明和持久聲明。 
 - 如果作業是 `Write` 或 `DeleteClaims`，則該作業也必須出現在 **PersistedClaims** 元素中。
 - **userPrincipalName** 宣告值的格式必須是 `user@tenant.onmicrosoft.com`。
 - **displayName** 宣告是必要的，而且不可為空白字串。
@@ -250,13 +251,13 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
-| ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
+| ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 有關詳細資訊，請參閱[在自訂設定檔編輯策略中使用自訂屬性](custom-policy-custom-attributes.md)。 |
 | ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
+| 包括索賠解決索賠處理  | 否 | 對於輸入和輸出聲明，指定[索賠解析](claim-resolver-overview.md)是否包含在技術設定檔中。 可能的值：`true`或`false` （預設值）。 如果要在技術設定檔中使用聲明解析器，則將此解決方案設置為`true`。 |
 
-### <a name="error-messages"></a>錯誤訊息
+### <a name="ui-elements"></a>UI 元素
  
-下列設定可用於設定失敗時顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 可以將錯誤訊息[當地語系化](localization.md)。
+以下設置可用於配置故障時顯示的錯誤訊息。 中繼資料應在[自斷言](self-asserted-technical-profile.md)的技術設定檔中配置。 錯誤訊息可以[當地語系化](localization.md)。
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -266,9 +267,9 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需使用 Azure AD 技術設定檔的範例，請參閱下列文章：
+請參閱以下文章，例如使用 Azure AD 技術設定檔：
 
-- [在 Azure Active Directory B2C 中使用自訂原則新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)
+- [在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)
 
 
 

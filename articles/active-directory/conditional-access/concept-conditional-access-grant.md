@@ -1,76 +1,78 @@
 ---
-title: 在條件式存取原則中授與控制項-Azure Active Directory
-description: 什麼是 Azure AD 條件式存取原則中的授與控制項
+title: 條件訪問策略中的授予控制項 - Azure 活動目錄
+description: Azure AD 條件訪問策略中的授予控制項是什麼
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0716c2d4475bb538c06b9a591521fbdcfc0c80e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263435"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331846"
 ---
-# <a name="conditional-access-grant"></a>條件式存取：授與
+# <a name="conditional-access-grant"></a>條件訪問：授予
 
-在條件式存取原則中，系統管理員可以利用存取控制來授與或封鎖資源的存取權。
+在條件訪問策略中，管理員可以使用訪問控制項來授予或阻止對資源的訪問。
 
-![具有需要多重要素驗證之 grant 控制項的條件式存取原則](./media/concept-conditional-access-grant/conditional-access-grant.png)
+![具有需要多重要素驗證的授予控制的條件訪問策略](./media/concept-conditional-access-grant/conditional-access-grant.png)
 
 ## <a name="block-access"></a>封鎖存取
 
-[封鎖] 會將任何指派納入考慮，並根據條件式存取原則設定來防止存取。
+塊會考慮任何分配，並阻止基於條件訪問策略配置的訪問。
 
-「封鎖」是一種功能強大的控制項，應該以適當的知識絕大部分是。 在啟用之前，系統管理員應該使用[僅限報告模式](concept-conditional-access-report-only.md)來進行測試。
+塊是一個強大的控制項，應該用適當的知識來運用。 管理員應在啟用之前使用[僅報告模式](concept-conditional-access-report-only.md)進行測試。
 
 ## <a name="grant-access"></a>授與存取權
 
-系統管理員可以選擇在授與存取權時，強制執行一或多個控制項。 這些控制項包括下列選項： 
+管理員可以選擇在授予存取權限時強制實施一個或多個控制項。 這些控制項包括以下選項： 
 
 - [需要多重要素驗證（Azure 多重要素驗證）](../authentication/concept-mfa-howitworks.md)
-- [需要將裝置標示為符合規範（Microsoft Intune）](/intune/protect/device-compliance-get-started)
-- [需要已加入混合式 Azure AD 裝置](../devices/concept-azure-ad-join-hybrid.md)
-- [需要核准的用戶端應用程式](app-based-conditional-access.md)
+- [要求設備標記為符合要求（微軟 Intune）](/intune/protect/device-compliance-get-started)
+- [需要混合 Azure AD 聯接設備](../devices/concept-azure-ad-join-hybrid.md)
+- [需要已核准的用戶端應用程式](app-based-conditional-access.md)
 - [需要應用程式保護原則](app-protection-based-conditional-access.md)
 
-當系統管理員選擇結合這些選項時，可以選擇下列方法：
+當管理員選擇組合這些選項時，他們可以選擇以下方法：
 
-- 需要所有選取的控制項（控制項**和**控制項）
-- 需要其中一個選取的控制項（控制項**或**控制項）
+- 要求所有選定的控制項（**控制和**控制項）
+- 需要其中一個選定的控制項（控制項**或**控制項）
 
-根據預設，條件式存取需要所有選取的控制項。
+預設情況下，條件訪問需要所有選定的控制項。
 
 ### <a name="require-multi-factor-authentication"></a>需要多重要素驗證
 
-選取此核取方塊會要求使用者執行 Azure 多重要素驗證。 如需部署 Azure 多因素驗證的詳細資訊，請參閱[規劃雲端式 Azure 多因素驗證部署一](../authentication/howto-mfa-getstarted.md)文。
+選擇此核取方塊需要使用者執行 Azure 多重要素驗證。 有關部署 Azure 多重要素驗證的詳細資訊，請參閱規劃[基於雲的 Azure 多重要素驗證部署](../authentication/howto-mfa-getstarted.md)的文章。
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>裝置需要標記為符合規範
 
-已部署 Microsoft Intune 的組織可以使用其裝置所傳回的資訊，來識別符合特定合規性需求的裝置。 此原則合規性資訊會從 Intune 轉送至 Azure AD，讓條件式存取可以決定要授與或封鎖資源的存取權。 如需相容性原則的詳細資訊，請參閱[使用 Intune 在裝置上設定規則以允許存取您組織中的資源一](/intune/protect/device-compliance-get-started)文。
+部署 Microsoft Intune 的組織可以使用從其設備返回的資訊來標識滿足特定合規性要求的設備。 此策略合規性資訊從 Intune 轉發到 Azure AD，其中條件訪問可以做出授予或阻止對資源的訪問的決定。 有關合規性策略的詳細資訊，請參閱文章["在設備上設置規則，允許使用 Intune 訪問組織中的資源](/intune/protect/device-compliance-get-started)"。
 
-Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適用于 Windows 10 裝置）可能會將裝置標示為符合規範。 Jamf pro 是唯一支援的協力廠商 MDM 系統。 如需整合的詳細資訊，請參閱[整合 Jamf Pro 與 Intune 以取得相容性](/intune/protect/conditional-access-integrate-jamf)一文。
+Intune（對於任何設備作業系統）或 Windows 10 設備的協力廠商 MDM 系統可以標記為符合標準。 Jamf pro 是唯一受支援的協力廠商 MDM 系統。 有關集成的詳細資訊，請參閱文章，[將 Jamf Pro 與 Intune 集成，以便符合性](/intune/protect/conditional-access-integrate-jamf)。
 
-裝置必須先在 Azure AD 中註冊，才可以標示為符合規範。 如需裝置註冊的詳細資訊，請參閱[什麼是裝置身分識別一](../devices/overview.md)文。
+設備必須在 Azure AD 中註冊，然後才能標記為符合要求。 有關設備註冊的詳細資訊，請參閱文章"[什麼是設備標識](../devices/overview.md)"。
 
-### <a name="require-hybrid-azure-ad-joined-device"></a>需要已加入混合式 Azure AD 裝置
+### <a name="require-hybrid-azure-ad-joined-device"></a>需要混合 Azure AD 聯接設備
 
-組織可以選擇使用裝置身分識別作為其條件式存取原則的一部分。 組織可以要求裝置必須使用此核取方塊來加入混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別？一](../devices/overview.md)文。
+組織可以選擇將設備標識用作其條件訪問策略的一部分。 組織可以要求設備是使用此核取方塊聯接的混合 Azure AD。 有關設備標識的詳細資訊，請參閱文章["什麼是設備標識？"。](../devices/overview.md)
 
 ### <a name="require-approved-client-app"></a>需要已核准的用戶端應用程式
 
-組織可能需要從已核准的用戶端應用程式，對所選雲端應用程式的存取嘗試進行存取。 這些已核准的用戶端應用程式支援與任何行動裝置管理（MDM）解決方案無關的[Intune 應用程式保護原則](/intune/app-protection-policy)。
+組織可以要求從批准的用戶端應用進行對所選雲應用的訪問嘗試。 這些批准的用戶端應用支援[Intune 應用保護原則](/intune/app-protection-policy)，獨立于任何行動裝置管理 （MDM） 解決方案。
 
-此設定適用于下列 iOS 和 Android 應用程式：
+為了利用此授予控制項，條件訪問要求將設備註冊在 Azure 活動目錄中，這需要使用代理應用。 訊息代理程式應用程式可以是適用於 iOS 的 Microsoft 驗證器，或適用於 Android 裝置的 Microsoft 公司入口網站。 如果使用者嘗試進行身份驗證時未在設備上安裝代理應用，則使用者將重定向到應用商店以安裝代理應用。
+
+此設置適用于以下 iOS 和 Android 應用：
 
 - Microsoft Azure 資訊保護
-- Microsoft 預約
+- Microsoft Bookings
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
@@ -81,6 +83,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 - Microsoft Kaizala
 - Microsoft Launcher
 - Microsoft Office
+- 微軟辦公中心
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -97,19 +100,23 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 - Microsoft Visio
 - Microsoft Word
 - Microsoft Yammer
+- Microsoft Whiteboard
 
-**備註**
+**言論**
 
 - 經過核准的用戶端應用程式支援 Intune 行動應用程式管理功能。
 - **需要經過核准的用戶端應用程式**需求：
-   - 僅支援 iOS 和 Android 的裝置平臺條件。
-- 條件式存取在 InPrivate 模式中無法將 Microsoft Edge 視為已核准的用戶端應用程式。
+   - 僅支援裝置平台條件適用的 iOS 和 Android。
+   - 註冊設備需要代理應用。 在 iOS 上，代理應用程式是微軟身份驗證器，在 Android 上，它是 Intune 公司門戶應用。
+- 條件訪問不能將 Microsoft 邊緣在 InPrivate 模式下視為已批准的用戶端應用。
 
-如需設定範例，請參閱[如何：使用條件式存取針對雲端應用程式存取要求核准的用戶端應用程式](app-based-conditional-access.md)一文。
+請參閱文章"[如何操作：需要經過批准的用戶端應用才能使用條件訪問進行雲應用訪問](app-based-conditional-access.md)"，瞭解配置示例。
 
 ### <a name="require-app-protection-policy"></a>需要應用程式保護原則
 
-在您的條件式存取原則中，您可以要求用戶端應用程式上有[Intune 應用程式保護原則](/intune/app-protection-policy)，才能存取所選的雲端應用程式。 
+在條件訪問策略中，您可以要求在用戶端應用上存在[Intune 應用保護原則](/intune/app-protection-policy)，然後才能訪問選定的雲應用。 
+
+為了利用此授予控制項，條件訪問要求將設備註冊在 Azure 活動目錄中，這需要使用代理應用。 訊息代理程式應用程式可以是適用於 iOS 的 Microsoft 驗證器，或適用於 Android 裝置的 Microsoft 公司入口網站。 如果使用者嘗試進行身份驗證時未在設備上安裝代理應用，則使用者將重定向到應用商店以安裝代理應用。
 
 此設定適用於下列用戶端應用程式：
 
@@ -118,22 +125,23 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 - Microsoft Outlook
 - Microsoft Planner
 
-**備註**
+**言論**
 
-- 應用程式保護原則的應用程式支援具有原則保護的 Intune 行動應用程式管理功能。
-- **需要應用程式保護原則**需求：
-    - 僅支援 iOS 和 Android 的裝置平臺條件。
+- 應用保護原則的應用支援 Intune 移動應用程式管理功能，提供策略保護。
+- **"需要應用保護原則**"要求：
+    - 僅支援裝置平台條件適用的 iOS 和 Android。
+    - 註冊設備需要代理應用。 在 iOS 上，代理應用程式是微軟身份驗證器，在 Android 上，它是 Intune 公司門戶應用。
 
-如需設定範例，請參閱[如何：需要應用程式保護原則和核准的用戶端應用程式，以使用條件式存取進行雲端應用程式存取一](app-protection-based-conditional-access.md)文。
+請參閱文章"[如何：需要應用保護原則和已批准的用戶端應用，以便使用條件訪問訪問雲應用](app-protection-based-conditional-access.md)訪問"進行配置示例。
 
 ### <a name="terms-of-use"></a>使用規定
 
-如果您的組織已建立使用規定，則在 [授與控制] 底下可能會顯示其他選項。 這些選項可讓系統管理員要求使用規定，做為存取原則所保護之資源的條件。 如需使用條款的詳細資訊，請參閱[Azure Active Directory 使用規定一](terms-of-use.md)文。
+如果您的組織已創建使用條款，則授予控制項下可能可以看到其他選項。 這些選項允許管理員要求確認使用條款，作為訪問受策略保護的資源的條件。 有關使用條款的詳細資訊，請參閱["Azure 活動目錄"的使用條款](terms-of-use.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件式存取：會話控制項](concept-conditional-access-session.md)
+- [條件訪問：會話控制項](concept-conditional-access-session.md)
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+- [條件訪問通用策略](concept-conditional-access-policy-common.md)
 
-- [僅限報表模式](concept-conditional-access-report-only.md)
+- [僅限報告模式](concept-conditional-access-report-only.md)
