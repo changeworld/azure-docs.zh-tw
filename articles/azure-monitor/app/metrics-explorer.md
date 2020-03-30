@@ -4,14 +4,14 @@ description: 如何解譯計量瀏覽器上的圖表，以及如何自訂計量�
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275889"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中探索度量
-[Application Insights][start]中的計量是從您的應用程式在遙測中傳送的測量值和事件計數。 它們幫助您偵測效能問題，並觀察使用應用程式方式的趨勢。 標準度量的範圍很廣泛，而您也可以建立自己的自訂度量和事件。
+[Application Insights][start] 中的度量為從您的應用程式傳送的遙測中的測量值和事件計數。 它們幫助您偵測效能問題，並觀察使用應用程式方式的趨勢。 標準度量的範圍很廣泛，而您也可以建立自己的自訂度量和事件。
 
 > [!NOTE]
 > 這篇文章將告訴您目前已過時，且最終將遭到淘汰的傳統計量瀏覽器體驗。 建議您了解[這篇文章](../platform/metrics-charts.md)中描述的新體驗。
@@ -22,7 +22,7 @@ ms.locfileid: "79275889"
 
 ![](./media/metrics-explorer/01-overview.png)
 
-您可在 Application Insights 入口網站中找到度量圖表。 在大部分情況下，您可以自訂它們，而且您可以將更多圖表新增至刀鋒視窗。 從 [概觀] 刀鋒視窗中，按一下以取得更詳細的圖表 (有「伺服器」之類的標題)，或按一下 [計量瀏覽器]，以開啟新的刀鋒視窗讓您建立自訂圖表。
+您可在 Application Insights 入口網站中找到度量圖表。 在大部分情況下，您可以自訂它們，而且您可以將更多圖表新增至刀鋒視窗。 從 [概觀] 刀鋒視窗中，按一下以取得更詳細的圖表 (有「伺服器」之類的標題)，或按一下 [計量瀏覽器]****，以開啟新的刀鋒視窗讓您建立自訂圖表。
 
 ## <a name="time-range"></a>時間範圍
 您可以在任何刀鋒視窗上變更圖表或格線涵蓋的時間範圍。
@@ -60,13 +60,13 @@ ms.locfileid: "79275889"
 
 ![在 [計量瀏覽器] 中，選擇 [加入圖表]](./media/metrics-explorer/04-add.png)
 
-選取現有或新圖表上的 [編輯] 來編輯其顯示的內容：
+選取現有或新圖表上的 [編輯] **** 來編輯其顯示的內容：
 
 ![選取一或多個度量](./media/metrics-explorer/08-select.png)
 
 您可以在圖表上顯示一個以上的度量，不過，可以一起顯示的組合有一些限制。 只要您選取一個度量，便會停用某些其他度量。
 
-如果您將[自訂計量][track]編碼到您的應用程式中（對 TrackMetric 和 TrackEvent 的呼叫），則會在此列出。
+如果您編寫[自訂度量][track]到您的應用程式 (對 TrackMetric 和 TrackEvent 呼叫)，會在這裡予以列出。
 
 ## <a name="segment-your-data"></a>分段資料
 您可以依照屬性分割度量 - 例如，比較使用不同作業系統的用戶端上的頁面檢視。
@@ -80,7 +80,7 @@ ms.locfileid: "79275889"
 >
 >
 
-如果您將[自訂計量][track]編碼到您的應用程式中，而且它們包含屬性值，您就可以在清單中選取屬性。
+如果您將自訂度量編寫至您的應用程式，並且它們包含[屬性值][track]，將可以在清單中選取屬性。
 
 圖表是否對分段的資料來說太小？ 調整其高度：
 
@@ -97,7 +97,7 @@ ms.locfileid: "79275889"
 * **總和** ：將取樣間隔或圖表期間收到的所有資料點的值相加。
 * **平均** ：將總和除以間隔期間收到的資料點數目。
 * **唯一** ：計數會用於使用者及帳戶的計數。 在取樣間隔或圖表期間，圖形顯示在該時間看到的不同使用者的計數。
-* **%** - 每個彙總百分比版本只會搭配分段圖表使用。 總計永遠會加總至 100%，圖表會顯示總計的不同元件之相對貢獻。
+* **%**- 每個聚合的百分比版本僅用於分段圖表。 總計永遠會加總至 100%，圖表會顯示總計的不同元件之相對貢獻。
 
     ![百分比彙總](./media/metrics-explorer/percentage-aggregation.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "79275889"
 
 ![在 [計量瀏覽器] 中，選擇 [警示規則]，然後選擇 [加入警示]](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
-[深入瞭解警示][alerts]。
+[瞭解有關警報的更多][alerts]。
 
 
 ## <a name="continuous-export"></a>連續匯出

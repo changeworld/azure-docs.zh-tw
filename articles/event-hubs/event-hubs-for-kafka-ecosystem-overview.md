@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283645"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供的 Kafka 端點可讓您現有的 Kafka 型應用程式使用，作為執行您本身的 Kafka 叢集以外的另一項選擇。 事件中樞支援 [Apache Kafka 通訊協定 1.0 和更新版本](https://kafka.apache.org/documentation/)，並且可與您現有的 Kafka 應用程式搭配使用，包括 MirrorMaker。  
@@ -24,7 +24,7 @@ ms.locfileid: "79264891"
 
 適用於 Kafka 的事件中樞功能在 Azure 事件中樞之上提供了通訊協定標頭，與 Kafka 1.0 版和更新版本之間具有讀取和寫入 Kafka 主題的二進位相容性。 您可以從應用程式開始使用 Kafka 端點，不必變更程式碼，但需要稍微變更設定。 您可以更新設定中的連接字串，以指向事件中樞所公開的 Kafka 端點，而非指向 Kafka 叢集。 然後，您可以開始將事件從使用 Kafka 通訊協定的應用程式串流到事件中樞。 此整合也支援 [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) \(英文\) (目前處於預覽狀態) 之類的架構。 
 
-概念上的 Kafka 和事件中樞幾乎完全相同：兩者都是針對串流資料所建立的分割記錄。 下表提供 Kafka 與事件中樞之間的概念對應。
+概念上 Kafka 和事件中心幾乎相同：它們都是為流資料構建的分區日誌。 下表提供 Kafka 與事件中樞之間的概念對應。
 
 ### <a name="kafka-and-event-hub-conceptual-mapping"></a>Kafka 和事件中樞的概念對應
 
@@ -38,20 +38,20 @@ ms.locfileid: "79264891"
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>Kafka 與事件中樞的主要差異
 
-[Apache Kafka](https://kafka.apache.org/) 是一項軟體，可供您隨處執行，而事件中樞則是類似於 Azure Blob 儲存體的雲端服務。 並沒有任何伺服器或網路需要管理，也沒有需要設定的代理程式。 您會建立命名空間，作為您的主題存留所在的 FQDN，然後在該命名空間中建立事件中樞或主題。 如需關於事件中樞和命名空間的詳細資訊，請參閱[事件中樞功能](event-hubs-features.md#namespace)。 作為雲端服務，事件中樞使用單一的穩定虛擬 IP 位址作為端點，因此用戶端不需要知道叢集中的代理程式或機器。 
+[Apache Kafka](https://kafka.apache.org/) 是一項軟體，可供您隨處執行，而事件中樞則是類似於 Azure Blob 儲存體的雲端服務。 並沒有任何伺服器或網路需要管理，也沒有需要設定的代理程式。 您會建立命名空間，作為您的主題存留所在的 FQDN，然後在該命名空間中建立事件中樞或主題。 如需關於事件中樞和命名空間的詳細資訊，請參閱[事件中樞功能](event-hubs-features.md#namespace)。 作為雲服務，事件中心使用單個穩定的虛擬 IP 位址作為終結點，因此用戶端不需要瞭解群集中的代理或電腦。 
 
 事件中樞內的調整由您所購買的輸送量單位數所控制，每個輸送量單位可讓您獲得每秒輸送 1 MB 或每秒輸入 1000 個事件的配額。 根據預設，事件中樞會在您達到限制時使用[自動擴充](event-hubs-auto-inflate.md)功能相應增加輸送量單位；此功能也可供適用於 Kafka 的事件中樞功能使用。 
 
 ### <a name="security-and-authentication"></a>安全性和驗證
-每當您從事件中樞發佈或取用來自 Kafka 的事件時，您的用戶端就會嘗試存取事件中樞資源。 您想要確保使用已授權的實體來存取資源。 搭配使用 Apache Kafka 通訊協定與您的用戶端時，您可以使用 SASL 機制來設定驗證和加密的設定。 使用事件中樞進行 Kafka 時，需要 TLS 加密（因為傳輸中的所有資料都有事件中樞的 TLS 已加密）。 您可以在設定檔中指定 SASL_SSL 選項來完成此作業。 
+每次從 Kafka 的事件中心發佈或使用事件時，用戶端都嘗試訪問事件中心資源。 您希望確保使用授權實體訪問資源。 當對用戶端使用 Apache Kafka 協定時，可以使用 SASL 機制設置身份驗證和加密的配置。 在 Kafka 使用事件中心時，需要 TLS 加密（因為與事件中心傳輸的所有資料都已加密 TLS）。 可以在設定檔中指定SASL_SSL選項。 
 
-Azure 事件中樞提供多個選項來授權存取您的安全資源。 
+Azure 事件中心提供了多個選項來授權訪問安全資源。 
 
 - OAuth
 - 共用存取簽章 (SAS)
 
 #### <a name="oauth"></a>OAuth
-事件中樞與 Azure Active Directory （Azure AD）整合，它會提供與**OAuth** 2.0 相容的集中式授權伺服器。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將更細緻的許可權授與您的用戶端身分識別。 您可以藉由指定通訊協定的**SASL_SSL**和機制的**OAUTHBEARER** ，將此功能與 Kafka 用戶端搭配使用。 如需有關 RBAC 角色的詳細資訊以及範圍存取的層級，請參閱[使用 Azure AD 授權存取](authorize-access-azure-active-directory.md)。
+事件中心與 Azure 活動目錄 （Azure AD） 集成，該目錄提供**OAuth** 2.0 相容的集中式授權伺服器。 使用 Azure AD，可以使用基於角色的存取控制 （RBAC） 向用戶端標識授予細細微性許可權。 您可以通過為協定指定**SASL_SSL**和該機制的**OAUTHBEARER，** 將此功能與 Kafka 用戶端一起使用。 有關 RBAC 角色和範圍存取層級的詳細資訊，請參閱[使用 Azure AD 授權訪問](authorize-access-azure-active-directory.md)。
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -62,7 +62,7 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
 #### <a name="shared-access-signature-sas"></a>共用存取簽章 (SAS)
-事件中樞也會提供**共用存取簽章（SAS）** ，以供委派存取 Kafka 資源的事件中樞。 使用 OAuth 2.0 權杖型機制來授權存取，可提供優於 SAS 的高安全性和易用性。 內建角色也可以消除 ACL 型授權的需求，這必須由使用者維護及管理。 您可以將此功能與 Kafka 用戶端搭配使用，方法是指定通訊協定的**SASL_SSL**和**純**文本機制。 
+事件中心還提供**共用訪問簽名 （SAS），** 用於對 Kafka 資源的事件中心進行委派訪問。 使用基於 OAuth 2.0 權杖的機制授權訪問比 SAS 提供卓越的安全性和易用性。 內置角色還可以消除基於 ACL 的授權需求，這些授權必須由使用者維護和管理。 通過將協定的**SASL_SSL**和**機制的 PLAIN**指定，可以將此功能與 Kafka 用戶端一起使用。 
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -72,9 +72,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 #### <a name="samples"></a>範例 
-如需**教學**課程，並提供逐步指示來建立已啟用 Kafka 的事件中樞，並使用 SAS 或 OAuth 存取它，請參閱[快速入門：使用 Kafka 通訊協定事件中樞串流處理的資料](event-hubs-quickstart-kafka-enabled-event-hubs.md)。
+有關創建事件中心並使用 SAS 或 OAuth 訪問它的分步說明的**教程**，請參閱[快速入門：使用 Kafka 協定使用事件中心進行資料流程。](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 
-如需示範如何搭配 Kafka 使用 OAuth 與事件中樞的更多**範例**，請參閱[GitHub 上的範例](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。
+有關演示如何將 OAuth 與 Kafka 事件中心配合**使用的示例，** 請參閱[GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。
 
 ## <a name="other-event-hubs-features-available-for-kafka"></a>適用於 Kafka 的其他事件中樞功能
 
@@ -97,13 +97,13 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 本文概略介紹了適用於 Kafka 的事件中樞。 若要深入了解，請參閱下列連結：
 
-- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)
+- [如何創建事件中心](event-hubs-create.md)
 - [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [在已啟用 Kafka 的事件中樞中鏡射 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
-- [將 Apache Spark 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-spark-tutorial.md)
-- [將 Apache Flink 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-flink-tutorial.md)
-- [整合 Kafka Connect 與已啟用 Kafka 的事件中樞](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka Streams 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
+- [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
+- [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
+- [將卡夫卡連接與事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [將 Akka 流連接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
 
 

@@ -1,71 +1,70 @@
 ---
-title: 設定潛在客戶 |Azure Marketplace
-description: 在商業 marketplace 中設定客戶潛在客戶。
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: 配置客戶潛在客戶 |Azure 應用商店
+description: 在商業市場中配置客戶潛在客戶。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275895"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>來自您 marketplace 供應專案的客戶領導
+# <a name="customer-leads-from-your-marketplace-offer"></a>來自您的 Marketplace 供應項目的潛在客戶
 
-潛在客戶有興趣，或從[Azure Marketplace](https://azuremarketplace.microsoft.com)或從[AppSource](https://appsource.microsoft.com)部署您的供應專案。 一旦您的供應專案發佈至 marketplace，您就會收到客戶的潛在客戶。 本文將說明：
+潛在客戶是有興趣的客戶，或從[Azure 應用商店](https://azuremarketplace.microsoft.com)或[AppSource](https://appsource.microsoft.com)部署您的產品/服務。 產品/服務發佈到市場後，您將收到客戶潛在客戶。 本文將解釋：
 
-* 您的 marketplace 供應專案如何產生潛在客戶，以確保您不會錯過商機。 
-* 將您的 CRM 連線到您的供應專案，讓您可以在單一集中位置管理您的潛在客戶。
-* 瞭解我們傳送給您的潛在客戶資料，讓您可以追蹤與您聯繫的客戶。
+* 您的市場報價如何產生客戶線索，確保您不會錯過商機。 
+* 將 CRM 連接到您的產品/服務，以便您可以在一個中心位置管理潛在客戶。
+* 瞭解我們向您發送的潛在客戶資料，以便跟蹤與您聯繫到的客戶。
 
-## <a name="generate-customer-leads"></a>產生潛在客戶
+## <a name="generate-customer-leads"></a>生成客戶線索
 
-以下是產生潛在客戶的地方：
+以下是生成潛在客戶的位置：
 
-1. 當客戶在從 marketplace 選取 [聯絡我] 之後，同意分享他們的資訊。 這位潛在客戶是**初始興趣**的潛在客戶，我們會在其中分享有關取得您的產品之客戶的資訊。 潛在客戶位居分享購買漏斗的最頂端。
+1. 當客戶在從市場中選擇"與我聯繫"後同意共用其資訊時。 此潛在客戶是**初始興趣**線索，我們在此分享有關已表示有興趣獲得您的產品的客戶的資訊。 潛在客戶位居分享購買漏斗的最頂端。
 
-      ![Dynamics 365 聯絡我](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
+      ![動態 365 聯繫我](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. 當客戶選取 [立即取得] 或 [建立] （在[Azure 入口網站](https://portal.azure.com/)中）以取得您的供應專案時，此潛在客戶為使用中的**潛在客戶**，我們會分享已開始部署您的產品之客戶的相關資訊。
+2. 當客戶選擇"立即獲取"或"立即獲取"（在 Azure[門戶](https://portal.azure.com/)中）以獲取產品/服務時，此潛在客戶是**一個活動線索**，在此中，我們將共用有關已開始部署產品的客戶的資訊。
 
-    ![立即取得 SQL](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
+    ![SQL 立即獲取](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
-    ![Windows Server 建立](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
+    ![創建視窗伺服器](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-3. 客戶接受「試用產品」或啟動您供應專案的「免費試用」。 試用產品或免費試用版是加速的機會，可讓您立即與潛在客戶分享您的業務，而不會有任何進入障礙。
+3. 客戶採用"試駕"或開始"免費試用"您的優惠。 測試磁碟機或免費試用是您與潛在客戶即時共用業務（沒有任何進入障礙）的加速機會。
 
-    ![Dynamics 365 試用產品](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
+    ![動態 365 試駕](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
-    ![Dynamics 365 試用產品](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
+    ![動態 365 試駕](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
 
-## <a name="connect-to-your-crm-system"></a>連接到您的 CRM 系統
+## <a name="connect-to-your-crm-system"></a>連接到 CRM 系統
 
 [!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>瞭解潛在客戶資料
 
-您在客戶擷取程序期間收到的每位潛在客戶，在特定欄位中都有資料。 要查看的第一個欄位是 [`LeadSource`] 欄位，其遵循下列格式： [**來源-動作**] [ | **供應**專案]。
+您在客戶擷取程序期間收到的每位潛在客戶，在特定欄位中都有資料。 要查找的第一個欄位`LeadSource`是欄位，該欄位遵循此格式：**源操作** | **優惠**。
 
-**來源**：此欄位的值會根據產生潛在客戶的 marketplace 填入。 可能的值為 `"AzureMarketplace"`、`"AzurePortal"`和 `"AppSource (SPZA)"`。
+**源**： 此欄位的值基於生成潛在客戶的市場填充。 可能的值為 `"AzureMarketplace"`、`"AzurePortal"` 和 `"AppSource (SPZA)"`。
 
-**動作**：此欄位的值會根據客戶在 marketplace 中所採取的動作（產生潛在客戶）來填入。 
+**操作**：此欄位的值根據客戶在市場中執行的操作填充，該操作生成了潛在客戶。 
 
 可能的值包括：
 
 - "INS" -- 安裝。 當客戶購買您的產品時，會在 Azure Marketplace 或 AppSource 上進行此動作。
 - "PLT" -- 代表合作夥伴主導的試用版。 當客戶使用 [與我連絡] 選項時，會在 AppSource 上進行此動作。
 - "DNC" -- 請勿連絡。 當交叉列於您的應用程式頁面的合作夥伴收到連絡要求時，會在 AppSource 上進行此動作。 我們分享此客戶交叉列於您的應用程式的通知，但無須連絡他們。
-- 「建立」--此動作僅在 Azure 入口網站內，而且會在客戶向其帳戶購買您的供應專案時產生。
+- "創建" - 此操作僅在 Azure 門戶中，並在客戶向其帳戶購買產品/服務時生成。
 - "StartTestDrive" -- 此動作僅限試用產品，並當客戶開始進行產品試用時產生。
 
-**優惠**：您在 marketplace 中可能有多個供應專案。 此欄位的值會根據產生潛在客戶的供應專案而填入。 發行者識別碼和供應專案識別碼都是在此欄位中傳送，而且是您將供應專案發佈至 marketplace 時提供的值。
+**優惠**： 您可能在市場上有多個優惠。 此欄位的值基於生成潛在客戶的報價填充。 發行者 ID 和產品/服務 ID 都在此欄位中發送，是您向市場發佈產品/服務時提供的值。
 
-下列範例會以 `publisherid.offerid`的預期格式來顯示範例值： 
+以下示例以預期格式`publisherid.offerid`顯示示例值： 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
@@ -73,7 +72,7 @@ ms.locfileid: "73812667"
 
 ## <a name="customer-info"></a>客戶資訊
 
-客戶的資訊會透過多個欄位傳送。 下列範例會顯示潛在客戶中包含的客戶資訊。
+客戶的資訊通過多個欄位發送。 下面的示例顯示了潛在客戶中包含的客戶資訊。
 
 - 名字：John
 - 姓氏：Smith
@@ -84,28 +83,28 @@ ms.locfileid: "73812667"
 - 職稱：技術長
 
 >[!Note]
->上述範例中，並非所有資料一律可供每位潛在客戶使用。 因為您會從「客戶領導區」一節中所述的多個步驟中取得潛在客戶，所以處理潛在客戶的最佳方式是將記錄刪除，並將後續的資料個人化。 透過這個方式，每位客戶都能獲得適當的訊息，而您能打造獨特的客戶關係。
+>上述範例中，並非所有資料一律可供每位潛在客戶使用。 由於您將從"客戶潛在客戶"部分中提到的多個步驟中獲得潛在客戶，因此處理潛在客戶的最佳方法是取消複製記錄並個人化後續操作。 透過這個方式，每位客戶都能獲得適當的訊息，而您能打造獨特的客戶關係。
 
-## <a name="best-practices-for-lead-management"></a>潛在客戶管理的最佳做法
+## <a name="best-practices-for-lead-management"></a>潛在客戶管理的最佳實踐
 
-1. *處理*-定義清楚的銷售程式，包含里程碑、kpi 和明確小組擁有權。
-2. *限定*性-定義必要條件，以指出潛在客戶是否已完整限定。 請確定銷售或行銷代表會謹慎地限定潛在客戶，再透過完整的銷售程式取得。
-3. *後續操作*-別忘了追蹤，預期一般交易需要5到12個後續呼叫
-4. *培養*-培養您的潛在客戶，以取得更高收益的方式。
+1. *流程*- 定義明確的銷售流程，具有里程碑、KPI 和明確的團隊擁有權。
+2. *資格 -* 定義先決條件，指示潛在客戶是否已完全合格。 在將銷售或行銷代表接管整個銷售流程之前，確保仔細鑒定潛在客戶。
+3. *跟進*- 不要忘記跟進，預計典型的交易需要 5 到 12 次跟進電話
+4. *培育*- 培養您的潛在客戶，以便讓您獲得更高的獲利率。
 
-## <a name="leads-frequently-asked-questions"></a>潛在客戶常見問題
+## <a name="leads-frequently-asked-questions"></a>領導常見問題
 
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>我可以在哪裡取得設定潛在客戶目的地的協助？
+### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>可以在哪裡取得設定我潛在客戶目的地的說明？
 
-您可以在[這裡](#connect-to-your-crm-system)找到檔，或透過 aka.ms/marketplacepublishersupport 提交支援票證，然後選取 [**供應專案建立**] →**您的供應**專案→ [**潛在客戶管理**設定]。
+您可以[在此處](#connect-to-your-crm-system)查找文檔或通過aka.ms/marketplacepublishersupport提交支援票證，然後選擇 **"產品/服務創建"** •**您的產品/服務類型**+ **"潛在客戶管理配置"。**
 
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>我是否必須設定潛在客戶目的地，才能在 marketplace 上發佈供應專案？
+### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>我是否需要配置潛在客戶目標才能在市場上發佈產品/服務？
 
-答案取決於您要發佈的供應專案類型。 SaaS 和 Dynamics 365 for Customer Engagement 供應專案清單為「連絡人 Me」、所有 Dynamics 365 for Operations 供應專案、所有 Dynamics 365 Business Central 供應專案，以及所有諮詢服務供應專案都需要連接至潛在客戶目的地。 如果未列出您的供應專案類型，則不需要。 不過，建議您設定潛在客戶目的地，讓您不會錯過商機。
+答案取決於您要發佈的產品/服務類型。 SaaS 和 Dynamics 365 客戶參與產品優惠將列為"與我聯繫"、所有 Dynamics 365 運營優惠、所有 Dynamics 365 商務中心優惠以及所有諮詢服務優惠都需要連接到潛在客戶目的地。 如果未列出您的要約類型，則不是必需的。 但是，建議您配置潛在客戶目標，這樣您就不會錯過商機。
 
-### <a name="how-can-i-find-the-test-lead"></a>如何找出測試潛在客戶？
+### <a name="how-can-i-find-the-test-lead"></a>如何找到測試潛在客戶？
 
-在您的潛在客戶目的地中搜尋 `"MSFT_TEST"`，以下是 Microsoft 的範例測試潛在客戶：
+在潛在`"MSFT_TEST"`顧客目標中搜索，下面是來自 Microsoft 的示例測試線索：
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -122,42 +121,42 @@ phone = 1234567890
 title = MSFT_TEST_636573304831318844
 ```
 
-### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>我有上線的供應專案，但我沒看到任何潛在客戶嗎？
+### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>我有一個現場報價，但沒有看到任何線索？
 
-請確定您的潛在客戶目的地連接有效。 當您在合作夥伴中心的供應專案上按 [發佈] 之後，我們會將測試潛在客戶傳送給您。 如果您看到測試潛在客戶，則連接是有效的。 您也可以在預覽步驟中嘗試取得供應專案預覽，方法是在 marketplace 的清單中按一下 [立即取得]、[連絡人我] 或 [免費試用]，藉此測試您的潛在客戶連線。
+確保與潛在客戶目標的連接有效。 在合作夥伴中心發佈您的優惠後，我們將向您發送測試線索。 如果看到測試引線，則連接有效。 您還可以通過在預覽步驟中嘗試獲取優惠預覽來測試潛在客戶連接，按一下市場上上市的"立即獲取""、"聯繫我"或"免費試用"。
 
-此外，請確定您要尋找正確的資料。 本檔的[瞭解潛在客戶資料](#understand-lead-data)一節中的內容說明我們傳送到潛在客戶目的地的潛在客戶資料。
+此外，請確保您正在尋找正確的資料。 本文檔"[瞭解潛在客戶資料](#understand-lead-data)"部分的內容描述了我們發送到潛在客戶目標的風險資料。
 
-### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>我已將 Azure BLOB 設定為我的潛在客戶目的地，為什麼看不到潛在客戶？
+### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>我已將 Azure BLOB 設定為我的潛在客戶目的地，為何沒有看到潛在客戶？
 
-已不再支援 Azure Blob 潛在客戶目的地，因此您缺少供應專案所產生的任何客戶潛在客戶。 切換至其他任何[潛在客戶目的地選項](./commercial-marketplace-get-customer-leads.md)。 
+Azure Blob 潛在客戶目標不再受支援，因此您缺少產品/服務生成的任何客戶潛在客戶。 切換到任何其他[潛在客戶目標選項](./commercial-marketplace-get-customer-leads.md)。 
 
-### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>我收到來自 Marketplace 的電子郵件，為什麼在我的 CRM 中找不到潛在客戶？
+### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>我已從 Marketplace 收到一封電子郵件，為什麼在我的 CRM 中找不到潛在客戶？
 
-終端使用者的電子郵件網域可能來自 .edu。 基於隱私權考慮，我們不會從 edu 網域傳遞 PII 資料。 透過 aka.ms/marketplacepublishersupport 提交支援票證。
+終端使用者的電子郵件網域可能來自 .edu。 出於隱私原因，我們不會從 .edu 域傳遞 PII 資料。 通過aka.ms/marketplacepublishersupport提交支援票證。
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已將 Azure 資料表設定為我的潛在客戶目的地，如何才能查看潛在客戶？
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已經將 Azure 表配置為我的潛在客戶目標，如何查看潛在客戶？
 
-您可以從 Azure 入口網站存取儲存在 Azure 資料表中的潛在客戶資料，或者您可以免費下載並安裝[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，以查看您的 Azure 儲存體帳戶的資料表資料。
+可以從 Azure 門戶訪問存儲在 Azure 表中的潛在資料，也可以免費下載和安裝[Azure 存儲資源管理器](https://azure.microsoft.com/features/storage-explorer/)以查看 Azure 存儲帳戶的表資料。
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>我已將 Azure 資料表設定為我的潛在客戶目的地，每當 Marketplace 傳送新的潛在客戶時，是否可以收到通知？
+### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>我已設定 Azure 資料表作為我的潛在客戶目的地，是否可以在 Marketplace 傳送新的潛在客戶時隨時收到通知？
 
-可以，請遵循指示來設定 Microsoft flow，以在[這裡](./commercial-marketplace-lead-management-instructions-azure-table.md)的檔中將潛在客戶新增至 Azure 資料表時傳送電子郵件。
+可以，按照說明設置 Microsoft 流，如果[此處](./commercial-marketplace-lead-management-instructions-azure-table.md)的文檔將潛在客戶添加到 Azure 表，則該流將發送電子郵件。
 
-### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>我已將 Salesforce 設定為我的潛在客戶目的地，為什麼找不到潛在客戶？
+### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>我已設定 Salesforce 作為我的潛在客戶目的地，為什麼找不到潛在客戶？
 
-檢查「web 到潛在客戶」表單是否為根據挑選清單的必要欄位。 如果是，請將欄位切換為非必要文字欄位。
+檢查"Web 到潛在客戶"表單是否是基於選取清單的必要欄位。 如果是，請將欄位切換為非必要文字欄位。
 
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>我的潛在客戶目的地發生問題，而我錯過了一些潛在客戶。 我可以在電子郵件中傳送給我嗎？
+### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>我的潛在客戶目的地發生問題，而我遺漏了一些潛在客戶。 是否可以在電子郵件中將這些潛在客戶傳送給我？
 
 由於 PII (個人識別資訊) 原則，我們無法透過不安全的電子郵件分享潛在客戶資訊。
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>我已將 Azure 資料表設定為我的潛在客戶目的地，它需要多少費用？
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>我已經將 Azure 表配置為我的潛在客戶目標，它將花費多少？
 
 潛在客戶的一般資料很小 (幾乎所有的發行者都 < 1 GB)。 售價取決於所收到的潛在客戶數量，如果在一個月內收到 1,000 個潛在客戶，則成本大約 50 分。 如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
-如果您的問題仍未獲得解答，請透過 aka.ms/marketplacepublishersupport 聯絡支援，然後選取 [**供應專案建立**] →**您的供應**專案→ [**潛在客戶管理**設定]。 
+如果您的問題仍未得到解答，請通過aka.ms/marketplacepublishersupport聯繫支援人員，然後選擇 **"產品/服務創建"+****您的產品/服務類型**和 **"潛在客戶管理配置"。** 
 
 ## <a name="next-steps"></a>後續步驟
 
-技術設定就緒之後，您應該將這些潛在客戶納入目前的銷售 & 行銷策略和操作程式。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 請讓我們知道您是否有興趣[提供意見](mailto:AzureMarketOnboard@microsoft.com)反應和建議，讓您的銷售小組能夠更成功地使用 Marketplace 潛在客戶。
+一旦技術設置到位，您應該將這些潛在客戶納入您當前的銷售&行銷戰略和運營流程。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣[提供回饋](mailto:AzureMarketOnboard@microsoft.com)和建議，使您的銷售團隊在市場線索方面更加成功，請告訴我們。

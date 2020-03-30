@@ -1,27 +1,27 @@
 ---
-title: 如何在裝置與 Azure 裝置布建服務之間傳輸承載
-description: 本檔說明如何在裝置和裝置布建服務（DPS）之間傳輸承載
+title: 如何在設備和 Azure 設備佈建服務之間傳輸有效負載
+description: 本文檔介紹如何在設備和設備佈建服務 （DPS） 之間傳輸有效負載
 author: menchi
 ms.author: menchi
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3eec39e975b1e782eafe16205623c625f462a865
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209404"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246682"
 ---
-# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在裝置與 DPS 之間傳輸承載
-有時候 DPS 需要裝置的更多資料，才能正確地將其布建到正確的 IoT 中樞，且該資料必須由裝置提供。 相反地，DPS 可以將資料傳回給裝置，以協助用戶端邏輯。 
+# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在設備和 DPS 之間傳輸有效負載
+有時，DPS 需要來自設備的更多資料來將它們正確預配到正確的 IoT 中心，並且資料需要由設備提供。 反之亦然，DPS 可以將資料返回設備以方便用戶端邏輯。 
 
 ## <a name="when-to-use-it"></a>使用時機
-這項功能可用來做為[自訂配置](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)的增強功能。 例如，您想要在沒有人為介入的情況下，根據裝置型號來配置您的裝置。 在此情況下，您將使用[自訂配置](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)。 您可以設定裝置，在[註冊裝置呼叫](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)中報告模型資訊。 DPS 會將裝置的承載傳遞至自訂配置 webhook。 而您的函式可以決定當此裝置收到裝置型號資訊時，會前往哪一個 IoT 中樞。 同樣地，如果 webhook 希望將一些資料傳回給裝置，它會將資料以字串形式傳入 webhook 回應中。  
+此功能可用作[自訂分配的](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)增強功能。 例如，您希望根據設備模型分配設備，而無需人工干預。 在這種情況下，您將使用[自訂分配](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)。 您可以將設備配置為將模型資訊報告為[寄存器設備調用](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)的一部分。 DPS 會將設備的有效負載傳遞到自訂分配 Webhook。 當設備接收設備模型資訊時，您的功能可以決定此設備將轉到哪個 IoT 中心。 同樣，如果 Webhook 希望將某些資料返回到設備，它將將資料作為 Webhook 回應中的字串傳遞回。  
 
-## <a name="device-sends-data-payload-to-dps"></a>裝置將資料承載傳送至 DPS
-當您的裝置將[註冊裝置呼叫](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)傳送至 DPS 時，可以增強註冊呼叫以接受本文中的其他欄位。 本文看起來如下所示： 
+## <a name="device-sends-data-payload-to-dps"></a>設備將資料有效負載發送到 DPS
+當您的設備向 DPS 發送[寄存器設備呼叫](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)時，可以增強寄存器調用以獲取正文中的其他欄位。 正文如下所示： 
    ```
    { 
        “registrationId”: “mydevice”, 
@@ -30,13 +30,12 @@ ms.locfileid: "77209404"
            “endorsementKey”: “stuff”, 
            “storageRootKey”: “things” 
        }, 
-       “interfaces”: “TODO: get how interfaces are reported by devices from PnP folks.”, 
        “payload”: “your additional data goes here. It can be nested JSON.” 
     } 
    ```
 
-## <a name="dps-returns-data-to-the-device"></a>DPS 將資料傳回到裝置
-如果自訂配置原則 webhook 想要將某些資料傳回給裝置，它會將資料以字串形式傳入 webhook 回應中。 這項變更是在以下的裝載區段中。 
+## <a name="dps-returns-data-to-the-device"></a>DPS 將資料返回給設備
+如果自訂分配策略 Webhook 希望將某些資料返回到設備，它將將資料作為 webhook 回應中的字串傳遞回。 更改在下面的有效負載部分中。 
    ```
    { 
        "iotHubHostName": "sample-iot-hub-1.azure-devices.net", 
@@ -55,7 +54,7 @@ ms.locfileid: "77209404"
    ```
 
 ## <a name="sdk-support"></a>SDK 支援
-這項功能適用于 C、 C#、JAVA 和 node.js[用戶端 sdk](https://docs.microsoft.com/azure/iot-dps/)。  
+此功能在 C、C#、JAVA 和 Node.js[用戶端 SDK 中可用](https://docs.microsoft.com/azure/iot-dps/)。  
 
 ## <a name="next-steps"></a>後續步驟
 * 針對 Azure IoT 中樞和 Azure IoT 中樞裝置佈建服務，使用 [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) \(英文\) 進行開發

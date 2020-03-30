@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278866"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合式 Runbook 背景工作角色將資料中心內或雲端的資源自動化
@@ -20,7 +20,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 
 ![混合式 Runbook 背景工作概觀](media/automation-hybrid-runbook-worker/automation.png)
 
-每一個混合式 Runbook 背景工作是您安裝代理程式時指定的混合式 Runbook 背景工作群組的成員。 群組可包含單一代理程式，但您可以在群組中安裝多個代理程式以獲得高可用性。 每部機器可以將一個混合式背景工作角色報告裝載到一個自動化帳戶。
+每一個混合式 Runbook 背景工作是您安裝代理程式時指定的混合式 Runbook 背景工作群組的成員。 群組可包含單一代理程式，但您可以在群組中安裝多個代理程式以獲得高可用性。 每台電腦可以承載一個混合輔助角色向一個自動化帳戶報告。
 
 在 Hybrid Runbook Worker 上啟動 Runbook 時，您會指定要執行它的群組。 每個群組中的背景工作角色會對 Azure 自動化進行輪詢，以查看是否有任何可用的作業。 若有可用的作業，會由第一個取得該作業的背景工作角色負責。 作業佇列的處理時間取決於混合式背景工作角色的硬體設定檔和負載。 您無法指定特定背景工作角色。 混合式 Runbook 背景工作角色不會共用 Azure 沙箱所具有的諸多限制。 它們在磁碟空間、記憶體或網路通訊端上並沒有相同的限制。 混合式 Runbook 背景工作角色只會受限於混合式 Runbook 背景工作角色本身上的資源。 此外，混合式 Runbook 背景工作角色不會共用 Azure 沙箱所具有的 180 分鐘[公平共用](automation-runbook-execution.md#fair-share)時間限制。 若要深入了解 Azure 沙箱和混合式 Runbook 背景工作角色的服務限制，請參閱作業[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)頁面。
 
@@ -32,7 +32,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 
 |OS  |部署類型  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [電源外殼](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 您可以移除群組中的一或多個混合式 Runbook 背景工作角色，或移除該群組，視您的需求而定。 若要從內部部署電腦中移除混合式 Runbook 背景工作角色，請使用下列步驟：
 
 1. 在 Azure 入口網站中，前往您的自動化帳戶。
-2. 在 [帳戶設定] 下，選取 [金鑰] 並記下 [URL] 和 [主要存取金鑰] 的值。 下一個步驟需要此資訊。
+2. 在 [帳戶設定]**** 下，選取 [金鑰]**** 並記下 [URL]**** 和 [主要存取金鑰]**** 的值。 下一個步驟需要此資訊。
 
 ### <a name="windows"></a>Windows
 
@@ -81,38 +81,38 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 若要移除群組，您必須先使用先前所示的程序，從群組的每一部成員電腦中移除混合式 Runbook 背景工作角色。 然後，使用下列步驟移除群組：
 
 1. 在 Azure 入口網站中，開啟自動化帳戶。
-2. 在 [程序自動化] 底下選取 [混合式背景工作角色群組]。 選取您要刪除的群組。 該群組的屬性頁面隨即出現。
+2. 在 **"過程自動化"** 下，選擇**混合工作組**。 選取您要刪除的群組。 該群組的屬性頁面隨即出現。
 
    ![屬性頁面](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. 在所選群組的屬性頁面上，選取 [刪除]。 這會顯示訊息要求您確認此動作。 如果您確定要繼續，請選取 [是]。
+3. 在所選群組的屬性頁面上，選取 [刪除]****。 這會顯示訊息要求您確認此動作。 如果您確定要繼續，請選取 [是]****。
 
    ![確認訊息](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   此程序可能需要數秒鐘的時間完成。 您可以在功能表的 [通知] 底下追蹤其進度。
+   此程序可能需要數秒鐘的時間完成。 您可以在功能表的 [通知]**** 底下追蹤其進度。
 
-## <a name="network-planning"></a>設定您的網路
+## <a name="configure-your-network"></a><a name="network-planning"></a>設定您的網路
 
 ### <a name="hybrid-worker-role"></a>混合式背景工作角色
 
-若要讓混合式 Runbook 背景工作角色連接到 Azure 自動化並向其註冊，它必須能夠存取本節所述的埠號碼和 Url。 此存取會在 Microsoft Monitoring Agent 連接到 Azure 監視器記錄檔[所需的埠和 url](../azure-monitor/platform/agent-windows.md)上。
+對於要連接到 Azure 自動化並註冊混合 Runbook 工作執行緒，它必須有權訪問本節中描述的埠號和 URL。 此訪問位於 Microsoft 監視代理連接到 Azure 監視器日誌[所需的埠和 URL](../azure-monitor/platform/agent-windows.md)之上。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-如果您使用 proxy 伺服器在代理程式和 Azure 自動化服務之間進行通訊，請確保可以存取適當的資源。 混合式 Runbook 背景工作角色和自動化服務要求的完成時間為30秒。 3次嘗試之後，要求將會失敗。 如果您使用防火牆來限制網際網路存取，您必須設定防火牆以允許存取。 如果您使用 Log Analytics 閘道作為 Proxy，請確保已針對混合式背景工作角色進行設定。 如需有關如何執行這項操作的指示，請參閱[為自動化混合式背景工作角色設定 Log Analytics 閘道](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
+如果使用代理伺服器在代理和 Azure 自動化服務之間進行通信，請確保可以訪問相應的資源。 來自混合 Runbook 輔助角色和自動化服務的請求的超時為 30 秒。 3 次嘗試後，請求將失敗。 如果您使用防火牆來限制網際網路存取，您必須設定防火牆以允許存取。 如果您使用 Log Analytics 閘道作為 Proxy，請確保已針對混合式背景工作角色進行設定。 如需有關如何執行這項操作的指示，請參閱[為自動化混合式背景工作角色設定 Log Analytics 閘道](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
 
 若要讓混合式 Runbook 背景工作角色與自動化進行通訊，需要下列連接埠和 URL：
 
 * 連接埠︰只需要 TCP 443 以便進行傳出網際網路存取。
 * 全域 URL：*.azure-automation.net
 * US Gov 維吉尼亞州的全域 URL： *.azure automation.us
-* 代理程式服務： https://\<workspaceId\>.agentsvc.azure-automation.net
+* 代理程式服務：https://\<workspaceId\>.agentsvc.azure-automation.net
 
 建議使用定義例外狀況時所列出的位址。 針對 IP 位址，您可以下載 [Microsoft Azure 資料中心 IP 範圍](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 此檔案會每週更新，並具有目前已部署的範圍及任何即將進行的 IP 範圍變更。
 
 如果您有針對特定區域定義的自動化帳戶，您可以將通訊限制為該區域資料中心。 下表提供每個區域的 DNS 記錄：
 
-| **區域** | **DNS 記錄** |
+| **地區** | **DNS 記錄** |
 | --- | --- |
 | 美國中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 美國中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |

@@ -1,19 +1,18 @@
 ---
-title: 建立 Azure 容器影像技術資產 |Azure Marketplace
+title: 創建 Azure 容器映射技術資產 |Azure 應用商店
 description: 建立 Azure 容器的技術資產。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: 6aae1957a3dcc58339eb4f3c9e250513843ceb18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 71b3ec4bf505c333e5eca170e1f5e808ab51f41a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280060"
 ---
 # <a name="prepare-your-container-technical-assets"></a>準備容器技術資產
 
@@ -39,13 +38,13 @@ ms.locfileid: "73819057"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理容器映像：
 
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-   [Azure 電源外殼](https://docs.microsoft.com/powershell/azure/overview)
 -   [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 此外也建議您新增下列工具至開發環境：
 
--   [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
+-   [Azure 存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [視覺工作室代碼](https://code.visualstudio.com/)
     *   延伸模組：[Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   延伸模組：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   延伸模組：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
@@ -56,8 +55,8 @@ ms.locfileid: "73819057"
 
 如需詳細資訊，請參閱下列主題：
 
-* [教學課程：建立容器映射以部署至 Azure 容器實例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [教學課程：使用 Azure Container Registry 工作在雲端中建立及部署容器映射](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [教程：創建容器映射以部署到 Azure 容器實例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [教程：使用 Azure 容器註冊表任務在雲中構建和部署容器映射](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>後續步驟
 

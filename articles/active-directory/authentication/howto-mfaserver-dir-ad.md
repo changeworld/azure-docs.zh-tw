@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server 與 Active Directory Azure Active Directory
+title: Azure MFA 伺服器和活動目錄 - Azure 活動目錄
 description: 如何整合 Azure Multi-Factor Authentication Server 與 Active Directory，讓您可以同步處理目錄。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,33 +12,33 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848080"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480975"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server 與 Active Directory 之間的目錄整合
 
 使用 Azure MFA Server 的 [目錄整合] 區段來與 Active Directory 或另一個 LDAP 目錄整合。 您可以設定相關屬性以比對目錄結構描述，並設定自動使用者同步處理。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 將不再為新部署提供 MFA 伺服器。 希望使用者進行多重要素驗證的新客戶應使用基於雲的 Azure 多重要素驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動憑據。
 
 ## <a name="settings"></a>設定
 
 根據預設，Azure Multi-Factor Authentication (MFA) Server 會設定為從 Active Directory 匯入或同步處理使用者。  [目錄整合] 索引標籤可讓您覆寫預設行為，並繫結至不同的 LDAP 目錄、ADAM 目錄或特定 Active Directory 網域控制站。  它也支援使用 LDAP 驗證來代理 LDAP 或 LDAP 繫結做為 RADIUS 目標、IIS 驗證的預先驗證，或使用者入口網站的主要驗證。  下表描述個別設定。
 
-![在 MFA Server 中編輯 LDAP 設定](./media/howto-mfaserver-dir-ad/dirint.png)
+![在 MFA 伺服器中編輯 LDAP 配置](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> 目錄整合不保證會與 Active Directory Domain Services 以外的目錄搭配使用。
+> 目錄集成不保證與活動目錄域服務以外的目錄一起工作。
 
 | 功能 | 描述 |
 | --- | --- |
-| 使用 Active Directory |選取 [使用 Active Directory] 選項，以使用 Active Directory 來匯入和同步處理。  這是預設設定。 <br>注意：為了使 Active Directory 整合能正常運作，請將電腦加入網域並以網域帳戶進行登入。 |
-| 包含受信任的網域 |核取 [包含受信任的網域]，讓代理程式嘗試連線至目前網域所信任的網域、樹系中的另一個網域，或涉及樹系信任的網域。  當不從任何受信任的網域匯入或同步處理使用者時，請取消選取此核取方塊，以改善效能。  預設為核取。 |
+| 使用 Active Directory |選取 [使用 Active Directory] 選項，以使用 Active Directory 來匯入和同步處理。  這是預設值。 <br>注意：為了使 Active Directory 整合能正常運作，請將電腦加入網域並以網域帳戶進行登入。 |
+| 包含受信任的網域 |核取 [包含受信任的網域]****，讓代理程式嘗試連線至目前網域所信任的網域、樹系中的另一個網域，或涉及樹系信任的網域。  當不從任何受信任的網域匯入或同步處理使用者時，請取消選取此核取方塊，以改善效能。  預設為核取。 |
 | 使用特定 LDAP 組態 |選取 [使用 LDAP] 選項，以使用指定的 LDAP 設定來匯入和同步處理。 注意：當選取 [使用 LDAP] 時，使用者介面會將參考從 Active Directory 變更為 LDAP。 |
 | [編輯] 按鈕 |[編輯] 按鈕允許修改目前的 LDAP 組態設定。 |
 | 使用屬性範圍查詢 |指出是否應該使用屬性範圍查詢。  屬性範圍查詢可以根據另一個記錄屬性中的項目，有效率地在目錄中搜尋合格的記錄。  Azure Multi-Factor Authentication Server 可以使用屬性範圍查詢，有效率地查詢安全性群組成員的使用者。   <br>注意：在某些情況下，雖然支援屬性範圍查詢，但卻不應該使用。  比方說，當安全性群組包含來自多個網域的成員時，Active Directory 的屬性範圍查詢可能會有問題。 在此情況下，請取消選取此核取方塊。 |
@@ -47,20 +47,20 @@ ms.locfileid: "74848080"
 
 | 功能 | 描述 |
 | --- | --- |
-| 伺服器 |輸入執行 LDAP 目錄之伺服器的主機名稱或 IP 位址。  也可以指定備份伺服器 (以分號隔開)。 <br>注意：當 [繫結類型] 是 [SSL] 時，需要完整主機名稱。 |
+| 伺服器 |輸入執行 LDAP 目錄之伺服器的主機名稱或 IP 位址。  也可以指定備份伺服器 (以分號隔開)。 <br>注意：當綁定類型為 SSL （TLS） 時，需要完全限定的主機名稱。 |
 | 基準 DN |輸入作為所有目錄查詢起點之基準目錄物件的辨別名稱。  例如，dc=abc,dc=com。 |
 | 繫結類型 - 查詢 |選取繫結時可用的適當繫結類型，以搜尋 LDAP 目錄。  這用於匯入、同步處理和使用者名稱解析。 <br><br>  匿名 - 執行匿名繫結。  不會使用繫結 DN 和繫結密碼。  只有當 LDAP 目錄允許匿名繫結，而且權限允許查詢適當的記錄和屬性時，這才有作用。  <br><br> 簡單 - 以純文字傳遞 [繫結 DN] 和 [繫結密碼] 來繫結至 LDAP 目錄。  這只適用於測試目的，以確認可連上伺服器且繫結帳戶具有適當的存取權。 安裝適當的憑證之後，請改用 SSL。  <br><br> SSL - 使用 SSL 加密 [繫結 DN] 和 [繫結密碼] 以繫結至 LDAP 目錄。  在本機安裝 LDAP 目錄所信任的憑證。  <br><br> Windows - 使用繫結使用者名稱和繫結密碼來安全地連線到 Active Directory 網域控制站或 ADAM 目錄。  如果 [繫結使用者名稱] 空白，則會使用已登入的使用者帳戶進行繫結。 |
 | 繫結類型 - 驗證 |選取適當的繫結類型供執行 LDAP 繫結驗證時使用。  請參閱＜繫結類型 - 查詢＞下的繫結類型描述。  比方說，這可將匿名繫結用於查詢，而將 SSL 繫結用於保護 LDAP 繫結驗證。 |
 | 繫結 DN 或繫結使用者名稱 |輸入帳戶的使用者記錄辨別名稱，以在繫結至 LDAP 目錄時使用。<br><br>只有在 [繫結類型] 為 [簡單] 或 [SSL] 時，才會使用繫結辨別名稱。  <br><br>當 [繫結類型] 為 [Windows] 時，輸入當繫結至 LDAP 目錄時要使用的 Windows 帳戶的使用者名稱。  如果空白，則會使用已登入的使用者帳戶進行繫結。 |
 | 繫結密碼 |輸入用來繫結至 LDAP 目錄之繫結 DN 或使用者名稱的繫結密碼。  若要設定 Multi-Factor Auth Server AdSync 服務的密碼，請啟用同步處理並確保此服務在本機電腦上執行。  此密碼會儲存在用於執行 Multi-Factor Auth Server AdSync Service 的帳戶下的 [Windows 儲存的使用者和密碼] 中。  此密碼也會儲存在用於執行 Multi-Factor Auth Server 使用者介面的帳戶下，以及用於執行 Multi-Factor Auth Server Service 的帳戶下。  <br><br>由於密碼只會儲存在本機伺服器的 [Windows 儲存的使用者和密碼] 中，所以在每個需要存取此密碼的 Multi-Factor Auth Server 上重複此步驟。 |
 | 查詢大小限制 |指定目錄搜尋可傳回的使用者數目上限。  此限制應該符合 LDAP 目錄上的設定。  對於不支援分頁的大型搜尋，匯入和同步處理會嘗試以批次方式擷取使用者。  如果此處指定的大小限制大於 LDAP 目錄上設定的限制，可能會遺漏部分使用者。 |
-| 測試按鈕 |按一下 [測試] 以測試 LDAP 伺服器繫結。  <br><br>您不需要選取 [使用 LDAP] 選項來測試繫結。 這樣可以在使用 LDAP 組態之前先測試繫結。 |
+| 測試按鈕 |按一下 [測試]**** 以測試 LDAP 伺服器繫結。  <br><br>您不需要選取 [使用 LDAP]**** 選項來測試繫結。 這樣可以在使用 LDAP 組態之前先測試繫結。 |
 
-## <a name="filters"></a>篩選
+## <a name="filters"></a>篩選器
 
 篩選可讓您在執行目錄搜尋時，設定準則來限定記錄。  您可以設定篩選以限定想要同步處理的物件範圍。  
 
-![在 MFA Server 中設定目錄篩選](./media/howto-mfaserver-dir-ad/dirint2.png)
+![在 MFA 伺服器中配置目錄篩選](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication 具有下列三個篩選選項：
 
@@ -70,17 +70,17 @@ Azure Multi-Factor Authentication 具有下列三個篩選選項：
 
 ## <a name="attributes"></a>屬性
 
-您可以視需要自訂特定目錄的屬性。  這可讓您新增自訂屬性，並微調到只同步處理您需要的屬性。 針對每個屬性欄位的值，使用目錄架構中所定義的屬性名稱。 下表提供每項功能的其他相關資訊。
+您可以視需要自訂特定目錄的屬性。  這可讓您新增自訂屬性，並微調到只同步處理您需要的屬性。 為每個屬性欄位的值使用目錄架構中定義的屬性的名稱。 下表提供每項功能的其他相關資訊。
 
 您可以手動輸入屬性，並不需要符合屬性清單中的屬性。
 
-![在 MFA Server 中自訂目錄整合屬性](./media/howto-mfaserver-dir-ad/dirint3.png)
+![在 MFA 伺服器中自訂目錄集成屬性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | 功能 | 描述 |
 | --- | --- |
 | 唯一識別碼 |輸入屬性的屬性名稱，做為容器、安全性群組和使用者記錄的唯一識別碼。  在 Active Directory 中，這通常是 objectGUID。 其他 LDAP 實作可能使用 entryUUID 或類似的項目。  預設值是 objectGUID。 |
 | 唯一識別碼類型 |選取唯一識別碼屬性的類型。  在 Active Directory 中，objectGUID 屬性為 GUID 類型。 其他 LDAP 實作可能使用 ASCII 位元組陣列或字串類型。  預設值是 GUID。 <br><br>務必正確設定此類型，因為同步處理項目是依照其唯一識別碼來參考。 唯一識別碼類型是用來直接在目錄中尋找物件。  當目錄實際上將值儲存為 ASCII 字元的位元組陣列時，將此類型設定為 [字串] 會導致同步處理無法正確運作。 |
-| 辨別名稱 |輸入屬性的屬性名稱，此屬性包含每一筆記錄的辨別名稱。  在 Active Directory 中，這通常是 distinguishedName。 其他 LDAP 實作可能使用 entryDN 或類似的項目。  預設值是 distinguishedName。 <br><br>如果只包含辨別名稱的屬性不存在，則可能會使用 ads path 屬性。  路徑的 "LDAP://\<server\>/" 部分將會自動去除，只保留物件的辨別名稱。 |
+| 辨別名稱 |輸入屬性的屬性名稱，此屬性包含每一筆記錄的辨別名稱。  在 Active Directory 中，這通常是 distinguishedName。 其他 LDAP 實作可能使用 entryDN 或類似的項目。  預設值是 distinguishedName。 <br><br>如果僅包含可分辨名稱的屬性不存在，則可以使用廣告路徑屬性。  路徑的 "LDAP://\<server\>/" 部分將會自動去除，只保留物件的辨別名稱。 |
 | 容器名稱 |輸入屬性的屬性名稱，此屬性包含容器記錄中的名稱。  從 Active Directory 匯入或新增同步處理項目時，這個屬性的值會顯示在容器階層中。  預設值是 name。 <br><br>如果不同容器使用不同的屬性做為名稱，請使用分號來隔開多個容器名稱屬性。  在容器物件上找到的第一個容器名稱屬性用來顯示其名稱。 |
 | 安全性群組名稱 |輸入屬性的屬性名稱，此屬性包含安全性群組記錄中的名稱。  從 Active Directory 匯入或新增同步處理項目時，這個屬性的值會顯示在安全性群組清單中。  預設值是 name。 |
 | 使用者名稱 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的使用者名稱。  這個屬性的值用於做為 Multi-Factor Auth Server 使用者名稱。  可以指定第二個屬性做為第一個屬性的備用。  只有當第一個屬性不包含使用者的值時，才會使用第二個屬性。  預設值是 userPrincipalName 和 sAMAccountName。 |
@@ -99,15 +99,15 @@ Azure Multi-Factor Authentication 具有下列三個篩選選項：
 | 行動電話 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的行動電話號碼。  預設值是 mobile。 |
 | 傳真 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的傳真號碼。  預設值是 facsimileTelephoneNumber。 |
 | IP 電話 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的 IP 電話號碼。  預設值是 ipPhone。 |
-| 自訂 |輸入屬性的屬性名稱，其中包含使用者記錄中的自訂電話號碼。  預設值為空白。 |
-| 尾碼 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
-| [還原預設值] 按鈕 |按一下 [還原預設值]，可將所有屬性還原為預設值。  在一般 Active Directory 或 ADAM 結構描述中，預設值應該可以正確運作。 |
+| Custom |輸入屬性的屬性名稱，其中包含使用者記錄中的自訂電話號碼。  預設值為空白。 |
+| 分機 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
+| [還原預設值] 按鈕 |按一下 [還原預設值]****，可將所有屬性還原為預設值。  在一般 Active Directory 或 ADAM 結構描述中，預設值應該可以正確運作。 |
 
-若要編輯屬性，請按一下 [屬性] 索引標籤上的 [**編輯**]。 這會出現一個視窗，您可以在其中編輯屬性。 選取任何屬性旁邊的 [...] 可開啟視窗供您選擇要顯示的屬性。
+要編輯屬性，請按一下"**屬性"選項卡上的"編輯**"。 這將打開一個視窗，您可以在其中編輯屬性。 選取任何屬性旁邊的 [...]**** 可開啟視窗供您選擇要顯示的屬性。
 
-![在 MFA Server 中編輯目錄屬性對應](./media/howto-mfaserver-dir-ad/dirint4.png)
+![在 MFA 伺服器中編輯目錄屬性對應](./media/howto-mfaserver-dir-ad/dirint4.png)
 
-## <a name="synchronization"></a>同步處理
+## <a name="synchronization"></a>Synchronization
 
 同步處理可將 Azure MFA 使用者資料庫與 Active Directory 或另一個輕量型目錄存取通訊協定 (LDAP) 目錄中的使用者保持同步。 此程序類似於從 Active Directory 手動匯入使用者，但會定期輪詢 Active Directory 使用者和安全性群組是否有需要處理的變更。  它也可停用或移除已從容器、安全性群組或 Active Directory 中移除的使用者。
 
@@ -117,7 +117,7 @@ Multi-Factor Auth ADSync 服務使用 Microsoft 所提供的 DirSync LDAP 伺服
 
 如果 LDAP 目錄支援 DirSync 並為其進行設定，則輪詢使用者和安全性群組的變更時，就如同輪詢 Active Directory 的變更一樣。  如果 LDAP 目錄不支援 DirSync 控制，則會在每個週期執行完整同步處理。
 
-![將目錄物件同步至 MFA Server](./media/howto-mfaserver-dir-ad/dirint5.png)
+![目錄物件與 MFA 伺服器同步](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 下表包含各項 [同步處理] 索引標籤設定的其他資訊。
 
@@ -141,10 +141,10 @@ Multi-Factor Auth ADSync 服務使用 Microsoft 所提供的 DirSync LDAP 伺服
 [上移] 和 [下移] 按鈕可讓系統管理員變更同步處理項目的順序。  順序很重要，因為相同的使用者可能是多個同步處理項目 (例如容器和安全性群組) 的成員。  在同步處理期間套用至使用者的設定，將來自使用者相關聯的清單中的第一個同步處理項目。  因此，同步處理項目應該依優先順序放置。
 
 > [!TIP]
-> 移除同步處理項目之後應該執行完整同步處理。  排序同步處理項目之後應該執行完整同步處理。  按一下 [立即同步處理] 以執行完整同步處理。
+> 移除同步處理項目之後應該執行完整同步處理。  排序同步處理項目之後應該執行完整同步處理。  按一下 [立即同步處理]**** 以執行完整同步處理。
 
-## <a name="multi-factor-authentication-servers"></a>多重要素驗證服務器
+## <a name="multi-factor-authentication-servers"></a>多重要素驗證伺服器
 
-額外的多因素驗證服務器可能設定為備份 RADIUS proxy、LDAP proxy 或 IIS 驗證。 所有代理程式會共用同步處理組態。 不過，只有其中一個代理程式可以執行多因素驗證服務器服務。 此索引標籤可讓您選取應該啟用同步處理的多重要素驗證服務器。
+可以設置其他多重要素驗證伺服器作為備份 RADIUS 代理、LDAP 代理或 IIS 身份驗證。 所有代理程式會共用同步處理組態。 但是，這些代理中只有一個可能運行多重要素驗證伺服器服務。 此選項卡允許您選擇應啟用同步的多重要素驗證伺服器。
 
-![相關的多重要素驗證服務器](./media/howto-mfaserver-dir-ad/dirint6.png)
+![相關的多重要素驗證伺服器](./media/howto-mfaserver-dir-ad/dirint6.png)

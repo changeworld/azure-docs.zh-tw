@@ -1,43 +1,37 @@
 ---
-title: 使用 PowerShell 或範本啟用適用於 VM 的 Azure 監視器（傳統）
-description: 本文說明如何使用 Azure PowerShell 或 Azure Resource Manager 範本來啟用一或多個 Azure 虛擬機器或虛擬機器擴展集的適用於 VM 的 Azure 監視器。
+title: 使用 PowerShell 或範本為 VM 啟用 Azure 監視器
+description: 本文介紹如何使用 Azure PowerShell 或 Azure 資源管理器範本為一個或多個 Azure 虛擬機器或虛擬機器縮放集啟用 VM 的 Azure 監視器。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249187"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480839"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或 Resource Manager 範本啟用適用於 VM 的 Azure 監視器（預覽）
+# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或資源管理器範本為 VM 啟用 Azure 監視器
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文說明如何使用 Azure PowerShell 或 Azure Resource Manager 範本來啟用 Azure 虛擬機器或虛擬機器擴展集的適用於 VM 的 Azure 監視器（預覽）。 在此程式結束時，您將已成功開始監視所有虛擬機器，並瞭解是否有任何效能或可用性問題。
+本文介紹如何使用 Azure PowerShell 或 Azure 資源管理器範本為 Azure 虛擬機器或虛擬機器縮放集啟用 Azure 監視器。 此過程結束時，您將成功開始監視所有虛擬機器，並瞭解是否有任何虛擬機器遇到性能或可用性問題。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>設定 Log Analytics 工作區
 
-如果您沒有 Log Analytics 工作區，則需要建立一個。 請先參閱[必要條件](vminsights-enable-overview.md#log-analytics)一節中所建議的方法，再繼續進行設定的步驟。 然後，您可以使用 Azure Resource Manager 範本方法來完成適用於 VM 的 Azure 監視器的部署。
+如果沒有日誌分析工作區，則需要創建一個工作區。 在繼續配置它的步驟之前，請查看["先決條件"](vminsights-enable-overview.md#log-analytics)部分中建議的方法。 然後，可以使用 Azure 資源管理器範本方法完成 VM Azure 監視器的部署。
 
-### <a name="enable-performance-counters"></a>啟用效能計數器
-
-如果解決方案所參考的 Log Analytics 工作區還未設定為收集此解決方案所需的效能計數器，則必須啟用這些效能計數器。 您可以透過下列兩種方式的其中一種來執行此動作：
-* 手動，如 [Log Analytics 中的 Windows 和 Linux 效能資料來源](../../azure-monitor/platform/data-sources-performance-counters.md)中所述
-* 藉由下載並執行可從[Azure PowerShell 資源庫](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)取得的 PowerShell 腳本
-
-### <a name="install-the-servicemap-solution"></a>安裝 ServiceMap 解決方案
+### <a name="install-the-vminsights-solution"></a>安裝 VMInsights 解決方案
 
 此方法包含一個 JSON 範本，其會指定在 Log Analytics 工作區中啟用解決方案元件的設定。
 
-如果您不知道如何使用範本來部署資源，請參閱：
+如果您不知道如何使用範本部署資源，請參閱：
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-若要使用 Azure CLI，您必須先在本機安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 若要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+要使用 Azure CLI，首先需要在本地安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 複製以下 JSON 語法並貼到您的檔案中：
 
@@ -63,7 +57,7 @@ ms.locfileid: "79249187"
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -73,9 +67,9 @@ ms.locfileid: "79249187"
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }
@@ -97,7 +91,7 @@ ms.locfileid: "79249187"
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
-        設定變更可能需要幾分鐘的時間才能完成。 完成時，會顯示與下列類似的訊息，並包含結果：
+        配置更改可能需要幾分鐘才能完成。 完成後，將顯示類似于以下內容的消息，其中包含結果：
 
         ```output
         provisioningState       : Succeeded
@@ -111,48 +105,48 @@ ms.locfileid: "79249187"
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
         ```
 
-        設定變更可能需要幾分鐘的時間才能完成。 完成時，會顯示類似下列的訊息，並包含結果：
+        配置更改可能需要幾分鐘才能完成。 完成後，將顯示類似于以下內容的消息，並包含結果：
 
         ```output
         provisioningState       : Succeeded
         ```
 
-## <a name="enable-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本啟用
+## <a name="enable-with-azure-resource-manager-templates"></a>使用 Azure 資源管理器範本啟用
 
-我們已建立範例 Azure Resource Manager 範本，用來將您的虛擬機器和虛擬機器擴展集上架。 這些範本包括您可用來在現有資源上啟用監視，以及建立已啟用監視功能的新資源的案例。
+我們已創建用於載入虛擬機器和虛擬機器縮放集的 Azure 資源管理器範本示例。 這些範本包括可用於啟用對現有資源的監視和創建啟用監視的新資源的方案。
 
 >[!NOTE]
->範本必須部署在與資源相同的資源群組中，才能放在面板上。
+>範本需要部署在同一資源組中，以便引入的資源。
 
-如果您不知道如何使用範本來部署資源，請參閱：
+如果您不知道如何使用範本部署資源，請參閱：
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-若要使用 Azure CLI，您必須先在本機安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 若要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+要使用 Azure CLI，首先需要在本地安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="download-templates"></a>下載範本
 
-您可以從 GitHub 存放庫[下載](https://aka.ms/VmInsightsARMTemplates)的封存檔案（.zip）中提供 Azure Resource Manager 範本。 檔案的內容包括代表每個部署案例的資料夾，以及範本和參數檔案。 在執行之前，請修改參數檔案，並指定所需的值。 請勿修改範本檔案，除非您需要加以自訂以支援您的特定需求。 修改參數檔案之後，您可以使用本文稍後所述的下列方法來部署該檔案。
+Azure 資源管理器範本在存檔檔 （.zip） 中提供，可以從 GitHub 存儲庫[下載](https://aka.ms/VmInsightsARMTemplates)。 檔的內容包括使用範本和參數檔表示每個部署方案的資料夾。 在運行參數檔之前，請修改參數檔並指定所需的值。 除非需要自訂範本檔以支援您的特定要求，否則不要修改範本檔。 修改參數檔後，可以使用本文後面介紹的以下方法部署它。
 
-下載檔案包含適用于不同案例的下列範本：
+下載檔案包含以下不同方案的範本：
 
-- 如果虛擬機器已存在， **ExistingVmOnboarding**範本會啟用適用於 VM 的 Azure 監視器。
-- **NewVmOnboarding**範本會建立虛擬機器，並讓適用於 VM 的 Azure 監視器加以監視。
-- 如果虛擬機器擴展集已存在， **ExistingVmssOnboarding**範本會啟用適用於 VM 的 Azure 監視器。
-- **NewVmssOnboarding**範本會建立虛擬機器擴展集，並啟用適用於 VM 的 Azure 監視器來監視它們。
-- **ConfigureWorkspace**範本會藉由啟用 Linux 和 Windows 作業系統效能計數器的解決方案和集合，將您的 Log Analytics 工作區設定為支援適用於 VM 的 Azure 監視器。
+- 如果虛擬機器已存在，**則現有 VmOnsa 範本**支援 VM 的 Azure 監視器。
+- **NewVmOnsas 範本**創建虛擬機器，並使 VM 的 Azure 監視器能夠監視它。
+- 如果虛擬機器縮放集已存在，**則現有 VmsOnss 板入**範本可為 VM 啟用 Azure 監視器。
+- **NewVmsOnsssssss 板入**範本創建虛擬機器縮放集，並使 VM 的 Azure 監視器能夠監視它們。
+- **配置工作區**範本通過啟用 Linux 和 Windows 作業系統效能計數器的解決方案和集合，配置日誌分析工作區以支援 Azure 監視器的 VM。
 
 >[!NOTE]
->如果虛擬機器擴展集已存在，且升級原則設定為**手動**，則在執行**ExistingVmssOnboarding** Azure Resource Manager 範本之後，預設不會針對實例啟用適用於 VM 的 Azure 監視器。 您必須手動升級實例。
+>如果虛擬機器縮放集已存在，並且升級策略設置為**手動**，則在運行 **"現有 VmsonsOns"Azure**資源管理器範本後，預設情況下不會為實例啟用 Azure 監視器。 您必須手動升級實例。
 
 ### <a name="deploy-by-using-azure-powershell"></a>使用 Azure PowerShell 進行部署
 
-下列步驟會使用 Azure PowerShell 來啟用監視。
+以下步驟可以使用 Azure PowerShell 進行監視。
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
 ```
-設定變更可能需要幾分鐘的時間才能完成。 完成時，會顯示與下列類似的訊息，並包含結果：
+配置更改可能需要幾分鐘才能完成。 完成後，將顯示類似于以下內容的消息，其中包含結果：
 
 ```output
 provisioningState       : Succeeded
@@ -160,7 +154,7 @@ provisioningState       : Succeeded
 
 ### <a name="deploy-by-using-the-azure-cli"></a>使用 Azure CLI 進行部署
 
-下列步驟會使用 Azure CLI 來啟用監視。
+以下步驟可以使用 Azure CLI 進行監視。
 
 ```azurecli
 az login
@@ -176,15 +170,15 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>使用 PowerShell 啟用
 
-若要啟用多個 Vm 或虛擬機器擴展集的適用於 VM 的 Azure 監視器，請使用 PowerShell 腳本[install-vminsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 它可以從 Azure PowerShell 資源庫取得。 此腳本會逐一查看：
+要為多個 VM 或虛擬機器規模集啟用 VM 的 Azure 監視器，請使用 PowerShell 腳本[安裝 VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 可從 Azure PowerShell 庫獲得。 此腳本遍經：
 
-- 您的訂用帳戶中的每個虛擬機器和虛擬機器擴展集。
-- *ResourceGroup*所指定的範圍資源群組。
-- 依*名稱*指定的單一 VM 或虛擬機器擴展集。
+- 訂閱中的每個虛擬機器和虛擬機器規模設置。
+- *資源組*指定的作用域資源組。
+- 由*Name*指定的單個 VM 或虛擬機器規模集。
 
-針對每個 VM 或虛擬機器擴展集，指令碼會確認是否已經安裝 VM 延伸模組。 如果已安裝 VM 延伸模組，腳本會嘗試重新安裝它。 如果未安裝 VM 延伸模組，腳本會安裝 Log Analytics 和 Dependency agent VM 延伸模組。
+針對每個 VM 或虛擬機器擴展集，指令碼會確認是否已經安裝 VM 延伸模組。 如果安裝了 VM 擴展，腳本將嘗試重新安裝它。 如果未安裝 VM 擴展，腳本將安裝日誌分析和依賴項代理 VM 擴展。
 
-確認您使用的是已啟用 `Enable-AzureRM` 相容性別名的 Azure PowerShell 模組 Az 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+驗證是否正在使用 Azure PowerShell 模組 Az 版本 1.0.0 或更高版本，並`Enable-AzureRM`啟用了相容性別名。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 若要取得指令碼引數詳細資料及使用方式範例的清單，請執行 `Get-Help`。
 
@@ -339,8 +333,8 @@ Failed: (0)
 
 ## <a name="next-steps"></a>後續步驟
 
-現在已針對您的虛擬機器啟用監視，此資訊可透過適用於 VM 的 Azure 監視器進行分析。
+現在，已為虛擬機器啟用了監視功能，此資訊可用於使用針對 VM 的 Azure 監視器進行分析。
 
 - 若要檢視探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。
 
-- 若要找出 VM 效能的瓶頸和整體使用率，請參閱[查看 AZURE VM 效能](vminsights-performance.md)。
+- 要根據 VM 的性能識別瓶頸和總體利用率，請參閱查看[Azure VM 性能](vminsights-performance.md)。

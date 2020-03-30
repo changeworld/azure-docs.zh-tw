@@ -1,33 +1,33 @@
 ---
-title: 如何使用 PowerShell 管理指派
-description: 瞭解如何使用官方 Azure 藍圖 PowerShell 模組 Az. 藍圖來管理藍圖指派。
+title: 如何使用 PowerShell 管理分配
+description: 瞭解如何使用正式的 Azure 藍圖 PowerShell 模組 Az.Blueprint 管理藍圖分配。
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280712"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247396"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理指派
+# <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理分配
 
-您可以使用**Az. 藍圖**Azure PowerShell 模組來管理藍圖指派。 此模組支援提取、建立、更新和移除指派。 此模組也可以提取現有藍圖定義的詳細資料。 本文涵蓋如何安裝模組並開始使用它。
+可以使用**Az.藍圖**Azure PowerShell 模組管理藍圖分配。 該模組支援提取、創建、更新和刪除分配。 該模組還可以獲取有關現有藍圖定義的詳細資訊。 本文介紹如何安裝模組並開始使用它。
 
-## <a name="add-the-azblueprint-module"></a>新增 Az. 藍圖模組
+## <a name="add-the-azblueprint-module"></a>添加 Az.藍圖模組
 
-若要讓 Azure PowerShell 管理藍圖指派，必須新增模組。 此模組適用於在本機安裝的 PowerShell、[Azure Cloud Shell](https://shell.azure.com) 或 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)。
+要使 Azure PowerShell 能夠管理藍圖分配，必須添加模組。 此模組適用於在本機安裝的 PowerShell、[Azure Cloud Shell](https://shell.azure.com) 或 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)。
 
 ### <a name="base-requirements"></a>基底需求
 
-Azure 藍圖模組需要下列軟體：
+Azure 藍圖模組需要以下軟體：
 
-- Azure PowerShell 1.5.0 或更高版本。 如果尚未安裝，請依照[這些指示](/powershell/azure/install-az-ps)操作。
+- Azure 電源外殼 1.5.0 或更高版本。 如果尚未安裝，請依照[這些指示](/powershell/azure/install-az-ps)操作。
 - PowerShellGet 2.0.1 或更新版本。 如果未安裝或更新，請依照[這些指示](/powershell/scripting/gallery/installing-psget)操作。
 
 ### <a name="install-the-module"></a>安裝模組
 
-適用于 PowerShell 的藍圖模組是**Az. 藍圖**。
+PowerShell 的藍圖模組是**Az.藍圖**。
 
 1. 從**系統管理** PowerShell 提示字元中，執行下列命令：
 
@@ -37,21 +37,21 @@ Azure 藍圖模組需要下列軟體：
    ```
 
    > [!NOTE]
-   > 如果已安裝**Az** ，則可能需要使用 `-AllowClobber` 來強制安裝。
+   > 如果已安裝**Az.帳戶**，則可能需要使用`-AllowClobber`強制安裝。
 
-1. 驗證模組是否已匯入，而且是正確的版本（0.2.6）：
+1. 驗證模組是否已導入且是否正確版本 （0.2.6）：
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
    Get-Command -Module 'Az.Blueprint' -CommandType 'Cmdlet'
    ```
 
-## <a name="get-blueprint-definitions"></a>取得藍圖定義
+## <a name="get-blueprint-definitions"></a>獲取藍圖定義
 
-使用指派的第一個步驟通常是取得藍圖定義的參考。
-`Get-AzBlueprint` Cmdlet 會取得一或多個藍圖定義。 Cmdlet 可以從具有 `-ManagementGroupId {mgId}` 的管理群組或具有 `-SubscriptionId {subId}`的訂用帳戶，取得藍圖定義。 **Name**參數會取得藍圖定義，但必須與**ManagementGroupId**或**SubscriptionId**搭配使用。 **版本**可以與**名稱**搭配使用，以更明確地瞭解傳回的藍圖定義。 參數 `-LatestPublished` 會抓取最近發行的版本，而不是**版本**。
+使用分配的第一步通常是獲得對藍圖定義的引用。
+Cmdlet`Get-AzBlueprint`獲取一個或多個藍圖定義。 Cmdlet 可以從 具有`-ManagementGroupId {mgId}`的管理組獲取藍圖定義，也可以從 訂閱`-SubscriptionId {subId}`獲取藍圖定義。 **Name**參數獲取藍圖定義，但必須與**管理組Id**或**訂閱 Id**一起使用。 **版本**可以與**Name**一起使用，以便更明確地確定返回的藍圖定義。 交換器`-LatestPublished`獲取最近發佈的版本，而不是**版本**。
 
-下列範例會使用 `Get-AzBlueprint`，從以 `{subId}`表示的特定訂用帳戶，取得名為 ' 101-藍圖-定義-訂用帳戶 ' 的藍圖定義的所有版本：
+以下示例用於`Get-AzBlueprint`從表示為的特定訂閱獲取名為"101-藍圖-定義-訂閱"的藍圖定義的所有版本`{subId}`：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -63,7 +63,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-具有多個版本之藍圖定義的範例輸出看起來像這樣：
+具有多個版本的藍圖定義的示例輸出如下所示：
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -78,7 +78,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-藍圖定義上的[藍圖參數](../concepts/parameters.md#blueprint-parameters)可以擴充以提供詳細資訊。
+可以擴展藍圖定義的[藍圖參數](../concepts/parameters.md#blueprint-parameters)以提供更多資訊。
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -93,11 +93,11 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 [Usergrouporapplicationname]:Reader_RoleAssignmentName Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition
 ```
 
-## <a name="get-blueprint-assignments"></a>取得藍圖指派
+## <a name="get-blueprint-assignments"></a>獲取藍圖分配
 
-如果藍圖指派已存在，您可以使用 `Get-AzBlueprintAssignment` Cmdlet 取得其參考。 此 Cmdlet 會採用**SubscriptionId**和**Name**做為選擇性參數。 如果未指定**SubscriptionId** ，則會使用目前的訂用帳戶內容。
+如果藍圖分配已存在，則可以使用`Get-AzBlueprintAssignment`Cmdlet 獲取對它的引用。 Cmdlet 將**訂閱 Id**和**Name**作為可選參數。 如果未指定**訂閱 Id，** 則使用當前訂閱上下文。
 
-下列範例會使用 `Get-AzBlueprintAssignment`，從以 `{subId}`表示的特定訂用帳戶中，取得名為「指派-鎖定-資源群組」的單一藍圖指派：
+以下示例用於`Get-AzBlueprintAssignment`從表示為的特定訂閱中獲取名為"分配-鎖定資源組"的單個藍圖分配`{subId}`：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -109,7 +109,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-藍圖指派的範例輸出如下所示：
+藍圖分配的示例輸出如下所示：
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -123,52 +123,52 @@ Parameters        :
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="create-blueprint-assignments"></a>建立藍圖指派
+## <a name="create-blueprint-assignments"></a>創建藍圖分配
 
-如果藍圖指派尚不存在，您可以使用 `New-AzBlueprintAssignment` Cmdlet 加以建立。 此 Cmdlet 會使用下列參數：
+如果藍圖分配尚不存在，您可以使用`New-AzBlueprintAssignment`Cmdlet 創建它。 此 Cmdlet 使用以下參數：
 
-- **名稱**[必要]
-  - 指定藍圖指派的名稱
-  - 必須是唯一的，而且不存在於**SubscriptionId**中
-- **藍圖**[必要]
-  - 指定要指派的藍圖定義
-  - 使用 `Get-AzBlueprint` 取得參考物件
-- **位置**[必要]
-  - 指定要在其中建立系統指派的受控識別和訂用帳戶部署物件的區域
-- **訂**用帳戶（選擇性）
-  - 指定要部署指派的訂用帳戶
-  - 如果未提供，則預設為目前的訂用帳戶內容
-- **Lock** （選擇性）
-  - 定義要用於已部署資源的[藍圖資源鎖定](../concepts/resource-locking.md)
-  - 支援的選項： _None_、 _AllResourcesReadOnly_、 _AllResourcesDoNotDelete_
-  - 如果未提供，則預設為_None_
-- **SystemAssignedIdentity** （選擇性）
-  - 選取即可建立指派給系統指派的受控識別，並部署資源
-  - 已設定 "identity" 參數的預設值
-  - 不能與**UserAssignedIdentity**搭配使用
-- **UserAssignedIdentity** （選擇性）
-  - 指定要用於指派和部署資源的使用者指派受控識別
-  - 「身分識別」參數集的一部分
-  - 不能與**SystemAssignedIdentity**搭配使用
-- **參數**（選擇性）
-  - 在藍圖指派上設定[動態參數](../concepts/parameters.md#dynamic-parameters)的索引鍵/值組[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 動態參數的預設值為定義中的**defaultValue**
-  - 如果未提供參數，而且沒有**defaultValue**，則參數不是選擇性的
+- **名稱**[必需]
+  - 指定藍圖分配的名稱
+  - 必須是唯一的，並且在**訂閱 Id**中不存在
+- **藍圖**[必需]
+  - 指定要分配的藍圖定義
+  - 用於`Get-AzBlueprint`獲取引用物件
+- **位置**[必需]
+  - 指定要在中創建的系統分配的託管標識和訂閱部署物件的區域
+- **訂閱**（可選）
+  - 指定分配部署到的訂閱
+  - 如果未提供，則預設為當前訂閱上下文
+- **鎖定**（可選）
+  - 定義用於已部署資源的[藍圖資源鎖定](../concepts/resource-locking.md)
+  - 支援的選項：_無_，_所有資源唯讀_，_所有資源不刪除_
+  - 如果未提供，則預設為 _"無"_
+- **系統分配標識**（可選）
+  - 選擇該選擇可為分配創建系統分配的託管標識並部署資源
+  - "標識"參數集的預設值
+  - 不能與**使用者分配的身份**一起使用
+- **使用者分配的身份**（可選）
+  - 指定使用者分配的託管標識，用於分配和部署資源
+  - "標識"參數集的一部分
+  - 不能與**系統分配的身份**一起使用
+- **參數**（可選）
+  - 用於在藍圖分配上設置[動態參數](../concepts/parameters.md#dynamic-parameters)的鍵/值對雜湊[表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 動態參數的預設值是定義中的**預設值**
+  - 如果未提供參數，並且沒有**預設值**，則該參數不是可選的
 
     > [!NOTE]
-    > **參數**不支援 secureStrings。
+    > **參數**不支援安全字串。
 
-- **ResourceGroupParameter** （選擇性）
-  - 資源群組成品的[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 每個資源群組成品預留位置都有索引鍵/值組，可動態設定該資源群組成品上的**名稱**和**位置**
-  - 如果未提供資源群組參數，而且沒有**defaultValue**，則資源群組參數不是選擇性的
-- **AssignmentFile** （選擇性）
-  - 藍圖指派的 JSON 檔案表示路徑
-  - 此參數是 PowerShell 參數集的一部分，其中只包含**名稱**、**藍圖**和**SubscriptionId**，以及一般參數。
+- **資源組參數**（可選）
+  - 資源組工件的[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 每個資源組專案預留位置具有鍵/值對，用於動態設置該資源組專案**的名稱**和**位置**
+  - 如果未提供資源組參數，並且沒有**預設值**，則資源組參數不是可選的
+- **分配檔**（可選）
+  - 藍圖分配 JSON 檔表示的路徑
+  - 此參數是 PowerShell 參數集的一部分，該參數僅包括**名稱**、**藍圖**和**訂閱 Id，** 以及公共參數。
 
-### <a name="example-1-provide-parameters"></a>範例1：提供參數
+### <a name="example-1-provide-parameters"></a>示例 1：提供參數
 
-下列範例會建立以 `Get-AzBlueprint`提取之 ' my 藍圖 ' 藍圖定義版本 ' 1.1 ' 的新指派、將受控識別和指派物件位置設定為 ' westus2 '、使用_AllResourcesReadOnly_鎖定資源，以及針對以 `{subId}`表示的特定訂用帳戶，設定**參數**和**ResourceGroupParameter**的雜湊表：
+下面的示例`Get-AzBlueprint`創建與"我的藍圖"藍圖定義"1.1"版本"1.1"的新分配，將託管標識和分配物件位置設置為"westus2"，使用_AllResourcesReadOnly_鎖定資源，並在表示的特定訂閱上設置**參數**和資源**組參數**的雜湊表，表示為： `{subId}`
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -189,7 +189,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-建立藍圖指派的範例輸出看起來像這樣：
+創建藍圖分配的示例輸出如下所示：
 
 ```output
 Name              : my-blueprint-assignment
@@ -203,10 +203,10 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>範例2：使用 JSON 指派定義檔
+### <a name="example-2-use-a-json-assignment-definition-file"></a>示例 2：使用 JSON 分配定義檔
 
-下列範例會建立與[範例 1](#example-1-provide-parameters)幾乎相同的指派。
-範例不會將參數傳遞給 Cmdlet，而是會顯示 JSON 指派定義檔和**AssignmentFile**參數的用法。 此外， **excludedPrincipals**屬性會設定為**鎖定**的一部分。 沒有適用于**excludedPrincipals**的 PowerShell 參數，而且只能透過 JSON 指派定義檔來設定屬性。
+下面的示例創建與[示例 1](#example-1-provide-parameters)幾乎相同的賦值。
+該示例顯示 JSON 分配定義檔和**分配檔**參數的使用，而不是將參數傳遞給 Cmdlet。 此外，**排除主體**屬性配置為**鎖**的一部分。 沒有**排除主體**的 PowerShell 參數，只能通過 JSON 分配定義檔設置該屬性來配置該屬性。
 
 ```json
 {
@@ -247,52 +247,52 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-如需使用者指派的受控識別之 JSON 指派定義檔的範例，請參閱要求主體，[例如：使用 REST API 的使用者指派受控識別進行指派](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity)。
+有關使用者分配的託管標識的 JSON 分配定義檔的示例，請參閱示例中的請求正文：使用 REST API[的使用者分配的託管標識分配](/rest/api/blueprints/assignments/createorupdate#examples)。
 
-## <a name="update-blueprint-assignments"></a>更新藍圖指派
+## <a name="update-blueprint-assignments"></a>更新藍圖分配
 
-有時候，必須更新已建立的藍圖指派。 `Set-AzBlueprintAssignment` Cmdlet 會處理此動作。 此 Cmdlet 會採用 `New-AzBlueprintAssignment` Cmdlet 所執行的大部分相同參數，以允許更新指派上設定的任何專案。 例外狀況包括_名稱_、_藍圖_和_SubscriptionId_。 只會更新提供的值。
+有時，需要更新已創建的藍圖分配。 `Set-AzBlueprintAssignment` Cmdlet 處理此操作。 Cmdlet 採用 Cmdlet 執行的大多數相同`New-AzBlueprintAssignment`參數，允許更新在賦值上設置的任何參數。 例外情況是_名稱_、_藍圖_和_訂閱 Id_。 僅更新提供的值。
 
-若要瞭解更新藍圖指派時所發生的情況，請參閱[更新指派的規則](./update-existing-assignments.md#rules-for-updating-assignments)。
+要瞭解更新藍圖分配時會發生什麼情況，請參閱[更新分配的規則](./update-existing-assignments.md#rules-for-updating-assignments)。
 
-- **名稱**[必要]
-  - 指定要更新之藍圖指派的名稱
-  - 用來找出要更新的指派，而不是變更指派
-- **藍圖**[必要]
-  - 指定藍圖指派的藍圖定義
-  - 使用 `Get-AzBlueprint` 取得參考物件
-  - 用來找出要更新的指派，而不是變更指派
-- **Location** （選擇性）
-  - 指定要在其中建立系統指派的受控識別和訂用帳戶部署物件的區域
-- **訂**用帳戶（選擇性）
-  - 指定要部署指派的訂用帳戶
-  - 如果未提供，則預設為目前的訂用帳戶內容
-  - 用來找出要更新的指派，而不是變更指派
-- **Lock** （選擇性）
-  - 定義要用於已部署資源的[藍圖資源鎖定](../concepts/resource-locking.md)
-  - 支援的選項： _None_、 _AllResourcesReadOnly_、 _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** （選擇性）
-  - 選取即可建立指派給系統指派的受控識別，並部署資源
-  - 已設定 "identity" 參數的預設值
-  - 不能與**UserAssignedIdentity**搭配使用
-- **UserAssignedIdentity** （選擇性）
-  - 指定要用於指派和部署資源的使用者指派受控識別
-  - 「身分識別」參數集的一部分
-  - 不能與**SystemAssignedIdentity**搭配使用
-- **參數**（選擇性）
-  - 在藍圖指派上設定[動態參數](../concepts/parameters.md#dynamic-parameters)的索引鍵/值組[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 動態參數的預設值為定義中的**defaultValue**
-  - 如果未提供參數，而且沒有**defaultValue**，則參數不是選擇性的
+- **名稱**[必需]
+  - 指定要更新的藍圖分配的名稱
+  - 用於查找要更新的分配，而不是更改分配
+- **藍圖**[必需]
+  - 指定藍圖分配的藍圖定義
+  - 用於`Get-AzBlueprint`獲取引用物件
+  - 用於查找要更新的分配，而不是更改分配
+- **位置**（可選）
+  - 指定要在中創建的系統分配的託管標識和訂閱部署物件的區域
+- **訂閱**（可選）
+  - 指定分配部署到的訂閱
+  - 如果未提供，則預設為當前訂閱上下文
+  - 用於查找要更新的分配，而不是更改分配
+- **鎖定**（可選）
+  - 定義用於已部署資源的[藍圖資源鎖定](../concepts/resource-locking.md)
+  - 支援的選項：_無_，_所有資源唯讀_，_所有資源不刪除_
+- **系統分配標識**（可選）
+  - 選擇該選擇可為分配創建系統分配的託管標識並部署資源
+  - "標識"參數集的預設值
+  - 不能與**使用者分配的身份**一起使用
+- **使用者分配的身份**（可選）
+  - 指定使用者分配的託管標識，用於分配和部署資源
+  - "標識"參數集的一部分
+  - 不能與**系統分配的身份**一起使用
+- **參數**（可選）
+  - 用於在藍圖分配上設置[動態參數](../concepts/parameters.md#dynamic-parameters)的鍵/值對雜湊[表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 動態參數的預設值是定義中的**預設值**
+  - 如果未提供參數，並且沒有**預設值**，則該參數不是可選的
 
     > [!NOTE]
-    > **參數**不支援 secureStrings。
+    > **參數**不支援安全字串。
 
-- **ResourceGroupParameter** （選擇性）
-  - 資源群組成品的[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 每個資源群組成品預留位置都有索引鍵/值組，可動態設定該資源群組成品上的**名稱**和**位置**
-  - 如果未提供資源群組參數，而且沒有**defaultValue**，則資源群組參數不是選擇性的
+- **資源組參數**（可選）
+  - 資源組工件的[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 每個資源組專案預留位置具有鍵/值對，用於動態設置該資源組專案**的名稱**和**位置**
+  - 如果未提供資源組參數，並且沒有**預設值**，則資源組參數不是可選的
 
-下列範例會變更鎖定模式，以更新使用 `Get-AzBlueprint` 提取之 ' my 藍圖 ' 藍圖定義版本 ' 1.1 ' 的指派：
+以下示例更新`Get-AzBlueprint`通過更改鎖定模式獲取的"我的藍圖"藍圖定義的版本"1.1"的分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -305,7 +305,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-建立藍圖指派的範例輸出看起來像這樣：
+創建藍圖分配的示例輸出如下所示：
 
 ```output
 Name              : my-blueprint-assignment
@@ -319,11 +319,11 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="remove-blueprint-assignments"></a>移除藍圖指派
+## <a name="remove-blueprint-assignments"></a>刪除藍圖分配
 
-當您想要移除藍圖指派時，`Remove-AzBlueprintAssignment` Cmdlet 會處理此動作。 Cmdlet 會使用**Name**或**InputObject**來指定要移除哪一個藍圖指派。 **SubscriptionId**是_必要_的，而且必須在所有情況下提供。
+當刪除藍圖分配時，Cmdlet`Remove-AzBlueprintAssignment`處理此操作。 Cmdlet 採用**名稱**或**輸入物件**來指定要刪除的藍圖分配。 **訂閱 Id** _是必需的_，必須在所有情況下都提供。
 
-下列範例會使用 `Get-AzBlueprintAssignment` 來提取現有的藍圖指派，然後從以 `{subId}`表示的特定訂用帳戶中移除它：
+下面的示例獲取具有`Get-AzBlueprintAssignment`的現有藍圖分配，然後將其從表示為`{subId}`的特定訂閱中刪除：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -335,9 +335,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>端對端程式碼範例
+## <a name="end-to-end-code-example"></a>端到端代碼示例
 
-將所有步驟結合在一起，下列範例會取得藍圖定義，然後在以 `{subId}`表示的特定訂用帳戶中建立、更新和移除藍圖指派：
+將所有步驟組合在一起，以下示例獲取藍圖定義，然後創建、更新和刪除表示為`{subId}`的特定訂閱中的藍圖分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -379,8 +379,8 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[藍圖生命週期](../concepts/lifecycle.md)。
+- 瞭解[藍圖生命週期](../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../concepts/parameters.md)。
 - 了解如何自訂[藍圖排序順序](../concepts/sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](../concepts/resource-locking.md)。
-- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。
+- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。

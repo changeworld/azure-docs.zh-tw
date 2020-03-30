@@ -8,16 +8,16 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529164"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>設定 IoT Edge 裝置作為透明閘道
 
-本文提供詳細的指示，說明如何設定 IoT Edge 裝置做為透明閘道，以供其他裝置與 IoT 中樞通訊。 本文使用「 *IoT Edge 閘道*」一詞來參照設定為透明閘道的 IoT Edge 裝置。 如需詳細資訊，請參閱[如何使用 IoT Edge 裝置作為閘道](./iot-edge-as-gateway.md)。
+本文提供了有關配置 IoT Edge 設備以充當其他設備與 IoT 中心通信的透明閘道的詳細說明。 本文使用術語*IoT Edge 閘道*來引用配置為透明閘道的 IoT Edge 設備。 有關詳細資訊，請參閱[如何將 IoT 邊緣設備用作閘道](./iot-edge-as-gateway.md)。
 
 >[!NOTE]
 >目前狀況：
@@ -25,50 +25,50 @@ ms.locfileid: "76510680"
 > * 已啟用 Edge 的裝置無法連線到 IoT Edge 閘道。
 > * 下游裝置無法使用檔案上傳。
 
-設定成功的透明閘道連線有三個一般步驟。 本文涵蓋第一個步驟：
+有三個常規步驟來設置成功的透明閘道連接。 本文介紹第一步：
 
-1. **閘道裝置必須能夠安全地連線到下游裝置、接收來自下游裝置的通訊，以及將訊息路由傳送至適當的目的地。**
-2. 下游裝置必須具有裝置身分識別，才能使用 IoT 中樞進行驗證，並知道要透過其閘道裝置進行通訊。 如需詳細資訊，請參閱[驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)。
-3. 下游裝置必須安全地連接到其閘道裝置。 如需詳細資訊，請參閱[將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
+1. **閘道設備需要能夠安全地連接到下游設備，接收來自下游設備的通信，並將消息路由到正確的目標。**
+2. 下游設備需要具有設備標識才能使用 IoT 中心進行身份驗證，並知道通過閘道設備進行通信。 有關詳細資訊，請參閱[將下游設備驗證為 Azure IoT 中心](how-to-authenticate-downstream-device.md)。
+3. 下游設備需要安全地連接到其閘道設備。 如需詳細資訊，請參閱[將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
 
-若要讓裝置做為閘道運作，它必須能夠安全地連線到其下游裝置。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此案例中，我們將允許下游裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維持合理的安全性，下游裝置應該確認閘道裝置的身分識別。 此身分識別檢查會防止您的裝置連線到潛在的惡意閘道。
+設備要充當閘道，需要能夠安全地連接到其下游設備。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此案例中，我們將允許下游裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維護合理的安全，下游設備應確認閘道設備的身份。 此標識檢查可防止您的設備連接到潛在的惡意閘道。
 
-透明閘道案例中的下游裝置可以是任何使用[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub)雲端服務建立身分識別的應用程式或平臺。 在許多情況下，這些應用程式都會使用 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 就所有實際用途而言，下游裝置甚至可以是在 IoT Edge 閘道裝置本身執行的應用程式。 不過，IoT Edge 裝置不能是 IoT Edge 閘道的下游。
+透明閘道方案中的下游設備可以是具有使用[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub)雲服務創建標識的任何應用程式或平臺。 在許多情況下，這些應用程式都會使用 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 就所有實際用途而言，下游裝置甚至可以是在 IoT Edge 閘道裝置本身執行的應用程式。 但是，IoT 邊緣設備不能是 IoT 邊緣閘道的下游。
 
-您可以建立任何憑證基礎結構，來啟用裝置閘道拓撲所需的信任。 在本文中，我們假設您要用來在 IoT 中樞中啟用[X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)的相同憑證設定，這牽涉到與特定 IoT 中樞（iot 中樞根 CA）相關聯的 x.509 CA 憑證、一系列以此 CA 簽署的憑證，以及適用于 IoT Edge 裝置的 CA。
+您可以建立任何憑證基礎結構，來啟用裝置閘道拓撲所需的信任。 在本文中，我們假定與在 IoT 中心中啟用[X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)的證書設置相同，該設置涉及與特定 IoT 中心（IoT 中心根 CA）關聯的 X.509 CA 憑證、與此 CA 簽名的一系列證書以及 IoT Edge 設備的 CA。
 
 ![閘道憑證設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 >[!NOTE]
->本文中使用的「根 CA」一詞指的是 PKI 憑證鏈的最高授權公開憑證，而不一定是聯合憑證授權單位的憑證根。 在許多情況下，它實際上是中繼 CA 公開憑證。
+>本文中使用的術語"根 CA"是指 PKI 憑證連結的最頂層頒發機構公共證書，不一定是聯合憑證授權單位的證書根。 在許多情況下，它實際上是一個中間的CA公共證書。
 
-閘道會在連線起始期間，將其 IoT Edge 裝置 CA 憑證提供給下游裝置。 下游裝置會進行檢查，以確定 IoT Edge 的裝置 CA 憑證是由根 CA 憑證簽署。 此程式可讓下游裝置確認閘道來自受信任的來源。
+閘道在連接啟動期間向下游設備顯示其 IoT Edge 設備 CA 憑證。 下游設備檢查以確保 IoT Edge 設備 CA 憑證由根 CA 憑證簽名。 此過程允許下游設備確認閘道來自受信任的源。
 
-下列步驟會逐步引導您完成建立憑證的程式，並將它們安裝在閘道上的適當位置。 您可以使用任何電腦產生憑證，然後再將其複製到您的 IoT Edge 裝置。
+以下步驟將引導您完成創建證書並將其安裝在閘道正確位置的過程。 您可以使用任何電腦產生憑證，然後再將其複製到您的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-使用[生產憑證](how-to-install-production-certificates.md)設定的 Azure IoT Edge 裝置。
+使用[生產證書](how-to-manage-device-certificates.md)配置的 Azure IoT 邊緣設備。
 
-## <a name="deploy-edgehub-to-the-gateway"></a>將 edgeHub 部署至閘道
+## <a name="deploy-edgehub-to-the-gateway"></a>將邊緣 Hub 部署到閘道
 
-當您第一次在裝置上安裝 IoT Edge 時，只有一個系統模組會自動啟動： IoT Edge 代理程式。 一旦您建立第一個部署之後，就會啟動第二個系統模組，也就是 IoT Edge 集線器。
+首次在設備上安裝 IoT Edge 時，只有一個系統模組自動啟動：IoT Edge 代理。 創建第一個部署後，將啟動第二個系統模組 IoT Edge 中心。
 
-IoT Edge 中樞會負責接收來自下游裝置的傳入訊息，並將它們路由傳送到下一個目的地。 如果**edgeHub**模組未在您的裝置上執行，請為您的裝置建立初始部署。 部署會看起來是空的，因為您不會新增任何模組，但它會確保兩個系統模組都在執行中。
+IoT Edge 中心負責接收來自下游設備的傳入消息，並將它們路由到下一個目標。 如果**EdgeHub**模組未在設備上運行，請為設備創建初始部署。 部署將顯得為空，因為您不添加任何模組，但它將確保兩個系統模組都運行。
 
-您可以藉由檢查 Azure 入口網站中的裝置詳細資料、Visual Studio 或 Visual Studio Code 中的裝置狀態，或在裝置本身上執行命令 `iotedge list`，檢查裝置上正在執行哪些模組。
+您可以通過在 Azure 門戶中檢查其設備詳細資訊、在 Visual Studio 或 Visual Studio 代碼中查看設備狀態，或在設備本身上運行命令`iotedge list`來檢查設備上正在運行的模組。
 
-如果**edgeAgent**模組在沒有**edgeHub**模組的情況下執行，請使用下列步驟：
+如果**edgeAgent**模組在沒有**邊緣Hub**模組的情況下運行，請使用以下步驟：
 
 1. 在 Azure 入口網站中，瀏覽至您的 IoT 中樞。
 
-2. 移至 [IoT Edge]，並選取要作為閘道的 IoT Edge 裝置。
+2. 移至 [IoT Edge]****，並選取要作為閘道的 IoT Edge 裝置。
 
-3. 選取 [設定模組]。
+3. 選擇**設置模組**。
 
-4. 選取 [下一步]。
+4. 選取 [下一步]****。
 
-5. 在 [指定路由] 頁面中，您應該會有可將所有模組中的所有訊息傳送至 IoT 中樞的預設路由。 如果沒有，請新增下列程式碼，然後選取 [下一步]。
+5. 在 [指定路由]**** 頁面中，您應該會有可將所有模組中的所有訊息傳送至 IoT 中樞的預設路由。 如果沒有，請新增下列程式碼，然後選取 [下一步]****。
 
    ```JSON
    {
@@ -78,27 +78,27 @@ IoT Edge 中樞會負責接收來自下游裝置的傳入訊息，並將它們�
    }
    ```
 
-6. 在 [檢閱範本] 頁面中，選取 [提交]。
+6. 在 [檢閱範本]**** 頁面中，選取 [提交]****。
 
-## <a name="open-ports-on-gateway-device"></a>在閘道裝置上開啟埠
+## <a name="open-ports-on-gateway-device"></a>閘道設備上的打開端口
 
-標準 IoT Edge 裝置不需要任何輸入連線功能，因為與 IoT 中樞的所有通訊都是透過輸出連線來完成。 閘道裝置不同，因為它們必須接收來自其下游裝置的訊息。 如果防火牆是在下游裝置與閘道裝置之間，則也必須透過防火牆來進行通訊。
+標準 IoT Edge 設備不需要任何入站連接即可正常工作，因為與 IoT 中心的所有通信都是通過出站連接完成的。 閘道設備不同，因為它們需要接收來自其下游設備的消息。 如果防火牆位於下游設備和閘道設備之間，則還需要通過防火牆進行通信。
 
-若要讓閘道案例正常執行，至少必須針對來自下游裝置的輸入流量開啟其中一個 IoT Edge 中樞的支援通訊協定。 支援的通訊協定為 MQTT、AMQP、HTTPS、透過 Websocket 的 MQTT，以及透過 Websocket 的 AMQP。
+要使閘道方案正常工作，必須至少為來自下游設備的入站流量打開 IoT Edge 中心支援的協定之一。 支援的協定包括 MQTT、AMQP、HTTPS、WebSocket 上的 MQTT 和 WebSocket 上的 AMQP。
 
-| Port | 通訊協定 |
+| 連接埠 | 通訊協定 |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
+| 443 | HTTPS <br> MQTT_WS <br> AMQP_WS |
 
 ## <a name="route-messages-from-downstream-devices"></a>從下游裝置路由傳送訊息
 
-IoT Edge 執行階段可以路由傳送從下游裝置送來的訊息，就像路由傳送從模組送來的訊息一樣。 這項功能可讓您在將任何資料傳送至雲端之前，于閘道上執行的模組中執行分析。
+IoT Edge 執行階段可以路由傳送從下游裝置送來的訊息，就像路由傳送從模組送來的訊息一樣。 此功能允許您在將任何資料發送到雲之前，在閘道上運行的模組中執行分析。
 
 目前，針對下游裝置所傳送的訊息，您進行路由傳送的方式是將它們與模組所傳送的訊息做區分。 模組所傳送的訊息全都包含名為 **connectionModuleId** 系統屬性，但下游裝置所傳送的訊息則無此屬性。 您可以使用路由的 WHERE 子句來排除任何包含該系統屬性的訊息。
 
-下列路由是一個範例，它會將來自任何下游裝置的訊息傳送至名為 `ai_insights`的模組，然後從 `ai_insights` 至 IoT 中樞。
+下面的路由是一個示例，它將消息從任何下游設備發送到名為 的`ai_insights`模組，然後從`ai_insights`發送到 IoT 中心。
 
 ```json
 {
@@ -111,14 +111,14 @@ IoT Edge 執行階段可以路由傳送從下游裝置送來的訊息，就像�
 
 如需有關訊息路由的詳細資訊，請參閱[部署模組及建立路由](./module-composition.md#declare-routes)。
 
-## <a name="enable-extended-offline-operation"></a>啟用延伸離線操作
+## <a name="enable-extended-offline-operation"></a>啟用擴展的離線操作
 
-從 IoT Edge 執行時間的[1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)開始，您可以將閘道裝置和連線到它的下游裝置設定為擴充離線作業。
+從 IoT Edge 運行時的[v1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)開始，可以配置連接到它的閘道設備和下游設備，以便擴展離線操作。
 
-透過這項功能，本機模組或下游裝置可以視需要重新向 IoT Edge 裝置進行驗證，並使用訊息和方法彼此通訊，即使與 IoT 中樞中斷連線也一樣。 如需詳細資訊，請參閱[了解適用於 IoT Edge 裝置、模組及子裝置的擴充離線功能](offline-capabilities.md)。
+借助此功能，本地模組或下游設備可以根據需要與 IoT Edge 設備重新進行身份驗證，並且即使與 IoT 中心斷開連接，也可以使用消息和方法相互通信。 如需詳細資訊，請參閱[了解適用於 IoT Edge 裝置、模組及子裝置的擴充離線功能](offline-capabilities.md)。
 
-若要啟用擴充的離線功能，您可以在 IoT Edge 閘道裝置和將連接的下游裝置之間建立父子式關聯性。 這些步驟會在[驗證要 Azure IoT 中樞的下游裝置](how-to-authenticate-downstream-device.md)中更詳細地說明。
+要啟用擴展離線功能，您需要在 IoT Edge 閘道設備與將連接到它的下游設備之間建立父子關係。 這些步驟在[將下游設備驗證為 Azure IoT 中心](how-to-authenticate-downstream-device.md)時進行了更詳細的解釋。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您讓 IoT Edge 裝置當作透明閘道運作，您需要將下游裝置設定為信任閘道，並將訊息傳送到該裝置。 繼續[驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)，以進行設定透明閘道案例的下一個步驟。
+既然您讓 IoT Edge 裝置當作透明閘道運作，您需要將下游裝置設定為信任閘道，並將訊息傳送到該裝置。 繼續將[下游設備驗證為 Azure IoT 中心](how-to-authenticate-downstream-device.md)，以便執行設置透明閘道方案的後續步驟。

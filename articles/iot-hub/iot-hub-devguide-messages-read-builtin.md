@@ -9,26 +9,26 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284599"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>從內建端點讀取裝置對雲端訊息
 
-根據預設，訊息會路由到與**事件中樞**相容的內建服務對應端點 ([訊息/事件](https://azure.microsoft.com/documentation/services/event-hubs/))。 此端點目前只連接埠 5671 上使用 [AMQP](https://www.amqp.org/) 通訊協定公開。 IoT 中樞會公開下列屬性，讓您控制與事件中樞相容的內建訊息端點 **messages/events**。
+根據預設，訊息會路由到與[事件中樞](https://azure.microsoft.com/documentation/services/event-hubs/)相容的內建服務對應端點 (**訊息/事件**)。 此端點目前只連接埠 5671 上使用 [AMQP](https://www.amqp.org/) 通訊協定公開。 IoT 中樞會公開下列屬性，讓您控制與事件中樞相容的內建訊息端點 **messages/events**。
 
 | 屬性            | 描述 |
 | ------------------- | ----------- |
-| **分割計數** | 在建立時設定此屬性，以定義裝置到雲端事件擷取的[分割區](../event-hubs/event-hubs-features.md#partitions)數目。 |
+| **分區計數** | 在創建時設置此屬性以定義設備到雲事件的[分區](../event-hubs/event-hubs-features.md#partitions)數。 |
 | **保留時間**  | 此屬性可指定 IoT 中樞保留訊息的天數。 預設值是一天，但它可以增加到七天。 |
 
-IoT 中樞允許在內建事件中樞中保留最多7天的資料。 您可以在建立 IoT 中樞期間設定保留時間。 IoT 中樞中的資料保留時間取決於您的 IoT 中樞層和單位類型。 就大小而言，內建的事件中樞可以保留最大訊息大小的訊息，最多可達24小時的配額。 例如，針對1個 S1 單位，IoT 中樞提供足夠的儲存空間，以保留至少每個4k 大小的400K 訊息。 如果您的裝置正在傳送較小的訊息，則會保留較長的時間（最多7天），視耗用的儲存體數量而定。 我們保證至少會保留指定保留時間的資料。
+IoT 中心允許在內置事件中心中保留資料最多 7 天。 您可以在創建 IoT 中心期間設置保留時間。 IoT 中心中的資料保留時間取決於 IoT 中心層和單位類型。 在大小方面，內置事件中心可以保留最大消息大小的消息，最長配額最多為 24 小時。 例如，對於 1 S1 單元 IoT 中心，它提供了足夠的存儲空間，可以保留每個郵件至少 4k 大小的 400K 消息。 如果您的設備發送的短信較小，則它們可能會保留更長時間（最多 7 天），具體取決於消耗的存儲量。 我們保證在指定的保留時間內保留資料。
 
-IoT 中樞也可讓您管理內建裝置對雲端接收端點上的取用者群組。 每個 IoT 中樞最多可以有20個取用者群組。
+IoT 中樞也可讓您管理內建裝置對雲端接收端點上的取用者群組。 每個 IoT 中心最多隻能有 20 個消費者組。
 
-如果您使用[訊息路由](iot-hub-devguide-messages-d2c.md)，且已啟用回溯[路由](iot-hub-devguide-messages-d2c.md#fallback-route)，則不符合任何路由上查詢的所有訊息都會移至內建端點。 如果您停用此回復路由，則會捨棄不符合任何查詢的訊息。
+如果使用[消息路由](iot-hub-devguide-messages-d2c.md)並啟用[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)，則與任何路由上的查詢不匹配的所有消息都將轉到內置終結點。 如果禁用此回退路由，將刪除與任何查詢不匹配的消息。
 
 您可以使用 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource) 採取程式設計方式，或透過 [Azure 入口網站](https://portal.azure.com)來修改保留期時間。
 
@@ -36,45 +36,45 @@ IoT 中樞會公開您後端服務的 **messages/events** 內建端點，以讀�
 
 ## <a name="read-from-the-built-in-endpoint"></a>從內建端點讀取
 
-某些產品整合和事件中樞 Sdk 會感知 IoT 中樞，並可讓您使用 IoT 中樞服務連接字串來連接到內建端點。
+某些產品集成和事件中心 SDK 瞭解 IoT 中心，允許您使用 IoT 中心服務連接字串連接到內置終結點。
 
-當您使用不知道 IoT 中樞的事件中樞 Sdk 或產品整合時，您需要與事件中樞相容的端點和事件中樞相容名稱。 您可以從入口網站取得這些值，如下所示：
+當您使用不了解 IoT 中心的事件中心 SDK 或產品集成時，需要與事件中心相容的終結點和事件中心相容的名稱。 可以從門戶檢索這些值，如下所示：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
 
-2. 按一下 [內建端點]。
+2. 按一下 [內建端點]****。
 
-3. [**事件**] 區段包含下列**值：資料**分割、**事件中樞相容名稱**、**事件中樞相容端點**、**保留時間**和取用**者群組**。
+3. "**事件**"部分包含以下值：**分區**、**事件中心相容名稱**、**事件中心相容終結點**、**保留時間和****消費者組**。
 
     ![裝置到雲端設定](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-在入口網站中，[事件中樞相容端點] 欄位包含完整的事件中樞連接字串，如下所示：**端點 = sb：//abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName = iothubowner;SharedAccessKey = keykeykeykeykeykey =;EntityPath = iothub-ehub-abcd-1234-123456**。 如果您所使用的 SDK 需要其他值，則會是：
+在門戶中，事件中心相容終結點欄位包含一個完整的事件中心連接字串，如下所示：**終結點_sb：//abcd1234命名空間.服務匯流排.windows.net/;共用AccessKeyName_iothub擁有者;共用訪問金鑰_金鑰金鑰鍵*;實體路徑_iothub-ehub-abcd-1234-123456**。 如果您使用的 SDK 需要其他值，則它們是：
 
 | 名稱 | 值 |
 | ---- | ----- |
 | 端點 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主機名稱 | abcd1234namespace.servicebus.windows.net |
-| 命名空間 | abcd1234namespace |
+| 命名空間 | abcd1234 命名空間 |
 
 然後，您可以使用具有 **ServiceConnect** 權限的任何共用存取原則，連接至指定的事件中樞。
 
-您可以用來連線到 IoT 中樞公開之內建事件中樞相容端點的 Sdk 包括：
+可用於連接到 IoT 中心公開的內置事件中心相容終結點的 SDK 包括：
 
-| Language | SDK | 範例 | 注意 |
+| 語言 | SDK | 範例 | 注意 |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) | 使用事件中樞相容資訊 |
- Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) | 使用事件中樞相容資訊 |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [快速入門](quickstart-send-telemetry-node.md) | 使用 IoT 中樞連接字串 |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | 使用 IoT 中樞連接字串 |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) | 使用事件中心相容的資訊 |
+ Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) | 使用事件中心相容的資訊 |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [快速入門](quickstart-send-telemetry-node.md) | 使用 IoT 中心連接字串 |
+| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | 使用 IoT 中心連接字串 |
 
-您可以搭配 IoT 中樞公開之內建事件中樞相容端點使用的產品整合包括：
+與 IoT 中心公開的內置事件中心相容終結點的產品集成包括：
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。 請參閱[使用 Azure Functions 處理來自 IoT 中樞的資料](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
-* [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)。 請參閱將[資料當做輸入串流至串流分析](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)。
-* [時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/)。 請參閱[將 IoT 中樞事件來源新增至您的時間序列深入解析環境](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)。
+* [Azure 函數](https://docs.microsoft.com/azure/azure-functions/)。 請參閱[使用 Azure 函數處理來自 IoT 中心的資料](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
+* [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)。 請參閱[流資料作為輸入到流分析](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)。
+* [時間序列見解](https://docs.microsoft.com/azure/time-series-insights/)。 請參閱[向時間序列見解環境添加 IoT 中心事件源](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)。
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 您可以檢視 GitHub 上的 [Spout 原始檔](https://github.com/apache/storm/tree/master/external/storm-eventhubs) 。
 * [Apache Spark 整合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
-* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)。
+* [Azure 資料塊](https://docs.microsoft.com/azure/azure-databricks/)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -84,4 +84,4 @@ IoT 中樞會公開您後端服務的 **messages/events** 內建端點，以讀�
 
 如需詳細資料，請參閱[使用路由處理 IoT 中樞的裝置到雲端訊息](tutorial-routing.md)教學課程。
 
-* 如果您想要將裝置到雲端的訊息路由至自訂端點，請參閱[針對裝置到雲端訊息使用訊息路由與自訂端點](iot-hub-devguide-messages-read-custom.md)。
+* 如果您想要將裝置到雲端訊息路由至自訂端點，請參閱[針對裝置到雲端訊息使用訊息路由和自訂端點](iot-hub-devguide-messages-read-custom.md)。

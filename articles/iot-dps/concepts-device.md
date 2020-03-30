@@ -1,6 +1,6 @@
 ---
 title: Azure 裝置佈建的裝置概念 | Microsoft Docs
-description: 說明具有裝置布建服務（DPS）和 IoT 中樞裝置的特定裝置布建概念
+description: 描述設備配置概念，這些概念特定于設備佈建服務 （DPS） 和 IoT 中心
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -9,17 +9,17 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285158"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT 中樞裝置佈建服務的裝置概念
 
 IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於設定在指定 IoT 中樞上的全自動佈建裝置作業。 這項裝置佈建服務可以讓您以安全且可調整的方式佈建數百萬個裝置。
 
-本文說明裝置佈建的裝置概念概觀。 本文與為裝置進行[製造步驟](about-iot-dps.md#manufacturing-step)，也就是部署準備工作的角色相關。
+本文說明裝置佈建的裝置** 概念概觀。 本文與為裝置進行[製造步驟](about-iot-dps.md#manufacturing-step)，也就是部署準備工作的角色相關。
 
 ## <a name="attestation-mechanism"></a>證明機制
 
@@ -31,7 +31,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 裝置佈建服務支援下列形式的證明：
 * 以標準 X.509 憑證驗證流程為基礎的 **X.509 憑證**。
 * **信賴平台模組 (TPM)** 是以 nonce 挑戰為基礎，使用金鑰的 TPM 標準，提供已簽署的共用存取簽章 (SAS) 權杖。 使用此種形式時，裝置不需要有實體 TPM 即可執行此動作，但該服務會因為 [TPM 規格](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)的需求，而預期裝置使用簽署金鑰進行證明。
-* 以共用存取簽章 (SAS) **安全性權杖**為基礎的[對稱金鑰](../iot-hub/iot-hub-devguide-security.md#security-tokens)，其包含雜湊簽章與內嵌到期日。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
+* 基於共用訪問簽名 （SAS）[安全權杖](../iot-hub/iot-hub-devguide-security.md#security-tokens)的**對稱金鑰**，其中包括雜湊簽名和嵌入式過期。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
 
 ## <a name="hardware-security-module"></a>硬體安全模組
 
@@ -44,14 +44,14 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 ## <a name="registration-id"></a>註冊識別碼
 
-註冊識別碼是裝置佈建服務中之裝置的唯一識別碼。 每個裝置識別碼在佈建服務的[識別碼範圍](#id-scope)中都必須是獨一無二的。 每個裝置都必須要有註冊識別碼。 註冊識別碼是英數位元、不區分大小寫，而且可能包含特殊字元，包括冒號、句號、底線和連字號。
+註冊識別碼是裝置佈建服務中之裝置的唯一識別碼。 每個裝置識別碼在佈建服務的[識別碼範圍](#id-scope)中都必須是獨一無二的。 每個裝置都必須要有註冊識別碼。 註冊 ID 是字母數位，不區分大小寫，可能包含特殊字元，包括冒號、句點、底線和連字號。
 
 * 若為 TPM，TPM 本身會提供註冊識別碼。
 * 若為 X.509 式證明方法，則會提供註冊識別碼作為憑證的主體名稱。
 
 ## <a name="device-id"></a>裝置識別碼
 
-裝置識別碼是 IoT 中樞裡顯示的識別碼。 您可以在申請項目中設定想要的裝置識別碼，但這並非為必要設定。 只有個別註冊才支援設定所需的裝置識別碼。 如果未在申請清單中未指定任何想的裝置識別碼，系統會在您註冊裝置時使用註冊識別碼作為裝置識別碼。 深入了解 [IoT 中樞裡的裝置識別碼](../iot-hub/iot-hub-devguide-identity-registry.md)。
+裝置識別碼是 IoT 中樞裡顯示的識別碼。 您可以在申請項目中設定想要的裝置識別碼，但這並非為必要設定。 僅在單個註冊中支援設置所需的裝置識別碼。 如果未在申請清單中未指定任何想的裝置識別碼，系統會在您註冊裝置時使用註冊識別碼作為裝置識別碼。 深入了解 [IoT 中樞裡的裝置識別碼](../iot-hub/iot-hub-devguide-identity-registry.md)。
 
 ## <a name="id-scope"></a>識別碼範圍
 

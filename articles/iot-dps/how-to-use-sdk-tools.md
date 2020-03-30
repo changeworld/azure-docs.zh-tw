@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure IoT 中樞裝置布建服務 Sdk 工具
-description: 本檔探討用於開發的 Azure IoT 中樞裝置布建服務（DPS） Sdk 中提供的工具
+title: 使用 Azure IoT 中心設備預配服務 SDK 工具
+description: 本文檔查看 Azure IoT 中心設備佈建服務 （DPS） SDK 中提供的工具以進行開發
 author: robinsh
 ms.author: robinsh
 ms.date: 04/09/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271521"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具來簡化開發以進行佈建

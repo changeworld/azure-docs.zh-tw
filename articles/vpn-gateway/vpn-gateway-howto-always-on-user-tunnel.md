@@ -1,19 +1,19 @@
 ---
-title: 設定 Always On VPN 使用者通道
+title: 配置始終打開的 VPN 使用者隧道
 titleSuffix: Azure VPN Gateway
-description: 本文說明如何為您的 VPN 閘道設定 Always On VPN 使用者通道
+description: 本文介紹如何為 VPN 閘道配置始終處於 VPN 使用者通道
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: bf9dbd0cef19ad54ba6c3b58f2b9b3071b98bd93
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 56934dd13661d8f623e673e2817e87618675c7ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502266"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>設定 Always On VPN 使用者通道
 
@@ -21,13 +21,15 @@ ms.locfileid: "79370956"
 
 ## <a name="configure-the-gateway"></a>設定閘道
 
- 使用[設定點對站 VPN 連線一](vpn-gateway-howto-point-to-site-resource-manager-portal.md)文中的指示，將 VPN 閘道設定為使用 IKEv2 和以憑證為基礎的驗證。
+ 使用["配置點對點 VPN 連接"一](vpn-gateway-howto-point-to-site-resource-manager-portal.md)文中的說明將 VPN 閘道配置為使用 IKEv2 和基於證書的身份驗證。
+
+## <a name="configure-a-user-tunnel"></a>配置使用者隧道
 
 [!INCLUDE [user configuration](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
-## <a name="to-remove-a-profile"></a>移除設定檔
+## <a name="to-remove-a-profile"></a>刪除設定檔
 
-若要移除設定檔，請使用下列步驟：
+要刪除設定檔，請使用以下步驟：
 
 1. 執行以下命令：
 
@@ -35,10 +37,10 @@ ms.locfileid: "79370956"
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. 中斷連接連線，並清除 [**自動連接]** 核取方塊。
+1. 斷開連接，並清除 **"自動連接**"核取方塊。
 
    ![清理](./media/vpn-gateway-howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>後續步驟
 
-若要對任何可能發生的連線問題進行疑難排解，請參閱[Azure 點對站連線問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
+要排除可能發生的任何連接問題，請參閱[Azure 點對點連接問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

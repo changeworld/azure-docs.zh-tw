@@ -1,26 +1,25 @@
 ---
-title: Azure Cloud Partner 入口網站導覽 |Azure Marketplace
-description: 概述 Azure Marketplace Cloud Partner 入口網站的使用者體驗。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 雲合作夥伴門戶教程 |Azure 應用商店
+description: Azure 應用商店雲合作夥伴門戶的使用者體驗概述。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: pabutler
-ms.openlocfilehash: 85ddf2e2141ad77321710ad03e4d7f67572f3688
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 53378be9b72792b320699341e4b6b16b20217687
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278309"
 ---
 # <a name="cloud-partner-portal-tour"></a>Cloud Partner 入口網站導覽
 
 此文章提供 [Cloud Partner 入口網站](https://cloudpartner.azure.com)的簡介：包含其內容、瀏覽機制和功能。   此入口網站可讓已註冊的合作夥伴建立新的供應項目，並管理 [Azure Marketplace](https://azuremarketplace.microsoft.com) 和 [AppSource Marketplace](https://azuremarketplace.microsoft.com) 現有的供應項目。  只有已註冊的合作夥伴才能存取 Cloud Partner 入口網站，如需詳細資訊，請參閱[成為雲端市集發行者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
-[![顯示 [設定檔] 頁面的 Cloud Partner 入口網站](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
-<br/>   (按一下影像以放大)。
+[![雲合作夥伴門戶顯示設定檔頁面面](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
+<br/>   (按一下影像以放大**)。
 
 
 ## <a name="section-contents"></a>小節內容
@@ -32,7 +31,7 @@ ms.locfileid: "73821475"
 - [所有發行者](./cpp-all-publishers-page.md)頁面會列出所有目前已註冊的雲端合作夥伴發行者。
 - [使用者](./cpp-users-page.md)頁面會列出目前與註冊的雲端合作夥伴相關聯的所有使用者帳戶。
 - [歷程記錄](./cpp-history-page.md)頁面會列出所有發行者的供應項目發行和修改事件。 
-- [見解](./cpp-insights-page.md)頁面包含各種儀表板，並組成此入口網站的「賣方見解」功能。
+- [見解](./cpp-insights-page.md)頁面包含各種儀表板，並組成此入口網站的「賣方見解」** 功能。
 
 
 ## <a name="next-steps"></a>後續步驟

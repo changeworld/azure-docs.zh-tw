@@ -1,6 +1,6 @@
 ---
-title: Azure 受控磁碟的伺服器端加密-PowerShell
-description: Azure 儲存體保護您的資料，方法是在將它保存到儲存體叢集之前，將它加密。 您可以依賴 Microsoft 管理的金鑰來加密您的受控磁片，也可以使用客戶管理的金鑰來管理使用您自己的金鑰進行加密。
+title: Azure 託管磁片的伺服器端加密 - PowerShell
+description: Azure 存儲通過在靜態加密資料之前對其進行靜態加密來保護資料，然後再將其保存到存儲群集。 您可以依賴 Microsoft 管理的金鑰來加密託管磁片，也可以使用客戶管理的金鑰使用您自己的金鑰管理加密。
 author: roygara
 ms.date: 03/12/2020
 ms.topic: conceptual
@@ -8,55 +8,55 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299626"
 ---
-# <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁片的伺服器端加密
+# <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 託管磁片的伺服器端加密
 
-Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資料加密。 伺服器端加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 Azure 受控磁片中的資料會使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最強區塊密碼之一）以透明的方式進行加密，且符合 FIPS 140-2 規範。
+預設情況下，Azure 託管磁片在將資料保存到雲中時自動加密資料。 伺服器端加密可保護您的資料，並説明您履行組織安全性和合規性承諾。 Azure 託管磁片中的資料使用 256 位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)進行透明加密，這是可用的最強的塊密碼之一，並且符合 FIPS 140-2 標準。
 
-加密不會影響受控磁片的效能。 加密不會產生額外的費用。
+加密不會影響託管磁片的性能。 加密沒有額外費用。
 
-如需 Azure 受控磁片基礎密碼編譯模組的詳細資訊，請參閱[密碼編譯 API：新一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+有關 Azure 託管磁片基礎的加密模組的詳細資訊，請參閱加密[API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-您可以依賴平臺管理的金鑰來加密受控磁片，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定*客戶管理的金鑰*，以用於加密和解密受控磁片中的所有資料。 
+您可以依賴平臺管理的金鑰來加密託管磁片，也可以使用自己的金鑰管理加密。 如果選擇使用自己的金鑰管理加密，則可以指定*客戶託管金鑰*，用於加密和解密託管磁片中的所有資料。 
 
-下列各節會更詳細地說明金鑰管理的每個選項。
+以下各節將更詳細地介紹金鑰管理的每個選項。
 
-## <a name="platform-managed-keys"></a>平臺管理的金鑰
+## <a name="platform-managed-keys"></a>平臺管理金鑰
 
-根據預設，受控磁片會使用平臺管理的加密金鑰。 自2017年6月10日起，所有新的受控磁片、快照集、映射和寫入至現有受控磁片的新資料，都會自動以平臺管理的金鑰進行待用加密。
+預設情況下，託管磁片使用平臺管理的加密金鑰。 自 2017 年 6 月 10 日起，所有寫入現有託管磁片的新託管磁片、快照、映射和新資料都使用平臺託管金鑰自動加密靜態。
 
 ## <a name="customer-managed-keys"></a>客戶管理的金鑰
 
-您可以選擇使用您自己的金鑰來管理每個受控磁片層級的加密。 使用客戶管理的金鑰組受控磁片進行伺服器端加密，可提供 Azure Key Vault 的整合體驗。 您可以將[您的 rsa 金鑰](../../key-vault/key-vault-hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 rsa 金鑰。 Azure 受控磁片會使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)，以完全透明的方式處理加密和解密。 它會使用以[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 為基礎的資料加密金鑰（DEK）來加密資料，而這也會使用您的金鑰來保護。 您必須在 Key Vault 中授與受控磁片的存取權，以使用您的金鑰來加密和解密 DEK。 這可讓您完全掌控您的資料和金鑰。 您可以隨時停用金鑰或撤銷對受控磁片的存取權。 您也可以使用 Azure Key Vault 監視來審核加密金鑰使用方式，以確保只有受控磁片或其他受信任的 Azure 服務會存取您的金鑰。
+您可以選擇使用自己的金鑰在每個託管磁片級別管理加密。 使用客戶託管金鑰的託管磁片的伺服器端加密提供了 Azure 金鑰保存庫的集成體驗。 您可以將[RSA 金鑰](../../key-vault/key-vault-hsm-protected-keys.md)導入金鑰保存庫，或在 Azure 金鑰保存庫中生成新的 RSA 金鑰。 Azure 託管磁片使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式處理加密和解密。 它使用基於[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的資料加密金鑰 （DEK） 加密資料，而金鑰又使用金鑰進行保護。 您必須授予對金鑰保存庫中的託管磁片的存取權限，才能使用金鑰加密和解密 DEK。 這允許您完全控制資料和金鑰。 您可以隨時禁用金鑰或撤銷對託管磁片的存取權限。 還可以使用 Azure 金鑰保存庫監視審核加密金鑰使用方式，以確保只有託管磁片或其他受信任的 Azure 服務才能訪問金鑰。
 
-針對高階 Ssd、標準 Ssd 和標準 Hdd：當您停用或刪除金鑰時，任何使用該金鑰之磁片的 Vm 都會自動關閉。 在此之後，除非再次啟用金鑰或您指派新的金鑰，否則 Vm 將無法使用。
+對於高級 SSD、標準 SSD 和標準 HDD：當您禁用或刪除金鑰時，任何使用該金鑰的磁片的 VM 將自動關閉。 在此之後，除非再次啟用金鑰或您分配新金鑰，否則 VM 將不可用。
 
-若是 ultra 磁片，當您停用或刪除金鑰時，任何使用該金鑰的 ultra 磁片的 Vm 都不會自動關閉。 一旦您解除配置並重新啟動 Vm 之後，磁片將會停止使用金鑰，而 Vm 將不會重新上線。 若要讓 Vm 重新上線，您必須指派新的金鑰或啟用現有的金鑰。
+對於超級磁片，當您禁用或刪除金鑰時，使用該金鑰的任何具有超磁片的 VM 不會自動關閉。 取消分配並重新啟動 VM 後，磁片將停止使用金鑰，然後 VM 將無法重新連線。 要使 VM 重新連線，必須分配新金鑰或啟用現有金鑰。
 
-下圖顯示受控磁片如何使用 Azure Active Directory 和 Azure Key Vault，以使用客戶管理的金鑰來提出要求：
+下圖顯示了託管磁片如何使用 Azure 活動目錄和 Azure 金鑰保存庫使用客戶管理的金鑰發出請求：
 
-![受控磁片和客戶管理的金鑰工作流程。 系統管理員會建立 Azure Key Vault，然後建立磁片加密集，並設定磁片加密集。 該集合與 VM 相關聯，可讓磁片使用 Azure AD 進行驗證](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![託管磁片和客戶管理金鑰工作流。 管理員創建 Azure 金鑰保存庫，然後創建磁片加密集，並設置磁片加密集。 該集與 VM 相關聯，它允許磁片利用 Azure AD 進行身份驗證](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
-下列清單會更詳細地說明圖表：
+下面的清單更詳細地解釋了該關係圖：
 
-1. Azure Key Vault 系統管理員會建立金鑰保存庫資源。
-1. 金鑰保存庫系統管理員會匯入其 RSA 金鑰以 Key Vault 或在 Key Vault 中產生新的 RSA 金鑰。
-1. 該系統管理員會建立磁片加密集資源的實例，並指定 Azure Key Vault 識別碼和金鑰 URL。 磁片加密集是引進的新資源，可簡化受控磁片的金鑰管理。 
-1. 建立磁片加密組時，[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)會在 AZURE ACTIVE DIRECTORY （AD）中建立，並與磁片加密集建立關聯。 
-1. 然後，Azure 金鑰保存庫系統管理員會授與受控識別許可權，以在金鑰保存庫中執行作業。
-1. VM 使用者會建立磁片，方法是將它們與磁片加密集建立關聯。 VM 使用者也可以使用現有資源的客戶管理金鑰，將其與磁片加密集建立關聯，以啟用伺服器端加密。 
-1. 受控磁片會使用受控識別，將要求傳送至 Azure Key Vault。
-1. 若要讀取或寫入資料，受控磁片會將要求傳送至 Azure Key Vault 以加密（包裝）並解密（解除封裝）資料加密金鑰，以便執行資料的加密和解密。 
+1. Azure 金鑰保存庫管理員創建金鑰保存庫資源。
+1. 金鑰保存庫管理員將 RSA 金鑰導入金鑰保存庫或在金鑰保存庫中生成新的 RSA 金鑰。
+1. 該管理員創建磁片加密集資源的實例，指定 Azure 金鑰保存庫 ID 和金鑰 URL。 磁片加密集是為簡化託管磁片的金鑰管理而引入的新資源。 
+1. 創建磁片加密集時，在 Azure 活動目錄 （AD） 中創建[系統分配的託管標識](../../active-directory/managed-identities-azure-resources/overview.md)，並與磁片加密集關聯。 
+1. 然後，Azure 金鑰保存庫管理員授予託管標識許可權，以在金鑰保存庫中執行操作。
+1. VM 使用者通過將磁片與磁片加密集相關聯來創建磁片。 VM 使用者還可以通過將現有資源的金鑰與磁片加密集相關聯，使用客戶管理的現有資源金鑰啟用伺服器端加密。 
+1. 託管磁片使用託管標識向 Azure 金鑰保存庫發送請求。
+1. 對於讀取或寫入資料，託管磁片向 Azure 金鑰保存庫發送請求以加密（包裝）和解密（解包）資料加密金鑰，以便對資料執行加密和解密。 
 
-若要撤銷對客戶管理的金鑰的存取權，請參閱[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)和[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權可有效封鎖對儲存體帳戶中所有資料的存取，因為 Azure 儲存體無法存取加密金鑰。
+要撤銷對客戶管理金鑰的訪問，請參閱[Azure 金鑰保存庫 PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)和[Azure 金鑰保存庫 CLI](https://docs.microsoft.com/cli/azure/keyvault)。 由於 Azure 存儲無法訪問加密金鑰，因此撤銷訪問可有效地阻止對存儲帳戶中的所有資料的訪問。
 
 ### <a name="supported-regions"></a>支援區域
 
@@ -64,28 +64,28 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
 
 ### <a name="restrictions"></a>限制
 
-目前，客戶管理的金鑰具有下列限制：
+目前，客戶管理的金鑰具有以下限制：
 
-- 如果您的磁片已啟用這項功能，您就無法將它停用。
-    如果您需要解決此情況，您必須[將所有資料複製](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)到完全不同且未使用客戶管理金鑰的受控磁片。
-- 僅支援大小為2080的「[軟」和「硬性」 RSA 金鑰](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，沒有其他金鑰或大小。
-- 從使用伺服器端加密和客戶管理金鑰加密的自訂映射建立的磁片，必須使用相同的客戶管理金鑰進行加密，而且必須在相同的訂用帳戶中。
-- 從使用伺服器端加密和客戶管理金鑰加密的磁片建立的快照集，必須使用相同的客戶管理金鑰進行加密。
-- 使用伺服器端加密和客戶管理的金鑰所加密的自訂映射，無法在共用映射資源庫中使用。
-- 與客戶管理的金鑰相關的所有資源（Azure 金鑰保存庫、磁片加密集、Vm、磁片和快照）必須位於相同的訂用帳戶和區域中。
-- 使用客戶管理的金鑰加密的磁片、快照集和映射無法移至另一個訂用帳戶。
-- 如果您使用 Azure 入口網站建立磁片加密集，則目前無法使用快照。
-- 使用客戶管理的金鑰加密的受控磁片，也無法使用 Azure 磁碟加密進行加密。
+- 如果為磁片啟用了此功能，則無法禁用它。
+    如果需要解決此問題，則必須[將所有資料複製到](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)不使用客戶託管金鑰的完全不同的託管磁片。
+- 僅支援大小為 2080 的["軟"和"硬"RSA 金鑰](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，沒有其他鍵或大小。
+- 使用伺服器端加密和客戶管理的金鑰加密的自訂映射創建的磁片必須使用相同的客戶管理金鑰進行加密，並且必須在同一訂閱中。
+- 使用伺服器端加密和客戶管理的金鑰加密的磁片創建的快照必須使用相同的客戶管理金鑰進行加密。
+- 在共用映射庫中，無法使用使用伺服器端加密和客戶管理金鑰加密的自訂映射。
+- 與客戶管理的金鑰（Azure 金鑰保存庫、磁片加密集、VM、磁片和快照）相關的所有資源必須位於同一訂閱和區域中。
+- 使用客戶管理的金鑰加密的磁片、快照和映射無法移動到其他訂閱。
+- 如果使用 Azure 門戶創建磁片加密集，則當前無法使用快照。
+- 使用客戶託管金鑰加密的託管磁片也不能使用 Azure 磁片加密進行加密。
 
 ### <a name="powershell"></a>PowerShell
 
-#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>設定您的 Azure Key Vault 和 DiskEncryptionSet
+#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>設置 Azure 金鑰保存庫和磁片加密集
 
-1. 請確定您已安裝最新的[Azure PowerShell 版本](/powershell/azure/install-az-ps)，並且已使用 disconnect-azaccount 登入 Azure 帳戶
+1. 請確保您已安裝最新的 Azure [PowerShell 版本](/powershell/azure/install-az-ps)，並且已登錄使用 Connect-AzAccount 登錄到 Azure 帳戶
 
-1. 建立 Azure Key Vault 和加密金鑰的實例。
+1. 創建 Azure 金鑰保存庫和加密金鑰的實例。
 
-    建立 Key Vault 實例時，您必須啟用虛刪除和清除保護。 虛刪除可確保 Key Vault 在指定的保留期間（預設為90天）保留已刪除的金鑰。 清除保護可確保已刪除的金鑰無法永久刪除，直到保留期限結束為止。 這些設定可防止您因為意外刪除而遺失資料。 使用 Key Vault 來加密受控磁片時，這些設定是必要的。
+    創建金鑰保存庫實例時，必須啟用虛刪除和清除保護。 虛刪除可確保金鑰保存庫在給定保留期（預設為 90 天）保留已刪除的金鑰。 清除保護可確保在保留期結束之前不能永久刪除已刪除的金鑰。 這些設置可保護您不因意外刪除而遺失資料。 使用金鑰保存庫加密託管磁片時，這些設置是必需的。
 
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -100,7 +100,7 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
     $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
-1.    建立 DiskEncryptionSet 的實例。 
+1.    創建磁片加密集的實例。 
     
         ```powershell
         $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
@@ -108,10 +108,10 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
         $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
         ```
 
-1.    將金鑰保存庫的存取權授與 DiskEncryptionSet 資源。
+1.    授予磁片加密集對金鑰保存庫的資源存取權限。
 
         > [!NOTE]
-        > Azure 可能需要幾分鐘的時間，才能在您的 Azure Active Directory 中建立 DiskEncryptionSet 的身分識別。 如果您在執行下列命令時收到「找不到 Active Directory 物件」之類的錯誤，請稍候幾分鐘，然後再試一次。
+        > Azure 可能需要幾分鐘才能在 Azure 活動目錄中創建磁片加密集的標識。 如果在運行以下命令時遇到"找不到活動目錄物件"之類的錯誤，請等待幾分鐘，然後重試。
         
         ```powershell
         $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
@@ -121,7 +121,7 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
         New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
         ```
 
-#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映射建立 VM，以客戶管理的金鑰將 OS 和資料磁片加密
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用應用商店映射創建 VM，使用客戶管理的金鑰加密作業系統和資料磁片
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -159,7 +159,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>建立使用伺服器端加密搭配客戶管理的金鑰加密的空磁片，並將其附加至 VM
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>使用使用客戶管理的金鑰使用伺服器端加密創建加密的空磁片，並將其附加到 VM
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -182,9 +182,9 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 
-#### <a name="encrypt-existing-unattached-managed-disks"></a>加密現有未附加的受控磁片 
+#### <a name="encrypt-existing-unattached-managed-disks"></a>加密現有的未連接託管磁片 
 
-您的現有磁片不能連接到執行中的 VM，您可以使用下列腳本將它們加密：
+您現有的磁片不得連接到正在運行的 VM，以便您使用以下腳本對其進行加密：
 
 ```PowerShell
 $rgName = "yourResourceGroupName"
@@ -196,7 +196,7 @@ $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $d
 New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
 ```
 
-#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映射建立虛擬機器擴展集，使用客戶管理的金鑰來加密作業系統和資料磁片
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用應用商店映射創建虛擬機器規模集，使用客戶管理的金鑰加密作業系統和資料磁片
 
 ```PowerShell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -241,21 +241,21 @@ New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -
 ```
 
 > [!IMPORTANT]
-> 客戶管理的金鑰依賴 Azure 資源的受控識別，這是一項 Azure Active Directory （Azure AD）的功能。 當您設定客戶管理的金鑰時，受管理的身分識別會自動指派給您的資源。 如果您之後將訂用帳戶、資源群組或受控磁片從一個 Azure AD 目錄移到另一個，則與受控磁片相關聯的受控識別不會傳輸至新的租使用者，因此客戶管理的金鑰可能無法再使用。 如需詳細資訊，請參閱[在 Azure AD 目錄之間轉移訂用](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)帳戶。
+> 客戶託管金鑰依賴于 Azure 資源的託管標識，這是 Azure 活動目錄 （Azure AD） 的一項功能。 配置客戶管理的金鑰時，託管標識將自動分配給所覆蓋的資源。 如果隨後將訂閱、資源組或託管磁片從一個 Azure AD 目錄移動到另一個 Azure AD 目錄，則與託管磁片關聯的託管標識不會傳輸到新租戶，因此客戶託管金鑰可能不再工作。 有關詳細資訊，請參閱在[Azure AD 目錄之間傳輸訂閱](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 [!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
-> 客戶管理的金鑰依賴 Azure 資源的受控識別，這是一項 Azure Active Directory （Azure AD）的功能。 當您設定客戶管理的金鑰時，受管理的身分識別會自動指派給您的資源。 如果您之後將訂用帳戶、資源群組或受控磁片從一個 Azure AD 目錄移到另一個，則與受控磁片相關聯的受控識別不會傳輸至新的租使用者，因此客戶管理的金鑰可能無法再使用。 如需詳細資訊，請參閱[在 Azure AD 目錄之間轉移訂用](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)帳戶。
+> 客戶託管金鑰依賴于 Azure 資源的託管標識，這是 Azure 活動目錄 （Azure AD） 的一項功能。 配置客戶管理的金鑰時，託管標識將自動分配給所覆蓋的資源。 如果隨後將訂閱、資源組或託管磁片從一個 Azure AD 目錄移動到另一個 Azure AD 目錄，則與託管磁片關聯的託管標識不會傳輸到新租戶，因此客戶託管金鑰可能不再工作。 有關詳細資訊，請參閱在[Azure AD 目錄之間傳輸訂閱](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>伺服器端加密與 Azure 磁片加密
 
-[Azure 磁碟加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Windows 的[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)功能和 Linux 的[DM CRYPT](https://en.wikipedia.org/wiki/Dm-crypt)功能，在來賓 VM 內使用客戶管理的金鑰來加密受控磁片。  使用客戶管理的金鑰進行伺服器端加密，可讓您透過加密儲存體服務中的資料，為您的 Vm 使用任何 OS 類型和映射，藉此改善 ADE。
+[Azure 磁片加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Windows 的[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)功能和 Linux 的[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能在來賓 VM 中使用客戶託管金鑰組託管磁片進行加密。  使用客戶管理的金鑰的伺服器端加密通過加密存儲服務中的資料來為 VM 使用任何作業系統類型和映射，從而改進了 ADE 上的任何作業系統類型和映射。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [探索 Azure Resource Manager 範本，以使用客戶管理的金鑰來建立加密的磁片](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [什麼是 Azure 金鑰保存庫？](../../key-vault/key-vault-overview.md)
-- [使用已啟用客戶管理金鑰的磁片來複寫機器](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [使用 PowerShell 設定 VMware Vm 至 Azure 的嚴重損壞修復](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [使用 PowerShell 和 Azure Resource Manager 設定 Hyper-v Vm 的嚴重損壞修復至 Azure](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [流覽 Azure 資源管理器範本，以便使用客戶管理的金鑰創建加密磁片](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [何謂 Azure Key Vault？](../../key-vault/key-vault-overview.md)
+- [使用啟用客戶管理的金鑰磁碟複製電腦](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
+- [使用 PowerShell 設定 VMware VM 至 Azure 的災害復原](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [針對 Hyper-V VM，使用 PowerShell 和 Azure Resource Manager 設定至 Azure 的災害復原](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

@@ -1,145 +1,144 @@
 ---
-title: 合作夥伴中心的商業 Marketplace 分析中的 Marketplace 深入解析儀表板
-description: 存取 marketplace web 分析的摘要，讓發行者能夠在 AppSource 和 Azure Marketplace 店面中測量客戶參與度。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: 合作夥伴中心商業市場分析中的市場洞察儀表板
+description: 訪問市場 Web 分析摘要，使發行者能夠在 AppSource 和 Azure 應用商店中衡量客戶參與度。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: edfdf7bbfaa5fa5abb00aa7efcb35bfbcd6e68a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275844"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商業 Marketplace 分析中的 Marketplace 深入解析儀表板
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商業市場分析中的市場洞察儀表板
 
-本文提供合作夥伴中心內 Marketplace 深入解析儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，讓發行者能夠針對其在 marketplace 店面： AppSource 和 Azure Marketplace 上所列的個別產品詳細資料頁面，測量客戶參與。
+本文在合作夥伴中心中的"市場洞察"儀表板上提供了資訊。 此儀表板顯示市場 Web 分析摘要，使發行者能夠針對市場網店上列出的相應產品詳細資訊頁面（AppSource 和 Azure 應用商店）衡量客戶參與度。
 
-## <a name="marketplace-insights-dashboard"></a>Marketplace 深入解析儀表板
+## <a name="marketplace-insights-dashboard"></a>Marketplace 見解儀表板
 
-若要存取合作夥伴中心的**Marketplace 深入解析儀表板**，請開啟 [商業 Marketplace] 底下的 [ **[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** 索引標籤。
+要訪問合作夥伴中心中的 **"市場洞察"儀表板**，請打開"商業市場"下的**["分析"選項卡](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**。
 
-您可以查看下列專案的圖形表示：  
+您可以查看以下專案的圖形表示形式：  
 
-- [Marketplace 深入解析摘要](#marketplace-insights-summary)
-- [依地理位置造訪頁面](#page-visits-by-geography)  
-- [頁面造訪與獨特的訪客趨勢](#page-visits-versus-unique-visitors-trend)
-- [使用 CTAs 呼叫動作與唯一的訪客](#call-to-action-versus-unique-visitors-with-ctas)
-- [頁面流覽和依優惠呼叫動作](#page-visits-and-calls-to-action-by-offers)
-- [呼叫動作百分比趨勢](#call-to-action-percentage-trend)
-- [頁面流覽和參考網域的動作呼叫](#page-visits-and-calls-to-action-by-referral-domains)
-- [Marketplace 深入解析詳細資料表格](#marketplace-insights-details-table)
+- [市場洞察摘要](#marketplace-insights-summary)
+- [按地理位置劃分的頁面訪問](#page-visits-by-geography)  
+- [頁面訪問與獨特的訪問者趨勢](#page-visits-versus-unique-visitors-trend)
+- [行動號召與具有 CTA 的獨特訪問者](#call-to-action-versus-unique-visitors-with-ctas)
+- [按優惠進行頁面訪問和行動呼籲](#page-visits-and-calls-to-action-by-offers)
+- [行動號召百分比趨勢](#call-to-action-percentage-trend)
+- [按參考網域進行的頁面訪問和行動調用](#page-visits-and-calls-to-action-by-referral-domains)
+- [市場洞察詳細資訊表](#marketplace-insights-details-table)
 
 >[!NOTE]
-> 如需分析術語的詳細定義，請參閱[商業 Marketplace 分析的常見問題和術語](./faq-terminology.md)。
+> 有關分析術語的詳細定義，請參閱[商業市場分析的常見問題和術語](./faq-terminology.md)。
 
-### <a name="insights-dashboard-layout"></a>Insights 儀表板版面配置
+### <a name="insights-dashboard-layout"></a>見解儀表板佈局
 
-您可以透過各種不同的方式來查看 Marketplace 計量：
+您可以通過多種方式查看應用商店指標：
 
-- 店面索引標籤
+- 店面選項卡
 - 頁面篩選
 - 日期篩選
 
-**店面**索引標籤：您可以透過 [AppSource & Azure Marketplace] 索引標籤，分別查看供應專案的度量。 從右邊的 [供應專案] 下拉式清單中選取供應專案，以查看所選供應專案的度量視覺效果。 預設會選取所有供應專案。
+**網店選項卡**：您可以通過 AppSource & Azure 應用商店選項卡單獨查看產品/服務指標。 從右側的優惠下拉清單中選擇產品/服務，以查看所選產品/服務指標的視覺化效果。 預設情況下，將選擇所有優惠。
 
-![合作夥伴中心深入解析儀表板供應專案下拉式清單](./media/insights-offer-dropdown.png)
+![合作夥伴中心見解儀表板提供下拉清單](./media/insights-offer-dropdown.png)
 
-**深入解析頁面篩選**：這些篩選準則會套用至供應專案（產品詳細資料頁面）層級。 您可以針對想要查看的準則選取多個篩選準則。 此篩選準則適用于整個 Marketplace 深入解析區段，包括圖表和詳細資料。
+**見解頁篩選器**：這些篩選器在產品/服務（產品詳細資訊頁）級別應用。 您可以為要查看的條件選擇多個篩選器。 此篩選器適用于整個應用商店洞察部分，包括圖表和詳細資訊。
 
-![合作夥伴中心深入解析儀表板頁面篩選](./media/insights-page-filter.png)
+![合作夥伴中心見解儀表板頁面篩選器](./media/insights-page-filter.png)
 
-- 供應專案名稱僅針對在選取的日期範圍內具有頁面流覽功能的優惠列出。  
-- 針對每個篩選選項，預設選項為 [全部]
-- [套用的篩選] 會顯示所做選擇的選取範圍計數。 預設的 [全部] 選取範圍不會顯示套用的篩選。
+- 優惠名稱僅列出在所選日期範圍內具有頁面訪問次數的優惠。  
+- 每個篩選器選項的預設選擇為"全部"
+- 應用的篩選器顯示所選內容的選擇計數。 對於預設的"全部"選擇，不會顯示應用的篩選器。
 
-![已套用合作夥伴中心見解篩選](./media/insights-page-filter-two.png)
+![應用合作夥伴中心見解篩選器](./media/insights-page-filter-two.png)
 
-**深入解析日期篩選**：此篩選適用于整個 Marketplace 深入解析區段。 篩選可以包含預先決定的日期範圍或自訂的日期範圍。
+**見解日期篩選器**：此篩選器適用于整個應用商店洞察部分。 篩選器可以包括預先確定的日期範圍或自訂日期範圍。
 
-![合作夥伴中心深入解析日期篩選](./media/insights-date-range.png)
+![合作夥伴中心洞察日期篩選器](./media/insights-date-range.png)
 
-## <a name="marketplace-insights-summary"></a>Marketplace 深入解析摘要
+## <a name="marketplace-insights-summary"></a>市場洞察摘要
 
-[Marketplace 深入解析摘要] 區段會顯示**頁面**流覽次數、**動作呼叫**，以及所選日期範圍的**唯一訪客**。
+"市場洞察摘要"部分顯示所選日期範圍的**頁面訪問**次數、**行動號召**量**和唯一訪問者**數。
 
-### <a name="page-visits"></a>頁面流覽
+### <a name="page-visits"></a>頁面訪問
 
-此數位代表所選日期範圍的 [供應專案] 頁面（產品詳細資料頁面）上的相異使用者會話計數。 紅色/綠色百分比指標代表頁面流覽的成長百分比。 趨勢圖代表頁面造訪的月數。
+此數位表示所選日期範圍的報價頁（產品詳細資訊頁）上不同使用者會話的計數。 紅色/綠色百分比指標表示頁面訪問量的增長百分比。 趨勢圖表示頁面訪問量的逐月數。
 
-### <a name="unique-visitors"></a>唯一的訪客
+### <a name="unique-visitors"></a>獨特的訪客
 
-此數位代表在頁面篩選中選取的供應專案之所選日期範圍內的相異訪客計數。 造訪了一或多個產品詳細資料頁面的訪客，將計為一個唯一的訪客。
+此數位表示頁面篩選器中選擇的要約在所選日期範圍內的不同訪問者計數。 訪問過一個或多個產品詳細資訊頁面的訪問者將被視為一個唯一訪問者。
 
 ### <a name="call-to-action"></a>對動作的呼叫
 
-此數位代表 [供應專案] 頁面（產品詳細資料頁面）上的動作按鈕按一下 [已完成] 的**呼叫**計數。 當您選取 [**立即取得**]、[**免費試用**]、[**聯絡我**] 和 [**試用**產品] 按鈕時，會計算**動作的呼叫**。
+此數位表示在產品/服務頁面（產品詳細資訊頁）上完成的 **"行動號召"** 按鈕按一下數。 當選擇"**立即獲取"、****免費試用**、**與我聯繫**和**測試磁碟機**按鈕時，將計算**行動**調用。
 
-![合作夥伴中心深入解析對動作摘要的呼叫](./media/insights-summary.png)
+![合作夥伴中心洞察行動摘要](./media/insights-summary.png)
 
-## <a name="page-visits-by-geography"></a>依地理位置造訪頁面
+## <a name="page-visits-by-geography"></a>按地理位置劃分的頁面訪問
 
-下方的熱度圖會顯示**頁面**流覽次數、**動作呼叫**，以及**根據客戶國家/地區的唯一訪客**。 較高的頁面流覽是以較暗的地圖色彩表示，而較低的頁面流覽則是以較淺的地圖色彩表示
+下面的熱圖顯示**頁面訪問**計數、**行動號召**次數和**根據客戶國家/地區進行的獨特訪問者**。 較高的頁面訪問由較暗的地圖顏色表示，較低的頁面訪問以較淺的地圖顏色表示。
 
-![合作夥伴中心深入解析地理分佈](./media/insights-geography.png)
+![合作夥伴中心洞察地理分佈](./media/insights-geography.png)
 
-熱度圖包含下列功能：
+熱圖包括以下功能：
 
-- 熱度圖有一個補充方格，可查看**頁面**流覽的詳細資料、對**動作的呼叫**，以及特定位置中的**唯一訪客**;如果慣用，您可以放大特定位置。  
-- [**國家/地區**] 是指您的客戶在選取的日期範圍內報告頁面造訪的所有國家/地區計數。
-- 您可以搜尋並選取方格中的國家/地區，以放大地圖中的位置。 藉由選取地圖上的 [**首頁**]，還原為原始的視圖。
+- 熱圖有一個補充網格，用於查看特定位置**的頁面訪問**、**行動號召**和**唯一訪問者**的詳細資訊;如果願意，可以放大到特定位置。  
+- **國家/地區分佈**是客戶在所選日期範圍內報告頁面訪問情況的所有國家/地區的計數。
+- 您可以在網格中搜索並選擇國家/地區以放大地圖中的位置。 通過在地圖上選擇 **"主頁"，** 還原到原始視圖。
 
-## <a name="page-visits-versus-unique-visitors-trend"></a>頁面造訪與獨特的訪客趨勢
+## <a name="page-visits-versus-unique-visitors-trend"></a>頁面訪問與獨特的訪問者趨勢
 
-下列資料行代表每月頁面流覽次數，會顯示在 Y 軸上（位於圖表左邊的軸）。 趨勢線代表唯一訪客的每月趨勢，這會顯示在店面： Azure Marketplace 和 AppSource 中發佈的次要 Y 軸（圖表右側的軸）上。
+下面的清單示每月頁面訪問計數，這些訪問顯示在 Y 軸（圖表左側的軸）。 趨勢線表示唯一訪問者的每月趨勢，顯示在二級 Y 軸（圖表右側的軸）上，用於在網店：Azure 應用商店和 AppSource 上發佈的產品。
 
-![合作夥伴中心見解頁面造訪與獨特的訪客趨勢](./media/insights-page-vists-unique-visitors.png)
+![合作夥伴中心洞察頁面訪問與獨特的訪問者趨勢](./media/insights-page-vists-unique-visitors.png)
 
-## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>使用 CTAs 呼叫動作與唯一的訪客
+## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>行動號召與具有 CTA 的獨特訪問者
 
-堆疊資料行代表對動作的每月呼叫（CTA），其依 CTA 類型（**立即取得**、**聯絡我**和**免費試用**）細分，並繪製在 Y 軸上（在頁面左側的軸）。 趨勢線代表具有 CTAs 之唯一訪客的每月趨勢，這會顯示在 [次要 Y 軸] （圖表右側的軸）上，您的供應專案是在 Azure Marketplace 和 AppSource 中發行。
+堆疊清單示按 CTA 類型（**立即獲取**、**聯繫我**和自由**試用**）細分的每月行動調用 （CTA），並在 Y 軸（頁面左側的軸）上繪製。 趨勢線表示具有 CTA 的唯一訪問者的每月趨勢，該趨勢顯示在在 Azure 應用商店和 AppSource 上發佈的輔助 Y 軸（圖表右側的軸）上。
 
-![透過 CTAs 的合作夥伴中心深入解析呼叫動作與獨特的訪客](./media/insights-call-to-action-unique-visitors.png)
+![合作夥伴中心洞察行動呼籲與具有 CTA 的獨特訪問者](./media/insights-call-to-action-unique-visitors.png)
 
-## <a name="page-visits-and-calls-to-action-by-offers"></a>頁面流覽和依優惠呼叫動作
+## <a name="page-visits-and-calls-to-action-by-offers"></a>按優惠進行頁面訪問和行動呼籲
 
-外部圓形圖根據您在 marketplace 中發佈並在篩選中選取的供應專案，呈現**頁面**流覽的明細。 內部圖表代表相同供應專案的**動作分解呼叫**。
+外圓形圖表示基於您在市場中發佈並在篩選器中選擇的優惠的**主頁訪問**細分。 內部圖表表示相同優惠的操作**調用**細分。
 
-![合作夥伴中心深入解析頁面流覽和依優惠呼叫動作](./media/insights-page-visits-and-cta-by-offer.png)
+![合作夥伴中心見解頁面訪問和按優惠要求採取行動](./media/insights-page-visits-and-cta-by-offer.png)
 
-## <a name="call-to-action-percentage-trend"></a>呼叫動作百分比趨勢
+## <a name="call-to-action-percentage-trend"></a>行動號召百分比趨勢
 
-[**動作百分比] 趨勢的呼叫**會顯示 marketplace 中發佈之供應專案的 CTA 百分比。 CTA% = （CTAs/page 造訪） * 100。
+**"行動號召"百分比趨勢**顯示市場上發佈的優惠的 CTA 百分比。 CTA % = （CTA/頁面訪問次數） = 100。
 
-![合作夥伴中心深入解析對動作百分比趨勢的呼叫](./media/insights-call-to-action-percentage-trend.png)
+![合作夥伴中心洞察對行動百分比趨勢的呼喚](./media/insights-call-to-action-percentage-trend.png)
 
-## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>頁面流覽和參考網域的動作呼叫
+## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>按參考網域進行的頁面訪問和行動調用
 
-下圖顯示前50個參考網域。 選取特定的參考定義域會顯示頁面流覽的每月趨勢，以及向右的圖表呼叫動作。
+下圖顯示了前 50 個參考網域。 選擇特定的參考網域會顯示頁面訪問和右側圖表上的操作調用的每月趨勢。
 
-![合作夥伴中心深入解析頁面流覽和依參考領域和活動的動作呼叫](./media/insights-page-visits-call-to-actions.png)
+![合作夥伴中心見解頁面訪問和按推薦域和活動調用行動](./media/insights-page-visits-call-to-actions.png)
 
-## <a name="marketplace-insights-details-table"></a>Marketplace 深入解析詳細資料表格
+## <a name="marketplace-insights-details-table"></a>市場洞察詳細資訊表
 
-下表提供頁面流覽的清單，以及您所選供應專案動作的呼叫（依日期排序）。
+此表提供頁面訪問的清單視圖以及所選優惠按日期排序的操作調用。
 
-![合作夥伴中心深入解析詳細資料資料表](./media/insights-details-page.png)
+![合作夥伴中心見解詳細資訊表](./media/insights-details-page.png)
 
-- 如果記錄計數小於1000，則可以將資料解壓縮至 CSV 檔案。
-- 如果記錄計數超過1000，匯出的資料會在接下來的30天內，以非同步方式放置在下載頁面中。
-- 您可以套用篩選器來顯示您感興趣的資料。 資料可以依供應專案名稱和行銷活動名稱進行篩選。  
+- 如果記錄計數小於 1000，則可以將資料提取到 CSV 檔。
+- 如果記錄計數超過 1000，則匯出的資料將在未來 30 天內非同步放置在下載頁中。
+- 可以應用篩選器來顯示您感興趣的資料。 資料可以通過產品/服務名稱和市場活動名稱進行篩選。  
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需合作夥伴中心商業 Marketplace 中可用分析報告的總覽，請參閱[合作夥伴中心的商用 Marketplace 分析](./analytics.md)。
-- 如需摘要說明您供應專案 marketplace 活動之匯總資料的圖形、趨勢和值，請參閱[商業 marketplace 分析中的摘要儀表板](./summary-dashboard.md)。
-- 如需以圖形化和可下載格式顯示訂單的相關資訊，請參閱[商用 Marketplace 分析中的訂單儀表板](./orders-dashboard.md)。
-- 若為虛擬機器（VM）提供使用量和計量付費計量，請參閱[商業 Marketplace 分析中的使用量儀表板](./usage-dashboard.md)。
-- 如需客戶的詳細資訊，包括成長趨勢，請參閱[商業 Marketplace 分析中的客戶儀表板](./customer-dashboard.md)。
-- 如需過去30天內的下載要求清單，請參閱[商用 Marketplace 分析中的下載儀表板](./downloads-dashboard.md)。
-- 若要查看有關 Azure Marketplace 和 AppSource 供應專案的客戶意見反應的匯總觀點，請參閱[商業 Marketplace 分析中的評等和評論儀表板](./ratings-reviews.md)。
-- 如需有關商業 Marketplace 分析的常見問題，以及完整的資料詞彙字典，請參閱[商業 marketplace 分析的常見問題和術語](./faq-terminology.md)。
+- 有關合作夥伴中心商業市場中可用的分析報告的概述，請參閱[合作夥伴中心商業市場的分析](./analytics.md)。
+- 有關匯總產品/服務市場活動的匯總資料的圖表、趨勢和值，請參閱[商業市場分析中的摘要儀表板](./summary-dashboard.md)。
+- 有關您的訂單以圖形和可下載格式的資訊，請參閱[商業市場分析中的訂單儀表板](./orders-dashboard.md)。
+- 有關虛擬機器 （VM） 提供使用方式和按流量計費指標，請參閱[商業應用商店分析中的使用方式儀表板](./usage-dashboard.md)。
+- 有關客戶的詳細資訊（包括增長趨勢），請參閱[商業市場分析中的客戶儀表板](./customer-dashboard.md)。
+- 有關過去 30 天的下載請求清單，請參閱[商業應用商店分析中的下載儀表板](./downloads-dashboard.md)。
+- 要查看 Azure 應用商店和 AppSource 上產品/服務的客戶回函的合併視圖，請參閱[商業應用商店分析中的評級和審核儀表板](./ratings-reviews.md)。
+- 有關商業市場分析和資料術語綜合詞典的常見問題，請參閱[商業市場分析的常見問題和術語](./faq-terminology.md)。

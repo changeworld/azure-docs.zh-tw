@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 34665db48d2097fd3be3cdcd11a0d9cceb31855c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 73181222bf3f15bbbac24fc253eddfea1c57bc6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247090"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 儲存體計量
 
@@ -23,7 +23,7 @@ Azure 監視器提供了統一的使用者介面供您監視不同的 Azure 服�
 
 ## <a name="access-metrics"></a>存取計量
 
-Azure 監視器提供了多種方法供您存取計量。 您可以從[Azure 入口網站](https://portal.azure.com)、Azure 監視器 API （REST 和 .net）和分析解決方案（例如事件中樞）存取這些應用程式。 如需詳細資訊，請參閱 [Azure 監視器計量](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure 監視器提供了多種方法供您存取計量。 可以從[Azure 門戶](https://portal.azure.com)、Azure 監視器 API（REST 和 .NET）和分析解決方案（如事件中心）訪問它們。 有關詳細資訊，請參閱[Azure 監視器指標](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 計量是預設啟用的功能，您可以存取過去 93 天的資料。 如果您需要延長這些資料的保留時間，您可以將計量資料封存到 Azure 儲存體帳戶。 此功能可於 Azure 監視器的[診斷設定](../../azure-monitor/platform/platform-logs-overview.md)中進行設定。
 
@@ -33,7 +33,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以從[Azure 入
 
 ![在 Azure 入口網站中存取計量的螢幕擷取畫面](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-針對支援維度的計量，您可以使用所需的維度值來篩選計量。 下列範例說明如何藉由選取 [API 名稱] 維度的值，來檢視特定作業在帳戶層級上的 [交易]。
+針對支援維度的計量，您可以使用所需的維度值來篩選計量。 下列範例說明如何藉由選取 [API 名稱]**** 維度的值，來檢視特定作業在帳戶層級上的 [交易]****。
 
 ![在 Azure 入口網站中存取具有維度之計量的螢幕擷取畫面](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -134,13 +134,13 @@ Azure 監視器提供了 [REST API](/rest/api/monitor/) 來讀取計量定義和
 
 ```
 
-### <a name="access-metrics-with-the-net-sdk"></a>使用 .NET SDK 存取計量
+### <a name="access-metrics-with-the-net-sdk"></a>使用 .NET SDK 訪問指標
 
-Azure 監視器提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)來讀取計量定義和值。 [範例程式碼](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)示範如何使用 SDK 搭配不同的參數。 您必須使用 `0.18.0-preview` 或更新版本的儲存體計量。 資源識別碼用於 .NET SDK。 如需詳細資訊，請參閱「了解儲存體所含服務的資源識別碼」。
+Azure 監視器提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)來讀取指標定義和值。 [範例程式碼](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)示範如何使用 SDK 搭配不同的參數。 您必須使用 `0.18.0-preview` 或更新版本的儲存體計量。 資源識別碼 在 .NET SDK 中使用。 如需詳細資訊，請參閱「了解儲存體所含服務的資源識別碼」。
 
-下列範例顯示如何使用 Azure 監視器 .NET SDK 來讀取儲存體計量。
+下面的示例演示如何使用 Azure 監視器 .NET SDK 讀取存儲指標。
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>使用 .NET SDK 列出帳戶層級的度量定義
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>使用 .NET SDK 列出帳戶級別指標定義
 
 下列範例說明如何列出帳戶層級的計量定義：
 
@@ -177,7 +177,7 @@ Azure 監視器提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 如果您想要列出 Blob、資料表、檔案或佇列的計量定義，就必須使用 API 為每項服務指定不同的資源識別碼。
 
-#### <a name="read-metric-values-with-the-net-sdk"></a>使用 .NET SDK 讀取度量值
+#### <a name="read-metric-values-with-the-net-sdk"></a>使用 .NET SDK 讀取指標值
 
 下列範例說明如何讀取帳戶層級的 `UsedCapacity` 資料：
 
@@ -227,7 +227,7 @@ Azure 監視器提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 在上述範例中，如果您想要讀取 Blob、資料表、檔案或佇列的計量值，就必須使用 API 為每項服務指定不同的資源識別碼。
 
-#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>使用 .NET SDK 讀取多維度度量值
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>使用 .NET SDK 讀取多維指標值
 
 對於多維度的計量，如果您想要讀取特定維度值的計量資料，就必須定義中繼資料篩選條件。
 
@@ -342,8 +342,8 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 | 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-| BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 維度： **BlobType**和**BlobTier** （[定義](#metrics-dimensions)） |
-| BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 維度： **BlobType**和**BlobTier** （[定義](#metrics-dimensions)） |
+| BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 尺寸 **：Blob 類型**和**BlobTier** （[定義](#metrics-dimensions)） |
+| BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 尺寸 **：Blob 類型**和**BlobTier** （[定義](#metrics-dimensions)） |
 | ContainerCount    | 儲存體帳戶中的容器數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 | IndexCapacity     | ADLS Gen2 階層式索引使用的儲存體容量 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 
@@ -381,7 +381,7 @@ Azure 儲存體會提供下列 Azure 監視器交易計量。
 | ------------------- | ----------------- |
 | 交易 | 向儲存體服務或所指定 API 作業傳送的要求數。 此數目包括成功與失敗的要求，以及產生錯誤的要求。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 適用維度：ResponseType、GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions))<br/> 值範例：1024 |
 | 輸入 | 輸入資料量。 此數目包括從外部用戶端輸入到 Azure 儲存體與 Azure 內的輸入。 <br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
-| 輸出 | 輸出資料量。 此數目包括從外部用戶端輸出到 Azure 儲存體與 Azure 內的輸出。 因此，此數目未反映可收費的輸出。 <br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
+| 輸出 | 輸出資料量。 此數位包括從 Azure 存儲向外部用戶端的出口以及 Azure 中的出口。 因此，此數目未反映可收費的輸出。 <br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
 | SuccessServerLatency | Azure 儲存體用來處理成功要求的平均時間。 此值不包括在 SuccessE2ELatency 中指定的網路延遲。 <br/><br/> 單位：毫秒 <br/> 彙總類型：平均 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
 | SuccessE2ELatency | 向儲存體服務或所指定 API 作業發出之成功要求的平均端對端延遲。 此值包括 Azure 儲存體內讀取要求、傳送回應及接收回應認可的必要處理時間。 <br/><br/> 單位：毫秒 <br/> 彙總類型：平均 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
 | 可用性 | 儲存體服務或所指定 API 作業的可用性百分比。 可用性的計算方式是將可計費的要求值總計除以適用要求數目，包括產生意外錯誤的要求。 所有意外錯誤都會導致儲存體或所指定 API 作業的可用性降低。 <br/><br/> 單位：百分比 <br/> 彙總類型：平均 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：99.99 |
@@ -392,12 +392,12 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 | 維度名稱 | 描述 |
 | ------------------- | ----------------- |
-| **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為**BlockBlob**、 **PageBlob**和**Azure Data Lake Storage**。 附加 Blob 隨附於 BlockBlob。 |
-| **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 blob 物件資料。 如需詳細資訊，請參閱[Azure 儲存體 blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>經常性**存取：熱**層</li> <li>**酷炫**：非經常性存取層</li> <li>封存 **：封存**層</li> <li>**Premium**：區塊 blob 的高階層級</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**： premium 分頁 blob 的層級類型</li> <li>**標準**：標準分頁 Blob 的層級類型</li> <li>**Untiered**：一般用途 v1 儲存體帳戶的層級類型</li> |
-| **GeoType** | 來自主要或次要叢集的交易。 可用的值包括 [**主要**] 和 [**次要**]。 在從次要租用戶讀取物件時，此維度會套用到讀取權限異地備援儲存體 (RA-GRS)。 |
-| **ResponseType** | 交易回應類型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除了描述的其他所有伺服器端錯誤 </li> <li>**ServerBusyError**：傳回 HTTP 503 狀態碼的已驗證要求。 </li> <li>**ServerTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 逾時是因為伺服器錯誤而發生。 </li> <li>**AuthorizationError**：因為未經授權存取資料或授權失敗而失敗的已驗證要求。 </li> <li>**NetworkError**：因網路錯誤而失敗的已驗證要求。 當用戶端在逾時到期前就過早關閉連線時，最常會發生這個情況。 </li>  <li>**ClientAccountBandwidthThrottlingError**：要求會在頻寬上受到節流，以超過[儲存體帳戶的擴充性限制](scalability-targets-standard-account.md)。</li><li>**ClientAccountRequestThrottlingError**：要求已根據超出[儲存體帳戶擴充性限制](scalability-targets-standard-account.md)的要求速率進行節流。<li>**ClientThrottlingError**：其他用戶端節流錯誤。 已排除 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：超時的已驗證要求，其傳回 HTTP 500 狀態碼。 如果用戶端的網路逾時或要求逾時設定為比儲存體服務預期的值還低，則此值是符合預期的逾時。 否則，它會回報為 ServerTimeoutError。</li> </li> <li>**ClientOtherError**：除了描述的所有其他用戶端錯誤。 </li> <li>**成功**：成功的要求</li> <li> **SuccessWithThrottling**：當 SMB 用戶端在第一次嘗試時受到節流，但在重試之後成功時的成功要求。</li> |
-| **ApiName** | 作業的名稱。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 如需所有的作業名稱，請參閱[文件](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
-| **驗證** | 交易中所使用的驗證類型。 可用的值包括： <br/> <li>**AccountKey**：交易已使用儲存體帳戶金鑰進行驗證。</li> <li>**SAS**：交易是以共用存取簽章進行驗證。</li> <li>**Oauth**：交易是以 oauth 存取權杖進行驗證。</li> <li>**Anonymous**：以匿名方式要求交易。 不包括預檢要求。</li> <li>**AnonymousPreflight**：交易是預檢要求。</li> |
+| **Blob 類型** | 只適用於 Blob 計量的 Blob 類型。 支援的值是**塊 Blob、PageBlob**和 Azure**PageBlob****資料湖存儲**。 附加 Blob 隨附於 BlockBlob。 |
+| **BlobTier** | Azure 存儲提供了不同的訪問層，這允許您以最具成本效益的方式存儲 Blob 物件資料。 請參閱[Azure 存儲 blob 層 中的](../blobs/storage-blob-storage-tiers.md)更多。 支援的值包括： <br/> <li>**熱門**： 熱層</li> <li>**酷**： 酷層</li> <li>**存檔**： 存檔層</li> <li>**高級**：塊 Blob 的高級層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高級頁面 blob 的層類型</li> <li>**標準**：標準頁面 Blob 的層類型</li> <li>**未分層**：通用 v1 存儲帳戶的層類型</li> |
+| **GeoType** | 來自主要或次要叢集的交易。 可用值包括**主**值和**輔助**值 。 在從次要租用戶讀取物件時，此維度會套用到讀取權限異地備援儲存體 (RA-GRS)。 |
+| **回應類型** | 交易回應類型。 可用的值包括： <br/><br/> <li>**伺服器其他錯誤**：除所述錯誤外，所有其他伺服器端錯誤 </li> <li>**伺服器忙錯誤**：已驗證的請求，返回 HTTP 503 狀態碼。 </li> <li>**伺服器逾時錯誤**：已超時身份驗證的請求，該請求返回了 HTTP 500 狀態碼。 逾時是因為伺服器錯誤而發生。 </li> <li>**授權錯誤**：由於未經授權訪問資料或授權失敗而失敗的已身份驗證請求。 </li> <li>**網路錯誤**：由於網路錯誤而失敗的已身份驗證請求。 當用戶端在逾時到期前就過早關閉連線時，最常會發生這個情況。 </li>  <li>**用戶端帳戶頻寬限制錯誤**： 請求被限制的頻寬超過[存儲帳戶可伸縮性限制](scalability-targets-standard-account.md).</li><li>**用戶端帳戶請求限制錯誤**： 請求被限制的請求速率超過[存儲帳戶可伸縮性限制](scalability-targets-standard-account.md).<li>**用戶端限制錯誤**：其他用戶端限制錯誤。 排除用戶端帳戶頻寬限制錯誤和用戶端帳戶請求限制錯誤。</li> <li>**用戶端逾時錯誤**：已超時身份驗證的請求，該請求返回了 HTTP 500 狀態碼。 如果用戶端的網路逾時或要求逾時設定為比儲存體服務預期的值還低，則此值是符合預期的逾時。 否則，它會回報為 ServerTimeoutError。</li> </li> <li>**用戶端其他錯誤**：除所述錯誤外，所有其他用戶端錯誤。 </li> <li>**成功**：成功請求</li> <li> **成功與限制**： 成功請求時，SMB 用戶端在第一次嘗試中受到限制，但在重試後成功。</li> |
+| **阿皮名稱** | 作業的名稱。 例如： <br/> <li>**創建容器**</li> <li>**DeleteBlob**</li> <li>**獲取Blob**</li> 如需所有的作業名稱，請參閱[文件](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
+| [驗證]**** | 交易中所使用的驗證類型。 可用的值包括： <br/> <li>**帳戶金鑰**：使用存儲帳戶金鑰組事務進行身份驗證。</li> <li>**SAS**： 事務使用共用訪問簽名進行身份驗證。</li> <li>**OAuth**：事務使用 OAuth 訪問權杖進行身份驗證。</li> <li>**匿名**：交易是匿名請求的。 它不包括預檢請求。</li> <li>**匿名預檢**：交易是預檢請求。</li> |
 
 對於計量支援維度，您必須指定維度值才能查看對應的計量值。 例如，如果您要查看成功回應的 **Transactions** 值，則需要篩選具有 **Success** 值的 **ResponseType** 維度。 或者，如果您要查看區塊 Blob 的 **BlobCount** 值，就需要篩選具有 **BlockBlob** 值的 **BlobType** 維度。
 

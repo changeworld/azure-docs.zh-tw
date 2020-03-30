@@ -4,10 +4,10 @@ description: Azure Service Fabric 接受 Docker Compose 格式，可讓您更輕
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282454"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中 Docker Compose 的部署支援 (預覽)
@@ -127,8 +127,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>Ports 區段
 
 在 Service Fabric 服務接聽程式將使用的 Ports 區段中指定 http 或 https 通訊協定。 這可確保使用命名服務正確發佈端點通訊協定，以允許反向 Proxy 轉送要求：
-* 若要路由傳送至不安全的 Service Fabric Compose 服務，請指定 **/http**。 例如，- **"80:80/http"** 。
-* 若要路由傳送至安全的 Service Fabric Compose 服務，請指定 **/https**。 例如，- **"443:443/https"** 。
+* 若要路由傳送至不安全的 Service Fabric Compose 服務，請指定 **/http**。 例如，- **"80:80/http"**。
+* 若要路由傳送至安全的 Service Fabric Compose 服務，請指定 **/https**。 例如，- **"443:443/https"**。
 
 > [!NOTE]
 > /Http 和 /https Ports 區段語法為 Service Fabric 特有，用以註冊正確的 Service Fabric 接聽程式 URL。  如果 Docker compose 檔案語法已經過程式驗證，則可能會導致驗證錯誤。

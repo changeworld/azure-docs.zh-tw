@@ -1,20 +1,18 @@
 ---
-title: 什麼是試用產品？ |Azure Marketplace
+title: 什麼是試用產品？ |Azure 應用商店
 description: Marketplace 試用產品功能說明
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a6826657a4af74276e363acd585e80d101cc1459
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bdfadf359195464c4024b28c5e597c571305481a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278224"
 ---
 <a name="what-is-test-drive"></a>什麼是試用產品？
 ===================
@@ -48,8 +46,8 @@ ms.locfileid: "73828147"
 
 無論您的產品多複雜，Microsoft Test Drive 都能協助您將產品提供給客戶。 我們現已根據產品類型、案例和您所在的 Marketplace，提供三種不同類型的試用產品。
 
-- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** ：「Resource Manager 試用產品」是部署範本，其中包含組成發行者所建置之解決方案的所有 Azure 資源。 適用於此案例的產品為僅使用 Azure 資源的產品。
-- **[邏輯應用程式](./logic-app-test-drive.md)** ：「邏輯應用程式試用產品」是部署範本，其目的是要包含所有複雜解決方案架構。 所有 Dynamics 應用程式或自訂產品，都應該使用此類型的試用產品。
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**：「Resource Manager 試用產品」是部署範本，其中包含組成發行者所建置之解決方案的所有 Azure 資源。 適用於此案例的產品為僅使用 Azure 資源的產品。
+- **[邏輯應用程式](./logic-app-test-drive.md)**：「邏輯應用程式試用產品」是部署範本，其目的是要包含所有複雜解決方案架構。 所有 Dynamics 應用程式或自訂產品，都應該使用此類型的試用產品。
 - **Power BI**：「Power BI 試用產品」僅是自訂建置儀表板的內嵌連結。 任何只是要示範互動式 Power BI 視覺效果的產品，都應該使用此類型的試用產品。
     您只需要上傳內嵌的 Power BI URL。
 
@@ -65,7 +63,7 @@ ms.locfileid: "73828147"
 
 您現在已了解試用產品的功能，接著可以瀏覽您想發行的特定試用產品類型，以了解需要的所有必要欄位。
 
-- **[Azure Resource   Manager](./azure-resource-manager-test-drive.md)**
-- **[邏輯應用程式](./logic-app-test-drive.md)**
+- **[Azure 資源管理器](./azure-resource-manager-test-drive.md)**
+- **[邏輯應用](./logic-app-test-drive.md)**
 
 如果您有其他問題、在尋找疑難排解建議，或想讓試用產品更成功，請移至[常見問題集、疑難排解與最佳做法](./marketing-and-best-practices.md)。

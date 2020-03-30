@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257541"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>調整 Azure 串流分析作業以增加輸送量
 本文示範如何調整串流分析查詢，以增加串流分析作業的輸送量。 您可以使用以下指南來調整作業，進而處理更高的負載及利用更多系統資源 (如更多頻寬、更多 CPU 資源、更多記憶體)。
@@ -23,7 +23,7 @@ ms.locfileid: "75458768"
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 查詢在輸入分割區之間原本就完全可平行
 如果您的查詢在輸入分割區之間原本就完全可平行，可以遵循以下步驟：
 1.  使用 **PARTITION BY** 關鍵字撰寫窘迫平行查詢。 如需詳細資料，請參閱[本頁](stream-analytics-parallelization.md)的「窘迫平行作業」一節。
-2.  根據查詢使用的輸出類型，某些輸出可能是不可平行或需要進一步設定才能成為窘迫平行。 例如，SQL、SQL DW 和 Power BI 輸出不可平行。 輸出一律會先合併再傳送到輸出接收。 Blob、資料表、ADLS、服務匯流排和 Azure 函式可自動平行化。 CosmosDB 和事件中樞需要將 PartitionKey 組態設定為與 **PARTITION BY** 欄位相符 (通常是 PartitionId)。 另請特別注意，對事件中樞來說，所有輸入和所有輸出的分割區數目應相符，以避免跨越分割區。 
+2.  根據查詢使用的輸出類型，某些輸出可能是不可平行或需要進一步設定才能成為窘迫平行。 例如，PowerBI 輸出不可並行。 輸出一律會先合併再傳送到輸出接收。 Blob、資料表、ADLS、服務匯流排和 Azure 函式可自動平行化。 SQL 和 SQL DW 輸出具有並行化選項。 事件中心需要設置分區金鑰配置，以便與**分區 BY**欄位（通常為分區 ID）匹配。 另請特別注意，對事件中樞來說，所有輸入和所有輸出的分割區數目應相符，以避免跨越分割區。 
 3.  使用 **6 SU** (單一運算節點的完整容量) 來執行查詢，以測量可達成輸送量的最大值；如果您使用 **GROUP BY**，請測量作業可處理的群組數目 (基數)。 達到系統資源限制的作業會出現如下所示的一般徵兆。
     - SU % 使用率計量超過 80%。 這表示記憶體使用量偏高。 若要了解導致這項計量增加的因素，請參閱[這裡](stream-analytics-streaming-unit-consumption.md)的描述。 
     -   輸出時間戳記落後時鐘時間。 根據您的查詢邏輯，輸出時間戳記與時鐘時間之間可能有邏輯位移。 不過，它們的進行的速度大致上應該相同。 如果輸出時間戳記遠遠落後，代表系統過度使用。 這可能是下游輸出接收節流，或 CPU 使用率過高的結果。 目前我們未提供 CPU 使用量度量，因此您可能會很難區分這兩者。
@@ -78,12 +78,12 @@ ms.locfileid: "75458768"
 
 
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

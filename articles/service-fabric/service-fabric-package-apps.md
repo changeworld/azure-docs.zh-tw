@@ -1,13 +1,13 @@
 ---
-title: 封裝 Azure Service Fabric 應用程式
-description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
+title: 打包 Azure 服務結構應用
+description: 瞭解如何打包 Azure 服務結構應用程式以及如何準備部署到群集。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258339"
 ---
 # <a name="package-an-application"></a>封裝應用程式
@@ -48,7 +48,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
 
-如需有關如何設定 **SetupEntryPoint** 的詳細資訊，請參閱[設定服務設定進入點的原則](service-fabric-application-runas-security.md)
+有關如何配置**SetupEntryPoint**的詳細資訊，請參閱[為服務設置進入點配置策略](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -56,13 +56,13 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 建置封裝
 
-如果您使用 Visual Studio 來建立應用程式，您可以使用 [*封裝*] 命令，自動建立符合上述版面配置的套件。
+如果使用 Visual Studio 創建應用程式，則可以使用 *"包"* 命令自動創建與上述佈局相匹配的包。
 
-若要建立封裝，請以滑鼠右鍵按一下*方案總管*中的應用程式專案，然後選擇 [**封裝**] 命令：
+要創建包，請按右鍵*解決方案資源管理器*中的應用程式專案，然後選擇 **"包**"命令：
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
-封裝完成時，您會在 [輸出] 視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
+封裝完成時，您會在 [輸出] **** 視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
 
 ### <a name="build-a-package-by-command-line"></a>透過命令列建置封裝
 
@@ -136,7 +136,7 @@ True
 
 您可以執行 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)，並搭配 `CompressPackage` 參數來壓縮封裝。 您可以使用相同的命令，並搭配 `UncompressPackage` 參數來將封裝解壓縮。
 
-下列命令會在不將封裝複製到映像存放區的情況下壓縮封裝。 您可以在不搭配 [ 旗標的情況下使用 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`SkipCopy`，視需求將壓縮的封裝複製到一或多個 Service Fabric 叢集。
+下列命令會在不將封裝複製到映像存放區的情況下壓縮封裝。 您可以在不搭配 `SkipCopy` 旗標的情況下使用 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)，視需求將壓縮的封裝複製到一或多個 Service Fabric 叢集。
 該套件現在包含 `code`、`config` 及 `data` 套件的 ZIP 壓縮檔案。 因為許多內部作業需要，所以應用程式資訊清單和服務資訊清單不會經過壓縮。 例如，某些驗證的封裝共用作業、應用程式類型名稱和版本擷取作業都需要存取資訊清單。 對資訊清單進行壓縮，將會使這些作業效率不佳。
 
 ```
@@ -226,11 +226,11 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>後續步驟
 
-[部署和移除應用程式][10]說明如何使用 PowerShell 來管理應用程式實例
+[部署和刪除應用程式][10]描述如何使用 PowerShell 管理應用程式實例
 
-[管理多個環境的應用程式參數][11]說明如何為不同的應用程式實例設定參數和環境變數。
+[管理多個環境的應用程式參數][11]說明如何為不同的應用程式執行個體設定參數和環境變數。
 
-[設定應用程式的安全性原則][12]說明如何在安全性原則下執行服務來限制存取。
+[設定應用程式的安全性原則][12]說明如何依據安全性原則執行服務來限制存取。
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

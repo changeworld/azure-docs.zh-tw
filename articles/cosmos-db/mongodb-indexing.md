@@ -5,142 +5,84 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 03/27/2020
+author: timsander1
+ms.author: tisande
+ms.openlocfilehash: 7c75f0d6f74fe8cf1417e0dc40a5ad01615d7057
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029464"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371066"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 MongoDB 版 API 進行索引編製
 
-Azure Cosmos DB 的 MongoDB 版 API 會運用 Cosmos DB 的自動索引管理功能。 因此，使用者可以存取 Cosmos DB 的預設索引原則。 所以，如果使用者未定義任何索引，或未置放任何索引，則所有欄位在插入至集合時，預設都會自動編製索引。 在大部分情況下，我們建議使用帳戶上設定的預設索引原則。
+Azure Cosmos DB 的蒙戈DB API 利用了 Azure Cosmos DB 的核心索引管理功能。 本文檔重點介紹如何使用 Azure Cosmos DB 的 MongoDB API 添加索引。 您還可以閱讀 Azure [Cosmos DB 中](index-overview.md)與所有 API 相關的索引概述。
 
-## <a name="indexing-for-version-36"></a>3\.6 版的索引
+## <a name="indexing-for-version-36"></a>版本 3.6 的索引
 
-服務線路通訊協定版本3.6 的帳戶，提供的預設索引編制原則與舊版所提供的原則不同。 根據預設，只有 [_id] 欄位會編制索引。 若要為其他欄位編制索引，使用者必須套用 MongoDB 索引管理命令。 若要將排序套用至查詢，目前必須在排序作業中使用的欄位上建立索引。
+該`_id`欄位始終自動編制索引，不能刪除。 Azure Cosmos DB 的 MongoDB API 自動強制每個`_id`分片鍵的欄位的唯一性。
 
-### <a name="dropping-the-default-indexes-36"></a>卸載預設索引（3.6）
+要索引其他欄位，應應用 MongoDB 索引管理命令。 與 MongoDB 中一`_id`樣，只有欄位自動編制索引。 此預設索引策略不同于 Azure Cosmos DB SQL API，後者預設對所有欄位進行索引。
 
-針對服務線路通訊協定3.6 版的帳戶，唯一的預設索引是 _id，無法卸載。
+要將排序應用於查詢，必須在排序操作中使用的欄位上創建索引。
 
-### <a name="creating-a-compound-index-36"></a>建立複合索引（3.6）
+## <a name="index-types"></a>索引類型
 
-使用3.6 連線通訊協定的帳戶支援真正的複合索引。 下列命令會在欄位 ' a ' 和 ' b ' 上建立複合索引： `db.coll.createIndex({a:1,b:1})`
+### <a name="single-field"></a>單欄位
 
-複合索引可以用來一次在多個欄位上有效率地進行排序，例如： `db.coll.find().sort({a:1,b:1})`
+您可以在任何單個欄位上創建索引。 單個欄位索引的排序次序並不重要。 以下命令將在欄位`name`上創建索引：
 
-### <a name="track-the-index-progress"></a>追蹤索引進度
+`db.coll.createIndex({name:1})`
 
-3\.6 版的 Azure Cosmos DB 的 MongoDB API 帳戶支援 `currentOp()` 命令，以追蹤資料庫實例上的索引進度。 此命令會傳回一份檔，其中包含資料庫實例上進行中作業的相關資訊。 `currentOp` 命令是用來追蹤原生 MongoDB 中所有進行中的作業，而在 Azure Cosmos DB 適用于 MongoDB 的 API 中，此命令只支援追蹤索引操作。
+一個查詢將使用多個單欄位索引（如果可用）。
 
-以下是一些範例，示範如何使用 `currentOp` 命令來追蹤索引進度：
+### <a name="compound-indexes-36"></a>複合指數 （3.6）
 
-•取得集合的索引進度：
+對於使用 3.6 線協定的帳戶，支援複合索引。 複合索引中最多可以包含 8 個欄位。 與 MongoDB 不同，僅當查詢需要同時對多個欄位進行有效排序時，才應創建複合索引。 對於具有多個篩選器不需要排序的查詢，應創建多個單個欄位索引，而不是單個複合索引。
 
-   ```shell
-   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
-   ```
+以下命令將在欄位`name`上創建複合索引，並`age`：
 
-•取得資料庫中所有集合的索引進度：
+`db.coll.createIndex({name:1,age:1})`
 
-  ```shell
-  db.currentOp({"command.$db": <databaseName>})
-  ```
+複合索引可用於一次對多個欄位進行有效排序，例如：
 
-•取得 Azure Cosmos 帳戶中所有資料庫和集合的索引進度：
+`db.coll.find().sort({name:1,age:1})`
 
-  ```shell
-  db.currentOp({"command.createIndexes": { $exists : true } })
-  ```
+上述複合索引還可用於對所有欄位上具有相反排序次序的查詢進行有效排序。 以下是範例：
 
-索引進度詳細資料包含目前索引作業的進度百分比。 下列範例顯示索引進度的不同階段的輸出檔案格式：
+`db.coll.find().sort({name:-1,age:-1})`
 
-1. 如果 ' foo ' 集合上的索引作業和具有60% 索引編制的 ' bar ' 資料庫已完成，則會有下列輸出檔案。 `Inprog[0].progress.total` 顯示100做為目標完成。
+但是，複合索引中的路徑序列必須與查詢完全符合。 下面是需要附加複合索引的查詢示例：
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 60 %",
-                "progress" : {
-                        "done" : 60,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-        "ok" : 1
-   }
-   ```
+`db.coll.find().sort({age:1,name:1})`
 
-2. 對於剛在 ' foo ' 集合和 ' bar ' 資料庫上啟動的索引作業，輸出檔案可能會顯示0% 的進度，直到達到可測量的層級為止。
+### <a name="multikey-indexes"></a>多鍵索引
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 0 %",
-                "progress" : {
-                        "done" : 0,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-       "ok" : 1
-   }
-   ```
+Azure Cosmos DB 創建多鍵索引來索引存儲在陣列中的內容。 如果使用陣列值對欄位編制索引，則 Azure Cosmos DB 會自動為數組中的每個元素編制索引。
 
-3. 當進行中的索引作業完成時，輸出檔案會顯示空白的 inprog 作業。
+### <a name="geospatial-indexes"></a>地理空間索引
 
-   ```json
-   {
-      "inprog" : [],
-      "ok" : 1
-   }
-   ```
+許多地理空間運算子將受益于地理空間索引。 目前，Azure Cosmos DB 的蒙戈DB `2dsphere` API 支援索引。 `2d`尚不支援索引。
 
-## <a name="indexing-for-version-32"></a>3\.2 版的索引
+下面是在欄位上創建地理空間索引的示例`location`：
 
-### <a name="dropping-the-default-indexes-32"></a>卸載預設索引（3.2）
+`db.coll.createIndex({ location : "2dsphere" })`
 
-下列命令可用來置放 ```coll``` 集合的預設索引：
+### <a name="text-indexes"></a>文本索引
 
-```JavaScript
-> db.coll.dropIndexes()
-{ "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
-```
+當前不支援文本索引。 對於字串上的文本搜索查詢，應使用[Azure 認知搜索](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb)與 Azure Cosmos DB 的集成。
 
-### <a name="creating-a-compound-index-32"></a>建立複合索引（3.2）
+## <a name="index-properties"></a>索引屬性
 
-複合索引可存放文件中多個欄位的參考。 就邏輯而言，它們等同於為每個欄位建立多個個別索引。 若要利用 Cosmos DB 索引技術所提供的最佳化功能，建議您建立多個個別索引，而不是單一 (非唯一) 複合索引。
+以下操作對於提供有線協定版本 3.6 的帳戶和提供早期有線協定版本的帳戶都很常見。 您還可以瞭解有關[受支援的索引和索引屬性](mongodb-feature-support-36.md#indexes-and-index-properties)的更多。
 
-## <a name="common-indexing-operations"></a>一般索引作業
-
-下列作業適用于服務線路通訊協定3.6 版的帳戶，以及服務較早的網路通訊協定版本的帳戶。 
-
-## <a name="creating-unique-indexes"></a>建立唯一索引
+### <a name="unique-indexes"></a>唯一索引
 
 [唯一索引](unique-keys.md)適合用於強制不會有任何兩份或多份文件包含相同的索引欄位值。
 
 >[!Important]
-> 目前，只有在集合是空的 (不包含任何文件) 時，才能建立唯一索引。
+> 僅當集合為空（不包含任何文檔）時，才能創建唯一索引。
 
 下列命令可在 "student_id" 欄位上建立唯一索引：
 
@@ -155,7 +97,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 }
 ```
 
-如果是分區化集合，依據 MongoDB 行為，建立唯一索引時需要提供分區化 (分割區) 索引鍵。 換句話說，分區化集合上的所有唯一索引都是複合索引，其中有一個欄位是分割區索引鍵。
+對於分片集合，創建唯一索引需要提供分片（分區）鍵。 換句話說，分區化集合上的所有唯一索引都是複合索引，其中有一個欄位是分割區索引鍵。
 
 下列命令會建立分區化集合 ```coll``` (分區索引鍵是 ```university```)，其 student_id 和 university 欄位上有一個唯一索引：
 
@@ -180,7 +122,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
-## <a name="ttl-indexes"></a>TTL 索引
+### <a name="ttl-indexes"></a>TTL 索引
 
 若要啟用特定集合中的文件到期，則需建立[TTL 索引 (存留時間索引)](../cosmos-db/time-to-live.md)。 TTL 索引是_ts 欄位上具有 "expireAfterSeconds" 值的索引。
 
@@ -193,11 +135,121 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 上述命令會導致 ```db.coll``` 集合中最近 10 秒內未經修改的文件遭到刪除。
 
 > [!NOTE]
-> **_ts** 是 Cosmos DB 特有欄位，且無法從 MongoDB 用戶端存取。 這是保留 (系統) 屬性，其中包含上次修改文件的時間戳記。
+> **_ts**是特定于 Azure Cosmos 的特定于 DB 的欄位，無法從 MongoDB 用戶端存取。 這是保留 (系統) 屬性，其中包含上次修改文件的時間戳記。
+
+## <a name="track-the-index-progress"></a>跟蹤索引進度
+
+3.6 版本的 Azure Cosmos DB 的 MongoDB 帳戶`currentOp()`API 支援跟蹤資料庫實例上的索引進度的命令。 此命令返回包含有關資料庫實例上正在進行的操作的資訊的文檔。 該`currentOp`命令用於跟蹤本機 MongoDB 中的所有正在進行的操作，而在 Azure Cosmos DB 的 MongoDB API 中，此命令僅支援跟蹤索引操作。
+
+下面是一些演示如何使用 命令`currentOp`跟蹤索引進度的示例：
+
+* 獲取集合的索引進度：
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+* 獲取資料庫中所有集合的索引進度：
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+* 獲取 Azure Cosmos 帳戶中所有資料庫和集合的索引進度：
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+索引進度詳細資訊包含當前索引操作的進度百分比。 下面的示例顯示了索引進度不同階段的輸出文檔格式：
+
+1. 如果"foo"集合和具有 60% 索引完成的"bar"資料庫上的索引操作將具有以下輸出文檔。 `Inprog[0].progress.total`將顯示 100 作為目標完成。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. 對於剛剛開始在"foo"集合和"bar"資料庫上啟動的索引操作，輸出文檔可能會顯示 0% 的進度，直到達到可測量級別。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. 當正在進行的索引操作完成時，輸出文檔將顯示空的 inprog 操作。
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
+
+### <a name="background-index-updates"></a>背景索引更新
+
+無論為**背景**索引屬性指定的值如何，索引更新始終在後臺完成。 索引更新使用 RU 的優先順序低於其他資料庫操作。 因此，索引更改不會導致寫入、更新或刪除的任何停機時間。
+
+添加新索引時，查詢將立即使用它。 這意味著查詢可能不會返回所有匹配的結果，並且不會在不返回任何錯誤的情況下返回。 索引轉換完成後，查詢結果將一致。 您可以[跟蹤索引進度](#track-the-index-progress)。
 
 ## <a name="migrating-collections-with-indexes"></a>移轉具有索引的集合
 
-目前，只有在集合不包含任何文件時，才可能建立唯一索引。 熱門 MongoDB 移轉工具會嘗試在匯入資料後建立唯一索引。 若要避免這個問題，建議使用者手動建立對應的集合和唯一的索引，而不要允許遷移工具（適用于 ```mongorestore``` 這項行為是透過在命令列中使用 `--noIndexRestore` 旗標來達成）。
+目前，只有在集合不包含任何文件時，才可能建立唯一索引。 熱門 MongoDB 移轉工具會嘗試在匯入資料後建立唯一索引。 為了規避此問題，建議使用者手動創建相應的集合和唯一索引，而不是允許遷移工具（對於```mongorestore```此行為，通過使用命令列中的`--noIndexRestore`標誌來實現）。
+
+## <a name="indexing-for-version-32"></a>版本 3.2 的索引
+
+對於與 3.2 版本的 MongoDB 有線協定相容的 Azure Cosmos DB 帳戶，可用的索引功能和預設值是不同的。 您可以[檢查您的帳戶版本](mongodb-feature-support-36.md#protocol-support)。 您可以通過提交[支援請求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升級到 3.6 版本。
+
+如果您使用的是版本 3.2，本節概述了版本 3.6 的關鍵區別。
+
+### <a name="dropping-the-default-indexes-32"></a>刪除預設索引 （3.2）
+
+與 3.6 版本的 Azure Cosmos DB 的 MongoDB API 不同，3.2 版本預設索引每個屬性。 以下命令可用於刪除集合```coll```的這些預設索引：
+
+```JavaScript
+> db.coll.dropIndexes()
+{ "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
+```
+
+刪除預設索引後，可以添加其他索引，如版本 3.6 中所做的那樣。
+
+### <a name="compound-indexes-32"></a>複合指數 （3.2）
+
+複合索引可存放文件中多個欄位的參考。 如果要創建複合索引，請通過提交[支援請求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升級到 3.6 版本。
 
 ## <a name="next-steps"></a>後續步驟
 

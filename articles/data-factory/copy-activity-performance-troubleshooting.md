@@ -1,6 +1,6 @@
 ---
-title: 針對複製活動效能進行疑難排解
-description: 深入瞭解如何針對 Azure Data Factory 中的複製活動效能進行疑難排解。
+title: 排除複製活動性能的故障
+description: 瞭解如何在 Azure 資料工廠中排除複製活動性能的疑難排解。
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -12,181 +12,181 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: dd0343fc2e25a50f9aa9a9fdc3ef5ebb9615bc56
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531447"
 ---
-# <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
+# <a name="troubleshoot-copy-activity-performance"></a>排除複製活動性能的故障
 
-本文概述如何針對 Azure Data Factory 中的複製活動效能問題進行疑難排解。 
+本文概述了如何在 Azure 資料工廠中解決複製活動性能問題。 
 
-執行複製活動之後，您可以在 [[複製活動監視](copy-activity-monitoring.md)] 視圖中收集執行結果和效能統計資料。 以下是一個範例。
+運行複製活動後，可以在[複製活動監視](copy-activity-monitoring.md)視圖中收集運行結果和性能統計資訊。 以下是一個範例。
 
-![監視複製活動執行詳細資料](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+![監視複製活動運行詳細資訊](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
 
 ## <a name="performance-tuning-tips"></a>效能微調秘訣
 
-在某些情況下，當您在 Data Factory 中執行複製活動時，您會在頂端看到「**效能調整秘訣**」，如上述範例所示。 提示會告訴您此特定複製回合的 ADF 所識別的瓶頸，並提供如何提高複製輸送量的建議。 請嘗試進行建議變更，然後再次執行複製。
+在某些情況下，在資料工廠中運行複製活動時，您將在頂部看到 **"性能調優提示"，** 如上例所示。 這些提示告訴您 ADF 為此特定副本運行確定的瓶頸，以及如何提高複製輸送量的建議。 嘗試進行重新命令的更改，然後再次運行副本。
 
-做為參考，目前的效能微調秘訣會提供下列案例的建議：
+作為參考，當前性能調優提示為以下情況提供建議：
 
 | 類別              | 效能微調秘訣                                      |
 | --------------------- | ------------------------------------------------------------ |
-| 特定的資料存放區   | 將資料載入**Azure Synpase Analytics （先前為 SQL DW）** ：建議使用 POLYBASE 或 COPY 語句（如果未使用）。 |
-| &nbsp;                | 將資料從/複製到**Azure SQL Database**：當 DTU 處於高使用率的情況下，建議升級為較高的層級。 |
-| &nbsp;                | 將資料從/複製到**Azure Cosmos DB**：當 RU 處於高使用率時，建議您升級至較大的 ru。 |
-| &nbsp;                | 從**Amazon Redshift**內嵌資料：建議使用 [卸載] （如果未使用的話）。 |
-| 資料存放區節流 | 如果在複製期間，資料存放區會對一些讀取/寫入作業進行節流處理，建議檢查並增加資料存放區允許的要求率，或減少並行工作負載。 |
-| 整合執行時間  | 如果您使用**自我裝載的 Integration Runtime （IR）** ，而佇列中的複製活動等待時間很長，直到 IR 有可用的資源可執行為止，建議相應放大/相應放大您的 ir。 |
-| &nbsp;                | 如果您使用不是最佳區域的**Azure Integration Runtime**導致讀取/寫入速度變慢，建議您將設定為在另一個區域中使用 IR。 |
-| 容錯       | 如果您設定容錯並略過不相容的資料列，會導致效能變慢，建議確保來源和接收資料相容。 |
-| 分段複製           | 如果已設定分段複製但不適用於您的來源接收組，建議您將它移除。 |
-| 繼續                | 當複製活動從最後一個失敗點繼續，但您在原始執行之後發生變更 DIU 設定時，請注意新的 DIU 設定不會生效。 |
+| 資料存儲特定   | 將資料載入到**Azure Synpase 分析（以前 SQL DW）** 中：建議在不使用 PolyBase 或 COPY 語句時使用它。 |
+| &nbsp;                | 將資料從/複製到**Azure SQL 資料庫**：當 DTU 處於高利用率時，建議升級到更高層。 |
+| &nbsp;                | 將資料從/複製到**Azure Cosmos DB：** 當 RU 被高度利用時，建議升級到更大的 RU。 |
+| &nbsp;                | 從**亞馬遜紅移**引入資料：建議使用UNLOAD，如果它不使用。 |
+| 資料存儲限制 | 如果在複製過程中資料存儲限制了多個讀/寫操作，建議檢查和提高資料存儲的允許請求速率，或減少併發工作負載。 |
+| 集成運行時  | 如果使用**自託管集成運行時 （IR）** 並在佇列中等待很長時間，直到 IR 具有可用資源執行，建議向外/上擴展 IR。 |
+| &nbsp;                | 如果使用的**Azure 集成運行時**位於不理想區域中，導致讀取/寫入速度慢，建議配置以在另一個區域中使用 IR。 |
+| 容錯       | 如果配置容錯和跳過不相容行會導致性能降低，建議確保源和接收器資料相容。 |
+| 分段複製           | 如果已配置暫存副本，但對源接收器對沒有説明，建議將其刪除。 |
+| 繼續                | 當複製活動從上次失敗點恢復，但您碰巧在原始運行後更改 DIU 設置時，請注意新的 DIU 設置不起作用。 |
 
-## <a name="understand-copy-activity-execution-details"></a>瞭解複製活動執行詳細資料
+## <a name="understand-copy-activity-execution-details"></a>瞭解複製活動執行詳細資訊
 
-[複製活動監視] 視圖底部的 [執行詳細資料] 和 [持續時間] 會說明複製活動所經歷的主要階段（請參閱本文開頭的範例），這對於疑難排解複製效能特別有用。 複製執行的瓶頸是持續時間最長的一個。 請參閱下表中每個階段的定義，並瞭解如何[針對 Azure IR 上的複製活動進行疑難排解](#troubleshoot-copy-activity-on-azure-ir)，以及如何在自我裝載 IR 上使用這類資訊[進行複製活動的疑難排解](#troubleshoot-copy-activity-on-self-hosted-ir)。
+複製活動監視視圖底部的執行詳細資訊和持續時間描述了複製活動經歷的關鍵階段（請參閱本文開頭的示例），這對於解決複製性能的疑難問題特別有用。 複製運行的瓶頸是持續時間最長的瓶頸。 請參閱每個階段定義的下表，瞭解如何[對 Azure IR 上的複製活動進行故障排除](#troubleshoot-copy-activity-on-azure-ir)，以及如何使用此類資訊[對自託管 IR 上的複製活動進行故障排除](#troubleshoot-copy-activity-on-self-hosted-ir)。
 
 | 階段           | 描述                                                  |
 | --------------- | ------------------------------------------------------------ |
-| 佇列           | 已耗用的時間，直到「複製」活動實際開始于整合執行時間為止。 |
-| 複製前腳本 | 從 IR 和複製活動開始，在接收資料存放區中執行預先複製腳本的複製活動之間經過的時間。 當您設定資料庫接收的預先複製腳本時套用，例如將資料寫入 Azure SQL Database 在複製新資料之前進行清除。 |
-| 傳輸        | 上一個步驟結束與 IR 將所有資料從來源傳輸到接收之間經過的時間。 「傳輸」下的子步驟會以平行方式執行。<br><br>- **時間到第一個位元組：** 上一個步驟結束與紅外線從來源資料存放區接收第一個位元組之間經過的時間。 適用于非以檔案為基礎的來源。<br>- **列出來源：** 用來列舉來源檔案或資料分割的時間量。 當您設定資料庫來源的分割區選項時（例如，從 Oracle/SAP Hana/Teradata/Netezza 等資料庫複製資料時），會套用後者。<br/>-**從來源讀取：** 從來源資料存放區抓取資料所花費的時間量。<br/>- **寫入至接收：** 用來將資料寫入至接收資料存放區的時間量。 |
+| 佇列           | 在集成運行時實際啟動複製活動之前已過的時間。 |
+| 預拷貝腳本 | 從 IR 開始開始複製活動到在接收器資料存儲中完成執行預複製腳本的複製活動之間的執行時間。 在為資料庫接收器配置預複製腳本時應用，例如將資料寫入 Azure SQL 資料庫時，在複製新資料之前請清理。 |
+| 傳輸        | 上一步驟結束和紅外從源傳輸到接收器之間的執行時間。 "傳輸"下的子步驟並行運行。<br><br>- **第一個位元組的時間：** 從上一步驟的結束到 IR 從來源資料存儲接收第一個位元組的時間之間的時間。 應用於非基於檔的源。<br>- **清單來源：** 枚舉原始檔案或資料分區所花費的時間量。 當您為資料庫源配置分區選項時，例如從 Oracle/SAP HANA/Teradata/Netezza/等資料庫複製資料時，則適用後者。<br/>-**從源讀取：** 從來源資料存儲檢索資料所花費的時間量。<br/>- **寫入接收器：** 用於將資料寫入接收器資料存儲所花費的時間。 |
 
-## <a name="troubleshoot-copy-activity-on-azure-ir"></a>針對 Azure IR 上的複製活動進行疑難排解
+## <a name="troubleshoot-copy-activity-on-azure-ir"></a>在 Azure IR 上排除複製活動故障
 
-請遵循[效能微調步驟](copy-activity-performance.md#performance-tuning-steps)，為您的案例規劃和執行效能測試。 
+按照[性能調優步驟](copy-activity-performance.md#performance-tuning-steps)為方案規劃和執行效能測試。 
 
-當複製活動的效能不符合您的預期時，若要針對在 Azure Integration Runtime 上執行的單一複製活動進行疑難排解，如果您看到 [複製監視] 視圖中顯示的[效能微調提示](#performance-tuning-tips)，請套用建議，然後再試一次。 否則，請[瞭解複製活動執行詳細資料](#understand-copy-activity-execution-details)、檢查哪一個階段的持續時間**最長**，並套用下列指引來提升複製效能：
+當複製活動性能不符合預期時，要對 Azure 集成運行時上運行的單個複製活動進行故障排除，如果看到複製監視視圖中顯示[的性能調優提示](#performance-tuning-tips)，請應用建議，然後重試。 否則，[瞭解複製活動執行詳細資訊](#understand-copy-activity-execution-details)，檢查哪個階段持續時間**最長**，並應用以下指南以提高複製性能：
 
-- 「**預先複製腳本」有很長的持續時間：** 這表示在接收資料庫上執行的預先複製腳本需要很長的時間才能完成。 調整指定的預先複製腳本邏輯，以增強效能。 如果您需要進一步協助來改善腳本，請洽詢您的資料庫小組。
+- **"預複製腳本"經歷了長時間的運行：** 這意味著在接收器資料庫上運行的預複製腳本需要很長時間才能完成。 調整指定的預複製腳本邏輯以提高性能。 如果您需要改進腳本的進一步説明，請與資料庫團隊聯繫。
 
-- 「**傳輸時間到第一位元組」的工作持續時間很長**：這表示您的來源查詢會花很長的時間來傳回任何資料。 檢查查詢或伺服器並加以優化。 如果您需要進一步的協助，請洽詢您的資料存放區小組。
+- **"傳輸 - 第一位元組的時間"經歷了很長的工作持續時間**：這意味著源查詢返回任何資料需要很長時間。 檢查並優化查詢或伺服器。 如果您需要進一步説明，請聯繫資料存儲團隊。
 
-- 「**傳輸-列出來源」有很長的工作持續時間**：這表示列舉來源檔案或源資料庫資料分割的速度很慢。
+- **"傳輸 - 清單源"經歷了長時間的工作**：這意味著枚舉原始檔案或源資料庫資料分區很慢。
 
-  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（`wildcardFolderPath` 或 `wildcardFileName`）上使用**萬用字元篩選**，或使用 [**上次修改檔案的時間] 篩選器**（`modifiedDatetimeStart` 或`modifiedDatetimeEnd`），請注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
+  - 從基於檔的源複製資料時，如果在資料夾路徑或檔案名 （`wildcardFolderPath``wildcardFileName`或 ） 上使用**萬用字元篩選器**，或使用**檔上次修改的時間篩選器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），請注意，此類篩選器將導致將指定資料夾下的所有檔案清單的副本活動添加到用戶端，然後應用篩選器。 此類檔枚舉可能成為瓶頸，尤其是當只有少量檔滿足篩選器規則時。
 
-    - 檢查是否可以根據[日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會造成列出來源端的負擔。
+    - 檢查是否可以[根據日期時間分區的檔路徑或名稱複製檔](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 這種方式不會給上市來源帶來負擔。
 
-    - 請檢查您是否可以使用資料存放區的原生篩選，特別是 Amazon S3 和 Azure Blob 的「**前置**詞」。 前置詞篩選是一種資料存放區伺服器端篩選，而且效能較佳。
+    - 檢查是否可以使用資料存儲的本機篩選器，特別是 Amazon S3 和 Azure Blob 的"**首碼**"。 首碼篩選器是資料存儲伺服器端篩選器，性能會好得多。
 
-    - 請考慮將單一大型資料集分割成幾個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理部分的資料。 您可以使用 Lookup/GetMetadata + ForEach + Copy 來執行這項操作。 如一般範例，請參閱[從多個容器複製](solution-template-copy-files-multiple-containers.md)檔案或將[資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md)解決方案範本。
+    - 請考慮將單個大型資料集拆分為多個較小的資料集，並讓這些複製作業同時運行，每個資料處理部分。 您可以使用查找/獲取中繼資料 = 每個內容 = 複製來執行此操作。 請參閱[從多個容器複製檔](solution-template-copy-files-multiple-containers.md)或[將資料從 Amazon S3 遷移到 ADLS Gen2](solution-template-migration-s3-azure.md)解決方案範本作為一般示例。
 
-  - 檢查 ADF 是否報告來源上的任何節流錯誤，或您的資料存放區是否處於高使用率狀態。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告源上有任何限制錯誤，或者資料存儲是否處於高利用率狀態。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-  - 使用相同或接近您來源資料存放區區域的 Azure IR。
+  - 在來源資料存儲區域的相同或附近使用 Azure IR。
 
-- 「**傳輸-從來源讀取」有很長的工作持續時間**： 
+- **"從源轉移閱讀"經歷了長時間的工作：** 
 
-  - 採用連接器特定的資料載入最佳做法（如果適用）。 例如，從[Amazon Redshift](connector-amazon-redshift.md)複製資料時，請將設定為使用 Redshift UNLOAD。
+  - 如果適用，採用特定于連接器的資料載入最佳做法。 例如，從[Amazon Redshift](connector-amazon-redshift.md)複製資料時，配置為使用紅移 UNLOAD。
 
-  - 檢查 ADF 是否報告來源上的任何節流錯誤，或您的資料存放區是否處於高使用率。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告源上有任何限制錯誤，或者您的資料存儲是否被高利用率。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-  - 檢查您的複製來源和接收模式： 
+  - 檢查複製源和接收器模式： 
 
-    - 如果您的複製模式支援大於4個數據整合單位（Diu）-請參閱[本節](copy-activity-performance.md#data-integration-units)的詳細資訊，通常您可以嘗試增加 diu 以取得更佳的效能。 
+    - 如果您的複製模式支援大於 4 個資料整合單元 （DIUs） - 請參閱[本節](copy-activity-performance.md#data-integration-units)的詳細資訊，通常您可以嘗試增加 DIA 以獲得更好的性能。 
 
-    - 否則，請考慮將單一大型資料集分割成幾個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理部分的資料。 您可以使用 Lookup/GetMetadata + ForEach + Copy 來執行這項操作。 請參閱[從多個容器複製](solution-template-copy-files-multiple-containers.md)檔案、將[資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md)，或[使用控制資料表](solution-template-bulk-copy-with-control-table.md)解決方案範本作為一般範例進行大量複製。
+    - 否則，請考慮將單個大型資料集拆分為多個較小的資料集，並讓這些複製作業同時運行，每個資料處理部分。 您可以使用查找/獲取中繼資料 = 每個內容 = 複製來執行此操作。 請參閱[從多個容器複製檔](solution-template-copy-files-multiple-containers.md)、[將資料從 Amazon S3 遷移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解決方案範本進行批量複製作為一般示例。
 
-  - 使用相同或接近您來源資料存放區區域的 Azure IR。
+  - 在來源資料存儲區域的相同或附近使用 Azure IR。
 
-- 「**傳輸-寫入接收」有很長的工作持續時間**：
+- **"轉移-寫作到水槽"經歷了漫長的工作時間**：
 
-  - 採用連接器特定的資料載入最佳做法（如果適用）。 例如，將資料複製到[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) （先前為 SQL DW）時，請使用 POLYBASE 或 COPY 語句。 
+  - 如果適用，採用特定于連接器的資料載入最佳做法。 例如，將資料複製到[Azure 突觸分析](connector-azure-sql-data-warehouse.md)（以前的 SQL DW）時，請使用 PolyBase 或 COPY 語句。 
 
-  - 檢查 ADF 是否在接收時報告任何節流錯誤，或您的資料存放區是否在高使用率之下。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告接收器上有任何限制錯誤，或者您的資料存儲是否被高利用率。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-  - 檢查您的複製來源和接收模式： 
+  - 檢查複製源和接收器模式： 
 
-    - 如果您的複製模式支援大於4個數據整合單位（Diu）-請參閱[本節](copy-activity-performance.md#data-integration-units)的詳細資訊，通常您可以嘗試增加 diu 以取得更佳的效能。 
+    - 如果您的複製模式支援大於 4 個資料整合單元 （DIUs） - 請參閱[本節](copy-activity-performance.md#data-integration-units)的詳細資訊，通常您可以嘗試增加 DIA 以獲得更好的性能。 
 
-    - 否則，請逐漸微調[平行複製](copy-activity-performance-features.md)，請注意，太多平行複製可能會對效能造成負面影響。
+    - 否則，逐漸調整[並行副本](copy-activity-performance-features.md)，注意太多並行副本甚至可能損害性能。
 
-  - 在相同或接近您的接收資料存放區區域中，使用 Azure IR。
+  - 在同一或靠近接收器資料存儲區域時使用 Azure IR。
 
-## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>針對自我裝載 IR 上的複製活動進行疑難排解
+## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>在自託管 IR 上排除複製活動故障
 
-請遵循[效能微調步驟](copy-activity-performance.md#performance-tuning-steps)，為您的案例規劃和執行效能測試。 
+按照[性能調優步驟](copy-activity-performance.md#performance-tuning-steps)為方案規劃和執行效能測試。 
 
-當複製效能不符合您的預期時，若要針對在 Azure Integration Runtime 上執行的單一複製活動進行疑難排解，如果您看到 [複製監視] 視圖中顯示的[效能微調提示](#performance-tuning-tips)，請套用建議，然後再試一次。 否則，請[瞭解複製活動執行詳細資料](#understand-copy-activity-execution-details)、檢查哪一個階段的持續時間**最長**，並套用下列指引來提升複製效能：
+當複製性能不符合預期時，要對 Azure 集成運行時上運行的單個複製活動進行故障排除，如果看到複製監視視圖中顯示[的性能調優提示](#performance-tuning-tips)，請應用建議，然後重試。 否則，[瞭解複製活動執行詳細資訊](#understand-copy-activity-execution-details)，檢查哪個階段持續時間**最長**，並應用以下指南以提高複製性能：
 
-- 「**佇列」很長的持續時間：** 這表示複製活動在佇列中等候長時間，直到自我裝載的 IR 具有資源可執行為止。 檢查 IR 容量和使用量，並根據您的工作負載相應[增加或相應](create-self-hosted-integration-runtime.md#high-availability-and-scalability)放大。
+- **"佇列"經歷了長時間的持續時間：** 這意味著複製活動在佇列中等待很長時間，直到您的自託管 IR 具有要執行的資源。 檢查紅外容量和使用方式，並根據工作負載[向上或擴展](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
-- 「**傳輸時間到第一位元組」的工作持續時間很長**：這表示您的來源查詢會花很長的時間來傳回任何資料。 檢查查詢或伺服器並加以優化。 如果您需要進一步的協助，請洽詢您的資料存放區小組。
+- **"傳輸 - 第一位元組的時間"經歷了很長的工作持續時間**：這意味著源查詢返回任何資料需要很長時間。 檢查並優化查詢或伺服器。 如果您需要進一步説明，請聯繫資料存儲團隊。
 
-- 「**傳輸-列出來源」有很長的工作持續時間**：這表示列舉來源檔案或源資料庫資料分割的速度很慢。
+- **"傳輸 - 清單源"經歷了長時間的工作**：這意味著枚舉原始檔案或源資料庫資料分區很慢。
 
-  - 檢查自我裝載 IR 機器是否有低延遲連線到來源資料存放區。 如果您的來源位於 Azure 中，您可以使用[此工具](http://www.azurespeed.com/Azure/Latency)來檢查從自我裝載 IR 機器到 azure 區域的延遲，越不會越好。
+  - 檢查自承載的 IR 電腦是否具有連接到來源資料存儲的低延遲。 如果源位於 Azure 中，則可以使用[此工具](http://www.azurespeed.com/Azure/Latency)檢查從自託管 IR 電腦到 Azure 區域的延遲，越少越好。
 
-  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（`wildcardFolderPath` 或 `wildcardFileName`）上使用**萬用字元篩選**，或使用 [**上次修改檔案的時間] 篩選器**（`modifiedDatetimeStart` 或`modifiedDatetimeEnd`），請注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
+  - 從基於檔的源複製資料時，如果在資料夾路徑或檔案名 （`wildcardFolderPath``wildcardFileName`或 ） 上使用**萬用字元篩選器**，或使用**檔上次修改的時間篩選器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），請注意，此類篩選器將導致將指定資料夾下的所有檔案清單的副本活動添加到用戶端，然後應用篩選器。 此類檔枚舉可能成為瓶頸，尤其是當只有少量檔滿足篩選器規則時。
 
-    - 檢查是否可以根據[日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會造成列出來源端的負擔。
+    - 檢查是否可以[根據日期時間分區的檔路徑或名稱複製檔](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 這種方式不會給上市來源帶來負擔。
 
-    - 請檢查您是否可以使用資料存放區的原生篩選，特別是 Amazon S3 和 Azure Blob 的「**前置**詞」。 前置詞篩選是一種資料存放區伺服器端篩選，而且效能較佳。
+    - 檢查是否可以使用資料存儲的本機篩選器，特別是 Amazon S3 和 Azure Blob 的"**首碼**"。 首碼篩選器是資料存儲伺服器端篩選器，性能會好得多。
 
-    - 請考慮將單一大型資料集分割成幾個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理部分的資料。 您可以使用 Lookup/GetMetadata + ForEach + Copy 來執行這項操作。 如一般範例，請參閱[從多個容器複製](solution-template-copy-files-multiple-containers.md)檔案或將[資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md)解決方案範本。
+    - 請考慮將單個大型資料集拆分為多個較小的資料集，並讓這些複製作業同時運行，每個資料處理部分。 您可以使用查找/獲取中繼資料 = 每個內容 = 複製來執行此操作。 請參閱[從多個容器複製檔](solution-template-copy-files-multiple-containers.md)或[將資料從 Amazon S3 遷移到 ADLS Gen2](solution-template-migration-s3-azure.md)解決方案範本作為一般示例。
 
-  - 檢查 ADF 是否報告來源上的任何節流錯誤，或您的資料存放區是否處於高使用率狀態。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告源上有任何限制錯誤，或者資料存儲是否處於高利用率狀態。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-- 「**傳輸-從來源讀取」有很長的工作持續時間**： 
+- **"從源轉移閱讀"經歷了長時間的工作：** 
 
-  - 檢查自我裝載 IR 機器是否有低延遲連線到來源資料存放區。 如果您的來源位於 Azure 中，您可以使用[此工具](http://www.azurespeed.com/Azure/Latency)來檢查從自我裝載 IR 機器到 azure 區域的延遲，越不會越好。
+  - 檢查自承載的 IR 電腦是否具有連接到來源資料存儲的低延遲。 如果源位於 Azure 中，則可以使用[此工具](http://www.azurespeed.com/Azure/Latency)檢查從自託管 IR 電腦到 Azure 區域的延遲，越少越好。
 
-  - 檢查自我裝載 IR 機器是否有足夠的輸入頻寬，以有效率地讀取和傳輸資料。 如果您的來源資料存放區位於 Azure 中，您可以使用[此工具](https://www.azurespeed.com/Azure/Download)來檢查下載速度。
+  - 檢查自承載的 IR 電腦是否有足夠的入站頻寬來高效地讀取和傳輸資料。 如果來源資料存儲位於 Azure 中，則可以使用[此工具](https://www.azurespeed.com/Azure/Download)檢查下載速度。
 
-  - 在 Azure 入口網站 > 您的資料處理站-> 總覽頁面中，檢查自我裝載 IR 的 CPU 和記憶體使用量趨勢。 如果 CPU 使用率很高或可用記憶體不足，請考慮相應[增加/相應放大 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) 。
+  - 在 Azure 門戶中檢查自託管 IR 的 CPU 和記憶體使用趨勢 ->資料工廠 ->概述頁。 如果 CPU 使用率高或可用記憶體不足，請考慮[向上/縮小 IR。](create-self-hosted-integration-runtime.md#high-availability-and-scalability)
 
-  - 採用連接器特定的資料載入最佳做法（如果適用）。 例如：
+  - 如果適用，採用特定于連接器的資料載入最佳做法。 例如：
 
-    - 從[Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [SAP Hana](connector-sap-hana.md#sap-hana-as-source)、 [sap 資料表](connector-sap-table.md#sap-table-as-source)和[sap 開放式中樞](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)複製資料時，請啟用資料分割選項以平行方式複製資料。
+    - 從[Oracle](connector-oracle.md#oracle-as-source)Oracle、Netezza、Teradata、SAP [Netezza](connector-netezza.md#netezza-as-source) [HANA、SAP](connector-sap-hana.md#sap-hana-as-source)[表](connector-sap-table.md#sap-table-as-source)和[SAP 開放集線器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)複製資料時，啟用資料分區選項以並行複製資料。 [Teradata](connector-teradata.md#teradata-as-source)
 
-    - 從[HDFS](connector-hdfs.md)複製資料時，請將設定為使用 DistCp。
+    - 從[HDFS](connector-hdfs.md)複製資料時 ，配置為使用 DistCp。
 
-    - 從[Amazon Redshift](connector-amazon-redshift.md)複製資料時，請將設定為使用 Redshift UNLOAD。
+    - 從[亞馬遜紅移](connector-amazon-redshift.md)複製資料時，配置為使用紅移卸載。
 
-  - 檢查 ADF 是否報告來源上的任何節流錯誤，或您的資料存放區是否在高使用率之下。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告源上有任何限制錯誤，或者您的資料存儲是否被高利用率。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-  - 檢查您的複製來源和接收模式： 
+  - 檢查複製源和接收器模式： 
 
-    - 如果您從已啟用分割選項的資料存放區複製資料，請考慮逐漸微調[平行複本](copy-activity-performance-features.md)，請注意，太多平行複本可能會損害效能。
+    - 如果從支援分區選項的資料存儲複製資料，請考慮逐步調整[並行副本](copy-activity-performance-features.md)，請注意，太多的並行副本甚至可能損害性能。
 
-    - 否則，請考慮將單一大型資料集分割成幾個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理部分的資料。 您可以使用 Lookup/GetMetadata + ForEach + Copy 來執行這項操作。 請參閱[從多個容器複製](solution-template-copy-files-multiple-containers.md)檔案、將[資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md)，或[使用控制資料表](solution-template-bulk-copy-with-control-table.md)解決方案範本作為一般範例進行大量複製。
+    - 否則，請考慮將單個大型資料集拆分為多個較小的資料集，並讓這些複製作業同時運行，每個資料處理部分。 您可以使用查找/獲取中繼資料 = 每個內容 = 複製來執行此操作。 請參閱[從多個容器複製檔](solution-template-copy-files-multiple-containers.md)、[將資料從 Amazon S3 遷移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解決方案範本進行批量複製作為一般示例。
 
-- 「**傳輸-寫入接收」有很長的工作持續時間**：
+- **"轉移-寫作到水槽"經歷了漫長的工作時間**：
 
-  - 採用連接器特定的資料載入最佳做法（如果適用）。 例如，將資料複製到[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) （先前為 SQL DW）時，請使用 POLYBASE 或 COPY 語句。 
+  - 如果適用，採用特定于連接器的資料載入最佳做法。 例如，將資料複製到[Azure 突觸分析](connector-azure-sql-data-warehouse.md)（以前的 SQL DW）時，請使用 PolyBase 或 COPY 語句。 
 
-  - 檢查自我裝載 IR 機器是否有低延遲連線到接收資料存放區。 如果您的接收器位於 Azure 中，您可以使用[此工具](http://www.azurespeed.com/Azure/Latency)來檢查從自我裝載 IR 機器到 azure 區域的延遲，越不會越好。
+  - 檢查自承載的 IR 電腦是否具有連接到接收器資料存儲的低延遲。 如果接收器位於 Azure 中，則可以使用[此工具](http://www.azurespeed.com/Azure/Latency)檢查從自承載的 IR 電腦到 Azure 區域的延遲，越少越好。
 
-  - 檢查自我裝載 IR 機器是否有足夠的輸出頻寬，以有效率地傳輸和寫入資料。 如果您的接收資料存放區位於 Azure 中，您可以使用[此工具](https://www.azurespeed.com/Azure/UploadLargeFile)來檢查上傳速度。
+  - 檢查自承載的 IR 電腦是否有足夠的出站頻寬來高效地傳輸和寫入資料。 如果接收器資料存儲在 Azure 中，則可以使用[此工具](https://www.azurespeed.com/Azure/UploadLargeFile)檢查上載速度。
 
-  - 檢查 Azure 入口網站中自我裝載 IR 的 CPU 和記憶體使用量趨勢，> 您的資料處理站-> 總覽頁面。 如果 CPU 使用率很高或可用記憶體不足，請考慮相應[增加/相應放大 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) 。
+  - 檢查 Azure 門戶中的自託管 IR 的 CPU 和記憶體使用趨勢 ->資料工廠 -> 概覽頁。 如果 CPU 使用率高或可用記憶體不足，請考慮[向上/縮小 IR。](create-self-hosted-integration-runtime.md#high-availability-and-scalability)
 
-  - 檢查 ADF 是否在接收時報告任何節流錯誤，或您的資料存放區是否在高使用率之下。 若是如此，請減少資料存放區上的工作負載，或嘗試與您的資料存放區系統管理員聯繫，以增加節流限制或可用的資源。
+  - 檢查 ADF 是否報告接收器上有任何限制錯誤，或者您的資料存儲是否被高利用率。 如果是這樣，請減少資料存儲上的工作負載，或者嘗試聯繫資料存儲管理員以增加限制限制或可用資源。
 
-  - 請考慮逐漸微調[平行複本](copy-activity-performance-features.md)，請注意，太多平行複本可能會對效能造成負面影響。
+  - 考慮逐漸調整[並行副本](copy-activity-performance-features.md)，請注意，太多的並行副本甚至可能損害性能。
 
 ## <a name="other-references"></a>其他參考資料
 
 以下是幾個支援的資料存放區所適用的效能監視及調整參考：
 
-* Azure Blob 儲存體： blob[儲存體的擴充性和效能目標](../storage/blobs/scalability-targets.md)，以及[Blob 儲存體的效能和擴充性檢查清單](../storage/blobs/storage-performance-checklist.md)。
-* Azure 資料表儲存體：資料表儲存體[的擴充性和效能目標](../storage/tables/scalability-targets.md)，以及[資料表儲存體的效能和擴充性檢查清單](../storage/tables/storage-performance-checklist.md)。
-* Azure SQL Database：您可以[監視效能](../sql-database/sql-database-single-database-monitor.md)，並檢查資料庫交易單位（DTU）百分比。
-* Azure SQL 資料倉儲：其功能會以資料倉儲單位（Dwu）來測量。 請參閱[管理 Azure SQL 資料倉儲中的計算能力（總覽）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
-* Azure Cosmos DB： [Azure Cosmos DB 中的效能層級](../cosmos-db/performance-levels.md)。
-* 內部部署 SQL Server：[效能的監視和微調](https://msdn.microsoft.com/library/ms189081.aspx)。
-* 內部部署檔案伺服器：[檔案伺服器的效能微調](https://msdn.microsoft.com/library/dn567661.aspx)。
+* Azure Blob 存儲[：Blob 存儲的可伸縮性和性能目標](../storage/blobs/scalability-targets.md)，[以及 Blob 存儲的性能以及可伸縮性檢查表](../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存儲：[表存儲的可伸縮性和性能目標](../storage/tables/scalability-targets.md)表[存儲的性能以及可伸縮性檢查表](../storage/tables/storage-performance-checklist.md)。
+* Azure SQL 資料庫：您可以[監視性能](../sql-database/sql-database-single-database-monitor.md)並檢查資料庫事務單元 （DTU） 百分比。
+* Azure SQL 資料倉儲：其功能以資料倉儲單位 （DWU） 度量。 請參閱[在 Azure SQL 資料倉儲（概述）中管理計算能力](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure 宇宙[DB：Azure 宇宙 DB 中的性能級別](../cosmos-db/performance-levels.md)。
+* 本地 SQL 伺服器：[監視和調整性能](https://msdn.microsoft.com/library/ms189081.aspx)。
+* 本地檔案伺服器：[檔案伺服器的性能調優](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動概觀](copy-activity-overview.md)
-- [複製活動效能和擴充性指南](copy-activity-performance.md)
-- [複製活動效能優化功能](copy-activity-performance-features.md)
-- [使用 Azure Data Factory 將資料從您的 data lake 或資料倉儲遷移至 Azure](data-migration-guidance-overview.md)
-- [將資料從 Amazon S3 遷移至 Azure 儲存體](data-migration-guidance-s3-azure-storage.md)
+- [複製活動概述](copy-activity-overview.md)
+- [複製活動性能和可伸縮性指南](copy-activity-performance.md)
+- [複製活動性能優化功能](copy-activity-performance-features.md)
+- [使用 Azure 資料工廠將資料從資料湖或資料倉儲遷移到 Azure](data-migration-guidance-overview.md)
+- [將資料從 Amazon S3 遷移到 Azure 儲存體](data-migration-guidance-s3-azure-storage.md)

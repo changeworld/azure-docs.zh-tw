@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271001"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
@@ -39,10 +39,10 @@ ms.locfileid: "79271001"
 **步驟 1** - 憑證授權單位 (CA) 提供者  
 -   以 IT 管理員、PKI 管理員或任何使用 CA 管理帳戶之人的身分上線，針對指定的公司 (例如 Contoso) 是使用 Key Vault 憑證的先決條件。  
     下列 CA 是使用 Key Vault 的目前合作提供者：  
-    -   DigiCert-Key Vault 使用 DigiCert 提供 OV 的 TLS/SSL 憑證。  
-    -   透過 globalsign-Key Vault 使用透過 globalsign 提供 OV 的 TLS/SSL 憑證。  
+    -   DigiCert - 金鑰保存庫提供帶有 DigiCert 的 OV TLS/SSL 憑證。  
+    -   全域標誌 - 金鑰保存庫提供具有全域標誌的 OV TLS/SSL 憑證。  
 
-**步驟 2** -CA 提供者的帳戶管理員會建立認證，供 Key Vault 用來透過 Key Vault 註冊、更新及使用 TLS/SSL 憑證。
+**步驟 2** - CA 供應商的帳戶管理員創建憑據，供金鑰保存庫通過金鑰保存庫註冊、續訂和使用 TLS/SSL 憑證。
 
 **步驟 3** - Contoso 管理員與擁有憑證的 Contoso 員工 (Key Vault 使用者) (根據 CA 而定) 可以向管理員取得憑證或者直接向 CD 從帳戶取得憑證。  
 
@@ -53,7 +53,7 @@ ms.locfileid: "79271001"
 
     如需使用 CA 提供者建立帳戶的詳細資訊，請參閱 [Key Vault 部落格](https://aka.ms/kvcertsblog)上的相關文章。  
 
-**步驟 3.1** - 設定[憑證連絡人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)以進行通知。 這是 Key Vault 使用者的連絡人。 Key Vault 不會強制執行此步驟。  
+**步驟 3.1** - 為通知設置[證書連絡人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 這是 Key Vault 使用者的連絡人。 Key Vault 不會強制執行此步驟。  
 
 附註 - 透過步驟 3.1 的這個流程是一次性作業。  
 
@@ -63,9 +63,9 @@ ms.locfileid: "79271001"
 
 **步驟 4** - 下列描述對應至上圖中的綠色編號步驟。  
   (1) - 在上圖中，您的應用程式即將建立憑證，內部流程始於在金鑰保存庫中建立金鑰。  
-  （2）-Key Vault 會將 TLS/SSL 憑證要求傳送給 CA。  
+  （2） - 金鑰保存庫向 CA 發送 TLS/SSL 憑證請求。  
   (3) - 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 Key Vault 收到含 x509 憑證的 CA 回應時，憑證建立工作即完成。  
-  （4）-CA 會使用 X509 TLS/SSL 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。  
+  （4） - CA 使用 X509 TLS/SSL 憑證回應金鑰保存庫的 TLS/SSL 憑證請求。  
   (5) - 您的新憑證建立是透過合併 CA 的 X509 憑證而完成。  
 
   Key Vault 使用者 – 指定原則來建立憑證
@@ -98,16 +98,16 @@ ms.locfileid: "79271001"
 
 -   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如 無簽發者資訊  
 
-### <a name="formats-of-import-we-support"></a>我們支援的匯入格式
-我們支援下列 PEM 檔案格式的匯入類型。 單一 PEM 編碼的憑證，連同 PKCS # 8 編碼、未加密的金鑰，其中包含下列各項
+### <a name="formats-of-import-we-support"></a>我們支援的導入格式
+我們支援以下類型的 PEM 檔案格式導入。 單個 PEM 編碼證書以及 PKCS_8 編碼的未加密金鑰，具有以下內容
 
------開始憑證----------結束憑證-----
+-----開始證書----- -----結束證書-----
 
------開始私密金鑰----------結束私密金鑰-----
+-----BEGIN私密金鑰----- -----結束私密金鑰-----
 
-在憑證合併時，我們支援2個 PEM 格式。 您可以合併單一 PKCS # 8 編碼憑證或 base64 編碼的 P7B 檔案。 -----開始憑證----------結束憑證-----
+在證書合併時，我們支援 2 種基於 PEM 的格式。 您可以合併單個 PKCS_8 編碼證書或 base64 編碼 P7B 檔。 -----開始證書----- -----結束證書-----
 
-我們目前不支援 PEM 格式的 EC 按鍵。
+我們目前不支援 PEM 格式的 EC 金鑰。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>使用未與 Key Vault 合作的 CA 建立憑證  
  這種方法允許與 Key Vault 合作提供者以外的其他 CA 合作，這表示您的組織可以與它選擇的 CA 合作。  
@@ -128,4 +128,4 @@ ms.locfileid: "79271001"
 
 ## <a name="see-also"></a>另請參閱
 
-- [關於金鑰、密碼與憑證](about-keys-secrets-and-certificates.md)
+- [關於金鑰、機密和證書](about-keys-secrets-and-certificates.md)

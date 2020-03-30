@@ -1,107 +1,107 @@
 ---
-title: Azure Kubernetes Service 中 Windows Server 節點集區的限制（AKS）
-description: 瞭解在 Azure Kubernetes Service 中執行 Windows Server 節點集區和應用程式工作負載時的已知限制（AKS）
+title: Azure 庫伯奈斯服務 （AKS） 中 Windows 伺服器節點池的限制
+description: 在 Azure Kubernetes 服務 （AKS） 中運行 Windows Server 節點池和應用程式工作負載時，瞭解已知的限制
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 12/18/2019
+ms.openlocfilehash: f4e9f63d0da1797b92c123034e6775f5b07bd4b3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298167"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366402"
 ---
-# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中 Windows Server 節點集區和應用程式工作負載目前的限制（AKS）
+# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure 庫伯奈斯服務 （AKS） 中 Windows 伺服器節點池和應用程式工作負載的當前限制
 
-在 Azure Kubernetes Service （AKS）中，您可以建立執行 Windows Server 的節點集區，做為節點上的客體作業系統。 這些節點可以執行原生 Windows 容器應用程式，例如建立在 .NET Framework 上的。 因為 Linux 和 Windows OS 如何提供容器支援的主要差異，所以某些常見的 Kubernetes 和 pod 相關功能目前不適用於 Windows 節點集區。
+在 Azure 庫伯奈斯服務 （AKS） 中，您可以創建一個節點池，該節點池在節點上作為客體作業系統運行 Windows 伺服器。 這些節點可以運行本機 Windows 容器應用程式，例如在 .NET 框架上構建的應用程式。 由於 Linux 和 Windows 作業系統在提供容器支援的方式上存在重大差異，因此一些常見的 Kubernetes 和 pod 相關功能目前不適用於 Windows 節點池。
 
-本文概述 AKS 中 Windows Server 節點的一些限制和 OS 概念。 適用于 Windows Server 的節點集區目前為預覽狀態。
+本文概述了 AKS 中 Windows 伺服器節點的一些限制和作業系統概念。 Windows 伺服器的節點池當前處於預覽狀態。
 
 > [!IMPORTANT]
-> AKS 預覽功能是自助加入宣告。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需其他資訊，請參閱下列支援文章：
+> AKS 預覽功能是自助服務加入宣告。 預覽版提供"根據"和"可用"，不在服務等級協定和有限保修中。 在盡力的基礎上，客戶支援部分覆蓋了 AKS 預覽。 因此，這些功能不適合生產用途。 有關詳細資訊，請參閱以下支援文章：
 >
-> * [AKS 支援原則][aks-support-policies]
+> * [AKS 支援策略][aks-support-policies]
 > * [Azure 支援常見問題集][aks-faq]
 
 ## <a name="which-windows-operating-systems-are-supported"></a>支援哪些 Windows 作業系統？
 
-AKS 會使用 Windows Server 2019 做為主機作業系統版本，而且只支援進程隔離。 不支援使用其他 Windows Server 版本建立的容器映射。 [Windows 容器版本相容性][windows-container-compat]
+AKS 使用 Windows Server 2019 作為主機作業系統版本，僅支援進程隔離。 不支援使用其他 Windows 伺服器版本生成的容器映射。 [Windows 容器版本相容性][windows-container-compat]
 
-## <a name="is-kubernetes-different-on-windows-and-linux"></a>Windows 和 Linux 上的 Kubernetes 不同嗎？
+## <a name="is-kubernetes-different-on-windows-and-linux"></a>庫伯內特在Windows和Linux上有什麼不同嗎？
 
-Windows Server 節點集區支援包含在 Kubernetes 專案中屬於上游 Windows Server 的一些限制。 這些限制並不是 AKS 特有的。 如需有關此 Kubernetes 中 Windows Server 之上游支援的詳細資訊，請參閱 Kubernetes 專案中的 < [Kubernetes 中的 windows 支援簡介][intro-windows]檔中的[支援的功能和限制][upstream-limitations]一節。
+視窗伺服器節點池支援包括一些限制，這些限制是 Kubernetes 專案中上游 Windows Server 的一部分。 這些限制並非特定于 AKS。 有關庫伯內斯中 Windows 伺服器的此上游支援的詳細資訊，請參閱[Kubernetes 專案中 Kubernetes][intro-windows]文檔中支援 Windows 支援簡介的功能[和限制][upstream-limitations]部分。
 
-Kubernetes 在過去是以 Linux 為重點。 上游[Kubernetes.io][kubernetes]網站中使用的許多範例都是供 Linux 節點使用。 當您建立使用 Windows Server 容器的部署時，適用于 OS 層級的下列考慮事項：
+庫伯內斯在歷史上以Linux為中心。 上游[Kubernetes.io][kubernetes]網站中使用的許多示例都用於 Linux 節點。 創建使用 Windows Server 容器的部署時，作業系統級別的以下注意事項適用：
 
-- 身分**識別**-Linux 會依照整數使用者識別碼（UID）來識別使用者。 使用者也會有用來登入的英數位元使用者名稱，而 Linux 會將其轉譯為使用者的 UID。 同樣地，Linux 會以整數群組識別碼（GID）識別使用者群組，並將組名轉譯成其對應的 GID。
-    - Windows Server 使用較大的二進位安全識別碼（SID），儲存在 Windows 安全性存取管理員（SAM）資料庫中。 此資料庫不會在主機與容器之間共用，或在容器之間共用。
-- 檔案**許可權**-Windows Server 使用以 sid 為基礎的存取控制清單，而不是許可權和 UID + GID 的位元遮罩
-- 檔案**路徑**-Windows Server 上的慣例是使用 \，而不是/。
-    - 在 pod 規格中，載入磁片區，為 Windows Server 容器指定正確的路徑。 例如，不是 Linux 容器中 */mnt/volume*的掛接點，而是指定磁碟機號和位置（例如 */K/Volume* ）來掛接為*K：* 磁片磁碟機。
+- **標識**- Linux 通過整數使用者識別碼 （UID） 標識使用者。 使用者還有用於登錄的字母數位使用者名，Linux 將該使用者名轉換為使用者的 UID。 同樣，Linux 通過整陣列識別碼 （GID） 標識使用者組，並將組名稱轉換為相應的 GID。
+    - Windows 伺服器使用存儲在 Windows 安全訪問管理器 （SAM） 資料庫中的較大二進位安全識別碼 （SID）。 此資料庫不會在主機和容器之間或容器之間共用。
+- **檔許可權**- Windows 伺服器使用基於 S ID 的存取控制清單，而不是許可權和 UID_GID 的位元遮罩
+- **檔路徑**- Windows 伺服器上的約定是使用 * 而不是 /。
+    - 在裝載卷的窗格規範中，正確指定 Windows Server 容器的路徑。 例如，在 Linux 容器中指定磁碟機號和位置（如 */K/Volume）* 以裝載為*K：* 磁碟機，而不是 Linux 容器中的 */mnt/卷*的裝載點。
 
 ## <a name="what-kind-of-disks-are-supported-for-windows"></a>Windows 支援哪種磁片？
 
-Azure 磁片和 Azure 檔案儲存體是支援的磁片區類型，以 Windows Server 容器中的 NTFS 磁片區來存取。
+Azure 磁片和 Azure 檔是受支援的卷類型，在 Windows Server 容器中作為 NTFS 卷訪問。
 
-## <a name="can-i-run-windows-only-clusters-in-aks"></a>我可以在 AKS 中執行僅限 Windows 的叢集嗎？
+## <a name="can-i-run-windows-only-clusters-in-aks"></a>是否可以僅在 AKS 中運行 Windows 群集？
 
-AKS 叢集中的主要節點（控制平面）是藉由 AKS 服務來裝載，而您不會公開至裝載主要元件之節點的作業系統。 所有 AKS 叢集都是使用預設的第一個節點集區（以 Linux 為基礎）來建立。 此節點集區包含叢集運作所需的系統服務。 建議您在第一個節點集區中至少執行兩個節點，以確保叢集的可靠性，以及執行叢集作業的能力。 除非 AKS 叢集本身已刪除，否則無法刪除第一個以 Linux 為基礎的節點集區。
+AKS 群集中的主節點（控制平面）由 AKS 服務託管，您不會接觸到託管主元件的節點的作業系統。 所有 AKS 群集都使用預設的第一個節點池創建，該節點池基於 Linux。 此節點池包含群集正常運行所需的系統服務。 建議在第一個節點池中至少運行兩個節點，以確保群集的可靠性和進行群集操作的能力。 除非 AKS 群集本身被刪除，否則無法刪除第一個基於 Linux 的節點池。
 
 ## <a name="what-network-plug-ins-are-supported"></a>支援哪些網路外掛程式？
 
-具有 Windows 節點集區的 AKS 叢集必須使用 Azure CNI （advanced）網路模型。 不支援 Kubenet （基本）網路功能。 如需網路模型差異的詳細資訊，請參閱[AKS 中應用程式的網路概念][azure-network-models]。 -Azure CNI 網路模型需要額外的 IP 位址管理規劃和考慮。 如需如何規劃和執行 Azure CNI 的詳細資訊，請參閱[在 AKS 中設定 AZURE CNI 網路][configure-azure-cni]。
+具有 Windows 節點池的 AKS 群集必須使用 Azure CNI（高級）網路模型。 不支援 Kubenet（基本）網路。 有關網路模型差異的詳細資訊，請參閱[AKS 中應用程式的網路概念][azure-network-models]。 - Azure CNI 網路模型需要額外的 IP 位址管理規劃和注意事項。 有關如何規劃和實現 Azure CNI 的詳細資訊，請參閱在[AKS 中配置 Azure CNI 網路][configure-azure-cni]。
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>我可以變更最大值。每個節點的 pod 數目？
+## <a name="can-i-change-the-max--of-pods-per-node"></a>我可以更改最大值嗎？每個節點的窗格數？
 
-目前需要設定為最多30個 pod，以確保叢集的可靠性。
+是。 有關可用的含義和選項，請參閱[最大窗格數][maximum-number-of-pods]。
 
 ## <a name="how-do-patch-my-windows-nodes"></a>如何修補我的 Windows 節點？
 
-AKS 中的 Windows Server 節點必須*升級*，才能取得最新的修補程式修正和更新。 AKS 中的節點上未啟用 Windows 更新。 一旦有可用的修補程式，AKS 就會發行新的節點集區映射，客戶必須負責升級節點集區，以保持最新的修補程式和修補程式。 這也適用于所使用的 Kubernetes 版本。 AKS 版本資訊會指出有新版本可用的時間。 如需有關升級 Windows Server 節點集區的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+必須*升級*AKS 中的 Windows 伺服器節點以獲取最新的修補程式和更新。 在 AKS 中的節點上未啟用 Windows 更新。 AKS 在修補程式可用後立即發佈新的節點池映射，客戶有責任升級節點池以在修補程式和修補程式上保持最新狀態。 對於正在使用的庫伯內斯版本也是如此。 AKS 版本資訊將指示新版本何時可用。 有關升級 Windows 伺服器節點池的詳細資訊，請參閱[升級 AKS 中的節點池][nodepool-upgrade]。
 
 > [!NOTE]
-> 只有在升級節點集區之前已執行叢集升級（控制平面升級）時，才會使用更新的 Windows Server 映射
+> 僅當在升級節點池之前執行群集升級（控制平面升級）時，才會使用更新的 Windows Server 映射
 >
 
-## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>如何? 輪替 Windows 節點集區的服務主體嗎？
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>如何旋轉 Windows 節點池的服務主體？
 
-在預覽期間，Windows 節點集區不支援服務主體輪替做為預覽限制。 若要更新服務主體，請建立新的 Windows 節點集區，並將您的 pod 從舊的集區遷移至新的集區。 完成之後，請刪除較舊的節點集區。
+在預覽期間，Windows 節點池不支援服務主體旋轉作為預覽限制。 為了更新服務主體，請創建新的 Windows 節點池，並將您的窗格從較舊的池遷移到新池。 完成此任務後，刪除較舊的節點池。
 
-## <a name="how-many-node-pools-can-i-create"></a>我可以建立多少個節點集區？
+## <a name="how-many-node-pools-can-i-create"></a>我可以創建多少個節點池？
 
-AKS 叢集最多可以有10個節點集區。 在這些節點集區中，您最多可以有1000個節點。 [節點集區限制][nodepool-limitations]。
+AKS 群集最多可以有 10 個節點池。 在這些節點池中最多可以有 1000 個節點。 [節點池限制][nodepool-limitations]。
 
-## <a name="what-can-i-name-my-windows-node-pools"></a>我可以將 Windows 節點集區命名為什麼？
+## <a name="what-can-i-name-my-windows-node-pools"></a>我可以為 Windows 節點池命名什麼？
 
-您必須將名稱保留最多6（六個）個字元。 這是目前的 AKS 限制。
+您必須將名稱保留為最多 6 （6） 個字元。 這是 AKS 的當前限制。
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Windows 節點支援所有功能嗎？
 
-Windows 節點目前不支援網路原則和 kubenet。 
+Windows 節點當前不支援網路原則和 kubenet。 
 
-## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>我可以在 Windows 節點上執行輸入控制器嗎？
+## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>是否可以在 Windows 節點上運行入口控制器？
 
-是，支援 Windows Server 容器的輸入控制器可以在 AKS 的 Windows 節點上執行。
+是的，支援 Windows Server 容器的入口控制器可以在 AKS 中的 Windows 節點上運行。
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>我可以搭配 Windows 節點使用 Azure Dev Spaces 嗎？
+## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>是否可以將 Azure 開發空間與 Windows 節點一起使用？
 
-Azure Dev Spaces 目前僅適用于以 Linux 為基礎的節點集區。
+Azure 開發人員空間當前僅適用于基於 Linux 的節點池。
 
-## <a name="can-my-windows-server-containers-use-gmsa"></a>我的 Windows Server 容器是否可以使用 gMSA？
+## <a name="can-my-windows-server-containers-use-gmsa"></a>我的 Windows 伺服器容器可以使用 gMSA 嗎？
 
-AKS 目前無法使用群組受管理的服務帳戶（gMSA）支援。
+組託管服務帳戶 （gMSA） 支援當前不在 AKS 中。
 
-## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>我可以將 Azure 監視器用於具有 Windows 節點和容器的容器嗎？
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>是否可以將 Azure 監視器用於具有 Windows 節點和容器的容器？
 
-是的，不過 Azure 監視器不會從 Windows 容器收集記錄（stdout）。 您仍然可以從 Windows 容器附加到 stdout 記錄的即時串流。
+可以，但是 Azure 監視器不會從 Windows 容器收集日誌（stdout）。 您仍然可以從 Windows 容器附加到固定日誌的即時流。
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>如果我需要不支援的功能，該怎麼辦？
 
-我們致力於將您需要的所有功能帶入 AKS，但如果您遇到了一些差距，開放原始碼的上游[AKS 引擎][aks-engine]專案提供了一種簡單且完全可自訂的方式，可在 Azure 中執行 Kubernetes，包括 Windows 支援。 請務必查看我們推出[AKS 藍圖][aks-roadmap]的功能藍圖。
+我們努力將您需要的所有功能帶到 AKS 中的 Windows，但如果您確實遇到差距，開源的上游[aks 引擎][aks-engine]專案提供了一種簡單且完全可自訂的方式在 Azure 中運行 Kubernetes，包括 Windows 支援。 請務必查看我們的[AKS 路線圖功能路線圖][aks-roadmap]。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始在 AKS 中使用 Windows Server 容器，請[在 AKS 中建立執行 Windows server 的節點集][windows-node-cli]區。
+要開始在 AKS 中的 Windows 伺服器容器，[請創建一個在 AKS 中運行 Windows 伺服器的節點池][windows-node-cli]。
 
 <!-- LINKS - external -->
 [kubernetes]: https://kubernetes.io
@@ -121,3 +121,4 @@ AKS 目前無法使用群組受管理的服務帳戶（gMSA）支援。
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
+[maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

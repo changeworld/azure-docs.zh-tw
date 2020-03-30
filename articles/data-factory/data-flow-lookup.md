@@ -1,77 +1,93 @@
 ---
-title: 對應資料流程查閱轉換
-description: Azure Data Factory 對應的資料流程查閱轉換
+title: 映射資料流程的查找轉換
+description: 在映射資料流程時使用查找轉換從其他源參考資料。
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240392"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory 對應的資料流程查閱轉換
+# <a name="lookup-transformation-in-mapping-data-flow"></a>映射資料流程的查找轉換
 
-使用查閱以將另一個來源的參考資料新增至資料流程。 查閱轉換需要定義的來源，其指向您的參考資料表且會比對索引鍵欄位。
+使用查找轉換引用來自資料流程中另一個源的資料。 查找轉換將列從匹配的資料追加到來源資料。
+
+查找轉換類似于左外部聯結。 主流中的所有行都將存在於輸出流中，並包含來自查找流的其他列。 
+
+## <a name="configuration"></a>組態
 
 ![查閱轉換](media/data-flow/lookup1.png "查閱")
 
-選取您想要在內送資料流欄位與參考來源欄位之間比對的索引鍵欄位。 您必須先在資料流程設計畫布上建立新的來源，以作為查閱的右端。
+**主流：** 傳入的資料流程。 此流等效于聯接的左側。
 
-當找到相符項目時，來自參考來源的結果資料列和資料行將會新增到資料流程中。 您可以選擇有興趣且希望包含在資料流結尾接收 (Sink) 中的欄位。 或者，在您的查閱之後使用 Select 轉換來剪除欄位清單，只保留您想要保留的兩個數據流中的欄位。
+**查找流：** 追加到主流的資料。 添加哪些資料由查找條件決定。 此流等效于聯接的右側。
 
-「查閱」轉換會執行左方外部聯結的對等。 因此，您會看到左側來源中的所有資料列都與右側的相符專案結合。 如果您的查閱中有多個相符的值，或如果您想要自訂查閱運算式，則最好切換至聯結轉換，並使用交叉聯結。 這可避免執行任何可能的笛卡兒產品錯誤。
+**匹配多行：** 如果啟用，主流中具有多個匹配項的行將返回多行。 否則，將僅根據"匹配"條件返回一行。
 
-## <a name="match--no-match"></a>符合/不符合
+**匹配：** 僅當啟用了"匹配多行"時，才可見。 選擇是匹配任何行、第一個匹配項還是最後一個匹配項。 建議任何行執行最快。 如果選擇了第一行或最後一行，則需要指定排序條件。
 
-在您的查閱轉換之後，您可以使用運算式函式 `isMatch()`，將後續的轉換用來檢查每個相符資料列的結果，以根據查閱是否導致資料列相符而在邏輯中進行進一步的選擇。
+**查找條件：** 選擇要匹配的列。 如果滿足相等條件，則行將被視為匹配項。 懸停並選擇"計算列"以使用[資料流程運算式語言](data-flow-expression-functions.md)提取值。
 
-![查閱模式](media/data-flow/lookup111.png "查閱模式")
+查找轉換僅支援相等匹配。 要自訂查找運算式以包括其他運算子（如大於，建議[在聯接轉換中使用交叉聯接](data-flow-join.md#custom-cross-join)）。 交叉聯接將避免執行時可能出現的點菜產品錯誤。
 
-使用查閱轉換之後，您可以在 ```isMatch()``` 函數上加入條件式分割轉換分割。 在上述範例中，比對資料列會通過最上方的資料流程，而不符合的資料列會流經 ```NoMatch``` 資料流程。
+輸出資料中包含來自兩個流的所有列。 要刪除重複列或不需要的列，請在查找轉換後添加[選擇轉換](data-flow-select.md)。 列也可以在接收器轉換中刪除或重命名。
 
-## <a name="first-or-last-value"></a>第一個或最後一個值
+## <a name="analyzing-matched-rows"></a>分析匹配的行
 
-「查閱」轉換會實作為左方外部聯結。 當您的查閱有多個相符專案時，您可能會想要藉由挑選第一個相符的資料列、最後一個相符專案或任何亂數據列來減少多個符合的資料列。
+查找轉換後，該函數`isMatch()`可用於查看查找是否匹配單個行。
 
-### <a name="option-1"></a>選項 1
+![查找模式](media/data-flow/lookup111.png "查找模式")
 
-![單一資料列查閱](media/data-flow/singlerowlookup.png "單一資料列查閱")
+此模式的一個示例是使用條件拆分轉換在`isMatch()`函數上拆分。 在上面的示例中，匹配的行通過頂部流，不匹配的行流通過```NoMatch```流。
 
-* 比對多個資料列：將它保留空白會傳回單一資料列相符
-* 符合時間：選取 [第一個]、[最後一個] 或 [任何相符]
-* 排序條件：如果您選取 [第一個] 或 [最後一個]，ADF 會要求您的資料進行排序，以便在第一個和最後一個後面有邏輯
+## <a name="testing-lookup-conditions"></a>測試查找條件
 
-> [!NOTE]
-> 如果您需要控制要從查閱中傳回哪一個值，請只在您的單一資料列選取器上使用第一個或最後一個選項。 使用 "any" 或多重資料列查閱的執行速度會更快。
+在偵錯模式下使用資料預覽測試查找轉換時，請使用一小組已知資料。 從大型資料集對行進行採樣時，無法預測將讀取哪些行和鍵進行測試。 結果是非確定性的，這意味著您的聯結條件可能不會返回任何匹配項。
 
-### <a name="option-2"></a>選項 2
+## <a name="broadcast-optimization"></a>廣播優化
 
-您也可以在查閱之後，使用「匯總」轉換來執行此動作。 在此情況下，名為 ```PickFirst``` 的匯總轉換會用來從查閱相符專案中挑選第一個值。
+在 Azure 資料工廠中，映射資料流程在橫向擴展的 Spark 環境中執行。 如果資料集可以適合輔助節點記憶體空間，則可以通過啟用廣播來優化查找性能。
 
-![查閱匯總](media/data-flow/lookup333.png "查閱匯總")
+![廣播加入](media/data-flow/broadcast.png "廣播加入")
 
-![先查閱](media/data-flow/lookup444.png "先查閱")
+啟用廣播會將整個資料集推送到記憶體中。 對於僅包含幾千行的小型資料集，廣播可以大大提高查找性能。 對於大型資料集，此選項可能導致記憶體不足異常。
 
-## <a name="optimizations"></a>最佳化
+## <a name="data-flow-script"></a>資料流程指令碼
 
-在 Data Factory 中，資料流程會在相應放大的 Spark 環境中執行。 如果您的資料集可以放入背景工作節點記憶體空間，我們可以優化您的查閱效能。
+### <a name="syntax"></a>語法
 
-![廣播聯結](media/data-flow/broadcast.png "廣播聯結")
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>範例
 
-### <a name="broadcast-join"></a>廣播聯結
+![查閱轉換](media/data-flow/lookup-dsl-example.png "查閱")
 
-選取 [左側和/或右側廣播聯結]，要求 ADF 將整個資料集從查閱關聯性的任一邊推送至記憶體中。 對於較小的資料集，這可大幅改善您的查閱效能。
+上述查找配置的資料流程腳本位於下面的程式碼片段中。
 
-### <a name="data-partitioning"></a>資料分割
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+後續步驟
 
-您也可以在「查閱」轉換的 [優化] 索引標籤上選取 [設定分割]，以指定資料的分割，以建立可在每個背景工作的記憶體中容納較佳的資料集。
-
-## <a name="next-steps"></a>後續步驟
-
-* [聯結](data-flow-join.md)和[存在](data-flow-exists.md)轉換會在 ADF 對應資料流程中執行類似的工作。 接下來請看一下這些轉換。
-* 使用具有 ```isMatch()``` 的[條件式分割](data-flow-conditional-split.md)來分割相符和不相符值的資料列
+* [聯接](data-flow-join.md)和[存在](data-flow-exists.md)轉換都採用多個流輸入
+* 使用[條件拆分轉換](data-flow-conditional-split.md)與```isMatch()```在匹配值和非匹配值上拆分行

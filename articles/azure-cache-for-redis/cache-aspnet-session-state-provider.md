@@ -1,17 +1,17 @@
 ---
 title: 快取 ASP.NET 工作階段狀態提供者
-description: 瞭解如何使用 Azure Cache for Redis 將 ASP.NET 會話狀態儲存在記憶體中。
+description: 瞭解如何使用 Redis 的 Azure 緩存存儲ASP.NET會話狀態。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 5c9af862ca2df3d812384c0f4ab660730aece872
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530269"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者
 
@@ -21,7 +21,7 @@ Azure Cache for Redis 提供工作階段狀態提供者，可讓您用來將記�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>將 ASP.NET 工作階段狀態儲存在快取中
 
-若要在 Visual Studio 中使用「Azure Cache for Redis 工作階段狀態」NuGet 套件來設定用戶端應用程式，請從 [工具] 功能表中，依序按一下 [NuGet 套件管理員] 和 [套件管理員主控台]。
+若要在 Visual Studio 中使用「Azure Cache for Redis 工作階段狀態」NuGet 套件來設定用戶端應用程式，請從 [工具]**** 功能表中，依序按一下 [NuGet 套件管理員]**** 和 [套件管理員主控台]****。
 
 從 `Package Manager Console` 視窗執行下列命令。
     
@@ -125,6 +125,11 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 * 分散式記憶體中工作階段狀態提供者，例如 Azure Cache for Redis 工作階段狀態提供者 – 此提供者可讓您同時兼顧兩方面。 您的 Web 應用程式可擁有簡單、快速而可調整的工作階段狀態供應器。 因為此供應器會將工作階段狀態儲存在快取中，您的應用程式必須考量與分散式記憶體中快取 (例如暫時性網路失敗) 通訊時的所有相關特性。 如需使用快取的最佳作法，請參閱 Microsoft 模式和作法 [Azure 雲端應用程式設計和實作指引](https://github.com/mspnp/azure-guidance)中的[快取指引](../best-practices-caching.md)。
 
 如需工作階段狀態和其他最佳作法的相關詳細資訊，請參閱 [Web 開發最佳作法 (使用 Azure 建置實際的雲端應用程式)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)(英文)。
+
+## <a name="third-party-session-state-providers"></a>協力廠商會話狀態提供程式
+
+* [NCache](https://www.alachisoft.com/ncache/session-index.html)
+* [阿帕奇點燃](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>後續步驟
 

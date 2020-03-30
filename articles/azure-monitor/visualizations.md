@@ -5,65 +5,18 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/24/2018
-ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/17/2020
+ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274108"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535364"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
 
 圖表影像等視覺效果可協助分析監視資料，以深入鑽研問題，並找出其中的模式。 根據您所使用的工具，還可以選擇是否要與組織內外的其他使用者共用視覺效果。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="azure-dashboards"></a>Azure 儀表板
-[Azure 儀表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要儀表板設計技術。 儀表板特別適合用來提供 Azure 基礎結構和服務的單一管理平台，以利使用者迅速找出重要問題所在。
-
-![儀表板](media/visualizations/dashboard.png)
-
-### <a name="advantages"></a>優點
-- 深入整合至 Azure。 視覺效果可以釘選到多個 Azure 頁面的儀表板，包括計量瀏覽器、Log Analytics 和 Application Insights。
-- 支援計量和記錄。
-- 結合來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)，以及 Application Insights 中的[對應](app/app-map.md)和可用性的輸出。
-- 個人或共用儀表板的選項。 與 Azure [角色型驗證 (RBAC)](../role-based-access-control/overview.md) 整合。
-- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 記錄會每小時重新整理一次，並在指定的視覺效果上按一下 [重新整理] 圖示，或重新整理完整的儀表板，視需要手動重新整理選項。
-- 使用時間戳記和自訂參數以參數化計量儀表板。
-- 彈性的版面配置選項。
-- 全螢幕模式。
-
-
-### <a name="limitations"></a>限制
-- 對記錄分析視覺效果的控制有限，不支援資料表。 資料數列的總數上限為 10，包含分組在_其他_貯體下的進階資料數列。
-- 未提供對記錄圖表的自訂參數支援。
-- 記錄圖表僅限於過去 30 天。
-- 記錄圖表只能釘選到共用儀表板。
-- 沒有與儀表板資料的互動功能。
-- 內容相關的向下鑽研受限。
-
-## <a name="azure-monitor-views"></a>Azure 監視器檢視
-[Azure 監視器中的檢視](platform/view-designer.md)可讓您使用記錄資料建立自訂視覺效果。 [監視解決方案](insights/solutions.md)會使用這些視覺效果呈現收集到的資料。
-
-![檢視](media/visualizations/view.png)
-
-### <a name="advantages"></a>優點
-- 豐富的記錄資料視覺效果。
-- 可匯出和匯入檢視，以將之傳送給其他資源群組和訂用帳戶。
-- 可使用工作區和監視解決方案，整合至 Azure 監視器管理模型。
-- 提供自訂參數的[篩選條件](platform/view-designer-filters.md)。
-- 互動式，可支援多層級的向下鑽研能力 (可從一個檢視鑽研至另一個檢視)
-
-### <a name="limitations"></a>限制
-- 支援記錄，但不支援計量。
-- 沒有任何個人的檢視。 具有工作區存取權限的使用者均可使用。
-- 無自動重新整理功能。
-- 版面配置選項有限。
-- 不支援跨多個工作區和 Application Insights 應用程式進行查詢。
-- 查詢的回應大小限制為 8MB，查詢執行時間為 110 秒。
-
 
 ## <a name="workbooks"></a>活頁簿
 [活頁簿](../azure-monitor/app/usage-workbooks.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
@@ -81,6 +34,31 @@ ms.locfileid: "79274108"
 ### <a name="limitations"></a>限制
 - 無自動重新整理功能。
 - 並未提供類似儀表板的密集配置，導致活頁簿較不適合做為單一管理平台使用。 專為提供更深入的見解。
+
+
+## <a name="azure-dashboards"></a>Azure 儀表板
+[Azure 儀表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要儀表板設計技術。 儀表板特別適合用來提供 Azure 基礎結構和服務的單一管理平台，以利使用者迅速找出重要問題所在。
+
+![儀表板](media/visualizations/dashboard.png)
+
+### <a name="advantages"></a>優點
+- 深入整合至 Azure。 視覺化效果可以從多個 Azure 頁面（包括指標資源管理器、日誌分析和應用程式見解）固定到儀表板。
+- 支援計量和記錄。
+- 可結合來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)以及 Application Insights 中[對應](app/app-map.md)和可用性的輸出結果。
+- 個人或共用儀表板的選項。 與 Azure [角色型驗證 (RBAC)](../role-based-access-control/overview.md) 整合。
+- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 通過按一下給定視覺化效果上的"刷新"圖示或刷新整個儀表板，每小時記錄刷新一次，並按需使用手動刷新選項。
+- 使用時間戳記和自訂參數以參數化計量儀表板。
+- 彈性的版面配置選項。
+- 全螢幕模式。
+
+
+### <a name="limitations"></a>限制
+- 對記錄分析視覺效果的控制有限，不支援資料表。 資料數列的總數上限為 10，包含分組在_其他_貯體下的進階資料數列。
+- 未提供對記錄圖表的自訂參數支援。
+- 記錄圖表僅限於過去 30 天。
+- 記錄圖表只能釘選到共用儀表板。
+- 沒有與儀表板資料的互動功能。
+- 內容相關的向下鑽研受限。
 
 
 ## <a name="power-bi"></a>Power BI
@@ -130,11 +108,36 @@ ms.locfileid: "79274108"
 - 需要大量的工程工作。
 
 
+## <a name="azure-monitor-views"></a>Azure 監視器檢視
+
+> [!IMPORTANT]
+> 視圖正在被棄用。 有關將視圖轉換為活頁簿的指導，請參閱[Azure 監視器視圖設計器到活頁簿過渡指南](platform/view-designer-conversion-overview.md)。
+
+[Azure 監視器中的檢視](platform/view-designer.md)可讓您使用記錄資料建立自訂視覺效果。 [監視解決方案](insights/solutions.md)會使用這些視覺效果呈現收集到的資料。
+
+
+![檢視](media/visualizations/view.png)
+
+### <a name="advantages"></a>優點
+- 豐富的記錄資料視覺效果。
+- 可匯出和匯入檢視，以將之傳送給其他資源群組和訂用帳戶。
+- 可使用工作區和監視解決方案，整合至 Azure 監視器管理模型。
+- 提供自訂參數的[篩選條件](platform/view-designer-filters.md)。
+- 互動式，可支援多層級的向下鑽研能力 (可從一個檢視鑽研至另一個檢視)
+
+### <a name="limitations"></a>限制
+- 支援記錄，但不支援計量。
+- 沒有任何個人的檢視。 具有工作區存取權限的使用者均可使用。
+- 無自動重新整理功能。
+- 版面配置選項有限。
+- 不支援跨多個工作區和 Application Insights 應用程式進行查詢。
+- 查詢的回應大小限制為 8MB，查詢執行時間為 110 秒。
+
 ## <a name="next-steps"></a>後續步驟
 - 了解 [ Azure 監視器收集的資料](platform/data-platform.md)。
 - 了解 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
-- 瞭解活頁[簿](../azure-monitor/app/usage-workbooks.md)。
+- 瞭解[工作手冊](../azure-monitor/app/usage-workbooks.md)。
 - 了解[將記錄資料匯入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure 監視器資料來源外掛程式](../azure-monitor/platform/grafana-plugin.md)。
 

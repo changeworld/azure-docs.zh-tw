@@ -1,19 +1,18 @@
 ---
-title: 設定潛在客戶 |Azure Marketplace
+title: 配置客戶潛在客戶 |Azure 應用商店
 description: 在 Cloud Partner 入口網站中設定潛在客戶。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280315"
 ---
 <a name="get-customer-leads"></a>取得潛在客戶
 ==================
@@ -26,7 +25,7 @@ ms.locfileid: "73818818"
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
-1.  客戶「試用」您的供應項目。 試用產品是一個很好的機會，能讓您加快立即與潛在客戶分享商務產品的腳步，且試用過程毫無任何障礙。 所有試用產品會產生潛在客戶，這些潛在客戶有興趣進一步了解您的產品。 在 [Azure Marketplace 試用產品](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)深入了解試用產品。
+1.  客戶「試用」您的供應項目。 試用產品是一個很好的機會，能讓您加快立即與潛在客戶分享商務產品的腳步，且試用過程毫無任何障礙。 所有試用產品會產生潛在客戶，這些潛在客戶有興趣進一步了解您的產品。 詳細瞭解[Azure 應用商店測試磁碟機](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)的測試磁碟機。
 
     ![Marketplace 試用產品範例](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
  
@@ -64,7 +63,7 @@ ms.locfileid: "73818818"
 
 ### <a name="lead-source"></a>潛在客戶來源
 
-潛在客戶來源的格式為**來源**-**動作** |  **供應項目**
+潛在客戶源的格式是**源**-**操作** |  **優惠**
 
 **來源**："AzureMarketplace"、"AzurePortal"、"TestDrive"，和 "AppSource (SPZA)"
 
@@ -75,9 +74,9 @@ ms.locfileid: "73818818"
 - "Create" -- 此動作僅位於 Azure 入口網站內，並當客戶在其帳戶中購買您的供應項目時產生。
 - "StartTestDrive" -- 此動作僅限試用產品，並當客戶開始進行產品試用時產生。
 
-**供應項目**
+**提供**
 
-下列範例會顯示指派給發行者和特定供應專案的唯一識別碼： checkpoint。 r77-10sg-byol，bitnami. openedxcypress，and docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a。
+以下示例顯示分配給發行者的唯一識別碼和特定產品/服務：檢查點.check-point-r77-10sg-byol、bitnami.打開xcypress和 docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a。
 
 
 ### <a name="customer-info"></a>客戶資訊
@@ -116,4 +115,4 @@ ms.locfileid: "73818818"
 <a name="what-next"></a>接下來呢？
 ----------
 
-技術設定完成後，您應該將這些潛在客戶整合至您目前的銷售與行銷策略，以及營運流程當中。 我們非常感興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您得以成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣[提供意見反應](mailto:AzureMarketOnboard@microsoft.com)及建議，讓我們的銷售團隊能推出更成功的 Marketplace 潛在客戶，請告訴我們。
+技術設定完成後，您應該將這些潛在客戶整合至您目前的銷售與行銷策略，以及營運流程當中。 我們非常感興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您得以成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣[提供回饋](mailto:AzureMarketOnboard@microsoft.com)和建議，使您的銷售團隊在市場線索方面更加成功，請告訴我們。

@@ -1,5 +1,6 @@
 ---
 title: Azure 雲端服務 NetworkConfiguration 結構描述 | Microsoft Docs
+description: 瞭解服務設定檔的 Network 配置元素的子項目，該元素指定虛擬網路和 DNS 值。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: cacc8b1f2909965594fdf0d841963e792acf648c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529283"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 雲端服務組態 NetworkConfiguration 結構描述
 
@@ -61,7 +62,7 @@ ms.locfileid: "75385419"
 
 下表說明 `NetworkConfiguration` 元素的子項目。
 
-| 元素       | 說明 |
+| 元素       | 描述 |
 | ------------- | ----------- |
 | AccessControl | 選擇性。 指定存取雲端服務端點的規則。 存取控制名稱是由 `name` 屬性的字串所定義。 `AccessControl` 元素包含一或多個 `Rule` 元素。 可以定義多個 `AccessControl` 元素。|
 | 規則 | 選擇性。 指定 IP 位址的指定子網路範圍所應採取的動作。 規則的順序是由 `order` 屬性的字串值所定義。 規則編號愈低，優先順序愈高。 例如，可以 100、200 和 300 的順序編號來指定規則。 順序編號為 100 的規則優先於順序為 200 的規則。<br /><br /> 規則的動作是由 `action` 屬性的字串所定義。 可能的值包括：<br /><br /> -   `permit` – 指定只有指定子網路範圍的封包可與端點通訊。<br />-   `deny` – 指定拒絕存取指定子網路範圍內的端點。<br /><br /> 受規則影響的 IP 位址的子網路範圍是由 `remoteSubnet` 屬性的字串所定義。 規則的說明是由 `description` 屬性的字串所定義。|
