@@ -3,31 +3,31 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3d98be2dcc351aa88b9e126c883865079e407c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473365"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure 函數 2.x 及更高版本的 host.json 引用 
 
-> [!div class="op_single_selector" title1="選取您要使用的 Azure Functions 執行階段版本： "]
-> * [第 1 版](functions-host-json-v1.md)
-> * [第2版 +](functions-host-json.md)
+> [!div class="op_single_selector" title1="選擇正在使用的 Azure 函數運行時的版本： "]
+> * [版本 1](functions-host-json-v1.md)
+> * [版本 2*](functions-host-json.md)
 
-*host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出從 Azure Functions 執行時間2.x 版開始可用的設定。  
+*host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出了從 Azure 函數運行時的版本 2.x 開始的可用設置。  
 
 > [!NOTE]
-> 本文適用于 Azure Functions 2.x 和更新版本。  有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。
+> 本文適用于 Azure 函數 2.x 和更高版本。  有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。
 
-其他函數應用程式設定選項會在您的[應用程式設定](functions-app-settings.md)中管理（適用于已部署的應用程式）或您的[本機. 設定 json](functions-run-local.md#local-settings-file)檔案（用於本機開發）。
+其他功能應用配置選項在[應用設置](functions-app-settings.md)（針對已部署的應用）或[本地.settings.json](functions-run-local.md#local-settings-file)檔（用於本地開發）中管理。
 
-與系結相關的 json 設定會平均套用至函數應用程式中的每個函式。 
+與綁定相關的 host.json 中的配置將同樣應用於函數應用中的每個函數。 
 
 ## <a name="sample-hostjson-file"></a>範例 host.json 檔案
 
-下列2.x 版的範例*主機.* x + 已指定所有可能的選項（不包括僅供內部使用的任何選項）。
+版本 2.x_ 的以下示例*host.json*檔指定了所有可能的選項（不包括任何僅供內部使用的選項）。
 
 ```json
 {
@@ -136,75 +136,75 @@ ms.locfileid: "79276994"
 
 此設定是 [logging](#logging) 的子系。
 
-控制 Application Insights 的選項，包括[取樣選項](./functions-monitoring.md#configure-sampling)。
+控制應用程式見解的選項，包括[採樣選項](./functions-monitoring.md#configure-sampling)。
 
-如需完整的 JSON 結構，請參閱先前的[範例 host. JSON](#sample-hostjson-file)檔案。
+有關完整的 JSON 結構，請參閱前面的[示例 host.json 檔](#sample-hostjson-file)。
 
 > [!NOTE]
-> 記錄取樣可能會造成一些執行不會顯示在 Application Insights 監視器刀鋒視窗。 若要避免記錄取樣，請將 `samplingExcludedTypes: "Request"` 新增至 `applicationInsights` 值。
+> 記錄取樣可能會造成一些執行不會顯示在 Application Insights 監視器刀鋒視窗。 為了避免日誌採樣，請添加到`samplingExcludedTypes: "Request"``applicationInsights`值。
 
 | 屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
-| samplingSettings | n/a | 請參閱[applicationInsights. samplingSettings](#applicationinsightssamplingsettings)。 |
-| samplingExcludedTypes | null | 您不想要取樣的類型清單（以分號分隔）。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 系統會傳送指定類型的所有實例;未指定的類型會進行取樣。 |
-| samplingIncludedTypes | null | 您想要取樣的類型清單（以分號分隔）。空白清單表示所有類型。 在這裡所列的 `samplingExcludedTypes` 覆寫類型中列出的類型。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 系統會傳送指定類型的所有實例;未指定的類型會進行取樣。 |
-| enableLiveMetrics | true | 啟用即時計量集合。 |
-| enableDependencyTracking | true | 啟用相依性追蹤。 |
-| enablePerformanceCountersCollection | true | 啟用 Kudu 效能計數器集合。 |
-| liveMetricsInitializationDelay | 00:00:15 | 僅供內部使用。 |
-| HTTPAutoCollectionOptions | n/a | 請參閱[applicationInsights. HTTPAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)。 |
-| snapshotConfiguration | n/a | 請參閱[applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration)。 |
+| 採樣設置 | n/a | 請參閱[應用程式見解.採樣設置](#applicationinsightssamplingsettings)。 |
+| 啟用即時測量 | true | 啟用即時指標集合。 |
+| 啟用依賴跟蹤 | true | 啟用依賴項跟蹤。 |
+| 啟用效能計數器集合 | true | 啟用庫杜效能計數器集合。 |
+| 即時參數初始化延遲 | 00:00:15 | 僅供內部使用。 |
+| HTTP 自動收集選項 | n/a | 請參閱[應用程式見解.HTTP自動收集選項](#applicationinsightshttpautocollectionoptions)。 |
+| 快照配置 | n/a | 請參閱[應用程式見解.快照配置](#applicationinsightssnapshotconfiguration)。 |
 
-### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
+### <a name="applicationinsightssamplingsettings"></a>應用程式見解.採樣設置
 
 |屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 啟用或停用取樣。 | 
-| maxTelemetryItemsPerSecond | 20 | 每部伺服器主機上每秒記錄的遙測專案目標數目。 如果您的應用程式在多部主機上執行，請減少此值以維持在整體目標流量的速率。 | 
-| evaluationInterval | 01:00:00 | 重新評估目前遙測速率的間隔。 評估是以移動平均來執行。 如果您的遙測會突然暴增，您可能想要縮短此間隔。 |
-| initialSamplingPercentage| 1.0 | 取樣程式開始時所套用的初始取樣百分比，以動態方式改變百分比。 當您正在進行調試時，請勿降低價值。 |
-| samplingPercentageIncreaseTimeout | 00:00:01 | 當取樣百分比值變更時，這個屬性會決定允許 Application Insights 一次多久之後，再次引發取樣百分比來捕捉更多資料。 |
-| samplingPercentageDecreaseTimeout | 00:00:01 | 當取樣百分比值變更時，此屬性會決定允許 Application Insights 一次後，讓取樣百分比更低，以捕獲較少的資料。 |
-| minSamplingPercentage | 0.1 | 當取樣百分比不同時，此屬性會決定允許的取樣百分比下限。 |
-| maxSamplingPercentage | 0.1 | 當取樣百分比不同時，此屬性會決定允許的取樣百分比上限。 |
-| movingAverageRatio | 1.0 | 在計算移動平均時，指派給最新的值的權數。 使用等於或小於 1 的值。 較小的值會讓演算法不易受突然的變更影響。 |
+| maxTelemetryItemsPerSecond | 20 | 每台伺服器主機上每秒記錄的遙測項的目標數量。 如果應用在許多主機上運行，請減小此值以保持在總體流量目標速率內。 | 
+| 評估間隔 | 01:00:00 | 重新評估當前遙測速率的時間間隔。 評估是以移動平均來執行。 如果您的遙測會突然暴增，您可能想要縮短此間隔。 |
+| 初始採樣百分比| 1.0 | 在採樣過程開始時應用的初始採樣百分比可動態更改百分比。 在調試時不要降低值。 |
+| 採樣百分比增加超時 | 00:00:01 | 當採樣百分比值發生更改時，此屬性確定不久之後允許應用程式見解再次提高採樣百分比以捕獲更多資料。 |
+| 採樣百分比減少超時 | 00:00:01 | 當採樣百分比值發生更改時，此屬性確定不久之後允許應用程式見解再次降低採樣百分比以捕獲更少的資料。 |
+| 最小採樣百分比 | 0.1 | 由於採樣百分比不同，此屬性確定允許的最小採樣百分比。 |
+| 最大採樣百分比 | 0.1 | 由於採樣百分比不同，此屬性確定允許的最大採樣百分比。 |
+| 移動平均比率 | 1.0 | 在計算移動平均時，指派給最新的值的權數。 使用等於或小於 1 的值。 較小的值會讓演算法不易受突然的變更影響。 |
+| 排除類型 | null | 不希望採樣類型的分號分隔清單。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 傳輸指定類型的所有實例;對未指定的類型進行採樣。 |
+| 包括類型 | null | 要採樣的類型的分號分隔清單;空清單表示所有類型的。 此處列出的覆蓋`excludedTypes`類型中列出的類型。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 傳輸指定類型的所有實例;對未指定的類型進行採樣。 |
 
-### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. HTTPAutoCollectionOptions
-
-|屬性 | 預設 | 描述 |
-| --------- | --------- | --------- | 
-| enableHttpTriggerExtendedInfoCollection | true | 啟用或停用 HTTP 觸發程式的擴充 HTTP 要求資訊：連入要求相互關聯標頭、多檢測金鑰支援、HTTP 方法、路徑和回應。 |
-| enableW3CDistributedTracing | true | 啟用或停用 W3C 分散式追蹤通訊協定的支援（並開啟舊版相互關聯架構）。 如果 `enableHttpTriggerExtendedInfoCollection` 為 true，則預設為啟用。 如果 `enableHttpTriggerExtendedInfoCollection` 為 false，則此旗標僅適用于連出要求，而不會套用到連入要求。 |
-| enableResponseHeaderInjection | true | 啟用或停用將多重元件相互關聯標頭插入回應中的功能。 啟用插入功能可讓 Application Insights 在使用數個檢測金鑰時，將應用程式對應至。 如果 `enableHttpTriggerExtendedInfoCollection` 為 true，則預設為啟用。 如果 `enableHttpTriggerExtendedInfoCollection` 為 false，則不適用此設定。 |
-
-### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
-
-如需有關快照集的詳細資訊，請參閱[.net 應用程式中的例外](/azure/azure-monitor/app/snapshot-debugger)狀況的 Debug 錯快照集和[疑難排解啟用 Application Insights 快照偵錯工具或查看快照](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)集的問題。
+### <a name="applicationinsightshttpautocollectionoptions"></a>應用程式見解.HTTP自動收集選項
 
 |屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
-| agentEndpoint | null | 用來連接到 Application Insights 快照偵錯工具服務的端點。 如果是 null，則會使用預設端點。 |
-| captureSnapshotMemoryWeight | 0.5 | 檢查是否有足夠的記憶體來製作快照集時，指定給目前進程記憶體大小的權數。 預期的值為大於0的適當分數（0 < CaptureSnapshotMemoryWeight < 1）。 |
-| failedRequestLimit | 3 | 在停用遙測處理器之前，要求快照集的失敗要求數目限制。|
-| handleUntrackedExceptions | true | 啟用或停用 Application Insights 遙測不會追蹤的例外狀況追蹤。 |
-| isEnabled | true | 啟用或停用快照集集合 | 
-| isEnabledInDeveloperMode | false | 啟用或停用開發人員模式中的快照集集合。 |
-| isEnabledWhenProfiling | true | 即使 Application Insights Profiler 正在收集詳細的分析會話，也會啟用或停用快照集建立。 |
-| isExceptionSnappointsEnabled | false | 啟用或停用例外狀況的篩選。 |
-| isLowPrioritySnapshotUploader | true | 判斷是否要在一般優先順序之下執行 Snapshotuploader.exe 進程。 |
-| maximumCollectionPlanSize | 50 | 從1到9999的範圍內，可以隨時追蹤的問題數目上限。 |
-| maximumSnapshotsRequired | 3 | 針對單一問題收集的快照集數目上限，範圍從1到999。 在您的應用程式中，可能會將問題視為個別的 throw 語句。 一旦為問題收集的快照集數目達到此值，就不會再收集該問題的快照集，直到重新設定問題計數器為止（請參閱 `problemCounterResetInterval`），然後再次到達 `thresholdForSnapshotting` 限制。 |
-| problemCounterResetInterval | 24:00:00 | 從一分鐘到七天的範圍內，重設問題計數器的頻率。 當達到此間隔時，所有問題計數都會重設為零。 現有的問題已經達到執行快照集的閾值，但尚未產生 `maximumSnapshotsRequired`中的快照集數目，仍在作用中。 |
-| provideAnonymousTelemetry | true | 決定是否要將匿名使用方式和錯誤遙測傳送給 Microsoft。 如果您聯繫 Microsoft 來協助疑難排解快照偵錯工具的問題，可能會使用此遙測。 它也可用來監視使用模式。 |
-| reconnectInterval | 00:15:00 | 我們重新連線到快照偵錯工具端點的頻率。 允許的範圍是一分鐘到一天。 |
-| shadowCopyFolder | null | 指定用於陰影複製二進位檔的資料夾。 如果未設定，則會依序嘗試下列環境變數所指定的資料夾： Fabric_Folder_App_Temp、LOCALAPPDATA、APPDATA、TEMP。 |
-| shareUploaderProcess | true | 若為 true，則只有一個 Snapshotuploader.exe 實例會針對共用 InstrumentationKey 的多個應用程式收集和上傳快照集。 如果設定為 false，則每個（ProcessName，InstrumentationKey）元組的 Snapshotuploader.exe 都是唯一的。 |
-| snapshotInLowPriorityThread | true | 決定是否要處理低 IO 優先順序執行緒中的快照集。 建立快照集是快速的作業，但若要將快照集上傳至快照偵錯工具服務，則必須先將其寫入磁片做為小型傾印。 這會發生在 Snapshotuploader.exe 流程中。 將此值設定為 true 時，會使用低優先順序 IO 來寫入小型傾印，這不會與您的應用程式競爭資源。 將此值設定為 false 可加速建立小型傾印，代價是讓應用程式變慢。 |
-| snapshotsPerDayLimit | 30 | 一天內允許的快照集數目上限（24小時）。 Application Insights 服務端也會強制執行此限制。 上傳的速率限制為每個應用程式每天50（也就是每個檢測金鑰）。 這個值有助於防止建立在上傳期間最後會拒絕的其他快照集。 值為零會完全移除限制，這不是建議的做法。 |
-| snapshotsPerTenMinutesLimit | 1 | 10分鐘內允許的快照集數目上限。 雖然此值沒有上限，但請謹慎增加生產工作負載，因為它可能會影響應用程式的效能。 建立快照集的速度很快，但建立快照集的小型傾印並上傳至快照偵錯工具服務，是比較慢的作業，會與您的應用程式競爭資源（CPU 和 i/o）。 |
-| tempFolder | null | 指定要寫入小型傾印和上載者記錄檔的資料夾。 如果未設定，則會使用 *%TEMP%\Dumps* 。 |
-| thresholdForSnapshotting | 1 | Application Insights 需要多少次才能在要求快照之前看到例外狀況。 |
-| uploaderProxy | null | 覆寫快照集上載程式中所使用的 proxy 伺服器。 如果您的應用程式透過 proxy 伺服器連接到網際網路，您可能需要使用此設定。 Snapshot Collector 會在應用程式的進程中執行，並使用相同的 proxy 設定。 不過，快照集上傳程式會以個別的進程執行，您可能需要手動設定 proxy 伺服器。 如果這個值是 null，則 Snapshot Collector 會嘗試透過檢查 WebRequest DefaultWebProxy，並將值傳遞給快照集上傳程式，以自動偵測 proxy 的位址。 如果此值不是 null，則不會使用自動偵測，而在這裡指定的 proxy 伺服器將用於快照集上載中。 |
+| 啟用Httptrigger擴展資訊集合 | true | 啟用或禁用 HTTP 觸發器的擴展 HTTP 要求資訊：傳入請求關聯標頭、多檢測金鑰支援、HTTP 方法、路徑和回應。 |
+| 啟用W3C分散式跟蹤 | true | 啟用或禁用對 W3C 分散式跟蹤協定的支援（並啟用舊相關架構）。 預設情況下啟用（如果`enableHttpTriggerExtendedInfoCollection`為 true）。 如果`enableHttpTriggerExtendedInfoCollection`為 false，則此標誌僅適用于傳出請求，不適用於傳入請求。 |
+| 啟用回應標頭注入 | true | 啟用或禁用將多元件相關標頭注入回應。 啟用注入允許應用程式見解構造應用程式映射，以何時使用多個檢測金鑰。 預設情況下啟用（如果`enableHttpTriggerExtendedInfoCollection`為 true）。 如果`enableHttpTriggerExtendedInfoCollection`為 false，則此設置不適用。 |
+
+### <a name="applicationinsightssnapshotconfiguration"></a>應用程式見解.快照配置
+
+有關快照的詳細資訊，請參閱[在 .NET 應用中調試異常的快照](/azure/azure-monitor/app/snapshot-debugger)，以及[啟用應用程式見解快照調試器或查看快照的疑難排解問題](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)。
+
+|屬性 | 預設 | 描述 |
+| --------- | --------- | --------- | 
+| 代理端點 | null | 用於連接到應用程式見解快照調試器服務的終結點。 如果為 null，則使用預設終結點。 |
+| 捕獲快照記憶體權重 | 0.5 | 檢查是否有足夠的記憶體拍攝快照時，當前進程記憶體大小給出的權重。 預期值大於 0 正確的分數（0 <捕獲快照記憶體權重< 1）。 |
+| 失敗的請求限制 | 3 | 禁用遙測處理器之前請求快照的失敗請求數的限制。|
+| 控制碼 未跟蹤的異常 | true | 啟用或禁用跟蹤應用程式見解遙測未跟蹤的異常。 |
+| isEnabled | true | 啟用或禁用快照集合 | 
+| 是啟用的開發者模式 | false | 在開發人員模式下啟用或禁用快照集合。 |
+| 正在啟用時分析 | true | 啟用或禁用快照創建，即使應用程式見解探測器正在收集詳細的分析會話。 |
+| 是啟用的例外捕捉點 | false | 啟用或禁用異常篩選。 |
+| 是低優先順序快照載入器 | true | 確定是否以低於正常優先順序運行快照載入進程。 |
+| 最大收集平面大小 | 50 | 我們可以在 1 到 9999 之間隨時跟蹤的最大問題數。 |
+| 所需的最大快照 | 3 | 為單個問題收集的快照的最大數量，範圍為 1 到 999。 在應用程式中，問題可能被視為單個引發語句。 一旦為問題收集的快照數達到此值，在重置問題計數器（請參閱`problemCounterResetInterval`）並再次達到`thresholdForSnapshotting`限制之前，將不再為該問題收集快照。 |
+| 問題計數器重置間隔 | 24:00:00 | 在一分鐘到七天之間重置問題計數器的頻率。 達到此間隔時，所有問題計數將重置為零。 已達到執行快照閾值但尚未生成 中的`maximumSnapshotsRequired`快照數的現有問題保持活動狀態。 |
+| 提供匿名遙測 | true | 確定是否向 Microsoft 發送匿名使用方式和錯誤遙測。 如果您聯繫 Microsoft 以説明解決快照調試器的問題，則可能會使用此遙測資料。 它還用於監視使用模式。 |
+| 重新連接間隔 | 00:15:00 | 我們重新連接到快照調試器終結點的頻率。 允許的範圍為一分鐘到一天。 |
+| 影子複製資料夾 | null | 指定用於卷影複製二進位檔案的資料夾。 如果未設置，則按順序嘗試以下環境變數指定的資料夾：Fabric_Folder_App_Temp、本地應用資料、APPDATA、TEMP。 |
+| 共用載入程式 | true | 如果為 true，則只有一個快照 Uploader 實例將收集和上載共用檢測金鑰的多個應用的快照。 如果設置為 false，則快照 Uploader 對於每個（進程名稱、檢測鍵）元組將是唯一的。 |
+| 快照在低優先順序執行緒 | true | 確定是否處理低 IO 優先順序執行緒中的快照。 創建快照是一種快速操作，但是，為了將快照上載到快照調試器服務，必須首先將其寫入磁片作為小型轉儲。 這發生在快照載入器過程中。 將此值設置為 true 使用低優先順序 IO 編寫小型轉儲，這不會與您的應用程式競爭資源。 將此值設置為 false 會加快小型轉儲的創建速度，但代價是減慢應用程式的速度。 |
+| 快照PerDay限制 | 30 | 一天（24 小時）內允許的最大快照數。 此限制也在應用程式見解服務端強制執行。 每個應用程式的上載速率限制為每天 50 個（即每個檢測金鑰）。 此值有助於防止創建其他快照，這些快照最終將在上載期間被拒絕。 值為零將完全刪除限制，不建議這樣做。 |
+| 快照Perten分鐘限制 | 1 | 10 分鐘內允許的最大快照數。 儘管此值沒有上限，但請謹慎增加此值，因為它可能會影響應用程式的性能。 創建快照速度很快，但創建快照的小型轉儲並將其上載到快照調試器服務是一個速度慢得多的操作，它將與應用程式爭奪資源（CPU 和 I/O）。 |
+| 暫存檔案夾 | null | 指定用於編寫小型轉儲和上載器日誌檔的資料夾。 如果未設置，則使用 *%TEMP%\轉儲*。 |
+| 用於快照的閾值 | 1 | 應用程式見解在請求快照之前需要查看異常的次數。 |
+| 上傳器代理 | null | 覆蓋快照上載程式進程中使用的代理伺服器。 如果您的應用程式通過代理伺服器連接到互聯網，則可能需要使用此設置。 快照收集器在應用程式的進程中運行，並將使用相同的代理設置。 但是，快照上傳程式作為單獨的進程運行，您可能需要手動設定代理伺服器。 如果此值為空，則快照收集器將嘗試通過檢查 System.Net.WebRequest.DefaultWebProxy 並將該值傳遞給快照上傳程式來自動檢測代理的位址。 如果此值不是空，則不使用自動檢測，此處指定的代理伺服器將在快照上傳器中使用。 |
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -222,9 +222,9 @@ ms.locfileid: "79276994"
 
 傳回包含所有繫結特定設定 (例如 [http](#http) 和 [eventHub](#eventhub)) 之物件的屬性。
 
-## <a name="extensionbundle"></a>extensionBundle 
+## <a name="extensionbundle"></a>擴展包 
 
-擴充功能套件可讓您將一組相容的函式系結延伸模組，新增至函式應用程式。 若要深入瞭解，請參閱[本機開發的延伸](functions-bindings-register.md#extension-bundles)模組組合。
+擴展包允許您向函數應用添加一組相容的函數綁定擴展。 要瞭解更多資訊，請參閱[本地開發擴展捆綁包](functions-bindings-register.md#extension-bundles)。
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
@@ -240,11 +240,11 @@ ms.locfileid: "79276994"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指出所有函式的逾時持續期間。 它會遵循 timespan 字串格式。 在無伺服器的使用情況方案中，有效範圍是從 1 秒到 10 分鐘，而預設值是 5 分鐘。  
+指出所有函式的逾時持續期間。 它遵循時間跨度字串格式。 在無伺服器的使用情況方案中，有效範圍是從 1 秒到 10 分鐘，而預設值是 5 分鐘。  
 
-在 Premium 方案中，有效範圍是從1秒到60分鐘，而預設值為30分鐘。
+在高級計畫中，有效範圍為 1 秒到 60 分鐘，預設值為 30 分鐘。
 
-在專用（App Service）方案中，沒有整體限制，而預設值為30分鐘。 值為 `-1` 表示不受限制的執行，但建議保留固定的上限。
+在專用（應用服務）計畫中，沒有總體限制，預設值為 30 分鐘。 的值`-1`表示無界執行，但建議保留固定的上限。
 
 ```json
 {
@@ -303,7 +303,7 @@ ms.locfileid: "79276994"
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定義已啟用何種檔案記錄層級。  選項為 `never`、`always`、`debugOnly`。 |
-|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2\.x 版和更新版本會遵循記錄類別篩選的 ASP.NET Core 版面配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 版本 2.x 和更高版本遵循日誌類別篩選ASP.NET核心佈局。 此設置允許您篩選特定函數的日誌記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
 |console|n/a| [主控台](#console)記錄設定。 |
 |applicationInsights|n/a| [applicationInsights](#applicationinsights) 設定。 |
 
@@ -327,9 +327,9 @@ ms.locfileid: "79276994"
 |---------|---------|---------| 
 |isEnabled|false|啟用或停用主控台記錄。| 
 
-## <a name="manageddependency"></a>managedDependency
+## <a name="manageddependency"></a>託管依賴性
 
-受控相依性是目前僅支援以 PowerShell 為基礎的函式的一項功能。 它可讓服務自動管理相依性。 當 [`enabled`] 屬性設定為 [`true`] 時，就會處理 `requirements.psd1` 檔。 發行任何次要版本時，會更新相依性。 如需詳細資訊，請參閱 PowerShell 文章中的[受控](functions-reference-powershell.md#dependency-management)相依性。
+託管依賴項是當前僅受基於 PowerShell 的功能支援的一項功能。 它使依賴項能夠由服務自動管理。 當屬性`enabled`設置為`true`時，`requirements.psd1`將處理檔。 發佈任何次要版本時，將更新依賴項。 有關詳細資訊，請參閱 PowerShell 一文中的[託管依賴項](functions-reference-powershell.md#dependency-management)。
 
 ```json
 {
@@ -377,7 +377,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 
 ## <a name="version"></a>version
 
-此值表示 host. json 的架構版本。 以 v2 執行時間或更新版本為目標的函式應用程式需要版本字串 `"version": "2.0"`。 V2 和 v3 之間沒有任何主機。 json 架構變更。
+此值指示 host.json 的架構版本。 面向 v2 運行時或更高版本的函數應用需要版本字串`"version": "2.0"`。 v2 和 v3 之間沒有 host.json 架構更改。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

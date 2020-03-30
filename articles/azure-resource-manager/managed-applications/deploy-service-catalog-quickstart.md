@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 入口網站部署服務類別目錄應用程式
+title: 使用 Azure 門戶部署服務目錄應用
 description: 示範受控應用程式的取用者如何透過 Azure 入口網站來部署服務目錄應用程式。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3fa9709e096e908907772c940fc5e2f2895b7eb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650782"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473059"
 ---
-# <a name="deploy-service-catalog-app-through-azure-portal"></a>透過 Azure 入口網站部署服務目錄應用程式
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入門：通過 Azure 門戶部署服務目錄應用
 
 在[前一個快速入門](publish-managed-app-definition-quickstart.md)中，您已發行受控應用程式定義。 在此快速入門中，您可以從該定義建立服務目錄應用程式。
 
@@ -20,7 +20,7 @@ ms.locfileid: "75650782"
 
 在 Azure 入口網站中，使用下列步驟：
 
-1. 選取 [建立資源]。
+1. 選擇 **"創建資源**"。
 
    ![建立資源](./media/deploy-service-catalog-quickstart/create-new.png)
 
@@ -28,23 +28,23 @@ ms.locfileid: "75650782"
 
    ![搜尋服務目錄應用程式](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. 您會看到受控應用程式服務的說明。 選取 [建立]。
+1. 您會看到受控應用程式服務的說明。 選取 [建立]****。
 
    ![選取 [建立]](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. 入口網站會顯示您有權存取的受控應用程式定義。 從可用的定義中，選取您想要部署的定義。 在此快速入門中，使用您在前一個快速入門中建立的**受控儲存體帳戶**定義。 選取 [建立]。
+1. 入口網站會顯示您有權存取的受控應用程式定義。 從可用的定義中，選取您想要部署的定義。 在此快速入門中，使用您在前一個快速入門中建立的**受控儲存體帳戶**定義。 選取 [建立]****。
 
    ![選取要部署的定義](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. 提供 [**基本**] 索引標籤的值。選取要部署服務目錄應用程式的 Azure 訂用帳戶。 建立名為 **applicationGroup** 的新資源群組。 選取應用程式的位置。 完成後，選取 [確定]。
+1. 為 **"基本"** 選項卡提供值。選擇 Azure 訂閱以將服務目錄應用部署到 。 建立名為 **applicationGroup** 的新資源群組。 選取應用程式的位置。 完成後，選取 [確定]****。
 
    ![提供基本的值](./media/deploy-service-catalog-quickstart/provide-basics.png)
 
-1. 提供儲存體帳戶名稱的前置詞。 選取要建立的儲存體帳戶類型。 完成後，選取 [確定]。
+1. 提供儲存體帳戶名稱的前置詞。 選取要建立的儲存體帳戶類型。 完成後，選取 [確定]****。
 
    ![提供儲存體的值](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. 檢閱摘要。 驗證成功之後，選取 [確定] 以開始部署。
+1. 檢閱摘要。 驗證成功之後，選取 [確定]**** 以開始部署。
 
    ![檢視摘要](./media/deploy-service-catalog-quickstart/view-summary.png)
 

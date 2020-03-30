@@ -1,15 +1,15 @@
 ---
-title: 概述 Azure Service Fabric 執行者生命週期
+title: 概述 Azure 服務結構參與者生命週期
 description: 說明 Service Fabric Reliable Actor 生命週期、記憶體回收，以及手動刪除動作項目與其狀態
 author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258313"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>動作項目生命週期、自動記憶體回收，以及手動刪除
@@ -52,7 +52,7 @@ ms.locfileid: "79258313"
 * *掃描間隔*。 這是動作項目執行階段掃描其作用中動作項目資料表中，是否有動作項目可予以停用和進行記憶體回收的間隔。 預設值為 1 分鐘。
 * *閒置逾時*。 這是動作項目維持未使用 (閒置) 所需的時間長度，過此時間後即可停用和進行記憶體回收。 預設值為 60 分鐘。
 
-通常不需要變更這些預設值。 不過，如有必要，可以在註冊`ActorServiceSettings`動作項目服務[時透過 ](service-fabric-reliable-actors-platform.md) 變更這些間隔：
+通常不需要變更這些預設值。 不過，如有必要，可以在註冊[動作項目服務](service-fabric-reliable-actors-platform.md)時透過 `ActorServiceSettings` 變更這些間隔：
 
 ```csharp
 public class Program
@@ -85,7 +85,7 @@ public class Program
     }
 }
 ```
-對於每個作用中動作項目，動作項目執行階段會持續追蹤動作項目已閒置 (亦即未使用) 的時間。 動作專案執行時間會每個 `ScanIntervalInSeconds` 檢查每個動作專案，以查看是否可以進行垃圾收集，並在它已閒置而無法 `IdleTimeoutInSeconds`時加以標示。
+對於每個作用中動作項目，動作項目執行階段會持續追蹤動作項目已閒置 (亦即未使用) 的時間。 執行元件運行時檢查每個`ScanIntervalInSeconds`參與者，以查看是否可以回收它，並在為 中空閒時將其標記。 `IdleTimeoutInSeconds`
 
 只要使用動作項目，其閒置時間就會重設為 0。 在此之後，只有當動作項目再次閒置達 `IdleTimeoutInSeconds`時，才會將動作項目作為記憶體回收。 請回想一下，當動作項目介面方法或動作項目提醒回撥執行時，動作項目會視為已使用。 如果動作項目的計時器回撥執行時， **不會** 將動作項目視為已使用。
 
@@ -109,12 +109,12 @@ public class Program
 
 ## <a name="next-steps"></a>後續步驟
 * [動作項目計時器和提醒](service-fabric-reliable-actors-timers-reminders.md)
-* [動作項目事件](service-fabric-reliable-actors-events.md)
-* [動作項目重新進入](service-fabric-reliable-actors-reentrancy.md)
+* [參與者事件](service-fabric-reliable-actors-events.md)
+* [演員重入](service-fabric-reliable-actors-reentrancy.md)
 * [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [C# 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [JAVA 示例代碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

@@ -1,17 +1,17 @@
 ---
-title: 建立使用者-適用於 MariaDB 的 Azure 資料庫
+title: 創建使用者 - MariaDB 的 Azure 資料庫
 description: 本文描述如何建立新的使用者帳戶，來與「適用於 MariaDB 的 Azure 資料庫」伺服器互動。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: cbfcb097b4fda30bdeed940a5acb609b02f5d788
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 3/18/2020
+ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530167"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中建立使用者 
 本文描述如何在適用於 MariaDB 的 Azure 資料庫中建立使用者。
@@ -24,12 +24,12 @@ ms.locfileid: "79283351"
 
 ## <a name="create-additional-admin-users"></a>建立其他管理使用者
 1. 取得連線資訊和管理員使用者名稱。
-   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀] 或 [屬性] 頁面輕鬆尋找伺服器名稱和登入資訊。 
+   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀]**** 或 [屬性]**** 頁面輕鬆尋找伺服器名稱和登入資訊。 
 
 2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
    如果您不確定如何連線，請參閱[使用 MySQL Workbench 來連線及查詢資料](./connect-workbench.md)
 
-3. 編輯並執行下列 SQL 程式碼。 將預留位置值 `new_master_user` 替換為您的新使用者名稱。 此語法可將所有資料庫結構描述上列出的特殊權限 ( *.* ) 授與給使用者名稱 (在此範例中為 new_master_user)。 
+3. 編輯並執行下列 SQL 程式碼。 將預留位置值 `new_master_user` 替換為您的新使用者名稱。 此語法可將所有資料庫結構描述上列出的特殊權限 (*.*) 授與給使用者名稱 (在此範例中為 new_master_user)。 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -49,7 +49,7 @@ ms.locfileid: "79283351"
 ## <a name="create-database-users"></a>建立資料庫使用者
 
 1. 取得連線資訊和管理員使用者名稱。
-   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀] 或 [屬性] 頁面輕鬆尋找伺服器名稱和登入資訊。 
+   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀]**** 或 [屬性]**** 頁面輕鬆尋找伺服器名稱和登入資訊。 
 
 2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
    如果您不確定如何連線，請參閱[使用 MySQL Workbench 來連線及查詢資料](./connect-workbench.md)

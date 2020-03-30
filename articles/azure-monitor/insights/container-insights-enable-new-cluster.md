@@ -1,20 +1,20 @@
 ---
-title: 監視新的 Azure Kubernetes Service （AKS）叢集 |Microsoft Docs
-description: 瞭解如何使用容器訂用帳戶的 Azure 監視器，為新的 Azure Kubernetes Service （AKS）叢集啟用監視。
+title: 監視新的 Azure 庫伯奈斯服務 （AKS） 群集 |微軟文檔
+description: 瞭解如何使用 Azure 監視器為容器訂閱啟用新的 Azure 庫伯奈斯服務 （AKS） 群集的監視。
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275434"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用新 Azure Kubernetes Service （AKS）叢集的監視
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用監視新的 Azure 庫伯奈斯服務 （AKS） 群集
 
-本文說明如何設定容器的 Azure 監視器，以監視您在訂用帳戶中準備部署[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)上所裝載的受管理 Kubernetes 叢集。
+本文介紹如何為容器設置 Azure 監視器，以監視託管在[Azure Kubernetes 服務](https://docs.microsoft.com/azure/aks/)上託管的託管 Kubernetes 群集，並準備在訂閱中部署該群集。
 
-您可以使用其中一種支援的方法來啟用 AKS 叢集的監視：
+您可以使用支援的方法之一啟用對 AKS 群集的監視：
 
 * Azure CLI
 * Terraform
@@ -24,7 +24,7 @@ ms.locfileid: "79275434"
 若要使用 Azure CLI 針對建立的新 AKS 叢集啟用監視，請依照快速入門文章中[建立 AKS 叢集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)一節下的步驟執行。  
 
 >[!NOTE]
->如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.74 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果您已安裝 aks-preview CLI 擴充功能版本0.4.12 或更高版本，請移除您所做的任何變更以啟用預覽延伸模組，因為它可以覆寫預設的 Azure CLI 行為，因為 Azure US Governmnet cloud 中無法使用 AKS 預覽功能。
+>如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須運行 Azure CLI 版本 2.0.74 或更高版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果已安裝 aks 預覽 CLI 擴展版本 0.4.12 或更高版本，請刪除為啟用預覽擴展所做的任何更改，因為它可以覆蓋預設的 Azure CLI 行為，因為 AKS 預覽功能在 Azure US Governmnet 雲中不可用。
 
 ## <a name="enable-using-terraform"></a>啟用使用 Terraform
 
@@ -37,8 +37,8 @@ ms.locfileid: "79275434"
 
 啟用監視並順利完成所有設定工作之後，您可以透過兩種方式來監視叢集效能：
 
-* 選取左窗格中的 [健康情況]，直接在 AKS 叢集中進行。
-* 在所選取叢集的 AKS 叢集頁面中，選取 [監視器容器深入解析] 圖格。 在 Azure 監視器中，選取左窗格中的 [健康情況]。 
+* 選取左窗格中的 [健康情況]****，直接在 AKS 叢集中進行。
+* 在所選取叢集的 AKS 叢集頁面中，選取 [監視器容器深入解析]**** 圖格。 在 Azure 監視器中，選取左窗格中的 [健康情況]****。 
 
   ![在 AKS 中選取適用於容器的 Azure 監視器選項](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
@@ -78,7 +78,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>早於 06072018 的代理程式版本
 
-若要確認已正確部署 06072018 版以前發行的 Log Analytics 代理程式，請執行下列命令：  
+若要確認已正確部署 06072018** 版以前發行的 Log Analytics 代理程式，請執行下列命令：  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -116,4 +116,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 * 如果您在試著將解決方案上線時遇到問題，請檢閱[疑難排解指南](container-insights-troubleshoot.md)
 
-* 啟用監視以收集 AKS 叢集的健康情況和資源使用率，以及在其上執行的工作負載，瞭解[如何使用](container-insights-analyze.md)容器的 Azure 監視器。
+* 啟用監視以收集 AKS 群集的運行狀況和資源利用率以及運行在其中的工作負載，瞭解如何將 Azure 監視器[用於](container-insights-analyze.md)容器。

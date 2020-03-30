@@ -1,5 +1,5 @@
 ---
-title: 什麼是單一資料庫
+title: 什麼是單個資料庫
 description: 了解 Azure SQL Database 中的單一資料庫
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fc63de4057def632d3ac1980e8cb3eaedbff2175
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79208844"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500752"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什麼是 Azure SQL Database 中的單一資料庫
 
@@ -29,7 +29,7 @@ ms.locfileid: "79208844"
 
 ## <a name="dynamic-scalability"></a>動態延展性
 
-您可以在無伺服器計算層級的小型單一資料庫中建立您的第一個應用程式，或在布建的計算層中將小型的計算大小。 您可以隨時以手動或程式設計方式變更[計算或服務層級](sql-database-single-database-scale.md)，以符合解決方案的需求。 您的應用程式或客戶皆無須停機，即可調整效能。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求，並且讓您只需支付您所需的資源費用。
+您可以在無伺服器計算層中的低成本或預配計算層中的小計算大小在小型單個資料庫上構建第一個應用。 您可以隨時手動或以程式設計方式更改[計算或服務層](sql-database-single-database-scale.md)，以滿足解決方案的需求。 您的應用程式或客戶皆無須停機，即可調整效能。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求，並且讓您只需支付您所需的資源費用。
 
 ## <a name="single-databases-and-elastic-pools"></a>單一資料庫和彈性集區
 
@@ -37,11 +37,11 @@ ms.locfileid: "79208844"
 
 ## <a name="monitoring-and-alerting"></a>監視和警示
 
-您可以使用[內建的效能監視](sql-database-performance.md)和[警示工具](sql-database-insights-alerts-portal.md)，並搭配使用效能分級。 使用這些工具，您可以根據目前或專案的效能需求快速評估相應增加或減少的影響。 此外，SQL Database 可以[發出計量和資源記錄](sql-database-metrics-diag-logging.md)檔，以方便進行監視。
+您可以使用內置[的效能監控](sql-database-performance-guidance.md)和[警報工具](sql-database-insights-alerts-portal.md)，以及性能評級。 使用這些工具，您可以根據目前或專案的效能需求快速評估相應增加或減少的影響。 此外，SQL 資料庫可以[發出指標和資源日誌](sql-database-metrics-diag-logging.md)，以便更輕鬆地進行監視。
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-單一資料庫、彈性集區和受控實例全都提供許多可用性特性。 如需相關資訊，請參閱[可用性特性](sql-database-technical-overview.md#availability-capabilities)。
+單個資料庫、彈性池和託管實例都提供了許多可用性特徵。 如需相關資訊，請參閱[可用性特性](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 差異
 
@@ -55,10 +55,10 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 SQL Database 提供了多種[內建安全性與合規性](sql-database-security-overview.md)功能，可協助您的應用程式符合各種安全性與合規需求。
 
 > [!IMPORTANT]
-> Azure SQL Database （所有部署選項）已通過許多合規性標準的認證。 如需詳細資訊，請參閱[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在此找到最新的 SQL Database 合規性認證清單。
+> Azure SQL 資料庫（所有部署選項）已根據許多合規性標準進行了認證。 有關詳細資訊，請參閱 Microsoft [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在其中找到最新的 SQL 資料庫合規性認證清單。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要快速開始使用單一資料庫，請從[單一資料庫快速入門手冊](sql-database-single-database-quickstart-guide.md)開始。
+- 要快速開始使用單個資料庫，請從["單個資料庫快速入門手冊"開始](sql-database-single-database-quickstart-guide.md)。
 - 若要深入了解如何將 SQL Server 資料庫移轉至 Azure，請參閱[移轉至 Azure SQL Database](sql-database-single-database-migrate.md)。
-- 如需支援功能的相關資訊，請參閱「[功能](sql-database-features.md)」。
+- 有關受支援功能的資訊，請參閱[功能](sql-database-features.md)。

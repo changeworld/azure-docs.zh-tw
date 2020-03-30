@@ -1,20 +1,18 @@
 ---
-title: 管理 Azure Marketplace 和 AppSource 發行者設定檔
-description: 管理 Azure Marketplace 和 AppSource 發行者設定檔
-services: Azure, Marketplace, Cloud Partner Portal,
+title: 管理 Azure 應用商店和 AppSource 發行者設定檔
+description: 管理 Azure 應用商店和 AppSource 發行者設定檔
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pabutler
-ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280230"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理 'Azure Marketplace' 與 'AppSource' 發行者設定檔
 
@@ -34,7 +32,7 @@ ms.locfileid: "73826358"
 > [!NOTE]
 > 從 Cloud Partner 入口網站的 [使用者] 區段中左側瀏覽窗格上的 [使用者] 區段，將使用者 (參與者與擁有者) 新增到您的發行設定檔。
 
-**若要檢視及管理您的發行者設定檔**，請從右上方功能表列按一下 [發行者設定檔] 索引標籤。
+**若要檢視及管理您的發行者設定檔**，請從右上方功能表列按一下 [發行者設定檔]**** 索引標籤。
 
 ![[發行者設定檔] 索引標籤 - 發行者設定檔](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
@@ -46,6 +44,6 @@ ms.locfileid: "73826358"
 >[!NOTE]
 >發佈付費的 Marketplace SKU 時，必須註冊開發中心帳戶。
 
-如果您沒有[開發人員中心帳戶](./cloud-partner-portal-dev-center-accounts-registration.md)，可以建立一個帳戶。 然後在 Cloud Partner 入口網站上，將已註冊的電子郵件地址新增為您供應項目的擁有者。 擁有者只可以從 [使用者] 區段將已註冊的電子郵件地址新增至發行設定檔。 然後，使用相同電子郵件地址登入入口網站，然後連結您的開發人員中心帳戶。
+如果您沒有[開發人員中心帳戶](./cloud-partner-portal-dev-center-accounts-registration.md)，可以建立一個帳戶。 然後在 Cloud Partner 入口網站上，將已註冊的電子郵件地址新增為您供應項目的擁有者。 擁有者只可以從 [使用者]**** 區段將已註冊的電子郵件地址新增至發行設定檔。 然後，使用相同電子郵件地址登入入口網站，然後連結您的開發人員中心帳戶。
 
 ![[發行者設定檔詳細資料] - 發行者設定檔描述](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

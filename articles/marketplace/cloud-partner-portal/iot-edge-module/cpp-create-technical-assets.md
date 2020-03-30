@@ -1,19 +1,18 @@
 ---
-title: 建立 Azure IoT Edge 模組技術資產 |Azure Marketplace
+title: 創建 Azure IoT 邊緣模組技術資產 |Azure 應用商店
 description: 建立 IoT Edge 模組的技術資產。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 57bc2f789836a7d3453004cdacc59029c4b24129
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827628"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285209"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -52,7 +51,7 @@ IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容�
 
 目標 IoT Edge 裝置的 IoT Edge 模組尺寸 (CPU/RAM/Storage/GPU 等等)，必須符合下列需求：
 
-- 模組必須**至少搭配一個** Azure IoT Edge 認證[裝置目錄中的 IoT Edge 認證裝置](https://catalog.azureiotsolutions.com/)使用。
+- 模組必須**至少搭配一個 [Azure IoT Edge 認證](https://catalog.azureiotsolutions.com/)裝置目錄中的 IoT Edge 認證裝置**使用。
 - **最低硬體需求**必須列在供應項目說明 ([Marketplace索引標籤](./cpp-marketplace-tab.md)中) 的最後一段。 如果推薦硬體需求與最低硬體需求差異甚大，也可以多列出建議硬體需求。 例如可在供應項目說明的結尾處新增以下區段：
 
   ```html
@@ -68,9 +67,9 @@ IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容�
 IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引標籤](./cpp-skus-tab.md)提供的預設設定。 可用的預設設定如下：
 
 - 預設**路由**
-- 預設**對應項的所需屬性**
+- 預設**雙對所需屬性**
 - 預設**環境變數**
-- 預設 **createOptions**
+- 預設**創建選項**
 
 在此案例中，預設值所需的參數無任何意義 (例如：客戶伺服器的 IP 位址)，您可新增參數做為預設值。 此值會以方括號括住並大寫顯示。 在此例中，請設定下列環境變數：
 
@@ -80,11 +79,11 @@ IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引
 
 #### <a name="configuration-documentation"></a>設定文件
 
-IoT Edge 模組的所有設定都必須清楚記載（如何使用其路由、對應項所需屬性、環境變數、createOptions 等等）。提供檔的連結，或檔集必須是您供應專案/sku 描述的一部分。
+必須清楚地記錄 IoT Edge 模組的所有配置設置（如何使用其路由、雙所需屬性、環境變數、創建選項等）。提供指向文檔的連結，或者文檔必須是您的產品/sku 說明的一部分。
 
 ### <a name="tags-and-versioning"></a>標籤與版本控制
 
-客戶必須能夠輕鬆地部署模組，並自動從 marketplace 取得更新（在開發人員案例中）。它們也必須能夠使用和凍結其已測試的確切版本（在生產環境中）。
+客戶必須能夠輕鬆部署模組並自動從市場獲取更新（在開發人員方案中）。他們還必須能夠使用和凍結他們測試的精確版本（在生產方案中）。
 
 為了符合客戶的上述期望並在市集中發佈，IoT Edge 模組必須符合下列需求：
 
@@ -105,7 +104,7 @@ IoT Edge 模組的所有設定都必須清楚記載（如何使用其路由、�
 - [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
+- [JAVA](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 對於未使用 IoT 模組 SDK 的模組，由 Cloud Partner 入口網站提供的深入解析會較不精確，例如下載數。
 
@@ -115,7 +114,7 @@ IoT Edge 模組必須盡可能減少所要求的主機存取特殊權限。 應�
 
 ### <a name="module-iot-sdk"></a>模組 IoT SDK
 
-包含 IoT 模組 SDK 並不是認證的必要條件。 不過，包含 IoT 模組 SDK 或許可提升使用者體驗。 例如在支援路由或是送訊息至雲端時均有幫助。
+包含 IoT 模組 SDK 並不是認證的必要條件。 不過加入 IoT 模組 SDK 或許可提升使用者體驗。 例如在支援路由或是送訊息至雲端時均有幫助。
 
 必須使用 IoT 模組 SDK，才能取得執行中模組執行個體數量的相關遙測資料。
 
@@ -123,7 +122,7 @@ IoT Edge 模組必須盡可能減少所要求的主機存取特殊權限。 應�
 ## <a name="recertification-process"></a>重新認證流程
 
 <!-- Add legal time windows-->
-每當有影響其模組的中斷性變更時，合作夥伴就會收到通知，例如：
+每當出現會影響合作夥伴模組的中斷性變更時，對方就會收到通知，例如：
 
 - 受 IoT Edge 支援的層級 1 os/arch 支援矩陣
 - IoT 模組 SDK

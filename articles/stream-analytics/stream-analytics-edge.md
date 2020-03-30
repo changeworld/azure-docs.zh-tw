@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7e4a1cf43931b56cfdb3c31ffe870a07dbaa75af
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201750"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475887"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 串流分析
  
@@ -44,7 +44,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 ### <a name="installation-instructions"></a>安裝指示
 下表說明高階步驟。 後面幾節提供詳細資訊。
 
-|      |步驟   | 注意事項   |
+|      |步驟   | 注意   |
 | ---   | ---   |  ---      |
 | 1   | **建立儲存體容器**   | 儲存體容器是用來儲存您的作業定義，您的 IoT 裝置可在其中加以存取。 <br>  您可以重複使用任何現有的儲存體容器。     |
 | 2   | **建立 ASA Edge 作業**   |  建立新作業，請選取 **Edge** 作為**裝載環境**。 <br> 這些作業會從雲端建立/管理，並在您自己的 IoT Edge 裝置上執行。     |
@@ -60,7 +60,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 需要儲存體容器，才能匯出 ASA 已編譯查詢和作業組態。 它可用來設定包含您特定查詢的 ASA Docker 映像。 
 1. 依照[這些指示](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)從 Azure 入口網站建立儲存體帳戶。 您可以保留所有預設選項將此帳戶用於 ASA。
 2. 在新建立的儲存體帳戶中，建立 blob 儲存體容器：
-    1. 按一下 [Blob]，然後按一下 [+ 容器]。 
+    1. 按一下 [Blob]****，然後按一下 [+ 容器]****。 
     2. 輸入名稱，並將容器保留為**私人**。
 
 #### <a name="create-an-asa-edge-job"></a>建立 ASA Edge 作業
@@ -78,7 +78,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
     3. **定義輸出資料流**。 定義適用於您作業的一或多個輸出資料流。 
     4. **定義查詢**。 使用內嵌編輯器在雲端中定義 ASA 查詢。 編譯器會自動檢查針對 ASA Edge 啟用的語法。 您也可以上傳範例資料來測試您的查詢。 
 
-4. 在 [IoT Edge 設定] 功能表中設定儲存體容器資訊。
+4. 在 [IoT Edge 設定]**** 功能表中設定儲存體容器資訊。
 
 5. 設定選擇性設定
     1. **事件順序**。 您可以在入口網站中設定順序錯亂的事件。 您可以在[這裡](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)取得文件。
@@ -103,14 +103,14 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>在 IoT Edge 裝置上部署 ASA
 ##### <a name="add-asa-to-your-deployment"></a>將 ASA 新增至您的部署
 - 在 Azure 入口網站中開啟 IoT 中樞，瀏覽至 **IoT Edge**，然後在此部署的目標裝置上按一下。
-- 選取 [設定模組]，然後選取 [+ 新增] 並選擇 [Azure 串流分析模組]。
+- 選取 [設定模組]****，然後選取 [+ 新增]**** 並選擇 [Azure 串流分析模組]****。
 - 選取訂用帳戶與您建立的 ASA Edge 作業。 按一下 [儲存]。
 ![在您的部署中新增 ASA 模組](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
 > 在此步驟中，ASA 會在儲存體容器中建立一個名為 "EdgeJobs" 的資料夾 (如果該資料夾不存在)。 針對每個部署，會在 "EdgeJobs" 資料夾中建立新的子資料夾。
-> 當您將作業部署到 IoT Edge 裝置時，ASA 會為作業定義檔案建立共用存取簽章（SAS）。 SAS 索引鍵會使用裝置對應項安全地傳輸至 IoT Edge 裝置。 這個索引鍵的到期日是從其建立起的三年。 當您更新 IoT Edge 作業時，SAS 將會變更，但映射版本不會變更。 **更新**之後，請遵循部署工作流程，並在裝置上記錄更新通知。
+> 將作業部署到 IoT Edge 設備時，ASA 會為作業定義檔創建共用訪問簽名 （SAS）。 SAS 索引鍵會使用裝置對應項安全地傳輸至 IoT Edge 裝置。 這個索引鍵的到期日是從其建立起的三年。 更新 IoT Edge 作業時，SAS 將更改，但映射版本不會更改。 **更新**後，請遵循部署工作流，並在設備上記錄更新通知。
 
 
 如需 IoT Edge 部署的詳細資訊，請參閱[此頁面](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)。
@@ -141,9 +141,9 @@ ASA 作業中建立的輸入和輸出名稱可用來作為路由的端點。
 - 所有 **ASA** 模組的輸出都會傳送至 **tempSensor** 的**控制項**端點。
 
 
-## <a name="technical-information"></a>Technical information
+## <a name="technical-information"></a>技術資訊
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>相較於雲端作業，IoT Edge 作業的目前限制
-目標是在 IoT Edge 與業和雲端作業之間進行同位檢查。 支援大部分的 SQL 查詢語言功能，讓能夠在雲端和 IoT Edge 上執行相同的邏輯。
+目標是在 IoT Edge 與業和雲端作業之間進行同位檢查。 大多數 SQL 查詢語言功能都受支援，從而能夠在雲和 IoT Edge 上運行相同的邏輯。
 不過，Edge 作業尚未支援下列功能：
 * JavaScript 中的使用者定義函式 (UDF)。 您可以在[適用於 IoT Edge 的 C# 作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (預覽版) 中找到 UDF。
 * 使用者定義彙總 (UDA)。
@@ -153,7 +153,7 @@ ASA 作業中建立的輸入和輸出名稱可用來作為路由的端點。
 * 下列 SQL 運算子：
     * PARTITION BY
     * GetMetadataPropertyValue
-
+* 延遲抵達政策
 
 ### <a name="runtime-and-hardware-requirements"></a>執行階段與硬體需求
 若要在 IoT Edge 上執行 ASA，您需要可以執行 [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) 的裝置。 
@@ -176,7 +176,7 @@ ASA Edge 作業可以從 IoT Edge 裝置上執行的其他模組取得輸入和�
 
 
 ##### <a name="reference-data"></a>參考資料
-參考資料 (也稱為查詢資料表) 基本上是靜態或不常變更的有限資料集。 可用來執行查閱或與資料流相互關聯。 若要使用 Azure 串流分析作業中的參考資料，您通常會在查詢中使用[參考資料聯結](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)。 如需詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)。
+參考資料 (也稱為查詢資料表) 基本上是靜態或不常變更的有限資料集。 可用來執行查閱或與資料流相互關聯。 要利用 Azure 流分析作業中的參考資料，通常將在查詢中使用[參考資料 JOIN。](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) 如需詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)。
 
 目前僅支援本機參考資料。 當作業部署到 IoT Edge 裝置時，它會從使用者定義的檔案路徑載入參考資料。
 
@@ -184,7 +184,7 @@ ASA Edge 作業可以從 IoT Edge 裝置上執行的其他模組取得輸入和�
 
 1. 建立作業的新輸入。
 
-2. 選擇 [參考資料] 作為 [來源類型]。
+2. 選擇 [參考資料]**** 作為 [來源類型]****。
 
 3. 在裝置上備妥參考資料檔案。 針對 Windows 容器，請將參考資料檔案放在本機磁碟機上，並將本機磁碟機與 Docker 容器共用。 針對 Linux 容器，請建立 Docker 磁碟區，並在磁碟區上填入資料檔案。
 
@@ -202,35 +202,35 @@ IoT Edge 上的參考資料更新會由部署觸發。 觸發之後，ASA 模組
 * [Azure IoT Edge 串流分析授權](https://go.microsoft.com/fwlink/?linkid=862827)。 
 * [Azure IoT Edge 串流分析的第三方通知](https://go.microsoft.com/fwlink/?linkid=862828)。
 
-## <a name="azure-stream-analytics-module-image-information"></a>Azure 串流分析模組映射資訊 
+## <a name="azure-stream-analytics-module-image-information"></a>Azure 流分析模組映射資訊 
 
-此版本資訊上次更新日期為2019-06-27：
+此版本資訊上次更新于 2019-06-27：
 
-- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
-   - 基底映射： microsoft/dotnet： 2.1.6-runtime-alpine 3。7
-   - platform.object
+- 影像：`mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
+   - 基本映射：微軟/點網：2.1.6-運行時-阿爾卑斯3.7
+   - 平臺：
       - 架構： amd64
-      - 作業系統： linux
+      - os： linux
   
-- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
-   - 基底映射： microsoft/dotnet： 2.1.6-runtime-bionic-arm32v7
-   - platform.object
-      - 架構： arm
-      - 作業系統： linux
+- 影像：`mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
+   - 基本映射：微軟/點網：2.1.6-運行時-仿生-臂32v7
+   - 平臺：
+      - 結構：手臂
+      - os： linux
   
-- 映射： `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
-   - 基底映射： microsoft/dotnet： 2.1.6-runtime-nanoserver-1809
-   - platform.object
+- 影像：`mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
+   - 基本映射：微軟/dotnet：2.1.6 執行時間-納米伺服器-1809
+   - 平臺：
       - 架構： amd64
-      - os： windows
+      - os： 視窗
       
       
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請參閱 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure Iot Edge 的詳細資訊](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
+* [有關 Azure Iot 邊緣的詳細資訊](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA IoT Edge 教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [使用 Visual Studio 工具來開發串流分析 Edge 作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [使用 API 實作適用於串流分析的 CI/CD](stream-analytics-cicd-api.md)

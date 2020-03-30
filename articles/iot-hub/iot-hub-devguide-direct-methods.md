@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: 4732304384b8c221ae7c8d99da7f714613ad9050
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4040a4d0cf3fadf7a6e07c0e03e105975d17040
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499258"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -36,7 +36,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 > 當您在裝置上叫用直接方法時，屬性名稱和值只能包含 US-ASCII 可列印英數字元，下列集合中的任何字元除外︰``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
 > 
 
-直接方法是同步的，而且在超時時間之後成功或失敗（預設值：30秒，可設定為5到300秒）。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
+直接方法是同步的，在超時期間後成功或失敗（預設值：30 秒，可設置在 5 到 300 秒之間）。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
 
 直接方法從雲端來說，僅限使用 HTTPS，從裝置端來說，則使用 MQTT 或 AMQP。
 
@@ -50,7 +50,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 裝置上的直接方法引動過程是 HTTPS 呼叫，由下列項目組成︰
 
-* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/invokedevicemethod)：
+* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/devicemethod/invokedevicemethod)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -58,7 +58,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 * POST *方法*
 
-* 標頭，包含授權、要求識別碼、內容類型及內容編碼。
+* 標頭**，包含授權、要求識別碼、內容類型及內容編碼。
 
 * 透明 JSON *本文*格式如下︰
 
@@ -73,9 +73,9 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
     }
     ```
 
-在要求中提供為 `responseTimeoutInSeconds` 的值，就是 IoT 中樞服務必須等待完成裝置上的直接方法執行的時間量。 將此超時時間設定為至少是裝置預期的直接方法執行時間。 如果未提供 timeout，則會使用預設值30秒。 `responseTimeoutInSeconds` 的最小和最大值分別為5和300秒。
+請求`responseTimeoutInSeconds`中提供的值是 IoT 中心服務在設備上等待完成直接方法執行的時間量。 將此超時設置為至少與設備直接方法的預期執行時間一樣長。 如果未提供超時，則使用預設值 30 秒。 的`responseTimeoutInSeconds`最小值和最大值分別為 5 和 300 秒。
 
-在要求中提供為 `connectTimeoutInSeconds` 的值，是呼叫直接方法的時間量，IoT 中樞服務必須等待中斷連線的裝置才會上線。 預設值為0，表示在直接方法叫用時，裝置必須已上線。 `connectTimeoutInSeconds` 的最大值為300秒。
+請求`connectTimeoutInSeconds`中提供的值是調用直接方法時的時間量，IoT 中心服務必須等待斷開連接的設備連線。 預設值為 0，這意味著設備在調用直接方法時必須已連線。 的`connectTimeoutInSeconds`最大值為 300 秒。
 
 
 #### <a name="example"></a>範例
@@ -102,11 +102,11 @@ curl -X POST \
 後端應用程式會接收由下列項目組成的回應：
 
 * *HTTP 狀態碼*：
-  * 200表示成功執行直接方法;
-  * 404表示任一裝置識別碼無效，或裝置在叫用直接方法時未上線，並于之後 `connectTimeoutInSeconds` （使用伴隨的錯誤訊息來瞭解根本原因）;
-  * 504表示因裝置未回應 `responseTimeoutInSeconds`內的直接方法呼叫而導致的閘道超時。
+  * 200 表示直接方法的成功執行;
+  * 404 指示任一裝置識別碼 無效，或者設備在調用直接方法`connectTimeoutInSeconds`後未連線（使用附帶的錯誤訊息來瞭解根本原因）;
+  * 504 表示閘道超時是由於設備未回應 中的`responseTimeoutInSeconds`直接方法調用而導致的。
 
-* 標頭，包含 ETag、要求識別碼、內容類型及內容編碼。
+* 標頭**，包含 ETag、要求識別碼、內容類型及內容編碼。
 
 * JSON *本文*格式如下︰
 
@@ -178,9 +178,9 @@ AMQP 訊息會送達代表方法要求的接收連結。 它包含下列區段�
 
 裝置會建立傳送連結，以在 `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` 位址上傳回方法回應。
 
-此方法的回應會在傳送連結上傳回，且結構如下：
+該方法的回應在發送連結上返回，其結構如下：
 
-* 相互關聯識別碼屬性，內含方法的要求訊息中所傳遞的要求識別碼。
+* 相關 ID 屬性，其中包含在方法的請求消息中傳遞的請求 ID。
 
 * 名為 `IoThub-status` 的應用程式屬性，內含使用者提供的方法狀態。
 
@@ -190,7 +190,7 @@ AMQP 訊息會送達代表方法要求的接收連結。 它包含下列區段�
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞公開給執行階段和管理作業的各種端點。
+* [IoT 中心終結點](iot-hub-devguide-endpoints.md)描述每個 IoT 中心為運行時和管理操作公開的各種終結點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)說明使用「IoT 中樞」時，適用的配額及所預期的節流行為。
 

@@ -1,20 +1,18 @@
 ---
-title: 發行應用程式的要求
-description: 》一文中的指示來佈建虛擬裝置，並與該虛擬裝置連線。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: 請求發佈應用程式
+description: 應用在合作夥伴中心市場中發佈資訊。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bbe829314358b42b52db51d65b3e76d438eb1f87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285413"
 ---
 # <a name="request-to-publish-the-app"></a>發佈應用程式的要求
 

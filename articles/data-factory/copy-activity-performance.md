@@ -1,6 +1,6 @@
 ---
-title: 複製活動效能和擴充性指南
-description: 瞭解當您使用複製活動時，會影響 Azure Data Factory 中資料移動效能的關鍵因素。
+title: 複製活動性能和可伸縮性指南
+description: 瞭解在使用複製活動時影響 Azure 資料工廠中資料移動性能的關鍵因素。
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,38 +13,38 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261394"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>複製活動效能和擴充性指南
+# <a name="copy-activity-performance-and-scalability-guide"></a>複製活動性能和可伸縮性指南
 
-> [!div class="op_single_selector" title1="選取您要使用的 Azure Data Factory 版本："]
-> * [第 1 版](v1/data-factory-copy-activity-performance.md)
-> * [目前的版本](copy-activity-performance.md)
+> [!div class="op_single_selector" title1="選擇正在使用的 Azure 資料工廠版本："]
+> * [版本 1](v1/data-factory-copy-activity-performance.md)
+> * [當前版本](copy-activity-performance.md)
 
-無論您想要從 data lake 或企業資料倉儲（EDW）執行大規模資料移轉至 Azure，或想要將大規模資料從不同來源內嵌到 Azure 以進行 big data 分析，請務必達到最佳效能，並延展性.  Azure Data Factory 提供高效能、彈性且符合成本效益的機制來內嵌資料，讓資料工程師更適合想要建立高效能且可調整規模的資料內嵌管線。
+無論您是要執行從資料湖或企業資料倉儲 （EDW） 到 Azure 的大規模資料移轉，還是希望將資料從不同源大規模引入 Azure 以進行大資料分析，實現最佳性能和可 伸縮 性。  Azure 資料工廠提供了一種性能、彈性且經濟高效的機制，用於大規模引入資料，非常適合希望構建性能高且可擴展的資料引入管道的資料工程師。
 
 閱讀本文後，您將能夠回答下列問題：
 
-- 我可以針對資料移轉和資料內嵌案例使用 ADF 複製活動，達到何種層級的效能和擴充性？
+- 使用 ADF 複製活動進行資料移轉和資料引入方案，我可以達到什麼級別的性能和可擴充性？
 
-- 為了微調 ADF 複製活動的效能，我應該採取哪些步驟？
-- 我可以使用哪些 ADF 效能優化旋鈕，將單一複製活動執行的效能優化？
-- 在優化複製效能時，ADF 以外的其他因素會被考慮嗎？
+- 我應該採取哪些步驟來調整 ADF 複製活動的性能？
+- 我可以利用什麼 ADF perf 優化旋鈕來優化單個複製活動運行的性能？
+- 在優化複製性能時，除 ADF 之外需要考慮哪些其他因素？
 
 > [!NOTE]
-> 如果您一般不熟悉複製活動，請參閱[複製活動總覽](copy-activity-overview.md)，再閱讀本文。
+> 如果您通常不熟悉複製活動，請參閱閱讀本文之前[的副本活動概述](copy-activity-overview.md)。
 
-## <a name="copy-performance-and-scalability-achievable-using-adf"></a>使用 ADF 可達到複製效能和擴充性
+## <a name="copy-performance-and-scalability-achievable-using-adf"></a>使用 ADF 可實現的複製性能和可擴充性
 
-ADF 提供無伺服器架構，允許不同層級的平行處理原則，讓開發人員能夠建立管線來充分利用您的網路頻寬，以及儲存 IOPS 和頻寬，以最大化您環境的資料移動輸送量。  這表示您可以藉由測量來來源資料存放區、目的地資料存放區，以及來源與目的地之間的網路頻寬所提供的最小輸送量來估計您可達到的輸送量。  下表根據您環境的資料大小和頻寬限制來計算複製持續時間。 
+ADF 提供一種無伺服器架構，允許在不同級別上並行化，允許開發人員構建管道，以充分利用您的網路頻寬以及存儲 IOPS 和頻寬，從而最大限度地提高環境的資料移動輸送量。  這意味著可以通過測量來源資料存儲、目標資料存儲和源和目標之間的網路頻寬提供的最低輸送量來估計您所能實現的輸送量。  下表根據資料大小和環境的頻寬限制計算複製持續時間。 
 
-| 資料大小/ <br/> bandwidth | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| 資料大小 / <br/> bandwidth | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
-| **1 GB**                    | 2.7 分鐘    | 1.4 分鐘   | 0.3 分鐘   | 0.1 分鐘  | 0.03 分鐘 | 0.01 分鐘 | 0.0 分鐘   |
+| **1 GB**                    | 2.7 分鐘    | 1.4 分鐘   | 0.3 分鐘   | 0.1 分鐘  | 0.03 分鐘 | 0.01 分 | 0.0 分鐘   |
 | **10 GB**                   | 27.3 分鐘   | 13.7 分鐘  | 2.7 分鐘   | 1.3 分鐘  | 0.3 分鐘  | 0.1 分鐘  | 0.03 分鐘  |
 | **100 GB**                  | 4.6 小時    | 2.3 小時   | 0.5 小時   | 0.2 小時  | 0.05 小時 | 0.02 小時 | 0.0 小時   |
 | **1 TB**                    | 46.6 小時   | 23.3 小時  | 4.7 小時   | 2.3 小時  | 0.5 小時  | 0.2 小時  | 0.05 小時  |
@@ -53,73 +53,73 @@ ADF 提供無伺服器架構，允許不同層級的平行處理原則，讓開�
 | **1 PB**                    | 64.7 月    | 32.4 月   | 6.5 月    | 3.2 月   | 0.6 月   | 0.3 月   | 0.06 月   |
 | **10 PB**                   | 647.3 月   | 323.6 月  | 64.7 月   | 31.6 月  | 6.5 月   | 3.2 月   | 0.6 月    |
 
-ADF 複製可在不同層級進行調整：
+ADF 副本可擴展到不同級別：
 
-![ADF 複製的縮放方式](media/copy-activity-performance/adf-copy-scalability.png)
+![ADF 副本如何縮放](media/copy-activity-performance/adf-copy-scalability.png)
 
-- ADF 控制流程可以平行啟動多個複製活動，例如，[針對每個迴圈](control-flow-for-each-activity.md)使用。
-- 單一複製活動可以利用可調整的計算資源：使用 Azure Integration Runtime 時，您可以用無伺服器的方式為每個複製活動指定[最多 256 diu](#data-integration-units) ;使用自我裝載的 Integration Runtime 時，您可以手動相應增加機器或相應放大至多部電腦（[最多4個節點](create-self-hosted-integration-runtime.md#high-availability-and-scalability)），而單一複製活動會在所有節點上分割其檔案集。
-- 單一複製活動會[以平行方式](#parallel-copy)使用多個執行緒讀取和寫入資料存放區。
+- ADF 控制流可以並行啟動多個複製活動，例如使用[For each 迴圈](control-flow-for-each-activity.md)。
+- 單個複製活動可以利用可擴展的計算資源：在使用 Azure 集成運行時時，您可以以無伺服器方式為每個複製活動指定[多達 256 個 DIA;](#data-integration-units)使用自託管集成運行時時，可以手動擴展電腦或擴展到多台電腦（[最多 4 個節點](create-self-hosted-integration-runtime.md#high-availability-and-scalability)），單個複製活動將跨所有節點對其檔集進行分區。
+- 單個複製活動使用[並行的](#parallel-copy)多個執行緒從和寫入資料存儲。
 
 ## <a name="performance-tuning-steps"></a>效能微調步驟
 
-採取下列步驟，使用複製活動來微調 Azure Data Factory 服務的效能。
+執行這些步驟以使用複製活動調整 Azure 資料工廠服務的性能。
 
-1. **挑選測試資料集並建立基準。** 在開發階段，使用複製活動針對代表性資料範例來測試您的管線。 您選擇的資料集應該代表您的一般資料模式（資料夾結構、檔案模式、資料結構描述等等），而且夠大以評估複製的效能，例如，需要10分鐘或更久的時間才能完成複製活動。 在[複製活動監視](copy-activity-monitoring.md)之後收集執行詳細資料和效能特性。
+1. **拾取測試資料集並建立基線。** 在開發階段，使用具有代表性的資料示例的複製活動來測試管道。 您選擇的資料集應表示典型的資料模式（資料夾結構、檔案模式、資料架構等），並且足夠大，足以評估複製性能，例如，完成複製活動需要 10 分鐘或更長時間。 在[複製活動監視](copy-activity-monitoring.md)後收集執行詳細資訊和性能特徵。
 
-2. **如何將單一複製活動的效能最大化**：
+2. **如何最大限度地提高單個複製活動的性能**：
 
-   一開始，我們建議您先使用單一複製活動來最大化效能。
+   首先，我們建議您首先使用單個複製活動最大限度地提高性能。
 
-   - **如果複製活動是在 Azure Integration Runtime 上執行：** 開始使用[資料整合單位（DIU）](#data-integration-units)的預設值和[平行複製](#parallel-copy)設定。 
+   - **如果在 Azure 集成運行時執行複製活動：** 從[資料整合單元 （DIU）](#data-integration-units)和[並行複製](#parallel-copy)設置的預設值開始。 
 
-   - **如果要在自我裝載的 Integration Runtime 上執行複製活動：** 我們建議您將專用的電腦與裝載資料存放區的伺服器分開使用，以裝載整合執行時間。 從[平行複製](#parallel-copy)設定的預設值開始，並使用自我裝載 IR 的單一節點。  
+   - **如果在自託管的集成運行時執行複製活動：** 我們建議您使用獨立于託管資料存儲的伺服器的專用電腦來承載集成運行時。 從[並行複製](#parallel-copy)設置的預設值開始，並使用自承載 IR 的單個節點。  
 
-   執行效能測試回合，並記下所達到的效能，以及實際使用的值，例如 Diu 和平行複製。 請參閱[複製活動監視](copy-activity-monitoring.md)以瞭解如何收集所使用的執行結果和效能設定，並瞭解如何[疑難排解複製活動的效能](copy-activity-performance-troubleshooting.md)，以找出並解決瓶頸。 
+   執行效能測試運行，並記下已實現的性能以及使用的實際值（如 DIA 和並行副本）。 有關如何收集使用的運行結果和性能設置的[複製活動監視](copy-activity-monitoring.md)，並瞭解如何[對複製活動性能進行故障排除](copy-activity-performance-troubleshooting.md)，以識別和解決瓶頸。 
 
-   依照疑難排解和微調指導方針，逐一查看以進行其他效能測試回合。 一旦單一複製活動執行無法達到更佳的輸送量，請考慮同時執行多個複本，同時參考步驟3，以最大化匯總輸送量。
+   在故障排除和調優指導之後，反覆運算以執行其他效能測試運行。 一旦單個複製活動運行無法實現更好的輸送量，請考慮通過同時引用步驟 3 運行多個副本來最大化聚合輸送量。
 
 
-3. **如何藉由同時執行多個複本，將匯總輸送量最大化：**
+3. **如何通過同時運行多個副本來最大化聚合輸送量：**
 
-   現在您已將單一複製活動的效能最大化，如果您尚未達到環境的輸送量上限（網路、來源資料存放區和目的地資料存放區），您可以使用 ADF 控制流程結構（例如[For each 迴圈](control-flow-for-each-activity.md)）平行執行多個複製活動。 請參閱[從多個容器複製](solution-template-copy-files-multiple-containers.md)檔案、將[資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md)，或[使用控制資料表](solution-template-bulk-copy-with-control-table.md)解決方案範本作為一般範例進行大量複製。
+   現在，您已經最大化了單個複製活動的性能，如果您尚未達到環境的輸送量上限（網路、來源資料存儲和目標資料存儲），則可以使用 ADF 控制流構造（如[For Each 迴圈](control-flow-for-each-activity.md)）並行運行多個複製活動。 請參閱[從多個容器複製檔](solution-template-copy-files-multiple-containers.md)、[將資料從 Amazon S3 遷移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解決方案範本進行批量複製作為一般示例。
 
-5. **將設定擴充到整個資料集。** 當您對執行結果及效能感到滿意時，可以展開定義和管線來涵蓋整個資料集。
+5. **將配置擴展到整個資料集。** 當您對執行結果和性能感到滿意時，可以展開定義和管道以覆蓋整個資料集。
 
-## <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
+## <a name="troubleshoot-copy-activity-performance"></a>排除複製活動性能的故障
 
-請遵循[效能微調步驟](#performance-tuning-steps)，為您的案例規劃和執行效能測試。 並瞭解如何針對[複製活動效能疑難排解](copy-activity-performance-troubleshooting.md)Azure Data Factory 中的每個複製活動執行效能問題進行疑難排解。
+按照[性能調優步驟](#performance-tuning-steps)為方案規劃和執行效能測試。 瞭解如何從["疑難排解複製活動性能"](copy-activity-performance-troubleshooting.md)中解決 Azure 資料工廠中每個複製活動運行的性能問題。
 
-## <a name="copy-performance-optimization-features"></a>複製效能優化功能
+## <a name="copy-performance-optimization-features"></a>複製性能優化功能
 
-Azure Data Factory 提供下列效能優化功能：
+Azure 資料工廠提供以下性能優化功能：
 
 - [資料整合單位](#data-integration-units)
-- [自我裝載整合執行時間的擴充性](#self-hosted-integration-runtime-scalability)
+- [自託管集成運行時可擴充性](#self-hosted-integration-runtime-scalability)
 - [平行複製](#parallel-copy)
 - [分段複製](#staged-copy)
 
 ### <a name="data-integration-units"></a>資料整合單位
 
-資料整合單位是一種量值，代表 Azure Data Factory 中單一單位的能力（CPU、記憶體和網路資源分配的組合）。 資料整合單位僅適用于[Azure 整合運行](concepts-integration-runtime.md#azure-integration-runtime)時間，但不會套用至[自我裝載整合運行](concepts-integration-runtime.md#self-hosted-integration-runtime)時間。 [詳細資訊](copy-activity-performance-features.md#data-integration-units)。
+資料整合單元是表示 Azure 資料工廠中單個單元的功率（CPU、記憶體和網路資源分配的組合）的度量值。 資料整合單元僅適用于[Azure 集成運行時](concepts-integration-runtime.md#azure-integration-runtime)，但不應用於[自託管的集成運行時](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [深入了解](copy-activity-performance-features.md#data-integration-units)。
 
-### <a name="self-hosted-integration-runtime-scalability"></a>自我裝載整合執行時間的擴充性
+### <a name="self-hosted-integration-runtime-scalability"></a>自託管集成運行時可擴充性
 
-若要裝載增加的並行工作負載，或要達到更高的效能，您可以擴充或相應放大自我裝載的 Integration Runtime。 [詳細資訊](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
+要承載不斷增加的併發工作負載或實現更高的性能，可以向上擴展或擴展自託管的集成運行時。 [深入了解](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
 
 ### <a name="parallel-copy"></a>平行複製
 
-您可以設定 [平行複製]，以指出您想要複製活動使用的平行處理原則。 您可以將此屬性視為複製活動內的最大執行緒數目，這會從來源讀取或以平行方式寫入接收資料存放區。 [詳細資訊](copy-activity-performance-features.md#parallel-copy)。
+您可以設置並行複製以指示您希望複製活動使用的並行性。 可以將此屬性視為複製活動中從源讀取或並行寫入接收器資料存儲的最大執行緒數。 [深入了解](copy-activity-performance-features.md#parallel-copy)。
 
 ### <a name="staged-copy"></a>分段複製
 
-從來源資料存放區將資料複製到接收資料存放區時，您可以選擇使用 Blob 儲存體做為過渡暫存存放區。 [詳細資訊](copy-activity-performance-features.md#staged-copy)。
+從來源資料存放區將資料複製到接收資料存放區時，您可以選擇使用 Blob 儲存體做為過渡暫存存放區。 [深入了解](copy-activity-performance-features.md#staged-copy)。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動概觀](copy-activity-overview.md)
-- [針對複製活動效能進行疑難排解](copy-activity-performance-troubleshooting.md)
-- [複製活動效能優化功能](copy-activity-performance-features.md)
-- [使用 Azure Data Factory 將資料從您的 data lake 或資料倉儲遷移至 Azure](data-migration-guidance-overview.md)
-- [將資料從 Amazon S3 遷移至 Azure 儲存體](data-migration-guidance-s3-azure-storage.md)
+- [複製活動概述](copy-activity-overview.md)
+- [排除複製活動性能的故障](copy-activity-performance-troubleshooting.md)
+- [複製活動性能優化功能](copy-activity-performance-features.md)
+- [使用 Azure 資料工廠將資料從資料湖或資料倉儲遷移到 Azure](data-migration-guidance-overview.md)
+- [將資料從 Amazon S3 遷移到 Azure 儲存體](data-migration-guidance-s3-azure-storage.md)

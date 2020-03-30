@@ -1,20 +1,20 @@
 ---
-title: Reliable Services 的生命週期總覽
-description: 瞭解適用于具狀態和無狀態服務的 Azure Service Fabric Reliable Services 應用程式中的生命週期事件。
+title: 可靠服務生命週期概述
+description: 瞭解 Azure 服務結構可靠服務應用程式中的生命週期事件，用於有狀態和無狀態服務。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: fe338ca3f25cd606da7f95f6c9437a3cd3dc4e69
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258274"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命週期概觀
 > [!div class="op_single_selector"]
-> * [Windows 上的 C# ](service-fabric-reliable-services-lifecycle.md)
+> * [C# 在 Windows 上](service-fabric-reliable-services-lifecycle.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-lifecycle-java.md)
 >
 >
@@ -27,7 +27,7 @@ ms.locfileid: "79258274"
   - 開啟任何傳回的接聽程式，能夠與服務進行通訊。
   - 會呼叫服務的 **RunAsync** 方法，以允許服務進行長時間執行的工作或背景工作。
 - 在關閉期間：
-  - 會取消傳遞給 **RunAsync** 的取消權杖，並關閉接聽程式。
+  - 傳遞給**RunAsync**的取消權杖將被取消，攔截器將關閉。
   - 接聽程式關閉之後，就解構服務物件本身。
 
 這些事件的確切順序還有一些細節可討論。 根據 Reliable Service 是無狀態或具狀態而定，事件的順序可能稍有變化。 此外，對於具狀態服務，我們必須處理「主要」複本互換情況。 在此序列期間，「主要」角色會轉移至另一個複本 (或回來)，但服務不會關閉。 最後，我們必須考慮錯誤或失敗狀況。
@@ -47,7 +47,7 @@ ms.locfileid: "79258274"
     - 在服務的建構函式中。
     - 在 `CreateServiceInstanceListeners()` 呼叫期間。
     - 作為接聽程式本身建構的一部分。
-  - 有時候，**RunAsync** 中的程式碼需要等到接聽程式開啟之後才會啟動。 在此情況下，額外的協調是必要的。 一個常見的解決方案是接聽程式內有旗標，指出完成的時間。 接著，該旗標會先簽入 **RunAsync**，然後再繼續進行實際工作。
+  - 有時候，**RunAsync** 中的程式碼需要等到接聽程式開啟之後才會啟動。 在此情況下，額外的協調是必要的。 一個常見的解決方案是接聽程式內有旗標，指出完成的時間。 然後，在**RunAsync**中檢查此標誌，然後再繼續實際工作。
 
 ## <a name="stateless-service-shutdown"></a>無狀態服務關閉
 針對關閉無狀態服務，也依循相同的模式，只是順序相反：
@@ -73,7 +73,7 @@ ms.locfileid: "79258274"
 類似於無狀態服務，在建立和開啟接聽程式及呼叫 **RunAsync** 時，不會協調先後順序。 如果您需要協調，解決方案大致相同。 具狀態服務還有一個額外情況。 假設抵達通訊接聽程式的呼叫需要[可靠的集合](service-fabric-reliable-services-reliable-collections.md)內保留的資訊。
 
    > [!NOTE]  
-   > 因為在還無法讀取或寫入可靠的集合，且 **RunAsync** 也還無法啟動之前，通訊接聽程式可能先開啟，因此，一些額外的協調有必要。 最簡單且最常見的解決方法是由通訊接聽程式傳回錯誤碼，讓用戶端知道要重試要求。
+   > 由於通信攔截器可以在可靠集合可讀或可寫入之前打開，並且在**RunAsync**啟動之前，還需要進行一些額外的協調。 最簡單且最常見的解決方法是由通訊接聽程式傳回錯誤碼，讓用戶端知道要重試要求。
 
 ## <a name="stateful-service-shutdown"></a>具狀態服務關閉
 類似於無狀態服務，關閉期間的生命週期事件與啟動期間相同，但順序相反。 具狀態服務關閉時會發生下列事件︰
@@ -90,7 +90,7 @@ ms.locfileid: "79258274"
 3. `StatefulServiceBase.OnCloseAsync()` 完成之後，就解構服務物件。
 
 ## <a name="stateful-service-primary-swaps"></a>具狀態服務主要複本互換
-當具狀態服務執行時，只有此具狀態服務的「主要」複本會開啟通訊接聽程式和呼叫 **RunAsync** 方法。 建構次要複本，但看不到進一步的呼叫。 當具狀態服務正在執行時，目前的主要複本可能因為錯誤或叢集平衡最佳化而變更。 就複本可見的生命週期事件來說，這代表什麼？ 具狀態複本所看到的行為，取決於它在互換期間是降級或升級的複本。
+在運行有狀態服務時，只有該狀態服務的主副本打開其通信攔截器並調用**其 RunAsync**方法。 建構次要複本，但看不到進一步的呼叫。 當具狀態服務正在執行時，目前的主要複本可能因為錯誤或叢集平衡最佳化而變更。 就複本可見的生命週期事件來說，這代表什麼？ 具狀態複本所看到的行為，取決於它在互換期間是降級或升級的複本。
 
 ### <a name="for-the-primary-thats-demoted"></a>降級的主要複本
 針對降級的主要複本，Service Fabric 需要此複本停止處理訊息並結束它正在進行的任何背景工作。 因此，這個步驟類似於服務關閉時的情形。 差別在於服務仍為「次要」，並不會解構或關閉。 呼叫下列 API：
@@ -113,7 +113,7 @@ Service Fabric 基於各種原因變更具狀態服務的「主要」。 最常�
 
 未完全處理取消作業的服務將會遇到幾個問題。 這些作業可能會變慢，因為 Service Fabric 會以正常程序等待服務停止。 這可能最終會導致逾時的失敗升級和復原。 無法採用取消權杖也可能造成不平衡的叢集。 叢集變成不平衡，因為節點變成經常性存取，但無法重新平衡服務，因為將服務移至其他地方耗費太多時間。 
 
-因為這些服務是具有狀態的，所以它們會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當「主要」降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 應該正確處理這些例外狀況。 Service Fabric 擲回的例外狀況可分為永久性 [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) 和暫時性[(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) 類別。 永久性例外狀況應該要記錄並擲回，而暫時性例外狀況可能會根據一些重試邏輯來重試。
+因為這些服務是具有狀態的，所以它們會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當「主要」降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 應該正確處理這些例外狀況。 服務結構引發的異常分為永久[（`FabricException`）](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet)和瞬態[（`FabricTransientException`）](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet)類別。 永久性例外狀況應該要記錄並擲回，而暫時性例外狀況可能會根據一些重試邏輯來重試。
 
 處理由於使用與服務生命週期事件搭配使用的 `ReliableCollections` 而造成的例外況況，是測試和驗證可靠服務的重要環節。 建議一律先在低於負載的情況下執行服務，同時執行升級和[混亂測試](service-fabric-controlled-chaos.md)，然後再部署到生產。 下列基本步驟協助確保您的服務正確地實作，並正確地處理生命週期事件。
 
@@ -128,5 +128,5 @@ Service Fabric 基於各種原因變更具狀態服務的「主要」。 最常�
 
 ## <a name="next-steps"></a>後續步驟
 - [Reliable Services 簡介](service-fabric-reliable-services-introduction.md)
-- [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
-- [複本和執行個體](service-fabric-concepts-replica-lifecycle.md)
+- [可靠的服務快速啟動](service-fabric-reliable-services-quick-start.md)
+- [副本和實例](service-fabric-concepts-replica-lifecycle.md)

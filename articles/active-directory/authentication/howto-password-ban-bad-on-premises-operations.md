@@ -1,6 +1,6 @@
 ---
-title: 啟用內部部署 Azure AD 密碼保護
-description: 瞭解如何為內部部署 Active Directory Domain Services 環境啟用 Azure AD 密碼保護
+title: 啟用本地 Azure AD 密碼保護
+description: 瞭解如何為本地活動目錄域服務環境啟用 Azure AD 密碼保護
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,63 +12,63 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263812"
 ---
-# <a name="enable-on-premises-azure-active-directory-password-protection"></a>啟用內部部署 Azure Active Directory 密碼保護
+# <a name="enable-on-premises-azure-active-directory-password-protection"></a>啟用本地 Azure 活動目錄密碼保護
 
-使用者通常會建立使用像是學校、體育小組或知名人等常見當地用語的密碼。 這些密碼很容易猜測，而且不會受到字典型攻擊的危害。 為了在您的組織中強制使用強式密碼，Azure Active Directory （Azure AD）密碼保護提供了全域和自訂的禁用密碼清單。 如果這些禁用密碼清單中有相符的結果，密碼變更要求就會失敗。
+使用者通常創建使用常見本地單詞（如學校、運動隊或名人）的密碼。 這些密碼很容易猜測，並且對基於字典的攻擊很弱。 要在組織中強制實施強式密碼，Azure 活動目錄 （Azure AD） 密碼保護提供了全域和自訂禁止的密碼清單。 如果這些禁用密碼清單中有匹配項，則密碼變更要求將失敗。
 
-若要保護您的內部部署 Active Directory Domain Services （AD DS）環境，您可以安裝和設定 Azure AD 密碼保護，以與您的內部內部部署 DC 搭配使用。 本文說明如何為您的內部部署環境啟用 Azure AD 密碼保護。
+為了保護本地活動目錄域服務 （AD DS） 環境，可以安裝和配置 Azure AD 密碼保護以使用上置目錄 DC。 本文介紹如何為本地環境啟用 Azure AD 密碼保護。
 
-如需有關 Azure AD 密碼保護在內部部署環境中如何運作的詳細資訊，請參閱[如何強制執行 Windows Server 的 Azure AD 密碼保護 Active Directory](concept-password-ban-bad-on-premises.md)。
+有關 Azure AD 密碼保護在本地環境中的工作方式的詳細資訊，請參閱[如何為 Windows 伺服器活動目錄強制實施 Azure AD 密碼保護](concept-password-ban-bad-on-premises.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文說明如何為您的內部部署環境啟用 Azure AD 密碼保護。 在您完成本文之前，請在內部部署 AD DS 環境中[安裝並註冊 Azure AD 的密碼保護 proxy 服務和 DC 代理](howto-password-ban-bad-on-premises-deploy.md)程式。
+本文介紹如何為本地環境啟用 Azure AD 密碼保護。 在完成本文之前，請在本地 AD DS 環境中[安裝和註冊 Azure AD 密碼保護代理服務和 DC 代理](howto-password-ban-bad-on-premises-deploy.md)。
 
-## <a name="enable-on-premises-password-protection"></a>啟用內部部署密碼保護
+## <a name="enable-on-premises-password-protection"></a>啟用本地密碼保護
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至**Azure Active Directory** > 的**安全性** > **驗證方法** > **密碼保護**。
-1. 將 [**啟用 Windows Server 上的密碼保護 Active Directory** ] 的選項設定為 *[是]* 。
+1. 登錄到 Azure[門戶](https://portal.azure.com)並流覽到**Azure 活動目錄** > **安全** > **身份驗證方法** > **密碼保護**。
+1. 將 Windows**伺服器活動目錄中啟用密碼保護**的選項設置為 *"是*"。
 
-    當此設定設為 [*否*] 時，所有已部署的 Azure AD 密碼保護 DC 代理程式都會進入靜止模式，其中所有的密碼都已接受。 不會執行任何驗證活動，也不會產生 audit 事件。
+    當此設置設置為 *"否*"時，所有已部署的 Azure AD 密碼保護 DC 代理進入靜止模式，所有密碼均接受原樣。 不執行任何驗證活動，也不會生成審核事件。
 
-1. 建議您一開始先將**模式**設定為*Audit*。 在您熟悉此功能以及對組織中的使用者所造成的影響之後，您可以將**模式**切換為 [*強制*]。 如需詳細資訊，請參閱下一節的[操作模式](#modes-of-operation)。
-1. 在準備就緒時，選取 [儲存]。
+1. 建議最初將**模式**設置為*審核*。 熟悉該功能及其對組織中使用者的影響後，可以將**模式**切換到*強制*。 有關詳細資訊，請參閱以下有關[操作模式的部分](#modes-of-operation)。
+1. 在準備就緒時，選取 [儲存]****。
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>作業模式
 
-當您啟用內部部署 Azure AD 密碼保護時，您可以使用 [ *audit* ] 模式或 [*強制執行*] 模式。 我們建議您一律以 audit 模式開始進行初始部署和測試。 接著，您應該監視事件記錄檔中的專案，以預期在啟用*強制*模式後是否會干擾任何現有的操作程式。
+啟用本地 Azure AD 密碼保護時，可以使用*審核*模式或*強制*模式。 我們建議初始部署和測試始終以稽核模式開始。 然後，應監視事件日誌中的條目，以預測啟用*強制*模式後，是否存在任何現有操作進程是否會受到干擾。
 
-### <a name="audit-mode"></a>Audit 模式
+### <a name="audit-mode"></a>稽核模式
 
-「 *Audit*模式」是用來在「假設」模式下執行軟體的方式。 每個 Azure AD 密碼保護 DC 代理程式服務都會根據目前作用中的原則來評估傳入的密碼。
+*審核*模式旨在作為在"如果"模式下運行軟體的一種方式。 每個 Azure AD 密碼保護 DC 代理服務都根據當前活動策略評估傳入密碼。
 
-如果目前的原則設定為處於 audit 模式，則「錯誤」密碼會導致事件記錄檔訊息，但會進行處理和更新。 此行為是「audit」和「強制執行」模式之間的唯一差異。 所有其他作業執行相同的工作。
+如果當前策略配置為處於稽核模式，"壞"密碼會導致事件日誌消息，但會處理和更新。 此行為是審核和強制模式之間的唯一區別。 所有其他操作都運行相同。
 
 ### <a name="enforced-mode"></a>強制模式
 
-*強制執行*模式的目的是做為最終的設定。 如同在 audit 模式時，每個 Azure AD 密碼保護 DC 代理程式服務都會根據目前作用中的原則來評估傳入的密碼。 不過，啟用強制模式時，會拒絕根據原則視為不安全的密碼。
+*強制*模式旨在作為最終配置。 與稽核模式一樣，每個 Azure AD 密碼保護 DC 代理服務根據當前活動策略評估傳入密碼。 但是，啟用強制模式時，根據策略被視為不安全的密碼將被拒絕。
 
-當 Azure AD 密碼保護 DC 代理程式在強制執行模式中拒絕密碼時，終端使用者會看到類似的錯誤，像是在傳統內部部署密碼複雜度強制執行時，他們會看到其密碼是否遭到拒絕。 例如，使用者可能會在 Windows 登入或變更密碼畫面看到下列傳統錯誤訊息：
+當 Azure AD 密碼保護 DC 代理在強制模式下拒絕密碼時，最終使用者將看到類似的錯誤，就像他們看到其密碼是否被傳統的本地密碼複雜性強制拒絕一樣。 例如，使用者可能在 Windows 登錄或更改密碼螢幕看到以下傳統錯誤訊息：
 
-*「無法更新密碼。為新密碼提供的值不符合網域的長度、複雜度或歷程記錄需求。」*
+*"無法更新密碼。為新密碼提供的值不符合域的長度、複雜性或歷史記錄要求。*
 
-這則訊息只是數個可能結果的其中一個範例。 特定的錯誤訊息會根據嘗試設定不安全密碼的實際軟體或案例而有所不同。
+這則訊息只是數個可能結果的其中一個範例。 特定錯誤訊息可能因嘗試設置不安全密碼的實際軟體或方案而異。
 
-受影響的使用者可能需要與 IT 人員合作，以瞭解新的需求，並選擇安全的密碼。
+受影響的最終使用者可能需要與其 IT 人員合作，以瞭解新要求並選擇安全密碼。
 
 > [!NOTE]
-> 當弱式密碼遭到拒絕時，Azure AD 密碼保護無法控制用戶端電腦所顯示的特定錯誤訊息。
+> Azure AD 密碼保護無法控制用戶端電腦在拒絕弱密碼時顯示的特定錯誤訊息。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要為您的組織自訂禁用密碼清單，請參閱[設定 Azure AD 密碼保護自訂禁用密碼清單](tutorial-configure-custom-password-protection.md)。
+要自訂群組織的禁止密碼清單，請參閱[配置 Azure AD 密碼保護自訂禁止密碼清單](tutorial-configure-custom-password-protection.md)。
 
-若要監視內部部署上的事件，請參閱[監視內部內部部署 Azure AD 密碼保護](howto-password-ban-bad-on-premises-monitor.md)。
+要監視上前事件，請參閱[監視前 Azure AD 密碼保護](howto-password-ban-bad-on-premises-monitor.md)。

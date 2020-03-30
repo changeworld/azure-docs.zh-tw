@@ -1,5 +1,5 @@
 ---
-title: 支援的帳戶類型-Microsoft 身分識別平臺 |Azure
+title: 支援的帳戶類型 - 微軟身份平臺 |蔚藍
 description: 有關應用程式中對象及所支援帳戶類型的概念文件
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,15 +17,15 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de90c81f56b6017b2d53ecbfb2c400a4c9f05d81
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262278"
 ---
 # <a name="supported-account-types"></a>支援的帳戶類型
 
-本文說明應用程式中支援哪些帳戶類型（有時稱為「物件」）。
+本文介紹了應用程式中支援哪些帳戶類型（有時稱為訪問群體）。
 
 <!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
 

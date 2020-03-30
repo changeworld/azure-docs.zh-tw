@@ -2,18 +2,18 @@
 title: Azure Marketplace 的虛擬機器供應項目發佈指南
 description: 本文說明發佈虛擬機器的需求，以及從 Marketplace 部署免費試用軟體的需求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818983"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288711"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>虛擬機器供應項目發佈指南
 
@@ -23,14 +23,7 @@ ms.locfileid: "73818983"
 
 ## <a name="free-trial"></a>免費試用 
 
-您可以讓使用者在使用自備授權 (BYOL) 計費模型時，存取有限期間的軟體授權，以便測試您的供應項目。 以下是部署這項供應項目的需求。 
-
-|需求  |詳細資料  |
-|---------|---------|
-|免費試用期與試用版體驗     |   客戶可以在限時內免費試用您的應用程式。 客戶不需要為您的供應項目支付任何授權或訂閱費用。 客戶不需要為基礎 Microsoft 第一方產品或服務支付費用。 所有試用版選項都會部署到您的 Azure 訂用帳戶。 您可以全權控制成本最佳化和管理。 您可以選擇免費試用或互動式示範。 無論您的選擇為何，免費試用都必須提供客戶一段預先設定的時間來試用您的供應項目，且無須支付任何額外費用。|
-|輕鬆設定、立即可用的解決方案    |  應用程式的設定和安全必須既簡單又快速。       |
-|可用性 / 執行時間    |    SaaS 應用程式或平台的執行時間必須至少達到 99.9%。     |
-|Azure Active Directory     |    您的供應項目必須允許 Azure Active Directory (Azure AD) 同盟單一登入 (SSO) (Azure AD 同盟 SSO) 並啟用同意功能。     |
+您可以讓使用者在使用自備授權 (BYOL) 計費模型時，存取有限期間的軟體授權，以便測試您的供應項目。 
 
 ## <a name="test-drive"></a>試用產品
 
@@ -63,7 +56,7 @@ ms.locfileid: "73818983"
 | Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 <ul> <li>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>如需建立 Windows VHD 的詳細資訊，請參閱[建立與 Azure 相容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
 
 >[!Note]
->雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。  如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](./cloud-solution-providers.md)。
+>雲解決方案供應商 （CSP） 合作夥伴管道加入宣告現已可用。  有關通過 Microsoft CSP 合作夥伴管道行銷產品/服務的更多資訊[，請參閱雲解決方案供應商](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

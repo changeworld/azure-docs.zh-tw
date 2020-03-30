@@ -1,5 +1,6 @@
 ---
 title: Azure Key Vault 安全世界 | Microsoft Docs
+description: Azure 金鑰保存庫是一個多租戶服務。 它在每個 Azure 位置使用一個 HSM 池。 地理區域中的所有位置共用加密邊界。
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 35d2683495a12b864378f8fb6f5edb6663d92c27
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194915"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457384"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault 安全世界和地理界限
 
@@ -36,12 +37,12 @@ Azure Key Vault 是多租用戶服務，並且在每個 Azure 位置使用硬體
 
 區域會對應至安全世界，在資料表中顯示為主要標題：
 
-在依區域的產品文章中，例如，[美國] 索引標籤包含都會對應至美國區域的美國東部、美國中部、美國西部。 
+在依區域的產品文章中，例如，[美國]**** 索引標籤包含都會對應至美國區域的美國東部、美國中部、美國西部。 
 
 >[!NOTE]
 >例外狀況是美國 DOD 東部和美國 DOD 中部有自己的安全世界。 
 
-同樣地，在 [歐洲] 索引標籤上，北歐和西歐都會對應到歐洲區域。 在 [亞太地區] 索引標籤上也是如此。
+同樣地，在 [歐洲]**** 索引標籤上，北歐和西歐都會對應到歐洲區域。 在 [亞太地區]**** 索引標籤上也是如此。
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 上的 SAP： Azure 上支援的 SAP 軟體
-description: 說明哪些 SAP 軟體支援部署在 Azure 上
+title: Azure 上的 SAP：Azure 上支援哪些 SAP 軟體
+description: 說明支援在 Azure 上部署哪些 SAP 軟體
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -13,128 +13,131 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08852a9421d714b601d724c5309153a028c960bb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460784"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支援哪些 SAP 軟體
-本文說明如何找出 Azure 部署支援的 SAP 軟體，以及所需的作業系統版本或 DBMS 版本。
+本文介紹如何瞭解 Azure 部署支援哪些 SAP 軟體，以及什麼是必要的作業系統版本或 DBMS 版本。
 
-評估，無論您目前的 SAP 軟體是否受到支援，以及您的 SAP 軟體在 Azure 中支援的 OS 和 DBMS 版本為何，您都需要存取：
+評估當前 SAP 軟體是否受支援，Azure 中的 SAP 軟體支援哪些作業系統和 DBMS 版本，您需要訪問：
 
-- SAP 支援附注
-- SAP 產品可用性對照表
+- SAP 支援說明
+- SAP 產品可用性矩陣
 
 
 
 ## <a name="general-restrictions-for-sap-workload"></a>SAP 工作負載的一般限制
-可用於 SAP 工作負載的 Azure IaaS 服務僅限於 x86-64 或 x64 硬體。 沒有適用于 SAP 工作負載的以 Sparc 或電源 CPU 為基礎的供應專案。 在其應用程式上執行的客戶，是以 IBM 大型主機或 AS400 等硬體架構為目標，或是在使用 HP-UX、Solaris 或 AIX 作業系統的作業系統上，需要將其 SAP 應用程式（包括 DBMS）變更為其中一個下列作業系統：
+可用於 SAP 工作負載的 Azure IaaS 服務僅限於 x86-64 或 x64 硬體。 沒有適用于 SAP 工作負載的基於 Sparc 或 Power CPU 的優惠。 在 IBM 大型機或 AS400 等硬體體系結構專有的作業系統上運行其應用程式的客戶，或者在使用 HP-UX、Solaris 或 AIX 的作業系統時，需要將其 SAP 應用程式（包括 DBMS）更改為以下作業系統：
 
-- 適用于 x86-64 平臺的 Windows server 64 位
-- 適用于 x86-64 平臺的 SUSE linux 64 位
-- 適用于 x86-64 平臺的 Red hat Linux 64 位
-- 適用于 x86-64 平臺的 Oracle Linux 64 位
+- x86-64 平臺的 Windows 伺服器 64 位
+- X86-64 平臺的 SUSE linux 64 位
+- 紅帽Linux 64Bit用於x86-64平臺
+- 用於 x86-64 平臺的 Oracle Linux 64 位
 
-與 SAP 軟體結合時，不支援其他作業系統版本或 Linux 發行版本。 有關特定版本和案例的確切詳細資料，將在檔中稍後記載。
+與 SAP 軟體結合使用，不支援其他作業系統版本或 Linux 發行版本。 有關特定版本和案例的準確詳細資訊將記錄在文檔的後面部分。
 
 
 ## <a name="you-start-here"></a>從這裡開始
-您的起點是[SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 當您從上到下逐一流覽此 SAP 便箋時，會顯示支援的軟體和 Vm 的數個區域
+您的起點是 SAP[支援說明#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 從上到下流覽此 SAP 說明時，將顯示支援的軟體和 VM 的幾個領域
 
-第一節列出 Azure Vm 中的 SAP 軟體一般支援的作業版本最低需求。 如果您未達到這些最低需求，並執行這些作業系統的較舊版本，您必須將作業系統版本升級為這類最低版本或更新版本。 正確的是，Azure 一般會支援某些作業系統的較舊版本。 但是列出的限制或最低發行版本是根據所執行的測試和資格，而且不會進一步擴充。 
+第一節列出了 Azure VM 中 SAP 軟體普遍支援的操作版本的最低要求。 如果您沒有達到這些最低要求並運行這些作業系統的舊版本，則需要將作業系統版本升級到此類最低版本，甚至更新版本。 Azure 通常支援其中一些作業系統的舊版本是正確的。 但列出的限制或最小版本基於已執行的測試和資格，不會進一步擴展。 
 
 
 > [!NOTE]
->有一些特定的 VM 類型、HANA 大型實例或 SAP 工作負載即將需要較新的作業系統版本。 這類案例會在整份檔中提及。 這類案例會清楚記載在 SAP 附注或其他 SAP 發行集中。
+>有一些特定的 VM 類型、HANA 大型實例或 SAP 工作負載需要更新的作業系統版本。 在檔中將提及類似案例。 類似案例清楚地記錄在 SAP 說明或其他 SAP 出版物中。
 
-下一節列出支援的版本所支援的一般 SAP 平臺，以及支援的 SAP 核心。 它會列出支援的 NetWeaver/ABAP 或 JAVA 堆疊，以及需要最小核心版本的程式。 Azure 上支援較新的 ABAP 堆疊，但不需要最小核心版本，因為 Azure 的變更是從最新堆疊的開發開始著手
+以下部分列出了受支援的版本以及受支援的 SAP 內核支援的通用 SAP 平臺。 它列出了 NetWeaver/ABAP 或 JAVA 堆疊受支援，需要最少的內核版本。 Azure 上支援較新的 ABAP 堆疊，但不需要最少的內核版本，因為 Azure 的更改是從開發較新的堆疊開始時實現的
 
 您需要檢查：
 
-- 您正在執行的 SAP 應用程式是否由所述的最低版本所涵蓋。 如果不是，您必須定義新的目標版本、簽入 SAP 產品可用性對照表、新的目標版本支援哪些作業系統組建和 DBMS 組合。 因此，您可以選擇正確的作業系統版本和 DBMS 版本
-- 您是否需要在移至 Azure 的情況中更新 SAP 核心
-- 是否需要更新 SAP 支援封裝。 特別是當您需要移至較新的 DBMS 版本時，可能需要的封裝。
+- 您正在運行的 SAP 應用程式是否包含在所述的最低版本中。 如果沒有，則需要定義新的目標版本，簽入 SAP 產品可用性矩陣、新目標版本支援哪些作業系統生成和 DBMS 組合。 因此，您可以選擇正確的作業系統版本和 DBMS 版本
+- 是否需要在遷移到 Azure 時更新 SAP 內核
+- 是否需要更新 SAP 支援包。 特別是基礎支援包，在需要遷移到較新的 DBMS 版本的情況下可能需要這些包
 
 
-下一節將詳細說明 Windows 和 Linux Azure 上的 SAP 所支援的其他 SAP 產品和 DBMS 版本。 
-
-> [!NOTE]
-> 會謹慎選擇不同 DBMS 的最小版本，而且可能不一定會反映不同 DBMS 廠商在 Azure 上支援的整個 DBMS 版本。 許多 SAP 工作負載的相關考慮已納入定義這些最低版本。 測試和驗證舊版的 DBMS 版本並沒有任何麻煩。 
+下一節將介紹 SAP 支援的 Windows 和 Linux Azure 上支援的其他 SAP 產品和 DBMS 版本的詳細資訊。 
 
 > [!NOTE]
-> 列出的最低發行版本代表舊版的作業系統和資料庫版本。 我們強烈建議使用最新的作業系統版本和資料庫版本。 在許多情況下，較新的作業系統和資料庫版本會將在公用雲端中執行的使用案例納入考慮，並調整程式碼以優化以在公用雲端或更具體的 Azure 中執行
+> 不同的 DBMS 的最小版本是經過精心挑選的，可能並不總是反映 DBMS 發佈的整個 DBMS 版本，而不同的 DBMS 供應商通常支援 Azure。 許多 SAP 工作負載相關注意事項都考慮在定義這些最小版本。 無需努力測試和鑒定較舊的 DBMS 版本。 
+
+> [!NOTE]
+> 列出的最小版本表示舊版本的作業系統和資料庫版本。 我們強烈建議使用最新的作業系統版本和資料庫版本。 在許多情況下，較新的作業系統和資料庫版本考慮了在公共雲中運行的使用方式，並調整了代碼以優化在公共雲或更具體 Azure 中運行
 
 ## <a name="oracle-dbms-support"></a>Oracle DBMS 支援
-Azure 上支援的 Oracle DBMS 版本和 Oracle 功能特別列于[SAP 支援附注 #2039619](https://launchpad.support.sap.com/#/notes/2039619)。 從該便箋中的本質，可以摘要如下：
+作業系統、Oracle DBMS 版本和 Azure 上支援的 Oracle 功能特別列在[SAP 支援說明#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 注釋的精髓可以概括如下：
 
-- 已通過 NetWeaver 認證的 Azure Vm 支援的最低 Oracle 版本為 Oracle 11g Release 2 Patchset 3 （11.2.0.4）
-- 身為客體作業系統，只有 Windows 和 Oracle Linux 符合資格。 便箋中會列出確切版本的 OS 和相關的最小 DBMS 版本
-- Oracle Linux 的支援也會延伸至 Oracle DBMS 用戶端。 這表示所有 SAP 元件（例如 ABAP 或 JAVA 堆疊的對話方塊實例）也必須在 Oracle Linux 上執行。 只有在這類 SAP 系統內不會連線到 Oracle DBMS 的 SAP 元件，才能夠執行不同的 Linux 作業系統
+- 通過 NetWeaver 認證的 Azure VM 上支援的最小 Oracle 版本是 Oracle 11g 版本 2 修補程式集 3 （11.2.0.4）
+- 作為客體作業系統，只有 Windows 和 Oracle Linux 才符合條件。 說明中列出了作業系統和相關最小 DBMS 版本的確切版本
+- Oracle Linux 的支援也擴展到 Oracle DBMS 用戶端。 這意味著所有 SAP 元件（如 ABAP 或 JAVA 堆疊的對話方塊實例）都需要在 Oracle Linux 上運行。 只有此類 SAP 系統中無法連接到 Oracle DBMS 的 SAP 元件才允許運行不同的 Linux 作業系統
 - 不支援 Oracle RAC 
-- 在某些情況下，支援 Oracle ASM。 詳細資料列在便箋中
-- 非 Unicode SAP 系統僅支援搭配 Windows 客體作業系統執行的應用程式伺服器。 DBMS 的客體作業系統可以是 Oracle Linux 或 Windows。 檢查 SAP 產品可用性對照表（PAM）時，這種限制的原因很明顯。 針對 Oracle Linux，SAP 永遠不會發行非 Unicode SAP 核心
+- 某些案例支援 Oracle ASM。 詳細資訊列在注釋中
+- 只有使用 Windows 客體作業系統運行的應用程式伺服器才支援非 Unicode SAP 系統。 DBMS 的客體作業系統可以是 Oracle Linux 或 Windows。 檢查 SAP 產品可用性矩陣 （PAM） 時，此限制的原因顯而易見。 對於 Oracle Linux，SAP 從未發佈非 Unicode SAP 內核
 
-瞭解以目標 Azure 基礎結構支援的 DBMS 版本時，您必須檢查 SAP 產品可用性對照表，確認您要執行的 SAP 產品版本是否支援所需的作業系統版本和 DBMS。 
+瞭解目標 Azure 基礎結構支援的 DBMS 版本，您需要檢查 SAP 產品可用性矩陣，瞭解您打算運行的 SAP 產品版本是否支援所需的作業系統版本和 DBMS。 
 
 
-## <a name="sap-hana-support"></a>SAP Hana 支援
-在 Azure 中，有兩項服務可用於執行 HANA 資料庫：
+## <a name="sap-hana-support"></a>SAP HANA 支援
+在 Azure 中有兩個服務，可用於運行 HANA 資料庫：
 
 - Azure 虛擬機器
 - [HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
-針對執行 SAP Hana，SAP 具有比執行 NetWeaver 或其他 SAP 應用程式和 DBMS 更多且更強的條件基礎結構必須符合。 因此，較少數的 Azure Vm 符合執行 SAP Hana DBMS 的資格。 如需 SAP Hana 支援的 Azure 基礎結構清單，請參閱所謂的[SAP Hana 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 
+對於運行 SAP HANA，SAP 比運行 NetWeaver 或其他 SAP 應用程式和 DBMS 相比，基礎架構需要滿足更多、更強的條件。 因此，少數 Azure VM 有資格運行 SAP HANA DBMS。 SAP HANA 支援的支援 Azure 基礎結構的清單可以在所謂的[SAP HANA 硬體目錄中](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)找到。 
 
 > [!NOTE]
-> 以字母 ' ' 開頭的單位是[HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)單位。 
-
-在使用 SAP Hana 時，可能會套用不同于一般 NetWeaver 案例的最低 OS 版本。 您需要個別檢查每個單位支援的作業系統，因為這些系統可能會有所不同。 若要這麼做，請按一下每個單位。 將會顯示更多詳細資料。 其中一個列出的詳細資料是針對此特定單位支援的不同作業系統。
+> 以字母"S"開頭的單位是[HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)單位。 
 
 > [!NOTE]
-> 相較于 Azure Vm，Azure HANA 大型實例單位與支援的作業系統相比更具限制性。 另一方面，Azure Vm 可能會強制執行較新的作業版本（最少版本）。 尤其是某些需要變更 Linux 核心的較大 VM 單位時，更是如此
+> SAP 沒有特定的認證依賴于 SAP HANA 主要版本。 與普遍看法相反，該欄目在[HANA認證IaaS平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中的**認證方案**，該列**沒有聲明HANA主要或次要版本認證**。 您需要假設，只要 HANA 1.0 版本也支援特定單元的經過認證的作業系統版本，就可以為 HANA 1.0 和 HANA 2.0 列出的所有設備。 
 
-瞭解 Azure 基礎結構支援的作業系統時，您必須查看[SAP 支援附注 #2235581](https://launchpad.support.sap.com/#/notes/2235581) ，以取得您的目標 Azure 單位所支援的確切 SAP Hana 版本和修補層級。 
+對於 SAP HANA 的使用，可能應用與一般 NetWeaver 案例不同的最低作業系統版本。 您需要單獨簽出每個單元的支援作業系統，因為這些作業系統可能有所不同。 通過按一下每個單元來執行此操作。 將顯示更多詳細資訊。 列出的詳細資訊之一是此特定單元支援的不同作業系統。
+
+> [!NOTE]
+> 與 Azure VM 相比，Azure HANA 大型實例單元與受支援的作業系統相比更為嚴格。 另一方面，Azure VM 可能會強制使用較新的操作版本作為最小版本。 對於一些需要更改 Linux 內核的大型 VM 單元尤其如此
+
+瞭解 Azure 基礎結構受支援的作業系統，需要檢查[SAP 支援說明#2235581](https://launchpad.support.sap.com/#/notes/2235581)有關所針對的 Azure 單元支援的確切 SAP HANA 版本和修補程式級別。 
 
 > [!IMPORTANT]
-> 檢查所支援的確切 SAP Hana 版本和修補程式等級的步驟非常重要。 在許多情況下，特定 OS 版本的支援取決於 SAP Hana 可執行檔的特定修補程式等級。
+> 檢查支援的確切 SAP HANA 版本和修補程式級別的步驟非常重要。 在許多情況下，對特定作業系統版本的支援取決於 SAP HANA 可執行檔的特定修補程式級別。
 
-當您知道可以在目標 Azure 基礎結構上執行的特定 HANA 版本時，您必須簽入 SAP 產品可用性對照表，以瞭解是否有 SAP 產品版本的限制，可支援您篩選出的 HANA 版本
+如果您知道可以在目標 Azure 基礎結構上運行的特定 HANA 版本，因此需要簽入 SAP 產品可用性矩陣，以瞭解支援篩選出來的 HANA 版本的 SAP 產品版本是否存在限制
 
 
-## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>經認證的 Azure Vm 和 HANA 大型實例單位和商務交易輸送量
-除了評估支援的作業系統版本、DBMS 版本和相依支援適用于 Azure 基礎結構單位的 SAP 軟體版本之外，您還必須依據商業交易輸送量來限定這些單位，這會以單位 ' SAP ' 表示。SAP. 所有 SAP 大小調整圓形都會圍繞 sap。 評估現有的 SAP 系統時，您通常可以透過基礎結構提供者的協助來計算單位的 SAP。 適用于 DBMS 層以及應用層。 在建立新功能的其他情況下，使用 SAP 進行大小調整的練習可以顯示應用層和 DBMS 層所需的 SAP 編號。 身為基礎結構提供者，Microsoft 不必提供 NetWeaver 和/或 HANA 認證之不同單位的 SAP 輸送量特性。
+## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>認證的 Azure VM 和 HANA 大型實例單元和業務事務輸送量
+除了評估支援的作業系統版本、DBMS 版本和 Azure 基礎結構單元的從屬支援 SAP 軟體版本外，還需要按業務事務輸送量對這些單元進行限定，該輸送量在單位"SAP"中表示：Sap。 所有 SAP 大小取決於 SAPS 計算。 評估現有的 SAP 系統時，您通常可以在基礎結構供應商的説明下計算單位的 SAPS。 對於 DBMS 層以及應用程式層。 在創建新功能的其他情況下，使用 SAP 進行大小調整練習可以顯示應用程式層和 DBMS 層所需的 SAPS 編號。 作為基礎設施供應商，Microsoft 有義務提供 NetWeaver 和/或 HANA 認證的不同單元的 SAP 輸送量特徵。
 
-針對 Azure Vm，這些 sap 輸送量數位記載于[SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 針對「Azure HANA 大型實例單位」， [sap 支援附注](https://launchpad.support.sap.com/#/notes/2316233)中會記載 sap 輸送量數位 #2316233
+對於 Azure VM，這些 SAPS 輸送量編號記錄在[SAP 支援說明#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 對於 Azure HANA 大型實例單元，SAPS 輸送量編號記錄在[SAP 支援說明#2316233](https://launchpad.support.sap.com/#/notes/2316233)
 
-查看[SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)，適用下列備註：
+查看[SAP 支援說明#1928533，](https://launchpad.support.sap.com/#/notes/1928533)以下注釋適用：
 
-- **對於 M 系列的 Azure vm 和 Mv2 系列 Azure vm，不同的最低 OS 版本適用于其他 AZURE VM 類型**。 較新作業系統版本的需求是根據不同作業系統版本在其作業系統發行中所必須提供的變更，讓其在特定 Azure VM 類型上執行的作業系統得以執行，或將效能優化。這些 VM 類型上 SAP 工作負載的輸送量
-- 有兩個數據表會指定不同的 VM 類型。 第二個數據表會針對僅支援 Azure 標準儲存體的 Azure VM 類型，指定 SAP 輸送量。 不支援在便箋的第二個數據表中指定的單位上進行 DBMS 部署
+- **對於 M 系列 Azure VM 和 Mv2 系列 Azure VM，應用的最小作業系統版本與其他 Azure VM 類型不同**。 對更新的作業系統版本的要求基於不同作業系統供應商在其作業系統版本中必須提供的更改，以便啟用在特定 Azure VM 類型上運行的作業系統，或者優化性能和這些 VM 類型上的 SAP 工作負載的輸送量
+- 有兩個表指定不同的 VM 類型。 第二個表指定僅支援 Azure 標準存儲的 Azure VM 類型的 SAPS 輸送量。 不支援在注釋的第二個表中指定的單元上的 DBMS 部署
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Azure 上支援的其他 SAP 產品
-一般來說，假設在超大規模資料庫雲端（例如 Azure）的狀態下，大部分的 SAP 軟體都應該在 Azure 中執行，而不會有任何功能問題。 儘管如此，與私用雲端的視覺效果相反，SAP 仍然會針對不同的 hyerpscale 雲端提供者明確地表示對不同 SAP 產品的支援。 因此，有不同的 SAP 支援附注指出不同 SAP 產品的 Azure 支援。 
+通常，假設在 Azure 等超大規模雲的狀態下，大多數 SAP 軟體應在 Azure 中運行，而不會出現功能問題。 然而，與私有雲視覺化相反，SAP 仍然明確表達了對不同 hyerpscale 雲供應商的不同 SAP 產品的支援。 因此，有不同的 SAP 支援說明，指示對 Azure 的不同 SAP 產品的支援。 
 
-針對商務物件 BI 平臺， [SAP 支援附注 #2145537](https://launchpad.support.sap.com/#/notes/2145537)提供 Azure 上支援的 SAP 商務物件產品清單。 如果有關于元件或軟體版本和作業系統版本組合的問題，但這些版本不是列出或支援，而且比列出的最低版本還新，則您需要針對您所查詢的元件開啟 SAP 支援要求的支援。
+對於業務物件 BI 平臺[，SAP 支援說明#2145537](https://launchpad.support.sap.com/#/notes/2145537)提供了 Azure 上支援的 SAP 業務物件產品的清單。 如果有關軟體版本和作業系統版本的元件或組合的問題似乎未列出或支援，並且比列出的最小版本更新，則需要針對您詢問的元件打開 SAP 支援請求支援。
 
-針對資料服務的商務物件， [SAP 支援附注 #22288344](https://launchpad.support.sap.com/#/notes/2288344)說明在 Azure 上執行之 SAP 資料服務的最小支援。 
+對於業務物件資料服務[，SAP 支援說明#22288344](https://launchpad.support.sap.com/#/notes/2288344)解釋了在 Azure 上運行的 SAP 資料服務的最低支援。 
 
 > [!NOTE]
-> 如 SAP 支援附注所示，您必須簽入 SAP PAM 以識別在 Azure 上支援的正確支援封裝層級
+> 如 SAP 支援說明所示，您需要簽入 SAP PAM 以確定要在 Azure 上支援的正確支援包級別
 
-Sap Datahub/Vora 支援 Azure Kubernetes Services （AKS）詳述于[sap 支援附注 #2464722](https://launchpad.support.sap.com/#/notes/2464722)
+Azure 庫伯奈斯服務 （AKS） 中的 SAP Datahub/Vora 支援在[SAP 支援說明#2464722](https://launchpad.support.sap.com/#/notes/2464722)
 
-Sap[支援附注](https://launchpad.support.sap.com/#/notes/2451795)中會描述 sap BPC 10.1 SP08 的支援 #2451795
+[SAP 支援說明](https://launchpad.support.sap.com/#/notes/2451795)#2451795介紹了對 SAP BPC 10.1 SP08 的支援
 
-[Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)中詳述了 Azure 上的 SAP Hybris Commerce Platform 5.x 和6.x 的支援
+[在 Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)中詳細介紹了對 Azure 上的 SAP Hybris 商務平臺 5.x 和 6.x 的支援
 
 
 ## <a name="next-steps"></a>後續步驟
-閱讀[適用于 SAP NetWeaver 的 Azure 虛擬機器規劃與實施](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)中的後續步驟
+閱讀[SAP NetWeaver Azure 虛擬機器規劃和實現的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)後續步驟
 

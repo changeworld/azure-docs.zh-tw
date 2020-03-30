@@ -1,17 +1,17 @@
 ---
-title: 伺服器概念-適用於 MySQL 的 Azure 資料庫
+title: 伺服器概念 - MySQL 的 Azure 資料庫
 description: 本主題提供使用適用於 MySQL 之 Azure 資料庫伺服器的考量和指導方針。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9a2e2eb022d96af1437ea4189d11f5fa69339325
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537001"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器概念
 
@@ -40,8 +40,8 @@ ms.locfileid: "74769994"
 
 |     |     |
 | :-- | :-- |
-| **驗證和授權** | 適用於 MySQL 的 Azure 資料庫伺服器支援原生的 MySQL 驗證。 您可以利用伺服器的管理員登入來連接和驗證伺服器。 |
-| **通訊協定** | 此服務支援 MySQL 所使用的訊息架構通訊協定。 |
+| **身份驗證和授權** | 適用於 MySQL 的 Azure 資料庫伺服器支援原生的 MySQL 驗證。 您可以利用伺服器的管理員登入來連接和驗證伺服器。 |
+| **協定** | 此服務支援 MySQL 所使用的訊息架構通訊協定。 |
 | **TCP/IP** | TCP/IP 和 Unix 網域通訊端上支援此通訊協定。 |
 | **防火牆** | 為了協助保護您的資料，防火牆規則會防止對您的資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限為止。 請參閱[適用於 MySQL 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。 |
 | **SSL** | 此服務支援在您的應用程式和資料庫伺服器之間強制執行 SSL 連接。  請參閱[在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫](./howto-configure-ssl.md)。 |

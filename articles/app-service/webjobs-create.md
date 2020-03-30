@@ -1,6 +1,6 @@
 ---
-title: 使用 Webjob 執行背景工作
-description: 瞭解如何在 Azure App Service 中使用 Webjob 執行背景工作。 選擇各種不同的腳本格式，並使用 CRON 運算式來執行。
+title: 使用 Web 作業運行背景工作
+description: 瞭解如何使用 Web 作業在 Azure 應用服務中運行背景工作。 從各種腳本格式中進行選擇，然後使用 CRON 運算式運行它們。
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
@@ -9,17 +9,17 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279139"
 ---
-# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure App Service 中使用 Webjob 執行背景工作
+# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 應用服務中使用 Web 作業運行背景工作
 
 本文說明如何使用 [Azure 入口網站](https://portal.azure.com)來部署 WebJob，以便上傳可執行檔或指令碼。 如需如何使用 Visual Studio 開發和部署 WebJobs 的詳細資訊，請參閱[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 WebJobs 是一項 [Azure App Service](index.yml) 功能，可讓您在與 Web 應用程式、API 應用程式或行動應用程式相同的內容中執行程式或指令碼。 使用 WebJob 不會產生額外的費用。
 
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ Azure Functions 提供另一種方式來執行程式和指令碼。 如需 WebJo
 
 ## <a name="webjob-types"></a>WebJob 類型
 
-下表描述連續和觸發 WebJobs 之間的差異。
+下表描述連續** 和觸發** WebJobs 之間的差異。
 
 
 |連續  |觸發  |
@@ -42,7 +42,7 @@ Azure Functions 提供另一種方式來執行程式和指令碼。 如需 WebJo
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="acceptablefiles"></a>指令碼或程式支援的檔案類型
+## <a name="supported-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>指令碼或程式支援的檔案類型
 
 以下是支援的檔案類型：
 
@@ -54,75 +54,75 @@ Azure Functions 提供另一種方式來執行程式和指令碼。 如需 WebJo
 * .js (使用 Node.js)
 * .jar (使用 Java)
 
-## <a name="CreateContinuous"></a>建立連續 WebJob
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>建立連續 WebJob
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service] 分頁。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service]**** 分頁。
 
-2. 選取 [WebJob]。
+2. 選取 [WebJob]****。
 
    ![選取 WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在 [WebJob] 分頁上，選取 [新增]。
+2. 在 [WebJob]**** 分頁上，選取 [新增]****。
 
     ![WebJob 分頁](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表格中所指定的 [新增 WebJob] 設定。
+3. 使用表格中所指定的 [新增 WebJob]**** 設定。
 
    ![新增 WebJob 分頁](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | 設定      | 範例值   | 描述  |
    | ------------ | ----------------- | ------------ |
    | **名稱** | myContinuousWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。 |
-   | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **型別** | 連續 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
-   | **調整** | 多重執行個體 | 僅適用於連續 WebJob。 決定程式或指令碼是在所有執行個體上執行，或是只在一個執行個體上執行。 在多個執行個體上執行的選項不適用於免費或共用[定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
+   | **檔上傳** | ConsoleApp.zip | .zip** 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
+   | **類型** | 連續 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **規模** | 多重執行個體 | 僅適用於連續 WebJob。 決定程式或指令碼是在所有執行個體上執行，或是只在一個執行個體上執行。 在多個執行個體上執行的選項不適用於免費或共用[定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
 
-4. 按一下 [確定]。
+4. 按一下 [確定]****。
 
-   新的 WebJob 會出現在 [WebJob] 分頁。
+   新的 WebJob 會出現在 [WebJob]**** 分頁。
 
    ![WebJob 的清單](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-2. 若要停止或重新啟動連續執行的 WebJob，可在清單中使用滑鼠右鍵按一下該 WebJob，然後按一下 [停止] 或 [開始]。
+2. 若要停止或重新啟動連續執行的 WebJob，可在清單中使用滑鼠右鍵按一下該 WebJob，然後按一下 [停止]**** 或 [開始]****。
 
     ![停止連續 WebJob](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="CreateOnDemand"></a>建立手動觸發的 WebJob
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>建立手動觸發的 WebJob
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service] 分頁。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service]**** 分頁。
 
-2. 選取 [WebJob]。
+2. 選取 [WebJob]****。
 
    ![選取 WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在 [WebJob] 分頁上，選取 [新增]。
+2. 在 [WebJob]**** 分頁上，選取 [新增]****。
 
     ![WebJob 分頁](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表格中所指定的 [新增 WebJob] 設定。
+3. 使用表格中所指定的 [新增 WebJob]**** 設定。
 
    ![新增 WebJob 分頁](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | 設定      | 範例值   | 描述  |
    | ------------ | ----------------- | ------------ |
    | **名稱** | myTriggeredWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。|
-   | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **型別** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
-   | **觸發程序** | 手動 | |
+   | **檔上傳** | ConsoleApp.zip | .zip** 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
+   | **類型** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **觸發器** | 手動 | |
 
-4. 按一下 [確定]。
+4. 按一下 [確定]****。
 
-   新的 WebJob 會出現在 [WebJob] 分頁。
+   新的 WebJob 會出現在 [WebJob]**** 分頁。
 
    ![WebJob 的清單](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
@@ -130,44 +130,44 @@ when making changes in one don't forget the other two.
    
     ![執行 WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a>建立排程 WebJob
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>建立排程 WebJob
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service] 分頁。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至 App Service Web 應用程式、API 應用程式或行動裝置應用程式的 [App Service]**** 分頁。
 
-2. 選取 [WebJob]。
+2. 選取 [WebJob]****。
 
    ![選取 WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在 [WebJob] 分頁上，選取 [新增]。
+2. 在 [WebJob]**** 分頁上，選取 [新增]****。
 
    ![WebJob 分頁](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表格中所指定的 [新增 WebJob] 設定。
+3. 使用表格中所指定的 [新增 WebJob]**** 設定。
 
    ![新增 WebJob 分頁](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | 設定      | 範例值   | 描述  |
    | ------------ | ----------------- | ------------ |
    | **名稱** | myScheduledWebJob | App Service 應用程式中唯一的名稱。 開頭必須是字母或數字，而且不能含有 "-" 和 "_" 之外的特殊字元。 |
-   | **檔案上傳** | ConsoleApp.zip | .zip 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
-   | **型別** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
-   | **觸發程序** | 已排程 | 若要讓排程可靠地運作，請啟用 [永遠開啟] 功能。 [永遠開啟] 僅適用於基本、標準和進階定價層。|
+   | **檔上傳** | ConsoleApp.zip | .zip** 檔案包含您的可執行檔或指令碼檔案，以及執行程式或指令碼所需的任何支援檔案。 支援的可執行檔或指令碼檔案類型會列在[支援的檔案類型](#acceptablefiles)一節。 |
+   | **類型** | 觸發 | [WebJob 類型](#webjob-types)在本文稍早已有提及。 |
+   | **觸發器** | 已排程 | 若要讓排程可靠地運作，請啟用 [永遠開啟] 功能。 [永遠開啟] 僅適用於基本、標準和進階定價層。|
    | **CRON 運算式** | 0 0/20 * * * * | [CRON 運算式](#ncrontab-expressions)將於下一節中說明。 |
 
-4. 按一下 [確定]。
+4. 按一下 [確定]****。
 
-   新的 WebJob 會出現在 [WebJob] 分頁。
+   新的 WebJob 會出現在 [WebJob]**** 分頁。
 
    ![WebJob 的清單](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB 運算式
 
-您可以在入口網站中輸入[NCRONTAB 運算式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或在 WebJob *.zip*檔案的根目錄中包含 `settings.job` 檔案，如下列範例所示：
+您可以在門戶中輸入[NCRONTAB 運算式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或在 WebJob `settings.job` *.zip*檔的根目錄中包含一個檔，如以下示例所示：
 
 ```json
 {
@@ -175,32 +175,32 @@ when making changes in one don't forget the other two.
 }
 ```
 
-若要深入瞭解，請參閱[排程已觸發的 WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
+要瞭解更多資訊，請參閱[計畫觸發的 WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-## <a name="ViewJobHistory"></a>檢視作業記錄
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>檢視作業記錄
 
-1. 選取您想要查看記錄的 WebJob，然後選取 [記錄] 按鈕。
+1. 選取您想要查看記錄的 WebJob，然後選取 [記錄]**** 按鈕。
    
    ![記錄按鈕](./media/web-sites-create-web-jobs/wjbladelogslink.png)
 
-2. 在 [WebJob 詳細資料] 分頁上，選取時間以查看一個執行的詳細資料。
+2. 在 [WebJob 詳細資料]**** 分頁上，選取時間以查看一個執行的詳細資料。
    
    ![WebJob 詳細資料](./media/web-sites-create-web-jobs/webjobdetails.png)
 
-3. 在 [WebJob 執行詳細資料] 分頁上，選取 [切換輸出] 以查看記錄內容的文字。
+3. 在 [WebJob 執行詳細資料]**** 分頁上，選取 [切換輸出]**** 以查看記錄內容的文字。
    
     ![網站工作執行詳細資料](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   若要在個別的瀏覽器視窗中查看輸出文字，請選取 [下載]。 若要下載文字本身，請以滑鼠右鍵按一下 [下載]，然後使用瀏覽器選項來儲存檔案內容。
+   若要在個別的瀏覽器視窗中查看輸出文字，請選取 [下載]****。 若要下載文字本身，請以滑鼠右鍵按一下 [下載]****，然後使用瀏覽器選項來儲存檔案內容。
    
-5. 選取分頁頂端的 [WebJob] 階層連結，以移至 WebJob 的清單。
+5. 選取分頁頂端的 [WebJob]**** 階層連結，以移至 WebJob 的清單。
 
     ![WebJob 階層連結](./media/web-sites-create-web-jobs/breadcrumb.png)
    
     ![歷程記錄儀表板中的 WebJobs 清單](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a> 後續步驟
+## <a name="next-steps"></a><a name="NextSteps"></a> 後續步驟
 
 Azure WebJobs SDK 可以搭配 WebJobs 使用，以簡化許多程式設計工作。 如需詳細資訊，請參閱 [什麼是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。

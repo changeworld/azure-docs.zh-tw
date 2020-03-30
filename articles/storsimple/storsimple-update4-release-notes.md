@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254582"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 版本資訊
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下列版本資訊說明 StorSimple 8000 系列 Update 4 的新功能，並識別未決的重要問題。 當中也包含此版本中隨附之 StorSimple 軟體更新的清單。 
 

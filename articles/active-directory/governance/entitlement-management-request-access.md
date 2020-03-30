@@ -1,6 +1,6 @@
 ---
-title: 要求存取套件-Azure AD 的權利管理
-description: 瞭解如何在 Azure Active Directory 的權利管理中，使用我的存取權入口網站來要求存取套件的存取權。
+title: 請求訪問包 - Azure AD 授權管理
+description: 瞭解如何使用"我的訪問"門戶請求訪問 Azure 活動目錄授權管理中的訪問包。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,111 +17,111 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261745"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>要求存取 Azure AD 權利管理中的存取套件
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>請求訪問 Azure AD 授權管理中的訪問包
 
-透過 Azure AD 的權利管理，存取套件可讓您一次性設定資源和原則，以自動管理存取套件生命週期的存取權。 
+使用 Azure AD 授權管理，訪問包支援一次性設置資源和策略，從而自動管理訪問包生命週期內的訪問。 
 
-存取套件管理員可以設定原則，要求使用者必須核准才能存取封裝。 需要存取權套件的使用者可以提交要求以取得存取權。 本文說明如何提交存取要求。
+訪問包管理器可以配置策略，以要求使用者訪問包。 需要訪問包的使用者可以提交請求以訪問。 本文介紹如何提交訪問請求。
 
-## <a name="sign-in-to-the-my-access-portal"></a>登入我的存取權入口網站
+## <a name="sign-in-to-the-my-access-portal"></a>登錄到"我的訪問"門戶
 
-第一個步驟是登入我的存取權入口網站，您可以在其中要求存取權套件的存取權。
+第一步是登錄到"我的訪問"門戶，您可以在其中請求訪問包。
 
-**先決條件角色：** 申請者
+**先決條件角色：** 請求
 
-1. 從您正在使用的專案或商務經理尋找電子郵件或訊息。 電子郵件應該包含您需要存取的存取套件連結。 此連結會以 `myaccess`開頭，包括目錄提示，並以存取套件識別碼結尾。  （對於美國政府而言，網域可能改為 `https://myaccess.microsoft.us`）。
+1. 查找來自您正在使用的專案或業務經理的電子郵件或消息。 電子郵件應包括指向您需要訪問的訪問包的連結。 連結以 開頭`myaccess`，包括目錄提示，以訪問包 ID 結尾。  （對於美國政府來說，功能變數名稱可能是`https://myaccess.microsoft.us`。
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
-1. 開啟連結。
+1. 打開連結。
 
-1. 登入我的存取權入口網站。
+1. 登錄到"我的訪問"門戶。
 
-    請務必使用您的組織（公司或學校）帳戶。 如果您不確定，請洽詢您的專案或商務經理。
+    請務必使用組織（工作或學校）帳戶。 如果您不確定，請諮詢您的專案或業務經理。
 
-## <a name="request-an-access-package"></a>要求存取套件
+## <a name="request-an-access-package"></a>請求訪問包
 
-在我的存取權入口網站中找到存取套件之後，您就可以提交要求。
+在"我的訪問"門戶中找到訪問包後，可以提交請求。
 
-**先決條件角色：** 申請者
+**先決條件角色：** 請求
 
-1. 在清單中尋找存取封裝。  如有需要，您可以輸入搜尋字串，然後選取 [**名稱**]、[**目錄**] 或 [**資源**] 篩選來進行搜尋。
+1. 在清單中查找訪問包。  如有必要，可以通過鍵入搜索字串，然後選擇**名稱**、**目錄**或**資源**篩選器進行搜索。
 
-    ![我的存取權入口網站-資源搜尋](./media/entitlement-management-request-access/my-access-resource-search.png)
+    ![我的訪問門戶 - 資源搜索](./media/entitlement-management-request-access/my-access-resource-search.png)
 
-1. 按一下核取記號以選取存取封裝。
+1. 按一下核取記號以選擇訪問包。
 
-1. 按一下 [要求存取] 以開啟 [要求存取] 窗格。
+1. 按一下 [要求存取]**** 以開啟 [要求存取] 窗格。
 
     ![我的存取權入口網站 - 存取套件](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
-1. 如果顯示 [**商業理由**] 方塊，請輸入需要存取的理由。
+1. 如果顯示 **"業務理由"** 框，則鍵入需要訪問的理由。
 
-1. 如果已啟用 [**特定期間的要求？** ]，請選取 **[是] 或 [** **否**]。
+1. 如果啟用**了特定期間的請求，** 請選擇"**是**"或 **"否**"。
 
-1. 如有必要，請指定開始日期和結束日期。
+1. 如有必要，指定開始日期和結束日期。
 
     ![我的存取權入口網站 - 要求存取](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. 完成後，按一下 [**提交**] 以提交您的要求。
+1. 完成後，按一下"**提交"** 以提交您的請求。
 
-1. 按一下 [**要求歷程記錄**] 以查看您的要求清單和狀態。
+1. 按一下 **"請求歷史記錄**"以查看請求和狀態的清單。
 
-    如果存取套件需要核准，則要求現在會處於擱置中的核准狀態。
+    如果訪問包需要審批，則請求現在處於掛起的審批狀態。
 
 ### <a name="select-a-policy"></a>選取原則
 
-如果您要求存取已套用多項原則的存取封裝，可能會要求您選取原則。 例如，存取套件管理員可能會為兩個內部員工群組設定具有兩個原則的存取封裝。 第一個原則可能會允許存取60天，而且需要核准。 第二個原則可能允許存取2天，而不需要核准。 如果您遇到這種情況，您必須選取您想要使用的原則。
+如果請求訪問具有多個應用策略的訪問包，系統可能會要求您選擇策略。 例如，訪問包管理器可能為兩組內部員工配置具有兩群組原則的訪問包。 第一個策略可能允許訪問 60 天，並且需要批准。 第二個策略可能允許訪問 2 天，不需要批准。 如果遇到此方案，則必須選擇要使用的策略。
 
-![我的存取權入口網站-要求存取-多個原則](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+![我的訪問門戶 - 請求訪問 - 多個策略](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
-## <a name="resubmit-a-request"></a>重新提交要求
+## <a name="resubmit-a-request"></a>重新提交請求
 
-當您要求存取封裝的存取權時，您的要求可能會遭到拒絕，或者當核准者沒有時間回應時，您的要求可能會過期。 如果您需要存取權，您可以再試一次，然後重新提交您的要求。 下列程式說明如何重新提交存取要求：
+當您請求訪問包時，如果核准者不及時回應，您的請求可能會被拒絕，或者您的請求可能會過期。 如果您需要存取權限，可以重試並重新提交請求。 以下過程說明如何重新提交訪問請求：
 
-**先決條件角色：** 申請者
+**先決條件角色：** 請求
 
-1. 登入**我的存取權**入口網站。
+1. 登錄到 **"我的訪問"** 門戶。
 
-1. 按一下左側導覽功能表中的 [**要求歷程記錄**]。
+1. 按一下從左側導航功能表**請求歷史記錄**。
 
-1. 尋找您要重新提交要求的存取套件。
+1. 查找您要為其重新提交請求的訪問包。
 
-1. 按一下核取記號以選取存取封裝。
+1. 按一下核取記號以選擇訪問包。
 
-1. 按一下所選存取套件右邊的藍色 [**視圖**] 連結。
+1. 按一下所選訪問包右側的藍色**視圖**連結。
     
-    ![選取存取套件和視圖連結](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+    ![選擇訪問包和查看連結](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
 
-    右側會開啟一個窗格，其中包含存取封裝的要求歷程記錄。
+    右側將打開一個窗格，其中將打開訪問包的請求歷史記錄。
     
-    ![選取 [重新提交] 按鈕](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+    ![選擇重新提交按鈕](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
 
-1. 按一下窗格底部的 [**重新提交**] 按鈕。
+1. 按一下窗格底部的 **"重新提交**"按鈕。
 
-## <a name="cancel-a-request"></a>取消要求
+## <a name="cancel-a-request"></a>取消請求
 
-如果您提交存取要求，而要求仍在**等待核准**狀態，您可以取消要求。
+如果您提交訪問請求，並且請求仍處於**掛起的審批**狀態，則可以取消該請求。
 
-**先決條件角色：** 申請者
+**先決條件角色：** 請求
 
-1. 在我的存取權入口網站中，按一下左側的 [**要求歷程記錄**]，以查看您的要求清單和狀態。
+1. 在左側的"我的訪問"門戶中，按一下 **"請求歷史記錄**"以查看請求和狀態的清單。
 
-1. 針對您想要取消的要求，按一下 [ **View** ] 連結。
+1. 按一下要取消的請求的 **"查看**"連結。
 
-1. 如果要求仍在**等待核准**狀態，您可以按一下 [**取消要求**] 來取消要求。
+1. 如果請求仍處於**掛起的審批**狀態，則可以按一下 **"取消請求**"以取消請求。
 
-    ![我的存取權入口網站-取消要求](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![我的訪問門戶 - 取消請求](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. 按一下 [**要求歷程記錄**] 確認已取消要求。
+1. 按一下 **"請求歷史記錄**"以確認請求已取消。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [核准或拒絕存取要求](entitlement-management-request-approve.md)
-- [要求處理和電子郵件通知](entitlement-management-process.md)
+- [批准或拒絕訪問請求](entitlement-management-request-approve.md)
+- [請求流程和電子郵件通知](entitlement-management-process.md)

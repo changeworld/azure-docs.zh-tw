@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476547"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>針對 Azure Windows 虛擬機器啟用問題進行疑難排解
 
@@ -26,7 +26,7 @@ ms.locfileid: "74819095"
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>了解 Azure 虛擬機器的 Windows 產品啟用適用的 Azure KMS 端點
 
-Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）啟用使用不同的端點。 使用此疑難排解指南時，請使用適用於您的區域的適當 KMS 端點。
+Azure 使用不同的終結點進行 KMS（金鑰管理服務）啟動，具體取決於 VM 所在的雲區域。 使用此疑難排解指南時，請使用適用於您的區域的適當 KMS 端點。
 
 * Azure 公用雲端區域： kms.core.windows.net:1688
 * Azure 中國 21Vianet 國家雲端區域：kms.core.chinacloudapi.cn:1688
@@ -37,22 +37,22 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 
 當您嘗試啟用 Azure Windows VM 時，收到類似下列範例的錯誤訊息：
 
-**錯誤：0Xc004f074。軟體授權服務報告指出無法啟用電腦。無法連絡任何金鑰 ManagementService （KMS）。如需其他資訊，請參閱應用程式事件記錄檔。**
+**錯誤：0xC004F074 軟體許可服務報告電腦無法啟動。無法連絡金鑰管理服務 （KMS）。有關詳細資訊，請參閱應用程式事件日誌。**
 
 ## <a name="cause"></a>原因
 
 一般而言，如果不是使用正確的 KMS 用戶端安裝識別碼來設定 Windows VM，或 Windows VM 無法連線到 Azure KMS 服務 (kms.core.windows.net，連接埠 1688)，就會發生 Azure VM 啟用問題。 
 
-## <a name="solution"></a>方案
+## <a name="solution"></a>解決方法
 
 >[!NOTE]
->如果您使用網站間 VPN 和強制通道，請參閱[使用 Azure 自訂路由來啟用搭配強制通道的 KMS 啟用](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) \(英文\)。 
+>如果使用網站到網站 VPN 和強制隧道，請參閱[使用 Azure 自訂路由使用強制隧道啟用 KMS 啟動](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)。 
 >
->如果您使用 ExpressRoute 並有已發佈的預設路由，請參閱 [Azure VM 可能無法透過 ExpressRoute 進行啟用](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx) (英文)。
+>如果您使用的是 ExpressRoute，並且發佈了預設路由，請參閱[我是否可以阻止 Internet 連接到 ExpressRoute 電路的虛擬網路？](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步驟1設定適當的 KMS 用戶端安裝金鑰
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步驟 1 配置相應的 KMS 用戶端設置金鑰
 
-針對從自訂映射建立的 VM，您必須為 VM 設定適當的 KMS 用戶端安裝金鑰。
+對於從自訂映射創建的 VM，必須為 VM 配置相應的 KMS 用戶端設置金鑰。
 
 1. 在提升權限的命令提示字元執行 **slmgr.vbs /dlv**。 檢查輸出中的描述值，然後判斷它是建立自零售 (RETAIL通路) 還是大量 (VOLUME_KMSCLIENT) 授權媒體：
   
@@ -77,7 +77,7 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>步驟 2：確認 VM 與 Azure KMS 服務之間的連線
 
-1. 下載 [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) 工具，並將它解壓縮至未啟用 VM 中的本機資料夾。 
+1. 將[PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)工具下載並提取到 VM 中未啟動的本地資料夾。 
 
 2. 移至 [開始]，搜尋 Windows PowerShell，在 [Windows PowerShell] 上按一下滑鼠右鍵，然後選取 [以系統管理員身分執行]。
 
@@ -100,9 +100,11 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 
    請注意，如果您從虛擬網路中移除所有 DNS 伺服器，VM 將會使用 Azure 的內部 DNS 服務。 此服務可以解析 kms.core.windows.net。
   
-    此外，請確定 VM 中的防火牆不會封鎖對具有1688埠之 KMS 端點的輸出網路流量。
+    還要確保具有 1688 埠的 KMS 終結點的出站網路流量不會被 VM 中的防火牆阻止。
 
-5. 在您確認可成功連線到 kms.core.windows.net 之後，請在該提升權限的 Windows PowerShell 提示中執行下列命令。 此命令會多次嘗試啟用。
+5. 使用[網路觀察程式下一躍點](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)驗證從相關 VM 到目標 IP 23.102.135.246（對於kms.core.windows.net）的下一躍點類型，或者適用于您所在區域的相應 KMS 終結點的 IP 是**Internet**。  如果結果是虛擬裝置或虛擬網路閘道，則可能存在預設路由。  請與您的網路系統管理員聯繫，並與他們合作，以確定正確的操作方案。  如果該解決方案與組織的策略一致，則這可能是[自訂路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+
+6. 在您確認可成功連線到 kms.core.windows.net 之後，請在該提升權限的 Windows PowerShell 提示中執行下列命令。 此命令會多次嘗試啟用。
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
@@ -110,19 +112,19 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 
     成功啟用時，會傳回類似以下的資訊：
     
-    **正在啟用 Windows （R），Serverdatacenter 而 edition （12345678-1234-1234-1234-12345678） 。 已成功啟用產品。**
+    **啟動 Windows （R）， 伺服器資料中心版本 （12345678-1234-1234-1234-12345678） ... 已成功啟動產品。**
 
 ## <a name="faq"></a>常見問題集 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我從 Azure Marketplace 建立了 Windows Server 2016。 我是否需要設定 KMS 金鑰來啟用 Windows Server 2016？ 
 
  
-不會。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
+否。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>是否不論 VM 是否使用 Azure Hybrid Use Benefit (HUB)，Windows 啟用的運作方式都相同？ 
 
  
-可以。 
+是。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 啟用期間已到期，會發生什麼情況？ 

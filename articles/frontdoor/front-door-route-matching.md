@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - 路由規則比對監視 | Microsoft Docs
-description: 此文章可協助您了解 Azure Front Door Service 如何比對要為連入要求使用的路由規則
+title: Azure 前門 - 路由規則匹配監視 |微軟文檔
+description: 本文可説明您瞭解 Azure 前門如何匹配用於傳入請求的路由規則
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736273"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471586"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 比對要求與路由規則的方式
 
@@ -29,7 +29,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 下列屬性可判斷連入要求與路由規則 (或左邊) 是否相符：
 
 * **HTTP 通訊協定** (HTTP/HTTPS)
-* **主機**(例如，www\.foo.com， \*。 bar.com)
+* **主機**（例如，www\.foo.com，.bar.com） \*
 * **路徑** (例如 /\*、/users/\*、/file.gif)
 
 這些屬性是從內部展開，因此通訊協定/主機/路徑的每個組合都是可能的相符項目集合。
@@ -48,37 +48,37 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明此程序，讓我們看看 Front Door 路由 (僅左邊) 的範例設定：
 
-| 路由規則 | 前端主機 | `Path` |
+| 路由規則 | 前端主機 | Path |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
-| C | www\.fabrikam.com, foo.adventure-works.com  | /\*、/images/\* |
+| C | foo.adventure-works.com，fabrikam.com\.  | /\*、/images/\* |
 
 如果已將下列連入要求傳送到 Front Door，則會由上而下來比對下列路由規則：
 
 | 連入前端主機 | 相符的路由規則 |
 |---------------------|---------------|
 | foo.contoso.com | A、B |
-| www\.fabrikam.com | C |
-| images.fabrikam.com | 錯誤 400:不正確的要求 |
+| wwwfabrikam.com\. | C |
+| images.fabrikam.com | 錯誤 400：不正確的要求 |
 | foo.adventure-works.com | C |
-| contoso.com | 錯誤 400:不正確的要求 |
-| www\.adventure-works.com | 錯誤 400:不正確的要求 |
-| www\.northwindtraders.com | 錯誤 400:不正確的要求 |
+| contoso.com | 錯誤 400：不正確的要求 |
+| wwwadventure-works.com\. | 錯誤 400：不正確的要求 |
+| wwwnorthwindtraders.com\. | 錯誤 400：不正確的要求 |
 
 ### <a name="path-matching"></a>路徑比對
 在判斷特定前端主機並將可能的路由規則篩選到只剩該前端主機的路由之後，Front Door 接著會根據要求路徑來篩選路由規則。 我們會使用和前端主機類似的邏輯：
 
 1. 尋找路徑上完全相符的任何路由規則
 2. 如果沒有完全相符的路徑，則利用萬用字元比對路徑，尋找路由規則
-3. 如果沒有路由規則找到相符的路徑，然後拒絕的要求，並傳回 400:不正確的要求錯誤 HTTP 回應。
+3. 如果找不到與路徑相符的任何路由規則，則拒絕要求並傳回「400：不正確的要求」錯誤的 HTTP 回應。
 
 >[!NOTE]
 > 任何不含萬用字元的路徑都會被視為完全相符的路徑。 即使路徑以斜線為結尾，仍會被視為完全相符。
 
 為了進一步說明，讓我們看看另一組範例：
 
-| 路由規則 | 前端主機    | `Path`     |
+| 路由規則 | 前端主機    | Path     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -93,34 +93,34 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 | 連入要求    | 相符的路由 |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/ab          | C             |
+| wwwcontoso.com/\.            | A             |
+| wwwcontoso.com/a\.           | B             |
+| wwwcontoso.com/ab\.          | C             |
 | www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | B             |
-| www\.contoso.com/abc/        | E             |
-| www\.contoso.com/abc/d       | F             |
+| wwwcontoso.com/abzzz\.       | B             |
+| wwwcontoso.com/abc/\.        | E             |
+| wwwcontoso.com/abc/d\.       | F             |
 | www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/abc/defzzz  | F             |
-| www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | B             |
+| wwwcontoso.com/abc/defzzz\.  | F             |
+| wwwcontoso.com/abc/def/ghi\. | F             |
+| wwwcontoso.com/path\.        | B             |
 | www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| wwwcontoso.com/path/zzz\.    | B             |
 
 >[!WARNING]
 > </br> 如果使用全面涵蓋路由路徑 (`/*`) 的完全相符前端主機找不到任何路由規則，則任何路由規則都不會有相符項目。
 >
 > 範例設定：
 >
-> | 路由 | Host             | `Path`    |
+> | 路由 | Host             | Path    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >
 > 比對表格：
 >
-> | 連入要求       | 相符的路由 |
+> | 傳入要求       | 相符的路由 |
 > |------------------------|---------------|
-> | profile.domain.com/other | 無。 錯誤 400:不正確的要求 |
+> | profile.domain.com/other | 無。 錯誤 400：不正確的要求 |
 
 ### <a name="routing-decision"></a>路由決策
 在比對到單一 Front Door 路由規則之後，接著我們需要選擇如何處理該要求。 如果 Front Door 有快取的回應可供相符的路由規則使用，則會以相同的回應傳回給用戶端。 否則，下一步就是評估是否您已為相符的路由規則設定 [URL 重寫 (自訂轉送路徑)](front-door-url-rewrite.md)。 如果未定義自訂轉送路徑，則會將要求依現況轉送到所設定後端集區中的適當後端。 否則會根據定義的[自訂轉送路徑](front-door-url-rewrite.md)更新要求路徑，然後轉送至後端。

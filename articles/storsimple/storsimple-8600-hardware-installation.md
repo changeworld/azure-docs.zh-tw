@@ -1,5 +1,5 @@
 ---
-title: 安裝 Microsoft Azure StorSimple 8600 裝置
+title: 安裝微軟 Azure StorSimple 8600 設備
 description: 描述如何打開包裝、掛接機架和佈線 StorSimple 8600 裝置，再部署和設定軟體。
 author: alkohli
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254751"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打開包裝、掛接機架和佈線 StorSimple 8600 裝置
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前，打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8600-device"></a>打開您的 StorSimple 8600 裝置包裝
@@ -27,7 +27,7 @@ ms.locfileid: "79254751"
 ### <a name="prepare-to-unpack-your-device"></a>準備打開裝置包裝
 打開裝置包裝之前，請檢閱下列資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png)![超權數圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告！**
 
 1. 如果您手動處理它，請確定您有兩名人員可以應付裝置的重量。 完全設定的機箱可以重達 32 公斤 (70 磅)。
 2. 將箱子放置在平坦的表面上。
@@ -85,7 +85,7 @@ ms.locfileid: "79254751"
 2. 請確認您想要安裝的場地具有獨立來源的標準 AC 電源，或是具有不斷電供應系統 (UPS) 的機架電源分配單元 (PDU)。
 3. 請確定您要掛接機箱的機架上有一個 4U (2 X 2U) 插槽可用。
 
-![警告圖示](./media/storsimple-safety/IC740879.png)![超權數圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告！**
 
  如果您手動處理裝置安裝，請確定您有兩名人員可以應付裝置的重量。 完全設定的機箱可以重達 32 公斤 (70 磅)。
 
@@ -100,7 +100,7 @@ ms.locfileid: "79254751"
 提供一組掛接滑軌以用於 19 英吋機櫃。 滑軌已經過測試可以處理最大機箱重量。 這些滑軌也可以進行多個機箱的安裝，而不會損失機櫃內的空間。 先安裝 EBOD 機箱。
 
 #### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>在滑軌上安裝 EBOD 機箱
-1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front] \(左邊 – 前) 和 [RH – Front] \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。
+1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front]**** \(左邊 – 前) 和 [RH – Front]**** \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。
    
     ![將滑軌連接至機箱底座](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
@@ -110,7 +110,7 @@ ms.locfileid: "79254751"
    | --- | --- |
    |  1 |M 3x4 圓頭螺釘 |
    |  2 |底座滑軌 |
-2. 將左邊滑軌和右邊滑軌組件連接至機櫃垂直面。 托架會標示 [LH] \(左邊)，[RH] \(右邊) 和 [This side up] \(此面向上)，引導您正確的方向。
+2. 將左邊滑軌和右邊滑軌組件連接至機櫃垂直面。 托架會標示 [LH]**** \(左邊)，[RH]**** \(右邊) 和 [This side up]**** \(此面向上)，引導您正確的方向。
 3. 找出滑軌組件前後方的滑軌插梢。 延伸滑軌以適合機架柱，並且將插梢插入前後端機架柱垂直面的孔洞。 請確定滑軌組件是水平的。
 4. 使用兩個提供的公制螺絲將滑軌組件鎖固至機架垂直面。 在前端和後端各使用一個螺絲。
 5. 對其他滑軌組件重複這些步驟。
@@ -252,7 +252,7 @@ ms.locfileid: "79254751"
    * 8 資料位元
    * 1 停止位元
    * 無同位檢查
-   * 流量控制設為  **無**
+   * 流量控制設為 [ **無**
 6. 藉由在主控台上按下 Enter 鍵，驗證連線是否正在運作。 序列主控台功能表應該會出現。
 
 > [!NOTE]

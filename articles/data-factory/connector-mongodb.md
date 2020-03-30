@@ -1,5 +1,5 @@
 ---
-title: 從 MongoDB 複製資料
+title: 從蒙戈DB複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 MongoDB 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251709"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure Data Factory 從 MongoDB 複製資料
@@ -48,12 +48,12 @@ ms.locfileid: "79251709"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type |Type 屬性必須設定為： **MongoDbV2** |是 |
-| connectionString |指定 MongoDB 連接字串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 如需詳細資訊，請參閱 [MongoDB 手冊中關於連接字串的內容](https://docs.mongodb.com/manual/reference/connection-string/)。 <br/><br /> 您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 設定。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。 |是 |
+| type |類型屬性必須設置為 **：MongoDbV2** |是 |
+| connectionString |指定 MongoDB 連接字串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 如需詳細資訊，請參閱 [MongoDB 手冊中關於連接字串的內容](https://docs.mongodb.com/manual/reference/connection-string/)。 <br/><br /> 您還可以在 Azure 金鑰保存庫中輸入密碼， `password` 並將配置從連接字串中拔出。 有關詳細資訊，請參閱 [在 Azure 金鑰保存庫中存儲憑據](store-credentials-in-key-vault.md)。 |是 |
 | [資料庫] | 您要存取的資料庫名稱。 | 是 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -78,10 +78,10 @@ ms.locfileid: "79251709"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為： **MongoDbV2Collection** | 是 |
+| type | 資料集的類型屬性必須設置為 **：MongoDbV2集合** | 是 |
 | collectionName |MongoDB 資料庫中集合的名稱。 |是 |
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -106,22 +106,22 @@ ms.locfileid: "79251709"
 
 ### <a name="mongodb-as-source"></a>MongoDB 作為來源
 
-複製活動的 **source** 區段支援下列屬性：
+複製活動**源**部分支援以下屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為： **MongoDbV2Source** | 是 |
+| type | 必須將複製活動源的類型屬性設置為 **：MongoDbV2Source** | 是 |
 | filter | 使用查詢運算子指定選取範圍篩選。 若要傳回集合中的所有文件，請省略此參數，或傳遞空白文件 ({})。 | 否 |
 | cursorMethods.project | 指定要在文件中傳回以便投影的欄位。 若要傳回比對文件中的所有欄位，請省略此參數。 | 否 |
 | cursorMethods.sort | 指定查詢傳回比對文件的順序。 請參閱 [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)。 | 否 |
 | cursorMethods.limit | 指定伺服器傳回的文件數目上限。 請參閱 [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)。  | 否 |
 | cursorMethods.skip | 指定要跳過的文件數，以及 MongoDB 開始傳回結果的位置。 請參閱 [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)。 | 否 |
-| batchSize | 指定要在回應的每個批次中從 MongoDB 執行個體傳回的文件數目。 在大部分情況下，修改批次大小不會影響使用者或應用程式。 Cosmos DB 限制每個批次的大小不能超過 40 MB，也就是文件大小的 batchSize 總數，因此如果您的文件大小很大，請降低此值。 | 否<br/>(預設為 **100**) |
+| batchSize | 指定要在回應的每個批次中從 MongoDB 執行個體傳回的文件數目。 在大部分情況下，修改批次大小不會影響使用者或應用程式。 Cosmos DB 限制每個批次的大小不能超過 40 MB，也就是文件大小的 batchSize 總數，因此如果您的文件大小很大，請降低此值。 | 否<br/>（預設值為**100**） |
 
 >[!TIP]
 >ADF 支援在 **Strict 模式**中取用 BSON 文件。 請確定您的篩選查詢處於 Strict 模式，而非 Shell 模式。 如需詳細說明，請參閱 [MongoDB manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html) (MongoDB 手冊)。
 
-**範例︰**
+**例子：**
 
 ```json
 "activities":[
@@ -161,7 +161,7 @@ ms.locfileid: "79251709"
 
 ## <a name="export-json-documents-as-is"></a>依原樣匯出 JSON 文件
 
-您可以使用這個 MongoDB 連接器，從 MongoDB 集合依原樣將 JSON 文件匯出至各種檔案型存放區或 Azure Cosmos DB。 若要完成這種跨平台結構描述的複製，請跳過資料集中的「結構」(也稱為「結構描述」) 區段，以及複製活動中的結構描述對應。
+您可以使用這個 MongoDB 連接器，從 MongoDB 集合依原樣將 JSON 文件匯出至各種檔案型存放區或 Azure Cosmos DB。 若要完成這種跨平台結構描述的複製，請跳過資料集中的「結構」(也稱為「結構描述」**) 區段，以及複製活動中的結構描述對應。
 
 ## <a name="schema-mapping"></a>結構描述對應
 

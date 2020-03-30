@@ -1,24 +1,24 @@
 ---
-title: .NET 應用程式的 Azure 應用程式 Insights 快照偵錯工具
+title: 用於 .NET 應用的 Azure 應用程式見解快照調試器
 description: 在生產環境 .NET 應用程式中擲回例外狀況時，會自動收集偵錯快照集
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275759"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
-發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地設定[ApplicationInsights](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的集合參數。快照集會出現在 Application Insights 入口網站的[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況中。
+發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式見解](../../azure-monitor/app/app-insights-overview.md)中的快照調試器監視 Web 應用中的異常遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在應用程式中包括[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並在[應用程式 Insights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中選擇組態集合參數。快照顯示在應用程式見解門戶中的[異常](../../azure-monitor/app/asp-net-exceptions.md)上。
 
-您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 若要使用原始程式碼取得更強大的偵錯工具體驗，請使用 Visual Studio 2019 Enterprise 開啟快照集。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](https://aka.ms/snappoint)，而不需等待例外狀況。
+您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 要獲得更強大的原始程式碼調試體驗，請使用 Visual Studio 2019 企業版打開快照。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](https://aka.ms/snappoint)，而不需等待例外狀況。
 
-「偵錯工具快照集」會儲存15天。 此保留原則會就個別的應用程式而設定。 如果您需要增加此值，您可以在 Azure 入口網站中建立支援案例，以提出增加的要求。
+調試快照存儲 15 天。 此保留原則會就個別的應用程式而設定。 如果您需要增加此值，您可以在 Azure 入口網站中建立支援案例，以提出增加的要求。
 
-## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>啟用應用程式的 Application Insights 快照偵錯工具
+## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>為應用程式啟用應用程式見解快照調試器
 快照集集合適用於：
 * 執行 .NET Framework 4.5 或更新版本的 .NET Framework 和 ASP.NET 應用程式。
 * 在 Windows 上執行的 .NET Core 2.0 和 ASP.NET Core 2.0 應用程式。
@@ -26,15 +26,15 @@ ms.locfileid: "79275759"
 支援下列環境：
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
-* 執行 OS 系列4或更新版本的[Azure 雲端服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* 在 Windows Server 2012 R2 或更新版本上執行的[Azure Service Fabric 服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* 執行 Windows Server 2012 R2 或更新版本的[Azure 虛擬機器和虛擬機器擴展集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* 執行 Windows Server 2012 R2 或更新版本或 Windows 8.1 或更新版本[的內部部署虛擬或實體機器](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 運行 OS 系列 4 或更高版本的[Azure 雲服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 在 Windows 伺服器 2012 R2 或更高版本上運行的[Azure 服務交換矩陣服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 運行 Windows Server 2012 R2 或更高版本的[Azure 虛擬機器和虛擬機器縮放集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 運行 Windows Server 2012 R2 或更高版本或 Windows 8.1 或更高版本的[本地虛擬或物理電腦](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > 不支援用戶端應用程式 (例如，WPF、Windows Forms 或 UWP)。
 
-如果您已啟用快照偵錯工具，但看不到快照集，請參閱我們的[疑難排解指南](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
+如果您啟用了快照調試器，但看不到快照，請查看我們的[故障排除指南](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
 
 ## <a name="grant-permissions"></a>授與權限
 
@@ -46,23 +46,23 @@ ms.locfileid: "79275759"
 訂用帳戶擁有者應將 `Application Insights Snapshot Debugger` 角色指派給將會檢查快照集的使用者。 這個角色可以由目標 Application Insights 資源或其資源群組或訂用帳戶的訂用帳戶擁有者，指派給個別使用者或群組。
 
 1. 在 Azure 入口網站中巡覽到 Application Insights 資源。
-1. 按一下 [存取控制 (IAM)]。
-1. 按一下 [+新增角色指派] 按鈕。
-1. 從 [角色] 下拉式清單中選取 [Application Insights 快照集偵錯工具]。
+1. 按一下**存取控制 （IAM）。**
+1. 按一下 [+新增角色指派]**** 按鈕。
+1. 從 [角色]**** 下拉式清單中選取 [Application Insights 快照集偵錯工具]****。
 1. 搜尋並輸入要新增的使用者名稱。
-1. 按一下 [儲存] 按鈕，將使用者新增至角色。
+1. 按一下 [儲存]**** 按鈕，將使用者新增至角色。
 
 
 > [!IMPORTANT]
 > 快照集可能會在變數和參數值中包含個人和其他機密資訊。
 
-## <a name="view-snapshots-in-the-portal"></a>在入口網站中查看快照集
+## <a name="view-snapshots-in-the-portal"></a>查看門戶中的快照
 
-在您的應用程式中發生例外狀況並建立快照集之後，您應該會有要查看的快照集。 可能需要5到10分鐘的時間，才能完成快照集的例外狀況，並可從入口網站查看。 若要查看快照集，請在 [**失敗**] 窗格中選取 [**作業**] 按鈕，查看 [**作業**] 索引標籤，或在 [**例外**] 索引標籤中選取 [**例外**狀況] 按鈕
+在應用程式中發生異常並創建快照後，應要查看快照。 從異常到快照準備就緒並從門戶查看可能需要 5 到 10 分鐘。 要查看快照，請在 **"失敗"** 窗格中，在查看 **"操作"** 選項卡時選擇"**操作**"按鈕，或在查看 **"例外"** 選項卡時選擇"**例外**"按鈕：
 
 ![失敗頁面](./media/snapshot-debugger/failures-page.png)
 
-在右窗格中選取作業或例外狀況，以開啟 [**端對端交易詳細資料**] 窗格，然後選取 [例外狀況] 事件。 如果快照集可用於指定的例外狀況，則在右窗格上會出現 [**開啟的偵錯工具快照**集] 按鈕，其中包含[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況的詳細資料。
+在右側窗格中選擇操作或異常以打開 **"端到端事務詳細資訊"** 窗格，然後選擇異常事件。 如果快照可用於給定的異常，則右側窗格中將顯示一個**打開調試快照**按鈕，並顯示[異常](../../azure-monitor/app/asp-net-exceptions.md)的詳細資訊。
 
 ![例外狀況的 [開啟偵錯快照集] 按鈕](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -72,12 +72,12 @@ ms.locfileid: "79275759"
 
 快照集可能包含機密資訊，依預設為不可檢視。 若要檢視快照集，您必須有指派給您的 `Application Insights Snapshot Debugger` 角色。
 
-## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>查看 Visual Studio 2017 Enterprise 或更新版本中的快照集
-1. 按一下 [**下載快照**集] 按鈕，下載可由 Visual Studio Enterprise 開啟的 `.diagsession` 檔案。
+## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>查看 Visual Studio 2017 企業版或以上版中的快照
+1. 按一下 **"下載快照"** 按鈕下載`.diagsession`檔，該檔可以由 Visual Studio 企業版打開。
 
-2. 若要開啟 `.diagsession` 檔案，您必須安裝快照偵錯工具 Visual Studio 元件。 快照偵錯工具元件是 Visual Studio 中 ASP.net 工作負載的必要元件，而且可以從 Visual Studio 安裝程式中的個別元件清單中選取。 如果您使用 Visual Studio 2017 15.5 版之前的 Visual Studio 版本，您必須從[Visual Studio Marketplace](https://aka.ms/snapshotdebugger)安裝延伸模組。
+2. 要打開該檔`.diagsession`，您需要安裝快照調試器視覺化工作室元件。 快照調試器元件是 Visual Studio 中ASP.net工作負荷的必要元件，可以從 Visual Studio 安裝程式中的單個元件清單中選擇。 如果您在 Visual Studio 2017 版本 15.5 之前使用 Visual Studio 版本，則需要從 Visual [Studio 應用商店](https://aka.ms/snapshotdebugger)安裝擴展。
 
-3. 開啟快照集檔案之後，Visual Studio 中的 [小型傾印偵錯] 分頁隨即出現。 按一下 [偵錯受控碼] 以開始偵錯快照集。 快照集會開啟至擲回例外狀況的程式碼行，您可將程序的目前狀態進行偵錯。
+3. 開啟快照集檔案之後，Visual Studio 中的 [小型傾印偵錯] 分頁隨即出現。 按一下 [偵錯受控碼]**** 以開始偵錯快照集。 快照集會開啟至擲回例外狀況的程式碼行，您可將程序的目前狀態進行偵錯。
 
     ![檢視 Visual Studio 中的偵錯快照集](./media/snapshot-debugger/open-snapshot-visualstudio.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "79275759"
 
 ## <a name="limitations"></a>限制
 
-預設資料保留期為15天。 針對每個 Application Insights 實例，每天允許50個快照集的最大數目。
+預設資料保留期為 15 天。 對於每個應用程式見解實例，每天最多允許 50 個快照。
 
 ### <a name="publish-symbols"></a>發佈符號
 快照集偵錯工具需要符號檔出現在生產環境伺服器上，才可將變數解碼並提供 Visual Studio 中的偵錯體驗。
@@ -117,8 +117,8 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 針對 Azure Compute 和其他類型，請確定符號檔案與主要應用程式 .dll 位於相同資料夾 (通常為 `wwwroot/bin`)，或可在目前的路徑使用。
 
 > [!NOTE]
-> 如需有關可用之不同符號選項的詳細資訊，請參閱[Visual Studio 檔](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
-)。 為獲得最佳結果，建議使用「完整」、「可攜」或「內嵌」。
+> 有關可用的不同符號選項的詳細資訊，請參閱 Visual Studio[文檔](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+)。 為獲得最佳效果，我們建議使用"完整"、"可擕式"或"嵌入式"。
 
 ### <a name="optimized-builds"></a>最佳化的組建
 在某些情況下，由於 JIT 編譯器所套用的最佳化，使版本組建無法檢視本機變數。
@@ -128,15 +128,15 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 > 在應用程式服務中安裝 Application Insights 網站延伸模組，以取得取消最佳化支援。
 
 ## <a name="next-steps"></a>後續步驟
-啟用應用程式的 Application Insights 快照偵錯工具：
+為應用程式啟用應用程式見解快照調試器：
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 雲端服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric 服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 雲服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 服務交換矩陣服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器和虛擬機器擴展集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [內部部署虛擬或實體機器](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [本地虛擬或物理電腦](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-除了 Application Insights 快照偵錯工具：
+超越應用程式洞察快照調試器：
  
 * [在您的程式碼中設定 Snappoint](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) 以取得快照集，而不需等待例外狀況。
 * [診斷 Web Apps 中的例外狀況](../../azure-monitor/app/asp-net-exceptions.md)說明如何讓 Application Insights 看見更多的例外狀況。

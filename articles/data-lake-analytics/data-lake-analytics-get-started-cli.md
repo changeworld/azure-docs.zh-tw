@@ -1,5 +1,5 @@
 ---
-title: 建立 & 查詢 Azure Data Lake Analytics-Azure CLI
+title: 創建&查詢 Azure 資料湖分析 - Azure CLI
 description: 了解如何使用 Azure 命令列介面，來建立 Azure Data Lake Analytics 帳戶和提交 U-SQL 作業。
 ms.service: data-lake-analytics
 author: saveenr
@@ -7,32 +7,31 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474504"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 本文說明如何使用 Azure CLI 命令列介面，來建立 Azure Data Lake Analytics 帳戶、提交 U-SQL 作業和目錄。 此作業可讀取定位字元分隔值 (TSV) 檔案，並將該檔案轉換為逗點分隔值 (CSV) 檔案。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在開始之前，您需要下列項目：
 
-* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* 本文需要您執行 Azure CLI 2.0 版或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 本文需要您執行 Azure CLI 2.0 版或更新版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 
-## <a name="log-in-to-azure"></a>登入 Azure
+## <a name="sign-in-to-azure"></a>登入 Azure
 
-若要登入您的 Azure 訂用帳戶：
+要登錄到 Azure 訂閱，請執行：
 
-```
-azurecli
+```azurecli
 az login
 ```
 
@@ -42,34 +41,34 @@ az login
 
 若要使用特定的訂用帳戶︰
 
-```
+```azurecli
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>建立 Data Lake Analytics 帳戶
 您需要 Data Lake Analytics 帳戶，才能執行作業。 若要建立 Data Lake Analytics 帳戶，您必須指定下列項目：
 
-* **Azure 資源群組**。 Data Lake Analytics 帳戶必須建立在 Azure 資源群組內。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 可讓您將應用程式中的資源做為群組使用。 您可以透過單一、協調的作業，將應用程式的所有資源進行部署、更新或刪除。  
+* **Azure 資源組**。 Data Lake Analytics 帳戶必須建立在 Azure 資源群組內。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 可讓您將應用程式中的資源做為群組使用。 您可以透過單一、協調的作業，將應用程式的所有資源進行部署、更新或刪除。  
 
 若要列出訂用帳戶下的現有資源群組：
 
-```
+```azurecli
 az group list
 ```
 
 若要建立新的資源群組：
 
-```
+```azurecli
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Data Lake Analytics 帳戶名稱**。 每一個 Data Lake Analytics 帳戶都有名稱。
+* **資料湖分析帳戶名稱**。 每一個 Data Lake Analytics 帳戶都有名稱。
 * **位置**。 使用其中一個支援 Data Lake Analytics 的 Azure 資料中心。
 * **預設 Data Lake Store 帳戶**：每個 Data Lake Analytics 帳戶都有一個預設的 Data Lake Store 帳戶。
 
 若要列出現有的 Data Lake Store 帳戶：
 
-```
+```azurecli
 az dls account list
 ```
 
@@ -81,13 +80,13 @@ az dls account create --account "<Data Lake Store Account Name>" --resource-grou
 
 使用下列語法建立 Data Lake Analytics 帳戶：
 
-```
+```azurecli
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 建立帳戶後，您可以使用下列命令列出帳戶，並顯示帳戶詳細資料︰
 
-```
+```azurecli
 az dla account list
 az dla account show --account "<Data Lake Analytics Account Name>"            
 ```
@@ -99,7 +98,7 @@ Azure 入口網站會提供使用者介面，可將範例資料檔案複製到�
 
 若要使用 Azure CLI 上傳檔案，請使用下列命令：
 
-```
+```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
@@ -151,27 +150,26 @@ wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Da
 
 使用以下語法提交作業。
 
-```
+```azurecli
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 例如：
 
-```
+```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
 **若要列出作業並顯示作業詳細資料**
 
-```
-azurecli
+```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
 **取消作業**
 
-```
+```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
@@ -179,7 +177,7 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 
 作業完成之後，您可以使用下列命令列出該輸出檔案，並下載檔案：
 
-```
+```azurecli
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
@@ -188,7 +186,7 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 例如：
 
-```
+```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 

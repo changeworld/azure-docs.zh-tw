@@ -1,108 +1,107 @@
 ---
-title: Microsoft Business Applications 獨立軟體廠商（ISV） Connect 程式上線指南
-description: 以下說明如何上架至 Business Applications ISV Connect 計畫。
-services: Azure Marketplace, Cloud Partner Portal
+title: 微軟商務應用程式獨立軟體廠商 （ISV） 連接程式載入指南
+description: 下面是如何加入商務應用程式 ISV 連接程式的。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.author: evansma
-ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819158"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288966"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商（ISV） Connect 程式上線指南
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>微軟商務應用程式獨立軟體廠商 （ISV） 連接程式載入指南
 
-[BUSINESS APPLICATIONS ISV Connect 計畫](https://partner.microsoft.com/solutions/business-applications/isv-overview)的目標，是要加速獨立軟體廠商（isv）建立現代化、雲端式、企業營運（LOB）解決方案與*Dynamics 365 Customer Engagement 的成長和整體成功度，以及PowerApps* （「DYNAMICS CE 優惠」）或*Dynamics 365 財務和營運*（「dynamics Ops 供應專案」）。 以下是其中的一部分。
-
-> [!IMPORTANT]
-> 具有*dynamics 365 Customer Engagement*的現有 ISV 合作夥伴、*適用于財務和營運的 dynamics 365*，以及*PowerApps*應用程式應在**2019 年10月15日**之前完成所有上線步驟，以避免有其已從[Microsoft AppSource](https://appsource.microsoft.com)移除現有的供應專案。
-
-若要註冊並利用 Business Applications ISV Connect 計畫的所有[技術、行銷和銷售啟用權益](https://partner.microsoft.com/solutions/business-applications/isv-overview)，我們會要求現有的 ISV 合作夥伴（使用*Dynamics CE*和*Ops*供應專案）來完成請遵循下列步驟：
-
-- [設定您的 Microsoft 合作夥伴中心帳戶](#set-up-your-microsoft-partner-center-account)。
-- [接受 Business Applications](#accept-the-business-applications-isv-program-addendum)增補。
-- [設定帳單資訊](#set-up-your-billing-information)。
-- [重新認證您的應用程式](#recertify-your-application)。
+[商務應用程式 ISV 連接計畫](https://partner.microsoft.com/solutions/business-applications/isv-overview)旨在加速獨立軟體廠商 （ISV） 的成長和整體成功，通過*Dynamics 365 客戶參與度和 PowerApps（"* 動態 CE 產品"）或*Dynamics 365 財務和運營*（"動態運營產品"）構建現代、基於雲的業務線 （LOB） 解決方案。 下面是如何成為它的一部分。
 
 > [!IMPORTANT]
-> 您必須先完成上述所有步驟，才能將變更發佈至現有的供應專案。
+> 現有的ISV合作夥伴與*Dynamics 365客戶參與*，*動態365財務和運營*，和*PowerApps*應用程式應完成以下所有入職步驟之前 **，2019年10月15日**，以避免從[微軟AppSource](https://appsource.microsoft.com)中刪除其現有的報價。
 
-## <a name="set-up-your-microsoft-partner-center-account"></a>設定您的 Microsoft 合作夥伴中心帳戶
+為了註冊並利用商務應用程式 ISV 連接計畫的所有[技術、行銷和銷售支援優勢](https://partner.microsoft.com/solutions/business-applications/isv-overview)，我們要求現有的 ISV 合作夥伴（使用*Dynamics CE*和*Ops*提供）完成以下步驟：
 
-[合作夥伴中心](https://partner.microsoft.com)是用來管理 ISV Connect 計畫之帳戶設定的位置。
+- [設置您的 Microsoft 合作夥伴中心帳戶](#set-up-your-microsoft-partner-center-account)。
+- [接受商務應用程式附錄](#accept-the-business-applications-isv-program-addendum)。
+- [設置帳單資訊](#set-up-your-billing-information)。
+- [重新認證您的申請](#recertify-your-application)。
 
-> [!NOTE]
-> 此步驟需要您給定帳戶的 Cloud Partner 入口網站中的*擁有*者角色，以及合作夥伴中心內的*擁有* *者或管理員*角色。
+> [!IMPORTANT]
+> 在發佈對現有產品/服務所做的更改之前，您需要完成上述所有步驟。
 
-如果您已發佈 Dynamics CE 或 Dynamics Ops 供應專案，很可能您的 Cloud Partner 入口網站（CPP）帳戶已在合作夥伴中心上遷移並啟動。 如果沒有，您可以從 CPP 發行者設定檔手動啟用您的合作夥伴中心帳戶。
+## <a name="set-up-your-microsoft-partner-center-account"></a>設置您的 Microsoft 合作夥伴中心帳戶
 
-1. 在[Cloud Partner 入口網站](https://cloudpartner.azure.com/)中，登入您的**發行者設定檔**頁面。
-2. 如果您看到橫幅顯示您的帳戶設定已遷移至合作夥伴中心，請繼續進行下一節。 否則，請選取橫幅，提示您啟用合作夥伴中心帳戶。
-
-如需詳細資訊，請參閱[從 Cloud Partner 入口網站到合作夥伴中心的帳戶遷移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)。
-
-## <a name="accept-the-business-applications-isv-program-addendum"></a>接受 Business Applications ISV 方案附錄
-
-參與此計畫需要您複習並接受*Business Applications*增補。
+[合作夥伴中心](https://partner.microsoft.com)是管理 ISV 連接計畫的帳戶設置的地方。
 
 > [!NOTE]
-> 此步驟需要合作夥伴中心內的*擁有* *者或管理員*角色，您的帳戶才能簽署法律合約。 如果您在上一個步驟中[啟用合作夥伴中心帳戶](#set-up-your-microsoft-partner-center-account)來完成 Cloud Partner 入口網站帳戶遷移，則您的許可權也會遷移至合作夥伴中心。
+> 此步驟需要給定帳戶的雲合作夥伴門戶中的 *"擁有者"* 角色和合作夥伴中心*的擁有者*或*經理*角色。
 
-1. 移至[[合作夥伴中心] 儀表板](https://partner.microsoft.com/dashboard/account/agreements)，並在出現提示時登入合作夥伴中心。
+如果您已經發佈了 Dynamics CE 或動態操作產品/服務，則最有可能您的雲合作夥伴門戶 （CPP） 帳戶已在合作夥伴中心上遷移和啟動。 如果沒有，則可以從 CPP 發行者設定檔手動啟動合作夥伴中心帳戶。
 
-2. 在 [**商業 Marketplace**] 標題底下，找出**Microsoft Business Applications ISV**增補。
+1. 在[雲合作夥伴門戶](https://cloudpartner.azure.com/)中登錄到**發行者設定檔**頁面。
+2. 如果您看到顯示您的帳戶設置已遷移到合作夥伴中心的橫幅，請繼續下一節。 否則，選擇提示您啟動合作夥伴中心帳戶的橫幅。
 
-3. 選取 [版本] 連結，並查看合約。
+有關詳細資訊，請參閱[從雲合作夥伴門戶到合作夥伴中心的帳戶遷移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)。
 
-4. 選取 [**接受合約**] 以同意並接受合約。
+## <a name="accept-the-business-applications-isv-program-addendum"></a>接受商務應用程式 ISV 計畫附錄
 
-## <a name="set-up-your-billing-information"></a>設定帳單資訊
-
-接下來，設定 Business Applications ISV Connect 計畫的帳單資訊。
+參加此計畫需要您審閱並接受*商務應用程式附錄*。
 
 > [!NOTE]
-> 此步驟需要合作夥伴中心內的*擁有* *者或管理員*角色，您的帳戶才能更新帳單資訊。
+> 此步驟需要合作夥伴中心*的擁有者*或*經理*角色，以便您的帳戶簽署法律協定。 如果您在上一步中[啟動合作夥伴中心帳戶](#set-up-your-microsoft-partner-center-account)完成了雲合作夥伴門戶帳戶遷移，則您的許可權也已遷移到合作夥伴中心。
 
-1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
+1. 轉到[合作夥伴中心儀表板](https://partner.microsoft.com/dashboard/account/agreements)，然後以提示身份登錄合作夥伴中心。
 
-2. 選取 [*設定*] （齒輪）圖示，然後選取 [**開發人員設定**]。
+2. 在標題**商業市場**， 找到**微軟商業應用程式ISV增編**.
 
-3. 在 [*帳戶*] 底下，選取 [**帳單設定檔**]。
+3. 選擇版本連結並查看協定。
 
-4. 查看從您的法律實體填入的主要連絡人和帳單資訊，並進行任何必要的更新。
+4. 選擇 **"接受協定**"以同意並接受協定。
 
-5. 提供稅務識別碼/加值稅 ID 設定（如果適用的話）。
+## <a name="set-up-your-billing-information"></a>設置帳單資訊
 
-6. 選取 [儲存] 來儲存變更。
+接下來，為商務應用程式 ISV 連接程式設置帳單資訊。
 
-您可以隨時更新帳單設定檔，但無法在稍後變更*公司名稱*和帳單位址*國家/地區*。
+> [!NOTE]
+> 此步驟需要合作夥伴中心*的擁有者*或*經理*角色才能更新帳單資訊。
 
-## <a name="recertify-your-application"></a>重新認證您的應用程式
+1. 登錄到[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
-完成上述步驟之後，您現有的 Dynamics CE 和 Dynamics Ops 供應專案將可在合作夥伴中心進行編輯。 您也可以透過合作夥伴中心建立新的供應專案。
+2. 選擇 *"設置*（齒輪）"圖示並選擇 **"開發人員設置**"。
 
-在 Business Applications ISV Connect 計畫中註冊的最後一個步驟，就是 recertifying 您現有的應用程式。
+3. 在 *"帳戶"* 下，選擇 **"帳單設定檔**"。
 
-1. [請遵循下列步驟](https://partner.microsoft.com/solutions/business-applications/isv-publish)，將您的應用程式重新認證至 AppSource。
-2. [建立併發布新的供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)專案。 這項供應專案將是全新的供應專案，並不會取代現有的供應專案。
+4. 查看從法人那裡填充的主要連絡人和帳單資訊，並進行任何必要的更新。
 
-## <a name="further-info"></a>進一步資訊
+5. 供應稅 ID/加值稅 ID 設置（如果適用）。
 
-請洽詢您的客戶經理或聯絡[Microsoft 合作夥伴支援](https://partner.microsoft.com/support)，以取得您帳戶的協助。 如需 Business Applications ISV Connect 計畫和 Microsoft 合作夥伴中心的一般資訊，請參閱：
+6. 選取 [儲存]**** 來儲存變更。
 
-#### <a name="business-applications-for-isvs-online-article"></a>適用于 Isv 的 Business Applications （線上文章）
+您可以隨時更新帳單設定檔，但以後無法更改*公司名稱*和帳單位址*國家/地區*。
+
+## <a name="recertify-your-application"></a>重新認證您的申請
+
+完成上述步驟後，現有的動態 CE 和動態操作產品/服務將在合作夥伴中心進行編輯。 您還可以通過合作夥伴中心創建新優惠。
+
+在商務應用程式 ISV Connect 計畫中註冊的最後一步是重新認證現有應用程式。
+
+1. [按照以下步驟](https://partner.microsoft.com/solutions/business-applications/isv-publish)將應用程式重新認證給 AppSource。
+2. [創建併發布新產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)。 此優惠將是一個全新的報價，不會取代現有的報價。
+
+## <a name="further-info"></a>更多資訊
+
+請諮詢您的客戶經理或聯繫[Microsoft 合作夥伴支援，](https://partner.microsoft.com/support)以獲得有關您的帳戶的説明。 有關商務應用程式 ISV 連接計畫和 Microsoft 合作夥伴中心的一般資訊，請參閱：
+
+#### <a name="business-applications-for-isvs-online-article"></a>ISV 商務應用程式（線上文章）
 https://partner.microsoft.com/solutions/business-applications/isv-overview
 
-#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Business Applications Isv 的新程式總覽（PDF）
+#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>商務應用程式 ISV 新計畫概述 （PDF）
 https://aka.ms/BizAppsISVProgram
 
-#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Business Applications ISV Connect 方案常見問題（PDF）
+#### <a name="business-applications-isv-connect-program-faq-pdf"></a>商務應用程式 ISV 連接計畫常見問題解答 （PDF）
 https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
 
-#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Business Applications Isv 即將推出的計畫（blog 文章）
+#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>即將推出的商務應用程式 ISV 計畫（博客文章）
 https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/

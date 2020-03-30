@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Linux VM 上實作 Oracle Golden Gate | Microsoft Docs
+title: 在 Azure Linux VM 上實作 Oracle Golden Gate| Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Golden Gate。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0706b7d3c238c154d3694b5760266299a7d788ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309595"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536865"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上實作 Oracle Golden Gate 
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本指南詳述如何使用 Azure CLI 從 Azure Marketplace 資源庫映像部署 Oracle 12c 資料庫。 
 
-這份文件逐步示範如何在 Azure VM 上建立、安裝及設定 Oracle Golden Gate。 在本教學課程中，會在單一區域的可用性設定組中設定兩部虛擬機器。 您可以使用相同的教學課程，針對單一 Azure 區域中不同可用性區域的 Vm 設定 OracleGolden 閘道，或針對兩個不同區域中的 Vm 進行設定。
+這份文件逐步示範如何在 Azure VM 上建立、安裝及設定 Oracle Golden Gate。 在本教程中，兩個虛擬機器在單個區域的可用性集中設置。 同一教程可用於在單個 Azure 區域的不同可用性區域為 VM 設置 Oracle 金門，或為兩個不同區域中的 VM 設置。
 
 開始之前，請確定已安裝 Azure CLI。 如需詳細資訊，請參閱 [Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
-若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 您用來建立 VM 的 Marketplace 映像是 **Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
+若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 用於創建 VM 的應用商店映射是**Oracle：Oracle-資料庫-Ee：12.1.0.2：最新**。
 
 您也需要熟悉 Unix 編輯器 vi，並且對 x11 (X Windows) 有基本了解。
 
 環境設定的摘要如下：
 > 
-> |  | **主要網站** | **複寫網站** |
+> |  | **主要站台** | **複寫網站** |
 > | --- | --- | --- |
-> | **Oracle 版本** |Oracle 12c 版本 2 – (12.1.0.2) |Oracle 12c 版本 2 – (12.1.0.2)|
+> | **甲骨文版本** |Oracle 12c 版本 2 – (12.1.0.2) |Oracle 12c 版本 2 – (12.1.0.2)|
 > | **機器名稱** |myVM1 |myVM2 |
 > | **作業系統** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
@@ -85,6 +85,7 @@ az vm availability-set create \
 下列範例會建立兩個 VM，名為 `myVM1` 和 `myVM2`。 如果預設的金鑰位置還沒有 SSH 金鑰，請建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。
 
 #### <a name="create-myvm1-primary"></a>建立 myVM1 (主要)：
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -97,7 +98,7 @@ az vm create \
 
 建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 (記下 `publicIpAddress`。 此位址用來存取 VM。)
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -111,6 +112,7 @@ az vm create \
 ```
 
 #### <a name="create-myvm2-replicate"></a>建立 myVM2 (複寫)：
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -139,7 +141,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 結果看起來應該會像下面的回應這樣：
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -172,7 +174,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 使用下列命令，建立與虛擬機器的 SSH 工作階段。 以虛擬機器的 `publicIpAddress` 取代 IP 位址。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -207,9 +209,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 輸出結果看起來應該會像下面的回應這樣：
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -259,6 +262,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>啟動 Oracle 接聽程式
+
 ```bash
 $ lsnrctl start
 ```
@@ -268,6 +272,7 @@ $ lsnrctl start
 ```bash
 sudo su - oracle
 ```
+
 建立資料庫︰
 
 ```bash
@@ -289,6 +294,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 設定 ORACLE_SID 和 ORACLE_HOME 變數。
 
 ```bash
@@ -309,6 +315,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>啟動 Oracle 接聽程式
+
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
@@ -388,10 +395,10 @@ SQL> EXIT;
 
 3. 在 PuTTY 金鑰產生器中︰
 
-   - 若要產生金鑰，請選取 [產生] 按鈕。
+   - 若要產生金鑰，請選取 [產生]**** 按鈕。
    - 複製金鑰的內容 (**Ctrl+C**)。
-   - 選取 [儲存私密金鑰] 按鈕。
-   - 略過隨之出現的警告，然後選取 [確定]。
+   - 選取 [儲存私密金鑰]**** 按鈕。
+   - 略過隨之出現的警告，然後選取 [確定]****。
 
    ![PuTTY 金鑰產生器頁面的螢幕擷取畫面](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -409,15 +416,15 @@ SQL> EXIT;
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 啟動 PuTTY。 在 [類別] 窗格中，選取 [連線] > [SSH] > [驗證]。在 [用於驗證的私密金鑰檔] 方塊中，瀏覽至您稍早產生的金鑰。
+6. 啟動 PuTTY。 在 **"類別"** 窗格中，選擇**連接** > **SSH** > **Auth**。在**用於身份驗證的專用金鑰檔中**，流覽到之前生成的金鑰。
 
    ![[設定私密金鑰] 頁面上的螢幕擷取畫面](./media/oracle-golden-gate/setprivatekey.png)
 
-7. 在 [類別] 窗格中，選取 [連線] > [SSH] > [X11]。 然後選取 [啟用 X11 轉送] 方塊。
+7. 在 [類別]**** 窗格中，選取 [連線]**** > [SSH]**** > [X11]****。 然後選取 [啟用 X11 轉送]**** 方塊。
 
    ![[啟用 X11] 頁面的螢幕擷取畫面](./media/oracle-golden-gate/enablex11.png)
 
-8. 在 [類別] 窗格中，移至 [工作階段]。 輸入主機資訊，然後選取 [開啟]。
+8. 在 [類別]**** 窗格中，移至 [工作階段]****。 輸入主機資訊，然後選取 [開啟]****。
 
    ![工作階段分頁的螢幕擷取畫面](./media/oracle-golden-gate/puttysession.png)
 
@@ -425,33 +432,34 @@ SQL> EXIT;
 
 若要安裝 Oracle Golden Gate，請完成下列步驟：
 
-1. 以 oracle 的身分登入。 (您應該能夠順利登入，而不會收到需要輸入密碼的提示)。請確定 Xming 已在執行，然後才開始安裝。
- 
+1. 以 oracle 的身分登入。 （您應該能夠在不提示輸入密碼的情況下登錄。在開始安裝之前，請確保 Xming 正在運行。
+
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. 選取 'Oracle GoldenGate for Oracle Database 12c'。 然後選取 [下一步] 以繼續操作。
+
+2. 選取 'Oracle GoldenGate for Oracle Database 12c'。 然後選取 [下一步]**** 以繼續操作。
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 變更軟體位置。 然後選取 [啟動管理員] 方塊並輸入資料庫位置。 選取 [下一步] 以繼續操作。
+3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步]**** 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. 變更清查目錄，然後選取 [下一步] 以繼續操作。
+4. 變更清查目錄，然後選取 [下一步]**** 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. 在 [摘要] 畫面上，選取 [安裝] 以繼續操作。
+5. 在 [摘要]**** 畫面上，選取 [安裝]**** 以繼續操作。
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. 系統可能會提示您以 'root' 的身分執行指令碼。 如果是這樣，請開啟不同的工作階段，ssh 為 VM、sudo 為 root，然後執行指令碼。 選取 [確定] 以繼續操作。
+6. 系統可能會提示您以 'root' 的身分執行指令碼。 如果是這樣，請開啟不同的工作階段，ssh 為 VM、sudo 為 root，然後執行指令碼。 選取 [確定]**** 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. 當安裝完成時，選取 [關閉] 以完成流程。
+7. 當安裝完成時，選取 [關閉]**** 以完成流程。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_06.png)
 
@@ -536,6 +544,7 @@ SQL> EXIT;
 
    GGSCI> EDIT PARAMS EXTORA
    ```
+
 5. 將下列項目新增至 EXTRACT 參數檔案 (使用 vi 命令)。 按下 Esc 鍵，':wq!' 以儲存檔案。 
 
    ```bash
@@ -550,6 +559,7 @@ SQL> EXIT;
    TABLE pdb1.test.TCUSTMER;
    TABLE pdb1.test.TCUSTORD;
    ```
+
 6. 註冊 extract--integrated 擷取：
 
    ```bash
@@ -565,6 +575,7 @@ SQL> EXIT;
 
    GGSCI> exit
    ```
+
 7. 設定擷取檢查點，並啟動即時擷取：
 
    ```bash
@@ -587,6 +598,7 @@ SQL> EXIT;
    MANAGER     RUNNING
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
+
    在此步驟中，您會找到開始 SCN，將會在稍後於不同區段中使用：
 
    ```bash
@@ -684,6 +696,7 @@ SQL> EXIT;
    $ ./ggsci
    GGSCI> EDIT PARAMS REPORA  
    ```
+
    REPORA 參數檔案的內容：
 
    ```bash
@@ -697,7 +710,7 @@ SQL> EXIT;
    MAP pdb1.test.*, TARGET pdb1.test.*;
    ```
 
-5. 設定複寫檢查點：
+5. 設置複製檢查點：
 
    ```bash
    GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
@@ -719,19 +732,21 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>設定複寫 (myVM1 和 myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1.設定 myVM2 (複寫) 上的複寫
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上設置複製（複製）
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
+
 使用下列內容更新檔案：
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
+
 然後重新啟動管理員服務：
 
   ```bash
@@ -740,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2.設定 myVM1 (主要) 上的複寫
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上設置複製（主）
 
 啟動初始載入並且檢查錯誤：
 
@@ -750,7 +765,8 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.設定 myVM2 (複寫) 上的複寫
+
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上設置複製（複製）
 
 使用您之前取得的數字變更 SCN 編號：
 
@@ -759,12 +775,13 @@ GGSCI> VIEW REPORT INITEXT
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
+
 複寫已開始進行，您可以將新記錄插入測試資料表，以進行測試。
 
 
 ### <a name="view-job-status-and-troubleshooting"></a>檢視作業狀態和疑難排解
 
-#### <a name="view-reports"></a>檢視報告
+#### <a name="view-reports"></a>檢視報表
 若要檢視 myVM1 上的報告，請執行下列命令：
 
   ```bash

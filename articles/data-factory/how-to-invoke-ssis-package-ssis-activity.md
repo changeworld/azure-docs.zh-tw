@@ -1,6 +1,6 @@
 ---
-title: 使用執行 SSIS 套件活動執行 SSIS 套件
-description: 本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services （SSIS）套件。
+title: 使用執行 SSIS 包活動運行 SSIS 包
+description: 本文介紹如何使用執行 SSIS 包活動在 Azure 資料工廠管道中運行 SQL 伺服器整合服務 （SSIS） 包。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -15,141 +15,141 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/14/2019
 ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260627"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用 Execute SSIS 套件活動執行 SSIS 套件
-本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services （SSIS）套件。 
+本文介紹如何使用執行 SSIS 包活動在 Azure 資料工廠管道中運行 SQL 伺服器整合服務 （SSIS） 包。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-建立 Azure SSIS integration runtime （IR），如果您還沒有遵循[教學課程：布建 AZURE SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)中的逐步指示。
+如果尚未按照教程中的分步說明創建 Azure-SSIS 集成運行時[（IR）。配置 Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)。
 
 ## <a name="run-a-package-in-the-azure-portal"></a>在 Azure 入口網站中執行套件
-在本節中，您會使用 Data Factory 的使用者介面（UI）或應用程式，以執行 SSIS 套件的 Execute SSIS 套件活動來建立 Data Factory 管線。
+在本節中，您可以使用資料工廠使用者介面 （UI） 或應用使用運行 SSIS 包的執行 SSIS 包活動創建資料工廠管道。
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用 Execute SSIS 套件活動建立管線
-在此步驟中，您會使用 Data Factory UI 或應用程式來建立管線。 您要將 Execute SSIS 套件活動新增至管線，並設定它來執行 SSIS 套件。 
+在此步驟中，您可以使用資料工廠 UI 或應用創建管道。 您要將 Execute SSIS 套件活動新增至管線，並設定它來執行 SSIS 套件。 
 
-1. 在 Azure 入口網站的 Data Factory 總覽或首頁上，選取 [**作者 & 監視器**] 圖格，以在另一個索引標籤中啟動 Data Factory UI 或應用程式。 
+1. 在 Azure 門戶中的資料工廠概述或主頁上，選擇 **"作者&監視器"** 磁貼以在單獨的選項卡中啟動資料工廠 UI 或應用。 
 
    ![Data Factory 首頁](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   在 [現在就開始吧] 頁面中，選取 [建立管線]。 
+   在 [現在就開始吧]**** 頁面中，選取 [建立管線]****。 
 
    ![開始使用頁面](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
-1. 在 [**活動**] 工具箱中，展開 **[一般**]。 然後將 [**執行 SSIS 套件**] 活動拖曳至管線設計工具介面。 
+1. 在 **"活動"** 工具箱中，展開 **"常規**"。 然後，將**執行 SSIS 包**活動拖動到管線設計師表面。 
 
    ![將執行 SSIS 套件活動拖曳至設計工具介面](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-1. 在 [執行 SSIS 套件] 活動的 [**一般**] 索引標籤上，提供活動的 [名稱] 和 [描述]。 設定選擇性的**Timeout**和**重試**值。
+1. 在"執行 SSIS 包"活動的 **"常規**"選項卡上，提供活動的名稱和說明。 設置可選**的超時**和**重試**值。
 
    ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-1. 在 [執行 SSIS 套件] 活動的 [**設定**] 索引標籤上，選取您要在其中執行封裝的 AZURE SSIS IR。 如果您的套件使用 Windows 驗證來存取資料存放區（例如，SQL server 或內部部署的檔案共用或 Azure 檔案儲存體），請選取 [ **windows 驗證**] 核取方塊。 在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中，輸入您的封裝執行認證的值。 
+1. 在"執行 SSIS 包"活動的 **"設置"** 選項卡上，選擇要運行包的 Azure-SSIS IR。 如果包使用 Windows 身份驗證訪問資料存儲（例如，本地 SQL 伺服器或檔共用或 Azure 檔），請選擇**Windows 身份驗證**核取方塊。 在 **"域**、**使用者名**和**密碼**"框中輸入包執行憑據的值。 
 
-    或者，您可以使用儲存在 Azure 金鑰保存庫中的秘密作為其值。 若要這麼做，請選取相關認證旁的 [ **AZURE 金鑰保存庫**] 核取方塊。 選取或編輯現有的金鑰保存庫連結服務，或建立一個新的。 然後選取您的認證值的秘密名稱或版本。
+    或者，您可以使用存儲在 Azure 金鑰保存庫中的秘密作為其值。 為此，請選擇相關憑據旁邊的**AZURE 金鑰 VAULT**核取方塊。 選擇或編輯現有金鑰保存庫連結服務或創建新金鑰保存庫連結服務。 然後選擇憑據值的機密名稱或版本。
 
-    當您建立或編輯金鑰保存庫連結服務時，您可以選取或編輯現有的金鑰保存庫，或建立一個新的。 如果您尚未這麼做，請務必將您的金鑰保存庫存取權授與 Data Factory 受控識別。 您也可以直接以下列格式輸入您的密碼： `<Key vault linked service name>/<secret name>/<secret version>`。 如果您的套件需要32位執行時間才能執行，請選取 [ **32 位運行**時間] 核取方塊。
+    創建或編輯金鑰保存庫連結服務時，可以選擇或編輯現有金鑰保存庫或創建新金鑰保存庫。 如果尚未授予資料工廠託管對金鑰保存庫的標識存取權限，請確保授予資料工廠託管身份存取權限。 您也可以直接以以下格式輸入機密： `<Key vault linked service name>/<secret name>/<secret version>`. 如果包需要 32 位運行時才能運行，請選擇**32 位運行時**核取方塊。
 
-   針對 [**封裝位置**]，選取 [ **SSISDB**]、 **[檔案系統（封裝）** ]、 **[檔案系統（專案）** ] 或 [**內嵌封裝**]。 如果您選取 [ **SSISDB** ] 做為封裝位置，如果您的 AZURE ssis IR 是以 Azure SQL Database 伺服器或受控實例所裝載的 ssis 目錄（SSISDB）布建，則會自動選取此元件，並指定要執行且已部署到 SSISDB 的套件。 
+   對於**包位置**，請選擇**SSISDB、****檔案系統（包）、****檔案系統（專案）** 或**嵌入式包**。 如果選擇**SSISDB**作為包位置，如果 Azure-SSIS IR 預配了 Azure SQL 資料庫伺服器或託管實例託管的 SSIS 目錄 （SSISDB），則指定要運行到 SSISDB 中的包。 
 
-    如果您的 Azure SSIS IR 正在執行，且已清除 [**手動輸入**] 核取方塊，請從 SSISDB 流覽並選取現有的資料夾、專案、套件或環境。 選取 [重新整理 **]，從**SSISDB 提取新加入的資料夾、專案、套件或環境，讓它們可供流覽和選取。 若要流覽或選取封裝執行的環境，您必須事先設定專案，將這些環境新增為 SSISDB 底下相同資料夾中的參考。 如需詳細資訊，請參閱[建立和對應 SSIS 環境](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)。
+    如果 Azure-SSIS IR 正在運行，並且"**手動條目"** 核取方塊已清除，請流覽並從 SSISDB 中選擇現有資料夾、專案、包或環境。 選擇 **"刷新"** 可從 SSISDB 獲取新添加的資料夾、專案、包或環境，以便它們可用於流覽和選擇。 要流覽或選擇包執行的環境，必須事先設定項目，以將這些環境添加為 SSISDB 下同一資料夾中的引用。 有關詳細資訊，請參閱[創建和映射 SSIS 環境](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)。
 
-   針對 [記錄層級]，針對您的套件執行選取預先定義的記錄範圍。 如果您想要改為輸入自訂的記錄名稱，請選取 [**自訂**] 核取方塊。 
+   針對 [記錄層級]****，針對您的套件執行選取預先定義的記錄範圍。 如果要改為輸入自訂日誌記錄名稱，請選擇 **"自訂**"核取方塊。 
 
    ![在 [設定] 索引標籤上設定屬性 - 自動化](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   如果您的 Azure SSIS IR 未執行或已選取 [**手動輸入**] 核取方塊，請直接以下列格式輸入 SSISDB 中的套件和環境路徑： `<folder name>/<project name>/<package name>.dtsx` 和 `<folder name>/<environment name>`。
+   如果 Azure-SSIS IR 未運行或選擇了 **"手動條目"** 核取方塊，請直接以以下格式從 SSISDB 輸入包和環境路徑：`<folder name>/<project name>/<package name>.dtsx`和`<folder name>/<environment name>`。
 
    ![在 [設定] 索引標籤上設定屬性 - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   如果您選取 [**檔案系統（套件）** ] 做為套件位置（如果您的 AZURE SSIS IR 未布建，則會自動選取），請在 [**封裝路徑**] 方塊中提供封裝檔案（`.dtsx`）的通用命名慣例（UNC）路徑，以指定要執行的封裝。 例如，如果您將封裝儲存在 Azure 檔案儲存體中，其封裝路徑會 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
+   如果選擇**檔案系統（包）** 作為包位置（如果 Azure-SSIS IR 預配而不提供 SSISDB），則通過在`.dtsx`**包路徑**框中提供包檔 （） 的通用命名慣例 （UNC） 路徑來指定要運行的包。 例如，如果將包存儲在 Azure 檔中，則其包路徑為`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
    
-   如果您在不同的檔案中設定您的封裝，您也必須在 [設定**路徑**] 方塊中提供設定檔案（`.dtsConfig`）的 UNC 路徑。 例如，如果您將設定儲存在 Azure 檔案儲存體中，其設定路徑就會 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`。
+   如果在單獨的檔中配置包，則還需要在`.dtsConfig`**"配置"路徑**框中提供設定檔 （） 中的 UNC 路徑。 例如，如果將配置存儲在 Azure 檔中，則其配置路徑為`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`。
 
    ![在 [設定] 索引標籤上設定屬性 - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   如果您選取 [**檔案系統（專案）** ] 做為封裝位置，請在 [**專案路徑**] 方塊中提供專案檔的 UNC 路徑（`.ispac`），然後在 [**封裝名稱**] 方塊中，將封裝檔案（`.dtsx`），指定為要執行的封裝。 例如，如果您將專案儲存在 Azure 檔案儲存體中，其專案路徑會 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
+   如果選擇**檔案系統（Project）** 作為包位置，請在 **"專案路徑**"框中提供專案檔案的 UNC 路徑 （`.dtsx``.ispac`） 和**包名稱**框中的專案包檔 （ ） 來指定要運行的包。 例如，如果將專案存儲在 Azure 檔中，則專案路徑為`\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
    ![在 [設定] 索引標籤上設定屬性 - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   接下來，指定認證以存取您的專案、封裝或設定檔。 如果您先前已輸入封裝執行認證的值（請參閱上一個），您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入套件存取認證的值。 例如，如果您將專案、封裝或設定儲存在 Azure 檔案儲存體中，則會 `Azure`網域、`<storage account name>`使用者名稱，並 `<storage account key>`密碼。 
+   接下來，指定訪問專案、包或設定檔的憑據。 如果以前輸入了包執行憑據的值（請參閱上一個），則可以通過選中"**與包執行憑據相同**"核取方塊來重用它們。 否則，請在 **"域**、**使用者名**"和 **"密碼"** 框中輸入包訪問憑據的值。 例如，如果在 Azure 檔中存儲專案、包或配置，則域為`Azure`，使用者名為`<storage account name>`，並且密碼為`<storage account key>`。 
 
-   或者，您可以使用儲存在金鑰保存庫中的秘密作為其值（請參閱上一步）。 這些認證可用來存取「執行封裝」工作中的封裝和子封裝，全都是從自己的路徑或相同的專案，以及設定（包括您的封裝中所指定的）。 
+   或者，您可以使用存儲在金鑰保存庫中的機密作為其值（請參閱上一頁）。 這些憑據用於訪問執行包任務中的包和子包，所有這些包都來自它們自己的路徑或同一專案，以及包括包中指定的配置。 
 
-   如果您選取 [**內嵌套件**] 做為封裝位置，請拖放您的封裝，以從檔案資料夾執行或將它**上傳**到提供的方塊中。 您的套件會自動壓縮並內嵌在活動裝載中。 內嵌之後，您可以稍後**下載**您的套件以進行編輯。 您也可以將內嵌套件**參數**化，方法是將它指派給可用於多個活動的管線參數，進而優化管線裝載的大小。 如果您的內嵌封裝並非全部加密，而且我們偵測到在其中使用「執行封裝」工作，則會自動選取 [**執行封裝**工作] 核取方塊，並自動新增相關的子封裝及其檔案系統參考，讓您也可以將其內嵌。 如果無法偵測到使用「執行封裝」工作，您必須手動選取 [**執行封裝**工作] 核取方塊，並加入相關的子封裝及其檔案系統參考，以供您同時內嵌。 如果子封裝使用 SQL Server 的參考，請確定您的 Azure SSIS IR 可以存取 SQL Server。  目前不支援使用子封裝的專案參考。
+   如果選擇 **"嵌入"包**作為包位置，請拖放包以運行，或將其從資料夾**上載**到提供的框中。 您的包將自動壓縮並嵌入到活動負載中。 嵌入後，您可以稍後**下載**包進行編輯。 還可以通過將嵌入式包分配給可用於多個活動的管道參數來**參數化**，從而優化管道負載的大小。 如果您的嵌入式包未全部加密，並且我們檢測到其中使用執行包任務，將自動選中**執行包任務**核取方塊，並將自動添加包含其檔案系統引用的相關子包，以便您也嵌入它們。 如果無法檢測到執行包任務的使用方式，您必須手動選擇 **"執行包任務**"核取方塊，並添加相關子包及其檔案系統引用，以便您也嵌入它們。 如果子包使用 SQL Server 引用，請確保 Azure-SSIS IR 可以訪問 SQL 伺服器。  當前不支援對子包使用專案引用。
    
    ![在 [設定] 索引標籤上設定屬性 - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
-   如果您在透過 SQL Server Data Tools 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在金鑰保存庫中的秘密作為其值（請參閱上一步）。 如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中或在 [ **SSIS 參數**]、[**連接管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入您的機密值（請參閱稍後）。 
+   如果您在通過 SQL 伺服器資料工具創建包時使用了**EncryptAllWithPassword**或**Encrypt敏感密碼**保護層級，請在 **"加密密碼"** 框中輸入密碼的值。 或者，您可以使用存儲在金鑰保存庫中的機密作為其值（請參閱上一頁）。 如果使用**加密敏感使用者金鑰**保護層級，請在設定檔或**SSIS 參數**、**連線管理員**或**屬性覆蓋**選項卡上重新輸入您的敏感值（請參閱稍後）。 
 
-   如果您使用**EncryptAllWithUserKey**保護層級，則不受支援。 您需要重新設定您的套件，以透過 SQL Server Data Tools 或 `dtutil` 命令列公用程式來使用另一個保護層級。 
+   如果您使用**加密AllWithUserKey**保護層級，則不支援該保護層級。 您需要通過 SQL Server 資料工具或`dtutil`命令列實用程式重新配置包以使用其他保護層級。 
    
-   針對 [記錄層級]，針對您的套件執行選取預先定義的記錄範圍。 如果您想要改為輸入自訂的記錄名稱，請選取 [**自訂**] 核取方塊。 如果您想要使用可在套件中指定的標準記錄提供者來記錄封裝執行，請在 [**記錄路徑**] 方塊中提供其 UNC 路徑來指定記錄檔資料夾。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑就會 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`。 在此路徑中，會為每個個別封裝執行建立子資料夾，並在執行 SSIS 套件活動執行識別碼之後以每五分鐘產生記錄檔的方式命名。 
+   針對 [記錄層級]****，針對您的套件執行選取預先定義的記錄範圍。 如果要改為輸入自訂日誌記錄名稱，請選擇 **"自訂**"核取方塊。 如果要在使用可在包中指定的標準日誌提供程式之外記錄包執行，請在 **"日誌記錄"路徑**框中提供其 UNC 路徑來指定日誌資料夾。 例如，如果將日誌存儲在 Azure 檔中，則日誌記錄路徑為`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`。 在此路徑中為每個運行的各個包創建一個子資料夾，並命名為執行 SSIS 包活動運行 ID，其中每五分鐘生成一次日誌檔。 
    
-   最後，指定認證以存取您的記錄檔資料夾。 如果您先前已輸入套件存取認證的值（請參閱上一步），您可以選取 [與**封裝存取認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入記錄存取認證的值。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則會 `Azure`網域、`<storage account name>`使用者名稱，並 `<storage account key>`密碼。 
+   最後，指定訪問日誌資料夾的憑據。 如果以前輸入了包訪問憑據的值（請參閱上一個），則可以通過選中"**與包訪問憑據相同**"核取方塊來重用它們。 否則，請在 **"域**"、"**使用者名**"和 **"密碼"** 框中輸入日誌記錄訪問憑據的值。 例如，如果將日誌存儲在 Azure 檔中，則域為`Azure`， 使用者名為`<storage account name>`， 密碼為`<storage account key>`。 
 
-    或者，您可以使用儲存在金鑰保存庫中的秘密作為其值（請參閱上一步）。 這些認證會用來儲存您的記錄。 
+    或者，您可以使用存儲在金鑰保存庫中的機密作為其值（請參閱上一頁）。 這些憑據用於存儲日誌。 
    
-   針對先前提到的所有 UNC 路徑，完整檔案名必須少於260個字元。 目錄名稱必須少於248個字元。
+   對於前面提到的所有 UNC 路徑，完全限定的檔案名必須小於 260 個字元。 目錄名稱必須小於 248 個字元。
 
-1. 在 [執行 SSIS 套件] 活動的 [ **SSIS 參數**] 索引標籤上，如果您的 AZURE SSIS IR 執行中，則會選取 [ **ssisdb** ] 做為您的套件位置，並清除 [**設定**] 索引標籤上的 [**手動專案**] 核取方塊，為您顯示所選項目或套件中的現有 SSIS 參數，讓您為它們指派值。 否則，您可以逐一輸入它們，以手動為其指派值。 請確定它們存在且已正確輸入，您的套件執行才會成功。 
+1. 在"執行 SSIS 包"活動的**SSIS 參數**選項卡上，如果 Azure-SSIS IR 正在運行，則選擇**SSISDB**作為包位置，並清除 **"設置"** 選項卡上的 **"手動條目**"核取方塊，將顯示所選項目或 SSISDB 包中的現有 SSIS 參數，以便您為其分配值。 否則，您可以逐個輸入它們，以手動為其分配值。 請確保它們存在並正確輸入，以便包執行成功。 
    
-   如果您在透過 SQL Server Data Tools 和**檔案系統（套件）** 建立套件時使用了**EncryptSensitiveWithUserKey**保護等級，或已選取 **[檔案系統（專案）** ] 做為封裝位置，則也需要重新輸入敏感性參數，以在設定檔或此索引標籤中指派值給它們。 
+   如果在通過 SQL 伺服器資料工具和**檔案系統（包）** 或**檔案系統（專案）** 創建包時使用**Encrypt敏感與UserKey**保護層級，則還需要重新輸入敏感參數，以在設定檔或此選項卡上為其分配值。 
    
-   當您將值指派給參數時，您可以使用運算式、函式、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。 或者，您可以使用儲存在金鑰保存庫中的秘密作為其值（請參閱上一步）。
+   為參數分配值時，可以使用運算式、函數、資料工廠系統變數和資料工廠管道參數或變數添加動態內容。 或者，您可以使用存儲在金鑰保存庫中的機密作為其值（請參閱上一頁）。
 
    ![在 [SSIS 參數] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. 在 [執行 SSIS 套件] 活動的 [**連線管理員**] 索引標籤上，如果您的 AZURE SSIS IR 執行中，則會選取 [ **ssisdb** ] 作為您的封裝位置，而 [**設定**] 索引標籤上的 [**手動專案**] 核取方塊會顯示，讓您可以將值指派給其屬性。 否則，您可以逐一輸入它們，以手動將值指派給其屬性。 請確定它們存在且已正確輸入，您的套件執行才會成功。 
+1. 在"執行 SSIS 包"活動的 **"連線管理員**"選項卡上，如果 Azure-SSIS IR 正在運行，則選擇**SSISDB**作為包位置，並清除"**設置"** 選項卡上的 **"手動條目**"核取方塊，將顯示所選項目或 SSISDB 包中的現有連線管理員，以便您為其屬性分配值。 否則，您可以逐個輸入它們，以手動為其屬性分配值。 請確保它們存在並正確輸入，以便包執行成功。 
    
-   如果您在透過 SQL Server Data Tools 和**檔案系統（套件）** 建立封裝時使用了**EncryptSensitiveWithUserKey**保護層級，或已選取 **[檔案系統（專案）** ] 做為封裝位置，則也需要重新輸入您的敏感性連線管理員屬性，以在設定檔或此索引標籤中指派值給它們。 
+   如果在通過 SQL 伺服器資料工具和**檔案系統（包）** 或**檔案系統（專案）** 創建包時使用**加密敏感與UserKey**保護層級，則還需要重新輸入敏感連線管理員屬性，以在設定檔或此選項卡上為其分配值。 
    
-   當您將值指派給連接管理員屬性時，您可以使用運算式、函式、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。 或者，您可以使用儲存在金鑰保存庫中的秘密作為其值（請參閱上一步）。
+   將值分配給連線管理員屬性時，可以使用運算式、函數、資料工廠系統變數和資料工廠管道參數或變數添加動態內容。 或者，您可以使用存儲在金鑰保存庫中的機密作為其值（請參閱上一頁）。
 
    ![在 [連線管理員] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-1. 在 [執行 SSIS 套件] 活動的 [**屬性覆寫**] 索引標籤上，逐一輸入所選封裝中現有屬性的路徑，以手動為其指派值。 請確定它們存在且已正確輸入，您的套件執行才會成功。 例如，若要覆寫使用者變數的值，請以下列格式輸入其路徑： `\Package.Variables[User::<variable name>].Value`。 
+1. 在"執行 SSIS 包"活動的屬性**覆蓋**選項卡上，逐個輸入所選包中現有屬性的路徑，以便手動分配值。 請確保它們存在並正確輸入，以便包執行成功。 例如，要覆蓋使用者變數的值，請輸入其路徑，其格式為： `\Package.Variables[User::<variable name>].Value`。 
    
-   如果您在透過 SQL Server Data Tools 和**檔案系統（套件）** 建立套件時使用了**EncryptSensitiveWithUserKey**保護等級，或已選取 **[檔案系統（專案）** ] 做為封裝位置，則也需要重新輸入您的敏感性屬性，以在設定檔或此索引標籤中指派值給它們。 
+   如果在通過 SQL 伺服器資料工具和**檔案系統（包）** 或**檔案系統（專案）** 創建包時使用**加密敏感與UserKey**保護層級，則還需要重新輸入敏感屬性，以在設定檔或此選項卡上為其分配值。 
    
-   當您將值指派給屬性時，您可以使用運算式、函數、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。
+   將值分配給屬性時，可以使用運算式、函數、資料工廠系統變數和資料工廠管道參數或變數添加動態內容。
 
    ![在 [屬性覆寫] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-   在 [設定檔] 和 [ **SSIS 參數**] 索引標籤中指派的值，可以使用 [**連線管理員**] 或 [**屬性覆寫**] 索引標籤來 在 [**連接管理員**] 索引標籤上指派的值也可以使用 [**屬性覆寫**] 索引標籤加以覆寫。
+   通過使用**連線管理員**或**屬性覆蓋**選項卡，可以覆蓋設定檔和**SSIS 參數**選項卡上分配的值。 通過使用 **"屬性覆蓋"** 選項卡，也可以覆蓋連接**管理器**選項卡上分配的值。
 
-1. 若要驗證管線設定，請選取工具列上的 [**驗證**]。 若要關閉 [**管線驗證報告**]，請選取 [ **>>** ]。
+1. 要驗證管道配置，請在工具列上選擇 **"驗證**"。 要關閉**管道驗證報告**，請選擇**>>**。
 
-1. 若要將管線發佈到 Data Factory，請選取 [**全部發佈**]。 
+1. 要將管道發佈到資料工廠，請選擇 **"全部發佈**"。 
 
 ### <a name="run-the-pipeline"></a>執行管道
 在此步驟中，您會觸發管線執行。 
 
-1. 若要觸發管線執行，請選取工具列上的 [**觸發**程式]，然後選取 [**立即觸發**]。 
+1. 要觸發管道運行，請在工具列上選擇 **"觸發器**"，然後選擇 **"立即觸發**"。 
 
    ![立即觸發](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
-2. 在 [管線執行] 視窗中，選取 [完成]。 
+2. 在 [管線執行]**** 視窗中，選取 [完成]****。 
 
 ### <a name="monitor-the-pipeline"></a>監視管線
 
-1. 切換至左側的 [監視] 索引標籤。 您會看到管線執行及其狀態以及其他資訊，例如**執行開始**時間。 若要重新整理檢視，請選取 [重新整理]。
+1. 切換至左側的 [監視]**** 索引標籤。 您將看到管道運行及其狀態以及其他資訊，如**運行開始**時間。 若要重新整理檢視，請選取 [重新整理]****。
 
    ![管線執行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-2. 選取 [動作] 資料行中的 [檢視活動執行] 連結。 因為管線只有一個活動，所以您只會看到一個活動執行。 這是「執行 SSIS 套件」活動。
+2. 選取 [動作]**** 資料行中的 [檢視活動執行]**** 連結。 您只看到一個活動在運行，因為管道只有一個活動。 這是執行 SSIS 包活動。
 
    ![活動執行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-3. 針對 SQL server 中的 SSISDB 資料庫執行下列查詢，以確認已執行封裝。 
+3. 針對 SQL 伺服器中的 SSISDB 資料庫運行以下查詢，以驗證封裝是否執行。 
 
    ```sql
    select * from catalog.executions
@@ -157,29 +157,29 @@ ms.locfileid: "79260627"
 
    ![確認封裝執行](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-4. 您也可以從管線活動執行的輸出取得 SSISDB 執行識別碼，並使用此識別碼來檢查 SQL Server Management Studio 中更完整的執行記錄和錯誤訊息。
+4. 您還可以從運行的管道活動的輸出中獲取 SSISDB 執行 ID，並使用 ID 在 SQL Server 管理工作室中檢查更全面的執行日誌和錯誤訊息。
 
    ![取得執行識別碼。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>使用觸發程序排程管線
 
-您也可以建立管線的排程觸發程式，以便管線依排程執行，例如每小時或每日。 如需範例，請參閱[建立資料處理站 - 資料處理站 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
+您還可以為管道創建計畫觸發器，以便管道按計劃運行，例如每小時或每天。 如需範例，請參閱[建立資料處理站 - 資料處理站 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
 
 ## <a name="run-a-package-with-powershell"></a>使用 PowerShell 執行套件
-在本節中，您會使用 Azure PowerShell 來建立 Data Factory 管線，其中包含執行 SSIS 套件的 Execute SSIS 套件活動。 
+在本節中，使用 Azure PowerShell 創建具有運行 SSIS 包的"執行 SSIS 包"活動的資料工廠管道。 
 
 依照[如何安裝和設定 Azure PowerShell](/powershell/azure/install-az-ps)中的逐步指示，安裝最新的 Azure PowerShell 模組。
 
-### <a name="create-a-data-factory-with-azure-ssis-ir"></a>使用 Azure SSIS IR 建立 data factory
-您可以使用已布建 Azure SSIS IR 的現有資料處理站，或使用 Azure SSIS IR 建立新的 data factory。 遵循[教學課程：透過 PowerShell 將 SSIS 套件部署至 Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)中的逐步指示。
+### <a name="create-a-data-factory-with-azure-ssis-ir"></a>使用 Azure SSIS IR 創建資料工廠
+您可以使用已預配 Azure SSIS IR 的現有資料工廠，也可以使用 Azure-SSIS IR 創建新的資料工廠。 按照本教程中的分步說明[：通過 PowerShell 將 SSIS 包部署到 Azure。](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用 Execute SSIS 套件活動建立管線 
 在此步驟中，您要使用執行 SSIS 套件活動建立管線。 此活動會執行您的 SSIS 套件。 
 
-1. 使用類似下列範例的內容，在*C:\ADF\RunSSISPackage*資料夾中建立名為*RunSSISPackagePipeline*的 json 檔案。
+1. 在*C：_ADF_RunSSIS 包*資料夾中創建名為*RunSSISPackagePipeline.json*的 JSON 檔，內容類別似于以下示例。
 
    > [!IMPORTANT]
-   > 儲存檔案之前，請先取代物件名稱、描述和路徑、屬性或參數值、密碼和其他變數值。 
+   > 在保存檔之前，替換物件名稱、描述和路徑、屬性或參數值、密碼和其他變數值。 
     
    ```json
    {
@@ -286,7 +286,7 @@ ms.locfileid: "79260627"
    }
    ```
 
-   若要執行儲存在檔案系統、檔案共用或 Azure 檔案儲存體中的封裝，請輸入封裝和記錄位置屬性的值，如下所示：
+   要執行存儲在檔案系統、檔共用或 Azure 檔中的包，請輸入包的值和日誌位置屬性，如下所示：
 
    ```json
    {
@@ -335,7 +335,7 @@ ms.locfileid: "79260627"
    }
    ```
 
-   若要在檔案系統、檔案共用或 Azure 檔案儲存體中儲存的專案內執行封裝，請依照下列方式輸入套件位置屬性的值：
+   要在存儲在檔案系統、檔共用或 Azure 檔中的專案中執行包，請輸入包位置屬性的值，如下所示：
 
    ```json
    {
@@ -366,7 +366,7 @@ ms.locfileid: "79260627"
    }
    ```
 
-   若要執行內嵌封裝，請輸入您的封裝位置屬性的值，如下所示：
+   要執行嵌入包，請輸入包位置屬性的值，如下所示：
 
    ```json
    {
@@ -391,9 +391,9 @@ ms.locfileid: "79260627"
    }
    ```
 
-2. 在 Azure PowerShell 中，切換至*C:\ADF\RunSSISPackage*資料夾。
+2. 在 Azure PowerShell 中，切換到*C：\ADF_RunSSIS 包*資料夾。
 
-3. 若要建立管線**RunSSISPackagePipeline**，請執行**set-azdatafactoryv2pipeline** Cmdlet。
+3. 要創建管道**RunSSIS 包管道**，請運行**集-AzDataFactoryV2管道**Cmdlet。
 
    ```powershell
    $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -402,7 +402,7 @@ ms.locfileid: "79260627"
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
    ```
 
-   以下是範例輸出：
+   下面是示例輸出：
 
    ```
    PipelineName      : Adfv2QuickStartPipeline
@@ -413,7 +413,7 @@ ms.locfileid: "79260627"
    ```
 
 ### <a name="run-the-pipeline"></a>執行管道
-使用**set-azdatafactoryv2pipeline** Cmdlet 來執行管線。 Cmdlet 會傳回管線執行識別碼，方便後續監視。
+使用**Invoke-AzDataFactoryV2Pipeline** Cmdlet 運行管道。 Cmdlet 會傳回管線執行識別碼，方便後續監視。
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -423,7 +423,7 @@ $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactor
 
 ### <a name="monitor-the-pipeline"></a>監視管線
 
-執行下列 PowerShell 程式碼以持續檢查管線執行狀態，直到完成複製資料為止。 在 PowerShell 視窗中複製或貼上下列腳本，然後選取 Enter。 
+執行下列 PowerShell 程式碼以持續檢查管線執行狀態，直到完成複製資料為止。 在 PowerShell 視窗中複製或粘貼以下腳本，然後選擇"輸入"。 
 
 ```powershell
 while ($True) {
@@ -444,12 +444,12 @@ while ($True) {
 }   
 ```
 
-您也可以使用 Azure 入口網站來監視管線。 如需逐步指示，請參閱[監視管線](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)：
+您還可以使用 Azure 門戶監視管道。 如需逐步指示，請參閱[監視管線](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)：
 
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>使用觸發程序排程管線
-在上一個步驟中，您已依需求執行管線。 您也可以建立排程觸發程式，依排程（例如每小時或每日）執行管線。
+在上一步中，您可以按需運行管道。 您還可以創建計畫觸發器以按計劃運行管道，例如每小時或每天。
 
-1. 在*C:\ADF\RunSSISPackage*資料夾中，使用下列內容建立名為*mytrigger.json*的 json 檔案： 
+1. 在*C：_ADF_RunSSIS 包*資料夾中創建名為*MyTrigger.json*的 JSON 檔，內容如下： 
         
    ```json
    {
@@ -475,22 +475,22 @@ while ($True) {
    }    
    ```
     
-1. 在 Azure PowerShell 中，切換至*C:\ADF\RunSSISPackage*資料夾。
-1. 執行**start-azdatafactoryv2trigger 指令程式**，以建立觸發程式。 
+1. 在 Azure PowerShell 中，切換到*C：\ADF_RunSSIS 包*資料夾。
+1. 運行**集-阿茲達工廠V2Trigger** Cmdlet，這將創建觸發器。 
 
    ```powershell
    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-1. 觸發程序預設處於已停止狀態。 執行**start-azdatafactoryv2trigger** Cmdlet 來啟動觸發程式。 
+1. 觸發程序預設處於已停止狀態。 通過運行**啟動-AzDataFactoryV2Trigger** Cmdlet 啟動觸發器。 
 
    ```powershell
    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-1. 藉由執行**start-azdatafactoryv2trigger** Cmdlet，確認觸發程式已啟動。 
+1. 通過運行**Get-AzDataFactoryV2Trigger** Cmdlet 確認觸發器啟動。 
 
    ```powershell
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
@@ -507,7 +507,7 @@ while ($True) {
                                       -TriggerRunStartedBefore "2017-12-09"
    ```
 
-   針對 SQL server 中的 SSISDB 資料庫執行下列查詢，以確認已執行封裝。 
+   針對 SQL 伺服器中的 SSISDB 資料庫運行以下查詢，以驗證封裝是否執行。 
 
    ```sql
    select * from catalog.executions
@@ -515,4 +515,4 @@ while ($True) {
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列部落格文章：
-- [使用 Azure Data Factory 管線中的 SSIS 活動，現代化和擴充您的 ETL/ELT 工作流程](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+- [通過 Azure 資料工廠管道中的 SSIS 活動實現 ETL/ELT 工作流的現代化和擴展](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

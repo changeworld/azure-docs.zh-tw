@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 資料總管 .NET Standard SDK 內嵌資料（預覽）
-description: 在本文中，您將瞭解如何使用 .NET Standard SDK，將資料內嵌（載入）至 Azure 資料總管。
+title: 使用 Azure 資料資源管理器 .NET 標準 SDK 引入資料（預覽）
+description: 在本文中，您將瞭解如何使用 .NET 標準 SDK 將資料引入 Azure 資料資源管理器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251774"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 資料總管 .NET Standard SDK 內嵌資料 (預覽)
 
-Azure 資料總管 (ADX) 是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 ADX 提供兩個適用於 .NET Standard 的用戶端程式庫：[內嵌程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)和[資料程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)。 這些程式庫可讓您將資料內嵌 (載入) 至叢集，並從您的程式碼查詢資料。 在本文中，您會先在測試叢集中建立資料表和資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
+Azure 資料總管 (ADX) 是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 ADX 提供兩個適用於 .NET Standard 的用戶端程式庫：[內嵌程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)和[資料程式庫](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)。 這些程式庫可讓您將資料內嵌 (載入) 至叢集，並從您的程式碼查詢資料。 在本文中，您首先在測試群集中創建表和資料對應。 然後，您將叢集的擷取排入佇列並驗證結果。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -74,7 +74,7 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>設定來源檔案資訊
 
-設定來源檔案的路徑。 本範例使用裝載於 Azure Blob 儲存體的範例檔案。 **StormEvents** 範例資料集包含來自[美國國家環境資訊中心](https://www.ncdc.noaa.gov/stormevents/)的氣象相關資料。
+設定來源檔案的路徑。 本範例使用裝載於 Azure Blob 儲存體的範例檔案。 **風暴事件**樣本資料集包含來自[國家環境資訊中心](https://www.ncdc.noaa.gov/stormevents/)的天氣相關資料。
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -209,7 +209,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>執行疑難排解查詢
 
-登入 [https://dataexplorer.azure.com](https://dataexplorer.azure.com)，並連線至您的叢集。 在資料庫中執行下列命令，以查看最後四個小時是否有任何擷取失敗。 先取代資料庫名稱，再執行。
+登錄到[https://dataexplorer.azure.com](https://dataexplorer.azure.com)群集並連接到群集。 在資料庫中執行下列命令，以查看最後四個小時是否有任何擷取失敗。 先取代資料庫名稱，再執行。
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +226,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您打算遵循其他文章，請保留您建立的資源。 否則，請在資料庫中執行下列命令，來清除 `StormEvents` 資料表。
+如果您計畫關注我們的其他文章，請保留您創建的資源。 否則，請在資料庫中執行下列命令，來清除 `StormEvents` 資料表。
 
 ```Kusto
 .drop table StormEvents

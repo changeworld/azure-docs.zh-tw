@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254283"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
@@ -20,9 +20,9 @@ ms.locfileid: "79254283"
 本頁面說明輸出連線的常見問題，以及如何進行其疑難排解並加以解決。
 
 ## <a name="output-not-produced-by-job"></a>作業未產生輸出
-1.  對各個輸出使用 [測試連線] 按鈕，驗證輸出的連線能力。
+1.  對各個輸出使用 [測試連線]**** 按鈕，驗證輸出的連線能力。
 
-2.  查看 [**監視**] 索引標籤上的 [[**監視計量**](stream-analytics-monitoring.md)]。因為這些值已匯總，所以計量會延遲幾分鐘的時間。
+2.  查看 **"監視器"** 選項卡上的[**監視指標**](stream-analytics-monitoring.md)。由於這些值是聚合的，因此指標將延遲幾分鐘。
     - 若輸入事件 > 0，則作業可以讀取輸入資料。 如果輸入事件不是 > 0，然後︰
       - 若要查看資料來源是否為有效資料，請使用[服務匯流排總管](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)進行檢查。 此項檢查適用於使用事件中樞作為輸入的作業。
       - 請檢查資料序列化格式及資料編碼是否正確。
@@ -74,7 +74,7 @@ ms.locfileid: "79254283"
 - 上游來源是否已節流
 - 查詢中的處理邏輯是否需要大量計算
 
-若要查看這些詳細資料，請在 Azure 入口網站中，選取串流作業，然後選取 [工作圖表]。 每個輸入都有一個按照分割區區分的待辦項目事件計量。 如果待辦項目事件計量持續增加，則表示系統資源受到限制。 可能是因為有輸出接收節流，或 CPU 很高。 如需使用作業圖表的詳細資訊，請參閱[使用作業圖表進行資料導向偵錯](stream-analytics-job-diagram-with-metrics.md)。
+若要查看這些詳細資料，請在 Azure 入口網站中，選取串流作業，然後選取 [工作圖表]****。 每個輸入都有一個按照分割區區分的待辦項目事件計量。 如果待辦項目事件計量持續增加，則表示系統資源受到限制。 可能是因為有輸出接收節流，或 CPU 很高。 如需使用作業圖表的詳細資訊，請參閱[使用作業圖表進行資料導向偵錯](stream-analytics-job-diagram-with-metrics.md)。
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL Database 輸出的索引鍵違規警告
 
@@ -90,18 +90,18 @@ ms.locfileid: "79254283"
 * 您可以使用 ALTER INDEX 對唯一索引設定 IGNORE_DUP_KEY 選項，這與使用 CREATE INDEX 或 INDEX 定義建立的主索引鍵/唯一限制式不同。  
 * 因為您無法在這類索引上強制執行唯一性，所以 IGNORE_DUP_KEY 不適用於資料行存放區索引。  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Azure 串流分析的資料行名稱會以小寫的方式區分大小寫
-使用原始相容性層級（1.0）時，Azure 串流分析用來將資料行名稱變更為小寫。 此行為已在較新的相容性層級中修正。 為了保留這種情況，我們建議客戶移至相容性層級1.1 和更新版本。 您可以在[Azure 串流分析作業中找到相容性層級的](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)詳細資訊。
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名稱由 Azure 流分析小寫
+使用原始相容性級別 （1.0） 時，Azure 流分析用於將列名稱更改為小寫。 此行為在以後的相容性級別中已修復。 為了保留這種情況，我們建議客戶遷移到相容性級別 1.1 及更高版本。 您可以找到有關 Azure[流分析作業的相容性級別](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)的詳細資訊。
 
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

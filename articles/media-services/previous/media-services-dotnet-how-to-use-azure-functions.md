@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251163"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>開發具有媒體服務的 Azure Functions
 
-本文說明如何開始建立使用媒體服務的 Azure Functions。 本文章中定義的 Azure Function 會針對新的 MP4 檔案監視名為 **input** 的儲存體帳戶容器。 一旦將檔案拖放至儲存體容器之後，blob 觸發程序就會執行此函式。 若要檢閱 Azure 函式，請參閱 [Azure 函式](../../azure-functions/functions-overview.md)一節中的**概觀**和其他主題。
+本文說明如何開始建立使用媒體服務的 Azure Functions。 本文章中定義的 Azure Function 會針對新的 MP4 檔案監視名為 **input** 的儲存體帳戶容器。 一旦將檔案拖放至儲存體容器之後，blob 觸發程序就會執行此函式。 若要檢閱 Azure 函式，請參閱 **Azure 函式**一節中的[概觀](../../azure-functions/functions-overview.md)和其他主題。
 
-如果您想要瀏覽及部署使用 Azure 媒體服務的現有 Azure Functions，請參閱[媒體服務 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存放庫包含的範例會使用媒體服務來顯示與直接從 Blob 儲存體擷取內容、進行編碼，再將內容寫回 Blob 儲存體相關的工作流程。 此存放庫也包含如何透過 Webhook 和 Azure 佇列監視作業通知的範例。 您也可以根據[媒體服務 Azure Functions (英文)](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 儲存機制中的範例來開發您的函式。 若要部署函式，請按 [部署至 Azure] 按鈕。
+如果您想要瀏覽及部署使用 Azure 媒體服務的現有 Azure Functions，請參閱[媒體服務 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存放庫包含的範例會使用媒體服務來顯示與直接從 Blob 儲存體擷取內容、進行編碼，再將內容寫回 Blob 儲存體相關的工作流程。 此存放庫也包含如何透過 Webhook 和 Azure 佇列監視作業通知的範例。 您也可以根據[媒體服務 Azure Functions (英文)](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 儲存機制中的範例來開發您的函式。 若要部署函式，請按 [部署至 Azure]**** 按鈕。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -60,9 +60,9 @@ ms.locfileid: "79251163"
 
 部署函式應用程式之後，您可以在**應用程式服務** Azure Functions 中找到它。
 
-1. 選取您的函式應用程式，然後按一下 [新增函式]。
-2. 選擇 [C#] 語言和 [資料處理] 案例。
-3. 選擇 [BlobTrigger] 範本。 每次將 blob 上傳到 **input** 容器時，就會觸發此函式。 **input** 名稱指定於下一個步驟的 **Path** 中。
+1. 選取您的函式應用程式，然後按一下 [新增函式]****。
+2. 選擇 [C#]**** 語言和 [資料處理]**** 案例。
+3. 選擇 [BlobTrigger]**** 範本。 每次將 blob 上傳到 **input** 容器時，就會觸發此函式。 **input** 名稱指定於下一個步驟的 **Path** 中。
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "79251163"
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. 按一下 **[建立]** 。 
+4. 按一下 **[建立]**。 
 
 ## <a name="files"></a>檔案
 
@@ -135,7 +135,7 @@ project.json 檔案包含相依性。 以下是 **project.json** 檔案的範例
 
 在真實案例中，您很可能想要追蹤作業進度，然後發佈編碼的資產。 如需詳細資訊，請參閱[使用 Azure WebHook 監視媒體服務作業通知](media-services-dotnet-check-job-progress-with-webhooks.md)。 如需詳細資訊，請參閱[媒體服務 Azure Functions (英文)](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。  
 
-以下列程式碼取代現有 run.csx 檔案的內容：當您完成函式定義之後，按一下 [儲存並執行]。
+以下列程式碼取代現有 run.csx 檔案的內容：當您完成函式定義之後，按一下 [儲存並執行]****。
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -333,9 +333,9 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 若要測試您的函式，您需要將 MP4 檔案上傳到您在連接字串中指定之儲存體帳戶的 **input** 容器。  
 
 1. 選取您在 **StorageConnection** 環境變數中指定的儲存體帳戶。
-2. 按一下 [Blob]。
-3. 按一下 [+容器]。 將容器命名為 **input**。
-4. 按 [上傳] 並瀏覽至要上傳的 .mp4 檔案。
+2. 按一下**Blob**。
+3. 按一下 [+容器]****。 將容器命名為 **input**。
+4. 按 [上傳]**** 並瀏覽至要上傳的 .mp4 檔案。
 
 >[!NOTE]
 > 當您在使用情況方案中使用 blob 觸發程序時，函數應用程式進入閒置狀態之後，處理新 blob 最多會有 10 分鐘的延遲。 在函數應用程式開始執行之後，會立即處理 blob。 如需詳細資訊，請參閱 [Blob 儲存體觸發程序與繫結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)。

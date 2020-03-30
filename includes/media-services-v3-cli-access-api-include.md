@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461226"
 ---
-## <a name="access-the-media-services-api"></a>存取媒體服務 API
+### <a name="access-the-media-services-api"></a>存取媒體服務 API
 
 若要連線到 Azure Media Services API，您可使用 Azure AD 服務主體驗證。 下列命令會建立 Azure AD 應用程式，並將服務主體連結到帳戶。 您應使用傳回值來設定您的應用程式。
 

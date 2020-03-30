@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253880"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：設計概念
@@ -132,19 +132,19 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 從 objectGUID 切換至 ConsistencyGuid 作為「來源錨點」屬性：
 
-1. 啟動 Azure AD Connect 精靈，然後按一下 [設定] 以移至 [工作] 畫面。
+1. 啟動 Azure AD Connect 精靈，然後按一下 [設定]**** 以移至 [工作] 畫面。
 
-2. 選取 [設定來源錨點] 工作選項，然後按一下 [下一步]。
+2. 選取 [設定來源錨點]**** 工作選項，然後按一下 [下一步]****。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 2](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]。
+3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]****。
 
-4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 選取 [下一步] 以繼續操作。
+4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按 **[下一步]**，繼續進行。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. 在 [準備設定] 畫面上，按一下 [設定] 進行設定變更。
+5. 在 [準備設定]**** 畫面上，按一下 [設定]**** 進行設定變更。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -156,7 +156,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 ![啟用現有部署的 ConsistencyGuid - 錯誤](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 如果您確定其他現有的應用程式不會使用此屬性，您可以使用指定的 **/SkipLdapSearch**參數重新開機 Azure AD Connect wizard 來隱藏錯誤。 若要這樣做，在命令提示字元中執行下列命令：
+ 如果確定該屬性未被其他現有應用程式使用，則可以通過使用指定的 **/SkipLdapSearch**開關重新開機 Azure AD Connect 嚮導來抑制錯誤。 若要這樣做，在命令提示字元中執行下列命令：
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -170,7 +170,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 ![第三方同盟設定](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>在現有部署中新增目錄
-假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果您確定現有的應用程式不會使用此屬性，您可以重新開機 Azure AD Connect wizard 並依照上述指定的 **/SkipLdapSearch**參數來隱藏錯誤，或者您必須聯絡支援人員以取得詳細資訊。
+假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果確定現有應用程式不使用該屬性，則可以通過重新開機 Azure AD Connect 嚮導來抑制錯誤，該嚮導具有上述指定的 **/SkipLdapSearch**開關，或者您需要聯繫支援部門以瞭解更多資訊。
 
 ![在現有部署中新增目錄](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -183,7 +183,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 * 屬性值符合 UPN 語法 (RFC 822)，其格式應該是 username\@domain
 * 這些值的尾碼符合 Azure AD 中其中一個已驗證的自訂網域
 
-在快速設定中，屬性的假定選擇會是 userPrincipalName。 如果 userprincipalname 屬性不包含您希望使用者用於登入 Azure 的值，則必須選擇 [自訂安裝]。
+在快速設定中，屬性的假定選擇會是 userPrincipalName。 如果 userprincipalname 屬性不包含您希望使用者用於登入 Azure 的值，則必須選擇 [自訂安裝] ****。
 
 ### <a name="custom-domain-state-and-upn"></a>自訂網域狀態和 UPN
 請務必確保 UPN 尾碼有已驗證的網域。

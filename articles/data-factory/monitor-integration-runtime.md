@@ -1,5 +1,5 @@
 ---
-title: 監視 Azure Data Factory 中的整合執行時間
+title: 監視 Azure 資料工廠中的集成運行時
 description: 了解如何監視 Azure Data Factory 中不同類型的整合執行階段。
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261134"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段  
@@ -35,7 +35,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說明每一種整合執行階段類型的屬性和狀態。  
 
 ## <a name="azure-integration-runtime"></a>Azure 整合執行階段
-可在 Azure 中完整且靈活地管理 Azure 整合執行階段的計算資源。 下表提供**AzDataFactoryV2IntegrationRuntime**命令所傳回之屬性的描述：
+可在 Azure 中完整且靈活地管理 Azure 整合執行階段的計算資源。 下表提供了**Get-AzDataFactoryV2集成運行時**命令返回的屬性的說明：
 
 ### <a name="properties"></a>屬性
 下表提供 Azure 整合執行階段的 Cmdlet 所傳回的屬性說明：
@@ -58,7 +58,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 離線 | Azure 整合執行階段因內部錯誤而離線。 |
 
 ## <a name="self-hosted-integration-runtime"></a>自我裝載整合執行階段
-本節提供 AzDataFactoryV2IntegrationRuntime Cmdlet 所傳回之屬性的描述。 
+本節介紹 Get-AzDataFactoryV2集成運行時 Cmdlet 返回的屬性。 
 
 > [!NOTE] 
 > 傳回的屬性和狀態包含整體的自我裝載整合執行階段，和執行階段中每個節點的相關資訊。  
@@ -70,12 +70,12 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 屬性 | 描述 | 
 | -------- | ----------- | 
 | 名稱 | 自我裝載整合執行階段及其關聯之節點的名稱。 節點是安裝了自我裝載整合執行階段的內部部署 Windows 電腦。 |  
-| 狀態 | 整體自我裝載整合執行階段與每個節點的狀態。 範例：線上/離線/有限/等。如需這些狀態的相關資訊，請參閱下一節。 | 
+| 狀態 | 整體自我裝載整合執行階段與每個節點的狀態。 示例：連線/離線/受限/等。有關這些狀態的資訊，請參閱下一節。 | 
 | 版本 | 自我裝載整合執行階段與每個節點的版本。 自我裝載整合執行階段的版本取決於群組中大多數節點的版本。 如果自我裝載整合執行階段設定中有不同版本的節點，則只有版本號碼和邏輯自我裝載整合執行階段的節點會正常運作。 其他節點會進入受限制模式，並需要加以手動更新 (如果自動更新失敗才需要這麼做)。 | 
 | 可用的記憶體 | 自我裝載整合執行階段節點上的可用記憶體。 這個值是近乎即時的快照集。 | 
 | CPU 使用率 | 自我裝載整合執行階段節點的 CPU 使用率。 這個值是近乎即時的快照集。 |
 | 網路功能 (輸入/輸出) | 自我裝載整合執行階段節點的網路使用率。 這個值是近乎即時的快照集。 | 
-| 並行作業 (執行中/限制) | **執行中**。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制**。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
+| 並行作業 (執行中/限制) | **正在運行**。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制**. 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
 | 角色 | 多節點的自我裝載整合執行階段中的角色有兩種 – 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點。 發送器節點也是背景工作角色節點。 |
 
 當自我裝載整合執行階段中有兩個或多個節點 (也就是相應放大的案例) 時，屬性的某些設定會比較合理。
@@ -86,7 +86,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 您可以增加節點數目來相應放大。 當您增加節點數目時，並行作業數限制是所有可用的節點的並行作業數限制值的總和。  例如，有一個節點可讓您執行最多十二個並行作業，然後再新增三個類似的節點之後，您能執行的並行作業數最多為 48 個 (也就是 4 x 12)。 我們建議您只有在看到每個節點上的預設值會造成資源使用率偏低的狀況時，才增加並行作業數限制。
 
-您可以覆寫 Azure 入口網站中計算得出的預設值。 依序選取 [作者] > [連線] > [整合執行階段] > [編輯] > [節點] > [修改每個節點的並行作業值]。 您也可以使用 PowerShell[更新-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples)命令。
+您可以覆寫 Azure 入口網站中計算得出的預設值。 依序選取 [作者] > [連線] > [整合執行階段] > [編輯] > [節點] > [修改每個節點的並行作業值]。 您還可以使用 PowerShell[更新-阿茲達工廠2集成運行時節點](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples)命令。
   
 ### <a name="status-per-node"></a>狀態 (每個節點)
 下表提供自我裝載整合執行階段節點的可能狀態：
@@ -111,7 +111,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 離線 | 沒有節點在線上。 |
 | 限制 | 在此自我裝載整合執行階段中，並非所有節點皆處於健康狀態。 這個狀態是某些節點可能會關閉的警告。 此狀態可能是發送器/背景工作角色節點的認證同步問題所引起。 |
 
-使用**AzDataFactoryV2IntegrationRuntimeMetric** Cmdlet 來提取 JSON 承載，其中包含詳細的自我裝載整合執行時間屬性，以及其在執行 Cmdlet 期間的快照集值。
+使用**Get-AzDataFactoryV2集成運行時Cmdlet**提取 JSON 有效負載，其中包含詳細的自託管集成運行時屬性及其在執行 Cmdlet 期間的快照值。
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName | ConvertTo-Json 
@@ -220,7 +220,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 請參閱下列文章以深入了解 Azure SSIS 整合執行階段：
 
-- [Azure-SSIS 整合執行階段](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
+- [Azure-SSIS 集成運行時](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
 - [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文逐步說明如何建立 Azure-SSIS IR，並使用 Azure SQL 資料庫裝載 SSIS 目錄。 
 - [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 這篇文章會詳述教學課程，並提供使用 Azure SQL Database 受控執行個體，以及將 IR 加入虛擬網路的指示。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會示範如何將更多節點新增至 IR，藉此相應放大 Azure-SSIS IR。 
@@ -229,5 +229,5 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 ## <a name="next-steps"></a>後續步驟
 請參閱以下文章，以不同的方式監視管線： 
 
-- [快速入門：建立資料處理站](quickstart-create-data-factory-dot-net.md)。
+- [快速入門：創建一個資料工廠](quickstart-create-data-factory-dot-net.md)。
 - [使用 Azure 監視器監視 Data Factory 管線](monitor-using-azure-monitor.md)

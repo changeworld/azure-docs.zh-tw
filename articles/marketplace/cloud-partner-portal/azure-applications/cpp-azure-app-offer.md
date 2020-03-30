@@ -1,19 +1,18 @@
 ---
-title: Azure 應用程式供應專案 |Azure Marketplace
+title: Azure 應用程式產品 / |Azure 應用商店
 description: 在 Azure Marketplace 上發佈 Azure 應用程式供應項目的程序概觀。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/06/2019
-ms.author: pabutler
-ms.openlocfilehash: 9125b5c71b63b27c58ea72b7bfd49f730854b33d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ed086ffdc49e21b819c0ee05b38ad882b4e269d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818796"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285311"
 ---
 # <a name="azure-application-offer"></a>Azure 應用程式供應項目
 
@@ -39,7 +38,7 @@ Azure 應用程式有兩種：受控應用程式和解決方案範本。
 除了 Azure Marketplace，您也可以提供服務類別目錄中的受控應用程式。 服務類別目錄是組織中使用者適用的已核准解決方案的內部目錄。 您會使用目錄來符合組織標準，同時為組織中的群組提供解決方案。 員工會使用目錄輕鬆尋找其 IT 部門所建議和核准的應用程式。
 
 >[!Note]
->雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。  如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](../../cloud-solution-providers.md)。
+>雲解決方案供應商 （CSP） 合作夥伴管道加入宣告現已可用。  有關通過 Microsoft CSP 合作夥伴管道行銷產品/服務的更多資訊[，請參閱雲解決方案供應商](../../cloud-solution-providers.md)。
 
 如需受控應用程式的優點與類型詳細資訊，請參閱 [Azure 受控應用程式概觀](https://docs.microsoft.com/azure/managed-applications/overview)。
 
@@ -54,13 +53,13 @@ Azure 應用程式有兩種：受控應用程式和解決方案範本。
 
 1. 符合[必要條件](./cpp-prerequisites.md) - (未顯示) 確認您已符合將 Azure 應用程式發佈到 Azure Marketplace 的商業和技術需求。 
 
-1. [建立供應項目](./cpp-create-offer.md) - 提供有關供應項目的詳細資訊。 這些資訊包括：供應項目說明、行銷資料、支援資訊，以及資產規格。
+1. [創建產品/服務](./cpp-create-offer.md)- 提供有關產品/服務的詳細資訊。 這些資訊包括：供應項目說明、行銷資料、支援資訊，以及資產規格。
 
 1. [建立或收集現有的商業及技術資產](./cpp-create-technical-assets.md) - 建立相關解決方案的商業資產 (法律聲明文件和行銷資料) 及技術資產。
 
-1. [建立 SKU](./cpp-skus-tab.md) - 建立與供應項目相關聯的 SKU。 您需要針對預計發佈的每個映像提供個別的 SKU。
+1. [創建 SKU](./cpp-skus-tab.md) - 創建與產品/服務關聯的 SKU。 您需要針對預計發佈的每個映像提供個別的 SKU。
 
-1. 認證及[發佈供應項目](./cpp-publish-offer.md) - 供應項目和技術資產完成後，便可以提交供應項目。 提交作業將啟動發佈程序。 在此程序中，解決方案會經過測試、驗證、認證，然後在 Azure Marketplace「上線」。
+1. 認證並[公佈報價](./cpp-publish-offer.md)- 報價和技術資產完成後，您可以提交報價。 提交作業將啟動發佈程序。 在此程序中，解決方案會經過測試、驗證、認證，然後在 Azure Marketplace「上線」。
 
 ## <a name="next-steps"></a>後續步驟
 

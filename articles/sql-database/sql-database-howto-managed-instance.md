@@ -1,5 +1,5 @@
 ---
-title: 如何設定受控實例
+title: 如何配置託管實例
 description: 了解如何設定與管理 Azure SQL Database 受控執行個體。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256909"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>如何在 Azure SQL Database 中使用受控執行個體
@@ -35,7 +35,7 @@ ms.locfileid: "79256909"
 - [針對受控執行個體設定現有的 VNet 與子網路](sql-database-managed-instance-configure-vnet-subnet.md) – 如果您想要設定現有的 VNet 與子網路，以便在內部部署受控執行個體，此處提供了可用來檢查[網路需求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)的指令碼，並可根據需求設定您的子網路。
 - [設定自訂 DNS](sql-database-managed-instance-custom-dns.md) – 如果您想要透過 db 郵件設定檔連結的伺服器，從受控執行個體存取自訂網域上的外部資源，則需要設定自訂 DNS。
 - [同步網路設定](sql-database-managed-instance-sync-network-configuration.md) – 雖然您已[將應用程式與 Azure 虛擬網路整合在一起](../app-service/web-sites-integrate-with-vnet.md)，仍可能發生您無法與受控執行個體建立連線的狀況。 您可以嘗試重新整理服務方案的網路組態。
-- [尋找管理端點 IP 位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)-受控實例會使用公用端點來進行管理。 您可以使用此處所述的指令碼來決定管理端點的 IP 位址。
+- [查找管理終結點 IP 位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)– 託管實例使用公共終結點進行管理。 您可以使用此處所述的指令碼來決定管理端點的 IP 位址。
 - [確認內建防火牆保護](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – 藉由僅允許必要連接埠上的流量的內建防火牆來保護受控執行個體。 您可以使用本指南所述的指令碼來檢查與驗證內建的防火牆。
 - [連線應用程式](sql-database-managed-instance-connect-app.md) – 受控執行個體置於私人 Azure VNet 且具有私人 IP 位址。 了解將應用程式連線到受控執行個體的不同模式。
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481733"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>(已淘汰) 部署 Docker CE 叢集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-本快速入門中會使用 Azure CLI 來部署 Docker CE 叢集。 接著，在叢集上部署和執行多容器應用程式，其中包含 Web 前端和 Redis 執行個體。 完成後，即可透過網際網路來存取應用程式。
+在此快速入門中，使用 Azure CLI 部署 Docker CE 群集。 接著，在叢集上部署和執行多容器應用程式，其中包含 Web 前端和 Redis 執行個體。 完成後，即可透過網際網路來存取應用程式。
 
 Azure Container Service 上的 Docker CE 處於預覽狀態，**不得用於生產工作負載**。
 
@@ -53,9 +53,9 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-docker-swarm-cluster"></a>建立 Docker Swarm 叢集
 
-使用 [az acs create](/cli/azure/acs#az-acs-create) 命令，在 Azure Container Service 中建立 Docker CE 叢集。 如需可取得 Docker CE 之區域的相關資訊，請參閱 [Docker CE 的 ACS 區域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) \(英文\)
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令，在 Azure Container Service 中建立 Docker CE 叢集。 有關 Docker CE 的區域可用性的資訊，請參閱[Docker CE 的 ACS 區域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
-下列範例會建立一個名為 mySwarmCluster 的叢集，其中包含一個 Linux 主要節點和三個 Linux 代理程式節點。
+下列範例會建立一個名為 mySwarmCluster** 的叢集，其中包含一個 Linux 主要節點和三個 Linux 代理程式節點。
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
@@ -67,16 +67,15 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
-在本快速入門中，您需要 Docker Swarm 主機和 Docker 代理程式集區的 FQDN。 執行下列命令以傳回主機和代理程式 FQDN。
+在整個快速入門過程中，您需要 Docker Swarm 主控形狀和 Docker 代理池的 FQDN。 執行下列命令以傳回主機和代理程式 FQDN。
 
-
-```bash
+```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
 ```
 
 輸出：
 
-```bash
+```output
 Master                                                               Agent
 -------------------------------------------------------------------  --------------------------------------------------------------------
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
@@ -125,7 +124,7 @@ docker stack deploy azure-vote --compose-file azure-vote.yaml
 
 輸出：
 
-```bash
+```output
 Creating network azure-vote_default
 Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
@@ -139,7 +138,7 @@ docker stack ps azure-vote
 
 一旦每項服務的 `CURRENT STATE` 成為 `Running`，應用程式便已準備就緒。
 
-```bash
+```output
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
 tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:v1   swarmm-agentpool0-66066781000004   Running             Running 5 seconds ago                            
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
@@ -160,13 +159,13 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>取得程式碼
 
-在本快速入門中，預先建立的容器映像已用來建立 Docker 服務。 在 GitHub 上可取得相關的應用程式程式碼、Dockerfile 和 Compose 檔案。
+在此快速入門中，預先創建的容器映射已用於創建 Docker 服務。 在 GitHub 上可取得相關的應用程式程式碼、Dockerfile 和 Compose 檔案。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已部署 Docker Swarm 叢集，並將多容器應用程式部署到此叢集。
+在此快速入門中，您部署了 Docker Swarm 群集，並為此部署了多容器應用程式。
 
 若要了解如何整合 Docker Swarm 與 Azure DevOps，請繼續進行搭配 Docker Swarm 和 Azure DevOps 的 CI/CD。
 
