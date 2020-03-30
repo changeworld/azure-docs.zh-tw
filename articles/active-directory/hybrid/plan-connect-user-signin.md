@@ -16,20 +16,20 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331258"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
 Azure Active Directory (Azure AD) Connect 可讓您的使用者使用相同的密碼來登入雲端和內部部署資源。 本文說明每個身分識別模型的主要概念，以協助您選擇要用於登入 Azure AD 的身分識別。
 
 如果您已熟悉 Azure AD 身分識別模型，而想要深入了解特定的方法，請參閱適當的連結：
 
-* 使用[無縫單一登入 (SSO)](#password-hash-synchronization) 進行[密碼雜湊同步處理](how-to-connect-sso.md)
-* 使用[無縫單一登入 (SSO)](how-to-connect-pta.md) 進行[傳遞驗證](how-to-connect-sso.md)
+* 使用[無縫單一登入 (SSO)](how-to-connect-sso.md) 進行[密碼雜湊同步處理](#password-hash-synchronization)
+* 使用[無縫單一登入 (SSO)](how-to-connect-sso.md) 進行[傳遞驗證](how-to-connect-pta.md)
 * [同盟 SSO (搭配 Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 * [與 PingFederate 同盟](#federation-with-pingfederate)
 
@@ -69,7 +69,7 @@ Azure AD 支援下列驗證方法：
 ![傳遞驗證](./media/plan-connect-user-signin/pta.png)
 
 如需詳細資訊，請參閱
-- [傳遞驗證](how-to-connect-pta.md)
+- [直通身份驗證](how-to-connect-pta.md)
 - [單一登入](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>使用新的或現有伺服器陣列搭配 Windows Server 2012 R2 中的 AD FS 建立的同盟
@@ -77,7 +77,7 @@ Azure AD 支援下列驗證方法：
 
 <center>
 
-![與 Windows Server 2012 R2 中的 AD FS 同盟](./media/plan-connect-user-signin/federatedsignin.png)</center>
+![與 Windows Server 2012 R2 中的 AD FS 搭配的同盟](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>部署與 Windows Server 2012 R2 中 AD FS 搭配的同盟
 
@@ -85,7 +85,7 @@ Azure AD 支援下列驗證方法：
 
 * 同盟伺服器的 Windows Server 2012 R2 伺服器。
 * Web 應用程式 Proxy 的 Windows Server 2012 R2 伺服器。
-* 一個 .pfx 檔案，內含一個 SSL 憑證，用於預期使用的同盟服務名稱。 例如：fs.contoso.com。
+* 一個 .pfx 檔，具有一個 TLS/SSL 憑證，用於預期的聯合服務名稱。 例如：fs.contoso.com。
 
 如果要部署新的伺服器陣列或使用現有的伺服器陣列，您需要：
 
@@ -132,7 +132,7 @@ Azure AD 登入頁面會列出為內部部署 Active directory 定義的 UPN 尾
 | 未驗證 |Azure AD Connect 在 Azure AD 中找到對應的自訂網域，但該網域未經驗證。 如果未驗證網域，此網域的使用者 UPN 尾碼將會在同步處理後變更為預設的 .onmicrosoft.com 尾碼。 | [驗證 Azure AD 中的自訂網域。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | 未新增 |Azure AD Connect 找不到與 UPN 尾碼對應的自訂網域。 如果未在 Azure 中新增並驗證網域，此網域的使用者 UPN 尾碼將會變更為預設的 .onmicrosoft.com 尾碼。 | [新增並驗證與 UPN 尾碼對應的自訂網域。](../fundamentals/add-custom-domain.md) |
 
-Azure AD 登入頁面會列出為內部部署 Active Directory 定義的 UPN 尾碼，以及 Azure AD 中對應的自訂網域與目前的驗證狀態。 在自訂安裝中，您現在可以在 [Azure AD 登入] 頁面上選取使用者主體名稱的屬性。
+Azure AD 登入頁面會列出為內部部署 Active Directory 定義的 UPN 尾碼，以及 Azure AD 中對應的自訂網域與目前的驗證狀態。 在自訂安裝中，您現在可以在 [Azure AD 登入]**** 頁面上選取使用者主體名稱的屬性。
 
 ![Azure AD 登入頁面](./media/plan-connect-user-signin/custom_azure_sign_in.png)
 
@@ -164,7 +164,7 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 ###### <a name="ad-fs-federation"></a>AD FS 同盟
 您無法與 Azure AD 中的預設 .onmicrosoft.com 網域或 Azure AD 中未驗證的自訂網域建立同盟。 當您執行 Azure AD Connect 精靈時，如果選取要與未驗證的網域建立同盟，則 Azure AD Connect 會在裝載該網域 DNS 的地方，提示您必須建立的記錄。 如需詳細資訊，請參閱[驗證所選取用於同盟的 Azure AD 網域](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
-如果您選取了 [與 AD FS 同盟] 使用者登入選項，就必須擁有自訂網域，才能繼續在 Azure AD 中建立同盟。 就我們的討論而言，這意謂著我們應該在 Azure AD 目錄中新增自訂網域 contoso.com。
+如果您選取了 [與 AD FS 同盟]**** 使用者登入選項，就必須擁有自訂網域，才能繼續在 Azure AD 中建立同盟。 就我們的討論而言，這意謂著我們應該在 Azure AD 目錄中新增自訂網域 contoso.com。
 
 | State | 對使用者 Azure 登入體驗的影響 |
 |:---:|:--- |
@@ -173,7 +173,7 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 | Verified |在此案例中，您可以繼續進行設定，而不需採取任何進一步的動作。 |
 
 ## <a name="changing-the-user-sign-in-method"></a>變更使用者登入方法
-您可以在使用精靈完成 Azure AD Connect 的初始設定之後，使用 Azure AD Connect 中的可用工作，將使用者登入方法從同盟變更為密碼雜湊同步處理或傳遞驗證。 請再次執行 Azure AD Connect 精靈，您將會看到您可執行的工作清單。 在工作清單中選取 [變更使用者登入] 。
+您可以在使用精靈完成 Azure AD Connect 的初始設定之後，使用 Azure AD Connect 中的可用工作，將使用者登入方法從同盟變更為密碼雜湊同步處理或傳遞驗證。 請再次執行 Azure AD Connect 精靈，您將會看到您可執行的工作清單。 在工作清單中選取 [變更使用者登入] **** 。
 
 ![變更使用者登入](./media/plan-connect-user-signin/changeusersignin.png)
 
@@ -181,15 +181,15 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 
 ![連接至 Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
 
-在 [使用者登入] 頁面上，選取所需的使用者登入。
+在 [使用者登入]**** 頁面上，選取所需的使用者登入。
 
 ![連接至 Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> 如果您只是要暫時切換到密碼雜湊同步處理，則請選取 [請勿轉換使用者帳戶] 核取方塊。 不勾選該選項將導致將每個使用者都轉換為同盟使用者，而這可能耗費數小時。
+> 如果您只是要暫時切換到密碼雜湊同步處理，則請選取 [請勿轉換使用者帳戶]**** 核取方塊。 不勾選該選項將導致將每個使用者都轉換為同盟使用者，而這可能耗費數小時。
 >
 >
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解[將內部部署身分識別與 Azure Active Directory 整合](whatis-hybrid-identity.md)。
-- 深入了解 [Azure AD Connect 設計概念](plan-connect-design-concepts.md)。
+- 詳細瞭解[將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。
+- 瞭解有關[Azure AD 連接設計概念](plan-connect-design-concepts.md)的更多內容。

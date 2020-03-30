@@ -1,25 +1,25 @@
 ---
 title: Azure Application Insights 中的分散式追蹤 | Microsoft Docs
-description: 提供有關 Microsoft 對於透過我們的本機轉送工具和 OpenCensus 專案中的合作關係進行分散式追蹤的支援資訊
+description: 通過 OpenCensus 專案中的合作夥伴關係提供有關 Microsoft 支援分散式跟蹤的資訊
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136735"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294968"
 ---
 # <a name="what-is-distributed-tracing"></a>什麼是分散式追蹤？
 
-新式雲端和[微服務](https://azure.com/microservices)架構的問世，造就了可獨立部署的簡單服務，協助您降低成本，同時提高可用性和輸送量。 但是雖然這些移動作業讓個別的服務更容易瞭解，但它們也使整體系統更棘手，以及進行 debug。
+現代雲和[微服務](https://azure.com/microservices)架構的出現催生了簡單、可獨立部署的服務，可説明降低成本，同時提高可用性和輸送量。 但是，儘管這些移動使單個服務整體更易於理解，但它們使整個系統更難推理和調試。
 
-在整合型架構中，我們已用來以呼叫堆疊進行調試。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
+在整體架構中，我們已經習慣了使用呼叫堆疊進行調試。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
 
-這就是分散式追蹤的來源。  
+這就是分散式跟蹤的用處。  
 
 分散式追蹤相當於新式雲端和微服務架構的呼叫堆疊，但增添了非常簡單的效能分析工具。 在 Azure 監視器中，我們提供兩種取用分散式追蹤資料的體驗。 第一種是[交易診斷](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)檢視，就像是新增了時間維度的呼叫堆疊。 交易診斷檢視可顯示單一交易/要求，並可協助您找出可靠性問題的根本原因及每個要求的效能瓶頸。
 
@@ -35,9 +35,9 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](https://doc
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [JAVA](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JAVAscript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 安裝和設定適當的 Application Insights SDK 後，SDK 相依性自動收集器就會針對熱門的架構、程式庫和技術自動收集追蹤資訊。 完整的支援技術清單位於[相依性自動收集文件](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中。

@@ -1,20 +1,18 @@
 ---
 title: 在 Azure Marketplace 中建置登陸頁面 | Azure
 description: 了解如何為應用程式與服務發行者，在 Azure Marketplace 和 Microsoft AppSource 中建立登陸頁面。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6959e7ba7fbf7d9afca84a803f8df588ac9149f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280587"
 ---
 # <a name="build-your-landing-page"></a>建置登陸頁面
 
@@ -47,7 +45,7 @@ ms.locfileid: "73819818"
 | **將呼籲置於標題或明確劃分的區段** | 在文字段落中內嵌您在 Marketplace 中的清單連結。 |
 | **研究出最佳關鍵字並將頁面最佳化以供搜尋** | 假設您產品名稱產生的搜尋順位較高。 |
 | **善用廣告活動的關鍵字** | 在各個 Web 屬性間如果使用許多不同的關鍵字，將會降低廣告投資的成效。 |
-| **將相關產品名稱與關鍵字放在「上半部的明顯位置」** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
+| **將相關產品名稱和關鍵字"放在折疊上方"** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
 | **依據 Microsoft 商標指導方針使用品牌圖像來驗證您的解決方案，例如「Azure 認證」** | 使用未經核准的 Microsoft 品牌圖像。 |
 
 ## <a name="next-steps"></a>後續步驟

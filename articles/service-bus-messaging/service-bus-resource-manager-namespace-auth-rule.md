@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 範本建立服務匯流排授權規則
+title: 使用 Azure 範本創建服務匯流排授權規則
 description: 使用 Azure Resource Manager 範本建立命名空間和佇列的服務匯流排授權規則
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: c795c61ec4891205ad9c77e96914d9b374fa88af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bfb2d2d946a85c1d051315fb29a5a63f7a00871
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426905"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384920"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立命名空間和佇列的服務匯流排授權規則
 
@@ -32,12 +32,12 @@ ms.locfileid: "75426905"
 > [!NOTE]
 > 下列 Azure Resource Manager 範本可供下載和部署。
 > 
-> * [建立服務匯流排命名空間](service-bus-resource-manager-namespace.md)
+> * [創建服務匯流排命名空間](service-bus-resource-manager-namespace.md)
 > * [建立服務匯流排命名空間與佇列](service-bus-resource-manager-namespace-queue.md)
 > * [建立服務匯流排命名空間與主題和訂用帳戶](service-bus-resource-manager-namespace-topic.md)
 > * [建立服務匯流排命名空間與主題、訂用帳戶和規則](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要檢查最新的範本，請造訪 [Azure 快速入門範本][Azure Quickstart Templates]資源庫，並搜尋**服務匯流排**。
+> 要檢查最新的範本，請訪問[Azure 快速入門範本][Azure Quickstart Templates]庫並搜索**服務匯流排**。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,11 +45,11 @@ ms.locfileid: "75426905"
 
 使用此範本，您將部署命名空間和訊息實體 (在此情況下為佇列) 的服務匯流排授權規則。
 
-此範本使用[共用存取簽章 (SAS)](service-bus-sas.md) 進行驗證。 SAS 可讓應用程式使用在命名空間或在與特定權限相關聯的訊息實體 (佇列或主題) 上設定的存取金鑰，向服務匯流排進行驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
+此範本使用[共用訪問簽名 （SAS）](service-bus-sas.md)進行身份驗證。 SAS 可讓應用程式使用在命名空間或在與特定權限相關聯的訊息實體 (佇列或主題) 上設定的存取金鑰，向服務匯流排進行驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
 
 若要自動執行部署，請按一下下列按鈕：
 
-[![部署至 Azure](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
+[![部署到 Azure](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>參數
 
@@ -58,6 +58,7 @@ ms.locfileid: "75426905"
 範本會定義下列參數。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要建立的服務匯流排命名空間名稱。
 
 ```json
@@ -67,6 +68,7 @@ ms.locfileid: "75426905"
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
+
 命名空間的授權規則名稱。
 
 ```json
@@ -76,6 +78,7 @@ ms.locfileid: "75426905"
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
+
 服務匯流排命名空間中的佇列名稱。
 
 ```json
@@ -85,6 +88,7 @@ ms.locfileid: "75426905"
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 範本的服務匯流排 API 版本。
 
 ```json
@@ -97,6 +101,7 @@ ms.locfileid: "75426905"
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的資源
+
 建立 **訊息**類型的標準服務匯流排命名空間，以及命名空間和實體的服務匯流排授權規則。
 
 ```json
@@ -152,21 +157,25 @@ ms.locfileid: "75426905"
 若要了解 JSON 語法和屬性，請參閱[命名空間](/azure/templates/microsoft.servicebus/namespaces)、[佇列](/azure/templates/microsoft.servicebus/namespaces/queues)和 [AuthorizationRules](/azure/templates/microsoft.servicebus/namespaces/authorizationrules)。
 
 ## <a name="commands-to-run-deployment"></a>執行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 現在您已使用 Azure Resource Manager 建立並部署資源，請檢視這些文件，了解如何管理這些資源︰
 
 * [使用 PowerShell 管理服務匯流排](service-bus-powershell-how-to-provision.md)

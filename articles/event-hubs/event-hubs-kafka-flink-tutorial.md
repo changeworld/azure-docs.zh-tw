@@ -10,17 +10,17 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 881546a97b01bef993cc24c6b868ec97ddf5ac36
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283594"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>使用 Apache Flink 搭配適用於 Apache Kafka 的 Azure 事件中樞
-本教學課程說明如何將 Apache Flink 連線至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
+本教程介紹如何在不更改協定用戶端或運行自己的群集的情況下將 Apache Flink 連接到事件中心。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
 
-使用 Apache Kafka 的其中一項優點，便是能夠連線之架構的生態系統。 已啟用 Kafka 的事件中樞結合了 Kafka 的彈性與 Azure 生態系統的延展性、一致性和支援度。
+使用 Apache Kafka 的其中一項優點，便是能夠連線之架構的生態系統。 事件中心將 Kafka 的靈活性與 Azure 生態系統的可擴充性、一致性和支援相結合。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -30,29 +30,29 @@ ms.locfileid: "72555728"
 > * 執行 Flink 取用者
 
 > [!NOTE]
-> 您可以在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) 上取得此範例
+> 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) 上取得此範例
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列必要條件：
 
 * 請參閱[適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)一文。 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。
     * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)並[安裝 ](https://maven.apache.org/install.html) Maven 二進位封存檔
+* [下載](https://maven.apache.org/download.cgi)並[安裝](https://maven.apache.org/install.html)Maven 二進位存檔
     * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
 * [Git](https://www.git-scm.com/downloads)
     * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 
-您需要事件中樞命名空間，才能從任何事件中樞服務傳送或接收。 如需有關事件中樞 Kafka 端點的資訊，請參閱[建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)。 請務必複製事件中樞連接字串以供稍後使用。
+您需要事件中樞命名空間，才能從任何事件中樞服務傳送或接收。 如需有關事件中樞 Kafka 端點的資訊，請參閱[建立已啟用 Kafka 的事件中樞](event-hubs-create.md)。 請務必複製事件中樞連接字串以供稍後使用。
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 
-既然您已經有已啟用 Kafka 的事件中樞連接字串，請複製適用於 Kafka 的 Azure 事件中樞存放庫，並瀏覽至 `flink` 子資料夾：
+現在，您擁有事件中心連接字串，可以克隆 Kafka 存儲庫的 Azure 事件中心並`flink`導航到子資料夾：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -119,12 +119,12 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-如果已啟用 Kafka 的事件中樞有事件 (例如您的生產者也正在執行)，則取用者現在會開始接收來自主題 `test` 的事件。
+如果事件中心具有事件（例如，如果生產者也在運行），則消費者現在開始從主題`test`接收事件。
 
 如需有關將 Flink 連線至 Kafka 的詳細資訊，請參閱 [Flink 的 Kafka 連接器指南](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何將 Apache Flink 連線至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您已在本教學課程進行期間執行下列步驟： 
+在本教程中，您學習了如何在不更改協定用戶端或運行自己的群集的情況下將 Apache Flink 連接到事件中心。 您已在本教學課程進行期間執行下列步驟： 
 
 > [!div class="checklist"]
 > * 建立事件中樞命名空間
@@ -136,10 +136,10 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 
 - [了解事件中樞](event-hubs-what-is-event-hubs.md)
 - [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)
+- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create.md)
 - [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [在已啟用 Kafka 的事件中樞中鏡射 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
-- [將 Apache Spark 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-spark-tutorial.md)
-- [整合 Kafka Connect 與已啟用 Kafka 的事件中樞](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka Streams 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
+- [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
+- [將卡夫卡連接與事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [將 Akka 流連接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)

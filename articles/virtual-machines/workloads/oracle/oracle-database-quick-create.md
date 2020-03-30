@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9f4b9d53aaa1cac17fbaae4b638e144654fad4e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535624"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -27,17 +27,18 @@ ms.locfileid: "75747674"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
+下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
+
 ## <a name="create-virtual-machine"></a>建立虛擬機器
 
 若要建立虛擬機器，請使用 [az vm create](/cli/azure/vm) 命令。 
@@ -56,7 +57,7 @@ az vm create \
 
 在您建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 請記下 `publicIpAddress` 的值。 您必須使用此位址來存取 VM。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -73,7 +74,7 @@ az vm create \
 
 若要對 VM 建立 SSH 工作階段，請使用下列命令。 以 VM 的 `publicIpAddress` 值取代 IP 位址。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -81,7 +82,7 @@ ssh azureuser@<publicIpAddress>
 
 Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下所示。 
 
-1.  切換至 oracle 超級使用者，然後將接聽程式初始化以啟用記錄功能：
+1.  切換至 oracle** 超級使用者，然後將接聽程式初始化以啟用記錄功能：
 
     ```bash
     $ sudo su - oracle
@@ -90,7 +91,7 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 
     輸出大致如下：
 
-    ```bash
+    ```output
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
@@ -142,13 +143,14 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 
 3. 設定 Oracle 變數
 
-在連線之前，您需要設定兩個環境變數︰ORACLE_HOME 和 ORACLE_SID。
+在連接之前，您需要設置兩個環境變數 *：ORACLE_HOME*和*ORACLE_SID*。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入之用。請確認已使用您選擇的編輯器，將下列語句新增至 `~/.bashrc` 檔案。
+
+您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這將保存環境變數以供將來登錄。 確認以下語句已使用您選擇的編輯器添加到`~/.bashrc`檔中。
 
 ```bash
 # Add ORACLE_HOME. 
@@ -181,7 +183,7 @@ export ORACLE_SID=cdb1
 
     輸出大致如下：
 
-    ```bash
+    ```output
       CON_ID NAME                           OPEN_MODE 
       ----------- ------------------------- ---------- 
       2           PDB$SEED                  READ ONLY 
@@ -202,6 +204,7 @@ export ORACLE_SID=cdb1
 當您重新啟動 VM 時，Oracle 資料庫預設不會自動啟動。 若要將 Oracle 資料庫設定為自動啟動，請先以 root 的身分登入。 接著，建立並更新一些系統檔案。
 
 1. 以 root 的身分登入
+
     ```bash
     sudo su -
     ```
@@ -214,7 +217,7 @@ export ORACLE_SID=cdb1
 
 3.  建立名為 `/etc/init.d/dbora` 的檔案，並貼上下列內容︰
 
-    ```
+    ```bash
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
@@ -243,7 +246,7 @@ export ORACLE_SID=cdb1
     esac
     ```
 
-4.  使用 chmod 變更檔案的權限，如下所示：
+4.  使用 chmod** 變更檔案的權限，如下所示：
 
     ```bash
     chgrp dba /etc/init.d/dbora
@@ -304,11 +307,11 @@ export ORACLE_SID=cdb1
 
 4.  從您的瀏覽器連接 EM Express。 確定您的瀏覽器與 EM Express 相容 (需要安裝 Flash)： 
 
-    ```
+    ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
-您可以使用 SYS 帳戶進行登入，然後勾選 as sysdba 核取方塊。 使用您在安裝期間設定的密碼 OraPasswd1。 
+您可以使用 SYS**** 帳戶進行登入，然後勾選 as sysdba**** 核取方塊。 使用您在安裝期間設定的密碼 OraPasswd1****。 
 
 ![Oracle OEM Express 登入頁面的螢幕擷取畫面](./media/oracle-quick-start/oracle_oem_express_login.png)
 
@@ -316,7 +319,7 @@ export ORACLE_SID=cdb1
 
 完成在 Azure 上探索第一個 Oracle 資料庫而且不再需要 VM 之後，就可以使用 [az group delete](/cli/azure/group) 命令移除資源群組、VM 和所有相關資源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

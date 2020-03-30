@@ -1,20 +1,18 @@
 ---
 title: Web 分析
-description: 》一文中的指示來佈建虛擬裝置，並與該虛擬裝置連線。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+description: 此文章提供有關如何學習並使用 Web 分析來有效讓您的業務成長的指示。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285328"
 ---
 <a name="web-analytics"></a>Web 分析
 =============
@@ -64,9 +62,9 @@ ms.locfileid: "73814651"
 
 您的行銷活動可能會有中繼頁面，您將流量導向該頁面，然後該頁面接著將客戶導向 Marketplace。 務必將您的初始行銷活動識別碼傳遞到您傳送到 Marketplace 的最終 URL。
 
-下列是一個範例：
+範例如下：
 
-1. 行銷員工向 Google 購買廣告以將流量導向公司的登陸頁面 \'。 登陸頁面有「嘗試我的產品」連結，該連結會連到 \"。
+1. 行銷員工向 Google 購買廣告以將流量導向公司的登陸頁面 <https://contoso.com>。 登陸頁面有「嘗試我的產品」連結，該連結會連到 <https://appsource.com>。
 2. 使用者按一下廣告並登陸此公司登陸頁面。
     1.  轉介 URL = google.com
     2.  登陸頁面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
@@ -95,7 +93,7 @@ ms.locfileid: "73814651"
 
 與我們如何看待您客戶的網域相同，此圖表可讓您查看您每個行銷活動資料的分佈情況 (關於使用者如何來到 Marketplace)。 \_NoCampaign 表示當客戶瀏覽到 Marketplace 時，其 URL 中沒有行銷活動識別碼。
 
-<a name="next-steps"></a>**Next Steps**
+<a name="next-steps"></a>**後續步驟**
 --------------
 
 既然您已經有能力追蹤您供應項目的成效，我們想要鼓勵您建立您自己的行銷活動。

@@ -1,16 +1,16 @@
 ---
-title: 在 Azure Service Fabric 執行者中執行功能
+title: 在 Azure 服務結構參與者中實現功能
 description: 說明如何撰寫自己的動作項目服務，以繼承 StatefulService 時的相同方式來實作服務層級功能。
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502280"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在動作項目服務中實作服務層級功能
 
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>實作動作項目備份與還原
 
-自訂動作項目服務會利用已經存在於 `ActorService`中的遠端處理接聽程式，藉以公開用來備份動作項目資料的方法。 如需範例，請參閱[備份與還原動作項目](service-fabric-reliable-actors-backup-and-restore.md)。
+自訂動作項目服務會利用已經存在於 `ActorService`中的遠端處理接聽程式，藉以公開用來備份動作項目資料的方法。 如需範例，請參閱[備份與還原動作項目](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>使用遠端 V2(介面相容) 堆疊的動作項目
 
@@ -214,9 +214,9 @@ public class Program
 ## <a name="next-steps"></a>後續步驟
 
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [動作項目生命週期與記憶體回收](service-fabric-reliable-actors-lifecycle.md)
+* [參與者生命週期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

@@ -1,23 +1,23 @@
 ---
-title: VNet 服務端點-適用於 MySQL 的 Azure 資料庫
+title: VNet 服務終結點 - MySQL 的 Azure 資料庫
 description: 說明 VNet 服務端點如何針對適用於 MySQL 的 Azure 資料庫伺服器運作。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: b9b84cb2c442e7da65da332da1a78b28c32c4de9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/18/2020
+ms.openlocfilehash: 4ca8fe3e217d3b4affc1bc0bda9ed193e91b2104
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537137"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫使用虛擬網路服務端點和規則
 
 *虛擬網路規則*是一項防火牆安全性功能，可控制適用於 MySQL 的 Azure 資料庫伺服器是否接受從虛擬網路中特定子網路所傳來的通訊。 本文說明為何虛擬網路規則功能有時是讓適用於 MySQL 的 Azure 資料庫伺服器安全接受通訊的最佳選項。
 
-若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview]（VNet）和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]，規則才能參考。 下圖說明虛擬網路服務端點如何與適用於 MySQL 的 Azure 資料庫搭配運作：
+若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview] (VNet) 和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]可供規則參考。 下圖說明虛擬網路服務端點如何與適用於 MySQL 的 Azure 資料庫搭配運作：
 
 ![VNet 服務端點的運作方式範例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "75979671"
 
 **子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。 
+**虛擬網路服務終結點：**[虛擬網路服務終結點][vm-virtual-network-service-endpoints-overview-649d]是屬性值包含一個或多個正式 Azure 服務類型名稱的子網。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。 
 
 **虛擬網路規則：** 適用於 MySQL 的 Azure 資料庫伺服器的虛擬網路規則，是列於適用於 MySQL 的 Azure 資料庫伺服器之存取控制清單 (ACL) 中的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 MySQL 的 Azure 資料庫伺服器的 ACL 中。
 
@@ -53,13 +53,13 @@ ms.locfileid: "75979671"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. 允許存取 Azure 服務
 
-連線安全性窗格有一個標示為 [允許存取 Azure 服務] 的 [開啟/關閉] 按鈕。 [開啟] 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟] 設定可能會超出您想要開啟適用於 MySQL 資料庫的 Azure 資料庫的幅度。 虛擬網路規則功能提供更細微的控制。
+連線安全性窗格有一個標示為 [允許存取 Azure 服務]**** 的 [開啟/關閉]**** 按鈕。 [開啟]**** 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟]**** 設定可能會超出您想要開啟適用於 MySQL 資料庫的 Azure 資料庫的幅度。 虛擬網路規則功能提供更細微的控制。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
-適用於 MySQL 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 MySQL 資料庫的 Azure 資料庫。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
+適用於 MySQL 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 MySQL 資料庫的 Azure 資料庫。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」** IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
 
-您可以取得 VM 的「靜態」IP 位址，以挽回 IP 選項。 如需詳細資訊，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+您可以取得 VM 的「靜態」** IP 位址，以挽回 IP 選項。 如需詳細資料，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 不過，靜態 IP 方法可能變得難以管理，在大規模使用時成本很高。 虛擬網路規則較容易建立和管理。
 
@@ -89,44 +89,44 @@ ms.locfileid: "75979671"
 
 有一組獨立的安全性角色負責管理虛擬網路服務端點。 下列每個角色都需要採取動作：
 
-- **網路系統管理員：** &nbsp; 開啟端點。
-- **資料庫管理員：** &nbsp; 更新存取控制清單（ACL），以將指定的子網新增至適用於 MySQL 的 Azure 資料庫伺服器。
+- **網路管理員：** &nbsp;開啟端點。
+- **資料庫管理員：** &nbsp;更新存取控制清單 (ACL) 以將指定的子網路新增至適用於 MySQL 的 Azure 資料庫伺服器。
 
-RBAC 替代方案：
+RBAC 替代方案：**
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
-您可以選擇在 Azure 中使用[角色型存取控制（RBAC）][rbac-what-is-813s] ，以建立只具有必要功能子集的單一自訂角色。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
+在 Azure 中，您可以選擇使用[角色型存取控制 (RBAC)][rbac-what-is-813s] 來建立單一自訂安全性角色，而且只給予一部分必要的能力。 可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果將使用者添加到自訂角色，則將使用者添加到其他兩個主要管理員角色時，安全暴露的表面區域較低。
 
 > [!NOTE]
 > 在某些案例中，適用於 MySQL 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
 > - 兩個訂用帳戶在相同的 Azure Active Directory 租用戶中。
 > - 使用者具備啟動作業的必要權限，例如啟用服務端點、將 VNet 子網路新增至指定的伺服器。
-> - 請確定這兩個訂用帳戶都已註冊**Microsoft .sql**資源提供者。 如需詳細資訊，請參閱[資源管理員-註冊][resource-manager-portal]
+> - 請確保兩個訂閱都註冊了**Microsoft.Sql**資來源提供者。 有關詳細資訊，請參閱[資源管理器註冊][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 
 針對適用於 MySQL 的 Azure 資料庫，虛擬網路規則功能具有下列限制：
 
-- Web 應用程式可以對應到 VNet/子網路中的私人 IP。 即使服務端點已從指定的 VNet/子網路上開啟，從 Web 應用程式至伺服器的連線仍具有 Azure 公用 IP 來源，而非 VNet/子網路來源。 若要啟用從 Web 應用程式到具有 VNet 防火牆規則之伺服器的連線，您必須允許 Azure 服務存取伺服器上的伺服器。
+- Web 應用程式可以對應到 VNet/子網路中的私人 IP。 即使服務端點已從指定的 VNet/子網路上開啟，從 Web 應用程式至伺服器的連線仍具有 Azure 公用 IP 來源，而非 VNet/子網路來源。 若要啟用從 Web 應用程式到具有 VNet 防火牆規則伺服器的連線，您必須在伺服器上 [允許 Azure 服務存取伺服器]。
 
 - 在適用於 MySQL 的 Azure 資料庫防火牆中，每個虛擬網路規則都會參考一個子網路。 裝載所有這些參考子網路的地理區域，必須和裝載適用於 MySQL 的 Azure 資料庫的地理區域相同。
 
 - 在任何指定的虛擬網路中，每個適用於 MySQL 的 Azure 資料庫伺服器最多只能有 128 個 ACL 項目。
 
-- 虛擬網路規則只適用于 Azure Resource Manager 虛擬網路;而不是[傳統部署模型][arm-deployment-model-568f]網路。
+- 虛擬網路規則只套用至 Azure Resource Manager 虛擬網路，而不是[傳統部署模型][arm-deployment-model-568f]網路。
 
 - 使用 **Microsoft.Sql** 服務標籤對適用於 MySQL 的 Azure 資料庫開啟虛擬網路服務端點，也會對所有 Azure 資料庫服務啟用端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database，以及 Azure SQL 資料倉儲。
 
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
 - 在防火牆上，IP 位址範圍會套用到下列網路項目，但虛擬網路規則不這麼做：
-    - [站對站（S2S）虛擬私人網路（VPN）][vpn-gateway-indexmd-608y]
-    - 透過[ExpressRoute][expressroute-indexmd-744v]的內部部署
+    - [站對站 (S2S) 虛擬私人網路 (VPN)][vpn-gateway-indexmd-608y]
+    - 透過 [ExpressRoute][expressroute-indexmd-744v] 的內部部署
 
 ## <a name="expressroute"></a>ExpressRoute
 
-如果您的網路透過使用[ExpressRoute][expressroute-indexmd-744v]連線到 Azure 網路，則會在 Microsoft Edge 上使用兩個公用 IP 位址來設定每個線路。 兩個 IP 位址可使用 Azure 公用對等互連來連線至 Microsoft 服務，例如 Azure 儲存體。
+如果您的網路使用 [ExpressRoute][expressroute-indexmd-744v] 連線至 Azure 網路，則每個線路在 Microsoft Edge 會設定兩個公用 IP 位址。 兩個 IP 位址可使用 Azure 公用對等互連來連線至 Microsoft 服務，例如 Azure 儲存體。
 
 若要允許從您的線路針對適用於 MySQL 的 Azure 資料庫進行通訊，您必須為線路的公用 IP 位址建立 IP 網路規則。 若要尋找您 ExpressRoute 線路的公用 IP 位址，請使用 Azure 入口網站開啟具有 ExpressRoute 的支援票證。
 

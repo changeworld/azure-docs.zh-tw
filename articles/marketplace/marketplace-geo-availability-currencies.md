@@ -1,23 +1,22 @@
 ---
-title: 地理可用性和貨幣支援 |Azure
-description: Azure Marketplace 和 AppSource 中的地理位置可用性
-services: Azure, Marketplace, Compute, Storage, Networking
+title: 地理可用性和貨幣支援 |蔚藍
+description: Azure 應用商店和應用程式源中的地理可用性
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2020
-ms.author: ellacroi
-ms.openlocfilehash: f2369388f00f6a023ac77865ab8e3540bc35de70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.author: dsindona
+ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288422"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和貨幣支援
 
-Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買，如客戶的帳單位址所定義，而交易可以用17種貨幣來完成。 下表列出每個支援的地理位置、其[ISO 3166 2 位數的 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及指派的貨幣。
+Azure 應用商店和 AppSource 產品可以在客戶帳單位址定義的 141 個地理位置購買，並且事務可以以 17 種貨幣完成。 下表列出了每個支援的地理位置[、ISO 3166 兩位數位 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的貨幣。
 
 |   國家/地區名稱               |   ISO-2   |   貨幣   |
 |-------------------------------------|-----------|--------------|
@@ -28,7 +27,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 安哥拉                              | AO        | 美元          |
 | 阿根廷                           | AR        | 美元          |
 | 亞美尼亞                             | AM        | 美元          |
-| 澳洲                           | AU        | 澳幣          |
+| 澳大利亞                           | AU        | 澳幣          |
 | 奧地利                             | AT        | 歐元          |
 | 亞塞拜然                          | AZ        | 美元          |
 | 巴林                             | BH        | 美元          |
@@ -41,11 +40,11 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 玻利維亞                             | BO        | 美元          |
 | 波士尼亞赫塞哥維納              | BA        | 美元          |
 | 波札那                            | BW        | 美元          |
-| 巴西                              | BR        | BRL\*        |
+| 巴西                              | BR        | 巴西里耳\*        |
 | 汶萊                              | BN        | 美元          |
 | 保加利亞                            | BG        | 歐元          |
 | 喀麥隆                            | CM        | 美元          |
-| 加拿大                              | CA        | 加拿大幣          |
+| Canada                              | CA        | 加拿大幣          |
 | 維德角                          | CV        | 美元          |
 | 開曼群島                      | KY        | 美元          |
 | 智利                               | CL        | 美元          |
@@ -53,9 +52,9 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 哥倫比亞                            | CO        | 美元          |
 | 哥斯大黎加                          | CR        | 美元          |
 | 象牙海岸                       | CI        | 美元          |
-| 克羅埃西亞                             | 人力資源        | 歐元          |
-| 古拉果                             | 順        | 美元          |
-| 賽普勒斯                              | CY        | 歐元          |
+| 克羅埃西亞                             | HR        | 歐元          |
+| 古拉果                             | 連續        | 美元          |
+| 賽浦路斯                              | CY        | 歐元          |
 | 捷克共和國                      | CZ        | 歐元          |
 | 丹麥                             | DK        | 丹麥幣          |
 | 多明尼加共和國                  | DO        | 美元          |
@@ -77,7 +76,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 香港特別行政區                       | HK        | 美元          |
 | 匈牙利                             | HU        | 歐元          |
 | 冰島                             | IS        | 歐元          |
-| 印度                               | IN        | INR          |
+| 印度                               | IN        | 印度幣          |
 | 印尼                           | ID        | 美元          |
 | 伊拉克                                | IQ        | 美元          |
 | 愛爾蘭                             | IE        | 歐元          |
@@ -88,7 +87,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 約旦                              | JO        | 美元          |
 | 哈薩克                          | KZ        | 美元          |
 | 肯亞                               | KE        | 美元          |
-| 韓國（南部）                       | KR        | 韓元          |
+| 韓國（韓國）                       | KR        | 韓元          |
 | 科威特                              | KW        | 美元          |
 | 吉爾吉斯                          | KG        | 美元          |
 | 拉脫維亞                              | LV        | 歐元          |
@@ -120,7 +119,7 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 巴勒斯坦民族權力機構               | PS        | 美元          |
 | 巴拿馬                              | PA        | 美元          |
 | 巴拉圭                            | PY        | 美元          |
-| 秘魯                                | PE        | 美元          |
+| 祕魯                                | PE        | 美元          |
 | 菲律賓                         | PH        | 美元          |
 | 波蘭                              | PL        | 歐元          |
 | 葡萄牙                            | PT        | 歐元          |
@@ -149,13 +148,13 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 突尼西亞                             | TN        | 美元          |
 | 土耳其                              | TR        | 美元          |
 | 土庫曼                        | TM        | 美元          |
-| 梵蒂岡城（聖見）             | VA        | 歐元          |
+| 梵蒂岡城（羅馬教廷）             | VA        | 歐元          |
 | 美屬維爾京群島 | VI        | 美元          |
 | 烏干達                              | UG        | 美元          |
 | 烏克蘭                             | UA        | 美元          |
 | 阿拉伯聯合大公國                | AE        | 美元          |
-| 英國                      | GB        | 英鎊          |
-| 美國                       | 美國        | 美元          |
+| United Kingdom                      | GB        | 英鎊          |
+| 美國                       | US        | 美元          |
 | 烏拉圭                             | UY        | 美元          |
 | 烏茲別克                          | UZ        | 美元          |
 | 委內瑞拉                           | VE        | 美元          |
@@ -165,6 +164,6 @@ Azure Marketplace 和 AppSource 供應專案可以在141個地理位置中購買
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\* 巴西的客戶，透過雲端解決方案提供者（CSP）的 Marketplace 會使用美元。
+\*對於巴西的客戶，通過雲解決方案供應商 （CSP） 的應用商店使用 USD。
 
 \** 僅限免費和 BYOL VM 映射。

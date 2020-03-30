@@ -1,6 +1,6 @@
 ---
-title: REST API 錯誤碼-Azure Key Vault
-description: Azure Key Vault web 服務上的作業可能會傳回這些錯誤碼。
+title: REST API 錯誤代碼 - Azure 金鑰保存庫
+description: 這些錯誤代碼可以通過 Azure 金鑰保存庫 Web 服務上的操作返回。
 keywords: ''
 services: machine-learning
 author: msmbaldwin
@@ -9,31 +9,31 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01fb5393217834bc0196da25c4a56314ca7eae2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293380"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294542"
 ---
-# <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 錯誤代碼
+# <a name="azure-key-vault-rest-api-error-codes"></a>Azure 金鑰保存庫 REST API 錯誤代碼
  
-Azure Key Vault web 服務上的作業可能會傳回下列錯誤碼。
+Azure 金鑰保存庫 Web 服務上的操作可以返回以下錯誤代碼。
  
-## <a name="http-401-unauthenticated-request"></a>HTTP 401：未驗證的要求
+## <a name="http-401-unauthenticated-request"></a>HTTP 401：未經身份驗證的請求
 
-401表示要求未經驗證而無法 Key Vault。 
+401 表示對金鑰保存庫的請求未進行身份驗證。 
 
-在下列情況中，會驗證要求：
+如果：
 
-- 金鑰保存庫知道呼叫者的身分識別;和
-- 呼叫者可以嘗試存取 Key Vault 資源。 
+- 金鑰保存庫知道調用方的身份;和
+- 允許調用方嘗試訪問金鑰保存庫資源。 
 
-有幾個不同的原因，要求可能會傳回401。
+請求返回 401 的原因有幾個不同。
 
-### <a name="no-authentication-token-attached-to-the-request"></a>要求未附加任何驗證權杖。 
+### <a name="no-authentication-token-attached-to-the-request"></a>未附加到請求的身份驗證權杖。 
 
-以下是範例 PUT 要求，設定秘密的值：
+下面是 PUT 請求的示例，該請求設置機密的值：
 
 ``` 
 PUT https://putreqexample.vault.azure.net//secrets/DatabaseRotatingPassword?api-version=7.0 HTTP/1.1
@@ -50,15 +50,15 @@ Content-Length: 31
 }
 ```
 
-「授權」標頭是每次呼叫資料平面作業的 Key Vault 時所需的存取權杖。 如果標頭遺失，則回應必須是401。
+"授權"標頭是每次調用金鑰保存庫進行資料平面操作時都需要的訪問權杖。 如果標頭丟失，則回應必須為 401。
 
-### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token 缺少與其相關聯的正確資源。 
+### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>權杖缺少與其關聯的正確資源。 
 
-從 Azure OAUTH 端點要求存取權杖時，必須要有稱為「資源」的參數。 此值對權杖提供者而言很重要，因為它會將權杖的範圍限定于其預期用途。 **所有**用來存取 Key Vault 之權杖的資源都是*HTTPs：\//vault.keyvault.net* （不含尾端斜線）。
+從 Azure OAUTH 終結點請求訪問權杖時，必須使用名為"資源"的參數。 該值對於權杖提供程式非常重要，因為它將權杖範圍限定為其預期用途。 訪問金鑰保存庫**的所有**權杖的資源為*HTTPs：/vault.keyvault.net（\/* 沒有尾隨斜杠）。
 
 ### <a name="the-token-is-expired"></a>權杖已過期
 
-權杖是以 base64 編碼，而且這些值可以在網站（例如[http://jwt.calebb.net](http://jwt.calebb.net)）上解碼。 以下是已解碼的上述權杖：
+權杖是基64編碼的，可以在網站（如[http://jwt.calebb.net](http://jwt.calebb.net)） 解碼值。 下面是上述解碼的權杖：
 
 ```
     {
@@ -86,20 +86,20 @@ Content-Length: 31
 [signature]
 ```
 
-我們可以在此權杖中看到許多重要的部分：
+我們可以看到此權杖中的許多重要部分：
 
-- aud （物件）： token 的資源。 請注意，這是 <https://vault.azure.net>。 對於未明確符合此值的任何資源（例如圖形），此權杖將無法運作。
-- iat （發行于）：發出權杖時，自 epoch 啟動後的滴答數。
-- nbf （不早于）：此權杖生效時，自 epoch 啟動後的滴答數。
-- exp （到期）：此權杖到期後，epoch 啟動後的滴答數。
-- appid （應用程式識別碼）：提出此要求之應用程式識別碼的 GUID。
-- tid （租使用者識別碼）：提出此要求之主體的租使用者識別碼 GUID
+- aud（訪問者）：權杖的資源。 請注意，這是<https://vault.azure.net>。 此權杖不適用於與此值不顯式匹配的任何資源，如圖形。
+- iat（在））：自頒發權杖時開始的時代開始以來的刻度數。
+- nbf（以前）：自此權杖生效時，自紀元開始以來的刻度數。
+- exp（過期）：自此權杖過期時，自紀元開始以來的刻度數。
+- 應用程式 ID（應用程式 ID）：發出此請求的應用程式 ID 的 GUID。
+- tid（租戶 ID）：發出此請求的委託人租戶 ID 的 GUID
 
-請務必在權杖中正確識別所有的值，才能讓要求正常運作。 如果所有專案都正確，則要求不會產生401。
+請務必在權杖中正確標識所有值，以便請求正常工作。 如果一切正確，則請求不會導致 401。
 
-### <a name="troubleshooting-401"></a>疑難排解401
+### <a name="troubleshooting-401"></a>故障排除 401
 
-在對金鑰保存庫提出要求之前，應該從權杖產生的點調查401s。 通常會使用程式碼來要求權杖。 一旦收到權杖，就會傳遞至 Key Vault 要求。 如果程式碼在本機執行，您可以使用 Fiddler 來捕捉 https://login.microsoftonline.com 的要求/回應。 要求看起來像這樣：
+在向金鑰保存庫發出請求之前，應從權杖生成點對 401s 進行調查。 通常，代碼用於請求權杖。 收到權杖後，它將傳遞到金鑰保存庫請求中。 如果代碼在本地運行，則可以使用 Fiddler 捕獲對`https://login.microsoftonline.com`的請求/回應。 請求如下所示：
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
@@ -111,59 +111,59 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-下列使用者提供的資訊必須正確：
+以下使用者提供的資訊模糊是正確的：
 
-- 金鑰保存庫租使用者識別碼
-- 資源值設定為 HTTPs %3 A %2 F %2 F 保存庫。 azure （URL 已編碼）
+- 金鑰保存庫租戶 ID
+- 資源值設置為 HTTPs%3A%2F%2Fvault.azure.net（URL 編碼）
 - 用戶端識別碼
 - 用戶端密碼
 
-請確定要求的其餘部分幾乎完全相同。
+確保請求的其餘部分幾乎相同。
 
-如果您只能取得回應存取權杖，您可以對其進行解碼（如上所示），以確保租使用者識別碼、用戶端識別碼（應用程式識別碼）和資源。
+如果只能獲取回應訪問權杖，則可以對其進行解碼（如上所述），以確保租戶 ID、用戶端 ID（應用 ID）和資源。
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403：許可權不足
+## <a name="http-403-insufficient-permissions"></a>HTTP 403： 許可權不足
 
-HTTP 403 表示已驗證要求（它知道要求的身分識別），但識別沒有存取所要求資源的許可權。 原因有兩個：
+HTTP 403 表示請求已過身份驗證（它知道請求標識），但標識沒有訪問請求資源的許可權。 有兩個原因：
 
-- 沒有身分識別的存取原則。
-- 要求的資源的 IP 位址不在金鑰保存庫防火牆設定的白名單中。
+- 標識沒有訪問策略。
+- 請求資源的 IP 位址未在金鑰保存庫的防火牆設置中白名單。
 
-當客戶的應用程式未使用客戶所認為的用戶端識別碼時，通常會發生 HTTP 403。 這通常表示未針對實際呼叫身分識別正確設定存取原則。
+當客戶的應用程式不使用客戶認為的用戶端 ID 時，通常會發生 HTTP 403。 這通常意味著訪問策略未正確設置為實際調用標識。
 
-### <a name="troubleshooting-403"></a>疑難排解403
+### <a name="troubleshooting-403"></a>故障排除 403
 
-首先，開啟記錄功能。 如需有關如何執行此操作的指示，請參閱[Azure Key Vault 記錄](key-vault-logging.md)。
+首先，打開日誌記錄。 有關如何執行此操作的說明，請參閱[Azure 金鑰保存庫日誌記錄](key-vault-logging.md)。
 
-一旦開啟記錄功能，您可以判斷403是因為存取原則或防火牆原則。
+打開日誌記錄後，您可以確定 403 是否是由於訪問策略或防火牆策略。
 
-#### <a name="error-due-to-firewall-policy"></a>因防火牆原則而產生的錯誤
+#### <a name="error-due-to-firewall-policy"></a>防火牆策略導致的錯誤
 
-「用戶端位址（00.00.00.00）未獲授權，而且呼叫者不是受信任的服務」
+用戶端位址 （00.00.00.00） 未獲得授權，呼叫者不是受信任的服務
 
-有一份有限的「Azure 信任的服務」清單。 Azure 網站**不**是受信任的 azure 服務。 如需詳細資訊，請參閱[Azure App Services Key Vault 防火牆存取](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)的 blog 文章。
+"Azure 受信任服務"清單有限。 Azure 網站**不是**受信任的 Azure 服務。 有關詳細資訊，請參閱[由 Azure 應用服務訪問金鑰保存庫防火牆的](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)博客文章。
 
-您必須將 Azure 網站的 IP 位址新增至 Key Vault，才能使其正常執行。
+您必須將 Azure 網站的 IP 位址添加到金鑰保存庫，以便它正常工作。
 
-如果因為存取原則，請尋找要求的物件識別碼，並確定物件識別碼與使用者嘗試指派存取原則的物件相符。 AAD 中通常會有多個具有相同名稱的物件，因此選擇正確的一個非常重要。 藉由刪除並重新新增存取原則，可以查看是否有多個物件具有相同名稱。
+如果由於訪問策略：查找請求的物件識別碼，並確保物件識別碼 與使用者嘗試為其分配訪問策略的物件匹配。 AAD 中通常有多個具有相同名稱的物件，因此選擇正確的物件非常重要。 通過刪除和重新添加訪問策略，可以查看是否存在同名多個物件。
 
-此外，大部分的存取原則都不需要使用如入口網站中所示的「授權的應用程式」。 授權的應用程式用於「代理者」驗證案例，這種情況很罕見。 
+此外，大多數訪問策略不需要使用門戶中顯示的"授權應用程式"。 授權應用程式用於"代表"身份驗證方案，這種情況很少見。 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429：要求太多
+## <a name="http-429-too-many-requests"></a>HTTP 429： 請求太多
 
-當要求數目超過時間範圍的指定最大值時，就會進行節流。 如果發生節流，Key Vault 的回應將會是 HTTP 429。 針對提出的要求類型，會有最大的指定。 例如：建立 HSM 2048 位金鑰是每10秒5個要求，但所有其他 HSM 交易都有1000要求/10 秒的限制。 因此，請務必瞭解在判斷節流的原因時，會進行哪些類型的呼叫。
-一般來說，對 Key Vault 的要求限制為2000個要求/10 秒。 例外狀況是重要的作業，如[Key Vault 服務限制](key-vault-service-limits.md)中所述
+當請求數超過規定的時間範圍的最大值時，將發生限制。 如果發生限制，金鑰保存庫的回應將為 HTTP 429。 對於發出的請求類型，有聲明的最大值。 例如：創建 HSM 2048 位金鑰是每 10 秒 5 個請求，但所有其他 HSM 事務都有 1000 個請求/10 秒的限制。 因此，在確定限制的原因時，瞭解正在進行的呼叫類型非常重要。
+通常，對金鑰保存庫的請求限制為 2000 個請求/10 秒。 異常是金鑰操作，如[金鑰保存庫服務限制中](key-vault-service-limits.md)所述
 
-### <a name="troubleshooting-429"></a>疑難排解429
-節流處理是使用下列技巧來解決：
+### <a name="troubleshooting-429"></a>故障排除 429
+使用以下技術進行限制：
 
-- 判斷要求的資源是否有模式並嘗試在呼叫應用程式中快取，以減少對 Key Vault 提出的要求數目。 
+- 通過確定請求的資源是否存在模式並嘗試在調用應用程式中緩存這些模式，減少向金鑰保存庫發出的請求數。 
 
-- 發生 Key Vault 節流時，請調整要求的程式碼，以使用指數輪詢重試。 這裡會說明此演算法：[如何節流您的應用程式](key-vault-ovw-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- 當發生金鑰保存庫限制時，調整請求代碼以使用指數回轉重試。 此處解釋了該演算法：[如何限制應用](key-vault-ovw-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-- 如果快取無法減少要求數目，而且計時輪詢無法運作，請考慮將金鑰分割成多個金鑰保存庫。 單一訂用帳戶的服務限制是個別 Key Vault 限制的5倍。 如果使用5個以上的金鑰保存庫，則應提供考慮使用多個訂用帳戶。 
+- 如果無法通過緩存減少請求數，並且定時回退不起作用，則請考慮將金鑰拆分為多個金鑰保存庫。 單個訂閱的服務限制是單個金鑰保存庫限制的 5 倍。 如果使用超過 5 個金鑰保存庫，應考慮使用多個訂閱。 
 
-如需更詳細的指引，包括增加限制的要求，請參閱這裡： [Key Vault 節流指導](key-vault-ovw-throttling.md)方針
+詳細指南，包括請求增加限制，可在此處找到：[金鑰保存庫限制指南](key-vault-ovw-throttling.md)
 
 

@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284625"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
@@ -21,11 +21,11 @@ ms.locfileid: "79284625"
 
 * [MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
 * 透過 WebSocket 的 MQTT
-* [AMQP](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
+* [Amqp](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 * 透過 WebSocket 的 AMQP
 * HTTPS
 
-如需這些通訊協定如何支援特定 IoT 中樞功能的資訊，請參閱[裝置到雲端的通訊指引](iot-hub-devguide-d2c-guidance.md)和[雲端到裝置的通訊指引](iot-hub-devguide-c2d-guidance.md)。
+如需這些通訊協定如何支援特定 IoT 中樞功能的資訊，請參閱[裝置對雲端通訊指引](iot-hub-devguide-d2c-guidance.md)和[雲端對裝置通訊指引](iot-hub-devguide-c2d-guidance.md)。
 
 下表針對您選擇的通訊協定提供概略的建議︰
 
@@ -39,7 +39,7 @@ ms.locfileid: "79284625"
 
 * **雲端到裝置的模式**。 HTTPS 沒有可實作伺服器推送的有效方式。 因此，當您使用 HTTPS 時，裝置會輪詢「IoT 中樞」來了解是否有雲端到裝置的訊息。 這對於裝置和 IoT 中樞而言都沒有效率。 在目前的 HTTPS 指導方針中，每個裝置應該每隔 25 分鐘 (或更久) 進行一次訊息輪詢。 MQTT 和 AMQP 則支援在收到雲端到裝置訊息時進行伺服器推送。 它們能夠將訊息立即從 IoT 中樞推送到裝置。 如果傳遞延遲是一大考量，最好是使用 MQTT 或 AMQP 通訊協定。 針對很少連接的裝置，也適用 HTTPS。
 
-* **現場閘道器**。 使用 MQTT 和 HTTPS 時，您無法使用相同的 TLS 連線來連接到多個裝置 (每個裝置各有自己的每一裝置認證)。 對於[現場閘道案例](iot-hub-devguide-endpoints.md#field-gateways)，這些並不是最理想的通訊協定，因為對於每個連線的裝置，這些案例都需要一個與現場閘道和 IoT 中樞的 TLS 連線。
+* **欄位閘道**。 使用 MQTT 和 HTTPS 時，您無法使用相同的 TLS 連線來連接到多個裝置 (每個裝置各有自己的每一裝置認證)。 對於[現場閘道案例](iot-hub-devguide-endpoints.md#field-gateways)，這些並不是最理想的通訊協定，因為對於每個連線的裝置，這些案例都需要一個與現場閘道和 IoT 中樞連線的 TLS 連線。
 
 * **低資源裝置**。 MQTT 和 HTTPS 程式庫的磁碟使用量比 AMQP 程式庫小。 因此，如果裝置的資源有限 (例如 RAM 小於 1 MB)，這些通訊協定可能會是唯一可用的通訊協定實作。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79284625"
 * **承載大小**。 MQTT 和 AMQP 是二進位通訊協定，這使得其承載比 HTTPS 更精簡。
 
 > [!WARNING]
-> 使用 HTTPS 時，每個裝置應該每隔25分鐘輪詢一次雲端到裝置訊息。 在開發期間，每個裝置可以視需要更頻繁地進行輪詢。
+> 使用 HTTPS 時，每個設備應輪詢雲到設備的消息，每 25 分鐘輪詢一次。 在開發中，如果需要，每個設備都可以更頻繁地輪詢。
 
 ## <a name="port-numbers"></a>連接埠號碼
 

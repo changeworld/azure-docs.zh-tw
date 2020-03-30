@@ -14,41 +14,41 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c493f79a066f872be6b38d127622cc757ab3c1cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bae7e53a316fa6ca3158639cc551a0a3de5cb952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100246"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536916"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫
 
 您可以使用 Azure CLI 在命令提示字元或使用指令碼建立和管理 Azure 資源。 在本文中，我們會使用 Azure CLI 指令碼，從 Azure Marketplace 資源庫映像部署 Oracle Database 12c 資料庫。
 
-在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱 [Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊，請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
-### <a name="step-1-prerequisites"></a>步驟 1:必要條件
+### <a name="step-1-prerequisites"></a>步驟 1：必要條件
 
-*   若要執行備份和復原程序，您必須先建立具有已安裝 Oracle Database 12c 執行個體的 Linux VM。 您用來建立 VM 的 Marketplace 映像名為 Oracle:Oracle-Database-Ee:12.1.0.2:latest。
+*   若要執行備份和復原程序，您必須先建立具有已安裝 Oracle Database 12c 執行個體的 Linux VM。 您用來建立 VM 的 Marketplace 映像名為 Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
 
     若要了解如何建立 Oracle 資料庫，請參閱 [Oracle 建立資料庫快速入門](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)。
 
 
-### <a name="step-2-connect-to-the-vm"></a>步驟 2:連接至 VM
+### <a name="step-2-connect-to-the-vm"></a>步驟 2：連線至 VM
 
 *   若要對 VM 建立安全殼層 (SSH) 工作階段，請使用下列命令。 將 IP 位址和主機名稱組合取代為 VM 的 `publicIpAddress` 值。
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>步驟 3：準備資料庫
+### <a name="step-3-prepare-the-database"></a>步驟 3︰準備資料庫
 
-1.  這個步驟假設您具有在 VM 上執行的 Oracle 執行個體 (cdb1)，稱為 myVM。
+1.  這個步驟假設您具有在 VM 上執行的 Oracle 執行個體 (cdb1)，稱為 myVM**。
 
-    執行 oracle 超級使用者根目錄，然後將接聽程式初始化：
+    執行 oracle** 超級使用者根目錄，然後將接聽程式初始化：
 
     ```bash
     $ sudo su - oracle
@@ -94,6 +94,7 @@ ms.locfileid: "70100246"
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
+
 3.  (選擇性) 建立資料表來測試認可：
 
     ```bash
@@ -115,6 +116,7 @@ ms.locfileid: "70100246"
     SQL> commit;
     Commit complete.
     ```
+
 4.  確認或變更備份檔案位置和大小：
 
     ```bash
@@ -125,6 +127,7 @@ ms.locfileid: "70100246"
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
+
 5. 使用 Oracle 復原管理員 (RMAN) 來備份資料庫：
 
     ```bash
@@ -132,7 +135,7 @@ ms.locfileid: "70100246"
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>步驟 4：Linux Vm 的應用程式一致備份
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>步驟 4：Linux VM 的應用程式一致備份
 
 應用程式一致備份是 Azure 備份中的新功能。 您可以建立並選取要在 VM 快照集之前和之後執行的指令碼 (前快照集和後快照集)。
 
@@ -140,7 +143,7 @@ ms.locfileid: "70100246"
 
     從 https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig 下載 VMSnapshotScriptPluginConfig.json。 檔案內容與下面類似：
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "",
@@ -169,9 +172,9 @@ ms.locfileid: "70100246"
 
 4. 編輯 JSON 檔案。
 
-    編輯 VMSnapshotScriptPluginConfig.json 檔案，以包含 `PreScriptLocation` 和 `PostScriptlocation` 參數。 例如:
+    編輯 VMSnapshotScriptPluginConfig.json 檔案，以包含 `PreScriptLocation` 和 `PostScriptlocation` 參數。 例如：
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "/etc/azure/pre_script.sh",
@@ -271,44 +274,44 @@ ms.locfileid: "70100246"
 
     ![復原服務保存庫頁面](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  在 [復原服務保存庫] 刀鋒視窗上，若要新增保存庫，請按一下 [新增]。
+2.  在 [復原服務保存庫]**** 刀鋒視窗上，若要新增保存庫，請按一下 [新增]****。
 
     ![復原服務保存庫新增頁面](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  若要繼續，請按一下 [myVault]。
+3.  若要繼續，請按一下 [myVault]****。
 
     ![復原服務保存庫詳細資料頁面](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  在 [myVault] 刀鋒視窗上，按一下 [備份]。
+4.  在 [myVault]**** 刀鋒視窗上，按一下 [備份]****。
 
     ![復原服務保存庫備份頁面](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在 [備份目標] 刀鋒視窗上，使用 [Azure] 和 [虛擬機器]預設值。 按一下 [確定]。
+5.  在 [備份目標]**** 刀鋒視窗上，使用 [Azure]**** 和 [虛擬機器]**** 預設值。 按一下 [確定]****。
 
     ![復原服務保存庫詳細資料頁面](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  在 [備份原則] 中，使用 **DefaultPolicy**，或選取 [建立新原則]。 按一下 [確定]。
+6.  在 [備份原則]**** 中，使用 **DefaultPolicy**，或選取 [建立新原則]****。 按一下 [確定]****。
 
     ![復原服務保存庫備份原則詳細資料頁面](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  在 [選取虛擬機器] 刀鋒視窗上，選取 [myVM1] 核取方塊，然後按一下 [確定]。 按一下 [啟用備份] 按鈕。
+7.  在 [選取虛擬機器]**** 刀鋒視窗上，選取 [myVM1]**** 核取方塊，然後按一下 [確定]****。 按一下 [啟用備份]**** 按鈕。
 
     ![備份的復原服務保存庫項目詳細資料頁面](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > 按一下 [啟用備份] 之後，備份程序要到排定的時間過期後才會啟動。 若要設定即時備份，請完成下一個步驟。
+    > 按一下 [啟用備份]**** 之後，備份程序要到排定的時間過期後才會啟動。 若要設定即時備份，請完成下一個步驟。
 
-8.  在 [myVault - 備份項目] 刀鋒視窗上，選取 [備份項目計數] 下的備份項目計數。
+8.  在 [myVault - 備份項目]**** 刀鋒視窗上，選取 [備份項目計數]**** 下的備份項目計數。
 
     ![復原服務保存庫 myVault 詳細資料頁面](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  在 [Backup Items (Azure Virtual Machine)] (備份項目 (Azure 虛擬機器)) 刀鋒視窗上，按一下頁面右側的省略符號 ( **...** ) 按鈕，然後按一下 [立即備份]。
+9.  在 [Backup Items (Azure Virtual Machine)] \(備份項目 (Azure 虛擬機器))**** 刀鋒視窗上，按一下頁面右側的省略符號 (**...**) 按鈕，然後按一下 [立即備份]****。
 
     ![復原服務保存庫立即備份命令](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. 按一下 [備份] 按鈕。 等候備份程序完成。 然後, 移至[步驟 6:移除資料庫](#step-6-remove-the-database-files)檔案。
+10. 按一下 [備份]**** 按鈕。 等候備份程序完成。 然後，移至[步驟 6：移除資料庫檔案](#step-6-remove-the-database-files)。
 
-    若要檢視備份工作的狀態，請按一下 [工作]。
+    若要檢視備份工作的狀態，請按一下 [工作]****。
 
     ![復原服務保存庫工作頁面](./media/oracle-backup-recovery/recovery_service_10.png)
 
@@ -318,7 +321,7 @@ ms.locfileid: "70100246"
 
 11. 針對應用程式一致備份，解決記錄檔中的任何錯誤。 記錄檔位於 /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0。
 
-### <a name="step-6-remove-the-database-files"></a>步驟 6：移除資料庫檔案 
+### <a name="step-6-remove-the-database-files"></a>步驟 6：將資料庫檔案移除 
 在本文稍後，您會了解如何測試復原程序。 您在測試復原程序之前，必須先將資料庫檔案移除。
 
 1.  將資料表空間和備份檔案移除：
@@ -342,19 +345,19 @@ ms.locfileid: "70100246"
 ## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>從復原服務保存庫還原刪除的檔案
 若要還原已刪除的檔案，請完成下列步驟：
 
-1. 在 Azure 入口網站中，搜尋 myVault 復原服務保存庫項目。 在 [概觀] 刀鋒視窗上，選取 [備份項目] 下的項目數。
+1. 在 Azure 入口網站中，搜尋 myVault** 復原服務保存庫項目。 在 [概觀]**** 刀鋒視窗上，選取 [備份項目]**** 下的項目數。
 
     ![復原服務保存庫 myVault 備份項目](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. 在 [備份項目計數] 下，選取項目數。
+2. 在 [備份項目計數]**** 下，選取項目數。
 
     ![復原服務保存庫 Azure 虛擬機器備份項目計數](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. 在 [myvm1] 刀鋒視窗上，按一下 [檔案復原 (預覽)]。
+3. 在 [myvm1]**** 刀鋒視窗上，按一下 [檔案復原 (預覽)]****。
 
     ![復原服務保存庫檔案復原頁面的螢幕擷取畫面](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. 在 [檔案復原 (預覽)] 窗格上，按一下 [下載指令碼]。 然後，將下載 (.sh) 檔案儲存至用戶端電腦上的資料夾。
+4. 在 [檔案復原 (預覽)]**** 窗格上，按一下 [下載指令碼]****。 然後，將下載 (.sh) 檔案儲存至用戶端電腦上的資料夾。
 
     ![下載指令碼檔案會儲存選項](./media/oracle-backup-recovery/recovery_service_15.png)
 
@@ -368,6 +371,7 @@ ms.locfileid: "70100246"
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
+
 6. 變更檔案，讓它屬於根目錄。
 
     在下列範例中，變更檔案，讓它屬於根目錄。 然後，變更權限。
@@ -379,9 +383,10 @@ ms.locfileid: "70100246"
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
+
     下列範例示範您在執行上述指令碼之後應該看到的內容。 當系統提示您繼續時，請輸入 **Y**。
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     The script requires 'open-iscsi' and 'lshw' to run.
@@ -429,6 +434,7 @@ ms.locfileid: "70100246"
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
+
 9. 在下列指令碼中，使用 RMAN 來復原資料庫：
 
     ```bash
@@ -440,10 +446,10 @@ ms.locfileid: "70100246"
     RMAN> alter database open resetlogs;
     RMAN> SELECT * FROM scott.scott_table;
     ```
-    
+
 10. 將磁碟取消掛接。
 
-    在 Azure 入口網站的 [檔案復原 (預覽)] 刀鋒視窗上，按一下 [Unmount Disks] (取消掛接磁碟)。
+    在 Azure 入口網站的 [檔案復原 (預覽)]**** 刀鋒視窗上，按一下 [Unmount Disks] \(取消掛接磁碟)****。
 
     ![取消掛接磁碟命令](./media/oracle-backup-recovery/recovery_service_17.png)
 
@@ -451,43 +457,43 @@ ms.locfileid: "70100246"
 
 您可以還原整個 VM，而不是從復原服務保存庫還原刪除的檔案。
 
-### <a name="step-1-delete-myvm"></a>步驟 1:刪除 myVM
+### <a name="step-1-delete-myvm"></a>步驟 1：刪除 myVM
 
-*   在 Azure 入口網站上、移至 [myVM1] 保存庫，然後選取 [刪除]。
+*   在 Azure 入口網站上、移至 [myVM1]**** 保存庫，然後選取 [刪除]****。
 
     ![保存庫刪除命令](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>步驟 2:復原 VM
+### <a name="step-2-recover-the-vm"></a>步驟 2：將 VM 復原
 
-1.  移至 [復原服務保存庫]，然後選取 [myVault]。
+1.  移至 [復原服務保存庫]****，然後選取 [myVault]****。
 
     ![myVault 項目](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  在 [概觀] 刀鋒視窗上，選取 [備份項目] 下的項目數。
+2.  在 [概觀]**** 刀鋒視窗上，選取 [備份項目]**** 下的項目數。
 
     ![myVault 備份項目](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  在 [備份項目 (Azure 虛擬機器)] 刀鋒視窗上，選取 [myvm1]。
+3.  在 [備份項目 (Azure 虛擬機器)]**** 刀鋒視窗上，選取 [myvm1]****。
 
     ![復原 VM 頁面](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  在 [myvm1] 刀鋒視窗上，按一下省略符號 ( **...** ) 按鈕，然後按一下 [還原 VM]。
+4.  在 [myvm1]**** 刀鋒視窗上，按一下省略符號 (**...**) 按鈕，然後按一下 [還原 VM]****。
 
     ![還原 VM 命令](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  在 [選取還原點] 刀鋒視窗上，選取您想要還原的項目，然後按一下 [確定]。
+5.  在 [選取還原點]**** 刀鋒視窗上，選取您想要還原的項目，然後按一下 [確定]****。
 
     ![選取還原點](./media/oracle-backup-recovery/recover_vm_06.png)
 
     如果您已啟用應用程式一致備份，則會顯示藍色垂直線。
 
-6.  在 [還原設定] 刀鋒視窗上，選取虛擬機器名稱，並選取資源群組，然後按一下 [確定]。
+6.  在 [還原設定]**** 刀鋒視窗上，選取虛擬機器名稱，並選取資源群組，然後按一下 [確定]****。
 
     ![還原設定值](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  若要還原 VM，請按一下 [還原] 按鈕。
+7.  若要還原 VM，請按一下 [還原]**** 按鈕。
 
-8.  若要檢視還原程序的狀態，請按一下 [工作]，然後按一下 [備份工作]。
+8.  若要檢視還原程序的狀態，請按一下 [工作]****，然後按一下 [備份工作]****。
 
     ![備份工作狀態命令](./media/oracle-backup-recovery/recover_vm_08.png)
 
@@ -502,43 +508,43 @@ ms.locfileid: "70100246"
 
     ![公用 IP 位址的清單](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在 [公用 IP 位址] 刀鋒視窗上，按一下 [新增]。 在 [建立公用 IP 位址] 刀鋒視窗上，於 [名稱] 中選取公用 IP 名稱。 針對 [資源群組]，選取 [使用現有的]。 然後按一下 [ **建立**]。
+2.  在 [公用 IP 位址]**** 刀鋒視窗上，按一下 [新增]****。 在 [建立公用 IP 位址]**** 刀鋒視窗上，於 [名稱]**** 中選取公用 IP 名稱。 針對 [資源群組]****，選取 [使用現有的]****。 然後，按一下"**創建**"。
 
     ![建立 IP 位址](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  若要建立公用 IP 位址與 VM 之網路介面的關聯，請搜尋並選取 [myVMip]。 然後，按一下 [關聯]。
+3.  若要建立公用 IP 位址與 VM 之網路介面的關聯，請搜尋並選取 [myVMip]****。 然後，按一下 [關聯]****。
 
     ![將 IP 位址產生關聯](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  在 [資源類型] 中，選取 [網路介面]。 選取 myVM 執行個體所使用的網路介面，然後按一下 [確定]。
+4.  在 [資源類型]**** 中，選取 [網路介面]****。 選取 myVM 執行個體所使用的網路介面，然後按一下 [確定]****。
 
     ![選取資源類型和 NIC 值](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  搜尋並開啟從入口網站移植的 myVM 執行個體。 與 VM 建立關聯的 IP 位址會顯示在 myVM [概觀] 刀鋒視窗上。
+5.  搜尋並開啟從入口網站移植的 myVM 執行個體。 與 VM 建立關聯的 IP 位址會顯示在 myVM [概觀]**** 刀鋒視窗上。
 
     ![IP 位址值](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>步驟 4：連接至 VM
+### <a name="step-4-connect-to-the-vm"></a>步驟 4：連線至 VM
 
 *   若要連線至 VM，請使用下列指令碼︰
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>步驟 5：測試資料庫是否可存取
+### <a name="step-5-test-whether-the-database-is-accessible"></a>步驟 5：測試是否可存取資料庫
 *   若要測試協助工具，請使用下列指令碼：
 
-    ```bash 
+    ```bash
     $ sudo su - oracle
     $ sqlplus / as sysdba
     SQL> startup
     ```
 
     > [!IMPORTANT]
-    > 如果資料庫**啟動**命令產生錯誤, 若要復原資料庫, 請參閱[步驟 6:使用 RMAN 來復原資料庫](#step-6-optional-use-rman-to-recover-the-database)。
+    > 如果資料庫 **startup** 命令產生錯誤，若要復原資料庫，請參閱[步驟 6：使用 RMAN 復原資料庫](#step-6-optional-use-rman-to-recover-the-database)。
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>步驟 6：選擇性使用 RMAN 來復原資料庫
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>步驟 6：(選擇性) 使用 RMAN 復原資料庫
 *   若要復原資料庫，請使用下列指令碼：
 
     ```bash
@@ -563,7 +569,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-[教學課程：建立高可用性 VM](../../linux/create-cli-complete.md)
+[教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 
 [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)
 

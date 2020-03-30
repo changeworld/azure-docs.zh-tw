@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529778"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本主題說明如何自訂媒體編碼器標準預設。 [透過使用自訂預設的媒體編碼器標準進行編碼](media-services-custom-mes-presets-with-dotnet.md)主題說明如何使用 .NET 來建立編碼工作，以及執行此工作的作業。 一旦您自訂預設之後，請將自訂預設提供給編碼工作。 
 
 如果使用 XML 預設值，請務必維持元素的順序，如下列 XML 範例所示 (例如，KeyFrameInterval 應在 SceneChangeDetection 之前)。
 
 > [!NOTE] 
-> 在 v3 中目前無法使用媒體編碼器標準的許多 advanced 媒體服務 v2 功能。 如需詳細資訊，請參閱[功能差距](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)。
+> 媒體編碼器標準的許多高級媒體服務 v2 功能目前不在 v3 中。 有關詳細資訊，請參閱[功能間隙](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="support-for-relative-sizes"></a>支援相對大小
 
@@ -44,12 +44,12 @@ ms.locfileid: "79251267"
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a id="thumbnails"></a>產生縮圖
+## <a name="generate-thumbnails"></a><a id="thumbnails"></a>產生縮圖
 
 本節說明如何自訂產生縮圖的預設值。 下面定義的預設值包含有關如何將檔案編碼的資訊，以及產生縮圖時所需的資訊。 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並加入可產生縮圖的程式碼。  
 
 > [!NOTE]
-> 如果編碼為單一位元速率視訊，下列預設值中的 **SceneChangeDetection** 設定只能設定為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
+> 僅當編碼為單個位元速率視頻時，以下預設中的**SceneChange 檢測**設置才能設置為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
 >
 >
 
@@ -57,7 +57,7 @@ ms.locfileid: "79251267"
 
 請務必閱讀 [考量](#considerations) 一節。
 
-### <a id="json"></a>JSON 預設值
+### <a name="json-preset"></a><a id="json"></a>JSON 預設
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ ms.locfileid: "79251267"
     }
 
 
-### <a id="xml"></a>XML 預設值
+### <a name="xml-preset"></a><a id="xml"></a>XML 預設
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -243,16 +243,16 @@ ms.locfileid: "79251267"
 
     您可以隨意混合使用標記法。
 
-    此外， Start 也支援特殊的巨集 (即 {Best})，它會嘗試判斷第一個「 有趣 」的內容畫面。附註：(Start 設為 {Best} 時，會忽略 Step 與 Range)
+    此外，Start 還支援一個特殊的宏：[最佳]，它嘗試確定內容注釋的第一個"有趣"框架：（當"開始"設置為 [最佳]時，將忽略步驟和範圍。
   * 預設值：Start:{Best}
 * 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，MES 會比對 JpgVideo 與 JpgFormat，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
-## <a id="trim_video"></a>修剪視訊 (裁剪)
+## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>修剪視訊 (裁剪)
 本節說明修改編碼器預設值，以裁剪或修剪其輸入為所謂的夾層檔或隨選檔的輸入視訊。 編碼器也可以用來裁剪或修剪從即時串流擷取或封存的資產 - [此部落格](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供詳細資料。
 
 若要修剪您的影片，您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並修改 **Sources** 元素 (如下所示)。 StartTime 值必須符合輸入視訊的絕對時間戳記。 例如，如果輸入視訊的第一個畫面有 12:00:10.000 的時間戳記，則 StartTime 至少應該為 12:00:10.000 以上。 在下列範例中，我們假設輸入視訊的開始時間戳記為零。 **Sources** 應該位於預設值開頭。
 
-### <a id="json"></a>JSON 預設值
+### <a name="json-preset"></a><a id="json"></a>JSON 預設
     {
       "Version": 1.0,
       "Sources": [
@@ -489,11 +489,11 @@ ms.locfileid: "79251267"
       </Outputs>
     </Preset>
 
-## <a id="overlay"></a>建立疊加層
+## <a name="create-an-overlay"></a><a id="overlay"></a>建立疊加層
 
 Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援下列格式：png、jpg、gif 及 bmp。 下面定義的預設值為視訊疊加層的基本範例。
 
-除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」 檔案。
+除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」 **** 檔案。
 
 如果您使用 .NET，請將下列兩個函式加入到[此](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)主題中定義的 .NET 範例。 **UploadMediaFilesFromFolder** 函式會上傳資料夾中的檔案 (例如，BigBuckBunny.mp4 和 Image001.png)，並將 mp4 檔案設定為資產中的主要檔案。 **EncodeWithOverlay** 函式會使用傳遞給它的自訂預設值檔案 (例如後續的預設值) 建立編碼工作。
 
@@ -696,7 +696,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
     </Preset>
 
 
-## <a id="silent_audio"></a>在輸入不含音訊時插入靜音曲目
+## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>在輸入不含音訊時插入靜音曲目
 依照預設，如果您傳送僅包含視訊不含音訊的輸入到編碼器，輸出資產將包含僅含視訊資料的檔案。 某些播放器可能無法處理此類型輸出資料流。 您可以在該案例中使用此設定來強制編碼器將靜音曲目新增至輸出。
 
 若要強制編碼器在輸入不含音訊時產生包含靜音曲目的資產，請指定 "InsertSilenceIfNoAudio" 值。
@@ -719,8 +719,8 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a id="deinterlacing"></a>停用自動去交錯
-如果客戶想要將交錯內容自動去交錯，就不需要採取任何動作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
+## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>停用自動去交錯
+如果客戶喜歡隔行間內容自動消除隔行掃描，則無需執行任何操作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
 
 您可以關閉自動去交錯。 不建議使用此選項。
 
@@ -747,7 +747,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
     </Sources>
 
 
-## <a id="audio_only"></a>純音訊預設值
+## <a name="audio-only-presets"></a><a id="audio_only"></a>純音訊預設值
 本節示範兩個純音訊的 MES 預設值︰AAC 音訊和 AAC 好品質音訊。
 
 ### <a name="aac-audio"></a>AAC 音訊
@@ -794,7 +794,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
       ]
     }
 
-## <a id="concatenate"></a>串連兩個以上的視訊檔案
+## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>串連兩個以上的視訊檔案
 
 下列範例示範如何產生預設值來串連兩個以上的視訊檔案。 最常見的案例是您想要在主要視訊中加入標頭或預告片時。 預定的使用時機為同時編輯的視訊檔案具有共用屬性 (視訊解析度、畫面播放速率、曲目數等) 時。 您應該注意不要混合使用不同畫面播放速率或不同曲目數的視訊。
 
@@ -904,10 +904,10 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
       ]
     }
 
-## <a id="crop"></a>以 Media Encoder Standard 裁剪影片
+## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>以 Media Encoder Standard 裁剪影片
 請參閱 [以 Media Encoder Standard 裁剪影片](media-services-crop-video.md) 主題。
 
-## <a id="no_video"></a>在輸入不含視訊時插入視訊播放軌
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>在輸入不含視訊時插入視訊播放軌
 
 依照預設，如果您傳送僅包含音訊訊不含視訊的輸入到編碼器，輸出資產將包含僅含音訊資料的檔案。 某些播放器，包括 Azure 媒體播放器 (請參閱 [這篇文章](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios))，可能無法處理這類串流。 您可以在該案例中使用此設定來強制編碼器將單色視訊播放軌新增至輸出。
 
@@ -917,7 +917,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>於最低位元速率插入視訊
 
-假設您正在使用多重位元速率編碼預設值 (例如 [「H264 Multiple 多重位元速率 720p」](media-services-mes-preset-h264-multiple-bitrate-720p.md) ) 來將整個輸入目錄針對串流進行編碼，這將會包含各種視訊檔案和純音訊檔案。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
+假設您正在使用多個位元速率編碼預設（如["H264 多位元率 720p"）](media-services-mes-preset-h264-multiple-bitrate-720p.md)對流式處理的整個輸入目錄進行編碼，其中包含視頻檔和僅音訊檔的組合。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
 
 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並執行以下修改：
 
@@ -1002,7 +1002,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
 . . .  
 ```
 
-## <a id="rotate_video"></a>旋轉視訊
+## <a name="rotate-a-video"></a><a id="rotate_video"></a>旋轉視訊
 [媒體編碼器標準](media-services-dotnet-encode-with-media-encoder-standard.md)支援 0/90/180/270 度的旋轉角度。 預設行為是「自動」，此時它會嘗試偵測內送之視訊檔案的旋轉中繼資料並加以補償。 將以下 **Sources** 元素包含至[此](media-services-mes-presets-overview.md)節所定義的其中一個預設項目：
 
 ### <a name="json-preset"></a>JSON 預設值

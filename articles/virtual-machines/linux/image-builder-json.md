@@ -1,23 +1,23 @@
 ---
-title: 建立 Azure 映射構建者範本（預覽）
-description: 瞭解如何建立範本以與 Azure 映射產生器搭配使用。
+title: 創建 Azure 映射產生器範本（預覽）
+description: 瞭解如何創建要與 Azure 映射產生器一起使用的範本。
 author: danis
 ms.author: danis
-ms.date: 01/23/2020
+ms.date: 03/24/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: 870c8856cdc22b0586199051575de02312420990
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e1f1bc09406c34836c13deb805fa399ab4751d41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246784"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure 映射產生器範本 
+# <a name="preview-create-an-azure-image-builder-template"></a>預覽：創建 Azure 映射產生器範本 
 
-Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器服務。 在本文中，我們將探討 json 檔案的各個區段，讓您可以自行建立。 若要查看完整的 json 檔案範例，請參閱[Azure 映射](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)產生器 GitHub。
+Azure 映射產生器使用 .json 檔將資訊傳遞到映射產生器服務。 在本文中，我們將介紹 json 檔的各個部分，以便您可以構建自己的檔。 要查看完整的 .json 檔的示例，請參閱[Azure 映射產生器 GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)。
 
 這是基本的範本格式：
 
@@ -36,9 +36,14 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
         "buildTimeoutInMinutes": <minutes>, 
         "vmProfile": 
             {
-            "vmSize": "<vmSize>"
+            "vmSize": "<vmSize>",
+            "osDiskSizeGB": <sizeInGB>,
+            "vnetConfig": {
+                "name": "<vnetName>",
+                "subnetName": "<subnetName>",
+                "resourceGroupName": "<vnetRgName>"
             },
-        "build": {}, 
+        "source": {}, 
         "customize": {}, 
         "distribute": {} 
       } 
@@ -49,7 +54,7 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
 
 ## <a name="type-and-api-version"></a>類型和 API 版本
 
-`type` 是資源類型，必須 `"Microsoft.VirtualMachineImages/imageTemplates"`。 當 API 變更時，`apiVersion` 會隨著時間變更，但應該 `"2019-05-01-preview"` 以供預覽。
+`type`是 資源類型，必須為`"Microsoft.VirtualMachineImages/imageTemplates"`。 隨著`apiVersion`API 的變化，將隨時間而變化，但應為`"2019-05-01-preview"`預覽。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -58,20 +63,22 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
 
 ## <a name="location"></a>Location
 
-位置是將建立自訂映射的區域。 針對影像產生器預覽，支援下欄區域：
+位置是將創建自訂映射的區域。 對於圖像產生器預覽，支援以下區域：
 
 - 美國東部
 - 美國東部 2
 - 美國中西部
 - 美國西部
 - 美國西部 2
+- 北歐
+- 西歐
 
 
 ```json
     "location": "<region>",
 ```
 ## <a name="vmprofile"></a>vmProfile
-根據預設，映射產生器會使用「Standard_D1_v2」組建 VM，您可以覆寫此範例，例如，如果您想要自訂 GPU VM 的映射，您需要 GPU VM 大小。 這是選擇性的。
+預設情況下，映射產生器將使用"Standard_D1_v2"生成 VM，您可以重寫這一點，例如，如果要為 GPU VM 自訂映射，則需要 GPU VM 大小。 這是選擇性的。
 
 ```json
  {
@@ -81,7 +88,7 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，映射產生器不會變更影像的大小，它會使用來源映射的大小。 您可以調整 OS 磁片（Win 和 Linux）的大小，請注意，請勿小於作業系統所需的最小必要空間。 這是選擇性的，值為0表示保留與來源影像相同的大小。 這是選擇性的。
+預設情況下，圖像產生器不會更改圖像的大小，它將使用源圖像中的大小。 您可以增加 OS 磁片（Win 和 Linux）的大小，這是可選的，值為 0 表示保留與源映射相同的大小。 
 
 ```json
  {
@@ -89,24 +96,34 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
  },
 ```
 
+## <a name="vnetconfig"></a>vnetConfig
+如果不指定任何 VNET 屬性，則映射產生器將創建自己的 VNET、公共 IP 和 NSG。 公共 IP 用於服務與生成 VM 通信，但是，如果您不希望公共 IP 或希望映射產生器有權訪問現有的 VNET 資源，例如佈建服務器（DSC、Chef、Puppet、Ansible）、檔共用等。，然後您可以指定 VNET。 有關詳細資訊，請查看[網路文檔](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)，這是可選的。
+
+```json
+    "vnetConfig": {
+        "name": "<vnetName>",
+        "subnetName": "<subnetName>",
+        "resourceGroupName": "<vnetRgName>"
+    }
+```
 ## <a name="tags"></a>Tags
 
-這些是您可以為產生的影像指定的索引鍵/值組。
+這些是鍵/值對，您可以為生成的圖像指定。
 
-## <a name="depends-on-optional"></a>取決於（選擇性）
+## <a name="depends-on-optional"></a>取決於（可選）
 
-這個選擇性區段可以用來確保相依性已完成，然後再繼續進行。 
+此可選部分可用於確保依賴項在繼續之前完成。 
 
 ```json
     "dependsOn": [],
 ```
 
-如需詳細資訊，請參閱[定義資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)相依性。
+有關詳細資訊，請參閱[定義資源依賴項](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
 
 ## <a name="identity"></a>身分識別
-根據預設，映射產生器支援使用腳本，或從多個位置複製檔案，例如 GitHub 和 Azure 儲存體。 若要使用這些功能，必須可公開存取。
+預設情況下，映射產生器支援使用腳本或從多個位置（如 GitHub 和 Azure 存儲）複製檔。 要使用這些，它們必須是可公開訪問的。
 
-您也可以使用由您定義的 Azure 使用者指派受控識別，以允許映射產生器存取 Azure 儲存體，只要已在 Azure 儲存體帳戶上授與「儲存體 Blob 資料讀取者」最少的身分識別即可。 這表示您不需要讓儲存體 blob 可供外部存取，或設定 SAS 權杖。
+您還可以使用由您定義的 Azure 使用者分配的託管標識，允許映射產生器訪問 Azure 存儲，只要該標識已被授予 Azure 存儲帳戶上的最低"存儲 Blob 資料讀取器"。 這意味著您不需要使存儲 blob 在外部訪問，或設置 SAS 權杖。
 
 
 ```json
@@ -118,47 +135,29 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
         },
 ```
 
-如需完整範例，請參閱[使用 Azure 使用者指派的受控識別來存取 Azure 儲存體中](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)的檔案。
+有關完整示例，請參閱[使用 Azure 使用者分配的託管標識訪問 Azure 存儲 中的檔](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
 
-映射產生器支援使用者指派的身分識別：•僅支援單一身分識別•不支援自訂功能變數名稱
+圖像產生器對使用者分配標識的支援：• 僅支援單個標識 • 不支援自訂功能變數名稱
 
-若要深入瞭解，請參閱[什麼是適用于 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-如需部署這項功能的詳細資訊，請參閱[使用 Azure CLI 在 AZURE VM 上設定 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)識別。
+要瞭解更多資訊，請參閱[Azure 資源的託管標識是什麼？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+有關部署此功能的詳細資訊，請參閱使用 Azure [CLI 在 Azure VM 上配置 Azure 資源的託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
 
-## <a name="properties-source"></a>屬性：來源
+## <a name="properties-source"></a>屬性：源
 
-[`source`] 區段包含「映射產生器」將使用之來源映射的相關資訊。
+該`source`部分包含有關圖像產生器將使用的源映射的資訊。
 
-API 需要定義映射組建來源的 ' SourceType '，目前有三種類型：
-- ISO-當來源為 RHEL ISO 時，使用此元件。
-- PlatformImage-指出來源映射是 Marketplace 映射。
-- ManagedImage-從一般受控映射啟動時使用此元件。
-- SharedImageVersion-當您使用共用映射庫中的映射版本做為來源時，會使用此功能。
+API 需要一個"SourceType"來定義映射生成源，目前有三種類型：
+- PlatformImage - 指示源映射是應用商店映射。
+- 託管映射 - 從常規託管映射開始時，請使用此選項。
+- 共用圖像版本 - 當您在共用圖像庫中使用圖像版本作為源時，將使用此版本。
 
-### <a name="iso-source"></a>ISO 來源
+### <a name="iso-source"></a>ISO 源
+我們正在從映射產生器中棄用此功能，因為現在有[RHEL 自帶訂閱映射](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)，請查看下面的時間表：
+    * 2020 年 3 月 31 日 - 資源供應商現在將接受具有 RHEL ISO 源的圖像範本。
+    * 2020 年 4 月 30 日 - 包含 RHEL ISO 源的圖像範本將不再處理。
 
-Azure 映射產生器僅支援使用已發佈 Red Hat Enterprise Linux 7.x 二進位 DVD Iso，以供預覽。 影像產生器支援：
-- RHEL 7.3 
-- RHEL 7。4 
-- RHEL 7.5 
- 
-```json
-"source": {
-       "type": "ISO",
-       "sourceURI": "<sourceURI from the download center>",
-       "sha256Checksum": "<checksum associated with ISO>"
-}
-```
-
-若要取得 `sourceURI` 和 `sha256Checksum` 值，請移至 `https://access.redhat.com/downloads` 然後選取產品**Red Hat Enterprise Linux**和支援的版本。 
-
-在**Red Hat Enterprise Linux Server 的安裝程式和映射**清單中，您必須複製 Red Hat Enterprise Linux 1.X 二進位 DVD 和總和檢查碼的連結。
-
-> [!NOTE]
-> 連結的存取權杖會以頻繁的間隔重新整理，因此每次您想要提交範本時，您都必須檢查 RH 連結位址是否已變更。
- 
-### <a name="platformimage-source"></a>PlatformImage 來源 
-Azure 映射產生器支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映射，如需完整清單，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)。 
+### <a name="platformimage-source"></a>平臺圖像源 
+Azure 映射產生器支援 Windows 伺服器和用戶端以及 Linux Azure 應用商店映射，請參閱[此處](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)查看完整清單。 
 
 ```json
         "source": {
@@ -166,23 +165,22 @@ Azure 映射產生器支援 Windows Server 和用戶端，以及 Linux Azure Mar
                 "publisher": "Canonical",
                 "offer": "UbuntuServer",
                 "sku": "18.04-LTS",
-                "version": "18.04.201903060"
+                "version": "latest"
         },
 ```
 
 
-這裡的屬性與用來建立 VM 的相同，使用 AZ CLI 執行下列內容以取得屬性： 
+此處的屬性與使用 AZ CLI 創建 VM 的屬性相同，請運行以下屬性以獲取屬性： 
  
 ```azurecli-interactive
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-> [!NOTE]
-> 版本不得為「最新」，您必須使用上述命令來取得版本號碼。 
+您可以在版本中使用"最新"，在進行映射生成時評估版本，而不是提交範本時。 如果將此功能與共享圖像庫目標一起使用，則可以避免重新提交範本，並每隔一段時間重新運行圖像生成，以便從最新圖像重新創建圖像。
 
-### <a name="managedimage-source"></a>ManagedImage 來源
+### <a name="managedimage-source"></a>託管圖像源
 
-將來源映射設定為一般化 VHD 或 VM 的現有受控映射。 來源受控映射必須是受支援的 OS，且位於與您的 Azure 映射產生器範本相同的區域中。 
+將源映射集為通用 VHD 或 VM 的現有託管映射。 源託管映射必須為受支援的作業系統，並且與 Azure 映射產生器範本位於同一區域。 
 
 ```json
         "source": { 
@@ -191,11 +189,11 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
         }
 ```
 
-`imageId` 應該是受控映射的 ResourceId。 使用 `az image list` 列出可用的映射。
+`imageId`應為託管映射的 ResourceID。 用於`az image list`列出可用圖像。
 
 
-### <a name="sharedimageversion-source"></a>SharedImageVersion 來源
-將來源映射設定為共用映射庫中的現有映射版本。 映射版本必須是受支援的 OS，且映射必須複寫到與您的 Azure 映射產生器範本相同的區域。 
+### <a name="sharedimageversion-source"></a>共用圖像版本源
+在共用映射庫中設置現有映射版本的源映射。 映射版本必須為受支援的作業系統，並且映射必須複製到與 Azure 映射產生器範本相同的區域。 
 
 ```json
         "source": { 
@@ -204,33 +202,33 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
    } 
 ```
 
-`imageVersionId` 應該是映射版本的 ResourceId。 使用[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list)列出映射版本。
+`imageVersionId`應為映射版本的 ResourceId。 使用[az sig 圖像版本清單](/cli/azure/sig/image-version#az-sig-image-version-list)列出圖像版本。
 
-## <a name="properties-buildtimeoutinminutes"></a>屬性： buildTimeoutInMinutes
+## <a name="properties-buildtimeoutinminutes"></a>屬性：生成時間分鐘
 
-根據預設，映射產生器將會執行240分鐘。 之後，不論映射組建是否已完成，它都會超時並停止。 如果遇到超時時間，您會看到類似下面的錯誤：
+預設情況下，映射產生器將運行 240 分鐘。 之後，無論映射生成是否完成，它將超時並停止。 如果達到超時，您將看到類似于此的錯誤：
 
 ```text
 [ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-如果您未指定 buildTimeoutInMinutes 值，或將它設定為0，則會使用預設值。 您可以增加或減少此值，最多可達960mins （16hrs）。 對於 Windows，我們不建議將此設定為低於60分鐘。 如果您發現您達到的是超時時間，請檢查[記錄](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)檔，查看自訂步驟是否正在等待類似使用者輸入的專案。 
+如果不指定 buildTimeoutIn分鐘值，或將其設置為 0，則將使用預設值。 您可以增加或減小該值，最高可達 960 分鐘（16 小時）。 對於 Windows，我們不建議將此設置在 60 分鐘以下。 如果您發現您正在達到超時，請查看[日誌](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)，以查看自訂步驟是否正在等待使用者輸入之類的內容。 
 
-如果您發現您需要更多時間才能完成自訂，請將此專案設定為您想要的需求，但有一些額外負荷。 但請不要將它設得太高，因為您可能必須等候它超時，才能看到錯誤。 
+如果您發現需要更多時間完成自訂，則設置到您認為需要的內容，並稍加開銷。 但是，不要設置過高，因為您可能需要等待超時，才能看到錯誤。 
 
 
 ## <a name="properties-customize"></a>屬性：自訂
 
-影像產生器支援多個「自建立者」。 自訂程式是用來自訂映射的函式，例如執行腳本或重新開機伺服器。 
+圖像產生器支援多個"自訂器"。 自訂程式是用於自訂映射的函數，例如運行腳本或重新開機伺服器。 
 
-使用 `customize`時： 
-- 您可以使用多個自建立者，但它們必須有唯一的 `name`。
-- 自建者會依照範本中指定的循序執行。
-- 如果一個自訂程式失敗，則整個自訂群組件將會失敗，並回報錯誤。
-- 強烈建議您先徹底測試腳本，再于範本中使用。 在您自己的 VM 上進行腳本的偵錯工具會變得更容易。
-- 請勿將機密資料放在腳本中。 
-- 除非您使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)，否則腳本位置必須可公開存取。
+使用`customize`時 ： 
+- 您可以使用多個自訂程式，但它們必須具有唯`name`一的 。
+- 自訂程式按範本中指定的循序執行。
+- 如果一個自訂程式失敗，則整個自訂群組件將失敗並報告錯誤。
+- 強烈建議您在範本中使用腳本之前徹底測試腳本。 在您自己的 VM 上調試腳本將更容易。
+- 不要將敏感性資料放入腳本中。 
+- 腳本位置需要公開訪問，除非您正在使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
 
 ```json
         "customize": [
@@ -252,12 +250,12 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```     
 
  
-[自訂] 區段是陣列。 Azure 映射產生器將依序按循序執行自建者。 任何自訂程式中的任何失敗都將導致建立程式失敗。 
+自訂部分是一個陣列。 Azure 映射產生器將按順序運行自訂程式。 任何自訂程式中的任何失敗都將使生成過程失敗。 
  
  
-### <a name="shell-customizer"></a>Shell 自訂者
+### <a name="shell-customizer"></a>外殼自訂程式
 
-Shell 自訂程式支援執行 shell 腳本，必須可公開存取，才能存取它們。
+shell 自訂程式支援運行 shell 腳本，這些腳本必須是可公開訪問的，以便 IB 訪問它們。
 
 ```json
     "customize": [ 
@@ -277,25 +275,25 @@ Shell 自訂程式支援執行 shell 腳本，必須可公開存取，才能存�
     ], 
 ```
 
-OS 支援： Linux 
+作業系統支援：Linux 
  
 自訂屬性：
 
-- **類型**– Shell 
-- **名稱**-追蹤自訂的名稱 
-- **scriptUri** -檔案位置的 URI 
-- shell 命令的**內嵌**陣列，以逗號分隔。
-- **sha256Checksum** -檔案的 sha256 總和檢查碼值，您會在本機產生此檔案，而映射產生器將會進行總和檢查碼和驗證。
-    * 若要使用 Mac/Linux 上的終端機來產生 sha256Checksum，請執行： `sha256sum <fileName>`
+- **類型**= 外殼 
+- **名稱**- 用於跟蹤自訂的名稱 
+- **腳本 Uri** - URI 到檔的位置 
+- **內聯**- shell 命令陣列，用逗號分隔。
+- **sha256Checksum** - 檔沙256校驗和的值，您從本地生成此，然後圖像產生器將檢查和驗證。
+    * 要生成 sha256Checksum，請使用 Mac/Linux 上運行的終端：`sha256sum <fileName>`
 
 
-對於以超級使用者權限執行的命令，其前面必須加上 `sudo`。
+要使用超級使用者許可權運行命令，必須用`sudo`預固定命令。
 
 > [!NOTE]
-> 以 RHEL ISO 來源執行 shell 自訂程式時，您必須確定第一個自訂命令介面會在進行任何自訂之前，先處理 Red Hat 權利伺服器的註冊。 完成自訂之後，腳本應該會向權利伺服器取消註冊。
+> 使用 RHEL ISO 源運行 shell 自訂程式時，您需要確保在進行任何自訂之前，第一個自訂外殼處理與紅帽授權伺服器註冊。 自訂完成後，腳本應取消向授權伺服器註冊。
 
-### <a name="windows-restart-customizer"></a>Windows 重新開機自訂器 
-重新開機自訂程式可讓您重新開機 Windows VM，並等候它重新上線，這可讓您安裝需要重新開機的軟體。  
+### <a name="windows-restart-customizer"></a>Windows 重新開機自訂程式 
+重新開機自訂程式允許您重新開機 Windows VM 並等待它重新連線，這允許您安裝需要重新開機的軟體。  
 
 ```json 
      "customize": [ 
@@ -310,19 +308,19 @@ OS 支援： Linux
         ],
 ```
 
-OS 支援： Windows
+作業系統支援：視窗
  
 自訂屬性：
-- **類型**： WindowsRestart
-- **restartCommand** -用來執行重新開機的命令（選擇性）。 預設值為 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
-- **restartCheckCommand** –用來檢查重新開機是否成功的命令（選擇性）。 
-- **restartTimeout** -以大小和單位的字串指定的重新開機超時。 例如，`5m` （5分鐘）或 `2h` （2小時）。 預設值為： ' 5m '
+- **類型**： 視窗重新開機
+- **重新開機命令**- 命令執行重新開機（可選）。 預設值為 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
+- **重新開機檢查命令**= 命令，以檢查重新開機是否成功（可選）。 
+- **重新開機超時**- 重新開機超時指定為大小和單位的字串。 例如，（5`5m`分鐘）或`2h`（2 小時）。 預設值為："5 米"
 
-### <a name="linux-restart"></a>Linux 重新開機  
-沒有 Linux 重新開機自訂器; 不過，如果您要安裝驅動程式或需要重新開機的元件，您可以安裝它們，並使用 Shell 自訂程式叫用重新開機，組建 VM 會有20min 的 SSH 超時。
+### <a name="linux-restart"></a>Linux 重啟  
+沒有 Linux 重新開機自訂程式，但是，如果您正在安裝驅動程式或需要重新開機的元件，則可以使用 Shell 自訂程式安裝驅動程式並調用重新開機，則生成 VM 有 20 分鐘的 SSH 超時。
 
-### <a name="powershell-customizer"></a>PowerShell 自訂者 
-Shell 自訂程式支援執行 PowerShell 腳本和內嵌命令，必須可公開存取腳本，才能存取它們。
+### <a name="powershell-customizer"></a>PowerShell 定制器 
+shell 自訂程式支援運行 PowerShell 腳本和內聯命令，IB 必須公開訪問這些腳本才能訪問它們。
 
 ```json 
      "customize": [
@@ -337,28 +335,28 @@ Shell 自訂程式支援執行 PowerShell 腳本和內嵌命令，必須可公�
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>",
+             "validExitCodes": "<exit code>",
              "runElevated": "<true or false>" 
          } 
     ], 
 ```
 
-OS 支援： Windows 和 Linux
+作業系統支援：Windows 和 Linux
 
 自訂屬性：
 
-- **類型**– PowerShell。
-- **scriptUri** -PowerShell 腳本檔案位置的 URI。 
-- **inline** –要執行的內嵌命令，並以逗號分隔。
-- **valid_exit_codes** –選擇性的有效程式碼，可從腳本/內嵌命令傳回，這可避免腳本/內嵌命令的回報失敗。
-- **runElevated** –選擇性的布林值，支援以較高的許可權執行命令和腳本。
-- **sha256Checksum** -檔案的 sha256 總和檢查碼值，您會在本機產生此檔案，而映射產生器將會進行總和檢查碼和驗證。
-    * 若要產生 sha256Checksum，請在 Windows 上使用 PowerShell[取得雜湊](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+- **類型**= 電源外殼。
+- **腳本 Uri** - URI 到 PowerShell 指令檔的位置。 
+- **內聯**= 要運行的內聯命令，用逗號分隔。
+- **有效結束代碼**– 可從腳本/內聯命令返回的可選有效代碼，這將避免腳本/內聯命令的報告失敗。
+- **運行提升**– 可選、布林，支援使用提升許可權運行命令和腳本。
+- **sha256Checksum** - 檔沙256校驗和的值，您從本地生成此，然後圖像產生器將檢查和驗證。
+    * 要生成 sha256Checksum，請使用 Windows[獲取雜湊](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)上的 PowerShell
 
 
-### <a name="file-customizer"></a>檔案自訂者
+### <a name="file-customizer"></a>檔自訂器
 
-檔案自訂者可讓映射產生器從 GitHub 或 Azure 儲存體下載檔案。 如果您的映射組建管線依賴組建成品，您可以接著將檔案自訂者設定為從組建共用下載，並將成品移至映射。  
+檔自訂程式允許映射產生器從 GitHub 或 Azure 存儲下載檔案。 如果映射生成管道依賴于生成專案，則可以將檔自訂程式設置為從生成共用下載，並將專案移動到映射中。  
 
 ```json
      "customize": [ 
@@ -372,33 +370,57 @@ OS 支援： Windows 和 Linux
      ]
 ```
 
-OS 支援： Linux 和 Windows 
+作業系統支援：Linux 和 Windows 
 
-檔案自訂者屬性：
+檔自訂器屬性：
 
-- **sourceUri** -可存取的儲存體端點，這可以是 GitHub 或 Azure 儲存體。 您只能下載一個檔案，而不是整個目錄。 如果您需要下載目錄，請使用壓縮檔案，然後使用 Shell 或 PowerShell 自設程式將它解壓縮。 
-- **目的地**–這是完整的目的地路徑和檔案名。 任何參考的路徑和子目錄都必須存在，請使用 Shell 或 PowerShell 自組成者，預先設定這些。 您可以使用腳本自編寫者來建立路徑。 
+- **sourceUri** - 可訪問的存儲終結點，可以是 GitHub 或 Azure 存儲。 您只能下載一個檔，而不能下載整個目錄。 如果需要下載目錄，請使用壓縮檔，然後使用 Shell 或 PowerShell 自訂程式解壓縮它。 
+- **目標**= 這是完整的目標路徑和檔案名。 任何引用的路徑和子目錄都必須存在，使用命令程式或 PowerShell 自訂程式提前設置這些路徑和子目錄。 您可以使用腳本自訂程式創建路徑。 
 
-這受到 Windows 目錄和 Linux 路徑的支援，但有一些差異： 
-- Linux OS –映射產生器唯一可以寫入的路徑是/tmp。
-- Windows –沒有路徑限制，但路徑必須存在。
+Windows 目錄和 Linux 路徑支援此功能，但有一些差異： 
+- Linux作業系統 – 映射產生器可以寫入的唯一路徑是 /tmp。
+- Windows = 沒有路徑限制，但路徑必須存在。
  
  
-如果嘗試下載檔案時發生錯誤，或將它放在指定的目錄中，則自訂步驟將會失敗，而這會在自訂記錄檔中。
+如果嘗試下載檔案或將其放入指定的目錄中時出錯，則自訂步驟將失敗，這將在自訂.log 中。
 
 > [!NOTE]
-> 檔案自訂者僅適用于小型檔案下載，< 20MB。 對於較大的檔案下載，請使用腳本或內嵌命令，並使用程式碼來下載檔案，例如 Linux `wget` 或 `curl`、Windows `Invoke-WebRequest`。
+> 檔自訂程式僅適用于小型檔下載，< 20MB。 對於較大的檔下載，請使用腳本或內聯命令，使用代碼下載檔案，如 Linux`wget`或`curl`，Windows。 `Invoke-WebRequest`
 
-您可以使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)從 Azure 儲存體下載檔案自訂檔中的檔案。
+檔自訂程式中的檔可以使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)從 Azure 存儲下載。
+
+### <a name="windows-update-customizer"></a>視窗更新自訂程式
+此自訂程式基於社區[Windows 更新預配](https://packer.io/docs/provisioners/community-supported.html)器（由 Packer 社區維護的開源專案）構建。 Microsoft 使用映射產生器服務測試和驗證預配程式，並將支援調查其問題，並致力於解決問題，但 Microsoft 並不正式支援開源專案。 有關 Windows 更新預配程式的詳細文檔和説明，請參閱專案存儲庫。
+ 
+     "customize": [
+            {
+                "type": "WindowsUpdate",
+                "searchCriteria": "IsInstalled=0",
+                "filters": [
+                    "exclude:$_.Title -like '*Preview*'",
+                    "include:$true"
+                            ],
+                "updateLimit": 20
+            }
+               ], 
+作業系統支援：視窗
+
+自訂屬性：
+- **類型**= Windows 更新。
+- **搜索標準**- 可選，定義安裝的更新類型（推薦、重要等）、"僅流覽"=0 和"已安裝"=0（推薦）為預設值。
+- **篩選器**= 可選，允許您指定篩選器以包括或排除更新。
+- **更新限制**= 可選，定義可以安裝多少更新，預設 1000。
+ 
+ 
 
 ### <a name="generalize"></a>一般化 
-根據預設，Azure 映射產生器也會在每個映射自訂階段結束時執行「解除布建」程式碼，以「一般化」映射。 一般化是設定映射的程式，因此可以重複使用它來建立多個 Vm。 對於 Windows Vm，Azure 映射產生器會使用 Sysprep。 針對 Linux，Azure 映射產生器會執行 ' waagent-取消布建 '。 
+預設情況下，Azure 映射產生器還將在每個映射自訂階段結束時運行"取消預配"代碼，以"通用"映射。 通用化是設置映射以便重用映射以創建多個 VM 的過程。 對於 Windows VM，Azure 映射產生器使用 Sysprep。 對於 Linux，Azure 映射產生器運行"waagent-de預配"。 
 
-要一般化的命令映射產生器使用者可能不適合每種情況，因此 Azure 映射產生器可讓您自訂此命令（如有需要）。 
+命令映射產生器使用者進行一化和通用化可能並不適合每種情況，因此 Azure 映射產生器將允許您根據需要自訂此命令。 
 
-如果您要遷移現有的自訂，而且您使用不同的 Sysprep/waagent 命令，您可以使用映射產生器的一般命令，如果 VM 建立失敗，請使用您自己的 Sysprep 或 waagent 命令。
+如果要遷移現有自訂項，並且使用不同的 Sysprep/waagent 命令，則可以使用映射產生器泛型命令，如果 VM 創建失敗，請使用您自己的 Sysprep 或 waagent 命令。
 
-如果 Azure 映射產生器已成功建立 Windows 自訂映射，而且您從它建立 VM，然後發現 VM 建立失敗或未順利完成，您將需要參閱 Windows Server Sysprep 檔或提出支援要求，並提供Windows Server Sysprep 客戶服務支援小組，他們可以疑難排解並建議正確的 Sysprep 使用方式。
+如果 Azure 映射產生器成功創建 Windows 自訂映射，並且從該映射創建 VM，則發現 VM 創建失敗或未成功完成，則需要查看 Windows Server Sysprep 文檔，或使用Windows 伺服器 Sysprep 客戶服務支援小組，他們可以對正確的 Sysprep 使用方式進行故障排除並提供建議。
 
 
 #### <a name="default-sysprep-command"></a>預設 Sysprep 命令
@@ -411,31 +433,31 @@ echo '>>> Sysprepping VM ...'
 if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
 while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
 ```
-#### <a name="default-linux-deprovision-command"></a>預設的 Linux 取消布建命令
+#### <a name="default-linux-deprovision-command"></a>預設 Linux 取消預配命令
 
 ```bash
 /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync
 ```
 
-#### <a name="overriding-the-commands"></a>覆寫命令
-若要覆寫命令，請使用 PowerShell 或 Shell 腳本 provisioners 來建立具有確切檔案名的命令檔，並將它們放在正確的目錄中：
+#### <a name="overriding-the-commands"></a>重寫命令
+要重寫這些命令，請使用 PowerShell 或 Shell 腳本預配器創建具有確切檔案名的命令檔，並將它們放在正確的目錄中：
 
-* Windows： c:\DeprovisioningScript.ps1
-* Linux：/tmp/DeprovisioningScript.sh
+* 視窗：c：\取消預配腳本.ps1
+* Linux： /tmp/取消預配腳本.sh
 
-影像產生器將會讀取這些命令，這些命令會寫出至 AIB 記錄檔「自訂記錄」。 請參閱[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs)如何收集記錄檔。
+映射產生器將讀取這些命令，這些命令被寫入 AIB 日誌，"自訂.log"。 有關如何收集日誌[的疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs)。
  
-## <a name="properties-distribute"></a>屬性：散發
+## <a name="properties-distribute"></a>屬性：分發
 
-Azure 映射產生器支援三種散發目標： 
+Azure 映射產生器支援三個分發目標： 
 
-- **managedImage**管理的映射。
-- **sharedImage** -共用映射資源庫。
-- **Vhd** -儲存體帳戶中的 vhd。
+- **託管映射**- 託管映射。
+- **共用圖像**- 共用圖像庫。
+- **VHD** - 存儲帳戶中的 VHD。
 
-您可以使用相同的設定將映射散發到這兩個目標型別，請參閱[範例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)。
+您可以將映射分發到同一配置中的兩個目標型別，請參閱[示例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)。
 
-由於您可以將一個以上的目標散發至，因此，「影像產生器」會針對每個散發目標維護一個狀態，讓您可以藉由查詢 `runOutputName`來存取。  `runOutputName` 是一種物件，您可以針對該散發的相關資訊來查詢發佈內容。 例如，您可以查詢 VHD 的位置或複製映射版本的區域，或建立的 SIG 映射版本。 這是每個散發目標的屬性。 `runOutputName` 對每個散發目標必須是唯一的。 以下是範例，這是查詢共用映射庫發佈：
+由於可以有多個目標要分發到 ，因此 Image Builder 會維護可通過查詢 訪問的每個分發目標的狀態`runOutputName`。  `runOutputName`是可以查詢發佈後分發的物件，以獲取有關該分佈的資訊。 例如，您可以查詢 VHD 的位置、映射版本複製到的區域或創建 SIG 圖像版本的區域。 這是每個分發目標的屬性。 必須`runOutputName`對每個分發目標是唯一的。 下面是一個示例，這是查詢共用圖像庫分發：
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -468,9 +490,9 @@ az resource show \
 }
 ```
 
-### <a name="distribute-managedimage"></a>散發： managedImage
+### <a name="distribute-managedimage"></a>分發：託管圖像
 
-影像輸出將會是受控映射資源。
+映射輸出將是託管映射資源。
 
 ```json
 "distribute": [
@@ -486,28 +508,28 @@ az resource show \
          }]
 ```
  
-散發屬性：
-- **類型**– managedImage 
-- **imageId** –目的地映射的資源識別碼，應為格式：/Subscriptions/\<subscriptionId >/ResourceGroups/\<destinationResourceGroupName >/Providers/Microsoft.Compute/images/\<imageName >
-- **位置**-受控映射的位置。  
-- **runOutputName** –用來識別散發的唯一名稱。  
-- **artifactTags** -選擇性的使用者指定的機碼值組標記。
+分發屬性：
+- **類型**= 託管圖像 
+- **映射 Id** = 靶心圖表像的資源識別碼，預期格式：/\<訂閱/訂閱 id>/資源組/\<目標資源組名稱>/提供程式/Microsoft.\<計算/圖像/圖像名稱>
+- **位置**- 託管映射的位置。  
+- **運行輸出名稱**= 標識分佈的唯一名稱。  
+- **專案標記**- 可選使用者指定鍵值對標記。
  
  
 > [!NOTE]
-> 目的地資源群組必須存在。
-> 如果您想要將映射散發至不同的區域，它會增加部署時間。 
+> 目標資源組必須存在。
+> 如果希望將映射分發到其他區域，它將增加部署時間。 
 
-### <a name="distribute-sharedimage"></a>散發： sharedImage 
-Azure 共用映射資源庫是新的映射管理服務，可讓您管理映射區域複寫、版本控制和共用自訂映射。 Azure 映射產生器支援使用此服務散發，因此您可以將映射發佈到共用映射資源庫所支援的區域。 
+### <a name="distribute-sharedimage"></a>分發：共用圖像 
+Azure 共用映射庫是一種新的映射管理服務，允許管理映射區域複製、版本控制和共用自訂映射。 Azure 映射產生器支援使用此服務進行分發，因此可以將映射分發到共用映射庫支援的區域。 
  
-共用映射資源庫是由下列各項所組成： 
+共用圖像庫由： 
  
-- 圖庫-多個共用映射的容器。 資源庫會部署在一個區域中。
-- 映射定義-影像的概念群組。 
-- 映射版本-這是用來部署 VM 或擴展集的映射類型。 映射版本可以複寫到需要部署 Vm 的其他區域。
+- 庫 - 用於多個共用圖像的容器。 庫部署在一個區域中。
+- 圖像定義 - 圖像的概念分組。 
+- 映射版本 - 這是用於部署 VM 或縮放集的圖像類型。 圖像版本可以複製到需要部署 VM 的其他地區。
  
-在您可以散發至映射庫之前，您必須先建立資源庫和映射定義，請參閱[共用映射](shared-images.md)。 
+在可以分發到圖像庫之前，必須創建庫和圖像定義，請參閱[共用圖像](shared-images.md)。 
 
 ```json
 {
@@ -525,19 +547,19 @@ Azure 共用映射資源庫是新的映射管理服務，可讓您管理映射�
 }
 ``` 
 
-發佈共用映射資源庫的屬性：
+為共用圖像庫分發屬性：
 
-- **類型**-sharedImage  
-- **galleryImageId** –共用映射資源庫的識別碼。 格式為：/subscriptions/\<subscriptionId >/resourceGroups/\<resourceGroupName >/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName >/images/\<imageGalleryName >。
-- **runOutputName** –用來識別散發的唯一名稱。  
-- **artifactTags** -選擇性的使用者指定的機碼值組標記。
-- **replicationRegions** -用於複寫的區域陣列。 其中一個區域必須是資源庫部署所在的區域。
+- **類型**- 共用圖像  
+- **庫 ImageId** = 共用圖像庫的 ID。 格式為\<：/訂閱/訂閱 id>/資源組\</資源組名稱>/供應商/Microsoft.計算/庫圖\</共用 ImageGallery 名稱>/圖像/\<圖像庫名稱>。
+- **運行輸出名稱**= 標識分佈的唯一名稱。  
+- **專案標記**- 可選使用者指定鍵值對標記。
+- **複製區域**- 用於複製的區域陣列。 其中一個區域必須是部署庫的區域。
  
 > [!NOTE]
-> 您可以將不同區域中的 Azure 映射產生器用於資源庫，但 Azure 映射產生器服務必須在資料中心之間傳輸映射，這會花費較長的時間。 影像產生器會根據單純整數自動將映射版本，您目前無法加以指定。 
+> 可以在其他區域中使用 Azure 映射產生器到庫，但 Azure 映射產生器服務將需要在資料中心之間傳輸映射，這需要更長的時間。 圖像產生器將根據單調整數自動對圖像進行版本控制，您當前無法指定它。 
 
-### <a name="distribute-vhd"></a>散發： VHD  
-您可以輸出至 VHD。 然後您可以複製 VHD，並使用它發佈至 Azure MarketPlace，或搭配 Azure Stack 使用。  
+### <a name="distribute-vhd"></a>分發： VHD  
+您可以輸出到 VHD。 然後，可以複製 VHD，並使用它發佈到 Azure 市場廣場，或使用 Azure 堆疊。  
 
 ```json
 { 
@@ -550,15 +572,15 @@ Azure 共用映射資源庫是新的映射管理服務，可讓您管理映射�
 }
 ```
  
-OS 支援： Windows 和 Linux
+作業系統支援：Windows 和 Linux
 
-散發 VHD 參數：
+分發 VHD 參數：
 
-- **類型**-VHD。
-- **runOutputName** –用來識別散發的唯一名稱。  
-- 卷**標-選擇性**的使用者指定的機碼值組標記。
+- **類型**- VHD。
+- **運行輸出名稱**= 標識分佈的唯一名稱。  
+- **標記**- 可選使用者指定鍵值對標記。
  
-Azure 映射產生器不允許使用者指定儲存體帳戶位置，但是您可以查詢 `runOutputs` 的狀態來取得位置。  
+Azure 映射產生器不允許使用者指定存儲帳戶位置，但您可以查詢 的狀態`runOutputs`以獲取該位置。  
 
 ```azurecli-interactive
 az resource show \
@@ -566,9 +588,9 @@ az resource show \
 ```
 
 > [!NOTE]
-> 建立 VHD 之後，請儘快將它複製到不同的位置。 VHD 會儲存在映射範本提交至 Azure 映射產生器服務時所建立的暫存資源群組中的儲存體帳戶中。 如果您刪除映射範本，則會遺失 VHD。 
+> 創建 VHD 後，請儘快將其複製到其他位置。 VHD 存儲在將映射範本提交到 Azure 映射產生器服務時創建的臨時資源組中的存儲帳戶中。 如果刪除圖像範本，則將丟失 VHD。 
  
 ## <a name="next-steps"></a>後續步驟
 
-[Azure 映射](https://github.com/danielsollondon/azvmimagebuilder)產生器 GitHub 中有適用于不同案例的範例. json 檔案。
+[Azure 映射產生器 GitHub](https://github.com/danielsollondon/azvmimagebuilder)中對於不同方案的示例 .json 檔。
  

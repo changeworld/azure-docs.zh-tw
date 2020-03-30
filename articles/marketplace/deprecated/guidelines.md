@@ -3,18 +3,17 @@ title: Azure Marketplace 和 AppSource 發行者指導方針 | Azure
 description: 適用於應用程式與服務發行者的 Azure Marketplace 和 AppSource 指導方針
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281522"
 ---
 # <a name="guidelines"></a>指導方針  
 
@@ -69,6 +68,6 @@ Microsoft 建議的因應措施。 請遵循下列步驟，在 `outlook.com` 網
 
 ## <a name="next-steps"></a>後續步驟
 
-*   請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)頁面。 
+*   請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)網頁。 
  
 ---

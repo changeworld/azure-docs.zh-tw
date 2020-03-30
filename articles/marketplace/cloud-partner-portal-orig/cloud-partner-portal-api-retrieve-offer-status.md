@@ -1,19 +1,18 @@
 ---
-title: 取得供應專案狀態 |Azure Marketplace
+title: 檢索產品/服務狀態 |Azure 應用商店
 description: API 可擷取供應項目的目前狀態。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280502"
 ---
 <a name="retrieve-offer-status"></a>擷取供應項目狀態 
 =====================
@@ -25,11 +24,11 @@ ms.locfileid: "73819673"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**       |   **說明**                            |  **資料類型** |
+|  **名稱**       |   **描述**                            |  **資料類型** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 發行者識別碼，例如 `Contoso`  |     字串     |
-|  offerId        | 可唯一識別供應項目的 GUID      |     字串     |
-|  api-version    | API 的最新版本                        |     日期       |
+|  publisherId    | 發行者識別碼，例如 `Contoso`  |     String     |
+|  offerId        | 可唯一識別供應項目的 GUID      |     String     |
+|  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
 
@@ -123,7 +122,7 @@ ms.locfileid: "73819673"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**             |    **說明**                                                                             |
+|  **名稱**             |    **描述**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | 供應項目的狀態。 如需可能值清單，請參閱下面的[供應項目狀態](#offer-status)。 |
 |  messages             | 與供應項目相關聯的訊息陣列                                                    |
@@ -131,19 +130,19 @@ ms.locfileid: "73819673"
 |  estimatedTimeFrame   | 完成此步驟要花費的估計時間 (易記格式)                       |
 |  id                   | 步驟的識別碼                                                                         |
 |  stepName             | 步驟的名稱                                                                               |
-|  說明          | 步驟的說明                                                                        |
+|  description          | 步驟的說明                                                                        |
 |  status               | 步驟的狀態。 如需可能值清單，請參閱下面的[步驟狀態](#step-status)。    |
 |  messages             | 與步驟相關聯的訊息陣列                                                          |
 |  processPercentage    | 步驟的完成百分比                                                              |
-|  previewLinks         | 目前尚未實作                                                                    |
-|  liveLinks            | 目前尚未實作                                                                    |
+|  previewLinks         | *當前未實施*                                                                    |
+|  liveLinks            | *當前未實施*                                                                    |
 |  notificationEmails   | 以逗號分隔的電子郵件地址清單；系統會向這些地址傳送發佈進度通知        |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼** |   **說明**                                                                                 |
+| **代碼** |   **描述**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 已成功處理要求，並已傳回供應項目的最新狀態。 |
 |  400     | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                 |
@@ -153,21 +152,21 @@ ms.locfileid: "73819673"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    |    **說明**                                       |
+|  **名稱**                    |    **描述**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                          |
 |  NotStarted                  | 供應項目是新的，且未啟動。                            |
 |  WaitingForPublisherReview   | 供應項目正在等候發行者核准。                 |
 |  執行中                     | 正在處理供應項目提交。                     |
-|  Succeeded                   | 已完成處理供應項目提交。               |
-|  Canceled                    | 已取消供應項目提交。                           |
-|  Failed                      | 供應項目提交失敗。                                 |
+|  成功                   | 已完成處理供應項目提交。               |
+|  已取消                    | 已取消供應項目提交。                           |
+|  失敗                      | 供應項目提交失敗。                                 |
 |  |  |
 
 
 ### <a name="step-status"></a>步驟狀態
 
-|  **名稱**                    |    **說明**                           |
+|  **名稱**                    |    **描述**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步驟尚未啟動。                        |
 |  InProgress                  | 步驟正在執行。                             |
@@ -175,6 +174,6 @@ ms.locfileid: "73819673"
 |  WaitingForApproval          | 步驟正在等候處理核准。        |
 |  Blocked                     | 步驟遭到封鎖。                             |
 |  已拒絕                    | 步驟遭到拒絕。                            |
-|  完成                    | 步驟已完成。                            |
-|  Canceled                    | 步驟已取消。                           |
+|  [完成]                    | 步驟已完成。                            |
+|  已取消                    | 步驟已取消。                           |
 |  |  |

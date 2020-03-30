@@ -1,34 +1,34 @@
 ---
-title: 針對混合式環境啟用 Azure 監視器（預覽） |Microsoft Docs
-description: 本文說明如何針對包含一或多部虛擬機器的混合式雲端環境，啟用適用於 VM 的 Azure 監視器。
+title: 為混合環境啟用 Azure 監視器 |微軟文檔
+description: 本文介紹如何為包含一個或多個虛擬機器的混合雲環境啟用 VM 的 Azure 監視器。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480737"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器（預覽）
+# <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>為混合環境啟用 VM 的 Azure 監視器
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文說明如何針對您資料中心或其他雲端環境中裝載的虛擬機器或實體電腦啟用適用於 VM 的 Azure 監視器（預覽）。 在此程式結束時，您將已成功開始監視環境中的虛擬機器，並瞭解它們是否遇到任何效能或可用性問題。
+本文介紹如何為虛擬機器或資料中心或其他雲環境中託管的物理電腦啟用虛擬機器或物理電腦的 Azure 監視器。 此過程結束時，您將成功開始監視環境中的虛擬機器，並瞭解虛擬機器是否遇到任何性能或可用性問題。
 
 開始之前，請務必檢閱[必要條件](vminsights-enable-overview.md)並確認訂用帳戶和資源已符合需求。 檢閱適用於 [Log Analytics Linux 和 Windows 代理程式](../../log-analytics/log-analytics-agent-overview.md)的需求和部署方法。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，則對應資料一律會由 Log Analytics 代理程式直接傳輸到 Azure 監視器服務，或是透過[Operations Management Suite 閘道](../../azure-monitor/platform/gateway.md)來傳送。
+>適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果 IT 安全性原則不允許網路上的電腦連接到 Internet，則地圖資料始終由日誌分析代理直接或通過[操作管理套件閘道](../../azure-monitor/platform/gateway.md)傳輸到 Azure 監視器服務。
 
-完成這項工作的步驟摘要如下：
+完成此任務的步驟總結如下：
 
-1. 安裝適用于 Windows 或 Linux 的 Log Analytics 代理程式。 安裝代理程式之前，請先參閱[Log Analytics 代理程式總覽](../platform/log-analytics-agent.md)一文，以瞭解系統必要條件和部署方法。
+1. 安裝適用于 Windows 或 Linux 的日誌分析代理。 在安裝代理之前，請查看[日誌分析代理概述](../platform/log-analytics-agent.md)文章以瞭解系統先決條件和部署方法。
 
 2. 針對 [Windows](https://aka.ms/dependencyagentwindows) 或 [Linux](https://aka.ms/dependencyagentlinux)，下載並安裝適用於 VM 的 Azure 監視器對應 Dependency Agent。
 
@@ -37,14 +37,14 @@ ms.locfileid: "79275135"
 4. 部署適用於 VM 的 Azure 監視器。
 
 >[!NOTE]
->本文中所述用於部署 Dependency agent 的資訊也適用于[服務對應解決方案](service-map.md)。  
+>本文中描述的用於部署依賴項代理的資訊也適用于[服務映射解決方案](service-map.md)。  
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安裝 Dependency Agent
 
 您可以執行 `InstallDependencyAgent-Windows.exe` 以手動將 Dependency Agent 安裝在 Windows 電腦上。 如果您在執行此可執行檔時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
 
 >[!NOTE]
->必須有*系統管理員*權限，才能安裝或解除安裝代理程式。
+>安裝或卸載代理需要*管理員*許可權。
 
 下表將強調說明命令列中適用於代理程式的安裝程式所支援的參數。
 
@@ -53,9 +53,9 @@ ms.locfileid: "79275135"
 | /? | 傳回命令列選項的清單。 |
 | /S | 執行無訊息安裝，而不需要與使用者互動。 |
 
-例如，若要使用 `/?` 參數執行安裝程式，請輸入**可以 installdependencyagent-windows.exe/？** 。
+例如，要使用`/?`參數運行安裝程式，請輸入**安裝獨立代理-Windows.exe /？**
 
-Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft Dependency Agent* 中。 如果在安裝程式完成之後，Dependency agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是 *%Programfiles%\Microsoft Dependency Agent\logs*。
+Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft Dependency Agent* 中。 如果依賴項代理在設置完成後無法啟動，請檢查日誌以瞭解詳細的錯誤資訊。 記錄目錄是 *%Programfiles%\Microsoft Dependency Agent\logs*。
 
 ## <a name="install-the-dependency-agent-on-linux"></a>在 Linux 上安裝 Dependency Agent
 
@@ -71,11 +71,11 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 | -S | 執行無訊息安裝，不會出現任何使用者提示。 |
 | --check | 檢查權限和作業系統，但不會安裝代理程式。 |
 
-例如，若要使用 `-help` 參數執行安裝程式，請輸入**installdependencyagent-linux64.bin (** 。
+例如，要使用`-help`參數運行安裝程式，請輸入**安裝獨立代理-Linux64.bin-help**。
 
-執行命令 `sh InstallDependencyAgent-Linux64.bin`，以 root 身分安裝 Linux Dependency agent。
+通過運行命令`sh InstallDependencyAgent-Linux64.bin`將 Linux 依賴項代理安裝為根。
 
-如果 Dependency Agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Linux 代理程式上，記錄檔的目錄是 /var/opt/microsoft/dependency-agent/log。
+如果 Dependency Agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Linux 代理上，日誌目錄是 */var/opt/microsoft/依賴代理/日誌*。
 
 Dependency Agent 的檔案位於下列目錄：
 
@@ -111,7 +111,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 若要使用預期狀態設定 (DSC) 部署 Dependency Agent，您可以使用 xPSDesiredStateConfiguration 模組和下列範例程式碼：
 
 ```powershell
-configuration ServiceMap {
+configuration VMInsights {
 
     Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
@@ -144,19 +144,19 @@ configuration ServiceMap {
 
 ## <a name="enable-performance-counters"></a>啟用效能計數器
 
-如果解決方案所參考的 Log Analytics 工作區還未設定為收集此解決方案所需的效能計數器，則必須啟用這些效能計數器。 您可以透過下列兩種方式的其中一種來執行此動作：
+如果解決方案所參考的 Log Analytics 工作區還未設定為收集此解決方案所需的效能計數器，則必須啟用這些效能計數器。 您可以通過兩種方式之一執行此操作：
 * 手動，如 [Log Analytics 中的 Windows 和 Linux 效能資料來源](../../azure-monitor/platform/data-sources-performance-counters.md)中所述
-* 藉由下載並執行可從[Azure PowerShell 資源庫](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)取得的 PowerShell 腳本
+* 通過下載並運行可從[Azure PowerShell 庫](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)獲取的 PowerShell 腳本
 
 ## <a name="deploy-azure-monitor-for-vms"></a>部署適用於 VM 的 Azure 監視器
 
 此方法包含一個 JSON 範本，其會指定在 Log Analytics 工作區中啟用解決方案元件的設定。
 
-如果您不知道如何使用範本來部署資源，請參閱：
+如果您不知道如何使用範本部署資源，請參閱：
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-若要使用 Azure CLI，您必須先在本機安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 若要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+要使用 Azure CLI，首先需要在本地安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="create-and-execute-a-template"></a>建立並執行範本
 
@@ -184,7 +184,7 @@ configuration ServiceMap {
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -194,9 +194,9 @@ configuration ServiceMap {
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }
@@ -216,7 +216,7 @@ configuration ServiceMap {
     New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
-    設定變更可能需要幾分鐘的時間才能完成。 完成時，會顯示與下列類似的訊息，並包含結果：
+    配置更改可能需要幾分鐘才能完成。 完成後，將顯示類似于以下內容的消息，其中包含結果：
 
     ```powershell
     provisioningState       : Succeeded
@@ -225,37 +225,37 @@ configuration ServiceMap {
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="vm-doesnt-appear-on-the-map"></a>VM 不會出現在對應上
+### <a name="vm-doesnt-appear-on-the-map"></a>VM 未顯示在地圖上
 
-如果您的相依性代理程式安裝成功，但您在地圖上看不到您的電腦，請遵循下列步驟來診斷問題。
+如果依賴項代理安裝成功，但在地圖上看不到電腦，請按照以下步驟診斷問題。
 
 1. Dependency Agent 是否安裝成功？ 您可以查看是否已安裝服務並且執行，以便驗證。
 
     **Windows**︰尋找名稱為「Microsoft Dependency Agent」的服務。
 
-    **Linux**：尋找執行中的處理序 "microsoft-dependency-agent"。
+    **Linux**：尋找正在運行的進程"微軟依賴代理"。
 
-2. 您在[Log Analytics 的免費定價層](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)嗎？ 免費方案最多允許五部唯一的電腦。 任何後續的電腦都不會顯示在地圖上，即使先前的五個已不再傳送資料也一樣。
+2. 您是否在[日誌分析的免費定價層](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免費計畫允許最多使用五台獨特的電腦。 任何後續電腦將不會顯示在地圖上，即使前五台電腦不再發送資料。
 
-3. 電腦會將記錄檔和效能資料傳送給 Azure 監視器記錄嗎？ 針對您的電腦執行下列查詢：
+3. 電腦是否向 Azure 監視器日誌發送日誌和 perf 資料？ 為您的電腦執行以下查詢：
 
     ```Kusto
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    它是否會傳回一或多個結果？ 是否為最新的資料？ 若是如此，您的 Log Analytics 代理程式會正常運作，並與服務通訊。 如果不是，請檢查您伺服器上的代理程式︰[適用於 Windows 的 Log Analytics 代理程式疑難排解](../platform/agent-windows-troubleshoot.md)或[適用於 Linux 的 Log Analytics 代理程式疑難排解](../platform/agent-linux-troubleshoot.md)。
+    是否返回一個或多個結果？ 是否為最新的資料？ 如果是這樣，您的日誌分析代理操作正常並與服務通信。 如果不是，請檢查您伺服器上的代理程式︰[適用於 Windows 的 Log Analytics 代理程式疑難排解](../platform/agent-windows-troubleshoot.md)或[適用於 Linux 的 Log Analytics 代理程式疑難排解](../platform/agent-linux-troubleshoot.md)。
 
-#### <a name="computer-appears-on-the-map-but-has-no-processes"></a>電腦出現在地圖上，但是沒有任何進程
+#### <a name="computer-appears-on-the-map-but-has-no-processes"></a>電腦顯示在地圖上，但沒有進程
 
-如果您在對應上看到您的伺服器，但它沒有進程或連接資料，則表示相依性代理程式已安裝且正在執行，但未載入核心驅動程式。
+如果在地圖上看到伺服器，但它沒有進程或連接資料，則表示已安裝並運行依賴項代理，但內核驅動程式未載入。
 
 請檢查 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file (Windows) 檔案或 /var/opt/microsoft/dependency-agent/log/service.log 檔案 (Linux)。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-現在已針對您的虛擬機器啟用監視，此資訊可透過適用於 VM 的 Azure 監視器進行分析。
+現在，已為虛擬機器啟用了監視功能，此資訊可用於使用針對 VM 的 Azure 監視器進行分析。
 
 - 若要檢視探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。
 
-- 若要找出 VM 效能的瓶頸和整體使用率，請參閱[查看 AZURE VM 效能](vminsights-performance.md)。
+- 要根據 VM 的性能識別瓶頸和總體利用率，請參閱查看[Azure VM 性能](vminsights-performance.md)。

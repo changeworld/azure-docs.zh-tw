@@ -1,19 +1,18 @@
 ---
-title: 取出作業 API |Azure Marketplace
+title: 檢索操作 API |Azure 應用商店
 description: 擷取供應項目上的所有作業，或取得指定之 operationId 的特定作業。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280468"
 ---
 <a name="retrieve-operations"></a>擷取作業
 ===================
@@ -32,20 +31,20 @@ ms.locfileid: "73819601"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**          |      **說明**                                                                                           | **資料類型** |
+|  **名稱**          |      **描述**                                                                                           | **資料類型** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  發行者識別碼，例如 `Contoso`                                                                   |  字串       |
-|  offerId           |  供應項目識別碼                                                                                              |  字串       |
+|  publisherId       |  發行者識別碼，例如 `Contoso`                                                                   |  String       |
+|  offerId           |  供應項目識別碼                                                                                              |  String       |
 |  operationId       |  可唯一識別供應項目作業的 GUID。 您可以使用此 API 擷取 operationId，並針對任何長時間執行的作業 (例如[發佈供應項目](./cloud-partner-portal-api-publish-offer.md) API)，在回應的 HTTP 標頭中傳回。  |   Guid   |
-|  filteredStatus    | 選用的查詢參數，用來依狀態 (例如 `running`) 篩選此 API 所傳回的集合。  |   字串 |
-|  api-version       | API 的最新版本                                                                                           |    日期      |
+|  filteredStatus    | 選用的查詢參數，用來依狀態 (例如 `running`) 篩選此 API 所傳回的集合。  |   String |
+|  api-version       | API 的最新版本                                                                                           |    Date      |
 |  |  |  |
 
 
 <a name="header"></a>頁首
 ------
 
-|  **名稱**          |  **值**           |
+|  **名稱**          |  **價值**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授權     | `Bearer YOUR_TOKEN`  |
@@ -177,20 +176,20 @@ ms.locfileid: "73819601"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**                    |  **說明**                                                                                  |
+|  **名稱**                    |  **描述**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 可唯一識別作業的 GUID                                                       |
 |  submissionType              | 識別針對供應項目報告的作業類型，例如 `Publish/GGoLive`      |
 |  createdDateTime             | 建立作業的 UTC 日期時間                                                       |
 |  lastActionDateTime          | 上次更新作業的 UTC 日期時間                                       |
-|  status                      | 作業的狀態：`not started` \| `running` \| `failed` \| `completed`。 一次只有一項作業可以有 `running` 狀態。 |
-|  錯誤                       | 作業失敗的錯誤訊息                                                               |
+|  status                      | `not started` \| `running` \|操作的狀態`failed`。 \| `completed` 一次只有一項作業可以有 `running` 狀態。 |
+|  error                       | 作業失敗的錯誤訊息                                                               |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼**  |   **說明**                                                                                  |
+| **代碼**  |   **描述**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
 |  200      | `OK` - 已成功處理要求，並傳回要求的作業。        |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                    |

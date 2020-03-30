@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中樞裝置布建服務-安全性概念
-description: 說明具有裝置布建服務（DPS）和 IoT 中樞裝置特定的安全性布建概念
+title: Azure IoT 中心設備佈建服務 - 安全概念
+description: 描述使用設備佈建服務 （DPS） 和 IoT 中心特定于設備的安全預配概念
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271560"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中樞裝置佈建服務的安全性概念 
@@ -28,7 +28,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 裝置佈建服務支援下列形式的證明：
 * 以標準 X.509 憑證驗證流程為基礎的 **X.509 憑證**。
 * **信賴平台模組 (TPM)** 是以 nonce 挑戰為基礎，使用金鑰的 TPM 標準，提供已簽署的共用存取簽章 (SAS) 權杖。 使用此證明形式時，裝置不需要有實體 TPM，但該服務會根據 [TPM 規格](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)，而預期裝置使用簽署金鑰進行證明。
-* 以共用存取簽章 (SAS) **安全性權杖**為基礎的[對稱金鑰](../iot-hub/iot-hub-devguide-security.md#security-tokens)，其包含雜湊簽章與內嵌到期日。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
+* 以共用存取簽章 (SAS) [安全性權杖](../iot-hub/iot-hub-devguide-security.md#security-tokens)為基礎的**對稱金鑰**，其包含雜湊簽章與內嵌到期日。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬體安全模組
@@ -78,7 +78,7 @@ TPM 證明是以 nonce 挑戰為基礎，會使用簽署和儲存根金鑰來出
 
 分葉憑證 (或終端實體憑證) 會識別憑證持有者。 它在其憑證鏈結中有根憑證，以及零或多個中繼憑證。 分葉憑證無法用來簽署其他任何憑證。 它會唯一識別裝置來佈建服務，且有時稱為裝置憑證。 在驗證期間，裝置會使用與此憑證相關聯的私密金鑰，回應以證明來自服務的持有挑戰。
 
-與[個別註冊](./concepts-service.md#individual-enrollment)專案搭配使用的分葉憑證，必須將 [**主體名稱**] 設定為個別註冊專案的 [註冊識別碼]。 與[註冊群組](./concepts-service.md#enrollment-group)專案搭配使用的分葉憑證應該將 [**主體名稱**] 設為所需的裝置識別碼，以顯示在註冊群組中已驗證裝置的**註冊記錄**中。
+與[個人註冊](./concepts-service.md#individual-enrollment)條目一起使用的葉證書要求必須將**主題名稱**設置為個人註冊條目的註冊 ID。 與[註冊組](./concepts-service.md#enrollment-group)條目一起使用的葉證書應將**主題名稱**設置為所需的裝置識別碼，該 ID 將顯示在註冊組中已驗證設備的**註冊記錄中**。
 
 若要深入了解，請參閱[驗證以 X.509 CA 憑證簽署的裝置](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 
@@ -97,10 +97,10 @@ TPM 證明是以 nonce 挑戰為基礎，會使用簽署和儲存根金鑰來出
 
 這項機制和憑證鏈結的階層式結構提供功能強大具彈性的方式，讓您可以控制個別裝置以及裝置群組的存取。 例如，假設有五個裝置具有下列憑證鏈結： 
 
-- 裝置 1：根憑證 -> 憑證 A -> 裝置 1 憑證
-- 裝置 2：根憑證 -> 憑證 A -> 裝置 2 憑證
-- 裝置 3：根憑證 -> 憑證 A -> 裝置 3 憑證
-- 裝置 4：根憑證 -> 憑證 B -> 裝置 4 憑證
-- 裝置 5：根憑證 -> 憑證 B -> 裝置 5 憑證
+- 裝置 1**：根憑證 -> 憑證 A -> 裝置 1 憑證
+- 裝置 2**：根憑證 -> 憑證 A -> 裝置 2 憑證
+- 裝置 3**：根憑證 -> 憑證 A -> 裝置 3 憑證
+- 裝置 4**：根憑證 -> 憑證 B -> 裝置 4 憑證
+- 裝置 5**：根憑證 -> 憑證 B -> 裝置 5 憑證
 
-一開始，您可以為根憑證建立單一已啟用群組註冊項目，以啟用所有五個裝置的存取。 如果憑證 B 稍後洩露，您可以為憑證 B 建立已停用註冊群組項目，以防止裝置 4 和裝置 5 註冊。 如果稍後裝置 3 也遭到入侵，您可以針對其憑證建立已停用個別註冊項目。 這樣會撤銷裝置 3 的存取權，但是仍然允許裝置 1 和裝置 2 註冊。
+一開始，您可以為根憑證建立單一已啟用群組註冊項目，以啟用所有五個裝置的存取。 如果憑證 B 稍後洩露，您可以為憑證 B 建立已停用註冊群組項目，以防止裝置 4** 和裝置 5** 註冊。 如果稍後裝置 3** 也遭到入侵，您可以針對其憑證建立已停用個別註冊項目。 這樣會撤銷裝置 3** 的存取權，但是仍然允許裝置 1** 和裝置 2** 註冊。

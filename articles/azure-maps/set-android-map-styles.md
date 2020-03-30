@@ -1,33 +1,33 @@
 ---
-title: 使用 Azure 地圖服務 Android SDK 來設定地圖樣式 |Microsoft Azure 對應
-description: 在本文中，您將瞭解 Android SDK 的 Microsoft Azure Maps 樣式相關功能。
-author: farah-alyasari
-ms.author: v-faalya
+title: 使用 Azure 地圖 Android SDK 設置地圖樣式*微軟 Azure 地圖
+description: 在本文中，您將瞭解 Android SDK 的 Microsoft Azure 地圖樣式相關功能。
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334360"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 設定地圖樣式
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>使用 Azure 地圖 Android SDK 設置地圖樣式
 
-本文說明使用 Azure 地圖服務 Android SDK 設定地圖樣式的兩種方式。 Azure 地圖服務有六種不同的地圖樣式可供選擇。 如需有關支援的地圖樣式的詳細資訊，請參閱[Azure 地圖服務中支援的地圖樣式](./supported-map-styles.md)。
+本文顯示了使用 Azure 地圖 Android SDK 設置地圖樣式的兩種方法。 Azure 地圖有六種不同的地圖樣式可供選擇。 有關支援的地圖樣式的詳細資訊，請參閱[Azure 地圖 中支援地圖樣式](./supported-map-styles.md)。
 
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
+要完成本文中的過程，您需要安裝[Azure 地圖 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)來載入地圖。
 
 
-## <a name="set-map-style-in-the-layout"></a>設定版面配置中的地圖樣式
+## <a name="set-map-style-in-the-layout"></a>在佈局中設置地圖樣式
 
-您可以在活動類別的版面配置檔案中設定地圖樣式。 編輯**res > layout > activity_main .xml**，使其看起來如下所示：
+您可以在活動類的佈局檔中設置地圖樣式。 **>activity_main.xml 編輯>佈局**，因此它看起來像下面的佈局：
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +51,15 @@ ms.locfileid: "77209574"
 </FrameLayout>
 ```
 
-上述 `mapcontrol_style` 屬性會將地圖樣式設為**grayscale_dark**。 
+上面`mapcontrol_style`的屬性將地圖樣式設置為**grayscale_dark**。 
 
 <center>
 
-![樣式-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![風格-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>設定 activity 類別中的地圖樣式
+## <a name="set-map-style-in-the-activity-class"></a>在活動類中設置地圖樣式
 
-地圖樣式可以在 activity 類別中設定。 將下列程式碼片段複製到 `MainActivity.java` 類別的**onCreate （）** 方法中。 這段程式碼會將地圖樣式設定為**satellite_road_labels**。
+可以在活動類中設置地圖樣式。 將以下程式碼片段複製到類`MainActivity.java`的**onCreate（）** 方法中。 此代碼將地圖樣式設置為**satellite_road_labels**。
 
 ```Java
 mapControl.onReady(map -> {
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![樣式-衛星道路-標籤](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![風格衛星道路標籤](./media/set-android-map-styles/satellite-road-labels.png)</center>

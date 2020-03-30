@@ -1,19 +1,18 @@
 ---
-title: Azure Marketplace 的見解頁面
-description: Azure Marketplace Cloud Partner 入口網站中的 [深入解析] 頁面。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 應用商店的見解頁
+description: Azure 應用商店雲合作夥伴門戶中的見解頁面概述。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8002d67ebd6dbeb70282bbbae84b115a778cffaf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288864"
 ---
 # <a name="insights-page"></a>見解頁面
 
@@ -22,7 +21,7 @@ ms.locfileid: "73821513"
 
 |  **儀表板**    |  **顯示的內容**               |
 |  -------------    |  ---------------------               |
-| **總結**       | 摘要說明發行者供應項目之市集活動的圖表、趨勢和彙總資料值 |
+| **摘要**       | 摘要說明發行者供應項目之市集活動的圖表、趨勢和彙總資料值 |
 | **支付**        | 以圖形和可下載格式顯示的支付和相關交易 |
 | **訂單和使用量** | 以圖形和可下載格式顯示的訂單和使用量資訊 |
 | **客戶**      | 客戶資訊，包括購買的設定檔 |

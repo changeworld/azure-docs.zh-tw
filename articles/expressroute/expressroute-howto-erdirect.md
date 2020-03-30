@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute：設定 ExpressRoute Direct
-description: 此頁面可協助您設定 ExpressRoute Direct。
+title: Azure 快速路由：直接配置快速路由
+description: 此頁面可説明您配置快速路由直接。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031607"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>如何設定 ExpressRoute Direct
+# <a name="how-to-configure-expressroute-direct"></a>如何配置快速路由直接
 
 ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位置，直接連線至 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>建立資源
+## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 
 1. 登入 Azure 並選取訂用帳戶。 ExpressRoute Direct 資源和 ExpressRoute 線路必須位於相同的訂用帳戶中。
 
@@ -28,7 +28,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. 將您的訂用帳戶重新註冊至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api。
+2. 重新註冊您的訂閱到 Microsoft.Network 以訪問快速路由埠定位和快速路由埠 API。
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
@@ -39,7 +39,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Get-AzExpressRoutePortsLocation
    ```
 
-   **範例輸出**
+   **示例輸出**
   
    ```powershell
    Name                : Equinix-Ashburn-DC2
@@ -72,7 +72,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
    ```
 
-   **範例輸出**
+   **示例輸出**
 
    ```powershell
    Name                : Equinix-San-Jose-SV1
@@ -106,7 +106,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    > 封裝屬性也可以設定為 Dot1Q。 
    >
 
-   **範例輸出︰**
+   **輸出示例：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -155,7 +155,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Circuits                   : []
    ```
 
-## <a name="state"></a>變更連結的系統管理狀態
+## <a name="change-admin-state-of-links"></a><a name="state"></a>變更連結的系統管理狀態
 
   此程序應用於進行第 1 層測試，確保每個交叉連線都已在每個主要和次要路由器中正確修補。
 1. 取得 ExpressRoute Direct 詳細資料。
@@ -174,7 +174,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **範例輸出︰**
+   **輸出示例：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -225,15 +225,15 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
 
    使用與 `AdminState = "Disabled"` 相同的程序來關閉連接埠。
 
-## <a name="circuit"></a>建立線路
+## <a name="create-a-circuit"></a><a name="circuit"></a>建立線路
 
 根據預設，您可以在 ExpressRoute Direct 資源所在的訂用帳戶中建立 10 個線路。 支援人員可以增加此數目。 您則負責追蹤已佈建和已使用的頻寬。 已佈建的頻寬是 ExpressRoute Direct 資源上所有線路的頻寬總和，而已使用的頻寬則是基礎實體介面的實際使用量。
 
 ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻寬。 這些是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是 Local、Standard 或 Premium。
+**SkuTier**可以是本地、標準版或高級版。
 
-只有在 ExpressRoute Direct 不支援**SkuFamily**時，才必須 MeteredData 為無限制。
+**SkuFamily**必須僅按流量計費資料，因為 ExpressRoute Direct 不支援無限制的資料。
 
 在 ExpressRoute Direct 資源上建立線路。
 
@@ -243,7 +243,7 @@ ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻
 
   其他頻寬包括：5.0、10.0 和 40.0
 
-  **範例輸出︰**
+  **輸出示例：**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -277,4 +277,4 @@ ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 ExpressRoute Direct 的詳細資訊，請參閱[概觀](expressroute-erdirect-about.md)。
+有關快速路由直接的詳細資訊，請參閱[概述](expressroute-erdirect-about.md)。

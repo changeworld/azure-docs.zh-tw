@@ -1,17 +1,17 @@
 ---
-title: 重新開機伺服器-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
+title: 重新開機伺服器 - Azure 門戶 - MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534706"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>使用 Azure 入口網站重新啟動適用於 MariaDB 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
@@ -20,9 +20,9 @@ ms.locfileid: "74769416"
 
 完成重新啟動所需的時間取決於 MariaDB 復原程序。 若要減少重新啟動時間，建議您先盡量減少伺服器上發生的活動數量，再進行重新啟動。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
-- [適用於 MariaDB 的 Azure 資料庫伺服器](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [MariaDB 伺服器的 Azure 資料庫](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>執行伺服器重新啟動
 
@@ -30,11 +30,11 @@ ms.locfileid: "74769416"
 
 1. 在 Azure 入口網站中，選取適用於 MariaDB 的 Azure 資料庫伺服器。
 
-2. 在伺服器 [概觀] 頁面的工具列中，按一下 [重新啟動]。
+2. 在伺服器 [概觀]**** 頁面的工具列中，按一下 [重新啟動]****。
 
    ![適用於 MariaDB 的 Azure 資料庫 - 概觀 - 重新啟動按鈕](./media/howto-restart-server-portal/2-server.png)
 
-3. 按一下 [是] 以確認要重新啟動伺服器。
+3. 按一下 [是]**** 以確認要重新啟動伺服器。
 
    ![適用於 MariaDB 的 Azure 資料庫 -重新啟動確認](./media/howto-restart-server-portal/3-restart-confirm.png)
 
@@ -48,4 +48,4 @@ ms.locfileid: "74769416"
 
 ## <a name="next-steps"></a>後續步驟
 
-[快速入門：使用 Azure 入口網站建立適用於 MariaDB 的 Azure 資料庫伺服器](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[快速入門：使用 Azure 門戶為 MariaDB 伺服器創建 Azure 資料庫](./quickstart-create-mariadb-server-database-using-azure-portal.md)

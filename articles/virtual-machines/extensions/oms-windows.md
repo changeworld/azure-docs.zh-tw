@@ -14,49 +14,51 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: a0b5f45ba993033a9f56ee6b078193677b1c5aad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530983"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>適用於 Windows 的 Log Analytics 虛擬機器擴充功能
 
-Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
+Azure 監視器日誌提供跨雲和本地資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
-如需有關支援的 Windows 作業系統的詳細資訊，請參閱[Log Analytics 代理程式總覽](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)一文。
+有關受支援的 Windows 作業系統的詳細資訊，請參閱[日誌分析代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理程式和 VM 擴充功能版本
-下表提供每個版本之 Windows Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 
+下表提供了每個版本的 Windows 日誌分析 VM 擴展和日誌分析代理包版本的映射。 
 
-| Log Analytics Windows 代理程式套件組合版本 | Log Analytics Windows VM 延伸模組版本 | 發行日期 | 版本資訊 |
+| 日誌分析 Windows 代理包包版本 | 日誌分析 Windows VM 擴展版本 | 發行日期 | 版本資訊 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li></ul> |
-| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 將 MaxExpressionDepth 增加至10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 已新增在進行 proxy 連線時停用預設認證的功能（WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 的支援） </li></ul>|
-| 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要穩定修正 </li></ul> |
-| 10.19.10006 | n/a | 12月2018 | <ul><li> 次要穩定修正 </li></ul> | 
-| 8.0.11136 | n/a | 2018年9月 |  <ul><li> 已新增偵測 VM 移動上資源識別碼變更的支援 </li><li> 已新增使用非延伸模組安裝時的報告資源識別碼支援 </li></ul>| 
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代碼簽名支援</li><li>改進 VM 擴展安裝和管理</li><li>解決 Azure Arc 中用於伺服器集成的 Bug</li><li>為客戶支援添加內置故障排除工具</li><li>添加對其他 Azure 政府區域的支援</li> |
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修復和穩定改進 </li></ul> |
+| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修復和穩定改進 </li><li> 將最大表達深度提高到 10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修復和穩定改進 </li><li> 在建立代理連接時禁用預設憑據（支援WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要穩定修復 </li></ul> |
+| 10.19.10006 | n/a | 2018 年 12 月 | <ul><li> 次要穩定修復 </li></ul> | 
+| 8.0.11136 | n/a | 2018 年 9 月 |  <ul><li> 添加了對在 VM 移動時檢測資源識別碼 更改的支援 </li><li> 添加了使用非擴展安裝時對報告資源識別碼 的支援 </li></ul>| 
 | 8.0.11103 | n/a |  2018 年 4 月 | |
-| 8.0.11081 | 1.0.11081 | 2017年11月 | | 
-| 8.0.11072 | 1.0.11072 | 2017年9月 | |
-| 8.0.11049 | 1.0.11049 | 2017年2月 | |
+| 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
+| 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
+| 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
+
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 
-Azure 資訊安全中心會自動布建 Log Analytics 代理程式，並將它與 Azure 訂用帳戶的預設 Log Analytics 工作區連接。 如果您使用的是 Azure 資訊安全中心，請不要執行此文件中的步驟。 這樣做會覆寫已設定的工作區，並中斷與 Azure 資訊安全中心的連線。
+Azure 安全中心自動提供日誌分析代理，並將其與 Azure 訂閱的預設日誌分析工作區連接。 如果您使用的是 Azure 資訊安全中心，請不要執行此文件中的步驟。 這樣做會覆寫已設定的工作區，並中斷與 Azure 資訊安全中心的連線。
 
 ### <a name="internet-connectivity"></a>網際網路連線
 適用於 Windows 的 Log Analytics 代理程式擴充功能會要求目標虛擬機器連線到網際網路。 
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示 Log Analytics 代理程式擴充功能的結構描述。 此擴充功能需要來自目標 Log Analytics 工作區的工作區識別碼和工作區金鑰。 在 Azure 入口網站中工作區的設定中可找到這些項目。 由於工作區金鑰應視為敏感性資料，因此應儲存在受保護的設定組態中。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意，**workspaceId** 和 **workspaceKey** 區分大小寫。
+下列 JSON 顯示 Log Analytics 代理程式擴充功能的結構描述。 擴展需要目標日誌分析工作區中的工作區 ID 和工作區金鑰。 在 Azure 入口網站中工作區的設定中可找到這些項目。 由於工作區金鑰應視為敏感性資料，因此應儲存在受保護的設定組態中。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意，**workspaceId** 和 **workspaceKey** 區分大小寫。
 
 ```json
 {
@@ -95,14 +97,14 @@ Azure 資訊安全中心會自動布建 Log Analytics 代理程式，並將它�
 \* workspaceId 在 Log Analytics API 中稱為 consumerId。
 
 > [!NOTE]
-> 如需其他屬性，請參閱 Azure [Connect Windows 電腦以 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)。
+> 有關其他屬性，請參閱 Azure[將 Windows 電腦連接到 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)。
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節中詳述的 JSON 結構描述可在部署 Azure Resource Manager 範本期間，在 Azure Resource Manager 範本中用來執行 Log Analytics 代理程式擴充功能。 在 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm) \(英文\) 上可以找到包含 Log Analytics 代理程式 VM 擴充功能的範例範本。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節中詳述的 JSON 結構描述可在部署 Azure Resource Manager 範本期間，在 Azure Resource Manager 範本中用來執行 Log Analytics 代理程式擴充功能。 在[Azure 快速入門庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)上可以找到包含日誌分析代理 VM 擴展的示例範本。 
 
 >[!NOTE]
->當您想要將代理程式設定為向多個工作區報告時，此範本不支援指定多個工作區識別碼和工作區金鑰。 若要將代理程式設定為向多個工作區報告，請參閱[新增或移除工作區](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
+>當您要將代理配置為向多個工作區報告時，該範本不支援指定多個工作區 ID 和工作區金鑰。 要將代理配置為向多個工作區報告，請參閱[添加或刪除工作區](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
 
 虛擬機器擴充功能的 JSON 可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
@@ -196,4 +198,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/forums/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
