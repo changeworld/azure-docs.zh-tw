@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple-在私人雲端上設定 vCenter 身分識別來源
-description: 說明如何設定您的私用雲端 vCenter，以使用 Active Directory 進行驗證，讓 VMware 系統管理員存取 vCenter
+title: Azure VMware 解決方案（按雲簡單 ） - 在私有雲上設置 vCenter 標識源
+description: 描述如何設置私有雲 vCenter 以使用活動目錄進行身份驗證，以便 VMware 管理員訪問 vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,125 +9,125 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564018"
 ---
-# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設定要使用的 vCenter 身分識別來源 Active Directory
+# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設置 vCenter 標識源以使用活動目錄
 
-## <a name="about-vmware-vcenter-identity-sources"></a>關於 VMware vCenter 身分識別來源
+## <a name="about-vmware-vcenter-identity-sources"></a>關於 VMware vCenter 標識源
 
-VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的使用者。  您的 CloudSimple 私人雲端 vCenter 可設定為使用 Active Directory 進行驗證，讓您的 VMware 系統管理員存取 vCenter。 當安裝程式完成時， **cloudowner**使用者可以將使用者從身分識別來源新增至 vCenter。  
+VMware vCenter 支援不同的標識源，用於對訪問 vCenter 的使用者進行身份驗證。  雲簡單私有雲 vCenter 可以設置為使用活動目錄進行身份驗證，以便 VMware 管理員訪問 vCenter。 設置完成後，**雲擁有者**使用者可以將使用者從標識源添加到 vCenter。  
 
-您可以透過下列任何方式來設定您的 Active Directory 網域和網域控制站：
+您可以通過以下任何方式設置活動目錄域和網域控制站：
 
-* Active Directory 在內部部署環境中執行的網域和網域控制站
-* 以 Azure 訂用帳戶中的虛擬機器形式在 Azure 上執行的網域和網域控制站 Active Directory
-* 在您的私人雲端中執行的新 Active Directory 網域和網域控制站
-* Azure Active Directory 服務
+* 在本地運行的活動目錄域和網域控制站
+* 在 Azure 訂閱中作為虛擬機器在 Azure 上運行的活動目錄域和網域控制站
+* 在私有雲中運行的新活動目錄域和網域控制站
+* Azure 活動目錄服務
 
-本指南說明在您的訂用帳戶中設定執行于內部部署或作為虛擬機器之 Active Directory 網域和網域控制站的工作。  如果您想要使用 Azure AD 做為身分識別來源，請參閱[使用 Azure AD 作為 CloudSimple 私用雲端上的 vCenter 身分識別提供者](azure-ad.md)，以取得設定身分識別來源的詳細指示。
+本指南介紹了在訂閱中設置活動目錄域和在本地運行或作為虛擬機器運行的任務。  如果要使用 Azure AD 作為標識源，請參閱[使用 Azure AD 作為雲簡單私有雲上 vCenter 的標識提供程式](azure-ad.md)，以獲取設置標識源的詳細說明。
 
-[新增身分識別來源](#add-an-identity-source-on-vcenter)之前，請暫時[提升您的 vCenter 許可權](escalate-private-cloud-privileges.md)。
+[在添加標識源](#add-an-identity-source-on-vcenter)之前，請暫時[升級 vCenter 許可權](escalate-private-cloud-privileges.md)。
 
 > [!CAUTION]
-> 新使用者必須僅新增至*雲端擁有者群組*、*雲端全域叢集-管理群組*、雲端-全域*存放裝置-* 系統管理群組、雲端-全域*網路-* 系統管理群組或*雲端全域 VM-管理群組*。  新增至系統*管理員*群組的使用者將會自動移除。  只有服務帳戶必須新增至*Administrators*群組，而服務帳戶不能用來登入 VSPHERE web UI。   
+> 新使用者只能添加到*雲擁有者組*、*雲-全球群集-管理員組*、*雲-全球-存儲-管理員組*、*雲-全球-網路-管理員組*或*雲-全球-VM-管理員組*。  添加到*管理員*組的使用者將自動刪除。  只能將服務帳戶添加到*管理員*組，並且不得使用服務帳戶登錄到 vSphere Web UI。   
 
 
-## <a name="identity-source-options"></a>識別來源選項
+## <a name="identity-source-options"></a>標識源選項
 
-* [將內部部署 Active Directory 新增為單一登入身分識別來源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [在私人雲端上設定新的 Active Directory](#set-up-new-active-directory-on-a-private-cloud)
-* [在 Azure 上設定 Active Directory](#set-up-active-directory-on-azure)
+* [將本地活動目錄添加為單個登錄標識源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
+* [在私有雲上設置新的活動目錄](#set-up-new-active-directory-on-a-private-cloud)
+* [在 Azure 上設置活動目錄](#set-up-active-directory-on-azure)
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>將內部部署 Active Directory 新增為單一登入身分識別來源
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>將本地活動目錄添加為單一登入標識源
 
-若要將內部部署 Active Directory 設定為單一登入身分識別來源，您需要：
+要將本地活動目錄設置為單一登入標識源，您需要：
 
-* 從內部部署資料中心到私人雲端的[站對站 VPN](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)連線。
-* 已將內部部署 DNS 伺服器 IP 新增至 vCenter 和平臺服務控制站（PSC）。
+* 從本地資料中心到私有雲的[網站到網站 VPN 連接](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
+* 本地 DNS 伺服器 IP 添加到 vCenter 和平臺服務控制器 （PSC）。
 
-設定 Active Directory 網域時，請使用下表中的資訊。
+設置活動目錄域時，請使用下表中的資訊。
 
-| **選項** | **說明** |
+| **選項** | **描述** |
 |------------|-----------------|
-| **名稱** | 身分識別來源的名稱。 |
-| **使用者的基本 DN** | 使用者的基本辨別名稱。 |
-| **網域名稱** | 網域的 FQDN，例如 example.com。 請勿在此文字方塊中提供 IP 位址。 |
-| **網域別名** | 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
-| **群組的基底 DN** | 群組的基本辨別名稱。 |
-| **主伺服器 URL** | 網域的主域控制站 LDAP 伺服器。<br><br>請使用 `ldap://hostname:port` 或 `ldaps://hostname:port`的格式。 針對 LDAP 連線，埠通常為389，而 LDAPS 連線則為636。 針對 Active Directory 多網域控制站部署，針對 LDAP，埠通常為3268，而針對 LDAPS 則為3269。<br><br>當您在主要或次要 LDAP URL 中使用 `ldaps://` 時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
-| **次要伺服器 URL** | 用於容錯移轉的次要網域控制站 LDAP 伺服器位址。 |
-| **選擇憑證** | 如果您想要將 LDAPS 與您的 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源搭配使用，請在 [URL] 文字方塊中輸入 `ldaps://` 之後，顯示 [選擇憑證] 按鈕。 不需要次要 URL。 |
-| **使用者名稱** | 網域中使用者的識別碼，其中至少具有使用者和群組的基本 DN 的唯讀存取權。 |
-| **密碼** | 使用者名稱所指定的密碼。 |
+| **名稱** | 標識源的名稱。 |
+| **使用者基本 DN** | 使用者的基本可分辨名稱。 |
+| **功能變數名稱** | 例如，域的 FQDN example.com。 請勿在此文字方塊中提供 IP 位址。 |
+| **域別名** | 域 NetBIOS 名稱。 如果使用 SSPI 身份驗證，則將 Active Directory 域的 NetBIOS 名稱添加為標識源的別名。 |
+| **組的基本 DN** | 組的基本可分辨名稱。 |
+| **主伺服器 URL** | 域的網域主控站 LDAP 伺服器。<br><br>使用格式 `ldap://hostname:port` 或 `ldaps://hostname:port`。 對於 LDAP 連接，埠通常為 389，LDAPS 連接為 636。 對於 Active Directory 多網域控制站部署，埠通常為 3268（用於 LDAP）和 3269（用於 LDAPS）。<br><br>當您 `ldaps://` 在主資料庫或輔助 LDAP URL 中使用時，需要為活動目錄伺服器的 LDAPS 終結點建立信任的證書。 |
+| **次要伺服器 URL** | 用於容錯移轉的輔助網域控制站 LDAP 伺服器的位址。 |
+| **選擇憑證** | 如果要將 LDAPS 與活動目錄 LDAP 伺服器或 OpenLDAP 伺服器標識源一起使用，則在 `ldaps://` URL 文字方塊中鍵入後將顯示"選擇證書"按鈕。 不需要輔助 URL。 |
+| **使用者** | 域中使用者 ID，該使用者和組對基本 DN 具有最少的唯讀存取權限。 |
+| **密碼** | 由使用者名指定的使用者的密碼。 |
 
-當您擁有上表中的資訊時，您可以將內部部署 Active Directory 新增為 vCenter 上的單一登入身分識別來源。
-
-> [!TIP]
-> 您可以在[VMware 檔頁面](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)上找到有關單一登入識別來源的詳細資訊。
-
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>在私人雲端上設定新的 Active Directory
-
-您可以在私人雲端上設定新的 Active Directory 網域，並使用它做為單一登入的身分識別來源。  Active Directory 網域可以是現有 Active Directory 樹系的一部分，或可設定為獨立樹系。
-
-### <a name="new-active-directory-forest-and-domain"></a>新增 Active Directory 樹系和網域
-
-若要設定新的 Active Directory 樹系和網域，您需要：
-
-* 一或多部執行 Microsoft Windows Server 的虛擬機器，做為新 Active Directory 樹系和網域的網域控制站。
-* 一或多部執行 DNS 服務以進行名稱解析的虛擬機器。
-
-如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 樹](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)系。
+在上表中具有資訊時，可以將本地活動目錄添加為 vCenter 上的單一登入標識源。
 
 > [!TIP]
-> 如需服務的高可用性，建議您設定多個網域控制站和 DNS 伺服器。
+> 您可以在[VMware 文檔頁面上](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)找到有關單一登入標識源的詳細資訊。
 
-設定 Active Directory 樹系和網域之後，您可以[在 vCenter 上](#add-an-identity-source-on-vcenter)為新 Active Directory 新增身分識別來源。
+## <a name="set-up-new-active-directory-on-a-private-cloud"></a>在私有雲上設置新的活動目錄
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>現有 Active Directory 樹系中的新 Active Directory 網域
+您可以在私有雲上設置新的活動目錄域，並將其用作單一登入的標識源。  活動目錄域可以是現有活動目錄林的一部分，也可以設置為獨立林。
 
-若要在現有的 Active Directory 樹系中設定新的 Active Directory 網域，您需要：
+### <a name="new-active-directory-forest-and-domain"></a>新的活動目錄林和域
 
-* Active Directory 樹系位置的站對站 VPN 連線。
-* DNS 伺服器，以解析現有 Active Directory 樹系的名稱。
+要設置新的活動目錄林和域，您需要：
 
-如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 的子域或樹狀目錄網域](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
+* 運行 Microsoft Windows 伺服器的一個或多個虛擬機器用作新活動目錄林和域的網域控制站。
+* 運行 DNS 服務的一個或多個虛擬機器以進行名稱解析。
 
-設定 Active Directory 網域之後，您可以[在 vCenter 上](#add-an-identity-source-on-vcenter)為新 Active Directory 新增身分識別來源。
+有關詳細步驟[，請參閱安裝新的 Windows 伺服器 2012 活動目錄林](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)。
 
-## <a name="set-up-active-directory-on-azure"></a>在 Azure 上設定 Active Directory
+> [!TIP]
+> 對於高可用性服務，我們建議設置多個網域控制站和 DNS 伺服器。
 
-在 Azure 上執行 Active Directory 類似于在內部部署環境中執行的 Active Directory。  若要將在 Azure 上執行的 Active Directory 設定為 vCenter 上的單一登入身分識別來源，vCenter server 和 PSC 必須能夠與 Active Directory 服務執行所在的 Azure 虛擬網路具有網路連線能力。  您可以使用 azure 虛擬網路連線，從執行 Active Directory 服務的 Azure 虛擬網路中[使用 ExpressRoute](azure-expressroute-connection.md)建立此連線，以 CloudSimple 私人雲端。
+設置活動目錄林和域後，可以在 vCenter 上為新的活動目錄[添加標識源](#add-an-identity-source-on-vcenter)。
 
-建立網路連線之後，請依照[將內部部署 Active Directory 新增為單一登入身分識別來源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)中的步驟，將它新增為身分識別來源。  
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>現有活動目錄林中的新活動目錄域
 
-## <a name="add-an-identity-source-on-vcenter"></a>在 vCenter 上新增身分識別來源
+要在現有活動目錄林中設置新的活動目錄域，您需要：
 
-1. [提升](escalate-private-cloud-privileges.md)私人雲端上的許可權。
+* 網站到網站 VPN 連接到您的活動目錄林位置。
+* DNS 伺服器解析現有活動目錄林的名稱。
 
-2. 登入私人雲端的 vCenter。
+有關詳細步驟[，請參閱安裝新的 Windows 伺服器 2012 活動目錄子目錄或樹域](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
 
-3. 選取 [**首頁] > [管理**]。
+設置活動目錄域後，可以在 vCenter 上為新的活動目錄[添加標識源](#add-an-identity-source-on-vcenter)。
+
+## <a name="set-up-active-directory-on-azure"></a>在 Azure 上設置活動目錄
+
+在 Azure 上運行的活動目錄類似于在本地運行的活動目錄。  要將在 Azure 上運行的活動目錄設置為 vCenter 上的單一登入標識源，vCenter 伺服器和 PSC 必須具有與運行活動目錄服務的 Azure 虛擬網路的網路連接。  您可以使用[Azure 虛擬網路連接建立此連接，使用](azure-expressroute-connection.md)來自 Azure 虛擬網路的 ExpressRoute，其中 Active 目錄服務運行到雲簡單私有雲。
+
+建立網路連接後，按照[將本地活動目錄中的步驟添加為單一登入標識源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)，將其添加為標識源。  
+
+## <a name="add-an-identity-source-on-vcenter"></a>在 vCenter 上添加標識源
+
+1. [升級](escalate-private-cloud-privileges.md)私有雲上的許可權。
+
+2. 登錄到私有雲的 vCenter。
+
+3. 選擇**家庭>管理**。
 
     ![系統管理](media/OnPremAD01.png)
 
-4. 選取 **單一登入 >** 設定。
+4. 選擇 **"配置>上的單一符號**。
 
     ![單一登入](media/OnPremAD02.png)
 
-5. 開啟 身分**識別來源** 索引標籤，然後按一下  **+** 加入新的身分識別來源。
+5. 打開 **"標識源**"選項卡，**+** 然後按一下以添加新標識源。
 
-    ![身分識別來源](media/OnPremAD03.png)
+    ![標識源](media/OnPremAD03.png)
 
-6. 選取 [ **Active Directory] 做為 LDAP 伺服器**，然後按 **[下一步]** 。
+6. 選擇**活動目錄作為 LDAP 伺服器**，然後按一下 **"下一步**"。
 
     ![Active Directory](media/OnPremAD04.png)
 
-7. 指定環境的身分識別來源參數，然後按 **[下一步]** 。
+7. 指定環境的標識源參數，然後按一下 **"下一步**"。
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. 檢查設定，然後按一下 **[完成]** 。
+8. 查看設置並按一下 **"完成**"。

@@ -1,6 +1,6 @@
 ---
 title: 物聯網 (IoT) 安全性最佳做法
-description: 保護您的 IoT 資料和基礎結構的最佳作法
+description: 保護 IoT 資料和基礎架構的最佳做法
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: 61ddad58a9f61589aae137fb66ad75b37a0cbbe9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931165"
 ---
 # <a name="security-best-practices-for-internet-of-things-iot"></a>物聯網 (IoT) 的安全性最佳做法

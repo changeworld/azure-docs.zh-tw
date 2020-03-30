@@ -1,124 +1,120 @@
 ---
 title: Azure Data Lake Storage Gen2 的已知問題 | Microsoft Docs
-description: 瞭解 Azure Data Lake Storage Gen2 的限制和已知問題。
+description: 瞭解 Azure 資料存儲第 2 代的限制和已知問題。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061518"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
-本文說明 Azure Data Lake Storage Gen2 的限制和已知問題。
+本文介紹了 Azure 資料存儲第 2 代的限制和已知問題。
 
-## <a name="supported-blob-storage-features"></a>支援的 Blob 儲存體功能
+## <a name="supported-blob-storage-features"></a>支援的 Blob 存儲功能
 
-已增加的 Blob 儲存體功能數目現在可與具有階層式命名空間的帳戶搭配使用。 如需完整清單，請參閱[Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md)。
+越來越多的 Blob 存儲功能現在使用具有階層命名空間的帳戶。 有關完整清單，請參閱[Azure 資料湖存儲第 2 代 中可用的 Blob 存儲功能](data-lake-storage-supported-blob-storage-features.md)。
 
-## <a name="supported-azure-service-integrations"></a>支援的 Azure 服務整合
+## <a name="supported-azure-service-integrations"></a>支援的 Azure 服務集成
 
-Data Lake Storage gen2 支援數個 Azure 服務，可用於內嵌資料、執行分析，以及建立視覺表示法。 如需支援的 Azure 服務清單，請參閱[支援 Azure Data Lake Storage Gen2 的 azure 服務](data-lake-storage-supported-azure-services.md)。
+Data Lake Storage gen2 支援數個 Azure 服務，可用於內嵌資料、執行分析，以及建立視覺表示法。 有關受支援的 Azure 服務的清單，請參閱[支援 Azure 資料存儲湖存儲 Gen2 的 Azure 服務](data-lake-storage-supported-azure-services.md)。
 
-請參閱[支援 Azure Data Lake Storage Gen2 的 Azure 服務](data-lake-storage-supported-azure-services.md)。
+請參閱[支援 Azure 資料存儲第 2 代](data-lake-storage-supported-azure-services.md)的 Azure 服務。
 
 ## <a name="supported-open-source-platforms"></a>支援的開放原始碼平台
 
-數個開放原始碼平台支援 Data Lake Storage Gen2。 如需完整清單，請參閱[支援 Azure Data Lake Storage Gen2 的開放原始碼平臺](data-lake-storage-supported-open-source-platforms.md)。
+數個開放原始碼平台支援 Data Lake Storage Gen2。 有關完整清單，請參閱[支援 Azure 資料存儲第 2 代 的開源平臺](data-lake-storage-supported-open-source-platforms.md)。
 
-請參閱[支援 Azure Data Lake Storage Gen2 的開放原始碼平臺](data-lake-storage-supported-open-source-platforms.md)。
+請參閱[支援 Azure 資料存儲第 2 代 的開源平臺](data-lake-storage-supported-open-source-platforms.md)。
 
 ## <a name="blob-storage-apis"></a>Blob 儲存體 API
 
-Blob Api 和 Data Lake Storage Gen2 Api 可以在相同的資料上運作。
+Blob API 和資料存儲第 2 代 API 可以對相同的資料進行操作。
 
-本節說明使用 blob Api 和 Data Lake Storage Gen2 Api 來操作相同資料的問題和限制。
+本節介紹使用 blob API 和資料存儲存儲 Gen2 API 對同一資料進行操作的問題和限制。
 
-* 您無法同時使用 Blob Api 和 Data Lake Storage Api 來寫入相同的檔案實例。 如果您使用 Data Lake Storage Gen2 Api 來寫入檔案，則對[Get 區塊清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list)blob API 的呼叫將不會顯示該檔案的區塊。 您可以使用 Data Lake Storage Gen2 Api 或 Blob Api 來覆寫檔案。 這不會影響檔案屬性。
+* 不能同時使用 Blob API 和資料湖存儲 API 寫入檔的同一實例。 如果使用 Data Lake 存儲 Gen2 API 寫入檔，則對[獲取阻止清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list)blob API 的調用將看不到該檔的塊。 您可以使用資料湖存儲 Gen2 API 或 Blob API 覆蓋檔。 這不會影響檔案屬性。
 
-* 當您使用[列出 blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs)作業但未指定分隔符號時，結果會包含目錄和 blob。 如果您選擇使用分隔符號，請只使用正斜線（`/`）。 這是唯一支援的分隔符號。
+* 使用[清單 Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs)操作而不指定分隔符號時，結果將同時包括目錄和 Blob。 如果選擇使用分隔符號，則僅使用正向斜杠 （）。`/` 這是唯一受支援的分隔符號。
 
-* 如果您使用「[刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API」來刪除目錄，則只有當該目錄是空的時，才會將它刪除。 這表示您無法以遞迴方式使用 Blob API 刪除目錄。
+* 如果使用[刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 刪除目錄，則僅當該目錄為空時才會刪除該目錄。 這意味著您不能遞迴使用 Blob API 刪除目錄。
 
-不支援這些 Blob REST Api：
+不支援這些 Blob REST API：
 
-* [Put Blob （頁面）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [放置 Blob（頁）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page)
 * [取得頁面範圍](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [增量複製 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [從 URL 放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put Blob （Append）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [從 URL 中放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [放置 Blob（追加）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [從 URL 附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [URL 中的追加塊](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-具有階層式命名空間的帳戶不支援非受控 VM 磁片。 如果您想要在儲存體帳戶上啟用階層式命名空間，請將非受控 VM 磁片放入未啟用階層命名空間功能的儲存體帳戶。
+具有階層命名空間的帳戶不支援非託管 VM 磁片。 如果要在存儲帳戶上啟用階層命名空間，則將非託管 VM 磁片放入未啟用階層命名空間功能的存儲帳戶中。
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Sdk 中的檔案系統支援
+## <a name="file-system-support-in-sdks"></a>SDK 中的檔案系統支援
 
-- [.Net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)和[Python](data-lake-storage-directory-file-acl-python.md)，以及[JavaScript](data-lake-storage-directory-file-acl-javascript.md)和支援均為公開預覽狀態。 目前不支援其他 Sdk。
-- 取得和設定 ACL 作業目前不是遞迴的。
+獲取和設置 ACL 操作當前不是遞迴的。
 
 ## <a name="file-system-support-in-powershell-and-azure-cli"></a>PowerShell 和 Azure CLI 中的檔案系統支援
 
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)和[Azure CLI](data-lake-storage-directory-file-acl-cli.md)支援現供公開預覽。
-- 取得和設定 ACL 作業目前不是遞迴的。
+- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)和[Azure CLI](data-lake-storage-directory-file-acl-cli.md)支援處於公共預覽版中。
+- 獲取和設置 ACL 操作當前不是遞迴的。
 
 ## <a name="lifecycle-management-policies"></a>生命週期管理原則
 
-* 尚不支援刪除 blob 快照集。  
+* 尚不支援刪除 Blob 快照。  
 
-* 目前有一些 bug 會影響生命週期管理原則和封存存取層。 
+## <a name="archive-tier"></a>存檔層
 
-## <a name="diagnostic-logs"></a>診斷記錄
+當前存在影響存檔訪問層的錯誤。
 
-Azure 儲存體總管 1.10. x 無法用於查看診斷記錄。 若要查看記錄，請使用 AzCopy 或 Sdk。
 
 ## <a name="blobfuse"></a>Blobfuse
 
 不支援 Blobfuse。
 
-
-
 <a id="known-issues-tools" />
 
 ## <a name="azcopy"></a>AzCopy
 
-只使用最新版本的 AzCopy （[AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)）。 不支援舊版的 AzCopy （例如 AzCopy 8.1）。
+僅使用最新版本的 AzCopy （[AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)）。不支援早期版本的 AzCopy，如 AzCopy v8.1。
 
 <a id="storage-explorer" />
 
 ## <a name="azure-storage-explorer"></a>Azure 儲存體總管
 
-僅使用  或更高版本 `1.6.0`。目前有一個會影響版本 `1.11.0` 的儲存體 bug，在某些情況下可能會導致驗證錯誤。 即將推出儲存體錯誤的修正程式，但作為因應措施，建議您使用 [免費下載](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes) 提供的版本 `1.10.x`。 `1.10.x`的  不會受到儲存體 bug 的影響。
+僅使用版本 `1.6.0` 或更高版本。
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Azure 入口網站中的儲存體總管
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure 門戶中的存儲資源管理器
 
-尚不支援 Acl。
+尚未支援 ACL。
 
 <a id="third-party-apps" />
 
-## <a name="thirdpartyapplications"></a>協力廠商應用程式
+## <a name="thirdpartyapplications"></a>協力廠商申請
 
-使用 REST Api 來工作的協力廠商應用程式，如果您將其與呼叫 Blob Api 的 Data Lake Storage Gen2 應用程式搭配使用，將會繼續工作。
+如果使用 REST API 工作的協力廠商應用程式，如果將其與調用 Blob API 的資料存儲存儲 Gen2 應用程式一起使用，則它們可能會正常工作。
 
-## <a name="access-control-lists-acl-and-anonymous-read-access"></a>存取控制清單（ACL）和匿名讀取權限
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>存取控制清單 （ACL） 和匿名讀取存取
 
-如果已授與容器的[匿名讀取權限](storage-manage-access-to-resources.md)，則 acl 不會影響該容器或該容器中的檔案。
+如果已授予對容器的[匿名讀取存取許可權](storage-manage-access-to-resources.md)，則 ACL 對該容器或該容器中的檔沒有影響。
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure 儲存體 Blob （WASB）驅動程式
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure 存儲 Blob （WASB） 驅動程式
 
-目前，與使用 WASB 驅動程式相關聯的幾個問題，以及具有階層式命名空間的帳戶。 我們建議您在工作負載中使用[Azure Blob 檔案系統（ABFS）](data-lake-storage-abfs-driver.md)驅動程式。 
+目前，與使用 WASB 驅動程式以及具有階層命名空間的帳戶相關的幾個問題。 我們建議您在工作負荷中使用[Azure Blob 檔案系統 （ABFS）](data-lake-storage-abfs-driver.md)驅動程式。 
 
 
 

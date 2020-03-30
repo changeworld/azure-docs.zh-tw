@@ -1,7 +1,7 @@
 ---
-title: 資料內嵌選項
+title: 資料引入選項
 titleSuffix: Azure Machine Learning
-description: 瞭解用來定型機器學習模型的資料內嵌選項。
+description: 瞭解用於訓練機器學習模型的資料引入選項。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086885"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning 中的資料內嵌
+# <a name="data-ingestion-in-azure-machine-learning"></a>Azure 機器學習中的資料引入
 
-在本文中，您將瞭解 Azure Machine Learning 所提供的下列資料內嵌選項的優缺點。 
+在本文中，您將瞭解 Azure 機器學習中可用的以下資料引入選項的優缺點。 
 
-1. [Azure Data Factory](#use-azure-data-factory)管線
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+1. [Azure 資料工廠](#use-azure-data-factory)管道
+2. [Azure 機器學習 Python SDK](#use-the-python-sdk)
 
-資料內嵌是從一或多個來源解壓縮非結構化資料，然後準備好定型機器學習模型的程式。 這也需要很長的時間，特別是手動完成時，如果您有多個來源的大量資料，則更是如此。 自動化此工作可釋出資源，並確保您的模型使用最新且適用的資料。
+資料引入是從一個或多個來源提取非結構化資料，然後為訓練機器學習模型做好準備的過程。 這還非常耗時，尤其是在手動完成時，以及如果您有來自多個源的大量資料。 自動化此工作可釋放資源，並確保模型使用最新和適用的資料。
 
-Azure Data Factory （ADF）是特別為了解壓縮、載入和轉換資料而建立的，不過，Python SDK 可讓您針對基本資料內嵌工作開發自訂程式碼解決方案。 如果兩者都不符合您的需求，您也可以同時使用 ADF 和 Python SDK 來建立整體資料內嵌工作流程，以滿足您的需求。 
+Azure 資料工廠 （ADF） 是專門為提取、載入和轉換資料而構建的，但是 Python SDK 允許您為基本資料引入任務開發自訂代碼解決方案。 如果這兩者都不是您需要的，您也可以一起使用 ADF 和 Python SDK 來創建滿足您需求的整體資料引入工作流。 
 
 ## <a name="use-azure-data-factory"></a>使用 Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)為數據內嵌管線的資料來源監視和觸發程式提供原生支援。  
+[Azure 資料工廠](https://docs.microsoft.com/azure/data-factory/introduction)為數據引入管道的資料來源監視和觸發器提供本機支援。  
 
-下表摘要說明使用資料內嵌工作流程 Azure Data Factory 的優缺點。
+下表總結了使用 Azure 資料工廠進行資料引入工作流的優缺點。
 
 |優點|缺點
 ---|---
-特別建立來解壓縮、載入和轉換資料。|目前提供一組有限的 Azure Data Factory 管線工作 
-可讓您建立資料導向的工作流程，以大規模協調資料移動和轉換。|結構和維護的成本高昂。 如需詳細資訊，請參閱 Azure Data Factory 的[定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)。
-與[Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)和[Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)等各種 Azure 工具整合 | 不會以原生方式執行腳本，而是依賴個別的計算來執行腳本 
-原本就支援資料來源觸發資料內嵌| 
-資料準備和模型定型程式是分開的。|
-Azure Data Factory 資料流程的內嵌資料歷程功能|
-為非腳本方法提供低程式碼體驗[使用者介面](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) |
+專為提取、載入和轉換資料而構建。|當前提供有限的 Azure 資料工廠管道任務集 
+允許您創建資料驅動的工作流，以便大規模協調資料移動和轉換。|建造和維護費用高昂。 有關詳細資訊，請參閱 Azure 資料工廠的[定價頁](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)。
+與[Azure 資料塊](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)和 Azure[函數](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)等各種 Azure 工具集成 | 不本機運行腳本，而是依賴于腳本運行的單獨計算 
+本機支援資料來源觸發的資料引入| 
+資料準備和模型培訓過程是分開的。|
+Azure 資料工廠資料流程的嵌入式資料沿線功能|
+[為非](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)腳本方法提供低代碼體驗使用者介面 |
 
-這些步驟和下圖說明 Azure Data Factory 的資料內嵌工作流程。
+這些步驟和下圖說明瞭 Azure 資料工廠的資料引入工作流。
 
-1. 從來源提取資料
-1. 將資料轉換並儲存至輸出 blob 容器，做為 Azure Machine Learning 的資料儲存體
-1. 儲存備妥的資料之後，Azure Data Factory 管線會叫用定型 Machine Learning 管線，以接收準備好用於模型定型的資料。
+1. 從源中提取資料
+1. 將資料轉換並保存到輸出 Blob 容器，該容器用作 Azure 機器學習的資料存儲
+1. 存儲準備好的資料後，Azure 資料工廠管道將調用一個培訓機器學習管道，該管道接收用於模型訓練的已準備好資料
 
 
-    ![ADF 資料內嵌](media/concept-data-ingestion/data-ingest-option-one.svg)
+    ![ADF 資料引入](media/concept-data-ingestion/data-ingest-option-one.svg)
     
-瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線。
+瞭解如何使用[Azure 資料工廠](how-to-data-ingest-adf.md)為機器學習構建資料引入管道。
 
 ## <a name="use-the-python-sdk"></a>使用 Python SDK 
 
-使用[PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)，您可以將資料內嵌工作納入 Azure Machine Learning 的[管線](how-to-create-your-first-pipeline.md)步驟中。
+使用[Python SDK，](https://docs.microsoft.com/python/api/overview/azure/ml)可以將資料引入任務合併到 Azure[機器學習管道](how-to-create-your-first-pipeline.md)步驟中。
 
-下表摘要說明使用 SDK 的優缺點，以及用於資料內嵌工作的 ML 管線步驟。
+下表總結了使用 SDK 和 ML 管道步驟執行資料引入任務的優點和缺點。
 
 優點| 缺點
 ---|---
-設定您自己的 Python 腳本 | 原本就不支援觸發資料來源變更。 需要邏輯應用程式或 Azure 函數實現
-做為每個模型定型執行的一部分的資料準備工作|需要開發技能來建立資料內嵌腳本
-支援各種計算目標上的資料準備腳本，包括[Azure Machine Learning 計算](concept-compute-target.md#azure-machine-learning-compute-managed) |未提供用來建立內嵌機制的使用者介面
+配置您自己的 Python 腳本 | 本機不支援資料來源更改觸發。 需要邏輯應用或 Azure 函數實現
+作為每個模型培訓執行的一部分的資料準備|創建資料引入腳本需要開發技能
+支援各種計算目標的資料準備腳本，包括[Azure 機器學習計算](concept-compute-target.md#azure-machine-learning-compute-managed) |不提供用於創建引入機制的使用者介面
 
-在下圖中，Azure Machine Learning 管線包含兩個步驟：資料內嵌和模型定型。 資料內嵌步驟包含可使用 Python 程式庫和 Python SDK 完成的工作，例如從本機/web 來源解壓縮資料，以及進行基本資料轉換，像是遺漏值插補。 訓練步驟接著會使用備妥的資料做為定型腳本的輸入，以將您的機器學習模型定型。 
+在下圖中，Azure 機器學習管道由兩個步驟組成：資料引入和模型培訓。 資料引入步驟包含可以使用 Python 庫和 Python SDK 完成的任務，例如從本地/Web 源中提取資料以及基本資料轉換（如缺少值歸因）。 然後，培訓步驟使用準備好的資料作為訓練腳本的輸入來訓練機器學習模型。 
 
-![Azure 管線 + SDK 資料內嵌](media/concept-data-ingestion/data-ingest-option-two.png)
+![Azure 管道 + SDK 資料引入](media/concept-data-ingestion/data-ingest-option-two.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線
-* 瞭解如何使用[Azure Pipelines](how-to-cicd-data-ingestion.md)來自動化和管理資料內嵌管線的開發週期。
+* 瞭解如何使用[Azure 資料工廠](how-to-data-ingest-adf.md)構建機器學習的資料引入管道
+* 瞭解如何使用[Azure 管道](how-to-cicd-data-ingestion.md)自動管理資料引入管道的開發生命週期。

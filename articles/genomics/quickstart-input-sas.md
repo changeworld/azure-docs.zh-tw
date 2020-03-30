@@ -1,7 +1,7 @@
 ---
-title: 使用共用存取簽章的工作流程
+title: 使用共用訪問簽名的工作流
 titleSuffix: Microsoft Genomics
-description: 本文示範如何使用共用存取簽章（SAS）（而非儲存體帳戶金鑰）將工作流程提交至 Microsoft Genomics 服務。
+description: 本文演示如何使用共用訪問簽名 （SAS） 而不是存儲帳戶金鑰向 Microsoft 基因組服務提交工作流。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248593"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS (而非儲存體帳戶金鑰) 將工作流程提交到 Microsoft Genomics 
 
-本文示範如何使用包含[共用存取簽章（SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)的 config.xml 檔案（而非儲存體帳戶金鑰），將工作流程提交至 Microsoft Genomics 服務。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
+本文演示如何使用包含[共用訪問簽名 （SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存儲帳戶金鑰的 config.txt 檔向 Microsoft 基因組服務提交工作流。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
 
-本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用提供的範例資料成功地提交工作流程，則您已準備好繼續進行本文。 
+本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已成功使用提供的示例資料提交工作流，則可以繼續執行本文。 
 
 ## <a name="what-is-a-sas"></a>什麼是 SAS？
 [共用存取簽章 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 可提供您儲存體帳戶中資源的委派存取。 透過 SAS，您可以對用戶端授與儲存體帳戶中資源的存取權，而不必共用帳戶金鑰。 這是在您應用程式中使用共用存取簽章的重點 - SAS 是共用儲存體資源的安全方式，而不會危害您的帳戶金鑰。
@@ -34,12 +34,12 @@ ms.locfileid: "72248593"
 
 輸入檔案的 SA 應該具有下列屬性：
  - 範圍 (帳戶、容器、blob)：blob
- - 到期：現在起 48 小時
+ - 到期時間：現在起 48 小時
  - 權限：讀取
 
 輸出容器的 SAS 應該具有下列屬性：
  - 範圍 (帳戶、容器、blob)：容器
- - 到期：現在起 48 小時
+ - 到期時間：現在起 48 小時
  - 權限：讀取、寫入、刪除
 
 
@@ -53,10 +53,10 @@ ms.locfileid: "72248593"
 
 輸入檔案的 SAS 應受限於特定輸入檔案 (blob)。 若要建立 SAS 權杖，請遵循[這些指示](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。 建立 SAS 後，會提供包含查詢字串的完整 URL 以及其本身的查詢字串，並可從畫面中加以複製。
 
- ![Genomics SAS 儲存體總管](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS 儲存體總管")
+ ![基因組學SAS存儲資源管理器](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "基因組學SAS存儲資源管理器")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>設定：以程式設計方式建立 SAS
+### <a name="set-up-create-a-sas-programmatically"></a>設置：以程式設計方式創建 SAS
 
 若要使用 Azure 儲存體 SDK 建立 SAS，請參閱數種語言的現有文件 (包括 [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) 和 [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage))。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "72248593"
 ## <a name="add-the-sas-to-the-configtxt-file"></a>將 SAS 新增至 config.txt 檔案
 若要使用 SAS 查詢字串透過 Microsoft Genomics 服務來執行工作流程，可編輯 config.txt 檔案，以從 config.txt 檔案中移除金鑰。 然後，將 SAS 查詢字串 (開頭為`?`) 附加至輸出容器名稱，如下所示。 
 
-![Genomics SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS config")
+![基因組學SAS配置](./media/quickstart-input-sas/genomics-sas-config.png "基因組學SAS配置")
 
 使用 Microsoft Genomics Python 用戶端搭配下列命令來提交工作流程，並將對應的 SAS 查詢字串附加至每個輸入 Blob 名稱：
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>如果將輸入檔案名稱新增至 config.txt 檔案
 或者，可以將雙端 (paired end) 讀取檔案的名稱直接新增至 config.txt 檔案，並如下所示附加 SAS 查詢權杖：
 
-![Genomics SAS config blobnames](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomics SAS config blobnames")
+![基因組學 SAS 配置 blob 名稱](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "基因組學 SAS 配置 blob 名稱")
 
 在此情況下，使用 Microsoft Genomics Python 用戶端搭配下列命令來提交工作流程，並省略 `-b1` 和 `-b2` 命令：
 

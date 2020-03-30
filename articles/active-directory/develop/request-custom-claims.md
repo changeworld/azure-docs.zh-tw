@@ -1,7 +1,7 @@
 ---
-title: 要求自訂宣告（MSAL iOS/macOS） |Azure
+title: 請求自訂聲明 （MSAL iOS/macOS） |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何要求自訂宣告。
+description: 瞭解如何請求自訂聲明。
 services: active-directory
 documentationcenter: ''
 author: mmacy
@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085597"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用適用于 iOS 和 macOS 的 MSAL 要求自訂宣告
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用 MSAL 請求針對 iOS 和 macOS 的自訂聲明
 
-OpenID Connect 可讓您選擇性地要求從使用者資訊端點和/或在識別碼權杖中傳回個別宣告。 宣告要求會以 JSON 物件表示，其中包含要求的宣告清單。 如需詳細資訊，請參閱[OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) 。
+OpenID Connect 允許您選擇從 UserInfo 終結點和/或 ID 權杖中請求返回各個聲明。 聲明請求表示為 JSON 物件，其中包含請求的聲明清單。 有關詳細資訊[，請參閱 OpenID 連接核心 1.0。](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter)
 
-適用于 iOS 和 macOS 的 Microsoft 驗證程式庫（MSAL）可在互動式和無訊息的權杖取得案例中，要求特定的宣告。 它會透過 `claimsRequest` 參數來執行此動作。
+適用于 iOS 和 macOS 的 Microsoft 身份驗證庫 （MSAL） 允許在互動式和靜默權杖獲取方案中請求特定聲明。 它通過`claimsRequest`參數這樣做。
 
-有多個案例需要這麼做。 例如：
+需要這種情況的多種方案。 例如：
 
-- 在您應用程式的標準集外部要求宣告。
-- 要求不能使用應用程式的範圍指定的標準宣告的特定組合。 例如，如果因為遺漏宣告而拒絕存取權杖，應用程式可以使用 MSAL 來要求遺漏的宣告。
+- 在應用程式的標準集之外請求聲明。
+- 請求無法使用應用程式作用域指定的標準聲明的特定組合。 例如，如果訪問權杖因為缺少聲明而被拒絕，則應用程式可以使用 MSAL 請求缺少的聲明。
 
 > [!NOTE]
-> 每當指定了宣告要求時，MSAL 就會略過存取權杖快取。 請務必在需要額外的宣告時才提供 `claimsRequest` 參數（而不是一律在每個 MSAL API 呼叫中提供相同的 `claimsRequest` 參數）。
+> 每當指定聲明請求時，MSAL 都會繞過訪問權杖緩存。 僅當需要其他聲明時（而不是`claimsRequest`在每個 MSAL API 呼叫中始終提供相同的`claimsRequest`參數）時才提供參數非常重要。
 
-可以在 `MSALSilentTokenParameters` 和 `MSALInteractiveTokenParameters`中指定 `claimsRequest`：
+`claimsRequest`可在 和`MSALInteractiveTokenParameters``MSALSilentTokenParameters`中指定 。
 
 ```objc
 /*!
@@ -54,7 +54,7 @@ OpenID Connect 可讓您選擇性地要求從使用者資訊端點和/或在識�
 
 @end
 ```
-`MSALClaimsRequest` 可以從 JSON 宣告要求的 NSString 標記法來進行。 
+`MSALClaimsRequest`可以從 JSON 聲明請求的 NSString 表示形式構造。 
 
 Objective-C：
 
@@ -73,7 +73,7 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 
 
-也可以藉由要求其他特定的宣告來進行修改：
+也可以通過請求其他特定聲明來對其進行修改：
 
 Objective-C：
 
@@ -103,7 +103,7 @@ do {
 
 
 
-`MSALClaimsRequest` 應該在權杖參數中設定，並提供給其中一個 MSAL 權杖取得 Api：
+`MSALClaimsRequest`然後，應在權杖參數中設置，並提供給 MSAL 權杖獲取 API 之一：
 
 Objective-C：
 

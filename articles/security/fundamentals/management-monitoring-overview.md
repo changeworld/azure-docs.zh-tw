@@ -1,5 +1,5 @@
 ---
-title: 管理和監視安全性功能-Microsoft Azure |Microsoft Docs
+title: 管理和監視安全功能 - 微軟 Azure |微軟文檔
 description: 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
 services: security
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162756"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
@@ -40,7 +40,7 @@ ms.locfileid: "73162756"
 
 適用於 Azure 雲端服務和虛擬機器的 Microsoft Antimalware 可讓您針對 PaaS 角色和虛擬機器安裝反惡意程式碼代理程式。 根據 System Center Endpoint Protection，這項功能會將經證實的內部部署安全性技術帶入雲端。
 
-我們也會針對 Azure 平台中 Trend 的 [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) \(英文\) 和 [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) \(英文\) 產品提供深入整合。 Deep Security 是一種防毒解決方案，而 SecureCloud 則是一種加密解決方案。 Deep Security 是透過延伸模組模型部署於 VM 內的。 透過使用 Azure 入口網站 UI 和 PowerShell，您可以選擇在所啟動的新 VM 內或已部署的現有 VM 內使用 Deep Security。
+我們還為 Azure 平臺中的 Trend[深度安全和](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)[安全雲](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)產品提供深度集成。 Deep Security 是一種防毒解決方案，而 SecureCloud 則是一種加密解決方案。 Deep Security 是透過延伸模組模型部署於 VM 內的。 透過使用 Azure 入口網站 UI 和 PowerShell，您可以選擇在所啟動的新 VM 內或已部署的現有 VM 內使用 Deep Security。
 
 Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合，您可以指定想要在 VM 上使用 SEP。 SEP 可以透過 Azure 入口網站安裝在新的 VM 上，或透過 PowerShell 安裝在現有的 VM 上。
 
@@ -100,7 +100,7 @@ Privileged Identity Management 引進了角色的臨時系統管理員或「即�
 * [Azure AD 特殊權限身分識別管理](../../active-directory/privileged-identity-management/pim-configure.md)
 * [開始使用 Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>身分識別保護
 
 Azure AD Identity Protection 提供可疑登入活動和潛在弱點的合併檢視，以協助保護您的企業。 Identity Protection 會根據如下的訊號，來偵測使用者和具特殊權限 (系統管理員) 身分識別的可疑活動：
 
@@ -134,11 +134,11 @@ Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措�
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 
-Intelligent Security Graph 能在 Microsoft 產品及服務中提供即時威脅保護。 它會使用能連結大量威脅情報和安全性資料的進階分析，來提供可強化組織安全性的見解。 Microsoft 會採用進階分析來提供更豐富的見解，這些分析每月可處理 4500 億筆驗證、掃描 4000 億封電子郵件是否有惡意程式碼與網路釣魚，並更新十億部裝置。 這些深入洞悉可以協助您的組織迅速偵測和回應攻擊。
+Intelligent Security Graph 能在 Microsoft 產品及服務中提供即時威脅保護。 它會使用能連結大量威脅情報和安全性資料的進階分析，來提供可強化組織安全性的見解。 Microsoft 會採用進階分析來提供更豐富的見解，這些分析每月可處理 4500 億筆驗證、掃描 4000 億封電子郵件是否有惡意程式碼與網路釣魚，並更新十億部裝置。 這些見解可協助您的組織迅速地偵測並回應攻擊。
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>後續步驟
-瞭解[共用責任模型](shared-responsibility.md)，以及由 Microsoft 處理哪些安全性工作，以及由您處理哪些工作。
+瞭解[共用責任模型](shared-responsibility.md)以及哪些安全任務由 Microsoft 處理，以及哪些任務由您處理。
 
 如需安全性管理的詳細資訊，請參閱 [Azure 的安全性管理](management.md)。

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70842685"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>對 Azure AD Connect 的 SQL 連線問題進行疑難排解
@@ -40,7 +40,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 或安裝l [PackageManagement PowerShell Modules Preview - 2016 年 3 月 (適用於PowerShell 3.0/4.0)](/powershell/module/PackageManagement) 
 
 - **顯示所有命令**：`Get-Command -Module AdSyncTools` 
-- **執行 PowerShell 函式**：`Connect-ADSyncDatabase` (含下列參數)
+- **執行電源殼函數**：`Connect-ADSyncDatabase`具有以下參數
     - 伺服器。 SQL Server 名稱。
     - 執行個體。 (選擇性) SQL Server 執行個體名稱和您想要使用的連接埠號碼 (選擇性)。 請勿指定這個參數使用預設執行個體。
     - 使用者名稱。 (選擇性) 要連線的使用者帳戶。 若留白，將使用目前登入的使用者。 如果您要連線到遠端的 SQL Server，則應是您為 Azure AD Connect 的 SQL 連線能力所建立的自訂服務帳戶。 Azure AD Connect 會使用 Azure AD Connect 同步處理服務帳戶，以驗證遠端的 SQL Server。

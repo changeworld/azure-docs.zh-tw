@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77468757"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
@@ -23,31 +23,31 @@ ms.locfileid: "77468757"
 
 * 從 URL 上傳您的影片 (首選)、
 * 將影片檔案當作要求本文中的位元組陣列傳送、
-* 藉由提供[資產識別碼](https://docs.microsoft.com/azure/media-services/latest/assets-concept)（僅在付費帳戶中支援）來使用現有的 Azure 媒體服務資產。
+* 通過提供[資產 ID（](https://docs.microsoft.com/azure/media-services/latest/assets-concept)僅在付費帳戶中支援）使用現有的 Azure 媒體服務資產。
 
-當您的影片上傳之後，影片索引子（選擇性）會對影片進行編碼（在本文中討論）。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
+上傳視頻後，視頻索引子（可選）對視頻進行編碼（本文中討論）。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
 
-本文說明如何使用下列選項來上傳和編制影片的索引：
+本文演示如何使用以下選項上傳和索引視頻：
 
-* [影片索引子網站](#website) 
-* [影片索引子 Api](#apis)
+* [視頻索引子網站](#website) 
+* [視頻索引子 API](#apis)
 
-## <a name="uploading-considerations-and-limitations"></a>上傳考慮和限制
+## <a name="uploading-considerations-and-limitations"></a>上傳注意事項和限制
  
 - 影片名稱不得超過 80 個字元。
-- 根據 URL 上傳您的影片時（慣用），端點必須使用 TLS 1.2 （或更高版本）來保護。
-- [使用 URL 的上傳大小] 選項限制為 [30GB]。
-- 要求 URL 長度限制為6144個字元，其中查詢字串 URL 長度限制為4096個字元。
-- 使用位元組陣列選項的上傳大小限制為 2 GB。
-- 位元組陣列選項在30分鐘後就會超時。
-- `videoURL` param 中提供的 URL 必須進行編碼。
-- 編制索引媒體服務資產與從 URL 編制索引的限制相同。
-- 影片索引子的最大持續時間限制為單一檔案4小時。
-- URL 必須可供存取（例如公用 URL）。 
+- 根據 URL（首選）上傳視頻時，必須通過 TLS 1.2（或更高版本）保護終結點。
+- URL 選項的上傳大小限制為 30GB。
+- 請求 URL 長度限制為 6144 個字元，其中查詢字串 URL 長度限制為 4096 個字元。
+- 位元組陣列選項的上載大小限制為 2GB。
+- 位元組陣列選項在 30 分鐘後超時。
+- 需要對參數中`videoURL`提供的 URL 進行編碼。
+- 索引媒體服務資產與 URL 索引具有相同的限制。
+- 視頻索引子對於單個檔的最大持續時間限制為 4 小時。
+- URL 需要可訪問（例如公共 URL）。 
 
-    如果它是私人 URL，必須在要求中提供存取權杖。
-- URL 必須指向有效的媒體檔案，而不是網頁，例如 [`www.youtube.com`] 頁面的連結。
-- 在付費帳戶中，每分鐘最多可以上傳50個電影，而且在試用帳戶中，每分鐘最多可有5個電影。
+    如果是專用 URL，則需要在請求中提供訪問權杖。
+- URL 必須指向有效的媒體檔案，而不是指向網頁，例如指向`www.youtube.com`頁面的連結。
+- 在付費帳戶中，您每分鐘最多可以上傳 50 部電影，在試用帳戶中每分鐘最多上傳 5 部電影。
 
 > [!Tip]
 > 建議使用 .NET Framework 4.6.2 版。 或更高版本，因為舊版 .NET Framework 不會預設使用 TLS 1.2。
@@ -58,13 +58,13 @@ ms.locfileid: "77468757"
 
 如需可與影片索引子搭配使用的檔案格式清單，請參閱[輸入容器/檔案格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
-## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用影片索引子網站上傳影片並為其編制索引
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用視頻索引子網站上傳和索引視頻
 
 > [!NOTE]
 > 影片名稱不得超過 80 個字元。
 
 1. 登入 [Video Indexer](https://www.videoindexer.ai/) 網站。
-2. 若要上傳影片，請按 [上傳] 按鈕或連結。
+2. 若要上傳影片，請按 [上傳]**** 按鈕或連結。
 
     ![上傳](./media/video-indexer-get-started/video-indexer-upload.png)
 
@@ -74,9 +74,9 @@ ms.locfileid: "77468757"
 
     Video Indexer 完成分析後，您會收到通知，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
 
-## <a name="a-idapisupload-and-index-with-api"></a>使用 API <a id="apis"/>上傳和編制索引
+## <a name="upload-and-index-with-api"></a><a id="apis"/>使用 API 上載和索引
 
-使用 [[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API]，根據 URL 上傳並編制您的影片索引。 後面的程式碼範例包含批註化的程式碼，說明如何上傳位元組陣列。 
+使用[上傳視頻](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API 根據 URL 上傳視頻並編制索引視頻。 後面的代碼示例包括注釋出代碼，這些代碼演示如何上載位元組陣列。 
 
 ### <a name="configurations-and-params"></a>設定與參數
 
@@ -95,20 +95,20 @@ ms.locfileid: "77468757"
     
         |名稱|描述|
         |---|---|
-        |id|影片識別碼|
+        |id|視頻 ID|
         |state|影片狀態|  
-    - 範例： HTTPs：\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - 示例： HTTPs：\//test.com/notifyme?projectName=MyProject&id=1234abcd&狀態=已處理
 - 在影片中識別到的人員：
   - 屬性
     
       |名稱|描述|
       |---|---|
-      |id| 影片識別碼|
+      |id| 視頻 ID|
       |faceId|影片索引中出現的臉部識別碼|
       |knownPersonId|臉部模型中唯一的個人識別碼|
       |personName|人員名稱|
         
-    - 範例： HTTPs：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 示例： HTTPs：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid_12&已知PersonId_CCA84350-89B7-4262-861C-3CAC796542A5&人名_Inigo_Montoya 
 
 ##### <a name="notes"></a>注意
 
@@ -120,19 +120,19 @@ ms.locfileid: "77468757"
 如果原始或外部錄影包含背景雜訊，請使用此參數。 此參數會用來設定索引編製程序。 您可以指定下列值：
 
 - `AudioOnly` – 只使用音訊 (忽略視訊) 來編製索引及擷取深入解析
-- 僅使用影片來 `VideoOnly` 編制索引及解壓縮見解（忽略音訊）
+- `VideoOnly`- 僅使用視頻進行索引和提取見解（忽略音訊）
 - `Default` – 使用音訊和視訊來編製索引及擷取深入解析
 - `DefaultWithNoiseReduction` – 從音訊及視訊編製索引及擷取深入解析的同時，在音訊串流上套用減少雜訊演算法
 
 > [!NOTE]
-> 影片索引子最多可涵蓋兩個音訊追蹤。 如果檔案中有更多的音訊播放軌，則會將它們視為一個追蹤。<br/>
-如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其編制為 `AudioOnly`。
+> 視頻索引子可覆蓋最多兩個音訊軌道。 如果檔中有更多的音軌，它們將被視為一個軌道。<br/>
+如果要單獨索引軌道，則需要提取相關的音訊檔並將其索引為`AudioOnly`。
 
 價格取決於選取的索引編製選項。  
 
 #### <a name="priority"></a>priority
 
-影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值：**Low (低)** 、**Normal** (一般，預設值) 和 **High (高)** 。
+影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值：**Low (低)**、**Normal** (一般，預設值) 和 **High (高)**。
 
 僅有付費帳戶可支援 **Priority** 參數。
 
@@ -140,7 +140,7 @@ ms.locfileid: "77468757"
 
 上傳您的影片後，影片索引器會選擇性地對影片進行編碼。 然後，繼續進行索引編製並分析影片。 當影片索引器完成分析時，您會收到包含影片識別碼的通知。  
 
-使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中] 狀態。
+使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中]**** 狀態。
 
 若要執行編製索引及編碼工作，[連線至您影片索引器帳戶的 Azure 媒體服務帳戶](connect-to-azure.md)需要保留單元。 如需詳細資訊，請參閱[調整媒體處理](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)。 由於這些都是計算密集的作業，強烈建議使用 S3 單元類型。 RU 數量會定義可以平行執行的作業數目上限。 基準建議是 10 個 S3 RU。 
 
@@ -156,21 +156,21 @@ ms.locfileid: "77468757"
 
 下列 C# 程式碼片段會示範一起使用所有影片索引器 API 的方式。
 
-#### <a name="instructions-for-running-this-code-sample"></a>執行此程式碼範例的指示
+#### <a name="instructions-for-running-this-code-sample"></a>運行此代碼示例的說明
 
-將此程式碼複製到您的開發平臺之後，您必須提供兩個參數： [API 管理] [驗證金鑰] 和 [影片 URL]。
+將此代碼複製到開發平臺後，您需要提供兩個參數：API 管理身份驗證金鑰和視頻 URL。
 
-* API 金鑰-API 金鑰是您個人的 API 管理訂用帳戶金鑰，可讓您取得存取權杖，以便在您的影片索引子帳戶上執行作業。 
+* API 金鑰 – API 金鑰是您的個人 API 管理訂閱金鑰，它允許您獲取訪問權杖，以便對視頻索引子帳戶執行操作。 
 
-    若要取得您的 API 金鑰，請完成此流程：
+    要獲取 API 金鑰，請遍通此流：
 
     * 巡覽到 https://api-portal.videoindexer.ai/
     * 登入
-    * 前往 -> **授權** -> **授權訂**用帳戶的**產品**
-    * 複製**主要金鑰**
-* 影片 URL –要編制索引之影片/音訊檔案的 URL。 URL 必須指向媒體檔案 (不支援 HTML 網頁)。 作為 URI 一部分提供的存取權杖可以保護檔案，而處理檔案的端點必須透過 TLS 1.2 或更高版本來保護。 URL 必須進行編碼。
+    * 轉到**產品** -> **授權** -> **訂閱**
+    * 複製**主鍵**
+* 視頻 URL = 要編制索引的視頻/音訊檔的 URL。 URL 必須指向媒體檔案 (不支援 HTML 網頁)。 作為 URI 一部分提供的存取權杖可以保護檔案，而處理檔案的端點必須透過 TLS 1.2 或更高版本來保護。 URL 必須進行編碼。
 
-成功執行程式碼範例的結果將包含深入解析 widget URL 和播放程式 widget URL，可讓您檢查深入解析和上傳的影片。 
+成功運行代碼示例的結果將包括見解小部件 URL 和播放機小部件 URL，允許您檢查分別上傳的見解和視頻。 
 
 
 ```csharp
@@ -352,8 +352,8 @@ public class AccountContractSlim
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|
-|429||每分鐘允許試用帳戶5次上傳。 付費帳戶允許50每分鐘上傳一次。|
+|429||試用帳戶允許每分鐘 5 次上傳。 付費帳戶允許每分鐘 50 次上傳。|
 
 ## <a name="next-steps"></a>後續步驟
 
-[檢查 API 所產生的 Azure 影片索引子輸出](video-indexer-output-json-v2.md)
+[檢查 API 生成的 Azure 視頻索引子輸出](video-indexer-output-json-v2.md)

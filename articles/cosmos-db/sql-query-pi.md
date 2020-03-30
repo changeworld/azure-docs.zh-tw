@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 PI
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 PI。
+title: Azure 宇宙 DB 查詢語言中的 PI
+description: 瞭解 Azure 宇宙 DB 中的 SQL 系統函數 PI。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349662"
 ---
-# <a name="pi-azure-cosmos-db"></a>PI （Azure Cosmos DB）
+# <a name="pi-azure-cosmos-db"></a>PI（Azure 宇宙資料庫）
  傳回 PI 的常數值。  
   
 ## <a name="syntax"></a>語法
@@ -43,6 +43,6 @@ SELECT PI() AS pi
 
 ## <a name="next-steps"></a>後續步驟
 
-- [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [數學函數 Azure 宇宙 DB](sql-query-mathematical-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

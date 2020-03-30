@@ -1,5 +1,5 @@
 ---
-title: XEvent 信號緩衝區程式碼
+title: XEvent 環緩衝區代碼
 description: 提供 Transact-SQL 程式碼範例，可在 Azure SQL Database 中輕鬆又快速使用信號緩衝區目標。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213973"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database 中擴充事件的信號緩衝區目標程式碼
@@ -29,7 +29,7 @@ ms.locfileid: "79213973"
 1. 使用資料建立要示範的資料表。
 2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting**。
    
-   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'** 。
+   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'**。
    * 選擇要將事件的輸出傳送給信號緩衝區類型的目標，名稱為 **package0.ring_buffer**。
 3. 啟動事件工作階段。
 4. 發出幾個簡單的 SQL UPDATE 陳述式。
@@ -42,7 +42,7 @@ ms.locfileid: "79213973"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 帳戶和訂用帳戶。 您可以註冊免費[試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 您可以在當中建立資料表的任何資料庫。
   
   * 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](sql-database-get-started.md)。
@@ -222,7 +222,7 @@ GO
 
 然後在結果窗格中，我們按了 **target_data_XML** 資料欄標題下的儲存格。 這個點按動作在 ssms.exe 中以 XML 格式建立了另一個檔案索引標籤，其中顯示了結果儲存格的內容。
 
-輸出如下列區塊所示。 看起來很長，但它只是兩個 **\<事件 >** 元素。
+輸出如下列區塊所示。 它看起來很長，但它只是兩**\<個事件>** 元素。
 
 &nbsp;
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Windows Communication Foundation （WCF）轉送混合式內部部署/雲端應用程式（.NET） |Microsoft Docs
+title: Azure Windows 通信基礎 （WCF） 中繼混合本地/雲應用程式 （.NET） |微軟文檔
 description: 了解如何使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 services: service-bus-relay
 documentationcenter: .net
@@ -15,47 +15,47 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: spelluru
 ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212948"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 
-本文示範如何使用 Microsoft Azure 和 Visual Studio 建置混合式雲端應用程式。 您會在雲端中建立使用多個 Azure 資源的應用程式。 本教學課程可協助您瞭解：
+本文示範如何使用 Microsoft Azure 和 Visual Studio 建置混合式雲端應用程式。 創建在雲中使用多個 Azure 資源的應用程式。 本教程可説明您瞭解：
 
 * 如何建立 Web 服務或調整現有的 Web 服務，以供 Web 方案使用。
-* 如何使用 Azure Windows Communication Foundation （WCF）轉送服務，在 Azure 應用程式與其他位置託管的 web 服務之間共用資料。
+* 如何使用 Azure Windows 通信基礎 （WCF） 中繼服務在 Azure 應用程式和託管在其他地方的 Web 服務之間共用資料。
 
-您會在本教學課程中執行下列工作：
+您將在本教學課程中執行下列工作：
 
 > [!div class="checklist"]
 >
 > * 安裝本教學課程的必要條件。
 > * 檢閱案例。
 > * 建立命名空間。
-> * 建立內部部署伺服器。
-> * 建立 ASP .NET 應用程式。
+> * 創建本機伺服器。
+> * 創建 ASP .NET 應用程式。
 > * 在本機執行應用程式。
-> * 將 web 應用程式部署至 Azure。
-> * 在 Azure 上執行應用程式。
+> * 將 Web 應用部署到 Azure。
+> * 在 Azure 上運行應用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
-* [Visual Studio 2015 或更新版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2019。
+* Azure 訂用帳戶。 如果沒有，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+* [視覺工作室 2015 或更高版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2019。
 * 適用於 .NET 的 Azure SDK。 從 [SDK 下載頁面](https://azure.microsoft.com/downloads/)進行安裝。
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Azure 轉送如何透過混合式解決方案提供協助
 
-商務解決方案通常是由自訂程式碼和現有功能的組合所組成。 自訂程式碼會 esposito 著手處理新的和獨特的商務需求。 已備妥的方案和系統會提供現有的功能。
+業務解決方案通常由自訂代碼和現有功能的組合組成。 自訂代碼可滿足新的和獨特的業務需求。 已經到位的解決方案和系統提供了現有的功能。
 
-眾多方案架構爭相開始使用雲端，以期能夠更輕鬆地處理擴充需求並降低操作成本。 在這種情況下，他們發現他們想要用來做為解決方案建立區塊的現有服務資產，是在公司防火牆內，而雲端解決方案則不容易接觸到。 許多內部服務並不是以可在公司網路邊緣輕鬆公開的方式來建立或託管。
+眾多方案架構爭相開始使用雲端，以期能夠更輕鬆地處理擴充需求並降低操作成本。 在此過程中，他們發現，他們希望用作解決方案構建基塊的現有服務資產位於企業防火牆內，雲解決方案無法輕鬆訪問。 許多內部服務的構建或託管方式無法在公司網路邊緣輕鬆公開。
 
-[Azure 轉送](https://azure.microsoft.com/services/service-bus/)採用現有的 WCF web 服務，並讓那些服務安全地存取公司周邊以外的解決方案，而不需要對公司網路基礎結構進行侵入式變更。 此類轉送服務仍然裝載在其現有環境，但它們會將接聽連入工作階段和要求的工作委派給雲端裝載的轉送服務。 Azure 轉送也可使用[共用存取簽章 (SAS)](../service-bus-messaging/service-bus-sas.md) 驗證，保護那些服務免受未經授權的存取。
+[Azure 中繼](https://azure.microsoft.com/services/service-bus/)採用現有的 WCF Web 服務，並使這些服務安全地可供企業週邊以外的解決方案訪問，而無需對公司網路基礎結構進行侵入性更改。 此類轉送服務仍然裝載在其現有環境，但它們會將接聽連入工作階段和要求的工作委派給雲端裝載的轉送服務。 Azure 中繼還通過使用[共用訪問簽名 （SAS）](../service-bus-messaging/service-bus-sas.md)身份驗證保護這些服務免受未經授權的訪問。
 
 ## <a name="review-the-scenario"></a>檢閱案例
 
@@ -63,22 +63,22 @@ ms.locfileid: "71212948"
 
 ![狀況][0]
 
-此教學課程假設您有現有內部部署系統中的產品資訊，並使用 Azure 轉送來連接該系統。 在簡單主控台應用程式中執行的 web 服務會模擬這種情況。 它包含一組記憶體中的產品。 您可以在自己的電腦上執行此主控台應用程式，並將 web 角色部署至 Azure。 如此一來，您就會看到在 Azure 資料中心內執行的 web 角色如何呼叫您的電腦。 即使您的電腦幾乎都是在至少一個防火牆和網路位址轉譯（NAT）層後方，還是會發生此呼叫。
+此教學課程假設您有現有內部部署系統中的產品資訊，並使用 Azure 轉送來連接該系統。 在簡單主控台應用程式中運行的 Web 服務類比這種情況。 它包含一組記憶體中的產品。 您可以在自己的電腦上運行此主控台應用程式，並將 Web 角色部署到 Azure 中。 通過執行此操作，您將看到在 Azure 資料中心中運行的 Web 角色如何調用您的電腦。 即使您的電腦幾乎肯定位於至少一個防火牆和網路位址轉譯 （NAT） 層之後，也會發生此調用。
 
 ## <a name="set-up-the-development-environment"></a>設定開發環境
 
 開始開發 Azure 應用程式之前，請先下載工具並設定開發環境：
 
 1. 從 SDK [下載頁面](https://azure.microsoft.com/downloads/)安裝 Azure SDK for .NET。
-1. 在 [ **.net** ] 資料行中，選擇您要使用的[Visual Studio](https://www.visualstudio.com)版本。 本教學課程使用 Visual Studio 2019。
-1. 當系統提示您執行或儲存安裝程式時，請選取 [**執行**]。
-1. 在 [ **Web Platform Installer** ] 對話方塊中，選取 [**安裝**] 並繼續進行安裝。
+1. 在 **.NET**列中，選擇您正在使用的[Visual Studio](https://www.visualstudio.com)版本。 本教程使用 Visual Studio 2019。
+1. 當提示您運行或保存安裝程式時，選擇 **"運行**"。
+1. 在**Web 平臺安裝程式**對話方塊中，選擇 **"安裝**並繼續安裝"。
 
-安裝完成後，您就擁有開始開發應用程式所需的所有專案。 SDK 包含可讓您在 Visual Studio 輕易開發 Azure 應用程式的工具。
+安裝完成後，您擁有開始開發應用所需的一切。 SDK 包含可讓您在 Visual Studio 輕易開發 Azure 應用程式的工具。
 
 ## <a name="create-a-namespace"></a>建立命名空間
 
-第一個步驟是建立命名空間，並取得[共用存取簽章 (SAS)](../service-bus-messaging/service-bus-sas.md) 金鑰。 命名空間會為每個透過轉送服務公開的應用程式提供應用程式界限。 建立服務命名空間時，系統會自動產生 SAS 金鑰。 服務命名空間與 SAS 金鑰的組合會提供一個認證，供 Azure 用來驗證對應用程式的存取權。
+第一步是創建命名空間，並獲取[共用訪問簽名 （SAS）](../service-bus-messaging/service-bus-sas.md)金鑰。 命名空間會為每個透過轉送服務公開的應用程式提供應用程式界限。 建立服務命名空間時，系統會自動產生 SAS 金鑰。 服務命名空間與 SAS 金鑰的組合會提供一個認證，供 Azure 用來驗證對應用程式的存取權。
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
@@ -86,24 +86,24 @@ ms.locfileid: "71212948"
 
 首先，您將建置模擬的內部部署產品目錄系統。  此專案是 Visual Studio 主控台應用程式，會使用 [Azure 服務匯流排 NuGet 套件](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)來納入服務匯流排程式庫和組態設定。 <a name="create-the-project"></a>
 
-1. 以系統管理員身分啟動 Microsoft Visual Studio。 若要這麼做，請以滑鼠右鍵按一下 [Visual Studio 程式] 圖示，然後選取 [以**系統管理員身分執行**]。
-1. 在 Visual Studio 中，選取 [**建立新專案**]。
-1. 在 [**建立新專案**] 中，選取 [**主控台應用程式（.NET Framework）** ]， C#然後選取 **[下一步]** 。
-1. 將專案命名為*ProductsServer* ，然後選取 [**建立**]。
+1. 以系統管理員身分啟動 Microsoft Visual Studio。 若要這樣做，請以滑鼠右鍵按一下 Visual Studio 程式圖示，然後選取 [以系統管理員身分執行]****。
+1. 在 Visual Studio 中，選取 [建立新專案]****。
+1. 在**創建新專案中**，為 C# 選擇**主控台應用 （.NET 框架），** 然後選擇 **"下一步**"。
+1. 命名專案*產品伺服器*並選擇 **"創建**"。
 
-   ![設定您的新專案][11]
+   ![配置新專案][11]
 
-1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsServer**專案，然後選取 [**管理 NuGet 套件**]。
-1. 選取 **[流覽]** ，然後搜尋並選擇 [ **windowsazure.storage**]。 選取 [**安裝**]，並接受使用規定。
+1. 在**解決方案資源管理器**中，按右鍵**產品伺服器**專案，然後選擇 **"管理 NuGet 包**"。
+1. 選取 [瀏覽]****，然後搜尋並選擇 **WindowsAzure.ServiceBus**。 選取 [安裝]**** 並接受使用條款。
 
    ![選取 NuGet 套件][13]
 
    現在會參考必要的用戶端組件。
 
-1. 新增產品連絡人的新類別。 在**方案總管**中，以滑鼠右鍵按一下**ProductsServer**專案，然後選取 [**新增** > **類別**]。
-1. 在 [**名稱**] 中，輸入名稱*ProductsContract.cs* ，然後選取 [**新增**]。
+1. 新增產品連絡人的新類別。 在**解決方案資源管理器**中，按右鍵 **"產品伺服器**"專案並選擇 **"添加** > **類**"。
+1. 在 **"名稱**"中，輸入*名稱ProductsContract.cs*並選擇 **"添加**"。
 
-對您的解決方案進行下列程式碼變更：
+對解決方案進行以下代碼更改：
 
 1. 在 *ProductsContract.cs* 中，將命名空間定義取代為下列程式碼，以定義服務的連絡人。
 
@@ -142,7 +142,7 @@ ms.locfileid: "71212948"
     }
     ```
 
-1. 在*Program.cs*中，將命名空間定義取代為下列程式碼，以新增設定檔服務和其主機。
+1. 在*Program.cs*中，將命名空間定義替換為以下代碼，該代碼為其添加了設定檔服務和主機。
 
     ```csharp
     namespace ProductsServer
@@ -197,7 +197,7 @@ ms.locfileid: "71212948"
     }
     ```
 
-1. 在**方案總管**中，按兩下**app.config**以在 [Visual Studio 編輯器] 中開啟檔案。 在`<system.ServiceModel>`元素的底部，但仍在內`<system.ServiceModel>`，新增下列 XML 程式碼。 請務必以您`yourServiceNamespace`的命名空間名稱取代，並`yourKey`以您先前從入口網站中抓取的 SAS 金鑰取代：
+1. 在 [方案總管]**** 中按兩下 **App.config**，以在 Visual Studio 編輯器中開啟該檔案。 在元素的底部`<system.ServiceModel>`，但仍在`<system.ServiceModel>`中，添加以下 XML 代碼。 請務必替換為`yourServiceNamespace`命名空間的名稱，以及`yourKey`之前從門戶檢索到的 SAS 金鑰：
 
     ```xml
     <system.serviceModel>
@@ -222,9 +222,9 @@ ms.locfileid: "71212948"
     ```
 
     > [!NOTE]
-    > 造成的錯誤只`transportClientEndpointBehavior`是警告，不是此範例的封鎖問題。
+    > 由 引起的`transportClientEndpointBehavior`錯誤只是一個警告，在此示例中不是阻塞問題。
 
-1. 仍然在*app.config*的`<appSettings>`元素中，將連接字串值取代為您先前從入口網站取得的連接字串。
+1. 仍在`<appSettings>`元素中的*App.config*中，將連接字串值替換為以前從門戶獲取的連接字串。
 
     ```xml
     <appSettings>
@@ -234,7 +234,7 @@ ms.locfileid: "71212948"
     </appSettings>
     ```
 
-1. 選取 Ctrl + Shift + B，或選取 [**組建** > ] [組建**方案**] 來建立應用程式，並確認您的工作到目前為止是否正確無誤。
+1. 選擇 Ctrl_Shift_B**Build** > 或選擇**生成解決方案**來構建應用程式並驗證到目前為止工作的準確性。
 
 ## <a name="create-an-aspnet-application"></a>建立 ASP.NET 應用程式
 
@@ -242,28 +242,28 @@ ms.locfileid: "71212948"
 
 ### <a name="create-the-project"></a>建立專案
 
-1. 確定 Visual Studio 是以系統管理員身分執行。
-1. 在 Visual Studio 中，選取 [**建立新專案**]。
-1. 在 [**建立新專案**] 中，選取 [ **ASP.NET Web 應用程式（.NET Framework）** ]， C#然後選取 **[下一步]** 。
-1. 將專案命名為*ProductsPortal* ，然後選取 [**建立**]。
-1. 在 **建立新的 ASP.NET Web 應用程式** 中選擇  **MVC** ，然後選取 **驗證** 底下的 **變更**
+1. 確保視覺化工作室以管理員身份運行。
+1. 在 Visual Studio 中，選取 [建立新專案]****。
+1. 在**創建新專案中**，選擇**C# ASP.NET Web 應用程式 （.NET 框架）並**選擇 **"下一步**"。
+1. 命名專案*產品門戶*並選擇 **"創建**"。
+1. 在**創建新ASP.NET Web 應用程式中**，選擇**MVC**並選擇 **"身份驗證**下的**更改**"。
 
    ![選取 ASP.NET Web 應用程式][16]
 
-1. 在 [**變更驗證**] 中，選擇 [**無驗證**]，然後選取 **[確定]** 。 在本教學課程中，您會部署不需要使用者登入的應用程式。
+1. 在 **"更改身份驗證**"中，選擇 **"無身份驗證"，** 然後選擇 **"確定**"。 在本教程中，您正在部署不需要使用者登錄的應用。
 
     ![指定驗證][18]
 
-1. 回到 [**建立新的 ASP.NET Web 應用程式**]，選取 [**建立**] 以建立 MVC 應用程式。
-1. 設定新 web 應用程式的 Azure 資源。 請遵循[發佈 web 應用程式](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)中的步驟。 然後，返回本教學課程並繼續進行下一個步驟。
-1. 在**方案總管**中，以滑鼠右鍵按一下 [**模型**]，然後選取 [**新增** > **類別**]。
-1. 將類別命名為*Product.cs*，然後選取 [**新增**]。
+1. 返回"**創建新ASP.NET Web 應用程式**，選擇 **"創建**"以創建 MVC 應用。
+1. 為新 Web 應用配置 Azure 資源。 按照[發佈 Web 應用](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)中的步驟操作。 然後，返回到本教程，並繼續下一步。
+1. 在**解決方案資源管理器**中，按右鍵 **"模型"，** 然後選擇 **"添加** > **類**"。
+1. *Product.cs*命名類，然後選擇 **"添加**"。
 
     ![建立產品型號][17]
 
 ### <a name="modify-the-web-application"></a>修改 Web 應用程式
 
-1. 在 Visual Studio 的*Product.cs*檔案中，將現有的命名空間定義取代為下列程式碼：
+1. 在 Visual Studio 中的*Product.cs*檔中，將現有的命名空間定義替換為以下代碼：
 
    ```csharp
     // Declare properties for the products inventory.
@@ -278,7 +278,7 @@ ms.locfileid: "71212948"
     }
     ```
 
-1. 在**方案總管**中，展開 [**控制器**]，然後按兩下 [ **HomeController.cs** ] 以在 Visual Studio 中開啟檔案。
+1. 在**解決方案資源管理器**中，展開**控制器**，然後按兩下**HomeController.cs**以在 Visual Studio 中打開該檔。
 1. 在 *HomeController.cs* 檔案中，以下列程式碼取代現有的命名空間定義：
 
     ```csharp
@@ -301,13 +301,13 @@ ms.locfileid: "71212948"
     }
     ```
 
-1. 在**方案總管**中，展開 [ **Views**  > ] [**共用**]，然後按兩下 [ **_Layout** ]，在 [Visual Studio 編輯器] 中開啟檔案。
-1. 將所有出現的`My ASP.NET Application`變更為*Northwind 商貿產品*。
-1. `Home`移除、 `About`和連結。`Contact` 在下列範例中，刪除反白顯示的程式碼。
+1. 在**解決方案資源管理器**中，**Views** > 展開**視圖共用**，然後按兩下 **_Layout.cshtml**以在 Visual Studio 編輯器中打開該檔。
+1. 將所有發生情況`My ASP.NET Application`更改為*北風貿易商產品*。
+1. 刪除`Home`、`About`和`Contact`連結。 在下列範例中，刪除反白顯示的程式碼。
 
     ![刪除產生的清單項目][41]
 
-1. 在 [**方案總管**] 中，展開 [ **Views**  >  **Home**]，然後按兩下 [ **Index. cshtml** ]，在 [Visual Studio 編輯器] 中開啟檔案。 將檔案的整個內容取代為下列程式碼：
+1. 在**解決方案資源管理器**中，展開**視圖** > **主頁**，然後按兩下**Index.cshtml**以在 Visual Studio 編輯器中打開該檔。 將檔案的整個內容取代為下列程式碼：
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -343,14 +343,14 @@ ms.locfileid: "71212948"
    </table>
    ```
 
-1. 若要確認您的工作到目前為止是否正確無誤，您可以選取 Ctrl + Shift + B 來建立專案。
+1. 要驗證到目前為止工作的準確性，可以選擇 Ctrl_Shift_B 來生成專案。
 
 ### <a name="run-the-app-locally"></a>在本機執行應用程式
 
 執行應用程式以驗證它是否能正常運作。
 
-1. 確定 **ProductsPortal** 為作用中專案。 以滑鼠右鍵按一下**方案總管**中的專案名稱，然後選取 [**設定為啟始專案**]。
-1. 在 Visual Studio 中，選取 F5。
+1. 確定 **ProductsPortal** 為作用中專案。 按右鍵**解決方案資源管理器**中的專案名稱，然後選擇 **"設置為啟動專案**"。
+1. 在視覺化工作室中，選擇 F5。
 
 您的應用程式應該就會出現在瀏覽器中並正在執行。
 
@@ -360,15 +360,15 @@ ms.locfileid: "71212948"
 
 下一步是利用 ASP.NET 應用程式連接內部部署產品伺服器。
 
-1. 如果尚未開啟，請在 Visual Studio 中，開啟您在[建立 ASP.NET 應用程式](#create-an-aspnet-application)一節中建立的**ProductsPortal**專案。
-1. 類似于[建立內部部署伺服器](#create-an-on-premises-server)一節中的步驟，請將 NuGet 套件新增至專案參考。 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**管理 NuGet 套件**]。
+1. 如果尚未打開，在 Visual Studio 中，請打開您在["創建ASP.NET應用程式](#create-an-aspnet-application)部分中創建**的產品門戶**專案。
+1. 與["創建本機伺服器](#create-an-on-premises-server)"部分中的步驟類似，將 NuGet 包添加到專案引用中。 在**解決方案資源管理器**中，按右鍵**產品門戶**專案，然後選擇 **"管理 NuGet 包**"。
 1. 搜尋 *WindowsAzure.ServiceBus* 並選取 **WindowsAzure.ServiceBus** 項目。 然後完成安裝並關閉此對話方塊。
-1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**新增** > ] [**現有專案**]。
-1. 從 *ProductsServer* 主控台專案導覽至 **ProductsContract.cs** 檔案。 反白顯示*ProductsContract.cs*。 選取 [**新增**] 旁邊的向下箭號，然後選擇 [**新增為連結**]。
+1. 在**解決方案資源管理器**中，按右鍵**產品門戶**專案，然後選擇"**添加** > **現有專案**"。
+1. 從 *ProductsServer* 主控台專案導覽至 **ProductsContract.cs** 檔案。 突出顯示*ProductsContract.cs*。 選擇 **"添加**"旁邊的向下箭頭，然後選擇"**添加為連結**"。
 
    ![新增為連結][24]
 
-1. 現在會在 Visual Studio 編輯器中開啟 *HomeController.cs* 檔案，並將命名空間定義取代為下列程式碼。 請務必以您`yourServiceNamespace`的服務命名空間名稱取代，並`yourKey`以您的 SAS 金鑰取代。 這段程式碼可讓用戶端呼叫內部部署服務，並傳回呼叫的結果。
+1. 現在會在 Visual Studio 編輯器中開啟 *HomeController.cs* 檔案，並將命名空間定義取代為下列程式碼。 請務必替換為`yourServiceNamespace`服務命名空間的名稱和`yourKey`SAS 鍵。 此代碼允許用戶端調用本機服務，返回調用的結果。
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -410,69 +410,69 @@ ms.locfileid: "71212948"
    }
    ```
 
-1. 在**方案總管**中，以滑鼠右鍵按一下 [ **ProductsPortal** ] 解決方案。 請務必以滑鼠右鍵按一下方案，而不是專案。 選取 [**加入** > **現有專案**]。
+1. 在**解決方案資源管理器中**，按右鍵**產品門戶**解決方案。 請確保按右鍵解決方案，而不是專案。 選擇 **"添加** > **現有專案**"。
 1. 導覽至 **ProductsServer** 專案，然後按兩下 *ProductsServer.csproj* 方案檔來新增它。
-1. **ProductsServer**必須正在執行中，才能在**ProductsPortal**上顯示資料。 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**方案，然後選取 [**屬性**] 以顯示**屬性頁**。
-1. 選取 [**通用屬性** > ] [**啟始專案**]，然後選擇 [**多個啟始專案**]。 請確定**ProductsServer**和**ProductsPortal**出現在該順序中，而且兩者的**動作**都是**Start**。
+1. **產品伺服器**必須運行才能在**產品門戶**上顯示資料。 在**解決方案資源管理器**中，按右鍵**產品門戶**解決方案並選擇 **"屬性**"以顯示**屬性頁**。
+1. 選擇 **"通用屬性** > **啟動專案**"並選擇**多個啟動專案**。 確保**產品伺服器**和**產品門戶**按該順序顯示，並且兩者**的操作**均為 **"開始**"。
 
       ![多個啟始專案][25]
 
-1. 選取左側的 [**通用屬性** >  **] [專案**相依性]。
-1. 針對 [**專案**]，選擇 [ **ProductsPortal**]。 確定已選取 [ProductsServer]。
+1. 在左側選擇 **"常見屬性** > **專案依賴項**"。
+1. 對於**專案**，請選擇**產品門戶**。 確定已選取 [ProductsServer]****。
 
     ![專案相依性][26]
 
-1. 針對 [**專案**]，選擇 [ **ProductsServer**]。 確定未選取 [ **ProductsPortal** ]，然後選取 **[確定]** 以儲存變更。
+1. 對於**專案**，請選擇**產品伺服器**。 確保未選擇**產品門戶**，然後選擇 **"確定"** 以保存更改。
 
 ## <a name="run-the-project-locally"></a>在本機執行專案
 
-若要在本機測試應用程式，請在 Visual Studio 選取 F5。 內部部署伺服器**ProductsServer**應該會先啟動，然後**ProductsPortal**應用程式應該會在瀏覽器視窗中啟動。 此時，您將看到從產品服務內部部署系統擷取的產品庫存清單資料。
+要在本地測試應用程式，請在視覺化工作室中選擇 F5。 本機伺服器**ProductsServer**應首先啟動，然後**產品門戶**應用程式應在瀏覽器視窗中啟動。 此時，您將看到從產品服務內部部署系統擷取的產品庫存清單資料。
 
 ![Web 應用程式][10]
 
-在 [ **ProductsPortal** ]**頁面上選取**[重新整理]。 每次重新整理頁面時，您會看到伺服器應用程式在呼叫來自 **ProductsServer** 的 `GetProducts()` 時顯示一則訊息。
+在 **"產品門戶**"頁上選擇 **"刷新**"。 每次重新整理頁面時，您會看到伺服器應用程式在呼叫來自 **ProductsServer** 的 `GetProducts()` 時顯示一則訊息。
 
-繼續進行下一節之前，請先關閉這兩個應用程式。
+在繼續下一節之前，關閉這兩個應用程式。
 
 ## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>將 ProductsPortal 專案部署至 Azure Web 應用程式
 
-下一步是重新發佈 Azure Web 應用程式**ProductsPortal**前端：
+下一步是重新發佈 Azure Web 應用**產品門戶**前端：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**發佈**]。 在 [**發行**] 頁面上，選取 [**發佈**]。
+1. 在**解決方案資源管理器**中，按右鍵**產品門戶**專案，然後選擇 **"發佈**"。 在 **"發佈"** 頁上，選擇 **"發佈**"。
 
    > [!NOTE]
    > 在部署後自動啟動 **ProductsPortal** Web 專案時，您可在瀏覽器視窗中看到錯誤訊息。 這是預期的，且因為 **ProductsServer** 應用程式尚未執行而出現。
    >
 
-1. 複製已部署 web 應用程式的 URL。 稍後您將需要此 URL。 您也可以從 Visual Studio 的 [ **Azure App Service 活動**] 視窗中取得此 URL：
+1. 複製已部署的 Web 應用的 URL。 稍後需要 URL。 您還可以從視覺化工作室中的 Azure**應用服務活動**視窗獲取此 URL：
 
    ![已部署應用程式的 URL][9]
 
 1. 關閉瀏覽器視窗以停止執行中的應用程式。
 
-<a name="set-productsportal-as-web-app"></a>在雲端中執行應用程式之前，您必須確定**ProductsPortal**是以 web 應用程式的形式從 Visual Studio 中啟動。
+<a name="set-productsportal-as-web-app"></a>在雲中運行應用程式之前，必須確保**產品門戶**從 Visual Studio 內部作為 Web 應用啟動。
 
-1. 在 Visual Studio 中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**屬性**]。
-1. 選取 [Web]。 在 [**起始動作**] 下，選擇 [**開始 URL**]。 輸入您先前部署之 web 應用程式的 URL，在此範例`https://productsportal20190906122808.azurewebsites.net/`中為。
+1. 在視覺化工作室中，按右鍵**產品門戶**專案並選擇**屬性**。
+1. 選取 [Web]****。 在 **"開始操作"** 下，選擇 **"開始 URL"。** 在本示例中，輸入以前部署的 Web 應用的`https://productsportal20190906122808.azurewebsites.net/`URL。
 
     ![起始 URL][27]
 
-1. 選取 [檔案] [**全部儲存**]。  > 
-1. 選取 [**組建** > **重建解決方案**]。
+1. 選擇**檔** > **保存全部**。
+1. 選擇**生成** > **重建解決方案**。
 
 ## <a name="run-the-application"></a>執行應用程式
 
-選取 F5 以建立並執行應用程式。 內部部署伺服器（也就是**ProductsServer**主控台應用程式）應該會先啟動，然後**ProductsPortal**應用程式應該會在瀏覽器視窗中啟動，如下所示：
+選擇 F5 來生成和運行應用程式。 本機伺服器（即**ProductsServer**主控台應用程式）應首先啟動，然後**ProductsPortal**應用程式應在瀏覽器視窗中啟動，如下所示：
 
    ![在 Azure 上執行 Web 應用程式][1]
 
-產品清查會列出從產品服務內部部署系統中取出的資料，並在 web 應用程式中顯示該資料。 檢查 URL，確定 **ProductsPortal** 正在雲端中以 Azure Web 應用程式的形式執行。
+產品清單列出從本地產品服務系統檢索的資料，並在 Web 應用中顯示該資料。 檢查 URL，確定 **ProductsPortal** 正在雲端中以 Azure Web 應用程式的形式執行。
 
    > [!IMPORTANT]
-   > **ProductsServer** 主控台應用程式必須正在執行中，而且能夠提供資料給 **ProductsPortal** 應用程式。 如果瀏覽器顯示錯誤，請等候幾秒，讓**ProductsServer**載入並顯示下列訊息，然後重新整理瀏覽器。
+   > **ProductsServer** 主控台應用程式必須正在執行中，而且能夠提供資料給 **ProductsPortal** 應用程式。 如果瀏覽器顯示錯誤，請再等待幾秒鐘，**讓 ProductsServer**載入並顯示以下消息，然後刷新瀏覽器。
    >
 
-在瀏覽器中，重新整理 [ **ProductsPortal** ] 頁面。 每次重新整理頁面時，您會看到伺服器應用程式在呼叫來自 **ProductsServer** 的 `GetProducts()` 時顯示一則訊息。
+在瀏覽器中，刷新**產品門戶**頁面。 每次重新整理頁面時，您會看到伺服器應用程式在呼叫來自 **ProductsServer** 的 `GetProducts()` 時顯示一則訊息。
 
 ![已更新的輸出][38]
 

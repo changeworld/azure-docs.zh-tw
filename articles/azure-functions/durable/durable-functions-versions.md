@@ -1,74 +1,74 @@
 ---
-title: Durable Functions 版本總覽-Azure Functions
-description: 瞭解 Durable Functions 版本。
+title: 持久函數版本概述 - Azure 函數
+description: 瞭解持久功能版本。
 author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152885"
 ---
-# <a name="durable-functions-versions-overview"></a>Durable Functions 版本總覽
+# <a name="durable-functions-versions-overview"></a>持久功能版本概述
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的擴充功能，可讓您在無伺服器環境中撰寫具狀態函式。 此擴充功能會為您管理狀態、設定檢查點和重新啟動。 如果您還不熟悉 Durable Functions，請參閱[總覽檔](durable-functions-overview.md)。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的擴充功能，可讓您在無伺服器環境中撰寫具狀態函式。 此擴充功能會為您管理狀態、設定檢查點和重新啟動。 如果您還不熟悉持久功能，請參閱[概述文檔](durable-functions-overview.md)。
 
-## <a name="new-features-in-2x"></a>2\.x 中的新功能
+## <a name="new-features-in-2x"></a>2.x 中的新功能
 
-本節說明2.x 版中新增的 Durable Functions 功能。
+本節介紹在版本 2.x 中添加的持久函數的功能。
 
-### <a name="durable-entities"></a>持久性實體
+### <a name="durable-entities"></a>耐用實體
 
-在 Durable Functions 2.x 中，我們引進了新的[實體函數](durable-functions-entities.md)概念。
+在持久函數 2.x 中，我們引入了一種新的[實體函數](durable-functions-entities.md)概念。
 
-實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」) 的函式。 與協調器函式不同的是，實體函式沒有任何特定的程式碼條件約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
+實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」**) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」**) 的函式。 與協調器函數不同，實體函數沒有任何特定的代碼約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
 
-若要深入瞭解，請參閱[耐用實體](durable-functions-entities.md)一文。
+要瞭解更多資訊，請參閱[持久實體](durable-functions-entities.md)文章。
 
-### <a name="durable-http"></a>持久 HTTP
+### <a name="durable-http"></a>耐用的 HTTP
 
-在 Durable Functions 2.x 中，我們引進了新的[持久性 HTTP](durable-functions-http-features.md#consuming-http-apis)功能，可讓您：
+在耐用功能 2.x 中，我們引入了一個新的[耐用 HTTP](durable-functions-http-features.md#consuming-http-apis)功能，允許您：
 
-* 直接從協調流程函式呼叫 HTTP Api （有一些記載的限制）。
-* 執行自動用戶端 HTTP 202 狀態輪詢。
-* [Azure 受控](../../active-directory/managed-identities-azure-resources/overview.md)識別的內建支援。
+* 直接從業務流程函式呼叫 HTTP API（具有一些有文檔記錄的限制）。
+* 實現用戶端 HTTP 202 狀態輪詢。
+* 對[Azure 託管標識](../../active-directory/managed-identities-azure-resources/overview.md)的內置支援。
 
-若要深入瞭解，請參閱[HTTP 功能](durable-functions-http-features.md#consuming-http-apis)一文。
+要瞭解更多資訊，請參閱[HTTP 功能](durable-functions-http-features.md#consuming-http-apis)一文。
 
-## <a name="migrate-from-1x-to-2x"></a>從1.x 遷移至2。x
+## <a name="migrate-from-1x-to-2x"></a>從 1.x 遷移到 2.x
 
-本節說明如何將您現有的1.x 版 Durable Functions 遷移至2.x 版，以利用新功能。
+本節介紹如何將現有版本 1.x 持久函數遷移到版本 2.x 以利用新功能。
 
-### <a name="upgrade-the-extension"></a>升級延伸模組
+### <a name="upgrade-the-extension"></a>升級擴展
 
-在您的專案中安裝2.x 版的 Durable Functions 系結[延伸](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)模組。 如需詳細資訊，請參閱[註冊 Azure Functions](../functions-bindings-register.md)系結延伸模組。
+在專案中安裝[持久函數綁定擴展](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)的版本 2.x。 有關詳細資訊[，請參閱註冊 Azure 函數綁定擴展](../functions-bindings-register.md)。
 
-### <a name="update-your-code"></a>更新您的程式碼
+### <a name="update-your-code"></a>更新代碼
 
-Durable Functions 2.x 引進了幾項重大變更。 Durable Functions 1.x 應用程式與 Durable Functions 2.x 不相容，而不需要變更程式碼。 本節列出將1.x 版功能更新至2.x 時必須進行的一些變更。
+持久功能 2.x 引入了幾個重大更改。 持久函數 1.x 應用程式不相容持久函數 2.x，無需更改代碼。 本節列出了將版本 1.x 函數升級到 2.x 時必須進行的某些更改。
 
-#### <a name="hostjson-schema"></a>Host. json 架構
+#### <a name="hostjson-schema"></a>Host.json 架構
 
-Durable Functions 2.x 使用新的 host. json 架構。 1\. x 的主要變更包括：
+持久函數 2.x 使用新的主機.json 架構。 從 1.x 到 1.x 的主要更改包括：
 
-* 適用于儲存體特定設定的 `"storageProvider"` （和 `"azureStorage"` 子區段）。
-* 追蹤和記錄設定的 `"tracing"`。
-* 事件方格通知設定的 `"notifications"` （和 `"eventGrid"` 子區段）。
+* `"storageProvider"`（和`"azureStorage"`子節）用於特定于存儲的配置。
+* `"tracing"`用於跟蹤和日誌記錄配置。
+* `"notifications"`事件網格通知`"eventGrid"`配置的（和子部分）。
 
-如需詳細資訊，請參閱[Durable Functions host. json 參考檔](durable-functions-bindings.md#durable-functions-2-0-host-json)。
+有關詳細資訊，請參閱[持久函數主機.json 參考文檔](durable-functions-bindings.md#durable-functions-2-0-host-json)。
 
-#### <a name="default-taskhub-name-changes"></a>預設的 taskhub 名稱變更
+#### <a name="default-taskhub-name-changes"></a>預設任務中心名稱更改
 
-在1.x 版中，如果未在 host. json 中指定工作中樞名稱，則預設為 "DurableFunctionsHub"。 在2.x 版中，預設的工作中樞名稱現在是衍生自函式應用程式的名稱。 因此，如果您在升級至2.x 時未指定工作中樞名稱，則您的程式碼將會使用新的「工作中樞」，而且所有進行中的協調流程都不會再處理它們。 若要解決此情況，您可以將工作中樞名稱明確設定為 "DurableFunctionsHub" 的 v1. x 預設值，或者您可以遵循我們的[零停機部署指引](durable-functions-zero-downtime-deployment.md)，取得如何處理進行中協調流程的重大變更的詳細資料。
+在版本 1.x 中，如果在 host.json 中未指定任務中心名稱，則將其預設為"持久功能Hub"。 在版本 2.x 中，預設任務中心名稱現在派生自函數應用的名稱。 因此，如果在升級到 2.x 時未指定任務中心名稱，則代碼將使用新任務中心運行，並且所有運行中的業務流程將不再具有應用程式處理它們。 要解決這個問題，您可以顯式將任務中心名稱設置為 v1.x 預設值"持久功能Hub"，也可以按照我們的[零停機時間部署指南](durable-functions-zero-downtime-deployment.md)瞭解如何處理在運行中業務流程的突發更改的詳細資訊。
 
-#### <a name="public-interface-changes-net-only"></a>公用介面變更（僅限 .NET）
+#### <a name="public-interface-changes-net-only"></a>公共介面更改（僅限.NET）
 
-在1.x 版中，Durable Functions 支援的各種_內容_物件都有抽象基類，供單元測試使用。 做為 Durable Functions 2.x 的一部分，這些抽象基類會取代為介面。
+在版本 1.x 中，持久函數支援的各種_上下文_物件具有抽象基類，用於單元測試。 作為持久函數 2.x 的一部分，這些抽象基類被介面替換。
 
-下表代表主要變更：
+下表表示主要更改：
 
 | 1.x | 2.x |
 |----------|----------|
@@ -77,8 +77,8 @@ Durable Functions 2.x 使用新的 host. json 架構。 1\. x 的主要變更包
 | `DurableActivityContext` 或 `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-在抽象基類包含虛擬方法的情況下，這些虛擬方法已由 `DurableContextExtensions`中定義的擴充方法所取代。
+在抽象基類包含虛擬方法的情況下，這些虛擬方法已被 中`DurableContextExtensions`定義的擴充方法所取代。
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>函數. json 變更（JavaScript 和C#腳本）
+#### <a name="functionjson-changes-javascript-and-c-script"></a>函數.json 更改（JavaScript 和 C# 腳本）
 
-在 Durable Functions 1.x 中，協調流程用戶端系結會使用 `orchestrationClient`的 `type`。 2\.x 版會改為使用 `durableClient`。
+在持久函數 1.x 中，業務流程用戶端綁定使用`type``orchestrationClient`的 。 版本 2.x`durableClient`改為使用。

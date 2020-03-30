@@ -1,5 +1,5 @@
 ---
-title: SQL 資料同步的 Data Sync Agent
+title: 用於 SQL 資料同步的資料同步代理
 description: 了解如何安裝及執行「適用於 Azure SQL Data Sync 的 Data Sync Agent」，以與內部部署 SQL Server 資料庫同步資料
 services: sql-database
 ms.service: sql-database
@@ -12,18 +12,18 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825181"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>適用於 Azure SQL Data Sync 的 Data Sync Agent
 
-藉由安裝和設定 Azure SQL 資料同步的 Data Sync Agent，將資料與內部部署 SQL Server 資料庫同步處理。如需 SQL 資料同步的詳細資訊，請參閱[使用 SQL 資料同步跨多個雲端和內部部署資料庫同步資料](sql-database-sync-data.md)。
+通過安裝和配置 Azure SQL 資料同步的資料同步代理，將資料與本地 SQL Server 資料庫同步。有關 SQL 資料同步的詳細資訊，請參閱[使用 SQL 資料同步跨多個雲和本機資料庫同步資料](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 「Azure SQL 資料同步」目前**不**支援「Azure SQL Database 受控執行個體」。
+> Azure SQL 資料同步此時**不支援**Azure SQL 資料庫託管實例。
 
 ## <a name="download-and-install"></a>下載並安裝
 
@@ -37,7 +37,7 @@ ms.locfileid: "73825181"
 
 - 如果您提供 `LocalSystem` 作為 **SERVICEACCOUNT** 的值，當您設定代理程式以連線至內部部署 SQL Server 時，請使用 SQL Server 驗證。
 
-- 如果您提供網域使用者帳戶或本機使用者帳戶作為 **SERVICEACCOUNT** 的值，您也必須使用 **SERVICEPASSWORD** 引數提供密碼。 例如， `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`。
+- 如果您提供網域使用者帳戶或本機使用者帳戶作為 **SERVICEACCOUNT** 的值，您也必須使用 **SERVICEPASSWORD** 引數提供密碼。 例如： `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -47,11 +47,11 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 若要設定 Data Sync Agent 以便與一或多個內部部署 SQL Server 資料庫同步資料，請參閱[新增內部部署 SQL Server 資料庫](sql-database-get-started-sql-data-sync.md#add-on-prem)。
 
-## <a name="agent-faq"></a> Data Sync Agent 常見問題集
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Data Sync Agent 常見問題集
 
 ### <a name="why-do-i-need-a-client-agent"></a>我為何需要用戶端代理程式？
 
-SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫通訊。 這項安全性功能可防止直接與防火牆後方的資料庫通訊。 當 SQL 資料同步服務與代理程式通訊時，會使用加密的連線與唯一的權杖或「代理程式金鑰」來執行此動作。 SQL Server 資料庫會使用連接字串和代理程式金鑰來驗證代理程式。 這項設計可為您的資料提供高階安全性。
+SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫通訊。 這項安全性功能可防止直接與防火牆後方的資料庫通訊。 當 SQL 資料同步服務與代理程式通訊時，會使用加密的連線與唯一的權杖或「代理程式金鑰」** 來執行此動作。 SQL Server 資料庫會使用連接字串和代理程式金鑰來驗證代理程式。 這項設計可為您的資料提供高階安全性。
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>一共可執行多少個本機代理程式 UI 執行個體？
 
@@ -79,23 +79,23 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 4. 請等待用戶端代理程式下載先前所註冊內部部署資料庫的清單。
 5. 提供資料庫認證給顯示為無法連線的所有資料庫。 這些資料庫必須要能從安裝該代理程式的新電腦連線。
 
-## <a name="agent-tshoot"></a> Data Sync Agent 問題疑難排解
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> Data Sync Agent 問題疑難排解
 
 - [用戶端代理程式安裝、解除安裝或修復失敗](#agent-install)
 
-- [我取消解除安裝之後，用戶端代理程式無法運作](#agent-uninstall)
+- [取消卸載後，用戶端代理無法正常工作](#agent-uninstall)
 
 - [我的資料庫未列在代理程式清單](#agent-list)
 
-- [用戶端代理程式無法啟動 (錯誤 1069)](#agent-start)
+- [用戶端代理無法啟動（錯誤 1069）](#agent-start)
 
-- [我無法提交代理程式金鑰](#agent-key)
+- [無法提交代理金鑰](#agent-key)
 
-- [如果無法連線到與用戶端代理程式相關聯的內部部署資料庫，則無法從入口網站刪除用戶端代理程式](#agent-delete)
+- [如果用戶端代理的關聯本機資料庫無法訪問，則無法從門戶中刪除用戶端代理](#agent-delete)
 
 - [本機同步代理程式應用程式無法連線至本機同步服務](#agent-connect)
 
-### <a name="agent-install"></a> 用戶端代理程式安裝、解除安裝或修復失敗
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>用戶端代理安裝、卸載或修復失敗
 
 - **原因**。 許多情節可能會造成這個失敗。 若要判斷此失敗的特定原因，請查看記錄。
 
@@ -106,7 +106,7 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
     您也可以為 Windows Installer 所執行的所有安裝開啟記錄。 Microsoft 知識庫文章[如何啟用 Windows Installer 記錄](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供開啟 Windows Installer 記錄的單鍵解決方案。 它也提供記錄的位置。
 
-### <a name="agent-uninstall"></a> 我取消解除安裝之後，我的用戶端代理程式無法運作
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a> 我取消解除安裝之後，我的用戶端代理程式無法運作
 
 用戶端代理程式無法運作，即使您取消其解除安裝亦然。
 
@@ -117,7 +117,7 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
     -   使用 services.msc 重新輸入用戶端代理程式的認證。
     -   解除安裝此用戶端代理程式，然後安裝新的用戶端代理程式。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=27693)下載並安裝最新的用戶端代理程式。
 
-### <a name="agent-list"></a> 我的資料庫未列在代理程式清單
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a>我的資料庫未列在代理清單中
 
 當您嘗試將現有的 SQL Server 資料庫新增至同步群組時，資料庫不會顯示在代理程式的清單中。
 
@@ -136,7 +136,7 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
     本機代理程式只會在第一次提交代理程式金鑰時下載相關聯的資料庫清單。 在後續的代理程式金鑰提交時，它不會下載相關聯資料庫的清單。 在代理程式移動期間註冊的資料庫不會出現在原始代理程式執行個體上。
 
-### <a name="agent-start"></a> 用戶端代理程式無法啟動 (錯誤 1069)
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a> 用戶端代理程式無法啟動 (錯誤 1069)
 
 您發現代理程式未在裝載 SQL Server 的電腦上執行。 當您嘗試以手動方式啟動代理程式時，您會看到對話方塊顯示錯誤訊息：「錯誤 1069：登入失敗所以服務無法啟動。」
 
@@ -147,26 +147,26 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 - **解決方案**。 將代理程式的密碼更新成目前的伺服器密碼：
 
   1. 找出 SQL 資料同步用戶端代理程式預覽服務。  
-    a. 選取 [開始]。  
-    b.這是另一個 C# 主控台應用程式。 在搜尋方塊中輸入 **services.msc**。  
-    c. 在搜尋結果中，選取 [服務]。  
-    d. 在 [服務] 視窗中，捲動至 [SQL Data Sync Agent] 的項目。  
-  1. 在 [SQL Data Sync Agent] 上按一下滑鼠右鍵，然後選取 [停止]。
-  1. 在 [SQL Data Sync Agent] 上按一下滑鼠右鍵，然後選取 [屬性]。
-  1. 在 [SQL Data Sync Agent 屬性] 上，選取 [登入] 索引標籤。
-  1. 在 [密碼] 方塊中，輸入您的密碼。
-  1. 在 [確認密碼] 方塊中，重新輸入密碼。
-  1. 選取 [套用]，然後選取 [確定]。
-  1. 在 [服務] 視窗中，以滑鼠右鍵按一下 [SQL Data Sync Agent] 服務，然後按一下 [啟動]。
-  1. 關閉 [服務] 視窗。
+    a. 選取 [開始]****。  
+    b. 在搜尋方塊中輸入 **services.msc**。  
+    c. 在搜尋結果中，選擇 **"服務**"。  
+    d. 在 [服務]**** 視窗中，捲動至 [SQL Data Sync Agent]**** 的項目。  
+  1. 在 [SQL Data Sync Agent]**** 上按一下滑鼠右鍵，然後選取 [停止]****。
+  1. 在 [SQL Data Sync Agent]**** 上按一下滑鼠右鍵，然後選取 [屬性]****。
+  1. 在 [SQL Data Sync Agent 屬性]**** 上，選取 [登入]**** 索引標籤。
+  1. 在 [密碼]**** 方塊中，輸入您的密碼。
+  1. 在 [確認密碼]**** 方塊中，重新輸入密碼。
+  1. 選取 [套用]****，然後選取 [確定]****。
+  1. 在 [服務]**** 視窗中，以滑鼠右鍵按一下 [SQL Data Sync Agent]**** 服務，然後按一下 [啟動]****。
+  1. 關閉 [服務]**** 視窗。
 
-### <a name="agent-key"></a> 我無法提交代理程式金鑰
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> 我無法提交代理程式金鑰
 
 您建立或重新建立代理程式金鑰之後，嘗試透過 SqlAzureDataSyncAgent 應用程式提交該金鑰。 提交無法完成。
 
 ![[同步錯誤] 對話方塊 - 無法提交代理程式金鑰](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
 
-- **必要條件**。 在繼續之前，請檢查下列必要條件：
+- **先決條件**。 在繼續之前，請檢查下列必要條件：
 
   - SQL 資料同步 Windows 服務正在執行。
 
@@ -191,12 +191,12 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
   1. 在檔案總管中，移至您的代理程式安裝目錄。 預設安裝目錄為 C:\\Program Files (x86)\\Microsoft SQL Data Sync。
   1. 按兩下 bin 子目錄。
   1. 開啟 SqlAzureDataSyncAgent 應用程式。
-  1. 選取 [提交代理程式金鑰]。
+  1. 選取 [提交代理程式金鑰]****。
   1. 在提供的空間中，貼上剪貼簿中的金鑰。
-  1. 選取 [確定]。
+  1. 選取 [確定]****。
   1. 關閉程式。
 
-### <a name="agent-delete"></a> 如果無法連線到與用戶端代理程式相關聯的內部部署資料庫，則無法從入口網站刪除用戶端代理程式
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> 如果無法連線到與用戶端代理程式相關聯的內部部署資料庫，則無法從入口網站刪除用戶端代理程式
 
 如果無法連線到向 SQL 資料同步用戶端代理程式註冊的本機端點 (也就是資料庫)，則無法刪除用戶端代理程式。
 
@@ -207,16 +207,16 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 > [!NOTE]
 > 如果「強制刪除」之後，同步中繼資料資料表仍然存在，請使用 `deprovisioningutil.exe` 來清除它們。
 
-### <a name="agent-connect"></a> 本機同步代理程式應用程式無法連線至本機同步服務
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a>本地同步代理應用無法連接到本地同步服務
 
 - **解決方案**。 請嘗試下列步驟：
 
   1. 結束應用程式。  
   1. 開啟 [元件服務] 畫面。  
     a. 在工作列上的 [搜尋] 方塊中，輸入 **services.msc**。  
-    b.這是另一個 C# 主控台應用程式。 在搜尋結果中按兩下 [服務]。  
+    b. 在搜尋結果中按兩下 [服務]****。  
   1. 停止 **SQL 資料同步**服務。
-  1. 重新啟動 **SQL 資料同步**服務。  
+  1. 重新開機**SQL 資料同步**服務。  
   1. 重新開啟應用程式。
 
 ## <a name="run-the-data-sync-agent-from-the-command-prompt"></a>從命令提示字元執行 Data Sync Agent
@@ -322,7 +322,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 -   設定資料同步
     - 在入口網站中 - [教學課程：設定 SQL 資料同步以同步處理 Azure SQL Database 與內部部署 SQL Server 之間的資料](sql-database-get-started-sql-data-sync.md)
     - 透過 PowerShell
-        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間進行同步處理](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間同步](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 設定「資料同步」在內部部署的 Azure SQL Database 和 SQL Server 之間進行同步處理](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   最佳做法 - [Azure SQL 資料同步最佳做法](sql-database-best-practices-data-sync.md)
 -   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](sql-database-sync-monitor-oms.md)

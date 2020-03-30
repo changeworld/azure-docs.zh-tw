@@ -1,6 +1,6 @@
 ---
-title: 設定 Azure Front service 的地區篩選 web 應用程式防火牆原則
-description: 在本教學課程中，您將瞭解如何建立地區篩選原則，並將此原則與現有的 Front 前端主機產生關聯
+title: 為 Azure 前門服務配置地理篩選 Web 應用程式防火牆策略
+description: 在本教程中，您將瞭解如何創建地理篩選策略並將策略與現有的前門前端主機相關聯
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,13 +9,13 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79135865"
 ---
-# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>為您的前門設定地區篩選 WAF 原則
+# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>為前門設置地理篩選 WAF 策略
 
 本教學課程會說明如何使用 Azure PowerShell 來建立簡單的地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯。 此範例地區篩選原則範例會封鎖來自美國以外的所有其他國家/地區的要求。
 
@@ -29,7 +29,7 @@ Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manage
 
 您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式對話方塊來登入，以連線至 Azure
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用登錄的互動式對話方塊連接到 Azure
 
 ```
 Install-Module -Name Az
@@ -52,7 +52,7 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="define-geo-filtering-match-condition"></a>定義地區篩選比對條件
 
-建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 在[Azure Front 的網域上](waf-front-door-geo-filtering.md)的地區篩選中，會提供兩個字母的國家/地區對應代碼。
+建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 [Azure 前門域上的地理篩選](waf-front-door-geo-filtering.md)內容中提供了兩個字母國家/地區代碼到國家/地區映射。
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -64,7 +64,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>使用動作和優先順序在規則中新增地區篩選比對條件
 
-使用 `nonUSBlockRule`New-AzFrontDoorWafCustomRuleObject[，根據比對條件、動作和優先順序來建立 CustomRule 物件 ](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)。  CustomRule 可以有多個 MatchCondition。  在此範例中，動作會設定為區塊，優先順序會設定為 1 (此為最高優先順序)。
+使用 [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)，根據比對條件、動作和優先順序來建立 CustomRule 物件 `nonUSBlockRule`。  CustomRule 可以有多個 MatchCondition。  在此範例中，動作會設定為區塊，優先順序會設定為 1 (此為最高優先順序)。
 
 ```
 $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
@@ -77,9 +77,9 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 
 ## <a name="add-rules-to-a-policy"></a>在原則中新增規則
 
-使用 `Get-AzResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用 `geoPolicy`New-AzFrontDoorWafPolicy`nonUSBlockRule`，在包含 Front Door 設定檔的指定資源群組中，建立包含 [ 的 ](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 原則物件。 您必須為地區原則提供唯一的名稱。 
+使用 `Get-AzResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)，在包含 Front Door 設定檔的指定資源群組中，建立包含 `nonUSBlockRule` 的 `geoPolicy` 原則物件。 您必須為地區原則提供唯一的名稱。 
 
-下列範例會使用資源組名*myResourceGroupFD1* ，並假設您已使用[快速入門：建立 front 門](../../frontdoor/quickstart-create-front-door.md)文章中提供的指示來建立 front 設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly 取代為唯一的原則名稱。
+下面的示例使用資源組名稱*myResourceGroupFD1，* 假定您已使用["快速入門：創建前門"](../../frontdoor/quickstart-create-front-door.md)一文中提供的說明創建了前門設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly** 取代為唯一的原則名稱。
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
@@ -101,7 +101,7 @@ $geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupF
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-接下來，使用 `geoPolicy`Set-AzFrontDoor[ 將前端 WebApplicationFirewallPolicyLink 屬性設定為 ](/powershell/module/az.frontdoor/set-azfrontdoor) 的 resourceId。
+接下來，使用 [Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor) 將前端 WebApplicationFirewallPolicyLink 屬性設定為 `geoPolicy` 的 resourceId。
 
 ```
 Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]

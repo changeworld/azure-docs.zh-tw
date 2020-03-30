@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71056824"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的網路虛擬設備問題
@@ -42,7 +42,7 @@ ms.locfileid: "71056824"
 - 虛擬網路子網路上從 NVA 導向流量的 UDR
 - NVA 內的路由資料表和規則 (例如，從 NIC2 到 NIC1)
 - 追蹤 NVA NIC 以確認是否接收和傳送網路流量
-- 使用標準 SKU 和公用 Ip 時，必須建立 NSG 和明確的規則，以允許將流量路由傳送至 NVA。
+- 使用標準 SKU 和公共 IP 時，必須創建 NSG 和顯式規則以允許將流量路由到 NVA。
 
 ## <a name="basic-troubleshooting-steps"></a>基本疑難排解步驟
 
@@ -83,19 +83,19 @@ ms.locfileid: "71056824"
    NetworkSecurityGroup : null
    ```
 
-**使用標準 SKU 公用 IP 時，檢查是否有 NSG**使用標準 SKU 和公用 Ip 時，必須建立 NSG，並提供明確的規則來允許 NVA 的流量。
+**使用標準 SKU Pubilc IP 時檢查 NSG**使用標準 SKU 和公共 IP 時，必須創建 NSG 和顯式規則以允許流量到 NVA。
 
 **檢查流量是否可路由至 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]，然後選取 [下一個躍點]。
+1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]****，然後選取 [下一個躍點]****。
 2. 指定設定為要將流量重新導向 NVA 的 VM，以及用來檢視下一個躍點的目的地 IP 位址。 
 3. 如果 NVA 未列為**下一個躍點**，請檢查和更新 Azure 路由表。
 
 **檢查流量是否可到達 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]，然後選取 [IP 流量驗證]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]****，然後選取 [IP 流量驗證]****。 
 2. 指定 VM 和 NVA 的 IP 位址，然後檢查是否有任何網路安全性群組 (NSG) 會封鎖流量。
-3. 如果有 NSG 規則會封鎖流量，請在**有效的安全性**規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]，並使用 [連線疑難排解] 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
+3. 如果有 NSG 規則會封鎖流量，請在**有效的安全性**規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]****，並使用 [連線疑難排解]**** 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
 
 **檢查 NVA 和 VM 是否接聽預期的流量**
 
@@ -114,7 +114,7 @@ ms.locfileid: "71056824"
 
 ### <a name="validate-vm-cpu"></a>驗證 VM CPU
 
-如果 CPU 使用量接近 100%，您可能會遇到影響網路封包捨棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 發生前述任一問題時，請視需要[連絡 NVA 廠商以取得協助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果 CPU 使用率接近 100%，則可能會遇到影響網路資料包丟棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 對於上述任一問題[，請根據需要與 NVA 供應商聯繫以獲得説明](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ### <a name="validate-vm-network-statistics"></a>驗證 VM 網路統計資料
 
@@ -127,11 +127,11 @@ ms.locfileid: "71056824"
 
 1. 若要擷取同時網路追蹤，請執行下列命令：
 
-   **適用于 Windows**
+   **對於視窗**
 
-   netsh trace start capture = yes tracefile = c:\server_IP.etl 案例 = test-netconnection
+   netsh 跟蹤開始捕獲_是追蹤檔案_c：\server_IP.etl 方案_網路連接
 
-   **針對 Linux**
+   **對於 Linux**
 
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 

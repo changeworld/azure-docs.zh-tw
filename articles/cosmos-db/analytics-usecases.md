@@ -1,6 +1,6 @@
 ---
-title: 使用案例搭配 Azure Cosmos DB 進行內建分析。
-description: 瞭解如何在不同的使用案例中，使用內建分析搭配 Azure Cosmos DB。
+title: 使用 Azure Cosmos DB 進行內置分析的用例。
+description: 瞭解如何在不同的用例中使用 Azure Cosmos DB 的內置分析。
 author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
@@ -8,69 +8,69 @@ ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72757065"
 ---
-# <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>使用案例進行內建分析與 Azure Cosmos DB
+# <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 進行內置分析的用例
 
-下列使用案例可透過在 Azure Cosmos DB 中使用內建的分析與 Apache Spark 來達成：
+通過在 Azure Cosmos DB 中使用與 Apache Spark 的內置分析，可以實現以下用例：
 
-## <a name="htap-scenarios"></a>HTAP 案例
+## <a name="htap-scenarios"></a>HTAP 方案
 
-Azure Cosmos DB 中的內建分析可以用來：
+Azure Cosmos DB 中的內置分析可用於：
 
-* 在交易處理期間偵測詐騙。
-* 在流覽電子商務商店時提供建議給購物者。
-* 警示操作員在製造設備的重要部分即將發生的失敗。
-* 直接在運算元據上內嵌即時分析，以建立快速且可操作的深入解析。
+* 檢測交易處理過程中的欺詐。
+* 在購物者流覽電子商務商店時提供建議。
+* 提醒操作員關鍵製造設備即將出現故障。
+* 通過將即時分析直接嵌入運算元據，創建快速、可操作的洞察。
 
-Azure Cosmos DB 使用原生內建 Apache Spark 支援混合式交易/分析處理（HTAP）案例。 Azure Cosmos DB 移除傳統系統所附的操作和分析分離。
+Azure Cosmos DB 通過使用本機內置的 Apache Spark 支援混合事務/分析處理 （HTAP） 方案。 Azure Cosmos DB 消除了傳統系統附帶的操作和分析分離。
 
-## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>全域散發的 data lake，而不需要任何 ETL
+## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>全球分散式資料湖，無需任何 ETL
 
-使用原生內建 Apache Spark，Azure Cosmos DB 提供快速、簡單且可調整的方式來建立全域散發的 data lake，以提供單一系統映射。 全域散發的多模型資料，讓您不需要投資昂貴的 ETL 管線並視需要調整，革新資料小組分析其資料集的方式。
+Azure Cosmos DB 具有本機內置的 Apache Spark，提供了一種快速、簡單且可擴展的方式來構建提供單個系統映射的全球分散式資料湖。 全球分佈的多模型資料無需投資昂貴的 ETL 管道並按需擴展，從而徹底改變了資料團隊分析其資料集的方式。
 
-## <a name="time-series-analytics-over-historic-data"></a>歷程記錄資料的時間序列分析
+## <a name="time-series-analytics-over-historic-data"></a>歷史資料的時間序列分析
 
-在某些情況下，您可能需要根據資料來回答問題，就像在過去完成的事件的特定時間點。 例如，若要取得特定日期的 CRM 活動狀態計數。 如果您在一周前執行報表，則狀態的計數會依據該時間點每個活動的狀態。 今天執行相同的報表，將會提供其狀態與今天相同的活動計數，這在過去一周以來可能已變更，因為它們會通過生命週期，從開啟到關閉。 因此，您需要在案例生命週期的每個階段報告快照集。
+在某些情況下，您可能需要根據資料回答問題，因為過去完成的事件在特定時間點。 例如，獲取特定日期的 CRM 活動狀態的計數。 如果一周前運行了報表，則狀態計數將根據該時間點每個活動的狀態進行。 今天運行同一份報告將告訴你那些狀態與今天一樣的活動的計數，這些活動自上周以來可能發生了變化，因為它們經歷了從開放到關閉的生命週期。 因此，您需要在案例生命週期的每個階段報告快照。
 
-在傳統的資料倉儲案例中，快照集的概念並不可行，因為資料倉儲不是設計來納入它，而且資料只會提供目前狀況的觀點。 有了 Azure Cosmos DB，使用者就能夠執行時間移動的概念、能夠查詢和執行資料反而要的分析，並要求資料在歷程記錄中的特定時間點。 這表示使用者可以輕鬆地同時查看資料的目前和歷史視圖，並對其執行分析。
+在傳統的資料倉儲方案中，快照的概念是不可能的，因為資料倉儲不是設計為要合併它，並且資料只提供當前對所發生的事情的視圖。 使用 Azure Cosmos DB，使用者可以實現時間旅行的概念，能夠追溯性地查詢和運行資料分析，並詢問資料如何看待歷史記錄中的特定時間點。 這意味著使用者可以輕鬆查看資料的當前視圖和歷史視圖，並在資料上運行分析。
 
-## <a name="globally-distributed-machine-learning-and-ai"></a>全域散發的機器學習和 AI
+## <a name="globally-distributed-machine-learning-and-ai"></a>全球分散式機器學習和 AI
 
-當企業對抗快速成長的資料量，以及擴展的各種資料類型和格式時，取得更深入且更精確的深入解析的能力，在全球各地的 pb 規模中會變得近乎不可能。 使用原生內建 Apache Spark，Azure Cosmos DB 提供全域散發的分析平臺，提供廣泛的機器學習演算法程式庫。 您可以使用互動式 Jupyter 筆記本來建立和定型模型，以及叢集管理功能。 這些功能可讓您視需要布建高度調整和自動彈性的 Spark 叢集。
+隨著企業應對快速增長的資料量和不斷增長的各種資料類型和格式，在全球 PB 範圍內獲得更深入、更準確的見解的能力幾乎是不可能的。 Azure Cosmos DB 具有本機內置的 Apache Spark，提供全球分散式分析平臺，提供廣泛的機器學習演算法庫。 您可以使用互動式 Jupyter 筆記本來構建和訓練模型以及群集管理功能。 這些功能使您能夠按需預配高度調諧和自動彈性 Spark 群集。
 
-## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>深入瞭解多模型的全域散發資料
+## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>對多模型全球分散式資料的深入瞭解
 
-深度學習是提供 big data 預測性分析解決方案的理想方式，因為資料量和複雜度會持續成長。 透過深度學習，企業可以利用非結構化和半結構化資料的強大功能，來提供利用 AI、自然語言處理等技術的使用案例。
+隨著資料量和複雜性的持續增長，深度學習是提供大資料預測分析解決方案的理想方式。 通過深度學習，企業可以利用非結構化和半結構化資料的強大功能來提供利用 AI、自然語言處理等技術的用例。
 
-## <a name="reporting-integrating-with-power-apps-power-bi"></a>報告（與 Power Apps 整合，Power BI）
+## <a name="reporting-integrating-with-power-apps-power-bi"></a>報告（與電源應用集成，電源 BI）
 
-Power BI 提供具有自助商業智慧功能的互動式視覺效果，讓使用者能夠自行建立報表和儀表板。 藉由使用內建 Spark 連接器，您可以將 Power BI Desktop 連接到 Azure Cosmos DB 中的 Apache Spark 叢集。 此連接器可讓您使用直接查詢將處理卸載至 Azure Cosmos DB 中的 Apache Spark，這在您有大量資料而不想載入 Power BI，或想要執行近乎即時的分析時，這非常好用。
+Power BI 提供具有自助服務商業智慧功能的互動式視覺化，使最終使用者能夠自行創建報表和儀表板。 通過使用內置 Spark 連接器，可以將 Power BI 桌面連接到 Azure Cosmos DB 中的 Apache Spark 群集。 此連接器允許您使用直接查詢在 Azure Cosmos DB 中卸載處理到 Apache Spark，當您有大量不想載入到 Power BI 的資料或要執行接近即時分析的資料時，這非常出色。
 
-## <a name="iot-analytics-at-global-scale"></a>全球規模的 IoT 分析
+## <a name="iot-analytics-at-global-scale"></a>全球規模的物聯網分析
 
-從增加的網路感應器產生的資料，對先前不透明的系統和處理常式會有前所未有的可見度。 關鍵在於在此資訊 torrent 中尋找可操作的深入解析，而不論 IoT 裝置在全球各地的散佈位置為何。 Azure Cosmos DB 讓 IOT 公司能夠即時分析世界各地的高速度感應器和時間序列資料。 它可讓您控管互連世界的真正價值，以提供更好的客戶體驗、營運效率和新的收益機會。
+不斷增長的網路感應器產生的資料為以前不透明的系統和流程帶來了前所未有的可見度。 關鍵是在這個資訊洪流中尋找可操作的見解，而不管 IoT 設備在全球的分佈位置如何。 Azure Cosmos DB 允許 IOT 公司在世界各地即時分析高速感應器和時間序列資料。 它使您能夠利用互聯世界的真正價值，提供改進的客戶體驗、運營效率和新的收入機會。
 
-## <a name="stream-processing-and-event-analytics"></a>串流處理和事件分析 
+## <a name="stream-processing-and-event-analytics"></a>流處理和事件分析 
 
-從記錄檔到感應器資料，企業日益需要處理資料的「資料流程」。 此資料會抵達穩定的資料流程，通常會同時從多個來源。 雖然您可以將這些資料流程儲存在磁片上並加以分析反而要，但有時在資料抵達時處理和採取動作可能是很合理或很重要的。 例如，可以即時處理與財務交易相關的資料串流，以識別和拒絕潛在的詐騙交易。
+從日誌檔到感應器資料，企業越來越需要應對資料的"流"。 此資料以穩定流到達，通常同時來自多個源。 雖然將這些資料流程存儲在磁片上並對其進行回顧性分析是可行的，但有時在資料到達時處理和運算元據可能是明智的或重要的。 例如，可以即時處理與金融交易相關的資料流程，以識別和拒絕潛在的欺詐易。
 
 ## <a name="interactive-analytics"></a>互動式分析
 
-除了執行預先定義的查詢來建立銷售、產能或股票價格的靜態儀表板，您可能也會想要以互動方式流覽資料。 互動式分析可讓您提出問題、查看結果、根據回應改變初始問題，或深入探索結果。 Azure Cosmos DB 中的 Apache Spark 可讓您快速回應和調整，以支援互動式查詢。
+除了運行預定義的查詢以創建銷售、生產率或股票價格的靜態儀表板外，您可能還希望以對話模式流覽資料。 互動式分析允許您提出問題、查看結果、根據回應更改初始問題或深入瞭解結果。 Azure Cosmos DB 中的 Apache Spark 通過快速回應和調整支援互動式查詢。
 
-## <a name="data-exploration-using-jupyter-notebooks"></a>使用 Jupyter 筆記本的資料探索
+## <a name="data-exploration-using-jupyter-notebooks"></a>使用朱派特筆記本進行資料探索
 
-當您有新的資料集時，在深入探索執行中的模型和測試之前，您必須檢查您的資料。 換句話說，您需要執行探索式資料分析。 資料探索可以通知數個決策。 例如，您可以找到詳細資料，例如適用于資料的方法、資料是否符合特定的模型假設、是否應清除資料、加以重構等等。藉由使用 Azure Cosmos DB 的原生內建 Jupyter 筆記本和 Apache Spark，您可以對交易式和分析資料進行快速且有效的探索式資料分析。
+當您有一個新的資料集時，在深入瞭解正在運行的模型和測試之前，您需要檢查資料。 換句話說，您需要執行探索性資料分析。 資料探索可以為多個決策提供資訊。 例如，您可以查找詳細資訊，例如適合在資料上使用的方法、資料是否符合某些建模假設、是否應清理資料、重組等。通過使用 Azure Cosmos DB 的本機內置 Jupyter 筆記本和 Apache Spark，您可以對事務和分析資料進行快速有效的探索性資料分析。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用這些使用案例，請前往下列文章：
+要開始使用這些用例，請訪問以下文章：
 
-* [Azure Cosmos DB 中的內建 Jupyter 筆記本](cosmosdb-jupyter-notebooks.md)
-* [如何啟用 Azure Cosmos 帳戶的筆記本](enable-notebooks.md)
-* [建立筆記本來分析資料並將其視覺化](create-notebook-visualize-data.md)
+* [Azure 宇宙 DB 中的內置猶太筆記本](cosmosdb-jupyter-notebooks.md)
+* [如何為 Azure Cosmos 帳戶啟用筆記本](enable-notebooks.md)
+* [創建筆記本以分析和視覺化資料](create-notebook-visualize-data.md)

@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中建立 Azure 資源角色的存取權審查-Azure AD |Microsoft Docs
-description: 瞭解如何在 Azure AD Privileged Identity Management （PIM）中建立 Azure 資源角色的存取權審查。
+title: 在 PIM - Azure AD 中創建 Azure 資源角色的訪問審查 |微軟文檔
+description: 瞭解如何在 Azure AD 特權標識管理 （PIM） 中創建 Azure 資源角色的訪問審閱。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,60 +16,60 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae70b8386b1dc3ebd570d2651cded3eda75dfc53
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847079"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中建立 Azure 資源角色的存取權審查
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在特權標識管理中創建 Azure 資源角色的訪問審閱
 
-員工的特殊許可權 Azure 資源角色的存取權會隨時間而改變。 若要降低與過時角色指派相關聯的風險，您應該定期查看存取權。 您可以使用 Azure Active Directory （Azure AD） Privileged Identity Management （PIM）來建立特殊許可權 Azure 資源角色的存取權審查。 您也可以設定自動進行的週期性存取審查。
+員工對特權 Azure 資源角色的存取權限會隨時間而變化。 要降低與陳舊角色指派相關的風險，應定期查看存取權限。 可以使用 Azure 活動目錄 （Azure AD） 特權標識管理 （PIM） 為特權 Azure 資源角色創建訪問審核。 您還可以配置自動發生的定期訪問審核。
 
-本文說明如何針對特殊許可權 Azure 資源角色建立一或多個存取權審查。
+本文介紹如何為特權 Azure 資源角色創建一個或多個訪問審核。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-[特殊許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-## <a name="open-access-reviews"></a>開啟存取權審查
+## <a name="open-access-reviews"></a>打開訪問審核
 
-1. 以特殊許可權角色管理員角色成員的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 以屬於特殊權限角色管理員角色一員的使用者身分登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 開啟 **Azure AD Privileged Identity Management**。
+1. 打開**Azure AD 特權標識管理**。
 
-1. 在左側功能表中，選取 [ **Azure 資源**]。
+1. 在左側功能表中，選擇**Azure 資源**。
 
-1. 選取您想要管理的資源，例如訂用帳戶或管理群組。
+1. 選擇要管理的資源，如訂閱或管理組。
 
-1. 在 [管理] 下，選取 [**存取評論**]。
+1. 在"管理"下，選擇**訪問審核**。
 
-    ![Azure 資源-存取評論清單，顯示所有評論的狀態](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Azure 資源 - 顯示所有審核狀態的訪問審核清單](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
 ## <a name="start-the-access-review"></a>開始存取權檢閱
 
-在指定存取權檢閱的設定後，請按一下 [啟動]。 存取權審查會出現在您的清單中，並顯示其狀態的指標。
+在指定存取權檢閱的設定後，請按一下 [啟動]****。 訪問審核將顯示在清單中，並帶有其狀態指示器。
 
-![存取顯示已開始審查狀態的評論清單](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![顯示已開始審核狀態的訪問審核清單](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
-依預設，Azure AD 會在檢閱開始不久後傳送電子郵件給檢閱者。 如果您選擇不讓 Azure AD 傳送電子郵件，請務必通知檢閱者有存取權檢閱等待他們完成。 您可以向他們說明如何[檢查 Azure 資源角色的存取權](pim-resource-roles-perform-access-review.md)。
+依預設，Azure AD 會在檢閱開始不久後傳送電子郵件給檢閱者。 如果您選擇不讓 Azure AD 傳送電子郵件，請務必通知檢閱者有存取權檢閱等待他們完成。 您可以向他們演示如何[查看對 Azure 資源角色的訪問](pim-resource-roles-perform-access-review.md)的說明。
 
 ## <a name="manage-the-access-review"></a>管理存取權檢閱
 
-當審核者在存取權審查的 [**總覽**] 頁面上完成審核時，您可以追蹤進度。 在[審核完成](pim-resource-roles-complete-access-review.md)之前，不會變更目錄中的任何存取權限。
+您可以在訪問審核的 **"概述"** 頁上跟蹤檢閱者在完成審核時的進度。 [在完成審核](pim-resource-roles-complete-access-review.md)之前，目錄中不會更改任何存取權限。
 
-![[存取評論] 總覽頁面，其中顯示審核的詳細資料](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![訪問審核概述頁面，顯示審核的詳細資訊](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
-如果這是一次性審查，則在存取權審查期間結束後，或系統管理員停止存取權審查之後，請依照[完成 Azure 資源角色的存取權檢查](pim-resource-roles-complete-access-review.md)中的步驟來查看並套用結果。  
+如果這是一次性審核，則在訪問審核期結束後或管理員停止訪問審閱後，請按照["完成 Azure 資源角色的訪問審閱"](pim-resource-roles-complete-access-review.md)中的步驟查看和應用結果。  
 
-若要管理一系列的存取權審查，請流覽至 [存取權審查]，您會發現近期出現在排程審查中，並據此編輯結束日期或新增/移除審核者。
+要管理一系列訪問審核，請導航到訪問審核，您將在"計畫審核"中找到即將出現的事件，並編輯結束日期或相應地添加/刪除檢閱者。
 
-根據您在**完成設定時**的選擇，自動套用會在審核的結束日期之後或當您手動停止審核時執行。 審核的狀態會從 [**已完成**]**變更為 [** 中繼狀態]，例如 [套用] 和 [最後] [套用**的狀態]** 。 在幾分鐘內，您應該會看到遭到拒絕的使用者（如果有的話）從角色中移除。
+根據您在**完成設置**中的選擇，自動應用將在審核結束日期後或手動停止審核時執行。 審核的狀態將從 **"已完成"** 更改為中間狀態，如 **"應用**"，最後更改為"**已應用"。** 您應該希望在幾分鐘內看到被拒絕的使用者（如果有）從角色中刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [審查 Azure 資源角色的存取權](pim-resource-roles-perform-access-review.md)
-- [完成 Azure 資源角色的存取權審查](pim-resource-roles-complete-access-review.md)
-- [建立 Azure AD 角色的存取權審查](pim-how-to-start-security-review.md)
+- [查看對 Azure 資源角色的訪問](pim-resource-roles-perform-access-review.md)
+- [完成 Azure 資源角色的訪問審核](pim-resource-roles-complete-access-review.md)
+- [創建 Azure AD 角色的訪問審核](pim-how-to-start-security-review.md)

@@ -10,10 +10,10 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
 ms.openlocfilehash: 20442a6618ca9357bb3be95879b68bffca45a40d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022948"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 轉譯的參考架構
@@ -28,7 +28,7 @@ ms.locfileid: "77022948"
 
 * **網路** - 內部部署：Azure ExpressRoute 或 VPN。 Azure：Azure VNet。
 
-* **儲存體** - 輸入和輸出檔案：使用 Azure VM 的 NFS 或 CFS，可透過「Azure 檔案同步」或 RSync 與內部部署儲存體同步處理。 或者： Avere vFXT 使用 NFS 從內部部署 NAS 裝置輸入或輸出檔案。
+* **儲存體** - 輸入和輸出檔案：使用 Azure VM 的 NFS 或 CFS，可透過「Azure 檔案同步」或 RSync 與內部部署儲存體同步處理。 或者：Avere vFXT 使用 NFS 從本地 NAS 設備輸入或輸出檔案。
 
   ![雲端高載 - 混合使用 NFS 或 CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 

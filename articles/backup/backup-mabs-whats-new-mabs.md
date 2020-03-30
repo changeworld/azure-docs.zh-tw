@@ -4,27 +4,27 @@ description: Microsoft Azure 備份伺服器可提供您經過強化的備份功
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582801"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器的新功能
 
-Microsoft Azure 備份 Server 第3版（MABS V3）是最新的升級，其中包含重大的錯誤修正、Windows Server 2019 支援、SQL 2017 支援，以及其他功能和增強功能。 若要檢視已修正的錯誤清單及 MABS V3 的安裝指示，請參閱 KB 文章 [4457852](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)。
+Microsoft Azure 備份伺服器版本 3 （MABS V3） 是最新的升級，包括嚴重錯誤修復、Windows Server 2019 支援、SQL 2017 支援以及其他功能和增強功能。 若要檢視已修正的錯誤清單及 MABS V3 的安裝指示，請參閱 KB 文章 [4457852](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)。
 
 MABS V3 包含下列功能︰
 
 ## <a name="volume-to-volume-migration"></a>磁碟區對磁碟區移轉
 
-藉由 MABS V2 中的 Modern Backup Storage (MBS) 功能，我們已推出工作負載感知儲存體，您可以在其中設定特定工作負載，使其根據儲存體屬性來備份到特定儲存體。 不過，完成設定後，您可能會需要將特定資料來源的備份移至其他儲存體，以最佳化資源使用率。 MABS V3 可讓您在[三個步驟](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)中遷移備份，並將其設定為儲存至不同的磁片區。
+藉由 MABS V2 中的 Modern Backup Storage (MBS) 功能，我們已推出工作負載感知儲存體，您可以在其中設定特定工作負載，使其根據儲存體屬性來備份到特定儲存體。 不過，完成設定後，您可能會需要將特定資料來源的備份移至其他儲存體，以最佳化資源使用率。 MABS V3 使您能夠遷移備份，並將它們配置為在[三個步驟](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)中存儲到不同的卷。
 
 ## <a name="prevent-unexpected-data-loss"></a>避免非預期的資料遺失
 
 在企業中，MABS 會由一組系統管理員來管理。 雖然有備份適用的儲存體指導方針，但如果提供錯誤磁碟區給 MABS 作為備份儲存體，則可能會遺失重要資料。 透過 MABS V3，您可以使用[這些 PowerShell Cmdlet](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage) 將那些磁碟區設為不可作為儲存體的磁碟區，以避免這類情形。
 
-## <a name="custom-size-allocation"></a>自訂大小配置
+## <a name="custom-size-allocation"></a>自訂大小分配
 
 Modern Backup Storage (MBS) 耗用的儲存體很少，並且只在有需要時取用儲存體。 為達此目的，在為即將要備份的資料設定保護時，MABS 會計算該資料的大小。 不過，如果要同時備份許多檔案和資料夾 (例如備份檔案伺服器)，計算大小可能需要很長的時間。 透過 MABS V3，您可以將 MABS 設定為接受預設的磁碟區大小，而不是計算每個檔案的大小，藉此節省時間。
 

@@ -1,5 +1,5 @@
 ---
-title: 監視分區化多租使用者資料庫的效能
+title: 監視分片多租戶資料庫的性能
 description: 監視及管理多租用戶 SaaS 應用程式中分區化多租用戶 Azure SQL 資料庫的效能
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214150"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>監視及管理多租用戶 SaaS 應用程式中分區化多租用戶 Azure SQL 資料庫的效能
@@ -30,12 +30,12 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 > 
 > * 透過執行提供的負載產生器，來模擬分區化多租用戶資料庫上的使用量
 > * 在資料庫回應負載增加時加以監視
-> * 擴大資料庫，以回應增加的資料庫負載
+> * 相應增加資料庫，以回應增加的資料庫負載
 > * 將租用戶佈建到單一租用戶資料庫
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip Tickets SaaS 多租用戶資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 要在五分鐘內部署，請參閱[部署和流覽翼尖票證 SaaS 多租戶資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS 效能管理模式簡介
@@ -45,17 +45,17 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 ### <a name="performance-management-strategies"></a>效能管理策略
 
 * 若要避免手動監視效能，最有效的方式是**設定在資料庫偏離正常範圍時觸發的警示**。
-* 若要回應資料庫計算大小的短期波動，可以**相應增加或減少 DTU 層級**。 如果這樣的波動是以定期或可預測的方式發生，則**可排定自動調整資料庫**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以縮小。
+* 若要回應資料庫計算大小的短期波動，可以**相應增加或減少 DTU 層級**。 如果這樣的波動是以定期或可預測的方式發生，則**可排定自動調整資料庫**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以相應減少。
 * 若要回應長期波動或租用戶中的變更，**個別租用戶可以移至其他租用戶**。
-* 若要回應「個別」租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 事先知道這一點時，可以事先移動租使用者，以確保資料庫一律擁有它所需的資源，並避免影響多租使用者資料庫中的其他租使用者。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
+* 若要回應「個別」** 租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 當事先知道這一點時，可以先發制人地移動租戶，以確保資料庫始終具有所需的資源，並避免對多租戶資料庫中的其他租戶產生影響。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
 
 [Azure 入口網站](https://portal.azure.com)提供大部分資源的內建監視與警示功能。 針對 SQL Database，可使用資料庫監視與警示功能。 這個內建的監視與警示功能是資源特定，因此針對少數資源使用很方便，但是搭配許多資源使用時則不方便。
 
-在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/)。 這是個別的 Azure 服務，可針對在 Log Analytics 工作區中收集的已發出記錄提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
+對於使用許多資源的高容量方案，可以使用[Azure 監視器日誌](https://azure.microsoft.com/services/log-analytics/)。 這是一個單獨的 Azure 服務，該服務對日誌分析工作區中收集的已發出日誌進行分析。 Azure 監視器日誌可以從許多服務收集遙測資料，並用於查詢和設置警報。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>取得 Wingtip Tickets SaaS 多租用戶資料庫應用程式原始碼和指令碼
 
-可在 [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中使用 Wingtip Tickets SaaS 多租用戶資料庫指令碼和應用程式來源程式碼。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+翼尖門票 SaaS 多租戶資料庫腳本和應用程式原始程式碼可在[翼尖門票SaaS-多租戶DB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存儲庫中提供。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="provision-additional-tenants"></a>佈建其他租用戶
 
@@ -63,42 +63,42 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 
 如果您已在先前的教學課程中佈建批次的租用戶，請跳至[模擬所有租用戶資料庫上的使用量](#simulate-usage-on-all-tenant-databases)一節。
 
-1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設定 **$DemoScenario** = **1**，_佈建批次的租用戶_
+1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
+1. 設置 **$DemoScenario** = **1**，_預配一批租戶_
 1. 按 **F5** 以執行指令碼。
 
 指令碼會在幾分鐘內將 17 個租用戶部署至多租用戶資料庫。 
 
-New-TenantBatch 指令碼會使用分區化多租用戶資料庫內的唯一租用戶索引鍵來建立新的租用戶，並使用租用戶名稱和場地類型將它們初始化。 這與應用程式佈建新租用戶的方式一致。 
+New-TenantBatch** 指令碼會使用分區化多租用戶資料庫內的唯一租用戶索引鍵來建立新的租用戶，並使用租用戶名稱和場地類型將它們初始化。 這與應用程式佈建新租用戶的方式一致。 
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>模擬所有租用戶資料庫的使用情形
 
-提供的 Demo-PerformanceMonitoringAndManagement.ps1 指令碼會模擬對多租用戶資料庫執行的工作負載。 使用其中一個可用的負載案例產生負載：
+提供的 Demo-PerformanceMonitoringAndManagement.ps1** 指令碼會模擬對多租用戶資料庫執行的工作負載。 使用其中一個可用的負載案例產生負載：
 
 | 示範 | 狀況 |
 |:--|:--|
-| 2 | 產生一般強度負載（大約 30 DTU） |
+| 2 | 生成正常強度負載（約 30 DTU） |
 | 3 | 每個租用戶產生具有更長高載的負載|
-| 4 | 為每個租使用者產生具有更高 DTU 高載的負載（大約 70 DTU）|
-| 5 | 在單一租使用者上產生高濃度（大約 90 DTU），再加上標準強度負載在所有其他租使用者上 |
+| 4 | 生成負載時每個租戶的 DTU 突發數較高（大約 70 DTU）|
+| 5 | 在單個租戶上生成高強度（約 90 DTU），以及所有其他租戶的正常強度負載 |
 
-負載產生器會將僅限「綜合」 CPU 的負載套用到每一個租用戶資料庫。 產生器會針對每個租用戶資料庫啟動作業，這會定期呼叫產生負載的預存程序。 負載層級 (單位為 DTU)、持續時間和間隔會跨所有的資料庫而變動，以模擬無法預測的租用戶活動。
+負載產生器會將僅限「綜合」** CPU 的負載套用到每一個租用戶資料庫。 產生器會針對每個租用戶資料庫啟動作業，這會定期呼叫產生負載的預存程序。 負載層級 (單位為 DTU)、持續時間和間隔會跨所有的資料庫而變動，以模擬無法預測的租用戶活動。
 
-1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設定 **$DemoScenario** = **2**，_產生一般強度負載_
+1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
+1. 設置 **$DemoScenario** = **2**，_生成正常強度負載_
 1. 按下 **F5** 將負載套用到您的所有的租用戶。
 
 Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS 應用程式上的負載通常是偶爾發生且無法預測的。 為了模擬此情況，負載產生器會產生跨所有租用戶散發的隨機負載。 需要數分鐘才會出現負載模式，所以在嘗試監視以下各節中的負載時，請執行負載產生器 3-5 分鐘。
 
 > [!IMPORTANT]
-> 負載產生器正於新的 PowerShell 視窗中以一系列作業的方式執行。 如果您關閉工作階段，負載產生器就會停止。 負載產生器會維持 job-invoking 狀態，它會在產生器啟動後佈建的任何新租用戶上產生負載。 使用 *CTRL-C* 來停止叫用新作業並結束指令碼。 負載產生器將會繼續執行，但只在現有租用戶上執行。
+> 負載產生器正於新的 PowerShell 視窗中以一系列作業的方式執行。 如果您關閉工作階段，負載產生器就會停止。 負載產生器會維持 job-invoking** 狀態，它會在產生器啟動後佈建的任何新租用戶上產生負載。 使用 *CTRL-C* 來停止叫用新作業並結束指令碼。 負載產生器將會繼續執行，但只在現有租用戶上執行。
 
 ## <a name="monitor-resource-usage-using-the-azure-portal"></a>使用 Azure 入口網站監視資源使用量
 
 若要監視從已套用的負載所產生的資源使用量，請開啟入口網站並移至包含租用戶的多租用戶資料庫 **tenants1**：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)並瀏覽至伺服器 tenants1-mt-&lt;USER&gt;。
-1. 向下捲動並找出資料庫，然後按一下 [tenants1]。 此分區化多租用戶資料庫目前為止包含所建立的所有租用戶。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)並瀏覽至伺服器 tenants1-mt-&lt;USER&gt;**。
+1. 向下捲動並找出資料庫，然後按一下 [tenants1]****。 此分區化多租用戶資料庫目前為止包含所建立的所有租用戶。
 
 ![資料庫圖表](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
 
@@ -108,22 +108,22 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 
 在資料庫上設定 \>75% 使用率時觸發的警示，如下所示：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 tenants1 資料庫 (在 tenants1-mt-&lt;USER&gt; 伺服器上)。
-1. 按一下 [警示規則]，然後按一下 [+ 加入警示]：
+1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 tenants1** 資料庫 (在 tenants1-mt-&lt;USER&gt;** 伺服器上)。
+1. 按一下 [警示規則]****，然後按一下 [+ 加入警示]****：
 
    ![加入警示](media/saas-multitenantdb-performance-monitoring/add-alert.png)
 
-1. 提供名稱，例如「高 DTU」，
+1. 提供名稱，例如「高 DTU」****，
 1. 設定下列值：
    * **度量 = DTU 百分比**
    * **條件 = 大於**
    * **閾值 = 75**。
    * **期間 = 過去 30 分鐘內**
-1. 將電子郵件地址新增至 [其他系統管理員電子郵件] 方塊，然後按一下 [確定]。
+1. 將電子郵件地址新增至 [其他系統管理員電子郵件]** 方塊，然後按一下 [確定]****。
 
    ![設定警示](media/saas-multitenantdb-performance-monitoring/set-alert.png)
 
-## <a name="scale-up-a-busy-database"></a>擴大忙碌的資料庫
+## <a name="scale-up-a-busy-database"></a>相應增加忙碌的資料庫
 
 如果資料庫上的負載層級增加到超出資料庫最大值且達到 100% DTU 使用率，就會影響資料庫效能，可能拖慢查詢回應時間。
 
@@ -133,29 +133,29 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 
 您可以藉由增加產生器所產生的負載，模擬忙碌的資料庫。 讓租用戶高載時間更頻繁且更長，增加多租戶資料庫上的負載而不變更個別租用戶的需求。 在入口網站或從 PowerShell 可以輕鬆地相應增加資料庫。 此練習使用入口網站。
 
-1. 設定 *$DemoScenario* = **3**，_每個資料庫產生時間更長、更頻繁高載的負載_，以增加資料庫的彙總負載強度，而不變更每個租用戶所需的尖峰負載。
+1. 設置 *$DemoScenario* = **3**，_生成每個資料庫更長、更頻繁的突發的負載_，以提高資料庫上的聚合負載強度，而無需更改每個租戶所需的峰值負載。
 1. 按下 **F5** 將負載套用到您的所有租用戶資料庫。
 1. 在 Azure 入口網站中移至 **tenants1** 資料庫。
 
 監視上方圖表上增加的資料庫 DTU 使用量。 需要花數分鐘讓新的高負載開始作用，但您應該很快會看到資料庫開始達到最大使用率，而隨著負載穩定進入新的模式，它會快速地使資料庫多載。
 
-1. 若要擴大資料庫，請在 [設定] 刀鋒視窗中按一下 [定價層 (調整 DTU)]。
-1. 將 [DTU] 設定調整為 **100**。 
-1. 按一下 [套用] 以提交調整資料庫的要求。
+1. 若要相應增加資料庫，請在 [設定] 刀鋒視窗中按一下 [定價層 (調整 DTU)]****。
+1. 將 [DTU]**** 設定調整為 **100**。 
+1. 按一下 [套用]**** 以提交調整資料庫的要求。
 
-返回至 **tenants1** > **概觀** 以檢視監視圖表。 監視為資料庫提供更多資源的影響 (雖然有一些租用戶和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 DTU，而下方圖表上的 100% 仍是 50 個 DTU。
+返回**租戶1** > **概述**以查看監視圖表。 監視為資料庫提供更多資源的影響 (雖然有一些租用戶和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 DTU，而下方圖表上的 100% 仍是 50 個 DTU。
 
 整個過程中，資料庫會維持連線且完全可供使用。 應用程式程式碼應該一律撰寫為重試中斷的連線，且因此重新連線至資料庫。
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在它自己的資料庫中佈建新租用戶 
 
-分區化多租用戶模型可讓您選擇是否要在多租用戶資料庫與其他租用戶佈建新的租用戶，或是在其自己的資料庫中佈建租用戶。 藉由在租用戶自己的資料庫中佈建租用戶，會受惠於個別資料庫中的隔離本質，可讓您獨立於其他租用戶的效能管理該租用戶、獨立於其他租用戶進行還原等等。例如，您可能會選擇將免費試用或一般客戶放在多租用戶資料庫中，而將進階客戶放在個別的資料庫。  如果您建立了隔離的單一租用戶資料庫，仍可在彈性集區中將它們管理共同，以最佳化資源成本。
+分區化多租用戶模型可讓您選擇是否要在多租用戶資料庫與其他租用戶佈建新的租用戶，或是在其自己的資料庫中佈建租用戶。 通過在自己的資料庫中預配租戶，它受益于單獨資料庫中固有的隔離，允許您獨立于其他租戶管理該租戶的性能，獨立于其他租戶還原該租戶，等等。例如，您可以選擇將免費試用或常規客戶放在多租戶資料庫中，將高級客戶放在各個資料庫中。  如果您建立了隔離的單一租用戶資料庫，仍可在彈性集區中將它們管理共同，以最佳化資源成本。
 
 如果您已在它自己的資料庫中佈建新的租用戶，請略過接下來的步驟。
 
-1. 在 **PowerShell ISE** 中，開啟.…\\Learning Modules\\ProvisionTenants\\Demo-ProvisionTenants.ps1。 
+1. 在 **PowerShell ISE** 中，開啟.…\\Learning Modules\\ProvisionTenants\\Demo-ProvisionTenants.ps1**。 
 1. 修改 **$TenantName = "Salix Salsa"** 和 **$VenueType  = "dance"**
-1. 設定 **$Scenario** = **2**，_在新的單一租用戶資料庫中佈建租用戶_
+1. 設置 **$Scenario** = **2**，_在新的單租戶資料庫中預配租戶_
 1. 按 **F5** 以執行指令碼。
 
 指令碼會在另一個資料庫中佈建此租用戶、使用目錄註冊資料庫與租用戶，然後在瀏覽器中開啟 [租用戶的事件] 頁面。 重新整理 [事件中樞] 頁面，您就會看到 "Salix Salsa" 已新增為場地。
@@ -167,11 +167,11 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 本練習會模擬在銷售熱門事件的票券時，Salix Salsa 發生高負載的效果。
 
 1. 開啟 …\\*Demo-PerformanceMonitoringAndManagement.ps1* 指令碼。
-1. 設定 **$DemoScenario = 5**，在_單一租使用者上產生一般負載加上高負載（大約 90 DTU）。_
+1. 設置 **$DemoScenario = 5**，_生成正常負載加上單個租戶（大約 90 DTU）上的高負載。_
 1. 設定 **$SingleTenantName = Salix Salsa**
 1. 使用 **F5** 執行指令碼。
 
-移至入口網站並瀏覽至 **salixsalsa** > **概觀**以檢視監視圖表。 
+轉到門戶並導航到**salixsalsa** > **概述**以查看監視圖表。 
 
 ## <a name="other-performance-management-patterns"></a>其他效能管理模式
 
@@ -190,7 +190,7 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 > [!div class="checklist"]
 > * 透過執行提供的負載產生器，來模擬分區化多租用戶資料庫上的使用量
 > * 在資料庫回應負載增加時加以監視
-> * 擴大資料庫，以回應增加的資料庫負載
+> * 相應增加資料庫，以回應增加的資料庫負載
 > * 將租用戶佈建到單一租用戶資料庫
 
 ## <a name="additional-resources"></a>其他資源

@@ -1,6 +1,6 @@
 ---
 title: 加強 Azure 中的遠端管理安全性 | Microsoft Docs
-description: 本文將討論在管理 Microsoft Azure 環境（包括雲端服務、虛擬機器及自訂應用程式）時，增強遠端系統管理安全性的步驟。
+description: 本文討論在管理 Microsoft Azure 環境（包括雲服務、虛擬機器和自訂應用程式）時增強遠端系統管理安全性的步驟。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73643788"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
-Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 有時候，管理功能是透過 Web 式主控台來執行，例如 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
+Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，管理功能通過基於 Web 的主控台（如[Azure 門戶](https://azure.microsoft.com/features/azure-portal/)）執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
 
 雖然多項存取和管理功能可提供一組豐富的選項，但選項太多也可能會讓雲端部署承受巨大風險。 因而難以管理、追蹤和稽核管理動作。 選項太多也可能會因為用來管理雲端服務之用戶端端點所進行的存取不受管制而招致安全性威脅。 使用一般工作站或私人工作站來開發和管理基礎結構將會打開無法預期的威脅媒介，例如網頁瀏覽 (例如水坑攻擊) 或電子郵件 (例如社交工程和網路釣魚)。
 
@@ -186,7 +186,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ### <a name="dos-and-donts"></a>建議事項和避免事項
 請勿因為工作站已封鎖起來，就認為不需要滿足其他常見的安全性需求。 因為系統管理員帳戶通常擁有提高權限的存取層級，因此潛在風險會提高。 下表顯示風險和其替代安全作法的範例。
 
-| 避免事項 | 建議事項 |
+| 不要做的事 | 要做的事 |
 | --- | --- |
 | 請勿以電子郵件寄送用於系統管理員存取權或其他機密資料的認證 (例如 SSL 或管理憑證) |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
 | - | 主動管理您的管理憑證生命週期。 |
@@ -218,7 +218,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。 如果您使用 Windows To Go，請只搭配 BitLocker 使用加密的 USB 金鑰。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 使用強化後的工作站組態來管理 Azure 雲端服務、虛擬機器和應用程式，可協助您避免遠端管理重要 IT 基礎結構所產生的眾多風險和威脅。 Azure 和 Windows 皆可提供相關機制供您保護和控制通訊、驗證和用戶端行為。
 
 ## <a name="next-steps"></a>後續步驟
@@ -226,4 +226,4 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 * [保護特殊權限存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – 取得設計和建置安全的系統管理工作站以管理 Azure 的技術詳細資料
 * [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保護 Azure 網狀架構和在 Azure 上執行之工作負載的 Azure 平台功能
-* [Microsoft 安全性回應中心](https://www.microsoft.com/msrc) -- 可在其中回報 Microsoft 安全性弱點 (包括 Azure 的問題) 或透過電子郵件傳送給 [secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft 安全回應中心](https://www.microsoft.com/msrc)-- 微軟安全性漏洞（包括 Azure 問題）可以報告或通過電子郵件發送到[secure@microsoft.com](mailto:secure@microsoft.com)

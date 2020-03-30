@@ -1,5 +1,5 @@
 ---
-title: AD 報告 API 與憑證的教學課程 |Microsoft Docs
+title: 帶證書的 AD 報告 API 教程 |微軟文檔
 description: 本教學課程說明如何使用 Azure AD 報告 API 配合憑證認證來取得目錄中的資料，而不需使用者介入。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014274"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教學課程：使用 Azure Active Directory 報告 API 配合憑證來取得資料
@@ -29,7 +29,7 @@ ms.locfileid: "74014274"
 
 在本教學課程中，您會了解如何使用測試憑證來存取 MS 圖形 API 以進行報告。 我們不建議在生產環境中使用測試憑證。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. 若要存取登入資料，請確定您有進階 (P1/P2) 授權的 Azure Active Directory 租用戶。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 請注意，如果您在升級前沒有任何活動資料，則在升級至進階授權之後，報告需要幾天的時間才會顯示出資料。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "74014274"
     - 從使用者、應用程式金鑰和憑證存取權杖 (使用 ADAL)
     - 處理分頁結果的圖形 API
 
-6. 如果您第一次使用模組執行 **Install-MSCloudIdUtilsModule**，則改用 **Import-Module** Powershell 命令將其匯入。 您的會話看起來應該像這個畫面： ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果您第一次使用模組執行 **Install-MSCloudIdUtilsModule**，則改用 **Import-Module** Powershell 命令將其匯入。 您的會話應類似于此螢幕：Windows![電源外殼](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. 使用 **New-SelfSignedCertificate** Powershell commandlet 建立測試憑證。
 
@@ -61,13 +61,13 @@ ms.locfileid: "74014274"
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>使用 Azure Active Directory 報告 API 搭配憑證來取得資料
 
-1. 導覽至 [Azure 入口網站](https://portal.azure.com)，選取 [Azure Active Directory]，接著選取 [應用程式註冊]，然後從清單中選擇您的應用程式。 
+1. 導覽至 [Azure 入口網站](https://portal.azure.com)，選取 [Azure Active Directory]****，接著選取 [應用程式註冊]****，然後從清單中選擇您的應用程式。 
 
-2. 選取 [設定] > [金鑰]，然後選取 [上載公開金鑰]。
+2. 選擇**設置** > **鍵**並選擇 **"上傳公開金鑰**"。
 
-3. 從上一個步驟中選取憑證檔案，然後選取 [儲存]。 
+3. 從上一個步驟中選取憑證檔案，然後選取 [儲存]****。 
 
-4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請從入口網站的應用程式頁面中前往 [設定]，然後按一下 [金鑰]。 指紋將會在 [公開金鑰] 清單下方。
+4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請從入口網站的應用程式頁面中前往 [設定]****，然後按一下 [金鑰]****。 指紋將會在 [公開金鑰]**** 清單下方。
 
 5. 在內嵌資訊清單編輯器中開啟應用程式資訊清單，然後使用下列結構描述將 *keyCredentials* 屬性取代為新的憑證資訊。 
 
@@ -102,5 +102,5 @@ ms.locfileid: "74014274"
 ## <a name="next-steps"></a>後續步驟
 
 * [取得報告 API 的第一印象](concept-reporting-api.md)
-* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) \(英文\) 
-* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin) \(英文\)
+* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

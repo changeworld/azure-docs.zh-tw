@@ -1,5 +1,5 @@
 ---
-title: Azure AD 的 Azure 磁碟加密（上一個版本）
+title: Azure 磁片加密與 Azure AD（上一個版本）
 description: 本文提供要對 IaaS VM 使用 Microsoft Azure 磁碟加密所需滿足的先決條件。
 author: msmbaldwin
 ms.service: security
@@ -8,19 +8,19 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 33b257e9d344fc31df072509f105d2e8fd1bd29b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72245171"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD 的 Azure 磁碟加密（上一個版本）
+# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure 磁片加密與 Azure AD（上一個版本）
 
-**新版的 Azure 磁碟加密不需要提供 Azure AD 應用程式參數，即可啟用 VM 磁碟加密。若使用新版本，您就不再需要在啟用加密步驟期間提供 Azure AD 認證。若使用新版本，所有新的 VM 必須經過加密，而不需要 Azure AD 應用程式參數。若要使用新版本來查看啟用 VM 磁片加密的指示，請參閱[適用于 Windows vm 的 Azure 磁碟加密](disk-encryption-overview.md)。已經使用 Azure AD 應用程式參數進行加密的 VM 仍然受支援，應該繼續使用 AAD 語法進行維護。**
+**新版本的 Azure 磁片加密消除了提供 Azure AD 應用程式參數以啟用 VM 磁片加密的要求。使用新版本時，不再需要在啟用加密步驟期間提供 Azure AD 憑據。使用新版本，必須在沒有 Azure AD 應用程式參數的情況下對所有新 VM 進行加密。要查看使用新版本啟用 VM 磁片加密的說明，請參閱 Windows [VM 的 Azure 磁片加密](disk-encryption-overview.md)。仍支援已使用 Azure AD 應用程式參數加密的 VM，應繼續使用 AAD 語法進行維護。**
 
-本文針對具有 Azure AD （舊版） Azure 磁碟加密的額外需求和必要條件的[Windows vm 補充 Azure 磁碟加密](disk-encryption-overview.md)。 [[支援的 vm 和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)] 區段保持不變。
+本文對[Windows VM 的 Azure 磁片加密](disk-encryption-overview.md)補充了 Azure 磁片加密的附加要求和與 Azure AD（上一個版本）一起進行 Azure 磁片加密的先決條件。 [支援的 VM 和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)部分保持不變。
 
-## <a name="networking-and-group-policy"></a>網路和群組原則
+## <a name="networking-and-group-policy"></a> 網路和群組原則
 
 **若要使用較舊的 AAD 參數語法啟用 Azure 磁碟加密功能，IaaS VM 必須符合下列網路端點組態需求：** 
   - 若要取得用來連線至金鑰保存庫的權杖，IaaS VM 必須能連線至 Azure Active Directory 端點 \[login.microsoftonline.com\]。
@@ -41,17 +41,17 @@ ms.locfileid: "72245171"
 **群組原則：**
  - Azure 磁碟加密解決方案對 Windows IaaS VM 使用 BitLocker 外部金鑰保護裝置。 對於加入網域的 VM，請勿推送任何會強制使用 TPM 保護裝置的群組原則。 如需關於「在不含相容 TPM 的情形下允許使用 BitLocker」的群組原則相關資訊，請參閱 [BitLocker 群組原則參考文件](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
--  具有自訂群組原則之已加入網域虛擬機器上的 BitLocker 原則必須包含下列設定：[設定 BitLocker 修復資訊的使用者儲存體-> 允許256位的修復金鑰](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 當 BitLocker 的自訂群組原則設定不相容時，Azure 磁碟加密將會失敗。 在沒有正確原則設定的電腦上，您可能必須套用新的原則、強制新的原則進行更新 (gpupdate.exe /force)，然後重新啟動。  
+-  具有自訂群組策略的域加入虛擬機器上的 BitLocker 策略必須包括以下設置：[配置使用者存儲的 BitLocker 恢復資訊 ->允許 256 位修復金鑰](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 當 BitLocker 的自訂群組原則設定不相容時，Azure 磁碟加密將會失敗。 在沒有正確原則設定的電腦上，您可能必須套用新的原則、強制新的原則進行更新 (gpupdate.exe /force)，然後重新啟動。  
 
-## <a name="encryption-key-storage-requirements"></a>加密金鑰儲存需求  
+## <a name="encryption-key-storage-requirements"></a>加密金鑰存儲要求  
 
-Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁片加密金鑰和密碼。 您的金鑰保存庫和 Vm 必須位於相同的 Azure 區域和訂用帳戶中。
+Azure 磁片加密需要 Azure 金鑰保存庫來控制和管理磁片加密金鑰和機密。 金鑰保存庫和 VM 必須駐留在同一 Azure 區域和訂閱中。
 
-如需詳細資訊，請參閱[使用 Azure AD 為 Azure 磁碟加密建立和設定金鑰保存庫（舊版）](disk-encryption-key-vault-aad.md)。
+有關詳細資訊，請參閱[使用 Azure AD 創建和配置 Azure 磁片加密的金鑰保存庫（上一版本）。](disk-encryption-key-vault-aad.md)
  
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure AD 建立和設定 Azure 磁碟加密的金鑰保存庫（舊版）](disk-encryption-key-vault-aad.md)
-- [在 Windows Vm 上使用 Azure AD 啟用 Azure 磁碟加密（舊版）](disk-encryption-windows-aad.md)
-- [Azure 磁碟加密必要條件 CLI 腳本](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure 磁碟加密必要條件 PowerShell 腳本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [使用 Azure AD 創建和配置 Azure 磁片加密的金鑰保存庫（上一版本）](disk-encryption-key-vault-aad.md)
+- [在 Windows VM 上使用 Azure AD 啟用 Azure 磁片加密（上一個版本）](disk-encryption-windows-aad.md)
+- [Azure 磁片加密先決條件 CLI 腳本](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure 磁片加密先決條件 PowerShell 腳本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c83c57be63ae9e2a4d4113accaefe8a2c2b525
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561967"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>使用 Azure Active Directory 新增或移除群組成員
@@ -27,17 +27,17 @@ ms.locfileid: "68561967"
 
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [Azure Active Directory]，然後選取 [群組]。
+2. 選取 [Azure Active Directory]****，然後選取 [群組]****。
 
-3. 從 [群組 - 所有群組] 頁面，搜尋並選取您要新增成員的群組。 在此案例中，請使用我們先前建立的群組 [MDM 原則 - 西部]。
+3. 從 [群組 - 所有群組]**** 頁面，搜尋並選取您要新增成員的群組。 在此案例中，請使用我們先前建立的群組 [MDM 原則 - 西部]****。
 
-    ![已醒目提示群組名稱的 [群組 - 所有群組] 頁面](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![群組-所有群組頁面，已反白顯示群組名稱](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
-4. 從 [MDM 原則 - 西部概觀] 頁面的 [管理] 區域中，選取 [成員]。
+4. 從 [MDM 原則 - 西部概觀]**** 頁面的 [管理]**** 區域中，選取 [成員]****。
 
     ![已醒目提示 [成員] 選項的 [MDM 原則 - 西部概觀] 頁面](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. 選取 [新增成員]，然後搜尋並選取您要新增至群組的每個成員，然後選擇 [選取]。
+5. 選取 [新增成員]****，然後搜尋並選取您要新增至群組的每個成員，然後選擇 [選取]****。
 
     您會收到一則訊息，指出已成功新增成員。
 
@@ -47,9 +47,9 @@ ms.locfileid: "68561967"
 
 ## <a name="to-remove-group-members"></a>移除群組成員
 
-1. 從 [群組 - 所有群組] 頁面，搜尋並選取您要移除成員的群組。 我們會再次使用 [MDM 原則 - 西部]。
+1. 從 [群組 - 所有群組]**** 頁面，搜尋並選取您要移除成員的群組。 我們會再次使用 [MDM 原則 - 西部]****。
 
-2. 從 [管理] 區域中選取 [成員]，搜尋並選取要移除的成員名稱，然後選取 [移除]。
+2. 從 [管理]**** 區域中選取 [成員]****，搜尋並選取要移除的成員名稱，然後選取 [移除]****。
 
     ![具有 [移除] 選項的成員資訊頁面](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 
@@ -63,4 +63,4 @@ ms.locfileid: "68561967"
 
 - [管理群組中使用者的動態規則](../users-groups-roles/groups-create-rule.md)
 
-- [將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [將 Azure 訂閱關聯或添加到 Azure 活動目錄](active-directory-how-subscriptions-associated-directory.md)

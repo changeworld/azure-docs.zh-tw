@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70139149"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 產品建議
@@ -38,7 +38,7 @@ Azure Data Factory 是許多服務之一，可用來實作解決方案加速器�
 
 最後，零售商需要追蹤整體的向上銷售及交叉銷售點擊轉換銷售成功等情況，以測量其方法的效率並調整未來的建議。
 
-## <a name="solution-overview"></a>解決方案概觀
+## <a name="solution-overview"></a>方案概觀
 此範例使用案例已被實際的 Azure 使用者透過使用 Azure Data Factory 及其他 Cortana Intelligence 元件服務 (包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)) 來解決並實作。
 
 線上零售商使用 Azure Blob 存放區、內部部署 SQL Server、Azure SQL DB 和關聯式資料市集做為整個工作流程的資料儲存體選項。  Blob 存放區包含客戶資訊、客戶行為資料和產品資訊資料。 產品資訊資料包含 SQL 資料倉儲中的產品品牌資訊和產品目錄預存內部部署。 

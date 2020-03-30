@@ -1,5 +1,5 @@
 ---
-title: 進階 RS 服務層級淘汰
+title: 高級 RS 服務層停用
 description: 進階 RS 服務層級已進入淘汰階段，支援也將終止 - 請參閱移轉選項。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
 ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821034"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database 進階 RS 服務層級 (預覽狀態) 進入淘汰階段 - 移轉選項
@@ -26,7 +26,7 @@ ms.locfileid: "73821034"
 
 - 虛擬核心服務層級
 
-  **以虛擬核心為基礎購買模型**中的**一般用途**與[業務關鍵](sql-database-service-tiers-vcore.md)服務層級。 這兩個服務層級可供一般使用。 VCore 為基礎的購買模型也提供**超大規模資料庫**服務層級，可根據您的工作負載需求調整，並在每個資料庫中自動相應增加至 100 TB。 超大規模資料庫的服務層提供相當於[以 DTU 為基礎購買模型](sql-database-service-tiers-dtu.md)中的進階服務層，價格更接近進階 RS 服務層。
+  [以虛擬核心為基礎購買模型](sql-database-service-tiers-vcore.md)中的**一般用途**與**業務關鍵**服務層級。 這兩個服務層級可供一般使用。 基於 vCore 的採購模型還提供**超大規模**服務層，通過每個資料庫自動擴展至 100 TB，可按需適應工作負載的需求。 超大規模資料庫的服務層提供相當於[以 DTU 為基礎購買模型](sql-database-service-tiers-dtu.md)中的進階服務層，價格更接近進階 RS 服務層。
 - 開發/測試定價
 
   [開發/測試定價](https://azure.microsoft.com/pricing/dev-test/)可讓 Visual Studio 訂用帳戶省下高達 55% 的隨附授權費率。
@@ -69,10 +69,10 @@ ms.locfileid: "73821034"
 
 |**如果您目前使用的是…**|**移轉至可相比的以虛擬核心為基礎…**|**移轉至可相比的以 DTU 為基礎…**|
 |---|---|---|
-|進階 RS 1| 超大規模資料庫 1 vCore （第4代）或商務關鍵性 1 vCore （第4代）|進階 1|
-|進階 RS 2| 超大規模資料庫2虛擬核心（第4代）或商務關鍵性2虛擬核心（第4代|進階 2|
-|進階 RS 4| 超大規模資料庫4虛擬核心（第4代）或商務關鍵性4虛擬核心（第4代）|進階 4
-|進階 RS 6| 超大規模資料庫6虛擬核心（第4代）或商務關鍵性6虛擬核心（第4代）|進階 6|
+|進階 RS 1| 超大規模 1 vCore （Gen4） 或業務關鍵 1 vCore （Gen4）|進階 1|
+|進階 RS 2| 超大規模 2 vCore （Gen4） 或業務關鍵型 2 vCore（第 4 代）|進階 2|
+|進階 RS 4| 超大規模 4 vCore （Gen4） 或業務關鍵 4 vCore （Gen4）|進階 4
+|進階 RS 6| 超大規模 6 vCore （Gen4） 或業務關鍵 6 vCore （Gen4）|進階 6|
 
 |**如果您目前使用的是…**|**移轉至可相比的以虛擬核心為基礎…**|**移轉至可相比的以 DTU 為基礎…**|
 |---|---|---|
@@ -100,4 +100,4 @@ ms.locfileid: "73821034"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需特定計算大小的詳細資訊和單一資料庫可用的儲存體大小選項，請參閱[單一資料庫 SQL Database 以虛擬核心為基礎的資源限制](sql-database-vcore-resource-limits-single-databases.md)
-- 如需特定計算大小的詳細資訊和彈性集區可用的儲存體大小選項，請參閱[彈性集區的 SQL Database V 核心形式資源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
+- 有關可用於彈性池的特定計算大小和存儲大小選擇的詳細資訊，請參閱[彈性池的 SQL 資料庫 vCore 資源限制](sql-database-vcore-resource-limits-elastic-pools.md)。

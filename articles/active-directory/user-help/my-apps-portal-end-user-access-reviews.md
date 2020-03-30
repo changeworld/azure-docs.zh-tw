@@ -1,6 +1,6 @@
 ---
-title: 管理組織對應用程式 & 群組的存取權-Azure AD
-description: 瞭解如何執行存取權審查，以從我的應用程式入口網站管理組織應用程式和群組的安全性存取。
+title: 管理組織對應用&組的訪問 - Azure AD
+description: 瞭解如何執行訪問審核，以從"我的應用"門戶管理組織的應用和組的安全存取權限。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,68 +13,68 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: c71195b247af6d5046d88d3e6918a660eddf09b3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062368"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>從我的應用程式入口網站執行存取權審查
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>從"我的應用"門戶執行訪問審核
 
-您可以使用公司或學校帳戶搭配 web 型**我的應用程式**入口網站來執行應用程式和群組的存取權審查。 存取審查可協助您管理過期的存取權，或變更存取需求，並確保它們經過審查和更新。
+您可以將工作或學校帳戶與基於 Web**的"我的應用"** 門戶一起用於應用和組的訪問審核。 訪問審核可説明您管理過時的訪問或更改訪問要求，並確保這些訪問被審查和更新。
 
-如果您沒有 [我的應用程式] 入口網站的存取權，請連絡技術服務人員以取得權限。
+如果您沒有 [我的應用程式]**** 入口網站的存取權，請連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->本內容適用于**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+>本內容適用於**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="manage-access-reviews"></a>管理存取權檢閱
 
-如果您的系統管理員已授與您執行自己的存取權審查的許可權，您可以從**我的應用程式**入口網站頁面上的 [**存取審查**] 磚，管理您的群組或應用程式存取權。
+如果管理員已授予您執行自己的訪問評論的許可權，則可以從 **"我的應用"** 門戶頁面上的 **"訪問"評論**磁貼管理組或應用存取權限。
 
 >[!Note]
->如果您看不到 [**存取評論**] 磚，表示您沒有執行存取權審查的許可權，或者您沒有任何擱置中的評論正在等待您的核准。 如果您認為您應該有磚的存取權，請洽詢您的技術服務人員以取得協助。
+>如果您沒有看到 **"訪問審核"** 磁貼，則意味著您沒有執行訪問審核的許可權，或者您沒有任何待決審核等待您的批准。 如果您認為您應該有權訪問磁貼，請聯繫您的説明台尋求説明。
 
-## <a name="to-perform-your-access-reviews"></a>若要執行您的存取權審查
+## <a name="to-perform-your-access-reviews"></a>執行訪問審核
 
 1. 登入您的公司或學校帳戶。
 
-2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com，或使用您組織所提供的連結。 例如，您可能會被導向至您組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com。
+2. 打開 Web 瀏覽器並轉到https://myapps.microsoft.com，或使用組織提供的連結。 例如，您可能會被定向到組織的自訂頁面，例如https://myapps.microsoft.com/contoso.com。
 
-    [**應用程式**] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端應用程式。
+    將顯示 **"應用"** 頁面，顯示組織擁有並可供您使用的所有基於雲的應用。
 
-    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    !["我的應用"門戶中的應用頁面](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. 選取 [**存取評論**] 磚，以查看等待您核准的存取評論清單。
+3. 選擇 **"訪問審核"** 磁貼以查看等待您的批准的訪問審核清單。
 
-    ![具有組織暫止存取審查的 [存取評論] 頁面](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![訪問審核頁面，包含組織的掛起訪問審核](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. 選取 [**開始審核**] 以開始存取權審查。
+4. 選擇 **"開始審閱"** 以開始訪問審核。
 
-5. 檢查您的存取權，並判斷是否仍然需要。
+5. 查看您的存取權限並確定是否仍有必要。
 
-    ![[存取權審查] 頁面，其中顯示審核詳細資料](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
-
-    >[!Note]
-    >如果您是系統管理員，而且允許您檢查組織對群組和應用程式的存取權，您會看到不同的頁面。 如需有關為組織審查群組或應用程式的詳細資訊，請參閱[在 Azure AD 存取審查中審查群組或應用程式的存取權](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)。
-
-6. 選取 **[是]** 以保留您的存取權，或按一下 [**否**] 以移除存取權。
-
-    如果您選取 [**是]** ，您可能需要在 [**原因**] 方塊中指定理由。
-
-    ![[存取權審查] 頁面，顯示 [原因] 方塊與範例文字](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
-
-7. 選取 [提交]。
-
-    您的存取權檢查已完成，您會返回**我的應用程式**入口網站。
+    ![訪問審閱頁面，顯示審核詳細資訊](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >您可以隨時變更您的存取權，直到存取權審查期間結束為止。 如果您移除對應用程式或群組的存取權，它不會立即移除。 當存取審查期間結束或系統管理員關閉審核時，就會進行移除。
+    >如果您是管理員，並且允許查看組織對組和應用的存取權限，您將看到其他頁面。 有關查看組織的組或應用的詳細資訊，請參閱[在 Azure AD 訪問審核中查看對組或應用程式的存取權限](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)。
+
+6. 選擇 **"是**"可保留您的存取權限或 **"否**"以刪除您的存取權限。
+
+    如果選擇 **"是**"，則可能需要在 **"原因"** 框中指定對齊方式。
+
+    ![訪問審閱頁面，顯示帶有示例文本的"原因"框](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+
+7. 選取 [提交]****。
+
+    您的訪問審核已完成，您將返回到 **"我的應用"** 門戶。
+
+    >[!Note]
+    >您可以隨時更改存取權限，直到訪問審核期結束。 如果刪除了對應用或組的訪問，則不會立即刪除。 當訪問審閱期結束時或管理員關閉審核時，將發生刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在我的應用程式入口網站上存取和使用應用程式](my-apps-portal-end-user-access.md)
-- [變更您的設定檔資訊](my-apps-portal-end-user-update-profile.md)
-- [查看和更新您的群組相關資訊](my-apps-portal-end-user-groups.md)
+- [訪問和使用"我的應用"門戶中的應用](my-apps-portal-end-user-access.md)
+- [變更設定檔資訊](my-apps-portal-end-user-update-profile.md)
+- [查看和更新與組相關的資訊](my-apps-portal-end-user-groups.md)

@@ -9,10 +9,10 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dac17da4aa3d3d73ccbbc101cba4326a17fec9b1
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127778"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>透過 Azure Resource Manager 範本部署管理工具
@@ -49,18 +49,18 @@ ms.locfileid: "79127778"
 
 1. 移至 [GitHub Azure RDS 範本頁面](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy) \(英文\)。
 2. 將範本部署到 Azure。
-    - 若您是在「企業」訂用帳戶中部署，請向下捲動並選取 [部署至 Azure]。 
+    - 若您是在「企業」訂用帳戶中部署，請向下捲動並選取 [部署至 Azure]****。 
     - 若您是在「雲端解決方案提供者」訂用帳戶中部署，請依照下列指示部署到 Azure：
-        1. 向下捲動並以滑鼠右鍵按一下 [部署至 Azure]，然後選取 [複製連結位置]。
+        1. 向下捲動並以滑鼠右鍵按一下 [部署至 Azure]****，然後選取 [複製連結位置]****。
         2. 開啟文字編輯器 (例如 [記事本])，並在該處貼上連結。
         3. 在 <https://portal.azure.com/> 後方、主題標籤 (#) 前面，輸入 at 符號 (@)，後面接著租用戶網域名稱。 格式範例如下：<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
         4. 以具有「雲端解決方案提供者」訂用帳戶系統管理員/參與者權限的使用者身分登入 Azure 入口網站。
         5. 將您之前複製到文字編輯器的連結貼到網址列。
 3. 輸入參數時，執行下列步驟：
-    - 針對 **isServicePrincipal** 參數，請選取 [false]。
+    - 針對 **isServicePrincipal** 參數，請選取 [false]****。
     - 對於認證，請輸入已停用多重要素驗證的 Azure AD 認證。 這些認證會用來建立 Azure AD 應用程式和 Azure 資源。 若要深入了解，請參閱[部署管理工具需要的條件](#what-you-need-to-deploy-the-management-tool)。
     - 針對 **applicationName**，請使用將在您 Azure Active Directory 中註冊的唯一名稱。 此名稱也會用於 Web 應用程式 URL。 例如，您可以使用類似 "Apr3UX" 的名稱。
-4. 提供參數之後，接受條款及條件，然後選取 [購買]。
+4. 提供參數之後，接受條款及條件，然後選取 [購買]****。
 
 ## <a name="provide-consent-for-the-management-tool"></a>為管理工具提供同意
 
@@ -70,19 +70,19 @@ ms.locfileid: "79127778"
 
 ![顯示當您同意 UI 管理工具時提供之權限的螢幕擷取畫面。](media/management-ui-delegated-permissions.png)
 
-若要判斷您可以使用哪個使用者登入工具，請移至您的 [Azure Active Directory 使用者設定頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)並記下 [使用者可同意應用程式代表自己存取公司資料] 的值。
+若要判斷您可以使用哪個使用者登入工具，請移至您的 [Azure Active Directory 使用者設定頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)並記下 [使用者可同意應用程式代表自己存取公司資料]**** 的值。
 
 ![顯示使用者是否可以授與同意給應用程式 (僅針對其使用者) 的螢幕擷取畫面。](media/management-ui-user-consent-allowed.png)
 
-- 若該值設定為 [是]，您可以使用 Azure Active Directory 中的任何使用者登入並僅針對該使用者提供同意。 不過，若您稍後使用不同的使用者登入管理工具，您必須重新執行相同的同意程序。
-- 若該值設定為 [否]，您必須使用 Azure Active Directory 中的「全域管理員」登入並針對該目錄中的所有使用者提供管理員同意。 不會有任何其他使用者看到同意提示。
+- 若該值設定為 [是]****，您可以使用 Azure Active Directory 中的任何使用者登入並僅針對該使用者提供同意。 不過，若您稍後使用不同的使用者登入管理工具，您必須重新執行相同的同意程序。
+- 若該值設定為 [否]****，您必須使用 Azure Active Directory 中的「全域管理員」登入並針對該目錄中的所有使用者提供管理員同意。 不會有任何其他使用者看到同意提示。
 
 
 決定要同意的使用者後，請依照下列指示同意使用工具：
 
 1. 移至您的 Azure 資源、選取具有您在範本中提供之名稱 (例如 Apr3UX) 的 Azure App Services 資源並瀏覽到與它關聯的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用適當的 Azure Active Directory 使用者帳戶登入。
-3. 若使用「全域管理員」來驗證，您現在可以選取 [代表您的組織同意] 核取方塊。 選取 [接受] 以提供同意。
+3. 若使用「全域管理員」來驗證，您現在可以選取 [代表您的組織同意]**** 核取方塊。 選取 [接受]**** 以提供同意。
    
    ![顯示使用者或系統管理員將看到之完整同意頁面的螢幕擷取畫面。](media/management-ui-consent-page.png)
 
@@ -96,8 +96,8 @@ ms.locfileid: "79127778"
 
 1. 選取具有您在範本中提供之名稱 (例如 Apr3UX) 的 Azure App Services 資源並瀏覽到與它關聯的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用您的 Windows 虛擬桌面認證登入。
-3. 當系統提示您選擇租用戶群組時，請從下拉式清單選取 [預設租用戶群組]。
-4. 選取 [預設租用戶群組] 時，視窗的左側應該會出現一個功能表。 在此功能表上，尋找租用戶群組的名稱並選取。
+3. 當系統提示您選擇租用戶群組時，請從下拉式清單選取 [預設租用戶群組]****。
+4. 選取 [預設租用戶群組]**** 時，視窗的左側應該會出現一個功能表。 在此功能表上，尋找租用戶群組的名稱並選取。
   
   > [!NOTE]
   > 若您有自訂租用戶群組，請手動輸入名稱，不要從下拉式清單選擇。

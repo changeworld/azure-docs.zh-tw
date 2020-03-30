@@ -1,5 +1,5 @@
 ---
-title: 升級至 Azure 搜尋服務 .NET SDK 第5版
+title: 升級到 Azure 搜索 .NET SDK 版本 5
 titleSuffix: Azure Cognitive Search
 description: 從舊版將程式碼移轉至 Azure 搜尋服務.NET SDK 5 版。 了解新功能與必要的程式碼變更。
 manager: nitinme
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793028"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升級至 Azure 搜尋服務 .NET SDK 第5版
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升級到 Azure 搜索 .NET SDK 版本 5
 
 如果您使用 4.0 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://aka.ms/search-sdk)，本文會協助您將應用程式升級為使用第 5 版。
 
@@ -98,6 +98,6 @@ Azure 搜尋服務 .NET SDK 第 5 版以最新推出的 Azure 搜尋服務 REST 
 ## <a name="conclusion"></a>結論
 如需更多有關使用 Azure 搜尋服務 .NET SDK 的詳細資料，請參閱 [.NET 做法](search-howto-dotnet-sdk.md)。
 
-歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎詢問我們[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的協助。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
+歡迎您提供 SDK 的意見反應。 如果您遇到問題，請隨時向我們尋求説明[，在堆疊溢位](https://stackoverflow.com/questions/tagged/azure-search)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
 
 感謝您使用 Azure 搜尋服務！

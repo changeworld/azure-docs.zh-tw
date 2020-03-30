@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71176682"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 無縫單一登入：深入技術性討論
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 無縫單一登入：技術性深入探討
 
 本文提供 Azure Active Directory 無縫單一登入 (無縫 SSO) 功能運作方式的技術詳細資料。
 
@@ -39,12 +39,12 @@ ms.locfileid: "71176682"
 
 無縫 SSO 是使用 Azure AD Connect 所啟用，如[這裏](how-to-connect-sso-quick-start.md)所示。 啟用此功能時，會執行下列步驟：
 
-- 在您同步處理`AZUREADSSOACC`至 Azure AD 的每個 AD 樹系（使用 Azure AD Connect）中，會在您的內部部署 Active Directory （ad）中建立電腦帳戶（）。
-- 此外，系統會建立一些 Kerberos 服務主體名稱（Spn），以在 Azure AD 登入程式期間使用。
-- 電腦帳戶的 Kerberos 解密金鑰可安全地與 Azure AD 共用。 如果有多個 AD 樹系，每個電腦帳戶都會有自己唯一的 Kerberos 解密金鑰。
+- 電腦帳戶 （`AZUREADSSOACC`） 是在本地活動目錄 （AD） 中創建的，該目錄位於您同步到 Azure AD 的每個 AD 林中（使用 Azure AD 連接）。
+- 此外，還創建了許多 Kerberos 服務主體名稱 （SPN） 以在 Azure AD 登錄過程中使用。
+- 電腦帳戶的 Kerberos 解密金鑰可安全地與 Azure AD 共用。 如果有多個 AD 林，則每個電腦帳戶將具有其自己獨特的 Kerberos 解密金鑰。
 
 >[!IMPORTANT]
-> 基於`AZUREADSSOACC`安全考慮，電腦帳戶必須受到嚴格的保護。 只有網域系統管理員才能夠管理電腦帳戶。 請確定已停用電腦帳戶上的 Kerberos 委派，而且 Active Directory 中的其他帳戶都具有電腦帳戶的`AZUREADSSOACC`委派許可權。 將電腦帳戶儲存在組織單位（OU）中，以防止意外刪除，而且只有網域系統管理員才有存取權。 電腦帳戶上的 Kerberos 解密金鑰也應該被視為機密。 強烈建議您至少每隔 30 天變換一次 `AZUREADSSOACC` 電腦帳戶的 [Kerberos 解密金鑰](how-to-connect-sso-faq.md)。
+> 出於`AZUREADSSOACC`安全原因，需要對電腦帳戶進行強力保護。 只有域管理員才能管理電腦帳戶。 確保禁用電腦帳戶上的 Kerberos 委派，並且 Active Directory 中沒有其他帳戶對`AZUREADSSOACC`電腦帳戶具有委派許可權。 將電腦帳戶存儲在組織單位 （OU），其中電腦帳戶可以免受意外刪除，並且只有域管理員有權訪問。 電腦帳戶上的 Kerberos 解密金鑰也應被視為敏感金鑰。 強烈建議您至少每隔 30 天變換一次 `AZUREADSSOACC` 電腦帳戶的 [Kerberos 解密金鑰](how-to-connect-sso-faq.md)。
 
 設定完成之後，無縫 SSO 登入的運作方式與其他任何使用整合式 Windows 驗證 (IWA) 的登入相同。
 
@@ -52,7 +52,7 @@ ms.locfileid: "71176682"
 
 網頁瀏覽器上的登入流程如下：
 
-1. 使用者嘗試從公司網路內已加入網域的公司裝置存取 Web 應用程式 (例如 Outlook Web App， https://outlook.office365.com/owa/) )。
+1. 使用者嘗試從公司網路內已加入網域的公司裝置存取 Web 應用程式 (例如 Outlook Web App，https://outlook.office365.com/owa/))。
 2. 如果使用者尚未登入，則會將使用者重新導向至 Azure AD 登入頁面。
 3. 使用者將他們的使用者名稱鍵入 Azure AD 登入頁面中。
 
@@ -96,6 +96,6 @@ ms.locfileid: "71176682"
 ## <a name="next-steps"></a>後續步驟
 
 - [**快速入門**](how-to-connect-sso-quick-start.md) - 開始使用 Azure AD 無縫 SSO。
-- [**常見問題集**](how-to-connect-sso-faq.md) - 常見問題集的答案。
-- [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用於提出新的功能要求。
+- [**常見問題**](how-to-connect-sso-faq.md)- 常見問題的解答。
+- [**故障排除**](tshoot-connect-sso.md)- 瞭解如何使用該功能解決常見問題。
+- [**使用者語音**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)- 用於提交新功能請求。

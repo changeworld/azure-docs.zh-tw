@@ -1,5 +1,5 @@
 ---
-title: Azure App Service-同步網路設定
+title: Azure 應用服務 - 同步網路設定
 description: 本文討論如何同步處理 Azure App Service 裝載方案的網路組態。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
 ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73687891"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>同步處理 Azure App Service 裝載方案的網路組態
@@ -30,11 +30,11 @@ ms.locfileid: "73687891"
 
    ![App Service 方案](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. 按一下 [網路]，然後按一下 [按一下這裡進行管理]。
+2. 按一下 [網路]****，然後按一下 [按一下這裡進行管理]****。
 
    ![管理服務方案](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. 選取您的 VNet，按一下 [同步處理網路]。
+3. 選取您的 VNet****，按一下 [同步處理網路]****。
 
    ![同步網路網路](./media/sql-database-managed-instance-sync-networking/sync.png)
 

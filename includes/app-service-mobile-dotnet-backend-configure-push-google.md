@@ -5,17 +5,17 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857342"
 ---
 使用符合您後端專案類型的程序 (&mdash;[.NET 後端](#dotnet)或 [Node.js 後端](#nodejs))。
 
-### <a name="dotnet"></a>.NET 後端專案
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET 後端專案
 
-1. In Visual Studio, right-click the server project, and click **Manage NuGet Packages**. 搜尋 `Microsoft.Azure.NotificationHubs`，然後按一下 [安裝]。 這會安裝通知中樞用戶端程式庫。
+1. In Visual Studio, right-click the server project, and click **Manage NuGet Packages**. 搜尋 `Microsoft.Azure.NotificationHubs`，然後按一下 [安裝]****。 這會安裝通知中樞用戶端程式庫。
 2. 在 Controllers 資料夾中，開啟 TodoItemController.cs 並新增下列 `using` 陳述式：
 
     ```csharp
@@ -67,9 +67,9 @@ ms.locfileid: "68857342"
 
 4. 發佈伺服器專案。
 
-### <a name="nodejs"></a>Node.js 後端專案
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js 後端專案
 
-1. 設定您的後端專案。
+1. 設置後端專案。
 2. 在 todoitem.js 檔案中，以下列程式碼取代現有的程式碼：
 
     ```javascript

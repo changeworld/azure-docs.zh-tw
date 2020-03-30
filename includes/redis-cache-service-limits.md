@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71839232"
 ---
-| Resource | 限制 |
+| 資源 | 限制 |
 | --- | --- |
 | 快取大小 |1.2 TB |
 | 資料庫 |64 |
-| 連線的用戶端數目上限 |40,000 |
-| Azure Cache for Redis 複本，適用于高可用性 |1 |
+| 最大連接用戶端 |40,000 |
+| 用於 Redis 副本的 Azure 緩存，以便高可用性 |1 |
 | 高級快取中包含叢集的分區 |10 |
 
-針對各個定價層，Azure Cache for Redis 限制與大小有所不同。 若要查看定價層和其相關聯的大小，請參閱[Azure Cache For Redis 定價](https://azure.microsoft.com/pricing/details/cache/)。
+針對各個定價層，Azure Cache for Redis 限制與大小有所不同。 要查看定價層及其關聯大小，請參閱[Redis 定價的 Azure 緩存](https://azure.microsoft.com/pricing/details/cache/)。
 
 如需 Azure Cache for Redis 組態限制的相關資訊，請參閱[預設 Redis 伺服器組態](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration)。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727204"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 資訊系統元件與界限
@@ -45,7 +45,7 @@ Azure 是一個雲端運算平台和基礎結構，可透過資料中心網路�
 
 資料中心會分成數個叢集。 叢集會隔離 FC 層級的錯誤，以免特定類別的錯誤影響到出錯叢集以外的伺服器。 處理特定 Azure 叢集的 FC 會分組到 FC 叢集中。
 
-### <a name="hardware-inventory"></a>硬體詳細目錄
+### <a name="hardware-inventory"></a>硬體清查
 
 FC 會針對啟動程序的設定程序，準備這期間的 Azure 硬體和網路裝置詳細目錄。 任何進入 Azure 生產環境的新硬體和網路元件都必須遵循啟動程序設定程序。 FC 會負責管理 datacenter.xml 組態檔中所列的整個庫存。
 
@@ -55,9 +55,9 @@ FC 會針對啟動程序的設定程序，準備這期間的 Azure 硬體和網�
 
 網狀架構管理的作業系統映像有三種類型：
 
-- 主控件:在主機 VM 上執行的自訂作業系統。
+- 主機 – 在主機 VM 上執行的自訂作業系統。
 - 原生：在租用戶上執行的原生作業系統 (例如 Azure 儲存體)。 此作業系統沒有任何 Hypervisor。
-- 來賓：在客體 VM 上執行的客體作業系統。
+- 客體︰在客體 VM 上執行的客體作業系統。
 
 主機和原生 FC 管理作業系統的設計訴求是在雲端使用而且不可公開存取。
 
@@ -85,12 +85,12 @@ Azure 服務的支援會由許多稱為「服務小組」的工程團隊所管�
 - ISSD：安全性
 - 多重要素驗證
 - SQL Database
-- 存放區
+- 存放裝置
 
 ## <a name="types-of-users"></a>使用者類型
 Microsoft 的員工 (或約聘人員) 都會被視為內部使用者。 其他所有使用者則會被視為外部使用者。 所有 Azure 內部使用者都有其員工狀態，該狀態是依照可定義其客戶資料存取權 (有權存取或無權存取) 的敏感度層級進行分類。 下表說明 Azure 的使用者權限 (驗證發生後的授權權限)：
 
-| Role | 內部或外部 | 敏感度層級 | 已獲授權的權限和執行的功能 | 存取類型
+| 角色 | 內部或外部 | 敏感度層級 | 已獲授權的權限和執行的功能 | 存取類型
 | --- | --- | --- | --- | --- |
 | Azure 資料中心工程師 | 內部 | 無權存取客戶資料 | 管理廠房的實體安全性。 進行資料中心的內外部巡邏並監視所有進入點。 針對某些在資料中心內提供一般服務 (備餐、清潔) 或 IT 工作的不明人員，執行資料中心的內外部陪同服務。 進行網路硬體的例行監視和維護。 使用各種工具執行事件管理與修復工作。 進行資料中心內實體硬體的例行監視和維護。 視需要，以財產擁有者身份存取環境。 能夠執行鑑識調查、記錄事件的報告，以及要求必要的安全性訓練和政策需求。 控管重要安全性工具 (例如掃描器和記錄收集) 的操作擁有權和維護。 | 持續存取環境。 |
 | Azure 事件分級 (快速回應工程師) | 內部 | 有權存取客戶資料 | 管理 MCIO、支援和工程小組之間的通訊。 將平台事件、部署問題和服務要求分級。 | 對環境的 Just-in-time 存取，但對非客戶系統的持續存取會受限。 |
@@ -121,11 +121,11 @@ Azure 作業人員必須使用安全的系統管理工作站 (SAW)。 客戶可�
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為協助保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL Database 安全性功能](infrastructure-sql.md)
+- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

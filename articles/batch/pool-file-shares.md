@@ -15,10 +15,10 @@ ms.date: 05/24/2018
 ms.author: labrenne
 ms.custom: ''
 ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022506"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>搭配 Batch 集區使用 Azure 檔案共用
@@ -50,8 +50,8 @@ Batch 提供原生 API 支援，您可使用 Azure 儲存體 BLOb 讀取和寫�
 
 例如，在每個工作命令列中包括 `net use` 命令以裝載檔案共用。 若要裝載檔案共用，需要以下認證：
 
-* **使用者名稱**：AZURE\\\<storageaccountname\>，例如 AZURE\\*mystorageaccountname*
-* **密碼**：在 = = > 中 \<StorageAccountKeyWhichEnds，例如， *XXXXXXXXXXXXXXXXXXXXX = =*
+* **使用者名**：AZURE\\\<存儲帳戶\>名稱，例如，AZURE\\*mystorage 帳戶名稱*
+* **密碼** \<： 存儲帳戶金鑰在 *> 中結束， 例如 *，XXXXXXXXXXXXXXXXXXXXX_*
 
 下列命令在儲存體帳戶 *mystorageaccountname* 裝載檔案共用 *myfileshare* 作為 *S:* 磁碟機：
 
@@ -117,7 +117,7 @@ tasks.Add(task);
 
 ## <a name="mount-a-share-on-a-linux-pool"></a>在 Linux 集區裝載共用
 
-可以使用 [CIFS 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用掛接在 Linux 發行版本中。 下列範例顯示如何在 Ubuntu 16.04 LTS 計算節點的集區上裝載檔案共用。 如果您使用不同的 Linux 發行版本，一般步驟類似，但請使用適合該發行版本的套件管理員。 如需詳細資訊和其他範例，請參閱[搭配 Linux 使用 Azure Files](../storage/files/storage-how-to-use-files-linux.md)。
+Azure 檔共用可以使用[CIFS 內核用戶端](https://wiki.samba.org/index.php/LinuxCIFS)安裝在 Linux 發行版本中。 下列範例顯示如何在 Ubuntu 16.04 LTS 計算節點的集區上裝載檔案共用。 如果您使用不同的 Linux 發行版本，一般步驟類似，但請使用適合該發行版本的套件管理員。 如需詳細資訊和其他範例，請參閱[搭配 Linux 使用 Azure Files](../storage/files/storage-how-to-use-files-linux.md)。
 
 首先，以系統管理員使用者身分，在本機檔案系統中安裝 `cifs-utils` 套件，並建立裝載點 (例如 */mnt/MyAzureFileShare*)。 裝載點的資料夾可以在檔案系統上任何位置建立，但是常見慣例是在 `/mnt` 資料夾底下建立這個資料夾。 請確認不要直接在 `/mnt` (Ubuntu 上) 或 `/mnt/resource` (其他散發套件上) 建立裝載點。
 
@@ -127,8 +127,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 接著，執行 `mount` 命令以裝載檔案共用，藉此提供這些認證：
 
-* **使用者名稱**：\<storageaccountname\>，例如 *mystorageaccountname*
-* **密碼**：在 = = > 中 \<StorageAccountKeyWhichEnds，例如， *XXXXXXXXXXXXXXXXXXXXX = =*
+* **使用者名**：\<存儲帳戶名稱\>，例如，*我的存儲帳戶名稱*
+* **密碼** \<： 存儲帳戶金鑰在 *> 中結束， 例如 *，XXXXXXXXXXXXXXXXXXXXX_*
 
 下列命令在 */mnt/MyAzureFileShare* 的儲存體帳戶 *mystorageaccountname* 裝載檔案共用 *myfileshare*： 
 

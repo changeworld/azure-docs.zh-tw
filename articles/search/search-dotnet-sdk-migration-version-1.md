@@ -1,5 +1,5 @@
 ---
-title: 升級至 Azure 搜尋服務 .NET SDK 1.1 版
+title: 升級到 Azure 搜索 .NET SDK 版本 1.1
 titleSuffix: Azure Cognitive Search
 description: 從舊版的 API，將程式碼移轉至 Azure 搜尋服務.NET SDK 1.1 版。 了解新功能與需要哪些程式碼變更。
 manager: nitinme
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792387"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升級至 Azure 搜尋服務 .NET SDK 1.1 版
+# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升級到 Azure 搜索 .NET SDK 版本 1.1
 
 如果您使用 1.0.2 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://aka.ms/search-sdk)，本文會協助您將應用程式升級為使用 1.1 版。
 
@@ -100,14 +100,14 @@ Azure 搜尋服務 .NET SDK 中的每項作業都針對同步和非同步呼叫�
 
 例如，較舊版本的 SDK 中的「取得索引統計資料」作業會公開這些簽章：
 
-在 `IIndexOperations`中：
+在 `IIndexOperations` 中：
 
     // Asynchronous operation with all parameters
     Task<IndexGetStatisticsResponse> GetStatisticsAsync(
         string indexName,
         CancellationToken cancellationToken);
 
-在 `IndexOperationsExtensions`中：
+在 `IndexOperationsExtensions` 中：
 
     // Asynchronous operation with only required parameters
     public static Task<IndexGetStatisticsResponse> GetStatisticsAsync(
@@ -121,7 +121,7 @@ Azure 搜尋服務 .NET SDK 中的每項作業都針對同步和非同步呼叫�
 
 在版本 1.1 中，相同作業的方法簽章看起來像這樣：
 
-在 `IIndexesOperations`中：
+在 `IIndexesOperations` 中：
 
     // Asynchronous operation with lower-level HTTP features exposed
     Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMessagesAsync(
@@ -130,7 +130,7 @@ Azure 搜尋服務 .NET SDK 中的每項作業都針對同步和非同步呼叫�
         Dictionary<string, List<string>> customHeaders = null,
         CancellationToken cancellationToken = default(CancellationToken));
 
-在 `IndexesOperationsExtensions`中：
+在 `IndexesOperationsExtensions` 中：
 
     // Simplified asynchronous operation
     public static Task<IndexGetStatisticsResult> GetStatisticsAsync(
@@ -344,7 +344,7 @@ Azure 搜尋服務 .NET SDK 中的每項作業都針對同步和非同步呼叫�
 
 而且您將 `IntValue` 設定為 0，該值現在會在線路上正確序列化為 0，並且在索引中儲存為 0。 來回行程也如預期般運作。
 
-這種方法有一個需要注意的可能問題：如果您使用具有不可為 null 屬性的模型類型，您必須保證 索引中沒有任何文件對於對應欄位包含 null 值。 SDK 和 Azure 搜尋服務 REST API 都不會協助您強制執行。
+這種方法有一個需要注意的可能問題：如果您使用具有不可為 null 屬性的模型類型，您必須保證 **** 索引中沒有任何文件對於對應欄位包含 null 值。 SDK 和 Azure 搜尋服務 REST API 都不會協助您強制執行。
 
 這不只是假設性的問題：如果您在類型為 `Edm.Int32` 的現有索引中新增欄位， 更新索引定義之後，所有文件對於該新的欄位具有 null 值 (因為所有類型在 Azure 搜尋服務中都可為 null)。 如果您接著對該欄位使用 `int` 屬性不可為 Null 的模型類別，就會在嘗試擷取文件時得到類似這樣的 `JsonSerializationException`：
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101466"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境中 Oracle Database 12c 資料庫的災害復原
@@ -31,7 +31,7 @@ ms.locfileid: "70101466"
 ## <a name="goals"></a>目標
 - 設計符合您災害復原 (DR) 需求的拓撲和設定。
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>案例 1：Azure 上的主要和 DR 網站
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>案例 1：Azure 上的主要和 DR 站台
 
 客戶將 Oracle 資料庫設定在主要站台上。 DR 站台位於不同的區域中。 客戶使用 Oracle Data Guard 在這些站台間快速地進行復原。 主要站台另外還擁有次要資料庫以供進行報告和其他用途。 
 
@@ -44,20 +44,20 @@ ms.locfileid: "70101466"
 - 兩個具有 Data Guard 的 Oracle 資料庫 (主要和待命)
 - 兩個具有 Golden Gate 或 Data Guard 的 Oracle 資料庫 (僅限主要站台)
 - 兩個應用程式服務，一個在主要站台上，一個在 DR 站台上
-- 一個可用性設定組，用於主要站台上的資料庫和應用程式服務
+- 一個可用性設定組**，用於主要站台上的資料庫和應用程式服務
 - 每個站台上有一個 Jumpbox，其只能存取私人網路，並只允許系統管理員登入
 - Jumpbox、應用程式服務、資料庫和 VPN 閘道位於不同的子網路
 - 對應用程式和資料庫子網路強制執行 NSG
 
 ![DR 拓撲頁面的螢幕擷取畫面](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>案例 2：Azure 上的主要網站內部部署和 DR 網站
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>案例 2：內部部署環境的主要站台和 Azure 上的 DR 站台
 
 客戶具有內部部署 Oracle 資料庫設定 (主要站台)。 DR 站台是在 Azure 上。 Oracle Data Guard 用於這些站台間的快速復原。 主要站台另外還擁有次要資料庫以供進行報告和其他用途。 
 
 這項設定有兩種方法。
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1:內部部署與 Azure 之間的直接連線, 需要在防火牆上開啟 TCP 埠 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1：讓內部部署環境與 Azure 直接連線，此方法需要在防火牆上開啟 TCP 連接埠 
 
 不建議直接連線，因為這些連線會將 TCP 連接埠對外公開。
 
@@ -77,7 +77,7 @@ ms.locfileid: "70101466"
 
 ![DR 拓撲頁面的螢幕擷取畫面](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>方法 2:站對站 VPN
+### <a name="approach-2-site-to-site-vpn"></a>方法 2：站對站 VPN
 站對站 VPN 是更好的方法。 如需設定 VPN 的詳細資訊，請參閱[使用 CLI 建立具有站對站 VPN 連線的虛擬網路](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。
 
 #### <a name="topology"></a>拓撲
@@ -105,5 +105,5 @@ ms.locfileid: "70101466"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：建立高可用性 VM](../../linux/create-cli-complete.md)
+- [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 - [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)

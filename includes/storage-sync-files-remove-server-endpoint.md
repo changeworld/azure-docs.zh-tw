@@ -9,10 +9,10 @@ ms.date: 05/31/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: be3ce42ccdb9bedd02b8dead2426ac629fa12ef2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72391584"
 ---
-否：移除伺服器端點不像重新開機伺服器一樣！ 移除和重新建立伺服器端點幾乎不是解決同步、雲端階層處理問題，或 Azure 檔案同步其他層面的適當解決方案。移除伺服器端點是破壞性作業。 如果階層式檔案存在於伺服器端點命名空間之外，可能會導致資料遺失。 如需詳細資訊，請參閱階層式檔案位於[伺服器端點命名空間外部的原因](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint)。 或者，它可能會導致伺服器端點命名空間中存在的分層式檔案無法存取檔案。 重新建立伺服器端點時，不會解決這些問題。 分層的檔案可能會位於您的伺服器端點命名空間內部，即使您從未啟用過雲端分層。 因此，除非您想要停止使用此特定資料夾的 Azure 檔案同步，或已明確指示 Microsoft 工程師來執行這項操作，否則建議您不要移除伺服器端點。 如需關於移除伺服器端點的詳細資訊，請參閱[移除伺服器端點](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint)。    
+否：刪除伺服器終結點與重新開機伺服器不類似！ 刪除和重新創建伺服器終結點幾乎絕不是修復 Azure 檔同步的同步、雲分層或其他方面問題的適當解決方案。刪除伺服器終結點是一種破壞性操作。 如果分層檔存在於伺服器終結點命名空間之外，則可能導致資料丟失。 有關詳細資訊[，請參閱為什麼分層檔存在於伺服器終結點命名空間之外](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint)。 或者，它可能導致伺服器終結點命名空間中存在的分層檔的無法訪問檔。 重新創建伺服器終結點時，這些問題無法解決。 分層的檔案可能會位於您的伺服器端點命名空間內部，即使您從未啟用過雲端分層。 因此，建議不要刪除伺服器終結點，除非您希望停止使用此特定資料夾的 Azure 檔同步，或者 Microsoft 工程師已明確指示這樣做。 如需關於移除伺服器端點的詳細資訊，請參閱[移除伺服器端點](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint)。    

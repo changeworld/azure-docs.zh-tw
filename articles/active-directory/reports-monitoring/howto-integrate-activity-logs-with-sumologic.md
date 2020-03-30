@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 監視器將記錄串流至 SumoLogic |Microsoft Docs
-description: 瞭解如何使用 Azure 監視器將 Azure Active Directory 記錄與 SumoLogic 整合
+title: 使用 Azure 監視器將日誌資料流到相撲邏輯 |微軟文檔
+description: 瞭解如何使用 Azure 監視器將 Azure 活動目錄日誌與相撲邏輯集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdfc4e393ca7bf4bcbd523b4fad72690d5f2744
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014393"
 ---
-# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>使用 Azure 監視器整合 Azure Active Directory 記錄與 SumoLogic
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>使用 Azure 監視器將 Azure 活動目錄日誌與相撲集成
 
 在此文章中，您將了解如何使用 Azure 監視器將 Azure Active Directory (Azure AD) 記錄與 SumoLogic 整合。 您首先會將記錄路由傳送至 Azure 事件中樞，然後將事件中樞與 SumoLogic 整合。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此功能，您必須要有：
 * 包含 Azure AD 活動記錄的 Azure 事件中樞。 了解如何[將活動記錄串流至事件中樞](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
@@ -44,6 +44,6 @@ ms.locfileid: "74014393"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
-* [解譯 Azure 監視器中的登入記錄結構描述](reference-azure-monitor-sign-ins-log-schema.md)
+* [解釋 Azure 監視器中的稽核記錄架構](reference-azure-monitor-audit-log-schema.md)
+* [在 Azure 監視器中解釋登錄日誌架構](reference-azure-monitor-sign-ins-log-schema.md)
 * [常見問題集和已知問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

@@ -1,6 +1,6 @@
 ---
 title: 使用安全性原則 | Microsoft Docs
-description: 本文說明如何在 Azure 資訊安全中心中使用安全性原則。
+description: 本文介紹如何使用 Azure 安全中心中的安全性原則。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906875"
 ---
 # <a name="working-with-security-policies"></a>使用安全性原則
@@ -27,54 +27,54 @@ ms.locfileid: "73906875"
 
 ## <a name="introduction-to-security-policies"></a>安全性原則簡介
 
-安全性原則會定義您的工作負載所需的設定，並協助確保您符合公司或法規的安全性需求。
+安全性原則定義了工作負載所需的配置，並有助於確保您遵守公司或監管機構的安全要求。
 
-Azure 資訊安全中心根據您選擇的原則來做出其安全性建議。 資訊安全中心原則是以 Azure 原則中建立的原則計畫為基礎。 您可以使用[Azure 原則](../governance/policy/overview.md)來管理您的原則，以及跨管理群組和跨多個訂用帳戶設定原則。
+Azure 安全中心會根據您選擇的策略制定其安全建議。 安全中心策略基於 Azure 策略中創建的策略計畫。 可以使用[Azure 策略](../governance/policy/overview.md)管理原則，並跨管理組和多個訂閱設置策略。
 
-資訊安全中心提供使用安全性原則的下列選項：
+安全中心提供以下選項，用於使用安全性原則：
 
-* **查看和編輯內建的預設原則**-當您啟用資訊安全中心時，名為 ' ASC default ' 的內建計畫會自動指派給所有資訊安全中心已註冊的訂用帳戶（免費或標準層）。 若要自訂此計畫，您可以在其中啟用或停用個別原則。 請參閱[內建安全性原則](security-center-policy-definitions.md)清單，以瞭解現成可用的選項。
+* **查看和編輯內置預設策略**- 啟用安全中心時，名為"ASC 預設"的內置計畫將自動分配給所有安全中心註冊訂閱（免費或標準層）。 要自訂此計畫，可以啟用或禁用其中的各個策略。 請參閱[內置安全性原則](security-center-policy-definitions.md)清單，瞭解現成的可用選項。
 
-* **新增您自己的自訂原則**-如果您想要自訂套用至訂用帳戶的安全性計畫，您可以在資訊安全中心內這麼做。 如果您的電腦未遵循您所建立的原則，您就會收到建議。 如需建立和指派自訂原則的指示，請參閱[使用自訂安全性原則](custom-security-policies.md)。
+* **添加您自己的自訂策略**- 如果要自訂應用於訂閱的安全計畫，可以在安全中心內執行此操作。 然後，如果電腦未遵循您創建的策略，您將收到建議。 有關構建和分配自訂策略的說明，請參閱[使用自訂安全性原則](custom-security-policies.md)。
 
-* **新增法規合規性政策**-資訊安全中心的法規合規性儀表板會顯示您環境中特定標準或法規（例如 Azure CI、NIST SP 800-53 R4、SWIFT CSP）中所有評量的狀態。CSCF-v2020). 如需詳細資訊，請參閱[改善法規合規性](security-center-compliance-dashboard.md)。
+* **添加法規遵從性策略**- 安全中心的法規合規性儀表板顯示環境中特定標準或法規（如 Azure CIS、NIST SP 800-53 R4、SWIFT CSP CSCF-v2020）環境中所有評估的狀態。 有關詳細資訊，請參閱[提高合規性](security-center-compliance-dashboard.md)。
 
 
-## <a name="managing-your-security-policies"></a>管理您的安全性原則
+## <a name="managing-your-security-policies"></a>管理安全性原則
 
 若要在資訊安全中心檢視安全性原則：
 
-1. 在 [資訊安全中心] 儀表板上，選取 [安全性解決方案]。
+1. 在 [資訊安全中心]**** 儀表板上，選取 [安全性解決方案]****。
 
     ![原則管理窗格](./media/security-center-policies/security-center-policy-mgt.png)
 
-   在 [原則管理] 畫面中，您可以看到管理群組、訂用帳戶和工作區數目，以及您的管理群組結構。
+   在 [原則管理]**** 畫面中，您可以看到管理群組、訂用帳戶和工作區數目，以及您的管理群組結構。
 
 1. 選取要檢視其原則的訂用帳戶或管理群組。
 
-1. 該訂用帳戶或管理群組的 [安全性原則] 頁面隨即出現。 它會顯示可用和已指派的原則。
+1. 將顯示該訂閱或管理組的安全性原則頁。 它顯示可用和分配的策略。
 
    ![[原則] 畫面](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > 如果您的預設原則有「MG 繼承」標籤，表示該原則已指派給管理群組，並由您正在查看的訂用帳戶繼承。
+    > 如果預設策略旁邊有一個標籤"MG 繼承"，則意味著策略已分配給管理組並由您查看的訂閱繼承。
 
 
-1. 選擇此頁面上可用的選項：
+1. 從此頁面上的可用選項中進行選擇：
 
-    1. 若要使用產業原則，請按一下 [**新增更多標準**]。 如需詳細資訊，請參閱[更新為動態合規性套件](update-regulatory-compliance-packages.md)。
+    1. 要使用產業政策，請按一下"**添加更多標準**"。 有關詳細資訊，請參閱[更新到動態合規性包](update-regulatory-compliance-packages.md)。
 
-    1. 若要指派和管理自訂方案，請按一下 [**新增自訂方案**]。 如需詳細資訊，請參閱[使用自訂安全性原則](custom-security-policies.md)。
+    1. 要分配和管理自訂計畫，請按一下"**添加自訂計畫**"。 有關詳細資訊，請參閱[使用自訂安全性原則](custom-security-policies.md)。
 
-    1. 若要查看和編輯預設原則，請依序按一下 [**查看有效原則**] 和 [繼續]，如下所述。 
+    1. 要查看和編輯預設策略，請按一下"**查看有效原則**"，然後按如下說明繼續操作。 
 
        ![[原則] 畫面](./media/security-center-policies/policy-screen.png)
        
-       此**安全性原則**畫面會反映指派給您所選取之訂用帳戶或管理群組的原則所採取的動作。
+       此**安全性原則**螢幕反映所選訂閱或管理組上分配的策略執行的操作。
        
-       * 使用頂端的連結來開啟適用于訂用帳戶或管理群組的原則**指派**。 這些連結可讓您存取指派，以及編輯或停用原則。 例如，如果您看到特定原則指派有效地拒絕 endpoint protection，請使用連結來編輯或停用原則。
+       * 使用頂部的連結打開適用于訂閱或管理組的策略**分配**。 這些連結允許您訪問分配並編輯或禁用策略。 例如，如果您看到特定策略分配有效地拒絕終結點保護，請使用連結編輯或禁用策略。
        
-       * 在原則清單中，您可以在訂用帳戶或管理群組中查看原則的有效應用。 系統會將套用至範圍的每個原則設定納入考慮，並顯示原則所採取之動作的累計結果。 例如，如果原則的某個指派已停用，但另一個已設定為 AuditIfNotExist，則累計效果會套用 AuditIfNotExist。 更積極的效果一律會優先使用。
+       * 在原則清單中，您可以在訂用帳戶或管理群組中查看原則的有效應用。 將考慮適用于範圍的每個策略的設置，並顯示策略所執行的操作的累積結果。 例如，如果在策略的一個分配中禁用，但在另一個分配中，它設置為"審核存在"，則累積效果將應用 AuditIfNot 存在。 更積極的效果一律會優先使用。
        
        * 原則的效果可以是：Append、Audit、AuditIfNotExists、Deny、DeployIfNotExists、Disabled。 如需如何套用效果的相關詳細資訊，請參閱[了解原則效果](../governance/policy/concepts/effects.md)。
 
@@ -86,49 +86,49 @@ Azure 資訊安全中心根據您選擇的原則來做出其安全性建議。 �
 
 您可以透過 Azure 原則入口網站、透過 REST API 或使用 Windows PowerShell 編輯安全性原則。
 
-資訊安全中心會使用角色型存取控制 (RBAC)，以提供可在 Azure 中指派給使用者、群組與服務的內建角色。 使用者開啟資訊安全中心時，只能看到與自己能夠存取之資源相關的資訊。 這表示系統會將*擁有*者、*參與者*或*讀取*者角色指派給資源的訂用帳戶。 除了這些角色，還有兩個特定的資訊安全中心角色：
+資訊安全中心會使用角色型存取控制 (RBAC)，以提供可在 Azure 中指派給使用者、群組與服務的內建角色。 使用者開啟資訊安全中心時，只能看到與自己能夠存取之資源相關的資訊。 這意味著使用者被分配給資源訂閱*的擁有者*、*參與者*或*讀取器*的角色。 除了這些角色外，還有兩個特定的安全中心角色：
 
-- **安全性讀取者**：擁有資訊安全中心的檢視權限 (包括建議、警示、原則和健康情況)，但無法進行變更。
-- **安全性管理員**：擁有與安全性讀取者相同的檢視權限，但可以更新安全性原則，並解除建議和警示。
+- **安全讀取器**：具有安全中心的存取權限，其中包括建議、警報、策略和運行狀況，但不能進行更改。
+- **安全管理員**：具有與*安全讀取器*相同的視圖許可權，還可以更新安全性原則並取消建議和警報。
 
 
-## <a name="disable-security-policies"></a>停用安全性原則
-如果預設的安全性原則正在產生與您的環境無關的建議，您可以停用傳送建議的原則定義來停止它。
-如需有關建議的詳細資訊，請參閱[管理安全性建議](security-center-recommendations.md)。
+## <a name="disable-security-policies"></a>禁用安全性原則
+如果預設安全性原則正在生成與您的環境無關的建議，則可以通過禁用發送建議的策略定義來阻止它。
+有關建議的詳細資訊，請參閱[管理安全建議](security-center-recommendations.md)。
 
-1. 在資訊安全中心中，從 [**原則 & 相容性**] 區段中，按一下 [**安全性原則**]。
+1. 在安全中心中，從**策略&合規性**部分中，按一下 **"安全性原則**"。
 
-   ![原則管理](./media/tutorial-security-policy/policy-management.png)
+   ![政策管理](./media/tutorial-security-policy/policy-management.png)
 
-2. 按一下您要停用建議的訂用帳戶或管理群組。
+2. 按一下要為其禁用建議的訂閱或管理組。
 
    > [!NOTE]
    > 請記住，管理群組會將其原則套用至其訂用帳戶。 因此，如果您停用訂用帳戶的原則，而且訂用帳戶屬於仍使用相同原則的管理群組，則您會繼續收到原則建議。 原則仍然會從管理層級套用，而且仍會產生建議。
 
-1. 按一下 [**查看有效原則**]。
+1. 按一下 **"查看有效的策略**"。
 
-   ![停用原則](./media/tutorial-security-policy/view-effective-policy.png)
+   ![禁用策略](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. 按一下 [指派的原則]。
+1. 按一下分配的策略。
 
-   ![停用原則](./media/tutorial-security-policy/security-policy.png)
+   ![禁用策略](./media/tutorial-security-policy/security-policy.png)
 
-1. 在 [**參數**] 區段中，搜尋叫用您想要停用之建議的原則，然後從下拉式清單中選取 [**已停用**]
+1. 在 **"參數"** 部分中，搜索調用要禁用的建議的策略，並從下拉清單中選擇 **"禁用"**
 
-   ![停用原則](./media/tutorial-security-policy/disable-policy.png)
+   ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
 
-1. 按一下 [檔案]。
+1. 按一下 [儲存]****。
 
    > [!NOTE]
-   > 停用原則變更最多可能需要12小時才會生效。
+   > 禁用策略更改最多可能需要 12 小時才能生效。
 
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已瞭解安全性原則。 如需相關資訊，請參閱下列文章：
+在本文中，您瞭解了安全性原則。 有關相關資訊，請參閱以下文章：
 
-* 如需有關如何使用 PowerShell 設定原則的指示，請參閱[快速入門：使用 Azure PowerShell 模組建立原則指派，以識別不符合規範的資源](../governance/policy/assign-policy-powershell.md)
+* 有關如何使用 PowerShell 設置策略的說明，請參閱[快速入門：創建策略分配，使用 Azure PowerShell 模組標識不合規資源](../governance/policy/assign-policy-powershell.md)
 
-* 如需如何在 Azure 原則中編輯安全性原則的指示，請參閱[建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)。
+* 有關如何編輯 Azure 策略中的安全性原則的說明，請參閱[創建和管理原則以強制實施合規性](../governance/policy/tutorials/create-and-manage.md)。
 
-* 如需有關如何使用 Azure 原則在訂用帳戶或管理群組上設定原則的指示，請參閱[什麼是 Azure 原則？](../governance/policy/overview.md)
+* 有關如何使用 Azure 策略跨訂閱或管理組設置策略的說明，請參閱什麼是 Azure[策略？](../governance/policy/overview.md)

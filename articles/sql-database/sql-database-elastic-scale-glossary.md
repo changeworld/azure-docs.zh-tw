@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: ab972db78cd213497fb96486b3e16b01f2c4c6eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823619"
 ---
 # <a name="elastic-database-tools-glossary"></a>彈性資料庫工具字彙
@@ -28,7 +28,7 @@ ms.locfileid: "73823619"
 
 **資料庫**：Azure SQL 資料庫。 
 
-**資料依存路由**：可讓應用程式根據特定的分區化索引鍵連接到分區的功能。 請參閱 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)。 請對照 **[Multi-Shard Query](sql-database-elastic-scale-multishard-querying.md)** 。
+**資料依存路由**：可讓應用程式根據特定的分區化索引鍵連接到分區的功能。 請參閱 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)。 請對照 **[Multi-Shard Query](sql-database-elastic-scale-multishard-querying.md)**。
 
 **全域分區對應**：在**分區集**之內，分區化索引鍵及其個別分區之間的對應。 全域分區對應儲存在 **分區對應管理員**中。 請對照 **本機分區對應**。
 

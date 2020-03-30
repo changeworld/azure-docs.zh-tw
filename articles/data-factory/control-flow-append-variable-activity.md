@@ -12,10 +12,10 @@ manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
 ms.openlocfilehash: bcecd3411b6e6e751032f33862a671d8adbca046
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679983"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory 中的附加變數活動
@@ -24,11 +24,11 @@ ms.locfileid: "73679983"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 必要
+屬性 | 描述 | 必要
 -------- | ----------- | --------
-名稱 | 管線中的活動名稱 | 是
-說明 | 說明活動用途的文字 | no
-類型 | 活動類型是 AppendVariable | 是
+NAME | 管線中的活動名稱 | 是
+description | 說明活動用途的文字 | 否
+type | 活動類型是 AppendVariable | 是
 value | 用來附加到指定變數的字串常值或運算式物件值 | 是
 variableName | 將由活動修改的變數名稱，該變數必須是「陣列」類型 | 是
 

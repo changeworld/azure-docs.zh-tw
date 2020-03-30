@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 中，將使用者或群組指派給企業應用程式
+title: 將使用者或組分配給 Azure AD 中的企業應用
 description: 如何在 Azure Active Directory 中選取企業應用程式以將使用者或群組指派給它
 services: active-directory
 author: msmimart
@@ -8,59 +8,84 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5135f97ffb7d29c9fd928382ca4344beaa654d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409187"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中將使用者或群組指派給企業應用程式
 
-若要將使用者或群組指派給企業應用程式，您應該已指派任何下列系統管理員角色：全域管理員、應用程式系統管理員、雲端應用程式系統管理員，或指派為企業應用程式的擁有者。  如果是 Microsoft 應用程式 (例如 Office 365 應用程式)，請使用 PowerShell 將使用者指派給企業應用程式。
+本文介紹如何從 Azure 門戶或使用 PowerShell 將使用者或組分配給 Azure 活動目錄 （Azure AD） 中的企業應用程式。 將使用者分配給應用程式時，應用程式將顯示在使用者的["我的應用"訪問面板](https://myapps.microsoft.com/)中，以便輕鬆訪問。 如果應用程式公開角色，您還可以向使用者分配特定角色。
+
+為了更好地控制，某些類型的企業應用程式可以配置為[需要使用者分配](#configure-an-application-to-require-user-assignment)。 
+
+要[將使用者或組分配給企業應用](#assign-users-or-groups-to-an-app-via-the-azure-portal)，您需要以全域管理員、應用程式管理員、雲應用程式管理員或企業應用的分配擁有者身份登錄。
 
 > [!NOTE]
-> 如需本文所討論功能的授權需求，請參閱 [Azure Active Directory 價格頁面](https://azure.microsoft.com/pricing/details/active-directory)。
+> 基於組的分配需要 Azure 活動目錄高級 P1 或 P2 版本。 僅支援安全性群組支援基於組的分配。 當前不支援嵌套組成員身份和 Office 365 組。 有關本文中討論的功能的更多許可要求，請參閱[Azure 活動目錄定價頁](https://azure.microsoft.com/pricing/details/active-directory)。 
 
-## <a name="assign-a-user-to-an-app---portal"></a>將使用者指派給應用程式 - 入口網站
+## <a name="configure-an-application-to-require-user-assignment"></a>將應用程式佈建為需要使用者分配
 
-1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com) 。
-1. 選取 [所有服務]、在文字方塊中輸入 Azure Active Directory，然後選取 **Enter** 鍵。
-1. 選取 [企業應用程式]。
-1. 在 [**企業應用程式-所有應用程式**] 窗格中，您會看到一份您可以管理的應用程式清單。 選取應用程式。
-1. 在 [ ***appname*** ] 窗格（也就是標題中有所選應用程式名稱的窗格）上，選取 [**使用者 & 群組**]。
-1. 在 [ ***appname*** **-使用者和群組**] 窗格中，選取 [**新增使用者**]。
-1. 在 [**新增指派**] 窗格中，選取 [**使用者和群組**]。
+對於以下類型的應用程式，您可以選擇要求使用者在使用者訪問應用程式之前將其分配到該應用程式：
+
+- 為基於 SAML 的身份驗證為聯合單一登入 （SSO） 配置的應用程式
+- 使用 Azure 活動目錄預身份驗證的應用程式代理應用程式
+- 在 Azure AD 應用程式平臺上構建的應用程式，在使用者或管理員同意該應用程式後使用 OAuth 2.0 / OpenID 連接身份驗證。
+
+當需要使用者分配時，只有您顯式分配給應用程式的使用者才能登錄。 他們可以訪問其"我的應用"頁面上的應用或使用直接連結。 
+
+當分配*不需要*時，由於您將此選項設置為 **"否**"，或者由於應用程式使用另一個 SSO 模式，如果任何使用者具有指向應用程式的直接連結或應用程式**屬性**頁中的**使用者訪問 URL，** 則任何使用者都可以訪問該應用程式。 
+
+此設置不會影響應用程式是否顯示在"我的應用訪問"面板上。 將使用者或組分配給應用程式後，應用程式將顯示在使用者的"我的應用"訪問面板上。 有關背景，請參閱[管理對應用的訪問](what-is-access-management.md)。
+
+
+要要求應用程式的使用者分配：
+
+1. 使用管理員帳戶或應用程式擁有者登錄到[Azure 門戶](https://portal.azure.com)。
+
+2. 選擇**Azure 活動目錄**。 在左側導航功能表中，選擇**企業應用程式**。
+
+3. 從清單中選擇應用程式。 如果看不到應用程式，請開始在搜索框中鍵入其名稱。 或者使用篩選器控制項選擇應用程式類型、狀態或可見度，然後選擇 **"應用**"。
+
+4. 在左側導航功能表中，選擇 **"屬性**"。
+
+5. 確保**所需的使用者分配？** 切換設置為 **"是**"。
+
+   > [!NOTE]
+   > 如果 **"需要使用者分配？"** 切換不可用，則可以使用 PowerShell 在服務主體上設置 AppRoleAssignment 需要屬性。
+
+6. 選擇螢幕頂部的 **"保存**"按鈕。
+
+## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>通過 Azure 門戶將使用者或組分配給應用
+
+1. 使用全域管理員、應用程式管理員或雲應用程式管理員帳戶或作為企業應用的分配擁有者登錄到[Azure 門戶](https://portal.azure.com)。
+2. 選擇**Azure 活動目錄**。 在左側導航功能表中，選擇**企業應用程式**。
+3. 從清單中選擇應用程式。 如果看不到應用程式，請開始在搜索框中鍵入其名稱。 或者使用篩選器控制項選擇應用程式類型、狀態或可見度，然後選擇 **"應用**"。
+4. 在左側導航功能表中，選擇 **"使用者"和"組**"。
+   > [!NOTE]
+   > 如果要將使用者分配給 Microsoft 應用程式（如 Office 365 應用），其中一些應用將使用 PowerShell。 
+5. 選擇"**添加使用者"** 按鈕。
+6. 在"**添加分配"** 窗格中，選擇 **"使用者"和"組**"。
+7. 選擇要分配給應用程式的使用者或組，或在搜索框中開始鍵入使用者或組的名稱。 您可以選擇多個使用者和組，您的選擇將顯示在 **"選定專案**"下。
+8. 完成後，按一下 **"選擇**"。
 
    ![將使用者或群組指派給應用程式](./media/assign-user-or-group-access-portal/assign-users.png)
 
-1. 在 [**使用者和群組**] 窗格中，從清單中選取一或多個使用者或群組，然後選擇窗格底部的 [**選取**] 按鈕。
-1. 在 [**新增指派**] 窗格中，選取 [**角色**]。 然後，在 [**選取角色**] 窗格中，選取要套用到所選使用者或群組的角色，然後選取窗格底部的 **[確定]** 。
-1. 在 [**新增指派**] 窗格中，選取窗格底部的 [**指派**] 按鈕。 受指派的使用者或群組將會具備此企業應用程式的所選角色所定義的權限。
+9. 在"**使用者和組**"窗格中，從清單中選擇一個或多個使用者或組，然後選擇窗格底部的 **"選擇**"按鈕。
+10. 如果應用程式支援它，則可以為使用者或組分配角色。 在"**添加分配"** 窗格中，**選擇"選擇角色**"。 然後，在 **"選擇角色"** 窗格中，選擇要應用於所選使用者或組的角色，然後在窗格底部選擇 **"確定**"。 
 
-## <a name="allow-all-users-to-access-an-app---portal"></a>允許所有使用者存取應用程式 - 入口網站
+    > [!NOTE]
+    > 如果應用程式不支援角色選擇，則分配預設訪問角色。 在這種情況下，應用程式管理使用者具有的存取層級。
 
-1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com) 。
-1. 選取 [所有服務]、在文字方塊中輸入 Azure Active Directory，然後選取 **Enter** 鍵。
-1. 選取 [企業應用程式]。
-1. 在 [企業應用程式] 窗格上，選取 [所有應用程式]。 此動作會列出您可以管理的應用程式。
-1. 在 [企業應用程式 - 所有應用程式] 窗格上，選取一個應用程式。
-1. 在 [ ***appname*** ] 窗格上，選取 [**屬性**]。
-1. 在 [  ***appname* -屬性**] 窗格上，設定 [**需要使用者指派嗎？** ] 設定為 [**否**]。
+2. 在"**添加分配"** 窗格中，選擇窗格底部的 **"分配**"按鈕。
 
-[需要使用者指派?] 選項：
-
-- 如果此選項設定為 [是]，則必須先將使用者指派給此應用程式，才能存取它。
-- 如果此選項設定為 [否]，則直接流覽至應用程式深層連結 URL 或應用程式 URL 的任何使用者都會被授與存取權
-- 不會影響應用程式是否會出現在應用程式存取面板上。 若要在存取面板上顯示應用程式，您需要將適當的使用者或群組指派給應用程式。
-- 僅適用于已針對 SAML 單一登入設定的雲端應用程式、使用 Azure Active Directory 預先驗證的應用程式 Proxy 應用程式，或在使用者或系統管理員同意該應用程式之後，直接在使用 OAuth 2.0/OpenID Connect 驗證的 Azure AD 應用程式平臺上建立的應用程式。 請參閱[單一登入應用程式](what-is-single-sign-on.md)。 請參閱[設定使用者同意應用程式的方式](configure-user-consent.md)。
-- 當應用程式設定為任何其他單一登入模式時，此選項不會有任何作用。
-
-## <a name="assign-a-user-to-an-app---powershell"></a>將使用者指派給應用程式 - PowerShell
+## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>通過 PowerShell 將使用者或組分配給應用
 
 1. 開啟已提高權限的 Windows PowerShell 命令提示字元。
 
@@ -111,7 +136,7 @@ ms.locfileid: "74274730"
 
 1. 執行命令 `$sp.AppRoles`，顯示工作場所分析應用程式可用的角色。 在此範例中，我們要指派「分析師」(存取權有限) 角色給 Britta Simon。
 
-   ![顯示使用者使用工作場所分析角色時可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![使用工作區分析角色顯示可供使用者使用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
 1. 指派角色名稱給 `$app_role_name` 變數。
 
@@ -128,6 +153,12 @@ ms.locfileid: "74274730"
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
+## <a name="related-articles"></a>相關文章
+
+- [瞭解有關最終使用者訪問應用程式的更多資訊](end-user-experiences.md)
+- [規劃 Azure AD 訪問面板部署](access-panel-deployment-plan.md)
+- [管理對應用的訪問](what-is-access-management.md)
+ 
 ## <a name="next-steps"></a>後續步驟
 
 - [查看我的所有群組](../fundamentals/active-directory-groups-view-azure-portal.md)

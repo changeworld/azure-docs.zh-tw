@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
 ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096706"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 Smooth Streaming 用戶端實作，可協助內嵌裝置製造商、有線電視和行動業者、內容服務提供者、手持式裝置製造商、獨立軟體廠商 (ISV) 和解決方案提供者打造產品和服務，以供串流 Smooth Streaming 格式的彈性內容。 SSPK 是 Smooth Streaming 用戶端的裝置和平台獨立實作，可由被授權者移植到任何裝置和平台。 
 
 以下是一個高層級架構，而 IIS Smooth Streaming Porting Kit 方塊是 Microsoft 所提供的 Smooth Streaming 用戶端實作並包含播放 Smooth Streaming 內容的所有核心邏輯。 然而，特定裝置或平台的合作夥伴可藉由實作適當的介面來移植此內容。 
@@ -71,11 +71,11 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * 每年前 10,000 個裝置實作不需權利金 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>授權程序和 SSPK 存取
-有關所有授權查詢，請寄送電子郵件至 [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)。
+電子郵件[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)，用於所有許可查詢。
 
 已註冊的中期被授權者可以存取 [SSPK 發佈入口網站](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) 。
 
-中期和最終 SSPK 被授權者都可以將技術問題提交到 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)。
+臨時和最終的 SSPK 被許可人可以向[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)提交技術問題。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端中期產品合約被授權者
 
@@ -91,7 +91,7 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
-* 廣州 Shikun 的電子公司。
+* 廣州世坤電子有限公司
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
@@ -125,9 +125,9 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
-* FilmFlex 電影有限
+* 電影Flex電影有限公司
 * Fluendo S.A.
-* FUNAI 電動 CO，公司
+* 富奈電氣有限公司
 * Gibson Innovations Limited
 * Haier Information Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
@@ -141,7 +141,7 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * Orange SA
 * Saffron Digital Limited
 * Sagemcom Broadband SAS
-* Shenzhen Chuangwei-RGB 電子產品 Co。
+* 深圳市創威RGB電子有限公司
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd

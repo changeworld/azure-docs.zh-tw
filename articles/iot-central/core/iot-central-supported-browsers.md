@@ -9,15 +9,15 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72949504"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Azure IoT Central 支援的瀏覽器
 
-*此文章適用於操作員、建置人員及系統管理員。*
+*本文適用於操作員、建置員及系統管理員。*
 
 Azure IoT Central 可透過最新式的電腦、平板電腦與瀏覽器來存取。 下列文章概述支援的瀏覽器清單和必要的連線能力。  
 

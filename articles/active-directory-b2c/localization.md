@@ -1,5 +1,5 @@
 ---
-title: 當地語系化-Azure Active Directory B2C
+title: 當地語系化 - Azure 活動目錄 B2C
 description: 指定 Azure Active Directory B2C 中自訂原則的 Localization 元素。
 services: active-directory-b2c
 author: msmimart
@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126750"
 ---
 # <a name="localization"></a>當地語系化
@@ -114,7 +114,7 @@ ms.locfileid: "79126750"
 | 值 | 是 | 與選取此選項相關聯的字串宣告值。 |
 | SelectByDefault | 否 | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
 
-下列範例顯示 **LocalizedCollections** 元素的用法。 其包含兩個 **LocalizedCollection** 元素，一個適用於英文，另一個適用於西班牙文。 兩者皆會使用英文和西班牙文的項目清單，設定宣告  **的**限制`Gender`集合。
+下列範例顯示 **LocalizedCollections** 元素的用法。 其包含兩個 **LocalizedCollection** 元素，一個適用於英文，另一個適用於西班牙文。 兩者皆會使用英文和西班牙文的項目清單，設定宣告 `Gender` 的**限制**集合。
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -146,9 +146,9 @@ ms.locfileid: "79126750"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 參考原則中的宣告類型元素或使用者介面元素。 可能的值： `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`或 `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 值用於將其中一個宣告屬性當地語系化，如 StringId 中所指定。 `UxElement` 值用於將其中一個使用者介面元素當地語系化，如 StringId 中所指定。 `ErrorMessage` 值用於將其中一個系統錯誤訊息當地語系化，如 StringId 中所指定。 `Predicate` 值用於將其中一個 [Predicate](predicates.md) 錯誤訊息當地語系化，如 StringId 中所指定。 `InputValidation` 值用於將其中一個 [PredicateValidation](predicates.md) 群組錯誤訊息當地語系化，如 StringId 中所指定。 `GetLocalizedStringsTransformationClaimType` 值是用來將當地語系化的字串複製到宣告中。 如需詳細資訊，請參閱[GetLocalizedStringsTransformation 宣告轉換](string-transformations.md#getlocalizedstringstransformation)  | 
-| ElementId | 是 | 如果 **ElementType** 設為 `ClaimType``Predicate` 或 `InputValidation`，則此元素會包含對 ClaimsSchema 區段中已定義之宣告類型的參考。 |
-| StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 [ 識別碼的完整清單，請參閱](localization-string-ids.md)當地語系化字串識別碼`UxElement`。|
+| ElementType | 是 | 參考原則中的宣告類型元素或使用者介面元素。 可能的值： `ClaimType` `UxElement`、 `ErrorMessage` `Predicate`、 `GetLocalizedStringsTransformationClaimType`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `ClaimType` 值用於將其中一個宣告屬性當地語系化，如 StringId 中所指定。 `UxElement` 值用於將其中一個使用者介面元素當地語系化，如 StringId 中所指定。 `ErrorMessage` 值用於將其中一個系統錯誤訊息當地語系化，如 StringId 中所指定。 `Predicate` 值用於將其中一個 [Predicate](predicates.md) 錯誤訊息當地語系化，如 StringId 中所指定。 `InputValidation` 值用於將其中一個 [PredicateValidation](predicates.md) 群組錯誤訊息當地語系化，如 StringId 中所指定。 該`GetLocalizedStringsTransformationClaimType`值用於將當地語系化字串複製到聲明中。 有關詳細資訊，請參閱[獲取當地語系化字串轉換聲明轉換](string-transformations.md#getlocalizedstringstransformation)  | 
+| ElementId | 是 | 如果**ElementType**設置為`ClaimType` `Predicate`，或`InputValidation`， 此元素包含對聲明架構部分中已定義的聲明類型的引用。 |
+| StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 `UxElement` 識別碼的完整清單，請參閱[當地語系化字串識別碼](localization-string-ids.md)。|
 
 
 下列範例列出了當地語系化的註冊頁面。 前三個 **LocalizedString** 值設定的是宣告屬性。 第三個會變更繼續按鈕的值。 最後一個會變更錯誤訊息。
@@ -165,7 +165,7 @@ ms.locfileid: "79126750"
 </LocalizedResources>
 ```
 
-下列範例顯示 **Predicate** 之當地語系化的 **UserHelpText**，其識別碼為 `IsLengthBetween8And64`。 以及 **PredicateGroup** 之當地語系化的 **UserHelpText**，其識別碼為 `CharacterClasses`PredicateValidation**的**，其識別碼為 `StrongPassword`。
+下列範例顯示 **Predicate** 之當地語系化的 **UserHelpText**，其識別碼為 `IsLengthBetween8And64`。 以及 **PredicateGroup** 之當地語系化的 **UserHelpText**，其識別碼為 **PredicateValidation** 的 `CharacterClasses`，其識別碼為 `StrongPassword`。
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -209,7 +209,7 @@ ms.locfileid: "79126750"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需當地語系化範例，請參閱下列文章：
+有關當地語系化示例，請參閱以下文章：
 
-- [在 Azure Active Directory B2C 中使用自訂原則進行語言自訂](custom-policy-localization.md)
-- [在 Azure Active Directory B2C 中使用使用者流程進行語言自訂](user-flow-language-customization.md)
+- [使用 Azure 活動目錄 B2C 中的自訂策略進行語言自訂](custom-policy-localization.md)
+- [使用 Azure 活動目錄 B2C 中的使用者流進行語言自訂](user-flow-language-customization.md)

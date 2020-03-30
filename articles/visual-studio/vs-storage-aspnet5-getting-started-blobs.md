@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （ASP.NET Core）開始使用 blob 儲存體
+title: 使用視覺化工作室（ASP.NET核心）開始使用 blob 存儲
 description: 在使用 Visual Studio 已連接服務建立儲存體帳戶之後，如何在 Visual Studio ASP.NET Core 專案中開始使用 Azure Blob 儲存體
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 81df41470c893f569fd17345e8bdf4b29641ec64
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298827"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (ASP.NET Core)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure Blob 儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 (如需 Azure 儲存體的一般資訊，請參閱[儲存體文件](https://azure.microsoft.com/documentation/services/storage/)。)
+本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure Blob 儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 （有關 Azure 存儲的一般資訊，請參閱[存儲文檔](https://azure.microsoft.com/documentation/services/storage/)。
 
 Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量非結構化資料的服務，全球任何地方都可透過 HTTP 或 HTTPS 來存取這些資料。 單一 Blob 可以是任何大小。 Blob 可以是影像、音訊和視訊檔、原始資料及文件檔案。 本文描述如何在您於 ASP.NET Core 專案中使用 Visual Studio 的**已連線的服務**建立 Azure 儲存體帳戶之後，開始使用 Blob 儲存體。
 

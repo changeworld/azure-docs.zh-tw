@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837808"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>已備妥資料來進行資料科學嗎？
@@ -29,7 +29,7 @@ ms.locfileid: "73837808"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-是一個資料科學的快速簡介，包含五個簡短影片。
+** 是一個資料科學的快速簡介，包含五個簡短影片。
 
 * 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * 影片 2：您的資料已經可以進行資料科學了嗎？
@@ -38,7 +38,7 @@ ms.locfileid: "73837808"
 * 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>文字記錄：已備妥資料來進行資料科學嗎？
-歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」系列的第二個影片。  
+歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」** 系列的第二個影片。  
 
 您必須先提供一些可運用的高品質原始資料，資料科學才能提供您想要的答案。 就像製作比薩，您一開始使用的原料越好，最終產品就越好。 
 
@@ -100,8 +100,8 @@ ms.locfileid: "73837808"
 
 利用相關、連結、精確與足夠的資料，您擁有需要的所有要素，來進行一些高品質資料科學。
 
-請務必從 Microsoft Azure Machine Learning Studio （傳統）查看*適用于初學者的資料科學*中的其他四個影片。
+請務必查看 Microsoft Azure 機器學習工作室（經典）中針對*初學者的資料科學*中的其他四個視頻。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
+* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

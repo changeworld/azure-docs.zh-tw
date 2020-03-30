@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Visual Studio 的佇列儲存體（WebJob 專案）
+title: 使用視覺化工作室（WebJob 專案）開始使用佇列存儲
 description: 在使用 Visual Studio 已連接服務連接至儲存體帳戶之後，如何於 WebJob 專案中開始使用 Azure 佇列儲存體。
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298742"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>開始使用 Azure 佇列儲存體和 Visual Studio 已連接服務 (WebJob 專案)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Overview
-本文描述如何在您使用 Visual Studio 的 [新增連接的服務] 對話方塊，建立或參考了 Azure 儲存體帳戶之後，開始在 Visual Studio Azure WebJob 專案中使用 Azure 佇列儲存體。 當您使用 Visual Studio [新增連接的服務] 對話方塊將儲存體帳戶加入 WebJob 專案時，適當的 Azure 儲存體 NuGet 封裝便已安裝、適當的 .NET 參考會加入至專案，以及儲存體帳戶的連接字串會在 App.config 檔案中更新。  
+## <a name="overview"></a>總覽
+本文描述如何在您使用 Visual Studio 的 [新增連接的服務]**** 對話方塊，建立或參考了 Azure 儲存體帳戶之後，開始在 Visual Studio Azure WebJob 專案中使用 Azure 佇列儲存體。 當您使用 Visual Studio [新增連接的服務] **** 對話方塊將儲存體帳戶加入 WebJob 專案時，適當的 Azure 儲存體 NuGet 封裝便已安裝、適當的 .NET 參考會加入至專案，以及儲存體帳戶的連接字串會在 App.config 檔案中更新。  
 
 本文提供了 C# 程式碼範例，示範如何透過 Azure 佇列儲存體服務使用 Azure WebJobs SDK 1.x 版。
 
@@ -45,7 +45,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 除了 **string** 以外，參數可能是位元組陣列、**CloudQueueMessage** 物件或您定義的 POCO。
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
 在下列範例中，佇列訊息會包含 **BlobInformation** 物件的 JSON，其中包含 **BlobName** 屬性。 SDK 會自動將物件還原序列化。
 
 ```csharp
@@ -91,7 +91,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 
 * **字串**
 * 序列化為 JSON 的 POCO 型別
-* **byte[]**
+* **位元組***
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>輪詢演算法
@@ -112,7 +112,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
 * **DateTimeOffset** insertionTime
 * **DateTimeOffset** nextVisibleTime
 * **string** queueTrigger (包含訊息文字)
-* **string** id
+* **字串**ID
 * **string** popReceipt
 * **int** dequeueCount
 
@@ -191,7 +191,7 @@ public static void GracefulShutdownDemo(
 若要編寫會建立新佇列訊息的函數，請使用 **Queue** 屬性。 如同 **QueueTrigger**，您可透過字串傳入佇列名稱，或可以 [動態設定的佇列名稱](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字串佇列訊息
-下面的非同步程式碼範例會在名稱為 "outputqueue" 的佇列中建立一個新的佇列訊息，其內容與名為 "inputqueue" 的佇列中收到的佇列訊息相同。 （如需非同步函式，請使用**IAsyncCollector\<t >** ，如本節稍後所示）。
+下面的非同步程式碼範例會在名稱為 "outputqueue" 的佇列中建立一個新的佇列訊息，其內容與名為 "inputqueue" 的佇列中收到的佇列訊息相同。 （對於非同步函數，請使用**IAsyncCollector\<T>，** 如本節後面所示。
 
 ```csharp
 public static void CreateQueueMessage(
@@ -202,7 +202,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
 若要建立包含 POCO 物件 (而非字串) 的佇列訊息，請將 POCO 做為輸出參數傳送至 **Queue** 屬性建構函式。
 
 ```csharp
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 SDK 會自動將物件序列化為 JSON。 即使物件是空值，也一律會建立佇列訊息。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>建立多個訊息或使用非同步函式
-若要建立多個訊息，請將輸出佇列 ICollector 的參數類型設為 **\<t >** 或**IAsyncCollector\<t >** ，如下列範例所示。
+要創建多條消息，請使輸出佇列**ICollector\<T>** 或**IAsyncCollector\<T>** 的參數類型，如下例所示。
 
 ```csharp
 public static void CreateQueueMessages(
@@ -245,7 +245,7 @@ public static void CreateQueueMessages(
 * **CloudQueue** (用於直接使用 Azure 儲存體 API 手動建立訊息)
 
 ### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>在函式主體中使用 WebJobs SDK 屬性
-如果您需要先在函式中執行部分工作，然後再使用 WebJobs SDK 屬性，例如 **Queue** **Blob** 或 **Table**，您可以使用 **IBinder** 介面。
+如果您需要先在函式中執行部分工作，然後再使用 WebJobs SDK 屬性，例如 **Queue****Blob** 或 **Table**，您可以使用 **IBinder** 介面。
 
 下列範例會使用輸入佇列訊息，並在輸出佇列中建立含有相同內容的新訊息。 輸出佇列名稱會由函數主體中的程式碼設定。
 
@@ -297,7 +297,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ([簡單的 CLR 物件](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 佇列訊息
 針對以 JSON 格式儲存在佇列訊息中的 POCO，您可以使用 **Queue** 屬性之 **blobPath** 參數中物件的屬性名稱來做為預留位置。 您也可以使用佇列中繼資料屬性名稱做為預留位置。 請參閱 [取得佇列或佇列訊息中繼資料](#get-queue-or-queue-message-metadata)。
 
 下列範例會將 Blob 複製到具有不同副檔名的新 Blob。 佇列訊息是包含 **BlobName** 和 **BlobNameWithoutExtension** 屬性的 **BlobInformation** 物件。 在 **Blob** 屬性的 Blob 路徑中使用屬性名稱做為預留位置。
@@ -338,12 +338,12 @@ logQueue.AddMessage(queueMessage);
 * **CloudPageBlob** (讀取或寫入)
 
 ## <a name="how-to-handle-poison-messages"></a>如何處理有害訊息
-內容會導致函數失敗的訊息稱為「有害訊息」。 當函數失敗時不會刪除佇列訊息，最後會再度挑選到該訊息，造成重複循環。 SDK 可在有限的反覆次數之後自動中斷循環，或者您可以手動中斷循環。
+內容會導致函數失敗的訊息稱為「有害訊息」 **。 當函數失敗時不會刪除佇列訊息，最後會再度挑選到該訊息，造成重複循環。 SDK 可在有限的反覆次數之後自動中斷循環，或者您可以手動中斷循環。
 
 ### <a name="automatic-poison-message-handling"></a>自動處理有害訊息
 SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試失敗，訊息便會移到有害佇列中。 您可以在 [如何設定組態選項](#how-to-set-configuration-options)中了解如何設定重試次數上限。
 
-有害佇列名為 *{originalqueuename}* -poison。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
+有害佇列名為 *{originalqueuename}*-poison。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
 
 在下列範例中，當佇列訊息包含不存在的 Blob 名稱， **CopyBlob** 函數將會失敗。 發生時，就會從 copyblobqueue 佇列將訊息移至 copyblobqueue-poison 佇列。 接著， **ProcessPoisonMessage** 會記錄有害訊息。
 
@@ -535,17 +535,17 @@ public static void WriteLog(
 }
 ```
 
-在「WebJobs SDK 儀表板」中，當您移至頁面以進行特定函數叫用並選取 [切換輸出] 時，會顯示來自 **TextWriter** 物件的輸出：
+在「WebJobs SDK 儀表板」中，當您移至頁面以進行特定函數叫用並選取 [切換輸出]**** 時，會顯示來自 **TextWriter** 物件的輸出：
 
 ![叫用連結](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![函式引動過程頁面中的記錄](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-在「WebJobs SDK 儀表板」中，當您移至 WebJob (而非函數叫用) 的頁面並選取 [切換輸出]時，會顯示最近 100 行的「主控台」輸出。
+在「WebJobs SDK 儀表板」中，當您移至 WebJob (而非函數叫用) 的頁面並選取 [切換輸出] **** 時，會顯示最近 100 行的「主控台」輸出。
 
 ![TextWriter](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-在連續的 WebJob 中，應用程式記錄顯示在 Web 應用程式檔案系統中的 /data/jobs/continuous/ *{webjobname}* /job_log.txt。
+在連續的 WebJob 中，應用程式記錄顯示在 Web 應用程式檔案系統中的 /data/jobs/continuous/*{webjobname}*/job_log.txt。
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

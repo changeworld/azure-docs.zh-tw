@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048558"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 專用 HSM 部署架構
@@ -70,7 +70,7 @@ Azure 專用硬體安全模組 (HSM) 可在 Azure 中提供密碼編譯金鑰儲
 更多概念層級的主題：
 
 * [高可用性](high-availability.md)
-* [實體安全性](physical-security.md)
+* [物理安全](physical-security.md)
 * [網路功能](networking.md)
 * [支援能力](supportability.md)
-* [監視](monitoring.md)
+* [監測](monitoring.md)

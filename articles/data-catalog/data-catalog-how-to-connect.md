@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976777"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何連接到資料來源
 ## <a name="introduction"></a>簡介
-**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說，[Azure 資料目錄] 的重點在於協助人們探索、了解，以及使用資料來源，並可協助組織從現有的資料獲得更多價值。 這個背景的重點就在於使用資料，也就是使用者探索資料來源並了解其用途，然後連接到資料來源將使用其資料。
+**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說 **，Azure 資料目錄**是説明人們發現、理解和使用資料來源，以及説明組織從現有資料中獲取更多價值。 這個背景的重點就在於使用資料，也就是使用者探索資料來源並了解其用途，然後連接到資料來源將使用其資料。
 
 ## <a name="data-source-locations"></a>資料來源位置
 資料來源在註冊期間， **Azure 資料目錄** 會收到有關資料來源的中繼資料。 此中繼資料包含資料來源位置的詳細資料。 位置的詳細資料會因資料來源而異，但永遠會包含連接所需的資訊。 例如，SQL Server 資料表的位置包含伺服器名稱、資料庫名稱、結構描述名稱和資料表名稱，而 SQL Server Reporting Services 報表的位置包含伺服器名稱和報表的路徑。 其他資料來源類型的位置，則會反映結構與來源系統的功能。
@@ -28,7 +28,7 @@ ms.locfileid: "68976777"
 
 使用清單檢視時，此功能表位於入口網站視窗頂端的搜尋列中。
 
- ![在報表管理員中開啟 SQL Server Reporting Services 報表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![在報表管理員中打開 SQL 伺服器報表服務報告](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>支援的用戶端應用程式
 在 Azure 資料目錄入口網站中 對資料來源使用 [開啟於...] 功能表時，用戶端電腦上必須已安裝正確的用戶端應用程式。

@@ -1,5 +1,5 @@
 ---
-title: 管理時態表中的歷程記錄資料
+title: 在時程表中管理歷史資料
 description: 了解如何使用時態保留原則來控制歷史資料。
 services: sql-database
 ms.service: sql-database
@@ -12,36 +12,36 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
 ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820692"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留原則管理時態表中的歷史資料
 
 時態表會讓資料庫變得更大，特別是當您保留一段很長時間的歷史資料時，而一般資料表還不至於讓資料庫變得這麼大。 因此，在規劃及管理每個時態表的生命週期時，歷史資料的保留原則很重要。 Azure SQL Database 中的時態表隨附方便使用的保留機制，可協助您完成這項工作。
 
-使用者可以在個別的資料表層級設定時態記錄保留，以建立有彈性的過時清除原則。 套用時態保留很簡單︰只需要在建立資料表或變更結構描述時設定一個參數。
+時態歷程記錄保留可在不同的資料表層級上設定，讓使用者建立彈性的過時原則。 套用暫時保留很簡單：只需要在資料表建立或結構描述變更期間設定一個參數。
 
-定義保留原則之後，Azure SQL Database 會開始定期檢查是否有適合自動清除資料的歷史資料列。 系統排定和執行的背景工作會自動識別相符的資料列，並從記錄資料表中移除。 將會根據代表 SYSTEM_TIME 時段結束的資料行，檢查記錄資料表資料列的過時條件。 例如，如果保留期限設定為六個月，則適合清除的資料表資料列滿足下列條件︰
+定義保留原則之後，Azure SQL Database 會開始定期檢查是否有可自動清除資料的合格歷程記錄資料列。 識別相符資料列及從歷程記錄資料表中移除它們的作業，會以明確的方式在系統排程和執行的背景工作中進行。 會根據代表 SYSTEM_TIME 期間結束的資料行，檢查歷程記錄資料表資料列的存留期條件。 如果保留期限 (例如，設定為六個月) 資料表資料列符合清除資格，請滿足下列條件：
 
 ```
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ```
 
-在上述範例中，我們假設 **ValidTo** 資料行對應於 SYSTEM_TIME 時段結束。
+在前面的示例中，我們假定**ValidTo**列對應于SYSTEM_TIME期的結束。
 
 ## <a name="how-to-configure-retention-policy"></a>如何設定保留原則？
 
-在設定時態表的保留原則之前，請先檢查是否已在「資料庫層級」啟用時態記錄保留。
+在為臨時表配置保留原則之前，請首先檢查是否*在資料庫級別*啟用了時態歷史保留。
 
 ```
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ```
 
-根據預設，資料庫旗標 **is_temporal_history_retention_enabled** 會設為 ON，但使用者可以利用 ALTER DATABASE 陳述式變更它。 它也會在[還原時間點](sql-database-recovery-using-backups.md)作業之後自動設為 OFF。 若要對資料庫啟用時態記錄保留清除，請執行下列陳述式︰
+根據預設，資料庫旗標 **is_temporal_history_retention_enabled** 設為 ON，但使用者可利用 ALTER DATABASE 陳述式來變更它。 它也會在[還原時間點](sql-database-recovery-using-backups.md)作業之後自動設為 OFF。 若要為您的資料庫啟用時態歷程記錄保留清除功能，請執行下列陳述式：
 
 ```sql
 ALTER DATABASE <myDB>
@@ -51,7 +51,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 > [!IMPORTANT]
 > 即使 **is_temporal_history_retention_enabled** 為 OFF，您還是可以設定時態表的保留，但在此情況下，不會觸發自動清除過時的資料列。
 
-在建立資料表期間，您可以指定 HISTORY_RETENTION_PERIOD 參數的值來設定保留原則︰
+藉由指定 HISTORY_RETENTION_PERIOD 參數值，在資料表建立期間設定保留原則：
 
 ```sql
 CREATE TABLE dbo.WebsiteUserInfo
@@ -73,9 +73,9 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Azure SQL Database 可讓您使用不同的時間單位來指定保留期限︰DAYS、WEEKS、MONTHS 年 YEARS。 如果省略 HISTORY_RETENTION_PERIOD，則假設為 INFINITE 保留。 您也可以明確使用 INFINITE 關鍵字。
+Azure SQL Database 可讓您使用不同的時間單位來指定保留期限︰DAYS、WEEKS、MONTHS 年 YEARS。 如果省略了 HISTORY_RETENTION_PERIOD，則會假設 INFINITE 保留。 您也可以明確地使用 INFINITE 關鍵字。
 
-在某些情況下，您可能想要在建立資料表之後設定保留，或變更先前設定的值。 在此情況下，請使用 ALTER TABLE 陳述式︰
+在某些狀況中，您可能想要在資料表建立後設定保留，或變更先前設定的值。 在此情況下，請使用 ALTER TABLE 陳述式：
 
 ```sql
 ALTER TABLE dbo.WebsiteUserInfo
@@ -83,9 +83,9 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> 將 SYSTEM_VERSIONING 設定為 OFF「不會保留」保留期限值。 如果將 SYSTEM_VERSIONING 設為 ON，但未明確指定 HISTORY_RETENTION_PERIOD，則會形成 INFINITE 保留期限。
+> 將 SYSTEM_VERSIONING 設定為 OFF「不會保留」** 保留期限值。 如果將 SYSTEM_VERSIONING 設為 ON，但未明確指定 HISTORY_RETENTION_PERIOD，則會形成 INFINITE 保留期限。
 
-若要檢閱保留原則的目前狀態，請使用下列查詢，其中結合資料庫層級的時態保留啟用旗標和個別資料表的保留期限︰
+若要檢閱目前的保留原則狀態，請使用下列查詢，以聯結資料庫層級的暫時保留啟用旗標與個別資料表的保留期間：
 
 ```sql
 SELECT DB.is_temporal_history_retention_enabled,
@@ -103,24 +103,24 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>SQL Database 如何刪除過時資料列？
 
-清除程序取決於記錄資料表的索引配置。 請務必注意，具有叢集索引 (B 型樹狀目錄或資料行存放區) 的記錄資料表才能設定有限保留原則。 對於設定有限保留期限的所有時態表，將會建立背景工作來清除過時資料。
-資料列存放區 (B 型樹狀目錄) 叢集索引的清除邏輯會以較小區塊刪除過時資料列 (最多 10K)，以儘量減輕資料庫記錄檔和 IO 子系統的壓力。 雖然清除邏輯採用必要的 B 型樹狀目錄索引，但在刪除比保留期限更舊的資料列時，就無法確實保證刪除順序。 因此，在您的應用程式中，絕對不要依賴清除順序。
+清除處理序取決於歷程記錄資料表的索引配置。 請務必注意*只有包含叢集索引 (B 型樹狀目錄或資料行存放區）的歷程記錄資料表可以設定有限的保留原則*。 建立的背景工作可利用有限的保留期間為所有時態表執行過時資料清除。
+資料列存放區 (B 型樹狀目錄) 叢集索引的清除邏輯會以較小區塊刪除過時資料列 (最多 10K)，以儘量減輕資料庫記錄檔和 IO 子系統的壓力。 雖然清除邏輯會利用必要的 B 型樹狀目錄索引，但無法絶對保證早於保留期間之資料列的刪除順序。 因此，*請勿在應用程式中對清除順序採用任何相依性*。
 
-叢集資料行存放區的清除工作會一次移除整個[資料列群組](https://msdn.microsoft.com/library/gg492088.aspx) (每個通常包含 1 百萬個資料列)，這非常有效率，特別當歷史資料快速產生時。
+群集列存儲的清理任務一次刪除整個[行組](https://msdn.microsoft.com/library/gg492088.aspx)（通常每個行包含 100 萬行），這非常有效，尤其是在以高速度生成歷史資料時。
 
 ![叢集資料行存放區保留](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-當您的工作負載快速產生大量記錄資料時，絕佳的資料壓縮和有效率的保留清除，使得叢集資料行存放區索引成為最佳選擇。 此模式通常用於需要[使用時態表的大量交易處理工作負載](https://msdn.microsoft.com/library/mt631669.aspx)，以追蹤和稽核變更、分析趨勢，或擷取 IoT 資料。
+卓越的資料壓縮和有效率的保留清除，可讓叢集資料行存放區索引成為您的工作負載快速產生大量歷程記錄資料時的完美選擇。 此模式通常用於需要[使用時態表的大量交易處理工作負載](https://msdn.microsoft.com/library/mt631669.aspx)，以追蹤和稽核變更、分析趨勢，或擷取 IoT 資料。
 
 ## <a name="index-considerations"></a>索引考量
 
 對於具有資料列存放區叢集索引的資料表，清除工作需有從對應 SYSTEM_TIME 時段結束的資料行開始的索引。 如果沒有這種索引，您就無法設定有限保留期限：
 
-*訊息13765，層級16，狀態 1 <br></br> 設定在系統建立版本的時態表 ' temporalstagetestdb.dbo.websiteuserinfohistory ' 上的有限保留期限失敗，因為歷程記錄資料表 ' temporalstagetestdb.dbo.websiteuserinfohistory. WebsiteUserInfo ' 不是包含必要的叢集索引。請考慮建立叢集資料行存放區或 B 型樹狀目錄索引，其開頭為符合記錄資料表上 SYSTEM_TIME 期間結尾的資料行。*
+*Msg 13765，16 級，<br></br>狀態 1 設置有限保留期失敗，系統版本化的時程表"時態階段testdb.dbo.網站UserInfo"，因為歷史表"時態階段testdb.dbo.網站UserInfoHistory"不包含所需的群集索引。請考慮在歷史記錄表上創建群集列存儲或 B 樹索引，從與SYSTEM_TIME期結束的列匹配的列開始。*
 
 請務必注意，Azure SQL Database 建立的預設記錄資料表已有相容於保留原則的叢集索引。 如果您嘗試在設定有限保留期限的資料表上移除該索引，作業會失敗並傳回下列錯誤︰
 
-*訊息13766，層級16，狀態 1 <br></br> 無法卸載叢集索引 ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory '，因為它正用於自動清除過時資料。如果您需要卸載此索引，請在對應的系統版本設定時態表上，考慮將 HISTORY_RETENTION_PERIOD 設為無限。*
+*Msg 13766，16 級，<br></br>狀態 1 不能刪除群集索引"網站UserInfoHistory.IX_WebsiteUserInfoHistory"，因為它用於自動清理老化資料。如果需要刪除此索引，請考慮在相應的系統版本化臨時表上將HISTORY_RETENTION_PERIOD設置為 INFINITE。*
 
 如果歷史資料列依遞增順序插入 (依時段結束資料行排序)，完全以 SYSTEM_VERSIONIOING 機制填入記錄資料表時就是如此，則會以最佳方式清除叢集資料行存放區索引。 如果記錄資料表中的資料列未依時段結束資料行排序 (可能是您已移轉現有的歷史資料)，您應該在已正確排序的 B 型樹狀目錄資料列存放區索引上，重新建立叢集資料行存放區索引，以發揮最佳效能。
 
@@ -144,11 +144,11 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 嘗試執行上述陳述式失敗並傳回下列錯誤︰
 
-*訊息 13772，層級 16，狀態 1 <br></br> 無法在時態記錄資料表 'WebsiteUserInfoHistory' 上建立非叢集索引，因為它己定義有限保留期限和叢集資料行存放區索引。*
+*Msg 13772、16 級、<br></br>狀態 1 無法在時間歷史表"網站UserInfo歷史"上創建非群集索引，因為它具有有限的保留期和定義的群集列存儲索引。*
 
 ## <a name="querying-tables-with-retention-policy"></a>使用保留原則來查詢資料表
 
-時態表上的所有查詢會自動篩選掉符合有限保留原則的歷史資料列，以避免非預期和不一致的結果，因為清除工作可以「隨時以任意順序」刪除過時資料列。
+時態表上的所有查詢會自動篩選掉符合有限保留原則的歷史資料列，以避免非預期和不一致的結果，因為清除工作可以「隨時以任意順序」** 刪除過時資料列。
 
 下圖顯示簡單查詢的查詢計劃︰
 
@@ -168,7 +168,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 ## <a name="point-in-time-restore-considerations"></a>還原時間點考量
 
-當您[將現有資料庫還原到特定時間點](sql-database-recovery-using-backups.md)來建立新的資料庫時，資料庫層級上會停用時態保留 (**is_temporal_history_retention_enabled** 旗標設為 OFF)。 這項功能可讓您在還原時檢查所有歷史資料列，而不必擔心過時資料列在您開始查詢之前就被移除。 這可用來「檢查超出設定保留期限的歷史資料」。
+當您[將現有資料庫還原到特定時間點](sql-database-recovery-using-backups.md)來建立新的資料庫時，資料庫層級上會停用時態保留  (**is_temporal_history_retention_enabled** 旗標設為 OFF)。 這項功能可讓您在還原時檢查所有歷史資料列，而不必擔心過時資料列在您開始查詢之前就被移除。 這可用來「檢查超出設定保留期限的歷史資料」**。
 
 假設時態表已指定一個 MONTH 保留期限。 如果是在高階服務層中建立資料庫，您可以使用過去最多 35 天的資料庫狀態來建立資料庫副本。 實際上，這可讓您直接查詢記錄資料表，以分析過去最多 65 天的歷史資料列。
 
@@ -181,7 +181,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何在應用程式中使用時態表，請參閱[開始使用 Azure SQL Database 中的時態表](sql-database-temporal-tables.md)。
+要瞭解如何在應用程式中使用臨時表，請查看[Azure SQL 資料庫中的"開始使用臨時表](sql-database-temporal-tables.md)"。
 
 瀏覽 Channel 9，聽聽[真實客戶的時態表實作成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，並觀看[時態表的即時示範](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 

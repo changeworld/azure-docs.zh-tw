@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共用 VM 映射建立擴展集
+title: 使用共用 VM 映射在 Azure 中創建縮放集
 description: 了解如何使用 Azure PowerShell 來建立共用 VM 映像，以用來在 Azure 中部署虛擬機器擴展集。
 author: axayjo
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 5f4eca88614a98f0caf87d04847029328042edd8
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368730"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>使用 Azure PowerShell 為虛擬機器擴展集建立及使用共用映像
@@ -27,12 +27,12 @@ ms.locfileid: "77368730"
 
 | 資源 | 描述|
 |----------|------------|
-| **受控映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **託管映射** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
+| **圖像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果沒有 Azure 訂閱，請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "77368730"
 
 下列步驟將詳細說明如何將現有 VM 轉換成可重複使用的自訂映像，以便讓您用來建立新的 VM 執行個體。
 
-若要完成本文中的範例，您必須具有現有的受控映像。 您可以遵循[教學課程：建立及使用虛擬機器擴展集的自訂映射與 Azure PowerShell](tutorial-use-custom-image-powershell.md) ，以在需要時建立一個。 如果受控映射包含資料磁片，資料磁片大小不能超過 1 TB。
+若要完成本文中的範例，您必須具有現有的受控映像。 您可以按照[教程操作：使用 Azure PowerShell 為虛擬機器縮放集創建和使用自訂映射](tutorial-use-custom-image-powershell.md)，以便在需要時創建一個映射。 如果託管映射包含資料磁片，則資料磁片大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
@@ -49,7 +49,7 @@ ms.locfileid: "77368730"
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>從共用映像版本建立擴展集
 
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會從*美國中南部*資料中心的新映射版本建立擴展集。 出現提示時，請為擴展集中的 VM 執行個體設定自己的系統管理認證：
+使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下面的示例從美國*中南部*資料中心中的新映射版本創建比例集。 出現提示時，請為擴展集中的 VM 執行個體設定自己的系統管理認證：
 
 
 ```azurepowershell-interactive
@@ -161,7 +161,7 @@ New-AzVmss `
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
-- [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
