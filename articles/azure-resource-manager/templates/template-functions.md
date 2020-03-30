@@ -3,20 +3,20 @@ title: 範本函式
 description: 描述要在 Azure 資源管理員範本中用來擷取值、搭配字串和數字使用，並擷取部署資訊的函數。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156254"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure 資源管理員範本函數
+# <a name="arm-template-functions"></a>ARM 範本功能
 
-本文描述您可以在Azure Resource Manager 範本中使用的所有函式。 如需在您的範本中使用函式的詳細資訊，請參閱[範本語法](template-expressions.md)。
+本文介紹可在 Azure 資源管理器 （ARM） 範本中使用的所有功能。 有關在範本中使用函數的資訊，請參閱[範本語法](template-expressions.md)。
 
 若要建立自己的函式，請參閱[使用者定義的函式](template-syntax.md#functions)。
 
-在部署至資源群組、訂用帳戶、管理群組或租使用者時，大部分函式的運作方式都相同。 有些函式不能用在所有範圍中。 它們會在下列清單中注明。
+部署到資源組、訂閱、管理組或租戶時，大多數函數的工作方式相同。 一些函數不能在所有作用域中使用。 下面列出了它們。
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -40,23 +40,23 @@ ms.locfileid: "77207037"
 
 Resource Manager 提供了幾個用來使用陣列和物件的函式。
 
-* [array](template-functions-array.md#array)
+* [陣 列](template-functions-array.md#array)
 * [coalesce](template-functions-array.md#coalesce)
 * [concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
-* [createArray](template-functions-array.md#createarray)
-* [empty](template-functions-array.md#empty)
-* [first](template-functions-array.md#first)
-* [intersection](template-functions-array.md#intersection)
-* [json](template-functions-array.md#json)
-* [last](template-functions-array.md#last)
-* [length](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
-* [max](template-functions-array.md#max)
+* [包含](template-functions-array.md#contains)
+* [創建Array](template-functions-array.md#createarray)
+* [空](template-functions-array.md#empty)
+* [第一](template-functions-array.md#first)
+* [交叉 口](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [最後](template-functions-array.md#last)
+* [長度](template-functions-array.md#length)
+* [分鐘](template-functions-array.md#min)
+* [麥克斯](template-functions-array.md#max)
 * [range](template-functions-array.md#range)
-* [skip](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
-* [union](template-functions-array.md#union)
+* [跳](template-functions-array.md#skip)
+* [採取](template-functions-array.md#take)
+* [聯盟](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -69,7 +69,7 @@ Resource Manager 提供了幾個用來使用陣列和物件的函式。
 Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 * [equals](template-functions-comparison.md#equals)
-* [less](template-functions-comparison.md#less)
+* [少](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
@@ -84,7 +84,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 * [部署](template-functions-deployment.md#deployment)
 * [環境](template-functions-deployment.md#environment)
-* [parameters](template-functions-deployment.md#parameters)
+* [參數](template-functions-deployment.md#parameters)
 * [變數](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
@@ -97,11 +97,11 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 Resource Manager 提供下列函式以使用邏輯條件：
 
-* [and](template-functions-logical.md#and)
+* [和](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
 * [if](template-functions-logical.md#if)
-* [not](template-functions-logical.md#not)
-* [or](template-functions-logical.md#or)
+* [否](template-functions-logical.md#not)
+* [或](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -119,13 +119,13 @@ Resource Manager 提供下列函式以使用邏輯條件：
 資源管理員提供下列函式以使用整數：
 
 * [新增](template-functions-numeric.md#add)
-* [copyIndex](template-functions-numeric.md#copyindex)
+* [複製索引](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
-* [float](template-functions-numeric.md#float)
-* [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
-* [max](template-functions-numeric.md#max)
-* [mod](template-functions-numeric.md#mod)
+* [浮動](template-functions-numeric.md#float)
+* [Int](template-functions-numeric.md#int)
+* [分鐘](template-functions-numeric.md#min)
+* [麥克斯](template-functions-numeric.md#max)
+* [國防部](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
 
@@ -144,18 +144,18 @@ Resource Manager 提供下列函式以使用邏輯條件：
 
 資源管理員提供下列函式以取得資源值：
 
-* [extensionResourceId](template-functions-resource.md#extensionresourceid)
+* [擴展資源 Id](template-functions-resource.md#extensionresourceid)
 * [listAccountSas](template-functions-resource.md#list)
-* [listKeys](template-functions-resource.md#listkeys)
-* [listSecrets](template-functions-resource.md#list)
-* [list*](template-functions-resource.md#list)
-* [提供者](template-functions-resource.md#providers)
-* [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) -只能用在資源群組的部署中。
-* [resourceId](template-functions-resource.md#resourceid) -可以用於任何範圍，但有效的參數會根據範圍而變更。
-* [訂](template-functions-resource.md#subscription)用帳戶-只能用在資源群組或訂用帳戶的部署中。
-* [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
-* [tenantResourceId](template-functions-resource.md#tenantresourceid)
+* [清單鍵](template-functions-resource.md#listkeys)
+* [清單秘密](template-functions-resource.md#list)
+* [清單*](template-functions-resource.md#list)
+* [供應商](template-functions-resource.md#providers)
+* [參考](template-functions-resource.md#reference)
+* [資源組](template-functions-resource.md#resourcegroup)- 只能在部署到資源組時使用。
+* [resourceId](template-functions-resource.md#resourceid) - 可在任何作用域使用，但有效參數會根據範圍而變化。
+* [訂閱](template-functions-resource.md#subscription)- 只能在部署到資源組或訂閱時使用。
+* [訂閱資源 Id](template-functions-resource.md#subscriptionresourceid)
+* [租戶資源 Id](template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -192,43 +192,43 @@ Resource Manager 提供下列函式以使用邏輯條件：
 
 資源管理員提供下列函式以使用字串：
 
-* [base64](template-functions-string.md#base64)
+* [基地64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
-* [dataUri](template-functions-string.md#datauri)
+* [包含](template-functions-string.md#contains)
+* [資料裡](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [empty](template-functions-string.md#empty)
+* [空](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
-* [first](template-functions-string.md#first)
-* [format](template-functions-string.md#format)
-* [guid](template-functions-string.md#guid)
-* [indexOf](template-functions-string.md#indexof)
-* [last](template-functions-string.md#last)
+* [第一](template-functions-string.md#first)
+* [格式](template-functions-string.md#format)
+* [Guid](template-functions-string.md#guid)
+* [索引](template-functions-string.md#indexof)
+* [最後](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [length](template-functions-string.md#length)
-* [newGuid](template-functions-string.md#newguid)
+* [長度](template-functions-string.md#length)
+* [新吉德](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
-* [replace](template-functions-string.md#replace)
-* [skip](template-functions-string.md#skip)
-* [分割](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
+* [取代](template-functions-string.md#replace)
+* [跳](template-functions-string.md#skip)
+* [分裂](template-functions-string.md#split)
+* [開始與](template-functions-string.md#startswith)
+* [字串](template-functions-string.md#string)
 * [substring](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
-* [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
+* [採取](template-functions-string.md#take)
+* [到下](template-functions-string.md#tolower)
+* [到上](template-functions-string.md#toupper)
 * [修剪](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [uri](template-functions-string.md#uri)
+* [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 * [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關 Azure 資源管理員範本中各區段的說明，請參閱 [編寫 Azure 資源管理員範本](template-syntax.md)
+* 有關 ARM 範本中部分的說明，請參閱創作[ARM 範本](template-syntax.md)
 * 若要合併多個範本，請參閱 [透過 Azure 資源管理員使用連結的範本](linked-templates.md)
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要瞭解如何部署您所建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)
+* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
+* 要查看如何部署已創建的範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)

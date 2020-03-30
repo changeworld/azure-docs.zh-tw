@@ -1,65 +1,65 @@
 ---
-title: 管理存放庫中的 IoT 隨插即用預覽模型 |Microsoft Docs '
-description: 如何使用 Azure IoT 認證入口網站、Azure CLI 和 Visual Studio 程式碼，管理存放庫中的裝置功能模型。
+title: 在存儲庫中管理 IoT 隨插即用預覽模型*微軟文檔
+description: 如何使用適用于 IoT 門戶的 Azure 認證、Azure CLI 和視覺化工作室代碼管理存儲庫中的裝置功能模型。
 author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 78406175090521af70381f61f4e33dfb6c35ac8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531254"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159144"
 ---
-# <a name="manage-models-in-the-repository"></a>管理存放庫中的模型
+# <a name="manage-models-in-the-repository"></a>管理存儲庫中的模型
 
-IoT 隨插即用預覽模型存放庫會儲存裝置功能模型和介面。 儲存機制讓解決方案開發人員可以探索及取用模型和介面。
+IoT 隨插即用預覽模型存儲庫存放裝置功能模型和介面。 存儲庫使模型和介面可由解決方案開發人員發現和消耗。
 
-有三種工具可用來管理存放庫：
+有三種工具可用於管理存儲庫：
 
-- Azure IoT 認證入口網站
+- 為 IoT 門戶認證的 Azure
 - Azure CLI
 - Visual Studio Code
 
-## <a name="model-repositories"></a>模型存放庫
+## <a name="model-repositories"></a>模型存儲庫
 
-有兩種類型的模型存放庫可用於儲存裝置功能模型和介面：
+有兩種類型的模型存儲庫用於存放裝置功能模型和介面：
 
-- 有一個公用存放_庫_，可儲存[Azure IoT 認證裝置目錄](https://aka.ms/iotdevcat)中裝置的裝置功能模型和介面。 此存放庫也會儲存[Microsoft 合作夥伴所發行的](./howto-onboard-portal.md) [通用介面](./concepts-common-interfaces.md)和 DCMs 和介面。 若要瞭解如何認證裝置，並將其裝置功能模型新增至公用存放庫，請參閱 [<c0>認證您的 IoT 隨插即用裝置教學課程](./tutorial-certification-test.md)。
-- 有多個_公司存放庫_。 當您上[架到 Azure IoT 認證入口網站](./howto-onboard-portal.md)時，系統會自動為您的組織建立公司存放庫。 您可以使用公司存放庫，在開發和測試期間儲存裝置功能模型和介面。
+- 在[Azure 認證的 IoT 設備目錄中](https://aka.ms/iotdevcat)，有一個_公共存儲庫_存放裝置功能模型和設備的介面。 此存儲庫還存儲由 Microsoft 合作夥伴發佈的[通用介面](./concepts-common-interfaces.md)[、DCM 和介面](./howto-onboard-portal.md)。 要瞭解如何認證設備並將其裝置功能模型添加到公共存儲庫，請參閱教程["認證 IoT 隨插即用裝置](./tutorial-certification-test.md)"。
+- 有多個_公司存儲庫_。 當您[登上 Azure 認證的 IoT 門戶時，](./howto-onboard-portal.md)將自動為您的組織創建公司存儲庫。 您可以在開發和測試期間使用公司存儲庫來存放裝置功能模型和介面。
 
-## <a name="azure-certified-for-iot-portal"></a>Azure IoT 認證入口網站
+## <a name="azure-certified-for-iot-portal"></a>為 IoT 門戶認證的 Azure
 
-在[Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)中，您可以完成下列工作：
+在[IoT](https://preview.catalog.azureiotsolutions.com)的 Azure 認證門戶中，可以完成以下任務：
 
-- [完成 IoT 裝置的認證程式](./tutorial-certification-test.md)。
-- 尋找 IoT 隨插即用裝置功能模型。 您可以使用這些模型來[快速建立 IoT 就緒裝置，並將其與解決方案整合](./quickstart-connect-pnp-device-solution-node.md)。
+- [完成 IoT 設備的認證過程](./tutorial-certification-test.md)。
+- 查找 IoT 隨插即用裝置功能模型。 您可以使用這些模型[快速構建物聯網就緒設備，並將其與解決方案集成](./quickstart-connect-pnp-device-solution-node.md)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 提供命令來管理 IoT 隨插即用公用和公司模型存放庫中的裝置功能模型和介面。 如需詳細資訊，請參閱[安裝和使用適用于 Azure CLI 操作指南的 Azure IoT 擴充](./howto-install-pnp-cli.md)功能。
+Azure CLI 提供用於管理 IoT 隨插即用公共和公司模型存儲庫中的裝置功能模型和介面的命令。 有關詳細資訊，請參閱 Azure [CLI 的"安裝和使用 Azure IoT 擴展](./howto-install-pnp-cli.md)"指南。
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-若要在 Visual Studio Code 中開啟**模型存放庫**視圖。
+在視覺化工作室代碼中打開**模型存儲庫**視圖。
 
-1. 開啟 Visual Studio Code，使用**Ctrl + Shift + P**，輸入並選取 [ **IoT 隨插即用：開啟模型存放庫**]。
+1. 打開視覺化工作室代碼，使用**Ctrl_Shift_P**，鍵入並選擇**IoT 隨插即用：打開模型存儲庫**。
 
-1. 您可以選擇**開啟公用模型存放庫**，或**開啟組織模型存放庫**。 針對 [公司模型存放庫]，您必須輸入模型存放庫連接字串。 您可以使用 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)，在**公司存放庫**的 [連接字串] 索引標籤上中找到此連接字串。
+1. 您可以選擇**打開公共模型存儲庫**或**打開組織模型存儲庫**。 對於公司模型存儲庫，您需要輸入模型存儲庫連接字串。 您可以使用 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)，在**公司存放庫**的 [連接字串]**** 索引標籤上中找到此連接字串。
 
-1. 新的索引標籤會開啟 [**模型存放庫**] 視圖。
+1. 新選項卡將打開 **"模型存儲庫"** 視圖。
 
-    使用此視圖來新增、下載和刪除裝置功能模型和介面。 您可以使用篩選準則來尋找清單中的特定專案。
+    使用此視圖可以添加、下載和刪除裝置功能模型和介面。 您可以使用篩選器查找清單中的特定項。
 
-1. 若要在您的公司模型存放庫和公用模型存放庫之間切換，請使用**Ctrl + Shift + P**，輸入並選取 [ **IoT 隨插即用：登出模型存放庫**]。 然後，再次使用 [ **IoT 隨插即用：開啟模型存放庫**] 命令。
+1. 要在公司模型存儲庫和公共模型存儲庫之間切換，請使用**Ctrl_Shift_P，** 鍵入並選擇**IoT 隨插即用：登出模型存儲庫**。 然後再次使用**IoT 隨插即用：打開模型存儲庫**命令。
 
 > [!NOTE]
-> 在 VS Code 中，公用模型存放庫是唯讀的。 Microsoft 合作夥伴可以在[Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)中更新公用存放庫。
+> 在 VS 代碼中，公共模型存儲庫是唯讀的。 Microsoft 合作夥伴可以在 Azure 認證[IoT 門戶](https://preview.catalog.azureiotsolutions.com)中更新公共存儲庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-建議的下一個步驟是瞭解如何[提交 IoT 隨插即用裝置以進行認證](tutorial-certification-test.md)。
+建議的下一步是學習如何[提交物聯網隨插即用裝置進行認證](tutorial-certification-test.md)。

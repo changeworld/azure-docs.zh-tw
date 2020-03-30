@@ -1,20 +1,20 @@
 ---
-title: 連結部署的範本
+title: 用於部署的連結範本
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131919"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
-若要部署複雜的解決方案，您可以將您的範本分成許多相關的範本，然後透過主要範本將其部署在一起。 相關範本可以是內嵌在主要範本中的個別檔案或範本語法。 本文使用「連結的**範本**」一詞來參考與主要範本連結的個別範本檔案。 它會使用「**嵌套**」一詞來參考主要範本中的內嵌範本語法。
+要部署複雜的解決方案，可以將範本分解為許多相關範本，然後通過主範本將它們一起部署。 相關範本可以是嵌入在主範本中的單獨的檔或範本語法。 本文使用術語**連結範本**來引用通過主範本連結引用的單獨範本檔。 它使用術語**嵌套範本**來引用主範本中的嵌入式範本語法。
 
-若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 針對先進的案例，連結的範本可讓您將解決方案細分為目標群組件。 在其他案例中，您可以輕鬆地重複使用這些範本。
+若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 對於高級方案，連結範本使您能夠將解決方案分解為目標群組件。 您可以輕鬆地將這些範本用於其他方案。
 
 如需教學課程，請參閱[建立連結的 Azure Resource Manager 範本](template-tutorial-create-linked-templates.md)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "79274251"
 
 ## <a name="nested-template"></a>巢狀範本
 
-若要將範本嵌套，請將[部署資源](/azure/templates/microsoft.resources/deployments)新增至您的主要範本。 在 [**範本**] 屬性中，指定範本語法。
+要嵌套範本，請向主範本添加[部署資源](/azure/templates/microsoft.resources/deployments)。 在**範本**屬性中，指定範本語法。
 
 ```json
 {
@@ -50,7 +50,7 @@ ms.locfileid: "79274251"
 }
 ```
 
-下列範例會透過嵌套的範本部署儲存體帳戶。
+以下示例通過嵌套範本部署存儲帳戶。
 
 ```json
 {
@@ -92,11 +92,11 @@ ms.locfileid: "79274251"
 }
 ```
 
-### <a name="scope-for-expressions-in-nested-templates"></a>嵌套範本中的運算式範圍
+### <a name="expression-evaluation-scope-in-nested-templates"></a>嵌套範本中的運算式評估範圍
 
-使用嵌套範本時，您可以指定是否要在父範本或嵌套範本的範圍內評估範本運算式。 範圍會決定如何解析參數、變數和函式（例如[resourceGroup](template-functions-resource.md#resourcegroup)和[訂](template-functions-resource.md#subscription)用帳戶）。
+使用嵌套範本時，可以指定範本運算式是在父範本或嵌套範本的範圍內計算的。 範圍確定如何解決參數、變數和函數（如[資源組](template-functions-resource.md#resourcegroup)和[訂閱](template-functions-resource.md#subscription)）。
 
-您可以透過 `expressionEvaluationOptions` 屬性來設定範圍。 根據預設，`expressionEvaluationOptions` 屬性會設定為 `outer`，這表示它會使用父範本範圍。 將 [值] 設定為 [`inner`]，將運算式的範圍設為嵌套的範本。
+通過`expressionEvaluationOptions`屬性設置作用域。 預設情況下，該`expressionEvaluationOptions`屬性設置為`outer`，這意味著它使用父範本作用域。 將值設置為`inner`使運算式在嵌套範本的作用域內計算。
 
 ```json
 {
@@ -110,7 +110,7 @@ ms.locfileid: "79274251"
   ...
 ```
 
-下列範本會示範如何根據範圍來解析範本運算式。 它包含名為 `exampleVar` 的變數，同時定義于父範本和嵌套的範本中。 它會傳回變數的值。
+以下範本演示如何根據範圍解析範本運算式。 它包含在父範本和嵌套`exampleVar`範本中定義的名為的變數。 它返回變數的值。
 
 ```json
 {
@@ -158,14 +158,14 @@ ms.locfileid: "79274251"
 }
 ```
 
-變數的值會根據範圍而變更。 下表顯示這兩個範圍的結果。
+根據 中`exampleVar``scope``expressionEvaluationOptions`的屬性的值更改的值。 下表顯示了兩個作用域的結果。
 
-| 影響範圍 | 輸出 |
+| `expressionEvaluationOptions` `scope` | 輸出 |
 | ----- | ------ |
-| inner | 從嵌套的範本 |
-| 外部（或預設值） | 從父範本 |
+| inner | 從嵌套範本 |
+| 外部（或預設） | 從父範本 |
 
-下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為 `inner`，因為它會以動態方式建立金鑰保存庫識別碼，並將它當做參數傳遞給嵌套的範本。
+下面的示例部署 SQL 伺服器並檢索用於密碼的金鑰保存庫金鑰。 作用域設置為`inner`，因為它動態地創建金鑰保存庫 ID（請參閱`adminPassword.reference.keyVault`外部範本`parameters`），並將其作為參數傳遞給嵌套範本。
 
 ```json
 {
@@ -215,6 +215,22 @@ ms.locfileid: "79274251"
         "expressionEvaluationOptions": {
           "scope": "inner"
         },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "adminLogin": {
+            "value": "ghuser"
+          },
+          "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
+          }
+        },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
@@ -250,22 +266,6 @@ ms.locfileid: "79274251"
               "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
             }
           }
-        },
-        "parameters": {
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "adminLogin": {
-            "value": "ghuser"
-          },
-          "adminPassword": {
-            "reference": {
-              "keyVault": {
-                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-              },
-              "secretName": "[parameters('secretName')]"
-            }
-          }
         }
       }
     }
@@ -277,11 +277,11 @@ ms.locfileid: "79274251"
 
 > [!NOTE]
 >
-> 當 [範圍] 設定為 [`outer`] 時，您無法在已部署于嵌套範本之資源的已嵌套範本的 [輸出] 區段中使用 `reference` 函式。 若要傳回已部署之資源在嵌套範本中的值，請使用內部範圍，或將您的嵌套範本轉換為連結的範本。
+> 將作用域設置為`outer`時，不能在嵌套範本的輸出`reference`部分中為嵌套範本中部署的資源使用函數。 要返回嵌套範本中已部署資源的值，請使用`inner`作用域或將嵌套範本轉換為連結範本。
 
 ## <a name="linked-template"></a>連結的範本
 
-若要連結範本，請將[部署資源](/azure/templates/microsoft.resources/deployments)新增至您的主要範本。 在 [ **templateLink** ] 屬性中，指定要包含之範本的 URI。 下列範例會連結至部署新儲存體帳戶的範本。
+要連結範本，請將[部署資源](/azure/templates/microsoft.resources/deployments)添加到主範本。 在**範本連結**屬性中，指定要包括的範本的 URI。 以下示例連結到部署新存儲帳戶的範本。
 
 ```json
 {
@@ -308,13 +308,19 @@ ms.locfileid: "79274251"
 }
 ```
 
-您無法指定本機檔案或只可在本機網路存取的檔案。 您可以只提供 URI 值，其中包含 **http** 或 **https**。 Resource Manager 必須能夠存取範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。
+引用連結範本時，的值`uri`不能是本地檔或僅在本地網路上可用的檔。 您必須提供可下載為**HTTP**或**HTTPs 的**URI 值。 
 
-您不需要提供範本的 `contentVersion` 屬性或參數。 如果您未提供內容版本值，則會部署目前的版本範本。 如果您提供內容版本值，它必須符合所連結範本中的版本；否則，部署會因為錯誤而失敗。
+> [!NOTE]
+>
+> 您可以使用最終解析為使用 HTTP 或`_artifactsLocation`**HTTPs**的參數引用範本**https**，例如，使用如下所示的參數：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+
+
+
+資源管理器必須能夠訪問範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。
 
 ### <a name="parameters-for-linked-template"></a>連結範本的參數
 
-您可以在外部檔案或內嵌中提供連結範本的參數。 提供外部參數檔案時，請使用**parametersLink**屬性：
+您可以在外部檔或內聯中提供連結範本的參數。 提供外部參數檔時，請使用**參數連結**屬性：
 
 ```json
 "resources": [
@@ -325,19 +331,19 @@ ms.locfileid: "79274251"
   "properties": {
     "mode": "Incremental",
     "templateLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+      "contentVersion":"1.0.0.0"
     },
     "parametersLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+      "contentVersion":"1.0.0.0"
     }
   }
   }
 ]
 ```
 
-若要以內嵌方式傳遞參數值，請使用**parameters**屬性。
+要內聯傳遞參數值，請使用**參數**屬性。
 
 ```json
 "resources": [
@@ -361,11 +367,46 @@ ms.locfileid: "79274251"
 
 您無法對參數檔案同時使用內嵌參數和連結。 同時指定 `parametersLink` 和 `parameters` 時，部署將會失敗並發生錯誤。
 
-## <a name="using-copy"></a>使用複製
+## `contentVersion`
 
-若要使用嵌套的範本來建立資源的多個實例，請在 [ **Microsoft Resources/部署**] 資源層級上新增 copy 元素。 或者，如果範圍是內部，您可以在嵌套的範本內加入複本。
+您不必為`contentVersion``templateLink`或`parametersLink`屬性提供屬性。 如果未提供 ，`contentVersion`則部署範本的當前版本。 如果您提供內容版本值，它必須符合所連結範本中的版本；否則，部署會因為錯誤而失敗。
 
-下列範例範本顯示如何搭配使用複製與嵌套的範本。
+## <a name="using-variables-to-link-templates"></a>使用變數來連結範本
+
+先前的範例示範了範本連結的硬式編碼 URL 值。 此方法可能適用于簡單的範本，但它對一組大型模組化範本不起作用。 不過，您可以建立一個儲存主要範本之基底 URL 的靜態變數，然後再從該基底 URL 連結動態建立連結的範本之 URL。 此方法的好處是可以輕鬆地移動或分叉範本，因為您只需更改主範本中的靜態變數。 主要範本會於整個分解的範本傳遞正確的 URI。
+
+下列範例示範如何使用基底 URL 來為連結的範本 (**sharedTemplateUrl** 和 **vmTemplate**) 建立兩個 URL。
+
+```json
+"variables": {
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
+  "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
+}
+```
+
+您也可以使用 [deployment()](template-functions-deployment.md#deployment) 取得目前範本的基底 URL，用來取得相同位置中其他範本的 URL。 如果您的範本位置變更，或您想要避免在範本檔案中使用硬式編碼 URL，這十分實用。 只有在透過 URL 連結至遠端範本時，才會傳回 templateLink 屬性。 如果您使用本機範本，就無法使用該屬性。
+
+```json
+"variables": {
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+}
+```
+
+最終，您將在`uri``templateLink`屬性的屬性中使用變數。
+
+```json
+"templateLink": {
+ "uri": "[variables('sharedTemplateUrl')]",
+ "contentVersion":"1.0.0.0"
+}
+```
+
+## <a name="using-copy"></a>使用副本
+
+要使用嵌套範本創建資源的多個實例，請將複製元素添加到**Microsoft.Resource/部署**資源級別。 或者，如果作用域是內部，則可以在嵌套範本中添加副本。
+
+以下示例範本演示如何將副本與嵌套範本一起使用。
 
 ```json
 "resources": [
@@ -410,35 +451,13 @@ ms.locfileid: "79274251"
 ]
 ```
 
-## <a name="using-variables-to-link-templates"></a>使用變數來連結範本
-
-先前的範例示範了範本連結的硬式編碼 URL 值。 這種方法可能適用於簡單的範本，但不適合一組大型的模組化範本。 不過，您可以建立一個儲存主要範本之基底 URL 的靜態變數，然後再從該基底 URL 連結動態建立連結的範本之 URL。 這個方法的好處是您可以輕鬆地移動範本或建立分支範本，因為您只需要變更主要範本中的靜態變數。 主要範本會於整個分解的範本傳遞正確的 URI。
-
-下列範例示範如何使用基底 URL 來為連結的範本 (**sharedTemplateUrl** 和 **vmTemplate**) 建立兩個 URL。
-
-```json
-"variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-  "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-  "vmTemplateUrl": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
-}
-```
-
-您也可以使用 [deployment()](template-functions-deployment.md#deployment) 取得目前範本的基底 URL，用來取得相同位置中其他範本的 URL。 如果您的範本位置變更，或您想要避免在範本檔案中使用硬式編碼 URL，這十分實用。 只有在透過 URL 連結至遠端範本時，才會傳回 templateLink 屬性。 如果您使用本機範本，就無法使用該屬性。
-
-```json
-"variables": {
-  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
-}
-```
-
 ## <a name="get-values-from-linked-template"></a>從連結的範本取得值
 
 若要從連結的範本取得輸出值，請使用如下語法擷取屬性值：`"[reference('deploymentName').outputs.propertyName.value]"`。
 
-從連結的範本取得輸出屬性時，屬性名稱不能包含連字號。
+從連結範本獲取輸出屬性時，屬性名稱不能包含破折號。
 
-下列範例會示範如何參考連結的範本，並擷取輸出值。 連結的範本會傳回簡單的訊息。
+下列範例會示範如何參考連結的範本，並擷取輸出值。 連結的範本會傳回簡單的訊息。  首先，連結的範本：
 
 ```json
 {
@@ -487,9 +506,9 @@ ms.locfileid: "79274251"
 }
 ```
 
-如同其他資源類型，您可以設定連結的範本和其他資源之間的相依性。 當其他資源需要來自連結範本的輸出值時，請確定連結的範本在其之前已部署。 或者，當連結的範本仰賴其他資源時，請確定在所連結的範本之前部署其他資源。
+與其他資源類型一樣，您可以設置連結範本和其他資源之間的依賴關係。 當其他資源需要連結範本的輸出值時，請確保在連結範本之前部署連結範本。 或者，當連結的範本仰賴其他資源時，請確定在所連結的範本之前部署其他資源。
 
-下列範例所顯示的範本，會部署公用 IP 位址並傳回資源識別碼：
+下面的示例顯示了一個範本，該範本部署公共 IP 位址並返回該公共 IP 的 Azure 資源的資源識別碼：
 
 ```json
 {
@@ -524,7 +543,7 @@ ms.locfileid: "79274251"
 }
 ```
 
-若要在部署負載平衡器時，使用上述範本中的公用 IP 位址，請連結到該範本並對部署資源新增相依性。 負載平衡器上的公用 IP 位址會設定為從連結的範本傳回的輸出值。
+在部署負載等化器時，請使用上述範本中的公共 IP 位址，請將連結到範本並聲明對`Microsoft.Resources/deployments`資源的依賴項。 負載平衡器上的公用 IP 位址會設定為從連結的範本傳回的輸出值。
 
 ```json
 {
@@ -554,6 +573,7 @@ ms.locfileid: "79274251"
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
+                // this is where the output value from linkedTemplate is used
                 "id": "[reference('linkedTemplate').outputs.resourceID.value]"
               }
             }
@@ -566,6 +586,7 @@ ms.locfileid: "79274251"
         "outboundNatRules": [],
         "inboundNatPools": []
       },
+      // This is where the dependency is declared
       "dependsOn": [
         "linkedTemplate"
       ]
@@ -591,7 +612,7 @@ ms.locfileid: "79274251"
 
 ## <a name="deployment-history"></a>部署歷程記錄
 
-在部署歷程記錄中，Resource Manager 會以個別部署的方式處理每一個範本。 具有三個連結或嵌套範本的主要範本在部署歷程記錄中會顯示為：
+在部署歷程記錄中，Resource Manager 會以個別部署的方式處理每一個範本。 部署歷史記錄中將顯示具有三個連結或嵌套範本的主範本：：
 
 ![部署歷程記錄](./media/linked-templates/deployment-history.png)
 
@@ -686,7 +707,7 @@ for ($i = 0; $i -lt $loopCount; $i++)
 for i in 0 1 2;
 do
   name="linkedTemplate$i";
-  deployment=$(az group deployment show -g examplegroup -n $name);
+  deployment=$(az deployment group show -g examplegroup -n $name);
   ip=$(echo $deployment | jq .properties.outputs.returnedIPAddress.value);
   echo "deployment $name returned $ip";
 done
@@ -698,7 +719,7 @@ done
 
 當然，也可以將參數檔案限制為透過 SAS Token 存取。
 
-目前，您無法連結到位於[Azure 儲存體防火牆](../../storage/common/storage-network-security.md)後方之儲存體帳戶中的範本。
+目前，無法連結到[Azure 存儲防火牆](../../storage/common/storage-network-security.md)後面的存儲帳戶中的範本。
 
 下列範例顯示如何在連結到範本時傳遞 SAS 權杖：
 
@@ -759,7 +780,7 @@ url=$(az storage blob url \
   --output tsv \
   --connection-string $connection)
 parameter='{"containerSasToken":{"value":"?'$token'"}}'
-az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
+az deployment group create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
 ## <a name="example-templates"></a>範本的範例
@@ -768,9 +789,9 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 |主要的範本  |連結的範本 |描述  |
 |---------|---------| ---------|
-|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
-|[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |
-|[多個 IP 位址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在連結的範本中建立數個公用 IP 位址。  |
+|[世界您好](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
+|[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |
+|[多個 IP 位址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [連結範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在連結的範本中建立數個公用 IP 位址。  |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,29 +15,29 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75891506"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和資料保護
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 安全性是任何人在採用新技術時的主要考量，尤其是當技術用於機密或專屬資料時。 評估不同的技術時，您必須考慮因為資料保護所增加的風險和成本。 Microsoft Azure StorSimple 提供資料保護的安全性和隱私權解決方案，以協助確保：
 
-* **機密性** – 只有已授權的實體才能檢視您的資料。
-* **完整性** – 只有已授權的實體才能修改或刪除您的資料。
+* **機密性** – 只有獲授權的實體才能檢視您的資料。
+* **完整性** – 只有獲授權的實體才能修改或刪除您的資料。
 
 Microsoft Azure StorSimple 解決方案包含四個彼此互動的主要元件：
 
 * **在 Microsoft Azure 中託管的 StorSimple 裝置管理員服務** – 可用來設定和佈建 StorSimple 裝置的管理服務。
 * **StorSimple 裝置** – 可安裝在您的資料中心的實體裝置。 所有產生資料的主機和用戶端都會連接至 StorSimple 裝置，此裝置會管理資料，並將它依適當情況移至 Azure 雲端。
 * **連接至裝置的用戶端/主機** – 在基礎結構中，連接至 StorSimple 裝置並產生需要被保護的資料的用戶端。
-* **雲端儲存體** – Azure 雲端中儲存資料的位置。
+* **雲端儲存體** – Azure 中儲存資料的位置。
 
 下列各節說明可協助保護各個元件及其中資料的 StorSimple 安全性功能。 它還包含您可能會遇到的 Microsoft Azure StorSimple 安全性問題清單及其對應解答。
 
@@ -185,7 +185,7 @@ StorSimple 裝置會根據使用頻率，將資料儲存在本機階層和雲端
 
 ## <a name="protect-data-via-storage-accounts"></a>透過儲存體帳戶保護資料安全
 
-每個 Microsoft Azure 訂閱可以建立一或多個儲存體帳戶。 （儲存體帳戶提供唯一命名空間來處理儲存在 Azure 雲端中的資料）。儲存體帳戶的存取權是由與該儲存體帳戶相關聯的訂用帳戶和存取金鑰所控制。
+每個 Microsoft Azure 訂閱可以建立一或多個儲存體帳戶。 （存儲帳戶提供了用於處理存儲在 Azure 雲中的資料的唯一命名空間。對存儲帳戶的訪問由與該存儲帳戶關聯的訂閱和訪問金鑰控制。
 
 建立儲存體帳戶時，Microsoft Azure 會產生兩個 512 位元儲存體存取金鑰，當 StorSimple 裝置存取儲存體帳戶時，可以使用其中一個進行驗證。 請注意，這些金鑰中只有一個會是使用中狀態。 其他金鑰會被保留，讓您可以定期輪替金鑰。 若要輪替金鑰，您必須將次要金鑰的狀態設定為使用中，然後刪除主要金鑰。 然後，您可以建立要在下一個輪替期間使用的新金鑰。 (基於安全性理由，許多資料中心需要金鑰輪替)。
 
@@ -227,7 +227,7 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 
 **答：** 您應該立即變更服務資料加密金鑰，以及將資料分層時所使用之儲存體帳戶的儲存體帳戶金鑰。 如需相關指示，請移至：
 
-* [變更服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [更改服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [儲存體帳戶的金鑰輪替](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
 **問：** 新的 StorSimple 裝置要求我提供服務註冊金鑰。 該如何擷取此金鑰？
@@ -236,13 +236,13 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 
 * [檢視或重新產生服務註冊金鑰](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
-**問：** 我遺失服務資料加密金鑰。 我該怎麼做？
+**問：** 我遺失服務資料加密金鑰。 該怎麼辦？
 
 **答：** 請連絡「Microsoft 支援服務」。 他們可以登入您裝置上的支援工作階段，協助您擷取金鑰 (假設至少一部裝置在線)。 您取得服務資料加密金鑰之後，請立即變更，以確保只有您自己知道新的金鑰。 如需相關指示，請移至：
 
-* [變更服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [更改服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**問：** 我已授權裝置進行服務資料加密金鑰變更，但未啟動金鑰變更程序。 我該怎麼做？
+**問：** 我已授權裝置進行服務資料加密金鑰變更，但未啟動金鑰變更程序。 我該怎麼辦？
 
 **答：** 如果逾時期間已到期，您將需要重新授權裝置進行服務資料加密金鑰變更，然後重新啟動此程序。
 
@@ -250,12 +250,12 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 
 **答：** 這 4 小時的期限僅針對起始變更。 在已經授權的 StorSimple 裝置上啟動更新程序之後，在所有裝置更新之前此授權都是有效的。
 
-**問：** 我們的 StorSimple 系統管理員已離職。 我該怎麼做？
+**問：** 我們的 StorSimple 系統管理員已離職。 我該怎麼辦？
 
 **答：** 變更並重設 StorSimple 裝置的存取密碼，並且變更服務資料加密金鑰，以確保未經授權的人員不知道新的資訊。 如需相關指示，請移至：
 
 * [使用 StorSimple 裝置管理員服務變更您的 StorSimple 密碼](storsimple-8000-change-passwords.md)
-* [變更服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [更改服務資料加密金鑰](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [為 StorSimple 裝置設定 CHAP](storsimple-8000-configure-chap.md)
 
 **問：** 我想要提供 StorSimple Snapshot Manager 密碼給連接至 StorSimple 裝置的主機，但無法取得密碼。 我該怎麼辦？

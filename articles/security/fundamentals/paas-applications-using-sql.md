@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c73f585e3102618cea378716491f9354810a6db8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125000"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>保護 Azure 中 PaaS 資料庫的最佳做法
 
-在此文章中，我們將說明用來保護平台即服務 (PaaS) Web 與行動應用程式的 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 和 [SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)安全性最佳做法。 這些最佳做法衍生自我們的 Azure 經驗和客戶 (例如您自己) 的經驗。
+在此文章中，我們將說明用來保護平台即服務 (PaaS) Web 與行動應用程式的 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 和 [SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)安全性最佳做法。 這些最佳做法衍生自我們的 Azure 經驗和客戶 (例如您自己) 的經驗。
 
 Azure SQL Database 和 SQL 資料倉儲可為您的網際網路型應用程式提供關聯式資料庫服務。 讓我們來了解當使用 PaaS 部署中的 Azure SQL Database 和「SQL 資料倉儲」時，可協助保護您應用程式和資料的服務：
 
@@ -53,7 +53,7 @@ Azure SQL Database 和 SQL 資料倉儲可為您的網際網路型應用程式�
 若要深入了解 Azure AD 驗證，請參閱：
 
 - [使用 Azure Active Directory 驗證向 SQL Database、受控執行個體或 SQL 資料倉儲進行驗證](../../sql-database/sql-database-aad-authentication.md)
-- [適用於 Azure SQL 資料倉儲的驗證](../../sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [適用於 Azure SQL 資料倉儲的驗證](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [使用 Azure AD 驗證之 Azure SQL DB 的權杖型驗證支援 (英文)](../../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
@@ -79,7 +79,7 @@ Azure SQL 會管理 TDE 的金鑰相關問題。 如同 TDE，在移動資料庫
 
 Azure SQL 可透過 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 提供資料行加密。 如此僅有獲得授權的應用程式得以存取敏感的資料行。 使用此類加密可讓加密資料行的 SQL 查詢限制於相等值。
 
-應用程式層級加密也應該用於選擇性資料。 使用保留在正確國家/地區的金鑰來加密資料，有時可以減輕資料主權的顧慮。 這甚至可以防止意外資料轉送造成問題，因為在沒有金鑰的情況下，就無法將資料解密，這裡是假設使用增強式演算法 (例如 AES 256)。
+應用程式層級加密也應該用於選擇性資料。 資料主權問題有時可以通過使用保存在正確的國家/區域的金鑰加密資料來緩解。 這甚至可以防止意外資料轉送造成問題，因為在沒有金鑰的情況下，就無法將資料解密，這裡是假設使用增強式演算法 (例如 AES 256)。
 
 您可以採取其他預防措施來協助保護資料庫，例如設計安全系統、加密機密資產，以及建置圍繞資料庫伺服器的防火牆。
 

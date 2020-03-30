@@ -1,35 +1,35 @@
 ---
-title: 在 Azure Kubernetes Service 中自訂使用者定義的路由（UDR）（AKS）
-description: 瞭解如何在 Azure Kubernetes Service 中定義自訂輸出路由（AKS）
+title: 在 Azure 庫伯奈斯服務 （AKS） 中自訂使用者定義的路由 （UDR）
+description: 瞭解如何在 Azure 庫伯奈斯服務 （AKS） 中定義自訂出口路由
 services: container-service
 ms.topic: article
-ms.date: 01/31/2020
-ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/16/2020
+ms.openlocfilehash: fa64294939ea487b3123d1db5ef6c8a5f30fcf72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129398"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用使用者定義的路由自訂叢集輸出（預覽）
+# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用使用者定義的路由自訂群集出口（預覽）
 
-來自 AKS 叢集的輸出可自訂以符合特定案例。 根據預設，AKS 會布建標準 SKU Load Balancer 設定並用於輸出。 不過，如果不允許公用 Ip 或輸出需要額外的躍點，則預設設定可能不符合所有案例的需求。
+可以自訂 AKS 群集的出入口以適應特定方案。 預設情況下，AKS 將預配要設置的標準 SKU 負載等化器並用於出口。 但是，如果不允許使用公共 IP 或出口需要額外的躍點，則預設設置可能無法滿足所有方案的要求。
 
-本文逐步解說如何自訂叢集的輸出路由，以支援自訂的網路案例，例如不允許公用 Ip，而且需要叢集位於網路虛擬裝置（NVA）的情況。
+本文介紹如何自訂群集的出口路由以支援自訂網路方案，例如那些不允許公共 IP 並且要求群集位於網路虛擬裝置 （NVA） 後面的方案。
 
 > [!IMPORTANT]
-> AKS 預覽功能是自助服務，並以選擇為基礎提供。 預覽會依*原樣提供，並會*在服務等級協定（SLA *）和有限*擔保中排除。 AKS 預覽會以*最*大的方式由客戶支援部門部分涵蓋。 因此，這些功能不適用於生產用途。 如需詳細資訊，請參閱下列支援文章：
+> AKS 預覽功能是自助服務，可加入宣告。 預覽版*以現有*和*可用狀態*提供，不在服務等級協定 （SLA） 和有限保修中。 客戶支援會*盡力*提供 AKS 預覽。 因此，這些功能不適合生產用途。 有關詳細資訊，請參閱以下支援文章：
 >
-> * [AKS 支援原則](support-policies.md)
+> * [AKS 支援策略](support-policies.md)
 > * [Azure 支援常見問題集](faq.md)
 
 ## <a name="prerequisites"></a>Prerequisites
-* Azure CLI 2.0.81 或更高版本
-* Azure CLI 的預覽延伸模組版本0.4.28 或更高
-* `2020-01-01` 或更高的 API 版本
+* Azure CLI 版本 2.0.81 或更高版本
+* Azure CLI 預覽擴展版 0.4.28 或更高版本
+* API 版本`2020-01-01`或更高版本
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安裝最新的 Azure CLI AKS Preview 擴充功能
-若要設定叢集的輸出類型，您需要 Azure CLI AKS Preview 延伸模組版本0.4.18 或更新版本。 使用 az extension add 命令來安裝 Azure CLI AKS Preview 延伸模組，然後使用下列 az extension update 命令來檢查是否有任何可用的更新：
+## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安裝最新的 Azure CLI AKS 預覽擴展
+要設置群集的出站類型，需要 Azure CLI AKS 預覽擴展版本 0.4.18 或更高版本。 使用 az 擴展添加命令安裝 Azure CLI AKS 預覽擴展，然後使用以下 az 擴展更新命令檢查是否有任何可用更新：
 
 ```azure-cli
 # Install the aks-preview extension
@@ -40,61 +40,61 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>限制
-* 在預覽期間，`outboundType` 只能在叢集建立時定義，而且之後無法更新。
-* 在預覽期間，`outboundType` AKS 叢集應該使用 Azure CNI。 Kubenet 是可設定的，使用方式必須手動將路由表關聯至 AKS 子網。
-* 設定 `outboundType` 需要具有 `vm-set-type` `VirtualMachineScaleSets` 和 `load-balancer-sku` `Standard`的 AKS 叢集。
-* 將 `outboundType` 設定為 `UDR` 的值需要使用者定義的路由，且叢集具有有效的輸出連線能力。
-* 將 `outboundType` 設定為 `UDR` 表示路由至負載平衡器的輸入來源 IP 可能與叢集的傳出輸出目的地位址**不相符**。
+* 在預覽期間`outboundType`，只能在群集創建時間定義，之後無法更新。
+* 在預覽期間`outboundType`，AKS 群集應使用 Azure CNI。 Kubenet 是可配置的，使用需要路由表的手動關聯到 AKS 子網。
+* 設置`outboundType``vm-set-type`需要具有`VirtualMachineScaleSets`和`load-balancer-sku`的`Standard`AKS 群集。
+* 設置為`outboundType`的值`UDR`需要具有群集有效出站連接的使用者定義的路由。
+* 設置為`outboundType`的值`UDR`意味著路由到負載等化器的入口源 IP 可能與群集的傳出出口目標位址**不匹配**。
 
-## <a name="overview-of-outbound-types-in-aks"></a>AKS 中的輸出類型總覽
+## <a name="overview-of-outbound-types-in-aks"></a>AKS 中的出站類型概述
 
-您可以使用負載平衡器或使用者定義路由類型的唯一 `outboundType`，自訂 AKS 叢集。
+AKS 群集可以使用唯`outboundType`一的類型負載等化器或使用者定義的路由進行自訂。
 
 > [!IMPORTANT]
-> 輸出類型只會影響叢集的傳出流量。 如需詳細資訊，請參閱[設定輸入控制器](ingress-basic.md)。
+> 出站類型僅影響群集的出口流量。 有關詳細資訊[，請參閱設置入口控制器](ingress-basic.md)。
 
-### <a name="outbound-type-of-loadbalancer"></a>LoadBalancer 的輸出類型
+### <a name="outbound-type-of-loadbalancer"></a>出站式負載平衡器
 
-如果已設定 `loadBalancer`，AKS 會自動完成下列安裝程式。 負載平衡器可透過 AKS 指派的公用 IP 用於輸出。 輸出類型的 `loadBalancer` 支援 `loadBalancer`類型的 Kubernetes 服務，這會預期 AKS 資源提供者所建立之負載平衡器的輸出。
+如果`loadBalancer`設置，AKS 將自動完成以下設置。 負載等化器用於通過分配的公共 IP 的 AKS 出口。 一種`loadBalancer`出站類型支援 Kubernetes`loadBalancer`類型的服務，它期望從 AKS 資來源提供者創建的負載等化器中流出。
 
-下列設定是由 AKS 完成。
-   * 公用 IP 位址是針對叢集輸出而布建。
-   * 公用 IP 位址會指派給負載平衡器資源。
-   * 負載平衡器的後端集區會針對叢集中的代理程式節點進行設定。
+以下設置由 AKS 完成。
+   * 為群集出口預配公共 IP 位址。
+   * 公共 IP 位址分配給負載等化器資源。
+   * 為群集中的代理節點設置負載等化器的後端池。
 
-以下是預設部署在 AKS 叢集中的網路拓撲，其使用 `loadBalancer`的 `outboundType`。
+下面是預設情況下部署在 AKS 群集中的網路拓撲，該拓撲使用 的`outboundType` `loadBalancer`。
 
-![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
+![出站型磅](media/egress-outboundtype/outboundtype-lb.png)
 
-### <a name="outbound-type-of-userdefinedrouting"></a>UserDefinedRouting 的輸出類型
+### <a name="outbound-type-of-userdefinedrouting"></a>出站類型的使用者定義路由
 
 > [!NOTE]
-> 使用輸出類型是一個先進的網路案例，而且需要適當的網路設定。
+> 使用出站類型是一種高級網路方案，需要適當的網路設定。
 
-如果已設定 `userDefinedRouting`，AKS 將不會自動設定輸出路徑。 **使用者**應該會完成下列作業。
+如果`userDefinedRouting`設置，AKS 不會自動設定出口路徑。 使用者應完成以下**操作。**
 
-叢集必須部署到已設定子網的現有虛擬網路中。 具有輸出連線能力的子網上必須有有效的使用者定義路由（UDR）。
+群集必須部署到具有已配置的子網的現有虛擬網路中。 具有出站連接的子網上必須存在有效的使用者定義的路由 （UDR）。
 
-AKS 資源提供者會部署標準負載平衡器（SLB）。 負載平衡器不會設定任何規則，而且在[放置規則之前](https://azure.microsoft.com/pricing/details/load-balancer/)，不會產生任何費用。 AKS**不**會自動布建 SLB 前端的公用 IP 位址。 AKS**不**會自動設定負載平衡器後端集區。
+AKS 資來源提供者將部署標準負載等化器 （SLB）。 負載等化器未配置任何規則，[在放置規則之前不會產生費用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不會**自動為 SLB 前端預配公共 IP 位址。 AKS**不會**自動設定負載等化器後端池。
 
-## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>部署具有 UDR 和 Azure 防火牆輸出類型的叢集
+## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>部署具有出站類型的 UDR 和 Azure 防火牆的群集
 
-為了說明使用使用者定義路由的輸出類型來應用叢集，可以在具有 Azure 防火牆的虛擬網路對等互連上設定叢集。
+為了說明使用使用者定義的路由使用出站類型的群集的應用程式，可以在使用 Azure 防火牆對等的虛擬網路上配置群集。
 
-![已鎖定拓撲](media/egress-outboundtype/outboundtype-udr.png)
+![鎖定拓撲](media/egress-outboundtype/outboundtype-udr.png)
 
-* 輸入會強制流經防火牆篩選器
-   * 隔離的子網保存內部負載平衡器，用於路由至代理程式節點
-   * 專用子網中的代理程式節點已隔離
-* 輸出要求會使用使用者定義的路由，從代理程式節點開始到 Azure 防火牆內部 IP
-   * 來自 AKS 代理程式節點的要求會遵循已放在已部署 AKS 叢集之子網上的 UDR。
-   * Azure 防火牆從公用 IP 前端的虛擬網路 egresses
-   * AKS 控制平面的存取權受到已啟用防火牆前端 IP 位址的 NSG 保護
-   * 存取公用網際網路或其他 Azure 服務會流入和流出防火牆前端 IP 位址
+* 入口被迫通過防火牆篩檢程式
+   * 隔離子網包含內部負載等化器，用於路由到代理節點
+   * 代理節點在專用子網中隔離
+* 出站請求使用使用者定義的路由從代理節點啟動到 Azure 防火牆內部 IP
+   * 來自 AKS 代理節點的請求遵循已放置在 AKS 群集部署到的子網上的 UDR。
+   * Azure 防火牆從公共 IP 前端退出虛擬網路
+   * 對 AKS 控制平面的訪問受 NSG 保護，該 NSG 啟用了防火牆前端 IP 位址
+   * 訪問公共 Internet 或其他 Azure 服務流自防火牆前端 IP 位址
 
-### <a name="set-configuration-via-environment-variables"></a>透過環境變數進行設定
+### <a name="set-configuration-via-environment-variables"></a>通過環境變數設置配置
 
-定義一組要在資源建立中使用的環境變數。
+定義一組要用於資源創建的環境變數。
 
 ```bash
 PREFIX="contosofin"
@@ -116,7 +116,7 @@ FWROUTE_NAME_INTERNET="${PREFIX}fwinternet"
 DEVSUBNET_NAME="${PREFIX}dev"
 ```
 
-接下來，設定訂用帳戶識別碼。
+接下來，設置訂閱代碼。
 
 ```azure-cli
 # Get ARM Access Token and Subscription ID - This will be used for AuthN later.
@@ -135,11 +135,11 @@ SUBID=$(az account show -s '<SUBSCRIPTION_NAME_GOES_HERE>' -o tsv --query 'id')
 
 ## <a name="create-a-virtual-network-with-multiple-subnets"></a>建立有多個子網路的虛擬網路
 
-布建具有三個個別子網的虛擬網路，一個用於叢集，一個用於防火牆，另一個用於服務輸入。
+配置一個虛擬網路，其中有三個單獨的子網，一個用於群集，一個用於防火牆，一個用於服務入口。
 
-![空白網路拓撲](media/egress-outboundtype/empty-network.png)
+![空網路拓撲](media/egress-outboundtype/empty-network.png)
 
-建立資源群組來保存所有資源。
+創建一個資源組來保存所有資源。
 
 ```azure-cli
 # Create Resource Group
@@ -147,7 +147,7 @@ SUBID=$(az account show -s '<SUBSCRIPTION_NAME_GOES_HERE>' -o tsv --query 'id')
 az group create --name $RG --location $LOC
 ```
 
-建立兩個虛擬網路來裝載 AKS 叢集和 Azure 防火牆。 每個都有自己的子網。 讓我們從 AKS 網路開始。
+創建兩個虛擬網路來承載 AKS 群集和 Azure 防火牆。 每個都將有自己的子網。 讓我們從 AKS 網路開始。
 
 ```
 # Dedicated virtual network with AKS subnet
@@ -176,19 +176,19 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>使用 UDR 建立及設定 Azure 防火牆
+## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>使用 UDR 創建和設置 Azure 防火牆
 
-必須設定 Azure 防火牆的輸入和輸出規則。 防火牆的主要目的是讓組織能夠將細微的輸入和輸出流量規則，設定到 AKS 叢集。
+必須配置 Azure 防火牆入站和出站規則。 防火牆的主要目的是使組織能夠設置精細的入口和出口流量規則進出 AKS 群集。
 
 ![防火牆和 UDR](media/egress-outboundtype/firewall-udr.png)
 
-建立將做為 Azure 防火牆前端位址的標準 SKU 公用 IP 資源。
+創建標準 SKU 公共 IP 資源，這些資源將用作 Azure 防火牆前端位址。
 
 ```azure-cli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
-註冊 preview cli-擴充功能以建立 Azure 防火牆。
+註冊預覽 cli 擴展以創建 Azure 防火牆。
 ```azure-cli
 # Install Azure Firewall preview CLI extension
 
@@ -199,11 +199,11 @@ az extension add --name azure-firewall
 az network firewall create -g $RG -n $FWNAME -l $LOC
 ```
 
-先前建立的 IP 位址現在可以指派給防火牆前端。
+之前創建的 IP 位址現在可以分配給防火牆前端。
 > [!NOTE]
-> 將公用 IP 位址設定為 Azure 防火牆可能需要幾分鐘的時間。
+> 將公共 IP 位址設置為 Azure 防火牆可能需要幾分鐘時間。
 > 
-> 如果在下列命令中重複收到錯誤，請刪除現有的防火牆和公用 IP，並同時透過入口網站布建公用 IP 和 Azure 防火牆。
+> 如果以下命令反復收到錯誤，請刪除現有防火牆和公共 IP，並同時通過門戶預配公共 IP 和 Azure 防火牆。
 
 ```azure-cli
 # Configure Firewall IP Config
@@ -211,7 +211,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
 ```
 
-當上一個命令成功時，請儲存防火牆前端 IP 位址以供稍後設定。
+當前一個命令成功時，保存防火牆前端 IP 位址以供以後配置。
 
 ```bash
 # Capture Firewall IP Address for Later Use
@@ -220,11 +220,11 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
-### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>建立具有躍點至 Azure 防火牆的 UDR
+### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>使用 Azure 防火牆的躍點創建 UDR
 
 Azure 會自動路由傳送 Azure 子網路、虛擬網路及內部部署網路之間的流量。 如果您想要變更任何 Azure 的預設路由，您可藉由建立路由表來執行此動作。
 
-建立要與指定的子網相關聯的空路由表。 路由表會將下一個躍點定義為上述建立的 Azure 防火牆。 每個子網路可以有零個或一個與其相關聯的路由表。
+創建要與給定子閘道聯的空路由表。 路由表將下一個躍點定義為上面創建的 Azure 防火牆。 每個子網路可以有零個或一個與其相關聯的路由表。
 
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
@@ -234,16 +234,16 @@ az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-na
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
 
-請參閱[虛擬網路路由表檔](../virtual-network/virtual-networks-udr-overview.md#user-defined)，以瞭解如何覆寫 Azure 的預設系統路由，或將其他路由新增至子網的路由表。
+有關如何覆蓋 Azure 的預設系統路由或向子網的路由表添加其他路由的[虛擬網路路由表文檔](../virtual-network/virtual-networks-udr-overview.md#user-defined)。
 
-## <a name="adding-network-firewall-rules"></a>新增網路防火牆規則
+## <a name="adding-network-firewall-rules"></a>添加網路防火牆規則
 
 > [!WARNING]
-> 以下顯示新增防火牆規則的其中一個範例。 AKS 叢集要運作的應用程式防火牆規則必須啟用[必要輸出端點中所](egress.md)定義的所有輸出端點。 若未啟用這些端點，您的叢集將無法運作。
+> 下面顯示了添加防火牆規則的一個示例。 必須通過應用程式防火牆規則啟用[在所需出口終結點](egress.md)中定義的所有出口終結點，以便 AKS 群集正常運行。 如果啟用這些終結點，群集將無法運行。
 
-以下是網路和應用程式規則的範例。 我們新增了允許任何通訊協定、來源位址、目的地位址和目的地埠的網路規則。 我們也會為 AKS 所需的**某些**端點新增應用程式規則。
+下面是網路和應用程式規則的示例。 我們添加一個網路規則，允許任何協定、源位址、目標位址和目標埠。 我們還為 AKS 所需的**某些**終結點添加應用程式規則。
 
-在生產案例中，您應該只啟用應用程式所需端點的存取權，以及[AKS 必要](egress.md)輸出中所定義的端點。
+在生產方案中，應僅啟用對應用程式所需的終結點和[在 AKS 中定義的終結點的訪問。](egress.md)
 
 ```
 # Add Network FW Rules
@@ -273,11 +273,11 @@ az network firewall application-rule create -g $RG -f $FWNAME \
         'acs-mirror.azureedge.net'
 ```
 
-若要深入瞭解 Azure 防火牆服務，請參閱[Azure 防火牆檔](https://docs.microsoft.com/azure/firewall/overview)。
+請參閱[Azure 防火牆文檔](https://docs.microsoft.com/azure/firewall/overview)以瞭解有關 Azure 防火牆服務的資訊。
 
-## <a name="associate-the-route-table-to-aks"></a>將路由表與 AKS 建立關聯
+## <a name="associate-the-route-table-to-aks"></a>將路由表關聯到 AKS
 
-若要將叢集與防火牆建立關聯，叢集子網的專用子網必須參考上面建立的路由表。 藉由發出命令給持有叢集和防火牆的虛擬網路，以更新叢集子網的路由表，即可完成關聯。
+要將群集與防火牆關聯，群集子網的專用子網必須引用上面創建的路由表。 可以通過向同時持有群集和防火牆的虛擬網路發出命令來更新群集子網的路由表，從而完成關聯。
 
 ```azure-cli
 # Associate route table with next hop to Firewall to the AKS subnet
@@ -285,15 +285,15 @@ az network firewall application-rule create -g $RG -f $FWNAME \
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
 ```
 
-## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>將具有 UDR 輸出類型的 AKS 部署到現有的網路
+## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>將具有出站型 UDR 的 AKS 部署到現有網路
 
-現在，您可以將 AKS 叢集部署到現有的虛擬網路設定。 為了將叢集輸出類型設定為使用者定義的路由，必須提供現有的子網給 AKS。
+現在，AKS 群集可以部署到現有的虛擬網路設置中。 為了將群集出站類型設置為使用者定義的路由，必須向 AKS 提供現有子網。
 
-![aks-部署](media/egress-outboundtype/outboundtype-udr.png)
+![aks 部署](media/egress-outboundtype/outboundtype-udr.png)
 
-### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>建立可存取現有虛擬網路內布建的服務主體
+### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>創建具有在現有虛擬網路內進行預配的服務主體
 
-AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務主體會用來建立基礎 AKS 資源，例如 AKS 所使用的 Vm、儲存體和負載平衡器。 如果授與的許可權太少，就無法布建 AKS 叢集。
+AKS 使用服務主體創建群集資源。 在創建時傳遞的服務主體用於創建基礎 AKS 資源，如 AKS 使用的 VM、存儲和負載等化器。 如果授予的許可權太少，它將無法預配 AKS 群集。
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -301,7 +301,7 @@ AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 ```
 
-現在以先前命令輸出所自動產生的服務主體 appid 和服務主體密碼取代 `APPID` 和 `PASSWORD`。 我們會參考 VNET 資源識別碼，以授與許可權給服務主體，讓 AKS 可以將資源部署到其中。
+現在，將`APPID``PASSWORD`和 下替換為服務主體應用id 和服務主體密碼，這些密碼由以前的命令輸出自動生成。 我們將引用 VNET 資源識別碼 向服務主體授予許可權，以便 AKS 可以將資源部署到其中。
 
 ```azure-cli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
@@ -318,14 +318,18 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>部署 AKS
 
-最後，AKS 叢集可以部署到我們專用於叢集的現有子網中。 要部署到的目標子網是使用環境變數來定義，`$SUBNETID`。
+最後，AKS 群集可以部署到我們專用於群集的現有子網中。 要部署到的目標子網使用環境變數`$SUBNETID`定義。 在前面的步驟中，我們沒有`$SUBNETID`定義變數。 要設置子網 ID 的值，可以使用以下命令：
 
-我們會定義輸出類型，使其遵循子網上的 UDR，讓 AKS 略過負載平衡器的設定和 IP 布建，這現在可以完全為內部。
+```azurecli
+SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
+```
 
-您可以新增[api 伺服器授權 IP 範圍](api-server-authorized-ip-ranges.md)的 AKS 功能，將 api 伺服器存取限制為僅限防火牆的公用端點。 [授權的 IP 範圍] 功能在圖表中表示為必須傳遞以存取控制平面的 NSG。 啟用授權的 IP 範圍功能以限制 API 伺服器存取時，您的開發人員工具必須使用來自防火牆之虛擬網路的 jumpbox，或者您必須將所有開發人員端點新增至授權的 IP 範圍。
+我們將定義出站類型，以遵循子網上存在的 UDR，使 AKS 能夠跳過負載等化器的設置和 IP 配置，現在可以嚴格內部設置和 IP 配置。
+
+可以添加 API[伺服器授權的 IP 範圍](api-server-authorized-ip-ranges.md)的 AKS 功能，以將 API 伺服器訪問限制為防火牆的公共終結點。 授權 IP 範圍功能在關係圖中表示為 NSG，必須傳遞以存取控制平面。 啟用授權 IP 範圍功能以限制 API 伺服器訪問時，開發人員工具必須使用防火牆虛擬網路中的跳轉框，否則必須將所有開發人員終結點添加到授權的 IP 範圍。
 
 > [!TIP]
-> 您可以將其他功能新增至叢集部署，例如（私用叢集） []。 使用授權的 IP 範圍時，叢集網路內必須有 jumpbox，才能存取 API 伺服器。
+> 可以將其他功能添加到群集部署，例如（專用群集）*。 使用授權 IP 範圍時，群集網路內部需要一個跳轉框才能訪問 API 伺服器。
 
 ```azure-cli
 az aks create -g $RG -n $AKS_NAME -l $LOC \
@@ -342,11 +346,11 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
   --api-server-authorized-ip-ranges $FWPUBLIC_IP
   ```
 
-### <a name="enable-developer-access-to-the-api-server"></a>讓開發人員存取 API 伺服器
+### <a name="enable-developer-access-to-the-api-server"></a>啟用開發人員對 API 伺服器的訪問
 
-由於叢集已授權 IP 範圍的設定，您必須將開發人員工具的 IP 位址新增至已核准 IP 範圍的 AKS 叢集清單，才能存取 API 伺服器。 另一個選項是在防火牆的虛擬網路中的個別子網內，使用所需的工具來設定 jumpbox。
+由於群集的 IP 範圍設置，您必須將開發人員工具 IP 位址添加到已批准 IP 範圍的 AKS 群集清單中才能訪問 API 伺服器。 另一個選項是在防火牆虛擬網路中的單獨子網內配置具有所需工具的跳轉框。
 
-使用下列命令，將另一個 IP 位址新增至核准的範圍
+使用以下命令將另一個 IP 位址添加到已批准的範圍
 
 ```bash
 # Retrieve your IP address
@@ -357,11 +361,11 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
-### <a name="setup-the-internal-load-balancer"></a>設定內部負載平衡器
+### <a name="setup-the-internal-load-balancer"></a>設置內部負載等化器
 
-AKS 已部署具有叢集的負載平衡器，可設定為[內部負載平衡器](internal-lb.md)。
+AKS 已部署了一個負載等化器與群集，可以設置為[內部負載等化器](internal-lb.md)。
 
-若要建立內部負載平衡器，請建立名為 yaml 的服務資訊清單，並使用服務類型 LoadBalancer 和 azure-負載平衡器-內部注釋，如下列範例所示：
+要創建內部負載等化器，請使用服務類型 LoadBalancer 和 azure 負載等化器內部注釋創建名為內部-lb.yaml 的服務清單，如以下示例所示：
 
 ```yaml
 apiVersion: v1
@@ -379,17 +383,17 @@ spec:
     app: internal-app
 ```
 
-使用 kubectl apply 部署內部負載平衡器，並指定 YAML 資訊清單的名稱：
+使用庫布ectl應用部署內部負載等化器並指定 YAML 清單的名稱：
 
 ```bash
 kubectl apply -f internal-lb.yaml
 ```
 
-## <a name="deploy-a-kubernetes-service"></a>部署 Kubernetes 服務
+## <a name="deploy-a-kubernetes-service"></a>部署庫伯奈斯服務
 
-因為叢集輸出類型設定為 UDR，所以將代理程式節點與負載平衡器的後端集區產生關聯，在叢集建立時，AKS 不會自動完成。 不過，部署 Kubernetes 服務時，Kubernetes Azure 雲端提供者會處理後端集區關聯。
+由於群集出站類型設置為 UDR，因此 AKS 在群集創建時不會自動完成將代理節點關聯為負載等化器的後端池。 但是，在部署庫伯奈斯服務時，後端池關聯由庫伯內斯 Azure 雲提供程式處理。
 
-將下列 yaml 複製到名為 `example.yaml`的檔案，以部署 Azure 投票應用程式應用程式。
+通過將下面的 yaml 複製到名為`example.yaml`的檔來部署 Azure 投票應用應用程式。
 
 ```yaml
 apiVersion: apps/v1
@@ -479,25 +483,25 @@ spec:
     app: azure-vote-front
 ```
 
-執行下列程式來部署服務：
+通過運行服務部署服務：
 
 ```bash
 kubectl apply -f example.yaml
 ```
 
-## <a name="add-a-dnat-rule-to-azure-firewall"></a>將 DNAT 規則新增至 Azure 防火牆
+## <a name="add-a-dnat-rule-to-azure-firewall"></a>向 Azure 防火牆添加 DNAT 規則
 
-若要設定輸入連線能力，必須將 DNAT 規則寫入 Azure 防火牆。 若要測試與叢集的連線，防火牆前端公用 IP 位址會定義規則，以路由傳送至內部服務所公開的內部 IP。
+要配置入站連接，必須將 DNAT 規則寫入 Azure 防火牆。 為了測試與群集的連接，為防火牆前端公共 IP 位址定義了一個規則，用於路由到內部服務公開的內部 IP。
 
-目的地位址可以自訂，因為它是防火牆上要存取的埠。 轉譯的位址必須是內部負載平衡器的 IP 位址。 已轉譯的埠必須是 Kubernetes 服務的公開端口。
+可以自訂目標位址，因為它是要訪問的防火牆上的埠。 翻譯的位址必須是內部負載等化器的 IP 位址。 翻譯後的埠必須是庫伯內斯服務的外露埠。
 
-您將需要指定指派給 Kubernetes 服務所建立之負載平衡器的內部 IP 位址。 執行下列程式來抓取位址：
+您需要指定分配給 Kubernetes 服務創建的負載等化器的內部 IP 位址。 通過運行來檢索位址：
 
 ```bash
 kubectl get services
 ```
 
-所需的 IP 位址會列在 [外部 IP] 資料行中，如下所示。
+所需的 IP 位址將列在"外部 IP"列中，如下所示。
 
 ```bash
 NAME               TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
@@ -513,9 +517,9 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 ## <a name="clean-up-resources"></a>清除資源
 
 > [!NOTE]
-> 刪除 Kubernetes 內部服務時，如果任何服務已不再使用內部負載平衡器，Azure 雲端提供者將會刪除內部負載平衡器。 在下一個服務部署中，如果找不到所要求的設定，便會部署負載平衡器。
+> 刪除 Kubernetes 內部服務時，如果內部負載等化器不再被任何服務使用，Azure 雲提供程式將刪除內部負載等化器。 在下一個服務部署中，如果找不到請求的配置，將部署負載等化器。
 
-若要清除 Azure 資源，請刪除 AKS 資源群組。
+要清理 Azure 資源，請刪除 AKS 資源組。
 
 ```azure-cli
 az group delete -g $RG
@@ -523,12 +527,12 @@ az group delete -g $RG
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-在瀏覽器中流覽至 Azure 防火牆前端 IP 位址，以驗證連線能力。
+在瀏覽器中導航到 Azure 防火牆前端 IP 位址以驗證連接。
 
-您應該會看到 Azure 投票應用程式的影像。
+您應該會看到 Azure 投票應用的圖像。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[Azure 網路 UDR 總覽](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
+請參閱[Azure 網路 UDR 概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
 
-請參閱[如何建立、變更或刪除路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
+[瞭解如何創建、更改或刪除路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981411"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>針對在 Azure 中建立新 Linux 虛擬機器的 Resource Manager 部署問題進行疑難排解
@@ -52,7 +52,7 @@ ms.locfileid: "75981411"
 
 **解決方案：**
 
-若要解決這兩個錯誤，請上傳原始 VHD （可供內部部署使用），其設定與 OS （一般化/特製化）相同。 若要以一般化形式上傳，請務必先執行 -deprovision。
+要解決這兩個錯誤，請上載本地可用的原始 VHD，其設置與作業系統相同的設置（通用/專用）。 若要以一般化形式上傳，請務必先執行 -deprovision。
 
 **擷取錯誤：**
 
@@ -74,9 +74,9 @@ ms.locfileid: "75981411"
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    按一下 [資源群組] > [您的資源群組] > [資源] > [您的可用性設定組] > [虛擬機器] > [您的虛擬機器] > [停止]。
+    按一下**資源組資源組** > *your resource group* > *your virtual machine* > **資源** > *可用性集* > **虛擬機器** > **停止**虛擬機器 。
   * 所有 VM 都停止後，建立所需大小的新 VM。
-  * 先啟動新 VM，然後選取每個已停止的 VM 並按一下 [啟動]。
+  * 首先啟動新的 VM，然後選擇每個已停止的 VM，然後按一下"**開始**"。
 
 **原因 2：** 叢集沒有可用的資源。
 
