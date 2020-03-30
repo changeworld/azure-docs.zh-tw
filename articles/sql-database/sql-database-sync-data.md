@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
 ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74422534"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 資料同步，跨多個雲端和內部部署資料庫同步資料
@@ -27,15 +27,15 @@ ms.locfileid: "74422534"
 
 ## <a name="when-to-use-data-sync"></a>使用資料同步的時機
 
-資料同步在需要跨數個 Azure SQL 資料庫或 SQL Server 資料庫保持更新資料的情況下很有用。 以下是資料同步主要的使用案例：
+資料同步在需要跨多個 Azure SQL 資料庫或 SQL Server 資料庫更新資料的情況下非常有用。 以下是資料同步主要的使用案例：
 
-- **混合式資料同步：** 使用資料同步，您可以讓內部部署資料庫與 Azure SQL 資料庫之間的資料保持同步，以啟用混合式應用程式。 此功能對於考慮移轉至雲端，而且想要將部分應用程式放在 Azure 的客戶很有吸引力。
+- **混合資料同步：** 通過資料同步，可以在本機資料庫和 Azure SQL 資料庫之間保持資料同步，以啟用混合應用程式。 此功能對於考慮移轉至雲端，而且想要將部分應用程式放在 Azure 的客戶很有吸引力。
 - **分散式應用程式：** 在許多情況下，將不同的工作負載分散到不同的資料庫會有好處。 例如，如果您有大型的實際執行資料庫，但也必須針對這些資料執行報告或分析工作負載，此時有第二個資料庫分擔這額外的工作負載就很有幫助。 這個方法可以減少對您實際執行工作負載的效能影響。 您可以使用「資料同步」，讓這兩個資料庫保持同步。
-- **全域散發的應用程式：** 許多企業都跨越數個區域，甚至數個國家/地區。 若要盡可能降低網路延遲，最好讓資料靠近您所在的區域。 使用資料同步，您就可以輕鬆地讓全世界各個區域中的資料庫保持同步。
+- **全球分散式應用程式：** 許多企業跨越多個地區，甚至幾個國家/地區。 若要盡可能降低網路延遲，最好讓資料靠近您所在的區域。 使用資料同步，您就可以輕鬆地讓全世界各個區域中的資料庫保持同步。
 
-在下列案例中，資料同步不是慣用的解決方案：
+資料同步不是以下方案的首選解決方案：
 
-| 案例 | 某些建議的解決方案 |
+| 狀況 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](sql-database-automated-backups.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](sql-database-read-scale-out.md) |
@@ -51,7 +51,7 @@ ms.locfileid: "74422534"
 
 - **中樞資料庫**必須是 Azure SQL Database。
 - **成員資料庫**可以是 SQL 資料庫、內部部署 SQL Server 資料庫，或是在 Azure 虛擬機器上的 SQL Server 執行個體。
-- **同步資料庫**包含資料同步的中繼資料和記錄。同步資料庫必須是與中樞資料庫位於相同區域中的 Azure SQL Database。 「同步處理資料庫」是由客戶建立，並由客戶擁有。
+- **同步資料庫**包含資料同步的中繼資料和日誌。同步資料庫必須是位於與中心資料庫相同的區域中的 Azure SQL 資料庫。 「同步處理資料庫」是由客戶建立，並由客戶擁有。
 
 > [!NOTE]
 > 如果您使用內部部署資料庫當做成員資料庫，則必須[安裝和設定本機同步代理程式](sql-database-get-started-sql-data-sync.md#add-on-prem)。
@@ -61,17 +61,17 @@ ms.locfileid: "74422534"
 同步群組具有下列屬性：
 
 - **同步結構描述**說明要同步的資料。
-- **同步處理方向**可以是雙向或只有單向。 也就是說，同步處理方向可以是「中樞到成員」或是「成員到中樞」，或兩者皆可。
+- **同步處理方向**可以是雙向或只有單向。 也就是說，同步處理方向可以是「中樞到成員」** 或是「成員到中樞」**，或兩者皆可。
 - **同步處理間隔**說明了進行同步處理的頻率。
 - **衝突解決原則**是群組層級原則，可以是*中樞獲勝*或*成員獲勝*。
 
 ## <a name="how-does-data-sync-work"></a>資料同步運作方式
 
-- **追蹤資料變更：** 資料同步使用 insert、update 和 delete 觸發程序追蹤變更。 變更會記錄在使用者資料庫中的資料表。 請注意，BULK INSERT 預設不會引發觸發程式。 如果未指定 FIRE_TRIGGERS，就不會執行 insert 觸發程式。 新增 FIRE_TRIGGERS 選項，資料同步就能追蹤那些插入。 
+- **追蹤資料變更：** 資料同步使用 insert、update 和 delete 觸發程序追蹤變更。 變更會記錄在使用者資料庫中的資料表。 請注意，預設情況下，BULK INSERT 不會觸發觸發器。 如果未指定FIRE_TRIGGERS，則不執行插入觸發器。 新增 FIRE_TRIGGERS 選項，資料同步就能追蹤那些插入。 
 - **同步處理資料：** 資料同步是以「中樞和輪輻」的模型設計。 中樞會與每個成員個別同步。 中樞的變更會下載到成員，然後成員的變更會上傳到中樞。
 - **解決衝突：** 資料同步提供兩個衝突解決選項：*中樞獲勝*或*成員獲勝*。
-  - 如果您選取 [中樞獲勝]，中樞的變更永遠會覆寫成員的變更。
-  - 如果您選取 [成員獲勝]，成員的變更永遠會覆寫中樞的變更。 如果有多個成員，最終的值則取決於哪一個成員先同步。
+  - 如果您選取 [中樞獲勝]**，中樞的變更永遠會覆寫成員的變更。
+  - 如果您選取 [成員獲勝]**，成員的變更永遠會覆寫中樞的變更。 如果有多個成員，最終的值則取決於哪一個成員先同步。
 
 ## <a name="compare-data-sync-with-transactional-replication"></a>比較資料同步與異動複寫
 
@@ -85,11 +85,11 @@ ms.locfileid: "74422534"
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>在 Azure 入口網站中設定資料同步
 
 - [設定 Azure SQL 資料同步](sql-database-get-started-sql-data-sync.md)
-- Data Sync Agent - [適用於 Azure SQL Data Sync Agent 的 Data Sync Agent](sql-database-data-sync-agent.md)
+- Data Sync Agent - [適用於 Azure SQL Data Sync 的 Data Sync Agent](sql-database-data-sync-agent.md)
 
 ### <a name="set-up-data-sync-with-powershell"></a>使用 PowerShell 設定資料同步
 
-- [使用 PowerShell 在多個 Azure SQL 資料庫之間進行同步處理](scripts/sql-database-sync-data-between-sql-databases.md)
+- [使用 PowerShell 在多個 Azure SQL 資料庫之間同步](scripts/sql-database-sync-data-between-sql-databases.md)
 - [使用 PowerShell 設定「資料同步」在內部部署的 Azure SQL Database 和 SQL Server 之間進行同步處理](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ### <a name="review-the-best-practices-for-data-sync"></a>檢閱資料同步最佳做法
@@ -104,7 +104,7 @@ ms.locfileid: "74422534"
 
 ### <a name="eventual-consistency"></a>最終一致性
 
-由於資料同步是以觸發程式為基礎，因此不保證交易一致性。 Microsoft 保證最終會進行所有變更，而且資料同步不會造成資料遺失。
+由於資料同步是基於觸發器的，因此不能保證事務一致性。 Microsoft 保證最終進行所有更改，並且資料同步不會導致資料丟失。
 
 ### <a name="performance-impact"></a>效能影響
 
@@ -112,28 +112,28 @@ ms.locfileid: "74422534"
 
 在建立同步群組期間佈建和取消佈建、更新和刪除也可能會影響資料庫效能。
 
-## <a name="sync-req-lim"></a> 需求和限制
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> 需求和限制
 
 ### <a name="general-requirements"></a>一般需求
 
 - 每個資料表都必須有主索引鍵。 請勿變更任何資料列的主索引鍵值。 如果您必須變更主索引鍵值，請刪除資料列，再利用新的主索引鍵值重新建立。
 
 > [!IMPORTANT]
-> 變更現有主鍵的值將會導致下列錯誤行為：
-> - 即使同步處理並未回報任何問題，中樞和成員之間的資料也可能會遺失。
-> - 同步處理可能會失敗，因為追蹤資料表具有來源的非現有資料列，因為主要金鑰變更。
+> 更改現有主鍵的值將導致以下錯誤行為：
+> - 即使同步不報告任何問題，中心與成員之間的資料也可能丟失。
+> - 由於主鍵更改，同步可能會失敗，因為跟蹤表具有來自源的不存在行。
 
 - 必須啟用快照集隔離。 如需詳細資訊，請參閱 [SQL Server 中的快照集隔離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
 ### <a name="general-limitations"></a>一般限制
 
-- 資料表不能有不是主要索引鍵的識別欄位。
-- 主鍵不能有下列資料類型： SQL_variant、binary、Varbinary、image、xml。
+- 表不能具有不是主鍵的識別欄位。
+- 主鍵不能具有以下資料類型：SQL_variant、二進位、Varbinary、圖像、xml。
 - 當您使用下列資料類型作為主要索引鍵時請務必謹慎，原因是支援的有效位數只到秒：time、datetime、datetime2、datetimeoffset。
-- 物件（資料庫、資料表和資料行）的名稱不能包含可列印的字元句點（.）、左方括弧（[）或右方括弧（]）。
-- 不支援 Azure Active Directory 驗證。
-- 不支援具有相同名稱但不同架構（例如，dbo. customers 和 sales）的資料表。
-- 不支援具有使用者定義資料類型的資料行
+- 物件（資料庫、表格和列）的名稱不能包含可列印的字元句點 （.）、左方括弧 （*） 或右側方括弧 （*）。
+- 不支援 Azure 活動目錄身份驗證。
+- 不支援具有相同名稱但架構不同的表（例如 dbo.客戶和銷售.客戶）。
+- 不支援具有使用者定義資料類型的列
 
 #### <a name="unsupported-data-types"></a>不支援的資料類型
 
@@ -144,14 +144,14 @@ ms.locfileid: "74422534"
 
 #### <a name="unsupported-column-types"></a>不支援的資料行類型
 
-資料同步無法同步處理唯讀或系統產生的資料行。 例如︰
+資料同步無法同步處理唯讀或系統產生的資料行。 例如：
 
 - 計算資料行。
 - 適用於時態表的系統所產生的資料行。
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>服務和資料庫維度的限制
 
-| **維度**                                                  | **限制**              | **因應措施**              |
+| **尺寸**                                                  | **限制**              | **解決 方案**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | 任何資料庫可以隸屬的同步群組數目上限。       | 5                      |                             |
 | 單一同步群組中的端點數目上限              | 30                     |                             |
@@ -169,7 +169,7 @@ ms.locfileid: "74422534"
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL 資料同步服務的成本為何？
 
-SQL 資料同步服務本身不收費。 不過，您仍然可以收集資料移入和移出 SQL Database 實例的資料傳輸費用。 如需詳細資訊，請參閱 [SQL Database 價格](https://azure.microsoft.com/pricing/details/sql-database/)。
+SQL 資料同步服務本身不收取任何費用。 但是，您仍會收集進出 SQL 資料庫實例的資料傳輸費用。 如需詳細資訊，請參閱 [SQL Database 價格](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 ### <a name="what-regions-support-data-sync"></a>哪些區域支援資料同步？
 
@@ -190,7 +190,7 @@ SQL 資料同步會在以下所有區域內上市。
 - 如果訂用帳戶屬於同一個租用戶，且您擁有所有訂用帳戶的權限，則可以在 Azure 入口網站中設定同步群組。
 - 否則，您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>我可以使用資料同步在屬於不同雲端的 SQL 資料庫之間進行同步處理（例如 Azure 公用雲端和 Azure 中國世紀）
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>是否可以使用資料同步在屬於不同雲的 SQL 資料庫（如 Azure 公共雲和 Azure China 21Vianet）之間同步
 
 是。 您可以在屬於不同雲端的 SQL Database 之間進行同步處理，您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
@@ -200,45 +200,45 @@ SQL 資料同步會在以下所有區域內上市。
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>應該使用 SQL 資料同步來備份及還原資料庫嗎？
 
-不建議使用 SQL 資料同步來建立資料的備份。 您無法備份並還原到特定的時間點，因為 SQL 資料同步同步處理並未建立版本。 此外，SQL 資料同步不會備份其他 SQL 物件（例如預存程式），也不會快速執行相當於還原作業的作業。
+不建議使用 SQL 資料同步創建資料的備份。 無法備份並還原到特定時間點，因為 SQL 資料同步同步未進行版本控制。 此外，SQL 資料同步不會備份其他 SQL 物件（如預存程序），也不會快速執行等效的還原操作。
 
 如需建議的備份技術，請參閱[複製 Azure SQL 資料庫](sql-database-copy.md)。
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>資料同步是否可以同步加密的資料表和資料行？
 
-- 如果資料庫是使用 Always Encrypted，您就只能同步「未」加密的資料表和資料行。 您無法同步加密的資料行，因為資料同步無法解密資料。
+- 如果資料庫是使用 Always Encrypted，您就只能同步「未」** 加密的資料表和資料行。 您無法同步加密的資料行，因為資料同步無法解密資料。
 - 如果資料行是使用資料行層級加密 (CLE)，則只要資料列大小小於 24 Mb 的大小上限，您就可以同步資料行。 資料同步會將金鑰加密的資料行 (CLE) 視為一般的二進位資料。 若要解密其他同步成員中的資料，您必須具有相同的憑證。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL 資料同步是否支援定序？
 
 是。 在下列案例中 SQL 資料同步可支援定序：
 
-- 如果選取的同步架構資料表尚未存在於您的中樞或成員資料庫中，則當您部署同步處理群組時，服務會自動使用空的目的地資料庫中選取的定序設定來建立對應的資料表和資料行。
+- 如果選定的同步架構表尚未位於中心或成員資料庫中，則當您部署同步組時，服務將自動創建具有在空目標資料庫中選擇的排序設置的相應表和列。
 - 如果要同步處理的資料表已存在於您的中樞和成員資料庫中，則 SQL 資料同步會要求主索引鍵資料行在中樞與成員資料庫之間有相同的定序，才能成功部署同步群組。 主索引鍵資料行以外的資料行沒有任何定序限制。
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>SQL 資料同步是否支援同盟？
 
-同盟根資料庫可使用於 SQL 資料同步服務 (無任何限制)。 您無法將同盟資料庫端點新增至目前的 SQL 資料同步版本。
+同盟根資料庫可使用於 SQL 資料同步服務 (無任何限制)。 無法將聯合資料庫終結點添加到當前版本的 SQL 資料同步。
 
 ## <a name="next-steps"></a>後續步驟
 
 ### <a name="update-the-schema-of-a-synced-database"></a>更新已同步資料庫的結構描述
 
-是否必須更新同步群組中的資料庫結構描述？ 不會自動複寫架構變更。 如需某些解決方案，請參閱下列文章：
+是否必須更新同步群組中的資料庫結構描述？ 架構更改不會自動複製。 如需某些解決方案，請參閱下列文章：
 
 - [在 Azure SQL 資料同步中自動執行結構描述變更複寫](sql-database-update-sync-schema.md)
 - [使用 PowerShell 更新現有同步群組中的同步結構描述](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>監視及疑難排解
 
-SQL 資料同步如預期般執行嗎？ 若要監視活動並針對問題進行疑難排解，請參閱下列文章：
+SQL 資料同步是否按預期進行？ 若要監視活動並針對問題進行疑難排解，請參閱下列文章：
 
-- [使用 Azure 監視器記錄監視 Azure SQL 資料同步](sql-database-sync-monitor-oms.md)
+- [監視 Azure SQL 資料與 Azure 監視器日誌同步](sql-database-sync-monitor-oms.md)
 - [對 Azure SQL 資料同步的問題進行疑難排解](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>深入了解 Azure SQL Database
 
 如需 SQL Database 的詳細資訊，請參閱下列文章：
 
-- [SQL Database 概觀](sql-database-technical-overview.md)
+- [SQL 資料庫概述](sql-database-technical-overview.md)
 - [資料庫生命週期管理](https://msdn.microsoft.com/library/jj907294.aspx)

@@ -1,5 +1,5 @@
 ---
-title: 允許用來在 Azure Front 服務上啟用自訂 HTTPS 的 CA
+title: 允許 CA 在 Azure 前門啟用自訂 HTTPS
 description: 如果您使用自己的憑證來啟用自訂網域上的 HTTPS，就必須使用允許的憑證授權單位 (CA) 來建立它。
 services: frontdoor
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: sharadag
-ms.openlocfilehash: 62420889d9a4cb1e9d1c570a0845c704fca56cb3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: cac6bc9895f2b8778f2b27cc6b1dff4d4b898ae7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184572"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471518"
 ---
-# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-front-door-service"></a>可在 Azure Front Door Service 上啟用自訂 HTTPS 的允許憑證授權單位
+# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-front-door"></a>允許在 Azure 前門啟用自訂 HTTPS 的憑證授權單位
 
-針對 Azure Front Door Service 自訂網域，當您[使用自己的憑證啟用 HTTPS 功能](front-door-custom-domain-https.md?tabs=option-2-enable-https-with-your-own-certificate)時，必須使用允許的憑證授權單位 (CA) 來建立您的 SSL 憑證。 否則，如果您使用非允許的 CA 或自我簽署憑證，系統將會拒絕您的要求。
+對於 Azure 前門自訂域，當您[使用自己的證書啟用 HTTPS 功能](front-door-custom-domain-https.md?tabs=option-2-enable-https-with-your-own-certificate)時，必須使用允許的憑證授權單位 （CA） 來創建 SSL 憑證。 否則，如果您使用非允許的 CA 或自我簽署憑證，系統將會拒絕您的要求。
 
 [!INCLUDE [cdn-front-door-allowed-ca](../../includes/cdn-front-door-allowed-ca.md)]

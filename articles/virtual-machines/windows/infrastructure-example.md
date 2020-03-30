@@ -1,5 +1,5 @@
 ---
-title: 範例 Azure 基礎結構逐步解說
+title: Azure 基礎結構演練示例
 description: 了解適合用來在 Azure 中部署範例基礎結構的關鍵設計和實作指導方針。
 documentationcenter: ''
 services: virtual-machines-windows
@@ -16,10 +16,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038572"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>適用於 Windows VM 的範例 Azure 基礎結構逐步解說
@@ -52,15 +52,15 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 以上各項會遵循下列命名慣例：
 
 * Adventure Works Cycles 使用 **[IT workload]-[location]-[Azure resource]** 做為首碼
-  * 針對此範例，"**azos**" (Azure 線上商店) 是 IT 工作負載名稱，而 "**use**" (美國東部 2) 是位置
+  * 對於此示例 **，"azos"（Azure**線上商店）是 IT 工作負載名稱，"**使用**"（東 US 2）是位置
 * 虛擬網路會使用 AZOS-USE-VN **[number]**
-* 可用性設定組會使用 azos-use-as- **[role]**
-* 虛擬機器名稱會使用 azos-use-vm- **[vmname]**
+* 可用性設定組會使用 azos-use-as-**[role]**
+* 虛擬機器名稱會使用 azos-use-vm-**[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 訂用帳戶與帳戶
 Adventure Works Cycles 正在使用名稱為 Adventure Works Enterprise Subscription 的企業訂用帳戶，來提供這個 IT 工作負載的計費。
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 時，會同時使用這兩個可用的儲存層：
 
 * **標準儲存體**，適用於 Web 伺服器、應用程式伺服器，以及網域控制站及其資料磁碟。

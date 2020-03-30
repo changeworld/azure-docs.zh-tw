@@ -9,110 +9,110 @@ ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
 ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370486"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
-您可以直接從名為 *$web*的儲存體容器提供靜態內容（HTML、CSS、JavaScript 和影像檔案）。 在 Azure 儲存體中裝載內容可讓您使用包括[Azure Functions](/azure/azure-functions/functions-overview)和其他平臺即服務（PaaS）服務的無伺服器架構。
+可以直接從名為 *$web*的存儲容器提供靜態內容（HTML、CSS、JavaScript 和影像檔）。 在 Azure 存儲中託管內容使您能夠使用包含[Azure 函數](/azure/azure-functions/functions-overview)和其他平臺即服務 （PaaS） 服務的無伺服器體系結構。
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> 如果您的網站相依于伺服器端程式碼，請改用[Azure App Service](/azure/app-service/overview) 。
+> 如果網站依賴于伺服器端代碼，請改用[Azure 應用服務](/azure/app-service/overview)。
 
-## <a name="setting-up-a-static-website"></a>設定靜態網站
+## <a name="setting-up-a-static-website"></a>設置靜態網站
 
-靜態網站裝載是您必須在儲存體帳戶上啟用的功能。
+靜態網站託管是您必須在存儲帳戶上啟用的功能。
 
-若要啟用靜態網站裝載，請選取預設檔案的名稱，然後選擇性地提供自訂404頁面的路徑。 如果名為 **$web**的 blob 儲存體容器尚未存在於帳戶中，系統就會為您建立一個。 將您網站的檔案新增至此容器。
+要啟用靜態網站託管，請選擇預設檔的名稱，然後選擇提供自訂 404 頁的路徑。 如果帳戶中不存在名為 **$web**的 blob 存儲容器，則為您創建一個 blob 存儲容器。 將網站的檔添加到此容器。
 
-如需逐步指引，請參閱[在 Azure 儲存體中裝載靜態網站](storage-blob-static-website-how-to.md)。
+有關分步指導，請參閱[在 Azure 存儲中託管靜態網站](storage-blob-static-website-how-to.md)。
 
 ![Azure 儲存體靜態網站計量的計量](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
 
-**$Web**容器中的檔案會區分大小寫，並透過匿名存取要求提供服務，而且只能透過讀取作業來使用。
+**$web**容器中的檔區分大小寫，通過匿名存取請求提供，只能通過讀取操作提供。
 
 ## <a name="uploading-content"></a>上傳內容
 
-您可以使用這些工具中的任何一項，將內容上傳至 **$web**容器：
+您可以使用以下任一工具將內容上載到 **$web**容器：
 
 > [!div class="checklist"]
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell 模組](storage-blob-static-website-how-to.md#powershell)
-> * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)
+> * [阿茲比貝](../common/storage-use-azcopy-v10.md)
+> * [Azure 存儲資源管理器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 擴充功能](/azure/javascript/tutorial-vscode-static-website-node-01) \(英文\)
+> * [視覺化工作室代碼擴展](/azure/javascript/tutorial-vscode-static-website-node-01)
 
-## <a name="viewing-content"></a>正在查看內容
+## <a name="viewing-content"></a>查看內容
 
-使用者可以使用網站的公用 URL，從瀏覽器中查看網站內容。 您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 來尋找 URL。 請使用下表作為指南。
+使用者可以使用網站的公共 URL 從瀏覽器查看網站內容。 您可以使用 Azure 門戶、Azure CLI 或 PowerShell 查找 URL。 請使用下表作為指南。
 
 |工具| 指引 |
 |----|----|
-|**Azure 入口網站** | [使用 Azure 入口網站來尋找網站 URL](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [使用 Azure CLI 來尋找網站 URL](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell 模組** | [使用 PowerShell 尋找網站 URL](storage-blob-static-website-how-to.md#powershell-find-url) |
+|**Azure 門戶** | [使用 Azure 門戶查找網站 URL](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [使用 Azure CLI 查找網站 URL](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure PowerShell 模組** | [使用 PowerShell 查找網站網址](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-網站的 URL 包含地區代碼。 例如，URL `https://contosoblobaccount.z22.web.core.windows.net/` 包含區域程式碼 `z22`。
+網站的 URL 包含區功能變數代碼。 例如，URL`https://contosoblobaccount.z22.web.core.windows.net/`包含區功能變數代碼`z22`。
 
-雖然該程式碼必須留在 URL 中，但僅供內部使用，而且您不需要以任何其他方式使用該程式碼。
+雖然該代碼必須保留在 URL 中，但它僅供內部使用，您不必以任何其他方式使用該代碼。
 
-當您啟用靜態網站裝載時所指定的索引檔，會在使用者開啟網站但未指定特定檔案（例如： `https://contosoblobaccount.z22.web.core.windows.net`）時出現。  
+啟用靜態網站託管時指定的索引文檔，在使用者打開網站時顯示，並且不指定特定檔（例如： `https://contosoblobaccount.z22.web.core.windows.net`  
 
-如果伺服器傳回404錯誤，而且您在啟用網站時未指定錯誤檔，則會將預設的404頁面傳回給使用者。
+如果伺服器返回 404 錯誤，並且您在啟用網站時未指定錯誤文檔，則預設 404 頁將返回給使用者。
 
 > [!NOTE]
-> 靜態網站不支援[CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 。
+> 靜態網站不支援[CORS。](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)
 
-## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>設定 web 容器的公用存取層級的影響
+## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>設置 Web 容器的公共存取層級的影響
 
-您可以修改 **$web**容器的公用存取層級，但這不會影響主要靜態網站端點，因為這些檔案是透過匿名存取要求來提供。 這表示公用（唯讀）存取所有檔案。
+您可以修改 **$web**容器的公共存取層級，但這不會影響主靜態網站終結點，因為這些檔是通過匿名存取請求提供的。 這意味著對所有檔的公共（唯讀）訪問。
 
-下列螢幕擷取畫面顯示 Azure 入口網站中的 公用存取層級 設定：
+以下螢幕截圖顯示了 Azure 門戶中的公共存取層級設置：
 
-![顯示如何在入口網站中設定公用存取層級的螢幕擷取畫面](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![演示如何在門戶中設置公共存取層級的螢幕截圖](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-雖然主要靜態網站端點不受影響，但對公用存取層級的變更會影響主要 blob 服務端點。
+雖然主靜態網站終結點不受影響，但公共存取層級的更改確實會影響主 Blob 服務終結點。
 
-例如，如果您將 **$web**容器的公用存取層級從 [**私人（沒有匿名存取）** ] 變更為 [ **blob （僅限 blob 的匿名讀取權限）** ]，則主要靜態網站端點的公用存取層級 `https://contosoblobaccount.z22.web.core.windows.net/index.html` 不會變更。
+例如，如果將 **$web**容器的公共存取層級從**專用（無匿名存取）** 更改為**Blob（僅限 Blob 的匿名讀取存取），** 則對主靜態網站終結點`https://contosoblobaccount.z22.web.core.windows.net/index.html`的公共存取層級不會更改。
 
-不過，主要 blob 服務端點 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公用存取權會從 [私用] 變更為 [公用]。 現在使用者可以使用這兩個端點的其中一個來開啟該檔案。
+但是，對主 Blob 服務終結點`https://contosoblobaccount.blob.core.windows.net/$web/index.html`的公共訪問確實會從私有更改為公共。 現在，使用者可以使用這兩個終結點之一打開該檔。
 
-## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂網域對應至靜態網站 URL
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂域映射到靜態網站 URL
 
-您可以透過自訂網域，讓您的靜態網站可供使用。 
+您可以通過自訂域使靜態網站可用。 
 
-針對您的自訂網域啟用 HTTP 存取比較容易，因為 Azure 儲存體原本就支援它。 若要啟用 HTTPS，您必須使用 Azure CDN，因為 Azure 儲存體尚未以原生方式支援使用自訂網域的 HTTPS。 如需逐步指引，請參閱[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)。
+對於自訂域啟用 HTTP 訪問更容易，因為 Azure 存儲本機支援它。 要啟用 HTTPS，必須使用 Azure CDN，因為 Azure 存儲尚未在本機上支援具有自訂域的 HTTPS。 請參閱[將自訂域映射到 Azure Blob 存儲終結點](storage-custom-domain-name.md)，以便獲得分步指導。
 
-如果儲存體帳戶設定為需要透過 HTTPS 進行[安全傳輸](../common/storage-require-secure-transfer.md)，則使用者必須使用 HTTPs 端點。 
+如果存儲帳戶配置為需要通過 HTTPS[安全傳輸](../common/storage-require-secure-transfer.md)，則使用者必須使用 HTTPS 終結點。 
 
 > [!TIP]
-> 請考慮將您的網域裝載在 Azure 上。 如需詳細資訊，請參閱[在 Azure DNS 中託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)。
+> 請考慮在 Azure 上託管域。 有關詳細資訊，請參閱在[Azure DNS 中託管域](../../dns/dns-delegate-domain-azure-dns.md)。
 
-## <a name="adding-http-headers"></a>新增 HTTP 標頭
+## <a name="adding-http-headers"></a>添加 HTTP 標頭
 
-沒有任何方法可以將標頭設定為靜態網站功能的一部分。 不過，您可以使用 Azure CDN 來新增標頭和附加（或覆寫）標頭值。 請參閱[AZURE CDN 的標準規則引擎參考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
+無法將標頭配置為靜態網站功能的一部分。 但是，可以使用 Azure CDN 添加標頭和追加（或覆蓋）標頭值。 請參閱[Azure CDN 的標準規則引擎引用](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
 
-如果您想要使用標頭來控制快取，請參閱使用快取[規則控制 AZURE CDN](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)快取行為。
+如果要使用標頭來控制緩存，請參閱[使用緩存規則控制 Azure CDN 緩存行為](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
-您可以免費啟用靜態網站裝載。 您只需支付您的網站利用的 blob 儲存體和營運成本。 如需 Azure Blob 儲存體價格的詳細資訊，請參閱 [Azure Blob 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+您可以免費啟用靜態網站託管。 您僅對網站使用的 Blob 存儲和運營成本收費。 如需 Azure Blob 儲存體價格的詳細資訊，請參閱 [Azure Blob 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>度量
+## <a name="metrics"></a>計量
 
-您可以在靜態網站頁面上啟用計量。 啟用計量之後，[計量] 儀表板中會報告 **$web**容器中檔案的流量統計資料。
+您可以在靜態網站頁面上啟用指標。 啟用指標後 **，$web**容器中檔的流量統計資訊將報告在指標儀表板中。
 
-若要在您的靜態網站頁面上啟用計量，請參閱[在靜態網站頁面上啟用計量](storage-blob-static-website-how-to.md#metrics)。
+要在靜態網站頁面上啟用指標，請參閱[在靜態網站頁面上啟用指標](storage-blob-static-website-how-to.md#metrics)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在 Azure 儲存體中裝載靜態網站](storage-blob-static-website-how-to.md)
+* [在 Azure 存儲中託管靜態網站](storage-blob-static-website-how-to.md)
 * [將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)

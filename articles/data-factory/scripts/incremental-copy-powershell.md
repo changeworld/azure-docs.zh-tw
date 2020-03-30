@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 以累加方式載入資料
-description: 這個 PowerShell 指令碼示範如何使用 Azure Data Factory，以累加方式將資料從 Azure SQL Database 複製到「Azure Blob 儲存體」。
+title: 使用 PowerShell 增量載入資料
+description: 此 PowerShell 腳本演示如何使用 Azure 資料工廠將資料從 Azure SQL 資料庫增量複製到 Azure Blob 存儲。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
-ms.date: 10/31/2017
-ms.openlocfilehash: 9a488fb2c4f7f3390fc0ac0e11cdf57bbf030bf6
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 03/12/2020
+ms.openlocfilehash: 1919f89d2e39981effe14c1203446f8f9d930f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79462484"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 指令碼 - 使用 Azure Data Factory 以累加方式載入資料
 
@@ -51,15 +51,15 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此指令碼會使用下列命令： 
 
-| 命令 | 注意事項 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
-| [設定-Set-azdatafactoryv2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
-| [設定-Set-azdatafactoryv2linkedservice](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
-| [設定-Set-azdatafactoryv2dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 | 
-| [設定-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管線包含一或多個執行特定作業的活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
-| [叫用-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
-| [AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 在管線中取得活動的執行 (活動執行) 的相關詳細資料。 
+| [集-阿茲達工廠V2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
+| [集-阿茲達工廠V2連結服務](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
+| [資料集-阿茲達工廠V2資料集](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 | 
+| [集-阿茲達工廠V2管道](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管道包含執行特定操作的一個或多個活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
+| [調用-阿茲達工廠V2管道](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
+| [獲取阿茲達工廠V2活動運行](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 在管線中取得活動的執行 (活動執行) 的相關詳細資料。 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||
 

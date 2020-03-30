@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
 ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669381"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure 監視器記錄查詢
@@ -20,14 +20,14 @@ Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器
 
 ## <a name="getting-started"></a>開始使用
 
-- [開始使用 Azure 監視器 Log Analytics](get-started-portal.md)是在 Azure 入口網站中撰寫查詢和使用結果的課程。
+- [開始使用 Azure 監視器日誌分析](get-started-portal.md)是編寫查詢和在 Azure 門戶中處理結果的一課。
 - [開始使用 Azure 監視器記錄查詢](get-started-queries.md)是一堂使用 Azure 監視器記錄資料撰寫查詢的課程。
 
 ## <a name="concepts"></a>概念
 - [分析 Azure 監視器中的記錄資料](../../azure-monitor/log-query/log-query-overview.md)提供記錄查詢的簡短概觀，並說明建置 Azure 監視器記錄資料結構的方式。
 - [在 Azure 監視器中檢視及分析記錄資料](../../azure-monitor/log-query/portals.md)說明您要在其中建立和執行記錄查詢的入口網站。
 
-## <a name="reference"></a>參考
+## <a name="reference"></a>參考資料
 
 - [查詢語言參考](/azure/kusto/query)是適用於 Kusto 查詢語言的完整語言參考。
 - [Azure 監視器記錄查詢語言差異](data-explorer-difference.md)說明 Kusto 查詢語言版本間的差異。

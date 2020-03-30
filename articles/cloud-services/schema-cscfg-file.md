@@ -1,5 +1,6 @@
 ---
 title: Azure 雲端服務定義結構描述 (.cscfg 檔) | Microsoft Docs
+description: 服務配置 （.cscfg） 檔指定要為每個角色部署多少個角色實例、配置值和角色的證書指紋。
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 71c0bb1b09d480a05a9e5a54b269d0da8fde5bc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534740"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 雲端服務設定結構描述 (.cscfg 檔)
 服務組態檔會指定要為服務中每個角色部署的角色執行個體數目、任何組態設定的值，以及與角色相關聯之任何憑證的指紋。 如果服務是虛擬網路的一部分，必須在服務組態檔以及虛擬網路組態檔中提供網路的組態資訊。 服務組態檔的預設副檔名為 .cscfg。
@@ -50,12 +51,12 @@ ms.locfileid: "75449105"
 ## <a name="service-configuration-namespace"></a>服務組態命名空間
 適用於服務組態檔的 XML 命名空間如下：`http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`。
 
-##  <a name="ServiceConfiguration"></a> ServiceConfiguration 元素
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a> ServiceConfiguration 元素
 `ServiceConfiguration` 元素是服務組態檔的最上層元素。
 
 下表說明 `ServiceConfiguration` 元素的屬性。 所有屬性值是字串類型。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --------- | ----------- |
 |serviceName|必要。 雲端服務的名稱。 這裡指定的名稱必須符合在服務定義檔中指定的名稱。|
 |osFamily|選擇性。 指定將在雲端服務中角色執行個體上執行的客體 OS。 如需支援之客體 OS 版本的詳細資訊，請參閱 [Azure 客體 OS 版本與 SDK 相容性比較表](cloud-services-guestos-update-matrix.md)。<br /><br /> 如果您未包含 `osFamily` 值，且未將 `osVersion` 屬性設定為特定客體 OS 版本，則會使用預設值 1。|

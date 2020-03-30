@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260677"
 ---
 當您傳送範本通知時，您只需要提供一組屬性。 在此案例中，這組屬性包含已針對目前新聞進行當地語系化的版本。

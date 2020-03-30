@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 範本建立適用于 Azure 資料總管的 IoT 中樞資料連線
-description: 在本文中，您將瞭解如何使用 Azure Resource Manager 範本來建立 Azure 資料總管的 IoT 中樞資料連線。
+title: 使用 Azure 資源管理器範本為 Azure 資料資源管理器創建 IoT 中心資料連線
+description: 在本文中，您將瞭解如何通過使用 Azure 資源管理器範本為 Azure 資料資源管理器創建 IoT 中心資料連線。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: 42b9f34802b8e6344f9008bf26a8bcc9f554adfb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669216"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立適用于 Azure 資料總管的 IoT 中樞資料連線
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>使用 Azure 資源管理器範本為 Azure 資料資源管理器創建 IoT 中心資料連線
 
 > [!div class="op_single_selector"]
 > * [入口網站](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
-> * [Azure Resource Manager 範本](data-connection-iot-hub-resource-manager.md)
+> * [Azure 資源管理器範本](data-connection-iot-hub-resource-manager.md)
 
-「Azure 資料總管」是一項快速又彈性極佳的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管可從事件中樞、IoT 中樞和寫入 blob 容器的 blob，提供內嵌（資料載入）。 在本文中，您會使用 Azure Resource Manager 範本來建立 Azure 資料總管的 IoT 中樞資料連線。
+Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料資源管理器提供從事件中心、IoT 中心和寫入 Blob 容器的 Blob 的引入（資料載入）。 在本文中，通過使用 Azure 資源管理器範本為 Azure 資料資源管理器創建 IoT 中心資料連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* 建立叢集[和資料庫](create-cluster-database-portal.md)
-* 建立[資料表和資料行對應](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
-* 建立[已設定共用存取原則的 IoT 中樞](ingest-data-iot-hub.md#create-an-iot-hub)。
+* [創建群集和資料庫](create-cluster-database-portal.md)
+* [創建表和列映射](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
+* [創建配置共用訪問策略的 IoT 中心](ingest-data-iot-hub.md#create-an-iot-hub)。
 
-## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>用於新增 Iot 中樞資料連線的 Azure Resource Manager 範本
+## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>用於添加 Iot 中心資料連線的 Azure 資源管理器範本
 
-下列範例顯示 Azure Resource Manager 範本，用於加入 IoT 中樞資料連線。  您可以使用表單來[編輯和部署 Azure 入口網站中的範本](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
+下面的示例顯示了用於添加 IoT 中心資料連線的 Azure 資源管理器範本。  可以使用[表單在 Azure 門戶中編輯和部署範本](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
 
 ```json
 {

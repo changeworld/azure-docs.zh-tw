@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670214"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
@@ -19,14 +19,14 @@ ms.locfileid: "77670214"
 
 ## <a name="create-a-function"></a>建立函式
 
-按一下 [**儲存**]，然後提供下表中的資訊，在 Azure 入口網站中建立具有 Log Analytics 的函式。
+通過按一下 **"保存**"，然後在下表中提供資訊，在 Azure 門戶中創建具有日誌分析功能的函數。
 
 | 設定 | 描述 |
 |:---|:---|
-| 名稱           | 在 [查詢總管] 中顯示查詢名稱。 |
-| 另存新檔        | 函數 |
+| 名稱           | 在 [查詢總管]**** 中顯示查詢名稱。 |
+| 另存新檔        | 函式 |
 | 函式別名 | 簡短名稱，以在其他查詢中使用函式。 不能包含空格，且必須是唯一的。 |
-| 類別       | 在 [查詢總管] 用來組織已儲存查詢與函式的類別。 |
+| 類別       | 在 [查詢總管]**** 用來組織已儲存查詢與函式的類別。 |
 
 > [!NOTE]
 > Azure 監視器中的函式不能包含另一個函式。
@@ -57,7 +57,7 @@ security_updates_last_day | where Title contains "SQL"
 如需了解撰寫 Azure 監視器記錄查詢，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
+- [日期與時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)

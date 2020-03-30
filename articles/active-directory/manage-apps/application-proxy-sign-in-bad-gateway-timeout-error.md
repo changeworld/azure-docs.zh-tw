@@ -1,5 +1,5 @@
 ---
-title: 無法使用應用程式 Proxy 應用程式存取此公司應用程式錯誤
+title: 無法使用應用代理應用訪問此公司應用程式錯誤
 description: 如何解決使用 Azure AD 應用程式 Proxy 應用程式時常見的存取問題。
 services: active-directory
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275459"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用 Application Proxy 應用程式時發生「無法存取此企業應用程式」錯誤
 
 當 Azure AD 應用程式 Proxy 此應用程式遭遇「無法存取此企業應用程式」錯誤時，本文可協助您對常見問題進行疑難排解。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
 看見此錯誤時，請在錯誤頁面尋找狀態代碼。 該代碼可能會是下列狀態代碼之一：
 
@@ -37,7 +37,7 @@ ms.locfileid: "74275459"
 
 若要尋找狀態碼，請在錯誤訊息底端的文字中找到「狀態碼」欄位。 本頁面底端還有提供其他秘訣。
 
-![範例：閘道逾時錯誤](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![示例：閘道逾時錯誤](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
 如需如何為這些錯誤的根本原因疑難排解的詳細資訊，以及建議的修正程式詳細資料，請參閱下方對應的章節。
 
@@ -64,24 +64,24 @@ ms.locfileid: "74275459"
 
 ## <a name="check-the-applications-internal-url"></a>檢查應用程式的內部 URL
 
-第一個快速步驟就是反覆檢查內部 URL 並加以修正，做法是透過 [企業應用程式] 開啟應用程式，然後選取 [應用程式 Proxy] 功能表。 確認內部 URL 是用來存取應用程式的內部部署網路。
+第一個快速步驟就是反覆檢查內部 URL 並加以修正，做法是透過 [企業應用程式] 開啟應用程式****，然後選取 [應用程式 Proxy]**** 功能表。 驗證內部 URL 是從本地網路用於訪問應用程式的 URL。
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>確認應用程式已指派至運作中的連接器群組
 
 若要確認應用程式已指派至運作中的連接器群組：
 
-1. 移至 [Azure Active Directory]，然後依序按一下 [企業應用程式]、[所有應用程式]，以開啟入口網站中的應用程式。 開啟應用程式，然後選取左側功能表中的 [Application Proxy]。
-1. 找到 [連接器群組] 欄位。 如果群組中沒有作用中的連接器，您會看到一則警告。 如果您沒有看到任何警告，請繼續確認是否允許所有必要的埠。
+1. 移至 [Azure Active Directory]，然後依序按一下 [企業應用程式]、[所有應用程式]，以開啟入口網站中的應用程式************。 開啟應用程式，然後選取左側功能表中的 [Application Proxy]****。
+1. 找到 [連接器群組] 欄位。 如果群組中沒有作用中的連接器，您會看到一則警告。 如果沒有看到任何警告，請繼續驗證是否允許所有必需的埠。
 1. 如果顯示的是錯誤的連接器群組，請使用下拉式清單選取正確的群組，並確認未再出現任何警告。 如果顯示的是所需的連接器群組，請按一下警告訊息以開啟內含連接器管理資訊的頁面。
 1. 此頁面提供數種方法可進一步向下切入：
 
    - 將作用中連接器移至群組中：如果您有應該屬於群組的作用中連接器，而且能直接看到目標後端應用程式，您就可以將連接器移入指派的群組。 若要這麼做，請按一下連接器。 在 [連接器群組] 欄位中，使用下拉式清單選取正確的群組，然後按一下 [儲存]。
-   - 下載該群組的新連接器：此頁面上有連結可讓您[下載新連接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)。 在可以直接檢視後端應用程式的機器上安裝連接器。 通常，連接器會安裝在與應用程式相同的伺服器上。 使用下載連接器連結，將連接器下載到目標電腦上。 接著按一下連接器，然後使用 [連接器群組] 下拉式清單確定它屬於正確的群組。
-   - 調查非作用中連接器︰如果連接器會顯示為非作用中，則表示它無法連線到服務。 此錯誤通常肇因於某些必要的連接埠遭到封鎖。 若要解決此問題，請繼續確認允許所有必要的埠。
+   - 下載該群組的新連接器：此頁面上有連結可讓您[下載新連接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)。 在可以直接檢視後端應用程式的機器上安裝連接器。 通常，連接器安裝在與應用程式相同的伺服器上。 使用下載連接器連結，將連接器下載到目標電腦上。 接著按一下連接器，然後使用 [連接器群組] 下拉式清單確定它屬於正確的群組。
+   - 調查非作用中連接器︰如果連接器會顯示為非作用中，則表示它無法連線到服務。 此錯誤通常肇因於某些必要的連接埠遭到封鎖。 要解決此問題，請繼續驗證允許所有必需的埠。
 
 在使用這些步驟確認應用程式已指派至有運作中連接器的群組後，請再次測試應用程式。 如果仍然無法運作，繼續進行下一節。
 
-## <a name="check-all-required-ports-are-open"></a>檢查所有必要的埠皆已開啟
+## <a name="check-all-required-ports-are-open"></a>檢查所有必需的埠都打開
 
 若要確認所有必要連接埠皆已開啟，請參閱開啟連接埠的相關文件。 如果所有必要連接埠皆已開啟，請移至下一節。
 
@@ -95,7 +95,7 @@ ms.locfileid: "74275459"
 
 如果上述方法皆無法修正問題，有幾個不同的可能原因。 若要找出問題︰
 
-如果您的應用程式是設定為使用整合式 Windows 驗證 (IWA)，請在未單一登入的情況下測試應用程式。 如果不是，請移至下一段。 若要在未單一登入的情況下檢查應用程式，請透過 [企業應用程式] 開啟您的應用程式，然後移至 [單一登入] 功能表。 將下拉式清單從 [整合式 Windows 驗證] 變更為 [Azure AD 單一登入已停用]。
+如果您的應用程式是設定為使用整合式 Windows 驗證 (IWA)，請在未單一登入的情況下測試應用程式。 如果不是，請移至下一段。 若要在未單一登入的情況下檢查應用程式，請透過 [企業應用程式] 開啟您的應用程式，然後移至 [單一登入] 功能表********。 將下拉式清單從 [整合式 Windows 驗證] 變更為 [Azure AD 單一登入已停用]。
 
 現在開啟瀏覽器，然後再次嘗試存取應用程式。 系統應該會提示您輸入驗證並進入應用程式。 如果您可以完成驗證，則問題出在啟用單一登入的 Kerberos 限制委派 (KCD) 組態。 如需詳細資訊，請參閱 KCD 疑難排解頁面。
 
@@ -105,4 +105,4 @@ ms.locfileid: "74275459"
 
 ## <a name="next-steps"></a>後續步驟
 
-[了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+[瞭解 Azure AD 應用程式代理連接器](application-proxy-connectors.md)

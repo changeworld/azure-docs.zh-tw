@@ -9,25 +9,25 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 34699ed89e79448d66343021dd624cb872d0172d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471673"
 ---
-目前只有 premium Ssd 可以啟用共用磁片。 支援這項功能的磁片大小 P15 和更大。 不同的磁片大小可能會有不同的 `maxShares` 限制，當您設定 `maxShares` 值時，您就不能超過。
+目前，只有高級 SSD 才能啟用共用磁片。 支援此功能的磁片大小為 P15 和更高。 不同的磁片大小可能具有不同的`maxShares`限制，在設置值時不能超過該`maxShares`限制。
 
-針對每個磁片，您可以定義一個 `maxShares` 值，代表可以同時共用磁片的節點數目上限。 例如，如果您打算設定2個節點的容錯移轉叢集，您會設定 `maxShares=2`。 最大值為上限。 只要節點數目低於指定的 `maxShares` 值，節點就可以加入或離開叢集（掛接或卸載磁片）。
+對於每個磁片，可以定義一個`maxShares`值，該值表示可以同時共用磁片的最大節點數。 例如，如果您計畫設置 2 節點容錯移轉叢集，則設置`maxShares=2`。 最大值是上限。 只要節點數低於指定`maxShares`值，節點就可以加入或離開群集（裝載或卸載磁片）。
 
 > [!NOTE]
-> 只有當磁片從所有節點卸離時，才可以設定或編輯 `maxShares` 值。
+> 僅當`maxShares`磁片與所有節點分離時，才能設置或編輯該值。
 
-下表說明根據磁片大小所允許 `maxShares` 的最大值：
+下表說明了按磁片大小表示的`maxShares`允許最大值：
 
-|磁碟大小  |maxShares 限制  |
+|磁碟大小  |最大共用限制  |
 |---------|---------|
-|P15、P20     |2         |
+|P15， P20     |2         |
 |P30、P40、P50     |5         |
 |P60、P70、P80     |10         |
 
-磁片的 IOPS 和頻寬限制不會受到 `maxShares` 值的影響。 例如，P15 磁片的最大 IOPS 為1100，不論 maxShares = 1 或 maxShares > 1。
+磁片的 IOPS 和頻寬限制不受`maxShares`該值的影響。 例如，P15 磁片的最大 IOPS 是 1100，無論是最大共用 = 1 還是最大共用> 1。

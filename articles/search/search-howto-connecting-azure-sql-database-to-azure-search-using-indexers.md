@@ -1,7 +1,7 @@
 ---
-title: 搜尋 Azure SQL 資料
+title: 搜索 Azure SQL 資料
 titleSuffix: Azure Cognitive Search
-description: 使用索引子從 Azure SQL Database 匯入資料，以在 Azure 認知搜尋中進行全文檢索搜尋。 本文涵蓋連線、索引子設定以及資料擷取。
+description: 使用索引子從 Azure SQL 資料庫導入資料，用於 Azure 認知搜索中的全文檢索搜尋。 本文涵蓋連線、索引子設定以及資料擷取。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113297"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接到 Azure SQL Database 內容並為其編制索引
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜索索引子連接到 Azure SQL 資料庫內容並編制索引
 
-您必須先填入資料，才可以查詢[Azure 認知搜尋索引](search-what-is-an-index.md)。 如果資料位於 Azure SQL 資料庫中，**適用于 Azure SQL Database 的 Azure 認知搜尋索引子**（或簡稱**Azure SQL 索引子**）可以自動化編制索引程式，這表示較少的程式碼會寫入，而不是要在意的基礎結構。
+在查詢 Azure[認知搜索索引](search-what-is-an-index.md)之前，必須使用資料填充它。 如果資料位於 Azure SQL 資料庫中，則 Azure SQL 資料庫的**Azure 認知搜索索引子**（簡稱**Azure SQL 索引子**）可以自動執行索引過程，這意味著要編寫的代碼更少，需要關心的基礎結構也更少。
 
 本文不僅介紹使用[索引子](search-indexer-overview.md)的機制，也會說明只在 Azure SQL 資料庫上出現的功能 (例如，整合變更追蹤)。 
 
-除了 Azure SQL 資料庫以外，Azure 認知搜尋還提供[Azure Cosmos DB](search-howto-index-cosmosdb.md)、 [azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和[azure 資料表儲存體](search-howto-indexing-azure-tables.md)的索引子。 若要要求其他資料來源的支援，請在[Azure 認知搜尋意見反應論壇](https://feedback.azure.com/forums/263029-azure-search/)上提供您的意見反應。
+除了 Azure SQL 資料庫外，Azure 認知搜索還為[Azure Cosmos DB、Azure](search-howto-index-cosmosdb.md) [Blob 存儲](search-howto-indexing-azure-blob-storage.md)和[Azure 表存儲](search-howto-indexing-azure-tables.md)提供索引子。 要請求對其他資料來源的支援，請在[Azure 認知搜索回饋論壇](https://feedback.azure.com/forums/263029-azure-search/)上提供回饋。
 
 ## <a name="indexers-and-data-sources"></a>索引子和資料來源
 
@@ -39,8 +39,8 @@ ms.locfileid: "74113297"
 您可以使用下列方式安裝及設定 Azure SQL 索引子︰
 
 * [Azure 入口網站](https://portal.azure.com)中的匯入資料精靈
-* Azure 認知搜尋[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure 認知搜尋[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure 認知搜索[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure 認知搜索[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 在本文中，我們將使用 REST API 來建立**索引子**與**資料來源**。
 
@@ -50,12 +50,12 @@ ms.locfileid: "74113297"
 | 準則 | 詳細資料 |
 |----------|---------|
 | 資料來自單一資料表或檢視 | 如果資料散布在多個資料表中，您可以建立資料的單一檢視。 但是，如果您使用檢視，就不能使用 SQL Server 整合變更偵測，使用累加的變更來重新整理索引。 如需詳細資訊，請參閱下列的[擷取變更及刪除的資料列](#CaptureChangedRows)。 |
-| 資料類型是可相容的 | Azure 認知搜尋索引中支援大部分但並非所有的 SQL 類型。 如需清單，請參閱[對應資料類型](#TypeMapping)。 |
+| 資料類型是可相容的 | Azure 認知搜索索引中支援大多數（但不是所有 SQL 類型）類型。 如需清單，請參閱[對應資料類型](#TypeMapping)。 |
 | 不需要即時同步處理資料 | 索引子最多可以每隔五分鐘重新編製資料表的索引。 若您經常變更資料，且變更需要在幾秒或幾分鐘內反映到索引中，我們建議您使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) 或 [.NET SDK](search-import-data-dotnet.md)，直接推送更新的資料列。 |
-| 累加式編製索引是可行的 | 如果您有大型資料集，並打算依照排程執行索引子，Azure 認知搜尋必須能夠有效率地識別新的、已變更或已刪除的資料列。 如果您會視需要 (而非排程) 編製索引，或要編製索引的資料列少於 100,000 個，則僅允許進行非累加的編製索引。 如需詳細資訊，請參閱下列的[擷取變更及刪除的資料列](#CaptureChangedRows)。 |
+| 累加式編製索引是可行的 | 如果您有一個大型資料集並計畫按計劃運行索引子，Azure 認知搜索必須能夠有效地標識新行、更改行或刪除行。 如果您會視需要 (而非排程) 編製索引，或要編製索引的資料列少於 100,000 個，則僅允許進行非累加的編製索引。 如需詳細資訊，請參閱下列的[擷取變更及刪除的資料列](#CaptureChangedRows)。 |
 
 > [!NOTE] 
-> Azure 認知搜尋僅支援 SQL Server 驗證。 如果您需要 Azure Active Directory 密碼驗證的支援，請針對這個 [UserVoice 建議](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)進行投票。
+> Azure 認知搜索僅支援 SQL Server 身份驗證。 如果您需要 Azure Active Directory 密碼驗證的支援，請針對這個 [UserVoice 建議](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)進行投票。
 
 ## <a name="create-an-azure-sql-indexer"></a>建立 Azure SQL 索引子
 
@@ -76,7 +76,7 @@ ms.locfileid: "74113297"
 
    您可以從 [Azure 入口網站](https://portal.azure.com)取得連接字串；使用 `ADO.NET connection string` 選項。
 
-2. 建立目標 Azure 認知搜尋索引（如果您還沒有的話）。 您可以使用[入口網站](https://portal.azure.com)或[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 來建立索引。 請確定目標索引的架構與來源資料表的架構相容-請參閱[SQL 和 Azure 認知搜尋資料類型之間的對應](#TypeMapping)。
+2. 如果尚未具有目標 Azure 認知搜索索引，請創建目標 Azure 認知搜索索引。 您可以使用[入口網站](https://portal.azure.com)或[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 來建立索引。 確保目標索引的架構與源表的架構相容 -請參閱 SQL 和[Azure 認知搜索資料類型之間的映射](#TypeMapping)。
 
 3. 利用命名及參考資料來源和目標索引來建立索引子：
 
@@ -157,16 +157,16 @@ ms.locfileid: "74113297"
 
 **間隔** 參數是必需的。 間隔指兩個連續索引子開始執行的時間。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 間隔的模式為： `P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。
 
-如需定義索引子排程的詳細資訊，請參閱[如何排定 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+有關定義索引子計畫的詳細資訊，請參閱[如何為 Azure 認知搜索計畫索引子](search-howto-schedule-indexers.md)。
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>擷取新增、變更和刪除的資料列
 
-Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索引子時都必須重新編制整個資料表或視圖的索引。 Azure 認知搜尋提供兩個變更偵測原則，以支援累加式編制索引。 
+Azure 認知搜索使用**增量索引**，以避免每次運行索引子運行時都必須對整個表重新編制索引或查看。 Azure 認知搜索提供了兩個更改檢測策略，以支援增量索引。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 整合變更追蹤原則
-如果您的 SQL 資料庫支援 [變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，則建議您使用 **SQL 整合式變更追蹤原則**。 這是最有效率的原則。 此外，它可讓 Azure 認知搜尋識別已刪除的資料列，而不需在資料表中加入明確的「虛刪除」資料行。
+如果您的 SQL 資料庫支援[更改跟蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我們建議您使用**SQL 集成更改跟蹤策略**。 這是最有效率的原則。 此外，它允許 Azure 認知搜索標識已刪除的行，而無需向表添加顯式"虛刪除"列。
 
 #### <a name="requirements"></a>需求 
 
@@ -177,7 +177,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 + 在資料庫上，針對資料表[啟用變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 資料表上沒有複合主索引鍵 (主索引鍵包含一個以上的資料行)。  
 
-#### <a name="usage"></a>使用方式
+#### <a name="usage"></a>使用量
 
 若要使用此原則，請以下列方式建立或更新您的資料來源：
 
@@ -204,7 +204,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 
 #### <a name="requirements"></a>需求 
 
-* 所有插入都指定資料行的值。
+* 所有插入都有指定資料行的值。
 * 所有項目更新變更資料行的值。
 * 每次插入或更新都會增加此資料行的值。
 * 具有下列 WHERE 和 ORDER BY 子句的查詢可以有效率地執行︰`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
@@ -212,7 +212,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 > [!IMPORTANT] 
 > 我們強烈建議針對上限標記資料行使用 [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) 資料類型。 如果使用其他任何資料類型，就無法保證變更追蹤會擷取與索引子查詢同時執行之交易中發生的所有變更。 在具備唯讀複本的設定中使用 **rowversion** 時，您必須指向主要複本上的索引子。 只有主要複本可用於資料同步處理案例。
 
-#### <a name="usage"></a>使用方式
+#### <a name="usage"></a>使用量
 
 若要使用高標原則，請以下列方式建立或更新您的資料來源：
 
@@ -228,7 +228,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
     }
 
 > [!WARNING]
-> 如果來源資料表沒有上限標記資料行上的索引，SQL 索引子所使用的查詢可能會超時。特別是，當資料表包含許多資料列時，`ORDER BY [High Water Mark Column]` 子句需要索引才能有效率地執行。
+> 如果源表在高水位線列上沒有索引，則 SQL 索引子使用的查詢可能會超時。特別是，當表`ORDER BY [High Water Mark Column]`包含許多行時，子句要求索引高效運行。
 >
 >
 
@@ -251,7 +251,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 ### <a name="soft-delete-column-deletion-detection-policy"></a>虛刪除資料行刪除偵測原則
 當從來源資料表中刪除資料列時，您應該也想刪除在搜尋索引內的那些資料列。 若您使用 SQL 整合變更追蹤原則，就能幫您處理這件工作。 但是，上限標準變更追蹤原則無法幫助您刪除資料列。 怎麼辦？
 
-如果資料列已實際從資料表中移除，Azure 認知搜尋無法推斷已不存在的記錄存在。  不過，您可以使用「虛刪除」技術，以邏輯方式刪除資料列，而不需從資料表加以移除。 在資料表或檢視中新增資料行，並使用該資料行將資料列標記為已刪除。
+如果從表中物理刪除行，Azure 認知搜索無法推斷存在不再存在的記錄。  不過，您可以使用「虛刪除」技術，以邏輯方式刪除資料列，而不需從資料表加以移除。 在資料表或檢視中新增資料行，並使用該資料行將資料列標記為已刪除。
 
 當您使用虛刪除技術時，可以在建立或升級資料來源時，按照下列方式指定虛刪除原則：
 
@@ -268,14 +268,14 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 與 Azure 認知搜尋資料類型之間的對應
-| SQL 資料類型 | 允許的目標索引欄位類型 | 注意事項 |
+## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 和 Azure 認知搜索資料類型之間的映射
+| SQL 資料類型 | 允許的目標索引欄位類型 | 注意 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
-| bigint |Edm.Int64、Edm.String | |
+| BIGINT |Edm.Int64、Edm.String | |
 | real、float |Edm.Double、Edm.String | |
-| smallmoney、money 十進位數值 |Edm.String |Azure 認知搜尋不支援將十進位類型轉換成 Edm。 Double，因為這會遺失有效位數 |
+| smallmoney、money 十進位數值 |Edm.String |Azure 認知搜索不支援將十進位類型轉換為 Edm.Double，因為這將失去精度 |
 | char、nchar、varchar、nvarchar |Edm.String<br/>Collection(Edm.String) |如果 SQL 字串代表下列 JSON 字串陣列，該字串可用來填入 Collection(Edm.String) 欄位：`["red", "white", "blue"]` |
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
@@ -289,7 +289,7 @@ SQL 索引子公開數個組態設定︰
 | 設定 | 資料類型 | 目的 | 預設值 |
 | --- | --- | --- | --- |
 | queryTimeout |字串 |設定 SQL 查詢執行的逾時 |5 分鐘 ("00:05:00") |
-| disableOrderByHighWaterMarkColumn |布林 |導致上限標準原則所使用的 SQL 查詢省略 ORDER BY 子句。 請參閱[上限標準原則](#HighWaterMarkPolicy) |false |
+| disableOrderByHighWaterMarkColumn |bool |導致上限標準原則所使用的 SQL 查詢省略 ORDER BY 子句。 請參閱[上限標準原則](#HighWaterMarkPolicy) |false |
 
 這些設定會用於索引子定義中的 `parameters.configuration` 物件。 例如，若要將查詢逾時設定為 10 分鐘，請使用下列組態建立或更新索引子︰
 
@@ -301,31 +301,31 @@ SQL 索引子公開數個組態設定︰
 
 ## <a name="faq"></a>常見問題集
 
-**問：我可以在 Azure 中搭配在 IaaS VM 上執行的 SQL 資料庫，使用 Azure SQL 索引子嗎？**
+**問：是否可以將 Azure SQL 索引子與在 Azure 中的 IaaS VM 上運行的 SQL 資料庫使用？**
 
-是。 不過，您需要允許搜尋服務連接到資料庫。 如需詳細資訊，請參閱在[AZURE VM 上設定從 Azure 認知搜尋索引子到 SQL Server 的連接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
+是。 不過，您需要允許搜尋服務連接到資料庫。 有關詳細資訊，請參閱在[Azure VM 上配置從 Azure 認知搜索索引子到 SQL Server 的連接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
-**問：我可以搭配在內部部署執行的 SQL 資料庫，使用 Azure SQL 索引子嗎？**
+**問：是否可以將 Azure SQL 索引子與本地運行的 SQL 資料庫一起運行？**
 
-無法直接進行。 我們不建議或不支援直接連線，因為這樣做需要您開啟資料庫以接收網際網路流量。 客戶需要使用像是 Azure Data Factory 的橋接器技術，才能成功執行此案例。 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
+無法直接進行。 我們不建議或不支援直接連線，因為這樣做需要您開啟資料庫以接收網際網路流量。 客戶需要使用像是 Azure Data Factory 的橋接器技術，才能成功執行此案例。 有關詳細資訊，請參閱使用[Azure 資料工廠將資料推送到 Azure 認知搜索索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
 
-**問：在 Azure 上，除了在 IaaS 中執行的 SQL Server，能夠搭配其他資料庫使用 Azure SQL 索引子嗎？**
+**問：是否可以將 Azure SQL 索引子與在 Azure 上的 IaaS 中運行的 SQL Server 以外的資料庫使用？**
 
-號 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
+否。 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
 
-**問：可以建立多個依照排程執行的索引子嗎？**
+**問：是否可以創建按計劃運行的多個索引子？**
 
 是。 但是一次只能在一個節點上執行一個索引子。 如果您需要多個同時執行的索引子，請考慮將搜尋服務調整大於一個搜尋單位。
 
-**問：執行索引子會影響我的查詢工作負載嗎？**
+**問：運行索引子會影響查詢工作負荷嗎？**
 
-是。 索引子會在您搜尋服務中的其中一個節點執行，且節點上的資源會在索引及服務查詢流量和其他 API 要求之間共用。 如果您密集執行索引及查詢工作負載，且經常遇到 503 錯誤或回應次數增加，請考慮[調整您的搜尋服務](search-capacity-planning.md)。
+是。 索引子會在您搜尋服務中的其中一個節點執行，且節點上的資源會在索引及服務查詢流量和其他 API 要求之間共用。 如果運行密集型索引和查詢工作負載，並且遇到 503 個錯誤的高速率或增加回應時間，請考慮[擴展搜索服務](search-capacity-planning.md)。
 
 **問：是否可以在[容錯移轉叢集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中使用次要複本作為資料來源？**
 
-這要看狀況。 針對完整編製索引的資料表或檢視，您可以使用次要複本。 
+視情況而定。 針對完整編製索引的資料表或檢視，您可以使用次要複本。 
 
-針對累加式編制索引，Azure 認知搜尋支援兩種變更偵測原則： SQL 整合式變更追蹤和上限標準。
+對於增量索引，Azure 認知搜索支援兩個更改檢測策略：SQL 集成更改跟蹤和高水位標記。
 
 在唯讀複本中，SQL 資料庫不支援整合變更追蹤。 因此，您必須使用上限標準原則。 
 
@@ -339,6 +339,6 @@ SQL 索引子公開數個組態設定︰
 
 我們不建議這樣做。 僅允許使用 **rowversion** 進行可靠的資料同步處理。 不過，根據您的應用程式邏輯而定，如果符合下列情況，則它可能是安全：
 
-+ 您可以確保在索引子執行時，資料表上沒有已編制索引的未完成交易（例如，所有資料表更新都是以批次的排程方式進行，而 Azure 認知搜尋索引子排程則設定為避免與資料表重迭）更新排程）。  
++ 可以確保索引子運行時，表上沒有正在編制索引的未完成的事務（例如，所有表更新都作為計畫上的批次處理進行，並且 Azure 認知搜索索引子計畫設置為避免與表重疊更新計畫）。  
 
 + 您會定期進行完整的重新編製索引，以挑選出任何遺失的資料列。 

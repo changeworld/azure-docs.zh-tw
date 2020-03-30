@@ -1,5 +1,5 @@
 ---
-title: 如何運作 Azure MFA-Azure Active Directory
+title: 其工作原理 Azure MFA - Azure 活動目錄
 description: Azure Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時可以滿足使用者對簡單登入程序的需求。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484055"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>運作方式：Azure Multi-Factor Authentication
@@ -28,7 +28,7 @@ ms.locfileid: "77484055"
 
 <center>
 
-![的概念驗證方法影像](./media/concept-mfa-howitworks/methods.png)</center>
+![概念性驗證方法圖](./media/concept-mfa-howitworks/methods.png)</center>
 
 Azure Multi-Factor Authentication (MFA) 有助於保護對資料與應用程式的存取，同時讓使用者能夠方便使用。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的[驗證方法](concept-authentication-methods.md)來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。
 
@@ -36,9 +36,9 @@ Azure Multi-Factor Authentication (MFA) 有助於保護對資料與應用程式�
 
 Multi-Factor Authentication 隨附於下列供應項目：
 
-* **Azure Active Directory Premium**或**Microsoft 365 商務版**-使用條件式存取原則進行 Azure 多因素驗證的完整功能使用，以要求多重要素驗證。
+* **Azure 活動目錄高級**版或**Microsoft 365 業務**版 - 使用條件訪問策略使用 Azure 多重要素驗證的完全功能使用，以需要多重要素驗證。
 
-* **Azure AD Free**或獨立**Office 365**授權-使用[安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)，為您的使用者和系統管理員要求多重要素驗證。
+* **Azure AD 免費**或獨立**Office 365**許可證 - 使用[安全預設值](../fundamentals/concept-fundamentals-security-defaults.md)需要為使用者和管理員進行多重要素驗證。
 
 * **Azure Active Directory 全域管理員** - Azure Multi-Factor Authentication 功能子集可用來作為保護全域管理員帳戶的方法。
 
@@ -50,10 +50,10 @@ Multi-Factor Authentication 隨附於下列供應項目：
 因為大多數使用者都已習慣僅使用密碼來驗證，所以您的組織務必要與所有使用者溝通此程序。 這番了解可以避免使用者因為 MFA 的小問題就連絡技術人員。 不過，有一些案例是需要暫時停用 MFA。 使用下列指導方針了解如何處理這些案例：
 
 * 訓練您的支援人員來處理使用者因無權存取其驗證方法或其無法正常運作而無法登入的案例。
-   * 使用 Azure MFA 服務的條件式存取原則，您的支援人員可以將使用者新增至從要求 MFA 的原則中排除的群組。
-* 請考慮使用名為「位置」的條件式存取，將雙步驟驗證提示減到最少。 有了這項功能，系統管理員可以針對從安全信任的網路位置（例如用於新使用者上線的網路區段）登入的使用者略過雙步驟驗證。
-* 部署[Azure AD Identity Protection](../active-directory-identityprotection.md)並根據風險偵測來觸發雙步驟驗證。
+   * 使用 Azure MFA 服務的條件訪問策略，支援人員可以將使用者添加到從需要 MFA 的策略中排除的組。
+* 請考慮使用條件訪問命名位置作為最小化兩步驗證提示的方法。 借助此功能，管理員可以繞過從安全受信任的網路位置登錄的使用者（如用於新使用者加入的網段）的兩步驗證。
+* 部署[Azure AD 標識保護](../active-directory-identityprotection.md)，並根據風險檢測觸發兩步驗證。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [逐步執行 Azure 多因素驗證部署](howto-mfa-getstarted.md)
+- [分步 Azure 多重要素驗證部署](howto-mfa-getstarted.md)

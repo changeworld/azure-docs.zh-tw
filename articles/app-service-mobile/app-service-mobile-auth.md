@@ -1,20 +1,20 @@
 ---
 title: 驗證和授權
-description: Azure App Service 的驗證/授權功能的概念性參考和總覽，特別是針對行動應用程式。
+description: Azure 應用服務的身份驗證/授權功能的概念參考和概述，特別是針對移動應用。
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459458"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure App Service 中行動裝置應用程式的驗證和授權
 
 本文說明使用 App Service 後端開發原生行動裝置應用程式時，驗證和授權的運作方式。 App Service 會提供整合式驗證和授權，讓您的行動裝置應用程式可以將使用者登入，而不需要在 App Service 中變更任何程式碼。 它提供簡單的方法來保護您的應用程式，以及使用每位使用者的資料。 
 
-本文著重於行動裝置應用程式開發。 若要快速開始使用行動應用程式的 App Service 驗證和授權，請參閱下列其中一個教學課程，[將驗證新增至您的 iOS 應用程式][iOS]（或[android]、 [Windows]、 [Xamarin.iOS]、 [Xamarin.Android] [Xamarin.Forms]或[Cordova]）。 
+本文著重於行動裝置應用程式開發。 如果想要為您的行動裝置應用程式快速開始使用 App Service 驗證和授權，請參閱下列其中一個教學課程：[將驗證新增至您的 iOS 應用程式][iOS] (或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova])。 
 
 如需 App Service 中驗證和授權運作方式的詳細資訊，請參閱 [Azure App Service 中的驗證和授權](../app-service/overview-authentication-authorization.md)。
 
@@ -48,18 +48,18 @@ ms.locfileid: "77459458"
 下列教學課程示範如何使用[伺服器導向流程](../app-service/overview-authentication-authorization.md#authentication-flow)，將驗證新增至您的行動用戶端︰
 
 * [將驗證新增至您的 iOS 應用程式][iOS]
-* [將驗證新增至 Android 應用程式][Android]
-* [將驗證新增至您的 Windows App][Windows]
+* [將身份驗證添加到 Android 應用][Android]
+* [向 Windows 應用添加身份驗證][Windows]
 * [將驗證新增至 Xamarin.iOS 應用程式][Xamarin.iOS]
 * [將驗證新增至 Xamarin.Android 應用程式][Xamarin.Android]
-* [將驗證新增至您的 Xamarin. Forms 應用程式][Xamarin.Forms]
-* [將驗證新增至您的 Cordova 應用程式][Cordova]
+* [將驗證加入 Xamarin.Forms 應用程式中][Xamarin.Forms]
+* [將身份驗證添加到科爾多瓦應用][Cordova]
 
 如果您想要使用適用於 Azure Active Directory 的[用戶端導向流程](../app-service/overview-authentication-authorization.md#authentication-flow)，請使用下列資源︰
 
-* [使用適用于 iOS 的 Active Directory 驗證程式庫][ADAL-iOS]
-* [使用適用于 Android 的 Active Directory 驗證程式庫][ADAL-Android]
-* [使用適用于 Windows 和 Xamarin 的 Active Directory 驗證程式庫][ADAL-dotnet]
+* [使用 Active Directory Authentication Library for iOS][ADAL-iOS]
+* [使用 Active Directory Authentication Library for Android][ADAL-Android]
+* [使用 Active Directory Authentication Library for Windows 和 Xamarin][ADAL-dotnet]
 
 如果您想要使用適用於 Facebook 的[用戶端導向流程](../app-service/overview-authentication-authorization.md#authentication-flow)，請使用下列資源︰
 

@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670554"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure 監視器中收集 Linux 應用程式的效能計數器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 本文詳細說明如何設定[適用於 Linux 的 Log Analytics 代理程式](https://github.com/Microsoft/OMS-Agent-for-Linux)，以將特定應用程式的效能計數器收集至「Azure 監視器」。  本文包含的應用程式如下︰  
 
-- [MySQL](#mysql)
+- [Mysql](#mysql)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
@@ -43,7 +43,7 @@ MySQL 驗證檔案儲存在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysq
 
 | 屬性 | 描述 |
 |:--|:--|
-| Port | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
+| 連接埠 | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
 | 繫結位址| 目前的 MySQL 繫結位址。 |
 | username| 用來監視 MySQL 伺服器執行個體的 MySQL 使用者。 |
 | Base64 編碼的密碼| MySQL 監視使用者的密碼，以 Base64 編碼。 |
@@ -75,7 +75,7 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 | autoupdate *false or true* | mycimprovauth autoupdate false | 設定是否在重新啟動或更新時自動更新驗證檔案。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 驗證檔案中設定預設執行個體。<br>應以純文字輸入 password 欄位 - MySQL OMI 驗證檔案中的密碼將會以 Base 64 編碼。 |
 | delete *default or port_num* | mycimprovauth 3308 | 依預設值或依連接埠號碼刪除指定的執行個體。 |
-| 說明 | mycimprov help | 印出可使用的命令清單。 |
+| help | mycimprov help | 印出可使用的命令清單。 |
 | print | mycimprov print | 印出方便閱讀的 MySQL OMI 驗證檔案。 |
 | update port_num *bind-address username password* | mycimprov update 3307 127.0.0.1 root pwd | 更新指定的執行個體，而如果不存在，則新增執行個體。 |
 
@@ -115,7 +115,7 @@ MySQL 使用者需要下列預設資料表的 SELECT 存取權。
 | MySQL Database | 資料表 |
 | MySQL Server | Aborted Connection Pct |
 | MySQL Server | Connection Use Pct |
-| MySQL Server | Disk Space Use in Bytes |
+| MySQL Server | Disk Space in Bytes |
 | MySQL Server | Full Table Scan Pct |
 | MySQL Server | InnoDB Buffer Pool Hit Pct |
 | MySQL Server | InnoDB Buffer Pool Use Pct |

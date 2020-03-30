@@ -1,5 +1,5 @@
 ---
-title: 微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
+title: 調優性能：Spark、HDInsight& Azure 資料存儲第 2 代 |微軟文檔
 description: Azure Data Lake Storage Gen2 Spark 效能微調指導方針
 services: storage
 author: normesta
@@ -10,25 +10,25 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327555"
 ---
-# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>調優性能：火花、HDInsight& Azure 資料存儲第 2 代
 
 在微調 Spark 的效能時，您必須考慮叢集上會執行的應用程式數目。  根據預設，您可以在 HDI 叢集上並行執行 4 個應用程式 (附註︰預設設定有可能變更)。  您可能會決定使用較少的應用程式，因此您可以覆寫預設設定，並使用更多的叢集來執行這些應用程式。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure Data Lake Storage Gen2 帳戶**。 有關如何創建一個存儲帳戶的說明，請參閱[快速入門：創建 Azure 資料存儲湖存儲 Gen2 存儲帳戶](data-lake-storage-quickstart-create-account.md)。
 * 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 請確實為叢集啟用遠端桌面。
 * **在 Data Lake Storage Gen2 上執行 Spark 叢集**。  如需詳細資訊，請參閱[使用 HDInsight Spark 叢集來分析 Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Data Lake Storage Gen2 的效能微調方針**。  如需一般的效能概念，請參閱 [Data Lake Storage Gen2 效能微調指導方針](data-lake-storage-performance-tuning-guidance.md) 
+* **Data Lake Storage Gen2 的效能微調方針**。  有關一般性能概念，請參閱[資料存儲湖存儲第 2 代性能調優指南](data-lake-storage-performance-tuning-guidance.md) 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>參數
 
 在執行 Spark 作業時，以下是要增進 Data Lake Storage Gen2 效能所能微調的最重要設定︰
 
@@ -54,14 +54,14 @@ ms.locfileid: "74327555"
 
 **步驟 1︰確定叢集上所執行的應用程式數目** – 您應該要知道有多少個應用程式在叢集上執行，包括目前的應用程式。  每個 Spark 設定的預設值會假設有 4 個應用程式在並行執行。  因此，每個應用程式只能使用 25% 的叢集。  若要獲得更好的效能，您可以變更執行程式的數目來覆寫預設值。  
 
-**步驟2：設定執行程式-記憶體**–要設定的第一件事是執行程式記憶體。  記憶體會取決於您要執行的作業。  您可以為每個執行程式配置較少的記憶體，以增加並行數量。  如果您在執行作業時看到記憶體不足的例外狀況，則應該增加此參數的值。  另一個方式是使用擁有較高數量記憶體的叢集，或增加叢集大小，以獲得更多的記憶體。  更多的記憶體就能使用更多的執行程式，亦即會有更多並行能力。
+**第 2 步：設置執行器記憶體**– 要設置的第一件事是執行器記憶體。  記憶體會取決於您要執行的作業。  您可以為每個執行程式配置較少的記憶體，以增加並行數量。  如果您在執行作業時看到記憶體不足的例外狀況，則應該增加此參數的值。  另一個方式是使用擁有較高數量記憶體的叢集，或增加叢集大小，以獲得更多的記憶體。  更多的記憶體就能使用更多的執行程式，亦即會有更多並行能力。
 
 **步驟 3︰設定 executor-cores** – 對於沒有複雜作業的 I/O 密集工作負載，最好是先設定較高的 executor-cores 數值，以增加每個執行程式的平行工作數目。  將 executor-cores 設定為 4 是不錯的開始。   
 
     executor-cores = 4
 增加 executor-cores 的數字可讓您更符合平行處理原則，因此請試試不同的 executor-cores。  對於具有較複雜作業的工作，您應該減少每個執行程式的核心數目。  如果 executor-cores 設定為高於 4，則記憶體回收可能會變得沒有效率而降低效能。
 
-**步驟 4︰決定叢集中的 YARN 記憶體數量** – 這項資訊可在 Ambari 中取得。  流覽至 YARN，並查看 [[]] 索引標籤。 YARN 記憶體會顯示在此視窗中。  
+**步驟 4︰決定叢集中的 YARN 記憶體數量** – 這項資訊可在 Ambari 中取得。  導航到 YARN 並查看"配置"選項卡。 YARN 記憶體將顯示在此視窗中。  
 請注意，當您位於此視窗時，您也可以查看預設的 YARN 容器大小。  YARN 容器大小和每個執行程式參數的記憶體相同。
 
     Total YARN memory = nodes * YARN memory per node

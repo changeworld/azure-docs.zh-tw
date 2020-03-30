@@ -1,22 +1,22 @@
 ---
-title: 開始使用 Xamarin Android 應用程式
-description: 遵循此教學課程，以開始使用 Azure Mobile Apps 進行 Xamarin Android 開發。
+title: 開始使用 Xamarin.安卓應用程式
+description: 請按照本教程開始使用 Azure 移動應用進行 Xamarin Android 開發。
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461363"
 ---
 # <a name="create-a-xamarinandroid-app"></a>建立 Xamarin.Android 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程將示範如何將雲端後端服務加入至 Xamarin.Android 應用程式。 如需詳細資訊，請參閱 [什麼是 Mobile Apps？](app-service-mobile-value-prop.md)。
 
 以下是完成之應用程式的螢幕擷取畫面：
@@ -28,7 +28,7 @@ ms.locfileid: "77461363"
 ## <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程，您需要下列必要條件：
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，請註冊 Azure 試用版並取得最多 10 個免費的 Mobile Apps。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，請註冊 Azure 試用版並取得最多 10 個免費的 Mobile Apps。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * Visual Studio 和 Xamarin。 如需相關指示，請參閱 [設定和安裝 Visual Studio 和 Xamarin](/visualstudio/cross-platform/setup-and-install) 。
 
 ## <a name="create-an-azure-mobile-app-backend"></a>建立 Azure 行動應用程式後端
@@ -38,17 +38,17 @@ ms.locfileid: "77461363"
 
 您現在已佈建 Azure 行動應用程式後端，可供您的行動用戶端應用程式使用。 接下來，下載簡易「待辦事項清單」後端的伺服器專案，然後將專案發佈至 Azure。
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>建立資料庫連接，並設定用戶端和伺服器專案
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>創建資料庫連接並配置用戶端和伺服器專案
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinandroid-app"></a>執行 Xamarin Android 應用程式
-1. 開啟 [Xamarin] 專案。
+## <a name="run-the-xamarinandroid-app"></a>運行 Xamarin.安卓應用程式
+1. 打開 Xamarin.安卓專案。
 
-2. 移至  [Azure 入口網站](https://portal.azure.com/)，然後流覽至您所建立的行動應用程式。 在 [`Overview`] 分頁上，尋找您的行動應用程式的公用端點 URL。 範例-應用程式名稱 "test123" 的 sitename 將會 https://test123.azurewebsites.net。
+2. 轉到[Azure 門戶](https://portal.azure.com/)並導航到您創建的移動應用。 在邊`Overview`欄選項卡上，查找移動應用的公共終結點的 URL。 示例 - 我的應用程式名稱"test123"的網站名稱將為https://test123.azurewebsites.net。
 
-3. 開啟此資料夾中的檔案 `ToDoActivity.cs`-xamarin. android/z/ToDoActivity。 應用程式名稱為 `ZUMOAPPNAME`。
+3. 打開此資料夾中`ToDoActivity.cs`的檔 - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs。 應用程式名稱是 `ZUMOAPPNAME`。
 
-4. 在 `ToDoActivity` 類別中，將 `ZUMOAPPURL` 變數取代為上面的公用端點。
+4. 在課堂上`ToDoActivity`，將變數`ZUMOAPPURL`替換為上面的公共終結點。
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
@@ -56,9 +56,9 @@ ms.locfileid: "77461363"
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
-5. 按 F5 鍵以部署並執行應用程式。
+5. 按 F5 鍵部署和運行應用。
 
-6. 在應用程式中輸入有意義的文字 (例如 Complete the tutorial)，然後按一下 [新增] 按鈕。
+6. 在應用程式中輸入有意義的文字 (例如 Complete the tutorial**)，然後按一下 [新增]**** 按鈕。
 
     ![][10]
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Front 服務中 HTTP 標頭的通訊協定支援 |Microsoft Docs
-description: 本文說明 Front 服務支援的 HTTP 標頭通訊協定。
+title: Azure 前門中 HTTP 標頭的協定支援 |微軟文檔
+description: 本文介紹了前門支援的 HTTP 標頭協定。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,52 +11,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471671"
 ---
-# <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure Front 服務中 HTTP 標頭的通訊協定支援
-本文概述 Front 門板服務支援的通訊協定，以及部分的呼叫路徑（請參閱影像）。 下列各節提供 Front 開門服務所支援之 HTTP 標頭的詳細資訊。
+# <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure 前門中 HTTP 標頭的協定支援
+本文概述了前門支援與部分調用路徑的協定（請參見圖像）。 以下各節提供有關前門支援的 HTTP 標頭的詳細資訊。
 
-![Azure Front Door Service HTTP 標頭通訊協定][1]
+![Azure 前門 HTTP 標頭協定][1]
 
 >[!IMPORTANT]
->Front 門板服務不會認證此處未記載的任何 HTTP 標頭。
+>前門不認證此處未記錄的任何 HTTP 標頭。
 
-## <a name="client-to-front-door-service"></a>用戶端對前門服務
-Front 門板服務接受來自傳入要求的大部分標頭，而不加以修改。 某些保留的標頭會從傳入要求中移除（如果已傳送），包括具有 X FD-* 前置詞的標頭。
+## <a name="client-to-front-door"></a>用戶端至 Front Door
+前門接受來自傳入請求的大多數標頭，而無需修改它們。 如果發送，某些保留標頭將從傳入請求中刪除，包括具有 X-FD-* 首碼的標頭。
 
-## <a name="front-door-service-to-backend"></a>Front 門板服務至後端
+## <a name="front-door-to-backend"></a>Front Door 至後端
 
-Front 門板服務包含來自傳入要求的標頭，除非因為限制而移除。 Front 門也會新增下列標頭：
+前門包括來自傳入請求的標頭，除非由於限制而被刪除。 前門還添加了以下標頭：
 
 | 頁首  | 範例和描述 |
 | ------------- | ------------- |
-| Via |  Via： 1.1 Azure </br> Front 門板會將用戶端的 HTTP 版本加上*Azure*做為 Via 標頭的值。 這表示用戶端的 HTTP 版本，而該 Front 門是用戶端與後端之間要求的中繼收件者。  |
-| X-Azure-ClientIP | X-Azure-ClientIP：127.0.0。1 </br> 表示與所處理之要求相關聯的用戶端 IP 位址。 例如，來自 proxy 的要求可能會加入 X 轉送的標頭，以指出原始呼叫者的 IP 位址。 |
-| X-Azure-SocketIP |  X-Azure-SocketIP：127.0.0。1 </br> 表示與目前要求來源的 TCP 連線相關聯的通訊端 IP 位址。 要求的用戶端 IP 位址可能不等於其通訊端 IP 位址，因為使用者可以任意覆寫它。|
-| X-Azure-Ref |  X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> 唯一的參考字串，可識別 Front 門所提供的要求。 它是用來搜尋存取記錄，而對疑難排解很重要。|
-| X-Azure-RequestChain |  X-Azure-RequestChain：躍點 = 1 </br> 前端用來偵測要求迴圈的標頭，而且使用者不應依賴它。 |
-| X-Forwarded-For | X-轉送-適用于：127.0.0。1 </br> X 轉送的（XFF） HTTP 標頭欄位通常會識別透過 HTTP proxy 或負載平衡器連接到 web 伺服器之用戶端的原始 IP 位址。 如果有現有的 XFF 標頭，則 Front 門板會將用戶端通訊端 IP 附加至它，或使用用戶端通訊端 IP 新增 XFF 標頭。 |
-| X-轉送-主機 | X-轉送-主機： contoso.azurefd.net </br> [X 轉送的主機 HTTP 標頭] 欄位是用來識別主機 HTTP 要求標頭中用戶端所要求之原始主機的常見方法。 這是因為處理要求的後端伺服器的前端主機名稱可能不同。 |
-| X-Forwarded-Proto | X-轉送-Proto： HTTP </br> X 轉送的-Proto HTTP 標頭欄位通常用來識別 HTTP 要求的原始通訊協定，因為以設定為基礎的 Front 門可能會使用 HTTPS 與後端通訊。 即使反向 proxy 的要求是 HTTP 也是如此。 |
-| X-FD-HealthProbe | HealthProbe HTTP 標頭欄位是用來識別來自 Front 大門的健康情況探查。 如果此標頭設為1，則要求為健全狀況探查。 當您想要從具有 [X 轉送主機標頭] 欄位的特定 Front 門進行嚴格存取時，可以使用。 |
+| Via |  通過： 1.1 Azure </br> 前門添加用戶端的 HTTP 版本，後跟*Azure*作為 Via 標頭的值。 此標頭指示用戶端的 HTTP 版本，並且前門是用戶端和後端之間請求的中間收件者。  |
+| X-Azure-用戶端IP | X-Azure-用戶端IP： 127.0.0.1 </br> 表示與正在處理的請求關聯的用戶端 IP 位址。 例如，來自代理的請求可能會添加 X-前轉 -For 標頭以指示原始調用方的 IP 位址。 |
+| X-Azure-通訊端IP |  X-Azure-SocketIP： 127.0.0.1 </br> 表示與當前請求源自的 TCP 連接關聯的通訊端 IP 位址。 請求的用戶端 IP 位址可能不等於其通訊端 IP 位址，因為它可能被使用者任意覆蓋。|
+| X-Azure-參考 |  X-Azure-參考： 0zxV_XAAAAKMkmmojBv2NT4TY6SQVjC0zv1NURHRTA2Mtkandm3Yzgyy2Qtmzyyys00YTU0Ltk0Yzmtnwzmza3NjQ3Nzzz </br> 標識前門提供的請求的唯一引用字串。 它用於搜索訪問日誌，對故障排除至關重要。|
+| X-Azure 請求鏈 |  X-Azure 請求鏈：躍點 =1 </br> 前門用於檢測請求迴圈的標頭，使用者不應依賴它。 |
+| X-Forwarded-For | X 轉發- For： 127.0.0.1 </br> X 轉發 -for （XFF） HTTP 標頭欄位通常標識通過 HTTP 代理或負載等化器連接到 Web 服務器的用戶端的原始 IP 位址。 如果存在現有的 XFF 標頭，則前門會將用戶端通訊端 IP 追加到該標頭中，或者使用用戶端通訊端 IP 添加 XFF 標頭。 |
+| X-Forwarded-Host | X 轉發主機：contoso.azurefd.net </br> X-前行主機 HTTP 標頭欄位是一種常用方法，用於標識用戶端在主機 HTTP 要求標頭中請求的原始主機。 這是因為前端伺服器處理請求的主機名稱可能不同。 |
+| X-Forwarded-Proto | X 轉發-原型： HTTP </br> X-前行-Proto HTTP 標頭欄位通常用於標識 HTTP 要求的原始協定，因為基於配置的前門可能使用 HTTPS 與後端通信。 即使對反向代理的請求是 HTTP，也是如此。 |
+| X-FD-健康探針 | X-FD-HealthProbe HTTP 標頭欄位用於從前門識別運行狀況探測。 如果此標頭設置為 1，則請求為運行狀況探測。 當需要從特定的前門嚴格訪問 X-前置主機頭欄位時，可以使用。 |
 
-## <a name="front-door-service-to-client"></a>Front 門板服務到用戶端
+## <a name="front-door-to-client"></a>Front Door 至用戶端
 
-從後端傳送至 Front 的任何標頭也會傳遞至用戶端。 以下是從前門傳送至用戶端的標頭。
+從後端發送到前門的任何標頭也會傳遞到用戶端。 以下是從前門發送到用戶端的標頭。
 
 | 頁首  | 範例 |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 這是唯一的參考字串，可識別由 Front Door 提供服務的要求。 這對疑難排解很重要，因為它是用來搜尋存取記錄。|
+| X-Azure-參考 |  *X-Azure-參考： 0zxV_XAAAAKMkmmojBv2NT4TY6SQVjC0zv1NURHRTA2Mtkandm3Yzgyy2Qtmzyyys00YTU0Ltk0Yzmtnwzmza3NjQ3Nzzz* </br> 這是唯一的參考字串，可識別由 Front Door 提供服務的要求。 這對於故障排除至關重要，因為它用於搜索訪問日誌。|
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立前門](quickstart-create-front-door.md)
-- [Front 門板的運作方式](front-door-routing-architecture.md)
+- [創建前門](quickstart-create-front-door.md)
+- [前門的工作原理](front-door-routing-architecture.md)
 
 <!--Image references-->
 [1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

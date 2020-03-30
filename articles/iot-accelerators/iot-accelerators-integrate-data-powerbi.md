@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI 將遠端監視資料視覺化 - Azure | Microsoft Docs
-description: 本教學課程使用 Power BI Desktop 和 Cosmos DB，將遠端監視解決方案中的資料整合到自訂的視覺效果中。 如此能讓使用者建置自己的自訂儀表板，並與不在解決方案上的使用者共用它們。
+description: 本教程使用 Power BI 桌面和 Cosmos DB 將遠端監視解決方案中的資料整合到自訂視覺化中。 如此能讓使用者建置自己的自訂儀表板，並與不在解決方案上的使用者共用它們。
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -9,26 +9,26 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184247"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 將遠端監視資料視覺化
 
 本教學課程會逐步引導您了解如何將來自 CosmosDB 的遠端監視解決方案資料插入 Power BI。 藉由建立此連線，您就能建立自己的自訂儀表板，並將其新增回遠端監視解決方案儀表板。 這個工作流能讓您建立更多現成圖表之外的特製化圖形。 您接著可以使用本教學課程來整合其他資料流，或建置自訂的儀表板以在遠端監視解決方案外部加以取用。 在 Power BI 中建置儀表板，表示您也可以選取特定部分來讓每個面板彼此互動。 例如，您可以有一個篩選條件只會顯示與模擬卡車有關的資訊，而儀表板的每個部分都會互動來只顯示模擬的卡車資訊。 如果您想要使用 Power BI 以外的工具，也可以擴充這些步驟來使用您偏好的視覺效果工具並連結至 Cosmos 資料庫，或是使用您已設定的自訂資料庫。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須具有正在執行中的遠端監視解決方案
-- 您必須能夠存取執行 IoT 中樞和解決方案的[Azure 入口網站](https://portal.azure.com)和訂用帳戶
+- 您必須有權訪問運行 IoT 中心和解決方案的[Azure 門戶](https://portal.azure.com)和訂閱
 - 您必須已安裝 [Power BI Desktop](https://powerbi.microsoft.com) (任何版本均可)
 
 
-## <a name="information-needed-from-azure-portal"></a>Azure 入口網站所需的資訊
+## <a name="information-needed-from-azure-portal"></a>Azure 門戶所需的資訊
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)並視需要登入
+1. 導航到[Azure 門戶](https://portal.azure.com)，並在需要時登錄
 
 2. 在左側面板上，按一下 [資源群組]
 
@@ -51,7 +51,7 @@ ms.locfileid: "74184247"
   
 1. 開啟 Power BI Desktop 應用程式，然後按一下左上角的 [取得資料]。 
 
-    ![[取得資料]](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
+    ![取得資料](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
 2. 當系統要求您輸入資料時，請選擇搜尋 "Azure Cosmos DB"，然後選取此連接器。 此連接器基本上會直接從您 Azure IoT 解決方案的 Cosmos 資料庫提取資料
   

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 設定應用程式的群組宣告 |Microsoft Docs
-description: 有關如何設定群組宣告以與 Azure AD 搭配使用的資訊。
+title: 為具有 Azure 活動目錄的應用程式佈建組聲明 |微軟文檔
+description: 有關如何配置組聲明以便與 Azure AD 一起使用的資訊。
 services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
@@ -12,140 +12,140 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 78b36e1f5ababf2551bd69682807a8ed308ae24d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298440"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408397"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>使用 Azure Active Directory 設定應用程式的群組宣告（公開預覽）
+# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>為具有 Azure 活動目錄的應用程式佈建組聲明（公共預覽）
 
-Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊，以便在應用程式中使用。  支援兩種主要模式：
+Azure 活動目錄可以為使用者提供權杖中的組成員身份資訊，以便在應用程式中使用。  支援兩種主要模式：
 
-- 依其 Azure Active Directory 物件識別元（OID）屬性所識別的群組（已正式運作）
-- Active Directory （AD）同步處理的群組和使用者的 sAMAccountName 或 GroupSID 屬性所識別的群組（公開預覽）
+- 由其 Azure 活動目錄物件識別碼 （OID） 屬性標識的組（一般可用）
+- 由 sAMAccountName 或"組SID"屬性標識的活動目錄 （AD） 同步組和使用者（公共預覽）
 
 > [!IMPORTANT]
-> 針對此預覽功能，有一些需要注意的事項：
+> 對於此預覽功能，需要注意許多注意事項：
 >
->- 支援使用從內部部署同步處理的 sAMAccountName 和安全識別碼（SID）屬性，其設計目的是要讓現有應用程式從 AD FS 和其他身分識別提供者移動。 Azure AD 中受管理的群組不包含發出這些宣告所需的屬性。
->- 在較大型組織中，使用者所屬的群組數目可能會超過 Azure Active Directory 將新增至權杖的限制。 150適用于 SAML 權杖的群組，以及200的 JWT。 這可能會導致無法預期的結果。 如果您的使用者有大量的群組成員資格，建議使用選項，將宣告中發出的群組限制為應用程式的相關群組。  
->- 針對新的應用程式開發，或在可以為其設定應用程式的情況下，以及不需要的嵌套群組支援，我們建議以應用程式角色（而非群組）為基礎的應用程式內授權。  這會限制需要進入權杖、較安全，以及將使用者指派與應用程式設定分開的資訊量。
+>- 支援使用從本地同步的 sAMAccountName 和安全識別碼 （SID） 屬性，旨在啟用從 AD FS 和其他標識提供程式移動現有應用程式。 在 Azure AD 中管理的組不包含發出這些聲明所需的屬性。
+>- 在較大的組織中，使用者作為其成員的組數可能超過 Azure 活動目錄將添加到權杖的限制。 SAML 權杖的 150 個組和 JWT 的 200 個組。 這可能導致不可預知的結果。 如果使用者擁有大量組成員身份，我們建議使用選項將聲明中發出的組限制為應用程式的相關組。  
+>- 對於新的應用程式開發，或者在可以為其配置應用程式以及不需要嵌套組支援的情況下，我們建議應用內授權基於應用程式角色而不是組。  這將限制需要進入權杖的資訊量，更安全，並將使用者分配與應用配置分開。
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>從 AD FS 和其他身分識別提供者遷移之應用程式的群組宣告
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>組從 AD FS 和其他標識提供程式遷移的應用程式的聲明
 
-許多設定為使用 AD FS 進行驗證的應用程式，都是以 Windows AD 群組屬性的形式，依賴群組成員資格資訊。   這些屬性是群組 sAMAccountName，可能是以功能變數名稱或 Windows 群組安全識別碼（GroupSID）來限定。  當應用程式與 AD FS 同盟時，AD FS 會使用 TokenGroups 函式來取得使用者的群組成員資格。
+許多配置為使用 AD FS 進行身份驗證的應用程式依賴于 Windows AD 組屬性形式的組成員身份資訊。   這些屬性是組 sAMAccountName（可能是限定的子功能變數名稱）或 Windows 組安全識別碼 （GroupSID）。  當應用程式與 AD FS 聯合時，AD FS 使用權杖組函數檢索使用者的組成員身份。
 
-已從 AD FS 移動的應用程式需要相同格式的宣告。 群組和角色宣告可能會從包含網域限定 sAMAccountName 的 Azure Active Directory，或從 Active Directory 同步處理的 GroupSID （而不是從群組的 Azure Active Directory objectID）發出。
+從 AD FS 移動的應用需要以相同格式的聲明。 組和角色聲明可能從 Azure 活動目錄中發出，其中包含域限定的 sAMAccountName 或從活動目錄而不是組的 Azure 活動目錄物件識別碼 同步的 GroupSID。
 
-群組宣告支援的格式如下：
+組聲明的支援格式包括：
 
-- **Azure Active Directory 群組 ObjectId** （適用于所有群組）
-- **sAMAccountName** （適用于從 Active Directory 同步處理的群組）
-- **NetbiosDomain\sAMAccountName** （適用于從 Active Directory 同步處理的群組）
-- **DNSDomainName\sAMAccountName** （適用于從 Active Directory 同步處理的群組）
-- **內部部署群組安全識別碼**（可用於從 Active Directory 同步處理的群組）
+- **Azure 活動目錄組物件 Id（** 適用于所有組）
+- **sAMAccount名稱**（適用于從活動目錄同步的組）
+- **NetbiosDomain\sAMAccount名稱**（適用于從活動目錄同步的組）
+- **DNS功能變數名稱\sAM帳戶名稱**（適用于從活動目錄同步的組）
+- **在本機群組安全識別碼**（適用于從活動目錄同步的組）
 
 > [!NOTE]
-> sAMAccountName 和內部部署群組 SID 屬性僅適用于從 Active Directory 同步處理的群組物件。   它們無法在 Azure Active Directory 或 Office365 中建立的群組上使用。   在 Azure Active Directory 中設定來取得同步內部部署群組屬性的應用程式，只會取得同步處理的群組。
+> sAMAccountName 和本機群組 SID 屬性僅在從活動目錄同步的組物件上可用。   它們不適用於在 Azure 活動目錄或 Office365 中創建的組。   在 Azure 活動目錄中配置為同步的本機群組屬性的應用程式僅為同步組獲取它們。
 
-## <a name="options-for-applications-to-consume-group-information"></a>應用程式使用群組資訊的選項
+## <a name="options-for-applications-to-consume-group-information"></a>應用程式使用組資訊的選項
 
-應用程式可以呼叫 MS Graph 群組端點來取得已驗證使用者的群組資訊。 此呼叫可確保使用者所屬的所有群組都可供使用，即使牽涉到大量群組也是如此。  然後，群組列舉會與權杖大小限制無關。
+應用程式可以調用 MS Graph 組終結點以獲取經過身份驗證的使用者的組資訊。 此調用可確保使用者是 其成員的所有組都可用，即使涉及大量組也是如此。  然後，組枚舉獨立于權杖大小限制。
 
-不過，如果現有的應用程式預期透過宣告取用群組資訊，Azure Active Directory 可以使用許多不同的宣告格式來設定。  請考慮下列選項：
+但是，如果現有應用程式希望通過聲明使用組資訊，則可以使用許多不同的聲明格式配置 Azure 活動目錄。  請考慮下列選項：
 
-- 針對應用程式內授權用途使用群組成員資格時，最好使用群組 ObjectID。 群組 ObjectID 在 Azure Active Directory 中是不可變且唯一的，而且適用于所有群組。
-- 如果使用內部部署群組 sAMAccountName 進行授權，請使用網域限定名稱; 名稱衝突的可能性較少。 sAMAccountName 在 Active Directory 網域中可能是唯一的，但如果有一個以上的 Active Directory 網域與 Azure Active Directory 的租使用者同步，則可能有多個群組具有相同的名稱。
-- 請考慮使用[應用程式角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)來提供群組成員資格和應用程式之間的間接取值層。   然後，應用程式會根據權杖中的角色 clams，進行內部授權決策。
-- 如果應用程式設定為取得從 Active Directory 同步處理的群組屬性，而且群組不包含這些屬性，則宣告中不會包含該屬性。
-- 權杖中的群組宣告包含嵌套群組，但使用選項將群組宣告限制為指派給應用程式的群組時除外。  如果使用者是 GroupB 的成員，而 GroupB 是 GroupA 的成員，則使用者的群組宣告將同時包含 GroupA 和 GroupB。 當組織的使用者有大量的群組成員資格時，權杖中列出的群組數目可能會增加權杖大小。  Azure Active Directory 會限制針對 SAML 判斷提示，將會在權杖中發出為150的群組數目，以及200（適用于 JWT）。  如果使用者是大量群組的成員，則會省略群組，而會包含圖形端點的連結以取得群組資訊。
+- 在將組成員身份用於應用程式內授權時，最好使用組 ObjectID。 組 ObjectID 不可變且在 Azure 活動目錄中唯一，適用于所有組。
+- 如果使用本機群組 sAMAccountName 進行授權，請使用具有域限定的名稱;如果使用本機群組 sAMAccountName 進行授權，請使用具有域限定的名稱; 名字發生衝突的可能性較小。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果多個活動目錄域與 Azure 活動目錄租戶同步，則多個組可能具有相同的名稱。
+- 請考慮使用[應用程式角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)在組成員身份和應用程式之間提供一層間接。   然後，應用程式根據權杖中的角色蛤做出內部授權決策。
+- 如果應用程式佈建為獲取從 Active Directory 同步的組屬性，並且組不包含這些屬性，則聲明中不會包含該屬性。
+- 權杖中的組聲明包括嵌套組，除非使用選項將組聲明限制為分配給應用程式的組。  如果使用者是 GroupB 的成員，而 GroupB 是 GroupA 的成員，則該使用者的組聲明將同時包含 GroupA 和 GroupB。 當組織的使用者擁有大量組成員身份時，權杖中列出的組數可能會增加權杖大小。  Azure 活動目錄將它在權杖中發出的 SAML 斷言中的組數限制為 150，JWT 將限制為 200 個。  如果使用者是更多組的成員，則省略組，並改為包含指向 Graph 終結點以獲取組資訊的連結。
 
-## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>使用從 Active Directory 同步處理群組屬性的必要條件
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>使用從活動目錄同步的組屬性的先決條件
 
-如果您使用 ObjectId 格式，就可以在任何群組的權杖中發出群組成員資格宣告。 若要使用群組 ObjectId 以外的格式的群組宣告，必須使用 Azure AD Connect 從 Active Directory 同步處理群組。
+如果使用 ObjectId 格式，則可以以任何組的權杖形式發出組成員聲明。 要以組 ObjectId 以外的格式使用組聲明，必須使用 Azure AD 連接從活動目錄同步組。
 
-有兩個步驟可設定 Azure Active Directory 來發出 Active Directory 群組的組名。
+配置 Azure 活動目錄以發出活動目錄組的組名稱有兩個步驟。
 
-1. **從 Active Directory 同步處理組名**在 Azure Active Directory 可以在群組或角色宣告中發出組名或內部部署群組 SID 之前，需要從 Active Directory 同步處理必要的屬性。  您必須執行 Azure AD Connect 1.2.70 或更新版本。   早于1.2.70 的 Azure AD Connect 版本會從 Active Directory 同步處理群組物件，但不會包含必要的組名屬性。  升級為目前的版本。
+1. **從活動目錄同步組名稱**在 Azure 活動目錄可以在組或角色聲明中發出組名稱或內部部署組 SID 之前，需要從活動目錄同步所需的屬性。  您必須運行 Azure AD 連接版本 1.2.70 或更高版本。   早期版本的 Azure AD Connect 比 1.2.70 將同步來自活動目錄的組物件，但不會包括所需的組名稱屬性。  升級到當前版本。
 
-2. **在 Azure Active Directory 中設定應用程式註冊，以在權杖中包含群組宣告**您可以在入口網站的 [企業應用程式] 區段中，或在 [應用程式註冊] 區段中使用應用程式資訊清單來設定群組宣告。  若要在應用程式資訊清單中設定群組宣告，請參閱下面的「設定群組屬性的 Azure Active Directory 應用程式註冊」。
+2. **在 Azure 活動目錄中配置應用程式註冊以在權杖中包括組聲明**組聲明可以在門戶的企業應用程式部分中配置，也可以在應用程式註冊部分中使用應用程式清單。  要在應用程式清單中配置組聲明，請參閱下面的"配置組屬性的 Azure 活動目錄應用程式註冊"。
 
-## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>使用 SSO 設定將群組宣告新增至 SAML 應用程式的權杖
+## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>使用 SSO 配置將組聲明添加到 SAML 應用程式的權杖
 
-若要設定資源庫或非資源庫 SAML 應用程式的群組宣告，請開啟 [**企業應用程式**]，按一下清單中的應用程式，選取 [**單一登入**設定]，然後選取 [**使用者屬性 & 宣告**]。
+要為庫或非庫 SAML 應用程式佈建組聲明，請打開**企業應用程式**，按一下清單中的應用程式，選擇**單一登入配置**，然後選擇 **"使用者屬性&聲明**"。
 
-按一下 [**新增群組**宣告]  
+按一下"**添加組聲明**"  
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
-使用選項按鈕來選取要包含在權杖中的群組
+使用選項按鈕選擇權杖中應包含哪些組
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | 選取項目 | 描述 |
 |----------|-------------|
-| **所有群組** | 發出安全性群組和通訊群組清單與角色。  |
-| **安全性群組** | 在群組宣告中發出使用者所屬的安全性群組 |
-| **目錄角色** | 如果使用者被指派目錄角色，則會以 ' wids ' 宣告的形式發出，而不會發出群組宣告） |
-| **指派給應用程式的群組** | 只發出明確指派給應用程式的群組，以及使用者的成員 |
+| **所有群組** | 發出安全性群組、通訊群組清單和角色。  |
+| **安全性群組** | 發出使用者是組聲明的成員的安全性群組 |
+| **目錄角色** | 如果使用者被分配了目錄角色，則這些角色將作為"wids"聲明發出（不會發出組聲明） |
+| **分配給應用程式的組** | 僅發出顯式分配給應用程式的組，使用者是 |
 
-例如，若要發出使用者所屬的所有安全性群組，請選取 [安全性群組]
+例如，要發出使用者是的所有安全性群組，請選擇安全性群組
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-若要使用同步自 Active Directory 的 Active Directory 屬性來發出群組，而不是 Azure AD Objectid，請從下拉式選單選取所需的格式。 只有從 Active Directory 同步處理的群組才會包含在宣告中。
+要使用從活動目錄而不是 Azure AD 物件 IT 同步的活動目錄屬性發出組，請從下拉清單中選擇所需的格式。 聲明中僅包括從活動目錄同步的組。
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
-若只要發出指派給應用程式的群組，請選取**指派給應用程式的群組**
+要僅發出分配給應用程式的組，請選擇**分配給應用程式的組**
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
-指派給應用程式的群組將會包含在權杖中。  使用者所屬的其他群組將會被省略。  使用此選項時，不會包含 [嵌套群組]，而且使用者必須是指派給應用程式之群組的直接成員。
+分配給應用程式的組將包含在權杖中。  使用者是其成員的其他組將被省略。  使用此選項，不包括嵌套組，使用者必須是分配給應用程式的組的直接成員。
 
-若要變更指派給應用程式的群組，請從 [**企業應用程式**] 清單中選取應用程式，然後按一下應用程式的左側導覽功能表中的 [**使用者和群組**]。
+要更改分配給應用程式的組，請從 **"企業應用程式"** 清單中選擇應用程式，然後按一下應用程式左側導航功能表中的 **"使用者和組**"。
 
-如需管理應用程式之群組指派的詳細資訊，請參閱將[使用者和群組指派給應用](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)程式的檔方法。
+有關管理組分配到應用程式的詳細資訊，請參閱文檔[將使用者或組分配給企業應用](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)。
 
 ### <a name="advanced-options"></a>進階選項
 
-群組宣告的發出方式可由 [Advanced options] 底下的設定來修改。
+可以通過"高級"選項下的設置修改組聲明的發出方式
 
-自訂群組宣告的名稱：如果已選取，則可以為群組宣告指定不同的宣告類型。   在 [名稱] 欄位中輸入宣告類型，並在 [命名空間] 欄位中輸入宣告的選擇性命名空間。
+自訂群組聲明的名稱：如果選中，可以為組聲明指定不同的聲明類型。   在"名稱"欄位中輸入聲明類型，在命名空間欄位中輸入聲明的可選命名空間。
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-某些應用程式需要群組成員資格資訊才會出現在「角色」宣告中。 您可以藉由勾選 [發出群組角色宣告] 方塊，選擇性地將使用者群組當做角色來發出。
+某些應用程式要求組成員身份資訊顯示在"角色"索賠中。 通過選中"Emit 對角色聲明的 Emit"框，可以選擇將使用者的組作為角色發出。
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
-> 如果使用 [將群組資料發出為角色] 選項，則只有群組會出現在角色宣告中。  指派給使用者的任何應用程式角色都不會出現在角色宣告中。
+> 如果使用角色發出組資料的選項，則角色聲明中只會顯示組。  使用者分配的任何應用程式角色將不會顯示在角色聲明中。
 
-### <a name="edit-the-group-claims-configuration"></a>編輯群組宣告設定
+### <a name="edit-the-group-claims-configuration"></a>編輯組聲明配置
 
-一旦將群組宣告設定新增至 [使用者屬性] & 宣告設定，新增群組宣告的選項將會呈現灰色。 若要變更群組宣告設定，請按一下 [**其他宣告**] 清單中的群組宣告。
+將組聲明配置添加到使用者屬性&聲明配置後，添加組聲明的選項將灰顯。 要更改組聲明配置，請按一下 **"其他索賠**"清單中的組聲明。
 
-![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
+![聲明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>設定群組屬性的 Azure AD 應用程式註冊
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>為組屬性配置 Azure AD 應用程式註冊
 
-群組宣告也可以在[應用程式資訊清單](../../active-directory/develop/reference-app-manifest.md)的[選擇性宣告](../../active-directory/develop/active-directory-optional-claims.md)區段中設定。
+組聲明也可以在[應用程式清單](../../active-directory/develop/reference-app-manifest.md)的[可選聲明](../../active-directory/develop/active-directory-optional-claims.md)部分進行配置。
 
-1. 在入口網站中 > Azure Active Directory-> 應用程式註冊-> 選取 [應用程式-> 資訊清單]
+1. 在門戶中 ->Azure 活動目錄 ->應用程式註冊->選擇應用程式->清單
 
-2. 藉由變更 groupMembershipClaim 來啟用群組成員資格宣告
+2. 通過更改組成員聲明啟用組成員聲明
 
 有效值為：
 
 | 選取項目 | 描述 |
 |----------|-------------|
-| **這** | 發出安全性群組、通訊群組清單和角色 |
-| **SecurityGroup** | 在群組宣告中發出使用者所屬的安全性群組 |
-| **「DirectoryRole** | 如果使用者被指派目錄角色，則會以 ' wids ' 宣告的形式發出，而不會發出群組宣告） |
-| **「ApplicationGroup** | 只發出明確指派給應用程式的群組，以及使用者的成員 |
+| **"全部"** | 發出安全性群組、通訊群組清單和角色 |
+| **"安全性群組"** | 發出使用者是組聲明的成員的安全性群組 |
+| **"目錄角色** | 如果使用者被分配了目錄角色，則這些角色將作為"wids"聲明發出（不會發出組聲明） |
+| **"應用程式組** | 僅發出顯式分配給應用程式的組，使用者是 |
 
    例如：
 
@@ -153,20 +153,20 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
    "groupMembershipClaims": "SecurityGroup"
    ```
 
-   根據預設，會在群組宣告值中發出群組 Objectid。  若要將宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色，請使用 OptionalClaims 設定，如下所示：
+   預設情況下，組物件 I 將在組聲明值中發出。  要修改聲明值以包含本機群組屬性，或將聲明類型更改為角色，請使用"可選索賠"配置，如下所示：
 
-3. 設定組名 configuration 選擇性宣告。
+3. 設置組名稱配置可選聲明。
 
-   如果您想要讓權杖中的群組包含內部部署 AD 群組屬性，請在 [選擇性宣告] 區段中指定應套用哪一個權杖類型的選擇性宣告。  可以列出多個權杖類型：
+   如果希望權杖中的組包含本地 AD 組屬性，請在可選宣告區段中指定應應用於哪個權杖類型可選聲明。  可以列出多種權杖類型：
 
-   - OIDC 識別碼權杖的 idToken
-   - OAuth/OIDC 存取權杖的 accessToken
-   - SAML 權杖的 Saml2Token。
+   - OIDC ID 權杖的 idToken
+   - OAuth/OIDC 訪問權杖的訪問權杖
+   - SAML 權杖的 Saml2 權杖。
 
    > [!NOTE]
-   > Saml2Token 類型同時適用于 SAML 1.1 和 SAML 2.0 格式權杖
+   > Saml2Token 類型適用于 SAML1.1 和 SAML2.0 格式權杖
 
-   針對每個相關的權杖類型，修改群組宣告以使用資訊清單中的 OptionalClaims 區段。 OptionalClaims 架構如下所示：
+   對於每個相關的權杖類型，修改組聲明以在清單中使用"可選聲明"部分。 可選聲明架構如下所示：
 
    ```json
    {
@@ -177,23 +177,23 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
    }
    ```
 
-   | 選擇性宣告架構 | 值 |
+   | 可選聲明架構 | 值 |
    |----------|-------------|
-   | **檔案名** | 必須是「群組」 |
-   | **來源** | 未使用。 省略或指定 null |
-   | **基本** | 未使用。 省略或指定 false |
-   | **AdditionalProperties** | 其他屬性的清單。  有效的選項為「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」、「emit_as_roles」 |
+   | **名字：** | 必須是"組" |
+   | **源：** | 未使用。 省略或指定 null |
+   | **基本：** | 未使用。 省略或指定 false |
+   | **其他屬性：** | 其他屬性的清單。  有效選項為"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"、"emit_as_roles" |
 
-   在 additionalProperties 中，只需要「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」其中一個。  如果有多個，則會使用第一個，並忽略其他任何專案。
+   在附加屬性中，只需要"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"之一。  如果存在多個，則使用第一個，忽略任何其他。
 
-   某些應用程式需要角色宣告中的使用者群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至其他屬性。  群組值會在角色宣告中發出。
+   某些應用程式需要有關角色聲明中的使用者的組資訊。  要將聲明類型從組聲明更改為角色聲明，向其他屬性添加"emit_as_roles"。  將在角色聲明中發出組值。
 
    > [!NOTE]
-   > 如果使用「emit_as_roles」，則設定為使用者指派的任何應用程式角色都不會出現在角色宣告中。
+   > 如果使用"emit_as_roles"，則配置分配給使用者的任何應用程式角色將不會出現在角色聲明中
 
 ### <a name="examples"></a>範例
 
-以 dnsDomainName\SAMAccountName 格式在 OAuth 存取權杖中以組名的形式發出群組
+以 dnsDomainName_SAMAccountName 格式在 OAuth 訪問權杖中將組名稱作為組名稱發出
 
 ```json
 "optionalClaims": {
@@ -204,7 +204,7 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 }
  ```
 
-若要以 netbiosDomain\samAccountName 格式發出要傳回的組名作為 SAML 和 OIDC 識別碼權杖中的角色宣告：
+要發出要以 netbiosDomain_samAccountName 格式返回的組名稱，作為 SAML 和 OIDC ID 權杖中的角色聲明：
 
 ```json
 "optionalClaims": {
@@ -222,6 +222,6 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 ## <a name="next-steps"></a>後續步驟
 
-[將使用者和群組指派給應用程式的方法](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+[將使用者或群組指派給企業應用程式](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 [設定角色宣告](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

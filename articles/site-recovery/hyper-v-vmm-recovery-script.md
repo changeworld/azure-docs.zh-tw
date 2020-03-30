@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Site Recovery 中，將腳本新增至復原方案
+title: 在 Azure 網站恢復中向恢復計畫添加腳本
 description: 了解如何在 VMM 雲端的 Hyper-V VM 災害復原方案中新增 VMM 指令碼。
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084880"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>將 VMM 指令碼新增至復原方案
 
 本文說明如何建立 System Center Virtual Machine Manager (VMM) 指令碼，並將其新增至 [Azure Site Recovery](site-recovery-overview.md) 中的復原方案。
 
-在這篇文章下方或 [Azure 復原服務論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中張貼意見或問題。
+在本文底部或[Azure 恢復服務論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上發佈任何評論或問題。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您的復原計畫中，您可以使用 PowerShell 指令碼。 若要從復原方案進行存取，您必須撰寫指令碼並將指令碼放在 VMM 文件庫中。 當您撰寫指令碼時，請記住下列考量：
 
@@ -29,7 +29,7 @@ ms.locfileid: "74084880"
     - 如果發生錯誤，指令碼的剩餘部分將不會執行。
     - 如果在執行未規劃的容錯移轉時發生錯誤，復原計畫將會繼續執行。
     - 如果在執行未規劃的容錯移轉時發生錯誤，復原計畫將會停止。 請修正指令碼，確認其能如預期執行，然後再次執行復原方案。
-        - `Write-Host` 命令無法在復原方案指令碼中運作。 如果您在指令碼中使用 `Write-Host` 命令，指令碼就會失敗。 若要建立輸出，建立接著會執行主要指令碼的 proxy 指令碼。 若要確定所有的輸出都經由管道輸出，請使用 **\>\>** 命令。
+        - `Write-Host` 命令無法在復原方案指令碼中運作。 如果您在指令碼中使用 `Write-Host` 命令，指令碼就會失敗。 若要建立輸出，建立接著會執行主要指令碼的 proxy 指令碼。 為確保所有輸出都管道輸出，請使用 命令**\>**。
         - 如果指令碼未在 600 秒內傳回則會逾時。
         - 如果有任何資料寫入 STDERR 中，則該指令碼將分類為失敗。 此資訊會顯示在指令碼的執行詳細資料中。
 
@@ -45,13 +45,13 @@ ms.locfileid: "74084880"
   
   1. 開啟登錄編輯程式，並移至 **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**。
 
-  1. 將值 **ScriptLibraryPath** 變更為 **\\\libserver2.contoso.com\share\\** 。 指定完整的 FQDN。 提供共用位置的權限。 這是共用的根節點。 若要檢查根節點，在 VMM 中，請移至文件庫中的根節點。 所開啟的路徑是路徑的根目錄。 這是您必須在變數中使用的路徑。
+  1. 將值 **ScriptLibraryPath** 變更為 **\\\libserver2.contoso.com\share\\**。 指定完整的 FQDN。 提供共用位置的權限。 這是共用的根節點。 若要檢查根節點，在 VMM 中，請移至文件庫中的根節點。 所開啟的路徑是路徑的根目錄。 這是您必須在變數中使用的路徑。
 
   1. 測試指令碼，方法是使用具有與 VMM 服務帳戶相同層級的使用者權限之使用者帳戶來執行。 使用這些使用者權限來驗證獨立的測試指令碼是以其在復原方案中相同的執行方式來執行。 在 VMM 伺服器上，設定要略過的執行原則，如下所示：
 
      a. 以系統管理員身分開啟 **64 位元 Windows PowerShell** 主控台。
      
-     b.這是另一個 C# 主控台應用程式。 輸入 **Set-executionpolicy bypass**。 如需詳細資訊，請參閱[使用 Set-ExecutionPolicy Cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+     b. 輸入 **Set-executionpolicy bypass**。 如需詳細資訊，請參閱[使用 Set-ExecutionPolicy Cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
 
      > [!IMPORTANT]
      > 只能在 64 位元 PowerShell 主控台中設定 **Set-executionpolicy bypass**。 如果您將它設定為 32 位元 PowerShell 主控台，指令碼就不會執行。
@@ -69,13 +69,13 @@ ms.locfileid: "74084880"
 在將 VM 或複寫群組新增至復原方案並建立方案之後，您可以將指令碼新增至該群組。
 
 1. 開啟復原計畫。
-1. 在 [步驟] 清單中，選取一個項目。 然後，選取 [指令碼] 或 [手動動作]。
-1. 指定要在已選取項目之前或之後新增指令碼或動作。 若要將指令碼的位置向上或向下移動，請選取 [上移] 和 [下移] 按鈕。
-1. 如果您新增 VMM 指令碼，請選取 [容錯移轉至 VMM 指令碼]。 在 [指令碼路徑] 中，輸入要共用的相對路徑。 例如，輸入 **\RPScripts\RPScript.PS1**。
+1. 在 [步驟]**** 清單中，選取一個項目。 然後，選取 [指令碼]**** 或 [手動動作]****。
+1. 指定要在已選取項目之前或之後新增指令碼或動作。 若要將指令碼的位置向上或向下移動，請選取 [上移]**** 和 [下移]**** 按鈕。
+1. 如果您新增 VMM 指令碼，請選取 [容錯移轉至 VMM 指令碼]****。 在 [指令碼路徑]**** 中，輸入要共用的相對路徑。 例如，輸入 **\RPScripts\RPScript.PS1**。
 1. 如果新增 Azure 自動化 Runbook，請指定 Runbook 所在的 Azure 自動化帳戶。 然後，選取您需要使用的 Azure Runbook 指令碼。
 1. 若要確保指令碼會如預期般運作，請執行復原方案的測試容錯移轉。
 
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解[執行容錯移轉](site-recovery-failover.md)。
+* 深入了解[如何執行容錯移轉](site-recovery-failover.md)。
 

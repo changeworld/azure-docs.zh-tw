@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 資料總管 Python 程式庫查詢資料
-description: 在本文中，您將瞭解如何使用 Python 從 Azure 資料總管查詢資料。
+description: 在本文中，您將瞭解如何使用 Python 從 Azure 資料資源管理器查詢資料。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443970"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 資料總管 Python 程式庫查詢資料
 
-在本文中，您會使用 Azure 資料總管來查詢資料。 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。
+在本文中，使用 Azure 資料資源管理器查詢資料。 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。
 
-Azure 資料總管提供一個[適用於 Python 的資料用戶端程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) \(英文\)。 此程式庫可讓您從程式碼中查詢資料。 連接到說明叢集上的資料表，我們已設定此*資訊*來協助學習。 您可以查詢該叢集上的資料表，並傳回結果。
+Azure 資料總管提供一個[適用於 Python 的資料用戶端程式庫](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) \(英文\)。 此程式庫可讓您從程式碼中查詢資料。 連接到我們為説明學習而設置*的説明群集*上的表。 您可以查詢該群集上的表並返回結果。
 
-這篇文章也以[Azure 筆記本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)的形式提供。
+本文也可作為[Azure 筆記本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)提供。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Python 3.4 +](https://www.python.org/downloads/)
+* [Python 3.4°](https://www.python.org/downloads/)
 
 * 屬於 Azure Active Directory (AAD) 成員的組織電子郵件帳戶
 
@@ -67,7 +67,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-現在來建構連接字串。 此範例使用服務驗證來存取叢集。 您也可以使用 [AAD 應用程式憑證](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 應用程式金鑰](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)，以及 [AAD 使用者和密碼](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
+現在來建構連接字串。 此範例使用服務驗證來存取叢集。 您還可以使用[AAD應用程式證書](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)[、AAD應用程式金鑰](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及[AAD使用者和密碼](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -77,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>連線到 Azure 資料總管並執行查詢
 
-針對叢集執行查詢，然後將輸出儲存於資料框架中。 此程式碼執行時，會傳回與下列類似的訊息：若要登入，請使用網頁瀏覽器開啟頁面 *，並輸入程式碼 F3W4VWZDM 來驗證 https://microsoft.com/devicelogin* 。 請遵循下列步驟來登入，然後返回以執行下一個程式碼區塊。
+針對叢集執行查詢，然後將輸出儲存於資料框架中。 此程式碼執行時，會傳回與下列類似的訊息：若要登入，請使用網頁瀏覽器開啟頁面 https://microsoft.com/devicelogin，並輸入程式碼 F3W4VWZDM 來驗證**。 請遵循下列步驟來登入，然後返回以執行下一個程式碼區塊。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)
@@ -100,4 +100,4 @@ df
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Azure 資料總管 Python 程式庫內嵌資料](python-ingest-data.md)
+> [使用 Azure 資料資源管理器 Python 庫引入資料](python-ingest-data.md)

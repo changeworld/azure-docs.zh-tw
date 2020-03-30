@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d7c7d9f6d59ffd57ddb14f7c060d0a3f6f2a6eb
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481393"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -38,7 +38,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 
 您可以將連接器設定為略過內部部署 Proxy，以確保它會使用與 Azure 服務的直接連線。 我們之所以建議這種方式 (只要您的網路原則允許)，是因為這表示您有一個要維護的較少組態。
 
-若要停用連接器的輸出 Proxy 使用，請編輯 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 檔案，並新增此程式碼範例中所示的 system.net 區段︰
+要禁用連接器的出站代理使用，請編輯 C：_程式檔\Microsoft AAD 應用程式代理連接器\應用程式代理連接器.exe.config 檔，並添加此代碼示例中顯示的*system.net*部分：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,7 +76,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 
 若 WPAD 在環境中啟用並正確地設定，連接器會自動探索輸出 Proxy 伺服器，並嘗試使用它。 不過，您可以明確地設定連接器以通過輸出 Proxy。
 
-為此，請編輯 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 檔案，並新增此範例程式碼中顯示的 *system.net* 區段。 變更 proxyserver:8080 以反映您的本機 Proxy 伺服器名稱或 IP 位址與其正在接聽的連接埠。 即使您使用的是 IP 位址，該值也必須具有前置詞 http://。
+為此，請編輯 C：_程式檔\微軟 AAD 應用程式代理連接器\應用程式代理連接器.exe.config 檔，並添加此代碼示例中顯示的*system.net*部分。 更改*代理伺服器：8080*以反映本地代理伺服器名稱或 IP 位址，以及它正在偵聽的埠。 即使您使用的是 IP 位址，該值也必須具有前置詞 http://。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -104,7 +104,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 * Proxy 輸出規則
 * Proxy 驗證
 * Proxy 連接埠
-* SSL 審查
+* TLS 檢查
 
 #### <a name="proxy-outbound-rules"></a>Proxy 輸出規則
 
@@ -113,10 +113,10 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 | URL | 使用方式 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 連接器會使用這些 Url 來驗證憑證 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>* . microsoftonline-p.com<br>*. msauth.net<br>* . msauthimages.net<br>*. msecnd.net<br>* . msftauth.net<br>*. msftauthimages.net<br>* . phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 連接器使用這些 URL 驗證憑證 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>*.microsoftonline-p.com<br>*.msauth.net<br>*.msauthimages.net<br>*.msecnd.net<br>*.msftauth.net<br>*.msftauthimages.net<br>*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
 
-如果您的防火牆或 proxy 允許您設定 DNS 允許清單，您可以允許連接到 \*msappproxy.net 和 \*. servicebus.windows.net。 若非如此，您需要允許存取 [Azure 資料中心的 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 範圍會每週更新。
+如果您的防火牆或代理允許您配置 DNS 允許清單，則可以允許連接到\*.msappproxy.net 和\*.servicebus.windows.net。 若非如此，您需要允許存取 [Azure 資料中心的 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 範圍會每週更新。
 
 如果您不允許 FQDN 連線且需要改為指定 IP 範圍，請使用下列選項：
 
@@ -129,14 +129,14 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 
 #### <a name="proxy-ports"></a>Proxy 連接埠
 
-連接器可使用 CONNECT 方法進行輸出 SSL 型連線。 此方法基本上會透過輸出 Proxy 設定通道。 設定 Proxy 伺服器以允許連接埠 443 和 80 通道。
+連接器使用 CONNECT 方法建立基於出站 TLS 的連接。 此方法基本上會透過輸出 Proxy 設定通道。 設定 Proxy 伺服器以允許連接埠 443 和 80 通道。
 
 > [!NOTE]
 > 當服務匯流排在 HTTPS 上執行時，它會使用連接埠 443。 不過，根據預設，服務匯流排會嘗試導向 TCP 連線，且僅在直接連線失敗時，才會改為使用 HTTPS。
 
-#### <a name="ssl-inspection"></a>SSL 審查
+#### <a name="tls-inspection"></a>TLS 檢查
 
-請勿對連接器流量使用 SSL 審查，因為這樣會導致連接器流量發生問題。 連接器會使用憑證來驗證應用程式 Proxy 服務，而該憑證可能會在 SSL 審查期間會遺失。
+不要對連接器流量使用 TLS 檢查，因為它會導致連接器流量出現問題。 連接器使用證書對應用程式代理服務進行身份驗證，並且該證書可能會在 TLS 檢查期間丟失。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>針對連接器 Proxy 問題和服務連線問題進行疑難排解
 
@@ -157,17 +157,17 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
    ![services.msc 中的 Azure AD 應用程式 Proxy 連接器服務](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. 以系統管理員身分執行 Message Analyzer。
-1. 選取 [啟動本機追蹤]。
+1. 選取 [啟動本機追蹤]****。
 1. 啟動 Azure AD 應用程式 Proxy 連接器服務。
 1. 停止網路擷取。
 
-   ![螢幕擷取畫面顯示 [停止網路捕捉] 按鈕](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![螢幕截圖顯示"停止網路捕獲"按鈕](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
 ### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>檢查連接器流量是否略過輸出 Proxy
 
 如果您已設定應用程式 Proxy 連接器略過 Proxy 伺服器，並直接連接到應用程式 Proxy 服務，請嘗試查看網路擷取，看看是否有失敗的 TCP 連線。
 
-請使用 Message Analyzer 篩選條件來識別這些嘗試。 在篩選方塊中輸入 `property.TCPSynRetransmit`，並選取 [套用]。
+請使用 Message Analyzer 篩選條件來識別這些嘗試。 在篩選方塊中輸入 `property.TCPSynRetransmit`，並選取 [套用]****。
 
 SYN 封包是傳送到建立 TCP 連線的第一個封包。 如果此封包未傳回回應，則會重新嘗試 SYN。 您可以使用上述篩選條件來查看任何重新傳輸的 SYN。 然後，您可以檢查這些 SYN 是否對應至任何與連接器相關的流量。
 
@@ -177,7 +177,7 @@ SYN 封包是傳送到建立 TCP 連線的第一個封包。 如果此封包未�
 
 如果您已設定讓應用程式 Proxy 連接器流量通過 Proxy 伺服器，請尋找至 Proxy 的失敗 https 連線。
 
-若要篩選這些連接嘗試的網路擷取，請在 Message Analyzer 篩選條件中輸入 `(https.Request or https.Response) and tcp.port==8080`，將 8080 取代為您的 Proxy 服務連接埠。 選取 [套用] 查看篩選結果。
+若要篩選這些連接嘗試的網路擷取，請在 Message Analyzer 篩選條件中輸入 `(https.Request or https.Response) and tcp.port==8080`，將 8080 取代為您的 Proxy 服務連接埠。 選取 [套用]**** 查看篩選結果。
 
 上述篩選條件只會顯示 HTTPs 要求和往返 Proxy 連接埠的回應。 您正在尋找顯示與 Proxy 伺服器通訊的 CONNECT 要求。 成功時，您會收到 HTTP OK (200) 回應。
 
@@ -185,5 +185,5 @@ SYN 封包是傳送到建立 TCP 連線的第一個封包。 如果此封包未�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+* [瞭解 Azure AD 應用程式代理連接器](application-proxy-connectors.md)
 * 如果連接器連線有問題，請在 [Azure Active Directory 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)中提出問題，或向支援小組建立票證。

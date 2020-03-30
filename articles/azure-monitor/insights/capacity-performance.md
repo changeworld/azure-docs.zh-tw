@@ -1,26 +1,26 @@
 ---
-title: Azure 監視器中的容量與效能解決方案 |Microsoft Docs
-description: 使用 監視 中的 容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。
+title: Azure 監視器中的容量和性能解決方案 |微軟文檔
+description: 使用監視器中的容量和性能解決方案説明您瞭解 Hyper-V 伺服器的容量。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666938"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解決方案規劃 Hyper-V 虛擬機器容量（已棄用）
 
 ![容量與效能符號](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > 容量與效能解決方案已取代。  已安裝此解決方案的客戶可以繼續使用，但無法將「容量與效能」加入任何新的工作區。
 
-您可以使用 [監視] 中的容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
+您可以使用 Monitor 中的容量和性能解決方案來説明您瞭解 Hyper-V 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
 
 此解決方案：
 
@@ -44,9 +44,9 @@ ms.locfileid: "77666938"
 | [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 是 | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
 | [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
 | [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 是 |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
-| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 儲存體不包含容量和效能資料。|
+| [Azure 存儲帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 儲存體不包含容量和效能資料。|
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Windows 或 Operations Manager 代理程式必須安裝在 Windows Server 2012 或更新版本的 Hyper-V 主機上，而非安裝在虛擬機器上。
 
@@ -83,9 +83,9 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="review-utilization"></a>檢閱使用率
 
-按一下 [容量和效能] 圖格，即可開啟 [容量和效能] 儀表板。 此儀表板包含下表中的資料行。 每個資料行最多會列出十個符合該資料行中指定範圍和時間範圍之準則的項目。 您可以按一下資料行底部的 [查看全部]，或按一下資料行標頭，以執行記錄檔搜尋來傳回所有記錄。
+按一下 [容量和效能] 圖格，即可開啟 [容量和效能] 儀表板。 此儀表板包含下表中的資料行。 每個資料行最多會列出十個符合該資料行中指定範圍和時間範圍之準則的項目。 您可以按一下資料行底部的 [查看全部]****，或按一下資料行標頭，以執行記錄檔搜尋來傳回所有記錄。
 
-- **主控件**
+- **主機**
     - **主機 CPU 使用率** 根據所選時段以圖表顯示主機電腦的 CPU 使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的 CPU 計數器詳細資料。
     - **主機記憶體使用率** 根據所選時段以圖表顯示主機電腦的記憶體使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的記憶體計數器詳細資料。
 - **虛擬機器**

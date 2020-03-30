@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
@@ -72,7 +72,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>評估子群組
-若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算在每個國家/地區傳送了心跳的相異 Linux 電腦數目：
+若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，要計算在每個國家/地區發送活動訊號的不同 Linux 電腦的數量：
 
 ```Kusto
 Heartbeat 
@@ -83,13 +83,13 @@ Heartbeat
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
 |美國    | 19                  |
-|加拿大           | 3                   |
+|Canada           | 3                   |
 |愛爾蘭          | 0                   |
-|英國   | 0                   |
+|United Kingdom   | 0                   |
 |荷蘭      | 2                   |
 
 
-若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能會想要計算每個 OSType 每個國家/地區的相異電腦數：
+若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能希望根據 OSType 對每個國家/地區的不同電腦進行計數：
 
 ```Kusto
 Heartbeat 
@@ -143,7 +143,7 @@ Perf
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
+- [日期與時間作業](datetime-operations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)
 - [進階查詢撰寫](advanced-query-writing.md)

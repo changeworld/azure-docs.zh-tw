@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs 中的公司原則與合規性
+title: Azure 開發人員測試實驗室中的公司策略和合規性
 description: 此文章提供治理適用於 Azure DevTest Labs 基礎結構之公司原則和合規性的相關指導方針。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560511"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>治理 Azure DevTest Labs 基礎結構 - 公司原則和合規性
@@ -28,8 +28,8 @@ ms.locfileid: "74560511"
 ### <a name="question"></a>問題
 組織在 DevTest Labs 中何時應使用公用成品存放庫，而何時應使用私人成品存放庫？
 
-### <a name="answer"></a>答案
-[公用成品存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) \(英文\) 提供一組最常用的初始軟體套件。 它有助於快速部署，而不必投入時間重現常見的開發人員工具和增益集。您可以選擇部署自己的私人存放庫。 您可以平行方式各使用一個公用和私人存放庫。 您也可以選擇停用公用存放庫。 部署私人存放庫的準則應透過下列問題和考量來衍生：
+### <a name="answer"></a>Answer
+[公用成品存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) \(英文\) 提供一組最常用的初始軟體套件。 它有助於快速部署，而無需花時間重現常見的開發人員工具和外接程式。您可以選擇部署自己的私有存儲庫。 您可以平行方式各使用一個公用和私人存放庫。 您也可以選擇停用公用存放庫。 部署私人存放庫的準則應透過下列問題和考量來衍生：
 
 - 組織是否需要使公司授權的軟體成為其 DevTest Labs 供應項目的一部分？ 如果答案是肯定的，則應該建立私人存放庫。
 - 組織是否要開發自訂軟體來提供特定作業，且需將其當作整體佈建程序的一部分？ 如果答案是肯定的，則應該部署私人存放庫。
@@ -40,7 +40,7 @@ ms.locfileid: "74560511"
 ### <a name="question"></a>問題
 組織應該規劃單一存放庫，還是允許多個存放庫？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 作為貴組織整體治理和組態管理策略的一部分，我們建議您使用集中式存放庫。 當您使用多個存放庫時，它們可能會在經過一段時間之後成為非受控軟體的定址接收器。 使用中央存放庫，多個小組就能針對他們的專案，從此存放庫中取用成品。 它會強制執行標準化、安全性、簡化管理，並排除重複的工作。 在集中化過程中，下列動作為適用於長期管理和持續性的建議做法：
 
 - 將 Azure Repos 與 Azure 訂用帳戶用來進行驗證和授權的相同 Azure Active Directory 租用戶產生關聯。
@@ -53,7 +53,7 @@ ms.locfileid: "74560511"
 ### <a name="question"></a>問題
 組織如何確保公司安全性原則已就緒？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 組織可能藉由執行下列動作來達到此目的：
 
 1. 開發和發佈完善的安全性原則。 該原則會闡述與使用軟體、雲端資產相關聯的可接受使用規則。 它也會定義哪些明顯違反了該原則。 
@@ -64,7 +64,7 @@ ms.locfileid: "74560511"
 ### <a name="question"></a>問題
 組織如何確保資料完整性，以確保遠端開發人員無法移除程式碼，或無法引進惡意程式碼或未經准的軟體？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 有數個控制層，可用來為從遠端在 DevTest Labs 中共同作業的外部顧問、約聘人員或員工降低此威脅。 
 
 如先前所述，第一個步驟必須起草並定義一個可接受的使用原則，清晰地概述有人違反原則時的後果。 

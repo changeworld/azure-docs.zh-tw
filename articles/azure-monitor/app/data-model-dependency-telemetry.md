@@ -1,14 +1,14 @@
 ---
-title: Azure 監視器 Application Insights 相依性資料模型
+title: Azure 監視器應用程式見解依賴項資料模型
 description: 相依性遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671914"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>相依性遙測：Application Insights 資料模型
@@ -23,7 +23,7 @@ ms.locfileid: "77671914"
 
 相依性呼叫執行個體的識別碼。 用來與此相依性呼叫的對應要求遙測項目相互關聯。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
 
-## <a name="data"></a>Data
+## <a name="data"></a>資料
 
 此相依性呼叫所起始的命令。 範例為搭配所有查詢參數的 SQL 陳述式和 HTTP URL。
 
@@ -35,7 +35,7 @@ ms.locfileid: "77671914"
 
 相依性呼叫的目標網站。 範例為伺服器名稱、主機位址。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
 
-## <a name="duration"></a>持續期間
+## <a name="duration"></a>Duration
 
 要求持續時間格式為︰`DD.HH:MM:SS.MMMMMM`。 必須小於 `1000` 天。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77671914"
 
 相依性呼叫的結果碼。 範例為 SQL 錯誤碼與 HTTP 狀態碼。
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 表示成功或失敗的呼叫。
 

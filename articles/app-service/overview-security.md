@@ -5,12 +5,12 @@ keywords: azure app service, web 應用程式, 行動應用程式, api 應用程
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688565"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475369"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service 中的安全性
 
@@ -31,14 +31,14 @@ App Service 的平台元件 (包括 Azure VM、儲存體、網路連線、Web �
 
 ## <a name="https-and-certificates"></a>HTTPS 和憑證
 
-App Service 可讓您利用 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保護您的應用程式。 建立您的應用程式後，已可使用 HTTPS 存取其預設網域名稱 (\<app_name>.azurewebsites.net)。 如果您[為應用程式設定自訂網域](app-service-web-tutorial-custom-domain.md)，您也應該[使用 SSL 憑證來保護它](configure-ssl-bindings.md)，讓用戶端瀏覽器可以對您的自訂網域進行安全的 HTTPS 連線。 App Service 支援數種類型的憑證：
+App Service 可讓您利用 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保護您的應用程式。 建立您的應用程式後，已可使用 HTTPS 存取其預設網域名稱 (\<app_name>.azurewebsites.net)。 如果[為應用配置自訂域](app-service-web-tutorial-custom-domain.md)，還應使用 SSL[證書對其進行保護](configure-ssl-bindings.md)，以便用戶端瀏覽器可以對自訂域建立安全的 HTTPS 連接。 應用服務支援幾種類型的證書：
 
-- 免費 App Service 受控憑證
-- App Service 憑證
-- 協力廠商憑證
-- 從 Azure Key Vault 匯入的憑證
+- 免費應用服務託管證書
+- 應用服務證書
+- 協力廠商證書
+- 從 Azure 金鑰保存庫導入的證書
 
-如需詳細資訊，請參閱[在 Azure App Service 中新增 SSL 憑證](configure-ssl-certificate.md)。
+有關詳細資訊，請參閱在[Azure 應用服務中添加 SSL 憑證](configure-ssl-certificate.md)。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>不安全的通訊協定 (HTTP、TLS 1.0、FTP)
 
@@ -52,7 +52,7 @@ App Service 同時支援使用 FTP 和 FTPS 來部署您的檔案。 不過，�
 
 根據預設，App Service 應用程式會接受來自網際網路所有 IP 位址的要求，但是您可以限制存取一小部分的 IP 位址。 Windows 上的 App Service 可讓您定義允許存取應用程式的 IP 位址清單。 允許清單可以包含個別 IP 位址，或以子網路遮罩所定義的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure App Service 靜態 IP 限制](app-service-ip-restrictions.md)。
 
-對於 Windows 上的 App Service，您也可以藉由設定_web.config_來動態限制 IP 位址。如需詳細資訊，請參閱[動態 IP 安全性 \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+對於 Windows 上的應用服務，還可以通過配置_Web.config_來動態限制 IP 位址。有關詳細資訊，請參閱動態[IP 安全\<動態 ip 安全>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>用戶端驗證與授權
 
@@ -65,7 +65,7 @@ App Service 驗證和授權支援多個驗證提供者，包括 Azure Active Dir
 針對後端服務進行驗證時，App Service 會視您的需求而定，提供兩個不同的機制：
 
 - **服務識別** - 使用應用程式本身的身分識別來登入遠端資源。 App Service 可讓您輕鬆建立[受控識別](overview-managed-identity.md)，以供您用來向其他服務 (例如 [Azure SQL Database](/azure/sql-database/) 或 [Azure Key Vault](/azure/key-vault/)) 進行驗證。 如需這個方法的端對端教學課程，請參閱[使用受控識別保護來自 App Service 的 Azure SQL Database 連線](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)** - 代表使用者進行遠端資源的委派存取。 以 Azure Active Directory 作為驗證提供者，您的 App Service 應用程式可以執行遠端服務的委派登入，例如 [Azure Active Directory 圖形 API](../active-directory/develop/active-directory-graph-api.md)或 App Service 中的遠端 API 應用程式。 如需這個方法的端對端教學課程，請參閱[在 Azure App Service 中端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md)。
+- **代表 (OBO)** - 代表使用者進行遠端資源的委派存取。 使用 Azure 活動目錄作為身份檢查器提供者，應用服務應用可以執行委派登錄到遠端服務，例如[Microsoft 圖形 API](../active-directory/develop/microsoft-graph-intro.md)或應用服務中的遠端 API 應用。 如需這個方法的端對端教學課程，請參閱[在 Azure App Service 中端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md)。
 
 ## <a name="connectivity-to-remote-resources"></a>連線到遠端資源
 
@@ -105,7 +105,7 @@ App Service 驗證和授權支援多個驗證提供者，包括 Azure Active Dir
 
 ## <a name="network-isolation"></a>網路隔離
 
-除了 [隔離式] 定價層，所有定價層都會在 App Service 中的共用網路基礎結構上執行您的應用程式。 例如，公用 IP 位址與前端負載平衡器會與其他租用戶共用。 [隔離式] 定價層可讓您在專屬 [App Service 環境](environment/intro.md)中執行您的應用程式，藉此完成網路隔離。 App Service 環境就會在您擁有的 [Azure 虛擬網路](/azure/virtual-network/)執行個體中執行。 它可讓您： 
+除了 [隔離式]**** 定價層，所有定價層都會在 App Service 中的共用網路基礎結構上執行您的應用程式。 例如，公用 IP 位址與前端負載平衡器會與其他租用戶共用。 [隔離式]**** 定價層可讓您在專屬 [App Service 環境](environment/intro.md)中執行您的應用程式，藉此完成網路隔離。 App Service 環境就會在您擁有的 [Azure 虛擬網路](/azure/virtual-network/)執行個體中執行。 它可讓您： 
 
 - 透過具有專屬前端的專屬公用端點來提供您的應用程式。
 - 使用內部負載平衡器 (ILB) 來提供內部應用程式，只允許從 Azure 虛擬網路內部進行存取。 ILB 有來自私人子網路的 IP 位址，這可讓您的應用程式與網際網路完全隔離。

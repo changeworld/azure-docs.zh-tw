@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 在 Azure VM 上設定受控識別-Azure AD
+title: 使用 PowerShell - Azure AD 在 Azure VM 上配置託管標識
 description: 使用 PowerShell 在 Azure VM 上設定 Azure 資源受控識別的逐步指示。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f24c89477d71df3f497590b49841403576343bd4
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547219"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>使用 PowerShell 在 Azure VM 上設定 Azure 資源受控識別
@@ -32,9 +32,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 如果您不熟悉 Azure 資源受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)** 。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 如果您尚未安裝[最新版的 Azure PowerShell](/powershell/azure/install-az-ps)，請先安裝。
 
@@ -46,7 +46,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 若要建立已啟用系統指派受控識別的 Azure VM，您的帳戶需要[虛擬機器參與者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色指派。  不需要其他 Azure AD 目錄角色指派。
 
-1. 請參閱下列其中一個 Azure VM 快速入門，只完成必要的區段（「登入 Azure」、「建立資源群組」、「建立網路群組」、「建立 VM」）。
+1. 請參閱以下 Azure VM 快速入門之一，僅完成必要的部分（"登錄到 Azure"、"創建資源組"、"創建網路組"、"創建 VM"）。
     
     當您參閱「建立VM」一節時，請稍微修改一下 [New-AzVMConfig](/powershell/module/az.compute/new-azvm) Cmdlet 語法。 請務必新增 `-AssignIdentity:$SystemAssigned` 參數，以佈建已啟用系統所指派身分識別的 VM，例如：
       
@@ -142,9 +142,9 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 
 若要將使用者指派的身分識別指派給 VM，您的帳戶需要[虛擬機器參與者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)和[受控識別操作者](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色指派。 不需要其他 Azure AD 目錄角色指派。
 
-1. 請參閱下列其中一個 Azure VM 快速入門，只完成必要的區段（「登入 Azure」、「建立資源群組」、「建立網路群組」、「建立 VM」）。 
+1. 請參閱以下 Azure VM 快速入門之一，僅完成必要的部分（"登錄到 Azure"、"創建資源組"、"創建網路組"、"創建 VM"）。 
   
-    當您參閱「建立 VM」一節時，請稍微修改一下 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm)Cmdlet 語法。 新增 `-IdentityType UserAssigned` 和 `-IdentityID` 參數，以佈建具有使用者所指派身分識別的 VM。  以您自己的值取代 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>`。  例如：
+    訪問"創建 VM"部分時，對[`New-AzVMConfig`](/powershell/module/az.compute/new-azvm)Cmdlet 語法進行細微修改。 新增 `-IdentityType UserAssigned` 和 `-IdentityID` 參數，以佈建具有使用者所指派身分識別的 VM。  以您自己的值取代 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>`。  例如：
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
@@ -168,7 +168,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 2. 請使用 [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) Cmdlet 來建立使用者指派的受控識別。  請記下輸出中的 `Id`，因為下一個步驟 會需要此項目。
 
    > [!IMPORTANT]
-   > 建立使用者指派的受控識別僅支援英數位元、底線和連字號（0-9 或 a-z 或 a-z、\_ 或-）字元。 此外，名稱應限制為3到128個字元長度，才能讓指派給 VM/VMSS 正常運作。 如需詳細資訊，請參閱[常見問題集和已知問題](known-issues.md)
+   > 創建使用者分配的託管標識僅支援字母數位、底線和連字號（0-9 或 a-z 或\_A-Z 或 -） 字元。 此外，名稱應限制為 3 到 128 個字元的長度，以便分配給 VM/VMSS 才能正常工作。 如需詳細資訊，請參閱[常見問題集和已知問題](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>

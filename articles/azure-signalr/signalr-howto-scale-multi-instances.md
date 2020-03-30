@@ -1,30 +1,30 @@
 ---
-title: 使用多個實例進行調整-Azure SignalR Service
-description: 在許多調整案例中，客戶通常需要布建多個實例，並將其設定為一起使用，以建立大規模部署。 例如，分區化需要多個實例支援。
+title: 使用多個實例進行縮放 - Azure 信號R 服務
+description: 在許多縮放方案中，客戶通常需要預配多個實例並配置以將它們一起使用，以創建大規模部署。 例如，分片需要多個實例支援。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158168"
 ---
-# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多個實例來調整 SignalR Service？
-最新的 SignalR Service SDK 支援 SignalR Service 實例的多個端點。 您可以使用這項功能來調整並行連接，或用於跨區域訊息。
+# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多個實例擴展 SignalR 服務？
+最新的 SignalR 服務 SDK 支援 SignalR 服務實例的多個終結點。 可以使用此功能縮放併發連接，或將其用於跨區域消息傳遞。
 
-## <a name="for-aspnet-core"></a>針對 ASP.NET Core
+## <a name="for-aspnet-core"></a>用於ASP.NET核心
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>如何從 config 新增多個端點？
+### <a name="how-to-add-multiple-endpoints-from-config"></a>如何從配置中添加多個終結點？
 
-具有索引鍵 `Azure:SignalR:ConnectionString` 或 `Azure:SignalR:ConnectionString:` SignalR Service 連接字串的設定。
+使用鍵`Azure:SignalR:ConnectionString`或`Azure:SignalR:ConnectionString:`SignalR 服務連接字串進行配置。
 
-如果索引鍵的開頭為 `Azure:SignalR:ConnectionString:`，其格式應該是 `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`，其中 `Name` 和 `EndpointType` 是 `ServiceEndpoint` 物件的屬性，而且可以從程式碼存取。
+如果鍵以`Azure:SignalR:ConnectionString:``Azure:SignalR:ConnectionString:{Name}:{EndpointType}`開頭，則應採用 格式，其中`Name`和`EndpointType`是`ServiceEndpoint`物件的屬性，並且可從代碼訪問。
 
-您可以使用下列 `dotnet` 命令來新增多個實例連接字串：
+您可以使用以下`dotnet`命令添加多個實例連接字串：
 
 ```batch
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
@@ -32,10 +32,10 @@ dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <Co
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>如何從程式碼新增多個端點？
+### <a name="how-to-add-multiple-endpoints-from-code"></a>如何從代碼中添加多個終結點？
 
-引進了 `ServicEndpoint` 類別來描述 Azure SignalR Service 端點的屬性。
-使用 Azure SignalR Service SDK 時，您可以設定多個實例端點：
+引入了`ServicEndpoint`一個類來描述 Azure SignalR 服務終結點的屬性。
+在使用 Azure SignalR 服務 SDK 時，可以通過以下版本配置多個實例終結點：
 ```cs
 services.AddSignalR()
         .AddAzureSignalR(options => 
@@ -55,21 +55,21 @@ services.AddSignalR()
 
 ### <a name="how-to-customize-endpoint-router"></a>如何自訂端點路由器？
 
-根據預設，SDK 會使用[DefaultEndpointRouter](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs)來挑選端點。
+預設情況下，SDK 使用[預設終結點路由器](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs)拾取終結點。
 
 #### <a name="default-behavior"></a>預設行為 
-1. 用戶端要求路由
+1. 用戶端請求路由
 
-    當用戶端與應用程式伺服器 `/negotiate` 時。 根據預設，SDK 會從可用的服務端點集合中**隨機選取**一個端點。
+    當用戶端`/negotiate`與應用伺服器。 預設情況下，SDK 從一組可用服務終結點**中隨機播放**一個終結點。
 
-2. 伺服器訊息路由
+2. 伺服器消息路由
 
-    當 *將訊息傳送至特定的 **連接*** 和目標連線會路由傳送至目前的伺服器，訊息會直接移至該連線的端點。 否則，訊息會廣播到每個 Azure SignalR 端點。
+    當 [將消息發送到特定 [連接]，並且目標連接路由到當前伺服器時，消息將直接發送到該連接的終結點。 否則，消息將廣播到每個 Azure SignalR 終結點。
 
 #### <a name="customize-routing-algorithm"></a>自訂路由演算法
-當您有特殊知識來識別訊息應該移至哪些端點時，您可以建立自己的路由器。
+當您有特殊知識來標識消息應轉到哪些終結點時，您可以創建自己的路由器。
 
-以下定義自訂路由器作為範例，當群組開頭為 `east-` 一律會移至名為 `east`的端點：
+以下定義自訂路由器作為示例，當從 開始組的`east-`組始終轉到名為 的`east`終結點時：
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -87,7 +87,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-以下另一個範例會覆寫預設的 negotiate 行為，以選取端點取決於應用程式伺服器所在的位置。
+下面的另一個示例，用於覆蓋預設協商行為，以選擇終結點取決於應用伺服器的位置。
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -110,7 +110,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-別忘了使用下列步驟，將路由器註冊到 DI 容器：
+不要忘記使用以下功能將路由器註冊到 DI 容器：
 
 ```cs
 services.AddSingleton(typeof(IEndpointRouter), typeof(CustomRouter));
@@ -127,15 +127,15 @@ services.AddSignalR()
             });
 ```
 
-## <a name="for-aspnet"></a>針對 ASP.NET
+## <a name="for-aspnet"></a>對於ASP.NET
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>如何從 config 新增多個端點？
+### <a name="how-to-add-multiple-endpoints-from-config"></a>如何從配置中添加多個終結點？
 
-具有索引鍵 `Azure:SignalR:ConnectionString` 或 `Azure:SignalR:ConnectionString:` SignalR Service 連接字串的設定。
+使用鍵`Azure:SignalR:ConnectionString`或`Azure:SignalR:ConnectionString:`SignalR 服務連接字串進行配置。
 
-如果索引鍵的開頭為 `Azure:SignalR:ConnectionString:`，其格式應該是 `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`，其中 `Name` 和 `EndpointType` 是 `ServiceEndpoint` 物件的屬性，而且可以從程式碼存取。
+如果鍵以`Azure:SignalR:ConnectionString:``Azure:SignalR:ConnectionString:{Name}:{EndpointType}`開頭，則應採用 格式，其中`Name`和`EndpointType`是`ServiceEndpoint`物件的屬性，並且可從代碼訪問。
 
-您可以將多個實例連接字串新增至 `web.config`：
+您可以將多個實例連接字串添加到`web.config`：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -150,10 +150,10 @@ services.AddSignalR()
 </configuration>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>如何從程式碼新增多個端點？
+### <a name="how-to-add-multiple-endpoints-from-code"></a>如何從代碼中添加多個終結點？
 
-引進了 `ServicEndpoint` 類別來描述 Azure SignalR Service 端點的屬性。
-使用 Azure SignalR Service SDK 時，您可以設定多個實例端點：
+引入了`ServicEndpoint`一個類來描述 Azure SignalR 服務終結點的屬性。
+在使用 Azure SignalR 服務 SDK 時，可以通過以下版本配置多個實例終結點：
 
 ```cs
 app.MapAzureSignalR(
@@ -173,9 +173,9 @@ app.MapAzureSignalR(
 
 ### <a name="how-to-customize-router"></a>如何自訂路由器？
 
-ASP.NET SignalR 和 ASP.NET Core SignalR 之間唯一的差異是 `GetNegotiateEndpoint`的 HTTP 內容類型。 若為 ASP.NET SignalR，則為[IOwinCoNtext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19)類型。
+ASP.NET信號R和ASP.NET核心信號R的唯一區別是`GetNegotiateEndpoint`的 HTTP 上下文類型。 對於ASP.NET信號R，它是[IOwinCoNtext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19)類型。
 
-以下是 ASP.NET SignalR 的自訂 negotiate 範例：
+下面是ASP.NET信號R的自訂協商示例：
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -197,7 +197,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-別忘了使用下列步驟，將路由器註冊到 DI 容器：
+不要忘記使用以下功能將路由器註冊到 DI 容器：
 
 ```cs
 var hub = new HubConfiguration();
@@ -213,33 +213,33 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 });
 ```
 
-## <a name="configuration-in-cross-region-scenarios"></a>跨區域案例中的設定
+## <a name="configuration-in-cross-region-scenarios"></a>跨區域方案中的配置
 
-`ServiceEndpoint` 物件具有 `EndpointType` 屬性，其值 `primary` 或 `secondary`。
+物件`ServiceEndpoint`具有值`EndpointType``primary`或`secondary`的屬性。
 
-`primary` 端點是接收用戶端流量的慣用端點，而且會被視為具有更可靠的網路連線;`secondary` 端點會被視為具有較不可靠的網路連線，而且僅用於讓伺服器進入用戶端流量，例如廣播訊息，而不是讓用戶端進行伺服器流量。
+`primary`終結點是接收用戶端流量的首選終結點，並且被認為具有更可靠的網路連接;`secondary`終結點被認為具有不太可靠的網路連接，僅用於將伺服器帶到用戶端流量，例如廣播訊息，而不是將用戶端帶到伺服器流量。
 
-在跨區域的情況下，網路可能不穩定。 針對位於*美國東部*的一部應用程式伺服器，位於相同*美國東部*地區的 SignalR Service 端點可以設定為其他區域中標示為 `secondary`的 `primary` 和端點。 在此設定中，其他區域中的服務端點可以**接收**來自此「*美國東部*」應用程式伺服器的訊息，但不會有任何**跨區域**用戶端路由傳送到此應用程式伺服器。 下圖顯示此架構：
+在跨區域情況下，網路可能不穩定。 對於位於*美國東部的*一個應用伺服器，位於*美國東部*同一區域的 SignalR 服務終結點可以配置為`primary`和終結點在標記為`secondary`的其他地區。 在此配置中，其他地區的服務終結點可以**接收**來自此*東美國*應用伺服器的消息，但不會將**跨區域**用戶端路由到此應用伺服器。 體系結構如下圖所示：
 
-![跨地區基礎](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
+![橫貫地](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-當用戶端嘗試與應用程式伺服器 `/negotiate` 時，若使用預設路由器，SDK 會從可用的 `primary` 端點集合中**隨機選取**一個端點。 當主要端點無法使用時，SDK 會從所有可用的 `secondary` 端點中**隨機選取**。 當伺服器與服務端點之間的連線處於作用中狀態時，端點會標示為**可用**。
+當用戶端使用應用`/negotiate`伺服器（使用預設路由器）嘗試時，SDK 會從一組可用`primary`終結點**中隨機播放**一個終結點。 當主終結點無法接通，SDK 然後從所有可用`secondary`終結點**隨機播放**。 當伺服器和服務終結點之間的連接處於活動狀態時，終結點被標記為**可用**。
 
-在跨區域案例中，當用戶端嘗試與位於*美國東部*的應用程式伺服器 `/negotiate` 時，根據預設，它一律會傳回位於相同區域中的 `primary` 端點。 當所有「*美國東部*」端點都無法使用時，會將用戶端重新導向至其他區域中的端點。 下一節會詳細說明案例。
+在跨區域方案中，當用戶端嘗試`/negotiate`使用託管*在美國東部*的應用伺服器時，預設情況下，它始終返回位於同一區域`primary`中的終結點。 當所有*東美國*終結點無法接通，用戶端將重定向到其他區域中的終結點。 下面的容錯移轉部分詳細介紹了方案。
 
-![標準談判](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
+![正常談判](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 
-## <a name="fail-over"></a>故障切換
+## <a name="fail-over"></a>容錯移轉
 
-當所有 `primary` 端點都無法使用時，用戶端的 `/negotiate` 會從可用的 `secondary` 端點中挑選。 這種故障傳遞機制會要求每個端點應作為至少一個應用程式伺服器的 `primary` 端點。
+當所有`primary`終結點無法接通，用戶端從`/negotiate`可用`secondary`終結點選擇。 此容錯移轉機制要求每個終結點應作為`primary`至少一個應用伺服器的終結點。
 
-![故障切換](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
+![容錯移轉](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已瞭解如何在相同的應用程式中設定多個實例，以進行調整、分區化和跨區域的案例。
+在本指南中，您瞭解了如何在同一應用程式中配置多個實例以進行縮放、分片和跨區域方案。
 
-多個端點支援也可以在高可用性和嚴重損壞修復案例中使用。
+多個終結點支援也可用於高可用性和災害復原方案。
 
 > [!div class="nextstepaction"]
-> [設定 SignalR Service 以進行嚴重損壞修復和高可用性](./signalr-concept-disaster-recovery.md)
+> [設置信號器服務，用於災害復原和高可用性](./signalr-concept-disaster-recovery.md)

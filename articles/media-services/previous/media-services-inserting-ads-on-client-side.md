@@ -1,6 +1,6 @@
 ---
 title: 在用戶端插入廣告 | Microsoft Docs
-description: 本文示範如何在用戶端將廣告插入您的媒體。
+description: 本文演示如何在用戶端將廣告插入到媒體中。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565735"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在用戶端插入廣告
@@ -31,7 +31,7 @@ ms.locfileid: "77565735"
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>將廣告插入您的媒體
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>將廣告插入您的媒體
 Azure 媒體服務允許透過 Windows Media 平台插入廣告：Player Framework。 具備廣告支援的播放器架構都適用於 Windows 8、Silverlight、Windows Phone 8 和 iOS 裝置。 每一個播放器架構都有範例程式碼，教您如何實作播放器應用程式。 目前有三種不同的廣告可以插入 media:list 中。
 
 * **線性** – 可暫停主要影片的完整框架廣告。
@@ -363,7 +363,7 @@ VPAID 是 API，用於啟用可執行廣告單元，以便與視訊播放器通�
     </MediaFiles>
 ```
 
-可以使用 VAST 回應中 `<AdParameters>` 或 `<Linear>` 元素內的 `<NonLinear>` 元素，初始化可執行廣告。 如需 `<AdParameters>` 元素的詳細資訊，請參閱 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 回應中 `<Linear>` 或 `<NonLinear>` 元素內的 `<AdParameters>` 元素，初始化可執行廣告。 如需 `<AdParameters>` 元素的詳細資訊，請參閱 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>實作包含廣告支援的 Windows 或 Windows Phone 8 播放器
 Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [適用於Windows 8 和 Windows Phone 8 的 Player Framework](https://playerframework.codeplex.com)下載 Player Framework 和範例。
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，新增 TimelineMark
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>實作具有廣告支援的 iOS 視訊播放器
-Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)下載 Player Framework 和範例。 GitHub 頁面含有 Wiki 的連結，其中包含播放程式架構的其他資訊，以及播放程式範例： [Azure 媒體播放機 Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)的簡介。
+Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)下載 Player Framework 和範例。 GitHub 頁面有一個指向 Wiki 的連結，其中包含有關玩家框架的其他資訊和玩家示例簡介[：Azure 媒體播放機 Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 排程廣告
 下列範例示範如何使用 VMAP 檔案排程廣告。

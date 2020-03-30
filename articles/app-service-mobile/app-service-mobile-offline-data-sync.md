@@ -7,10 +7,10 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458744"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 行動應用程式中的離線資料同步處理
@@ -41,27 +41,27 @@ ms.locfileid: "77458744"
 ## <a name="what-is-a-sync-table"></a>什麼是同步處理資料表？
 若要存取 "/tables" 端點，Azure 行動用戶端 SDK 提供 `IMobileServiceTable` (.NET 用戶端 SDK) 或 `MSTable` (iOS 用戶端) 等介面。 這些 API 直接連接至 Azure 行動應用程式後端，如果用戶端裝置沒有網路連接，則會失敗。
 
-若要支援離線使用，您的應用程式應改為使用「同步處理資料表」API，例如 `IMobileServiceSyncTable` (.NET 用戶端 SDK) 或 `MSSyncTable` (iOS 用戶端)。 所有相同的 CRUD 作業 (Create、Read、Update、Delete) 適用於同步資料表 API，但現在會讀取或寫入「本機存放區」。 必須先初始化本機存放區，才能執行任何同步處理資料表作業。
+若要支援離線使用，您的應用程式應改為使用「同步處理資料表」** API，例如 `IMobileServiceSyncTable` (.NET 用戶端 SDK) 或 `MSSyncTable` (iOS 用戶端)。 所有相同的 CRUD 作業 (Create、Read、Update、Delete) 適用於同步資料表 API，但現在會讀取或寫入「本機存放區」**。 必須先初始化本機存放區，才能執行任何同步處理資料表作業。
 
 ## <a name="what-is-a-local-store"></a>什麼是本機存放區？
 本機存放區是用戶端裝置上的資料持續層。 Azure 行動應用程式用戶端 SDK 提供預設的本機存放區實作。 在 Windows、Xamarin 和 Android 上，它是以 SQLite 為基礎。 在 iOS 上，它是以 Core Data 為基礎。
 
-若要在 Windows Phone 或 Microsoft Store 上使用 SQLite 為基礎的實作，您需要安裝 SQLite 擴充。 如需詳細資訊，請參閱[通用 Windows 平台︰啟用離線同步處理]處理。Android 和 iOS 隨附裝置作業系統本身的 SQLite 版本，因此不需要參考您自己的 SQLite 版本。
+若要在 Windows Phone 或 Microsoft Store 上使用 SQLite 為基礎的實作，您需要安裝 SQLite 擴充。 有關詳細資訊，請參閱通用[Windows 平臺：啟用離線同步]。Android 和 iOS 隨附在設備作業系統本身中的 SQLite 版本，因此無需引用您自己的版本的 SQLite。
 
 開發人員也可以實作自己的本機存放區。 例如，如果您希望將資料以加密格式儲存在行動用戶端上，則您可以定義使用 SQLCipher 進行加密的本機存放區。
 
 ## <a name="what-is-a-sync-context"></a>什麼是同步處理內容？
-「同步處理內容」會與行動用戶端物件相關聯 (例如 `IMobileServiceClient` 或 `MSClient`)，並且追蹤對同步處理資料表所做的變更。 同步處理內容會維護一個「作業佇列」，其中保留一份稍後要傳送給伺服器的 CUD 作業 (Create、Update、Delete) 排序清單。
+「同步處理內容」** 會與行動用戶端物件相關聯 (例如 `IMobileServiceClient` 或 `MSClient`)，並且追蹤對同步處理資料表所做的變更。 同步處理內容會維護一個「作業佇列」**，其中保留一份稍後要傳送給伺服器的 CUD 作業 (Create、Update、Delete) 排序清單。
 
-本機存放區會使用初始化方法 (例如 `IMobileServicesSyncContext.InitializeAsync(localstore)`.NET 用戶端 SDK[.NET 用戶端 SDK])，來與同步處理內容相關聯。
+本機存放區會使用初始化方法 (例如 [.NET 用戶端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`)，來與同步處理內容相關聯。
 
-## <a name="how-sync-works"></a>離線同步處理如何運作
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>離線同步處理如何運作
 使用同步處理資料表時，您的用戶端程式碼需要控制本機變更與 Azure 行動應用程式後端同步處理的時機。 在有呼叫要「推送」( *push* ) 變更之前不會傳送任何項目到後端。 同樣地，只當有呼叫要「提取」( *pull* ) 時才會將新資料填入本機存放區。
 
 * **推送**：推送是同步處理內容的作業，會傳送自上一次推送之後的所有 CUD 變更。 請注意，您無法只傳送個別資料表的變更，因為這樣作業傳送順序可能會發生錯誤。 推送會對 Azure 行動應用程式後端執行一系列的 REST 呼叫，再由後端修改伺服器資料庫。
 * **提取**：提取會以各資料表為基礎執行，並且可以使用佇列來自訂，以抓取伺服器資料的特定子集。 然後 Azure 行動用戶端 SDK 會將該結果資料插入本機存放區。
 * **隱含推送**：如果對有擱置中本機更新的資料表執行提取，則提取會先在同步處理內容上執行 `push()`。 此推送有助於將已排入佇列的變更與來自伺服器的新資料之間的衝突降到最低。
-* **增量同步處理**：提取作業的第一個參數是「查詢名稱」，此參數只在用戶端使用。 如果您使用非 null 的查詢名稱，Azure Mobile SDK 會執行*增量同步*處理。每次提取作業傳回一組結果時，該結果集最新的 `updatedAt` 時間戳記就會儲存在 SDK 本機系統資料表中。 後續的提取作業只會擷取該時間戳記之後的記錄。
+* **增量同步處理**：提取作業的第一個參數是「查詢名稱」**，此參數只在用戶端使用。 如果使用非空查詢名稱，Azure 移動 SDK 將執行*增量同步*。每次拉取操作返回一組結果時，該結果集中`updatedAt`的最新時間戳記都存儲在 SDK 本地系統表中。 後續的提取作業只會擷取該時間戳記之後的記錄。
 
   若要使用增量同步處理，您的伺服器必須傳回有意義的 `updatedAt` 值，也必須支援依據此欄位排序。 不過，由於 SDK 會在 updatedAt 欄位上加入自己的排序，所以您不能使用本身具備 `orderBy` 子句的提取查詢。
 

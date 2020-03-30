@@ -1,87 +1,87 @@
 ---
-title: 設定 Azure Active Directory 存取-Azure 區塊鏈 Service
-description: 如何使用 Azure Active Directory 存取來設定 Azure 區塊鏈 Service
+title: 配置 Azure 活動目錄訪問 - Azure 區塊鏈服務
+description: 如何使用 Azure 活動目錄訪問配置 Azure 區塊鏈服務
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455864"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>如何設定 Azure 區塊鏈 Service 的 Azure Active Directory 存取
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>如何為 Azure 區塊鏈服務配置 Azure 活動目錄訪問
 
-在本文中，您將瞭解如何使用 Azure Active Directory （Azure AD）使用者、群組或應用程式識別碼，授與存取權並聯機至 Azure 區塊鏈服務節點。
+在本文中，您將瞭解如何使用 Azure 活動目錄 （Azure AD） 使用者、組或應用程式標識授予存取權限並連接到 Azure 區塊鏈服務節點。
 
-Azure AD 提供以雲端為基礎的身分識別管理，並可讓您在整個企業中使用單一身分識別，並存取 Azure 中的應用程式。 Azure 區塊鏈 Service 已與 Azure AD 整合，並提供識別碼同盟、單一登入和多重要素驗證等優點。
+Azure AD 提供基於雲的標識管理，並允許您在整個企業和 Azure 中訪問應用程式中使用單個標識。 Azure 區塊鏈服務與 Azure AD 集成，並提供 ID 聯合、單一登入和多重要素驗證等優勢。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* [使用 Azure 入口網站建立區塊鏈成員](create-member.md)
+* [使用 Azure 門戶創建區塊鏈成員](create-member.md)
 
 ## <a name="grant-access"></a>授與存取權
 
-您可以同時授與成員層級和節點層級的存取權。 授與成員層級的存取權限時，會將存取權授與成員底下的所有節點。
+您可以在成員級別和節點級別授予存取權限。 在成員級別授予存取權限反過來將授予對成員下的所有節點的存取權限。
 
-### <a name="grant-member-level-access"></a>授與成員層級存取權
+### <a name="grant-member-level-access"></a>授予成員級別存取權限
 
-授與成員層級的存取權限。
+授予成員級別的存取權限。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**存取控制（IAM） > 新增 > 新增角色指派**。
-1. 選取 [**區塊鏈成員節點存取（預覽）** ] 角色，並新增您想要授與存取權的 Azure AD ID 物件。 Azure AD 識別碼物件可以是：
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 導航到**存取控制 （IAM） >添加>添加角色指派**。
+1. 選擇**區塊鏈成員節點訪問（預覽）** 角色，並添加要授予存取權限的 Azure AD ID 物件。 Azure AD ID 物件可以是：
 
     | Azure AD 物件 | 範例 |
     |-----------------|---------|
     | Azure AD 使用者   | `kim@contoso.onmicrosoft.com` |
-    | Azure AD 群組  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD 組  | `sales@contoso.onmicrosoft.com` |
     | 應用程式識別碼  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
     ![新增角色指派](./media/configure-aad/add-role-assignment.png)
 
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]****。
 
-### <a name="grant-node-level-access"></a>授與節點層級存取權
+### <a name="grant-node-level-access"></a>授予節點級別訪問
 
-您可以流覽至 [節點安全性]，然後按一下您想要授與存取權的節點名稱，以授與節點層級的存取權。
+您可以通過導航到節點安全性並按一下要授予存取權限的節點名稱來授予節點級別的存取權限。
 
-選取 [區塊鏈成員節點存取（預覽）] 角色，並新增您想要授與存取權的 Azure AD ID 物件。
+選擇區塊鏈成員節點訪問（預覽）角色，並添加要授予存取權限的 Azure AD ID 物件。
 
-如需詳細資訊，請參閱[設定 Azure 區塊鏈 Service 交易節點](configure-transaction-nodes.md#azure-active-directory-access-control)。
+有關詳細資訊，請參閱配置[Azure 區塊鏈服務事務節點](configure-transaction-nodes.md#azure-active-directory-access-control)。
 
-## <a name="connect-using-azure-blockchain-connector"></a>使用 Azure 區塊鏈 Connector 進行連線
+## <a name="connect-using-azure-blockchain-connector"></a>使用 Azure 區塊鏈連接器進行連接
 
-從 GitHub 下載或複製[Azure 區塊鏈連接器](https://github.com/Microsoft/azure-blockchain-connector/)。
+從 GitHub 下載或克隆[Azure 區塊鏈連接器](https://github.com/Microsoft/azure-blockchain-connector/)。
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-遵循**讀我檔案**中的 [快速入門] 區段，以從原始程式碼建立連接器。
+遵循**讀中的**快速入門部分從原始程式碼構建連接器。
 
-### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 使用者帳戶連接
+### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 使用者帳戶進行連接
 
-1. 執行下列命令，以使用 Azure AD 使用者帳戶進行驗證。 將 \<myAADDirectory\> 取代為 Azure AD 網域。 例如， `yourdomain.onmicrosoft.com`。
+1. 運行以下命令以使用 Azure AD 使用者帳戶進行身份驗證。 將\<myAADDirectory\>替換為 Azure AD 域。 例如： `yourdomain.onmicrosoft.com` 。
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD 提示輸入認證。
-1. 使用您的使用者名稱和密碼登入。
-1. 驗證成功之後，您的本機 proxy 會連線到您的區塊鏈節點。 您現在可以附加 Geth 用戶端與本機端點。
+1. Azure AD 提示憑據。
+1. 使用使用者名和密碼登錄。
+1. 身份驗證成功後，本地代理將連接到區塊鏈節點。 現在，您可以將 Geth 用戶端與本地終結點連接。
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>使用應用程式識別碼連接
+### <a name="connect-using-an-application-id"></a>使用應用程式 ID 進行連接
 
-許多應用程式會使用應用程式識別碼來驗證 Azure AD，而不是 Azure AD 的使用者帳戶。
+許多應用程式使用應用程式 ID 而不是 Azure AD 使用者帳戶對 Azure AD 進行身份驗證。
 
-若要使用應用程式識別碼連線到您的節點，請將**aadauthcode**取代為**aadclient**。
+要使用應用程式 ID 連接到節點，請將**aadauth 碼**替換為**aadclient**。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | 參數 | 描述 |
 |-----------|-------------|
-| 租使用者識別碼 | Azure AD 網域，例如，`yourdomain.onmicrosoft.com`
-| client-id | 中已註冊應用程式的用戶端識別碼 Azure AD
-| client-secret | Azure AD 中已註冊應用程式的用戶端密碼
+| 租戶 id | Azure AD 域，例如，`yourdomain.onmicrosoft.com`
+| client-id | Azure AD 中註冊應用程式的用戶端 ID
+| client-secret | Azure AD 中註冊應用程式的用戶端機密
 
-如需如何在 Azure AD 中註冊應用程式的詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)
+有關如何在 Azure AD 中註冊應用程式的詳細資訊，請參閱[：使用門戶創建可以訪問資源的 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>連接行動裝置或文字瀏覽器
+### <a name="connect-a-mobile-device-or-text-browser"></a>連接行動裝置或文本瀏覽器
 
-若為行動裝置或以文字為基礎的瀏覽器，其中不可能 Azure AD 驗證快顯顯示，Azure AD 會產生一次性密碼。 您可以複製密碼，然後在另一個環境中 Azure AD 驗證繼續進行。
+對於無法顯示 Azure AD 身份驗證快顯視窗的行動裝置或基於文本的瀏覽器，Azure AD 將生成一次性密碼。 您可以複製密碼，並在其他環境中繼續 Azure AD 身份驗證。
 
-若要產生密碼，請將**aadauthcode**取代為**aaddevice**。 將 \<myAADDirectory\> 取代為 Azure AD 網域。 例如， `yourdomain.onmicrosoft.com`。
+要生成密碼，請將**aadauth 碼**替換為**aaddevice**。 將\<myAADDirectory\>替換為 Azure AD 域。 例如： `yourdomain.onmicrosoft.com` 。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure 區塊鏈 Service 中資料安全性的詳細資訊，請參閱[Azure 區塊鏈 Service 安全性](data-security.md)。
+有關 Azure 區塊鏈服務中的資料安全性的詳細資訊，請參閱[Azure 區塊鏈服務安全性](data-security.md)。

@@ -1,56 +1,56 @@
 ---
-title: Azure 監視器中的深入剖析總覽 |Microsoft Docs
-description: 深入解析會針對特定應用程式和服務，在 Azure 監視器中提供自訂的監視體驗。 本文提供每個目前可用的深入解析的簡短描述。
+title: Azure 監視器中的見解概述 |微軟文檔
+description: 見解在 Azure 監視器中為特定應用程式和服務提供了自訂的監視體驗。 本文簡要描述了當前可用的每個見解。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
 ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657243"
 ---
-# <a name="overview-of-insights-in-azure-monitor"></a>Azure 監視器中的見解總覽
-深入解析針對特定應用程式和服務提供自訂的監視體驗。 它們會將資料儲存在[Azure 監視器資料平臺](../platform/data-platform.md)中，並利用其他 Azure 監視器的功能來進行分析和警示，但可能會收集其他資料，並在 Azure 入口網站中提供獨特的使用者體驗。 從 Azure 入口網站的 [Azure 監視器] 功能表的 [**深入**解析] 區段存取見解。
+# <a name="overview-of-insights-in-azure-monitor"></a>Azure 監視器中的見解概述
+見解為特定應用程式和服務提供定制的監控體驗。 它們將資料存儲在[Azure 監視器資料平臺](../platform/data-platform.md)中，並利用其他 Azure 監視器功能進行分析和警報，但可能會收集其他資料並在 Azure 門戶中提供獨特的使用者體驗。 從 Azure 門戶中的 Azure 監視器功能表的 **"見解"** 部分訪問見解。
 
-下列各節提供 Azure 監視器中目前可用之深入解析的簡短描述。 如需每個的詳細資訊，請參閱詳細檔。
+以下各節簡要介紹了 Azure 監視器中當前可用的見解。 有關每個文檔的詳細資訊，請參閱詳細文檔。
 
 ## <a name="application-insights"></a>Application Insights
-Application Insights 是多個平台上的 Web 開發人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時 Web 應用程式。 它適用于各種不同平臺上的應用程式，包括裝載于內部部署、混合式或任何公用雲端的 .NET、node.js 和 JAVA EE。 它也會與您的 DevOps 流程整合，並具有各種開發工具的連接點。
+Application Insights 是多個平台上的 Web 開發人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時 Web 應用程式。 它適用于各種平臺上的應用程式，包括 .NET、Node.js 和 JAVA EE，託管在本地、混合雲或任何公共雲。 它還與您的 DevOps 流程集成，並具有與各種開發工具的連接點。
 
-請參閱[什麼是 Application Insights？](../app/app-insights-overview.md)。
+請參閱[什麼是應用程式見解？](../app/app-insights-overview.md)
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
 ## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 適用於容器的 Azure 監視器會監視部署至 Azure Container Instances 或 Azure Kubernetes Service (AKS) 上所裝載受控 Kubernetes 叢集的容器工作負載效能。 監視容器很重要，尤其在您使用多個應用程式大規模執行生產環境叢集時。
 
-請參閱[容器的 Azure 監視器總覽](../insights/container-insights-overview.md)。
+[有關容器概述，](../insights/container-insights-overview.md)請參閱 Azure 監視器。
 
 ![適用於容器的 Azure 監視器](media/insights-overview/container-insights.png)
 
-## <a name="azure-monitor-for-resource-groups-preview"></a>適用于資源群組的 Azure 監視器（預覽）
-資源群組的 Azure 監視器有助於分級和診斷個別資源所遇到的任何問題，同時提供內容給整體資源群組的健全狀況和效能。
+## <a name="azure-monitor-for-resource-groups-preview"></a>資源組的 Azure 監視器（預覽）
+資源組的 Azure 監視器有助於對單個資源遇到的任何問題進行會審和診斷，同時提供資源組整體運行狀況和性能的上下文。
 
-請參閱[使用 Azure 監視器監視資源群組（預覽）](../insights/resource-group-insights.md)。
+請參閱[使用 Azure 監視器（預覽）監視資源組](../insights/resource-group-insights.md)。
 
-![資源群組的 Azure 監視器](media/insights-overview/resource-group-insights.png)
+![資源組的 Azure 監視器](media/insights-overview/resource-group-insights.png)
 
-## <a name="azure-monitor-for-vms-preview"></a>適用於 VM 的 Azure 監視器（預覽）
+## <a name="azure-monitor-for-vms-preview"></a>虛擬機器的 Azure 監視器（預覽版）
 適用於 VM 的 Azure 監視器會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。
 
-請參閱[什麼是適用於 VM 的 Azure 監視器？](vminsights-overview.md)
+請參閱[什麼是 VM 的 Azure 監視器？](vminsights-overview.md)
 
 ![適用於 VM 的 Azure 監視器](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-networks-preview"></a>網路的 Azure 監視器（預覽）
-[網路的 Azure 監視器](network-insights-overview.md)可讓您全面瞭解所有網路資源的健全狀況和計量。 先進的搜尋功能可協助您識別資源相依性，藉由直接搜尋您的網站名稱，來啟用識別裝載網站的資源等案例。
+## <a name="azure-monitor-for-networks-preview"></a>網路 Azure 監視器（預覽版）
+[網路 Azure 監視器](network-insights-overview.md)為所有網路資源提供運行狀況和指標的全面視圖。 高級搜索功能可説明您識別資源依賴項，通過搜索網站名稱，啟用標識託管網站的資源等方案。
 
 ![適用於網路的 Azure 監視器](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>後續步驟
-* 深入瞭解深入解析所利用的[Azure 監視器資料平臺](../platform/data-platform.md)。
-* 瞭解 Azure 監視器所使用的不同[資料來源](../platform/data-sources.md)，以及每個深入解析所收集的不同資料類型。
+* 詳細瞭解由見解利用的[Azure 監視器資料平臺](../platform/data-platform.md)。
+* 瞭解 Azure[監視器使用的不同資料來源](../platform/data-sources.md)以及每個見解收集的不同類型的資料。

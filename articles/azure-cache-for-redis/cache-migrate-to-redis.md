@@ -1,5 +1,5 @@
 ---
-title: 將受控快取服務應用程式遷移至 Redis-Azure
+title: 將託管快取服務應用程式遷移到雷瑞斯 - Azure
 description: 了解如何將受控快取服務和 In-Role Cache 應用程式移轉至 Azure Cache for Redis
 author: yegu-ms
 ms.service: cache
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122679"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>從受控快取服務移轉至 Azure Cache for Redis
@@ -39,7 +39,7 @@ Azure 受控快取服務與 Azure Cache for Redis 類似，但兩者在實作某
 
 | 受控快取服務功能 | 受控快取服務支援 | Azure Cache for Redis 支援 |
 | --- | --- | --- |
-| 具名快取 |會設定預設快取，而在標準版和進階版快取供應項目中，還可以視需要額外設定多達 9 個具名快取。 |Azure Cache for Redis 具有可用來對具名快取實作類似功能的可設定數目資料庫 (預設為 16 個)。 如需詳細資訊，請參閱[什麼是 Redis 資料庫？](cache-faq.md#what-are-redis-databases)和[預設 Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。 |
+| 具名快取 |會設定預設快取，而在標準版和進階版快取供應項目中，還可以視需要額外設定多達 9 個具名快取。 |Azure Cache for Redis 具有可用來對具名快取實作類似功能的可設定數目資料庫 (預設為 16 個)。 如需詳細資訊，請參閱 [Redis 資料庫是什麼？](cache-faq.md#what-are-redis-databases)和[預設 Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。 |
 | 高可用性 |在標準版和進階版快取供應項目中，會針對快取中的項目提供高可用性。 如果因為失敗而導致項目遺失，快取中的項目仍有備份複本可供使用。 次要快取的寫入作業是以同步方式進行。 |標準版和進階版快取供應項目有提供高可用性，其具有雙節點的主要/複本設定 (進階版快取的每個分區都有主要/複本配對)。 複本的寫入作業是以非同步方式進行。 如需詳細資訊，請參閱 [Azure Cache for Redis 價格](https://azure.microsoft.com/pricing/details/cache/)。 |
 | 通知 |當具名快取上發生各種快取作業時，允許用戶端接收非同步通知。 |用戶端應用程式可以使用 Redis 發行/訂閱或 [Keyspace 通知](cache-configure.md#keyspace-notifications-advanced-settings) 來達成和通知類似的功能。 |
 | 本機快取 |在用戶端本機上儲存快取物件的複本，以利快速存取。 |用戶端應用程式必須使用字典或類似的資料結構來實作這項功能。 |
@@ -54,11 +54,11 @@ Microsoft Azure Cache for Redis 可在以下層級使用：
 
 * **基本** - 單一節點。 多種大小，最高為 53 GB。
 * **標準** – 兩個節點 (主要/從屬)。 多種大小，最高為 53 GB。 99.9% SLA。
-* **進階** – 兩個節點的主要/從屬，最多具有 10 個分區。 6 GB 到 1.2 TB 之間的多個大小。 所有「標準」層級的功能以及更多功能，可支援 [Redis 叢集](cache-how-to-premium-clustering.md)、[Redis 持續性](cache-how-to-premium-persistence.md)和 [Azure 虛擬網路](cache-how-to-premium-vnet.md)。 99.9% SLA。
+* **進階** – 兩個節點的主要/從屬，最多具有 10 個分區。 多種大小從 6 GB 到 1.2 TB。 所有「標準」層級的功能以及更多功能，可支援 [Redis 叢集](cache-how-to-premium-clustering.md)、[Redis 持續性](cache-how-to-premium-persistence.md)和 [Azure 虛擬網路](cache-how-to-premium-vnet.md)。 99.9% SLA。
 
 每一個階層都有不同的功能和價格。 本指南稍後將探討這些功能，如需定價的詳細資訊，請參閱 [快取定價詳細資料](https://azure.microsoft.com/pricing/details/cache/)。
 
-移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮減規模。 如需選擇合適的 Azure Cache for Redis 供應項目的詳細資訊，請參閱[應該使用哪個 Azure Cache for Redis 供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
+移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 如需選擇合適的 Azure Cache for Redis 供應項目的詳細資訊，請參閱[應該使用哪個 Azure Cache for Redis 供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="create-a-cache"></a>建立快取
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -72,13 +72,13 @@ Microsoft Azure Cache for Redis 可在以下層級使用：
 ### <a name="remove-the-managed-cache-service-configuration"></a>移除受控快取服務設定
 要將用戶端應用程式設定為使用 Azure Cache for Redis，必須先解除安裝受控快取服務 NuGet 套件，以移除現有受控快取服務組態和組件參考。
 
-若要解除安裝受控快取服務 NuGet 封裝，請在 [方案總管] 中的用戶端專案上按一下滑鼠右鍵，然後選擇 [管理 NuGet 封裝]。 選取 [已安裝的封裝] 節點，然後在 [搜尋已安裝的封裝] 方塊中輸入 **WindowsAzure.Caching**。 選取 [Windows Azure 快取 (Windows Azure Cache)] (或 [Windows Azure 快取 (Windows Azure Caching)]，視 NuGet 封裝的版本而定)，按一下 [解除安裝]，然後按一下 [關閉]。
+若要解除安裝受控快取服務 NuGet 封裝，請在 [方案總管]**** 中的用戶端專案上按一下滑鼠右鍵，然後選擇 [管理 NuGet 封裝]****。 選取 [已安裝的封裝]**** 節點，然後在 [搜尋已安裝的封裝] 方塊中輸入 **WindowsAzure.Caching**。 選取 [Windows Azure 快取 (Windows Azure Cache)]**** **** \(或 [Windows Azure 快取 (Windows Azure Caching)]**** ****，視 NuGet 封裝的版本而定)，按一下 [解除安裝]****，然後按一下 [關閉]****。
 
 ![解除安裝 Azure 受控快取服務 NuGet 套件](./media/cache-migrate-to-redis/IC757666.jpg)
 
 解除安裝受控快取服務 NuGet 封裝，會移除用戶端應用程式的 app.config 或 web.config 中的受控快取服務組件和受控快取服務項目。 解除安裝 NuGet 套件時可能不會移除部分自訂的設定，因此請開啟 web.config 或 app.config，確定已移除下列項目。
 
-確定已從 `dataCacheClients` 項目移除 `configSections` 項目。 請勿移除整個 `configSections` 項目，只需移除 `dataCacheClients` 項目 (若存在)。
+確定已從 `configSections` 項目移除 `dataCacheClients` 項目。 請勿移除整個 `configSections` 項目，只需移除 `dataCacheClients` 項目 (若存在)。
 
 ```xml
 <configSections>
@@ -122,7 +122,7 @@ StackExchange.Azure Cache for Redis 用戶端的 API 類似於受控快取服務
 using StackExchange.Redis
 ```
 
-如果此命名空間並未解析，請確定您已如[快速入門：搭配使用 Azure Cache For Redis 與 .net 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)中所述，新增 stackexchange.redis NuGet 套件。
+如果此命名空間無法解決，請確保已添加 StackExchange.Redis NuGet 包，如[快速入門：使用 Azure 緩存進行 .NET 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)。
 
 > [!NOTE]
 > 請注意，StackExchange.Redis 用戶端需要 .NET Framework 4 或更高版本。
@@ -146,7 +146,7 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-快取端點、金鑰和連接埠可從快取執行個體的 [Azure Cache for Redis] 刀鋒視窗中取得。 如需詳細資訊，請參閱 [Azure Cache for Redis 屬性](cache-configure.md#properties)。
+快取端點、金鑰和連接埠可從快取執行個體的 [Azure Cache for Redis]**** 刀鋒視窗中取得。 如需詳細資訊，請參閱 [Azure Cache for Redis 屬性](cache-configure.md#properties)。
 
 在連線建立後，請呼叫 `ConnectionMultiplexer.GetDatabase` 方法以傳回對 Azure Cache for Redis 資料庫的參考。 透過 `GetDatabase` 方法傳回的物件是輕量型傳遞物件，而且不需要儲存。
 
@@ -167,9 +167,9 @@ StackExchange.Redis 用戶端會使用 `RedisKey` 和 `RedisValue` 型別來對�
 
 `StringSet` 和 `StringGet` 類似受控快取服務的 `Put` 和 `Get` 方法，其中最主要的不同點在於，若要設定 .NET 物件並將其放到快取中，您必須先將其序列化。 
 
-呼叫 `StringGet`時，如果物件已存在，即會傳回，如果物件不存在，則會傳回 Null。 在此情況下，您可以從需要的資料來源中擷取值，並將它儲存在快取中供後續使用。 這種模式稱為另行快取模式。
+呼叫 `StringGet` 時，如果物件已存在，即會傳回，如果物件不存在，則會傳回 Null。 在此情況下，您可以從需要的資料來源中擷取值，並將它儲存在快取中供後續使用。 這種模式稱為另行快取模式。
 
-若要指定快取中項目的到期時間，請使用 `TimeSpan` 的 `StringSet` 參數。
+若要指定快取中項目的到期時間，請使用 `StringSet` 的 `TimeSpan` 參數。
 
 ```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));

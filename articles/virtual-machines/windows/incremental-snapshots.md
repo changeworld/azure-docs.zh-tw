@@ -1,5 +1,5 @@
 ---
-title: 使用增量快照集備份和復原非受控 Azure Windows VM 磁片
+title: 使用增量快照備份和恢復非託管 Azure Windows VM 磁片
 description: 使用增量快照，建立備份和復原 Azure Windows 虛擬機器磁碟的自訂解決方案。
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 052f268c43c5e64ad519c6d5f4841a5cb5fc9b13
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038607"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>以遞增快照集備份 Azure 非受控 VM 磁碟

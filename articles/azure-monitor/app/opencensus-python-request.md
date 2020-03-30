@@ -1,28 +1,28 @@
 ---
-title: Azure 應用程式 Insights 中使用 OpenCensus Python 的傳入要求追蹤 |Microsoft Docs
-description: 透過 OpenCensus Python 監視 Python 應用程式的要求呼叫。
+title: 使用 OpenCensus Python 在 Azure 應用程式洞察中進行傳入請求跟蹤 |微軟文檔
+description: 通過 OpenCensus Python 監視 Python 應用的請求呼叫。
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669942"
 ---
-# <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
+# <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟蹤傳入請求
 
-使用 OpenCensus Python 和其各種整合來收集傳入的要求資料。 追蹤傳送至 web 應用程式的傳入要求資料，建置於熱門的 web 架構 `django`、`flask` 和 `pyramid`上。 然後，資料會以 `requests` 遙測傳送至 Azure 監視器下的 Application Insights。
+傳入請求資料使用 OpenCensus Python 及其各種集成進行收集。 跟蹤發送到在常用 Web 框架`django``flask`和 之上構建的 Web 應用程式的傳入請求`pyramid`資料。 然後，資料作為`requests`遙測資料發送到 Azure 監視器下的應用程式見解。
 
-首先，使用最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)檢測您的 python 應用程式。
+首先，使用最新的[OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md)來檢測您的 Python 應用程式。
 
-## <a name="tracking-django-applications"></a>追蹤 Django 應用程式
+## <a name="tracking-django-applications"></a>跟蹤 Django 應用程式
 
-1. 從[PyPI](https://pypi.org/project/opencensus-ext-django/)下載並安裝 `opencensus-ext-django`，並使用 `django` 中介軟體檢測您的應用程式。 將會追蹤傳送到您 `django` 應用程式的傳入要求。
+1. 從[PyPI](https://pypi.org/project/opencensus-ext-django/)下載和安裝`django``opencensus-ext-django`，使用中介軟體檢測您的應用程式。 發送到您的`django`應用程式的傳入請求將被跟蹤。
 
-2. 在 `MIDDLEWARE`下的 `settings.py` 檔案中包含 `opencensus.ext.django.middleware.OpencensusMiddleware`。
+2. 包括在`opencensus.ext.django.middleware.OpencensusMiddleware`您的`settings.py`檔下`MIDDLEWARE`。
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +32,7 @@ ms.locfileid: "77669942"
     )
     ```
 
-3. 請確定您在 `settings.py` 的 `OPENCENSUS`下已正確設定 AzureExporter。
+3. 確保 Azure 匯出器在 下`settings.py`已`OPENCENSUS`正確配置。
 
     ```python
     OPENCENSUS = {
@@ -45,7 +45,7 @@ ms.locfileid: "77669942"
     }
     ```
 
-4. 您也可以將 url 新增至您不想要追蹤的要求 `BLACKLIST_PATHS` 下的 `settings.py`。
+4. 您還可以為`settings.py`不想跟蹤的請求向下`BLACKLIST_PATHS`添加 URL。
 
     ```python
     OPENCENSUS = {
@@ -59,9 +59,9 @@ ms.locfileid: "77669942"
     }
     ```
 
-## <a name="tracking-flask-applications"></a>追蹤 Flask 應用程式
+## <a name="tracking-flask-applications"></a>跟蹤燒瓶應用
 
-1. 從[PyPI](https://pypi.org/project/opencensus-ext-flask/)下載並安裝 `opencensus-ext-flask`，並使用 `flask` 中介軟體檢測您的應用程式。 將會追蹤傳送到您 `flask` 應用程式的傳入要求。
+1. 從[PyPI](https://pypi.org/project/opencensus-ext-flask/)下載和安裝`flask``opencensus-ext-flask`，使用中介軟體檢測您的應用程式。 發送到您的`flask`應用程式的傳入請求將被跟蹤。
 
     ```python
     
@@ -86,7 +86,7 @@ ms.locfileid: "77669942"
     
     ```
 
-2. 您可以直接在程式碼中設定您的 `flask` 中介軟體。 對於來自您不想要追蹤之 url 的要求，請將它們新增至 `BLACKLIST_PATHS`。
+2. 您可以直接在代碼`flask`中配置中介軟體。 對於來自不希望跟蹤的 URL 的請求，請將它們添加到`BLACKLIST_PATHS`。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -100,9 +100,9 @@ ms.locfileid: "77669942"
     }
     ```
 
-## <a name="tracking-pyramid-applications"></a>追蹤金字塔應用程式
+## <a name="tracking-pyramid-applications"></a>跟蹤金字塔應用程式
 
-1. 從[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)下載並安裝 `opencensus-ext-django`，並使用 `pyramid` 的補間檢測您的應用程式。 將會追蹤傳送到您 `pyramid` 應用程式的傳入要求。
+1. 從[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)下載和安裝`pyramid``opencensus-ext-django`，用補間檢測您的應用程式。 發送到您的`pyramid`應用程式的傳入請求將被跟蹤。
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +112,7 @@ ms.locfileid: "77669942"
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. 您可以直接在程式碼中設定您的 `pyramid` 補間。 對於來自您不想要追蹤之 url 的要求，請將它們新增至 `BLACKLIST_PATHS`。
+2. 可以直接在代碼中`pyramid`配置補間。 對於來自不希望跟蹤的 URL 的請求，請將它們添加到`BLACKLIST_PATHS`。
 
     ```python
     settings = {
@@ -131,8 +131,8 @@ ms.locfileid: "77669942"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [應用程式對應](../../azure-monitor/app/app-map.md)
+* [應用程式映射](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
 * [搜尋](../../azure-monitor/app/diagnostic-search.md)
-* [記錄（分析）查詢](../../azure-monitor/log-query/log-query-overview.md)
+* [日誌（分析）查詢](../../azure-monitor/log-query/log-query-overview.md)
 * [交易診斷](../../azure-monitor/app/transaction-diagnostics.md)

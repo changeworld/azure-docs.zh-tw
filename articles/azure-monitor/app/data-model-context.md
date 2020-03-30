@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671858"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遙測內容：Application Insights 資料模型
@@ -74,7 +74,7 @@ ms.locfileid: "77671858"
 
 ## <a name="anonymous-user-id"></a>匿名使用者識別碼
 
-匿名使用者識別碼。代表應用程式的終端使用者。 從服務傳送遙測時，使用者內容與服務中起始作業的使用者相關。
+匿名使用者 ID。表示應用程式的最終使用者。 從服務傳送遙測時，使用者內容與服務中起始作業的使用者相關。
 
 [取樣](../../azure-monitor/app/sampling.md)是將收集的遙測量降到最低的其中一個方法。 取樣演算法會嘗試取樣輸入或輸出所有相互關聯的遙測。 匿名使用者識別碼可用於產生取樣分數。 因此匿名使用者識別碼應該為足夠隨機的值。 
 
@@ -85,14 +85,14 @@ ms.locfileid: "77671858"
 
 ## <a name="authenticated-user-id"></a>已驗證的使用者識別碼
 
-已驗證的使用者識別碼。相對於匿名使用者識別碼，此欄位代表具有易記名稱的使用者。 由於其 PII 資訊，根據預設，大部分的 SDK 都不會收集該資訊。
+經過身份驗證的使用者 ID。此欄位與匿名使用者 ID 相反，表示具有易記名稱的使用者。 由於其 PII 資訊，根據預設，大部分的 SDK 都不會收集該資訊。
 
 最大長度：1024
 
 
 ## <a name="account-id"></a>帳戶識別碼
 
-在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 範例可能是 Azure 入口網站的訂用帳戶識別碼，或用於建立日誌平臺的 blog 名稱。
+在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 示例可以是 Azure 門戶的訂閱 ID 或博客平臺的博客名稱。
 
 最大長度：1024
 
@@ -113,7 +113,7 @@ ms.locfileid: "77671858"
 
 ## <a name="internal-sdk-version"></a>內部：SDK 版本
 
-SDK 版本。 如需相關資訊，請參閱[這篇文章](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
+SDK 版本。 有關詳細資訊，請參閱[此文章](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
 
 最大長度：64
 

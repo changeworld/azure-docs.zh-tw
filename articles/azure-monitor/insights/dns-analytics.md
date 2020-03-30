@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657328"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>收集搭配 DNS 分析預覽版解決方案使用 DNS 基礎結構的深入解析
@@ -33,12 +33,12 @@ DNS 分析可協助您︰
 
 下表描述此方案支援的連線來源：
 
-| **連線的來源** | **支援** | **說明** |
+| **連接源** | **支援** | **描述** |
 | --- | --- | --- |
 | [Windows 代理程式](../platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
 | [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
 | [System Center Operations Manager 管理群組](../platform/om-agents.md) | 是 | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
-| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
+| [Azure 存儲帳戶](../platform/collect-azure-metrics-logs.md) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
 
 ### <a name="data-collection-details"></a>資料收集詳細資料
 
@@ -55,13 +55,13 @@ DNS 分析可協助您︰
 
 ### <a name="configure-the-solution"></a>設定方案
 
-在解決方案儀表板中，按一下 [組態] 以開啟 [DNS 分析組態] 頁面。 您可以進行兩種類型的組態變更︰
+在解決方案儀表板中，按一下 [組態]**** 以開啟 [DNS 分析組態] 頁面。 您可以進行兩種類型的組態變更︰
 
-- **列入允許清單的網域名稱**。 該解決方案不會處理所有查閱查詢。 它會維護一份網域名稱尾碼的允許清單。 若查閱查詢解析為符合此允許清單中之網域名稱尾碼的網域名稱，此解決方案就不會處理它們。 不處理列入允許清單的網域名稱，有助於最佳化傳送至 Azure 監視器的資料。 預設允許清單包含熱門的公用網域名稱，例如 www.google.com 和 www.facebook.com。 您可以捲動來檢視完整的預設清單。
+- **白名單功能變數名稱**。 該解決方案不會處理所有查閱查詢。 它會維護一份網域名稱尾碼的允許清單。 若查閱查詢解析為符合此允許清單中之網域名稱尾碼的網域名稱，此解決方案就不會處理它們。 不處理列入允許清單的網域名稱，有助於最佳化傳送至 Azure 監視器的資料。 預設允許清單包含熱門的公用網域名稱，例如 www.google.com 和 www.facebook.com。 您可以捲動來檢視完整的預設清單。
 
   您可以修改清單，將您想要檢視查閱深入解析的任何網域名稱尾碼加以新增。 您也可以將您不想要檢視查閱深入解析的任何網域名稱尾碼加以移除。
 
-- **Talkative 用戶端閾值**。 超過查閱要求數目閾值的 DNS 用戶端，在 [DNS 用戶端] 刀鋒視窗中會反白顯示。 預設閾值為 1,000。 您可以編輯閾值。
+- **Talkative 用戶端閾值**。 超過查閱要求數目閾值的 DNS 用戶端，在 [DNS 用戶端]**** 刀鋒視窗中會反白顯示。 預設閾值為 1,000。 您可以編輯閾值。
 
     ![列入允許清單的網域名稱](./media/dns-analytics/dns-config.png)
 
@@ -99,7 +99,7 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 
 ![[DNS 安全性] 刀鋒視窗](./media/dns-analytics/dns-security-blade.png)
 
-當您按一下清單中的用戶端 IP 時，記錄搜尋就會開啟，其中顯示個別查詢的查閱詳細資料。 在下列範例中，DNS 分析偵測到透過 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621) 進行的通訊：
+當您按一下清單中的用戶端 IP 時，記錄搜尋就會開啟，其中顯示個別查詢的查閱詳細資料。 在下面的示例中，DNS 分析檢測到通信是使用[IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621)完成的：
 
 ![顯示 ircbot 的記錄搜尋結果](./media/dns-analytics/ircbot.png)
 
@@ -117,7 +117,7 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 
 ![[查詢的網域] 刀鋒視窗](./media/dns-analytics/domains-queried-blade.png)
 
-**DNS 用戶端**。 報告違反閾值的用戶端在所選時間週期內的查詢數目。 您可以在記錄搜尋中檢視所有 DNS 用戶端的清單和它們所執行查詢的詳細資料。
+**DNS 用戶端**。 報告違反閾值** 的用戶端在所選時間週期內的查詢數目。 您可以在記錄搜尋中檢視所有 DNS 用戶端的清單和它們所執行查詢的詳細資料。
 
 ![[DNS 用戶端] 刀鋒視窗](./media/dns-analytics/dns-clients-blade.png)
 
@@ -147,11 +147,11 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 - **DNS 伺服器清單**。 顯示所有 DNS 伺服器的清單，包含其相關聯的 FQDN、網域名稱、樹系名稱和伺服器的 IP。
 - **DNS 區域清單**。 顯示所有 DNS 區域的清單，及其相關聯的區域名稱、動態更新狀態、名稱伺服器及 DNSSEC 簽署狀態。
 - **未使用的資源記錄**。 顯示所有未使用/過時資源記錄的清單。 此清單包含資源記錄名稱、資源記錄類型、相關聯的 DNS 伺服器、記錄產生時間和區域名稱。 您可以使用此清單來找出不再使用的 DNS 資源記錄。 根據這項資訊，您可以接著從 DNS 伺服器將這些項目移除。
-- **DNS 伺服器查詢負載**。 可顯示資訊，以便您能在 DNS 伺服器上取得 DNS 負載的檢視方塊。 這項資訊可協助您規劃伺服器的容量。 您可以移至 [計量] 索引標籤，將檢視變更為圖形化視覺效果。 此檢視可協助您了解您的 DNS 伺服器的 DNS 負載分佈狀況。 它會顯示每部伺服器的 DNS 查詢速率趨勢。
+- **DNS 伺服器查詢負載**。 可顯示資訊，以便您能在 DNS 伺服器上取得 DNS 負載的檢視方塊。 這項資訊可協助您規劃伺服器的容量。 您可以移至 [計量]**** 索引標籤，將檢視變更為圖形化視覺效果。 此檢視可協助您了解您的 DNS 伺服器的 DNS 負載分佈狀況。 它會顯示每部伺服器的 DNS 查詢速率趨勢。
 
     ![DNS 伺服器查詢記錄搜尋結果](./media/dns-analytics/dns-servers-query-load.png)
 
-- **DNS 區域的查詢負載**。 顯示受解決方案管理的 DNS 伺服器上所有區域的 DNS 區域每秒查詢統計資料。 按一下 [計量] 索引標籤，以將檢視從詳細記錄變更為圖形化的視覺效果結果。
+- **DNS 區域的查詢負載**。 顯示受解決方案管理的 DNS 伺服器上所有區域的 DNS 區域每秒查詢統計資料。 按一下 [計量]**** 索引標籤，以將檢視從詳細記錄變更為圖形化的視覺效果結果。
 - **設定事件**。 顯示所有的 DNS 設定變更事件和相關聯的訊息。 您可以根據事件的時間、事件識別碼、DNS 伺服器或工作類別進一步篩選這些事件。 這些資料可協助您稽核 DNS 伺服器在特定時間發生的變更。
 - **DNS 分析記錄**。 顯示解決方案所管理的所有 DNS 伺服器上的所有分析事件。 您可以根據事件的時間、事件識別碼、DNS 伺服器、執行查閱查詢的用戶端 IP 和查詢類型工作類別，將這些事件進一步篩選。 DNS 伺服器分析事件可追蹤 DNS 伺服器上的活動。 每次伺服器傳送或接收 DNS 資訊時，都會記錄分析事件。
 
@@ -175,13 +175,13 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
     
 ## <a name="troubleshooting"></a>疑難排解
 
-常見的疑難排解步驟：
+常見的故障排除步驟：
 
-1. 遺失 DNS 查閱資料-若要對此問題進行疑難排解，請嘗試重設設定，或只在入口網站中載入設定頁面一次。 若要重設，只要將設定變更為另一個值，然後將它變更回原始值，然後儲存 config 即可。
+1. 缺少 DNS 查找資料 - 要解決此問題，請嘗試重置配置或只是在門戶中載入配置頁一次。 對於重置，只需將設置更改為另一個值，然後將其更改為原始值，並保存配置。
 
 ## <a name="feedback"></a>意見反應
 
-若要提供意見反應，請造訪[Log Analytics UserVoice 頁面](https://aka.ms/dnsanalyticsuservoice)來張貼 DNS 分析功能的想法，以進行處理。 
+要提供回饋，請訪問[日誌分析使用者語音頁面](https://aka.ms/dnsanalyticsuservoice)，發佈要處理的 DNS 分析功能的想法。 
 
 ## <a name="next-steps"></a>後續步驟
 
