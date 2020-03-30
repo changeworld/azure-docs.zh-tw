@@ -1,67 +1,67 @@
 ---
-title: Active Directory 驗證-適用於 MySQL 的 Azure 資料庫
-description: 瞭解使用適用於 MySQL 的 Azure 資料庫驗證 Azure Active Directory 的概念
+title: 活動目錄身份驗證 - MySQL 的 Azure 資料庫
+description: 瞭解 Azure 活動目錄的概念，以便使用 MySQL 的 Azure 資料庫進行身份驗證
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299017"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 來向 MySQL 進行驗證
+# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure 活動目錄使用 MySQL 進行身份驗證
 
-Microsoft Azure Active Directory （Azure AD）驗證是使用 Azure AD 中定義的身分識別連接到適用於 MySQL 的 Azure 資料庫的機制。
-透過 Azure AD authentication，您可以在集中位置管理資料庫使用者身分識別和其他 Microsoft 服務，以簡化版權管理。
+Microsoft Azure 活動目錄 （Azure AD） 身份驗證是使用 Azure AD 中定義的身份連接到 MySQL 的 Azure 資料庫的機制。
+使用 Azure AD 身份驗證，您可以在中心位置管理資料庫使用者標識和其他 Microsoft 服務，從而簡化版權管理。
 
 > [!IMPORTANT]
-> 適用於 MySQL 的 Azure 資料庫的 Azure AD 驗證目前為公開預覽狀態。
+> MySQL Azure 資料庫的 Azure AD 身份驗證當前處於公共預覽版中。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-使用 Azure AD 的優點包括：
+使用 Azure AD 的好處包括：
 
-- 以一致的方式跨 Azure 服務驗證使用者
-- 在單一位置管理密碼原則和密碼輪替
-- Azure Active Directory 支援多種形式的驗證，這可以避免儲存密碼的需要
+- 以統一的方式跨 Azure 服務對使用者進行身份驗證
+- 在單個位置管理密碼原則和密碼輪換
+- Azure 活動目錄支援的多種形式的身份驗證，無需存儲密碼
 - 客戶可以使用外部 (Azure AD) 群組來管理資料庫權限。
-- Azure AD authentication 會使用 MySQL 資料庫使用者來驗證資料庫層級的身分識別
-- 支援連接到適用於 MySQL 的 Azure 資料庫之應用程式的權杖型驗證
+- Azure AD 身份驗證使用 MySQL 資料庫使用者在資料庫級別驗證標識
+- 支援為 MySQL 連接到 Azure 資料庫的應用程式提供基於權杖的身份驗證
 
-若要設定及使用 Azure Active Directory 驗證，請使用下列程式：
+要配置和使用 Azure 活動目錄身份驗證，請使用以下過程：
 
-1. 視需要建立並填入 Azure Active Directory 的使用者身分識別。
-2. 選擇性地建立或變更目前與您的 Azure 訂用帳戶相關聯的 Active Directory。
-3. 建立適用於 MySQL 的 Azure 資料庫伺服器的 Azure AD 系統管理員。
-4. 在您的資料庫中建立對應至 Azure AD 身分識別的資料庫使用者。
-5. 藉由抓取 Azure AD 身分識別的權杖並登入，以連接到您的資料庫。
+1. 根據需要使用使用者標識創建和填充 Azure 活動目錄。
+2. 可以選擇關聯或更改當前與 Azure 訂閱關聯的活動目錄。
+3. 為 MySQL 伺服器的 Azure 資料庫創建 Azure AD 管理員。
+4. 在資料庫中創建映射到 Azure AD 標識的資料庫使用者。
+5. 通過檢索 Azure AD 標識的權杖並登錄連接到資料庫。
 
 > [!NOTE]
-> 若要瞭解如何建立和填入 Azure AD，然後使用適用於 MySQL 的 Azure 資料庫設定 Azure AD，請參閱[使用適用於 MySQL 的 Azure 資料庫的 Azure AD 設定和登入](howto-configure-sign-in-azure-ad-authentication.md)。
+> 要瞭解如何創建和填充 Azure AD，然後使用 MySQL 的 Azure 資料庫配置 Azure AD，請參閱[為 MySQL 配置 Azure 資料庫並與 Azure AD 登錄](howto-configure-sign-in-azure-ad-authentication.md)。
 
 ## <a name="architecture"></a>架構
 
-下列高階圖表摘要說明使用 Azure AD 驗證與適用於 MySQL 的 Azure 資料庫，驗證的運作方式。 箭頭表示通訊路徑。
+以下高級關係圖總結了身份驗證如何使用 Azure AD 身份驗證與 MySQL 的 Azure 資料庫一起使用。 箭頭表示通訊路徑。
 
-![驗證流程][1]
+![身份驗證流][1]
 
 ## <a name="administrator-structure"></a>系統管理員結構
 
-使用 Azure AD 驗證時，MySQL 伺服器有兩個系統管理員帳戶：原始的 MySQL 系統管理員和 Azure AD 系統管理員。 只有以 Azure AD 帳戶為基礎的系統管理員可以在使用者資料庫中建立第一個 Azure AD 自主資料庫使用者。 Azure AD 系統管理員登入可以是 Azure AD 使用者或 Azure AD 群組。 當系統管理員是群組帳戶時，可以由任何群組成員使用，讓 MySQL 伺服器有多個 Azure AD 系統管理員。 以系統管理員身分使用群組帳戶，可讓您在 Azure AD 集中新增和移除群組成員，而不需要變更 MySQL 伺服器中的使用者或許可權，藉此增強管理能力。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
+使用 Azure AD 身份驗證時，MySQL 伺服器有兩個管理員帳戶;因此，使用 Azure AD 身份驗證時，MySQL 伺服器有兩個管理員帳戶。原始 MySQL 管理員和 Azure AD 管理員。 只有以 Azure AD 帳戶為基礎的系統管理員可以在使用者資料庫中建立第一個 Azure AD 自主資料庫使用者。 Azure AD 系統管理員登入可以是 Azure AD 使用者或 Azure AD 群組。 當管理員是群組帳戶時，任何組成員都可以使用它，為 MySQL 伺服器啟用多個 Azure AD 管理員。 使用群組帳戶作為管理員，允許您在 Azure AD 中集中添加和刪除組成員，而無需更改 MySQL 伺服器中的使用者或許可權，從而增強可管理性。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
 
 ![系統管理員結構][2]
 
 ## <a name="permissions"></a>權限
 
-若要建立可使用 Azure AD 進行驗證的新使用者，您必須是設計的 Azure AD 系統管理員。 此使用者是藉由設定特定適用於 MySQL 的 Azure 資料庫伺服器的 Azure AD 系統管理員帳戶來指派。
+要創建新使用者，可以使用 Azure AD 進行身份驗證，您必須是設計的 Azure AD 管理員。 此使用者是通過為 MySQL 伺服器配置特定 Azure 資料庫的 Azure AD 管理員帳戶來分配的。
 
-若要建立新的 Azure AD 資料庫使用者，您必須以 Azure AD 系統管理員的身分進行連接。 這會在[使用適用於 MySQL 的 Azure 資料庫的 Azure AD 進行設定和登](howto-configure-sign-in-azure-ad-authentication.md)入中示範。
+要創建新的 Azure AD 資料庫使用者，必須作為 Azure AD 管理員進行連接。 這表現在[為 MySQL 的 Azure 資料庫配置和登錄 Azure 資料庫](howto-configure-sign-in-azure-ad-authentication.md)。
 
-只有在為適用於 MySQL 的 Azure 資料庫建立 Azure AD 系統管理員時，才可以進行任何 Azure AD 驗證。 如果 Azure Active Directory 系統管理員已從伺服器移除，則先前建立的現有 Azure Active Directory 使用者就無法再使用其 Azure Active Directory 認證連接到資料庫。
+僅當為 MySQL 為 Azure 資料庫創建 Azure AD 管理員時，才可能進行任何 Azure AD 身份驗證。 如果 Azure 活動目錄管理員從伺服器中刪除，則以前創建的現有 Azure 活動目錄使用者無法再使用其 Azure 活動目錄憑據連接到資料庫。
 
 ## <a name="connecting-using-azure-ad-identities"></a>使用 Azure AD 身分識別連接
 
@@ -70,27 +70,27 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - Azure Active Directory 密碼
 - Azure Active Directory 整合式
 - 包含 MFA 的 Active Directory 通用驗證
-- 使用 Active Directory 應用程式憑證或用戶端秘密
+- 使用活動目錄應用程式證書或用戶端機密
 
-當您對 Active Directory 進行驗證之後，就可以取出權杖。 此權杖是您用來登入的密碼。
+對活動目錄進行身份驗證後，然後檢索權杖。 此權杖是您登錄的密碼。
 
 > [!NOTE]
-> 如需如何使用 Active Directory token 進行連線的詳細資訊，請參閱[使用 Azure AD 設定和登入適用於 MySQL 的 Azure 資料庫](howto-configure-sign-in-azure-ad-authentication.md)。
+> 有關如何使用活動目錄權杖進行連接的更多詳細資訊，請參閱[為 MySQL 配置 Azure 資料庫的 Azure AD](howto-configure-sign-in-azure-ad-authentication.md)並登錄。
 
 ## <a name="additional-considerations"></a>其他考量
 
-- 一次只能為一部適用於 MySQL 的 Azure 資料庫伺服器設定一個 Azure AD 系統管理員。
-- 只有 MySQL 的 Azure AD 系統管理員可以使用 Azure Active Directory 帳戶一開始連接到適用於 MySQL 的 Azure 資料庫。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。
-- 如果從 Azure AD 刪除使用者，該使用者將無法再使用 Azure AD 進行驗證，因此將無法再取得該使用者的存取權杖。 在此情況下，雖然相符的使用者仍會在資料庫中，但無法使用該使用者連接到伺服器。
+- 任何時候都只能為 MySQL 伺服器配置一個 Azure 資料庫管理員。
+- 只有 MySQL 的 Azure AD 管理員才能最初使用 Azure 活動目錄帳戶連接到 MySQL 的 Azure 資料庫。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。
+- 如果從 Azure AD 中刪除使用者，該使用者將不再能夠使用 Azure AD 進行身份驗證，因此將無法再獲取該使用者的訪問權杖。 在這種情況下，儘管匹配的使用者仍將在資料庫中，但無法與該使用者連接到伺服器。
 > [!NOTE]
-> 使用已刪除之 Azure AD 使用者的登入，仍然可以在權杖到期之前完成（從權杖發出的時間最多60分鐘）。  如果您也將使用者從適用於 MySQL 的 Azure 資料庫移除，則會立即撤銷此存取權。
-- 如果 Azure AD 系統管理員已從伺服器移除，伺服器就不會再與 Azure AD 的租使用者相關聯，因此將會停用伺服器的所有 Azure AD 登入。 從相同的租使用者新增新的 Azure AD 系統管理員，將會重新啟用 Azure AD 登入。
-- 適用於 MySQL 的 Azure 資料庫會使用使用者的唯一 Azure AD 使用者識別碼來比對適用於 MySQL 的 Azure 資料庫使用者的存取權杖，而不是使用 username。 這表示如果在 Azure AD 中刪除 Azure AD 的使用者，並以相同的名稱建立新的使用者，適用於 MySQL 的 Azure 資料庫會考慮到不同的使用者。 因此，如果從 Azure AD 刪除使用者，然後新增具有相同名稱的新使用者，新的使用者將無法與現有的使用者連接。
+> 使用已刪除的 Azure AD 使用者登錄仍可在權杖過期之前完成（權杖頒發最多 60 分鐘）。  如果同時從 Azure 資料庫中刪除 MySQL 的使用者，此存取權限將立即被吊銷。
+- 如果 Azure AD 管理員從伺服器中刪除，則伺服器將不再與 Azure AD 租戶關聯，因此伺服器將禁用所有 Azure AD 登錄名。 從同一租戶添加新的 Azure AD 管理員將重新啟用 Azure AD 登錄名。
+- MySQL 的 Azure 資料庫使用使用者的唯一 Azure AD 使用者 ID（而不是使用使用者名）匹配 MySQL 使用者對 Azure 資料庫的訪問權杖。 這意味著，如果在 Azure AD 中刪除 Azure AD 使用者，並且使用相同名稱創建新使用者，則 MySQL 的 Azure 資料庫將認為該使用者為其他使用者。 因此，如果從 Azure AD 中刪除使用者，然後添加了同名的新使用者，則新使用者將無法與現有使用者連接。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解如何建立和填入 Azure AD，然後使用適用於 MySQL 的 Azure 資料庫設定 Azure AD，請參閱[使用適用於 MySQL 的 Azure 資料庫的 Azure AD 設定和登入](howto-configure-sign-in-azure-ad-authentication.md)。
-- 如需登入的總覽，以及適用於 MySQL 的 Azure 資料庫的資料庫使用者，請參閱[在適用於 MySQL 的 Azure 資料庫中建立使用者](howto-create-users.md)。
+- 要瞭解如何創建和填充 Azure AD，然後使用 MySQL 的 Azure 資料庫配置 Azure AD，請參閱[為 MySQL 配置 Azure 資料庫並與 Azure AD 登錄](howto-configure-sign-in-azure-ad-authentication.md)。
+- 有關 MySQL 的登錄名和資料庫使用者的概述，請參閱[為 MySQL 在 Azure 資料庫中創建使用者](howto-create-users.md)。
 
 <!--Image references-->
 

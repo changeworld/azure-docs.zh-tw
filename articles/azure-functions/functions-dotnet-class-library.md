@@ -4,10 +4,10 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: reference
 ms.date: 09/12/2018
 ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277059"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
@@ -21,28 +21,28 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 本文假設您已閱讀下列文章：
 
 * [Azure Functions 開發人員指南](functions-reference.md)
-* [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
+* [Azure 功能視覺化工作室 2019 工具](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>支援的版本
 
-函數執行時間的版本適用于特定版本的 .NET。 下表顯示可搭配專案中特定版本函式使用的最高層級 .NET Core 和 .NET Framework 和 .NET Core。 
+函數運行時的版本與 .NET 的特定版本一起使用。 下表顯示了 .NET Core 和 .NET 框架和 .NET Core 的最高級別，這些級別可用於專案中的特定版本的函數。 
 
 | 函數執行階段版本 | 最大 .NET 版本 |
 | ---- | ---- |
-| 函數3。x | .NET Core 3.1 |
+| 功能 3.x | .NET 核心 3.1 |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4.6 |
 
-若要深入瞭解，請參閱[Azure Functions 執行階段版本總覽](functions-versions.md)
+要瞭解詳細資訊，請參閱[Azure 函數執行階段版本概述](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>Functions 類別庫專案
 
 在 Visual Studio 中，**Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
 
 * [host.json](functions-host-json.md) - 儲存會影響在本機或 Azure 中執行之專案中所有函式的組態設定。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 相反地，請[將應用程式設定新增至您](functions-develop-vs.md#function-app-settings)的函式應用程式。
+* [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 而是[將應用設置添加到函數應用](functions-develop-vs.md#function-app-settings)。
 
-當您建立專案時，在組建輸出目錄中會產生如下列範例所示的資料夾結構：
+生成專案時，生成輸出目錄中將生成如下所示的資料夾結構：
 
 ```
 <framework.version>
@@ -57,7 +57,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 此目錄會部署至 Azure 中的函數應用程式。 Functions 執行階段[版本 2.x](functions-versions.md) 中所需之繫結延伸模組會[以 NuGet 封裝形式新增至專案](./functions-bindings-register.md#vs)。
 
 > [!IMPORTANT]
-> 建置流程會為每個函式都建立 function.json 檔案。 這個 function.json 檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 若要了解如何停用函式，請參閱[如何停用函式](disable-function.md)。
+> 建置流程會為每個函式都建立 function.json** 檔案。 這個 function.json** 檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 若要了解如何停用函式，請參閱[如何停用函式](disable-function.md)。
 
 
 ## <a name="methods-recognized-as-functions"></a>辨識為函式的方法
@@ -77,7 +77,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 屬性會將方法標記為函式進入點。 名稱在專案中必須是唯一的，以字母開頭，而且只包含字母、數位、`_`和 `-`，長度上限為127個字元。 專案範本通常會建立名為 `Run` 的方法，不過任何有效的 C# 方法名稱都能成為方法名稱。
+`FunctionName` 屬性會將方法標記為函式進入點。 名稱在專案中必須是唯一的，以字母開頭，並且僅包含字母、`_`數位和`-`，長度不得超過 127 個字元。 專案範本通常會建立名為 `Run` 的方法，不過任何有效的 C# 方法名稱都能成為方法名稱。
 
 觸發程序屬性可指定觸發程序類型，並將輸入資料繫結至方法參數。 範例函式是由佇列訊息所觸發，該佇列訊息會接著傳遞給 `myQueueItem` 參數中的方法。
 
@@ -86,8 +86,8 @@ public static class SimpleExample
 方法簽章可包含非用於觸發程序屬性的參數。 以下是幾個可以包含在其中的額外參數：
 
 * 以屬性修飾來加以標示的[輸入與輸出繫結](functions-triggers-bindings.md)。  
-* 適用於`ILogger`記錄`TraceWriter`的 [ 或 ](functions-versions.md#creating-1x-apps) ([僅限 1.x 版](#logging)) 參數。
-* 用於`CancellationToken`正常關機[的 ](#cancellation-tokens) 參數。
+* 適用於[記錄](#logging)的 `ILogger` 或 `TraceWriter` ([僅限 1.x 版](functions-versions.md#creating-1x-apps)) 參數。
+* 用於[正常關機](#cancellation-tokens)的 `CancellationToken` 參數。
 * 取得觸發程序中繼資料的[繫結運算式](./functions-bindings-expressions-patterns.md)參數。
 
 函式簽章中的參數順序不重要。 例如，您可以將觸發程序參數放在其他繫結之前或之後，且可以將記錄器參數放在觸發程序或繫結參數之前或之後。
@@ -136,7 +136,7 @@ public static class BindingExpressionsExample
 
 建置流程在組建資料夾的函式資料夾中建立 *function.json* 檔案。 如稍早所述，此檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 
 
-此檔案的目的是要提供資訊給調整控制器，以用於針對取用[方案的調整決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
+此檔的目的是向縮放控制器提供資訊，用於[擴展對消耗計畫的決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
 產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下是範例：
 
@@ -161,7 +161,7 @@ public static class BindingExpressionsExample
 
 *function.json* 檔案產生是由 NuGet 套件 [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 執行。 
 
-Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1\.x 專案與 2.x 專案可依目標架構來區分。 以下是 *.csproj* 檔案的相關部分，顯示不同的目標架構和相同的 `Sdk` 套件：
+Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1.x 專案與 2.x 專案可依目標架構來區分。 以下是 *.csproj* 檔案的相關部分，顯示不同的目標架構和相同的 `Sdk` 套件：
 
 **Functions 1.x**
 
@@ -186,7 +186,7 @@ Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1\.x 
 </ItemGroup>
 ```
 
-在 `Sdk` 套件相依性中的是觸發程序和繫結。 1\.x 專案會參考1.x 觸發程式和系結，因為這些觸發程式和系結是以 .NET Framework 為目標，而2.x 觸發程式和系結是以 .NET Core 為目標。
+在 `Sdk` 套件相依性中的是觸發程序和繫結。 1.x 專案引用 1.x 觸發器和綁定，因為這些觸發器和綁定以 .NET 框架為目標，而 2.x 觸發器和綁定針對 .NET Core。
 
 `Sdk` 套件也會相依於 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) \(英文\)，並間接相依於 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage) \(英文\)。 這些相依性可確保您的專案會使用能夠搭配專案所設為目標之 Functions 執行階段版本運作的套件版本。 例如，`Newtonsoft.Json` 含有適用於 .NET Framework 4.6.1 的 11 版，但目標為 .NET Framework 4.6.1 的 Functions 執行階段只能與 `Newtonsoft.Json` 9.0.1 相容。 因此，您在該專案中的函式程式碼也必須使用 `Newtonsoft.Json` 9.0.1。
 
@@ -216,7 +216,7 @@ Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#inst
 
 ## <a name="writing-multiple-output-values"></a>撰寫多個輸出值
 
-若要將多個值寫入至輸出繫結，或者如果成功的函式引動過程可能未導致任何項目傳遞至輸出繫結，請使用 [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
+要將多個值寫入輸出綁定，或者如果成功的函式呼叫可能不會導致任何要傳遞給輸出綁定的東西，請使用 或[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)[`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
 
 這個範例會使用 `ICollector` 將多個佇列訊息寫入相同佇列：
 
@@ -253,11 +253,11 @@ public static class SimpleExample
 } 
 ```
 
-避免在 Azure Functions 中使用 `Console.Write`。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md#write-logs-in-c-functions) 文章中的在 **C# 函式中寫入記錄**。
+避免在 Azure Functions 中使用 `Console.Write`。 如需詳細資訊，請參閱**監視 Azure Functions** 文章中的在 [C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
 
 ## <a name="async"></a>非同步處理
 
-若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
+要使函數[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 關鍵字`async`並返回物件。 `Task`
 
 ```csharp
 public static class AsyncExample
@@ -328,18 +328,18 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-本機開發以及於 Azure 執行時，均可從環境變數讀取應用程式設定。 在本機開發時，應用程式設定來自 `Values`local.settings.json*檔案中的* 集合。 在本機和 Azure 這兩個環境中，`GetEnvironmentVariable("<app setting name>")` 會擷取具名應用程式設定的值。 例如在本機執行時，如果您的 *local.settings.json* 檔案包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，則會傳回 "My Site Name"。
+本機開發以及於 Azure 執行時，均可從環境變數讀取應用程式設定。 在本機開發時，應用程式設定來自 *local.settings.json* 檔案中的 `Values` 集合。 在本機和 Azure 這兩個環境中，`GetEnvironmentVariable("<app setting name>")` 會擷取具名應用程式設定的值。 例如在本機執行時，如果您的 *local.settings.json* 檔案包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，則會傳回 "My Site Name"。
 
 [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 屬性是用於取得應用程式設定值的替代 API，但建議您使用 `GetEnvironmentVariable`，如下所示。
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 
-在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Imperative_programming)[*繫結的*命令式](https://en.wikipedia.org/wiki/Declarative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
+在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Declarative_programming)** 繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
 
 定義命令式繫結，如下所示︰
 
 - **請勿**在函式簽章中加入您所需命令式繫結的屬性。
-- 傳入輸入參數 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
+- 傳遞輸入參數[`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs)或[`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下列 C# 模式來執行資料繫結。
 
   ```cs
@@ -349,7 +349,7 @@ public static class EnvironmentVariablesExample
   }
   ```
 
-  `BindingTypeAttribute` 是可定義繫結的 .NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，Mobile Apps 資料表輸出系結支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但您只能使用[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) ，或透過命令式系結來[IAsyncCollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 。
+  `BindingTypeAttribute` 是可定義繫結的 .NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，移動應用表輸出綁定支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但只能使用[ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)與命令綁定。
 
 ### <a name="single-attribute-example"></a>單一屬性範例
 

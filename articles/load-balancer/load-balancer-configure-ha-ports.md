@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2e787a1f81d9f3d31b981c31a0249dd362b7bb9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c6b8ecb443408f23ae604bd9c8139cb0a2afcd12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225412"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477777"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>設定內部負載平衡器的高可用性連接埠
 
@@ -48,7 +48,7 @@ ms.locfileid: "74225412"
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>使用 Azure 入口網站設定高可用性連接埠負載平衡器規則
 
-若要使用 Azure 入口網站來設定高可用性連接埠，請選取 [HA 連接埠] 核取方塊。 選取此選項時，系統會自動填入相關的連接埠和通訊協定組態。 
+若要使用 Azure 入口網站來設定高可用性連接埠，請選取 [HA 連接埠]**** 核取方塊。 選取此選項時，系統會自動填入相關的連接埠和通訊協定組態。 
 
 ![透過 Azure 入口網站的高可用性連接埠設定](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
@@ -98,9 +98,9 @@ lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfigurati
 在[建立內部負載平衡器集合](load-balancer-get-started-ilb-arm-cli.md)的步驟 4 中，使用下列命令來建立高可用性連接埠負載平衡器規則：
 
 ```azurecli
-azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
+az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[高可用性連接埠](load-balancer-ha-ports-overview.md)。
+瞭解有關[高可用性埠](load-balancer-ha-ports-overview.md)的更多資訊。

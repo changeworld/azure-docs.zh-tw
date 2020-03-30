@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255089"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>使用 Azure 檔案同步管理已註冊的伺服器
@@ -20,7 +20,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 下列文章說明如何使用儲存體同步服務來註冊及管理伺服器。 如需如何從頭到尾部署 Azure 檔案同步的資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>使用儲存體同步服務來註冊/取消註冊伺服器
-使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點，其代表應與 Azure 檔案共用 (也稱為雲端端點) 同步的特定資料夾。 
+使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點**，其代表應與 Azure 檔案共用 (也稱為雲端端點**) 同步的特定資料夾。 
 
 ### <a name="prerequisites"></a>Prerequisites
 若要使用儲存體同步服務來註冊伺服器，您必須先準備好符合下列必要條件的伺服器：
@@ -58,7 +58,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>向儲存體同步服務註冊伺服器
-您必須使用儲存體同步服務來註冊伺服器，才能在 Azure 檔案同步的同步群組中，將伺服器當作伺服器端點使用。 一次只能使用一個儲存體同步服務來註冊一部伺服器。
+您必須使用儲存體同步服務** 來註冊伺服器，才能在 Azure 檔案同步的同步群組** 中，將伺服器當作伺服器端點** 使用。 一次只能使用一個儲存體同步服務來註冊一部伺服器。
 
 #### <a name="install-the-azure-file-sync-agent"></a>安裝 Azure 檔案同步代理程式
 1. [下載 Azure 檔案同步代理程式](https://go.microsoft.com/fwlink/?linkid=858257)。
@@ -80,7 +80,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 > 雲端解決方案提供者 (CSP) 訂用帳戶無法使用伺服器註冊 UI。 請改用 PowerShell (本節下方)。
 
 1. 如果完成 Azure 檔案同步代理程式的安裝之後未立即啟動伺服器註冊 UI，您可以執行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 手動將它啟動。
-2. 按一下 [登入] 以存取您的 Azure 訂用帳戶。 
+2. 按一下 [登入]** 以存取您的 Azure 訂用帳戶。 
 
     ![伺服器註冊 UI 的開啟中對話方塊](media/storage-sync-files-server-registration/server-registration-ui-1.png)
 
@@ -146,7 +146,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>取消註冊伺服器
 回收所有資料並從所有同步群組移除伺服器之後，即可將伺服器取消註冊。 
 
-1. 在 Azure 入口網站中，瀏覽到儲存體同步服務的 [已註冊的伺服器] 區段。
+1. 在 Azure 門戶中，導航到存儲同步服務的 *"已註冊伺服器*"部分。
 2. 以滑鼠右鍵按一下您要取消註冊的伺服器，然後按一下 [取消註冊伺服器]。
 
     ![將伺服器取消註冊](media/storage-sync-files-server-registration/unregister-server-1.png)
@@ -186,7 +186,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 當 Azure 檔案同步裝載於 Windows Server 虛擬主機上執行的虛擬機器時，您可以使用儲存體 QoS (儲存體服務品質) 來規範儲存體 IO 耗用量。 儲存體 QoS 原則可以設定為最大值 (或限制，如上述強制執行 StorageSyncNetwork 限制的方式) 或最小值 (或保留)。 設定最小值而不是最大值時，可讓 Azure 檔案同步在其他工作負載不使用時，盡可能使用可用的儲存體頻寬。 如需詳細資訊，請參閱[儲存體服務品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
 ## <a name="see-also"></a>另請參閱
-- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+- [規劃 Azure 檔同步部署](storage-sync-files-planning.md)
 - [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)
 - [針對 Azure 檔案同步進行移難排解](storage-sync-files-troubleshoot.md)

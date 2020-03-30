@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用遠端桌面至 Linux VM
+title: 在 Azure 中使用遠端桌面到 Linux VM
 description: 了解如何安裝和設定遠端桌面 (xrdp)，以使用圖形化工具在 Azure 中連接至 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034284"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476598"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>在 Azure 中安裝和設定遠端桌面，以連接至 Linux VM
 在 Azure 中的 Linux 虛擬機器 (VM) 通常是使用安全殼層 (SSH) 連接從命令列管理。 如果是 Linux 的新手，或者是快速疑難排解的案例，使用遠端桌面可能會比較容易。 本文將詳細說明如何使用 Resource Manager 部署模型為您的 Linux VM 安裝和設定桌面環境 ([xfce](https://www.xfce.org)) 和遠端桌面 ([xrdp](https://www.xrdp.org))。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本文需要 Azure 中現有的 Ubuntu 18.04 LTS VM。 如果您需要建立 VM，請使用下列其中一個方法︰
 
 - [Azure CLI](quick-create-cli.md)
-- [Azure 入口網站](quick-create-portal.md)
+- [Azure 門戶](quick-create-portal.md)
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>在 Linux VM 上安裝桌面環境
 在 Azure 中大多數 Linux VM 預設沒有安裝桌面環境。 Linux VM 通常是使用 SSH 連接來管理，而不是使用桌面環境來管理。 在 Linux 中您有各種不同的桌面環境可以選擇。 根據您選擇的桌面環境，可能會使用 1 到 2 GB 的磁碟空間，並且需要 5 到 10 分鐘，才能安裝及設定所有必要的套件。
 
-下列範例會在 Ubuntu 18.04 LTS VM 上安裝輕量[xfce4](https://www.xfce.org/)桌面環境。 其他散發的命令稍微不同 (例如，使用 `yum` 以在 Red Hat Enterprise Linux 上安裝及設定適當的 `selinux` 規則，或使用 `zypper` 在 SUSE 上安裝)。
+以下示例在 Ubuntu 18.04 LTS VM 上安裝羽量級[xfce4](https://www.xfce.org/)桌面環境。 其他散發的命令稍微不同 (例如，使用 `yum` 以在 Red Hat Enterprise Linux 上安裝及設定適當的 `selinux` 規則，或使用 `zypper` 在 SUSE 上安裝)。
 
-首先，SSH 連接至您的 VM。 下列範例會連線至名為 myvm.westus.cloudapp.azure.com 且具有使用者名稱 azureuser 的 VM。 使用您自己的值：
+首先，SSH 連接至您的 VM。 下列範例會連線至名為 myvm.westus.cloudapp.azure.com** 且具有使用者名稱 azureuser** 的 VM。 使用您自己的值：
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -48,7 +48,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 ```bash
 sudo apt-get update
-sudo apt-get install xfce4
+sudo apt-get -y install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>安裝及設定遠端桌面伺服器
@@ -73,7 +73,7 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>設定本機使用者帳戶密碼
-如果您在建立 VM 時已為您的使用者帳戶建立密碼，請略過此步驟。 如果您只使用 SSH 金鑰驗證，並且尚未設定本機帳戶密碼，請先指定密碼，再使用 xrdp 登入您的 VM。 xrdp 無法接受 SSH 金鑰進行驗證。 下列範例會指定使用者帳戶 azureuser 的密碼：
+如果您在建立 VM 時已為您的使用者帳戶建立密碼，請略過此步驟。 如果您只使用 SSH 金鑰驗證，並且尚未設定本機帳戶密碼，請先指定密碼，再使用 xrdp 登入您的 VM。 xrdp 無法接受 SSH 金鑰進行驗證。 下列範例會指定使用者帳戶 azureuser** 的密碼：
 
 ```bash
 sudo passwd azureuser
@@ -84,9 +84,9 @@ sudo passwd azureuser
 
 
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>建立遠端桌面流量的網路安全性群組規則
-若要允許遠端桌面流量觸達您的 Linux VM，必須建立網路安全性群組規則，允許連接埠 3389 上的 TCP 觸達您的 VM。 如需有關網路安全性群組規則的詳細資訊，請參閱[什麼是網路安全性群組？](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 您也可以[使用 Azure 入口網站建立網路安全性群組規則](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+若要允許遠端桌面流量觸達您的 Linux VM，必須建立網路安全性群組規則，允許連接埠 3389 上的 TCP 觸達您的 VM。 有關網路安全性群組規則的詳細資訊，請參閱[什麼是網路安全性群組？](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 您也可以[使用 Azure 入口網站建立網路安全性群組規則](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-下列範例會使用 [az vm open-port](/cli/azure/vm#az-vm-open-port) 在連接埠 3389 上建立網路安全性群組規則。 從 Azure CLI (而非您 VM 的 SSH 工作階段) 開啟下列網路安全性群組規則：
+下列範例會使用 [az vm open-port](/cli/azure/vm#az-vm-open-port) 在連接埠 3389** 上建立網路安全性群組規則。 從 Azure CLI (而非您 VM 的 SSH 工作階段) 開啟下列網路安全性群組規則：
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
@@ -119,13 +119,13 @@ tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesm
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-如果未接聽 xrdp-sesman 服務，在 Ubuntu VM 上重新啟動服務，如下所示︰
+如果未接聽 xrdp-sesman 服務**，在 Ubuntu VM 上重新啟動服務，如下所示︰
 
 ```bash
 sudo service xrdp restart
 ```
 
-在您的 Ubuntu VM 上檢閱 /var/log 中的記錄，以取得為何服務沒有回應的指示。 您也可以在遠端桌面連線嘗試期間監視 syslog，以檢視任何錯誤：
+在您的 Ubuntu VM 上檢閱 /var/log** 中的記錄，以取得為何服務沒有回應的指示。 您也可以在遠端桌面連線嘗試期間監視 syslog，以檢視任何錯誤：
 
 ```bash
 tail -f /var/log/syslog

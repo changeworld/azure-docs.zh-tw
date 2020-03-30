@@ -1,5 +1,5 @@
 ---
-title: Azure 串流分析中的串流處理單位
+title: Azure 流分析中的流單元
 description: 本文說明串流單位設定，以及其他會影響 Azure 串流分析效能的因素。
 author: JSeb225
 ms.author: jeanb
@@ -8,31 +8,31 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267348"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解及調整串流單位
 
-串流處理單位（su）代表配置用來執行串流分析作業的計算資源。 SU 的數目愈大，為您的作業配置的 CPU 和記憶體資源就愈多。 這個容量可讓您專注於查詢邏輯，並以及時的方式摘要出管理硬體以執行串流分析作業的需求。
+流式處理單元 （SUs） 表示分配給執行流分析作業的計算資源。 SU 的數目愈大，為您的作業配置的 CPU 和記憶體資源就愈多。 這個容量可讓您專注於查詢邏輯，並以及時的方式摘要出管理硬體以執行串流分析作業的需求。
 
 為了達到低延遲的串流處理，Azure 串流分析作業會在記憶體中執行所有處理。 當記憶體用完時，串流工作將會失敗。 因此，對於生產作業來說，請務必監視串流作業的資源使用狀況，並配置足夠的資源讓作業保持全天候運作。
 
 SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的記憶體耗用量。 就使用量最低的串流作業而言，此計量通常會介於 10% 到 20% 之間。 如果 SU % 使用率偏低，且有輸入事件待處理，您的工作負載就可能需要更多計算資源，而您就必須增加 SU 數目。 建議您最好將 SU 計量保持低於 80%，以因應偶發的尖峰使用量。 Microsoft 建議對 80% 的 SU 使用量計量設定警示，以避免資源耗盡。 如需詳細資訊，請參閱[教學課程：設定 Azure 串流分析作業的警示](stream-analytics-set-up-alerts.md)。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>設定串流分析串流單位 (SU)
-1. 登入 [Azure 入口網站](https://portal.azure.com/)
+1. 登錄到[Azure 門戶](https://portal.azure.com/)
 
 2. 在資源清單中，尋找並開啟您想要調整的串流分析作業。 
 
-3. 在作業頁面的 [設定] 標題下，選取 [縮放]。 
+3. 在作業頁面的 [設定]**** 標題下，選取 [縮放]****。 
 
     ![Azure 入口網站串流分析作業組態][img.stream.analytics.preview.portal.settings.scale]
     
 4. 使用滑桿來設定作業的 SU。 請注意，您只能調整特定的 SU 設定。 
-5. 您可以變更指派給作業的 su 數目，即使它正在執行也一樣。 如果您的作業使用[非分割的輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)，或具有[具有不同 PARTITION BY 值的多重步驟查詢](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，則不可能發生這種情況。 當作業正在執行時，您可能會受到限制而無法從一組 SU 值中進行選擇。 
+5. 即使作業正在運行，也可以更改分配給作業的 S 編號。 如果作業使用[非分區輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)或[具有具有不同分區 BY 值的多步驟查詢](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，則無法執行此操作。 您可能僅限於在作業運行時從一組 SU 值中進行選擇。 
 
 ## <a name="monitor-job-performance"></a>監視工作效能
 您可以使用 Azure 入口網站來追蹤作業的輸送量：
@@ -43,14 +43,14 @@ SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的�
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>一個作業需要多少 SU？
 
-選擇特定作業所需的 SU 數量取決於輸入的磁碟分割組態以及作業內定義的查詢。 [調整] 頁面可讓您設定正確的 SU 數目。 最好作法是配置比所需數目還多的 SU。 串流處理引擎會不惜分派額外的記憶體，針對延遲和輸送量進行最佳化。
+選擇特定作業所需的 SU 數量取決於輸入的磁碟分割組態以及作業內定義的查詢。 [調整]**** 頁面可讓您設定正確的 SU 數目。 最好作法是配置比所需數目還多的 SU。 串流處理引擎會不惜分派額外的記憶體，針對延遲和輸送量進行最佳化。
 
 一般情況下，最佳的作法是對不是使用 **PARTITION BY** 的查詢使用 6 個 SU 開始。 然後使用反覆嘗試的方法來決定最佳配置，這方法就是您可以在傳送代表的資料總數後修改 SU 數目，並且檢查 SU% 使用率計量。 串流分析作業可使用的串流單位數目上限，取決於為作業定義的查詢中包含的步驟數目，和每個步驟中的分割區數目。 您可以在[這裡](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)深入了解限制。
 
 如需選擇正確 SU 數目的詳細資訊，請參閱頁面：[調整 Azure 串流分析工作以增加輸送量](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> 選擇特定工作所需的 SU 數量，取決於輸入的分割組態和針對作業所定義的查詢。 您為作業選取的 SU 以您的配額為上限。 根據預設，每個 Azure 訂用帳戶的配額上限為 500 su，適用于特定區域中的所有分析作業。 若要為您的訂用帳戶增加超出此配額的 SU，請連絡 [Microsoft 支援服務](https://support.microsoft.com)。 每個作業有效的 SU 值為 1、3、6 和更大 (以 6 為增量單位)。
+> 選擇特定工作所需的 SU 數量，取決於輸入的分割組態和針對作業所定義的查詢。 您為作業選取的 SU 以您的配額為上限。 預設情況下，每個 Azure 訂閱對於特定區域中的所有分析作業最多具有 500 個 S。 若要為您的訂用帳戶增加超出此配額的 SU，請連絡 [Microsoft 支援服務](https://support.microsoft.com)。 每個作業有效的 SU 值為 1、3、6 和更大 (以 6 為增量單位)。
 
 ## <a name="factors-that-increase-su-utilization"></a>增加 SU% 使用量的因素 
 
@@ -58,12 +58,12 @@ SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的�
 
 請注意，具有複雜查詢邏輯的作業即使在非連續接收輸入事件時，也可能具有較高的 SU% 使用率。 此情況可能發生在輸入和輸出事件突然激增之後。 如果查詢很複雜，作業可能會繼續維持在記憶體中的狀態。
 
-SU% 使用率可能會突然降到 0，但不久後便回到預期的層級。 這是因為暫時性錯誤或系統啟動的升級造成的。 如果您的查詢不是[完全平行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，增加作業的串流單位數目可能不會降低 SU% 使用率。
+SU% 使用率可能會突然降到 0，但不久後便回到預期的層級。 這是因為暫時性錯誤或系統啟動的升級造成的。 如果查詢不完全[並行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，則增加作業的流式處理單元數可能不會降低 SU% 利用率。
 
-在比較一段時間的使用率時，請使用[事件速率計量](stream-analytics-monitoring.md)。 InputEvents 和 OutputEvents 計量會顯示已讀取和處理的事件數目。 也有指出錯誤事件數目的計量，例如還原序列化錯誤。 當每次單位的事件數增加時，SU% 會在大部分情況下增加。
+在比較一段時間內的利用率時，請使用[事件速率指標](stream-analytics-monitoring.md)。 輸入事件和輸出事件指標顯示讀取和處理的事件數。 也有指示錯誤事件數的指標，例如反序列化錯誤。 當每個時間單位的事件數增加時，SU% 在大多數情況下會增加。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>時態性元素中的具狀態查詢邏輯
-Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理工作，如視窗型彙總、時態性聯結及時態性分析函式。 每個運算子都會保留狀態資訊。 這些查詢元素的視窗大小上限為7天。 
+Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理工作，如視窗型彙總、時態性聯結及時態性分析函式。 每個運算子都會保留狀態資訊。這些查詢元素的時間範圍上限是七天。 
 
 時間範圍概念出現在數個「串流分析」查詢元素中：
 1. 視窗型彙總：輪轉視窗、跳動視窗和滑動視窗的 GROUP BY
@@ -86,7 +86,7 @@ Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-為了減輕前一個查詢中由高基數所造成的任何問題，您可以將事件傳送至 `clusterid`分割的事件中樞，並藉由允許系統使用**PARTITION by**來個別處理每個輸入分割區，以相應放大查詢，如下列範例所示：
+為了緩解由上一個查詢中的高基數引起的任何問題，可以將事件發送到由 分區`clusterid`的事件中心，並通過允許系統使用分區**BY**單獨處理每個輸入分區來擴展查詢，如下例所示：
 
    ```sql
    SELECT count(*) 
@@ -99,7 +99,7 @@ Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理�
 事件中樞分割區應依據群組索引鍵來分割，以避免需要進行減量步驟。 如需詳細資訊，請參閱[事件中樞概觀](../event-hubs/event-hubs-what-is-event-hubs.md)。 
 
 ## <a name="temporal-joins"></a>時態性聯結
-時態性聯結的耗用記憶體（狀態大小）與聯結的時態性搖動空間中的事件數目成正比，也就是事件輸入速率乘以搖動空間大小。 換句話說，聯結所耗用的記憶體是與 DateDiff 時間範圍乘以平均事件速率成正比。
+時序聯接消耗的記憶體（狀態大小）與聯接的時間擺動室中的事件數成正比，即事件輸入速率乘以擺動室大小。 換句話說，聯結所耗用的記憶體是與 DateDiff 時間範圍乘以平均事件速率成正比。
 
 在聯結中不相符的事件數目，會影響查詢的記憶體使用率。 下列查詢用來尋找能產生點擊率的廣告曝光項目︰
 
@@ -111,7 +111,7 @@ Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理�
 
 在此範例中，可能有大量廣告顯示，但僅有少數人會點選，而且仍然需要在時間範圍中保留所有事件。 視窗大小和事件出現率與記憶體耗用程度成正比。 
 
-若要修復這種情況，請將事件傳送至以聯結索引鍵（在此案例中為 ID）分割的事件中樞，並允許系統使用**PARTITION by**來個別處理每個輸入分割區，以相應放大查詢，如下所示：
+要修復此情況，請將事件發送到由聯接鍵（本例中為 ID）分區的事件中心，並通過允許系統使用**分區 BY**單獨處理每個輸入分區來擴展查詢，如下所示：
 
    ```sql
    SELECT clicks.id
@@ -123,7 +123,7 @@ Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理�
 一旦查詢已分割時，便會分散到多個節點。 如此一來，進入到每個節點的事件數目便會降低，因此也降低了聯結時間範圍內保留的狀態大小。 
 
 ## <a name="temporal-analytic-functions"></a>時態性分析函數
-時態性分析函數耗用的記憶體 (狀態大小)，與事件速率乘以持續時間成正比。 分析函式所耗用的記憶體不會與視窗大小成正比，而是每個時間範圍內的資料分割計數。
+時態性分析函數耗用的記憶體 (狀態大小)，與事件速率乘以持續時間成正比。分析函數耗用的記憶體不是與視窗大小成正比，而是與每個時間範圍的分割計數成正比。
 
 修復方法與時態性聯結相似。 您可以使用 **PARTITION BY** 向外延展查詢。 
 
@@ -147,7 +147,7 @@ ASA 中的參考資料會載入記憶體中，以供快速查閱。 針對目前
 
 ## <a name="next-steps"></a>後續步驟
 * [在 Azure 串流分析中建立可平行查詢](stream-analytics-parallelization.md)
-* [調整 Azure 串流分析工作以增加輸送量](stream-analytics-scale-jobs.md)
+* [擴展 Azure 流分析作業以提高輸送量](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

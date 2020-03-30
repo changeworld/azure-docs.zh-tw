@@ -1,26 +1,26 @@
 ---
-title: Azure 監視器的一般警示架構定義
-description: 瞭解 Azure 監視器的一般警示架構定義
+title: Azure 監視器的常見警報架構定義
+description: 瞭解 Azure 監視器的常見警報架構定義
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275018"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
-本文說明 Azure 監視器的[常見警示架構定義](https://aka.ms/commonAlertSchemaDocs)，包括適用于 webhook、Azure Logic Apps、Azure Functions 和 Azure 自動化 runbook 的。 
+本文介紹了 Azure 監視器[的常見警報架構定義](https://aka.ms/commonAlertSchemaDocs)，包括 Webhook、Azure 邏輯應用、Azure 函數和 Azure 自動化 Runbook 的警報架構定義。 
 
-任何警示實例都會描述受影響的資源，以及警示的原因。 這些實例會在下列各節的一般架構中說明：
-* **基本**資訊：一組標準化的欄位，通用於所有警示類型，其中描述警示所在的資源，以及其他常見的警示中繼資料（例如，嚴重性或描述）。 
-* **警示內容**：描述警示原因的一組欄位，其中的欄位會根據警示類型而有所不同。 例如，計量警示會在警示內容中包含類似計量名稱和計量值的欄位，而活動記錄警示則包含產生警示之事件的相關資訊。 
+任何警報實例都描述受影響的資源和警報的原因。 這些實例在以下各節中的通用架構仲介紹：
+* **要點**：一組標準化欄位，在所有警報類型中很常見，用於描述警報所打開的資源，以及其他常見警報中繼資料（例如，嚴重性或描述）。 
+* **警報上下文**：一組描述警報原因的欄位，欄位因警報類型而異。 例如，指標警報包括諸如警報上下文中的指標名稱和指標值等欄位，而活動日誌警報包含有關生成警報的事件的資訊。 
 
-**範例警示承載**
+**樣品警報有效負載**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -73,21 +73,21 @@ ms.locfileid: "79275018"
 
 | 欄位 | 描述|
 |:---|:---|
-| alertId | 唯一識別警示實例的 GUID。 |
-| alertRule | 產生警示實例之警示規則的名稱。 |
-| Severity | 警示的嚴重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
-| signalType | 識別已定義警示規則的信號。 可能的值： [計量]、[記錄] 或 [活動記錄]。 |
-| monitorCondition | 當警示引發時，警示的監視條件會設定為 [已**引發**]。 當引發警示的基礎條件清除時，監視條件會設定為 [**已解決**]。   |
-| monitoringService | 產生警示的監視服務或解決方案。 警示內容的欄位是由監視服務所決定。 |
-| alertTargetIds | 受影響警示目標之 Azure Resource Manager 識別碼的清單。 針對 Log Analytics 工作區或 Application Insights 實例上定義的記錄警示，這是各自的工作區或應用程式。 |
-| originAlertId | 警示實例的識別碼，由產生它的監視服務所產生。 |
-| firedDateTime | 在國際標準時間（UTC）中引發警示實例的日期和時間。 |
-| resolvedDateTime | 警示實例的監視條件設定為 [以 UTC**解決**] 的日期和時間。 目前僅適用于計量警示。|
-| description | [描述]，如警示規則中所定義。 |
-|essentialsVersion| [基本] 區段的版本號碼。|
-|alertCoNtextVersion | `alertContext` 區段的版本號碼。 |
+| alertId | 識別警報實例的 GUID 唯一標識。 |
+| 警報規則 | 生成警報實例的警報規則的名稱。 |
+| Severity | 警報的嚴重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| 信號類型 | 標識定義警報規則的信號。 可能的值：指標、日誌或活動日誌。 |
+| 監視器條件 | 警報觸發時，警報的監視器條件設置為 **"已觸發**"。 當導致警報觸發的基本條件清除時，監視器條件設置為 **"已解決**"。   |
+| 監控服務 | 生成警報的監視服務或解決方案。 警報上下文的欄位由監視服務指定。 |
+| 警報目標Ids | 受警報影響的 Azure 資源管理器標識的清單。 對於在日誌分析工作區或應用程式見解實例上定義的日誌警報，它是相應的工作區或應用程式。 |
+| 起源警報Id | 警報實例的 ID，由生成警報實例的監視服務生成。 |
+| 已觸發日期時間 | 在協調通用時間 （UTC） 中觸發警報實例的日期和時間。 |
+| 已解決日期時間 | 警報實例的監視器條件設置為 UTC**中已解決**的日期和時間。 當前僅適用于指標警報。|
+| description | 描述，如警報規則中定義的。 |
+|本質版本| 要點部分的版本號。|
+|警報上下文版本 | 分區的版本`alertContext`號。 |
 
-**範例值**
+**樣本值**
 ```json
 {
   "essentials": {
@@ -115,7 +115,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -149,11 +149,11 @@ ms.locfileid: "79275018"
 ### <a name="log-alerts"></a>記錄警示
 
 > [!NOTE]
-> 針對已定義自訂電子郵件主旨和/或 JSON 內容的記錄警示，啟用通用架構會將電子郵件主旨和（或）承載架構還原成如下所述的內容。 啟用通用架構的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會內嵌在記錄警示承載中。 您可以藉由檢查旗標 `IncludeSearchResults`來判斷這一點。 如果未包含搜尋結果，您應該搭配使用搜尋查詢與[Log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)。 
+> 對於定義了自訂電子郵件主題和/或 JSON 負載的日誌警報，啟用通用架構會將電子郵件主題和/或有效負載架構還原到如下所示的模式。 啟用了通用架構的警報的上限為每個警報 256 KB。 如果搜尋結果導致警報大小超過此閾值，則搜尋結果不會嵌入到日誌警報負載中。 您可以通過檢查標誌`IncludeSearchResults`來確定這一點。 如果不包括搜尋結果，則應將搜索查詢與[日誌分析 API](https://docs.microsoft.com/rest/api/loganalytics/query/get)結合使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -220,7 +220,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -285,7 +285,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -312,7 +312,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -345,7 +345,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -375,7 +375,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -408,7 +408,7 @@ ms.locfileid: "79275018"
 
 #### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -452,7 +452,7 @@ ms.locfileid: "79275018"
 ```
 #### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-**範例值**
+**樣本值**
 ```json
 {
   "alertContext": {
@@ -481,6 +481,6 @@ ms.locfileid: "79275018"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解常見的[警示架構](https://aka.ms/commonAlertSchemaDocs)。
-- 瞭解[如何建立邏輯應用程式，以使用一般警示架構來處理您的所有警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
+- 瞭解有關[常見警報架構](https://aka.ms/commonAlertSchemaDocs)的更多。
+- [瞭解如何創建使用通用警報架構來處理所有警報的邏輯應用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
 

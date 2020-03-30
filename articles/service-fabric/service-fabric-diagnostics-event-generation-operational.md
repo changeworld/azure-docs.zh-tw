@@ -1,24 +1,24 @@
 ---
-title: Azure Service Fabric 事件清單
+title: Azure 服務結構事件清單
 description: Azure Service Fabric 所提供的事件完整清單可協助監控叢集。
 author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258534"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件清單 
 
-Service Fabric 會公開一組主要的叢集事件，以 [Service Fabric 事件](service-fabric-diagnostics-events.md)的方式向您通知叢集的狀態。 這些是以 Service Fabric 在您的節點和叢集上執行的動作，或以叢集擁有者/操作者所做的管理決定為基礎。 您可以透過數種方式進行設定來存取這些事件，包括設定叢集的[Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)，或查詢[EventStore](service-fabric-diagnostics-eventstore.md)。 在 Windows 電腦上，這些事件會饋送至 EventLog，因此您可以在事件檢視器中看到 Service Fabric 事件。 
+Service Fabric 會公開一組主要的叢集事件，以 [Service Fabric 事件](service-fabric-diagnostics-events.md)的方式向您通知叢集的狀態。 這些是以 Service Fabric 在您的節點和叢集上執行的動作，或以叢集擁有者/操作者所做的管理決定為基礎。 可以通過以多種方式配置這些事件，包括[使用群集配置 Azure 監視器日誌](service-fabric-diagnostics-oms-setup.md)，或查詢[EventStore](service-fabric-diagnostics-eventstore.md)。 在 Windows 電腦上，這些事件會饋送至 EventLog，因此您可以在事件檢視器中看到 Service Fabric 事件。 
 
 以下是這些事件的一些特性
 * 每個事件都會繫結至叢集中的特定實體，例如應用程式、服務、節點、複本。
-* 每個事件都包含一組通用欄位： EventInstanceId、事件名稱和類別目錄。
+* 每個事件包含一組常見欄位：事件實例Id、事件名稱和類別。
 * 每個事件都包含可將事件繫結回到其相關實體的欄位。 例如，ApplicationCreated 事件具有可識別所建立應用程式名稱的欄位。
 * 事件會以此方式予以結構化，可使用於各種不同的工具來進行進一步分析。 此外，事件的相關詳細資料會定義為不同的屬性，而不是很長的字串。 
 * 事件是由 Service Fabric 中不同的子系統所寫入並以下面的 Source(Task) 識別。 [Service Fabric 架構](service-fabric-architecture.md)和 [Service Fabric 技術概觀](service-fabric-technical-overview.md)提供有關這些子系統的詳細資訊。
@@ -97,37 +97,37 @@ Service Fabric 會公開一組主要的叢集事件，以 [Service Fabric 事件
 
 ## <a name="replica-events"></a>複本事件
 
-**複本生命週期事件**
+**副本生命週期事件**
 
 | EventId | 名稱 | 類別 | 描述 |來源 (工作) | 層級 |
 | --- | --- | ---| --- | --- | --- |
-| 61701 | ReliableDictionaryOpened | LifeCycle | 可靠的字典已開啟 | DistributedDictionary | 資訊 |
-| 61702 | ReliableDictionaryClosed | LifeCycle | 可靠的字典已關閉 | DistributedDictionary | 資訊 |
-| 61703 | ReliableDictionaryCheckpointRecovered | LifeCycle | 可靠的字典已復原其檢查點 | DistributedDictionary | 資訊 |
-| 61704 | ReliableDictionaryCheckpointFilesSent | LifeCycle | 複本已傳送可靠字典的檢查點檔案 | DistributedDictionary | 資訊 |
-| 61705 | ReliableDictionaryCheckpointFilesReceived | LifeCycle | 複本已收到可靠字典的檢查點檔案 | DistributedDictionary | 資訊 |
-| 61963 | ReliableQueueOpened | LifeCycle | 可靠的佇列已開啟 | DistributedQueue | 資訊 |
-| 61964 | ReliableQueueClosed | LifeCycle | 可靠的佇列已關閉 | DistributedQueue | 資訊 |
-| 61965 | ReliableQueueCheckpointRecovered | LifeCycle | 可靠的佇列已復原其檢查點 | DistributedQueue | 資訊 |
-| 61966 | ReliableQueueCheckpointFilesSent | LifeCycle | 複本已傳送可靠佇列的檢查點檔案 | DistributedQueue | 資訊 |
-| 63647 | ReliableQueueCheckpointFilesReceived | LifeCycle | 複本已接收可靠佇列的檢查點檔案 | DistributedQueue | 資訊 |
-| 63648 | ReliableConcurrentQueueOpened | LifeCycle | 可靠的並行佇列已開啟 | ReliableConcurrentQueue | 資訊 |
-| 63649 | ReliableConcurrentQueueClosed | LifeCycle | 可靠的並行佇列已關閉 | ReliableConcurrentQueue | 資訊 |
-| 63650 | ReliableConcurrentQueueCheckpointRecovered | LifeCycle | 可靠的並行佇列已復原其檢查點 | ReliableConcurrentQueue | 資訊 |
-| 61687 | TStoreError | 失敗 | 可靠的集合收到意外的錯誤 | TStore | 錯誤 |
-| 63831 | PrimaryFullCopyInitiated | LifeCycle | 主要複本已起始完整複本 | TReplicator | 資訊 |
-| 63832 | PrimaryPartialCopyInitiated | LifeCycle | 主要複本已起始部分複本 | TReplicator | 資訊 |
-| 16831 | BuildIdleReplicaStarted | LifeCycle | 主要複本已開始建立閒置複本 | 複寫 | 資訊 |
-| 16832 | BuildIdleReplicaCompleted | LifeCycle | 主要複本已完成建立閒置複本 | 複寫 | 資訊 |
-| 16833 | BuildIdleReplicaFailed | LifeCycle | 主要複本無法建立閒置複本 | 複寫 | 警告 |
-| 16834 | PrimaryReplicationQueueFull | 健康情況 | 主要複本的複寫佇列已滿 | 複寫 | 警告 |
-| 16835 | PrimaryReplicationQueueWarning | 健康情況 | 主要複本的複寫佇列已接近 full | 複寫 | 警告 |
-| 16836 | PrimaryReplicationQueueWarningMitigated | 健康情況 | 主要複本的複寫佇列正常 | 複寫 | 資訊 |
-| 16837 | SecondaryReplicationQueueFull | 健康情況 | 次要複本的複寫佇列已滿 | 複寫 | 警告 |
-| 16838 | SecondaryReplicationQueueWarning | 健康情況 | 次要複本的複寫佇列已接近 full | 複寫 | 警告 |
-| 16839 | SecondaryReplicationQueueWarningMitigated | 健康情況 | 次要複本的複寫佇列正常 | 複寫 | 資訊 |
-| 16840 | PrimaryFaultedSlowSecondary | 健康情況 | 主要複本發生緩慢的次要複本錯誤 | 複寫 | 警告 |
-| 16841 | ReplicatorFaulted | 健康情況 | 複本發生錯誤 | 複寫 | 警告 |
+| 61701 | 可靠詞典打開 | LifeCycle | 可靠的字典已經打開 | 分散式詞典 | 資訊 |
+| 61702 | 可靠詞典已關閉 | LifeCycle | 可靠的字典已關閉 | 分散式詞典 | 資訊 |
+| 61703 | 可靠詞典檢查點恢復 | LifeCycle | 可靠的字典已恢復其檢查點 | 分散式詞典 | 資訊 |
+| 61704 | 可靠的字典檢查檔發送 | LifeCycle | 副本已發送可靠的字典的檢查點檔 | 分散式詞典 | 資訊 |
+| 61705 | 收到的可靠詞典檢查檔 | LifeCycle | 副本已收到可靠的字典的檢查點檔 | 分散式詞典 | 資訊 |
+| 61963 | 可靠佇列打開 | LifeCycle | 可靠佇列已打開 | 分散式佇列 | 資訊 |
+| 61964 | 可靠佇列已關閉 | LifeCycle | 可靠佇列已關閉 | 分散式佇列 | 資訊 |
+| 61965 | 可靠佇列檢查點恢復 | LifeCycle | 可靠佇列已恢復其檢查點 | 分散式佇列 | 資訊 |
+| 61966 | 可靠佇列檢查檔已發送 | LifeCycle | 副本已發送可靠的佇列檢查點檔 | 分散式佇列 | 資訊 |
+| 63647 | 收到的可靠佇列檢查檔 | LifeCycle | 副本已收到可靠的佇列檢查點檔 | 分散式佇列 | 資訊 |
+| 63648 | 可靠併發佇列打開 | LifeCycle | 可靠的併發佇列已打開 | 可靠的併發佇列 | 資訊 |
+| 63649 | 可靠併發佇列已關閉 | LifeCycle | 可靠的併發佇列已關閉 | 可靠的併發佇列 | 資訊 |
+| 63650 | 可靠併發佇列檢查點恢復 | LifeCycle | 可靠的併發佇列已恢復其檢查點 | 可靠的併發佇列 | 資訊 |
+| 61687 | TStore 錯誤 | 失敗 | 可靠集合收到意外錯誤 | TStore | 錯誤 |
+| 63831 | 主完整複製啟動 | LifeCycle | 主副本已啟動完整副本 | 特複製器 | 資訊 |
+| 63832 | 主部分複製啟動 | LifeCycle | 主副本已啟動部分複本 | 特複製器 | 資訊 |
+| 16831 | 生成空閒副本已啟動 | LifeCycle | 主副本已開始生成空閒副本 | 複寫 | 資訊 |
+| 16832 | 生成空閒副本已完成 | LifeCycle | 主副本已完成構建空閒副本 | 複寫 | 資訊 |
+| 16833 | 生成空閒副本失敗 | LifeCycle | 主副本生成空閒副本失敗 | 複寫 | 警告 |
+| 16834 | 主複製佇列已滿 | 健康情況 | 主副本的複製佇列已滿 | 複寫 | 警告 |
+| 16835 | 主複製佇列警告 | 健康情況 | 主副本的複製佇列已接近已滿 | 複寫 | 警告 |
+| 16836 | 主複製佇列警告已減少 | 健康情況 | 主副本的複製佇列正常 | 複寫 | 資訊 |
+| 16837 | 輔助複製佇列已滿 | 健康情況 | 輔助副本的複製佇列已滿 | 複寫 | 警告 |
+| 16838 | 輔助複製佇列警告 | 健康情況 | 輔助副本的複製佇列已接近已滿 | 複寫 | 警告 |
+| 16839 | 輔助複製佇列警告已減少 | 健康情況 | 輔助副本的複製佇列正常 | 複寫 | 資訊 |
+| 16840 | 主故障慢速輔助 | 健康情況 | 主副本故障速度較慢的輔助副本 | 複寫 | 警告 |
+| 16841 | 複製器已失敗 | 健康情況 | 副本出現故障 | 複寫 | 警告 |
 
 ## <a name="container-events"></a>容器事件
 
@@ -242,7 +242,7 @@ Service Fabric 會公開一組主要的叢集事件，以 [Service Fabric 事件
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | 已偵測到相互關聯 | 可測試性 | 資訊 | 1 |
 
-## <a name="events-prior-to-version-62"></a>6\.2 版之前的事件
+## <a name="events-prior-to-version-62"></a>6.2 版之前的事件
 
 以下是 Service Fabric 6.2 版之前所提供事件的完整清單。
 

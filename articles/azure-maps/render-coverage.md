@@ -1,25 +1,25 @@
 ---
-title: 轉譯涵蓋範圍 |Microsoft Azure 對應
-description: 在本文中，您將瞭解具有 Microsoft Azure Maps 轉譯涵蓋範圍的區域，以及其呈現的詳細資料層級。
-author: jingjing-z
+title: 渲染覆蓋率 |微軟 Azure 地圖
+description: 在本文中，瞭解具有 Microsoft Azure 地圖渲染覆蓋範圍的區域及其呈現的詳細資訊級別。
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536746"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure 地圖轉譯涵蓋範圍
 
-Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 在最低解析度中，整個世界都適合單一磚。 在最高的解析度上，單一磚代表38正方形計量。 當您放大地圖時，您會看到有關洲、區域、城市和個別街道的更多詳細資料。 如需磚的詳細資訊，請參閱[縮放層級和磚方格](zoom-levels-and-tile-grid.md)。
+Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 以最低的解析度，整個世界都適合單個磁貼。 在最高解析度下，單個瓷磚表示 38 平方米。 放大地圖時，您將看到有關大陸、區域、城市和各個街道的更多詳細資訊。 有關磁貼的詳細資訊，請參閱[縮放級別和磁貼網格](zoom-levels-and-tile-grid.md)。
 
-不過，對應的資訊層級與所有區域的精確度並不相同。 下表詳細說明您可以為每個區域呈現的資訊層級。
+但是，地圖對於所有區域的資訊和準確性都不同。 下表詳細介紹了可以為每個區域呈現的資訊級別。
 
 ## <a name="legend"></a>圖例
 

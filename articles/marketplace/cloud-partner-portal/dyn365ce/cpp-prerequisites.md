@@ -1,22 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement 供應專案必要條件 |Azure Marketplace
-description: 已取代的 .CPP 文章，連結至電腦文章。 Was 「在 Azure Marketplace 上發佈 Azure 應用程式供應專案的必要條件」
-services: Dynamics 365 for Customer Engagement offer, Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
+title: 動態 365 客戶參與提供先決條件 |Azure 應用商店
+description: 已棄用的 CPP 文章，連結到 PC 文章。 是"在 Azure 應用商店中發佈 Azure 應用程式產品/服務的先決條件"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 4ad28b11967f1bc791d02dba5d5e6a613fed2130
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 781506c7560e8c88cdaafe487bfb8a09e316206c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808914"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278343"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement 必要條件
 
-[Cloud Partner 入口網站](https://cloudpartner.azure.com/)不再支援建立和管理 Dynamics 365 Customer Engagement 供應專案。 相反地，此功能已移至 Microsoft[合作夥伴中心入口網站](https://partner.microsoft.com/)。 如需詳細資訊，請參閱[建立新的 Dynamics 365 For Customer Engagement & PowerApps 供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)。
+[雲合作夥伴門戶](https://cloudpartner.azure.com/)不再支援創建和管理 Dynamics 365 客戶互動產品。 相反，此功能已移動到 Microsoft[合作夥伴中心門戶](https://partner.microsoft.com/)。 有關詳細資訊，請參閱[為客戶參與度創建新的 Dynamics 365 & PowerApps 產品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)。
 
-在建立新的 Dynamics 365 for Customer Engagement 供應專案之前，您應該先閱讀[建立合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然後開啟已選取 [**總覽**] 頁面的 [[商業 Marketplace] 儀表板](https://partner.microsoft.com/dashboard/directory)。 依照[建立新的 Dynamics 365 For Customer Engagement & PowerApps 供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)中的指示來建立您的供應專案。
+在為客戶參與產品創建新的 Dynamics 365 之前，應閱讀["創建合作夥伴中心"帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然後在選中 **"概述"** 頁後打開["商業市場"儀表板](https://partner.microsoft.com/dashboard/directory)。 按照[創建新動態 365 中的說明為客戶參與度& PowerApps 產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)創建您的產品/服務。

@@ -1,15 +1,15 @@
 ---
-title: 管理 Azure Service Fabric 應用程式秘密
+title: 管理 Azure 服務結構應用程式機密
 description: 了解如何保護 Service Fabric 應用程式中的祕密值 (無平台限制)。
 author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259054"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>在 Service Fabric 應用程式中管理已加密的祕密
@@ -22,13 +22,13 @@ ms.locfileid: "79259054"
 
 ## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>設定加密憑證並將祕密加密
 設定加密憑證，並使用該憑證來對 Windows 和 Linux 之間不同的祕密進行加密。
-* [設定加密憑證，並在 Windows 叢集上將秘密加密。][secret-management-windows-specific-link]
-* [設定加密憑證，並在 Linux 叢集上將秘密加密。][secret-management-linux-specific-link]
+* [設定加密憑證，並在 Windows 叢集上將祕密加密。][secret-management-windows-specific-link]
+* [設置加密證書並在 Linux 群集上加密機密。][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>指定應用程式中已加密的祕密
-上一個步驟說明了如何以憑證對祕密進行加密，並產生要在應用程式中使用的 base-64 編碼字串。 這個 base-64 編碼的字串可以指定為服務的 config.xml 中的加密[參數][parameters-link]，或當做服務 ServiceManifest 中的加密[環境變數][environment-variables-link]。
+上一個步驟說明了如何以憑證對祕密進行加密，並產生要在應用程式中使用的 base-64 編碼字串。 此 base-64 編碼字串可以在服務的 Settings.xml 中指定為已加密的[參數][parameters-link]，或在服務的 ServiceManifest.xml 中指定為已加密的[環境變數][environment-variables-link]。
 
-在服務的設定 .xml 設定檔中指定已加密的[參數][parameters-link]，並將 `IsEncrypted` 屬性設為 `true`：
+在服務的 Settings.xml 組態檔中指定已加密的[參數][parameters-link]，並將 `IsEncrypted` 屬性設為 `true`：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -38,7 +38,7 @@ ms.locfileid: "79259054"
   </Section>
 </Settings>
 ```
-在服務的 ServiceManifest 中指定已加密的[環境變數][environment-variables-link]，並將 `Type` 屬性設為 `Encrypted`：
+在服務的 ServiceManifest.xml 檔案中指定已加密的[環境變數][environment-variables-link]，並將 `Type` 屬性設為 `Encrypted`：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -47,7 +47,7 @@ ms.locfileid: "79259054"
 </CodePackage>
 ```
 
-您也應該在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將**SecretsCertificate**元素新增至**ApplicationManifest** ，並包含所需的憑證指紋。
+通過在應用程式清單中指定證書，還應將機密包含在 Service Fabric 應用程式中。 向**應用程式清單.xml**添加**機密證書**元素，並包含所需的證書的指紋。
 
 ```xml
 <ApplicationManifest … >
@@ -94,7 +94,7 @@ Settings.xml 組態檔允許可以在應用程式建立時提供的可覆寫參�
   </ServiceManifestImport>
  ```
 
-現在可以在建立應用程式執行個體時，將值指定為「應用程式參數」 。 可以使用 PowerShell 編寫指令碼 (或以 C# 撰寫) 來建立應用程式執行個體，使其在建置流程中很容易整合。
+現在可以在建立應用程式執行個體時，將值指定為「應用程式參數」 ** 。 可以使用 PowerShell 編寫指令碼 (或以 C# 撰寫) 來建立應用程式執行個體，使其在建置流程中很容易整合。
 
 若使用 PowerShell，則參數會提供給 `New-ServiceFabricApplication` 命令當做 [雜湊表](https://technet.microsoft.com/library/ee692803.aspx)：
 
@@ -121,7 +121,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-encrypted-secrets-from-service-code"></a>從服務程式碼解開已加密的祕密
-用於存取[參數][parameters-link]和[環境變數][environment-variables-link]的 api，可讓您輕鬆地解密加密值。 由於加密的字串包含用於加密的憑證相關資訊，因此您不需要手動指定憑證。 只需要在執行服務的節點上安裝憑證。
+用於存取[參數][parameters-link]和[環境變數][environment-variables-link]的 API 可輕易地對已加密的值進行解密。 由於加密的字串包含用於加密的憑證相關資訊，因此您不需要手動指定憑證。 只需要在執行服務的節點上安裝憑證。
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -138,7 +138,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* Service Fabric[秘密存放區](service-fabric-application-secret-store.md) 
+* 服務結構[機密存儲](service-fabric-application-secret-store.md) 
 * 深入了解[應用程式及服務安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

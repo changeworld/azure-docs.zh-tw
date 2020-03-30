@@ -9,14 +9,14 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8e4c1c05b133f85b7473c3ce97c9f509ac8f7d37
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299145"
 ---
-- 目前無法在訂用帳戶之間移動增量快照集。
-- 您目前最多隻能在任何指定的時間產生特定快照集系列的五個快照集的 SAS Uri。
-- 您無法為該磁片的訂用帳戶以外的特定磁片建立增量快照集。
-- 每個磁片最多可以建立7個增量快照集每五分鐘一次。
-- 總共可以針對單一磁片建立總計200的增量快照集。
+- 增量快照當前無法在訂閱之間移動。
+- 您當前只能在任何給定時間生成最多 5 個特定快照系列的 SAS URI。
+- 不能為該磁片訂閱之外的特定磁片創建增量快照。
+- 每五分鐘最多可以創建 7 個增量快照。
+- 總共可以為單個磁片創建 200 個增量快照。
