@@ -1,5 +1,5 @@
 ---
-title: 上傳一般化 VHD，在 Azure 中建立多個 Vm
+title: 上傳通用 VHD 在 Azure 中創建多個 VM
 description: 將一般化 VHD 上傳至 Azure 儲存體帳戶，建立搭配 Resource Manager 部署模型使用的 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073333"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>將一般化 VHD 上傳至 Azure，以建立新的 VM。
@@ -36,13 +36,13 @@ ms.locfileid: "74073333"
 
 一般化 VHD - 已使用 Sysprep 移除您所有的個人帳戶資訊。 如果您想要使用 VHD 作為建立新 VM 映像的來源，您應該︰
   
-  * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md). 
+  * [準備要上載到 Azure 的 Windows VHD。](prepare-for-upload-vhd-image.md) 
   * 使用 Sysprep 一般化虛擬機器
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 將 Windows 虛擬機器一般化
 本節說明如何將 Windows 虛擬機器一般化以做為映像。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx)。
 
-請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+請確定 Sysprep 支援電腦上執行的伺服器角色。 有關詳細資訊，請參閱[伺服器角色的 Sysprep 支援](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果您是第一次在將 VHD 上傳至 Azure 之前執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 再執行 Sysprep。 
@@ -51,9 +51,9 @@ ms.locfileid: "74073333"
 
 1. 登入 Windows 虛擬機器。
 2. 以系統管理員身分開啟 [命令提示字元] 視窗。 切換至 **%windir%\system32\sysprep** 目錄，然後執行 `sysprep.exe`。
-3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已勾選 [一般化] 核取方塊。
-4. 在 [關機選項] 中選取 [關機]。
-5. 按一下 [確定]。
+3. 在 [系統準備工具]**** 對話方塊中，選取 [進入系統全新體驗 (OOBE)]****，並確認已勾選 [一般化]**** 核取方塊。
+4. 在  **[關機選項]** 中，選取  **[關機]**。
+5. 按一下 [確定]****。
    
     ![啟動 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 完成時，會關閉虛擬機器。 
@@ -106,13 +106,13 @@ Get-AzStorageAccount
     Get-AzResourceGroup
     ```
 
-    若要在**美國中部**區域建立名為 **myResourceGroup** 的資源群組，請輸入︰
+    若要在**美國西部**區域建立名為 **myResourceGroup** 的資源群組，請輸入︰
 
     ```powershell
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. 使用 **New-AzStorageAccount** \(英文\) Cmdlet，在此資源群組中建立名為 [mystorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) 的儲存體帳戶：
+2. 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在此資源群組中建立名為 **mystorageaccount** 的儲存體帳戶：
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -154,7 +154,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="set-the-uri-of-the-vhd"></a>設定 VHD 的 URI
 
-要使用之 VHD 的 URI 格式如下： https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此範例中，名為 **myVHD** 的 VHD 位於容器 **mycontainer** 中的儲存體帳戶 **mystorageaccount**。
+要使用之 VHD 的 URI 格式如下：https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此範例中，名為 **myVHD** 的 VHD 位於容器 **mycontainer** 中的儲存體帳戶 **mystorageaccount**。
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -162,7 +162,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-建立[虛擬網路](../../virtual-network/virtual-networks-overview.md)的 vNet 和子網路。
+創建[虛擬網路](../../virtual-network/virtual-networks-overview.md)的 vNet 和子網。
 
 1. 建立子網路。 下列範例會在資源群組 **myResourceGroup** 中建立名為 **mySubnet** 的子網路，而其位址首碼為 **10.0.0.0/24**。  
    
@@ -282,7 +282,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>確認已建立 VM
-完成時，在 [Azure 入口網站](https://portal.azure.com)的 [瀏覽] > [虛擬機器] 底下，或是使用下列 PowerShell 命令，應該就可以看到新建立的 VM：
+完成時，在 [Azure 入口網站](https://portal.azure.com)的 [瀏覽]**** > [虛擬機器]**** 底下，或是使用下列 PowerShell 命令，應該就可以看到新建立的 VM：
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

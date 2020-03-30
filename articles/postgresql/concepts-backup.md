@@ -1,31 +1,31 @@
 ---
-title: 備份與還原-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 瞭解自動備份和還原您的適用於 PostgreSQL 的 Azure 資料庫伺服器-單一伺服器。
+title: 備份和還原 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
+description: 瞭解自動備份和還原 Azure 資料庫的 PostgreSQL 伺服器 - 單伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619617"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>備份和還原 Azure 資料庫中的 PostgreSQL - 單個伺服器
 
 適用於 PostgreSQL 的 Azure 資料庫會自動建立伺服器備份，並將其儲存在使用者設定的本地備援或異地備援儲存體中。 備份可以用來將伺服器還原至某個時間點。 備份和還原可保護資料免於意外損毀或刪除，是商務持續性策略中不可或缺的一部分。
 
 ## <a name="backups"></a>備份
 
-適用於 PostgreSQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 視支援的最大儲存體大小而定，我們會採用完整和差異備份（4 TB 的儲存體伺服器）或快照集備份（最多 16 TB 的儲存體伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+用於 PostgreSQL 的 Azure 資料庫獲取資料檔案和事務日誌的備份。 根據支援的最大存儲大小，我們要麼進行完整備份和差分備份（最多 4 TB 存儲伺服器）或快照備份（最多 16 TB 存儲伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
 
-無法匯出這些備份檔案。 備份只能用於適用於 PostgreSQL 的 Azure 資料庫中的還原作業。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)來複製資料庫。
+無法匯出這些備份檔案。 備份只能用於 PostgreSQL 的 Azure 資料庫中的還原操作。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
-一般來說，完整備份會每週進行一次，而差異備份則針對最大支援的儲存體為 4 TB 的伺服器一天執行兩次。 針對支援的儲存體上限為 16 TB 的伺服器，快照集備份會每天至少執行一次。 針對上述兩種情況，交易記錄備份會每五分鐘執行一次。 在建立伺服器之後，會立即排程完整備份的第一個快照集。 在大型還原的伺服器上，初始完整備份可能需要較長的時間。 可在其中還原新伺服器的最早時間點，是完成初次完整備份的時間。 當快照集瞬間，最多可支援 16 TB 儲存體的伺服器還原到建立時間。
+通常，每週進行一次完整備份，對於最多支援存儲 4 TB 的伺服器，每天進行兩次差異備份。 針對支援的儲存體上限為 16 TB 的伺服器，快照集備份會每天至少執行一次。 針對上述兩種情況，交易記錄備份會每五分鐘執行一次。 創建伺服器後立即計畫完全備份的第一個快照。 在大型還原伺服器上，初始完整備份可能需要更長的時間。 可在其中還原新伺服器的最早時間點，是完成初次完整備份的時間。 由於快照是暫態的，因此支援高達 16 TB 存儲的伺服器可以一直還原到創建時間。
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
@@ -40,7 +40,7 @@ ms.locfileid: "77619617"
 
 例如，如果您已佈建的伺服器大小為 250 GB，您就能免費獲得 250 GB 的備份儲存體。 超過 250 GB 的儲存體則會收費。
 
-## <a name="restore"></a>{1}還原{2}
+## <a name="restore"></a>還原
 
 在適用於 PostgreSQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77619617"
 
 ### <a name="geo-restore"></a>異地還原
 
-如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器，可以還原到地理配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 儲存體的伺服器，也可以在任何支援 16 TB 伺服器的區域中還原異地備份。 如需支援的區域清單，請參閱[Azure Database For PostgeSQL 定價層](concepts-pricing-tiers.md)。
+如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 支援最多 4 TB 存儲的伺服器可以還原到地理配對區域，也可以還原到支援最多 16 TB 存儲的任何區域。 對於支援高達 16 TB 存儲的伺服器，可以在支援 16 TB 伺服器的任何區域恢復異地備份。 查看[Azure 資料庫的 PostgeSQL 定價層](concepts-pricing-tiers.md)，查看受支援區域的清單。
 
 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
@@ -75,12 +75,12 @@ ms.locfileid: "77619617"
 從其中任何一種復原機制還原之後，您應執行下列工作，讓您的使用者和應用程式回復正常執行狀態︰
 
 - 如果新伺服器就會取代原始伺服器，則將用戶端和用戶端應用程式重新導向至新伺服器
-- 請確定已備妥適當的伺服器層級防火牆和 VNet 規則供使用者連接。 這些規則不會從源伺服器複製。
+- 確保為使用者提供適當的伺服器級防火牆和 VNet 規則進行連接。 這些規則不會從原始伺服器複製。
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用 [Azure 入口網站](howto-restore-server-portal.md)進行還原。
-- 瞭解如何使用 [Azure CLI](howto-restore-server-cli.md)進行還原。
+- 瞭解如何使用 Azure [門戶](howto-restore-server-portal.md)進行還原。
+- 瞭解如何使用 Azure [CLI](howto-restore-server-cli.md)進行還原。
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。

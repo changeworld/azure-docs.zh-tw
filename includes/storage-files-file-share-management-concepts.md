@@ -9,16 +9,16 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597778"
 ---
-Azure 檔案共用會部署到*儲存體帳戶*，這是代表共用儲存體集區的最上層物件。 此儲存體集區可用來部署多個檔案共用，以及其他儲存體資源（例如 blob 容器、佇列或資料表）。 部署到儲存體帳戶的所有儲存體資源都會共用適用于該儲存體帳戶的限制。 若要查看儲存體帳戶目前的限制，請參閱[Azure 檔案儲存體擴充性和效能目標](../articles/storage/files/storage-files-scale-targets.md)。
+Azure 檔共用部署到*存儲帳戶*中，這些帳戶是表示共用存儲池的頂級物件。 此存儲池可用於部署多個檔共用以及其他存儲資源，如 Blob 容器、佇列或表。 部署到存儲帳戶中的所有存儲資源都共用適用于該存儲帳戶的限制。 要查看存儲帳戶的當前限制，請參閱 Azure[檔可伸縮性和性能目標](../articles/storage/files/storage-files-scale-targets.md)。
 
-有兩種主要類型的儲存體帳戶，您將用於 Azure 檔案儲存體部署： 
-- **一般目的版本2（GPv2）儲存體帳戶**： GPv2 儲存體帳戶可讓您在以標準/硬碟為基礎（HDD）的硬體上部署 Azure 檔案共用。 除了儲存 Azure 檔案共用，GPv2 儲存體帳戶還可以儲存其他儲存體資源，例如 blob 容器、佇列或資料表。 
-- **FileStorage 儲存體帳戶**： FileStorage 儲存體帳戶可讓您在 premium/固態磁片型（SSD 型）硬體上部署 Azure 檔案共用。 FileStorage 帳戶只能用來儲存 Azure 檔案共用;不能在 FileStorage 帳戶中部署其他儲存體資源（blob 容器、佇列、資料表等等）。
+有兩種主要類型的存儲帳戶將用於 Azure 檔部署： 
+- **通用版本 2 （GPv2） 存儲帳戶**：GPv2 存儲帳戶允許您在基於標準/基於硬碟（基於 HDD）的硬體上部署 Azure 檔共用。 除了存儲 Azure 檔共用外，GPv2 存儲帳戶還可以存儲其他存儲資源，如 Blob 容器、佇列或表。 
+- **檔存儲存儲帳戶**：檔存儲存儲帳戶允許您在基於高級/固態磁片（基於 SSD）的硬體上部署 Azure 檔共用。 檔存儲帳戶只能用於存儲 Azure 檔共用;因此，檔存儲帳戶只能用於存儲 Azure 檔共用。無法在 FileStorage 帳戶中部署其他存儲資源（blob 容器、佇列、表等）。
 
-在 Azure 入口網站、PowerShell 或 CLI 中，您可能會遇到數個其他的儲存體帳戶類型。 兩個儲存體帳戶類型 BlockBlobStorage 和 BlobStorage 儲存體帳戶不能包含 Azure 檔案共用。 您可能會看到的其他兩個儲存體帳戶類型為一般用途第1版（GPv1）和傳統儲存體帳戶，這兩者都可以包含 Azure 檔案共用。 雖然 GPv1 和傳統儲存體帳戶可能包含 Azure 檔案共用，但 Azure 檔案儲存體的大部分新功能僅適用于 GPv2 和 FileStorage 儲存體帳戶。 因此，我們建議僅針對新的部署使用 GPv2 和 FileStorage 儲存體帳戶，並在您的環境中已存在時，升級 GPv1 和傳統儲存體帳戶。  
+在 Azure 門戶、PowerShell 或 CLI 中可能會遇到幾種其他存儲帳戶類型。 兩種存儲帳戶類型（塊 Blob 存儲帳戶和 Blob 存儲存儲帳戶）不能包含 Azure 檔共用。 您可能會看到的其他兩種存儲帳戶類型是通用版本 1 （GPv1） 和經典存儲帳戶，這兩種帳戶都可以包含 Azure 檔共用。 儘管 GPv1 和經典存儲帳戶可能包含 Azure 檔共用，但 Azure 檔的大多數新功能僅在 GPv2 和檔存儲存儲帳戶中可用。 因此，我們建議僅將 GPv2 和 FileStorage 存儲帳戶用於新部署，並在環境中已存在 GPv1 和經典存儲帳戶時升級這些帳戶。  

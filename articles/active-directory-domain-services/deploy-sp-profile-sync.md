@@ -1,6 +1,6 @@
 ---
-title: 啟用 Azure AD DS 的 SharePoint 使用者設定檔服務 |Microsoft Docs
-description: 瞭解如何設定 Azure Active Directory Domain Services 受控網域以支援 SharePoint Server 的設定檔同步處理
+title: 使用 Azure AD DS 啟用共用點使用者設定檔服務 |微軟文檔
+description: 瞭解如何配置 Azure 活動目錄域服務託管域以支援 SharePoint 伺服器的設定檔同步
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613862"
 ---
-# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>設定 Azure Active Directory Domain Services 以支援 SharePoint Server 的使用者設定檔同步處理
+# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure 活動目錄域服務以支援 SharePoint 伺服器的使用者設定檔同步
 
-SharePoint Server 包含同步處理使用者設定檔的服務。 這項功能可讓使用者設定檔儲存在集中位置，並可跨多個 SharePoint 網站和伺服器陣列存取。 若要設定 SharePoint Server 使用者設定檔服務，必須在 Azure Active Directory Domain Services （Azure AD DS）受控網域中授與適當的許可權。 如需詳細資訊，請參閱[SharePoint Server 中的使用者設定檔同步](https://technet.microsoft.com/library/hh296982.aspx)處理。
+SharePoint 伺服器包括用於同步使用者設定檔的服務。 此功能允許將使用者設定檔存儲在中心位置，並跨多個 SharePoint 網站和伺服器場訪問。 要配置 SharePoint Server 使用者設定檔服務，必須在 Azure 活動目錄域服務 （Azure AD DS） 託管域中授予適當的許可權。 有關詳細資訊，請參閱[SharePoint 伺服器 中的使用者設定檔同步](https://technet.microsoft.com/library/hh296982.aspx)。
 
-本文說明如何設定 Azure AD DS 以允許 SharePoint Server 使用者設定檔同步處理服務。
+本文介紹如何配置 Azure AD DS 以允許 SharePoint 伺服器使用者設定檔同步服務。
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您需要下列資源和許可權：
+要完成本文，您需要以下資源和特權：
 
 * 有效的 Azure 訂用帳戶。
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 實例][create-azure-ad-ds-instance]。
-* 已加入 Azure AD DS 受控網域的 Windows Server 管理 VM。
-    * 如有需要，請完成教學課程以[建立管理 VM][tutorial-create-management-vm]。
-* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員群組成員的使用者帳戶。
-* 使用者設定檔同步處理服務的 SharePoint 服務帳戶。
-    * 如有需要，請參閱[在 SharePoint Server 中規劃系統管理和服務帳戶][sharepoint-service-account]。
+    * 如果需要，請完成創建[和配置 Azure 活動目錄域服務實例][create-azure-ad-ds-instance]的教程。
+* 加入到 Azure AD DS 託管域的 Windows 伺服器管理 VM。
+    * 如果需要，請完成教程以創建[管理 VM][tutorial-create-management-vm]。
+* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員** 群組成員的使用者帳戶。
+* 使用者設定檔同步服務的 SharePoint 服務帳戶。
+    * 如果需要，請參閱[計畫共用點伺服器中的管理和服務帳戶][sharepoint-service-account]。
 
-## <a name="service-accounts-overview"></a>服務帳戶總覽
+## <a name="service-accounts-overview"></a>服務帳戶概述
 
-在 Azure AD DS 受控網域中，名為**AAD DC 服務帳戶**的安全性群組會當做*使用者*組織單位（OU）的一部分存在。 下列權限會委派給此安全性群組的成員：
+在 Azure AD DS 託管域中，名為**AAD DC 服務帳戶**的安全性群組作為*使用者*組織單元 （OU） 的一部分存在。 下列權限會委派給此安全性群組的成員：
 
-- 在根 DSE 上複寫**目錄變更**的許可權。
-- *在設定命名內容*（`cn=configuration` 容器）上複寫**目錄變更**許可權。
+- **複製根**DSE 上的目錄更改許可權。
+- 複製 *"配置*命名內容"（`cn=configuration`容器）上的**目錄更改**許可權。
 
-**AAD DC 服務帳戶**安全性群組也是內建組**Windows 2000 之前相容存取**的成員。
+**AAD DC 服務帳戶**安全性群組也是內建群組**前 Windows 2000 相容訪問**的成員。
 
-新增到此安全性群組時，SharePoint Server 使用者設定檔同步處理服務的服務帳戶會被授與必要的許可權，才能正常運作。
+添加到此安全性群組時，SharePoint Server 使用者設定檔同步服務的服務帳戶將被授予正常工作所需的許可權。
 
-## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>啟用 SharePoint Server 使用者設定檔同步處理的支援
+## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>啟用對 SharePoint 伺服器使用者設定檔同步的支援
 
-SharePoint Server 的服務帳戶需要有足夠的許可權，才能將變更複寫至目錄，並讓 SharePoint Server 使用者設定檔同步處理正常運作。 若要提供這些許可權，請將用於 SharePoint 使用者設定檔同步處理的服務帳戶新增至**AAD DC 服務帳戶**群組。
+SharePoint Server 的服務帳戶需要足夠的許可權來複製對目錄的更改，並讓 SharePoint 伺服器使用者設定檔同步正常工作。 要提供這些許可權，請將用於 SharePoint 使用者設定檔同步的服務帳戶添加到**AAD DC 服務帳戶**組。
 
-從您的 Azure AD DS 管理 VM，完成下列步驟：
+從 Azure AD DS 管理 VM 中，完成以下步驟：
 
 > [!NOTE]
-> 若要編輯 Azure AD DS 受控網域中的群組成員資格，您必須登入屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
+> 要編輯 Azure AD DS 託管域中的組成員身份，必須登錄到*屬於 AAD DC 管理員組的*使用者帳戶。
 
-1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 已安裝在教學課程中的可用管理工具清單，以[建立管理 VM][tutorial-create-management-vm]。
-1. 若要管理群組成員資格，請從系統管理工具清單中選取 [ **Active Directory 管理中心**]。
-1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。 隨即會顯示現有 Ou 和資源的清單。
-1. 選取 [**使用者**] OU，然後選擇 [ *AAD DC 服務帳戶*] 安全性群組。
-1. 選取 [**成員**]，然後選擇 [**新增 ...** ]。
-1. 輸入 SharePoint 服務帳戶的名稱，然後選取 **[確定]** 。 在下列範例中，SharePoint 服務帳戶名為*spadmin*：
+1. 在"開始"螢幕中，選擇 **"管理工具**"。 在本教程中顯示了用於[創建管理 VM][tutorial-create-management-vm]的可用管理工具的清單。
+1. 要管理組成員身份，請從管理工具清單中選擇**活動目錄管理中心**。
+1. 在左側窗格中，選擇 Azure AD DS 託管域，如*aaddscontoso.com*。 將顯示現有非統組織和資源的清單。
+1. 選擇 **"使用者**OU"，然後選擇*AAD DC 服務帳戶*安全性群組。
+1. 選擇 **"成員**"，然後選擇 **"添加..."**
+1. 輸入 SharePoint 服務帳戶的名稱，然後選擇 **"確定**"。 在下面的示例中，SharePoint 服務帳戶名為*spadmin*：
 
-    ![將 SharePoint 服務帳戶新增至 AAD DC 服務帳戶安全性群組](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
+    ![將 SharePoint 服務帳戶添加到 AAD DC 服務帳戶安全性群組](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱[在 SharePoint Server 中授與設定檔同步處理的 Active Directory Domain Services 許可權。](https://technet.microsoft.com/library/hh296982.aspx)
+有關詳細資訊，請參閱為[SharePoint 伺服器中的設定檔同步授予活動目錄域服務許可權](https://technet.microsoft.com/library/hh296982.aspx)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

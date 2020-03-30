@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662173"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的進階彙總
@@ -40,7 +40,7 @@ Event
 
 `makelist` 會產生資料傳遞到其中的順序清單。 若要從最舊到最新為事件排序，請在順序陳述式中使用 `asc`，而非 `desc`. 
 
-建立只包含相異值的清單也很實用。 這稱為「集合」，而且可以使用 `makeset` 來產生：
+建立只包含相異值的清單也很實用。 這稱為「集合」__，而且可以使用 `makeset` 來產生：
 
 ```Kusto
 Event
@@ -58,7 +58,7 @@ Event
 就像 `makelist` 一樣，`makeset` 也適用於已排序的資料，而且金會根據傳遞到其中的列順序來產生陣列。
 
 ## <a name="expanding-lists"></a>展開清單
-`makelist` 或 `makeset` 的反向作業是 `mvexpand`，它會展開值清單以分隔列。 它可以跨任何數目的動態欄 (包括 JSON 與陣列) 展開。 例如，您可以檢查「活動訊號」表格以了解過去一小時內從已傳送活動訊號之電腦傳送資料的解決方案：
+`makelist` 或 `makeset` 的反向作業是 `mvexpand`，它會展開值清單以分隔列。 它可以跨任何數目的動態欄 (包括 JSON 與陣列) 展開。 例如，您可以檢查「活動訊號」** 表格以了解過去一小時內從已傳送活動訊號之電腦傳送資料的解決方案：
 
 ```Kusto
 Heartbeat
@@ -66,7 +66,7 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| 電腦 | 解決方案 | 
+| 電腦 | 方案 | 
 |--------------|----------------------|
 | computer1 | 「安全性」、「更新」、「變更追蹤」 |
 | computer2 | 「安全性」、「更新」 |
@@ -82,7 +82,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| 電腦 | 解決方案 | 
+| 電腦 | 方案 | 
 |--------------|----------------------|
 | computer1 | 「安全性」 |
 | computer1 | 「更新」 |
@@ -104,7 +104,7 @@ Heartbeat
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
 
-|解決方案 | list_Computer |
+|方案 | list_Computer |
 |--------------|----------------------|
 | 「安全性」 | ["computer1", "computer2"] |
 | 「更新」 | ["computer1", "computer2"] |
@@ -113,7 +113,7 @@ Heartbeat
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>處理遺失的間隔
-`mvexpand` 的有用應用，就是必須在中填入遺漏的 bin 的預設值。例如，假設您想要尋找特定機器的執行時間，方法是探索其心跳。 您可能也想要查看活動訊號來源，這位於「類別」欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
+一個有用的應用程式`mvexpand`是需要填充缺少的條柱的預設值。例如，假設您通過探索特定電腦的心跳來查找其停機時間。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
 
 ```Kusto
 Heartbeat
@@ -182,7 +182,7 @@ WindowsFirewall
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
+- [日期與時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)

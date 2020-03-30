@@ -1,16 +1,16 @@
 ---
 title: Azure SignalR Service 內部項目
-description: 瞭解 Azure SignalR Service 內部、架構、連線以及資料傳輸方式。
+description: 瞭解 Azure SignalR 服務內部、體系結構、連接和資料的傳輸方式。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157607"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service 內部項目

@@ -1,6 +1,6 @@
 ---
-title: 使用 Microsoft Graph API 指派 Azure AD 系統管理員角色 |Microsoft Docs
-description: 在 Azure Active Directory 中使用圖形 API 指派和移除 Azure AD 系統管理員角色
+title: 使用 Microsoft 圖形 API 分配 Azure AD 管理員角色 |微軟文檔
+description: 在 Azure 活動目錄中使用圖形 API 分配和刪除 Azure AD 管理員角色
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559142"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft Graph API 指派自訂系統管理員角色 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Azure 活動目錄中的 Microsoft 圖形 API 分配自訂管理員角色 
 
-您可以使用 Microsoft Graph API，將角色指派給使用者帳戶的作業自動化。 本文涵蓋 roleAssignments 上的 POST、GET 及 DELETE 作業。
+您可以使用 Microsoft 圖形 API 自動分配角色的方式。 本文介紹角色指派的 POST、GET 和刪除操作。
 
 ## <a name="required-permissions"></a>所需的權限
 
-使用全域管理員帳戶或特殊許可權身分識別管理員連接到您的 Azure AD 租使用者，以指派或移除角色。
+使用全域管理員帳戶或特權標識管理員連接到 Azure AD 租戶以分配或刪除角色。
 
-## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 作業
+## <a name="post-operations-on-roleassignment"></a>角色指派的 POST 操作
 
-建立使用者與角色定義之間角色指派的 HTTP 要求。
+HTTP 要求在使用者和角色定義之間創建角色指派。
 
 POST
 
@@ -55,7 +55,7 @@ body
 HTTP/1.1 201 Created
 ```
 
-建立主體或角色定義不存在之角色指派的 HTTP 要求
+HTTP 要求創建不存在主體或角色定義的角色指派
 
 POST
 
@@ -79,10 +79,10 @@ body
 HTTP/1.1 404 Not Found
 ```
 
-在內建角色定義上建立單一資源範圍角色指派的 HTTP 要求。
+HTTP 要求在內置角色定義上創建單個資源作用域角色指派。
 
 > [!NOTE] 
-> 現今的內建角色有限制，其範圍僅限於「/」整個組織範圍或「/AU/*」範圍。 單一資源範圍不適用於內建角色，但適用于自訂角色。
+> 如今，內置角色具有限制，即它們只能限定為"/"組織範圍或"/AU/*"範圍。 單個資源範圍範圍不適用於內置角色，但適用于自訂角色。
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 作業
+## <a name="get-operations-on-roleassignment"></a>獲得角色指派操作
 
-取得指定主體之角色指派的 HTTP 要求
+HTTP 要求獲取給定主體的角色指派
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-針對指定的角色定義取得角色指派的 HTTP 要求。
+HTTP 要求獲取給定角色定義的角色指派。
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-依識別碼取得角色指派的 HTTP 要求。
+HTTP 要求按 ID 獲取角色指派。
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的刪除作業
+## <a name="delete-operations-on-roleassignment"></a>刪除角色指派的操作
 
-HTTP 要求，用以刪除使用者與角色定義之間的角色指派。
+HTTP 要求刪除使用者和角色定義之間的角色指派。
 
 刪除
 
@@ -207,7 +207,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 204 No Content
 ```
 
-用來刪除不再存在之角色指派的 HTTP 要求
+HTTP 要求刪除不再存在的角色指派
 
 刪除
 
@@ -221,7 +221,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-用來刪除自我和內建角色定義之間角色指派的 HTTP 要求
+HTTP 要求刪除自角色定義和內置角色定義之間的角色指派
 
 刪除
 

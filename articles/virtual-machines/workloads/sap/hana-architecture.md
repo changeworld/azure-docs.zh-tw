@@ -14,10 +14,10 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614528"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA on Azure (大型執行個體) 架構
@@ -33,7 +33,7 @@ SAP HANA on Azure (大型執行個體) 的整體架構會提供一個經 SAP TDI
 
 顯示的架構分成三個部分：
 
-- **右邊**：顯示一個在資料中心執行不同應用程式，讓使用者能夠存取 LOB 應用程式 (例如 SAP) 的內部部署基礎結構。 在理想情況下，這個內部部署基礎結構會透過[ExpressRoute](https://azure.microsoft.com/services/expressroute/)連接到 Azure。
+- **右邊**：顯示一個在資料中心執行不同應用程式，讓使用者能夠存取 LOB 應用程式 (例如 SAP) 的內部部署基礎結構。 理想情況下，此本地基礎結構使用[ExpressRoute](https://azure.microsoft.com/services/expressroute/)連接到 Azure。
 
 - **中間**：顯示 Azure IaaS，在此案例中，會使用 VM 來裝載 SAP 或其他利用 SAP HANA 作為 DBMS 系統的應用程式。 以 VM 提供的記憶體運作的較小 HANA 執行個體會與其應用程式層一起部署在 VM 中。 如需虛擬機器的詳細資訊，請參閱[虛擬機器](https://azure.microsoft.com/services/virtual-machines/)。
 
@@ -44,13 +44,13 @@ SAP HANA on Azure (大型執行個體) 的整體架構會提供一個經 SAP TDI
   -  [在 Windows 虛擬機器上使用 SAP](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [在 Azure 虛擬機器上使用 SAP 解決方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **左邊**：顯示「Azure 大型執行個體」戳記中經 SAP HANA TDI 認證的硬體。 HANA 大型實例單位會使用與從內部部署連線至 Azure 的相同技術，連接到您 Azure 訂用帳戶的虛擬網路。 從2019版開始，引進的優化可讓 HANA 大型實例單位與 Azure Vm 之間進行通訊，而不需要使用 ExpressRoute 閘道。 此架構中會顯示此優化（稱為 ExpressRoute 快速路徑）（紅線）。 
+- **左邊**：顯示「Azure 大型執行個體」戳記中經 SAP HANA TDI 認證的硬體。 HANA 大型實例單元通過使用與從本地到 Azure 的連接相同的技術連接到 Azure 訂閱的虛擬網路。 自 2019 年 5 月推出優化功能，允許在 HANA 大型實例單元和 Azure VM 之間進行通信，而無需參與 ExpressRoute 閘道。 此體系結構（紅線）中顯示了此稱為快速路由快速路徑的優化。 
 
 「Azure 大型執行個體」戳記本身結合了下列元件：
 
-- 運算 **：以**不同世代的 Intel 第4代處理器為基礎的伺服器，可提供所需的計算功能並 SAP Hana 認證。
-- **網路**：將運算、儲存體及 LAN 元件互連的整合式高速網路網狀架構。
-- **儲存體**：可透過整合式網路網狀架構存取的儲存體基礎結構。 根據已部署的特定 SAP HANA on Azure (大型執行個體) 組態提供的特定儲存體容量。 若要使用更多儲存體容量，則需每月額外付費。
+- **計算**：基於不同一代英特爾到貢處理器的伺服器，它們提供必要的計算能力，並且經過 SAP HANA 認證。
+- **網路**：連接計算、存儲和 LAN 元件的統一高速網路結構。
+- **存儲**：通過統一網路結構訪問的存儲基礎結構。 根據已部署的特定 SAP HANA on Azure (大型執行個體) 組態提供的特定儲存體容量。 若要使用更多儲存體容量，則需每月額外付費。
 
 在「大型執行個體」戳記的多租用戶基礎結構內，是將客戶部署成隔離的租用戶。 在租用戶的部署中，您必須在 Azure 註冊內為 Azure 訂用帳戶命名。 此 Azure 訂用帳戶將是 HANA 大型執行個體據以付費的訂用帳戶。 這些租用戶與 Azure 訂用帳戶具有一對一關係。 就網路而言，從分屬於不同 Azure 訂用帳戶的不同虛擬網路，存取在某個 Azure 區域的某個租用戶中部署的 HANA 大型執行個體單位，是可行的。 這些 Azure 訂用帳戶必須屬於相同的 Azure 註冊。 
 

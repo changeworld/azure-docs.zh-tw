@@ -1,5 +1,5 @@
 ---
-title: 關於 Azure 點對站 VPN 連線 |VPN 閘道
+title: 關於 Azure 點對點 VPN 連接 |VPN 閘道
 description: 本文可協助您了解點對站連線，並協助您決定所要使用的 P2S VPN 閘道驗證類型。
 services: vpn-gateway
 author: cherylmc
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500609"
 ---
 # <a name="about-point-to-site-vpn"></a>關於點對站 VPN
 
 點對站 (P2S) VPN 閘道連線可讓您建立從個別用戶端電腦到您的虛擬網路的安全連線。 P2S 連線的建立方式是從用戶端電腦開始。 此解決方案適合於想要從遠端位置 (例如從住家或會議) 連線到 Azure VNet 的遠距工作者。 當您只有少數用戶端必須連線至 VNet 時，P2S VPN 也是很實用的解決方案 (而不是 S2S VPN)。 本文適用於資源管理員部署模型。
 
-## <a name="protocol"></a>P2S 使用哪種通訊協定？
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪種通訊協定？
 
 店對站 VPN 可以使用下列其中一個通訊協定：
 
-* **OpenVPN®通訊協定**，這是以 SSL/TLS 為基礎的 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出，而 SSL 會使用這些通訊埠。 OpenVPN 可以用來從 Android、iOS （11.0 版和更新版本）、Windows、Linux 和 Mac 裝置（OSX 10.13 版和更新版本）進行連接。
+* **開放VPN®協定**，基於SSL/TLS的VPN協定。 SSL VPN 解決方案可以穿透防火牆，因為大多數防火牆都打開 TCP 埠 443 出站，這是 SSL 使用的。 OpenVPN 可用於從 Android、iOS（版本 11.0 及以上）、Windows、Linux 和 Mac 設備（OSX 版本 10.13 及以上）進行連接。
 
-* 安全通訊端通道通訊協定 (SSTP)，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出，而 SSL 會使用這些通訊埠。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。
+* 安全通訊端通道通訊協定 (SSTP)，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以穿透防火牆，因為大多數防火牆都打開 TCP 埠 443 出站，這是 SSL 使用的。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。
 
 * IKEv2 VPN，標準型 IPsec VPN 解決方案。 IKEv2 VPN 可用於從 Mac 裝置連線 (OSX 版本 10.11 和更新版本)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77500609"
 >適用於 P2S 的 IKEv2 與 OpenVPN 僅供 Resource Manager 部署模型使用， 不適用於傳統部署模型。
 >
 
-## <a name="authentication"></a>P2S VPN 用戶端的驗證方式
+## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>P2S VPN 用戶端的驗證方式
 
 在 Azure 接受 P2S VPN 連線之前，使用者必須先進行驗證。 Azure 提供兩個機制來驗證連線使用者。
 
@@ -43,32 +43,32 @@ ms.locfileid: "77500609"
 
 用戶端憑證的驗證是由 VPN 閘道執行，並發生於 P2S VPN 連線建立期間。 根憑證需要驗證，且必須上傳至 Azure。
 
-### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用原生 Azure Active Directory 驗證進行驗證
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用本機 Azure 活動目錄身份驗證
 
-Azure AD authentication 可讓使用者使用其 Azure Active Directory 認證連線到 Azure。 僅支援 OpenVPN 通訊協定和 Windows 10 的原生 Azure AD 驗證，而且需要使用[AZURE VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)。
+Azure AD 身份驗證允許使用者使用 Azure 活動目錄憑據連接到 Azure。 本機 Azure AD 身份驗證僅支援 OpenVPN 協定和 Windows 10，並且需要使用[Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
-使用原生 Azure AD 驗證，您可以利用 Azure AD 的條件式存取，以及適用于 VPN 的多重要素驗證（MFA）功能。
+使用本機 Azure AD 身份驗證，可以利用 Azure AD 的條件訪問以及 VPN 的多重要素驗證 （MFA） 功能。
 
-概括而言，您需要執行下列步驟來設定 Azure AD authentication：
+在高級別上，您需要執行以下步驟來配置 Azure AD 身份驗證：
 
-1. [設定 Azure AD 租使用者](openvpn-azure-ad-tenant.md)
+1. [設定 Azure AD 租用戶](openvpn-azure-ad-tenant.md)
 
-2. [在閘道上啟用 Azure AD 驗證](openvpn-azure-ad-tenant.md#enable-authentication)
+2. [在閘道上啟用 Azure AD 身份驗證](openvpn-azure-ad-tenant.md#enable-authentication)
 
-3. [下載並設定 Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)
+3. [下載並配置 Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Azure Active Directory (AD) 網域伺服器進行驗證
 
 AD 網域驗證可讓使用者使用其組織網域認證來連線至 Azure。 它需要可與 AD 伺服器整合的 RADIUS 伺服器。 組織也可利用其現有的 RADIUS 部署。
   
-RADIUS 伺服器可以部署在內部部署環境或 Azure VNet 中。 在驗證期間，Azure VPN 閘道可作為 RADIUS 伺服器與連線裝置之間的通道，雙向轉送驗證訊息。 所以閘道觸達 RADIUS 伺服器的能力很重要。 如果 RADIUS 伺服器位於內部部署環境，則需要從 Azure 到內部部署網站的 VPN S2S 連線才能觸達。  
+RADIUS 伺服器可以部署在本地或 Azure VNet 中。 在驗證期間，Azure VPN 閘道可作為 RADIUS 伺服器與連線裝置之間的通道，雙向轉送驗證訊息。 所以閘道觸達 RADIUS 伺服器的能力很重要。 如果 RADIUS 伺服器位於內部部署環境，則需要從 Azure 到內部部署網站的 VPN S2S 連線才能觸達。  
   
 RADIUS 伺服器也可以與 AD 憑證服務整合。 這可讓您對 P2S 憑證驗證使用 RADIUS 伺服器和企業憑證部署，來替代 Azure 憑證驗證。 優點是，您不需要將根憑證及撤銷的憑證上傳至 Azure。
 
 RADIUS 伺服器也可以與其他外部身分識別系統整合。 這會開啟 P2S VPN 的許多驗證選項，包括多重因素選項。
 
-![點對站](./media/point-to-site-about/p2s.png "點對站")
+![點對點](./media/point-to-site-about/p2s.png "點對站")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>設定用戶端有哪些需求？
 
@@ -87,7 +87,7 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>哪些閘道 SKU 支援 P2S VPN？
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪個閘道 SKU 支援 P2S VPN？
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -97,12 +97,12 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 >基本 SKU 不支援 IKEv2 或 RADIUS 驗證。
 >
 
-## <a name="IKE/IPsec policies"></a>在 P2S 的 VPN 閘道上設定了哪些 IKE/IPsec 原則？
+## <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>在 P2S 的 VPN 閘道上配置了哪些 IKE/IPsec 策略？
 
 
 **IKEv2**
 
-|**分組** | **完整性** | **F** | **DH 群組** |
+|**密碼** | **誠信** | **Prf** | **DH 群組** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -122,9 +122,9 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 |AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256      | SHA256    | GROUP_2 |
 
-**IPsec**
+**Ipsec**
 
-|**分組** | **完整性** | **PFS 群組** |
+|**密碼** | **誠信** | **PFS 群組** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |
@@ -138,7 +138,7 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>在 P2S 的 VPN 閘道上設定了哪些 TLS 原則？
+## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S 的 VPN 閘道上配置了哪些 TLS 策略？
 **TLS**
 
 |**原則** |
@@ -156,7 +156,7 @@ Zip 檔案也會提供 Azure 端的某些重要設定值，以便用於為這些
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-## <a name="configure"></a>如何設定 P2S 連線？
+## <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>如何設定 P2S 連線？
 
 P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導您進行 P2S 設定，然後連結以設定 VPN 用戶端裝置：
 
@@ -166,15 +166,15 @@ P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導
 
 * [設定 OpenVPN](vpn-gateway-howto-openvpn.md)
 
-### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>若要移除 P2S 連接的設定
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>刪除 P2S 連接的配置
 
-如需相關步驟，請參閱下面的[常見問題](#removeconfig)。
+有關步驟，請參閱下面的[常見問題解答](#removeconfig)。
  
-## <a name="faqcert"></a>原生 Azure 憑證驗證的常見問題集
+## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>原生 Azure 憑證驗證的常見問題集
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>RADIUS 驗證的常見問題集
+## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 驗證的常見問題集
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
@@ -184,4 +184,4 @@ P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導
 
 * [設定 P2S 連線 - Azure 原生憑證驗證](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**「OpenVPN」是 OpenVPN Inc. 的商標。**
+**"OpenVPN"是OpenVPN公司的商標。**

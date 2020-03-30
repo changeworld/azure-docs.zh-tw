@@ -1,5 +1,5 @@
 ---
-title: 在 RHEL for SAP NetWeaver 上的 Azure Vm 上 GlusterFS |Microsoft Docs
+title: SAP NetWeaver RHEL 上的 Azure VM 上的 GlusterFS |微軟文檔
 description: Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591909"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS
@@ -27,14 +27,14 @@ ms.locfileid: "77591909"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -43,7 +43,7 @@ ms.locfileid: "77591909"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文說明如何部署虛擬機器、設定虛擬機器，以及安裝可用來儲存高可用性 SAP 系統之共用資料的 GlusterFS 叢集。
-本指南說明如何設定供兩個 SAP 系統 (NW1 和 NW2) 使用的 GlusterFS。 範例中的資源名稱（例如虛擬機器、虛擬網路）假設您已使用具有資源前置詞**glust**的[SAP 檔案伺服器範本][template-file-server]。
+本指南說明如何設定供兩個 SAP 系統 (NW1 和 NW2) 使用的 GlusterFS。 範例中資源 (例如虛擬機器、虛擬網路) 的名稱是假設您已使用資源前置詞為 **glust** 的 [SAP 檔案伺服器範本][template-file-server]。
 
 請先閱讀下列 SAP Note 和文件
 
@@ -61,9 +61,9 @@ ms.locfileid: "77591909"
 * SAP Note [2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
 * SAP Note [1999351] 包含 Azure Enhanced Monitoring Extension for SAP 的其他疑難排解資訊。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含 Linux 所需的所有 SAP Note。
-* [適用于 SAP on Linux 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器部署（本文）][deployment-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [在 Linux 上為 SAP 部署的 Azure 虛擬機器（本文）][deployment-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
 * [Red Hat Gluster Storage 產品文件](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * 一般 RHEL 文件
   * [高可用性附加元件概觀](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
@@ -73,7 +73,7 @@ ms.locfileid: "77591909"
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 為了實現高可用性，SAP NetWeaver 需要使用共用儲存體。 GlusterFS 會於獨立的叢集中設定，且可供多個 SAP 系統使用。
 
@@ -86,9 +86,9 @@ ms.locfileid: "77591909"
 ### <a name="deploy-linux-via-azure-template"></a>透過 Azure 範本部署 Linux
 
 Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署新的虛擬機器。
-您可以使用 Github 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、可用性設定組等。請遵循下列步驟來部署範本：
+您可以使用 Github 上的其中一個快速入門範本來部署所有必要資源。 該範本部署虛擬機器、可用性集等。按照以下步驟部署範本：
 
-1. 在 Azure 入口網站中開啟[SAP 檔案伺服器範本][template-file-server]
+1. 在 Azure 入口網站中開啟 [SAP 檔案伺服器範本][template-file-server]
 1. 輸入下列參數
    1. 資源前置詞  
       輸入您想要使用的前置詞。 該值會作為所部署之資源的前置詞。
@@ -98,11 +98,11 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    4. 管理員使用者名稱、管理員密碼或 SSH 金鑰  
       建立可用來登入電腦的新使用者。
    5. 子網路識別碼  
-      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常如下所示：/subscriptions/ **&lt;訂用帳戶識別碼&gt;** /resourceGroups/ **&lt;資源群組名稱&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;虛擬網路名稱&gt;** /subnets/ **&lt;子網路名稱&gt;**
+      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 ID 通常看起來像 /訂閱/**&lt;訂閱&gt;ID**/資源組/**&lt;資源&gt;組名稱**/提供程式/Microsoft.網路/虛擬網路/**&lt;虛擬網路&gt;名稱**/子**&lt;網/子網&gt;名稱**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
-您必須先為此叢集建立虛擬機器。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。 我們建議採用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+您必須先為此叢集建立虛擬機器。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。 我們建議[使用標準負載等化器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
 
 1. 建立資源群組
 1. 建立虛擬網路
@@ -118,7 +118,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
 ### <a name="configure-glusterfs"></a>設定 GlusterFS
 
-下列項目會加上以下其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1、 **[2]** - 僅適用於節點 2、 **[3]** - 僅適用於節點 3。
+下列項目會加上以下其中一個前置詞：**[A]** - 適用於所有節點、**[1]** - 僅適用於節點 1、**[2]** - 僅適用於節點 2、**[3]** - 僅適用於節點 3。
 
 1. **[A]** 設定主機名稱解析
 
@@ -351,8 +351,8 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 ## <a name="next-steps"></a>後續步驟
 
 * [安裝 SAP ASCS 和資料庫](high-availability-guide-rhel.md)
-* [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
-* [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure 上的 SAP HANA 規劃災害復原，請參閱 [Azure 上的 SAP HANA (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
-* 若要瞭解如何建立高可用性並規劃 Azure Vm 上 SAP Hana 的嚴重損壞修復，請參閱[azure 虛擬機器（vm）上 SAP Hana 的高可用性][sap-hana-ha]
+* [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
+* [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* 要瞭解如何在 Azure（大型實例）上建立 SAP HANA 的高可用性和災害復原計畫，請參閱[Azure 上的 SAP HANA（大型實例）高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
+* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

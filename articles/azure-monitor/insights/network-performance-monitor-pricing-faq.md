@@ -7,10 +7,10 @@ author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654387"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 網路效能監控的定價變更
@@ -20,17 +20,17 @@ ms.locfileid: "77654387"
 網路效能監控是由三個元件所組成：
 * [效能監視器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [服務端點監視](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute 監視](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [快速路由監視器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 下列各節說明 NPM 元件的定價變更。
 
-## <a name="performance-monitor"></a>效能監視
+## <a name="performance-monitor"></a>效能監視器
 
 **效能監控使用量在舊的模型中如何計費？**
 
 NPM 的計費基礎是兩個元件的使用量和耗用量：
-* ：所有綜合交易都是來自於節點且結束於節點。 節點也稱為代理程式或 Microsoft Monitoring Agent。
-* **資料**：各種網路測試的結果都會儲存在 Log Analytics 工作區中。
+* ****：所有綜合交易都是來自於節點且結束於節點。 節點也稱為代理程式或 Microsoft Monitoring Agent。
+* **資料**：各種網路測試的結果存儲在日誌分析工作區中。
 
 在舊的模型中，帳單的計算方式是根據節點的數目和所產生的資料量。 
 
@@ -45,9 +45,9 @@ NPM 中的效能監控功能現在是根據下列組合計費：
 
 效能監控會監視網路上兩個或多個位置之間的連線。 一個子網路上的節點/代理程式群組與另一個子網路上的節點群組之間的連線，就稱為子網路連結。
 
-**我有兩個子網（A 和 B），而在每個子網上有數個代理程式。「效能監視器」會監視子網 A 上所有代理程式到子網 B 上所有代理程式的連線能力。我是否會根據子網間的連線數目向我收費？**
+**我有兩個子網（A 和 B），並且每個子網上有幾個代理。效能監視器監控子網 A 上所有代理與子網 B 上所有代理的連接。是否會根據子網間連接的數量收費？**
 
-No。 為了計費目的，從子網路 A 到子網路 B 的所有連線會群組在一起成為一個子網路連結， 而會向您收取單一連線的費用。 效能監控會持續監控每個子網路上各種代理程式之間的連線。
+否。 為了計費目的，從子網路 A 到子網路 B 的所有連線會群組在一起成為一個子網路連結， 而會向您收取單一連線的費用。 效能監控會持續監控每個子網路上各種代理程式之間的連線。
 
 **監視子網路連結的成本為何？**
 
@@ -55,7 +55,7 @@ No。 為了計費目的，從子網路 A 到子網路 B 的所有連線會群�
 
 **效能監控所產生的資料如何收費？**
 
-在 Log Analytics 的 [[定價] 頁面](https://azure.microsoft.com/pricing/details/log-analytics/)上，您可以在 [資料內嵌] 區段中，取得用於內嵌的費用（Azure 監視器中的資料上傳至 log analytics 工作區，以及處理和編制索引）。 [定價頁面](https://azure.microsoft.com/pricing/details/log-analytics/)的「資料保留」區段，另提供資料保留 (也就是超過第一個月後，依客戶的選項所保留的資料) 的計費方式。
+引入費用（資料上載到 Azure 監視器中的日誌分析工作區、處理和索引）可在"資料引入"部分的日誌分析[定價頁上](https://azure.microsoft.com/pricing/details/log-analytics/)提供。 [定價頁面](https://azure.microsoft.com/pricing/details/log-analytics/)的「資料保留」區段，另提供資料保留 (也就是超過第一個月後，依客戶的選項所保留的資料) 的計費方式。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 監視
@@ -64,7 +64,7 @@ No。 為了計費目的，從子網路 A 到子網路 B 的所有連線會群�
 
 ExpressRoute 監視費用是根據監視期間所產生的資料量計費。 如需詳細資訊，請參閱「效能監控所產生的資料如何收費？」
 
-**我使用 ExpressRoute 監視器來監視多個 ExpressRoute 線路。我是否根據受監視的線路數目向我收費？**
+**我使用快速路由監視器來監控多個快速路由電路。我根據被監控的電路數充電嗎？**
 
 並不會根據線路數目或對等互連類型 (例如私人對等互連、Microsoft 對等互連) 向您收費。 如上所述，會根據資料量向您收費。
 
@@ -107,7 +107,7 @@ ExpressRoute 監控私人對等互連連線時，每個月產生的資料量如�
 
 **服務端點監視的成本為何？**
 
-請參閱[連線監控](https://azure.microsoft.com/pricing/details/network-watcher/)區段，了解監控端點整個月的成本。 Log Analytics [定價頁面](https://azure.microsoft.com/pricing/details/log-analytics/)的「資料擷取」區段提供資料的費用。
+有關監視整個月份終結點的成本，請參閱[連接監視](https://azure.microsoft.com/pricing/details/network-watcher/)部分。 Log Analytics [定價頁面](https://azure.microsoft.com/pricing/details/log-analytics/)的「資料擷取」區段提供資料的費用。
 
 ## <a name="references"></a>參考
 

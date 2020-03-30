@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Migrate 中新增評估工具
-description: 瞭解如何在 Azure Migrate 中新增評定工具。
+title: 在 Azure 遷移中添加評估工具
+description: 瞭解如何在 Azure 遷移中添加評估工具。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
@@ -8,66 +8,66 @@ ms.manager: carmonm
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185917"
 ---
 # <a name="add-assessment-tools"></a>新增評量工具
 
-本文說明如何在[Azure Migrate](migrate-overview.md)中新增評定工具。
+本文介紹如何在[Azure 遷移](migrate-overview.md)中添加評估工具。
 
-Azure Migrate 提供一種工具中樞，可供評估和遷移至 Azure。 其中包含 Azure Migrate 工具，以及其他工具和獨立軟體廠商（ISV）產品。
+Azure 遷移提供了用於評估和遷移到 Azure 的工具中心。 它包括 Azure 遷移工具，以及其他工具和獨立的軟體供應商 （ISV） 產品。
 
-如果您想要新增評估工具，但還沒有 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。
+如果要添加評估工具，但尚沒有 Azure 遷移專案，請按照[本文操作](how-to-add-tool-first-time.md)。
 
 ## <a name="select-a-tool"></a>選取工具
 
-如果您選擇非 Azure Migrate 的評估工具，請先取得授權或註冊免費試用（根據工具原則）。 工具可以選擇連接到 Azure Migrate。 遵循指示和檔，將工具連接至 Azure Migrate。 [深入瞭解](migrate-services-overview.md)工具。
+如果選擇非 Azure 遷移工具進行評估，則根據工具策略從獲取許可證或註冊免費試用開始。 工具可以選擇連接到 Azure 遷移。 按照說明和文檔操作，將該工具連接到 Azure 遷移。 [瞭解有關工具的更多](migrate-services-overview.md)詳細資訊。
 
 
-## <a name="select-an-assessment-scenario"></a>選取評估案例
+## <a name="select-an-assessment-scenario"></a>選擇評估方案
 
-1. 在 Azure Migrate 專案中，按一下 [概觀]。
-2. 選取您想要使用的評估案例：
+1. 在 Azure Migrate 專案中，按一下 [概觀]****。
+2. 選擇要使用的評估方案：
 
-    - 若要探索及評估要遷移至 Azure 的機器和工作負載，請選取 [**評估和遷移伺服器**]。
-    - 若要評估內部部署的 SQL 機器，請選取 [**評估和遷移資料庫**]。
-    - 若要評估內部部署 web 應用程式，請選取 [**評估和遷移 web 應用程式**]。
+    - 要發現和評估用於遷移到 Azure 的電腦和工作負荷，請選擇 **"評估和遷移伺服器**"。
+    - 要評估本地 SQL 電腦，請選擇 **"評估和遷移資料庫**"。
+    - 要評估本地 Web 應用，請選擇"**評估和遷移 Web 應用**"。
 
-    ![評定案例](./media/how-to-assess/assess-scenario.png)
+    ![評估方案](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>選取伺服器評估工具 
+## <a name="select-a-server-assessment-tool"></a>選擇伺服器評估工具 
 
-1. 按一下 [**評估和遷移伺服器**]。
-2. 在 [ **Azure Migrate-伺服器**] 中，如果您尚未新增評估工具，請在 [**評估工具**] 底下，選取 [**按一下這裡新增評估工具**]。 如果您已新增評估工具，請在 [**新增更多評估工具**] 中選取 [**變更**]。
+1. 按一下 **"評估和遷移伺服器**"。
+2. 在**Azure 遷移 - 伺服器**中，如果尚未添加評估工具，請在 **"評估工具**"下選擇 **"按一下此處添加評估工具**"。 如果已添加評估工具，請在**添加更多評估工具**中，選擇 **"更改**"。
 
     > [!NOTE]
-    > 如果您需要流覽至不同的專案，請在 [ **Azure Migrate 伺服器**] 中，按一下 [**查看不同遷移專案的詳細資料**] 旁的 [**按一下這裡**]。
+    > 如果需要導航到其他專案，請在**Azure 遷移 - 伺服器**中，在 **"查看其他遷移專案的詳細資訊"** 旁邊，**按一下此處**。
 
-3. 在  **Azure Migrate**中，選取您想要使用的評估工具。
+3. 在**Azure 遷移中**，選擇要使用的評估工具。
 
-    - 如果您使用 Azure Migrate Server 評估，您可以直接在 Azure Migrate 專案中設定、執行及查看評量。
-    - 如果您使用不同的評估工具，請流覽至針對其網站提供的連結，並根據所提供的指示執行評估。
+    - 如果使用 Azure 遷移伺服器評估，則可以直接在 Azure 遷移專案中設置、運行和查看評估。
+    - 如果您使用不同的評估工具，請導航到為其網站提供的連結，並按照他們提供的說明運行評估。
 
 
-## <a name="select-a-database-assessment-tool"></a>選取資料庫評估工具
+## <a name="select-a-database-assessment-tool"></a>選擇資料庫評估工具
 
-1. 按一下 [**評估並遷移資料庫**]
-2. 在 [**資料庫**] 中，按一下 [**加入工具**]。
-3. 在 [新增工具] 中 >**選取 [評估工具**]，選取您要用來評估資料庫的工具。
+1. 按一下 **"評估和遷移資料庫**"
+2. 在 **"資料庫"** 中，按一下"**添加工具**"。
+3. 在添加工具>**選擇評估工具**中，選擇要用於評估資料庫的工具。
 
-## <a name="select-a-web-app-assessment-tool"></a>選取 web 應用程式評估工具
+## <a name="select-a-web-app-assessment-tool"></a>選擇 Web 應用評估工具
 
-1. 按一下 [**評估和遷移 web 應用程式**]。
-2. 遵循 Azure App Service 的遷移工具連結。 使用遷移工具來執行下列動作：
+1. 按一下 **"評估和遷移 Web 應用**"。
+2. 按照 Azure 應用服務的遷移工具的連結進行操作。 使用遷移工具：
 
-    - **線上評估應用程式**：您可以使用 Azure App Service 移轉小幫手，在線上評估具有公用 URL 的應用程式。
-    - **.Net/PHP**：若是內部 .NET 和 php 應用程式，您可以下載並執行移轉小幫手。
+    - **線上評估應用**：您可以使用 Azure 應用服務遷移助手線上評估具有公共 URL 的應用。
+    - **.NET/PHP**：對於內部 .NET 和 PHP 應用，您可以下載並運行遷移助手。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-試用針對[VMware](tutorial-prepare-vmware.md) Vm、 [hyper-v](tutorial-prepare-hyper-v.md)或[實體伺服器](tutorial-prepare-physical.md)使用 Azure Migrate Server 評估的評量
+嘗試使用 Azure 遷移伺服器評估[VMware](tutorial-prepare-vmware.md) [VM、Hyper-V](tutorial-prepare-hyper-v.md)或[物理伺服器](tutorial-prepare-physical.md)進行評估

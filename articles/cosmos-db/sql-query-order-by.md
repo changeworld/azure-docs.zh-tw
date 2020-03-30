@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB 中的 ORDER BY 子句
-description: 瞭解 Azure Cosmos DB 的 SQL ORDER BY 子句。 使用 SQL 做為 Azure Cosmos DB JSON 查詢語言。
+title: 在 Azure 宇宙 DB 中執行 BY 子句
+description: 瞭解 Azure 宇宙 DB 的 SQL ORDER BY 子句。 使用 SQL 作為 Azure 宇宙 DB JSON 查詢語言。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: tisande
 ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188740"
 ---
-# <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
+# <a name="order-by-clause-in-azure-cosmos-db"></a>在 Azure 宇宙 DB 中執行 BY 子句
 
-選擇性的 ORDER BY 子句會指定查詢所傳回之結果的排序次序。
+可選的 ORDER BY 子句指定查詢返回的結果的排序次序。
 
 ## <a name="syntax"></a>語法
   
@@ -29,15 +29,15 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   指定要排列查詢結果集的屬性或運算式。 排序資料行可以指定為名稱或屬性別名。  
+   指定要排列查詢結果集的屬性或運算式。 排序列可以指定為名稱或屬性別名。  
   
-   可以指定多個屬性。 屬性名稱必須是唯一的。 ORDER BY 子句中排序屬性的順序會定義排序結果集的組織。 也就是說，結果集是依第一個屬性排序，而該排序清單會依次要屬性進行排序，以此類推。  
+   可以指定多個屬性。 屬性名稱必須是唯一的。 ORDER BY 子句中的排序屬性的順序定義排序結果集的組織。 也就是說，結果集是依第一個屬性排序，而該排序清單會依次要屬性進行排序，以此類推。  
   
-   ORDER BY 子句中所參考的屬性名稱，必須對應至 select 清單中的屬性，或在 FROM 子句中指定之集合中所定義的屬性，而不會有任何多義性。  
+   ORDER BY 子句中引用的屬性名稱必須對應于挑選清單中的屬性或 FROM 子句中指定的集合中定義的屬性，沒有任何模糊性。  
   
 - `<sort_expression>`  
   
-   指定要對其排序查詢結果集的一或多個屬性或運算式。  
+   指定一個或多個屬性或運算式，用於對查詢結果集進行排序。  
   
 - `<scalar_expression>`  
   
@@ -49,14 +49,14 @@ ORDER BY <sort_specification>
   
 ## <a name="remarks"></a>備註  
   
-   `ORDER BY` 子句需要索引編制原則包含要排序之欄位的索引。 Azure Cosmos DB 查詢執行時間支援針對屬性名稱進行排序，而不是針對計算的屬性。 Azure Cosmos DB 支援多個 `ORDER BY` 屬性。 若要以多個 ORDER BY 屬性執行查詢，您應該在要排序的欄位上定義[複合索引](index-policy.md#composite-indexes)。
+   子`ORDER BY`句要求索引策略包含要排序的欄位的索引。 Azure Cosmos DB 查詢運行時支援對屬性名稱進行排序，而不是對計算的屬性進行排序。 Azure 宇宙資料庫支援多個`ORDER BY`屬性。 為了運行具有多個 ORDER BY 屬性的查詢，應在要排序的欄位上定義[複合索引](index-policy.md#composite-indexes)。
 
 > [!Note]
-> 如果要排序的屬性可能未針對某些檔定義，而您想要在「排序依據」查詢中加以取出，您必須在索引中明確包含此路徑。 預設的索引編制原則不允許抓取未定義 sort 屬性的檔。 [在含有一些遺漏欄位的檔上，檢查範例查詢](#documents-with-missing-fields)。
+> 如果某些文檔的排序屬性可能未定義，並且希望在 ORDER BY 查詢中檢索它們，則必須在索引中顯式包含此路徑。 預設索引策略不允許檢索未定義排序屬性的文檔。 [查看對文檔中缺少一些欄位的依例查詢](#documents-with-missing-fields)。
 
 ## <a name="examples"></a>範例
 
-例如，以下是以居住城市名稱的遞增順序來抓取家族的查詢：
+例如，下面是按居民城市名稱的昇冪檢索家庭的查詢：
 
 ```sql
     SELECT f.id, f.address.city
@@ -79,7 +79,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-下列查詢會依其專案建立日期的順序，來抓取家族 `id`s。 專案 `creationDate` 是代表*epoch 時間*的數位，或1970（以秒為單位）之後經過的時間。
+以下查詢按其專案創建`id`日期的順序檢索族。 專案`creationDate`是一個數位，表示*紀元時間*，或自1970年1月1日以來經過的時間，以秒為單位。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -102,7 +102,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-此外，您可以依多個屬性來排序。 依多個屬性排序的查詢需要[複合索引](index-policy.md#composite-indexes)。 請考慮以下查詢：
+此外，您可以按多個屬性訂購。 按多個屬性排序的查詢需要[複合索引](index-policy.md#composite-indexes)。 請考慮以下查詢：
 
 ```sql
     SELECT f.id, f.creationDate
@@ -110,13 +110,13 @@ ORDER BY <sort_specification>
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-此查詢會依城市名稱的遞增順序來抓取家族 `id`。 如果多個專案具有相同的城市名稱，則查詢會依 `creationDate` 的遞減順序排序。
+此查詢按城市名稱的`id`昇冪檢索族。 如果多個項具有相同的城市名稱，則查詢將`creationDate`按降冪排序。
 
-## <a name="documents-with-missing-fields"></a>含有遺漏欄位的檔
+## <a name="documents-with-missing-fields"></a>缺少欄位的文檔
 
-針對具有預設索引編制原則之容器執行 `ORDER BY` 的查詢，將不會傳回未定義 sort 屬性的檔。 如果您想要包含未定義 sort 屬性的檔，您應該在索引編制原則中明確包含這個屬性。
+具有預設索引`ORDER BY`策略的容器運行的查詢不會返回未定義排序屬性的文檔。 如果要包括未定義排序屬性的文檔，則應在索引策略中顯式包含此屬性。
 
-例如，以下是具有索引編制原則的容器，其中未明確包含除了 `"/*"`以外的任何路徑：
+例如，下面是一個包含索引策略的容器，該策略未顯式包含 除`"/*"`：
 
 ```json
 {
@@ -131,9 +131,9 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果您在 `Order By` 子句中執行包含 `lastName` 的查詢，則結果只會包含已定義 `lastName` 屬性的檔。 我們尚未定義 `lastName` 的明確包含路徑，因此沒有任何 `lastName` 的任何檔都不會出現在查詢結果中。
+如果運行包含子句中的`lastName``Order By`查詢，則結果將僅包括定義`lastName`屬性的文檔。 我們尚未為`lastName`任何沒有 a 的文檔定義顯式包含的路徑`lastName`，因此查詢結果中不會顯示任何沒有 a 的文檔。
 
-以下查詢會依 `lastName` 在兩個檔上排序，其中一個不會定義 `lastName`：
+下面是一個查詢，它按`lastName`兩個文檔進行排序，其中一個文檔沒有`lastName`定義：
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +141,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName
 ```
 
-結果只會包含已定義 `lastName`的檔：
+結果僅包括具有定義的`lastName`文檔：
 
 ```json
     [
@@ -152,9 +152,9 @@ ORDER BY <sort_specification>
     ]
 ```
 
-如果我們更新容器的編制索引原則，明確包含 `lastName`的路徑，我們將會在查詢結果中包含未定義排序屬性的檔。 您必須明確定義路徑，使其成為此純量值（而不是超過它）。 您應該在索引編制原則的路徑定義中使用 `?` 字元，以確保明確地為屬性編制索引 `lastName` 而且不會有任何其他的嵌套路徑。
+如果我們更新容器的索引策略以顯式包含 的`lastName`路徑，我們將在查詢結果中包括具有未定義排序屬性的文檔。 您必須顯式定義路徑才能導致此標量值（而不是超出該值）。 應在索引策略中使用`?`路徑定義中的字元，以確保顯式索引屬性，並且沒有超出該屬性`lastName`的其他嵌套路徑。
 
-以下是索引編制原則的範例，可讓您讓具有未定義 `lastName` 的檔出現在查詢結果中：
+下面是一個示例索引策略，允許您在查詢結果中顯示未定義`lastName`的文檔：
 
 ```json
 {
@@ -172,7 +172,7 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果您再次執行相同的查詢，`lastName` 遺漏的檔會先出現在查詢結果中：
+如果再次運行同一查詢，則缺少`lastName`的文檔首先出現在查詢結果中：
 
 ```sql
     SELECT f.id, f.lastName
@@ -194,7 +194,7 @@ ORDER BY <sort_specification>
 ]
 ```
 
-如果您將排序次序修改為 `DESC`，遺漏的檔 `lastName` 會出現在查詢結果的最後：
+如果將排序次序修改為`DESC`，則缺少`lastName`的文檔將在最後一個查詢結果中顯示：
 
 ```sql
     SELECT f.id, f.lastName
@@ -218,6 +218,6 @@ ORDER BY <sort_specification>
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門](sql-query-getting-started.md)
+- [開始使用](sql-query-getting-started.md)
 - [Azure Cosmos DB 中的索引編製原則](index-policy.md)
-- [OFFSET LIMIT 子句](sql-query-offset-limit.md)
+- [OFFSET 限制子句](sql-query-offset-limit.md)

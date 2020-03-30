@@ -1,6 +1,6 @@
 ---
-title: 取得權杖以呼叫 Web API （單一頁面應用程式）-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立單一頁面應用程式（取得權杖以呼叫 API）
+title: 獲取權杖來調用 Web API（單頁應用） - 微軟身份平臺 |蔚藍
+description: 瞭解如何構建單頁應用程式（獲取權杖以調用 API）
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -15,36 +15,36 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160061"
 ---
-# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>單一頁面應用程式：取得權杖以呼叫 API
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>單頁應用程式：獲取權杖以調用 API
 
-使用 MSAL 來取得 Api 的權杖的模式是先嘗試使用 `acquireTokenSilent` 方法的無訊息權杖要求。 呼叫這個方法時，程式庫會先檢查瀏覽器儲存體中的快取，以查看有效的權杖是否存在，並將其傳回。 當快取中沒有有效的權杖時，它會將無訊息 token 要求傳送至隱藏的 iframe Azure Active Directory （Azure AD）。 此方法也可讓程式庫更新權杖。 如需 Azure AD 中的單一登入會話和權杖存留期值的詳細資訊，請參閱[權杖存留期](active-directory-configurable-token-lifetimes.md)。
+使用 MSAL.js 獲取 API 權杖的模式是首先使用 方法`acquireTokenSilent`嘗試靜默權杖請求。 調用此方法時，庫首先檢查瀏覽器存儲中的緩存以查看是否存在有效的權杖並返回它。 當緩存中沒有有效的權杖時，它將從隱藏的 iframe 向 Azure 活動目錄 （Azure AD） 發送靜默權杖請求。 此方法還允許庫續訂權杖。 有關 Azure AD 中的單一登入會話和權杖存留期值的詳細資訊，請參閱[權杖存留期](active-directory-configurable-token-lifetimes.md)。
 
-Azure AD 的無訊息 token 要求可能會因為 Azure AD 會話或密碼變更過期之類的原因而失敗。 在這種情況下，您可以叫用其中一個互動式方法（這會提示使用者）取得權杖：
+由於過期的 Azure AD 會話或密碼更改等原因，對 Azure AD 的靜默權杖請求可能會失敗。 在這種情況下，您可以調用其中一種互動式方法（這將提示使用者）以獲取權杖：
 
-* [快顯視窗](#acquire-a-token-with-a-pop-up-window)，方法是使用 `acquireTokenPopup`
-* 使用 `acquireTokenRedirect` 重新[導向](#acquire-a-token-with-a-redirect)
+* [快顯視窗](#acquire-a-token-with-a-pop-up-window)， 通過使用`acquireTokenPopup`
+* [使用 重定向](#acquire-a-token-with-a-redirect)，使用`acquireTokenRedirect`
 
-## <a name="choose-between-a-pop-up-or-redirect-experience"></a>在快顯或重新導向體驗之間做選擇
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>在快顯視窗或重定向體驗之間進行選擇
 
- 您不能在應用程式中同時使用快顯和重新導向方法。 快顯或重新導向體驗之間的選擇取決於您的應用程式流程：
+ 不能同時使用應用程式中的快顯視窗和重定向方法。 快顯視窗或重定向體驗之間的選擇取決於您的應用程式流：
 
-* 如果您不想讓使用者在驗證期間從主要應用程式頁面移開，建議使用快顯方法。 因為驗證重新導向會在快顯視窗中進行，所以會保留主應用程式的狀態。
+* 如果您不希望使用者在身份驗證期間離開主應用程式頁，我們建議使用彈出式方法。 由於身份驗證重定向發生在快顯視窗中，因此將保留主應用程式的狀態。
 
-* 如果使用者具有瀏覽器條件約束或停用快顯視窗的原則，您可以使用重新導向方法。 使用重新導向方法與 Internet Explorer 瀏覽器，因為[Internet explorer 上的快顯視窗有已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)。
+* 如果使用者具有禁用快顯視窗的瀏覽器約束或策略，則可以使用重定向方法。 使用重定向方法與 Internet 資源管理器瀏覽器，因為有[已知的問題與快顯視窗在 Internet 資源管理器](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)。
 
-您可以設定在建立存取權杖要求時，要讓存取權杖包含的 API 範圍。 請注意，存取權杖中可能不會授與所有要求的範圍。 這取決於使用者的同意。
+您可以設置在構建訪問權杖請求時希望訪問權杖包含的 API 作用域。 請注意，並非所有請求的範圍都未在訪問權杖中授予。 這取決於使用者的同意。
 
-## <a name="acquire-a-token-with-a-pop-up-window"></a>取得具有快顯視窗的權杖
+## <a name="acquire-a-token-with-a-pop-up-window"></a>使用快顯視窗獲取權杖
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-下列程式碼結合了先前所述的模式與快顯體驗的方法：
+以下代碼將前面描述的模式與彈出式體驗的方法相結合：
 
 ```javascript
 const accessTokenRequest = {
@@ -69,11 +69,11 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL 角度包裝函式會提供 HTTP 攔截器，這會自動以無訊息方式取得存取權杖，並將其附加至 Api 的 HTTP 要求。
+MSAL 角包裝器提供 HTTP 攔截器，該攔截器將自動以靜默方式獲取訪問權杖，並將它們附加到 API 的 HTTP 要求。
 
-您可以在 [`protectedResourceMap` 設定] 選項中指定 Api 的範圍。 當自動取得權杖時，`MsalInterceptor` 將會要求這些範圍。
+您可以在`protectedResourceMap`配置選項中指定 API 的範圍。 `MsalInterceptor`將在自動獲取權杖時請求這些作用域。
 
 ```javascript
 //In app.module.ts
@@ -92,7 +92,7 @@ providers: [ ProductService, {
    ],
 ```
 
-針對無訊息權杖取得成功和失敗，MSAL 角度會提供您可以訂閱的回呼。 也請務必記得取消訂閱。
+對於靜默權杖獲取的成功和失敗，MSAL Angular 提供可以訂閱的回檔。 記住取消訂閱也很重要。
 
 ```javascript
 // In app.component.ts
@@ -109,15 +109,15 @@ ngOnDestroy() {
  }
 ```
 
-或者，您可以使用 MSAL core 程式庫中所述的取得權杖方法來明確取得權杖。
+或者，您可以使用核心 MSAL.js 庫中所述的獲取權杖方法顯式獲取權杖。
 
 ---
 
-## <a name="acquire-a-token-with-a-redirect"></a>使用重新導向取得權杖
+## <a name="acquire-a-token-with-a-redirect"></a>使用重定向獲取權杖
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-下列模式如先前所述，但使用重新導向方法來以互動方式取得權杖。 您必須註冊先前所述的重新導向回呼。
+如下圖所示，但使用重定向方法以對話模式獲取權杖。 您需要註冊重定向回檔，如前面所述。
 
 ```javascript
 function authCallback(error, response) {
@@ -143,15 +143,15 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-## <a name="request-optional-claims"></a>要求選擇性宣告
+## <a name="request-optional-claims"></a>請求可選聲明
 
-您可以針對下列目的使用選擇性宣告：
+您可以將可選聲明用於以下目的：
 
-- 在應用程式的權杖中包含額外的宣告。
+- 在應用程式中的權杖中包括其他聲明。
 - 變更 Azure AD 在權杖中傳回之特定宣告的行為。
 - 新增和存取應用程式的自訂宣告。 
 
-若要在 `IdToken`中要求選擇性宣告，您可以將 stringified 宣告物件傳送至 `AuthenticationParameters.ts` 類別的 `claimsRequest` 欄位。
+要在 中`IdToken`請求可選聲明，可以將字串化聲明物件發送到`claimsRequest``AuthenticationParameters.ts`類的欄位。
 
 ```javascript
 "optionalClaims":  
@@ -171,11 +171,11 @@ var request = {
 myMSALObj.acquireTokenPopup(request);
 ```
 
-若要深入瞭解，請參閱[選擇性宣告](active-directory-optional-claims.md)。
+要瞭解更多資訊，請參閱[可選聲明](active-directory-optional-claims.md)。
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-這段程式碼與先前所述的相同。
+此代碼與前面描述的代碼相同。
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 使用本機 web UI 管理 Azure 資料箱/Azure Data Box Heavy
-description: 描述如何使用本機 web UI 來管理您的資料箱和 Data Box Heavy 裝置
+title: 使用本地 Web UI 管理 Azure 資料框/Azure 資料框重
+description: 描述如何使用本地 Web UI 管理資料盒和資料盒重設備
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560179"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理資料框和資料框重
 
-本文說明一些可在資料箱和 Data Box Heavy 裝置上執行的設定和管理工作。 您可以透過裝置的 Azure 入口網站 UI 和本機 web UI 來管理資料箱和 Data Box Heavy 裝置。 此文章著重在可以使用本機 Web UI 執行的工作。
+本文介紹了可在資料盒和資料盒重設備上執行的一些配置和管理工作。 您可以通過 Azure 門戶 UI 和設備的本地 Web UI 管理資料框和資料盒重設備。 此文章著重在可以使用本機 Web UI 執行的工作。
 
-資料箱和 Data Box Heavy 的本機 web UI 會用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄，以及產生 Microsoft 支援服務的記錄檔封裝。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個與裝置的每個節點對應的不同本機 web Ui。
+資料框和資料框重的本地 Web UI 用於設備的初始配置。 您還可以使用本地 Web UI 關閉或重新開機設備、運行診斷測試、更新軟體、查看副本日誌以及為 Microsoft 支援生成日誌包。 在具有兩個獨立節點的資料盒重設備上，可以訪問與設備每個節點對應的兩個單獨的本地 Web U。
 
 本文包含下列教學課程：
 
@@ -31,9 +31,9 @@ ms.locfileid: "77560179"
 
 ## <a name="generate-support-package"></a>產生支援套件
 
-如果您遇到任何裝置問題，您可以從系統記錄建立支援套件。 Microsoft 支援服務會使用此套件來針對問題進行疑難排解。 若要產生支援封裝，請執行下列步驟：
+如果您遇到任何裝置問題，您可以從系統記錄建立支援套件。 Microsoft 支援服務會使用此套件來針對問題進行疑難排解。 要生成支援包，請執行以下步驟：
 
-1. 在本機 Web UI 中，移至 [連絡支援服務]，然後按一下 [建立支援套件]。
+1. 在本機 Web UI 中，移至 [連絡支援服務]****，然後按一下 [建立支援套件]****。
 
     ![建立支援套件 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "77560179"
 
     ![建立支援套件 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 建立支援套件之後，按一下 [下載支援套件]。 
+3. 建立支援套件之後，按一下 [下載支援套件]****。 
 
     ![建立支援套件 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
@@ -52,16 +52,16 @@ ms.locfileid: "77560179"
 
 ## <a name="shut-down-or-restart-your-device"></a>關閉或重新啟動您的裝置
 
-您可以使用本機 web UI 關閉或重新開機您的裝置。 我們建議在重新開機之前，先讓主機上的共用離線，然後再讓裝置離線。 這樣可以讓資料損毀的可能性降至最低。 將裝置關機時，請確保並未執行資料複製。
+您可以使用本地 Web UI 關閉或重新開機設備。 我們建議在重新開機之前，先讓主機上的共用離線，然後再讓裝置離線。 這樣可以讓資料損毀的可能性降至最低。 將裝置關機時，請確保並未執行資料複製。
 
-若要關閉您的裝置，請執行下列步驟。
+要關閉設備，請執行以下步驟。
 
-1. 在本機 Web UI 中，移至 [關機或重新啟動]。
-2. 按一下 [關機]。
+1. 在本機 Web UI 中，移至 [關機或重新啟動]****。
+2. 按一下 [關機]****。
 
     ![將資料箱關機 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. 系統提示您進行確認時，按一下 [確定] 以繼續。
+3. 系統提示您進行確認時，按一下 [確定]**** 以繼續。
 
     ![將資料箱關機 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -69,26 +69,26 @@ ms.locfileid: "77560179"
 
 若要將資料箱重新啟動，請執行下列步驟。
 
-1. 在本機 Web UI 中，移至 [關機或重新啟動]。
-2. 按一下 [重新啟動]。
+1. 在本機 Web UI 中，移至 [關機或重新啟動]****。
+2. 按一下 [重新啟動]****。
 
     ![將資料箱重新啟動 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 系統提示您進行確認時，按一下 [確定] 以繼續。
+3. 系統提示您進行確認時，按一下 [確定]**** 以繼續。
 
    裝置將會關機並重新啟動。
 
 ## <a name="download-bom-or-manifest-files"></a>下載 BOM 或資訊清單檔
 
-[物料單（BOM）] 或 [資訊清單檔案] 包含複製到資料箱或 Data Box Heavy 的檔案清單。 當您準備要寄送的裝置時，會產生這些檔案。
+物料清單 （BOM） 或清單檔包含複製到資料框或資料框重的檔的清單。 當您準備設備發貨時，將生成這些檔。
 
-開始之前，請確定您的裝置已完成**寄送準備**步驟。 請遵循下列步驟來下載 BOM 或資訊清單檔：
+開始之前，請確保設備已完成**準備發貨**步驟。 請遵循下列步驟來下載 BOM 或資訊清單檔：
 
-1. 移至您裝置的本機 web UI。 您會看到裝置已完成寄送準備。 當裝置準備完成時，您的裝置狀態會顯示為 [準備好寄送]。
+1. 轉到設備的本地 Web UI。 您將看到設備已完成裝運準備。 當裝置準備完成時，您的裝置狀態會顯示為 [準備好寄送]****。
 
     ![裝置準備好寄送](media/data-box-portal-admin/ready-to-ship.png)
 
-2. 按一下 [下載檔案清單]，以下載資料箱上複製的檔案清單。
+2. 按一下 [下載檔案清單]****，以下載資料箱上複製的檔案清單。
 
     ![按一下 [下載檔案清單]](media/data-box-portal-admin/download-list-of-files.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "77560179"
 在資料箱返回 Azure 資料中心之後，您可使用這份清單來確認已上傳到 Azure 儲存體帳戶的檔案。 範例資訊清單檔如下所示。
 
 > [!NOTE]
-> 在 Data Box Heavy 上，會有兩組檔案（BOM 檔案）對應到裝置上的兩個節點。
+> 在"資料盒重"上，存在兩組檔案清單（BOM 檔），對應于設備上的兩個節點。
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,14 +153,14 @@ ms.locfileid: "77560179"
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-此檔案包含在資料箱或 Data Box Heavy 上複製的所有檔案清單。 在此檔案中，*crc64* 值與針對對應檔案產生的總和檢查碼有關。
+此檔包含在"資料框"或"資料框重"上複製的所有檔的清單。 在此檔案中，*crc64* 值與針對對應檔案產生的總和檢查碼有關。
 
 ## <a name="view-available-capacity-of-the-device"></a>檢視裝置的可用容量
 
 您可以使用裝置儀表板來檢視裝置的可用與已使用容量。
 
-1. 在本機 Web UI 中，移至 [檢視儀表板]。
-2. 在 [連線並複製] 下，將會顯示裝置上的可用與已使用空間。
+1. 在本機 Web UI 中，移至 [檢視儀表板]****。
+2. 在 [連線並複製]**** 下，將會顯示裝置上的可用與已使用空間。
 
     ![檢視可用容量](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
@@ -170,14 +170,14 @@ ms.locfileid: "77560179"
 
 我們強烈建議您不要停用總和檢查碼，除非效能已嚴重受到影響。
 
-1. 在裝置本機 web UI 的右上角，移至 [**設定**]。
+1. 在設備的本地 Web UI 的右上角，轉到 **"設置**"。
 
     ![停用總和檢查碼](media/data-box-local-web-ui-admin/disable-checksum.png)
 
-2. [停用] 總和檢查碼驗證
-3. 按一下 [套用]。
+2. [停用]**** 總和檢查碼驗證
+3. 按一下 [套用]****。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何透過[Azure 入口網站管理資料箱和 Data Box Heavy](data-box-portal-admin.md)。
+- 瞭解如何通過[Azure 門戶管理資料框和資料框重。](data-box-portal-admin.md)
 

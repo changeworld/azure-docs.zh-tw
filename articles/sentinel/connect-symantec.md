@@ -1,6 +1,6 @@
 ---
-title: 將 Symantec ICDx 資料連線至 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Symantec ICDx 資料連線至 Azure Sentinel。
+title: 將賽門鐵克 ICDx 資料連線到 Azure 哨兵*微軟文檔
+description: 瞭解如何將賽門鐵克 ICDx 資料連線到 Azure 哨兵。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,68 +16,68 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588088"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>連接您的 Symantec ICDx 應用裝置 
+# <a name="connect-your-symantec-icdx-appliance"></a>連接賽門鐵克 ICDx 設備 
 
 
 
-Symantec ICDx connector 可讓您輕鬆地將所有 Symantec 安全性解決方案記錄與您的 Azure Sentinel 連接、查看儀表板、建立自訂警示，以及改善調查。 這可讓您深入瞭解組織的網路，並改善您的安全性作業功能。 Symantec ICDx 和 Azure Sentinel 之間的整合會使用 REST API。
+賽門鐵克 ICDx 連接器允許您輕鬆地將所有賽門鐵克安全解決方案日誌與 Azure Sentinel 連接，以查看儀表板、創建自訂警報並改進調查。 這使您可以更深入地瞭解組織的網路，並改進您的安全操作功能。 賽門鐵克 ICDx 和 Azure 哨兵之間的集成利用了 REST API。
 
 
 > [!NOTE]
-> 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
+> 資料將存儲在運行 Azure Sentinel 的工作區的地理位置中。
 
-## <a name="configure-and-connect-symantec-icdx"></a>設定及連接 Symantec ICDx 
+## <a name="configure-and-connect-symantec-icdx"></a>配置和連接賽門鐵克 ICDx 
 
-Symantec ICDx 可以將記錄直接整合到 Azure Sentinel，並將其匯出。
+賽門鐵克 ICDx 可以直接集成日誌並將其匯出到 Azure Sentinel。
 
-1. 開啟 ICDx 管理主控台，以新增 Microsoft Azure Sentinel （Log Analytics）轉寄站。
-2. 在 ICDx 巡覽列上 **，按一下 [** 設定]。 
-3. **在 [設定] 畫面頂端** **，按一下 [** 轉寄站]。
-4. 在 [轉寄站]**底下的 [** Microsoft Azure Sentinel （Log Analytics）] 旁，按一下 [**新增**]。 
-4. 在 [ **Microsoft Azure Sentinel （Log Analytics）** ] 視窗中，按一下 [**顯示 Advanced**]。 
-5. 在 [展開至 Microsoft Azure Sentinel （Log Analytics）] 視窗的頂端，執行下列動作：
-    -   **名稱**：輸入不超過30個字元的轉寄站名稱。 選擇唯一且有意義的名稱。 這個名稱會出現**在 [設定] 畫面上**的轉寄站清單中，以及 [**儀表板**] 畫面上的 [儀表板] 中。 例如： Microsoft Azure Log Analytics 東部。 這是必填欄位。
-    -   **描述**：輸入轉寄站的描述。 此描述也會出現在 [設定 **] 畫面上的轉寄**站清單中。 包含詳細資料，例如轉送的事件種類，以及需要檢查資料的群組。
-    -   **啟動類型**：選取轉寄站設定的啟動方法。 您的選項為 [手動] 和 [自動]。<br>預設值為 [自動]。 
-6. 在 [**事件**] 底下，執行下列動作： 
-    - **來源**：選取一或多個要轉送事件的封存。 您可以選取作用中的收集器封存（包括一般封存）、孤立的收集器封存（也就是您已刪除之收集器的封存）、ICDx 接收者封存或系統封存。 <br>預設為 [一般封存]。
+1. 打開 ICDx 管理主控台以添加 Microsoft Azure Sentinel（日誌分析）轉寄站。
+2. 在 ICDx 巡覽列上，按一下"**配置**"。 
+3. 在 **"配置"** 螢幕頂部，按一下 **"轉寄站**"。
+4. 在**轉寄站**下，在 Microsoft Azure 哨兵（日誌分析）旁邊，按一下"**添加**"。 
+4. 在**Microsoft Azure 哨兵（日誌分析）** 視窗中，按一下"**顯示高級**"。 
+5. 在擴展到 Microsoft Azure 哨兵（日誌分析）視窗的頂部，執行以下操作：
+    -   **名稱**： 為不超過 30 個字元的轉寄站鍵入名稱。 選擇唯一、有意義的名稱。 此名稱將顯示在 **"配置"** 螢幕上的轉寄站清單中和**儀表板**螢幕上的儀表板中。 例如：微軟 Azure 日誌分析東部。 這是必填欄位。
+    -   **說明**： 鍵入轉寄站的說明。 此說明也顯示在 **"配置**"螢幕上的轉寄站清單中。 包括要轉發的事件種類和需要檢查資料的組等詳細資訊。
+    -   **啟動類型**：為轉寄站配置選擇啟動方法。 您的選項是手動和自動的。<br>預設值為"自動"。 
+6. 在 **"事件"** 下，執行以下操作： 
+    - **源**： 選擇要轉發事件的一個或多個存檔。 您可以選擇活動收集器存檔（包括公共存檔）、孤立收集器存檔（即已刪除的收集器的存檔）、ICDx 接收器存檔或系統存檔。 <br>預設值為"通用存檔"。
       > [!NOTE]
-      > ICDx 接收者封存會依名稱分別列出。 
+      > ICDx 接收器存檔按名稱單獨列出。 
  
-    - **篩選**：加入指定要轉送的事件子集的篩選準則。 執行下列其中一個動作：
-        - 若要選取篩選準則，請按一下 [類型]、[屬性]、[運算子] 和 [值]。 
-        - 在 [篩選] 欄位中，檢查您的篩選準則。 您可以直接在欄位中編輯它，或視需要加以刪除。
-        - 按一下 [AND] 或 [OR] 以新增至您的篩選準則。
-        - 您也可以按一下 [已儲存的查詢] 來套用已儲存的查詢。
-    - **包含的屬性**：輸入要包含在轉送資料中的屬性（以逗號分隔）清單。 包含的屬性優先于排除的屬性。
-    - **排除的屬性**：輸入要從轉送的資料中排除的屬性清單（以逗號分隔）。
-    - **批次大小**：選取每個批次要傳送的事件數目。 您的選項為10、50、100、500和1000。<br>預設值為 100。 
-    - **速率限制**：選取轉送事件的速率（以每秒的事件數表示）。 您的選項為無限制、500、1000、5000、10000。 <br> 預設值為5000。 
-7. 在 [ **Azure 目的地**] 底下，執行下列動作： 
-    - **工作區識別碼**：貼上下方的工作區識別碼。 這是必填欄位。
-    - **主要金鑰**：貼上以下的主要金鑰。 這是必填欄位。
-    - **自訂記錄檔名稱**：在您要轉寄事件的 Microsoft Azure 入口網站 Log Analytics 工作區中輸入自訂記錄檔名稱。 預設值為 SymantecICDx。 這是必填欄位。
-8. 按一下 [*儲存*] 以完成轉寄站設定。 
-9. 若要啟動轉寄站，請在 [**選項**] 底下按一下 [**其他**]，然後按 [**啟動**]
-10. 若要在 Log Analytics 中使用適用于 Symantec ICDx 事件的相關架構，請搜尋**SymantecICDx_CL**。
+    - **篩選器**：添加一個篩選器，指定要轉發的事件子集。 執行下列其中一個動作：
+        - 要選擇篩選器條件，請按一下"類型、屬性、運算子"和"值"。 
+        - 在"篩選器"欄位中，查看篩選器條件。 您可以直接在欄位中編輯它，也可以根據需要將其刪除。
+        - 按一下 AND 或 OR 以添加到篩選器條件。
+        - 您還可以按一下"保存的查詢"以應用已保存的查詢。
+    - **包含屬性**：鍵入要包含在轉發資料中的屬性的逗號分隔清單。 包含的屬性優先于排除的屬性。
+    - **排除屬性**：鍵入要從轉發的資料中排除的屬性的逗號分隔清單。
+    - **批次處理大小**：選擇每個批次處理要發送的事件數。 您的選項是 10、50、100、500 和 1000。<br>預設值為 100。 
+    - **速率限制**：選擇轉發事件的速率，以每秒事件表示。 您的選項是無限，500，1000，5000，10000。 <br> 預設值為 5000。 
+7. 在**Azure 目標**下，執行以下操作： 
+    - **工作區 ID**：從下面粘貼工作區 ID。 這是必填欄位。
+    - **主鍵**：從下面粘貼主金鑰。 這是必填欄位。
+    - **自訂日誌名稱**：在要轉發事件的 Microsoft Azure 門戶日誌分析工作區中鍵入自訂日誌名稱。 預設值為賽門鐵克ICDx。 這是必填欄位。
+8. 按一下 *"保存*"以完成轉寄站配置。 
+9. 要啟動轉寄站，請在 **"選項**"下按一下 **"更多**"，然後**開始**。
+10. 要在日誌分析中為賽門鐵克 ICDx 事件使用相關架構，請搜索**SymantecICDx_CL**。
 
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要20分鐘的時間，您的記錄才會開始出現在 Log Analytics 中。 
+可能需要 20 分鐘以上，直到日誌開始出現在日誌分析中。 
 
 
 
 ## <a name="next-steps"></a>後續步驟
-在本檔中，您已瞭解如何將 Symantec ICDx 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本文檔中，您學習了如何將賽門鐵克 ICDx 連接到 Azure 哨兵。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

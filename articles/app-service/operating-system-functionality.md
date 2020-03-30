@@ -1,15 +1,15 @@
 ---
 title: 作業系統功能
-description: 瞭解 Windows Azure App Service 中的 OS 功能。 瞭解您的應用程式所取得的檔、網路和登錄存取類型。
+description: 瞭解 Windows 上的 Azure 應用服務中的作業系統功能。 瞭解應用獲得的檔、網路和註冊表訪問類型。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671617"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
@@ -22,7 +22,7 @@ ms.locfileid: "74671617"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service 計劃層
-App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」和「共用」層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」和「Premium」層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
+App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」**** 和「共用」**** 層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」**** 和「Premium」**** 層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -45,7 +45,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>本機磁碟機
-基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 其中包括：
+基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 這包括：
 
 - 作業系統磁碟機 (D:\ 磁碟機)
 - 應用程式磁碟機，包含 App Service 專用的 Azure 封裝 cspkg 檔案 (客戶無法存取)
@@ -55,7 +55,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 
 - 應用程序可能會擲回錯誤，指出磁碟上沒有足夠的空間。
 - 瀏覽至 Kudu 主控台時，您可能會看到磁碟錯誤。
-- Azure DevOps 或 Visual Studio 的部署可能會因 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`而失敗。
+- Azure DevOps 或視覺化工作室的部署可能會失敗`ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
 - 您的應用程式可能會效能變慢。
 
 <a id="NetworkDrives"></a>
@@ -76,7 +76,7 @@ App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特
 
 App Service 對於暫存本機儲存體的兩種使用方式範例：暫存 ASP.NET 檔案的目錄和 IIS 壓縮檔案的目錄。 ASP.NET 編譯系統會使用 "Temporary ASP.NET Files" 目錄作為暫存編譯快取位置。 IIS 則使用 "IIS Temporary Compressed Files" 目錄來儲存壓縮回應輸出。 這兩種檔案使用方式 (和其他方式) 都會在 App Service 中重新對應至每個應用程式的暫存本機儲存體。 此重新對應可確保功能如預期般繼續運作。
 
-App Service 中的每個應用程式都會以隨機獨特的低權限背景工作角色處理序身分識別 (稱為「應用程式集區身分識別」) 執行，進一步的說明如下：[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
+應用服務中的每個應用都作為稱為"應用程式池標識"的隨機唯一低特權輔助進程標識運行，此處進一步描述[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)： 。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
 
 <a name="multipleinstances"></a>
 
@@ -86,7 +86,7 @@ App Service 中的每個應用程式都會以隨機獨特的低權限背景工�
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>網路存取
-應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用程式可以使用這些相同的通訊協定來連線到 Azure 中的服務，例如，藉由建立 SQL Database 的 HTTPS 連線。
+應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用可以使用這些相同的協定連接到 Azure 中的服務，例如，通過建立到 SQL 資料庫的 HTTPS 連接。
 
 此外，應用程式可以在有限的情況下建立一個本機回送連線，並且讓應用程式在該本機回送通訊端上接聽。 這項功能主要是讓在本機回送通訊端上接聽的應用程式成為其功能的一部分。 每個應用程式都會看到「私人」回送連線。 應用程式 "A" 無法接聽由應用程式 "B" 建立的本機回送通訊端。
 

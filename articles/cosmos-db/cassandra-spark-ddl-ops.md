@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622564"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 進行 Azure Cosmos DB Cassandra API 的 DDL 作業
@@ -82,10 +82,10 @@ DESCRIBE keyspaces;
 ```
 ## <a name="table-ddl-operations"></a>資料表 DDL 作業
 
-**考量因素：**  
+**考慮：**  
 
 - 使用 create table 陳述式，即可在資料表層級指派輸送量。  
-- 一個分割區索引鍵可以儲存 20 GB 的資料。  
+- 一個分區鍵可以存儲 20 GB 的資料。  
 - 一筆記錄最多可以儲存 2 MB 的資料。  
 - 一個分割區索引鍵範圍可以儲存多個分割區索引鍵。
 
@@ -144,5 +144,5 @@ DESCRIBE tables;
 * [讀取作業](cassandra-spark-read-ops.md)  
 * [作業](cassandra-spark-upsert-ops.md)  
 * [刪除作業](cassandra-spark-delete-ops.md)  
-* [彙總作業](cassandra-spark-aggregation-ops.md)  
+* [聚合操作](cassandra-spark-aggregation-ops.md)  
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)  

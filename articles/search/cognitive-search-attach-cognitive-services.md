@@ -1,7 +1,7 @@
 ---
-title: 將認知服務附加至技能集
+title: 將認知服務附加到技能集
 titleSuffix: Azure Cognitive Search
-description: 如何在 Azure 認知搜尋中將認知服務的多個訂用帳戶附加至 AI 擴充管線的指示。
+description: 有關在 Azure 認知搜索中將認知服務一體式訂閱附加到 AI 擴充管道的說明。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77472446"
 ---
-# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>將認知服務資源連結至 Azure 認知搜尋中的技能集 
+# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>將認知服務資源附加到 Azure 認知搜索中的技能集 
 
-在 Azure 認知搜尋中設定擴充管線時，您可以免費擴充有限數目的檔。 針對較大型且較頻繁的工作負載，您應該附加可計費的認知服務資源。
+在 Azure 認知搜索中配置濃縮管道時，可以免費豐富數量有限的文檔。 對於更大和更頻繁的工作負載，應附加計費的認知服務資源。
 
-在本文中，您將瞭解如何藉由將金鑰指派給定義擴充管線的技能集來連結資源。
+在本文中，您將學習如何通過將金鑰分配給定義濃縮管道的技能集來附加資源。
 
-## <a name="resources-used-during-enrichment"></a>擴充期間使用的資源
+## <a name="resources-used-during-enrichment"></a>濃縮期間使用的資源
 
-Azure 認知搜尋相依于認知服務，包括影像分析和光學字元辨識（OCR）的[電腦視覺](https://azure.microsoft.com/services/cognitive-services/computer-vision/)、自然語言處理的[文字分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)，以及[文字翻譯](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)之類的其他擴充。 在 Azure 認知搜尋的擴充內容中，這些 AI 演算法會包裝在*技能*中，放在*技能集*中，並在索引編制期間參考*索引子*。
+Azure 認知搜索依賴于認知服務，包括用於圖像分析和光學字元辨識 （OCR）[的電腦視覺](https://azure.microsoft.com/services/cognitive-services/computer-vision/)、用於自然語言處理[的文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)以及其他豐富功能，如[文本翻譯](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)。 在 Azure 認知搜索中的擴充上下文中，這些 AI 演算法被包裝在*技能*中，放置在*技能集中**，並在索引*器編制期間引用。
 
 ## <a name="how-billing-works"></a>計費的運作方式
 
-+ Azure 認知搜尋會使用您在技能集上提供的認知服務資源金鑰來計費影像和文字擴充。 計費技能的執行是認知服務的[隨用隨付價格](https://azure.microsoft.com/pricing/details/cognitive-services/)。
++ Azure 認知搜索使用您在技能集上提供的認知服務資源金鑰，以便為圖像和文本富集計費。 執行計費技能是在[認知服務支付即用即付的價格](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
-+ 影像解壓縮是一種 Azure 認知搜尋作業，會在擴充之前先解開檔時進行。 影像解壓縮是可計費的。 如需影像解壓縮的價格，請參閱[Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
++ 圖像提取是 Azure 認知搜索操作，在富集之前文檔破裂時發生。 圖像提取是計費的。 有關圖像提取定價，請參閱[Azure 認知搜索定價頁](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
-+ 文字解壓縮也會在檔破解片語期間發生。 這不是可計費的。
++ 文本提取也會在文檔破解短語期間發生。 它不計費。
 
-+ 不會呼叫認知服務的技能，包括條件式、整形者、文字合併和文字分割技能，都無法計費。
++ 不調用認知服務的技能（包括條件、沙珀、文本合併和文本拆分技能）不可計費。
 
-## <a name="same-region-requirement"></a>相同區域需求
+## <a name="same-region-requirement"></a>同一區域要求
 
-我們需要 Azure 認知搜尋和 Azure 認知服務存在於相同的區域內。 否則，您將會在執行時間收到此訊息： `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+我們要求 Azure 認知搜索和 Azure 認知服務存在於同一區域中。 否則，您將在運行時收到此消息：`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
-沒有任何方法可以跨區域移動服務。 如果您收到此錯誤，您應該在與 Azure 認知搜尋相同的區域中建立新的認知服務資源。
+無法跨區域移動服務。 如果收到此錯誤，則應在 Azure 認知搜索相同的區域中創建新的認知服務資源。
 
 > [!NOTE]
-> 某些內建技能是以非區域認知服務為基礎（例如，[文字翻譯技能](cognitive-search-skill-text-translation.md)）。 使用非區域技能表示您的要求可能會在 Azure 認知搜尋區域以外的區域中提供服務。 如需非區域服務的詳細資訊，請參閱[依區域認知服務產品](https://aka.ms/allinoneregioninfo)頁面。
+> 某些內置技能基於非區域認知服務（例如，[文本翻譯技能](cognitive-search-skill-text-translation.md)）。 使用非區域技能意味著您的請求可能在 Azure 認知搜索區域以外的區域中提供服務。 有關詳細資訊，請參閱[認知服務產品（按區域）](https://aka.ms/allinoneregioninfo)頁面。
 
 ## <a name="use-free-resources"></a>使用免費資源
 
-您可以使用有限的免費處理選項來完成 AI 擴充教學課程和快速入門練習。
+您可以使用有限的免費處理選項來完成 AI 擴充教程和快速入門練習。
 
-每個索引子的免費（有限的擴充）資源限制為每天20份檔。 您可以刪除並重新建立索引子，以重設計數器。
+每個索引子每天只能提供 20 個文檔的免費（有限濃縮）資源。 您可以刪除並重新創建索引子以重置計數器。
 
-1. 開啟 [匯入資料] 嚮導：
+1. 打開導入資料嚮導：
 
-   ![開啟 [匯入資料] 嚮導](media/search-get-started-portal/import-data-cmd.png "開啟 [匯入資料] 嚮導")
+   ![打開導入資料嚮導](media/search-get-started-portal/import-data-cmd.png "打開導入資料嚮導")
 
-1. 選擇資料來源並繼續**新增 AI 擴充（選擇性）** 。 如需此 wizard 的逐步解說，請參閱[在 Azure 入口網站中建立索引](search-get-started-portal.md)。
+1. 選擇資料來源並繼續**添加 AI 擴充（可選）。** 有關此嚮導的分步演練，請參閱[在 Azure 門戶中創建索引](search-get-started-portal.md)。
 
-1. 展開 [**附加認知服務**]，然後選取 **[免費（有限的擴充）** ]：
+1. 展開**附加認知服務**，然後選擇**免費（有限濃縮）：**
 
-   ![展開的附加認知服務區段](./media/cognitive-search-attach-cognitive-services/attach1.png "展開的附加認知服務區段")
+   ![擴展附加認知服務部分](./media/cognitive-search-attach-cognitive-services/attach1.png "擴展附加認知服務部分")
 
-1. 您現在可以繼續進行後續步驟，包括**新增認知技能**。
+1. 現在，您可以繼續執行後續步驟，包括**添加認知技能**。
 
 ## <a name="use-billable-resources"></a>使用計費資源
 
-針對每天建立超過20個擴充的工作負載，請務必附加可計費的認知服務資源。 我們建議您一律附加可計費的認知服務資源，即使您不想要呼叫認知服務 API 也一樣。 附加資源會覆寫每日限制。
+對於每天創建 20 次以上富集的工作負載，請確保附加計費的認知服務資源。 我們建議您始終附加計費的認知服務資源，即使您從未打算調用認知服務 API 也是如此。 附加資源將覆蓋每日限制。
 
-您只需支付呼叫認知服務 API 的技能。 您不需支付[自訂技能](cognitive-search-create-custom-skill-example.md)或[文字合併](cognitive-search-skill-textmerger.md)、[文字分隔器](cognitive-search-skill-textsplit.md)和[整形](cognitive-search-skill-shaper.md)程式等技能，這不是以 API 為基礎。
+您只對稱為認知服務 API 的技能收費。 您不需要按[自訂技能](cognitive-search-create-custom-skill-example.md)收費，或者像[文本合併](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[shaper](cognitive-search-skill-shaper.md)這樣的技能，這些技能不是基於 API 的。
 
-1. 開啟 [匯入資料] 嚮導，選擇 [資料來源]，然後繼續**新增 AI 擴充（選擇性）** 。
+1. 打開導入資料嚮導，選擇資料來源，並繼續**添加 AI 充實（可選）。**
 
-1. 展開 [**附加認知服務**]，然後選取 [**建立新的認知服務資源**]。 隨即會開啟新的索引標籤，讓您可以建立資源：
+1. 展開**附加認知服務**，然後選擇**創建新的認知服務資源**。 將打開一個新選項卡，以便您可以創建資源：
 
    ![建立認知服務資源](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "建立認知服務資源")
 
-1. 在 [**位置**] 清單中，選取您的 Azure 認知搜尋服務所在的區域。 基於效能考慮，請務必使用此區域。 使用此區域也會對區域之間的輸出頻寬費用產生不一致的情況。
+1. 在 **"位置**"清單中，選擇 Azure 認知搜索服務所在的區域。 出於性能原因，請確保使用此區域。 使用此區域也會使跨區域的出站頻寬費用失效。
 
-1. 在 [**定價層**] 清單中，選取 [ **S0** ] 以取得認知服務功能的多功能集合，包括可回到 Azure 認知搜尋所提供之內建技能的願景和語言功能。
+1. 在**定價層**清單中，選擇**S0**以獲取認知服務功能的一體集合，包括支援 Azure 認知搜索提供的內置技能的視覺和語言功能。
 
-   針對 S0 層，您可以在[認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/)上找到特定工作負載的費率。
+   對於 S0 層，您可以在[認知服務定價頁上](https://azure.microsoft.com/pricing/details/cognitive-services/)找到特定工作負載的費率。
   
-   + 在 [**選取供應**專案] 清單中，確認已選取 [**認知服務**]。
-   + 在 [**語言**功能] 底下，**文字分析 Standard**的費率適用于 AI 索引。
-   + 在 [**視覺**功能] 底下，適用**電腦視覺 S1**的費率。
+   + 在 **"選擇產品/服務**"清單中，請確保選擇了**認知服務**。
+   + 在**語言**功能下，**文本分析標準**的比率適用于 AI 索引。
+   + 在**視覺**功能下，**應用電腦視覺 S1**的費率。
 
-1. 選取 [建立] 以布**建**新的認知服務資源。
+1. 選擇 **"創建**"以預配新的認知服務資源。
 
-1. 返回上一個索引標籤，其中包含 [匯入資料] wizard。 選取 [重新整理] 以顯示認知服務資源，**然後選取資源**：
+1. 返回到包含"導入資料嚮導"的上一個選項卡。 選擇 **"刷新**"以顯示認知服務資源，然後選擇資源：
 
-   ![選取認知服務資源](./media/cognitive-search-attach-cognitive-services/attach2.png "選取認知服務資源")
+   ![選擇認知服務資源](./media/cognitive-search-attach-cognitive-services/attach2.png "選擇認知服務資源")
 
-1. 展開 [**新增認知技能**] 區段，以選取您想要在資料上執行的特定認知技能。 完成嚮導的其餘部分。
+1. 展開"**添加認知技能"** 部分，以選擇要在資料上運行的特定認知技能。 完成嚮導的其餘部分。
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>將現有的技能附加至認知服務資源
 
 如果您有現有的技能，就可以將其附加至新的或不同的「認知服務」資源。
 
-1. 在 [**服務總覽**] 頁面上，選取 [**技能集**]：
+1. 在 **"服務概述"** 頁上，選擇**技能集**：
 
-   ![技能集索引標籤](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "技能集索引標籤")
+   ![技能集選項卡](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "技能集選項卡")
 
-1. 選取技能集的名稱，然後選取現有的資源或建立一個新的資源。 按一下 [確定] 確認變更。
+1. 選擇技能集的名稱，然後選擇現有資源或創建新資源。 按一下 [確定]**** 確認變更。
 
    ![技能集資源清單](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "技能集資源清單")
 
-   請記住，[**免費（有限的擴充）** ] 選項會每天限制您20份檔，而且您可以使用 [**建立新的認知服務資源**] 來布建新的可計費資源。 如果您建立新資源，請選取 [重新整理] 以重新整理「認知服務」資源的清單，然後選取資源。
+   請記住，"**免費（有限濃縮）"** 選項每天限制您使用 20 個文檔，並且您可以使用 **"創建新的認知服務"資源**來預配新的計費資源。 如果您建立新資源，請選取 [重新整理]**** 以重新整理「認知服務」資源的清單，然後選取資源。
 
 ## <a name="attach-cognitive-services-programmatically"></a>透過程式設計方式附加認知服務
 
-透過程式設計方式定義技能時，請將 `cognitiveServices` 區段新增至該技能。 在該區段中，包含您要與技能集建立關聯之認知服務資源的索引鍵。 請記住，資源必須與您的 Azure 認知搜尋資源位於相同的區域。 以及包含 `@odata.type`，並將它設定為 `#Microsoft.Azure.Search.CognitiveServicesByKey`。
+透過程式設計方式定義技能時，請將 `cognitiveServices` 區段新增至該技能。 在本節中，包括要與技能集關聯的認知服務資源的鍵。 請記住，資源必須與 Azure 認知搜索資源位於同一區域。 以及包含 `@odata.type`，並將它設定為 `#Microsoft.Azure.Search.CognitiveServicesByKey`。
 
-下列範例示範了此模式。 請注意定義結尾的 `cognitiveServices` 區段。
+下列範例示範了此模式。 請注意定義`cognitiveServices`末尾的節。
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -146,29 +146,29 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>範例：預估成本
+## <a name="example-estimate-costs"></a>示例：估算成本
 
-若要估計與認知搜尋索引相關的成本，請從一般檔的外觀開始著手，讓您可以執行一些數位。 例如，您可能會大致估計：
+要估計與認知搜索索引相關的成本，首先瞭解平均文檔的外觀，以便您可以運行一些數位。 例如，您可能近似于：
 
-+ 1000 Pdf。
-+ 每個頁面都有六頁。
-+ 每頁一個影像（6000個影像）。
-+ 每頁3000個字元。
++ 1，000 PDF。
++ 每頁六頁。
++ 每頁一張圖像（6，000 張圖像）。
++ 每頁 3，000 個字元。
 
-假設管線包含每個 PDF 的檔破解、影像和文字解壓縮、影像的光學字元辨識（OCR），以及組織的實體辨識。
+假設一個管道，該管道包括每個 PDF 的文檔破解、圖像和文本提取、圖像的光學字元辨識 （OCR） 以及組織的實體識別。
 
-本文中所顯示的價格是假設的。 它們是用來說明估計程式。 您的成本可能較低。 如需交易的實際價格，請參閱[認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services)。
+本文所示的價格是假設的。 它們用於說明估計過程。 您的成本可能會更低。 有關交易的實際價格，請參閱[認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services)。
 
-1. 針對文字和影像內容的文件破解，目前文字擷取是免費功能。 針對6000映射，會針對每個已解壓縮的1000影像假設 $1。 這是此步驟的 $6.00 成本。
+1. 針對文字和影像內容的文件破解，目前文字擷取是免費功能。 對於 6，000 個圖像，假設每提取 1，000 張圖像 1 美元。 此步驟的成本為 6.00 美元。
 
 2. 針對 6,000 個英文影像的 OCR，OCR 認知技能會使用最佳演算法 (DescribeText)。 假設每分析 1,000 個影像的費用為美金 $2.50 元，則在此步驟中您需支付美金 $15.00 元。
 
-3. 針對實體解壓縮，每頁總共會有三個文字記錄。 每筆記錄是 1,000 個字元。 每個頁面乘以6000頁的三個文字記錄等於18000文字記錄。 假設每 1,000 筆文字記錄需要美金 $2.00 元，則此步驟需要美金 $36.00 元。
+3. 對於實體提取，每頁總共有三條文本記錄。 每筆記錄是 1,000 個字元。 每頁三條文本記錄乘以 6，000 頁等於 18，000 條文本記錄。 假設每 1,000 筆文字記錄需要美金 $2.00 元，則此步驟需要美金 $36.00 元。
 
-總之，您需要支付 $57.00，才能使用所述的技能集來內嵌這種類型的 1000 PDF 檔。
+綜上所述，您需要支付約 57.00 美元，以便使用所述技能集攝錄 1，000 個此類 PDF 文檔。
 
 ## <a name="next-steps"></a>後續步驟
-+ [Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)
++ [Azure 認知搜索定價頁](https://azure.microsoft.com/pricing/details/search/)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [建立技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何對應豐富型欄位](cognitive-search-output-field-mapping.md) (英文)

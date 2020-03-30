@@ -1,5 +1,5 @@
 ---
-title: 使用 AzureRM PowerShell 腳本管理 StorSimple 裝置
+title: 使用 AzureRM 電源外殼腳本管理 StorSimple 設備
 description: 了解如何使用 Azure Resource Manager 指令碼將 StorSimple 作業自動化
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471953"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用 Azure Resource Manager SDK 型指令碼管理 StorSimple 裝置

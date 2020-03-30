@@ -1,6 +1,6 @@
 ---
-title: 快速入門-在私人雲端上建立 Azure VMware VM-CloudSimple 的 Azure VMware 解決方案
-description: 說明如何在 CloudSimple 私人雲端上建立 Azure VMware VM
+title: 快速入門 - 在私有雲上創建 Azure VMware VM - 雲簡單創建 Azure VMware 解決方案
+description: 描述如何在雲簡單私有雲上創建 Azure VMware VM
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -9,149 +9,149 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566143"
 ---
-# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有雲上創建 VMware 虛擬機器
 
-若要在私人雲端上建立虛擬機器，請從 Azure 入口網站存取 CloudSimple 入口網站開始。
+要在私有雲上創建虛擬機器，請首先從 Azure 門戶訪問雲簡單門戶。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
+登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-1. 選取 [所有服務]。
-2. 搜尋**CloudSimple Services**。
-3. 選取您要在其上建立私人雲端的 CloudSimple 服務。
-4. 在 [**總覽**] 頁面上，按一下 [**移至 CloudSimple 入口網站**] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。  若出現提示，請使用您的 Azure 登入認證登入。  
+1. 選擇**所有服務**。
+2. 搜索**雲簡單服務**。
+3. 選擇要在其中創建私有雲的雲簡單服務。
+4. 在 **"概述"** 頁上，按一下"**轉到雲簡單"門戶**可打開 CloudSimple 門戶的新瀏覽器選項卡。  如果出現提示，請使用 Azure 登錄憑據登錄。  
 
-    ![啟動 CloudSimple 入口網站](media/launch-cloudsimple-portal.png)
+    ![啟動雲簡單門戶](media/launch-cloudsimple-portal.png)
 
-## <a name="launch-vcenter-web-ui"></a>啟動 vCenter web ui
+## <a name="launch-vcenter-web-ui"></a>啟動 vCenter Web-ui
 
-您現在可以啟動 vCenter 來設定虛擬機器和原則。
+您現在可以啟動 vCenter 來設置虛擬機器和策略。
 
-若要存取 vCenter，請從 CloudSimple 入口網站啟動。 在首頁的 [**一般**工作] 底下，按一下 [**啟動 vSphere 用戶端**]。  選取私人雲端，然後按一下 [在私人雲端上**啟動 VSphere 用戶端**]。
+要訪問 vCenter，從雲簡單門戶開始。 在主頁上，在 **"常見任務**"下，按一下 **"啟動 vSphere 用戶端**"。  選擇私有雲，然後按一下在私有雲上**啟動 vSphere 用戶端**。
 
    ![啟動 vSphere 用戶端](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>上傳 ISO 或 vSphere 範本
 
   > [!WARNING]
-  > 針對 ISO 上傳，請使用 vSphere HTML5 用戶端。  使用 Flash 用戶端可能會導致錯誤。
+  > 對於 ISO 上傳，請使用 vSphere HTML5 用戶端。  使用 Flash 用戶端可能會導致錯誤。
 
-1. 取得您想要上傳至 vCenter 的 ISO 或 vSphere 範本，以建立 VM，並在您的本機系統上使用它。
-2. 在 vCenter 中，按一下**磁片**圖示，然後選取 [ **vsanDatastore**]。 按一下 [檔案 **]，然後按一下 [** **新增資料夾**]。
+1. 獲取要上載到 vCenter 以創建 VM 並在本地系統上可用的 ISO 或 vSphere 範本。
+2. 在 vCenter 中，按一下 **"磁片"** 圖示並選擇 **"vsan Datastore**"。 按一下 **"檔**"，然後按一下 **"新建資料夾**"。
     ![vCenter ISO](media/vciso00.png)
 
-3. 建立名為「Iso 和 Templates」的資料夾。
+3. 創建名為"IsO 和範本"的資料夾。
 
-4. 流覽至 [Iso 和範本] 中的 [Iso] 資料夾，然後按一下 **[上傳**檔案]。 依照畫面上的指示上傳 ISO。
+4. 導航到 ISO 和範本中的 ISO 資料夾，然後按一下 **"上傳檔**"。 按照螢幕上的說明上傳 ISO。
 
-## <a name="create-a-virtual-machine-in-vcenter"></a>在 vCenter 中建立虛擬機器
+## <a name="create-a-virtual-machine-in-vcenter"></a>在 vCenter 中創建虛擬機器
 
-1. 在 vCenter 中，按一下 [**主機和**叢集] 圖示。
+1. 在 vCenter 中，按一下 **"主機和群集"** 圖示。
 
-2. 以滑鼠右鍵按一下 [**工作負載**]，然後選取 [**新增虛擬機器**]。
+2. 按右鍵 **"工作負載**"並選擇 **"新虛擬機器**"。
     ![新的 VM](media/vcvm01.png)
 
-3. 選取 [**建立新的虛擬機器**]，然後按 **[下一步]** 。
+3. 選擇 **"創建新虛擬機器**"，然後按一下"**下一步**"。
     ![新的 VM](media/vcvm02.png)
 
-4. 將電腦命名為，選取**工作負載 VM 的**位置，然後按 **[下一步]** 。
+4. 命名電腦，選擇工作負載**VM**的位置，然後按一下 **"下一步**"。
     ![新的 VM](media/vcvm03.png)
 
-5. 選取**工作負載**計算資源，然後按 **[下一步]** 。
+5. 選擇 **"工作負載**計算資源"，然後按一下 **"下一步**"。
     ![新的 VM](media/vcvm04.png)
 
-6. 選取**vsanDatastore** ，然後按 **[下一步]** 。
+6. 選擇**vsan Datastore，** 然後按一下 **"下一步**"。
     ![新的 VM](media/vcvm05.png)
 
-7. 保留預設的 [ESXi 6.5 相容性] 選項，然後按 **[下一步]** 。
+7. 保留預設 ESXi 6.5 相容性選擇，然後按一下 **"下一步**"。
     ![新的 VM](media/vcvm06.png)
 
-8. 選取您要建立之 VM 的 ISO 的 [客體作業系統]，然後按 **[下一步]** 。
+8. 為要創建的 VM 選擇 ISO 的客體作業系統，然後按一下"**下一步**"。
     ![新的 VM](media/vcvm07.png)
 
-9. 選取 [硬碟和網路選項]。 針對新的 CD/DVD 光碟機，請選取 [資料存放區**ISO**檔案]。  如果您想要允許從公用 IP 位址到此 VM 的流量，請選取 [網路] 做為 [ **vm-1**]。
+9. 選擇硬碟和網路選項。 對於新的 CD/DVD 光碟機，請選擇**資料存儲 ISO 檔**。  如果要允許流量從公共 IP 位址到此 VM，請選擇網路為**vm-1**。
     ![新的 VM](media/vcvm08.png)
 
-10. 選取範圍視窗隨即開啟。 選取您先前上傳至 [Iso 和範本] 資料夾的檔案，然後按一下 **[確定]** 。
+10. 將打開一個選擇視窗。 選擇您以前上載到 ISO 和範本資料夾的檔，然後按一下"**確定**"。
     ![新的 VM](media/vcvm10.png)
 
-11. 檢查設定，然後按一下 **[確定]** 以建立 VM。
+11. 查看設置並按一下 **"確定"** 以創建 VM。
     ![新的 VM](media/vcvm11.png)
 
-VM 現在已新增至工作負載計算資源，並可供使用。 
+VM 現已添加到工作負載計算資源中，並可供使用。 
 ![新的 VM](media/vcvm12.png)
 
-基本設定現已完成。 您可以開始使用您的私用雲端，類似于您使用內部部署 VM 基礎結構的方式。
+基本設置現已完成。 您可以開始使用私有雲，類似于使用本地 VM 基礎結構的方式。
 
-下列各節包含有關設定私人雲端工作負載的 DNS 和 DHCP 伺服器，以及修改預設網路設定的選擇性資訊。
+以下各節包含有關為私有雲工作負載設置 DNS 和 DHCP 伺服器以及修改預設網路配置的可選資訊。
 
-## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和身分識別來源新增至 vCenter （選擇性）
+## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和標識源添加到 vCenter（可選）
 
-CloudSimple 會指派預設的 vCenter 使用者帳戶，並 `cloudowner@cloudsimple.local`使用者名稱。 您不需要進行其他帳戶設定即可開始使用。  CloudSimple 通常會為系統管理員指派執行正常作業所需的許可權。  將您的內部部署 active directory 或 Azure AD 設定為私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
+CloudSimple 分配了一個預設 vCenter`cloudowner@cloudsimple.local`使用者帳戶，該使用者帳戶具有使用者名 。 無需設置其他帳戶即可開始。  CloudSimple 通常會為管理員分配執行正常操作所需的許可權。  將本地活動目錄或 Azure AD 設置為私有雲上[的其他標識源](set-vcenter-identity.md)。
 
-## <a name="create-a-dns-and-dhcp-server-optional"></a>建立 DNS 和 DHCP 伺服器（選擇性）
+## <a name="create-a-dns-and-dhcp-server-optional"></a>創建 DNS 和 DHCP 伺服器（可選）
 
-在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私用雲端環境中提供這些服務。
+在私有雲環境中運行的應用程式和工作負載需要名稱解析和 DHCP 服務才能進行查找和 IP 位址分配。 需要適當的 DHCP 和 DNS 基礎結構來提供這些服務。 您可以在 vCenter 中配置虛擬機器，以在私有雲環境中提供這些服務。
 
 Prerequisites
 
-* 已設定 VLAN 的分散式通訊埠群組
+* 配置了 VLAN 的分散式埠組
 
-* 將設定路由至內部部署或以網際網路為基礎的 DNS 伺服器
+* 將設置路由到本地或基於 Internet 的 DNS 伺服器
 
-* 建立虛擬機器的虛擬機器範本或 ISO
+* 虛擬機器範本或 ISO 以創建虛擬機器
 
-下列連結提供在 Linux 和 Windows 上設定 DHCP 和 DNS 伺服器的指引。
+以下連結提供有關在 Linux 和 Windows 上設置 DHCP 和 DNS 伺服器的指導。
 
-#### <a name="linux-based-dns-server-setup"></a>以 Linux 為基礎的 DNS 伺服器設定
+#### <a name="linux-based-dns-server-setup"></a>基於 Linux 的 DNS 伺服器設置
 
-Linux 提供各種封裝來設定 DNS 伺服器。  以下是設定開放原始碼系結 DNS 伺服器的指示連結。
+Linux 提供了用於設置 DNS 伺服器的各種套裝軟體。  下面是設置開源 BIND DNS 伺服器的說明的連結。
 
 [範例設定](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
-#### <a name="windows-based-setup"></a>以 Windows 為基礎的安裝
+#### <a name="windows-based-setup"></a>基於 Windows 的設置
 
-這些 Microsoft 主題說明如何將 Windows server 設定為 DNS 伺服器和 DHCP 伺服器。
+這些 Microsoft 主題描述了如何將 Windows 伺服器設置為 DNS 伺服器和 DHCP 伺服器。
 
-[Windows Server 做為 DNS 伺服器](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[視窗伺服器作為 DNS 伺服器](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
 
-[做為 DHCP 伺服器的 Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[視窗伺服器為 DHCP 伺服器](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
 
-## <a name="customize-networking-configuration-optional"></a>自訂網路設定（選擇性）
+## <a name="customize-networking-configuration-optional"></a>自訂網路設定（可選）
 
-CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表的設定和 Vm 的公用 IP 位址。
+CloudSimple 門戶中的"網路"頁面允許您為 VM 指定防火牆表和公共 IP 位址的配置。
 
-### <a name="allocate-public-ips"></a>配置公用 Ip
+### <a name="allocate-public-ips"></a>分配公共 IP
 
-1. 在 CloudSimple 入口網站中，流覽至**網路 > 公用 IP** 。
-2. 按一下 [**配置公用 IP**]。
-3. 輸入名稱以識別 IP 位址專案。
+1. 在雲簡單門戶中導航到**網路>公共 IP。**
+2. 按一下 **"分配公共 IP**"。
+3. 輸入名稱以標識 IP 位址條目。
 4. 保留預設位置。
-5. 如有需要，請使用滑杆來變更閒置超時。
-6. 輸入您要為其指派公用 IP 位址的本機 IP 位址。
-7. 如有需要，請輸入相關聯的 DNS 名稱。
-8. 按一下 [完成]。
+5. 如果需要，使用滑塊更改空閒超時。
+6. 輸入要為其分配公共 IP 位址的本地 IP 位址。
+7. 如果需要，輸入關聯的 DNS 名稱。
+8. 按一下 [完成]****。
 
     ![公用 IP](media/quick-create-pc-public-ip.png)
 
-開始配置公用 IP 位址的工作。 您可以在 [**活動 >** 工作] 頁面上檢查工作的狀態。 配置完成時，新的專案會顯示在 [公用 Ip] 頁面上。
+分配公共 IP 位址的任務開始。 您可以在"**活動>任務**"頁上檢查任務的狀態。 分配完成後，新條目將顯示在公共 IP 頁上。
 
-必須使用上述指定的本機位址來設定此 IP 位址所需對應的 VM。 設定 IP 位址的程式是 VM 作業系統特有的。 如需正確的程式，請參閱 VM 作業系統的檔。
+必須映射此 IP 位址的 VM 需要使用上面指定的本地位址進行配置。 配置 IP 位址的過程特定于 VM 作業系統。 有關正確的過程，請參閱 VM 作業系統的文檔。
 
 #### <a name="example"></a>範例
 
-例如，以下是 Ubuntu 16.04 的詳細資料。
+例如，以下是 Ubuntu 16.04 的詳細資訊。
 
-將靜態方法新增至檔案/etc/network/interfaces. 中的 inet 位址系列設定 變更位址、網路遮罩和閘道的值。 在此範例中，我們使用 eth0 介面、內部 IP 位址192.168.24.10、閘道位址192.168.24.1 和網路遮罩255.255.255.0。 針對您的環境，歡迎電子郵件中提供了可用的子網資訊。
+將靜態方法添加到檔 /etc/網路/介面中的 inet 位址系列配置。 更改位址、網碼和閘道值。 在此示例中，我們使用 eth0 介面、內部 IP 位址 192.168.24.10、閘道位址 192.168.24.1 和 netmask 255.255.0。 對於您的環境，歡迎電子郵件中提供了可用的子網資訊。
 
 ```
 sudo vi /etc/network/interfaces
@@ -168,7 +168,7 @@ dns-nameservers 8.8.8.8
 dns-domain acme.com
 dns-search acme.com
 ```
-手動停用介面。
+手動禁用介面。
 
 ```
 sudo ifdown eth0
@@ -179,22 +179,22 @@ sudo ifdown eth0
 sudo ifup eth0
 ```
 
-根據預設，所有來自網際網路的連入流量都會**遭到拒絕**。 如果您想要開啟任何其他埠，請建立[防火牆資料表](firewall.md)。
+預設情況下，所有來自 Internet 的傳入流量都**被拒絕**。 如果要打開任何其他埠，請創建[防火牆表](firewall.md)。
 
-將內部 IP 位址設定為靜態 IP 位址之後，請確認您可以從 VM 內連線到網際網路。
+將內部 IP 位址配置為靜態 IP 位址後，請驗證是否可以從 VM 內到達 Internet。
 
 ```
 ping 8.8.8.8
 ```
-另請確認您可以使用公用 IP 位址從網際網路連線至 VM。
+還要驗證您是否可以使用公共 IP 位址從 Internet 到達 VM。
 
-請確定 VM 上的任何 iptable 規則都不會封鎖埠80輸入。
+確保 VM 上的任何 ip 可規則不會阻止埠 80 入站。
         
 ```
 netstat -an | grep 80
 ```
 
-啟動在埠80上接聽的 HTTP 伺服器。
+啟動偵聽埠 80 的 HTTP 伺服器。
        
 ```
 python2.7 -m SimpleHTTPServer 80
@@ -205,26 +205,26 @@ python2.7 -m SimpleHTTPServer 80
 ```
 python3 -m http.server 80
 ```
-在您的桌面上啟動瀏覽器，並將它指向公用 IP 位址的埠80，以流覽 VM 上的檔案。
+在桌面上啟動瀏覽器，並將其指向埠 80，用於公共 IP 位址以流覽 VM 上的檔。
 
-### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公用 IP 的預設 CloudSimple 防火牆規則
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公共 IP 的預設雲簡單防火牆規則
 
-* VPN 流量：允許（從/到） VPN 與所有工作負載網路和管理網路之間的所有流量。
-* 私人雲端內部流量：允許（from/to）工作負載網路和管理網路（如上所示）之間的所有東部-西部流量。
-* 網際網路流量：
-  * 所有來自網際網路的連入流量都會拒絕到工作負載網路和管理網路。
-  * 允許從工作負載網路或管理網路到網際網路的所有連出流量。
+* VPN 流量：允許 VPN 與所有工作負載網路和管理網路之間的所有流量。
+* 私有雲內部流量：允許工作負載網路和管理網路之間的所有東西部流量（從/到）（如上所示）。
+* 互聯網流量：
+  * 從 Internet 傳入的所有流量都被拒絕到工作負載網路和管理網路。
+  * 允許從工作負載網路或管理網路向 Internet 輸出所有流量。
 
-您也可以使用防火牆規則功能來修改流量的保護方式。 如需詳細資訊，請參閱[設定防火牆資料表和規則](firewall.md)。
+您還可以使用防火牆規則功能修改流量的安全方式。 有關詳細資訊，請參閱[設置防火牆表和規則](firewall.md)。
 
-## <a name="install-solutions-optional"></a>安裝解決方案（選用）
+## <a name="install-solutions-optional"></a>安裝解決方案（可選）
 
-您可以在 CloudSimple 私用雲端上安裝解決方案，以充分利用您的私用雲端 vCenter 環境。 您可以設定備份、嚴重損壞修復、複寫和其他功能來保護您的虛擬機器。 範例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam Backup & 複寫。
+您可以在雲簡單私有雲上安裝解決方案，以充分利用私有雲 vCenter 環境。 您可以設置備份、災害復原、複製和其他功能來保護虛擬機器。 示例包括 VMware 網站恢復管理器 （VMware SRM） 和 Veeam 備份&複製。
 
-若要安裝方案，您必須在有限期間內要求額外的許可權。 請參閱[提升許可權](escalate-private-cloud-privileges.md)。
+要安裝解決方案，您必須在有限的時間內請求其他許可權。 請參閱[升級許可權](escalate-private-cloud-privileges.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 上的 VMware Vm](quickstart-create-vmware-virtual-machine.md)
-* [使用 Azure ExpressRoute 連接到內部部署網路](on-premises-connection.md)
-* [在 CloudSimple 網路上設定 VPN 閘道](vpn-gateway.md)
+* [在 Azure 上取用 VMware VM](quickstart-create-vmware-virtual-machine.md)
+* [使用 Azure 快速路由連接到本地網路](on-premises-connection.md)
+* [在雲簡單網路上設置 VPN 閘道](vpn-gateway.md)

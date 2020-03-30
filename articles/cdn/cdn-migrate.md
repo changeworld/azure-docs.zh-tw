@@ -1,5 +1,5 @@
 ---
-title: 將 Azure CDN 設定檔從 Verizon Standard 遷移至 Verizon Premium
+title: 將 Azure CDN 設定檔從 Verizon 標準遷移到 Verizon 高級版
 description: 了解如何將設定檔從 Verizon 標準移轉至 Verizon 進階的詳細資料。
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 8ab66117be4f05550b00defafc883108646be283
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083048"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>將 Azure CDN 設定檔從標準 Verizon 移轉至進階 Verizon
@@ -36,7 +36,7 @@ ms.locfileid: "74083048"
 
 ## <a name="profile-comparison"></a>設定檔比較
 **來自 Verizon 的 Azure CDN 進階**設定檔與**來自 Verizon 的 Azure CDN 標準**設定檔之間具有下列重要差異：
-- 針對某些 Azure CDN 功能 (例如[壓縮](cdn-improve-performance.md)、[快取規則](cdn-caching-rules.md)和[地區篩選](cdn-restrict-access-by-country.md))，您無法使用 Azure CDN 介面，而是必須透過 [管理] 按鈕使用 Verizon 入口網站。
+- 針對某些 Azure CDN 功能 (例如[壓縮](cdn-improve-performance.md)、[快取規則](cdn-caching-rules.md)和[地區篩選](cdn-restrict-access-by-country.md))，您無法使用 Azure CDN 介面，而是必須透過 [管理]**** 按鈕使用 Verizon 入口網站。
 - API：不同於標準 Verizon，您無法使用 API 來控制可從進階 Verizon 入口網站存取的功能。 不過，您可以使用 API 來控制其他常見功能，例如，建立/刪除端點、清除/載入快取的資產，以及啟用/停用自訂網域。
 - 定價：進階 Verizon 的資料傳輸定價結構與標準 Verizon 的不同。 如需詳細資訊，請參閱[內容傳遞網路定價](https://azure.microsoft.com/pricing/details/cdn/)。
 

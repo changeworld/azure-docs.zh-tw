@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 應用程式 Insights 在 Visual Studio 中進行 Debug
+title: 使用 Azure 應用程式見解在視覺化工作室中調試
 description: 偵錯期間和生產環境中的 Web 應用程式效能分析與診斷。
 ms.topic: conceptual
 author: NumberByColors
@@ -8,10 +8,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670877"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 進行應用程式偵錯
@@ -21,7 +21,7 @@ ms.locfileid: "77670877"
 
 若要監視實際運作的應用程式，您通常可在 [Azure 入口網站](https://portal.azure.com)中檢視 Application Insights 遙測，您可以在其中設定警示及套用功能強大的監視工具。 但若要進行偵錯，您也可以在 Visual Studio 中搜尋和分析遙測資料。 您可以使用 Visual Studio 分析來自您的生產網站以及來自開發電腦上偵錯執行的遙測。 在後者的情況下，即使您尚未設定 SDK 將遙測傳送至 Azure 入口網站，仍可以分析偵錯執行。 
 
-## <a name="run"></a> 偵錯您的專案
+## <a name="debug-your-project"></a><a name="run"></a> 偵錯您的專案
 使用 F5，在本機偵錯模式下執行 Web 應用程式。 開啟不同的頁面來產生一些遙測。
 
 在 Visual Studio 中，您可以看見 Application Insights 模組在您的專案中記錄的事件計數。
@@ -72,7 +72,7 @@ ms.locfileid: "77670877"
 ## <a name="trends"></a>趨勢
 趨勢是用來將應用程式一段時間內行為方式進行視覺化的工具。 
 
-從 Application Insights 工具列按鈕或 [Application Insights 搜尋] 視窗選擇 [探索遙測趨勢] 。 選擇五種常見查詢的其中一個，以便開始使用。 您可以根據遙測類型、時間範圍和其他屬性，分析不同的資料集。 
+從 Application Insights 工具列按鈕或 [Application Insights 搜尋] 視窗選擇 [探索遙測趨勢] **** 。 選擇五種常見查詢的其中一個，以便開始使用。 您可以根據遙測類型、時間範圍和其他屬性，分析不同的資料集。 
 
 若要尋找資料中的異常狀況，請選擇 [檢視類型] 下拉式清單底下的其中一個異常選項。 視窗底部的篩選選項可讓您輕鬆地全神貫注於特定的遙測子集。
 
@@ -87,10 +87,10 @@ ms.locfileid: "77670877"
 
 如果您在將遙測傳送至入口網站之前有一些 [自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md) 想要偵錯，它也很有用。
 
-* *一開始，我已完全設定 Application Insights 以將遙測傳送至入口網站。但是現在我只想要在 Visual Studio 中看到遙測。*
+* *首先，我完全配置了應用程式見解，以便向門戶發送遙測資料。但現在我想只在 Visual Studio 中查看遙測資料。*
   
   * 在 [搜尋] 視窗的 [設定] 中，即使您的應用程式將遙測傳送至入口網站，也有選項可搜尋本機診斷。
-  * 若要停止將遙測傳送至入口網站，請從 ApplicationInsights 將該行 `<instrumentationkey>...` 批註。當您準備好要再次將遙測資料傳送至入口網站時，請將它取消批註。
+  * 要停止將遙測發送到門戶，請從應用程式 Insights.config 注釋掉行`<instrumentationkey>...`。當您準備好再次向門戶發送遙測資料時，請取消注釋它。
 
 
 ## <a name="next-steps"></a>後續步驟

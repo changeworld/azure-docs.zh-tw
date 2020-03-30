@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 儲存體中儲存和檢視診斷資料
-description: 瞭解如何收集 Azure 儲存體帳戶中的 Azure 診斷資料，讓您可以使用數個可用工具的其中一種來進行查看。
+description: 瞭解如何在 Azure 存儲帳戶中收集 Azure 診斷資料，以便可以使用多個可用工具之一查看資料。
 services: azure-monitor
 author: bwren
 ms.service: azure-monitor
@@ -9,10 +9,10 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77472670"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 儲存體中儲存和檢視診斷資料
@@ -63,11 +63,11 @@ ms.locfileid: "77472670"
 * **WADPerformanceCountersTable** - 效能計數器。
 * **WADWindowsEventLogsTable** – Windows 事件記錄。
 
-**Blobs (英文)**
+**斑點**
 
 * **wad-control-container** – (僅適用於 SDK 2.4 和前一版) 包含可控制 Azure 診斷的 XML 組態檔。
-* **wad-iis-failedreqlogfiles** – 包含 IIS 失敗要求記錄中的資訊。
-* **wad-iis-logfiles** – 包含 IIS 記錄的相關資訊。
+* **wad-iis-failedreqlogfiles**：包含 IIS 失敗要求記錄檔中的資訊。
+* **wad-iis-logfiles**：包含有關 IIS 記錄檔的資訊。
 * **"custom"** – 自訂容器，該容器是以設定診斷監視器所監視的目錄為基礎。  將會在 WADDirectoriesTable 中指定此 Blob 容器的名稱。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用來檢視診斷資料的工具

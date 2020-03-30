@@ -17,10 +17,10 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2c12372dbc47548755c0680b0acb7a93360a0987
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617474"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -198,7 +198,7 @@ ms.locfileid: "77617474"
 > ![Windows][Logo_Windows] Windows
 >
 
-您可以使用[Azure 內部負載平衡器][load-balancer-multivip-overview]來管理多個虛擬 IP 位址。 
+您可以使用 [Azure 內部負載平衡器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 
 
 如果您有 SAP 部署，可以使用內部負載平衡器，建立 SAP Central Services (ASCS/SCS) 執行個體的 Windows 叢集組態。
 
@@ -215,7 +215,7 @@ ms.locfileid: "77617474"
 > 本文件所介紹的組態尚不支援用於 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-如需負載平衡器限制的詳細資訊，請參閱[網路限制： Azure Resource Manager][networking-limits-azure-resource-manager]中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而非 Azure 負載平衡器的基本 SKU。
+如需負載平衡器限制的詳細資訊，請參閱[網路限制：Azure Resource Manager][networking-limits-azure-resource-manager] 中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而非 Azure 負載平衡器的基本 SKU。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -223,7 +223,7 @@ ms.locfileid: "77617474"
 
 ![圖 1：在兩個叢集中部署 SAP ASCS/SCS 執行個體和 SOFS 部署][sap-ha-guide-figure-8007]
 
-_**圖 1：** 在兩個叢集中部署 SAP ASCS/SCS 執行個體和 SOFS 部署_
+_**圖 1：** 部署在兩個群集中的 SAP ASCS/SCS 實例和 SOFS_
 
 > [!IMPORTANT]
 > 安裝程式必須符合下列條件︰
@@ -238,15 +238,15 @@ _**圖 1：** 在兩個叢集中部署 SAP ASCS/SCS 執行個體和 SOFS 部署_
 
 ![圖 2：兩個叢集中的 SAP 多重 SID 設定][sap-ha-guide-figure-8008]
 
-_**圖 2：** 兩個叢集中的 SAP 多重 SID 設定_
+_**圖 2：** 兩個群集中的 SAP 多 SID 配置_
 
-安裝額外的**SAP \<SID2 >** 系統，等同于安裝一個 \<SID > 系統。 ASCS/SCS 叢集以及檔案共用 SOFS 叢集上需要另兩個準備步驟。
+額外的**SAP \<SID2>** 系統的安裝與安裝一個\<SID>系統相同。 ASCS/SCS 叢集以及檔案共用 SOFS 叢集上需要另兩個準備步驟。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>準備 SAP 多重 SID 案例的基礎結構
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>準備網域控制站上的基礎結構
 
-建立網域群組 **\<Domain>\SAP_\<SID2>_GlobalAdmin**，例如，使用 \<SID2> = PR2。 網域群組名稱是 \<Domain>\SAP_PR2_GlobalAdmin。
+創建**\<域組域>\SAP_\<SID2>_GlobalAdmin，** 例如，使用\<SID2> = PR2。 網域群組名稱是 \<Domain>\SAP_PR2_GlobalAdmin。
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>準備 ASCS/SCS 叢集上的基礎結構
 
@@ -260,7 +260,7 @@ _**圖 2：** 兩個叢集中的 SAP 多重 SID 設定_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>使用現有的 SAP 全域主機準備 SOFS 叢集上的基礎結構
 
-您可以重複使用現有的 \<SAPGlobalHost > 和第一個 SAP \<SID1 > 系統的 Volume1。
+您可以重用第一個\<SAP SID1>系統的現有 SAPGlobalHost \<>和卷 1。
 
 ![圖 3：多重 SID SOFS 與 SAP 全域主機名稱相同][sap-ha-guide-figure-8014]
 
@@ -270,7 +270,7 @@ _**圖 3：** 多重 SID SOFS 與 SAP 全域主機名稱相同_
 >對於第二個 **SAP \<SID2>** 系統，使用的是相同的 Volume1 及相同的 **\<SAPGlobalHost>** 網路名稱。
 >因為您已將 **SAPMNT** 設定為各種不同 SAP 系統的共用名稱，因此若要重複使用 **\<SAPGlobalHost>** 網路名稱，您必須使用相同的 **Volume1**。
 >
->\<SID2 > global 主機的檔案路徑為 C:\ClusterStorage\\**Volume1**\USR\SAP\<SID2 > \SYS\.
+>\<SID2>全域主機的檔路徑是 C：_群集存儲\\**卷1_usr_sap**\<SID2>_SYS\.
 >
 
 針對 \<SID2> 系統，您必須準備 SAP 全域主機 ..\SYS\.. SOFS 叢集上的資料夾。
@@ -326,7 +326,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>使用不同的 SAP 全域主機準備 SOFS 叢集上的基礎結構
 
-您可以設定第二個 SOFS (例如，針對第二個 **\<SID2>** ，使用SAPGlobalHost2> **和不同的 \<Volume2** 來設定第二個 SOFS 叢集)。
+您可以配置第二個 SOFS（例如，第二個 SOFS 群集角色與**\<SAPGlobalHost2>** 和第二**\<個 SID2>** 的卷**2）。**
 
 ![圖 4：多重 SID SOFS 與 SAP GLOBAL 主機名稱 2 相同][sap-ha-guide-figure-8015]
 
@@ -346,9 +346,9 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![圖5：容錯移轉叢集管理員中的第二個 Volume2][sap-ha-guide-figure-8016]
+![圖 5：「容錯移轉叢集管理員」中的第二個 Volume2][sap-ha-guide-figure-8016]
 
-_**圖 5：** 「容錯移轉叢集管理員」中的第二個 Volume2_
+_**圖 5：**「容錯移轉叢集管理員」中的第二個 Volume2_
 
 針對第二個 \<SID2>，建立 SAP GLOBAL 資料夾並設定檔案安全性。
 
@@ -393,9 +393,9 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-若要針對第二個 SAP *SID2>，在包含 \<* SAPGlobalHost2>\< 主機名稱的 Volume2 上建立 SAPMNT 檔案共用，請在「容錯移轉叢集管理員」中啟動 [新增檔案共用] 精靈。
+要在第 2 卷上使用*\<SAPGlobalHost2>* 主機名稱在第二個 SAP \<SID2>上創建 SAPMNT 檔共用，請啟動容錯移轉叢集管理器中的**添加檔共用**嚮導。
 
-在 **saoglobal2** SOFS 叢集群組上按一下滑鼠右鍵，然後選取 [新增檔案共用]。
+在 **saoglobal2** SOFS 叢集群組上按一下滑鼠右鍵，然後選取 [新增檔案共用]****。
 
 ![圖 6：啟動 [新增檔案共用] 精靈][sap-ha-guide-figure-8017]
 
@@ -403,19 +403,19 @@ _**圖 6：** 啟動 [新增檔案共用] 精靈_
 
 <br>
 
-![圖7：「選取 SMB 共用-快速」][sap-ha-guide-figure-8018]
+![圖 7："選擇 SMB 份額 + 快速"][sap-ha-guide-figure-8018]
 
 _**圖 7：** 選取 [SMB 共用 - 快速]_
 
 <br>
 
-![圖8：選取 [sapglobalhost2] 並在 Volume2 上指定路徑][sap-ha-guide-figure-8019]
+![圖 8：選取 [sapglobalhost2] 並在 Volume2 上指定路徑][sap-ha-guide-figure-8019]
 
-_**圖 8：** 選取 [sapglobalhost2] 並在 Volume2 上指定路徑_
+_**圖 8：** 選擇"sapglobalhost2"並在卷 2 上指定路徑_
 
 <br>
 
-![圖9：將檔案共用名稱設定為 "sapmnt"][sap-ha-guide-figure-8020]
+![圖 9：將檔案共用名稱設定為「sapmnt」][sap-ha-guide-figure-8020]
 
 _**圖 9：** 將檔案共用名稱設定為「sapmnt」_
 
@@ -423,11 +423,11 @@ _**圖 9：** 將檔案共用名稱設定為「sapmnt」_
 
 ![圖 10：停用所有設定][sap-ha-guide-figure-8021]
 
-_**圖 10：** 停用所有設定_
+_**圖10：** 禁用所有設置_
 
 <br>
 
-請針對下列項目將 [ 完全控制] 權限指派給檔案和 sapmnt 共用：
+請針對下列項目將 [ 完全控制]** 權限指派給檔案和 sapmnt 共用：
 * **SAP_\<SID>_GlobalAdmin** 網域使用者群組
 * ASCS/SCS 叢集節點 **ascs-1$** 和 **ascs-2$** 的電腦物件
 
@@ -437,9 +437,9 @@ _**圖 11：** 將「完全控制」指派給使用者群組和電腦帳戶_
 
 <br>
 
-![圖12：選取 [建立]][sap-ha-guide-figure-8023]
+![圖 12：選取 [建立]][sap-ha-guide-figure-8023]
 
-_**圖 12：** 選取 [建立]_
+_**圖12：** 選擇"創建"_
 
 <br>
 
@@ -460,10 +460,10 @@ _**圖 13：** 已建立繫結至 sapglobal2 主機和 Volume2 的第二個 sapm
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在沒有共用磁片的容錯移轉叢集上安裝 ASCS/SCS 實例][sap-official-ha-file-share-document]： HA 檔案共用的官方 SAP 指導方針
+* [在沒有共用磁碟的容錯移轉叢集上安裝 ASCS/SCS 執行個體][sap-official-ha-file-share-document]：HA 檔案共用的官方 SAP 指導方針
 
 * [Windows Server 2016 中的儲存空間直接存取][s2d-in-win-2016]
 
-* [適用于應用程式資料的向外延展檔案伺服器總覽][sofs-overview]
+* [用於應用程式資料的向外延展檔案伺服器概觀][sofs-overview]
 
-* [Windows Server 2016 中存放裝置的新功能][new-in-win-2016-storage]
+* [Windows 伺服器 2016 中存儲的新增功能][new-in-win-2016-storage]

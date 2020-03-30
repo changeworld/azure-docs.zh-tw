@@ -1,5 +1,5 @@
 ---
-title: 儲存管理員認證時發生問題設定 Azure AD 資源庫應用程式
+title: 保存配置 Azure AD 庫應用的管理認證時出現問題
 description: 如何對在為已經列於 Azure AD 應用程式庫中的應用程式設定使用者佈建時所面臨的常見問題進行疑難排解
 services: active-directory
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ff80224037001e41daf49cd6fc21439b2cc5cff
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522861"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題 
 
 在使用 Azure 入口網站針對企業應用程式設定[自動使用者佈建](user-provisioning.md)時，您可能會遇到以下情況：
 
-* 針對應用程式所輸入的**系統管理員認證**有效，且 [測試連線] 按鈕可以運作。 不過，無法儲存認證，而且 Azure 入口網站傳回一般錯誤訊息。
+* 針對應用程式所輸入的**系統管理員認證**有效，且 [測試連線]**** 按鈕可以運作。 不過，無法儲存認證，而且 Azure 入口網站傳回一般錯誤訊息。
 
 如果同時為相同應用程式設定 SAML 型單一登入，錯誤最可能的原因是您已超過 Azure AD 內部針對憑證和認證所定義的每一應用程式儲存體限制。
 
@@ -43,7 +43,7 @@ Azure AD 目前針對所有憑證、祕密權杖、認證以及與單一應用�
 
 1. **使用兩個資源庫應用程式執行個體，一個用於單一登入，一個用於使用者佈建** - 以資源庫應用程式 [LinkedIn Elevate](../saas-apps/linkedinelevate-tutorial.md) 為例，您可以從資源庫新增 LinkedIn Elevate 並為其設定單一登入。 針對佈建，從 Azure AD 應用程式資源庫新增另一個 LinkedIn Elevate 執行個體，並將它命名為 "LinkedIn Elevate (Provisioning)"。 針對此第二個執行個體，設定[佈建](../saas-apps/linkedinelevate-provisioning-tutorial.md)而不是單一登入。 使用這個因應措施時，必須將相同的使用者和群組[指派](../manage-apps/assign-user-or-group-access-portal.md)給兩個應用程式。 
 
-2. **減少所儲存的設定資料量** - 在 [佈建] 索引標籤之 [[系統管理員認證](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)] 區段中所輸入的所有資料，都會儲存在與 SAML 憑證相同的位置。 雖然可能無法減少整個資料的長度，但可移除某些選擇性設定欄位，例如 [通知電子郵件]。
+2. **減少所儲存的設定資料量** - 在 [佈建] 索引標籤之 [[系統管理員認證](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)] 區段中所輸入的所有資料，都會儲存在與 SAML 憑證相同的位置。 雖然可能無法減少整個資料的長度，但可移除某些選擇性設定欄位，例如 [通知電子郵件]****。
 
 ## <a name="next-steps"></a>後續步驟
 [設定 SaaS 應用程式的使用者佈建和解除佈建](user-provisioning.md)

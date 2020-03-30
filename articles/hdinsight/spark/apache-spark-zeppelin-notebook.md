@@ -1,5 +1,5 @@
 ---
-title: Zeppelin 筆記本 & Apache Spark 叢集-Azure HDInsight
+title: 澤佩林筆記本&阿帕奇火花集群 - Azure HDInsight
 description: 如何在 Azure HDInsight 上搭配使用 Zeppelin Notebook 和 Apache Spark 叢集的逐步指示。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,41 +9,41 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598267"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
-HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://zeppelin.apache.org/) 作業的 [Apache Zeppelin](https://spark.apache.org/) Notebook。 在本文中，您將學習如何在 HDInsight 叢集上使用 Zeppelin Notebook。
+HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://spark.apache.org/) 作業的 [Apache Zeppelin](https://zeppelin.apache.org/) Notebook。 在本文中，您將學習如何在 HDInsight 叢集上使用 Zeppelin Notebook。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
-* 叢集主要儲存體的 URI 配置。 這會針對 Azure Blob 儲存體 `wasb://`，`abfs://` 用於 `adl://` Azure Data Lake Storage Gen2 或 Azure Data Lake Storage Gen1。 如果已啟用 Blob 儲存體的安全傳輸，則 URI 會 `wasbs://`。  如需詳細資訊，請參閱[Azure 儲存體中需要安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* 您叢集主要儲存體的 URI 配置。 這適用于`wasb://`Azure Blob 存儲`abfs://`、Azure 資料湖存儲第`adl://`2 代或 Azure 資料湖存儲第 1 代。 如果為 Blob 存儲啟用了安全傳輸，則`wasbs://`URI 將為 。  有關詳細資訊，請參閱在[Azure 存儲中要求安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>啟動 Apache Zeppelin Notebook
 
-1. 從 Spark 叢集**總覽**中，從 [叢集**儀表板**] 選取 [ **Zeppelin 筆記本**]。 輸入叢集的系統管理員認證。  
+1. 從 Spark 群集**概述**中，從**群集儀表板**中選擇**Zeppelin 筆記本**。 輸入群集的管理員憑據。  
 
    > [!NOTE]  
    > 您也可以在瀏覽器中開啟下列 URL，來連接到您叢集的 Zeppelin Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 建立新的 Notebook。 從標頭窗格中，流覽至 **筆記本** > **建立新便箋**。
+2. 建立新的 Notebook。 從標題窗格中導航到 **"筆記本** > **創建新便箋**"。
 
-    ![建立新的 Zeppelin 筆記本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "建立新的 Zeppelin Notebook")
+    ![建立新的 Zeppelin Notebook](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "建立新的 Zeppelin Notebook")
 
-    輸入筆記本的名稱，然後選取 [**建立便箋**]。
+    輸入筆記本的名稱，然後選擇 **"創建注釋**"。
 
-3. 確定筆記本標頭顯示 [已連線] 狀態。 其以右上角的綠色點表示。
+3. 確保筆記本頭顯示已連接狀態。 它由右上角的綠點表示。
 
-    ![Zeppelin 筆記本狀態](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin Notebook 狀態")
+    ![Zeppelin Notebook 狀態](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin Notebook 狀態")
 
-4. 將範例資料載入暫存資料表。 當您在 HDInsight 中建立 Spark 叢集時，範例資料檔案 `hvac.csv`會複製到 `\HdiSamples\SensorSampleData\hvac`下相關聯的儲存體帳戶。
+4. 將範例資料載入暫存資料表。 在 HDInsight 中創建 Spark 群集時，示例資料`hvac.csv`檔將複製到 下的相關`\HdiSamples\SensorSampleData\hvac`存儲帳戶。
 
     將以下程式碼片段貼入新 Notebook 中預設建立的空白段落。
 
@@ -71,16 +71,16 @@ HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://zeppelin.apac
     hvac.registerTempTable("hvac")
     ```
 
-    按**SHIFT + enter** ，或選取段落的 [**播放**] 按鈕來執行程式碼片段。 段落右上角的狀態應該會從「準備就緒」逐一轉變成「擱置」、「執行中」及「已完成」。 輸出會顯示在同一個段落的底部。 螢幕擷取畫面如下所示：
+    按**SHIFT = ENTER**或為段落選擇 **"播放"** 按鈕以運行程式碼片段。 段落右上角的狀態應該會從「準備就緒」逐一轉變成「擱置」、「執行中」及「已完成」。 輸出會顯示在同一個段落的底部。 螢幕擷取畫面如下所示：
 
-    ![從原始資料建立臨時表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "從原始資料建立暫存資料表")
+    ![從原始資料建立暫存資料表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "從原始資料建立暫存資料表")
 
-    您也可以為每個段落提供標題。 從段落的右上角，選取 [**設定**] 圖示（sprocket），然後選取 [**顯示標題**]。  
+    您也可以為每個段落提供標題。 從段落的右角，選擇 **"設置"** 圖示（鏈輪），然後選擇 **"顯示標題**"。  
 
     > [!NOTE]  
     > 所有 HDInsight 版本的 Zeppelin Notebook 中都不支援 %spark2 解譯器，而 HDInsight 4.0 以後的版本不支援 %sh 解譯器。
 
-5. 您現在可以在 `hvac` 資料表上執行 Spark SQL 語句。 將以下查詢貼入新段落。 此查詢會擷取建築物識別碼，以及在指定日期當天每棟建築物之目標溫度與實際溫度間的差異。 按下 **SHIFT + ENTER**。
+5. 您現在可以在表上運行`hvac`Spark SQL 語句。 將以下查詢貼入新段落。 此查詢會擷取建築物識別碼，以及在指定日期當天每棟建築物之目標溫度與實際溫度間的差異。 按**SHIFT = 輸入**。
 
     ```sql
     %sql
@@ -89,81 +89,81 @@ HDInsight Spark 叢集包含可用來執行 [Apache Spark](https://zeppelin.apac
 
     開頭的 **%Sql** 陳述式會告訴 Notebook 使用 Livy Scala 解譯器。
 
-6. 選取**橫條圖**圖示以變更顯示。  [**設定**] 會在您選取 [**橫條圖**] 之後出現，可讓您選擇 [索引**鍵**] 和 [**值**]。  以下螢幕擷取畫面顯示輸出。
+6. 選擇 **"橫條圖"** 圖示以更改顯示。  **設置**， 在選擇**橫條圖**後顯示 ， 允許您選擇**鍵**和**值**。  以下螢幕擷取畫面顯示輸出。
 
-    ![使用 notebook1 執行 Spark SQL 語句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用 notebook1 執行 Spark SQL 語句")
+    ![使用筆記本運行 Spark SQL 語句1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用筆記本運行 Spark SQL 語句1")
 
-7. 您也可以在查詢中使用變數來執行 Spark SQL 陳述式。 下一個程式碼片段示範如何使用您想要查詢的可能值，在查詢中定義變數 `Temp`。 當您第一次執行查詢時，下拉式清單會自動填入您指定的變數值。
+7. 您也可以在查詢中使用變數來執行 Spark SQL 陳述式。 下一個程式碼片段演示如何在查詢中定義`Temp`變數 ，以及要查詢的可能值。 當您第一次執行查詢時，下拉式清單會自動填入您指定的變數值。
 
     ```sql
     %sql  
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    將此程式碼片段貼到新的段落中，然後按下 **SHIFT + ENTER**。 然後從 [**暫存**] 下拉式清單中選取 [ **65** ]。
+    將此程式碼片段貼到新的段落中，然後按下 **SHIFT + ENTER**。 然後從 **"臨時**"下拉清單中選擇**65。**
 
-8. 選取**橫條圖**圖示以變更顯示。  然後選取 [**設定**]，並進行下列變更：
+8. 選擇 **"橫條圖"** 圖示以更改顯示。  然後選擇**設置**並進行以下更改：
 
-   * **群組：** 新增**targettemp**。  
-   * **值：** sha-1. 移除**日期**。  2. 新增**temp_diff**。  3.  將匯總工具從**SUM**變更為**AVG**。  
+   * **組：** 添加**目標溫度**。  
+   * **值：** 1. 刪除**日期**。  2. 添加**temp_diff**。  3.  將聚合器從**SUM**更改為**AVG**。  
 
      以下螢幕擷取畫面顯示輸出。
 
-     ![使用 notebook2 執行 Spark SQL 語句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "使用 notebook2 執行 Spark SQL 語句")
+     ![使用筆記本運行 Spark SQL 語句2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "使用筆記本運行 Spark SQL 語句2")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>如何搭配 Notebook 使用外部套件？
 
-您可以在 HDInsight 上的 Apache Spark 叢集中設定 Zeppelin 筆記本，以使用不是叢集中現成可用的外部、提供社區的套件。 您可以搜尋 [Maven 儲存機制](https://search.maven.org/) 來取得可用套件的完整清單。 您也可以從其他來源取得可用套件清單。 例如，從 [Spark 套件](https://spark-packages.org/)可以取得社群提供套件的完整清單。
+您可以在 HDInsight 上的 Apache Spark 群集中配置 Zeppelin 筆記本，以使用群集中未包含開箱即用的外部社區貢獻包。 您可以搜尋 [Maven 儲存機制](https://search.maven.org/) 來取得可用套件的完整清單。 您也可以從其他來源取得可用套件清單。 例如，從 [Spark 套件](https://spark-packages.org/)可以取得社群提供套件的完整清單。
 
-在本文中，您將瞭解如何搭配 Jupyter 筆記本使用[spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)套件。
+在本文中，您將瞭解如何將[Spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)包與 Jupyter 筆記本一起使用。
 
-1. 開啟解譯器設定。 從右上角選取登入的使用者名稱，然後選取 [**解釋**器]。
+1. 開啟解譯器設定。 從右上角，選擇登錄的使用者名，然後選擇 **"解譯器**"。
 
     ![啟動解譯器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 輸出")
 
-2. 流覽至**livy2**，然後選取 [**編輯**]。
+2. 滾動到**livy2，** 然後選擇**編輯**。
 
-    ![變更解譯器設定1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "變更解譯器設定1")
+    ![更改解譯器設置1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "更改解譯器設置1")
 
-3. 流覽至 [金鑰 `livy.spark.jars.packages`]，並將其值設定為 [`group:id:version`] 格式。 因此，如果您想要使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件，您必須將金鑰值設為 `com.databricks:spark-csv_2.10:1.4.0`。
+3. 導航到鍵`livy.spark.jars.packages`，並在 格式`group:id:version`中設置其值 。 因此，如果您想要使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件，您必須將金鑰值設為 `com.databricks:spark-csv_2.10:1.4.0`。
 
-    ![變更解譯器 settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "變更解譯器 settings2")
+    ![更改解譯器設置2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "更改解譯器設置2")
 
-    依序選取 [**儲存** **] 和 [確定]** 以重新開機 Livy 解譯器。
+    選擇 **"保存****"，然後選擇"確定"** 以重新開機 Livy 解譯器。
 
 4. 如果您想要了解如何得出上面所輸入的金鑰值，其方法如下。
 
-    a. 在「Maven 儲存機制」中找出套件。 在本文中，我們使用了[spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
+    a. 在「Maven 儲存機制」中找出套件。 在本文中，我們使用[火花-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
 
-    b. 從儲存機制收集 [GroupId]、[ArtifactId] 及 [版本] 的值。
+    b. 從儲存機制收集 [GroupId]****、[ArtifactId]**** 及 [版本]**** 的值。
 
-    ![搭配 Jupyter 筆記本使用外部套件](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
+    ![搭配 Jupyter Notebook 使用外部套件](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
 
-    c. 串連三個值，其中以冒號分隔 ( **:** )。
+    c. 串連三個值，其中以冒號分隔 (**:**)。
 
         com.databricks:spark-csv_2.10:1.4.0
 
 ## <a name="where-are-the-zeppelin-notebooks-saved"></a>Zeppelin Notebook 儲存在哪裡？
 
-Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢集，Notebook 會一併刪除。 如果您想要保留 Notebook 以供稍後用於其他叢集上，您必須在作業執行完成後將 Notebook 匯出。 若要匯出筆記本，請選取 [**匯出**] 圖示，如下圖所示。
+Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢集，Notebook 會一併刪除。 如果您想要保留 Notebook 以供稍後用於其他叢集上，您必須在作業執行完成後將 Notebook 匯出。 要匯出筆記本，請選擇"**匯出**"圖示，如下圖所示。
 
-![下載筆記本](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下載筆記本")
+![下載 Notebook](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下載筆記本")
 
 這會將 Notebook 以 JSON 檔案的形式儲存在下載位置中。
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>使用 Shiro 來設定企業安全性套件（ESP）叢集中 Zeppelin 解譯器的存取權
-如先前所述，HDInsight 4.0 和更新版本不支援 `%sh` 解譯器。 此外，由於 `%sh` 解譯器會引進潛在的安全性問題，例如使用 shell 命令存取 keytabs，因此它也已從 HDInsight 3.6 ESP 叢集移除。 這表示在預設情況下，按一下 [**建立新便箋**] 或 [在解譯器 UI] 時，不會提供 `%sh` 解譯器。 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>使用 Shiro 配置企業安全包 （ESP） 群集中對 Zeppelin 解譯器的訪問
+如上所述，HDInsight `%sh` 4.0 以後不支援解譯器。 此外，由於`%sh`解譯器引入了潛在的安全問題，例如使用 shell 命令訪問金鑰表，因此也將其從 HDInsight 3.6 ESP 群集中刪除。 這意味著`%sh`預設情況下，按一下 **"創建新注釋"** 或"解譯器 UI"時，解譯器不可用。 
 
-具有特殊許可權的網域使用者可以利用 `Shiro.ini` 檔案來控制解譯器 UI 的存取權。 因此，只有這些使用者可以建立新的 `%sh` 解譯器，並設定每個新 `%sh` 解譯器的許可權。 若要使用 `shiro.ini` 檔案來控制存取，請使用下列步驟：
+特權域使用者可以利用該檔`Shiro.ini`來控制對解譯器 UI 的訪問。 因此，只有這些使用者可以創建新`%sh`的解譯器並為每個新`%sh`解譯器設置許可權。 要控制使用該檔的訪問`shiro.ini`，請使用以下步驟：
 
-1. 使用現有的網域組名來定義新的角色。 在下列範例中，`adminGroupName` 是 AAD 中的特殊許可權使用者群組。 請勿在組名中使用特殊字元或空格。 `=` 之後的字元會授與此角色的許可權。 `*` 表示群組具有完整許可權。
+1. 使用現有域組名稱定義新角色。 在下面的示例中，`adminGroupName`是 AAD 中的一組特權使用者。 請勿在組名稱中使用特殊字元或空格。 後`=`字元授予此角色的許可權。 `*`表示組具有完全許可權。
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. 新增新角色以存取 Zeppelin 解譯器。 在下列範例中，`adminGroupName` 中的所有使用者都會獲得 Zeppelin 解譯器的存取權，而且能夠建立新的解譯器。 您可以將多個角色放在 `roles[]`中的括弧之間，並以逗號分隔。 然後，具有必要許可權的使用者可以存取 Zeppelin 解譯器。
+2. 增加新的角色，以訪問澤佩林口譯員。 在下面的示例中，中的所有`adminGroupName`使用者都有權訪問 Zeppelin 口譯員，並能夠創建新的口譯員。 您可以在 括弧之間放置多個角色`roles[]`，用逗號分隔。 然後，具有必要許可權的使用者可以訪問 Zeppelin 解譯器。
 
     ```
     [urls]
@@ -172,17 +172,17 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 
 ## <a name="livy-session-management"></a>Livy 工作階段管理
 
-當您在 Zeppelin Notebook 中執行第一個程式碼段落時，HDInsight Spark 叢集中便會建立新的 Livy 工作階段。 此工作階段可供您後續建立的所有 Zeppelin Notebook 共用。 如果基於某些原因而終止 Livy 會話（叢集重新開機等等），您將無法從 Zeppelin 筆記本執行作業。
+當您在 Zeppelin Notebook 中執行第一個程式碼段落時，HDInsight Spark 叢集中便會建立新的 Livy 工作階段。 此工作階段可供您後續建立的所有 Zeppelin Notebook 共用。 如果由於某種原因導致 Livy 會話被終止（群集重新開機，等等），您將無法從 Zepelin 筆記本運行作業。
 
 在這種情況下，您必須先執行下列步驟，然後才能開始從 Zeppelin Notebook 執行作業。  
 
-1. 從 Zeppelin Notebook 重新啟動 Livy 解譯器。 若要這麼做，請從右上角選取登入的使用者名稱，然後選取 [**解釋**器]，以開啟解譯器設定。
+1. 從 Zeppelin Notebook 重新啟動 Livy 解譯器。 為此，請從右上角選擇登錄的使用者名打開解譯器設置，然後選擇 **"解譯器**"。
 
     ![啟動解譯器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 輸出")
 
-2. 流覽至**livy2**，然後選取 [**重新開機**]。
+2. 滾動到**livy2，** 然後選擇**重新開機**。
 
-    ![重新開機 Livy 解譯器](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重新開機 Zeppelin 解譯器")
+    ![重新開機利維解譯器](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重新開機齊柏林譯員")
 
 3. 從現有的 Zeppelin Notebook 執行程式碼單元。 這會在 HDInsight 叢集中建立新的 Livy 工作階段。
 
@@ -190,9 +190,9 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 
 ### <a name="validate-service"></a>驗證服務
 
-若要從 Ambari 驗證服務，請流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是您的叢集名稱。
+要驗證來自 Ambari 的服務，請`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`導航到 CLUSTERNAME 是群集名稱的位置。
 
-若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令 `sudo su zeppelin`將使用者切換至 zeppelin。 狀態命令：
+要驗證從命令列的服務，SSH 到頭節點。 使用 命令`sudo su zeppelin`將使用者切換到澤佩林。 狀態命令：
 
 |Command |描述 |
 |---|---|
@@ -200,26 +200,26 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服務版本。|
 |`ps -aux | grep zeppelin`|識別 PID。|
 
-### <a name="log-locations"></a>記錄檔位置
+### <a name="log-locations"></a>日誌位置
 
 |服務 |Path |
 |---|---|
-|zeppelin-伺服器|/usr/hdp/current/zeppelin-server/|
-|伺服器記錄|/var/log/zeppelin|
-|設定解譯器，Shiro，log4j|/usr/hdp/current/zeppelin-server/conf 或/etc/zeppelin/conf|
-|PID 目錄|/var/run/zeppelin|
+|澤佩林-伺服器|/usr/hdp/電流/澤佩林-伺服器/|
+|伺服器記錄|/var/日誌/澤佩林|
+|配置解譯器， 希羅， site.xml， log4j|/usr/hdp/電流/澤佩林-伺服器/conf 或 /etc/澤佩林/conf|
+|PID 目錄|/var/運行/澤佩林|
 
 ### <a name="enable-debug-logging"></a>啟用偵錯記錄
 
-1. 流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是您的叢集名稱。
+1. 導航到`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`CLUSTERNAME 是群集名稱的位置。
 
-1. 流覽至 **[**  > **Advanced zeppelin-log4j-properties** ] > **log4j_properties_content**的 [內容]。
+1. 導航到**CONFIGS** > **高級zeppelin-log4j屬性** > **log4j_properties_content**。
 
-1. 修改 `log4j.appender.dailyfile.Threshold = INFO` 以 `log4j.appender.dailyfile.Threshold = DEBUG`。
+1. 修改`log4j.appender.dailyfile.Threshold = INFO`為`log4j.appender.dailyfile.Threshold = DEBUG`。
 
 1. 加入 `log4j.logger.org.apache.zeppelin.realm=DEBUG`。
 
-1. 儲存變更並重新啟動服務。
+1. 保存更改並重新啟動服務。
 
 ## <a name="next-steps"></a>後續步驟
 

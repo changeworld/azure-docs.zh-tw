@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 上架至 Azure 資訊安全中心
+title: 使用 PowerShell 連接到 Azure 安全中心
 description: 本文件將逐步引導您完成使用 PowerShell Cmdlet 上架 Azure 資訊安全中心的程序。
 services: security-center
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603684"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自動化上架 Azure 資訊安全中心
@@ -31,13 +31,13 @@ ms.locfileid: "77603684"
 
 在此範例中，我們將在識別碼為 d07c0080-170c-4c24-861d-9c817742786c 的訂用帳戶上啟用資訊安全中心，並藉由實作資訊安全中心的標準層提供進階威脅防護和偵測功能，來套用提供高層級保護的建議設定：
 
-1. 設定[資訊安全中心標準保護層級](https://azure.microsoft.com/pricing/details/security-center/)。 
+1. 設置[安全中心標準保護層級](https://azure.microsoft.com/pricing/details/security-center/)。 
  
 2. 設定 Microsoft Monitoring Agent 將向其傳送它在與訂用帳戶相關聯的 VM 上收集之資料的 Log Analytics 工作區 – 在此範例中，是現有的使用者定義工作區 (myWorkspace)。
 
 3. 啟用資訊安全中心的自動代理程式佈建，這會[部署 Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma)。
 
-5. 將組織的[CISO 設定為資訊安全中心警示和值得注意事件的安全性連絡人](security-center-provide-security-contact-details.md)。
+5. 將組織的[CISO 設置為安全中心警報和顯著事件的安全連絡人](security-center-provide-security-contact-details.md)。
 
 6. 指派資訊安全中心的[預設安全性原則](tutorial-security-policy.md)。
 
@@ -104,5 +104,5 @@ ms.locfileid: "77603684"
 
 如要深入了解資訊安全中心，請參閱下列文章：
 
-* [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
+* [在 Azure 安全中心設置安全性原則](tutorial-security-policy.md)-- 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)-- 瞭解如何管理和回應安全警報。

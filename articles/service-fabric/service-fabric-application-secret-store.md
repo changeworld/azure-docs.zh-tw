@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric 集中式秘密存放區
-description: 本文說明如何在 Azure Service Fabric 中使用中央秘密存放區。
+title: Azure 服務結構中央機密存儲
+description: 本文介紹如何在 Azure 服務結構中使用中央機密存儲。
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589159"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中央秘密存放區 
-本文說明如何在 Azure Service Fabric 中使用中央秘密存放區（CSS），在 Service Fabric 的應用程式中建立秘密。 CSS 是一個本機秘密存放區快取，可讓機密資料（例如密碼、權杖和金鑰）在記憶體中加密。
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure 服務結構中的中央機密存儲 
+本文介紹如何在 Azure 服務結構中使用中央機密存儲 （CSS） 在服務結構應用程式中創建機密。 CSS 是本地機密存儲緩存，用於在記憶體中加密敏感性資料（如密碼、權杖和金鑰）。
 
-## <a name="enable-central-secrets-store"></a>啟用集中式秘密存放區
-將下列腳本新增至 [`fabricSettings`] 底下的叢集設定，以啟用 CSS。 我們建議您不要使用適用于 CSS 的叢集憑證以外的憑證。 請確定已在所有節點上安裝加密憑證，且該 `NetworkService` 具有憑證私密金鑰的讀取權限。
+## <a name="enable-central-secrets-store"></a>啟用中央機密存儲
+將以下腳本添加到群集配置下`fabricSettings`，以啟用 CSS。 我們建議您使用 CSS 的群集證書以外的證書。 確保加密證書安裝在所有節點上，`NetworkService`並且已讀取證書私密金鑰的許可權。
   ```json
     "fabricSettings": 
     [
@@ -46,12 +46,12 @@ ms.locfileid: "77589159"
         ...
      ]
 ```
-## <a name="declare-a-secret-resource"></a>宣告秘密資源
-您可以使用 Azure Resource Manager 範本或 REST API 來建立秘密資源。
+## <a name="declare-a-secret-resource"></a>聲明機密資源
+可以使用 Azure 資源管理器範本或 REST API 創建機密資源。
 
 ### <a name="use-resource-manager"></a>使用 Resource Manager
 
-使用下列範本來使用 Resource Manager 來建立秘密資源。 此範本會建立 `supersecret` 的秘密資源，但尚未為密碼資源設定任何值。
+使用以下範本使用資源管理器創建機密資源。 範本創建一個秘密`supersecret`資源，但尚未為機密資源設置任何值。
 
 
 ```json
@@ -73,18 +73,18 @@ ms.locfileid: "77589159"
 
 ### <a name="use-the-rest-api"></a>使用 REST API
 
-若要使用 REST API 建立 `supersecret` 秘密資源，請提出 PUT 要求給 `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`。 您需要叢集憑證或管理用戶端憑證，才能建立秘密資源。
+要使用`supersecret`REST API 創建機密資源，請對`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`發出 PUT 請求。 您需要群集證書或管理用戶端憑證來創建機密資源。
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
-## <a name="set-the-secret-value"></a>設定密碼值
+## <a name="set-the-secret-value"></a>設置機密值
 
-### <a name="use-the-resource-manager-template"></a>使用 Resource Manager 範本
+### <a name="use-the-resource-manager-template"></a>使用資源管理器範本
 
-使用下列 Resource Manager 範本來建立及設定秘密值。 此範本會將 `supersecret` 秘密資源的秘密值設定為 `ver1`版本。
+使用以下資源管理器範本創建和設置機密值。 此範本將`supersecret`機密資源的秘密值集為版本`ver1`。
 ```json
   {
   "parameters": {
@@ -124,20 +124,20 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
   ```
 ### <a name="use-the-rest-api"></a>使用 REST API
 
-使用下列腳本來使用 REST API 來設定密碼值。
+使用以下腳本使用 REST API 設置機密值。
 ```powershell
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-### <a name="examine-the-secret-value"></a>檢查秘密值
+### <a name="examine-the-secret-value"></a>檢查機密值
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
-## <a name="use-the-secret-in-your-application"></a>在您的應用程式中使用秘密
+## <a name="use-the-secret-in-your-application"></a>使用應用程式中的機密
 
-請遵循下列步驟，在您的 Service Fabric 應用程式中使用密碼。
+按照以下步驟在 Service Fabric 應用程式中使用機密。
 
-1. 使用下列程式碼片段，在**設定 .xml**檔案中新增區段。 請注意，此值的格式為 {`secretname:version`}。
+1. 在**設置.xml**檔中添加包含以下程式碼片段的部分。 請注意，該值採用格式 =`secretname:version`。
 
    ```xml
      <Section Name="testsecrets">
@@ -145,7 +145,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
      </Section>
    ```
 
-1. 匯入**ApplicationManifest**中的區段。
+1. 導入**應用程式清單.xml**中的部分。
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -158,12 +158,12 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
      </ServiceManifestImport>
    ```
 
-   環境變數 `SecretPath` 會指向所有秘密儲存所在的目錄。 `testsecrets` 區段底下所列的每個參數都會儲存在不同的檔案中。 應用程式現在可以使用密碼，如下所示：
+   環境變數`SecretPath`將指向存儲所有機密的目錄。 `testsecrets`節下列出的每個參數都存儲在單獨的檔中。 應用程式現在可以使用機密，如下所示：
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. 將秘密掛接至容器。 在容器內提供秘密所需的唯一變更，就是 `specify` `<ConfigPackage>`中的掛接點。
-下列程式碼片段是修改過的**ApplicationManifest。**  
+1. 將機密安裝到容器中。 使機密在容器內可用所需的唯一更改是 到`specify`中的`<ConfigPackage>`裝載點。
+以下程式碼片段是修改後的**應用程式清單.xml**。  
 
    ```xml
    <ServiceManifestImport>
@@ -179,9 +179,9 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
        </Policies>
      </ServiceManifestImport>
    ```
-   您容器內的掛接點下會提供密碼。
+   機密可在容器內的裝載點下使用。
 
-1. 您可以藉由指定 `Type='SecretsStoreRef`，將秘密系結至進程環境變數。 下列程式碼片段是如何將 `supersecret` 版本 `ver1` 系結至**ServiceManifest**中的環境變數 `MySuperSecret` 的範例。
+1. 可以通過指定`Type='SecretsStoreRef`將機密綁定到進程環境變數。 以下程式碼片段是如何在**ServiceManifest.xml**`supersecret`中`ver1`將版本綁定到`MySuperSecret`環境變數的示例。
 
    ```xml
    <EnvironmentVariables>
@@ -190,4 +190,4 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
    ```
 
 ## <a name="next-steps"></a>後續步驟
-深入瞭解[應用程式和服務安全性](service-fabric-application-and-service-security.md)。
+瞭解有關[應用程式和服務安全性](service-fabric-application-and-service-security.md)的更多。

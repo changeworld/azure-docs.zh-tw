@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617405"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>建立 SAP NetWeaver 多 SID 組態
@@ -49,14 +49,14 @@ ms.locfileid: "77617405"
 
 Microsoft 在 2016 年 9 月發行的功能，可讓您使用 Azure 內部負載平衡器管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。
 
-如果您有 SAP 部署，您可以使用內部負載平衡器來建立 SAP ASCS/SCS 的 Windows 叢集設定，如[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述。
+如果您有 SAP 部署，可以使用內部負載平衡器針對 SAP 的 ASCS/SCS 建立 Windows 叢集組態，如 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]所述。
 
 本文將著重於如何將單一 ASCS/SCS 安裝移至 SAP 多 SID 組態，方法是將其他 SAP ASCS/SCS 叢集執行個體安裝至現有 Windows Server 容錯移轉叢集 (WSFC) 叢集。 完成此程序之後，您將已設定 SAP 多 SID 叢集。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
-您已設定一個用於一個 SAP ASCS/SCS 實例的 WSFC 叢集，如[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，如本圖所示。
+您已經設定用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]所述及如下圖所示。
 
 ![高可用性的 SAP ASCS/SCS 執行個體][sap-ha-guide-figure-6001]
 
@@ -72,7 +72,7 @@ Microsoft 在 2016 年 9 月發行的功能，可讓您使用 Azure 內部負載
 >一個 WSFC 叢集中 SAP ASCS/SCS 執行個體數目上限等於每個 Azure 內部負載平衡器的私人前端 IP 數目上限。
 >
 
-如需負載平衡器限制的詳細資訊，請參閱[網路限制： Azure Resource Manager][networking-limits-azure-resource-manager]中的「每個負載平衡器的私人前端 IP」。
+如需更多有關負載平衡器限制的資訊，請參閱[網路限制：Azure Resource Manager][networking-limits-azure-resource-manager] 中的「每個負載平衡器的私人前端 IP」。
 
 具有兩個高度可用 SAP 系統的完整配置畫面如下所示：
 
@@ -121,7 +121,7 @@ Microsoft 在 2016 年 9 月發行的功能，可讓您使用 Azure 內部負載
 
 ![DNS 管理員清單反白顯示已定義之新的 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目][sap-ha-guide-figure-6004]
 
-建立 DNS 專案的程式也會在[Windows vm 上的高可用性 SAP NetWeaver 主要指南][sap-ha-guide-9.1.1]中詳細說明。
+建立 DNS 項目的程序在主要的 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9.1.1]中也有詳細說明。
 
 > [!NOTE]
 > 您指派給 ASCS/SCS 執行個體之虛擬主機名稱的新 IP 位址必須與指派給 SAP Azure Load Balancer 的新 IP 位址相同。
@@ -223,7 +223,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. 將額外磁碟或大小相同的磁碟 (您需要等量的磁碟) 新增至每個叢集節點中，並將其格式化。
 2. 使用 SIOS DataKeeper 設定儲存體複寫。
 
-此程序假設您已在 WSFC 叢集機器上安裝了 SIOS DataKeeper。 如果已經安裝，您現在必須在電腦之間設定複寫。 在[Windows vm 上的高可用性 SAP NetWeaver 主要指南][sap-ha-guide-8.12.3.3]中會詳細說明此程式。  
+此程序假設您已在 WSFC 叢集機器上安裝了 SIOS DataKeeper。 如果已經安裝，您現在必須在電腦之間設定複寫。 如需此程序的詳細說明，請參閱主要的 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.12.3.3]。  
 
 ![新的 SAP ASCS/SCS 共用磁碟的 DataKeeper 同步鏡像][sap-ha-guide-figure-6006]
 
@@ -237,16 +237,16 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>安裝第二個 SAP SID2 NetWeaver 系統
 
-如需安裝第二個 SAP SID2 系統的完整程式，請參閱[Windows vm 上的高可用性 SAP NetWeaver 主要指南][sap-ha-guide-9]。
+如需有關安裝第二個 SAP SID2 系統的完整程序說明，請參閱主要的 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9]。
 
 高階程序如下所示︰
 
 1. [安裝 SAP 第一個叢集節點][sap-ha-guide-9.1.2]。  
- 在此步驟中，您要在**現有 WSFC 叢集節點 1** 上使用高可用性 ASCS/SCS 執行個體安裝 SAP。
+ 在此步驟中，您將在**存在 WSFC 叢集節點 1**上安裝具有高可用性 ASCS/SCS 實例的 SAP。
 
 2. [修改 ASCS/SCS 實例的 SAP 設定檔][sap-ha-guide-9.1.3]。
 
-3. [設定探查埠][sap-ha-guide-9.1.4]。  
+3. [設定探查連接埠][sap-ha-guide-9.1.4]。  
  在此步驟中，您要使用 PowerShell 設定 SAP 叢集資源 SAP SID2 IP 探查連接埠。 在其中一個 SAP ASCS/SCS 叢集節點上執行此組態。
 
 4. [安裝資料庫執行個體][sap-ha-guide-9.2]。  
@@ -256,19 +256,19 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  在此步驟中，您要在現有 WSFC 叢集節點 2 上使用高可用性 ASCS/SCS 執行個體安裝 SAP。
 
 6. 開啟 SAP ASCS/SCS 執行個體和 ProbePort 的 Windows 防火牆連接埠。  
- 在用於 SAP ASCS/SCS 執行個體的兩個叢集節點上，您要開啟 SAP ASCS/SCS 所使用的所有 Windows 防火牆連接埠。 這些埠列在[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.8]中。  
+ 在用於 SAP ASCS/SCS 執行個體的兩個叢集節點上，您要開啟 SAP ASCS/SCS 所使用的所有 Windows 防火牆連接埠。 如需這些連接埠的清單，請參閱 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.8]。  
  此外，開啟 Azure 內部負載平衡器探查連接埠，在我們的案例中為 62350。
 
-7. [變更 SAP ERS Windows 服務實例的啟動類型][sap-ha-guide-9.4]。
+7. [更改 SAP ERS Windows 服務實例的開始類型][sap-ha-guide-9.4]。
 
 8. 在新的專用 VM 上[安裝 SAP 主要應用程式伺服器][sap-ha-guide-9.5]。
 
-9. 在新的專用 VM 上[安裝 SAP 其他應用程式伺服器][sap-ha-guide-9.6]。
+9. 在新的專用 VM 上[安裝 SAP 額外應用程式伺服器][sap-ha-guide-9.6]。
 
-10. [測試 SAP ASCS/SCS 實例容錯移轉和 SIOS][sap-ha-guide-10]複寫。
+10. [測試 SAP ASCS/SCS 實例容錯移轉和 SIOS 複製][sap-ha-guide-10]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [網路限制： Azure Resource Manager][networking-limits-azure-resource-manager]
-- [Azure Load Balancer 的多個 Vip][load-balancer-multivip-overview]
-- [Windows Vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]
+- [網路限制：Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Azure Load Balancer 的多個 VIP][load-balancer-multivip-overview]
+- [Windows VM 上的 SAP NetWeaver 高可用性指南][sap-ha-guide]

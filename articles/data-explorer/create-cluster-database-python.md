@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 建立 Azure 資料總管叢集 & DB
+title: 使用 Python &資料庫創建 Azure 資料資源管理器群集
 description: 了解如何使用 Python 建立 Azure 資料總管叢集與資料庫。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 8425058c9f6ac5b90c37a99f749a810672b406fc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560502"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 建立 Azure 資料總管叢集與資料庫
 
 > [!div class="op_single_selector"]
 > * [入口網站](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [電源外殼](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 範本](create-cluster-database-resource-manager.md)
 
-在本文中，您會使用 Python 建立 Azure 資料總管叢集和資料庫。 Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌或載入至資料庫，讓您可以對其執行查詢。
+在本文中，可以使用 Python 創建 Azure 資料資源管理器群集和資料庫。 Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 要使用 Azure 資料資源管理器，請先創建群集，並在該群集中創建一個或多個資料庫。 然後將資料引入或載入到資料庫中，以便您可以針對資料庫執行查詢。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -32,7 +32,7 @@ ms.locfileid: "77560502"
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
-* [可以存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。 取得 `Directory (tenant) ID`、`Application ID`和 `Client Secret`的值。
+* [可以訪問資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。 獲取`Directory (tenant) ID`的值`Application ID`。 `Client Secret`
 
 ## <a name="install-python-package"></a>安裝 Python 套件
 
@@ -43,7 +43,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## <a name="authentication"></a>驗證
-若要執行本文中的範例，我們需要 Azure AD 應用程式和服務主體，才能存取資源。 核取 [[建立 Azure AD 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)] 以建立免費的 Azure AD 應用程式，並在訂用帳戶範圍中新增角色指派。 它也會說明如何取得 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。
+為了運行本文中的示例，我們需要一個可以訪問資源的 Azure AD 應用程式和服務主體。 檢查[創建 Azure AD 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)以創建免費的 Azure AD 應用程式，並在訂閱範圍內添加角色指派。 它還演示如何獲取`Directory (tenant) ID`、`Application ID`和`Client Secret`。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>建立 Azure 資料總管叢集
 
@@ -86,12 +86,12 @@ pip install azure-mgmt-kusto
    |---|---|---|
    | cluster_name | *mykustocluster* | 所需的叢集名稱。|
    | sku_name | *Standard_D13_v2* | 將用於叢集的 SKU。 |
-   | tier | *Standard* | SKU 層。 |
-   | capacity | *number* | 叢集的實例數目。 |
+   | tier | *標準* | SKU 層。 |
+   | 處理能力 | *數量* | 群集的實例數。 |
    | resource_group_name | *testrg* | 將在其中建立叢集的資源群組名稱。 |
 
     > [!NOTE]
-    > **建立**叢集是長時間執行的作業。 方法**create_or_update**會傳回 LROPoller 的實例，請參閱[LROPoller 類別](/python/api/msrest/msrest.polling.lropoller?view=azure-python)以取得詳細資訊。
+    > **創建群集**是一項長時間運行的操作。 方法**create_or_update**返回 LROPoller 的實例，請參閱[LROPoller 類](/python/api/msrest/msrest.polling.lropoller?view=azure-python)以獲取詳細資訊。
 
 1. 執行下列命令來檢查是否已成功建立叢集：
 
@@ -99,7 +99,7 @@ pip install azure-mgmt-kusto
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-如果結果中包含有 `provisioningState` 值的 `Succeeded`，表示已成功建立叢集。
+如果結果中包含有 `Succeeded` 值的 `provisioningState`，表示已成功建立叢集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 資料總管叢集中建立資料庫
 
@@ -143,7 +143,7 @@ pip install azure-mgmt-kusto
 
 ## <a name="clean-up-resources"></a>清除資源
 
-* 如果您打算遵循其他文章，請保留您建立的資源。
+* 如果您計畫關注我們的其他文章，請保留您創建的資源。
 * 若要清除資源，請刪除叢集。 您刪除叢集時，也會刪除其中的所有資料庫。 使用下列命令刪除您的叢集：
 
     ```Python
@@ -152,4 +152,4 @@ pip install azure-mgmt-kusto
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 資料總管 Python 程式庫內嵌資料](python-ingest-data.md)
+* [使用 Azure 資料資源管理器 Python 庫引入資料](python-ingest-data.md)

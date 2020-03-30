@@ -8,10 +8,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77189089"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(已淘汰) Azure Container Service DC/OS 叢集上具備 Vamp 的 Canary 版本微服務
@@ -42,13 +42,13 @@ ms.locfileid: "77189089"
 
 ## <a name="set-up-vamp"></a>設定 Vamp
 
-現在您已有執行中的 DC/OS 叢集，可以從 DC/OS UI （HTTP：\//localhost：80）安裝 Vamp。 
+現在您已經運行了 DC/OS 群集，可以從 DC/OS UI（HTTP：\//本地主機：80）安裝 Vamp。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
 會在兩個階段中完成安裝︰
 
-1. **部署 Elasticsearch**。
+1. **部署彈性搜索**。
 
 2. 然後安裝 Vamp DC/OS Universe 套件來**部署 Vamp**。
 
@@ -56,9 +56,9 @@ ms.locfileid: "77189089"
 
 Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [magneticio Docker 映像](https://hub.docker.com/r/magneticio/elastic/)來部署相容的 Vamp Elasticsearch 堆疊。
 
-1. 在 DC/OS UI 中，請移至 [服務]，然後按一下 [部署服務]。
+1. 在 DC/OS UI 中，請移至 [服務]****，然後按一下 [部署服務]****。
 
-2. 從 [部署新服務] 快顯中選取 [JSON 模式]。
+2. 從 [部署新服務]**** 快顯中選取 [JSON 模式]****。
 
    ![選取 JSON 模式](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
@@ -91,9 +91,9 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
    ```
   
 
-3. 按一下[部署]。
+3. 按一下 ****[部署]。
 
-   DC/OS 會部署 Elasticsearch 容器。 您可以在 [服務] 頁面上追蹤進度。  
+   DC/OS 會部署 Elasticsearch 容器。 您可以在 [服務]**** 頁面上追蹤進度。  
 
    ![部署 e?Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
@@ -104,15 +104,15 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
 1. 移至 **Universe**，並搜尋 **vamp**。 
    ![DC/OS Universe 上的 Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. 按一下 Vamp 套件旁的 [安裝]，然後選擇 [進階安裝]。
+2. 按一下 Vamp 套件旁的 [安裝]****，然後選擇 [進階安裝]****。
 
 3. 向下捲動並輸入下列 elasticsearch-url：`http://elasticsearch.marathon.mesos:9200`。 
 
    ![輸入 Elasticsearch URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. 依序按一下 [檢閱並安裝]、[安裝] 可開始進行部署。  
+4. 依序按一下 [檢閱並安裝]****、[安裝]**** 可開始進行部署。  
 
-   DC/OS 會部署所有必要的 Vamp 元件。 您可以在 [服務] 頁面上追蹤進度。
+   DC/OS 會部署所有必要的 Vamp 元件。 您可以在 [服務]**** 頁面上追蹤進度。
   
    ![部署 Vamp 作為 Universe 套件](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
@@ -133,7 +133,7 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
 
 1. 前往**部署**。
 
-2. 按一下 [加入]。
+2. 按一下 **[新增]**。
 
 3. 貼入下列藍圖 YAML。 此藍圖所包含的一個叢集只有一個服務變化，我們將在稍後步驟中進行變更︰
 
@@ -151,15 +151,15 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. Haga clic en **Guardar**. Vamp 會起始部署。
+4. 按一下 [儲存]****。 Vamp 會起始部署。
 
-部署會列在 [部署] 頁面上。 按一下 [部署] 可監視其狀態。
+部署會列在 [部署]**** 頁面上。 按一下 [部署] 可監視其狀態。
 
 ![Vamp UI - 部署 sava](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
 
 ![Vamp UI 中的 sava 服務](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-會建立兩個閘道，並列於 [閘道] 頁面︰
+會建立兩個閘道，並列於 [閘道]**** 頁面︰
 
 * 存取執行中服務的穩定端點 (連接埠 9050) 
 * 受 Vamp 管理的內部閘道 (稍後將詳細說明此閘道)。 
@@ -180,7 +180,7 @@ Vamp 已在 DC/OS 代理程式節點上部署 sava 服務，在連接埠 9050 �
 如需使用 Azure 入口網站完成這些工作的詳細步驟，請參閱[啟用 Azure Container Service 應用程式的公用存取](container-service-enable-public-access.md)。 針對所有連接埠設定指定連接埠 9050。
 
 
-一旦建立所有項目之後，請移至 DC/OS 代理程式負載平衡器的 [概觀] 刀鋒視窗 (名為 **dcos-agent-lb-xxxx** 的資源)。 尋找**公用 IP 位址**，並使用該位址來存取連接埠 9050 上的 sava。
+一旦建立所有項目之後，請移至 DC/OS 代理程式負載平衡器的 [概觀]**** 刀鋒視窗 (名為 **dcos-agent-lb-xxxx** 的資源)。 尋找**公用 IP 位址**，並使用該位址來存取連接埠 9050 上的 sava。
 
 ![Azure 入口網站 - 取得公用 IP 位址](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
@@ -195,9 +195,9 @@ Vamp 已在 DC/OS 代理程式節點上部署 sava 服務，在連接埠 9050 �
 
 若要將新的 sava 1.1 服務與執行中的部署合併︰
 
-1. 在 Vamp UI 中，按一下 [藍圖]。
+1. 在 Vamp UI 中，按一下 [藍圖]****。
 
-2. 按一下 [新增]，並貼入下列藍圖 YAML︰這個藍圖會描述要在現有叢集 (sava_cluster) 內部署的新服務變化 (sava:1.1.0)。
+2. 按一下 [新增]****，並貼入下列藍圖 YAML︰這個藍圖會描述要在現有叢集 (sava_cluster) 內部署的新服務變化 (sava:1.1.0)。
 
    ```YAML
    name: sava:1.1.0      # blueprint name
@@ -211,13 +211,13 @@ Vamp 已在 DC/OS 代理程式節點上部署 sava 服務，在連接埠 9050 �
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. Haga clic en **Guardar**. 藍圖會儲存在 [藍圖] 頁面上並加以列出。
+3. 按一下 [儲存]****。 藍圖會儲存在 [藍圖]**** 頁面上並加以列出。
 
-4. 將 sava:1.1 藍圖上的 [動作] 功能表開啟，然後按一下 [合併至]。
+4. 將 sava:1.1 藍圖上的 [動作] 功能表開啟，然後按一下 [合併至]****。
 
    ![Vamp UI - 藍圖](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. 選取 **sava** 部署，然後按一下 [合併]。
+5. 選取 **sava** 部署，然後按一下 [合併]****。
 
    ![Vamp UI - 將藍圖合併至部署](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
@@ -233,9 +233,9 @@ Vamp 會部署藍圖中所述的新 sava:1.1.0 服務變化，連同執行中部
 
 將兩個版本的 sava 部署在相同叢集中，移動**權數**滑桿來調整這兩者間的流量散發。
 
-1. 按一下 [權數]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 旁的 [Vamp UI - 編輯]。
+1. 按一下 [權數]**** 旁的 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)。
 
-2. 將權數散發設定為 50%/50%，然後按一下 [儲存]。
+2. 將權數散發設定為 50%/50%，然後按一下 [儲存]****。
 
    ![Vamp UI - 閘道權數滑桿](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
@@ -256,7 +256,7 @@ Vamp 會使用**條件**來篩選閘道路由之間的流量。 流量會以套�
 
 您可以建立條件來篩選所有的 Firefox 使用者，並將他們導向至舊的 sava:1.0.0︰
 
-1. 在 sava/sava_cluster/webport [閘道] 頁面上，按一下 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)，將 [條件] 新增至路由 sava/sava_cluster/sava:1.0.0/webport。 
+1. 在 sava/sava_cluster/webport [閘道]**** 頁面上，按一下 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)，將 [條件]**** 新增至路由 sava/sava_cluster/sava:1.0.0/webport。 
 
 2. 輸入條件 **user-agent == Firefox**，然後按一下 [Vamp UI - 儲存]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)。
 
@@ -264,13 +264,13 @@ Vamp 會使用**條件**來篩選閘道路由之間的流量。 流量會以套�
 
 3. 按一下 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 可將套用至條件的**強度**進行變更。
  
-4. 將 [強度]設定為 100%，然後按一下 [Vamp UI - 儲存]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) 來加以儲存。
+4. 將 [強度]**** 設定為 100%，然後按一下 [Vamp UI - 儲存]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) 來加以儲存。
 
    Vamp 現在會將符合條件 (所有 Firefox 使用者) 的所有流量傳送至 sava:1.0.0。
 
    ![Vamp UI - 將條件套用至閘道](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. 最後，調整閘道加權，將所有其他流量 (所有非 Firefox 使用者) 傳送至新的 sava:1.1.0。 按一下 [權數]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 旁的 [Vamp UI - 編輯] 並設定權數散發，讓 100% 導向路由 sava/sava_cluster/sava:1.1.0/webport。
+5. 最後，調整閘道加權，將所有其他流量 (所有非 Firefox 使用者) 傳送至新的 sava:1.1.0。 按一下 [權數]**** 旁的 [Vamp UI - 編輯]![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 並設定權數散發，讓 100% 導向路由 sava/sava_cluster/sava:1.1.0/webport。
 
    非經條件篩選的所有流量現在都會導向至新的 sava:1.1.0。
 

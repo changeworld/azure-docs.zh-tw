@@ -1,5 +1,5 @@
 ---
-title: 保護 Azure 資訊安全中心中的網路資源
+title: 保護 Azure 安全中心的網路資源
 description: 此文件說明可協助您保護 Azure 網路資源及遵守安全性原則的 Azure 資訊安全中心建議。
 services: security-center
 documentationcenter: na
@@ -14,60 +14,60 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77431480"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
 
-本文說明資訊安全中心的 [資源安全性] 區段中的 [**網路**] 頁面。
+本文介紹了安全中心資源安全部分**的網路頁面。**
 
-如需網路建議的完整清單，請參閱[網路功能建議](recommendations-reference.md#recs-network)。
+有關網路建議的完整清單，請參閱[網路建議](recommendations-reference.md#recs-network)。
 
-此文章從網路安全性觀點，說明適用於您 Azure 資源的建議。 網路建議是在新一代防火牆、網路安全性群組、JIT VM 存取、過於寬鬆的輸入流量規則和其他方面的中心。 如需網路建議和補救動作的清單，請參閱[管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
+此文章從網路安全性觀點，說明適用於您 Azure 資源的建議。 網路建議圍繞下一代防火牆、網路安全性群組、JIT VM 訪問、過度寬鬆的入站流量規則等進行。 如需網路建議和補救動作的清單，請參閱[管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
 
 > [!NOTE]
-> [網路] 頁面可讓您從網路觀點深入了解您的 Azure 資源健康情況。 網路地圖和調適性網路控制僅適用於 Azure 資訊安全中心標準層。 [如果您使用免費層，可以按一下按鈕，**檢視舊版網路功能**並接收網路資源建議](#legacy-networking)。
+> [網路]**** 頁面可讓您從網路觀點深入了解您的 Azure 資源健康情況。 網路地圖和調適性網路控制僅適用於 Azure 資訊安全中心標準層。 [如果您使用免費層，可以按一下按鈕，**檢視舊版網路功能**並接收網路資源建議](#legacy-networking)。
 >
 
-[網路] 頁面提供您可以深入了解之區段的概觀，以取得網路資源健康情況的詳細資訊：
+[網路]**** 頁面提供您可以深入了解之區段的概觀，以取得網路資源健康情況的詳細資訊：
 
 - 網路地圖 (僅限 Azure 資訊安全中心標準層)
 - 自適性網路強化
 - 網路安全性建議。
-- 舊版 [網路] 刀鋒視窗 (先前的網路刀鋒視窗) 
+- 舊版 [網路]**** 刀鋒視窗 (先前的網路刀鋒視窗) 
  
-[![網路功能窗格](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+[![[網路功能] 窗格](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>網路地圖
 互動式網路地圖可透過圖形方式檢視安全性覆疊，進而為您提供可強化網路資源的的建議和見解。 您可以使用地圖查看 Azure 工作負載的網路拓撲、虛擬機器和子網路之間的連線，而且可以從地圖向下切入到特定的資源，並查看這些資源的建議。
 
 若要開啟網路地圖：
 
-1. 在 [資訊安全中心] 的 [資源安全性檢查] 底下，選取 [網路功能]。
-2. 按一下 [網路地圖] 底下的 [查看拓撲]。
+1. 在 [資訊安全中心] 的 [資源安全性檢查] 底下，選取 [網路功能]****。
+2. 按一下 [網路地圖]**** 底下的 [查看拓撲]****。
  
 拓撲圖的預設檢視會顯示：
 
 - 您在 Azure 中選取的訂用帳戶。 此地圖支援多個訂用帳戶。
-- Resource Manager 資源類型的 Vm、子網和 Vnet （不支援傳統 Azure 資源）
-- 對等互連 Vnet
+- 資源管理器資源類型的 VM、子網和 VNet（不支援經典 Azure 資源）
+- 對等 VNet
 - 僅限包含嚴重性為高或中的[網路建議](security-center-recommendations.md)的資源  
 - 網際網路面向資源
 - 此地圖已針對您在 Azure 中選取的訂用帳戶最佳化。 如果您修改選取項目，將會根據新的設定重新計算地圖並重新最佳化。  
 
-[![網路拓撲圖](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
+[![網路拓撲地圖](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>了解網路地圖
 
-網路地圖可以使用 [拓撲] 檢視和 [流量] 檢視顯示您的 Azure 資源。 
+網路地圖可以使用 [拓撲]**** 檢視和 [流量]**** 檢視顯示您的 Azure 資源。 
 
 ### <a name="the-topology-view"></a>拓撲檢視
 
-在網路地圖的 [拓撲] 檢視中，您可以檢視下列關於網路資源的見解：
+在網路地圖的 [拓撲]**** 檢視中，您可以檢視下列關於網路資源的見解：
 
 - 在內部圓形中，您可以看到所選訂用帳戶內的所有 Vnet，下一個圓形是所有子網路，外部圓形則是所有虛擬機器。
 - 連接地圖中資源的線條可讓您知道哪些資源彼此相關聯，以及您 Azure 網路的結構。 
@@ -83,7 +83,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
    - **建議**：您可以根據資源的有效建議，選取要顯示的資源。 例如，您可以僅檢視資訊安全中心建議您啟用網路安全性群組的資源。
    - **網路區域**：根據預設，地圖僅會顯示網際網路面向資源，您也可以選取內部 VM。
  
-2. 您隨時可以按一下左上角的 [重設]，將地圖回復到其預設狀態。
+2. 您隨時可以按一下左上角的 [重設]****，將地圖回復到其預設狀態。
 
 若要向下切入到某個資源：
 
@@ -94,7 +94,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 ### <a name="the-traffic-view"></a>流量檢視
 
-[流量] 檢視會為您提供資源之間所有可能流量的地圖。 這會為您提供您所設定之所有規則的視覺導覽圖，而且這些規則會定義能夠與其進行通訊的資源。 這可讓您查看網路安全性群組的現有設定，以及快速找出您工作負載中可能有風險的設定。
+[流量]**** 檢視會為您提供資源之間所有可能流量的地圖。 這會為您提供您所設定之所有規則的視覺導覽圖，而且這些規則會定義能夠與其進行通訊的資源。 這可讓您查看網路安全性群組的現有設定，以及快速找出您工作負載中可能有風險的設定。
 
 ### <a name="uncover-unwanted-connections"></a>發現來路不明的連線
 
@@ -107,34 +107,34 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 若要向下切入到某個資源：
 
 1. 當您在地圖上選取特定的資源時，右窗格會開啟，並提供您資源的一般資訊、連線的安全性解決方案 (如果有的話)，以及與資源相關的建議。 對於您選取的每種類型資源而言，這是相同類型的行為。 
-2. 按一下 [流量] 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選取 VM 時，會顯示可與其通訊的所有 Vm，而且當您選取子網時，會顯示可與其通訊的所有子網。
+2. 按一下 [流量]**** 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選擇 VM 時，將顯示它可以通信的所有 VM，並且當您選擇子網時，將顯示它可以與其通信的所有子網。
 
 **此資料是以網路安全性群組以及進階機器學習演算法為基礎，後者可以分析多個規則，以了解其交叉與互動。** 
 
-[![網路流量對應](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+[![網路流量地圖](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## 舊版網路功能 <a name ="legacy-networking"></a>
+## <a name="legacy-networking"></a>舊版網路功能 <a name ="legacy-networking"></a>
 
 如果您沒有資訊安全中心標準層，此節將說明如何檢視可用的網路功能建議。
 
-若要存取此資訊，請在 [網路功能] 刀鋒視窗中，按一下 [檢視舊版網路功能]。 
+若要存取此資訊，請在 [網路功能] 刀鋒視窗中，按一下 [檢視舊版網路功能]****。 
 
-[![舊版網路功能](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
+[![傳統網路](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>網際網路面向端點區段
-在 [網際網路面向端點] 區段中，您可以看到目前使用網際網路面向端點所設定的虛擬機器及其狀態。
+在 [網際網路面向端點]**** 區段中，您可以看到目前使用網際網路面向端點所設定的虛擬機器及其狀態。
 
 此表格包含端點名稱、網際網路面向 IP 位址，以及網路安全性群組目前的嚴重性狀態和 NGFW 建議。 此表格是依嚴重性排序。
 
 ### <a name="networking-topology-section"></a>網路拓撲區段
-[網路拓撲] 區段中包含資源的階層式檢視。
+[網路拓撲]**** 區段中包含資源的階層式檢視。
 
 此表格是依嚴重性排序 (虛擬機器和子網路)。
 
-在此拓撲檢視中，第一層會顯示 Vnet。 第二個會顯示子網，而第三個層級會顯示屬於這些子網的虛擬機器。 右欄會針對這些資源顯示網路安全性群組建議的目前狀態。
+在此拓撲檢視中，第一層會顯示 Vnet。 第二層顯示子網，第三級顯示屬於這些子網的虛擬機器。 右欄會針對這些資源顯示網路安全性群組建議的目前狀態。
 
-第三層會顯示虛擬機器，類似上面所述。 您可以按一下任何資源，以深入瞭解或套用所需的安全性控制或設定。
+第三層會顯示虛擬機器，類似上面所述。 您可以按一下任何資源以瞭解更多資訊或應用所需的安全控制或配置。
 
 ## <a name="next-steps"></a>後續步驟
 

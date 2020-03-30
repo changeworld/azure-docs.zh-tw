@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure MQTT 用戶端程式庫將訊息傳送至 MQTT 伺服器
-description: 瞭解如何使用 MQTT 用戶端程式庫將訊息傳送到 MQTT broker。 另請瞭解如何將您的 mXChip IoT DevKit 設定為 MQTT 用戶端。
+title: 使用 Azure MQTT 用戶端庫將消息發送到 MQTT 伺服器
+description: 瞭解如何使用 MQTT 用戶端庫向 MQTT 代理髮送消息。 還瞭解如何將 mXChip IoT 開發 Kit 配置為 MQTT 用戶端。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.openlocfilehash: 14feb02fbac800cd37da882a1872beb8269d9938
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954231"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>將訊息傳送至 MQTT 伺服器
@@ -45,10 +45,10 @@ ms.locfileid: "73954231"
 
 ## <a name="open-the-mqttclient-sample"></a>開啟 MQTTClient 範例
 
-展開左邊的 [ARDUINO 範例] 區段，瀏覽至 [MXCHIP AZ3166 的範例] > [MQTT]，然後選取 [MQTTClient]。 隨即開啟一個內含專案資料夾的新 VS Code 視窗。
+展開左邊的 [ARDUINO 範例]**** 區段，瀏覽至 [MXCHIP AZ3166 的範例] > [MQTT]****，然後選取 [MQTTClient]****。 隨即開啟一個內含專案資料夾的新 VS Code 視窗。
 
 > [!NOTE]
-> 您也可以從命令選擇區開啟範例。 請使用 `Ctrl+Shift+P` (macOS：`Cmd+Shift+P`) 來開啟命令選擇區，輸入 **Arduino**，然後尋找並選取 [Arduino: Examples] \(Arduino: 範例\)。
+> 您也可以從命令選擇區開啟範例。 請使用 `Ctrl+Shift+P` (macOS：`Cmd+Shift+P`) 來開啟命令選擇區，輸入 **Arduino**，然後尋找並選取 [Arduino: Examples] \(Arduino: 範例\)****。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>建置 Arduino 草圖並將其上傳至 DevKit
 

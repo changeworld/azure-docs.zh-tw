@@ -1,6 +1,6 @@
 ---
-title: SAP SuccessFactors 屬性參考 |Microsoft Docs
-description: 瞭解 SuccessFactors-HR 驅動布建支援來自 SuccessFactors 的屬性
+title: SAP 成功因素屬性參考 |微軟文檔
+description: 瞭解成功因素支援的成功因數的哪些屬性-HR 驅動的預配
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,127 +15,127 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522351"
 ---
-# <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 屬性參考
+# <a name="sap-successfactors-attribute-reference"></a>SAP 成功因素屬性參考
 
-## <a name="supported-successfactors-entities-and-attributes"></a>支援的 SuccessFactors 實體和屬性
+## <a name="supported-successfactors-entities-and-attributes"></a>支援成功因素實體和屬性
 
-下表會捕捉下列兩個布建應用程式所支援的 SuccessFactors 屬性清單： 
-* [SuccessFactors 以 Active Directory 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors 以 Azure AD 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+下表捕獲以下兩個預配應用支援的 SuccessFactors 屬性清單： 
+* [活動目錄使用者預配的成功因素](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+* [Azure AD 使用者預配的成功因素](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
 
-| \# | SuccessFactors 實體                  | SuccessFactors 屬性     | 作業類型 |
+| \# | 成功因素實體                  | 成功因素屬性     | 作業類型 |
 |----|----------------------------------------|------------------------------|----------------|
-| 1  | PerPerson                              | personIdExternal             | 讀取           |
-| 2  | PerPerson                              | personId                     | 讀取           |
-| 3  | PerPerson                              | perPersonUuid                | 讀取           |
-| 4  | PerPersonal                            | displayName                  | 讀取           |
-| 5  | PerPersonal                            | firstName                    | 讀取           |
-| 6  | PerPersonal                            | gender                       | 讀取           |
-| 7  | PerPersonal                            | lastName                     | 讀取           |
-| 8  | PerPersonal                            | middleName                   | 讀取           |
-| 9  | PerPersonal                            | preferredName                | 讀取           |
-| 10 | 使用者                                   | addressLine1                 | 讀取           |
-| 11 | 使用者                                   | addressLine2                 | 讀取           |
-| 12 | 使用者                                   | addressLIne3                 | 讀取           |
-| 13 | 使用者                                   | businessPhone                | 讀取           |
-| 14 | 使用者                                   | 行動電話                    | 讀取           |
-| 15 | 使用者                                   | 城市                         | 讀取           |
-| 16 | 使用者                                   | country                      | 讀取           |
-| 17 | 使用者                                   | custom01                     | 讀取           |
-| 18 | 使用者                                   | custom02                     | 讀取           |
-| 19 | 使用者                                   | custom03                     | 讀取           |
-| 20 | 使用者                                   | custom04                     | 讀取           |
-| 21 | 使用者                                   | custom05                     | 讀取           |
-| 22 | 使用者                                   | custom06                     | 讀取           |
-| 23 | 使用者                                   | custom07                     | 讀取           |
-| 24 | 使用者                                   | custom08                     | 讀取           |
-| 25 | 使用者                                   | custom09                     | 讀取           |
-| 26 | 使用者                                   | custom1-custom10                     | 讀取           |
-| 27 | 使用者                                   | custom11                     | 讀取           |
-| 28 | 使用者                                   | custom12                     | 讀取           |
-| 29 | 使用者                                   | custom13                     | 讀取           |
-| 30 | 使用者                                   | custom14                     | 讀取           |
-| 31 | 使用者                                   | empId                        | 讀取           |
-| 32 | 使用者                                   | homePhone                    | 讀取           |
-| 33 | 使用者                                   | jobFamily                    | 讀取           |
-| 34 | 使用者                                   | 暱稱                     | 讀取           |
-| 35 | 使用者                                   | state                        | 讀取           |
-| 36 | 使用者                                   | timeZone                     | 讀取           |
-| 37 | 使用者                                   | username                     | 讀取           |
-| 38 | 使用者                                   | zipCode                      | 讀取           |
-| 39 | PerPhone                               | areaCode                     | 讀取           |
-| 40 | PerPhone                               | countryCode                  | 讀取           |
-| 41 | PerPhone                               | 延伸模組                    | 讀取           |
-| 42 | PerPhone                               | phoneNumber                  | 讀取           |
-| 43 | PerPhone                               | phoneType                    | 讀取           |
-| 44 | PerEmail                               | emailAddress                 | 讀取、寫入    |
-| 45 | PerEmail                               | emailType                    | 讀取           |
-| 46 | EmpEmployment                          | firstDateWorked              | 讀取           |
-| 47 | EmpEmployment                          | lastDateWorked               | 讀取           |
-| 48 | EmpEmployment                          | userId                       | 讀取           |
-| 49 | EmpEmployment                          | isContingentWorker           | 讀取           |
-| 50 | EmpJob                                 | countryOfCompany             | 讀取           |
-| 51 | EmpJob                                 | emplStatus                   | 讀取           |
-| 52 | EmpJob                                 | endDate                      | 讀取           |
-| 53 | EmpJob                                 | startDate                    | 讀取           |
-| 54 | EmpJob                                 | jobTitle                     | 讀取           |
-| 55 | EmpJob                                 | 位置                     | 讀取           |
-| 65 | EmpJob                                 | customString13               | 讀取           |
-| 56 | EmpJob                                 | managerId                    | 讀取           |
-| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | 讀取           |
-| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | 讀取           |
-| 59 | EmpJob\.公司                        | company                      | 讀取           |
-| 60 | EmpJob\.公司                        | companyId                    | 讀取           |
-| 61 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode           | 讀取           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | 讀取           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | 讀取           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | 讀取           |
-| 65 | EmpJob\.部門                     | department                   | 讀取           |
-| 66 | EmpJob\.部門                     | departmentId                 | 讀取           |
-| 67 | EmpJob\.部門                       | 除法                     | 讀取           |
-| 68 | EmpJob\.部門                       | divisionId                   | 讀取           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | 讀取           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | 讀取           |
-| 71 | EmpJob\.位置                       | LocationName                 | 讀取           |
-| 72 | EmpJob\.位置                       | officeLocationAddress        | 讀取           |
-| 73 | EmpJob\.位置                       | officeLocationCity           | 讀取           |
-| 74 | EmpJob\.位置                       | officeLocationCustomString4  | 讀取           |
-| 75 | EmpJob\.位置                       | officeLocationZipCode        | 讀取           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | 讀取           |
-| 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 讀取           |
-| 78 | EmpEmploymentTermination               | latestTerminationDate        | 讀取           |
+| 1  | 每人                              | 人 Id 外部             | 讀取           |
+| 2  | 每人                              | 人 Id                     | 讀取           |
+| 3  | 每人                              | 佩爾森烏伊德                | 讀取           |
+| 4  | 人均                            | displayName                  | 讀取           |
+| 5  | 人均                            | firstName                    | 讀取           |
+| 6  | 人均                            | gender                       | 讀取           |
+| 7  | 人均                            | lastName                     | 讀取           |
+| 8  | 人均                            | middleName                   | 讀取           |
+| 9  | 人均                            | 首選名稱                | 讀取           |
+| 10 | User                                   | 位址Line1                 | 讀取           |
+| 11 | User                                   | 位址Line2                 | 讀取           |
+| 12 | User                                   | 位址LIne3                 | 讀取           |
+| 13 | User                                   | 商務電話                | 讀取           |
+| 14 | User                                   | 手機                    | 讀取           |
+| 15 | User                                   | city                         | 讀取           |
+| 16 | User                                   | country                      | 讀取           |
+| 17 | User                                   | 自訂01                     | 讀取           |
+| 18 | User                                   | 自訂02                     | 讀取           |
+| 19 | User                                   | 自訂03                     | 讀取           |
+| 20 | User                                   | 自訂04                     | 讀取           |
+| 21 | User                                   | 自訂05                     | 讀取           |
+| 22 | User                                   | 自訂06                     | 讀取           |
+| 23 | User                                   | 自訂07                     | 讀取           |
+| 24 | User                                   | 自訂08                     | 讀取           |
+| 25 | User                                   | 自訂09                     | 讀取           |
+| 26 | User                                   | 自訂10                     | 讀取           |
+| 27 | User                                   | 自訂11                     | 讀取           |
+| 28 | User                                   | 自訂12                     | 讀取           |
+| 29 | User                                   | 自訂13                     | 讀取           |
+| 30 | User                                   | 自訂14                     | 讀取           |
+| 31 | User                                   | empId                        | 讀取           |
+| 32 | User                                   | homePhone                    | 讀取           |
+| 33 | User                                   | 工作家庭                    | 讀取           |
+| 34 | User                                   | 暱稱                     | 讀取           |
+| 35 | User                                   | state                        | 讀取           |
+| 36 | User                                   | timeZone                     | 讀取           |
+| 37 | User                                   | username                     | 讀取           |
+| 38 | User                                   | 郵遞區號                      | 讀取           |
+| 39 | 每部電話                               | 區號                     | 讀取           |
+| 40 | 每部電話                               | countryCode                  | 讀取           |
+| 41 | 每部電話                               | 擴充功能                    | 讀取           |
+| 42 | 每部電話                               | phoneNumber                  | 讀取           |
+| 43 | 每部電話                               | 電話類型                    | 讀取           |
+| 44 | 每封電子郵件                               | emailAddress                 | 讀取、寫入    |
+| 45 | 每封電子郵件                               | 電子郵件類型                    | 讀取           |
+| 46 | 恩普就業                          | 第一次工作日期              | 讀取           |
+| 47 | 恩普就業                          | 上次日期工作               | 讀取           |
+| 48 | 恩普就業                          | userId                       | 讀取           |
+| 49 | 恩普就業                          | 是臨時工人           | 讀取           |
+| 50 | 恩普約伯                                 | 公司國家             | 讀取           |
+| 51 | 恩普約伯                                 | empl狀態                   | 讀取           |
+| 52 | 恩普約伯                                 | endDate                      | 讀取           |
+| 53 | 恩普約伯                                 | startDate                    | 讀取           |
+| 54 | 恩普約伯                                 | jobTitle                     | 讀取           |
+| 55 | 恩普約伯                                 | position                     | 讀取           |
+| 65 | 恩普約伯                                 | 自訂String13               | 讀取           |
+| 56 | 恩普約伯                                 | 經理 Id                    | 讀取           |
+| 57 | 恩普伯\.業務單位                   | 業務單位                 | 讀取           |
+| 58 | 恩普伯\.業務單位                   | 企業單位Id               | 讀取           |
+| 59 | 恩普約\.布公司                        | company                      | 讀取           |
+| 60 | 恩普約\.布公司                        | companyId                    | 讀取           |
+| 61 | EmpJob\.\.公司註冊國家 | 兩個查爾國家代碼           | 讀取           |
+| 62 | 恩普職位\.成本中心                     | costCenter                   | 讀取           |
+| 63 | 恩普職位\.成本中心                     | 成本中心Id                 | 讀取           |
+| 64 | 恩普職位\.成本中心                     | 成本中心描述        | 讀取           |
+| 65 | 恩普約\.布部                     | department                   | 讀取           |
+| 66 | 恩普約\.布部                     | departmentId                 | 讀取           |
+| 67 | 恩普約\.布部門                       | division                     | 讀取           |
+| 68 | 恩普約\.布部門                       | 部門 Id                   | 讀取           |
+| 69 | 恩普作業\.代碼                        | 作業代碼                      | 讀取           |
+| 70 | 恩普作業\.代碼                        | 工作代碼Id                    | 讀取           |
+| 71 | 恩普伯\.位置                       | 位置名稱                 | 讀取           |
+| 72 | 恩普伯\.位置                       | 辦公地點位址        | 讀取           |
+| 73 | 恩普伯\.位置                       | 辦公地點城市           | 讀取           |
+| 74 | 恩普伯\.位置                       | 辦公地點自訂字串4  | 讀取           |
+| 75 | 恩普伯\.位置                       | 辦公地點郵遞區號        | 讀取           |
+| 76 | 恩普工資\.等級                       | 薪酬等級                     | 讀取           |
+| 77 | 恩普就業終止               | 活躍就業計數       | 讀取           |
+| 78 | 恩普就業終止               | 最新終止日期        | 讀取           |
 
 
-## <a name="default-attribute-mapping"></a>預設屬性對應
+## <a name="default-attribute-mapping"></a>預設屬性映射
 
-下表提供上列 SuccessFactors 屬性與 AD/Azure AD 屬性之間的預設屬性對應。 在 Azure AD 布建應用程式的 [對應] 分頁中，您可以修改此預設對應，以包含上述清單中的屬性。 
+下表提供了上面列出的 SuccessFactors 屬性和 AD/Azure AD 屬性之間的預設屬性映射。 在 Azure AD 預配應用"映射"邊欄選項卡中，可以修改此預設映射以包括上述清單中的屬性。 
 
-| \# | SuccessFactors 實體                  | SuccessFactors 屬性 | 預設 AD/Azure AD 屬性對應   | 處理批註                                                                            |
+| \# | 成功因素實體                  | 成功因素屬性 | 預設 AD/Azure AD 屬性對應   | 處理注釋                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
-| 1  | PerPerson                              | personIdExternal         | employeeId                              | 當做比對屬性使用                                                                   |
-| 2  | PerPerson                              | perPersonUuid            | \[未對應做為來源錨點使用 \-\] | 在初始同步處理期間，布建服務會將 personUuid 連結至現有的 objectGuid\。  |
-| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
-| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
-| 6  | 使用者                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | 使用者                                   | 城市                     | l                                       | NA                                                                                           |
-| 8  | 使用者                                   | country                  | co                                      | NA                                                                                           |
-| 9  | 使用者                                   | state                    | st                                      | NA                                                                                           |
-| 10 | 使用者                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | 使用者                                   | zipCode                  | postalCode                              | NA                                                                                           |
-| 12 | PerEmail                               | emailAddress             | 郵件                                    | NA                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
-| 15 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
-| 16 | EmpJob\.部門                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob\.部門                       | 除法                 | company                                 | NA                                                                                           |
-| 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
-| 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，請停用 account\。                                           |
+| 1  | 每人                              | 人 Id 外部         | employeeId                              | 用作匹配屬性                                                                   |
+| 2  | 每人                              | 佩爾森烏伊德            | \[未映射\-用作源錨點\] | 在初始同步期間，預配服務將人庫id 連結到現有物件 Guid_。  |
+| 3  | 人均                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | 人均                            | firstName                | givenName                               | NA                                                                                           |
+| 5  | 人均                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | User                                   | 位址Line1             | streetAddress                           | NA                                                                                           |
+| 7  | User                                   | city                     | l                                       | NA                                                                                           |
+| 8  | User                                   | country                  | co                                      | NA                                                                                           |
+| 9  | User                                   | state                    | st                                      | NA                                                                                           |
+| 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | User                                   | 郵遞區號                  | postalCode                              | NA                                                                                           |
+| 12 | 每封電子郵件                               | emailAddress             | mail                                    | NA                                                                                           |
+| 13 | 恩普約伯                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | 恩普約伯                                 | 經理 Id                | manager                                 | NA                                                                                           |
+| 15 | EmpJob\.\.公司註冊國家 | 兩個查爾國家代碼       | c                                       | NA                                                                                           |
+| 16 | 恩普約\.布部                     | department               | department                              | NA                                                                                           |
+| 17 | 恩普約\.布部門                       | division                 | company                                 | NA                                                                                           |
+| 18 | 恩普伯\.位置                       | 辦公地點位址    | streetAddress                           | NA                                                                                           |
+| 19 | 恩普伯\.位置                       | 辦公地點郵遞區號    | postalCode                              | NA                                                                                           |
+| 20 | 恩普就業終止               | 活躍就業計數   | accountEnabled                          | 如果活動就業統計\0，請禁用該帳戶*。                                           |
 

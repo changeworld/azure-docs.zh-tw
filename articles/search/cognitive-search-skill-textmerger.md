@@ -1,7 +1,7 @@
 ---
 title: 文字合併認知技能
 titleSuffix: Azure Cognitive Search
-description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜尋中的 AI 擴充管線中使用這項認知技能。
+description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜索中的 AI 豐富管道中使用此認知技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162339"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文字合併認知技能

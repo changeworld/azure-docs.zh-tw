@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器度量圖表範例
+title: Azure 監視器指標圖表示例
 description: 了解如何將您的 Azure 監視器資料視覺化。
 author: vgorbenko
 services: azure-monitor
@@ -8,13 +8,13 @@ ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660865"
 ---
-# <a name="metric-chart-examples"></a>度量圖表範例 
+# <a name="metric-chart-examples"></a>指標圖表示例 
 
 Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)，且許多都有維度。 藉由使用[維度篩選](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、套用[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、控制圖表類型，以及調整圖表設定，您將可建立功能強大的診斷檢視和儀表板，以提供基礎結構和應用程式健康情況的深入解析。 本文提供可使用[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)來建置的一些圖表範例，並說明設定各個圖表所需的步驟。
 
@@ -28,7 +28,7 @@ Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
-選取您的 App Service 資源，並找出 [CPU 百分比] 計量。 然後，按一下 [套用分割]，並選取 [執行個體] 維度。
+選取您的 App Service 資源，並找出 [CPU 百分比]**** 計量。 然後，按一下 [套用分割]****，並選取 [執行個體]**** 維度。
 
 ## <a name="application-availability-by-region"></a>依區域顯示的應用程式可用性
 
@@ -38,7 +38,7 @@ Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
-您必須先為網站開啟 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)監視。 接著，選擇您的 Application Insights 資源，並選取 [可用性] 計量。 在 [執行位置] 維度上套用分割。
+您必須先為網站開啟 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)監視。 接著，選擇您的 Application Insights 資源，並選取 [可用性] 計量。 在 [執行位置]**** 維度上套用分割。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>依 API 名稱顯示的儲存體帳戶交易量
 
@@ -48,7 +48,7 @@ Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
-在計量選擇器中，選取您的儲存體帳戶和 [交易] 計量。 將圖表類型切換至 [長條圖]。 按一下 [套用分割]，並選取 [API 名稱] 維度。 然後，按一下 [新增篩選]，並再次選擇 [API 名稱] 維度。 在 [篩選] 對話方塊中，選取您要在圖表上繪製的 API。
+在計量選擇器中，選取您的儲存體帳戶和 [交易]**** 計量。 將圖表類型切換至 [長條圖]****。 按一下 [套用分割]****，並選取 [API 名稱]**** 維度。 然後，按一下 [新增篩選]****，並再次選擇 [API 名稱]**** 維度。 在 [篩選] 對話方塊中，選取您要在圖表上繪製的 API。
 
 ## <a name="next-steps"></a>後續步驟
 
