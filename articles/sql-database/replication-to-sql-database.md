@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256467"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>複寫至 SQL Database 單一資料庫與集區資料庫
@@ -32,14 +32,14 @@ ms.locfileid: "79256467"
 
 ## <a name="versions"></a>版本  
 
-內部部署 SQL Server 發行者和散發者至少必須使用下列其中一個版本：  
+本地 SQL Server 發行者和分發伺服器必須使用以下版本之一（至少）：  
 
-- SQL Server 2016 和更新版本
-- SQL Server 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL 伺服器 2016 及更高
+- SQL 伺服器 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL 伺服器 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
 
 > [!NOTE]
-> 嘗試使用不支援的版本來設定複寫可能會導致錯誤號碼 MSSQL_REPL20084 （進程無法連線到訂閱者。）和 MSSQL_REPL40532 （無法開啟登入所要求的伺服器 \<名稱 >。 登入失敗。)。  
+> 嘗試使用不支援的版本配置複製可能會導致錯誤編號MSSQL_REPL20084（進程無法連接到訂閱伺服器）和MSSQL_REPL40532（無法打開>登錄請求的伺服器\<名稱。 登入失敗。)。  
 
 若要使用 Azure SQL Database 的所有功能，您必須使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
 
@@ -54,7 +54,7 @@ ms.locfileid: "79256467"
 - SQL Server 上的單一發行集可同時支援 Azure SQL Database 和 SQL Server (內部部署和 Azure 虛擬機器中的 SQL Server) 訂閱者。  
 - 複寫管理、監視和疑難排解都必須從內部部署 SQL Server 執行。  
 - 僅支援對 Azure SQL Database 的發送訂閱。  
-- 在 SQL Database 的 `@subscriber_type = 0`sp_addsubscription**中僅支援**。  
+- 在 SQL Database 的 **sp_addsubscription** 中僅支援 `@subscriber_type = 0`。  
 - Azure SQL Database 不支援雙向、即時、可更新或點對點複寫。
 
 ## <a name="replication-architecture"></a>複寫架構  
@@ -66,7 +66,7 @@ ms.locfileid: "79256467"
 ### <a name="typical-replication-scenario"></a>一般複寫案例  
 
 1. 在內部部署 SQL Server 資料庫上建立異動複寫發行集。  
-2. 在內部部署 SQL Server 上使用 [新增訂閱精靈] 或 Transact-SQL 陳述式，來建立對 Azure SQL Database 的發送訂閱。  
+2. 在內部部署 SQL Server 上使用 [新增訂閱精靈]**** 或 Transact-SQL 陳述式，來建立對 Azure SQL Database 的發送訂閱。  
 3. 使用 Azure SQL Database 中的單一和集區資料庫，初始資料集是由快照集代理程式建立且由散發代理程式散發並套用的快照集。 使用受控執行個體資料庫時，也可以使用資料庫備份來植入訂閱者資料庫。
 
 ### <a name="data-migration-scenario"></a>資料移轉案例  
@@ -108,13 +108,13 @@ Azure SQL Database 訂閱不支援下列選項：
 
 建立發行集和發送訂閱。 如需詳細資訊，請參閱
   
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是使用 Azure SQL Database 伺服器名稱作為訂閱者 (例如 **N'azuresqldbdns.database.windows.net'** )，並使用 Azure SQL 資料庫名稱作為目的地資料庫 (例如 **AdventureWorks**)。  
+- [創建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是使用 Azure SQL Database 伺服器名稱作為訂閱者 (例如 **N'azuresqldbdns.database.windows.net'**)，並使用 Azure SQL 資料庫名稱作為目的地資料庫 (例如 **AdventureWorks**)。  
 
 ## <a name="see-also"></a>另請參閱  
 
 - [異動複寫](sql-database-managed-instance-transactional-replication.md)
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [創建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [監視 (複寫)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)

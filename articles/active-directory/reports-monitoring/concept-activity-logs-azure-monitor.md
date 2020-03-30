@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Azure 監視器中的活動記錄 |Microsoft Docs
-description: Azure 監視器中的 Azure Active Directory 活動記錄簡介
+title: Azure 活動目錄活動日誌在 Azure 監視器 |微軟文檔
+description: Azure 監視器中的 Azure 活動目錄活動日誌簡介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266542"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD Azure 監視器中的活動記錄
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視中的 Azure AD 活動日誌
 
-您可以將 Azure Active Directory （Azure AD）活動記錄路由至數個端點，以進行長期保留和資料深入解析。 這項功能可讓您：
+您可以將 Azure 活動目錄 （Azure AD） 活動日誌路由到多個終結點，以便進行長期保留和資料洞察。 此功能可讓您：
 
 * 將 Azure AD 活動記錄封存到 Azure 儲存體帳戶，以長時間保存資料。
 * 將 Azure AD 活動記錄串流至 Azure 事件中樞，以便使用 Splunk 和 QRadar 等常用的安全性資訊與事件管理 (SIEM) 工具進行分析。
@@ -55,7 +55,7 @@ ms.locfileid: "79266542"
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD Free、Basic、Premium 1 或 Premium 2 [授權](https://azure.microsoft.com/pricing/details/active-directory/)，用以存取 Azure 入口網站中的 Azure AD 稽核記錄。 
 * Azure AD 租用戶。
-* 使用者，身分是該 Azure AD 租用戶的「全域管理員」或「安全性管理員」。
+* 使用者，身分是該 Azure AD 租用戶的「全域管理員」**** 或「安全性管理員」****。
 * Azure AD Premium 1 或 Premium 2 [授權](https://azure.microsoft.com/pricing/details/active-directory/)，用以存取 Azure 入口網站中的 Azure AD 登入記錄。 
 
 根據您要路由稽核記錄資料的位置，您必須要有下列任何一項：
@@ -70,7 +70,7 @@ ms.locfileid: "79266542"
 
 ### <a name="storage-size-for-activity-logs"></a>活動記錄的儲存體大小
 
-每個稽核記錄事件會使用約 2KB 的資料儲存體。 登入事件記錄檔約為 4 KB 的資料儲存體。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
+每個稽核記錄事件會使用約 2KB 的資料儲存體。 登錄事件日誌約為 4 KB 的資料存儲。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
 
 
 下表包含以租用戶大小為準的估計成本，儲存體帳戶是位於美國西部的一般用途 v2 帳戶，保留期間至少一年。 若要針對您預期應用程式將使用的資料量建立更精確的估計值，請使用 [Azure 儲存體定價計算機](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -110,11 +110,11 @@ ms.locfileid: "79266542"
 
 
 
-| 記錄分類       | 使用者人數 | 每日事件數 | 每月事件數（30天） | 每月成本（美元）（est） |
+| 記錄分類       | 使用者人數 | 每日事件數 | 每月活動（30天） | 每月成本（美元）（最） |
 | :--                | ---             | ---            | ---                        | --:                          |
-| 審核和登入 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
-| 稽核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
-| 登入           | 100,000         | 15,000,000     | 450000000                |  $847.28                     |
+| 審核和登錄 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| 稽核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| 登入           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
 
 
@@ -149,9 +149,9 @@ ms.locfileid: "79266542"
 
 ---
 
-**問：如果系統管理員變更診斷設定的保留期間，會發生什麼事？**
+**問：如果管理員更改診斷設置的保留期，會發生什麼情況？**
 
-**答**：新的保留原則將會套用到變更後所收集的記錄。 原則變更前所收集的記錄不受影響。
+**A**： 新的保留原則將應用於更改後收集的日誌。 原則變更前所收集的記錄不受影響。
 
 ---
 
@@ -197,7 +197,7 @@ ms.locfileid: "79266542"
 
 **問: 是否可在不使用外部 SIEM 工具的情況下從事件中樞存取資料？** 
 
-**答**: 是。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是的。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

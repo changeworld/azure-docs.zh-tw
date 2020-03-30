@@ -1,71 +1,71 @@
 ---
 title: Azure Functions 的持續部署
-description: 使用 Azure App Service 的持續部署功能來發佈您的函式。
+description: 使用 Azure 應用服務的連續部署功能發佈函數。
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277020"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的持續部署
 
-您可以使用 Azure Functions，藉由使用[原始檔控制整合](functions-deployment-technologies.md#source-control)，持續部署您的程式碼。 原始檔控制整合可讓程式碼更新觸發部署至 Azure 的工作流程。 如果您不熟悉 Azure Functions，請查看[Azure Functions 總覽](functions-overview.md)開始使用。
+可以使用 Azure 函數使用[原始程式碼管理集成](functions-deployment-technologies.md#source-control)連續部署代碼。 原始程式碼管理集成支援一個工作流，其中代碼更新將觸發部署到 Azure。 如果您是 Azure 函數的新功能，則通過查看[Azure 函數概述](functions-overview.md)開始。
 
-對於您整合多個經常參與的專案而言，持續部署是個不錯的選項。 當您使用持續部署時，您可以為程式碼維護單一真實來源，讓小組可以輕鬆地共同作業。 您可以在 Azure Functions 中，從下列原始程式碼位置設定持續部署：
+對於集成多個頻繁貢獻的專案而言，持續部署是一個不錯的選擇。 使用連續部署時，您可以為代碼維護一個真實來源，從而允許團隊輕鬆協作。 可以從以下原始程式碼位置配置 Azure 函數中的連續部署：
 
-* [Azure Repos](https://azure.microsoft.com/services/devops/repos/)
+* [Azure 存儲庫](https://azure.microsoft.com/services/devops/repos/)
 * [GitHub](https://github.com)
-* [Bitbucket](https://bitbucket.org/)
+* [比特桶](https://bitbucket.org/)
 
-Azure 中的函式部署單位是函式應用程式。 函數應用程式中的所有函式都會同時部署。 啟用連續部署之後，會將 Azure 入口網站中的函式程式碼存取設定為*唯讀*，因為事實的來源設定為在其他地方。
+Azure 中函數的部署單元是函數應用。 同時部署函數應用中的所有函數。 啟用連續部署後，對 Azure 門戶中的函數代碼的訪問配置為*唯讀，* 因為真相源設置為位於其他位置。
 
-## <a name="requirements-for-continuous-deployment"></a>持續部署的需求
+## <a name="requirements-for-continuous-deployment"></a>持續部署的要求
 
-若要讓持續部署成功，您的目錄結構必須與 Azure Functions 預期的基本資料夾結構相容。
+要使連續部署成功，目錄結構必須與 Azure 函數期望的基本資料夾結構相容。
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 >[!NOTE]  
-> 在取用方案上執行的 Linux 應用程式尚不支援持續部署。 
+> 在消費計畫上運行的 Linux 應用尚不支援持續部署。 
 
-## <a name="credentials"></a>設定持續部署
+## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>設定連續部署
 
-若要設定現有函數應用程式的持續部署，請完成下列步驟。 這些步驟會示範與 GitHub 存放庫的整合，但類似的步驟適用于 Azure Repos 或其他原始程式碼儲存機制。
+要配置現有功能應用的連續部署，請完成這些步驟。 這些步驟演示了與 GitHub 存儲庫的集成，但類似的步驟適用于 Azure 存儲庫或其他原始程式碼存儲庫。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的函式應用程式中，選取 [**平臺功能**] [ > **部署中心**]。
+1. 在[Azure 門戶](https://portal.azure.com)中的函數應用中，選擇**平臺功能** > **部署中心**。
 
-    ![開啟部署中心](./media/functions-continuous-deployment/platform-features.png)
+    ![開放式部署中心](./media/functions-continuous-deployment/platform-features.png)
 
-2. 在 [**部署中心**] 中，選取 [ **GitHub**]，然後選取 [**授權**]。 如果您已授權 GitHub，請選取 [**繼續**]。 
+2. 在**部署中心**中，選擇**GitHub，** 然後選擇 **"授權**"。 如果您已授權 GitHub，請選擇"**繼續**"。 
 
-    ![Azure App Service 部署中心](./media/functions-continuous-deployment/github.png)
+    ![Azure 應用服務部署中心](./media/functions-continuous-deployment/github.png)
 
-3. 在 GitHub 中，選取 [**授權 AzureAppService** ] 按鈕。 
+3. 在 GitHub 中，選擇 **"授權 AzureApp 服務"** 按鈕。 
 
-    ![授權 Azure App Service](./media/functions-continuous-deployment/authorize.png)
+    ![授權 Azure 應用服務](./media/functions-continuous-deployment/authorize.png)
     
-    在 Azure 入口網站的 **部署中心** 中，選取 **繼續**。
+    在 Azure 門戶中的**部署中心**中，選擇 **"繼續**"。
 
-4. 選取下列其中一個組建提供者：
+4. 選擇以下生成提供程式之一：
 
-    * **App Service 組建服務**：當您不需要組建，或需要一般組建時，最佳做法。
-    * **Azure Pipelines （預覽）** ：當您需要更充分掌控組建時的最佳選擇。 此提供者目前為預覽狀態。
+    * **應用服務生成服務**：當您不需要生成或需要通用生成時，最佳。
+    * **Azure 管道（預覽）：** 當您需要對生成進行更多控制時，最佳。 此提供程式當前處於預覽狀態。
 
-    ![選取組建提供者](./media/functions-continuous-deployment/build.png)
+    ![選擇生成提供程式](./media/functions-continuous-deployment/build.png)
 
-5. 針對您指定的原始檔控制選項，設定特定的資訊。 針對 GitHub，您必須輸入或選取 [**組織**]、[存放**庫**] 和 [**分支**] 的值。 這些值是以您的程式碼位置為基礎。 然後，選取 [繼續]。
+5. 配置特定于您指定的原始程式碼管理選項的資訊。 對於 GitHub，必須輸入或選擇**組織**、**存儲庫**和**分支**的值。 這些值基於代碼的位置。 然後，選取 [繼續]****。
 
     ![設定 GitHub](./media/functions-continuous-deployment/github-specifics.png)
 
-6. 查看所有詳細資料，然後選取 **[完成]** 以完成部署設定。
+6. 查看所有詳細資訊，然後選擇 **"完成"** 以完成部署配置。
 
-    ![摘要](./media/functions-continuous-deployment/summary.png)
+    ![總結](./media/functions-continuous-deployment/summary.png)
 
-當程式完成時，來自指定來源的所有程式碼都會部署到您的應用程式。 此時，部署來源中的變更會觸發將這些變更部署至 Azure 中的函數應用程式。
+該過程完成後，指定源中的所有代碼將部署到你的應用。 此時，部署源中的更改將觸發這些更改部署到 Azure 中的函數應用。
 
 ## <a name="deployment-scenarios"></a>部署案例
 
@@ -73,12 +73,12 @@ Azure 中的函式部署單位是函式應用程式。 函數應用程式中的�
 
 ### <a name="move-existing-functions-to-continuous-deployment"></a>將現有函式移至持續部署
 
-如果您已在[Azure 入口網站](https://portal.azure.com)中撰寫函式，而您想要在切換至持續部署之前下載應用程式的內容，請移至函式應用程式的 [**總覽**] 索引標籤。 選取 [**下載應用程式內容**] 按鈕。
+如果在[Azure 門戶](https://portal.azure.com)中已寫入函數，並且希望在切換到連續部署之前下載應用的內容，請轉到函數應用的 **"概述"** 選項卡。 選擇 **"下載應用內容"** 按鈕。
 
-![下載應用程式內容](./media/functions-continuous-deployment/download.png)
+![下載應用內容](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> 設定持續整合之後，您就無法再于函式入口網站中編輯原始程式檔。
+> 配置連續集成後，您無法在"功能"門戶中編輯原始檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

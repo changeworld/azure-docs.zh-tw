@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 網格上的狀態儲存體選項
+title: Azure 服務結構網格上的狀態存儲選項
 description: 深入了解如何在 Azure Service Fabric Mesh 上執行的 Service Fabric Mesh 應用程式中可靠地儲存狀態。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259093"
 ---
 # <a name="state-management-with-service-fabric"></a>使用 Service Fabric 的狀態管理
@@ -26,7 +26,7 @@ Service Fabric 支援許多不同的狀態儲存體選項。 如需狀態管理�
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric 可靠磁碟區
 
-Service Fabric 可靠磁碟區是用來將本機磁碟區掛接至容器的 Docker 磁碟區驅動程式。 讀取和寫入是本機作業且速度很快。 資料會複寫至外部的次要節點，以便具有高度可用性。 容錯移轉也很快速。 容器損毀時，便會容錯移轉至已有資料複本的節點。 如需範例，請參閱[如何使用 Service Fabric 可靠磁碟區來部署應用程式。](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)
+Service Fabric 可靠磁碟區是用來將本機磁碟區掛接至容器的 Docker 磁碟區驅動程式。 讀取和寫入是本機作業且速度很快。 資料會複寫至外部的次要節點，以便具有高度可用性。 容錯移轉也很快速。 容器損毀時，便會容錯移轉至已有資料複本的節點。 例如，請參閱[如何部署具有 Service Fabric 可靠卷的應用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>檔案儲存體磁碟區
 

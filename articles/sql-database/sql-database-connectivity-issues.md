@@ -1,5 +1,5 @@
 ---
-title: 使用暫時性錯誤
+title: 處理瞬態錯誤
 description: 了解如何在 Azure SQL Database 中排解、診斷和防止 SQL 連接錯誤或暫時性錯誤。
 keywords: sql 連接, 連接字串, 連接問題, 暫時性錯誤, 連接錯誤
 services: sql-database
@@ -14,13 +14,13 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269077"
 ---
-# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>針對 SQL Database 的暫時性連接錯誤進行疑難排解
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>排除 SQL 資料庫的瞬態連接錯誤
 
 本文描述如何防止、排解、診斷和減少您的用戶端應用程式在與 Azure SQL Database 互動時發生的連接錯誤和暫時性錯誤。 了解如何設定重試邏輯、建置連接字串和調整其他連接設定。
 
@@ -77,8 +77,8 @@ ms.locfileid: "79269077"
 
 使用重試邏輯的程式碼範例位於：
 
-- [使用 ADO.NET 彈性地連接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [使用 PHP 彈性地連接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [使用ADO.NET彈性連接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [使用 PHP 復原連線 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -93,7 +93,7 @@ ms.locfileid: "79269077"
 - **SqlException.Number** = 11001
 - 訊息：「未知的主機」
 
-第一次重試時，您可以將用戶端電腦重新連線到網路，然後嘗試連接。
+作為第一次重試嘗試的一部分，您可以將用戶端電腦重新連接到網路，然後嘗試連接。
 
 若要使這項測試可行，請先中斷電腦的網路連線，再啟動您的程式。 然後，您的程式會辨識一個執行階段參數，以便程式：
 
@@ -133,9 +133,9 @@ ms.locfileid: "79269077"
 
 當您為 [SqlConnection](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 物件建立**連接字串**時，請調整下列參數的值：
 
-- **ConnectRetryCount**：&nbsp;&nbsp;預設值為 1。 範圍是 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;預設值為10秒。 範圍是 1 到 60。
-- **Connection Timeout**：&nbsp;&nbsp;預設值為 15 秒。 範圍是 0 到 2147483647。
+- **連接重試計數**：&nbsp;&nbsp;預設值為 1。 範圍是 0 到 255。
+- **連接重試間隔**：&nbsp;&nbsp;預設值為 10 秒。 範圍是 1 到 60。
+- **連接逾時**：&nbsp;&nbsp;預設值為 15 秒。 範圍是 0 到 2147483647。
 
 具體來說，您選擇的值應該會讓下列等式成立：連線逾時 = ConnectRetryCount * ConnectionRetryInterval
 
@@ -150,7 +150,7 @@ ms.locfileid: "79269077"
 - mySqlConnection.Open 方法呼叫
 - mySqlConnection.Execute 方法呼叫
 
-有一些微妙的差異。 若在執行「查詢」 時發生暫時性錯誤，您的 **SqlConnection** 物件並不會重試連線作業。 而且絕對不會重試查詢。 不過，在傳送您的查詢以供執行之前， **SqlConnection** 會先快速檢查連接。 如果快速檢查偵測到連接問題， **SqlConnection** 會重試連接作業。 如果重試成功，就會傳送您的查詢以供執行。
+有一些微妙的差異。 若在執行「查詢」** 時發生暫時性錯誤，您的 **SqlConnection** 物件並不會重試連線作業。 而且絕對不會重試查詢。 不過，在傳送您的查詢以供執行之前， **SqlConnection** 會先快速檢查連接。 如果快速檢查偵測到連接問題， **SqlConnection** 會重試連接作業。 如果重試成功，就會傳送您的查詢以供執行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>是否應該將 ConnectRetryCount 與應用程式重試邏輯結合
 
@@ -164,7 +164,7 @@ ms.locfileid: "79269077"
 
 ### <a name="connection-connection-string"></a>連接：連接字串
 
-連線到 Azure SQL Database 所需的連接字串與用於連線到 SQL Server 的字串稍有不同。 您可以從 [Azure 入口網站](https://portal.azure.com/)複製資料庫的連接字串。
+連線到 Azure SQL Database 所需的連接字串與用於連線到 SQL Server 的字串稍有不同。 可以從[Azure 門戶](https://portal.azure.com/)複製資料庫的連接字串。
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -188,7 +188,7 @@ ms.locfileid: "79269077"
 例如，當用戶端程式裝載在 Windows 電腦上時，您可在主機上使用 Windows 防火牆來開啟通訊埠 1433。
 
 1. 開啟 [控制台]。
-2. 選取 [所有控制台項目] > [Windows 防火牆] > [進階設定] > [輸出規則] > [動作] > [新增規則]。
+2. 選擇**所有控制台專案** > **視窗防火牆** > **高級設置** > **出站規則** > **操作** > **新規則**。
 
 如果您的用戶端程式裝載在 Azure 虛擬機器 (VM) 上，請閱讀[適用於 ADO.NET 4.5 和 SQL Database 的 1433 以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
@@ -277,8 +277,8 @@ Enterprise Library 6 (EntLib60) 提供 .NET 受控類別來協助記錄。 如�
 
 | 記錄查詢 | 描述 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 檢視可提供個別事件的資訊，包括會導致暫時性錯誤或連線失敗的某些事件。<br/><br/>在理想的情況下，您可以讓 **start_time** 或 **end_time** 值與用戶端程式發生問題時的相關資訊相互關聯。<br/><br/>您必須連線到 master 資料庫來執行此查詢。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) 檢視可針對其他診斷提供事件類型的彙總計數。<br/><br/>您必須連線到 master 資料庫來執行此查詢。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 檢視可提供個別事件的資訊，包括會導致暫時性錯誤或連線失敗的某些事件。<br/><br/>在理想的情況下，您可以讓 **start_time** 或 **end_time** 值與用戶端程式發生問題時的相關資訊相互關聯。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx)視圖提供用於其他診斷的事件種類的聚合計數。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -338,11 +338,11 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您實作雲
 
 下列 EntLib60 類別特別有助於重試邏輯。 這些類別全都位於命名空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 之下。
 
-在命名空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 中：
+在命名空間**微軟.實踐.企業庫.瞬態故障處理**：
 
 - **RetryPolicy** 類別
   - **ExecuteAction** 方法
-- **ExponentialBackoff** 類別
+- **指數返回**類
 - **SqlDatabaseTransientErrorDetectionStrategy** 類別
 - **ReliableSqlConnection** 類別
   - **ExecuteCommand** 方法
@@ -445,8 +445,8 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>後續步驟
 
 - [SQL Database 和 SQL Server 的連線庫](sql-database-libraries.md)
-- [SQL Server 連線集區 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [Retrying 是 Apache 2.0 授權的一般用途重試程式庫 (以 Python 撰寫)](https://pypi.python.org/pypi/retrying)，可簡化可對任何案例新增重試行為的工作。
+- [SQL 伺服器連接池 （ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [Retrying** 是 Apache 2.0 授權的一般用途重試程式庫 (以 Python 撰寫)](https://pypi.python.org/pypi/retrying)，可簡化可對任何案例新增重試行為的工作。
 
 <!-- Link references. -->
 

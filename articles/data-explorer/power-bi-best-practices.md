@@ -1,6 +1,6 @@
 ---
-title: 使用 Power BI 來查詢 Azure 資料總管資料並將其視覺化的最佳做法
-description: 在本文中，您將瞭解使用 Power BI 來查詢 Azure 資料總管資料並將其視覺化的最佳做法。
+title: 使用 Power BI 查詢和視覺化 Azure 資料資源管理器資料的最佳做法
+description: 在本文中，您將瞭解使用 Power BI 查詢和視覺化 Azure 資料資源管理器資料的最佳做法。
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,59 +8,59 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251735"
 ---
-# <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 來查詢 Azure 資料總管資料並將其視覺化的最佳做法
+# <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 查詢和視覺化 Azure 資料資源管理器資料的最佳做法
 
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 [Power BI](https://docs.microsoft.com/power-bi/)是一種商務分析解決方案，可讓您將資料視覺化，並在整個組織中共用結果。 Azure 資料總管提供三個選項來連接 Power BI 中的資料。 使用[內建的連接器](power-bi-connector.md)，將[查詢從 Azure 資料總管匯入 Power BI](power-bi-imported-query.md)，或使用[SQL 查詢](power-bi-sql-query.md)。 本文提供使用 Power BI 查詢和視覺化 Azure 資料總管資料的秘訣。 
+Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 [Power BI](https://docs.microsoft.com/power-bi/)是一種業務分析解決方案，可讓您視覺化資料並在整個組織中共用結果。 Azure 資料資源管理器提供了三個用於連接到 Power BI 中的資料的選項。 使用[內置連接器](power-bi-connector.md)，[將來自 Azure 資料資源管理器的查詢導入到 Power BI，](power-bi-imported-query.md)或使用[SQL 查詢](power-bi-sql-query.md)。 本文為您提供使用 Power BI 查詢和視覺化 Azure 資料資源管理器資料的提示。 
 
 ## <a name="best-practices-for-using-power-bi"></a>使用 Power BI 的最佳做法 
 
-使用數 tb 的最新原始資料時，請遵循下列指導方針，讓 Power BI 的儀表板和報表保持 snappy 和更新：
+使用 TB 的新鮮原始資料時，請遵循以下準則，使 Power BI 儀表板和報表保持快速更新：
 
-* **旅遊燈**-只將您的報表所需的資料帶到 Power BI。 如需深入的互動分析，請使用已針對使用 Kusto 查詢語言進行臨機操作探索優化的[Azure 資料總管 WEB UI](web-query-data.md) 。
+* **行駛燈**- 僅將報告所需的資料帶到 Power BI。 對於深度互動式分析，請使用 Azure[資料資源管理器 Web UI，](web-query-data.md)該 UI 針對庫斯托查詢語言進行臨時流覽進行了優化。
 
-* **複合模型**-使用[複合模型](https://docs.microsoft.com/power-bi/desktop-composite-models)，將最上層儀表板的匯總資料與已篩選的操作原始資料結合。 您可以清楚定義何時使用原始資料，以及何時使用匯總視圖。 
+* **複合模型**- 使用[複合模型](https://docs.microsoft.com/power-bi/desktop-composite-models)將頂級儀表板的聚合資料與篩選的操作原始資料相結合。 您可以清楚地定義何時使用原始資料以及何時使用彙總檢視。 
 
-* 匯**入模式與 DirectQuery 模式**-使用匯**入**模式來互動較小的資料集。 針對大型且經常更新的資料集，請使用**DirectQuery**模式。 例如，您可以使用 [匯**入**] 模式建立維度資料表，因為它們很小，而且不常變更。 根據預期的資料更新速率，設定重新整理間隔。 使用**DirectQuery**模式建立事實資料表，因為這些資料表很大，而且包含原始資料。 使用這些資料表，利用 Power BI 的[鑽取](https://docs.microsoft.com/power-bi/desktop-drillthrough)來呈現已篩選的資料。
+* **導入模式與直接查詢模式**- 使用**導入**模式對較小的資料集進行交互。 對大型、經常更新的資料集使用**直接查詢**模式。 例如，使用 **"導入"** 模式創建維度表，因為它們很小，並且不會經常更改。 根據預期的資料更新速率設置刷新間隔。 使用**DirectQuery**模式創建事實資料表，因為這些表很大，包含原始資料。 使用這些表使用 Power BI[鑽取](https://docs.microsoft.com/power-bi/desktop-drillthrough)來顯示篩選的資料。
 
-* **平行**處理原則– Azure 資料總管是可線性調整的資料平臺，因此，您可以藉由增加端對端流程的平行處理原則，改善儀表板轉譯的效能，如下所示：
+* **並行性**– Azure 資料資源管理器是一個線性擴展的資料平臺，因此，您可以通過提高端到端流的並行性來提高儀表板呈現的性能，如下所示：
 
-   * 在 Power BI 中增加[DirectQuery 的並行連接](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)數目。
+   * 增加 Power [BI 中的 DirectQuery 中的併發連接](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)數。
 
-   * 使用[弱式一致性來改善平行](/azure/kusto/concepts/queryconsistency)處理原則。 這可能會影響資料的時效性。
+   * 使用[弱一致性來改進並行性](/azure/kusto/concepts/queryconsistency)。 這可能對資料的新鮮度產生影響。
 
-* **有效**的交叉分析篩選器–使用[同步](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages)交叉分析篩選器，在您準備好之前，讓報表無法載入資料。 在您建立資料集的結構之後，請放置所有視覺效果，並標示所有交叉分析篩選器，您可以選取 [同步處理交叉分析篩選器]，只載入所需的資料。
+* **有效的切片器**– 使用[同步切片器](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages)在準備就緒之前防止報表載入資料。 構造資料集、放置所有視覺物件並標記所有切片器後，可以選擇同步切片器以僅載入所需的資料。
 
-* **使用篩選**-盡可能使用多個 Power BI 篩選準則，將 Azure 資料總管搜尋重點放在相關的資料分區上。
+* **使用篩選器**- 使用盡可能多的 Power BI 篩選器將 Azure 資料資源管理器搜索集中到相關資料分片上。
 
-* **有效率的視覺效果**–為您的資料選取最具效能的視覺效果。
+* **高效的視覺物件**– 為數據選擇最性能的視覺效果。
 
-## <a name="tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data"></a>使用 Azure 資料總管 connector 進行 Power BI 以查詢資料的秘訣
+## <a name="tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data"></a>使用 Azure 資料資源管理器連接器進行 Power BI 查詢資料的提示
 
-下一節包含使用 Kusto 查詢語言搭配 Power BI 的秘訣和訣竅。 使用[適用于 Power BI 的 Azure 資料總管連接器](power-bi-connector.md)來將資料視覺化
+以下部分包括使用 Power BI 使用 Kusto 查詢語言的提示和技巧。 使用[Power BI 的 Azure 資料資源管理器連接器](power-bi-connector.md)視覺化資料
 
 ### <a name="complex-queries-in-power-bi"></a>Power BI 中的複雜查詢
 
-複雜的查詢在 Kusto 中的表示方式比 Power Query 更輕鬆。 它們應該實作為[Kusto](/azure/kusto/query/functions)函式，並在 Power BI 中叫用。 在 Kusto 查詢中使用**DirectQuery**搭配 `let` 語句時，這是必要的方法。 因為 Power BI 聯結兩個查詢，而且 `let` 語句不能與 `join` 運算子一起使用，所以可能會發生語法錯誤。 因此，請將聯結的每個部分儲存為 Kusto 函式，並允許 Power BI 同時聯結這兩個函數。
+與 Power 查詢相比，複雜查詢在 Kusto 中表達更容易。 它們應作為[Kusto 函數](/azure/kusto/query/functions)實現，並在 Power BI 中調用。 在 Kusto 查詢中使用`let`**DirectQuery**與語句一起使用時，需要此方法。 由於 Power BI 聯接兩個`let`查詢，並且語句不能與`join`運算子一起使用，因此可能會出現語法錯誤。 因此，將聯接的每個部分保存為 Kusto 函數，並允許 Power BI 將這兩個函數聯接在一起。
 
-### <a name="how-to-simulate-a-relative-date-time-operator"></a>如何模擬相對的日期時間運算子
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>如何類比相對的日期和時間運算子
 
-Power BI 不包含*相對*的日期時間運算子，例如 `ago()`。
-若要模擬 `ago()`，請使用 `DateTime.FixedLocalNow()` 和 `#duration` Power BI 函數的組合。
+Power BI 不包含*相對*的日期和時間運算子，如`ago()`。
+要類比`ago()`，請使用`DateTime.FixedLocalNow()`和`#duration`Power BI 函數的組合。
 
-而不是使用 `ago()` 運算子的此查詢：
+而不是使用此運算子的`ago()`查詢：
 
 ```kusto
     StormEvents | where StartTime > (now()-5d)
     StormEvents | where StartTime > ago(5d)
 ``` 
 
-使用下列對等的查詢：
+使用以下等效查詢：
 
 ```powerquery-m
 let
@@ -70,29 +70,29 @@ in
     #"Filtered Rows"
 ```
 
-### <a name="reaching-kusto-query-limits"></a>達到 Kusto 查詢限制 
+### <a name="reaching-kusto-query-limits"></a>達到庫斯托查詢限制 
 
-根據預設，Kusto 查詢會傳回最多500000個數據列或 64 MB，如[查詢限制](/azure/kusto/concepts/querylimits)中所述。 您可以使用 [ **Azure 資料總管（Kusto）** 連接] 視窗中的 [ **Advanced options** ] 來覆寫這些預設值：
+預設情況下，Kusto 查詢返回最多 500，000 行或 64 MB，如[查詢限制](/azure/kusto/concepts/querylimits)中所述。 可以使用**Azure 資料資源管理器 （Kusto）** 連接視窗中**的高級選項**來覆蓋這些預設值：
 
-![advanced 選項](media/power-bi-best-practices/advanced-options.png)
+![進階選項](media/power-bi-best-practices/advanced-options.png)
 
-這些選項會使用您的查詢發出[set 語句](/azure/kusto/query/setstatement)，以變更預設查詢限制：
+這些選項問題將[語句設置為](/azure/kusto/query/setstatement)查詢以更改預設查詢限制：
 
-  * **限制查詢結果記錄號碼**會產生 `set truncationmaxrecords`
-  * **限制查詢結果資料大小（以位元組為單位）** 會產生 `set truncationmaxsize`
-  * **停用結果集截斷**會產生 `set notruncation`
+  * **限制查詢結果記錄號碼**生成`set truncationmaxrecords`
+  * **限制查詢結果資料大小（位元組）** 生成`set truncationmaxsize`
+  * **禁用結果集截斷**將生成`set notruncation`
 
 ### <a name="using-query-parameters"></a>使用查詢參數
 
-您可以使用[查詢參數](/azure/kusto/query/queryparametersstatement)來動態修改查詢。 
+可以使用[查詢參數](/azure/kusto/query/queryparametersstatement)動態修改查詢。 
 
-#### <a name="using-a-query-parameter-in-the-connection-details"></a>使用連接詳細資料中的查詢參數
+#### <a name="using-a-query-parameter-in-the-connection-details"></a>在連接詳細資訊中使用查詢參數
 
-使用查詢參數來篩選查詢中的資訊，並將查詢效能優化。
+使用查詢參數篩選查詢中的資訊並優化查詢性能。
  
-在 [**編輯查詢**] 視窗中， **Home** > **進階編輯器**
+在 **"編輯查詢"** 視窗中，**主頁** > **高級編輯器**
 
-1. 尋找查詢的下列區段：
+1. 查找查詢的以下部分：
 
     ```powerquery-m
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
@@ -104,27 +104,27 @@ in
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. 以您的參數取代查詢的相關部分。 將查詢分割為多個部分，並使用連字號（&）和參數將其串連回來。
+1. 將查詢的相關部分替換為參數。 將查詢拆分為多個部分，並使用安培 （&）以及參數將它們串聯回。
 
-   例如，在上述查詢中，我們會採用 `State == 'ALABAMA'` 部分，並將其分割為： `State == '` 和 `'`，而我們會在兩者之間放置 `State` 參數：
+   例如，在上面的查詢中，我們將`State == 'ALABAMA'`獲取該部分，並將其拆分為：`State == '`並將`'``State`參數放在它們之間：
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
     ```
 
-1. 如果您的查詢包含引號，請正確編碼。 例如，下列查詢： 
+1. 如果查詢包含引號，請正確編碼它們。 例如，以下查詢： 
 
    ```kusto
    "StormEvents | where State == "ALABAMA" | take 100" 
    ```
 
-   會出現在**進階編輯器**中，並以兩個引號括住：
+   將在**高級編輯器**中顯示，如下所示，並帶有兩個引號：
 
    ```kusto
     "StormEvents | where State == ""ALABAMA"" | take 100"
    ```
 
-   應該使用下列查詢取代為三個引號：
+   應將其替換為以下查詢，並帶有三個引號：
 
    ```kusto
    "StormEvents | where State == """ & State & """ | take 100"
@@ -132,21 +132,21 @@ in
 
 #### <a name="use-a-query-parameter-in-the-query-steps"></a>在查詢步驟中使用查詢參數
 
-您可以在任何支援的查詢步驟中使用查詢參數。 例如，根據參數的值來篩選結果。
+您可以在支援查詢的任何查詢步驟中使用查詢參數。 例如，根據參數的值篩選結果。
 
 ![使用參數篩選結果](media/power-bi-best-practices/filter-using-parameter.png)
 
-### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>請勿使用 Power BI 資料重新整理排程器將控制命令發行至 Kusto
+### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>不要使用 Power BI 資料刷新計畫程式向 Kusto 發出控制命令
 
-Power BI 包括可定期針對資料來源發出查詢的資料重新整理排程器。 此機制不應用來將控制命令排程為 Kusto，因為 Power BI 假設所有查詢都是唯讀的。
+Power BI 包括一個資料刷新計畫程式，該計畫程式可以定期對資料來源發出查詢。 此機制不應用於將控制命令安排到 Kusto，因為 Power BI 假定所有查詢都是唯讀的。
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能將簡短（&lt;2000 個字元）查詢傳送至 Kusto
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能向&lt;Kusto 發送短（2000 個字元）查詢
 
-如果在 Power BI 中執行查詢，會產生下列錯誤：「_資料來源錯誤： Web。內容無法從 ... 取得內容_...」查詢長度可能超過2000個字元。 Power BI 使用**PowerQuery**來查詢 Kusto，方法是發出 HTTP GET 要求，將查詢編碼為所抓取 URI 的一部分。 因此，Power BI 所發出的 Kusto 查詢會限制為要求 URI 的最大長度（2000個字元，減去小位移）。 因應措施是，您可以在 Kusto 中定義[預存](/azure/kusto/query/schema-entities/stored-functions)函式，並讓 Power BI 在查詢中使用該函數。
+如果在 Power BI 中執行查詢會導致以下錯誤 _："DataSource.Error：Web.內容無法從..."_ 查詢可能超過 2000 個字元。 Power BI 使用**PowerQuery**通過發出 HTTP GET 請求來查詢 Kusto，該請求將查詢編碼為正在檢索的 URI 的一部分。 因此，Power BI 發出的 Kusto 查詢限制為請求 URI 的最大長度（2000 個字元減去小偏移）。 作為解決方法，您可以在 Kusto 中定義[存儲的函數](/azure/kusto/query/schema-entities/stored-functions)，並在查詢中讓 Power BI 使用該函數。
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用適用于 Power BI 的 Azure 資料總管連接器將資料視覺化](power-bi-connector.md)
+[使用適用於 Power BI 的 Azure 資料總管連接器將資料視覺化](power-bi-connector.md)
 
 
 

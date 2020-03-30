@@ -1,5 +1,5 @@
 ---
-title: 自訂 Azure AD 應用程式 SAML 權杖宣告
+title: 自訂 Azure AD 應用 SAML 權杖聲明
 titleSuffix: Microsoft identity platform
 description: 了解如何針對 Azure AD 中的企業應用程式，自訂 SAML 權杖中發出的宣告
 services: active-directory
@@ -15,55 +15,55 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263084"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：為企業應用程式自訂 SAML 權杖中發出的聲明
 
-現今，Azure Active Directory （Azure AD）支援大部分企業應用程式的單一登入（SSO），包括 Azure AD 應用程式資源庫中預先整合的應用程式，以及自訂應用程式。 當使用者利用 SAML 2.0 通訊協定來透過 Azure AD 向應用程式驗證時，Azure AD 會將權杖傳送給應用程式 (透過 HTTP POST)。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含使用者的相關資訊，稱為*宣告*。
+如今，Azure 活動目錄 （Azure AD） 支援大多數企業應用程式的單一登入 （SSO），包括預先集成在 Azure AD 應用庫中的應用程式以及自訂應用程式。 當使用者利用 SAML 2.0 通訊協定來透過 Azure AD 向應用程式驗證時，Azure AD 會將權杖傳送給應用程式 (透過 HTTP POST)。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含有關稱為*聲明*的使用者的資訊片段。
 
 *宣告*是身分識別提供者核發權杖給使用者時，所提供的權杖內部使用者相關資訊。 在 [SAML 權杖](https://en.wikipedia.org/wiki/SAML_2.0)中，此資料通常包含在 SAML 屬性陳述式中。 使用者的唯一識別碼通常在 SAML Subject 中表示，也稱為「名稱識別碼」。
 
-根據預設，Azure AD 會將 SAML 權杖發行至您的應用程式，其中包含的 `NameIdentifier` 宣告具有使用者在 Azure AD 中的使用者名稱（也稱為使用者主體名稱）的值，可唯一識別使用者。 SAML 權杖也包含額外的宣告，其包含使用者的電子郵件地址、名字和姓氏。
+預設情況下，Azure AD 向應用程式發出 SAML 權杖，其中包含具有`NameIdentifier`Azure AD 中使用者名（也稱為使用者主體名稱）的值的聲明，該聲明可以唯一標識使用者。 SAML 權杖也包含額外的宣告，其包含使用者的電子郵件地址、名字和姓氏。
 
-若要檢視或編輯在 SAML 權杖中對應用程式發出的宣告，請在 Azure 入口網站中開啟應用程式。 然後，& 宣告 區段中開啟 **使用者屬性**。
+若要檢視或編輯在 SAML 權杖中對應用程式發出的宣告，請在 Azure 入口網站中開啟應用程式。 然後打開 **"使用者屬性&聲明**"部分。
 
-![在 Azure 入口網站中開啟 [使用者屬性 & 宣告] 區段](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![在 Azure 門戶中打開使用者屬性&宣告區段](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 編輯在 SAML 權杖中簽發的宣告有兩個可能原因：
 
-* 應用程式要求 `NameIdentifier` 或 NameID 宣告必須是儲存在 Azure AD 中的使用者名稱（或使用者主體名稱）以外的專案。
+* 應用程式要求`NameIdentifier`或 NameID 聲明是存儲在 Azure AD 中的使用者名（或使用者主體名稱）以外的內容。
 * 應用程式是設計為要求不同的宣告 URI 組或宣告值。
 
-## <a name="editing-nameid"></a>編輯 nameID
+## <a name="editing-nameid"></a>編輯名稱 ID
 
-若要編輯 NameID （名稱識別碼值）：
+要編輯 NameID（名稱識別碼值）：
 
-1. 開啟 [**名稱識別碼值**] 頁面。
-1. 選取您想要套用至屬性的屬性或轉換。 （選擇性）您可以指定要讓 NameID 宣告具有的格式。
+1. 打開**名稱識別碼值**頁。
+1. 選擇要應用於該屬性的屬性或轉換。 或者，您可以指定希望 NameID 聲明具有的格式。
 
-   ![編輯 NameID （名稱識別碼）值](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
+   ![編輯 NameID（名稱識別碼）值](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
-### <a name="nameid-format"></a>NameID 格式
+### <a name="nameid-format"></a>名稱 ID 格式
 
-如果 SAML 要求包含以特定格式 NameIDPolicy 的元素，則 Azure AD 會接受要求中的格式。
+如果 SAML 請求包含具有特定格式的元素 NameID 策略，則 Azure AD 將遵守請求中的格式。
 
-如果 SAML 要求未包含 NameIDPolicy 的元素，則 Azure AD 會以您指定的格式發出 NameID。 如果未指定格式，Azure AD 將會使用與所選宣告來源相關聯的預設來源格式。
+如果 SAML 請求不包含 NameID 策略的元素，則 Azure AD 將發出名稱 ID 與您指定的格式。 如果未指定格式，則 Azure AD 將使用與所選聲明源關聯的預設源格式。
 
-從 [**選擇名稱識別碼格式**] 下拉式清單中，您可以選取下列其中一個選項。
+從 **"選擇名稱識別碼"格式**下拉下拉清單，您可以選擇以下選項之一。
 
-| NameID 格式 | 描述 |
+| 名稱 ID 格式 | 描述 |
 |---------------|-------------|
-| **預設值** | Azure AD 將會使用預設的來源格式。 |
-| **持續** | Azure AD 將使用持續性作為 NameID 格式。 |
-| **EmailAddress** | Azure AD 會使用 EmailAddress 作為 NameID 格式。 |
-| **識別** | Azure AD 將使用 [未指定] 做為 NameID 格式。 |
-| **Windows 網域限定名稱** | Azure AD 會使用 WindowsDomainQualifiedName 作為 NameID 格式。 |
+| **預設** | Azure AD 將使用預設源格式。 |
+| **持續性** | Azure AD 將使用"持久"作為 NameID 格式。 |
+| **EmailAddress** | Azure AD 將使用電子郵件地址作為 NameID 格式。 |
+| **未指定** | Azure AD 將使用"未指定"格式作為 NameID 格式。 |
+| **視窗功能變數名稱限定名稱** | Azure AD 將使用 WindowsDomain 資格名稱作為名稱 ID 格式。 |
 
-此外也支援暫時性 NameID，但無法在下拉式清單中進行設定，也無法在 Azure 端進行設定。 若要深入瞭解 NameIDPolicy 屬性，請參閱[單一登入 SAML 通訊協定](single-sign-on-saml-protocol.md)。
+臨時 NameID 也受支援，但在下拉清單中不可用，無法在 Azure 端配置。 要瞭解有關 NameID 策略屬性的更多詳細資訊，請參閱[單一登入 SAML 協定](single-sign-on-saml-protocol.md)。
 
 ### <a name="attributes"></a>屬性
 
@@ -72,109 +72,109 @@ ms.locfileid: "79263084"
 | 名稱 | 描述 |
 |------|-------------|
 | 電子郵件 | 使用者的電子郵件地址 |
-| userprincipalName | 使用者的使用者主體名稱（UPN） |
+| userprincipalName | 使用者的主名 （UPN） |
 | onpremisessamaccount | 已從內部部署 Azure AD 同步處理的 SAM 帳戶名稱 |
-| objectid | 使用者在 Azure AD 中的 Objectid |
-| employeeid | 使用者的員工識別碼 |
+| objectid | Azure AD 中使用者的物件識別碼 |
+| employeeid | 使用者的員工 ID |
 | 目錄擴充 | 目錄擴充[從使用 Azure AD Connect 同步的內部部署 Active Directory 同步處理](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | 擴充屬性 1-15 | 內部部署擴充屬性，用來擴充 Azure AD 結構描述 |
 
-如需詳細資訊，請參閱[表3：每個來源的有效識別碼值](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)。
+有關詳細資訊，請參閱表[3：每個源的有效 ID 值](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)。
 
-您也可以將任何常數（靜態）值指派給您在 Azure AD 中定義的任何宣告。 請遵循下列步驟來指派常數值：
+您還可以為在 Azure AD 中定義的任何聲明分配任何常量（靜態）值。 請按照以下步驟分配常量值：
 
-1. 在  [Azure 入口網站](https://portal.azure.com/)的 **使用者屬性 & 宣告** 區段上，按一下 [**編輯**] 圖示來編輯宣告。
+1. 在[Azure 門戶](https://portal.azure.com/)中，在 **"使用者屬性&聲明"** 部分，按一下 **"編輯"** 圖示編輯聲明。
 
-1. 按一下您要修改的必要宣告。
+1. 按一下要修改所需的聲明。
 
-1. 根據您的組織，在**Source 屬性**中輸入不含引號的常數值，然後按一下 [**儲存**]。
+1. 根據您的組織在 **"源"屬性**中輸入無引號的常量值，然後按一下"**保存**"。
 
-    ![在 Azure 入口網站中開啟 [使用者屬性 & 宣告] 區段](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![在 Azure 門戶中打開使用者屬性&宣告區段](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
-1. 常數值會顯示如下。
+1. 常量值將顯示如下。
 
-    ![在 Azure 入口網站中開啟 [使用者屬性 & 宣告] 區段](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![在 Azure 門戶中打開使用者屬性&宣告區段](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
-### <a name="special-claims---transformations"></a>特殊宣告-轉換
+### <a name="special-claims---transformations"></a>特殊索賠 - 轉換
 
-您也可以使用宣告轉換函式。
+您還可以使用聲明轉換函數。
 
 | 函式 | 描述 |
 |----------|-------------|
-| **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
-| **Join （）** | 加入具有已驗證網域的屬性。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLower()** | 將所選取屬性中的字元轉換成小寫字元。 |
-| **ToUpper()** | 將所選取屬性中的字元轉換成大寫字元。 |
+| **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中刪除域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
+| **加入（）** | 加入具有已驗證網域的屬性。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
+| **到下（）** | 將所選取屬性中的字元轉換成小寫字元。 |
+| **到上（）** | 將所選取屬性中的字元轉換成大寫字元。 |
 
-## <a name="adding-application-specific-claims"></a>新增應用程式特定的宣告
+## <a name="adding-application-specific-claims"></a>添加特定于應用程式的聲明
 
-若要新增應用程式特定的宣告：
+要添加特定于應用程式的聲明：
 
-1. 在 [**使用者屬性 & 宣告**] 中，選取 [**加入新**宣告] 以開啟 [**管理使用者宣告**] 頁面。
-1. 輸入宣告的**名稱**。 根據 SAML 規格，此值不一定需要遵循 URI 模式。如果您需要 URI 模式，可以將它放在 [**命名空間**] 欄位中。
-1. 選取宣告要取得其值的**來源**。 您可以從 [來源屬性] 下拉式清單中選取使用者屬性，或將轉換套用至使用者屬性，再將其發出為宣告。
+1. 在 **"使用者屬性&聲明**"中，選擇 **"添加新聲明**"以打開 **"管理使用者聲明**"頁。
+1. 輸入聲明**的名稱**。 根據 SAML 規範，該值不需要嚴格遵循 URI 模式。如果需要 URI 模式，可以把它放在**命名空間**欄位中。
+1. 選擇聲明要檢索其值的**源**。 您可以從源屬性下拉清單中選擇使用者屬性，或在將轉換作為聲明發出之前對使用者屬性應用轉換。
 
 ### <a name="claim-transformations"></a>宣告轉換
 
-若要將轉換套用至使用者屬性：
+要將轉換應用於使用者屬性，請執行：
 
-1. 在 [**管理**宣告] 中，選取 [*轉換*為宣告來源] 以開啟 [**管理轉換**] 頁面。
-2. 從 [轉換] 下拉式清單中選取函數。 視選取的函式而定，您必須提供參數和常數值以在轉換中進行評估。 如需可用功能的詳細資訊，請參閱下表。
-3. 若要套用多個轉換，請按一下 [**加入轉換**]。您最多可以對一個宣告套用兩個轉換。 例如，您可以先解壓縮 `user.mail`的電子郵件首碼。 然後，將字串設為大寫。
+1. 在 **"管理索賠"** 中，選擇 *"轉換*"作為聲明源以打開 **"管理轉換**"頁。
+2. 從轉換下拉清單中選擇函數。 根據所選的函數，您必須提供參數和常量值才能在轉換中計算。 有關可用函數的詳細資訊，請參閱下表。
+3. 要應用多個轉換，請按一下"**添加轉換**"。最多可以對索賠應用兩個轉換。 例如，您可以首先提取 的電子郵件`user.mail`首碼。 然後，使字串大寫。
 
-   ![編輯 NameID （名稱識別碼）值](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![編輯 NameID（名稱識別碼）值](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
-您可以使用下列函數來轉換宣告。
+您可以使用以下函數轉換聲明。
 
 | 函式 | 描述 |
 |----------|-------------|
-| **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
-| **Join （）** | 藉由聯結兩個屬性來建立新的值。 （選擇性）您可以在這兩個屬性之間使用分隔符號。 針對 NameID 宣告轉換，聯結僅限於已驗證的網域。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLower()** | 將所選取屬性中的字元轉換成小寫字元。 |
-| **ToUpper()** | 將所選取屬性中的字元轉換成大寫字元。 |
-| **Contains （）** | 如果輸入符合指定的值，則輸出屬性或常數。 否則，如果沒有符合的結果，您可以指定另一個輸出。<br/>例如，如果您想要發出宣告，其中的值為使用者的電子郵件地址（如果它包含網域 "@contoso.com"），則為，否則您會想要輸出使用者主體名稱。 若要這樣做，您可以設定下列值：<br/>*參數1（輸入）* ：使用者。電子郵件<br/>*值*： "@contoso.com"<br/>參數2（輸出）：使用者電子郵件<br/>參數3（如果沒有符合的輸出）： user. userprincipalname |
-| **EndWith()** | 如果輸入的結尾是指定的值，則會輸出屬性或常數。 否則，如果沒有符合的結果，您可以指定另一個輸出。<br/>例如，如果您想要發出宣告，其中的員工識別碼結尾為 "000"，則此值為使用者的員工識別碼，否則您會想要輸出擴充屬性。 若要這樣做，您可以設定下列值：<br/>*參數1（輸入）* ：使用者. 員工。<br/>*值*： "000"<br/>參數2（輸出）：使用者. 員工。<br/>參數3（如果沒有符合的輸出）： user. extensionattribute1 |
-| **與 startwith （）** | 如果輸入的開頭為指定的值，則會輸出屬性或常數。 否則，如果沒有符合的結果，您可以指定另一個輸出。<br/>例如，如果您想要發出宣告，其中的值為使用者的員工識別碼（如果國家/地區開頭為 "US"），否則您會想要輸出擴充屬性。 若要這樣做，您可以設定下列值：<br/>*參數1（輸入）* ：使用者 country<br/>*值*： "US"<br/>參數2（輸出）：使用者. 員工。<br/>參數3（如果沒有符合的輸出）： user. extensionattribute1 |
-| **解壓縮（）-比對之後** | 傳回符合指定值的子字串。<br/>例如，如果輸入的值為 "Finance_BSimon"，則相符的值為 "Finance_"，而宣告的輸出為 "BSimon"。 |
-| **解壓縮（）-比對之前** | 傳回子字串，直到它符合指定的值為止。<br/>例如，如果輸入的值為 "BSimon_US"，則相符的值為 "_US"，而宣告的輸出為 "BSimon"。 |
-| **解壓縮（）-比對之間** | 傳回子字串，直到它符合指定的值為止。<br/>例如，如果輸入的值是 "Finance_BSimon_US"，第一個相符的值是 "Finance_"，第二個符合的值是 "_US"，則宣告的輸出會是 "BSimon"。 |
-| **ExtractAlpha （）-Prefix** | 傳回字串的前置詞字母部分。<br/>例如，如果輸入的值為 "BSimon_123"，則會傳回 "BSimon"。 |
-| **ExtractAlpha （）-尾碼** | 傳回字串的後置詞字母部分。<br/>例如，如果輸入的值為 "123_Simon"，則會傳回 "Simon"。 |
-| **ExtractNumeric （）-Prefix** | 傳回字串的前置數位部分。<br/>例如，如果輸入的值為 "123_BSimon"，則會傳回 "123"。 |
-| **ExtractNumeric （）-尾碼** | 傳回字串的尾碼數值部分。<br/>例如，如果輸入的值為 "BSimon_123"，則會傳回 "123"。 |
-| **Defaultifempty （）** | 如果輸入為 null 或空白，則輸出屬性或常數。<br/>例如，如果您想要輸出儲存在 system.runtime.compilerservices.extensionattribute 中的屬性（如果指定使用者的員工識別碼是空的）。 若要這樣做，您可以設定下列值：<br/>參數1（輸入）：使用者. 員工。<br/>參數2（輸出）：使用者. extensionattribute1<br/>參數3（如果沒有符合的輸出）：使用者. 員工。 |
-| **IfNotEmpty()** | 如果輸入不是 null 或空白，則輸出屬性或常數。<br/>例如，如果您想要輸出儲存在 system.runtime.compilerservices.extensionattribute 中的屬性（如果指定使用者的員工識別碼不是空的）。 若要這樣做，您可以設定下列值：<br/>參數1（輸入）：使用者. 員工。<br/>參數2（輸出）：使用者. extensionattribute1 |
+| **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中刪除域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
+| **加入（）** | 通過聯接兩個屬性創建新值。 或者，您可以在兩個屬性之間使用分隔符號。 對於 NameID 聲明轉換，聯接僅限於已驗證的域。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
+| **到下（）** | 將所選取屬性中的字元轉換成小寫字元。 |
+| **到上（）** | 將所選取屬性中的字元轉換成大寫字元。 |
+| **包含（）** | 如果輸入與指定值匹配，則輸出屬性或常量。 否則，如果沒有匹配，可以指定另一個輸出。<br/>例如，如果要發出值是使用者的電子郵件地址的聲明（如果它包含域""），@contoso.com則要輸出使用者主體名稱。 為此，您可以配置以下值：<br/>*參數 1（輸入）*：使用者.電子郵件<br/>*值*："@contoso.com"<br/>參數 2（輸出）：使用者.電子郵件<br/>參數 3（如果沒有匹配項，則輸出）：使用者.user主名稱 |
+| **結束與（）** | 如果輸入以指定值結束，則輸出屬性或常量。 否則，如果沒有匹配，可以指定另一個輸出。<br/>例如，如果要發出值是使用者的員工 ID 的聲明（如果員工 ID 以"000"結尾），則要輸出擴充屬性。 為此，您可以配置以下值：<br/>*參數 1（輸入）*：使用者.員工id<br/>*值*："000"<br/>參數 2（輸出）：使用者.員工 ID<br/>參數 3（如果沒有匹配時輸出）：使用者.擴充屬性1 |
+| **從（） 開始** | 如果輸入以指定值開頭，則輸出屬性或常量。 否則，如果沒有匹配，可以指定另一個輸出。<br/>例如，如果要發出值是使用者的員工 ID 的聲明（如果國家/地區以"US"開頭），則要輸出擴充屬性。 為此，您可以配置以下值：<br/>*參數 1（輸入）*：使用者.國家/地區<br/>*值*："美國"<br/>參數 2（輸出）：使用者.員工 ID<br/>參數 3（如果沒有匹配時輸出）：使用者.擴充屬性1 |
+| **提取（） - 匹配後** | 在子字串與指定值匹配後返回該子字串。<br/>例如，如果輸入的值為"Finance_BSimon"，則匹配值為"Finance_"，則聲明的輸出為"BSimon"。 |
+| **提取（） - 匹配前** | 返回子字串，直到它與指定值匹配。<br/>例如，如果輸入的值為"BSimon_US"，則匹配值為"_US"，則聲明的輸出為"BSimon"。 |
+| **提取（） - 匹配之間** | 返回子字串，直到它與指定值匹配。<br/>例如，如果輸入的值為"Finance_BSimon_US"，則第一個匹配值為"Finance_"，第二個匹配值為"_US"，則聲明的輸出為"BSimon"。 |
+| **提取Alpha（） - 首碼** | 返回字串的首碼字母部分。<br/>例如，如果輸入的值為"BSimon_123"，則返回"BSimon"。 |
+| **提取Alpha（） - 尾碼** | 返回字串的尾碼字母部分。<br/>例如，如果輸入的值為"123_Simon"，則返回"Simon"。 |
+| **提取數位（） - 首碼** | 返回字串的首碼數位部分。<br/>例如，如果輸入的值為"123_BSimon"，則返回"123"。 |
+| **提取數位（） - 尾碼** | 返回字串的尾碼數值部分。<br/>例如，如果輸入的值為"BSimon_123"，則返回"123"。 |
+| **如果空（）** | 如果輸入為空或為空，則輸出屬性或常量。<br/>例如，如果要輸出存儲在擴充屬性中的屬性，如果給定使用者的員工 ID 為空。 為此，您可以配置以下值：<br/>參數 1（輸入）：使用者.員工 ID<br/>參數 2（輸出）：使用者.擴充屬性1<br/>參數 3（如果沒有匹配項，則輸出）：使用者.employeeid |
+| **如果不為空（）** | 如果輸入不是空或空，則輸出屬性或常量。<br/>例如，如果要輸出存儲在擴充屬性中的屬性，如果給定使用者的員工 ID 不為空。 為此，您可以配置以下值：<br/>參數 1（輸入）：使用者.員工 ID<br/>參數 2（輸出）：使用者.擴充屬性1 |
 
-如果您需要額外的轉換，請在 [ *SaaS 應用程式*] 類別底下[Azure AD 的意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)中提交您的想法。
+如果需要其他轉換，請在*SaaS 應用程式*類別下的[Azure AD 回饋論壇中](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)提交您的想法。
 
-## <a name="emitting-claims-based-on-conditions"></a>根據條件發出宣告
+## <a name="emitting-claims-based-on-conditions"></a>根據條件發出聲明
 
-您可以根據使用者類型和使用者所屬的群組，來指定宣告的來源。 
+您可以根據使用者類型和使用者所屬的組指定聲明的來源。 
 
 使用者類型可以是：
-- **Any**：允許所有使用者存取應用程式。
-- **成員**：租使用者的原生成員
-- **所有來賓**：使用者會從具有或不 Azure AD 的外部組織進入。
-- **AAD 來賓**：來賓使用者屬於另一個使用 Azure AD 的組織。
+- **任何**：允許所有使用者訪問該應用程式。
+- **成員**： 租戶的本機成員
+- **所有來賓**：使用者是從具有或沒有 Azure AD 的外部組織帶來的。
+- **AAD 來賓**：來賓使用者屬於使用 Azure AD 的另一個組織。
 - **外部來賓**：來賓使用者屬於沒有 Azure AD 的外部組織。
 
 
-當來賓的來源和存取應用程式的員工不同時，這會很有説明的一個案例。 您可能想要指定，如果使用者是一個員工，NameID 就是來自使用者。電子郵件，但如果使用者是來賓，則 NameID 會來自 extensionattribute1。
+其中一種情況是，對於訪問應用程式的來賓和員工，索賠的來源是不同的。 您可能希望指定，如果使用者是員工，NameID 來自 user.email，但如果使用者是來賓，則 NameID 來自使用者。
 
-若要新增宣告條件：
+要添加聲明條件：
 
-1. 在 [**管理**宣告] 中，展開 [宣告條件]。
-2. 選取 [使用者類型]。
-3. 選取使用者應隸屬的群組。 您最多可以在指定的應用程式的所有宣告中選取10個唯一群組。 
-4. 選取宣告要取得其值的**來源**。 您可以從 [來源屬性] 下拉式清單中選取使用者屬性，或將轉換套用至使用者屬性，再將其發出為宣告。
+1. 在**管理索賠**中，展開索賠條件。
+2. 選擇使用者類型。
+3. 選擇使用者應所屬的組。 您最多可以在給定應用程式的所有聲明中選擇 10 個唯一組。 
+4. 選擇聲明要檢索其值的**源**。 您可以從源屬性下拉清單中選擇使用者屬性，或在將轉換作為聲明發出之前對使用者屬性應用轉換。
 
-您新增條件的順序很重要。 Azure AD 會評估從上到下的條件，以決定要在宣告中發出哪一個值。 
+添加條件的順序很重要。 Azure AD 從上到下評估條件，以決定在索賠中釋放哪個值。 
 
-例如，Brita Simon 是 Contoso 租使用者中的來賓使用者。 她屬於另一個也使用 Azure AD 的組織。 針對 Fabrikam 應用程式的下列設定，當 Brita 嘗試登入 Fabrikam 時，Azure AD 會依照下列方式評估條件。
+例如，Brita Simon 是 Contoso 租戶中的來賓使用者。 她屬於另一個也使用 Azure AD 的組織。 給定 Fabrikam 應用程式的以下配置，當 Brita 嘗試登錄到 Fabrikam 時，Azure AD 將按如下條件評估條件。
 
-首先，Azure AD 會驗證是否 `All guests`Brita 的使用者類型。 自起，這是 true，Azure AD 會將宣告的來源指派給 `user.extensionattribute1`。 第二，Azure AD 會驗證是否 `AAD guests`Brita 的使用者類型，因為這也是 true，因此 Azure AD 會將宣告的來源指派給 `user.mail`。 最後，會發出宣告，並將 Brita 的值 `user.email`。
+首先，Azure AD 驗證 Brita 的使用者類型是否為`All guests`。 由於，這是事實，然後 Azure AD 將聲明的源分配給`user.extensionattribute1`。 其次，Azure AD 驗證 Brita 的使用者類型是否為`AAD guests`，因為這也是 true，然後 Azure AD 將聲明的源`user.mail`分配給 。 最後，聲明以"Brita"`user.email`的值發出。
 
-![宣告條件式設定](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
+![聲明條件配置](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>後續步驟
 

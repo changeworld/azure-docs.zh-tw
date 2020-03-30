@@ -1,15 +1,15 @@
 ---
-title: 叢集 Resource Manager-管理整合
+title: 群集資源管理器 - 管理集成
 description: 叢集資源管理員和 Service Fabric 管理之間的整合點概觀。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258742"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>叢集資源管理員與 Service Fabric 叢集管理整合
@@ -68,7 +68,7 @@ HealthEvents          :
 2. 目前違反升級網域發佈條件約束。 這表示特定升級網域擁有這個磁碟的過多分割複本。
 3. 哪個節點包含造成違規的複本。 在此案例中是名為「Node.8」的節點。
 4. 無論此分割區是否正在升級 (「Currently Upgrading -- false」)
-5. 此服務的發佈原則：「Distribution Policy -- Packing」。 這是由 `RequireDomainDistribution`[放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)所控管。 「封裝」表示在此情況下_不_需要 DomainDistribution，因此可知道並未替該服務指定放置原則。 
+5. 此服務的發佈原則：「Distribution Policy -- Packing」。 這是由`RequireDomainDistribution` [放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)控管。 「封裝」表示在此情況下_不_需要 DomainDistribution，因此可知道並未替該服務指定放置原則。 
 6. 報告時間 - 2015 年 8 月 10 日下午 7:13:02
 
 這種資訊會引出在生產環境中出現的警示，讓您知道已發生問題，也會用來偵測和停止不正確的升級。 在此情況下，我們需要查明 Resource Manager 為何一定要將複本封裝至升級網域。 例如，封裝是暫時性的，因為其他升級網域中的節點已關閉。
@@ -93,7 +93,7 @@ HealthEvents          :
 ## <a name="blocklisting-nodes"></a>封鎖節點
 封鎖節點時，叢集資源管理員會報告另一個健康情況訊息。 您可以將封鎖視為自動套用的暫時性條件約束。 啟動該服務類型的執行個體時，發生重複失敗的節點會遭封鎖。 節點是依照服務類型來封鎖。 某個服務類型的節點可能會被封鎖，另一個服務類型的節點則未被封鎖。 
 
-通常會在開發期間發生封鎖：一些錯誤導致服務主機在啟動時當機， Service Fabric 多次嘗試建立服務主機，但是持續失敗。 經過多次嘗試後，節點被封鎖，而叢集資源管理員會嘗試在其他位置建立服務。 如果多個節點持續發生同樣的失敗，最終可能導致叢集中的所有有效節點被封鎖。 封鎖也可以移除，讓許多沒有足夠的節點可以成功啟動服務，以符合所需的規模。 您通常會看見叢集資源管理員出現其他錯誤或警告，顯示服務低於所需的複本或執行個體計數，也會看到健康情況訊息顯示出最先導致封鎖的失敗。
+通常會在開發期間發生封鎖：一些錯誤導致服務主機在啟動時當機， Service Fabric 多次嘗試建立服務主機，但是持續失敗。 經過多次嘗試後，節點被封鎖，而叢集資源管理員會嘗試在其他位置建立服務。 如果多個節點持續發生同樣的失敗，最終可能導致叢集中的所有有效節點被封鎖。 阻止清單還可以刪除這麼多節點，這些節點不足以成功啟動服務以滿足所需的規模。 您通常會看見叢集資源管理員出現其他錯誤或警告，顯示服務低於所需的複本或執行個體計數，也會看到健康情況訊息顯示出最先導致封鎖的失敗。
 
 封鎖不是永久情況。 經過幾分鐘後，便會從封鎖清單中移除節點，且 Service Fabric 會再次啟動該節點上的服務。 如果服務持續失敗，會再次封鎖該服務類型的節點。 
 
@@ -174,12 +174,12 @@ ClusterManifest.xml
 ## <a name="fault-domain-and-upgrade-domain-constraints"></a>容錯網域和升級網域的條件約束
 叢集資源管理員想要保留遍佈於容錯網域和升級網域的服務。 它會將此設定為叢集資源管理員的引擎內的條件約束。 如需其使用方式及特定行為的詳細資訊，請參閱[叢集設定](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)一文。
 
-叢集資源管理員可能需要將一些複本封裝至升級網域，以處理升級、失敗或其他條件約束違規情形。 通常，只有當系統中發生許多失敗或其他問題，導致無法正確放置時，才會封裝到容錯網域或升級網域。 如果您想要避免在這些情況下進行封裝，您可以利用 `RequireDomainDistribution`[放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 請注意，這可能會產生影響服務可用性和可靠性的副作用，請審慎考慮。
+叢集資源管理員可能需要將一些複本封裝至升級網域，以處理升級、失敗或其他條件約束違規情形。 通常，只有當系統中發生許多失敗或其他問題，導致無法正確放置時，才會封裝到容錯網域或升級網域。 如果即使在這類情況下也想要避免進行封裝，可以利用`RequireDomainDistribution` [放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 請注意，這可能會產生影響服務可用性和可靠性的副作用，請審慎考慮。
 
 如果已正確設定環境，則會完全遵守所有條件約束，甚至在升級期間也是如此。 關鍵在於叢集資源管理員會監看您的條件約束， 在偵測到違規時會立即回報，並嘗試更正問題。
 
 ## <a name="the-preferred-location-constraint"></a>慣用的位置條件約束
-PreferredLocation 條件約束稍有不同，因為它有兩種不同的用途。 這個條件約束的其中一種用法是在應用程式升級期間。 叢集資源管理員會在升級期間自動管理這個條件約束， 用來確定複本在升級完成時會傳回到初始位置。 PreferredLocation 條件約束的另一種用法與[`PreferredPrimaryDomain`放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)有關。 兩者都屬於最佳化，因此 PreferredLocation 條件約束是唯一預設為「最佳化」的條件約束。
+PreferredLocation 條件約束稍有不同，因為它有兩種不同的用途。 這個條件約束的其中一種用法是在應用程式升級期間。 叢集資源管理員會在升級期間自動管理這個條件約束， 用來確定複本在升級完成時會傳回到初始位置。 首選位置約束的另一個用途是[`PreferredPrimaryDomain`放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。 兩者都屬於最佳化，因此 PreferredLocation 條件約束是唯一預設為「最佳化」的條件約束。
 
 ## <a name="upgrades"></a>升級
 在應用程式和叢集升級過程中，叢集資源管理員也有所幫助，它在這期間有兩項作業︰

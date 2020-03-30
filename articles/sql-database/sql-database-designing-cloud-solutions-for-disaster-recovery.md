@@ -1,5 +1,5 @@
 ---
-title: 設計全域可用的服務
+title: 設計全球可用的服務
 description: 了解使用 Azure SQL Database 對高可用性服務的應用程式設計。
 keywords: cloud disaster recovery,disaster recovery solutions,app data backup,geo-replication,business continuity planning,雲端災害復原,災害復原方案,應用程式資料備份,異地複寫,商務持續性計劃
 services: sql-database
@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269064"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL Database 設計全域可用的服務
@@ -35,7 +35,7 @@ ms.locfileid: "79269064"
 * 必須共置 web 層和資料層才能減少延遲和流量成本
 * 基本上，停機時間對於這些應用程式的商業風險高於資料遺失
 
-在此情況下，當所有應用程式元件需要共同容錯移轉時，應用程式部署拓撲最適合用來處理區域性災害。 下圖顯示此拓撲。 如需地理備援，會將應用程式的資源部署至區域 A 和 B。不過，並不會使用區域 B 中的資源，直到區域 A 失敗為止。 會在兩個區域之間容錯移轉群組，以管理資料庫連線、複寫和容錯移轉。 兩個區域中的 web 服務都會設定為透過讀寫接聽程式 **&lt;failover-group-name&gt;.database.windows.net** (1) 存取資料庫。 流量管理員設為使用[優先順序路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
+在此情況下，當所有應用程式元件需要共同容錯移轉時，應用程式部署拓撲最適合用來處理區域性災害。 下圖顯示此拓撲。 如需地理備援，會將應用程式的資源部署至區域 A 和 B。不過，並不會使用區域 B 中的資源，直到區域 A 失敗為止。 會在兩個區域之間容錯移轉群組，以管理資料庫連線、複寫和容錯移轉。 兩個區域中的 Web 服務配置為通過讀寫攔截器**&lt;容錯移轉組&gt;名稱 .database.windows.net** （1） 訪問資料庫。 流量管理員設為使用[優先順序路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
 
 > [!NOTE]
 > 這整篇文章使用 [Azure 流量管理員](../traffic-manager/traffic-manager-overview.md)僅供說明用途。 您可以使用任何支援優先順序路由方法的負載平衡方案。
@@ -110,16 +110,16 @@ ms.locfileid: "79269064"
 * 針對多數使用者，必須在相同的地理位置支援寫入資料的存取權
 * 讀取延遲對終端使用者經驗很重要
 
-為了符合這些需求，您必須保證使用者裝置**一律**會連線到部署在相同地理位置中的應用程式，以進行唯讀作業，例如流覽資料、分析等。而 OLTP 作業在**大多數時間**都是在相同的地理位置中處理。 例如，在日間時間內，會在相同的地理位置中處理 OLTP 作業，但在下班時間內，它們會在不同的地理位置中進行處理。 如果終端使用者活動通常是發生在工作時間內，就可以保證大部分使用者在大多數情況下都能獲得最佳的效能。 下圖顯示此拓撲。
+為了滿足這些要求，您需要確保使用者設備**始終**連接到部署在同一地理位置中的用於唯讀操作的應用程式，例如流覽資料、分析等。而 OLTP 操作**大多數時候**都在同一地理位置進行處理。 例如，在日間時間內，會在相同的地理位置中處理 OLTP 作業，但在下班時間內，它們會在不同的地理位置中進行處理。 如果終端使用者活動通常是發生在工作時間內，就可以保證大部分使用者在大多數情況下都能獲得最佳的效能。 下圖顯示此拓撲。
 
-應該將應用程式的資源部署在您有大量使用需求的每個地理位置。 例如，如果您是在美國境內、歐盟和東南亞主動使用應用程式，就應該將應用程式部署在這所有的地理位置。 在工作時間結束時，應該以動態方式將主要資料庫從一個地理位置切換到下一個地理位置。 此方法稱為「追日」。 OLTP 工作負載一律會透過讀寫接聽程式 **&lt;failover-group-name&gt;.database.windows.net** 連線到資料庫 (1)。 唯讀工作負載會使用資料庫伺服器端點 **&lt;server-name&gt;.database.windows.net**，直接連線至本機資料庫 (2)。 已使用[效能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)設定流量管理員。 它會確保使用者的裝置連線到最接近區域中的 web 服務。 應使用針對每個 web 服務端點啟用的端點監視來設定流量管理員 (3)。
+應該將應用程式的資源部署在您有大量使用需求的每個地理位置。 例如，如果您是在美國境內、歐盟和東南亞主動使用應用程式，就應該將應用程式部署在這所有的地理位置。 在工作時間結束時，應該以動態方式將主要資料庫從一個地理位置切換到下一個地理位置。 此方法稱為「追日」。 OLTP 工作負荷始終通過讀寫攔截器**&lt;容錯移轉組&gt;名稱 .database.windows.net** （1） 連接到資料庫。 唯讀工作負荷直接使用資料庫伺服器終結點**&lt;伺服器&gt;名稱 .database.windows.net** （2） 連接到本機資料庫。 已使用[效能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)設定流量管理員。 它會確保使用者的裝置連線到最接近區域中的 web 服務。 應使用針對每個 web 服務端點啟用的端點監視來設定流量管理員 (3)。
 
 > [!NOTE]
 > 容錯移轉群組設定會定義哪些區域會用於容錯移轉。 因為新的主要區域位於不同的地理位置中，容錯移轉會導致 OLTP 和唯讀工作負載較長的延遲，直到受影響區域再度上線為止。
 
 ![案例 3. 美國東部主要區域的設定。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-在一天結束時，例如在當地時間下午11：00，使用中的資料庫應該切換到下一個區域（北歐）。 您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)來完全自動化這項工作。 此工作涉及下列步驟：
+在一天結束時，例如當地時間晚上 11 點，活動資料庫應切換到下一個區域（北歐）。 此任務可以使用[Azure 邏輯應用](../logic-apps/logic-apps-overview.md)完全自動化。 此工作涉及下列步驟：
 
 * 使用好記的容錯移轉，將容錯移轉群組中的主要伺服器切換至北歐 (1)
 * 將美國東部和北歐之間的容錯移轉群組移除
@@ -130,7 +130,7 @@ ms.locfileid: "79269064"
 
 ![案例 3. 將主要伺服器轉換至北歐。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-例如，如果在北歐發生中斷情況，容錯移轉群組就會起始自動資料庫容錯移轉，從而將應用程式在排程之前有效地移動到下一個區域 (1)。  在此情況下，北歐再度上線之前，美國東部是唯一剩餘的次要區域。 其餘的兩個區域會藉由切換角色來服務所有三個地理位置的客戶。 Azure Logic Apps 必須據以調整。 因為其餘的區域會從歐洲取得額外的使用者流量，應用程式的效能不只會受到額外延遲時間的影響，還會受到終端使用者連線遽增的影響。 一旦北歐的運作中斷情況趨緩，該處的次要資料庫會立即與目前的主要資料庫進行同步處理。 下圖說明北歐發生運作中斷的情形：
+例如，如果在北歐發生中斷情況，容錯移轉群組就會起始自動資料庫容錯移轉，從而將應用程式在排程之前有效地移動到下一個區域 (1)。  在此情況下，北歐再度上線之前，美國東部是唯一剩餘的次要區域。 其餘的兩個區域會藉由切換角色來服務所有三個地理位置的客戶。 必須相應地調整 Azure 邏輯應用。 因為其餘的區域會從歐洲取得額外的使用者流量，應用程式的效能不只會受到額外延遲時間的影響，還會受到終端使用者連線遽增的影響。 一旦北歐的運作中斷情況趨緩，該處的次要資料庫會立即與目前的主要資料庫進行同步處理。 下圖說明北歐發生運作中斷的情形：
 
 ![案例 3. 北歐發生中斷。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
@@ -165,4 +165,4 @@ ms.locfileid: "79269064"
 * 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](sql-database-business-continuity.md)
 * 若要深入了解作用中異地複寫，請參閱[作用中異地複寫](sql-database-active-geo-replication.md)。
 * 若要深入了解自動容錯移轉群組，請參閱[自動容錯移轉群組](sql-database-auto-failover-group.md)。
-* 如需主動式異地複寫與彈性集區的相關資訊，請參閱[彈性集區災害復原策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+* 有關使用彈性池的活動異地複製的資訊，請參閱[彈性池災害復原策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

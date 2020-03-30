@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284430"
 ---
 # <a name="understand-iot-hub-metrics"></a>了解 IoT 中樞計量
@@ -21,13 +21,13 @@ IoT 中樞度量提供更好的資料，讓您了解 Azure 訂用帳戶中各種
 預設會啟用計量。 您可以從 Azure 入口網站啟用 IoT 中樞計量。
 
 > [!NOTE]
-> 您可以使用 IoT 中樞計量來查看連線至 IoT 中樞之 IoT 隨插即用裝置的相關資訊。 IoT 隨插即用裝置是[iot 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。
+> 您可以使用 IoT 中心指標查看有關連接到 IoT 中心的 IoT 隨插即用裝置的資訊。 IoT 隨插即用裝置是[IoT 隨插即用公共預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。
 
 ## <a name="how-to-view-iot-hub-metrics"></a>如何檢視 IoT 中樞計量
 
 1. 建立 IoT 中樞。 您可以在[將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-dotnet.md)指南中找到有關如何建立 IoT 中樞的指示。
 
-2. 開啟 IoT 中樞的刀鋒視窗。 按一下此處的 [計量]。
+2. 開啟 IoT 中樞的刀鋒視窗。 按一下此處的 [計量]****。
    
     ![顯示 [IoT 中樞資源] 頁面中 [度量] 選項之位置的螢幕擷取畫面](./media/iot-hub-metrics/enable-metrics-1.png)
 
@@ -35,7 +35,7 @@ IoT 中樞度量提供更好的資料，讓您了解 Azure 訂用帳戶中各種
    
     ![顯示 IoT 中樞 [度量] 頁面的螢幕擷取畫面](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. 您可以藉由按一下 [診斷設定]，然後 [新增診斷設定]，選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶
+4. 您可以藉由按一下 [診斷設定]****，然後 [新增診斷設定]****，選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶
 
    ![顯示 [診斷設定] 按鈕位置的螢幕擷取畫面](./media/iot-hub-metrics/enable-metrics-3.png)
 
@@ -47,10 +47,10 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|遙測訊息傳送嘗試|Count|總計|要嘗試傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|None|
 |d2c.telemetry.ingress.success|已傳送的遙測訊息|Count|總計|成功傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|None|
-|c2d.commands.egress.complete.success|已完成 C2D 訊息傳遞|Count|總計|裝置已成功完成的雲端到裝置訊息傳遞數|None|
-|c2d.commands.egress.abandon.success|已放棄的 C2D 訊息|Count|總計|裝置放棄的雲端到裝置訊息數|None|
-|c2d.commands.egress.reject.success|拒絕的 C2D 訊息|Count|總計|裝置拒絕的雲端到裝置訊息數目|None|
-|C2DMessagesExpired|C2D 郵件已過期（預覽）|Count|總計|已過期的雲端到裝置訊息數目|None|
+|c2d.commands.egress.complete.success|已完成 C2D 消息傳遞|Count|總計|設備成功完成的雲到設備消息傳遞數量|None|
+|c2d.commands.egress.abandon.success|C2D 消息已放棄|Count|總計|設備放棄的雲到設備消息數|None|
+|c2d.commands.egress.reject.success|C2D 郵件被拒絕|Count|總計|設備拒絕的雲到設備消息數|None|
+|C2D 消息過期|C2D 郵件已過期（預覽）|Count|總計|過期的雲到設備消息數|None|
 |devices.totalDevices|裝置總計 (已淘汰)|Count|總計|向 IoT 中樞註冊的裝置數目|None|
 |devices.connectedDevices.allProtocol|連接的裝置 (已淘汰) |Count|總計|連接至 IoT 中樞的裝置數目|None|
 |d2c.telemetry.egress.success|路由：已傳遞的遙測訊息|Count|總計|使用 IoT 中樞路由成功地將訊息傳遞到所有端點的次數。 如果將訊息路由至多個端點，這個值會為每一次成功傳遞加 1。 如果將訊息多次傳遞到同一個端點，這個值會為每一次成功傳遞加 1。|None|
@@ -70,8 +70,8 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 |d2c.endpoints.latency.storage|路由：儲存體的訊息延遲|毫秒|Average|訊息輸入到 IoT 中樞與遙測訊息輸入到儲存體端點之間的平均延遲 (毫秒)。|None|
 |d2c.endpoints.egress.storage.bytes|路由：傳遞至儲存體的資料|位元組|總計|IoT 中樞路由傳遞至儲存體端點的資料量 (位元組)。|None|
 |d2c.endpoints.egress.storage.blobs|路由：傳遞至儲存體的 BLOB|Count|總計|IoT 中樞路由將 BLOB 傳遞至儲存體端點的次數。|None|
-|EventGridDeliveries|事件方格傳遞（預覽）|Count|總計|已發佈至事件方格的 IoT 中樞事件數目。 使用 [結果] 維度來取得成功和失敗的要求數目。 [事件種類] 維度會顯示事件的類型（ https://aka.ms/ioteventgrid)。|ResourceId<br/>Result<br/>EventType|
-|EventGridLatency|事件方格延遲（預覽）|毫秒|Average|當事件發佈至事件方格時，從 Iot 中樞事件產生的平均延遲（毫秒）。 這個數位是所有事件種類之間的平均值。 使用 [事件種類] 維度來查看特定事件種類的延遲。|ResourceId<br/>EventType|
+|事件網格交付|事件網格交付（預覽）|Count|總計|發佈到事件網格的 IoT 中心事件數。 對成功和失敗的請求數使用"結果"維度。 事件種類維度顯示事件種類 （。https://aka.ms/ioteventgrid)|資源 Id，<br/>結果<br/>EventType|
+|事件網格延遲|事件網格延遲（預覽）|毫秒|Average|從生成 Iot 中心事件到將事件發佈到事件網格的平均延遲（毫秒）。 此數位是所有事件種類之間的平均值。 使用事件種類維度查看特定類型的事件的延遲。|資源 Id，<br/>EventType|
 |d2c.twin.read.success|裝置的成功對應項讀取|Count|總計|裝置起始的所有成功對應項讀取的計數。|None|
 |d2c.twin.read.failure|裝置的失敗對應項讀取|Count|總計|裝置起始的所有失敗對應項讀取的計數。|None|
 |d2c.twin.read.size|裝置的對應項讀取回應大小|位元組|Average|裝置起始的所有成功對應項讀取的平均值、最小值和最大值。|None|
@@ -105,7 +105,7 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 |jobs.failed|失敗作業|Count|總計|所有失敗作業計數。|None|
 |d2c.telemetry.ingress.sendThrottle|節流錯誤數目|Count|總計|因裝置輸送量節流而導致的節流錯誤數目|None|
 |dailyMessageQuotaUsed|已使用的訊息總數|Count|Average|今日已使用的總訊息數。 這是一個累計值，會在每天的 00:00 UTC 重設為零。|None|
-|deviceDataUsage|裝置資料使用量總計|位元組|總計|傳輸至任何已連線至 IotHub 之裝置或從該裝置傳出的位元組數|None|
+|deviceDataUsage|設備資料使用總量|位元組|總計|傳輸至任何已連線至 IotHub 之裝置或從該裝置傳出的位元組數|None|
 |deviceDataUsageV2|裝置資料使用量總計 (預覽)|位元組|總計|傳輸至任何已連線至 IotHub 之裝置或從該裝置傳出的位元組數|None|
 |totalDeviceCount|裝置總計 (預覽)|Count|Average|向 IoT 中樞註冊的裝置數目|None|
 |connectedDeviceCount|連接的裝置 (預覽)|Count|Average|連接至 IoT 中樞的裝置數目|None|
@@ -119,6 +119,6 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [IoT 中樞開發人員指南](iot-hub-devguide.md)
+* [IoT 中心開發人員指南](iot-hub-devguide.md)
 
 * [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)

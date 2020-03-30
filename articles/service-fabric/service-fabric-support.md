@@ -1,15 +1,15 @@
 ---
-title: 瞭解 Azure Service Fabric 支援選項
+title: 瞭解 Azure 服務交換矩陣支援選項
 description: 支援的 Azure Service Fabric 叢集版本和檔案支援票證連結
 author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282090"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
@@ -26,9 +26,9 @@ ms.locfileid: "79282090"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在銅級可靠性層或單一節點叢集上執行的叢集將可讓您僅執行測試工作負載。 如果您遇到在銅可靠性或單一節點叢集上執行之叢集的問題，Microsoft 支援小組會協助您減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱叢集[的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
+> 在青銅可靠性層或單節點群集上運行的群集將僅允許您運行測試工作負載。 如果您在青銅可靠性或單節點群集上運行群集時遇到問題，Microsoft 支援小組將協助您緩解此問題，但不會執行根本原因分析。 有關詳細資訊，請參閱[群集的可靠性特徵](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
 >
-> 如需適用于生產環境就緒叢集的詳細資訊，請參閱[生產環境就緒檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 有關生產就緒群集需要什麼的詳細資訊，請參閱[生產就緒清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -51,11 +51,11 @@ ms.locfileid: "79282090"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 論壇
 
-[StackOverflow 上的 Service Fabric 標記][stackoverflow]和[MSDN 上的 Service Fabric 論壇][msdn-forum]最適合用來詢問有關平臺運作方式的問題，以及如何使用它來完成特定工作。
+[StackOverflow 上的 Service Fabric 標籤][stackoverflow]和 [MSDN 上的 Service Fabric 論壇][msdn-forum]最適合用來詢問關於平台如何運作以及您如何使用它來完成特定工作的問題。
 
 ### <a name="azure-feedback-forum"></a>Azure 意見反應論壇
 
-適用于[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]，是提交您產品所擁有之重大功能想法的最佳位置，因為我們回顧最受歡迎的要求是我們的中型到長期規劃的一部分。 我們希望您在社群中集結您的建議的支援。
+[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]是您用來提交對於產品的大功能構想的最佳位置，因為檢閱最受歡迎的要求是我們中程至長程規劃的一部分。 我們希望您在社群中集結您的建議的支援。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 預覽版本 - 不支援用於生產環境
 
